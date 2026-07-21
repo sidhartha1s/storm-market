@@ -2,6 +2,22 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
+## 2026-07-22 — owner feedback on demo-joplin-90 (overall: "incredible")
+
+1. **Memorial/character beats: prefer a REAL photo where one publicly exists** (news/memorial
+   coverage — an editorial-respect judgment per case); else make the STAT carry the emotion —
+   e.g. the death toll as a rising red counter (Joplin = 161, NWS-verified; owner recalled 178 —
+   always verify the number). Symbolic stock (grad cap) reads weakest of the three options.
+2. **Radar/graphic beats: REAL data beats stylized animation.** Owner loved the sweep but wants
+   the actual storm: render real NEXRAD Level-II archive data (AWS open data, free) for the event,
+   or use NWS archived radar imagery (PD) — stylized radar only when no real data exists.
+3. **Cold-open pacing: slow is fine, silence is not.** 4s to first audible dispatch sound read as
+   dead air. Fix = loudness-normalize the insert to narration level (ffmpeg loudnorm, ≈ -15dB
+   mean) and bring first sound in by ~1s. Keep the cinematic visual pace — owner explicitly liked
+   it; tighten the AUDIO attack, not the edit.
+4. **Music is a LIBRARY, not per-episode**: assets/music/ holds owned ACE-generated beds
+   (5 moods); reuse/loop/duck across episodes. Generate new moods only when the library lacks one.
+
 ## 2026-07-22 — demo-joplin-90 (first E2E, owner: "incredible")
 
 **Hyperframes 0.7.64 gotchas (cost a lint/fix cycle each — pre-empt next time):**
