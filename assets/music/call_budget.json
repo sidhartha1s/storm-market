@@ -1,0 +1,11 @@
+{
+  "calls_used": 1,
+  "log": [
+    {
+      "outfile": "SCHEMA_PROBE (not saved as a track)",
+      "caption": "test ambient drone, no drums",
+      "duration": 10,
+      "note": "raw curl call used to discover the real request schema (caption/inference_steps/guidance_scale/seed/format) and the correct poll endpoint (/api/v2/jobs/{request_id}). Downloaded to scratchpad only, verified 48kHz stereo mp3, not part of the 5-track library."
+    }
+  ]
+}
