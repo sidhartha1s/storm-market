@@ -1,0 +1,23 @@
+# storm-market config — external tools + render settings (single source of truth)
+
+external:
+  # pocket-TTS runs from JP-market's isolated venv (runtime invocation only — zero imports;
+  # same isolation pattern JP/FR use). If JP-market moves, update these three paths.
+  pocket_venv_python: C:\Users\Sidhartha\Automation Projects\JP-market\.venv-pocket\Scripts\python.exe
+  tts_clone_py: C:\Users\Sidhartha\Automation Projects\JP-market\engine\tts_clone.py
+  voice_ref: C:\Users\Sidhartha\Automation Projects\storm-market\assets\voice\pharaoh_wisdom_bearer.mp3
+  # md5 2d8ea8f14763932f3f76da67d7fd1612 — verify before every produce run (JP voice-ref gotcha)
+
+render:
+  hyperframes_version: "0.7.64"   # pinned; upgrade ritual = test render, diff, bump
+  fps: 30
+  quality: standard               # "high" silently picks libx265 CPU on this box (JP measured)
+  crf: 16
+  gpu: true                       # --gpu --browser-gpu --experimental-fast-capture=true
+  resolution: landscape           # 1920x1080
+
+channel:
+  name: TBD
+  niche: US weather/disaster documentaries
+  target_minutes: [13, 23]
+  ship_wpm_target: 136            # delivered; pocket-TTS + Pharaoh ref lands ~129 natively
