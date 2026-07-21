@@ -2,6 +2,27 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
+## 2026-07-22 — ep1-joplin full-episode build (overnight ship-it)
+
+- **Word-count annotations in edit_script overestimate ~30%**: planned ~2,460 words / "20.4 min";
+  delivered TTS = 13.2 min narration → 14.0 min episode. Pharaoh pocket-TTS runs ~137 wpm
+  delivered on long segments (not 129). Next episode: target word count = minutes × 137, and
+  TTS a 2-segment probe before annotating the whole script.
+- **TTS driver header regex must match ALL segment types carrying a blockquote** — `— narration`
+  matching missed graphic-with-VO segments (a1-s2, a3-s3). Fixed: match on the segment ID.
+- **120s ACE beds loop cleanly with ffmpeg `acrossfade=d=3` self-concat** — build per-act loop
+  files (media/music/*-loop.mp3); no audible seam at documentary duck levels.
+- **Real-radar frames carry burned-in scan times (UTC)** — any popup naming a different clock
+  time contradicts the frame. Label honestly (fine-print provenance line) or match the scan.
+- **NASA ASTER false-color reads as alarming red** — always add a one-line false-color
+  explainer popup; the gray scar IS the story.
+- **NEXRAD via GCP mirror, not AWS**: `gcp-public-data-nexrad-l2` allows anonymous listing
+  (AWS bucket is GetObject-only); pyart `plot_ppi_map` creates a NEW GeoAxes (style
+  `fig.axes[-1]`); velocity lives on sweep 1 (split-cut VCP), not sweep 0.
+  Render script kept at `C:/nexrad-t/render_radar.py`.
+- **Compaction summaries lie about artifacts** (rule 12 confirmed): "words.json exists" was
+  false — always `ls` the actual files on resume before building on them.
+
 ## 2026-07-22 — owner feedback on demo-joplin-90 (overall: "incredible")
 
 1. **Memorial/character beats: prefer a REAL photo where one publicly exists** (news/memorial
