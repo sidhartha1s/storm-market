@@ -1,11 +1,112 @@
 {
-  "calls_used": 1,
+  "calls_used": 11,
   "log": [
     {
       "outfile": "SCHEMA_PROBE (not saved as a track)",
       "caption": "test ambient drone, no drums",
       "duration": 10,
       "note": "raw curl call used to discover the real request schema (caption/inference_steps/guidance_scale/seed/format) and the correct poll endpoint (/api/v2/jobs/{request_id}). Downloaded to scratchpad only, verified 48kHz stereo mp3, not part of the 5-track library."
+    },
+    {
+      "outfile": "tense-curious.mp3",
+      "caption": "dark ambient documentary drone, sustained low cello and string swells, slow evolving synth pads, sparse and quiet, subtle rising tension, eerie curious atmosphere, no drums, no percussion, no beat, no melody",
+      "duration": 120,
+      "submit_resp": {
+        "data": {
+          "request_id": "d7f3c501-9367-436f-b9c9-46e45c321502"
+        }
+      }
+    },
+    {
+      "outfile": "dread-build.mp3",
+      "caption": "slow ominous documentary build, deep sub bass swells, distant low rumble, storm-approaching menace, dark cinematic dread, sparse textures, no drums, no percussion, no beat, no melody",
+      "duration": 120,
+      "submit_resp": {
+        "data": {
+          "request_id": "08120245-6bc6-4a40-856a-6280b9678ba6"
+        }
+      }
+    },
+    {
+      "outfile": "aftermath-somber.mp3",
+      "caption": "sparse mournful solo piano notes over a soft ambient pad, grief, stillness, respectful documentary aftermath mood, minimal and quiet, no drums, no percussion, no beat",
+      "duration": 120,
+      "submit_resp": {
+        "data": {
+          "request_id": "a3acb844-b257-4820-9c58-34dd90f5d225"
+        }
+      }
+    },
+    {
+      "outfile": "hopeful-resolve.mp3",
+      "caption": "quiet warm ambient strings, gentle resolution, rebuilding hope, dawn after disaster, soft documentary underscore, tender and calm, no drums, no percussion, no beat",
+      "duration": 120,
+      "submit_resp": {
+        "data": {
+          "request_id": "f5f42450-77d5-4795-acc8-ed5d15ed48fa"
+        }
+      }
+    },
+    {
+      "outfile": "neutral-underscore.mp3",
+      "caption": "near-ambient documentary texture bed, minimal movement, neutral background pad, subtle soft drone for exposition and graphic segments, calm and unobtrusive, no drums, no percussion, no beat, no melody",
+      "duration": 120,
+      "submit_resp": {
+        "data": {
+          "request_id": "129e1a7f-68f5-42de-a7ac-57bdfad4dcbe"
+        }
+      }
+    },
+    {
+      "outfile": "tense-curious.mp3",
+      "caption": "dark ambient cinematic drone, no rhythm, no beat, no percussion, no pulse, freely timed rubato, sustained low cello and string swells only, slow evolving synth pad, eerie sparse texture, subtle rising tension, atonal ambient soundscape, no time signature",
+      "duration": 120,
+      "submit_resp": {
+        "data": {
+          "request_id": "aa219579-9079-466c-a0e1-d761277ec810"
+        }
+      }
+    },
+    {
+      "outfile": "dread-build.mp3",
+      "caption": "slow ominous cinematic drone, no rhythm, no beat, no percussion, no pulse, freely timed rubato, deep sub bass swells only, distant rumble texture, dark ambient soundscape, storm-approaching dread, no time signature, atonal",
+      "duration": 120,
+      "submit_resp": {
+        "data": {
+          "request_id": "7e906108-378b-4443-9d83-b9a746dc404b"
+        }
+      }
+    },
+    {
+      "outfile": "aftermath-somber.mp3",
+      "caption": "solo mournful piano, extremely sparse isolated notes with long silences between each note, rubato free tempo, no rhythm, no beat, no percussion, no metronome, soft ambient pad underneath, grief and stillness, minimal",
+      "duration": 120,
+      "submit_resp": {
+        "data": {
+          "request_id": "7c2a1d37-91d6-40ed-81ef-5bbef4b2ebe4"
+        }
+      }
+    },
+    {
+      "outfile": "hopeful-resolve.mp3",
+      "caption": "quiet warm ambient strings only, no rhythm, no beat, no percussion, no pulse, freely timed rubato, gentle sustained swells, dawn after disaster, tender documentary underscore, no time signature, atonal",
+      "duration": 120,
+      "submit_resp": {
+        "data": {
+          "request_id": "e0cada4e-70cd-4ebf-b00c-f907fb5ee7df"
+        }
+      }
+    },
+    {
+      "outfile": "aftermath-somber.mp3 (take 3, FINAL — piano dropped entirely per owner's take-3 strategy)",
+      "caption": "slow mournful string adagio, sustained legato cello and viola, soft warm pad, grief and stillness, funeral elegy, extremely sparse, long held notes, no piano, no plucked instruments, no drums, no percussion, no rhythm, free tempo rubato",
+      "duration": 120,
+      "submit_resp": {
+        "data": {
+          "request_id": "f62c2e93-9a9b-484c-a191-1e7e3ebc472f"
+        }
+      },
+      "note": "Owner authorized +2 calls (budget bumped 10->12 in gen_music.py) after take 2 (7c2a1d37) failed QC with per-second piano-note transients. Take 3 dropped piano/plucked instruments entirely in favor of sustained string adagio. Spectrogram PASS (continuous phrase-level energy, matches hopeful-resolve/tense-curious PASS pattern) -- promoted to aftermath-somber.mp3. Only 1 of the 2 authorized calls was needed; 1 remains unused."
     }
   ]
 }
