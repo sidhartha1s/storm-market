@@ -8,7 +8,7 @@ import os, sys, json, time, urllib.request, urllib.error
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 BUDGET_FILE = os.path.join(ROOT, "call_budget.json")
-MAX_CALLS = 10
+MAX_CALLS = 12  # owner authorized +2 calls on 2026-07-22 for aftermath-somber take 3/4
 
 ENV_PATH = os.path.join(ROOT, "..", "..", ".env")
 
