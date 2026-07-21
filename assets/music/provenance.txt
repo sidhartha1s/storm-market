@@ -75,11 +75,13 @@ All tracks: 120.0s duration, 48000 Hz stereo MP3.
 
 ---
 
-Paid generation calls used: 10 of 10 budget (HARD CAP reached).
+Paid generation calls used: 11 of 12 budget (original 10-call cap + owner-authorized +2 for
+aftermath-somber take 3/4; 1 of the +2 authorized calls unused).
   1 schema-probe call (10s test, not a delivered track — discovered the real field names
     and poll endpoint; see call_budget.json)
   5 first-attempt track generations (calls 2-6)
   4 regeneration calls for the beat-driven first attempts (calls 7-10)
+  1 owner-authorized take-3 call for aftermath-somber (call 11) — PASS, string adagio, no piano
 Model-list call (GET /api/v1/client/models) was free/unauthenticated-tier, not counted.
 
 QC method: `ffmpeg -i <file>.mp3 -lavfi showspectrumpic=s=1200x400:legend=0 spectrogram_<name>.png`,
