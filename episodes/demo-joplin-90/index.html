@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>The Sirens of Joplin — 90s demo</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Georgia, 'Times New Roman', serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #05070a; }
+    video, .still-wrap { position: absolute; inset: 0; }
+    video { width: 100%; height: 100%; object-fit: cover; }
+    .still-wrap { overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    .dim { position: absolute; inset: 0; background: rgba(3,5,8,0.45); pointer-events: none; }
+    .clip { position: absolute; inset: 0; }
+    .lower-left { position: absolute; left: 110px; bottom: 130px; }
+    .kicker { font-family: Arial, sans-serif; font-weight: 700; font-size: 26px; letter-spacing: 6px; color: #c8d3e0; opacity: 0.85; }
+    .loc { font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 84px; color: #f2f5f8; letter-spacing: -1px; line-height: 1.02; margin-top: 10px; text-shadow: 0 4px 30px rgba(0,0,0,0.8); }
+    .datetime { font-family: Georgia, serif; font-style: italic; font-size: 36px; color: #d8a13a; margin-top: 14px; }
+    #radar-stage { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 45%, #0a1410 0%, #04080a 75%); }
+    #radar-canvas { position: absolute; left: 460px; top: 40px; }
+    .popup { position: absolute; font-family: Arial, sans-serif; font-weight: 700; background: rgba(10,14,18,0.85); border-left: 6px solid #c0392b; color: #f2f5f8; padding: 18px 34px; font-size: 44px; letter-spacing: 1px; }
+    #popup-time { left: 130px; top: 150px; }
+    #counter { position: absolute; right: 170px; top: 140px; font-family: 'Courier New', monospace; font-weight: 700; font-size: 150px; color: #e74c3c; text-shadow: 0 0 40px rgba(231,60,44,0.5); }
+    #counter-label { position: absolute; right: 172px; top: 300px; font-family: Arial, sans-serif; font-size: 30px; letter-spacing: 5px; color: #c8d3e0; }
+    .title-card { position: absolute; inset: 0; display: grid; place-items: center; background: #030507; }
+    .title-inner { text-align: center; padding: 120px; }
+    .title-main { font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 128px; color: #f2f5f8; letter-spacing: 2px; line-height: 1.0; }
+    .title-sub { font-family: Georgia, serif; font-style: italic; font-size: 40px; color: #d8a13a; margin-top: 34px; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90;
+      background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
+    #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.11; mix-blend-mode: overlay; }
+    .dust { position: absolute; z-index: 92; pointer-events: none; border-radius: 50%; background: rgba(255,255,255,0.32); filter: blur(1.2px); }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="sirens-demo" data-width="1920" data-height="1080" data-duration="84" data-fps="30">
+
+  <!-- ===================== AUDIO (direct children of root) ===================== -->
+  <audio id="bgm" src="media/music/music.mp3" data-start="0" data-duration="84" data-volume="0" data-bed="1"></audio>
+  <audio src="media/s1-insert/s1_insert_cut.wav" data-start="0" data-duration="9.1" data-volume="1"></audio>
+  <audio src="audio/s2.wav" data-start="9.5" data-volume="1"></audio>
+  <audio src="audio/s3.wav" data-start="29.4" data-volume="1"></audio>
+  <audio src="audio/s4.wav" data-start="40.64" data-volume="1"></audio>
+  <audio src="audio/s6.wav" data-start="60.5" data-volume="1"></audio>
+  <audio src="audio/s7.wav" data-start="73.4" data-volume="1"></audio>
+
+  <!-- ===================== VIDEO (direct children, muted by design) ===================== -->
+  <video src="media/s2-calm/town-cloudy-evening.mp4" data-start="0" data-duration="9.5" data-track-index="1" muted></video>
+  <video src="media/s2-calm/smalltown-mainstreet-aerial.mp4" data-start="9.5" data-duration="5.7" data-track-index="1" muted></video>
+  <video src="media/s2-calm/street-flagpole.mp4" data-start="15.2" data-duration="6.8" data-track-index="1" muted></video>
+  <video src="media/s2-calm/dark-clouds-timelapse.mp4" data-start="22.0" data-duration="7.4" data-track-index="1" muted></video>
+
+  <!-- ===================== S1 overlay: location/time over dimmed town ===================== -->
+  <section class="clip" data-start="0" data-duration="9.5" data-track-index="2">
+    <div class="dim"></div>
+    <div class="lower-left">
+      <div class="kicker" id="s1-kicker">DISPATCH RECORDING — JASPER COUNTY FIRE</div>
+      <div class="loc" id="s1-loc">JOPLIN, MISSOURI</div>
+      <div class="datetime" id="s1-dt">May 22, 2011 — 5:11 PM</div>
+    </div>
+  </section>
+
+  <!-- ===================== S3 radar graphic ===================== -->
+  <section class="clip" data-start="29.4" data-duration="11.24" data-track-index="2" id="s3-clip">
+    <div id="radar-stage">
+      <canvas id="radar-canvas" width="1000" height="1000"></canvas>
+      <div class="popup" id="popup-time">5:41 PM — EF5 ON THE GROUND</div>
+      <div id="counter">17:00</div>
+      <div id="counter-label">WARNING LEAD TIME</div>
+    </div>
+  </section>
+
+  <!-- ===================== S4 damage stills (Ken Burns) ===================== -->
+  <section class="clip still-wrap" data-start="40.64" data-duration="6.2" data-track-index="1">
+    <img id="kb1" src="media/s4-damage/noaa_aerial_joplin_after.jpg" alt="" />
+  </section>
+  <section class="clip still-wrap" data-start="46.84" data-duration="4.0" data-track-index="1">
+    <img id="kb2" src="media/s4-damage/nws_ground_damage_ef5.jpg" alt="" />
+  </section>
+  <section class="clip still-wrap" data-start="50.84" data-duration="5.64" data-track-index="1">
+    <img id="kb3" src="media/s4-damage/st_johns_hospital_damage.jpg" alt="" />
+  </section>
+
+  <!-- ===================== S5 hold ===================== -->
+  <section class="clip still-wrap" data-start="56.48" data-duration="4.02" data-track-index="1">
+    <img id="kb-hold" src="media/s4-damage/joplin_damage_10days_wide.jpg" alt="" />
+  </section>
+
+  <!-- ===================== S6 memorial beat ===================== -->
+  <section class="clip still-wrap" data-start="60.5" data-duration="5.7" data-track-index="1">
+    <div class="dim" style="z-index:2"></div>
+    <img id="kb4" src="media/s6-character/grad-cap-diploma.jpg" alt="" />
+  </section>
+  <section class="clip still-wrap" data-start="66.2" data-duration="6.74" data-track-index="1">
+    <img id="kb5" src="media/s6-character/car-headlights-rain.jpg" alt="" />
+  </section>
+  <section class="clip blackout" data-start="72.6" data-duration="0.8" data-track-index="1" id="fade-black"></section>
+
+  <!-- ===================== S7 title card ===================== -->
+  <section class="clip title-card" data-start="73.4" data-duration="10.6" data-track-index="1">
+    <div class="title-inner">
+      <div class="title-main" id="title-main">THE SIRENS OF JOPLIN</div>
+      <div class="title-sub" id="title-sub">The seventeen minutes nobody believed.</div>
+    </div>
+  </section>
+
+  <!-- ===================== film layer (untimed, always on) ===================== -->
+  <div id="vignette"></div>
+  <canvas id="grain" width="480" height="270"></canvas>
+
+  <script>
+    const DUR = 84;
+    const tl = gsap.timeline({ paused: true });
+    window.__timelines["sirens-demo"] = tl;
+
+    /* ---------- music ducking (volume keyframes on the timeline) ---------- */
+    tl.to("#bgm", { volume: 0.16, duration: 1.2 }, 0);          // fade in under dispatch
+    tl.to("#bgm", { volume: 0.09, duration: 0.8 }, 9.0);        // duck for narration
+    tl.to("#bgm", { volume: 0.14, duration: 0.6 }, 29.4);       // slight lift for radar graphic
+    tl.to("#bgm", { volume: 0.09, duration: 0.6 }, 40.64);      // duck for S4
+    tl.to("#bgm", { volume: 0.30, duration: 1.0 }, 56.4);       // HOLD — music breathes
+    tl.to("#bgm", { volume: 0.10, duration: 0.8 }, 60.3);       // duck for memorial beat
+    tl.to("#bgm", { volume: 0.26, duration: 1.2 }, 73.4);       // title rise
+    tl.to("#bgm", { volume: 0.0, duration: 1.8 }, 82.0);        // out
+
+    /* ---------- S1: dispatch overlay text ---------- */
+    tl.fromTo("#s1-kicker", { opacity: 0 }, { opacity: 0.85, duration: 0.8 }, 0.6);
+    tl.fromTo("#s1-loc", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.1, ease: "power2.out" }, 1.2);
+    tl.fromTo("#s1-dt", { opacity: 0 }, { opacity: 1, duration: 0.9 }, 2.2);
+
+    /* ---------- S3: radar sweep + countdown ---------- */
+    const radar = { t: 0 };
+    const rctx = () => document.getElementById("radar-canvas")?.getContext("2d");
+    function drawRadar(p) { // p in [0,1] over the 11.24s window
+      const c = rctx(); if (!c) return;
+      const W = 1000, R = 440, cx = 500, cy = 500;
+      c.clearRect(0, 0, W, W);
+      c.strokeStyle = "rgba(80,220,120,0.35)"; c.lineWidth = 2;
+      for (let r = R / 4; r <= R; r += R / 4) { c.beginPath(); c.arc(cx, cy, r, 0, Math.PI * 2); c.stroke(); }
+      c.beginPath(); c.moveTo(cx - R, cy); c.lineTo(cx + R, cy); c.moveTo(cx, cy - R); c.lineTo(cx, cy + R); c.stroke();
+      const ang = p * Math.PI * 5.5 - Math.PI / 2; // ~2.75 sweeps
+      const grad = c.createConicGradient ? null : null;
+      c.save(); c.translate(cx, cy);
+      for (let i = 0; i < 24; i++) { // sweep trail
+        const a = ang - i * 0.035;
+        c.strokeStyle = `rgba(90,240,140,${0.5 * (1 - i / 24)})`; c.lineWidth = 5;
+        c.beginPath(); c.moveTo(0, 0); c.lineTo(Math.cos(a) * R, Math.sin(a) * R); c.stroke();
+      }
+      c.restore();
+      // hook echo (the storm) SW of center, pulsing red
+      const pulse = 0.75 + 0.25 * Math.sin(p * 30);
+      const ex = cx - 150, ey = cy + 120;
+      for (let i = 4; i >= 1; i--) {
+        c.fillStyle = `rgba(220,60,40,${0.16 * i * pulse})`;
+        c.beginPath(); c.ellipse(ex, ey, 34 + i * 16, 26 + i * 12, -0.5, 0, Math.PI * 2); c.fill();
+      }
+      c.fillStyle = `rgba(255,120,90,${0.9 * pulse})`;
+      c.beginPath(); c.ellipse(ex, ey, 26, 20, -0.5, 0, Math.PI * 2); c.fill();
+    }
+    tl.to(radar, { t: 1, duration: 11.24, ease: "none", onUpdate: () => drawRadar(radar.t) }, 29.4);
+    tl.fromTo("#popup-time", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 30.1);
+    // countdown appears on "seventeen minutes" (word ts 6.9 -> 36.3 global)
+    tl.fromTo("#counter", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power3.out" }, 36.3);
+    tl.fromTo("#counter-label", { opacity: 0 }, { opacity: 0.9, duration: 0.5 }, 36.6);
+    const cnt = { v: 17 * 60 };
+    tl.to(cnt, {
+      v: 16 * 60 + 38, duration: 4.3, ease: "none",
+      onUpdate: () => {
+        const el = document.getElementById("counter"); if (!el) return;
+        const s = Math.round(cnt.v);
+        el.textContent = `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+      },
+    }, 36.3);
+
+    /* ---------- Ken Burns on stills (animate inner img, not the timed clip) ---------- */
+    tl.fromTo("#kb1", { scale: 1.0 }, { scale: 1.12, duration: 6.2, ease: "none" }, 40.64);
+    tl.fromTo("#kb2", { scale: 1.15, x: -30 }, { scale: 1.0, x: 30, duration: 4.0, ease: "none" }, 46.84);
+    tl.fromTo("#kb3", { scale: 1.0, y: 0 }, { scale: 1.1, y: -28, duration: 5.64, ease: "none" }, 50.84);
+    tl.fromTo("#kb-hold", { scale: 1.04 }, { scale: 1.0, duration: 4.02, ease: "none" }, 56.48); // hold barely breathes
+    tl.fromTo("#kb4", { scale: 1.0 }, { scale: 1.09, duration: 5.7, ease: "none" }, 60.5);
+    tl.fromTo("#kb5", { scale: 1.06, opacity: 1 }, { scale: 1.14, duration: 6.74, ease: "none" }, 66.2);
+    tl.to("#kb5", { opacity: 0.25, duration: 0.9 }, 71.7); // dim into blackout
+    tl.fromTo("#fade-black", { opacity: 0 }, { opacity: 1, duration: 0.8 }, 72.6);
+
+    /* ---------- S7 title ---------- */
+    tl.fromTo("#title-main", { opacity: 0, letterSpacing: "14px" }, { opacity: 1, letterSpacing: "2px", duration: 1.6, ease: "power2.out" }, 73.8);
+    tl.fromTo("#title-sub", { opacity: 0 }, { opacity: 1, duration: 1.2 }, 75.2);
+    tl.to("#title-main", { opacity: 0, duration: 1.4 }, 81.6);
+    tl.to("#title-sub", { opacity: 0, duration: 1.4 }, 81.6);
+
+    /* ---------- film grain: seeded, timeline-driven (deterministic) ---------- */
+    const gcv = document.getElementById("grain"), gctx = gcv.getContext("2d");
+    const gimg = gctx.createImageData(480, 270);
+    function mulberry32(a) { return function () { a |= 0; a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+    let lastSeed = -1;
+    function paintGrain(timeSec) {
+      const seed = Math.floor(timeSec * 12); // reseed ~12x/s
+      if (seed === lastSeed) return; lastSeed = seed;
+      const rnd = mulberry32(seed + 7), d = gimg.data;
+      for (let i = 0; i < d.length; i += 4) { const v = 128 + (rnd() - 0.5) * 210; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255; }
+      gctx.putImageData(gimg, 0, 0);
+    }
+    const gdrv = { t: 0 };
+    tl.to(gdrv, { t: DUR, duration: DUR, ease: "none", onUpdate: () => paintGrain(gdrv.t) }, 0);
+
+    /* ---------- dust specks: finite GSAP drifts ---------- */
+    for (let i = 0; i < 6; i++) {
+      const s = document.createElement("div");
+      s.className = "dust";
+      const size = 2 + (i % 3) * 2;
+      s.style.width = s.style.height = size + "px";
+      s.style.left = ((i * 137) % 90 + 4) + "%";
+      s.style.top = ((i * 61) % 80 + 5) + "%";
+      document.getElementById("root").appendChild(s);
+      const cycle = 9 + i * 1.7;
+      tl.fromTo(s, { x: 0, y: 0, opacity: 0 },
+        { x: 40 + i * 13, y: 120 + i * 29, opacity: 0.5, duration: cycle, ease: "none",
+          repeat: Math.max(0, Math.floor(DUR / cycle) - 1), yoyo: true }, 0);
+    }
+  </script>
+</div>
+</body>
+</html>
