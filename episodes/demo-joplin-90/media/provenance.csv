@@ -1,0 +1,20 @@
+file,source_url,license,used_in_final,note
+s1-insert/s1_insert_cut.wav,https://www.youtube.com/watch?v=SV-LvICOGrE,Public-safety radio traffic (Jasper County fire dispatch); uploader cites CC via RadioReference,YES,cold-open insert 0-9.1s; cut 11.5-20.6 of source; low claim risk
+s1-insert/dispatch_nws_tornado_warning_toneout_0m29s.mp3,https://www.youtube.com/watch?v=SV-LvICOGrE,same as above,source,uncut source
+s1-insert/ksn_cutin_alert_sting_11m41s.mp4,https://archive.org/details/2011-joplin-ef-5-tornado-unedited-broadcast-beginning-9-minutes-before-historic-disaster,COPYRIGHTED KSN/Nexstar broadcast,NO,alternative insert 1a; owner review only
+s1-insert/ksn_sirens_going_off_12m38s.mp4,same archive.org item,COPYRIGHTED KSN/Nexstar broadcast,NO,alternative insert 1b
+s1-insert/ksn_take_cover_now_13m09s.mp4,same archive.org item,COPYRIGHTED KSN/Nexstar broadcast,NO,alternative insert 1c (strongest; claims likely if used)
+s1-insert/ksn_broadcast_full_source.mp4,same archive.org item,COPYRIGHTED KSN/Nexstar broadcast,NO,full 40-min source for re-cutting
+s2-calm/town-cloudy-evening.mp4,https://www.pexels.com,Pexels License,YES,S1 background 0-9.5s
+s2-calm/smalltown-mainstreet-aerial.mp4,https://www.pexels.com/video/aerial-view-of-quaint-small-town-main-street-33845059/,Pexels License,YES,S2 9.5-15.2s
+s2-calm/street-flagpole.mp4,https://www.pexels.com/video/a-street-with-a-sidewalk-and-a-flag-pole-27902028/,Pexels License,YES,S2 15.2-22.0s (graded darker)
+s2-calm/dark-clouds-timelapse.mp4,https://www.pexels.com,Pexels License,YES,S2 22.0-29.4s (brightened)
+s4-damage/noaa_aerial_joplin_after.jpg,NOAA aerial imagery,Public domain (US govt),YES,S4 40.64-46.84s
+s4-damage/nws_ground_damage_ef5.jpg,NWS Springfield MO event page,Public domain (US govt),YES,S4 46.84-50.84s
+s4-damage/st_johns_hospital_damage.jpg,uploader CC0 dedication,CC0 1.0,YES,S4 50.84-56.48s
+s4-damage/joplin_damage_10days_wide.jpg,https://www.flickr.com (xpda),CC BY 2.0 — CREDIT REQUIRED in description,YES,S5 hold 56.48-60.5s; add "Aerial: xpda (CC BY 2.0)" to video description
+s6-character/grad-cap-diploma.jpg,https://www.pexels.com,Pexels License,YES,S6 60.5-66.2s; no faces
+s6-character/car-headlights-rain.jpg,https://www.pexels.com,Pexels License,YES,S6 66.2-72.94s; occupants indistinct
+s6-character/empty-highway-dusk.jpg,https://www.pexels.com,Pexels License,NO,unused alternate
+music/music.mp3,DeAPI ACE-Step 1.5 XL Turbo (request ids in music/provenance.txt),AI-generated commissioned output,YES,bed 0-84s
+music/music_alt_pulse.mp3,DeAPI ACE-Step,AI-generated,NO,rejected alternate

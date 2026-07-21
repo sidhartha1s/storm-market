@@ -3,3 +3,7 @@ episodes/*/narration.wav
 episodes/*/renders/
 *.mp4
 .env
+episodes/*/audio/*.wav
+episodes/*/snapshots/
+episodes/*/renders/
+episodes/*/audio/_segments/
