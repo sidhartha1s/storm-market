@@ -1,0 +1,127 @@
+{
+ "a0-s2": {
+  "wav": "audio/a0-s2.wav",
+  "duration": 27.92,
+  "words": 62
+ },
+ "a0-s3": {
+  "wav": "audio/a0-s3.wav",
+  "duration": 15.4,
+  "words": 37
+ },
+ "a1-s1": {
+  "wav": "audio/a1-s1.wav",
+  "duration": 41.32,
+  "words": 106
+ },
+ "a1-s2": {
+  "wav": "audio/a1-s2.wav",
+  "duration": 31.04,
+  "words": 77
+ },
+ "a1-s3": {
+  "wav": "audio/a1-s3.wav",
+  "duration": 34.24,
+  "words": 95
+ },
+ "a2-s1": {
+  "wav": "audio/a2-s1.wav",
+  "duration": 40.52,
+  "words": 104
+ },
+ "a2-s2": {
+  "wav": "audio/a2-s2.wav",
+  "duration": 43.84,
+  "words": 114
+ },
+ "a2-s3": {
+  "wav": "audio/a2-s3.wav",
+  "duration": 32.56,
+  "words": 86
+ },
+ "a3-s1": {
+  "wav": "audio/a3-s1.wav",
+  "duration": 32.48,
+  "words": 83
+ },
+ "a3-s2": {
+  "wav": "audio/a3-s2.wav",
+  "duration": 39.12,
+  "words": 97
+ },
+ "a3-s3": {
+  "wav": "audio/a3-s3.wav",
+  "duration": 30.8,
+  "words": 80
+ },
+ "a3-s4": {
+  "wav": "audio/a3-s4.wav",
+  "duration": 41.16,
+  "words": 106
+ },
+ "a3-s5": {
+  "wav": "audio/a3-s5.wav",
+  "duration": 24.28,
+  "words": 65
+ },
+ "a3-s7": {
+  "wav": "audio/a3-s7.wav",
+  "duration": 27.84,
+  "words": 66
+ },
+ "a3-s4b": {
+  "wav": "audio/a3-s4b.wav",
+  "duration": 29.64,
+  "words": 74
+ },
+ "a3-s6b": {
+  "wav": "audio/a3-s6b.wav",
+  "duration": 25.6,
+  "words": 71
+ },
+ "a4-s1": {
+  "wav": "audio/a4-s1.wav",
+  "duration": 38.44,
+  "words": 98
+ },
+ "a4-s2": {
+  "wav": "audio/a4-s2.wav",
+  "duration": 32.04,
+  "words": 79
+ },
+ "a4-s3": {
+  "wav": "audio/a4-s3.wav",
+  "duration": 36.76,
+  "words": 86
+ },
+ "a4-s3b": {
+  "wav": "audio/a4-s3b.wav",
+  "duration": 34.64,
+  "words": 83
+ },
+ "a5-s1": {
+  "wav": "audio/a5-s1.wav",
+  "duration": 29.12,
+  "words": 68
+ },
+ "a5-s2": {
+  "wav": "audio/a5-s2.wav",
+  "duration": 22.72,
+  "words": 63
+ },
+ "a5-s3": {
+  "wav": "audio/a5-s3.wav",
+  "duration": 32.88,
+  "words": 93
+ },
+ "a6-s1": {
+  "wav": "audio/a6-s1.wav",
+  "duration": 32.04,
+  "words": 86
+ },
+ "a6-s2": {
+  "wav": "audio/a6-s2.wav",
+  "duration": 17.4,
+  "words": 42
+ }
+}
