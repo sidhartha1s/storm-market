@@ -27,7 +27,9 @@ def parse_segments(md: str):
     blocks = re.split(r"\n### ", md)
     for b in blocks[1:]:
         header = b.split("\n", 1)[0]
-        m = re.match(r"([A-Z]\d+-S\d+)\s+—\s+narration", header)
+        # any segment heading with an ID counts if it carries a narration blockquote
+        # (graphic/hold segments may have VO too — the quote is the source of truth)
+        m = re.match(r"([A-Z]\d+-S\d+[a-z]?)\b", header)
         if not m:
             continue
         sid = m.group(1).lower()
