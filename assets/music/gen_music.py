@@ -70,33 +70,33 @@ def main():
     budget["log"].append({"outfile": os.path.basename(outfile), "prompt": prompt, "duration": duration, "submit_resp": resp})
     save_budget(budget)
 
-    job_id = resp.get("job_id") or resp.get("id") or resp.get("data", {}).get("job_id")
-    if not job_id:
-        print("Could not find job_id in response:", json.dumps(resp))
+    # DeAPI async pattern (verified for /images/generations, same v2 convention for /audio/music):
+    # POST returns {"data": {"request_id": "uuid"}}; poll GET .../{request_id} for {"data": {"status": ...}}
+    data = resp.get("data", resp)
+    request_id = data.get("request_id") or data.get("id") or resp.get("request_id")
+    if not request_id:
+        print("Could not find request_id in response:", json.dumps(resp))
         sys.exit(1)
-    print("job_id:", job_id)
+    print("request_id:", request_id)
 
-    # Poll
-    poll_url_candidates = [
-        f"https://api.deapi.ai/api/v2/audio/music/{job_id}",
-        f"https://api.deapi.ai/api/v2/jobs/{job_id}",
-    ]
+    poll_url = f"https://api.deapi.ai/api/v2/audio/music/{request_id}"
     result = None
     for attempt in range(120):
         time.sleep(5)
-        for purl in poll_url_candidates:
-            try:
-                r = api_request("GET", purl, api_key)
-            except Exception:
-                continue
-            status = r.get("status") or r.get("data", {}).get("status")
-            if status:
-                print(f"  poll {attempt}: status={status}")
-                if status in ("completed", "success", "succeeded", "SUCCESS", "COMPLETED"):
-                    result = r
-                    break
-        if result:
+        try:
+            r = api_request("GET", poll_url, api_key)
+        except Exception as e:
+            print(f"  poll {attempt}: error {e}")
+            continue
+        rdata = r.get("data", r)
+        status = rdata.get("status")
+        print(f"  poll {attempt}: status={status}")
+        if status in ("completed", "success", "succeeded", "SUCCESS", "COMPLETED"):
+            result = rdata
             break
+        if status in ("failed", "error", "FAILED", "ERROR"):
+            print("Job failed:", json.dumps(r))
+            sys.exit(1)
     if not result:
         print("Timed out waiting for job completion")
         sys.exit(1)
