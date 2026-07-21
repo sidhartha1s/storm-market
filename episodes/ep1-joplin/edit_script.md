@@ -163,6 +163,23 @@ Wide leveled-neighborhood aerial sits. Wind ambience only. Breathing room after 
 > tornado ever recorded on Earth.
 Visuals: path-scar satellite/aerial, stat popups (ONE red rising counter reserved for Act 5).
 
+### A3-S4b — narration — WALMART + the corridor
+> Across the road, the Walmart came apart around two hundred people sheltering inside it, and
+> three of them died there. Up and down Range Line, the pattern repeated in every direction.
+> The big stores were engineered for straight winds of ninety miles per hour, which sounds
+> sturdy, and is, right up until the sky brings double that. Nothing on that corridor was
+> built for what arrived, because in fairness, almost nothing in America was.
+Visuals: Walmart/Range Line aerials (noaa_aerial_rangeline_wide), corridor damage. Lower-third
+"RANGE LINE ROAD".
+
+### A3-S6b — narration — GREENBRIAR (before the hold)
+> And on the south side of the path sat the Greenbriar Nursing Home, a single story of the
+> most vulnerable people in Joplin. The building took the tornado's full width and was leveled
+> to its slab. Twenty-one residents died there, more than at any other single building in the
+> city. There was no basement, and there was no engineered shelter, and for people who cannot
+> run, those two sentences decided everything.
+Visuals: leveled-structure stills (FEMA), slow push, dim heavy. Music near-silent.
+
 ## ACT 4 — THE RECKONING (12:30–16:00)
 
 ### A4-S1 — narration — ~50s (~107 words)
