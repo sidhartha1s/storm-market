@@ -60,6 +60,44 @@ sparingly/short/narrated-over (claims budgeted, segments must survive being clai
   accumulate in `assets/styles/` but NO scene templates — template-ification is the failure mode
   this design exists to avoid.
 
+## Content ID / claims protocol (owner-settled 2026-07-22)
+
+Content ID cannot be scanned offline — the protocol is layered:
+1. **Structural immunity**: PD / stock / self-made / AI assets are un-claimable by construction.
+   Only `insert` segments carry any risk.
+2. **Provenance ledger**: every sourced file gets a row in `episodes/<slug>/media/provenance.csv`
+   (file, source_url, license, fetched date) — claims become instantly traceable/disputable.
+3. **Pre-publish check**: upload **private/unlisted** first; YouTube's Studio "Checks" step runs
+   Content ID before publish. Wait for Checks to pass (+ a few hours soak — matches can lag),
+   swap any claimed segment while still private, THEN flip public. Never publish blind.
+
+## Look: grain layer (owner order 2026-07-22)
+
+Every clip renders under a unified film layer: animated grain (SVG turbulence or canvas noise,
+JS-driven — never CSS @keyframes), subtle vignette, occasional drifting dust specks. Purpose:
+one filmic look that also hides stock/archive/AI seams. Reusable snippet `assets/styles/grain.js`
+— a snippet, not a scene template.
+
+## Music (owner order 2026-07-22)
+
+Tense/curious instrumental bed per episode — generate via DeAPI ACE music when available
+(keys in ./.env), else PD/CC0 fallback (attribution logged in provenance). Ducked under
+narration (~-14dB), rises during holds. Bed choice is an editorial call, owner ear-checks at
+preview.
+
+## Character sub-arcs (owner-settled 2026-07-22 — include them)
+
+The hit videos' vignettes about real people ARE the banked emotional payoff + net-info-gain.
+Rules: real, named, publicly documented people only; verified quotes/facts (NWS service
+assessments, news archives, memorials); respectful framing — narrate the record, never
+dramatize beyond it; NO fabricated composites; no real-person likeness in generated imagery.
+
+## Beat bands (measured from teardowns; editor agent decides each rotation)
+
+hook cuts 2-3s · body 4-8s · holds 3-10s · inserts 5-15s. The editing agent picks every cut
+point from that segment's words.json (cut on the word being spoken). Lint enforces only hard
+floors/ceilings; taste stays with the model.
+
 ## Editing grammar (seed — grows via LEARNINGS.md)
 
 - Hook: cold-open insert (911 audio / broadcast) or present-tense stat over motion. ≤15s to thesis.
