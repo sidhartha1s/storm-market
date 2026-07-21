@@ -73,6 +73,12 @@ Per episode in `episodes/<slug>/`:
 - All git/gh as `sidhartha1s`. PRs small, rebase-merge, docs sweep in same PR.
 - python3 never python. Node ≥ 22 for hyperframes.
 
+## Learnings discipline (owner order 2026-07-22)
+**`LEARNINGS.md` is updated the same session as any owner correction or measured surprise** —
+hyperframes gotchas, sourcing findings, editorial rules. Read it before every episode build,
+alongside DESIGN.md. When patterns stabilize (~2-3 episodes), promote the stable workflow into
+a proper skill via /skill-creator — do not hand-write a SKILL.md before then.
+
 ## Open items (video 1)
 - Pilot topic: Joplin 2011 or 2011 Super Outbreak (owner to pick).
 - hyperframes version pin: set on first render (start at 0.7.64 — validated on this box).
