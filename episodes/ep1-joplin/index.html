@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>The Sirens of Joplin — The Warning Hour Ep. 1</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Georgia, 'Times New Roman', serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #05070a; }
+    video, .still-wrap { position: absolute; inset: 0; }
+    video { width: 100%; height: 100%; object-fit: cover; }
+    .still-wrap { overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    .contain-wrap img { object-fit: contain; background: #04070a; }
+    .dim { position: absolute; inset: 0; background: rgba(3,5,8,0.45); pointer-events: none; }
+    .dim-heavy { position: absolute; inset: 0; background: rgba(2,4,6,0.68); pointer-events: none; }
+    .clip { position: absolute; inset: 0; }
+    .lower-left { position: absolute; left: 110px; bottom: 130px; z-index: 5; }
+    .kicker { font-family: Arial, sans-serif; font-weight: 700; font-size: 26px; letter-spacing: 6px; color: #c8d3e0; opacity: 0.85; }
+    .loc { font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 76px; color: #f2f5f8; letter-spacing: -1px; line-height: 1.02; margin-top: 10px; text-shadow: 0 4px 30px rgba(0,0,0,0.8); }
+    .datetime { font-family: Georgia, serif; font-style: italic; font-size: 36px; color: #d8a13a; margin-top: 14px; }
+    .lt { position: absolute; left: 110px; bottom: 110px; z-index: 5; font-family: Arial, sans-serif; }
+    .lt .lt-loc { font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 52px; color: #f2f5f8; text-shadow: 0 3px 24px rgba(0,0,0,0.85); letter-spacing: 0; }
+    .lt .lt-time { font-size: 30px; color: #d8a13a; font-style: italic; font-family: Georgia, serif; margin-top: 8px; }
+    .popup { position: absolute; font-family: Arial, sans-serif; font-weight: 700; background: rgba(10,14,18,0.87); border-left: 6px solid #c0392b; color: #f2f5f8; padding: 18px 34px; font-size: 42px; letter-spacing: 1px; z-index: 6; }
+    .popup .fine { display: block; font-weight: 400; font-size: 22px; color: #9fb0c0; margin-top: 8px; letter-spacing: 0.5px; }
+    .darkstage { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+    .bigword { font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; color: #f2f5f8; letter-spacing: 1px; }
+    #counter161 { position: absolute; left: 0; right: 0; top: 340px; text-align: center; font-family: 'Courier New', monospace; font-weight: 700; font-size: 300px; color: #e74c3c; text-shadow: 0 0 60px rgba(231,60,44,0.45); }
+    #counter161-label { position: absolute; left: 0; right: 0; top: 680px; text-align: center; font-family: Arial, sans-serif; font-size: 34px; letter-spacing: 8px; color: #c8d3e0; }
+    #counter161-fine { position: absolute; left: 0; right: 0; top: 740px; text-align: center; font-family: Arial, sans-serif; font-size: 20px; letter-spacing: 1px; color: #7d8b99; }
+    .ibw-line { text-align: center; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 92px; color: #f2f5f8; letter-spacing: 2px; margin: 26px 0; }
+    #ibw-stack { position: absolute; inset: 0; display: grid; place-items: center; }
+    .doc-card { position: absolute; inset: 0; display: grid; place-items: center; }
+    .doc-inner { max-width: 1250px; text-align: center; padding: 80px; }
+    .doc-title { font-family: Arial, sans-serif; font-weight: 700; font-size: 58px; color: #e8edf2; letter-spacing: 2px; line-height: 1.25; }
+    .doc-sub { font-family: Georgia, serif; font-style: italic; font-size: 34px; color: #d8a13a; margin-top: 26px; }
+    .annot-ring { position: absolute; border: 5px solid rgba(255,235,120,0.95); border-radius: 50%; box-shadow: 0 0 30px rgba(255,220,90,0.5); z-index: 6; }
+    .title-card { position: absolute; inset: 0; display: grid; place-items: center; background: #030507; }
+    .title-inner { text-align: center; padding: 120px; }
+    .title-main { font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 150px; color: #f2f5f8; letter-spacing: 4px; line-height: 1.0; }
+    .title-sub { font-family: Georgia, serif; font-style: italic; font-size: 42px; color: #d8a13a; margin-top: 36px; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    .namecard { position: absolute; left: 0; right: 0; bottom: 200px; text-align: center; z-index: 5; }
+    .namecard .nc-name { font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 64px; color: #f2f5f8; letter-spacing: 1px; text-shadow: 0 3px 26px rgba(0,0,0,0.9); }
+    .namecard .nc-sub { font-family: Georgia, serif; font-style: italic; font-size: 32px; color: #d8a13a; margin-top: 12px; }
+    #wave-canvas, #poly-canvas { position: absolute; left: 210px; top: 190px; }
+    #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90;
+      background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
+    #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.11; mix-blend-mode: overlay; }
+    .dust { position: absolute; z-index: 92; pointer-events: none; border-radius: 50%; background: rgba(255,255,255,0.32); filter: blur(1.2px); }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="ep1-joplin" data-start="0" data-width="1920" data-height="1080" data-duration="843" data-fps="30">
+
+  <!-- ============ MUSIC BEDS (bed-exempt from voice-overlap lint) ============ -->
+  <audio id="bgm-tense"   src="media/music/tense-curious-loop.mp3"      data-start="0"      data-duration="165"   data-volume="0" data-bed="1"></audio>
+  <audio id="bgm-dread"   src="media/music/dread-build-loop.mp3"        data-start="163.5"  data-duration="387.5" data-volume="0" data-bed="1"></audio>
+  <audio id="bgm-neutral" src="media/music/neutral-underscore-loop.mp3" data-start="550"    data-duration="145.5" data-volume="0" data-bed="1"></audio>
+  <audio id="bgm-somber"  src="media/music/aftermath-somber-loop.mp3"   data-start="694.5"  data-duration="89.5"  data-volume="0" data-bed="1"></audio>
+  <audio id="bgm-hope"    src="media/music/hopeful-resolve-loop.mp3"    data-start="783"    data-duration="60"    data-volume="0" data-bed="1"></audio>
+
+  <!-- ============ INSERT + NARRATION (direct children) ============ -->
+  <audio id="nx-ins1" src="media/insert/s1_insert_norm.wav" data-start="0"      data-duration="9.1"   data-volume="1"></audio>
+  <audio id="nx-a0s2" src="audio/a0-s2.wav" data-start="9.6"    data-duration="27.92" data-volume="1"></audio>
+  <audio id="nx-a0s3" src="audio/a0-s3.wav" data-start="38.12"  data-duration="15.40" data-volume="1"></audio>
+  <audio id="nx-a1s1" src="audio/a1-s1.wav" data-start="54.92"  data-duration="41.32" data-volume="1"></audio>
+  <audio id="nx-a1s2" src="audio/a1-s2.wav" data-start="96.84"  data-duration="31.04" data-volume="1"></audio>
+  <audio id="nx-a1s3" src="audio/a1-s3.wav" data-start="128.48" data-duration="34.24" data-volume="1"></audio>
+  <audio id="nx-a2s1" src="audio/a2-s1.wav" data-start="165.72" data-duration="40.52" data-volume="1"></audio>
+  <audio id="nx-a2s2" src="audio/a2-s2.wav" data-start="206.84" data-duration="43.84" data-volume="1"></audio>
+  <audio id="nx-a2s3" src="audio/a2-s3.wav" data-start="251.28" data-duration="32.56" data-volume="1"></audio>
+  <audio id="nx-a3s1" src="audio/a3-s1.wav" data-start="288.34" data-duration="32.48" data-volume="1"></audio>
+  <audio id="nx-a3s2" src="audio/a3-s2.wav" data-start="321.42" data-duration="39.12" data-volume="1"></audio>
+  <audio id="nx-a3s3" src="audio/a3-s3.wav" data-start="361.34" data-duration="30.80" data-volume="1"></audio>
+  <audio id="nx-a3s4" src="audio/a3-s4.wav" data-start="392.94" data-duration="41.16" data-volume="1"></audio>
+  <audio id="nx-a3s4b" src="audio/a3-s4b.wav" data-start="434.70" data-duration="29.64" data-volume="1"></audio>
+  <audio id="nx-a3s5" src="audio/a3-s5.wav" data-start="465.04" data-duration="24.28" data-volume="1"></audio>
+  <audio id="nx-a3s6b" src="audio/a3-s6b.wav" data-start="490.52" data-duration="25.60" data-volume="1"></audio>
+  <audio id="nx-a3s7" src="audio/a3-s7.wav" data-start="521.92" data-duration="27.84" data-volume="1"></audio>
+  <audio id="nx-a4s1" src="audio/a4-s1.wav" data-start="551.16" data-duration="38.44" data-volume="1"></audio>
+  <audio id="nx-a4s2" src="audio/a4-s2.wav" data-start="590.20" data-duration="32.04" data-volume="1"></audio>
+  <audio id="nx-a4s3" src="audio/a4-s3.wav" data-start="622.84" data-duration="36.76" data-volume="1"></audio>
+  <audio id="nx-a4s3b" src="audio/a4-s3b.wav" data-start="660.40" data-duration="34.64" data-volume="1"></audio>
+  <audio id="nx-a5s1" src="audio/a5-s1.wav" data-start="696.44" data-duration="29.12" data-volume="1"></audio>
+  <audio id="nx-a5s2" src="audio/a5-s2.wav" data-start="726.36" data-duration="22.72" data-volume="1"></audio>
+  <audio id="nx-a5s3" src="audio/a5-s3.wav" data-start="749.88" data-duration="32.88" data-volume="1"></audio>
+  <audio id="nx-a6s1" src="audio/a6-s1.wav" data-start="784.36" data-duration="32.04" data-volume="1"></audio>
+  <audio id="nx-a6s2" src="audio/a6-s2.wav" data-start="817.20" data-duration="17.40" data-volume="1"></audio>
+
+  <!-- ============ VIDEO (direct children, all muted) ============ -->
+  <!-- A0-S1 cold open -->
+  <video id="vx-open" src="media/act1-town/town-cloudy-evening.mp4" style="filter: brightness(0.5) saturate(0.6)" data-start="0" data-duration="9.6" data-track-index="1" muted></video>
+  <!-- A0-S2 -->
+  <video id="vx-porch" src="media/act1-town/porch-swing.mp4" data-start="9.6" data-duration="5.2" data-track-index="1" muted></video>
+  <video id="vx-grad" src="media/act1-town/graduation-ceremony-wide.mp4" data-start="14.8" data-duration="8.0" data-track-index="1" muted></video>
+  <video id="vx-mainstreet" src="media/act1-town/smalltown-mainstreet-aerial.mp4" data-start="22.8" data-duration="9.2" data-track-index="1" muted></video>
+  <video id="vx-darkclouds" src="media/act1-town/dark-clouds-timelapse.mp4" data-start="32.0" data-duration="6.12" data-track-index="1" muted></video>
+  <!-- A0-S3 -->
+  <video id="vx-stormfield" src="media/act2-storm/storm-timelapse-open-field.mp4" data-start="38.12" data-duration="14.62" data-track-index="1" muted></video>
+  <!-- A1-S1 mid -->
+  <video id="vx-townaerial1" src="media/act6-rebuild/midwest-town-aerial.mp4" data-start="73.98" data-duration="11.46" data-track-index="1" muted></video>
+  <!-- A1-S2 real radar -->
+  <video id="vx-radar1" src="media/radar/radar_real.mp4" data-start="96.84" data-duration="10.33" data-track-index="1" muted></video>
+  <!-- A1-S3 -->
+  <video id="vx-windowpov" src="media/act2-storm/window-pov-rain-street.mp4" data-start="128.48" data-duration="13.6" data-track-index="1" muted></video>
+  <video id="vx-dinner" src="media/act1-town/family-dinner-table.mp4" data-start="142.08" data-duration="9.6" data-track-index="1" muted></video>
+  <video id="vx-raincurtain1" src="media/act2-storm/rain-curtain-street-night.mp4" data-start="151.68" data-duration="14.04" data-track-index="1" muted></video>
+  <!-- A2-S2 -->
+  <video id="vx-rainwall" src="media/act2-storm/rain-wall-parked-cars.mp4" data-start="206.84" data-duration="6.08" data-track-index="1" muted></video>
+  <video id="vx-supercell" src="media/act2-storm/supercell-structure-rolling.mp4" data-start="212.92" data-duration="9.06" data-track-index="1" muted></video>
+  <video id="vx-raincurtain2" src="media/act2-storm/rain-curtain-street-night.mp4" data-start="221.98" data-duration="13.02" data-media-start="14" data-track-index="1" muted></video>
+  <video id="vx-windowpov2" src="media/act2-storm/window-pov-rain-street.mp4" data-start="235.0" data-duration="15.68" data-media-start="15" data-track-index="1" muted></video>
+  <!-- A2-S4 hold -->
+  <video id="vx-stormhold" src="media/act2-storm/storm-timelapse-open-field.mp4" data-start="284.34" data-duration="4.0" data-media-start="15" data-track-index="1" muted></video>
+  <!-- A3-S3 real radar again -->
+  <video id="vx-radar2" src="media/radar/radar_real.mp4" data-start="361.34" data-duration="10.33" data-track-index="1" muted></video>
+  <!-- A3-S5 Lucas (heavily dimmed dark street) -->
+  <video id="vx-lucas" src="media/act2-storm/rain-curtain-street-night.mp4" style="filter: brightness(0.35) saturate(0.5)" data-start="465.04" data-duration="24.28" data-media-start="3" data-track-index="1" muted></video>
+  <!-- A4-S1 dim bg under document cards -->
+  <video id="vx-a4bg" src="media/act6-rebuild/midwest-town-aerial.mp4" style="filter: brightness(0.4) saturate(0.55)" data-start="551.16" data-duration="38.44" data-media-start="12" data-track-index="1" muted></video>
+  <!-- A4-S3b quiet streets -->
+  <video id="vx-watertower" src="media/act6-rebuild/watertower-town-aerial.mp4" data-start="675.0" data-duration="19.75" data-track-index="1" muted></video>
+  <!-- A5-S3 Will Norton -->
+  <video id="vx-grad2" src="media/act1-town/graduation-ceremony-wide.mp4" data-start="749.88" data-duration="8.82" data-track-index="1" muted></video>
+  <!-- A6-S1 rebuild -->
+  <video id="vx-framing" src="media/act6-rebuild/house-framing-aerial.mp4" data-start="784.36" data-duration="11.64" data-track-index="1" muted></video>
+
+  <!-- ============ A0-S1 dispatch overlay ============ -->
+  <section class="clip" data-start="0" data-duration="9.6" data-track-index="2">
+    <div class="dim"></div>
+    <div class="lower-left">
+      <div class="kicker" id="s1-kicker">DISPATCH RECORDING — JASPER COUNTY FIRE</div>
+      <div class="loc" id="s1-loc">JOPLIN, MISSOURI</div>
+      <div class="datetime" id="s1-dt">May 22, 2011</div>
+    </div>
+  </section>
+
+  <!-- blackout after thesis "waited" -->
+  <section class="clip blackout" id="black-thesis" data-start="52.74" data-duration="2.18" data-track-index="4"></section>
+
+  <!-- ============ A1-S1 siren stills ============ -->
+  <section class="clip still-wrap" data-start="54.92" data-duration="19.06" data-track-index="1">
+    <img id="kb-siren1" src="media/act1-town/siren-pole-sky.jpg" alt="" />
+  </section>
+  <section class="clip still-wrap" data-start="85.44" data-duration="11.4" data-track-index="1">
+    <img id="kb-siren2" src="media/act1-town/siren-pole-cc0.jpg" alt="" />
+  </section>
+
+  <!-- ============ A1-S2 radar stills + watch popup ============ -->
+  <section class="clip contain-wrap still-wrap" data-start="107.17" data-duration="9.83" data-track-index="1">
+    <img id="kb-radarw1" src="media/radar/radar_ref_02.png" alt="" />
+  </section>
+  <section class="clip contain-wrap still-wrap" data-start="117.0" data-duration="11.48" data-track-index="1">
+    <img id="kb-radarw2" src="media/radar/radar_ref_03.png" alt="" />
+  </section>
+  <div class="popup" id="popup-watch" style="left: 130px; top: 130px;">TORNADO WATCH — 1:30 PM</div>
+
+  <!-- ============ A2-S1 NWS + warning ============ -->
+  <section class="clip still-wrap" data-start="165.72" data-duration="6.74" data-track-index="1">
+    <img id="kb-nws" src="media/act2-storm/nws-ops-room-mount-holly.jpg" alt="" />
+  </section>
+  <section class="clip contain-wrap still-wrap" data-start="172.46" data-duration="14.54" data-track-index="1">
+    <img id="kb-warntext" src="media/act2-storm/nws-tor31-warning-text-1080.png" alt="" />
+  </section>
+  <section class="clip still-wrap" data-start="187.0" data-duration="19.24" data-track-index="1">
+    <img id="kb-supercellstill" src="media/act2-storm/isolated-supercell-noaa.jpg" alt="" />
+  </section>
+  <div class="popup" id="popup-warn" style="left: 130px; top: 130px;">TORNADO WARNING 5:17 PM<span class="fine">LEAD TIME — 24 MINUTES</span></div>
+
+  <!-- ============ A2-S3 siren waveform graphic ============ -->
+  <section class="clip" data-start="251.28" data-duration="33.06" data-track-index="1" id="wave-clip">
+    <div class="darkstage"></div>
+    <canvas id="wave-canvas" width="1500" height="700"></canvas>
+    <div class="popup" id="popup-siren1" style="left: 240px; top: 210px; border-left-color: #d8a13a;">5:11 PM — SIREN ONE</div>
+    <div class="popup" id="popup-siren2" style="left: 240px; top: 690px;">5:38 PM — SIREN TWO<span class="fine">SAME SOUND. NO ALL-CLEAR SIGNAL EXISTED.</span></div>
+  </section>
+
+  <!-- ============ A3 march stills ============ -->
+  <section class="clip still-wrap" data-start="288.34" data-duration="13.2" data-track-index="1">
+    <img id="kb-wallcloud" src="media/act2-storm/wall-cloud-lightning-noaa.jpg" alt="" />
+  </section>
+  <section class="clip still-wrap" data-start="301.54" data-duration="10.5" data-track-index="1">
+    <img id="kb-schiff1" src="media/act3-march/usace_schifferdecker_tree_site_1.jpg" alt="" />
+  </section>
+  <section class="clip still-wrap" data-start="312.04" data-duration="9.38" data-track-index="1">
+    <img id="kb-schiff2" src="media/act3-march/usace_schifferdecker_tree_site_2.jpg" alt="" />
+  </section>
+  <div class="lt" id="lt-schiff"><div class="lt-loc">SCHIFFERDECKER AVENUE</div><div class="lt-time">5:38 PM — EF5 · WINDS 200+ MPH</div></div>
+
+  <section class="clip still-wrap" data-start="321.42" data-duration="12.74" data-track-index="1">
+    <img id="kb-stj1" src="media/act3-march/fema_stjohns_total_loss.jpg" alt="" />
+  </section>
+  <section class="clip still-wrap" data-start="334.16" data-duration="12.84" data-track-index="1">
+    <img id="kb-stj2" src="media/act3-march/fema_stjohns_bronze_statue.jpg" alt="" />
+  </section>
+  <section class="clip still-wrap" data-start="347.0" data-duration="14.34" data-track-index="1">
+    <img id="kb-stj3" src="media/act5-people/st_johns_fema_total_loss.jpg" alt="" />
+  </section>
+  <div class="lt" id="lt-stjohns"><div class="lt-loc">ST. JOHN'S REGIONAL MEDICAL CENTER</div><div class="lt-time">5:41 PM — 183 PATIENTS INSIDE</div></div>
+
+  <!-- A3-S3 radar stills + annotations -->
+  <section class="clip contain-wrap still-wrap" data-start="371.67" data-duration="9.33" data-track-index="1">
+    <img id="kb-debris" src="media/radar/radar_ref_04.png" alt="" />
+  </section>
+  <section class="clip contain-wrap still-wrap" data-start="381.0" data-duration="11.94" data-track-index="1">
+    <img id="kb-velocity" src="media/radar/radar_vel_04.png" alt="" />
+  </section>
+  <div class="annot-ring" id="ring-debris" style="left: 870px; top: 480px; width: 180px; height: 150px;"></div>
+  <div class="popup" id="popup-debris" style="left: 130px; top: 130px;">DEBRIS BALL — 5:43 PM<span class="fine">TWO MINUTES AFTER THE HOSPITAL WAS HIT</span></div>
+  <div class="popup" id="popup-couplet" style="left: 130px; top: 130px;">188-KNOT VELOCITY COUPLET<span class="fine">KSGF RADAR — 55 MILES AWAY</span></div>
+
+  <!-- A3-S4 Range Line / Home Depot -->
+  <section class="clip still-wrap" data-start="392.94" data-duration="11.32" data-track-index="1">
+    <img id="kb-rangeline1" src="media/act3-march/noaa_aerial_rangeline_wide_crop.jpg" alt="" />
+  </section>
+  <section class="clip still-wrap" data-start="404.26" data-duration="16.74" data-track-index="1">
+    <img id="kb-homedepot" src="media/act3-march/noaa_aerial_homedepot_crop.jpg" alt="" />
+  </section>
+  <!-- panel-fall diagram -->
+  <section class="clip" data-start="421.0" data-duration="13.1" data-track-index="1" id="panel-clip">
+    <div class="darkstage"></div>
+    <div id="panel-stage" style="position:absolute; left:560px; top:260px; width:800px; height:560px;"></div>
+    <div class="popup" id="popup-panels" style="left: 240px; top: 150px;">TILT-UP CONCRETE PANELS — 100,000 LBS EACH<span class="fine">63 OF 73 CAME DOWN WHEN THE ROOF LEFT</span></div>
+  </section>
+  <div class="lt" id="lt-rangeline"><div class="lt-loc">RANGE LINE ROAD</div><div class="lt-time">5:45 PM — RETAIL CORRIDOR</div></div>
+
+  <!-- A3-S4b Walmart / corridor -->
+  <section class="clip still-wrap" data-start="434.70" data-duration="10.14" data-track-index="1">
+    <img id="kb-walgreen" src="media/act3-march/fema_walgreen_rangeline.jpg" alt="" />
+  </section>
+  <section class="clip still-wrap" data-start="444.84" data-duration="19.5" data-track-index="1">
+    <img id="kb-tile1" src="media/act3-march/tile_n4105000.jpg" alt="" />
+  </section>
+
+  <!-- A3-S5 Lucas name card -->
+  <div class="namecard" id="nc-lucas">
+    <div class="nc-name">CHRISTOPHER LUCAS</div>
+    <div class="nc-sub">Pizza Hut, Range Line Road — held the cooler door shut from the outside</div>
+  </div>
+
+  <!-- A3-S6b Greenbriar -->
+  <section class="clip still-wrap" data-start="490.52" data-duration="11.16" data-track-index="1">
+    <div class="dim-heavy" style="z-index:2"></div>
+    <img id="kb-corridor1" src="media/act5-people/hospital_corridor_dark.jpg" alt="" />
+  </section>
+  <section class="clip still-wrap" data-start="501.68" data-duration="15.24" data-track-index="1">
+    <div class="dim" style="z-index:2"></div>
+    <img id="kb-tile2" src="media/act3-march/tile_n4105000.jpg" alt="" />
+  </section>
+  <div class="lt" id="lt-greenbriar"><div class="lt-loc">GREENBRIAR NURSING HOME</div><div class="lt-time">21 RESIDENTS LOST — THE MOST OF ANY BUILDING</div></div>
+
+  <!-- A3-S6 hold + A3-S7 path scar -->
+  <section class="clip still-wrap" data-start="516.92" data-duration="32.84" data-track-index="1">
+    <img id="kb-scar" src="media/act3-march/nasa_aster_path_scar.jpg" alt="" />
+  </section>
+  <div class="popup" id="popup-scar1" style="left: 130px; top: 130px;">21 MILES LONG — 1 MILE WIDE</div>
+  <div class="popup" id="popup-scar2" style="left: 130px; top: 250px;">8,000 BUILDINGS<span class="fine">MOST EXPENSIVE TORNADO EVER RECORDED</span></div>
+
+  <!-- ============ A4-S1 assessment cards ============ -->
+  <section class="clip" data-start="551.16" data-duration="38.44" data-track-index="2" id="a4s1-clip">
+    <div class="doc-card" id="doc1" style="opacity:0">
+      <div class="doc-inner">
+        <div class="doc-title" id="doc1-title">NWS SERVICE ASSESSMENT<br/>JOPLIN, MISSOURI, TORNADO — MAY 22, 2011</div>
+        <div class="doc-sub" id="doc1-sub">The weather service investigated itself.</div>
+      </div>
+    </div>
+    <div class="doc-card" id="doc2" style="opacity:0">
+      <div class="doc-inner">
+        <div class="doc-title" id="doc2-title">THE MAJORITY OF SURVIVORS DID NOT<br/>SHELTER AT THE FIRST SIREN</div>
+        <div class="doc-sub" id="doc2-sub">They waited. They looked for confirmation.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ A4-S2 polygon map graphic ============ -->
+  <section class="clip" data-start="590.20" data-duration="32.64" data-track-index="1" id="poly-clip">
+    <div class="darkstage"></div>
+    <canvas id="poly-canvas" width="1500" height="700"></canvas>
+    <div class="popup" id="popup-poly" style="left: 240px; top: 150px;">WARNING POLYGON vs SIREN ZONE<span class="fine">THE SIRENS FIRED CITY-WIDE. THE WARNING NEVER DID.</span></div>
+  </section>
+
+  <!-- ============ A4-S3 counter + IBW ============ -->
+  <section class="clip" data-start="622.84" data-duration="37.56" data-track-index="1" id="a4s3-clip">
+    <div class="darkstage"></div>
+    <div id="counter161" style="opacity:0">0</div>
+    <div id="counter161-label" style="opacity:0">LIVES LOST</div>
+    <div id="counter161-fine" style="opacity:0">161 total &middot; 158 directly attributed (NWS)</div>
+    <div id="ibw-stack" style="opacity:0">
+      <div>
+        <div class="ibw-line" id="ibw1" style="opacity:0">CATASTROPHIC</div>
+        <div class="ibw-line" id="ibw2" style="opacity:0">MASS DEVASTATION</div>
+        <div class="ibw-line" id="ibw3" style="opacity:0; color:#e74c3c">UNSURVIVABLE IF ABOVE GROUND</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ A4-S3b quiet siren ============ -->
+  <section class="clip still-wrap" data-start="660.40" data-duration="14.6" data-track-index="1">
+    <img id="kb-siren3" src="media/act1-town/siren-pole-sky.jpg" style="filter: sepia(0.25) brightness(0.95)" alt="" />
+  </section>
+
+  <!-- ============ A5 people ============ -->
+  <section class="clip still-wrap" data-start="696.44" data-duration="9.68" data-track-index="1">
+    <img id="kb-church1" src="media/act5-people/st_marys_church_site_1.jpg" alt="" />
+  </section>
+  <section class="clip still-wrap" data-start="706.12" data-duration="8.88" data-track-index="1">
+    <img id="kb-church2" src="media/act5-people/st_marys_church_site_2.jpg" alt="" />
+  </section>
+  <section class="clip still-wrap" data-start="715.0" data-duration="5.5" data-track-index="1">
+    <img id="kb-hymnals" src="media/act5-people/church_pews_hymnals.jpg" alt="" />
+  </section>
+  <section class="clip still-wrap" data-start="720.5" data-duration="5.86" data-track-index="1">
+    <img id="kb-candles" src="media/act5-people/candles_closeup_dark.jpg" alt="" />
+  </section>
+  <div class="namecard" id="nc-ramona">
+    <div class="nc-name">HARMONY HEIGHTS BAPTIST CHURCH</div>
+    <div class="nc-sub">Fifty survived in the hallways. Ramona Bridgeford came to hear her son sing.</div>
+  </div>
+
+  <section class="clip still-wrap" data-start="726.36" data-duration="11.18" data-track-index="1">
+    <img id="kb-corridor2" src="media/act5-people/hospital_corridor_dark.jpg" alt="" />
+  </section>
+  <section class="clip still-wrap" data-start="737.54" data-duration="12.34" data-track-index="1">
+    <img id="kb-statue" src="media/act5-people/st_johns_bronze_statue_fema.jpg" alt="" />
+  </section>
+
+  <section class="clip still-wrap" data-start="758.7" data-duration="11.3" data-track-index="1">
+    <img id="kb-headlights" src="media/act5-people/car-headlights-rain.jpg" alt="" />
+  </section>
+  <section class="clip still-wrap" data-start="770.0" data-duration="13.5" data-track-index="1">
+    <img id="kb-camcorder" src="media/act5-people/film_camcorder_hands.jpg" alt="" />
+  </section>
+  <div class="namecard" id="nc-will">
+    <div class="nc-name">WILL NORTON, 18</div>
+    <div class="nc-sub">Four hours a graduate. He wanted to tell stories for a living.</div>
+  </div>
+  <section class="clip blackout" id="black-will" data-start="782.0" data-duration="2.36" data-track-index="4"></section>
+
+  <!-- ============ A6 rebuild + close ============ -->
+  <section class="clip still-wrap" data-start="796.0" data-duration="10.0" data-track-index="1">
+    <img id="kb-modular" src="media/act6-rebuild/joplin-housing-construction.jpg" alt="" />
+  </section>
+  <section class="clip still-wrap" data-start="806.0" data-duration="11.2" data-track-index="1">
+    <img id="kb-sunrise" src="media/act6-rebuild/park-pond-sunrise.jpg" alt="" />
+  </section>
+  <section class="clip still-wrap" data-start="817.2" data-duration="7.5" data-track-index="1">
+    <img id="kb-warm" src="media/act6-rebuild/usace-engineer-contractor.jpg" style="filter: sepia(0.2) brightness(1.05)" alt="" />
+  </section>
+  <section class="clip title-card" data-start="824.7" data-duration="16.3" data-track-index="1">
+    <div class="title-inner">
+      <div class="title-main" id="title-main">THE WARNING HOUR</div>
+      <div class="title-sub" id="title-sub">Episode One — The Sirens of Joplin</div>
+    </div>
+  </section>
+  <section class="clip blackout" id="black-end" data-start="841.0" data-duration="2.0" data-track-index="4"></section>
+
+  <!-- film layer (untimed, always on) -->
+  <div id="vignette"></div>
+  <canvas id="grain" width="480" height="270"></canvas>
+
+  <script src="grain.js"></script>
+  <script>
+    const DUR = 843;
+    const tl = gsap.timeline({ paused: true });
+    window.__timelines = window.__timelines || {};
+    window.__timelines["ep1-joplin"] = tl;
+
+    /* ================= MUSIC DUCKING MAP ================= */
+    // tense-curious: fades in under A0-S2, ducks under narration, small lift at thesis black
+    tl.to("#bgm-tense", { volume: 0.10, duration: 2.5 }, 10.5);
+    tl.to("#bgm-tense", { volume: 0.16, duration: 1.2 }, 52.7);   // thesis blackout breath
+    tl.to("#bgm-tense", { volume: 0.09, duration: 1.0 }, 55.0);
+    tl.to("#bgm-tense", { volume: 0.0,  duration: 2.5 }, 162.0);  // out before dread
+    // dread-build: enters at A2, swells at siren graphic, lifts in hold, near-silence for Lucas
+    tl.to("#bgm-dread", { volume: 0.09, duration: 3.0 }, 163.5);
+    tl.to("#bgm-dread", { volume: 0.13, duration: 1.0 }, 251.3);  // siren graphic swell
+    tl.to("#bgm-dread", { volume: 0.10, duration: 0.8 }, 262.0);
+    tl.to("#bgm-dread", { volume: 0.26, duration: 1.2 }, 284.3);  // hold breath
+    tl.to("#bgm-dread", { volume: 0.09, duration: 1.0 }, 288.3);
+    tl.to("#bgm-dread", { volume: 0.02, duration: 3.0 }, 462.0);  // near-silence: Lucas + Greenbriar
+    tl.to("#bgm-dread", { volume: 0.14, duration: 2.0 }, 516.9);  // hold on the scar
+    tl.to("#bgm-dread", { volume: 0.08, duration: 1.0 }, 521.9);
+    tl.to("#bgm-dread", { volume: 0.0,  duration: 2.5 }, 548.0);
+    // neutral-underscore: A4
+    tl.to("#bgm-neutral", { volume: 0.08, duration: 2.5 }, 550.5);
+    tl.to("#bgm-neutral", { volume: 0.12, duration: 1.0 }, 659.6); // gap breath
+    tl.to("#bgm-neutral", { volume: 0.08, duration: 0.8 }, 661.0);
+    tl.to("#bgm-neutral", { volume: 0.0,  duration: 2.5 }, 693.0);
+    // aftermath-somber: A5
+    tl.to("#bgm-somber", { volume: 0.09, duration: 2.5 }, 694.5);
+    tl.to("#bgm-somber", { volume: 0.16, duration: 1.5 }, 780.5);  // Will fade-to-black swell
+    tl.to("#bgm-somber", { volume: 0.0,  duration: 2.0 }, 782.0);
+    // hopeful-resolve: A6 + title
+    tl.to("#bgm-hope", { volume: 0.09, duration: 2.5 }, 783.5);
+    tl.to("#bgm-hope", { volume: 0.24, duration: 1.5 }, 834.6);   // title card rise after last word
+    tl.to("#bgm-hope", { volume: 0.0,  duration: 1.8 }, 841.0);
+
+    /* ================= A0: cold open ================= */
+    tl.fromTo("#s1-kicker", { opacity: 0 }, { opacity: 0.85, duration: 0.8 }, 0.6);
+    tl.fromTo("#s1-loc", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.1, ease: "power2.out" }, 1.2);
+    tl.fromTo("#s1-dt", { opacity: 0 }, { opacity: 1, duration: 0.9 }, 2.2);
+    tl.fromTo("#black-thesis", { opacity: 0 }, { opacity: 1, duration: 0.25 }, 52.74); // hard cut on "waited"
+
+    /* ================= A1: Ken Burns + radar popups ================= */
+    tl.fromTo("#kb-siren1", { scale: 1.0 }, { scale: 1.12, duration: 19.06, ease: "none" }, 54.92);
+    tl.fromTo("#kb-siren2", { scale: 1.14, x: -25 }, { scale: 1.02, x: 20, duration: 11.4, ease: "none" }, 85.44);
+    tl.fromTo("#kb-radarw1", { scale: 1.0 }, { scale: 1.07, duration: 9.83, ease: "none" }, 107.17);
+    tl.fromTo("#kb-radarw2", { scale: 1.07 }, { scale: 1.0, duration: 11.48, ease: "none" }, 117.0);
+    tl.set("#popup-watch", { opacity: 0 }, 0);
+    tl.fromTo("#popup-watch", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 99.0);
+    tl.to("#popup-watch", { opacity: 0, duration: 0.6 }, 126.5);
+
+    /* ================= A2 ================= */
+    tl.fromTo("#kb-nws", { scale: 1.0 }, { scale: 1.08, duration: 6.74, ease: "none" }, 165.72);
+    tl.fromTo("#kb-warntext", { scale: 1.02 }, { scale: 1.08, duration: 14.54, ease: "none" }, 172.46);
+    tl.fromTo("#kb-supercellstill", { scale: 1.0, y: 0 }, { scale: 1.1, y: -24, duration: 19.24, ease: "none" }, 187.0);
+    tl.set("#popup-warn", { opacity: 0 }, 0);
+    tl.fromTo("#popup-warn", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 188.0);
+    tl.to("#popup-warn", { opacity: 0, duration: 0.6 }, 205.0);
+
+    // siren waveform graphic (canvas, deterministic)
+    const wctx = () => document.getElementById("wave-canvas")?.getContext("2d");
+    function drawWave(p) { // p in [0,1] over 33s
+      const c = wctx(); if (!c) return;
+      const W = 1500, H = 700; c.clearRect(0, 0, W, H);
+      // two identical waveforms: siren one (top), siren two (bottom)
+      function siren(yc, active, col) {
+        c.strokeStyle = col; c.lineWidth = 3; c.beginPath();
+        for (let x = 0; x <= W; x += 4) {
+          const env = active * Math.min(1, x / 120, (W - x) / 120);
+          const y = yc + Math.sin(x * 0.09) * Math.sin(x * 0.011) * 90 * env;
+          x === 0 ? c.moveTo(x, y) : c.lineTo(x, y);
+        }
+        c.stroke();
+      }
+      const a1 = Math.min(1, p * 6);                       // siren one draws in early
+      const a2 = Math.max(0, Math.min(1, (p - 0.42) * 6)); // siren two ~14s in
+      siren(180, a1, "rgba(216,161,58,0.9)");
+      siren(560, a2, "rgba(220,80,60,0.95)");
+      // "SAME SOUND" — sweep line comparing the two
+      if (p > 0.62) {
+        const sx = (p - 0.62) / 0.38 * W;
+        c.strokeStyle = "rgba(240,245,250,0.35)"; c.lineWidth = 2;
+        c.beginPath(); c.moveTo(sx, 90); c.lineTo(sx, 650); c.stroke();
+      }
+    }
+    const wdrv = { t: 0 };
+    tl.to(wdrv, { t: 1, duration: 33.06, ease: "none", onUpdate: () => drawWave(wdrv.t) }, 251.28);
+    tl.fromTo("#popup-siren1", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6 }, 253.0);
+    tl.fromTo("#popup-siren2", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6 }, 265.5);
+
+    /* ================= A3: the march ================= */
+    tl.fromTo("#kb-wallcloud", { scale: 1.0 }, { scale: 1.1, duration: 13.2, ease: "none" }, 288.34);
+    tl.fromTo("#kb-schiff1", { scale: 1.12, x: 20 }, { scale: 1.0, x: -20, duration: 10.5, ease: "none" }, 301.54);
+    tl.fromTo("#kb-schiff2", { scale: 1.0 }, { scale: 1.09, duration: 9.38, ease: "none" }, 312.04);
+    tl.set("#lt-schiff", { opacity: 0 }, 0);
+    tl.fromTo("#lt-schiff", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 301.8);
+    tl.to("#lt-schiff", { opacity: 0, duration: 0.5 }, 320.3);
+
+    tl.fromTo("#kb-stj1", { scale: 1.0 }, { scale: 1.1, duration: 12.74, ease: "none" }, 321.42);
+    tl.fromTo("#kb-stj2", { scale: 1.12, y: -18 }, { scale: 1.0, y: 14, duration: 12.84, ease: "none" }, 334.16);
+    tl.fromTo("#kb-stj3", { scale: 1.0, x: 0 }, { scale: 1.08, x: -22, duration: 14.34, ease: "none" }, 347.0);
+    tl.set("#lt-stjohns", { opacity: 0 }, 0);
+    tl.fromTo("#lt-stjohns", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 322.0);
+    tl.to("#lt-stjohns", { opacity: 0, duration: 0.5 }, 359.8);
+
+    // radar annotations
+    tl.fromTo("#kb-debris", { scale: 1.0 }, { scale: 1.06, duration: 9.33, ease: "none" }, 371.67);
+    tl.fromTo("#kb-velocity", { scale: 1.0 }, { scale: 1.06, duration: 11.94, ease: "none" }, 381.0);
+    tl.set("#ring-debris", { opacity: 0 }, 0);
+    tl.fromTo("#ring-debris", { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1.0, duration: 0.8, ease: "power3.out" }, 372.5);
+    tl.to("#ring-debris", { opacity: 0, duration: 0.4 }, 380.4);
+    tl.set("#popup-debris", { opacity: 0 }, 0);
+    tl.fromTo("#popup-debris", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6 }, 372.2);
+    tl.to("#popup-debris", { opacity: 0, duration: 0.4 }, 380.4);
+    tl.set("#popup-couplet", { opacity: 0 }, 0);
+    tl.fromTo("#popup-couplet", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6 }, 381.8);
+    tl.to("#popup-couplet", { opacity: 0, duration: 0.5 }, 391.6);
+
+    tl.fromTo("#kb-rangeline1", { scale: 1.0 }, { scale: 1.09, duration: 11.32, ease: "none" }, 392.94);
+    tl.fromTo("#kb-homedepot", { scale: 1.1, y: 16 }, { scale: 1.0, y: -16, duration: 16.74, ease: "none" }, 404.26);
+    tl.set("#lt-rangeline", { opacity: 0 }, 0);
+    tl.fromTo("#lt-rangeline", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 393.3);
+    tl.to("#lt-rangeline", { opacity: 0, duration: 0.5 }, 419.8);
+
+    // panel-fall diagram: roof slides off, panels rotate down (one corner falls outward)
+    (function buildPanels() {
+      const stage = document.getElementById("panel-stage");
+      const roof = document.createElement("div");
+      roof.id = "panel-roof";
+      roof.style.cssText = "position:absolute;left:40px;top:60px;width:720px;height:36px;background:#5a6672;";
+      stage.appendChild(roof);
+      for (let i = 0; i < 8; i++) {
+        const p = document.createElement("div");
+        p.id = "panel-" + i;
+        p.style.cssText = `position:absolute;left:${50 + i * 90}px;top:96px;width:74px;height:330px;background:#8b959f;transform-origin:bottom ${i < 6 ? "left" : "right"};`;
+        stage.appendChild(p);
+      }
+      tl.fromTo("#panel-roof", { y: 0, opacity: 1 }, { y: -260, opacity: 0, duration: 1.6, ease: "power2.in" }, 422.2);
+      for (let i = 0; i < 6; i++) { // inward
+        tl.to("#panel-" + i, { rotation: -84, duration: 1.1, ease: "power2.in" }, 424.0 + i * 0.35);
+      }
+      for (let i = 6; i < 8; i++) { // outward corner — the 30 who lived
+        tl.to("#panel-" + i, { rotation: 84, duration: 1.1, ease: "power2.in" }, 430.0 + (i - 6) * 0.4);
+      }
+    })();
+    tl.set("#popup-panels", { opacity: 0 }, 0);
+    tl.fromTo("#popup-panels", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6 }, 421.8);
+
+    tl.fromTo("#kb-walgreen", { scale: 1.0 }, { scale: 1.09, duration: 10.14, ease: "none" }, 434.70);
+    tl.fromTo("#kb-tile1", { scale: 1.16, x: -30 }, { scale: 1.0, x: 26, duration: 19.5, ease: "none" }, 444.84);
+
+    // Lucas name card
+    tl.set("#nc-lucas", { opacity: 0 }, 0);
+    tl.fromTo("#nc-lucas", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" }, 475.6);
+    tl.to("#nc-lucas", { opacity: 0, duration: 1.0 }, 488.0);
+
+    // Greenbriar
+    tl.fromTo("#kb-corridor1", { scale: 1.0 }, { scale: 1.08, duration: 11.16, ease: "none" }, 490.52);
+    tl.fromTo("#kb-tile2", { scale: 1.0, x: 26 }, { scale: 1.12, x: -30, duration: 15.24, ease: "none" }, 501.68);
+    tl.set("#lt-greenbriar", { opacity: 0 }, 0);
+    tl.fromTo("#lt-greenbriar", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.8 }, 493.0);
+    tl.to("#lt-greenbriar", { opacity: 0, duration: 0.6 }, 515.0);
+
+    // scar + stat popups
+    tl.fromTo("#kb-scar", { scale: 1.14 }, { scale: 1.0, duration: 32.84, ease: "none" }, 516.92);
+    tl.set("#popup-scar1", { opacity: 0 }, 0);
+    tl.fromTo("#popup-scar1", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6 }, 528.5);
+    tl.set("#popup-scar2", { opacity: 0 }, 0);
+    tl.fromTo("#popup-scar2", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6 }, 536.0);
+    tl.to("#popup-scar1", { opacity: 0, duration: 0.6 }, 548.4);
+    tl.to("#popup-scar2", { opacity: 0, duration: 0.6 }, 548.4);
+
+    /* ================= A4 ================= */
+    tl.fromTo("#doc1", { opacity: 0 }, { opacity: 1, duration: 1.2 }, 553.0);
+    tl.to("#doc1", { opacity: 0, duration: 0.8 }, 569.5);
+    tl.fromTo("#doc2", { opacity: 0 }, { opacity: 1, duration: 1.2 }, 570.6);
+    tl.to("#doc2", { opacity: 0, duration: 0.8 }, 588.5);
+
+    // polygon-vs-city map (canvas)
+    const pctx = () => document.getElementById("poly-canvas")?.getContext("2d");
+    function drawPoly(p) { // p in [0,1] over 32.6s
+      const c = pctx(); if (!c) return;
+      const W = 1500, H = 700; c.clearRect(0, 0, W, H);
+      // city street grid
+      c.strokeStyle = "rgba(120,140,160,0.28)"; c.lineWidth = 1.5;
+      for (let x = 150; x <= 1350; x += 80) { c.beginPath(); c.moveTo(x, 80); c.lineTo(x, 620); c.stroke(); }
+      for (let y = 80; y <= 620; y += 60) { c.beginPath(); c.moveTo(150, y); c.lineTo(1350, y); c.stroke(); }
+      // city limits
+      c.strokeStyle = "rgba(200,211,224,0.7)"; c.lineWidth = 3;
+      c.strokeRect(150, 80, 1200, 540);
+      c.font = "700 26px Arial"; c.fillStyle = "rgba(200,211,224,0.8)";
+      c.fillText("CITY OF JOPLIN", 165, 65);
+      // siren zone: whole city pulses amber (all-or-nothing)
+      const sirenA = Math.min(1, p * 5) * (0.10 + 0.07 * Math.sin(p * 40));
+      c.fillStyle = `rgba(216,161,58,${sirenA})`;
+      c.fillRect(150, 80, 1200, 540);
+      // warning polygon: tight red quadrilateral along the storm path (SW to E)
+      if (p > 0.28) {
+        const a = Math.min(1, (p - 0.28) * 5);
+        c.beginPath();
+        c.moveTo(150, 480); c.lineTo(700, 350); c.lineTo(1350, 380); c.lineTo(1350, 560); c.lineTo(150, 620);
+        c.closePath();
+        c.fillStyle = `rgba(220,70,50,${0.26 * a})`; c.fill();
+        c.strokeStyle = `rgba(230,90,60,${0.95 * a})`; c.lineWidth = 4; c.stroke();
+        c.font = "900 30px Arial"; c.fillStyle = `rgba(240,245,250,${a})`;
+        c.fillText("WARNING POLYGON — THE STORM'S ACTUAL PATH", 380, 545);
+      }
+    }
+    const pdrv = { t: 0 };
+    tl.to(pdrv, { t: 1, duration: 32.64, ease: "none", onUpdate: () => drawPoly(pdrv.t) }, 590.20);
+    tl.set("#popup-poly", { opacity: 0 }, 0);
+    tl.fromTo("#popup-poly", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6 }, 601.4);
+
+    // counter 0 -> 161 (owner-requested device), then IBW words
+    tl.fromTo("#counter161", { opacity: 0 }, { opacity: 1, duration: 0.6 }, 624.2);
+    tl.fromTo("#counter161-label", { opacity: 0 }, { opacity: 0.9, duration: 0.6 }, 624.6);
+    tl.fromTo("#counter161-fine", { opacity: 0 }, { opacity: 0.75, duration: 0.6 }, 626.0);
+    const dcnt = { v: 0 };
+    tl.to(dcnt, {
+      v: 161, duration: 11.5, ease: "power1.inOut",
+      onUpdate: () => { const el = document.getElementById("counter161"); if (el) el.textContent = String(Math.round(dcnt.v)); },
+    }, 624.2);
+    tl.to("#counter161", { opacity: 0, duration: 0.8 }, 638.2);
+    tl.to("#counter161-label", { opacity: 0, duration: 0.8 }, 638.2);
+    tl.to("#counter161-fine", { opacity: 0, duration: 0.8 }, 638.2);
+    tl.fromTo("#ibw-stack", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 639.5);
+    tl.fromTo("#ibw1", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 640.0);
+    tl.fromTo("#ibw2", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 644.0);
+    tl.fromTo("#ibw3", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, 649.1);
+    tl.to("#ibw-stack", { opacity: 0, duration: 0.9 }, 658.8);
+
+    tl.fromTo("#kb-siren3", { scale: 1.1 }, { scale: 1.0, duration: 14.6, ease: "none" }, 660.40);
+
+    /* ================= A5 ================= */
+    tl.fromTo("#kb-church1", { scale: 1.0 }, { scale: 1.08, duration: 9.68, ease: "none" }, 696.44);
+    tl.fromTo("#kb-church2", { scale: 1.09, x: -18 }, { scale: 1.0, x: 16, duration: 8.88, ease: "none" }, 706.12);
+    tl.fromTo("#kb-hymnals", { scale: 1.0 }, { scale: 1.07, duration: 5.5, ease: "none" }, 715.0);
+    tl.fromTo("#kb-candles", { scale: 1.05 }, { scale: 1.0, duration: 5.86, ease: "none" }, 720.5);
+    tl.set("#nc-ramona", { opacity: 0 }, 0);
+    tl.fromTo("#nc-ramona", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1.2 }, 717.0);
+    tl.to("#nc-ramona", { opacity: 0, duration: 0.8 }, 725.0);
+
+    tl.fromTo("#kb-corridor2", { scale: 1.08, y: 14 }, { scale: 1.0, y: -12, duration: 11.18, ease: "none" }, 726.36);
+    tl.fromTo("#kb-statue", { scale: 1.0 }, { scale: 1.1, duration: 12.34, ease: "none" }, 737.54);
+
+    tl.fromTo("#kb-headlights", { scale: 1.0 }, { scale: 1.09, duration: 11.3, ease: "none" }, 758.7);
+    tl.fromTo("#kb-camcorder", { scale: 1.06 }, { scale: 1.0, duration: 13.5, ease: "none" }, 770.0);
+    tl.set("#nc-will", { opacity: 0 }, 0);
+    tl.fromTo("#nc-will", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1.2 }, 760.0);
+    tl.to("#nc-will", { opacity: 0, duration: 1.0 }, 779.5);
+    tl.fromTo("#black-will", { opacity: 0 }, { opacity: 1, duration: 1.8 }, 782.0);
+
+    /* ================= A6 ================= */
+    tl.fromTo("#kb-modular", { scale: 1.0 }, { scale: 1.08, duration: 10.0, ease: "none" }, 796.0);
+    tl.fromTo("#kb-sunrise", { scale: 1.08 }, { scale: 1.0, duration: 11.2, ease: "none" }, 806.0);
+    tl.fromTo("#kb-warm", { scale: 1.0 }, { scale: 1.06, duration: 7.5, ease: "none" }, 817.2);
+    tl.fromTo("#title-main", { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: 1.8, ease: "power2.out" }, 825.2);
+    tl.fromTo("#title-sub", { opacity: 0 }, { opacity: 1, duration: 1.4 }, 827.0);
+    tl.to("#title-main", { opacity: 0, duration: 1.2 }, 839.6);
+    tl.to("#title-sub", { opacity: 0, duration: 1.2 }, 839.6);
+    tl.fromTo("#black-end", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 841.0);
+
+    /* ================= film layer ================= */
+    filmLayer(tl, DUR);
+  </script>
+</div>
+</body>
+</html>
