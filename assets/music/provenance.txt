@@ -33,23 +33,29 @@ All tracks: 120.0s duration, 48000 Hz stereo MP3.
    Take 1 (request_id 08120245-6bc6-4a40-856a-6280b9678ba6) showed strong regular ~1s banding
    (beat-driven) — rejected, not kept on disk.
 
-3. aftermath-somber.mp3 (request_id 7c2a1d37-91d6-40ed-81ef-5bbef4b2ebe4)
-   Caption: "solo mournful piano, extremely sparse isolated notes with long silences between
-   each note, rubato free tempo, no rhythm, no beat, no percussion, no metronome, soft ambient
-   pad underneath, grief and stillness, minimal"
-   QC: spectrogram_aftermath-somber.png — STILL shows dense, regular ~1s full-band vertical
-   transients (each piano-note onset landing on a near-metronomic grid) across the whole 120s.
-   VERDICT: FAIL — functionally beat-driven despite the anti-rhythm prompt; the model appears to
-   default this caption family (piano + "sparse notes") to a steady pulse regardless of wording.
-   Take 1 (request_id a3acb844-b257-4820-9c58-34dd90f5d225, kept on disk as
-   aftermath-somber.take1-rejected.mp3) showed the same pattern, near-identical density.
-   BUDGET EXHAUSTED (10/10 calls used) before a third attempt could be tried — per the hard
-   generation-call cap this file was NOT regenerated again. The delivered aftermath-somber.mp3
-   is the take-2 file; it does not meet the "no per-second transients" bar and should not be
-   treated as cleared for use until either (a) a human listens and judges the pulse acceptable
-   for a mournful-piano cue, or (b) the owner authorizes additional paid calls for a take 3 with
-   a different approach (e.g. try AceStep_1_5_Base model / a "single sustained pad, no piano"
-   fallback caption instead of fighting the piano-note-onset pattern).
+3. aftermath-somber.mp3 (FINAL, take 3, request_id f62c2e93-9a9b-484c-a191-1e7e3ebc472f)
+   Caption: "slow mournful string adagio, sustained legato cello and viola, soft warm pad, grief
+   and stillness, funeral elegy, extremely sparse, long held notes, no piano, no plucked
+   instruments, no drums, no percussion, no rhythm, free tempo rubato"
+   QC: spectrogram_aftermath-somber.png — continuous phrase-level energy, no dense per-second
+   full-band transients; matches the PASS pattern of tense-curious/dread-build/hopeful-resolve.
+   PASS.
+   Strategy change (owner-authorized, 2026-07-22): both prior takes kept "piano" in the caption
+   (just adding anti-rhythm phrasing) and both still produced a near-metronomic per-second onset
+   grid — the model appears to hard-default any "piano + sparse notes" caption family to a
+   steady pulse regardless of wording. Take 3 dropped piano and all plucked instruments entirely
+   in favor of a sustained string adagio (cello/viola legato + pad), which broke the pattern on
+   the first attempt.
+   Owner authorized +2 additional paid calls beyond the original 10-call budget for this take-3
+   attempt (gen_music.py MAX_CALLS bumped 10->12); only 1 of the 2 was needed. 1 authorized call
+   remains unused.
+   Rejected takes kept on disk (not used):
+     - aftermath-somber.take1-rejected.mp3 (request_id a3acb844-b257-4820-9c58-34dd90f5d225,
+       "sparse mournful solo piano notes..." caption) — dense per-second transients. FAIL.
+     - aftermath-somber.take2-rejected.mp3 (request_id 7c2a1d37-91d6-40ed-81ef-5bbef4b2ebe4,
+       "solo mournful piano, extremely sparse isolated notes..." caption, spectrogram now saved
+       as spectrogram_aftermath-somber-take2.png) — same dense per-second piano-onset grid
+       despite explicit anti-rhythm/rubato phrasing. FAIL.
 
 4. hopeful-resolve.mp3 (final take, request_id e0cada4e-70cd-4ebf-b00c-f907fb5ee7df)
    Caption: "quiet warm ambient strings only, no rhythm, no beat, no percussion, no pulse,
