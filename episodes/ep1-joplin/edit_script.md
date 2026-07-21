@@ -211,6 +211,15 @@ Visual: polygon-vs-city map graphic (self-made, animated). Popup "WARNING POLYGO
 Visual: THE red rising counter 0 → 161 (owner-requested device) over dark, then IBW warning-text
 graphic. Note: on-screen fine print "161 total; 158 directly attributed (NWS)" for integrity.
 
+### A4-S3b — narration — the quiet fix nobody notices
+> There was one more change, smaller and closer to home. Joplin rebuilt its siren policy from
+> the ground up. Activations became zoned and specific, the criteria were tightened, and the
+> practice of sounding the same tone for everything, everywhere, ended. It is the kind of fix
+> that never makes the news, because its success is measured in sirens that do not sound. But
+> the next time Joplin hears that wail, it will mean exactly one thing. And everyone will know
+> what it is.
+Visuals: modern siren still (siren-pole-sky, graded), city-hall/policy b-roll, quiet streets.
+
 ## ACT 5 — THE PEOPLE (16:00–19:00) — banked emotion
 
 ### A5-S1 — narration — ~40s (~86 words)
