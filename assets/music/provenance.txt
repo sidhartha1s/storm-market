@@ -1,0 +1,84 @@
+assets/music/ provenance — reusable music library (generated 2026-07-21/22)
+
+Source: AI-generated via DeAPI text-to-music, POST https://api.deapi.ai/api/v2/audio/music
+Model: AceStep_1_5_XL_Turbo_INT8 (ACE-Step 1.5 XL Turbo INT8)
+Poll endpoint (verified live, differs from the images-API pattern): GET https://api.deapi.ai/api/v2/jobs/{request_id}
+Verified request schema (discovered via 422 validation errors, NOT the shorthand in the
+demo-joplin-90 provenance note): {model, caption, lyrics, duration, inference_steps, guidance_scale,
+seed, format}. inference_steps=8, guidance_scale=1 (this model's hard max/min per /api/v1/client/models),
+format="mp3". Requires a browser-like User-Agent header — default Python urllib UA gets Cloudflare-blocked
+(403 / error code 1010).
+License: commissioned AI-generated output under the account's DeAPI API terms — not derived from
+any third-party recording; no Content ID exposure expected. Treat as owned work product, all 5
+delivered tracks.
+All tracks: 120.0s duration, 48000 Hz stereo MP3.
+
+---
+
+1. tense-curious.mp3 (final take, request_id aa219579-9079-466c-a0e1-d761277ec810)
+   Caption: "dark ambient cinematic drone, no rhythm, no beat, no percussion, no pulse, freely
+   timed rubato, sustained low cello and string swells only, slow evolving synth pad, eerie
+   sparse texture, subtle rising tension, atonal ambient soundscape, no time signature"
+   QC: spectrogram_tense-curious.png — wide (~15-20s) phrase-level swells, no per-second
+   transients. PASS.
+   Take 1 (request_id d7f3c501-9367-436f-b9c9-46e45c321502, caption without the explicit
+   "no rhythm/no pulse/rubato" phrasing) showed strong regular ~1s vertical banding
+   (beat-driven) — rejected, not kept on disk.
+
+2. dread-build.mp3 (final take, request_id 7e906108-378b-4443-9d83-b9a746dc404b)
+   Caption: "slow ominous cinematic drone, no rhythm, no beat, no percussion, no pulse, freely
+   timed rubato, deep sub bass swells only, distant rumble texture, dark ambient soundscape,
+   storm-approaching dread, no time signature, atonal"
+   QC: spectrogram_dread-build.png — wide phrase-level swells, no per-second transients. PASS.
+   Take 1 (request_id 08120245-6bc6-4a40-856a-6280b9678ba6) showed strong regular ~1s banding
+   (beat-driven) — rejected, not kept on disk.
+
+3. aftermath-somber.mp3 (request_id 7c2a1d37-91d6-40ed-81ef-5bbef4b2ebe4)
+   Caption: "solo mournful piano, extremely sparse isolated notes with long silences between
+   each note, rubato free tempo, no rhythm, no beat, no percussion, no metronome, soft ambient
+   pad underneath, grief and stillness, minimal"
+   QC: spectrogram_aftermath-somber.png — STILL shows dense, regular ~1s full-band vertical
+   transients (each piano-note onset landing on a near-metronomic grid) across the whole 120s.
+   VERDICT: FAIL — functionally beat-driven despite the anti-rhythm prompt; the model appears to
+   default this caption family (piano + "sparse notes") to a steady pulse regardless of wording.
+   Take 1 (request_id a3acb844-b257-4820-9c58-34dd90f5d225, kept on disk as
+   aftermath-somber.take1-rejected.mp3) showed the same pattern, near-identical density.
+   BUDGET EXHAUSTED (10/10 calls used) before a third attempt could be tried — per the hard
+   generation-call cap this file was NOT regenerated again. The delivered aftermath-somber.mp3
+   is the take-2 file; it does not meet the "no per-second transients" bar and should not be
+   treated as cleared for use until either (a) a human listens and judges the pulse acceptable
+   for a mournful-piano cue, or (b) the owner authorizes additional paid calls for a take 3 with
+   a different approach (e.g. try AceStep_1_5_Base model / a "single sustained pad, no piano"
+   fallback caption instead of fighting the piano-note-onset pattern).
+
+4. hopeful-resolve.mp3 (final take, request_id e0cada4e-70cd-4ebf-b00c-f907fb5ee7df)
+   Caption: "quiet warm ambient strings only, no rhythm, no beat, no percussion, no pulse,
+   freely timed rubato, gentle sustained swells, dawn after disaster, tender documentary
+   underscore, no time signature, atonal"
+   QC: spectrogram_hopeful-resolve.png — smooth, continuous energy, no per-second transient
+   blocks. PASS.
+   Take 1 (request_id f5f42450-77d5-4795-acc8-ed5d15ed48fa) showed moderate regular banding
+   (beat-driven) — rejected, not kept on disk.
+
+5. neutral-underscore.mp3 (request_id 129e1a7f-68f5-42de-a7ac-57bdfad4dcbe) — first-attempt PASS,
+   no regen needed.
+   Caption: "near-ambient documentary texture bed, minimal movement, neutral background pad,
+   subtle soft drone for exposition and graphic segments, calm and unobtrusive, no drums, no
+   percussion, no beat, no melody"
+   QC: spectrogram_neutral-underscore.png — smooth, continuous, minimal banding. PASS.
+
+---
+
+Paid generation calls used: 10 of 10 budget (HARD CAP reached).
+  1 schema-probe call (10s test, not a delivered track — discovered the real field names
+    and poll endpoint; see call_budget.json)
+  5 first-attempt track generations (calls 2-6)
+  4 regeneration calls for the beat-driven first attempts (calls 7-10)
+Model-list call (GET /api/v1/client/models) was free/unauthenticated-tier, not counted.
+
+QC method: `ffmpeg -i <file>.mp3 -lavfi showspectrumpic=s=1200x400:legend=0 spectrogram_<name>.png`,
+each spectrogram eyeballed directly (not just generated) for periodic full-band vertical
+transients vs. smooth/phrase-level energy, per the demo-joplin-90 QC precedent
+(episodes/demo-joplin-90/media/music/provenance.txt).
+
+Full budget/request log: call_budget.json (in this directory).
