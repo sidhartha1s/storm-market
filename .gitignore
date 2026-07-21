@@ -7,3 +7,4 @@ episodes/*/audio/*.wav
 episodes/*/snapshots/
 episodes/*/renders/
 episodes/*/audio/_segments/
+*rejected*.mp3

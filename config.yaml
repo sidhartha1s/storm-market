@@ -17,7 +17,7 @@ render:
   resolution: landscape           # 1920x1080
 
 channel:
-  name: TBD
+  name: The Warning Hour   # owner-locked 2026-07-22
   niche: US weather/disaster documentaries
   target_minutes: [13, 23]
   ship_wpm_target: 136            # delivered; pocket-TTS + Pharaoh ref lands ~129 natively
