@@ -126,9 +126,7 @@ def main():
     urllib.request.urlretrieve(audio_url, outfile)
     print("Saved:", outfile)
 
-    # record request_id for provenance
-    req_id = result.get("job_id") or result.get("id") or job_id
-    print("REQUEST_ID:", req_id)
+    print("REQUEST_ID:", request_id)
 
 if __name__ == "__main__":
     main()
