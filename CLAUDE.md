@@ -44,17 +44,24 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
 - Reused-content safety = scripted original narration with analysis. A clip reel is a channel killer.
 
 ## Pipeline (hyperframes-heavy, minimal code — deliberate contrast to JP-market)
+**Read `DESIGN.md` before any episode work — it is the editing architecture (owner-settled
+2026-07-22): timeline-is-master, typed edit script (narration / hold / insert / graphic),
+per-segment TTS, LLM-as-editor placement, muted-clips default, owner gate on every insert.**
 Per episode in `episodes/<slug>/`:
-1. `script.md` — narration + per-section visual notes. Owner signs off design BEFORE paid spend.
-2. TTS → `narration.wav` (+ words.json via faster-whisper, JP transcribe pattern).
-3. Compose `index.html` **directly as a hyperframes composition** (agents author HTML/JS per
-   episode; JS/WAAPI-driven animation ONLY — CSS @keyframes disables fast-capture). Assets in
-   `episodes/<slug>/media/`.
-4. Render: `npx hyperframes@<pin> render . --gpu --browser-gpu --experimental-fast-capture=true
+1. `edit_script.md` — typed segment list (see DESIGN.md) + per-beat visual intent. Owner signs
+   off design BEFORE paid spend or bulk sourcing.
+2. TTS **per narration segment** → wavs + per-segment words.json (faster-whisper).
+3. Sourcing: agent downloads all clips itself (archive.org/FEMA/NOAA/yt-dlp/stock-fetch/NEXRAD);
+   2-3 candidates per key beat, frame-checked. Owner only confirms `insert` clips (audio-carrying).
+4. Compose `index.html` **directly as a hyperframes composition** — the agent authors the edit
+   like a human editor (JS/WAAPI animation ONLY — CSS @keyframes disables fast-capture). Assets
+   in `episodes/<slug>/media/`.
+5. Render: `npx hyperframes@<pin> render . --gpu --browser-gpu --experimental-fast-capture=true
    --quality standard --crf 16 --fps 30` (pin in config.yaml; NEVER @latest).
    20-min ≈ 30–60 min on this box (GTX 1650 + 16GB, measured 2026-07-21).
-5. QC: eyeball actual frames (JP checklist: anatomy, garbled text, blank frames, caption issues)
-   + owner preview gate before full render. Done = final.mp4 path the owner can play.
+6. QC: `scripts/lint_timeline.py` + eyeball actual frames (JP checklist: anatomy, garbled text,
+   blank frames, caption issues) + owner preview gate before full render. Done = final.mp4 path
+   the owner can play.
 - Long episodes: chunk renders only if a single render proves unstable — don't pre-build JP's
   chunk machinery until an episode actually needs it.
 
