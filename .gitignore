@@ -1,0 +1,5 @@
+episodes/*/media/
+episodes/*/narration.wav
+episodes/*/renders/
+*.mp4
+.env
