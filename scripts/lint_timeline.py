@@ -101,6 +101,8 @@ def main():
         elif len(timed) == 2 and not any(cb for _, _, cb in timed):
             findings.append(f"repeat: {src} used 2x with no data-callback=\"reason\" on the reuse")
 
+    for r in reports:
+        print(" ", r)
     if findings:
         print("[lint_timeline] FAIL")
         for f in findings:
