@@ -49,7 +49,9 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
 per-segment TTS, LLM-as-editor placement, muted-clips default, owner gate on every insert.**
 Per episode in `episodes/<slug>/`:
 1. `edit_script.md` — typed segment list (see DESIGN.md) + per-beat visual intent. Owner signs
-   off design BEFORE paid spend or bulk sourcing.
+   off design BEFORE paid spend or bulk sourcing. **Length planning: narration words =
+   target_total_minutes × 0.9 × 137** (measured pocket-TTS delivery; word annotations in
+   scripts overestimate ~30% — trust the formula, probe-TTS 2 segments if unsure).
 2. TTS **per narration segment** → wavs + per-segment words.json (faster-whisper).
 3. Sourcing: agent downloads all clips itself (archive.org/FEMA/NOAA/yt-dlp/stock-fetch/NEXRAD);
    2-3 candidates per key beat, frame-checked. Owner only confirms `insert` clips (audio-carrying).
