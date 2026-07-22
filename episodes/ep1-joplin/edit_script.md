@@ -217,6 +217,13 @@ Visuals: ground-level rubble b-roll (act4-reckoning sourcing), crushed cars, 2-3
 > and the message had bounced off a decade of false alarms.
 Visuals: assessment-report cover, survey b-roll, door-to-door stock. Music: neutral-underscore.
 
+### A4-S1b — narration — the honest uncertainty — NEW v2
+> The man who led that assessment, a meteorologist named Richard Wagenmaker, was careful about
+> the one thing his team could not know. It is really hard to tell, he said, how many of the
+> people who died had not taken shelter. The survey could count behavior. It could not count
+> the dead. And that honesty matters, because what came next was built on findings, not blame.
+Visuals: report pages, dim office b-roll. Quiet beat, 2 cuts.
+
 ### A4-S2 — narration — ~45s (~97 words)
 > The investigators also found a mismatch hiding in plain sight. Weather service warnings are
 > drawn as tight polygons around a storm's actual path. But Joplin's sirens fired city wide,
