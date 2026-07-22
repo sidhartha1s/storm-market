@@ -499,7 +499,7 @@
     function drawVortex(p) { // p in [0,1] over 34.54s
       const c = vctx(); if (!c) return;
       const W = 1500, H = 700; c.clearRect(0, 0, W, H);
-      const cx = 750, cy = 330, R = 210;
+      const cx = 750, cy = 320, R = 255;
       // parent funnel
       c.strokeStyle = "rgba(160,180,200,0.5)"; c.lineWidth = 3;
       c.beginPath(); c.arc(cx, cy, R, 0, Math.PI * 2); c.stroke();
