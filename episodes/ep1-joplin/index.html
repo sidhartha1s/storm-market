@@ -743,6 +743,7 @@
     const pdrv = { t: 0 };
     tl.to(pdrv, { t: 1, duration: 32.64, ease: "none", onUpdate: () => drawPoly(pdrv.t) }, 707.36);
     tl.fromTo("#popup-poly", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6 }, 708.4);
+    tl.to("#popup-poly", { opacity: 0, duration: 0.6 }, 737.8);
 
     /* ================= A4-S2b towns pulse ================= */
     const tctx = () => document.getElementById("towns-canvas")?.getContext("2d");
