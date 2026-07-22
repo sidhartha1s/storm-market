@@ -2,6 +2,28 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
+## 2026-07-23 — v3 pre-render multi-agent QC sweep (owner-ordered; caught what 2 shipped versions missed)
+
+A 4-agent Workflow sweep (media-contract / timeline-contract / sync-audit / snapshot-eyeball)
+before the v3 render found 10 issues, 3 blockers — **keep this sweep as a standing pre-render
+step for every episode**:
+1. **`rain-wall-parked-cars.mp4` showed a MALAYSIAN license plate** — shipped in v1 AND v2
+   unnoticed. Lesson: vision-verify every inherited/act-dir clip too, not just newly sourced
+   ones; foreign tells (plates, signage, architecture) are the #1 stock hazard. Replaced with
+   `rain-wall-downpour-generic.mp4` (anonymous pavement closeup). Tainted file kept on disk for
+   v2 provenance but must never be re-used.
+2. **`data-media-start` on a clip broke snapshot frame extraction** (funnel beat rendered black
+   in snapshots though the file was healthy). Robust pattern: pre-trim the segment into its own
+   file (`tornado-funnel-hold-4s.mp4`) and drop data-media-start when a beat uses a mid-file window.
+3. **CDN GSAP caused 10s navigation timeouts** in validate/snapshot — vendor `gsap.min.js` into
+   the episode dir and reference it relatively. Deterministic + faster.
+4. Honest-label rule reconfirmed: watch-beat popup must narrate the radar's burned-in clocks
+   ("watch 1:30 PM → by 5 PM this appears"), never caption footage with a time it contradicts.
+5. Namecards need scrim bars (`display: table; margin: auto` per line — inline-block puts
+   name+sub on ONE row; transform-centering fights GSAP y-tweens).
+6. Every intentional dead-frame beat gets an explicit track-4 blackout section — an undocumented
+   coverage gap is indistinguishable from a bug in review.
+
 ## 2026-07-23 — RCA: "repeats fixed" claim was FALSE (owner caught it on v2, rated 8.5/10)
 
 **What I claimed:** "repeats gone, cadence fixed." **Reality (deterministic audit of shipped
