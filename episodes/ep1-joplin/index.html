@@ -774,6 +774,7 @@
     const tdrv = { t: 0 };
     tl.to(tdrv, { t: 1, duration: 27.58, ease: "none", onUpdate: () => drawTowns(tdrv.t) }, 740.00);
     tl.fromTo("#popup-towns", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6 }, 746.7);
+    tl.to("#popup-towns", { opacity: 0, duration: 0.6 }, 765.8);
 
     /* ================= A4-S3 counter (fast then slow) + IBW match cuts ================= */
     tl.fromTo("#counter161", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 768.94);
