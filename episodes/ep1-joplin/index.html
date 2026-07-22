@@ -750,8 +750,10 @@
     /* title MATCH-CUT on "This was The Warning Hour" (word 'warning' @1029.26) */
     tl.fromTo("#title-main", { opacity: 0, scale: 1.08 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power3.out" }, 1029.15);
     tl.fromTo("#title-sub", { opacity: 0 }, { opacity: 1, duration: 0.8 }, 1030.2);
-    tl.to("#title-main", { opacity: 0, duration: 1.0 }, 1034.6);
-    tl.to("#title-sub", { opacity: 0, duration: 1.0 }, 1034.6);
+    tl.to("#title-main", { opacity: 0, duration: 0.9 }, 1034.6);
+    tl.to("#title-sub", { opacity: 0, duration: 0.9 }, 1034.6);
+    tl.set("#title-main", { opacity: 0 }, 1035.6);
+    tl.set("#title-sub", { opacity: 0 }, 1035.6);
     tl.fromTo("#black-end", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 1035.6);
 
     filmLayer(tl, DUR);
