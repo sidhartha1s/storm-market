@@ -24,3 +24,34 @@ media/act4-reckoning/whitehouse_parking-lot-destroyed-cars-debris-field.jpg,http
 media/act4-reckoning/whitehouse_brick-wall-american-flag-rubble.jpg,https://obamawhitehouse.archives.gov/joplin (image/image_file/joplin_aftermath_wide_3.jpg) - FEMA/US-gov photo,Public Domain (US Government Work),2026-07-22
 media/act4-reckoning/wikimedia_house-crushed-crumpled-metal-roofing.jpg,https://commons.wikimedia.org/wiki/File:Joplin_tornado_damage_(5881818947).jpg - US Army Corps of Engineers Europe District flickr,Public Domain (US Government Work),2026-07-22
 media/act4-reckoning/usace_home-reduced-to-bare-foundation.jpg,https://commons.wikimedia.org/wiki/File:Cleared_home_lot_after_Joplin_tornado_(5893457609).jpg - US Army Corps of Engineers Europe District flickr,Public Domain (US Government Work),2026-07-22
+media/radar/buildup_ref_01.png,NEXRAD Level-II reflectivity PPI (KSGF 22:00:19 UTC pre-tornado buildup) rendered with Py-ART from NOAA archive data (GCP mirror gs://gcp-public-data-nexrad-l2); see media/radar/provenance.txt,public domain (17 U.S.C. 105 - NOAA/NWS),2026-07-23
+media/radar/buildup_ref_02.png,NEXRAD Level-II reflectivity PPI (KSGF 22:05:09 UTC pre-tornado buildup) rendered with Py-ART from NOAA archive data (GCP mirror gs://gcp-public-data-nexrad-l2); see media/radar/provenance.txt,public domain (17 U.S.C. 105 - NOAA/NWS),2026-07-23
+media/radar/buildup_ref_03.png,NEXRAD Level-II reflectivity PPI (KSGF 22:09:59 UTC pre-tornado buildup) rendered with Py-ART from NOAA archive data (GCP mirror gs://gcp-public-data-nexrad-l2); see media/radar/provenance.txt,public domain (17 U.S.C. 105 - NOAA/NWS),2026-07-23
+media/radar/buildup_ref_04.png,NEXRAD Level-II reflectivity PPI (KSGF 22:14:49 UTC pre-tornado buildup) rendered with Py-ART from NOAA archive data (GCP mirror gs://gcp-public-data-nexrad-l2); see media/radar/provenance.txt,public domain (17 U.S.C. 105 - NOAA/NWS),2026-07-23
+media/radar/buildup_ref_05.png,NEXRAD Level-II reflectivity PPI (KSGF 22:19:38 UTC pre-tornado buildup) rendered with Py-ART from NOAA archive data (GCP mirror gs://gcp-public-data-nexrad-l2); see media/radar/provenance.txt,public domain (17 U.S.C. 105 - NOAA/NWS),2026-07-23
+media/radar/buildup_ref_06.png,NEXRAD Level-II reflectivity PPI (KSGF 22:24:28 UTC pre-tornado buildup) rendered with Py-ART from NOAA archive data (GCP mirror gs://gcp-public-data-nexrad-l2); see media/radar/provenance.txt,public domain (17 U.S.C. 105 - NOAA/NWS),2026-07-23
+media/radar/radar_buildup.mp4,derived: ffmpeg xfade crossfade of the 6 buildup_ref_*.png frames (0.5s fades, 10.1s total),derived,2026-07-23
+media/sfx/01_rain_street_medium.mp3,Red Library: Nature Rain - "R30-25a-Steady Heavy Rain" (archive.org identifier Red_Library_Nature_Rain),CC0 1.0 (public domain),2026-07-23
+media/sfx/02_wind_ominous_steady.mp3,GOLD TAPE 55/56 Weather Wind - "G55-13-Steady Wind" (archive.org identifier GOLD_TAPE_55_56_Weather-Wind),CC0 1.0 (public domain),2026-07-23
+media/sfx/03_tornado_siren_waver.ogg,Wikimedia Commons "Civil-defense-siren-waver.ogg" - civil defense siren recording St. Paul Minnesota by Techtonic (warbling/wavering tone),public domain,2026-07-23
+media/sfx/03b_tornado_siren_constant.ogg,Wikimedia Commons "Civil-defense-siren-constant.ogg" - civil defense siren recording St. Paul Minnesota by Techtonic (constant-volume tone; alt take),public domain,2026-07-23
+media/sfx/04_distant_storm_rumble.mp3,GOLD TAPE 46 Thunderstorm & Rain - "G46-04-Distant Storm" (archive.org identifier GOLD_TAPE_46_Thunderstorm_Rain),CC0 1.0 (public domain),2026-07-23
+media/sfx/05_town_evening_crickets.mp3,The Designer's Choice UCS Collection Ambiences - "AMBInsc-...Crickets, Evening_Nicholas Judy_TDC" (archive.org identifier Designers-Choice-Collection-Ambiences),CC0 1.0 (public domain),2026-07-23
+media/stock-v3/storm-sky-nyc-skyline-silhouette.mp4,https://www.pexels.com/video/timelapse-of-dramatic-sunset-with-new-york-skyline-27358907/,Pexels License,2026-07-23
+media/stock-v3/warning-siren-pole-overcast-sky.jpg,https://commons.wikimedia.org/wiki/File:Civil_Defense_Siren_-_Springfield,_Illinois.jpg,CC BY-SA 2.5 (credit required),2026-07-23
+media/stock-v3/storm-clouds-dark-grey-mass.mp4,https://www.pexels.com/video/a-dark-cloudy-sky-with-a-few-clouds-17499303/,Pexels License,2026-07-23
+media/stock-v3/wall-cloud-mesocyclone-green-field.mp4,https://www.pexels.com/video/timelapse-of-dark-storm-clouds-over-green-field-30696907/,Pexels License,2026-07-23
+media/stock-v3/supercell-thunderhead-dark-dramatic.mp4,https://www.pexels.com/video/dramatic-cloudscape-with-dark-thunderheads-29069473/,Pexels License,2026-07-23
+media/stock-v3/tornado-funnel-open-field-daytime.mp4,https://www.pexels.com/video/footage-of-tornado-853833/,Pexels License,2026-07-23
+media/stock-v3/rain-curtain-aerial-distant-farmland.mp4,https://www.pexels.com/video/aerial-view-of-approaching-storm-over-rural-landscape-35691459/,Pexels License,2026-07-23
+media/stock-v3/empty-parking-lot-night-aerial-car.mp4,https://www.pexels.com/video/drone-footage-of-a-car-in-an-empty-parking-lot-at-night-12374854/,Pexels License,2026-07-23
+media/stock-v3/door-knock-investigation-behind-view.mp4,https://www.pexels.com/video/a-deliveryman-knocking-at-the-door-6667226/,Pexels License,2026-07-23
+media/stock-v3/stormy-horizon-wheat-field.mp4,https://www.pexels.com/video/dramatic-sky-over-wheat-field-11312125/,Pexels License,2026-07-23
+media/stock-v3/destroyed-neighborhood-ground-level-cross-joplin.jpg,https://commons.wikimedia.org/wiki/File:Joplin_tornado_aftermath2.jpg,CC BY-SA 4.0,2026-07-23
+media/stock-v3/medical-equipment-stethoscope-closeup.mp4,https://www.pexels.com/video/doctor-desk-close-up-5406119/,Pexels License,2026-07-23
+media/stock-v3/church-interior-altar-pews-warm-light.mp4,https://www.pexels.com/video/catholic-church-altar-5875559/,Pexels License,2026-07-23
+media/stock-v3/construction-worker-hammer-house-frame.mp4,https://www.pexels.com/video/house-framer-pulling-nails-out-of-board-with-hammer-20663033/,Pexels License,2026-07-23
+media/stock-v3/american-flag-pole-blue-sky.mp4,https://www.pexels.com/video/slow-motion-of-a-usa-flag-waving-7704860/,Pexels License,2026-07-23
+media/stock-v3/crt-tv-static-noise-vintage.mp4,https://www.pexels.com/video/vintage-crt-monitor-tv-in-the-dark-15069622/,Pexels License,2026-07-23
+media/stock-v3/dispatch-desk-monitors-generic-office.mp4,https://www.pexels.com/video/computer-monitors-on-the-table-8346903/,Pexels License,2026-07-23
+media/stock-v3/wheat-field-calm-breeze-closeup.mp4,https://www.pexels.com/video/video-of-a-vast-wheat-field-1509175/,Pexels License,2026-07-23
