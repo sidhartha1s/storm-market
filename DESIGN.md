@@ -88,6 +88,8 @@ preview.
 ## Character sub-arcs (owner-settled 2026-07-22 — include them)
 
 The hit videos' vignettes about real people ARE the banked emotional payoff + net-info-gain.
+**Memorial portrait dwell (owner 2026-07-22): a real person's face stays on screen briefly —
+~4-5s max, once — then cut to symbolic/context imagery. Never linger on a victim's face.**
 Rules: real, named, publicly documented people only; verified quotes/facts (NWS service
 assessments, news archives, memorials); respectful framing — narrate the record, never
 dramatize beyond it; NO fabricated composites; no real-person likeness in generated imagery.
