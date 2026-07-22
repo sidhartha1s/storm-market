@@ -6,6 +6,11 @@ Checks episodes/<slug>/index.html:
   1. every media src (video/img/audio/script) resolves to an existing file
   2. every data-start / data-start+data-duration window sits inside the composition duration
   3. audio elements: narration wavs must not overlap each other or any insert audio
+  4. NO-REPEAT (owner, ep1 v2 RCA): a visual file may appear in ONE timed window only.
+     Reuse requires data-callback="<reason>" on the element — and even then max 2 total uses.
+     Elements inside the last 90s (summary/outro zone) are exempt (owner: recap reuse is fine).
+  5. CADENCE (owner, ep1 v2 RCA): any non-graphic timed visual >12s needs
+     data-hold-ok="<reason>". Graphics/canvas sections (id containing -clip) are exempt.
 
 Usage: python3 scripts/lint_timeline.py episodes/<slug>
 Exit 0 clean, 1 findings (loud).
