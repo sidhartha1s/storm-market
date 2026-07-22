@@ -115,7 +115,22 @@ floors/ceilings; taste stays with the model.
   ≤2 non-adjacent times per act stretch.
 - **Sync rule**: the frame must not contradict the narration — named store, time-of-day,
   burned-in timestamps. Match the visual or use a neutral one.
-- **Graphics never idle**: ≤3s to first payoff element; reveal ON the spoken word (match cut).
+- **Graphics never idle — graphics are SEQUENCES, not posters (owner, ep1 v3 planning).**
+  The clock is INFORMATION, not motion: something the viewer didn't know yet must land every
+  2-3s (a label, a number, the polygon, an annotation, a state change). Motion without new
+  information is an animated still. Reveal every element ON its spoken word; text cards build
+  line-by-line, never all-at-once; a finished graphic exits, it does not sit.
+- **Mandatory self-audit before render (owner order 2026-07-23): after authoring, re-walk every
+  graphic/text/quote element as a viewer** — for each one ask: landing, idling, or minor fix?
+  Table the verdicts (the "is it sitting for the egg to hatch" pass). Same pass re-checks clip
+  pacing. This is an AI-judgment step — never enforced by script.
+- **Cut-pacing baselines (guidance for the editor's reasoning, NOT code-enforced):** stills
+  4-7s · video clips 8-12s (motion earns time) · hooks 2-4s · graphics for as long as they
+  keep delivering new information. Deviate whenever the beat demands it — reason per shot.
+- **Naming: one asset = one exact filename, cited by filename always** — never prose aliases
+  ("cupcake renamed fruit-cake" ban). Different stock files of similar subjects are legitimate
+  different shots; the sin is re-showing ONE file under different references. Edit script
+  carries a shot ledger: filename → subject-family → uses.
 - **Numbers**: no eyebrow pre-reveal; counters roll fast then slow dramatically into the final
   figure; secondary stats appear after the landing.
 - **Lower-third sub-lines**: high contrast or backing bar — no dark italic on busy ground.
