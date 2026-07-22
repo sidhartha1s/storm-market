@@ -512,11 +512,11 @@
         const ang = p * Math.PI * 7 + (i * Math.PI * 2) / 3;
         const sx = cx + Math.cos(ang) * (R - 34), sy = cy + Math.sin(ang) * (R - 34);
         for (let r = 3; r >= 1; r--) {
-          c.fillStyle = `rgba(231,76,60,${0.16 * r})`;
-          c.beginPath(); c.arc(sx, sy, 12 + r * 9, 0, Math.PI * 2); c.fill();
+          c.fillStyle = `rgba(231,76,60,${0.18 * r})`;
+          c.beginPath(); c.arc(sx, sy, 16 + r * 12, 0, Math.PI * 2); c.fill();
         }
         c.fillStyle = "rgba(255,140,110,0.95)";
-        c.beginPath(); c.arc(sx, sy, 11, 0, Math.PI * 2); c.fill();
+        c.beginPath(); c.arc(sx, sy, 15, 0, Math.PI * 2); c.fill();
       }
       // damage-gradient payoff: two houses under the track
       if (p > 0.55) {
