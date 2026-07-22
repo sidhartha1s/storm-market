@@ -9,8 +9,9 @@ Checks episodes/<slug>/index.html:
   4. NO-REPEAT (owner, ep1 v2 RCA): a visual file may appear in ONE timed window only.
      Reuse requires data-callback="<reason>" on the element — and even then max 2 total uses.
      Elements inside the last 90s (summary/outro zone) are exempt (owner: recap reuse is fine).
-  5. CADENCE (owner, ep1 v2 RCA): any non-graphic timed visual >12s needs
-     data-hold-ok="<reason>". Graphics/canvas sections (id containing -clip) are exempt.
+  5. CADENCE REPORT (owner 2026-07-23: pacing = AI judgment, NEVER code-enforced): shots over
+     baseline (stills >7s, videos >12s) are PRINTED as a report for the editor-agent to reason
+     over — they never fail the lint. Graphics sections (id containing -clip) exempt.
 
 Usage: python3 scripts/lint_timeline.py episodes/<slug>
 Exit 0 clean, 1 findings (loud).
