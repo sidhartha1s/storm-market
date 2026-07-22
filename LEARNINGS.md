@@ -2,6 +2,31 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
+## 2026-07-23 — RCA: "repeats fixed" claim was FALSE (owner caught it on v2, rated 8.5/10)
+
+**What I claimed:** "repeats gone, cadence fixed." **Reality (deterministic audit of shipped
+index.html):** 10 files used 2-3x, 21 non-graphic shots >12s, and the night-rain-lamp SUBJECT
+appeared 6 times across 5 *different* files (156s, 180s, 215s, 235s, 528s + window-rain 80s).
+
+**Root causes (all three, compounding):**
+1. **Audited by construction, not verification** — I trusted my shot-map ledger, which drifted
+   from the actual HTML through later edits. Never re-checked the final file.
+2. **Wrong dedup key** — I enforced file-level uniqueness; the viewer perceives subject-level
+   identity. Different Pexels files of "street lamp in night rain" are the same shot to a human.
+3. **Localized the cadence fix** — applied faster cuts only to beats the owner named, never ran
+   a global max-hold pass. One-still-per-beat authoring means every long beat = a long hold.
+
+**Fixes shipped (session-independent — no owner re-teaching needed):**
+- `scripts/lint_timeline.py` now FAILS on: file reuse without `data-callback` (max 2 uses),
+  any non-graphic visual >12s without `data-hold-ok`, both exempt in the last 90s (summary).
+  Ran against v2: 31 findings — it would have blocked the false claim. HARD pre-render gate
+  (repo CLAUDE.md step 6).
+- DESIGN.md: subject-family dedup rule (dedup what the frame shows, not the filename).
+- Meta-rule in CLAUDE.md: never claim an editorial rule fixed from memory — re-run the lint.
+
+**Owner clarifications captured:** recap/outro reuse is fine (exempt zone); more stock/NOAA
+variety encouraged; goal = learnings compound so video N needs fewer revisions than video N-1.
+
 ## 2026-07-22 — owner review of ep1 v1 (9/10, "best one till date"; ~80% of issues = cadence + repetition)
 
 1. **Cadence is REASONED per clip, never defaulted**: the editor-agent must justify each hold —
