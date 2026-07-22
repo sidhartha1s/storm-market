@@ -577,6 +577,7 @@
     const vdrv = { t: 0 };
     tl.to(vdrv, { t: 1, duration: 34.54, ease: "none", onUpdate: () => drawVortex(vdrv.t) }, 279.70);
     tl.fromTo("#popup-vortex", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6 }, 286.0);
+    tl.to("#popup-vortex", { opacity: 0, duration: 0.6 }, 312.5);
 
     /* ================= A2-S3 waveform ================= */
     const wctx = () => document.getElementById("wave-canvas")?.getContext("2d");
