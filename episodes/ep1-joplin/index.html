@@ -41,9 +41,9 @@
     .title-main { font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 150px; color: #f2f5f8; letter-spacing: 4px; line-height: 1.0; }
     .title-sub { font-family: Georgia, serif; font-style: italic; font-size: 42px; color: #d8a13a; margin-top: 36px; }
     .blackout { position: absolute; inset: 0; background: #000; }
-    .namecard { position: absolute; left: 50%; transform: translateX(-50%); bottom: 200px; text-align: center; z-index: 5; background: rgba(5,8,12,0.62); padding: 26px 60px; }
-    .namecard .nc-name { font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 64px; color: #f2f5f8; letter-spacing: 1px; text-shadow: 0 3px 26px rgba(0,0,0,0.9); }
-    .namecard .nc-sub { font-family: Georgia, serif; font-style: italic; font-size: 32px; color: #e8c56a; margin-top: 12px; text-shadow: 0 2px 18px rgba(0,0,0,0.95); }
+    .namecard { position: absolute; left: 0; right: 0; bottom: 200px; text-align: center; z-index: 5; }
+    .namecard .nc-name { display: inline-block; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 64px; color: #f2f5f8; letter-spacing: 1px; background: rgba(5,8,12,0.62); padding: 10px 42px; text-shadow: 0 3px 26px rgba(0,0,0,0.9); }
+    .namecard .nc-sub { display: inline-block; font-family: Georgia, serif; font-style: italic; font-size: 32px; color: #e8c56a; margin-top: 10px; background: rgba(5,8,12,0.62); padding: 8px 30px; text-shadow: 0 2px 18px rgba(0,0,0,0.95); }
     #wave-canvas, #poly-canvas, #vortex-canvas, #towns-canvas { position: absolute; left: 210px; top: 190px; }
     #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90;
       background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
