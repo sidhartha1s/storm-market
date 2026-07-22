@@ -60,6 +60,43 @@ def main():
         if not src.startswith("http") and not (ep / src).exists():
             findings.append(f"missing script: {src}")
 
+    # 4+5: no-repeat + cadence on VISUAL windows.
+    # Collect (src, start, dur, has_callback, has_holdok) for videos and timed <section><img>.
+    visuals = []
+    for e in re.finditer(r'<video\b([^>]*)>', html):
+        a = e.group(1)
+        src = re.search(r'src="([^"]+)"', a)
+        st = re.search(r'data-start="([\d.]+)"', a)
+        du = re.search(r'data-duration="([\d.]+)"', a)
+        if src and st:
+            visuals.append((src.group(1), float(st.group(1)),
+                            float(du.group(1)) if du else 0.0,
+                            "data-callback" in a, "data-hold-ok" in a))
+    for e in re.finditer(r'<section\b([^>]*?)>((?:(?!</section>).)*?)</section>', html, re.S):
+        a, body = e.group(1), e.group(2)
+        st = re.search(r'data-start="([\d.]+)"', a)
+        du = re.search(r'data-duration="([\d.]+)"', a)
+        img = re.search(r'<img[^>]*src="([^"]+)"', body)
+        secid = re.search(r'id="([^"]+)"', a)
+        graphic = bool(secid and "-clip" in secid.group(1))
+        if st and img:
+            visuals.append((img.group(1), float(st.group(1)),
+                            float(du.group(1)) if du else 0.0,
+                            "data-callback" in a or "data-callback" in body,
+                            "data-hold-ok" in a or graphic))
+    summary_zone = comp_dur - 90
+    by_src = {}
+    for src, st, du, cb, hk in visuals:
+        by_src.setdefault(src, []).append((st, du, cb))
+        if du > 12 and not hk and st < summary_zone:
+            findings.append(f"cadence: {src} holds {du:.1f}s at {st:.0f}s (>12s) — add interior cuts or data-hold-ok=\"reason\"")
+    for src, uses in by_src.items():
+        timed = [(st, du, cb) for st, du, cb in uses if st < summary_zone]
+        if len(timed) > 2:
+            findings.append(f"repeat: {src} used {len(timed)}x — max 2 (one + one flagged callback)")
+        elif len(timed) == 2 and not any(cb for _, _, cb in timed):
+            findings.append(f"repeat: {src} used 2x with no data-callback=\"reason\" on the reuse")
+
     if findings:
         print("[lint_timeline] FAIL")
         for f in findings:
