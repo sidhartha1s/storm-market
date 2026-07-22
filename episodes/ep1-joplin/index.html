@@ -802,6 +802,9 @@
 
     tl.fromTo("#kb-sirenpolicy", { scale: 1.0 }, { scale: 1.06, duration: 8.06, ease: "none" }, 805.14);
     tl.fromTo("#kb-siren3", { scale: 1.1 }, { scale: 1.0, duration: 13.18, ease: "none" }, 828.0);
+    /* policy payoff as an info beat so the closing siren still never idles */
+    tl.fromTo("#popup-policy", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6 }, 830.5);
+    tl.to("#popup-policy", { opacity: 0, duration: 0.6 }, 839.3);
 
     /* ================= A5 ================= */
     tl.fromTo("#kb-church1", { scale: 1.0 }, { scale: 1.08, duration: 9.68, ease: "none" }, 841.18);
