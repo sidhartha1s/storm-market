@@ -23,6 +23,13 @@ step for every episode**:
    name+sub on ONE row; transform-centering fights GSAP y-tweens).
 6. Every intentional dead-frame beat gets an explicit track-4 blackout section — an undocumented
    coverage gap is indistinguishable from a bug in review.
+7. **SFX bed volumes must compensate for source loudness — never copy the music-bed ducking
+   numbers.** First v3 render shipped a completely inaudible SFX layer: sources (rain −29.7dB,
+   wind −30.4dB mean) are ~15dB quieter than the ACE music beds (~−14dB), so `volume 0.05-0.14`
+   buried them ~-40dB under the mix. Caught only by a differential band-energy check against the
+   v2 render (same section, no SFX) — identical spectra = layer silent. Rule: `volumedetect`
+   every audio source, set element volume from (target mix level − source mean), and VERIFY the
+   layer post-render by differential comparison, not by assuming the keyframes worked.
 
 ## 2026-07-23 — RCA: "repeats fixed" claim was FALSE (owner caught it on v2, rated 8.5/10)
 
