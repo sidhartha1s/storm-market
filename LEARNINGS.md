@@ -2,6 +2,31 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
+## 2026-07-22 — owner review of ep1 v1 (9/10, "best one till date"; ~80% of issues = cadence + repetition)
+
+1. **Cadence is REASONED per clip, never defaulted**: the editor-agent must justify each hold —
+   "1.5s stinger or 12s land-the-beat" is an editorial decision per beat; anything >8s needs a
+   reason written in the edit script. Overlong offenders in v1: hook porch-swing, cloud shots,
+   siren still at 11:05 (14.6s), outro title dwell.
+2. **No visual repeats within an episode** (owner caught all three: lamp-post rain ×2,
+   rain-window ×2 within 2 min, St John's facade ×2). One reuse allowed ONLY as an intentional
+   callback: different crop/grade, >5 min apart, flagged in the edit script.
+3. **Sync rule — the frame must not contradict the narration**: "died in the dark" over a
+   daylight photo; "Walmart" over a Walgreens aerial; "1:30 PM watch" over a 22:43 UTC radar
+   stamp. Named entity / time-of-day / timestamp in VO ⇒ matching visual or a neutral one.
+4. **Graphics never idle**: ≤3s from graphic-on-screen to first payoff element (v1 polygon sat
+   ~10s). Reveal ON the word (match cut) — owner loved the UNSURVIVABLE match cut, flagged
+   CATASTROPHIC landing 5s before its word.
+5. **Number reveals**: never pre-reveal in an eyebrow/fine-print (v1 spoiled 161); counter rolls
+   fast then dramatically slows into the final number; secondary stat (158) appears AFTER.
+6. **Lower-third sub-line readability**: dark-amber italic serif fails on busy ground — bump
+   contrast/weight or give it a backing bar.
+7. **Script length planning: words = target_total_minutes × 0.9 × 137** (pocket-TTS Pharaoh
+   delivered rate). 20-min ask ⇒ ~2,450 narration words.
+8. **Detached render (Start-Process + log poll) is the render path** — harness background tasks
+   were killed by RAM pressure from orphan chromes; kill orphans before rendering. Chunked
+   rendering (JP machinery) stays out until a single render of a 20-min episode actually fails.
+
 ## 2026-07-22 — ep1-joplin full-episode build (overnight ship-it)
 
 - **Word-count annotations in edit_script overestimate ~30%**: planned ~2,460 words / "20.4 min";
