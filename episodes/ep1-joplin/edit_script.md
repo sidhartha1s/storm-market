@@ -233,6 +233,14 @@ Visuals: report pages, dim office b-roll. Quiet beat, 2 cuts.
 > they did.
 Visual: polygon-vs-city map graphic (self-made, animated). Popup "WARNING POLYGON vs SIREN ZONE".
 
+### A4-S2b — narration — the standards vacuum — NEW v2
+> Here is the part almost nobody outside the field knows. When federal investigators went
+> looking for the national standard on outdoor sirens, when to sound them, how to test them,
+> what an all clear should sound like, they found there was not one. Not for Joplin. Not for
+> anywhere. Every town in America was improvising its own siren rules, and every town's
+> residents were learning a slightly different language of alarm.
+Visual: map-of-many-towns graphic beat or siren stills montage, 3 cuts.
+
 ### A4-S3 — narration — ~45s (~97 words)
 > Out of one hundred sixty-one deaths came forty-seven findings and sixteen recommendations,
 > and one change you have already heard, whether you know it or not. After Joplin, the weather
