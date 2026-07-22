@@ -776,9 +776,11 @@
       onUpdate: () => { const el = document.getElementById("counter161"); if (el) el.textContent = String(Math.round(dcnt.v)); },
     }, 768.94);
     tl.fromTo("#counter161-fine", { opacity: 0 }, { opacity: 0.8, duration: 0.6 }, 776.2); // 158 AFTER the landing
+    tl.fromTo("#counter161-since", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 780.0); // free net-info beat
     tl.to("#counter161", { opacity: 0, duration: 0.8 }, 788.5);
     tl.to("#counter161-label", { opacity: 0, duration: 0.8 }, 788.5);
     tl.to("#counter161-fine", { opacity: 0, duration: 0.8 }, 788.5);
+    tl.to("#counter161-since", { opacity: 0, duration: 0.8 }, 788.5);
     tl.set("#ibw-stack", { opacity: 1 }, 789.8);
     tl.fromTo("#ibw1", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 790.38); // "catastrophic"
     tl.fromTo("#ibw2", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 792.14); // "mass devastation"
