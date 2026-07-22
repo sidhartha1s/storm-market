@@ -106,7 +106,13 @@ floors/ceilings; taste stays with the model.
   ("lets the beat land" is valid; "clip was that long" is not). Vary rhythm — 1.5s stingers
   exist for a reason.
 - **No visual repeats** in an episode. One reuse allowed only as intentional callback:
-  different crop/grade, >5 min apart, flagged in the edit script.
+  different crop/grade, >5 min apart, flagged with `data-callback="reason"` on the element
+  (lint-enforced; max 2 uses; last 90s = summary zone, exempt — owner OK'd recap reuse).
+- **No SUBJECT repeats either (ep1 v2 RCA)**: two different files of the same visual subject
+  (two night-lamp-rain shots, two town aerials of the same look) read as a repeat to the
+  viewer. Dedup by what the FRAME shows, not the filename. When authoring, group the shot
+  list by subject family (night-rain, town-aerial, siren, rubble...) and use each family
+  ≤2 non-adjacent times per act stretch.
 - **Sync rule**: the frame must not contradict the narration — named store, time-of-day,
   burned-in timestamps. Match the visual or use a neutral one.
 - **Graphics never idle**: ≤3s to first payoff element; reveal ON the spoken word (match cut).
