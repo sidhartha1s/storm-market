@@ -96,6 +96,15 @@ MIN". Micro-loop planted: "everything after."
 > them nothing.
 Visuals: rain-wall footage, storm wall clips, porch POV. This is the doomed-confirmation beat.
 
+### A2-S2b — graphic — multi-vortex — NEW v2
+> And inside that grey wall, the storm was hiding one more cruelty. This was a multiple vortex
+> tornado. Smaller twisters, two to seven of them at a time, orbited inside the main funnel,
+> spinning up to one hundred miles per hour faster than the parent circulation. That is why the
+> damage would look so random afterward. One house shaved to its slab, and the house next door
+> still holding its roof. Nothing about it was random. It was geometry, moving at two hundred
+> miles per hour.
+Visual: self-made orbiting-vortices canvas animation (payoff on screen ≤3s). ~35s.
+
 ### A2-S3 — narration + graphic — ~45s (~97 words)
 > Then, at five thirty-eight, the sirens sounded a second time, and this is the detail that
 > broke the system. Joplin had no all clear signal. The same tone meant everything. So when the
