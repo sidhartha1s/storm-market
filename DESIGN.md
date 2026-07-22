@@ -98,6 +98,21 @@ hook cuts 2-3s · body 4-8s · holds 3-10s · inserts 5-15s. The editing agent p
 point from that segment's words.json (cut on the word being spoken). Lint enforces only hard
 floors/ceilings; taste stays with the model.
 
+## Cadence + sync rules (owner review, ep1 v1 — 2026-07-22)
+
+- **Reason every hold**: any shot >8s carries a written justification in the edit script
+  ("lets the beat land" is valid; "clip was that long" is not). Vary rhythm — 1.5s stingers
+  exist for a reason.
+- **No visual repeats** in an episode. One reuse allowed only as intentional callback:
+  different crop/grade, >5 min apart, flagged in the edit script.
+- **Sync rule**: the frame must not contradict the narration — named store, time-of-day,
+  burned-in timestamps. Match the visual or use a neutral one.
+- **Graphics never idle**: ≤3s to first payoff element; reveal ON the spoken word (match cut).
+- **Numbers**: no eyebrow pre-reveal; counters roll fast then slow dramatically into the final
+  figure; secondary stats appear after the landing.
+- **Lower-third sub-lines**: high contrast or backing bar — no dark italic on busy ground.
+- **Outro**: match-cut the channel title to the closing line; card does not sit.
+
 ## Editing grammar (seed — grows via LEARNINGS.md)
 
 - Hook: cold-open insert (911 audio / broadcast) or present-tense stat over motion. ≤15s to thesis.
