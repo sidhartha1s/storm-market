@@ -27,6 +27,14 @@ Every owner correction / measured surprise lands here same session. Newest first
    were killed by RAM pressure from orphan chromes; kill orphans before rendering. Chunked
    rendering (JP machinery) stays out until a single render of a 20-min episode actually fails.
 
+9. **[LOCAL PATCH] hyperframes 0.7.64 hardcodes a 30s ffprobe deadline** (`deadlineAtMs:
+   Date.now() + 3e4` in dist/cli.js) — on this box ffprobe spawns take 1.4-4.5s each (suspected
+   Defender per-spawn scanning) and a 33-video composition blows it ("ffprobe deadline with
+   code 0"; killed 3 v2 render attempts at compile/extract). Patched to 12e4 in the npx cache
+   (`_npx/*/node_modules/hyperframes/dist/cli.js`, both 0.7.64 dirs — hardlinked). Re-apply
+   after any npx-cache clear: `grep -c "Date.now() + 3e4" dist/cli.js` must be 0. DURABLE fix =
+   Defender exclusion for ffmpeg/ffprobe (owner/admin decision, pending).
+
 ## 2026-07-22 — ep1-joplin full-episode build (overnight ship-it)
 
 - **Word-count annotations in edit_script overestimate ~30%**: planned ~2,460 words / "20.4 min";
