@@ -278,6 +278,13 @@ candle/hymnal stills.
 > One hundred and seventy-eight were carried out alive by people who refused to leave them.
 Visuals: hospital evacuation photos (news/NIST), gentle push. Music: aftermath-somber.
 
+### A5-S2b — narration — Memorial Hall — NEW v2
+> One of them was a triage nurse named Angie Abner, who was on duty when the windows came in.
+> By midnight, the survivors of a nine story hospital were running a field clinic out of
+> Memorial Hall, a city auditorium built for concerts. The building that was supposed to hold
+> the sick had died protecting them, and its people simply kept working somewhere else.
+Visuals: real evac photo (sourcing), Memorial Hall exterior or triage-adjacent PD still, 2 cuts.
+
 ### A5-S3 — narration — ~45s (~97 words) — WILL NORTON (real photo if license clears)
 > And it remembers Will Norton, eighteen years old, four hours a high school graduate. He was
 > driving home from the ceremony with his father when the tornado crossed the highway and took
