@@ -812,8 +812,10 @@
     tl.fromTo("#kb-stjcall", { scale: 1.06 }, { scale: 1.0, duration: 11.0, ease: "none" }, 894.52);
     tl.fromTo("#kb-flagwall", { scale: 1.0 }, { scale: 1.08, duration: 12.48, ease: "none" }, 905.52);
 
-    tl.fromTo("#kb-will", { scale: 1.0 }, { scale: 1.04, duration: 4.8, ease: "none" }, 918.0); // ≤5s dwell, owner rule
-    tl.fromTo("#kb-headlights", { scale: 1.0 }, { scale: 1.09, duration: 11.26, ease: "none" }, 928.74);
+    tl.fromTo("#kb-will", { scale: 1.0, opacity: 0 }, { scale: 1.04, opacity: 1, duration: 0.8, ease: "none" }, 918.0); // gentle dissolve in, ≤5s dwell (owner rule)
+    tl.to("#kb-will", { opacity: 0, duration: 0.7 }, 922.1);
+    tl.fromTo("#kb-headlights", { scale: 1.0, opacity: 0 }, { scale: 1.0, opacity: 1, duration: 1.0 }, 928.74);
+    tl.to("#kb-headlights", { scale: 1.09, duration: 10.26, ease: "none" }, 929.74);
     tl.fromTo("#kb-camcorder", { scale: 1.06, opacity: 1 }, { scale: 1.0, duration: 10.88, ease: "none" }, 940.0);
     tl.fromTo("#nc-will", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1.2 }, 919.0);
     tl.to("#nc-will", { opacity: 0, duration: 1.0 }, 947.5);
