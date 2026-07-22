@@ -87,10 +87,13 @@ def main():
                             "data-hold-ok" in a or graphic))
     summary_zone = comp_dur - 90
     by_src = {}
+    reports = []
     for src, st, du, cb, hk in visuals:
         by_src.setdefault(src, []).append((st, du, cb))
-        if du > 12 and not hk and st < summary_zone:
-            findings.append(f"cadence: {src} holds {du:.1f}s at {st:.0f}s (>12s) — add interior cuts or data-hold-ok=\"reason\"")
+        is_still = not src.endswith((".mp4", ".webm", ".mov"))
+        limit = 7 if is_still else 12
+        if du > limit and not hk and st < summary_zone:
+            reports.append(f"[pacing report] {'still' if is_still else 'video'} {src} holds {du:.1f}s at {st:.0f}s (baseline {limit}s) — editor: reason about it")
     for src, uses in by_src.items():
         timed = [(st, du, cb) for st, du, cb in uses if st < summary_zone]
         if len(timed) > 2:
