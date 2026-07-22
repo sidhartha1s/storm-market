@@ -197,6 +197,14 @@ Visuals: Walmart/Range Line aerials (noaa_aerial_rangeline_wide), corridor damag
 > run, those two sentences decided everything.
 Visuals: leveled-structure stills (FEMA), slow push, dim heavy. Music near-silent.
 
+### A3-S7b — narration — the human scale — NEW v2
+> The numbers behind that scar are hard to hold in your head, so hold them one at a time. More
+> than one thousand one hundred people injured, enough to fill every seat in a movie theater
+> five times over. Four thousand three hundred and eighty houses destroyed. Nineteen thousand
+> insurance claims in a single year, from a town of fifty thousand people. Nearly one family in
+> three filed one.
+Visuals: ground-level rubble b-roll (act4-reckoning sourcing), crushed cars, 2-3s cuts.
+
 ## ACT 4 — THE RECKONING (12:30–16:00)
 
 ### A4-S1 — narration — ~50s (~107 words)
