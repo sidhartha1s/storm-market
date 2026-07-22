@@ -656,15 +656,17 @@
         p.style.cssText = `position:absolute;left:${50 + i * 90}px;top:96px;width:74px;height:330px;background:#8b959f;transform-origin:bottom ${i < 6 ? "left" : "right"};`;
         stage.appendChild(p);
       }
-      tl.fromTo("#panel-roof", { y: 0, opacity: 1 }, { y: -260, opacity: 0, duration: 1.6, ease: "power2.in" }, 485.3);
+      tl.fromTo("#panel-roof", { y: 0, opacity: 1 }, { y: -260, opacity: 0, duration: 1.6, ease: "power2.in" }, 480.5);
       for (let i = 0; i < 6; i++) {
-        tl.to("#panel-" + i, { rotation: -84, duration: 1.1, ease: "power2.in" }, 487.0 + i * 0.35);
+        tl.to("#panel-" + i, { rotation: -84, duration: 1.1, ease: "power2.in" }, 482.2 + i * 0.5);
       }
       for (let i = 6; i < 8; i++) {
-        tl.to("#panel-" + i, { rotation: 84, duration: 1.1, ease: "power2.in" }, 492.78 + (i - 6) * 0.4);
+        tl.to("#panel-" + i, { rotation: 84, duration: 1.1, ease: "power2.in" }, 488.6 + (i - 6) * 0.45);
       }
     })();
-    tl.fromTo("#popup-panels", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6 }, 484.8);
+    tl.fromTo("#popup-panels", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6 }, 479.0);
+    tl.to("#popup-panels", { opacity: 0, duration: 0.5 }, 490.6);
+    tl.fromTo("#popup-panels2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 491.5);
 
     tl.fromTo("#kb-walmart", { scale: 1.0 }, { scale: 1.08, duration: 7.5, ease: "none" }, 497.66);
     tl.fromTo("#kb-walgreen", { scale: 1.08 }, { scale: 1.0, duration: 9.0, ease: "none" }, 505.16);
