@@ -751,18 +751,25 @@
       const c = tctx(); if (!c) return;
       const W = 1500, H = 700; c.clearRect(0, 0, W, H);
       c.font = "700 22px Arial";
+      // sync-shatter beat: at p 0.62-0.74 every town pulses AS ONE in red (what a standard
+      // would have looked like) — then shatters back into 24 private rhythms
+      const sync = p > 0.62 && p < 0.74;
+      const syncPulse = sync ? Math.max(0, Math.sin(((p - 0.62) / 0.12) * Math.PI * 3)) : 0;
       for (let i = 0; i < 24; i++) {
         const gx = 200 + (i % 6) * 220, gy = 140 + Math.floor(i / 6) * 145;
         // each town pulses on its own deterministic rhythm — "a different language of alarm"
         const phase = (i * 0.37) % 1, rate = 3 + (i % 5);
-        const pulse = Math.max(0, Math.sin((p * rate + phase) * Math.PI * 2));
-        c.fillStyle = `rgba(216,161,58,${0.15 + 0.7 * pulse})`;
+        const own = Math.max(0, Math.sin((p * rate + phase) * Math.PI * 2));
+        const pulse = sync ? syncPulse : own;
+        c.fillStyle = sync ? `rgba(220,70,50,${0.2 + 0.7 * pulse})` : `rgba(216,161,58,${0.15 + 0.7 * pulse})`;
         c.beginPath(); c.arc(gx, gy, 14 + pulse * 10, 0, Math.PI * 2); c.fill();
         c.strokeStyle = "rgba(200,211,224,0.25)";
         c.beginPath(); c.arc(gx, gy, 26, 0, Math.PI * 2); c.stroke();
       }
       c.fillStyle = "rgba(200,211,224,0.7)";
-      c.fillText("EVERY DOT — A TOWN. EVERY RHYTHM — ITS OWN RULES.", 480, 672);
+      c.fillText(sync ? "THIS IS WHAT ONE NATIONAL STANDARD WOULD LOOK LIKE." :
+                 (p >= 0.74 ? "IT NEVER EXISTED. EVERY TOWN, ITS OWN RULES." :
+                  "EVERY DOT — A TOWN. EVERY RHYTHM — ITS OWN RULES."), 430, 672);
     }
     const tdrv = { t: 0 };
     tl.to(tdrv, { t: 1, duration: 27.58, ease: "none", onUpdate: () => drawTowns(tdrv.t) }, 740.00);
