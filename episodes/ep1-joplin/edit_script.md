@@ -54,6 +54,14 @@ came due."
 Visual: real KSGF radar frames or watch-box map graphic; text popup "TORNADO WATCH — 1:30 PM".
 Open loop: the wet-storm detail pays off in Act 2.
 
+### A1-S2b — narration (explainer layer) — watch vs warning — NEW v2
+> It helps to know the difference, because the whole story turns on it. A watch is drawn hours
+> ahead by forecasters in Oklahoma, and it means the ingredients for tornadoes exist. A warning
+> is issued by your local weather office, and it means one is forming now, over your county,
+> and you act. Joplin would get both that day, delivered almost perfectly. What no forecaster
+> could deliver was the believing.
+Visuals: NWS ops room, forecast desk b-roll, map graphic beat. Cadence: 3 cuts.
+
 ### A1-S3 — narration — ~45s (~97 words)
 > At five oh nine, the first tornado warning went out, and it was not for the storm that would
 > kill Joplin. It was for a different cell, north of town, that would pass with little harm.
