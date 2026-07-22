@@ -620,10 +620,13 @@
     tl.fromTo("#lt-schiff", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 357.2);
     tl.to("#lt-schiff", { opacity: 0, duration: 0.5 }, 383.2);
 
-    tl.fromTo("#kb-stj1", { scale: 1.0 }, { scale: 1.1, duration: 12.74, ease: "none" }, 384.38);
-    tl.fromTo("#kb-stj2", { scale: 1.12, y: -18 }, { scale: 1.0, y: 14, duration: 12.88, ease: "none" }, 397.12);
+    tl.fromTo("#kb-stj1", { scale: 1.0 }, { scale: 1.1, duration: 8.12, ease: "none" }, 384.38);
+    tl.fromTo("#kb-stj2", { scale: 1.12, y: -18 }, { scale: 1.0, y: 14, duration: 8.4, ease: "none" }, 398.1);
     tl.fromTo("#lt-stjohns", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 385.0);
-    tl.to("#lt-stjohns", { opacity: 0, duration: 0.5 }, 408.5);
+    tl.to("#lt-stjohns", { opacity: 0, duration: 0.5 }, 405.5);
+    /* memorial dissolve into the candle, then the literal dark beat */
+    tl.fromTo("#vx-candle", { opacity: 0 }, { opacity: 1, duration: 1.5 }, 406.5);
+    tl.fromTo("#black-stjohns", { opacity: 0 }, { opacity: 1, duration: 1.4 }, 420.8);
 
     tl.fromTo("#kb-debris", { scale: 1.0 }, { scale: 1.06, duration: 9.37, ease: "none" }, 434.63);
     tl.fromTo("#kb-velocity", { scale: 1.0 }, { scale: 1.06, duration: 11.9, ease: "none" }, 444.0);
