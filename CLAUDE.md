@@ -61,13 +61,23 @@ Per episode in `episodes/<slug>/`:
 5. Render: `npx hyperframes@<pin> render . --gpu --browser-gpu --experimental-fast-capture=true
    --quality standard --crf 16 --fps 30` (pin in config.yaml; NEVER @latest).
    20-min ≈ 30–60 min on this box (GTX 1650 + 16GB, measured 2026-07-21).
-6. QC: `scripts/lint_timeline.py` **must exit 0 — it is a HARD pre-render gate** (missing
-   media, windows, audio overlap, **no-repeat rule, >12s cadence rule** — see DESIGN.md; reuse
-   needs `data-callback="reason"`, long holds need `data-hold-ok="reason"`, last 90s exempt).
-   Then eyeball actual frames (JP checklist: anatomy, garbled text, blank frames, caption
-   issues) + owner preview gate before full render. Done = final.mp4 path the owner can play.
-   **Never claim an editorial rule "fixed" from your shot map — re-run the lint on the final
-   index.html; the code is the auditor, not your memory (ep1 v2 RCA, 2026-07-23).**
+6. QC gates, in order (all mandatory before render):
+   a. **Graphics/pacing self-audit (AI judgment, owner order 2026-07-23):** re-walk every
+      graphic, text card, quote, and clip as a viewer — landing / idling / minor fix? — and
+      apply fixes. Info beat every 2-3s on graphics; pacing baselines in DESIGN.md are
+      guidance for reasoning, never script-enforced.
+   b. `scripts/lint_timeline.py` **exit 0 — HARD gate** for deterministic checks only:
+      missing media, windows, audio overlap, and the no-repeat rule (reuse needs
+      `data-callback="reason"`, max 2 uses, last-90s recap zone exempt). It also PRINTS a
+      pacing report for step (a)'s reasoning — report lines never fail the run.
+   c. Snapshot sweep + eyeball actual frames (JP checklist: anatomy, garbled text, blank
+      frames, caption issues; sync rule: frame must not contradict narration).
+   **Never claim an editorial rule "fixed" from your shot map — re-run the lint + self-audit
+   on the final index.html; verify the artifact, not your memory (ep1 v2 RCA).**
+7. Deliverables per render, unasked: final mp4 + **SRT subtitles built from the per-segment
+   words.json** + **−14 LUFS loudness-normalized master** + updated `metadata.md` (titles,
+   description, tags, chapters, AEO/SEO block, Education metadata: category Education, type
+   Overview; credits; socials/handles) at publish time.
 - Long episodes: chunk renders only if a single render proves unstable — don't pre-build JP's
   chunk machinery until an episode actually needs it.
 
