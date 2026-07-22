@@ -606,7 +606,11 @@
     const wdrv = { t: 0 };
     tl.to(wdrv, { t: 1, duration: 33.06, ease: "none", onUpdate: () => drawWave(wdrv.t) }, 314.24);
     tl.fromTo("#popup-siren1", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6 }, 316.0);
+    tl.fromTo("#popup-sirenmid", { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, 322.5);
+    tl.to("#popup-sirenmid", { opacity: 0, duration: 0.5 }, 327.8);
     tl.fromTo("#popup-siren2", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6 }, 328.4);
+    tl.to("#popup-siren1", { opacity: 0, duration: 0.6 }, 345.5);
+    tl.to("#popup-siren2", { opacity: 0, duration: 0.6 }, 345.5);
 
     /* ================= A3 ================= */
     tl.fromTo("#kb-vel1", { scale: 1.18 }, { scale: 1.24, duration: 5.5, ease: "none" }, 351.30);
