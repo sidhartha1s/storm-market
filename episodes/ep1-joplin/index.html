@@ -836,6 +836,33 @@
     tl.set("#title-sub", { opacity: 0 }, 1035.6);
     tl.fromTo("#black-end", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 1035.6);
 
+    /* ================= PER-ACT COLOR GRADE (soft-light wash, tweened at act turns) ================= */
+    tl.to("#grade", { backgroundColor: "rgba(70,130,170,0.35)",  duration: 3.0 }, 191.5);  // A2 — cold storm blue
+    tl.to("#grade", { backgroundColor: "rgba(90,105,125,0.40)",  duration: 3.0 }, 351.3);  // A3 — desaturated steel
+    tl.to("#grade", { backgroundColor: "rgba(128,128,128,0.22)", duration: 3.0 }, 642.5);  // A4 — neutral inquiry
+    tl.to("#grade", { backgroundColor: "rgba(225,165,105,0.30)", duration: 3.0 }, 840.5);  // A5 — somber amber
+    tl.to("#grade", { backgroundColor: "rgba(255,190,120,0.35)", duration: 3.0 }, 951.5);  // A6 — warm dawn
+
+    /* ================= SFX / AMBIENCE AUTOMATION ================= */
+    tl.to("#sfx-crickets1", { volume: 0.05, duration: 2.0 }, 10.5);
+    tl.to("#sfx-crickets1", { volume: 0.03, duration: 1.0 }, 32.0);
+    tl.to("#sfx-crickets1", { volume: 0.0,  duration: 1.5 }, 52.7);
+    tl.to("#sfx-rain",      { volume: 0.05, duration: 3.0 }, 157.4);
+    tl.to("#sfx-rain",      { volume: 0.07, duration: 2.0 }, 194.1);
+    tl.to("#sfx-rain",      { volume: 0.0,  duration: 3.0 }, 326.5);
+    tl.to("#sfx-wind",      { volume: 0.06, duration: 4.0 }, 235.5);
+    tl.to("#sfx-wind",      { volume: 0.09, duration: 2.0 }, 266.0);
+    tl.to("#sfx-wind",      { volume: 0.0,  duration: 3.0 }, 344.0);
+    /* the real thing under the waveform graphic — owner ear-check on delivery */
+    tl.to("#sfx-siren",     { volume: 0.10, duration: 2.0 }, 315.0);
+    tl.to("#sfx-siren",     { volume: 0.14, duration: 1.0 }, 328.4);
+    tl.to("#sfx-siren",     { volume: 0.0,  duration: 1.5 }, 345.5);
+    tl.to("#sfx-rumble",    { volume: 0.06, duration: 3.0 }, 348.0);
+    tl.to("#sfx-rumble",    { volume: 0.04, duration: 2.0 }, 384.4);
+    tl.to("#sfx-rumble",    { volume: 0.0,  duration: 3.0 }, 452.5);
+    tl.to("#sfx-crickets2", { volume: 0.04, duration: 2.0 }, 820.0);
+    tl.to("#sfx-crickets2", { volume: 0.0,  duration: 2.0 }, 839.0);
+
     filmLayer(tl, DUR);
   </script>
 </div>
