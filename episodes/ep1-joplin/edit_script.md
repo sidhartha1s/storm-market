@@ -297,6 +297,14 @@ usage is standard editorial practice; owner call), else graduation-symbolic + sl
 
 ## ACT 6 — CLOSE (19:00–20:30)
 
+### A6-S0 — narration — what rebuilding cost — NEW v2
+> Rebuilding took most of a decade and more money than the town had ever seen. Two point one
+> six billion dollars in insurance payouts in the first year alone. Half a billion more in
+> public recovery money. And the congregation of Harmony Heights, the church with no basement,
+> rebuilt on the exact same ground, because that is what you do with ground that took something
+> from you. You stand on it again.
+Visuals: rebuild b-roll (construction, framing), church-rebuilt-adjacent still, 3 cuts.
+
 ### A6-S1 — narration — ~40s (~86 words)
 > Joplin was not a failure of forecasting. The watch was right, the warning was early, and the
 > radar, for all its distance, found the storm in time. What failed was softer than science.
