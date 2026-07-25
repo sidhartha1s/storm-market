@@ -30,7 +30,7 @@ window.__timelines = window.__timelines || {};
   /* slot starts at global 70.58; a0-s3 starts 58.08 → rel = cue - 12.5 */
   tl.fromTo("#g-title-l1", {autoAlpha:0, scale:1.5}, {autoAlpha:1, scale:1, duration:0.3, ease:"power4.in"}, 0.46);   /* "four of those tornadoes" */
   tl.fromTo("#g-title-l2", {autoAlpha:0, y:26}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 4.8);            /* "EF five … in a single day" */
-  tl.fromTo("#g-title-main", {autoAlpha:0, letterSpacing:"14px"}, {autoAlpha:1, letterSpacing:"2px", duration:0.9, ease:"power2.out"}, 16.3); /* "Super Outbreak" @28.8 */
+  tl.fromTo("#g-title-main", {autoAlpha:0, scale:1.12}, {autoAlpha:1, scale:1, duration:0.9, ease:"power2.out"}, 16.3); /* "Super Outbreak" @28.8 */
   tl.fromTo("#g-title-sub", {autoAlpha:0}, {autoAlpha:1, duration:0.8}, 17.6);
   tl.to(".stack", {autoAlpha:0, duration:1.2}, 23.6);
   window.__timelines["g-title"] = tl;
