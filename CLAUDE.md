@@ -75,8 +75,9 @@ Per episode in `episodes/<slug>/`:
    **Never claim an editorial rule "fixed" from your shot map — re-run the lint + self-audit
    on the final index.html; verify the artifact, not your memory (ep1 v2 RCA).**
 7. Deliverables per render, unasked: final mp4 + **SRT via `python3 scripts/build_srt.py
-   episodes/<slug> <out-basename>` (reads audio-element data-starts from index.html + per-segment
-   words.json** + **−14 LUFS loudness-normalized master** + updated `metadata.md` (titles,
+   episodes/<slug> <out-basename>`** (reads audio-element data-starts from index.html + the
+   per-segment words.json) + **−14 LUFS loudness-normalized master** (`-c:v copy` + measured
+   gain; verify with loudnorm summary) + updated `metadata.md` (titles,
    description, tags, chapters, AEO/SEO block, Education metadata: category Education, type
    Overview; credits; socials/handles) at publish time.
 - Long episodes: chunk renders only if a single render proves unstable — don't pre-build JP's
