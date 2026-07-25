@@ -61,8 +61,9 @@ per-segment TTS, LLM-as-editor placement, muted-clips default, owner gate on eve
 Per episode in `episodes/<slug>/`:
 1. `edit_script.md` — typed segment list (see DESIGN.md) + per-beat visual intent. Owner signs
    off design BEFORE paid spend or bulk sourcing. **Length planning: narration words =
-   target_total_minutes × 0.9 × 137** (measured pocket-TTS delivery; word annotations in
-   scripts overestimate ~30% — trust the formula, probe-TTS 2 segments if unsure).
+   target_total_minutes × 0.9 × ~158** (measured 2026-07-26: ep1 manifest ground truth 153.5 wpm,
+   ep2 probe 159-168 — the old "137" figure was stale/wrong; ALWAYS probe-TTS 2 segments and
+   recompute before finalizing script length).
 2. TTS **per narration segment** → wavs + per-segment words.json (faster-whisper).
 3. Sourcing: agent downloads all clips itself (archive.org/FEMA/NOAA/yt-dlp/stock-fetch/NEXRAD);
    2-3 candidates per key beat, frame-checked. Owner only confirms `insert` clips (audio-carrying).
