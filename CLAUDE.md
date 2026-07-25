@@ -79,7 +79,13 @@ Per episode in `episodes/<slug>/`:
    description, tags, chapters, AEO/SEO block, Education metadata: category Education, type
    Overview; credits; socials/handles) at publish time.
 - Long episodes: chunk renders only if a single render proves unstable — don't pre-build JP's
-  chunk machinery until an episode actually needs it.
+  chunk machinery until an episode actually needs it. From ep2 on, AUTHOR compositions as
+  sub-compositions (one per act) so per-act re-renders are native (owner-approved 2026-07-26).
+- **Draft-proxy review loop (owner order 2026-07-26): every review cut ships as a DRAFT render
+  first** — `npx hyperframes@<pin> render . --gpu --browser-gpu --experimental-fast-capture=true
+  --quality draft --crf 32 --fps 15 --workers 3 -o renders/<name>-draft.mp4` (~15-20 min vs ~42).
+  Studio preview cannot realtime-play 15+ min media-heavy comps — don't offer it for review.
+  Full-quality render ONLY after owner approves the draft.
 
 ## Rules inherited from the owner's other channels (apply here from day 1)
 - Preview gate is PROCESS: post preview path in one line and PARK; owner's chat approval resumes.
