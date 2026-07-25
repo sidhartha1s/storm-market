@@ -45,9 +45,11 @@ STYLE = (
 )
 NEGATIVE = (
     "people, person, human, man, woman, child, face, silhouette of a person, crowd, "
-    "text, caption, subtitle, watermark, logo, signature, "
+    "text, caption, subtitle, watermark, logo, signature, readable sign lettering, "
+    "garbled text, illegible writing, "
     "cartoon, anime, illustration, painting, digital art, cgi, 3d render, "
-    "deformed, disfigured, blurry, low quality, extra limbs"
+    "deformed, disfigured, blurry, low quality, extra limbs, "
+    "tropical, palm trees, jungle, rainforest, smoke, wildfire"
 )
 
 STILLS = [
