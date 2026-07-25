@@ -87,9 +87,12 @@ content, not images. The "50 illustrated state pages" idea was ours, not theirs.
 
 ## Product definition
 
-**Working title:** *The Storm-Ready Home: 101 Protections* (final title TBD from A/B list)
-**Countable units for the sales page:** 101 protections · 12 hazard playbooks · 60-day sequence ·
+**Working title:** *The Storm-Ready Home* (final title TBD from A/B list)
+**Countable units for the sales page:** N protections · 23 hazard playbooks · 60-day sequence ·
 5 regions · 50-state packets
+**Protection count:** set by enumeration in build phase 1, target 110–130. The sales page uses the
+**true counted number**, never a rounded one — Yoder's "93 methods" reads as counted, and that is
+the credibility mechanism. Do not pre-commit to 101.
 **Price:** $47 (landing page shows $87 struck through)
 
 ### Regionalization — the pivot (differs from a literal clone; deliberate)
