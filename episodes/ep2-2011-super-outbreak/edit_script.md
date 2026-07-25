@@ -17,6 +17,10 @@
   4. True 4-day / multi-state scope (Apr 25–28; competitors are functionally AL-only).
   5. How engineers estimate wind speed from damage (answers Dark Horizon's dangled "beyond EF5" question).
   6. Reconciled, cited official numbers — competitors circulate 5 different death tolls (252/238/316/324/348), one contradicts itself in-video. We cite NWS/NOAA on-screen.
+  7. **Dual-pol radar reform arc (owner-approved 2026-07-26):** April 2011 pre-dated the national dual-polarization rollout — debris-ball detection improved dramatically right after. Concrete "here's what changed."
+  8. **24-min lead time contextualized (owner-approved):** national average ~13 min (V) — warnings ran ~2× better than normal and people still died. Sharpens the thesis.
+  9. Browns Ferry nuclear plant: Hackleburg tornado cut its transmission lines, all 3 reactors scrammed to emergency diesel (V vs NRC report). Editor's-choice include.
+  10. Hackleburg's Wrangler plant never reopened — **CONDITIONAL: include ONLY if verification confirms** (owner rule); else drop entirely.
 - **Anti-patterns:** SkyWhisper spreads emotion across segments — we bank it at the end (proven formula). Spark/Wonder = same TV doc twice; its named-character material (Stevens/Downs/Brown story) is that production's interview content — we use only publicly documented facts/quotes with attribution, never re-narrate their interviews as ours.
 
 ## FACT-VERIFICATION LEDGER (hard gate before scripting prose)
