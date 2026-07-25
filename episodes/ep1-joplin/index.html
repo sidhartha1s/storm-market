@@ -680,9 +680,12 @@
     tl.fromTo("#kb-walgreen", { scale: 1.08 }, { scale: 1.0, duration: 9.0, ease: "none" }, 505.16);
     tl.fromTo("#kb-tile1", { scale: 1.16, x: -30 }, { scale: 1.0, x: 26, duration: 13.84, ease: "none" }, 514.16);
 
-    /* Lucas: dark lot dissolves into candle-lit church under the namecard (memorial dissolve) */
-    tl.fromTo("#vx-lucaschurch", { opacity: 0 }, { opacity: 1, duration: 1.6 }, 539.0);
-    tl.fromTo("#nc-lucas", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" }, 538.5);
+    /* Lucas: the real site from above, honest label, then memorial dissolve into the kitchen */
+    tl.fromTo("#kb-pizzahut", { scale: 1.28 }, { scale: 1.12, duration: 12.3, ease: "none" }, 528.0);
+    tl.fromTo("#lt-pizzahut", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 528.8);
+    tl.to("#lt-pizzahut", { opacity: 0, duration: 0.5 }, 537.5);
+    tl.fromTo("#vx-lucaskitchen", { opacity: 0 }, { opacity: 1, duration: 1.6 }, 539.0);
+    tl.fromTo("#nc-lucas", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" }, 540.5);
     tl.to("#nc-lucas", { opacity: 0, duration: 1.0 }, 551.0);
 
     tl.fromTo("#kb-green1", { scale: 1.0 }, { scale: 1.08, duration: 11.16, ease: "none" }, 553.48);
