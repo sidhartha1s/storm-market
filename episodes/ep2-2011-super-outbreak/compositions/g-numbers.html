@@ -35,7 +35,6 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#g-num-hdr", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 0.4);
   function counter(sel, target, at, dur, fmt) {
     const o={v:0};
-    tl.set(sel.replace("-v","-r").replace(/-v(\d)/, "-r$1"), {}, at); /* noop guard */
     tl.to(o, {v:target, duration:dur, ease:"power4.out", onUpdate:()=>{
       const e=document.querySelector(sel); if(e) e.textContent = fmt(Math.round(o.v));
     }}, at);
