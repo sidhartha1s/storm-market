@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Four EF5s in One Day — The Warning Hour Ep. 2</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Georgia, 'Times New Roman', serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #05070a; }
+    video, .still-wrap { position: absolute; inset: 0; }
+    video { width: 100%; height: 100%; object-fit: cover; }
+    .still-wrap { overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    .contain-wrap img { object-fit: contain; background: #04070a; }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    .lt { position: absolute; left: 110px; bottom: 110px; z-index: 5; font-family: Arial, sans-serif; }
+    .lt .lt-loc { font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 52px; color: #f2f5f8; text-shadow: 0 3px 24px rgba(0,0,0,0.85); }
+    .lt .lt-time { display: table; font-weight: 700; font-size: 27px; color: #f5d98b; background: rgba(5,8,12,0.78); padding: 6px 14px; margin-top: 10px; letter-spacing: 1px; }
+    .popup { position: absolute; font-family: Arial, sans-serif; font-weight: 700; background: rgba(10,14,18,0.87); border-left: 6px solid #c0392b; color: #f2f5f8; padding: 18px 34px; font-size: 40px; letter-spacing: 1px; z-index: 6; }
+    .popup .fine { display: block; font-weight: 400; font-size: 21px; color: #b8c6d4; margin-top: 8px; letter-spacing: 0.5px; }
+    .popup-amber { border-left-color: #d8a13a; }
+    .quotecard { position: absolute; left: 160px; right: 160px; bottom: 150px; z-index: 6; text-align: center; }
+    .quotecard .q { display: table; margin: 0 auto; font-family: Georgia, serif; font-style: italic; font-size: 44px; color: #f2f5f8; background: rgba(5,8,12,0.72); padding: 16px 40px; line-height: 1.35; text-shadow: 0 2px 18px rgba(0,0,0,0.9); }
+    .quotecard .attr { display: table; margin: 12px auto 0; font-family: Arial, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 3px; color: #d8a13a; background: rgba(5,8,12,0.72); padding: 8px 24px; }
+    .townname { position: absolute; left: 0; right: 0; top: 400px; text-align: center; z-index: 6; }
+    .townname div { display: table; margin: 0 auto 18px; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 84px; color: #f2f5f8; background: rgba(5,8,12,0.55); padding: 6px 44px; letter-spacing: 3px; }
+    .namecard { position: absolute; left: 0; right: 0; bottom: 200px; text-align: center; z-index: 5; }
+    .namecard .nc-name { display: table; margin: 0 auto; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 64px; color: #f2f5f8; letter-spacing: 1px; background: rgba(5,8,12,0.62); padding: 10px 42px; text-shadow: 0 3px 26px rgba(0,0,0,0.9); }
+    .namecard .nc-sub { display: table; margin: 10px auto 0; font-family: Georgia, serif; font-style: italic; font-size: 32px; color: #e8c56a; background: rgba(5,8,12,0.62); padding: 8px 30px; }
+    .srclab { position: absolute; right: 40px; bottom: 34px; z-index: 7; font-family: Arial, sans-serif; font-size: 19px; color: rgba(200,211,224,0.75); background: rgba(5,8,12,0.55); padding: 5px 12px; letter-spacing: 0.5px; }
+    .dispatchlab { position: absolute; left: 0; right: 0; top: 480px; text-align: center; z-index: 6; }
+    .dispatchlab .d1 { display: table; margin: 0 auto; font-family: 'Courier New', monospace; font-weight: 700; font-size: 40px; color: #e8c56a; letter-spacing: 4px; background: rgba(5,8,12,0.6); padding: 10px 30px; }
+    .dispatchlab .d2 { display: table; margin: 14px auto 0; font-family: Arial, sans-serif; font-size: 22px; letter-spacing: 3px; color: #93a3b2; background: rgba(5,8,12,0.6); padding: 6px 18px; }
+    #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90;
+      background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
+    #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.11; mix-blend-mode: overlay; }
+    #grade { position: absolute; inset: 0; pointer-events: none; z-index: 89; mix-blend-mode: soft-light; background-color: rgba(255,200,140,0.30); }
+    .dust { position: absolute; z-index: 92; pointer-events: none; border-radius: 50%; background: rgba(255,255,255,0.32); filter: blur(1.2px); }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="ep2-superoutbreak" data-start="0" data-width="1920" data-height="1080" data-duration="1685" data-fps="30">
+
+  <!-- ======== MUSIC BEDS (volumes driven on master tl) ======== -->
+  <audio id="bgm-tense1" src="media/music/tense-curious-loop.mp3" data-start="0" data-duration="183" data-volume="0" data-bed="1"></audio>
+  <audio id="bgm-dread1" src="media/music/dread-build-loop.mp3" data-start="183" data-duration="337" data-volume="0" data-bed="1"></audio>
+  <audio id="bgm-neutral1" src="media/music/neutral-underscore-loop.mp3" data-start="520" data-duration="263" data-volume="0" data-bed="1"></audio>
+  <audio id="bgm-dread2" src="media/music/dread-build-loop.mp3" data-start="783" data-duration="269" data-volume="0" data-bed="1" data-callback="second dread window, Tuscaloosa act"></audio>
+  <audio id="bgm-tense2" src="media/music/tense-curious-loop.mp3" data-start="1052" data-duration="220" data-volume="0" data-bed="1" data-callback="tense window for city march"></audio>
+  <audio id="bgm-neutral2" src="media/music/neutral-underscore-loop.mp3" data-start="1272" data-duration="127" data-volume="0" data-bed="1" data-callback="long-night wind-down"></audio>
+  <audio id="bgm-somber" src="media/music/aftermath-somber-loop.mp3" data-start="1399" data-duration="234" data-volume="0" data-bed="1"></audio>
+  <audio id="bgm-hope" src="media/music/hopeful-resolve-loop.mp3" data-start="1633" data-duration="52" data-volume="0" data-bed="1"></audio>
+
+  <!-- ======== SFX BEDS (source means ~-30dB; gains compensated, verified post-render) ======== -->
+  <audio id="sfx-rain" src="media/sfx/rain-loop.mp3" data-start="349.52" data-duration="68" data-volume="0" data-bed="1"></audio>
+  <audio id="sfx-wind" src="media/sfx/wind-loop.mp3" data-start="620.88" data-duration="140" data-volume="0" data-bed="1"></audio>
+  <audio id="sfx-crickets" src="media/sfx/05_town_evening_crickets.mp3" data-start="1348" data-duration="47" data-volume="0" data-bed="1"></audio>
+
+  <!-- ======== NARRATION ======== -->
+  <audio id="nx-a0s2" src="audio/a0-s2.wav" data-start="24.40" data-duration="32.88" data-volume="1"></audio>
+  <audio id="nx-a0s3" src="audio/a0-s3.wav" data-start="58.08" data-duration="34.60" data-volume="1"></audio>
+  <audio id="nx-a1s1" src="audio/a1-s1.wav" data-start="95.68" data-duration="86.32" data-volume="1"></audio>
+  <audio id="nx-a1s2" src="audio/a1-s2.wav" data-start="183.00" data-duration="81.68" data-volume="1"></audio>
+  <audio id="nx-a1s3" src="audio/a1-s3.wav" data-start="265.68" data-duration="79.84" data-volume="1"></audio>
+  <audio id="nx-a2s1" src="audio/a2-s1.wav" data-start="349.52" data-duration="67.44" data-volume="1"></audio>
+  <audio id="nx-a2s2" src="audio/a2-s2.wav" data-start="424.96" data-duration="93.20" data-volume="1"></audio>
+  <audio id="nx-a3s1" src="audio/a3-s1.wav" data-start="520.16" data-duration="97.72" data-volume="1"></audio>
+  <audio id="nx-a4s1" src="audio/a4-s1.wav" data-start="620.88" data-duration="72.40" data-volume="1"></audio>
+  <audio id="nx-a4s2" src="audio/a4-s2.wav" data-start="694.28" data-duration="87.80" data-volume="1"></audio>
+  <audio id="nx-a4s3" src="audio/a4-s3.wav" data-start="783.12" data-duration="74.20" data-volume="1"></audio>
+  <audio id="nx-a5s1" src="audio/a5-s1.wav" data-start="860.32" data-duration="98.40" data-volume="1"></audio>
+  <audio id="nx-a6s1" src="audio/a6-s1.wav" data-start="961.22" data-duration="81.16" data-volume="1"></audio>
+  <audio id="nx-a6s2" src="audio/a6-s2.wav" data-start="1052.18" data-duration="74.76" data-volume="1"></audio>
+  <audio id="nx-a6s3" src="audio/a6-s3.wav" data-start="1127.94" data-duration="61.44" data-volume="1"></audio>
+  <audio id="nx-a6s4" src="audio/a6-s4.wav" data-start="1190.38" data-duration="78.32" data-volume="1"></audio>
+  <audio id="nx-a7s1" src="audio/a7-s1.wav" data-start="1271.70" data-duration="123.60" data-volume="1"></audio>
+  <audio id="nx-a8s1" src="audio/a8-s1.wav" data-start="1399.30" data-duration="43.84" data-volume="1"></audio>
+  <audio id="nx-a8s2" src="audio/a8-s2.wav" data-start="1444.14" data-duration="117.20" data-volume="1"></audio>
+  <audio id="nx-a8s3" src="audio/a8-s3.wav" data-start="1578.64" data-duration="73.56" data-volume="1"></audio>
+  <audio id="nx-a9s1" src="audio/a9-s1.wav" data-start="1654.70" data-duration="23.44" data-volume="1"></audio>
+
+  <!-- ======== INSERT AUDIO (loudnormed to -15) ======== -->
+  <audio id="ins-dispatch1" src="media/insert/dispatch-knew-what-was-coming.wav" data-start="15.40" data-duration="8.80" data-volume="1"></audio>
+  <audio id="ins-dispatch2" src="media/insert/dispatch-children-calling.wav" data-start="1563.14" data-duration="13.90" data-volume="1"></audio>
+
+  <!-- ======== VIDEO TRACK 1 — cold-open montage (audio-carrying inserts) ======== -->
+  <video id="vx-co1" src="media/beats/co-towercam.mp4" data-start="0" data-duration="3.6" data-track-index="1" data-volume="1"></video>
+  <video id="vx-co2" src="media/beats/co-cullman.mp4" data-start="3.6" data-duration="3.2" data-track-index="1" data-volume="1"></video>
+  <video id="vx-co3" src="media/beats/co-cbs-debris.mp4" data-start="6.8" data-duration="3.5" data-track-index="1" data-volume="1"></video>
+  <video id="vx-co4" src="media/beats/co-twc-wedge.mp4" data-start="10.3" data-duration="4.1" data-track-index="1" data-volume="1"></video>
+  <video id="vx-co5" src="media/stock/night-storm-1.mp4" style="filter: brightness(0.55) saturate(0.5)" data-start="15.0" data-duration="9.4" data-track-index="1" muted></video>
+
+  <!-- A0-S2: radar + real wedge + flash-forward -->
+  <video id="vx-hook1" src="media/radar/tuscaloosa_birmingham_hook.mp4" data-start="24.4" data-duration="8.8" data-track-index="1" muted></video>
+  <video id="vx-skycam1" src="media/beats/co-skycam.mp4" style="filter: saturate(0.7)" data-start="33.2" data-duration="7.8" data-track-index="1" muted></video>
+  <video id="vx-rainw1" src="media/stock/rain-wind-1.mp4" style="filter: brightness(0.7) saturate(0.55)" data-start="41.0" data-duration="8.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-aerial07" data-start="49.0" data-duration="9.08" data-track-index="1"><img id="kb-aerial07" src="media/pd/nws-bmx-tuscbirm-07-noaa-aerial-tuscaloosa-a.jpg" alt=""></section>
+
+  <!-- A0-S3: storm reports map + title (g-title on track 2 over blackout) -->
+  <section class="clip still-wrap contain-wrap" id="c-reports" data-start="58.08" data-duration="12.5" data-track-index="1"><img id="kb-reports" src="media/pd/spc_storm_reports_20110427.gif" alt=""></section>
+  <section class="clip blackout" id="bo-title" data-start="70.58" data-duration="25.1" data-track-index="1"></section>
+
+  <!-- A1-S1: Apr 25-26 escalation -->
+  <video id="vx-ssky2" src="media/stock/storm-sky-2.mp4" style="filter: brightness(0.8) saturate(0.6)" data-start="95.68" data-duration="8.82" data-track-index="1" muted></video>
+  <video id="vx-nstorm2" src="media/stock/night-storm-2.mp4" style="filter: brightness(0.7)" data-start="104.5" data-duration="8.5" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-splint" data-start="113.0" data-duration="8.5" data-track-index="1"><img id="kb-splint" src="media/ai/ai-house-splinters-closeup.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-ruralroad" data-start="121.5" data-duration="8.5" data-track-index="1"><img id="kb-ruralroad" src="media/ai/ai-rural-road-storm.jpg" alt=""></section>
+  <video id="vx-afury" src="media/beats/aprils-fury.mp4" data-start="130.0" data-duration="6.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-horizon" data-start="136.0" data-duration="12.5" data-track-index="1"><img id="kb-horizon" src="media/ai/ai-storm-horizon-dusk.jpg" alt=""></section>
+  <video id="vx-hsvmosaic" src="media/beats/nws-hsv-mosaic.mp4" data-start="148.5" data-duration="9.5" data-track-index="1" muted></video>
+  <video id="vx-ssky1" src="media/stock/storm-sky-1.mp4" style="filter: brightness(0.75) saturate(0.6)" data-start="158.0" data-duration="12.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-mswedge" data-start="170.0" data-duration="13.0" data-track-index="1"><img id="kb-mswedge" src="media/ai/ai-ms-farmland-wedge.jpg" alt=""></section>
+
+  <!-- A1-S2: meteorology explainer (g-met on track 2) -->
+  <section class="clip blackout" id="bo-met" data-start="183.0" data-duration="82.68" data-track-index="1"></section>
+
+  <!-- A1-S3: forecast drama -->
+  <video id="vx-ssky3" src="media/stock/storm-sky-3.mp4" style="filter: brightness(0.8) saturate(0.65)" data-start="265.68" data-duration="6.82" data-track-index="1" muted></video>
+  <section class="clip still-wrap contain-wrap" id="c-outlook" data-start="272.5" data-duration="9.0" data-track-index="1"><img id="kb-outlook" src="media/pd/spc_day1_outlook_1630z.gif" alt=""></section>
+  <section class="clip still-wrap contain-wrap" id="c-tornprob" data-start="281.5" data-duration="18.5" data-track-index="1"><img id="kb-tornprob" src="media/pd/spc_torn_prob_1630z.gif" alt=""></section>
+  <section class="clip still-wrap" id="c-towndark" data-start="300.0" data-duration="12.0" data-track-index="1"><img id="kb-towndark" src="media/ai/ai-town-street-dark.jpg" alt=""></section>
+  <video id="vx-siren1" src="media/stock/siren-1.mp4" style="filter: brightness(0.8) saturate(0.7)" data-start="312.0" data-duration="17.0" data-track-index="1" muted></video>
+  <video id="vx-dawn2" src="media/stock/dawn-calm-2.mp4" data-start="329.0" data-duration="12.0" data-track-index="1" muted></video>
+  <video id="vx-dawn1" src="media/stock/dawn-calm-1.mp4" data-start="341.0" data-duration="8.52" data-track-index="1" muted></video>
+
+  <!-- A2-S1: morning trap -->
+  <video id="vx-squall" src="media/radar/morning_squall_line.mp4" data-start="349.52" data-duration="10.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-nightwedge" data-start="359.52" data-duration="9.0" data-track-index="1"><img id="kb-nightwedge" src="media/ai/ai-night-wedge-lightning.jpg" alt=""></section>
+  <video id="vx-town3" src="media/stock/small-town-3.mp4" style="filter: brightness(0.62) saturate(0.6)" data-start="368.52" data-duration="9.5" data-track-index="1" muted></video>
+  <video id="vx-flag1" src="media/stock/flag-debris-1.mp4" data-start="378.02" data-duration="10.0" data-track-index="1" muted></video>
+  <video id="vx-hsv45" src="media/beats/nws-hsv-45map.mp4" data-start="388.02" data-duration="9.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-radiotower" data-start="397.02" data-duration="19.94" data-track-index="1"><img id="kb-radiotower" src="media/ai/ai-radio-tower-storm.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-a2gap" data-start="416.96" data-duration="1.0" data-track-index="1"></section>
+
+  <!-- insert-a2: morning broadcast (own audio) -->
+  <video id="vx-predawn" src="media/beats/a2-predawn.mp4" data-start="417.96" data-duration="6.0" data-track-index="1" data-volume="1"></video>
+
+  <!-- A2-S2: Service Assessment (g-sa on track 2) -->
+  <video id="vx-nightsky" src="media/beats/night-skycam.mp4" style="filter: brightness(0.75)" data-start="423.96" data-duration="5.5" data-track-index="1" muted></video>
+  <section class="clip blackout" id="bo-sa" data-start="429.46" data-duration="78.0" data-track-index="1"></section>
+  <video id="vx-funnel1" src="media/beats/dvids-funnel.mp4" style="filter: saturate(0.75)" data-start="507.46" data-duration="12.7" data-track-index="1" muted></video>
+
+  <!-- A3-S1: Philadelphia MS -->
+  <section class="clip still-wrap contain-wrap" id="c-pds235" data-start="520.16" data-duration="8.0" data-track-index="1"><img id="kb-pds235" src="media/pd/spc_pds_tornado_watch_235_overview.gif" alt=""></section>
+  <section class="clip still-wrap" id="c-scar1" data-start="528.16" data-duration="10.0" data-track-index="1"><img id="kb-scar1" src="media/ai/ai-field-scar-aerial.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-splint2" data-start="538.16" data-duration="14.3" data-track-index="1"><img id="kb-splint2" src="media/pd/nws-bmx-tuscbirm-09-homes-destroyed-a.jpg" alt=""></section>
+  <video id="vx-broll4" src="media/beats/dvids-broll-4.mp4" data-start="552.46" data-duration="10.5" data-track-index="1" muted></video>
+  <video id="vx-broll1" src="media/beats/dvids-broll-1.mp4" data-start="562.96" data-duration="10.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-horizon2" data-start="572.96" data-duration="12.0" data-track-index="1" data-callback="storm-motif return before the march"><img id="kb-horizon2" src="media/ai/ai-storm-horizon-dusk.jpg" alt=""></section>
+  <video id="vx-ssky2b" src="media/stock/storm-sky-2.mp4" style="filter: brightness(0.55) saturate(0.5)" data-start="584.96" data-duration="11.0" data-track-index="1" muted data-callback="darker regrade, storms-lining-up beat"></video>
+  <video id="vx-nstorm1b" src="media/stock/night-storm-1.mp4" style="filter: brightness(0.4)" data-start="595.96" data-duration="21.92" data-track-index="1" muted data-callback="dark base under town-name cards"></video>
+
+  <!-- A4-S1: Hackleburg -->
+  <video id="vx-hackradar" src="media/radar/hackleburg_supercell.mp4" data-start="620.88" data-duration="14.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-mswedge2" data-start="634.88" data-duration="10.0" data-track-index="1" data-callback="the wedge grows — same storm family, regraded"><img id="kb-mswedge2" src="media/ai/ai-ms-farmland-wedge.jpg" style="filter: brightness(0.6) contrast(1.15)" alt=""></section>
+  <video id="vx-cullaft" src="media/beats/cullman-aftermath.mp4" data-start="644.88" data-duration="11.0" data-track-index="1" muted></video>
+  <video id="vx-denim" src="media/stock/denim-1.mp4" style="filter: saturate(0.7) brightness(0.85)" data-start="655.88" data-duration="6.08" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-fdeb2" data-start="661.96" data-duration="18.0" data-track-index="1"><img id="kb-fdeb2" src="media/ai/ai-field-scar-aerial.jpg" style="filter: brightness(0.8)" alt="" data-callback="UNUSED-PLACEHOLDER"></section>
+  <video id="vx-fdeb2v" src="media/stock/flag-debris-2.mp4" data-start="679.96" data-duration="13.32" data-track-index="1" muted></video>
+
+  <!-- A4-S2: Phil Campbell + object horror -->
+  <video id="vx-philc" src="media/beats/philcampbell.mp4" data-start="694.28" data-duration="12.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-homes09" data-start="706.28" data-duration="11.0" data-track-index="1"><img id="kb-homes09" src="media/pd/nws-bmx-tuscbirm-11-homes-destroyed-b.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-veh10" data-start="717.28" data-duration="11.0" data-track-index="1"><img id="kb-veh10" src="media/pd/nws-bmx-tuscbirm-10-vehicles-stacked-debris.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-destr12" data-start="728.28" data-duration="12.0" data-track-index="1"><img id="kb-destr12" src="media/pd/nws-bmx-tuscbirm-12-destruction.jpg" alt=""></section>
+  <video id="vx-shelter" src="media/stock/shelter-1.mp4" style="filter: brightness(0.8) saturate(0.7)" data-start="740.28" data-duration="12.0" data-track-index="1" muted></video>
+  <video id="vx-survey" src="media/beats/dvids-survey.mp4" data-start="752.28" data-duration="10.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-ruralroad2" data-start="762.28" data-duration="19.8" data-track-index="1" data-callback="the long track — road motif return"><img id="kb-ruralroad2" src="media/ai/ai-rural-road-storm.jpg" style="filter: brightness(0.65)" alt=""></section>
+
+  <!-- A4-S3: radar replot + Browns Ferry -->
+  <video id="vx-hackradar2" src="media/radar/hackleburg_supercell.mp4" data-start="783.12" data-duration="27.0" data-track-index="1" muted data-callback="full replot narrated in detail here"></video>
+  <video id="vx-nuke1" src="media/stock/nuclear-1.mp4" style="filter: brightness(0.75) saturate(0.65)" data-start="810.12" data-duration="11.0" data-track-index="1" muted></video>
+  <video id="vx-nuke2" src="media/stock/nuclear-2.mp4" style="filter: brightness(0.75) saturate(0.65)" data-start="821.12" data-duration="12.0" data-track-index="1" muted></video>
+  <video id="vx-siren1b" src="media/stock/siren-1.mp4" style="filter: brightness(0.55) saturate(0.55)" data-start="833.12" data-duration="12.0" data-track-index="1" muted data-callback="warning-infrastructure motif at emergency declaration"></video>
+  <video id="vx-ssky1b" src="media/stock/storm-sky-1.mp4" style="filter: brightness(0.45)" data-start="845.12" data-duration="15.2" data-track-index="1" muted data-callback="step-back-in-time transition"></video>
+
+  <!-- A5-S1: Smithville -->
+  <video id="vx-funnel2" src="media/beats/dvids-funnel.mp4" style="filter: brightness(0.8) contrast(1.1)" data-start="860.32" data-duration="12.0" data-track-index="1" muted data-callback="funnel forms again — Smithville touchdown"></video>
+  <section class="clip still-wrap" id="c-homes11" data-start="872.32" data-duration="12.0" data-track-index="1"><img id="kb-homes11" src="media/pd/nws-bmx-tuscbirm-09-homes-destroyed-a.jpg" style="filter: brightness(0.85)" alt="" data-callback="UNUSED-PLACEHOLDER2"></section>
+  <video id="vx-rainw2" src="media/stock/rain-wind-1.mp4" style="filter: brightness(0.5) saturate(0.45)" data-start="884.32" data-duration="12.0" data-track-index="1" muted data-callback="through-the-windshield motif at peak winds"></video>
+  <video id="vx-broll2" src="media/beats/dvids-broll-2.mp4" data-start="896.32" data-duration="11.5" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-train05" data-start="907.82" data-duration="8.0" data-track-index="1"><img id="kb-train05" src="media/pd/nws-bmx-tuscbirm-05-train-cars-derailed.JPG" alt=""></section>
+  <video id="vx-cem" src="media/stock/cemetery-1.mp4" style="filter: brightness(0.7) saturate(0.55)" data-start="915.82" data-duration="12.0" data-track-index="1" muted></video>
+  <video id="vx-broll3" src="media/beats/dvids-broll-3.mp4" data-start="927.82" data-duration="12.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-towndark2" data-start="939.82" data-duration="21.4" data-track-index="1" data-callback="the-town-that-was-gone close"><img id="kb-towndark2" src="media/ai/ai-town-street-dark.jpg" style="filter: brightness(0.55)" alt=""></section>
+
+  <!-- A6-S1: Tuscaloosa forms -->
+  <video id="vx-hook2" src="media/radar/tuscaloosa_birmingham_hook.mp4" data-start="961.22" data-duration="14.0" data-track-index="1" muted data-callback="the 4:43 supercell — its own radar, narrated now"></video>
+  <video id="vx-cbs2" src="media/beats/co-cbs-debris.mp4" style="filter: saturate(0.8)" data-start="975.22" data-duration="12.5" data-track-index="1" muted data-callback="cold-open bookend — the livestream confirmation"></video>
+  <video id="vx-campus" src="media/stock/campus-1.mp4" style="filter: brightness(0.85) saturate(0.7)" data-start="987.72" data-duration="12.0" data-track-index="1" muted></video>
+  <video id="vx-hsvmosaic2" src="media/beats/nws-hsv-mosaic.mp4" data-start="999.72" data-duration="12.0" data-track-index="1" muted data-callback="radar-beam blind-spot explainer at the workstation"></video>
+  <video id="vx-spanndesk" src="media/beats/a6-spann-desk.mp4" data-start="1011.72" data-duration="15.0" data-track-index="1" muted></video>
+  <video id="vx-towercam2" src="media/beats/co-towercam.mp4" style="filter: saturate(0.8)" data-start="1026.72" data-duration="15.66" data-track-index="1" muted data-callback="cold-open bookend — the wedge walks toward the city"></video>
+
+  <!-- insert: Spann quote (real audio) -->
+  <video id="vx-spannquote" src="media/insert/spann-quote-insert.mp4" data-start="1042.98" data-duration="8.2" data-track-index="1" data-volume="1"></video>
+
+  <!-- A6-S2: the hit -->
+  <video id="vx-skycam2" src="media/beats/co-skycam.mp4" style="filter: saturate(0.65) brightness(0.9)" data-start="1052.18" data-duration="12.0" data-track-index="1" muted data-callback="cold-open bookend — entering the city"></video>
+  <section class="clip still-wrap" id="c-apt01" data-start="1064.18" data-duration="12.0" data-track-index="1"><img id="kb-apt01" src="media/pd/nws-bmx-tuscbirm-01-apartment-complex-leveled.JPG" alt=""></section>
+  <section class="clip still-wrap" id="c-north06" data-start="1076.18" data-duration="12.0" data-track-index="1"><img id="kb-north06" src="media/pd/nws-bmx-tuscbirm-06-destruction-north-birmingham.JPG" alt=""></section>
+  <section class="clip still-wrap" id="c-path03" data-start="1088.18" data-duration="12.0" data-track-index="1"><img id="kb-path03" src="media/pd/nws-bmx-tuscbirm-03-aerial-damage-path-a.JPG" alt=""></section>
+  <section class="clip still-wrap" id="c-noaa08" data-start="1100.18" data-duration="12.0" data-track-index="1"><img id="kb-noaa08" src="media/pd/nws-bmx-tuscbirm-08-noaa-aerial-tuscaloosa-b.jpg" alt=""></section>
+  <video id="vx-shelter2" src="media/stock/shelter-1.mp4" style="filter: brightness(0.6) saturate(0.55)" data-start="1112.18" data-duration="14.76" data-track-index="1" muted data-callback="the closet — Ashley foreshadow"></video>
+
+  <!-- A6-S3: EF-scale science (g-efscale on track 2) -->
+  <section class="clip blackout" id="bo-ef" data-start="1126.94" data-duration="63.44" data-track-index="1"></section>
+
+  <!-- A6-S4: Birmingham -->
+  <section class="clip still-wrap" id="c-nightwedge2" data-start="1190.38" data-duration="11.62" data-track-index="1" data-callback="re-intensifying at dusk toward Birmingham"><img id="kb-nightwedge2" src="media/ai/ai-night-wedge-lightning.jpg" style="filter: brightness(0.8)" alt=""></section>
+  <section class="clip still-wrap" id="c-path04" data-start="1202.0" data-duration="12.0" data-track-index="1"><img id="kb-path04" src="media/pd/nws-bmx-tuscbirm-04-aerial-damage-path-b.JPG" alt=""></section>
+  <section class="clip still-wrap" id="c-bridge02" data-start="1214.0" data-duration="12.0" data-track-index="1"><img id="kb-bridge02" src="media/pd/nws-bmx-tuscbirm-02-train-bridge-demolished.JPG" alt=""></section>
+  <video id="vx-afury2" src="media/beats/aprils-fury.mp4" style="filter: brightness(0.85)" data-start="1226.0" data-duration="24.0" data-track-index="1" muted data-callback="archival Birmingham coverage under the stat card"></video>
+  <video id="vx-ssky3b" src="media/stock/storm-sky-3.mp4" style="filter: brightness(0.5)" data-start="1250.0" data-duration="21.7" data-track-index="1" muted data-callback="one-afternoon-four-giants close"></video>
+
+  <!-- A7-S1: Rainsville + the long night -->
+  <video id="vx-nightsky2" src="media/beats/night-skycam.mp4" style="filter: brightness(0.65)" data-start="1271.7" data-duration="11.0" data-track-index="1" muted data-callback="dusk funnel — the fourth giant"></video>
+  <video id="vx-broll5" src="media/beats/dvids-broll-5.mp4" data-start="1282.7" data-duration="11.0" data-track-index="1" muted></video>
+  <video id="vx-flag1b" src="media/stock/flag-debris-1.mp4" style="filter: brightness(0.7) saturate(0.7)" data-start="1293.7" data-duration="12.0" data-track-index="1" muted data-callback="flag at the toll"></video>
+  <video id="vx-ringgold" src="media/beats/ringgold-cam.mp4" data-start="1305.7" data-duration="12.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap contain-wrap" id="c-pdswou" data-start="1317.7" data-duration="14.3" data-track-index="1"><img id="kb-pdswou" src="media/pd/spc_pds_tornado_watch_235_wou.gif" alt=""></section>
+  <video id="vx-cullaft2" src="media/beats/cullman-aftermath.mp4" style="filter: brightness(0.7)" data-start="1332.0" data-duration="16.0" data-track-index="1" muted data-callback="Vaughn erased — damage in the dark hours"></video>
+  <section class="clip still-wrap contain-wrap" id="c-reports2" data-start="1348.0" data-duration="14.0" data-track-index="1" data-callback="the full day plotted — seven states counting"><img id="kb-reports2" src="media/pd/spc_storm_reports_20110427.gif" alt=""></section>
+  <video id="vx-dawn1b" src="media/stock/dawn-calm-1.mp4" style="filter: saturate(0.8)" data-start="1362.0" data-duration="23.0" data-track-index="1" muted data-callback="sunrise over the silence"></video>
+  <section class="clip blackout" id="bo-a7end" data-start="1385.0" data-duration="15.3" data-track-index="1"></section>
+
+  <!-- A8-S1: reconciled numbers (g-numbers on track 2) -->
+  <section class="clip blackout" id="bo-numbers" data-start="1400.3" data-duration="43.84" data-track-index="1"></section>
+
+  <!-- A8-S2: why they died -->
+  <video id="vx-survey2" src="media/beats/dvids-survey.mp4" style="filter: brightness(0.85)" data-start="1444.14" data-duration="12.0" data-track-index="1" muted data-callback="the investigators return"></video>
+  <section class="clip still-wrap" id="c-radiotower2" data-start="1456.14" data-duration="14.0" data-track-index="1" data-callback="the failed last mile — transmitter motif"><img id="kb-radiotower2" src="media/ai/ai-radio-tower-storm.jpg" style="filter: brightness(0.7)" alt=""></section>
+  <section class="clip still-wrap" id="c-homes11b" data-start="1470.14" data-duration="14.0" data-track-index="1"><img id="kb-homes11b" src="media/pd/nws-bmx-tuscbirm-11-homes-destroyed-b.jpg" alt="" data-callback="permanent homes — the fatality pattern"></section>
+  <video id="vx-rebuild1" src="media/stock/rebuild-1.mp4" data-start="1484.14" data-duration="14.0" data-track-index="1" muted></video>
+  <video id="vx-squall2" src="media/radar/morning_squall_line.mp4" data-start="1498.14" data-duration="14.0" data-track-index="1" muted data-callback="radar that learned to see debris"></video>
+  <video id="vx-broll3b" src="media/beats/dvids-broll-3.mp4" style="filter: brightness(0.85)" data-start="1512.14" data-duration="17.86" data-track-index="1" muted data-callback="the human problem still being worked"></video>
+  <section class="clip still-wrap" id="c-scar2" data-start="1530.0" data-duration="14.0" data-track-index="1" data-callback="the scar — closing thesis"><img id="kb-scar2" src="media/ai/ai-field-scar-aerial.jpg" style="filter: brightness(0.7)" alt=""></section>
+  <section class="clip still-wrap" id="c-modisbefore" data-start="1544.0" data-duration="8.0" data-track-index="1"><img id="kb-modisbefore" src="media/pd/nasa-modis-tuscaloosa-before-20110412.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-modisafter" data-start="1552.0" data-duration="10.14" data-track-index="1"><img id="kb-modisafter" src="media/pd/nasa-modis-tuscaloosa-after-20110428.jpg" alt=""></section>
+
+  <!-- insert-a8: dispatch children audio over dark -->
+  <section class="clip blackout" id="bo-dispatch" data-start="1562.14" data-duration="16.5" data-track-index="1"></section>
+
+  <!-- A8-S3: vignettes banked -->
+  <video id="vx-campus2" src="media/stock/campus-1.mp4" style="filter: brightness(0.7) saturate(0.6)" data-start="1578.64" data-duration="13.5" data-track-index="1" muted data-callback="Ashley — the campus she nearly graduated from"></video>
+  <section class="clip still-wrap" id="c-apt01b" data-start="1592.14" data-duration="14.0" data-track-index="1"><img id="kb-apt01b" src="media/pd/nws-bmx-tuscbirm-01-apartment-complex-leveled.JPG" style="filter: brightness(0.8)" alt="" data-callback="where the students died"></section>
+  <video id="vx-broll1b" src="media/beats/dvids-broll-1.mp4" style="filter: brightness(0.8)" data-start="1606.14" data-duration="10.0" data-track-index="1" muted data-callback="multiply by three hundred twenty-four"></video>
+  <video id="vx-memorial" src="media/stock/memorial-1.mp4" data-start="1616.14" data-duration="14.0" data-track-index="1" muted></video>
+  <video id="vx-denim2" src="media/stock/denim-1.mp4" data-start="1630.14" data-duration="6.08" data-track-index="1" muted data-callback="Wrangler rebuilt"></video>
+  <video id="vx-rebuild2" src="media/stock/rebuild-2.mp4" data-start="1636.22" data-duration="15.98" data-track-index="1" muted></video>
+
+  <!-- A9: footnote -->
+  <video id="vx-dawn2b" src="media/stock/dawn-calm-2.mp4" data-start="1654.7" data-duration="10.0" data-track-index="1" muted data-callback="recap zone"></video>
+  <video id="vx-siren2" src="media/stock/siren-1.mp4" style="filter: brightness(0.9)" data-start="1664.7" data-duration="7.0" data-track-index="1" muted data-callback="recap zone — learn what yours sounds like"></video>
+  <video id="vx-rebuild1b" src="media/stock/rebuild-1.mp4" data-start="1671.7" data-duration="4.7" data-track-index="1" muted data-callback="recap zone"></video>
+  <section class="clip blackout" id="bo-outro" data-start="1676.4" data-duration="8.6" data-track-index="1"></section>
+
+  <!-- ======== TRACK 2 — sub-composition graphics ======== -->
+  <div id="host-title" data-composition-id="g-title" data-composition-src="compositions/g-title.html" data-start="70.58" data-duration="25.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-met" data-composition-id="g-met" data-composition-src="compositions/g-met.html" data-start="183.0" data-duration="81.68" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-sa" data-composition-id="g-sa" data-composition-src="compositions/g-sa.html" data-start="429.46" data-duration="78.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-stat-philly" data-composition-id="g-stat-philly" data-composition-src="compositions/g-stat-philly.html" data-start="526.66" data-duration="26.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-stat-hack" data-composition-id="g-stat-hack" data-composition-src="compositions/g-stat-hack.html" data-start="762.28" data-duration="19.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-stat-smith" data-composition-id="g-stat-smith" data-composition-src="compositions/g-stat-smith.html" data-start="889.32" data-duration="46.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-efscale" data-composition-id="g-efscale" data-composition-src="compositions/g-efscale.html" data-start="1129.44" data-duration="60.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-stat-tusc" data-composition-id="g-stat-tusc" data-composition-src="compositions/g-stat-tusc.html" data-start="1232.38" data-duration="18.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-stat-rains" data-composition-id="g-stat-rains" data-composition-src="compositions/g-stat-rains.html" data-start="1289.7" data-duration="28.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-numbers" data-composition-id="g-numbers" data-composition-src="compositions/g-numbers.html" data-start="1400.3" data-duration="43.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-outro" data-composition-id="g-outro" data-composition-src="compositions/g-outro.html" data-start="1676.4" data-duration="8.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- ======== TRACK 3 — lower-thirds, popups, cards ======== -->
+  <section class="clip" id="p-lt-open" data-start="26.0" data-duration="9.0" data-track-index="3">
+    <div class="lt"><div class="lt-loc">ALABAMA</div><div class="lt-time">APRIL 27, 2011 · LATE AFTERNOON</div></div>
+  </section>
+  <section class="clip" id="p-src-radar1" data-start="24.4" data-duration="8.8" data-track-index="4">
+    <div class="srclab">NEXRAD KBMX archive · replotted · times UTC</div>
+  </section>
+  <section class="clip" id="p-dispatch1" data-start="15.4" data-duration="8.8" data-track-index="3">
+    <div class="dispatchlab"><div class="d1">EMERGENCY DISPATCH · ALABAMA</div><div class="d2">RECORDED APRIL 27, 2011 · FEMA / ALABAMA EMA</div></div>
+  </section>
+  <section class="clip" id="p-lt-vilonia" data-start="105.5" data-duration="8.0" data-track-index="3">
+    <div class="lt"><div class="lt-loc">VILONIA, ARKANSAS</div><div class="lt-time">APRIL 25 · THE OUTBREAK BEGINS</div></div>
+  </section>
+  <section class="clip" id="p-pop-highrisk" data-start="272.8" data-duration="8.4" data-track-index="3">
+    <div class="popup" style="left:140px; top:120px;">HIGH RISK — 5 OF 5<span class="fine">SPC Day-1 Convective Outlook · 7:55 AM CDT · issued a handful of times per decade</span></div>
+  </section>
+  <section class="clip" id="p-pop-45" data-start="284.0" data-duration="10.0" data-track-index="3">
+    <div class="popup" style="left:140px; top:120px;">45% TORNADO PROBABILITY<span class="fine">up from 30% that morning — "particularly noteworthy" (NWS Service Assessment)</span></div>
+  </section>
+  <section class="clip" id="p-q-spann540" data-start="370.0" data-duration="9.5" data-track-index="3">
+    <div class="quotecard"><div class="q">"It's 5:40. A lot of you are just waking up now to the sirens going off."</div><div class="attr">JAMES SPANN · ABC 33/40 · 5:40 AM</div></div>
+  </section>
+  <section class="clip" id="p-src-predawn" data-start="417.96" data-duration="6.0" data-track-index="3">
+    <div class="srclab">ABC 33/40 broadcast · April 27, 2011 · courtesy</div>
+  </section>
+  <section class="clip" id="p-src-squall" data-start="349.52" data-duration="10.0" data-track-index="3">
+    <div class="srclab">NEXRAD KHTX archive · replotted · times UTC</div>
+  </section>
+  <section class="clip" id="p-lt-philly" data-start="521.5" data-duration="8.5" data-track-index="3">
+    <div class="lt"><div class="lt-loc">PHILADELPHIA, MISSISSIPPI</div><div class="lt-time">2:30 PM · THE FIRST EF5</div></div>
+  </section>
+  <section class="clip" id="p-town-cards" data-start="608.0" data-duration="9.5" data-track-index="3">
+    <div class="townname"><div id="tn-1">HACKLEBURG</div><div id="tn-2">PHIL CAMPBELL</div><div id="tn-3">SMITHVILLE</div></div>
+  </section>
+  <section class="clip" id="p-lt-hack" data-start="622.5" data-duration="9.0" data-track-index="3">
+    <div class="lt"><div class="lt-loc">MARION COUNTY, ALABAMA</div><div class="lt-time">3:05 PM · TORNADO #2 OF 4</div></div>
+  </section>
+  <section class="clip" id="p-src-hackradar" data-start="620.88" data-duration="14.0" data-track-index="4">
+    <div class="srclab">NEXRAD KGWX archive · replotted · times UTC</div>
+  </section>
+  <section class="clip" id="p-pop-18" data-start="671.4" data-duration="8.0" data-track-index="3">
+    <div class="popup" style="left:140px; top:140px;">18 DEAD IN HACKLEBURG<span class="fine">75% of the town destroyed in under two minutes</span></div>
+  </section>
+  <section class="clip" id="p-pop-4min" data-start="684.0" data-duration="8.0" data-track-index="3">
+    <div class="popup popup-amber" style="left:140px; top:140px;">NEXT TOWN: 4 MINUTES<span class="fine">Phil Campbell, pop. ~1,000 — in the direct path</span></div>
+  </section>
+  <section class="clip" id="p-lt-philc" data-start="695.5" data-duration="8.0" data-track-index="3">
+    <div class="lt"><div class="lt-loc">PHIL CAMPBELL, ALABAMA</div><div class="lt-time">21 DEAD — 1 IN EVERY 100 RESIDENTS</div></div>
+  </section>
+  <section class="clip" id="p-pop-slab" data-start="711.4" data-duration="9.0" data-track-index="3">
+    <div class="popup" style="left:140px; top:140px;">25 FT OF ROAD — TORN OUT, THROWN ⅓ MILE<span class="fine">NWS damage survey, Franklin County</span></div>
+  </section>
+  <section class="clip" id="p-src-hackradar2" data-start="783.12" data-duration="27.0" data-track-index="4">
+    <div class="srclab">NEXRAD KGWX archive · replotted · times UTC</div>
+  </section>
+  <section class="clip" id="p-pop-bferry" data-start="812.5" data-duration="12.0" data-track-index="3">
+    <div class="popup" style="left:140px; top:120px;">BROWNS FERRY NUCLEAR PLANT<span class="fine">all 3 reactors — emergency shutdown 5:01 PM · offsite power out 5 days · stock footage, representative</span></div>
+  </section>
+  <section class="clip" id="p-lt-smith" data-start="862.0" data-duration="9.0" data-track-index="3">
+    <div class="lt"><div class="lt-loc">SMITHVILLE, MISSISSIPPI</div><div class="lt-time">3:42 PM · TORNADO #3 OF 4</div></div>
+  </section>
+  <section class="clip" id="p-pop-explorer" data-start="904.6" data-duration="9.0" data-track-index="3">
+    <div class="popup" style="left:140px; top:140px;">FORD EXPLORER → ½ MILE → THE WATER TOWER<span class="fine">then thrown another quarter mile — NWS survey</span></div>
+  </section>
+  <section class="clip" id="p-lt-tusc" data-start="963.0" data-duration="9.0" data-track-index="3">
+    <div class="lt"><div class="lt-loc">GREENE COUNTY, ALABAMA</div><div class="lt-time">4:43 PM · TORNADO #4 · AIMED AT TUSCALOOSA</div></div>
+  </section>
+  <section class="clip" id="p-src-hookradar" data-start="961.22" data-duration="14.0" data-track-index="4">
+    <div class="srclab">NEXRAD KBMX archive · replotted · times UTC</div>
+  </section>
+  <section class="clip" id="p-pop-beam" data-start="1000.5" data-duration="10.0" data-track-index="3">
+    <div class="popup popup-amber" style="left:140px; top:120px;">RADAR'S BLIND SPOT<span class="fine">the beam rides thousands of feet above the ground at range — spotters close the gap</span></div>
+  </section>
+  <section class="clip" id="p-src-spannquote" data-start="1042.98" data-duration="8.2" data-track-index="3">
+    <div class="srclab">ABC 33/40 live broadcast · 5:21 PM · courtesy</div>
+  </section>
+  <section class="clip" id="p-pop-maddox" data-start="1082.5" data-duration="10.0" data-track-index="3">
+    <div class="popup" style="left:140px; top:120px;">"12% OF THE CITY — GONE. 7,000 JOBS — GONE."<span class="fine">Mayor Walt Maddox, City of Tuscaloosa</span></div>
+  </section>
+  <section class="clip" id="p-lt-bham" data-start="1192.5" data-duration="8.5" data-track-index="3">
+    <div class="lt"><div class="lt-loc">BIRMINGHAM SUBURBS</div><div class="lt-time">~6:00 PM · CONCORD · PLEASANT GROVE · McDONALD CHAPEL</div></div>
+  </section>
+  <section class="clip" id="p-lt-rains" data-start="1273.5" data-duration="9.0" data-track-index="3">
+    <div class="lt"><div class="lt-loc">DEKALB COUNTY, ALABAMA</div><div class="lt-time">6:19 PM · THE FOURTH EF5</div></div>
+  </section>
+  <section class="clip" id="p-pop-safe" data-start="1292.6" data-duration="8.0" data-track-index="3">
+    <div class="popup" style="left:140px; top:140px;">800-LB SAFE — CARRIED 600 FT<span class="fine">found with its steel door torn off — NWS survey, Rainsville</span></div>
+  </section>
+  <section class="clip" id="p-src-ringgold" data-start="1305.7" data-duration="12.0" data-track-index="3">
+    <div class="srclab">Storefront camera · Ringgold, GA · 8:20 PM Eastern · WDEF courtesy</div>
+  </section>
+  <section class="clip" id="p-q-nowarn" data-start="1380.0" data-duration="10.0" data-track-index="3">
+    <div class="quotecard"><div class="q">"There are no tornado warnings in Alabama… for the first time in I don't know when."</div><div class="attr">LIVE BROADCAST · LATE APRIL 27</div></div>
+  </section>
+  <section class="clip" id="p-pop-scar" data-start="1552.5" data-duration="9.0" data-track-index="3">
+    <div class="popup popup-amber" style="left:140px; top:120px;">THE SCARS WERE VISIBLE FROM SPACE<span class="fine">NASA MODIS · April 12 vs April 28, 2011</span></div>
+  </section>
+  <section class="clip" id="p-dispatch2" data-start="1563.4" data-duration="13.6" data-track-index="3">
+    <div class="dispatchlab"><div class="d1">911 DISPATCH · APRIL 27, 2011</div><div class="d2">TUSCALOOSA COUNTY OPERATORS · FEMA / ALABAMA EMA RECORDING</div></div>
+  </section>
+  <section class="clip" id="p-nc-ashley" data-start="1580.5" data-duration="11.0" data-track-index="3">
+    <div class="namecard"><div class="nc-name">ASHLEY HARRISON</div><div class="nc-sub">1988 – 2011 · University of Alabama, Class of 2011</div></div>
+  </section>
+  <section class="clip" id="p-pop-wrangler" data-start="1632.0" data-duration="10.0" data-track-index="3">
+    <div class="popup popup-amber" style="left:140px; top:140px;">WRANGLER PLANT — REOPENED 2013<span class="fine">150 jobs before the storm · 200 after</span></div>
+  </section>
+
+  <!-- film layer (untimed, last) -->
+  <div id="grade"></div>
+  <div id="vignette"></div>
+  <canvas id="grain" width="480" height="270"></canvas>
+</div>
+
+<script src="grain.js"></script>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 1685;
+
+  /* ---- music bed volumes ---- */
+  tl.to("#bgm-tense1", { volume: 0.09, duration: 3.0 }, 15.0);
+  tl.to("#bgm-tense1", { volume: 0.14, duration: 1.5 }, 70.6);   /* title swell */
+  tl.to("#bgm-tense1", { volume: 0.10, duration: 1.5 }, 96.0);
+  tl.to("#bgm-tense1", { volume: 0.0, duration: 2.5 }, 180.0);
+  tl.to("#bgm-dread1", { volume: 0.10, duration: 2.5 }, 183.5);
+  tl.to("#bgm-dread1", { volume: 0.07, duration: 1.0 }, 417.5);  /* duck under insert */
+  tl.to("#bgm-dread1", { volume: 0.11, duration: 1.0 }, 424.5);
+  tl.to("#bgm-dread1", { volume: 0.0, duration: 2.0 }, 517.5);
+  tl.to("#bgm-neutral1", { volume: 0.10, duration: 2.0 }, 520.5);
+  tl.to("#bgm-neutral1", { volume: 0.0, duration: 2.0 }, 780.5);
+  tl.to("#bgm-dread2", { volume: 0.11, duration: 2.0 }, 783.5);
+  tl.to("#bgm-dread2", { volume: 0.0, duration: 2.0 }, 1049.5);
+  tl.to("#bgm-tense2", { volume: 0.10, duration: 2.0 }, 1052.5);
+  tl.to("#bgm-tense2", { volume: 0.0, duration: 2.0 }, 1269.5);
+  tl.to("#bgm-neutral2", { volume: 0.09, duration: 2.0 }, 1272.5);
+  tl.to("#bgm-neutral2", { volume: 0.13, duration: 2.0 }, 1362.0); /* rises in dawn hold */
+  tl.to("#bgm-neutral2", { volume: 0.0, duration: 3.0 }, 1395.0);
+  tl.to("#bgm-somber", { volume: 0.10, duration: 2.5 }, 1399.5);
+  tl.to("#bgm-somber", { volume: 0.05, duration: 1.2 }, 1562.5); /* under dispatch insert */
+  tl.to("#bgm-somber", { volume: 0.10, duration: 1.5 }, 1577.5);
+  tl.to("#bgm-somber", { volume: 0.0, duration: 2.5 }, 1629.5);
+  tl.to("#bgm-hope", { volume: 0.11, duration: 2.5 }, 1633.0);
+  tl.to("#bgm-hope", { volume: 0.16, duration: 1.5 }, 1676.5);
+  tl.to("#bgm-hope", { volume: 0.0, duration: 2.8 }, 1681.8);
+
+  /* ---- SFX beds (source means ~-30dB → near-unity gains; verify post-render) ---- */
+  tl.to("#sfx-rain", { volume: 0.85, duration: 3.0 }, 350.0);
+  tl.to("#sfx-rain", { volume: 0.0, duration: 3.0 }, 414.0);
+  tl.to("#sfx-wind", { volume: 0.8, duration: 3.0 }, 621.5);
+  tl.to("#sfx-wind", { volume: 0.0, duration: 3.0 }, 757.0);
+  tl.to("#sfx-crickets", { volume: 0.7, duration: 3.0 }, 1349.0);
+  tl.to("#sfx-crickets", { volume: 0.0, duration: 3.0 }, 1391.0);
+
+  /* ---- Ken Burns pans on stills ---- */
+  function kb(sel, at, dur, fromScale, toScale, fromX, toX, fromY, toY) {
+    tl.fromTo(sel, { scale: fromScale, x: fromX, y: fromY },
+      { scale: toScale, x: toX, y: toY, duration: dur, ease: "none" }, at);
+  }
+  kb("#kb-aerial07", 49.0, 9.1, 1.15, 1.02, 0, 30, 0, -20);
+  kb("#kb-reports", 58.08, 12.5, 1.0, 1.12, 0, 0, 0, -14);
+  kb("#kb-splint", 113.0, 8.5, 1.1, 1.22, -20, 20, 0, 0);
+  kb("#kb-ruralroad", 121.5, 8.5, 1.2, 1.05, 20, -20, 10, -10);
+  kb("#kb-horizon", 136.0, 12.5, 1.0, 1.14, 0, -25, 0, -12);
+  kb("#kb-mswedge", 170.0, 13.0, 1.05, 1.25, 0, 30, 0, -25);
+  kb("#kb-outlook", 272.5, 9.0, 1.0, 1.1, 0, 0, 0, 0);
+  kb("#kb-tornprob", 281.5, 8.0, 1.0, 1.05, 0, 0, 0, 0);
+  tl.to("#kb-tornprob", { scale: 1.55, x: -120, y: 60, duration: 3.0, ease: "power2.inOut" }, 290.5); /* staged zoom into the 45% hatch */
+  kb("#kb-towndark", 300.0, 12.0, 1.15, 1.0, -25, 15, -15, 5);
+  kb("#kb-nightwedge", 359.52, 9.0, 1.05, 1.2, 0, -20, 0, -15);
+  kb("#kb-radiotower", 397.02, 19.9, 1.0, 1.18, 0, 22, 0, -22);
+  kb("#kb-pds235", 520.16, 8.0, 1.0, 1.08, 0, 0, 0, 0);
+  kb("#kb-scar1", 528.16, 10.0, 1.25, 1.05, 30, -30, 20, -10);
+  kb("#kb-splint2", 538.16, 14.3, 1.0, 1.16, 0, -25, 0, -18);
+  kb("#kb-horizon2", 572.96, 12.0, 1.14, 1.0, -20, 15, -14, 8);
+  kb("#kb-mswedge2", 634.88, 10.0, 1.25, 1.4, 30, 55, -25, -45);
+  kb("#kb-fdeb2", 661.96, 0.01, 1.0, 1.0, 0, 0, 0, 0); /* placeholder frozen */
+  kb("#kb-homes09", 706.28, 11.0, 1.0, 1.15, 0, 24, 0, -18);
+  kb("#kb-veh10", 717.28, 11.0, 1.16, 1.0, -22, 12, -16, 6);
+  kb("#kb-destr12", 728.28, 12.0, 1.0, 1.14, 0, -22, 0, -14);
+  kb("#kb-ruralroad2", 762.28, 19.8, 1.05, 1.24, 10, -30, 5, -20);
+  kb("#kb-homes11", 872.32, 12.0, 1.05, 1.18, -12, 14, -8, -18);
+  kb("#kb-train05", 907.82, 8.0, 1.1, 1.24, 0, -26, 0, -16);
+  kb("#kb-towndark2", 939.82, 21.4, 1.0, 1.16, 0, 24, 0, -20);
+  kb("#kb-apt01", 1064.18, 12.0, 1.0, 1.16, 0, -24, 0, -16);
+  kb("#kb-north06", 1076.18, 12.0, 1.16, 1.0, -22, 10, -16, 4);
+  kb("#kb-path03", 1088.18, 12.0, 1.0, 1.15, 0, 24, 0, -18);
+  kb("#kb-noaa08", 1100.18, 12.0, 1.14, 1.0, -20, 14, -12, 6);
+  kb("#kb-nightwedge2", 1190.38, 11.6, 1.1, 1.28, -14, 18, -12, -30);
+  kb("#kb-path04", 1202.0, 12.0, 1.0, 1.15, 0, -24, 0, -16);
+  kb("#kb-bridge02", 1214.0, 12.0, 1.16, 1.02, -20, 12, -14, 4);
+  kb("#kb-pdswou", 1317.7, 14.3, 1.0, 1.08, 0, 0, 0, 0);
+  kb("#kb-reports2", 1348.0, 14.0, 1.06, 1.16, 0, -12, 0, -10);
+  kb("#kb-radiotower2", 1456.14, 14.0, 1.1, 1.24, -14, 16, -10, -22);
+  kb("#kb-homes11b", 1470.14, 14.0, 1.0, 1.14, 0, 22, 0, -14);
+  kb("#kb-scar2", 1530.0, 14.0, 1.2, 1.0, 24, -14, 16, -6);
+  kb("#kb-modisbefore", 1544.0, 8.0, 1.15, 1.22, 0, -8, 0, -8);
+  kb("#kb-modisafter", 1552.0, 10.1, 1.22, 1.32, -8, -20, -8, -18);
+  kb("#kb-apt01b", 1592.14, 14.0, 1.05, 1.18, -12, 12, -8, -16);
+
+  /* ---- popup / card / LT entrances (elements are clips; animate inner divs) ---- */
+  function popIn(sel, at) {
+    tl.fromTo(sel + " .popup, " + sel + " .lt, " + sel + " .quotecard, " + sel + " .dispatchlab, " + sel + " .namecard, " + sel + " .srclab",
+      { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power2.out" }, at);
+  }
+  ["#p-lt-open|26.1","#p-dispatch1|15.6","#p-lt-vilonia|105.6","#p-pop-highrisk|272.9","#p-pop-45|284.1",
+   "#p-q-spann540|370.1","#p-lt-philly|521.6","#p-lt-hack|622.6","#p-pop-18|671.5","#p-pop-4min|684.1",
+   "#p-lt-philc|695.6","#p-pop-slab|711.5","#p-pop-bferry|812.6","#p-lt-smith|862.1","#p-pop-explorer|904.7",
+   "#p-lt-tusc|963.1","#p-pop-beam|1000.6","#p-pop-maddox|1082.6","#p-lt-bham|1192.6","#p-lt-rains|1273.6",
+   "#p-pop-safe|1292.7","#p-q-nowarn|1380.1","#p-pop-scar|1552.6","#p-dispatch2|1563.5","#p-nc-ashley|1580.6",
+   "#p-pop-wrangler|1632.1","#p-src-radar1|24.5","#p-src-predawn|418.0","#p-src-squall|349.6",
+   "#p-src-hackradar|621.0","#p-src-hackradar2|783.2","#p-src-hookradar|961.3","#p-src-spannquote|1043.1",
+   "#p-src-ringgold|1305.8"].forEach(function(spec) {
+    const parts = spec.split("|");
+    popIn(parts[0], parseFloat(parts[1]));
+  });
+
+  /* town-name cards land on their spoken words (608.74 / 609.84 / 611.12) */
+  tl.set(["#tn-1","#tn-2","#tn-3"], { autoAlpha: 0 }, 0);
+  tl.fromTo("#tn-1", { autoAlpha: 0, scale: 1.3 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 608.7);
+  tl.fromTo("#tn-2", { autoAlpha: 0, scale: 1.3 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 609.8);
+  tl.fromTo("#tn-3", { autoAlpha: 0, scale: 1.3 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 611.1);
+
+  /* montage cut punch: quick brightness pulse on each cold-open cut */
+  [3.6, 6.8, 10.3, 15.0].forEach(function(t) {
+    tl.fromTo("#vignette", { opacity: 1 }, { opacity: 0.6, duration: 0.12, yoyo: true, repeat: 1 }, t - 0.06);
+  });
+
+  filmLayer(tl, DUR);
+  window.__timelines["ep2-superoutbreak"] = tl;
+})();
+</script>
+</body>
+</html>
