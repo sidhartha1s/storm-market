@@ -205,7 +205,3 @@ Thin and mostly at the front. The only real explainer content:
 - **Little on long-term/lasting impacts beyond generic "rebuilding took years"** — no specific follow-up on Hackleberg or Tuscaloosa's recovery beyond one sentence each; no present-day (i.e., "as of today") status check-in for any specific family or business.
 - **EF5 "pushed past the scale" claim under-explained** — an evocative line but doesn't explain how post-storm engineers estimate wind speeds beyond what EF5's damage-based scale can measure, which would be an easy, differentiating explainer beat.
 - **Warning-time stat (24 minutes average) is dropped in without sourcing or comparison** — no context for whether 24 minutes was above/below the era's typical lead time, which would strengthen the "systemic change" act.
-
----
-
-## Summary for team lead (returned separately, not duplicated here)
