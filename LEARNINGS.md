@@ -2,6 +2,27 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
+## 2026-07-26 — ep2 design review (owner corrections, all wired into CLAUDE.md/DESIGN.md same session)
+
+1. **Broadcast-clip rehook cadence**: core audience 40–70+ watched these disasters on live TV —
+   real broadcast/news/PD/survivor clips every 45–60s as rehooks; stock fills BETWEEN real clips,
+   never the reverse. Network clips 3–4s, narrated-over, credited (credit ≠ license, ≠ claim immunity).
+2. **Claims-vs-strikes ruling (Oldshue)**: network material = revenue claims (budgeted OK);
+   independent chaser/streamer footage = manual strikes (channel-fatal) → NEVER-without-license
+   covers streamers too. Disguising a source (grain/crops/short cuts) to dodge Content ID is
+   prohibited — structural immunity, not obfuscation. The story can be narrated over our radar
+   re-plots + network tower-cam instead of the streamer's frames.
+3. **Burned-in radar timestamps: map to narration OR crop out of frame** — cropping now an
+   approved alternative to honest-labeling when the clock isn't the story. UTC-vs-local trap stands.
+4. **Cold-open montage grammar**: clips enter MID-ACTION (the hit, not wind-up/aftermath), cuts
+   land ON the audio event (scream/crash/dispatch line), 911 audio as one scene in the chain.
+   Never re-rip clips from competitor videos — trace to original sources (their edit carries
+   their Content ID fingerprint + VO bleed); refs are a shot list only.
+5. **Conditional-fact rule**: a proposed distinctive fact ships ONLY if verification confirms it
+   (e.g. "Wrangler plant never reopened") — drop entirely on failure, never soften into "reportedly".
+6. **Runtime**: 13–23 min band is a default, not a cap — owner explicitly ordered 30 min for ep2
+   (high-demand topic). Word formula scales: minutes × 0.9 × 137.
+
 ## 2026-07-23 — v3 pre-render multi-agent QC sweep (owner-ordered; caught what 2 shipped versions missed)
 
 A 4-agent Workflow sweep (media-contract / timeline-contract / sync-audit / snapshot-eyeball)
