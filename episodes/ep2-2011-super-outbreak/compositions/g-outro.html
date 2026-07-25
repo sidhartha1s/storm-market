@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:#030507; font-family:Arial,sans-serif; }
+  .stage { position:absolute; inset:0; display:grid; place-items:center; }
+  .wrap { text-align:center; }
+  .twh { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:120px; color:#f2f5f8; letter-spacing:6px; }
+  .twh .amber { color:#d8a13a; }
+  .tag { font-family:Georgia,serif; font-style:italic; font-size:34px; color:#93a3b2; margin-top:26px; }
+</style>
+<div id="root" data-composition-id="g-outro" data-width="1920" data-height="1080">
+  <div class="stage">
+    <div class="wrap">
+      <div class="twh" id="g-outro-twh">THE <span class="amber">WARNING</span> HOUR</div>
+      <div class="tag" id="g-outro-tag">Learn what yours sounds like.</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#g-outro-twh","#g-outro-tag"], {autoAlpha:0}, 0);
+  /* slot = a9-s1 start + 21.7 → title lands ON "The Warning Hour" @22.3 rel-segment (rel-slot 0.6) */
+  tl.fromTo("#g-outro-twh", {autoAlpha:0, scale:1.14}, {autoAlpha:1, scale:1, duration:0.45, ease:"power3.out"}, 0.55);
+  tl.fromTo("#g-outro-tag", {autoAlpha:0}, {autoAlpha:1, duration:0.7}, 2.4);
+  tl.to(".wrap", {autoAlpha:0, duration:1.0}, 6.8);
+  window.__timelines["g-outro"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
