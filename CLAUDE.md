@@ -43,7 +43,9 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   fills between real clips.** Full rule in DESIGN.md.
 - **Storm-chaser footage: NEVER without a license** — they claim and strike aggressively.
   Includes independent streamers/videographers (Oldshue class), not just chasers by job title;
-  credit ≠ license; never disguise a source (grain/crop/short-cut) to dodge detection.
+  credit ≠ license; never disguise a source (grain/crop/short-cut) to sneak UNLICENSED footage
+  past detection. (Grain/grade on legitimately-usable assets to unify the look stays fine —
+  the sin is obfuscating provenance, not styling.)
 - NO AI-generated "witnesses" or fabricated survivor quotes, ever. Real quotes come from NWS
   service assessments / news archives, shown as on-screen text with attribution.
 - Reused-content safety = scripted original narration with analysis. A clip reel is a channel killer.
