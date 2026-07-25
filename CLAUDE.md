@@ -96,7 +96,8 @@ Per episode in `episodes/<slug>/`:
   sub-compositions (one per act) so per-act re-renders are native (owner-approved 2026-07-26).
 - **Draft-proxy review loop (owner order 2026-07-26): every review cut ships as a DRAFT render
   first** — `npx hyperframes@<pin> render . --gpu --browser-gpu --experimental-fast-capture=true
-  --quality draft --crf 32 --fps 15 --workers 3 -o renders/<name>-draft.mp4` (~15-20 min vs ~42).
+  --quality draft --crf 32 --fps 15 --workers 3 -o renders/<name>-draft.mp4` (measured 2026-07-26
+  on ep1 17:17 comp: 21m 16s vs 39m 32s full; 258 MB vs 1775 MB; 1080p15, text fully readable).
   Studio preview cannot realtime-play 15+ min media-heavy comps — don't offer it for review.
   Full-quality render ONLY after owner approves the draft.
 
