@@ -5,71 +5,70 @@
 <template>
 <style>
   #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; }
-  .doc { position:absolute; left:120px; top:90px; width:700px; }
+  .doc { position:absolute; left:120px; top:90px; width:760px; }
   .doceye { font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
   .doctit { font-family:'Arial Black',Arial,sans-serif; font-size:54px; color:#f2f5f8; margin-top:14px; line-height:1.1; }
   .docsub { font-family:Georgia,serif; font-style:italic; font-size:27px; color:#d8a13a; margin-top:14px; }
-  .stat { position:absolute; left:120px; width:820px; }
-  #g-sa-stat1 { top:400px; } #g-sa-stat2 { top:560px; } #g-sa-stat3 { top:720px; }
-  .stat .big { font-family:'Courier New',monospace; font-weight:700; font-size:88px; color:#e8c56a; display:inline-block; min-width:260px; }
-  .stat .lab { font-size:30px; color:#dfe7ee; font-weight:700; letter-spacing:1px; }
-  .grid { position:absolute; right:150px; top:330px; width:560px; }
-  .gridlab { font-size:22px; letter-spacing:4px; color:#93a3b2; font-weight:700; margin-bottom:24px; }
-  .tx { position:relative; float:left; width:150px; height:150px; margin:0 18px 18px 0; background:#101820; border:2px solid #2a3644;
-    display:grid; place-items:center; }
-  .tx .ico { font-size:52px; color:#7fd4a0; font-family:'Arial Black',Arial,sans-serif; }
-  .tx .nm { position:absolute; bottom:8px; left:0; right:0; text-align:center; font-size:16px; color:#93a3b2; letter-spacing:1px; }
-  .tx .cross { position:absolute; inset:0; display:grid; place-items:center; font-size:110px; color:#c0392b; font-family:'Arial Black',Arial,sans-serif; }
+  .stat { position:absolute; left:120px; width:860px; }
+  #g-sa-stat1 { top:430px; } #g-sa-stat2 { top:610px; }
+  .stat .big { font-family:'Courier New',monospace; font-weight:700; font-size:88px; color:#e8c56a; display:inline-block; min-width:230px; }
+  .stat .lab { font-size:29px; color:#dfe7ee; font-weight:700; letter-spacing:1px; }
+  .stat .fine { display:block; font-size:20px; color:#93a3b2; margin-top:8px; font-weight:400; font-family:Georgia,serif; font-style:italic; }
+  .grid { position:absolute; right:110px; top:330px; width:640px; }
+  .gridlab { font-size:22px; letter-spacing:4px; color:#93a3b2; font-weight:700; margin-bottom:20px; }
+  .txrow { position:relative; height:64px; border-bottom:1px solid #1c2732; }
+  .txnm { position:absolute; left:0; top:14px; font-size:27px; color:#dfe7ee; font-weight:700; letter-spacing:1px; }
+  .txtime { position:absolute; right:70px; top:18px; font-family:'Courier New',monospace; font-size:23px; color:#93a3b2; }
+  .txx { position:absolute; right:6px; top:6px; font-size:40px; color:#c0392b; font-family:'Arial Black',Arial,sans-serif; }
+  .gridsrc { font-size:17px; color:#5d6d7c; margin-top:14px; font-family:Georgia,serif; font-style:italic; }
   .punch { position:absolute; left:0; right:0; bottom:70px; text-align:center; }
-  .punch .p1 { font-family:'Arial Black',Arial,sans-serif; font-size:56px; color:#f2f5f8; letter-spacing:2px; }
+  .punch .p1 { font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; letter-spacing:2px; }
   .punch .p2 { font-family:Georgia,serif; font-style:italic; font-size:33px; color:#c0392b; margin-top:12px; font-weight:700; }
 </style>
 <div id="root" data-composition-id="g-sa" data-width="1920" data-height="1080">
   <div class="doc" id="g-sa-doc">
     <div class="doceye">U.S. GOVERNMENT · POST-EVENT INVESTIGATION</div>
     <div class="doctit">NWS SERVICE ASSESSMENT</div>
-    <div class="docsub">"The Historic Tornadoes of April 2011" — what the morning wave destroyed</div>
+    <div class="docsub">"The Historic Tornadoes of April 2011" — the infrastructure that failed first</div>
   </div>
-  <div class="stat" id="g-sa-stat1"><span class="big" id="g-sa-n1">0</span> <span class="lab">ELECTRICAL TRANSMISSION TOWERS DOWN</span></div>
-  <div class="stat" id="g-sa-stat2"><span class="big" id="g-sa-n2">0</span> <span class="lab">HOMES WITHOUT POWER BEFORE NOON</span></div>
-  <div class="stat" id="g-sa-stat3"><span class="big" style="color:#c0392b" id="g-sa-n3">6</span> <span class="lab">NOAA WEATHER RADIO TRANSMITTERS — SILENT</span></div>
+  <div class="stat" id="g-sa-stat1"><span class="big" id="g-sa-n1">0</span> <span class="lab">HIGH-TENSION TRANSMISSION TOWERS DESTROYED</span>
+    <span class="fine">"…more than 100 high-tension power transmission line towers were destroyed, most across northern Alabama."</span></div>
+  <div class="stat" id="g-sa-stat2"><span class="big" style="color:#c0392b" id="g-sa-n2">6</span> <span class="lab">NOAA WEATHER RADIO TRANSMITTERS DOWN</span>
+    <span class="fine">"In some of these areas, power was not restored by the time the… afternoon/evening storms moved through."</span></div>
   <div class="grid" id="g-sa-grid">
-    <div class="gridlab">WEATHER RADIO COVERAGE · NORTH ALABAMA</div>
-    <div class="tx" id="g-sa-tx1"><span class="ico">((•))</span><span class="nm">HUNTSVILLE</span><span class="cross" id="g-sa-x1">×</span></div>
-    <div class="tx" id="g-sa-tx2"><span class="ico">((•))</span><span class="nm">CULLMAN</span><span class="cross" id="g-sa-x2">×</span></div>
-    <div class="tx" id="g-sa-tx3"><span class="ico">((•))</span><span class="nm">FLORENCE</span><span class="cross" id="g-sa-x3">×</span></div>
-    <div class="tx" id="g-sa-tx4"><span class="ico">((•))</span><span class="nm">DECATUR</span><span class="cross" id="g-sa-x4">×</span></div>
-    <div class="tx" id="g-sa-tx5"><span class="ico">((•))</span><span class="nm">FT. PAYNE</span><span class="cross" id="g-sa-x5">×</span></div>
-    <div class="tx" id="g-sa-tx6"><span class="ico">((•))</span><span class="nm">ANNISTON</span><span class="cross" id="g-sa-x6">×</span></div>
+    <div class="gridlab">NWR TRANSMITTER OUTAGES · APRIL 27 (SA TABLE 2)</div>
+    <div class="txrow" id="g-sa-tx1"><span class="txnm">FLORENCE</span><span class="txtime">6:44 AM</span><span class="txx" id="g-sa-x1">×</span></div>
+    <div class="txrow" id="g-sa-tx2"><span class="txnm">WINFIELD</span><span class="txtime">8:23 AM</span><span class="txx" id="g-sa-x2">×</span></div>
+    <div class="txrow" id="g-sa-tx3"><span class="txnm">CULLMAN</span><span class="txtime">2:45 PM · struck by tornado</span><span class="txx" id="g-sa-x3">×</span></div>
+    <div class="txrow" id="g-sa-tx4"><span class="txnm">HUNTSVILLE</span><span class="txtime">5:15 PM</span><span class="txx" id="g-sa-x4">×</span></div>
+    <div class="txrow" id="g-sa-tx5"><span class="txnm">WINCHESTER</span><span class="txtime">5:25 PM</span><span class="txx" id="g-sa-x5">×</span></div>
+    <div class="txrow" id="g-sa-tx6"><span class="txnm">FORT PAYNE</span><span class="txtime">6:30 PM</span><span class="txx" id="g-sa-x6">×</span></div>
+    <div class="gridsrc">Source: NWS Service Assessment, Table 2 — outage and restoration times per transmitter</div>
   </div>
   <div class="punch" id="g-sa-punch">
-    <div class="p1" id="g-sa-p1">THE WARNINGS WOULD BE ISSUED ON TIME.</div>
-    <div class="p2" id="g-sa-p2">North Alabama walked into the afternoon partly deaf.</div>
+    <div class="p1" id="g-sa-p1">THE WARNINGS WERE ISSUED ON TIME.</div>
+    <div class="p2" id="g-sa-p2">Much of north Alabama's warning voice was already gone.</div>
   </div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function() {
   const tl = gsap.timeline({ paused: true });
-  tl.set(["#g-sa-doc","#g-sa-stat1","#g-sa-stat2","#g-sa-stat3","#g-sa-grid","#g-sa-p1","#g-sa-p2"], {autoAlpha:0}, 0);
+  tl.set(["#g-sa-doc","#g-sa-stat1","#g-sa-stat2","#g-sa-grid","#g-sa-p1","#g-sa-p2"], {autoAlpha:0}, 0);
   tl.set(["#g-sa-x1","#g-sa-x2","#g-sa-x3","#g-sa-x4","#g-sa-x5","#g-sa-x6"], {autoAlpha:0}, 0);
-  /* slot = a2-s2 start + 4.5 → rel = cue - 4.5. towers100@10.84, six@19.38, sirens@32.18, issued@46.42, deaf@55.44 */
+  /* slot = a2-s2 start + 4.5 → rel = cue - 4.5. towers@10.76, six@27.48, issued@54.8, voice@64.58 */
   tl.fromTo("#g-sa-doc", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.7}, 0.3);
-  tl.fromTo("#g-sa-stat1", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.4}, 5.6);
-  const n1={v:0}, n2={v:0};
-  tl.to(n1, {v:100, duration:1.6, ease:"power3.out", onUpdate:()=>{const e=document.getElementById("g-sa-n1"); if(e) e.textContent=Math.round(n1.v)+"+";}}, 5.9);
-  tl.fromTo("#g-sa-stat2", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.4}, 9.4);
-  tl.to(n2, {v:250000, duration:2.0, ease:"power3.out", onUpdate:()=>{const e=document.getElementById("g-sa-n2"); if(e) e.textContent=Math.round(n2.v/1000)+"K+";}}, 9.7);
-  tl.fromTo("#g-sa-grid", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 13.4);
-  tl.fromTo("#g-sa-stat3", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.4}, 14.9);
+  tl.fromTo("#g-sa-stat1", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.4}, 5.9);
+  const n1={v:0};
+  tl.to(n1, {v:100, duration:1.6, ease:"power3.out", onUpdate:()=>{const e=document.getElementById("g-sa-n1"); if(e) e.textContent=Math.round(n1.v)+"+";}}, 6.2);
+  tl.fromTo("#g-sa-stat2", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.4}, 22.7);
+  tl.fromTo("#g-sa-grid", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 24.6);
   for (let i=1;i<=6;i++) {
-    tl.fromTo("#g-sa-x"+i, {autoAlpha:0, scale:2.2}, {autoAlpha:1, scale:1, duration:0.25, ease:"power4.in"}, 15.6+i*1.15);
+    tl.fromTo("#g-sa-x"+i, {autoAlpha:0, scale:2.2}, {autoAlpha:1, scale:1, duration:0.25, ease:"power4.in"}, 25.4+i*1.5);
   }
-  /* sirens beat @32.18 → grid pulses dark */
-  tl.to("#g-sa-grid", {opacity:0.35, duration:0.8}, 28.0);
-  tl.fromTo("#g-sa-p1", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5}, 41.9);
-  tl.fromTo("#g-sa-p2", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 50.9);
-  tl.to("#root >*", {}, 0); /* noop keep */
+  tl.to("#g-sa-grid", {opacity:0.4, duration:0.8}, 46.0);
+  tl.fromTo("#g-sa-p1", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5}, 50.2);
+  tl.fromTo("#g-sa-p2", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 59.9);
   window.__timelines["g-sa"] = tl;
 })();
 </script>
