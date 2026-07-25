@@ -2,6 +2,16 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
+## 2026-07-26 — draft-proxy render validated (timed on ep1 v3d, 17:17 comp)
+
+`--quality draft --crf 32 --fps 15 --workers 3`: **21m 16s vs 39m 32s** standard (46% faster),
+258 MB vs 1775 MB. 1080p at 15fps — quote/graphic text fully readable in extracted frames;
+review-quality confirmed by eyeball. Capture dominates render time (fps halving ≈ halves capture;
+encode/pipeline overhead is the floor), so don't expect draft to scale below ~half. This is THE
+review path per CLAUDE.md; full-quality render only after owner approves the draft.
+Monitor gotcha: "render finished" check via `tasklist ... node.exe` is too broad — other node
+processes keep it true forever; watch for the log's "Render complete" line instead.
+
 ## 2026-07-26 — ep2 design review (owner corrections, all wired into CLAUDE.md/DESIGN.md same session)
 
 1. **Broadcast-clip rehook cadence**: core audience 40–70+ watched these disasters on live TV —
