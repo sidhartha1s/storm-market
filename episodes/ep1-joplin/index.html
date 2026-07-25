@@ -1,8 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=1920, height=1080" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
   <title>The Sirens of Joplin — The Warning Hour Ep. 1 (v3)</title>
   <script src="gsap.min.js"></script>
   <style>
@@ -53,431 +53,431 @@
   </style>
 </head>
 <body>
-<div id="root" data-composition-id="ep1-joplin" data-start="0" data-width="1920" data-height="1080" data-duration="1037" data-fps="30">
+<div data-hf-id="hf-xn7h" id="root" data-composition-id="ep1-joplin" data-start="0" data-width="1920" data-height="1080" data-duration="1037" data-fps="30">
 
   <!-- ============ MUSIC BEDS ============ -->
-  <audio id="bgm-tense"   src="media/music/tense-curious-loop.mp3"      data-start="0"     data-duration="193"   data-volume="0" data-bed="1"></audio>
-  <audio id="bgm-dread"   src="media/music/dread-build-loop.mp3"        data-start="191.5" data-duration="450"   data-volume="0" data-bed="1"></audio>
-  <audio id="bgm-neutral" src="media/music/neutral-underscore-loop.mp3" data-start="641"   data-duration="199"   data-volume="0" data-bed="1"></audio>
-  <audio id="bgm-somber"  src="media/music/aftermath-somber-loop.mp3"   data-start="840"   data-duration="111"   data-volume="0" data-bed="1"></audio>
-  <audio id="bgm-hope"    src="media/music/hopeful-resolve-loop.mp3"    data-start="951"   data-duration="86"    data-volume="0" data-bed="1"></audio>
+  <audio data-hf-id="hf-uy5w" id="bgm-tense" src="media/music/tense-curious-loop.mp3" data-start="0" data-duration="193" data-volume="0" data-bed="1"></audio>
+  <audio data-hf-id="hf-knf8" id="bgm-dread" src="media/music/dread-build-loop.mp3" data-start="191.5" data-duration="450" data-volume="0" data-bed="1"></audio>
+  <audio data-hf-id="hf-8soj" id="bgm-neutral" src="media/music/neutral-underscore-loop.mp3" data-start="641" data-duration="199" data-volume="0" data-bed="1"></audio>
+  <audio data-hf-id="hf-ebmm" id="bgm-somber" src="media/music/aftermath-somber-loop.mp3" data-start="840" data-duration="111" data-volume="0" data-bed="1"></audio>
+  <audio data-hf-id="hf-j6vb" id="bgm-hope" src="media/music/hopeful-resolve-loop.mp3" data-start="951" data-duration="86" data-volume="0" data-bed="1"></audio>
 
   <!-- ============ SFX / AMBIENCE BEDS (all PD/CC0, ducked, rise in holds) ============ -->
-  <audio id="sfx-crickets1" src="media/sfx/05_town_evening_crickets.mp3" data-start="9.6"    data-duration="45.3"  data-volume="0" data-bed="1"></audio>
-  <audio id="sfx-rain"      src="media/sfx/rain-loop.mp3"                data-start="156.9"  data-duration="173.0" data-volume="0" data-bed="1"></audio>
-  <audio id="sfx-wind"      src="media/sfx/wind-loop.mp3"                data-start="235.0"  data-duration="112.3" data-volume="0" data-bed="1"></audio>
-  <audio id="sfx-siren"     src="media/sfx/03_tornado_siren_waver.ogg"   data-start="314.24" data-duration="33.06" data-volume="0" data-bed="1"></audio>
-  <audio id="sfx-rumble"    src="media/sfx/04_distant_storm_rumble.mp3"  data-start="347.3"  data-duration="108.6" data-volume="0" data-bed="1"></audio>
-  <audio id="sfx-crickets2" src="media/sfx/05_town_evening_crickets.mp3" data-start="819.0"  data-duration="22.2"  data-volume="0" data-bed="1"></audio>
+  <audio data-hf-id="hf-2omw" id="sfx-crickets1" src="media/sfx/05_town_evening_crickets.mp3" data-start="9.6" data-duration="45.3" data-volume="0" data-bed="1"></audio>
+  <audio data-hf-id="hf-zvzp" id="sfx-rain" src="media/sfx/rain-loop.mp3" data-start="156.9" data-duration="173.0" data-volume="0" data-bed="1"></audio>
+  <audio data-hf-id="hf-zeje" id="sfx-wind" src="media/sfx/wind-loop.mp3" data-start="235.0" data-duration="112.3" data-volume="0" data-bed="1"></audio>
+  <audio data-hf-id="hf-pwqf" id="sfx-siren" src="media/sfx/03_tornado_siren_waver.ogg" data-start="314.24" data-duration="33.06" data-volume="0" data-bed="1"></audio>
+  <audio data-hf-id="hf-h1ar" id="sfx-rumble" src="media/sfx/04_distant_storm_rumble.mp3" data-start="347.3" data-duration="108.6" data-volume="0" data-bed="1"></audio>
+  <audio data-hf-id="hf-1c90" id="sfx-crickets2" src="media/sfx/05_town_evening_crickets.mp3" data-start="819.0" data-duration="22.2" data-volume="0" data-bed="1"></audio>
 
   <!-- ============ INSERT + NARRATION ============ -->
-  <audio id="nx-ins1" src="media/insert/s1_insert_norm.wav" data-start="0" data-duration="9.1" data-volume="1"></audio>
-  <audio id="nx-a0s2" src="audio/a0-s2.wav" data-start="9.60"   data-duration="27.92" data-volume="1"></audio>
-  <audio id="nx-a0s3" src="audio/a0-s3.wav" data-start="38.12"  data-duration="15.40" data-volume="1"></audio>
-  <audio id="nx-a1s1" src="audio/a1-s1.wav" data-start="54.92"  data-duration="41.32" data-volume="1"></audio>
-  <audio id="nx-a1s2" src="audio/a1-s2.wav" data-start="96.84"  data-duration="31.04" data-volume="1"></audio>
-  <audio id="nx-a1s2b" src="audio/a1-s2b.wav" data-start="128.48" data-duration="27.72" data-volume="1"></audio>
-  <audio id="nx-a1s3" src="audio/a1-s3.wav" data-start="156.90" data-duration="34.24" data-volume="1"></audio>
-  <audio id="nx-a2s1" src="audio/a2-s1.wav" data-start="194.14" data-duration="40.52" data-volume="1"></audio>
-  <audio id="nx-a2s2" src="audio/a2-s2.wav" data-start="235.26" data-duration="43.84" data-volume="1"></audio>
-  <audio id="nx-a2s2b" src="audio/a2-s2b.wav" data-start="279.70" data-duration="33.84" data-volume="1"></audio>
-  <audio id="nx-a2s3" src="audio/a2-s3.wav" data-start="314.24" data-duration="32.56" data-volume="1"></audio>
-  <audio id="nx-a3s1" src="audio/a3-s1.wav" data-start="351.30" data-duration="32.48" data-volume="1"></audio>
-  <audio id="nx-a3s2" src="audio/a3-s2.wav" data-start="384.38" data-duration="39.12" data-volume="1"></audio>
-  <audio id="nx-a3s3" src="audio/a3-s3.wav" data-start="424.30" data-duration="30.80" data-volume="1"></audio>
-  <audio id="nx-a3s4" src="audio/a3-s4.wav" data-start="455.90" data-duration="41.16" data-volume="1"></audio>
-  <audio id="nx-a3s4b" src="audio/a3-s4b.wav" data-start="497.66" data-duration="29.64" data-volume="1"></audio>
-  <audio id="nx-a3s5" src="audio/a3-s5.wav" data-start="528.00" data-duration="24.28" data-volume="1"></audio>
-  <audio id="nx-a3s6b" src="audio/a3-s6b.wav" data-start="553.48" data-duration="25.60" data-volume="1"></audio>
-  <audio id="nx-a3s7" src="audio/a3-s7.wav" data-start="584.88" data-duration="27.84" data-volume="1"></audio>
-  <audio id="nx-a3s7b" src="audio/a3-s7b.wav" data-start="613.42" data-duration="27.64" data-volume="1"></audio>
-  <audio id="nx-a4s1" src="audio/a4-s1.wav" data-start="642.46" data-duration="38.44" data-volume="1"></audio>
-  <audio id="nx-a4s1b" src="audio/a4-s1b.wav" data-start="681.50" data-duration="25.16" data-volume="1"></audio>
-  <audio id="nx-a4s2" src="audio/a4-s2.wav" data-start="707.36" data-duration="32.04" data-volume="1"></audio>
-  <audio id="nx-a4s2b" src="audio/a4-s2b.wav" data-start="740.00" data-duration="26.88" data-volume="1"></audio>
-  <audio id="nx-a4s3" src="audio/a4-s3.wav" data-start="767.58" data-duration="36.76" data-volume="1"></audio>
-  <audio id="nx-a4s3b" src="audio/a4-s3b.wav" data-start="805.14" data-duration="34.64" data-volume="1"></audio>
-  <audio id="nx-a5s1" src="audio/a5-s1.wav" data-start="841.18" data-duration="29.12" data-volume="1"></audio>
-  <audio id="nx-a5s2" src="audio/a5-s2.wav" data-start="871.10" data-duration="22.72" data-volume="1"></audio>
-  <audio id="nx-a5s2b" src="audio/a5-s2b.wav" data-start="894.52" data-duration="22.68" data-volume="1"></audio>
-  <audio id="nx-a5s3" src="audio/a5-s3.wav" data-start="918.00" data-duration="32.88" data-volume="1"></audio>
-  <audio id="nx-a6s0" src="audio/a6-s0.wav" data-start="952.48" data-duration="26.88" data-volume="1"></audio>
-  <audio id="nx-a6s1" src="audio/a6-s1.wav" data-start="980.06" data-duration="32.04" data-volume="1"></audio>
-  <audio id="nx-a6s2" src="audio/a6-s2.wav" data-start="1012.90" data-duration="17.40" data-volume="1"></audio>
+  <audio data-hf-id="hf-8snm" id="nx-ins1" src="media/insert/s1_insert_norm.wav" data-start="0" data-duration="9.1" data-volume="1"></audio>
+  <audio data-hf-id="hf-onw2" id="nx-a0s2" src="audio/a0-s2.wav" data-start="9.60" data-duration="27.92" data-volume="1"></audio>
+  <audio data-hf-id="hf-ho87" id="nx-a0s3" src="audio/a0-s3.wav" data-start="38.12" data-duration="15.40" data-volume="1"></audio>
+  <audio data-hf-id="hf-olvp" id="nx-a1s1" src="audio/a1-s1.wav" data-start="54.92" data-duration="41.32" data-volume="1"></audio>
+  <audio data-hf-id="hf-omq4" id="nx-a1s2" src="audio/a1-s2.wav" data-start="96.84" data-duration="31.04" data-volume="1"></audio>
+  <audio data-hf-id="hf-8236" id="nx-a1s2b" src="audio/a1-s2b.wav" data-start="128.48" data-duration="27.72" data-volume="1"></audio>
+  <audio data-hf-id="hf-uc2f" id="nx-a1s3" src="audio/a1-s3.wav" data-start="156.90" data-duration="34.24" data-volume="1"></audio>
+  <audio data-hf-id="hf-sr6z" id="nx-a2s1" src="audio/a2-s1.wav" data-start="194.14" data-duration="40.52" data-volume="1"></audio>
+  <audio data-hf-id="hf-r9rq" id="nx-a2s2" src="audio/a2-s2.wav" data-start="235.26" data-duration="43.84" data-volume="1"></audio>
+  <audio data-hf-id="hf-v08q" id="nx-a2s2b" src="audio/a2-s2b.wav" data-start="279.70" data-duration="33.84" data-volume="1"></audio>
+  <audio data-hf-id="hf-q9gl" id="nx-a2s3" src="audio/a2-s3.wav" data-start="314.24" data-duration="32.56" data-volume="1"></audio>
+  <audio data-hf-id="hf-gys4" id="nx-a3s1" src="audio/a3-s1.wav" data-start="351.30" data-duration="32.48" data-volume="1"></audio>
+  <audio data-hf-id="hf-j6tq" id="nx-a3s2" src="audio/a3-s2.wav" data-start="384.38" data-duration="39.12" data-volume="1"></audio>
+  <audio data-hf-id="hf-34pt" id="nx-a3s3" src="audio/a3-s3.wav" data-start="424.30" data-duration="30.80" data-volume="1"></audio>
+  <audio data-hf-id="hf-gsl0" id="nx-a3s4" src="audio/a3-s4.wav" data-start="455.90" data-duration="41.16" data-volume="1"></audio>
+  <audio data-hf-id="hf-qtao" id="nx-a3s4b" src="audio/a3-s4b.wav" data-start="497.66" data-duration="29.64" data-volume="1"></audio>
+  <audio data-hf-id="hf-1iz6" id="nx-a3s5" src="audio/a3-s5.wav" data-start="528.00" data-duration="24.28" data-volume="1"></audio>
+  <audio data-hf-id="hf-ojqt" id="nx-a3s6b" src="audio/a3-s6b.wav" data-start="553.48" data-duration="25.60" data-volume="1"></audio>
+  <audio data-hf-id="hf-ww8t" id="nx-a3s7" src="audio/a3-s7.wav" data-start="584.88" data-duration="27.84" data-volume="1"></audio>
+  <audio data-hf-id="hf-yf8k" id="nx-a3s7b" src="audio/a3-s7b.wav" data-start="613.42" data-duration="27.64" data-volume="1"></audio>
+  <audio data-hf-id="hf-2v1g" id="nx-a4s1" src="audio/a4-s1.wav" data-start="642.46" data-duration="38.44" data-volume="1"></audio>
+  <audio data-hf-id="hf-xnx5" id="nx-a4s1b" src="audio/a4-s1b.wav" data-start="681.50" data-duration="25.16" data-volume="1"></audio>
+  <audio data-hf-id="hf-s4jt" id="nx-a4s2" src="audio/a4-s2.wav" data-start="707.36" data-duration="32.04" data-volume="1"></audio>
+  <audio data-hf-id="hf-yw12" id="nx-a4s2b" src="audio/a4-s2b.wav" data-start="740.00" data-duration="26.88" data-volume="1"></audio>
+  <audio data-hf-id="hf-7up6" id="nx-a4s3" src="audio/a4-s3.wav" data-start="767.58" data-duration="36.76" data-volume="1"></audio>
+  <audio data-hf-id="hf-yr0k" id="nx-a4s3b" src="audio/a4-s3b.wav" data-start="805.14" data-duration="34.64" data-volume="1"></audio>
+  <audio data-hf-id="hf-lys5" id="nx-a5s1" src="audio/a5-s1.wav" data-start="841.18" data-duration="29.12" data-volume="1"></audio>
+  <audio data-hf-id="hf-4xft" id="nx-a5s2" src="audio/a5-s2.wav" data-start="871.10" data-duration="22.72" data-volume="1"></audio>
+  <audio data-hf-id="hf-75zj" id="nx-a5s2b" src="audio/a5-s2b.wav" data-start="894.52" data-duration="22.68" data-volume="1"></audio>
+  <audio data-hf-id="hf-bvac" id="nx-a5s3" src="audio/a5-s3.wav" data-start="918.00" data-duration="32.88" data-volume="1"></audio>
+  <audio data-hf-id="hf-hp27" id="nx-a6s0" src="audio/a6-s0.wav" data-start="952.48" data-duration="26.88" data-volume="1"></audio>
+  <audio data-hf-id="hf-s3lf" id="nx-a6s1" src="audio/a6-s1.wav" data-start="980.06" data-duration="32.04" data-volume="1"></audio>
+  <audio data-hf-id="hf-z1as" id="nx-a6s2" src="audio/a6-s2.wav" data-start="1012.90" data-duration="17.40" data-volume="1"></audio>
 
   <!-- ============ VIDEO (direct children, all muted; one use per file unless flagged CALLBACK) ============ -->
-  <video id="vx-open" src="media/act1-town/town-cloudy-evening.mp4" style="filter: brightness(0.5) saturate(0.6)" data-start="0" data-duration="9.6" data-track-index="1" muted></video>
-  <video id="vx-hooksky" src="media/stock-v3/storm-sky-nyc-skyline-silhouette.mp4" style="filter: saturate(0.55) brightness(0.85) contrast(1.06)" data-start="9.6" data-duration="5.2" data-track-index="1" muted></video>
-  <video id="vx-grad" src="media/act1-town/graduation-ceremony-wide.mp4" data-start="14.8" data-duration="5.7" data-track-index="1" muted></video>
-  <video id="vx-mainstreet" src="media/act1-town/smalltown-mainstreet-aerial.mp4" data-start="20.5" data-duration="5.0" data-track-index="1" muted></video>
-  <video id="vx-darkclouds" src="media/act1-town/dark-clouds-timelapse.mp4" style="filter: brightness(1.25)" data-start="25.5" data-duration="6.5" data-track-index="1" muted></video>
-  <video id="vx-stormfield" src="media/act2-storm/storm-timelapse-open-field.mp4" data-start="38.12" data-duration="7.4" data-track-index="1" muted></video>
-  <video id="vx-wheathorizon" src="media/stock-v3/stormy-horizon-wheat-field.mp4" data-start="45.52" data-duration="7.22" data-track-index="1" muted></video>
-  <video id="vx-townwide" src="media/stock-v2/usa-smalltown-drone-aerial.mp4" data-start="66.0" data-duration="7.98" data-track-index="1" muted></video>
-  <video id="vx-radio" src="media/stock-v2/vintage-radio-lamp-room.mp4" data-start="73.98" data-duration="6.02" data-track-index="1" muted></video>
-  <video id="vx-rainwindow" src="media/stock-v2/rain-window-cozy-night.mp4" data-start="80.0" data-duration="5.44" data-track-index="1" muted></video>
-  <video id="vx-suburb" src="media/stock-v2/residential-neighborhood-sunset.mp4" data-start="85.44" data-duration="11.4" data-track-index="1" muted></video>
-  <video id="vx-radar1" src="media/radar/radar_buildup.mp4" data-start="96.84" data-duration="10.13" data-track-index="1" muted></video>
-  <video id="vx-townaerial1" src="media/act6-rebuild/midwest-town-aerial.mp4" data-start="141.22" data-duration="8.28" data-track-index="1" muted></video>
-  <video id="vx-thunderhead" src="media/stock-v3/supercell-thunderhead-dark-dramatic.mp4" data-start="149.5" data-duration="7.4" data-track-index="1" muted></video>
-  <video id="vx-windowpov" src="media/act2-storm/window-pov-rain-street.mp4" data-start="156.90" data-duration="9.6" data-track-index="1" muted></video>
-  <video id="vx-dinner" src="media/act1-town/family-dinner-table.mp4" data-start="166.5" data-duration="9.6" data-track-index="1" muted></video>
-  <video id="vx-raincurtain1" src="media/act2-storm/rain-curtain-street-night.mp4" data-start="176.1" data-duration="11.0" data-track-index="1" muted></video>
-  <video id="vx-crttv" src="media/stock-v3/crt-tv-static-noise-vintage.mp4" style="filter: brightness(0.8)" data-start="187.1" data-duration="7.04" data-track-index="1" muted></video>
-  <video id="vx-police" src="media/stock-v2/police-lights-rain-closeup.mp4" data-start="194.14" data-duration="6.74" data-track-index="1" muted></video>
-  <video id="vx-rainwall" src="media/stock-v3/rain-wall-downpour-generic.mp4" data-start="215.4" data-duration="11.6" data-track-index="1" muted></video>
-  <video id="vx-clock" src="media/stock-v2/wallclock-minimalist-timelapse.mp4" style="filter: brightness(0.85)" data-start="227.0" data-duration="7.66" data-track-index="1" muted></video>
-  <video id="vx-rainshaft" src="media/stock-v3/rain-curtain-aerial-distant-farmland.mp4" data-start="235.26" data-duration="6.08" data-track-index="1" muted></video>
-  <video id="vx-supercell" src="media/act2-storm/supercell-structure-rolling.mp4" data-start="241.34" data-duration="9.06" data-track-index="1" muted></video>
-  <video id="vx-greymass" src="media/stock-v3/storm-clouds-dark-grey-mass.mp4" style="filter: brightness(0.75) saturate(0.5)" data-start="266.0" data-duration="13.1" data-track-index="1" muted></video>
-  <video id="vx-funnelhold" src="media/stock-v3/tornado-funnel-hold-4s.mp4" style="filter: brightness(0.85) saturate(0.75)" data-start="347.30" data-duration="4.0" data-track-index="1" muted></video>
-  <video id="vx-radar2" src="media/radar/radar_real.mp4" data-start="424.30" data-duration="10.33" data-track-index="1" muted></video>
-  <video id="vx-investigation1" src="media/stock-v3/investigation-team-laptop-discussion.mp4" style="filter: brightness(0.45) saturate(0.55)" data-start="642.46" data-duration="12.0" data-track-index="1" muted></video>
-  <video id="vx-investigation2" src="media/stock-v3/investigation-site-review.mp4" style="filter: brightness(0.45) saturate(0.6)" data-start="654.46" data-duration="7.44" data-track-index="1" muted></video>
+  <video data-hf-id="hf-lhw7" id="vx-open" src="media/act1-town/town-cloudy-evening.mp4" style="filter: brightness(0.5) saturate(0.6)" data-start="0" data-duration="9.6" data-track-index="1" muted></video>
+  <video data-hf-id="hf-p6tt" id="vx-hooksky" src="media/stock-v3/storm-sky-nyc-skyline-silhouette.mp4" style="filter: saturate(0.55) brightness(0.85) contrast(1.06)" data-start="9.6" data-duration="5.2" data-track-index="1" muted></video>
+  <video data-hf-id="hf-0p6n" id="vx-grad" src="media/act1-town/graduation-ceremony-wide.mp4" data-start="14.8" data-duration="5.7" data-track-index="1" muted></video>
+  <video data-hf-id="hf-l0iu" id="vx-mainstreet" src="media/act1-town/smalltown-mainstreet-aerial.mp4" data-start="20.5" data-duration="5.0" data-track-index="1" muted></video>
+  <video data-hf-id="hf-ltrg" id="vx-darkclouds" src="media/act1-town/dark-clouds-timelapse.mp4" style="filter: brightness(1.25)" data-start="25.5" data-duration="6.5" data-track-index="1" muted></video>
+  <video data-hf-id="hf-vor7" id="vx-stormfield" src="media/act2-storm/storm-timelapse-open-field.mp4" data-start="38.12" data-duration="7.4" data-track-index="1" muted></video>
+  <video data-hf-id="hf-zrsx" id="vx-wheathorizon" src="media/stock-v3/stormy-horizon-wheat-field.mp4" data-start="45.52" data-duration="7.22" data-track-index="1" muted></video>
+  <video data-hf-id="hf-p5gm" id="vx-townwide" src="media/stock-v2/usa-smalltown-drone-aerial.mp4" data-start="66.0" data-duration="7.98" data-track-index="1" muted></video>
+  <video data-hf-id="hf-n0lf" id="vx-radio" src="media/stock-v2/vintage-radio-lamp-room.mp4" data-start="73.98" data-duration="6.02" data-track-index="1" muted></video>
+  <video data-hf-id="hf-glbh" id="vx-rainwindow" src="media/stock-v2/rain-window-cozy-night.mp4" data-start="80.0" data-duration="5.44" data-track-index="1" muted></video>
+  <video data-hf-id="hf-izvm" id="vx-suburb" src="media/stock-v2/residential-neighborhood-sunset.mp4" data-start="85.44" data-duration="11.4" data-track-index="1" muted></video>
+  <video data-hf-id="hf-zpv4" id="vx-radar1" src="media/radar/radar_buildup.mp4" data-start="96.84" data-duration="10.13" data-track-index="1" muted></video>
+  <video data-hf-id="hf-zm6b" id="vx-townaerial1" src="media/act6-rebuild/midwest-town-aerial.mp4" data-start="141.22" data-duration="8.28" data-track-index="1" muted></video>
+  <video data-hf-id="hf-wkhk" id="vx-thunderhead" src="media/stock-v3/supercell-thunderhead-dark-dramatic.mp4" data-start="149.5" data-duration="7.4" data-track-index="1" muted></video>
+  <video data-hf-id="hf-s7nh" id="vx-windowpov" src="media/act2-storm/window-pov-rain-street.mp4" data-start="156.90" data-duration="9.6" data-track-index="1" muted></video>
+  <video data-hf-id="hf-2w0i" id="vx-dinner" src="media/act1-town/family-dinner-table.mp4" data-start="166.5" data-duration="9.6" data-track-index="1" muted></video>
+  <video data-hf-id="hf-v4ur" id="vx-raincurtain1" src="media/act2-storm/rain-curtain-street-night.mp4" data-start="176.1" data-duration="11.0" data-track-index="1" muted></video>
+  <video data-hf-id="hf-po01" id="vx-crttv" src="media/stock-v3/crt-tv-static-noise-vintage.mp4" style="filter: brightness(0.8)" data-start="187.1" data-duration="7.04" data-track-index="1" muted></video>
+  <video data-hf-id="hf-oa8l" id="vx-police" src="media/stock-v2/police-lights-rain-closeup.mp4" data-start="194.14" data-duration="6.74" data-track-index="1" muted></video>
+  <video data-hf-id="hf-cbyn" id="vx-rainwall" src="media/stock-v3/rain-wall-downpour-generic.mp4" data-start="215.4" data-duration="11.6" data-track-index="1" muted></video>
+  <video data-hf-id="hf-le4e" id="vx-clock" src="media/stock-v2/wallclock-minimalist-timelapse.mp4" style="filter: brightness(0.85)" data-start="227.0" data-duration="7.66" data-track-index="1" muted></video>
+  <video data-hf-id="hf-b0m1" id="vx-rainshaft" src="media/stock-v3/rain-curtain-aerial-distant-farmland.mp4" data-start="235.26" data-duration="6.08" data-track-index="1" muted></video>
+  <video data-hf-id="hf-5b7s" id="vx-supercell" src="media/act2-storm/supercell-structure-rolling.mp4" data-start="241.34" data-duration="9.06" data-track-index="1" muted></video>
+  <video data-hf-id="hf-asq8" id="vx-greymass" src="media/stock-v3/storm-clouds-dark-grey-mass.mp4" style="filter: brightness(0.75) saturate(0.5)" data-start="266.0" data-duration="13.1" data-track-index="1" muted></video>
+  <video data-hf-id="hf-jn6a" id="vx-funnelhold" src="media/stock-v3/tornado-funnel-hold-4s.mp4" style="filter: brightness(0.85) saturate(0.75)" data-start="347.30" data-duration="4.0" data-track-index="1" muted></video>
+  <video data-hf-id="hf-khdq" id="vx-radar2" src="media/radar/radar_real.mp4" data-start="424.30" data-duration="10.33" data-track-index="1" muted></video>
+  <video data-hf-id="hf-uqkm" id="vx-investigation1" src="media/stock-v3/investigation-team-laptop-discussion.mp4" style="filter: brightness(0.45) saturate(0.55)" data-start="642.46" data-duration="12.0" data-track-index="1" muted></video>
+  <video data-hf-id="hf-90or" id="vx-investigation2" src="media/stock-v3/investigation-site-review.mp4" style="filter: brightness(0.45) saturate(0.6)" data-start="654.46" data-duration="7.44" data-track-index="1" muted></video>
   <!-- CALLBACK (flagged): siren-pole-cc0 2nd use, warm grade, 13 min after A0 — narration is literally about the rebuilt siren policy (Batesville watertower clip violated sync rule, dropped) -->
-  <section class="clip still-wrap" data-start="805.14" data-duration="8.06" data-track-index="1" id="c-sirenpolicy" data-callback="rebuilt siren policy — deliberate echo of the opening siren still">
-    <img id="kb-sirenpolicy" src="media/act1-town/siren-downtown-sunset-ai.png" style="filter: brightness(0.96)" alt="" />
+  <section data-hf-id="hf-d7q9" class="clip still-wrap" data-start="805.14" data-duration="8.06" data-track-index="1" id="c-sirenpolicy" data-callback="rebuilt siren policy — deliberate echo of the opening siren still">
+    <img data-hf-id="hf-zjlp" id="kb-sirenpolicy" src="media/act1-town/siren-downtown-sunset-ai.png" style="filter: brightness(0.96)" alt="">
   </section>
   <!-- CALLBACK (flagged): grad clip 2nd use, dark grade — Norton's own graduation day -->
-  <video id="vx-grad2" src="media/act1-town/graduation-ceremony-wide.mp4" style="filter: brightness(0.62) saturate(0.6)" data-start="922.8" data-duration="5.94" data-track-index="1" data-callback="Norton's own graduation day — dark-grade bookend of the opening ceremony" muted></video>
-  <video id="vx-hammer" src="media/stock-v2/hands-hammering-nail.mp4" data-start="952.48" data-duration="7.0" data-track-index="1" muted></video>
-  <video id="vx-framing" src="media/act6-rebuild/house-framing-aerial.mp4" data-start="959.5" data-duration="8.34" data-track-index="1" muted></video>
-  <video id="vx-churchair" src="media/stock-v2/smalltown-church-aerial.mp4" data-start="967.84" data-duration="12.22" data-track-index="1" muted></video>
+  <video data-hf-id="hf-l95s" id="vx-grad2" src="media/act1-town/graduation-ceremony-wide.mp4" style="filter: brightness(0.62) saturate(0.6)" data-start="922.8" data-duration="5.94" data-track-index="1" data-callback="Norton's own graduation day — dark-grade bookend of the opening ceremony" muted></video>
+  <video data-hf-id="hf-4hk7" id="vx-hammer" src="media/stock-v2/hands-hammering-nail.mp4" data-start="952.48" data-duration="7.0" data-track-index="1" muted></video>
+  <video data-hf-id="hf-0nus" id="vx-framing" src="media/act6-rebuild/house-framing-aerial.mp4" data-start="959.5" data-duration="8.34" data-track-index="1" muted></video>
+  <video data-hf-id="hf-votc" id="vx-churchair" src="media/stock-v2/smalltown-church-aerial.mp4" data-start="967.84" data-duration="12.22" data-track-index="1" muted></video>
 
   <!-- ============ A0 overlays ============ -->
-  <section class="clip" data-start="0" data-duration="9.6" data-track-index="2" id="s1-overlay">
-    <div class="dim"></div>
-    <div class="lower-left">
-      <div class="kicker" id="s1-kicker">DISPATCH RECORDING — JASPER COUNTY FIRE</div>
-      <div class="loc" id="s1-loc">JOPLIN, MISSOURI</div>
-      <div class="datetime" id="s1-dt">May 22, 2011</div>
+  <section data-hf-id="hf-hh1s" class="clip" data-start="0" data-duration="9.6" data-track-index="2" id="s1-overlay">
+    <div data-hf-id="hf-y8te" class="dim"></div>
+    <div data-hf-id="hf-tann" class="lower-left">
+      <div data-hf-id="hf-i5u3" class="kicker" id="s1-kicker">DISPATCH RECORDING — JASPER COUNTY FIRE</div>
+      <div data-hf-id="hf-i0gs" class="loc" id="s1-loc">JOPLIN, MISSOURI</div>
+      <div data-hf-id="hf-52ip" class="datetime" id="s1-dt">May 22, 2011</div>
     </div>
   </section>
-  <section class="clip still-wrap" data-start="32.0" data-duration="6.12" data-track-index="1" id="c-siren0">
-    <img id="kb-siren0" src="media/act1-town/siren-downtown-sunset-ai.png" alt="" />
+  <section data-hf-id="hf-516r" class="clip still-wrap" data-start="32.0" data-duration="6.12" data-track-index="1" id="c-siren0">
+    <img data-hf-id="hf-b4ai" id="kb-siren0" src="media/act1-town/siren-downtown-sunset-ai.png" alt="">
   </section>
-  <section class="clip blackout" id="black-thesis" data-start="52.74" data-duration="2.18" data-track-index="4"></section>
+  <section data-hf-id="hf-472w" class="clip blackout" id="black-thesis" data-start="52.74" data-duration="2.18" data-track-index="4"></section>
 
   <!-- ============ A1-S1 ============ -->
-  <section class="clip still-wrap" data-start="54.92" data-duration="11.08" data-track-index="1" id="c-siren1">
-    <img id="kb-siren1" src="media/act1-town/siren-town-overlook-ai.png" alt="" />
+  <section data-hf-id="hf-sj00" class="clip still-wrap" data-start="54.92" data-duration="11.08" data-track-index="1" id="c-siren1">
+    <img data-hf-id="hf-soxu" id="kb-siren1" src="media/act1-town/siren-town-overlook-ai.png" alt="">
   </section>
 
   <!-- ============ A1-S2 radar (cover-cropped, timestamps out of frame) ============ -->
-  <section class="clip still-wrap" data-start="106.97" data-duration="9.69" data-track-index="1" id="c-radarw1">
-    <img id="kb-radarw1" src="media/radar/radar_ref_01.png" alt="" />
+  <section data-hf-id="hf-bow3" class="clip still-wrap" data-start="106.97" data-duration="9.69" data-track-index="1" id="c-radarw1">
+    <img data-hf-id="hf-2r9v" id="kb-radarw1" src="media/radar/radar_ref_01.png" alt="">
   </section>
-  <section class="clip still-wrap" data-start="116.66" data-duration="11.82" data-track-index="1" id="c-radarw2">
-    <img id="kb-radarw2" src="media/radar/radar_ref_02.png" alt="" />
+  <section data-hf-id="hf-sctr" class="clip still-wrap" data-start="116.66" data-duration="11.82" data-track-index="1" id="c-radarw2">
+    <img data-hf-id="hf-360t" id="kb-radarw2" src="media/radar/radar_ref_02.png" alt="">
   </section>
-  <div class="popup" id="popup-watch" style="left: 130px; top: 130px; opacity: 0;">WATCH ISSUED 1:30 PM — THEN HOURS OF WAITING<span class="fine">BY 5 PM, THIS APPEARS ON KSGF RADAR</span></div>
-  <div class="popup" id="popup-watch2" style="left: 130px; top: 130px; opacity: 0; border-left-color: #d8a13a;">THE STORM ORGANIZES<span class="fine">EACH FRAME — ONE SCAN, FIVE MINUTES APART</span></div>
+  <div data-hf-id="hf-q2nd" class="popup" id="popup-watch" style="left: 130px; top: 130px; opacity: 0;">WATCH ISSUED 1:30 PM — THEN HOURS OF WAITING<span data-hf-id="hf-yl0s" class="fine">BY 5 PM, THIS APPEARS ON KSGF RADAR</span></div>
+  <div data-hf-id="hf-4pi6" class="popup" id="popup-watch2" style="left: 130px; top: 130px; opacity: 0; border-left-color: #d8a13a;">THE STORM ORGANIZES<span data-hf-id="hf-6uk9" class="fine">EACH FRAME — ONE SCAN, FIVE MINUTES APART</span></div>
 
   <!-- ============ A1-S2b explainer ============ -->
-  <section class="clip still-wrap" data-start="128.48" data-duration="4.98" data-track-index="1" id="c-ops">
-    <img id="kb-nws" src="media/act2-storm/nws-ops-room-mount-holly.jpg" alt="" />
+  <section data-hf-id="hf-2qro" class="clip still-wrap" data-start="128.48" data-duration="4.98" data-track-index="1" id="c-ops">
+    <img data-hf-id="hf-g9zx" id="kb-nws" src="media/act2-storm/nws-ops-room-mount-holly.jpg" alt="">
   </section>
-  <section class="clip still-wrap" data-start="133.46" data-duration="7.76" data-track-index="1" id="c-supercellstill">
-    <img id="kb-supercellstill" src="media/act2-storm/isolated-supercell-noaa.jpg" alt="" />
+  <section data-hf-id="hf-9n5o" class="clip still-wrap" data-start="133.46" data-duration="7.76" data-track-index="1" id="c-supercellstill">
+    <img data-hf-id="hf-nj21" id="kb-supercellstill" src="media/act2-storm/isolated-supercell-noaa.jpg" alt="">
   </section>
-  <div class="popup" id="popup-wvw" style="left: 130px; top: 130px; opacity: 0; border-left-color: #d8a13a;">WATCH = INGREDIENTS EXIST<span class="fine">WARNING = IT IS FORMING NOW — ACT</span></div>
+  <div data-hf-id="hf-zn4k" class="popup" id="popup-wvw" style="left: 130px; top: 130px; opacity: 0; border-left-color: #d8a13a;">WATCH = INGREDIENTS EXIST<span data-hf-id="hf-4u71" class="fine">WARNING = IT IS FORMING NOW — ACT</span></div>
 
   <!-- ============ A2-S1 ============ -->
-  <section class="clip contain-wrap still-wrap" data-start="200.88" data-duration="14.52" data-track-index="1" id="c-warntext">
-    <img id="kb-warntext" src="media/act2-storm/nws-tor31-warning-text-1080.png" alt="" />
+  <section data-hf-id="hf-hupm" class="clip contain-wrap still-wrap" data-start="200.88" data-duration="14.52" data-track-index="1" id="c-warntext">
+    <img data-hf-id="hf-ii0n" id="kb-warntext" src="media/act2-storm/nws-tor31-warning-text-1080.png" alt="">
   </section>
-  <div class="popup" id="popup-warn" style="left: 130px; top: 850px; opacity: 0;">TORNADO WARNING 5:17 PM<span class="fine">LEAD TIME — 24 MINUTES</span></div>
-  <div class="popup" id="popup-warn2" style="left: 130px; top: 850px; opacity: 0; border-left-color: #d8a13a;">24 MINUTES — MORE WARNING THAN MOST EVER GET<span class="fine">THE AVERAGE TORNADO WARNING BUYS 13</span></div>
+  <div data-hf-id="hf-tfpz" class="popup" id="popup-warn" style="left: 130px; top: 850px; opacity: 0;">TORNADO WARNING 5:17 PM<span data-hf-id="hf-lxpr" class="fine">LEAD TIME — 24 MINUTES</span></div>
+  <div data-hf-id="hf-osqi" class="popup" id="popup-warn2" style="left: 130px; top: 850px; opacity: 0; border-left-color: #d8a13a;">24 MINUTES — MORE WARNING THAN MOST EVER GET<span data-hf-id="hf-q5ld" class="fine">THE AVERAGE TORNADO WARNING BUYS 13</span></div>
 
   <!-- ============ A2-S2 wall cloud ============ -->
-  <section class="clip still-wrap" data-start="250.4" data-duration="7.1" data-track-index="1" id="c-wallcloud">
-    <img id="kb-wallcloud" src="media/act2-storm/wall-cloud-lightning-noaa.jpg" alt="" />
+  <section data-hf-id="hf-w2pa" class="clip still-wrap" data-start="250.4" data-duration="7.1" data-track-index="1" id="c-wallcloud">
+    <img data-hf-id="hf-yba7" id="kb-wallcloud" src="media/act2-storm/wall-cloud-lightning-noaa.jpg" alt="">
   </section>
-  <video id="vx-mesocyclone" src="media/stock-v3/wall-cloud-mesocyclone-green-field.mp4" data-start="257.5" data-duration="8.5" data-track-index="1" muted></video>
+  <video data-hf-id="hf-g9kz" id="vx-mesocyclone" src="media/stock-v3/wall-cloud-mesocyclone-green-field.mp4" data-start="257.5" data-duration="8.5" data-track-index="1" muted></video>
 
   <!-- ============ A2-S2b multi-vortex graphic ============ -->
-  <section class="clip" data-start="279.70" data-duration="34.54" data-track-index="1" id="vortex-clip">
-    <div class="darkstage"></div>
-    <canvas id="vortex-canvas" width="1500" height="700"></canvas>
-    <div class="popup" id="popup-vortex" style="left: 240px; top: 150px; opacity: 0;">MULTIPLE-VORTEX TORNADO<span class="fine">SUB-VORTICES ORBIT 100 MPH FASTER THAN THE FUNNEL</span></div>
+  <section data-hf-id="hf-1fsr" class="clip" data-start="279.70" data-duration="34.54" data-track-index="1" id="vortex-clip">
+    <div data-hf-id="hf-36km" class="darkstage"></div>
+    <canvas data-hf-id="hf-9kod" id="vortex-canvas" width="1500" height="700"></canvas>
+    <div data-hf-id="hf-mk3d" class="popup" id="popup-vortex" style="left: 240px; top: 150px; opacity: 0;">MULTIPLE-VORTEX TORNADO<span data-hf-id="hf-0ati" class="fine">SUB-VORTICES ORBIT 100 MPH FASTER THAN THE FUNNEL</span></div>
   </section>
 
   <!-- ============ A2-S3 siren waveform ============ -->
-  <section class="clip" data-start="314.24" data-duration="33.06" data-track-index="1" id="wave-clip">
-    <div class="darkstage"></div>
-    <canvas id="wave-canvas" width="1500" height="700"></canvas>
-    <div class="popup" id="popup-siren1" style="left: 240px; top: 210px; opacity: 0; border-left-color: #d8a13a;">5:11 PM — SIREN ONE</div>
-    <div class="popup" id="popup-sirenmid" style="left: 620px; top: 420px; opacity: 0; border-left-color: #d8a13a;">27 MINUTES OF SILENCE IN BETWEEN</div>
-    <div class="popup" id="popup-siren2" style="left: 240px; top: 690px; opacity: 0;">5:38 PM — SIREN TWO<span class="fine">SAME SOUND. NO ALL-CLEAR SIGNAL EXISTED.</span></div>
+  <section data-hf-id="hf-wahr" class="clip" data-start="314.24" data-duration="33.06" data-track-index="1" id="wave-clip">
+    <div data-hf-id="hf-gwlm" class="darkstage"></div>
+    <canvas data-hf-id="hf-22cu" id="wave-canvas" width="1500" height="700"></canvas>
+    <div data-hf-id="hf-8gcl" class="popup" id="popup-siren1" style="left: 240px; top: 210px; opacity: 0; border-left-color: #d8a13a;">5:11 PM — SIREN ONE</div>
+    <div data-hf-id="hf-hzw5" class="popup" id="popup-sirenmid" style="left: 620px; top: 420px; opacity: 0; border-left-color: #d8a13a;">27 MINUTES OF SILENCE IN BETWEEN</div>
+    <div data-hf-id="hf-nvhz" class="popup" id="popup-siren2" style="left: 240px; top: 690px; opacity: 0;">5:38 PM — SIREN TWO<span data-hf-id="hf-fq9y" class="fine">SAME SOUND. NO ALL-CLEAR SIGNAL EXISTED.</span></div>
   </section>
 
   <!-- ============ A3-S1 march begins ============ -->
-  <section class="clip still-wrap" data-start="351.30" data-duration="5.5" data-track-index="1" id="c-vel1">
-    <img id="kb-vel1" src="media/radar/radar_vel_02.png" style="transform: scale(1.18)" alt="" />
+  <section data-hf-id="hf-dplg" class="clip still-wrap" data-start="351.30" data-duration="5.5" data-track-index="1" id="c-vel1">
+    <img data-hf-id="hf-a7f9" id="kb-vel1" src="media/radar/radar_vel_02.png" style="transform: scale(1.18)" alt="">
   </section>
-  <section class="clip still-wrap" data-start="356.8" data-duration="9.2" data-track-index="1" id="c-schiff1">
-    <img id="kb-schiff1" src="media/act3-march/usace_schifferdecker_tree_site_1.jpg" alt="" />
+  <section data-hf-id="hf-zphd" class="clip still-wrap" data-start="356.8" data-duration="9.2" data-track-index="1" id="c-schiff1">
+    <img data-hf-id="hf-rvw5" id="kb-schiff1" src="media/act3-march/usace_schifferdecker_tree_site_1.jpg" alt="">
   </section>
-  <section class="clip still-wrap" data-start="366.0" data-duration="9.0" data-track-index="1" id="c-schiff2">
-    <img id="kb-schiff2" src="media/act3-march/usace_schifferdecker_tree_site_2.jpg" alt="" />
+  <section data-hf-id="hf-k641" class="clip still-wrap" data-start="366.0" data-duration="9.0" data-track-index="1" id="c-schiff2">
+    <img data-hf-id="hf-hpdh" id="kb-schiff2" src="media/act3-march/usace_schifferdecker_tree_site_2.jpg" alt="">
   </section>
-  <section class="clip still-wrap" data-start="375.0" data-duration="9.38" data-track-index="1" id="c-vel3">
-    <img id="kb-vel3" src="media/radar/radar_vel_03.png" style="transform: scale(1.18)" alt="" />
+  <section data-hf-id="hf-l2yf" class="clip still-wrap" data-start="375.0" data-duration="9.38" data-track-index="1" id="c-vel3">
+    <img data-hf-id="hf-d7ng" id="kb-vel3" src="media/radar/radar_vel_03.png" style="transform: scale(1.18)" alt="">
   </section>
-  <div class="lt" id="lt-schiff" style="opacity: 0;"><div class="lt-loc">SCHIFFERDECKER AVENUE</div><br/><div class="lt-time">5:38 PM — EF5 · WINDS 200+ MPH</div></div>
+  <div data-hf-id="hf-ct1y" class="lt" id="lt-schiff" style="opacity: 0;"><div data-hf-id="hf-da2h" class="lt-loc">SCHIFFERDECKER AVENUE</div><br data-hf-id="hf-x5px"><div data-hf-id="hf-gzsf" class="lt-time">5:38 PM — EF5 · WINDS 200+ MPH</div></div>
 
   <!-- ============ A3-S2 St John's (dark beat synced) ============ -->
-  <section class="clip still-wrap" data-start="384.38" data-duration="8.12" data-track-index="1" id="c-stj1">
-    <img id="kb-stj1" src="media/act3-march/fema_stjohns_total_loss.jpg" alt="" />
+  <section data-hf-id="hf-7e9r" class="clip still-wrap" data-start="384.38" data-duration="8.12" data-track-index="1" id="c-stj1">
+    <img data-hf-id="hf-7pws" id="kb-stj1" src="media/act3-march/fema_stjohns_total_loss.jpg" alt="">
   </section>
-  <video id="vx-hospcorridor" src="media/stock-v3/hospital-corridor-dark-clip.mp4" style="filter: brightness(0.6) saturate(0.65)" data-start="392.5" data-duration="5.6" data-track-index="1" muted></video>
-  <section class="clip still-wrap" data-start="398.1" data-duration="8.4" data-track-index="1" id="c-stj2">
-    <img id="kb-stj2" src="media/act3-march/fema_stjohns_bronze_statue.jpg" alt="" />
+  <video data-hf-id="hf-2ra9" id="vx-hospcorridor" src="media/stock-v3/hospital-corridor-dark-clip.mp4" style="filter: brightness(0.6) saturate(0.65)" data-start="392.5" data-duration="5.6" data-track-index="1" muted></video>
+  <section data-hf-id="hf-fodc" class="clip still-wrap" data-start="398.1" data-duration="8.4" data-track-index="1" id="c-stj2">
+    <img data-hf-id="hf-csyq" id="kb-stj2" src="media/act3-march/fema_stjohns_bronze_statue.jpg" alt="">
   </section>
   <!-- memorial dissolve: candle fades in on track 2 over the tail of stj2 -->
-  <video id="vx-candle" src="media/stock-v2/candle-vigil-memorial-flame.mp4" style="filter: brightness(0.8)" data-start="406.5" data-duration="14.3" data-track-index="2" muted></video>
-  <section class="clip" data-start="406.5" data-duration="14.3" data-track-index="3" id="c-candle-dim">
-    <div class="dim"></div>
+  <video data-hf-id="hf-dsf5" id="vx-candle" src="media/stock-v2/candle-vigil-memorial-flame.mp4" style="filter: brightness(0.8)" data-start="406.5" data-duration="14.3" data-track-index="2" muted></video>
+  <section data-hf-id="hf-eosw" class="clip" data-start="406.5" data-duration="14.3" data-track-index="3" id="c-candle-dim">
+    <div data-hf-id="hf-cphi" class="dim"></div>
   </section>
   <!-- "died in the dark" — literal dark beat before the radar hit -->
-  <section class="clip blackout" id="black-stjohns" data-start="420.8" data-duration="3.5" data-track-index="4"></section>
-  <div class="lt" id="lt-stjohns" style="opacity: 0;"><div class="lt-loc">ST. JOHN'S REGIONAL MEDICAL CENTER</div><br/><div class="lt-time">5:41 PM — 183 PATIENTS INSIDE</div></div>
+  <section data-hf-id="hf-2kk6" class="clip blackout" id="black-stjohns" data-start="420.8" data-duration="3.5" data-track-index="4"></section>
+  <div data-hf-id="hf-hgrm" class="lt" id="lt-stjohns" style="opacity: 0;"><div data-hf-id="hf-46y4" class="lt-loc">ST. JOHN'S REGIONAL MEDICAL CENTER</div><br data-hf-id="hf-rsrt"><div data-hf-id="hf-re19" class="lt-time">5:41 PM — 183 PATIENTS INSIDE</div></div>
 
   <!-- ============ A3-S3 radar (stamps deliberately visible) ============ -->
-  <section class="clip contain-wrap still-wrap" data-start="434.63" data-duration="9.37" data-track-index="1" id="c-debris">
-    <img id="kb-debris" src="media/radar/radar_ref_04.png" alt="" />
+  <section data-hf-id="hf-v3wl" class="clip contain-wrap still-wrap" data-start="434.63" data-duration="9.37" data-track-index="1" id="c-debris">
+    <img data-hf-id="hf-c877" id="kb-debris" src="media/radar/radar_ref_04.png" alt="">
   </section>
-  <section class="clip contain-wrap still-wrap" data-start="444.0" data-duration="11.9" data-track-index="1" id="c-velocity">
-    <img id="kb-velocity" src="media/radar/radar_vel_04.png" alt="" />
+  <section data-hf-id="hf-50in" class="clip contain-wrap still-wrap" data-start="444.0" data-duration="11.9" data-track-index="1" id="c-velocity">
+    <img data-hf-id="hf-k18l" id="kb-velocity" src="media/radar/radar_vel_04.png" alt="">
   </section>
-  <div class="annot-ring" id="ring-debris" style="left: 870px; top: 480px; width: 180px; height: 150px; opacity: 0;"></div>
-  <div class="popup" id="popup-debris" style="left: 130px; top: 130px; opacity: 0;">DEBRIS BALL — 5:43 PM<span class="fine">TWO MINUTES AFTER THE HOSPITAL WAS HIT</span></div>
-  <div class="popup" id="popup-couplet" style="left: 130px; top: 130px; opacity: 0;">188-KNOT VELOCITY COUPLET<span class="fine">KSGF RADAR — 55 MILES AWAY</span></div>
-  <div class="popup" id="popup-couplet2" style="left: 130px; top: 290px; opacity: 0; border-left-color: #d8a13a;">216 MPH OF ROTATION<span class="fine">MEASURED FROM THE NEXT COUNTY OVER</span></div>
+  <div data-hf-id="hf-yivo" class="annot-ring" id="ring-debris" style="left: 870px; top: 480px; width: 180px; height: 150px; opacity: 0;"></div>
+  <div data-hf-id="hf-11of" class="popup" id="popup-debris" style="left: 130px; top: 130px; opacity: 0;">DEBRIS BALL — 5:43 PM<span data-hf-id="hf-blr9" class="fine">TWO MINUTES AFTER THE HOSPITAL WAS HIT</span></div>
+  <div data-hf-id="hf-u52m" class="popup" id="popup-couplet" style="left: 130px; top: 130px; opacity: 0;">188-KNOT VELOCITY COUPLET<span data-hf-id="hf-jd8c" class="fine">KSGF RADAR — 55 MILES AWAY</span></div>
+  <div data-hf-id="hf-1csb" class="popup" id="popup-couplet2" style="left: 130px; top: 290px; opacity: 0; border-left-color: #d8a13a;">216 MPH OF ROTATION<span data-hf-id="hf-8fh9" class="fine">MEASURED FROM THE NEXT COUNTY OVER</span></div>
 
   <!-- ============ A3-S4 Range Line / Home Depot ============ -->
-  <section class="clip still-wrap" data-start="455.90" data-duration="11.3" data-track-index="1" id="c-rangeline1">
-    <img id="kb-rangeline1" src="media/act3-march/noaa_aerial_rangeline_wide_crop.jpg" alt="" />
+  <section data-hf-id="hf-k0vg" class="clip still-wrap" data-start="455.90" data-duration="11.3" data-track-index="1" id="c-rangeline1">
+    <img data-hf-id="hf-1noz" id="kb-rangeline1" src="media/act3-march/noaa_aerial_rangeline_wide_crop.jpg" alt="">
   </section>
-  <section class="clip still-wrap" data-start="467.2" data-duration="10.8" data-track-index="1" id="c-homedepot">
-    <img id="kb-homedepot" src="media/act3-march/noaa_aerial_homedepot_crop.jpg" alt="" />
+  <section data-hf-id="hf-0fpv" class="clip still-wrap" data-start="467.2" data-duration="10.8" data-track-index="1" id="c-homedepot">
+    <img data-hf-id="hf-ahwu" id="kb-homedepot" src="media/act3-march/noaa_aerial_homedepot_crop.jpg" alt="">
   </section>
-  <section class="clip" data-start="478.0" data-duration="19.66" data-track-index="1" id="panel-clip">
-    <div class="darkstage"></div>
-    <div id="panel-stage" style="position:absolute; left:560px; top:260px; width:800px; height:560px;"></div>
-    <div class="popup" id="popup-panels" style="left: 240px; top: 150px; opacity: 0;">TILT-UP CONCRETE PANELS — 100,000 LBS EACH<span class="fine">63 OF 73 CAME DOWN WHEN THE ROOF LEFT</span></div>
-    <div class="popup" id="popup-panels2" style="left: 240px; top: 880px; opacity: 0; border-left-color: #2e8b57;">THE 30 PEOPLE IN THE CORNER LIVED<span class="fine">THE PANELS THAT HELD WERE BRACED BY THE BACK WALL</span></div>
+  <section data-hf-id="hf-l8c5" class="clip" data-start="478.0" data-duration="19.66" data-track-index="1" id="panel-clip">
+    <div data-hf-id="hf-hawn" class="darkstage"></div>
+    <div data-hf-id="hf-6ars" id="panel-stage" style="position:absolute; left:560px; top:260px; width:800px; height:560px;"></div>
+    <div data-hf-id="hf-j3bs" class="popup" id="popup-panels" style="left: 240px; top: 150px; opacity: 0;">TILT-UP CONCRETE PANELS — 100,000 LBS EACH<span data-hf-id="hf-f3uf" class="fine">63 OF 73 CAME DOWN WHEN THE ROOF LEFT</span></div>
+    <div data-hf-id="hf-hm0n" class="popup" id="popup-panels2" style="left: 240px; top: 880px; opacity: 0; border-left-color: #2e8b57;">THE 30 PEOPLE IN THE CORNER LIVED<span data-hf-id="hf-u56o" class="fine">THE PANELS THAT HELD WERE BRACED BY THE BACK WALL</span></div>
   </section>
-  <div class="lt" id="lt-rangeline" style="opacity: 0;"><div class="lt-loc">RANGE LINE ROAD</div><br/><div class="lt-time">5:45 PM — RETAIL CORRIDOR</div></div>
+  <div data-hf-id="hf-uo6q" class="lt" id="lt-rangeline" style="opacity: 0;"><div data-hf-id="hf-tuge" class="lt-loc">RANGE LINE ROAD</div><br data-hf-id="hf-szow"><div data-hf-id="hf-37vy" class="lt-time">5:45 PM — RETAIL CORRIDOR</div></div>
 
   <!-- ============ A3-S4b Walmart (owner photo) ============ -->
-  <section class="clip still-wrap" data-start="497.66" data-duration="7.5" data-track-index="1" id="c-walmart">
-    <img id="kb-walmart" src="media/act3-march/walmart-night-owner.png" alt="" />
+  <section data-hf-id="hf-t3mu" class="clip still-wrap" data-start="497.66" data-duration="7.5" data-track-index="1" id="c-walmart">
+    <img data-hf-id="hf-t9j7" id="kb-walmart" src="media/act3-march/walmart-night-owner.png" alt="">
   </section>
-  <section class="clip still-wrap" data-start="505.16" data-duration="9.0" data-track-index="1" id="c-walgreen">
-    <img id="kb-walgreen" src="media/act3-march/fema_walgreen_rangeline.jpg" alt="" />
+  <section data-hf-id="hf-ubot" class="clip still-wrap" data-start="505.16" data-duration="9.0" data-track-index="1" id="c-walgreen">
+    <img data-hf-id="hf-f6c0" id="kb-walgreen" src="media/act3-march/fema_walgreen_rangeline.jpg" alt="">
   </section>
-  <section class="clip still-wrap" data-start="514.16" data-duration="13.84" data-track-index="1" id="c-tile1">
-    <img id="kb-tile1" src="media/act3-march/tile_n4105000.jpg" alt="" />
+  <section data-hf-id="hf-0dx6" class="clip still-wrap" data-start="514.16" data-duration="13.84" data-track-index="1" id="c-tile1">
+    <img data-hf-id="hf-464a" id="kb-tile1" src="media/act3-march/tile_n4105000.jpg" alt="">
   </section>
   <!-- Lucas beat (owner-ordered v3c): THE actual Pizza Hut site — NOAA post-storm aerial crop
        (geocoded 1901 S Range Line -> UTM -> tile pixel; site-level honest label), then memorial
        dissolve into a pizza-kitchen interior under the namecard -->
-  <section class="clip still-wrap" data-start="528.0" data-duration="12.3" data-track-index="1" id="c-pizzahut">
-    <img id="kb-pizzahut" src="media/act3-march/noaa_aerial_pizzahut_site_crop.jpg" alt="" />
+  <section data-hf-id="hf-nwh2" class="clip still-wrap" data-start="528.0" data-duration="12.3" data-track-index="1" id="c-pizzahut">
+    <img data-hf-id="hf-7ql0" id="kb-pizzahut" src="media/act3-march/noaa_aerial_pizzahut_site_crop.jpg" alt="">
   </section>
-  <div class="lt" id="lt-pizzahut" style="opacity: 0;"><div class="lt-loc">RANGE LINE ROAD — THE PIZZA HUT BLOCK</div><br/><div class="lt-time">NOAA POST-STORM AERIAL SURVEY</div></div>
-  <video id="vx-lucaskitchen" src="media/stock-v3/pizza-kitchen-oven.mp4" style="filter: brightness(0.55) saturate(0.8)" data-start="539.0" data-duration="13.28" data-track-index="2" muted></video>
+  <div data-hf-id="hf-bp2o" class="lt" id="lt-pizzahut" style="opacity: 0;"><div data-hf-id="hf-vcbv" class="lt-loc">RANGE LINE ROAD — THE PIZZA HUT BLOCK</div><br data-hf-id="hf-sldv"><div data-hf-id="hf-6bl3" class="lt-time">NOAA POST-STORM AERIAL SURVEY</div></div>
+  <video data-hf-id="hf-0maf" id="vx-lucaskitchen" src="media/stock-v3/pizza-kitchen-oven.mp4" style="filter: brightness(0.55) saturate(0.8)" data-start="539.0" data-duration="13.28" data-track-index="2" muted></video>
 
   <!-- ============ A3-S5 Lucas namecard ============ -->
-  <div class="namecard" id="nc-lucas" style="opacity: 0;">
-    <div class="nc-name">CHRISTOPHER LUCAS</div>
-    <div class="nc-sub">Pizza Hut, Range Line Road — held the cooler door shut from the outside</div>
+  <div data-hf-id="hf-5a15" class="namecard" id="nc-lucas" style="opacity: 0;">
+    <div data-hf-id="hf-sqqc" class="nc-name">CHRISTOPHER LUCAS</div>
+    <div data-hf-id="hf-t3xs" class="nc-sub">Pizza Hut, Range Line Road — held the cooler door shut from the outside</div>
   </div>
 
   <!-- ============ A3-S6b Greenbriar ============ -->
-  <section class="clip still-wrap" data-start="553.48" data-duration="11.16" data-track-index="1" id="c-green1">
-    <div class="dim" style="z-index:2"></div>
-    <img id="kb-green1" src="media/act4-reckoning/whitehouse_stone-house-caved-roof-yard-debris.jpg" alt="" />
+  <section data-hf-id="hf-as2i" class="clip still-wrap" data-start="553.48" data-duration="11.16" data-track-index="1" id="c-green1">
+    <div data-hf-id="hf-gq6n" class="dim" style="z-index:2"></div>
+    <img data-hf-id="hf-sdy2" id="kb-green1" src="media/act4-reckoning/whitehouse_stone-house-caved-roof-yard-debris.jpg" alt="">
   </section>
-  <section class="clip still-wrap" data-start="564.64" data-duration="7.4" data-track-index="1" id="c-green2">
-    <div class="dim" style="z-index:2"></div>
-    <img id="kb-green2" src="media/act4-reckoning/usace_home-reduced-to-bare-foundation.jpg" alt="" />
+  <section data-hf-id="hf-51nl" class="clip still-wrap" data-start="564.64" data-duration="7.4" data-track-index="1" id="c-green2">
+    <div data-hf-id="hf-uien" class="dim" style="z-index:2"></div>
+    <img data-hf-id="hf-rkgy" id="kb-green2" src="media/act4-reckoning/usace_home-reduced-to-bare-foundation.jpg" alt="">
   </section>
-  <video id="vx-wheatcalm" src="media/stock-v3/wheat-field-calm-breeze-closeup.mp4" style="filter: brightness(0.8) saturate(0.7)" data-start="572.04" data-duration="7.84" data-track-index="1" muted></video>
+  <video data-hf-id="hf-l967" id="vx-wheatcalm" src="media/stock-v3/wheat-field-calm-breeze-closeup.mp4" style="filter: brightness(0.8) saturate(0.7)" data-start="572.04" data-duration="7.84" data-track-index="1" muted></video>
   <!-- deliberate 1.2s black breath after the Lucas beat, before Greenbriar -->
-  <section class="clip blackout" id="black-lucas" data-start="552.28" data-duration="1.2" data-track-index="4"></section>
-  <div class="lt" id="lt-greenbriar" style="opacity: 0;"><div class="lt-loc">GREENBRIAR NURSING HOME</div><br/><div class="lt-time">21 RESIDENTS LOST — THE MOST OF ANY BUILDING</div></div>
+  <section data-hf-id="hf-7osc" class="clip blackout" id="black-lucas" data-start="552.28" data-duration="1.2" data-track-index="4"></section>
+  <div data-hf-id="hf-pthq" class="lt" id="lt-greenbriar" style="opacity: 0;"><div data-hf-id="hf-uvjx" class="lt-loc">GREENBRIAR NURSING HOME</div><br data-hf-id="hf-qluq"><div data-hf-id="hf-yqun" class="lt-time">21 RESIDENTS LOST — THE MOST OF ANY BUILDING</div></div>
 
   <!-- ============ A3-S6 hold + A3-S7 scar ============ -->
-  <section class="clip still-wrap" data-start="579.88" data-duration="16.12" data-track-index="1" id="c-scar">
-    <img id="kb-scar" src="media/act3-march/nasa_aster_path_scar.jpg" alt="" />
+  <section data-hf-id="hf-r4gk" class="clip still-wrap" data-start="579.88" data-duration="16.12" data-track-index="1" id="c-scar">
+    <img data-hf-id="hf-q0j2" id="kb-scar" src="media/act3-march/nasa_aster_path_scar.jpg" alt="">
   </section>
-  <section class="clip still-wrap" data-start="596.0" data-duration="16.72" data-track-index="1" id="c-crossrubble">
-    <img id="kb-crossrubble" src="media/stock-v3/destroyed-neighborhood-ground-level-cross-joplin.jpg" alt="" />
+  <section data-hf-id="hf-p9hg" class="clip still-wrap" data-start="596.0" data-duration="16.72" data-track-index="1" id="c-crossrubble">
+    <img data-hf-id="hf-jpdk" id="kb-crossrubble" src="media/stock-v3/destroyed-neighborhood-ground-level-cross-joplin.jpg" alt="">
   </section>
-  <div class="popup" id="popup-scar1" style="left: 130px; top: 130px; opacity: 0;">21 MILES LONG — 1 MILE WIDE<span class="fine">NASA ASTER FALSE-COLOR — VEGETATION READS RED, THE SCAR GRAY</span></div>
-  <div class="popup" id="popup-scar2" style="left: 130px; top: 290px; opacity: 0;">8,000 BUILDINGS<span class="fine">DAMAGED OR DESTROYED IN 38 MINUTES</span></div>
-  <div class="popup" id="popup-scar3" style="left: 130px; top: 450px; opacity: 0; border-left-color: #d8a13a;">$2.8 BILLION<span class="fine">THE MOST EXPENSIVE TORNADO EVER RECORDED</span></div>
-  <div class="popup" id="popup-policy" style="left: 130px; top: 130px; opacity: 0; border-left-color: #2e8b57;">TODAY, A SIREN IN JOPLIN MEANS ONE THING<span class="fine">TAKE SHELTER NOW — NOTHING ELSE</span></div>
+  <div data-hf-id="hf-l9r5" class="popup" id="popup-scar1" style="left: 130px; top: 130px; opacity: 0;">21 MILES LONG — 1 MILE WIDE<span data-hf-id="hf-8rgr" class="fine">NASA ASTER FALSE-COLOR — VEGETATION READS RED, THE SCAR GRAY</span></div>
+  <div data-hf-id="hf-bfmy" class="popup" id="popup-scar2" style="left: 130px; top: 290px; opacity: 0;">8,000 BUILDINGS<span data-hf-id="hf-ax9d" class="fine">DAMAGED OR DESTROYED IN 38 MINUTES</span></div>
+  <div data-hf-id="hf-ks4p" class="popup" id="popup-scar3" style="left: 130px; top: 450px; opacity: 0; border-left-color: #d8a13a;">$2.8 BILLION<span data-hf-id="hf-c3af" class="fine">THE MOST EXPENSIVE TORNADO EVER RECORDED</span></div>
+  <div data-hf-id="hf-i52o" class="popup" id="popup-policy" style="left: 130px; top: 130px; opacity: 0; border-left-color: #2e8b57;">TODAY, A SIREN IN JOPLIN MEANS ONE THING<span data-hf-id="hf-uxe3" class="fine">TAKE SHELTER NOW — NOTHING ELSE</span></div>
 
   <!-- ============ A3-S7b human-scale rubble ============ -->
-  <section class="clip still-wrap" data-start="613.42" data-duration="8.74" data-track-index="1" id="c-rub1">
-    <img id="kb-rub1" src="media/act4-reckoning/wikimedia_house-crushed-crumpled-metal-roofing.jpg" alt="" />
+  <section data-hf-id="hf-6r6x" class="clip still-wrap" data-start="613.42" data-duration="8.74" data-track-index="1" id="c-rub1">
+    <img data-hf-id="hf-cp7c" id="kb-rub1" src="media/act4-reckoning/wikimedia_house-crushed-crumpled-metal-roofing.jpg" alt="">
   </section>
-  <section class="clip still-wrap" data-start="622.16" data-duration="6.9" data-track-index="1" id="c-rub2">
-    <img id="kb-rub2" src="media/act4-reckoning/whitehouse_parking-lot-destroyed-cars-debris-field.jpg" alt="" />
+  <section data-hf-id="hf-xnlj" class="clip still-wrap" data-start="622.16" data-duration="6.9" data-track-index="1" id="c-rub2">
+    <img data-hf-id="hf-81vg" id="kb-rub2" src="media/act4-reckoning/whitehouse_parking-lot-destroyed-cars-debris-field.jpg" alt="">
   </section>
-  <section class="clip still-wrap" data-start="629.06" data-duration="6.44" data-track-index="1" id="c-rub3">
-    <img id="kb-rub3" src="media/act4-reckoning/whitehouse_debris-pile-house-frame-skeleton.jpg" alt="" />
+  <section data-hf-id="hf-9jo1" class="clip still-wrap" data-start="629.06" data-duration="6.44" data-track-index="1" id="c-rub3">
+    <img data-hf-id="hf-9tdr" id="kb-rub3" src="media/act4-reckoning/whitehouse_debris-pile-house-frame-skeleton.jpg" alt="">
   </section>
-  <section class="clip still-wrap" data-start="635.5" data-duration="6.96" data-track-index="1" id="c-rub4">
-    <img id="kb-rub4" src="media/act4-reckoning/whitehouse_joann-fabrics-storefront-destroyed.jpg" alt="" />
+  <section data-hf-id="hf-0v4r" class="clip still-wrap" data-start="635.5" data-duration="6.96" data-track-index="1" id="c-rub4">
+    <img data-hf-id="hf-zjvv" id="kb-rub4" src="media/act4-reckoning/whitehouse_joann-fabrics-storefront-destroyed.jpg" alt="">
   </section>
 
   <!-- ============ A4-S1 assessment (bg changes under cards) ============ -->
-  <section class="clip still-wrap" data-start="661.9" data-duration="19.0" data-track-index="1" id="c-a4bg2">
-    <div class="dim-heavy" style="z-index:2"></div>
-    <img id="kb-a4bg2" src="media/act4-reckoning/whitehouse_two-story-house-torn-roof-watertower.jpg" alt="" />
+  <section data-hf-id="hf-n8ai" class="clip still-wrap" data-start="661.9" data-duration="19.0" data-track-index="1" id="c-a4bg2">
+    <div data-hf-id="hf-gp11" class="dim-heavy" style="z-index:2"></div>
+    <img data-hf-id="hf-hik1" id="kb-a4bg2" src="media/act4-reckoning/whitehouse_two-story-house-torn-roof-watertower.jpg" alt="">
   </section>
-  <section class="clip" data-start="642.46" data-duration="38.44" data-track-index="2" id="a4s1-clip">
-    <div class="doc-card" id="doc1" style="opacity:0">
-      <div class="doc-inner">
-        <div class="doc-title"><span id="doc1-l1" style="opacity:0; display:block">NWS SERVICE ASSESSMENT</span><span id="doc1-l2" style="opacity:0; display:block">JOPLIN, MISSOURI, TORNADO — MAY 22, 2011</span></div>
-        <div class="doc-sub" id="doc1-sub" style="opacity:0">The weather service investigated itself.</div>
+  <section data-hf-id="hf-45xx" class="clip" data-start="642.46" data-duration="38.44" data-track-index="2" id="a4s1-clip">
+    <div data-hf-id="hf-x2f5" class="doc-card" id="doc1" style="opacity:0">
+      <div data-hf-id="hf-p35l" class="doc-inner">
+        <div data-hf-id="hf-i7tj" class="doc-title"><span data-hf-id="hf-se61" id="doc1-l1" style="opacity:0; display:block">NWS SERVICE ASSESSMENT</span><span data-hf-id="hf-zkmi" id="doc1-l2" style="opacity:0; display:block">JOPLIN, MISSOURI, TORNADO — MAY 22, 2011</span></div>
+        <div data-hf-id="hf-pbsw" class="doc-sub" id="doc1-sub" style="opacity:0">The weather service investigated itself.</div>
       </div>
     </div>
-    <div class="doc-card" id="doc2" style="opacity:0">
-      <div class="doc-inner">
-        <div class="doc-title"><span id="doc2-l1" style="opacity:0; display:block">THE MAJORITY OF SURVIVORS DID NOT</span><span id="doc2-l2" style="opacity:0; display:block">SHELTER AT THE FIRST SIREN</span></div>
-        <div class="doc-sub" id="doc2-sub" style="opacity:0">They waited. They looked for confirmation.</div>
+    <div data-hf-id="hf-1rw2" class="doc-card" id="doc2" style="opacity:0">
+      <div data-hf-id="hf-1899" class="doc-inner">
+        <div data-hf-id="hf-2crb" class="doc-title"><span data-hf-id="hf-az0v" id="doc2-l1" style="opacity:0; display:block">THE MAJORITY OF SURVIVORS DID NOT</span><span data-hf-id="hf-t03a" id="doc2-l2" style="opacity:0; display:block">SHELTER AT THE FIRST SIREN</span></div>
+        <div data-hf-id="hf-mghn" class="doc-sub" id="doc2-sub" style="opacity:0">They waited. They looked for confirmation.</div>
       </div>
     </div>
   </section>
 
   <!-- ============ A4-S1b Wagenmaker quote card ============ -->
-  <section class="clip" data-start="681.50" data-duration="25.86" data-track-index="1" id="a4s1b-clip">
-    <div class="darkstage"></div>
-    <div class="doc-card" id="doc3" style="opacity:0">
-      <div class="doc-inner">
-        <div class="doc-sub" style="font-size: 44px; line-height: 1.5;"><span id="doc3-l1" style="opacity:0; display:block">"It's really hard to tell how many people</span><span id="doc3-l2" style="opacity:0; display:block">that perished in the tornado did not take shelter."</span></div>
-        <div class="doc-title" id="doc3-attr" style="font-size: 28px; margin-top: 34px; color: #b8c6d4; opacity:0;">RICHARD WAGENMAKER — NWS ASSESSMENT TEAM LEAD</div>
+  <section data-hf-id="hf-imkw" class="clip" data-start="681.50" data-duration="25.86" data-track-index="1" id="a4s1b-clip">
+    <div data-hf-id="hf-hp7o" class="darkstage"></div>
+    <div data-hf-id="hf-mqg3" class="doc-card" id="doc3" style="opacity:0">
+      <div data-hf-id="hf-2f6c" class="doc-inner">
+        <div data-hf-id="hf-7trg" class="doc-sub" style="font-size: 44px; line-height: 1.5;"><span data-hf-id="hf-3295" id="doc3-l1" style="opacity:0; display:block">"It's really hard to tell how many people</span><span data-hf-id="hf-xpw5" id="doc3-l2" style="opacity:0; display:block">that perished in the tornado did not take shelter."</span></div>
+        <div data-hf-id="hf-1rv8" class="doc-title" id="doc3-attr" style="font-size: 28px; margin-top: 34px; color: #b8c6d4; opacity:0;">RICHARD WAGENMAKER — NWS ASSESSMENT TEAM LEAD</div>
       </div>
     </div>
   </section>
 
   <!-- ============ A4-S2 polygon graphic ============ -->
-  <section class="clip" data-start="707.36" data-duration="32.64" data-track-index="1" id="poly-clip">
-    <div class="darkstage"></div>
-    <canvas id="poly-canvas" width="1500" height="700"></canvas>
-    <div class="popup" id="popup-poly" style="left: 240px; top: 150px; opacity: 0;">WARNING POLYGON vs SIREN ZONE<span class="fine">THE SIRENS FIRED CITY-WIDE. THE WARNING NEVER DID.</span></div>
+  <section data-hf-id="hf-y17a" class="clip" data-start="707.36" data-duration="32.64" data-track-index="1" id="poly-clip">
+    <div data-hf-id="hf-i3ip" class="darkstage"></div>
+    <canvas data-hf-id="hf-j40z" id="poly-canvas" width="1500" height="700"></canvas>
+    <div data-hf-id="hf-jr5n" class="popup" id="popup-poly" style="left: 240px; top: 150px; opacity: 0;">WARNING POLYGON vs SIREN ZONE<span data-hf-id="hf-xdub" class="fine">THE SIRENS FIRED CITY-WIDE. THE WARNING NEVER DID.</span></div>
   </section>
 
   <!-- ============ A4-S2b towns-pulse graphic ============ -->
-  <section class="clip" data-start="740.00" data-duration="27.58" data-track-index="1" id="towns-clip">
-    <div class="darkstage"></div>
-    <canvas id="towns-canvas" width="1500" height="700"></canvas>
-    <div class="popup" id="popup-towns" style="left: 240px; top: 150px; opacity: 0;">NO NATIONAL SIREN STANDARD EXISTED<span class="fine">EVERY TOWN IMPROVISED ITS OWN RULES</span></div>
+  <section data-hf-id="hf-8sls" class="clip" data-start="740.00" data-duration="27.58" data-track-index="1" id="towns-clip">
+    <div data-hf-id="hf-ihtq" class="darkstage"></div>
+    <canvas data-hf-id="hf-wvkw" id="towns-canvas" width="1500" height="700"></canvas>
+    <div data-hf-id="hf-ex03" class="popup" id="popup-towns" style="left: 240px; top: 150px; opacity: 0;">NO NATIONAL SIREN STANDARD EXISTED<span data-hf-id="hf-ihsp" class="fine">EVERY TOWN IMPROVISED ITS OWN RULES</span></div>
   </section>
 
   <!-- ============ A4-S3 counter + IBW ============ -->
-  <section class="clip" data-start="767.58" data-duration="37.56" data-track-index="1" id="a4s3-clip">
-    <div class="darkstage"></div>
-    <div id="counter161" style="opacity:0">0</div>
-    <div id="counter161-label" style="opacity:0">LIVES LOST</div>
-    <div id="counter161-fine" style="opacity:0">158 directly attributed &middot; NWS</div>
-    <div id="counter161-since" style="opacity:0; position:absolute; left:0; right:0; top:800px; text-align:center; font-family:'Arial Black',Arial,sans-serif; font-size:38px; letter-spacing:3px; color:#f2f5f8;">THE DEADLIEST SINGLE U.S. TORNADO SINCE 1950</div>
-    <div id="ibw-stack" style="opacity:0">
-      <div>
-        <div class="ibw-line" id="ibw1" style="opacity:0">CATASTROPHIC</div>
-        <div class="ibw-line" id="ibw2" style="opacity:0">MASS DEVASTATION</div>
-        <div class="ibw-line" id="ibw3" style="opacity:0; color:#e74c3c">UNSURVIVABLE IF ABOVE GROUND</div>
+  <section data-hf-id="hf-qz5d" class="clip" data-start="767.58" data-duration="37.56" data-track-index="1" id="a4s3-clip">
+    <div data-hf-id="hf-my3v" class="darkstage"></div>
+    <div data-hf-id="hf-p6fa" id="counter161" style="opacity:0">0</div>
+    <div data-hf-id="hf-5orw" id="counter161-label" style="opacity:0">LIVES LOST</div>
+    <div data-hf-id="hf-ofvq" id="counter161-fine" style="opacity:0">158 directly attributed · NWS</div>
+    <div data-hf-id="hf-09cl" id="counter161-since" style="opacity:0; position:absolute; left:0; right:0; top:800px; text-align:center; font-family:'Arial Black',Arial,sans-serif; font-size:38px; letter-spacing:3px; color:#f2f5f8;">THE DEADLIEST SINGLE U.S. TORNADO SINCE 1950</div>
+    <div data-hf-id="hf-s3rl" id="ibw-stack" style="opacity:0">
+      <div data-hf-id="hf-yeow">
+        <div data-hf-id="hf-djgi" class="ibw-line" id="ibw1" style="opacity:0">CATASTROPHIC</div>
+        <div data-hf-id="hf-2vck" class="ibw-line" id="ibw2" style="opacity:0">MASS DEVASTATION</div>
+        <div data-hf-id="hf-iu2m" class="ibw-line" id="ibw3" style="opacity:0; color:#e74c3c">UNSURVIVABLE IF ABOVE GROUND</div>
       </div>
     </div>
   </section>
 
   <!-- ============ A4-S3b quiet fix ============ -->
   <!-- porch-swing + siren-pole-sky: each now SINGLE use in the episode (v3 replaced their first uses) -->
-  <video id="vx-flagpole" src="media/stock-v3/american-flag-pole-blue-sky.mp4" style="filter: sepia(0.32) brightness(0.72) saturate(0.8)" data-start="813.2" data-duration="5.8" data-track-index="1" muted></video>
-  <video id="vx-porch2" src="media/act1-town/porch-swing.mp4" style="filter: sepia(0.15) brightness(1.02)" data-start="819.0" data-duration="9.0" data-media-start="6" data-track-index="1" muted></video>
-  <section class="clip still-wrap" data-start="828.0" data-duration="13.18" data-track-index="1" id="c-siren3">
-    <img id="kb-siren3" src="media/act1-town/siren-pole-sky.jpg" style="filter: sepia(0.28) brightness(0.98)" alt="" />
+  <video data-hf-id="hf-vy0a" id="vx-flagpole" src="media/stock-v3/american-flag-pole-blue-sky.mp4" style="filter: sepia(0.32) brightness(0.72) saturate(0.8)" data-start="813.2" data-duration="5.8" data-track-index="1" muted></video>
+  <video data-hf-id="hf-qcoc" id="vx-porch2" src="media/act1-town/porch-swing.mp4" style="filter: sepia(0.15) brightness(1.02)" data-start="819.0" data-duration="9.0" data-media-start="6" data-track-index="1" muted></video>
+  <section data-hf-id="hf-2ua9" class="clip still-wrap" data-start="828.0" data-duration="13.18" data-track-index="1" id="c-siren3">
+    <img data-hf-id="hf-xauf" id="kb-siren3" src="media/act1-town/siren-pole-sky.jpg" style="filter: sepia(0.28) brightness(0.98)" alt="">
   </section>
 
   <!-- ============ A5 people ============ -->
-  <section class="clip still-wrap" data-start="841.18" data-duration="9.68" data-track-index="1" id="c-church1">
-    <img id="kb-church1" src="media/act5-people/st_marys_church_site_1.jpg" alt="" />
+  <section data-hf-id="hf-7q39" class="clip still-wrap" data-start="841.18" data-duration="9.68" data-track-index="1" id="c-church1">
+    <img data-hf-id="hf-w2f8" id="kb-church1" src="media/act5-people/st_marys_church_site_1.jpg" alt="">
   </section>
-  <section class="clip still-wrap" data-start="850.86" data-duration="8.14" data-track-index="1" id="c-church2">
-    <img id="kb-church2" src="media/act5-people/st_marys_church_site_2.jpg" alt="" />
+  <section data-hf-id="hf-q9r3" class="clip still-wrap" data-start="850.86" data-duration="8.14" data-track-index="1" id="c-church2">
+    <img data-hf-id="hf-mgqa" id="kb-church2" src="media/act5-people/st_marys_church_site_2.jpg" alt="">
   </section>
-  <section class="clip still-wrap" data-start="859.0" data-duration="8.56" data-track-index="1" id="c-hymnals">
-    <img id="kb-hymnals" src="media/act5-people/church_pews_hymnals.jpg" alt="" />
+  <section data-hf-id="hf-elub" class="clip still-wrap" data-start="859.0" data-duration="8.56" data-track-index="1" id="c-hymnals">
+    <img data-hf-id="hf-k0bq" id="kb-hymnals" src="media/act5-people/church_pews_hymnals.jpg" alt="">
   </section>
-  <section class="clip still-wrap" data-start="867.56" data-duration="3.54" data-track-index="1" id="c-pewsbw">
-    <img id="kb-pewsbw" src="media/act5-people/church_pews_bw.jpg" alt="" />
+  <section data-hf-id="hf-zs9o" class="clip still-wrap" data-start="867.56" data-duration="3.54" data-track-index="1" id="c-pewsbw">
+    <img data-hf-id="hf-mpcl" id="kb-pewsbw" src="media/act5-people/church_pews_bw.jpg" alt="">
   </section>
-  <div class="namecard" id="nc-ramona" style="opacity: 0;">
-    <div class="nc-name">HARMONY HEIGHTS BAPTIST CHURCH</div>
-    <div class="nc-sub">Fifty survived in the hallways. Ramona Bridgeford came to hear her son sing.</div>
+  <div data-hf-id="hf-grjj" class="namecard" id="nc-ramona" style="opacity: 0;">
+    <div data-hf-id="hf-60ub" class="nc-name">HARMONY HEIGHTS BAPTIST CHURCH</div>
+    <div data-hf-id="hf-6cw8" class="nc-sub">Fifty survived in the hallways. Ramona Bridgeford came to hear her son sing.</div>
   </div>
 
-  <section class="clip still-wrap" data-start="871.10" data-duration="11.18" data-track-index="1" id="c-corridor">
-    <img id="kb-corridor" src="media/act5-people/hospital_corridor_dark.jpg" alt="" />
+  <section data-hf-id="hf-994g" class="clip still-wrap" data-start="871.10" data-duration="11.18" data-track-index="1" id="c-corridor">
+    <img data-hf-id="hf-ng40" id="kb-corridor" src="media/act5-people/hospital_corridor_dark.jpg" alt="">
   </section>
-  <section class="clip still-wrap" data-start="882.28" data-duration="11.54" data-track-index="1" id="c-statue">
-    <img id="kb-statue" src="media/act5-people/st_johns_bronze_statue_fema.jpg" alt="" />
+  <section data-hf-id="hf-aa7r" class="clip still-wrap" data-start="882.28" data-duration="11.54" data-track-index="1" id="c-statue">
+    <img data-hf-id="hf-8sho" id="kb-statue" src="media/act5-people/st_johns_bronze_statue_fema.jpg" alt="">
   </section>
   <!-- CALLBACK (flagged): total-loss 2nd use — narration names "the building that died protecting them" -->
-  <section class="clip still-wrap" data-start="894.52" data-duration="11.0" data-track-index="1" id="c-stjcall">
-    <img id="kb-stjcall" src="media/act5-people/st_johns_fema_total_loss.jpg" style="filter: brightness(0.85) saturate(0.8)" alt="" />
+  <section data-hf-id="hf-og9h" class="clip still-wrap" data-start="894.52" data-duration="11.0" data-track-index="1" id="c-stjcall">
+    <img data-hf-id="hf-s00p" id="kb-stjcall" src="media/act5-people/st_johns_fema_total_loss.jpg" style="filter: brightness(0.85) saturate(0.8)" alt="">
   </section>
-  <section class="clip still-wrap" data-start="905.52" data-duration="12.48" data-track-index="1" id="c-flagwall">
-    <img id="kb-flagwall" src="media/act4-reckoning/whitehouse_brick-wall-american-flag-rubble.jpg" alt="" />
+  <section data-hf-id="hf-hb68" class="clip still-wrap" data-start="905.52" data-duration="12.48" data-track-index="1" id="c-flagwall">
+    <img data-hf-id="hf-jcsf" id="kb-flagwall" src="media/act4-reckoning/whitehouse_brick-wall-american-flag-rubble.jpg" alt="">
   </section>
 
   <!-- Will Norton: real photo ≤5s (owner rule), then symbolic -->
-  <section class="clip still-wrap contain-wrap" data-start="918.0" data-duration="4.8" data-track-index="1" id="c-will">
-    <img id="kb-will" src="media/act5-people/real/will-norton-chapman.jpg" alt="" />
+  <section data-hf-id="hf-lrkn" class="clip still-wrap contain-wrap" data-start="918.0" data-duration="4.8" data-track-index="1" id="c-will">
+    <img data-hf-id="hf-i15p" id="kb-will" src="media/act5-people/real/will-norton-chapman.jpg" alt="">
   </section>
-  <section class="clip still-wrap" data-start="928.74" data-duration="11.26" data-track-index="1" id="c-headlights">
-    <img id="kb-headlights" src="media/act5-people/car-headlights-rain.jpg" alt="" />
+  <section data-hf-id="hf-z9bj" class="clip still-wrap" data-start="928.74" data-duration="11.26" data-track-index="1" id="c-headlights">
+    <img data-hf-id="hf-4qze" id="kb-headlights" src="media/act5-people/car-headlights-rain.jpg" alt="">
   </section>
-  <section class="clip still-wrap" data-start="940.0" data-duration="10.88" data-track-index="1" id="c-camcorder">
-    <img id="kb-camcorder" src="media/act5-people/film_camcorder_hands.jpg" alt="" />
+  <section data-hf-id="hf-1e5k" class="clip still-wrap" data-start="940.0" data-duration="10.88" data-track-index="1" id="c-camcorder">
+    <img data-hf-id="hf-47su" id="kb-camcorder" src="media/act5-people/film_camcorder_hands.jpg" alt="">
   </section>
-  <div class="namecard" id="nc-will" style="opacity: 0;">
-    <div class="nc-name">WILL NORTON, 18</div>
-    <div class="nc-sub">Four hours a graduate. He wanted to tell stories for a living.</div>
+  <div data-hf-id="hf-kvkn" class="namecard" id="nc-will" style="opacity: 0;">
+    <div data-hf-id="hf-xafk" class="nc-name">WILL NORTON, 18</div>
+    <div data-hf-id="hf-rkxr" class="nc-sub">Four hours a graduate. He wanted to tell stories for a living.</div>
   </div>
-  <section class="clip blackout" id="black-will" data-start="950.0" data-duration="2.4" data-track-index="4"></section>
+  <section data-hf-id="hf-i7m1" class="clip blackout" id="black-will" data-start="950.0" data-duration="2.4" data-track-index="4"></section>
 
   <!-- ============ A6 ============ -->
-  <section class="clip still-wrap" data-start="980.06" data-duration="9.94" data-track-index="1" id="c-housing">
-    <img id="kb-housing" src="media/act6-rebuild/joplin-housing-construction.jpg" alt="" />
+  <section data-hf-id="hf-b4am" class="clip still-wrap" data-start="980.06" data-duration="9.94" data-track-index="1" id="c-housing">
+    <img data-hf-id="hf-hcci" id="kb-housing" src="media/act6-rebuild/joplin-housing-construction.jpg" alt="">
   </section>
-  <section class="clip still-wrap" data-start="990.0" data-duration="9.0" data-track-index="1" id="c-modular">
-    <img id="kb-modular" src="media/act6-rebuild/usace-modular-home-install.jpg" alt="" />
+  <section data-hf-id="hf-0j85" class="clip still-wrap" data-start="990.0" data-duration="9.0" data-track-index="1" id="c-modular">
+    <img data-hf-id="hf-urs1" id="kb-modular" src="media/act6-rebuild/usace-modular-home-install.jpg" alt="">
   </section>
-  <section class="clip still-wrap" data-start="999.0" data-duration="7.6" data-track-index="1" id="c-engineer">
-    <img id="kb-engineer" src="media/act6-rebuild/usace-engineer-contractor.jpg" alt="" />
+  <section data-hf-id="hf-j9mt" class="clip still-wrap" data-start="999.0" data-duration="7.6" data-track-index="1" id="c-engineer">
+    <img data-hf-id="hf-begx" id="kb-engineer" src="media/act6-rebuild/usace-engineer-contractor.jpg" alt="">
   </section>
-  <section class="clip still-wrap" data-start="1006.6" data-duration="9.4" data-track-index="1" id="c-sunrise">
-    <img id="kb-sunrise" src="media/act6-rebuild/park-pond-sunrise.jpg" alt="" />
+  <section data-hf-id="hf-aw9z" class="clip still-wrap" data-start="1006.6" data-duration="9.4" data-track-index="1" id="c-sunrise">
+    <img data-hf-id="hf-zv3c" id="kb-sunrise" src="media/act6-rebuild/park-pond-sunrise.jpg" alt="">
   </section>
   <!-- CALLBACK (flagged): usa-smalltown 2nd visible use m-s 8, warm grade — intentional bookend with the hook's town wide -->
-  <video id="vx-warmend" src="media/stock-v2/usa-smalltown-drone-aerial.mp4" style="filter: sepia(0.18) brightness(1.02)" data-start="1016.0" data-duration="13.1" data-media-start="8" data-track-index="1" muted></video>
-  <section class="clip title-card" data-start="1029.1" data-duration="6.9" data-track-index="1" id="c-title">
-    <div class="title-inner">
-      <div class="title-main" id="title-main">THE WARNING HOUR</div>
-      <div class="title-sub" id="title-sub">Episode One — The Sirens of Joplin</div>
+  <video data-hf-id="hf-kifq" id="vx-warmend" src="media/stock-v2/usa-smalltown-drone-aerial.mp4" style="filter: sepia(0.18) brightness(1.02)" data-start="1016.0" data-duration="13.1" data-media-start="8" data-track-index="1" muted></video>
+  <section data-hf-id="hf-kwbq" class="clip title-card" data-start="1029.1" data-duration="6.9" data-track-index="1" id="c-title">
+    <div data-hf-id="hf-no9t" class="title-inner">
+      <div data-hf-id="hf-sf3d" class="title-main" id="title-main">THE WARNING HOUR</div>
+      <div data-hf-id="hf-ad8b" class="title-sub" id="title-sub">Episode One — The Sirens of Joplin</div>
     </div>
   </section>
-  <section class="clip blackout" id="black-end" data-start="1035.6" data-duration="1.4" data-track-index="4"></section>
+  <section data-hf-id="hf-zucu" class="clip blackout" id="black-end" data-start="1035.6" data-duration="1.4" data-track-index="4"></section>
 
-  <div id="grade"></div>
-  <div id="vignette"></div>
-  <canvas id="grain" width="480" height="270"></canvas>
+  <div data-hf-id="hf-9j86" id="grade"></div>
+  <div data-hf-id="hf-h7i3" id="vignette"></div>
+  <canvas data-hf-id="hf-g1u5" id="grain" width="480" height="270"></canvas>
 
   <script src="grain.js"></script>
   <script>
@@ -720,6 +720,9 @@
     tl.fromTo("#doc2-l2", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 663.4);
     tl.fromTo("#doc2-sub", { opacity: 0 }, { opacity: 1, duration: 0.8 }, 664.9); /* "They waited" on the word @664.8 */
     tl.to("#doc2", { opacity: 0, duration: 0.8 }, 679.9);
+    /* investigator hero: full-bright intro, dims under the card; framing crop is baked into scale */
+    tl.fromTo("#kb-invest", { scale: 1.24 }, { scale: 1.32, duration: 25.86, ease: "none" }, 681.50);
+    tl.to("#invest-dim", { opacity: 1, duration: 1.2 }, 687.8);
     /* quote lines land ON the spoken words: "It is really hard" @689.4, "how many" @692.6 (a4-s1b.words.json) */
     tl.fromTo("#doc3", { opacity: 0 }, { opacity: 1, duration: 0.8 }, 688.6);
     tl.fromTo("#doc3-l1", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 689.4);
