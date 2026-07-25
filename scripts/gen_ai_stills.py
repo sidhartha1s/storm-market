@@ -195,7 +195,7 @@ def main():
         stills = [s for s in stills if s[0] in keep]
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    todo = [(sid, p) for sid, p in stills if args.force or not (OUT_DIR / f"{sid}.jpg").exists()]
+    todo = [(sid, p) for sid, p in stills if args.force or not (OUT_DIR / f"{sid}.png").exists()]
 
     print(f"Plan: {len(todo)} images @ ~${COST_PER_IMAGE_USD:.4f} = ~${len(todo)*COST_PER_IMAGE_USD:.4f}. "
           f"cap={args.max_api_calls} model={DEAPI_MODEL} {DEAPI_IMAGE_WIDTH}x{DEAPI_IMAGE_HEIGHT}")
