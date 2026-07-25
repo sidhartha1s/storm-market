@@ -31,7 +31,12 @@ processes keep it true forever; watch for the log's "Render complete" line inste
 5. **Conditional-fact rule**: a proposed distinctive fact ships ONLY if verification confirms it
    (e.g. "Wrangler plant never reopened") — drop entirely on failure, never soften into "reportedly".
 6. **Runtime**: 13–23 min band is a default, not a cap — owner explicitly ordered 30 min for ep2
-   (high-demand topic). Word formula scales: minutes × 0.9 × 137.
+   (high-demand topic). Word formula scales: minutes × 0.9 × wpm (see 7).
+7. **The "137 wpm" planning figure was WRONG** (caught by ep2 probe): ep1's own audio manifest
+   says 2,519 words / 16.4 min = **153.5 wpm delivered**; ep2 probe segments ran 159–168 wpm.
+   Plan at ~158 and ALWAYS probe 2 segments before locking script length — provenance ladder in
+   action: disk manifest > LEARNINGS claim. (How "137" got recorded is unresolved; possibly an
+   earlier script revision's word count divided by a later duration.)
 
 ## 2026-07-23 — v3 pre-render multi-agent QC sweep (owner-ordered; caught what 2 shipped versions missed)
 
