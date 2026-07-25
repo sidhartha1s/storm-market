@@ -320,5 +320,13 @@ in the Gumroad product description, and use a discount code for the launch price
 - Home defense / firearms (decision 3)
 - 50 illustrated state pages (owner-rejected; reader-value argument is correct)
 - 12-month calendar (owner: 60 days max)
-- A second SKU or subscription — one book, sold properly
+- A second SKU or subscription — one book, sold properly (decision 13)
 - Any custom payment/backend code — Gumroad owns checkout
+- Household-accident content as peer chapters (decision 9 — sub-points only)
+- Standalone landslide chapter (decision 11 — burn-scar debris flow only)
+- Pandemic/biological chapter (decision 14)
+- Nuclear-EMP scenario chapter (decision 12 — ~2pp section only)
+- Doomsday framing of any kind: grid-down-for-a-year, EMP collapse, societal breakdown. Reframes
+  the book onto the prepper shelf and puts the Gumroad account in the risk zone.
+- Avalanche (recreational, not household), airplane crash (no household mitigation — good video
+  topic, not a book chapter), meteor/EMP-war speculation
