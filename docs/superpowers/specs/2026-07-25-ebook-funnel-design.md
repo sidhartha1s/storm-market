@@ -178,10 +178,45 @@ action. This is the differentiation and it recycles research already paid for pe
 
 ## Flag avoidance (four distinct risks)
 
-1. **Copyright.** Zero stock imagery. Every figure is self-drawn SVG or US-government public
-   domain (NOAA/NWS/NHC, FEMA, USGS, CDC, NIST), credited per figure. Survivor quotes come from
-   NWS service assessments (PD) or attributed news archives — **never fabricated**, same rule as
-   repo CLAUDE.md footage discipline.
+1. **Copyright — researched 2026-07-26 at owner's request. Not legal advice; see the review note.**
+
+   **The rule:** 17 U.S.C. § 105 places all works of the US Government in the public domain,
+   published or unpublished. A "work of the US Government" is one prepared by an **officer or
+   employee as part of official duties**. Public domain permits commercial use with no permission
+   and no fee. NOAA states it directly: images in their library are public domain and may be used
+   without express permission.
+
+   **Five traps, all confirmed:**
+   1. **Contractor work is not automatically PD.** The statute deliberately declined to bar
+      copyright in works produced under government contract or grant; contractors may retain it.
+   2. **"Unless otherwise noted in the credit or caption"** — NOAA's own carve-out. Federal sites
+      host contributed and licensed material. **Every asset's caption is read before use**, not
+      spot-checked. Same trap as the storm-chaser rule in repo CLAUDE.md.
+   3. **Federal *video* is guilty until proven innocent.** NOAA warns their videos often contain
+      third-party footage and the provider must be contacted. Federal *stills* are innocent until
+      the caption says otherwise.
+   4. **Logos and endorsement are a separate body of law from copyright.** The NOAA emblem needs
+      written consent; the "National Weather Service" name and visual identifier are
+      trademark-protected. Material may not be used to imply endorsement or affiliation with the
+      US government, and commercial use especially must not imply NOAA endorsement. **Therefore:
+      sources cited on a credits page; no federal seal or agency logo on the cover, the landing
+      page, or any ad.**
+   5. **Two categories § 105 does not reach:** state and local agency works (state EMA, county
+      offices — states can and do hold copyright) and foreign government works (Environment Canada
+      is *not* US public domain). Separately, a FEMA photo is copyright-free but a recognizable
+      person in it may retain publicity/privacy rights, which weighs more in a sales context than
+      an editorial one — prefer wide shots and non-identifiable subjects.
+
+   **Protocol:** per-asset provenance log with source URL, agency, verbatim caption, capture date,
+   and PD determination. Reuse the existing pattern at `episodes/ep1-joplin/media/provenance.csv`
+   rather than inventing a new one.
+
+   **⚠ Recommended spend:** one paid IP-attorney review of the provenance protocol and the
+   credits/disclaimer page — not of every asset. Cheap insurance on a commercial product. Owner's
+   call; the review document can be prepared on request.
+
+   Zero stock imagery. Survivor quotes come from NWS service assessments (PD) or attributed news
+   archives — **never fabricated**, per repo CLAUDE.md.
 2. **Liability.** Prominent disclaimer; not medical or legal advice. No medication dosing, no DIY
    gas or electrical work instructions. Every instruction traceable to a citable authority
    (NWS/CDC/Red Cross/IBHS) — defensible, not opinion. Money-chapter figures carry the lawn
