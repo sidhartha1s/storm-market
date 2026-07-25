@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:#030507; font-family:Arial,sans-serif; }
+  .stage { position:absolute; inset:0; display:grid; place-items:center; }
+  .stack { text-align:center; }
+  .l1 { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:92px; color:#e74c3c; letter-spacing:3px; }
+  .l2 { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:76px; color:#f2f5f8; letter-spacing:8px; margin-top:16px; }
+  .main { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:132px; color:#f2f5f8; letter-spacing:2px; line-height:1.02; margin-top:44px; }
+  .sub { font-family:Georgia,serif; font-style:italic; font-size:38px; color:#d8a13a; margin-top:30px; }
+</style>
+<div id="root" data-composition-id="g-title" data-width="1920" data-height="1080">
+  <div class="stage">
+    <div class="stack">
+      <div class="l1" id="g-title-l1">FOUR EF5 TORNADOES</div>
+      <div class="l2" id="g-title-l2">ONE DAY</div>
+      <div class="main" id="g-title-main">THE 2011<br-less></br-less>SUPER OUTBREAK</div>
+      <div class="sub" id="g-title-sub">April 25 – 28, 2011 · The Warning Hour</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#g-title-l1","#g-title-l2","#g-title-main","#g-title-sub"], {autoAlpha:0}, 0);
+  /* slot starts at global 70.58; a0-s3 starts 58.08 → rel = cue - 12.5 */
+  tl.fromTo("#g-title-l1", {autoAlpha:0, scale:1.5}, {autoAlpha:1, scale:1, duration:0.3, ease:"power4.in"}, 0.46);   /* "four of those tornadoes" */
+  tl.fromTo("#g-title-l2", {autoAlpha:0, y:26}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 4.8);            /* "EF five … in a single day" */
+  tl.fromTo("#g-title-main", {autoAlpha:0, letterSpacing:"14px"}, {autoAlpha:1, letterSpacing:"2px", duration:0.9, ease:"power2.out"}, 16.3); /* "Super Outbreak" @28.8 */
+  tl.fromTo("#g-title-sub", {autoAlpha:0}, {autoAlpha:1, duration:0.8}, 17.6);
+  tl.to(".stack", {autoAlpha:0, duration:1.2}, 23.6);
+  window.__timelines["g-title"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
