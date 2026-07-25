@@ -268,7 +268,7 @@ backend, matching the JP-market setup). Section order, adapted from the referenc
 
 1. Hero — outcome + the stacked dollar delta + page count + "earns the $47 back before the season"
 2. Proof strip — subscriber count · rating · 7-day refund
-3. What it is — 101 protections · 12 playbooks · 60 days · 5 regions
+3. What it is — N protections · 23 playbooks · 60 days · 5 regions · ~490 pages
 4. **The Money Chapter** (directly below pricing, per owner's note — the highest-leverage section)
 5. Find your region — the 5-region selector, makes it personal before the ask
 6. Look inside — 12-page sample spread, real pages
