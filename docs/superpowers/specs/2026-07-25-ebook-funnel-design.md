@@ -100,14 +100,15 @@ what produces refunds and one-star "AI slop" reviews. Buy page count with functi
 | Part | Pages | Contents |
 |---|---|---|
 | P0 Front | 12 | How to use · the 15-minute start · find your region · disclaimer |
-| P1 Why people die | 30 | 6 kill mechanisms + the timeline of a disaster; the forensic spine |
-| P2 The Core Six | 70 | water · food · body temperature · power · air+sanitation · medical |
-| P3 Hazard playbooks | 110 | tornado · hurricane · flood/flash · wildfire · blizzard-ice · extreme heat · earthquake · tsunami · landslide · grid failure · hazmat · CO+frozen pipes |
-| P4 People & places | 40 | kids · elderly · disability · pets/livestock · apartment vs house vs mobile home · car · work/school |
-| P5 Warning literacy | 35 | reading NWS products, radar, alerts, sirens, evacuation orders → then insurance claims + FEMA aid after |
-| P6 The Binder | 95 | fillable plans, checklists, logs, wallet cards, home inventory, document vault |
-| P7 The 60 Days | 25 | day-by-day sequence, drill scripts, sources |
-| Appendix | 20 | state authority directory (compact lookup) |
+| P1 Why people die | 26 | 6 kill mechanisms + the timeline of a disaster; the forensic spine |
+| P2 The Core Six | 62 | water · food · body temperature · power · air+sanitation · medical |
+| P3 Hazard playbooks | 96 | 12 hazards × ~8pp: tornado · hurricane · flood/flash · wildfire · blizzard-ice · extreme heat · earthquake · tsunami · landslide · grid failure · hazmat · CO+frozen pipes |
+| P4 People & places | 34 | kids · elderly · disability · pets/livestock · apartment vs house vs mobile home · car · work/school |
+| P5 Warning literacy | 30 | reading NWS products, radar, alerts, sirens, evacuation orders → then insurance claims + FEMA aid after |
+| P6 The Binder | 80 | fillable plans, checklists, logs, wallet cards, home inventory, document vault |
+| P7 The 60 Days | 22 | day-by-day sequence, drill scripts, sources |
+| Appendix | 18 | state authority directory (compact lookup) |
+| **Total** | **380** | trims to ~340–360 after layout |
 
 **Per-protection template** (Yoder's, adapted): number · one-line what-it-prevents · cost · time ·
 materials · steps · **what it does NOT do** (the honesty line that builds trust) · which regions
