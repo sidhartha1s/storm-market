@@ -51,6 +51,18 @@ Per beat: agent pulls 2-3 candidates, extracts frames, vision-checks, picks. Too
 License check per item; storm-chaser footage NEVER without license; news-network footage
 sparingly/short/narrated-over (claims budgeted, segments must survive being claimed).
 
+### Broadcast-clip rehook cadence (owner order 2026-07-26)
+Core audience is 40–70+ — they watched these events on live TV; real broadcast/news/PD/survivor
+clips are the nostalgia rehook, stock footage only fills between them. **A real clip lands every
+45–60s (or as the beat needs), never long stretches of pure stock.** Network news: 3–4s max per
+use, narrated-over, courtesy credit in description — credit manages goodwill, it does NOT remove
+claim risk, and it never substitutes for a license. **Claims-vs-strikes distinction (Oldshue
+ruling): network/TV material draws Content ID revenue claims (budgeted, survivable); independent
+chaser/streamer footage draws manual copyright strikes (channel-fatal) — the NEVER-without-license
+rule covers streamers, not just "storm chasers" by job title. Disguising a source (grain, crops,
+short cuts) to dodge detection is prohibited — safety comes from structural immunity, not
+obfuscation.**
+
 ## Composition authoring rules
 
 - Animations JS/WAAPI only — CSS @keyframes disables fast-capture (measured 2026-07-21).
