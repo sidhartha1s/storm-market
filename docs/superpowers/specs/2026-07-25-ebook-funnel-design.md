@@ -66,6 +66,24 @@ content, not images. The "50 illustrated state pages" idea was ours, not theirs.
    one personal-comment section, matching how both reference pages do trust.
 7. **Price:** $47, shown slashed from $87 on the landing page.
 8. **Image budget: BLOCKED — pending DeAPI keys.** See Visual System.
+9. **The book's subject is large-scale natural disaster — "nature's wrath" — not household accidents.**
+   Owner correction 2026-07-26: home fire, CO, frozen pipes, and sewer backup are **sub-points
+   inside the aftermath section of the disaster that causes them** (fire after the quake, sewer
+   backup after the rain event, CO after the outage, pipes after the freeze), never peer chapters.
+   An earlier draft led with home fire on probability grounds — wrong frame for this book.
+10. **Extreme rainfall is its own chapter** (owner caught its total absence). It behaves nothing
+   like riverine flooding: atmospheric rivers, rain bombs, urban flash flooding, rain-on-snow.
+11. **Landslide: no standalone chapter** (owner: unpreventable, and survival is binary). Kept only
+   where action exists — **post-wildfire burn-scar debris flow**, which USGS issues hazard
+   assessments for after every major fire and which is evacuable with warning. Lives in the
+   wildfire aftermath section.
+12. **EMP: a short section only** (~2pp — what it is, what to do, how to act), inside the space
+   weather chapter. Not a scenario chapter, not a doomsday frame.
+13. **Single consolidated volume**, not separate books. Combined value is the selling point.
+14. **Pandemic/biological: excluded as a chapter** (agent's call, owner delegated). Draws hostile
+   reviews regardless of content, is not nature's wrath in the sense the rest of the book is, and
+   dilutes a book whose credibility rests on NOAA/USGS-sourced physical hazards. The apolitical
+   parts — isolation, hygiene, water safety — stay inside Water & Sanitation Failure.
 
 ## Product definition
 
