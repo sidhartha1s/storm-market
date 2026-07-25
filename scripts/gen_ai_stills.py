@@ -60,7 +60,7 @@ STILLS = [
     ("ai-town-street-dark",
      "a small southern American town main street under a near-black storm "
      "sky, a traffic light swinging violently in the wind, empty brick "
-     "storefronts"),
+     "storefronts with blank unlettered signage, no readable words anywhere"),
     ("ai-night-wedge-lightning",
      "an enormous tornado silhouette at night, illuminated by a bright "
      "lightning flash against black sky, dramatic scale, rain streaks"),
