@@ -279,7 +279,16 @@ backend, matching the JP-market setup). Section order, adapted from the referenc
 11. FAQ — format, refund, "does this work in my state", "I rent", "I'm not handy"
 12. Last call — $87 struck to $47, urgency, guarantee restated
 
-**Lead magnet:** the state packet, gated by email, pinned in every video description.
+**Lead magnet vs buyer bonus — priced, then given away** (Yoder's mechanic; owner-confirmed):
+
+| Stage | What | Shown as |
+|---|---|---|
+| Pre-purchase, email-gated | the reader's ONE state packet | "$19 value — free, on me" |
+| Buyer bonus | all 50 states + fillable version + season-window calendar | "$29 value — included" |
+
+The free packet proves the book is real; the buyer version is strictly bigger, so nothing is
+double-sold. Lead magnet pinned in every video description.
+
 Gumroad cannot show a struck-through price natively — put the $87 anchor on the landing page and
 in the Gumroad product description, and use a discount code for the launch price.
 
