@@ -71,7 +71,7 @@ All numbers below marked (V) must be verified against the **NWS Service Assessme
 ### A6 — TUSCALOOSA → BIRMINGHAM EF4 (18:30–24:00 · ~675 words)
 | Beat | Content |
 |---|---|
-| formation | 4:43pm, Greene Co.; Oldshue livestream = first ground confirmation, ~30 min lead credited with saving lives |
+| formation | 4:43pm, Greene Co.; Oldshue livestream = first ground confirmation, ~30 min lead credited with saving lives. **Told over our NEXRAD re-plot + short network tower-cam clips (ABC 33/40 class, 3–4s, narrated-over, credited in description) — Oldshue's own frames stay OUT unless licensed (chaser class = strike risk, owner-settled 2026-07-26)** |
 | emergency | Tornado emergency; Spann: "This will be a day that will go down in state history… all you can do is pray for those people" |
 | the hit | 5:13pm crosses the city; 12% of Tuscaloosa destroyed in ~6 minutes; 7,000 jobs gone in that window; EMA office itself destroyed |
 | science beat | **NET-INFO-GAIN:** why this is rated EF4 not EF5 — how damage-survey engineers actually estimate winds, and why the scale caps out. Answers the "functionally an EF5" argument competitors wave at |
