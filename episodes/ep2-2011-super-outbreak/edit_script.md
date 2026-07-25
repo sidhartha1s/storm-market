@@ -24,7 +24,10 @@
 - **Anti-patterns:** SkyWhisper spreads emotion across segments — we bank it at the end (proven formula). Spark/Wonder = same TV doc twice; its named-character material (Stevens/Downs/Brown story) is that production's interview content — we use only publicly documented facts/quotes with attribution, never re-narrate their interviews as ours.
 
 ## FACT-VERIFICATION LEDGER (hard gate before scripting prose)
-All numbers below marked (V) must be verified against the **NWS Service Assessment (April 25–28 2011 outbreak)**, NOAA/NCEI Storm Events, and SPC records before TTS. Competitor numbers are hypotheses, not facts. Known conflicts: outbreak deaths 316/324/348 · AL deaths 238/252 · Hackleburg path 102/130 mi · winds 200/210 mph · Smithville deaths 16/23 · damage $10.2B/$15B.
+**(V) = "verify before prose", NOT "verified"** — every (V) number in this design doc is a
+competitor-sourced hypothesis awaiting the facts-*.md verification pass; final numbers get
+consolidated here (and conflicts resolved to the primary-source value) before any TTS text is
+written. All numbers below marked (V) must be verified against the **NWS Service Assessment (April 25–28 2011 outbreak)**, NOAA/NCEI Storm Events, and SPC records before TTS. Competitor numbers are hypotheses, not facts. Known conflicts: outbreak deaths 316/324/348 · AL deaths 238/252 · Hackleburg path 102/130 mi · winds 200/210 mph · Smithville deaths 16/23 · damage $10.2B/$15B.
 
 ---
 
