@@ -23,11 +23,25 @@
   10. Hackleburg's Wrangler plant never reopened — **CONDITIONAL: include ONLY if verification confirms** (owner rule); else drop entirely.
 - **Anti-patterns:** SkyWhisper spreads emotion across segments — we bank it at the end (proven formula). Spark/Wonder = same TV doc twice; its named-character material (Stevens/Downs/Brown story) is that production's interview content — we use only publicly documented facts/quotes with attribution, never re-narrate their interviews as ours.
 
-## FACT-VERIFICATION LEDGER (hard gate before scripting prose)
-**(V) = "verify before prose", NOT "verified"** — every (V) number in this design doc is a
-competitor-sourced hypothesis awaiting the facts-*.md verification pass; final numbers get
-consolidated here (and conflicts resolved to the primary-source value) before any TTS text is
-written. All numbers below marked (V) must be verified against the **NWS Service Assessment (April 25–28 2011 outbreak)**, NOAA/NCEI Storm Events, and SPC records before TTS. Competitor numbers are hypotheses, not facts. Known conflicts: outbreak deaths 316/324/348 · AL deaths 238/252 · Hackleburg path 102/130 mi · winds 200/210 mph · Smithville deaths 16/23 · damage $10.2B/$15B.
+## FACT LEDGER — RESOLVED (verification pass complete 2026-07-26; citations in references/facts-*.md)
+The script prose below uses ONLY these values. (V) markers in the act tables are historical.
+- **Outbreak (Apr 25–28):** 368 tornadoes (NCEI variant: 362 — phrase "more than three hundred sixty"); 324 tornado deaths / 348 total severe-weather deaths; damage $10.2B (2011 dollars).
+- **April 27 alone:** 316 deaths (NWS SA primary); Alabama 234; event damage $4.2B (Apr-27 total, NOT Alabama-specific).
+- **Record framing:** four EF5s in one day = most since EF scale adopted 2007. April 3 1974 had SEVEN F5s — say "since the modern scale," never "never before or since."
+- **Lead time:** 22.1 min average Apr 27 (SA). National-average comparison UNVERIFIED — dropped.
+- **Pre-dawn Apr 27:** "over two dozen" tornadoes (not ~36), 3 dead, 40+ injured; **6 NOAA Weather Radio transmitters destroyed, 100+ transmission towers down** (SA, quotable).
+- **Hackleburg–Phil Campbell EF5:** 210 mph; 132-mi path (NWS full track); 72 dead (NWS); Hackleburg 18, Phil Campbell 21, Lawrence Co. 14; 75% of Hackleburg destroyed; Wrangler plant destroyed → **reopened 2013, 150→200 jobs** (warm-close fact).
+- **Smithville EF5:** 23 dead full path (17 in town); 205 mph; ~35 mi; 117 structures; **Ford Explorer thrown ½ mi into the water tower, caromed ¼ mi more**; tombstones rotated; 1-ft scouring.
+- **Tuscaloosa–Birmingham EF4:** 65 dead (NWS text; 64 common cite — use 65, cited); 1,500+ injured; $2.4B; EF4 190 mph; 80.68-mi path; "12% of city / 7,000 jobs" = Mayor Maddox statements, ATTRIBUTE to him; Oldshue 4:50pm livestream confirmed; Ashley Harrison story confirmed public record.
+- **Rainsville EF5:** 25 dead; 200+ mph; ~34-mi path (NWS 33.66); 800-lb safe carried 600 ft, door torn off; school bus blown across highway (NOT "stripped to chassis").
+- **Ringgold GA:** 7 dead in Georgia (≈20 on full GA/TN track — scope carefully). Lake Martin: 7 dead. Apr 28 Vaughn GA: 2 dead.
+- **Vilonia Apr 25:** EF2 (not EF3), 4 dead.
+- **Browns Ferry:** all 3 units scrammed 5:01pm, tornado ~3 mi away, 7 of 8 diesels carried load, offsite power back May 2 (~5 days), NRC "Unusual Event."
+- **Dual-pol:** first operational NWS unit May 2011 (weeks AFTER outbreak), fleet complete end-2013; adds tornadic debris signature.
+- **Warning science:** 83% false-alarm rate (NWS Birmingham region Oct 2007–Mar 2011); of 139 direct deaths studied, 86 in permanent site-built homes vs 46 mobile.
+- **Synoptics:** CAPE 2,000–3,000 J/kg (3–4k ArkLaTex evening prior); helicity 450–600 m²/s²; 50–80 kt shear; 80–100 kt mid-level jet.
+- **DROPPED (failed verification):** shelter-roof-21-survivors story (aggregator conflation — all competitors repeat it); Gordo 3:41am EF3 (not found); "252 AL deaths"; "~36 pre-dawn tornadoes"; Smithville 1.6 sq mi; bus stripped to chassis; Ringgold "20 deaths"; national 13-min lead-time comparison; "$15B."
+- **911 audio:** no public April 27 archive found — cold-open audio scene uses broadcast/dispatch-scanner audio instead (FOIA to county E-911 possible but slow; owner call if wanted).
 
 ---
 
