@@ -69,8 +69,11 @@ STILLS = [
      "beams after a tornado, overcast daylight, debris texture, nails and "
      "shattered wood"),
     ("ai-field-scar-aerial",
-     "aerial drone view of a long brown tornado damage scar cutting across "
-     "green forest and farmland, straight line of destruction, daylight"),
+     "aerial drone view of a long straight tornado damage swath of snapped "
+     "and flattened trees cutting through temperate deciduous forest and "
+     "green Midwest American farm fields, brown scar of splintered timber "
+     "and debris, overcast daylight, flat American countryside, no smoke, "
+     "no dirt road, no tropical or jungle vegetation"),
     ("ai-storm-horizon-dusk",
      "a massive supercell thunderstorm mothership cloud structure at dusk "
      "over flat plains, dramatic layered clouds, wide horizon, no tornado"),
