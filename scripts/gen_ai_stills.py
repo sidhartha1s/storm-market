@@ -229,9 +229,9 @@ def main():
             fail += 1
             print(f"  FAILED {sid}", file=sys.stderr)
             continue
-        (OUT_DIR / f"{sid}.jpg").write_bytes(png)
+        (OUT_DIR / f"{sid}.png").write_bytes(png)
         ok += 1
-        print(f"  saved {sid}.jpg ({len(png)} bytes)")
+        print(f"  saved {sid}.png ({len(png)} bytes)")
         if calls >= args.max_api_calls:
             print("Budget cap reached; stopping.", file=sys.stderr)
             break
