@@ -97,13 +97,21 @@ Canonical warm preparedness cadence → "…This was The Warning Hour." Match-cu
 ---
 
 ## Inserts requiring owner confirmation (sourced AFTER design lock, each gated individually)
-1. Cold-open 911/dispatch audio (a0-s1)
+1. Cold-open ground-POV montage clips (a0-s1) — each clip individually
 2. Morning broadcast clip (a2-s3)
-3. Spann "pray for those people" moment (A6) — short, narrated-over, claims-survivable
-4. Oldshue livestream excerpt (A6) — license check first; treat as chaser-adjacent, DO NOT use without clearance
+3. Spann "pray for those people" moment (A6) — short, narrated-over, credited
+4. ~~Oldshue livestream~~ — OUT unless licensed (owner-settled 2026-07-26); beat narrated over radar re-plot + network tower-cam
+
+## Broadcast-clip rehook cadence (owner order 2026-07-26)
+- Target audience: **40–70+, lived through this on live TV** — real broadcast/news/PD clips are the nostalgia hook, not stock footage.
+- **A real clip (news broadcast / PD archive / survivor footage) lands every 45–60s** as a rehook, or as the beat needs. Stock fills gaps between them, never the other way around.
+- Network news clips: 3–4s max per use, narrated-over, courtesy credit in description. Claims budgeted (claims ≠ strikes); no segment may die if claimed. Chaser/independent-streamer footage stays under the NEVER-without-license rule — credit does not substitute for a license.
+
+## Radar/graphic timestamp rule (owner order 2026-07-26)
+Every radar/cloud/satellite map with burned-in timestamps: **map the timestamp to the narration or crop/cut it out** — watch UTC-vs-local (real NEXRAD scans burn UTC). Grain filter over archive graphics as needed to unify look.
 
 ## Footage plan (claim-proof stack)
-NEXRAD re-plots (2 min. set: Hackleburg supercell, Tuscaloosa hook echo) · SPC/NWS PD graphics · FEMA/NG aftermath footage · archive.org day-after news · Pexels/Pixabay neutral b-roll · AI b-roll only for dramatization gaps · SFX from library per editorial choice. NO storm-chaser footage without license. Subject-family ledger maintained from first sourcing pass.
+NEXRAD re-plots (2 min. set: Hackleburg supercell, Tuscaloosa hook echo) · SPC/NWS PD graphics · FEMA/NG aftermath footage · archive.org day-after news · Pexels/Pixabay neutral b-roll · AI b-roll only for dramatization gaps · SFX from library per editorial choice · animations/graphics wherever a beat needs one. NO storm-chaser footage without license. Subject-family ledger maintained from first sourcing pass.
 
 ## Word budget check
 165+555+370+245+615+305+675+305+370+60 = **3,665 words ≈ 26.8 min narration ≈ 30 min runtime** with holds/inserts. ✔
