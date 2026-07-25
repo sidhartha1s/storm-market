@@ -712,10 +712,11 @@
     tl.fromTo("#doc2-l2", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 663.4);
     tl.fromTo("#doc2-sub", { opacity: 0 }, { opacity: 1, duration: 0.8 }, 664.9); /* "They waited" on the word @664.8 */
     tl.to("#doc2", { opacity: 0, duration: 0.8 }, 679.9);
-    tl.fromTo("#doc3", { opacity: 0 }, { opacity: 1, duration: 0.8 }, 683.0);
-    tl.fromTo("#doc3-l1", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 683.6);
-    tl.fromTo("#doc3-l2", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 686.4);
-    tl.fromTo("#doc3-attr", { opacity: 0 }, { opacity: 1, duration: 0.9 }, 690.0);
+    /* quote lines land ON the spoken words: "It is really hard" @689.4, "how many" @692.6 (a4-s1b.words.json) */
+    tl.fromTo("#doc3", { opacity: 0 }, { opacity: 1, duration: 0.8 }, 688.6);
+    tl.fromTo("#doc3-l1", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 689.4);
+    tl.fromTo("#doc3-l2", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 692.5);
+    tl.fromTo("#doc3-attr", { opacity: 0 }, { opacity: 1, duration: 0.9 }, 696.3);
     tl.to("#doc3", { opacity: 0, duration: 0.9 }, 705.5);
 
     const pctx = () => document.getElementById("poly-canvas")?.getContext("2d");
