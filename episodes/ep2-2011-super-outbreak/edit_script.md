@@ -86,7 +86,8 @@ Rainsville/DeKalb EF5 6:19pm: school bus stripped to bare chassis; 800-lb safe c
 | Beat | Content |
 |---|---|
 | numbers, reconciled | On-screen-cited official totals (NWS/NOAA): ~360 tornadoes, 4 days, 21 states, 324 dead (V) — with a one-line "sources disagree; these are the government's own figures" credibility beat |
-| why they died | SA findings woven together: morning-crippled warning infrastructure + ~80% historical false-alarm rate + this outbreak's atypical permanent-home fatality pattern (V). The warnings worked; the last mile failed |
+| why they died | SA findings woven together: morning-crippled warning infrastructure + ~80% historical false-alarm rate + this outbreak's atypical permanent-home fatality pattern (V). **24-min avg lead time vs ~13-min national average (V)** — warnings ran 2× better than normal; the last mile failed |
+| what changed | **Dual-pol radar rollout right after 2011** — debris-ball detection leap (V); concrete reform, not vague "warnings improved" |
 | survivor vignettes | 2–3 publicly documented, attributed human stories held for HERE (per formula): candidates — the Phil Campbell shelter's 21; Ashley Harrison (UA senior, days from graduation) (V, respectful-framing rules, memorial-portrait ≤5s if real photo exists); Tuscaloosa memorial inscription read in full |
 | close | Unresolved-quote energy, no tidy bow — then footnote |
 
