@@ -296,7 +296,7 @@ in the Gumroad product description, and use a discount code for the launch price
 
 | Phase | Output | Gate |
 |---|---|---|
-| 1 | Full outline: all 101 protections named + assigned to parts, 60-day sequence mapped, region priority lists | Owner sign-off on the outline before any prose |
+| 1 | Full outline: every protection named, numbered and assigned to a chapter (yields the true count), 60-day sequence mapped, 5 region priority lists | Owner sign-off on the outline before any prose |
 | 2 | Money Chapter research pack — every figure with its source URL and capture date | No unsourced number survives |
 | 3 | Tier-1 visual system + PDF pipeline; 12-page sample spread rendered | Owner eyeballs the actual rendered PDF, not a description |
 | 4 | Prose, part by part, P1 → P7 | Per-part read-through; refund-risk check on padding |
