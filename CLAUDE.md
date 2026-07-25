@@ -42,6 +42,10 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
 - NO AI-generated "witnesses" or fabricated survivor quotes, ever. Real quotes come from NWS
   service assessments / news archives, shown as on-screen text with attribution.
 - Reused-content safety = scripted original narration with analysis. A clip reel is a channel killer.
+- **SFX is a LIBRARY, not a mandate (owner 2026-07-26):** `assets/sfx/` holds reusable beds
+  (rain/wind loops, siren recordings, rumble, crickets). The editor CHOOSES per episode whether
+  and which to use — never hardcode an SFX layer into future episodes. When used: volumedetect
+  the source, compensate gain, verify the layer post-render (LEARNINGS item 7).
 
 ## Pipeline (hyperframes-heavy, minimal code — deliberate contrast to JP-market)
 **Read `DESIGN.md` before any episode work — it is the editing architecture (owner-settled
