@@ -78,8 +78,9 @@ STILLS = [
      "a massive supercell thunderstorm mothership cloud structure at dusk "
      "over flat plains, dramatic layered clouds, wide horizon, no tornado"),
     ("ai-radio-tower-storm",
-     "a damaged broadcast radio tower bent and leaning against dark storm "
-     "clouds, twisted metal lattice structure, dramatic stormy sky"),
+     "a visibly damaged broadcast radio tower, its lattice mast bent sharply "
+     "and buckled partway up, leaning at a broken angle against dark storm "
+     "clouds, twisted collapsed metal struts, dramatic stormy sky"),
 ]
 
 
