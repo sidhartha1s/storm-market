@@ -5,10 +5,11 @@ Every owner correction / measured surprise lands here same session. Newest first
 ## 2026-07-26 — ep2 v1 owner review (9/10; every item below is a standing rule now)
 
 **Editorial (owner corrections):**
-- **Broadcast 4-4-4 rule:** TV/broadcast pulls stay ~4s; NEVER a 12-24s single pull; different
-  sources, different cuts, different chapters; never reuse the same broadcast cut twice.
-  Grade every broadcast/private-rec clip (unified grade = transformational + look-glue);
-  stock/PD exempt. Owner: "4,4,4 of multiples work better — reduced risk."
+- **Broadcast variety:** TV/broadcast pulls stay short and MEANINGFUL — never a 12-24s single
+  pull; length itself is editor judgment ("4,4,4" was an owner example, not a formula — don't
+  hardwire it). Different sources, different cuts, different chapters; never reuse the same
+  broadcast cut twice. Grade every broadcast/private-rec clip (unified grade = transformational
+  + look-glue); stock/PD exempt.
 - **SFX beds must be diegetically motivated and SHORT.** A 136s wind loop over analysis
   narration read to the owner as inexplicable "steady wind"; crickets running under a blackout
   read as "grey sound." Bed enters with the storm beat, leaves when the beat does.
