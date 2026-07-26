@@ -2,6 +2,29 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
+## 2026-07-26 — ep2 overnight build (tooling gotchas, all reproduced)
+
+- **Snapshot `--timeout` covers ONLY runtime init; page navigation is a separate 10s default**
+  that kills media-heavy comps with "Navigation timeout of 10000 ms exceeded". Fix: env var
+  `PRODUCER_PAGE_NAVIGATION_TIMEOUT_MS=120000` (found in cli.js `resolveDiagnosticNavigationTimeoutMs`).
+  Applies to snapshot AND render — set it on every invocation for big comps.
+- **Harness background Bash tasks die at the 120s default timeout / on compaction** — long
+  snapshot/render jobs go DETACHED: `Start-Process cmd.exe '/c <ABSOLUTE path>.cmd'` writing a
+  log + `done.marker`, polled via wakeups. Relative .cmd path silently no-ops (process spawns,
+  script never runs). One npx call per .cmd — a second `call npx` after the first never ran.
+- **Snapshot's video-frame extraction can fail per-frame** ("could not be extracted — will appear
+  black/stale") while the composition is fine — the RENDER captures live playback and is unaffected.
+  Verify suspects by ffmpeg-extracting frames from the source media at the mapped offsets
+  (data-start/trim math), not by rerunning snapshot.
+- `scripts/tts_episode.py --only` REWRITES manifest.json with only those segments — re-run a full
+  pass (existing wavs skip fast) after any `--only` patch. `transcribe_episode.py` skips existing
+  words.json — delete stale ones after re-TTS or timings go stale.
+- yt-dlp `--print` implies `--simulate` — subtitle downloads silently skip; run without `--print`.
+- Subagents can go idle without reporting (2 of 6 tonight) — poll with SendMessage pings; if still
+  silent, verify their on-disk output yourself and take over the reporting step.
+- `.lt-loc` lower-third relied on text-shadow alone — unreadable over white map graphics; all
+  text-over-media cards get a dark backing chip (`background: rgba(5,8,12,0.78)`) from ep2 on.
+
 ## 2026-07-26 — draft-proxy render validated (timed on ep1 v3d, 17:17 comp)
 
 `--quality draft --crf 32 --fps 15 --workers 3`: **21m 16s vs 39m 32s** standard (46% faster),
