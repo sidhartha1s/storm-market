@@ -2,6 +2,44 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
+## 2026-07-26 — ep2 v1 owner review (9/10; every item below is a standing rule now)
+
+**Editorial (owner corrections):**
+- **Broadcast 4-4-4 rule:** TV/broadcast pulls stay ~4s; NEVER a 12-24s single pull; different
+  sources, different cuts, different chapters; never reuse the same broadcast cut twice.
+  Grade every broadcast/private-rec clip (unified grade = transformational + look-glue);
+  stock/PD exempt. Owner: "4,4,4 of multiples work better — reduced risk."
+- **SFX beds must be diegetically motivated and SHORT.** A 136s wind loop over analysis
+  narration read to the owner as inexplicable "steady wind"; crickets running under a blackout
+  read as "grey sound." Bed enters with the storm beat, leaves when the beat does.
+- **Bare static stills >10s = retention risk.** Motion video tolerates 12-15s; a bare still
+  doesn't. Split with another visual or overlay an info beat — but never force filler.
+- **Insert/AV cuts on sentence boundaries via transcript, always.** 8-14s, complete meaningful
+  statement (emotional or informational), never mid-sentence. "80% is the cut; the last 20% is
+  knowing what to leave out."
+- **Every act's episode outro carries the episode number** (match ep1: "Episode N — Title").
+- **Cold-open clips need per-beat volumedetect** — one silent source beat (towercam) muted the
+  opening 3.6s of a cuts-on-audio montage.
+
+**Composition contract:**
+- **Exit animations must end fully gone** (autoAlpha:0 + overshoot the slide). `x:660` on an
+  820px panel left a stuck sliver for ~1s until the host window closed — owner caught it at
+  three timestamps. Snapshot host-end−0.5s to verify every panel exit.
+- Panel gradients: `box-sizing:border-box`, text starts inside the SOLID zone; every
+  text-over-media element gets a dark backing chip.
+
+**Process:**
+- **Provenance notes are load-bearing at COMPOSE time.** cullman-aftermath.mp4 carried a
+  "2017-era footage" warning in provenance.csv and still got wired into a 2011 documentary
+  (twice). Rule: before wiring any clip, re-read its provenance row; a "backup only"/era
+  mismatch note disqualifies it.
+- **Owner meta-principle (from 6 channels):** do NOT pre-constrain the editor-AI with scripts
+  and hard-coded rules before it sees the problem. Scripts = deterministic checks only (lint);
+  pacing/grading/placement stay AI judgment per-case. "Do not draw lines before AI even sees
+  the problem."
+- **QC density:** 18 frames on a 28-min video is not a review. Dense sweep ≈ 1 frame / 15-20s
+  plus targeted checks on every region you changed.
+
 ## 2026-07-26 — ep2 overnight build (tooling gotchas, all reproduced)
 
 - **Snapshot `--timeout` covers ONLY runtime init; page navigation is a separate 10s default**
