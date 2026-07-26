@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family: Arial, sans-serif; }
+  .panel { position:absolute; right:0; top:0; bottom:0; width:640px;
+    background: linear-gradient(270deg, rgba(6,9,13,0.94) 78%, rgba(6,9,13,0)); padding: 90px 70px 0 110px; }
+  .eyebrow { font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .tname { font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; line-height:1.05; margin-top:14px; }
+  .tsub { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:10px; }
+  .stamp { display:inline-block; margin-top:34px; font-family:'Arial Black',Arial,sans-serif; font-size:96px; color:#fff;
+    background:#8e2020; padding:2px 30px; letter-spacing:2px; }
+  .row { font-size:30px; color:#dfe7ee; font-weight:700; letter-spacing:1px; margin-top:22px; }
+  .row .lab { display:block; font-size:19px; color:#93a3b2; letter-spacing:4px; font-weight:700; }
+  #g-stat-rains-deaths { font-family:'Courier New',monospace; font-size:84px; color:#e74c3c; font-weight:700; margin-top:26px; }
+  .dlab { font-size:20px; color:#c8d3e0; letter-spacing:6px; font-weight:700; }
+</style>
+<div id="root" data-composition-id="g-stat-rains" data-width="1920" data-height="1080">
+  <div class="panel" id="g-stat-rains-panel">
+    <div class="eyebrow">OFFICIAL RECORD · NWS SURVEY</div>
+    <div class="tname">RAINSVILLE, AL</div>
+    <div class="tsub">DeKalb County · 6:19 PM</div>
+    <div><span class="stamp" id="g-stat-rains-stamp">EF5</span></div>
+    <div class="row" id="g-stat-rains-wind"><span class="lab">PEAK WINDS</span>200+ MPH</div>
+    <div class="row" id="g-stat-rains-path"><span class="lab">PATH</span>34 MILES</div>
+    <div class="row" id="g-stat-rains-dur"><span class="lab">&nbsp;</span>THE 4TH EF5 OF THE DAY</div>
+    <div id="g-stat-rains-deaths">0</div>
+    <div class="dlab" id="g-stat-rains-dlab">LIVES LOST</div>
+    <div class="row" id="g-stat-rains-dmg" style="color:#e8c56a">SAFE THROWN 600 FT</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-stat-rains-";
+  tl.set([P+"deaths",P+"dlab",P+"wind",P+"path",P+"dur",P+"dmg",P+"stamp"], {autoAlpha:0}, 0);
+  tl.fromTo(P+"panel", {x:660}, {x:0, duration:0.7, ease:"power3.out"}, 0.0);
+  tl.fromTo(P+"stamp", {scale:2.6, autoAlpha:0}, {scale:1, autoAlpha:1, duration:0.35, ease:"power4.in"}, 0.75);
+  tl.fromTo(P+"wind", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 4.5);
+  tl.fromTo(P+"path", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 6.5);
+  tl.fromTo(P+"dur", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 21.0);
+  const cnt = {v:0};
+  tl.set(P+"deaths", {autoAlpha:1}, 17.3);
+  tl.set(P+"dlab", {autoAlpha:1}, 17.3);
+  tl.to(cnt, {v:25, duration:1.1, ease:"power4.out", onUpdate:function() {
+      const el = document.getElementById("g-stat-rains-deaths"); if (el) el.textContent = Math.round(cnt.v);
+  } }, 17.3);
+  tl.fromTo(P+"dmg", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 2.0);
+  tl.to(P+"panel", {x:660, duration:0.6, ease:"power3.in"}, 26.0);
+
+  window.__timelines["g-stat-rains"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
