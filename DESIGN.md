@@ -71,6 +71,18 @@ obfuscation.**
 - Each episode's index.html is authored fresh (agent-as-editor). Reusable CSS snippets may
   accumulate in `assets/styles/` but NO scene templates — template-ification is the failure mode
   this design exists to avoid.
+- **Exit animations end fully gone (owner review 2026-07-26):** every panel/graphic exit tween
+  finishes at `autoAlpha:0` AND overshoots any slide (a 660px slide on an 820px panel left a
+  stuck sliver for ~1s). Verify each sub-comp with a snapshot at host-window-end − 0.5s.
+- Text-over-media always gets a dark backing chip; panel gradients use `box-sizing:border-box`
+  with text inside the solid zone.
+- **AI-first, code-second (owner directive 2026-07-26, from 6-channel experience):** scripts
+  exist for deterministic checks (lint) ONLY. Pacing, grading, clip choice, placement, SFX are
+  per-case editor judgment — never encode editorial baselines as enforcement, never constrain
+  the editor with code before it has seen the specific problem.
+- **Render QC density:** eyeball ≈ 1 frame / 15-20s of runtime on every render (dense sweep or
+  `hyperframes check` + snapshot grid), plus targeted frames at every region changed since the
+  last render. 18 frames on a 28-min cut is not a review (owner, ep2 v1).
 
 ## Content ID / claims protocol (owner-settled 2026-07-22)
 
