@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family: Arial, sans-serif; }
+  .panel { position:absolute; right:0; top:0; bottom:0; width:640px;
+    background: linear-gradient(270deg, rgba(6,9,13,0.94) 78%, rgba(6,9,13,0)); padding: 90px 70px 0 110px; }
+  .eyebrow { font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .tname { font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; line-height:1.05; margin-top:14px; }
+  .tsub { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:10px; }
+  .stamp { display:inline-block; margin-top:34px; font-family:'Arial Black',Arial,sans-serif; font-size:96px; color:#fff;
+    background:#8e2020; padding:2px 30px; letter-spacing:2px; }
+  .row { font-size:30px; color:#dfe7ee; font-weight:700; letter-spacing:1px; margin-top:22px; }
+  .row .lab { display:block; font-size:19px; color:#93a3b2; letter-spacing:4px; font-weight:700; }
+  #g-stat-tusc-deaths { font-family:'Courier New',monospace; font-size:84px; color:#e74c3c; font-weight:700; margin-top:26px; }
+  .dlab { font-size:20px; color:#c8d3e0; letter-spacing:6px; font-weight:700; }
+</style>
+<div id="root" data-composition-id="g-stat-tusc" data-width="1920" data-height="1080">
+  <div class="panel" id="g-stat-tusc-panel">
+    <div class="eyebrow">OFFICIAL RECORD · NWS SURVEY</div>
+    <div class="tname">TUSCALOOSA – BIRMINGHAM</div>
+    <div class="tsub">Greene → Jefferson Co. · 4:43 PM</div>
+    <div><span class="stamp" id="g-stat-tusc-stamp">EF4</span></div>
+    <div class="row" id="g-stat-tusc-wind"><span class="lab">PEAK WINDS</span>190 MPH</div>
+    <div class="row" id="g-stat-tusc-path"><span class="lab">PATH</span>80.7 MILES</div>
+    <div class="row" id="g-stat-tusc-dur"><span class="lab">&nbsp;</span>ON GROUND ~1 HR 31 MIN</div>
+    <div id="g-stat-tusc-deaths">0</div>
+    <div class="dlab" id="g-stat-tusc-dlab">LIVES LOST</div>
+    <div class="row" id="g-stat-tusc-dmg" style="color:#e8c56a">$2.4 BILLION · COSTLIEST TO DATE</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-stat-tusc-";
+  tl.set([P+"deaths",P+"dlab",P+"wind",P+"path",P+"dur",P+"dmg",P+"stamp"], {autoAlpha:0}, 0);
+  tl.fromTo(P+"panel", {x:660}, {x:0, duration:0.7, ease:"power3.out"}, 0.0);
+  tl.fromTo(P+"stamp", {scale:2.6, autoAlpha:0}, {scale:1, autoAlpha:1, duration:0.35, ease:"power4.in"}, 0.75);
+  tl.fromTo(P+"wind", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 9.5);
+  tl.fromTo(P+"path", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 2.6);
+  tl.fromTo(P+"dur", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 8.0);
+  const cnt = {v:0};
+  tl.set(P+"deaths", {autoAlpha:1}, 11.0);
+  tl.set(P+"dlab", {autoAlpha:1}, 11.0);
+  tl.to(cnt, {v:65, duration:1.9, ease:"power4.out", onUpdate:function() {
+      const el = document.getElementById("g-stat-tusc-deaths"); if (el) el.textContent = Math.round(cnt.v);
+  } }, 11.0);
+  tl.fromTo(P+"dmg", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 4.7);
+  tl.to(P+"panel", {x:660, duration:0.6, ease:"power3.in"}, 16.5);
+
+  window.__timelines["g-stat-tusc"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

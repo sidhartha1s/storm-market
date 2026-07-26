@@ -8,8 +8,8 @@
   .hdr { position:absolute; left:0; right:0; top:74px; text-align:center; font-weight:700; font-size:26px; letter-spacing:8px; color:#93a3b2; }
   .sub { position:absolute; left:0; right:0; top:118px; text-align:center; font-family:Georgia,serif; font-style:italic; font-size:28px; color:#d8a13a; }
   .dis { position:absolute; left:170px; top:210px; width:900px; }
-  .di { position:relative; float:left; width:118px; height:118px; margin:0 12px 12px 0; background:#101820; border:2px solid #2a3644; display:grid; place-items:center; font-size:19px; color:#9db0c2; font-weight:700; text-align:center; line-height:1.2; }
-  .dislab { position:absolute; left:170px; top:760px; width:900px; font-size:24px; color:#dfe7ee; font-weight:700; letter-spacing:1px; }
+  .di { position:relative; float:left; width:100px; height:88px; margin:0 10px 10px 0; background:#101820; border:2px solid #2a3644; display:grid; place-items:center; font-size:15px; color:#9db0c2; font-weight:700; text-align:center; line-height:1.2; }
+  .dislab { position:absolute; left:170px; top:700px; width:900px; font-size:24px; color:#dfe7ee; font-weight:700; letter-spacing:1px; }
   .ladder { position:absolute; right:150px; top:210px; width:480px; }
   .ladlab { font-size:22px; letter-spacing:4px; color:#93a3b2; font-weight:700; margin-bottom:18px; }
   .rung { position:relative; height:74px; margin-bottom:10px; background:#101820; border-left:10px solid #2a3644; }
@@ -51,9 +51,9 @@ window.__timelines = window.__timelines || {};
   /* slot = a6-s3 start + 1.5 → rel = cue - 1.5. ef4@2.08, dis28@18.06, dod@23.68, 190@43.9, farmland@58.74 */
   tl.fromTo("#g-ef-hdr", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.5}, 0.5);
   tl.fromTo("#g-ef-sub", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 3.6);
-  tl.set("#g-ef-dis", {autoAlpha:1}, 15.8);
+  tl.set("#g-ef-dis", {autoAlpha:1}, 8.4);
   for (let i=0;i<28;i++) {
-    tl.fromTo("#g-ef-di"+i, {autoAlpha:0, scale:0.7}, {autoAlpha:1, scale:1, duration:0.18}, 15.9+i*0.09);
+    tl.fromTo("#g-ef-di"+i, {autoAlpha:0, scale:0.7}, {autoAlpha:1, scale:1, duration:0.18}, 8.5+i*0.34);
   }
   tl.fromTo("#g-ef-dislab", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 21.5);
   tl.fromTo("#g-ef-ladder", {autoAlpha:0, x:30}, {autoAlpha:1, x:0, duration:0.6}, 26.0);

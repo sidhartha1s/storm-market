@@ -1,0 +1,115 @@
+== a0-s3
+  ef5: MISS ef five
+  not-enough: 33.56
+== a1-s2
+  cape1k: MISS one thousand
+  cape2k: MISS two thousand
+  cape3k: MISS three thousand
+  lid: 30.86
+  spin: 40.64
+  hel450: 62.6
+  hel600: 64.08
+  together: 69.46
+  machines: 78.68
+== a2-s2
+  towers100: 10.84
+  deaf: 55.44
+  act2: 78.78
+== a3-s1
+  29mi: 8.52
+  205mph: 12.36
+  3dead: 21.36
+  hack: 88.58
+  philc: 89.68
+  smith: 90.96
+== a4-s1
+  t305: 0.76
+  quarters: 25.14
+  40mi: 48.82
+  18dead: 50.56
+== a4-s2
+  21dead: 3.68
+  slab: 17.14
+  72dead: 72.64
+  1955: MISS nineteen fifty five
+  joplin: 86.28
+== a4-s3
+  bferry: 24.44
+  t501: 29.24
+  scram: MISS scrammed
+  5days: 49.2
+== a5-s1
+  t342: 0.5
+  205mph: 13.94
+  b117: 31.58
+  explorer: 44.32
+  wtower: 22.98
+  tomb: 55.56
+  23dead: 65.8
+  17town: 32.24
+== a6-s1
+  t443: 0.38
+  oldshue: 19.06
+  blind: 38.34
+  emergency: 54.0
+  history: 77.12
+  pray: 79.62
+== a6-s2
+  35th: 4.28
+  mcfarland: 5.94
+  15th: 9.18
+  12pct: MISS twelve percent
+  7kjobs: MISS seven thousand
+  bham: 42.3
+  65dead: 62.78
+  1500inj: MISS fifteen hundred
+== a6-s3
+  dis28: 18.06
+  dod: 23.68
+  ef4: 2.08
+  mph190: 43.9
+  farmland: 58.74
+== a6-s4
+  concord: 27.42
+  pgrove: 28.7
+  20more: 31.36
+  81mi: 44.86
+  24b: 46.92
+  costliest: 53.22
+  fourth: MISS fourth ef five
+== a7-s1
+  t619: 0.56
+  rains: MISS rainsville
+  safe: 20.52
+  bus: 29.2
+  25dead: 35.52
+  ringgold: 51.08
+  7ga: 52.8
+  lakemartin: 63.3
+  vaughn: 83.92
+  nowarn: 109.14
+== a8-s1
+  n360: 5.72
+  n324: 11.58
+  n316: 18.14
+  n234: 20.84
+  10b: 24.58
+  assess: 34.98
+== a8-s2
+  22min: 2.76
+  83pct: MISS eighty three percent
+  6nwr: 24.28
+  86perm: 36.02
+  dualpol: 54.6
+  2013: 67.82
+  lastmile: 112.38
+== a8-s3
+  ashley: 6.66
+  age22: 7.66
+  closet: 21.94
+  memorial: 41.36
+  wrangler: 55.66
+  reopen: 58.0
+  exist: 64.56
+== a9-s1
+  twh: 22.3
