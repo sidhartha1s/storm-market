@@ -5,8 +5,8 @@
 <template>
 <style>
   #root { position:absolute; inset:0; font-family: Arial, sans-serif; }
-  .panel { position:absolute; right:0; top:0; bottom:0; width:640px;
-    background: linear-gradient(270deg, rgba(6,9,13,0.94) 78%, rgba(6,9,13,0)); padding: 90px 70px 0 110px; }
+  .panel { position:absolute; right:0; top:0; bottom:0; width:820px; box-sizing:border-box;
+    background: linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); padding: 90px 70px 0 170px; }
   .eyebrow { font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
   .tname { font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; line-height:1.05; margin-top:14px; }
   .tsub { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:10px; }
@@ -49,7 +49,7 @@ window.__timelines = window.__timelines || {};
       const el = document.getElementById("g-stat-smith-deaths"); if (el) el.textContent = Math.round(cnt.v);
   } }, 36.6);
   tl.fromTo(P+"dmg", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 40.0);
-  tl.to(P+"panel", {x:660, duration:0.6, ease:"power3.in"}, 44.0);
+  tl.to(P+"panel", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 44.0);
 
   window.__timelines["g-stat-smith"] = tl;
 })();
