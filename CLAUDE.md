@@ -41,6 +41,10 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   build a segment that dies if claimed. **Rehook cadence (owner 2026-07-26): a REAL clip
   (broadcast/PD/survivor) every 45–60s — core audience 40–70+ saw these events live; stock only
   fills between real clips.** Full rule in DESIGN.md.
+  **Broadcast 4-4-4 rule (owner 2026-07-26): every broadcast pull ~4s, never 12s+; different
+  sources, different cuts, different chapters; never reuse the same broadcast cut twice; grade
+  all broadcast/private-rec clips with a unified look (stock/PD exempt). Re-read the clip's
+  provenance.csv row BEFORE wiring it — era-mismatch/"backup only" notes disqualify.**
 - **Storm-chaser footage: NEVER without a license** — they claim and strike aggressively.
   Includes independent streamers/videographers (Oldshue class), not just chasers by job title;
   credit ≠ license; never disguise a source (grain/crop/short-cut) to sneak UNLICENSED footage
