@@ -428,6 +428,8 @@ window.__timelines = window.__timelines || {};
   /* ---- SFX beds (source means ~-30dB → near-unity gains; verify post-render) ---- */
   tl.to("#sfx-rain", { volume: 0.85, duration: 3.0 }, 350.0);
   tl.to("#sfx-rain", { volume: 0.0, duration: 3.0 }, 414.0);
+  tl.to("#sfx-rumble-co", { volume: 0.75, duration: 0.4 }, 3.4);
+  tl.to("#sfx-rumble-co", { volume: 0.0, duration: 0.5 }, 6.4);
   tl.to("#sfx-wind", { volume: 0.8, duration: 3.0 }, 621.5);
   tl.to("#sfx-wind", { volume: 0.0, duration: 3.0 }, 656.0);
   tl.to("#sfx-crickets", { volume: 0.7, duration: 3.0 }, 1349.0);
