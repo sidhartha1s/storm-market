@@ -51,6 +51,24 @@ Per beat: agent pulls 2-3 candidates, extracts frames, vision-checks, picks. Too
 License check per item; storm-chaser footage NEVER without license; news-network footage
 sparingly/short/narrated-over (claims budgeted, segments must survive being claimed).
 
+### Cold-open hook contract (owner-rated, ep2 rebuild — 2026-07-27)
+The first 25-30s decide the video. Owner rated ep2's first hook 0.6/10 and the rebuilt one
+shipped; these are the standing requirements for every episode's cold open:
+- **An intelligible, high-stakes ANCHOR line starts by ~2.5s** — a real broadcast/dispatch
+  voice saying something a viewer cannot skip (ep2: Spann's live "tornado emergency"). Not
+  ambience, not music, not a fragment.
+- **Date/place title card inside the first second** (viewer must know where/when instantly).
+- **Every cut lands ON an audio event** (a line ends, a roar starts, a siren swells) — never
+  cut mid-sentence, never let commentary "just start" and get cut off.
+- **A sonic spine runs the whole hook** (ep2: siren — fade in from black, duck under the
+  anchor voice, swell at impact, die into the void). No silent clips, no dead air.
+- **Inserts end on their complete emotional statement** — trim orphan tails ruthlessly
+  ("we knew something was coming." — stop. Nothing after).
+- **End the hook with a 2-3s VOID (black + fading spine) before the narrator enters** — the
+  contrast is the hook's punctuation.
+- Few clips, each earning its slot (ep2: warning → impact → dispatch → void). More clips ≠
+  more captivating; undifferentiated montage is what scored 0.6.
+
 ### Broadcast-clip rehook cadence (owner order 2026-07-26)
 Core audience is 40–70+ — they watched these events on live TV; real broadcast/news/PD/survivor
 clips are the nostalgia rehook, stock footage only fills between them. **A real clip lands every
