@@ -28,8 +28,9 @@ cd /d "%EP%"
 set PRODUCER_PAGE_NAVIGATION_TIMEOUT_MS=120000
 set PRODUCER_PUPPETEER_PROTOCOL_TIMEOUT_MS=900000
 call npx hyperframes@0.7.64 render . --gpu --browser-gpu --experimental-fast-capture=true %QFLAGS% --workers 3 -o "renders/%OUTBASE%.mp4" > "render_%MODE%.log" 2>&1
-echo %ERRORLEVEL% > "render_%MODE%_done.marker"
-exit /b 0
+set RC=%ERRORLEVEL%
+echo %RC% > "render_%MODE%_done.marker"
+exit /b %RC%
 
 :usage
 echo usage: render.cmd ^<episode-slug^> ^<draft^|full^> [out-basename]
