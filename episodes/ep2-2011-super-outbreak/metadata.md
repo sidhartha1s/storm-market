@@ -43,8 +43,8 @@ The story of the record this outbreak briefly held: Episode One — The Sirens o
 26:18 The survivors
 
 ### Problems this video answers
-How can four EF5 tornadoes happen in ONE day? (23:20) · Why did 316 people die on a day
-forecast almost perfectly, days in advance? (24:04) · How the morning storms destroyed the
+How can four EF5 tornadoes happen in ONE day? (23:20) · Why did 316 people die on April 27
+alone — a day forecast almost perfectly, days in advance? (24:04) · How the morning storms destroyed the
 warning system before the main event (5:49) · What 210-mph winds actually do — a Ford Explorer
 thrown half a mile into a water tower (14:20) · Why a tornado warning is ignored when 83% of
 them are false alarms (24:04) · How close the Hackleburg tornado came to a nuclear emergency
