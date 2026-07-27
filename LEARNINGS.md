@@ -30,6 +30,12 @@ Every owner correction / measured surprise lands here same session. Newest first
   text-over-media element gets a dark backing chip.
 
 **Process:**
+- **Verify each CUT, not just the source video.** An official CBS upload titled for the April 2011
+  Alabama outbreak contained Henryville, IN (March 2012) footage inside its montage — caught only
+  because a chyron was legible in a snapshot frame. Rule: before wiring any broadcast cut, extract
+  a frame FROM THE CUT and check chyrons/landmarks against the event; title + official channel are
+  not provenance for individual shots.
+
 - **Provenance notes are load-bearing at COMPOSE time.** cullman-aftermath.mp4 carried a
   "2017-era footage" warning in provenance.csv and still got wired into a 2011 documentary
   (twice). Rule: before wiring any clip, re-read its provenance row; a "backup only"/era
@@ -256,3 +262,12 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
 - xstack contact sheets pad undefined regions GREEN — padding, not video content; don't panic.
 - Snapshot pre-render QC caught both grade issues before paying for a render — keep snapshot
   sweep (≈13 frames) as the mandatory pre-render gate; post-render frame sweep stays too.
+
+**Render (2026-07-27, ep2 full render):**
+- Full-quality render died at 74% with `Protocol error: Target closed` after a burst of
+  `net::ERR_NETWORK_CHANGED` on the localhost media server — a host network-interface change
+  (Wi-Fi/VPN flip) mid-capture kills the Puppeteer browser's media fetches. Environmental, not
+  a comp defect (same comp draft-rendered clean). Fix: relaunch with
+  `PRODUCER_PUPPETEER_PROTOCOL_TIMEOUT_MS=900000` alongside the nav-timeout var; avoid network
+  changes during long renders. A ~28-min comp at standard/30fps ≈ 75+ min capture on this box —
+  budget 2h wall-clock when the machine is also running other sessions.
