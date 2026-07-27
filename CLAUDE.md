@@ -76,7 +76,11 @@ Per episode in `episodes/<slug>/`:
    like a human editor (JS/WAAPI animation ONLY — CSS @keyframes disables fast-capture). Assets
    in `episodes/<slug>/media/`.
 5. Render: `npx hyperframes@<pin> render . --gpu --browser-gpu --experimental-fast-capture=true
-   --quality standard --crf 16 --fps 30` (pin in config.yaml; NEVER @latest).
+   --quality standard --crf 16 --fps 30 --workers 3` (pin in config.yaml; NEVER @latest).
+   **Always pin `--workers 3`** — omitting it lets hyperframes "auto" pick per current RAM/load
+   (ep2 full render auto-resolved to 1 worker and crawled; drafts always ran 3 fine). Don't run
+   other heavy sessions during a final render. Set `PRODUCER_PUPPETEER_PROTOCOL_TIMEOUT_MS=900000`
+   alongside the nav-timeout var (LEARNINGS 2026-07-27).
    20-min ≈ 30–60 min on this box (GTX 1650 + 16GB, measured 2026-07-21).
 6. QC gates, in order (all mandatory before render):
    a. **Graphics/pacing self-audit (AI judgment, owner order 2026-07-23):** re-walk every

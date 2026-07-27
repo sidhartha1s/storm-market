@@ -67,7 +67,8 @@ obfuscation.**
 
 - Animations JS/WAAPI only — CSS @keyframes disables fast-capture (measured 2026-07-21).
 - Render: `npx hyperframes@<pin> render . --gpu --browser-gpu --experimental-fast-capture=true
-  --quality standard --crf 16 --fps 30`.
+  --quality standard --crf 16 --fps 30 --workers 3` (pin workers — "auto" downshifts to 1 on a
+  loaded box; see repo CLAUDE.md step 5).
 - Each episode's index.html is authored fresh (agent-as-editor). Reusable CSS snippets may
   accumulate in `assets/styles/` but NO scene templates — template-ification is the failure mode
   this design exists to avoid.
