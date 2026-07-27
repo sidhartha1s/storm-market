@@ -75,13 +75,12 @@ Per episode in `episodes/<slug>/`:
 4. Compose `index.html` **directly as a hyperframes composition** — the agent authors the edit
    like a human editor (JS/WAAPI animation ONLY — CSS @keyframes disables fast-capture). Assets
    in `episodes/<slug>/media/`.
-5. Render: `npx hyperframes@<pin> render . --gpu --browser-gpu --experimental-fast-capture=true
-   --quality standard --crf 16 --fps 30 --workers 3` (pin in config.yaml; NEVER @latest).
-   **Always pin `--workers 3`** — omitting it lets hyperframes "auto" pick per current RAM/load
-   (ep2 full render auto-resolved to 1 worker and crawled; drafts always ran 3 fine). Don't run
-   other heavy sessions during a final render. Set `PRODUCER_PUPPETEER_PROTOCOL_TIMEOUT_MS=900000`
-   alongside the nav-timeout var (LEARNINGS 2026-07-27).
-   20-min ≈ 30–60 min on this box (GTX 1650 + 16GB, measured 2026-07-21).
+5. Render: **`scripts\render.cmd <slug> <draft|full>`** — the whole recipe (version pin, both
+   timeout env vars, `--workers 3`, log + exit-code marker) is baked in; launch it DETACHED
+   (Start-Process, see the script header — quote the space-containing path). E2E-tested
+   2026-07-27. Don't hand-type npx render commands anymore; don't run other heavy sessions
+   during a final render. 20-min ≈ 30–60 min on this box (GTX 1650 + 16GB); ep2's 28-min full
+   took ~75 min at 2 workers.
 6. QC gates, in order (all mandatory before render):
    a. **Graphics/pacing self-audit (AI judgment, owner order 2026-07-23):** re-walk every
       graphic, text card, quote, and clip as a viewer — landing / idling / minor fix? — and
@@ -95,19 +94,20 @@ Per episode in `episodes/<slug>/`:
       frames, caption issues; sync rule: frame must not contradict narration).
    **Never claim an editorial rule "fixed" from your shot map — re-run the lint + self-audit
    on the final index.html; verify the artifact, not your memory (ep1 v2 RCA).**
-7. Deliverables per render, unasked: final mp4 + **SRT via `python3 scripts/build_srt.py
-   episodes/<slug> <out-basename>`** (reads audio-element data-starts from index.html + the
-   per-segment words.json) + **−14 LUFS loudness-normalized master** (`-c:v copy` + measured
-   gain; verify with loudnorm summary) + updated `metadata.md` (titles,
+7. Deliverables per render, unasked: **`python3 scripts/master_deliverables.py
+   episodes/<slug> <render-basename>`** — one command produces the −14 LUFS master
+   (`-c:v copy` + measured gain, verified) AND the SRT (calls build_srt.py; requires the
+   `nx-*` narration audio-id convention). E2E-tested on ep2 2026-07-27. Plus updated
+   `metadata.md` (titles,
    description, tags, chapters, AEO/SEO block, Education metadata: category Education, type
    Overview; credits; socials/handles) at publish time.
 - Long episodes: chunk renders only if a single render proves unstable — don't pre-build JP's
   chunk machinery until an episode actually needs it. From ep2 on, AUTHOR compositions as
   sub-compositions (one per act) so per-act re-renders are native (owner-approved 2026-07-26).
 - **Draft-proxy review loop (owner order 2026-07-26): every review cut ships as a DRAFT render
-  first** — `npx hyperframes@<pin> render . --gpu --browser-gpu --experimental-fast-capture=true
-  --quality draft --crf 32 --fps 15 --workers 3 -o renders/<name>-draft.mp4` (measured 2026-07-26
-  on ep1 17:17 comp: 21m 16s vs 39m 32s full; 258 MB vs 1775 MB; 1080p15, text fully readable).
+  first** — `scripts\render.cmd <slug> draft [out-basename]` (draft = crf 32 / 15fps / 3
+  workers baked in; measured 2026-07-26 on ep1 17:17 comp: 21m 16s vs 39m 32s full; 258 MB vs
+  1775 MB; 1080p15, text fully readable).
   Studio preview cannot realtime-play 15+ min media-heavy comps — don't offer it for review.
   Full-quality render ONLY after owner approves the draft.
 
