@@ -59,7 +59,7 @@ const MEASURE = `((t) => {
     const own = [...el.childNodes].filter(n => n.nodeType === 3 && n.textContent.trim()).map(n => n.textContent.trim()).join(' ');
     const cs = getComputedStyle(el);
     if (own) {
-      rects.push({ id: el.id || el.className || el.tagName, text: own.slice(0, 42),
+      rects.push({ el, id: el.id || el.className || el.tagName, text: own.slice(0, 42),
                    x: r.x, y: r.y, w: r.width, h: r.height, fs: parseFloat(cs.fontSize) });
       out.fonts.push(parseFloat(cs.fontSize));
       if (r.x < -SAFEPAD || r.y < -SAFEPAD || r.right > 1920 + SAFEPAD || r.bottom > 1080 + SAFEPAD)
