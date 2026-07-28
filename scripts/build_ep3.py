@@ -225,6 +225,9 @@ HOLDS = {  # breathing room after payoffs and at act turns (DESIGN.md: hold 2-4s
  "a4-s1b": 2.5, "a4-s3": 7.0,
  "a5-s1d": 2.5, "a5-s3": 4.0, "a5-s4b": 5.0,
  "a6-s2d": 2.5, "a6-s3e": 3.5, "a6-s4d": 3.0, "a6-s4": 2.5,
+ # the outro card is authored at 30s but was clamped to the 15.9s narration and cut off
+ # mid-credits; the hold lets it finish on screen
+ "a6-s5": 11.0,
 }
 
 LOWERS = {

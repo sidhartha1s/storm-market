@@ -273,7 +273,7 @@ def wordban2():
 
 # ---------------------------------------------------------------- g-close
 def close():
-    cid, D = "g-close", 30.0
+    cid, D = "g-close", 26.5
     style = """
   .ttl { position:absolute; left:0; right:0; top:400px; text-align:center; font-family:Georgia,serif;
     font-size:92px; color:#f2f5f8; letter-spacing:3px; }
@@ -288,11 +288,11 @@ def close():
          f'Photographs: NWS Paducah · National Archives · Library of Congress · Jackson County Historical Society · The Indiana Album<br>'
          f'Reanalysis: Johns et al. 2013 · Maddox et al. 2013<br>'
          f'Some connecting scenes are modern recreations</div>')
-    j = (f'  tl.fromTo(P+"t", {{autoAlpha:0, y:30}}, {{autoAlpha:1, y:0, duration:0.9, ease:"power3.out"}}, 1.0);\n'
-         f'  tl.fromTo(P+"e", {{autoAlpha:0, y:24}}, {{autoAlpha:1, y:0, duration:0.7, ease:"power3.out"}}, 2.4);\n'
-         f'  tl.fromTo(P+"c", {{autoAlpha:0}}, {{autoAlpha:1, duration:1.0}}, 6.0);\n'
+    j = (f'  tl.fromTo(P+"t", {{autoAlpha:0, y:30}}, {{autoAlpha:1, y:0, duration:0.9, ease:"power3.out"}}, 11.28);\n'
+         f'  tl.fromTo(P+"e", {{autoAlpha:0, y:24}}, {{autoAlpha:1, y:0, duration:0.7, ease:"power3.out"}}, 12.58);\n'
+         f'  tl.fromTo(P+"c", {{autoAlpha:0}}, {{autoAlpha:1, duration:1.0}}, 16.60);\n'
          # scaleX, not letterSpacing: text-reflow properties snap per frame under capture
-         f'  tl.to(P+"t", {{scaleX:1.05, duration:{D-4:.1f}, ease:"none"}}, 1.6);\n'
+         f'  tl.to(P+"t", {{scaleX:1.05, duration:{D-13:.1f}, ease:"none"}}, 11.9);\n'
          f'  tl.to([P+"t", P+"e", P+"c"], {{autoAlpha:0, duration:1.6}}, {D-2.2:.1f});\n')
     wrap(cid, style, b, j, D)
     return cid
