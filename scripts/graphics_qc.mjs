@@ -61,14 +61,21 @@ const MEASURE = `((t) => {
     if (!vis(el)) continue;
     const r = el.getBoundingClientRect();
     if (r.width < 1 || r.height < 1) continue;
-    const own = [...el.childNodes].filter(n => n.nodeType === 3 && n.textContent.trim()).map(n => n.textContent.trim()).join(' ');
     const cs = getComputedStyle(el);
-    if (own) {
-      rects.push({ el, id: el.id || el.className || el.tagName, text: own.slice(0, 42),
-                   x: r.x, y: r.y, w: r.width, h: r.height, fs: parseFloat(cs.fontSize) });
+    /* glyph-level ink boxes, not element boxes: line-height padding and block width
+       make element rects overlap constantly without any visible garbling */
+    for (const node of el.childNodes) {
+      if (node.nodeType !== 3 || !node.textContent.trim()) continue;
+      const rng = document.createRange(); rng.selectNodeContents(node);
+      for (const ir of rng.getClientRects()) {
+        if (ir.width < 2 || ir.height < 2) continue;
+        rects.push({ el, id: el.id || el.className || el.tagName, text: node.textContent.trim().slice(0, 42),
+                     x: ir.x, y: ir.y, w: ir.width, h: ir.height, fs: parseFloat(cs.fontSize) });
+        if (ir.x < -SAFEPAD || ir.y < -SAFEPAD || ir.right > 1920 + SAFEPAD || ir.bottom > 1080 + SAFEPAD)
+          out.oob.push({ id: el.id || el.className, text: node.textContent.trim().slice(0,42),
+                         x: Math.round(ir.x), y: Math.round(ir.y), right: Math.round(ir.right), bottom: Math.round(ir.bottom) });
+      }
       out.fonts.push(parseFloat(cs.fontSize));
-      if (r.x < -SAFEPAD || r.y < -SAFEPAD || r.right > 1920 + SAFEPAD || r.bottom > 1080 + SAFEPAD)
-        out.oob.push({ id: el.id || el.className, text: own.slice(0,42), x: Math.round(r.x), y: Math.round(r.y), right: Math.round(r.right), bottom: Math.round(r.bottom) });
     }
     if (el.tagName === 'IMG' && el.naturalWidth) {
       const fit = cs.objectFit;
