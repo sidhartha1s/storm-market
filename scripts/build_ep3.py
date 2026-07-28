@@ -413,7 +413,7 @@ def main():
                     s0, s1, x0, x1, y0, y1 = kb_for(idx)
                     kbs.append(f'["#kb-{eid}",{ct:.2f},{w:.2f},{s0},{s1},{x0},{x1},{y0},{y1}]')
                 lines_report.append((ct, w, f"{typ} {Path(src).name}"))
-                ct += w
+                ct = round(ct + w, 2)
                 idx += 1
 
         if plan.get("lower"):
