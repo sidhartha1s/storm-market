@@ -211,6 +211,9 @@ def build(cid, eyebrow, name, sub, stamp, rows, counter, dur, seg=None, cues=Non
         f'  const P = "#{cid}-";',
         f'  tl.set([{hide_js}], {{autoAlpha:0}}, 0);' if hide else "",
         f'  tl.fromTo(P+"panel", {{x:660}}, {{x:0, duration:0.7, ease:"power3.out"}}, 0.0);',
+        # two elements run the whole window so the card is never a frozen still (§5)
+        f'  tl.fromTo(P+"tick", {{height:0}}, {{height:900, duration:{dur - 1.4:.2f}, ease:"none"}}, 0.7);',
+        f'  tl.fromTo(P+"eb", {{letterSpacing:"6px"}}, {{letterSpacing:"11px", duration:{dur - 1.4:.2f}, ease:"none"}}, 0.7);',
     ]
     if stamp:
         j.append(f'  tl.fromTo(P+"stamp", {{scale:2.6, autoAlpha:0}}, {{scale:1, autoAlpha:1, duration:0.35, ease:"power4.in"}}, 1.0);')
