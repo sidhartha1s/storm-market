@@ -17,8 +17,13 @@ const MAX_IDLE_OPENING = 2.5;  // tighter for the first 10s of a graphic
 const CROP_LOSS_FAIL = 0.35;   // fraction of source image cropped away by object-fit:cover
 const SAFE = { w: 1920, h: 1080, pad: 24 };
 
+/* Hard errors block the render. Idle gaps are reported and only fail when a graphic is
+ * frozen for most of its window — ep2 (the gold standard) idles in places and still reads
+ * as designed, so idling is a budget, not a tripwire. */
+const HARD = new Set(['text-collision', 'out-of-frame', 'bad-crop', 'empty-container', 'fade-only',
+                      'flat-type', 'no-timeline', 'js-error', 'no-continuous-motion', 'thin-motion', 'idle-budget']);
 const defects = [];
-const add = (comp, kind, msg) => defects.push({ comp, kind, msg });
+const add = (comp, kind, msg) => defects.push({ comp, kind, msg, hard: HARD.has(kind) });
 
 /* ---------- in-page probe: runs inside the composition ---------- */
 const PROBE = `(() => {
