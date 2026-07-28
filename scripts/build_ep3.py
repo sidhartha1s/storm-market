@@ -327,6 +327,23 @@ def is_video(src):
 
 
 @lru_cache(maxsize=None)
+def is_tall(src):
+    """A source narrower than the 16:9 frame loses most of its height to object-fit:cover
+    (measured 54-61% on the portrait-format plates). Those get the letterbox treatment —
+    blurred backdrop plus the whole image — which already exists as .pfit."""
+    if is_video(src):
+        return False
+    out = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0",
+                          "-show_entries", "stream=width,height", "-of", "csv=p=0:s=x",
+                          str(EP / src)], capture_output=True, text=True).stdout.strip()
+    try:
+        w, hgt = (int(x) for x in out.split("x")[:2])
+    except ValueError:
+        return False
+    return w / hgt < 1.45          # 16:9 is 1.78; below ~1.45 cover starts eating the subject
+
+
+@lru_cache(maxsize=None)
 def vdur(src):
     """Real length of a clip. hyperframes will not loop a short video to fill a long window —
     it fails the render with a frame-coverage error — so the window must fit the source."""
