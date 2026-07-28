@@ -292,10 +292,18 @@ def chunk(dur, assets, minw=MIN_STILL, maxw=MAX_STILL):
     return [(pick(a), w) for a, w in zip(assets, each)]
 
 
+def is_video(src):
+    return src.lower().endswith((".mp4", ".mov", ".webm", ".m4v"))
+
+
 @lru_cache(maxsize=None)
 def vdur(src):
     """Real length of a clip. hyperframes will not loop a short video to fill a long window —
     it fails the render with a frame-coverage error — so the window must fit the source."""
+    if not is_video(src):
+        # ffprobe reports ~0.04s for a still image; trusting that silently shredded a 6.3s
+        # window into 158 one-frame cuts. A non-video typed as film/stock is a data error.
+        raise SystemExit(f"[build_ep3] {src} is typed as a clip but is not a video file")
     out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
                           "-of", "default=nw=1:nk=1", str(EP / src)],
                          capture_output=True, text=True).stdout.strip()
