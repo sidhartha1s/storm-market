@@ -11,6 +11,8 @@ and are mounted as hosts.
 """
 import json
 import re
+import subprocess
+from functools import lru_cache
 from pathlib import Path
 
 EP = Path(__file__).resolve().parent.parent / "episodes" / "ep3-tristate"
