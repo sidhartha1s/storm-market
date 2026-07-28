@@ -153,16 +153,19 @@ for (const f of files) {
   const spans = probe.tweens.filter(t => t.dur >= 4).map(t => [t.start, t.start + t.dur]);
   const covered = (a, b) => spans.some(([s, e]) => s <= a + 0.25 && e >= b - 0.25);
   const beats = probe.beats.filter(b => b <= probe.duration + 0.01);
-  let prev = 0;
-  for (const b of beats) {
+  let prev = 0, frozen = 0, worst = 0;
+  for (const b of [...beats, probe.duration]) {
     const gap = b - prev;
     const limit = prev < 10 ? MAX_IDLE_OPENING : MAX_IDLE;
-    if (gap > limit && !covered(prev, b))
-      add(name, 'idle', `${gap.toFixed(1)}s frozen at ${prev.toFixed(1)}s–${b.toFixed(1)}s (limit ${limit}s, nothing in motion) — §6`);
+    if (gap > limit && !covered(prev, b)) {
+      frozen += gap; worst = Math.max(worst, gap);
+      add(name, 'idle', `${gap.toFixed(1)}s frozen at ${prev.toFixed(1)}s–${b.toFixed(1)}s (nothing in motion) — §6`);
+    }
     prev = b;
   }
-  if (probe.duration - prev > MAX_IDLE && !covered(prev, probe.duration))
-    add(name, 'idle-tail', `${(probe.duration - prev).toFixed(1)}s frozen tail after last beat — §6`);
+  const idleFrac = frozen / probe.duration;
+  if (idleFrac > 0.45 || worst > 8)
+    add(name, 'idle-budget', `${(idleFrac*100).toFixed(0)}% of its ${probe.duration.toFixed(0)}s window is frozen (worst single gap ${worst.toFixed(1)}s) — §6`);
 
   /* --- geometry + typography at every beat and each midpoint --- */
   const samples = [...new Set(beats.flatMap((b, i) => [b + 0.35, i < beats.length - 1 ? (b + beats[i+1]) / 2 : b + 0.9]))]
