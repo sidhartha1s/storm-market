@@ -256,15 +256,36 @@ def _load_spares():
     return [a for a in pool if a not in claimed]
 
 
+@lru_cache(maxsize=None)
+def _canon_map():
+    """Six newspaper front pages exist byte-identical under BOTH media/newspapers/ and
+    media/photos/. Counting uses per path let one page reach nine on-screen appearances
+    against a ceiling of three. Identity is the file's content, not its path."""
+    import hashlib
+    by_hash = {}
+    for p in sorted((EP / "media").rglob("*")):
+        if p.is_file() and p.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"):
+            rel = p.relative_to(EP).as_posix()
+            by_hash.setdefault(hashlib.md5(p.read_bytes()).hexdigest(), []).append(rel)
+    return {r: paths[0] for paths in by_hash.values() for r in paths}
+
+
+def canon(asset):
+    return _canon_map().get(asset, asset)
+
+
 def pick(asset):
     """Return `asset`, or a fresh spare once it has been used MAX_USES times."""
+    asset = canon(asset)
     if _USES.get(asset, 0) < MAX_USES:
         _USES[asset] = _USES.get(asset, 0) + 1
         return asset
     for sp in _SPARE:
+        sp = canon(sp)
         if _USES.get(sp, 0) < MAX_USES:
             _USES[sp] = _USES.get(sp, 0) + 1
             return sp
+    print(f"[build_ep3] WARNING: spare pool exhausted — {Path(asset).name} exceeds MAX_USES")
     _USES[asset] = _USES.get(asset, 0) + 1
     return asset
 
