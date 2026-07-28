@@ -16,6 +16,7 @@ from pathlib import Path
 EP = Path(__file__).resolve().parent.parent / "episodes" / "ep3-tristate"
 MAX_STILL = 6.5      # hard clamp on a single archival still
 MIN_STILL = 3.4
+MAX_FILM = 9.0       # a moving clip earns longer than a still, but not a 16s single pull
 GAP = 0.75           # breath between narration segments
 
 M = json.loads((EP / "audio" / "manifest.json").read_text(encoding="utf-8"))
