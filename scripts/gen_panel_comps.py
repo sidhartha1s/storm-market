@@ -176,6 +176,11 @@ def build(cid, eyebrow, name, sub, stamp, rows, counter, dur, seg=None, cues=Non
         if counter:
             counter = (counter[0], counter[1], cue(seg, cues.get("cnt", ""), counter[2]))
         rows = sorted(rows, key=lambda r: r[2])
+        # `dur` in the table is a hand-estimate; the real reveals come from the narration.
+        # Without this the card slid off at the estimate while later rows were still firing
+        # on an off-screen panel — and the host window sat empty for the remainder.
+        last = max([r[2] for r in rows] + ([counter[2]] if counter else [0]))
+        dur = max(dur, round(last + 2.4, 1))
     P = f"{cid}-"
     html_rows = []
     for i, (lab, val, at) in enumerate(rows):
