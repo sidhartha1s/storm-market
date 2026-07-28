@@ -110,11 +110,11 @@ def build(cid, up_to, dur, toll_start, headline):
   <div class="eyebrow" id="{cid}-eb">THE TRACK · MARCH 18, 1925</div>
   <div class="hl" id="{cid}-hl">{headline}</div>
   <div class="tollwrap" id="{cid}-tollwrap">
-    <div class="toll" id="{cid}-toll">{toll_start}</div>
+    <div class="toll" id="{cid}-toll">{TOWNS[0][5]}</div>
     <div class="tolllab">CONFIRMED DEAD SO FAR</div>
   </div>
   <div class="clockwrap" id="{cid}-clockwrap">
-    <div class="clock" id="{cid}-clock">{last[3]}</div>
+    <div class="clock" id="{cid}-clock">{TOWNS[0][3]}</div>
     <div class="clocklab">LOCAL TIME</div>
     <div class="miles"><span id="{cid}-mi">0</span> MI</div>
     <div class="mileslab">ON THE GROUND</div>
