@@ -188,7 +188,8 @@ def build(cid, eyebrow, name, sub, stamp, rows, counter, dur, seg=None, cues=Non
 
     body = f"""<div id="root" data-composition-id="{cid}" data-width="1920" data-height="1080">
   <div class="panel" id="{P}panel">
-    <div class="eyebrow">{eyebrow}</div>
+    <div class="tick" id="{P}tick"></div>
+    <div class="eyebrow" id="{P}eb">{eyebrow}</div>
     <div class="tname">{name}</div>
     <div class="tsub">{sub}</div>
     {stamp_html}
