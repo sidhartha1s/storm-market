@@ -429,9 +429,15 @@ def main():
                     eid = f"t{idx}"
                     reuse[a] = reuse.get(a, 0) + 1
                     cb = f' data-callback="tail cutaway after {gid} completes"' if reuse[a] > 1 else ""
-                    vis.append(f'  <section class="clip still-wrap" id="{eid}" data-start="{ct2:.2f}" '
-                               f'data-duration="{w:.2f}" data-track-index="1"{cb}>'
-                               f'<img id="kb-{eid}" class="archgrade" src="{a}" alt=""></section>')
+                    if is_tall(a):      # same letterbox rule as the main visual path
+                        vis.append(f'  <section class="clip pfit" id="{eid}" data-start="{ct2:.2f}" '
+                                   f'data-duration="{w:.2f}" data-track-index="1"{cb}>'
+                                   f'<img class="pbg" src="{a}" alt="">'
+                                   f'<img id="kb-{eid}" class="pfg archgrade" src="{a}" alt=""></section>')
+                    else:
+                        vis.append(f'  <section class="clip still-wrap" id="{eid}" data-start="{ct2:.2f}" '
+                                   f'data-duration="{w:.2f}" data-track-index="1"{cb}>'
+                                   f'<img id="kb-{eid}" class="archgrade" src="{a}" alt=""></section>')
                     s0, s1, x0, x1, y0, y1 = kb_for(idx)
                     kbs.append(f'["#kb-{eid}",{ct2:.2f},{w:.2f},{s0},{s1},{x0},{x1},{y0},{y1}]')
                     lines_report.append((ct2, w, f"tail {Path(a).name}"))
