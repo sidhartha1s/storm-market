@@ -40,10 +40,11 @@
   .dlab { position:absolute; left:196px; font-size:19px; font-weight:700; letter-spacing:4px; line-height:1; }
   /* stamp */
   #g-baro-srule { position:absolute; left:88px; top:900px; width:520px; height:4px; background:#d8a13a; transform-origin:left center; }
-  #g-baro-stamp { position:absolute; left:88px; top:924px; background:#8e2020; padding:16px 28px 18px 28px;
+  #g-baro-stamp { position:absolute; left:88px; top:916px; background:#8e2020; padding:16px 28px;
     display:inline-block; }
-  .sline { font-family:'Arial Black',Arial,sans-serif; font-size:46px; color:#fff; letter-spacing:2px; line-height:1.14; }
-  .sline2 { margin-top:6px; }
+  /* Arial Black ink boxes run ~1.41em — leading must clear that, not just the em box */
+  .sline { font-family:'Arial Black',Arial,sans-serif; font-size:42px; color:#fff; letter-spacing:2px; line-height:1.32; }
+  .sline2 { margin-top:10px; }
 </style>
 <div id="root" data-composition-id="g-baro" data-width="1920" data-height="1080">
   <svg viewBox="0 0 1920 1080" style="position:absolute;inset:0">
