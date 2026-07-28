@@ -98,18 +98,18 @@ def build(cid, eyebrow, name, sub, stamp, rows, counter, dur):
   </div>
 </div>"""
 
-    hide = [f'"{P}r{i}"' for i in range(len(rows))]
+    hide = [f"#{P}r{i}" for i in range(len(rows))]
     if stamp:
-        hide.append(f'"{P}stamp"')
+        hide.append(f"#{P}stamp")
     if counter:
-        hide += [f'"{P}cnt"', f'"{P}cntlab"']
+        hide += [f"#{P}cnt", f"#{P}cntlab"]
+    hide_js = ", ".join(f'"{h}"' for h in hide)
     j = [
         "window.__timelines = window.__timelines || {};",
         "(function() {",
         "  const tl = gsap.timeline({ paused: true });",
         f'  const P = "#{cid}-";',
-        f'  tl.set([{", ".join("#" + h.strip(chr(34)) for h in hide)}].map(s=>s), {{autoAlpha:0}}, 0);'
-        if hide else "",
+        f'  tl.set([{hide_js}], {{autoAlpha:0}}, 0);' if hide else "",
         f'  tl.fromTo(P+"panel", {{x:660}}, {{x:0, duration:0.7, ease:"power3.out"}}, 0.0);',
     ]
     if stamp:
