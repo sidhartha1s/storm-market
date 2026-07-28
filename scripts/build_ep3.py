@@ -293,7 +293,7 @@ def split_overlong(shots, pool):
     holds past MAX_STILL, a clip never past MAX_FILM, and the overflow cuts to a fresh frame."""
     out, k = [], 0
     for (src, typ, w) in shots:
-        cap = MAX_STILL if typ not in ("film", "stock") else MAX_FILM
+        cap = MAX_STILL if typ not in ("film", "stock") else min(MAX_FILM, vdur(src))
         if w <= cap or not pool:
             out.append((src, typ, w))
             continue
