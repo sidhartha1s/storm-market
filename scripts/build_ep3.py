@@ -285,14 +285,22 @@ def split_overlong(shots, pool):
         if w <= cap or not pool:
             out.append((src, typ, w))
             continue
-        n = int(w / cap + 0.9999)
-        each = w / n
-        for i in range(n):
-            if i == 0:
-                out.append((src, typ, each))
-            else:
-                out.append((pick(pool[k % len(pool)]), "still", each))
-                k += 1
+        # the head keeps the declared asset up to its own cap; the overflow becomes stills,
+        # which answer to MAX_STILL rather than to the head's cap
+        head = min(w, cap)
+        rest = w - head
+        n = int(rest / MAX_STILL + 0.9999)
+        each = rest / n if n else 0
+        if each and each < MIN_STILL:           # don't manufacture flicker cuts
+            n = max(1, int(rest / MIN_STILL))
+            each = rest / n
+        out.append((src, typ, head))
+        prev = src
+        for _ in range(n):
+            nxt = next((p for p in pool[k:] + pool[:k] if p != prev), pool[k % len(pool)])
+            k = (pool.index(nxt) + 1) % len(pool)
+            out.append((pick(nxt), "still", each))
+            prev = nxt
     return out
 
 
