@@ -20,6 +20,29 @@ GAP = 0.75           # breath between narration segments
 
 M = json.loads((EP / "audio" / "manifest.json").read_text(encoding="utf-8"))
 
+# measured by scripts/graphics_qc.mjs — a graphic never outlives its own timeline
+_dp = EP / "compositions" / "_durations.json"
+GDUR = json.loads(_dp.read_text(encoding="utf-8")) if _dp.exists() else {}
+
+# fallback stills used when a graphic finishes before the narration does
+TAIL = {
+ "a1": ["media/photos/11-Murphysboro_Pre-Tornado_1.png", "media/photos/Annapolis_Business_street.png",
+        "media/photos/1925_-_Murphysboro_20_-_Business_District.jpg", "media/photos/12-Murphysboro_Pre-Tornado_2.png",
+        "media/photos/1925_-_Murphysboro_11_-_Residential_District.jpg"],
+ "a2": ["media/photos/05-Bollinger_County_Damage.png", "media/photos/1925tornado-p2o-b.jpg",
+        "media/photos/06-Biehle_Damage.png", "media/photos/07-Perry_County_Destruction.png"],
+ "a3": ["media/photos/1925_tornado_damage_7.webp", "media/photos/1925_-_Murphysboro_9_-_General_Damage.jpg",
+        "media/photos/1925_tornado_damage_13.png", "media/photos/16-Murphysboro_SW_of_Logan_School.png"],
+ "a4": ["media/photos/1925_-_Griffin_-_More_Damage.jpg", "media/photos/1925_-_Griffin_-_Residential_Damage_2.jpg",
+        "media/photos/1925_-_Princeton_-_Twisted_Steel_-_IA_GWC.jpg", "media/photos/1925_-_Griffin_-_Griffin_School_3.jpg"],
+ "a5": ["media/photos/1925_tornado_damage_4.jpg", "media/photos/1925_tornado_damage_2.webp",
+        "media/photos/1925_tornado_damage_8.webp", "media/photos/23-Royalton-Colp_Road_Bridge.png"],
+ "a6": ["media/photos/1925_-_De_Soto_-_Business_District2.jpg", "media/photos/1925_-_Murphysboro_29_-_North_9th_Street_Park.jpg",
+        "media/photos/1925_-_Princeton_-_Homes_in_Baldwin_Heights_Area_-_IA_PPL.jpg",
+        "media/photos/1925_-_Griffin_-_Griffin_School_1.jpg", "media/photos/13-Murphysboro_Aerial.png"],
+ "h1": ["media/photos/Wea00238.jpg", "media/photos/1925_tornado_damage_3.webp"],
+}
+
 P = "media/photos/"
 F = "media/film/"
 S = "media/stock/"
@@ -183,8 +206,13 @@ ORDER = ["h1-s1","h1-s2","a1-s1","a1-s1b","a1-s2","a1-s2c","a1-s2b","a1-s3","a1-
  "a6-s1","a6-s2","a6-s2b","a6-s2c","a6-s2d","a6-s3","a6-s3c","a6-s3d","a6-s3b","a6-s3e","a6-s4d","a6-s4","a6-s5"]
 
 # extra breathing room after specific segments (act turns, emotional payoffs)
-HOLDS = {"h1-s2": 3.0, "a1-s5": 2.0, "a3-s6c": 5.0, "a3-s9": 2.0, "a4-s3": 6.0,
-         "a5-s3": 3.0, "a5-s4b": 4.0, "a6-s4d": 2.0}
+HOLDS = {  # breathing room after payoffs and at act turns (DESIGN.md: hold 2-4s, then cut hard)
+ "h1-s2": 3.5, "a1-s5": 4.0, "a2-s2": 2.5, "a2-s4b": 3.0,
+ "a3-s1b": 2.5, "a3-s4c": 5.0, "a3-s6c": 5.0, "a3-s8": 3.0, "a3-s9": 2.5,
+ "a4-s1b": 2.5, "a4-s3": 7.0,
+ "a5-s1d": 2.5, "a5-s3": 4.0, "a5-s4b": 5.0,
+ "a6-s2d": 2.5, "a6-s3e": 3.5, "a6-s4d": 3.0, "a6-s4": 2.5,
+}
 
 LOWERS = {
  "gorham": ("GORHAM, ILLINOIS", "2:26 PM — POPULATION 500"),
@@ -200,6 +228,37 @@ QUOTES = {
 }
 
 
+MAX_USES = 3          # owner rule 2026-07-28: an image may return, but 3 times is the ceiling
+_USES = {}
+_SPARE = []
+
+
+def _load_spares():
+    """Photos not claimed by the shot table, used to keep any single frame under MAX_USES."""
+    claimed = set()
+    for plan in SHOTS.values():
+        for a in plan.get("assets", []):
+            claimed.add(a[0] if isinstance(a, tuple) else a)
+    for t in TAIL.values():
+        claimed.update(t)
+    pool = sorted((P + f.name) for f in (EP / "media" / "photos").iterdir()
+                  if f.suffix.lower() in (".jpg", ".png", ".webp"))
+    return [a for a in pool if a not in claimed]
+
+
+def pick(asset):
+    """Return `asset`, or a fresh spare once it has been used MAX_USES times."""
+    if _USES.get(asset, 0) < MAX_USES:
+        _USES[asset] = _USES.get(asset, 0) + 1
+        return asset
+    for sp in _SPARE:
+        if _USES.get(sp, 0) < MAX_USES:
+            _USES[sp] = _USES.get(sp, 0) + 1
+            return sp
+    _USES[asset] = _USES.get(asset, 0) + 1
+    return asset
+
+
 def chunk(dur, assets, minw=MIN_STILL, maxw=MAX_STILL):
     """Split a narration window across assets so no single visual exceeds maxw."""
     n_needed = max(1, int(dur / maxw + 0.9999))
@@ -212,7 +271,7 @@ def chunk(dur, assets, minw=MIN_STILL, maxw=MAX_STILL):
         while len(assets) > 1 and dur / len(assets) < minw:
             assets = assets[:-1]
     each = dur / len(assets)
-    return [(a, each) for a in assets]
+    return [(pick(a), each) for a in assets]
 
 
 def kb_for(i):
@@ -223,8 +282,11 @@ def kb_for(i):
 
 
 def main():
+    global _SPARE
+    _SPARE = _load_spares()
     vis, gfx, chips, audio = [], [], [], []
     kbs, panels_used, reuse = [], [], {}
+    seg_at = {}
     t = 0.0
     idx = 0
     lines_report = []
@@ -237,26 +299,46 @@ def main():
         audio.append(f'  <audio id="nx-{sid.replace("-","")}" src="audio/{sid}.wav" '
                      f'data-start="{t:.2f}" data-duration="{d:.2f}"></audio>')
         seg_start, seg_dur = t, d + HOLDS.get(sid, 0.0)
+        seg_at[sid] = seg_start
         kind = plan["kind"]
 
         if kind == "graphic":
             gid = plan["id"]
+            gw = min(GDUR.get(gid, seg_dur), seg_dur)
             gfx.append(f'  <div id="host-{gid}-{idx}" data-composition-id="{gid}" '
                        f'data-composition-src="compositions/{gid}.html" data-start="{seg_start:.2f}" '
-                       f'data-duration="{seg_dur:.2f}" data-track-index="2" data-width="1920" data-height="1080"></div>')
-            lines_report.append((seg_start, seg_dur, f"GRAPHIC {gid}"))
+                       f'data-duration="{gw:.2f}" data-track-index="2" data-width="1920" data-height="1080"></div>')
+            lines_report.append((seg_start, gw, f"GRAPHIC {gid}"))
+            leftover = seg_dur - gw
+            if leftover > 2.5:      # never park on a finished graphic
+                pool = TAIL[sid.split("-")[0]]
+                ct2 = seg_start + gw
+                for a, w in chunk(leftover, pool):
+                    eid = f"t{idx}"
+                    reuse[a] = reuse.get(a, 0) + 1
+                    cb = f' data-callback="tail cutaway after {gid} completes"' if reuse[a] > 1 else ""
+                    vis.append(f'  <section class="clip still-wrap" id="{eid}" data-start="{ct2:.2f}" '
+                               f'data-duration="{w:.2f}" data-track-index="1"{cb}>'
+                               f'<img id="kb-{eid}" class="archgrade" src="{a}" alt=""></section>')
+                    s0, s1, x0, x1, y0, y1 = kb_for(idx)
+                    kbs.append(f'["#kb-{eid}",{ct2:.2f},{w:.2f},{s0},{s1},{x0},{x1},{y0},{y1}]')
+                    lines_report.append((ct2, w, f"tail {Path(a).name}"))
+                    ct2 += w
+                    idx += 1
         elif kind in ("stills", "stock", "papers", "mixed", "panel"):
             if kind == "panel":
                 gid = plan["id"]
+                pw = min(GDUR.get(gid, seg_dur), seg_dur)
                 gfx.append(f'  <div id="host-{gid}-{idx}" data-composition-id="{gid}" '
                            f'data-composition-src="compositions/{gid}.html" data-start="{seg_start:.2f}" '
-                           f'data-duration="{seg_dur:.2f}" data-track-index="2" data-width="1920" data-height="1080"></div>')
+                           f'data-duration="{pw:.2f}" data-track-index="2" data-width="1920" data-height="1080"></div>')
             if kind == "mixed":
                 shots, acc = [], 0.0
                 for (src, typ, want) in plan["assets"]:
                     shots.append((src, typ, want)); acc += want
                 scale = seg_dur / acc if acc else 1
-                shots = [(s, ty, w * scale) for (s, ty, w) in shots]
+                shots = [(pick(s) if ty == 'still' else s, ty, w * scale) for (s, ty, w) in shots]
+                shots = split_overlong(shots, TAIL[sid.split("-")[0]])
             else:
                 typ = "stock" if kind == "stock" else ("paper" if kind == "papers" else "still")
                 shots = [(a, "stock" if a.endswith(".mp4") else typ, w)
@@ -307,7 +389,7 @@ def main():
         t = seg_start + seg_dur + GAP
 
     total = t + 14.0    # credits tail
-    return vis, gfx, chips, audio, kbs, total, lines_report
+    return vis, gfx, chips, audio, kbs, total, lines_report, seg_at
 
 
 CSS = """
@@ -482,7 +564,8 @@ window.__timelines = window.__timelines || {{}};
 
 
 if __name__ == "__main__":
-    vis, gfx, chips, audio, kbs, total, report = main()
+    vis, gfx, chips, audio, kbs, total, report, seg_at = main()
+    emit(vis, gfx, chips, audio, kbs, total, report, seg_at)
     longest = sorted([r for r in report if not r[2].startswith("GRAPHIC")], key=lambda r: -r[1])[:8]
     print(f"[build_ep3] total {total:.1f}s = {total/60:.2f} min")
     print(f"[build_ep3] {len(report)} visual windows; longest non-graphic holds:")
