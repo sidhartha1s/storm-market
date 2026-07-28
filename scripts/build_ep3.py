@@ -435,7 +435,7 @@ def main():
             chips.append(f'  <section class="clip" id="card-date" data-start="0.30" data-duration="14.0" '
                          f'data-track-index="3" style="z-index:8"></section>')
         idx += 1
-        t = seg_start + seg_dur + GAP
+        t = round(seg_start + seg_dur + GAP, 2)
 
     total = t + 14.0    # credits tail
     return vis, gfx, chips, audio, kbs, total, lines_report, seg_at
