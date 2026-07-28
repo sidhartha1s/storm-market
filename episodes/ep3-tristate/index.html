@@ -956,7 +956,8 @@ window.__timelines = window.__timelines || {};
       '<div class="gline" id="gcl-s" style="left:0;right:0;top:580px;text-align:center;font-family:Arial,sans-serif;font-weight:700;font-size:28px;color:#d8a13a;letter-spacing:6px;opacity:0">EPISODE THREE — THE TORNADO WITH NO PHOTOGRAPH</div>';
     tl.to("#gcl-t", { opacity: 1, duration: 0.9 }, 2080.3);
     tl.to("#gcl-s", { opacity: 1, duration: 0.8 }, 2082.3);
-    tl.to(["#gcl-t","#gcl-s"], { autoAlpha: 0, duration: 1.0 }, 2085.0);
+    tl.to(["#gcl-t","#gcl-s"], { autoAlpha: 0, duration: 0.9 }, 2085.0);
+    tl.set(["#gcl-t","#gcl-s"], { autoAlpha: 0 }, 2085.95);
     const c = document.getElementById("g-credits");
     c.innerHTML = '<div class="gline" id="gcr-1" style="left:0;right:0;top:380px;text-align:center;font-family:Arial,sans-serif;font-size:24px;line-height:2.1;color:#93a3b2;opacity:0">' +
       'Film courtesy Moving Image Research Collections, University of South Carolina<br>' +
