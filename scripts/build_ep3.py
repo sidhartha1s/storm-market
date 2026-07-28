@@ -458,7 +458,7 @@ def main():
                     cls = "archgrade" if typ == "film" else "stockgrade"
                     vis.append(f'  <video id="{eid}" class="clip {cls}" src="{src}" data-start="{ct:.2f}" '
                                f'data-duration="{w:.2f}" data-track-index="1" muted{cb}></video>')
-                elif typ == "paper" or plan.get("fit") == "contain":
+                elif typ == "paper" or plan.get("fit") == "contain" or is_tall(src):
                     vis.append(f'  <section class="clip pfit" id="{eid}" data-start="{ct:.2f}" '
                                f'data-duration="{w:.2f}" data-track-index="1"{cb}>'
                                f'<img class="pbg" src="{src}" alt=""><img id="kb-{eid}" class="pfg archgrade" src="{src}" alt=""></section>')
