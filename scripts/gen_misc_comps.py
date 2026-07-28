@@ -260,7 +260,7 @@ def wordban2():
     j += f'  tl.fromTo(P+"w", {{autoAlpha:0, scale:1.3}}, {{autoAlpha:1, scale:1, duration:0.5, ease:"power4.in"}}, 1.0);\n'
     j += f'  tl.to(P+"s", {{width:0, duration:0.9, ease:"power3.inOut"}}, 5.2);\n'
     j += f'  tl.to(P+"ax", {{width:1480, duration:{D - 6:.1f}, ease:"none"}}, 5.6);\n'
-    j += f'  tl.to(P+"w", {{letterSpacing:"30px", duration:{D - 3:.1f}, ease:"none"}}, 1.5);\n'
+    j += f'  tl.to(P+"w", {{scaleX:1.16, duration:{D - 3:.1f}, ease:"none"}}, 1.5);\n'
     j += f'  tl.fromTo(P+"late", {{autoAlpha:0, y:24}}, {{autoAlpha:1, y:0, duration:0.5}}, 18.0);\n'
     j += f'  tl.to(LATE, {{v:23, duration:1.1, ease:"power4.out", onUpdate:lu}}, 18.2);\n'
     j += f'  tl.fromTo(P+"ft", {{autoAlpha:0, y:20}}, {{autoAlpha:1, y:0, duration:0.6}}, 20.5);\n'
