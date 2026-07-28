@@ -356,8 +356,9 @@ def main():
             leftover = seg_dur - gw
             if leftover > 2.5:      # never park on a finished graphic
                 pool = TAIL[sid.split("-")[0]]
-                ct2 = seg_start + gw
+                ct2 = round(seg_start + gw, 2)
                 for a, w in chunk(leftover, pool):
+                    w = round(w, 2)
                     eid = f"t{idx}"
                     reuse[a] = reuse.get(a, 0) + 1
                     cb = f' data-callback="tail cutaway after {gid} completes"' if reuse[a] > 1 else ""
