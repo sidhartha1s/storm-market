@@ -3,7 +3,7 @@
  * sweep structurally cannot find (text collision, empty containers, crop loss, idle gaps).
  * Usage: node scripts/graphics_qc.mjs episodes/<slug>
  * Exit 0 = pass. Exit 1 = defects found (printed, grouped by composition). */
-import { chromium } from '../../../JP-market/node_modules/@playwright/cli/node_modules/playwright-core/index.mjs';
+import { chromium } from 'file:///C:/Users/Sidhartha/AppData/Roaming/npm/node_modules/@playwright/cli/node_modules/playwright-core/index.mjs';
 import { readFileSync, readdirSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join, resolve, basename } from 'path';
 
