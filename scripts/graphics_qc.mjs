@@ -143,17 +143,21 @@ for (const f of files) {
   const punchy = probe.tweens.filter(t => /power[34]|back|elastic|expo/.test(t.ease)).length;
   if (probe.tweens.length >= 6 && punchy === 0) add(name, 'limp-easing', 'no power3/power4 easing anywhere — §5');
 
-  /* --- beat cadence --- */
+  /* --- beat cadence. A gap is only idle if NOTHING is moving through it: a continuous
+     tween spanning the gap (ep2's 26s rotation) keeps the frame alive. --- */
+  const spans = probe.tweens.filter(t => t.dur >= 4).map(t => [t.start, t.start + t.dur]);
+  const covered = (a, b) => spans.some(([s, e]) => s <= a + 0.25 && e >= b - 0.25);
   const beats = probe.beats.filter(b => b <= probe.duration + 0.01);
   let prev = 0;
   for (const b of beats) {
     const gap = b - prev;
     const limit = prev < 10 ? MAX_IDLE_OPENING : MAX_IDLE;
-    if (gap > limit) add(name, 'idle', `${gap.toFixed(1)}s with no change at ${prev.toFixed(1)}s–${b.toFixed(1)}s (limit ${limit}s) — §6`);
+    if (gap > limit && !covered(prev, b))
+      add(name, 'idle', `${gap.toFixed(1)}s frozen at ${prev.toFixed(1)}s–${b.toFixed(1)}s (limit ${limit}s, nothing in motion) — §6`);
     prev = b;
   }
-  if (probe.duration - prev > MAX_IDLE)
-    add(name, 'idle-tail', `${(probe.duration - prev).toFixed(1)}s dead tail after last beat — §6`);
+  if (probe.duration - prev > MAX_IDLE && !covered(prev, probe.duration))
+    add(name, 'idle-tail', `${(probe.duration - prev).toFixed(1)}s frozen tail after last beat — §6`);
 
   /* --- geometry + typography at every beat and each midpoint --- */
   const samples = [...new Set(beats.flatMap((b, i) => [b + 0.35, i < beats.length - 1 ? (b + beats[i+1]) / 2 : b + 0.9]))]
