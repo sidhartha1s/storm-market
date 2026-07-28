@@ -16,7 +16,9 @@ from functools import lru_cache
 from pathlib import Path
 
 EP = Path(__file__).resolve().parent.parent / "episodes" / "ep3-tristate"
-MAX_STILL = 6.5      # hard clamp on a single archival still
+MAX_STILL = 7.6      # hard clamp on a single archival still. ep2 (shipped, the reference)
+                     # runs an 11s median hold; the ceiling exists to stop the 30-60s frozen
+                     # stretches the owner flagged, not to force a metronome.
 MIN_STILL = 3.4
 MAX_FILM = 9.0       # a moving clip earns longer than a still, but not a 16s single pull
 RHYTHM = (1.28, 0.82, 1.06, 0.88, 1.18, 0.94)   # cut-length weights, cycled — see chunk()
