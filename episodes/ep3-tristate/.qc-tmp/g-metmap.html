@@ -1,0 +1,260 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;width:1920px;height:1080px;background:#111;overflow:hidden}</style>
+<script src="../gsap.min.js"></script></head><body>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif; overflow:hidden;
+    background:radial-gradient(ellipse at 46% 52%, #0d141c 0%, #04070a 76%); }
+  .eyebrow { position:absolute; left:88px; top:74px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; line-height:1.15; white-space:nowrap; opacity:0; }
+  .hl { position:absolute; left:88px; top:108px; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; line-height:1.15; white-space:nowrap; opacity:0; }
+  .bar { position:absolute; left:88px; top:176px; width:264px; height:3px; background:#c0392b; }
+  .sub { position:absolute; left:88px; top:190px; font-family:Georgia,serif; font-style:italic; font-size:27px; color:#d8a13a; line-height:1.15; white-space:nowrap; opacity:0; }
+  .clockwrap { position:absolute; right:96px; top:74px; text-align:right; opacity:0; }
+  .clock { font-family:'Courier New',monospace; font-size:64px; font-weight:700; color:#e8c56a; line-height:1.15; white-space:nowrap; }
+  .clocklab { margin-top:12px; font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; line-height:1.15; white-space:nowrap; }
+  .stamp { position:absolute; left:1100px; top:82px; font-family:'Arial Black',Arial,sans-serif; font-size:64px;
+    color:#fff; background:#8e2020; padding:0 26px; letter-spacing:2px; line-height:1.15; white-space:nowrap; opacity:0; }
+
+  .chip { position:absolute; box-sizing:border-box; opacity:0;
+    background:linear-gradient(90deg, rgba(4,7,10,0.92) 0%, rgba(4,7,10,0.74) 64%, rgba(4,7,10,0) 100%); }
+  .chip.rt { background:linear-gradient(270deg, rgba(4,7,10,0.92) 0%, rgba(4,7,10,0.74) 64%, rgba(4,7,10,0) 100%); }
+  .lab { font-family:'Arial Black',Arial,sans-serif; font-size:30px; color:#f2f5f8; line-height:1.15; white-space:nowrap; opacity:0; }
+  .ssub { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; line-height:1.15; white-space:nowrap; opacity:0; }
+  .num { font-family:'Courier New',monospace; font-weight:700; font-size:34px; color:#e8c56a; line-height:1.15; white-space:nowrap; opacity:0; }
+  .tiny { font-size:19px; letter-spacing:4px; font-weight:700; color:#93a3b2; line-height:1.15; white-space:nowrap; opacity:0; }
+
+  #g-metmap-jetblock { left:57px; top:340px; padding:20px 46px 22px 28px; border-left:3px solid #c8d3e0; }
+  #g-metmap-coldblock { left:57px; top:506px; padding:20px 46px 22px 28px; border-left:3px solid #5a768f; }
+  #g-metmap-lowblock { left:709px; top:380px; padding:20px 30px 22px 28px; border-left:3px solid #c0392b; }
+  #g-metmap-tpblock { left:1029px; top:420px; padding:20px 30px 22px 28px; border-left:3px solid #e74c3c; }
+  #g-metmap-warmblock { left:1422px; top:830px; padding:20px 40px 22px 28px; border-right:3px solid #d8a13a; }
+  #g-metmap-lowval { font-size:56px; color:#e74c3c; }
+  #g-metmap-coldval { color:#7fb2e5; }
+  #g-metmap-tpkicker { color:#c0392b; }
+  #g-metmap-tpwarn { width:200px; height:3px; background:#c0392b; margin-top:12px; }
+  .m12 { margin-top:12px; }
+  .m11 { margin-top:11px; }
+  .m6 { margin-top:6px; }
+  .foot { position:absolute; right:96px; top:1004px; font-size:22px; letter-spacing:4px; font-weight:700;
+    color:#93a3b2; line-height:1.15; white-space:nowrap; opacity:0; }
+  .lglyph { font-family:'Arial Black',Arial,sans-serif; font-size:96px; fill:#e74c3c; opacity:0; }
+</style>
+
+<div id="root" data-composition-id="g-metmap" data-width="1920" data-height="1080">
+
+  <svg viewBox="0 0 1920 1080" style="position:absolute;inset:0">
+    <defs>
+      <filter id="g-metmap-glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+
+    <!-- graticule + a faint river/border line, drifts slowly for parallax -->
+    <g id="g-metmap-grat" opacity="0">
+      <line x1="200" y1="230" x2="200" y2="1050" stroke="#16212c" stroke-width="2"/>
+      <line x1="480" y1="230" x2="480" y2="1050" stroke="#16212c" stroke-width="2"/>
+      <line x1="760" y1="230" x2="760" y2="1050" stroke="#16212c" stroke-width="2"/>
+      <line x1="1040" y1="230" x2="1040" y2="1050" stroke="#16212c" stroke-width="2"/>
+      <line x1="1320" y1="230" x2="1320" y2="1050" stroke="#16212c" stroke-width="2"/>
+      <line x1="1600" y1="230" x2="1600" y2="1050" stroke="#16212c" stroke-width="2"/>
+      <line x1="1880" y1="230" x2="1880" y2="1050" stroke="#16212c" stroke-width="2"/>
+      <line x1="-70" y1="340" x2="1990" y2="340" stroke="#16212c" stroke-width="2"/>
+      <line x1="-70" y1="540" x2="1990" y2="540" stroke="#16212c" stroke-width="2"/>
+      <line x1="-70" y1="740" x2="1990" y2="740" stroke="#16212c" stroke-width="2"/>
+      <line x1="-70" y1="940" x2="1990" y2="940" stroke="#16212c" stroke-width="2"/>
+      <path d="M 986 230 L 1016 400 L 964 560 L 1004 720 L 952 890 L 990 1050" fill="none" stroke="#1e2b38" stroke-width="3"/>
+    </g>
+
+    <!-- JET STREAM: white dashed, west to east, continuous advection -->
+    <path id="g-metmap-jetghost" d="M 40 292 q 108 -68 216 0 t 216 0 t 216 0 t 216 0 t 216 0 t 216 0 t 216 0 t 216 0"
+      fill="none" stroke="#3a4756" stroke-width="3" stroke-dasharray="1900" stroke-dashoffset="1900"/>
+    <path id="g-metmap-jetflow" d="M 40 292 q 108 -68 216 0 t 216 0 t 216 0 t 216 0 t 216 0 t 216 0 t 216 0 t 216 0"
+      fill="none" stroke="#f2f5f8" stroke-width="5" stroke-linecap="round" stroke-dasharray="18 16" stroke-dashoffset="0" opacity="0"/>
+
+    <!-- COLD, DRY AIR: blue-grey wavy ribbons pushing south-east -->
+    <path id="g-metmap-k1" d="M 30 690 q 52 -46 170 26 t 170 26 t 170 26 t 170 26" fill="none" stroke="#33475a" stroke-width="14" stroke-linecap="round" stroke-dasharray="780" stroke-dashoffset="780"/>
+    <path id="g-metmap-k2" d="M 30 795 q 52 50 170 26 t 170 26 t 170 26 t 170 26" fill="none" stroke="#33475a" stroke-width="14" stroke-linecap="round" stroke-dasharray="780" stroke-dashoffset="780"/>
+    <path id="g-metmap-k3" d="M 30 900 q 60 -52 170 26 t 170 26 t 170 26 t 170 26" fill="none" stroke="#33475a" stroke-width="14" stroke-linecap="round" stroke-dasharray="780" stroke-dashoffset="780"/>
+    <path id="g-metmap-k1f" d="M 30 690 q 52 -46 170 26 t 170 26 t 170 26 t 170 26" fill="none" stroke="#7fb2e5" stroke-width="6" stroke-linecap="round" stroke-dasharray="22 20" opacity="0"/>
+    <path id="g-metmap-k2f" d="M 30 795 q 52 50 170 26 t 170 26 t 170 26 t 170 26" fill="none" stroke="#5a768f" stroke-width="6" stroke-linecap="round" stroke-dasharray="18 22" opacity="0"/>
+    <path id="g-metmap-k3f" d="M 30 900 q 60 -52 170 26 t 170 26 t 170 26 t 170 26" fill="none" stroke="#7fb2e5" stroke-width="6" stroke-linecap="round" stroke-dasharray="26 18" opacity="0"/>
+
+    <!-- WARM GULF AIR: gold wavy ribbons flowing north-east -->
+    <path id="g-metmap-wa" d="M 620 1070 q 56 -52 165 -58 t 165 -58 t 165 -58 t 165 -58 t 165 -58 t 165 -58" fill="none" stroke="#4a3a1e" stroke-width="15" stroke-linecap="round" stroke-dasharray="1150" stroke-dashoffset="1150"/>
+    <path id="g-metmap-wb" d="M 660 990 q 56 44 165 -58 t 165 -58 t 165 -58 t 165 -58 t 165 -58 t 165 -58" fill="none" stroke="#4a3a1e" stroke-width="15" stroke-linecap="round" stroke-dasharray="1150" stroke-dashoffset="1150"/>
+    <path id="g-metmap-wc" d="M 700 910 q 56 -52 165 -58 t 165 -58 t 165 -58 t 165 -58 t 165 -58 t 165 -58" fill="none" stroke="#4a3a1e" stroke-width="15" stroke-linecap="round" stroke-dasharray="1150" stroke-dashoffset="1150"/>
+    <path id="g-metmap-wd" d="M 740 830 q 56 46 165 -58 t 165 -58 t 165 -58 t 165 -58 t 165 -58 t 165 -58" fill="none" stroke="#4a3a1e" stroke-width="15" stroke-linecap="round" stroke-dasharray="1150" stroke-dashoffset="1150"/>
+    <path id="g-metmap-waf" d="M 620 1070 q 56 -52 165 -58 t 165 -58 t 165 -58 t 165 -58 t 165 -58 t 165 -58" fill="none" stroke="#d8a13a" stroke-width="7" stroke-linecap="round" stroke-dasharray="26 22" opacity="0"/>
+    <path id="g-metmap-wbf" d="M 660 990 q 56 44 165 -58 t 165 -58 t 165 -58 t 165 -58 t 165 -58 t 165 -58" fill="none" stroke="#e8c56a" stroke-width="7" stroke-linecap="round" stroke-dasharray="20 26" opacity="0"/>
+    <path id="g-metmap-wcf" d="M 700 910 q 56 -52 165 -58 t 165 -58 t 165 -58 t 165 -58 t 165 -58 t 165 -58" fill="none" stroke="#d8a13a" stroke-width="7" stroke-linecap="round" stroke-dasharray="30 20" opacity="0"/>
+    <path id="g-metmap-wdf" d="M 740 830 q 56 46 165 -58 t 165 -58 t 165 -58 t 165 -58 t 165 -58 t 165 -58" fill="none" stroke="#e8c56a" stroke-width="7" stroke-linecap="round" stroke-dasharray="16 24" opacity="0"/>
+
+    <!-- THE LOW: isobars + counter-rotating ring + continuously rotating arms -->
+    <ellipse id="g-metmap-iso1" cx="560" cy="520" rx="170" ry="130" fill="none" stroke="#22303d" stroke-width="2" stroke-dasharray="10 12" opacity="0"/>
+    <ellipse id="g-metmap-iso2" cx="560" cy="520" rx="118" ry="92" fill="none" stroke="#2b3b4a" stroke-width="2" stroke-dasharray="10 12" opacity="0"/>
+    <g id="g-metmap-ring" opacity="0">
+      <circle cx="560" cy="520" r="64" fill="none" stroke="#7fb2e5" stroke-width="2" stroke-dasharray="14 12" opacity="0.8"/>
+      <circle cx="560" cy="520" r="98" fill="none" stroke="#5a768f" stroke-width="2" stroke-dasharray="6 16" opacity="0.55"/>
+    </g>
+    <g id="g-metmap-spiral" opacity="0">
+      <path d="M 560 520 C 590 484 646 470 682 496 C 714 519 716 566 690 596" fill="none" stroke="#c0392b" stroke-width="9" stroke-linecap="round" opacity="0.9"/>
+      <path d="M 560 520 C 596 550 610 606 584 642 C 561 674 514 676 484 650" fill="none" stroke="#c0392b" stroke-width="9" stroke-linecap="round" opacity="0.75"/>
+      <path d="M 560 520 C 530 556 474 570 438 544 C 406 521 404 474 430 444" fill="none" stroke="#c0392b" stroke-width="9" stroke-linecap="round" opacity="0.9"/>
+      <path d="M 560 520 C 524 490 510 434 536 398 C 559 366 606 364 636 390" fill="none" stroke="#c0392b" stroke-width="9" stroke-linecap="round" opacity="0.75"/>
+      <circle cx="560" cy="520" r="30" fill="#8e2020" opacity="0.55"/>
+      <circle cx="560" cy="520" r="14" fill="#e74c3c" filter="url(#g-metmap-glow)"/>
+    </g>
+    <text id="g-metmap-lglyph" class="lglyph" x="560" y="556" text-anchor="middle">L</text>
+
+    <!-- convergence arrows into the triple point -->
+    <path id="g-metmap-cv1" d="M 632 732 L 598 722 L 622 698 Z" fill="#5a768f" opacity="0"/>
+    <path id="g-metmap-cv2" d="M 1006 984 L 972 994 L 996 1018 Z" fill="#d8a13a" opacity="0"/>
+    <path id="g-metmap-cv3" d="M 912 700 L 878 686 L 878 714 Z" fill="#93a3b2" opacity="0"/>
+
+    <!-- TRIPLE POINT -->
+    <ellipse id="g-metmap-zone" cx="726" cy="812" rx="196" ry="128" fill="none" stroke="#e8c56a" stroke-width="2.5" stroke-dasharray="470" stroke-dashoffset="470" opacity="0.55"/>
+    <circle id="g-metmap-tphalo" cx="726" cy="812" r="120" fill="#c0392b" opacity="0"/>
+    <path id="g-metmap-leader" d="M 726 812 L 944 566 L 1026 500" fill="none" stroke="#7f8d9b" stroke-width="2" stroke-dasharray="470" stroke-dashoffset="470"/>
+    <circle id="g-metmap-tpring" cx="726" cy="812" r="14" fill="none" stroke="#e74c3c" stroke-width="3" opacity="0"/>
+    <circle id="g-metmap-tpdot" cx="726" cy="812" r="0" fill="#e74c3c" filter="url(#g-metmap-glow)"/>
+  </svg>
+
+  <div class="eyebrow" id="g-metmap-eb">SURFACE ANALYSIS &middot; MARCH 18, 1925</div>
+  <div class="hl" id="g-metmap-hl">THE MORNING MAP</div>
+  <div class="bar" id="g-metmap-bar"></div>
+  <div class="sub" id="g-metmap-sub">Eight o'clock. The set-up is already complete.</div>
+  <div class="stamp" id="g-metmap-stamp">PRIMED</div>
+
+  <div class="clockwrap" id="g-metmap-clockwrap">
+    <div class="clock" id="g-metmap-clock">8:00 AM</div>
+    <div class="clocklab">CENTRAL TIME &middot; SURFACE</div>
+  </div>
+
+  <div class="chip" id="g-metmap-jetblock">
+    <div class="lab" id="g-metmap-jetlab">JET STREAM</div>
+    <div class="num m11" id="g-metmap-jetval">0 MPH</div>
+    <div class="tiny m6" id="g-metmap-jetlab2">CORE &middot; WEST TO EAST</div>
+  </div>
+
+  <div class="chip" id="g-metmap-coldblock">
+    <div class="lab" id="g-metmap-coldlab">COLD, DRY AIR</div>
+    <div class="ssub m12" id="g-metmap-coldsub">sliding down from Canada</div>
+    <div class="num m12" id="g-metmap-coldval">1,032 MB</div>
+  </div>
+
+  <div class="chip" id="g-metmap-lowblock">
+    <div class="tiny" id="g-metmap-lowlab">SURFACE LOW</div>
+    <div class="num m12" id="g-metmap-lowval">1,001 MB</div>
+    <div class="ssub m12" id="g-metmap-lowsub">pressure falling fast</div>
+  </div>
+
+  <div class="chip" id="g-metmap-tpblock">
+    <div class="lab" id="g-metmap-tplab">TRIPLE POINT</div>
+    <div class="ssub m12" id="g-metmap-tpsub">cold, warm and dry air meet</div>
+    <div class="tiny m12" id="g-metmap-tpkicker">STORM IGNITION ZONE</div>
+    <div id="g-metmap-tpwarn"></div>
+  </div>
+
+  <div class="chip rt" id="g-metmap-warmblock">
+    <div class="lab" id="g-metmap-warmlab">WARM GULF AIR</div>
+    <div class="ssub m12" id="g-metmap-warmsub">dew points in the sixties</div>
+    <div class="num m12" id="g-metmap-warmval" style="font-size:30px">56 F &middot; FLOWING NE</div>
+  </div>
+
+  <div class="foot" id="g-metmap-foot">RECONSTRUCTED FROM WEATHER BUREAU CHARTS</div>
+</div>
+
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-metmap-";
+  const JET = {v:0}, MB = {v:1001}, DEW = {v:56};
+  function setTx(id, s){ const e=document.getElementById(id); if(e) e.textContent = s; }
+  function jetUpd(){ setTx("g-metmap-jetval", Math.round(JET.v) + " MPH"); }
+  function mbUpd(){ setTx("g-metmap-lowval", Math.round(MB.v).toLocaleString("en-US") + " MB"); }
+  function dewUpd(){ setTx("g-metmap-warmval", Math.round(DEW.v) + " F · FLOWING NE"); }
+
+  /* --- header --- */
+  tl.fromTo(P+"eb", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.50, ease:"power3.out"}, 0.15);
+  tl.fromTo(P+"hl", {autoAlpha:0, x:-34}, {autoAlpha:1, x:0, duration:0.55, ease:"power3.out"}, 0.32);
+  tl.fromTo(P+"grat", {autoAlpha:0}, {autoAlpha:0.62, duration:1.10}, 0.40);
+  tl.fromTo(P+"clockwrap", {autoAlpha:0, x:36}, {autoAlpha:1, x:0, duration:0.55, ease:"power3.out"}, 0.50);
+  tl.fromTo(P+"bar", {scaleX:0}, {scaleX:1, duration:0.60, ease:"power3.out", transformOrigin:"left center"}, 0.62);
+  tl.fromTo(P+"sub", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.50, ease:"power3.out"}, 0.80);
+
+  /* --- jet stream: draw, then advect for the whole window --- */
+  tl.to(P+"jetghost", {strokeDashoffset:0, duration:2.40, ease:"power3.out"}, 0.90);
+  tl.to(P+"jetflow", {strokeDashoffset:-3600, duration:33.10, ease:"none"}, 0.90);
+  tl.fromTo(P+"jetflow", {autoAlpha:0}, {autoAlpha:1, duration:0.70}, 1.80);
+  tl.fromTo(P+"jetblock", {autoAlpha:0, x:-34}, {autoAlpha:1, x:0, duration:0.50, ease:"power3.out"}, 2.10);
+  tl.fromTo(P+"jetlab", {autoAlpha:0, y:-18}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 2.40);
+  tl.fromTo(P+"jetval", {autoAlpha:0, scale:1.6}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 2.85);
+  tl.to(JET, {v:125, duration:1.10, ease:"power3.out", onUpdate:jetUpd}, 2.90);
+  tl.fromTo(P+"jetlab2", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 3.40);
+  tl.to(P+"grat", {x:-48, duration:30.00, ease:"none"}, 3.00);
+
+  /* --- cold, dry air: three ribbons draw SE, then flow for 29.5s at three speeds --- */
+  tl.to(P+"k1", {strokeDashoffset:0, duration:1.70, ease:"power3.out"}, 4.00);
+  tl.to(P+"k2", {strokeDashoffset:0, duration:1.70, ease:"power3.out"}, 4.35);
+  tl.to(P+"k1f", {strokeDashoffset:-1300, duration:29.50, ease:"none"}, 4.50);
+  tl.to(P+"k2f", {strokeDashoffset:-1750, duration:29.50, ease:"none"}, 4.50);
+  tl.to(P+"k3f", {strokeDashoffset:-1050, duration:29.50, ease:"none"}, 4.50);
+  tl.to(P+"k3", {strokeDashoffset:0, duration:1.70, ease:"power3.out"}, 4.70);
+  tl.fromTo([P+"k1f",P+"k2f",P+"k3f"], {autoAlpha:0}, {autoAlpha:1, duration:0.80}, 5.20);
+  tl.fromTo(P+"coldblock", {autoAlpha:0, x:-34}, {autoAlpha:1, x:0, duration:0.55, ease:"power3.out"}, 5.90);
+  tl.fromTo(P+"coldlab", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 6.20);
+  tl.fromTo(P+"coldsub", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 6.70);
+  tl.fromTo(P+"coldval", {autoAlpha:0, scale:1.6}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 7.30);
+
+  /* --- the LOW: isobars, counter-rotating ring, arms rotating for 25s --- */
+  tl.fromTo(P+"iso1", {autoAlpha:0, scale:0.5}, {autoAlpha:0.75, scale:1, duration:0.90, ease:"power3.out", svgOrigin:"560 520"}, 8.20);
+  tl.fromTo(P+"iso2", {autoAlpha:0, scale:0.5}, {autoAlpha:0.85, scale:1, duration:0.90, ease:"power3.out", svgOrigin:"560 520"}, 8.50);
+  tl.fromTo(P+"spiral", {autoAlpha:0, scale:0.40}, {autoAlpha:1, scale:1, duration:0.85, ease:"power3.out", svgOrigin:"560 520"}, 8.90);
+  tl.to(P+"spiral", {rotation:340, duration:25.00, ease:"none", svgOrigin:"560 520"}, 9.00);
+  tl.fromTo(P+"ring", {autoAlpha:0}, {autoAlpha:1, duration:0.60}, 9.30);
+  tl.to(P+"ring", {rotation:-260, duration:24.50, ease:"none", svgOrigin:"560 520"}, 9.40);
+  tl.fromTo(P+"lglyph", {autoAlpha:0, scale:2.6}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in", svgOrigin:"560 520"}, 9.90);
+  tl.fromTo(P+"lowblock", {autoAlpha:0, y:26}, {autoAlpha:1, y:0, duration:0.50, ease:"power3.out"}, 10.40);
+  tl.fromTo(P+"lowlab", {autoAlpha:0, x:-22}, {autoAlpha:1, x:0, duration:0.40, ease:"power3.out"}, 10.70);
+  tl.fromTo(P+"lowval", {autoAlpha:0, scale:1.5}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 11.10);
+  tl.to(MB, {v:992, duration:1.50, ease:"power3.out", onUpdate:mbUpd}, 11.25);
+  tl.fromTo(P+"lowsub", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 11.90);
+
+  /* --- warm gulf air: four ribbons draw NE, then advect 19.6s at four speeds --- */
+  tl.to(P+"wa", {strokeDashoffset:0, duration:1.90, ease:"power3.out"}, 13.00);
+  tl.to(P+"wb", {strokeDashoffset:0, duration:1.90, ease:"power3.out"}, 13.40);
+  tl.to(P+"wc", {strokeDashoffset:0, duration:1.90, ease:"power3.out"}, 13.80);
+  tl.to(P+"waf", {strokeDashoffset:-1760, duration:19.60, ease:"none"}, 14.40);
+  tl.to(P+"wbf", {strokeDashoffset:-2280, duration:19.60, ease:"none"}, 14.40);
+  tl.to(P+"wcf", {strokeDashoffset:-1480, duration:19.60, ease:"none"}, 14.40);
+  tl.to(P+"wdf", {strokeDashoffset:-2760, duration:19.60, ease:"none"}, 14.40);
+  tl.to(P+"wd", {strokeDashoffset:0, duration:1.90, ease:"power3.out"}, 14.20);
+  tl.fromTo([P+"waf",P+"wbf",P+"wcf",P+"wdf"], {autoAlpha:0}, {autoAlpha:1, duration:0.90}, 14.60);
+  tl.fromTo(P+"warmblock", {autoAlpha:0, x:38}, {autoAlpha:1, x:0, duration:0.55, ease:"power3.out"}, 16.40);
+  tl.fromTo(P+"warmlab", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 16.80);
+  tl.fromTo(P+"warmsub", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 17.30);
+  tl.fromTo(P+"warmval", {autoAlpha:0, scale:1.5}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 17.85);
+  tl.to(DEW, {v:68, duration:1.30, ease:"power3.out", onUpdate:dewUpd}, 17.95);
+
+  /* --- triple point --- */
+  tl.to(P+"zone", {strokeDashoffset:0, duration:1.40, ease:"power3.out"}, 19.10);
+  tl.to(P+"leader", {strokeDashoffset:0, duration:0.85, ease:"power3.out"}, 19.90);
+  tl.to(P+"zone", {rotation:360, duration:14.00, ease:"none", svgOrigin:"726 812"}, 20.00);
+  tl.fromTo(P+"tpdot", {attr:{r:0}}, {attr:{r:16}, duration:0.40, ease:"power4.in"}, 20.60);
+  tl.fromTo(P+"tpblock", {autoAlpha:0, y:-26}, {autoAlpha:1, y:0, duration:0.50, ease:"power3.out"}, 21.00);
+  tl.fromTo(P+"tplab", {autoAlpha:0, x:-24}, {autoAlpha:1, x:0, duration:0.40, ease:"power3.out"}, 21.30);
+  tl.fromTo(P+"tpsub", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 21.80);
+  tl.fromTo(P+"tpkicker", {autoAlpha:0, scale:1.4}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 22.30);
+  tl.fromTo(P+"tpring", {attr:{r:14}, autoAlpha:0.95}, {attr:{r:86}, autoAlpha:0, duration:1.50, ease:"power2.out", repeat:6}, 22.80);
+  tl.to(P+"tpdot", {attr:{r:23}, duration:0.70, yoyo:true, repeat:14, ease:"sine.inOut"}, 23.00);
+  tl.fromTo(P+"cv1", {autoAlpha:0, scale:0.3}, {autoAlpha:1, scale:1, duration:0.45, ease:"power4.in", svgOrigin:"615 715"}, 24.60);
+  tl.fromTo(P+"cv2", {autoAlpha:0, scale:0.3}, {autoAlpha:1, scale:1, duration:0.45, ease:"power4.in", svgOrigin:"990 1000"}, 25.40);
+  tl.fromTo(P+"cv3", {autoAlpha:0, scale:0.3}, {autoAlpha:1, scale:1, duration:0.45, ease:"power4.in", svgOrigin:"895 700"}, 26.20);
+  tl.fromTo(P+"tpwarn", {scaleX:0}, {scaleX:1, duration:0.60, ease:"power3.out", transformOrigin:"left center"}, 27.20);
+  tl.fromTo(P+"stamp", {autoAlpha:0, scale:2.4}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 28.20);
+  tl.fromTo(P+"foot", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.50, ease:"power3.out"}, 29.60);
+  tl.fromTo(P+"tphalo", {autoAlpha:0, scale:0.35}, {autoAlpha:0.16, scale:1, duration:0.90, ease:"power3.out", svgOrigin:"726 812"}, 31.30);
+  tl.to(P+"stamp", {scale:1.06, duration:0.50, yoyo:true, repeat:1, ease:"sine.inOut"}, 32.20);
+
+  window.__timelines["g-metmap"] = tl;
+})();
+</script>
+</body></html>

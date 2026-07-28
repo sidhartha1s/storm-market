@@ -34,9 +34,7 @@ INSTANCES = [
     ("g-track-1",  0, 24.0, 0,   "THE STORM IS BORN"),
     ("g-track-2",  3, 22.0, 5,   "INTO ILLINOIS"),
     ("g-track-3",  5, 12.0, 39,  "ELEVEN MINUTES, TWO TOWNS"),
-    ("g-track-4",  7, 10.0, 273, "THE COAL BELT"),
     ("g-track-5",  9, 10.0, 490, "ACROSS THE WABASH"),
-    ("g-track-6",  9, 11.0, 512, "THREE HOURS ON THE GROUND"),
     ("g-track-7", 11, 30.0, 537, "THE COMPLETE TRACK"),
 ]
 
@@ -104,7 +102,6 @@ def build(cid, up_to, dur, toll_start, headline):
     svg.append(f'<circle id="{cid}-ring" cx="{TOWNS[0][1]}" cy="{TOWNS[0][2]}" r="14" fill="none" stroke="#e8c56a" stroke-width="3" opacity="0"/>')
     svg.append("</svg>")
 
-    last = TOWNS[up_to]
     body = f"""<div id="root" data-composition-id="{cid}" data-width="1920" data-height="1080">
   {''.join(svg)}
   <div class="eyebrow" id="{cid}-eb">THE TRACK · MARCH 18, 1925</div>
@@ -139,7 +136,7 @@ def build(cid, up_to, dur, toll_start, headline):
     # storm marker + ring pulse walk town to town (continuous motion across the window)
     seg_t = walk_start
     per = walk / max(up_to, 1) if up_to else walk
-    toll_prev = toll_start
+    toll_prev = TOWNS[0][5]
     for i in range(1, up_to + 1):
         nm, x, y, clock, mi, dead, _ = TOWNS[i]
         t0 = seg_t
@@ -167,7 +164,7 @@ def build(cid, up_to, dur, toll_start, headline):
         "(function() {\n  const TOLL = {v:%d}, MI = {v:0};\n"
         '  function tollUpd(){const e=document.getElementById("%s-toll"); if(e) e.textContent=Math.round(TOLL.v);}\n'
         '  function miUpd(){const e=document.getElementById("%s-mi"); if(e) e.textContent=Math.round(MI.v);}'
-        % (toll_start, cid, cid),
+        % (TOWNS[0][5], cid, cid),
     )
 
     html = f"""<!doctype html>

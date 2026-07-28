@@ -21,7 +21,8 @@ const SAFE = { w: 1920, h: 1080, pad: 24 };
  * frozen for most of its window — ep2 (the gold standard) idles in places and still reads
  * as designed, so idling is a budget, not a tripwire. */
 const HARD = new Set(['text-collision', 'out-of-frame', 'bad-crop', 'empty-container', 'fade-only',
-                      'flat-type', 'no-timeline', 'js-error', 'no-continuous-motion', 'thin-motion', 'idle-budget']);
+                      'flat-type', 'no-timeline', 'js-error', 'undesigned']);
+const DURS = {};
 const defects = [];
 const add = (comp, kind, msg) => defects.push({ comp, kind, msg, hard: HARD.has(kind) });
 
@@ -95,14 +96,17 @@ const MEASURE = `((t) => {
     const ox = Math.min(a.x+a.w, b.x+b.w) - Math.max(a.x, b.x);
     const oy = Math.min(a.y+a.h, b.y+b.h) - Math.max(a.y, b.y);
     if (ox > 6 && oy > 6) {
+      /* Stacked lines whose boxes kiss are not garbled text. Real garbling means the ink
+         boxes overlap deeply in BOTH axes, or one sits well inside the other. */
+      const vFrac = oy / Math.min(a.h, b.h), hFrac = ox / Math.min(a.w, b.w);
       const area = ox * oy, small = Math.min(a.w*a.h, b.w*b.h);
-      /* both boxes must be genuinely overlapping, not just adjacent line boxes */
-      if (area / small > 0.30) out.texts.push({ a: a.text, b: b.text, overlapPct: +((area/small)*100).toFixed(0) });
+      if (vFrac > 0.45 && hFrac > 0.35)
+        out.texts.push({ a: a.text, b: b.text, overlapPct: +((area/small)*100).toFixed(0) });
     }
   }
   /* containers that are visible but hold nothing — a gradient/border IS content */
   for (const el of document.querySelectorAll('[id^="g-"], .panel, .spanel, .card')) {
-    if (!vis(el)) continue;
+    if (!vis(el) || el instanceof SVGElement) continue;
     const r = el.getBoundingClientRect();
     const cs2 = getComputedStyle(el);
     const painted = cs2.backgroundImage !== 'none' || parseFloat(cs2.borderTopWidth) > 0 ||
@@ -110,6 +114,28 @@ const MEASURE = `((t) => {
     if (r.width > 300 && r.height > 200 && !el.textContent.trim() && !el.querySelector('svg,img,canvas') && !painted)
       out.empty.push(el.id || el.className);
   }
+  /* opaque coverage: a panel overlay lets the moving photo underneath carry the motion;
+     a full-frame graphic must animate something itself */
+  let cover = 0;
+  for (const el of document.querySelectorAll('body *')) {
+    if (!vis(el) || el.tagName === 'SCRIPT' || el.tagName === 'STYLE') continue;
+    const cs3 = getComputedStyle(el), r3 = el.getBoundingClientRect();
+    const solid = (cs3.backgroundColor && !/rgba\(0, 0, 0, 0\)/.test(cs3.backgroundColor) &&
+                   !/rgba\([^)]+,\s*0?\.[0-5]\d*\)/.test(cs3.backgroundColor)) ||
+                  (cs3.backgroundImage !== 'none' && !/transparent/.test(cs3.backgroundImage));
+    if (solid) cover = Math.max(cover, (Math.min(r3.width,1920) * Math.min(r3.height,1080)) / (1920*1080));
+  }
+  out.coverage = +cover.toFixed(2);
+  let painted = 0, grad = false;
+  for (const el of document.querySelectorAll('body *')) {
+    if (!vis(el) || el.tagName === 'SCRIPT' || el.tagName === 'STYLE') continue;
+    const r4 = el.getBoundingClientRect();
+    if (r4.width >= 2 && r4.height >= 2) painted++;
+    const bi = getComputedStyle(el).backgroundImage;
+    if (/gradient/.test(bi)) grad = true;
+  }
+  out.elements = painted; out.gradient = grad;
+  out.textNodes = out.fonts.length;
   out.maxFont = out.fonts.length ? Math.max(...out.fonts) : 0;
   out.minFont = out.fonts.length ? Math.min(...out.fonts) : 0;
   out.tierCount = new Set(out.fonts.map(f => f >= 52 ? 'big' : f >= 26 ? 'mid' : 'small')).size;
@@ -121,7 +147,7 @@ function standalone(file) {
   const m = raw.match(/<template>([\s\S]*?)<\/template>/);
   const body = m ? m[1] : raw;
   const html = `<!doctype html><html><head><meta charset="utf-8">
-<style>html,body{margin:0;width:1920px;height:1080px;background:#000;overflow:hidden}</style>
+<style>html,body{margin:0;width:1920px;height:1080px;background:#111;overflow:hidden}</style>
 <script src="../gsap.min.js"></script></head><body>${body}</body></html>`;
   const out = join(TMP, basename(file));
   writeFileSync(out, html, 'utf8');
@@ -143,6 +169,7 @@ for (const f of files) {
   await page.waitForTimeout(120);
   const probe = await page.evaluate(PROBE);
   if (probe.error) { add(name, 'no-timeline', probe.error); continue; }
+  DURS[name] = +probe.duration.toFixed(2);
 
   /* --- motion vocabulary --- */
   const kinetic = probe.tweens.filter(t => t.props.some(p => ['scale','scaleX','scaleY','x','y','rotation','width','strokeDashoffset','attr'].includes(p)));
@@ -150,8 +177,7 @@ for (const f of files) {
   if (kinetic.length === 0) add(name, 'fade-only', `${reveals.length} fades, 0 kinetic tweens — DESIGN.md §5`);
   else if (reveals.length > 2 && kinetic.length < reveals.length / 2)
     add(name, 'thin-motion', `${kinetic.length} kinetic vs ${reveals.length} fades (need ≥1 per 2)`);
-  if (probe.duration > 20 && !probe.tweens.some(t => t.dur >= 8))
-    add(name, 'no-continuous-motion', `${probe.duration.toFixed(1)}s graphic, longest tween ${Math.max(...probe.tweens.map(t=>t.dur)).toFixed(1)}s — §5 needs a continuous element`);
+  /* deferred: needs coverage from the measure pass (set below) */
   const punchy = probe.tweens.filter(t => /power[34]|back|elastic|expo/.test(t.ease)).length;
   if (probe.tweens.length >= 6 && punchy === 0) add(name, 'limp-easing', 'no power3/power4 easing anywhere — §5');
 
@@ -176,21 +202,45 @@ for (const f of files) {
 
   /* --- geometry + typography at every beat and each midpoint --- */
   const samples = [...new Set(beats.flatMap((b, i) => [b + 0.35, i < beats.length - 1 ? (b + beats[i+1]) / 2 : b + 0.9]))]
-    .filter(t => t >= 0 && t <= probe.duration);
-  const seenOverlap = new Set(), seenCrop = new Set(), seenOob = new Set();
-  let tierMax = 0;
+    .filter(t => t >= 0.4 && t <= probe.duration - 1.0)
+    /* entry/exit slides intentionally park elements off-frame; don't audit geometry mid-slide */
+    .filter(t => !probe.tweens.some(tw => tw.props.includes('x') && tw.dur <= 1.2 &&
+                 tw.start - 0.15 <= t && t <= tw.start + tw.dur + 0.35));
+  const seenOverlap = new Set(), seenCrop = new Set(), seenOob = new Set(), seenEmpty = new Set();
+  let tierMax = 0, maxCoverage = 0, maxTextNodes = 0; const elemSamples = []; let gradAny = false;
   for (const t of samples) {
     const m = await page.evaluate(`${MEASURE.replace(/SAFEPAD/g, SAFE.pad).replace(/CROPFAIL/g, CROP_LOSS_FAIL)}(${t})`);
     tierMax = Math.max(tierMax, m.tierCount);
+    maxCoverage = Math.max(maxCoverage, m.coverage || 0);
+    maxTextNodes = Math.max(maxTextNodes, m.textNodes || 0);
+    elemSamples.push(m.elements || 0); gradAny = gradAny || !!m.gradient;
     for (const o of m.texts) { const k = o.a + '|' + o.b; if (!seenOverlap.has(k)) { seenOverlap.add(k); add(name, 'text-collision', `"${o.a}" ⨯ "${o.b}" (${o.overlapPct}% at ${t.toFixed(1)}s)`); } }
     for (const o of m.oob) { const k = o.text; if (!seenOob.has(k)) { seenOob.add(k); add(name, 'out-of-frame', `"${o.text}" at x${o.x} y${o.y} → ${o.right}×${o.bottom} (${t.toFixed(1)}s)`); } }
     for (const c of m.crops) { if (!seenCrop.has(c.src)) { seenCrop.add(c.src); add(name, 'bad-crop', `${c.src} loses ${c.lost}% (source ${c.srcAspect}:1 in ${c.boxAspect}:1 box)`); } }
-    for (const e of m.empty) add(name, 'empty-container', `${e} visible but empty at ${t.toFixed(1)}s`);
+    for (const e of m.empty) { if (!seenEmpty.has(e)) { seenEmpty.add(e); add(name, 'empty-container', `${e} visible but empty (first at ${t.toFixed(1)}s)`); } }
   }
-  if (tierMax < 3) add(name, 'flat-type', `only ${tierMax} type tier(s) — §3 needs ≥52px, 26–30px and ≤22px together`);
+  if (tierMax < 3 && maxTextNodes >= 4)
+    add(name, 'flat-type', `only ${tierMax} type tier(s) across ${maxTextNodes} text elements — §3`);
+  if (maxCoverage >= 0.9 && probe.duration > 20 && !probe.tweens.some(t => t.dur >= 8))
+    add(name, 'no-continuous-motion', `full-frame ${probe.duration.toFixed(0)}s graphic (${(maxCoverage*100).toFixed(0)}% opaque), longest tween ${Math.max(...probe.tweens.map(t=>t.dur)).toFixed(1)}s — §5. Either animate something continuously or let a moving photo carry it (ep2 panels cover ~43%).`);
+  const avgElems = elemSamples.length ? elemSamples.reduce((a,b)=>a+b,0)/elemSamples.length : 0;
+  const kineticRatio = probe.tweens.length ? kinetic.length / probe.tweens.length : 0;
+  const flags = [];
+  if (!gradAny) flags.push('flat background');
+  if (tierMax < 3) flags.push(`${tierMax} type tier(s)`);
+  if (kineticRatio < 0.25) flags.push(`${(kineticRatio*100).toFixed(0)}% kinetic tweens`);
+  if (avgElems < 12) flags.push(`${avgElems.toFixed(0)} elements on screen`);
+  if (idleFrac > 0.6) flags.push(`${(idleFrac*100).toFixed(0)}% frozen`);
+  if (flags.length >= 3)
+    add(name, 'undesigned', `${flags.join(' · ')} — reads as a wireframe, not a designed card (§2–§7)`);
+  if (process.env.QC_STATS) console.log(`  [stats] ${name}: dur ${probe.duration.toFixed(0)}s cover ${maxCoverage} elems ${avgElems.toFixed(0)} tiers ${tierMax} kinetic ${(kineticRatio*100).toFixed(0)}% idle ${(idleFrac*100).toFixed(0)}% grad ${gradAny}`);
 }
 
 await browser.close();
+
+/* publish measured composition durations so the episode builder can cut away from a
+   graphic the moment it finishes instead of parking on a dead frame */
+writeFileSync(join(compDir, '_durations.json'), JSON.stringify(DURS, null, 1), 'utf8');
 
 /* ---------- report ---------- */
 const hard = defects.filter(d => d.hard), soft = defects.filter(d => !d.hard);

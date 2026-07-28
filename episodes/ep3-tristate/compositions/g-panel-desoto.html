@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif; }
+  .panel { position:absolute; right:0; top:0; bottom:0; width:820px; box-sizing:border-box;
+    background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); padding:90px 70px 0 170px; }
+  .eyebrow { font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .tname { font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; line-height:1.05; margin-top:14px; }
+  .tsub { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:10px; }
+  .stamp { display:inline-block; margin-top:34px; font-family:'Arial Black',Arial,sans-serif; font-size:96px;
+    color:#fff; background:#8e2020; padding:2px 30px; letter-spacing:2px; }
+  .row { font-size:30px; color:#dfe7ee; font-weight:700; letter-spacing:1px; margin-top:22px; }
+  .row .lab { display:block; font-size:19px; color:#93a3b2; letter-spacing:4px; font-weight:700; }
+  .cnt { font-family:'Courier New',monospace; font-size:84px; color:#e74c3c; font-weight:700; margin-top:26px; line-height:1; }
+  .cntlab { font-size:20px; color:#c8d3e0; letter-spacing:6px; font-weight:700; margin-top:6px; }
+  .tick { position:absolute; left:110px; top:96px; width:4px; height:900px;
+    background:linear-gradient(180deg, #8e2020 0%, #d8a13a 100%); }
+</style>
+<div id="root" data-composition-id="g-panel-desoto" data-width="1920" data-height="1080">
+  <div class="panel" id="g-panel-desoto-panel">
+    <div class="tick" id="g-panel-desoto-tick"></div>
+    <div class="eyebrow" id="g-panel-desoto-eb">2:45 PM · ILLINOIS</div>
+    <div class="tname">THE SCHOOL DAY</div>
+    <div class="tsub">it struck mid-afternoon, on a school day</div>
+    
+    <div class="cnt" id="g-panel-desoto-cnt">0</div><div class="cntlab" id="g-panel-desoto-cntlab">CHILDREN KILLED AT DE SOTO</div>
+    <div class="row" id="g-panel-desoto-r0"><span class="lab">LONGFELLOW · LOGAN · DE SOTO</span>THE BIGGEST BUILDING ON THE STREET</div><div class="row" id="g-panel-desoto-r1">Again and again, the deadliest address in town</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const CNT = {v:0};
+  function cntUpd(){const e=document.getElementById("g-panel-desoto-cnt"); if(e) e.textContent=Math.round(CNT.v);}
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-panel-desoto-";
+  tl.set(["#g-panel-desoto-r0", "#g-panel-desoto-r1", "#g-panel-desoto-cnt", "#g-panel-desoto-cntlab"], {autoAlpha:0}, 0);
+  tl.fromTo(P+"panel", {x:660}, {x:0, duration:0.7, ease:"power3.out"}, 0.0);
+  tl.fromTo(P+"tick", {scaleY:0}, {scaleY:1, transformOrigin:"50% 0%", duration:26.30, ease:"none"}, 0.7);
+  tl.set([P+"cnt", P+"cntlab"], {autoAlpha:1}, 2.4);
+  tl.to(CNT, {v:33, duration:0.9, ease:"power4.out", onUpdate:cntUpd}, 2.4);
+  tl.fromTo(P+"r0", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 12.62);
+  tl.fromTo(P+"r1", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 25.26);
+  tl.to(P+"panel", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 27.00);
+  window.__timelines["g-panel-desoto"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

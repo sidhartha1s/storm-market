@@ -129,9 +129,9 @@ def relief():
     cid, D = "g-relief", 42.0
     b, j = head(cid, "THAT NIGHT", "THE TRAINS CAME", "into a landscape with no lights and no telephones")
     b += ('<svg viewBox="0 0 1920 1080" style="position:absolute;inset:0">'
-          f'<path id="{cid}-r1" d="M 360 380 Q 620 470 880 570" stroke="#7fb2e5" stroke-width="6" fill="none" '
+          f'<path id="{cid}-rt1" d="M 360 380 Q 620 470 880 570" stroke="#7fb2e5" stroke-width="6" fill="none" '
           f'stroke-dasharray="14 12" stroke-dashoffset="0"/>'
-          f'<path id="{cid}-r2" d="M 1520 320 Q 1200 440 940 570" stroke="#7fb2e5" stroke-width="6" fill="none" '
+          f'<path id="{cid}-rt2" d="M 1520 320 Q 1200 440 940 570" stroke="#7fb2e5" stroke-width="6" fill="none" '
           f'stroke-dasharray="14 12" stroke-dashoffset="0"/>'
           f'<circle cx="905" cy="585" r="15" fill="#c0392b"/>'
           f'<text x="820" y="650" class="maplab" fill="#93a3b2">THE PATH</text>'
@@ -151,8 +151,8 @@ def relief():
     j += f'  tl.fromTo(P+"t2", {{attr:{{r:0}}}}, {{attr:{{r:13}}, duration:0.4, ease:"power4.in"}}, 6.2);\n'
     j += f'  tl.to(P+"t1", {{attr:{{cx:880, cy:570}}, duration:26.0, ease:"none"}}, 5.4);\n'
     j += f'  tl.to(P+"t2", {{attr:{{cx:940, cy:570}}, duration:26.0, ease:"none"}}, 6.6);\n'
-    j += f'  tl.to(P+"r1", {{attr:{{"stroke-dashoffset":-520}}, duration:30.0, ease:"none"}}, 5.4);\n'
-    j += f'  tl.to(P+"r2", {{attr:{{"stroke-dashoffset":-520}}, duration:30.0, ease:"none"}}, 6.6);\n'
+    j += f'  tl.to(P+"rt1", {{attr:{{"stroke-dashoffset":-520}}, duration:30.0, ease:"none"}}, 5.4);\n'
+    j += f'  tl.to(P+"rt2", {{attr:{{"stroke-dashoffset":-520}}, duration:30.0, ease:"none"}}, 6.6);\n'
     b += f'<div class="foot" id="{cid}-ft">Rescue arrived by rail, in the dark, hours after the last house fell.</div>'
     j += f'  tl.fromTo(P+"ft", {{autoAlpha:0, y:20}}, {{autoAlpha:1, y:0, duration:0.6}}, 33.0);\n'
     wrap(cid, "", b, j, D)
@@ -236,7 +236,7 @@ def wordban2():
   .step { position:absolute; top:640px; width:420px; text-align:center; }
   .step .yr { font-family:'Arial Black',Arial,sans-serif; font-size:56px; color:#e8c56a; }
   .step .tx { font-size:22px; letter-spacing:3px; color:#b8c6d4; font-weight:700; margin-top:10px; line-height:1.35; }
-  .axis { position:absolute; left:220px; top:600px; height:5px; background:#2a3644; width:0; }
+  .axis { position:absolute; left:220px; top:600px; height:5px; background:#2a3644; width:1480px; }
   .late { position:absolute; left:0; right:0; top:790px; text-align:center; }
   .late .n { font-family:'Courier New',monospace; font-size:84px; color:#e74c3c; font-weight:700; line-height:1; }
   .late .l { font-size:20px; letter-spacing:6px; color:#c8d3e0; font-weight:700; margin-top:8px; }
@@ -256,10 +256,12 @@ def wordban2():
     b += (f'<div class="late" id="{cid}-late"><div class="n"><span id="{cid}-lv">0</span></div>'
           f'<div class="l">YEARS AFTER THE TRI-STATE</div></div>')
     b += f'<div class="foot" id="{cid}-ft" style="left:0;right:0;text-align:center">Every fix on this line arrived after the funerals.</div>'
-    j += f'  tl.set(P+"s", {{width:760}}, 0);\n'
+    j += f'  tl.set(P+"s", {{width:760, scaleX:0, transformOrigin:"50% 50%"}}, 0);\n'
+    j += f'  tl.to(P+"s", {{scaleX:1, duration:0.6, ease:"power3.out"}}, 1.4);\n'
     j += f'  tl.fromTo(P+"w", {{autoAlpha:0, scale:1.3}}, {{autoAlpha:1, scale:1, duration:0.5, ease:"power4.in"}}, 1.0);\n'
-    j += f'  tl.to(P+"s", {{width:0, duration:0.9, ease:"power3.inOut"}}, 5.2);\n'
-    j += f'  tl.to(P+"ax", {{width:1480, duration:{D - 6:.1f}, ease:"none"}}, 5.6);\n'
+    j += f'  tl.to(P+"s", {{scaleX:0, duration:0.9, ease:"power3.inOut"}}, 5.2);\n'
+    j += f'  tl.set(P+"ax", {{scaleX:0, transformOrigin:"left center"}}, 0);\n'
+    j += f'  tl.to(P+"ax", {{scaleX:1, duration:{D - 6:.1f}, ease:"none"}}, 5.6);\n'
     j += f'  tl.to(P+"w", {{scaleX:1.16, duration:{D - 3:.1f}, ease:"none"}}, 1.5);\n'
     j += f'  tl.fromTo(P+"late", {{autoAlpha:0, y:24}}, {{autoAlpha:1, y:0, duration:0.5}}, 18.0);\n'
     j += f'  tl.to(LATE, {{v:23, duration:1.1, ease:"power4.out", onUpdate:lu}}, 18.2);\n'

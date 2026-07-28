@@ -7,7 +7,7 @@ Checks episodes/<slug>/index.html:
   2. every data-start / data-start+data-duration window sits inside the composition duration
   3. audio elements: narration wavs must not overlap each other or any insert audio
   4. NO-REPEAT (owner, ep1 v2 RCA): a visual file may appear in ONE timed window only.
-     Reuse requires data-callback="<reason>" on the element — and even then max 2 total uses.
+     Reuse requires data-callback="<reason>" on the element — max 3 total uses (owner 2026-07-28).
      Elements inside the last 90s (summary/outro zone) are exempt (owner: recap reuse is fine).
   5. CADENCE REPORT (owner 2026-07-23: pacing = AI judgment, NEVER code-enforced): shots over
      baseline (stills >7s, videos >12s) are PRINTED as a report for the editor-agent to reason
@@ -96,8 +96,11 @@ def main():
             reports.append(f"[pacing report] {'still' if is_still else 'video'} {src} holds {du:.1f}s at {st:.0f}s (baseline {limit}s) — editor: reason about it")
     for src, uses in by_src.items():
         timed = [(st, du, cb) for st, du, cb in uses if st < summary_zone]
-        if len(timed) > 2:
-            findings.append(f"repeat: {src} used {len(timed)}x — max 2 (one + one flagged callback)")
+        # owner rule 2026-07-28: an image may return up to 3x if each return is justified
+        if len(timed) > 3:
+            findings.append(f"repeat: {src} used {len(timed)}x — max 3, each reuse data-callback'd")
+        elif len(timed) == 3 and sum(1 for _, _, cb in timed if cb) < 2:
+            findings.append(f"repeat: {src} used 3x but only {sum(1 for _, _, cb in timed if cb)} reuse(s) carry data-callback")
         elif len(timed) == 2 and not any(cb for _, _, cb in timed):
             findings.append(f"repeat: {src} used 2x with no data-callback=\"reason\" on the reuse")
 

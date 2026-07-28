@@ -263,3 +263,39 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
 - **tts_ep3v2.cmd chained transcribe stage died silently after TTS DONE** (no marker, no log lines) — give each detached stage its OWN log + exit marker; a chained `goto`-loop .cmd hides which stage failed.
 - **StaticGuard boundary rule**: any GSAP fade that ends exactly at a clip-window boundary needs a `tl.set(..., {autoAlpha:0})` hard kill right after the fade, or validate flags stale-visibility risk.
 - **`hyperframes snapshot` accepts only one `--at`** — repeated flags silently collapse (and add a stray extra frame); loop one invocation per timestamp for fixchecks.
+
+## ep3 v3 (2026-07-29) — the "check the code, not the frames" rebuild
+- **`hyperframes check` (not the deprecated `validate`) is the real static gate.** It caught 19
+  errors a frame sweep never would. Run it before every render, not after.
+- **Never tween a layout/text-reflow property.** `gsap_non_transform_motion`: `letterSpacing`,
+  `width`, `height` snap to integer device pixels under the seek-by-frame capture engine and
+  stutter on any slow/ease-out move. Use transforms — `scaleX`/`scaleY` with an explicit
+  `transformOrigin`, or `x`/`y`. A growing bar is `scaleY:0→1`, never `height:0→900`.
+- **Never set an initial transform in CSS when GSAP will tween any transform on that element.**
+  `gsap_css_transform_conflict`: GSAP rewrites the whole transform matrix, silently discarding
+  a CSS `scaleX(0)` or a `translateX(-50%)` centering. Set the initial state with `tl.set(...)`
+  at t=0 instead.
+- **Sub-composition asset paths are resolved against the PROJECT ROOT, not the comp's own
+  directory.** `../media/x.jpg` renders but 404s in Studio preview. Always `media/x.jpg`.
+- **Quantize the timeline to the decimal grid you print at.** Accumulating `ct += w` in float
+  while emitting `{ct:.2f}` makes a window's printed end land 0.01s past the next window's
+  printed start — 44 same-track overlap errors. Round every start and duration to 2dp and
+  accumulate the rounded values, so end == next start bit-for-bit.
+- **A graphic's duration must be DERIVED from its resolved narration cues, never hand-estimated.**
+  Panels whose rows are cued off `words.json` slid off screen at the hand-guessed duration while
+  later rows were still firing on an off-screen card, and the host window sat empty for the rest
+  of the segment. `dur = max(declared, last_cue + tail)`.
+- **Clamp every clip window to the clip's own length at BUILD time** (`ffprobe`, cached). This is
+  the ep3-v2 frame-coverage failure caught one stage earlier, deterministically, instead of 20
+  minutes into a render.
+- **Hand-declared beat weights bypass the pacing clamps.** `mixed` segments rescale their weights
+  to fill the narration window, which pushed stills to 7.2s and a single clip to 16.4s while
+  `MAX_STILL` was 6.5. Any path that produces windows must go through the same splitter.
+- **Idle warnings on an overlay panel are not the same defect as idle on a full-frame graphic** —
+  the panel sits over a moving photo. But the card's own content still must not sit dead: one
+  continuous transform tween spanning the window fixes it and costs nothing.
+- **Tooling gotcha:** the Bash tool consumes backslashes in heredoc'd Python even inside a
+  quoted `<< 'EOF'`. `"\n"` arrives as a real newline, which silently corrupts source-generating
+  scripts. Build literal backslashes with `chr(92)`, and always `ast.parse` the result.
+- **Windows CRLF breaks naive line-joining repairs** — read/normalize with explicit
+  `.replace(chr(13)+chr(10), chr(10))` before any line-level surgery, and write back as bytes.

@@ -1,0 +1,45 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;width:1920px;height:1080px;background:#111;overflow:hidden}</style>
+<script src="../gsap.min.js"></script></head><body>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 46% 52%, #0d141c 0%, #04070a 76%); overflow:hidden; }
+  .eyebrow { position:absolute; left:96px; top:76px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .hl { position:absolute; left:96px; top:112px; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; }
+  .sub { position:absolute; left:96px; top:196px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  .drift { position:absolute; inset:-40% 0; opacity:0.30; pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(120,150,180,0.16) 0 1px, transparent 1px 46px); }
+  .lab { font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; }
+  .val { font-size:30px; color:#dfe7ee; font-weight:700; letter-spacing:1px; }
+  .num { font-family:'Courier New',monospace; font-size:84px; color:#e74c3c; font-weight:700; line-height:1; }
+  .maplab { font-family:Arial,sans-serif; font-weight:700; font-size:25px; fill:#e8eef4; }
+  .foot { position:absolute; left:96px; bottom:74px; font-family:Georgia,serif; font-style:italic;
+    font-size:26px; color:#d8a13a; }
+
+  .ttl { position:absolute; left:0; right:0; top:400px; text-align:center; font-family:Georgia,serif;
+    font-size:92px; color:#f2f5f8; letter-spacing:3px; }
+  .epi { position:absolute; left:0; right:0; top:540px; text-align:center; font-family:Arial,sans-serif;
+    font-weight:700; font-size:28px; color:#d8a13a; letter-spacing:6px; }
+  .cred { position:absolute; left:0; right:0; top:700px; text-align:center; font-family:Arial,sans-serif;
+    font-size:23px; line-height:2.0; color:#93a3b2; }
+</style>
+<div id="root" data-composition-id="g-close" data-width="1920" data-height="1080">
+<div class="drift" id="g-close-drift"></div>
+<div class="ttl" id="g-close-t">The Warning Hour</div><div class="epi" id="g-close-e">EPISODE THREE — THE TORNADO WITH NO PHOTOGRAPH</div><div class="cred" id="g-close-c">Film courtesy Moving Image Research Collections, University of South Carolina<br>Photographs: NWS Paducah · National Archives · Library of Congress · Jackson County Historical Society · The Indiana Album<br>Reanalysis: Johns et al. 2013 · Maddox et al. 2013<br>Some connecting scenes are modern recreations</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-close-";
+  tl.fromTo(P+"drift", {y:-120}, {y:120, duration:30.0, ease:"none"}, 0);
+  tl.fromTo(P+"t", {autoAlpha:0, y:30}, {autoAlpha:1, y:0, duration:0.9, ease:"power3.out"}, 1.0);
+  tl.fromTo(P+"e", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.7, ease:"power3.out"}, 2.4);
+  tl.fromTo(P+"c", {autoAlpha:0}, {autoAlpha:1, duration:1.0}, 6.0);
+  tl.to(P+"t", {scaleX:1.05, duration:26.0, ease:"none"}, 1.6);
+  tl.to([P+"t", P+"e", P+"c"], {autoAlpha:0, duration:1.6}, 27.8);
+
+  window.__timelines["g-close"] = tl;
+})();
+</script>
+</body></html>

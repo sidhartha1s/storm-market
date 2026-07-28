@@ -1,0 +1,3330 @@
+[
+{
+"start": 0.0,
+"dur": null,
+"id": "root",
+"what": "ep3-tristate",
+"cb": "",
+"track": ""
+},
+{
+"start": 0.0,
+"dur": 16.64,
+"id": "nx-h1s1",
+"what": "h1-s1.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 0.0,
+"dur": 36.0,
+"id": "sfx-rumble",
+"what": "04_distant_storm_rumble.mp3",
+"cb": "",
+"track": ""
+},
+{
+"start": 0.0,
+"dur": 5.27,
+"id": "v0",
+"what": "Wea00238.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 0.3,
+"dur": 14.0,
+"id": "card-date",
+"what": "?",
+"cb": "",
+"track": "3"
+},
+{
+"start": 5.27,
+"dur": 3.38,
+"id": "v1",
+"what": "1925_-_Murphysboro_8_-_General_Damage.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 8.65,
+"dur": 4.37,
+"id": "v2",
+"what": "1925_-_Murphysboro_25_-_17th___Victory_Streets.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 13.02,
+"dur": 3.62,
+"id": "v3",
+"what": "Wea00238.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 17.39,
+"dur": 13.08,
+"id": "nx-h1s2",
+"what": "h1-s2.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 17.39,
+"dur": 4.0,
+"id": "v5",
+"what": "mvtn-hook-aerial-bank-4s.mp4",
+"cb": "",
+"track": "1"
+},
+{
+"start": 21.39,
+"dur": 1.26,
+"id": "v6",
+"what": "Wea00238.jpg",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 22.65,
+"dur": 4.03,
+"id": "v7",
+"what": "mvtn-hook-trainwreck-4s.mp4",
+"cb": "",
+"track": "1"
+},
+{
+"start": 26.68,
+"dur": 1.23,
+"id": "v8",
+"what": "1925_tornado_damage_3.webp",
+"cb": "",
+"track": "1"
+},
+{
+"start": 27.91,
+"dur": 6.05,
+"id": "v9",
+"what": "Wea00239_-_Flickr_-_NOAA_Photo_Library.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 34.72,
+"dur": 42.0,
+"id": "nx-a1s1",
+"what": "a1-s1.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 34.72,
+"dur": 26.0,
+"id": "host-g-wordban-11",
+"what": "g-wordban",
+"cb": "",
+"track": "2"
+},
+{
+"start": 36.0,
+"dur": 350.0,
+"id": "bgm-dread1",
+"what": "dread-build-loop.mp3",
+"cb": "",
+"track": ""
+},
+{
+"start": 60.72,
+"dur": 6.48,
+"id": "t11",
+"what": "11-Murphysboro_Pre-Tornado_1.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 67.2,
+"dur": 4.15,
+"id": "t12",
+"what": "Annapolis_Business_street.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 71.35,
+"dur": 5.37,
+"id": "t13",
+"what": "1925_-_Murphysboro_20_-_Business_District.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 77.47,
+"dur": 36.36,
+"id": "nx-a1s1b",
+"what": "a1-s1b.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 77.47,
+"dur": 6.26,
+"id": "v15",
+"what": "hazen-portrait-01.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 77.47,
+"dur": 32.2,
+"id": "host-g-panel-finley-15",
+"what": "g-panel-finley",
+"cb": "",
+"track": "2"
+},
+{
+"start": 83.73,
+"dur": 4.01,
+"id": "v16",
+"what": "Tri_State_Tornado_Drawing.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 87.74,
+"dur": 5.18,
+"id": "v17",
+"what": "DocFile__2_.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 92.92,
+"dur": 4.3,
+"id": "v18",
+"what": "hazen-portrait-01.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 97.22,
+"dur": 5.77,
+"id": "v19",
+"what": "Tri_State_Tornado_Drawing.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 102.99,
+"dur": 4.59,
+"id": "v20",
+"what": "DocFile__2_.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 107.58,
+"dur": 6.26,
+"id": "v21",
+"what": "hazen-portrait-01.jpg",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 114.58,
+"dur": 23.4,
+"id": "nx-a1s2",
+"what": "a1-s2.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 114.58,
+"dur": 22.0,
+"id": "host-g-forecast-23",
+"what": "g-forecast",
+"cb": "",
+"track": "2"
+},
+{
+"start": 138.73,
+"dur": 30.04,
+"id": "nx-a1s2c",
+"what": "a1-s2c.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 138.73,
+"dur": 30.0,
+"id": "host-g-sources-24",
+"what": "g-sources",
+"cb": "",
+"track": "2"
+},
+{
+"start": 169.52,
+"dur": 40.72,
+"id": "nx-a1s2b",
+"what": "a1-s2b.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 169.52,
+"dur": 6.31,
+"id": "v25",
+"what": "11-Murphysboro_Pre-Tornado_1.png",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 175.83,
+"dur": 4.04,
+"id": "v26",
+"what": "12-Murphysboro_Pre-Tornado_2.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 179.87,
+"dur": 5.23,
+"id": "v27",
+"what": "Annapolis_Business_street.png",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 185.1,
+"dur": 4.34,
+"id": "v28",
+"what": "1925_-_Murphysboro_20_-_Business_District.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 189.44,
+"dur": 5.82,
+"id": "v29",
+"what": "1925_-_Murphysboro_11_-_Residential_District.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 195.26,
+"dur": 4.63,
+"id": "v30",
+"what": "1925_-_Murphysboro_1_-_Corner_of_17th___Walnut.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 199.89,
+"dur": 6.31,
+"id": "v31",
+"what": "1925_-_Murphysboro_12b_-_Baptist_Church.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 206.2,
+"dur": 4.04,
+"id": "v32",
+"what": "11-Murphysboro_Pre-Tornado_1.png",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 210.99,
+"dur": 35.36,
+"id": "nx-a1s3",
+"what": "a1-s3.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 210.99,
+"dur": 34.0,
+"id": "host-g-metmap-34",
+"what": "g-metmap",
+"cb": "",
+"track": "2"
+},
+{
+"start": 247.1,
+"dur": 30.96,
+"id": "nx-a1s4",
+"what": "a1-s4.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 247.1,
+"dur": 28.0,
+"id": "host-g-scale-35",
+"what": "g-scale",
+"cb": "",
+"track": "2"
+},
+{
+"start": 275.1,
+"dur": 2.96,
+"id": "t35",
+"what": "1925_-_Murphysboro_32_-_Chicago_Herald___Examiner.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 278.81,
+"dur": 36.88,
+"id": "nx-a1s4c",
+"what": "a1-s4c.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 278.81,
+"dur": 6.34,
+"id": "v37",
+"what": "stock-cloudsomen-02.mp4",
+"cb": "",
+"track": "1"
+},
+{
+"start": 285.15,
+"dur": 4.06,
+"id": "v38",
+"what": "stock-cloudsrolling-03.mp4",
+"cb": "",
+"track": "1"
+},
+{
+"start": 289.21,
+"dur": 5.25,
+"id": "v39",
+"what": "stock-lightning-01.mp4",
+"cb": "",
+"track": "1"
+},
+{
+"start": 294.46,
+"dur": 4.36,
+"id": "v40",
+"what": "stock-cloudsomen-01.mp4",
+"cb": "",
+"track": "1"
+},
+{
+"start": 298.82,
+"dur": 5.85,
+"id": "v41",
+"what": "stock-cloudsomen-02.mp4",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 304.67,
+"dur": 4.66,
+"id": "v42",
+"what": "stock-cloudsrolling-03.mp4",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 309.33,
+"dur": 6.34,
+"id": "v43",
+"what": "stock-cloudsomen-02.mp4",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 316.44,
+"dur": 32.56,
+"id": "nx-a1s4d",
+"what": "a1-s4d.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 316.44,
+"dur": 5.6,
+"id": "v45",
+"what": "stock-cloudsrolling-01.mp4",
+"cb": "",
+"track": "1"
+},
+{
+"start": 316.44,
+"dur": 27.0,
+"id": "host-g-panel-lone-45",
+"what": "g-panel-lone",
+"cb": "",
+"track": "2"
+},
+{
+"start": 322.04,
+"dur": 3.59,
+"id": "v46",
+"what": "stock-tornado-01.mp4",
+"cb": "",
+"track": "1"
+},
+{
+"start": 325.63,
+"dur": 4.64,
+"id": "v47",
+"what": "stock-cloudsrolling-02.mp4",
+"cb": "",
+"track": "1"
+},
+{
+"start": 330.27,
+"dur": 3.85,
+"id": "v48",
+"what": "stock-cloudsrolling-01.mp4",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 334.12,
+"dur": 5.16,
+"id": "v49",
+"what": "stock-tornado-01.mp4",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 339.28,
+"dur": 4.11,
+"id": "v50",
+"what": "stock-cloudsrolling-02.mp4",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 343.39,
+"dur": 5.6,
+"id": "v51",
+"what": "stock-cloudsrolling-01.mp4",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 348.75,
+"dur": 24.0,
+"id": "sfx-wind1",
+"what": "02_wind_ominous_steady.mp3",
+"cb": "",
+"track": ""
+},
+{
+"start": 349.75,
+"dur": 22.08,
+"id": "nx-a1s5",
+"what": "a1-s5.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 349.75,
+"dur": 6.4,
+"id": "v53",
+"what": "ai-farmhouse-morning.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 349.75,
+"dur": 6.0,
+"id": "chip-58",
+"what": "?",
+"cb": "",
+"track": "3"
+},
+{
+"start": 356.15,
+"dur": 4.1,
+"id": "v54",
+"what": "ai-children-school.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 360.25,
+"dur": 5.3,
+"id": "v55",
+"what": "1925_-_Murphysboro_2_-_Murphysboro_Township_High_School.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 365.55,
+"dur": 4.4,
+"id": "v56",
+"what": "20-De_Soto_School_1910.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 369.95,
+"dur": 5.9,
+"id": "v57",
+"what": "ai-farmhouse-morning.png",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 375.58,
+"dur": 222.39,
+"id": "bgm-tense1",
+"what": "tense-curious-loop.mp3",
+"cb": "",
+"track": ""
+},
+{
+"start": 376.58,
+"dur": 23.16,
+"id": "nx-a2s1",
+"what": "a2-s1.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 376.58,
+"dur": 23.16,
+"id": "host-g-track-1-59",
+"what": "g-track-1",
+"cb": "",
+"track": "2"
+},
+{
+"start": 386.0,
+"dur": 25.58,
+"id": "bgm-dread1-1",
+"what": "dread-build-loop.mp3",
+"cb": "bed continues across the act",
+"track": ""
+},
+{
+"start": 400.49,
+"dur": 35.68,
+"id": "nx-a2s1c",
+"what": "a2-s1c.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 400.49,
+"dur": 6.14,
+"id": "v60",
+"what": "02-Annapolis_Destruction.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 406.63,
+"dur": 3.93,
+"id": "v61",
+"what": "03-Leadanna_Damage.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 410.56,
+"dur": 5.08,
+"id": "v62",
+"what": "Leadanna_lead_mines_after_1925_tornado.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 415.64,
+"dur": 4.22,
+"id": "v63",
+"what": "05-Bollinger_County_Damage.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 419.86,
+"dur": 5.66,
+"id": "v64",
+"what": "1925tornado-p2o-b.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 425.52,
+"dur": 4.51,
+"id": "v65",
+"what": "06-Biehle_Damage.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 430.03,
+"dur": 6.14,
+"id": "v66",
+"what": "02-Annapolis_Destruction.png",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 436.92,
+"dur": 25.16,
+"id": "nx-a2s2",
+"what": "a2-s2.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 436.92,
+"dur": 5.75,
+"id": "v68",
+"what": "02-Annapolis_Destruction.png",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 436.92,
+"dur": 23.1,
+"id": "host-g-panel-annapolis-68",
+"what": "g-panel-annapolis",
+"cb": "",
+"track": "2"
+},
+{
+"start": 442.67,
+"dur": 3.68,
+"id": "v69",
+"what": "Annapolis_Business_street.png",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 446.35,
+"dur": 4.76,
+"id": "v70",
+"what": "03-Leadanna_Damage.png",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 451.11,
+"dur": 3.95,
+"id": "v71",
+"what": "1925_-_Murphysboro_32_-_Chicago_Herald___Examiner.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 455.06,
+"dur": 5.3,
+"id": "v72",
+"what": "1925_-_Murphysboro_32_-_Chicago_Herald___Examiner.jpg",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 460.36,
+"dur": 4.22,
+"id": "v73",
+"what": "Anderson_Daily_Bulletin_Front_page_-_1925_tornado_coverage.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 465.33,
+"dur": 31.88,
+"id": "nx-a2s3",
+"what": "a2-s3.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 465.33,
+"dur": 5.48,
+"id": "v75",
+"what": "06-Biehle_Damage_-_Theo_Holschen_Residence.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 470.81,
+"dur": 3.51,
+"id": "v76",
+"what": "ai-black-wall-fields.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 474.32,
+"dur": 4.54,
+"id": "v77",
+"what": "07-Perry_County_Destruction.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 478.86,
+"dur": 3.77,
+"id": "v78",
+"what": "1925tornado-p5o-c.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 482.63,
+"dur": 5.06,
+"id": "v79",
+"what": "1925_tornado_damage_7.webp",
+"cb": "",
+"track": "1"
+},
+{
+"start": 487.69,
+"dur": 4.03,
+"id": "v80",
+"what": "06-Biehle_Damage_-_Theo_Holschen_Residence.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 491.72,
+"dur": 5.48,
+"id": "v81",
+"what": "06-Biehle_Damage_-_Theo_Holschen_Residence.jpg",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 497.96,
+"dur": 36.68,
+"id": "nx-a2s3b",
+"what": "a2-s3b.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 497.96,
+"dur": 36.0,
+"id": "host-g-wires-83",
+"what": "g-wires",
+"cb": "",
+"track": "2"
+},
+{
+"start": 535.39,
+"dur": 24.52,
+"id": "nx-a2s4",
+"what": "a2-s4.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 535.39,
+"dur": 22.8,
+"id": "host-g-track-2-84",
+"what": "g-track-2",
+"cb": "",
+"track": "2"
+},
+{
+"start": 560.66,
+"dur": 33.56,
+"id": "nx-a2s4b",
+"what": "a2-s4b.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 560.66,
+"dur": 6.29,
+"id": "v85",
+"what": "25-West_Frankfort_Orient_2_Aerial.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 566.95,
+"dur": 4.03,
+"id": "v86",
+"what": "26-West_Frankfort_Coal_Cars.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 570.98,
+"dur": 5.21,
+"id": "v87",
+"what": "X_West_Frankfort3_-_Aerial_View_Orient_No_2_Mine.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 576.19,
+"dur": 4.32,
+"id": "v88",
+"what": "1925_tornado_damage_9.webp",
+"cb": "",
+"track": "1"
+},
+{
+"start": 580.51,
+"dur": 5.8,
+"id": "v89",
+"what": "1925_tornado_damage_6.webp",
+"cb": "",
+"track": "1"
+},
+{
+"start": 586.31,
+"dur": 4.62,
+"id": "v90",
+"what": "stock-cloudsomen-01.mp4",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 590.93,
+"dur": 6.29,
+"id": "v91",
+"what": "25-West_Frankfort_Orient_2_Aerial.png",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 596.97,
+"dur": 350.0,
+"id": "bgm-somber1",
+"what": "aftermath-somber-loop.mp3",
+"cb": "",
+"track": ""
+},
+{
+"start": 597.97,
+"dur": 36.48,
+"id": "nx-a3s1",
+"what": "a3-s1.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 597.97,
+"dur": 6.28,
+"id": "v93",
+"what": "1925_-_Gorham_-_Main_St.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 598.37,
+"dur": 7.0,
+"id": "lt-100",
+"what": "?",
+"cb": "",
+"track": "7"
+},
+{
+"start": 604.25,
+"dur": 4.02,
+"id": "v94",
+"what": "1925_-_Gorham_-_Missouri_Pacific_Railway.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 608.27,
+"dur": 5.2,
+"id": "v95",
+"what": "09-Gorham_Boxcars.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 613.47,
+"dur": 4.31,
+"id": "v96",
+"what": "1925_-_Gorham_-_Post_Office_Area.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 617.78,
+"dur": 5.79,
+"id": "v97",
+"what": "1925_tornado_damage_3.webp",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 623.57,
+"dur": 4.61,
+"id": "v98",
+"what": "Tri-State_Tornado_JCHS15.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 628.18,
+"dur": 6.28,
+"id": "v99",
+"what": "1925_-_Gorham_-_Main_St.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 635.2,
+"dur": 35.04,
+"id": "nx-a3s1b",
+"what": "a3-s1b.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 635.2,
+"dur": 6.46,
+"id": "v101",
+"what": "1925_-_Gorham_-_Post_Office_Area.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 635.2,
+"dur": 19.7,
+"id": "host-g-panel-gorham-101",
+"what": "g-panel-gorham",
+"cb": "",
+"track": "2"
+},
+{
+"start": 641.2,
+"dur": 9.0,
+"id": "q-108",
+"what": "?",
+"cb": "",
+"track": "5"
+},
+{
+"start": 641.66,
+"dur": 4.14,
+"id": "v102",
+"what": "09-Gorham_Boxcars.png",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 645.8,
+"dur": 5.35,
+"id": "v103",
+"what": "1925_tornado_damage_7.webp",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 651.15,
+"dur": 4.44,
+"id": "v104",
+"what": "1925_-_Gorham_-_Post_Office_Area.jpg",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 655.59,
+"dur": 5.95,
+"id": "v105",
+"what": "09-Gorham_Boxcars.png",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 661.54,
+"dur": 4.74,
+"id": "v106",
+"what": "1925_tornado_damage_7.webp",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 666.28,
+"dur": 6.46,
+"id": "v107",
+"what": "Anderson_Daily_Bulletin_Front_page_-_1925_tornado_coverage.png",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 673.49,
+"dur": 20.32,
+"id": "nx-a3s2",
+"what": "a3-s2.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 673.49,
+"dur": 6.16,
+"id": "v109",
+"what": "mvtn-murphysboro-house-7s.mp4",
+"cb": "",
+"track": "1"
+},
+{
+"start": 673.89,
+"dur": 7.0,
+"id": "lt-113",
+"what": "?",
+"cb": "",
+"track": "7"
+},
+{
+"start": 679.65,
+"dur": 4.72,
+"id": "v110",
+"what": "1925_-_Murphysboro_4_-_M_O_Railroad_Shops.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 684.37,
+"dur": 4.72,
+"id": "v111",
+"what": "1925_-_Murphysboro_3_-_14th_St_at_Gartside.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 689.09,
+"dur": 4.72,
+"id": "v112",
+"what": "1925_-_Murphysboro_14_-_M_O_Railyards_Aerial.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 694.56,
+"dur": 36.48,
+"id": "nx-a3s2b",
+"what": "a3-s2b.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 694.56,
+"dur": 6.28,
+"id": "v114",
+"what": "1925_-_Murphysboro_22_-_Aerial_View(1).jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 700.84,
+"dur": 4.02,
+"id": "v115",
+"what": "1925_-_Murphysboro_7a_-_Reliance_Mill.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 704.86,
+"dur": 5.2,
+"id": "v116",
+"what": "1925_-_Murphysboro_18_-_Brown_Shoe_Company.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 710.06,
+"dur": 4.31,
+"id": "v117",
+"what": "1925_-_Murphysboro_26_-_Looking_S_from_17th___Hortense.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 714.37,
+"dur": 5.79,
+"id": "v118",
+"what": "1925_-_Murphysboro_28_-_Corner_of_10th___Walnut.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 720.16,
+"dur": 4.61,
+"id": "v119",
+"what": "16-Murphysboro_SW_of_Logan_School.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 724.77,
+"dur": 6.28,
+"id": "v120",
+"what": "1925_-_Murphysboro_22_-_Aerial_View(1).jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 731.79,
+"dur": 22.04,
+"id": "nx-a3s3",
+"what": "a3-s3.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 731.79,
+"dur": 5.4,
+"id": "v122",
+"what": "Tri-State_State_Tornado_Damage_Longfellow_School_2.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 737.19,
+"dur": 3.46,
+"id": "v123",
+"what": "1925_-_Murphysboro_17_-_Longfellow_School.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 740.65,
+"dur": 4.48,
+"id": "v124",
+"what": "1925_-_Murphysboro_6_-_Logan_School.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 745.13,
+"dur": 3.72,
+"id": "v125",
+"what": "1925_-_Murphysboro_10_-_Homes_Destroyed.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 748.85,
+"dur": 4.98,
+"id": "v126",
+"what": "Tri-State_State_Tornado_Damage_Longfellow_School_2.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 754.58,
+"dur": 26.28,
+"id": "nx-a3s3b",
+"what": "a3-s3b.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 754.58,
+"dur": 6.44,
+"id": "v128",
+"what": "1925_-_Murphysboro_9_-_General_Damage.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 760.58,
+"dur": 9.0,
+"id": "q-133",
+"what": "?",
+"cb": "",
+"track": "5"
+},
+{
+"start": 761.02,
+"dur": 4.13,
+"id": "v129",
+"what": "Chicago_Herald_Examiner_Front_page_1925-03-20.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 765.15,
+"dur": 5.34,
+"id": "v130",
+"what": "1925_-_Murphysboro_20_-_Business_District.jpg",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 770.49,
+"dur": 4.43,
+"id": "v131",
+"what": "The_Evansville_Press_Front_page_-_1925_tornado_coverage.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 774.92,
+"dur": 5.94,
+"id": "v132",
+"what": "1925_-_Murphysboro_9_-_General_Damage.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 781.61,
+"dur": 32.96,
+"id": "nx-a3s4",
+"what": "a3-s4.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 781.61,
+"dur": 5.67,
+"id": "v134",
+"what": "18-Murphysboro_Fire_Colorized.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 787.28,
+"dur": 3.63,
+"id": "v135",
+"what": "ai-fire-glow-night.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 790.91,
+"dur": 4.7,
+"id": "v136",
+"what": "1925_-_Murphysboro_24_-_Blue_Front_Hotel_-_S_17th_St.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 795.61,
+"dur": 3.9,
+"id": "v137",
+"what": "1925_-_Murphysboro_21_-_High_School_Aerial.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 799.51,
+"dur": 5.23,
+"id": "v138",
+"what": "1925_tornado_damage_11.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 804.74,
+"dur": 4.16,
+"id": "v139",
+"what": "18-Murphysboro_Fire_Colorized.png",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 808.9,
+"dur": 5.67,
+"id": "v140",
+"what": "18-Murphysboro_Fire_Colorized.png",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 815.32,
+"dur": 30.12,
+"id": "nx-a3s4c",
+"what": "a3-s4c.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 815.32,
+"dur": 6.04,
+"id": "v142",
+"what": "1925_-_Murphysboro_21_-_High_School_Aerial.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 815.32,
+"dur": 24.9,
+"id": "host-g-panel-murphysboro-142",
+"what": "g-panel-murphysboro",
+"cb": "",
+"track": "2"
+},
+{
+"start": 821.36,
+"dur": 3.87,
+"id": "v143",
+"what": "13-Murphysboro_Aerial.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 825.23,
+"dur": 5.0,
+"id": "v144",
+"what": "1925_-_Murphysboro_8_-_General_Damage.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 830.23,
+"dur": 4.15,
+"id": "v145",
+"what": "1925_-_Murphysboro_21_-_High_School_Aerial.jpg",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 834.38,
+"dur": 5.57,
+"id": "v146",
+"what": "13-Murphysboro_Aerial.png",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 839.95,
+"dur": 4.44,
+"id": "v147",
+"what": "1925_-_Murphysboro_8_-_General_Damage.jpg",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 844.39,
+"dur": 6.04,
+"id": "v148",
+"what": "Anderson_Daily_Bulletin_Front_page_-_1925_tornado_coverage.png",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 851.19,
+"dur": 11.88,
+"id": "nx-a3s5",
+"what": "a3-s5.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 851.19,
+"dur": 11.88,
+"id": "host-g-track-3-150",
+"what": "g-track-3",
+"cb": "",
+"track": "2"
+},
+{
+"start": 863.82,
+"dur": 38.56,
+"id": "nx-a3s6",
+"what": "a3-s6.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 863.82,
+"dur": 5.98,
+"id": "v151",
+"what": "21-De_Soso_School_Damage_1.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 864.22,
+"dur": 7.0,
+"id": "lt-159",
+"what": "?",
+"cb": "",
+"track": "7"
+},
+{
+"start": 869.8,
+"dur": 3.83,
+"id": "v152",
+"what": "22-De_Soto_School_Damage_2.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 873.63,
+"dur": 4.95,
+"id": "v153",
+"what": "Illinois_-_Desoto_-_NARA_-_23939847.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 878.58,
+"dur": 4.11,
+"id": "v154",
+"what": "1925_-_De_Soto_-_Birds_Eye_View.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 882.69,
+"dur": 5.51,
+"id": "v155",
+"what": "19-De_Soto_Destruction.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 888.2,
+"dur": 4.39,
+"id": "v156",
+"what": "Illinois_-_Desoto_-_NARA_-_23939845.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 892.59,
+"dur": 5.98,
+"id": "v157",
+"what": "21-De_Soso_School_Damage_1.png",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 898.57,
+"dur": 3.83,
+"id": "v158",
+"what": "21-De_Soso_School_Damage_1.png",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 903.13,
+"dur": 39.68,
+"id": "nx-a3s6b",
+"what": "a3-s6b.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 903.13,
+"dur": 6.15,
+"id": "v160",
+"what": "20-De_Soto_School_1910.png",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 903.13,
+"dur": 27.6,
+"id": "host-g-panel-desoto-160",
+"what": "g-panel-desoto",
+"cb": "",
+"track": "2"
+},
+{
+"start": 909.28,
+"dur": 3.94,
+"id": "v161",
+"what": "Marion_Evening_Post_Front_page_-_1925_tornado_coverage.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 913.22,
+"dur": 5.09,
+"id": "v162",
+"what": "Illinois_-_Desoto_-_NARA_-_23939847__cropped_.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 918.31,
+"dur": 4.23,
+"id": "v163",
+"what": "20-De_Soto_School_1910.png",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 922.54,
+"dur": 5.67,
+"id": "v164",
+"what": "Marion_Evening_Post_Front_page_-_1925_tornado_coverage.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 928.21,
+"dur": 4.52,
+"id": "v165",
+"what": "Illinois_-_Desoto_-_NARA_-_23939847__cropped_.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 932.73,
+"dur": 6.15,
+"id": "v166",
+"what": "Marion_Evening_Post_Front_page_-_1925_tornado_coverage.jpg",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 938.88,
+"dur": 3.94,
+"id": "v167",
+"what": "The_Butte_Daily_Post_Front_page_-_1925_tornado_coverage.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 943.56,
+"dur": 34.8,
+"id": "nx-a3s6c",
+"what": "a3-s6c.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 943.56,
+"dur": 6.17,
+"id": "v169",
+"what": "24-Plumfield_School_Demolished.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 943.56,
+"dur": 22.7,
+"id": "host-g-panel-schools-169",
+"what": "g-panel-schools",
+"cb": "",
+"track": "2"
+},
+{
+"start": 946.97,
+"dur": 148.05,
+"id": "bgm-somber1-1",
+"what": "aftermath-somber-loop.mp3",
+"cb": "bed continues across the act",
+"track": ""
+},
+{
+"start": 949.73,
+"dur": 3.95,
+"id": "v170",
+"what": "28-White_County_Newman_School.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 953.68,
+"dur": 5.11,
+"id": "v171",
+"what": "X3_Enfield_-_Trousdale_School_SE_of_Town.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 958.79,
+"dur": 4.24,
+"id": "v172",
+"what": "1925_-_Griffin_-_Griffin_School_1.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 963.03,
+"dur": 5.69,
+"id": "v173",
+"what": "24-Plumfield_School_Demolished.png",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 968.72,
+"dur": 4.53,
+"id": "v174",
+"what": "28-White_County_Newman_School.png",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 973.25,
+"dur": 6.17,
+"id": "v175",
+"what": "X3_Enfield_-_Trousdale_School_SE_of_Town.png",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 979.42,
+"dur": 3.95,
+"id": "v176",
+"what": "24-Plumfield_School_Demolished.png",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 984.11,
+"dur": 48.6,
+"id": "nx-a3s7",
+"what": "a3-s7.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 984.11,
+"dur": 6.1,
+"id": "v178",
+"what": "ai-miners-emerging.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 984.51,
+"dur": 7.0,
+"id": "lt-188",
+"what": "?",
+"cb": "",
+"track": "7"
+},
+{
+"start": 990.21,
+"dur": 3.91,
+"id": "v179",
+"what": "X_West_Frankfort3_-_Aerial_View_Orient_No_2_Mine.png",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 994.12,
+"dur": 5.05,
+"id": "v180",
+"what": "X_West_Frankfort2_-_Aerial_View_West_Side_of_Town.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 999.17,
+"dur": 4.19,
+"id": "v181",
+"what": "X_West_Frankfort1_-_Clyde_Reeds_Home.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1003.36,
+"dur": 5.62,
+"id": "v182",
+"what": "X_West_Frankfort4_-_James_Kerley_Home.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1008.98,
+"dur": 4.48,
+"id": "v183",
+"what": "25-West_Frankfort_Orient_2_Aerial.png",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 1013.46,
+"dur": 6.1,
+"id": "v184",
+"what": "1925_tornado_damage_10.webp",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1019.56,
+"dur": 3.91,
+"id": "v185",
+"what": "1925_tornado_damage_12.webp",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1023.47,
+"dur": 5.05,
+"id": "v186",
+"what": "ai-miners-emerging.png",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1028.52,
+"dur": 4.19,
+"id": "v187",
+"what": "ai-miners-emerging.png",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 1033.46,
+"dur": 25.28,
+"id": "nx-a3s8",
+"what": "a3-s8.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1033.46,
+"dur": 5.88,
+"id": "v189",
+"what": "X1_Hamilton_County_-_Lonnie_Smith_Home.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1033.46,
+"dur": 25.5,
+"id": "host-g-panel-parrish-189",
+"what": "g-panel-parrish",
+"cb": "",
+"track": "2"
+},
+{
+"start": 1039.34,
+"dur": 3.76,
+"id": "v190",
+"what": "1925_tornado_damage_5.webp",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1043.1,
+"dur": 4.87,
+"id": "v191",
+"what": "1925_tornado_damage_1.webp",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1047.97,
+"dur": 4.04,
+"id": "v192",
+"what": "X1_Hamilton_County_-_Lonnie_Smith_Home.png",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1052.01,
+"dur": 5.42,
+"id": "v193",
+"what": "1925_tornado_damage_5.webp",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1057.43,
+"dur": 4.32,
+"id": "v194",
+"what": "X1_Hamilton_County_-_Lonnie_Smith_Home.png",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 1062.49,
+"dur": 29.28,
+"id": "nx-a3s9",
+"what": "a3-s9.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1062.49,
+"dur": 26.0,
+"id": "host-g-baro-196",
+"what": "g-baro",
+"cb": "",
+"track": "2"
+},
+{
+"start": 1088.49,
+"dur": 5.78,
+"id": "t196",
+"what": "The_Butte_Daily_Post_Front_page_-_1925_tornado_coverage.jpg",
+"cb": "tail cutaway after g-baro completes",
+"track": "1"
+},
+{
+"start": 1094.02,
+"dur": 198.96,
+"id": "bgm-tense2",
+"what": "tense-curious-loop.mp3",
+"cb": "bed returns for the next act",
+"track": ""
+},
+{
+"start": 1095.02,
+"dur": 28.64,
+"id": "nx-a4s1",
+"what": "a4-s1.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1095.02,
+"dur": 10.8,
+"id": "host-g-track-5-198",
+"what": "g-track-5",
+"cb": "",
+"track": "2"
+},
+{
+"start": 1105.82,
+"dur": 5.65,
+"id": "t198",
+"what": "1925_-_Griffin_-_More_Damage.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1111.47,
+"dur": 3.62,
+"id": "t199",
+"what": "1925_-_Griffin_-_Residential_Damage_2.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1115.09,
+"dur": 4.68,
+"id": "t200",
+"what": "1925_-_Princeton_-_Twisted_Steel_-_IA_GWC.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1119.77,
+"dur": 3.89,
+"id": "t201",
+"what": "1925_-_Griffin_-_More_Damage.jpg",
+"cb": "tail cutaway after g-track-5 completes",
+"track": "1"
+},
+{
+"start": 1124.41,
+"dur": 29.12,
+"id": "nx-a4s1d",
+"what": "a4-s1d.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1124.41,
+"dur": 6.05,
+"id": "v203",
+"what": "29-Griffin_Devastation_1.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1130.46,
+"dur": 3.88,
+"id": "v204",
+"what": "1925_-_Griffin_-_Brick_Buildings_Leveled_E_Side_of_Town.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1134.34,
+"dur": 5.01,
+"id": "v205",
+"what": "30-Griffin_Devastation_2.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1139.35,
+"dur": 4.16,
+"id": "v206",
+"what": "ai-fire-glow-night.png",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1143.51,
+"dur": 5.58,
+"id": "v207",
+"what": "1925_-_Griffin_-_Home_Demolished_SW_of_Town.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1149.09,
+"dur": 4.44,
+"id": "v208",
+"what": "29-Griffin_Devastation_1.png",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1154.28,
+"dur": 34.68,
+"id": "nx-a4s1b",
+"what": "a4-s1b.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1154.28,
+"dur": 6.4,
+"id": "v210",
+"what": "1925_-_Griffin_-_Tents_Amidst_Damage.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1154.28,
+"dur": 24.5,
+"id": "host-g-panel-griffin-210",
+"what": "g-panel-griffin",
+"cb": "",
+"track": "2"
+},
+{
+"start": 1160.68,
+"dur": 4.1,
+"id": "v211",
+"what": "1925_-_Griffin_-_Residential_Damage_1.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1164.78,
+"dur": 5.3,
+"id": "v212",
+"what": "1925_-_Griffin_-_Building_Destroyed.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1170.08,
+"dur": 4.4,
+"id": "v213",
+"what": "1925_-_Griffin_-_Tents_Amidst_Damage.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1174.48,
+"dur": 5.9,
+"id": "v214",
+"what": "1925_-_Griffin_-_Residential_Damage_1.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1180.38,
+"dur": 4.7,
+"id": "v215",
+"what": "1925_-_Griffin_-_Building_Destroyed.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1185.08,
+"dur": 6.4,
+"id": "v216",
+"what": "1925_-_Griffin_-_Tents_Amidst_Damage.jpg",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 1192.21,
+"dur": 25.96,
+"id": "nx-a4s2",
+"what": "a4-s2.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1192.21,
+"dur": 6.37,
+"id": "v218",
+"what": "1925_-_Princeton_-_Baldwin_Heights_Area_-_IA_PPL.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1192.61,
+"dur": 7.0,
+"id": "lt-223",
+"what": "?",
+"cb": "",
+"track": "7"
+},
+{
+"start": 1198.58,
+"dur": 4.08,
+"id": "v219",
+"what": "31-Princeton_Heinz_Plant.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1202.66,
+"dur": 5.27,
+"id": "v220",
+"what": "1925_-_Princeton_-_Locomotive_Rolled_-_IA_GWC.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1207.93,
+"dur": 4.38,
+"id": "v221",
+"what": "1925_-_Princeton_-_Twisted_Steel_-_IA_GWC.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1212.31,
+"dur": 5.87,
+"id": "v222",
+"what": "1925_-_Princeton_-_Baldwin_Heights_Area_-_IA_PPL.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1218.92,
+"dur": 33.92,
+"id": "nx-a4s2b",
+"what": "a4-s2b.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1218.92,
+"dur": 5.84,
+"id": "v224",
+"what": "1925_-_Princeton_-_McCaw_Subdivision_1_-_IA_GWC.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1218.92,
+"dur": 26.5,
+"id": "host-g-panel-princeton-224",
+"what": "g-panel-princeton",
+"cb": "",
+"track": "2"
+},
+{
+"start": 1224.76,
+"dur": 3.74,
+"id": "v225",
+"what": "1925_-_Princeton_-_McCaw_Subdivision_2_-_IA_GWC.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1228.5,
+"dur": 4.83,
+"id": "v226",
+"what": "1925_-_Princeton_-_Homes_Destroyed_near_Southern_Shops_-_IA_GWC.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1233.33,
+"dur": 4.01,
+"id": "v227",
+"what": "1925_-_Princeton_-_Southern_Railway_Blacksmith_Shop_-_IA_PPL.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1237.34,
+"dur": 5.38,
+"id": "v228",
+"what": "1925_-_Princeton_-_McCaw_Subdivision_1_-_IA_GWC.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1242.72,
+"dur": 4.29,
+"id": "v229",
+"what": "1925_-_Princeton_-_McCaw_Subdivision_2_-_IA_GWC.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1247.01,
+"dur": 5.84,
+"id": "v230",
+"what": "1925_-_Princeton_-_McCaw_Subdivision_1_-_IA_GWC.jpg",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 1253.59,
+"dur": 31.64,
+"id": "nx-a4s3",
+"what": "a4-s3.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1253.59,
+"dur": 30.8,
+"id": "host-g-track-7-232",
+"what": "g-track-7",
+"cb": "",
+"track": "2"
+},
+{
+"start": 1284.39,
+"dur": 4.78,
+"id": "t232",
+"what": "1925_-_Griffin_-_More_Damage.jpg",
+"cb": "tail cutaway after g-track-7 completes",
+"track": "1"
+},
+{
+"start": 1289.17,
+"dur": 3.06,
+"id": "t233",
+"what": "1925_-_Griffin_-_Residential_Damage_2.jpg",
+"cb": "tail cutaway after g-track-7 completes",
+"track": "1"
+},
+{
+"start": 1291.98,
+"dur": 347.52,
+"id": "bgm-somber2",
+"what": "aftermath-somber-loop.mp3",
+"cb": "bed returns for the next act",
+"track": ""
+},
+{
+"start": 1292.98,
+"dur": 28.28,
+"id": "nx-a5s1",
+"what": "a5-s1.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1292.98,
+"dur": 5.88,
+"id": "v235",
+"what": "1925_tornado_damage_14.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1298.86,
+"dur": 3.76,
+"id": "v236",
+"what": "1925_tornado_damage_15.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1302.62,
+"dur": 4.87,
+"id": "v237",
+"what": "1925_tornado_damage_11.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1307.49,
+"dur": 4.04,
+"id": "v238",
+"what": "ai-wires-down.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1311.53,
+"dur": 5.42,
+"id": "v239",
+"what": "1925_tornado_damage_4.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1316.95,
+"dur": 4.32,
+"id": "v240",
+"what": "1925_tornado_damage_14.png",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1322.01,
+"dur": 42.64,
+"id": "nx-a5s1b",
+"what": "a5-s1b.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1322.01,
+"dur": 42.0,
+"id": "host-g-relief-242",
+"what": "g-relief",
+"cb": "",
+"track": "2"
+},
+{
+"start": 1365.4,
+"dur": 30.44,
+"id": "nx-a5s1c",
+"what": "a5-s1c.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1365.4,
+"dur": 6.33,
+"id": "v243",
+"what": "23-Royalton-Colp_Road_Bridge.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1365.4,
+"dur": 13.2,
+"id": "host-g-panel-redcross-243",
+"what": "g-panel-redcross",
+"cb": "",
+"track": "2"
+},
+{
+"start": 1371.73,
+"dur": 4.05,
+"id": "v244",
+"what": "X_West_Frankfort4_-_James_Kerley_Home.png",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1375.78,
+"dur": 5.24,
+"id": "v245",
+"what": "1925_tornado_damage_2.webp",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1381.02,
+"dur": 4.35,
+"id": "v246",
+"what": "1925_tornado_damage_8.webp",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1385.37,
+"dur": 5.83,
+"id": "v247",
+"what": "23-Royalton-Colp_Road_Bridge.png",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1391.2,
+"dur": 4.65,
+"id": "v248",
+"what": "23-Royalton-Colp_Road_Bridge.png",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 1396.59,
+"dur": 31.56,
+"id": "nx-a5s1d",
+"what": "a5-s1d.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1396.59,
+"dur": 5.86,
+"id": "v250",
+"what": "marvin-portrait-01.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1396.59,
+"dur": 24.6,
+"id": "host-g-panel-nonet-250",
+"what": "g-panel-nonet",
+"cb": "",
+"track": "2"
+},
+{
+"start": 1402.45,
+"dur": 3.75,
+"id": "v251",
+"what": "1925_tornado_damage_1.webp",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1406.2,
+"dur": 4.85,
+"id": "v252",
+"what": "07-Perry_County_Destruction.png",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1411.05,
+"dur": 4.03,
+"id": "v253",
+"what": "marvin-portrait-01.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1415.08,
+"dur": 5.4,
+"id": "v254",
+"what": "1925_tornado_damage_1.webp",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 1420.48,
+"dur": 4.3,
+"id": "v255",
+"what": "07-Perry_County_Destruction.png",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 1424.78,
+"dur": 5.86,
+"id": "v256",
+"what": "marvin-portrait-01.jpg",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 1431.4,
+"dur": 30.64,
+"id": "nx-a5s2",
+"what": "a5-s2.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1431.4,
+"dur": 6.37,
+"id": "v258",
+"what": "The_Evansville_Press_Front_page_-_1925_tornado_coverage.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1437.77,
+"dur": 4.08,
+"id": "v259",
+"what": "Marion_Evening_Post_Front_page_-_1925_tornado_coverage.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1441.85,
+"dur": 5.27,
+"id": "v260",
+"what": "Anderson_Daily_Bulletin_Front_page_-_1925_tornado_coverage.png",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1447.12,
+"dur": 4.38,
+"id": "v261",
+"what": "The_Butte_Daily_Post_Front_page_-_1925_tornado_coverage.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1451.5,
+"dur": 5.87,
+"id": "v262",
+"what": "The_Evansville_Press_Front_page_-_1925_tornado_coverage.jpg",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 1457.37,
+"dur": 4.68,
+"id": "v263",
+"what": "The_Butte_Daily_Post_Front_page_-_1925_tornado_coverage.jpg",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 1462.79,
+"dur": 34.4,
+"id": "nx-a5s2c",
+"what": "a5-s2c.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1462.79,
+"dur": 5.92,
+"id": "v265",
+"what": "The_Fresno_Morning_Republican_Front_page_-_1925_tornado_coverage.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1468.71,
+"dur": 3.79,
+"id": "v266",
+"what": "Chicago_Herald_Examiner_Front_page_1925-03-20.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1472.5,
+"dur": 4.9,
+"id": "v267",
+"what": "1925_-_Princeton_-_Princeton_Clarion-News_-_IA_GWC.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1477.4,
+"dur": 4.07,
+"id": "v268",
+"what": "Pc9-frnt.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1481.47,
+"dur": 5.46,
+"id": "v269",
+"what": "The_Fresno_Morning_Republican_Front_page_-_1925_tornado_coverage.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1486.93,
+"dur": 4.35,
+"id": "v270",
+"what": "Chicago_Herald_Examiner_Front_page_1925-03-20.jpg",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 1491.28,
+"dur": 5.92,
+"id": "v271",
+"what": "The_Fresno_Morning_Republican_Front_page_-_1925_tornado_coverage.jpg",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 1497.94,
+"dur": 34.64,
+"id": "nx-a5s3",
+"what": "a5-s3.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1497.94,
+"dur": 9.0,
+"id": "v273",
+"what": "mvtn-centerpiece-aerial-30s.mp4",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1506.94,
+"dur": 3.7,
+"id": "v274",
+"what": "1925_tornado_damage_4.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1510.64,
+"dur": 3.7,
+"id": "v275",
+"what": "1925_tornado_damage_2.webp",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1514.34,
+"dur": 8.03,
+"id": "v276",
+"what": "mvtn-aerial-c-8s.mp4",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1522.37,
+"dur": 1.33,
+"id": "v277",
+"what": "1925_tornado_damage_8.webp",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1523.7,
+"dur": 6.03,
+"id": "v278",
+"what": "mvtn-ground-b-6s.mp4",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1529.73,
+"dur": 0.99,
+"id": "v279",
+"what": "The_Evansville_Press_Front_page_-_1925_tornado_coverage.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1530.72,
+"dur": 5.85,
+"id": "v280",
+"what": "Wea00239_-_Flickr_-_NOAA_Photo_Library.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1537.33,
+"dur": 33.64,
+"id": "nx-a5s3b",
+"what": "a5-s3b.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1537.33,
+"dur": 5.79,
+"id": "v282",
+"what": "1925_tornado_damage_6.webp",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1537.33,
+"dur": 25.2,
+"id": "host-g-panel-cost-282",
+"what": "g-panel-cost",
+"cb": "",
+"track": "2"
+},
+{
+"start": 1543.12,
+"dur": 3.71,
+"id": "v283",
+"what": "1925_tornado_damage_9.webp",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1546.83,
+"dur": 4.79,
+"id": "v284",
+"what": "The_Evansville_Press_Front_page_-_1925_tornado_coverage.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1551.62,
+"dur": 3.98,
+"id": "v285",
+"what": "1925_tornado_damage_6.webp",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 1555.6,
+"dur": 5.34,
+"id": "v286",
+"what": "1925_tornado_damage_9.webp",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 1560.94,
+"dur": 4.25,
+"id": "v287",
+"what": "The_Evansville_Press_Front_page_-_1925_tornado_coverage.jpg",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 1565.19,
+"dur": 5.79,
+"id": "v288",
+"what": "The_Fresno_Morning_Republican_Front_page_-_1925_tornado_coverage.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1571.72,
+"dur": 24.44,
+"id": "nx-a5s4",
+"what": "a5-s4.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1571.72,
+"dur": 5.99,
+"id": "v290",
+"what": "Tri_State_Tornado.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1571.72,
+"dur": 22.8,
+"id": "host-g-panel-song-290",
+"what": "g-panel-song",
+"cb": "",
+"track": "2"
+},
+{
+"start": 1577.71,
+"dur": 3.84,
+"id": "v291",
+"what": "1925_-_Murphysboro_29_-_North_9th_Street_Park.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1581.55,
+"dur": 4.96,
+"id": "v292",
+"what": "Tri_State_Tornado.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1586.51,
+"dur": 4.12,
+"id": "v293",
+"what": "1925_-_Murphysboro_29_-_North_9th_Street_Park.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1590.63,
+"dur": 5.52,
+"id": "v294",
+"what": "Tri_State_Tornado.jpg",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 1596.91,
+"dur": 36.84,
+"id": "nx-a5s4b",
+"what": "a5-s4b.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1596.91,
+"dur": 9.0,
+"id": "v296",
+"what": "mvtn-rebuild-bricklayers-12s.mp4",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1605.91,
+"dur": 3.98,
+"id": "v297",
+"what": "1925_tornado_damage_4.jpg",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 1609.89,
+"dur": 6.5,
+"id": "v298",
+"what": "1925_-_De_Soto_-_Aftermath_Where_Homes_Were.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1616.39,
+"dur": 0.71,
+"id": "v299",
+"what": "1925_tornado_damage_2.webp",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 1617.1,
+"dur": 6.5,
+"id": "v300",
+"what": "1925_-_De_Soto_-_Business_District.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1623.6,
+"dur": 0.71,
+"id": "v301",
+"what": "1925_tornado_damage_8.webp",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 1624.31,
+"dur": 6.5,
+"id": "v302",
+"what": "1925_-_De_Soto_-_Business_District2.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1630.81,
+"dur": 0.71,
+"id": "v303",
+"what": "The_Fresno_Morning_Republican_Front_page_-_1925_tornado_coverage.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1631.52,
+"dur": 6.5,
+"id": "v304",
+"what": "1925_-_Princeton_-_Baldwin_Heights_School_2_-_IA_GWC.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1638.02,
+"dur": 0.71,
+"id": "v305",
+"what": "The_Fresno_Morning_Republican_Front_page_-_1925_tornado_coverage.jpg",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 1638.5,
+"dur": 350.0,
+"id": "bgm-neutral1",
+"what": "neutral-underscore-loop.mp3",
+"cb": "",
+"track": ""
+},
+{
+"start": 1639.5,
+"dur": 22.56,
+"id": "nx-a6s1",
+"what": "a6-s1.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1639.5,
+"dur": 22.56,
+"id": "host-g-wordban2-307",
+"what": "g-wordban2",
+"cb": "",
+"track": "2"
+},
+{
+"start": 1662.81,
+"dur": 41.76,
+"id": "nx-a6s2",
+"what": "a6-s2.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1662.81,
+"dur": 34.25,
+"id": "host-g-timeline-308",
+"what": "g-timeline",
+"cb": "",
+"track": "2"
+},
+{
+"start": 1697.06,
+"dur": 4.58,
+"id": "t308",
+"what": "1925_-_De_Soto_-_Business_District2.jpg",
+"cb": "tail cutaway after g-timeline completes",
+"track": "1"
+},
+{
+"start": 1701.64,
+"dur": 2.93,
+"id": "t309",
+"what": "1925_-_Murphysboro_29_-_North_9th_Street_Park.jpg",
+"cb": "tail cutaway after g-timeline completes",
+"track": "1"
+},
+{
+"start": 1705.32,
+"dur": 38.44,
+"id": "nx-a6s2b",
+"what": "a6-s2b.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1705.32,
+"dur": 38.0,
+"id": "host-g-family-311",
+"what": "g-family",
+"cb": "",
+"track": "2"
+},
+{
+"start": 1744.51,
+"dur": 45.32,
+"id": "nx-a6s2c",
+"what": "a6-s2c.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1744.51,
+"dur": 29.74,
+"id": "host-g-remeasure-312",
+"what": "g-remeasure",
+"cb": "",
+"track": "2"
+},
+{
+"start": 1774.25,
+"dur": 6.31,
+"id": "t312",
+"what": "1925_-_De_Soto_-_Business_District2.jpg",
+"cb": "tail cutaway after g-remeasure completes",
+"track": "1"
+},
+{
+"start": 1780.56,
+"dur": 4.04,
+"id": "t313",
+"what": "1925_-_Murphysboro_29_-_North_9th_Street_Park.jpg",
+"cb": "tail cutaway after g-remeasure completes",
+"track": "1"
+},
+{
+"start": 1784.6,
+"dur": 5.23,
+"id": "t314",
+"what": "1925_-_Princeton_-_Homes_in_Baldwin_Heights_Area_-_IA_PPL.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1790.58,
+"dur": 34.96,
+"id": "nx-a6s2d",
+"what": "a6-s2d.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1790.58,
+"dur": 26.0,
+"id": "host-g-compare-316",
+"what": "g-compare",
+"cb": "",
+"track": "2"
+},
+{
+"start": 1816.58,
+"dur": 4.64,
+"id": "t316",
+"what": "1925_-_De_Soto_-_Business_District2.jpg",
+"cb": "tail cutaway after g-compare completes",
+"track": "1"
+},
+{
+"start": 1821.22,
+"dur": 2.97,
+"id": "t317",
+"what": "1925_-_Murphysboro_29_-_North_9th_Street_Park.jpg",
+"cb": "tail cutaway after g-compare completes",
+"track": "1"
+},
+{
+"start": 1824.19,
+"dur": 3.84,
+"id": "t318",
+"what": "1925_-_De_Soto_-_Business_District2.jpg",
+"cb": "tail cutaway after g-compare completes",
+"track": "1"
+},
+{
+"start": 1828.79,
+"dur": 44.08,
+"id": "nx-a6s3",
+"what": "a6-s3.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1828.79,
+"dur": 44.0,
+"id": "host-g-fujita-320",
+"what": "g-fujita",
+"cb": "",
+"track": "2"
+},
+{
+"start": 1873.62,
+"dur": 34.48,
+"id": "nx-a6s3c",
+"what": "a6-s3c.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1873.62,
+"dur": 29.64,
+"id": "host-g-modern-321",
+"what": "g-modern",
+"cb": "",
+"track": "2"
+},
+{
+"start": 1903.26,
+"dur": 4.84,
+"id": "t321",
+"what": "1925_-_De_Soto_-_Business_District2.jpg",
+"cb": "tail cutaway after g-modern completes",
+"track": "1"
+},
+{
+"start": 1908.85,
+"dur": 35.0,
+"id": "nx-a6s3d",
+"what": "a6-s3d.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1908.85,
+"dur": 22.0,
+"id": "host-g-prep-323",
+"what": "g-prep",
+"cb": "",
+"track": "2"
+},
+{
+"start": 1930.85,
+"dur": 5.27,
+"id": "t323",
+"what": "1925_-_De_Soto_-_Business_District2.jpg",
+"cb": "tail cutaway after g-prep completes",
+"track": "1"
+},
+{
+"start": 1936.12,
+"dur": 3.37,
+"id": "t324",
+"what": "1925_-_Murphysboro_29_-_North_9th_Street_Park.jpg",
+"cb": "tail cutaway after g-prep completes",
+"track": "1"
+},
+{
+"start": 1939.49,
+"dur": 4.36,
+"id": "t325",
+"what": "1925_-_De_Soto_-_Business_District2.jpg",
+"cb": "tail cutaway after g-prep completes",
+"track": "1"
+},
+{
+"start": 1944.6,
+"dur": 27.48,
+"id": "nx-a6s3b",
+"what": "a6-s3b.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1944.6,
+"dur": 5.71,
+"id": "v327",
+"what": "1925_-_Princeton_-_Princeton_Clarion-News_-_IA_GWC.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1950.31,
+"dur": 3.66,
+"id": "v328",
+"what": "1925_-_Griffin_-_Building_Destroyed.jpg",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 1953.97,
+"dur": 4.73,
+"id": "v329",
+"what": "1925_-_Griffin_-_Griffin_School_3.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1958.7,
+"dur": 3.93,
+"id": "v330",
+"what": "1925_-_Princeton_-_Heinz_Plant_1_-_IA_PPL.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1962.63,
+"dur": 5.26,
+"id": "v331",
+"what": "1925_-_Princeton_-_Princeton_Clarion-News_-_IA_GWC.jpg",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 1967.89,
+"dur": 4.19,
+"id": "v332",
+"what": "1925_-_Princeton_-_Princeton_Clarion-News_-_IA_GWC.jpg",
+"cb": "motif returns \u2014 use 4 of this asset",
+"track": "1"
+},
+{
+"start": 1972.83,
+"dur": 27.88,
+"id": "nx-a6s3e",
+"what": "a6-s3e.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 1972.83,
+"dur": 5.4,
+"id": "v334",
+"what": "stock-windgrass-01.mp4",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1978.23,
+"dur": 3.46,
+"id": "v335",
+"what": "stock-rainfield-02.mp4",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1981.69,
+"dur": 4.47,
+"id": "v336",
+"what": "stock-cloudsrolling-03.mp4",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 1986.16,
+"dur": 3.71,
+"id": "v337",
+"what": "stock-windgrass-02.mp4",
+"cb": "",
+"track": "1"
+},
+{
+"start": 1988.5,
+"dur": 54.21,
+"id": "bgm-neutral1-1",
+"what": "neutral-underscore-loop.mp3",
+"cb": "bed continues across the act",
+"track": ""
+},
+{
+"start": 1989.87,
+"dur": 4.98,
+"id": "v338",
+"what": "stock-windgrass-01.mp4",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 1994.85,
+"dur": 3.96,
+"id": "v339",
+"what": "stock-windgrass-01.mp4",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 1998.81,
+"dur": 5.4,
+"id": "v340",
+"what": "stock-windgrass-01.mp4",
+"cb": "motif returns \u2014 use 4 of this asset",
+"track": "1"
+},
+{
+"start": 2004.96,
+"dur": 33.24,
+"id": "nx-a6s4d",
+"what": "a6-s4d.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 2004.96,
+"dur": 6.23,
+"id": "v342",
+"what": "13-Murphysboro_Aerial.png",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 2011.19,
+"dur": 3.99,
+"id": "v343",
+"what": "1925_-_Murphysboro_22_-_Aerial_View(1).jpg",
+"cb": "motif returns \u2014 use 3 of this asset",
+"track": "1"
+},
+{
+"start": 2015.18,
+"dur": 5.16,
+"id": "v344",
+"what": "1925_-_De_Soto_-_Birds_Eye_View.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 2020.34,
+"dur": 4.29,
+"id": "v345",
+"what": "X_West_Frankfort2_-_Aerial_View_West_Side_of_Town.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 2024.63,
+"dur": 5.75,
+"id": "v346",
+"what": "1925_-_Murphysboro_14_-_M_O_Railyards_Aerial.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 2030.38,
+"dur": 4.58,
+"id": "v347",
+"what": "1925_tornado_damage_15.png",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 2034.96,
+"dur": 6.23,
+"id": "v348",
+"what": "13-Murphysboro_Aerial.png",
+"cb": "motif returns \u2014 use 4 of this asset",
+"track": "1"
+},
+{
+"start": 2035.71,
+"dur": 68.0,
+"id": "bgm-hope1",
+"what": "hopeful-resolve-loop.mp3",
+"cb": "",
+"track": ""
+},
+{
+"start": 2041.95,
+"dur": 27.36,
+"id": "nx-a6s4",
+"what": "a6-s4.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 2041.95,
+"dur": 6.2,
+"id": "v350",
+"what": "1925_-_Princeton_-_Baldwin_Heights_School_1_-_IA_PPL.jpg",
+"cb": "",
+"track": "1"
+},
+{
+"start": 2048.15,
+"dur": 3.97,
+"id": "v351",
+"what": "1925_-_Murphysboro_29_-_North_9th_Street_Park.jpg",
+"cb": "motif returns \u2014 use 7 of this asset",
+"track": "1"
+},
+{
+"start": 2052.12,
+"dur": 5.14,
+"id": "v352",
+"what": "1925_-_Murphysboro_2_-_Murphysboro_Township_High_School.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 2057.26,
+"dur": 4.27,
+"id": "v353",
+"what": "1925_-_Princeton_-_Homes_in_Baldwin_Heights_Area_-_IA_PPL.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 2061.53,
+"dur": 5.72,
+"id": "v354",
+"what": "20-De_Soto_School_1910.png",
+"cb": "motif returns \u2014 use 4 of this asset",
+"track": "1"
+},
+{
+"start": 2067.25,
+"dur": 4.56,
+"id": "v355",
+"what": "1925_-_Princeton_-_Baldwin_Heights_School_1_-_IA_PPL.jpg",
+"cb": "motif returns \u2014 use 2 of this asset",
+"track": "1"
+},
+{
+"start": 2072.56,
+"dur": 16.4,
+"id": "nx-a6s5",
+"what": "a6-s5.wav",
+"cb": "",
+"track": ""
+},
+{
+"start": 2072.56,
+"dur": 16.4,
+"id": "host-g-close-357",
+"what": "g-close",
+"cb": "",
+"track": "2"
+}
+]

@@ -107,6 +107,14 @@ Per episode in `episodes/<slug>/`:
   Studio preview cannot realtime-play 15+ min media-heavy comps — don't offer it for review.
   Full-quality render ONLY after owner approves the draft.
 
+## HARD RULE — worktree isolation (owner correction 2026-07-28, ep3 v1 violation)
+**NEVER build or edit in the main checkout. EVERY episode/feature session starts with
+`git worktree add .worktrees/<task> -b <branch>` BEFORE the first file write.** The main
+checkout is shared by parallel sessions; v1 of ep3 was built directly in it while another
+session held uncommitted changes — owner-flagged, do not repeat. First action of any
+storm-market session: `git worktree list` + `git status` → if you are in the main checkout
+and about to write, STOP and make a worktree.
+
 ## Rules inherited from the owner's other channels (apply here from day 1)
 - Preview gate is PROCESS: post preview path in one line and PARK; owner's chat approval resumes.
 - Never claim/infer owner approval. Design lock before paid generation.
