@@ -147,6 +147,9 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"cursor",       {autoAlpha:1, duration:0.20}, 1.45);
   tl.to(P+"cursor",       {autoAlpha:0.05, duration:0.42, repeat:45, yoyo:true, ease:"none"}, 1.55);
 
+  /* initial bar state set through GSAP, not CSS: a later scaleY tween rewrites the whole
+     transform and would discard a CSS scaleX(0) */
+  tl.set(".ffill", {scaleX:0, transformOrigin:"left center"}, 0);
   tl.to(T, {n:5,  duration:1.10, ease:"none", onUpdate:typeUpd}, 1.60);   /* rains    */
   tl.fromTo(P+"b1", {scaleX:0}, {scaleX:1, duration:0.30, ease:"power3.out"}, 2.80);
   tl.to(T, {n:9,  duration:0.60, ease:"none", onUpdate:typeUpd}, 2.95);   /* and      */
