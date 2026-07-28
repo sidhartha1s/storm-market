@@ -396,8 +396,12 @@ def main():
                 scale = seg_dur / acc if acc else 1
                 shots = [(pick(s) if ty == 'still' else s, ty, w * scale) for (s, ty, w) in shots]
             else:
-                typ = "stock" if kind == "stock" else ("paper" if kind == "papers" else "still")
-                shots = [(a, "stock" if a.endswith(".mp4") else typ, w)
+                # type follows the FILE, not the segment kind: a photo listed inside a
+                # kind="stock" segment was being typed "stock" and emitted as <video
+                # src="...jpg">, which renders as a black window.
+                vid_typ = "stock" if kind == "stock" else "film"
+                still_typ = "paper" if kind == "papers" else "still"
+                shots = [(a, vid_typ if is_video(a) else still_typ, w)
                          for a, w in chunk(seg_dur, plan["assets"])]
             shots = split_overlong(shots, TAIL[sid.split("-")[0]])
             # emit on the 2-decimal grid the attributes are printed at, so a window's end is
