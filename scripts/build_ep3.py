@@ -380,11 +380,11 @@ def main():
                     shots.append((src, typ, want)); acc += want
                 scale = seg_dur / acc if acc else 1
                 shots = [(pick(s) if ty == 'still' else s, ty, w * scale) for (s, ty, w) in shots]
-                shots = split_overlong(shots, TAIL[sid.split("-")[0]])
             else:
                 typ = "stock" if kind == "stock" else ("paper" if kind == "papers" else "still")
                 shots = [(a, "stock" if a.endswith(".mp4") else typ, w)
                          for a, w in chunk(seg_dur, plan["assets"])]
+            shots = split_overlong(shots, TAIL[sid.split("-")[0]])
             ct = seg_start
             for (src, typ, w) in shots:
                 eid = f"v{idx}"
