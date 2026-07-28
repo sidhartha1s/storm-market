@@ -299,3 +299,35 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
   scripts. Build literal backslashes with `chr(92)`, and always `ast.parse` the result.
 - **Windows CRLF breaks naive line-joining repairs** — read/normalize with explicit
   `.replace(chr(13)+chr(10), chr(10))` before any line-level surgery, and write back as bytes.
+
+## ep3 v3 - second audit round (2026-07-29)
+- **Cut rate is an asset-budget decision, not just a taste one.** ep2 (shipped, 7.5/10) holds an
+  11.0s median across 136 windows in 28 min. Driving ep3 to a 5.5s median needed ~260 windows in
+  35 min - roughly double the assets per minute - and the photo library could not feed it, so
+  frames silently repeated 5-12 times. Pick the median from `distinct_assets * 3 / minutes`, then
+  design the rhythm inside that budget. Landing at a 6.5s median with 216 windows fit 106 assets
+  with zero over the 3-use ceiling.
+- **Identify assets by content hash, never by path.** Six newspaper front pages existed
+  byte-identical under `media/newspapers/` and `media/photos/`; the reuse lint counted each path
+  separately, so one page reached nine on-screen uses under a ceiling of three.
+- **Count uses per WINDOW, not per `<img>` tag.** The letterbox treatment emits the same src twice
+  (blurred backdrop + foreground), which inflates a naive `grep src=` count by 2x and produces
+  false reuse findings. Two of my own audit agents were fooled by exactly this.
+- **A "credited" archival face is still a misattribution if no credit renders.** The Signal Corps
+  commander who shut Finley down sat under a panel headlined JOHN PARK FINLEY for 32 seconds; the
+  edit script said "credited" but no attribution element existed anywhere in the window. If a real
+  person's face is on screen under someone else's name, that is a factual error, not a design nit.
+- **Check for authored-but-unmounted compositions every build.** Three graphics passed every QC
+  gate while being mounted nowhere - including the stat panel for the episode's longest segment,
+  which therefore ran 48s with no graphic at all. `authored_ids - mounted_ids` must be empty.
+- **A counter must open on its first tick's value.** The path maps shipped the END toll in the DOM
+  (490 dead, 4:00 PM) and then animated backwards to 5 dead at 1:14 PM.
+- **Narration-cued means EVERY graphic, not just the ones with a cue helper.** The met map fired
+  its five labelled blocks in diagram order - four were 5-18s off their spoken word, one directly
+  contradicted the voiceover. Hand-authored compositions need the same words.json alignment the
+  generated panels get.
+- **`ffprobe` on a still image reports ~0.04s.** Any clamp that treats that as a clip duration will
+  cut a window into single-frame slivers. Guard duration probes by file extension and fail loud
+  when a non-video is typed as a clip.
+- **Audit findings need adversarial verification before you act on them.** 81 raw findings became
+  54 confirmed - a third were wrong, including several that would have sent me editing correct code.
