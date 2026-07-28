@@ -282,7 +282,7 @@ def vdur(src):
     """Real length of a clip. hyperframes will not loop a short video to fill a long window —
     it fails the render with a frame-coverage error — so the window must fit the source."""
     out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
-                          "-of", "default=nw=1:nk=1", src],
+                          "-of", "default=nw=1:nk=1", str(EP / src)],
                          capture_output=True, text=True).stdout.strip()
     if not out:
         raise SystemExit(f"[build_ep3] ffprobe returned nothing for {src}")
