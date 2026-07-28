@@ -16,8 +16,8 @@ BASE = """
   #root { position:absolute; inset:0; font-family:Arial, sans-serif;
     background:radial-gradient(ellipse at 46% 52%, #0d141c 0%, #04070a 76%); overflow:hidden; }
   .eyebrow { position:absolute; left:96px; top:76px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
-  .hl { position:absolute; left:96px; top:106px; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; }
-  .sub { position:absolute; left:96px; top:172px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  .hl { position:absolute; left:96px; top:112px; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; }
+  .sub { position:absolute; left:96px; top:196px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; }
   .drift { position:absolute; inset:-40% 0; opacity:0.30; pointer-events:none;
     background:repeating-linear-gradient(0deg, rgba(120,150,180,0.16) 0 1px, transparent 1px 46px); }
   .lab { font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; }
@@ -28,7 +28,7 @@ BASE = """
     font-size:26px; color:#d8a13a; }
 """
 
-def wrap(cid, style, body, js):
+def wrap(cid, style, body, js, dur):
     html = f"""<!doctype html>
 <html>
 <head><meta charset="UTF-8"></head>
@@ -53,7 +53,7 @@ window.__timelines = window.__timelines || {{}};
 </body>
 </html>
 """
-    (OUT / f"{cid}.html").write_text(html, encoding="utf-8")
+    (OUT / f"{cid}.html").write_text(html.replace("DURV", str(dur)), encoding="utf-8")
 
 
 def head(cid, eyebrow, hl, sub=None, at=0.15):
@@ -87,7 +87,7 @@ def sources():
               f'  tl.fromTo(P+"c{i}", {{scaleX:0.985}}, {{scaleX:1, duration:0.5, ease:"power2.out", transformOrigin:"left center"}}, {at});\n')
     b += f'<div class="foot" id="{cid}-ft">No source, no scene. Everything else stays out.</div>'
     j += f'  tl.fromTo(P+"ft", {{autoAlpha:0, y:20}}, {{autoAlpha:1, y:0, duration:0.6}}, 25.0);\n'
-    wrap(cid, "", b, j.replace("DURV", str(D)))
+    wrap(cid, "", b, j, D)
     return cid
 
 
@@ -120,7 +120,7 @@ def wires():
         j += f'  tl.to(CNT, {{v:{i+1}, duration:0.3, onUpdate:cu}}, {at:.2f});\n'
     j += f'  tl.fromTo(P+"ft", {{autoAlpha:0, y:20}}, {{autoAlpha:1, y:0, duration:0.6}}, 29.5);\n'
     js = ("  const CNT={v:0};\n  function cu(){const e=document.getElementById('%s-cv'); if(e) e.textContent=Math.round(CNT.v);}\n" % cid) + j
-    wrap(cid, "", b, js.replace("DURV", str(D)))
+    wrap(cid, "", b, js, D)
     return cid
 
 
@@ -155,7 +155,7 @@ def relief():
     j += f'  tl.to(P+"r2", {{attr:{{"stroke-dashoffset":-520}}, duration:30.0, ease:"none"}}, 6.6);\n'
     b += f'<div class="foot" id="{cid}-ft">Rescue arrived by rail, in the dark, hours after the last house fell.</div>'
     j += f'  tl.fromTo(P+"ft", {{autoAlpha:0, y:20}}, {{autoAlpha:1, y:0, duration:0.6}}, 33.0);\n'
-    wrap(cid, "", b, j.replace("DURV", str(D)))
+    wrap(cid, "", b, j, D)
     return cid
 
 
@@ -186,7 +186,7 @@ def family():
     j += f'  tl.fromTo(P+"g1", {{attr:{{r:9}}}}, {{attr:{{r:26}}, duration:1.2, yoyo:true, repeat:11, ease:"sine.inOut"}}, 14.0);\n'
     j += f'  tl.fromTo(P+"g2", {{attr:{{r:9}}}}, {{attr:{{r:26}}, duration:1.2, yoyo:true, repeat:11, ease:"sine.inOut"}}, 14.6);\n'
     j += f'  tl.fromTo(P+"ft", {{autoAlpha:0, y:20}}, {{autoAlpha:1, y:0, duration:0.6}}, 30.0);\n'
-    wrap(cid, "", b, j.replace("DURV", str(D)))
+    wrap(cid, "", b, j, D)
     return cid
 
 
@@ -222,7 +222,7 @@ def fujita():
     j += f'  tl.fromTo(P+"verdict", {{autoAlpha:0, y:26}}, {{autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}}, 26.5);\n'
     b += f'<div class="foot" id="{cid}-ft">A scale built in the 1970s finally gave 1925 its number.</div>'
     j += f'  tl.fromTo(P+"ft", {{autoAlpha:0, y:20}}, {{autoAlpha:1, y:0, duration:0.6}}, 33.0);\n'
-    wrap(cid, style, b, j.replace("DURV", str(D)))
+    wrap(cid, style, b, j, D)
     return cid
 
 
@@ -230,25 +230,52 @@ def fujita():
 def wordban2():
     cid, D = "g-wordban2", 24.0
     style = """
-  .big { position:absolute; left:0; right:0; top:360px; text-align:center; font-family:'Courier New',monospace;
+  .big { position:absolute; left:0; right:0; top:300px; text-align:center; font-family:'Courier New',monospace;
     font-weight:700; font-size:150px; letter-spacing:16px; color:#f2f5f8; }
-  .strike { position:absolute; left:50%; top:452px; height:12px; background:#c0392b; transform:translateX(-50%); width:0; }
+  .strike { position:absolute; left:50%; top:392px; height:12px; background:#c0392b; transform:translateX(-50%); width:0; }
+  .step { position:absolute; top:640px; width:420px; text-align:center; }
+  .step .yr { font-family:'Arial Black',Arial,sans-serif; font-size:56px; color:#e8c56a; }
+  .step .tx { font-size:22px; letter-spacing:3px; color:#b8c6d4; font-weight:700; margin-top:10px; line-height:1.35; }
+  .axis { position:absolute; left:220px; top:600px; height:5px; background:#2a3644; width:0; }
+  .late { position:absolute; left:0; right:0; top:880px; text-align:center; }
+  .late .n { font-family:'Courier New',monospace; font-size:84px; color:#e74c3c; font-weight:700; line-height:1; }
+  .late .l { font-size:20px; letter-spacing:6px; color:#c8d3e0; font-weight:700; margin-top:8px; }
 """
-    b, j = head(cid, "THE BOOKEND", "THE WORD COMES BACK", "it took another generation")
+    b, j = head(cid, "THE BOOKEND", "THE WORD COMES BACK", "but not in time for anyone in this story")
     b += (f'<div class="big" id="{cid}-w">TORNADO</div><div class="strike" id="{cid}-s"></div>'
-          f'<div id="{cid}-l1" style="position:absolute;left:0;right:0;top:600px;text-align:center" class="val">'
-          f'1938 — THE BAN BEGINS TO EASE</div>'
-          f'<div id="{cid}-l2" style="position:absolute;left:0;right:0;top:680px;text-align:center;font-size:30px;'
-          f'color:#d8a13a;font-weight:700;letter-spacing:2px">1948 — THE FIRST TORNADO FORECAST IS ISSUED</div>')
-    b += f'<div class="foot" id="{cid}-ft" style="left:0;right:0;text-align:center">Twenty-three years too late for the Tri-State.</div>'
-    j += f'  tl.set(P+"s", {{width:760}}, 0);\n'
-    j += f'  tl.fromTo(P+"w", {{autoAlpha:0, scale:1.3}}, {{autoAlpha:1, scale:1, duration:0.5, ease:"power4.in"}}, 1.0);\n'
-    j += f'  tl.to(P+"s", {{width:0, duration:0.9, ease:"power3.inOut"}}, 5.0);\n'
-    j += f'  tl.fromTo(P+"l1", {{autoAlpha:0, y:26}}, {{autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}}, 8.0);\n'
-    j += f'  tl.fromTo(P+"l2", {{autoAlpha:0, y:26}}, {{autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}}, 13.0);\n'
-    j += f'  tl.to(P+"w", {{letterSpacing:"30px", duration:{D-3:.1f}, ease:"none"}}, 1.5);\n'
-    j += f'  tl.fromTo(P+"ft", {{autoAlpha:0, y:20}}, {{autoAlpha:1, y:0, duration:0.6}}, 18.0);\n'
-    wrap(cid, style, b, j.replace("DURV", str(D)))
+          f'<div class="axis" id="{cid}-ax"></div>')
+    steps = [("1938", "THE BAN BEGINS TO EASE", 250, 8.0),
+             ("1948", "FIRST TORNADO FORECAST<br>TINKER AIR FORCE BASE", 750, 11.5),
+             ("1952", "PUBLIC TORNADO WATCHES", 1250, 15.0)]
+    for i, (yr, tx, x, at) in enumerate(steps):
+        b += (f'<div class="step" id="{cid}-st{i}" style="left:{x}px"><div class="yr">{yr}</div>'
+              f'<div class="tx">{tx}</div></div>')
+        b += f'<div id="{cid}-dot{i}" style="position:absolute;left:{x + 205}px;top:592px;width:21px;height:21px;background:#e8c56a;border-radius:50%"></div>'
+        j += f'  tl.fromTo(P+"st{i}", {{autoAlpha:0, y:30}}, {{autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}}, {at});\n'
+        j += f'  tl.fromTo(P+"dot{i}", {{scale:0}}, {{scale:1, duration:0.35, ease:"power4.in", transformOrigin:"50% 50%"}}, {at - 0.2});\n'
+    b += (f'<div class="late" id="{cid}-late"><div class="n"><span id="{cid}-lv">0</span></div>'
+          f'<div class="l">YEARS AFTER THE TRI-STATE</div></div>')
+    b += f'<div class="foot" id="{cid}-ft" style="left:0;right:0;text-align:center">Every fix on this line arrived after the funerals.</div>'
+    j += f'  tl.set(P+"s", {{width:760}}, 0);
+'
+    j += f'  tl.fromTo(P+"w", {{autoAlpha:0, scale:1.3}}, {{autoAlpha:1, scale:1, duration:0.5, ease:"power4.in"}}, 1.0);
+'
+    j += f'  tl.to(P+"s", {{width:0, duration:0.9, ease:"power3.inOut"}}, 5.2);
+'
+    j += f'  tl.to(P+"ax", {{width:1480, duration:{D - 6:.1f}, ease:"none"}}, 5.6);
+'
+    j += f'  tl.to(P+"w", {{letterSpacing:"30px", duration:{D - 3:.1f}, ease:"none"}}, 1.5);
+'
+    j += f'  tl.fromTo(P+"late", {{autoAlpha:0, y:24}}, {{autoAlpha:1, y:0, duration:0.5}}, 18.0);
+'
+    j += f'  tl.to(LATE, {{v:23, duration:1.1, ease:"power4.out", onUpdate:lu}}, 18.2);
+'
+    j += f'  tl.fromTo(P+"ft", {{autoAlpha:0, y:20}}, {{autoAlpha:1, y:0, duration:0.6}}, 20.5);
+'
+    js = ("  const LATE={v:0};
+  function lu(){const e=document.getElementById('%s-lv'); if(e) e.textContent=Math.round(LATE.v);}
+" % cid) + j
+    wrap(cid, style, b, js, D)
     return cid
 
 
@@ -274,7 +301,7 @@ def close():
          f'  tl.fromTo(P+"c", {{autoAlpha:0}}, {{autoAlpha:1, duration:1.0}}, 6.0);\n'
          f'  tl.to(P+"t", {{letterSpacing:"9px", duration:{D-4:.1f}, ease:"none"}}, 1.6);\n'
          f'  tl.to([P+"t", P+"e", P+"c"], {{autoAlpha:0, duration:1.6}}, {D-2.2:.1f});\n')
-    wrap(cid, style, b, j.replace("DURV", str(D)))
+    wrap(cid, style, b, j, D)
     return cid
 
 
