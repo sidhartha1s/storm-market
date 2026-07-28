@@ -310,6 +310,177 @@ def main():
     return vis, gfx, chips, audio, kbs, total, lines_report
 
 
+CSS = """
+    body { margin: 0; background: #000; font-family: Georgia, 'Times New Roman', serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #05070a; }
+    video, .still-wrap { position: absolute; inset: 0; }
+    video { width: 100%; height: 100%; object-fit: cover; }
+    .still-wrap { overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    .pfit { overflow: hidden; }
+    .pfit .pbg { position: absolute; inset: -60px; width: calc(100% + 120px); height: calc(100% + 120px);
+      object-fit: cover; filter: blur(34px) brightness(0.5) saturate(0.7); }
+    .pfit .pfg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+    .clip { position: absolute; inset: 0; }
+    .archgrade { filter: sepia(0.28) contrast(1.08) brightness(0.96) saturate(0.8); }
+    .stockgrade { filter: saturate(0.55) contrast(1.12) brightness(0.82) sepia(0.12); }
+    .lt { position: absolute; inset: auto; left: 110px; bottom: 110px; z-index: 5; font-family: Arial, sans-serif; }
+    .lt .lt-loc { display: table; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 52px;
+      color: #f2f5f8; background: rgba(5,8,12,0.78); padding: 4px 16px; text-shadow: 0 3px 24px rgba(0,0,0,0.85); }
+    .lt .lt-time { display: table; font-weight: 700; font-size: 27px; color: #f5d98b; background: rgba(5,8,12,0.78);
+      padding: 6px 14px; margin-top: 10px; letter-spacing: 1px; }
+    .quotecard { position: absolute; inset: auto; left: 140px; right: 900px; bottom: 150px; z-index: 6; }
+    .quotecard .q { font-family: Georgia, serif; font-style: italic; font-size: 40px; color: #f2f5f8;
+      background: rgba(5,8,12,0.74); padding: 16px 30px; line-height: 1.35; text-shadow: 0 2px 18px rgba(0,0,0,0.9); }
+    .quotecard .attr { display: table; margin-top: 12px; font-family: Arial, sans-serif; font-weight: 700;
+      font-size: 22px; letter-spacing: 3px; color: #d8a13a; background: rgba(5,8,12,0.74); padding: 8px 20px; }
+    .srclab { position: absolute; inset: auto; right: 40px; bottom: 34px; z-index: 7; font-family: Arial, sans-serif;
+      font-size: 19px; color: rgba(200,211,224,0.78); background: rgba(5,8,12,0.6); padding: 5px 12px; }
+    #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90;
+      background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
+    #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91;
+      opacity: 0.13; mix-blend-mode: overlay; }
+    #grade { position: absolute; inset: 0; pointer-events: none; z-index: 89; mix-blend-mode: soft-light;
+      background-color: rgba(255,205,150,0.26); }
+"""
+
+BEDS = [  # id, src, start, dur, [(t, vol)] automation
+    ("bgm-dread1", "dread-build-loop.mp3"),
+    ("bgm-tense1", "tense-curious-loop.mp3"),
+    ("bgm-somber1", "aftermath-somber-loop.mp3"),
+    ("bgm-tense2", "tense-curious-loop.mp3"),
+    ("bgm-somber2", "aftermath-somber-loop.mp3"),
+    ("bgm-neutral1", "neutral-underscore-loop.mp3"),
+    ("bgm-hope1", "hopeful-resolve-loop.mp3"),
+]
+
+
+def emit(vis, gfx, chips, audio, kbs, total, report, seg_at):
+    """Assemble index.html. Music beds are laid against real act boundaries."""
+    a2 = seg_at["a2-s1"]; a3 = seg_at["a3-s1"]; a4 = seg_at["a4-s1"]
+    a5 = seg_at["a5-s1"]; a6 = seg_at["a6-s1"]; end = total
+    beds, bedjs = [], []
+    plan = [("bgm-dread1", 36.0, a2 - 1, [(37, 0.09), (a2 - 4, 0.0)]),
+            ("bgm-tense1", a2 - 1, a3 - a2 + 1, [(a2, 0.10), (a3 - 4, 0.0)]),
+            ("bgm-somber1", a3 - 1, a4 - a3 + 1, [(a3, 0.09), (a4 - 4, 0.0)]),
+            ("bgm-tense2", a4 - 1, a5 - a4 + 1, [(a4, 0.09), (a5 - 4, 0.0)]),
+            ("bgm-somber2", a5 - 1, a6 - a5 + 1, [(a5, 0.09), (a6 - 4, 0.0)]),
+            ("bgm-neutral1", a6 - 1, end - a6 - 60, [(a6, 0.09), (end - 66, 0.0)]),
+            ("bgm-hope1", end - 68, 68, [(end - 66, 0.10), (end - 16, 0.14), (end - 4, 0.0)])]
+    seen = {}
+    for bid, st, dur, autom in plan:
+        src = dict(BEDS)[bid]
+        seen[src] = seen.get(src, 0) + 1
+        cb = f' data-callback="bed returns for the next act"' if seen[src] > 1 else ""
+        # loops are 354s; chunk long windows into successive loop windows
+        rem, cur, part = dur, st, 0
+        while rem > 0:
+            w = min(350.0, rem)
+            pid = bid if part == 0 else f"{bid}-{part}"
+            extra = cb if part == 0 else ' data-callback="bed continues across the act"'
+            beds.append(f'  <audio id="{pid}" src="media/music/{src}" data-start="{cur:.2f}" '
+                        f'data-duration="{w:.2f}" data-volume="0" data-bed="1"{extra}></audio>')
+            bedjs.append(f'  tl.to("#{pid}", {{ volume: 0.09, duration: 2 }}, {cur + 0.5:.2f});')
+            bedjs.append(f'  tl.to("#{pid}", {{ volume: 0.0, duration: 1.8 }}, {cur + w - 2.0:.2f});')
+            cur += w; rem -= w; part += 1
+    sfx = [
+        f'  <audio id="sfx-rumble" src="media/sfx/04_distant_storm_rumble.mp3" data-start="0" data-duration="36" data-volume="0" data-bed="1"></audio>',
+        f'  <audio id="sfx-wind1" src="media/sfx/02_wind_ominous_steady.mp3" data-start="{seg_at["a1-s5"]-1:.2f}" data-duration="24" data-volume="0" data-bed="1"></audio>',
+    ]
+    sfxjs = ['  tl.to("#sfx-rumble", { volume: 0.55, duration: 2.0 }, 0.3);',
+             '  tl.to("#sfx-rumble", { volume: 0.75, duration: 1.0 }, 16.0);',
+             '  tl.to("#sfx-rumble", { volume: 0.0, duration: 2.5 }, 33.0);',
+             f'  tl.to("#sfx-wind1", {{ volume: 0.7, duration: 3 }}, {seg_at["a1-s5"]:.2f});',
+             f'  tl.to("#sfx-wind1", {{ volume: 0.0, duration: 2.5 }}, {seg_at["a1-s5"]+19:.2f});']
+
+    html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>The Tornado With No Photograph — The Warning Hour Ep. 3</title>
+  <script src="gsap.min.js"></script>
+  <style>{CSS}</style>
+</head>
+<body>
+<div id="root" data-composition-id="ep3-tristate" data-start="0" data-width="1920" data-height="1080"
+     data-duration="{total:.0f}" data-fps="30">
+
+  <!-- narration -->
+{chr(10).join(audio)}
+
+  <!-- music beds -->
+{chr(10).join(beds)}
+
+  <!-- sfx -->
+{chr(10).join(sfx)}
+
+  <!-- track 1: base visuals -->
+{chr(10).join(vis)}
+
+  <!-- track 2: graphic sub-compositions -->
+{chr(10).join(gfx)}
+
+  <!-- tracks 3/5/7: chips, quotes, lower thirds -->
+{chr(10).join(chips)}
+
+  <div id="vignette"></div>
+  <canvas id="grain" width="480" height="270"></canvas>
+  <div id="grade"></div>
+</div>
+
+<script src="grain.js"></script>
+<script>
+window.__timelines = window.__timelines || {{}};
+(function() {{
+  const tl = gsap.timeline({{ paused: true }});
+  const DUR = {total:.0f};
+
+{chr(10).join(bedjs)}
+{chr(10).join(sfxjs)}
+
+  function kb(sel, at, dur, s0, s1, x0, x1, y0, y1) {{
+    tl.fromTo(sel, {{ scale: s0, x: x0, y: y0, transformOrigin: "50% 50%" }},
+                   {{ scale: s1, x: x1, y: y1, duration: dur, ease: "none" }}, at);
+  }}
+  const KB = [
+{",".join(chr(10) + "  " + k for k in kbs)}];
+  KB.forEach(a => kb(...a));
+
+  /* date card */
+  (function() {{
+    const d = document.getElementById("card-date");
+    if (!d) return;
+    d.innerHTML = '<div style="position:absolute;left:0;right:0;top:70px;text-align:center;">' +
+      '<div style="display:table;margin:0 auto;font-family:\\'Arial Black\\',Arial,sans-serif;font-weight:900;' +
+      'font-size:56px;color:#f2f5f8;background:rgba(5,8,12,0.7);padding:8px 40px;letter-spacing:6px;">MARCH 18, 1925</div>' +
+      '<div style="display:table;margin:12px auto 0;font-family:Arial,sans-serif;font-weight:700;font-size:26px;' +
+      'color:#d8a13a;background:rgba(5,8,12,0.7);padding:6px 26px;letter-spacing:8px;">MISSOURI &middot; ILLINOIS &middot; INDIANA</div></div>';
+    gsap.set(d, {{ autoAlpha: 0 }});
+    tl.to(d, {{ autoAlpha: 1, duration: 0.5 }}, 0.3);
+    tl.to(d, {{ autoAlpha: 0, duration: 0.8 }}, 13.2);
+    tl.set(d, {{ autoAlpha: 0 }}, 14.1);
+  }})();
+
+  /* chips, quotes and lower thirds: rise in, leave fully */
+  document.querySelectorAll('.lt.clip, .quotecard.clip, .srclab.clip').forEach(function(el) {{
+    const at = parseFloat(el.dataset.start), dur = parseFloat(el.dataset.duration);
+    gsap.set(el, {{ autoAlpha: 0, y: 22 }});
+    tl.to(el, {{ autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }}, at + 0.15);
+    tl.to(el, {{ autoAlpha: 0, y: -14, duration: 0.45, ease: "power3.in" }}, at + dur - 0.55);
+    tl.set(el, {{ autoAlpha: 0 }}, at + dur - 0.05);
+  }});
+
+  filmLayer(tl, DUR);
+  window.__timelines["ep3-tristate"] = tl;
+}})();
+</script>
+</body>
+</html>
+"""
+    (EP / "index.html").write_text(html, encoding="utf-8")
+
+
 if __name__ == "__main__":
     vis, gfx, chips, audio, kbs, total, report = main()
     longest = sorted([r for r in report if not r[2].startswith("GRAPHIC")], key=lambda r: -r[1])[:8]
