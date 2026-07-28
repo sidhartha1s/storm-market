@@ -387,8 +387,12 @@ def main():
                 shots = [(a, "stock" if a.endswith(".mp4") else typ, w)
                          for a, w in chunk(seg_dur, plan["assets"])]
             shots = split_overlong(shots, TAIL[sid.split("-")[0]])
-            ct = seg_start
+            # emit on the 2-decimal grid the attributes are printed at, so a window's end is
+            # bit-identical to the next window's start (float drift showed up as 0.01s
+            # same-track overlaps in hyperframes' contract check)
+            ct = round(seg_start, 2)
             for (src, typ, w) in shots:
+                w = round(w, 2)
                 eid = f"v{idx}"
                 reuse[src] = reuse.get(src, 0) + 1
                 cb = (f' data-callback="motif returns — use {reuse[src]} of this asset"'
