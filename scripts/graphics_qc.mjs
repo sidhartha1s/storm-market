@@ -186,12 +186,15 @@ for (const f of files) {
 await browser.close();
 
 /* ---------- report ---------- */
-if (!defects.length) { console.log(`[graphics_qc] PASS — ${files.length} compositions, 0 defects`); process.exit(0); }
+const hard = defects.filter(d => d.hard), soft = defects.filter(d => !d.hard);
 const byComp = {};
 for (const d of defects) (byComp[d.comp] ||= []).push(d);
-console.log(`[graphics_qc] FAIL — ${defects.length} defects across ${Object.keys(byComp).length} compositions\n`);
 for (const [c, list] of Object.entries(byComp)) {
-  console.log(`  ${c}  (${list.length})`);
-  for (const d of list) console.log(`    [${d.kind}] ${d.msg}`);
+  const h = list.filter(d => d.hard).length;
+  console.log(`  ${c}  — ${h} error${h === 1 ? '' : 's'}, ${list.length - h} warning${list.length - h === 1 ? '' : 's'}`);
+  for (const d of list.filter(d => d.hard)) console.log(`    ERROR [${d.kind}] ${d.msg}`);
+  for (const d of list.filter(d => !d.hard)) console.log(`    warn  [${d.kind}] ${d.msg}`);
 }
+if (!hard.length) { console.log(`\n[graphics_qc] PASS — ${files.length} compositions, 0 errors, ${soft.length} warnings`); process.exit(0); }
+console.log(`\n[graphics_qc] FAIL — ${hard.length} errors, ${soft.length} warnings across ${files.length} compositions`);
 process.exit(1);
