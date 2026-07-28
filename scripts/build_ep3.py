@@ -368,7 +368,7 @@ def main():
                     s0, s1, x0, x1, y0, y1 = kb_for(idx)
                     kbs.append(f'["#kb-{eid}",{ct2:.2f},{w:.2f},{s0},{s1},{x0},{x1},{y0},{y1}]')
                     lines_report.append((ct2, w, f"tail {Path(a).name}"))
-                    ct2 += w
+                    ct2 = round(ct2 + w, 2)
                     idx += 1
         elif kind in ("stills", "stock", "papers", "mixed", "panel"):
             if kind == "panel":
