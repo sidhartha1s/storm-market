@@ -16,7 +16,7 @@ from functools import lru_cache
 from pathlib import Path
 
 EP = Path(__file__).resolve().parent.parent / "episodes" / "ep3-tristate"
-MAX_STILL = 7.6      # hard clamp on a single archival still. ep2 (shipped, the reference)
+MAX_STILL = 9.6      # hard clamp on a single archival still. ep2 (shipped, the reference)
                      # runs an 11s median hold; the ceiling exists to stop the 30-60s frozen
                      # stretches the owner flagged, not to force a metronome.
 MIN_STILL = 3.4
@@ -256,7 +256,9 @@ def _load_spares():
         claimed.update(t)
     pool = sorted((P + f.name) for f in (EP / "media" / "photos").iterdir()
                   if f.suffix.lower() in (".jpg", ".png", ".webp"))
-    return [a for a in pool if a not in claimed]
+    # unclaimed photos first, but every photo is eligible once they run out — the ceiling
+    # matters more than whether a frame was hand-picked for some other segment
+    return [a for a in pool if a not in claimed] + [a for a in pool if a in claimed]
 
 
 @lru_cache(maxsize=None)
