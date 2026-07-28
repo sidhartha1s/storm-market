@@ -7,7 +7,7 @@ import { chromium } from 'file:///C:/Users/Sidhartha/AppData/Roaming/npm/node_mo
 import { readFileSync, readdirSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join, resolve, basename } from 'path';
 
-const EXECUTABLE = 'C:\\Users\\Sidhartha\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win\\chrome.exe';
+const EXECUTABLE = 'C:\\Users\\Sidhartha\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
 const ep = resolve(process.argv[2] || 'episodes/ep3-tristate');
 const TMP = join(ep, '.qc-tmp');
 if (!existsSync(TMP)) mkdirSync(TMP, { recursive: true });
