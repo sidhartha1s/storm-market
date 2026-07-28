@@ -237,7 +237,7 @@ def wordban2():
   .step .yr { font-family:'Arial Black',Arial,sans-serif; font-size:56px; color:#e8c56a; }
   .step .tx { font-size:22px; letter-spacing:3px; color:#b8c6d4; font-weight:700; margin-top:10px; line-height:1.35; }
   .axis { position:absolute; left:220px; top:600px; height:5px; background:#2a3644; width:0; }
-  .late { position:absolute; left:0; right:0; top:880px; text-align:center; }
+  .late { position:absolute; left:0; right:0; top:790px; text-align:center; }
   .late .n { font-family:'Courier New',monospace; font-size:84px; color:#e74c3c; font-weight:700; line-height:1; }
   .late .l { font-size:20px; letter-spacing:6px; color:#c8d3e0; font-weight:700; margin-top:8px; }
 """
@@ -256,25 +256,15 @@ def wordban2():
     b += (f'<div class="late" id="{cid}-late"><div class="n"><span id="{cid}-lv">0</span></div>'
           f'<div class="l">YEARS AFTER THE TRI-STATE</div></div>')
     b += f'<div class="foot" id="{cid}-ft" style="left:0;right:0;text-align:center">Every fix on this line arrived after the funerals.</div>'
-    j += f'  tl.set(P+"s", {{width:760}}, 0);
-'
-    j += f'  tl.fromTo(P+"w", {{autoAlpha:0, scale:1.3}}, {{autoAlpha:1, scale:1, duration:0.5, ease:"power4.in"}}, 1.0);
-'
-    j += f'  tl.to(P+"s", {{width:0, duration:0.9, ease:"power3.inOut"}}, 5.2);
-'
-    j += f'  tl.to(P+"ax", {{width:1480, duration:{D - 6:.1f}, ease:"none"}}, 5.6);
-'
-    j += f'  tl.to(P+"w", {{letterSpacing:"30px", duration:{D - 3:.1f}, ease:"none"}}, 1.5);
-'
-    j += f'  tl.fromTo(P+"late", {{autoAlpha:0, y:24}}, {{autoAlpha:1, y:0, duration:0.5}}, 18.0);
-'
-    j += f'  tl.to(LATE, {{v:23, duration:1.1, ease:"power4.out", onUpdate:lu}}, 18.2);
-'
-    j += f'  tl.fromTo(P+"ft", {{autoAlpha:0, y:20}}, {{autoAlpha:1, y:0, duration:0.6}}, 20.5);
-'
-    js = ("  const LATE={v:0};
-  function lu(){const e=document.getElementById('%s-lv'); if(e) e.textContent=Math.round(LATE.v);}
-" % cid) + j
+    j += f'  tl.set(P+"s", {{width:760}}, 0);\n'
+    j += f'  tl.fromTo(P+"w", {{autoAlpha:0, scale:1.3}}, {{autoAlpha:1, scale:1, duration:0.5, ease:"power4.in"}}, 1.0);\n'
+    j += f'  tl.to(P+"s", {{width:0, duration:0.9, ease:"power3.inOut"}}, 5.2);\n'
+    j += f'  tl.to(P+"ax", {{width:1480, duration:{D - 6:.1f}, ease:"none"}}, 5.6);\n'
+    j += f'  tl.to(P+"w", {{letterSpacing:"30px", duration:{D - 3:.1f}, ease:"none"}}, 1.5);\n'
+    j += f'  tl.fromTo(P+"late", {{autoAlpha:0, y:24}}, {{autoAlpha:1, y:0, duration:0.5}}, 18.0);\n'
+    j += f'  tl.to(LATE, {{v:23, duration:1.1, ease:"power4.out", onUpdate:lu}}, 18.2);\n'
+    j += f'  tl.fromTo(P+"ft", {{autoAlpha:0, y:20}}, {{autoAlpha:1, y:0, duration:0.6}}, 20.5);\n'
+    js = ("  const LATE={v:0};\n  function lu(){const e=document.getElementById('%s-lv'); if(e) e.textContent=Math.round(LATE.v);}\n" % cid) + j
     wrap(cid, style, b, js, D)
     return cid
 
