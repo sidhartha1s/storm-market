@@ -74,21 +74,28 @@ const MEASURE = `((t) => {
       }
     }
   }
-  /* pairwise text overlap, ignoring ancestor/descendant pairs */
+  /* pairwise text overlap — real collisions only: skip DOM ancestor/descendant pairs
+     (a parent's box always contains its child's) and skip normal-flow siblings whose
+     boxes merely touch. Glyph-level overlap is what garbles text. */
   for (let i = 0; i < rects.length; i++) for (let j = i+1; j < rects.length; j++) {
     const a = rects[i], b = rects[j];
+    if (a.el.contains(b.el) || b.el.contains(a.el)) continue;
     const ox = Math.min(a.x+a.w, b.x+b.w) - Math.max(a.x, b.x);
     const oy = Math.min(a.y+a.h, b.y+b.h) - Math.max(a.y, b.y);
-    if (ox > 4 && oy > 4) {
+    if (ox > 6 && oy > 6) {
       const area = ox * oy, small = Math.min(a.w*a.h, b.w*b.h);
-      if (area / small > 0.12) out.texts.push({ a: a.text, b: b.text, overlapPct: +((area/small)*100).toFixed(0) });
+      /* both boxes must be genuinely overlapping, not just adjacent line boxes */
+      if (area / small > 0.30) out.texts.push({ a: a.text, b: b.text, overlapPct: +((area/small)*100).toFixed(0) });
     }
   }
-  /* containers that are visible but hold nothing */
+  /* containers that are visible but hold nothing — a gradient/border IS content */
   for (const el of document.querySelectorAll('[id^="g-"], .panel, .spanel, .card')) {
     if (!vis(el)) continue;
     const r = el.getBoundingClientRect();
-    if (r.width > 300 && r.height > 200 && !el.textContent.trim() && !el.querySelector('svg,img,canvas'))
+    const cs2 = getComputedStyle(el);
+    const painted = cs2.backgroundImage !== 'none' || parseFloat(cs2.borderTopWidth) > 0 ||
+                    cs2.backgroundColor !== 'rgba(0, 0, 0, 0)' || cs2.boxShadow !== 'none';
+    if (r.width > 300 && r.height > 200 && !el.textContent.trim() && !el.querySelector('svg,img,canvas') && !painted)
       out.empty.push(el.id || el.className);
   }
   out.maxFont = out.fonts.length ? Math.max(...out.fonts) : 0;
