@@ -342,7 +342,7 @@ def main():
         plan = SHOTS[sid]
         audio.append(f'  <audio id="nx-{sid.replace("-","")}" src="audio/{sid}.wav" '
                      f'data-start="{t:.2f}" data-duration="{d:.2f}"></audio>')
-        seg_start, seg_dur = t, d + HOLDS.get(sid, 0.0)
+        seg_start, seg_dur = round(t, 2), round(d + HOLDS.get(sid, 0.0), 2)
         seg_at[sid] = seg_start
         kind = plan["kind"]
 
