@@ -274,6 +274,27 @@ def chunk(dur, assets, minw=MIN_STILL, maxw=MAX_STILL):
     return [(pick(a), each) for a in assets]
 
 
+def split_overlong(shots, pool):
+    """`mixed` segments carry hand-declared beat weights, which the seg_dur rescale can push
+    past the clamps chunk() enforces everywhere else. Split what it stretched: a still never
+    holds past MAX_STILL, a clip never past MAX_FILM, and the overflow cuts to a fresh frame."""
+    out, k = [], 0
+    for (src, typ, w) in shots:
+        cap = MAX_STILL if typ not in ("film", "stock") else MAX_FILM
+        if w <= cap or not pool:
+            out.append((src, typ, w))
+            continue
+        n = int(w / cap + 0.9999)
+        each = w / n
+        for i in range(n):
+            if i == 0:
+                out.append((src, typ, each))
+            else:
+                out.append((pick(pool[k % len(pool)]), "still", each))
+                k += 1
+    return out
+
+
 def kb_for(i):
     """Alternating Ken Burns moves so consecutive stills never repeat the same push."""
     table = [(1.0, 1.09, 0, -14, 0, -9), (1.09, 1.0, -12, 0, -7, 0), (1.0, 1.08, 0, 12, 0, 8),
