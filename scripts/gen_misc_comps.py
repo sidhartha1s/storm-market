@@ -289,7 +289,8 @@ def close():
     j = (f'  tl.fromTo(P+"t", {{autoAlpha:0, y:30}}, {{autoAlpha:1, y:0, duration:0.9, ease:"power3.out"}}, 1.0);\n'
          f'  tl.fromTo(P+"e", {{autoAlpha:0, y:24}}, {{autoAlpha:1, y:0, duration:0.7, ease:"power3.out"}}, 2.4);\n'
          f'  tl.fromTo(P+"c", {{autoAlpha:0}}, {{autoAlpha:1, duration:1.0}}, 6.0);\n'
-         f'  tl.to(P+"t", {{letterSpacing:"9px", duration:{D-4:.1f}, ease:"none"}}, 1.6);\n'
+         # scaleX, not letterSpacing: text-reflow properties snap per frame under capture
+         f'  tl.to(P+"t", {{scaleX:1.05, duration:{D-4:.1f}, ease:"none"}}, 1.6);\n'
          f'  tl.to([P+"t", P+"e", P+"c"], {{autoAlpha:0, duration:1.6}}, {D-2.2:.1f});\n')
     wrap(cid, style, b, j, D)
     return cid
