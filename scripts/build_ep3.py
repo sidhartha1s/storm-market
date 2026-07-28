@@ -430,7 +430,9 @@ def main():
                 for (src, typ, want) in plan["assets"]:
                     shots.append((src, typ, want)); acc += want
                 scale = seg_dur / acc if acc else 1
-                shots = [(pick(s) if ty == 'still' else s, ty, w * scale) for (s, ty, w) in shots]
+                # everything that is not a clip goes through pick(), not just ty=='still' —
+                # newspaper front pages typed 'paper' were bypassing the reuse ceiling
+                shots = [(s if is_video(s) else pick(s), ty, w * scale) for (s, ty, w) in shots]
             else:
                 # type follows the FILE, not the segment kind: a photo listed inside a
                 # kind="stock" segment was being typed "stock" and emitted as <video
