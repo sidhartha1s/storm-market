@@ -86,7 +86,7 @@ STYLE = """
   .row .lab { display:block; font-size:19px; color:#93a3b2; letter-spacing:4px; font-weight:700; }
   .cnt { font-family:'Courier New',monospace; font-size:84px; color:#e74c3c; font-weight:700; margin-top:26px; line-height:1; }
   .cntlab { font-size:20px; color:#c8d3e0; letter-spacing:6px; font-weight:700; margin-top:6px; }
-  .tick { position:absolute; left:110px; top:96px; width:4px; height:0;
+  .tick { position:absolute; left:110px; top:96px; width:4px; height:900px;
     background:linear-gradient(180deg, #8e2020 0%, #d8a13a 100%); }
 """
 
