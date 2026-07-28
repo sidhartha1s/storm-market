@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>The Tornado With No Photograph — The Warning Hour Ep. 3</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Georgia, 'Times New Roman', serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #05070a; }
+    video, .still-wrap { position: absolute; inset: 0; }
+    video { width: 100%; height: 100%; object-fit: cover; }
+    .still-wrap { overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    .pfit { overflow: hidden; }
+    .pfit .pbg { position: absolute; inset: -60px; width: calc(100% + 120px); height: calc(100% + 120px); object-fit: cover; filter: blur(34px) brightness(0.5) saturate(0.7); }
+    .pfit .pfg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    .archgrade { filter: sepia(0.28) contrast(1.08) brightness(0.96) saturate(0.8); }
+    .stockgrade { filter: saturate(0.55) contrast(1.12) brightness(0.82) sepia(0.12); }
+    .lt { position: absolute; inset: auto; left: 110px; bottom: 110px; z-index: 5; font-family: Arial, sans-serif; }
+    .lt .lt-loc { display: table; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 52px; color: #f2f5f8; background: rgba(5,8,12,0.78); padding: 4px 16px; text-shadow: 0 3px 24px rgba(0,0,0,0.85); }
+    .lt .lt-time { display: table; font-weight: 700; font-size: 27px; color: #f5d98b; background: rgba(5,8,12,0.78); padding: 6px 14px; margin-top: 10px; letter-spacing: 1px; }
+    .spanel { position: absolute; inset: auto; right: 0; top: 120px; width: 560px; z-index: 6; font-family: Arial, sans-serif;
+      background: linear-gradient(90deg, rgba(7,11,16,0.94) 0 82%, rgba(7,11,16,0.65)); box-sizing: border-box; padding: 34px 60px 34px 42px; border-left: 5px solid #c0392b; }
+    .spanel.amber { border-left-color: #d8a13a; }
+    .spanel .sp-h { font-weight: 900; font-family: 'Arial Black', Arial, sans-serif; font-size: 30px; color: #f2f5f8; letter-spacing: 2px; margin-bottom: 14px; }
+    .spanel .sp-r { font-weight: 700; font-size: 25px; color: #b8c6d4; margin-top: 14px; line-height: 1.3; opacity: 0; }
+    .spanel .sp-big { font-weight: 900; font-family: 'Arial Black', Arial, sans-serif; font-size: 56px; color: #e8c56a; margin-top: 10px; opacity: 0; }
+    .quotecard { position: absolute; inset: auto; left: 160px; right: 160px; bottom: 150px; z-index: 6; text-align: center; }
+    .quotecard .q { display: table; margin: 0 auto; font-family: Georgia, serif; font-style: italic; font-size: 42px; color: #f2f5f8; background: rgba(5,8,12,0.74); padding: 16px 40px; line-height: 1.35; text-shadow: 0 2px 18px rgba(0,0,0,0.9); }
+    .quotecard .attr { display: table; margin: 12px auto 0; font-family: Arial, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 3px; color: #d8a13a; background: rgba(5,8,12,0.74); padding: 8px 24px; }
+    .srclab { position: absolute; inset: auto; right: 40px; bottom: 34px; z-index: 7; font-family: Arial, sans-serif; font-size: 19px; color: rgba(200,211,224,0.78); background: rgba(5,8,12,0.6); padding: 5px 12px; letter-spacing: 0.5px; }
+    .tollchip { position: absolute; inset: auto; left: 110px; top: 110px; z-index: 6; font-family: Arial, sans-serif; }
+    .tollchip .tc-n { display: table; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 58px; color: #f2f5f8; background: rgba(90,15,15,0.85); padding: 6px 22px; }
+    .tollchip .tc-l { display: table; font-weight: 700; font-size: 20px; letter-spacing: 2px; color: #d8a5a5; background: rgba(5,8,12,0.7); padding: 5px 14px; margin-top: 8px; }
+    .gfx { position: absolute; inset: 0; z-index: 4; }
+    .gline { position: absolute; font-family: Arial, sans-serif; }
+    .bigword { position: absolute; left: 0; right: 0; top: 380px; text-align: center; font-family: 'Courier New', monospace; font-weight: 700; font-size: 150px; letter-spacing: 14px; color: #f2f5f8; text-shadow: 0 4px 30px rgba(0,0,0,0.95); }
+    .strike { position: absolute; left: 50%; top: 465px; height: 10px; background: #c0392b; transform: translateX(-50%); width: 0; }
+    .maplab { font-family: Arial, sans-serif; font-weight: 700; fill: #e8eef4; }
+    #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90;
+      background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
+    #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.13; mix-blend-mode: overlay; }
+    #grade { position: absolute; inset: 0; pointer-events: none; z-index: 89; mix-blend-mode: soft-light; background-color: rgba(255,205,150,0.26); }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="ep3-tristate" data-start="0" data-width="1920" data-height="1080" data-duration="2102" data-fps="30">
+
+  <!-- ======== NARRATION ======== -->
+  <audio id="nx-h1s1" src="audio/h1-s1.wav" data-start="0.00" data-duration="16.64"></audio>
+  <audio id="nx-h1s2" src="audio/h1-s2.wav" data-start="17.39" data-duration="13.08"></audio>
+  <audio id="nx-a1s1" src="audio/a1-s1.wav" data-start="42.22" data-duration="42.00"></audio>
+  <audio id="nx-a1s1b" src="audio/a1-s1b.wav" data-start="84.97" data-duration="36.36"></audio>
+  <audio id="nx-a1s2" src="audio/a1-s2.wav" data-start="122.08" data-duration="23.32"></audio>
+  <audio id="nx-a1s2c" src="audio/a1-s2c.wav" data-start="146.15" data-duration="30.04"></audio>
+  <audio id="nx-a1s2b" src="audio/a1-s2b.wav" data-start="176.94" data-duration="40.72"></audio>
+  <audio id="nx-a1s3" src="audio/a1-s3.wav" data-start="218.41" data-duration="35.36"></audio>
+  <audio id="nx-a1s4" src="audio/a1-s4.wav" data-start="254.52" data-duration="30.96"></audio>
+  <audio id="nx-a1s4c" src="audio/a1-s4c.wav" data-start="286.23" data-duration="36.88"></audio>
+  <audio id="nx-a1s4d" src="audio/a1-s4d.wav" data-start="323.86" data-duration="32.56"></audio>
+  <audio id="nx-a1s5" src="audio/a1-s5.wav" data-start="357.17" data-duration="22.08"></audio>
+  <audio id="nx-a2s1" src="audio/a2-s1.wav" data-start="383.00" data-duration="23.16"></audio>
+  <audio id="nx-a2s1c" src="audio/a2-s1c.wav" data-start="406.91" data-duration="35.68"></audio>
+  <audio id="nx-a2s2" src="audio/a2-s2.wav" data-start="443.34" data-duration="25.16"></audio>
+  <audio id="nx-a2s3" src="audio/a2-s3.wav" data-start="469.25" data-duration="31.88"></audio>
+  <audio id="nx-a2s3b" src="audio/a2-s3b.wav" data-start="501.88" data-duration="36.68"></audio>
+  <audio id="nx-a2s4" src="audio/a2-s4.wav" data-start="539.31" data-duration="24.52"></audio>
+  <audio id="nx-a2s4b" src="audio/a2-s4b.wav" data-start="564.58" data-duration="33.56"></audio>
+  <audio id="nx-a3s1" src="audio/a3-s1.wav" data-start="601.89" data-duration="36.48"></audio>
+  <audio id="nx-a3s1b" src="audio/a3-s1b.wav" data-start="639.12" data-duration="35.04"></audio>
+  <audio id="nx-a3s2" src="audio/a3-s2.wav" data-start="674.91" data-duration="20.32"></audio>
+  <audio id="nx-a3s2b" src="audio/a3-s2b.wav" data-start="695.98" data-duration="36.48"></audio>
+  <audio id="nx-a3s3" src="audio/a3-s3.wav" data-start="733.21" data-duration="22.04"></audio>
+  <audio id="nx-a3s3b" src="audio/a3-s3b.wav" data-start="756.00" data-duration="26.28"></audio>
+  <audio id="nx-a3s4" src="audio/a3-s4.wav" data-start="783.03" data-duration="32.96"></audio>
+  <audio id="nx-a3s4c" src="audio/a3-s4c.wav" data-start="816.74" data-duration="30.12"></audio>
+  <audio id="nx-a3s5" src="audio/a3-s5.wav" data-start="847.61" data-duration="11.88"></audio>
+  <audio id="nx-a3s6" src="audio/a3-s6.wav" data-start="860.24" data-duration="38.56"></audio>
+  <audio id="nx-a3s6b" src="audio/a3-s6b.wav" data-start="899.55" data-duration="39.68"></audio>
+  <audio id="nx-a3s6c" src="audio/a3-s6c.wav" data-start="939.98" data-duration="34.80"></audio>
+  <audio id="nx-a3s7" src="audio/a3-s7.wav" data-start="983.53" data-duration="48.60"></audio>
+  <audio id="nx-a3s8" src="audio/a3-s8.wav" data-start="1032.88" data-duration="25.28"></audio>
+  <audio id="nx-a3s9" src="audio/a3-s9.wav" data-start="1058.91" data-duration="29.28"></audio>
+  <audio id="nx-a4s1" src="audio/a4-s1.wav" data-start="1088.94" data-duration="28.64"></audio>
+  <audio id="nx-a4s1d" src="audio/a4-s1d.wav" data-start="1118.33" data-duration="29.12"></audio>
+  <audio id="nx-a4s1b" src="audio/a4-s1b.wav" data-start="1148.20" data-duration="34.68"></audio>
+  <audio id="nx-a4s2" src="audio/a4-s2.wav" data-start="1183.63" data-duration="25.96"></audio>
+  <audio id="nx-a4s2b" src="audio/a4-s2b.wav" data-start="1210.34" data-duration="33.92"></audio>
+  <audio id="nx-a4s3" src="audio/a4-s3.wav" data-start="1245.01" data-duration="31.64"></audio>
+  <audio id="nx-a5s1" src="audio/a5-s1.wav" data-start="1287.40" data-duration="28.28"></audio>
+  <audio id="nx-a5s1b" src="audio/a5-s1b.wav" data-start="1316.43" data-duration="42.64"></audio>
+  <audio id="nx-a5s1c" src="audio/a5-s1c.wav" data-start="1359.82" data-duration="30.44"></audio>
+  <audio id="nx-a5s1d" src="audio/a5-s1d.wav" data-start="1391.01" data-duration="31.56"></audio>
+  <audio id="nx-a5s2" src="audio/a5-s2.wav" data-start="1423.32" data-duration="30.64"></audio>
+  <audio id="nx-a5s2c" src="audio/a5-s2c.wav" data-start="1454.71" data-duration="34.40"></audio>
+  <audio id="nx-a5s3" src="audio/a5-s3.wav" data-start="1489.86" data-duration="34.64"></audio>
+  <audio id="nx-a5s3b" src="audio/a5-s3b.wav" data-start="1541.25" data-duration="33.64"></audio>
+  <audio id="nx-a5s4" src="audio/a5-s4.wav" data-start="1575.64" data-duration="24.44"></audio>
+  <audio id="nx-a5s4b" src="audio/a5-s4b.wav" data-start="1600.83" data-duration="36.84"></audio>
+  <audio id="nx-a6s1" src="audio/a6-s1.wav" data-start="1645.42" data-duration="22.56"></audio>
+  <audio id="nx-a6s2" src="audio/a6-s2.wav" data-start="1668.73" data-duration="41.76"></audio>
+  <audio id="nx-a6s2b" src="audio/a6-s2b.wav" data-start="1711.24" data-duration="38.44"></audio>
+  <audio id="nx-a6s2c" src="audio/a6-s2c.wav" data-start="1750.43" data-duration="45.32"></audio>
+  <audio id="nx-a6s2d" src="audio/a6-s2d.wav" data-start="1796.50" data-duration="34.96"></audio>
+  <audio id="nx-a6s3" src="audio/a6-s3.wav" data-start="1832.21" data-duration="44.08"></audio>
+  <audio id="nx-a6s3c" src="audio/a6-s3c.wav" data-start="1877.04" data-duration="34.48"></audio>
+  <audio id="nx-a6s3d" src="audio/a6-s3d.wav" data-start="1912.27" data-duration="35.00"></audio>
+  <audio id="nx-a6s3b" src="audio/a6-s3b.wav" data-start="1948.02" data-duration="27.48"></audio>
+  <audio id="nx-a6s3e" src="audio/a6-s3e.wav" data-start="1976.25" data-duration="27.88"></audio>
+  <audio id="nx-a6s4d" src="audio/a6-s4d.wav" data-start="2004.88" data-duration="33.24"></audio>
+  <audio id="nx-a6s4" src="audio/a6-s4.wav" data-start="2038.87" data-duration="27.36"></audio>
+  <audio id="nx-a6s5" src="audio/a6-s5.wav" data-start="2068.98" data-duration="16.40"></audio>
+
+  <!-- ======== MUSIC ======== -->
+  <audio id="bgm-dread1" src="media/music/dread-build-loop.mp3" data-start="38" data-duration="340" data-volume="0" data-bed="1"></audio>
+  <audio id="bgm-tense1" src="media/music/tense-curious-loop.mp3" data-start="381" data-duration="215" data-volume="0" data-bed="1"></audio>
+  <audio id="bgm-somber1" src="media/music/aftermath-somber-loop.mp3" data-start="599" data-duration="352" data-volume="0" data-bed="1"></audio>
+  <audio id="bgm-somber1b" src="media/music/aftermath-somber-loop.mp3" data-start="953" data-duration="134" data-volume="0" data-bed="1" data-callback="somber bed continues Act 3 tail"></audio>
+  <audio id="bgm-tense2" src="media/music/tense-curious-loop.mp3" data-start="1087" data-duration="196" data-volume="0" data-bed="1" data-callback="tense bed returns for Indiana act"></audio>
+  <audio id="bgm-somber2" src="media/music/aftermath-somber-loop.mp3" data-start="1285" data-duration="354" data-volume="0" data-bed="1" data-callback="somber bed returns for aftermath act"></audio>
+  <audio id="bgm-neutral1" src="media/music/neutral-underscore-loop.mp3" data-start="1643" data-duration="354" data-volume="0" data-bed="1"></audio>
+  <audio id="bgm-hope1" src="media/music/hopeful-resolve-loop.mp3" data-start="2000" data-duration="102" data-volume="0" data-bed="1"></audio>
+
+  <!-- ======== SFX ======== -->
+  <audio id="sfx-rumble" src="media/sfx/04_distant_storm_rumble.mp3" data-start="0" data-duration="38" data-volume="0" data-bed="1"></audio>
+  <audio id="sfx-wind1" src="media/sfx/02_wind_ominous_steady.mp3" data-start="356" data-duration="26" data-volume="0" data-bed="1"></audio>
+  <audio id="sfx-wind2" src="media/sfx/wind-loop.mp3" data-start="970" data-duration="12" data-volume="0" data-bed="1"></audio>
+
+  <!-- ======== TRACK 1 — BASE VISUALS (opens on image, never black) ======== -->
+  <section class="clip still-wrap" id="c-hk0" data-start="0" data-duration="5.6" data-track-index="1"><img id="kb-hk0" class="archgrade" src="media/photos/Wea00238.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-hk1" data-start="5.6" data-duration="5.8" data-track-index="1"><img id="kb-hk1" class="archgrade" src="media/photos/1925_-_Murphysboro_8_-_General_Damage.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-hk2" data-start="11.4" data-duration="6.0" data-track-index="1"><img id="kb-hk2" class="archgrade" src="media/photos/1925_-_Murphysboro_25_-_17th___Victory_Streets.jpg" alt=""></section>
+  <video id="vx-mvhook1" class="clip archgrade" src="media/film/mvtn-hook-aerial-bank-4s.mp4" data-start="17.4" data-duration="4.0" data-track-index="1" muted></video>
+  <video id="vx-mvhook2" class="clip archgrade" src="media/film/mvtn-hook-trainwreck-4s.mp4" data-start="21.4" data-duration="4.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-hk4" data-start="25.4" data-duration="5.7" data-track-index="1"><img id="kb-hk4" class="archgrade" src="media/photos/Wea00239_-_Flickr_-_NOAA_Photo_Library.jpg" alt=""></section>
+  <video id="vx-mvground" class="clip archgrade" src="media/film/mvtn-ground-b-6s.mp4" data-start="31.1" data-duration="6.0" data-track-index="1" muted></video>
+  <section class="clip blackout" id="bo-void" data-start="37.1" data-duration="1.0" data-track-index="1"></section>
+  <section class="clip" id="card-title" data-start="38.1" data-duration="2.0" data-track-index="1" style="z-index:8"></section>
+  <video id="vx-st-omen1" class="clip stockgrade" src="media/stock/stock-cloudsomen-01.mp4" data-start="40.1" data-duration="44.5" data-track-index="1" muted loop></video>
+  <section class="clip pfit" id="c-hazen" data-start="84.6" data-duration="16.0" data-track-index="1"><img class="pbg" src="media/portraits/hazen-portrait-01.jpg" alt=""><img id="kb-hazen" class="pfg archgrade" src="media/portraits/hazen-portrait-01.jpg" alt=""></section>
+  <video id="vx-st-roll1" class="clip stockgrade" src="media/stock/stock-cloudsrolling-01.mp4" data-start="100.6" data-duration="21.1" data-track-index="1" muted loop></video>
+  <video id="vx-st-roll2" class="clip stockgrade" src="media/stock/stock-cloudsrolling-02.mp4" data-start="121.7" data-duration="24.1" data-track-index="1" muted loop></video>
+  <video id="vx-mvaerc" class="clip archgrade" src="media/film/mvtn-aerial-c-8s.mp4" data-start="145.8" data-duration="8.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-src2" data-start="153.8" data-duration="11.5" data-track-index="1"><img id="kb-src2" class="archgrade" src="media/photos/1925_-_Murphysboro_32_-_Chicago_Herald___Examiner.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-src3" data-start="165.3" data-duration="11.3" data-track-index="1"><img id="kb-src3" class="archgrade" src="media/photos/13-Murphysboro_Aerial.png" alt=""></section>
+  <section class="clip still-wrap" id="c-pre1" data-start="176.6" data-duration="14.0" data-track-index="1"><img id="kb-pre1" class="archgrade" src="media/photos/11-Murphysboro_Pre-Tornado_1.png" alt=""></section>
+  <section class="clip still-wrap" id="c-pre2" data-start="190.6" data-duration="13.5" data-track-index="1"><img id="kb-pre2" class="archgrade" src="media/photos/12-Murphysboro_Pre-Tornado_2.png" alt=""></section>
+  <section class="clip still-wrap" id="c-annap-pre" data-start="204.1" data-duration="14.1" data-track-index="1"><img id="kb-annap-pre" class="archgrade" src="media/photos/Annapolis_Business_street.png" alt=""></section>
+  <section class="clip blackout" id="bo-met" data-start="218.2" data-duration="67.8" data-track-index="1"></section>
+  <video id="vx-st-omen2" class="clip stockgrade" src="media/stock/stock-cloudsomen-02.mp4" data-start="286.0" data-duration="37.5" data-track-index="1" muted loop></video>
+  <video id="vx-st-roll3" class="clip stockgrade" src="media/stock/stock-cloudsrolling-03.mp4" data-start="323.5" data-duration="33.4" data-track-index="1" muted loop></video>
+  <section class="clip still-wrap" id="c-aifarm" data-start="356.9" data-duration="7.6" data-track-index="1"><img id="kb-aifarm" src="media/ai/ai-farmhouse-morning.png" alt=""></section>
+  <section class="clip still-wrap" id="c-aikids" data-start="364.5" data-duration="7.6" data-track-index="1"><img id="kb-aikids" src="media/ai/ai-children-school.png" alt=""></section>
+  <video id="vx-st-grass1" class="clip stockgrade" src="media/stock/stock-windgrass-01.mp4" data-start="372.1" data-duration="10.7" data-track-index="1" muted loop></video>
+  <section class="clip blackout" id="bo-map1" data-start="382.8" data-duration="60.3" data-track-index="1"></section>
+  <section class="clip still-wrap" id="c-ann1" data-start="443.1" data-duration="9.0" data-track-index="1"><img id="kb-ann1" class="archgrade" src="media/photos/02-Annapolis_Destruction.png" alt=""></section>
+  <section class="clip still-wrap" id="c-ann2" data-start="452.1" data-duration="8.0" data-track-index="1"><img id="kb-ann2" class="archgrade" src="media/photos/03-Leadanna_Damage.png" alt=""></section>
+  <section class="clip still-wrap" id="c-ann3" data-start="460.1" data-duration="9.0" data-track-index="1"><img id="kb-ann3" class="archgrade" src="media/photos/Leadanna_lead_mines_after_1925_tornado.png" alt=""></section>
+  <section class="clip still-wrap" id="c-boll" data-start="469.1" data-duration="8.0" data-track-index="1"><img id="kb-boll" class="archgrade" src="media/photos/05-Bollinger_County_Damage.png" alt=""></section>
+  <section class="clip still-wrap" id="c-biehle1" data-start="477.1" data-duration="8.0" data-track-index="1"><img id="kb-biehle1" class="archgrade" src="media/photos/06-Biehle_Damage.png" alt=""></section>
+  <section class="clip still-wrap" id="c-aiwall" data-start="485.1" data-duration="8.4" data-track-index="1"><img id="kb-aiwall" src="media/ai/ai-black-wall-fields.png" alt=""></section>
+  <section class="clip still-wrap" id="c-biehle2" data-start="493.5" data-duration="8.2" data-track-index="1"><img id="kb-biehle2" class="archgrade" src="media/photos/06-Biehle_Damage_-_Theo_Holschen_Residence.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-wires" data-start="501.7" data-duration="14.0" data-track-index="1"></section>
+  <section class="clip still-wrap" id="c-aiwires" data-start="515.7" data-duration="11.0" data-track-index="1"><img id="kb-aiwires" src="media/ai/ai-wires-down.png" alt=""></section>
+  <video id="vx-st-rain1" class="clip stockgrade" src="media/stock/stock-rainfield-01.mp4" data-start="526.7" data-duration="12.4" data-track-index="1" muted loop></video>
+  <section class="clip blackout" id="bo-map2" data-start="539.1" data-duration="25.2" data-track-index="1"></section>
+  <section class="clip still-wrap" id="c-orient" data-start="564.3" data-duration="12.0" data-track-index="1"><img id="kb-orient" class="archgrade" src="media/photos/25-West_Frankfort_Orient_2_Aerial.png" alt=""></section>
+  <section class="clip still-wrap" id="c-coalcars" data-start="576.3" data-duration="11.0" data-track-index="1"><img id="kb-coalcars" class="archgrade" src="media/photos/26-West_Frankfort_Coal_Cars.png" alt=""></section>
+  <video id="vx-st-omen1b" class="clip stockgrade" src="media/stock/stock-cloudsomen-01.mp4" data-start="587.3" data-duration="14.6" data-track-index="1" muted loop data-callback="ominous-approach clip returns at IL state line"></video>
+  <section class="clip still-wrap" id="c-gor1" data-start="601.9" data-duration="9.0" data-track-index="1"><img id="kb-gor1" class="archgrade" src="media/photos/1925_-_Gorham_-_Main_St.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-gor2" data-start="610.9" data-duration="8.5" data-track-index="1"><img id="kb-gor2" class="archgrade" src="media/photos/1925_-_Gorham_-_Missouri_Pacific_Railway.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-gor3" data-start="619.4" data-duration="8.0" data-track-index="1"><img id="kb-gor3" class="archgrade" src="media/photos/09-Gorham_Boxcars.png" alt=""></section>
+  <section class="clip still-wrap" id="c-gor4" data-start="627.4" data-duration="11.7" data-track-index="1"><img id="kb-gor4" class="archgrade" src="media/photos/1925_-_Gorham_-_Post_Office_Area.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-deb1" data-start="639.1" data-duration="10.5" data-track-index="1"><img id="kb-deb1" class="archgrade" src="media/photos/1925_tornado_damage_3.webp" alt=""></section>
+  <section class="clip still-wrap" id="c-deb2" data-start="649.6" data-duration="11.5" data-track-index="1"><img id="kb-deb2" class="archgrade" src="media/photos/Tri-State_Tornado_JCHS15.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-deb3" data-start="661.1" data-duration="13.8" data-track-index="1"><img id="kb-deb3" class="archgrade" src="media/photos/1925_tornado_damage_7.webp" alt=""></section>
+  <video id="vx-mvhouse" class="clip archgrade" src="media/film/mvtn-murphysboro-house-7s.mp4" data-start="674.9" data-duration="7.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-mur-rail" data-start="681.9" data-duration="7.0" data-track-index="1"><img id="kb-mur-rail" class="archgrade" src="media/photos/1925_-_Murphysboro_4_-_M_O_Railroad_Shops.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-mur-14th" data-start="688.9" data-duration="7.1" data-track-index="1"><img id="kb-mur-14th" class="archgrade" src="media/photos/1925_-_Murphysboro_3_-_14th_St_at_Gartside.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-mur-aer" data-start="696.0" data-duration="11.5" data-track-index="1"><img id="kb-mur-aer" class="archgrade" src="media/photos/1925_-_Murphysboro_22_-_Aerial_View(1).jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-mur-mill" data-start="707.5" data-duration="8.5" data-track-index="1"><img id="kb-mur-mill" class="archgrade" src="media/photos/1925_-_Murphysboro_7a_-_Reliance_Mill.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-mur-hort" data-start="716.0" data-duration="8.3" data-track-index="1"><img id="kb-mur-hort" class="archgrade" src="media/photos/1925_-_Murphysboro_26_-_Looking_S_from_17th___Hortense.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-mur-10th" data-start="724.3" data-duration="8.9" data-track-index="1"><img id="kb-mur-10th" class="archgrade" src="media/photos/1925_-_Murphysboro_28_-_Corner_of_10th___Walnut.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-longf" data-start="733.2" data-duration="12.0" data-track-index="1"><img id="kb-longf" class="archgrade" src="media/photos/Tri-State_State_Tornado_Damage_Longfellow_School_2.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-logan" data-start="745.2" data-duration="10.8" data-track-index="1"><img id="kb-logan" class="archgrade" src="media/photos/1925_-_Murphysboro_6_-_Logan_School.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-rep1" data-start="756.0" data-duration="13.0" data-track-index="1"><img id="kb-rep1" class="archgrade" src="media/photos/1925_-_Murphysboro_9_-_General_Damage.jpg" alt=""></section>
+  <section class="clip pfit" id="c-np-her1" data-start="769.0" data-duration="14.0" data-track-index="1"><img class="pbg" src="media/newspapers/Chicago_Herald_Examiner_Front_page_1925-03-20.jpg" alt=""><img id="kb-np-her1" class="pfg" src="media/newspapers/Chicago_Herald_Examiner_Front_page_1925-03-20.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-fire1" data-start="783.0" data-duration="10.0" data-track-index="1"><img id="kb-fire1" src="media/photos/18-Murphysboro_Fire_Colorized.png" alt=""></section>
+  <section class="clip still-wrap" id="c-aifire" data-start="793.0" data-duration="9.0" data-track-index="1"><img id="kb-aifire" src="media/ai/ai-fire-glow-night.png" alt=""></section>
+  <section class="clip still-wrap" id="c-bluef" data-start="802.0" data-duration="14.7" data-track-index="1"><img id="kb-bluef" class="archgrade" src="media/photos/1925_-_Murphysboro_24_-_Blue_Front_Hotel_-_S_17th_St.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-hs-aer" data-start="816.7" data-duration="30.9" data-track-index="1"><img id="kb-hs-aer" class="archgrade" src="media/photos/1925_-_Murphysboro_21_-_High_School_Aerial.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-map3" data-start="847.6" data-duration="12.6" data-track-index="1"></section>
+  <section class="clip still-wrap" id="c-ds1" data-start="860.2" data-duration="10.5" data-track-index="1"><img id="kb-ds1" class="archgrade" src="media/photos/21-De_Soso_School_Damage_1.png" alt=""></section>
+  <section class="clip still-wrap" id="c-ds2" data-start="870.7" data-duration="10.0" data-track-index="1"><img id="kb-ds2" class="archgrade" src="media/photos/22-De_Soto_School_Damage_2.png" alt=""></section>
+  <section class="clip still-wrap" id="c-ds3" data-start="880.7" data-duration="9.5" data-track-index="1"><img id="kb-ds3" class="archgrade" src="media/photos/Illinois_-_Desoto_-_NARA_-_23939847.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-ds4" data-start="890.2" data-duration="9.3" data-track-index="1"><img id="kb-ds4" class="archgrade" src="media/photos/1925_-_De_Soto_-_Birds_Eye_View.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-sch0" data-start="899.5" data-duration="10.5" data-track-index="1"><img id="kb-sch0" class="archgrade" src="media/photos/20-De_Soto_School_1910.png" alt=""></section>
+  <section class="clip still-wrap" id="c-sch1" data-start="910.0" data-duration="10.0" data-track-index="1"><img id="kb-sch1" class="archgrade" src="media/photos/24-Plumfield_School_Demolished.png" alt=""></section>
+  <section class="clip still-wrap" id="c-sch2" data-start="920.0" data-duration="10.0" data-track-index="1"><img id="kb-sch2" class="archgrade" src="media/photos/28-White_County_Newman_School.png" alt=""></section>
+  <section class="clip still-wrap" id="c-sch3" data-start="930.0" data-duration="10.0" data-track-index="1"><img id="kb-sch3" class="archgrade" src="media/photos/X3_Enfield_-_Trousdale_School_SE_of_Town.png" alt=""></section>
+  <video id="vx-st-rain2" class="clip stockgrade" src="media/stock/stock-rainfield-02.mp4" data-start="940.0" data-duration="32.0" data-track-index="1" muted loop></video>
+  <section class="clip still-wrap" id="c-dshold" data-start="972.0" data-duration="11.5" data-track-index="1"><img id="kb-dshold" class="archgrade" src="media/photos/Illinois_-_Desoto_-_NARA_-_23939845.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-aiminer" data-start="983.5" data-duration="10.0" data-track-index="1"><img id="kb-aiminer" src="media/ai/ai-miners-emerging.png" alt=""></section>
+  <section class="clip still-wrap" id="c-wf-mine" data-start="993.5" data-duration="9.5" data-track-index="1"><img id="kb-wf-mine" class="archgrade" src="media/photos/X_West_Frankfort3_-_Aerial_View_Orient_No_2_Mine.png" alt=""></section>
+  <section class="clip still-wrap" id="c-wf-aer" data-start="1003.0" data-duration="10.0" data-track-index="1"><img id="kb-wf-aer" class="archgrade" src="media/photos/X_West_Frankfort2_-_Aerial_View_West_Side_of_Town.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-wf-home" data-start="1013.0" data-duration="9.5" data-track-index="1"><img id="kb-wf-home" class="archgrade" src="media/photos/X_West_Frankfort1_-_Clyde_Reeds_Home.png" alt=""></section>
+  <section class="clip still-wrap" id="c-wf-kerley" data-start="1022.5" data-duration="10.4" data-track-index="1"><img id="kb-wf-kerley" class="archgrade" src="media/photos/X_West_Frankfort4_-_James_Kerley_Home.png" alt=""></section>
+  <section class="clip blackout" id="bo-map4" data-start="1032.9" data-duration="7.0" data-track-index="1"></section>
+  <section class="clip still-wrap" id="c-par1" data-start="1039.9" data-duration="9.5" data-track-index="1"><img id="kb-par1" class="archgrade" src="media/photos/X1_Hamilton_County_-_Lonnie_Smith_Home.png" alt=""></section>
+  <section class="clip still-wrap" id="c-par2" data-start="1049.4" data-duration="9.5" data-track-index="1"><img id="kb-par2" class="archgrade" src="media/photos/1925_tornado_damage_5.webp" alt=""></section>
+  <section class="clip blackout" id="bo-baro" data-start="1058.9" data-duration="30.0" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-map5" data-start="1088.9" data-duration="8.0" data-track-index="1"></section>
+  <section class="clip still-wrap" id="c-gr1" data-start="1096.9" data-duration="10.0" data-track-index="1"><img id="kb-gr1" class="archgrade" src="media/photos/29-Griffin_Devastation_1.png" alt=""></section>
+  <section class="clip still-wrap" id="c-gr2" data-start="1106.9" data-duration="11.4" data-track-index="1"><img id="kb-gr2" class="archgrade" src="media/photos/1925_-_Griffin_-_Brick_Buildings_Leveled_E_Side_of_Town.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-gr3" data-start="1118.3" data-duration="10.0" data-track-index="1"><img id="kb-gr3" class="archgrade" src="media/photos/30-Griffin_Devastation_2.png" alt=""></section>
+  <section class="clip still-wrap" id="c-aifire2" data-start="1128.3" data-duration="9.0" data-track-index="1" data-callback="fire motif returns for Griffin fires"><img id="kb-aifire2" src="media/ai/ai-fire-glow-night.png" alt=""></section>
+  <section class="clip still-wrap" id="c-gr4" data-start="1137.3" data-duration="10.9" data-track-index="1"><img id="kb-gr4" class="archgrade" src="media/photos/1925_-_Griffin_-_Tents_Amidst_Damage.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-map6" data-start="1148.2" data-duration="11.0" data-track-index="1"></section>
+  <section class="clip still-wrap" id="c-gr5" data-start="1159.2" data-duration="8.0" data-track-index="1"><img id="kb-gr5" class="archgrade" src="media/photos/1925_-_Griffin_-_Residential_Damage_1.jpg" alt=""></section>
+  <video id="vx-st-torn1" class="clip stockgrade" src="media/stock/stock-tornado-01.mp4" data-start="1167.2" data-duration="8.5" data-track-index="1" muted loop></video>
+  <video id="vx-st-roll1b" class="clip stockgrade" src="media/stock/stock-cloudsrolling-01.mp4" data-start="1175.7" data-duration="7.9" data-track-index="1" muted loop data-callback="rolling-sky motif under broken-every-rule beat"></video>
+  <section class="clip still-wrap" id="c-pr1" data-start="1183.6" data-duration="7.0" data-track-index="1"><img id="kb-pr1" class="archgrade" src="media/photos/1925_-_Princeton_-_Baldwin_Heights_Area_-_IA_PPL.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-pr2" data-start="1190.6" data-duration="7.0" data-track-index="1"><img id="kb-pr2" class="archgrade" src="media/photos/31-Princeton_Heinz_Plant.png" alt=""></section>
+  <section class="clip still-wrap" id="c-pr3" data-start="1197.6" data-duration="6.5" data-track-index="1"><img id="kb-pr3" class="archgrade" src="media/photos/1925_-_Princeton_-_Locomotive_Rolled_-_IA_GWC.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-pr4" data-start="1204.1" data-duration="6.2" data-track-index="1"><img id="kb-pr4" class="archgrade" src="media/photos/1925_-_Princeton_-_Family_on_Foundation_of_Destroyed_Home_-_IA_GWC.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-nm1" data-start="1210.3" data-duration="9.0" data-track-index="1"><img id="kb-nm1" class="archgrade" src="media/photos/1925_-_Princeton_-_McCaw_Subdivision_1_-_IA_GWC.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-nm2" data-start="1219.3" data-duration="8.5" data-track-index="1"><img id="kb-nm2" class="archgrade" src="media/photos/1925_tornado_damage_10.webp" alt=""></section>
+  <section class="clip still-wrap" id="c-nm3" data-start="1227.8" data-duration="8.5" data-track-index="1"><img id="kb-nm3" class="archgrade" src="media/photos/1925_tornado_damage_12.webp" alt=""></section>
+  <section class="clip still-wrap" id="c-nm4" data-start="1236.3" data-duration="8.7" data-track-index="1"><img id="kb-nm4" class="archgrade" src="media/photos/1925_-_Princeton_-_Homes_Destroyed_near_Southern_Shops_-_IA_GWC.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-map7" data-start="1245.0" data-duration="42.4" data-track-index="1"></section>
+  <section class="clip still-wrap" id="c-ng1" data-start="1287.4" data-duration="9.5" data-track-index="1"><img id="kb-ng1" class="archgrade" src="media/photos/1925_tornado_damage_14.png" alt=""></section>
+  <section class="clip still-wrap" id="c-ng2" data-start="1296.9" data-duration="9.5" data-track-index="1"><img id="kb-ng2" class="archgrade" src="media/photos/1925_tornado_damage_15.png" alt=""></section>
+  <section class="clip still-wrap" id="c-ng3" data-start="1306.4" data-duration="10.0" data-track-index="1"><img id="kb-ng3" class="archgrade" src="media/photos/1925_tornado_damage_11.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-relief" data-start="1316.4" data-duration="14.0" data-track-index="1"></section>
+  <section class="clip still-wrap" id="c-rl1" data-start="1330.4" data-duration="10.0" data-track-index="1"><img id="kb-rl1" class="archgrade" src="media/photos/1925_tornado_damage_4.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-rl2" data-start="1340.4" data-duration="9.5" data-track-index="1"><img id="kb-rl2" class="archgrade" src="media/photos/1925_tornado_damage_2.webp" alt=""></section>
+  <section class="clip still-wrap" id="c-rl3" data-start="1349.9" data-duration="10.0" data-track-index="1"><img id="kb-rl3" class="archgrade" src="media/photos/1925_tornado_damage_8.webp" alt=""></section>
+  <section class="clip still-wrap" id="c-rc1" data-start="1359.9" data-duration="10.5" data-track-index="1"><img id="kb-rc1" class="archgrade" src="media/photos/23-Royalton-Colp_Road_Bridge.png" alt=""></section>
+  <section class="clip still-wrap" id="c-rc2" data-start="1370.4" data-duration="10.0" data-track-index="1" data-callback="tent-relief beat revisits Kerley homestead"><img id="kb-rc2" class="archgrade" src="media/photos/X_West_Frankfort4_-_James_Kerley_Home.png" alt=""></section>
+  <section class="clip still-wrap" id="c-rc3" data-start="1380.4" data-duration="10.6" data-track-index="1"><img id="kb-rc3" class="archgrade" src="media/photos/1925_tornado_damage_1.webp" alt=""></section>
+  <section class="clip pfit" id="c-marvin" data-start="1391.0" data-duration="13.0" data-track-index="1"><img class="pbg" src="media/portraits/marvin-portrait-01.jpg" alt=""><img id="kb-marvin" class="pfg archgrade" src="media/portraits/marvin-portrait-01.jpg" alt=""></section>
+  <video id="vx-st-omen2b" class="clip stockgrade" src="media/stock/stock-cloudsomen-02.mp4" data-start="1404.0" data-duration="19.1" data-track-index="1" muted loop data-callback="ominous-sky motif under no-safety-net beat"></video>
+  <section class="clip pfit" id="c-np2" data-start="1423.1" data-duration="10.5" data-track-index="1"><img class="pbg" src="media/newspapers/The_Evansville_Press_Front_page_-_1925_tornado_coverage.jpg" alt=""><img id="kb-np2" class="pfg" src="media/newspapers/The_Evansville_Press_Front_page_-_1925_tornado_coverage.jpg" alt=""></section>
+  <section class="clip pfit" id="c-np3" data-start="1433.6" data-duration="10.0" data-track-index="1"><img class="pbg" src="media/newspapers/Marion_Evening_Post_Front_page_-_1925_tornado_coverage.jpg" alt=""><img id="kb-np3" class="pfg" src="media/newspapers/Marion_Evening_Post_Front_page_-_1925_tornado_coverage.jpg" alt=""></section>
+  <section class="clip pfit" id="c-np4" data-start="1443.6" data-duration="11.1" data-track-index="1"><img class="pbg" src="media/newspapers/Anderson_Daily_Bulletin_Front_page_-_1925_tornado_coverage.png" alt=""><img id="kb-np4" class="pfg" src="media/newspapers/Anderson_Daily_Bulletin_Front_page_-_1925_tornado_coverage.png" alt=""></section>
+  <section class="clip pfit" id="c-np5" data-start="1454.7" data-duration="12.0" data-track-index="1"><img class="pbg" src="media/newspapers/The_Butte_Daily_Post_Front_page_-_1925_tornado_coverage.jpg" alt=""><img id="kb-np5" class="pfg" src="media/newspapers/The_Butte_Daily_Post_Front_page_-_1925_tornado_coverage.jpg" alt=""></section>
+  <section class="clip pfit" id="c-np6" data-start="1466.7" data-duration="11.5" data-track-index="1"><img class="pbg" src="media/newspapers/The_Fresno_Morning_Republican_Front_page_-_1925_tornado_coverage.jpg" alt=""><img id="kb-np6" class="pfg" src="media/newspapers/The_Fresno_Morning_Republican_Front_page_-_1925_tornado_coverage.jpg" alt=""></section>
+  <section class="clip pfit" id="c-np-her2" data-start="1478.2" data-duration="11.7" data-track-index="1" data-callback="Herald headline returns as the toll-settles beat"><img class="pbg" src="media/newspapers/Chicago_Herald_Examiner_Front_page_1925-03-20.jpg" alt=""><img id="kb-np-her2" class="pfg" src="media/newspapers/Chicago_Herald_Examiner_Front_page_1925-03-20.jpg" alt=""></section>
+  <video id="vx-mvcenter" class="clip archgrade" src="media/film/mvtn-centerpiece-aerial-30s.mp4" data-start="1489.9" data-duration="30.0" data-track-index="1" muted></video>
+  <video id="vx-mvhook1b" class="clip archgrade" src="media/film/mvtn-hook-aerial-bank-4s.mp4" data-start="1519.9" data-duration="4.0" data-track-index="1" muted data-callback="hook film returns inside newsreel centerpiece"></video>
+  <video id="vx-mvaercb" class="clip archgrade" src="media/film/mvtn-aerial-c-8s.mp4" data-start="1523.9" data-duration="8.0" data-track-index="1" muted data-callback="aerial-c returns inside newsreel centerpiece"></video>
+  <video id="vx-mvgroundb" class="clip archgrade" src="media/film/mvtn-ground-b-6s.mp4" data-start="1531.9" data-duration="6.0" data-track-index="1" muted data-callback="ground-b returns inside newsreel centerpiece"></video>
+  <section class="clip still-wrap" id="c-mvtail" data-start="1537.9" data-duration="3.4" data-track-index="1" data-callback="NOAA still closes the newsreel sequence"><img id="kb-mvtail" class="archgrade" src="media/photos/Wea00239_-_Flickr_-_NOAA_Photo_Library.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-cost1" data-start="1541.3" data-duration="14.0" data-track-index="1"><img id="kb-cost1" class="archgrade" src="media/photos/1925_tornado_damage_6.webp" alt=""></section>
+  <section class="clip still-wrap" id="c-cost2" data-start="1555.3" data-duration="10.0" data-track-index="1"><img id="kb-cost2" class="archgrade" src="media/photos/1925_tornado_damage_9.webp" alt=""></section>
+  <section class="clip still-wrap" id="c-cost3" data-start="1565.3" data-duration="10.3" data-track-index="1"><img id="kb-cost3" class="archgrade" src="media/photos/07-Perry_County_Destruction.png" alt=""></section>
+  <video id="vx-st-omen1c" class="clip stockgrade" src="media/stock/stock-cloudsomen-01.mp4" data-start="1575.6" data-duration="12.0" data-track-index="1" muted loop data-callback="ominous-sky motif closes under the song beat"></video>
+  <section class="clip still-wrap" id="c-song1" data-start="1587.6" data-duration="13.2" data-track-index="1"><img id="kb-song1" class="archgrade" src="media/photos/Tri_State_Tornado.jpg" alt=""></section>
+  <video id="vx-mvrebuild" class="clip archgrade" src="media/film/mvtn-rebuild-bricklayers-12s.mp4" data-start="1600.8" data-duration="12.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-rm1" data-start="1612.8" data-duration="9.0" data-track-index="1"><img id="kb-rm1" class="archgrade" src="media/photos/1925_-_De_Soto_-_Aftermath_Where_Homes_Were.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-rm2" data-start="1621.8" data-duration="9.0" data-track-index="1"><img id="kb-rm2" class="archgrade" src="media/photos/1925_-_De_Soto_-_Business_District.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-rm3" data-start="1630.8" data-duration="10.1" data-track-index="1"><img id="kb-rm3" class="archgrade" src="media/photos/1925_-_De_Soto_-_Business_District2.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-a6" data-start="1640.9" data-duration="4.5" data-track-index="1"></section>
+  <video id="vx-st-roll2b" class="clip stockgrade" src="media/stock/stock-cloudsrolling-02.mp4" data-start="1645.4" data-duration="23.3" data-track-index="1" muted loop data-callback="rolling-sky motif under word-ban bookend"></video>
+  <section class="clip blackout" id="bo-legacy1" data-start="1668.7" data-duration="163.5" data-track-index="1"></section>
+  <section class="clip pfit" id="c-fujita" data-start="1832.2" data-duration="16.0" data-track-index="1"><img class="pbg" src="media/portraits/fujita-portrait-01.jpg" alt=""><img id="kb-fujita" class="pfg archgrade" src="media/portraits/fujita-portrait-01.jpg" alt=""></section>
+  <video id="vx-st-light1" class="clip stockgrade" src="media/stock/stock-lightning-01.mp4" data-start="1848.2" data-duration="28.8" data-track-index="1" muted loop></video>
+  <video id="vx-st-torn2" class="clip stockgrade" src="media/stock/stock-tornado-02.mp4" data-start="1877.0" data-duration="10.0" data-track-index="1" muted loop></video>
+  <section class="clip blackout" id="bo-modern" data-start="1887.0" data-duration="17.0" data-track-index="1"></section>
+  <video id="vx-st-light2" class="clip stockgrade" src="media/stock/stock-lightning-02.mp4" data-start="1904.0" data-duration="8.3" data-track-index="1" muted loop></video>
+  <video id="vx-st-rain1b" class="clip stockgrade" src="media/stock/stock-rainfield-01.mp4" data-start="1912.3" data-duration="12.0" data-track-index="1" muted loop data-callback="rain motif under preparedness beat"></video>
+  <section class="clip blackout" id="bo-prep" data-start="1924.3" data-duration="13.0" data-track-index="1"></section>
+  <video id="vx-st-grass2" class="clip stockgrade" src="media/stock/stock-windgrass-02.mp4" data-start="1937.3" data-duration="10.7" data-track-index="1" muted loop></video>
+  <section class="clip pfit" id="c-cl1" data-start="1948.0" data-duration="9.5" data-track-index="1"><img class="pbg" src="media/photos/1925_-_Princeton_-_Princeton_Clarion-News_-_IA_GWC.jpg" alt=""><img id="kb-cl1" class="pfg" src="media/photos/1925_-_Princeton_-_Princeton_Clarion-News_-_IA_GWC.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-cl2" data-start="1957.5" data-duration="9.0" data-track-index="1"><img id="kb-cl2" class="archgrade" src="media/photos/1925_-_Griffin_-_Building_Destroyed.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-cl3" data-start="1966.5" data-duration="9.8" data-track-index="1"><img id="kb-cl3" class="archgrade" src="media/photos/1925_-_Griffin_-_Griffin_School_1.jpg" alt=""></section>
+  <video id="vx-st-grass1b" class="clip stockgrade" src="media/stock/stock-windgrass-01.mp4" data-start="1976.3" data-duration="10.0" data-track-index="1" muted loop data-callback="wind-grass motif as the land-remembers image"></video>
+  <section class="clip still-wrap" id="c-land2" data-start="1986.3" data-duration="9.0" data-track-index="1" data-callback="empty-field frame returns as the Parrish site today"><img id="kb-land2" class="archgrade" src="media/photos/1925_tornado_damage_5.webp" alt=""></section>
+  <video id="vx-st-roll3b" class="clip stockgrade" src="media/stock/stock-cloudsrolling-03.mp4" data-start="1995.3" data-duration="9.6" data-track-index="1" muted loop data-callback="rolling-sky motif closes the land-remembers beat"></video>
+  <section class="clip still-wrap" id="c-quest" data-start="2004.9" data-duration="33.9" data-track-index="1" data-callback="the aerial from the sources beat carries the closing question"><img id="kb-quest" class="archgrade" src="media/photos/13-Murphysboro_Aerial.png" alt=""></section>
+  <section class="clip still-wrap" id="c-ded1" data-start="2038.8" data-duration="7.0" data-track-index="1"><img id="kb-ded1" class="archgrade" src="media/photos/1925_-_Princeton_-_Baldwin_Heights_School_1_-_IA_PPL.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-ded2" data-start="2045.8" data-duration="7.0" data-track-index="1"><img id="kb-ded2" class="archgrade" src="media/photos/1925_-_Murphysboro_29_-_North_9th_Street_Park.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-ded3" data-start="2052.8" data-duration="7.2" data-track-index="1"><img id="kb-ded3" class="archgrade" src="media/photos/1925_-_Murphysboro_2_-_Murphysboro_Township_High_School.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-close" data-start="2060.0" data-duration="11.0" data-track-index="1"><img id="kb-close" class="archgrade" src="media/photos/1925_-_Murphysboro_10_-_Homes_Destroyed.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-close" data-start="2071.0" data-duration="31.0" data-track-index="1"></section>
+
+  <!-- ======== TRACK 2 — GRAPHICS ======== -->
+  <section class="gfx clip" id="g-wordban" data-start="42.2" data-duration="42.4" data-track-index="2"></section>
+  <section class="gfx clip" id="g-finley" data-start="85.0" data-duration="36.3" data-track-index="2"></section>
+  <section class="gfx clip" id="g-forecast" data-start="122.1" data-duration="23.8" data-track-index="2"></section>
+  <section class="gfx clip" id="g-sources" data-start="146.2" data-duration="30.4" data-track-index="2"></section>
+  <section class="gfx clip" id="g-metmap" data-start="218.4" data-duration="35.6" data-track-index="2"></section>
+  <section class="gfx clip" id="g-profile" data-start="254.5" data-duration="31.3" data-track-index="2"></section>
+  <section class="gfx clip" id="g-sweet" data-start="286.2" data-duration="37.2" data-track-index="2"></section>
+  <section class="gfx clip" id="g-map1" data-start="383.0" data-duration="60.0" data-track-index="2"></section>
+  <section class="gfx clip" id="g-wires" data-start="501.9" data-duration="14.0" data-track-index="2"></section>
+  <section class="gfx clip" id="g-map2" data-start="539.3" data-duration="25.0" data-track-index="2"></section>
+  <section class="gfx clip" id="g-map3" data-start="847.6" data-duration="12.5" data-track-index="2"></section>
+  <section class="gfx clip" id="g-sch48" data-start="940.0" data-duration="34.8" data-track-index="2"></section>
+  <section class="gfx clip" id="g-map4" data-start="1032.9" data-duration="7.0" data-track-index="2"></section>
+  <section class="gfx clip" id="g-baro" data-start="1058.9" data-duration="29.9" data-track-index="2"></section>
+  <section class="gfx clip" id="g-map5" data-start="1088.9" data-duration="8.0" data-track-index="2"></section>
+  <section class="gfx clip" id="g-map6" data-start="1148.2" data-duration="11.0" data-track-index="2"></section>
+  <section class="gfx clip" id="g-map7" data-start="1245.0" data-duration="42.4" data-track-index="2"></section>
+  <section class="gfx clip" id="g-relief" data-start="1316.4" data-duration="14.0" data-track-index="2"></section>
+  <section class="gfx clip" id="g-nonet" data-start="1391.0" data-duration="31.9" data-track-index="2"></section>
+  <section class="gfx clip" id="g-climb" data-start="1454.7" data-duration="34.7" data-track-index="2"></section>
+  <section class="gfx clip" id="g-cost" data-start="1541.3" data-duration="14.0" data-track-index="2"></section>
+  <section class="gfx clip" id="g-song" data-start="1575.6" data-duration="24.9" data-track-index="2"></section>
+  <section class="gfx clip" id="g-wordban2" data-start="1645.4" data-duration="23.0" data-track-index="2" data-callback="thesis bookend strike-through returns"></section>
+  <section class="gfx clip" id="g-timeline" data-start="1668.7" data-duration="42.2" data-track-index="2"></section>
+  <section class="gfx clip" id="g-family" data-start="1711.2" data-duration="38.6" data-track-index="2"></section>
+  <section class="gfx clip" id="g-remeasure" data-start="1750.4" data-duration="45.7" data-track-index="2"></section>
+  <section class="gfx clip" id="g-compare" data-start="1796.5" data-duration="35.3" data-track-index="2"></section>
+  <section class="gfx clip" id="g-fujita" data-start="1832.2" data-duration="44.5" data-track-index="2"></section>
+  <section class="gfx clip" id="g-modern" data-start="1877.0" data-duration="35.3" data-track-index="2"></section>
+  <section class="gfx clip" id="g-prep" data-start="1912.3" data-duration="35.4" data-track-index="2"></section>
+  <section class="gfx clip" id="g-close" data-start="2064.0" data-duration="20.0" data-track-index="2"></section>
+  <section class="gfx clip" id="g-credits" data-start="2086.0" data-duration="16.0" data-track-index="2"></section>
+
+  <!-- ======== TRACK 3 — CHIPS / SOURCE LABELS ======== -->
+  <section class="clip" id="card-date" data-start="0.3" data-duration="15.5" data-track-index="3" style="z-index:8"></section>
+  <section id="chip-mvtn1" class="srclab clip" data-start="17.4" data-duration="19.7" data-track-index="3">Film: Fox Movietone News — Moving Image Research Collections, Univ. of South Carolina</section>
+  <section id="chip-mvtn2" class="srclab clip" data-start="674.9" data-duration="7.0" data-track-index="3" data-callback="MVTN credit shown on each distinct film window">Film: Fox Movietone News — Univ. of South Carolina MIRC</section>
+  <section id="chip-nws" class="srclab clip" data-start="443.1" data-duration="26.0" data-track-index="3">Photos: NWS Paducah 1925 Tri-State Tornado archive</section>
+  <section id="chip-jchs" class="srclab clip" data-start="649.6" data-duration="11.5" data-track-index="3">Artifact photo: Jackson County Historical Society</section>
+  <section id="chip-nara" class="srclab clip" data-start="880.7" data-duration="9.5" data-track-index="3">Photo: National Archives (NARA)</section>
+  <section id="chip-ia" class="srclab clip" data-start="1183.6" data-duration="26.7" data-track-index="3">Photos: The Indiana Album — Princeton Public Library / Greg Wright Collection</section>
+  <section id="chip-hazen" class="srclab clip" data-start="84.6" data-duration="16.0" data-track-index="3">Portrait: Brady-Handy Collection, Library of Congress</section>
+  <section id="chip-mvtn3" class="srclab clip" data-start="1489.9" data-duration="51.4" data-track-index="3" data-callback="MVTN credit shown on each distinct film window">Film: Fox Movietone News — Univ. of South Carolina MIRC</section>
+  <section id="chip-mvtn4" class="srclab clip" data-start="1600.8" data-duration="12.0" data-track-index="3" data-callback="MVTN credit shown on each distinct film window">Film: Fox Movietone News, August 1925 — Univ. of South Carolina MIRC</section>
+  <section id="chip-fujita" class="srclab clip" data-start="1832.2" data-duration="16.0" data-track-index="3">Photo: 1972 press photograph, public domain</section>
+  <section id="chip-recre" class="srclab clip" data-start="356.9" data-duration="15.2" data-track-index="3">Recreation</section>
+
+  <!-- ======== TRACK 5/6/7 — QUOTES, PANELS, LOWER THIRDS ======== -->
+  <section id="q-gorham" class="quotecard clip" data-start="610.0" data-duration="11.0" data-track-index="5"><div class="q">“The air was full of everything — boards, branches of trees,<br>garments, stoves, all churning around together.”</div><div class="attr">SURVIVOR ACCOUNT — ST. LOUIS POST-DISPATCH, MARCH 1925</div></section>
+  <section id="q-rows" class="quotecard clip" data-start="758.5" data-duration="10.0" data-track-index="5"><div class="q">“The dead lay in rows, awaiting names.”</div><div class="attr">ST. LOUIS POST-DISPATCH, MARCH 1925</div></section>
+
+  <section id="sp-lone" class="spanel amber clip" data-start="330.0" data-duration="14.0" data-track-index="6"></section>
+  <section id="sp-annap" class="spanel amber clip" data-start="459.5" data-duration="8.6" data-track-index="6"></section>
+  <section id="sp-gorham" class="spanel clip" data-start="627.0" data-duration="8.0" data-track-index="6"></section>
+  <section id="sp-f5" class="spanel clip" data-start="661.5" data-duration="12.0" data-track-index="6"></section>
+  <section id="sp-arith" class="spanel clip" data-start="820.0" data-duration="26.0" data-track-index="6"></section>
+  <section id="sp-desoto" class="spanel clip" data-start="874.5" data-duration="10.0" data-track-index="6"></section>
+  <section id="sp-wf" class="spanel clip" data-start="1013.5" data-duration="9.5" data-track-index="6"></section>
+  <section id="sp-parrish" class="spanel clip" data-start="1040.5" data-duration="8.5" data-track-index="6"></section>
+  <section id="sp-griffin" class="spanel clip" data-start="1097.4" data-duration="9.0" data-track-index="6"></section>
+  <section id="sp-princeton" class="spanel clip" data-start="1198.0" data-duration="8.0" data-track-index="6"></section>
+  <section id="sp-redcross" class="spanel amber clip" data-start="1363.0" data-duration="10.5" data-track-index="6"></section>
+
+  <section id="lt-gorham" class="lt clip" data-start="601.9" data-duration="8.0" data-track-index="7"><div class="lt-loc">GORHAM, ILLINOIS</div><div class="lt-time">2:26 PM — POPULATION 500</div></section>
+  <section id="lt-murph" class="lt clip" data-start="674.9" data-duration="8.0" data-track-index="7"><div class="lt-loc">MURPHYSBORO, ILLINOIS</div><div class="lt-time">2:34 PM — POPULATION 12,000</div></section>
+  <section id="lt-desoto" class="lt clip" data-start="860.2" data-duration="8.0" data-track-index="7"><div class="lt-loc">DE SOTO, ILLINOIS</div><div class="lt-time">2:45 PM — POPULATION 600</div></section>
+  <section id="lt-wf" class="lt clip" data-start="983.5" data-duration="8.0" data-track-index="7"><div class="lt-loc">WEST FRANKFORT, ILLINOIS</div><div class="lt-time">3:00 PM — POPULATION 18,000</div></section>
+  <section id="lt-princeton" class="lt clip" data-start="1183.6" data-duration="8.0" data-track-index="7"><div class="lt-loc">PRINCETON, INDIANA</div><div class="lt-time">4:18 PM — POPULATION 10,000</div></section>
+
+  <div id="vignette"></div>
+  <canvas id="grain" width="480" height="270"></canvas>
+  <div id="grade"></div>
+</div>
+
+<script src="grain.js"></script>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 2102;
+
+  /* ---------- MUSIC ---------- */
+  const bed = (id, pts) => pts.forEach(p => tl.to(id, { volume: p[1], duration: p[2] || 2 }, p[0]));
+  bed("#bgm-dread1", [[39,0.09],[218,0.06],[286,0.09],[375,0.0,2.5]]);
+  bed("#bgm-tense1", [[382,0.10],[593.5,0.0,2.5]]);
+  bed("#bgm-somber1", [[600,0.09],[860,0.06],[948.5,0.0,2]]);
+  bed("#bgm-somber1b", [[953.5,0.06],[971.5,0.03],[983,0.08],[1084.5,0.0,2]]);
+  bed("#bgm-tense2", [[1088,0.09],[1276,0.12],[1280.5,0.0,2]]);
+  bed("#bgm-somber2", [[1286,0.09],[1489,0.06],[1541,0.09],[1636.5,0.0,2]]);
+  bed("#bgm-neutral1", [[1644,0.09],[1994.5,0.0,2]]);
+  bed("#bgm-hope1", [[2001,0.10],[2064,0.14,1.5],[2098,0.0,3]]);
+
+  /* ---------- SFX ---------- */
+  tl.to("#sfx-rumble", { volume: 0.55, duration: 2.0 }, 0.3);
+  tl.to("#sfx-rumble", { volume: 0.75, duration: 1.0 }, 17.0);
+  tl.to("#sfx-rumble", { volume: 0.0, duration: 2.5 }, 35.0);
+  tl.to("#sfx-wind1", { volume: 0.75, duration: 3 }, 357);
+  tl.to("#sfx-wind1", { volume: 0.0, duration: 2.5 }, 379.0);
+  tl.to("#sfx-wind2", { volume: 0.85, duration: 2 }, 971.5);
+  tl.to("#sfx-wind2", { volume: 0.0, duration: 2 }, 980.0);
+
+  /* ---------- Ken Burns ---------- */
+  function kb(sel, at, dur, s0, s1, x0, x1, y0, y1) {
+    tl.fromTo(sel, { scale: s0, x: x0, y: y0, transformOrigin: "50% 50%" },
+                   { scale: s1, x: x1, y: y1, duration: dur, ease: "none" }, at);
+  }
+  const KB = [
+  ["#kb-hk0",0,5.6,1.02,1.12,0,-16,0,-10],["#kb-hk1",5.6,5.8,1.12,1.03,14,0,8,0],["#kb-hk2",11.4,6.0,1.02,1.12,0,12,0,10],
+  ["#kb-hk4",25.4,5.7,1.0,1.09,0,-14,0,-8],["#kb-hazen",84.6,16.0,1.0,1.1,0,0,0,-14],
+  ["#kb-src2",153.8,11.5,1.02,1.3,0,0,20,90],["#kb-src3",165.3,11.3,1.0,1.1,0,-14,0,-10],
+  ["#kb-pre1",176.6,14.0,1.0,1.1,0,-20,0,-12],["#kb-pre2",190.6,13.5,1.1,1.0,-16,0,-10,0],["#kb-annap-pre",204.1,14.1,1.0,1.09,0,16,0,8],
+  ["#kb-aifarm",356.9,7.6,1.0,1.07,0,-10,0,-6],["#kb-aikids",364.5,7.6,1.05,1.12,0,-14,0,-8],
+  ["#kb-ann1",443.1,9.0,1.0,1.09,0,-12,0,-8],["#kb-ann2",452.1,8.0,1.08,1.0,-10,0,-8,0],["#kb-ann3",460.1,9.0,1.0,1.08,0,12,0,8],
+  ["#kb-boll",469.1,8.0,1.0,1.08,0,-10,0,-6],["#kb-biehle1",477.1,8.0,1.08,1.0,10,0,6,0],["#kb-aiwall",485.1,8.4,1.0,1.1,0,0,0,-14],["#kb-biehle2",493.5,8.2,1.0,1.07,0,-10,0,-6],
+  ["#kb-aiwires",515.7,11.0,1.0,1.09,0,-14,0,-10],
+  ["#kb-orient",564.3,12.0,1.0,1.1,0,-16,0,-10],["#kb-coalcars",576.3,11.0,1.08,1.0,-12,0,-8,0],
+  ["#kb-gor1",601.9,9.0,1.0,1.09,0,-12,0,-8],["#kb-gor2",610.9,8.5,1.09,1.0,-12,0,-6,0],["#kb-gor3",619.4,8.0,1.0,1.08,0,10,0,6],["#kb-gor4",627.4,11.7,1.0,1.1,0,-12,0,-10],
+  ["#kb-deb1",639.1,10.5,1.0,1.09,0,-10,0,-8],["#kb-deb2",649.6,11.5,1.02,1.16,0,0,0,-14],["#kb-deb3",661.1,13.8,1.0,1.08,0,-12,0,-6],
+  ["#kb-mur-rail",681.9,7.0,1.0,1.08,0,-10,0,-6],["#kb-mur-14th",688.9,7.1,1.08,1.0,-10,0,-8,0],
+  ["#kb-mur-aer",696.0,11.5,1.0,1.12,0,-20,0,-14],["#kb-mur-mill",707.5,8.5,1.0,1.08,0,10,0,6],["#kb-mur-hort",716.0,8.3,1.08,1.0,10,0,6,0],["#kb-mur-10th",724.3,8.9,1.0,1.08,0,-10,0,-8],
+  ["#kb-longf",733.2,12.0,1.0,1.12,0,0,0,-16],["#kb-logan",745.2,10.8,1.05,1.12,0,-12,0,-8],
+  ["#kb-rep1",756.0,13.0,1.0,1.09,0,-12,0,-8],["#kb-np-her1",769.0,14.0,1.0,1.32,0,0,30,110],
+  ["#kb-fire1",783.0,10.0,1.0,1.09,0,-10,0,-8],["#kb-aifire",793.0,9.0,1.02,1.1,0,-8,0,-10],["#kb-bluef",802.0,14.7,1.0,1.1,0,-14,0,-10],
+  ["#kb-hs-aer",816.7,30.9,1.0,1.14,0,-24,0,-16],
+  ["#kb-ds1",860.2,10.5,1.0,1.1,0,0,0,-12],["#kb-ds2",870.7,10.0,1.05,1.13,0,-10,0,-8],["#kb-ds3",880.7,9.5,1.0,1.08,0,12,0,6],["#kb-ds4",890.2,9.3,1.08,1.0,-12,0,-8,0],
+  ["#kb-sch0",899.5,10.5,1.0,1.08,0,-8,0,-8],["#kb-sch1",910.0,10.0,1.06,1.0,8,0,6,0],["#kb-sch2",920.0,10.0,1.0,1.07,0,8,0,6],["#kb-sch3",930.0,10.0,1.0,1.09,0,-12,0,-8],
+  ["#kb-dshold",972.0,11.5,1.0,1.06,0,-8,0,-6],
+  ["#kb-aiminer",983.5,10.0,1.0,1.08,0,0,0,-10],["#kb-wf-mine",993.5,9.5,1.0,1.09,0,-10,0,-8],["#kb-wf-aer",1003.0,10.0,1.0,1.1,0,-14,0,-8],["#kb-wf-home",1013.0,9.5,1.0,1.07,0,8,0,6],["#kb-wf-kerley",1022.5,10.4,1.07,1.0,-8,0,-6,0],
+  ["#kb-par1",1039.9,9.5,1.0,1.08,0,-10,0,-6],["#kb-par2",1049.4,9.5,1.04,1.12,0,-10,0,-10],
+  ["#kb-gr1",1096.9,10.0,1.0,1.08,0,-10,0,-6],["#kb-gr2",1106.9,11.4,1.08,1.0,-10,0,-8,0],
+  ["#kb-gr3",1118.3,10.0,1.0,1.08,0,10,0,6],["#kb-aifire2",1128.3,9.0,1.05,1.12,0,-8,0,-8],["#kb-gr4",1137.3,10.9,1.06,1.0,8,0,6,0],
+  ["#kb-gr5",1159.2,8.0,1.0,1.08,0,-10,0,-8],
+  ["#kb-pr1",1183.6,7.0,1.0,1.07,0,-8,0,-6],["#kb-pr2",1190.6,7.0,1.07,1.0,-8,0,-6,0],["#kb-pr3",1197.6,6.5,1.0,1.07,0,8,0,6],["#kb-pr4",1204.1,6.2,1.0,1.1,0,0,0,-10],
+  ["#kb-nm1",1210.3,9.0,1.0,1.08,0,-10,0,-6],["#kb-nm2",1219.3,8.5,1.07,1.0,-8,0,-6,0],["#kb-nm3",1227.8,8.5,1.0,1.07,0,8,0,6],["#kb-nm4",1236.3,8.7,1.0,1.08,0,-10,0,-8],
+  ["#kb-ng1",1287.4,9.5,1.0,1.08,0,-10,0,-8],["#kb-ng2",1296.9,9.5,1.07,1.0,-10,0,-6,0],["#kb-ng3",1306.4,10.0,1.0,1.08,0,10,0,6],
+  ["#kb-rl1",1330.4,10.0,1.0,1.08,0,-10,0,-8],["#kb-rl2",1340.4,9.5,1.07,1.0,-8,0,-6,0],["#kb-rl3",1349.9,10.0,1.0,1.08,0,8,0,6],
+  ["#kb-rc1",1359.9,10.5,1.0,1.08,0,-10,0,-6],["#kb-rc2",1370.4,10.0,1.07,1.0,-8,0,-6,0],["#kb-rc3",1380.4,10.6,1.0,1.08,0,8,0,6],
+  ["#kb-marvin",1391.0,13.0,1.0,1.08,0,0,0,-10],
+  ["#kb-np2",1423.1,10.5,1.02,1.22,0,0,20,80],["#kb-np3",1433.6,10.0,1.02,1.22,0,0,20,80],["#kb-np4",1443.6,11.1,1.02,1.22,0,0,20,80],
+  ["#kb-np5",1454.7,12.0,1.02,1.2,0,0,20,70],["#kb-np6",1466.7,11.5,1.02,1.2,0,0,20,70],["#kb-np-her2",1478.2,11.7,1.05,1.3,0,0,30,100],
+  ["#kb-mvtail",1537.9,3.4,1.04,1.08,0,-6,0,-4],
+  ["#kb-cost1",1541.3,14.0,1.0,1.09,0,-12,0,-8],["#kb-cost2",1555.3,10.0,1.07,1.0,-8,0,-6,0],["#kb-cost3",1565.3,10.3,1.0,1.08,0,8,0,6],
+  ["#kb-song1",1587.6,13.2,1.0,1.09,0,-12,0,-8],
+  ["#kb-rm1",1612.8,9.0,1.0,1.08,0,-8,0,-6],["#kb-rm2",1621.8,9.0,1.07,1.0,-8,0,-6,0],["#kb-rm3",1630.8,10.1,1.0,1.09,0,-10,0,-8],
+  ["#kb-fujita",1832.2,16.0,1.0,1.09,0,0,0,-12],
+  ["#kb-cl1",1948.0,9.5,1.02,1.2,0,0,20,70],["#kb-cl2",1957.5,9.0,1.0,1.08,0,-8,0,-6],["#kb-cl3",1966.5,9.8,1.07,1.0,-8,0,-6,0],
+  ["#kb-land2",1986.3,9.0,1.0,1.07,0,-8,0,-6],
+  ["#kb-quest",2004.9,33.9,1.0,1.12,0,-20,0,-14],
+  ["#kb-ded1",2038.8,7.0,1.0,1.07,0,-8,0,-6],["#kb-ded2",2045.8,7.0,1.06,1.0,-6,0,-6,0],["#kb-ded3",2052.8,7.2,1.0,1.07,0,6,0,6],
+  ["#kb-close",2060.0,11.0,1.0,1.07,0,-8,0,-6]];
+  KB.forEach(a => kb(...a));
+  tl.to("#c-close", { autoAlpha: 0, duration: 2.0 }, 2069.0);
+
+  /* ---------- side panel builder ---------- */
+  function panel(id, at, dur, head, rows, big) {
+    const h = document.getElementById(id);
+    let html = '<div class="sp-h">' + head + '</div>';
+    if (big) html += '<div class="sp-big" id="' + id + '-big">' + big + '</div>';
+    rows.forEach((r, i) => { html += '<div class="sp-r" id="' + id + '-r' + i + '">' + r[0] + '</div>'; });
+    h.innerHTML = html;
+    gsap.set(h, { x: 620, autoAlpha: 0 });
+    tl.to(h, { x: 0, autoAlpha: 1, duration: 0.55, ease: "power2.out" }, at + 0.1);
+    if (big) tl.to("#" + id + "-big", { opacity: 1, duration: 0.4 }, at + 0.7);
+    rows.forEach((r, i) => tl.to("#" + id + "-r" + i, { opacity: 1, duration: 0.45 }, at + r[1]));
+    tl.to(h, { x: 660, autoAlpha: 0, duration: 0.5, ease: "power2.in" }, at + dur - 0.6);
+  }
+  panel("sp-lone", 330.0, 14.0, "THE PARENT STORM", [["~413 miles in about 7 hours", 1.5],["One isolated supercell", 3.5],["Among the longest-lived ever documented", 5.5]]);
+  panel("sp-annap", 459.5, 8.6, "ANNAPOLIS, MISSOURI", [["Nine of every ten buildings destroyed", 1.6],["Mining town of a few hundred", 3.4]]);
+  panel("sp-gorham", 627.0, 8.0, "GORHAM, ILLINOIS", [["One of every fifteen residents killed", 2.0]], "34 DEAD");
+  panel("sp-f5", 661.5, 12.0, "MODERN DAMAGE SURVEYS", [["Planks driven through living trees", 1.8],["The highest rating wind can earn", 4.0]], "RATED F5");
+  panel("sp-arith", 820.0, 26.0, "MURPHYSBORO — THREE MINUTES", [["623 injured", 6.5],["More than one person killed or wounded", 12.0],["EVERY SECOND inside the city limits", 13.5],["No town has ever lost more to a tornado", 18.0]], "234 DEAD");
+  panel("sp-desoto", 874.5, 10.0, "DE SOTO SCHOOL", [["Deadliest school tornado disaster in US history", 2.2]], "33 CHILDREN");
+  panel("sp-wf", 1013.5, 9.5, "WEST FRANKFORT", [["Most victims were women and children", 1.8],["The men were five hundred feet underground", 3.6]]);
+  panel("sp-parrish", 1040.5, 8.5, "PARRISH, ILLINOIS", [["Nine of ten buildings gone", 1.6],["The town was never rebuilt", 3.2]], "22 DEAD");
+  panel("sp-griffin", 1097.4, 9.0, "GRIFFIN, INDIANA", [["25 dead — over 200 injured", 1.6],["Six of every ten people in town", 3.2]]);
+  panel("sp-princeton", 1198.0, 8.0, "PRINCETON, INDIANA", [["The storm's last town", 2.0]], "45 DEAD");
+  panel("sp-redcross", 1363.0, 10.5, "RED CROSS RELIEF — 1925", [["Over $3,000,000 raised and spent", 1.5],["7,000+ families served", 3.2],["A full year of relief work", 5.0]]);
+
+  /* ---------- rolling cumulative death counter on map returns ---------- */
+  function tollChip(host, at, dur, from, to) {
+    const h = document.getElementById(host);
+    const d = document.createElement("div");
+    d.className = "tollchip"; d.id = host + "-toll";
+    d.innerHTML = '<div class="tc-n"><span id="' + host + '-tv">' + from + '</span></div><div class="tc-l">CONFIRMED DEAD SO FAR</div>';
+    h.appendChild(d);
+    gsap.set(d, { autoAlpha: 0, y: 20 });
+    tl.to(d, { autoAlpha: 1, y: 0, duration: 0.5 }, at + 1.0);
+    const c = { v: from };
+    tl.to(c, { v: to, duration: Math.min(2.8, dur * 0.4), ease: "power2.out",
+      onUpdate: function(){ const e = document.getElementById(host + "-tv"); if (e) e.textContent = Math.round(c.v); } }, at + 1.6);
+    tl.to(d, { autoAlpha: 0, y: -14, duration: 0.45 }, at + dur - 0.6);
+  }
+
+  /* ---------- PATH MAP ---------- */
+  const TOWNS = [
+    ["Ellington", 320, 800, "1:01 PM", 0],["Annapolis", 420, 745, "1:14 PM", 13],["Biehle", 560, 690, "~1:30 PM", 55],
+    ["Gorham", 700, 640, "2:26 PM", 88],["Murphysboro", 790, 600, "2:34 PM", 97],["De Soto", 860, 570, "2:45 PM", 106],
+    ["West Frankfort", 960, 530, "3:00 PM", 122],["Parrish", 1040, 500, "3:07 PM", 131],["Crossville", 1160, 460, "~3:23 PM", 152],
+    ["Griffin", 1330, 415, "~4:00 PM", 183],["Princeton", 1450, 375, "4:18 PM", 203],["Petersburg", 1600, 330, "4:30 PM", 219]];
+  function pathMap(host, at, dur, upTo, opts) {
+    opts = opts || {};
+    const h = document.getElementById(host);
+    let svg = '<svg viewBox="0 0 1920 1080" style="position:absolute;inset:0"><rect width="1920" height="1080" fill="#0a1017"/>' +
+      '<text x="530" y="960" class="maplab" font-size="26" fill="#3d5a73">MISSOURI</text>' +
+      '<text x="900" y="960" class="maplab" font-size="26" fill="#3d5a73">ILLINOIS</text>' +
+      '<text x="1430" y="960" class="maplab" font-size="26" fill="#3d5a73">INDIANA</text>' +
+      '<line x1="672" y1="120" x2="672" y2="1000" stroke="#1b2836" stroke-width="3"/>' +
+      '<line x1="1275" y1="120" x2="1275" y2="1000" stroke="#1b2836" stroke-width="3"/>';
+    let d = "M " + TOWNS[0][1] + " " + TOWNS[0][2];
+    for (let i = 1; i <= upTo; i++) d += " L " + TOWNS[i][1] + " " + TOWNS[i][2];
+    svg += '<path id="' + host + '-line" d="' + d + '" stroke="#c0392b" stroke-width="7" fill="none" stroke-dasharray="2200" stroke-dashoffset="2200" stroke-linecap="round"/>';
+    for (let i = 0; i <= upTo; i++) {
+      svg += '<circle id="' + host + '-d' + i + '" cx="' + TOWNS[i][1] + '" cy="' + TOWNS[i][2] + '" r="0" fill="#f2f5f8"/>' +
+             '<text id="' + host + '-t' + i + '" x="' + (TOWNS[i][1] + 18) + '" y="' + (TOWNS[i][2] - 14) + '" class="maplab" font-size="27" opacity="0">' + TOWNS[i][0] + '</text>';
+    }
+    svg += '</svg>' +
+      '<div class="gline" id="' + host + '-clock" style="right:120px;top:110px;font-family:\'Courier New\',monospace;font-weight:700;font-size:58px;color:#e8c56a;background:rgba(5,8,12,0.6);padding:8px 22px;opacity:0">' + TOWNS[upTo][3] + '</div>' +
+      '<div class="gline" id="' + host + '-mi" style="right:120px;top:200px;font-family:Arial,sans-serif;font-weight:700;font-size:30px;color:#93a3b2;background:rgba(5,8,12,0.6);padding:6px 18px;opacity:0"><span id="' + host + '-miv">0</span> MILES ON THE GROUND</div>';
+    h.innerHTML = svg;
+    const lineDur = Math.min(dur * 0.5, 5.5);
+    tl.to("#" + host + "-line", { strokeDashoffset: 0, duration: lineDur, ease: "power1.inOut" }, at + 0.6);
+    const step = lineDur / (upTo + 1);
+    for (let i = 0; i <= upTo; i++) {
+      tl.to("#" + host + "-d" + i, { attr: { r: i === upTo ? 13 : 8 }, duration: 0.35 }, at + 0.6 + step * (i + 0.5));
+      if (upTo < 4 || i >= upTo - 3 || i === 0) tl.to("#" + host + "-t" + i, { opacity: 1, duration: 0.4 }, at + 0.7 + step * (i + 0.6));
+    }
+    tl.to("#" + host + "-clock", { autoAlpha: 1, duration: 0.5 }, at + 0.8);
+    tl.to("#" + host + "-mi", { autoAlpha: 1, duration: 0.5 }, at + 1.2);
+    const mi = { v: Math.max(0, TOWNS[Math.max(0, upTo - 1)][4]) };
+    tl.to(mi, { v: TOWNS[upTo][4], duration: Math.min(dur * 0.45, 4.5), ease: "power1.out",
+      onUpdate: function(){ const e = document.getElementById(host + "-miv"); if (e) e.textContent = Math.round(mi.v); } }, at + 1.0);
+    if (opts.pulse) tl.to("#" + host + "-d" + upTo, { attr: { r: 18 }, duration: 0.5, yoyo: true, repeat: 3 }, at + lineDur + 1.0);
+  }
+  pathMap("g-map1", 383.0, 60.0, 0, { pulse: true });  tollChip("g-map1", 383.0, 60.0, 0, 1);
+  pathMap("g-map2", 539.3, 25.0, 3, {});                tollChip("g-map2", 539.3, 25.0, 1, 5);
+  pathMap("g-map3", 847.6, 12.5, 5, {});                tollChip("g-map3", 847.6, 12.5, 39, 273);
+  pathMap("g-map4", 1032.9, 7.0, 7, {});                tollChip("g-map4", 1032.9, 7.0, 273, 490);
+  pathMap("g-map5", 1088.9, 8.0, 9, {});                tollChip("g-map5", 1088.9, 8.0, 490, 512);
+  pathMap("g-map6", 1148.2, 11.0, 9, { pulse: true });  tollChip("g-map6", 1148.2, 11.0, 512, 537);
+  pathMap("g-map7", 1245.0, 36.0, 11, {});
+  (function(){
+    const h = document.getElementById("g-map7");
+    const box = document.createElement("div");
+    box.style.cssText = "position:absolute;left:120px;top:110px;z-index:6;font-family:Arial,sans-serif;";
+    box.innerHTML = '<div style="display:table;font-weight:900;font-family:\'Arial Black\',Arial,sans-serif;font-size:64px;color:#f2f5f8;background:rgba(5,8,12,0.7);padding:6px 24px;"><span id="gm7-dead">537</span> DEAD</div>' +
+      '<div id="gm7-b" style="display:table;margin-top:12px;font-weight:700;font-size:32px;color:#b8c6d4;background:rgba(5,8,12,0.7);padding:6px 18px;opacity:0">2,027 INJURED</div>' +
+      '<div id="gm7-c" style="display:table;margin-top:10px;font-weight:700;font-size:32px;color:#b8c6d4;background:rgba(5,8,12,0.7);padding:6px 18px;opacity:0">15,000 HOMES DESTROYED</div>' +
+      '<div id="gm7-d" style="display:table;margin-top:10px;font-weight:700;font-size:28px;color:#d8a13a;background:rgba(5,8,12,0.7);padding:6px 18px;opacity:0">219 MILES &mdash; 3 HOURS 29 MINUTES &mdash; NO WARNING</div>';
+    h.appendChild(box);
+    const c = { v: 537 };
+    tl.to(c, { v: 660, duration: 1.4, ease: "power1.in", onUpdate: function(){ const e = document.getElementById("gm7-dead"); if (e) e.textContent = Math.round(c.v); } }, 1259.5);
+    tl.to(c, { v: 695, duration: 3.0, ease: "power3.out", onUpdate: function(){ const e = document.getElementById("gm7-dead"); if (e) e.textContent = Math.round(c.v); } }, 1260.9);
+    tl.to("#gm7-b", { opacity: 1, duration: 0.5 }, 1266.0);
+    tl.to("#gm7-c", { opacity: 1, duration: 0.5 }, 1267.6);
+    tl.to("#gm7-d", { opacity: 1, duration: 0.6 }, 1270.5);
+  })();
+
+  /* ---------- date card (no black open) ---------- */
+  (function(){
+    const d = document.getElementById("card-date");
+    d.innerHTML = '<div style="position:absolute;left:0;right:0;top:70px;text-align:center;">' +
+      '<div style="display:table;margin:0 auto;font-family:\'Arial Black\',Arial,sans-serif;font-weight:900;font-size:56px;color:#f2f5f8;background:rgba(5,8,12,0.7);padding:8px 40px;letter-spacing:6px;">MARCH 18, 1925</div>' +
+      '<div style="display:table;margin:12px auto 0;font-family:Arial,sans-serif;font-weight:700;font-size:26px;color:#d8a13a;background:rgba(5,8,12,0.7);padding:6px 26px;letter-spacing:8px;">MISSOURI &middot; ILLINOIS &middot; INDIANA</div></div>';
+    gsap.set(d, { autoAlpha: 0 });
+    tl.to(d, { autoAlpha: 1, duration: 0.5 }, 0.3);
+    tl.to(d, { autoAlpha: 0, duration: 0.8 }, 14.8);
+  })();
+
+  /* ---------- title + single 2s disclaimer line (never narrated) ---------- */
+  (function(){
+    const t = document.getElementById("card-title");
+    t.innerHTML = '<div style="position:absolute;inset:0;background:#000"></div>' +
+      '<div id="tt1" style="position:absolute;left:0;right:0;top:420px;text-align:center;font-family:Georgia,serif;font-size:84px;color:#f2f5f8;">The Tornado With <span style="color:#d8a13a">No Photograph</span></div>' +
+      '<div id="tt3" style="position:absolute;left:0;right:0;bottom:140px;text-align:center;font-family:Arial,sans-serif;font-size:23px;color:#b8c6d4;">Original 1925 photographs and film &middot; some connecting scenes are modern recreations</div>';
+    gsap.set(["#tt1","#tt3"], { autoAlpha: 0 });
+    tl.to(["#tt1","#tt3"], { autoAlpha: 1, duration: 0.35 }, 38.25);
+    tl.to(["#tt1","#tt3"], { autoAlpha: 0, duration: 0.4 }, 39.7);
+  })();
+
+  /* ---------- word-ban ---------- */
+  function wordBan(host, at, once) {
+    const h = document.getElementById(host);
+    h.innerHTML = '<div style="position:absolute;inset:0;background:rgba(4,6,9,0.55)"></div><div class="bigword" id="' + host + '-w"></div><div class="strike" id="' + host + '-s"></div>' +
+      '<div class="gline" id="' + host + '-l1" style="left:0;right:0;top:600px;text-align:center;font-size:34px;color:#b8c6d4;text-shadow:0 2px 12px #000;">United States Weather Bureau — official forecast policy</div>' +
+      '<div class="gline" id="' + host + '-l2" style="left:0;right:0;top:664px;text-align:center;font-size:30px;color:#d8a13a;font-weight:700;letter-spacing:2px;text-shadow:0 2px 12px #000;"></div>';
+    const word = "TORNADO", wEl = "#" + host + "-w";
+    for (let i = 0; i < word.length; i++)
+      tl.call(function(txt){ const e = document.querySelector(wEl); if (e) e.textContent = txt; }, [word.slice(0, i + 1)], at + 0.6 + i * 0.22);
+    gsap.set(["#"+host+"-l1", "#"+host+"-l2"], { autoAlpha: 0 });
+    tl.to("#"+host+"-s", { width: 760, duration: 0.5, ease: "power2.in" }, at + 3.2);
+    tl.to("#"+host+"-l1", { autoAlpha: 1, duration: 0.6 }, at + 4.4);
+    tl.call(function(){ const e = document.querySelector("#"+host+"-l2"); if (e) e.textContent = once ? "FORBIDDEN IN FORECASTS — LATE 1880s ONWARD" : "STILL RESTRICTED — MORE THAN A DECADE AFTER THE STORM"; }, [], at + 7.0);
+    tl.to("#"+host+"-l2", { autoAlpha: 1, duration: 0.6 }, at + 7.0);
+  }
+  wordBan("g-wordban", 42.2, true);
+  (function(){
+    const h = document.getElementById("g-wordban");
+    [["g-wb-r1","Reasoning: tornadoes cannot be predicted",18.0],["g-wb-r2","“The word may cause panic”",24.0],["g-wb-r3","The rule holds, in one form or another, for HALF A CENTURY",31.0]]
+    .forEach(function(r, i){
+      const d = document.createElement("div");
+      d.className = "gline"; d.id = r[0];
+      d.style.cssText = "left:0;right:0;top:" + (760 + i * 60) + "px;text-align:center;font-size:29px;color:#cdd8e2;text-shadow:0 2px 10px #000;";
+      d.textContent = r[1]; h.appendChild(d);
+      gsap.set("#" + r[0], { autoAlpha: 0 });
+      tl.to("#" + r[0], { autoAlpha: 1, duration: 0.6 }, 42.2 + r[2]);
+    });
+  })();
+  wordBan("g-wordban2", 1645.4, false);
+
+  /* ---------- Finley panel over Hazen portrait ---------- */
+  (function(){
+    const h = document.getElementById("g-finley");
+    h.innerHTML = '<div class="spanel amber" id="gfin-p" style="top:140px"><div class="sp-h">1880s — THE SCIENCE THAT WAS STOPPED</div>' +
+      '<div class="sp-r" id="gfin-r0">John Park Finley issues experimental tornado alerts</div>' +
+      '<div class="sp-r" id="gfin-r1">Real predictive patterns identified</div>' +
+      '<div class="sp-r" id="gfin-r2">Program shut down — fear of panic</div></div>';
+    gsap.set("#gfin-p", { x: 620, autoAlpha: 0 });
+    tl.to("#gfin-p", { x: 0, autoAlpha: 1, duration: 0.55, ease: "power2.out" }, 88.0);
+    [["#gfin-r0",4.5],["#gfin-r1",9.0],["#gfin-r2",14.5]].forEach(r => tl.to(r[0], { opacity: 1, duration: 0.5 }, 85.0 + r[1]));
+    tl.to("#gfin-p", { x: 660, autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 120.0);
+  })();
+
+  /* ---------- forecast card ---------- */
+  (function(){
+    const h = document.getElementById("g-forecast");
+    h.innerHTML = '<div style="position:absolute;inset:0;background:rgba(4,6,9,0.5)"></div>' +
+      '<div class="gline" id="gf-h" style="left:0;right:0;top:330px;text-align:center;font-size:30px;color:#b8c6d4;letter-spacing:4px;text-shadow:0 2px 12px #000;">OFFICIAL FORECAST — ILLINOIS — WEDNESDAY, MARCH 18, 1925</div>' +
+      '<div class="gline" id="gf-q" style="left:0;right:0;top:430px;text-align:center;font-family:\'Courier New\',monospace;font-size:64px;color:#f2f5f8;text-shadow:0 2px 14px #000;"></div>' +
+      '<div class="gline" id="gf-f" style="left:0;right:0;top:600px;text-align:center;font-size:28px;color:#e8c56a;font-weight:700;text-shadow:0 2px 12px #000;">Seven words. No watches. No sirens. No radar.</div>' +
+      '<div class="gline" id="gf-src" style="left:0;right:0;top:660px;text-align:center;font-size:20px;color:#8fa0af;text-shadow:0 2px 10px #000;">Source: US Weather Bureau records via NWS Paducah</div>';
+    gsap.set(["#gf-h","#gf-f","#gf-src"], { autoAlpha: 0 });
+    tl.to("#gf-h", { autoAlpha: 1, duration: 0.6 }, 122.7);
+    const q = "“rains and strong shifting winds”";
+    for (let i = 0; i < q.length; i += 2)
+      tl.call(function(txt){ const e = document.querySelector("#gf-q"); if (e) e.textContent = txt; }, [q.slice(0, i + 2)], 130.0 + i * 0.045);
+    tl.to("#gf-f", { autoAlpha: 1, duration: 0.6 }, 133.2);
+    tl.to("#gf-src", { autoAlpha: 1, duration: 0.6 }, 134.7);
+  })();
+
+  /* ---------- sources cards ---------- */
+  (function(){
+    const h = document.getElementById("g-sources");
+    const items = [["THE NEWSREEL FILM","Fox Movietone, 1925",1.5],["WEATHER BUREAU RECORDS","original documents",8.0],["THE FRONT PAGES","that week's newspapers",13.0],["MODERN REANALYSIS","Johns et al., 2013",19.0]];
+    let html = '';
+    items.forEach(function(it, i){
+      html += '<div class="gline" id="gsrc-' + i + '" style="left:120px;top:' + (140 + i * 90) + 'px;opacity:0"><span style="font-weight:900;font-family:\'Arial Black\',Arial,sans-serif;font-size:28px;color:#f2f5f8;background:rgba(5,8,12,0.8);padding:6px 16px;">' + it[0] + '</span> <span style="font-size:22px;color:#d8a13a;background:rgba(5,8,12,0.8);padding:6px 12px;">' + it[1] + '</span></div>';
+    });
+    h.innerHTML = html;
+    items.forEach((it, i) => tl.to("#gsrc-" + i, { opacity: 1, duration: 0.5 }, 146.2 + it[2]));
+    tl.to(["#gsrc-0","#gsrc-1","#gsrc-2","#gsrc-3"], { autoAlpha: 0, duration: 0.5 }, 175.6);
+  })();
+
+  /* ---------- met map ---------- */
+  (function(){
+    const h = document.getElementById("g-metmap");
+    h.innerHTML = '<svg viewBox="0 0 1920 1080" style="position:absolute;inset:0">' +
+      '<rect width="1920" height="1080" fill="#0a1017"/>' +
+      '<path d="M 300 250 L 1650 250 L 1650 850 L 300 850 Z" fill="none" stroke="#243442" stroke-width="2"/>' +
+      '<circle id="gm-low" cx="760" cy="470" r="0" fill="#c0392b" opacity="0.85"/>' +
+      '<text id="gm-lowt" x="760" y="420" text-anchor="middle" class="maplab" font-size="40" opacity="0">LOW</text>' +
+      '<path id="gm-warm" d="M 760 480 Q 1100 560 1450 700" stroke="#d8a13a" stroke-width="9" fill="none" stroke-dasharray="900" stroke-dashoffset="900"/>' +
+      '<path id="gm-cold" d="M 750 480 Q 620 680 520 830" stroke="#3d7ec4" stroke-width="9" fill="none" stroke-dasharray="500" stroke-dashoffset="500"/>' +
+      '<path id="gm-jet" d="M 260 560 Q 800 380 1680 330" stroke="#e8eef4" stroke-width="4" fill="none" stroke-dasharray="12 14" opacity="0"/>' +
+      '<text id="gm-warmt" x="1260" y="660" class="maplab" font-size="30" fill="#d8a13a" opacity="0">WARM GULF AIR</text>' +
+      '<text id="gm-coldt" x="420" y="740" class="maplab" font-size="30" fill="#7fb2e5" opacity="0">COLD DRY AIR</text>' +
+      '<text id="gm-jett" x="1280" y="310" class="maplab" font-size="30" opacity="0">WINDS ~100 MPH ALOFT</text>' +
+      '<text id="gm-tpt" x="760" y="560" text-anchor="middle" class="maplab" font-size="34" fill="#c0392b" opacity="0">TRIPLE POINT</text></svg>';
+    tl.to("#gm-low", { attr: { r: 26 }, duration: 0.8 }, 222.5);
+    tl.to("#gm-lowt", { opacity: 1, duration: 0.5 }, 223.1);
+    tl.to("#gm-warm", { strokeDashoffset: 0, duration: 2.0, ease: "power1.inOut" }, 226.5);
+    tl.to("#gm-warmt", { opacity: 1, duration: 0.5 }, 228.1);
+    tl.to("#gm-cold", { strokeDashoffset: 0, duration: 1.8, ease: "power1.inOut" }, 231.0);
+    tl.to("#gm-coldt", { opacity: 1, duration: 0.5 }, 232.3);
+    tl.to("#gm-jet", { opacity: 0.9, duration: 1.2 }, 236.0);
+    tl.to("#gm-jett", { opacity: 1, duration: 0.5 }, 237.0);
+    tl.to("#gm-tpt", { opacity: 1, duration: 0.6 }, 243.0);
+    tl.to("#gm-tpt", { scale: 1.15, transformOrigin: "50% 50%", duration: 0.4, yoyo: true, repeat: 1 }, 243.7);
+  })();
+
+  /* ---------- profile ---------- */
+  (function(){
+    const h = document.getElementById("g-profile");
+    h.innerHTML = '<div style="position:absolute;inset:0;background:#070b10"></div><div class="gline" id="gp-l" style="left:140px;top:250px;width:700px;text-align:center;font-size:32px;color:#93a3b2;opacity:0">WHAT THEY KNEW</div>' +
+      '<svg viewBox="0 0 1920 1080" style="position:absolute;inset:0">' +
+      '<path id="gp-funnel" d="M 350 420 Q 480 430 520 440 L 470 700 L 450 700 Q 430 560 350 420 Z" fill="#2c3e50" opacity="0"/>' +
+      '<g id="gp-wall" opacity="0"><defs><linearGradient id="gp-wg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a3947"/><stop offset="0.55" stop-color="#141c25"/><stop offset="1" stop-color="#0a0f15"/></linearGradient></defs>' +
+      '<path d="M 1050 470 Q 1120 420 1200 445 Q 1290 400 1380 435 Q 1470 395 1560 430 Q 1660 405 1790 450 L 1790 710 L 1050 710 Z" fill="url(#gp-wg)"/>' +
+      '<path d="M 1050 470 Q 1120 420 1200 445 Q 1290 400 1380 435 Q 1470 395 1560 430 Q 1660 405 1790 450" stroke="#3d5063" stroke-width="4" fill="none" opacity="0.7"/></g>' +
+      '<text id="gp-wallt" x="1420" y="350" text-anchor="middle" class="maplab" font-size="32" fill="#c0392b" opacity="0">WHAT CAME — A MILE-WIDE WALL</text>' +
+      '<text id="gp-fogt" x="1420" y="770" text-anchor="middle" class="maplab" font-size="26" fill="#93a3b2" opacity="0">“It looked like fog on the horizon”</text>' +
+      '<text id="gp-speed" x="960" y="900" text-anchor="middle" class="maplab" font-size="34" fill="#d8a13a" opacity="0">FORWARD SPEED 60&ndash;73 MPH &mdash; faster than the cars of 1925</text></svg>';
+    tl.to("#gp-l", { autoAlpha: 1, duration: 0.5 }, 256.0);
+    tl.to("#gp-funnel", { opacity: 1, duration: 0.8 }, 256.5);
+    tl.to("#gp-wall", { opacity: 1, duration: 1.4 }, 261.0);
+    tl.to("#gp-wallt", { opacity: 1, duration: 0.6 }, 262.3);
+    tl.to("#gp-fogt", { opacity: 1, duration: 0.6 }, 267.5);
+    tl.to("#gp-speed", { opacity: 1, duration: 0.6 }, 275.5);
+  })();
+
+  /* ---------- sweet spot ---------- */
+  (function(){
+    const h = document.getElementById("g-sweet");
+    h.innerHTML = '<div style="position:absolute;inset:0;background:rgba(4,6,9,0.55)"></div>' +
+      '<svg viewBox="0 0 1920 1080" style="position:absolute;inset:0">' +
+      '<path id="gsw-front" d="M 260 720 Q 760 600 1160 520 Q 1420 470 1680 440" stroke="#d8a13a" stroke-width="8" fill="none" stroke-dasharray="1600" stroke-dashoffset="1600"/>' +
+      '<circle id="gsw-storm" cx="300" cy="710" r="0" fill="#c0392b"/>' +
+      '<text id="gsw-l1" x="330" y="800" class="maplab" font-size="28" fill="#d8a13a" opacity="0">THE WARM FRONT — ITS FUEL LINE</text>' +
+      '<text id="gsw-l2" x="1130" y="380" class="maplab" font-size="30" fill="#f2f5f8" opacity="0">3+ HOURS LOCKED IN THE ZONE</text>' +
+      '<text id="gsw-l3" x="1080" y="900" class="maplab" font-size="26" fill="#93a3b2" opacity="0">Most storms starve within the hour — this one rode the rail</text></svg>';
+    tl.to("#gsw-front", { strokeDashoffset: 0, duration: 2.5, ease: "power1.inOut" }, 289.5);
+    tl.to("#gsw-l1", { opacity: 1, duration: 0.5 }, 291.5);
+    tl.to("#gsw-storm", { attr: { r: 20 }, duration: 0.6 }, 293.5);
+    tl.to("#gsw-storm", { attr: { cx: 1600, cy: 452 }, duration: 14.0, ease: "none" }, 295.0);
+    tl.to("#gsw-l2", { opacity: 1, duration: 0.6 }, 301.5);
+    tl.to("#gsw-l3", { opacity: 1, duration: 0.6 }, 311.5);
+  })();
+
+  /* ---------- barograph: pencil-drawn trace, shortened ---------- */
+  (function(){
+    const h = document.getElementById("g-baro");
+    h.innerHTML = '<div style="position:absolute;inset:0;background:#070b10"></div>' +
+      '<div class="gline" style="left:0;right:0;top:220px;text-align:center;font-size:32px;color:#93a3b2;letter-spacing:3px;">RECORDING BAROMETER — OLD BEN COAL MINE, WEST FRANKFORT</div>' +
+      '<svg viewBox="0 0 1920 1080" style="position:absolute;inset:0">' +
+      '<line x1="300" y1="380" x2="300" y2="760" stroke="#243442" stroke-width="2"/>' +
+      '<line x1="300" y1="760" x2="1650" y2="760" stroke="#243442" stroke-width="2"/>' +
+      '<text x="240" y="530" class="maplab" font-size="24" fill="#6d7f8f">29.5</text>' +
+      '<text x="240" y="700" class="maplab" font-size="24" fill="#c0392b">28.87</text>' +
+      '<path id="gb-trace" d="M 300 520 C 500 522 700 526 900 532 C 1020 536 1100 545 1160 600 C 1200 640 1220 690 1250 693 C 1290 696 1320 640 1400 560" stroke="#e8c56a" stroke-width="5" fill="none" stroke-dasharray="1400" stroke-dashoffset="1400" stroke-linecap="round"/>' +
+      '<circle id="gb-pen" cx="300" cy="520" r="0" fill="#f2f5f8"/></svg>' +
+      '<div class="gline" id="gb-val" style="left:0;right:0;top:800px;text-align:center;font-family:\'Courier New\',monospace;font-weight:700;font-size:66px;color:#e8c56a;"><span id="gb-v">29.50</span> inHg</div>' +
+      '<div class="gline" id="gb-rec" style="left:0;right:0;top:900px;text-align:center;font-size:28px;color:#c0392b;font-weight:700;opacity:0">LOWEST PRESSURE EVER RECORDED IN A TORNADO — AT THE TIME</div>';
+    const p = { v: 29.50 };
+    tl.to("#gb-pen", { attr: { r: 7 }, duration: 0.4 }, 1062.5);
+    tl.to("#gb-trace", { strokeDashoffset: 0, duration: 9.0, ease: "power1.in" }, 1063.0);
+    tl.to("#gb-pen", { attr: { cx: 1160, cy: 600 }, duration: 6.3, ease: "power1.in" }, 1063.0);
+    tl.to("#gb-pen", { attr: { cx: 1250, cy: 693 }, duration: 1.7, ease: "power1.out" }, 1069.3);
+    tl.to("#gb-pen", { attr: { cx: 1400, cy: 560 }, duration: 1.0, ease: "power1.inOut" }, 1071.0);
+    tl.to(p, { v: 28.87, duration: 8.5, ease: "power2.in", onUpdate: function(){ const e = document.getElementById("gb-v"); if (e) e.textContent = p.v.toFixed(2); } }, 1063.0);
+    tl.to("#gb-rec", { opacity: 1, duration: 0.7 }, 1074.0);
+  })();
+
+  /* ---------- wires ---------- */
+  (function(){
+    const h = document.getElementById("g-wires");
+    h.innerHTML = '<svg viewBox="0 0 1920 1080" style="position:absolute;inset:0"><rect width="1920" height="1080" fill="#0a1017"/>' +
+      '<line id="gw-w1" x1="200" y1="500" x2="1720" y2="500" stroke="#7fb2e5" stroke-width="5"/>' +
+      '<text x="200" y="450" class="maplab" font-size="28" fill="#93a3b2">TELEGRAPH &amp; TELEPHONE LINES</text>' +
+      '<circle id="gw-storm" cx="300" cy="500" r="46" fill="#c0392b" opacity="0.8"/>' +
+      '<text id="gw-msg" x="960" y="700" text-anchor="middle" class="maplab" font-size="34" fill="#d8a13a" opacity="0">The storm destroyed the wires that could have warned the next town</text></svg>';
+    tl.to("#gw-storm", { attr: { cx: 1650 }, duration: 8.0, ease: "none" }, 503.4);
+    tl.to("#gw-w1", { attr: { x2: 300 }, duration: 8.0, ease: "none" }, 503.4);
+    tl.to("#gw-msg", { opacity: 1, duration: 0.7 }, 510.4);
+  })();
+
+  /* ---------- 48 schools ---------- */
+  (function(){
+    const h = document.getElementById("g-sch48");
+    h.innerHTML = '<div style="position:absolute;inset:0;background:rgba(4,6,9,0.45)"></div>' +
+      '<div class="gline" id="g48-n" style="left:0;right:0;top:360px;text-align:center;font-family:\'Arial Black\',Arial,sans-serif;font-weight:900;font-size:170px;color:#f2f5f8;text-shadow:0 4px 30px #000;"><span id="g48-v">0</span></div>' +
+      '<div class="gline" id="g48-l" style="left:0;right:0;top:580px;text-align:center;font-size:38px;font-weight:700;color:#d8a13a;opacity:0;text-shadow:0 2px 12px #000;">SCHOOLS IN THE STORM&#39;S PATH THAT AFTERNOON</div>' +
+      '<div class="gline" id="g48-s" style="left:0;right:0;top:660px;text-align:center;font-size:28px;color:#b8c6d4;opacity:0;text-shadow:0 2px 12px #000;">Dismissal was three thirty. The tornado came first.</div>';
+    const c = { v: 0 };
+    tl.to(c, { v: 48, duration: 4.5, ease: "power1.out", onUpdate: function(){ const e = document.getElementById("g48-v"); if (e) e.textContent = Math.round(c.v); } }, 943.5);
+    tl.to("#g48-l", { opacity: 1, duration: 0.6 }, 948.5);
+    tl.to("#g48-s", { opacity: 1, duration: 0.6 }, 957.0);
+    tl.to(["#g48-n","#g48-l","#g48-s"], { autoAlpha: 0, duration: 0.6 }, 970.5);
+  })();
+
+  /* ---------- relief map ---------- */
+  (function(){
+    const h = document.getElementById("g-relief");
+    h.innerHTML = '<svg viewBox="0 0 1920 1080" style="position:absolute;inset:0"><rect width="1920" height="1080" fill="#0a1017"/>' +
+      '<circle cx="880" cy="560" r="16" fill="#c0392b"/>' +
+      '<text x="820" y="620" class="maplab" font-size="26" fill="#93a3b2">THE PATH</text>' +
+      '<path id="gr-a1" d="M 430 380 Q 650 450 850 540" stroke="#7fb2e5" stroke-width="6" fill="none" stroke-dasharray="500" stroke-dashoffset="500"/>' +
+      '<path id="gr-a2" d="M 1490 300 Q 1200 420 910 540" stroke="#7fb2e5" stroke-width="6" fill="none" stroke-dasharray="700" stroke-dashoffset="700"/>' +
+      '<text x="360" y="350" class="maplab" font-size="30">ST. LOUIS</text>' +
+      '<text x="1440" y="270" class="maplab" font-size="30">CHICAGO</text>' +
+      '<text id="gr-t" x="960" y="820" text-anchor="middle" class="maplab" font-size="32" fill="#d8a13a" opacity="0">RELIEF TRAINS RODE ALL NIGHT — INTO A LANDSCAPE WITH NO LIGHTS</text></svg>';
+    tl.to("#gr-a1", { strokeDashoffset: 0, duration: 2.5, ease: "power1.inOut" }, 1318.4);
+    tl.to("#gr-a2", { strokeDashoffset: 0, duration: 2.5, ease: "power1.inOut" }, 1320.4);
+    tl.to("#gr-t", { opacity: 1, duration: 0.7 }, 1324.0);
+  })();
+
+  /* ---------- no safety net ---------- */
+  (function(){
+    const h = document.getElementById("g-nonet");
+    h.innerHTML = '<div class="gline" id="gnn-1" style="left:0;right:0;top:760px;text-align:center;font-family:\'Arial Black\',Arial,sans-serif;font-weight:900;font-size:44px;color:#f2f5f8;opacity:0"><span style="background:rgba(5,8,12,0.75);padding:8px 26px;">1925 — NO FEDERAL DISASTER AGENCY</span></div>' +
+      '<div class="gline" id="gnn-2" style="left:0;right:0;top:850px;text-align:center;font-size:28px;color:#d8a13a;opacity:0"><span style="background:rgba(5,8,12,0.75);padding:6px 20px;">Churches &middot; neighbors &middot; railroads &middot; one charity</span></div>';
+    tl.to("#gnn-1", { opacity: 1, duration: 0.6 }, 1398.0);
+    tl.to("#gnn-2", { opacity: 1, duration: 0.6 }, 1412.0);
+    tl.to(["#gnn-1","#gnn-2"], { autoAlpha: 0, duration: 0.5 }, 1421.8);
+  })();
+
+  /* ---------- climbing headline toll ---------- */
+  (function(){
+    const h = document.getElementById("g-climb");
+    h.innerHTML = '<div class="gline" id="gcl2-c" style="right:120px;top:120px;font-family:\'Arial Black\',Arial,sans-serif;font-weight:900;font-size:60px;color:#f2f5f8;opacity:0"><span style="background:rgba(90,15,15,0.85);padding:6px 24px;"><span id="gcl2-v">300</span>+ DEAD</span></div>' +
+      '<div class="gline" id="gcl2-l" style="right:120px;top:220px;font-size:24px;font-weight:700;color:#d8a5a5;opacity:0"><span style="background:rgba(5,8,12,0.7);padding:5px 14px;">THE HEADLINE NUMBER, DAY BY DAY</span></div>';
+    const c = { v: 300 };
+    tl.to(["#gcl2-c","#gcl2-l"], { opacity: 1, duration: 0.5 }, 1456.5);
+    tl.to(c, { v: 695, duration: 22.0, ease: "power1.inOut", onUpdate: function(){ const e = document.getElementById("gcl2-v"); if (e) e.textContent = Math.round(c.v); } }, 1457.5);
+    tl.to(["#gcl2-c","#gcl2-l"], { autoAlpha: 0, duration: 0.5 }, 1488.5);
+  })();
+
+  /* ---------- cost ---------- */
+  (function(){
+    const h = document.getElementById("g-cost");
+    h.innerHTML = '<div class="gline" id="gc-a" style="left:120px;top:120px;font-family:\'Arial Black\',Arial,sans-serif;font-weight:900;font-size:64px;color:#f2f5f8;"><span style="background:rgba(5,8,12,0.75);padding:8px 26px;">$<span id="gc-v">0</span> MILLION</span></div>' +
+      '<div class="gline" id="gc-b" style="left:120px;top:230px;font-size:30px;font-weight:700;color:#d8a13a;opacity:0"><span style="background:rgba(5,8,12,0.75);padding:6px 18px;">&asymp; $3 BILLION TODAY</span></div>';
+    const c = { v: 0 };
+    tl.to(c, { v: 16.5, duration: 3.2, ease: "power2.out", onUpdate: function(){ const e = document.getElementById("gc-v"); if (e) e.textContent = c.v.toFixed(1); } }, 1543.5);
+    tl.to("#gc-b", { opacity: 1, duration: 0.6 }, 1547.5);
+    tl.to(["#gc-a","#gc-b"], { autoAlpha: 0, duration: 0.5 }, 1554.6);
+  })();
+
+  /* ---------- song card ---------- */
+  (function(){
+    const h = document.getElementById("g-song");
+    h.innerHTML = '<div class="gline" id="gs-a" style="left:0;right:0;bottom:220px;text-align:center;"><div style="display:table;margin:0 auto;font-family:Georgia,serif;font-style:italic;font-size:52px;color:#f2f5f8;background:rgba(5,8,12,0.72);padding:14px 44px;">“After the Tornado Is Over”</div>' +
+      '<div style="display:table;margin:12px auto 0;font-family:Arial,sans-serif;font-weight:700;font-size:24px;letter-spacing:3px;color:#d8a13a;background:rgba(5,8,12,0.72);padding:8px 24px;">WRITTEN IN MURPHYSBORO, SPRING 1925 — SOLD FOR SURVIVOR RELIEF</div></div>';
+    gsap.set("#gs-a", { autoAlpha: 0 });
+    tl.to("#gs-a", { autoAlpha: 1, duration: 0.8 }, 1579.5);
+    tl.to("#gs-a", { autoAlpha: 0, duration: 0.8 }, 1598.5);
+  })();
+
+  /* ---------- timeline ---------- */
+  (function(){
+    const h = document.getElementById("g-timeline");
+    const items = [
+      ["1938", "The rule finally begins easing", 1673.0],
+      ["1948", "First tornado forecast — Tinker AFB", 1678.2],
+      ["1952", "Public tornado outlooks", 1686.2],
+      ["1970s", "Doppler radar era", 1692.0],
+      ["1990s", "NEXRAD covers the country", 1695.5],
+      ["TODAY", "Alerts in every pocket", 1697.5]];
+    let html = '<div style="position:absolute;inset:0;background:#070b10"></div><div class="gline" style="left:0;right:0;top:200px;text-align:center;font-size:34px;color:#93a3b2;letter-spacing:4px;">THE ROAD TO A WARNING</div>' +
+      '<div id="gt-axis2" style="position:absolute;left:200px;top:540px;width:0;height:6px;background:#3d5a73"></div>';
+    items.forEach(function(it, i){
+      const x = 200 + i * 255;
+      html += '<div class="gline" id="gt-y' + i + '" style="left:' + x + 'px;top:460px;font-family:\'Arial Black\',Arial,sans-serif;font-weight:900;font-size:44px;color:#e8c56a;opacity:0">' + it[0] + '</div>' +
+        '<div class="gline" id="gt-d' + i + '" style="left:' + (x - 10) + 'px;top:590px;width:225px;font-size:20px;line-height:1.3;color:#b8c6d4;opacity:0">' + it[1] + '</div>';
+    });
+    html += '<div class="gline" id="gt-photo" style="left:640px;top:700px;width:640px;height:230px;opacity:0"><img src="media/portraits/fawbush-miller-portrait-01.jpg" style="width:100%;height:100%;object-fit:cover;filter:sepia(0.2) contrast(1.05)"><div style="position:absolute;left:0;right:0;bottom:-38px;text-align:center;font-size:19px;color:#93a3b2;">Fawbush &amp; Miller — the 1948 Tinker AFB forecasters (USAF)</div></div>' +
+      '<div class="gline" id="gt-final" style="left:0;right:0;top:980px;text-align:center;font-size:28px;font-weight:700;color:#d8a13a;opacity:0">1925: zero minutes of warning &mdash; today: minutes to hours</div>';
+    h.innerHTML = html;
+    tl.to("#gt-axis2", { width: 1530, duration: 3.0, ease: "none" }, 1671.5);
+    items.forEach(function(it, i){
+      tl.to("#gt-y" + i, { opacity: 1, duration: 0.5 }, it[2]);
+      tl.to("#gt-d" + i, { opacity: 1, duration: 0.5 }, it[2] + 0.4);
+    });
+    tl.to("#gt-photo", { opacity: 1, duration: 0.7 }, 1680.0);
+    tl.to("#gt-photo", { autoAlpha: 0, duration: 0.6 }, 1691.0);
+    tl.to("#gt-final", { opacity: 1, duration: 0.7 }, 1701.0);
+  })();
+
+  /* ---------- family debate ---------- */
+  (function(){
+    const h = document.getElementById("g-family");
+    h.innerHTML = '<div style="position:absolute;inset:0;background:#070b10"></div><div class="gline" style="left:0;right:0;top:200px;text-align:center;font-size:34px;color:#93a3b2;letter-spacing:3px;">A CENTURY-OLD QUESTION</div>' +
+      '<svg viewBox="0 0 1920 1080" style="position:absolute;inset:0">' +
+      '<path id="gfam-one" d="M 260 460 L 1660 400" stroke="#c0392b" stroke-width="8" fill="none" stroke-dasharray="1450" stroke-dashoffset="1450"/>' +
+      '<text id="gfam-onet" x="260" y="420" class="maplab" font-size="28" fill="#c0392b" opacity="0">ONE CONTINUOUS TORNADO — 219 MILES</text>' +
+      '<g id="gfam-fam" opacity="0">' +
+      '<path d="M 260 700 L 700 680" stroke="#d8a13a" stroke-width="7" fill="none"/>' +
+      '<path d="M 660 690 L 1150 660" stroke="#d8a13a" stroke-width="7" fill="none" stroke-dasharray="8 10"/>' +
+      '<path d="M 1110 670 L 1660 640" stroke="#d8a13a" stroke-width="7" fill="none"/>' +
+      '<text x="260" y="650" class="maplab" font-size="28" fill="#d8a13a">A FAMILY OF TORNADOES — GAPS HIDDEN IN THE RAIN?</text></g>' +
+      '<text id="gfam-verdict" x="960" y="880" text-anchor="middle" class="maplab" font-size="30" fill="#b8c6d4" opacity="0">Modern reanalysis: the continuous track holds up across most of the path</text></svg>';
+    tl.to("#gfam-one", { strokeDashoffset: 0, duration: 2.4, ease: "power1.inOut" }, 1714.5);
+    tl.to("#gfam-onet", { opacity: 1, duration: 0.6 }, 1716.0);
+    tl.to("#gfam-fam", { opacity: 1, duration: 1.0 }, 1723.0);
+    tl.to("#gfam-verdict", { opacity: 1, duration: 0.7 }, 1735.0);
+  })();
+
+  /* ---------- remeasure ---------- */
+  (function(){
+    const h = document.getElementById("g-remeasure");
+    h.innerHTML = '<div style="position:absolute;inset:0;background:#0a1017"></div>' +
+      '<div class="gline" style="left:0;right:0;top:180px;text-align:center;font-size:32px;color:#93a3b2;letter-spacing:3px;">2013 — THE PATH, REMEASURED</div>' +
+      '<svg viewBox="0 0 1920 1080" style="position:absolute;inset:0">' +
+      '<path id="grm-1" d="M 300 420 L 1620 420" stroke="#c0392b" stroke-width="9" fill="none" stroke-dasharray="1330" stroke-dashoffset="1330"/>' +
+      '<text id="grm-1t" x="300" y="386" class="maplab" font-size="27" fill="#c0392b" opacity="0">OFFICIAL — 219 MILES</text>' +
+      '<path id="grm-2" d="M 300 570 L 1720 570" stroke="#e8c56a" stroke-width="9" fill="none" stroke-dasharray="1430" stroke-dashoffset="1430"/>' +
+      '<text id="grm-2t" x="300" y="536" class="maplab" font-size="27" fill="#e8c56a" opacity="0">EVERY DOCUMENTED DAMAGE POINT — ~235 MILES</text>' +
+      '<path id="grm-3" d="M 560 720 L 1470 720" stroke="#7fb2e5" stroke-width="9" fill="none" stroke-dasharray="920" stroke-dashoffset="920"/>' +
+      '<text id="grm-3t" x="560" y="686" class="maplab" font-size="27" fill="#7fb2e5" opacity="0">CONTINUOUS BEYOND DOUBT — 151 MILES</text>' +
+      '<text id="grm-gap" x="960" y="880" text-anchor="middle" class="maplab" font-size="28" fill="#b8c6d4" opacity="0">Some “gaps” are just river floodplain — nothing there to destroy, so nothing to record</text></svg>';
+    tl.to("#grm-1", { strokeDashoffset: 0, duration: 2.2, ease: "power1.inOut" }, 1755.0);
+    tl.to("#grm-1t", { opacity: 1, duration: 0.5 }, 1756.5);
+    tl.to("#grm-2", { strokeDashoffset: 0, duration: 2.4, ease: "power1.inOut" }, 1763.5);
+    tl.to("#grm-2t", { opacity: 1, duration: 0.5 }, 1765.5);
+    tl.to("#grm-3", { strokeDashoffset: 0, duration: 2.0, ease: "power1.inOut" }, 1771.5);
+    tl.to("#grm-3t", { opacity: 1, duration: 0.5 }, 1773.3);
+    tl.to("#grm-gap", { opacity: 1, duration: 0.7 }, 1781.5);
+  })();
+
+  /* ---------- comparison bars ---------- */
+  (function(){
+    const h = document.getElementById("g-compare");
+    const rows = [["CAROLINAS OUTBREAK 1984", 42, 320, "#7fb2e5", 1799.5],["WOODWARD, OK 1947", 100, 700, "#e8c56a", 1804.5],["TRI-STATE 1925 (strictest measure)", 151, 1050, "#c0392b", 1812.0]];
+    let html = '<div style="position:absolute;inset:0;background:#070b10"></div><div class="gline" style="left:0;right:0;top:220px;text-align:center;font-size:32px;color:#93a3b2;letter-spacing:3px;">LONGEST CONTINUOUS TORNADO TRACKS ON RECORD</div>';
+    rows.forEach(function(r, i){
+      html += '<div class="gline" id="gcb-l' + i + '" style="left:220px;top:' + (380 + i * 150) + 'px;font-size:26px;font-weight:700;color:#b8c6d4;opacity:0">' + r[0] + ' — <span style="color:' + r[3] + '">' + r[1] + ' MI</span></div>' +
+        '<div id="gcb-b' + i + '" style="position:absolute;left:220px;top:' + (420 + i * 150) + 'px;height:44px;width:0;background:' + r[3] + '"></div>';
+    });
+    h.innerHTML = html;
+    rows.forEach(function(r, i){
+      tl.to("#gcb-l" + i, { opacity: 1, duration: 0.5 }, r[4]);
+      tl.to("#gcb-b" + i, { width: r[2], duration: 1.4, ease: "power2.out" }, r[4] + 0.3);
+    });
+  })();
+
+  /* ---------- fujita ---------- */
+  (function(){
+    const h = document.getElementById("g-fujita");
+    h.innerHTML = '<div class="gline" id="gfj-2" style="left:0;right:0;top:840px;text-align:center;font-size:28px;color:#e8eef4;opacity:0"><span style="background:rgba(5,8,12,0.75);padding:8px 20px;">He learned to read destruction in the ruins of Hiroshima</span></div>' +
+      '<svg viewBox="0 0 1920 1080" style="position:absolute;inset:0">' +
+      '<path id="gfj-p1925" d="M 300 700 L 1620 640" stroke="#c0392b" stroke-width="7" fill="none" opacity="0"/>' +
+      '<path id="gfj-p2021" d="M 340 790 L 1560 745" stroke="#e8c56a" stroke-width="7" fill="none" stroke-dasharray="1250" stroke-dashoffset="1250"/>' +
+      '<text id="gfj-l1" x="300" y="670" class="maplab" font-size="26" fill="#c0392b" opacity="0">1925 — TRI-STATE — 695 DEAD, NO WARNING</text>' +
+      '<text id="gfj-l2" x="340" y="850" class="maplab" font-size="26" fill="#e8c56a" opacity="0">2021 — WESTERN KENTUCKY — WARNED, DOZENS NOT HUNDREDS</text></svg>';
+    tl.to("#gfj-2", { opacity: 1, duration: 0.8 }, 1847.5);
+    tl.to("#gfj-2", { autoAlpha: 0, duration: 0.6 }, 1856.0);
+    tl.to("#gfj-p1925", { opacity: 1, duration: 1.0 }, 1857.5);
+    tl.to("#gfj-l1", { opacity: 1, duration: 0.6 }, 1858.5);
+    tl.to("#gfj-p2021", { strokeDashoffset: 0, duration: 2.2, ease: "power1.inOut" }, 1863.0);
+    tl.to("#gfj-l2", { opacity: 1, duration: 0.6 }, 1865.5);
+  })();
+
+  /* ---------- modern warning day ---------- */
+  (function(){
+    const h = document.getElementById("g-modern");
+    h.innerHTML = '<div class="gline" id="gmd-1" style="left:140px;top:160px;opacity:0"><span style="font-weight:900;font-family:\'Arial Black\',Arial,sans-serif;font-size:30px;color:#f2f5f8;background:rgba(5,8,12,0.8);padding:8px 18px;">DAYS AHEAD — OUTLOOK FLAGS THE COUNTIES</span></div>' +
+      '<div class="gline" id="gmd-2" style="left:140px;top:250px;opacity:0"><span style="font-weight:900;font-family:\'Arial Black\',Arial,sans-serif;font-size:30px;color:#f2f5f8;background:rgba(5,8,12,0.8);padding:8px 18px;">MORNING — TORNADO WATCH</span></div>' +
+      '<div class="gline" id="gmd-phone" style="left:700px;top:400px;width:520px;height:300px;background:rgba(10,14,20,0.95);border:3px solid #3d5a73;border-radius:18px;opacity:0;text-align:center;padding-top:40px;box-sizing:border-box;">' +
+      '<div style="font-family:Arial,sans-serif;font-weight:900;font-size:30px;color:#c0392b;letter-spacing:2px;">&#9888; TORNADO WARNING</div>' +
+      '<div style="font-family:Arial,sans-serif;font-size:24px;color:#e8eef4;margin-top:18px;">TAKE SHELTER NOW</div>' +
+      '<div style="font-family:Arial,sans-serif;font-size:20px;color:#93a3b2;margin-top:14px;">Every phone. Before it arrives.</div></div>';
+    tl.to("#gmd-1", { opacity: 1, duration: 0.6 }, 1880.5);
+    tl.to("#gmd-2", { opacity: 1, duration: 0.6 }, 1885.5);
+    tl.to("#gmd-phone", { opacity: 1, duration: 0.6 }, 1890.0);
+    tl.to("#gmd-phone", { scale: 1.04, transformOrigin: "50% 50%", duration: 0.3, yoyo: true, repeat: 3 }, 1890.8);
+    tl.to(["#gmd-1","#gmd-2","#gmd-phone"], { autoAlpha: 0, duration: 0.6 }, 1903.0);
+  })();
+
+  /* ---------- preparedness ---------- */
+  (function(){
+    const h = document.getElementById("g-prep");
+    const rows = [["BELOW GROUND beats above ground", 1924.8],["A SMALL INTERIOR ROOM beats an open one", 1928.8],["AWAY FROM WINDOWS beats beside them", 1932.5]];
+    let html = '';
+    rows.forEach(function(r, i){
+      html += '<div class="gline" id="gpp-' + i + '" style="left:0;right:0;top:' + (420 + i * 100) + 'px;text-align:center;opacity:0"><span style="font-family:Arial,sans-serif;font-weight:900;font-size:34px;color:#f2f5f8;background:rgba(5,8,12,0.8);padding:10px 26px;">' + r[0] + '</span></div>';
+    });
+    h.innerHTML = html;
+    rows.forEach((r, i) => tl.to("#gpp-" + i, { opacity: 1, duration: 0.5 }, r[1]));
+    tl.to(["#gpp-0","#gpp-1","#gpp-2"], { autoAlpha: 0, duration: 0.6 }, 1936.3);
+  })();
+
+  /* ---------- close + credits ---------- */
+  (function(){
+    const h = document.getElementById("g-close");
+    h.innerHTML = '<div class="gline" id="gcl-t" style="left:0;right:0;top:440px;text-align:center;font-family:Georgia,serif;font-size:92px;color:#f2f5f8;letter-spacing:3px;opacity:0">The Warning Hour</div>' +
+      '<div class="gline" id="gcl-s" style="left:0;right:0;top:580px;text-align:center;font-family:Arial,sans-serif;font-weight:700;font-size:28px;color:#d8a13a;letter-spacing:6px;opacity:0">EPISODE THREE — THE TORNADO WITH NO PHOTOGRAPH</div>';
+    tl.to("#gcl-t", { opacity: 1, duration: 0.9 }, 2080.3);
+    tl.to("#gcl-s", { opacity: 1, duration: 0.8 }, 2082.3);
+    tl.to(["#gcl-t","#gcl-s"], { autoAlpha: 0, duration: 1.0 }, 2085.0);
+    const c = document.getElementById("g-credits");
+    c.innerHTML = '<div class="gline" id="gcr-1" style="left:0;right:0;top:380px;text-align:center;font-family:Arial,sans-serif;font-size:24px;line-height:2.1;color:#93a3b2;opacity:0">' +
+      'Film courtesy Moving Image Research Collections, University of South Carolina<br>' +
+      'Photographs: NWS Paducah &middot; National Archives &middot; Library of Congress &middot; Jackson County Historical Society &middot; The Indiana Album<br>' +
+      'Reanalysis: Johns et al. 2013 &middot; Maddox et al. 2013<br>' +
+      'Some connecting scenes are modern recreations</div>';
+    tl.to("#gcr-1", { opacity: 1, duration: 1.0 }, 2087.0);
+    tl.to("#gcr-1", { autoAlpha: 0, duration: 1.5 }, 2099.5);
+  })();
+
+  /* ---------- lower thirds + quotes in/out ---------- */
+  [["#lt-gorham",601.9,8.0],["#lt-murph",674.9,8.0],["#lt-desoto",860.2,8.0],["#lt-wf",983.5,8.0],["#lt-princeton",1183.6,8.0],
+   ["#q-gorham",610.0,11.0],["#q-rows",758.5,10.0]
+  ].forEach(function(it){
+    gsap.set(it[0], { autoAlpha: 0, y: 24 });
+    tl.to(it[0], { autoAlpha: 1, y: 0, duration: 0.5, ease: "power2.out" }, it[1] + 0.15);
+    tl.to(it[0], { autoAlpha: 0, y: -14, duration: 0.45, ease: "power2.in" }, it[1] + it[2] - 0.55);
+  });
+
+  filmLayer(tl, DUR);
+  window.__timelines["ep3-tristate"] = tl;
+})();
+</script>
+</body>
+</html>
