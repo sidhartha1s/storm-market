@@ -273,8 +273,20 @@ def chunk(dur, assets, minw=MIN_STILL, maxw=MAX_STILL):
         # if fewer cuts than assets available and each would be < min, use fewer
         while len(assets) > 1 and dur / len(assets) < minw:
             assets = assets[:-1]
-    each = dur / len(assets)
-    return [(pick(a), each) for a in assets]
+    # An even division makes every cut land on the same beat — 90% of v2's windows sat in one
+    # 5-7s band, which reads as a slideshow rather than an edit. ep2 (the shipped reference)
+    # ranges from 1s to 80s. Breathe the rhythm with a fixed weight cycle: deterministic, sums
+    # to exactly `dur`, and still clamped under maxw.
+    k = len(assets)
+    while True:
+        ws = [RHYTHM[i % len(RHYTHM)] for i in range(k)]
+        tot = sum(ws)
+        each = [dur * w / tot for w in ws]
+        if max(each) <= maxw or min(each) <= minw:
+            break
+        k += 1                                # too long even weighted: add one more cut
+        assets = [assets[i % len(assets)] for i in range(k)]
+    return [(pick(a), w) for a, w in zip(assets, each)]
 
 
 @lru_cache(maxsize=None)
