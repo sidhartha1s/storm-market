@@ -133,7 +133,10 @@ SHOTS = {
  "a3-s6c": dict(kind="panel", id="g-panel-schools", assets=[P+"24-Plumfield_School_Demolished.png",
         P+"28-White_County_Newman_School.png", P+"X3_Enfield_-_Trousdale_School_SE_of_Town.png",
         P+"1925_-_Griffin_-_Griffin_School_1.jpg"]),
- "a3-s7":  dict(kind="stills", assets=[A+"ai-miners-emerging.png", P+"X_West_Frankfort3_-_Aerial_View_Orient_No_2_Mine.png",
+ # the West Frankfort stat panel was authored and left unmounted — this is the episode's
+ # longest segment and it carried no graphic at all
+ "a3-s7":  dict(kind="panel", id="g-panel-wf",
+        assets=[A+"ai-miners-emerging.png", P+"X_West_Frankfort3_-_Aerial_View_Orient_No_2_Mine.png",
         P+"X_West_Frankfort2_-_Aerial_View_West_Side_of_Town.jpg", P+"X_West_Frankfort1_-_Clyde_Reeds_Home.png",
         P+"X_West_Frankfort4_-_James_Kerley_Home.png", P+"25-West_Frankfort_Orient_2_Aerial.png",
         P+"1925_tornado_damage_10.webp", P+"1925_tornado_damage_12.webp"], lower="wf"),
