@@ -256,3 +256,10 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
 - xstack contact sheets pad undefined regions GREEN — padding, not video content; don't panic.
 - Snapshot pre-render QC caught both grade issues before paying for a render — keep snapshot
   sweep (≈13 frames) as the mandatory pre-render gate; post-render frame sweep stays too.
+
+## ep3 v2 (2026-07-28)
+- **`loop` attribute does NOT survive render**: hyperframes 0.7.64 video extraction ignores `loop`; a looped clip window longer than the source fails the 95% frame-coverage gate ("captured N of expected M frames"). Fix at the asset level: pre-loop the file with `ffmpeg -stream_loop N -i src -t <maxwin+2> -g 30 -keyint_min 30` and keep the filename. Never set `HF_VIDEO_COVERAGE_THRESHOLD=0` — the gate is right, the encode would freeze/blank.
+- **Don't run whisper transcription concurrently with a render**: CPU starvation made hyperframes' ffprobe miss its deadline ("[FFmpeg] ffprobe deadline with code 0") during video_extract. Sequence them.
+- **tts_ep3v2.cmd chained transcribe stage died silently after TTS DONE** (no marker, no log lines) — give each detached stage its OWN log + exit marker; a chained `goto`-loop .cmd hides which stage failed.
+- **StaticGuard boundary rule**: any GSAP fade that ends exactly at a clip-window boundary needs a `tl.set(..., {autoAlpha:0})` hard kill right after the fade, or validate flags stale-visibility risk.
+- **`hyperframes snapshot` accepts only one `--at`** — repeated flags silently collapse (and add a stray extra frame); loop one invocation per timestamp for fixchecks.
