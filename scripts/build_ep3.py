@@ -275,6 +275,18 @@ def chunk(dur, assets, minw=MIN_STILL, maxw=MAX_STILL):
     return [(pick(a), each) for a in assets]
 
 
+@lru_cache(maxsize=None)
+def vdur(src):
+    """Real length of a clip. hyperframes will not loop a short video to fill a long window —
+    it fails the render with a frame-coverage error — so the window must fit the source."""
+    out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                          "-of", "default=nw=1:nk=1", src],
+                         capture_output=True, text=True).stdout.strip()
+    if not out:
+        raise SystemExit(f"[build_ep3] ffprobe returned nothing for {src}")
+    return float(out)
+
+
 def split_overlong(shots, pool):
     """`mixed` segments carry hand-declared beat weights, which the seg_dur rescale can push
     past the clamps chunk() enforces everywhere else. Split what it stretched: a still never
