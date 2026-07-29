@@ -54,6 +54,7 @@ F = "media/film/"
 S = "media/stock/"
 N = "media/newspapers/"
 A = "media/ai/"
+R = "media/portraits/"
 
 # ---------------------------------------------------------------- shot table
 # kind: stills | film | stock | graphic | panel | papers
