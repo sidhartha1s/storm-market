@@ -544,7 +544,12 @@ def main():
                     cls = "archgrade" if typ == "film" else "stockgrade"
                     vis.append(f'  <video id="{eid}" class="clip {cls}" src="{src}" data-start="{ct:.2f}" '
                                f'data-duration="{w:.2f}" data-track-index="1" muted{cb}></video>')
-                elif typ == "paper" or plan.get("fit") == "contain" or is_tall(src):
+                # fit="contain" is a segment-wide hint, but applying it to an image that is
+                # already near 16:9 pillarboxes a photo that would have filled the frame
+                # (four stills at 1.58-1.75 were running inside blurred bars for no reason).
+                # Papers stay contained at any aspect — cropping a front page cuts the text.
+                elif typ == "paper" or is_tall(src) or (
+                        plan.get("fit") == "contain" and _aspect(src) < 1.60):
                     vis.append(f'  <section class="clip pfit" id="{eid}" data-start="{ct:.2f}" '
                                f'data-duration="{w:.2f}" data-track-index="1"{cb}>'
                                f'<img class="pbg" src="{src}" alt=""><img id="kb-{eid}" class="pfg archgrade" src="{src}" alt=""></section>')
