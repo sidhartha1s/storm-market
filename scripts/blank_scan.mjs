@@ -1,11 +1,11 @@
 /* Pre-render blank check: seek every composition across its whole timeline and measure
    how much visible ink is on screen. Catches a graphic that renders empty or near-empty
    at some point without waiting 40 minutes for a render to prove it. */
-import { chromium } from 'file:///C:/Users/Sidhartha/AppData/Roaming/npm/node_modules/@playwright/cli/node_modules/playwright-core/index.mjs';
+import { chromium, chromiumExecutable } from './playwright_env.mjs';
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
-const EXECUTABLE = 'C:\\Users\\Sidhartha\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const EXECUTABLE = chromiumExecutable();
 const ep = process.argv[2];
 const STEP = 0.25;
 const gsap = readFileSync(join(ep, 'gsap.min.js'), 'utf8');
