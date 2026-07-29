@@ -345,8 +345,15 @@ def pick(asset):
         _LAST = asset
         return asset
     # never hand back the frame that is already on screen — with a small era-restricted
-    # pool the substitution loop otherwise cuts an image straight to itself
-    for sp in (_ERA_POOL if _ERA_POOL else _SPARE):
+    # pool the substitution loop otherwise cuts an image straight to itself.
+    # Order matters geographically: the act's own pool comes before the global spares,
+    # because _SPARE is flat and once handed an Annapolis, Missouri beat a photograph of
+    # the Heinz plant in Princeton, Indiana — the far end of the track, three hours later.
+    if _ERA_POOL:
+        pool = _ERA_POOL
+    else:
+        pool = list(TAIL.get(_ACT, [])) + [s for s in _SPARE if s not in TAIL.get(_ACT, [])]
+    for sp in pool:
         sp = canon(sp)
         if _USES.get(sp, 0) < MAX_USES and sp != _LAST:
             _USES[sp] = _USES.get(sp, 0) + 1
