@@ -51,6 +51,50 @@ def heavy_processes():
     return found
 
 
+def version_check(repo):
+    """Pin drift is a hard failure; a newer release upstream is a loud warning.
+
+    Drift is checked offline and is always a real bug: config.yaml and the npx pin in the
+    render scripts disagreeing means the render does not run the version anyone reviewed.
+    'Is something newer published' needs the network, so it warns rather than blocks — a
+    render must not fail because npm is unreachable, but nobody gets to say they forgot.
+    """
+    cfg = (repo / "config.yaml").read_text(encoding="utf-8", errors="replace")
+    m = re.search(r'hyperframes_version:\s*"([\d.]+)"', cfg)
+    if not m:
+        print("[version] no hyperframes_version in config.yaml", file=sys.stderr)
+        return 4
+    pinned = m.group(1)
+
+    drift = []
+    for script in sorted((repo / "scripts").glob("*.cmd")):
+        for used in re.findall(r'npx hyperframes@([\d.]+)', script.read_text(
+                encoding="utf-8", errors="replace")):
+            # ep2 shipped on its own pin; its retired scripts are history, not a run path
+            if used != pinned and "ep3v2" not in script.name and "ep2" not in script.name:
+                drift.append((script.name, used))
+    if drift:
+        print(f"[version] PIN DRIFT — config.yaml says {pinned}:", file=sys.stderr)
+        for name, used in drift:
+            print(f"    {name} runs hyperframes@{used}", file=sys.stderr)
+        return 5
+
+    latest = subprocess.run(["npm", "view", "hyperframes", "version"],
+                            capture_output=True, text=True, shell=True, timeout=60)
+    newest = latest.stdout.strip()
+    if latest.returncode != 0 or not re.fullmatch(r'[\d.]+', newest):
+        print(f"[version] pin {pinned}; could not reach npm to check for newer (not fatal)")
+        return 0
+    if newest != pinned:
+        print(f"[VERSION] pinned {pinned}, but hyperframes {newest} is published.")
+        print(f"[VERSION] Bump config.yaml + the npx pins together, or decide deliberately")
+        print(f"[VERSION] to stay. Read the diff for the extract stage and any timeout:")
+        print(f"[VERSION] 0.7.81 shortened the ffprobe deadline from 120s to 30s.")
+    else:
+        print(f"[version] pin {pinned} is the latest published.")
+    return 0
+
+
 busy = heavy_processes()
 if len(busy) > MAX_HEAVY:
     print(f"[preflight] REFUSING TO RENDER — {len(busy)} heavy processes are competing "
