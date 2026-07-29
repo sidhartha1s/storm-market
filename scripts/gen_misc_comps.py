@@ -344,7 +344,8 @@ def lone():
      whole, the route is a stick in the last quarter of the frame under 700px of empty
      Iowa. So the plate is cropped to a band: full width, from 40% down. */
   .plateband { position:absolute; left:0; right:0; top:300px; height:649px; overflow:hidden; }
-  .plate { position:absolute; left:0; top:-432px; width:1920px; }
+  .plate { position:absolute; left:0; top:-432px; width:1920px;
+    opacity:0.78; filter:grayscale(0.18) brightness(0.86) contrast(1.05) sepia(0.12); }
   .platefade { position:absolute; inset:0; pointer-events:none; background:
     linear-gradient(180deg, rgba(4,7,10,1) 0%, rgba(4,7,10,0) 14%,
                     rgba(4,7,10,0) 86%, rgba(4,7,10,1) 100%); }
