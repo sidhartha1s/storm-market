@@ -22,8 +22,10 @@ could have been read at any point in the last twelve attempts.
 Usage: python3 scripts/media_budget.py episodes/<slug>
 Exit 0 = safe to render. Exit 1 = do not render, with the offending files named.
 """
+import os
 import re
 import subprocess
+import time
 import sys
 from pathlib import Path
 
@@ -99,7 +101,31 @@ def installed_probe_deadline():
     return best
 
 
+def ffprobe_spawn_cost():
+    """Time an ffprobe spawn that touches no file, and say which binary is configured.
+
+    This box runs Defender + McAfee + CrowdStrike; all three scan every process creation and
+    the cost tracks binary SIZE, not work done. The 97 MB static build costs ~1.2s per spawn
+    and a render fires roughly 200 probes, which is what pushed a single probe past its
+    deadline through thirteen renders. The 224 KB shared build costs ~0.10s.
+    """
+    exe = os.environ.get("HYPERFRAMES_FFPROBE_PATH", "").strip() or "ffprobe"
+    times = []
+    for _ in range(3):
+        t0 = time.perf_counter()
+        subprocess.run([exe, "-v", "error", "-version"], capture_output=True)
+        times.append(time.perf_counter() - t0)
+    return exe, min(times)
+
+
 print(f"composition {COMP_W}x{COMP_H} | {len(windows)} distinct clips | {total_mb:.0f} MB to decode")
+exe, spawn = ffprobe_spawn_cost()
+name = Path(exe).name if exe != "ffprobe" else "ffprobe (from PATH)"
+size = f"{Path(exe).stat().st_size / 1e6:.1f} MB" if exe != "ffprobe" and Path(exe).exists() else "size unknown"
+print(f"ffprobe: {name} ({size}) spawns in {spawn:.3f}s -> ~{spawn * 200:.0f}s of probe overhead per render")
+if spawn > 0.4:
+    fails.append(f"ffprobe spawns in {spawn:.2f}s — a render fires ~200 probes, so that is "
+                 f"~{spawn * 200:.0f}s of scanning and a probe WILL miss its deadline")
 dl = installed_probe_deadline()
 if dl:
     print(f"installed hyperframes {dl[0]} allows {dl[1]:.0f}s per ffprobe "
@@ -129,8 +155,15 @@ if fails:
     print(f"\nMEDIA BUDGET FAIL — do not render:")
     for f in fails:
         print(f"  - {f}")
-    print("\nFix: python3 scripts/optimize_clips.py <episode> --apply, then rebuild index.html.")
-    print("A render started here dies at video_extract with 'ffprobe deadline with code 0',")
+    if oversize or overlong or total_mb > BUDGET_MB:
+        print("\nFix the media: python3 scripts/optimize_clips.py <episode> --apply, "
+              "then rebuild index.html.")
+    if spawn > 0.4:
+        print("\nFix the binary: set HYPERFRAMES_FFPROBE_PATH (and HYPERFRAMES_FFMPEG_PATH) to "
+              "the SHARED\nffmpeg build — the render scripts already do. The static build is "
+              "97 MB and every\nspawn is scanned by three security products; the shared one is "
+              "224 KB.\n  winget install Gyan.FFmpeg.Shared")
+    print("\nA render started here dies at video_extract with 'ffprobe deadline with code 0',")
     print("which reads like a corrupt asset and is not one.")
     sys.exit(1)
 
