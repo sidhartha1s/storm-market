@@ -303,6 +303,125 @@ the bill and varies enormously by location. The saving is real and it is not the
 
 ---
 
+### The state will pay for some of Part Two — a note on grants, and on what things cost
+
+This is not a numbered protection, because it depends entirely on where you live. It is here because
+**the most expensive protections in this book are the ones most likely to be part-funded by your
+state**, and because the programmes that fund them also publish the only current, non-marketing cost
+figures available for this work.
+
+**Florida — My Safe Florida Home.** For a home built before 2008, the state runs a **free
+wind-mitigation inspection** and then a matching grant: **$2 of state money for every $1 you put in, to
+a maximum state contribution of $10,000.** The programme's own worked examples make the arithmetic
+concrete: spend $9,000 on impact-rated windows and you are reimbursed $6,000; spend $15,000 and you are
+reimbursed the $10,000 cap with $5,000 as your match. Low-income homeowners are not required to provide
+matching funds at all, up to the same $10,000. **Eligibility is prioritised by income and age**, in four
+groups from low-income over-60 downwards, and at the time of writing higher-income households are
+eligible for inspections only. The order matters: **you cannot apply for the grant until the free
+inspection has produced a report**, and the grant only pays for improvements that report recommends.
+
+**And here is the cost table the same programme publishes**, which is as close to an honest current
+price list for hurricane retrofit as exists in public:
+
+| Upgrade | Estimated cost |
+|---|---|
+| Roof-to-wall reinforcement | $800 – $3,000 |
+| Roof deck nailing upgrade | $1,000 – $4,000 |
+| Secondary water barrier | $500 – $2,500 |
+| Impact windows or shutters | $5,000 – $15,000 |
+| Roof replacement | $8,000 – $20,000+ |
+
+Those are Florida numbers, from a state programme, for Florida labour. Treat them as the shape of the
+market rather than a quote for your street — but note that the three cheapest lines are also the three
+the programme names as the most cost-effective, which is the same ranking this book's Part Two arrives at
+from the structural side.
+«SRC: My Safe Florida Home (Florida Department of Financial Services), "Plan Your Storm-Ready Home"
+and "What is the maximum amount I can receive in Grant funds?" — $2 in grant funds for every $1
+contributed by the homeowner, reimbursing 2/3 of project cost to a maximum state contribution of
+$10,000, subject to legislative appropriation, with worked examples at $9,000, $15,000 and $20,000
+project cost; low-income homeowners not required to provide matching funds up to the same $10,000;
+estimated cost ranges: roof-to-wall reinforcement $800–$3,000, roof deck nailing upgrade
+$1,000–$4,000, secondary water barrier $500–$2,500, impact windows/shutters $5,000–$15,000, roof
+replacement $8,000–$20,000+; free wind-mitigation inspection required before the grant application;
+most cost-effective upgrades named as roof-to-wall connections, deck nailing and opening protection. |
+https://mysafeflhome.com/plan-your-storm-ready-home/ | retrieved 2026-07-29»
+«SRC: My Safe Florida Home, *Program Terms 2025-26* (MSFH 1034) and the 2025 programme update flyer —
+$280 million appropriated for fiscal 2025-26; four prioritisation groups (low-income 60+, low-income all
+ages, moderate-income 60+, moderate-income all ages), with moderate income defined as below 120% of
+county median and low income at or below 80%; higher-income households eligible for inspections only;
+homestead exemption required; two-step application, inspection before grant. |
+https://mysafeflhome.com/wp-content/uploads/2025/11/MSFH-1034-Program-Terms-2025-26.pdf | retrieved
+2026-07-29»
+
+**California — Earthquake Brace + Bolt.** For a **wood-framed house built before 1980 on a raised
+foundation**, in one of more than 1,100 eligible ZIP codes, EBB pays **up to $3,000** toward a
+code-compliant seismic retrofit — bolting the frame to the foundation and bracing the cripple walls,
+which is Protection 83's structural cousin and the single highest-return earthquake spend available to a
+homeowner. **Income-eligible households earning $89,040 or less can apply for up to $7,000 more**, which
+the state says covers most or all of a typical retrofit. Since 2013 the programme has funded more than
+**32,500 retrofits**, and in 2025 it opened to **rental properties** for the first time. Registration
+runs in a defined window each year rather than continuously — check the dates before you plan the work,
+not after.
+«SRC: California Department of Insurance, "Earthquake Brace & Bolt Grant Program Opens for 2025
+Applications — Now Expanded to Rental Properties" (4 September 2025) — grants of up to $3,000 for a
+code-compliant seismic retrofit across more than 1,100 eligible ZIP codes for wood-framed houses built
+before 1980 with raised foundations; up to $7,000 in supplemental grants for income-eligible households
+earning $89,040 or less, covering most or all retrofit costs; more than $20 million available for the
+2025 application period; registration 20 August to 1 October 2025; expanded to rental properties; more
+than 32,500 retrofits funded since 2013. |
+https://www.insurance.ca.gov/0400-news/0102-alerts/2025/Earthquake-Brace-Bolt-Grant-Program-Op.cfm |
+retrieved 2026-07-29»
+
+**Alabama — Strengthen Alabama Homes**, the model several other states have copied, pays **up to
+$10,000** toward bringing an existing home to the IBHS FORTIFIED Roof or Silver standard, as a grant
+rather than a loan, in specified coastal counties. Its real significance is what happens afterwards: the
+state's insurance department publishes a **discount chart for FORTIFIED designations**, with reductions
+on the wind portion of the premium ranging from **20 per cent for an older FORTIFIED Roof up to 50 per
+cent for a new FORTIFIED Gold** house. That is the clearest published link in the country between doing
+the work in Part Two and a number on your bill.
+«SRC: Alabama Department of Insurance, Strengthen Alabama Homes programme materials and the FORTIFIED
+insurance discount chart — grants of up to $10,000 for residential wind mitigation on existing homes in
+Baldwin and Mobile counties, income-based and first-come first-served, paid as a grant not a loan, with
+the home required to meet the IBHS FORTIFIED Roof or Silver standard on completion and proof of an
+in-force homeowners policy required; wind-portion premium discounts ranging from 20% for a FORTIFIED
+Roof designation earned more than five years earlier to 50% for a new FORTIFIED Gold home. |
+https://www.strengthenalabamahomes.com/ | retrieved 2026-07-29»
+
+**Three honest caveats, and then the instruction.** These programmes are **funded by annual
+appropriation**, so they open, close, run out of money and change their rules — every figure above is
+current at the time of writing and none of it is a promise. They are **first-come, first-served**, which
+means the useful action is registering early in a cycle rather than deciding in a hurricane watch. And
+**they are geographically narrow**: three states are named here because their programmes publish real
+numbers, not because they are the only ones. This book does not print a count of how many states run
+something, because no authority publishes one — which is exactly why the instruction below is a search
+rather than a list.
+
+**So the instruction is one search, not a decision:** search your state's name with "wind mitigation
+grant", "seismic retrofit grant" or "hazard mitigation grant program", and look for the state emergency
+management agency or the state insurance department rather than a contractor's page. Your Appendix B
+entry names the agencies. If a programme exists, the sequence is almost always the same — free or
+subsidised inspection first, then a grant against what the inspection recommends — and doing the work
+before you apply is the single most common way people disqualify themselves.
+
+---
+
+### A note on every cost figure in this book
+
+**The cost line on each protection is a planning band, not a quote, and the bands are deliberately
+wide.** For the cheap items — a torch, a filter, a helmet, a set of bins — the band is what the item
+actually sells for across the range of quality worth buying, and the low end is usually adequate. For
+the expensive structural items, the bands are anchored where possible to the state cost tables above,
+which is the only current, non-commercial pricing published for this work.
+
+**Two things move a structural number more than anything in this book can predict:** whether the work is
+done *with* a re-roof or as a standalone job, which is frequently a difference of several thousand
+dollars for identical work, and where you live. That is why the protections are written to tell you
+**what to ask for by name** rather than what to pay. A specification you can put on a contract is worth
+more than a price, because the price you will actually pay comes from three quotes against that
+specification.
+
+---
+
 ### 105 · Claim documentation discipline, starting the same hour
 
 **Prevents:** cleaning up the evidence.

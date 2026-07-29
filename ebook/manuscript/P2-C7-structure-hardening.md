@@ -43,7 +43,8 @@ that.
 ### 69 · Sealed roof deck
 
 **Prevents:** water destroying the inside of a house whose roof covering has gone.
-**Cost:** small premium at re-roof; $1,000–4,000 standalone · **Time:** with a re-roof
+**Cost:** small premium at re-roof; $1,000–4,000 standalone (Florida's state programme prices a deck
+nailing upgrade at $1,000–4,000 and a secondary water barrier at $500–2,500) · **Time:** with a re-roof
 · **Materials:** taped or fully-adhered underlayment · **Regions:** Hurricane Coast rank 4,
 Tornado Alley rank 8. Owners only.
 
@@ -149,7 +150,8 @@ hail claims.
 ### 72 · Hurricane straps and gable-end bracing
 
 **Prevents:** the roof structure separating from the walls.
-**Cost:** $500–3,000 · **Time:** days · **Materials:** metal connectors, bracing lumber
+**Cost:** $800–3,000, the range Florida's state grant programme publishes for roof-to-wall
+reinforcement · **Time:** days · **Materials:** metal connectors, bracing lumber
 · **Regions:** Hurricane Coast, Tornado Alley. Owners only.
 
 Older houses frequently rely on nails alone at the roof-to-wall connection. Metal connectors tie the
@@ -168,7 +170,8 @@ only pays when Protections 73 and 74 are also done.
 ### 73 · Opening protection — shutters, impact glass, or plywood, with the real spec
 
 **Prevents:** the breach that lets the wind inside.
-**Cost:** $50–200 per opening for plywood; $2,000–15,000 for shutters or impact glass
+**Cost:** $50–200 per opening for plywood; $5,000–15,000 for shutters or impact glass, the range
+Florida's state grant programme publishes
 · **Time:** varies · **Materials:** rated shutters, impact windows, or correctly specified sheathing
 · **Regions:** Hurricane Coast rank 2. Owners, and renters with permission.
 
