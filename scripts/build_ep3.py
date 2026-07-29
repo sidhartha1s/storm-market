@@ -581,7 +581,10 @@ def main():
         idx += 1
         t = round(seg_start + seg_dur + GAP, 2)
 
-    total = t + 14.0    # credits tail
+    # g-close carries the title, episode line and credits inside its own 26.5s timeline and
+    # fades them out 2.2s before it ends, so the old +14.0s "credits tail" was 14 seconds of
+    # black after the last visible frame. Keep only a short breath on black to end the video.
+    total = t + 1.0
     close_picture_gaps(vis, gfx, kbs, total)
     return vis, gfx, chips, audio, kbs, total, lines_report, seg_at
 
