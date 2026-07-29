@@ -343,21 +343,31 @@ def lone():
         for i in range(9))
     # same geometry as the track maps so the two read as one map
     route = "300,792 404,745 556,690 690,636 780,600 858,566 962,528 1046,496 1168,456 1332,412 1452,372 1596,330"
+    pts = [tuple(int(v) for v in p.split(",")) for p in route.split()]
+    # the dash pattern must be the polyline's TRUE length. At 1360 against a 1377.6px
+    # route, the 17.6px overhang was a second dash and sat on screen from frame one as a
+    # stray red mark in Indiana, an hour of story before the storm gets there.
+    rlen = sum(((b2[0] - a2[0]) ** 2 + (b2[1] - a2[1]) ** 2) ** 0.5
+               for a2, b2 in zip(pts, pts[1:]))
     b = (f'<svg viewBox="0 0 1920 1080" style="position:absolute;inset:0">'
          f'<defs><filter id="lglow"><feGaussianBlur stdDeviation="10" result="b"/>'
          f'<feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>'
          f'<line x1="664" y1="150" x2="664" y2="1010" stroke="#16212c" stroke-width="3"/>'
          f'<line x1="1272" y1="150" x2="1272" y2="1010" stroke="#16212c" stroke-width="3"/>'
-         f'<text x="470" y="994" class="statelab2">MISSOURI</text>'
-         f'<text x="930" y="994" class="statelab2">ILLINOIS</text>'
-         f'<text x="1450" y="994" class="statelab2">INDIANA</text>'
+         # y=920, not 994: the closing line sits at bottom:74px and overprinted the labels
+         f'<text x="470" y="920" class="statelab2">MISSOURI</text>'
+         f'<text x="930" y="920" class="statelab2">ILLINOIS</text>'
+         f'<text x="1450" y="920" class="statelab2">INDIANA</text>'
+         # the label belongs INSIDE the group it describes, so it dies with the cells
          f'<g id="{cid}-squall">{squall}'
          f'<line id="{cid}-sqx" x1="452" y1="854" x2="1420" y2="470" stroke="#8e2020" '
-         f'stroke-width="5" stroke-dasharray="1040" stroke-dashoffset="1040"/></g>'
+         f'stroke-width="5" stroke-dasharray="1040" stroke-dashoffset="1040"/>'
+         f'<text id="{cid}-sqlab" x="452" y="880" class="maplab" opacity="0">A SQUALL LINE · MANY STORMS</text>'
+         f'</g>'
          f'<polyline id="{cid}-route" points="{route}" fill="none" stroke="#c0392b" stroke-width="8" '
-         f'stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1360" stroke-dashoffset="1360"/>'
+         f'stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="{rlen:.0f}" '
+         f'stroke-dashoffset="{rlen:.0f}"/>'
          f'<circle id="{cid}-cell" class="lonecell" cx="300" cy="792" r="0" filter="url(#lglow)"/>'
-         f'<text id="{cid}-sqlab" x="452" y="906" class="maplab" opacity="0">A SQUALL LINE · MANY STORMS</text>'
          f'<text id="{cid}-onelab" x="252" y="742" class="maplab" opacity="0">ONE CELL</text>'
          f'</svg>')
     eb, j = head(cid, "MODERN REANALYSIS · JOHNS ET AL. 2013", "ONE LONE SUPERCELL",
