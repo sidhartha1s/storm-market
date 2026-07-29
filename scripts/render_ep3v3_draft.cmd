@@ -2,11 +2,13 @@
 cd /d "C:\Users\Sidhartha\Automation Projects\storm-market\.worktrees\ep3-v2\episodes\ep3-tristate"
 set PRODUCER_PAGE_NAVIGATION_TIMEOUT_MS=120000
 set PRODUCER_PUPPETEER_PROTOCOL_TIMEOUT_MS=900000
-rem Use the SHARED ffmpeg build. This box runs Defender + McAfee + CrowdStrike, all of which
-rem scan every process creation, and the scan cost tracks the binary size: the 97 MB static
-rem ffprobe.exe costs 1.165s per spawn, the 224 KB shared one costs 0.102s. A render fires
-rem roughly 200 probes, so that is 200s of pure scanning versus 20s - and the 200s version is
-rem what pushed a single probe past its deadline and killed thirteen renders.
+rem Use the SHARED ffmpeg build. Security software on this box scans every process creation and
+rem the scan cost tracks the binary size: the 96.6 MB static ffprobe.exe costs 1.337s per spawn,
+rem the 224 KB shared one costs 0.100s. A render fires roughly 200 probes, so that is 200s of
+rem pure scanning versus 20s - and the 200s version is what pushed a single probe past its
+rem deadline and killed thirteen renders. Windows Defender is NOT a contributor (Passive Mode,
+rem real-time off); the live scanners are McAfee mc-fw-host and CrowdStrike Falcon, and
+rem disabling McAfee's peripheral services moved a spawn 1.337s -> 1.211s, i.e. nothing.
 set HYPERFRAMES_FFPROBE_PATH=C:\Users\Sidhartha\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Shared_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.2-full_build-shared\bin\ffprobe.exe
 set HYPERFRAMES_FFMPEG_PATH=C:\Users\Sidhartha\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Shared_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.2-full_build-shared\bin\ffmpeg.exe
 if not exist renders mkdir renders
