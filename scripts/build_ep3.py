@@ -582,7 +582,60 @@ def main():
         t = round(seg_start + seg_dur + GAP, 2)
 
     total = t + 14.0    # credits tail
+    close_picture_gaps(vis, gfx, kbs, total)
     return vis, gfx, chips, audio, kbs, total, lines_report, seg_at
+
+
+def close_picture_gaps(vis, gfx, kbs, total):
+    """Hold the outgoing frame through every breath instead of cutting to black.
+
+    Segments advance by seg_dur + GAP, but the picture windows only ever spanned
+    seg_dur — so the 0.75s breath between narration segments had nothing on the
+    picture tracks and rendered as a hard cut to black. Measured on the v3 draft:
+    81 black spans, 63 of them at segment boundaries (ep2, the shipped reference,
+    has 2). Fix by extending whatever window ends at the gap to the next window's
+    start; the composite freezes for the breath and cuts on the new line.
+    """
+    W = re.compile(r'data-start="([\d.]+)" data-duration="([\d.]+)"')
+    wins = []
+    for lst in (vis, gfx):
+        for i, s in enumerate(lst):
+            m = W.search(s)
+            if m:
+                wins.append([float(m.group(1)), float(m.group(2)), lst, i])
+
+    edges = sorted({round(a + d, 2) for a, d, _, _ in wins} | {0.0})
+    starts = sorted({round(a, 2) for a, _, _, _ in wins})
+
+    # a gap is an instant where coverage drops to zero before the next window opens
+    def covered(t0):
+        return any(a <= t0 < round(a + d, 2) for a, d, _, _ in wins)
+
+    grow = {}
+    for e in edges:
+        if covered(e) or e >= total:
+            continue
+        nxt = next((s for s in starts if s > e), total)
+        if nxt - e < 0.01:
+            continue
+        for w in wins:
+            if abs(round(w[0] + w[1], 2) - e) < 0.005:
+                grow[id(w[2]), w[3]] = round(nxt - w[0], 2)
+
+    for (lst_id, i), newdur in grow.items():
+        lst = vis if id(vis) == lst_id else gfx
+        old = lst[i]
+        lst[i] = W.sub(lambda m: f'data-start="{m.group(1)}" data-duration="{newdur:.2f}"',
+                       old, count=1)
+        eid = re.search(r'id="(?:host-)?([\w-]+)"', old)
+        if eid:
+            kid = f'"#kb-{eid.group(1)}",'
+            for k, kb in enumerate(kbs):
+                if kb.startswith("[" + kid):
+                    parts = kb[1:-1].split(",")
+                    parts[2] = f"{newdur:.2f}"
+                    kbs[k] = "[" + ",".join(parts) + "]"
+                    break
 
 
 CSS = """
