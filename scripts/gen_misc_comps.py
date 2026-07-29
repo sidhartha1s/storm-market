@@ -354,12 +354,25 @@ def lone():
   .verdictsub { position:absolute; left:96px; top:318px; font-family:Georgia,serif;
     font-style:italic; font-size:25px; color:#b8c6d4; }
 """
-    # the squall line the storm was NOT: a row of cells along a front, later struck out
+    # Re-fitted to the plate instead of to the track maps' abstract dividers. Two anchors
+    # are measurable in the image: the Mississippi (MO/IL) sits at plate x~700 and the
+    # Wabash (IL/IN) at x~1200 of 1672, i.e. x=804 and x=1378 once scaled to 1920. The
+    # track maps' own dividers were at 664 and 1272, so every x is remapped onto those.
+    # The real path crosses only ~1.3 degrees of latitude, so it runs low and near-flat
+    # across the plate's southern band rather than climbing the frame.
+    OLD = [(300, 792), (404, 745), (556, 690), (690, 636), (780, 600), (858, 566),
+           (962, 528), (1046, 496), (1168, 456), (1332, 412), (1452, 372), (1596, 330)]
+    fx = (1378 - 804) / (1272 - 664)
+    xs = [804 + (x - 664) * fx for x, _ in OLD]
+    y0, y1 = 958.0, 826.0            # Ellington MO down-left, Petersburg IN up-right
+    span = xs[-1] - xs[0]
+    ys = [y0 - (x - xs[0]) / span * (y0 - y1) for x in xs]
+    route = " ".join(f"{x:.0f},{y:.0f}" for x, y in zip(xs, ys))
+    # the squall line the storm was NOT: a front of nine cells lying along the same band
     squall = "".join(
-        f'<circle id="{cid}-sq{i}" class="cell" cx="{470 + i * 118}" cy="{836 - i * 44}" r="0"/>'
+        f'<circle id="{cid}-sq{i}" class="cell" '
+        f'cx="{xs[0] + i * span / 8:.0f}" cy="{ys[0] - i * (y0 - y1) / 8 - 96:.0f}" r="0"/>'
         for i in range(9))
-    # same geometry as the track maps so the two read as one map
-    route = "300,792 404,745 556,690 690,636 780,600 858,566 962,528 1046,496 1168,456 1332,412 1452,372 1596,330"
     pts = [tuple(int(v) for v in p.split(",")) for p in route.split()]
     # the dash pattern must be the polyline's TRUE length. At 1360 against a 1377.6px
     # route, the 17.6px overhang was a second dash and sat on screen from frame one as a
