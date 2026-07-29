@@ -187,7 +187,11 @@ SHOTS = {
  "a5-s1c": dict(kind="panel", id="g-panel-redcross", assets=[P+"23-Royalton-Colp_Road_Bridge.png",
         P+"X_West_Frankfort4_-_James_Kerley_Home.png", P+"1925_tornado_damage_2.webp",
         P+"1925_tornado_damage_8.webp"]),
- "a5-s1d": dict(kind="panel", id="g-panel-nonet", assets=["media/portraits/marvin-portrait-01.jpg",
+ # marvin-portrait-01.jpg (Charles F. Marvin, Weather Bureau chief) was here under narration
+ # about disaster relief and the absence of any federal agency — he has nothing to do with
+ # that beat and the face read as a stranger (owner 2026-07-29). Replaced with the Griffin
+ # relief-tents plate, which is what "rebuilt by churches, neighbors, and a charity" shows.
+ "a5-s1d": dict(kind="panel", id="g-panel-nonet", assets=[P+"1925_-_Griffin_-_Tents_Amidst_Damage.jpg",
         P+"1925_tornado_damage_1.webp", P+"07-Perry_County_Destruction.png"], fit="contain"),
  "a5-s2":  dict(kind="papers", assets=[N+"The_Evansville_Press_Front_page_-_1925_tornado_coverage.jpg",
         N+"Marion_Evening_Post_Front_page_-_1925_tornado_coverage.jpg",
