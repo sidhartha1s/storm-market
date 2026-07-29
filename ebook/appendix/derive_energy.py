@@ -8,10 +8,11 @@ the *public inquiry* number, not the program officer's desk line.
 
 Two rules from the appendix README are enforced here rather than trusted:
 
-  - Appendix B only publishes https:// URLs, and the ACF listing carries bare domains
-    and http:// links. Each one is normalised to https:// and then fetched. A URL that
-    does not resolve is left blank, because a dead link in a paid emergency directory is
-    the failure this whole schema exists to prevent.
+  - Appendix B only publishes https:// URLs, and the ACF listing carries bare domains and
+    http:// links. Each one is normalised to https:// and then checked through
+    verify_urls.check. A URL the host merely refuses us is still published, because the
+    citation is the federal listing; only a 404 or an unresolvable hostname is dropped, since
+    that means the listing has gone stale for that state.
   - A phone number is only published if it parses as a complete US number. The upstream
     page has at least one truncated entry, and a truncated phone number in an emergency
     directory is worse than an empty cell.
@@ -24,20 +25,17 @@ Usage:
 import argparse
 import csv
 import re
-import subprocess
 import sys
-import urllib.error
-import urllib.request
 from pathlib import Path
+
+import verify_urls
+from verify_urls import BLOCKED, DEAD
 
 HERE = Path(__file__).parent
 OUT = HERE / "energy.csv"
 
 SOURCE = ("https://www.acf.hhs.gov/ocs/map/"
           "liheap-map-state-and-territory-contact-listing")
-
-UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-                    "(KHTML, like Gecko) Chrome/126 Safari/537.36"}
 
 STATES = [
     "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut",
@@ -66,14 +64,8 @@ PHONE_RE = re.compile(
 )
 
 
-def fetch(url, timeout=60):
-    request = urllib.request.Request(url, headers=UA)
-    with urllib.request.urlopen(request, timeout=timeout) as fh:
-        return fh.read()
-
-
 def page_text():
-    raw = fetch(SOURCE, timeout=120).decode("utf-8", "replace")
+    raw = verify_urls.fetch(SOURCE, timeout=120).decode("utf-8", "replace")
     raw = re.sub(r"(?is)<(script|style).*?</\1>", " ", raw)
     raw = re.sub(r"(?s)<[^>]+>", " ", raw)
     raw = raw.replace("&amp;", "&").replace("&nbsp;", " ").replace("&#39;", "'")
@@ -114,51 +106,6 @@ def normalise(url):
     return url
 
 
-CHROME = Path("C:/Program Files/Google/Chrome/Application/chrome.exe")
-
-
-def chrome_resolves(url):
-    """Second opinion for a URL a plain fetch could not reach.
-
-    Several state agency sites sit behind a WAF that rejects any non-browser client, so a
-    urllib failure is not evidence the page is dead. Rendering the URL in headless Chrome
-    distinguishes "blocks my fetcher" from "gone". Only pages that come back with real
-    content and no browser error interstitial count as resolved.
-    """
-    if not CHROME.exists():
-        return False
-    proc = subprocess.run(
-        [str(CHROME), "--headless=new", "--disable-gpu", "--dump-dom",
-         "--virtual-time-budget=15000", url],
-        capture_output=True, text=True, errors="replace", timeout=90,
-    )
-    dom = proc.stdout
-    if len(dom) < 2000:
-        return False
-    lowered = dom.lower()
-    errors = ("err_name_not_resolved", "err_connection", "err_cert",
-              "err_timed_out", "this site can", "404 - page not found",
-              "page not found", "access denied", "403 forbidden")
-    return not any(marker in lowered for marker in errors)
-
-
-def resolves(url):
-    """Return (ok, reason). A hard 404 or DNS failure is dead; a block gets a browser retry."""
-    try:
-        fetch(url, timeout=45)
-        return True, "200"
-    except urllib.error.HTTPError as exc:
-        code = exc.code
-    except (urllib.error.URLError, OSError, ValueError) as exc:
-        code = type(exc).__name__
-    try:
-        if chrome_resolves(url):
-            return True, f"{code} to urllib, rendered in browser"
-    except (subprocess.SubprocessError, OSError):
-        pass
-    return False, str(code)
-
-
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--no-verify", action="store_true",
@@ -167,7 +114,7 @@ def main():
 
     per_state = blocks(page_text())
 
-    rows, dropped_urls, dropped_phones = [], [], []
+    rows, dropped_urls, dropped_phones, blocked_urls, checks = [], [], [], [], []
     for state in STATES:
         block = per_state[state]
 
@@ -176,10 +123,13 @@ def main():
         if match:
             url = normalise(match.group(1))
             if url and not args.no_verify:
-                ok, why = resolves(url)
-                if not ok:
+                verdict, _, why = verify_urls.check(url)
+                checks.append(verdict)
+                if verdict == DEAD:
                     dropped_urls.append((state, url, why))
                     url = ""
+                elif verdict == BLOCKED:
+                    blocked_urls.append((state, url, why))
 
         phone = ""
         match = re.search(r"PUBLIC INQUIRIES:\s*([^\n]{0,40})", block)
@@ -203,9 +153,16 @@ def main():
         writer.writerows(rows)
 
     filled = sum(1 for r in rows if r["energy_assist_url"])
-    print(f"wrote {OUT}  ({filled}/{len(rows)} rows carry a verified https URL)")
+    print(f"wrote {OUT}  ({filled}/{len(rows)} rows carry an https URL)")
+    if checks:
+        print(f"  checks: {verify_urls.summarise(checks)}")
+    if blocked_urls:
+        print(f"\n{len(blocked_urls)} URL(s) published on the federal listing's word "
+              "(the host refused us, but never said the page is gone):")
+        for state, url, why in blocked_urls:
+            print(f"  {state}: {url}  [{why}]")
     if dropped_urls:
-        print(f"\n{len(dropped_urls)} URL(s) left blank because they did not resolve:")
+        print(f"\n{len(dropped_urls)} URL(s) dropped as gone:")
         for state, url, why in dropped_urls:
             print(f"  {state}: {url}  [{why}]")
     if dropped_phones:

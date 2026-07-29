@@ -16,3 +16,5 @@ ebook/appendix/out/
 # Appendix B: NCEI Storm Events yearly CSVs, ~180 MB, re-fetchable
 # with `python3 ebook/appendix/derive_hazards.py --fetch`
 ebook/appendix/.storm-events-cache/
+ebook/appendix/.agency-cache/
+ebook/appendix/*.log

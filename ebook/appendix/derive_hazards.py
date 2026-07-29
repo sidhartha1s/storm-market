@@ -99,7 +99,7 @@ EXCLUDED = {
 
 STATES = {
     "Alabama": "AL", "Alaska": "AK", "Arizona": "AZ", "Arkansas": "AR", "California": "CA",
-    "Colorado": "CO", "Connecticut": "CT", "Delaware": "DE", "District Of Columbia": "DC",
+    "Colorado": "CO", "Connecticut": "CT", "Delaware": "DE", "District of Columbia": "DC",
     "Florida": "FL", "Georgia": "GA", "Hawaii": "HI", "Idaho": "ID", "Illinois": "IL",
     "Indiana": "IN", "Iowa": "IA", "Kansas": "KS", "Kentucky": "KY", "Louisiana": "LA",
     "Maine": "ME", "Maryland": "MD", "Massachusetts": "MA", "Michigan": "MI",
@@ -180,7 +180,9 @@ def compute():
                     dead = 0
                 if dead <= 0:
                     continue
-                state = (row.get("STATE") or "").strip().title()
+                # NCEI stores "DISTRICT OF COLUMBIA"; .title() would give "Of", which then
+                # fails to join against every other fragment's "District of Columbia".
+                state = (row.get("STATE") or "").strip().title().replace(" Of ", " of ")
                 event = (row.get("EVENT_TYPE") or "").strip()
                 if state not in STATES or not event:
                     continue          # marine zones and territories are out of scope
