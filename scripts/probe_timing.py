@@ -35,8 +35,13 @@ for s in srcs:
     times = []
     for _ in range(reps):
         t0 = time.perf_counter()
-        r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
-                            "-of", "csv=p=0", str(p)], capture_output=True, text=True)
+        # The probe that matters is the one hyperframes runs at video_extract, and it is not
+        # the cheap format=duration read: -count_packets walks every packet in the file, so
+        # cost tracks packet count, not megabytes. Its deadline is hardcoded at 120s.
+        r = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0",
+                            "-count_packets", "-show_entries",
+                            "stream=nb_read_packets,r_frame_rate", "-of", "json", str(p)],
+                           capture_output=True, text=True)
         times.append(time.perf_counter() - t0)
         if r.returncode != 0:
             print(f"{s:52} ffprobe rc={r.returncode} {r.stderr.strip()[:60]}")
