@@ -189,102 +189,103 @@ window.__timelines = window.__timelines || {};
   const P = "#g-prep-";
   const setZone = (txt) => function() { const e = document.getElementById("g-prep-zone"); if (e) e.textContent = txt; };
 
-  /* header */
-  tl.fromTo(P+"eb",  {autoAlpha:0, x:-34}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.15);
-  tl.fromTo(P+"hl",  {autoAlpha:0, x:-40}, {autoAlpha:1, x:0, duration:0.6, ease:"power3.out"}, 0.40);
-  tl.fromTo(P+"sub", {autoAlpha:0, y:20},  {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 0.75);
-  tl.fromTo(P+"div", {scaleX:0}, {scaleX:1, duration:0.7, ease:"power3.out"}, 1.00);
-  /* continuous bed — spans the whole window */
-  tl.to(P+"ring1", {rotation:300, duration:20.0, ease:"none", svgOrigin:"960 560"}, 1.10);
-  tl.to(P+"ring2", {rotation:-240, duration:18.6, ease:"none", svgOrigin:"960 560"}, 1.25);
+  /* header — "one practical lesson ... a warning only works if you know what to do" (0-8.5s) */
+  tl.fromTo(P+"eb",  {autoAlpha:0, x:-34}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.30);
+  tl.fromTo(P+"hl",  {autoAlpha:0, x:-40}, {autoAlpha:1, x:0, duration:0.6, ease:"power3.out"}, 0.80);
+  tl.fromTo(P+"sub", {autoAlpha:0, y:20},  {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 1.60);
+  tl.fromTo(P+"div", {scaleX:0}, {scaleX:1, duration:0.7, ease:"power3.out"}, 2.00);
+  /* continuous bed — rings rotate the whole window so the frame never freezes */
+  tl.to(P+"ring1", {rotation:430, duration:33.0, ease:"none", svgOrigin:"960 560"}, 1.10);
+  tl.to(P+"ring2", {rotation:-360, duration:32.0, ease:"none", svgOrigin:"960 560"}, 1.25);
 
-  /* RULE 01 — below ground */
-  tl.fromTo(P+"row1", {autoAlpha:0, x:-46}, {autoAlpha:1, x:0, duration:0.55, ease:"power3.out"}, 1.50);
-  tl.fromTo(P+"acc1", {scaleY:0}, {scaleY:1, duration:0.5, ease:"power3.out"}, 1.80);
-  tl.fromTo(P+"house", {strokeDashoffset:330}, {strokeDashoffset:0, duration:0.9, ease:"power3.out"}, 2.00);
-  tl.fromTo(P+"rp", {autoAlpha:0, x:80}, {autoAlpha:1, x:0, duration:0.7, ease:"power3.out"}, 2.20);
-  tl.fromTo(P+"base", {scaleY:0.1, autoAlpha:0.2}, {scaleY:1, autoAlpha:1, duration:0.45, ease:"power4.in", svgOrigin:"150 174"}, 2.55);
-  tl.fromTo(P+"zlab", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 2.70);
-  tl.fromTo(P+"idx1", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 2.95);
-  tl.fromTo(P+"t1", {autoAlpha:0, scale:1.5}, {autoAlpha:1, scale:1, duration:0.38, ease:"power4.in"}, 3.15);
-  tl.fromTo(P+"b1", {autoAlpha:0, y:22}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 3.55);
-  tl.fromTo(P+"badge1", {autoAlpha:0, scale:2.4}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 4.20);
-  tl.fromTo(P+"halo1", {scale:0.84, autoAlpha:0}, {scale:1.1, autoAlpha:0.95, duration:1.05, yoyo:true, repeat:3, ease:"sine.inOut", svgOrigin:"150 146"}, 4.40);
-  tl.fromTo(P+"zone", {autoAlpha:0, x:20}, {autoAlpha:1, x:0, duration:0.4, ease:"power3.out"}, 4.55);
-  tl.fromTo(P+"zdot", {autoAlpha:0, scale:0.2}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 4.55);
-  tl.fromTo(P+"zsub", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 4.95);
-  tl.to(P+"zdot", {scale:1.35, duration:0.7, yoyo:true, repeat:15, ease:"sine.inOut"}, 5.10);
-
-  /* RULE 02 — small interior room */
-  tl.fromTo(P+"row2", {autoAlpha:0, x:-46}, {autoAlpha:1, x:0, duration:0.55, ease:"power3.out"}, 5.60);
-  tl.fromTo(P+"acc2", {scaleY:0}, {scaleY:1, duration:0.5, ease:"power3.out"}, 5.90);
-  tl.fromTo(P+"w1", {attr:{y2:14}}, {attr:{y2:176}, duration:0.5, ease:"power3.out"}, 6.20);
-  tl.fromTo(P+"w2", {attr:{y2:176}}, {attr:{y2:14}, duration:0.5, ease:"power3.out"}, 6.45);
-  tl.fromTo(P+"w3", {attr:{x2:14}}, {attr:{x2:106}, duration:0.45, ease:"power3.out"}, 6.70);
-  tl.fromTo(P+"room", {scale:0.15, autoAlpha:0.2}, {scale:1, autoAlpha:1, duration:0.45, ease:"power4.in", svgOrigin:"153 92"}, 7.05);
-  tl.fromTo(P+"idx2", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 7.30);
-  tl.fromTo(P+"t2", {autoAlpha:0, scale:1.5}, {autoAlpha:1, scale:1, duration:0.38, ease:"power4.in"}, 7.50);
-  tl.fromTo(P+"b2", {autoAlpha:0, y:22}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 7.90);
-  tl.fromTo(P+"badge2", {autoAlpha:0, scale:2.4}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 8.55);
-  tl.fromTo(P+"halo2", {scale:0.84, autoAlpha:0}, {scale:1.12, autoAlpha:0.95, duration:1.05, yoyo:true, repeat:3, ease:"sine.inOut", svgOrigin:"153 92"}, 8.90);
-  tl.to(P+"zone", {duration:0.01, onComplete:setZone("INTERIOR ROOM")}, 9.05);
-  tl.fromTo(P+"zone", {y:-16}, {y:0, duration:0.35, ease:"power3.out"}, 9.06);
-
-  /* RULE 03 — away from windows */
-  tl.fromTo(P+"row3", {autoAlpha:0, x:-46}, {autoAlpha:1, x:0, duration:0.55, ease:"power3.out"}, 9.70);
-  tl.fromTo(P+"acc3", {scaleY:0}, {scaleY:1, duration:0.5, ease:"power3.out"}, 10.00);
-  tl.fromTo(P+"m1", {attr:{y2:18}}, {attr:{y2:146}, duration:0.45, ease:"power3.out"}, 10.25);
-  tl.fromTo(P+"m2", {attr:{x2:66}}, {attr:{x2:234}, duration:0.45, ease:"power3.out"}, 10.60);
-  tl.fromTo(P+"idx3", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 11.05);
-  tl.fromTo(P+"t3", {autoAlpha:0, scale:1.5}, {autoAlpha:1, scale:1, duration:0.38, ease:"power4.in"}, 11.30);
-  tl.fromTo(P+"b3", {autoAlpha:0, y:22}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 11.70);
-  tl.fromTo(P+"hatch", {strokeDashoffset:380}, {strokeDashoffset:0, duration:0.8, ease:"power3.out"}, 12.30);
-  tl.fromTo(P+"badge3", {autoAlpha:0, scale:2.4}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 12.75);
-  tl.fromTo(P+"halo3", {scale:0.8, autoAlpha:0}, {scale:1.14, autoAlpha:0.95, duration:1.05, yoyo:true, repeat:3, ease:"sine.inOut", svgOrigin:"150 82"}, 12.95);
-  tl.to(P+"zone", {duration:0.01, onComplete:setZone("AWAY FROM GLASS")}, 13.05);
-  tl.fromTo(P+"zone", {y:-16}, {y:0, duration:0.35, ease:"power3.out"}, 13.06);
-
-  /* ranked panel */
-  tl.fromTo(P+"rpdiv", {scaleX:0}, {scaleX:1, duration:0.5, ease:"power3.out"}, 13.40);
+  /* ranked "order of protection" panel builds during the setup line "knowing where to go" (3-9s) */
+  tl.fromTo(P+"rp", {autoAlpha:0, x:80}, {autoAlpha:1, x:0, duration:0.7, ease:"power3.out"}, 3.00);
+  tl.fromTo(P+"zlab", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 3.40);
+  tl.fromTo(P+"zone", {autoAlpha:0, x:20}, {autoAlpha:1, x:0, duration:0.4, ease:"power3.out"}, 3.70);
+  tl.fromTo(P+"zdot", {autoAlpha:0, scale:0.2}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 3.70);
+  tl.fromTo(P+"zsub", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 4.05);
+  tl.fromTo(P+"rpdiv", {scaleX:0}, {scaleX:1, duration:0.5, ease:"power3.out"}, 4.40);
+  tl.fromTo(P+"rphdr", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 4.70);
+  tl.fromTo(P+"rpsub", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 4.95);
   tl.set(".btrack", {autoAlpha:0}, 0);
-  tl.to(".btrack", {autoAlpha:1, duration:0.40, ease:"power2.out"}, 13.70);
-  tl.fromTo(P+"rphdr", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 13.60);
-  tl.fromTo(P+"rpsub", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 13.80);
-  tl.fromTo(P+"lab1", {autoAlpha:0, x:-18}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 14.00);
-  tl.fromTo(P+"fill1", {scaleX:0}, {scaleX:1, duration:0.55, ease:"power3.out"}, 14.05);
-  tl.fromTo(P+"val1", {autoAlpha:0, x:16}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 14.35);
-  tl.fromTo(P+"lab2", {autoAlpha:0, x:-18}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 14.55);
-  tl.fromTo(P+"fill2", {scaleX:0}, {scaleX:1, duration:0.55, ease:"power3.out"}, 14.60);
-  tl.fromTo(P+"val2", {autoAlpha:0, x:16}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 14.90);
-  tl.fromTo(P+"lab3", {autoAlpha:0, x:-18}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 15.10);
-  tl.fromTo(P+"fill3", {scaleX:0}, {scaleX:1, duration:0.55, ease:"power3.out"}, 15.15);
-  tl.fromTo(P+"val3", {autoAlpha:0, x:16}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 15.45);
-  tl.fromTo(P+"lab4", {autoAlpha:0, x:-18}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 15.65);
-  tl.fromTo(P+"fill4", {scaleX:0}, {scaleX:1, duration:0.55, ease:"power4.in"}, 15.70);
-  tl.fromTo(P+"val4", {autoAlpha:0, x:16}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 16.00);
-  tl.fromTo(P+"note", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 16.25);
+  tl.to(".btrack", {autoAlpha:1, duration:0.40, ease:"power2.out"}, 5.20);
+  tl.fromTo(P+"lab1", {autoAlpha:0, x:-18}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 5.40);
+  tl.fromTo(P+"fill1", {scaleX:0}, {scaleX:1, duration:0.6, ease:"power3.out"}, 5.45);
+  tl.fromTo(P+"val1", {autoAlpha:0, x:16}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 5.85);
+  tl.fromTo(P+"lab2", {autoAlpha:0, x:-18}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 6.30);
+  tl.fromTo(P+"fill2", {scaleX:0}, {scaleX:1, duration:0.6, ease:"power3.out"}, 6.35);
+  tl.fromTo(P+"val2", {autoAlpha:0, x:16}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 6.75);
+  tl.fromTo(P+"lab3", {autoAlpha:0, x:-18}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 7.20);
+  tl.fromTo(P+"fill3", {scaleX:0}, {scaleX:1, duration:0.6, ease:"power3.out"}, 7.25);
+  tl.fromTo(P+"val3", {autoAlpha:0, x:16}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 7.65);
+  tl.fromTo(P+"lab4", {autoAlpha:0, x:-18}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 8.10);
+  tl.fromTo(P+"fill4", {scaleX:0}, {scaleX:1, duration:0.6, ease:"power4.in"}, 8.15);
+  tl.fromTo(P+"val4", {autoAlpha:0, x:16}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 8.55);
+  tl.fromTo(P+"note", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 9.00);
+  /* zone dot keeps a pulse across the "knowing where to go" bridge (9-17s) */
+  tl.to(P+"zdot", {scale:1.4, duration:0.8, yoyo:true, repeat:7, ease:"sine.inOut"}, 9.40);
 
-  /* all three pulse together */
-  tl.to(P+"zone", {duration:0.01, onComplete:setZone("ALL THREE")}, 16.65);
-  tl.fromTo([P+"halo1",P+"halo2",P+"halo3"], {scale:0.86, autoAlpha:0}, {scale:1.12, autoAlpha:0.95, duration:0.85, yoyo:true, repeat:1, ease:"sine.inOut"}, 16.70);
-  tl.fromTo(P+"zdot", {scale:1}, {scale:1.7, duration:0.4, yoyo:true, repeat:1, ease:"power3.out"}, 17.30);
+  /* RULE 01 — "below ground beat above ground" (spoken 14.9) */
+  tl.fromTo(P+"row1", {autoAlpha:0, x:-46}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 14.20);
+  tl.fromTo(P+"acc1", {scaleY:0}, {scaleY:1, duration:0.45, ease:"power3.out"}, 14.30);
+  tl.fromTo(P+"house", {strokeDashoffset:330}, {strokeDashoffset:0, duration:0.7, ease:"power3.out"}, 14.35);
+  tl.fromTo(P+"idx1", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 14.55);
+  tl.fromTo(P+"base", {scaleY:0.1, autoAlpha:0.2}, {scaleY:1, autoAlpha:1, duration:0.4, ease:"power4.in", svgOrigin:"150 174"}, 14.70);
+  tl.fromTo(P+"t1", {autoAlpha:0, scale:1.4}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 14.90);
+  tl.fromTo(P+"b1", {autoAlpha:0, y:22}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 15.25);
+  tl.fromTo(P+"badge1", {autoAlpha:0, scale:2.2}, {autoAlpha:1, scale:1, duration:0.32, ease:"power4.in"}, 15.60);
+  tl.fromTo(P+"halo1", {scale:0.84, autoAlpha:0}, {scale:1.1, autoAlpha:0.95, duration:0.9, yoyo:true, repeat:1, ease:"sine.inOut", svgOrigin:"150 146"}, 15.70);
 
-  /* exit */
-  tl.to([P+"eb",P+"hl",P+"sub",P+"div"], {autoAlpha:0, y:-70, duration:0.6, ease:"power3.in"}, 17.85);
-  tl.to(P+"row1", {autoAlpha:0, x:-110, duration:0.6, ease:"power3.in"}, 17.90);
-  tl.to(P+"row2", {autoAlpha:0, x:-110, duration:0.6, ease:"power3.in"}, 18.02);
-  tl.to(P+"row3", {autoAlpha:0, x:-110, duration:0.6, ease:"power3.in"}, 18.14);
-  tl.to(P+"rp", {autoAlpha:0, x:170, duration:0.6, ease:"power3.in"}, 17.95);
+  /* RULE 02 — "a small interior room beat a wide-open one" (spoken 17.9) */
+  tl.fromTo(P+"row2", {autoAlpha:0, x:-46}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 17.20);
+  tl.fromTo(P+"acc2", {scaleY:0}, {scaleY:1, duration:0.45, ease:"power3.out"}, 17.30);
+  tl.fromTo(P+"w1", {attr:{y2:14}}, {attr:{y2:176}, duration:0.45, ease:"power3.out"}, 17.35);
+  tl.fromTo(P+"w2", {attr:{y2:176}}, {attr:{y2:14}, duration:0.45, ease:"power3.out"}, 17.45);
+  tl.fromTo(P+"w3", {attr:{x2:14}}, {attr:{x2:106}, duration:0.4, ease:"power3.out"}, 17.55);
+  tl.fromTo(P+"idx2", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 17.55);
+  tl.fromTo(P+"room", {scale:0.15, autoAlpha:0.2}, {scale:1, autoAlpha:1, duration:0.4, ease:"power4.in", svgOrigin:"153 92"}, 17.70);
+  tl.fromTo(P+"t2", {autoAlpha:0, scale:1.4}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 17.90);
+  tl.fromTo(P+"b2", {autoAlpha:0, y:22}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 18.25);
+  tl.fromTo(P+"badge2", {autoAlpha:0, scale:2.2}, {autoAlpha:1, scale:1, duration:0.32, ease:"power4.in"}, 18.60);
+  tl.fromTo(P+"halo2", {scale:0.84, autoAlpha:0}, {scale:1.12, autoAlpha:0.95, duration:0.9, yoyo:true, repeat:1, ease:"sine.inOut", svgOrigin:"153 92"}, 18.70);
+  tl.to(P+"zone", {duration:0.01, onComplete:setZone("INTERIOR ROOM")}, 17.90);
+  tl.fromTo(P+"zone", {y:-16}, {y:0, duration:0.35, ease:"power3.out"}, 17.91);
 
-  /* end card */
-  tl.fromTo(P+"end", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 18.50);
-  tl.fromTo(P+"eeb", {autoAlpha:0, y:-18}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 18.70);
-  tl.fromTo(P+"el1", {autoAlpha:0, scale:1.32}, {autoAlpha:1, scale:1, duration:0.38, ease:"power4.in"}, 18.95);
-  tl.fromTo(P+"el2", {autoAlpha:0, scale:1.32}, {autoAlpha:1, scale:1, duration:0.38, ease:"power4.in"}, 19.45);
-  tl.fromTo(P+"erule", {scaleX:0}, {scaleX:1, duration:0.6, ease:"power3.out"}, 19.95);
-  tl.fromTo(P+"esub", {autoAlpha:0, y:22}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 20.30);
-  tl.fromTo(P+"esm", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 20.80);
-  tl.to(P+"end", {scale:1.03, duration:0.8, ease:"sine.inOut"}, 21.20);
+  /* RULE 03 — "away from windows beat next to them" (spoken 21.4) */
+  tl.fromTo(P+"row3", {autoAlpha:0, x:-46}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 20.70);
+  tl.fromTo(P+"acc3", {scaleY:0}, {scaleY:1, duration:0.45, ease:"power3.out"}, 20.80);
+  tl.fromTo(P+"m1", {attr:{y2:18}}, {attr:{y2:146}, duration:0.4, ease:"power3.out"}, 20.85);
+  tl.fromTo(P+"m2", {attr:{x2:66}}, {attr:{x2:234}, duration:0.4, ease:"power3.out"}, 21.05);
+  tl.fromTo(P+"idx3", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 21.05);
+  tl.fromTo(P+"t3", {autoAlpha:0, scale:1.4}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 21.40);
+  tl.fromTo(P+"b3", {autoAlpha:0, y:22}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 21.75);
+  tl.fromTo(P+"hatch", {strokeDashoffset:380}, {strokeDashoffset:0, duration:0.7, ease:"power3.out"}, 22.00);
+  tl.fromTo(P+"badge3", {autoAlpha:0, scale:2.2}, {autoAlpha:1, scale:1, duration:0.32, ease:"power4.in"}, 22.30);
+  tl.fromTo(P+"halo3", {scale:0.8, autoAlpha:0}, {scale:1.14, autoAlpha:0.95, duration:0.9, yoyo:true, repeat:1, ease:"sine.inOut", svgOrigin:"150 82"}, 22.40);
+  tl.to(P+"zone", {duration:0.01, onComplete:setZone("AWAY FROM GLASS")}, 21.40);
+  tl.fromTo(P+"zone", {y:-16}, {y:0, duration:0.35, ease:"power3.out"}, 21.41);
+
+  /* "ten seconds of decision made in advance was the entire difference" (23.9-28.6) — the three light together */
+  tl.to(P+"zone", {duration:0.01, onComplete:setZone("ALL THREE")}, 23.90);
+  tl.fromTo(P+"zone", {y:-16}, {y:0, duration:0.35, ease:"power3.out"}, 23.91);
+  tl.fromTo([P+"halo1",P+"halo2",P+"halo3"], {scale:0.86, autoAlpha:0}, {scale:1.12, autoAlpha:0.95, duration:0.9, yoyo:true, repeat:2, ease:"sine.inOut"}, 24.00);
+  tl.fromTo(P+"zdot", {scale:1}, {scale:1.7, duration:0.45, yoyo:true, repeat:2, ease:"power3.out"}, 24.40);
+
+  /* exit as the narration turns to the close (after "the entire difference" ~28.6) */
+  tl.to([P+"eb",P+"hl",P+"sub",P+"div"], {autoAlpha:0, y:-70, duration:0.6, ease:"power3.in"}, 28.70);
+  tl.to(P+"row1", {autoAlpha:0, x:-110, duration:0.6, ease:"power3.in"}, 28.75);
+  tl.to(P+"row2", {autoAlpha:0, x:-110, duration:0.6, ease:"power3.in"}, 28.85);
+  tl.to(P+"row3", {autoAlpha:0, x:-110, duration:0.6, ease:"power3.in"}, 28.95);
+  tl.to(P+"rp", {autoAlpha:0, x:170, duration:0.6, ease:"power3.in"}, 28.80);
+
+  /* end card — matches the spoken close "that was true in 1925, it is exactly as true tonight" */
+  tl.fromTo(P+"end", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 29.00);
+  tl.fromTo(P+"eeb", {autoAlpha:0, y:-18}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 29.30);
+  tl.fromTo(P+"el1", {autoAlpha:0, scale:1.28}, {autoAlpha:1, scale:1, duration:0.4, ease:"power4.in"}, 31.00);
+  tl.fromTo(P+"erule", {scaleX:0}, {scaleX:1, duration:0.6, ease:"power3.out"}, 31.80);
+  tl.fromTo(P+"el2", {autoAlpha:0, scale:1.28}, {autoAlpha:1, scale:1, duration:0.4, ease:"power4.in"}, 33.00);
+  tl.fromTo(P+"esm", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 33.50);
+  tl.to(P+"end", {scale:1.02, duration:0.7, ease:"sine.inOut"}, 33.90);
 
   window.__timelines["g-prep"] = tl;
 })();
