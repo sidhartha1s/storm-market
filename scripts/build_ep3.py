@@ -596,6 +596,7 @@ def close_picture_gaps(vis, gfx, kbs, total):
     has 2). Fix by extending whatever window ends at the gap to the next window's
     start; the composite freezes for the breath and cuts on the new line.
     """
+    total = round(total)    # the root element prints its duration at {total:.0f}
     W = re.compile(r'data-start="([\d.]+)" data-duration="([\d.]+)"')
     wins = []
     for lst in (vis, gfx):
