@@ -252,6 +252,8 @@
 window.__timelines = window.__timelines || {};
 (function() {
   const tl = gsap.timeline({ paused: true });
+  tl.set("#g-timeline-cnum", {autoAlpha:0}, 0);
+  tl.to("#g-timeline-cnum", {autoAlpha:1, duration:0.25}, 19.05);
   const P = "#g-timeline-";
   const LEAD = { v: 0 };
   function leadUpd() { const e = document.getElementById("g-timeline-cnum"); if (e) e.textContent = Math.round(LEAD.v); }

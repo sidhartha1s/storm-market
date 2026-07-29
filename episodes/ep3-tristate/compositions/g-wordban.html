@@ -131,6 +131,8 @@
 window.__timelines = window.__timelines || {};
 (function() {
   const tl = gsap.timeline({ paused: true });
+  tl.set("#g-wordban-cnt", {autoAlpha:0}, 0);
+  tl.to("#g-wordban-cnt", {autoAlpha:1, duration:0.25}, 13.40);
   const P = "#g-wordban-";
   const YRS = {v:0};
   function yrsUpd(){ const e=document.getElementById("g-wordban-cnt"); if(e) e.textContent=Math.round(YRS.v); }
