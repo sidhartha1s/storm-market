@@ -54,7 +54,9 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"t0", {opacity:1, duration:0.35}, 1.15);
   tl.fromTo(P+"storm", {attr:{r:0}}, {attr:{r:19}, duration:0.45, ease:"power4.in"}, 0.9);
   tl.to(MI, {v:0, duration:21.50, ease:"none", onUpdate:miUpd}, 0.9);
-  tl.to(P+"storm", {attr:{r:26}, duration:0.6, yoyo:true, repeat:3, ease:"sine.inOut"}, 22.40);
+  /* v5 6:33: dot was static once the draw ended; give Ellington a continuous gentle breath + radar ping so the tail never freezes however long the host window runs */
+  tl.to(P+"storm", {attr:{r:24}, duration:1.1, yoyo:true, repeat:28, ease:"sine.inOut"}, 1.50);
+  tl.fromTo(P+"ring", {attr:{r:14}, opacity:0.65}, {attr:{r:36}, opacity:0, duration:1.7, repeat:18, ease:"sine.out"}, 2.00);
   window.__timelines["g-track-1"] = tl;
 })();
 </script>
