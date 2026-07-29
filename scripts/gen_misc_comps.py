@@ -338,10 +338,15 @@ def lone():
     style = """
   .cell { fill:#7a4a52; opacity:0.85; }
   .lonecell { fill:#c0392b; }
-  .statelab2 { font-family:Georgia,serif; font-style:italic; font-size:27px; fill:#40607d; }
-  /* bottom-right: the route climbs to (1596,330), so the UPPER right is where the map
-     lives. A readout at top:250px put the cell marker on top of its own caption. */
-  .rdg { position:absolute; right:96px; top:620px; text-align:right; }
+  /* the owner's aged-1925 plate carries the real rivers and the state names, so the
+     drawn dividers and drawn labels come out. Dimmed and cooled so red ink reads on it. */
+  .plate { position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    opacity:0.30; filter:grayscale(0.35) brightness(0.55) contrast(1.1); }
+  .platevig { position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(ellipse at 50% 62%, rgba(4,7,10,0) 30%, rgba(4,7,10,0.86) 92%); }
+  /* bottom-right: the route now runs low across the plate's southern band, so the
+     readout sits above it. A readout at top:250px put the cell marker on its caption. */
+  .rdg { position:absolute; right:96px; top:560px; text-align:right; }
   .rdgnum { font-family:'Courier New',monospace; font-size:76px; color:#e8c56a; font-weight:700; line-height:1; }
   .rdglab { font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; margin-top:6px; }
   .verdict { position:absolute; left:96px; top:262px; font-family:'Arial Black',Arial,sans-serif;
