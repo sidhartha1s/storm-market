@@ -25,6 +25,10 @@ if "%MODE%"=="draft" (
 )
 
 cd /d "%EP%"
+REM QC tools (blank_scan.mjs, graphics_qc.mjs) stage _*_tmp.html in the episode root; if one is
+REM left behind, hyperframes discovers it as a second root composition and warns of duplicate
+REM audio. Sweep them before every render — a render dir must contain exactly one root index.html.
+del /q _*_tmp.html 2>nul
 set PRODUCER_PAGE_NAVIGATION_TIMEOUT_MS=120000
 set PRODUCER_PUPPETEER_PROTOCOL_TIMEOUT_MS=900000
 REM Shared ffmpeg build: security software on this box scans every process creation and the
