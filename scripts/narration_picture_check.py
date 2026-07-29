@@ -86,9 +86,16 @@ for _, _, name in pictures:
     stem = Path(name).stem
     for pat in TOWN_PATTERNS:
         m = re.match(pat, stem)
-        if m:
-            # "De_Soto" is spoken as two words; index the last word of a compound name
-            place_tokens.add(m.group(1).split("_")[-1])
+        if not m:
+            continue
+        # "De_Soto" and "West_Frankfort" are spoken as two words, so index both halves —
+        # minus the subject words that share the slot in compounds like "Plumfield_School"
+        # and "Bollinger_County", which are not places and match ordinary narration.
+        for part in m.group(1).split("_"):
+            if len(part) > 3 and part.lower() not in {
+                    "school", "county", "fire", "damage", "devastation", "plant",
+                    "boxcars", "heinz", "west", "white"}:
+                place_tokens.add(part)
 
 era_findings, place_findings = [], []
 for nx, (seg_start, seg_dur) in sorted(segments.items(), key=lambda kv: kv[1][0]):
