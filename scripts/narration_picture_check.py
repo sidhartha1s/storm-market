@@ -73,25 +73,22 @@ def is_archival(name):
     return any(d in name for d in ARCHIVAL_DIRS)
 
 
-# place vocabulary, learned from the archival filenames rather than hardcoded.
-# The towns on the track are the only tokens that matter; everything else that shows up
-# in a damage-photo filename is described here so it never reads as a place.
-NOT_A_PLACE = {
-    "damage", "business", "district", "residential", "aerial", "general", "street",
-    "streets", "school", "schools", "tornado", "corner", "photo", "library", "flickr",
-    "drawing", "church", "twisted", "steel", "homes", "amidst", "tents", "railyards",
-    "township", "birds", "park", "area", "post", "office", "bridge", "road", "heights",
-    "baldwin", "county", "destruction", "west", "north", "south", "east", "side",
-    "town", "view", "mines", "cars", "coal", "file", "home", "smith", "lonnie",
-    "victory", "walnut", "logan", "orient", "state", "high", "wreck", "after",
-}
+# Place vocabulary, learned from the archival filename convention rather than hardcoded:
+# the NWS/archive sets name the town in a fixed slot, "1925_-_<Town>_-_<subject>" or
+# "<NN>-<Town>_<subject>". Reading every capitalised token instead treated "Where",
+# "Morning" and "Building" as towns and buried the real signal in noise.
+TOWN_PATTERNS = (r'1925_-_([A-Z][a-z]+(?:_[A-Z][a-z]+)?)_-_',
+                 r'^\d+-([A-Z][a-z]+(?:_[A-Z][a-z]+)?)[_-]')
 place_tokens = set()
 for _, _, name in pictures:
     if not is_archival(name):
         continue
-    for tok in re.split(r'[^A-Za-z]+', Path(name).stem):
-        if len(tok) > 4 and tok[0].isupper() and tok.lower() not in NOT_A_PLACE:
-            place_tokens.add(tok)
+    stem = Path(name).stem
+    for pat in TOWN_PATTERNS:
+        m = re.match(pat, stem)
+        if m:
+            # "De_Soto" is spoken as two words; index the last word of a compound name
+            place_tokens.add(m.group(1).split("_")[-1])
 
 era_findings, place_findings = [], []
 for nx, (seg_start, seg_dur) in sorted(segments.items(), key=lambda kv: kv[1][0]):
