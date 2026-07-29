@@ -44,7 +44,17 @@ for f in sorted((ep / "compositions").glob("*.html")):
             continue
         at = float(pos.group(1))
         dur = re.findall(r'duration:\s*([\d.]+)', body)
-        spans.append((at, at + (max(float(d) for d in dur) if dur else 0.0)))
+        d = max(float(x) for x in dur) if dur else 0.0
+        # a repeating tween keeps moving for repeat+1 cycles (yoyo reverses but does not
+        # change the total). Counting only the first cycle reported blinking markers and
+        # pulsing dots as dead frames.
+        rep = re.search(r'repeat:\s*(-?\d+)', body)
+        if rep:
+            n = int(rep.group(1))
+            rd = re.search(r'repeatDelay:\s*([\d.]+)', body)
+            cycle = d + (float(rd.group(1)) if rd else 0.0)
+            d = hosts[gid] if n < 0 else d + n * cycle
+        spans.append((at, at + d))
 
     win = hosts[gid]
     if not spans:
