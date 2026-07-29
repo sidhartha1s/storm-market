@@ -84,3 +84,36 @@ invents no inscription.
   render of a named person.
 - `episodes/ep3-tristate/.qc-tmp/` is tracked in git although `.gitignore` lists it; it shows up
   as diff noise on every QC run.
+
+### Render RCA — corrected 2026-07-29, after attempts 11 and 12
+The earlier "CPU contention from other sessions" reading was WRONG. Attempt 12 ran with
+`render_preflight.py` reporting zero competing processes and nothing else on the box, and
+still died at `video_extract` with `[FFmpeg] ffprobe deadline with code 0`, 204s into the
+stage. Preflight alone does not fix this.
+
+What the measurements actually establish:
+- The deadline is **120s per probe, hardcoded** in hyperframes 0.7.64
+  (`deadlineAtMs: Date.now() + 12e4`). No env var raises it.
+- The probe at `video_extract` is `-count_packets`, which walks every packet.
+- That probe is NOT slow: 3.18s worst serial, 8.18s worst at six-way concurrency, zero
+  failures across all 20 mounted elements (`scripts/probe_timing.py`, `probe_concurrent`).
+- Cost does not track file size — a 57 MB clip probes in 2.0s, a 10 MB one in 3.05s.
+- So the probe blows its deadline while queued behind the extract stage's own decoding.
+
+Fix applied: `scripts/optimize_clips.py` trims every mounted clip to its longest window plus
+margin, caps height at 1080 and re-encodes with a 15-frame GOP. **240 MB -> 67 MB (72% less
+to decode.)** Seven `mvtn-*` clips were 1920x1440, which the repo rule already forbade.
+Originals in `media/_orig/`. NOT YET PROVEN against a render — the owner holds the render gate.
+
+### Launching a render (learned the hard way, attempt 11)
+`Start-Process` from a FOREGROUND Bash call is killed with the tool call: attempt 11 wrote
+its preflight line and nothing else, no marker, no mp4. The `.cmd` wrapper invoked as
+`cmd /c` from this shell dies the same way while `npx hyperframes@0.7.64 --version` works.
+Launch renders as a **harness-tracked background job** and verify liveness by command line
+(`Get-CimInstance Win32_Process | Where CommandLine -like '*hyperframes*'`), never by a
+process COUNT — stale node/chrome processes from previous days read as a healthy render.
+
+### PR #8
+Merged `origin/main` into the branch 2026-07-29: **MERGEABLE / CLEAN**. The branch had been
+carrying a pre-ship edit to shipped ep2 (`vx-nstorm2b` -> `cbs-wedge-house.mp4`); main's ep2
+won outright and the file is byte-identical to main again. Gates re-run green after the merge.
