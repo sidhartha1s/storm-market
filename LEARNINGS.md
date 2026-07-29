@@ -510,8 +510,7 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
   lost its place check (thirteen false positives to three real ones, propped up by a stoplist of
   words that are not towns) while keeping the era check, which is genuinely mechanical.
 - **THE ep3 v3 render RCA, after thirteen failures: process-spawn scanning, not media.**
-  This box runs **three** security products at once — Windows Defender, McAfee and
-  **CrowdStrike Falcon Sensor** — and all of them scan every process creation. The cost tracks
+  Security software on this box scans every process creation, and the cost tracks
   BINARY SIZE, not work done:
 
   | binary | size | spawn |
