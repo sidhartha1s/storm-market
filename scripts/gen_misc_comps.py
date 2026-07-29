@@ -310,7 +310,9 @@ def close():
     j = (f'  tl.fromTo(P+"l1", {{autoAlpha:0, y:22}}, {{autoAlpha:1, y:0, duration:0.7, ease:"power3.out"}}, 0.30);\n'
          f'  tl.fromTo(P+"l2", {{autoAlpha:0, y:22}}, {{autoAlpha:1, y:0, duration:0.7, ease:"power3.out"}}, 3.70);\n'
          f'  tl.fromTo(P+"l3", {{autoAlpha:0, y:22}}, {{autoAlpha:1, y:0, duration:0.7, ease:"power3.out"}}, 5.30);\n'
-         f'  tl.to([P+"l1", P+"l2", P+"l3"], {{autoAlpha:0, duration:0.8}}, 10.10);\n'
+         # clear at 10.40, not 10.10: the 0.8s fade then lands at 11.20 and the title comes
+         # up at 11.28, instead of leaving 0.75s of black between the last line and the card
+         f'  tl.to([P+"l1", P+"l2", P+"l3"], {{autoAlpha:0, duration:0.8}}, 10.40);\n'
          f'  tl.fromTo(P+"t", {{autoAlpha:0, y:30}}, {{autoAlpha:1, y:0, duration:0.9, ease:"power3.out"}}, 11.28);\n'
          f'  tl.fromTo(P+"e", {{autoAlpha:0, y:24}}, {{autoAlpha:1, y:0, duration:0.7, ease:"power3.out"}}, 12.58);\n'
          f'  tl.fromTo(P+"c", {{autoAlpha:0}}, {{autoAlpha:1, duration:1.0}}, 16.60);\n'
