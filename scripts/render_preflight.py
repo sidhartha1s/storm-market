@@ -16,6 +16,7 @@ Exits non-zero (and says what to close) if the box is not quiet enough to render
 """
 import subprocess
 import sys
+from pathlib import Path
 
 # a render itself needs: 3 workers + a capture Chromium + ffmpeg. Anything beyond a
 # couple of idle helper processes is competition.
