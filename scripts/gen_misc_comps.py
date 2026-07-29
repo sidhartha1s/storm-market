@@ -387,9 +387,17 @@ def lone():
     j += f'  tl.fromTo(P+"onelab", {{opacity:0}}, {{opacity:0.9, duration:0.5}}, 10.60);\n'
     j += f'  tl.to(P+"onelab", {{autoAlpha:0, duration:0.6}}, 13.40);\n'
     # the continuous element: the cell crosses the route for the rest of the window
-    j += (f'  tl.to(P+"route", {{strokeDashoffset:0, duration:{D - 12.0:.2f}, ease:"none"}}, 11.60);\n')
-    j += (f'  tl.to(P+"cell", {{motionPath:{{path:P+"route", align:P+"route", '
-          f'alignOrigin:[0.5,0.5]}}, duration:{D - 12.0:.2f}, ease:"none"}}, 11.60);\n')
+    # MotionPathPlugin is not in the bundled gsap.min.js — walk the waypoints with
+    # cx/cy attr tweens, each leg timed to its own length so the speed stays constant.
+    pts = [tuple(int(v) for v in p.split(",")) for p in route.split()]
+    legs = [((b[0] - a[0]) ** 2 + (b[1] - a[1]) ** 2) ** 0.5 for a, b in zip(pts, pts[1:])]
+    span, at = D - 12.0, 11.60
+    j += f'  tl.to(P+"route", {{strokeDashoffset:0, duration:{span:.2f}, ease:"none"}}, {at:.2f});\n'
+    for (x, y), leg in zip(pts[1:], legs):
+        dt = span * leg / sum(legs)
+        j += (f'  tl.to(P+"cell", {{attr:{{cx:{x}, cy:{y}}}, duration:{dt:.2f}, '
+              f'ease:"none"}}, {at:.2f});\n')
+        at += dt
     j += f'  tl.to(MI, {{v:412, duration:11.20, ease:"none", onUpdate:miUpd}}, 12.64);\n'
     j += f'  tl.to(HR, {{v:7.0, duration:10.60, ease:"none", onUpdate:hrUpd}}, 14.78);\n'
     j += f'  tl.fromTo(P+"vd", {{autoAlpha:0, x:-40}}, {{autoAlpha:1, x:0, duration:0.6, ease:"power3.out"}}, 8.90);\n'
