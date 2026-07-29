@@ -390,8 +390,11 @@ def lone():
     # the dash pattern must be the polyline's TRUE length. At 1360 against a 1377.6px
     # route, the 17.6px overhang was a second dash and sat on screen from frame one as a
     # stray red mark in Indiana, an hour of story before the storm gets there.
-    rlen = sum(((b2[0] - a2[0]) ** 2 + (b2[1] - a2[1]) ** 2) ** 0.5
-               for a2, b2 in zip(pts, pts[1:]))
+    import math as _m
+    # ceil, not round: "{rlen:.0f}" rounded 1351.6 down to 1352... and any value the
+    # other way leaves the overhang painted as a second dash from frame one
+    rlen = _m.ceil(sum(((b2[0] - a2[0]) ** 2 + (b2[1] - a2[1]) ** 2) ** 0.5
+                       for a2, b2 in zip(pts, pts[1:]))) + 1
     # the strike runs along the squall front itself, so it must be derived from it too
     sx1, sy1 = xs[0] - 26, ys[0] - 96 + 22
     sx2, sy2 = xs[-1] + 26, ys[-1] - 96 - 22
@@ -410,12 +413,12 @@ def lone():
          f'stroke="#8e2020" stroke-width="5" '
          f'stroke-dasharray="{_ceil(sx1, sy1, sx2, sy2)}" '
          f'stroke-dashoffset="{_ceil(sx1, sy1, sx2, sy2)}"/>'
-         f'<text id="{cid}-sqlab" x="{xs[0]:.0f}" y="{ys[0] - 150:.0f}" class="maplab" '
+         f'<text id="{cid}-sqlab" x="{xs[0]:.0f}" y="{ys[0] - 215:.0f}" class="maplab" '
          f'opacity="0">A SQUALL LINE · MANY STORMS</text>'
          f'</g>'
          f'<polyline id="{cid}-route" points="{route}" fill="none" stroke="#c0392b" stroke-width="8" '
-         f'stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="{rlen:.0f}" '
-         f'stroke-dashoffset="{rlen:.0f}"/>'
+         f'stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="{rlen}" '
+         f'stroke-dashoffset="{rlen}"/>'
          f'<circle id="{cid}-cell" class="lonecell" cx="{xs[0]:.0f}" cy="{ys[0]:.0f}" r="0" '
          f'filter="url(#lglow)"/>'
          f'<text id="{cid}-onelab" x="{xs[0]:.0f}" y="{ys[0] + 52:.0f}" text-anchor="middle" '
@@ -473,6 +476,99 @@ def lone():
     return cid
 
 
+
+# ---------------------------------------------------------------- g-centennial
+def centennial():
+    """a6-s3b narrates March 2025 — the centennial, the new markers, the descendants.
+
+    The segment was running 1925 wreckage photographs under it, so the picture said
+    1925 while the voice said 2025. There is no 2025 footage in the pool and inventing
+    it is off the table, so the beat is carried by a designed card over the same plate:
+    the path towns, Parrish singled out as the one that is now only a name and a road,
+    and the hundred-year span. Nothing here claims to be a photograph of anything.
+    Cued to a6-s3b words.json: "March 2025" 0.40, "markers" 7.12, "erased" 9.36,
+    "Parish" 11.62, "a name / and a road" 13.86, "crowds" 15.76, "grandchildren" 19.80,
+    "names" 22.72.
+    """
+    cid, D = "g-centennial", 27.4
+    style = """
+  .plateband { position:absolute; left:0; right:0; top:322px; height:600px; overflow:hidden; }
+  .plate { position:absolute; left:0; top:-448px; width:1920px;
+    opacity:0.62; filter:grayscale(0.3) brightness(0.72) contrast(1.05) sepia(0.14); }
+  .platefade { position:absolute; inset:0; pointer-events:none; background:
+    linear-gradient(180deg, rgba(4,7,10,1) 0%, rgba(4,7,10,0) 15%,
+                    rgba(4,7,10,0) 85%, rgba(4,7,10,1) 100%); }
+  .span { position:absolute; right:96px; top:92px; text-align:right;
+    font-family:'Arial Black',Arial,sans-serif; font-size:62px; color:#e8c56a; letter-spacing:2px; }
+  .spanlab { position:absolute; right:96px; top:168px; text-align:right;
+    font-size:19px; letter-spacing:5px; color:#93a3b2; font-weight:700; }
+  .pin { font-family:Arial,sans-serif; font-weight:700; font-size:22px; fill:#c8d3e0; }
+  .pin.gone { fill:#e8c56a; font-size:27px; }
+  .callout { position:absolute; left:96px; top:258px; font-family:'Arial Black',Arial,sans-serif;
+    font-size:38px; color:#f2f5f8; }
+  .calloutsub { position:absolute; left:96px; top:312px; font-family:Georgia,serif;
+    font-style:italic; font-size:25px; color:#b8c6d4; }
+"""
+    # same plate fit as g-lone, so the two map beats read as one place
+    MI_AT = [0, 13, 55, 88, 97, 106, 122, 131, 152, 183, 203, 219]
+    NAMES = ["Ellington", "Annapolis", "Biehle", "Gorham", "Murphysboro", "De Soto",
+             "West Frankfort", "Parrish", "Crossville", "Griffin", "Princeton", "Petersburg"]
+    ppm = (1378 - 804) / (178.0 - 85.0)
+    xs = [804 + (m - 85.0) * ppm for m in MI_AT]
+    y0, y1 = 806.0, 732.0
+    ys = [y0 - (x - xs[0]) / (xs[-1] - xs[0]) * (y0 - y1) for x in xs]
+
+    svg = ['<svg viewBox="0 0 1920 1080" style="position:absolute;inset:0">']
+    for i, (nm, x, y) in enumerate(zip(NAMES, xs, ys)):
+        gone = nm == "Parrish"
+        # three heights, not two: the towns bunch in the middle of the track, and a simple
+        # alternate left "Murphysboro" and "West Frankfort" 7px apart on the same line
+        dy = (-32, 46, -66)[i % 3]
+        svg.append(f'<circle id="{cid}-d{i}" cx="{x:.0f}" cy="{y:.0f}" r="0" '
+                   f'fill="{"#e8c56a" if gone else "#8fa3b6"}"/>')
+        svg.append(f'<text id="{cid}-n{i}" x="{x:.0f}" y="{y + (-30 if up else 44):.0f}" '
+                   f'text-anchor="middle" class="pin{" gone" if gone else ""}" '
+                   f'opacity="0">{nm}</text>')
+    svg.append(f'<circle id="{cid}-ring" cx="{xs[7]:.0f}" cy="{ys[7]:.0f}" r="0" fill="none" '
+               f'stroke="#e8c56a" stroke-width="3" opacity="0"/>')
+    svg.append('</svg>')
+
+    b = (f'<div class="plateband"><img class="plate" id="{cid}-plate" '
+         f'src="media/maps/map-plate-tristate.png" alt="">'
+         f'<div class="platefade"></div></div>' + "".join(svg))
+    eb, j = head(cid, "MARCH 2025 · THE CENTENNIAL", "ONE HUNDRED YEARS",
+                 "markers now stand where the towns were")
+    b += eb
+    b += (f'<div class="span" id="{cid}-sp">1925 &mdash; 2025</div>'
+          f'<div class="spanlab" id="{cid}-spl">ONE HUNDRED YEARS TO THE DAY</div>'
+          f'<div class="callout" id="{cid}-co">PARRISH, ILLINOIS</div>'
+          f'<div class="calloutsub" id="{cid}-cos">today a name and a road, and nothing else</div>'
+          f'<div class="foot" id="{cid}-ft">Children and grandchildren of survivors read the '
+          f'names into the spring air.</div>')
+
+    j += f'  tl.fromTo(P+"plate", {{scale:1.0}}, {{scale:1.05, duration:{D:.1f}, ease:"none", transformOrigin:"52% 76%"}}, 0);\n'
+    j += f'  tl.fromTo(P+"sp", {{autoAlpha:0, y:24}}, {{autoAlpha:1, y:0, duration:0.6, ease:"power3.out"}}, 0.40);\n'
+    j += f'  tl.fromTo(P+"spl", {{autoAlpha:0}}, {{autoAlpha:1, duration:0.5}}, 1.10);\n'
+    # the markers go up, town by town, from the word "markers"
+    for i in range(len(NAMES)):
+        at = 7.12 + i * 0.30
+        j += (f'  tl.fromTo(P+"d{i}", {{attr:{{r:0}}}}, {{attr:{{r:{9 if NAMES[i] != "Parrish" else 13}}}, '
+              f'duration:0.34, ease:"back.out(2.4)"}}, {at:.2f});\n')
+        j += f'  tl.fromTo(P+"n{i}", {{opacity:0, y:8}}, {{opacity:0.92, y:0, duration:0.4}}, {at + 0.10:.2f});\n'
+    # Parrish is singled out on its own word
+    j += f'  tl.fromTo(P+"ring", {{attr:{{r:0}}, opacity:0}}, {{attr:{{r:34}}, opacity:0.9, duration:0.6, ease:"power3.out"}}, 11.62);\n'
+    j += f'  tl.to(P+"ring", {{attr:{{r:52}}, opacity:0, duration:1.5, ease:"none"}}, 12.30);\n'
+    j += f'  tl.fromTo(P+"co", {{autoAlpha:0, x:-36}}, {{autoAlpha:1, x:0, duration:0.55, ease:"power3.out"}}, 11.90);\n'
+    j += f'  tl.fromTo(P+"cos", {{autoAlpha:0, x:-28}}, {{autoAlpha:1, x:0, duration:0.55, ease:"power3.out"}}, 13.86);\n'
+    j += f'  tl.fromTo(P+"ft", {{autoAlpha:0, y:20}}, {{autoAlpha:1, y:0, duration:0.7}}, 19.80);\n'
+    # continuous: the highlight walks the whole line of towns while the names are read
+    for i in range(len(NAMES)):
+        at = 22.72 + i * 0.34
+        j += f'  tl.to(P+"n{i}", {{opacity:1, duration:0.22, yoyo:true, repeat:1}}, {at:.2f});\n'
+    wrap(cid, style, b, j, D)
+    return cid
+
+
 if __name__ == "__main__":
-    made = [sources(), wires(), relief(), family(), fujita(), wordban2(), close(), lone()]
+    made = [sources(), wires(), relief(), family(), fujita(), wordban2(), close(), lone(), centennial()]
     print("[gen_misc] wrote:", ", ".join(made))
