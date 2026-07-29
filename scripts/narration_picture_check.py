@@ -90,18 +90,6 @@ for nx, (seg_start, seg_dur) in sorted(segments.items(), key=lambda kv: kv[1][0]
                 if is_archival(name):
                     era_findings.append(
                         (nx, t, f'says "{y}" while {name} is on screen'))
-        tok = text.strip(".,;:'\"").capitalize()
-        if tok in place_tokens:
-            for name in on_screen(t):
-                if not is_archival(name):
-                    continue
-                stem = Path(name).stem
-                if tok in stem:
-                    continue
-                other = [p for p in place_tokens if p in stem]
-                if other:
-                    place_findings.append(
-                        (nx, t, f'says "{tok}" over a {"/".join(sorted(set(other)))} photograph ({Path(name).name})'))
 
 
 def ts(s):
