@@ -19,7 +19,7 @@ python3 scripts/beat_density.py            episodes/ep3-tristate
 python3 scripts/clip_report.py             episodes/ep3-tristate
 node    scripts/blank_scan.mjs   <abs episode dir>
 node    scripts/graphics_qc.mjs  episodes/ep3-tristate
-python3 scripts/probe_timing.py  episodes/ep3-tristate             # render-environment check
+python3 scripts/media_budget.py  episodes/ep3-tristate             # HARD gate, also run by preflight
 ```
 Post-render only: `scripts/verify_render.sh <ep-dir> <basename>`, then `scripts/build_srt.py`.
 
@@ -57,8 +57,9 @@ Post-render only: `scripts/verify_render.sh <ep-dir> <basename>`, then `scripts/
   (March 2025 narrated over 1925 wreckage). Anchors on word-level timings from
   `audio/*.words.json` and tests what is on screen at the instant a claim is spoken. ERA
   contradictions fail the run; PLACE mismatches print as editorial warnings.
-- **`scripts/probe_timing.py`** — times ffprobe per clip, so the `video_extract` "ffprobe
-  deadline with code 0" failure gets decided by a number instead of a theory.
+- **`scripts/media_budget.py`** — the hard gate that stops a render whose media is too
+  expensive to extract: clip resolution vs the composition, clip length vs its longest window,
+  total MB to decode. `render_preflight.py` calls it, so the render script itself refuses.
 
 ### Owner assets received 2026-07-29 (all 8 wired or logged in provenance.csv)
 | file | use |
@@ -96,7 +97,8 @@ What the measurements actually establish:
   (`deadlineAtMs: Date.now() + 12e4`). No env var raises it.
 - The probe at `video_extract` is `-count_packets`, which walks every packet.
 - That probe is NOT slow: 3.18s worst serial, 8.18s worst at six-way concurrency, zero
-  failures across all 20 mounted elements (`scripts/probe_timing.py`, `probe_concurrent`).
+  failures across all 20 mounted elements (measured 2026-07-29; the throwaway timing script
+  was deleted afterwards under the keep-code-headache-low rule).
 - Cost does not track file size — a 57 MB clip probes in 2.0s, a 10 MB one in 3.05s.
 - So the probe blows its deadline while queued behind the extract stage's own decoding.
 

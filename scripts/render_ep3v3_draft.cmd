@@ -10,5 +10,5 @@ if errorlevel 1 (
   echo 90 > renders\render_v3_draft_done.marker
   exit /b 90
 )
-call npx hyperframes@0.7.64 render . --gpu --browser-gpu --experimental-fast-capture=true --quality draft --crf 32 --fps 15 --workers 3 -o renders/ep3-tristate-v3-draft.mp4 >> renders/render_v3_draft.log 2>&1
+call npx hyperframes@0.7.81 render . --gpu --browser-gpu --experimental-fast-capture=true --quality draft --crf 32 --fps 15 --workers 3 -o renders/ep3-tristate-v3-draft.mp4 >> renders/render_v3_draft.log 2>&1
 echo %ERRORLEVEL% > renders\render_v3_draft_done.marker

@@ -218,7 +218,7 @@ composition, clip length vs the longest window that uses it, and total megabytes
 `ffprobe deadline with code 0` means SLOW, never corrupt. The deadline is 120s per probe,
 hardcoded in hyperframes 0.7.64 (`deadlineAtMs: Date.now() + 12e4`) — no env var raises it.
 The probe itself is fast (3.18s worst serial, 8.18s at six-way concurrency, measured with
-hyperframes' own `-count_packets` arguments by `scripts/probe_timing.py`); it blows the
+hyperframes' own `-count_packets` arguments, measured 2026-07-29); it blows the
 deadline queued behind the extract stage decoding oversized source. An idle box does NOT
 prevent this — attempt 12 failed with the machine quiet.
 

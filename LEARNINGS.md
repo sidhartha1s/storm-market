@@ -450,7 +450,7 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
   hardcoded.** hyperframes 0.7.64 wraps its probes in `deadlineAtMs: Date.now() + 12e4` with
   no env override, and the probe it runs at `video_extract` is not the cheap duration read —
   it is `-count_packets`, which walks every packet. Measured on an idle box with the exact
-  arguments (`scripts/probe_timing.py`): worst clip 3.05s, whole 16-clip pass 29.9s. The
+  arguments: worst clip 3.05s, whole 16-clip pass 29.9s. The
   failed render spent 274s inside `video_extract` before a single probe blew 120s, i.e. the
   box was running roughly 40x slower than idle. Cost does NOT track file size — the 57 MB
   transcode probes in 2.0s while a 10 MB lightning clip takes 3.05s — so the "4K asset"
@@ -488,3 +488,24 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
   `PRODUCER_PUPPETEER_PROTOCOL_TIMEOUT_MS=900000` alongside the nav-timeout var; avoid network
   changes during long renders. A ~28-min comp at standard/30fps ≈ 75+ min capture on this box —
   budget 2h wall-clock when the machine is also running other sessions.
+- **Check the hyperframes version before production starts, and read what changed.** Bumped
+  0.7.64 -> 0.7.81 on 2026-07-29 (owner order). The upgrade **shortens the ffprobe deadline
+  from 120s to 30s** (`Date.now() + 12e4` became `+ 3e4`) — the exact deadline twelve ep3 v3
+  renders died on. A newer version can be STRICTER, not just better, so every timing measured
+  against the old pin has a 4x smaller margin. `npm view hyperframes version` is one command
+  and belongs at the top of a production run, not after a failure.
+- **A rule with no gate is a suggestion (owner, 2026-07-29).** "Cap every source asset at the
+  composition's resolution" was written in CLAUDE.md and violated by seven clips through twelve
+  failed renders, because nothing checked it. The counter-question for any rule that keeps
+  getting broken is not "say it louder" — it is "what reads the number before the expensive
+  step?" `media_budget.py` reads three numbers in three seconds; the renders it replaces cost
+  forty minutes each.
+- **Keep code headache low (owner, 2026-07-29): if reasoning can do it, do not write a script.**
+  Code earns its place when the check is mechanical, repeated, and must never be forgotten —
+  deterministic gates, batch transforms, anything guarding money or a long render. Reasoning
+  owns taste and context. **The tell for a script that should have been a docs line: it needs a
+  hand-tuned stoplist to stop being wrong — that is judgement wearing a regex.** Applied the same
+  day to this repo's own new code: `probe_timing.py` deleted (a one-shot diagnostic whose answer
+  now lives here — a number already measured is not a tool), and `narration_picture_check.py`
+  lost its place check (thirteen false positives to three real ones, propped up by a stoplist of
+  words that are not towns) while keeping the era check, which is genuinely mechanical.
