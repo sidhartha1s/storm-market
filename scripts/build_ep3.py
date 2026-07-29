@@ -445,7 +445,6 @@ def main():
                     reuse[a] = reuse.get(a, 0) + 1
                     cb = f' data-callback="tail cutaway after {gid} completes"' if reuse[a] > 1 else ""
                     if is_video(a):     # a tail pool may be footage rather than stills
-                        w = min(w, round(vdur(a), 2))
                         vis.append(f'  <video id="{eid}" class="clip stockgrade" src="{a}" '
                                    f'data-start="{ct2:.2f}" data-duration="{w:.2f}" '
                                    f'data-track-index="1" muted{cb}></video>')
