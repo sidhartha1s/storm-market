@@ -132,12 +132,17 @@ def ffprobe_spawn_cost():
 
 print(f"composition {COMP_W}x{COMP_H} | {len(windows)} distinct clips | {total_mb:.0f} MB to decode")
 exe, spawn = ffprobe_spawn_cost()
-name = Path(exe).name if exe != "ffprobe" else "ffprobe (from PATH)"
-size = f"{Path(exe).stat().st_size / 1e6:.1f} MB" if exe != "ffprobe" and Path(exe).exists() else "size unknown"
-print(f"ffprobe: {name} ({size}) spawns in {spawn:.3f}s -> ~{spawn * 200:.0f}s of probe overhead per render")
-if spawn > 0.4:
-    fails.append(f"ffprobe spawns in {spawn:.2f}s — a render fires ~200 probes, so that is "
-                 f"~{spawn * 200:.0f}s of scanning and a probe WILL miss its deadline")
+if spawn is None:
+    print(f"ffprobe: HYPERFRAMES_FFPROBE_PATH points at a file that does not exist:\n  {exe}")
+    fails.append("HYPERFRAMES_FFPROBE_PATH is set to a path that does not exist — hyperframes "
+                 "falls back to whatever ffprobe is on PATH, which is the slow one")
+else:
+    name = Path(exe).name if exe != "ffprobe" else "ffprobe (from PATH)"
+    size = f"{Path(exe).stat().st_size / 1e6:.1f} MB" if exe != "ffprobe" and Path(exe).exists() else "size unknown"
+    print(f"ffprobe: {name} ({size}) spawns in {spawn:.3f}s -> ~{spawn * 200:.0f}s of probe overhead per render")
+    if spawn > 0.4:
+        fails.append(f"ffprobe spawns in {spawn:.2f}s — a render fires ~200 probes, so that is "
+                     f"~{spawn * 200:.0f}s of scanning and a probe WILL miss its deadline")
 dl = installed_probe_deadline()
 if dl:
     print(f"installed hyperframes {dl[0]} allows {dl[1]:.0f}s per ffprobe "
