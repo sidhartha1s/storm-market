@@ -210,9 +210,11 @@ SHOTS = {
         tail=[S+"stock-cloudsrolling-02.mp4", S+"stock-rainfield-02.mp4", S+"stock-lightning-02.mp4"]),
  "a6-s3c": dict(kind="graphic", id="g-modern"),
  "a6-s3d": dict(kind="graphic", id="g-prep"),
- "a6-s3b": dict(kind="stills", assets=[P+"1925_-_Princeton_-_Princeton_Clarion-News_-_IA_GWC.jpg",
-        P+"1925_-_Griffin_-_Building_Destroyed.jpg", P+"1925_-_Griffin_-_Griffin_School_3.jpg",
-        P+"1925_-_Princeton_-_Heinz_Plant_1_-_IA_PPL.jpg"]),
+ # This segment narrates MARCH 2025 — the centennial, the new markers, the descendants —
+ # and was running 1925 wreckage photographs under it. The picture said 1925 while the
+ # voice said 2025. No 2025 footage exists in the pool, so the beat is carried by a
+ # designed card that does not pretend to be a photograph of anything.
+ "a6-s3b": dict(kind="graphic", id="g-centennial"),
  "a6-s3e": dict(kind="stock", assets=[S+"stock-windgrass-01.mp4", S+"stock-rainfield-02.mp4",
         S+"stock-cloudsrolling-03.mp4", S+"stock-windgrass-02.mp4"]),
  "a6-s4d": dict(kind="stills", assets=[P+"13-Murphysboro_Aerial.png", P+"1925_-_Murphysboro_22_-_Aerial_View(1).jpg",
