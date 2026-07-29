@@ -608,10 +608,15 @@ def main():
         idx += 1
         t = round(seg_start + seg_dur + GAP, 2)
 
-    # g-close carries the title, episode line and credits inside its own 26.5s timeline and
-    # fades them out 2.2s before it ends, so the old +14.0s "credits tail" was 14 seconds of
-    # black after the last visible frame. Keep only a short breath on black to end the video.
-    total = t + 1.0
+    # g-close carries the title, episode line and credits inside its own timeline and fades
+    # itself out at the end; that fade IS the ending. The old `t + 1.0` ran past the closing
+    # card by the whole trailing hold, and close_picture_gaps then stretched the g-close host
+    # to reach it — 3.7s of frozen black after the last visible frame. ep2, the shipped
+    # reference, ends on picture with a 0.0s tail. End on the last picture window instead.
+    W_END = re.compile(r'data-start="([\d.]+)" data-duration="([\d.]+)"')
+    ends = [float(m.group(1)) + float(m.group(2))
+            for s in vis + gfx if (m := W_END.search(s))]
+    total = -(-max(ends) // 1)      # ceil: the root prints its duration at {total:.0f}
     close_picture_gaps(vis, gfx, kbs, total)
     return vis, gfx, chips, audio, kbs, total, lines_report, seg_at
 
