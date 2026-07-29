@@ -9,6 +9,25 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   Dark Horizon 23 videos → 271K avg. Formula teardown in `references/script-teardown.md`.
 - Per-video economics beat cadence: quality > volume. Target 2–4 episodes/month.
 
+## Graphics & editorial taste (owner review of ep3 v2, 2026-07-29 — 2/10)
+- **Motion graphics must have motion.** No frozen full-frame hold. Every composition carries a
+  continuous element across its whole window; measured by `beat_density.py` — target zero
+  compositions with a motionless stretch ≥ 4s (ep3 v3 ships at 0/38, worst gap 1.6s).
+- **SHOW, don't make the viewer "look at stuff."** Put the thing in the middle or across the
+  whole RHS the way ep2 does. A stat asserted as text over b-roll is a miss.
+- **Any spatial claim gets a MAP.** "400 miles", "seven hours", "three states" — a map, not
+  cloud footage. ep3's `g-lone` is the reference; it also shows the pattern for fitting a
+  route onto a real map plate (anchor on measurable landmarks, fit on the mileage column).
+- **No ambiguous labels.** "what they knew" and an unexplained cone were both flagged. Name
+  the thing on screen: "WHAT THEY EXPECTED · ROPE FUNNEL" vs "WHAT ARRIVED · A WALL OF DEBRIS".
+- **The picture must not contradict the voice.** ep3 narrated March 2025 over 1925 wreckage
+  photos for 27s. If no asset exists, build an honest designed card — never fabricate footage.
+- **Match ep2's anatomy, and CHECK it — don't assume it.** Owner: *"I'm damn sure you didn't
+  check. You assumed it."* **Never edit ep2. It is shipped.**
+- **Cut for retention.** Segments and clips do not deserve long lengths by default.
+- Reference floors from the shipped cuts: ep2 = 187 windows / 10.0s median / 2 picture gaps.
+  Uncovered picture gaps in the dozens is a bug, not a style.
+
 ## The formula (from measured teardowns — follow, don't reinvent)
 - Hook in 10–15s: cold-open on found footage/audio OR present-tense stat. Thesis/foreshadow line
   at 60–90s that the whole video pays off.
