@@ -96,14 +96,8 @@ def ts(s):
     return f"{int(s) // 60}:{s % 60:05.2f}"
 
 
-print(f"segments checked: {len(segments)}   picture windows: {len(pictures)}   "
-      f"place vocabulary: {len(place_tokens)}")
+print(f"segments checked: {len(segments)}   picture windows: {len(pictures)}")
 print()
-if place_findings:
-    print(f"PLACE warnings ({len(place_findings)}) — editorial, not a failure:")
-    for nx, t, d in place_findings:
-        print(f"  {ts(t)}  {nx:10} {d}")
-    print()
 if era_findings:
     print(f"NARRATION/PICTURE FAIL — {len(era_findings)} era contradiction(s):")
     for nx, t, d in era_findings:
