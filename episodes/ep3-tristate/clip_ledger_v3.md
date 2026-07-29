@@ -30,9 +30,9 @@
 | 28 | 3:24.03 | 6.96s | 1 | still | 12-Murphysboro_Pre-Tornado_2.png |
 | 29 | 3:30.99 | 36.11s | 2 | graphic | g-metmap |
 | 30 | 4:07.10 | 28.00s | 2 | graphic | g-scale |
-| 31 | 4:35.10 | 3.71s | 1 | still | 02-Annapolis_Destruction.png |
+| 31 | 4:35.10 | 3.71s | 1 | still | 1925_-_Princeton_-_Heinz_Plant_1_-_IA_PPL.jpg |
 | 32 | 4:38.81 | 4.52s | 1 | clip | stock-cloudsomen-02.mp4 |
-| 33 | 4:43.33 | 4.52s | 1 | still | 02-Annapolis_Destruction.png |
+| 33 | 4:43.33 | 4.52s | 1 | still | 1925_-_Princeton_-_Heinz_Plant_1_-_IA_PPL.jpg |
 | 34 | 4:47.85 | 5.79s | 1 | clip | stock-cloudsrolling-03.mp4 |
 | 35 | 4:53.64 | 7.49s | 1 | clip | stock-lightning-01.mp4 |
 | 36 | 5:01.13 | 6.22s | 1 | clip | stock-cloudsomen-01.mp4 |
@@ -49,12 +49,12 @@
 | 47 | 6:49.24 | 5.60s | 1 | still | 03-Leadanna_Damage.png |
 | 48 | 6:54.84 | 7.25s | 1 | still | Leadanna_lead_mines_after_1925_tornado.png |
 | 49 | 7:02.09 | 6.02s | 1 | still | 05-Bollinger_County_Damage.png |
-| 50 | 7:08.11 | 8.81s | 1 | still | 03-Leadanna_Damage.png |
-| 51 | 7:16.92 | 8.76s | 1 | still | 05-Bollinger_County_Damage.png |
+| 50 | 7:08.11 | 8.81s | 1 | still | 02-Annapolis_Destruction.png |
+| 51 | 7:16.92 | 8.76s | 1 | still | 1925_-_Princeton_-_Heinz_Plant_1_-_IA_PPL.jpg |
 | 52 | 7:16.92 | 23.10s | 2 | graphic | g-panel-annapolis |
 | 53 | 7:25.68 | 5.61s | 1 | still | Annapolis_Business_street.png |
 | 54 | 7:31.29 | 7.26s | 1 | still | 03-Leadanna_Damage.png |
-| 55 | 7:38.55 | 6.78s | 1 | still | 05-Bollinger_County_Damage.png |
+| 55 | 7:38.55 | 6.78s | 1 | still | 02-Annapolis_Destruction.png |
 | 56 | 7:45.33 | 7.82s | 1 | still | 06-Biehle_Damage_-_Theo_Holschen_Residence.jpg |
 | 57 | 7:53.15 | 5.01s | 1 | still | ai-black-wall-fields.png |
 | 58 | 7:58.16 | 6.47s | 1 | still | 07-Perry_County_Destruction.png |
@@ -62,7 +62,7 @@
 | 60 | 8:10.00 | 7.96s | 1 | still | 06-Biehle_Damage_-_Theo_Holschen_Residence.jpg |
 | 61 | 8:17.96 | 37.43s | 2 | graphic | g-wires |
 | 62 | 8:55.39 | 22.80s | 2 | graphic | g-track-2 |
-| 63 | 9:18.19 | 2.47s | 1 | still | 06-Biehle_Damage.png |
+| 63 | 9:18.19 | 2.47s | 1 | still | 05-Bollinger_County_Damage.png |
 | 64 | 9:20.66 | 8.96s | 1 | still | 25-West_Frankfort_Orient_2_Aerial.png |
 | 65 | 9:29.62 | 5.74s | 1 | still | 26-West_Frankfort_Coal_Cars.png |
 | 66 | 9:35.36 | 7.42s | 1 | still | X_West_Frankfort3_-_Aerial_View_Orient_No_2_Mine.png |
@@ -80,7 +80,7 @@
 | 78 | 10:44.41 | 5.90s | 1 | still | 09-Gorham_Boxcars.png |
 | 79 | 10:50.31 | 7.62s | 1 | still | 1925_tornado_damage_7.webp |
 | 80 | 10:57.93 | 6.33s | 1 | still | 1925_-_Gorham_-_Post_Office_Area.jpg |
-| 81 | 11:04.26 | 9.23s | 1 | still | 06-Biehle_Damage.png |
+| 81 | 11:04.26 | 9.23s | 1 | still | 03-Leadanna_Damage.png |
 | 82 | 11:13.49 | 6.16s | 1 | clip | mvtn-murphysboro-house-7s.mp4 |
 | 83 | 11:13.89 | 7.00s | 7 | still | ? |
 | 84 | 11:19.65 | 4.72s | 1 | still | 1925_-_Murphysboro_4_-_M_O_Railroad_Shops.jpg |
@@ -109,7 +109,7 @@
 | 107 | 13:43.93 | 5.52s | 1 | still | 13-Murphysboro_Aerial.png |
 | 108 | 13:49.45 | 7.13s | 1 | still | 1925_-_Murphysboro_8_-_General_Damage.jpg |
 | 109 | 13:56.58 | 5.92s | 1 | still | 1925_-_Murphysboro_21_-_High_School_Aerial.jpg |
-| 110 | 14:02.50 | 8.69s | 1 | still | 06-Biehle_Damage.png |
+| 110 | 14:02.50 | 8.69s | 1 | still | 05-Bollinger_County_Damage.png |
 | 111 | 14:11.19 | 12.63s | 2 | graphic | g-track-3 |
 | 112 | 14:23.82 | 9.46s | 1 | still | 21-De_Soso_School_Damage_1.png |
 | 113 | 14:24.22 | 7.00s | 7 | still | grain.js |
@@ -123,14 +123,14 @@
 | 121 | 15:16.66 | 6.83s | 1 | still | Illinois_-_Desoto_-_NARA_-_23939847__cropped_.jpg |
 | 122 | 15:23.49 | 5.67s | 1 | still | 20-De_Soto_School_1910.png |
 | 123 | 15:29.16 | 7.60s | 1 | still | 21-De_Soso_School_Damage_1.png |
-| 124 | 15:36.76 | 6.80s | 1 | still | 06-Biehle_Damage_-_Theo_Holschen_Residence.jpg |
+| 124 | 15:36.76 | 6.80s | 1 | still | 06-Biehle_Damage.png |
 | 125 | 15:43.56 | 8.27s | 1 | still | 24-Plumfield_School_Demolished.png |
 | 126 | 15:43.56 | 22.70s | 2 | graphic | g-panel-schools |
 | 127 | 15:51.83 | 5.30s | 1 | still | 28-White_County_Newman_School.png |
 | 128 | 15:57.13 | 6.85s | 1 | still | X3_Enfield_-_Trousdale_School_SE_of_Town.png |
 | 129 | 16:03.98 | 5.69s | 1 | still | 1925_-_Griffin_-_Griffin_School_1.jpg |
 | 130 | 16:09.67 | 7.62s | 1 | still | 24-Plumfield_School_Demolished.png |
-| 131 | 16:17.29 | 6.82s | 1 | still | 07-Perry_County_Destruction.png |
+| 131 | 16:17.29 | 6.82s | 1 | still | 06-Biehle_Damage.png |
 | 132 | 16:24.11 | 8.36s | 1 | still | ai-miners-emerging.png |
 | 133 | 16:24.11 | 26.50s | 2 | graphic | g-panel-wf |
 | 134 | 16:24.51 | 7.00s | 7 | still | grain.js |
@@ -160,7 +160,7 @@
 | 158 | 19:23.40 | 5.84s | 1 | still | 1925_-_Griffin_-_Residential_Damage_1.jpg |
 | 159 | 19:29.24 | 7.55s | 1 | still | 1925_-_Griffin_-_Building_Destroyed.jpg |
 | 160 | 19:36.79 | 6.27s | 1 | still | 1925_-_Griffin_-_Tents_Amidst_Damage.jpg |
-| 161 | 19:43.06 | 9.15s | 1 | still | 07-Perry_County_Destruction.png |
+| 161 | 19:43.06 | 9.15s | 1 | still | 06-Biehle_Damage.png |
 | 162 | 19:52.21 | 8.22s | 1 | still | 1925_-_Princeton_-_Baldwin_Heights_Area_-_IA_PPL.jpg |
 | 163 | 19:52.61 | 7.00s | 7 | still | grain.js |
 | 164 | 20:00.43 | 5.27s | 1 | still | 31-Princeton_Heinz_Plant.png |
@@ -188,9 +188,9 @@
 | 186 | 23:16.59 | 8.35s | 1 | still | marvin-portrait-01.jpg |
 | 187 | 23:16.59 | 24.60s | 2 | graphic | g-panel-nonet |
 | 188 | 23:24.94 | 5.35s | 1 | still | 1925_tornado_damage_1.webp |
-| 189 | 23:30.29 | 6.92s | 1 | still | 09-Gorham_Boxcars.png |
+| 189 | 23:30.29 | 6.92s | 1 | still | 07-Perry_County_Destruction.png |
 | 190 | 23:37.21 | 5.74s | 1 | still | marvin-portrait-01.jpg |
-| 191 | 23:42.95 | 8.45s | 1 | still | 13-Murphysboro_Aerial.png |
+| 191 | 23:42.95 | 8.45s | 1 | still | 06-Biehle_Damage_-_Theo_Holschen_Residence.jpg |
 | 192 | 23:51.40 | 7.51s | 1 | still | The_Evansville_Press_Front_page_-_1925_tornado_coverage.jpg |
 | 193 | 23:58.91 | 4.81s | 1 | still | Marion_Evening_Post_Front_page_-_1925_tornado_coverage.jpg |
 | 194 | 24:03.72 | 6.22s | 1 | still | Anderson_Daily_Bulletin_Front_page_-_1925_tornado_coverage.png |
@@ -211,14 +211,14 @@
 | 209 | 25:37.33 | 8.25s | 1 | still | 1925_tornado_damage_6.webp |
 | 210 | 25:37.33 | 25.20s | 2 | graphic | g-panel-cost |
 | 211 | 25:45.58 | 5.28s | 1 | still | 1925_tornado_damage_9.webp |
-| 212 | 25:50.86 | 6.83s | 1 | still | 13-Murphysboro_Aerial.png |
+| 212 | 25:50.86 | 6.83s | 1 | still | 07-Perry_County_Destruction.png |
 | 213 | 25:57.69 | 5.67s | 1 | still | 1925_tornado_damage_6.webp |
-| 214 | 26:03.36 | 8.36s | 1 | still | 16-Murphysboro_SW_of_Logan_School.png |
+| 214 | 26:03.36 | 8.36s | 1 | still | 09-Gorham_Boxcars.png |
 | 215 | 26:11.72 | 7.74s | 1 | still | Tri_State_Tornado.jpg |
 | 216 | 26:11.72 | 22.80s | 2 | graphic | g-panel-song |
 | 217 | 26:19.46 | 4.96s | 1 | still | 1925_-_Murphysboro_29_-_North_9th_Street_Park.jpg |
 | 218 | 26:24.42 | 6.41s | 1 | still | Tri_State_Tornado.jpg |
-| 219 | 26:30.83 | 6.08s | 1 | still | 16-Murphysboro_SW_of_Logan_School.png |
+| 219 | 26:30.83 | 6.08s | 1 | still | 13-Murphysboro_Aerial.png |
 | 220 | 26:36.91 | 5.72s | 1 | clip | mvtn-rebuild-bricklayers-12s.mp4 |
 | 221 | 26:42.63 | 5.72s | 1 | still | 1925_tornado_damage_4.jpg |
 | 222 | 26:48.35 | 6.35s | 1 | still | 1925_-_De_Soto_-_Aftermath_Where_Homes_Were.jpg |
@@ -239,31 +239,28 @@
 | 237 | 30:23.57 | 5.22s | 1 | still | 1925_-_Murphysboro_29_-_North_9th_Street_Park.jpg |
 | 238 | 30:28.79 | 44.83s | 2 | graphic | g-fujita |
 | 239 | 31:13.62 | 29.64s | 2 | graphic | g-modern |
-| 240 | 31:43.26 | 5.59s | 1 | still | 18-Murphysboro_Fire_Colorized.png |
+| 240 | 31:43.26 | 5.59s | 1 | still | 13-Murphysboro_Aerial.png |
 | 241 | 31:48.85 | 22.00s | 2 | graphic | g-prep |
-| 242 | 32:10.85 | 7.92s | 1 | still | 19-De_Soto_Destruction.png |
+| 242 | 32:10.85 | 7.92s | 1 | still | 16-Murphysboro_SW_of_Logan_School.png |
 | 243 | 32:18.77 | 5.83s | 1 | still | 1925_-_Murphysboro_29_-_North_9th_Street_Park.jpg |
-| 244 | 32:24.60 | 8.71s | 1 | still | 1925_-_Princeton_-_Princeton_Clarion-News_-_IA_GWC.jpg |
-| 245 | 32:33.31 | 5.58s | 1 | still | 1925_-_Griffin_-_Building_Destroyed.jpg |
-| 246 | 32:38.89 | 7.21s | 1 | still | 1925_-_Griffin_-_Griffin_School_3.jpg |
-| 247 | 32:46.10 | 6.73s | 1 | still | 1925_-_Princeton_-_Princeton_Clarion-News_-_IA_GWC.jpg |
-| 248 | 32:52.83 | 7.69s | 1 | clip | stock-windgrass-01.mp4 |
-| 249 | 33:00.52 | 4.93s | 1 | clip | stock-rainfield-02.mp4 |
-| 250 | 33:05.45 | 6.37s | 1 | clip | stock-cloudsrolling-03.mp4 |
-| 251 | 33:11.82 | 5.29s | 1 | clip | stock-windgrass-02.mp4 |
-| 252 | 33:17.11 | 7.85s | 1 | still | 19-De_Soto_Destruction.png |
-| 253 | 33:24.96 | 8.89s | 1 | still | 1925_-_De_Soto_-_Aftermath_Where_Homes_Were.jpg |
-| 254 | 33:33.85 | 5.69s | 1 | still | 1925_-_Murphysboro_22_-_Aerial_View(1).jpg |
-| 255 | 33:39.54 | 7.36s | 1 | still | 1925_-_De_Soto_-_Birds_Eye_View.jpg |
-| 256 | 33:46.90 | 6.11s | 1 | still | X_West_Frankfort2_-_Aerial_View_West_Side_of_Town.jpg |
-| 257 | 33:53.01 | 8.94s | 1 | still | 1925_-_De_Soto_-_Aftermath_Where_Homes_Were.jpg |
-| 258 | 34:01.95 | 9.46s | 1 | still | 1925_-_Princeton_-_Baldwin_Heights_School_1_-_IA_PPL.jpg |
-| 259 | 34:11.41 | 6.06s | 1 | still | 1925_-_De_Soto_-_Birds_Eye_View.jpg |
-| 260 | 34:17.47 | 7.83s | 1 | still | 1925_-_Murphysboro_2_-_Murphysboro_Township_High_School.jpg |
-| 261 | 34:25.30 | 7.26s | 1 | still | 1925_-_Princeton_-_Homes_in_Baldwin_Heights_Area_-_IA_PPL.jpg |
-| 262 | 34:32.56 | 29.44s | 2 | graphic | g-close |
+| 244 | 32:24.60 | 28.23s | 2 | graphic | g-centennial |
+| 245 | 32:52.83 | 7.69s | 1 | clip | stock-windgrass-01.mp4 |
+| 246 | 33:00.52 | 4.93s | 1 | clip | stock-rainfield-02.mp4 |
+| 247 | 33:05.45 | 6.37s | 1 | clip | stock-cloudsrolling-03.mp4 |
+| 248 | 33:11.82 | 5.29s | 1 | clip | stock-windgrass-02.mp4 |
+| 249 | 33:17.11 | 7.85s | 1 | still | 16-Murphysboro_SW_of_Logan_School.png |
+| 250 | 33:24.96 | 8.89s | 1 | still | 18-Murphysboro_Fire_Colorized.png |
+| 251 | 33:33.85 | 5.69s | 1 | still | 1925_-_Murphysboro_22_-_Aerial_View(1).jpg |
+| 252 | 33:39.54 | 7.36s | 1 | still | 1925_-_De_Soto_-_Birds_Eye_View.jpg |
+| 253 | 33:46.90 | 6.11s | 1 | still | X_West_Frankfort2_-_Aerial_View_West_Side_of_Town.jpg |
+| 254 | 33:53.01 | 8.94s | 1 | still | 19-De_Soto_Destruction.png |
+| 255 | 34:01.95 | 9.46s | 1 | still | 1925_-_Princeton_-_Baldwin_Heights_School_1_-_IA_PPL.jpg |
+| 256 | 34:11.41 | 6.06s | 1 | still | 19-De_Soto_Destruction.png |
+| 257 | 34:17.47 | 7.83s | 1 | still | 1925_-_Murphysboro_2_-_Murphysboro_Township_High_School.jpg |
+| 258 | 34:25.30 | 7.26s | 1 | still | 1925_-_Princeton_-_Homes_in_Baldwin_Heights_Area_-_IA_PPL.jpg |
+| 259 | 34:32.56 | 29.44s | 2 | graphic | g-close |
 
-windows: 262  median: 7.00s  mean: 9.60s  min: 2.08s  max: 44.83s
+windows: 259  median: 7.00s  mean: 9.71s  min: 2.08s  max: 44.83s
 uncovered picture gaps: 0
 
 windows >= 15s:
@@ -300,4 +297,5 @@ windows >= 15s:
   30:28.79   44.83s  graphic  g-fujita
   31:13.62   29.64s  graphic  g-modern
   31:48.85   22.00s  graphic  g-prep
+  32:24.60   28.23s  graphic  g-centennial
   34:32.56   29.44s  graphic  g-close

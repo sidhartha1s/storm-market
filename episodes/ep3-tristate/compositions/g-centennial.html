@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 46% 52%, #0d141c 0%, #04070a 76%); overflow:hidden; }
+  .eyebrow { position:absolute; left:96px; top:76px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .hl { position:absolute; left:96px; top:112px; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; }
+  .sub { position:absolute; left:96px; top:196px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  .drift { position:absolute; inset:-40% 0; opacity:0.30; pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(120,150,180,0.16) 0 1px, transparent 1px 46px); }
+  .lab { font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; }
+  .val { font-size:30px; color:#dfe7ee; font-weight:700; letter-spacing:1px; }
+  .num { font-family:'Courier New',monospace; font-size:84px; color:#e74c3c; font-weight:700; line-height:1; }
+  .maplab { font-family:Arial,sans-serif; font-weight:700; font-size:25px; fill:#e8eef4; }
+  .foot { position:absolute; left:96px; bottom:74px; font-family:Georgia,serif; font-style:italic;
+    font-size:26px; color:#d8a13a; }
+
+  .plateband { position:absolute; left:0; right:0; top:322px; height:600px; overflow:hidden; }
+  .plate { position:absolute; left:0; top:-448px; width:1920px;
+    opacity:0.62; filter:grayscale(0.3) brightness(0.72) contrast(1.05) sepia(0.14); }
+  .platefade { position:absolute; inset:0; pointer-events:none; background:
+    linear-gradient(180deg, rgba(4,7,10,1) 0%, rgba(4,7,10,0) 15%,
+                    rgba(4,7,10,0) 85%, rgba(4,7,10,1) 100%); }
+  /* 62px of Arial Black is ~75px of line box; at top:92 it ran into the caption at 168 */
+  .span { position:absolute; right:96px; top:80px; text-align:right; line-height:1;
+    font-family:'Arial Black',Arial,sans-serif; font-size:62px; color:#e8c56a; letter-spacing:2px; }
+  .spanlab { position:absolute; right:96px; top:174px; text-align:right;
+    font-size:19px; letter-spacing:5px; color:#93a3b2; font-weight:700; }
+  .pin { font-family:Arial,sans-serif; font-weight:700; font-size:22px; fill:#c8d3e0; }
+  .pin.gone { fill:#e8c56a; font-size:27px; }
+  .callout { position:absolute; left:96px; top:258px; font-family:'Arial Black',Arial,sans-serif;
+    font-size:38px; color:#f2f5f8; }
+  .calloutsub { position:absolute; left:96px; top:312px; font-family:Georgia,serif;
+    font-style:italic; font-size:25px; color:#b8c6d4; }
+</style>
+<div id="root" data-composition-id="g-centennial" data-width="1920" data-height="1080">
+<div class="drift" id="g-centennial-drift"></div>
+<div class="plateband"><img class="plate" id="g-centennial-plate" src="media/maps/map-plate-tristate.png" alt=""><div class="platefade"></div></div><svg viewBox="0 0 1920 1080" style="position:absolute;inset:0"><circle id="g-centennial-d0" cx="279" cy="806" r="0" fill="#8fa3b6"/><text id="g-centennial-n0" x="279" y="774" text-anchor="middle" class="pin" opacity="0">Ellington</text><circle id="g-centennial-d1" cx="360" cy="802" r="0" fill="#8fa3b6"/><text id="g-centennial-n1" x="360" y="848" text-anchor="middle" class="pin" opacity="0">Annapolis</text><circle id="g-centennial-d2" cx="619" cy="787" r="0" fill="#8fa3b6"/><text id="g-centennial-n2" x="619" y="721" text-anchor="middle" class="pin" opacity="0">Biehle</text><circle id="g-centennial-d3" cx="823" cy="776" r="0" fill="#8fa3b6"/><text id="g-centennial-n3" x="823" y="744" text-anchor="middle" class="pin" opacity="0">Gorham</text><circle id="g-centennial-d4" cx="878" cy="773" r="0" fill="#8fa3b6"/><text id="g-centennial-n4" x="878" y="819" text-anchor="middle" class="pin" opacity="0">Murphysboro</text><circle id="g-centennial-d5" cx="934" cy="770" r="0" fill="#8fa3b6"/><text id="g-centennial-n5" x="934" y="704" text-anchor="middle" class="pin" opacity="0">De Soto</text><circle id="g-centennial-d6" cx="1032" cy="765" r="0" fill="#8fa3b6"/><text id="g-centennial-n6" x="1032" y="733" text-anchor="middle" class="pin" opacity="0">West Frankfort</text><circle id="g-centennial-d7" cx="1088" cy="762" r="0" fill="#e8c56a"/><text id="g-centennial-n7" x="1088" y="808" text-anchor="middle" class="pin gone" opacity="0">Parrish</text><circle id="g-centennial-d8" cx="1218" cy="755" r="0" fill="#8fa3b6"/><text id="g-centennial-n8" x="1218" y="689" text-anchor="middle" class="pin" opacity="0">Crossville</text><circle id="g-centennial-d9" cx="1409" cy="744" r="0" fill="#8fa3b6"/><text id="g-centennial-n9" x="1409" y="712" text-anchor="middle" class="pin" opacity="0">Griffin</text><circle id="g-centennial-d10" cx="1532" cy="737" r="0" fill="#8fa3b6"/><text id="g-centennial-n10" x="1532" y="783" text-anchor="middle" class="pin" opacity="0">Princeton</text><circle id="g-centennial-d11" cx="1631" cy="732" r="0" fill="#8fa3b6"/><text id="g-centennial-n11" x="1631" y="666" text-anchor="middle" class="pin" opacity="0">Petersburg</text><circle id="g-centennial-ring" cx="1088" cy="762" r="0" fill="none" stroke="#e8c56a" stroke-width="3" opacity="0"/></svg><div class="eyebrow" id="g-centennial-eb">MARCH 2025 · THE CENTENNIAL</div><div class="hl" id="g-centennial-hl">ONE HUNDRED YEARS</div><div class="sub" id="g-centennial-sb">markers now stand where the towns were</div><div class="span" id="g-centennial-sp">1925 &mdash; 2025</div><div class="spanlab" id="g-centennial-spl">ONE HUNDRED YEARS TO THE DAY</div><div class="callout" id="g-centennial-co">PARRISH, ILLINOIS</div><div class="calloutsub" id="g-centennial-cos">today a name and a road, and nothing else</div><div class="foot" id="g-centennial-ft">Children and grandchildren of survivors read the names into the spring air.</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-centennial-";
+  tl.fromTo(P+"drift", {y:-120}, {y:120, duration:27.4, ease:"none"}, 0);
+  tl.fromTo(P+"eb", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.15);
+  tl.fromTo(P+"hl", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.35);
+  tl.fromTo(P+"sb", {autoAlpha:0, x:-24}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.55);
+  tl.fromTo(P+"plate", {scale:1.0}, {scale:1.05, duration:27.4, ease:"none", transformOrigin:"52% 76%"}, 0);
+  tl.fromTo(P+"sp", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.6, ease:"power3.out"}, 0.40);
+  tl.fromTo(P+"spl", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 1.10);
+  tl.fromTo(P+"d0", {attr:{r:0}}, {attr:{r:9}, duration:0.34, ease:"back.out(2.4)"}, 7.12);
+  tl.fromTo(P+"n0", {opacity:0, y:8}, {opacity:0.92, y:0, duration:0.4}, 7.22);
+  tl.fromTo(P+"d1", {attr:{r:0}}, {attr:{r:9}, duration:0.34, ease:"back.out(2.4)"}, 7.42);
+  tl.fromTo(P+"n1", {opacity:0, y:8}, {opacity:0.92, y:0, duration:0.4}, 7.52);
+  tl.fromTo(P+"d2", {attr:{r:0}}, {attr:{r:9}, duration:0.34, ease:"back.out(2.4)"}, 7.72);
+  tl.fromTo(P+"n2", {opacity:0, y:8}, {opacity:0.92, y:0, duration:0.4}, 7.82);
+  tl.fromTo(P+"d3", {attr:{r:0}}, {attr:{r:9}, duration:0.34, ease:"back.out(2.4)"}, 8.02);
+  tl.fromTo(P+"n3", {opacity:0, y:8}, {opacity:0.92, y:0, duration:0.4}, 8.12);
+  tl.fromTo(P+"d4", {attr:{r:0}}, {attr:{r:9}, duration:0.34, ease:"back.out(2.4)"}, 8.32);
+  tl.fromTo(P+"n4", {opacity:0, y:8}, {opacity:0.92, y:0, duration:0.4}, 8.42);
+  tl.fromTo(P+"d5", {attr:{r:0}}, {attr:{r:9}, duration:0.34, ease:"back.out(2.4)"}, 8.62);
+  tl.fromTo(P+"n5", {opacity:0, y:8}, {opacity:0.92, y:0, duration:0.4}, 8.72);
+  tl.fromTo(P+"d6", {attr:{r:0}}, {attr:{r:9}, duration:0.34, ease:"back.out(2.4)"}, 8.92);
+  tl.fromTo(P+"n6", {opacity:0, y:8}, {opacity:0.92, y:0, duration:0.4}, 9.02);
+  tl.fromTo(P+"d7", {attr:{r:0}}, {attr:{r:13}, duration:0.34, ease:"back.out(2.4)"}, 9.22);
+  tl.fromTo(P+"n7", {opacity:0, y:8}, {opacity:0.92, y:0, duration:0.4}, 9.32);
+  tl.fromTo(P+"d8", {attr:{r:0}}, {attr:{r:9}, duration:0.34, ease:"back.out(2.4)"}, 9.52);
+  tl.fromTo(P+"n8", {opacity:0, y:8}, {opacity:0.92, y:0, duration:0.4}, 9.62);
+  tl.fromTo(P+"d9", {attr:{r:0}}, {attr:{r:9}, duration:0.34, ease:"back.out(2.4)"}, 9.82);
+  tl.fromTo(P+"n9", {opacity:0, y:8}, {opacity:0.92, y:0, duration:0.4}, 9.92);
+  tl.fromTo(P+"d10", {attr:{r:0}}, {attr:{r:9}, duration:0.34, ease:"back.out(2.4)"}, 10.12);
+  tl.fromTo(P+"n10", {opacity:0, y:8}, {opacity:0.92, y:0, duration:0.4}, 10.22);
+  tl.fromTo(P+"d11", {attr:{r:0}}, {attr:{r:9}, duration:0.34, ease:"back.out(2.4)"}, 10.42);
+  tl.fromTo(P+"n11", {opacity:0, y:8}, {opacity:0.92, y:0, duration:0.4}, 10.52);
+  tl.fromTo(P+"ring", {attr:{r:0}, opacity:0}, {attr:{r:34}, opacity:0.9, duration:0.6, ease:"power3.out"}, 11.62);
+  tl.to(P+"ring", {attr:{r:52}, opacity:0, duration:1.5, ease:"none"}, 12.30);
+  tl.fromTo(P+"co", {autoAlpha:0, x:-36}, {autoAlpha:1, x:0, duration:0.55, ease:"power3.out"}, 11.90);
+  tl.fromTo(P+"cos", {autoAlpha:0, x:-28}, {autoAlpha:1, x:0, duration:0.55, ease:"power3.out"}, 13.86);
+  tl.fromTo(P+"ft", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.7}, 19.80);
+  tl.to(P+"n0", {opacity:1, duration:0.22, yoyo:true, repeat:1}, 22.72);
+  tl.to(P+"n1", {opacity:1, duration:0.22, yoyo:true, repeat:1}, 23.06);
+  tl.to(P+"n2", {opacity:1, duration:0.22, yoyo:true, repeat:1}, 23.40);
+  tl.to(P+"n3", {opacity:1, duration:0.22, yoyo:true, repeat:1}, 23.74);
+  tl.to(P+"n4", {opacity:1, duration:0.22, yoyo:true, repeat:1}, 24.08);
+  tl.to(P+"n5", {opacity:1, duration:0.22, yoyo:true, repeat:1}, 24.42);
+  tl.to(P+"n6", {opacity:1, duration:0.22, yoyo:true, repeat:1}, 24.76);
+  tl.to(P+"n7", {opacity:1, duration:0.22, yoyo:true, repeat:1}, 25.10);
+  tl.to(P+"n8", {opacity:1, duration:0.22, yoyo:true, repeat:1}, 25.44);
+  tl.to(P+"n9", {opacity:1, duration:0.22, yoyo:true, repeat:1}, 25.78);
+  tl.to(P+"n10", {opacity:1, duration:0.22, yoyo:true, repeat:1}, 26.12);
+  tl.to(P+"n11", {opacity:1, duration:0.22, yoyo:true, repeat:1}, 26.46);
+
+  window.__timelines["g-centennial"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

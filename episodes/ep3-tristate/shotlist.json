@@ -142,7 +142,7 @@
  {
   "start": 275.1,
   "dur": 2.96,
-  "what": "tail 02-Annapolis_Destruction.png"
+  "what": "tail 1925_-_Princeton_-_Heinz_Plant_1_-_IA_PPL.jpg"
  },
  {
   "start": 278.81,
@@ -152,7 +152,7 @@
  {
   "start": 283.33,
   "dur": 4.52,
-  "what": "still 02-Annapolis_Destruction.png"
+  "what": "still 1925_-_Princeton_-_Heinz_Plant_1_-_IA_PPL.jpg"
  },
  {
   "start": 287.85,
@@ -232,12 +232,12 @@
  {
   "start": 428.11,
   "dur": 8.07,
-  "what": "still 03-Leadanna_Damage.png"
+  "what": "still 02-Annapolis_Destruction.png"
  },
  {
   "start": 436.92,
   "dur": 8.76,
-  "what": "still 05-Bollinger_County_Damage.png"
+  "what": "still 1925_-_Princeton_-_Heinz_Plant_1_-_IA_PPL.jpg"
  },
  {
   "start": 445.68,
@@ -252,7 +252,7 @@
  {
   "start": 458.55,
   "dur": 6.02,
-  "what": "still 05-Bollinger_County_Damage.png"
+  "what": "still 02-Annapolis_Destruction.png"
  },
  {
   "start": 465.33,
@@ -292,7 +292,7 @@
  {
   "start": 558.19,
   "dur": 1.72,
-  "what": "tail 06-Biehle_Damage.png"
+  "what": "tail 05-Bollinger_County_Damage.png"
  },
  {
   "start": 560.66,
@@ -367,7 +367,7 @@
  {
   "start": 664.26,
   "dur": 8.49,
-  "what": "still 06-Biehle_Damage.png"
+  "what": "still 03-Leadanna_Damage.png"
  },
  {
   "start": 673.49,
@@ -497,7 +497,7 @@
  {
   "start": 842.5,
   "dur": 7.94,
-  "what": "still 06-Biehle_Damage.png"
+  "what": "still 05-Bollinger_County_Damage.png"
  },
  {
   "start": 851.19,
@@ -557,7 +557,7 @@
  {
   "start": 936.76,
   "dur": 6.06,
-  "what": "still 06-Biehle_Damage_-_Theo_Holschen_Residence.jpg"
+  "what": "still 06-Biehle_Damage.png"
  },
  {
   "start": 943.56,
@@ -587,7 +587,7 @@
  {
   "start": 977.29,
   "dur": 6.07,
-  "what": "still 07-Perry_County_Destruction.png"
+  "what": "still 06-Biehle_Damage.png"
  },
  {
   "start": 984.11,
@@ -717,7 +717,7 @@
  {
   "start": 1183.06,
   "dur": 8.4,
-  "what": "still 07-Perry_County_Destruction.png"
+  "what": "still 06-Biehle_Damage.png"
  },
  {
   "start": 1192.21,
@@ -837,7 +837,7 @@
  {
   "start": 1410.29,
   "dur": 6.92,
-  "what": "still 09-Gorham_Boxcars.png"
+  "what": "still 07-Perry_County_Destruction.png"
  },
  {
   "start": 1417.21,
@@ -847,7 +847,7 @@
  {
   "start": 1422.95,
   "dur": 7.7,
-  "what": "still 13-Murphysboro_Aerial.png"
+  "what": "still 06-Biehle_Damage_-_Theo_Holschen_Residence.jpg"
  },
  {
   "start": 1431.4,
@@ -947,7 +947,7 @@
  {
   "start": 1550.86,
   "dur": 6.83,
-  "what": "still 13-Murphysboro_Aerial.png"
+  "what": "still 07-Perry_County_Destruction.png"
  },
  {
   "start": 1557.69,
@@ -957,7 +957,7 @@
  {
   "start": 1563.36,
   "dur": 7.6,
-  "what": "still 16-Murphysboro_SW_of_Logan_School.png"
+  "what": "still 09-Gorham_Boxcars.png"
  },
  {
   "start": 1571.72,
@@ -977,7 +977,7 @@
  {
   "start": 1590.83,
   "dur": 5.32,
-  "what": "still 16-Murphysboro_SW_of_Logan_School.png"
+  "what": "still 13-Murphysboro_Aerial.png"
  },
  {
   "start": 1596.91,
@@ -1082,7 +1082,7 @@
  {
   "start": 1903.26,
   "dur": 4.84,
-  "what": "tail 18-Murphysboro_Fire_Colorized.png"
+  "what": "tail 13-Murphysboro_Aerial.png"
  },
  {
   "start": 1908.85,
@@ -1092,7 +1092,7 @@
  {
   "start": 1930.85,
   "dur": 7.92,
-  "what": "tail 19-De_Soto_Destruction.png"
+  "what": "tail 16-Murphysboro_SW_of_Logan_School.png"
  },
  {
   "start": 1938.77,
@@ -1101,23 +1101,8 @@
  },
  {
   "start": 1944.6,
-  "dur": 8.71,
-  "what": "still 1925_-_Princeton_-_Princeton_Clarion-News_-_IA_GWC.jpg"
- },
- {
-  "start": 1953.31,
-  "dur": 5.58,
-  "what": "still 1925_-_Griffin_-_Building_Destroyed.jpg"
- },
- {
-  "start": 1958.89,
-  "dur": 7.21,
-  "what": "still 1925_-_Griffin_-_Griffin_School_3.jpg"
- },
- {
-  "start": 1966.1,
-  "dur": 5.99,
-  "what": "still 1925_-_Princeton_-_Princeton_Clarion-News_-_IA_GWC.jpg"
+  "dur": 27.4,
+  "what": "GRAPHIC g-centennial"
  },
  {
   "start": 1972.83,
@@ -1142,12 +1127,12 @@
  {
   "start": 1997.11,
   "dur": 7.09,
-  "what": "still 19-De_Soto_Destruction.png"
+  "what": "still 16-Murphysboro_SW_of_Logan_School.png"
  },
  {
   "start": 2004.96,
   "dur": 8.89,
-  "what": "still 1925_-_De_Soto_-_Aftermath_Where_Homes_Were.jpg"
+  "what": "still 18-Murphysboro_Fire_Colorized.png"
  },
  {
   "start": 2013.85,
@@ -1167,7 +1152,7 @@
  {
   "start": 2033.01,
   "dur": 8.19,
-  "what": "still 1925_-_De_Soto_-_Aftermath_Where_Homes_Were.jpg"
+  "what": "still 19-De_Soto_Destruction.png"
  },
  {
   "start": 2041.95,
@@ -1177,7 +1162,7 @@
  {
   "start": 2051.41,
   "dur": 6.06,
-  "what": "still 1925_-_De_Soto_-_Birds_Eye_View.jpg"
+  "what": "still 19-De_Soto_Destruction.png"
  },
  {
   "start": 2057.47,
