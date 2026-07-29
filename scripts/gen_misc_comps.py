@@ -526,7 +526,7 @@ def centennial():
         dy = (-32, 46, -66)[i % 3]
         svg.append(f'<circle id="{cid}-d{i}" cx="{x:.0f}" cy="{y:.0f}" r="0" '
                    f'fill="{"#e8c56a" if gone else "#8fa3b6"}"/>')
-        svg.append(f'<text id="{cid}-n{i}" x="{x:.0f}" y="{y + (-30 if up else 44):.0f}" '
+        svg.append(f'<text id="{cid}-n{i}" x="{x:.0f}" y="{y + dy:.0f}" '
                    f'text-anchor="middle" class="pin{" gone" if gone else ""}" '
                    f'opacity="0">{nm}</text>')
     svg.append(f'<circle id="{cid}-ring" cx="{xs[7]:.0f}" cy="{ys[7]:.0f}" r="0" fill="none" '
