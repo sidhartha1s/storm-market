@@ -390,8 +390,9 @@ def lone():
     # the strike runs along the squall front itself, so it must be derived from it too
     sx1, sy1 = xs[0] - 26, ys[0] - 96 + 22
     sx2, sy2 = xs[-1] + 26, ys[-1] - 96 - 22
-    b = (f'<img class="plate" id="{cid}-plate" src="media/maps/map-plate-tristate.png" alt="">'
-         f'<div class="platevig"></div>'
+    b = (f'<div class="plateband" id="{cid}-band">'
+         f'<img class="plate" id="{cid}-plate" src="media/maps/map-plate-tristate.png" alt="">'
+         f'<div class="platefade"></div><div class="platevig"></div></div>'
          f'<svg viewBox="0 0 1920 1080" style="position:absolute;inset:0">'
          f'<defs><filter id="lglow"><feGaussianBlur stdDeviation="10" result="b"/>'
          f'<feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>'
