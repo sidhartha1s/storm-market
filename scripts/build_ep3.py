@@ -90,12 +90,16 @@ SHOTS = {
         tail=[S+"stock-cloudsrolling-01.mp4", S+"stock-tornado-01.mp4"]),
  # weighted, not evenly chunked: "children walked to school" is spoken at +2.58s and
  # "miners went underground" at +7.72s, so the mine has to own the 7-12s slot
- "a1-s5":  dict(era="pre", kind="mixed", assets=[(A+"ai-children-school.png","still",7.5),
+ # The three recreations here are the owner's replacements (2026-07-29): the schoolroom of
+ # empty desks with the coats still on their hooks, the miners walking INTO the tunnel, and
+ # the family on the farmhouse porch. They carry the same beats as the images they replace
+ # and read as period photographs rather than illustrations.
+ "a1-s5":  dict(era="pre", kind="mixed", assets=[(A+"ai-schoolroom-coats.png","still",7.5),
         # NOT 26-West_Frankfort_Coal_Cars.png — that is post-storm wreckage from the NWS
         # damage set, and this segment is pre-storm daily life. Wreckage here contradicts
         # the narrative before the storm has hit.
-        (A+"ai-miners-emerging.png","still",5.2),
-        (A+"ai-farmhouse-morning.png","still",5.0),
+        (A+"ai-miners-entering.png","still",5.2),
+        (A+"ai-farmhouse-family.png","still",5.0),
         (P+"20-De_Soto_School_1910.png","still",4.4)], chip="Recreation"),
  "a2-s1":  dict(kind="graphic", id="g-track-1"),
  "a2-s1c": dict(kind="stills", assets=[P+"02-Annapolis_Destruction.png", P+"03-Leadanna_Damage.png",
