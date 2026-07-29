@@ -87,10 +87,16 @@ Per episode in `episodes/<slug>/`:
       missing media, windows, audio overlap, and the no-repeat rule (reuse needs
       `data-callback="reason"`, max 2 uses, last-90s recap zone exempt). It also PRINTS a
       pacing report for step (a)'s reasoning — report lines never fail the run.
-   c. Snapshot sweep + eyeball actual frames (JP checklist: anatomy, garbled text, blank
-      frames, caption issues; sync rule: frame must not contradict narration).
+   c. **The static suite — all green BEFORE any render** (see "HARD RULE — the render is the
+      LAST step"): `sweep_episode.py`, `blank_scan.mjs`, `beat_density.py`, `graphics_qc.mjs`.
+   d. Per-composition snapshot of anything NEW or changed (stage into a bare page, seek,
+      screenshot 4-6 points, subagent reads them) — never a whole-episode frame sweep.
+   e. Post-render only: `scripts/verify_render.sh <episode-dir> <basename>` — blackdetect,
+      silencedetect, freezedetect on the finished mp4 (JP checklist: anatomy, garbled text,
+      blank frames, captions; sync rule: frame must not contradict narration).
    **Never claim an editorial rule "fixed" from your shot map — re-run the lint + self-audit
    on the final index.html; verify the artifact, not your memory (ep1 v2 RCA).**
+   **The defects the owner names are a SAMPLE, not the set — dig for the rest yourself.**
 7. Deliverables per render, unasked: final mp4 + **SRT via `python3 scripts/build_srt.py
    episodes/<slug> <out-basename>`** (reads audio-element data-starts from index.html + the
    per-segment words.json) + **−14 LUFS loudness-normalized master** (`-c:v copy` + measured
