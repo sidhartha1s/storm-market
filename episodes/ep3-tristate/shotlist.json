@@ -86,12 +86,12 @@
  },
  {
   "start": 112.08,
-  "dur": 22,
+  "dur": 21.6,
   "what": "GRAPHIC g-forecast"
  },
  {
-  "start": 134.08,
-  "dur": 1.4,
+  "start": 133.68,
+  "dur": 1.8,
   "what": "tail Annapolis_Business_street.png"
  },
  {
@@ -221,7 +221,7 @@
  },
  {
   "start": 374.08,
-  "dur": 23.16,
+  "dur": 23,
   "what": "GRAPHIC g-track-1"
  },
  {
@@ -1036,12 +1036,12 @@
  },
  {
   "start": 1660.31,
-  "dur": 34.25,
+  "dur": 39.65,
   "what": "GRAPHIC g-timeline"
  },
  {
-  "start": 1694.56,
-  "dur": 7.51,
+  "start": 1699.96,
+  "dur": 2.11,
   "what": "tail 1925_-_De_Soto_-_Business_District2.jpg"
  },
  {
@@ -1076,18 +1076,13 @@
  },
  {
   "start": 1788.08,
-  "dur": 26,
+  "dur": 34.95,
   "what": "GRAPHIC g-compare"
  },
  {
-  "start": 1814.08,
-  "dur": 6.99,
+  "start": 1823.03,
+  "dur": 2.51,
   "what": "tail 1925_-_De_Soto_-_Business_District2.jpg"
- },
- {
-  "start": 1821.07,
-  "dur": 4.47,
-  "what": "tail 1925_-_Murphysboro_29_-_North_9th_Street_Park.jpg"
  },
  {
   "start": 1826.29,
@@ -1102,22 +1097,12 @@
  {
   "start": 1900.76,
   "dur": 4.84,
-  "what": "tail 1925_-_Princeton_-_Homes_in_Baldwin_Heights_Area_-_IA_PPL.jpg"
- },
- {
-  "start": 1906.35,
-  "dur": 22,
-  "what": "GRAPHIC g-prep"
- },
- {
-  "start": 1928.35,
-  "dur": 7.92,
   "what": "tail 1925_-_Murphysboro_29_-_North_9th_Street_Park.jpg"
  },
  {
-  "start": 1936.27,
-  "dur": 5.08,
-  "what": "tail 1925_-_Princeton_-_Homes_in_Baldwin_Heights_Area_-_IA_PPL.jpg"
+  "start": 1906.35,
+  "dur": 34.6,
+  "what": "GRAPHIC g-prep"
  },
  {
   "start": 1942.1,
@@ -1157,7 +1142,7 @@
  {
   "start": 2011.35,
   "dur": 5.69,
-  "what": "still 1925_-_Princeton_-_Homes_in_Baldwin_Heights_Area_-_IA_PPL.jpg"
+  "what": "still 1925_-_Murphysboro_29_-_North_9th_Street_Park.jpg"
  },
  {
   "start": 2017.04,
@@ -1172,7 +1157,7 @@
  {
   "start": 2030.51,
   "dur": 8.19,
-  "what": "still 1925_-_Griffin_-_Griffin_School_1.jpg"
+  "what": "still 1925_-_Princeton_-_Homes_in_Baldwin_Heights_Area_-_IA_PPL.jpg"
  },
  {
   "start": 2039.45,
@@ -1182,7 +1167,7 @@
  {
   "start": 2048.91,
   "dur": 6.06,
-  "what": "still 1925_-_Griffin_-_Griffin_School_1.jpg"
+  "what": "still 1925_-_Princeton_-_Homes_in_Baldwin_Heights_Area_-_IA_PPL.jpg"
  },
  {
   "start": 2054.97,
@@ -1192,7 +1177,7 @@
  {
   "start": 2062.8,
   "dur": 6.5,
-  "what": "still 1925_-_Princeton_-_Heinz_Plant_1_-_IA_PPL.jpg"
+  "what": "still 1925_-_Princeton_-_Homes_in_Baldwin_Heights_Area_-_IA_PPL.jpg"
  },
  {
   "start": 2070.06,
