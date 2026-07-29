@@ -281,6 +281,11 @@ def close():
     font-weight:700; font-size:28px; color:#d8a13a; letter-spacing:6px; }
   .cred { position:absolute; left:0; right:0; top:700px; text-align:center; font-family:Arial,sans-serif;
     font-size:23px; line-height:2.0; color:#93a3b2; }
+  .closing { position:absolute; left:0; right:0; text-align:center; font-family:Georgia,serif;
+    font-style:italic; font-size:46px; color:#dfe7ee; }
+  #g-close-l1 { top:420px; }
+  #g-close-l2 { top:500px; }
+  #g-close-l3 { top:580px; color:#d8a13a; }
 """
     b = (f'<div class="ttl" id="{cid}-t">The Warning Hour</div>'
          f'<div class="epi" id="{cid}-e">EPISODE THREE — THE TORNADO WITH NO PHOTOGRAPH</div>'
@@ -288,7 +293,15 @@ def close():
          f'Photographs: NWS Paducah · National Archives · Library of Congress · Jackson County Historical Society · The Indiana Album<br>'
          f'Reanalysis: Johns et al. 2013 · Maddox et al. 2013<br>'
          f'Some connecting scenes are modern recreations</div>')
-    j = (f'  tl.fromTo(P+"t", {{autoAlpha:0, y:30}}, {{autoAlpha:1, y:0, duration:0.9, ease:"power3.out"}}, 11.28);\n'
+    b += (f'<div class="closing" id="{cid}-l1">Disasters do not ask permission.</div>'
+            f'<div class="closing" id="{cid}-l2">But they do send warnings.</div>'
+            f'<div class="closing" id="{cid}-l3">Learn what yours sounds like.</div>')
+    # cued to a6-s5 words.json: "Disasters" 0.0, "send warnings" 3.9, "Learn" 5.5
+    j = (f'  tl.fromTo(P+"l1", {{autoAlpha:0, y:22}}, {{autoAlpha:1, y:0, duration:0.7, ease:"power3.out"}}, 0.30);\n'
+         f'  tl.fromTo(P+"l2", {{autoAlpha:0, y:22}}, {{autoAlpha:1, y:0, duration:0.7, ease:"power3.out"}}, 3.70);\n'
+         f'  tl.fromTo(P+"l3", {{autoAlpha:0, y:22}}, {{autoAlpha:1, y:0, duration:0.7, ease:"power3.out"}}, 5.30);\n'
+         f'  tl.to([P+"l1", P+"l2", P+"l3"], {{autoAlpha:0, duration:0.8}}, 10.10);\n'
+         f'  tl.fromTo(P+"t", {{autoAlpha:0, y:30}}, {{autoAlpha:1, y:0, duration:0.9, ease:"power3.out"}}, 11.28);\n'
          f'  tl.fromTo(P+"e", {{autoAlpha:0, y:24}}, {{autoAlpha:1, y:0, duration:0.7, ease:"power3.out"}}, 12.58);\n'
          f'  tl.fromTo(P+"c", {{autoAlpha:0}}, {{autoAlpha:1, duration:1.0}}, 16.60);\n'
          # scaleX, not letterSpacing: text-reflow properties snap per frame under capture
