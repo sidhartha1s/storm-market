@@ -327,7 +327,9 @@ def lone():
   .cell { fill:#7a4a52; opacity:0.85; }
   .lonecell { fill:#c0392b; }
   .statelab2 { font-family:Georgia,serif; font-style:italic; font-size:27px; fill:#40607d; }
-  .rdg { position:absolute; right:96px; top:250px; text-align:right; }
+  /* bottom-right: the route climbs to (1596,330), so the UPPER right is where the map
+     lives. A readout at top:250px put the cell marker on top of its own caption. */
+  .rdg { position:absolute; right:96px; top:620px; text-align:right; }
   .rdgnum { font-family:'Courier New',monospace; font-size:76px; color:#e8c56a; font-weight:700; line-height:1; }
   .rdglab { font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; margin-top:6px; }
   .verdict { position:absolute; left:96px; top:262px; font-family:'Arial Black',Arial,sans-serif;
