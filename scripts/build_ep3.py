@@ -823,15 +823,15 @@ def emit(vis, gfx, chips, audio, kbs, total, report, seg_at):
             bedjs.append(f'  tl.to("#{pid}", {{ volume: 0.09, duration: 2 }}, {cur + 0.5:.2f});')
             bedjs.append(f'  tl.to("#{pid}", {{ volume: 0.0, duration: 1.8 }}, {cur + w - 2.0:.2f});')
             cur += w; rem -= w; part += 1
+    # 02_wind_ominous_steady.mp3 read as grey-noise disturbance under the TTS at ~5:48
+    # (owner 2026-07-30). Removed and banned — see LEARNINGS.md. Only the distant-rumble
+    # bed under the cold open remains.
     sfx = [
         f'  <audio id="sfx-rumble" src="media/sfx/04_distant_storm_rumble.mp3" data-start="0" data-duration="36" data-volume="0" data-bed="1"></audio>',
-        f'  <audio id="sfx-wind1" src="media/sfx/02_wind_ominous_steady.mp3" data-start="{seg_at["a1-s5"]-1:.2f}" data-duration="24" data-volume="0" data-bed="1"></audio>',
     ]
     sfxjs = ['  tl.to("#sfx-rumble", { volume: 0.55, duration: 2.0 }, 0.3);',
              '  tl.to("#sfx-rumble", { volume: 0.75, duration: 1.0 }, 16.0);',
-             '  tl.to("#sfx-rumble", { volume: 0.0, duration: 2.5 }, 33.0);',
-             f'  tl.to("#sfx-wind1", {{ volume: 0.7, duration: 3 }}, {seg_at["a1-s5"]:.2f});',
-             f'  tl.to("#sfx-wind1", {{ volume: 0.0, duration: 2.5 }}, {seg_at["a1-s5"]+19:.2f});']
+             '  tl.to("#sfx-rumble", { volume: 0.0, duration: 2.5 }, 33.0);']
 
     html = f"""<!DOCTYPE html>
 <html lang="en">
