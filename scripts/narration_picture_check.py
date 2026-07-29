@@ -73,21 +73,24 @@ def is_archival(name):
     return any(d in name for d in ARCHIVAL_DIRS)
 
 
-# place vocabulary, learned from the archival filenames rather than hardcoded
+# place vocabulary, learned from the archival filenames rather than hardcoded.
+# The towns on the track are the only tokens that matter; everything else that shows up
+# in a damage-photo filename is described here so it never reads as a place.
+NOT_A_PLACE = {
+    "damage", "business", "district", "residential", "aerial", "general", "street",
+    "streets", "school", "schools", "tornado", "corner", "photo", "library", "flickr",
+    "drawing", "church", "twisted", "steel", "homes", "amidst", "tents", "railyards",
+    "township", "birds", "park", "area", "post", "office", "bridge", "road", "heights",
+    "baldwin", "county", "destruction", "west", "north", "south", "east", "side",
+    "town", "view", "mines", "cars", "coal", "file", "home", "smith", "lonnie",
+    "victory", "walnut", "logan", "orient", "state", "high", "wreck", "after",
+}
 place_tokens = set()
 for _, _, name in pictures:
     if not is_archival(name):
         continue
     for tok in re.split(r'[^A-Za-z]+', Path(name).stem):
-        if len(tok) > 4 and tok[0].isupper() and tok.lower() not in {
-                "Damage", "Business", "District", "Residential", "Aerial", "General",
-                "Street", "Streets", "School", "Schools", "Tornado", "Corner", "Photo",
-                "Library", "Flickr", "Drawing", "Church", "Twisted", "Steel", "Homes",
-                "Amidst", "Tents", "Railyards", "Township", "Birds", "Park", "Area",
-                "Post", "Office", "Bridge", "Road", "Heights", "Baldwin", "County",
-                "Destruction", "Pre", "West", "North", "South", "East", "Side", "Town",
-                "View", "Mines", "Cars", "Coal", "File", "Home", "Smith", "Lonnie",
-                "Victory", "Walnut", "Logan", "Orient", "Colp", "Bird"}.__contains__ and True:
+        if len(tok) > 4 and tok[0].isupper() and tok.lower() not in NOT_A_PLACE:
             place_tokens.add(tok)
 
 era_findings, place_findings = [], []
