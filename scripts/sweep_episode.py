@@ -93,16 +93,26 @@ for gid in sorted(mounted):
     if not ends:
         continue
     tl_end = max(ends)
+    # The last DISCRETE beat, not the end of the timeline. Every composition carries a
+    # continuous background element (.drift, the map push) spanning its full duration, so
+    # tl_end is always that. Clipping the tail of a background drift loses nothing; the
+    # question is whether a designed reveal gets cut. Anything running over 60% of the
+    # composition is that background, not a beat.
+    beats = [float(m.group(1)) + max([float(d) for d in re.findall(
+        r'duration:\s*([\d.]+)', m.group(0))] or [0])
+        for m in re.finditer(r'tl\.\w+\([^;]*?,\s*([\d.]+)\s*\);', src)
+        if max([float(d) for d in re.findall(r'duration:\s*([\d.]+)', m.group(0))] or [0])
+        < 0.60 * tl_end]
+    last_beat = max(beats) if beats else 0.0
     for w in pic:
         if w["name"] != gid:
             continue
         if w["dur"] - tl_end > 4.0:
             overrun.append(("holds", gid, round(w["dur"], 1), round(tl_end, 1)))
-        # the other direction, which this check used to ignore: a mount SHORTER than the
-        # composition truncates its own authored tail. g-metmap was losing its last 4.04s
-        # of designed beats while this gate printed PASS.
-        elif tl_end - w["dur"] > 0.30:
-            overrun.append(("truncated", gid, round(w["dur"], 1), round(tl_end, 1)))
+        # the direction this check used to ignore entirely: a mount SHORTER than the
+        # composition cuts off its own authored reveals
+        elif last_beat - w["dur"] > 0.30:
+            overrun.append(("cuts a beat", gid, round(w["dur"], 1), round(last_beat, 1)))
 report("graphic window fits its timeline", overrun,
        lambda x: f"{x[0]:9} {x[1]} window {x[2]}s vs timeline {x[3]}s")
 
