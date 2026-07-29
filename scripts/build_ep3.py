@@ -291,6 +291,7 @@ PRE_STORM_SAFE = [P+"11-Murphysboro_Pre-Tornado_1.png", P+"12-Murphysboro_Pre-To
                   P+"1925_-_Murphysboro_2_-_Murphysboro_Township_High_School.jpg"]
 _ERA_POOL = None
 _LAST = None
+_ACT = "a1"           # act of the segment being emitted; keeps pick()'s spares on the map
 
 MAX_USES = 3          # owner rule 2026-07-28: an image may return, but 3 times is the ceiling
 _USES = {}
