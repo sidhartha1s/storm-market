@@ -362,3 +362,42 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
   source. Verified pre-existing by running `check` against the git-HEAD index.html. It does not
   block `render`. Don't burn a cycle chasing it — but do re-verify it is pre-existing rather than
   assuming, by checking out the prior file and re-running.
+
+## ep3 v3 — stop rendering to find things a script can find (2026-07-29)
+
+- **Owner correction, and the sharpest one of this episode: renders 7, 8 and 9 all died to
+  defects I could have found before starting them.** I rendered, thought of a new check,
+  killed the render, rendered again. Every check I invented reactively is now a script that
+  runs in seconds — `scripts/sweep_episode.py`, `beat_density.py`, `blank_scan.mjs`,
+  `clip_report.py`. The rule: **exhaust every static gate, THEN render once.** A render is
+  the last step, not a diagnostic tool.
+- **You do not need a render to blackdetect.** `blank_scan.mjs` inlines each composition into
+  a bare page with gsap, seeks its timeline at 0.25s, and sums the on-screen area of every
+  element with computed opacity >= 0.06. A comp that goes empty shows up in seconds. It found
+  a real 0.75s hole in g-close between the closing lines and the title card. Exclude the
+  background texture (`.drift`) from the ink sum — it is present in every frame by
+  construction and would mask exactly the failure being looked for.
+- **When the owner gives timestamps against an old cut, MAP THEM YOURSELF.** I asked him to
+  re-point 5:48 and 28:04 because the v3 timeline had shifted. That was my job: the v2 draft
+  was built from a commit still in the tree, so `git show <sha>:episodes/<slug>/index.html`
+  into a temp dir plus the window ledger answers it in one command. Doing that showed his
+  5:16 and 5:48 notes were the SAME defect — one 33.4s stock cloud clip covering a whole
+  four-minute-mark passage — and that 28:04 was a 0.904-aspect portrait stretched full-frame
+  for 163 seconds.
+- **An SVG `stroke-dasharray` shorter than the line it hides paints the overhang as a second
+  dash, from frame one.** A route polyline measured 1377.6px and I wrote 1360: a 17.6px red
+  mark sat in Indiana for the first eleven seconds, an hour of story before the storm gets
+  there. Same bug again on the strikethrough line at 1040 vs 1041.4. Compute the length,
+  then `ceil() + 1`. Never type a dash length.
+- **`MotionPathPlugin` is not in the bundled `gsap.min.js`.** Move a marker along a route with
+  per-leg `attr:{cx,cy}` tweens timed to each leg's own length, or the speed jumps at corners.
+- **Chromium will not parse a staged page saved as `.html.tmp`.** MIME sniffing is by
+  extension; every composition reported "no timeline" until the file was renamed `.html`.
+  Keep it out of version control with `.gitignore`, not a clever extension.
+- **A blanket `fit="contain"` pillarboxes photos that were already the right shape.** Four
+  stills at 1.58-1.75 aspect were running inside blurred bars for nothing. Letterbox on the
+  IMAGE's aspect, not the segment's hint — with papers exempt, since cropping a front page
+  cuts the text.
+- **Retiring a graphic means retiring its generator entry, its `_durations.json` key and the
+  file.** Dropping only the mount left `g-panel-lone` authored-but-unmounted, which the
+  sweep caught immediately.
