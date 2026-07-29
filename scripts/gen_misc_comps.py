@@ -311,6 +311,95 @@ def close():
     return cid
 
 
+# ---------------------------------------------------------------- g-lone
+def lone():
+    """The 400-mile / seven-hour claim, shown on a map instead of asserted as text.
+
+    Owner note on the v2 draft at 5:16: "wont a map show it better than the fucking
+    mountain broll?" It would. The narration makes a spatial argument — NOT a squall
+    line, ONE cell, 400 miles — so the graphic draws a squall line, kills it, and runs
+    the survivor across the same tri-state geometry the track maps use.
+    Cued to a1-s4d words.json: "squall" 8.66, "lone supercell" 10.22, "400 miles" 12.64,
+    "seven hours" 14.78, "ground" 17.56, "longest lived" 25.76.
+    """
+    cid, D = "g-lone", 27.0
+    style = """
+  .cell { fill:#7a4a52; opacity:0.85; }
+  .lonecell { fill:#c0392b; }
+  .statelab2 { font-family:Georgia,serif; font-style:italic; font-size:27px; fill:#40607d; }
+  .rdg { position:absolute; right:96px; top:250px; text-align:right; }
+  .rdgnum { font-family:'Courier New',monospace; font-size:76px; color:#e8c56a; font-weight:700; line-height:1; }
+  .rdglab { font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; margin-top:6px; }
+  .verdict { position:absolute; left:96px; top:262px; font-family:'Arial Black',Arial,sans-serif;
+    font-size:40px; color:#f2f5f8; }
+  .verdictsub { position:absolute; left:96px; top:318px; font-family:Georgia,serif;
+    font-style:italic; font-size:25px; color:#b8c6d4; }
+"""
+    # the squall line the storm was NOT: a row of cells along a front, later struck out
+    squall = "".join(
+        f'<circle id="{cid}-sq{i}" class="cell" cx="{470 + i * 118}" cy="{836 - i * 44}" r="0"/>'
+        for i in range(9))
+    # same geometry as the track maps so the two read as one map
+    route = "300,792 404,745 556,690 690,636 780,600 858,566 962,528 1046,496 1168,456 1332,412 1452,372 1596,330"
+    b = (f'<svg viewBox="0 0 1920 1080" style="position:absolute;inset:0">'
+         f'<defs><filter id="lglow"><feGaussianBlur stdDeviation="10" result="b"/>'
+         f'<feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>'
+         f'<line x1="664" y1="150" x2="664" y2="1010" stroke="#16212c" stroke-width="3"/>'
+         f'<line x1="1272" y1="150" x2="1272" y2="1010" stroke="#16212c" stroke-width="3"/>'
+         f'<text x="470" y="994" class="statelab2">MISSOURI</text>'
+         f'<text x="930" y="994" class="statelab2">ILLINOIS</text>'
+         f'<text x="1450" y="994" class="statelab2">INDIANA</text>'
+         f'<g id="{cid}-squall">{squall}'
+         f'<line id="{cid}-sqx" x1="452" y1="854" x2="1420" y2="470" stroke="#8e2020" '
+         f'stroke-width="5" stroke-dasharray="1040" stroke-dashoffset="1040"/></g>'
+         f'<polyline id="{cid}-route" points="{route}" fill="none" stroke="#c0392b" stroke-width="8" '
+         f'stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1360" stroke-dashoffset="1360"/>'
+         f'<circle id="{cid}-cell" class="lonecell" cx="300" cy="792" r="0" filter="url(#lglow)"/>'
+         f'<text id="{cid}-sqlab" x="452" y="906" class="maplab" opacity="0">A SQUALL LINE · MANY STORMS</text>'
+         f'<text id="{cid}-onelab" x="252" y="742" class="maplab" opacity="0">ONE CELL</text>'
+         f'</svg>')
+    eb, j = head(cid, "MODERN REANALYSIS · JOHNS ET AL. 2013", "ONE LONE SUPERCELL",
+                 "not a wall of storms — a single storm, all afternoon")
+    b += eb
+    b += (f'<div class="verdict" id="{cid}-vd">NOT A SQUALL LINE</div>'
+          f'<div class="verdictsub" id="{cid}-vds">what crossed three states was one cell</div>'
+          f'<div class="rdg" id="{cid}-rdg">'
+          f'<div class="rdgnum"><span id="{cid}-mi">0</span> MI</div>'
+          f'<div class="rdglab">GROUND COVERED BY THE PARENT STORM</div>'
+          f'<div class="rdgnum" style="margin-top:34px"><span id="{cid}-hr">0.0</span> HR</div>'
+          f'<div class="rdglab">CONTINUOUSLY ALOFT</div></div>'
+          f'<div class="foot" id="{cid}-ft">Among the longest-lived supercells ever documented</div>')
+
+    j += f'  const MI = {{v:0}}, HR = {{v:0}};\n'
+    j += (f'  function miUpd(){{ const e=document.getElementById("{cid}-mi");'
+          f' if(e) e.textContent = Math.round(MI.v); }}\n')
+    j += (f'  function hrUpd(){{ const e=document.getElementById("{cid}-hr");'
+          f' if(e) e.textContent = HR.v.toFixed(1); }}\n')
+    # the squall line builds, gets struck out, and only one cell survives
+    for i in range(9):
+        j += (f'  tl.fromTo(P+"sq{i}", {{attr:{{r:0}}}}, {{attr:{{r:21}}, duration:0.34, '
+              f'ease:"power3.out"}}, {5.90 + i * 0.14:.2f});\n')
+    j += f'  tl.fromTo(P+"sqlab", {{opacity:0}}, {{opacity:0.85, duration:0.5}}, 6.40);\n'
+    j += f'  tl.to(P+"sqx", {{strokeDashoffset:0, duration:0.85, ease:"power2.in"}}, 8.66);\n'
+    j += f'  tl.to(P+"squall", {{autoAlpha:0, duration:0.9}}, 9.60);\n'
+    j += (f'  tl.fromTo(P+"cell", {{attr:{{r:0}}}}, {{attr:{{r:19}}, duration:0.5, '
+          f'ease:"back.out(2)"}}, 10.22);\n')
+    j += f'  tl.fromTo(P+"onelab", {{opacity:0}}, {{opacity:0.9, duration:0.5}}, 10.60);\n'
+    j += f'  tl.to(P+"onelab", {{autoAlpha:0, duration:0.6}}, 13.40);\n'
+    # the continuous element: the cell crosses the route for the rest of the window
+    j += (f'  tl.to(P+"route", {{strokeDashoffset:0, duration:{D - 12.0:.2f}, ease:"none"}}, 11.60);\n')
+    j += (f'  tl.to(P+"cell", {{motionPath:{{path:P+"route", align:P+"route", '
+          f'alignOrigin:[0.5,0.5]}}, duration:{D - 12.0:.2f}, ease:"none"}}, 11.60);\n')
+    j += f'  tl.to(MI, {{v:412, duration:11.20, ease:"none", onUpdate:miUpd}}, 12.64);\n'
+    j += f'  tl.to(HR, {{v:7.0, duration:10.60, ease:"none", onUpdate:hrUpd}}, 14.78);\n'
+    j += f'  tl.fromTo(P+"vd", {{autoAlpha:0, x:-40}}, {{autoAlpha:1, x:0, duration:0.6, ease:"power3.out"}}, 8.90);\n'
+    j += f'  tl.fromTo(P+"vds", {{autoAlpha:0, x:-30}}, {{autoAlpha:1, x:0, duration:0.6, ease:"power3.out"}}, 10.30);\n'
+    j += f'  tl.fromTo(P+"rdg", {{autoAlpha:0, x:40}}, {{autoAlpha:1, x:0, duration:0.6, ease:"power3.out"}}, 12.20);\n'
+    j += f'  tl.fromTo(P+"ft", {{autoAlpha:0, y:20}}, {{autoAlpha:1, y:0, duration:0.6}}, 25.76);\n'
+    wrap(cid, style, b, j, D)
+    return cid
+
+
 if __name__ == "__main__":
-    made = [sources(), wires(), relief(), family(), fujita(), wordban2(), close()]
+    made = [sources(), wires(), relief(), family(), fujita(), wordban2(), close(), lone()]
     print("[gen_misc] wrote:", ", ".join(made))
