@@ -1,0 +1,24 @@
+<!-- One compact Appendix B row per state. Renders inside the book's .page grid.
+     Empty fields render as an em dash — never as invented text. -->
+<div class="stblock">
+  <h3 class="stname">{{state}} <span class="stabbr">{{abbr}}</span></h3>
+  <p class="sthaz"><strong>Top hazards:</strong>
+    {{hazard_1}} <span class="pb">Playbook {{playbook_1}}</span> · {{season_1}} ·
+    {{hazard_2}} <span class="pb">Playbook {{playbook_2}}</span> · {{season_2}} ·
+    {{hazard_3}} <span class="pb">Playbook {{playbook_3}}</span> · {{season_3}}
+  </p>
+  <p class="streg"><strong>Region overlay:</strong> {{regions}}</p>
+  <dl class="stdl">
+    <dt>Emergency management</dt><dd>{{em_agency}} · {{em_phone}} · {{em_url}}</dd>
+    <dt>Alerts</dt><dd>{{alerts_note}} · {{alerts_url}}</dd>
+    <dt>Insurance regulator</dt><dd>{{doi_agency}} · {{doi_phone}} · {{doi_url}}</dd>
+    <dt>Mitigation programme</dt><dd>{{mitigation_program}} · {{mitigation_url}}</dd>
+    <dt>Wind / hail deductible</dt><dd>{{wind_deductible_note}}</dd>
+    <dt>Roof settlement</dt><dd>{{roof_acv_note}}</dd>
+    <dt>Emergency Rx refill</dt><dd>{{pharmacy_refill_law}}</dd>
+    <dt>Utility disconnection</dt><dd>Winter: {{winter_disconnect}} · Summer: {{summer_disconnect}}</dd>
+    <dt>Energy assistance</dt><dd>{{energy_assist_url}}</dd>
+    <dt>Well water testing</dt><dd>{{well_test_contact}} · {{well_test_url}}</dd>
+  </dl>
+  <p class="stver">Verified {{verified_on}}. Agency contacts change — confirm before relying on any number here.</p>
+</div>

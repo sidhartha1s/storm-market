@@ -8,3 +8,7 @@ episodes/*/snapshots/
 episodes/*/renders/
 episodes/*/audio/_segments/
 *rejected*.mp3
+
+# ebook build outputs — regenerable from manuscript + build scripts
+ebook/build/review/
+ebook/appendix/out/

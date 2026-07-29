@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Storm-Ready Home · What the survivors did differently · Paul Reynolds</title>
+<meta name="description" content="A 488-page American disaster preparedness manual. 130 numbered protections, 23 hazard playbooks, a 60-day sequence and a printable binder. One book, $47.">
+<meta property="og:title" content="The Storm-Ready Home">
+<meta property="og:description" content="What the survivors did differently — and the 130 things you can do before the next one.">
+<meta property="og:image" content="/assets/og.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:,">
+<style>
+:root{
+  --ink:#0b0f14; --ink2:#121821; --card:#161d27; --line:#26303d;
+  --text:#e8e4dc; --dim:#a3aab5; --faint:#6f7885;
+  --amber:#e8a33a; --amber-d:#b06b06; --alert:#d4573f;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --sans:"Segoe UI",Inter,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --wrap:1080px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--text);font-family:var(--serif);
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--amber)}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 22px}
+section{padding:74px 0;border-top:1px solid var(--line)}
+section:first-of-type{border-top:0}
+h1,h2,h3,h4{font-weight:600;margin:0;line-height:1.12;letter-spacing:-.01em}
+h2{font-size:clamp(28px,4.2vw,40px)}
+h3{font-size:clamp(21px,2.6vw,26px)}
+p{margin:0 0 16px}
+.kicker{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.19em;
+  text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.lead{font-size:clamp(18px,2.1vw,21px);color:var(--dim);line-height:1.5}
+.small{font-size:14px;color:var(--faint);line-height:1.5}
+.src{font-family:var(--sans);font-size:12px;color:var(--faint);letter-spacing:.02em;line-height:1.55}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-block;font-family:var(--sans);font-weight:700;font-size:17px;
+  letter-spacing:.02em;background:var(--amber);color:#1a1206;text-decoration:none;
+  padding:17px 34px;border-radius:3px;border:0;cursor:pointer;transition:transform .12s,background .12s}
+.btn:hover{background:#f2b354;transform:translateY(-1px)}
+.btn-sub{font-family:var(--sans);font-size:13px;color:var(--faint);margin-top:11px}
+
+/* ---------- hero ---------- */
+.hero{padding:0;border:0;background:var(--ink)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:52px;align-items:center;
+  padding:52px 0 46px}
+.hero h1{font-size:clamp(34px,5.6vw,58px);line-height:1.03}
+.hero .sub{font-size:clamp(18px,2.2vw,22px);color:var(--dim);margin-top:20px;line-height:1.45}
+.hero-cta{margin-top:32px}
+/* Cover art is 1024x1536 — unconstrained it pushes the headline and CTA below the fold.
+   Cap it so the whole hero fits a 900px-tall viewport. */
+.coverwrap{position:relative;max-width:340px;margin-left:auto;width:100%}
+.coverwrap img{width:100%;height:auto;border-radius:4px;
+  box-shadow:0 26px 60px rgba(0,0,0,.65),0 0 0 1px var(--line)}
+.proof{display:flex;gap:34px;flex-wrap:wrap;padding:22px 0;border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);font-family:var(--sans)}
+.proof div{font-size:13px;color:var(--faint);letter-spacing:.04em}
+.proof b{display:block;font-size:23px;color:var(--text);letter-spacing:-.01em;margin-bottom:3px}
+
+/* ---------- counts ---------- */
+.counts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);margin-top:34px}
+.counts div{background:var(--ink2);padding:22px 18px;text-align:center}
+.counts b{display:block;font-family:var(--sans);font-size:30px;color:var(--amber);
+  letter-spacing:-.02em;margin-bottom:5px}
+.counts span{font-family:var(--sans);font-size:12px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--faint)}
+
+/* ---------- money ---------- */
+.gap{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin:34px 0 10px}
+.gapcard{background:var(--card);border:1px solid var(--line);padding:26px}
+.gapnum{font-family:var(--sans);font-size:clamp(38px,6vw,58px);font-weight:700;
+  letter-spacing:-.03em;line-height:1}
+.gapnum.a{color:var(--alert)} .gapnum.b{color:var(--amber)}
+.gapcard p{margin:12px 0 0;font-size:15px;color:var(--dim);line-height:1.5}
+table{width:100%;border-collapse:collapse;margin:26px 0 14px;font-size:16px}
+th{font-family:var(--sans);font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--faint);text-align:left;border-bottom:1px solid var(--text);padding:0 10px 10px 0;font-weight:700}
+td{padding:14px 10px 14px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--dim)}
+td.n{text-align:right;font-family:var(--sans);color:var(--text);font-variant-numeric:tabular-nums;white-space:nowrap}
+.note{background:var(--ink2);border-left:3px solid var(--faint);padding:18px 20px;margin-top:24px}
+.note b{font-family:var(--sans);font-size:12px;letter-spacing:.13em;text-transform:uppercase;
+  display:block;margin-bottom:8px;color:var(--text)}
+.note p{margin:0;font-size:15px;color:var(--dim)}
+
+/* ---------- regions ---------- */
+/* 190px so all five regions fit one row at 1280 — at 215px the fifth orphaned onto its own row. */
+.regions{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-top:34px}
+.region{background:var(--card);border:1px solid var(--line);padding:22px}
+.region h4{font-family:var(--sans);font-size:16px;letter-spacing:0;margin-bottom:8px}
+.region .st{font-size:13px;color:var(--faint);margin-bottom:14px;line-height:1.45}
+.region ol{margin:0;padding-left:19px;color:var(--dim)}
+.region li{font-size:14px;line-height:1.55;margin-bottom:4px}
+
+/* ---------- inside / chapters ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px}
+.chip{font-family:var(--sans);font-size:13px;letter-spacing:.03em;background:var(--ink2);
+  border:1px solid var(--line);padding:8px 13px;color:var(--dim);border-radius:2px}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;margin-top:34px}
+.shots figure{margin:0}
+.shots img{border:1px solid var(--line);border-radius:3px}
+.shots figcaption{font-family:var(--sans);font-size:12px;color:var(--faint);margin-top:9px;line-height:1.45}
+
+/* ---------- author ---------- */
+.author{display:grid;grid-template-columns:250px 1fr;gap:38px;align-items:start;margin-top:32px}
+/* Portrait is cropped out of the cover art with background-position rather than a separate
+   file — a dedicated headshot is better and is on the asset list. See landing/README.md. */
+.portrait{width:250px;height:300px;border:1px solid var(--line);border-radius:3px;
+  background-image:url(assets/cover.png);background-repeat:no-repeat;
+  background-size:340% auto;background-position:76% 9%}
+blockquote{margin:0;padding:0 0 0 22px;border-left:3px solid var(--amber-d);
+  font-size:19px;line-height:1.5;color:var(--text)}
+
+/* ---------- offer ---------- */
+.offer{background:var(--card);border:1px solid var(--line);padding:38px;margin-top:34px}
+.price{display:flex;align-items:baseline;gap:16px;margin:8px 0 6px}
+.price .now{font-family:var(--sans);font-size:60px;font-weight:700;letter-spacing:-.03em;color:var(--text)}
+.price .was{font-family:var(--sans);font-size:26px;color:var(--faint);text-decoration:line-through}
+.incl{list-style:none;padding:0;margin:26px 0}
+.incl li{padding:14px 0;border-bottom:1px solid var(--line);display:flex;gap:14px;font-size:16px;color:var(--dim)}
+.incl li:last-child{border-bottom:0}
+.incl b{color:var(--text);font-family:var(--sans);font-size:15px;display:block;margin-bottom:3px}
+.tick{color:var(--amber);flex:0 0 auto;font-family:var(--sans);font-weight:700}
+.pay{font-family:var(--sans);font-size:13px;color:var(--faint);margin-top:16px;letter-spacing:.03em}
+
+/* ---------- lead magnet ---------- */
+.magnet{background:linear-gradient(180deg,var(--ink2),var(--ink));border:1px solid var(--line);padding:38px}
+form{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+input[type=email],select{font-family:var(--sans);font-size:16px;padding:15px 16px;
+  background:var(--ink);border:1px solid var(--line);color:var(--text);border-radius:3px;min-width:190px}
+input[type=email]{flex:1 1 260px}
+
+/* ---------- faq ---------- */
+details{border-bottom:1px solid var(--line);padding:20px 0}
+summary{font-family:var(--sans);font-size:17px;font-weight:600;cursor:pointer;color:var(--text);
+  list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--amber);font-weight:700;flex:0 0 auto}
+details[open] summary::after{content:"–"}
+details p{margin:14px 0 0;color:var(--dim);font-size:16px}
+
+footer{padding:52px 0;border-top:1px solid var(--line);color:var(--faint);font-size:14px}
+footer a{color:var(--dim)}
+
+@media (max-width:860px){
+  .hero-grid{grid-template-columns:1fr;gap:30px;padding:36px 0 44px}
+  .coverwrap{max-width:280px;margin:0 auto}
+  .gap{grid-template-columns:1fr}
+  .author{grid-template-columns:1fr;gap:24px}
+  .portrait{width:210px;height:250px}
+  .offer{padding:26px}
+  section{padding:56px 0}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="kicker">Storm Market Field Manual</div>
+        <h1>What the survivors did differently.</h1>
+        <p class="sub">A 488-page American disaster manual: 130 numbered protections, 23 hazard
+          playbooks, a 60-day sequence, and a printable binder your family can actually fill in.</p>
+        <div class="hero-cta">
+          <a class="btn" href="#offer">Get the manual · $47</a>
+          <div class="btn-sub">Instant PDF download · Pay once · 7-day refund</div>
+        </div>
+      </div>
+      <div class="coverwrap">
+        <img src="assets/cover.png" width="1024" height="1536"
+             alt="The Storm-Ready Home by Paul Reynolds — book cover">
+      </div>
+    </div>
+    <div class="proof">
+      <div><b>488</b>pages</div>
+      <div><b>130</b>numbered protections</div>
+      <div><b>23</b>hazard playbooks</div>
+      <div><b>60</b>day sequence</div>
+      <div><b>7-day</b>refund, no questions</div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= WHAT IT IS ================= -->
+<section id="what">
+  <div class="wrap">
+    <div class="kicker">The manual</div>
+    <h2>Every hazard America actually gets. One book.</h2>
+    <p class="lead">Not a survival fantasy and not a rewrite of a government pamphlet. A reference
+      manual organised the way disasters actually work — six ways they kill you, six things every
+      household needs, then twenty-three playbooks for the specific events that reach your door.</p>
+    <div class="counts">
+      <div><b>130</b><span>Protections</span></div>
+      <div><b>23</b><span>Hazards</span></div>
+      <div><b>60</b><span>Days</span></div>
+      <div><b>5</b><span>Regions</span></div>
+      <div><b>50</b><span>State packets</span></div>
+    </div>
+    <div class="chips">
+      <span class="chip">Tornado</span><span class="chip">Hurricane &amp; storm surge</span>
+      <span class="chip">Extreme rainfall &amp; flash flood</span><span class="chip">Riverine &amp; coastal flooding</span>
+      <span class="chip">Wildfire</span><span class="chip">Wildfire smoke &amp; air quality</span>
+      <span class="chip">Hail &amp; derecho</span><span class="chip">Lightning</span>
+      <span class="chip">Blizzard &amp; ice storm</span><span class="chip">Extreme heat</span>
+      <span class="chip">Extreme cold &amp; deep freeze</span><span class="chip">Drought &amp; dust</span>
+      <span class="chip">Earthquake</span><span class="chip">Tsunami</span>
+      <span class="chip">Space weather</span><span class="chip">Volcanic ashfall</span>
+      <span class="chip">Grid failure</span><span class="chip">Systems dark</span>
+      <span class="chip">Water &amp; sanitation failure</span><span class="chip">Hazmat</span>
+      <span class="chip">Radiological proximity</span><span class="chip">When EMS can't reach you</span>
+      <span class="chip">Electronics &amp; records</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE MONEY CHAPTER ================= -->
+<section id="money">
+  <div class="wrap">
+    <div class="kicker">The money chapter</div>
+    <h2>What the average household gets, and what the program allows.</h2>
+    <p class="lead">Federal disaster aid is not insurance and it is not compensation. It is a floor.
+      How close you land to the ceiling is decided almost entirely by what you can prove — and most
+      of that proof has to exist <em>before</em> the event.</p>
+
+    <div class="gap">
+      <div class="gapcard">
+        <div class="gapnum a">$3,029</div>
+        <p><b>Average FEMA Individuals and Households Program award.</b> Congressional Research
+          Service, average award following the Disaster Recovery Reform Act.</p>
+      </div>
+      <div class="gapcard">
+        <div class="gapnum b">$43,600</div>
+        <p><b>Statutory maximum</b> for housing assistance, with a separate maximum of the same
+          amount for other needs assistance. Federal Register notice, 24 October 2024.</p>
+      </div>
+    </div>
+
+    <table>
+      <tr><th>Also on the record</th><th class="n">Figure</th></tr>
+      <tr><td>Share of housing-assistance recipients who received the maximum</td><td class="n">10.8%</td></tr>
+      <tr><td>Share of all recipients earning $30,000 a year or less</td><td class="n">53.6%</td></tr>
+      <tr><td>Average award, homeowners, 2016–2018</td><td class="n">~$4,200</td></tr>
+      <tr><td>Average award, renters, 2016–2018</td><td class="n">~$1,700</td></tr>
+    </table>
+    <p class="src">Source: Congressional Research Service, <em>FEMA Individual Assistance Grants for
+      Disaster Survivors</em> (R48310, IF13127); Federal Register notice of maximum IHP amounts,
+      24 October 2024. Retrieved July 2026.</p>
+
+    <div class="note">
+      <b>What this is not</b>
+      <p>This is not a promise that documentation moves you from three thousand dollars to
+        forty-three thousand. Awards are determined by verified loss, insurance status and
+        eligibility, and most households will never approach the maximum. What documentation removes
+        is the loss you cannot prove — which is the only part of the gap you control.</p>
+    </div>
+
+    <p style="margin-top:26px"><strong>Three of the protections cost nothing at all.</strong>
+      The twenty-minute video walkthrough. The document vault. The discipline of photographing damage
+      before you touch anything. The book puts them in week four of sixty, ahead of everything you'd
+      have to buy.</p>
+    <p><a class="btn" href="#offer">Get the manual · $47</a></p>
+  </div>
+</section>
+
+<!-- ================= REGIONS ================= -->
+<section id="regions">
+  <div class="wrap">
+    <div class="kicker">Find your region</div>
+    <h2>Chicago needs four of these chapters. So the book orders them for you.</h2>
+    <p class="lead">Every chapter applies to every reader — hazards are not exclusive. What your
+      region changes is the order. Chapter one hands you your ordered first ten, and the 60-day
+      sequence takes the rest.</p>
+    <div class="regions">
+      <div class="region">
+        <h4>Tornado Alley</h4>
+        <div class="st">KS · OK · TX · NE · IA · MO · AR · IL · IN · KY · TN · N. AL · MS</div>
+        <ol><li>Safe room selection</li><li>The helmet rule</li><li>Two alert paths</li><li>NOAA radio, SAME</li></ol>
+      </div>
+      <div class="region">
+        <h4>Hurricane Coast</h4>
+        <div class="st">TX · LA · MS · AL · FL · GA · SC · NC · VA · MD · DE · NJ · NY · New England</div>
+        <ol><li>Leave-early trigger</li><li>Window protection</li><li>Garage door bracing</li><li>Sealed roof deck</li></ol>
+      </div>
+      <div class="region">
+        <h4>Wildfire West</h4>
+        <div class="st">CA · OR · WA · ID · MT · NV · UT · AZ · NM · CO · WY</div>
+        <ol><li>Ember vents, Zone 0</li><li>Defensible space</li><li>Red Flag &amp; evac zone</li><li>MERV-13 filtration</li></ol>
+      </div>
+      <div class="region">
+        <h4>Ice &amp; Snow North</h4>
+        <div class="st">MN · WI · MI · ND · SD · NY · VT · NH · ME · PA · OH</div>
+        <ol><li>Pipe freeze prevention</li><li>Shut-off literacy</li><li>Warm-room consolidation</li><li>Generator siting</li></ol>
+      </div>
+      <div class="region">
+        <h4>Quake West</h4>
+        <div class="st">CA · OR · WA · AK · HI · NV · UT · MO bootheel · SC lowcountry</div>
+        <ol><li>Anchoring &amp; strapping</li><li>Gas shutoff literacy</li><li>Water store</li><li>Trauma kit</li></ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LOOK INSIDE ================= -->
+<section id="inside">
+  <div class="wrap">
+    <div class="kicker">Look inside</div>
+    <h2>Real pages, not a mockup.</h2>
+    <p class="lead">Every protection carries the same seven fields — what it prevents, what it costs,
+      how long it takes, what to buy, the steps, which regions rank it first, and the line most
+      books leave out: <strong>what it does not do.</strong></p>
+    <div class="shots">
+      <figure><img src="assets/inside-protection.png" alt="A protection page from the manual">
+        <figcaption>Protection 23 — safe room selection, with the floor-plan diagram and the
+          honesty box.</figcaption></figure>
+      <figure><img src="assets/inside-money.png" alt="The money chapter page">
+        <figcaption>The gap page. Every figure sourced to the issuing document.</figcaption></figure>
+      <figure><img src="assets/inside-binder.png" alt="A fillable binder form">
+        <figcaption>One of the printable binder forms — fill it in, put it in the go-bag.</figcaption></figure>
+      <figure><img src="assets/inside-week.png" alt="A week of the 60-day sequence">
+        <figcaption>Week four of sixty. The cheapest week, deliberately placed before the
+          spending ones.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AUTHOR ================= -->
+<section id="author">
+  <div class="wrap">
+    <div class="kicker">Who wrote this</div>
+    <h2>Paul Reynolds</h2>
+    <div class="author">
+      <div class="portrait" role="img" aria-label="Paul Reynolds"></div>
+      <div>
+        <blockquote>I got tired of watching the same three mistakes kill people in the report
+          afterwards. Not exotic mistakes. The same three, in county after county, storm after
+          storm. This book is those reports turned back into things a family can do on a
+          Saturday.</blockquote>
+        <p style="margin-top:22px">The manual is built from the documents most people never read —
+          National Weather Service service assessments, NIST investigations, day-after archives —
+          and converted into numbered actions with real prices next to them. Every hazard chapter
+          opens with an event that actually happened and ends with what would have changed it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OFFER ================= -->
+<section id="offer">
+  <div class="wrap">
+    <div class="kicker">The offer</div>
+    <h2>One book. Everything in it. $47.</h2>
+    <div class="offer">
+      <div class="price"><span class="now">$47</span><span class="was">$87</span></div>
+      <div class="src">Launch price. One payment, no subscription, yours permanently.</div>
+      <ul class="incl">
+        <li><span class="tick">✓</span><span><b>The Storm-Ready Home — 488-page illustrated PDF</b>
+          130 numbered protections across 23 hazard playbooks, with costs, times and materials.</span></li>
+        <li><span class="tick">✓</span><span><b>The Binder — 80 pages of printable, fillable forms</b>
+          Household communication plan, home inventory, medication and insurance records, wallet cards.</span></li>
+        <li><span class="tick">✓</span><span><b>The 60-Day Sequence</b>
+          Day by day, ordered so the free week comes before the weeks that cost money.</span></li>
+        <li><span class="tick">✓</span><span><b>All 50 State Packets</b>
+          Your forecast office, emergency management agency, county alert signup, insurance
+          department and mitigation credits — for every state, in case you move.</span></li>
+        <li><span class="tick">✓</span><span><b>Lifetime updates</b>
+          Agencies reorganise and links move. Every revision, free, permanently.</span></li>
+      </ul>
+      <a class="btn" href="#" data-gumroad-single-product="true" id="buy">Get the manual · $47</a>
+      <div class="pay">Secure checkout · Visa · Mastercard · PayPal · Apple Pay · 7-day refund</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LEAD MAGNET ================= -->
+<section id="free">
+  <div class="wrap">
+    <div class="kicker">Free, on me</div>
+    <h2>Get your state's storm packet.</h2>
+    <p class="lead">Four pages, specific to where you live: your National Weather Service forecast
+      office, your state emergency management agency, your county alert signup, your insurance
+      department's mitigation-credit program, and the three hazards your state actually gets with
+      the months they arrive.</p>
+    <div class="magnet">
+      <strong>Pick your state and I'll send it.</strong>
+      <form id="magnet-form" method="post" action="/api/subscribe" novalidate>
+        <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address">
+        <select name="state" required aria-label="State">
+          <option value="">Choose your state…</option>
+        </select>
+        <button class="btn" type="submit">Send my state packet</button>
+      </form>
+      <p class="small" style="margin-top:16px">One email with the packet. Occasional notes when the
+        manual updates. Unsubscribe in one click, and I don't sell lists.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq">
+  <div class="wrap">
+    <div class="kicker">Before you buy</div>
+    <h2>Questions people ask.</h2>
+
+    <details><summary>What exactly do I get, and in what format?</summary>
+      <p>A single PDF of about 488 pages, delivered to your inbox immediately after payment, plus the
+        printable binder pages and your state packets. Readable on a phone, tablet or computer, and
+        printable at a kitchen table. No app, no DRM, no subscription.</p></details>
+
+    <details><summary>Isn't this information free from FEMA?</summary>
+      <p>Some of it is, and the book cites those documents rather than hiding them. FEMA's guide is
+        about two hundred pages of pamphlet prose with no prices, no build steps, no fillable forms,
+        no regional ordering and no state directory. This book was written because reading the source
+        documents and turning them into a Saturday's work is the part nobody does.</p></details>
+
+    <details><summary>I rent. Is this useful to me?</summary>
+      <p>Yes, and the book flags it protection by protection. Most of the highest-value items need no
+        permission at all — the room selection, the water store, the document vault, the alert
+        enrollment, the prescription buffer, the trigger plan, the binder. The structural hardening
+        chapters are marked so you can skip what you can't do.</p></details>
+
+    <details><summary>Which region is mine?</summary>
+      <p>Chapter one walks you through it in about five minutes, and most readers are in two regions
+        rather than one — which is fine, because regions only change the order you work in, not what
+        you read. Every chapter is in every copy.</p></details>
+
+    <details><summary>Is this a prepper book?</summary>
+      <p>No. There is no bunker content, no firearms, no grid-down-forever scenario and no politics.
+        It is a family safety manual about weather and natural disasters, and every instruction is
+        traceable to a citable authority.</p></details>
+
+    <details><summary>What's your refund policy?</summary>
+      <p>Seven days, no questions asked. Reply to the delivery email and the $47 comes back. You keep
+        the files.</p></details>
+  </div>
+</section>
+
+<!-- ================= LAST CALL ================= -->
+<section id="last">
+  <div class="wrap" style="text-align:center">
+    <h2>The only window you get is the one where nothing is happening.</h2>
+    <p class="lead" style="max-width:640px;margin:18px auto 30px">That's the whole argument of the
+      book, and it's why the first week costs nothing. $47 once, seven-day refund, yours permanently.</p>
+    <a class="btn" href="#offer">Get the manual · $47</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>The Storm-Ready Home</strong> · Paul Reynolds · First edition 2026</p>
+    <p class="small">General preparedness information for households. Not medical, legal,
+      engineering or insurance advice, and not a substitute for the instructions of your local
+      emergency officials. In an emergency, call 911 and follow the direction of authorities.</p>
+    <p class="small">Figures cited to their issuing documents. Public-domain material reproduced under
+      17 U.S.C. § 105. <strong>No agency of the United States Government has endorsed, reviewed, or is
+      affiliated with this book.</strong></p>
+    <p class="small"><a href="#free">Free state packet</a> · <a href="#faq">FAQ</a> ·
+      <a href="mailto:hello@example.com">Contact</a></p>
+  </div>
+</footer>
+
+<script>
+// State list for the lead-magnet selector — the packet is per-state, so this is the whole hook.
+const STATES=["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut",
+"Delaware","District of Columbia","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa",
+"Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota",
+"Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico",
+"New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island",
+"South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington",
+"West Virginia","Wisconsin","Wyoming"];
+const sel=document.querySelector('select[name=state]');
+for(const s of STATES){const o=document.createElement('option');o.value=o.textContent=s;sel.append(o);}
+
+// Placeholder submit handling until the mail backend exists. Fails loudly rather than
+// pretending to have subscribed anyone.
+document.getElementById('magnet-form').addEventListener('submit',e=>{
+  e.preventDefault();
+  alert('Not wired yet — the mail backend is not connected. See landing/README.md.');
+});
+</script>
+</body>
+</html>

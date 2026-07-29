@@ -1,0 +1,153 @@
+# Part Three, Playbook 6 — Wildfire Smoke and Air Quality
+
+Target: 8 pages · draft 1, 2026-07-29
+
+---
+
+## The event
+
+On 7 June 2023, New York City had the worst air quality of any major city on earth, the sky went orange,
+and the fire producing the smoke was burning in Quebec, several hundred miles away.
+«CITE: the June 2023 Canadian wildfire smoke episode — recorded AQI values in the US Northeast and the
+distance from the source fires.»
+
+That is the point of giving smoke its own playbook. **You do not have to live anywhere near a wildfire to
+be badly affected by one.** Smoke travels across a continent, arrives without a warning siren, lasts
+days to weeks, and affects everyone in a way the fire itself affects only a few thousand people.
+
+It is also, measured in people harmed, one of the largest hazards in this book. A wildfire kills tens.
+A continental smoke episode sends thousands of people to hospital with cardiac and respiratory events
+and worsens the health of millions more.
+«CITE: peer-reviewed or CDC/EPA estimate of excess hospitalisations or mortality attributable to a major
+US wildfire smoke episode.»
+
+And it is the hazard where a fifty-dollar purchase does the most measurable good of anything in the book.
+
+---
+
+## What actually kills, and what actually costs
+
+**The mechanism is fine particulate matter — PM2.5** — particles small enough to pass deep into the lungs
+and enter the bloodstream. The harm is not mainly the cough. It is cardiac and respiratory: heart
+attacks, strokes, arrhythmias, asthma attacks and COPD exacerbations, in the days during and following an
+episode.
+«CITE: EPA or AHA source on PM2.5 exposure and cardiovascular events, with the effect described.»
+
+**Who is at real risk:** people with asthma, COPD or heart disease; pregnant people; infants and young
+children, whose lungs are still developing; adults over sixty-five; and anyone working outdoors, who gets
+a dose the rest of us do not.
+
+**What people get wrong:** they judge exposure by smell and visibility. Both are unreliable — smoke that
+you have stopped noticing after three days is still in the air at the same concentration, and
+acclimatisation is not adaptation.
+
+**Costs:** small, direct, and mostly your own — filters, an air cleaner, days of lost work. The
+significant cost is medical and it lands on the people least able to absorb it.
+
+---
+
+## Before
+
+- **49 — HVAC filtration and recirculation.** A MERV-13 filter if your system can take one without
+  restricting airflow — check the manufacturer's guidance, because forcing a too-restrictive filter onto a
+  weak blower harms the system. Know how to set your system to recirculate rather than draw in outside
+  air, and know where the fresh-air intake is so you can close it.
+- **50 — the box-fan filter.** The highest-value build in this book by ratio of benefit to cost. A box
+  fan plus filters, taped or clipped into a cube or a simple wedge, moves a large volume of air through
+  decent filter media and measurably drops indoor particulate levels in a room. It costs a fraction of a
+  commercial air cleaner and, built as designed, performs comparably in a single room.
+  «CITE: the EPA/AHAM or academic evaluation of DIY box-fan filter units — the measured performance and
+  the current safety guidance on fan type.»
+  Build it before the season; the shops sell out of filters in the first week of smoke.
+- **A commercial HEPA air cleaner** if the budget allows, sized to the room you will actually use it in.
+  Note the honest caveat: sizing claims are frequently optimistic, and one unit does not clean a house.
+- **52 — N95 respirators**, a real supply of them, and fit checked in advance. A cloth or surgical mask
+  does effectively nothing for PM2.5. An N95 works if it seals — and it will not seal over a beard.
+- **51 — sealing a room.** Pick the room in advance: smallest practical, fewest windows, where the air
+  cleaner will run and where the household will sleep during a bad episode.
+- **Know where to read the actual numbers.** The national air quality index and the fire-and-smoke map,
+  bookmarked, plus a local monitor if there is one near you. This is your alerting system, because nobody
+  is going to text you about smoke.
+- **60, 61 — medication.** Anyone with asthma or COPD needs their inhalers in date and in supply *before*
+  the season, and an action plan agreed with their clinician for what to do when levels rise.
+
+**If you have a swamp cooler or a whole-house fan, know that both bring outside air in by design** and
+must be off during an episode. That surprises people in exactly the dry western states where smoke is
+worst.
+
+---
+
+## During
+
+**Read the number, not the sky.** The index bands are the decision tool, and the practical thresholds are
+these. As values rise into the unhealthy range, sensitive groups stop outdoor activity; higher, everybody
+does; higher still, the guidance is to stay indoors with filtration running and treat outdoor time as
+something to be shortened rather than managed.
+
+**The indoor protocol.**
+
+Close the windows and doors, and keep them closed — including at night, which is hard in a hot house and
+is still correct. Set the HVAC to recirculate and close the fresh-air intake. Run the box-fan filter or
+the air cleaner continuously in the room you are using. Do not add particulates indoors: no candles, no
+incense, no frying, no vacuuming without a HEPA machine, no smoking, no wood stove.
+
+If the house is hot and you have air conditioning, run it on recirculate — that is the ideal case. If you
+have no air conditioning and the house becomes dangerously hot, **heat wins the argument**: an overheated
+house is a faster threat than a day of moderate smoke exposure, and a public building with clean, cooled
+air is better than both. This is the one trade-off in this playbook where you deliberately accept the
+smaller harm, and it is why Playbook 10 and this one are read together.
+
+**Outdoors, if you must be.** A fitted N95, worn the whole time, and the honest note that it does nothing
+for the gases in smoke — only the particles. Reduce exertion, because breathing harder means inhaling
+more. If you work outdoors, your employer may have obligations to you at defined index thresholds in
+several states; look it up rather than guessing.
+«CITE: at least one state's occupational wildfire-smoke standard, with the AQI thresholds that trigger
+employer requirements.»
+
+**Watch for the symptoms that mean stop.** Chest tightness or pain, severe shortness of breath,
+wheezing that does not settle with the usual medication, palpitations, dizziness, confusion. These are
+not "smoke is unpleasant" symptoms; they are the cardiac and respiratory events this hazard causes, and
+they are an urgent medical matter rather than something to wait out.
+
+**Children** need the rule made for them, because they will not self-limit: no outdoor sport, no long
+walk to school in it, and no assumption that the school has made a decision — ask.
+
+---
+
+## After
+
+**It ends gradually, and the exposure does not end when the sky clears.** Fine ash settles indoors and
+gets re-suspended by ordinary activity, so the clean-up matters.
+
+**Change the filters.** The HVAC filter and the box-fan filters have done real work and are loaded.
+Replace them, and expect to replace them more often than the label suggests during a smoke year.
+
+**Clean surfaces wet.** Damp cloth and mopping rather than dry dusting or sweeping, which puts everything
+back into the air. Vacuum only with a HEPA machine. Wash bedding and soft furnishings that were exposed.
+
+**Air the house out** once outdoor levels are genuinely good — check the number rather than the smell —
+and give it a proper cross-flow for a few hours.
+
+**Then note what failed** while it is fresh: the room that could not be sealed, the filter that did not
+fit, the inhaler that had expired, the fan that was not built. Write it on the annual review sheet
+(Protection 130), because smoke seasons recur and this is a hazard where the same household makes the
+same mistake three years running.
+
+**And if you were in the fire area rather than the smoke plume**, the ash on your property is a different
+and more hazardous material than plume ash — see the after section of Playbook 5.
+
+---
+
+## The one-page version
+
+| | |
+|---|---|
+| **The reach** | Hundreds of miles. You do not need a fire nearby to have a serious smoke event |
+| **The harm** | PM2.5 causing **cardiac and respiratory** events, not just coughing |
+| **Best purchase** | **The box-fan filter** — highest benefit per dollar in this book |
+| **Judge by** | The index number and the smoke map. Never the smell or the sky |
+| **Indoors** | Windows shut · recirculate · filter running · nothing burning, frying or vacuumed |
+| **The trade-off** | If the house becomes dangerously hot, **heat wins** — go somewhere cooled and filtered |
+| **Outdoors** | Fitted N95 only, less exertion. Cloth masks do nothing |
+| **After** | Change every filter · clean wet, never dry · then air it out on a good number |
+| **Protections** | 49, 50, 51, 52, 60, 61, 130 |

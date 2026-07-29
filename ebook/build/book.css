@@ -1,0 +1,251 @@
+/* The Storm-Ready Home — print stylesheet
+   6x9 trim. Self-contained: system fonts only, code-drawn figures only, no external assets.
+   Every page is a fixed .page box — deterministic layout, no reflow surprises across 490pp. */
+
+@page { size: 6in 9in; margin: 0; }
+
+:root {
+  --ink:      #14181d;
+  --ink-soft: #3d454e;
+  --ink-mute: #6b7480;
+  --rule:     #c9cdd3;
+  --paper:    #fbf9f5;
+  --amber:    #b06b06;
+  --amber-bg: #fdf3e2;
+  --alert:    #8f2a1c;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans:  "Segoe UI", Inter, "Helvetica Neue", Arial, sans-serif;
+  --mono:  "Cascadia Mono", Consolas, "Courier New", monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  background: #55595e;
+  color: var(--ink);
+  font-family: var(--serif);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.page {
+  width: 6in; height: 9in;
+  padding: 0.72in 0.62in 0.6in;
+  background: var(--paper);
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  break-after: page;
+  margin: 0 auto;
+}
+.page:last-child { page-break-after: auto; }
+/* The .folio is the last child on every page, so the last *content* block is nth-last-child(2).
+   Its trailing margin pushes past the content box and reads as an overflow. */
+.page > *:nth-last-child(2), .page > *:last-child { margin-bottom: 0; }
+
+@media screen {
+  body { padding: 24px 0; }
+  .page { margin-bottom: 22px; box-shadow: 0 3px 16px rgba(0,0,0,.45); }
+}
+
+/* ---------- running furniture ---------- */
+.folio {
+  position: absolute; bottom: 0.38in; left: 0.62in; right: 0.62in;
+  font-family: var(--sans); font-size: 7.5pt; letter-spacing: .06em;
+  color: var(--ink-mute); display: flex; justify-content: space-between;
+  text-transform: uppercase;
+}
+.runhead {
+  position: absolute; top: 0.36in; left: 0.62in; right: 0.62in;
+  font-family: var(--sans); font-size: 7pt; letter-spacing: .14em;
+  color: var(--ink-mute); text-transform: uppercase;
+  border-bottom: .5pt solid var(--rule); padding-bottom: 4pt;
+  display: flex; justify-content: space-between;
+}
+
+/* ---------- type ---------- */
+h1, h2, h3, h4 { font-weight: 600; margin: 0; }
+p { margin: 0 0 7pt; font-size: 9.9pt; line-height: 1.46; }
+.lead { font-size: 11pt; line-height: 1.5; color: var(--ink-soft); }
+.small { font-size: 8.4pt; line-height: 1.45; color: var(--ink-mute); }
+.tag {
+  font-family: var(--sans); font-size: 7pt; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--amber); font-weight: 700;
+}
+.rule { height: .5pt; background: var(--rule); margin: 10pt 0; }
+
+/* ---------- cover ---------- */
+.cover { background: #05070a; color: var(--paper); padding: 0; }
+/* shipped cover is a 2:3 raster with type baked in — full bleed, no crop at 6x9 */
+.cover .plate { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.cover-inner { position: absolute; inset: 0.5in; display: flex; flex-direction: column; }
+.cover h1 {
+  font-size: 34pt; line-height: 1.02; letter-spacing: -.015em; margin-top: auto;
+}
+.cover .sub { font-size: 11.5pt; color: #b9c0c8; margin-top: 12pt; line-height: 1.4; }
+.cover .counts {
+  margin-top: 18pt; padding-top: 12pt; border-top: 1pt solid #39424c;
+  font-family: var(--sans); font-size: 8.5pt; letter-spacing: .1em;
+  color: #8b949e; text-transform: uppercase;
+}
+.cover .byline {
+  margin-top: 20pt; font-family: var(--sans); font-size: 9.5pt;
+  letter-spacing: .04em; color: var(--paper);
+}
+
+/* ---------- chapter opener ---------- */
+.chap-num {
+  font-family: var(--sans); font-size: 8pt; letter-spacing: .2em;
+  color: var(--amber); text-transform: uppercase; font-weight: 700;
+}
+.chap-title { font-size: 25pt; line-height: 1.06; margin: 8pt 0 0; letter-spacing: -.01em; }
+.chap-deck { font-size: 11pt; line-height: 1.45; color: var(--ink-soft); margin-top: 10pt; }
+
+.forensic {
+  border-left: 2.5pt solid var(--amber);
+  padding: 9pt 0 9pt 12pt; margin: 14pt 0;
+  background: var(--amber-bg);
+  padding-right: 10pt;
+}
+.forensic .src {
+  font-family: var(--sans); font-size: 7pt; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--amber); margin-bottom: 5pt; font-weight: 700;
+}
+.forensic p { font-size: 9.8pt; margin-bottom: 0; }
+
+/* ---------- protection block ---------- */
+.prot-head { display: flex; align-items: baseline; gap: 10pt; }
+.prot-num {
+  font-family: var(--sans); font-weight: 700; font-size: 22pt;
+  color: var(--amber); line-height: 1;
+}
+.prot-name { font-size: 15pt; line-height: 1.15; }
+.prot-prevents {
+  font-size: 10pt; color: var(--ink-soft); font-style: italic;
+  margin: 7pt 0 11pt;
+}
+.spec {
+  display: grid; grid-template-columns: 0.9in 1fr; gap: 4pt 10pt;
+  font-size: 8.8pt; border-top: .5pt solid var(--rule);
+  border-bottom: .5pt solid var(--rule); padding: 7pt 0; margin-bottom: 9pt;
+}
+.spec dt {
+  font-family: var(--sans); font-size: 7.2pt; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--ink-mute); padding-top: 1.5pt;
+}
+.spec dd { margin: 0; }
+.steps { margin: 0 0 9pt; padding-left: 14pt; }
+.steps li { font-size: 9.4pt; line-height: 1.45; margin-bottom: 3pt; }
+
+.notdo {
+  border: .75pt solid var(--rule); border-left: 2.5pt solid var(--ink);
+  padding: 8pt 10pt; background: #f2efe9;
+}
+.notdo .lbl {
+  font-family: var(--sans); font-size: 7pt; letter-spacing: .13em;
+  text-transform: uppercase; font-weight: 700; margin-bottom: 4pt;
+}
+.notdo p { font-size: 9.2pt; margin: 0; }
+
+.regionchips { margin-top: 7pt; display: flex; gap: 5pt; flex-wrap: wrap; }
+.chip {
+  font-family: var(--sans); font-size: 6.8pt; letter-spacing: .08em;
+  text-transform: uppercase; border: .75pt solid var(--rule);
+  padding: 2.5pt 5pt; color: var(--ink-mute);
+}
+.chip.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+/* ---------- figures (SVG only) ---------- */
+figure { margin: 9pt 0; }
+figcaption {
+  font-family: var(--sans); font-size: 7.4pt; line-height: 1.4;
+  color: var(--ink-mute); margin-top: 5pt;
+}
+figcaption b { color: var(--ink-soft); }
+svg { display: block; width: 100%; height: auto; }
+
+/* ---------- decision tree ---------- */
+.tree { font-size: 9.1pt; }
+.tree .q {
+  font-family: var(--sans); font-weight: 700; font-size: 9pt;
+  background: var(--ink); color: var(--paper); padding: 5pt 8pt;
+}
+.tree .branch { display: grid; grid-template-columns: 0.62in 1fr; gap: 8pt; padding: 5.5pt 0; border-bottom: .5pt solid var(--rule); }
+.tree .yn {
+  font-family: var(--sans); font-size: 7.4pt; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--amber); padding-top: 1pt;
+}
+
+/* ---------- money table ---------- */
+table.money { width: 100%; border-collapse: collapse; font-size: 9.4pt; margin: 10pt 0; }
+table.money th {
+  font-family: var(--sans); font-size: 7.2pt; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--ink-mute); text-align: left;
+  border-bottom: 1pt solid var(--ink); padding: 5pt 6pt 5pt 0; font-weight: 700;
+}
+table.money td { padding: 6pt 6pt 6pt 0; border-bottom: .5pt solid var(--rule); vertical-align: top; }
+table.money td.num { text-align: right; font-family: var(--sans); font-variant-numeric: tabular-nums; }
+.bignum { font-family: var(--sans); font-size: 30pt; font-weight: 700; letter-spacing: -.02em; line-height: 1; }
+.bignum.alert { color: var(--alert); }
+.bignum.good { color: var(--amber); }
+.srcline { font-family: var(--sans); font-size: 6.8pt; color: var(--ink-mute); letter-spacing: .04em; }
+
+/* ---------- fillable binder form ---------- */
+.form-title { font-size: 16pt; margin-bottom: 3pt; }
+.form-sub { font-size: 9pt; color: var(--ink-mute); margin-bottom: 12pt; }
+.field { margin-bottom: 10pt; }
+.field label {
+  display: block; font-family: var(--sans); font-size: 7pt;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 3pt;
+}
+.line { border-bottom: .75pt solid var(--ink-soft); height: 15pt; }
+.line.short { width: 45%; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14pt; }
+.boxrow { display: flex; gap: 6pt; margin-top: 3pt; }
+.box { width: 11pt; height: 11pt; border: .75pt solid var(--ink-soft); }
+
+/* ---------- region grid ---------- */
+.regions { display: grid; grid-template-columns: 1fr 1fr; gap: 9pt; margin-top: 12pt; }
+.region {
+  border: .75pt solid var(--rule); padding: 8pt 9pt; background: #fff;
+}
+.region h4 { font-family: var(--sans); font-size: 9pt; letter-spacing: .02em; }
+.region .states { font-size: 7.8pt; color: var(--ink-mute); margin: 3pt 0 6pt; line-height: 1.35; }
+.region ol { margin: 0; padding-left: 12pt; }
+.region li { font-size: 8pt; line-height: 1.45; }
+
+/* ---------- week table ---------- */
+table.week { width: 100%; border-collapse: collapse; font-size: 9.2pt; }
+table.week th {
+  font-family: var(--sans); font-size: 7pt; letter-spacing: .1em; text-transform: uppercase;
+  text-align: left; color: var(--ink-mute); border-bottom: 1pt solid var(--ink); padding: 5pt 4pt 5pt 0;
+}
+table.week td { padding: 6pt 4pt 6pt 0; border-bottom: .5pt solid var(--rule); vertical-align: top; }
+table.week td.d {
+  font-family: var(--sans); font-weight: 700; font-size: 8pt; color: var(--amber);
+  white-space: nowrap; width: 0.52in;
+}
+table.week td.t { font-family: var(--sans); font-size: 7.6pt; color: var(--ink-mute); white-space: nowrap; width: 0.5in; }
+
+/* ---------- state directory ---------- */
+.statecard { border-top: 1.5pt solid var(--ink); padding-top: 8pt; margin-bottom: 12pt; }
+.statecard h3 { font-size: 13pt; }
+.statecard .haz { font-family: var(--sans); font-size: 7.4pt; letter-spacing: .06em; color: var(--amber); text-transform: uppercase; margin: 3pt 0 7pt; font-weight: 700; }
+.dir { display: grid; grid-template-columns: 1.15in 1fr; gap: 3pt 8pt; font-size: 8.4pt; }
+.dir dt { font-family: var(--sans); font-size: 7pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-mute); padding-top: 1pt; }
+.dir dd { margin: 0; }
+.dir .url { font-family: var(--mono); font-size: 7.6pt; color: var(--ink-soft); }
+
+/* ---------- TOC ---------- */
+.toc { font-size: 9.6pt; }
+.toc .part {
+  font-family: var(--sans); font-size: 7.4pt; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--amber); font-weight: 700; margin: 12pt 0 5pt; border-bottom: .5pt solid var(--rule); padding-bottom: 3pt;
+}
+.toc .row { display: flex; justify-content: space-between; gap: 8pt; padding: 2.1pt 0; }
+.toc .row .pg { font-family: var(--sans); font-size: 8.4pt; color: var(--ink-mute); font-variant-numeric: tabular-nums; }
+
+/* ---------- disclaimer ---------- */
+.legal { font-size: 8.2pt; line-height: 1.5; color: var(--ink-soft); }
+.legal h4 { font-family: var(--sans); font-size: 8pt; letter-spacing: .1em; text-transform: uppercase; margin: 11pt 0 4pt; }

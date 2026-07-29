@@ -1,0 +1,80 @@
+<!-- Four-page per-state packet. Free lead magnet on the landing page, and a buyer bonus.
+     Same fixed-page model as the book: every .page is 6x9in with overflow:hidden. -->
+<link rel="stylesheet" href="../../build/book.css">
+
+<!-- 1 -->
+<section class="page packet-cover">
+  <p class="kicker">The Storm-Ready Home · State Packet</p>
+  <h1 class="pk-state">{{state}}</h1>
+  <p class="pk-sub">Your three hazards, your seasons, your first ten protections, and who to call.</p>
+  <div class="pk-haz">
+    <div class="pk-haz-row"><span class="pk-n">1</span><span class="pk-h">{{hazard_1}}</span><span class="pk-s">{{season_1}}</span><span class="pk-p">Playbook {{playbook_1}}</span></div>
+    <div class="pk-haz-row"><span class="pk-n">2</span><span class="pk-h">{{hazard_2}}</span><span class="pk-s">{{season_2}}</span><span class="pk-p">Playbook {{playbook_2}}</span></div>
+    <div class="pk-haz-row"><span class="pk-n">3</span><span class="pk-h">{{hazard_3}}</span><span class="pk-s">{{season_3}}</span><span class="pk-p">Playbook {{playbook_3}}</span></div>
+  </div>
+  <p class="pk-reg">Region overlay: <strong>{{regions}}</strong></p>
+  <p class="pk-note">Regions set the <em>order</em> of your first ten protections, not what you have access to.
+    Every hazard chapter applies to every reader.</p>
+  <p class="folio">1</p>
+</section>
+
+<!-- 2 -->
+<section class="page">
+  <h2>Who to call in {{state}}</h2>
+  <dl class="stdl">
+    <dt>State emergency management</dt><dd>{{em_agency}}<br>{{em_phone}}<br>{{em_url}}</dd>
+    <dt>Alert enrolment</dt><dd>{{alerts_note}}<br>{{alerts_url}}</dd>
+    <dt>Insurance regulator — complaints and licence lookup</dt><dd>{{doi_agency}}<br>{{doi_phone}}<br>{{doi_url}}</dd>
+    <dt>Low-income energy assistance</dt><dd>{{energy_assist_url}}</dd>
+    <dt>Private well water testing</dt><dd>{{well_test_contact}}<br>{{well_test_url}}</dd>
+  </dl>
+  <p class="warn"><strong>None of these numbers is an emergency number.</strong> In an emergency call 911.
+    If 911 is down in your area, your county publishes a ten-digit alternative — write it on the contact
+    sheet in your binder now.</p>
+  <p class="stver">Verified {{verified_on}}. Agency contacts change; confirm before you rely on one.</p>
+  <p class="folio">2</p>
+</section>
+
+<!-- 3 -->
+<section class="page">
+  <h2>Your money page</h2>
+  <dl class="stdl">
+    <dt>Mitigation programme in this state</dt><dd>{{mitigation_program}}<br>{{mitigation_url}}</dd>
+    <dt>Wind and hail deductibles here</dt><dd>{{wind_deductible_note}}</dd>
+    <dt>Roof settlement basis</dt><dd>{{roof_acv_note}}</dd>
+    <dt>Emergency prescription refill</dt><dd>{{pharmacy_refill_law}}</dd>
+    <dt>Winter utility disconnection</dt><dd>{{winter_disconnect}}</dd>
+    <dt>Summer / heat utility disconnection</dt><dd>{{summer_disconnect}}</dd>
+  </dl>
+  <p class="callout">The one call worth making: ask your carrier for <strong>their</strong> mitigation credit
+    table. Every discount percentage you find on the open web is marketing copy from someone selling roofs.
+    Your carrier's filed table is the real document and they will send it.</p>
+  <p class="folio">3</p>
+</section>
+
+<!-- 4 -->
+<section class="page">
+  <h2>Your one-page plan</h2>
+  <p class="lede">Fill this in now. Fifteen minutes. Then photograph it.</p>
+  <table class="planform">
+    <tr><th>Safe room</th><td class="fill"></td></tr>
+    <tr><th>Warm room / cooling room</th><td class="fill"></td></tr>
+    <tr><th>Water main is</th><td class="fill"></td></tr>
+    <tr><th>Gas meter is · wrench is</th><td class="fill"></td></tr>
+    <tr><th>Breaker panel is</th><td class="fill"></td></tr>
+    <tr><th>Out-of-area contact</th><td class="fill"></td></tr>
+    <tr><th>We meet near home at</th><td class="fill"></td></tr>
+    <tr><th>We meet out of area at</th><td class="fill"></td></tr>
+    <tr><th>Children collected by</th><td class="fill"></td></tr>
+    <tr><th>Insurance claims line · policy</th><td class="fill"></td></tr>
+    <tr><th>Route one out</th><td class="fill"></td></tr>
+    <tr><th>Route two out</th><td class="fill"></td></tr>
+  </table>
+  <p class="trigger"><strong>Our trigger, for {{hazard_1}}:</strong><br>
+    When <span class="fillline"></span> happens, we <span class="fillline"></span>,
+    without further discussion.</p>
+  <p class="signline">Signed <span class="fillline"></span> Date <span class="fillline"></span></p>
+  <p class="agree"><strong>We have agreed that nobody goes back for anybody.</strong>
+    Everyone goes to the agreed place and waits.</p>
+  <p class="folio">4</p>
+</section>
