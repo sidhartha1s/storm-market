@@ -144,6 +144,44 @@ session held uncommitted changes — owner-flagged, do not repeat. First action 
 storm-market session: `git worktree list` + `git status` → if you are in the main checkout
 and about to write, STOP and make a worktree.
 
+## HARD RULE — check the hyperframes version before production starts (owner 2026-07-29)
+**First action of any episode production run, before TTS or sourcing or a render:**
+```
+npm view hyperframes version          # newer than config.yaml? pull it and bump the pin
+```
+Bump `config.yaml render.hyperframes_version` AND every `npx hyperframes@<pin>` in `scripts/`
+together — they are checked against each other in `render.cmd`'s header. Then read the diff
+for anything touching timeouts or the extract stage before trusting an old measurement.
+Bumped to **0.7.81** on 2026-07-29 (from 0.7.64). Worth knowing why that matters: 0.7.81
+**shortens the ffprobe deadline from 120s to 30s**. Every number measured against 0.7.64 has
+a 4x smaller margin now — a newer version can be STRICTER, not just better.
+
+## HARD RULE — do not write code for what reasoning already does (owner 2026-07-29)
+**"Keep code headache low."** Before adding a script, a check, or a flag, answer one question:
+*can an agent reading the artifact do this at least as well?* If yes, it is a docs line, not a
+file. Run this gate the way `/simplify` is run — on every script this repo grows, including
+the ones written to fix a crisis.
+
+Code earns its place when the check is **mechanical, repeated, and must never be forgotten**:
+deterministic numbers, hard gates, batch transforms, anything guarding money or a 40-minute
+render. Reasoning owns everything that needs taste or context: *is this photograph the right
+photograph, does this cut land, does the picture contradict the voice.*
+
+The tell for a script that should have been a docs line: it needs a hand-tuned stoplist to
+stop being wrong. That is judgment wearing a regex.
+
+Applied to this repo's own gates, 2026-07-29:
+- `media_budget.py` **stays code** — three numbers, run before every render, guards against
+  repeating twelve failed renders. Exactly the mechanical-and-must-not-be-forgotten case.
+- `optimize_clips.py` **stays code** — a repeatable ffmpeg batch over sixteen files.
+- `probe_timing.py` **deleted** — it was a one-shot diagnostic. Its answer now lives in
+  LEARNINGS.md, and a number that has already been measured is not a tool.
+- `narration_picture_check.py` **kept the era check, dropped the place check** — the era test
+  is mechanical (a spoken year against an asset's era). The place test needed a growing
+  stoplist of words that are not towns and still produced thirteen false positives to three
+  real ones. Whether a photograph of the next town along the track belongs under this sentence
+  is an editorial call — it belongs in the segment read, not in a regex.
+
 ## HARD RULE — the render is the LAST step (owner correction 2026-07-29, ep3 v3)
 **Never use a render as a diagnostic tool.** ep3 v3 burned nine render attempts; three were
 killed for defects that were sitting in the code the whole time. Owner: *"no fucking 9000
