@@ -145,7 +145,15 @@ storm-market session: `git worktree list` + `git status` → if you are in the m
 and about to write, STOP and make a worktree.
 
 ## HARD RULE — check the hyperframes version before production starts (owner 2026-07-29)
-**First action of any episode production run, before TTS or sourcing or a render:**
+**You do not have to remember this — `render_preflight.py` enforces it**, because "remember
+to run npm view" is the same class of instruction as "remember to cap your assets", and that
+one survived twelve failed renders. The gate does two things:
+- **pin drift = hard fail (exit 5)**, checked offline: `config.yaml` and every live
+  `npx hyperframes@<pin>` must agree, or the render does not run the version anyone reviewed;
+- **newer release upstream = loud `[VERSION]` warning**, not a block — a render must not die
+  because npm is unreachable, but nobody gets to say they did not know.
+
+Still worth running by hand at the START of a production run, before TTS or sourcing:
 ```
 npm view hyperframes version          # newer than config.yaml? pull it and bump the pin
 ```
