@@ -86,6 +86,9 @@ def build(cid, up_to, dur, toll_start, headline):
         f'stroke-dashoffset="{path_len:.0f}"/>'
     )
     # every town, always: dot + label. Anchors are hand-placed to keep ink boxes apart.
+    # SVG paints in document order, so the town LABELS must come after the storm marker —
+    # with the marker last it slid over "De Soto" and ate the end of the word.
+    labels = []
     for i, (nm, x, y, clock, mi, dead, (dx, dy, anchor)) in enumerate(TOWNS):
         active = i <= up_to
         svg.append(
@@ -94,12 +97,13 @@ def build(cid, up_to, dur, toll_start, headline):
         )
         cls = "town" if active else "town past"
         op = 0 if active else 0.55
-        svg.append(
+        labels.append(
             f'<text id="{cid}-t{i}" x="{x + dx}" y="{y + dy}" text-anchor="{anchor}" '
             f'class="{cls}" opacity="{op}">{nm}</text>'
         )
     svg.append(f'<circle id="{cid}-storm" cx="{TOWNS[0][1]}" cy="{TOWNS[0][2]}" r="0" fill="#c0392b" filter="url(#glow)" opacity="0.92"/>')
     svg.append(f'<circle id="{cid}-ring" cx="{TOWNS[0][1]}" cy="{TOWNS[0][2]}" r="14" fill="none" stroke="#e8c56a" stroke-width="3" opacity="0"/>')
+    svg.extend(labels)
     svg.append("</svg>")
 
     body = f"""<div id="root" data-composition-id="{cid}" data-width="1920" data-height="1080">
