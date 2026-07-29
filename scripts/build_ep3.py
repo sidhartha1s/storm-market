@@ -269,7 +269,9 @@ ORDER = ["h1-s1","h1-s2","a1-s1","a1-s1b","a1-s2","a1-s2c","a1-s2b","a1-s3","a1-
 
 # extra breathing room after specific segments (act turns, emotional payoffs)
 HOLDS = {  # breathing room after payoffs and at act turns (DESIGN.md: hold 2-4s, then cut hard)
- "h1-s2": 3.5, "a1-s5": 4.0, "a2-s2": 2.5, "a2-s4b": 3.0,
+ # h1-s2 was 3.5s: the hook's last still slow-zoomed through 4s of post-narration silence
+ # before the first graphic (owner 2026-07-29, "awkward slow-zoom, i would hit esc"). Tightened.
+ "h1-s2": 1.0, "a1-s5": 4.0, "a2-s2": 2.5, "a2-s4b": 3.0,
  "a3-s1b": 2.5, "a3-s4c": 5.0, "a3-s6c": 5.0, "a3-s8": 3.0, "a3-s9": 2.5,
  "a4-s1b": 2.5, "a4-s3": 7.0,
  "a5-s1d": 2.5, "a5-s3": 4.0, "a5-s4b": 5.0,
