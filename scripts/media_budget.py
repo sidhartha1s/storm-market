@@ -175,11 +175,12 @@ if fails:
     if oversize or overlong or total_mb > BUDGET_MB:
         print("\nFix the media: python3 scripts/optimize_clips.py <episode> --apply, "
               "then rebuild index.html.")
-    if spawn > 0.4:
-        print("\nFix the binary: set HYPERFRAMES_FFPROBE_PATH (and HYPERFRAMES_FFMPEG_PATH) to "
-              "the SHARED\nffmpeg build — the render scripts already do. The static build is "
-              "97 MB and every\nspawn is scanned by three security products; the shared one is "
-              "224 KB.\n  winget install Gyan.FFmpeg.Shared")
+    if spawn is None or spawn > 0.4:
+        print("\nFix the binary: point HYPERFRAMES_FFPROBE_PATH (and HYPERFRAMES_FFMPEG_PATH) at "
+              "the SHARED\nffmpeg build, and check the path actually resolves — the render "
+              "scripts do both. The\nstatic build is 96.6 MB and every spawn is scanned by this "
+              "box's security software; the\nshared one is 224 KB and spawns 12x faster."
+              "\n  winget install Gyan.FFmpeg.Shared")
     print("\nA render started here dies at video_extract with 'ffprobe deadline with code 0',")
     print("which reads like a corrupt asset and is not one.")
     sys.exit(1)
