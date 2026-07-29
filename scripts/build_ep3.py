@@ -71,9 +71,12 @@ SHOTS = {
  # is captioned "J.P. FINLEY" on the negative, and the desk photograph came from the owner
  # labelled as him. Both are taller than 1.45:1, so they land in the .pfit treatment — the
  # image sits whole over a blurred copy of itself instead of being cropped to fill.
+ # Order (owner 2026-07-29): Finley, Finley-at-desk, the tornado drawing, back to Finley.
+ # The old second slot (DocFile__2_.jpg, an unrelated document plate) read as "some building"
+ # and is dropped.
  "a1-s1b": dict(kind="panel", id="g-panel-finley", assets=[R+"finley-portrait-01.png",
-        P+"DocFile__2_.jpg", R+"finley-desk-01.png",
-        P+"Tri_State_Tornado_Drawing.jpg"], fit="contain"),
+        R+"finley-desk-01.png", P+"Tri_State_Tornado_Drawing.jpg",
+        R+"finley-portrait-01.png"], fit="contain"),
  "a1-s2":  dict(kind="graphic", id="g-forecast"),
  "a1-s2c": dict(kind="graphic", id="g-sources"),
  "a1-s2b": dict(era="pre", kind="stills", assets=[P+"11-Murphysboro_Pre-Tornado_1.png", P+"12-Murphysboro_Pre-Tornado_2.png",
