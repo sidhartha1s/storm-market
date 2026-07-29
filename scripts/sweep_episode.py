@@ -94,21 +94,23 @@ for gid in sorted(mounted):
         continue
     tl_end = max(ends)
     for w in pic:
-        if w["name"] == gid and w["dur"] - tl_end > 4.0:
-            overrun.append((gid, round(w["dur"], 1), round(tl_end, 1)))
-report("graphic window <= timeline + 4s", overrun,
-       lambda x: f"{x[0]} window {x[1]}s vs timeline {x[2]}s")
+        if w["name"] != gid:
+            continue
+        if w["dur"] - tl_end > 4.0:
+            overrun.append(("holds", gid, round(w["dur"], 1), round(tl_end, 1)))
+        # the other direction, which this check used to ignore: a mount SHORTER than the
+        # composition truncates its own authored tail. g-metmap was losing its last 4.04s
+        # of designed beats while this gate printed PASS.
+        elif tl_end - w["dur"] > 0.30:
+            overrun.append(("truncated", gid, round(w["dur"], 1), round(tl_end, 1)))
+report("graphic window fits its timeline", overrun,
+       lambda x: f"{x[0]:9} {x[1]} window {x[2]}s vs timeline {x[3]}s")
 
-# 8. narration cue alignment: every panel reveal within 1.5s of a spoken word
-wd = ep / "audio"
-seg_starts = {m.group(1): float(m.group(2)) for m in re.finditer(
-    r'<audio id="nx-([\w]+)"[^>]*data-start="([\d.]+)"', h)}
-drift = []
-for gid in sorted(mounted):
-    src = (ep / "compositions" / f"{gid}.html").read_text(encoding="utf-8", errors="replace")
-    if "cue" not in src and "words.json" not in src:
-        continue
-report("cue metadata present", drift)
+# NOTE: there is deliberately no "cue alignment" check here. One used to sit at this
+# spot; it initialised an empty findings list, never appended to it, and printed PASS on
+# every input. A gate that cannot fail is worse than no gate, because it is counted as
+# coverage. Reveal-vs-spoken-word alignment is still verified by reading words.json when
+# a composition is authored — it is not, and must not pretend to be, automated here.
 
 # 9. long stills
 long_still = [(w["at"], w["name"], w["dur"]) for w in t1
