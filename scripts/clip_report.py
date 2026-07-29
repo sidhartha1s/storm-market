@@ -3,10 +3,16 @@
 Authoritative window list = every element on a picture track carrying
 data-start + data-duration: <section> stills, <video> clips, and
 sub-composition hosts. Audio elements live on their own tracks and are excluded.
+
+Coverage is computed over PICTURE_TRACKS only. Tracks above those carry
+overlays (date cards, source chips, quote cards, lower-thirds) that sit ON TOP
+of picture; counting them as coverage hides real black gaps underneath.
 """
 import re
 import sys
 from pathlib import Path
+
+PICTURE_TRACKS = {1, 2}  # 1 = stills/clips, 2 = full-bleed graphic compositions
 
 ep = Path(sys.argv[1])
 h = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
