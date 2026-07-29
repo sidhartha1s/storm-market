@@ -49,10 +49,20 @@ If you live in a manufactured home, or in a slab-on-grade house in violent-torna
 interior room will do and the honest answer is a purpose-built shelter — in-ground, garage-floor, or
 a reinforced above-ground safe room.
 
-The only thing that matters when buying one is the standard. Demand a unit designed and installed to
-the recognised federal criteria for residential safe rooms, and get the documentation in writing.
-«CITE: FEMA P-361 and ICC 500 — residential safe room design criteria, and what compliance
-documentation should say.» A steel box welded by a local fabricator with no design pedigree is a
+The only thing that matters when buying one is the standard, and you should learn its name before you
+call anybody. FEMA defines a safe room as a hardened structure built to its criteria to provide
+**"near-absolute protection"** in extreme wind — meaning, in FEMA's own words, that occupants "will
+have a very high probability of being protected from injury or death." The two documents are **FEMA
+P-361** and the referenced consensus standard **ICC 500**, and the current editions are **FEMA P-361
+(2021) and ICC 500-2020**. That is not a detail: FEMA's grace period allowing FEMA-funded prefabricated
+residential safe rooms to comply with the older 2015/2014 editions **expired on 1 January 2024.**
+
+So the sentence to say on the phone is: *"Is this unit tested, listed and labelled to ICC 500-2020, and
+will you give me that documentation in writing?"* If the answer is vague, the answer is no.
+«SRC: FEMA, "Safe Rooms" (Building Science) — near-absolute protection definition; FEMA P-361 (2021) and
+ICC 500-2020 compliance requirement effective 1 January 2024. |
+https://www.fema.gov/emergency-managers/risk-management/building-science/safe-rooms |
+retrieved 2026-07-29» A steel box welded by a local fabricator with no design pedigree is a
 purchase, not a protection.
 
 Register it with your county emergency management office if they maintain a registry, so rescuers know
@@ -65,23 +75,33 @@ the house, your trigger is the watch, not the warning — and that changes Prote
 
 ### 25 · The helmet rule
 
-**Prevents:** the specific injury that kills people who sheltered correctly.
+**Prevents:** head injury from small, fast debris inside a room you have already chosen well.
 **Cost:** $15–40 each · **Time:** none · **Materials:** bicycle or sports helmets
 · **Regions:** Tornado Alley rank 2, Quake West, Hurricane Coast.
 
-Head injury is the leading cause of death in violent tornadoes.
-«CITE: NIST Joplin technical investigation; NWS service assessments — head injury as leading cause of
-death.» A helmet on every head, adults included, is among the highest-value dollars in this book.
+In CDC's review of all 338 deaths in the April 2011 southeastern outbreak, 95.6 percent of the
+deaths were multisystem trauma and **21.9 percent of the death certificates noted a head injury.**
+«SRC: "Tornado-Related Fatalities — Five States, Southeastern United States, April 25–28, 2011."
+MMWR Morb Mortal Wkly Rep 2012;61(28):529–533. |
+https://www.cdc.gov/mmwr/preview/mmwrhtml/mm6128a3.htm | retrieved 2026-07-29» About one death in
+five, then — not the majority, and this book is not going to inflate it into one.
 
-Keep them **in the safe room**, not the garage. A helmet you have to find is a helmet you will not be
-wearing. Bicycle helmets are adequate and already in most houses with children; buy for the adults.
+CDC's recommendation on the back of that number is to keep **personal protection items, "e.g.,
+blankets and helmets," in the safe room**, and that is exactly what this protection is. Keep them
+in the room, not the garage: a helmet you have to find is a helmet you will not be wearing. Bicycle
+helmets are adequate and already in most houses with children; buy for the adults.
 
-The objection is always that it looks ridiculous. The trade is thirty seconds of feeling foolish
-against the injury most likely to kill you in the event you are sheltering from. That is not close.
+The objection is always that it looks ridiculous. Fifteen dollars and thirty seconds of feeling
+foolish against a one-in-five injury category is still an easy trade — but it is a trade at the
+margin, on top of Protection 23, not instead of it.
 
-**What this does not do:** a helmet does not protect against structural collapse or large debris. It
-addresses the small, fast, numerous objects that arrive first — which is what most fatal head trauma
-in these events actually is.
+**What this does not do:** **there is no evidence that helmets reduce tornado deaths.** CDC says so
+plainly — *"currently, no data are available regarding the effectiveness of helmet use to prevent
+head injuries during a tornado"* — and adds that *"choosing to use helmets to protect the head
+should not be considered an alternative to seeking appropriate shelter."* A helmet does nothing
+about structural collapse, nothing about large debris, and nothing about the 78 percent of these
+deaths whose certificates did not mention the head. It is a cheap addition to a good room. Anyone
+selling it to you as a substitute for the room is selling you something.
 
 ---
 

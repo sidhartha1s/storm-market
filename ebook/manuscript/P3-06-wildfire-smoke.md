@@ -30,8 +30,15 @@ And it is the hazard where a fifty-dollar purchase does the most measurable good
 **The mechanism is fine particulate matter — PM2.5** — particles small enough to pass deep into the lungs
 and enter the bloodstream. The harm is not mainly the cough. It is cardiac and respiratory: heart
 attacks, strokes, arrhythmias, asthma attacks and COPD exacerbations, in the days during and following an
-episode.
-«CITE: EPA or AHA source on PM2.5 exposure and cardiovascular events, with the effect described.»
+episode. EPA's own list of outcomes linked to PM2.5 exposure runs: **premature death in people with
+heart or lung disease, nonfatal heart attacks, irregular heartbeat, aggravated asthma, decreased lung
+function, and increased respiratory symptoms.** Two of those six are cardiac, which is the part almost
+nobody expects from a hazard filed mentally under "breathing."
+«SRC: US EPA, "Health and Environmental Effects of Particulate Matter (PM)" — PM2.5 penetrates deep
+into the lungs and some may enter the bloodstream; linked to premature death in people with heart or
+lung disease, nonfatal heart attacks, irregular heartbeat, aggravated asthma, decreased lung function
+and increased respiratory symptoms. | https://www.epa.gov/pm-pollution/health-and-environmental-effects-particulate-matter-pm
+| retrieved 2026-07-29»
 
 **Who is at real risk:** people with asthma, COPD or heart disease; pregnant people; infants and young
 children, whose lungs are still developing; adults over sixty-five; and anyone working outdoors, who gets
@@ -55,9 +62,16 @@ significant cost is medical and it lands on the people least able to absorb it.
 - **50 — the box-fan filter.** The highest-value build in this book by ratio of benefit to cost. A box
   fan plus filters, taped or clipped into a cube or a simple wedge, moves a large volume of air through
   decent filter media and measurably drops indoor particulate levels in a room. It costs a fraction of a
-  commercial air cleaner and, built as designed, performs comparably in a single room.
-  «CITE: the EPA/AHAM or academic evaluation of DIY box-fan filter units — the measured performance and
-  the current safety guidance on fan type.»
+  commercial air cleaner and, built as designed, performs comparably in a single room — EPA's chamber
+  testing found DIY units **as effective as a small commercial air cleaner** at reducing PM2.5, with a
+  free cardboard shroud improving them further. Two conditions: use a **box fan from 2012 or newer**
+  (fused plug, thermal cutoff — UL and EPA tested five models, including with obstructed sides, and
+  found no burn or fire risk), and **change the filters**, because loaded ones tested "almost completely
+  ineffective."
+  «SRC: US EPA, "Research on DIY Air Cleaners to Reduce Wildfire Smoke Indoors" / EPA Science Matters,
+  "Do-It-Yourself Air Cleaners: Making Cleaner Air More Accessible." |
+  https://www.epa.gov/air-research/research-diy-air-cleaners-reduce-wildfire-smoke-indoors |
+  retrieved 2026-07-29»
   Build it before the season; the shops sell out of filters in the first week of smoke.
 - **A commercial HEPA air cleaner** if the budget allows, sized to the room you will actually use it in.
   Note the honest caveat: sizing claims are frequently optimistic, and one unit does not clean a house.

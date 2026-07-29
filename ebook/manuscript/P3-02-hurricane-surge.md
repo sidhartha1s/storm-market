@@ -9,19 +9,38 @@ Target: 10 pages · draft 1, 2026-07-29
 The lesson of the modern hurricane era is that the category number tells you almost nothing about how
 you will be hurt.
 
-Katrina in 2005 killed people with surge, in numbers that had nothing to do with wind speed at
-landfall.
-«CITE: authoritative fatality figures for Hurricane Katrina and the share attributed to storm surge and
-to the levee failures.» Harvey in 2017 was a rainfall event that sat over Houston for days and flooded
-tens of thousands of homes, most of them nowhere near the coast and most of them without flood
-insurance.
-«CITE: NHC tropical cyclone report for Harvey: rainfall totals, and estimates of homes flooded and the
-share uninsured.» Sandy in 2012 was not even a hurricane at landfall by the technical definition and it
-inundated a metropolitan coastline.
-«CITE: NHC report on Sandy — its status at landfall and the surge heights recorded.» Michael in 2018
-intensified in the last hours before landfall and arrived stronger than the forecast people had planned
-around.
-«CITE: NHC report on Michael — intensification in the final 24 hours before landfall.»
+**Katrina, 2005 — water, not wind.** The National Hurricane Center's report puts the toll at
+**1,392 people: 520 direct deaths, 565 indirect, and 307 whose cause was never determined.** The
+surge reached 15 to 19 feet in eastern New Orleans, St. Bernard and Plaquemines Parishes, and the
+levees and floodwalls were overtopped and breached — most of the breaches from erosion on the *back*
+side, caused by water pouring over the top. Louisiana reported that people over 60 were the majority
+of its dead.
+«SRC: National Hurricane Center, Tropical Cyclone Report: Hurricane Katrina (AL122005). |
+https://www.nhc.noaa.gov/data/tcr/AL122005_Katrina.pdf | retrieved 2026-07-29»
+
+**Harvey, 2017 — rain, hundreds of miles of it.** Harvey stalled over southeast Texas for four days
+and dropped **60.58 inches near Nederland**, the largest tropical-cyclone rainfall total in United
+States records. NHC attributes **68 direct deaths, all in Texas, 36 of them in Harris County — and
+all but three of those deaths were caused by freshwater flooding, with none linked to the storm
+surge.** For a category 4 landfall, the report calls that remarkable. It is the whole thesis of this
+playbook in one sentence.
+«SRC: National Hurricane Center, Tropical Cyclone Report: Hurricane Harvey (AL092017). |
+https://www.nhc.noaa.gov/data/tcr/AL092017_Harvey.pdf | retrieved 2026-07-29»
+
+**Sandy, 2012 — not technically a hurricane when it hit.** Sandy made landfall near Brigantine, New
+Jersey as a **post-tropical cyclone** with 70-knot winds, and because of its sheer size it drove a
+record storm tide into New York Harbor: **9.40 feet of surge above normal tide at the Battery, and a
+storm tide of 14.06 feet — 4.36 feet above the previous record in a series going back to 1920.**
+There were at least 147 direct deaths across the basin, 72 of them in the mid-Atlantic and Northeast.
+«SRC: National Hurricane Center, Tropical Cyclone Report: Hurricane Sandy (AL182012). |
+https://www.nhc.noaa.gov/data/tcr/AL182012_Sandy.pdf | retrieved 2026-07-29»
+
+**Michael, 2018 — stronger than the plan people made.** Michael was at **110 knots at 1800 UTC on 9
+October and 140 knots — category 5 — when the eye came ashore near Tyndall Air Force Base at 1730 UTC
+on the 10th.** Thirty knots of intensification inside the last day, which is to say: whatever you
+decided when you looked at the forecast the previous evening, you were planning for a different storm.
+«SRC: National Hurricane Center, Tropical Cyclone Report: Hurricane Michael (AL142018). |
+https://www.nhc.noaa.gov/data/tcr/AL142018_Michael.pdf | retrieved 2026-07-29»
 
 Four storms, four completely different mechanisms of harm.
 
@@ -34,11 +53,21 @@ category 1 can be far worse for your household than a small, fast category 3.
 
 ## What actually kills, and what actually costs
 
-**Killed by water, not wind**, and by a wide margin. Storm surge is historically the greatest killer,
-and inland freshwater flooding from rainfall kills a large share more — often hundreds of miles from
-the coast and days later.
-«CITE: NHC or peer-reviewed breakdown of US tropical cyclone deaths by cause: surge, freshwater
-flooding, wind, surf, tornado, indirect.»
+**Killed by water, not wind**, and the margin is not close. The definitive study is Rappaport's
+fifty-year accounting of US deaths directly caused by Atlantic tropical cyclones, 1963 to 2012 —
+2,325 deaths for which a cause was identified. **Roughly 90 percent were water incidents, most of
+them drownings.** Storm surge accounted for **49 percent.** Rainfall-driven freshwater floods and
+mudslides accounted for **27 percent** — and rainfall-flood deaths occurred in more tropical cyclones
+than any other hazard, which is the sentence to remember if you live inland. Between 100 and 150
+people died near the shoreline in rip currents and large waves, and about the same number drowned
+offshore within 50 miles of the coast. **Nontornadic wind caused 5 to 10 percent. Tornadoes caused
+about 3 percent.**
+«SRC: Rappaport EN. "Fatalities in the United States from Atlantic Tropical Cyclones: New Data and
+Interpretation." Bull. Amer. Meteor. Soc. 2014;95(3):341–346. doi:10.1175/BAMS-D-12-00074.1 |
+https://journals.ametsoc.org/view/journals/bams/95/3/bams-d-12-00074.1.xml | retrieved 2026-07-29»
+
+Read that list against the category scale and the mismatch is obvious. The number on the news
+describes the fraction of the danger that kills five to ten percent of the people.
 
 Then the category people forget: **indirect deaths after the storm**, which in some events exceed the
 direct ones. Carbon monoxide from generators run indoors. Heat, in a powerless house in September, among

@@ -73,11 +73,18 @@ does not detect CO.
 **Cost:** $20–60 per filter · **Time:** 20 minutes · **Materials:** a high-efficiency furnace filter
 · **Regions:** Wildfire West rank 4, and now genuinely all five.
 
-Smoke travels across the continent. A fire in Canada can put a city a thousand miles away into
-unhealthy air for a week, and the fine particulate in it penetrates deep into the lungs and enters the
-bloodstream. The people affected first are those with asthma, COPD, and cardiac disease — which is a
-large fraction of any neighbourhood.
-«CITE: EPA / CDC on PM2.5 health effects and vulnerable groups during smoke episodes.»
+Smoke travels across the continent, and the reason it matters is particle size. EPA's account of PM2.5
+is that these particles *"can get deep into your lungs, and some may even get into your bloodstream,"*
+and that exposure has been linked to **premature death in people with heart or lung disease, nonfatal
+heart attacks, irregular heartbeat, aggravated asthma, decreased lung function, and increased
+respiratory symptoms** — coughing, airway irritation, difficulty breathing.
+«SRC: US EPA, "Health and Environmental Effects of Particulate Matter (PM)." |
+https://www.epa.gov/pm-pollution/health-and-environmental-effects-particulate-matter-pm |
+retrieved 2026-07-29»
+
+Read that list again and notice what is on it. Two of the six outcomes are cardiac. Smoke is filed
+mentally as a lung problem, and for the people most likely to die of it, it is a heart problem — which
+is a large fraction of any neighbourhood.
 
 Two actions. Fit the highest-efficiency filter your system is rated to accept — commonly MERV 13, but
 **check your equipment's tolerance**, because a filter too restrictive for your blower reduces airflow
@@ -99,14 +106,36 @@ what Protection 50 is for.
 · **Regions:** Wildfire West rank 5, and all five.
 
 A box fan with high-efficiency filters taped to it makes a genuinely effective room air cleaner for a
-fraction of the price of a commercial unit. It is one of the best-evidenced cheap interventions in
-this entire book, and it became widely documented during recent smoke and airborne-disease events.
-«CITE: published performance data on box-fan filter units (Corsi–Rosenthal type) — clean air delivery
-rate versus commercial purifiers.»
+fraction of the price of a commercial unit, and this is not folk wisdom — EPA tested it in a chamber
+against the commercial machines. **The finding: DIY air cleaners were as effective as a small
+commercial air cleaner at reducing PM2.5.** Adding a **cardboard shroud** to block air recirculating
+past the fan blade tips improved performance at no cost. Multi-filter designs moved more air and were
+more cost-effective than single-filter ones. Independent chamber testing of a single-filter MERV-12
+build measured a **clean air delivery rate of about 150 cfm for smoke-sized particles** on high speed.
+«SRC: US EPA, "Research on DIY Air Cleaners to Reduce Wildfire Smoke Indoors" and EPA Science Matters,
+"Do-It-Yourself Air Cleaners: Making Cleaner Air More Accessible." |
+https://www.epa.gov/air-research/research-diy-air-cleaners-reduce-wildfire-smoke-indoors |
+retrieved 2026-07-29»
+«SRC: Illinois Institute of Technology, "Portable Air Cleaner Test Report — Box Fan Filter," March
+2021 — CADR 150.2 cfm (0.09–1 µm), 203.1 cfm (0.5–3 µm), 285.6 cfm (5–11 µm) at fan speed 3 with a
+MERV-12 filter. | https://www.built-envi.com/wp-content/uploads/IIT-CADR-Testing-March-2021-Box-Fan-Filters.pdf
+| retrieved 2026-07-29»
+
+**Two findings from that research change how you use it, and both are non-obvious.**
+
+First, on the fire question, which is the objection everybody raises: Underwriters Laboratories' Chemical
+Insights Research Institute, working with EPA, tested five commercial box fan models in the standard
+one-filter configuration — with clean filters, with filters deliberately loaded with smoke and dust,
+and with one or both sides of the fan obstructed. **None of the tested conditions presented a burn or
+fire risk.** The recommended practice is to use a **box fan from 2012 or newer**, which will have a
+fused plug and a thermal cutoff.
+
+Second, and this is the one people get wrong: **a DIY cleaner with dirty, loaded filters was almost
+completely ineffective.** Not degraded — ineffective. A unit running all week on a grey filter is
+theatre. Change the filters.
 
 Build it correctly: filters oriented with airflow arrows pointing **into** the fan, joints sealed with
-tape so air cannot bypass the filters, and a cardboard shroud on the outlet side to reduce short-
-circuiting. Use a fan with a fused, modern design and do not leave it running unattended overnight.
+tape so air cannot bypass the filters, and the cardboard shroud on the outlet side.
 
 Run it in the room people are in — usually the same consolidated room from Protection 26 — and keep
 that room's door closed.

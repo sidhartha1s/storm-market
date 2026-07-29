@@ -255,9 +255,13 @@ easy ignition paths and the secondary damage, and it is done only with time to s
 Sometimes leaving means going upstairs.
 
 In a flash flood with water already moving on the roads, a vehicle is the most dangerous place
-available — a foot of moving water floats most cars and two feet moves them, and the majority of flash
-flood deaths occur in vehicles. Going up inside a solid building beats driving.
-«CITE: NWS statistics on the share of flood fatalities occurring in vehicles.»
+available. The National Weather Service's own numbers: **six inches of fast-moving water can knock
+over an adult, twelve inches carries away most cars, two feet carries away SUVs and trucks** — and,
+citing CDC, **over half of all flood-related drownings happen when a vehicle is driven into flood
+water.** The next largest share is people walking into or near it. Going up inside a solid building
+beats driving.
+«SRC: National Weather Service, "Turn Around Don't Drown." |
+https://www.weather.gov/safety/flood-turn-around-dont-drown | retrieved 2026-07-29»
 
 The rule that governs it: **the decision to go up is only survivable if you can keep going up.** An
 attic with no exit is a sealed box, which is why an axe or a hatchet in the attic is standard advice in

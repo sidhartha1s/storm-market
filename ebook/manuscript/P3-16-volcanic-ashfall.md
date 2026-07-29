@@ -6,13 +6,18 @@ Target: 4 pages · draft 1, 2026-07-29
 
 ## The event
 
-Mount St. Helens erupted on the morning of 18 May 1980 and killed fifty-seven people. The lateral blast and
-the lahars — volcanic mudflows — did the killing close in. But the ash went east: Yakima, Spokane and towns
-across three states were dusted to depths measured in inches, and the practical crisis for hundreds of
-thousands of people was not lava. It was grey powder, everywhere, that stopped the vehicles, blocked the
-filters, collapsed some roofs and could not be swept away because there was nowhere to put it.
-«CITE: USGS record of the 1980 Mount St. Helens eruption — fatalities, ashfall depths in specific cities and
-the area affected.»
+Mount St. Helens erupted on the morning of 18 May 1980 and killed **fifty-seven people.** The lateral
+blast and the lahars — volcanic mudflows — did the killing close in. But the ash went east. USGS puts it
+at **520 million tons of ash carried eastward across the United States, detectable over 22,000 square
+miles**, falling **ten inches deep ten miles downwind, one inch at sixty miles, and half an inch three
+hundred miles out** — and causing **complete darkness in Spokane, Washington, 250 miles from the
+volcano.**
+«SRC: US Geological Survey, "Mount St. Helens — From the 1980 Eruption to 2000," Fact Sheet 036-00. |
+https://pubs.usgs.gov/fs/2000/fs036-00/fs036-00.pdf | retrieved 2026-07-29»
+
+So the practical crisis for hundreds of thousands of people was not lava. It was grey powder, everywhere,
+that stopped the vehicles, blocked the filters, loaded the roofs and could not be swept away because
+there was nowhere to put it.
 
 This playbook is deliberately short and deliberately narrow. If you live on the flank of an active volcano
 in Washington, Oregon, Alaska or Hawaii, your hazard is lahars, pyroclastic flows and lava, and the

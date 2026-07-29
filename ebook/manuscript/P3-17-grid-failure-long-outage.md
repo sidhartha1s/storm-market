@@ -12,21 +12,38 @@ Tornado, hurricane, ice storm, derecho, heat wave, wildfire, earthquake, deep fr
 whatever the cause, the shared consequence is that the electricity stops for longer than the household is
 set up for. And in most of the events in this book, **the outage hurts more people than the event did.**
 
-The 2003 Northeast blackout is the clean example because the cause was mundane: a transmission line
-contacting a tree in Ohio, inadequate vegetation management, and a cascading failure that took power from
-about fifty million people across eight states and Ontario within minutes. Most were restored in a day or
-two, and the death toll — mostly indirect — was still substantial.
-«CITE: the US–Canada Power System Outage Task Force final report on the 14 August 2003 blackout — cause,
-people affected, and the estimated indirect deaths.»
+The 2003 Northeast blackout is the clean example because the causes were mundane. The joint US–Canada
+task force found **four groups of causes, none of them exotic**: a utility that had not assessed the
+voltage instability of its own Cleveland–Akron system, inadequate situational awareness in its control
+room, inadequate management of the trees under its transmission lines, and a reliability coordinator
+without adequate tools to see what was happening. The result took out **an estimated 50 million people
+and 61,800 megawatts of load across Ohio, Michigan, Pennsylvania, New York, Vermont, Massachusetts,
+Connecticut, New Jersey and Ontario** — in minutes.
+«SRC: US–Canada Power System Outage Task Force, "Final Report on the August 14, 2003 Blackout in the
+United States and Canada: Causes and Recommendations," April 2004. |
+https://www.energy.gov/sites/prod/files/oeprod/DocumentsandMedia/BlackoutFinal-Web.pdf |
+retrieved 2026-07-29»
+
+Nobody's tree-trimming budget was the villain in a movie. That is the point: the largest blackout in
+North American history came out of ordinary maintenance decisions and ordinary gaps in what a control
+room could see, which is why the household-level answer is not to hope for a better grid.
 
 That is what makes this the highest-value playbook in the book despite being about nothing in particular.
 **The failure mode is generic, the protections are generic, and they pay out no matter which hazard arrives.**
 
-The other reason it matters: outages are getting longer. The average American customer's annual outage
-duration has risen, driven overwhelmingly by major weather events.
-«CITE: EIA data on average annual electric power interruption duration per customer, with and without major
-event days, over the last decade.»
+The other reason it matters: outages are getting longer, and the EIA's own numbers separate out exactly
+why. The metric is SAIDI — the average minutes a customer spends without power in a year. **Counting all
+events, the US figure went from 236 minutes in 2014 to 663 minutes in 2024** — from about four hours to
+about eleven. **Strip out "major event days" and the same decade runs 114 minutes to 132.** Ordinary
+Tuesday reliability barely moved. Essentially the whole increase is storms: in 2024, major event days
+accounted for roughly 530 of those 663 minutes.
+«SRC: US Energy Information Administration, Electric Power Annual, Table 11.1, "Reliability Metrics of
+U.S. Distribution System" (IEEE method, 2014–2024). |
+https://www.eia.gov/electricity/annual/html/epa_11_01.html | retrieved 2026-07-29»
 
+That is the single most useful fact in this playbook for deciding how much to spend. You are not
+preparing for a degraded grid. You are preparing for the handful of days a year when the weather takes
+it away, and those days are getting longer while everything else stays the same.
 ---
 
 ## What actually kills, and what actually costs

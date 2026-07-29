@@ -24,10 +24,20 @@ That is not an argument for complacency. It is the reason this chapter is the sh
 book and the reason its instruction is unusually simple: **the plan is not yours to write. Follow the
 official instruction, precisely, and do not improvise.**
 
-Three Mile Island in 1979 is the American reference: a partial meltdown, a chaotic public information
-period, and no detectable health consequence to the surrounding population.
-«CITE: NRC record of the Three Mile Island accident and the official conclusions on public radiation
-exposure.»
+Three Mile Island in 1979 is the American reference. TMI-2 partially melted down on 28 March 1979 —
+the most serious accident in US commercial nuclear history — and the NRC's own account is that the
+small radioactive releases *"had no detectable health effects on plant workers or the public."* The
+roughly two million people around the plant are estimated to have received an average dose of **about
+1 millirem above normal background.** A chest X-ray is about 6 millirem, and natural background in
+that area is 100 to 125 millirem a year. The maximum dose at the site boundary would have been under
+100 millirem above background.
+«SRC: US Nuclear Regulatory Commission, "Backgrounder on the Three Mile Island Accident." |
+https://www.nrc.gov/reading-rm/doc-collections/fact-sheets/3mile-isle.html | retrieved 2026-07-29»
+
+What the accident did change was everything about the response: emergency planning, operator training,
+radiation protection, and regulatory oversight were all rebuilt afterwards. The lesson for a household
+is not that radiological events are harmless. It is that the American event with the frightening
+pictures did its real damage through a chaotic public-information period, not through dose.
 
 ---
 

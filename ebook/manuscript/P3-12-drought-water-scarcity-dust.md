@@ -44,8 +44,13 @@ higher nitrate and arsenic concentrations in falling groundwater.
 **Dust**, which is the acute health hazard here. Blowing dust from dried agricultural land carries
 particulates, and in the American Southwest it carries the fungal spores that cause coccidioidomycosis —
 Valley fever — a genuine and increasing illness that follows dust exposure and disturbance of dry soil.
-«CITE: CDC data on coccidioidomycosis incidence and its geographic distribution, plus the association with
-dust exposure.»
+CDC's numbers: **around 20,000 cases reported in the United States each year, most of them in
+California and Arizona** — and CDC states plainly that the disease is underdiagnosed, putting the
+estimated true burden at **206,000 to 360,000 cases a year, ten to eighteen times the reported
+figure.** Reported cases rose from 2,271 in 1998 to the tens of thousands, so this is a hazard that is
+growing rather than a historical curiosity.
+«SRC: CDC, "Reported Cases of Valley Fever" (coccidioidomycosis surveillance). |
+https://www.cdc.gov/valley-fever/php/statistics/index.html | retrieved 2026-07-29»
 
 A **haboob** is the acute version: a wall of dust driven ahead of a collapsing thunderstorm, arriving in
 minutes, reducing visibility on a highway to nothing. The deaths are traffic deaths, in multi-vehicle

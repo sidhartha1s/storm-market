@@ -121,12 +121,21 @@ Protection 112 solves the long-distance problem with an out-of-area contact. Thi
 which the cellular network is worst at: two adults, a mile apart, one at the house and one at the
 school, with the towers congested or down.
 
-A pair of FRS handsets needs no licence, works line-of-sight over roughly half a mile to two miles in
-built-up terrain — considerably less than the packaging claims — and costs less than a tank of fuel.
-GMRS gives more power and better range, requires a licence for the higher-power radios in the United
-States, and that licence covers a whole family.
-«CITE: FCC rules for FRS versus GMRS — the current power limits, and the family-wide scope of the GMRS
-licence.»
+**FRS** needs no individual licence and is capped low by rule: the FCC limits effective radiated power
+to **2.0 watts on channels 1–7 and 15–22, and 0.5 watts on channels 8–14.** In built-up terrain that
+buys you roughly half a mile to two miles — considerably less than the packaging claims, and the
+packaging is not lying so much as quoting a hilltop.
+
+**GMRS** is the same band with the lid off, and it needs a licence. Mobile, repeater and base stations
+may run up to **50 watts** output (15 watts for fixed stations), with handhelds on the 462 MHz
+interstitial channels held to 5 watts ERP. The part that matters to a household: **one individual
+licence runs for ten years and covers the licensee's whole immediate family** — the rule names spouse,
+children, grandchildren, stepchildren, parents, grandparents, stepparents, brothers, sisters, aunts,
+uncles, nieces, nephews and in-laws. One application, one fee, everybody legal.
+«SRC: 47 CFR Part 95 Subpart B (Family Radio Service), §§ 95.503–95.567. |
+https://www.ecfr.gov/current/title-47/chapter-I/subchapter-D/part-95/subpart-B | retrieved 2026-07-29»
+«SRC: 47 CFR Part 95 Subpart E (General Mobile Radio Service), §§ 95.1703–95.1767. |
+https://www.ecfr.gov/current/title-47/chapter-I/subchapter-D/part-95/subpart-E | retrieved 2026-07-29»
 
 Two habits make them useful rather than decorative. **Agree a channel and a check-in time in advance**
 and write both on the form in the binder, because a radio nobody has tuned to the same channel is two

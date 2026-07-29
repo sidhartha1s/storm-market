@@ -32,10 +32,27 @@ They are:
    arrive
 
 You will notice something about that list as you read the rest of the chapter. The first two are
-what people picture when they imagine dying in a disaster. The last two kill more Americans in the
-modern era than the first two do, and they are almost never what anyone prepares for.
-«CITE: comparative direct vs indirect mortality — FEMA/CDC/NOAA storm data, plus the Maria and
-Helene excess-mortality literature.»
+what people picture when they imagine dying in a disaster. The last two — medical decompensation and
+delayed care — are the ones almost nobody prepares for, and the official counts say they are not the
+small category.
+
+The National Hurricane Center keeps direct and indirect deaths in separate columns, and the columns are
+instructive. **Katrina: 520 direct deaths and 565 indirect** — the majority of the indirect ones
+cardiovascular — plus 307 whose cause was never determined. **Michael: 16 direct deaths and 43
+indirect**, from falls during clean-up, traffic accidents, and medical conditions the hurricane made
+worse. In both cases the storm killed fewer people than the aftermath of the storm did.
+«SRC: National Hurricane Center, Tropical Cyclone Report: Hurricane Katrina (AL122005) — 1,392 total:
+520 direct, 565 indirect (318 cardiovascular), 307 indeterminate. |
+https://www.nhc.noaa.gov/data/tcr/AL122005_Katrina.pdf | retrieved 2026-07-29»
+«SRC: National Hurricane Center, Tropical Cyclone Report: Hurricane Michael (AL142018) — 16 direct
+deaths; 43 indirect deaths, all in Florida, from post-storm falls, traffic accidents and medical
+issues compounded by the hurricane. |
+https://www.nhc.noaa.gov/data/tcr/AL142018_Michael.pdf | retrieved 2026-07-29»
+
+Read those two pairs of numbers and the argument of this whole book is already made. The wind and the
+water are the part with footage. The dying happens afterwards, quietly, to people whose insulin got
+warm or whose oxygen concentrator had no power or who climbed a ladder at sixty-eight with a
+chainsaw.
 
 ---
 
@@ -45,25 +62,35 @@ Trauma is the mechanism people mean when they say a storm killed someone. It is 
 mechanism, the earthquake mechanism, the landslide mechanism. Something moves at speed and a body
 is in the way, or something stops moving and a body is underneath it.
 
-Within trauma, one injury dominates: the head.
+Within trauma, the finding to hold onto is not about one body part. It is that being indoors was
+not the protection people assumed it was.
 
-This is the least intuitive and most important fact in the chapter. In violent tornadoes, the
-pattern investigators find again and again is not that victims were in the open while survivors
-were sheltered. Frequently both were sheltered. The difference is what happened to the head.
-Debris in a tornado is not one thing — it is a graded spectrum from grit and glass through roofing
-material to framing lumber and appliances, and the small fast objects arrive first and in enormous
-number. A person crouched in an interior hallway with their arms over their head is protected
-against grit. They are not protected against a two-by-four.
-«CITE: NIST technical investigation of the Joplin tornado; NWS service assessments — head injury
-as the leading cause of death in violent tornadoes.»
+CDC reviewed all 338 deaths from the April 2011 outbreak across five southeastern states. Ninety
+and a half percent of the injuries happened **indoors** — and 37 percent of the bodies were
+recovered outside. Nearly ninety-six percent of the deaths were multisystem trauma, and 21.9
+percent of the death certificates specifically noted a head injury. Forty-seven percent of the
+dead were in single-family homes and 26.6 percent in mobile homes. Eighty-nine and a half percent
+of the deaths came from EF-4 and EF-5 tornadoes.
+«SRC: "Tornado-Related Fatalities — Five States, Southeastern United States, April 25–28, 2011."
+MMWR Morb Mortal Wkly Rep 2012;61(28):529–533. |
+https://www.cdc.gov/mmwr/preview/mmwrhtml/mm6128a3.htm | retrieved 2026-07-29»
 
-That is why Protection 25 in this book is a bicycle helmet, and why it is one of the cheapest
-things in it. A helmet on every head, including the adults, including the ones who feel silly. The
-objection is always the same — *it looks ridiculous* — and it is worth being blunt about the trade:
-you are weighing thirty seconds of feeling foolish against the specific injury that is most likely
-to kill you in the specific event you are sheltering from. That is not a close call. Keep the
-helmets with the safe room, not in the garage, because a helmet you have to go and find is a
-helmet you will not be wearing.
+Read those numbers together and they say something specific. *Multisystem* trauma means the body
+was struck in several places at once, which is what happens when a house comes apart around a
+person rather than a single object arriving. Debris in a tornado is not one thing — it is a graded
+spectrum from grit and glass through roofing material to framing lumber and appliances. A person
+crouched in an interior hallway is protected against grit. They are not protected against the
+hallway itself. That is why the first protection in this book's tornado order is not a purchase at
+all — it is Protection 23, choosing a room whose walls are not going to become the debris.
+
+Protection 25 is a bicycle helmet, and it is here on the strength of about one death in five
+carrying a head injury, not on any claim that a helmet is the difference between living and dying.
+CDC is unusually direct about this and it is worth quoting: *"Currently, no data are available
+regarding the effectiveness of helmet use to prevent head injuries during a tornado,"* and
+*"choosing to use helmets to protect the head should not be considered an alternative to seeking
+appropriate shelter."* CDC still recommends keeping helmets and blankets in the safe room. So does
+this book — as a fifteen-dollar addition to a good room, never as a substitute for one, and kept
+*in* the room, because a helmet you have to go and find is a helmet you will not be wearing.
 
 The second thing about trauma is that most of it is delivered by the building you are in, not by
 the storm. Wind does not usually pick up a house and carry it away. It finds an opening, enters,
@@ -148,8 +175,31 @@ dangerous — by the time you are in trouble, the faculty you would use to recog
 faculty you have already lost.
 
 Heat is, over the long run, the deadliest weather hazard in the United States, and it kills with
-almost no drama.
-«CITE: NWS 30-year weather fatality averages; CDC heat-related mortality data.» There is no
+almost no drama. The Weather Service keeps the tally, and the thirty-year annual averages are not
+close:
+
+| Hazard | 30-year annual average US deaths | 10-year annual average |
+|---|---|---|
+| **Heat** | **180** | **279** |
+| Flood | 94 | 118 |
+| Tornado | 73 | 51 |
+| Hurricane | 50 | 25 |
+| Winter | 33 | 27 |
+| Lightning | 31 | 19 |
+| Cold | 30 | 35 |
+| **All weather** | **619** | **658** |
+
+«SRC: National Weather Service, Office of Climate, Water and Weather Services, "Natural Hazard
+Statistics: 81-Year List of Severe Weather Fatalities" (1940–2025), 10-year and 30-year average rows. |
+https://www.weather.gov/media/hazstat/81year_2025.pdf | retrieved 2026-07-29»
+
+Two things in that table deserve attention. Heat is the largest single category by roughly a factor of
+two over the next one. And heat is the only major category where the recent ten-year average is
+dramatically *higher* than the thirty-year average — 279 against 180 — while tornado, hurricane and
+lightning deaths have all fallen. Warning systems and building codes have been winning against the
+dramatic hazards. Nothing has been winning against the quiet one.
+
+There is no
 footage of it. Heat deaths happen indoors, alone, to people who were old or ill or poor or all
 three, in apartments without functioning air conditioning, over several days. The victim usually
 does not call anyone. Heat waves also frequently coincide with grid strain, which is why the
@@ -338,11 +388,20 @@ that it is worth stating directly, because it changes what you should do.
 The mechanisms do not select randomly. They select for isolation, for age, for dependence, and for
 housing.
 
-**Living alone** is the strongest single factor running through the back-loaded mechanisms. Heat
-deaths, cold deaths, and medical decompensation cluster in households of one, because every one of
-those mechanisms begins with impaired judgment and nobody present to notice it. The person does not
-decide not to call for help. They stop being able to recognize that they should.
-«CITE: heat and cold mortality studies on social isolation as a risk factor; CDC.»
+**Living alone** runs through every one of the back-loaded mechanisms. CDC's own list of who is at
+elevated risk of health harm from heat names **people who are socially isolated** alongside adults over
+65, people with chronic conditions, people with disabilities, and people who lack access to cooling —
+which is to say the risk factors this book keeps returning to are the ones the clinical guidance already
+lists.
+«SRC: CDC, "Clinical Overview of Heat" — risk factors for health harms from heat. |
+https://www.cdc.gov/heat-health/hcp/clinical-overview/index.html | retrieved 2026-07-29»
+
+The mechanism behind that is not mysterious. Every one of these failures begins with impaired judgment,
+and a household of one has nobody present to notice it. The person does not decide not to call for
+help. They stop being able to recognize that they should. This is why the check-in agreement in the
+extreme heat playbook — a specific named person contacting a specific isolated person daily, with a
+physical visit if there is no answer — is free, unglamorous, and one of the highest-value actions in
+the book.
 
 **Age** compounds it. Thermoregulation becomes less efficient, thirst signalling becomes less
 reliable, medication dependence rises, and mobility falls — which means the same house at the same

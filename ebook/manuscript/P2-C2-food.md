@@ -104,16 +104,23 @@ not know how long it was above 40°F, throw it out.**
 
 The protocol, in order:
 
-1. **Keep the doors shut.** A closed refrigerator holds safe temperature for a number of hours and a
-   full freezer for considerably longer — a half-full freezer for less. Every opening costs you. The
+1. **Keep the doors shut, and know the numbers.** FDA's figures: **an unopened refrigerator holds food
+   cold for about 4 hours. A full freezer holds temperature for about 48 hours — 24 hours if it is half
+   full.** After power returns, discard any refrigerated perishable (meat, poultry, seafood, milk, eggs,
+   leftovers) that has been above 40°F for 4 hours or more; frozen food that still has ice crystals or
+   reads 40°F or below is safe to refreeze or cook. And the separate rule that catches people out:
+   perishable food left at room temperature for 2 hours — **1 hour if it is above 90°F outside** — is
+   discarded regardless of how it looks or smells. Fifty pounds of dry ice will hold an 18-cubic-foot
+   full freezer for two days. Every opening costs you. The
    free move that buys the most time: **before the power goes, freeze water in sealed bags and put them
    in both the freezer and the fridge.**
    «SRC: FDA, "Refrigerator Thermometers — Cold Facts about Food Safety" — In Case of Disaster:
    pre-freezing water in quart bags, and keeping both doors closed as much as possible.
    https://www.fda.gov/food/buy-store-serve-safe-food/refrigerator-thermometers-cold-facts-about-food-safety
    · retrieved 2026-07-29»
-   «CITE: USDA specific holding times for an unopened refrigerator, a full freezer, and a half-full
-   freezer — the 4-hour / 48-hour / 24-hour figures.»
+   «SRC: FDA, "Food and Water Safety During Power Outages and Floods." |
+   https://www.fda.gov/food/buy-store-serve-safe-food/food-and-water-safety-during-power-outages-and-floods
+   | retrieved 2026-07-29»
 2. **Fill the empty space now, before anything happens.** Water bottles frozen in the freezer's gaps
    are free thermal mass. They extend the hold, they become drinking water as they thaw, and they can
    be moved into the refrigerator to extend that too.
@@ -213,11 +220,13 @@ For some households this is the most important protection in the chapter, and ge
 useless here — so this is a set of instructions rather than a list.
 
 **Infants.** The critical insight is water dependence. Powdered formula requires safe water at a safe
-temperature; ready-to-feed liquid formula requires neither. In an emergency where the water supply is
-uncertain, ready-to-feed is the safer form, and a supply of it belongs in the store even if powdered
-is what you normally use.
-«CITE: CDC / AAP guidance on infant formula preparation during water emergencies, and the preference
-for ready-to-feed.» Bottles and teats need treated water for cleaning, which is a demand people
+temperature; ready-to-feed liquid formula requires neither. FDA's own instruction for flood and outage
+conditions is exactly this: *"For infants, try to use prepared, canned baby formula that requires no
+added water."* In an emergency where the water supply is uncertain, ready-to-feed is the safer form,
+and a supply of it belongs in the store even if powdered is what you normally use.
+«SRC: FDA, "Food and Water Safety During Power Outages and Floods." |
+https://www.fda.gov/food/buy-store-serve-safe-food/food-and-water-safety-during-power-outages-and-floods
+| retrieved 2026-07-29» Bottles and teats need treated water for cleaning, which is a demand people
 forget to count.
 
 **Allergies.** Cross-contamination risk rises sharply when food comes from unfamiliar sources —
@@ -273,14 +282,24 @@ packaging, screw-top and crimp-top bottles and jars, containers with pull tabs o
 canning, and anything with a compromised seam. Home-canned goods go regardless of appearance, because
 the seal cannot be verified.
 
-**Undamaged commercially canned goods can be salvaged** after the cans are cleaned and disinfected
-following the published procedure, and after any can that is bulging, leaking, rusted through, or
-badly dented at a seam is discarded.
-«CITE: USDA / FDA procedure for salvaging and disinfecting commercially canned food after flood
-exposure, including the labelling step.»
+**Undamaged commercially canned goods can be salvaged** — and so can retort pouches, the flexible
+shelf-stable kind. FDA's procedure, in order:
 
-Remove the paper labels, since they hold contamination, and re-mark the contents and date on the can
-directly.
+1. Remove the labels if they are removable; they harbour dirt and bacteria.
+2. Brush or wipe away dirt and silt.
+3. Wash thoroughly with soap and water, hot if you have it.
+4. Rinse with water that is safe to drink — residual soap and dirt reduce the effect of the chlorine.
+5. Sanitise by immersion, one of two ways: **boil for 2 minutes**, or soak 15 minutes in **1 cup of
+   unscented 5.25% household bleach per 5 gallons of water.**
+6. **Air dry for at least an hour** before opening or storing.
+7. Re-label with a permanent marker, including the expiration date.
+
+Use reconditioned cans as soon as possible afterwards. Discard any can with swelling, leakage,
+punctures, holes, fractures, extensive deep rusting, or denting severe enough to stop it stacking or
+to stop a manual can opener working on it.
+«SRC: FDA, "Food and Water Safety During Power Outages and Floods." |
+https://www.fda.gov/food/buy-store-serve-safe-food/food-and-water-safety-during-power-outages-and-floods
+| retrieved 2026-07-29»
 
 **What this does not do:** cleaning a can does not rescue its contents if the seal failed, and no
 amount of washing makes porous packaging safe. When the judgment is close, the answer is discard —

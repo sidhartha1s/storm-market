@@ -45,10 +45,22 @@ January.
 «SRC: Ready.gov, "Water" — Determining Water Needs. https://www.ready.gov/water ·
 retrieved 2026-07-29»
 
-Two weeks, not three days. Three days is the old floor, and it was set when the assumption was that
-outside help arrives quickly. Recent events have not supported that assumption, and current guidance
-for many areas has moved toward two weeks.
-«CITE: current FEMA/Ready.gov guidance on two-week supplies, and which conditions it applies to.»
+Two weeks, not three days — and it is worth being exact about where each number comes from, because
+they are not the same authority saying different things. **Ready.gov says one gallon per person per
+day "for several days."** That is the federal floor and it is written for the common case. **The
+two-week figure is state guidance from the places that expect help to be slow**: Oregon's Department
+of Emergency Management and Washington's Emergency Management Division both run a public programme
+called **"Be 2 Weeks Ready,"** and both say plainly that after a large regional event the emergency
+system will be saturated and *you are the help until help arrives.*
+«SRC: Oregon Department of Emergency Management, "Be 2 Weeks Ready." |
+https://www.oregon.gov/oem/hazardsprep/pages/2-weeks-ready.aspx | retrieved 2026-07-29»
+«SRC: Washington State Emergency Management Division, "Be 2 Weeks Ready." |
+https://mil.wa.gov/preparedness | retrieved 2026-07-29»
+
+This book uses two weeks as its planning figure, and the reason is the arithmetic of scale rather
+than pessimism: three days assumes the disaster is local and the region around it is intact. Every
+event where that assumption failed — a Cascadia rupture, a multi-state ice storm, an island
+hurricane — is an event where the region around you needs the same trucks you do.
 
 Run your own number rather than accepting a generic one, and write it on the form in Part Six:
 household members, plus pets, times fourteen. Pets are not a rounding error — a large dog can drink

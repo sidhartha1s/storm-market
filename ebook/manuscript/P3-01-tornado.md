@@ -27,6 +27,25 @@ an instruction to move.
 Seventeen minutes from warning to touchdown is enough time. It was not enough time to spend most of
 it looking for a second opinion.
 
+And Joplin was not an isolated case. The Weather Service's assessment of the 27 April 2011 outbreak —
+**316 fatalities that day (234 in Alabama, 32 in Tennessee, 31 in Mississippi, 15 in Georgia, 4 in
+Virginia) and more than 2,400 injuries** — reports that **every single tornado fatality occurred inside
+a tornado watch and was preceded by a tornado warning.** Watch lead time averaged 2.4 hours. Mean
+warning lead time was 22.1 minutes. Probability of detection was 89 percent. And among the contributing
+factors the assessment lists by name: *"individuals in the affected areas who did not respond to
+warnings until confirmed by more than one communication source"* and *"people in the paths of the storms
+who waited for visual confirmation before taking protective action"* — with the storms moving at 45 to
+70 mph, which shrank the window for anybody who waited.
+«SRC: NWS, *Service Assessment: The Historic Tornadoes of April 2011.* |
+https://www.weather.gov/media/publications/assessments/historic_tornadoes.pdf | retrieved 2026-07-29»
+
+There is one more number in that assessment worth sitting with, because it explains the behaviour rather
+than condemning it: **the false alarm ratio was 49 percent.** About half of the tornado warnings issued
+did not produce a tornado at that location. A person who has learned from experience that a warning is a
+coin flip is not being stupid when they go to the window. They are being empirical. The problem is that
+the coin flip is asymmetric — being wrong in one direction costs you ten minutes in a hallway, and being
+wrong in the other direction costs everything.
+
 That is the finding this book is built on, and it is why Protection 95 — the trigger plan, written down
 in advance, that commits you to acting on the first alert rather than the third — is the highest-leverage
 free thing in the book.
@@ -35,14 +54,26 @@ free thing in the book.
 
 ## What actually kills, and what actually costs
 
-**Killed by:** trauma, overwhelmingly. Head injury above all, then chest and abdominal injury from
-debris and from being struck by or thrown against structure. Tornado deaths are a debris problem, not a
-wind problem — a wind that will not knock you over is carrying material that will kill you.
+**Killed by:** trauma, overwhelmingly — and specifically *multisystem* trauma, the body struck in
+several places at once. CDC reviewed all 338 deaths across the four days of 25–28 April 2011 — the 316
+above are the 27th alone — and found that 95.6 percent
+died of multisystem trauma and 21.9 percent of the death certificates noted a head injury. Tornado
+deaths are a debris problem, not a wind problem: a wind that will not knock you over is carrying
+material that will kill you, and in a violent tornado most of that material is the building you are in.
+
+The number in that report that should change what you do is this one: **90.5 percent of the fatal
+injuries happened indoors, and 37 percent of the bodies were recovered outside.** Being inside was not
+the protection people assumed. Which room, and what that room is made of, was.
 
 Two specific patterns account for a large share of deaths and are both addressable. **Mobile and
-manufactured homes** fail structurally in winds that a site-built house survives, and the fatality rate
-in them is disproportionate by a wide margin.
-«CITE: statistics on the share of US tornado fatalities occurring in mobile or manufactured housing.»
+manufactured homes** fail structurally in winds that a site-built house survives. CDC lists
+"sheltering in mobile homes" first among the known risk factors for tornado death, and in that
+outbreak 26.6 percent of the dead were in mobile homes against 46.7 percent in single-family homes.
+Almost a third of the dead (32.5 percent) were aged 65 or over, and 89.5 percent of the deaths came
+from EF-4 and EF-5 tornadoes.
+«SRC: "Tornado-Related Fatalities — Five States, Southeastern United States, April 25–28, 2011."
+MMWR Morb Mortal Wkly Rep 2012;61(28):529–533. |
+https://www.cdc.gov/mmwr/preview/mmwrhtml/mm6128a3.htm | retrieved 2026-07-29»
 **Vehicles** are the other: people who leave shelter to drive, or who are caught driving and stay in the
 car.
 

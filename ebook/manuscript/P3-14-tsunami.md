@@ -149,9 +149,14 @@ Sewers are broken.
 **The recovery is a Part One problem, not a Part Three problem.** Realistically, a Cascadia event means a
 region without water, power, fuel, roads, bridges, hospitals or supply chains for weeks and in places
 months — which is why coastal Northwest households are advised to plan for a **two-week minimum** of
-self-sufficiency rather than the three days the national messaging uses.
-«CITE: the specific two-week preparedness recommendation issued by Pacific Northwest state emergency
-management agencies, with the agency named.»
+self-sufficiency rather than the three days the national messaging uses. That is not a rule of thumb
+from a book. Oregon's Department of Emergency Management and Washington's Emergency Management
+Division both run a named public programme, **"Be 2 Weeks Ready,"** on exactly that reasoning: after
+a regional event the emergency medical system is saturated and *you are the help until help arrives.*
+«SRC: Oregon Department of Emergency Management, "Be 2 Weeks Ready." |
+https://www.oregon.gov/oem/hazardsprep/pages/2-weeks-ready.aspx | retrieved 2026-07-29»
+«SRC: Washington State Emergency Management Division, "Be 2 Weeks Ready." |
+https://mil.wa.gov/preparedness | retrieved 2026-07-29»
 
 That is the honest bottom line of this playbook: your survival is decided by a fifteen-minute walk you
 planned in advance, and your recovery is decided by Protections 1, 13, 37 to 46 and 53 to 55 — the ordinary
