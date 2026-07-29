@@ -28,12 +28,14 @@ specific things well while waiting for people who are coming as fast as they can
 
 ## What actually kills, and what actually costs
 
-**Uncontrolled bleeding is the leading preventable cause of death from trauma**, and the window is minutes.
-A person with an arterial injury to a limb can die in less time than it takes to describe the problem, and
-the intervention — direct pressure, packing, a tourniquet — is within the reach of anybody who has been shown
-once.
-«CITE: the Stop the Bleed / Hartford Consensus source establishing haemorrhage as the leading preventable
-cause of trauma death and the time frame involved.»
+**Uncontrolled bleeding is the number one cause of preventable death after injury** — that is the
+American College of Surgeons' own headline for the programme it runs on the subject — and the window is
+minutes. A person with an arterial injury to a limb can die in less time than it takes to describe the
+problem, and the intervention is three actions: direct pressure, wound packing, a tourniquet. It is
+within the reach of anybody who has been shown once, which is the entire premise of the course.
+«SRC: American College of Surgeons, ACS Stop the Bleed — "Bleeding Is the #1 Cause of Preventable Death
+after Injury"; three basic actions to control severe bleeding; original US DoD STOP THE BLEED partner. |
+https://www.stopthebleed.org/ | retrieved 2026-07-29»
 
 **Airway obstruction and breathing failure**, from injury, from smoke inhalation, from asthma without an
 inhaler.

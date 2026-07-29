@@ -234,10 +234,23 @@ households often need both.
 **Cost:** $0 to ask · **Time:** an hour, plus an inspection fee where applicable
 · **Materials:** documentation of your upgrades · **Regions:** Hurricane Coast, hail regions.
 
-Several states require insurers to discount premiums for verified wind-resistant construction —
-Florida mandates it by statute, and other states have their own schemes and their own minimums.
-«CITE: Fla. Stat. § 627.0629 and equivalent state statutes or bulletins requiring mitigation
-discounts.»
+Several states require insurers to discount premiums for verified wind-resistant construction, and
+Florida's statute is worth quoting because it tells you precisely which upgrades are in scope. Fla.
+Stat. § 627.0629 states the Legislature's intent that insurers "provide savings to consumers who
+install or implement windstorm damage mitigation techniques," and requires that a residential property
+rate filing **"must include actuarially reasonable discounts, credits, or other rate differentials, or
+appropriate reductions in deductibles"** for construction demonstrated to reduce windstorm loss. The
+statute then lists the categories, and they map almost exactly onto this book's Part Two chapter on
+structure: **wind uplift prevention, roof strength, roof covering performance, roof-to-wall strength,
+wall-to-floor-to-foundation strength, opening protection, and window, door and skylight strength.**
+
+And since **1 October 2023** each insurer subject to the section **must publish its hurricane mitigation
+discounts on its own website**, reachable from the home page or the property-policyholder page. That is
+the document to go and read before you telephone anybody.
+«SRC: Florida Statutes § 627.0629, "Residential property insurance; rate filings." |
+https://www.flsenate.gov/Laws/Statutes/2024/627.0629 | retrieved 2026-07-29»
+
+Other states run their own schemes with their own minimums; your state's is in the Appendix B entry.
 
 But here is the honest and useful part, and it is why this protection is a phone call rather than a
 percentage: **the actual credit is specific to your carrier and your county, and it is published in

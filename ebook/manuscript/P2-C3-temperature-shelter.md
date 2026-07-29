@@ -174,10 +174,14 @@ is where the household goes. Then identify, and write down, the nearest reliably
 public building: library, mall, community centre, or the official cooling centre your county opens.
 Know its hours and how you would get there without a car.
 
-Fans help only while air temperature is below body temperature. Above that, a fan blowing hot air on a
-person accelerates dehydration and does not cool them — which is exactly when people believe it is
-helping.
-«CITE: CDC guidance on fan use above a stated ambient temperature threshold.»
+Fans help only up to a point, and the Weather Service names the point: **"Do not direct the flow of
+portable electric fans toward yourself when room temperature is hotter than 90°F. The dry blowing air
+will dehydrate you faster, endangering your health."** Above that threshold a fan is still useful — for
+**exhausting hot air out of a room or drawing cooler air in** — but not for blowing on a person. That is
+exactly the moment when people believe it is helping most.
+«SRC: National Weather Service, "During a Heat Wave" — do not direct portable electric fans at yourself
+above 90°F; use them to exhaust hot air or draw in cooler air. |
+https://www.weather.gov/safety/heat-during | retrieved 2026-07-29»
 
 Active cooling works: cool showers, wet cloths at neck and wrists, feet in cool water.
 

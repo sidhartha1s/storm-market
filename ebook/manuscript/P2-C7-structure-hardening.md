@@ -54,10 +54,18 @@ deck is plywood sheets with open seams and a layer of felt. A **sealed roof deck
 adheres those seams so that a roof stripped of its covering is still a water barrier. The difference
 between a repairable roof and a gutted interior is frequently exactly this.
 
-This is the core of the recognised fortified-construction standards, and it is designed to be done at
-re-roofing time — which is why the instruction is to **decide now and put it in the file**, so that
-when your roof is next replaced you specify it rather than discovering it afterwards.
-«CITE: IBHS FORTIFIED Roof — sealed roof deck requirement and the documented performance basis.»
+This is the core of the recognised fortified-construction standards. IBHS describes taping over all
+horizontal and vertical joints before the underlayment goes on as **"one of the most cost-effective and
+easy-to-install elements"** of its FORTIFIED Roof programme — and it is moving out of the voluntary
+standard and into law: Connecticut amended the 2015 International Residential Code to require exactly
+that step on roof decking.
+«SRC: Insurance Institute for Business & Home Safety, "Lead with the Roof" / FORTIFIED Home technical
+standards — sealed roof deck; Connecticut IRC amendment requiring taped deck joints. |
+https://ibhs.org/fortified/roof/ | retrieved 2026-07-29»
+
+It is designed to be done at re-roofing time — which is why the instruction is to **decide now and put
+it in the file**, so that when your roof is next replaced you specify it rather than discovering it
+afterwards.
 
 Get the documentation. It is what earns the insurance credit in Protection 104.
 
@@ -207,8 +215,26 @@ Two actions. **Replace attic and crawlspace vents with ember-resistant units**, 
 non-combustible mesh to the specification your state fire authority publishes. And clear **Zone 0** —
 the first five feet around the structure — of everything combustible: bark mulch, dead plants,
 firewood stacks, door mats, patio furniture cushions, propane tanks, and the recycling bin.
-«CITE: state fire authority / IBHS guidance on ember-resistant vent specification and Zone 0
-requirements.»
+
+The Zone 0 instruction gets argued with more than any other in this chapter, usually along the lines
+that the shrubs by the door are green and watered. IBHS ran **17 controlled experiments** on exactly
+that question and the finding was that vegetation within the first five feet **"significantly
+increases heat exposure during a wildfire and can amplify damage, even when plants are well-watered."**
+Watered is not the same as non-combustible.
+«SRC: Insurance Institute for Business & Home Safety, "Vegetation in Zone 0: Amplifying Damage to
+Structures" — 17 controlled experiments. | https://ibhs.org/wildfire/vegetationinzone0/ |
+retrieved 2026-07-29»
+
+California has put the ember-resistant zone into statute rather than guidance. Public Resources Code
+§ 4291 requires 100 feet of defensible space around a structure in the state responsibility area, with
+**"more intense fuel reductions being utilized between 5 and 30 feet around the structure, and an
+ember-resistant zone"** inside five feet — the latter added by AB 3074 (2019–20) and phased in, taking
+effect for existing structures three years after it takes effect for new ones. If you are in
+California, this is a legal obligation with an inspection regime, not advice.
+«SRC: California Public Resources Code § 4291 (defensible space; ember-resistant zone added by AB 3074,
+2019–20 Regular Session). |
+https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=4291 |
+retrieved 2026-07-29»
 
 Gutters full of needles are ember collectors. Clean them, and clean under the deck.
 
@@ -230,8 +256,19 @@ fuels removed** — the low branches and brush that let a ground fire climb into
 is the transition that makes a fire unstoppable.
 
 Specific distances and requirements are set by state and sometimes by county, and in several states
-they are legally mandated with inspections.
-«CITE: state defensible-space requirements by zone, and the inspection regime where one exists.»
+they are legally mandated with inspections. California is the clearest case and a useful model even if
+you live elsewhere: PRC § 4291 requires **100 feet** of defensible space, more intense fuel reduction
+**between 5 and 30 feet**, and an **ember-resistant zone within 5 feet.** The same statute separately
+requires you to remove any part of a tree extending within **10 feet of a chimney or stovepipe outlet**,
+keep plants adjacent to or overhanging the building free of dead or dying wood, and keep the roof clear
+of leaves and needles.
+«SRC: California Public Resources Code § 4291. |
+https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=4291 |
+retrieved 2026-07-29»
+
+Look up your own state's version by searching your state fire authority's name and "defensible space."
+Where a state has no mandate, the California distances are the best-tested numbers available and there
+is no reason to use worse ones.
 
 Do it annually, before fire season, not during it.
 

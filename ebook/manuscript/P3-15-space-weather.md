@@ -10,8 +10,19 @@ On 13 March 1989, at about half past two in the morning, the entire Hydro-Québe
 two minutes. Six million people lost power in a Canadian March, and it took about nine hours to restore.
 The cause was a geomagnetic storm driven by a coronal mass ejection from the sun: currents induced in the
 long transmission lines destabilised the system faster than its protection could respond.
-«CITE: the March 1989 Hydro-Québec geomagnetic storm — the collapse timing, number of customers affected,
-and restoration duration.»
+NOAA's own account is that the Hydro-Québec utility *"went from full operating capacity to"* blackout —
+and the agency's G-scale puts numbers on how often this class of storm arrives. **G5, the top of the
+scale (Kp=9), is described as: "widespread voltage control problems and protective system problems can
+occur, some grid systems may experience complete collapse or blackouts. Transformers may experience
+damage."** NOAA's stated average frequency for G5 conditions is **about four storm days per eleven-year
+solar cycle.** This is not a once-a-century hazard. It is a several-times-a-decade hazard that has
+mostly been lucky about where it landed.
+«SRC: NOAA Space Weather Prediction Center, "Space Weather: Storms from the Sun" (booklet) — March
+1989: "the Hydro-Quebec electrical utility went from full operating capacity to" blackout; NOAA G-scale
+G5 (Extreme, Kp=9): "widespread voltage control problems and protective system problems can occur, some
+grid systems may experience complete collapse or blackouts. Transformers may experience damage" — about
+4 such storm days per 11-year cycle. |
+https://www.swpc.noaa.gov/sites/default/files/images/u33/swx_booklet.pdf | retrieved 2026-07-29»
 
 The reference event for the worst case is older. In September 1859 the Carrington event produced aurora
 visible at tropical latitudes and induced currents strong enough to shock telegraph operators and set

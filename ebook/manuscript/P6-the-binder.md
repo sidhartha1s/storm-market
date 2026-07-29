@@ -67,6 +67,8 @@ three phone numbers: pet-friendly shelter, boarding facility, out-of-area contac
 **Services:** insurance claims line and policy number, plumber, electrician, roofer, arborist, pharmacy,
 vet, school office.
 **Your county's ten-digit emergency backup number** for when 911 is down.
+**Crisis lines:** 988 (Suicide & Crisis Lifeline — call or text), and the current Disaster Distress
+Helpline number and text option, copied from SAMHSA's page on the day you fill this in.
 
 ### Form 5 · Who does what
 *Serves 108, and the reunification agreement in Part Four.*

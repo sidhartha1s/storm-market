@@ -60,9 +60,14 @@ close to worthless without it.
 **Cost:** $0–80 · **Time:** two to four hours, once · **Materials:** a course
 · **Regions:** all five. Rank 6 Quake West.
 
-Two courses. **Stop the Bleed** teaches wound packing, direct pressure, and tourniquet application, and
-is widely available and frequently free.
-«CITE: Stop the Bleed programme — course content, availability, and free-provision channels.» **CPR**
+Two courses. **Stop the Bleed** is run by the American College of Surgeons — the original US Department
+of Defense STOP THE BLEED partner — and it teaches **three basic actions to control severe bleeding**:
+direct pressure, wound packing, and a tourniquet. More than five million people have taken it. Courses
+are found through the programme's own directory and are frequently free; kits are sold separately and
+the course does not require you to buy one.
+«SRC: American College of Surgeons, ACS Stop the Bleed — "Bleeding Is the #1 Cause of Preventable Death
+after Injury"; three basic actions; original US DoD STOP THE BLEED partner; more than 5 million people
+trained. | https://www.stopthebleed.org/ | retrieved 2026-07-29» **CPR**
 is equally available and equally worth an afternoon.
 
 Take them with the whole household — everyone over about twelve. The point is redundancy: the injured
@@ -88,12 +93,25 @@ Aim for a thirty-day buffer on every prescription in the household. Getting ther
 with your prescriber and your pharmacist, not a trick: ask for a ninety-day supply where the
 medication and the insurance allow it, and ask specifically about an emergency supply provision.
 
-Then learn the thing almost nobody knows: **most states have a law allowing an early or emergency
-refill under a declared emergency or evacuation order.** The provisions vary — how many days, which
-medications, whether a declaration is required — and knowing yours in advance is the difference between
-a pharmacist who can help you and one who cannot.
-«CITE: state-by-state emergency prescription refill statutes — the provisions and their conditions.
-This belongs in the Appendix B state directory.»
+Then learn the thing almost nobody knows: **many states have a law allowing an early or emergency
+refill under a declared emergency.** Florida's is the clearest and worth reading as a model, because it
+tells you exactly what to say. Fla. Stat. § 252.358 requires insurers and managed care organisations to
+**waive time restrictions on refills — including suspending the electronic "refill too soon" edits sent
+to pharmacies — and to authorise payment for at least a 30-day supply regardless of when the
+prescription was last filled**, when the person's county is under a **hurricane warning from the
+National Weather Service**, or under a **state of emergency declared by the Governor**, or has
+**activated its emergency operations centre and emergency management plan.** The request has to be made
+within 30 days of that condition starting, and there must be authorised refills remaining.
+«SRC: Florida Statutes § 252.358, "Emergency-preparedness prescription medication refills." |
+https://www.flsenate.gov/Laws/Statutes/2024/252.358 | retrieved 2026-07-29»
+
+Note the mechanism, because it is the useful part: the barrier is usually not the pharmacist's judgment
+but an automated insurance rejection, and the statute works by switching that rejection off. So the
+sentence at the counter is not "please can I have it early" — it is *"my county is under a hurricane
+warning; the refill-too-soon edit should be waived."*
+
+**Your state's version is different, and the differences matter** — how many days, which medications,
+whether a declaration is required. Yours is in the Appendix B directory entry for your state.
 
 Keep a written list of every medication, dose, prescriber, and pharmacy in the document vault, because
 an out-of-area pharmacist can often help a displaced patient who has the list and cannot help one who
@@ -163,13 +181,23 @@ day four.
 **Cost:** $10–25 · **Time:** none · **Materials:** burn dressings, cling film
 · **Regions:** all five — burns rise sharply in outages, from candles, stoves, and generators.
 
-Cool running water for a sustained period is the intervention, and the duration is longer than
-instinct suggests. Remove jewellery and constricting clothing early, before swelling. Cover loosely
-with a sterile non-adherent dressing or clean cling film, which does not stick to the wound.
+**The first decision is minor or major, and the two get opposite treatment. If you are not sure, treat
+it as major.**
 
-Do not apply ice, butter, ointments, or toothpaste. Do not break blisters.
-«CITE: burn first-aid guidance — cooling duration, covering, and the contraindications — from a
-recognised clinical authority.»
+**Minor burn, skin unbroken:** run **cool water** over it or soak it in a cool water bath — *not* ice
+water — and **keep it under water for 5 to 30 minutes.** Then cover with a dry sterile bandage or clean
+dressing, and protect it from pressure and friction. Remove jewellery and constricting clothing early,
+before swelling. Once it has cooled, moisturiser with aloe helps; if the skin is broken an ointment is
+preferred, because it stops the dressing sticking.
+
+**Major burn:** call 911 first. Then — and this is the counter-intuitive one, so read it twice —
+**do not put a severe burn in cold water; it can cause shock.** Do not apply oil, butter, ice,
+medicines, cream or any household remedy. Do not breathe, blow or cough on it. Do not disturb blistered
+or dead skin. Do not remove clothing that is stuck to the skin. Do not give anything by mouth. And if
+there is an airway burn, **do not put a pillow under the head** — it can close the airway.
+«SRC: MedlinePlus Medical Encyclopedia (US National Library of Medicine), "Burns" — first aid for minor
+and major burns, and the DO NOT list. | https://medlineplus.gov/ency/article/000030.htm |
+retrieved 2026-07-29»
 
 Know what needs care you cannot give: burns that are large, deep, circumferential, or on the face,
 hands, feet, or genitals, and any burn on an infant or an elderly person. Airway burns from smoke or
@@ -194,10 +222,18 @@ Get them out of wet clothing, into dry layers, insulated from the floor, and int
 warm room. Warm sweet drinks if they are fully alert and swallowing safely. Skin-to-skin contact under
 blankets works. Warm the core and the trunk, not the extremities.
 
-Handle a severely hypothermic person **gently** and do not rub or massage limbs, and do not put them in
-a hot bath — rough handling and aggressive peripheral rewarming can precipitate cardiac problems.
-«CITE: hypothermia field management guidance — staging, gentle handling, core rewarming, and the
-contraindications.»
+Handle a severely hypothermic person **gently.** The clinical guidance is explicit on both halves of
+this: someone severely hypothermic should be moved out of the cold **"with as little exertion as
+possible,"** because exertion shunts warmth from the core out to the muscles — and **"do not use direct
+heat (such as hot water, a heating pad, or a heat lamp) to warm the person."** Warm compresses go to the
+**neck, chest wall and groin.** Cover the head and neck. Get wet or tight clothing off and dry, loose
+clothing on. No alcohol.
+
+Two more instructions from the same source that matter in a disaster: **call 911 for any suspected
+hypothermia**, especially if there is confusion or difficulty thinking — and **do not assume that
+someone found lying motionless in the cold is already dead.**
+«SRC: MedlinePlus Medical Encyclopedia (US National Library of Medicine), "Hypothermia" — first aid and
+the DO NOT list. | https://medlineplus.gov/ency/article/000038.htm | retrieved 2026-07-29»
 
 Watch the vulnerable: infants lose heat fast, the elderly may not shiver at all, and alcohol
 accelerates the whole process while making the person feel warm.
@@ -275,11 +311,23 @@ restores a sense of agency. Regression — bedwetting, clinginess, sleep disrupt
 usually temporary.
 
 For adults: sleep deprivation and decision fatigue are why the injury spike in the recovery window
-happens, so this is a physical safety issue as much as an emotional one. Symptoms that persist,
-worsen, or interfere with functioning warrant professional help, and there are national crisis lines
-that exist for exactly this.
-«CITE: SAMHSA Disaster Distress Helpline and equivalent national crisis line numbers — to be printed
-in the book and in Appendix B.»
+happens, so this is a physical safety issue as much as an emotional one. FEMA's own list of signs that
+an adult may need crisis counselling is worth knowing because none of it sounds like a mental health
+crisis from inside: difficulty communicating thoughts, difficulty sleeping, a low threshold of
+frustration, limited attention span, tunnel vision or muffled hearing, reluctance to leave home,
+overwhelming guilt and self-doubt, fear of crowds or of being alone.
+«SRC: Ready.gov / FEMA, "Coping with Disaster" — signs of disaster-related stress in adults; refers
+readers to SAMHSA's Disaster Distress Helpline. | https://www.ready.gov/coping-disaster |
+retrieved 2026-07-29»
+
+**Two numbers.** The **988 Suicide & Crisis Lifeline** — dial or text **988** — is the general national
+line and operates 24 hours, with Spanish-language call, text and chat.
+«SRC: 988 Suicide & Crisis Lifeline. | https://988lifeline.org/ | retrieved 2026-07-29»
+The **Disaster Distress Helpline** is SAMHSA's line specifically for distress related to natural or
+human-caused disasters, and FEMA points readers to it directly. Its current number and text options are
+published on SAMHSA's page — write them on Form 4 tonight rather than trusting this page to still be
+current when you need it, because a printed helpline number is exactly the kind of thing that changes
+between an edition and an emergency.
 
 **What this does not do:** this is not therapy and not a substitute for it. Its job is to name the
 thing so a household expects it rather than being ambushed by it.
