@@ -6,13 +6,30 @@ Target: 10 pages · draft 1, 2026-07-29
 
 ## The event
 
-At the end of June 2021, a heat dome settled over the Pacific Northwest — a region where air
-conditioning was uncommon because it had never been needed. Portland reached temperatures no reading in
-its record had approached. Hundreds of people died in Oregon, Washington and British Columbia, most of
-them indoors, most of them alone, most of them elderly, and a large majority of them in homes with no
-air conditioning.
-«CITE: Oregon/Washington/BC official mortality reviews of the late-June 2021 heat dome — death tolls, peak
-temperatures, and the share of decedents living alone without air conditioning.»
+At the end of June 2021 a heat dome settled over the Pacific Northwest — a region where air conditioning
+was uncommon because it had never been needed. **During 25–30 June, most of Oregon and Washington were
+under a National Weather Service excessive heat warning.**
+
+Oregon's own after-action review states the outcome without softening it: **"As of July 26, 2021, a
+confirmed 83 Oregonians ranging in age from 37 to 97 had tragically lost their lives to hyperthermia, or
+elevated body temperature; most lived alone in homes with no working air conditioning or fans."** And
+then, in the state's words rather than this book's: **"Many of these deaths were preventable."**
+«SRC: State of Oregon, *Initial After-Action Review: June 2021 Excessive Heat Event* — 83 confirmed
+hyperthermia deaths as of 26 July 2021, aged 37 to 97; most lived alone in homes with no working air
+conditioning or fans; "many of these deaths were preventable." |
+https://www.oregon.gov/oem/Documents/2021_June_Excessive_Heat_Event_AAR.pdf | retrieved 2026-07-29»
+
+The scale of the medical surge is worth seeing too, because it shows how far outside normal this sat. CDC
+counted heat-related emergency department visits across the region: **1,038 on 28 June 2021, against nine
+on the same date in 2019.** Across the six days of the warning the daily mean was **424 visits, 69 times
+the six per day** in the same period two years earlier. The region holds about 4 percent of the US
+population and accounted for about **15 percent of all heat-related ED visits nationwide that June.** The
+most affected group was people aged 75 and over.
+«SRC: Schramm PJ, Vaidyanathan A, Radhakrishnan L, et al. "Heat-Related Emergency Department Visits During
+the Northwestern Heat Wave — United States, June 2021." MMWR Morb Mortal Wkly Rep 2021;70(29):1020–1021 —
+1,038 heat-related ED visits on 28 June 2021 vs nine on the same date in 2019; mean 424/day during 25–30
+June vs six in 2019; approximately 700 heat-related deaths in the US annually. |
+https://www.cdc.gov/mmwr/volumes/70/wr/mm7029e1.htm | retrieved 2026-07-29»
 
 Two things make heat the hazard this book takes most seriously despite its complete lack of drama.
 
@@ -161,12 +178,22 @@ insulin and similar drugs have specific tolerances and specific published guidan
 your pharmacist's rather than a guess.
 
 **The financial part**, briefly, because it is real: heat drives the largest electricity bills of the
-year, and the households most at risk are the ones who ration cooling because of the bill. Every state
-has a low-income energy assistance programme and many utilities are prohibited from disconnecting
-customers during declared heat events or offer medical-necessity protections. That information is worth
-having before the bill arrives, and it belongs in the state directory at the back of this book.
-«CITE: the federal low-income energy assistance programme name, and an example of a state summer
-disconnection-moratorium or medical-certificate protection.»
+year, and the households most at risk are the ones who ration cooling because of the bill.
+
+The programme to know by name is the **Low Income Home Energy Assistance Program (LIHEAP)**, run by the
+federal Administration for Children and Families and administered by state grant recipients. It is not
+only a winter programme — LIHEAP funds can be used to **"help you stay warm in the winter and cool in the
+summer,"** covering energy bills, energy crises, weatherization and minor energy-related home repairs.
+Search your state's name and "LIHEAP" to find who administers it where you live.
+«SRC: US Department of Health and Human Services, Administration for Children and Families, "Low Income
+Home Energy Assistance Program (LIHEAP)" — assistance with home energy bills, energy crises,
+weatherization and minor energy-related home repairs; explicitly covers staying cool in summer as well as
+warm in winter. | https://www.acf.hhs.gov/ocs/programs/liheap | retrieved 2026-07-29»
+
+Separately, many utilities are prohibited from disconnecting customers during declared heat events, and
+many offer medical-necessity protections for households running powered medical equipment. Those rules are
+set by state, so yours is in the Appendix B entry — get it before the bill arrives, not after the
+shut-off notice.
 
 ---
 

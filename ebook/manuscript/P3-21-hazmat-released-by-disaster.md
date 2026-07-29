@@ -6,12 +6,25 @@ Target: 8 pages · draft 1, 2026-07-29
 
 ## The event
 
-On 3 February 2023 a freight train derailed at East Palestine, Ohio. Several cars carrying vinyl chloride
-and other hazardous materials were involved, a fire burned for days, and responders conducted a controlled
-release and burn of the vinyl chloride to prevent a catastrophic tank failure. Residents within a defined
-radius were evacuated, and the community spent the following year arguing about air, water and soil.
-«CITE: NTSB investigation record for the East Palestine derailment — the materials involved, the evacuation
-radius, and the controlled-release decision.»
+On 3 February 2023 a freight train derailed at East Palestine, Ohio. The NTSB's probable cause, published
+in June 2024, was mundane: **a bearing on a hopper car failed and overheated.** Three days later the local
+incident commander ordered a **"vent and burn"** of the tank cars carrying vinyl chloride monomer — the
+black plume everybody remembers.
+
+And here is the finding this book cannot leave out. NTSB concluded that the decision to vent and burn
+**"was based on incomplete and misleading information provided by Norfolk Southern officials and
+contractors"** and that **it "was not necessary to prevent a tank car failure."** The most frightening
+image of the event was an avoidable one.
+
+Two more items from NTSB's list of safety issues are directly relevant to a household. **The hazardous
+materials placards burned away**, which prevented responders from immediately identifying what they were
+dealing with. And emergency-response training for the volunteer first responders who arrived was
+inadequate. The people at the front of this were working blind.
+«SRC: National Transportation Safety Board, "Failed Wheel Bearing Caused Norfolk Southern Train Derailment
+in East Palestine, Ohio" (board meeting, 25 June 2024) — probable cause; vent-and-burn decision
+"unnecessary" and based on incomplete and misleading information; placards burned away; inadequate
+volunteer responder training; continued use of DOT-111 tank cars. |
+https://www.ntsb.gov/news/press-releases/Pages/NR20240625.aspx | retrieved 2026-07-29»
 
 The reason it belongs in this book is not the train. It is the reader's position. Thousands of households
 discovered, in an afternoon, that they lived close enough to a rail line to be evacuated by it — and almost

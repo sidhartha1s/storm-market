@@ -6,19 +6,44 @@ Target: 6 pages · draft 1, 2026-07-29
 
 ## The event
 
-On 11 March 2011, the earthquake and tsunami that killed roughly eighteen thousand people in Japan also
-disabled the cooling systems at the Fukushima Daiichi nuclear plant. Three reactors suffered meltdowns and
-around a hundred and fifty thousand people were evacuated, many of them permanently.
-«CITE: authoritative record of the Fukushima Daiichi accident — the number of reactors affected, the
-evacuation zone radii and the number of people displaced.»
+On 11 March 2011 a magnitude 9.0 earthquake struck about 231 miles northeast of Tokyo. The NRC's account
+of what followed is a clean lesson in how a nuclear accident actually happens: **eleven reactors at four
+sites shut down automatically** as designed. Fukushima Dai-ichi then **lost all grid power**, and its
+**diesel generators ran for about 40 minutes** — at which point an estimated **45-foot (14-metre) tsunami**
+hit the site and damaged many of them, along with some of the battery backup. **Four of the six reactors
+lost all generator power.** Units 1, 2 and 3 were operating; their steam-driven and battery-powered safety
+systems held for several hours, and in some cases more than a day, and then failed. **All three reactors
+overheated.**
+«SRC: US Nuclear Regulatory Commission, "Backgrounder on NRC Response to Lessons Learned from Fukushima" —
+9.0 earthquake 231 miles northeast of Tokyo; eleven reactors at four sites shut down automatically;
+Dai-ichi lost grid power with diesels running about 40 minutes before an estimated 45-foot tsunami; four
+of six units lost all generator power; Units 1, 2 and 3 overheated. |
+https://www.nrc.gov/reading-rm/doc-collections/fact-sheets/japan-events.html | retrieved 2026-07-29»
 
-The finding that matters most for this playbook is uncomfortable and it is well documented: **the radiation
-did not produce a mass casualty event, and the evacuation did.** Studies of the aftermath attribute a
-significant number of deaths to the evacuation itself — particularly among elderly and hospitalised
-patients moved in haste — while radiation-attributable deaths among the public have not been demonstrable
-at population scale.
-«CITE: a peer-reviewed or official (UNSCEAR/WHO) assessment of Fukushima's health consequences, including
-the deaths attributed to the evacuation versus to radiation exposure.»
+Read that sequence and notice that the reactors did the right thing and the *support systems* failed, in
+order, over hours and days. Nothing about it was instant. Which is the reason this playbook's instruction
+is about following official direction over a period of days rather than reacting in a minute.
+
+The finding that matters most for this playbook is uncomfortable, and half of it is very well documented.
+
+**The radiation did not produce a mass casualty event.** The United Nations Scientific Committee on the
+Effects of Atomic Radiation spent two years assessing the accident, and the main findings of its 2013
+report were: **cancer rates to remain stable; a theoretical increased risk of thyroid cancer among the
+most exposed children; no impact on birth defects or hereditary effects; no discernible increase in
+cancer rates for workers.** UNSCEAR later reported *increasing evidence that some of the public doses in
+that 2013 report had been overestimated* — ingestion doses significantly so. Tens of thousands of people
+were evacuated.
+«SRC: UNSCEAR, "The Fukushima-Daiichi Nuclear Power Station Accident: an overview," summarising the
+UNSCEAR 2013 Report main findings and the subsequent finding that 2013 public dose estimates were
+overestimated. | https://www.unscear.org/unscear/en/fukushima.html | retrieved 2026-07-29»
+
+**The other half — that the evacuation itself killed people — this book will not quantify**, because the
+figures in circulation could not be traced to an official assessment of the kind above. What can be said
+without a number is the thing that is true of every evacuation in this book: moving frail, elderly and
+hospitalised people at speed carries its own mortality, and the authorities ordering an evacuation are
+weighing that against the exposure. That is precisely why the instruction here is to **follow official
+direction rather than improvise** — including when the direction is to stay put, which is the harder one
+to obey.
 
 That is not an argument for complacency. It is the reason this chapter is the shortest hazard playbook in the
 book and the reason its instruction is unusually simple: **the plan is not yours to write. Follow the
