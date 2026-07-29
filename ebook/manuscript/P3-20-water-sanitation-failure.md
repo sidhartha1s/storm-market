@@ -6,18 +6,38 @@ Target: 8 pages · draft 1, 2026-07-29
 
 ## The event
 
-In August 2022 the water treatment system serving Jackson, Mississippi failed after flooding on the Pearl
-River compounded years of deferred maintenance. A city of roughly one hundred and fifty thousand people lost
-safe running water — not for a day, but for weeks, on top of a boil notice that had already been in effect
-for a month.
-«CITE: authoritative record of the 2022 Jackson, Mississippi water crisis — the duration of the outage and
-the boil notice, and the population affected.»
+In August 2022 the water treatment system serving Jackson, Mississippi failed. A city lost safe running
+water — not for a day, but for weeks, on top of a boil notice that had already been running since late
+July.
+
+What makes Jackson the right opening for this playbook is not the outage. It is what came afterwards. The
+Department of Justice, on the EPA's behalf, **sued the city** over its failure to supply drinking water
+reliably compliant with the Safe Drinking Water Act. A federal court entered an Interim Stipulated Order
+on **29 November 2022** which did three things: set a Priority Projects List to stabilise the system,
+**appointed an Interim Third-Party Manager to run the city's drinking water system**, and stayed the
+litigation while a long-term consent decree was negotiated.
+«SRC: US EPA, "Jackson, MS Drinking Water" — DOJ/EPA lawsuit; Interim Stipulated Order entered
+29 November 2022 by the US District Court for the Southern District of Mississippi; appointment of an
+Interim Third-Party Manager operating through JXN Water, Inc. |
+https://www.epa.gov/ms/jackson-ms-drinking-water | retrieved 2026-07-29»
+
+A municipal water system taken out of municipal hands by a federal court. That is the scale of failure a
+household has to be able to absorb, and it is why Protection 1 is the first protection in this book
+rather than a nice idea.
 
 Then February 2021 in Texas produced the same outcome from a completely different cause: pumps without
-power, mains broken by freezing, pressure lost, and boil notices affecting millions of people across the
-state at once.
-«CITE: TCEQ figures for the number of public water systems and people under boil-water notices after the
-February 2021 storm.»
+power, mains broken by freezing, pressure lost. The state's own environmental agency describes the result
+in one sentence — during the February 2021 winter storm **"roughly half the state's population was out of
+water or under a Boil Water Notice for several days following massive power failures."** Texas has about
+**7,000 public water systems.**
+«SRC: Texas Commission on Environmental Quality, "TCEQ's Role in Responding to Emergencies" (13 April
+2021) — roughly half the state's population out of water or under a boil water notice for several days;
+approximately 7,000 public water systems in the state. |
+https://blog.tceq.texas.gov/2021/04/13/tceqs-role-in-responding-to-emergencies/ | retrieved 2026-07-29»
+
+Read those two events together. **Jackson failed from neglect. Texas failed from cold.** The household
+consequence was identical, which is the argument for treating water supply as a thing that stops rather
+than a thing that degrades.
 
 **The point of this playbook is that the water goes off in almost every hazard in this book, and households
 plan for it least.** People buy a generator before they buy a water container, which is exactly backwards:
@@ -167,12 +187,18 @@ including the fridge filter, because a filter that processed contaminated water 
 filter.
 
 **In a building that was unoccupied for weeks, take stagnation seriously.** Warm, still water in premise
-plumbing grows bacteria including Legionella, and the exposure route is inhaled aerosol from showers and
-taps rather than drinking. Flush thoroughly, consider raising the water heater temperature per guidance
-before flushing, and avoid creating spray during the first flush — open taps gently, and remove and clean
-aerators and shower heads.
-«CITE: CDC or ASHRAE guidance on flushing building water systems after prolonged low use, including the
-Legionella risk and the recommended procedure.»
+plumbing grows bacteria including Legionella — and the thing to understand about Legionella is the
+exposure route. CDC: **"People can get Legionnaires' disease when they breathe in mist that contains the
+bacteria."** Not drinking it. Breathing it. Which means the dangerous moment is the first hot shower in a
+house that has been shut for a month, not the first glass of water.
+«SRC: CDC, "About Legionnaires' Disease" — people get Legionnaires' disease when they breathe in mist
+containing the bacteria. | https://www.cdc.gov/legionella/about/index.html | retrieved 2026-07-29»
+
+So: flush thoroughly *before* anybody showers, and flush in a way that makes as little spray as possible —
+open taps gently rather than fully, and remove and clean aerators and shower heads first. Building-scale
+flushing protocols exist and are worth following if you manage a building rather than a house; ask your
+utility for the current guidance, because the specifics (including whether and how to raise water heater
+temperature) are a plumbing and scalding question this book will not answer from a distance.
 
 **If you are on a well and it was flooded:** do not use it. Shock chlorinate, flush, and **test** before
 drinking — testing is the only way to know, and county health departments and commercial labs both do it.

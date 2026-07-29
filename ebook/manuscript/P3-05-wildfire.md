@@ -28,18 +28,47 @@ within the first four hours." |
 https://www.caloes.ca.gov/wp-content/uploads/Preparedness/Documents/FINAL-AAR-2018-Camp-Fire-508-Clean-Copy-11.17.25.pdf
 | retrieved 2026-07-29»
 
-Then Lahaina, in August 2023, did the same thing to a coastal Hawaiian town in a hurricane-driven wind,
-with a comparable death toll and the same central mechanism.
-«CITE: official investigation into the Lahaina fire — fatalities, the wind conditions, and the
-evacuation findings.»
+Then Lahaina, in August 2023, did the same thing to a coastal Hawaiian town in a hurricane-driven wind.
+**101 fatalities** — the deadliest fire in North America in a hundred years.
+
+Hawai'i's Attorney General commissioned an independent three-phase investigation, and the conclusion of
+its second report is the sentence to take from it: **"no single factor led to the devastation."** Weather
+and its impacts, low perception of risk, decades-old infrastructure, organisational structure, incident
+management and coordination — 84 findings and 140 recommendations. In the investigators' own words, *"the
+conditions that made this tragedy possible were years in the making."* The first of the three areas
+flagged for immediate attention was **"perception of risk and preparedness"**: the low perception of
+wildfire risk not matching the growing threat.
+«SRC: Hawai'i Department of the Attorney General / Fire Safety Research Institute (UL Research
+Institutes), *Lahaina Fire Comprehensive Timeline Report* (Phase One, 17 April 2024) and *Lahaina Fire
+Incident Analysis Report* (Phase Two) — 101 fatalities; timeline from 2:55 p.m. HST 8 August 2023 to
+8:30 a.m. 9 August; "no single factor"; 84 findings, 140 recommendations. |
+https://ag.hawaii.gov/maui-wildfire-investigation-resources-page/ | retrieved 2026-07-29»
+«SRC: USFA/FEMA, "Lahaina Hawaii Fire Timeline Report" (2 May 2024). |
+https://www.usfa.fema.gov/blog/lahaina-hawaii-fire-timeline-report/ | retrieved 2026-07-29»
+
+That last finding is the one a household can act on tonight, and it is the reason this playbook is in a
+book aimed at people who do not think of themselves as living in fire country.
 
 Two facts from these events govern this whole playbook.
 
-**Wind-driven fire does not arrive as a wall of flame. It arrives as embers, first, and in enormous
-quantity** — carried a mile or more ahead of the front, landing in gutters, vents, mulch beds, on decks
-and under eaves. Most homes lost in a wildfire are ignited by embers, not by the fire front touching
-them. The house next door burning down is then the second-largest threat you face.
-«CITE: research finding on the proportion of structures ignited by embers versus direct flame contact.»
+**Wind-driven fire does not arrive only as a wall of flame. It arrives as embers** — carried well ahead
+of the front, landing in gutters, vents, mulch beds, on decks and under eaves.
+
+A note on how this book states that, because you will see a confident percentage elsewhere. The figure
+usually quoted — that some large share of homes are lost to embers rather than flame — could not be
+traced to a source that actually measures it, so it is not in this book. What the fire research
+institute that runs the controlled experiments does say is that homes ignite through **"a complex mix of
+ember attack and direct flame exposure,"** and that consequently **"no single hardening measure can fully
+protect a building"** — which is why their guidance, and this chapter, is built as a two-tiered system
+rather than a list of purchases.
+«SRC: Insurance Institute for Business & Home Safety, "Wildland Fire Embers and Flames: Home Mitigations
+That Matter" (17 October 2025). |
+https://ibhs.org/wildfire/wildland-fire-embers-and-flames-home-mitigations-that-matter/ |
+retrieved 2026-07-29»
+
+The practical consequence is unchanged and it is the thing to hold: **you are defending against small
+burning objects landing on your house for hours, and against the house next door burning down.** Both
+are addressed by the same work.
 
 **Evacuation is a road-capacity problem, and it fails early.** A community on one or two roads cannot
 move in twenty minutes what takes an hour to move on a normal day. Waiting for certainty means joining
@@ -159,24 +188,43 @@ metals, treated timber residue, plastics. Do not sweep it dry and do not use a h
 N95 at minimum, gloves, boots, long sleeves, eye protection. Wet it lightly before moving it and bag it.
 Keep children and pets out of it entirely.
 
-**Do not assume the water is safe.** Fires can damage water systems and draw contaminants into
-distribution networks, and benzene contamination of municipal supplies has been documented after major
-urban-interface fires. Follow the notice and, if there is any doubt, do not use the tap for drinking or
-cooking until the utility has confirmed it — Protection 8.
-«CITE: documented post-wildfire drinking water contamination — the specific incident and the contaminant
-found.»
+**Do not assume the water is safe.** This is documented, not theoretical. EPA: *"After the 2017 Tubbs
+Fire and the 2018 Camp Fire in California, volatile organic compounds (VOCs) were found in the drinking
+water of the impacted towns. Tests of the water revealed elevated levels of several VOCs, such as
+benzene, in water mains, service connections, and building fixtures."*
+
+The mechanism is worth understanding because it explains why flushing the tap for ten minutes is not the
+answer. When system pressure drops — broken mains, or heavy demand for firefighting — **contaminated air
+and water are drawn into the pipes**, and the contamination can travel to parts of the system the fire
+never reached. Worse, **VOCs permeate certain plastics such as polyethylene, and rubber, and then leach
+back out slowly** — accumulating again in standing water. EPA's own conclusion: the potential for
+recontamination persists until all the contaminated material is dealt with.
+
+So: follow the notice, and if there is any doubt, do not drink or cook with the tap until the utility has
+confirmed it — Protection 8. A "do not drink" notice after a fire is a different and more serious animal
+than a boil-water notice, because **boiling does not remove benzene.**
+«SRC: US EPA, "Addressing Contamination of Drinking Water Distribution Systems from Volatile Organic
+Compounds (VOCs) After Wildfires" (2021). |
+https://www.epa.gov/system/files/documents/2021-09/addressing-contamination-of-drinking-water-distribution-systems-from-volatile-organic-compounds-after-wildfires_508.pdf
+| retrieved 2026-07-29»
 
 **Hot spots persist for weeks.** Stumps and root systems smoulder underground, and structures reignite.
 Walk the property, watch for smoke, keep a hose or an extinguisher available.
 
 **Then the aftermath hazard specific to this playbook: burn-scar debris flow.** Fire changes the ground.
-Vegetation is gone and the soil in many burned areas becomes water-repellent, so rain that would have
-soaked in runs off instead, picking up ash, soil, rock and burned trees. The result is not a flood — it
-is a moving slurry with boulders in it, and it can be triggered by a rainfall intensity that would be
-unremarkable in an unburned watershed. The USGS assesses this risk after major fires and issues
-guidance, and the elevated period lasts for years, not months.
-«CITE: USGS post-fire debris-flow hazard assessment programme — the rainfall thresholds used and the
-duration of elevated risk after a fire.»
+Vegetation cover is gone, and fire **increases hydrophobicity in the soil** — chemically, and by working
+ash into the soil column — so rain that would have soaked in runs off instead, picking up ash, soil, rock
+and burned trees. The result is not a flood. It is a moving slurry with boulders in it.
+
+USGS states the consequence plainly: the enhanced runoff **"permits the initiation of floods and debris
+flows even during relatively minor rainstorms."** The agency's two illustrations of what that means:
+**25 December 2003**, a high-intensity storm on the Grand Prix and Old burn areas **killed 16 people**
+near San Bernardino; **6 February 2010**, debris flows from the Station fire scar overtopped
+sediment-retention basins and **damaged or destroyed 46 homes** in La Crescenta. Both storms, USGS notes,
+had **recurrence intervals under five years.** Not freak rain. Ordinary rain on ground that had changed.
+«SRC: Staley DM, *Emergency Assessment of Post-Fire Debris-Flow Hazards for the 2013 Springs Fire,
+Ventura County, California*, USGS Open-File Report 2014-1001. |
+https://pubs.usgs.gov/of/2014/1001/pdf/of2014-1001.pdf | retrieved 2026-07-29»
 
 If you live in or below a burn scar, that changes your rain response permanently for a while: treat a
 heavy-rain forecast as an evacuation question rather than an inconvenience, know the county's debris-flow
