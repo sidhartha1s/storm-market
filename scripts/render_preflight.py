@@ -52,12 +52,14 @@ def heavy_processes():
 
 
 def version_check(repo):
-    """Pin drift is a hard failure; a newer release upstream is a loud warning.
+    """Pin drift ONLY — the one version fact that is a render-time invariant.
 
-    Drift is checked offline and is always a real bug: config.yaml and the npx pin in the
-    render scripts disagreeing means the render does not run the version anyone reviewed.
-    'Is something newer published' needs the network, so it warns rather than blocks — a
-    render must not fail because npm is unreachable, but nobody gets to say they forgot.
+    config.yaml and the npx pin in the render scripts disagreeing means the render does not
+    run the version anyone reviewed; that is worth blocking a render for, and it is checked
+    offline. 'Is a newer hyperframes published' is a PLANNING question, not a render-gate one
+    (owner 2026-07-29: it belongs where episode work starts, so a stale pin is caught before
+    TTS/sourcing/compose spend, not surfaced in a render log after 40 minutes). That check now
+    lives in build_ep3.py, which runs at compose time. See check_hyperframes_current().
     """
     cfg = (repo / "config.yaml").read_text(encoding="utf-8", errors="replace")
     m = re.search(r'hyperframes_version:\s*"([\d.]+)"', cfg)
@@ -79,19 +81,7 @@ def version_check(repo):
             print(f"    {name} runs hyperframes@{used}", file=sys.stderr)
         return 5
 
-    latest = subprocess.run(["npm", "view", "hyperframes", "version"],
-                            capture_output=True, text=True, shell=True, timeout=60)
-    newest = latest.stdout.strip()
-    if latest.returncode != 0 or not re.fullmatch(r'[\d.]+', newest):
-        print(f"[version] pin {pinned}; could not reach npm to check for newer (not fatal)")
-        return 0
-    if newest != pinned:
-        print(f"[VERSION] pinned {pinned}, but hyperframes {newest} is published.")
-        print(f"[VERSION] Bump config.yaml + the npx pins together, or decide deliberately")
-        print(f"[VERSION] to stay. Read the diff for the extract stage and any timeout:")
-        print(f"[VERSION] 0.7.81 shortened the ffprobe deadline from 120s to 30s.")
-    else:
-        print(f"[version] pin {pinned} is the latest published.")
+    print(f"[version] pin {pinned}; render scripts agree (currency checked at compose time)")
     return 0
 
 
