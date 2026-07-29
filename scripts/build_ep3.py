@@ -384,6 +384,20 @@ def is_tall(src):
     return w / hgt < 1.45          # 16:9 is 1.78; below ~1.45 cover starts eating the subject
 
 
+def _aspect(src):
+    """Width/height of a still, or 16:9 if it cannot be read."""
+    if is_video(src):
+        return 16 / 9
+    out = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0",
+                          "-show_entries", "stream=width,height", "-of", "csv=p=0:s=x",
+                          str(EP / src)], capture_output=True, text=True).stdout.strip()
+    try:
+        w, hgt = (int(x) for x in out.split("x")[:2])
+        return w / hgt
+    except ValueError:
+        return 16 / 9
+
+
 @lru_cache(maxsize=None)
 def vdur(src):
     """Real length of a clip. hyperframes will not loop a short video to fill a long window —
