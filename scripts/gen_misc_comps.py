@@ -367,10 +367,14 @@ def lone():
     # track maps' own dividers were at 664 and 1272, so every x is remapped onto those.
     # The real path crosses only ~1.3 degrees of latitude, so it runs low and near-flat
     # across the plate's southern band rather than climbing the frame.
-    OLD = [(300, 792), (404, 745), (556, 690), (690, 636), (780, 600), (858, 566),
-           (962, 528), (1046, 496), (1168, 456), (1332, 412), (1452, 372), (1596, 330)]
-    fx = (1378 - 804) / (1272 - 664)
-    xs = [804 + (x - 664) * fx for x, _ in OLD]
+    # Distance along the track, in miles, for the same twelve towns the path maps use.
+    # Fitting on mileage rather than stretching the old schematic x's keeps every town in
+    # the state it actually happened in: Gorham lands just east of the Mississippi and
+    # Griffin just east of the Wabash, which is the whole point of using a real map.
+    MI_AT = [0, 13, 55, 88, 97, 106, 122, 131, 152, 183, 203, 219]
+    MI_MISS, MI_WAB = 85.0, 178.0          # the two river crossings, in track miles
+    ppm = (1378 - 804) / (MI_WAB - MI_MISS)
+    xs = [804 + (m - MI_MISS) * ppm for m in MI_AT]
     # inside the cropped band: the plate's own path latitude lands at y~765, so the route
     # sits just around it — Ellington MO low-left, Petersburg IN slightly higher right
     y0, y1 = 800.0, 726.0
