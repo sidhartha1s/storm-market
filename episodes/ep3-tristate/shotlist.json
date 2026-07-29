@@ -1041,17 +1041,22 @@
  },
  {
   "start": 1774.25,
-  "dur": 6.31,
+  "dur": 4.94,
   "what": "tail stock-windgrass-01.mp4"
  },
  {
-  "start": 1780.56,
-  "dur": 4.04,
+  "start": 1779.19,
+  "dur": 3.16,
   "what": "tail stock-rainfield-01.mp4"
  },
  {
-  "start": 1784.6,
-  "dur": 5.23,
+  "start": 1782.35,
+  "dur": 4.09,
+  "what": "tail stock-windgrass-02.mp4"
+ },
+ {
+  "start": 1786.44,
+  "dur": 3.39,
   "what": "tail stock-windgrass-01.mp4"
  },
  {
