@@ -11,7 +11,7 @@ import { pathToFileURL } from 'node:url';
 
 function npmGlobalRoot() {
   try {
-    return execFileSync('npm', ['root', '-g'], { encoding: 'utf8', shell: true }).trim();
+    return execSync('npm root -g', { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
   } catch {
     return join(process.env.APPDATA || '', 'npm', 'node_modules');
   }
