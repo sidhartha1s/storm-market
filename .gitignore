@@ -8,3 +8,8 @@ episodes/*/snapshots/
 episodes/*/renders/
 episodes/*/audio/_segments/
 *rejected*.mp3
+.qc-tmp/
+scratch__*
+_blank_tmp.html*
+_snap_tmp.html*
+*.html.retired
