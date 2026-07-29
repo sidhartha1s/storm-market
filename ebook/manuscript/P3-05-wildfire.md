@@ -8,10 +8,14 @@ Target: 10 pages · draft 1, 2026-07-29
 
 The town of Paradise, California burned on the morning of 8 November 2018. The fire started upslope
 before dawn, driven by a dry offshore wind, and it moved into a community of tens of thousands with an
-effective warning time measured in tens of minutes. Eighty-five people died, most of them in or beside
-their vehicles or in their homes, and the great majority of the town's structures were destroyed.
-«CITE: Cal Fire / official incident record for the Camp Fire — fatality count, structures destroyed, rate
-of spread, and the timeline of the evacuation.»
+effective warning time measured in tens of minutes. It burned 153,336 acres over seventeen days, and its cause was
+power lines.
+«SRC: CAL FIRE incident record, Camp Fire — started 08 Nov 2018 at 6:33 am at Pulga Road and Camp Creek Road near Jarbo Gap, Butte County; cause **power lines**; **153,336 acres**; active 17 days, contained 25 Nov 2018. https://www.fire.ca.gov/incidents/2018/11/8/camp-fire/ · retrieved 2026-07-29»
+Eighty-five people died, most of them in or beside their vehicles or in their homes, and the great
+majority of the town's structures were destroyed.
+«CITE: the fatality count and structures-destroyed count for the Camp Fire — the CAL FIRE incident page
+carries acreage, cause and dates but not casualties; use the Butte County Sheriff / CAL FIRE final
+damage inspection figures.»
 
 Then Lahaina, in August 2023, did the same thing to a coastal Hawaiian town in a hurricane-driven wind,
 with a comparable death toll and the same central mechanism.
@@ -130,6 +134,7 @@ poor shelter and it is dramatically better than being outside it.
 approaching fire, stay away from windows, keep everyone together, and expect to move again once the front
 has passed — because the danger afterwards is your own house burning from the inside from embers already
 in it.
+«SRC: Ready.gov, "Wildfires" — evacuate immediately when told to; **if trapped, call 911, give your location and turn on lights to help rescuers find you**; use an N95 against smoke; designate a room closed off from outside air with a portable air cleaner; use high-efficiency filters in central air and set the system to **recirculate with the outdoor intake damper closed**. https://www.ready.gov/wildfires · retrieved 2026-07-29»
 
 ---
 

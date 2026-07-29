@@ -112,7 +112,8 @@ rather than continuously, then heating or cooling, then light and communications
 early, while you have options.
 
 **Generator rules, restated because they are the deaths:** outdoors only, twenty feet from the building,
-downwind of doors and windows, on a level surface, never refuelled while hot or running. Extension leads
+downwind of doors and windows, on a level surface, never refuelled while hot or running.
+«SRC: Ready.gov, "Winter Weather" — Generator Safety: generators and fuel are used outdoors and **at least 20 feet from windows, doors and attached garages**; install working CO detectors on **every level**; keep the generator dry; connect appliances with heavy-duty cords; **let it cool before refuelling**. Same page: only use generators and grills outdoors, and **never heat a home with a gas stovetop or oven**. https://www.ready.gov/winter-weather · retrieved 2026-07-29» Extension leads
 sized for the load and rated for outdoor use. Never plugged into a wall socket. If your CO alarm sounds,
 everybody goes outside immediately.
 

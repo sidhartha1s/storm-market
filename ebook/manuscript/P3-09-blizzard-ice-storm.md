@@ -147,7 +147,8 @@ symptoms as a cardiac event rather than as being unfit.
 
 **If you are stranded in a vehicle**, stay with it — it is visible and it is shelter. Run the engine
 about ten minutes in the hour for heat, and **check the exhaust pipe is clear of snow every time**,
-because a blocked exhaust fills the cabin with carbon monoxide. Crack a window slightly on the downwind
+because a blocked exhaust fills the cabin with carbon monoxide.
+«SRC: NWS, "What To Do If You're Caught in a Winter Storm" — if your car is stuck: **stay in the vehicle**, because you become disoriented quickly in wind-driven snow; **run the motor about 10 minutes each hour** for heat. Driving: over **5,000 road fatalities a year** are attributed to weather conditions; clear all snow off the vehicle; if visibility fails, pull over, stop, **turn your lights off** and use the parking brake so another driver does not follow your tail lights into you. https://www.weather.gov/safety/winter-during · retrieved 2026-07-29» Crack a window slightly on the downwind
 side. Make the car visible.
 
 ---

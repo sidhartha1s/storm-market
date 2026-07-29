@@ -34,6 +34,8 @@ manufacturer standards / NFPA.»
 Combination smoke-and-CO units are acceptable and reduce the number of things to maintain. Ten-year
 sealed-battery units remove the dead-battery failure mode entirely and are worth the premium.
 
+«SRC: CDC, "Carbon Monoxide Poisoning Basics" — the most common symptoms are **headache, dizziness, weakness, upset stomach, vomiting, chest pain and confusion**, often described as "flu-like". Breathing a lot of CO can cause loss of consciousness or death, and **people who are asleep or intoxicated can die before they ever have symptoms**. https://www.cdc.gov/carbon-monoxide/about/index.html · retrieved 2026-07-29»
+
 Know the response: alarm sounds, everyone goes outside immediately, then call 911 or the gas utility
 from outside. Do not open windows and wait — you will disperse the evidence and stay in the building.
 

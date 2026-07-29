@@ -78,9 +78,14 @@ why Protections 100, 101 and 102 matter as much here as the safe room does.
 - **96, 100 — document vault and video inventory**, because a total loss makes proof impossible after
   the fact.
 
+«SRC: NOAA Storm Prediction Center, "The Online Tornado FAQ" — a safe room is a reinforced small room in the interior of a home, in a basement or on the ground floor where there is none; an existing interior bathroom or closet can be fortified into one. **Register a safe room or shelter with the local fire department**, so rescuers know it is there if the entrance is blocked by debris. https://www.spc.noaa.gov/faq/tornado/ · retrieved 2026-07-29»
 **The safe room, specifically.** Clear it now, not during the warning. It should hold, permanently: the
 helmets, water, a torch, a whistle each, shoes, the go-bags, a charged battery pack, the weather radio,
-and a heavy blanket or mattress you can pull over yourselves. If it is a bathroom, the tub with a
+and a heavy blanket or mattress you can pull over yourselves.
+
+And one free action almost nobody takes: **register your safe room or shelter with the local fire
+department.** If the entrance is buried in debris, that register is how rescuers know there are people
+under it. If it is a bathroom, the tub with a
 mattress over it is a genuinely good option. If it is a closet, empty the top shelf of anything heavy.
 
 **The drill.** Twice a year, at a random moment, say the word and time it. Everyone, including the pets,

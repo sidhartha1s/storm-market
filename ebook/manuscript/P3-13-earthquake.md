@@ -114,7 +114,8 @@ Drop to your hands and knees. Get under a sturdy table or desk if one is within 
 beside an interior wall away from windows and cover your head and neck with your arms. Hold on to whatever
 is protecting you, because it will move.
 
-**Do not run.** Do not run outside, do not run for a doorway, do not run downstairs. Most injuries happen to
+**Do not run.** Do not run outside, do not run for a doorway, do not run downstairs.
+«SRC: Ready.gov, "Earthquakes" — if inside, **stay inside and do not run outside; avoid doorways**; in bed, turn face down and cover head and neck with a pillow; in a car, pull over and set the parking brake; outdoors, stay in the open away from buildings, trees, streetlights and power lines. After: expect aftershocks, do not enter damaged buildings, and **if trapped, send a text or bang on a pipe and use a whistle rather than shouting**. https://www.ready.gov/earthquakes · retrieved 2026-07-29» Most injuries happen to
 people moving during shaking, and the most dangerous place in an earthquake is immediately outside a
 building, where the glass, the cladding and the parapets land.
 
