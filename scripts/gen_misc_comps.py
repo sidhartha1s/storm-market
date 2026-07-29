@@ -28,6 +28,16 @@ BASE = """
     font-size:26px; color:#d8a13a; }
 """
 
+def _ceil(x1, y1, x2, y2):
+    """Dash length for a line, always >= its true length.
+
+    An SVG stroke-dasharray shorter than the line it hides leaves the overhang painted
+    as the start of a second dash — visible from frame one, before the draw-on ever runs.
+    """
+    import math
+    return math.ceil(math.hypot(x2 - x1, y2 - y1)) + 1
+
+
 def wrap(cid, style, body, js, dur):
     html = f"""<!doctype html>
 <html>
