@@ -288,9 +288,12 @@ LOWERS = {
  "wf": ("WEST FRANKFORT, ILLINOIS", "3:00 PM — POPULATION 18,000"),
  "princeton": ("PRINCETON, INDIANA", "4:18 PM — POPULATION 10,000"),
 }
+# optional 3rd element = seconds into the segment to reveal the quote, for lines that are
+# read aloud partway through (owner 2026-07-30: the Gorham quote must land on "the air was
+# full of everything", spoken at +14.4s, not at a fixed +8s offset)
 QUOTES = {
  "gorham": ("“The air was full of everything — boards, branches of trees,<br>garments, stoves, all churning around together.”",
-            "SURVIVOR ACCOUNT — ST. LOUIS POST-DISPATCH, MARCH 1925"),
+            "SURVIVOR ACCOUNT — ST. LOUIS POST-DISPATCH, MARCH 1925", 14.2),
  "rows": ("“The dead lay in rows, awaiting names.”", "ST. LOUIS POST-DISPATCH, MARCH 1925"),
 }
 
