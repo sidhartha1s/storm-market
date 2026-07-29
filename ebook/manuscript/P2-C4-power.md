@@ -179,9 +179,24 @@ Standardise on one battery size across your devices so one spare pack covers eve
 
 **Candles are not emergency lighting.** Open flame in a house where people are exhausted, where
 children are frightened, where pets are moving, and where furniture has been rearranged, after an
-event that may have disturbed gas lines. Post-disaster house fires from candles are a recurring
-pattern.
-«CITE: NFPA / USFA data on candle-related fires during power outages.»
+event that may have disturbed gas lines. The federal fire administration's own outage advice is one
+line: *"use flashlights, not candles, if you have a power outage."*
+
+The reason is what its casualty data shows about *how* candle fires start. Across three years of
+national incident data, an estimated **23,600 residential candle fires a year**, causing about 165
+deaths, 1,525 injuries and $390 million in property loss — and the mechanism is not carelessness in
+the usual sense. **Twenty-one per cent involved someone unattended or unsupervised**, another 12 per
+cent started when the user fell asleep, and the leading things ignited were furniture, curtains,
+cabinetry and bedding. More than a third begin in a bedroom. Read that as a description of the second
+night of an outage: tired people, a candle near soft furnishings, somebody asleep.
+«SRC: US Fire Administration, *Candle Fires in Residential Structures*, Topical Fire Research Series
+Vol. 6 Issue 1 (July 2006), NFIRS 5.0 three-year average 2002-2004 — 23,600 residential candle fires
+annually, 165 deaths, 1,525 injuries, $390M loss; 21% unattended/unsupervised, 12% user asleep; leading
+items ignited furniture, curtains, cabinetry, bedding; over one-third begin in a bedroom. |
+https://apps.usfa.fema.gov/downloads/pdf/statistics/v6i1.pdf | retrieved 2026-07-29»
+«SRC: US Fire Administration, "Candle Fire Safety" — "use flashlights, not candles, if you have a
+power outage." | https://www.usfa.fema.gov/prevention/home-fires/prevent-fires/candle/ | retrieved
+2026-07-29»
 
 **What this does not do:** lighting is not signalling. If your plan involves being found, that is a
 whistle and a radio, not a torch.

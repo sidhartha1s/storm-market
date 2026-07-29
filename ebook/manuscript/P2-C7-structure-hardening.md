@@ -85,9 +85,23 @@ Older decks were often attached with smooth-shank nails or staples, which withdr
 more easily than ring-shank nails. Renailing the deck to current specification during a re-roof is
 inexpensive as a line item and effectively impossible afterwards.
 
-Ask for it by name, in writing, on the contract, and have the inspector confirm it.
-«CITE: current recognised deck-attachment specification — nail type, size and spacing — from the
-applicable code or fortified standard.»
+**The specification to write on the contract** is the one the FORTIFIED standard uses, because it is
+published, unambiguous, and what an evaluator will check: **8d ring-shank nails at 6 inches on centre
+into every framing member**, with 7/16-inch sheathing preferred. If your existing deck already has 8d
+or larger nails, the standard also allows augmenting rather than replacing — adding 8d ring-shanks so
+that the gap between old and new nails is no more than 4 inches on all framing members. An evaluator
+documenting the work expects **at least thirteen nails in each four-foot span.** IBHS's own summary of
+why is the sentence to quote to a contractor who resists: ring-shank nails *"nearly double the strength
+of your roof against the forces of winds."*
+
+Ask for it by name, in writing, on the contract, and have the inspector confirm it. On a re-roof this is
+a small line item; the same work later means tearing the covering off again.
+«SRC: Insurance Institute for Business & Home Safety, FORTIFIED Engineering Standards Technical
+Bulletin 2016-04, "Roof Deck", and the FORTIFIED Roof high-wind roofing compliance form — 8d ring-shank
+nails at 6 in. o.c. on all framing members, 7/16 in. sheathing preferred, maximum framing spacing 24
+in.; augmentation option with combined spacing not greater than 4 in.; at least 13 nails per 4-ft span
+for documentation. | https://fortifiedhome.org/wp-content/uploads/2016-04_technical-bulletin_roof-deck.pdf
+| retrieved 2026-07-29»
 
 **What this does not do:** nothing for the covering above it, and nothing at all if the roof is not
 being replaced. This is a timing protection.
@@ -100,14 +114,32 @@ being replaced. This is a timing protection.
 **Cost:** $500–2,500 premium at re-roof · **Time:** with a re-roof · **Materials:** Class 4 rated
 covering · **Regions:** Tornado Alley, hail corridor, Wildfire West front range. Owners only.
 
-Hail is the largest single driver of US property claims, and in hail country the roof is a
-consumable. Impact-rated coverings resist it materially better, and several insurers discount
-specifically for them — which is the rare case where the upgrade has a defined annual return.
-«CITE: hail share of US homeowners claims and severity — LexisNexis home trends or equivalent
-industry data.» «CITE: impact-resistance rating classes and the standard they are tested to.»
+In hail country the roof is a consumable, and impact-rated coverings are the one upgrade that changes
+that. Insurers commonly discount for them, which makes this the rare protection with a defined annual
+return.
+
+**But the rating deserves a hard look, and this is where the book has to be honest with you.** The test
+that produces the familiar Class 1 to Class 4 impact ratings is **Underwriters Laboratories 2218**, and
+it works by dropping **steel ball bearings** on shingles. IBHS, which runs the largest hail research
+programme in the country, replicated that test and its conclusion is worth reading twice: the UL 2218
+test *"has limited ability to recreate the physics of actual hail,"* and IBHS's own results *"differed
+from the protections marketed to consumers."* Real hailstones are not steel; they shatter, they vary in
+density, and they behave differently on impact.
+
+IBHS's response was to build a new hail impact standard for asphalt shingles using measured properties
+of actual hailstones, and to publish product ratings from it. **So the practical instruction is: ask for
+a covering that performs well on the IBHS hail ratings, not only one that carries a Class 4 label.** A
+Class 4 sticker is a real signal and better than nothing — it is also a steel-ball result, and the
+industry that studies hail hardest has said so in public.
 
 Ask your carrier for the discount **before** buying, because the credit is carrier-specific and
-sometimes conditional on the exact rating.
+sometimes conditional on the exact rating — and ask which rating system they recognise.
+«SRC: Insurance Institute for Business & Home Safety, "FORTIFIED Roof — Roof Product Performance
+Testing" and IBHS hail risk research — the current UL 2218 test for hail resistance of asphalt shingles
+is based on impacts of steel ball bearings and "has limited ability to recreate the physics of actual
+hail"; IBHS replicated it and "produced research results that differed from the protections marketed to
+consumers"; IBHS developed a new hail impact test standard using measured hailstone properties and
+publishes impact-resistant shingle ratings. | https://ibhs.org/fortified/roof/ | retrieved 2026-07-29»
 
 **What this does not do:** impact-rated is not hail-proof, and very large stones damage everything.
 It also does nothing for the siding, the vehicles, or the AC condenser, which are a large share of
@@ -149,8 +181,20 @@ what most credit schemes recognise. **Impact-rated glazing** is the invisible, p
 option. **Plywood** is the last resort, and it only works to a real specification: correct thickness,
 correct fastener, correct edge distance, and pre-cut and labelled per window *before* the season,
 because cutting plywood in a queue at a hardware store two days before landfall is not a plan.
-«CITE: recognised specification for temporary plywood window protection — thickness, fastener type
-and spacing, per FEMA or the applicable building code.»
+
+The weather service's own hurricane guidance gives both the ranking and the specification in two
+sentences: *"permanent storm shutters offer the best protection for windows,"* and the second option is
+to *"board up windows with 5/8 inch exterior grade or marine plywood, built to fit and ready to
+install."* Note the three separate requirements packed into that — **5/8 inch**, **exterior grade or
+marine** (interior-grade ply delaminates when it gets wet, which it will), and **built to fit and ready
+to install**, which means cut, labelled by window, and stored, before the season. Fasteners must reach
+the framing around the opening rather than the siding, so buy screws or lag bolts long enough to
+penetrate the studs, and buy them at the same time as the plywood.
+«SRC: NOAA National Weather Service, "Hurricane Safety for You and Your Family" one-page safety sheet
+— permanent storm shutters offer the best protection for windows; second option is to board up windows
+with 5/8 inch exterior grade or marine plywood, built to fit and ready to install; buy supplies before
+hurricane season. | https://www.weather.gov/media/owlie/HurricaneSafety-OnePager-07-03-18.pdf | retrieved
+2026-07-29»
 
 **All** openings must be protected to earn the full credit in most schemes; a single unprotected
 window can void it. That includes doors, skylights, and the garage.
@@ -325,12 +369,32 @@ enclosure, the correct engineering answer is usually **to let the water in and o
 engineered openings, rather than to seal it out — because water outside and not inside creates a
 pressure differential that can collapse the wall.
 
-Doing this to the recognised specification is also what flood insurance rating schemes require for
-enclosures below the flood elevation, and it can materially change a premium.
-«CITE: FEMA / NFIP technical bulletin on flood openings for enclosures and crawlspaces — required
-net open area and placement.»
+**The federal minimum is written into regulation, and it is worth knowing before you talk to anyone.**
+Under 44 CFR 60.3(c)(5), an enclosed area below the lowest floor used solely for parking, access or
+storage must be designed *"to automatically equalize hydrostatic flood forces on exterior walls by
+allowing for the entry and exit of floodwaters."* The design must either be certified by a registered
+professional engineer or architect, or meet these minimums verbatim:
 
-This is engineering, not a weekend project. Get it specified properly.
+> *"A minimum of two openings having a total net area of not less than one square inch for every square
+> foot of enclosed area subject to flooding shall be provided. The bottom of all openings shall be no
+> higher than one foot above grade. Openings may be equipped with screens, louvers, valves, or other
+> coverings or devices provided that they permit the automatic entry and exit of floodwaters."*
+
+Three numbers, and each one is a place installations go wrong: **two openings, not one** (water has to
+be able to move through, not just in); **one square inch per square foot** of enclosed floor area, so a
+600-square-foot crawlspace needs 600 square inches of net open area; and **no higher than one foot above
+grade**, because an opening above the water line does nothing. *Net* area is the free area after the
+screen or louver, which is why engineered flood vents are rated and a hole with a grille over it may not
+count for what it appears to.
+
+Doing this correctly is also what flood insurance rating requires for enclosures below the flood
+elevation, and it can materially change a premium. This is engineering, not a weekend project. Get it
+specified properly, and keep the engineer's certificate — it is the document your insurer will ask for.
+«SRC: 44 CFR 60.3(c)(5) (NFIP floodplain management criteria) — enclosed areas below the lowest floor
+must automatically equalise hydrostatic flood forces; minimum of two openings, total net area not less
+than one square inch per square foot of enclosed area, bottom of all openings no higher than one foot
+above grade, screens/louvers/valves permitted if they allow automatic entry and exit of floodwaters. |
+https://www.ecfr.gov/current/title-44/section-60.3 | retrieved 2026-07-29»
 
 **What this does not do:** wet floodproofing accepts water into the enclosure. Everything in there
 must be flood-resistant or elevated, which is Protection 81.

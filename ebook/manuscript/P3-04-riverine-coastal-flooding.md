@@ -6,11 +6,30 @@ Target: 10 pages · draft 1, 2026-07-29
 
 ## The event
 
-The Mississippi and Missouri flood of 1993 lasted, in places, for months. Water was above flood stage
-through most of a summer, hundreds of levees failed, and the damage figure ran into the tens of billions
-in the dollars of the time.
-«CITE: authoritative summary of the 1993 Midwest flood — duration above flood stage, number of levee
-failures, damage estimate and fatality count.»
+The Mississippi and Missouri flood of 1993 ran **from May through September**, across nine states and
+about **400,000 square miles**. Fifty people died and the damage approached **$15 billion** in the dollars
+of the time. **Over 1,000 levees, federal and non-federal, were topped or failed.** At one point roughly
+**600 river forecast points were above flood stage simultaneously** and nearly 150 rivers and tributaries
+were affected.
+
+But the number that defines this hazard is the duration: **at some locations the river stayed above flood
+stage for nearly 200 days.** Not a night. Not a weekend. Two-thirds of a year. Ten commercial airports
+flooded, all Midwestern rail traffic halted, and numerous water and sewage treatment plants were
+destroyed — which is how a river flood becomes a water-supply emergency for households that never got
+wet.
+
+The weather service's own explanation of why it was so severe is worth holding on to, because it is the
+signature to watch for: not one storm but **rain that would not stop.** Many locations had rain on twenty
+or more days in July against a normal of eight or nine, and in parts of the upper Mississippi basin there
+was measurable rain **on every single day from late June to late July.**
+«SRC: Lee W. Larson, NOAA National Weather Service, "The Great USA Flood of 1993" (Destructive Water:
+Water-Caused Natural Disasters — Their Abatement and Control, IAHS Publication no. 239, 1996) — May
+through September 1993, nine states, 400,000 square miles, 50 deaths, damages approaching $15 billion,
+over 1,000 federal and non-federal levees topped or failed, ~600 forecast points above flood stage
+simultaneously, nearly 150 rivers affected, some locations above flood stage nearly 200 days; rain on 20+
+days in July against a normal of 8-9; ten commercial airports flooded, all Midwest rail halted, numerous
+water and sewage treatment plants destroyed. | https://www.nwrfc.noaa.gov/floods/papers/oh_2/great.htm |
+retrieved 2026-07-29»
 
 It is the opposite hazard to the previous playbook in every respect except the water. Flash flooding is
 minutes; this is days to weeks of forecast, which sounds like an advantage and produces its own specific
@@ -45,12 +64,28 @@ Prolonged submersion destroys everything it touches, including the structure its
 inundation does not. And it is the least insured — standard policies exclude flood, and households
 outside mapped high-risk zones overwhelmingly do not carry it.
 
-Then the cost that surprises people: **substantial damage rules.** If the repair cost reaches a defined
-proportion of the building's value in a mapped floodplain, local ordinance frequently requires the
-rebuild to meet current elevation standards, which can mean elevating the structure rather than
-repairing the ground floor. That is a good rule for the long run and a large unbudgeted number in the
-moment.
-«CITE: the NFIP / local-ordinance "substantial damage" threshold and what it triggers.»
+Then the cost that surprises people: **the substantial damage rule, and the number is 50 per cent.**
+Federal regulation defines *substantial damage* as *"damage of any origin sustained by a structure
+whereby the cost of restoring the structure to its before damaged condition would equal or exceed 50
+percent of the market value of the structure before the damage occurred."*
+
+What it triggers is the part that costs money. A structure that has taken substantial damage is treated
+as a **substantial improvement** — the definition says so explicitly, *"regardless of the actual repair
+work performed"* — and substantial improvements in a mapped floodplain must be brought up to current
+standards, which for most households means **elevating the building** rather than repairing the ground
+floor. Note two things about that. **"Damage of any origin"** means the trigger is not flood-specific;
+fire, wind and flood damage all count toward it. And it is **market value of the structure**, not the
+purchase price and not the land — so an older, modest building crosses the threshold on a surprisingly
+small repair bill.
+
+That is a good rule for the long run and a large unbudgeted number in the moment. It is also why the
+damage assessment your local floodplain administrator performs after an event matters as much as the
+insurance adjuster's, and why keeping your own documented estimates is worth the effort.
+«SRC: 44 CFR 59.1 (NFIP definitions) — "Substantial damage means damage of any origin sustained by a
+structure whereby the cost of restoring the structure to its before damaged condition would equal or
+exceed 50 percent of the market value of the structure before the damage occurred"; "substantial
+improvement" includes structures that have incurred substantial damage regardless of the actual repair
+work performed. | https://www.ecfr.gov/current/title-44/section-59.1 | retrieved 2026-07-29»
 
 ---
 

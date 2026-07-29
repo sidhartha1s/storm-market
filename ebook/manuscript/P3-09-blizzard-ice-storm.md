@@ -9,19 +9,54 @@ Target: 10 pages · draft 1, 2026-07-29
 An ice storm is the most destructive winter event a household can experience, and it does not look like
 much while it is happening.
 
-In January 1998, freezing rain fell for days across northern New England and eastern Canada. Ice
-accumulated on every conductor and every branch until transmission towers folded and the distribution
-network came apart over a vast area. Millions of people lost power, some of them for weeks, in
-January.
-«CITE: authoritative record for the January 1998 North American ice storm — ice accretion depths, people
-without power, and the longest restoration times.»
+**From 5 to 9 January 1998**, freezing rain fell for five days across northern New England, northern New
+York and southeastern Canada. Ice accumulated to **up to four inches in portions of northern New York and
+southeast Canada**, and three-quarters of an inch to two inches across much of northern New England.
+Hundreds of large transmission towers toppled and thousands of poles snapped under the weight, leaving
+**millions of people without power, some for longer than two weeks.** In the hardest-hit areas the
+weather service records that mobilising utility crews in advance reduced recovery *"to three weeks instead
+of a month or more."* Sixteen counties in Maine, nine in New Hampshire, six in Vermont and six in New York
+were declared federal disaster areas.
+
+**Now the number this book cares about most, because it is the one that transfers.** Across an event of
+that scale and duration, the federal service assessment found that *"only seven fatalities were directly
+attributed to the event."* Ice storms do not kill many people by falling on them. But in the weather
+service's Burlington area alone, two deaths were direct — **one hypothermia and one fall** — and **four
+more were indirect, all four from carbon monoxide poisoning.**
+
+Twice as many people died from how they tried to stay warm as from the storm. That single ratio is the
+reason Protection 32 and Protection 47 sit where they do in this book, and it is why the weather service
+kept issuing statements about carbon monoxide *after* the ice had stopped falling.
+«SRC: NOAA National Weather Service Eastern Region, *Service Assessment: The Ice Storm and Flood of
+January 1998* (June 1998) — "only seven fatalities were directly attributed to the event"; in the NWSO
+Burlington county warning area two direct deaths (one hypothermia, one fall) and four indirect deaths, all
+from carbon monoxide poisoning; ice accumulations in excess of three inches in northern Jefferson County,
+NY; power not restored in many areas for up to two weeks; advance mobilisation of utility crews reduced
+recovery to three weeks instead of a month or more; federal disaster declarations in 16 Maine, 9 New
+Hampshire, 6 Vermont and 6 New York counties; NWS continued issuing carbon-monoxide statements after the
+storm ended. | https://www.weather.gov/media/publications/assessments/iceflood.pdf | retrieved
+2026-07-29»
+«SRC: NOAA National Weather Service, Burlington VT, "25th Anniversary of the Devastating 1998 Ice Storm in
+the Northeast" — event 5–9 January 1998; destructive ice accumulation of up to 4 inches (100 mm) in
+portions of northern New York and southeast Canada, 3/4–2 inches across portions of northern New England;
+hundreds of large transmission towers toppled and thousands of poles snapped; millions without power, some
+for longer than 2 weeks. |
+https://www.weather.gov/btv/25th-Anniversary-of-the-Devastating-1998-Ice-Storm-in-the-Northeast | retrieved
+2026-07-29»
 
 Then February 2021 in Texas showed the other version of the same failure: a cold event that took out
-generation and distribution in a state whose housing stock, plumbing and grid were not built for it.
-Hundreds of people died, most of them from cold inside their own homes and from carbon monoxide
-poisoning as they tried to keep warm.
-«CITE: Texas DSHS or peer-reviewed analysis of the February 2021 winter storm death toll, with the
-breakdown by hypothermia and carbon monoxide.»
+generation and distribution in a state whose housing stock, plumbing and grid were not built for it. The
+federal inquiry records **20,000 MW of rolling blackouts — the largest manually controlled load shedding
+event in US history — and more than 4.5 million Texans without power, some for as long as four days**,
+with the loss of electricity causing, in FERC's words, "the deaths of numerous Texans." Most of those
+deaths were cold inside people's own homes, and carbon monoxide as they tried to keep warm. Playbook 11
+carries the detail.
+«SRC: FERC / NERC / Regional Entity Staff, "The February 2021 Cold Weather Outages in Texas and the South
+Central United States" (final report), per FERC's release — 20,000 MW of rolling blackouts, largest
+manually controlled load shed in US history; more than 4.5 million Texans lost power, some up to four
+days. |
+https://www.ferc.gov/news-events/news/final-report-february-2021-freeze-underscores-winterization-recommendations
+| retrieved 2026-07-29»
 
 The lesson both events teach is the same one, and it is the reason this playbook exists separately from
 the extreme cold playbook that follows it: **the winter storm is not the hazard. The multi-day power

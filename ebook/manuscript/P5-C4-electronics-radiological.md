@@ -267,11 +267,19 @@ do.** A rail line carrying tank cars, a hazardous-materials truck route, a pipel
 chemical plant, a large fuel depot, a water treatment works holding chlorine — any of these within a
 mile or two of you makes Protection 126 a live protection rather than a theoretical one. Rail and
 pipeline routes are mapped publicly, and your local emergency management office maintains the hazard
-analysis that names the specific facilities and substances near you. Read it once and note which way
-the prevailing wind blows relative to your house, because that single fact decides whether you shelter
-or leave.
-«CITE: the public federal pipeline mapping system, and the state or local hazard-analysis document
-type that lists nearby facilities and substances.»
+analysis that names the specific facilities and substances near you.
+
+**Pipelines have a free public map and most people have never opened it.** The Department of
+Transportation's Pipeline and Hazardous Materials Safety Administration runs the **National Pipeline
+Mapping System**, whose **Public Map Viewer requires no account** — the detailed operator-level system,
+PIMMA, is restricted to government officials and pipeline operators, but the public viewer will show you
+transmission pipelines near an address. Twenty minutes, once.
+«SRC: US DOT Pipeline and Hazardous Materials Safety Administration, National Pipeline Mapping System —
+Public Map Viewer, "pipeline maps for the general public – no NPMS account required." |
+https://www.npms.phmsa.dot.gov/ | retrieved 2026-07-29»
+
+Then note which way the prevailing wind blows relative to your house, because that single fact decides
+whether you shelter or leave.
 
 If neither applies to you, this protection is complete and you can stop.
 

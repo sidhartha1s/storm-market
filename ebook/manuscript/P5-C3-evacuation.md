@@ -194,10 +194,15 @@ The reason it works is that local networks congest and long-distance frequently 
 does not, and because it converts a many-to-many problem into a hub. Nobody has to reach anybody
 specific — they only have to reach the hub, and the hub knows where everyone is.
 
-**Text rather than call.** Messages queue and deliver on a congested network where voice calls simply
-fail.
-«CITE: FCC or carrier guidance on SMS delivery versus voice call completion on congested cellular
-networks.»
+**Text rather than call**, and this is federal guidance rather than folk wisdom. FEMA's instruction, in
+its own words: *"Send text messages or use social media to reach out to family and friends. Phone systems
+often are busy after a disaster. Only make emergency calls."* Messages queue and deliver on a congested
+network; voice calls need a circuit that may not exist. Keeping the voice channel clear is also the
+reason for the second half of that instruction — every non-emergency call you make is capacity somebody
+else needs.
+«SRC: Ready.gov / FEMA — "Send text messages or use social media to reach out to family and friends.
+Phone systems often are busy after a disaster. Only make emergency calls." |
+https://www.ready.gov/volcanoes | retrieved 2026-07-29»
 
 **Then the part that concerns the children specifically.** Find out your school's actual
 reunification procedure — where children are taken, who is permitted to collect them, and what

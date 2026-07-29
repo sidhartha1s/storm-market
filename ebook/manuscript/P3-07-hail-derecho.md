@@ -104,11 +104,24 @@ for a vehicle in a hail event, and moving the car when a warning is issued costs
 ## During
 
 **A severe thunderstorm warning is not a minor product.** It means winds of at least 58 miles an hour or
-hail at least an inch across, and the warning text distinguishes the "considerable" and "destructive"
-damage-threat tags — a destructive tag now triggers a wireless emergency alert on phones, because those
-storms do tornado-grade damage.
-«CITE: the NWS damage-threat tagging system for severe thunderstorm warnings and which tag triggers a
-Wireless Emergency Alert.»
+hail at least an inch across — and since 2021 the warning carries a **damage-threat tag** with three
+levels, which is the single most useful thing to learn about this hazard.
+
+The levels, lowest to highest, are **base, considerable and destructive.** *Considerable* means at least
+1.75-inch hail (golf ball) or 70 mph winds. *Destructive* means at least **2.75-inch hail (baseball) or
+80 mph winds** — and a destructive tag **automatically fires a wireless emergency alert to every phone
+in the warned area.** A considerable tag does not. When no tag appears, the threat is base level.
+
+That asymmetry is the practical point. **If your phone screams for a thunderstorm, it is not a routine
+thunderstorm** — the weather service reserves that alert for roughly the top ten per cent of severe
+storms nationally, and most of them are damaging-wind events: derechos and the largest supercells. It is
+the same alert channel as a tornado warning, and it deserves the same response.
+«SRC: NOAA National Weather Service, "New 'Destructive' Severe Thunderstorm Warning category to trigger
+Wireless Emergency Alerts on mobile phones" (22 July 2021) — three damage-threat categories base,
+considerable, destructive; destructive = 2.75 in hail and/or 80 mph winds and auto-activates a WEA;
+considerable = 1.75 in hail and/or 70 mph and does not; on average only 10 per cent of severe
+thunderstorms reach destructive each year, mostly damaging-wind events. |
+https://www.weather.gov/news/072221-svr-wea | retrieved 2026-07-29»
 
 **When it is issued:** vehicles under cover or against a building. Everything loose brought in. Charge
 everything. Unplug what you can spare (Protection 120). Then get away from windows and go to an interior

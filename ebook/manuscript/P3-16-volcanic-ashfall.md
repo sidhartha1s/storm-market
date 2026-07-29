@@ -33,16 +33,23 @@ That is the version most American readers could plausibly experience, and it is 
 **Ash is pulverised rock, not soot.** That single fact explains everything below. It is abrasive, angular,
 heavy, electrically conductive when wet, and it does not burn or decompose.
 
-**Killed or injured by:** roof collapse under accumulated ash, which is the leading cause of death in
-distant ashfall zones; respiratory distress in people with asthma, COPD or heart disease; traffic accidents
-in near-zero visibility on roads that become extremely slippery; and cardiac events during the clean-up,
-which is heavy, prolonged work in bad air.
+**Killed or injured by:** roof collapse under accumulated ash; respiratory distress in people with asthma,
+COPD or heart disease; traffic accidents in near-zero visibility on roads that become extremely slippery;
+and cardiac events during the clean-up, which is heavy, prolonged work in bad air.
 
-**Ash is heavy.** Dry ash is roughly comparable to wet snow by volume, and wet ash is far heavier —
-substantially more than wet snow — because it packs and holds water rather than melting. A few inches on a
-large roof is tons, and unlike snow it never melts off.
-«CITE: USGS/IVHHN figures for the density of dry and wet volcanic ash, and the accumulation depths
-associated with roof collapse risk.»
+**Ash is heavy, it packs, and unlike snow it never melts off.** Wet ash is substantially heavier than dry.
+This book does not print a density figure or a collapse depth, because those depend on the ash and the
+roof and a number here would be read as permission to wait and see.
+
+What the federal guidance does say is where the danger to *you* is, and it is not where people expect:
+**"Do not get on your roof to remove ash unless you have guidance or training."** Ash makes surfaces
+slippery, and — the instruction that should stop anyone — *"be careful not to contribute additional weight
+to an overloaded roof."* You are part of the load. Clear from the ground where you can, wear protective
+clothing and a mask, and keep children out of the clean-up entirely.
+«SRC: Ready.gov / FEMA, "Volcanoes" — 161 potentially active volcanoes in the United States; ash can
+travel hundreds of miles; do not get on the roof to remove ash without guidance or training; do not
+contribute additional weight to an overloaded roof; protective clothing and a mask for clean-up; children
+should not help. | https://www.ready.gov/volcanoes | retrieved 2026-07-29»
 
 **Costs:** roofs and gutters; vehicle engines and brakes, because ash destroys air filters and scores
 cylinders; HVAC systems; water supplies where the ash lands in open reservoirs and tanks; electronics, from

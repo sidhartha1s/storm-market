@@ -26,10 +26,30 @@ distance from appliances are usually wrong.
 
 **The thing nobody knows: CO alarms expire.** The sensing element degrades and the unit has a service
 life printed on the back, typically counted from manufacture rather than installation. An alarm past
-its date may sit silently through a poisoning. Check the date on every alarm in your house tonight, and
-write the replacement year on the front of the unit in marker where you can see it from the floor.
-«CITE: CO alarm service-life guidance — typical rated life and the end-of-life signal behaviour, per
-manufacturer standards / NFPA.»
+its date may sit silently through a poisoning. CDC's instruction is *"replace your CO detector following
+the manufacturer's instructions or every 5 years"* — a much shorter interval than the ten years people
+carry over from smoke alarms, and the single most common maintenance failure in this protection.
+
+**And the test button does not test what you think it tests.** The federal product-safety regulator is
+explicit: pressing it *"tests whether the circuitry is operating correctly, not the accuracy of the
+sensor."* A unit can chirp obediently every month for years with a dead sensor. That is exactly why the
+date matters more than the monthly test. Newer alarms carry an **end-of-life signal** that sounds when
+the unit needs replacing — learn what yours sounds like, because most people hear it, assume a low
+battery, change the battery, and put a dead alarm back on the ceiling.
+
+Check the date on every alarm in your house tonight, and write the replacement year on the front of the
+unit in marker where you can see it from the floor.
+«SRC: US Centers for Disease Control and Prevention, "Carbon Monoxide Poisoning Basics" — install
+battery-operated or battery back-up CO detectors near every sleeping area; "replace your CO detector
+following the manufacturer's instructions or every 5 years." |
+https://www.cdc.gov/carbon-monoxide/about/index.html | retrieved 2026-07-29»
+«SRC: US Consumer Product Safety Commission, "Carbon Monoxide Fact Sheet" and "CO Alarms" — using the
+test button "tests whether the circuitry is operating correctly, not the accuracy of the sensor";
+alarms have a recommended replacement age; newer alarms have an end-of-life signal; CO alarms on each
+level of the home and outside sleeping areas, not in attics or basements unless they include a sleeping
+area; test monthly and replace batteries annually. |
+https://www.cpsc.gov/safety-education/safety-guides/carbon-monoxide/carbon-monoxide-fact-sheet |
+retrieved 2026-07-29»
 
 Combination smoke-and-CO units are acceptable and reduce the number of things to maintain. Ten-year
 sealed-battery units remove the dead-battery failure mode entirely and are worth the premium.
@@ -59,8 +79,25 @@ so that one sounding sounds all of them, which matters enormously in a house whe
 in a consolidated room far from the origin. Sealed ten-year lithium units, which cannot be disabled by
 removing a battery.
 
-Replace the unit itself on the manufacturer's schedule.
-«CITE: NFPA smoke alarm placement, interconnection, and replacement interval guidance.»
+**Replace the unit itself ten years from the manufacture date**, not ten years from when you put it up
+— the fire administration's phrasing is *"they need to be replaced 10 years from the manufacture
+date,"* and the date is printed on the back. A 9-volt unit gets a monthly test and a fresh battery at
+least once a year; a sealed ten-year lithium unit gets the monthly test and then the whole unit is
+replaced.
+
+**One more choice that most households get wrong by default.** There are two sensing technologies,
+ionization and photoelectric, and they detect *different kinds of fire* — fast flaming fires versus
+smouldering ones. Because nobody can predict which kind will start, the federal recommendation is that
+every sleeping area have **both types, or dual-sensor alarms that contain both.** If you are buying
+alarms anyway, that is the same money spent better. Alarms with strobes and bed-shakers exist for people
+with hearing loss and belong in the plan for anyone who would not wake to a sounder.
+«SRC: US Fire Administration, "Smoke Alarms" — install in every bedroom, outside each separate
+sleeping area and on every level including the basement; on the ceiling or high on the wall;
+interconnected so when one sounds they all sound; replaced 10 years from the manufacture date; test
+monthly, replace 9-volt batteries at least annually; USFA recommends both ionization and photoelectric,
+or dual-sensor alarms, in every place people sleep; strobe/vibrating alarms for people with hearing
+loss. | https://www.usfa.fema.gov/prevention/home-fires/prepare-for-fire/smoke-alarms/ | retrieved
+2026-07-29»
 
 **What this does not do:** a smoke alarm buys escape time. It does not buy firefighting time, and it
 does not detect CO.
@@ -177,14 +214,23 @@ Buy N95 or better, per person, and store them where they will be found. They mat
 distinct situations: wildfire smoke, volcanic ash, and post-event debris clearing, which produces
 silica, fibreglass, mould spores, and pulverised building material.
 
-**Fit is the whole protection.** A respirator that leaks around the edges provides very little
-benefit, which is why facial hair at the seal and loose straps defeat it entirely. Test it: cover the
-mask, inhale, and feel whether it draws in against your face or air sneaks around the edge.
+**Fit is the whole protection**, and NIOSH explains why in a sentence worth memorising: a respirator
+**"can only filter particles that try to pass through the filter material."** A tight-fitting respirator
+seals to the face and *forces* the air through the filter. A loose-fitting mask does not, and **"if gaps
+exist between your face and the respirator or mask, some small particles that you cannot see can enter
+your nose or mouth through those gaps."** NIOSH names the usual leak points: **the bridge of the nose,
+the sides, and facial hair.** Because faces differ, you may need to try a few to find one that seals —
+which is an argument for buying them before you need them.
 
-Cloth and surgical masks do essentially nothing for fine particulate — they are the wrong tool and
-wearing one produces confidence without protection.
-«CITE: NIOSH / CDC guidance on respirator selection and fit for smoke, ash, and debris exposure;
-comparative ineffectiveness of cloth masks for PM2.5.»
+**On cloth and surgical masks, NIOSH's objection is precise and it is not "they don't work."** It is
+that **"some masks, like many disposable face masks and cloth masks, are not made to a standard. They
+provide unknown levels of protection."** A NIOSH Approved N95 meets the most rigorous standard and states
+its filtration level. An unstandardised mask states nothing, and for smoke, ash and silica that is the
+same as no information. Buy the thing with a number on it.
+«SRC: CDC/NIOSH, "Community Respirators and Masks" — filtration and fit; NIOSH Approved respirators meet
+the most rigorous standards and report their filtration level; disposable and cloth masks not made to a
+standard "provide unknown levels of protection"; leak points at the nose bridge, sides and facial hair. |
+https://www.cdc.gov/niosh/ppe/php/community-respirators-masks/index.html | retrieved 2026-07-29»
 
 Children's faces do not seal on adult respirators. Buy sized ones or accept that their protection is
 staying indoors with the filtration running.
@@ -274,9 +320,21 @@ available.
 Ash is pulverised rock — abrasive, heavy, and unlike ordinary dust in three ways that matter.
 
 **It loads roofs.** Wet ash is dramatically heavier than dry, and accumulation is a structural load
-problem. Clear it before it gets wet, from the ground where possible, and know that a modest depth over
-a large roof is a large mass.
-«CITE: USGS volcanic ashfall guidance — roof load thresholds and clearing precautions.»
+problem. Clear it before it gets wet, from the ground where possible.
+
+**And read FEMA's instruction on this before you climb anything**, because it is more cautious than most
+people's instinct: *"Do not get on your roof to remove ash unless you have guidance or training,"* ash
+makes surfaces slippery, and *"be careful not to contribute additional weight to an overloaded roof."*
+Your own weight is part of the load. Protective clothing and a mask for the clean-up, and children do not
+help with it.
+
+This book does not print a depth at which a roof fails, because that depends on the roof, on the ash, and
+on whether it has rained — and a number here would be used as permission to wait.
+«SRC: Ready.gov / FEMA, "Volcanoes" — 161 potentially active volcanoes in the United States; volcanic
+ash can travel hundreds of miles; "do not get on your roof to remove ash unless you have guidance or
+training"; "be careful not to contribute additional weight to an overloaded roof"; wear protective
+clothing and a mask when cleaning up; children should not help with clean-up. |
+https://www.ready.gov/volcanoes | retrieved 2026-07-29»
 
 **It destroys engines and HVAC.** It clogs air filters fast and scores cylinder walls. Change vehicle
 and furnace filters early and keep spares. Avoid driving in it at all, both for the engine and because

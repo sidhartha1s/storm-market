@@ -6,22 +6,48 @@ Target: 10 pages · draft 1, 2026-07-29
 
 ## The event
 
-In mid-February 2021 an Arctic air mass reached deep into Texas and stayed for days. Natural gas
-wellheads and pipelines froze, generating plant tripped offline, and the state's grid came within
-minutes of a collapse that would have taken months to recover from. Instead it shed load — which on the
-ground meant days without power in single-digit temperatures, in houses built to shed heat rather than
-hold it, with uninsulated plumbing running through unheated attics.
-«CITE: FERC/NERC joint inquiry into the February 2021 cold weather event — the causes of generation loss
-and how close the grid came to uncontrolled collapse.»
+In mid-February 2021 an Arctic air mass reached deep into Texas and stayed for days. The federal
+inquiry's numbers: **ERCOT ordered a total of 20,000 MW of rolling blackouts to prevent grid collapse —
+the largest manually controlled load shedding event in United States history — and more than 4.5 million
+Texans lost power, some for as long as four days.**
 
-Hundreds died. Hypothermia indoors and carbon monoxide poisoning were the two largest categories.
-«CITE: the official Texas mortality analysis, with the counts by cause.»
+Three findings from that report deserve to be read slowly, because they are the reason this playbook
+does not tell you to wait for the grid to be fixed.
 
-Then the burst pipes. Hundreds of thousands of homes flooded from inside as the freeze released, in a
-state with almost no plumbing insulation, producing one of the largest single-event property losses in
-American history.
-«CITE: an insurance-industry estimate of the February 2021 event's insured losses and the share
-attributable to freeze/burst-pipe claims.»
+**First: 81 percent of freeze-related generating unit outages happened at temperatures *above* the
+units' own stated ambient design temperature.** The plants failed in weather they were rated for.
+
+**Second, the feedback loop.** 87 percent of the fuel-related generation outages involved natural gas.
+Of the natural gas production declines, 43.3 percent were caused by freezing weather — and **21.5
+percent were caused by power losses at midstream, wellhead or gathering facilities**, which is to say
+partly by the rolling blackouts themselves. The blackouts cut the fuel supply to the plants that would
+have ended the blackouts.
+
+**Third: it took 28 formal recommendations to describe the fix.** Not one thing. Twenty-eight.
+«SRC: FERC / NERC / Regional Entity Staff, "The February 2021 Cold Weather Outages in Texas and the
+South Central United States" (final report, 2021), as summarised in FERC's release "Final Report on
+February 2021 Freeze Underscores Winterization Recommendations" — ERCOT ordered 20,000 MW of rolling
+blackouts, the largest manually controlled load shedding event in US history; more than 4.5 million
+Texans lost power, some for as long as four days; 81 percent of freeze-related generating unit outages
+occurred at temperatures above the units' stated ambient design temperature; 87 percent of fuel-related
+generation outages involved natural gas; 43.3 percent of gas production declines were caused by freezing
+temperatures and weather and 21.5 percent by power losses at midstream, wellhead or gathering
+facilities; 28 formal recommendations. |
+https://www.ferc.gov/news-events/news/final-report-february-2021-freeze-underscores-winterization-recommendations
+| retrieved 2026-07-29»
+
+Hundreds died. FERC's own release puts it plainly and without a number: *"Tragically, the loss of
+electricity caused the deaths of numerous Texans."* Hypothermia indoors and carbon monoxide poisoning
+were the two largest categories in the state's reporting, and this book will not print a total, because
+the counts published by different authorities for this event differ substantially and none of them could
+be verified to a primary state document at the time of writing. The cause breakdown is the part that
+matters for what you do, and it is not in dispute: **people froze in their own houses, and people
+poisoned themselves trying not to.**
+
+Then the burst pipes. Homes flooded from inside as the freeze released, in a state with almost no
+plumbing insulation. The insured-loss totals quoted for this event come from industry estimates rather
+than a public filing, so no figure appears here — but you do not need one to act, because the protection
+is Protection 34 and it costs the price of a few feet of pipe insulation and a dripping tap.
 
 The distinction from the previous playbook is worth being precise about, because the response differs.
 A blizzard or ice storm is a **storm** — wind, precipitation, downed lines, blocked roads. A deep freeze

@@ -6,20 +6,59 @@ Target: 8 pages · draft 1, 2026-07-29
 
 ## The event
 
-On 7 June 2023, New York City had the worst air quality of any major city on earth, the sky went orange,
-and the fire producing the smoke was burning in Quebec, several hundred miles away.
-«CITE: the June 2023 Canadian wildfire smoke episode — recorded AQI values in the US Northeast and the
-distance from the source fires.»
+On **7 June 2023** the sky over New York went orange, and the fires producing the smoke were burning in
+eastern Canada, several hundred miles away.
+
+**The measured numbers are the reason this playbook exists.** CDC's field report on the episode records
+that during 6–8 June smoke from eastern Canadian wildfires pushed the air quality index to *"unhealthy"
+or "very unhealthy" levels across the state* of New York, driven entirely by fine particulate. Daily mean
+PM2.5 peaked on 7 June at between **55.2 µg/m3 in western New York and 122.3 µg/m3 in the New York City
+metro area.** Set against each region's own ten-year June baseline — 8.0 and 9.2 µg/m3 respectively — that
+is an increase of **590 per cent and 1,229 per cent.**
+
+Read those two baseline figures again, because they are the point. The normal June air in both places was
+around 8 to 9 micrograms. For one day it was fifty-five, and a hundred and twenty-two. Nothing was on
+fire anywhere near either of them.
+«SRC: H.C. Meek et al., "Notes from the Field: Asthma-Associated Emergency Department Visits During a
+Wildfire Smoke Event — New York, June 2023," MMWR 72(34):933–935 (25 August 2023) — during 6–8 June 2023
+smoke from Eastern Canadian wildfires drove AQI to unhealthy or very unhealthy across New York; daily
+mean PM2.5 highest on 7 June, 55.2 µg/m3 (Western) to 122.3 µg/m3 (NYC metro), representing 590% and
+1,229% increases above 10-year (2013–2022) June baselines of 8.0 and 9.2 µg/m3. |
+https://www.cdc.gov/mmwr/volumes/72/wr/mm7234a6.htm | retrieved 2026-07-29»
 
 That is the point of giving smoke its own playbook. **You do not have to live anywhere near a wildfire to
 be badly affected by one.** Smoke travels across a continent, arrives without a warning siren, lasts
 days to weeks, and affects everyone in a way the fire itself affects only a few thousand people.
 
-It is also, measured in people harmed, one of the largest hazards in this book. A wildfire kills tens.
-A continental smoke episode sends thousands of people to hospital with cardiac and respiratory events
-and worsens the health of millions more.
-«CITE: peer-reviewed or CDC/EPA estimate of excess hospitalisations or mortality attributable to a major
-US wildfire smoke episode.»
+It is also, measured in people harmed, one of the largest hazards in this book — and this is the one
+place where the harm has been counted nationally rather than estimated.
+
+CDC compared emergency department visits on smoky days with days without smoke, across the whole country,
+using syndromic surveillance from thousands of hospitals. **During the nineteen wildfire-smoke days
+between 30 April and 4 August 2023, asthma-associated emergency department visits were 17 per cent higher
+than expected**, nationally, across all age groups — with the largest increases in the regions that had
+the most consecutive smoke days, and among people aged 5 to 17 and 18 to 64. A smoke day was defined
+conservatively: any day the index reached 101, merely *"unhealthy for sensitive groups."*
+
+**In New York the same week, the single-day effect was far sharper.** Asthma emergency visits on 7 June
+were **81.9 per cent above the previous week's average** statewide — 80.8 visits a day to 147 — and the
+regional figures went to a **179.1 per cent increase in the Eastern Lake Ontario region.** Among people
+aged 10 to 29 the statewide increase was **197.6 per cent.** Roughly a tripling, in the age band that
+thinks of itself as healthy.
+
+That is what the hazard looks like in a hospital: not tens of deaths but thousands of extra people
+struggling to breathe, most of whom had a preventable exposure and a treatable condition. Which is why a
+fifty-dollar purchase does more measurable good here than almost anywhere else in this book.
+«SRC: CDC, "Asthma-Associated Emergency Department Visits During the Canadian Wildfire Smoke Episodes —
+United States, April–August 2023," MMWR 72(34) — National Syndromic Surveillance Program; asthma-associated
+ED visits 17% higher than expected during the 19 wildfire smoke days between 30 April and 4 August 2023;
+smoke day defined as PM2.5 driving AQI ≥101 ("unhealthy for sensitive groups"); larger increases in
+regions with more continuous smoke days and among persons aged 5–17 and 18–64. |
+https://www.cdc.gov/mmwr/volumes/72/wr/mm7234a5.htm | retrieved 2026-07-29»
+«SRC: H.C. Meek et al., MMWR 72(34):933–935 — asthma-associated ED visits on 7 June 2023 increased 81.9%
+statewide (80.8 to 147 visits) against the 1–5 June mean; largest regional increases Eastern Lake Ontario
+179.1%, Central 132.8%, Upper Hudson Valley 86.4%; among persons aged 10–29 the statewide increase was
+197.6%. | https://www.cdc.gov/mmwr/volumes/72/wr/mm7234a6.htm | retrieved 2026-07-29»
 
 And it is the hazard where a fifty-dollar purchase does the most measurable good of anything in the book.
 
@@ -113,10 +152,28 @@ smaller harm, and it is why Playbook 10 and this one are read together.
 
 **Outdoors, if you must be.** A fitted N95, worn the whole time, and the honest note that it does nothing
 for the gases in smoke — only the particles. Reduce exertion, because breathing harder means inhaling
-more. If you work outdoors, your employer may have obligations to you at defined index thresholds in
-several states; look it up rather than guessing.
-«CITE: at least one state's occupational wildfire-smoke standard, with the AQI thresholds that trigger
-employer requirements.»
+more. If you work outdoors, your employer may have obligations to you at a defined index threshold — and the
+threshold is worth knowing by heart, because it is also a reasonable trigger for your own household.
+
+**California's standard is the clearest.** Title 8 § 5141.1 applies whenever the current AQI for PM2.5
+is **151 or greater** and the employer should reasonably anticipate exposure. Above that line the
+employer must check the index at the start of each shift and periodically after, communicate the hazard
+in a language workers understand, train them on the health effects and on the symptoms — the regulation
+names *"asthma attacks, difficulty breathing, and chest pain"* — and **control the exposure**: filtered
+enclosed structures or vehicles where feasible, and otherwise changing where or when or how hard people
+work. Where the index is 151 to 500, the employer must **provide NIOSH-approved respirators such as N95s
+and encourage their use**; above 500 respirator use becomes mandatory. A vehicle with a cabin air filter
+and closed windows is one of the named exemptions, which tells you something about how much a filter
+buys.
+
+Other states have adopted their own versions. If you work outdoors anywhere in the smoke-affected west,
+find out yours; if your state has none, the California numbers are still the best available guide to
+when outdoor work has become a medical question.
+«SRC: California Code of Regulations Title 8 § 5141.1, "Protection from Wildfire Smoke" — applies at
+current AQI for PM2.5 of 151 or greater; identification of exposure each shift, communication, training
+per Appendix B; engineering and administrative controls; NIOSH-approved respirators such as N95 provided
+and encouraged from AQI 151 to 500, mandatory above 500; exemptions for filtered enclosed buildings and
+vehicles with cabin air filters. | https://www.dir.ca.gov/title8/5141_1.html | retrieved 2026-07-29»
 
 **Watch for the symptoms that mean stop.** Chest tightness or pain, severe shortness of breath,
 wheezing that does not settle with the usual medication, palpitations, dizziness, confusion. These are

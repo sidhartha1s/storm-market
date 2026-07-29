@@ -6,13 +6,29 @@ Target: 8 pages · draft 1, 2026-07-29
 
 ## The event
 
-In May 2021 a ransomware attack on a single pipeline company's business systems took the largest fuel
-pipeline on the American East Coast out of service for several days. The pipeline itself was undamaged. The
-fuel existed. What failed was the ability to bill for it and route it — and within two days, fuel stations
-across a dozen states were dry, because people who heard there might be a shortage all went to fill up at
-once.
-«CITE: authoritative record of the Colonial Pipeline shutdown, May 2021 — duration, states affected, and the
-share of stations without fuel at peak.»
+**On 7 May 2021 the Colonial Pipeline Company proactively shut down its pipeline system in response to a
+ransomware attack.** It announced the restart of the entire system on **13 May** — six days. The pipeline
+itself was never damaged. The fuel existed. What was attacked was the company's business network, and the
+shutdown was a precaution taken by the operator, not a physical failure.
+
+Six days of one pipeline was enough to require federal emergency intervention across most of the eastern
+seaboard: fuel waivers, emergency hours-of-service relief for tanker drivers, and a rolling list of states
+added to the regional emergency declaration. The Energy Department stood up its emergency response
+organisation.
+
+**And the shortages at the pump were mostly not a shortage.** They were the result of everybody who heard
+there might be one going to fill up in the same forty-eight hours — including, memorably, people filling
+plastic bags. This book does not print a peak percentage of stations dry, because the credible figures are
+commercial estimates rather than a government count, and the number is not the lesson. The lesson is that
+**a six-day interruption to one link produced a self-inflicted regional fuel emergency**, and that the
+household protection against it is having bought fuel *before* the news, not faster than the neighbours
+after it.
+«SRC: US Department of Energy, Office of Cybersecurity, Energy Security, and Emergency Response,
+"Colonial Pipeline Cyber Incident" — Colonial proactively shut down its pipeline system on 7 May 2021 in
+response to a ransomware attack and announced the restart of the entire system on 13 May 2021; DOE Energy
+Response Organization activated; DOT/FMCSA emergency hours-of-service measures and successive state
+additions to the regional emergency declaration. | https://www.energy.gov/ceser/colonial-pipeline-cyber-incident
+| retrieved 2026-07-29»
 
 That is this playbook. **The infrastructure a modern household depends on most is not physical. It is the
 set of systems that let you pay, prove who you are, be contacted, and buy things** — and those systems fail

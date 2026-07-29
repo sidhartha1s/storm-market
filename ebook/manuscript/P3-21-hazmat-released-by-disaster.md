@@ -37,10 +37,35 @@ hurricane. A ruptured anhydrous ammonia tank at an agricultural supplier. A floo
 releasing what was stored on its floor — which is the same failure as Protection 128 in your own garage, at
 industrial scale.
 
-And the natural-hazard link is direct: the largest industrial chemical releases in recent American history
-have followed hurricanes and floods, not equipment failures.
-«CITE: an EPA or CSB record of chemical releases triggered by a named hurricane, with the facility and
-substance.»
+And the natural-hazard link is direct and documented. The clearest federally investigated case is the
+**Arkema plant at Crosby, Texas, during Hurricane Harvey.** The facility stored organic peroxides that
+must be kept refrigerated or they decompose and burn. Harvey's rainfall flooded the site — which sits in
+both the 100-year and 500-year floodplain — and **exceeded the design elevations of the equipment**,
+taking out power, then backup power, then the critical refrigeration, then the standby refrigerated
+trailers brought in to replace it.
+
+On **31 August 2017** the peroxides in a refrigerated trailer decomposed and caught fire. Across three
+fires between 24 August and 4 September, **in excess of 350,000 pounds of organic peroxide products
+combusted.** More than **200 residents within 1.5 miles evacuated and could not return home for a week**,
+and **twenty-one emergency responders sought medical attention** after exposure to the fumes from the
+decomposing product — on a public highway that ran through the evacuation zone and was kept open until
+the first fire.
+
+The federal investigators' conclusion is the part that should change how you read the industrial sites near
+you. The board reviewed the existing industry guidance on flood hazards and found it *"either too generic
+or did not require sufficiently conservative precautions"* — specifically, it **did not require elevating
+critical equipment above the flood levels a storm like Harvey would produce.** The plant was not
+negligent by the standards of its industry. The standards were the problem.
+«SRC: US Chemical Safety and Hazard Investigation Board, *Extreme Weather, Extreme Consequences: CSB
+Investigation of the Arkema Crosby Facility and Hurricane Harvey* (executive summary) — incident developed
+over twelve days from 24 August to 4 September 2017; fire on 31 August 2017 when refrigerated organic
+peroxides decomposed; in excess of 350,000 pounds of organic peroxide products combusted across three
+fires; facility located in the 100-year and 500-year floodplain, flooding exceeded equipment design
+elevations and took out power, backup power, refrigeration and standby refrigerated trailers; more than
+200 residents within 1.5 miles could not return home for a week; twenty-one emergency responders sought
+medical attention; existing industry flood-hazard guidance "either too generic or did not require
+sufficiently conservative precautions" and did not require elevating critical equipment. |
+https://www.csb.gov/arkema-inc-chemical-plant-fire-/ | retrieved 2026-07-29»
 
 ---
 

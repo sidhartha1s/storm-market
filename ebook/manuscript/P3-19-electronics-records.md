@@ -138,10 +138,24 @@ as a matter of course.
 
 **Wet data is a partial exception, and it is worth knowing.** A drowned hard drive should **not** be
 switched on or dried out — powering it up is what destroys the platters. Keep it wet or sealed in a bag,
-and take it to a professional data recovery service. Wet photographs and paper documents can frequently be
-saved if they are handled properly: separated carefully, air-dried face up, or frozen to buy time before
-professional treatment. Do not stack them and do not let them dry stuck together.
-«CITE: a conservation or archival source on emergency salvage of water-damaged photographs and documents,
+and take it to a professional data recovery service.
+
+**Wet photographs and paper can frequently be saved, and the National Archives publishes how.** The
+guidance was written after the 1993 Midwest floods for exactly this reader. The key move is the one nobody
+guesses: **if wet materials cannot be dried immediately, stabilise them by freezing.** In the Archives'
+words, a domestic or commercial freezer *"will not kill mold. It will, however, put the mold in a dormant
+state until time and an appropriate treatment environment are available"* — after which manageable
+quantities can be defrosted and treated at leisure. Mold thrives on high temperature, high humidity,
+stagnant air and darkness, so the priority order is dry first, freeze if you cannot.
+
+Two cautions from the same document. **Do not try to remove active mold** — the fuzzy or slimy kind — as
+*"it may only spread or smear"*; dormant mold is dry and powdery. And anything of real monetary, historic
+or sentimental value should be handled in consultation with a conservator, because some flood damage is
+irreversible.
+«SRC: National Archives and Records Administration, "Emergency Salvage of Flood Damaged Family Papers"
+(August 1993) — stabilising wet and moldy materials by freezing; freezing renders mold dormant rather than
+killing it; do not attempt to remove active mold. |
+https://www.archives.gov/preservation/conservation/flood-damage.html | retrieved 2026-07-29»
 including the freezing technique.»
 
 **Then document the loss properly.** Photograph everything before you move it. Photograph the serial plates

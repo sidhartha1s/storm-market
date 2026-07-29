@@ -297,10 +297,40 @@ start it, since well pumps have a starting draw much higher than their running d
 common and expensive surprise. **A hand pump or a generator-fed circuit** is the durable answer, and
 it is a real expense — price it honestly rather than treating it as an afterthought.
 
-After any flood that reaches the wellhead, the well is presumed contaminated. It needs disinfection
-and testing before it is drinkable, and the procedure and the ratios come from your state or county
-health department rather than from a book.
-«CITE: EPA / state health department guidance on well shock chlorination and post-flood testing.»
+After any flood that reaches the wellhead, the well is presumed contaminated. **EPA's own threshold is
+lower than most owners assume:** a well *"more than 10 years old or less than 50 feet deep"* is *"likely
+to be contaminated, even if there is no apparent damage."* No apparent damage is not evidence.
+
+Two warnings come before any disinfection, and both are printed in capitals in EPA's guidance because
+they are the parts that hurt people. **Do not turn on the pump** — *"there is danger of electrical shock
+and damage to your well or pump if they have been flooded"* — and do not restore power until the wiring
+has been checked by a qualified electrician or pump contractor. **Do not wash with the water either:**
+*"people drinking or washing with water from a private well that has been flooded will risk getting
+sick."*
+
+The disinfection itself is nine steps and EPA says plainly that drilled, driven and bored wells *"are
+best disinfected by a well or pump contractor, because it is difficult for the private owner to
+thoroughly disinfect these wells."* If you are doing it yourself, the shape of it is: run the water
+clear, pour a gallon of unscented household bleach down the casing, run an outside hose back into the
+casing until you smell chlorine, open every cold tap inside and out until each one smells of chlorine
+and then close them all, and **wait six to twenty-four hours** without drinking, cooking, bathing or
+washing with any of it. Then flush to an area away from plants, streams and the septic field until the
+smell is gone. **Then wait seven to ten days and have the water tested for bacteria** — the wait is so
+the chlorine has cleared and the test is measuring the well rather than the bleach. If you have a water
+treatment system, switch it to bypass before you put chlorine through the house.
+
+Two limits worth knowing before you trust a single clean result. Disinfection *"will not provide
+protection from pesticides, heavy metals and other types of non-biological contamination"* — it kills
+organisms and does nothing to chemistry. And a clean test is not a permanent verdict: EPA's caution is
+that *"your well may not be a safe source of water for many months after the flood"* because
+groundwater keeps moving, so *"it will be necessary to take long range precautions, including repeated
+testing."* Get the specific ratios and any local requirements from your county health department, which
+knows your aquifer.
+«SRC: US Environmental Protection Agency, "What to Do After the Flood" (EPA 816-F-05-021, updated
+October 2024) — do not turn on the pump; do not wash with well water; wells over 10 years old or under
+50 feet likely contaminated; nine-step disinfection with one gallon unscented bleach and a 6–24 hour
+wait; test for bacteria 7–10 days after; disinfection does not address pesticides or heavy metals;
+repeated long-range testing needed. | https://www.epa.gov/sites/default/files/2015-05/documents/epa816f05021.pdf | retrieved 2026-07-29»
 
 **What this does not do:** storing water does not restore your well, and a hand pump does not work on
 every well depth or casing type. Check yours before buying anything.

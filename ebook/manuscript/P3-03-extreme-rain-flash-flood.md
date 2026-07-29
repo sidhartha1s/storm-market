@@ -21,8 +21,31 @@ rather than as a rising level.
 The other reason to open here: rainfall extremes are the part of the weather picture changing fastest,
 and the flooding maps most households rely on describe where water has historically gone rather than
 where this decade's rain sends it.
-«CITE: National Climate Assessment or NOAA analysis on observed increases in heavy-precipitation
-intensity and frequency in the US, with the specific metric quoted.»
+
+**The metric matters more than the adjective, so here is the metric.** EPA, drawing on the national
+climate assessment, defines extreme precipitation as **the top one per cent of the heaviest
+precipitation events** for a given place, measured against its own historical record — a local
+definition, not a national threshold, which is the right way to do it. On that measure: *"since the
+1950s, heavy precipitation events have been happening more often across the contiguous United States,
+especially in the Northeast and Midwest,"* and there is *"strong evidence that warming due to human
+activities has contributed to this increase."* The mechanism is simple enough to hold in your head:
+warmer air evaporates more water and holds more of it, so when it does rain, there is more available to
+fall at once.
+
+The related indicator tracks **extreme one-day precipitation events** across the contiguous 48 states
+back to 1910 — the share of the country where an unusually large part of the annual total arrived in
+single-day downpours. That is the shape of the change: not necessarily more rain in a year, but more of
+the year's rain arriving in the hours your storm drain was sized for.
+«SRC: US Environmental Protection Agency, "Extreme Precipitation" (Climate Change Science) — extreme
+precipitation defined as the top 1% of the heaviest precipitation events for an area given historical
+records; since the 1950s heavy precipitation events have been happening more often across the contiguous
+United States, especially in the Northeast and Midwest, with strong evidence that warming due to human
+activities has contributed. | https://www.epa.gov/climatechange-science/extreme-precipitation | retrieved
+2026-07-29»
+«SRC: US Environmental Protection Agency, "Technical Documentation: Heavy Precipitation" (April 2021) —
+Figure 1, "Extreme One-Day Precipitation Events in the Contiguous 48 States, 1910-2020," developed from
+NOAA's US Climate Extremes Index (CEI step 4). |
+https://www.epa.gov/sites/default/files/2021-04/documents/heavy-precip_td.pdf | retrieved 2026-07-29»
 Count FEMA's own claims file and the mismatch is measurable: **25.2 percent of all 2.72 million NFIP
 claims on record — and 28.4 percent of claims for losses since 2015 — were on policies rated in zones
 B, C or X, which is to say outside the Special Flood Hazard Area.** Roughly one claim in four is being

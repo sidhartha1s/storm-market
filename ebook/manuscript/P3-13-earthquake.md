@@ -109,9 +109,29 @@ Priority order for a Quake West household:
   cripple-wall bracing on older wood-frame houses is a well-defined retrofit with a well-defined cost and it
   is the single most effective structural spend available to a homeowner. Many cities have grant or subsidy
   programmes for exactly this work.
-- **Sign up for the earthquake early warning system** if you are on the West Coast. It provides seconds —
-  sometimes tens of seconds — which is enough to get under a table, stop a surgeon's hand, or halt a train.
-  «CITE: the USGS ShakeAlert system — the states covered and the realistic warning times.»
+- **Sign up for ShakeAlert**, the USGS earthquake early warning system, if you are in **California, Oregon
+  or Washington** — those are the three states it is built to cover. It delivers seconds, sometimes tens
+  of seconds, which is enough to get under a table, stop a surgeon's hand, or halt a train.
+
+  **Then calibrate your expectations, because the honest numbers are smaller than the headlines.** USGS's
+  own study of expected warning times in the Pacific Northwest concluded that for the shallow crustal and
+  intraslab earthquakes that will produce most alerts, *"users will only have a few seconds of warning
+  before strong shaking begins"* — and that this *"remains true even during infrequent, offshore great
+  (magnitude about 8) megathrust earthquakes,"* where times *"generally range from seconds to tens of
+  seconds,"* with the longest warnings of **50 to 80 seconds possible only for users far from the
+  epicentre.** And there is a zone near every epicentre that gets **no warning at all**, because detection
+  itself takes seconds.
+
+  So plan for *a few seconds*. That is enough for drop, cover, hold on, and it is not enough to go
+  anywhere. A household that expects half a minute will use the alert badly.
+  «SRC: J.J. McGuire, D.E. Smith, A.D. Frankel, E.A. Wirth, S.K. McBride and R.M. de Groot, "Expected
+  Warning Times from the ShakeAlert Earthquake Early Warning System for Earthquakes in the Pacific
+  Northwest," USGS Open-File Report 2021-1026 — a few seconds of warning for shallow crustal and
+  intraslab events, seconds to tens of seconds for offshore great megathrust events, longest times of
+  50-80 seconds only at considerable distance from the epicentre, and a no-warning zone near every
+  epicentre. | https://pubs.usgs.gov/of/2021/1026/ofr20211026.pdf | retrieved 2026-07-29»
+  «SRC: US Geological Survey, "ShakeAlert" — the system is being developed to cover California, Oregon
+  and Washington. | https://earthquake.usgs.gov/data/shakealert/ | retrieved 2026-07-29»
 
 **Then practise the response**, because twenty seconds only works as muscle memory. Drop, cover, hold on, in
 the actual rooms you actually use, twice a year, including at night.
