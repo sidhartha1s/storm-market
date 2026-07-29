@@ -379,29 +379,33 @@ def lone():
     # stray red mark in Indiana, an hour of story before the storm gets there.
     rlen = sum(((b2[0] - a2[0]) ** 2 + (b2[1] - a2[1]) ** 2) ** 0.5
                for a2, b2 in zip(pts, pts[1:]))
-    b = (f'<svg viewBox="0 0 1920 1080" style="position:absolute;inset:0">'
+    # the strike runs along the squall front itself, so it must be derived from it too
+    sx1, sy1 = xs[0] - 26, ys[0] - 96 + 22
+    sx2, sy2 = xs[-1] + 26, ys[-1] - 96 - 22
+    b = (f'<img class="plate" id="{cid}-plate" src="media/maps/map-plate-tristate.png" alt="">'
+         f'<div class="platevig"></div>'
+         f'<svg viewBox="0 0 1920 1080" style="position:absolute;inset:0">'
          f'<defs><filter id="lglow"><feGaussianBlur stdDeviation="10" result="b"/>'
          f'<feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>'
-         f'<line x1="664" y1="150" x2="664" y2="1010" stroke="#16212c" stroke-width="3"/>'
-         f'<line x1="1272" y1="150" x2="1272" y2="1010" stroke="#16212c" stroke-width="3"/>'
-         # y=920, not 994: the closing line sits at bottom:74px and overprinted the labels
-         f'<text x="470" y="920" class="statelab2">MISSOURI</text>'
-         f'<text x="930" y="920" class="statelab2">ILLINOIS</text>'
-         f'<text x="1450" y="920" class="statelab2">INDIANA</text>'
-         # the label belongs INSIDE the group it describes, so it dies with the cells
+         # no drawn dividers, no drawn state names: the plate has the real rivers and
+         # already reads MISSOURI / ILLINOIS / INDIANA in its own engraved type
          f'<g id="{cid}-squall">{squall}'
          # ceil, never a guess: a dasharray shorter than the line leaves the overhang
-         # painted as a second dash from frame one (1040 vs a true 1041.4px)
-         f'<line id="{cid}-sqx" x1="452" y1="854" x2="1420" y2="470" stroke="#8e2020" '
-         f'stroke-width="5" stroke-dasharray="{_ceil(452, 854, 1420, 470)}" '
-         f'stroke-dashoffset="{_ceil(452, 854, 1420, 470)}"/>'
-         f'<text id="{cid}-sqlab" x="452" y="880" class="maplab" opacity="0">A SQUALL LINE · MANY STORMS</text>'
+         # painted as a second dash from frame one
+         f'<line id="{cid}-sqx" x1="{sx1:.0f}" y1="{sy1:.0f}" x2="{sx2:.0f}" y2="{sy2:.0f}" '
+         f'stroke="#8e2020" stroke-width="5" '
+         f'stroke-dasharray="{_ceil(sx1, sy1, sx2, sy2)}" '
+         f'stroke-dashoffset="{_ceil(sx1, sy1, sx2, sy2)}"/>'
+         f'<text id="{cid}-sqlab" x="{xs[0]:.0f}" y="{ys[0] - 150:.0f}" class="maplab" '
+         f'opacity="0">A SQUALL LINE · MANY STORMS</text>'
          f'</g>'
          f'<polyline id="{cid}-route" points="{route}" fill="none" stroke="#c0392b" stroke-width="8" '
          f'stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="{rlen:.0f}" '
          f'stroke-dashoffset="{rlen:.0f}"/>'
-         f'<circle id="{cid}-cell" class="lonecell" cx="300" cy="792" r="0" filter="url(#lglow)"/>'
-         f'<text id="{cid}-onelab" x="252" y="742" class="maplab" opacity="0">ONE CELL</text>'
+         f'<circle id="{cid}-cell" class="lonecell" cx="{xs[0]:.0f}" cy="{ys[0]:.0f}" r="0" '
+         f'filter="url(#lglow)"/>'
+         f'<text id="{cid}-onelab" x="{xs[0]:.0f}" y="{ys[0] + 52:.0f}" text-anchor="middle" '
+         f'class="maplab" opacity="0">ONE CELL</text>'
          f'</svg>')
     eb, j = head(cid, "MODERN REANALYSIS · JOHNS ET AL. 2013", "ONE LONE SUPERCELL",
                  "not a wall of storms — a single storm, all afternoon")
