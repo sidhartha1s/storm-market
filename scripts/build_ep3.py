@@ -80,8 +80,10 @@ SHOTS = {
  "a1-s4":  dict(kind="graphic", id="g-scale"),
  "a1-s4c": dict(kind="stock", assets=[S+"stock-cloudsomen-02.mp4", S+"stock-cloudsrolling-03.mp4",
         S+"stock-lightning-01.mp4", S+"stock-cloudsomen-01.mp4"]),
- "a1-s4d": dict(kind="panel", id="g-panel-lone", assets=[S+"stock-cloudsrolling-01.mp4",
-        S+"stock-tornado-01.mp4", S+"stock-cloudsrolling-02.mp4"], stockbed=True),
+ # the narration here is spatial — "not a squall line", "one lone supercell", "400 miles",
+ # "seven hours" — so it gets a map, not a stat panel over cloud footage (owner, 5:16).
+ "a1-s4d": dict(kind="graphic", id="g-lone",
+        tail=[S+"stock-cloudsrolling-01.mp4", S+"stock-tornado-01.mp4"]),
  # weighted, not evenly chunked: "children walked to school" is spoken at +2.58s and
  # "miners went underground" at +7.72s, so the mine has to own the 7-12s slot
  "a1-s5":  dict(era="pre", kind="mixed", assets=[(A+"ai-children-school.png","still",7.5),
