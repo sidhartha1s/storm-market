@@ -484,6 +484,11 @@ def main():
                        f'data-duration="{gw:.2f}" data-track-index="2" data-width="1920" data-height="1080"></div>')
             lines_report.append((seg_start, gw, f"GRAPHIC {gid}"))
             leftover = seg_dur - gw
+            # The closing card is the last thing in the episode; cutting away from it to a
+            # damage photograph for the leftover hold put a 1.5s archival flash after the
+            # credits. The video ends on the card.
+            if sid == ORDER[-1]:
+                leftover = 0.0
             if leftover > 1.2:      # never park on a finished graphic, and never on nothing
                 pool = plan.get("tail") or TAIL[sid.split("-")[0]]
                 ct2 = round(seg_start + gw, 2)
