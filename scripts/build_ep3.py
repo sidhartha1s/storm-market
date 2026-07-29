@@ -66,9 +66,12 @@ SHOTS = {
  "a1-s1":  dict(kind="graphic", id="g-wordban", pad_before=0.0),
  # hazen-portrait-01.jpg is Gen. William B. Hazen — the Signal Corps commander who SHUT Finley
  # down, not Finley. Under a panel headlined "JOHN PARK FINLEY" the viewer reads the face as
- # Finley. No verified Finley portrait exists in media/portraits/ yet, so this window carries
- # documents instead of a face. Do not restore a portrait here without provenance for Finley.
- "a1-s1b": dict(kind="panel", id="g-panel-finley", assets=[P+"DocFile__2_.jpg",
+ # Finley, so it stays out. The two portraits here ARE Finley: the Library of Congress plate
+ # is captioned "J.P. FINLEY" on the negative, and the desk photograph came from the owner
+ # labelled as him. Both are taller than 1.45:1, so they land in the .pfit treatment — the
+ # image sits whole over a blurred copy of itself instead of being cropped to fill.
+ "a1-s1b": dict(kind="panel", id="g-panel-finley", assets=[R+"finley-portrait-01.png",
+        P+"DocFile__2_.jpg", R+"finley-desk-01.png",
         P+"Tri_State_Tornado_Drawing.jpg"], fit="contain"),
  "a1-s2":  dict(kind="graphic", id="g-forecast"),
  "a1-s2c": dict(kind="graphic", id="g-sources"),
