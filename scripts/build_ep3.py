@@ -669,12 +669,16 @@ def main():
                          f'data-duration="7.0" data-track-index="7"><div class="lt-loc">{loc}</div>'
                          f'<div class="lt-time">{tm}</div></section>')
         if plan.get("quote"):
-            q, attr = QUOTES[plan["quote"]]
+            qvals = QUOTES[plan["quote"]]
+            q, attr = qvals[0], qvals[1]
             # .lt sits at bottom:110px and .quotecard at bottom:150px, so a lower third
             # still on screen collides with the quote attribution. Wait for it to clear.
-            qs = seg_start + min(6.0, seg_dur * 0.35)
-            if plan.get("lower"):
-                qs = max(qs, seg_start + 8.0)
+            if len(qvals) > 2:                      # explicit reveal moment (matched to speech)
+                qs = seg_start + qvals[2]
+            else:
+                qs = seg_start + min(6.0, seg_dur * 0.35)
+                if plan.get("lower"):
+                    qs = max(qs, seg_start + 8.0)
             chips.append(f'  <section id="q-{idx}" class="quotecard clip" data-start="{qs:.2f}" '
                          f'data-duration="{min(9.0, seg_dur - (qs - seg_start) - 1):.2f}" data-track-index="5">'
                          f'<div class="q">{q}</div><div class="attr">{attr}</div></section>')
