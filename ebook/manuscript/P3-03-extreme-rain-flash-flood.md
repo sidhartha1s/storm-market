@@ -23,7 +23,17 @@ and the flooding maps most households rely on describe where water has historica
 where this decade's rain sends it.
 «CITE: National Climate Assessment or NOAA analysis on observed increases in heavy-precipitation
 intensity and frequency in the US, with the specific metric quoted.»
-«CITE: FEMA/NFIP figure for the share of flood claims arising outside mapped high-risk zones.»
+Count FEMA's own claims file and the mismatch is measurable: **25.2 percent of all 2.72 million NFIP
+claims on record — and 28.4 percent of claims for losses since 2015 — were on policies rated in zones
+B, C or X, which is to say outside the Special Flood Hazard Area.** Roughly one claim in four is being
+paid on a house the map called low-risk.
+«SRC: Computed from FEMA's OpenFEMA NFIP Redacted Claims dataset (FimaNfipClaims), field
+`ratedFloodZone`, queried 2026-07-29. All 2,721,780 claims on record: zones B, C and X (outside the
+Special Flood Hazard Area) = 686,045, or 25.2 percent; zones A and V = 1,892,368, or 69.5 percent. For
+losses from 2015 onward, 622,677 claims: B/C/X = 177,065, or 28.4 percent; A/V = 442,617, or 71.1
+percent. |
+https://www.fema.gov/api/open/v2/FimaNfipClaims?$inlinecount=allpages&$top=1&$filter=startswith(ratedFloodZone,'X')
+| retrieved 2026-07-29»
 
 ---
 

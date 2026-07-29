@@ -28,10 +28,17 @@ the extreme cold playbook that follows it: **the winter storm is not the hazard.
 failure inside the winter storm is the hazard.** A house without power in January stops being shelter in
 about a day.
 
-Half an inch of ice accretion brings down limbs. Three-quarters of an inch brings down power lines.
-An inch and a half brings down the poles and towers themselves.
-«CITE: NWS ice accretion damage thresholds — the accretion depths associated with limb, line and pole
-failure.»
+The dose-response is worth knowing in inches, and the cleanest illustration is an ordinary NWS event
+summary rather than a textbook. Springfield, Missouri, December 2007: where accretion reached **three
+quarters of an inch to one and a half inches**, the record reads *"downed numerous trees, tree branches
+and power lines resulting in widespread power outages."* Where it was **one quarter to one half an inch**,
+the same storm produced only *"downed tree branches and scattered power outages."*
+
+A quarter of an inch is an inconvenience. An inch is a regional emergency. There is not much road
+between them, and no way to tell from a window which one is landing on your street.
+«SRC: NWS Springfield, Missouri, "Ice Storm Event Summary, December 8th through 10th [2007]" —
+county-by-county accretion table and observed damage by depth. |
+https://www.weather.gov/sgf/events_2007dec8 | retrieved 2026-07-29»
 
 ---
 

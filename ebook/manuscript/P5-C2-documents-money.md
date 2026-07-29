@@ -209,16 +209,49 @@ Two facts, and the second is why this protection is urgent rather than eventual.
 **Flood is not covered by your homeowner policy.** Not partially, not by accident. If water arrives
 from outside the building, a standard policy does not respond.
 
-**A new flood policy typically does not take effect for thirty days.** There are limited exceptions
-tied to specific circumstances, but the general rule means that buying when a storm is forecast is
-buying nothing at all.
-«CITE: NFIP 30-day waiting period, and the specific stated exceptions to it.»
+**A new flood policy does not take effect for thirty days.** The rule is federal regulation, not
+company policy: 44 CFR 61.11(d) sets the effective time of any new policy, added coverage or increase
+at **12:01 a.m. on the 30th calendar day after the application date and payment of premium.** The
+regulation gives its own worked example — apply and pay on 1 May, cover begins 12:01 a.m. on 31 May.
 
-The other thing people get wrong is the assumption that flood risk equals a mapped high-risk zone. A
-large share of flood claims come from outside the highest-risk zones, and policies there are cheaper —
-which makes it one of the better-value purchases in this chapter for an inland household that assumes
-it is not exposed.
-«CITE: FEMA/NFIP data on the share of claims originating outside Special Flood Hazard Areas.»
+**The exceptions are narrow and worth knowing exactly, because they are the only ways to move faster:**
+
+- **Buying in connection with a loan** — making, increasing, extending or renewing it. Cover is
+  effective **at the loan closing**, provided the application and premium are in at or before closing.
+- **The 13 months after your community's flood map is revised.** During that window initial coverage
+  starts at **12:01 a.m. the day after** you apply and pay. One day, not thirty.
+- **Post-wildfire flooding on federal land.** Where FEMA's Administrator has determined the property is
+  affected by flooding on federal land caused or worsened by post-wildfire conditions, and the policy is
+  bought **within 60 days of the fire containment date**, cover again starts the next day.
+
+And one procedural trap in the same section: the waiting period runs from the **date of receipt**, not
+the date of application, unless the application and full payment reach the NFIP **within 10 calendar
+days** — or are sent by **certified mail within 4 calendar days.** Otherwise your thirty days starts
+later than you think it does.
+«SRC: 44 CFR § 61.11, "Effective date and time of coverage under the Standard Flood Insurance
+Policy — New Business Applications and Endorsements." |
+https://www.ecfr.gov/current/title-44/chapter-I/subchapter-B/part-61/section-61.11 |
+retrieved 2026-07-29»
+
+The other thing people get wrong is the assumption that flood risk equals a mapped high-risk zone.
+
+Here the book has to correct a number you will see everywhere. A great many articles claim that "over
+40 percent" of flood claims come from outside high-risk areas. That figure could not be traced to any
+FEMA document, so it is not in this book. What is available is FEMA's own claims dataset, and it can be
+counted: across all **2.72 million NFIP claims on record, 25.2 percent were on policies rated in the
+non-special-hazard zones B, C or X.** Restricting to losses from 2015 onward, it is **28.4 percent.**
+
+So: **roughly one flood claim in four, and rising toward three in ten.** That is a smaller number than
+the internet's, and it is still the point — because premiums outside the high-risk zone are much
+cheaper, so a quarter of the claims are being paid on the cheap policies. For an inland household that
+assumes it is not exposed, that ratio is the argument.
+«SRC: Computed from FEMA's OpenFEMA NFIP Redacted Claims dataset (FimaNfipClaims), field
+`ratedFloodZone`, queried 2026-07-29. All 2,721,780 claims on record: zones B, C and X (outside the
+Special Flood Hazard Area) = 686,045, or 25.2 percent; zones A and V = 1,892,368, or 69.5 percent. For
+losses from 2015 onward, 622,677 claims: B/C/X = 177,065, or 28.4 percent; A/V = 442,617, or 71.1
+percent. |
+https://www.fema.gov/api/open/v2/FimaNfipClaims?$inlinecount=allpages&$top=1&$filter=startswith(ratedFloodZone,'X')
+| retrieved 2026-07-29»
 
 Get a quote. Understand what it covers, what it caps, and that contents are separate from structure.
 

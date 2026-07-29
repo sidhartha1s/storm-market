@@ -11,11 +11,22 @@ before dawn, driven by a dry offshore wind, and it moved into a community of ten
 effective warning time measured in tens of minutes. It burned 153,336 acres over seventeen days, and its cause was
 power lines.
 «SRC: CAL FIRE incident record, Camp Fire — started 08 Nov 2018 at 6:33 am at Pulga Road and Camp Creek Road near Jarbo Gap, Butte County; cause **power lines**; **153,336 acres**; active 17 days, contained 25 Nov 2018. https://www.fire.ca.gov/incidents/2018/11/8/camp-fire/ · retrieved 2026-07-29»
-Eighty-five people died, most of them in or beside their vehicles or in their homes, and the great
-majority of the town's structures were destroyed.
-«CITE: the fatality count and structures-destroyed count for the Camp Fire — the CAL FIRE incident page
-carries acreage, cause and dates but not casualties; use the Butte County Sheriff / CAL FIRE final
-damage inspection figures.»
+**Eighty-five people died.** California's official after-action report puts the destruction at **13,972
+residences, 528 commercial buildings and 4,293 other structures** — nearly nineteen thousand buildings.
+
+And then the sentence in that report which should govern how you think about wildfire for the rest of
+your life: **"Most of the destruction occurred within the first four hours of the wildfire."**
+
+Four hours. Not four days of a siege. The report also notes that weather agencies **could not forecast
+the fire's direction**, and that the wind gusts *"affected evacuation routes, blocked exit routes, and
+eventually closed cities."* Every protection in this playbook is calibrated to that timescale, which is
+why the go-decision items rank above the hardening items even though the hardening items cost more.
+«SRC: California Governor's Office of Emergency Services, *2018 Camp Fire After Action Report* —
+153,336 acres; 13,972 residences, 528 commercial and 4,293 other structures destroyed; 85 confirmed
+fatalities; three fire personnel injured; contained 25 November 2018; "most of the destruction occurred
+within the first four hours." |
+https://www.caloes.ca.gov/wp-content/uploads/Preparedness/Documents/FINAL-AAR-2018-Camp-Fire-508-Clean-Copy-11.17.25.pdf
+| retrieved 2026-07-29»
 
 Then Lahaina, in August 2023, did the same thing to a coastal Hawaiian town in a hurricane-driven wind,
 with a comparable death toll and the same central mechanism.

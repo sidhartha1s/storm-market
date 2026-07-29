@@ -6,12 +6,19 @@ Target: 10 pages · draft 1, 2026-07-29
 
 ## The event
 
-On 10 August 2020 a line of thunderstorms crossed Iowa in a few hours, producing winds comparable to a
-major hurricane over a corridor hundreds of miles long. It flattened a substantial fraction of the
-state's corn crop, destroyed grain storage, took the power out for hundreds of thousands of people for
-well over a week, and caused damage in the billions.
-«CITE: NOAA/NWS record for the 10 August 2020 Midwest derecho — peak measured winds, corridor length,
-outage duration and damage estimate.»
+On the afternoon of 10 August 2020 a line of thunderstorms crossed eastern Iowa and northwest Illinois
+in a few hours. The Weather Service's own account: intermittent straight-line winds in the **100 to 130
+mph** range through Benton, Linn, Jones, Cedar and Clinton counties, **maximum estimated winds around
+140 mph** where an apartment complex in southwest Cedar Rapids was wrecked, and a **maximum measured
+gust of 126 mph** at Atkins, Iowa.
+
+But the number that makes this event worth opening a chapter with is not the peak. It is the duration.
+**Many locations had sustained high winds and damaging gusts for 30 to 60 minutes, against the 10 to 20
+minutes that is typical for a derecho.** An hour of category-4 wind out of an ordinary summer
+thunderstorm line. NWS calls a derecho of this intensity roughly a once-in-a-decade event for the
+region; the previous ones were in 1998 and 2011.
+«SRC: NWS Quad Cities (Davenport), "Midwest Derecho — August 10, 2020" event summary. |
+https://www.weather.gov/dvn/summary_081020 | retrieved 2026-07-29»
 
 Almost nobody outside the affected area remembers it, and that is the theme of this playbook.
 
