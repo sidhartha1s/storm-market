@@ -401,8 +401,7 @@ def lone():
     # the continuous element: the cell crosses the route for the rest of the window
     # MotionPathPlugin is not in the bundled gsap.min.js — walk the waypoints with
     # cx/cy attr tweens, each leg timed to its own length so the speed stays constant.
-    pts = [tuple(int(v) for v in p.split(",")) for p in route.split()]
-    legs = [((b[0] - a[0]) ** 2 + (b[1] - a[1]) ** 2) ** 0.5 for a, b in zip(pts, pts[1:])]
+    legs = [((b2[0] - a2[0]) ** 2 + (b2[1] - a2[1]) ** 2) ** 0.5 for a2, b2 in zip(pts, pts[1:])]
     span, at = D - 12.0, 11.60
     j += f'  tl.to(P+"route", {{strokeDashoffset:0, duration:{span:.2f}, ease:"none"}}, {at:.2f});\n'
     for (x, y), leg in zip(pts[1:], legs):
