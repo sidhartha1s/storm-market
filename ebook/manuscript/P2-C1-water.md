@@ -37,9 +37,13 @@ The protections below cover all four. They are ordered so that the free and inst
 containers · **Regions:** all five. Rank 1 Quake West, rank 3 Hurricane Coast, rank 9 Ice & Snow.
 
 The planning figure is **one gallon per person per day**, which covers drinking and modest sanitary
-use — not laundry, not a shower.
-«CITE: FEMA / Ready.gov water quantity guidance — one gallon per person per day, and the basis for
-it.»
+use — not laundry, not a shower. The federal guidance behind it is worth knowing precisely: a normally
+active person needs about three quarters of a gallon of fluid a day, and the extra quarter is the
+sanitation margin. Children, nursing mothers and sick people need more, and **in very hot temperatures
+water needs can double** — which is the line most households miss when they size a store in
+January.
+«SRC: Ready.gov, "Water" — Determining Water Needs. https://www.ready.gov/water ·
+retrieved 2026-07-29»
 
 Two weeks, not three days. Three days is the old floor, and it was set when the assumption was that
 outside help arrives quickly. Recent events have not supported that assumption, and current guidance
@@ -185,8 +189,9 @@ completely different things. What matters is the specific threat you are filteri
 
 That last line is the important one. If the failure in your area is industrial or chemical, no
 household filter is the answer, and any advice that implies otherwise is dangerous.
-«CITE: EPA / CDC guidance on what household filtration and boiling do and do not remove, by
-contaminant class.»
+«SRC: Ready.gov, "Water" — Water Treatment comparison table: boiling and chlorination kill microbes
+but remove neither heavy metals, salts nor most other chemicals; only distillation removes them.
+https://www.ready.gov/water · retrieved 2026-07-29»
 
 Buy a filter with a published specification and keep the specification with it. Then read the
 boil-water advisory when it arrives, because it will tell you what the problem actually is.
@@ -215,10 +220,15 @@ Bleach also degrades. An opened bottle loses potency over months, which means th
 sink is not a reliable emergency supply. Purification tablets are more expensive per litre, do not
 degrade nearly as fast, and are what belongs in a go-bag.
 
-**The exact ratio is deliberately not written from memory in this book.**
-«CITE: EPA / CDC emergency disinfection ratio — drops or teaspoons of unscented household bleach per
-gallon at each of the concentrations sold, plus contact time and the instruction to repeat if the
-water does not have a slight chlorine odour after standing.» It goes on the form in Part Six and on a
+**The ratio is not written from memory in this book.** The federal figure, for regular unscented
+household bleach containing **5.25 to 6.0 percent sodium hypochlorite**, is **one-eighth of a teaspoon
+per gallon** of water. Stir it, then **let it stand thirty minutes**. The water should then have a
+slight bleach odour — **if it does not, repeat the dose and stand another fifteen minutes, and if it
+still does not smell of chlorine, discard it and find another source.** Never use scented, colour-safe
+or cleaner-added bleach, and do not substitute iodine or camping products whose only active ingredient
+is not sodium hypochlorite at those concentrations.
+«SRC: Ready.gov, "Water" — Water Treatment, Chlorination. https://www.ready.gov/water ·
+retrieved 2026-07-29» It goes on the form in Part Six and on a
 card taped inside the cabinet with the bleach, so that the number is read rather than recalled.
 
 Before disinfecting, filter or settle cloudy water — organic matter consumes the disinfectant and
@@ -237,10 +247,10 @@ answer, not a universal one.
 · **Regions:** all five.
 
 Boiling is the most reliable household treatment for biological contamination and requires no
-consumables. A rolling boil for a specified time kills what matters, with a longer time required at
-altitude.
-«CITE: CDC boil-water guidance — required rolling-boil duration at normal elevation and above the
-altitude threshold.»
+consumables. **A rolling boil for one full minute** kills what matters. Let it cool before drinking,
+and expect some of the volume to evaporate. If it tastes flat afterwards, pour it between two clean
+containers to put the air back in.
+«SRC: Ready.gov, "Water" — Water Treatment, Boiling. https://www.ready.gov/water · retrieved 2026-07-29»
 
 The harder skill is reading the advisory. A boil-water notice is issued for different reasons and the
 correct response differs:

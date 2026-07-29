@@ -8,20 +8,20 @@ Target: 8 pages · draft 1, 2026-07-29
 
 There is no famous lightning disaster, and that is precisely the problem.
 
-Lightning kills a small number of Americans every year and injures several times that many, and it does
-it one or two at a time, on golf courses and beaches and building sites and in back gardens, in weather
-that nobody thought was dangerous.
-«CITE: NWS lightning fatality statistics — annual average deaths, estimated injuries, and the breakdown
-by activity.»
+Lightning killed an average of **27 Americans a year over the last measured decade** and injured
+roughly **243 a year**, and it does it one or two at a time, on golf courses and beaches and building
+sites and in back gardens, in weather that nobody thought was dangerous.
+«SRC: NWS, "How Dangerous is Lightning?" — from NWS Storm Data, the US averaged **43 reported lightning fatalities a year over 1989–2018** and **27 a year over 2009–2018**, with roughly **243 injuries a year** estimated. **Only about 10% of people struck are killed, leaving 90% with varying degrees of disability.** Lightning can cause cardiac arrest at the time of injury. https://www.weather.gov/safety/lightning-odds · retrieved 2026-07-29»
 
 The recurring pattern in the fatality reports is not people caught out in a violent storm. It is people
 who had time. The thunder had been audible for some minutes. The activity was nearly finished. The
 shelter was two hundred yards away. Someone decided to play the last hole, get the last load in, finish
 the last field.
 
-The other half of the pattern is the survivors, who are the larger group and get almost no attention.
-Lightning injury is frequently permanent — nerve damage, chronic pain, memory and concentration problems,
-sleep disruption — and the majority of people struck do not die.
+The other half of the pattern is the survivors, who are the far larger group and get almost no
+attention. **Only about one in ten people struck by lightning is killed** — which leaves ninety percent
+living with some degree of disability: nerve damage, chronic pain, memory and concentration problems,
+sleep disruption.
 
 **So this playbook is short and it is one instruction: when thunder roars, go indoors.** Everything else
 is detail.
@@ -42,7 +42,7 @@ this is why sheltering under a tree is so dangerous and why proximity matters mo
 **Side flash**, where current jumps from a struck object to a person nearby. **Conduction**, through
 plumbing, wiring, corded phones and metal structures, which is how people are struck indoors.
 **Direct strike**, which is the rarest and the one everyone pictures.
-«CITE: NWS breakdown of lightning casualty mechanisms with their relative shares.»
+«SRC: NWS, "Lightning Science: Five Ways Lightning Strikes People" — direct strike, side flash, ground current, conduction and streamers. Direct strikes are less common than the other mechanisms but the most deadly; side-flash victims are typically within a foot or two of the struck object, most often sheltering under a tree. https://www.weather.gov/safety/lightning-struck · retrieved 2026-07-29»
 
 **Costs:** house fires, which are the serious property outcome; electronics and appliance destruction,
 both from direct strikes and from surges coupling into wiring from strikes nearby; well pumps and HVAC

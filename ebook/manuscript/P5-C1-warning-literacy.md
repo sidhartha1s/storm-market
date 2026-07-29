@@ -165,11 +165,10 @@ a specific way.
 
 **The cone shows the probable track of the storm's centre. It does not show where the impacts are.**
 Hazards extend far outside it, sometimes hundreds of miles — and being outside the cone is not being
-out of danger. Rainfall, surge, and tornadoes routinely occur well beyond it, and the cone historically
-contains the centre only a stated fraction of the time, which means the centre goes outside it a real
-percentage of the time too.
-«CITE: National Hurricane Center — definition of the track forecast cone, the probability the centre
-stays within it, and the explicit statement that it does not depict impact extent.»
+out of danger. Rainfall, surge, and tornadoes routinely occur well beyond it, and the cone is drawn so that
+**two-thirds** of historical forecast errors fall inside it — which means the centre itself goes outside
+the cone about one time in three.
+«SRC: NHC, "Definition of the NHC Track Forecast Cone" — the cone encloses circles sized so that two-thirds of official forecast errors over a 5-year sample fall within them, and it depicts the probable track of the centre only, not the extent of impacts. https://www.nhc.noaa.gov/aboutcone.shtml · retrieved 2026-07-29»
 
 What to read instead: the **surge inundation maps**, which show water depth over land and are the
 product most tied to fatalities, the wind arrival timing, and the rainfall forecast — which is
@@ -213,10 +212,10 @@ the order comes too late.
 · **Regions:** all five.
 
 The rule is short and absolute: **never drive or walk into water of unknown depth, and turn around.**
-A modest depth of moving water floats a vehicle, and a floating vehicle is not under your control.
-Most flood deaths in the United States happen in vehicles.
-«CITE: NWS annual weather fatality statistics — flood deaths and the share occurring in vehicles.»
-«CITE: USGS/NWS technical basis — depth and velocity at which vehicles lose contact and float.»
+Twelve inches of rushing water carries away most cars; two feet carries away SUVs and trucks. Over half
+of all flood-related drownings happen when a vehicle is driven into floodwater.
+«SRC: NWS, "Turn Around Don't Drown" — 6 inches of fast-moving water knocks over an adult; 12 inches carries away most cars; 2 feet carries away SUVs and trucks. Cites CDC that over half of all flood-related drownings occur when a vehicle is driven into floodwater, with walking into or near floodwater the next largest share. https://www.weather.gov/safety/flood-turn-around-dont-drown · retrieved 2026-07-29»
+«SRC: NWS, "Turn Around Don't Drown" — 6 in of fast-moving water knocks over an adult, 12 in carries away most cars, 2 ft carries away SUVs and trucks. https://www.weather.gov/safety/flood-turn-around-dont-drown · retrieved 2026-07-29»
 
 Two specifics that save lives. **At night you cannot judge depth**, and the familiarity of your own
 commute is a liability rather than an asset — the road you know is exactly the one you will

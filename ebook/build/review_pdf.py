@@ -93,6 +93,9 @@ li { margin:0 0 3px; }
 code { font:9.5pt Consolas,monospace; background:#f3f3f3; padding:1px 3px; }
 pre { background:#f3f3f3; padding:8px; font:9pt Consolas,monospace; white-space:pre-wrap; }
 sup.ref { font-size:7.5pt; color:#7a1d1d; font-weight:600; vertical-align:super; }
+sup.pending { color:#a06800; }
+.sources li.pending { color:#7a5c00; }
+.sources li.pending::after { content:" — SOURCE PENDING"; font:600 7.5pt Segoe UI,Arial,sans-serif; color:#a06800; }
 .sources { font-size:9pt; }
 .sources li { margin:0 0 5px; }
 .sources .src-ch { font:600 10pt Segoe UI,Arial,sans-serif; margin:14px 0 4px; }
@@ -107,19 +110,43 @@ INLINE = [
     (re.compile(r"`([^`]+)`"), lambda m: f"<code>{m.group(1)}</code>"),
 ]
 
-CITE_RE = re.compile(r"«CITE:(.+?)»", re.S)
+# Two marker kinds share one numbering sequence:
+#   «SRC: ...»  a resolved reference — the citation itself
+#   «CITE: ...» still pending — a description of the source to obtain
+CITE_RE = re.compile(r"«(SRC|CITE):(.+?)»", re.S)
 
 # Sources accumulate across the whole render into one numbered list, the way the
 # finished book will carry them: a superscript number in the text, the source itself
 # in the Sources chapter at the back.
-SOURCES = []          # [(chapter_title, description)]
+SOURCES = []          # [(chapter_title, text, resolved)]
 _CURRENT_CHAPTER = [""]
+_SEEN = {}            # dedup key -> reference number
+
+
+def _key(text, resolved):
+    """Dedup key. Resolved sources are keyed on their URL, because the same document is
+    frequently cited from several chapters with a different summary each time — a book
+    must not carry two footnote numbers for one page. Pending markers are keyed on their
+    full description, since there is no URL yet."""
+    if resolved:
+        url = re.search(r"https?://\S+", text)
+        if url:
+            return url.group(0).rstrip(".,;)")
+    return text.lower()
 
 
 def take_citation(match):
-    """Replace a «CITE:» marker with the next reference number and bank the description."""
-    SOURCES.append((_CURRENT_CHAPTER[0], " ".join(match.group(1).split())))
-    return f'<sup class="ref">[{len(SOURCES)}]</sup>'
+    """Replace a marker with a reference number and bank its text, reusing the number if
+    this source has already been cited."""
+    resolved = match.group(1) == "SRC"
+    text = " ".join(match.group(2).split())
+    cls = "ref" if resolved else "ref pending"
+    key = _key(text, resolved)
+    if key in _SEEN:
+        return f'<sup class="{cls}">[{_SEEN[key]}]</sup>'
+    SOURCES.append((_CURRENT_CHAPTER[0], text, resolved))
+    _SEEN[key] = len(SOURCES)
+    return f'<sup class="{cls}">[{len(SOURCES)}]</sup>'
 
 
 def inline(text):
@@ -256,29 +283,32 @@ def main():
 
     # Sources chapter, grouped by chapter, numbered continuously.
     src_html = ['<h1>Sources</h1>']
+    resolved = sum(1 for *_, ok in SOURCES if ok)
+    pending = len(SOURCES) - resolved
     src_html.append(
-        '<p class="meta">Numbered references from the text. Every entry below is a claim awaiting a '
-        'primary document — at the research pass each is replaced with the full citation and a '
-        'retrieval date, or the claim is cut from the book. This page is how the finished book will '
-        'carry its sources; it is not a bibliography yet.</p>'
+        f'<p class="meta">{len(SOURCES)} numbered references: <strong>{resolved} carry a full citation '
+        f'and a retrieval date</strong>, and <strong>{pending} are still pending</strong> and marked as '
+        'such. Every pending entry is either replaced with a primary document or the claim is cut from '
+        'the book.</p>'
     )
     src_html.append('<ol class="sources">')
     last_chapter = None
-    for number, (chapter, description) in enumerate(SOURCES, start=1):
+    for number, (chapter, text, ok) in enumerate(SOURCES, start=1):
         if chapter != last_chapter:
             src_html.append(f'</ol><p class="src-ch">{html.escape(chapter)}</p>'
                             f'<ol class="sources" start="{number}">')
             last_chapter = chapter
-        src_html.append(f"<li>{html.escape(description)}</li>")
+        cls = "" if ok else ' class="pending"'
+        src_html.append(f"<li{cls}>{html.escape(text)}</li>")
     src_html.append("</ol>")
     body.append("".join(src_html))
-    cites = len(SOURCES)
+    cites = pending
 
     OUT.mkdir(parents=True, exist_ok=True)
     page = f"""<!doctype html><html><head><meta charset="utf-8">
 <title>The Storm-Ready Home — draft review copy</title><style>{CSS}</style></head><body>
 <p class="banner">Draft review copy &mdash; not the laid-out book. {words:,} words &middot;
-{cites} references pending sources &middot; see Sources at the back</p>
+{len(SOURCES)} references, {cites} still pending &middot; see Sources at the back</p>
 <h1>The Storm-Ready Home &mdash; draft review copy</h1>
 <p class="meta">This renders the manuscript as continuous flowing text so it can be read and marked
 up. The finished book is hand-laid into fixed 6&times;9 pages with the cover and design in

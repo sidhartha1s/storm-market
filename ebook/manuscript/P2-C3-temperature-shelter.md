@@ -147,7 +147,7 @@ which is what Protection 26 is for.
 · **Regions:** all five. Rank 1 in any heat-prone area.
 
 Heat is, over the long run, the deadliest weather hazard in the country, and it kills indoors.
-«CITE: NWS 30-year weather fatality averages; CDC heat mortality data.»
+«SRC: Ready.gov, "Extreme Heat" — **"extreme heat is responsible for the highest number of annual deaths among all weather-related hazards."** https://www.ready.gov/heat · retrieved 2026-07-29»
 
 Identify the coolest room now — lowest floor, north side, fewest windows, best cross-ventilation. That
 is where the household goes. Then identify, and write down, the nearest reliably air-conditioned

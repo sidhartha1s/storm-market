@@ -16,11 +16,10 @@ temperatures, and the share of decedents living alone without air conditioning.�
 
 Two things make heat the hazard this book takes most seriously despite its complete lack of drama.
 
-**It kills more Americans in an average year than any other weather hazard.** More than tornadoes,
-hurricanes and floods, usually by a wide margin, and it does it invisibly — one person at a time, indoors,
-recorded as a cardiac or respiratory death.
-«CITE: NWS or CDC comparison of annual US weather-related fatalities by cause, establishing heat's
-position.»
+**Extreme heat is responsible for the highest number of annual deaths among all weather-related
+hazards.** More than tornadoes, hurricanes and floods — and it does it invisibly, one person at a time,
+indoors, recorded as a cardiac or respiratory death.
+«SRC: Ready.gov, "Extreme Heat" — extreme heat is a period of high heat and humidity with temperatures above 90°F for at least two to three days, and **"extreme heat is responsible for the highest number of annual deaths among all weather-related hazards."** https://www.ready.gov/heat · retrieved 2026-07-29»
 
 **And the deaths are concentrated in a completely knowable group**: people who are old, who live alone,
 who are on certain medications, who have no working air conditioning, who cannot afford to run the one
@@ -59,7 +58,7 @@ least efficient, and the outages arrive when air conditioning becomes the differ
 and lethal. That is why this playbook and Playbook 17 are read together.
 
 **Costs:** the direct costs are low — electricity bills, a hotel night, a portable unit — which is exactly
-why households under-invest against a hazard that kills more of them than any other.
+why households under-invest against the weather hazard with the highest annual death toll.
 
 ---
 
@@ -88,7 +87,9 @@ why households under-invest against a hazard that kills more of them than any ot
   officially-opened cooling centres your county announces. Know the hours, the transport and whether they
   take pets.
 - **The check-in agreement**, and in this hazard it is the single most effective protection in the
-  playbook. Every elderly or isolated person in your circle gets a named person who contacts them **daily**
+  playbook — and it is what the federal guidance itself asks of you.
+  «SRC: NWS, "Heat Safety Tips and Resources", citing *The Impacts of Climate Change on Human Health in the United States: A Scientific Assessment* — infants, young children and older adults are among the groups particularly vulnerable, and the guidance is explicitly to **check in on friends and relatives in those groups, especially if they do not have air conditioning**. https://www.weather.gov/safety/heat · retrieved 2026-07-29»
+  Every elderly or isolated person in your circle gets a named person who contacts them **daily**
   during a heat event — and a physical visit if there is no answer, because heat stroke leaves people
   unable to answer a phone. The Northwest death toll was overwhelmingly people nobody checked on.
 
@@ -173,7 +174,7 @@ disconnection-moratorium or medical-certificate protection.»
 
 | | |
 |---|---|
-| **The scale** | Kills **more Americans annually than any other weather hazard**, invisibly |
+| **The scale** | **Highest annual death toll of any weather hazard**, and invisible |
 | **Who dies** | Old · alone · no air conditioning · certain medications · **nobody checking on them** |
 | **Watch** | The heat index and the **overnight low**. Consecutive hot nights are the killer |
 | **Heat stroke** | Hot skin, confusion, collapse, above ~103°F → **emergency call plus active cooling now** |

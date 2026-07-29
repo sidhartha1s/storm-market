@@ -115,8 +115,10 @@ until the warning is cancelled — not until it goes quiet, because the quiet is
 drive at right angles away from it. If it is not — if you cannot see it, if it is at night, if traffic is
 stopped, if you are inside heavy rain — abandon the vehicle for the lowest ground you can reach, lie
 face down, cover your head with your arms. This is a bad option chosen over a worse one. Never shelter
-under an overpass: it accelerates wind through a confined space and it is where people die in the
-photographs that made it look safe.
+under an overpass: it accelerates wind through a confined space, and on 3 May 1999 near Newcastle and
+Moore, Oklahoma, two people were blown out from under bridges on I-44 and I-35 and killed, along with a
+third in a truck parked under a bridge.
+«SRC: NOAA Storm Prediction Center, "The Online Tornado FAQ" — on 3 May 1999 two people were killed and others injured when a violent tornado blew them out from under bridges on I-44 and I-35 near Newcastle and Moore, Oklahoma, and a third was killed in a truck parked under a bridge. Vehicles are described as notorious death traps; the guidance is to leave the vehicle for sturdy shelter or drive out of the path, and if neither is possible, park clear of traffic lanes and lie flat in a low spot away from the road. https://www.spc.noaa.gov/faq/tornado/ · retrieved 2026-07-29»
 
 **If you are in a large building** — a shop, a school, a warehouse — get to an interior room or corridor
 on the lowest floor, away from the wide-span roof. Long-span roofs over gymnasiums, supermarkets and

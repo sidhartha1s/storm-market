@@ -30,7 +30,7 @@ That is why this playbook exists as its own chapter: **the records are the recov
 One — an average federal award of a few thousand dollars against a statutory maximum many times larger —
 is decided almost entirely by documentation, and documentation is the one part of your exposure that costs
 nothing to fix.
-«CITE: the FEMA IHP average award and statutory maximum figures, per MONEY-CHAPTER-RESEARCH.md Tier A.»
+«SRC: Average FEMA Individuals and Households Program award **$3,029** post-DRRA (Congressional Research Service, R48310 / IF13127, congress.gov); statutory maximum **$43,600** housing plus $43,600 other needs (Federal Register notice, 24 Oct 2024); 10.8% of housing-assistance recipients receive the maximum; 53.6% of recipients earn $30,000/yr or less (CRS). Tier A — see ebook/MONEY-CHAPTER-RESEARCH.md»
 
 ---
 

@@ -94,20 +94,18 @@ objects that will otherwise come down on you in a quake (83).
 Water is the deadliest thing in this book, and the way it kills is almost always the same, and
 almost never the way people expect.
 
-Flooding kills more Americans in a typical year than any other severe weather hazard except heat,
-and the majority of flood deaths happen in vehicles.
-«CITE: NWS annual weather fatality statistics — flood deaths by location, share occurring in
-vehicles.» That single sentence should reframe how you think about flood risk. Most people
+More deaths occur due to flooding than from any other thunderstorm-related hazard, and **over half
+of all flood-related drownings happen when a vehicle is driven into floodwater.**
+«SRC: NWS, "Turn Around Don't Drown" — 6 inches of fast-moving water knocks over an adult; 12 inches carries away most cars; 2 feet carries away SUVs and trucks. Cites CDC that over half of all flood-related drownings occur when a vehicle is driven into floodwater, with walking into or near floodwater the next largest share. https://www.weather.gov/safety/flood-turn-around-dont-drown · retrieved 2026-07-29» That single sentence should reframe how you think about flood risk. Most people
 picture rising water in a living room. The reality is a car, at night, on a familiar road, and a
 driver who could not see that the road surface was gone.
 
 The physics is unforgiving and worth knowing precisely. Moving water exerts force proportional to
 the square of its velocity, which means water that feels manageable when you step into it is
-dramatically stronger when it is moving. A modest depth of moving water will float a passenger
-vehicle — and once a vehicle floats, the driver has no control of it at all. It is no longer a car.
+dramatically stronger when it is moving. **Twelve inches of rushing water carries away most cars, and two feet carries away SUVs
+and trucks** — and once a vehicle floats, the driver has no control of it at all. It is no longer a car.
 It is a boat with the buoyancy of a car, which is to say briefly.
-«CITE: USGS / NWS "Turn Around Don't Drown" technical basis — depth and velocity thresholds for
-vehicle flotation.»
+«SRC: NWS, "Turn Around Don't Drown" — 6 in of fast-moving water knocks over an adult, 12 in carries away most cars, 2 ft carries away SUVs and trucks. https://www.weather.gov/safety/flood-turn-around-dont-drown · retrieved 2026-07-29»
 
 Two things make this mechanism so lethal. The first is darkness: you cannot judge depth on a
 flooded road at night, and the road you cross every day gives you a false confidence that a

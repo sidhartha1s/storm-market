@@ -94,17 +94,26 @@ The mechanism is simple: food safety is determined by **temperature and time**, 
 smell. Without a thermometer inside the appliance you have no idea which side of the line you are on,
 so you either throw away food that was fine or eat food that was not.
 
-Buy two appliance thermometers, one for the refrigerator and one for the freezer, and know the target
-temperatures and the danger threshold.
-«CITE: USDA / FoodSafety.gov — target refrigerator and freezer temperatures, the danger-zone
-threshold, and the maximum safe time above it.»
+Buy two appliance thermometers, one for the refrigerator and one for the freezer, and know the numbers
+before you need them. **The refrigerator should read at or below 40°F.** After an outage, food that has
+been above 40°F for **two hours or less** is safe. **Frozen food that still holds ice crystals, or reads
+40°F or below, can be refrozen or cooked** — check the appliance thermometer or a food thermometer in
+individual packages rather than judging by feel. And the rule that settles every argument: **if you do
+not know how long it was above 40°F, throw it out.**
+«SRC: FDA, "Refrigerator Thermometers — Cold Facts about Food Safety": refrigerator at or below 40°F; food above 40°F for 2 hours or less is safe; frozen food still holding ice crystals or at 40°F or below may be refrozen or cooked; if the duration above 40°F is unknown, discard. https://www.fda.gov/food/buy-store-serve-safe-food/refrigerator-thermometers-cold-facts-about-food-safety · retrieved 2026-07-29»
 
 The protocol, in order:
 
 1. **Keep the doors shut.** A closed refrigerator holds safe temperature for a number of hours and a
-   full freezer for considerably longer — a half-full freezer for less. Every opening costs you.
-   «CITE: USDA guidance — safe holding times for an unopened refrigerator, a full freezer, and a
-   half-full freezer.»
+   full freezer for considerably longer — a half-full freezer for less. Every opening costs you. The
+   free move that buys the most time: **before the power goes, freeze water in sealed bags and put them
+   in both the freezer and the fridge.**
+   «SRC: FDA, "Refrigerator Thermometers — Cold Facts about Food Safety" — In Case of Disaster:
+   pre-freezing water in quart bags, and keeping both doors closed as much as possible.
+   https://www.fda.gov/food/buy-store-serve-safe-food/refrigerator-thermometers-cold-facts-about-food-safety
+   · retrieved 2026-07-29»
+   «CITE: USDA specific holding times for an unopened refrigerator, a full freezer, and a half-full
+   freezer — the 4-hour / 48-hour / 24-hour figures.»
 2. **Fill the empty space now, before anything happens.** Water bottles frozen in the freezer's gaps
    are free thermal mass. They extend the hold, they become drinking water as they thaw, and they can
    be moved into the refrigerator to extend that too.

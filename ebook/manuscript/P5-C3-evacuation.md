@@ -113,8 +113,7 @@ vaccination records, because a shelter that accepts animals will ask for them.
 Then the part people skip: **many emergency shelters do not accept pets.** Find out now which shelters
 in your area are pet-friendly, which boarding kennels and veterinary practices take evacuees, and
 which of your out-of-area contacts would take an animal. Write the three phone numbers down.
-«CITE: PETS Act 2006 — the specific obligation it places on state and local emergency plans regarding
-household pets and service animals.»
+«SRC: Ready.gov, "Prepare Your Pets for Disasters" — **many public shelters and hotels do not allow pets inside**, so identify a safe place in advance; develop a buddy system with neighbours; microchip the animal and keep the address, phone number and an out-of-area emergency contact current. https://www.ready.gov/pets · retrieved 2026-07-29»
 
 Microchip the animals and confirm the registration details are current — the chip is useless if it
 points at a phone number you have not used in six years. Photograph each animal with a household member

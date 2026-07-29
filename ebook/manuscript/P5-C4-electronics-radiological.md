@@ -216,7 +216,7 @@ irreplaceable part.
 
 Lightning kills a small number of people every year and injures many more, and almost all of it happens
 to people outdoors who had time to go inside.
-«CITE: NWS annual lightning fatality figures, and the share occurring during recreational activity.»
+«SRC: NWS, "How Dangerous is Lightning?" — from NWS Storm Data, the US averaged **43 reported lightning fatalities a year over 1989–2018** and **27 a year over 2009–2018**, with roughly **243 injuries a year** estimated. **Only about 10% of people struck are killed, leaving 90% with varying degrees of disability.** Lightning can cause cardiac arrest at the time of injury. https://www.weather.gov/safety/lightning-odds · retrieved 2026-07-29»
 
 **When thunder roars, go indoors.** If you can hear thunder, you are within range of the next strike;
 there is no safe distance while thunder is audible. Wait thirty minutes after the last thunder before
@@ -243,10 +243,10 @@ resort for someone with no option, not a technique, and it is no longer recommen
 **Cost:** $0 · **Time:** 20 minutes · **Materials:** a map
 · **Regions:** households near a nuclear plant.
 
-Find out whether you live within a nuclear plant's emergency planning zone, and if so, which one — the
-inner zone concerns direct exposure and the outer, much larger zone concerns the food and water supply.
-«CITE: NRC/FEMA emergency planning zone definitions and the current radii for the plume exposure
-pathway and ingestion pathway zones.»
+Find out whether you live within a nuclear plant's emergency planning zone, and if so, which one. The
+**plume exposure pathway** zone runs to about **ten miles** and concerns direct exposure; the **ingestion
+exposure pathway** zone runs to about **fifty miles** and concerns the food, milk and water supply.
+«SRC: NRC, "Emergency Planning Zones" — the plume exposure pathway EPZ extends about **10 miles** in radius (sheltering, evacuation, KI where appropriate); the ingestion exposure pathway EPZ extends about **50 miles** and governs bans on contaminated food and water. Page updated 28 Aug 2024. https://www.nrc.gov/about-nrc/emerg-preparedness/about-emerg-preparedness/planning-zones.html · retrieved 2026-07-29»
 
 If you are inside one, your local emergency management office publishes a specific plan with specific
 routes and specific reception centres, and you should have read it once. Households in the zone are
@@ -315,8 +315,13 @@ follow the official all-clear rather than your own judgment.
 Potassium iodide saturates the thyroid so it cannot take up radioactive iodine. That is its entire
 function, it does not protect any other organ, and it does not protect against any other radioactive
 material.
-«CITE: FDA guidance on KI — dosing by age group, and the explicit statement of what it does and does
-not protect.»
+«SRC: FDA, "Frequently Asked Questions on Potassium Iodide (KI)" — dosing is set by age because age is
+the primary factor for radioiodine-induced thyroid cancer risk: infants, children, and pregnant or
+nursing people are treated at the lowest threshold; adults 18 to 40 at a higher threshold; and **anyone
+over 40 only if the predicted exposure is high enough to destroy the thyroid**. Only FDA-approved KI
+products may be marketed.
+https://www.fda.gov/drugs/bioterrorism-and-drug-preparedness/frequently-asked-questions-potassium-iodide-ki
+· retrieved 2026-07-29»
 
 **Timing decides whether it works at all.** It is effective in a narrow window around exposure, and
 taking it a day late achieves close to nothing.
