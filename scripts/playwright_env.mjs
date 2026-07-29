@@ -5,7 +5,7 @@
    which reads like a broken gate rather than a stale path. Resolve at run time instead:
    newest installed chromium wins, and either env var overrides for an odd box. */
 import { readdirSync, existsSync } from 'node:fs';
-import { execFileSync } from 'node:child_process';
+import { execSync } from 'node:child_process';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
