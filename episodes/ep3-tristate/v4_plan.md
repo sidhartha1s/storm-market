@@ -117,6 +117,60 @@ narration line plays there. v3 timeline == current tree (no edits since render).
 - [ ] ONE render: v4 draft. Launch = owner's `!` method (proven alive) or WMI-detached; marker +
       3-min /loop cron progress; verify_render.sh + SRT; deliver path.
 
+## Timestamp → composition map (pre-computed, v3 timeline == current tree)
+```
+ 0:30 (  30s): asset window [26-35s]        <- the 4s dead slow-zoom
+ 0:41 (  41s): g-wordban   [35-61s]         <- clutter + Washington/ban rebuild (also 0:50)
+ 2:00 ( 120s): g-forecast  [115-137s]       <- the 35-40-word forecast card (owner screenshot)
+ 2:41 ( 161s): g-sources   [139-170s]       <- empty space, right-panel ep2 style
+ 4:01 ( 241s): g-metmap    [211-247s]       <- slow the line-wave; end freeze low-prio
+ 4:28 ( 268s): g-scale     [247-275s]       <- keep, strip texts
+ 5:30 ( 330s): g-lone      [316-343s]       <- good, no change
+ 7:37 ( 457s): g-panel-annapolis [437-460s] <- REFERENCE pattern (subheaders stay)
+ 8:53 ( 533s): g-wires     [498-535s]       <- layout scatter + "12 poles" verify
+17:55 (1075s): g-baro      [1062-1088s]     <- declutter final frame
+18:24 (1104s): g-track-5   [1095-1106s]     <- REFERENCE exception class, no change
+19:37 (1177s): g-panel-griffin [1154-1179s] <- too much text
+23:19 (1399s): img [1397-1405s] over g-panel-nonet [1397-1421s] <- remove the man, both uses
+25:50 (1550s): g-panel-cost [1537-1563s]    <- money card rebuild
+27:40 (1660s): g-wordban2  [1640-1663s]     <- decent, remove h1/h2 eyebrows
+28:12 (1692s): g-timeline  [1663-1697s]     <- keep subheader-year format; fix label overlap
+28:42 (1722s): g-family    [1705-1745s]     <- remove clutter
+29:20+29:30 (1760/1770s): g-remeasure [1745-1774s] <- declutter + match-cut
+30:10 (1810s): g-compare   [1791-1817s]     <- match-cut
+30:53 (1853s): g-fujita    [1829-1874s]     <- remove "1972 PD", declutter
+31:28 (1888s): g-modern    [1874-1903s]     <- declutter
+32:03 (1923s): g-prep      [1909-1931s]     <- declutter
+32:38 (1958s): g-centennial [1945-1973s]    <- good, no change
+Timeline label-overlap fix: g-timeline + g-track-1/2/3/5/7 (the track family).
+```
+
+## Eyebrow sweep handle (deterministic worklist)
+`grep -l eyebrow compositions/*.html` → 36 of 38 comps, ~2 hits each (CSS rule + usage).
+That is the sweep list. Judgment per hit stays AI (subheader-with-data stays, fluff dies) — but
+nothing gets missed. After the sweep, the same grep returning only intentional survivors is the check.
+
+## Executor traps (this session's scars — read before touching anything)
+1. `build_ep3.py` REGENERATES index.html. Generated cards' text lives in build_ep3.py, comp text
+   in compositions/*.html. Find which owns a string before editing (`grep` both). Never edit
+   index.html by hand and call it fixed.
+2. JS/WAAPI + GSAP only — CSS @keyframes silently disables fast-capture.
+3. Comp `duration` attr must equal the GSAP timeline end (g-close drift lesson) — check after
+   trimming any animation.
+4. Auto-commit hook fires per Edit; Bash heredoc writes DON'T auto-commit — `git status` before push.
+5. `python3` never `python`; PYTHONUTF8=1 on anything that prints unicode.
+6. node/Playwright gates: `run_in_background: true` always — foreground timeout kills them.
+7. NEVER poll the render with interruptible background shells — ^C propagates into the detached
+   render and kills it (killed 2 launches today). Progress = /loop cron only, direct Bash reads.
+8. Render launch: owner `!` method proven, or WMI Win32_Process.Create. Empty/absent log =
+   script never started ([start] stamp is first write). Verify liveness by COMMAND LINE match
+   on 'hyperframes render', never process counts.
+9. media_budget spawn check is load-sensitive: refusal at ~0.4-0.6s means the BOX is busy
+   (other Claude sessions/browsers), not a code bug. Quiet the box, don't touch the threshold.
+10. Word-level match-cut timings: audio/<seg>.words.json (nx id = filename minus dashes).
+11. Don't touch ep2. Don't delete render artifacts (v3 mp4 stays until owner says).
+12. Do NOT relaunch a failed render without owner permission — standing gate.
+
 ## Flags for owner (decisions/notes, not blockers)
 - **F1**: "one more finley" at segment end — if no third Finley portrait exists, choose reuse
   (needs data-callback) vs ending on tornado image. Executor picks, reports which.
