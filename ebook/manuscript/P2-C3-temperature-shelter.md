@@ -238,8 +238,14 @@ by someone exhausted, and it gets made badly. Run the cord from there, and make 
 the load and the distance.
 
 Carbon monoxide is colourless and odourless, its early symptoms are indistinguishable from
-post-storm exhaustion, and it impairs the judgment you would use to recognise it.
-«CITE: CDC carbon monoxide surveillance — post-storm generator poisoning clusters.»
+post-storm exhaustion, and it impairs the judgment you would use to recognise it. CDC's instruction is
+unqualified: **never use a generator inside a home or garage, "even if doors and windows are open,"** and
+place it **more than 20 feet from any window, door or vent** — plus a **battery-powered or battery-backup
+CO detector** inside while it runs.
+«SRC: CDC, "Carbon Monoxide Poisoning Basics" — never use a generator inside a home or garage, even
+with doors and windows open; operate generators outdoors more than 20 feet from windows, doors and vents;
+use a battery-powered or battery-backup CO detector. |
+https://www.cdc.gov/carbon-monoxide/about/index.html | retrieved 2026-07-29»
 
 **What this does not do:** correct siting does not remove the need for alarms. Wind shifts, and
 enclosed spaces you did not think of connect to the house. Protection 47 is not optional alongside

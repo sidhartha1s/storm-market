@@ -247,7 +247,18 @@ concentration that seems trivial displaces a large fraction of your blood's oxyg
 capacity. The early symptoms — headache, nausea, fatigue, confusion — are indistinguishable from
 the ordinary exhaustion of a bad week after a storm, and they arrive with the judgment impairment
 that stops you from acting on them. People go to sleep and do not wake up. Whole families.
-«CITE: CDC carbon monoxide poisoning surveillance, with the post-storm and post-outage clustering.»
+CDC's rules on the equipment that produces it are stated as absolutes, and this book repeats them as
+absolutes: **never use a generator inside a home or garage, "even if doors and windows are open"**;
+operate one **outdoors, more than 20 feet from any window, door or vent**; and when running one, **use a
+battery-powered or battery-backup CO detector in the house.**
+«SRC: CDC, "Carbon Monoxide Poisoning Basics" — never use a generator inside a home or garage, even
+with doors and windows open; operate generators outdoors more than 20 feet from windows, doors and vents;
+use a battery-powered or battery-backup CO detector. |
+https://www.cdc.gov/carbon-monoxide/about/index.html | retrieved 2026-07-29»
+
+Note the specific number, because "outside" is where people think they already are. Twenty feet. A
+generator on a porch, in a breezeway, under an open window, or just inside an open garage door is not
+outside for this purpose.
 
 The rules are simple, absolute, and they are stated as absolutes in this book on purpose:
 
@@ -297,12 +308,14 @@ They decompensate. And it does not happen at the peak of the event when attentio
 happens on day three, day five, day nine, after the news trucks have gone and the official death
 toll has been published and everyone believes the disaster is over.
 
-This is why the mortality of a major disaster is so often revised upward months afterward, and
-revised upward by a lot. The direct toll counts people killed by wind and water. The excess-mortality
-studies count everyone who died who would not have died, and the second number is frequently a
-multiple of the first.
-«CITE: excess-mortality analyses following Hurricane Maria; comparable analyses for Helene and other
-recent events.»
+This is why the mortality of a major disaster is so often revised upward months afterward, and revised
+upward by a lot. The direct toll counts people killed by wind and water. The full toll counts everyone
+who died who would not otherwise have died — and the second number is frequently a multiple of the first.
+
+You do not need a contested study to see it; the National Hurricane Center's own columns show it.
+**Katrina: 520 direct deaths, and a total of 1,392.** **Michael: 16 direct deaths, and 59 in total.**
+Between two and nearly four times the headline figure, in the official record, from the agency that
+writes the headline figure.
 
 The protections here are unglamorous and enormously effective:
 

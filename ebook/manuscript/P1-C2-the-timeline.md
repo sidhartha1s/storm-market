@@ -161,14 +161,26 @@ concentrators without power, the insulin that spent four days at the wrong tempe
 medications that ran out on day six, the cardiac patients whose stress and heat and exertion and
 missed doses converge.
 
-It is also the phase of exhaustion-driven injury. People who have slept badly for a week climb
-ladders, run chainsaws, clear debris, and work on roofs. Chainsaw injuries and falls spike here.
-«CITE: post-disaster injury surveillance — chainsaw and fall injuries in the recovery period.»
+It is also the phase of exhaustion-driven injury. People who have slept badly for a week climb ladders,
+run chainsaws, clear debris and work on roofs. This is not an inference: when the National Hurricane
+Center itemised the 43 indirect deaths from Hurricane Michael, the causes it named were **"falls during
+the post-storm clean up, traffic accidents, and medical issues compounded by the hurricane."** Falls
+first. Not the hurricane — the tidying up afterwards.
+«SRC: National Hurricane Center, Tropical Cyclone Report: Hurricane Michael (AL142018) — 43 indirect
+deaths, all in Florida; causes included falls during post-storm clean-up, traffic accidents, and medical
+issues compounded by the hurricane. | https://www.nhc.noaa.gov/data/tcr/AL142018_Michael.pdf |
+retrieved 2026-07-29»
 
 And it is when the official numbers and the real numbers diverge. The direct toll counts wind and
 water. The excess-mortality studies conducted months later count everyone who died who otherwise
 would not have — and that second figure is frequently a multiple of the first.
-«CITE: excess-mortality analyses, Hurricane Maria and comparable recent events.»
+The National Hurricane Center's own accounting is the simplest demonstration. **Katrina: 520 direct
+deaths out of 1,392 total. Michael: 16 direct out of 59.** The indirect column — cardiovascular events,
+falls during clean-up, traffic accidents on dead intersections, medical conditions the storm made worse —
+was larger than the direct column in both.
+«SRC: National Hurricane Center, Tropical Cyclone Reports for Hurricane Katrina (AL122005) and Hurricane
+Michael (AL142018) — Katrina: 520 direct, 565 indirect, 307 indeterminate, 1,392 total; Michael: 16
+direct, 43 indirect. | https://www.nhc.noaa.gov/data/tcr/AL122005_Katrina.pdf | retrieved 2026-07-29»
 
 The characteristic mistake is believing it is over because the weather is fine.
 

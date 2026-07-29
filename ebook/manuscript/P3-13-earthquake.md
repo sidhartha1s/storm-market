@@ -6,12 +6,24 @@ Target: 10 pages · draft 1, 2026-07-29
 
 ## The event
 
-At 4.31 in the morning of 17 January 1994, a fault nobody had mapped ruptured beneath the San Fernando
-Valley. The Northridge earthquake lasted well under twenty seconds, killed dozens of people, injured
-thousands, collapsed freeway sections and apartment buildings, and produced one of the most expensive
-disasters in American history.
-«CITE: USGS/official record for the 1994 Northridge earthquake — magnitude, duration, fatalities, injuries
-and damage estimate.»
+At half past four in the morning of 17 January 1994, a fault nobody had mapped ruptured beneath the San
+Fernando Valley. USGS's account: a **magnitude 6.7** shock on a **"blind" or buried thrust fault** that had
+not previously been identified, which **raised the mountains and the northern San Fernando Valley by about
+a foot.** Some **10 million people** were woken by it.
+
+**Fifty-seven people died. More than 9,000 were injured. More than 20,000 were displaced from their homes.
+More than 1,600 buildings were later red-tagged as unsafe.** Estimated losses: **20 billion dollars** — at
+the time, the most costly earthquake in United States history.
+«SRC: US Geological Survey, "Response to an Urban Earthquake — Northridge '94," Open-File Report 96-263 —
+magnitude 6.7; 57 dead, more than 9,000 injured, more than 20,000 displaced, more than 1,600 buildings
+red-tagged; estimated losses 20 billion dollars. |
+https://pubs.usgs.gov/of/1996/ofr-96-0263/introduc.htm | retrieved 2026-07-29»
+«SRC: US Geological Survey, Open-File Report 94-214, "Northridge California Earthquake 1994" (Educator's
+Guide summary) — blind/buried thrust fault, previously unidentified; uplift of about one foot. |
+https://pubs.usgs.gov/of/1994/0214a/report.pdf | retrieved 2026-07-29»
+
+Hold on to the fault detail, because it is the whole argument of this playbook: **the fault that did this
+was not on the map.** No warning, no season, and no list of safe addresses.
 
 Three things about it define this playbook.
 

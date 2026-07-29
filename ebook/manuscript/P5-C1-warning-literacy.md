@@ -85,8 +85,19 @@ you for events fifty miles away, and gets switched off within a week.
 
 **SAME** — Specific Area Message Encoding — fixes this. Each county has a numeric code, and a radio
 programmed with your code alerts only for your county. Look up your code, program it, and the radio
-becomes something you can actually leave on beside the bed.
-«CITE: NOAA Weather Radio SAME county code lookup, and the programming procedure.»
+becomes something you can actually leave on beside the bed. The Weather Service publishes the county code
+listings by state, along with a station finder and coverage maps.
+«SRC: NOAA Weather Radio All Hazards — "County Coverage Listing by State" (SAME county codes), station
+listings and coverage maps. | https://www.weather.gov/nwr/counties | retrieved 2026-07-29»
+
+**Check coverage before you buy, not after.** NWR is a nationwide network broadcasting directly from the
+nearest Weather Service office, but service to a county *"depends on reliable signal reception, which
+typically extends in about a 40 mile radius from the transmitter, assuming level terrain."* Counties with
+no coverage or partial coverage are marked as such on that listing — and "assuming level terrain" is
+doing real work in that sentence if you live in a valley.
+«SRC: NOAA Weather Radio All Hazards — nationwide network broadcasting from the nearest NWS office;
+coverage typically about a 40-mile radius from the transmitter assuming level terrain. |
+https://www.weather.gov/nwr/ | retrieved 2026-07-29»
 
 Buy one with battery backup and a tone alert that will wake a sleeping adult. Test it. Replace the
 batteries on a schedule.
@@ -114,10 +125,26 @@ for tasks; there is only time for the plan.
 An **advisory** means significant conditions that are inconvenient or hazardous but below warning
 criteria. Not nothing. Not an emergency.
 
+Those three definitions come straight from the Weather Service, which puts them in operational terms: a
+**watch** is issued *"when there is the potential"* for the hazard, typically inside 48 hours, and NWS
+says explicitly that a watch *"does not mean that significant and hazardous winter weather will
+occur...it only means it is possible"*; a **warning** is issued when the hazard *"is occurring or
+imminent"*; an **advisory** is issued for conditions expected *"to cause a significant inconvenience, but
+not serious enough to warrant a warning."*
+
+**And here is the part most readers do not know: the numeric criteria are set locally.** The same words
+mean different amounts of weather in different offices. In the Baltimore–Washington forecast area, for
+example, a Winter Storm Warning needs 5 inches or more of snow or sleet — but 6 inches in the six
+westernmost counties — an Ice Storm Warning needs **a quarter inch or more of ice accumulation**, and a
+Winter Weather Advisory drops to one inch of forecast snow if the event will hit the metro area during
+rush hour. Your office publishes its own table. Find it once.
+«SRC: NWS Baltimore/Washington (LWX), "Warnings, Watches and Advisories Defined" — watch/warning/advisory
+definitions and the office's local numeric criteria, including the quarter-inch Ice Storm Warning
+threshold. | https://www.weather.gov/lwx/WarningsDefined | retrieved 2026-07-29»
+
 Some hazards also carry an enhanced tier of wording reserved for the most extreme, life-threatening
-situations, and those phrasings are deliberately unambiguous when they are used.
-«CITE: current NWS definitions of watch, warning and advisory, and the enhanced-wording products
-including their trigger criteria.»
+situations. Those phrasings are deliberately unambiguous when they are used, and if you ever read one
+about your own location the correct response is to stop reading and move.
 
 Write these on the trigger plan in your own words, with the action next to each, and go through them
 once with everyone in the house.
@@ -259,11 +286,23 @@ Protection 85, never the primary path.
 **Cost:** $0 · **Time:** 10 minutes · **Materials:** none
 · **Regions:** all five, strongest at high latitude.
 
-Geomagnetic storms are forecast and graded on published scales, and the alerts are public. The
-practical consequence for a household is potential effects on the grid, on radio and satellite
-navigation, and in the largest historical cases on long transmission infrastructure.
-«CITE: NOAA Space Weather Prediction Center — geomagnetic storm scale, alert products, and documented
-historical effects including the 1989 Quebec event.»
+Geomagnetic storms are forecast and graded on a published scale, and the alerts are free and public.
+NOAA's Space Weather Prediction Center runs a **G1 to G5 scale**, and it states the expected effect at
+each level. At **G5 (Extreme)**: *"widespread voltage control problems and protective system problems can
+occur, some grid systems may experience complete collapse or blackouts. Transformers may experience
+damage."* At **G4 (Severe)**: pipeline currents can reach hundreds of amps, HF radio propagation may be
+impossible in many areas for a day or two, and aurora has been seen as far south as Florida and southern
+Texas. NOAA's stated frequency for G5 conditions is **about four storm days per eleven-year solar cycle.**
+«SRC: NOAA Space Weather Prediction Center, "Space Weather: Storms from the Sun" (booklet) — the
+G1–G5 geomagnetic storm scale with power-system effects at each level; G5 (Kp=9, Extreme): "some grid
+systems may experience complete collapse or blackouts. Transformers may experience damage," about 4
+storm days per 11-year cycle; and the March 1989 event in which "the Hydro-Quebec electrical utility went
+from full operating capacity to" blackout. |
+https://www.swpc.noaa.gov/sites/default/files/images/u33/swx_booklet.pdf | retrieved 2026-07-29»
+
+Subscribe to the alerts and treat a G4 or G5 watch as a plain outage warning: it is Playbook 17, not a
+new hazard. Everything you would do for a hurricane-driven outage applies, and nothing about space
+weather requires you to buy anything you do not already own.
 
 The action is modest and proportionate: know where to check, and treat a severe watch as a prompt for
 Protection 120 — unplug the expensive electronics — and for the ordinary outage readiness you already

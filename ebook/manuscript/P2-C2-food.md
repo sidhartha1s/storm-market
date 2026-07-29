@@ -155,8 +155,10 @@ open. Not in the garage, not in a breezeway, not next to an open window, not "ju
 Charcoal is the most lethal item on that list because it produces enormous quantities of carbon
 monoxide with no flame and no noise, and because it is the one people most often bring into a
 sheltered space in cold weather.
-«CITE: CDC — carbon monoxide poisoning from charcoal and portable fuel-burning appliances used
-indoors after storms.»
+«SRC: CDC, "Carbon Monoxide Poisoning Basics" — never use a generator inside a home or garage, even
+with doors and windows open; operate generators outdoors more than 20 feet from windows, doors and vents;
+use a battery-powered or battery-backup CO detector. |
+https://www.cdc.gov/carbon-monoxide/about/index.html | retrieved 2026-07-29»
 
 What to actually own: a propane camp stove with spare canisters, or a grill you already have, used
 outdoors and away from the building. Cook once and eat twice — a hot meal costs fuel, so batch it.
