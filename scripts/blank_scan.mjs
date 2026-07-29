@@ -1,0 +1,78 @@
+/* Pre-render blank check: seek every composition across its whole timeline and measure
+   how much visible ink is on screen. Catches a graphic that renders empty or near-empty
+   at some point without waiting 40 minutes for a render to prove it. */
+import { chromium } from 'file:///C:/Users/Sidhartha/AppData/Roaming/npm/node_modules/@playwright/cli/node_modules/playwright-core/index.mjs';
+import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
+import { join } from 'node:path';
+
+const EXECUTABLE = 'C:\\Users\\Sidhartha\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const ep = process.argv[2];
+const STEP = 0.25;
+const gsap = readFileSync(join(ep, 'gsap.min.js'), 'utf8');
+const tmp = join(ep, '_blank_tmp.html');
+
+const browser = await chromium.launch({ executablePath: EXECUTABLE, args: ['--allow-file-access-from-files'] });
+const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
+const findings = [];
+
+for (const f of readdirSync(join(ep, 'compositions')).filter(f => f.endsWith('.html'))) {
+  const name = f.replace('.html', '');
+  const raw = readFileSync(join(ep, 'compositions', f), 'utf8');
+  const inner = raw.slice(raw.indexOf('<template>') + 10, raw.lastIndexOf('</template>'));
+  writeFileSync(tmp, `<!doctype html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;background:#000;width:1920px;height:1080px;overflow:hidden}</style>
+<script>${gsap}</script></head><body>${inner}</body></html>`, 'utf8');
+  await page.goto('file:///' + tmp.replace(/\\/g, '/'), { waitUntil: 'load' });
+  await page.waitForTimeout(120);
+
+  const res = await page.evaluate(async (step) => {
+    const k = Object.keys(window.__timelines || {})[0];
+    if (!k) return { error: 'no timeline' };
+    const tl = window.__timelines[k];
+    const dur = tl.duration();
+    /* .drift is the background texture — it is present in every frame by construction,
+       so counting it would mask a composition whose actual content is gone. */
+    const nodes = [...document.querySelectorAll('#root *')].filter(
+      e => !e.classList.contains('drift') && e.id !== 'root');
+    const out = [];
+    for (let t = 0; t <= dur; t += step) {
+      tl.seek(t, false);
+      let ink = 0;
+      for (const e of nodes) {
+        const cs = getComputedStyle(e);
+        if (cs.visibility === 'hidden' || cs.display === 'none') continue;
+        if (parseFloat(cs.opacity) < 0.06) continue;
+        const r = e.getBoundingClientRect();
+        if (r.width < 1 || r.height < 1) continue;
+        if (r.bottom < 0 || r.top > 1080 || r.right < 0 || r.left > 1920) continue;
+        /* leaf-ish only: a wrapper double-counts its children's area */
+        if (e.children.length && e.textContent.trim() === '') continue;
+        ink += Math.min(r.width, 1920) * Math.min(r.height, 1080);
+      }
+      out.push([+t.toFixed(2), Math.round(ink)]);
+    }
+    return { dur: +dur.toFixed(2), samples: out };
+  }, STEP);
+
+  if (res.error) { findings.push([name, res.error]); continue; }
+  const FLOOR = 1920 * 1080 * 0.004;          // ~0.4% of frame = effectively empty
+  let run = null;
+  for (const [t, ink] of res.samples) {
+    if (ink < FLOOR) { if (run === null) run = t; }
+    else if (run !== null) {
+      if (t - run >= 0.75) findings.push([name, `blank ${run}s -> ${t}s (${(t - run).toFixed(2)}s)`]);
+      run = null;
+    }
+  }
+  if (run !== null && res.dur - run >= 0.75)
+    findings.push([name, `blank ${run}s -> end ${res.dur}s (${(res.dur - run).toFixed(2)}s)`]);
+  console.log(`${name.padEnd(22)} dur ${String(res.dur).padStart(6)}s  samples ${res.samples.length}`);
+}
+await browser.close();
+
+console.log('');
+if (!findings.length) console.log('BLANK SCAN PASS - no composition goes empty for >= 0.75s');
+else {
+  console.log(`BLANK SCAN FAIL - ${findings.length} finding(s)`);
+  for (const [n, d] of findings) console.log('   ', n, '-', d);
+}

@@ -176,28 +176,13 @@
  },
  {
   "start": 316.44,
-  "dur": 7.98,
-  "what": "film stock-cloudsrolling-01.mp4"
+  "dur": 27,
+  "what": "GRAPHIC g-lone"
  },
  {
-  "start": 324.42,
-  "dur": 5.11,
-  "what": "film stock-tornado-01.mp4"
- },
- {
-  "start": 329.53,
-  "dur": 6.61,
-  "what": "film stock-cloudsrolling-02.mp4"
- },
- {
-  "start": 336.14,
-  "dur": 5.49,
-  "what": "film stock-cloudsrolling-01.mp4"
- },
- {
-  "start": 341.63,
-  "dur": 7.36,
-  "what": "still 02-Annapolis_Destruction.png"
+  "start": 343.44,
+  "dur": 5.56,
+  "what": "tail stock-cloudsrolling-01.mp4"
  },
  {
   "start": 349.75,
@@ -227,12 +212,12 @@
  {
   "start": 400.49,
   "dur": 8.75,
-  "what": "still 03-Leadanna_Damage.png"
+  "what": "still 02-Annapolis_Destruction.png"
  },
  {
   "start": 409.24,
   "dur": 5.6,
-  "what": "still 05-Bollinger_County_Damage.png"
+  "what": "still 03-Leadanna_Damage.png"
  },
  {
   "start": 414.84,
@@ -267,7 +252,7 @@
  {
   "start": 458.55,
   "dur": 6.02,
-  "what": "still 06-Biehle_Damage.png"
+  "what": "still 05-Bollinger_County_Damage.png"
  },
  {
   "start": 465.33,
@@ -512,7 +497,7 @@
  {
   "start": 842.5,
   "dur": 7.94,
-  "what": "still 06-Biehle_Damage_-_Theo_Holschen_Residence.jpg"
+  "what": "still 06-Biehle_Damage.png"
  },
  {
   "start": 851.19,
@@ -572,7 +557,7 @@
  {
   "start": 936.76,
   "dur": 6.06,
-  "what": "still 07-Perry_County_Destruction.png"
+  "what": "still 06-Biehle_Damage_-_Theo_Holschen_Residence.jpg"
  },
  {
   "start": 943.56,
@@ -732,7 +717,7 @@
  {
   "start": 1183.06,
   "dur": 8.4,
-  "what": "still 09-Gorham_Boxcars.png"
+  "what": "still 07-Perry_County_Destruction.png"
  },
  {
   "start": 1192.21,
@@ -852,7 +837,7 @@
  {
   "start": 1410.29,
   "dur": 6.92,
-  "what": "still 13-Murphysboro_Aerial.png"
+  "what": "still 09-Gorham_Boxcars.png"
  },
  {
   "start": 1417.21,
@@ -962,7 +947,7 @@
  {
   "start": 1550.86,
   "dur": 6.83,
-  "what": "still 16-Murphysboro_SW_of_Logan_School.png"
+  "what": "still 13-Murphysboro_Aerial.png"
  },
  {
   "start": 1557.69,
@@ -992,7 +977,7 @@
  {
   "start": 1590.83,
   "dur": 5.32,
-  "what": "still 18-Murphysboro_Fire_Colorized.png"
+  "what": "still 16-Murphysboro_SW_of_Logan_School.png"
  },
  {
   "start": 1596.91,
@@ -1097,7 +1082,7 @@
  {
   "start": 1903.26,
   "dur": 4.84,
-  "what": "tail 19-De_Soto_Destruction.png"
+  "what": "tail 18-Murphysboro_Fire_Colorized.png"
  },
  {
   "start": 1908.85,
@@ -1107,7 +1092,7 @@
  {
   "start": 1930.85,
   "dur": 7.92,
-  "what": "tail 1925_-_De_Soto_-_Aftermath_Where_Homes_Were.jpg"
+  "what": "tail 19-De_Soto_Destruction.png"
  },
  {
   "start": 1938.77,
@@ -1182,7 +1167,7 @@
  {
   "start": 2033.01,
   "dur": 8.19,
-  "what": "still 1925_-_De_Soto_-_Birds_Eye_View.jpg"
+  "what": "still 1925_-_De_Soto_-_Aftermath_Where_Homes_Were.jpg"
  },
  {
   "start": 2041.95,
@@ -1192,7 +1177,7 @@
  {
   "start": 2051.41,
   "dur": 6.06,
-  "what": "still 1925_-_De_Soto_-_Business_District.jpg"
+  "what": "still 1925_-_De_Soto_-_Birds_Eye_View.jpg"
  },
  {
   "start": 2057.47,

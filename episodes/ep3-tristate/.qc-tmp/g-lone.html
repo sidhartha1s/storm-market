@@ -1,0 +1,85 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;width:1920px;height:1080px;background:#111;overflow:hidden}</style>
+<script src="../gsap.min.js"></script></head><body>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 46% 52%, #0d141c 0%, #04070a 76%); overflow:hidden; }
+  .eyebrow { position:absolute; left:96px; top:76px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .hl { position:absolute; left:96px; top:112px; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; }
+  .sub { position:absolute; left:96px; top:196px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  .drift { position:absolute; inset:-40% 0; opacity:0.30; pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(120,150,180,0.16) 0 1px, transparent 1px 46px); }
+  .lab { font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; }
+  .val { font-size:30px; color:#dfe7ee; font-weight:700; letter-spacing:1px; }
+  .num { font-family:'Courier New',monospace; font-size:84px; color:#e74c3c; font-weight:700; line-height:1; }
+  .maplab { font-family:Arial,sans-serif; font-weight:700; font-size:25px; fill:#e8eef4; }
+  .foot { position:absolute; left:96px; bottom:74px; font-family:Georgia,serif; font-style:italic;
+    font-size:26px; color:#d8a13a; }
+
+  .cell { fill:#7a4a52; opacity:0.85; }
+  .lonecell { fill:#c0392b; }
+  .statelab2 { font-family:Georgia,serif; font-style:italic; font-size:27px; fill:#40607d; }
+  /* bottom-right: the route climbs to (1596,330), so the UPPER right is where the map
+     lives. A readout at top:250px put the cell marker on top of its own caption. */
+  .rdg { position:absolute; right:96px; top:620px; text-align:right; }
+  .rdgnum { font-family:'Courier New',monospace; font-size:76px; color:#e8c56a; font-weight:700; line-height:1; }
+  .rdglab { font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; margin-top:6px; }
+  .verdict { position:absolute; left:96px; top:262px; font-family:'Arial Black',Arial,sans-serif;
+    font-size:40px; color:#f2f5f8; }
+  .verdictsub { position:absolute; left:96px; top:318px; font-family:Georgia,serif;
+    font-style:italic; font-size:25px; color:#b8c6d4; }
+</style>
+<div id="root" data-composition-id="g-lone" data-width="1920" data-height="1080">
+<div class="drift" id="g-lone-drift"></div>
+<svg viewBox="0 0 1920 1080" style="position:absolute;inset:0"><defs><filter id="lglow"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><line x1="664" y1="150" x2="664" y2="1010" stroke="#16212c" stroke-width="3"/><line x1="1272" y1="150" x2="1272" y2="1010" stroke="#16212c" stroke-width="3"/><text x="470" y="920" class="statelab2">MISSOURI</text><text x="930" y="920" class="statelab2">ILLINOIS</text><text x="1450" y="920" class="statelab2">INDIANA</text><g id="g-lone-squall"><circle id="g-lone-sq0" class="cell" cx="470" cy="836" r="0"/><circle id="g-lone-sq1" class="cell" cx="588" cy="792" r="0"/><circle id="g-lone-sq2" class="cell" cx="706" cy="748" r="0"/><circle id="g-lone-sq3" class="cell" cx="824" cy="704" r="0"/><circle id="g-lone-sq4" class="cell" cx="942" cy="660" r="0"/><circle id="g-lone-sq5" class="cell" cx="1060" cy="616" r="0"/><circle id="g-lone-sq6" class="cell" cx="1178" cy="572" r="0"/><circle id="g-lone-sq7" class="cell" cx="1296" cy="528" r="0"/><circle id="g-lone-sq8" class="cell" cx="1414" cy="484" r="0"/><line id="g-lone-sqx" x1="452" y1="854" x2="1420" y2="470" stroke="#8e2020" stroke-width="5" stroke-dasharray="1043" stroke-dashoffset="1043"/><text id="g-lone-sqlab" x="452" y="880" class="maplab" opacity="0">A SQUALL LINE · MANY STORMS</text></g><polyline id="g-lone-route" points="300,792 404,745 556,690 690,636 780,600 858,566 962,528 1046,496 1168,456 1332,412 1452,372 1596,330" fill="none" stroke="#c0392b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1378" stroke-dashoffset="1378"/><circle id="g-lone-cell" class="lonecell" cx="300" cy="792" r="0" filter="url(#lglow)"/><text id="g-lone-onelab" x="252" y="742" class="maplab" opacity="0">ONE CELL</text></svg><div class="eyebrow" id="g-lone-eb">MODERN REANALYSIS · JOHNS ET AL. 2013</div><div class="hl" id="g-lone-hl">ONE LONE SUPERCELL</div><div class="sub" id="g-lone-sb">not a wall of storms — a single storm, all afternoon</div><div class="verdict" id="g-lone-vd">NOT A SQUALL LINE</div><div class="verdictsub" id="g-lone-vds">what crossed three states was one cell</div><div class="rdg" id="g-lone-rdg"><div class="rdgnum"><span id="g-lone-mi">0</span> MI</div><div class="rdglab">GROUND COVERED BY THE PARENT STORM</div><div class="rdgnum" style="margin-top:34px"><span id="g-lone-hr">0.0</span> HR</div><div class="rdglab">CONTINUOUSLY ALOFT</div></div><div class="foot" id="g-lone-ft">Among the longest-lived supercells ever documented</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-lone-";
+  tl.fromTo(P+"drift", {y:-120}, {y:120, duration:27.0, ease:"none"}, 0);
+  tl.fromTo(P+"eb", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.15);
+  tl.fromTo(P+"hl", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.35);
+  tl.fromTo(P+"sb", {autoAlpha:0, x:-24}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.55);
+  const MI = {v:0}, HR = {v:0};
+  function miUpd(){ const e=document.getElementById("g-lone-mi"); if(e) e.textContent = Math.round(MI.v); }
+  function hrUpd(){ const e=document.getElementById("g-lone-hr"); if(e) e.textContent = HR.v.toFixed(1); }
+  tl.fromTo(P+"sq0", {attr:{r:0}}, {attr:{r:21}, duration:0.34, ease:"power3.out"}, 5.90);
+  tl.fromTo(P+"sq1", {attr:{r:0}}, {attr:{r:21}, duration:0.34, ease:"power3.out"}, 6.04);
+  tl.fromTo(P+"sq2", {attr:{r:0}}, {attr:{r:21}, duration:0.34, ease:"power3.out"}, 6.18);
+  tl.fromTo(P+"sq3", {attr:{r:0}}, {attr:{r:21}, duration:0.34, ease:"power3.out"}, 6.32);
+  tl.fromTo(P+"sq4", {attr:{r:0}}, {attr:{r:21}, duration:0.34, ease:"power3.out"}, 6.46);
+  tl.fromTo(P+"sq5", {attr:{r:0}}, {attr:{r:21}, duration:0.34, ease:"power3.out"}, 6.60);
+  tl.fromTo(P+"sq6", {attr:{r:0}}, {attr:{r:21}, duration:0.34, ease:"power3.out"}, 6.74);
+  tl.fromTo(P+"sq7", {attr:{r:0}}, {attr:{r:21}, duration:0.34, ease:"power3.out"}, 6.88);
+  tl.fromTo(P+"sq8", {attr:{r:0}}, {attr:{r:21}, duration:0.34, ease:"power3.out"}, 7.02);
+  tl.fromTo(P+"sqlab", {opacity:0}, {opacity:0.85, duration:0.5}, 6.40);
+  tl.to(P+"sqx", {strokeDashoffset:0, duration:0.85, ease:"power2.in"}, 8.66);
+  tl.to(P+"squall", {autoAlpha:0, duration:0.9}, 9.60);
+  tl.fromTo(P+"cell", {attr:{r:0}}, {attr:{r:19}, duration:0.5, ease:"back.out(2)"}, 10.22);
+  tl.fromTo(P+"onelab", {opacity:0}, {opacity:0.9, duration:0.5}, 10.60);
+  tl.to(P+"onelab", {autoAlpha:0, duration:0.6}, 13.40);
+  tl.to(P+"route", {strokeDashoffset:0, duration:15.00, ease:"none"}, 11.60);
+  tl.to(P+"cell", {attr:{cx:404, cy:745}, duration:1.24, ease:"none"}, 11.60);
+  tl.to(P+"cell", {attr:{cx:556, cy:690}, duration:1.76, ease:"none"}, 12.84);
+  tl.to(P+"cell", {attr:{cx:690, cy:636}, duration:1.57, ease:"none"}, 14.60);
+  tl.to(P+"cell", {attr:{cx:780, cy:600}, duration:1.06, ease:"none"}, 16.18);
+  tl.to(P+"cell", {attr:{cx:858, cy:566}, duration:0.93, ease:"none"}, 17.23);
+  tl.to(P+"cell", {attr:{cx:962, cy:528}, duration:1.21, ease:"none"}, 18.16);
+  tl.to(P+"cell", {attr:{cx:1046, cy:496}, duration:0.98, ease:"none"}, 19.36);
+  tl.to(P+"cell", {attr:{cx:1168, cy:456}, duration:1.40, ease:"none"}, 20.34);
+  tl.to(P+"cell", {attr:{cx:1332, cy:412}, duration:1.85, ease:"none"}, 21.74);
+  tl.to(P+"cell", {attr:{cx:1452, cy:372}, duration:1.38, ease:"none"}, 23.59);
+  tl.to(P+"cell", {attr:{cx:1596, cy:330}, duration:1.63, ease:"none"}, 24.97);
+  tl.to(MI, {v:412, duration:11.20, ease:"none", onUpdate:miUpd}, 12.64);
+  tl.to(HR, {v:7.0, duration:10.60, ease:"none", onUpdate:hrUpd}, 14.78);
+  tl.fromTo(P+"vd", {autoAlpha:0, x:-40}, {autoAlpha:1, x:0, duration:0.6, ease:"power3.out"}, 8.90);
+  tl.fromTo(P+"vds", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.6, ease:"power3.out"}, 10.30);
+  tl.fromTo(P+"rdg", {autoAlpha:0, x:40}, {autoAlpha:1, x:0, duration:0.6, ease:"power3.out"}, 12.20);
+  tl.fromTo(P+"ft", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.6}, 25.76);
+
+  window.__timelines["g-lone"] = tl;
+})();
+</script>
+</body></html>
