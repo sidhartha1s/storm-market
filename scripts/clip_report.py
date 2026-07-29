@@ -67,7 +67,7 @@ for a, b in spans:
     cur = max(cur, b)
 if cur < total - 0.05:
     holes.append((cur, total))
-print(f"uncovered picture gaps: {len(holes)}")
+print(f"uncovered picture gaps (tracks {sorted(PICTURE_TRACKS)}): {len(holes)}")
 for a, b in holes:
     print(f"  {ts(a)} -> {ts(b)}  ({b-a:.2f}s BLACK)")
 
