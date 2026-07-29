@@ -54,6 +54,8 @@ for (const f of readdirSync(join(ep, 'compositions')).filter(f => f.endsWith('.h
         if (r.bottom < 0 || r.top > 1080 || r.right < 0 || r.left > 1920) continue;
         /* leaf-ish only: a wrapper double-counts its children's area */
         if (e.children.length && e.textContent.trim() === '') continue;
+        /* an <img> that failed to load still has a layout box — it is not ink */
+        if (e.tagName === 'IMG' && !e.naturalWidth) continue;
         ink += Math.min(r.width, 1920) * Math.min(r.height, 1080);
       }
       out.push([+t.toFixed(2), Math.round(ink)]);
