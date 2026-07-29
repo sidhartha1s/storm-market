@@ -77,7 +77,33 @@ for src, want in sorted(windows.items()):
         overlong.append((src, dur, want, mb))
 
 fails = []
+def installed_probe_deadline():
+    """Read the ffprobe deadline out of the installed hyperframes bundle.
+
+    It is a hardcoded literal with no env override, and it CHANGES between releases:
+    0.7.64 allowed 120s, 0.7.81 allows 30s. Twelve renders died against that number
+    while nobody could see it, so the gate prints it every run.
+    """
+    npx = Path.home() / "AppData" / "Local" / "npm-cache" / "_npx"
+    best = None
+    for cli in npx.glob("*/node_modules/hyperframes/dist/cli.js"):
+        pkg = cli.parent.parent / "package.json"
+        ver = re.search(r'"version":\s*"([\d.]+)"', pkg.read_text(encoding="utf-8", errors="replace"))
+        hits = re.findall(r'deadlineAtMs:\s*Date\.now\(\)\s*\+\s*(\d+)e(\d+)',
+                          cli.read_text(encoding="utf-8", errors="replace"))
+        secs = {int(a) * 10 ** int(b) / 1000 for a, b in hits}
+        if ver and secs:
+            cand = (ver.group(1), min(secs))
+            if best is None or cand[0] > best[0]:
+                best = cand
+    return best
+
+
 print(f"composition {COMP_W}x{COMP_H} | {len(windows)} distinct clips | {total_mb:.0f} MB to decode")
+dl = installed_probe_deadline()
+if dl:
+    print(f"installed hyperframes {dl[0]} allows {dl[1]:.0f}s per ffprobe "
+          f"(0.7.64 allowed 120s — a newer pin can be STRICTER)")
 
 if missing:
     fails.append(f"{len(missing)} clip(s) missing or unreadable")
