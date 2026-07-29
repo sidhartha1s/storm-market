@@ -29,5 +29,5 @@ if errorlevel 1 (
   exit /b 90
 )
 
-call "%NPX%" hyperframes@0.7.81 render . --gpu --browser-gpu --experimental-fast-capture=true --quality draft --crf 32 --fps 15 --workers 3 -o renders/ep3-tristate-v3-draft.mp4 >> "%LOG%" 2>&1
+call "%NPX%" hyperframes@0.7.81 render . --gpu --browser-gpu --experimental-fast-capture=true --quality draft --crf 32 --fps 15 --workers 2 -o renders/ep3-tristate-v3-draft.mp4 >> "%LOG%" 2>&1
 echo %ERRORLEVEL%> renders\render_v3_draft_done.marker
