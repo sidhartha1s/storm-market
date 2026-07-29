@@ -16,6 +16,12 @@ from pathlib import Path
 HERE = Path(__file__).parent
 CSV_PATH = HERE / "state_data.csv"
 TEMPLATES = HERE / "templates"
+D = "—"          # em dash, used in generated titles
+BOOK_CSS = HERE.parent / "build" / "book.css"
+
+# States per Appendix B page. fitcheck.mjs is the real gate on this number.
+PER_PAGE = 3   # 3 passes; 4 overflowed two pages (Texas, Washington) by ~130px
+FRONT_MATTER = HERE.parent / "manuscript" / "P0-front-matter.md"
 OUT = HERE / "out"
 
 # Hazard names must match a Part Three playbook exactly, so the packet can say
@@ -133,6 +139,85 @@ def report(rows, complete, problems):
         print(f"\n  {missing} state(s)/DC not yet in the file.")
 
 
+def region_first_ten():
+    """Parse the region priority table out of the book's own front matter.
+
+    The packet cover promises "your first ten protections" and used to print only the hazards,
+    so the promise went unmet. The list is not re-typed here: it is read from the same table
+    the reader sees in the front matter, so the packet cannot drift from the book. If that
+    table is edited, the packets follow on the next build; if it is moved or restructured, this
+    fails loudly rather than shipping packets with a silently empty column.
+    """
+    if not FRONT_MATTER.exists():
+        sys.exit(f"FAIL: {FRONT_MATTER} is missing — cannot build the first-ten lists.")
+    lines = FRONT_MATTER.read_text(encoding="utf-8").splitlines()
+
+    header = None
+    for i, line in enumerate(lines):
+        if line.startswith("|") and all(region in line for region in REGIONS):
+            header = i
+            break
+    if header is None:
+        sys.exit("FAIL: the region priority table was not found in the front matter. "
+                 "If it moved, update region_first_ten().")
+
+    columns = [cell.strip().strip("*") for cell in lines[header].strip().strip("|").split("|")]
+    order = columns[1:]                      # first column is the rank number
+    if set(order) != REGIONS:
+        sys.exit(f"FAIL: the table's columns {order} are not the five book regions.")
+
+    table = {region: [] for region in order}
+    for line in lines[header + 2:]:          # +2 skips the markdown separator row
+        if not line.startswith("|"):
+            break
+        cells = [cell.strip().strip("*") for cell in line.strip().strip("|").split("|")]
+        if len(cells) != len(columns) or not cells[0].isdigit():
+            break
+        for region, value in zip(order, cells[1:]):
+            table[region].append(value)
+
+    for region, items in table.items():
+        if len(items) != 10:
+            sys.exit(f"FAIL: {region} has {len(items)} first-ten entries, expected 10.")
+    return table
+
+
+def first_ten_html(row, table):
+    """Render one ranked column per region the state belongs to, side by side."""
+    regions = [r.strip() for r in (row.get("region_overlay") or "").split("|") if r.strip()]
+    if not regions:
+        return ""
+    columns = []
+    for region in regions:
+        items = "".join(
+            f'<li>{html.escape(item)}</li>' for item in table.get(region, []))
+        columns.append(f'<div class="pk-ten-col"><h4>{html.escape(region)}</h4>'
+                       f'<ol class="pk-ten">{items}</ol></div>')
+    intro = ("Do both, in this order \u2014 the overlap is larger than you expect."
+             if len(regions) > 1 else "Do these first, in this order.")
+    return (f'<p class="pk-ten-intro">{intro}</p>'
+            f'<div class="pk-ten-wrap">{"".join(columns)}</div>')
+
+
+def document(title, body):
+    """Wrap rendered HTML in a self-contained page with the stylesheets inlined.
+
+    Inlined rather than linked on purpose. A packet is handed to a buyer as a standalone PDF
+    or HTML file, so a relative <link> to a path inside this repo breaks the moment the file
+    moves — and it was already broken here: the template linked ../../build/book.css, which
+    from out/packets/ resolved to a directory that does not exist, so every packet rendered
+    with no styling at all.
+    """
+    css = []
+    for path in (BOOK_CSS, TEMPLATES / "packet.css"):
+        if not path.exists():
+            sys.exit(f"FAIL: stylesheet {path} is missing.")
+        css.append(f"/* {path.name} */\n{path.read_text(encoding='utf-8')}")
+    return ("<!doctype html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n"
+            f"<title>{html.escape(title)}</title>\n<style>\n" + "\n".join(css) +
+            f"\n</style>\n</head>\n<body>\n{body}\n</body>\n</html>\n")
+
+
 def read_template(name):
     path = TEMPLATES / name
     if not path.exists():
@@ -140,7 +225,7 @@ def read_template(name):
     return path.read_text(encoding="utf-8")
 
 
-def fill(template, row):
+def fill(template, row, first_ten=""):
     """Substitute {{field}} placeholders. Unknown or empty fields render as an em dash,
     never as invented text."""
     def sub(match):
@@ -151,6 +236,8 @@ def fill(template, row):
             return str(PLAYBOOKS.get((row.get("hazard_2") or "").strip(), ""))
         if key == "playbook_3":
             return str(PLAYBOOKS.get((row.get("hazard_3") or "").strip(), ""))
+        if key == "first_ten":
+            return first_ten
         if key == "regions":
             return ", ".join(r.strip() for r in (row.get("region_overlay") or "").split("|") if r.strip())
         value = (row.get(key) or "").strip()
@@ -159,17 +246,34 @@ def fill(template, row):
     return re.sub(r"\{\{([a-z0-9_]+)\}\}", sub, template)
 
 
-def build_appendix(complete):
+def build_appendix(complete, per_page=PER_PAGE):
+    """Render Appendix B into fixed 6x9 pages, per_page states to a page.
+
+    The pages do not reflow, so pagination is explicit rather than left to the browser, and
+    fitcheck.mjs is the gate: if a page overflows, lower per_page or tighten the row. The first
+    version put all 51 states on one page and overflowed it by 24,533px.
+    """
     row_tpl = read_template("appendix_row.html")
-    body = "\n".join(fill(row_tpl, row) for row in sorted(complete, key=lambda r: r["state"]))
+    ordered = sorted(complete, key=lambda r: r["state"])
+    pages = []
+    for start in range(0, len(ordered), per_page):
+        rows = "\n".join(fill(row_tpl, row) for row in ordered[start:start + per_page])
+        folio = start // per_page + 1
+        pages.append(
+            f'<section class="page">\n'
+            f'<p class="runhead">Appendix B {D} State Authority Directory</p>\n'
+            f'{rows}\n<p class="folio">{folio}</p>\n</section>')
     OUT.mkdir(parents=True, exist_ok=True)
     target = OUT / "appendix-b.html"
-    target.write_text(body, encoding="utf-8")
-    print(f"wrote {target} — {len(complete)} state row(s)")
+    target.write_text(document(f"Appendix B {D} State Authority Directory", "\n".join(pages)),
+                      encoding="utf-8")
+    print(f"wrote {target} — {len(complete)} state row(s) on {len(pages)} page(s), "
+          f"{per_page} per page")
 
 
 def build_packets(complete, only=None):
     tpl = read_template("packet.html")
+    table = region_first_ten()
     directory = OUT / "packets"
     directory.mkdir(parents=True, exist_ok=True)
     written = 0
@@ -177,7 +281,9 @@ def build_packets(complete, only=None):
         if only and row["abbr"] not in only:
             continue
         target = directory / f"{row['abbr']}.html"
-        target.write_text(fill(tpl, row), encoding="utf-8")
+        title = f"The Storm-Ready Home {D} {row['state']} State Packet"
+        body = fill(tpl, row, first_ten=first_ten_html(row, table))
+        target.write_text(document(title, body), encoding="utf-8")
         written += 1
     print(f"wrote {written} packet(s) to {directory}")
     if not written:
@@ -188,6 +294,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="validate the CSV and exit")
     parser.add_argument("--appendix", action="store_true", help="render Appendix B")
+    parser.add_argument("--per-page", type=int, default=PER_PAGE,
+                        help=f"states per Appendix B page (default {PER_PAGE}); lower it if "
+                             "fitcheck reports an overflow")
     parser.add_argument("--packets", action="store_true", help="render the per-state packets")
     parser.add_argument("--only", help="comma-separated state abbreviations")
     args = parser.parse_args()
@@ -209,7 +318,7 @@ def main():
 
     only = {a.strip().upper() for a in args.only.split(",")} if args.only else None
     if args.appendix:
-        build_appendix(complete)
+        build_appendix(complete, per_page=args.per_page)
     if args.packets:
         build_packets(complete, only)
 

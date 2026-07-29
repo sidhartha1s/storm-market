@@ -90,9 +90,17 @@ your call, not mine to add silently. A real launch-price end date is honest and 
    in the meta description, the hero subhead, the proof strip, the deliverables list and the delivery
    section.
 
-4. **The 50 state packets do not exist**, so the free-packet email gate has nothing to deliver. Schema
-   and generator are built at `ebook/appendix/` and `build.py` fails loudly on an empty or
-   partially-sourced CSV by design. ~51 rows × ~20 sourced fields of agency research outstanding.
+4. **The 50 state packets do not exist yet**, so the free-packet email gate has nothing to deliver
+   — but the dataset behind them is now half collected and `build.py --check` passes on all 51 rows
+   for the first time. Filled from national directories rather than 51 hand lookups: the three
+   hazards, their seasons and the region overlay (NCEI Storm Events deaths), the emergency
+   management agency and its URL (usa.gov), the insurance regulator, its phone and its complaint
+   page (NAIC), the energy-assistance page (ACF LIHEAP), and both private-well testing fields
+   (two EPA sources). **Outstanding:** the deductible and roof-settlement notes, the emergency
+   prescription-refill provision, the utility disconnection moratoria, `em_phone`, and the
+   mitigation programme where a state runs one — all per-state legal and regulatory facts with no
+   national machine-readable table, which is why they are last. `ebook/appendix/README.md` lists
+   every source found and every dead end tried.
 
 Also outstanding, not blocking: a **16:9 cover render** for the Gumroad product image and social
 cards, and a **dedicated Paul Raymond headshot** — the portrait block crops the face out of the

@@ -22,6 +22,7 @@ Callers log the verdict for every URL they publish, so a run always says how muc
 output was confirmed live versus taken on the directory's word.
 """
 
+import http.client
 import subprocess
 import urllib.error
 import urllib.request
@@ -78,7 +79,9 @@ def check(url, want_page=False):
         code, detail = None, type(exc.reason).__name__
         if "getaddrinfo" in str(exc.reason) or "Name or service not known" in str(exc.reason):
             detail = "hostname does not resolve from here"
-    except (OSError, ValueError) as exc:
+    except (OSError, ValueError, http.client.HTTPException) as exc:
+        # http.client.InvalidURL lands here: a discovered link carrying raw spaces is not
+        # something to crash on, it is simply not publishable.
         code, detail = None, type(exc).__name__
 
     dom = chrome_dom(url)

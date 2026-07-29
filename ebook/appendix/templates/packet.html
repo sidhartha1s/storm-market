@@ -1,6 +1,6 @@
 <!-- Four-page per-state packet. Free lead magnet on the landing page, and a buyer bonus.
      Same fixed-page model as the book: every .page is 6x9in with overflow:hidden. -->
-<link rel="stylesheet" href="../../build/book.css">
+<!-- Stylesheets are inlined by build.py, not linked: a packet ships standalone. -->
 
 <!-- 1 -->
 <section class="page packet-cover">
@@ -15,6 +15,8 @@
   <p class="pk-reg">Region overlay: <strong>{{regions}}</strong></p>
   <p class="pk-note">Regions set the <em>order</em> of your first ten protections, not what you have access to.
     Every hazard chapter applies to every reader.</p>
+  <h3 class="pk-ten-head">Your first ten protections</h3>
+  {{first_ten}}
   <p class="folio">1</p>
 </section>
 

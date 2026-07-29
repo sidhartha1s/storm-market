@@ -1,0 +1,205 @@
+/* Styles for the per-state packet and the Appendix B row.
+   book.css owns the shared shell — :root variables, .page, .folio, headings — and is inlined
+   ahead of this file by build.py, so only the classes those two templates add live here.
+   Keep every rule fixed-size: the packet is a print artifact on 6x9in pages with
+   overflow:hidden, so nothing may depend on reflow. */
+
+.kicker {
+  font-family: var(--sans); font-size: 7.6pt; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--amber);
+  margin: 0 0 18pt;
+}
+
+/* ---- page 1, the cover ---- */
+
+.packet-cover { display: flex; flex-direction: column; }
+
+.pk-state {
+  font-family: var(--serif); font-size: 34pt; line-height: 1.04;
+  margin: 0 0 6pt; color: var(--ink);
+}
+
+.pk-sub {
+  font-family: var(--serif); font-size: 11.4pt; line-height: 1.38;
+  color: var(--ink-soft); margin: 0 0 16pt; max-width: 4.3in;
+}
+
+.pk-haz { border-top: 1px solid var(--rule); margin-bottom: 16pt; }
+
+/* Four columns, so the number, hazard, season and playbook line up down the page instead of
+   running together as one string. */
+.pk-haz-row {
+  display: grid; grid-template-columns: 0.3in 1.85in 1.05in auto;
+  align-items: baseline; gap: 0 10pt;
+  border-bottom: 1px solid var(--rule); padding: 7pt 0;
+}
+
+.pk-n {
+  font-family: var(--sans); font-size: 15pt; font-weight: 700;
+  color: var(--amber); line-height: 1;
+}
+.pk-h { font-family: var(--serif); font-size: 12.2pt; color: var(--ink); }
+.pk-s { font-family: var(--sans); font-size: 8.8pt; color: var(--ink-mute); }
+.pk-p {
+  font-family: var(--sans); font-size: 8pt; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--amber);
+  text-align: right;
+}
+
+.pk-reg { font-family: var(--serif); font-size: 11pt; margin: 0 0 8pt; color: var(--ink); }
+
+.pk-note {
+  font-family: var(--serif); font-size: 9.6pt; line-height: 1.42;
+  color: var(--ink-mute); margin: 0; max-width: 4.4in;
+}
+
+/* ---- pages 2 and 3, the directory lists ---- */
+
+/* A two-column definition list: label left, value right, one rule per entry. Long values wrap
+   inside their own column rather than pushing the label around. */
+.stdl {
+  display: grid; grid-template-columns: 1.55in auto;
+  gap: 0; margin: 0 0 14pt; border-top: 1px solid var(--rule);
+}
+.stdl dt {
+  font-family: var(--sans); font-size: 8.4pt; font-weight: 700;
+  color: var(--ink-soft); line-height: 1.34;
+  padding: 8pt 10pt 8pt 0; border-bottom: 1px solid var(--rule);
+}
+.stdl dd {
+  font-family: var(--serif); font-size: 9.8pt; line-height: 1.42;
+  color: var(--ink); margin: 0; padding: 8pt 0;
+  border-bottom: 1px solid var(--rule);
+  overflow-wrap: anywhere;   /* agency URLs are long and must not spill the page box */
+}
+
+.warn {
+  font-family: var(--serif); font-size: 10pt; line-height: 1.42;
+  color: var(--alert); border-left: 2.5pt solid var(--alert);
+  padding: 2pt 0 2pt 10pt; margin: 0 0 12pt;
+}
+
+.stver {
+  font-family: var(--sans); font-size: 8pt; color: var(--ink-mute);
+  margin: 0; font-style: normal;
+}
+
+.callout {
+  font-family: var(--serif); font-size: 10.2pt; line-height: 1.44;
+  background: var(--amber-bg); border-left: 2.5pt solid var(--amber);
+  padding: 9pt 11pt; margin: 0;
+}
+
+/* ---- page 4, the fill-in plan ---- */
+
+.lede {
+  font-family: var(--serif); font-size: 10.6pt; color: var(--ink-soft);
+  margin: 0 0 14pt;
+}
+
+.planform { width: 100%; border-collapse: collapse; margin: 0 0 14pt; }
+.planform th {
+  width: 1.85in; text-align: left; vertical-align: bottom;
+  font-family: var(--sans); font-size: 8.2pt; font-weight: 700;
+  color: var(--ink-soft); padding: 0 8pt 3pt 0;
+  border-bottom: 1px solid var(--rule);
+}
+.planform td.fill {
+  border-bottom: 1px solid var(--ink-mute);
+  height: 21pt;   /* a hand-writable line, not a hairline */
+}
+
+.trigger {
+  font-family: var(--serif); font-size: 10.4pt; line-height: 1.9;
+  margin: 0 0 10pt;
+}
+
+/* An inline blank to write on. Fixed width so the sentence around it stays on its line. */
+.fillline {
+  display: inline-block; width: 1.35in;
+  border-bottom: 1px solid var(--ink-mute);
+}
+
+.signline { font-family: var(--serif); font-size: 10.4pt; margin: 0 0 12pt; }
+
+.agree {
+  font-family: var(--serif); font-size: 10.2pt; line-height: 1.42;
+  color: var(--ink); border-top: 1px solid var(--rule); padding-top: 9pt; margin: 0;
+}
+
+/* ---- Appendix B, the compact in-book row ---- */
+
+.stblock { break-inside: avoid; margin: 0 0 15pt; }
+
+.stname {
+  font-family: var(--serif); font-size: 13pt; margin: 0 0 4pt;
+  color: var(--ink); border-bottom: 1px solid var(--rule); padding-bottom: 3pt;
+}
+.stabbr {
+  font-family: var(--sans); font-size: 8pt; font-weight: 700;
+  letter-spacing: .1em; color: var(--ink-mute);
+}
+
+.sthaz, .streg {
+  font-family: var(--serif); font-size: 9.4pt; line-height: 1.4;
+  margin: 0 0 3pt; color: var(--ink);
+}
+.pb {
+  font-family: var(--sans); font-size: 7.4pt; font-weight: 700;
+  letter-spacing: .05em; text-transform: uppercase; color: var(--amber);
+}
+
+/* The appendix row is denser than the packet: same list, smaller type, tighter rows. */
+.stblock .stdl { grid-template-columns: 1.25in auto; margin: 6pt 0 5pt; }
+.stblock .stdl dt { font-size: 7.6pt; padding: 5pt 8pt 5pt 0; }
+.stblock .stdl dd { font-size: 8.6pt; line-height: 1.36; padding: 5pt 0; }
+.stblock .stver { font-size: 7.4pt; }
+
+/* ---- page 1, the region first-ten lists ---- */
+/* Populated from the region priority table in the book's front matter, so the cover delivers
+   the "first ten protections" it promises. A state in two regions gets both columns. */
+
+.pk-ten-head {
+  font-family: var(--sans); font-size: 8.4pt; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft);
+  margin: 12pt 0 3pt; padding-top: 8pt; border-top: 1px solid var(--rule);
+}
+
+.pk-ten-intro {
+  font-family: var(--serif); font-size: 9.4pt; color: var(--ink-mute); margin: 0 0 8pt;
+}
+
+.pk-ten-wrap { display: flex; gap: 20pt; }
+.pk-ten-col { flex: 1 1 0; min-width: 0; }
+
+.pk-ten-col h4 {
+  font-family: var(--sans); font-size: 7.8pt; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--amber);
+  margin: 0 0 4pt;
+}
+
+.pk-ten { margin: 0; padding-left: 15pt; }
+.pk-ten li {
+  font-family: var(--serif); font-size: 9pt; line-height: 1.34;
+  color: var(--ink); margin: 0 0 1pt;
+}
+/* Rank ten is protection 100 in every region — the book calls that out, so it reads as bold. */
+.pk-ten li:last-child { font-weight: 700; }
+
+/* The compact row's own lines. One label column, values inline, no rules between them:
+   Appendix B is scanned for a single state, not read straight through. */
+.stlab {
+  display: inline-block; width: 0.92in;
+  font-family: var(--sans); font-size: 7pt; font-weight: 700;
+  letter-spacing: .04em; text-transform: uppercase; color: var(--ink-mute);
+}
+.stline {
+  font-family: var(--serif); font-size: 8.4pt; line-height: 1.3;
+  margin: 0 0 1pt; color: var(--ink); overflow-wrap: anywhere;
+}
+.ssn { font-family: var(--sans); font-size: 7.2pt; color: var(--ink-mute); }
+.stname .stver { float: right; font-size: 7pt; font-weight: 400; }
+
+/* Three-region states (Alaska, Colorado, Hawaii, Montana, Nebraska, Utah, Wyoming) ran 3-25px
+   past the page box, so the cover's vertical rhythm is tuned to the worst case rather than the
+   common one. fitcheck.mjs over all 51 packets is the gate. */
