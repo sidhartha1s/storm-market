@@ -351,9 +351,9 @@ def lone():
                     rgba(4,7,10,0) 86%, rgba(4,7,10,1) 100%); }
   .platevig { position:absolute; inset:0; pointer-events:none;
     background:radial-gradient(ellipse at 50% 50%, rgba(4,7,10,0) 46%, rgba(4,7,10,0.72) 96%); }
-  /* right, above the band's path line: a readout level with the route put the cell
-     marker on top of its own caption */
-  .rdg { position:absolute; right:96px; top:352px; text-align:right; }
+  /* top right, in the dark above the band: at top:352 the "412 MI" block printed
+     straight over the plate's own engraved INDIANA */
+  .rdg { position:absolute; right:96px; top:88px; text-align:right; }
   .rdgnum { font-family:'Courier New',monospace; font-size:76px; color:#e8c56a; font-weight:700; line-height:1; }
   .rdglab { font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; margin-top:6px; }
   .verdict { position:absolute; left:96px; top:262px; font-family:'Arial Black',Arial,sans-serif;
