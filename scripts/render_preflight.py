@@ -59,3 +59,18 @@ if len(busy) > MAX_HEAVY:
     sys.exit(2)
 
 print(f"[preflight] OK — {len(busy)} heavy process(es), under the limit of {MAX_HEAVY}.")
+
+# An idle box is not enough. Eleven of the twelve failed renders were started with the
+# machine quiet and died anyway, because the media itself was too expensive to extract.
+# The asset check is part of preflight so it cannot be skipped by launching a render
+# directly: the render script calls this file and stops on a non-zero exit.
+here = Path(__file__).resolve().parent
+episode = Path(sys.argv[1]) if len(sys.argv) > 1 else Path.cwd()
+budget = subprocess.run([sys.executable, str(here / "media_budget.py"), str(episode)],
+                        capture_output=True, text=True)
+print(budget.stdout.rstrip())
+if budget.returncode != 0:
+    print(budget.stderr.rstrip(), file=sys.stderr)
+    print("[preflight] REFUSING TO RENDER — media budget gate failed (see above).",
+          file=sys.stderr)
+    sys.exit(3)
