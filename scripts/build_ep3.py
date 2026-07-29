@@ -480,10 +480,18 @@ def main():
                 shots, acc = [], 0.0
                 for (src, typ, want) in plan["assets"]:
                     shots.append((src, typ, want)); acc += want
-                scale = seg_dur / acc if acc else 1
+                # Scale against the NARRATION, not narration+hold. Scaling by seg_dur spread
+                # the hold across every beat, so a weight tuned to a spoken word drifted late
+                # in proportion to the hold (a1-s5's 4s hold pushed its 7.0s beat to 8.3s and
+                # the coal-mine cut landed 0.58s after the word "miners"). The hold is silence
+                # at the end of the segment, so it belongs to the last shot only.
+                scale = d / acc if acc else 1
                 # everything that is not a clip goes through pick(), not just ty=='still' —
                 # newspaper front pages typed 'paper' were bypassing the reuse ceiling
                 shots = [(s if is_video(s) else pick(s), ty, w * scale) for (s, ty, w) in shots]
+                if shots and seg_dur > d:
+                    s, ty, w = shots[-1]
+                    shots[-1] = (s, ty, w + (seg_dur - d))
             else:
                 # type follows the FILE, not the segment kind: a photo listed inside a
                 # kind="stock" segment was being typed "stock" and emitted as <video
