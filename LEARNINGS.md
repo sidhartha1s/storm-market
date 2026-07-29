@@ -401,3 +401,37 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
 - **Retiring a graphic means retiring its generator entry, its `_durations.json` key and the
   file.** Dropping only the mount left `g-panel-lone` authored-but-unmounted, which the
   sweep caught immediately.
+- **The `ffprobe deadline with code 0` failure was never a bad asset — the deadline is 120s,
+  hardcoded.** hyperframes 0.7.64 wraps its probes in `deadlineAtMs: Date.now() + 12e4` with
+  no env override, and the probe it runs at `video_extract` is not the cheap duration read —
+  it is `-count_packets`, which walks every packet. Measured on an idle box with the exact
+  arguments (`scripts/probe_timing.py`): worst clip 3.05s, whole 16-clip pass 29.9s. The
+  failed render spent 274s inside `video_extract` before a single probe blew 120s, i.e. the
+  box was running roughly 40x slower than idle. Cost does NOT track file size — the 57 MB
+  transcode probes in 2.0s while a 10 MB lightning clip takes 3.05s — so the "4K asset"
+  theory was wrong twice over. The fix is `render_preflight.py` plus an otherwise-idle box.
+- **Coverage tools must name their picture tracks.** `clip_report.py` counted every track,
+  so nine overlay windows (date card, source chip, quote cards, lower-thirds) papered over
+  the black underneath them; the date card alone hid 0.30-14.3s. Whitelist the picture
+  tracks, then prove the check can still fail by deleting one still from a scratch copy.
+- **A gate that only counts the first cycle of a repeating tween reports moving frames as
+  dead.** `beat_density.py` scored `repeat:3` as one cycle; eight compositions carried
+  inflated max-still numbers. Total motion is `duration + repeat * (duration + repeatDelay)`,
+  and `yoyo` does not change it.
+- **The episode should end when the closing card's content ends.** Two bugs stacked: the
+  card's background drift ran 0.6s past its own credit fade, and the timeline's total ran
+  past the card, so `close_picture_gaps` stretched the host to reach it — 3.69s of frozen
+  black after the last visible frame. ep2, the shipped reference, ends at 0.00s of tail.
+  Trimming the ending then exposed a second defect: the leftover hold cut from the credits
+  to a 1925 damage photograph for 1.54s. The last segment in `ORDER` takes no tail.
+- **A substitution pool with no geography will contradict the narration.** Past the reuse
+  ceiling, `pick()` drew from a flat spare list and put the Heinz plant in Princeton,
+  Indiana under a sentence about Annapolis, Missouri — the far end of the track, three hours
+  later. Act-scoped pools first, global spares second. The narration/picture gate found it;
+  no human review had.
+- **Word-level timings turn "does the picture contradict the voice" into a script.**
+  `narration_picture_check.py` reads `audio/<seg>.words.json` and tests what is on screen at
+  the instant a year or a town is spoken. Build the place vocabulary from the archive's
+  filename convention (`1925_-_<Town>_-_`), not from every capitalised token — the loose
+  version called "Where", "Morning" and "Building" towns and buried three real findings in
+  thirteen false ones.
