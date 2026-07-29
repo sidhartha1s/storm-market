@@ -338,15 +338,21 @@ def lone():
     style = """
   .cell { fill:#7a4a52; opacity:0.85; }
   .lonecell { fill:#c0392b; }
-  /* the owner's aged-1925 plate carries the real rivers and the state names, so the
-     drawn dividers and drawn labels come out. Dimmed and cooled so red ink reads on it. */
-  .plate { position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
-    opacity:0.30; filter:grayscale(0.35) brightness(0.55) contrast(1.1); }
+  /* The owner's aged-1925 plate carries the real rivers and its own engraved state names,
+     so the drawn dividers and drawn labels come out. It reaches Lake Michigan, but the
+     tri-state path crosses only ~1.3 degrees of latitude near its bottom edge — shown
+     whole, the route is a stick in the last quarter of the frame under 700px of empty
+     Iowa. So the plate is cropped to a band: full width, from 40% down. */
+  .plateband { position:absolute; left:0; right:0; top:300px; height:649px; overflow:hidden; }
+  .plate { position:absolute; left:0; top:-432px; width:1920px; }
+  .platefade { position:absolute; inset:0; pointer-events:none; background:
+    linear-gradient(180deg, rgba(4,7,10,1) 0%, rgba(4,7,10,0) 14%,
+                    rgba(4,7,10,0) 86%, rgba(4,7,10,1) 100%); }
   .platevig { position:absolute; inset:0; pointer-events:none;
-    background:radial-gradient(ellipse at 50% 62%, rgba(4,7,10,0) 30%, rgba(4,7,10,0.86) 92%); }
-  /* bottom-right: the route now runs low across the plate's southern band, so the
-     readout sits above it. A readout at top:250px put the cell marker on its caption. */
-  .rdg { position:absolute; right:96px; top:560px; text-align:right; }
+    background:radial-gradient(ellipse at 50% 50%, rgba(4,7,10,0) 46%, rgba(4,7,10,0.72) 96%); }
+  /* right, above the band's path line: a readout level with the route put the cell
+     marker on top of its own caption */
+  .rdg { position:absolute; right:96px; top:352px; text-align:right; }
   .rdgnum { font-family:'Courier New',monospace; font-size:76px; color:#e8c56a; font-weight:700; line-height:1; }
   .rdglab { font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; margin-top:6px; }
   .verdict { position:absolute; left:96px; top:262px; font-family:'Arial Black',Arial,sans-serif;
