@@ -16,27 +16,27 @@
  },
  {
   "start": 17.39,
-  "dur": 2.63,
+  "dur": 2.08,
   "what": "film mvtn-hook-aerial-bank-4s.mp4"
  },
  {
-  "start": 20.02,
-  "dur": 2.63,
+  "start": 19.47,
+  "dur": 2.08,
   "what": "still Wea00238.jpg"
  },
  {
-  "start": 22.65,
-  "dur": 2.63,
+  "start": 21.55,
+  "dur": 2.08,
   "what": "film mvtn-hook-trainwreck-4s.mp4"
  },
  {
-  "start": 25.28,
-  "dur": 2.63,
+  "start": 23.63,
+  "dur": 2.08,
   "what": "still 1925_tornado_damage_3.webp"
  },
  {
-  "start": 27.91,
-  "dur": 6.05,
+  "start": 25.71,
+  "dur": 8.28,
   "what": "still Wea00239_-_Flickr_-_NOAA_Photo_Library.jpg"
  },
  {
@@ -201,22 +201,22 @@
  },
  {
   "start": 349.75,
-  "dur": 8.3,
+  "dur": 7.49,
   "what": "still ai-children-school.png"
  },
  {
-  "start": 358.05,
-  "dur": 5.93,
+  "start": 357.24,
+  "dur": 5.2,
   "what": "still 26-West_Frankfort_Coal_Cars.png"
  },
  {
-  "start": 363.98,
-  "dur": 6.52,
+  "start": 362.44,
+  "dur": 5.0,
   "what": "still ai-farmhouse-morning.png"
  },
  {
-  "start": 370.5,
-  "dur": 5.33,
+  "start": 367.44,
+  "dur": 8.4,
   "what": "still 20-De_Soto_School_1910.png"
  },
  {
@@ -916,37 +916,37 @@
  },
  {
   "start": 1497.94,
-  "dur": 8.2,
+  "dur": 7.35,
   "what": "film mvtn-centerpiece-aerial-30s.mp4"
  },
  {
-  "start": 1506.14,
-  "dur": 8.2,
+  "start": 1505.29,
+  "dur": 7.35,
   "what": "still 1925_tornado_damage_4.jpg"
  },
  {
-  "start": 1514.34,
-  "dur": 4.68,
+  "start": 1512.64,
+  "dur": 4.2,
   "what": "film mvtn-aerial-c-8s.mp4"
  },
  {
-  "start": 1519.02,
-  "dur": 4.68,
+  "start": 1516.84,
+  "dur": 4.2,
   "what": "still 1925_tornado_damage_2.webp"
  },
  {
-  "start": 1523.7,
-  "dur": 3.51,
+  "start": 1521.04,
+  "dur": 3.15,
   "what": "film mvtn-ground-b-6s.mp4"
  },
  {
-  "start": 1527.21,
-  "dur": 3.51,
+  "start": 1524.19,
+  "dur": 3.15,
   "what": "still 1925_tornado_damage_8.webp"
  },
  {
-  "start": 1530.72,
-  "dur": 5.85,
+  "start": 1527.34,
+  "dur": 9.25,
   "what": "still Wea00239_-_Flickr_-_NOAA_Photo_Library.jpg"
  },
  {
@@ -996,33 +996,38 @@
  },
  {
   "start": 1596.91,
-  "dur": 6.49,
+  "dur": 5.72,
   "what": "film mvtn-rebuild-bricklayers-12s.mp4"
  },
  {
-  "start": 1603.4,
-  "dur": 6.49,
+  "start": 1602.63,
+  "dur": 5.72,
   "what": "still 1925_tornado_damage_4.jpg"
  },
  {
-  "start": 1609.89,
-  "dur": 7.21,
+  "start": 1608.35,
+  "dur": 6.35,
   "what": "still 1925_-_De_Soto_-_Aftermath_Where_Homes_Were.jpg"
  },
  {
-  "start": 1617.1,
-  "dur": 7.21,
+  "start": 1614.7,
+  "dur": 6.35,
   "what": "still 1925_-_De_Soto_-_Business_District.jpg"
  },
  {
-  "start": 1624.31,
-  "dur": 7.21,
+  "start": 1621.05,
+  "dur": 6.35,
   "what": "still 1925_-_De_Soto_-_Business_District2.jpg"
  },
  {
-  "start": 1631.52,
-  "dur": 7.21,
+  "start": 1627.4,
+  "dur": 5.68,
   "what": "still 1925_-_Princeton_-_Baldwin_Heights_School_2_-_IA_GWC.jpg"
+ },
+ {
+  "start": 1633.08,
+  "dur": 5.68,
+  "what": "still 1925_tornado_damage_2.webp"
  },
  {
   "start": 1639.5,

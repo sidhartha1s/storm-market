@@ -84,10 +84,10 @@ SHOTS = {
         S+"stock-tornado-01.mp4", S+"stock-cloudsrolling-02.mp4"], stockbed=True),
  # weighted, not evenly chunked: "children walked to school" is spoken at +2.58s and
  # "miners went underground" at +7.72s, so the mine has to own the 7-12s slot
- "a1-s5":  dict(kind="mixed", assets=[(A+"ai-children-school.png","still",7.0),
-        (P+"26-West_Frankfort_Coal_Cars.png","still",5.0),
-        (A+"ai-farmhouse-morning.png","still",5.5),
-        (P+"20-De_Soto_School_1910.png","still",4.5)], chip="Recreation"),
+ "a1-s5":  dict(kind="mixed", assets=[(A+"ai-children-school.png","still",7.5),
+        (P+"26-West_Frankfort_Coal_Cars.png","still",5.2),
+        (A+"ai-farmhouse-morning.png","still",5.0),
+        (P+"20-De_Soto_School_1910.png","still",4.4)], chip="Recreation"),
  "a2-s1":  dict(kind="graphic", id="g-track-1"),
  "a2-s1c": dict(kind="stills", assets=[P+"02-Annapolis_Destruction.png", P+"03-Leadanna_Damage.png",
         P+"Leadanna_lead_mines_after_1925_tornado.png", P+"05-Bollinger_County_Damage.png",
