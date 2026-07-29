@@ -171,7 +171,7 @@ window.__timelines = window.__timelines || {};
   const V1 = {v:0}, V2 = {v:0}, V3 = {v:0};
 
   /* CONTINUOUS: the ruler grid drifts left for the whole window */
-  tl.to(P+"grid", {x:-178, duration:25.8, ease:"none"}, 0.2);
+  tl.to(P+"grid", {x:-232, duration:34.0, ease:"none"}, 0.2);
 
   /* masthead */
   tl.fromTo(P+"eb",     {autoAlpha:0, x:-34}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.15);
@@ -187,51 +187,51 @@ window.__timelines = window.__timelines || {};
             {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out", stagger:0.11}, 2.20);
 
   /* ---- RANK 03 · CAROLINAS 1984 · 42 mi ---- */
-  tl.fromTo(P+"rk1",   {autoAlpha:0, scale:1.9}, {autoAlpha:1, scale:1, duration:0.32, ease:"power4.in"}, 3.30);
-  tl.fromTo(P+"nm1",   {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.45, ease:"power3.out"}, 3.60);
-  tl.fromTo(P+"sb1",   {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 3.90);
-  tl.fromTo(P+"rail1", {scaleX:0}, {scaleX:1, duration:0.45, ease:"power3.out"}, 4.20);
-  tl.fromTo(P+"rl1",   {autoAlpha:0, y:-14}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 4.45);
-  tl.fromTo(P+"bar1",  {scaleX:0}, {scaleX:1, duration:1.10, ease:"power3.out"}, 4.75);
-  tl.set([P+"n1",P+"u1"], {autoAlpha:1}, 4.75);
-  ctr("g-compare-n1", V1, 42, 4.75, 1.10);
-  tl.fromTo(P+"u1", {y:16}, {y:0, duration:0.4, ease:"power3.out"}, 5.95);
+  tl.fromTo(P+"rk1",   {autoAlpha:0, scale:1.9}, {autoAlpha:1, scale:1, duration:0.32, ease:"power4.in"}, 5.30);
+  tl.fromTo(P+"nm1",   {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.45, ease:"power3.out"}, 5.60);
+  tl.fromTo(P+"sb1",   {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 5.90);
+  tl.fromTo(P+"rail1", {scaleX:0}, {scaleX:1, duration:0.45, ease:"power3.out"}, 6.20);
+  tl.fromTo(P+"rl1",   {autoAlpha:0, y:-14}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 6.45);
+  tl.fromTo(P+"bar1",  {scaleX:0}, {scaleX:1, duration:1.10, ease:"power3.out"}, 6.75);
+  tl.set([P+"n1",P+"u1"], {autoAlpha:1}, 6.75);
+  ctr("g-compare-n1", V1, 42, 6.75, 1.10);
+  tl.fromTo(P+"u1", {y:16}, {y:0, duration:0.4, ease:"power3.out"}, 7.95);
 
   /* ---- RANK 02 · WOODWARD 1947 · 100 mi ---- */
-  tl.fromTo(P+"rk2",   {autoAlpha:0, scale:1.9}, {autoAlpha:1, scale:1, duration:0.32, ease:"power4.in"}, 7.60);
-  tl.fromTo(P+"nm2",   {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.45, ease:"power3.out"}, 7.90);
-  tl.fromTo(P+"sb2",   {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 8.20);
-  tl.fromTo(P+"rail2", {scaleX:0}, {scaleX:1, duration:0.45, ease:"power3.out"}, 8.50);
-  tl.fromTo(P+"rl2",   {autoAlpha:0, y:-14}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 8.75);
-  tl.fromTo(P+"bar2",  {scaleX:0}, {scaleX:1, duration:1.55, ease:"power3.out"}, 9.05);
-  tl.set([P+"n2",P+"u2"], {autoAlpha:1}, 9.05);
-  ctr("g-compare-n2", V2, 100, 9.05, 1.55);
-  tl.fromTo(P+"u2", {y:16}, {y:0, duration:0.4, ease:"power3.out"}, 10.70);
+  tl.fromTo(P+"rk2",   {autoAlpha:0, scale:1.9}, {autoAlpha:1, scale:1, duration:0.32, ease:"power4.in"}, 13.00);
+  tl.fromTo(P+"nm2",   {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.45, ease:"power3.out"}, 13.30);
+  tl.fromTo(P+"sb2",   {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 13.60);
+  tl.fromTo(P+"rail2", {scaleX:0}, {scaleX:1, duration:0.45, ease:"power3.out"}, 13.90);
+  tl.fromTo(P+"rl2",   {autoAlpha:0, y:-14}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 14.15);
+  tl.fromTo(P+"bar2",  {scaleX:0}, {scaleX:1, duration:1.55, ease:"power3.out"}, 14.45);
+  tl.set([P+"n2",P+"u2"], {autoAlpha:1}, 14.45);
+  ctr("g-compare-n2", V2, 100, 14.45, 1.55);
+  tl.fromTo(P+"u2", {y:16}, {y:0, duration:0.4, ease:"power3.out"}, 16.10);
 
   /* ---- RANK 01 · TRI-STATE 1925 · 151 mi ---- */
-  tl.fromTo(P+"rk3",   {autoAlpha:0, scale:1.9}, {autoAlpha:1, scale:1, duration:0.32, ease:"power4.in"}, 12.60);
-  tl.fromTo(P+"nm3",   {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.45, ease:"power3.out"}, 12.90);
-  tl.fromTo(P+"sb3",   {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 13.25);
-  tl.fromTo(P+"rail3", {scaleX:0}, {scaleX:1, duration:0.45, ease:"power3.out"}, 13.55);
-  tl.fromTo(P+"rl3",   {autoAlpha:0, y:-14}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 13.80);
-  tl.fromTo(P+"bar3",  {scaleX:0}, {scaleX:1, duration:2.30, ease:"power3.out"}, 14.10);
-  tl.set([P+"n3",P+"u3"], {autoAlpha:1}, 14.10);
-  ctr("g-compare-n3", V3, 151, 14.10, 2.30);
-  tl.fromTo(P+"u3", {y:16}, {y:0, duration:0.4, ease:"power3.out"}, 16.55);
+  tl.fromTo(P+"rk3",   {autoAlpha:0, scale:1.9}, {autoAlpha:1, scale:1, duration:0.32, ease:"power4.in"}, 19.40);
+  tl.fromTo(P+"nm3",   {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.45, ease:"power3.out"}, 19.70);
+  tl.fromTo(P+"sb3",   {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 20.00);
+  tl.fromTo(P+"rail3", {scaleX:0}, {scaleX:1, duration:0.45, ease:"power3.out"}, 20.30);
+  tl.fromTo(P+"rl3",   {autoAlpha:0, y:-14}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 20.55);
+  tl.fromTo(P+"bar3",  {scaleX:0}, {scaleX:1, duration:2.30, ease:"power3.out"}, 20.85);
+  tl.set([P+"n3",P+"u3"], {autoAlpha:1}, 20.85);
+  ctr("g-compare-n3", V3, 151, 20.85, 2.30);
+  tl.fromTo(P+"u3", {y:16}, {y:0, duration:0.4, ease:"power3.out"}, 23.35);
 
   /* the record stamp lands on the winner, then the bar breathes */
-  tl.fromTo(P+"badge", {autoAlpha:0, scale:1.7}, {autoAlpha:1, scale:1, duration:0.34, ease:"power4.in"}, 17.30);
+  tl.fromTo(P+"badge", {autoAlpha:0, scale:1.7}, {autoAlpha:1, scale:1, duration:0.34, ease:"power4.in"}, 24.00);
   tl.fromTo(P+"pulse3", {autoAlpha:0, scaleY:1}, {autoAlpha:0.85, scaleY:1.28, duration:0.85,
-            ease:"sine.inOut", yoyo:true, repeat:3}, 18.10);
-  tl.to(P+"n3", {scale:1.14, duration:0.55, ease:"power3.out", yoyo:true, repeat:3}, 19.20);
+            ease:"sine.inOut", yoyo:true, repeat:3}, 24.60);
+  tl.to(P+"n3", {scale:1.14, duration:0.55, ease:"power3.out", yoyo:true, repeat:3}, 25.60);
 
   /* close */
-  tl.fromTo(P+"kicker", {autoAlpha:0, scale:1.22}, {autoAlpha:1, scale:1, duration:0.42, ease:"power4.in"}, 21.00);
-  tl.fromTo(P+"foot",   {autoAlpha:0, y:22}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 22.20);
-  tl.fromTo(P+"src",    {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 23.10);
+  tl.fromTo(P+"kicker", {autoAlpha:0, scale:1.22}, {autoAlpha:1, scale:1, duration:0.42, ease:"power4.in"}, 30.40);
+  tl.fromTo(P+"foot",   {autoAlpha:0, y:22}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 31.30);
+  tl.fromTo(P+"src",    {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 31.90);
   /* closing pulse ends ON — the record bar is still glowing on the last frame */
-  tl.to(P+"pulse3", {autoAlpha:0.9, scaleY:1.22, duration:0.65, ease:"sine.inOut", yoyo:true, repeat:2}, 24.00);
-  tl.to(P+"kicker", {scale:1.05, duration:0.6, ease:"power3.out", yoyo:true, repeat:1}, 24.60);
+  tl.to(P+"pulse3", {autoAlpha:0.9, scaleY:1.22, duration:0.65, ease:"sine.inOut", yoyo:true, repeat:2}, 33.00);
+  tl.to(P+"kicker", {scale:1.05, duration:0.6, ease:"power3.out", yoyo:true, repeat:1}, 33.60);
 
   window.__timelines["g-compare"] = tl;
 })();

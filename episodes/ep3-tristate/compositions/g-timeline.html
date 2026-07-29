@@ -253,7 +253,7 @@ window.__timelines = window.__timelines || {};
 (function() {
   const tl = gsap.timeline({ paused: true });
   tl.set("#g-timeline-cnum", {autoAlpha:0}, 0);
-  tl.to("#g-timeline-cnum", {autoAlpha:1, duration:0.25}, 19.05);
+  tl.to("#g-timeline-cnum", {autoAlpha:1, duration:0.25}, 22.60);
   const P = "#g-timeline-";
   const LEAD = { v: 0 };
   function leadUpd() { const e = document.getElementById("g-timeline-cnum"); if (e) e.textContent = Math.round(LEAD.v); }
@@ -277,20 +277,20 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"scwrap", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 1.65);
 
   /* ---- the continuous axis: draws across almost the whole window ---- */
-  tl.to(P+"axis", {strokeDashoffset:0, duration:29.20, ease:"none"}, 0.80);
+  tl.to(P+"axis", {strokeDashoffset:0, duration:38.00, ease:"none"}, 0.80);
   tl.fromTo(P+"head", {attr:{r:0}}, {attr:{r:16}, duration:0.40, ease:"power4.in"}, 0.80);
   tl.fromTo(P+"hring", {autoAlpha:0}, {autoAlpha:0.45, duration:0.40}, 0.80);
 
   /* head rides the axis, arriving on each milestone as it fires */
-  const SEG = [[0.80,2.20,190],[3.00,4.00,500],[7.00,5.50,810],[12.50,4.00,1120],
-               [16.50,4.00,1430],[20.50,4.00,1740],[24.50,5.50,1810]];
+  const SEG = [[0.80,3.20,190],[4.00,4.80,500],[9.20,7.80,810],[17.40,5.00,1120],
+               [22.80,1.40,1430],[24.40,1.20,1740],[25.80,12.00,1810]];
   SEG.forEach(function(s) {
     tl.to(P+"head",  {attr:{cx:s[2]}, duration:s[1], ease:"none"}, s[0]);
     tl.to(P+"hring", {attr:{cx:s[2]}, duration:s[1], ease:"none"}, s[0]);
   });
 
   /* ---- six milestones ---- */
-  const MS = [{i:0,t:3.00},{i:1,t:7.00},{i:2,t:12.50},{i:3,t:16.50},{i:4,t:20.50},{i:5,t:24.50}];
+  const MS = [{i:0,t:4.00},{i:1,t:9.20},{i:2,t:17.40},{i:3,t:22.80},{i:4,t:24.40},{i:5,t:25.80}];
   MS.forEach(function(m) {
     const i = m.i, t = m.t;
     tl.to(P+"n"+i, {attr:{r:11}, duration:0.30, ease:"power4.in"}, t);
@@ -303,22 +303,22 @@ window.__timelines = window.__timelines || {};
   });
 
   /* 1948 — the portrait */
-  tl.to(P+"pc", {strokeDashoffset:0, duration:0.45, ease:"power3.out"}, 8.60);
-  tl.fromTo(P+"photo", {autoAlpha:0, y:-28, scale:0.90}, {autoAlpha:1, y:0, scale:1, duration:0.70, ease:"power3.out"}, 8.80);
-  tl.fromTo(P+"cap1", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 9.50);
-  tl.fromTo(P+"cap2", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 9.80);
+  tl.to(P+"pc", {strokeDashoffset:0, duration:0.45, ease:"power3.out"}, 9.40);
+  tl.fromTo(P+"photo", {autoAlpha:0, y:-28, scale:0.90}, {autoAlpha:1, y:0, scale:1, duration:0.70, ease:"power3.out"}, 9.60);
+  tl.fromTo(P+"cap1", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 10.30);
+  tl.fromTo(P+"cap2", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 10.60);
 
   /* 1970s — the doppler scope, sweeping continuously */
-  tl.fromTo(P+"radar", {autoAlpha:0, scale:0.78}, {autoAlpha:1, scale:1, duration:0.60, ease:"power3.out"}, 17.90);
-  tl.to(P+"sweep", {rotation:1080, svgOrigin:"1120 340", duration:14.50, ease:"none"}, 18.20);
-  tl.to(P+"rc", {strokeDashoffset:0, duration:0.45, ease:"power3.out"}, 18.50);
-  tl.fromTo(P+"rlab", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 18.80);
-  tl.to(LEAD, {v:3, duration:0.70, ease:"power3.out", onUpdate:leadUpd}, 19.30);
-  tl.to(P+"barfill", {scaleX:0.20, duration:0.70, ease:"power3.out"}, 19.30);
+  tl.fromTo(P+"radar", {autoAlpha:0, scale:0.78}, {autoAlpha:1, scale:1, duration:0.60, ease:"power3.out"}, 22.60);
+  tl.to(P+"sweep", {rotation:1080, svgOrigin:"1120 340", duration:14.50, ease:"none"}, 22.80);
+  tl.to(P+"rc", {strokeDashoffset:0, duration:0.45, ease:"power3.out"}, 22.90);
+  tl.fromTo(P+"rlab", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 23.10);
+  tl.to(LEAD, {v:3, duration:0.70, ease:"power3.out", onUpdate:leadUpd}, 22.90);
+  tl.to(P+"barfill", {scaleX:0.20, duration:0.70, ease:"power3.out"}, 22.90);
 
   /* 1990s — the network */
-  tl.to(LEAD, {v:6, duration:0.70, ease:"power3.out", onUpdate:leadUpd}, 22.10);
-  tl.to(P+"barfill", {scaleX:0.42, duration:0.70, ease:"power3.out"}, 22.10);
+  tl.to(LEAD, {v:6, duration:0.70, ease:"power3.out", onUpdate:leadUpd}, 24.40);
+  tl.to(P+"barfill", {scaleX:0.42, duration:0.70, ease:"power3.out"}, 24.40);
 
   /* today — the alert in your pocket */
   tl.fromTo(P+"phone", {autoAlpha:0, scale:0.80}, {autoAlpha:1, scale:1, duration:0.60, ease:"power3.out"}, 25.90);
@@ -331,16 +331,16 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"flab", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 27.90);
 
   /* ---- the contrast close ---- */
-  tl.to(P+"cdiv", {autoAlpha:1, scaleX:1, duration:0.70, ease:"power3.out"}, 28.70);
-  tl.fromTo(P+"s1925", {scale:2.2, autoAlpha:0}, {scale:1, autoAlpha:1, duration:0.35, ease:"power4.in"}, 29.20);
-  tl.fromTo(P+"ct1", {autoAlpha:0, x:-26}, {autoAlpha:1, x:0, duration:0.50, ease:"power3.out"}, 29.70);
-  tl.to(P+"arw", {autoAlpha:1, scaleX:1, duration:0.50, ease:"power3.out"}, 30.30);
-  tl.fromTo(P+"ahd", {autoAlpha:0, x:-22}, {autoAlpha:1, x:0, duration:0.40, ease:"power3.out"}, 30.60);
-  tl.fromTo(P+"stoday", {scale:2.2, autoAlpha:0}, {scale:1, autoAlpha:1, duration:0.35, ease:"power4.in"}, 31.00);
-  tl.fromTo(P+"ct2", {autoAlpha:0, x:-26}, {autoAlpha:1, x:0, duration:0.50, ease:"power3.out"}, 31.50);
-  tl.fromTo(P+"kick", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 32.10);
-  tl.to(P+"head", {attr:{r:30}, duration:0.55, yoyo:true, repeat:2, ease:"sine.inOut"}, 32.60);
-  tl.to([P+"n0",P+"n1",P+"n2",P+"n3",P+"n4",P+"n5"], {attr:{r:14}, duration:0.80, ease:"power3.out"}, 33.10);
+  tl.to(P+"cdiv", {autoAlpha:1, scaleX:1, duration:0.70, ease:"power3.out"}, 28.90);
+  tl.fromTo(P+"s1925", {scale:2.2, autoAlpha:0}, {scale:1, autoAlpha:1, duration:0.35, ease:"power4.in"}, 29.40);
+  tl.fromTo(P+"ct1", {autoAlpha:0, x:-26}, {autoAlpha:1, x:0, duration:0.50, ease:"power3.out"}, 30.00);
+  tl.to(P+"arw", {autoAlpha:1, scaleX:1, duration:0.50, ease:"power3.out"}, 34.40);
+  tl.fromTo(P+"ahd", {autoAlpha:0, x:-22}, {autoAlpha:1, x:0, duration:0.40, ease:"power3.out"}, 34.80);
+  tl.fromTo(P+"stoday", {scale:2.2, autoAlpha:0}, {scale:1, autoAlpha:1, duration:0.35, ease:"power4.in"}, 35.30);
+  tl.fromTo(P+"ct2", {autoAlpha:0, x:-26}, {autoAlpha:1, x:0, duration:0.50, ease:"power3.out"}, 35.90);
+  tl.fromTo(P+"kick", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 37.20);
+  tl.to(P+"head", {attr:{r:30}, duration:0.55, yoyo:true, repeat:2, ease:"sine.inOut"}, 38.00);
+  tl.to([P+"n0",P+"n1",P+"n2",P+"n3",P+"n4",P+"n5"], {attr:{r:14}, duration:0.80, ease:"power3.out"}, 38.70);
 
   window.__timelines["g-timeline"] = tl;
 })();
