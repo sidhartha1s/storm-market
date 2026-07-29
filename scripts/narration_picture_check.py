@@ -3,21 +3,22 @@
 The class of defect this exists for: a6-s3b narrated "In March of 2025" over 1925
 wreckage photographs for 27 seconds. Nothing caught it — the owner did.
 
-Two deterministic checks, both anchored on word-level timings from
-audio/<segment>.words.json, so a claim is tested against whatever is actually on
-screen at the instant it is spoken:
+One deterministic check, anchored on word-level timings from audio/<segment>.words.json,
+so a claim is tested against whatever is actually on screen at the instant it is spoken:
 
   ERA   a modern year (>= 1990) spoken while an archival asset is on screen.
         media/photos, media/newspapers and media/film are all 1925 material.
         media/stock is era-neutral (weather), media/ai is a labelled recreation,
         and a composition is a designed card — none of those can contradict a date.
 
-  PLACE a town named in the narration while a photograph of a DIFFERENT town is
-        on screen. Reported as a warning, not a failure: a wide shot under a
-        sentence about the next town along the track is an editorial call, and
-        only the editor can settle it.
+Exit 1 on any finding.
 
-Exit 1 on any ERA finding.
+A place check used to live here too — town spoken vs town in the filename — and it was
+removed under the keep-code-headache-low rule. It needed a growing stoplist of words that
+are not towns ("Where", "Morning", "Building", "County", "School") and still printed
+thirteen false positives against three real ones. Whether a photograph of the next town
+along the track belongs under this sentence is an editorial judgement; it belongs in the
+per-segment read, not in a regex.
 """
 import json
 import re
