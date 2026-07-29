@@ -6,10 +6,11 @@ Target: 10 pages · draft 1, 2026-07-29
 
 ## The event
 
-At 5.17 in the afternoon of 22 May 2011, the sirens sounded in Joplin, Missouri. Twenty minutes later
-the city had lost a hundred and sixty-one people and about a third of its built area.
-«CITE: NWS Central Region Service Assessment, *Joplin, Missouri, Tornado — May 22, 2011*: fatality
-count, timings, and the survey's conclusions.»
+The sirens sounded in Joplin, Missouri at **5:11** on the afternoon of 22 May 2011. The tornado warning
+followed at **5:17**. The tornado touched down at **5:34** and the city lost, by the count in the federal
+assessment, **158 people directly and four more indirectly** — along with about a third of its built
+area.
+«SRC: NWS Central Region, *Service Assessment: Joplin, Missouri, Tornado — May 22, 2011* — timeline: initial 3-minute siren alert **5:11 pm CDT**; WFO Springfield tornado warning polygon #31 issued **5:17 pm**; initial touchdown **5:34 pm**; **second** 3-minute siren alert **5:38 pm**. As of the report date, **158 direct and 4 indirect fatalities**. Findings: the perceived frequency of siren activation "led the majority of survey participants to become desensitized or complacent to this method of warning"; and Finding #2d — "the majority of surveyed Joplin residents did not take protective action until receiving and processing additional, credible confirmation of the threat and its magnitude from a non-routine trigger", achieved by seeing the tornado, hearing on-air instruction to take cover, or hearing the second siren. Joplin Globe preliminary analysis of fatality location: **54% in residences, 32% in non-residential buildings, 14% in vehicles or outdoors**. https://www.weather.gov/media/publications/assessments/Joplin_tornado.pdf · retrieved 2026-07-29»
 
 The service assessment written afterwards found something more useful than the meteorology, and it is
 the reason this playbook opens here rather than with a bigger tornado. The warning worked. The lead
@@ -21,9 +22,10 @@ independent confirmation that the thing was real and was coming for them specifi
 named this behaviour, and it named the reason for it: a population that had heard many sirens for storms
 that did nothing had learned, entirely rationally, to treat a siren as an invitation to look rather than
 an instruction to move.
-«CITE: the assessment's specific findings on confirmation-seeking behaviour and siren desensitisation.»
+«SRC: NWS Central Region, *Service Assessment: Joplin, Missouri, Tornado — May 22, 2011* — timeline: initial 3-minute siren alert **5:11 pm CDT**; WFO Springfield tornado warning polygon #31 issued **5:17 pm**; initial touchdown **5:34 pm**; **second** 3-minute siren alert **5:38 pm**. As of the report date, **158 direct and 4 indirect fatalities**. Findings: the perceived frequency of siren activation "led the majority of survey participants to become desensitized or complacent to this method of warning"; and Finding #2d — "the majority of surveyed Joplin residents did not take protective action until receiving and processing additional, credible confirmation of the threat and its magnitude from a non-routine trigger", achieved by seeing the tornado, hearing on-air instruction to take cover, or hearing the second siren. Joplin Globe preliminary analysis of fatality location: **54% in residences, 32% in non-residential buildings, 14% in vehicles or outdoors**. https://www.weather.gov/media/publications/assessments/Joplin_tornado.pdf · retrieved 2026-07-29»
 
-Twenty minutes is enough time. It was not enough time to spend most of it confirming.
+Seventeen minutes from warning to touchdown is enough time. It was not enough time to spend most of
+it looking for a second opinion.
 
 That is the finding this book is built on, and it is why Protection 95 — the trigger plan, written down
 in advance, that commits you to acting on the first alert rather than the third — is the highest-leverage
@@ -112,7 +114,8 @@ or a public building this evening, change them.
 **On a warning** — a tornado is occurring or imminent in your area. **Go. Now. Do not look.**
 
 There is no version of this where confirming first is the better play. The whole content of the Joplin
-finding is that the confirmation step is where the twenty minutes went. Take the helmets, take the
+finding is that the confirmation step is where the seventeen minutes between the warning and the
+touchdown went. Take the helmets, take the
 phones, take the animals, get in the room, close the door, get low, cover your head, and stay there
 until the warning is cancelled — not until it goes quiet, because the quiet is frequently the middle.
 

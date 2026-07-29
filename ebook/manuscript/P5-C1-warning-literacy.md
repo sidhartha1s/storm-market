@@ -286,8 +286,7 @@ People do not act on warnings. They seek to verify them — the window, a relati
 neighbours — and verification consumes exactly the time the warning bought. This was among the
 findings of the National Weather Service assessment of the Joplin tornado, and it is not a failure of
 character. It is what a lifetime of warnings that came to nothing trains you to do.
-«CITE: NWS Service Assessment, Joplin tornado, 22 May 2011 — warning response and confirmation-seeking
-behaviour.»
+«SRC: NWS Central Region, *Service Assessment: Joplin, Missouri, Tornado — May 22, 2011* — timeline: initial 3-minute siren alert **5:11 pm CDT**; WFO Springfield tornado warning polygon #31 issued **5:17 pm**; initial touchdown **5:34 pm**; **second** 3-minute siren alert **5:38 pm**. As of the report date, **158 direct and 4 indirect fatalities**. Findings: the perceived frequency of siren activation "led the majority of survey participants to become desensitized or complacent to this method of warning"; and Finding #2d — "the majority of surveyed Joplin residents did not take protective action until receiving and processing additional, credible confirmation of the threat and its magnitude from a non-routine trigger", achieved by seeing the tornado, hearing on-air instruction to take cover, or hearing the second siren. Joplin Globe preliminary analysis of fatality location: **54% in residences, 32% in non-residential buildings, 14% in vehicles or outdoors**. https://www.weather.gov/media/publications/assessments/Joplin_tornado.pdf · retrieved 2026-07-29»
 
 You cannot fix this by resolving to be braver. You fix it by **moving the decision to a moment when
 nobody is frightened**, writing it down, and agreeing it out loud with the household. A trigger plan is

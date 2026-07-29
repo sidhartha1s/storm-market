@@ -87,12 +87,14 @@ happens, we ___, without further discussion.* Then say it out loud to whoever is
 95)*
 
 That last one is the most important thing in this book. It is on this page because of what happened in
-Joplin, Missouri on 22 May 2011, when a city with a working warning and better-than-average lead time lost a
-hundred and sixty-one people — and the official assessment afterwards found that the dominant behaviour was
-not disbelief or panic but **looking for a second opinion.** Going to a window. Calling somebody. Checking a
-screen.
+Joplin, Missouri on 22 May 2011. The sirens sounded at 5:11 in the afternoon. The tornado warning was
+issued at 5:17. The tornado touched down at 5:34. The federal service assessment counted 158 people
+killed directly and four more indirectly — and it found that the dominant behaviour was not disbelief or
+panic but **looking for a second opinion.** Going to a window. Calling somebody. Checking a screen. The
+assessment's own words: most residents "did not take protective action until receiving and processing
+additional, credible confirmation of the threat."
 
-Twenty minutes was enough time. It was not enough time to spend most of it confirming.
+Seventeen minutes was enough time. It was not enough time to spend most of it confirming.
 
 A written trigger is the only reliable defence against that, and it costs one sentence.
 
