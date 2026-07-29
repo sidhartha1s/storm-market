@@ -13,7 +13,13 @@ makes it a gate instead of a sentence, because the failure costs 10 minutes and 
 like an asset problem.
 
 Exits non-zero (and says what to close) if the box is not quiet enough to render.
+
+It also enforces two things that were written as prose rules and therefore forgotten:
+the media budget (media_budget.py) and the version pin. "Remember to run npm view"
+is the same class of instruction as "remember to cap your assets" — which survived
+twelve failed renders precisely because nothing checked it.
 """
+import re
 import subprocess
 import sys
 from pathlib import Path
