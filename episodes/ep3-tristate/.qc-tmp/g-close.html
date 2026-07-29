@@ -37,7 +37,10 @@ window.__timelines = window.__timelines || {};
 (function() {
   const tl = gsap.timeline({ paused: true });
   const P = "#g-close-";
-  tl.fromTo(P+"drift", {y:-120}, {y:120, duration:26.5, ease:"none"}, 0);
+  /* The drift sets the timeline length. At 26.5 it ran 0.6s past the credit fade-out,
+     so the card held on pure black before the host window even ended. It now ends with
+     the fade: 24.3 + 1.6 = 25.9. */
+  tl.fromTo(P+"drift", {y:-120}, {y:120, duration:25.9, ease:"none"}, 0);
   tl.fromTo(P+"l1", {autoAlpha:0, y:22}, {autoAlpha:1, y:0, duration:0.7, ease:"power3.out"}, 0.30);
   tl.fromTo(P+"l2", {autoAlpha:0, y:22}, {autoAlpha:1, y:0, duration:0.7, ease:"power3.out"}, 3.70);
   tl.fromTo(P+"l3", {autoAlpha:0, y:22}, {autoAlpha:1, y:0, duration:0.7, ease:"power3.out"}, 5.30);

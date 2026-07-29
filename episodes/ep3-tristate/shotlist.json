@@ -62,17 +62,17 @@
  {
   "start": 77.47,
   "dur": 8.92,
-  "what": "still DocFile__2_.jpg"
+  "what": "still finley-portrait-01.png"
  },
  {
   "start": 86.39,
   "dur": 5.71,
-  "what": "still Tri_State_Tornado_Drawing.jpg"
+  "what": "still DocFile__2_.jpg"
  },
  {
   "start": 92.1,
   "dur": 7.38,
-  "what": "still DocFile__2_.jpg"
+  "what": "still finley-desk-01.png"
  },
  {
   "start": 99.48,
@@ -82,7 +82,7 @@
  {
   "start": 105.61,
   "dur": 8.22,
-  "what": "still DocFile__2_.jpg"
+  "what": "still finley-portrait-01.png"
  },
  {
   "start": 114.58,
@@ -142,7 +142,7 @@
  {
   "start": 275.1,
   "dur": 2.96,
-  "what": "tail 1925_-_Princeton_-_Heinz_Plant_1_-_IA_PPL.jpg"
+  "what": "tail Annapolis_Business_street.png"
  },
  {
   "start": 278.81,
@@ -152,7 +152,7 @@
  {
   "start": 283.33,
   "dur": 4.52,
-  "what": "still 1925_-_Princeton_-_Heinz_Plant_1_-_IA_PPL.jpg"
+  "what": "still 1925_-_Murphysboro_20_-_Business_District.jpg"
  },
  {
   "start": 287.85,
@@ -187,17 +187,17 @@
  {
   "start": 349.75,
   "dur": 7.49,
-  "what": "still ai-children-school.png"
+  "what": "still ai-schoolroom-coats.png"
  },
  {
   "start": 357.24,
   "dur": 5.2,
-  "what": "still ai-miners-emerging.png"
+  "what": "still ai-miners-entering.png"
  },
  {
   "start": 362.44,
   "dur": 5.0,
-  "what": "still ai-farmhouse-morning.png"
+  "what": "still ai-farmhouse-family.png"
  },
  {
   "start": 367.44,
@@ -237,12 +237,12 @@
  {
   "start": 436.92,
   "dur": 8.76,
-  "what": "still 1925_-_Princeton_-_Heinz_Plant_1_-_IA_PPL.jpg"
+  "what": "still 05-Bollinger_County_Damage.png"
  },
  {
   "start": 445.68,
   "dur": 5.61,
-  "what": "still Annapolis_Business_street.png"
+  "what": "still 1925tornado-p2o-b.jpg"
  },
  {
   "start": 451.29,
@@ -367,7 +367,7 @@
  {
   "start": 664.26,
   "dur": 8.49,
-  "what": "still 03-Leadanna_Damage.png"
+  "what": "still 1925_tornado_damage_7.webp"
  },
  {
   "start": 673.49,
@@ -497,7 +497,7 @@
  {
   "start": 842.5,
   "dur": 7.94,
-  "what": "still 05-Bollinger_County_Damage.png"
+  "what": "still 1925_tornado_damage_7.webp"
  },
  {
   "start": 851.19,
@@ -557,7 +557,7 @@
  {
   "start": 936.76,
   "dur": 6.06,
-  "what": "still 06-Biehle_Damage.png"
+  "what": "still 1925_-_Murphysboro_9_-_General_Damage.jpg"
  },
  {
   "start": 943.56,
@@ -587,7 +587,7 @@
  {
   "start": 977.29,
   "dur": 6.07,
-  "what": "still 06-Biehle_Damage.png"
+  "what": "still 1925_tornado_damage_13.png"
  },
  {
   "start": 984.11,
@@ -652,7 +652,7 @@
  {
   "start": 1088.49,
   "dur": 5.78,
-  "what": "tail 1925_tornado_damage_7.webp"
+  "what": "tail 1925_tornado_damage_13.png"
  },
  {
   "start": 1095.02,
@@ -717,7 +717,7 @@
  {
   "start": 1183.06,
   "dur": 8.4,
-  "what": "still 06-Biehle_Damage.png"
+  "what": "still 1925_-_Griffin_-_More_Damage.jpg"
  },
  {
   "start": 1192.21,
@@ -772,7 +772,7 @@
  {
   "start": 1284.39,
   "dur": 7.84,
-  "what": "tail 1925_-_Griffin_-_More_Damage.jpg"
+  "what": "tail 1925_-_Griffin_-_Residential_Damage_2.jpg"
  },
  {
   "start": 1292.98,
@@ -847,7 +847,7 @@
  {
   "start": 1422.95,
   "dur": 7.7,
-  "what": "still 06-Biehle_Damage_-_Theo_Holschen_Residence.jpg"
+  "what": "still 1925_tornado_damage_4.jpg"
  },
  {
   "start": 1431.4,
@@ -957,7 +957,7 @@
  {
   "start": 1563.36,
   "dur": 7.6,
-  "what": "still 09-Gorham_Boxcars.png"
+  "what": "still 1925_tornado_damage_4.jpg"
  },
  {
   "start": 1571.72,
@@ -977,7 +977,7 @@
  {
   "start": 1590.83,
   "dur": 5.32,
-  "what": "still 13-Murphysboro_Aerial.png"
+  "what": "still 1925_tornado_damage_2.webp"
  },
  {
   "start": 1596.91,
@@ -987,7 +987,7 @@
  {
   "start": 1602.63,
   "dur": 5.72,
-  "what": "still 1925_tornado_damage_4.jpg"
+  "what": "still 1925_tornado_damage_8.webp"
  },
  {
   "start": 1608.35,
@@ -1012,7 +1012,7 @@
  {
   "start": 1633.08,
   "dur": 5.68,
-  "what": "still 1925_tornado_damage_2.webp"
+  "what": "still 23-Royalton-Colp_Road_Bridge.png"
  },
  {
   "start": 1639.5,
@@ -1082,7 +1082,7 @@
  {
   "start": 1903.26,
   "dur": 4.84,
-  "what": "tail 13-Murphysboro_Aerial.png"
+  "what": "tail 1925_-_Princeton_-_Homes_in_Baldwin_Heights_Area_-_IA_PPL.jpg"
  },
  {
   "start": 1908.85,
@@ -1092,12 +1092,12 @@
  {
   "start": 1930.85,
   "dur": 7.92,
-  "what": "tail 16-Murphysboro_SW_of_Logan_School.png"
+  "what": "tail 1925_-_Murphysboro_29_-_North_9th_Street_Park.jpg"
  },
  {
   "start": 1938.77,
   "dur": 5.08,
-  "what": "tail 1925_-_Murphysboro_29_-_North_9th_Street_Park.jpg"
+  "what": "tail 1925_-_Princeton_-_Homes_in_Baldwin_Heights_Area_-_IA_PPL.jpg"
  },
  {
   "start": 1944.6,
@@ -1106,33 +1106,33 @@
  },
  {
   "start": 1972.83,
-  "dur": 7.69,
+  "dur": 6.0,
   "what": "stock stock-windgrass-01.mp4"
  },
  {
-  "start": 1980.52,
-  "dur": 4.93,
-  "what": "stock stock-rainfield-02.mp4"
- },
- {
-  "start": 1985.45,
-  "dur": 6.37,
+  "start": 1978.83,
+  "dur": 5.5,
   "what": "stock stock-cloudsrolling-03.mp4"
  },
  {
-  "start": 1991.82,
-  "dur": 5.29,
-  "what": "stock stock-windgrass-02.mp4"
+  "start": 1984.33,
+  "dur": 5.5,
+  "what": "stock stock-rainfield-02.mp4"
  },
  {
-  "start": 1997.11,
-  "dur": 7.09,
-  "what": "still 16-Murphysboro_SW_of_Logan_School.png"
+  "start": 1989.83,
+  "dur": 7.99,
+  "what": "still ai-memorial-2025.png"
+ },
+ {
+  "start": 1997.82,
+  "dur": 6.4,
+  "what": "stock stock-windgrass-02.mp4"
  },
  {
   "start": 2004.96,
   "dur": 8.89,
-  "what": "still 18-Murphysboro_Fire_Colorized.png"
+  "what": "still 13-Murphysboro_Aerial.png"
  },
  {
   "start": 2013.85,
@@ -1152,7 +1152,7 @@
  {
   "start": 2033.01,
   "dur": 8.19,
-  "what": "still 19-De_Soto_Destruction.png"
+  "what": "still 13-Murphysboro_Aerial.png"
  },
  {
   "start": 2041.95,
@@ -1162,7 +1162,7 @@
  {
   "start": 2051.41,
   "dur": 6.06,
-  "what": "still 19-De_Soto_Destruction.png"
+  "what": "still 1925_-_Princeton_-_Homes_in_Baldwin_Heights_Area_-_IA_PPL.jpg"
  },
  {
   "start": 2057.47,
@@ -1172,11 +1172,11 @@
  {
   "start": 2065.3,
   "dur": 6.5,
-  "what": "still 1925_-_Princeton_-_Homes_in_Baldwin_Heights_Area_-_IA_PPL.jpg"
+  "what": "still 1925_-_Griffin_-_Griffin_School_1.jpg"
  },
  {
   "start": 2072.56,
-  "dur": 26.5,
+  "dur": 25.9,
   "what": "GRAPHIC g-close"
  }
 ]
