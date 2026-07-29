@@ -429,6 +429,9 @@ def lone():
           f'<div class="rdglab">CONTINUOUSLY ALOFT</div></div>'
           f'<div class="foot" id="{cid}-ft">Among the longest-lived supercells ever documented</div>')
 
+    # a slow push on the plate, so the map itself is never a frozen photograph
+    j += (f'  tl.fromTo(P+"plate", {{scale:1.0}}, {{scale:1.06, duration:{D:.1f}, '
+          f'ease:"none", transformOrigin:"46% 78%"}}, 0);\n')
     j += f'  const MI = {{v:0}}, HR = {{v:0}};\n'
     j += (f'  function miUpd(){{ const e=document.getElementById("{cid}-mi");'
           f' if(e) e.textContent = Math.round(MI.v); }}\n')
