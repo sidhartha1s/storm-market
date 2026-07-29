@@ -175,7 +175,8 @@ nothing gets missed. After the sweep, the same grep returning only intentional s
 - **F1**: "one more finley" at segment end — if no third Finley portrait exists, choose reuse
   (needs data-callback) vs ending on tornado image. Executor picks, reports which.
 - **F2**: 8:53 "12 poles" — will verify; if unverifiable, stat deleted (not softened).
-- **F3**: 23:19 duplicate man — will name him from provenance and report what replaced him.
+- **F3**: 23:19 man — RESOLVED by owner + SRT check: not in narration, remove both uses entirely;
+  executor names him from provenance and reports the replacement fill.
 - **F4**: freeze at 6:17/6:32 real but explicitly not fixed this round (owner's call) — logged, not touched.
 - **F5**: nothing new lands on main beyond: this plan file, the QC edits above, owed A + B,
   LEARNINGS append. If execution reveals a needed extra (e.g. a missing asset), STOP and ask.
