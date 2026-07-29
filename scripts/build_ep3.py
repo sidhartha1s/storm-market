@@ -78,7 +78,11 @@ SHOTS = {
         R+"finley-desk-01.png", P+"Tri_State_Tornado_Drawing.jpg",
         R+"finley-portrait-01.png"], fit="contain"),
  "a1-s2":  dict(kind="graphic", id="g-forecast"),
- "a1-s2c": dict(kind="graphic", id="g-sources"),
+ # right-side panel over archival b-roll (owner 2026-07-29, the ep2 7:37 treatment) instead
+ # of a sparse full-frame card with too much empty space
+ "a1-s2c": dict(kind="panel", id="g-sources", assets=[P+"1925_-_Murphysboro_22_-_Aerial_View(1).jpg",
+        P+"13-Murphysboro_Aerial.png", P+"1925_-_De_Soto_-_Birds_Eye_View.jpg",
+        P+"X_West_Frankfort2_-_Aerial_View_West_Side_of_Town.jpg"]),
  "a1-s2b": dict(era="pre", kind="stills", assets=[P+"11-Murphysboro_Pre-Tornado_1.png", P+"12-Murphysboro_Pre-Tornado_2.png",
         P+"Annapolis_Business_street.png", P+"1925_-_Murphysboro_20_-_Business_District.jpg",
         P+"1925_-_Murphysboro_11_-_Residential_District.jpg", P+"1925_-_Murphysboro_1_-_Corner_of_17th___Walnut.jpg",
