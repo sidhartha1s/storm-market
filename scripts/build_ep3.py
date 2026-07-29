@@ -435,8 +435,11 @@ def main():
             if leftover > 1.2:      # never park on a finished graphic, and never on nothing
                 pool = plan.get("tail") or TAIL[sid.split("-")[0]]
                 ct2 = round(seg_start + gw, 2)
-                for a, w in chunk(leftover, pool, maxw=min(MAX_STILL, MAX_FILM)
-                                  if any(is_video(x) for x in pool) else MAX_STILL):
+                vids = [x for x in pool if is_video(x)]
+                # a footage tail is capped by its own shortest clip, or hyperframes fails the
+                # window on frame coverage
+                tmax = min([MAX_FILM] + [vdur(x) for x in vids]) if vids else MAX_STILL
+                for a, w in chunk(leftover, pool, maxw=tmax):
                     w = round(w, 2)
                     eid = f"t{idx}"
                     reuse[a] = reuse.get(a, 0) + 1
