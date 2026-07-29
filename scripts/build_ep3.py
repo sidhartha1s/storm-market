@@ -82,8 +82,8 @@ SHOTS = {
         S+"stock-lightning-01.mp4", S+"stock-cloudsomen-01.mp4"]),
  "a1-s4d": dict(kind="panel", id="g-panel-lone", assets=[S+"stock-cloudsrolling-01.mp4",
         S+"stock-tornado-01.mp4", S+"stock-cloudsrolling-02.mp4"], stockbed=True),
- "a1-s5":  dict(kind="stills", assets=[A+"ai-farmhouse-morning.png", A+"ai-children-school.png",
-        P+"1925_-_Murphysboro_2_-_Murphysboro_Township_High_School.jpg", P+"20-De_Soto_School_1910.png"],
+ "a1-s5":  dict(kind="stills", assets=[A+"ai-children-school.png", P+"26-West_Frankfort_Coal_Cars.png",
+        A+"ai-farmhouse-morning.png", P+"20-De_Soto_School_1910.png"],
         chip="Recreation"),
  "a2-s1":  dict(kind="graphic", id="g-track-1"),
  "a2-s1c": dict(kind="stills", assets=[P+"02-Annapolis_Destruction.png", P+"03-Leadanna_Damage.png",
@@ -101,9 +101,9 @@ SHOTS = {
         P+"1925_tornado_damage_9.webp", P+"1925_tornado_damage_6.webp", S+"stock-cloudsomen-01.mp4"]),
  "a3-s1":  dict(kind="stills", assets=[P+"1925_-_Gorham_-_Main_St.jpg", P+"1925_-_Gorham_-_Missouri_Pacific_Railway.jpg",
         P+"09-Gorham_Boxcars.png", P+"1925_-_Gorham_-_Post_Office_Area.jpg", P+"1925_tornado_damage_3.webp",
-        P+"Tri-State_Tornado_JCHS15.jpg"], lower="gorham"),
+        P+"Tri-State_Tornado_JCHS15.jpg"], lower="gorham", quote="gorham"),
  "a3-s1b": dict(kind="panel", id="g-panel-gorham", assets=[P+"1925_-_Gorham_-_Post_Office_Area.jpg",
-        P+"09-Gorham_Boxcars.png", P+"1925_tornado_damage_7.webp"], quote="gorham"),
+        P+"09-Gorham_Boxcars.png", P+"1925_tornado_damage_7.webp"]),
  "a3-s2":  dict(kind="mixed", assets=[(F+"mvtn-murphysboro-house-7s.mp4","film",6.0),
         (P+"1925_-_Murphysboro_4_-_M_O_Railroad_Shops.jpg","still",4.6),
         (P+"1925_-_Murphysboro_3_-_14th_St_at_Gartside.jpg","still",4.6),
@@ -115,9 +115,12 @@ SHOTS = {
  "a3-s3":  dict(kind="stills", assets=[P+"Tri-State_State_Tornado_Damage_Longfellow_School_2.jpg",
         P+"1925_-_Murphysboro_17_-_Longfellow_School.jpg", P+"1925_-_Murphysboro_6_-_Logan_School.jpg",
         P+"1925_-_Murphysboro_10_-_Homes_Destroyed.jpg"]),
- "a3-s3b": dict(kind="papers", assets=[P+"1925_-_Murphysboro_9_-_General_Damage.jpg",
-        N+"Chicago_Herald_Examiner_Front_page_1925-03-20.jpg", P+"1925_-_Murphysboro_20_-_Business_District.jpg",
-        N+"The_Evansville_Press_Front_page_-_1925_tornado_coverage.jpg"], quote="rows"),
+ # the "rows" quote is credited to the St. Louis Post-Dispatch, which we have no front page
+ # for. Showing the Chicago Herald Examiner and Evansville Press mastheads under that credit
+ # reads as the wrong source, so this segment carries damage stills instead.
+ "a3-s3b": dict(kind="stills", assets=[P+"1925_-_Murphysboro_9_-_General_Damage.jpg",
+        P+"1925_-_Murphysboro_20_-_Business_District.jpg", P+"16-Murphysboro_SW_of_Logan_School.png",
+        P+"1925_-_Murphysboro_11_-_Residential_District.jpg"], quote="rows"),
  "a3-s4":  dict(kind="stills", assets=[P+"18-Murphysboro_Fire_Colorized.png", A+"ai-fire-glow-night.png",
         P+"1925_-_Murphysboro_24_-_Blue_Front_Hotel_-_S_17th_St.jpg", P+"1925_-_Murphysboro_21_-_High_School_Aerial.jpg",
         P+"1925_tornado_damage_11.jpg"]),
@@ -189,9 +192,14 @@ SHOTS = {
  "a6-s1":  dict(kind="graphic", id="g-wordban2"),
  "a6-s2":  dict(kind="graphic", id="g-timeline"),
  "a6-s2b": dict(kind="graphic", id="g-family"),
- "a6-s2c": dict(kind="graphic", id="g-remeasure"),
+ # "no destruction means no record" — empty country, not wreckage in the wrong state
+ "a6-s2c": dict(kind="graphic", id="g-remeasure",
+        tail=[S+"stock-windgrass-01.mp4", S+"stock-rainfield-01.mp4", S+"stock-windgrass-02.mp4"]),
  "a6-s2d": dict(kind="graphic", id="g-compare"),
- "a6-s3":  dict(kind="graphic", id="g-fujita"),
+ # the segment ends on a modern event (Kentucky, 2021); the Fujita panel must not still be
+ # on screen for it, so the graphic yields and neutral weather footage carries the payoff
+ "a6-s3":  dict(kind="graphic", id="g-fujita",
+        tail=[S+"stock-cloudsrolling-02.mp4", S+"stock-rainfield-02.mp4", S+"stock-lightning-02.mp4"]),
  "a6-s3c": dict(kind="graphic", id="g-modern"),
  "a6-s3d": dict(kind="graphic", id="g-prep"),
  "a6-s3b": dict(kind="stills", assets=[P+"1925_-_Princeton_-_Princeton_Clarion-News_-_IA_GWC.jpg",
@@ -424,14 +432,24 @@ def main():
                        f'data-duration="{gw:.2f}" data-track-index="2" data-width="1920" data-height="1080"></div>')
             lines_report.append((seg_start, gw, f"GRAPHIC {gid}"))
             leftover = seg_dur - gw
-            if leftover > 2.5:      # never park on a finished graphic
-                pool = TAIL[sid.split("-")[0]]
+            if leftover > 1.2:      # never park on a finished graphic, and never on nothing
+                pool = plan.get("tail") or TAIL[sid.split("-")[0]]
                 ct2 = round(seg_start + gw, 2)
-                for a, w in chunk(leftover, pool):
+                for a, w in chunk(leftover, pool, maxw=min(MAX_STILL, MAX_FILM)
+                                  if any(is_video(x) for x in pool) else MAX_STILL):
                     w = round(w, 2)
                     eid = f"t{idx}"
                     reuse[a] = reuse.get(a, 0) + 1
                     cb = f' data-callback="tail cutaway after {gid} completes"' if reuse[a] > 1 else ""
+                    if is_video(a):     # a tail pool may be footage rather than stills
+                        w = min(w, round(vdur(a), 2))
+                        vis.append(f'  <video id="{eid}" class="clip stockgrade" src="{a}" '
+                                   f'data-start="{ct2:.2f}" data-duration="{w:.2f}" '
+                                   f'data-track-index="1" muted{cb}></video>')
+                        lines_report.append((ct2, w, f"tail {Path(a).name}"))
+                        ct2 = round(ct2 + w, 2)
+                        idx += 1
+                        continue
                     if is_tall(a):      # same letterbox rule as the main visual path
                         vis.append(f'  <section class="clip pfit" id="{eid}" data-start="{ct2:.2f}" '
                                    f'data-duration="{w:.2f}" data-track-index="1"{cb}>'
