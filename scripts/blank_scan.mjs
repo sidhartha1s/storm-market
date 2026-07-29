@@ -30,10 +30,17 @@ for (const f of readdirSync(join(ep, 'compositions')).filter(f => f.endsWith('.h
     if (!k) return { error: 'no timeline' };
     const tl = window.__timelines[k];
     const dur = tl.duration();
-    /* .drift is the background texture — it is present in every frame by construction,
-       so counting it would mask a composition whose actual content is gone. */
+    /* Only CONTENT counts as ink. Decoration is present in every frame by construction,
+       so counting it masks exactly the failure this gate exists to find.
+       .drift is the background texture. The vignette/fade layers in g-lone and
+       g-centennial are full-bleed divs whose transparency lives in an rgba gradient in
+       `background`, not in `opacity` — getComputedStyle reports opacity 1, so each was
+       contributing a full 1920x1080 box (~250x the blank floor) on every single frame and
+       would have reported PASS even if the map and every marker failed to appear.
+       The rule that separates them: real content carries an id or text. */
     const nodes = [...document.querySelectorAll('#root *')].filter(
-      e => !e.classList.contains('drift') && e.id !== 'root');
+      e => !e.classList.contains('drift') && e.id !== 'root'
+           && (e.id || e.textContent.trim()));
     const out = [];
     for (let t = 0; t <= dur; t += step) {
       tl.seek(t, false);
