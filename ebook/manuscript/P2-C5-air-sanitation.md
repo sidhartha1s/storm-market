@@ -54,7 +54,7 @@ retrieved 2026-07-29»
 Combination smoke-and-CO units are acceptable and reduce the number of things to maintain. Ten-year
 sealed-battery units remove the dead-battery failure mode entirely and are worth the premium.
 
-«SRC: CDC, "Carbon Monoxide Poisoning Basics" — the most common symptoms are **headache, dizziness, weakness, upset stomach, vomiting, chest pain and confusion**, often described as "flu-like". Breathing a lot of CO can cause loss of consciousness or death, and **people who are asleep or intoxicated can die before they ever have symptoms**. https://www.cdc.gov/carbon-monoxide/about/index.html · retrieved 2026-07-29»
+«SRC: CDC, "Carbon Monoxide Poisoning Basics" — the most common symptoms are **headache, dizziness, weakness, upset stomach, vomiting, chest pain and confusion**, often described as "flu-like". Breathing a lot of CO can cause loss of consciousness or death, and **people who are asleep or intoxicated can die before they ever have symptoms**. https://www.cdc.gov/carbon-monoxide/about/index.html | retrieved 2026-07-29»
 
 Know the response: alarm sounds, everyone goes outside immediately, then call 911 or the gas utility
 from outside. Do not open windows and wait — you will disperse the evidence and stay in the building.
@@ -155,8 +155,7 @@ https://www.epa.gov/air-research/research-diy-air-cleaners-reduce-wildfire-smoke
 retrieved 2026-07-29»
 «SRC: Illinois Institute of Technology, "Portable Air Cleaner Test Report — Box Fan Filter," March
 2021 — CADR 150.2 cfm (0.09–1 µm), 203.1 cfm (0.5–3 µm), 285.6 cfm (5–11 µm) at fan speed 3 with a
-MERV-12 filter. | https://www.built-envi.com/wp-content/uploads/IIT-CADR-Testing-March-2021-Box-Fan-Filters.pdf
-| retrieved 2026-07-29»
+MERV-12 filter. | https://www.built-envi.com/wp-content/uploads/IIT-CADR-Testing-March-2021-Box-Fan-Filters.pdf | retrieved 2026-07-29»
 
 **Two findings from that research change how you use it, and both are non-obvious.**
 

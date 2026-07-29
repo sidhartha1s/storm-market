@@ -55,8 +55,7 @@ paid on a house the map called low-risk.
 Special Flood Hazard Area) = 686,045, or 25.2 percent; zones A and V = 1,892,368, or 69.5 percent. For
 losses from 2015 onward, 622,677 claims: B/C/X = 177,065, or 28.4 percent; A/V = 442,617, or 71.1
 percent. |
-https://www.fema.gov/api/open/v2/FimaNfipClaims?$inlinecount=allpages&$top=1&$filter=startswith(ratedFloodZone,'X')
-| retrieved 2026-07-29»
+https://www.fema.gov/api/open/v2/FimaNfipClaims?$inlinecount=allpages&$top=1&$filter=startswith(ratedFloodZone,'X') | retrieved 2026-07-29»
 
 ---
 
@@ -64,7 +63,7 @@ https://www.fema.gov/api/open/v2/FimaNfipClaims?$inlinecount=allpages&$top=1&$fi
 
 **Killed in vehicles.** This is the dominant pattern and it holds year after year: the majority of
 flash flood deaths happen to people in cars, driving into water on a road.
-«SRC: NWS, "Turn Around Don't Drown" — 6 inches of fast-moving water knocks over an adult; 12 inches carries away most cars; 2 feet carries away SUVs and trucks. Cites CDC that over half of all flood-related drownings occur when a vehicle is driven into floodwater, with walking into or near floodwater the next largest share. https://www.weather.gov/safety/flood-turn-around-dont-drown · retrieved 2026-07-29»
+«SRC: NWS, "Turn Around Don't Drown" — 6 inches of fast-moving water knocks over an adult; 12 inches carries away most cars; 2 feet carries away SUVs and trucks. Cites CDC that over half of all flood-related drownings occur when a vehicle is driven into floodwater, with walking into or near floodwater the next largest share. https://www.weather.gov/safety/flood-turn-around-dont-drown | retrieved 2026-07-29»
 
 The physics are worth knowing precisely, because "it looked shallow" is the recurring last judgment.
 **Six inches of fast-moving water knocks over an adult. Twelve inches carries away most cars. Two feet
@@ -72,7 +71,7 @@ carries away SUVs and trucks.** And the roadbed under moving water frequently is
 has already scoured it out, so the depth you can see is not the depth you will drop into. Never drive
 around a barrier across a flooded road; the barrier is there because the road may have collapsed under
 the water.
-«SRC: NWS, "Turn Around Don't Drown" — 6 in / 12 in / 2 ft thresholds. https://www.weather.gov/safety/flood-turn-around-dont-drown · retrieved 2026-07-29»
+«SRC: NWS, "Turn Around Don't Drown" — 6 in / 12 in / 2 ft thresholds. https://www.weather.gov/safety/flood-turn-around-dont-drown | retrieved 2026-07-29»
 
 Then the secondary pattern: **at night**, when depth is unreadable, and **in basements and low-lying
 apartments**, where water arrives through the door, the drain and the window well faster than people

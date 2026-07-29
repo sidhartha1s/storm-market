@@ -258,7 +258,7 @@ delay.
 For heat stroke, cool aggressively while help is coming: out of the sun, clothing off, water on the
 skin with air moving over it, ice packs at the neck, armpits, and groin, and if a tub or a body of cool
 water is available, immersion is the most effective method.
-«SRC: Ready.gov, "Extreme Heat" — heat stroke signs: body temperature **above 103°F**; red, hot, dry skin with no sweat; rapid strong pulse; dizziness, confusion or unconsciousness. Response: **call 911 or get the person to hospital immediately**, move to cool shade, remove outer clothing, cold wet cloth or ice packs to **head, neck, armpits and groin**, or soak the clothing with cool water, and elevate the feet. https://www.ready.gov/heat · retrieved 2026-07-29»
+«SRC: Ready.gov, "Extreme Heat" — heat stroke signs: body temperature **above 103°F**; red, hot, dry skin with no sweat; rapid strong pulse; dizziness, confusion or unconsciousness. Response: **call 911 or get the person to hospital immediately**, move to cool shade, remove outer clothing, cold wet cloth or ice packs to **head, neck, armpits and groin**, or soak the clothing with cool water, and elevate the feet. https://www.ready.gov/heat | retrieved 2026-07-29»
 
 Do not give fluids by mouth to anyone with altered mental status.
 

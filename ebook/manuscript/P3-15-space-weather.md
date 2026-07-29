@@ -24,16 +24,55 @@ grid systems may experience complete collapse or blackouts. Transformers may exp
 4 such storm days per 11-year cycle. |
 https://www.swpc.noaa.gov/sites/default/files/images/u33/swx_booklet.pdf | retrieved 2026-07-29»
 
-The reference event for the worst case is older. In September 1859 the Carrington event produced aurora
-visible at tropical latitudes and induced currents strong enough to shock telegraph operators and set
-paper alight in telegraph offices — in a world whose only long-conductor network was the telegraph.
-«CITE: the 1859 Carrington event — the observed effects on telegraph systems and the latitude range of the
-aurora.»
+The reference event for the worst case is older. **The 1859 Carrington event is the largest geomagnetic
+storm in recorded history.** NOAA's account of it: the aurora was bright enough that *people in the
+northeastern United States could read a newspaper by it at night*, it was seen as far south as **Hawaii
+and Central America**, and it *"crippled a large portion of the telegraph system"* — with operators
+reporting **fires started by sparking equipment.** In 1859 the telegraph was essentially the only
+long-conductor network that existed.
 
-And in July 2012 a comparable ejection crossed Earth's orbital path about a week away from where Earth
-had been. It missed.
-«CITE: the July 2012 CME and the analysis of what its terrestrial impact would have been had it been
-Earth-directed.»
+**The reason that matters now is scale, not novelty.** A comparable storm today would find a grid whose
+total length of transmission line above 100 kilovolts has grown roughly **twenty-five-fold in the past
+eighty-five years** — and geomagnetically induced current increases with line length. The National
+Academies' estimate for a Carrington-level storm today, as NOAA reports it, is a cost approaching **$2
+trillion**, with **20 to 40 million Americans at risk of an extended outage** lasting anywhere from
+**sixteen days to one or two years.**
+
+That last range is the honest shape of this hazard: nobody who studies it will give you a single number,
+and the spread between sixteen days and two years is the difference between an inconvenience and a
+different life. This book plans for the low end and tells you the high end exists.
+«SRC: NOAA NESDIS, "What Was the Carrington Event?" and "When Solar Storms Attack: Space Weather and our
+Infrastructure" — the 1859 Carrington event was the largest geomagnetic storm in recorded history; aurora
+bright enough to read a newspaper by in the northeastern US, seen as far south as Hawaii and Central
+America; crippled a large portion of the telegraph system with operators reporting fires from sparking
+equipment; per the National Academies of Sciences a storm of that magnitude today could cost nearly $2
+trillion, with 20–40 million in the US at risk of an extended power outage lasting 16 days to 1–2 years. |
+https://www.nesdis.noaa.gov/news/when-solar-storms-attack-space-weather-and-our-infrastructure | retrieved
+2026-07-29»
+
+**And on 23 July 2012 a comparable ejection tore through Earth's orbit, and Earth was not there.** It hit
+the STEREO-A spacecraft instead — which is the only reason the event is so well characterised, because
+STEREO-A is an instrument built to measure exactly that.
+
+The lead author of the study of it, Daniel Baker, put the margin plainly: *"if the eruption had occurred
+only one week earlier, Earth would have been in the line of fire."* Had it hit, the analysis puts the
+geomagnetic disturbance at a **Dst of about −1200 nanotesla — comparable to the Carrington event and
+roughly twice as severe as the March 1989 Quebec blackout.** For scale, an ordinary storm that produces
+aurora near the Arctic Circle and harms nothing sits around −50.
+
+One published estimate of the probability of a Carrington-class storm striking Earth in any given decade
+is **about 12 per cent**, which the researcher who calculated it called *"a sobering figure."* This book
+reports that number as one estimate rather than a settled fact, because it is a statistical extrapolation
+from a very short record. What is not in dispute is the near miss: an event of that class crossed our orbit
+within living memory, and the only thing that saved us was timing.
+«SRC: NASA Science, "Near Miss: The Solar Superstorm of July 2012" (23 July 2014), reporting D.N. Baker
+et al., "A major solar eruptive event in July 2012," *Space Weather*, December 2013 — a powerful CME tore
+through Earth orbit on 23 July 2012 and struck the STEREO-A spacecraft; Baker: "if the eruption had
+occurred only one week earlier, Earth would have been in the line of fire"; a strike would have registered
+Dst ≈ −1200 nT, comparable to the Carrington event and twice as bad as the March 1989 Quebec blackout;
+ordinary geomagnetic storms register Dst = −50 nT; P. Riley's estimate of a ~12% chance of a
+Carrington-class storm in a decade. |
+https://science.nasa.gov/science-research/planetary-science/23jul_superstorm/ | retrieved 2026-07-29»
 
 This playbook has to do two things at once, and the second is more important than the first. It has to
 explain a real hazard with a real historical record. And it has to keep that hazard in proportion, because
@@ -52,12 +91,50 @@ population. Airline crews and passengers on high-latitude polar routes receive m
 doses during major events, and airlines reroute for exactly that reason, and astronauts are at genuine
 risk. Nobody on the ground is.
 
-**The harm is entirely infrastructural, and it is real.** Geomagnetically induced currents flow in long
-conductors — high-voltage transmission lines, pipelines, railway signalling — and in transformers those
-currents cause saturation, heating and, in severe cases, permanent damage. That is the concerning failure
-mode: large transformers are custom-built, have long lead times, and there is no warehouse of spares.
-«CITE: a government or industry assessment (FERC, NERC, or a National Academies report) on
-geomagnetically induced currents and large power transformer vulnerability and replacement lead times.»
+**The harm is entirely infrastructural, and the mechanism is well established even where the scale is
+not.** Geomagnetically induced current flows in long conductors — high-voltage transmission lines,
+pipelines, railway signalling. In a transformer it arrives as what is effectively direct current, offsetting
+the alternating current and driving the core into **half-cycle saturation**. A saturated transformer leaks
+magnetic field outside its core, heats up, and generates harmonics. In the Government Accountability Office's
+words, *"saturated transformers are the root causes of nearly all GIC-induced disturbances in transmission
+systems."*
+
+**Two consequences, and the first is the more likely one.** The harmonics can make protective relays
+misoperate and disconnect parts of the grid — which is what actually happened in Quebec in 1989, where
+relay misoperation was *"a primary contributor"* to the blackout. That is a blackout without any equipment
+being destroyed. The second consequence is thermal damage to the transformer itself, which is the scenario
+that produces the long recovery.
+
+**And that is where the honest number lives.** Large power transformers are custom-built, and the federal
+energy department's 2024 report to Congress records that lead times have become *"exceptionally long, with
+36-month lead times being commonly quoted and maximum lead times reaching as much as 60 months."* Before
+2020 you could order one in under a year. Three to five years is the current reality — which is why the
+sixteen-days-to-two-years range earlier in this chapter is not hysteria.
+
+**But this book will not tell you the grid is certain to fall over.** The same federal assessment is blunt
+that *"key studies lack consensus about the scale and likelihood of potential consequences,"* and notes
+that **since 1932, only four geomagnetic disturbances have led to large-scale power outage or transformer
+damage.** Utilities now operate under a mandatory reliability standard for geomagnetic disturbance, newer
+transformer designs resist the thermal effects by roughly a factor of six, and forecasters can issue
+warnings up to about **forty minutes** before a disturbance reaches Earth. The mechanism is real, the
+recovery would be slow, and the probability is genuinely unknown. Prepare for the outage, not for the
+apocalypse.
+«SRC: US Government Accountability Office, *Technology Assessment: Protecting the Electric Grid from
+Geomagnetic Disturbances*, GAO-19-98 (2019) — GIC adds a direct-current offset that drives transformers
+into half-cycle saturation; "saturated transformers are the root causes of nearly all GIC-induced
+disturbances in transmission systems"; misoperation of electro-mechanical protective relays was a primary
+contributor to the 1989 Hydro-Québec blackout; total transmission above 100 kV in the United States has
+increased 25-fold over the past 85 years and GIC increases with line length; newer design practices offer
+about a factor of six improvement in resistance to GIC-induced thermal effects; forecasts and warnings up
+to about 40 minutes in advance; since 1932 only four GMDs have led to large-scale outage or transformer
+damage; key studies lack consensus about the scale and likelihood of consequences. |
+https://www.gao.gov/assets/gao-19-98.pdf | retrieved 2026-07-29»
+«SRC: US Department of Energy, *Large Power Transformer Resilience Report to Congress* (July 2024) —
+LPTs are highly customised devices with long lead times for manufacture, testing, delivery and
+installation; lead times "have become exceptionally long, with 36-month lead times being commonly quoted
+and maximum lead times reaching as much as 60 months"; before the COVID-19 pandemic a large transformer
+could be ordered with a lead time of less than a year. |
+https://www.energy.gov/sites/default/files/2024-10/EXEC-2022-001242%20-%20Large%20Power%20Transformer%20Resilience%20Report%20signed%20by%20Secretary%20Granholm%20on%207-10-24.pdf | retrieved 2026-07-29»
 
 **The other operational effects** are less dramatic and more likely: degradation or loss of GPS accuracy,
 which matters more than people realise because timing signals from GPS synchronise financial systems and
@@ -67,14 +144,36 @@ and disruption to precision agriculture and survey work.
 **Costs:** for a household, the cost is an outage of unknown length, and the correct response is exactly
 the outage stack in Playbook 17 — held for longer.
 
-**On EMP specifically**, which belongs here because it shares the mechanism and almost nothing else: a
-high-altitude nuclear detonation produces a pulse with fast and slow components, the slow one behaving
-somewhat like a severe geomagnetic storm for long conductors, and the fast one capable of coupling into
-shorter conductors in a way geomagnetic storms cannot. It is an act of war and not a natural hazard, its
-effects on small unconnected consumer electronics are genuinely disputed among the people who study it,
-and the sensible household posture is a cheap hedge rather than a project.
-«CITE: an official assessment (EMP Commission report, or a subsequent DoE/DHS study) describing the E1/E2/E3
-components and stating what is and is not established about effects on consumer electronics.»
+**On EMP specifically**, which belongs here because it shares one mechanism and almost nothing else. A
+high-altitude nuclear detonation produces a pulse that the federal strategy documents describe in **three
+components**, and knowing the three is what lets you read anything else written about it:
+
+**E1** is the fast one — a rise time measured in nanoseconds, a duration of hundreds of nanoseconds, and
+field strengths *"on the order of tens of thousands of volts per meter."* It couples into short conductors,
+which is why it is the component people mean when they talk about damage to electronics rather than to the
+grid. **E2** is an intermediate pulse, longer and much weaker, whose main effect is to enhance currents
+already induced on long lines. **E3** is the slow one, and it is *"comparable, but not equivalent"* to a
+geomagnetic disturbance — the official comparison is that a geomagnetic storm delivers multiple peaks over
+hours or days, while E3 is a single pulse *"more intense and prolonged than any one of these peaks."*
+
+**So E3 is the geomagnetic-storm-like component, and it is the one that threatens the grid. E1 is the
+component that has no natural analogue.** That distinction is the whole reason the effect on your own
+devices is uncertain: the historical record contains severe geomagnetic storms and therefore tells us a
+great deal about E3, and it contains no E1 at all.
+
+It is an act of war rather than a natural hazard, its effects on small unconnected consumer electronics are
+genuinely disputed among the people who study it, and the sensible household posture is a cheap hedge
+rather than a project.
+«SRC: US Department of Homeland Security, *Strategy for Protecting and Preparing the Homeland against
+Threats of Electromagnetic Pulse and Geomagnetic Disturbance* (October 2018) — E1 is a fast (nanosecond
+rise time, hundreds of nanoseconds duration) broad-band pulse that disrupts long-line electrical systems,
+computers, sensors and electronic control systems, generating field strengths on the order of tens of
+thousands of volts per metre; E2 is longer and much lower in amplitude, enhancing EMP currents on long
+lines in the microsecond to millisecond regime; E3 effects are "comparable, but not equivalent" to those
+from geomagnetic disturbances, a GMD featuring multiple peaks over hours or days while E3 is a singular
+pulse more intense and prolonged than any one of those peaks. |
+https://www.dhs.gov/sites/default/files/publications/18_1009_EMP_GMD_Strategy-Non-Embargoed.pdf | retrieved
+2026-07-29»
 
 ---
 

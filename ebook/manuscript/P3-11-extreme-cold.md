@@ -33,8 +33,7 @@ occurred at temperatures above the units' stated ambient design temperature; 87 
 generation outages involved natural gas; 43.3 percent of gas production declines were caused by freezing
 temperatures and weather and 21.5 percent by power losses at midstream, wellhead or gathering
 facilities; 28 formal recommendations. |
-https://www.ferc.gov/news-events/news/final-report-february-2021-freeze-underscores-winterization-recommendations
-| retrieved 2026-07-29»
+https://www.ferc.gov/news-events/news/final-report-february-2021-freeze-underscores-winterization-recommendations | retrieved 2026-07-29»
 
 Hundreds died. FERC's own release puts it plainly and without a number: *"Tragically, the loss of
 electricity caused the deaths of numerous Texans."* Hypothermia indoors and carbon monoxide poisoning

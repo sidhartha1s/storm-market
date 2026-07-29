@@ -49,10 +49,12 @@ The 12-page sample's 11 body pages carry **2,673 words**, i.e. **243 words per p
 already including pages that hold SVG diagrams and tables. That is the multiplier to use for any
 page projection, and it is measured rather than assumed.
 
-Current manuscript: **93,969 words** of prose → 389 pages, plus 80 binder pages and 18 appendix
-pages → **487**. The published figure of 488 is therefore accurate to within a page, but it is
-still a projection from density, not a count of laid-out pages. **Recount after layout and change
-the landing page if it moves.**
+Current manuscript: **117,554 words**, of which 114,637 are prose (the Binder's 2,917 words are laid
+out as fixed forms, not poured text). That is 472 prose pages, plus 80 binder pages and 18 appendix
+pages — **about 570**. The published figure of 488 is therefore a **floor**: the book is now
+materially longer than advertised, because closing all 130 citations added ~23,600 words of quoted
+primary material. Still a projection from density rather than a count of laid-out pages. **Recount
+after layout and reset the landing page figure before launch.**
 
 ## Layout rules that follow from the fixed-page model
 

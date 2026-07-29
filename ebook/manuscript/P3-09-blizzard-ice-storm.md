@@ -55,8 +55,7 @@ carries the detail.
 Central United States" (final report), per FERC's release — 20,000 MW of rolling blackouts, largest
 manually controlled load shed in US history; more than 4.5 million Texans lost power, some up to four
 days. |
-https://www.ferc.gov/news-events/news/final-report-february-2021-freeze-underscores-winterization-recommendations
-| retrieved 2026-07-29»
+https://www.ferc.gov/news-events/news/final-report-february-2021-freeze-underscores-winterization-recommendations | retrieved 2026-07-29»
 
 The lesson both events teach is the same one, and it is the reason this playbook exists separately from
 the extreme cold playbook that follows it: **the winter storm is not the hazard. The multi-day power
@@ -89,11 +88,35 @@ and it is entirely preventable.
 **Hypothermia indoors**, disproportionately among elderly people living alone, in a house that cooled
 over two days while they added blankets rather than leaving.
 
-**Cardiac events during snow clearing.** Shovelling wet snow is heavy exertion in cold air for people
-who are frequently sedentary, and the effect on heart attack incidence after heavy snowfall is well
-documented.
-«CITE: a study or public-health source quantifying cardiac events associated with snow shovelling after
-heavy snowfall.»
+**Cardiac events during snow clearing.** Shovelling wet snow is heavy exertion in cold air for people who
+are frequently sedentary, and the effect has been measured at population scale. A study covering
+**128,073 hospital admissions and 68,155 deaths from heart attack** in Quebec across the winters of 1981
+to 2014 compared each day against the snowfall the day before, adjusted for temperature. **Compared with no
+snow, 20 centimetres of snowfall was associated with a 16 per cent higher likelihood of hospital admission
+for heart attack the following day among men, and a 34 per cent higher likelihood of death from one.**
+
+**Among women, there was no increased risk at all** — 1.01 for admission, which is to say nothing. The
+authors are explicit about the interpretation: the sex difference is what you would expect if the mechanism
+is *who does the shovelling*, not the cold itself. Clinical work on the activity supports that: heavy snow
+shovelling produces cardiac and aerobic demands rivalling a maximal treadmill test in sedentary men, with
+systolic pressure around 198 mmHg, and it combines static and dynamic exertion with the Valsalva
+manoeuvre — a combination almost nothing else in ordinary life produces.
+
+The practical version: **if you are a sedentary man over about forty-five, or anyone with known heart
+disease, the day after heavy snow is a genuine risk window and the shovel is the thing to delegate.** Not
+because clearing snow is unimportant, but because it is exercise at the intensity of a stress test,
+performed without warm-up, in the cold, often on the wrong side of a large meal.
+«SRC: N. Auger et al., "Association between quantity and duration of snowfall and risk of myocardial
+infarction," *CMAJ* 189(6):E235–E242 (2017) — time-stratified case-crossover study, Quebec, November to
+April 1981–2014; 128,073 hospital admissions and 68,155 deaths due to myocardial infarction; compared with
+0 cm, 20 cm of snowfall associated with an odds ratio of 1.16 (95% CI 1.11–1.21) for admission and 1.34
+(1.26–1.42) for death due to MI the following day among men, and 1.01 (0.95–1.07) among women. |
+https://pmc.ncbi.nlm.nih.gov/articles/PMC5305403/ | retrieved 2026-07-29»
+«SRC: B.A. Franklin et al., "Cardiac demands of heavy snow shoveling," *JAMA* 273(11):880–882 (1995) —
+heavy snow shovelling elicits myocardial and aerobic demands rivalling maximal treadmill and arm-ergometer
+testing in sedentary men; systolic blood pressure during shovelling 198 ± 17 mmHg, significantly greater
+than during arm ergometry or automated snow removal. | https://pubmed.ncbi.nlm.nih.gov/7869560/ | retrieved
+2026-07-29»
 
 **Traffic**, and specifically black ice and multi-vehicle collisions in whiteout conditions.
 
@@ -190,7 +213,7 @@ symptoms as a cardiac event rather than as being unfit.
 **If you are stranded in a vehicle**, stay with it — it is visible and it is shelter. Run the engine
 about ten minutes in the hour for heat, and **check the exhaust pipe is clear of snow every time**,
 because a blocked exhaust fills the cabin with carbon monoxide.
-«SRC: NWS, "What To Do If You're Caught in a Winter Storm" — if your car is stuck: **stay in the vehicle**, because you become disoriented quickly in wind-driven snow; **run the motor about 10 minutes each hour** for heat. Driving: over **5,000 road fatalities a year** are attributed to weather conditions; clear all snow off the vehicle; if visibility fails, pull over, stop, **turn your lights off** and use the parking brake so another driver does not follow your tail lights into you. https://www.weather.gov/safety/winter-during · retrieved 2026-07-29» Crack a window slightly on the downwind
+«SRC: NWS, "What To Do If You're Caught in a Winter Storm" — if your car is stuck: **stay in the vehicle**, because you become disoriented quickly in wind-driven snow; **run the motor about 10 minutes each hour** for heat. Driving: over **5,000 road fatalities a year** are attributed to weather conditions; clear all snow off the vehicle; if visibility fails, pull over, stop, **turn your lights off** and use the parking brake so another driver does not follow your tail lights into you. https://www.weather.gov/safety/winter-during | retrieved 2026-07-29» Crack a window slightly on the downwind
 side. Make the car visible.
 
 ---

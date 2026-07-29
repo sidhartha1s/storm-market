@@ -100,8 +100,7 @@ a small line item; the same work later means tearing the covering off again.
 Bulletin 2016-04, "Roof Deck", and the FORTIFIED Roof high-wind roofing compliance form — 8d ring-shank
 nails at 6 in. o.c. on all framing members, 7/16 in. sheathing preferred, maximum framing spacing 24
 in.; augmentation option with combined spacing not greater than 4 in.; at least 13 nails per 4-ft span
-for documentation. | https://fortifiedhome.org/wp-content/uploads/2016-04_technical-bulletin_roof-deck.pdf
-| retrieved 2026-07-29»
+for documentation. | https://fortifiedhome.org/wp-content/uploads/2016-04_technical-bulletin_roof-deck.pdf | retrieved 2026-07-29»
 
 **What this does not do:** nothing for the covering above it, and nothing at all if the roof is not
 being replaced. This is a timing protection.

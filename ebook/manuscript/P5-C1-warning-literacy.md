@@ -195,7 +195,7 @@ Hazards extend far outside it, sometimes hundreds of miles — and being outside
 out of danger. Rainfall, surge, and tornadoes routinely occur well beyond it, and the cone is drawn so that
 **two-thirds** of historical forecast errors fall inside it — which means the centre itself goes outside
 the cone about one time in three.
-«SRC: NHC, "Definition of the NHC Track Forecast Cone" — the cone encloses circles sized so that two-thirds of official forecast errors over a 5-year sample fall within them, and it depicts the probable track of the centre only, not the extent of impacts. https://www.nhc.noaa.gov/aboutcone.shtml · retrieved 2026-07-29»
+«SRC: NHC, "Definition of the NHC Track Forecast Cone" — the cone encloses circles sized so that two-thirds of official forecast errors over a 5-year sample fall within them, and it depicts the probable track of the centre only, not the extent of impacts. https://www.nhc.noaa.gov/aboutcone.shtml | retrieved 2026-07-29»
 
 What to read instead: the **surge inundation maps**, which show water depth over land and are the
 product most tied to fatalities, the wind arrival timing, and the rainfall forecast — which is
@@ -241,8 +241,8 @@ the order comes too late.
 The rule is short and absolute: **never drive or walk into water of unknown depth, and turn around.**
 Twelve inches of rushing water carries away most cars; two feet carries away SUVs and trucks. Over half
 of all flood-related drownings happen when a vehicle is driven into floodwater.
-«SRC: NWS, "Turn Around Don't Drown" — 6 inches of fast-moving water knocks over an adult; 12 inches carries away most cars; 2 feet carries away SUVs and trucks. Cites CDC that over half of all flood-related drownings occur when a vehicle is driven into floodwater, with walking into or near floodwater the next largest share. https://www.weather.gov/safety/flood-turn-around-dont-drown · retrieved 2026-07-29»
-«SRC: NWS, "Turn Around Don't Drown" — 6 in of fast-moving water knocks over an adult, 12 in carries away most cars, 2 ft carries away SUVs and trucks. https://www.weather.gov/safety/flood-turn-around-dont-drown · retrieved 2026-07-29»
+«SRC: NWS, "Turn Around Don't Drown" — 6 inches of fast-moving water knocks over an adult; 12 inches carries away most cars; 2 feet carries away SUVs and trucks. Cites CDC that over half of all flood-related drownings occur when a vehicle is driven into floodwater, with walking into or near floodwater the next largest share. https://www.weather.gov/safety/flood-turn-around-dont-drown | retrieved 2026-07-29»
+«SRC: NWS, "Turn Around Don't Drown" — 6 in of fast-moving water knocks over an adult, 12 in carries away most cars, 2 ft carries away SUVs and trucks. https://www.weather.gov/safety/flood-turn-around-dont-drown | retrieved 2026-07-29»
 
 Two specifics that save lives. **At night you cannot judge depth**, and the familiarity of your own
 commute is a liability rather than an asset — the road you know is exactly the one you will
@@ -325,7 +325,7 @@ People do not act on warnings. They seek to verify them — the window, a relati
 neighbours — and verification consumes exactly the time the warning bought. This was among the
 findings of the National Weather Service assessment of the Joplin tornado, and it is not a failure of
 character. It is what a lifetime of warnings that came to nothing trains you to do.
-«SRC: NWS Central Region, *Service Assessment: Joplin, Missouri, Tornado — May 22, 2011* — timeline: initial 3-minute siren alert **5:11 pm CDT**; WFO Springfield tornado warning polygon #31 issued **5:17 pm**; initial touchdown **5:34 pm**; **second** 3-minute siren alert **5:38 pm**. As of the report date, **158 direct and 4 indirect fatalities**. Findings: the perceived frequency of siren activation "led the majority of survey participants to become desensitized or complacent to this method of warning"; and Finding #2d — "the majority of surveyed Joplin residents did not take protective action until receiving and processing additional, credible confirmation of the threat and its magnitude from a non-routine trigger", achieved by seeing the tornado, hearing on-air instruction to take cover, or hearing the second siren. Joplin Globe preliminary analysis of fatality location: **54% in residences, 32% in non-residential buildings, 14% in vehicles or outdoors**. https://www.weather.gov/media/publications/assessments/Joplin_tornado.pdf · retrieved 2026-07-29»
+«SRC: NWS Central Region, *Service Assessment: Joplin, Missouri, Tornado — May 22, 2011* — timeline: initial 3-minute siren alert **5:11 pm CDT**; WFO Springfield tornado warning polygon #31 issued **5:17 pm**; initial touchdown **5:34 pm**; **second** 3-minute siren alert **5:38 pm**. As of the report date, **158 direct and 4 indirect fatalities**. Findings: the perceived frequency of siren activation "led the majority of survey participants to become desensitized or complacent to this method of warning"; and Finding #2d — "the majority of surveyed Joplin residents did not take protective action until receiving and processing additional, credible confirmation of the threat and its magnitude from a non-routine trigger", achieved by seeing the tornado, hearing on-air instruction to take cover, or hearing the second siren. Joplin Globe preliminary analysis of fatality location: **54% in residences, 32% in non-residential buildings, 14% in vehicles or outdoors**. https://www.weather.gov/media/publications/assessments/Joplin_tornado.pdf | retrieved 2026-07-29»
 
 You cannot fix this by resolving to be braver. You fix it by **moving the decision to a moment when
 nobody is frightened**, writing it down, and agreeing it out loud with the household. A trigger plan is

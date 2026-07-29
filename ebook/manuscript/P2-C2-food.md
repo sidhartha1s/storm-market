@@ -100,7 +100,7 @@ been above 40°F for **two hours or less** is safe. **Frozen food that still hol
 40°F or below, can be refrozen or cooked** — check the appliance thermometer or a food thermometer in
 individual packages rather than judging by feel. And the rule that settles every argument: **if you do
 not know how long it was above 40°F, throw it out.**
-«SRC: FDA, "Refrigerator Thermometers — Cold Facts about Food Safety": refrigerator at or below 40°F; food above 40°F for 2 hours or less is safe; frozen food still holding ice crystals or at 40°F or below may be refrozen or cooked; if the duration above 40°F is unknown, discard. https://www.fda.gov/food/buy-store-serve-safe-food/refrigerator-thermometers-cold-facts-about-food-safety · retrieved 2026-07-29»
+«SRC: FDA, "Refrigerator Thermometers — Cold Facts about Food Safety": refrigerator at or below 40°F; food above 40°F for 2 hours or less is safe; frozen food still holding ice crystals or at 40°F or below may be refrozen or cooked; if the duration above 40°F is unknown, discard. https://www.fda.gov/food/buy-store-serve-safe-food/refrigerator-thermometers-cold-facts-about-food-safety | retrieved 2026-07-29»
 
 The protocol, in order:
 
@@ -116,11 +116,9 @@ The protocol, in order:
    in both the freezer and the fridge.**
    «SRC: FDA, "Refrigerator Thermometers — Cold Facts about Food Safety" — In Case of Disaster:
    pre-freezing water in quart bags, and keeping both doors closed as much as possible.
-   https://www.fda.gov/food/buy-store-serve-safe-food/refrigerator-thermometers-cold-facts-about-food-safety
-   · retrieved 2026-07-29»
+   https://www.fda.gov/food/buy-store-serve-safe-food/refrigerator-thermometers-cold-facts-about-food-safety | retrieved 2026-07-29»
    «SRC: FDA, "Food and Water Safety During Power Outages and Floods." |
-   https://www.fda.gov/food/buy-store-serve-safe-food/food-and-water-safety-during-power-outages-and-floods
-   | retrieved 2026-07-29»
+   https://www.fda.gov/food/buy-store-serve-safe-food/food-and-water-safety-during-power-outages-and-floods | retrieved 2026-07-29»
 2. **Fill the empty space now, before anything happens.** Water bottles frozen in the freezer's gaps
    are free thermal mass. They extend the hold, they become drinking water as they thaw, and they can
    be moved into the refrigerator to extend that too.
@@ -227,8 +225,7 @@ conditions is exactly this: *"For infants, try to use prepared, canned baby form
 added water."* In an emergency where the water supply is uncertain, ready-to-feed is the safer form,
 and a supply of it belongs in the store even if powdered is what you normally use.
 «SRC: FDA, "Food and Water Safety During Power Outages and Floods." |
-https://www.fda.gov/food/buy-store-serve-safe-food/food-and-water-safety-during-power-outages-and-floods
-| retrieved 2026-07-29» Bottles and teats need treated water for cleaning, which is a demand people
+https://www.fda.gov/food/buy-store-serve-safe-food/food-and-water-safety-during-power-outages-and-floods | retrieved 2026-07-29» Bottles and teats need treated water for cleaning, which is a demand people
 forget to count.
 
 **Allergies.** Cross-contamination risk rises sharply when food comes from unfamiliar sources —
@@ -300,8 +297,7 @@ Use reconditioned cans as soon as possible afterwards. Discard any can with swel
 punctures, holes, fractures, extensive deep rusting, or denting severe enough to stop it stacking or
 to stop a manual can opener working on it.
 «SRC: FDA, "Food and Water Safety During Power Outages and Floods." |
-https://www.fda.gov/food/buy-store-serve-safe-food/food-and-water-safety-during-power-outages-and-floods
-| retrieved 2026-07-29»
+https://www.fda.gov/food/buy-store-serve-safe-food/food-and-water-safety-during-power-outages-and-floods | retrieved 2026-07-29»
 
 **What this does not do:** cleaning a can does not rescue its contents if the seal failed, and no
 amount of washing makes porous packaging safe. When the judgment is close, the answer is discard —

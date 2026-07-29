@@ -11,7 +11,7 @@ There is no famous lightning disaster, and that is precisely the problem.
 Lightning killed an average of **27 Americans a year over the last measured decade** and injured
 roughly **243 a year**, and it does it one or two at a time, on golf courses and beaches and building
 sites and in back gardens, in weather that nobody thought was dangerous.
-«SRC: NWS, "How Dangerous is Lightning?" — from NWS Storm Data, the US averaged **43 reported lightning fatalities a year over 1989–2018** and **27 a year over 2009–2018**, with roughly **243 injuries a year** estimated. **Only about 10% of people struck are killed, leaving 90% with varying degrees of disability.** Lightning can cause cardiac arrest at the time of injury. https://www.weather.gov/safety/lightning-odds · retrieved 2026-07-29»
+«SRC: NWS, "How Dangerous is Lightning?" — from NWS Storm Data, the US averaged **43 reported lightning fatalities a year over 1989–2018** and **27 a year over 2009–2018**, with roughly **243 injuries a year** estimated. **Only about 10% of people struck are killed, leaving 90% with varying degrees of disability.** Lightning can cause cardiac arrest at the time of injury. https://www.weather.gov/safety/lightning-odds | retrieved 2026-07-29»
 
 The recurring pattern in the fatality reports is not people caught out in a violent storm. It is people
 who had time. The thunder had been audible for some minutes. The activity was nearly finished. The
@@ -42,7 +42,7 @@ this is why sheltering under a tree is so dangerous and why proximity matters mo
 **Side flash**, where current jumps from a struck object to a person nearby. **Conduction**, through
 plumbing, wiring, corded phones and metal structures, which is how people are struck indoors.
 **Direct strike**, which is the rarest and the one everyone pictures.
-«SRC: NWS, "Lightning Science: Five Ways Lightning Strikes People" — direct strike, side flash, ground current, conduction and streamers. Direct strikes are less common than the other mechanisms but the most deadly; side-flash victims are typically within a foot or two of the struck object, most often sheltering under a tree. https://www.weather.gov/safety/lightning-struck · retrieved 2026-07-29»
+«SRC: NWS, "Lightning Science: Five Ways Lightning Strikes People" — direct strike, side flash, ground current, conduction and streamers. Direct strikes are less common than the other mechanisms but the most deadly; side-flash victims are typically within a foot or two of the struck object, most often sheltering under a tree. https://www.weather.gov/safety/lightning-struck | retrieved 2026-07-29»
 
 **Costs:** house fires, which are the serious property outcome; electronics and appliance destruction,
 both from direct strikes and from surges coupling into wiring from strikes nearby; well pumps and HVAC
@@ -66,7 +66,16 @@ problem.
   standard — is worth costing only in genuinely high-strike locations, for tall or isolated buildings,
   or where the contents justify it. It is a real engineered system, not a decorative rod, and it is out of
   scope for most houses.
-  «CITE: the current US standard for lightning protection system installation, by number and name.»
+  The standard to name when you ask for a quote is **NFPA 780, *Standard for the Installation of Lightning
+  Protection Systems*** — the document that sets the requirements for design, installation and maintenance,
+  and the reason a real system is a system rather than a rod. If a contractor cannot tell you which edition
+  they work to, that is the end of the conversation.
+  «SRC: National Fire Protection Association, NFPA 780, *Standard for the Installation of Lightning
+  Protection Systems* — provides requirements on lightning protection system design, installation and
+  maintenance, covering ordinary structures, miscellaneous structures and special occupancies, heavy-duty
+  stacks, structures containing flammable vapours, gases or liquids, structures housing explosive
+  materials, wind turbines, watercraft, airfield lighting circuits and solar arrays. |
+  https://www.nfpa.org/codes-and-standards/nfpa-780-standard-development/780 | retrieved 2026-07-29»
 
 **The thing to decide in advance** is where "inside" is for the places your household regularly spends
 time. The pitch, the pool, the site, the campsite, the beach. A substantial building or a hard-topped

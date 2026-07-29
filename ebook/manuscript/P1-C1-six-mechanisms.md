@@ -123,7 +123,7 @@ almost never the way people expect.
 
 More deaths occur due to flooding than from any other thunderstorm-related hazard, and **over half
 of all flood-related drownings happen when a vehicle is driven into floodwater.**
-«SRC: NWS, "Turn Around Don't Drown" — 6 inches of fast-moving water knocks over an adult; 12 inches carries away most cars; 2 feet carries away SUVs and trucks. Cites CDC that over half of all flood-related drownings occur when a vehicle is driven into floodwater, with walking into or near floodwater the next largest share. https://www.weather.gov/safety/flood-turn-around-dont-drown · retrieved 2026-07-29» That single sentence should reframe how you think about flood risk. Most people
+«SRC: NWS, "Turn Around Don't Drown" — 6 inches of fast-moving water knocks over an adult; 12 inches carries away most cars; 2 feet carries away SUVs and trucks. Cites CDC that over half of all flood-related drownings occur when a vehicle is driven into floodwater, with walking into or near floodwater the next largest share. https://www.weather.gov/safety/flood-turn-around-dont-drown | retrieved 2026-07-29» That single sentence should reframe how you think about flood risk. Most people
 picture rising water in a living room. The reality is a car, at night, on a familiar road, and a
 driver who could not see that the road surface was gone.
 
@@ -132,7 +132,7 @@ the square of its velocity, which means water that feels manageable when you ste
 dramatically stronger when it is moving. **Twelve inches of rushing water carries away most cars, and two feet carries away SUVs
 and trucks** — and once a vehicle floats, the driver has no control of it at all. It is no longer a car.
 It is a boat with the buoyancy of a car, which is to say briefly.
-«SRC: NWS, "Turn Around Don't Drown" — 6 in of fast-moving water knocks over an adult, 12 in carries away most cars, 2 ft carries away SUVs and trucks. https://www.weather.gov/safety/flood-turn-around-dont-drown · retrieved 2026-07-29»
+«SRC: NWS, "Turn Around Don't Drown" — 6 in of fast-moving water knocks over an adult, 12 in carries away most cars, 2 ft carries away SUVs and trucks. https://www.weather.gov/safety/flood-turn-around-dont-drown | retrieved 2026-07-29»
 
 Two things make this mechanism so lethal. The first is darkness: you cannot judge depth on a
 flooded road at night, and the road you cross every day gives you a false confidence that a

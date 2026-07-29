@@ -76,8 +76,7 @@ nobody expects from a hazard filed mentally under "breathing."
 «SRC: US EPA, "Health and Environmental Effects of Particulate Matter (PM)" — PM2.5 penetrates deep
 into the lungs and some may enter the bloodstream; linked to premature death in people with heart or
 lung disease, nonfatal heart attacks, irregular heartbeat, aggravated asthma, decreased lung function
-and increased respiratory symptoms. | https://www.epa.gov/pm-pollution/health-and-environmental-effects-particulate-matter-pm
-| retrieved 2026-07-29»
+and increased respiratory symptoms. | https://www.epa.gov/pm-pollution/health-and-environmental-effects-particulate-matter-pm | retrieved 2026-07-29»
 
 **Who is at real risk:** people with asthma, COPD or heart disease; pregnant people; infants and young
 children, whose lungs are still developing; adults over sixty-five; and anyone working outdoors, who gets

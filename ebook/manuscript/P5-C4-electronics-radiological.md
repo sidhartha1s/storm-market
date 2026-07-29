@@ -176,15 +176,42 @@ adds margin at no real cost.
 drive holding the document vault, a spare torch, and a set of spare batteries in their packaging. All
 of it powered off, because a device does not have to be plugged in to be damaged.
 
-**The honest scale of the threat.** Two distinct things get conflated. A **high-altitude nuclear EMP**
-is a deliberate act of war whose effect on unconnected consumer electronics is genuinely disputed among
-people who study it, and whose real damage is to the grid rather than to your phone. A **severe
-geomagnetic storm** is a natural event with a real historical precedent, and it damages long
-conductors — transmission lines, transformers, pipelines — not the handset in your pocket.
-«CITE: the Carrington event, and the 1989 Hydro-Québec geomagnetic disturbance, with dates and the
-documented grid effect.»
-«CITE: a government or standards-body assessment of HEMP effects on small unconnected consumer
-electronics — needed to keep the disputed framing accurate rather than dismissive.»
+**The honest scale of the threat.** Two distinct things get conflated, and separating them is most of the
+value of this section.
+
+**A severe geomagnetic storm is a natural event with a real historical record, and it damages long
+conductors.** The two reference points: **September 1859**, the Carrington event, the largest geomagnetic
+storm ever recorded, which crippled much of the world's telegraph network and started fires in telegraph
+offices from sparking equipment — and **13 March 1989**, when *"within 90 seconds, and without warning,
+six million people were left without power for nine hours, many for days"* as the Hydro-Québec transmission
+system went down. Note what was damaged in 1989: a transmission system. Not household equipment.
+
+**A high-altitude nuclear EMP is a deliberate act of war**, and its pulse has three components (Playbook 15
+sets them out). The one that threatens the grid, **E3**, is the geomagnetic-storm-like component and is
+therefore the best understood. The one that could couple into small devices, **E1**, is a nanosecond-scale
+pulse with field strengths *"on the order of tens of thousands of volts per meter"* and **no natural
+analogue whatsoever** — which is precisely why its effect on unconnected consumer electronics is disputed
+rather than known. There is no historical event to check against, and the federal strategy documents
+describe the waveform without asserting what it does to a phone in a drawer.
+
+**That is the accurate version, and it cuts both ways.** Anyone selling you certainty that your devices
+will be fine, and anyone selling you certainty that they will be destroyed, is going beyond the published
+assessments. A cheap hedge is a rational answer to a genuinely open question; an expensive one is not.
+«SRC: NOAA NESDIS, "When Solar Storms Attack: Space Weather and our Infrastructure" and "What Was the
+Carrington Event?" — 13 March 1989, within 90 seconds and without warning six million people left without
+power for nine hours, many for days, when the Hydro-Québec transmission system went offline; the 1859
+Carrington event was the largest geomagnetic storm in recorded history and crippled a large portion of the
+telegraph system, with operators reporting fires from sparking equipment. |
+https://www.nesdis.noaa.gov/news/when-solar-storms-attack-space-weather-and-our-infrastructure | retrieved
+2026-07-29»
+«SRC: US Department of Homeland Security, *Strategy for Protecting and Preparing the Homeland against
+Threats of Electromagnetic Pulse and Geomagnetic Disturbance* (October 2018) — describes E1 as a fast
+nanosecond-rise broad-band pulse generating field strengths on the order of tens of thousands of volts per
+metre that disrupts computers, sensors and electronic control systems, and E3 as comparable but not
+equivalent to a geomagnetic disturbance; the strategy characterises the waveforms and the grid exposure and
+does not assert a settled effect on small unconnected consumer devices. |
+https://www.dhs.gov/sites/default/files/publications/18_1009_EMP_GMD_Strategy-Non-Embargoed.pdf | retrieved
+2026-07-29»
 
 In both cases, **the thing that actually reaches you is a very long power outage**, which is Protections
 37 to 46, plus water, food and heat. The box is a cheap hedge on top of that. If you have not done the
@@ -225,7 +252,7 @@ irreplaceable part.
 
 Lightning kills a small number of people every year and injures many more, and almost all of it happens
 to people outdoors who had time to go inside.
-«SRC: NWS, "How Dangerous is Lightning?" — from NWS Storm Data, the US averaged **43 reported lightning fatalities a year over 1989–2018** and **27 a year over 2009–2018**, with roughly **243 injuries a year** estimated. **Only about 10% of people struck are killed, leaving 90% with varying degrees of disability.** Lightning can cause cardiac arrest at the time of injury. https://www.weather.gov/safety/lightning-odds · retrieved 2026-07-29»
+«SRC: NWS, "How Dangerous is Lightning?" — from NWS Storm Data, the US averaged **43 reported lightning fatalities a year over 1989–2018** and **27 a year over 2009–2018**, with roughly **243 injuries a year** estimated. **Only about 10% of people struck are killed, leaving 90% with varying degrees of disability.** Lightning can cause cardiac arrest at the time of injury. https://www.weather.gov/safety/lightning-odds | retrieved 2026-07-29»
 
 **When thunder roars, go indoors.** If you can hear thunder, you are within range of the next strike;
 there is no safe distance while thunder is audible. Wait thirty minutes after the last thunder before
@@ -255,7 +282,7 @@ resort for someone with no option, not a technique, and it is no longer recommen
 Find out whether you live within a nuclear plant's emergency planning zone, and if so, which one. The
 **plume exposure pathway** zone runs to about **ten miles** and concerns direct exposure; the **ingestion
 exposure pathway** zone runs to about **fifty miles** and concerns the food, milk and water supply.
-«SRC: NRC, "Emergency Planning Zones" — the plume exposure pathway EPZ extends about **10 miles** in radius (sheltering, evacuation, KI where appropriate); the ingestion exposure pathway EPZ extends about **50 miles** and governs bans on contaminated food and water. Page updated 28 Aug 2024. https://www.nrc.gov/about-nrc/emerg-preparedness/about-emerg-preparedness/planning-zones.html · retrieved 2026-07-29»
+«SRC: NRC, "Emergency Planning Zones" — the plume exposure pathway EPZ extends about **10 miles** in radius (sheltering, evacuation, KI where appropriate); the ingestion exposure pathway EPZ extends about **50 miles** and governs bans on contaminated food and water. Page updated 28 Aug 2024. https://www.nrc.gov/about-nrc/emerg-preparedness/about-emerg-preparedness/planning-zones.html | retrieved 2026-07-29»
 
 If you are inside one, your local emergency management office publishes a specific plan with specific
 routes and specific reception centres, and you should have read it once. Households in the zone are
@@ -337,8 +364,7 @@ the primary factor for radioiodine-induced thyroid cancer risk: infants, childre
 nursing people are treated at the lowest threshold; adults 18 to 40 at a higher threshold; and **anyone
 over 40 only if the predicted exposure is high enough to destroy the thyroid**. Only FDA-approved KI
 products may be marketed.
-https://www.fda.gov/drugs/bioterrorism-and-drug-preparedness/frequently-asked-questions-potassium-iodide-ki
-· retrieved 2026-07-29»
+https://www.fda.gov/drugs/bioterrorism-and-drug-preparedness/frequently-asked-questions-potassium-iodide-ki | retrieved 2026-07-29»
 
 **Timing decides whether it works at all.** It is effective in a narrow window around exposure, and
 taking it a day late achieves close to nothing.

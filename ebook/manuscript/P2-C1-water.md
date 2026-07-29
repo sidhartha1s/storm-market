@@ -42,8 +42,7 @@ active person needs about three quarters of a gallon of fluid a day, and the ext
 sanitation margin. Children, nursing mothers and sick people need more, and **in very hot temperatures
 water needs can double** — which is the line most households miss when they size a store in
 January.
-«SRC: Ready.gov, "Water" — Determining Water Needs. https://www.ready.gov/water ·
-retrieved 2026-07-29»
+«SRC: Ready.gov, "Water" — Determining Water Needs. https://www.ready.gov/water | retrieved 2026-07-29»
 
 Two weeks, not three days — and it is worth being exact about where each number comes from, because
 they are not the same authority saying different things. **Ready.gov says one gallon per person per
@@ -203,7 +202,7 @@ That last line is the important one. If the failure in your area is industrial o
 household filter is the answer, and any advice that implies otherwise is dangerous.
 «SRC: Ready.gov, "Water" — Water Treatment comparison table: boiling and chlorination kill microbes
 but remove neither heavy metals, salts nor most other chemicals; only distillation removes them.
-https://www.ready.gov/water · retrieved 2026-07-29»
+https://www.ready.gov/water | retrieved 2026-07-29»
 
 Buy a filter with a published specification and keep the specification with it. Then read the
 boil-water advisory when it arrives, because it will tell you what the problem actually is.
@@ -239,8 +238,7 @@ slight bleach odour — **if it does not, repeat the dose and stand another fift
 still does not smell of chlorine, discard it and find another source.** Never use scented, colour-safe
 or cleaner-added bleach, and do not substitute iodine or camping products whose only active ingredient
 is not sodium hypochlorite at those concentrations.
-«SRC: Ready.gov, "Water" — Water Treatment, Chlorination. https://www.ready.gov/water ·
-retrieved 2026-07-29» It goes on the form in Part Six and on a
+«SRC: Ready.gov, "Water" — Water Treatment, Chlorination. https://www.ready.gov/water | retrieved 2026-07-29» It goes on the form in Part Six and on a
 card taped inside the cabinet with the bleach, so that the number is read rather than recalled.
 
 Before disinfecting, filter or settle cloudy water — organic matter consumes the disinfectant and
@@ -262,7 +260,7 @@ Boiling is the most reliable household treatment for biological contamination an
 consumables. **A rolling boil for one full minute** kills what matters. Let it cool before drinking,
 and expect some of the volume to evaporate. If it tastes flat afterwards, pour it between two clean
 containers to put the air back in.
-«SRC: Ready.gov, "Water" — Water Treatment, Boiling. https://www.ready.gov/water · retrieved 2026-07-29»
+«SRC: Ready.gov, "Water" — Water Treatment, Boiling. https://www.ready.gov/water | retrieved 2026-07-29»
 
 The harder skill is reading the advisory. A boil-water notice is issued for different reasons and the
 correct response differs:

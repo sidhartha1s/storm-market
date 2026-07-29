@@ -10,7 +10,7 @@ The town of Paradise, California burned on the morning of 8 November 2018. The f
 before dawn, driven by a dry offshore wind, and it moved into a community of tens of thousands with an
 effective warning time measured in tens of minutes. It burned 153,336 acres over seventeen days, and its cause was
 power lines.
-«SRC: CAL FIRE incident record, Camp Fire — started 08 Nov 2018 at 6:33 am at Pulga Road and Camp Creek Road near Jarbo Gap, Butte County; cause **power lines**; **153,336 acres**; active 17 days, contained 25 Nov 2018. https://www.fire.ca.gov/incidents/2018/11/8/camp-fire/ · retrieved 2026-07-29»
+«SRC: CAL FIRE incident record, Camp Fire — started 08 Nov 2018 at 6:33 am at Pulga Road and Camp Creek Road near Jarbo Gap, Butte County; cause **power lines**; **153,336 acres**; active 17 days, contained 25 Nov 2018. https://www.fire.ca.gov/incidents/2018/11/8/camp-fire/ | retrieved 2026-07-29»
 **Eighty-five people died.** California's official after-action report puts the destruction at **13,972
 residences, 528 commercial buildings and 4,293 other structures** — nearly nineteen thousand buildings.
 
@@ -25,8 +25,7 @@ why the go-decision items rank above the hardening items even though the hardeni
 153,336 acres; 13,972 residences, 528 commercial and 4,293 other structures destroyed; 85 confirmed
 fatalities; three fire personnel injured; contained 25 November 2018; "most of the destruction occurred
 within the first four hours." |
-https://www.caloes.ca.gov/wp-content/uploads/Preparedness/Documents/FINAL-AAR-2018-Camp-Fire-508-Clean-Copy-11.17.25.pdf
-| retrieved 2026-07-29»
+https://www.caloes.ca.gov/wp-content/uploads/Preparedness/Documents/FINAL-AAR-2018-Camp-Fire-508-Clean-Copy-11.17.25.pdf | retrieved 2026-07-29»
 
 Then Lahaina, in August 2023, did the same thing to a coastal Hawaiian town in a hurricane-driven wind.
 **101 fatalities** — the deadliest fire in North America in a hundred years.
@@ -174,7 +173,7 @@ poor shelter and it is dramatically better than being outside it.
 approaching fire, stay away from windows, keep everyone together, and expect to move again once the front
 has passed — because the danger afterwards is your own house burning from the inside from embers already
 in it.
-«SRC: Ready.gov, "Wildfires" — evacuate immediately when told to; **if trapped, call 911, give your location and turn on lights to help rescuers find you**; use an N95 against smoke; designate a room closed off from outside air with a portable air cleaner; use high-efficiency filters in central air and set the system to **recirculate with the outdoor intake damper closed**. https://www.ready.gov/wildfires · retrieved 2026-07-29»
+«SRC: Ready.gov, "Wildfires" — evacuate immediately when told to; **if trapped, call 911, give your location and turn on lights to help rescuers find you**; use an N95 against smoke; designate a room closed off from outside air with a portable air cleaner; use high-efficiency filters in central air and set the system to **recirculate with the outdoor intake damper closed**. https://www.ready.gov/wildfires | retrieved 2026-07-29»
 
 ---
 
@@ -205,8 +204,7 @@ confirmed it — Protection 8. A "do not drink" notice after a fire is a differe
 than a boil-water notice, because **boiling does not remove benzene.**
 «SRC: US EPA, "Addressing Contamination of Drinking Water Distribution Systems from Volatile Organic
 Compounds (VOCs) After Wildfires" (2021). |
-https://www.epa.gov/system/files/documents/2021-09/addressing-contamination-of-drinking-water-distribution-systems-from-volatile-organic-compounds-after-wildfires_508.pdf
-| retrieved 2026-07-29»
+https://www.epa.gov/system/files/documents/2021-09/addressing-contamination-of-drinking-water-distribution-systems-from-volatile-organic-compounds-after-wildfires_508.pdf | retrieved 2026-07-29»
 
 **Hot spots persist for weeks.** Stumps and root systems smoulder underground, and structures reignite.
 Walk the property, watch for smoke, keep a hose or an extinguisher available.

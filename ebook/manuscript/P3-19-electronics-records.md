@@ -156,7 +156,6 @@ irreversible.
 (August 1993) — stabilising wet and moldy materials by freezing; freezing renders mold dormant rather than
 killing it; do not attempt to remove active mold. |
 https://www.archives.gov/preservation/conservation/flood-damage.html | retrieved 2026-07-29»
-including the freezing technique.»
 
 **Then document the loss properly.** Photograph everything before you move it. Photograph the serial plates
 on everything destroyed. Build the contents list from the video inventory rather than from memory, which is

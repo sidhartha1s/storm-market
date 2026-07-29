@@ -6,20 +6,66 @@ Target: 8 pages · draft 1, 2026-07-29
 
 ## The event
 
-On 11 March 2011 a magnitude nine earthquake off the coast of Tōhoku produced a tsunami that overtopped
-sea walls built for a smaller event, travelled miles inland, and killed the great majority of the
-disaster's roughly eighteen thousand dead. It also crossed the Pacific and did damage on the American West
-Coast, including a fatality in California — a person who had gone to the shore to watch it.
-«CITE: authoritative record of the 2011 Tōhoku earthquake and tsunami — fatality total, the share caused by
-the tsunami, inundation distances, and the US West Coast impacts including the California fatality.»
+On **11 March 2011** a **magnitude 9.0** earthquake struck off Honshu, Japan — the fourth largest
+earthquake in the world since instrumental recording began in 1900, and the largest in Japan's record. The
+tsunami it produced overtopped sea walls built for a smaller event and travelled miles inland. Japan's
+National Police Agency records **15,901 dead and 2,519 missing and presumed dead.** More than **123,000
+houses were totally destroyed** and almost a million more damaged.
+
+**And the single most important number in this playbook: ninety-eight per cent of the damage was attributed
+to the tsunami, not the earthquake.** A magnitude nine is a catastrophic earthquake in its own right. It
+was responsible for about two per cent of the harm.
+
+**It also crossed the Pacific**, with waves observed in more than 25 Pacific Rim countries, in Antarctica
+and on the Atlantic coast of Brazil. It did **$31 million of damage in Hawaii** and **$100 million to
+marine facilities in California.** Loss of life outside Japan was **two people — one in Indonesia and one
+in California** — a man south of Crescent City who had gone to the shore to photograph it, where the wave
+was recorded at 247 centimetres. NOAA attributes that low external toll to the Pacific Tsunami Warning
+System and the national warning and evacuation systems connected to it.
+
+Two deaths outside Japan from a wave that crossed an ocean; roughly eighteen thousand where it made landfall
+in twenty minutes. **The entire difference is warning time**, which is the argument of everything that
+follows.
+«SRC: NOAA National Centers for Environmental Information / NGDC, "Great Tohoku, Japan Earthquake and
+Tsunami, 11 March 2011" and "On This Day: 2011 Tohoku Earthquake and Tsunami" — magnitude 9.0, 11 March
+2011, 38.322 N 142.369 E, depth 32 km, fourth largest earthquake in the world since 1900 and largest in
+Japan's instrumental record; Japan National Police Agency reported 15,901 deaths and 2,519 missing and
+presumed dead; more than 123,000 houses totally destroyed and almost a million damaged; 98 per cent of the
+damage attributed to the tsunami; observed in more than 25 Pacific Rim countries, Antarctica and Brazil;
+$31M damage in Hawaii and $100M to California marine facilities; loss of life outside Japan limited to one
+death in Indonesia and one in California, attributed to the Pacific Tsunami Warning System; one person
+killed south of Crescent City, California, where a 247 cm wave was recorded. |
+https://www.ncei.noaa.gov/news/day-2011-japan-earthquake-and-tsunami | retrieved 2026-07-29»
 
 The American planning case is not Japan, though. It is Cascadia: a subduction zone running from northern
-California to British Columbia, capable of the same magnitude, with a recurrence interval that places the
-last event in January 1700 — dated precisely, because the tsunami it sent across the Pacific was recorded
-in Japanese documents and the drowned coastal forests along the Pacific Northwest coast can be dated to the
-same winter.
-«CITE: the 1700 Cascadia earthquake — the Japanese tsunami records and the dendrochronology establishing
-the date, plus current USGS recurrence estimates.»
+California to British Columbia, capable of the same magnitude.
+
+**And the date of the last one is known to the day, which is one of the great pieces of detective work in
+American earth science.** By combining tree-ring dating of the *"ghost forests"* — stands of dead trees in
+tidal marshes, killed when the coast dropped and seawater came in, whose rings date their death to the
+winter of **1699–1700** — with written records of an *orphan tsunami* that struck Japan with no local
+earthquake to explain it, USGS scientists established that **the last great Cascadia earthquake occurred
+on 26 January 1700, at an estimated magnitude between 8.7 and 9.2.** The Japanese records of damage and
+flooding at seven shoreline sites put that wave at one to five metres, on the other side of the Pacific.
+
+**Then the recurrence, which is where "overdue" gets misused.** Paleoseismic evidence shows **at least 19
+great (magnitude 8 or larger) megathrust earthquakes along most of the Cascadia coastline in the past
+~10,000 years**, and the national hazard model uses a **~500-year recurrence interval for full-margin
+magnitude ~9 ruptures.** It has been about 325 years. That is not "overdue" — it is within the interval,
+and the interval is an average of a very irregular process. What it does mean is a **10 to 15 per cent
+chance in the next fifty years**, depending on the model.
+
+Ten per cent over fifty years is not a reason to move house. It is a very good reason to know your
+evacuation route, because the cost of knowing it is one afternoon.
+«SRC: US Geological Survey, "Earthquake probabilities and hazards in the U.S. Pacific Northwest," Fact
+Sheet 2025-3050, and USGS Coastal and Marine Hazards and Resources Program, "Studying Tsunami Sands to
+Better Understand the 1700 Cascadia Earthquake" — dendrochronology of trees killed by tectonic land-level
+change and seawater inundation, combined with written records of a tsunami reaching Japan, dates the last
+great Cascadia earthquake to 26 January 1700 at an estimated M8.7–9.2; paleoseismic evidence indicates at
+least 19 great (M≥8) megathrust earthquakes along most of the Cascadia coastline over the past ~10,000
+years; the NSHM uses a ~500-year recurrence interval for full-margin M~9 ruptures, implying a 10% chance in
+the next 50 years time-independent and 15% time-dependent; Japanese records show the 1700 tsunami reached
+1–5 m at seven shoreline sites. | https://pubs.usgs.gov/publication/fs20253050/full | retrieved 2026-07-29»
 
 The critical fact for a household on that coast: **a Cascadia tsunami arrives in fifteen to thirty minutes
 in many places.** No official alert can outrun that. The earthquake itself is the warning, and there is no

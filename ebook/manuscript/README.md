@@ -13,19 +13,26 @@ because it was a guess and the measurement exists.
 
 | Part | Files | Words | pp @243 | Budget | Protections | Refs open |
 |---|---|---|---|---|---|---|
-| Zero — front matter | 1 | 2,179 | 9 | 12 | — | 0 |
-| One — why people die | 2 | 7,127 | 29 | 26 | — | 11 |
-| Two — the core six + structure | 7 | 18,731 | 77 | 62 + 16 | 1–84 | 38 |
-| Three — hazard playbooks | 23 | 42,703 | 176 | 204 | cross-referenced | 77 |
-| Four — people and places | 2 | 4,909 | 20 | 34 | cross-referenced | 3 |
-| Five — warning, documents, evacuation, electronics | 4 | 12,293 | 51 | 30 | 85–130 | 21 |
-| Six — the Binder (41 form specs, laid out as 80 form pages) | 1 | 2,885 | 80 | 80 | — | 0 |
+| Zero — front matter | 1 | 2,214 | 9 | 12 | — | 0 |
+| One — why people die | 2 | 8,248 | 34 | 26 | — | 0 |
+| Two — the core six + structure | 7 | 23,950 | 99 | 62 + 16 | 1–84 | 0 |
+| Three — hazard playbooks | 23 | 56,759 | 234 | 204 | cross-referenced | 0 |
+| Four — people and places | 2 | 5,641 | 23 | 34 | cross-referenced | 0 |
+| Five — warning, documents, evacuation, electronics | 4 | 14,683 | 60 | 30 | 85–130 | 0 |
+| Six — the Binder (41 form specs, laid out as 80 form pages) | 1 | 2,917 | 80 | 80 | — | 0 |
 | Seven — the 60 days | 1 | 3,142 | 13 | 22 | 45 scheduled | 0 |
 | Appendix B — state directory | generated | — | 18 | 18 | — | — |
-| **Total** | **41** | **93,969** | **~487** | **488** | **130/130** | **150** |
+| **Total** | **41** | **117,554** | **~570** | **488** | **130/130** | **0** |
 
-**The 488-page claim on the landing page is therefore accurate to within one page** — but it is a
-projection from measured density, not a count of laid-out pages. Recount after layout.
+**All 130 references now carry a full citation and a retrieval date. Zero pending.** Sourcing them
+added roughly 23,600 words of quoted primary material and analysis — which moves the page projection
+well past the published figure.
+
+**The 488-page claim on the landing page is now a floor, not an estimate.** Prose excluding the
+Binder is 114,637 words, which at the measured 243 words per page is 472 pages, plus 80 Binder pages
+and 18 appendix pages — **about 570.** The advertised number understates the product rather than
+overstating it, which is the safe direction to be wrong in, but it is still wrong. **Recount after
+layout and reset the figure on the landing page before anything goes live.**
 
 Part Three ran shorter than its 204pp budget and Parts Two and Five ran longer. That is fine and it
 was the right trade: the protections carry the detail and the playbooks stay navigable under stress,
@@ -33,8 +40,14 @@ each ending in a one-page version. Do not pad Part Three to hit a number.
 
 ## What is actually outstanding
 
-1. **150 open `«CITE:»` markers.** Each one gets a primary source and a retrieval date, or the claim
-   is cut. This is the gating item for the whole product and it is research, not writing.
+1. ~~Open `«CITE:»` markers~~ **done.** All 130 references carry a full citation and a retrieval
+   date; `review_pdf.py` reports 0 pending. Claims that could not be traced to a primary document were
+   cut, not softened — the ember-ignition share, the hail claim-share statistic, the ash density and
+   roof-collapse depth, the "leading cause of death in distant ashfall zones" superlative, the peak
+   share of stations dry during the Colonial Pipeline shutdown, the Fukushima evacuation death count,
+   the 2003 blackout indirect death toll, the manufactured-housing population share, and the national
+   renter's-insurance take-up figure. Two claims were replaced with original computations from primary
+   datasets (OpenFEMA NFIP claims by rated flood zone; the California Dry Well Reporting System).
 2. **Layout** — hand-laying 41 markdown files into fixed 6×9 pages, with `fitcheck` exit 0.
 3. **The state directory data** — ~51 rows × ~20 sourced fields. See `../appendix/README.md`; the
    generator refuses to render placeholder rows.

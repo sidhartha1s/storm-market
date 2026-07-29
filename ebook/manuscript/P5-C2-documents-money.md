@@ -250,8 +250,7 @@ assumes it is not exposed, that ratio is the argument.
 Special Flood Hazard Area) = 686,045, or 25.2 percent; zones A and V = 1,892,368, or 69.5 percent. For
 losses from 2015 onward, 622,677 claims: B/C/X = 177,065, or 28.4 percent; A/V = 442,617, or 71.1
 percent. |
-https://www.fema.gov/api/open/v2/FimaNfipClaims?$inlinecount=allpages&$top=1&$filter=startswith(ratedFloodZone,'X')
-| retrieved 2026-07-29»
+https://www.fema.gov/api/open/v2/FimaNfipClaims?$inlinecount=allpages&$top=1&$filter=startswith(ratedFloodZone,'X') | retrieved 2026-07-29»
 
 Get a quote. Understand what it covers, what it caps, and that contents are separate from structure.
 

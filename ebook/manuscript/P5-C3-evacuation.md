@@ -113,7 +113,7 @@ vaccination records, because a shelter that accepts animals will ask for them.
 Then the part people skip: **many emergency shelters do not accept pets.** Find out now which shelters
 in your area are pet-friendly, which boarding kennels and veterinary practices take evacuees, and
 which of your out-of-area contacts would take an animal. Write the three phone numbers down.
-«SRC: Ready.gov, "Prepare Your Pets for Disasters" — **many public shelters and hotels do not allow pets inside**, so identify a safe place in advance; develop a buddy system with neighbours; microchip the animal and keep the address, phone number and an out-of-area emergency contact current. https://www.ready.gov/pets · retrieved 2026-07-29»
+«SRC: Ready.gov, "Prepare Your Pets for Disasters" — **many public shelters and hotels do not allow pets inside**, so identify a safe place in advance; develop a buddy system with neighbours; microchip the animal and keep the address, phone number and an out-of-area emergency contact current. https://www.ready.gov/pets | retrieved 2026-07-29»
 
 Microchip the animals and confirm the registration details are current — the chip is useless if it
 points at a phone number you have not used in six years. Photograph each animal with a household member
@@ -213,10 +213,28 @@ policy correctly will refuse to release a child to someone not on that list. Do 
 nursery or an after-school programme, and tell the children who is allowed to collect them.
 
 Everybody memorises that number or carries it on paper, including the children, and it goes in the
-document envelope. Register the household on the national reunification system so that anyone looking
-for you has a place to look.
-«CITE: Red Cross Safe and Well / equivalent current reunification registry — confirm the service still
-operates under that name.»
+document envelope.
+
+**A correction to advice you have probably read elsewhere, including in older editions of books like this
+one.** For years the standard instruction was to register on the Red Cross "Safe and Well" website so that
+family could search for your name. **That self-registration website no longer exists**, and a book that
+told you to go and register on it would be sending you to a dead link at the worst possible moment. It has
+been replaced by a **person-mediated reunification service**: if you cannot reach someone affected by a
+current disaster, you contact the Red Cross and ask for help with an **Emergency Welfare Inquiry**, and a
+local chapter may connect you with Reunification Activity workers in the disaster area.
+
+The practical consequence for your plan is real. **You can no longer make yourself findable in advance by
+typing your name into a registry** — which means the out-of-area contact in Protection 112 is doing more
+work than it used to, not less, and it is the mechanism to rely on. The reunification service is what your
+relatives use when the contact chain itself has failed, and it works on requests rather than searches.
+
+Check the current mechanism before you write it into your binder, because this is the part of the plan
+most likely to have changed since anything you read about it.
+«SRC: American Red Cross, "Contact and Locate Loved Ones" — reunification of family in the US and US
+territories; if you are unable to locate or connect with a loved one or friend impacted by a current
+disaster event, contact the Red Cross; a representative from your local chapter may connect you with
+Reunification Activity workers in the disaster area (ask for help with an Emergency Welfare Inquiry). No
+public self-registration site is offered; the former "Safe and Well" registration website is not present. | https://www.redcross.org/get-help/disaster-relief-and-recovery-services/contact-and-locate-loved-ones.html | retrieved 2026-07-29»
 
 **What this does not do:** a contact does not locate a missing person. It coordinates people who are
 each fine but out of touch, which is the overwhelmingly common case.

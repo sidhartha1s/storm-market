@@ -10,17 +10,63 @@ Drought is the only hazard in this book with no moment. There is no siren, no la
 which it begins. It is a slow subtraction, and the households it ruins are the ones who did not notice the
 subtraction had reached them.
 
-The Colorado River basin spent more than two decades in a drought severe enough to take its two largest
-reservoirs to levels that triggered federal shortage declarations and mandatory cuts across states
-supplying tens of millions of people.
-«CITE: Bureau of Reclamation records for Lake Mead/Lake Powell elevations and the tier declarations issued,
-with dates.»
+The Colorado River basin has spent more than two decades in a drought severe enough to put both of its
+largest reservoirs into formal shortage operations. The mechanism is worth understanding, because it is the
+clearest example in this book of a slow hazard being managed by declaration rather than by event: every
+August, the Bureau of Reclamation publishes a 24-Month Study, and **the projected 1 January elevation of
+each reservoir determines the operating tier for the following year.** A number in a spreadsheet becomes
+mandatory cuts.
 
-At the household scale, the version that matters is smaller and more brutal: in the California droughts
-of the last decade, thousands of private domestic wells went dry, one house at a time, in communities where
-the water table dropped below people's pump intakes.
-«CITE: California state dry-well reporting data — number of household wells reported dry in a given
-drought period.»
+Two snapshots show the scale. For **calendar year 2023**, Lake Mead entered a **Level 2a Shortage
+Condition** — the first ever declared — while Lake Powell's projected 1 January 2023 elevation of
+**3,521.84 feet** stood **178 feet below full pool and 32 feet above minimum power pool**, the level at
+which the dam can no longer generate electricity. For **water year 2026**, announced in August 2025, Powell
+is projected at **3,538.47 feet** — 162 feet below full pool, 48 feet above minimum power pool — and **Lake
+Mead remains in a Level 1 Shortage Condition at a projected 1,055.88 feet, twenty feet below the shortage
+trigger.** More than 40 million people depend on this river.
+
+Two decades in, and the reservoirs are still operating under shortage. That is the honest character of
+drought: not a crisis that resolves, but a new baseline that is administered.
+«SRC: US Bureau of Reclamation, "Reclamation announces 2026 operating conditions for Lake Powell and Lake
+Mead" (15 August 2025) — Lake Powell projected 1 January 2026 elevation 3,538.47 feet, ~162 feet below full
+pool and 48 feet above minimum power pool, Mid-Elevation Release Tier with a planned 7.48 maf water-year
+release; Lake Mead projected to stay in a Level 1 Shortage Condition at 1,055.88 feet, 20 feet below the
+Lower Basin shortage determination trigger; more than 40 million people rely on the river. |
+https://www.usbr.gov/newsroom/news-release/5211 | retrieved 2026-07-29»
+«SRC: US Department of the Interior, "Interior Department Announces Actions to Protect Colorado River
+System, Sets 2023 Operating Conditions for Lake Powell and Lake Mead" (August 2022) — Lake Powell in the
+Lower Elevation Balancing Tier for water year 2023 and Lake Mead in its first-ever Level 2a Shortage
+Condition for calendar year 2023; Powell's projected 1 January 2023 elevation of 3,521.84 feet, 178 feet
+below full pool (3,700 feet) and 32 feet above minimum power pool (3,490 feet). |
+https://www.doi.gov/pressreleases/interior-department-announces-actions-protect-colorado-river-system-sets-2023 | retrieved 2026-07-29»
+
+At the household scale, the version that matters is smaller and more brutal, and California counts it.
+The state's Dry Well Reporting System is a public register of household water-supply shortages, and its
+full dataset can be downloaded and counted. Doing that gives **6,179 reported household water shortages**,
+of which **5,921 are dry groundwater wells** — one house at a time, in communities where the water table
+dropped below people's pump intakes.
+
+**The distribution tells you two things.** First, drought reports arrive in waves, and the waves match the
+droughts: **704 reports in 2014, 1,263 in 2015 and 455 in 2016**, then a quiet stretch, then **1,032 in
+2021, 1,452 in 2022 and 465 in 2023.** Second, it is intensely local. **Tulare County alone accounts for
+1,873 reports — nearly a third of the state's total** — with Madera at 938 and Fresno at 816. This is not
+a statewide misfortune evenly spread; it is a handful of counties in the southern San Joaquin Valley.
+
+**And the status field is the part that should stop you.** Of the 6,179 reports, **1,976 are marked
+resolved. 1,044 are on an interim solution** — which in practice means a tank, or bottled water, or a
+neighbour's hose. **3,142 are still recorded as an outage.** More than half the households that reported a
+dry well are not recorded as having got their water back.
+
+The state's own caveat matters and cuts one way only: because reporting is voluntary, the data is
+*"undoubtedly under-representative of all dry wells that have occurred."* The real number is larger.
+«SRC: Computed from the California Department of Water Resources Dry Well Reporting System (Household
+Water Supply Shortage Reporting System) full dataset, published via the California Natural Resources Agency
+open data portal — 6,179 total reports (earliest 2005, latest 2026); 5,921 classified "Dry well
+(groundwater)"; reports by year: 2014 = 704, 2015 = 1,263, 2016 = 455, 2021 = 1,032, 2022 = 1,452, 2023 =
+465; by county: Tulare 1,873, Madera 938, Fresno 816, San Luis Obispo 430, Tehama 407; current status:
+Outage 3,142, Resolved 1,976, Interim Solution 1,044, Vulnerable 17. DWR notes the data is "undoubtedly
+under-representative of all dry wells that have occurred or dry wells that have been resolved." |
+https://data.cnra.ca.gov/dataset/dry-well-reporting-system-data | retrieved 2026-07-29»
 
 That is the household event this playbook is about. Not a reservoir statistic — **your tap stops, and the
 fix costs tens of thousands of dollars and takes months because every driller in the county is booked.**
@@ -144,7 +190,25 @@ take your foot off the brake so the brake lights are dark, put it in park and st
 on. The reason is the fatality mechanism: drivers ahead stop in the dust, drivers behind see a tail light,
 steer toward it because it looks like the road, and drive into them. A dark vehicle off the pavement does
 not attract a collision. Do not stop in a travel lane. Do not try to drive through at reduced speed.
-«CITE: the Arizona DOT / NWS "Pull Aside, Stay Alive" guidance, including the lights-off instruction.»
+
+Arizona's transport department, which runs the campaign this advice comes from, sequences it as: **check
+the traffic around you and start slowing immediately** — *"do not wait until poor visibility makes it
+difficult to safely pull off the roadway"* — **exit the highway completely if you can**, and *"do not stop
+in a travel lane or in the emergency lane."* Look for a place to pull **completely off the paved portion of
+the road.** Then **turn off all vehicle lights**, and the reason is stated explicitly: *"you do not want
+other vehicles, approaching from behind, to use your lights as a guide and possibly crash into your parked
+vehicle."* Then **stay in the vehicle with the seatbelts buckled** and wait it out.
+
+One more thing that department says, which is the opposite of the mental image most people have: the small
+events are the dangerous ones. **A localised dust channel can be more dangerous than a 3,000-foot haboob,
+because drivers get no chance to avoid it.** You do not see this one coming from ten miles away.
+«SRC: Arizona Department of Transportation, "Pull Aside, Stay Alive" dust storm safety guidance —
+immediately check traffic and begin slowing down, "do not wait until poor visibility makes it difficult to
+safely pull off the roadway"; completely exit the highway if possible, "do not stop in a travel lane or in
+the emergency lane"; pull completely off the paved portion; turn off all vehicle lights so following
+vehicles do not use them as a guide; stay in the vehicle with seatbelts buckled until the storm passes;
+smaller dust events can be more dangerous than large haboobs because drivers have no chance to avoid them. |
+https://azdot.gov/tags/pull-aside-stay-alive | retrieved 2026-07-29»
 
 **And N95s during and after a dust event**, particularly if you are moving or disturbing dry soil, because
 that is the Valley fever exposure. People at higher risk of severe disease — the immunocompromised,

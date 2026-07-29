@@ -99,7 +99,7 @@ from a plume.
   zone — the **plume exposure pathway**, about **ten miles** in radius — is where sheltering, evacuation and
   potassium iodide are planned. The outer zone — the **ingestion exposure pathway**, about **fifty miles** —
   exists to control contaminated food, milk and water rather than to protect you from a plume.
-  «SRC: NRC, "Emergency Planning Zones" — the plume exposure pathway EPZ extends about **10 miles** in radius (sheltering, evacuation, KI where appropriate); the ingestion exposure pathway EPZ extends about **50 miles** and governs bans on contaminated food and water. Page updated 28 Aug 2024. https://www.nrc.gov/about-nrc/emerg-preparedness/about-emerg-preparedness/planning-zones.html · retrieved 2026-07-29»
+  «SRC: NRC, "Emergency Planning Zones" — the plume exposure pathway EPZ extends about **10 miles** in radius (sheltering, evacuation, KI where appropriate); the ingestion exposure pathway EPZ extends about **50 miles** and governs bans on contaminated food and water. Page updated 28 Aug 2024. https://www.nrc.gov/about-nrc/emerg-preparedness/about-emerg-preparedness/planning-zones.html | retrieved 2026-07-29»
 - **If you are inside a zone, read your county's actual plan once.** It names your reception centre, your
   route, your notification method and your school's arrangements. It is specific, it is public, and it
   replaces every generic instruction in this book. Households inside the zone are typically enrolled in a

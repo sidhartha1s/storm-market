@@ -167,7 +167,7 @@ which is what Protection 26 is for.
 · **Regions:** all five. Rank 1 in any heat-prone area.
 
 Heat is, over the long run, the deadliest weather hazard in the country, and it kills indoors.
-«SRC: Ready.gov, "Extreme Heat" — **"extreme heat is responsible for the highest number of annual deaths among all weather-related hazards."** https://www.ready.gov/heat · retrieved 2026-07-29»
+«SRC: Ready.gov, "Extreme Heat" — **"extreme heat is responsible for the highest number of annual deaths among all weather-related hazards."** https://www.ready.gov/heat | retrieved 2026-07-29»
 
 Identify the coolest room now — lowest floor, north side, fewest windows, best cross-ventilation. That
 is where the household goes. Then identify, and write down, the nearest reliably air-conditioned
@@ -216,7 +216,33 @@ An under-insulated attic is a heat battery in summer and a heat leak in winter, 
 one upgrade that pays in both directions. Check your depth against the recommended level for your
 climate zone before spending anything — many houses are far below it and the fix is cheap per unit of
 return.
-«CITE: DOE recommended attic insulation levels by climate zone.»
+
+**Here are the actual targets**, from the federal ENERGY STAR retrofit guidance for existing wood-framed
+houses. The column that applies to you depends on what is up there now.
+
+| Climate zone | Uninsulated attic | Already has 3–4 inches |
+|---|---|---|
+| 1 | R30 | R25 |
+| 2 | R49 | R38 |
+| 3 | R49 | R38 |
+| 4A and 4B | R60 | R49 |
+| 4C, 5 and 6 | R60 | R49 |
+| 7 and 8 | R60 | R49 |
+
+Two things to notice before you call anyone. **The recommendation is R49 to R60 across most of the
+country**, and R49 is roughly fourteen to eighteen inches of loose fill depending on material — so if you
+can see the tops of your ceiling joists, you are not close. And **the number you add depends on what is
+already there**, which is why the second column exists and why an honest contractor measures before
+quoting.
+
+This guidance tracks the 2021 International Energy Conservation Code, Table R402.1.3, which is also what
+your local building department is most likely to be working from.
+«SRC: US EPA / US Department of Energy ENERGY STAR, "Recommended Home Insulation R–Values" —
+recommended insulation levels for retrofitting existing wood-framed buildings, attic floor: zone 1
+R30/R25, zone 2 R49/R38, zone 3 R49/R38, zones 4A and 4B R60/R49, zones 4C, 5 and 6 R60/R49, zones 7 and 8
+R60/R49 (uninsulated / already has 3–4 inches); guidance based on the 2021 International Energy
+Conservation Code Residential Provisions Chapter 4 Table R402.1.3. |
+https://www.energystar.gov/saveathome/seal_insulate/identify-problems-you-want-fix/diy-checks-inspections/insulation-r-values | retrieved 2026-07-29»
 
 **What this does not do:** insulation is a slow-payback comfort and cost measure, not an emergency
 protection. It belongs in the sixty-day sequence only if the budget is there after the cheap items.

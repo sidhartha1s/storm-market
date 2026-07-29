@@ -77,15 +77,18 @@ your call, not mine to add silently. A real launch-price end date is honest and 
    endpoint. The 50 state packets must also exist before this can deliver anything.
 3. **The book's prose is complete; its citations are not.** All **130 of 130** protections and all
    **23 of 23** hazard playbooks are drafted, plus front matter, people/places, the binder spec and the
-   60-day sequence — 93,969 words. **150 `«CITE:»` markers are still open**, and every one is either
-   sourced to a primary document or the claim gets cut before launch. That is the gating item, not the
-   writing.
+   60-day sequence — 117,554 words. **All 130 citation markers are now closed**: every one carries a
+   full citation and a retrieval date, and the handful of claims that could not be traced to a primary
+   document were cut rather than softened. Sourcing is no longer the gating item; layout is.
 
-   On the **488** figure: prose measures 93,969 words, and the rendered sample pages average **243
-   words per page** (measured, 11 body pages, including ones carrying diagrams and tables). That gives
-   389 prose pages, plus 80 binder pages and 18 appendix pages — **487**. So 488 is accurate to within
-   a page, but it is still a projection from measured density rather than a count of laid-out pages.
-   Confirm it against the final laid-out book before launch and change the page if it moves.
+   On the **488** figure: it is now a **floor and needs resetting.** Prose excluding the Binder measures
+   114,637 words, and the rendered sample pages average **243 words per page** (measured, 11 body pages,
+   including ones carrying diagrams and tables). That gives 472 prose pages, plus 80 binder pages and 18
+   appendix pages — **about 570.** Closing the citations added ~23,600 words. The page currently
+   understates the product, which is the safe direction, but it is still inaccurate. **Recount against
+   the laid-out book and change every instance of 488 on the landing page before launch** — it appears
+   in the meta description, the hero subhead, the proof strip, the deliverables list and the delivery
+   section.
 
 4. **The 50 state packets do not exist**, so the free-packet email gate has nothing to deliver. Schema
    and generator are built at `ebook/appendix/` and `build.py` fails loudly on an empty or

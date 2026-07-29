@@ -43,8 +43,23 @@ The second failure mode is structural and invisible: **living behind a levee or 
 being outside the flood zone, and is not.** Protection depends on a structure with a design limit, a
 maintenance history and an owner. When it is exceeded or it fails, the water arrives faster and deeper
 than an unprotected floodplain's would, because it has been held back.
-«CITE: a federal source on the number of US dams rated high-hazard-potential and/or the accredited-levee
-population, with the date of the assessment.»
+
+**The scale of that exposure is public, and it is larger than most people assume.** The Army Corps of
+Engineers maintains the National Inventory of Dams, which now lists **about 92,000 dams in the United
+States with an average age of around 61 years.** Of those, **roughly 17,000 are classified
+high-hazard-potential** — a classification that is not about the dam's condition at all. It means that
+failure *by any means* would be expected to cause **loss of life.**
+
+Read that definition carefully, because it is the useful part: high-hazard-potential describes what is
+downstream, not how sound the structure is. A well-maintained dam can be high-hazard-potential, and a
+crumbling one in an empty valley is not. **What it tells you is whether anybody has decided your
+neighbourhood is in the failure path** — and that is exactly the question to bring to your county
+emergency manager. The inventory is searchable by the public and takes minutes to check.
+«SRC: US Army Corps of Engineers, National Inventory of Dams, as summarised by USACE and FEMA — the
+inventory lists 92,075 dams in the United States with an average age of 61 years; almost 17,000 are
+classified high-hazard-potential, meaning failure from any means could result in loss of life,
+significant property damage, lifeline disruption and environmental damage. |
+https://nid.sec.usace.army.mil/ | retrieved 2026-07-29»
 
 ---
 

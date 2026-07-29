@@ -27,8 +27,7 @@ after it.
 "Colonial Pipeline Cyber Incident" — Colonial proactively shut down its pipeline system on 7 May 2021 in
 response to a ransomware attack and announced the restart of the entire system on 13 May 2021; DOE Energy
 Response Organization activated; DOT/FMCSA emergency hours-of-service measures and successive state
-additions to the regional emergency declaration. | https://www.energy.gov/ceser/colonial-pipeline-cyber-incident
-| retrieved 2026-07-29»
+additions to the regional emergency declaration. | https://www.energy.gov/ceser/colonial-pipeline-cyber-incident | retrieved 2026-07-29»
 
 That is this playbook. **The infrastructure a modern household depends on most is not physical. It is the
 set of systems that let you pay, prove who you are, be contacted, and buy things** — and those systems fail
@@ -48,6 +47,34 @@ government — increasingly common, and frequently taking weeks to resolve.
 
 And **a regional power failure**, which takes all of the above with it.
 
+**One of these has been investigated in enough detail to be worth reading as a warning.** Just before
+midnight on **9 April 2014**, a 911 call-routing facility in Englewood, Colorado stopped directing
+emergency calls to **81 call centres across seven states** — California, Florida, Minnesota, North
+Carolina, Pennsylvania, South Carolina and Washington. The cause was **a software coding error**: a counter
+hit its threshold and the system could send no more calls. The federal communications regulator's finding:
+a loss of 911 service for **more than 11 million people** — about three and a half per cent of the
+population of the United States — *"for up to six hours,"* during which **over 6,600 calls to 911 never
+reached a call centre.** In Washington state, every single call centre was affected to some degree.
+
+**The detail that should stay with you is why it lasted six hours.** The monitoring system *"did not issue
+any major or critical alarm for this outage. Instead, it issued several thousand minor alarms for calls not
+completing, but these did not attract the attention"* of staff. Switching traffic to the backup hub in
+Miami restored service *"almost immediately"* — once someone worked out what was wrong. Nobody is known to
+have died. The regulator's own verdict on the whole thing was that *"it could have been prevented. But it
+was not."*
+
+This is what a systems failure looks like from the inside: not a dramatic collapse, but a wrong number in
+software, thousands of ignored warnings, and six hours in which dialling the emergency number did nothing.
+«SRC: Federal Communications Commission, Public Safety and Homeland Security Bureau, *April 2014
+Multistate 911 Outage: Cause and Impact Report and Recommendations* (October 2014) — 9 April 2014, 11:54
+p.m. PDT, Intrado's Englewood, Colorado ECMC; software coding error; 81 PSAPs in seven states (California,
+Florida, Minnesota, North Carolina, Pennsylvania, South Carolina, Washington); loss of 911 service for more
+than 11 million people (11,313,787, about 3.5% of the US population) for up to six hours; over 6,600 calls
+to 911 never reached a PSAP; all of Washington's PSAPs affected; the monitoring system issued no major or
+critical alarm but several thousand minor alarms that did not attract staff attention; switchover to the
+Miami hub almost immediately restored service; "it could have been prevented. But it was not." |
+https://docs.fcc.gov/public/attachments/DOC-330012A1.pdf | retrieved 2026-07-29»
+
 The household consequence is identical in every case: **your money is inaccessible, your identity is
 unverifiable, and nobody can reach you.**
 
@@ -64,9 +91,9 @@ cannot reach the person you need to reach, and nobody can reach you. You cannot 
 shelter, an aid programme, a bank or an employer.
 
 The deaths, where they occur, are downstream: a delayed evacuation, a missed medication, an emergency call
-that did not connect. Multiple large 911 outages have been caused by network and software failures, not by
-storms.
-«CITE: an FCC report on a significant multi-state 911 outage, with its cause and duration.»
+that did not connect. **And the large 911 outages on record were caused by network and software failures
+rather than by storms** — the April 2014 event at the top of this playbook took 911 away from eleven
+million people across seven states, on a clear night, because of a counter in a piece of software.
 
 **Costs:** modest in dollars and severe in disruption. The specific expensive failures are fuel bought at a
 premium in a panic, a missed insurance deadline because you could not access documents, and identity fraud

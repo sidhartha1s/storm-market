@@ -22,12 +22,28 @@ https://www.weather.gov/dvn/summary_081020 | retrieved 2026-07-29»
 
 Almost nobody outside the affected area remembers it, and that is the theme of this playbook.
 
-**Hail and straight-line wind are the largest property-loss hazard in the United States and the one with
-the lowest public profile.** Severe convective storms — the ordinary summer thunderstorm complex,
-producing hail, downbursts and derechos — account for a very large share of annual insured catastrophe
-losses, exceeding hurricane losses in many years.
-«CITE: an insurance-industry or NOAA source for the annual share of US insured catastrophe losses
-attributable to severe convective storms, with the year.»
+**Hail and straight-line wind are the most frequent billion-dollar hazard in the United States and the
+one with the lowest public profile.** NOAA's billion-dollar disaster record for 1980 to 2024 counts **403
+events costing over a billion dollars each, and 203 of them — fully half — were severe storms**: the
+ordinary summer thunderstorm complex producing hail, downbursts and derechos. No other category comes
+close on frequency. Tropical cyclones, the next most numerous, number 67.
+
+**And here is the honest correction to the usual framing.** Those 203 severe storms account for **$514
+billion, about 18 per cent of the $2.9 trillion total**, while 67 tropical cyclones account for **$1.54
+trillion, about 53 per cent.** Hurricanes cost far more in total; severe storms happen far more often, at
+an average of $2.5 billion an event against $23 billion for a tropical cyclone.
+
+That difference is the entire reason this playbook exists as a *household* chapter rather than a regional
+one. **A hurricane is a rarer, larger event that arrives with days of warning in a defined part of the
+country. A severe convective storm is the one you should expect, wherever you live, several times a
+decade, with an hour's notice.** For most readers of this book, over a lifetime, this is the hazard that
+will actually visit — and 2,145 deaths across those 203 events says it is not merely a property matter.
+«SRC: NOAA National Centers for Environmental Information, "Billion-Dollar Weather and Climate
+Disasters," United States summary, 1980–2024 (CPI-adjusted) — 403 events totalling $2,918.1B and 16,941
+deaths; severe storm 203 events (50.4% of frequency), $514.4B (17.6% of costs), $2.5B per event, 2,145
+deaths; tropical cyclone 67 events (16.6%), $1,543.3B (52.9%), $23.0B per event, 7,211 deaths; 1980–2024
+annual average 9.0 events, 2020–2024 annual average 23.0 events. |
+https://www.ncei.noaa.gov/access/billions/state-summary/US | retrieved 2026-07-29»
 
 A derecho, specifically, is a long-lived line of storms producing a swathe of damaging straight-line wind
 — not a tornado, though it does tornado-scale damage over a vastly larger area. The damage pattern is the
@@ -61,13 +77,35 @@ Then two financial traps specific to this hazard, both of which cost households 
 dwelling limit rather than a flat sum. On a moderately valued house that turns an apparently insured
 claim into a mostly uninsured one. This is why Protection 102's audit lists deductibles in the plural.
 
-**Roof settlement on an actual cash value basis.** Increasingly common in hail-prone states: the policy
-pays the depreciated value of an ageing roof rather than the cost of a new one, sometimes on a published
-schedule by roof age. A household with a fifteen-year-old roof and an ACV roof endorsement can find a
-total roof loss settles at a fraction of the replacement cost. Find out which basis your roof is on
-before the storm, because it is frequently the difference between a repair and an argument.
-«CITE: an insurance-regulator or industry source describing ACV roof settlement schedules and their
-adoption in hail-prone states.»
+**Roof settlement on an actual cash value basis.** Two policies can both say they cover your roof and pay
+very different amounts. **Replacement cost** pays up to the full cost to repair at current prices; **actual
+cash value** pays replacement cost *minus depreciation* — less, because the roof was old.
+
+**Here is the sentence from the Texas insurance regulator that most homeowners have never read: *"as roofs
+age, some companies will switch to actual cash value."*** Not at purchase. At renewal. And *"if your roof
+is in poor condition, your company might not cover your roof at all."* The regulator's instruction follows
+from that: *"when you renew your policy, check to see if there are changes to your roof coverage."* Your
+insurer should tell you when it changes — the renewal packet is where that notice lives, which is the
+document nobody opens.
+
+Two more things from the same source, both worth knowing before a storm rather than after one. **Ask
+whether your wind-and-hail deductible is different from your deductible for everything else**, because in
+hail states it frequently is, and it is frequently a percentage. And if you *do* have replacement cost
+cover, expect **two cheques**: a partial payment first, and the balance *"after you've started repairs."*
+Households that do not know this assume the first cheque is the settlement, and either argue with the
+insurer or under-repair the roof.
+
+And the line that ends most disputes before they start: **your insurer *"won't pay for a new roof just
+because it's old or worn out."*** This is storm-damage cover, not a maintenance plan.
+«SRC: Texas Department of Insurance, "Insurance and your roof: What to know when buying a policy or
+filing a claim" and "Home policies: Replacement cost or actual cash value?" — replacement cost pays up to
+the full cost to repair at current prices, actual cash value pays less if the roof is older or showing
+wear; "as roofs age, some companies will switch to actual cash value"; if the roof is in poor condition the
+company might not cover it at all and should tell you when coverage changes; check for changes to roof
+coverage at renewal; ask whether the wind and hail deductible differs from other deductibles; replacement
+cost claims are paid in two cheques, the balance after repairs have started; "your insurance company won't
+pay for a new roof just because it's old or worn out." |
+https://www.tdi.texas.gov/tips/replacing-your-roof.html | retrieved 2026-07-29»
 
 ---
 

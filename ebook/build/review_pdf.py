@@ -246,13 +246,18 @@ def render_markdown(md):
             out.append(f"<{tag}>" + "".join(f"<li>{inline(x)}</li>" for x in items) + f"</{tag}>")
             continue
 
-        # Paragraph: consume until a blank line or a block-level start.
+        # Paragraph: consume until a blank line or a block-level start. A leading pipe only
+        # ends the paragraph when it actually starts a table (pipe row + separator row) —
+        # citation bodies wrap their "| url | retrieved date" tail onto a new line, and
+        # breaking there would orphan the closing marker and leak it into the page.
         block = [stripped]
         i += 1
         while i < len(lines):
             nxt = lines[i].strip()
-            if not nxt or nxt.startswith(("#", "|", ">", "```", "- ", "* ")) or re.fullmatch(r"-{3,}", nxt) \
-               or re.match(r"\d+\.\s", nxt):
+            table_start = nxt.startswith("|") and i + 1 < len(lines) \
+                and re.match(r"^\|[\s:|-]+\|?$", lines[i + 1].strip())
+            if not nxt or table_start or nxt.startswith(("#", ">", "```", "- ", "* ")) \
+               or re.fullmatch(r"-{3,}", nxt) or re.match(r"\d+\.\s", nxt):
                 break
             block.append(nxt)
             i += 1
@@ -285,12 +290,19 @@ def main():
     src_html = ['<h1>Sources</h1>']
     resolved = sum(1 for *_, ok in SOURCES if ok)
     pending = len(SOURCES) - resolved
-    src_html.append(
-        f'<p class="meta">{len(SOURCES)} numbered references: <strong>{resolved} carry a full citation '
-        f'and a retrieval date</strong>, and <strong>{pending} are still pending</strong> and marked as '
-        'such. Every pending entry is either replaced with a primary document or the claim is cut from '
-        'the book.</p>'
-    )
+    if pending:
+        src_html.append(
+            f'<p class="meta">{len(SOURCES)} numbered references: <strong>{resolved} carry a full citation '
+            f'and a retrieval date</strong>, and <strong>{pending} are still pending</strong> and marked as '
+            'such. Every pending entry is either replaced with a primary document or the claim is cut from '
+            'the book.</p>'
+        )
+    else:
+        src_html.append(
+            f'<p class="meta">{len(SOURCES)} numbered references, <strong>every one carrying a full '
+            'citation and a retrieval date</strong>. Where a claim could not be traced to a primary '
+            'document it was cut rather than softened.</p>'
+        )
     src_html.append('<ol class="sources">')
     last_chapter = None
     for number, (chapter, text, ok) in enumerate(SOURCES, start=1):
@@ -299,22 +311,34 @@ def main():
                             f'<ol class="sources" start="{number}">')
             last_chapter = chapter
         cls = "" if ok else ' class="pending"'
-        src_html.append(f"<li{cls}>{html.escape(text)}</li>")
+        # Citation bodies carry the same emphasis markup as the manuscript (italic report
+        # titles, bold key figures), so run the inline pass here too rather than printing
+        # raw asterisks in the Sources chapter.
+        item = html.escape(text)
+        for pattern, repl in INLINE:
+            item = pattern.sub(repl, item)
+        src_html.append(f"<li{cls}>{item}</li>")
     src_html.append("</ol>")
     body.append("".join(src_html))
     cites = pending
+    ref_state = f"{cites} still pending" if cites else "none pending"
+    source_note = (
+        "Those sources are still being obtained &mdash; each is either cited in full or the claim is "
+        "cut before launch." if cites else
+        "Every reference carries a full citation and a retrieval date; claims that could not be traced "
+        "to a primary document were cut."
+    )
 
     OUT.mkdir(parents=True, exist_ok=True)
     page = f"""<!doctype html><html><head><meta charset="utf-8">
 <title>The Storm-Ready Home — draft review copy</title><style>{CSS}</style></head><body>
 <p class="banner">Draft review copy &mdash; not the laid-out book. {words:,} words &middot;
-{len(SOURCES)} references, {cites} still pending &middot; see Sources at the back</p>
+{len(SOURCES)} references, {ref_state} &middot; see Sources at the back</p>
 <h1>The Storm-Ready Home &mdash; draft review copy</h1>
 <p class="meta">This renders the manuscript as continuous flowing text so it can be read and marked
 up. The finished book is hand-laid into fixed 6&times;9 pages with the cover and design in
 <code>sample.html</code>, so nothing about the pagination or the look here reflects the product.
-Superscript numbers are references; the Sources chapter at the back lists each one. Those sources are
-still being obtained &mdash; each is either cited in full or the claim is cut before launch.</p>
+Superscript numbers are references; the Sources chapter at the back lists each one. {source_note}</p>
 <ol class="toc">{''.join(toc)}</ol>
 {''.join(body)}
 </body></html>"""

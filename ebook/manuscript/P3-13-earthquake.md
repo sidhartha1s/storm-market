@@ -40,8 +40,37 @@ no season. The Pacific Northwest has the Cascadia subduction zone, capable of a 
 tsunami; the central US has the New Madrid zone, where a major earthquake would affect a region with almost
 no seismic building standards; and moderate damaging earthquakes are possible in many states that consider
 themselves safe.
-«CITE: USGS national seismic hazard information — the states with meaningful earthquake hazard, and the
-Cascadia recurrence estimate.»
+
+**How many states?** The 2023 fifty-state update of the USGS National Seismic Hazard Model — the model
+that building codes are written from — concluded that **nearly 75 per cent of the United States could
+experience damaging earthquake shaking.** Not "will," and not soon: the map is a hundred-year probability of
+shaking strong enough to do damage. But three-quarters of the country is a very different picture from the
+two or three states most people would name.
+
+**And the Cascadia numbers are now published with probabilities**, which is more useful than "overdue" —
+a word this book will not use, because the seismic record does not support it. USGS's 2025 assessment for
+the Pacific Northwest gives, for the next fifty years: a **10 per cent chance of a full-margin magnitude
+~9 rupture** on a time-independent model, or **15 per cent** on a time-dependent model that accounts for the
+last one having been in 1700; an **~30 per cent chance of a magnitude 8-or-greater event in southern
+Cascadia**; an **85 per cent chance of a deep intraslab earthquake in the Puget Sound region** — the type
+that produced the 2001 Nisqually event; and a **17 per cent chance of a magnitude 6.5-or-greater shallow
+crustal fault earthquake around Puget Sound.**
+
+Read that list in the right order. The magnitude nine is the one that gets written about, and it is the
+least likely of the four. **The everyday earthquake risk in the Pacific Northwest is the deep one at 85 per
+cent in fifty years**, and the protections in this playbook are the same for both.
+«SRC: US Geological Survey, "New USGS map shows where damaging earthquakes are most likely to occur in US"
+(2024), on the 2023 50-state update to the National Seismic Hazard Model — nearly 75% of the United States
+could experience damaging earthquake shaking; the congressionally requested update is used in building
+codes. |
+https://www.usgs.gov/news/national-news-release/new-usgs-map-shows-where-damaging-earthquakes-are-most-likely-occur-us | retrieved 2026-07-29»
+«SRC: US Geological Survey, "Earthquake probabilities and hazards in the U.S. Pacific Northwest," Fact
+Sheet 2025-3050 — NSHM uses a ~500-year recurrence interval for full-margin (M~9) Cascadia ruptures,
+implying a 10% chance in the next 50 years time-independent, 15% on a time-dependent model given the 1700
+event; ~30% chance of an M8+ event in southern Cascadia in 50 years; mean recurrence of ~26 years for deep
+intraslab events giving an 85% chance in the Puget Sound region in 50 years; ~265-year recurrence for M≥6.5
+Puget Sound crustal faults in aggregate, a 17% chance in 50 years; 5% chance of an M≥6.5 Seattle Fault
+earthquake in 50 years. | https://pubs.usgs.gov/publication/fs20253050/full | retrieved 2026-07-29»
 
 ---
 
@@ -63,10 +92,35 @@ water mains are broken and every call comes at once. In some historic earthquake
 destruction than the shaking.
 
 **Costs, and here the insurance position is stark:** earthquake damage is **excluded from standard
-homeowner policies** and requires separate cover, which typically carries a large percentage deductible.
-Take-up in even the highest-hazard states is a minority of households.
-«CITE: California Earthquake Authority or state insurance department figure for the share of households
-carrying earthquake cover.»
+homeowner policies** and requires separate cover.
+
+**California's own law tells you how few people buy it, by how hard the state has to work to make them
+consider it.** Every insurer writing residential property cover in California **must offer you earthquake
+insurance in writing, every other year.** The offer has to state the limits, the deductible and the
+premium; you have **thirty days to accept; and if you do not reply, you have rejected it.** A statutory
+biennial reminder exists because the default behaviour is to not buy.
+
+**Then the deductible, which is the part that changes the calculation.** This is not a dollar deductible.
+The California Earthquake Authority offers **5, 10, 15, 20 and 25 per cent** — a percentage of your
+dwelling limit. And for two categories the floor is higher: a home worth over a million dollars, or **a
+home built before 1980 on a raised or other non-slab foundation that has not been verified as seismically
+retrofitted**, can get no better than **15 per cent.** On a $600,000 dwelling limit that is a $90,000
+deductible. The policy also excludes landscaping, pools, fences, masonry and separate buildings.
+
+**Notice what that pre-1980 rule is actually telling you.** The state's own insurer prices an unretrofitted
+raised-foundation house as a category of its own, and offers up to a **25 per cent premium discount** for
+older homes that have been properly retrofitted — bolting the frame to the foundation, bracing cripple
+walls, the work in Protection 83. The insurance market has already scored the retrofit for you.
+
+«SRC: California Department of Insurance, "Earthquake Insurance" consumer guide — insurers writing
+residential property insurance in California must offer earthquake insurance in writing every other year,
+stating limits, deductible and premium, with 30 days to accept and non-reply constituting rejection; CEA
+offers deductibles of 5%, 10%, 15%, 20% and 25%, with a 15% floor for homes valued over $1 million and for
+homes built before 1980 on raised or other non-slab foundations not verified as seismically retrofitted
+(state law only requires insurers to offer a 15% deductible); older homes may qualify for a discount of up
+to 25% if properly retrofitted; policies do not cover landscaping, pools, fences, masonry or separate
+buildings; $10,000 building code upgrade coverage available separately. |
+https://www.insurance.ca.gov/01-consumers/105-type/95-guides/03-res/eq-ins.cfm | retrieved 2026-07-29»
 
 That means the realistic financial plan for most readers is not insurance — it is retrofit plus the
 protections that reduce the damage. Which is why the structural protections in this playbook are the money
@@ -147,7 +201,7 @@ beside an interior wall away from windows and cover your head and neck with your
 is protecting you, because it will move.
 
 **Do not run.** Do not run outside, do not run for a doorway, do not run downstairs.
-«SRC: Ready.gov, "Earthquakes" — if inside, **stay inside and do not run outside; avoid doorways**; in bed, turn face down and cover head and neck with a pillow; in a car, pull over and set the parking brake; outdoors, stay in the open away from buildings, trees, streetlights and power lines. After: expect aftershocks, do not enter damaged buildings, and **if trapped, send a text or bang on a pipe and use a whistle rather than shouting**. https://www.ready.gov/earthquakes · retrieved 2026-07-29» Most injuries happen to
+«SRC: Ready.gov, "Earthquakes" — if inside, **stay inside and do not run outside; avoid doorways**; in bed, turn face down and cover head and neck with a pillow; in a car, pull over and set the parking brake; outdoors, stay in the open away from buildings, trees, streetlights and power lines. After: expect aftershocks, do not enter damaged buildings, and **if trapped, send a text or bang on a pipe and use a whistle rather than shouting**. https://www.ready.gov/earthquakes | retrieved 2026-07-29» Most injuries happen to
 people moving during shaking, and the most dangerous place in an earthquake is immediately outside a
 building, where the glass, the cladding and the parapets land.
 

@@ -75,9 +75,18 @@ your lease permits it.
 **Renter's insurance** is the protection this section exists to insist on. It is inexpensive, it covers your
 contents — the building is the owner's problem — it usually includes loss of use, which pays for you to live
 somewhere while the building is repaired, and it usually excludes flood exactly like a homeowner policy, which
-means ground-floor and basement apartments in flood-exposed areas need a separate flood policy. Take-up among
-renters is low and it is one of the clearest financial mistakes in this book.
-«CITE: an industry figure for the share of US renters carrying renter's insurance.»
+means ground-floor and basement apartments in flood-exposed areas need a separate flood policy.
+
+**This book does not print a national take-up percentage for renter's insurance**, because the figures in
+circulation come from insurers' own marketing surveys rather than from any regulator's count, and the
+range between them is wide enough to be useless. What can be said without a number: **a renter's policy is
+among the cheapest insurance products sold in the United States, and a renter without one has no coverage
+for their possessions at all** — the landlord's policy covers the building and owes you nothing. If you
+rent and you are not certain you have a policy in force, that is a ten-minute phone call and it is the
+highest-return ten minutes in this chapter.
+
+Ask specifically about **loss of use**, which pays for somewhere to live while the building is repaired
+and is the part that turns a fire two floors below you from a catastrophe into an inconvenience.
 
 **Then the neighbours, who matter more here than in a house.** In a building, an emergency is collective: the
 stairwell, the alarm, the water, the lift and the exits are shared. Knowing three neighbours by name — and
@@ -94,11 +103,34 @@ liability. Bring it in on a warning.
 This section is written plainly because the data is plain, and a book that softened it would be doing its
 readers harm.
 
-**A manufactured home is not survivable shelter in a strong tornado or in hurricane-force wind.** Fatality
-rates in manufactured housing are disproportionate to a large degree, and no amount of anchoring, skirting or
-tying down changes the fundamental answer.
-«CITE: statistics on the share of US tornado fatalities occurring in manufactured or mobile homes relative to
-the share of the population living in them.»
+**A manufactured home is not survivable shelter in a strong tornado or in hurricane-force wind.** The
+weather service states the arithmetic without softening it: on average **72 per cent of all tornado
+fatalities occur in homes, and 54 per cent of those are in mobile homes.** More than half. **In a mobile
+home you are 15 to 20 times more likely to be killed than in a permanent home.**
+
+**Three details make the case final.** First, the threshold is far lower than people assume: **an EF-1
+tornado — or high-end severe thunderstorm winds, with no tornado at all — can completely destroy a mobile
+or manufactured home.** Second, on anchoring: *"regardless of how well built a mobile or manufactured home
+is built, anchor system failures are the primary cause of the majority of fatalities."* The tie-downs are
+the failure point, not the answer. And third, *"even well-built manufactured homes can be destroyed if they
+become airborne."*
+
+**Then the timing instruction, which is the actionable part and the one most often got wrong: leave on the
+WATCH, not the warning.** The weather service's reasoning: *"when a Tornado Warning is issued, it may be
+too dangerous to take your evacuation route."* By the time the warning fires, the drive to shelter is
+itself the hazard. The day before, when tornadoes are in the forecast, arrange where you are going — a
+relative's house, a designated shelter, a reinforced-concrete or community building — and time the journey
+so you know how long you actually need.
+«SRC: NOAA National Weather Service, Jackson MS, "Severe Weather Preparedness Week: Mobile & Manufactured
+Home Safety" — NOAA and FEMA recommend that mobile and manufactured home residents flee for sturdier
+shelter before storms with tornadoes hit; on average 72 per cent of all tornado-related fatalities are in
+homes and 54 per cent of those are in mobile homes; in a mobile home you are 15 to 20 times more likely to
+be killed than in a permanent home; EF-1 tornadoes and high-end severe thunderstorm winds can completely
+destroy mobile and manufactured homes; "regardless of how well built a mobile or manufactured home is
+built, anchor system failures are the primary cause of the majority of fatalities"; even well-built
+manufactured homes can be destroyed if they become airborne; evacuate when a Tornado Watch is issued
+because by the time a warning is issued it may be too dangerous to take the evacuation route. |
+https://www.weather.gov/jan/swpw_mhsafety | retrieved 2026-07-29»
 
 **So the plan is different in kind, not in degree: your protection is leaving, and your trigger is earlier
 than everybody else's.**

@@ -36,7 +36,7 @@ Two things make heat the hazard this book takes most seriously despite its compl
 **Extreme heat is responsible for the highest number of annual deaths among all weather-related
 hazards.** More than tornadoes, hurricanes and floods — and it does it invisibly, one person at a time,
 indoors, recorded as a cardiac or respiratory death.
-«SRC: Ready.gov, "Extreme Heat" — extreme heat is a period of high heat and humidity with temperatures above 90°F for at least two to three days, and **"extreme heat is responsible for the highest number of annual deaths among all weather-related hazards."** https://www.ready.gov/heat · retrieved 2026-07-29»
+«SRC: Ready.gov, "Extreme Heat" — extreme heat is a period of high heat and humidity with temperatures above 90°F for at least two to three days, and **"extreme heat is responsible for the highest number of annual deaths among all weather-related hazards."** https://www.ready.gov/heat | retrieved 2026-07-29»
 
 **And the deaths are concentrated in a completely knowable group**: people who are old, who live alone,
 who are on certain medications, who have no working air conditioning, who cannot afford to run the one
@@ -105,7 +105,7 @@ why households under-invest against the weather hazard with the highest annual d
   take pets.
 - **The check-in agreement**, and in this hazard it is the single most effective protection in the
   playbook — and it is what the federal guidance itself asks of you.
-  «SRC: NWS, "Heat Safety Tips and Resources", citing *The Impacts of Climate Change on Human Health in the United States: A Scientific Assessment* — infants, young children and older adults are among the groups particularly vulnerable, and the guidance is explicitly to **check in on friends and relatives in those groups, especially if they do not have air conditioning**. https://www.weather.gov/safety/heat · retrieved 2026-07-29»
+  «SRC: NWS, "Heat Safety Tips and Resources", citing *The Impacts of Climate Change on Human Health in the United States: A Scientific Assessment* — infants, young children and older adults are among the groups particularly vulnerable, and the guidance is explicitly to **check in on friends and relatives in those groups, especially if they do not have air conditioning**. https://www.weather.gov/safety/heat | retrieved 2026-07-29»
   Every elderly or isolated person in your circle gets a named person who contacts them **daily**
   during a heat event — and a physical visit if there is no answer, because heat stroke leaves people
   unable to answer a phone. The Northwest death toll was overwhelmingly people nobody checked on.

@@ -95,11 +95,32 @@ agreement and a phone number, written down on both sides.
 - Falls: the torch and shoes at the bedside (Protection 43) matter more here than anywhere, and clutter in the
   route to the safe room is a genuine hazard rather than untidiness.
 
-**On evacuation, the honest and difficult point.** Moving frail older people has a measurable cost — this is
-documented most clearly in the Fukushima aftermath and in nursing-home evacuations before hurricanes — and it
-is sometimes still the right call and sometimes not.
-«CITE: research on mortality associated with evacuation of nursing home or frail elderly populations before
-hurricanes.»
+**On evacuation, the honest and difficult point.** Moving frail older people has a measurable cost, and it
+has been measured.
+
+A study of **36,389 nursing-home residents exposed to four Gulf hurricanes** — Katrina, Rita, Gustav and
+Ike — compared them with residents of the same homes in the two preceding non-hurricane years. Exposure to
+the storms produced **277 extra deaths and 872 extra hospitalisations at thirty days**, and **579 extra
+deaths at ninety days.** Then the part that matters for your decision: isolating the effect of *evacuation
+itself*, the authors found it **raised the probability of death at ninety days from 2.7 per cent to 5.3 per
+cent** — roughly doubling it — and hospitalisation from 1.8 to 8.3 per cent, independent of other factors.
+Their conclusion: *"among residents exposed to hurricanes, evacuation significantly exacerbated subsequent
+morbidity/mortality."*
+
+**Do not read that as "never move anybody."** It is a study of the frailest population in the country,
+long-stay nursing-home residents, moved under blanket policies adopted after Katrina and under external
+pressure to evacuate regardless of individual circumstances. The finding is not that evacuation is wrong;
+it is that **for a very frail person, moving is itself a medical event with its own risk**, and it belongs
+on the same side of the ledger as the storm.
+
+Which means the calculation is real in both directions and it is sometimes still the right call.
+«SRC: D. Dosa et al., "To Evacuate or Shelter in Place: Implications of Universal Hurricane Evacuation
+Policies on Nursing Home Residents," *Journal of the American Medical Directors Association* 13(2):190.e1–e7
+(2012) — 36,389 nursing-home residents exposed to Katrina, Rita, Gustav and Ike; 277 extra deaths and 872
+extra hospitalisations at 30 days, 579 extra deaths and 544 extra hospitalisations at 90 days versus the
+prior two non-hurricane years; instrumental-variable analysis found evacuation increased the probability of
+death at 90 days from 2.7% to 5.3% and hospitalisation from 1.8% to 8.3%. |
+https://pmc.ncbi.nlm.nih.gov/articles/PMC3264770/ | retrieved 2026-07-29»
 That decision belongs to the household and the clinician together, made in advance where possible, and the
 worst version is making it at midnight with no plan. If the answer is "we stay," then the staying has to be
 properly resourced: power for the equipment, temperature control, water, and somebody present.
