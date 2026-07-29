@@ -72,7 +72,7 @@ SHOTS = {
         P+"Tri_State_Tornado_Drawing.jpg"], fit="contain"),
  "a1-s2":  dict(kind="graphic", id="g-forecast"),
  "a1-s2c": dict(kind="graphic", id="g-sources"),
- "a1-s2b": dict(kind="stills", assets=[P+"11-Murphysboro_Pre-Tornado_1.png", P+"12-Murphysboro_Pre-Tornado_2.png",
+ "a1-s2b": dict(era="pre", kind="stills", assets=[P+"11-Murphysboro_Pre-Tornado_1.png", P+"12-Murphysboro_Pre-Tornado_2.png",
         P+"Annapolis_Business_street.png", P+"1925_-_Murphysboro_20_-_Business_District.jpg",
         P+"1925_-_Murphysboro_11_-_Residential_District.jpg", P+"1925_-_Murphysboro_1_-_Corner_of_17th___Walnut.jpg",
         P+"1925_-_Murphysboro_12b_-_Baptist_Church.jpg"]),
@@ -84,7 +84,7 @@ SHOTS = {
         S+"stock-tornado-01.mp4", S+"stock-cloudsrolling-02.mp4"], stockbed=True),
  # weighted, not evenly chunked: "children walked to school" is spoken at +2.58s and
  # "miners went underground" at +7.72s, so the mine has to own the 7-12s slot
- "a1-s5":  dict(kind="mixed", assets=[(A+"ai-children-school.png","still",7.5),
+ "a1-s5":  dict(era="pre", kind="mixed", assets=[(A+"ai-children-school.png","still",7.5),
         # NOT 26-West_Frankfort_Coal_Cars.png — that is post-storm wreckage from the NWS
         # damage set, and this segment is pre-storm daily life. Wreckage here contradicts
         # the narrative before the storm has hit.
@@ -258,6 +258,16 @@ QUOTES = {
 }
 
 
+# Substitutes are era-blind by default, which put a post-storm front page and then a
+# DESTRUCTION photo into a segment narrating life BEFORE the tornado. Segments marked
+# era="pre" may only ever fall back to imagery that predates the storm.
+PRE_STORM_SAFE = [P+"11-Murphysboro_Pre-Tornado_1.png", P+"12-Murphysboro_Pre-Tornado_2.png",
+                  P+"Annapolis_Business_street.png", P+"20-De_Soto_School_1910.png",
+                  A+"ai-farmhouse-morning.png", A+"ai-children-school.png",
+                  P+"1925_-_Murphysboro_2_-_Murphysboro_Township_High_School.jpg"]
+_ERA_POOL = None
+_LAST = None
+
 MAX_USES = 3          # owner rule 2026-07-28: an image may return, but 3 times is the ceiling
 _USES = {}
 _SPARE = []
@@ -274,7 +284,13 @@ def _load_spares():
     pool = sorted((P + f.name) for f in (EP / "media" / "photos").iterdir()
                   if f.suffix.lower() in (".jpg", ".png", ".webp"))
     # unclaimed photos first, but every photo is eligible once they run out — the ceiling
-    # matters more than whether a frame was hand-picked for some other segment
+    # matters more than whether a frame was hand-picked for some other segment.
+    # Front pages are excluded entirely: they are DATED (March 20 1925, i.e. after the
+    # storm), so dropping one into a pre-storm segment as filler breaks the chronology.
+    # A substitute has to be era-neutral to be safe anywhere on the timeline.
+    # test the CANONICAL path: the front pages also exist under media/photos/ with
+    # innocuous names, and canon() rewrites those to media/newspapers/ after the filter
+    pool = [a for a in pool if not canon(a).startswith("media/newspapers/")]
     return [a for a in pool if a not in claimed] + [a for a in pool if a in claimed]
 
 
@@ -298,17 +314,23 @@ def canon(asset):
 
 def pick(asset):
     """Return `asset`, or a fresh spare once it has been used MAX_USES times."""
+    global _LAST
     asset = canon(asset)
-    if _USES.get(asset, 0) < MAX_USES:
+    if _USES.get(asset, 0) < MAX_USES and asset != _LAST:
         _USES[asset] = _USES.get(asset, 0) + 1
+        _LAST = asset
         return asset
-    for sp in _SPARE:
+    # never hand back the frame that is already on screen — with a small era-restricted
+    # pool the substitution loop otherwise cuts an image straight to itself
+    for sp in (_ERA_POOL if _ERA_POOL else _SPARE):
         sp = canon(sp)
-        if _USES.get(sp, 0) < MAX_USES:
+        if _USES.get(sp, 0) < MAX_USES and sp != _LAST:
             _USES[sp] = _USES.get(sp, 0) + 1
+            _LAST = sp
             return sp
     print(f"[build_ep3] WARNING: spare pool exhausted — {Path(asset).name} exceeds MAX_USES")
     _USES[asset] = _USES.get(asset, 0) + 1
+    _LAST = asset
     return asset
 
 
@@ -428,6 +450,8 @@ def main():
                      f'data-start="{t:.2f}" data-duration="{d:.2f}"></audio>')
         seg_start, seg_dur = round(t, 2), round(d + HOLDS.get(sid, 0.0), 2)
         seg_at[sid] = seg_start
+        global _ERA_POOL
+        _ERA_POOL = PRE_STORM_SAFE if plan.get("era") == "pre" else None
         kind = plan["kind"]
 
         if kind == "graphic":
