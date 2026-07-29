@@ -490,6 +490,38 @@ def kb_for(i):
     return table[i % len(table)]
 
 
+def check_hyperframes_current():
+    """Warn at COMPOSE time if a newer hyperframes is published (owner 2026-07-29).
+
+    This is the production-start check: it runs every time the episode is built, which is
+    before any render, so a stale pin is caught while re-pinning is still cheap — not in a
+    render log after a 40-minute render. Non-fatal: a build must not fail because npm is
+    unreachable. The render gate keeps the offline pin-drift check; currency lives here.
+    """
+    repo = EP.parent.parent
+    cfg = (repo / "config.yaml").read_text(encoding="utf-8", errors="replace")
+    m = re.search(r'hyperframes_version:\s*"([\d.]+)"', cfg)
+    if not m:
+        return
+    pinned = m.group(1)
+    try:
+        r = subprocess.run(["npm", "view", "hyperframes", "version"],
+                           capture_output=True, text=True, shell=True, timeout=30)
+        newest = r.stdout.strip()
+    except Exception:
+        newest = ""
+    if not re.fullmatch(r'[\d.]+', newest or ""):
+        print(f"[version] pin {pinned}; could not reach npm to check for a newer release (not fatal)")
+        return
+    if newest != pinned:
+        print(f"[VERSION] pinned {pinned}, but hyperframes {newest} is published.")
+        print(f"[VERSION] Decide NOW, at compose time — bump config.yaml + every npx pin together,")
+        print(f"[VERSION] or stay deliberately. Read the diff for the extract stage and any timeout")
+        print(f"[VERSION] first (0.7.81 shortened the ffprobe deadline from 120s to 30s).")
+    else:
+        print(f"[version] pin {pinned} is the latest published.")
+
+
 def main():
     global _SPARE
     _SPARE = _load_spares()
