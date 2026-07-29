@@ -27,11 +27,13 @@ if "%MODE%"=="draft" (
 cd /d "%EP%"
 set PRODUCER_PAGE_NAVIGATION_TIMEOUT_MS=120000
 set PRODUCER_PUPPETEER_PROTOCOL_TIMEOUT_MS=900000
-REM Shared ffmpeg build: this box runs three security products that scan every process
-REM creation, and the cost tracks binary size (97 MB static ffprobe = 1.165s per spawn,
-REM 224 KB shared = 0.102s). A render fires ~200 probes. See LEARNINGS.md.
-set HYPERFRAMES_FFPROBE_PATH=C:\Users\Sidhartha\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Shared_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.2-full_build-shared\binfprobe.exe
-set HYPERFRAMES_FFMPEG_PATH=C:\Users\Sidhartha\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Shared_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.2-full_build-shared\binfmpeg.exe
+REM Shared ffmpeg build: security software on this box scans every process creation and the
+REM cost tracks binary size (96.6 MB static ffprobe = 1.337s per spawn, 224 KB shared =
+REM 0.100s). A render fires ~200 probes. These two paths MUST resolve — media_budget.py
+REM fails the render if they do not, because a bad path silently falls back to the slow
+REM ffprobe on PATH and the deadline failure comes straight back. See LEARNINGS.md.
+set HYPERFRAMES_FFPROBE_PATH=C:\Users\Sidhartha\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Shared_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.2-full_build-shared\bin\ffprobe.exe
+set HYPERFRAMES_FFMPEG_PATH=C:\Users\Sidhartha\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Shared_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.2-full_build-shared\bin\ffmpeg.exe
 call npx hyperframes@0.7.81 render . --gpu --browser-gpu --experimental-fast-capture=true %QFLAGS% --workers 3 -o "renders/%OUTBASE%.mp4" > "render_%MODE%.log" 2>&1
 set RC=%ERRORLEVEL%
 echo %RC% > "render_%MODE%_done.marker"
