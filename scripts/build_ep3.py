@@ -82,9 +82,12 @@ SHOTS = {
         S+"stock-lightning-01.mp4", S+"stock-cloudsomen-01.mp4"]),
  "a1-s4d": dict(kind="panel", id="g-panel-lone", assets=[S+"stock-cloudsrolling-01.mp4",
         S+"stock-tornado-01.mp4", S+"stock-cloudsrolling-02.mp4"], stockbed=True),
- "a1-s5":  dict(kind="stills", assets=[A+"ai-children-school.png", P+"26-West_Frankfort_Coal_Cars.png",
-        A+"ai-farmhouse-morning.png", P+"20-De_Soto_School_1910.png"],
-        chip="Recreation"),
+ # weighted, not evenly chunked: "children walked to school" is spoken at +2.58s and
+ # "miners went underground" at +7.72s, so the mine has to own the 7-12s slot
+ "a1-s5":  dict(kind="mixed", assets=[(A+"ai-children-school.png","still",7.0),
+        (P+"26-West_Frankfort_Coal_Cars.png","still",5.0),
+        (A+"ai-farmhouse-morning.png","still",5.5),
+        (P+"20-De_Soto_School_1910.png","still",4.5)], chip="Recreation"),
  "a2-s1":  dict(kind="graphic", id="g-track-1"),
  "a2-s1c": dict(kind="stills", assets=[P+"02-Annapolis_Destruction.png", P+"03-Leadanna_Damage.png",
         P+"Leadanna_lead_mines_after_1925_tornado.png", P+"05-Bollinger_County_Damage.png",
@@ -526,7 +529,11 @@ def main():
                          f'<div class="lt-time">{tm}</div></section>')
         if plan.get("quote"):
             q, attr = QUOTES[plan["quote"]]
+            # .lt sits at bottom:110px and .quotecard at bottom:150px, so a lower third
+            # still on screen collides with the quote attribution. Wait for it to clear.
             qs = seg_start + min(6.0, seg_dur * 0.35)
+            if plan.get("lower"):
+                qs = max(qs, seg_start + 8.0)
             chips.append(f'  <section id="q-{idx}" class="quotecard clip" data-start="{qs:.2f}" '
                          f'data-duration="{min(9.0, seg_dur - (qs - seg_start) - 1):.2f}" data-track-index="5">'
                          f'<div class="q">{q}</div><div class="attr">{attr}</div></section>')
