@@ -93,16 +93,19 @@ for gid in sorted(mounted):
     if not ends:
         continue
     tl_end = max(ends)
-    # The last DISCRETE beat, not the end of the timeline. Every composition carries a
-    # continuous background element (.drift, the map push) spanning its full duration, so
-    # tl_end is always that. Clipping the tail of a background drift loses nothing; the
-    # question is whether a designed reveal gets cut. Anything running over 60% of the
-    # composition is that background, not a beat.
-    beats = [float(m.group(1)) + max([float(d) for d in re.findall(
-        r'duration:\s*([\d.]+)', m.group(0))] or [0])
-        for m in re.finditer(r'tl\.\w+\([^;]*?,\s*([\d.]+)\s*\);', src)
-        if max([float(d) for d in re.findall(r'duration:\s*([\d.]+)', m.group(0))] or [0])
-        < 0.60 * tl_end]
+    # The last DISCRETE beat, not the end of the timeline. Clipping the tail of a
+    # continuous element loses nothing a viewer can name; cutting a reveal does. The two
+    # are told apart by HOW they are eased, not by how long they run: a continuous element
+    # is a long linear drift (ease "none" — the grain drift, the map push, g-metmap's 14s
+    # zone rotation), while a beat lands with an entrance ease. A duration-fraction rule
+    # got this wrong, which is how this check first cried wolf on g-metmap.
+    beats = []
+    for m in re.finditer(r'tl\.\w+\([^;]*?,\s*([\d.]+)\s*\);', src):
+        body = m.group(0)
+        d = max([float(x) for x in re.findall(r'duration:\s*([\d.]+)', body)] or [0])
+        if d > 4.0 and re.search(r'ease:\s*"none"', body):
+            continue                      # continuous, not a beat
+        beats.append(float(m.group(1)) + d)
     last_beat = max(beats) if beats else 0.0
     for w in pic:
         if w["name"] != gid:
