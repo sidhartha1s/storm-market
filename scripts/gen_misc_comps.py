@@ -370,7 +370,9 @@ def lone():
            (962, 528), (1046, 496), (1168, 456), (1332, 412), (1452, 372), (1596, 330)]
     fx = (1378 - 804) / (1272 - 664)
     xs = [804 + (x - 664) * fx for x, _ in OLD]
-    y0, y1 = 958.0, 826.0            # Ellington MO down-left, Petersburg IN up-right
+    # inside the cropped band: the plate's own path latitude lands at y~765, so the route
+    # sits just around it — Ellington MO low-left, Petersburg IN slightly higher right
+    y0, y1 = 800.0, 726.0
     span = xs[-1] - xs[0]
     ys = [y0 - (x - xs[0]) / span * (y0 - y1) for x in xs]
     route = " ".join(f"{x:.0f},{y:.0f}" for x, y in zip(xs, ys))
