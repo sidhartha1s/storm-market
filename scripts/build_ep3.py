@@ -227,8 +227,16 @@ SHOTS = {
  # back under 2025 narration. Grass and rain, not storms — this beat is a memorial, not a hit.
  "a6-s3b": dict(kind="graphic", id="g-centennial",
         tail=[S+"stock-windgrass-02.mp4", S+"stock-rainfield-01.mp4", S+"stock-windgrass-01.mp4"]),
- "a6-s3e": dict(kind="stock", assets=[S+"stock-windgrass-01.mp4", S+"stock-rainfield-02.mp4",
-        S+"stock-cloudsrolling-03.mp4", S+"stock-windgrass-02.mp4"]),
+ # "Local cemeteries carry rows of headstones that all say March eighteenth, 1925" is spoken
+ # at +19.74s. Weather footage under that line is the "look at stuff" miss — the owner's
+ # memorial stone is the picture the sentence is asking for, so it owns the 17-25s slot.
+ # It is a present-day photograph, which is also what "walk the path today" needs.
+ "a6-s3e": dict(kind="mixed", chip="Recreation", assets=[
+        (S+"stock-windgrass-01.mp4","stock",6.0),
+        (S+"stock-cloudsrolling-03.mp4","stock",5.5),
+        (S+"stock-rainfield-02.mp4","stock",5.5),
+        (A+"ai-memorial-2025.png","still",8.0),
+        (S+"stock-windgrass-02.mp4","stock",2.9)]),
  "a6-s4d": dict(kind="stills", assets=[P+"13-Murphysboro_Aerial.png", P+"1925_-_Murphysboro_22_-_Aerial_View(1).jpg",
         P+"1925_-_De_Soto_-_Birds_Eye_View.jpg", P+"X_West_Frankfort2_-_Aerial_View_West_Side_of_Town.jpg",
         P+"1925_-_Murphysboro_14_-_M_O_Railyards_Aerial.jpg", P+"1925_tornado_damage_15.png"]),
