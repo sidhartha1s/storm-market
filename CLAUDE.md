@@ -115,6 +115,35 @@ session held uncommitted changes — owner-flagged, do not repeat. First action 
 storm-market session: `git worktree list` + `git status` → if you are in the main checkout
 and about to write, STOP and make a worktree.
 
+## HARD RULE — the render is the LAST step (owner correction 2026-07-29, ep3 v3)
+**Never use a render as a diagnostic tool.** ep3 v3 burned nine render attempts; three were
+killed for defects that were sitting in the code the whole time. Owner: *"no fucking 9000
+renders on any fucking video ever."*
+
+Run ALL of these to green BEFORE launching a render, every time:
+```
+python3 scripts/sweep_episode.py episodes/<slug>     # 10 structural checks
+node    scripts/blank_scan.mjs   <abs episode dir>   # pre-render blackdetect
+python3 scripts/beat_density.py  episodes/<slug>     # motionless stretches
+node    scripts/graphics_qc.mjs  .                   # from the episode dir
+python3 scripts/lint_timeline.py episodes/<slug>     # exit 0, hard gate
+```
+Plus, for any NEW or changed composition: stage it into a bare page with gsap, seek its
+timeline, screenshot 4-6 points and have a subagent read them (never Read frames into the
+main context). That loop caught eight defects in two new graphics in about ten minutes.
+
+**QC the CODE, not a frame sweep** (owner, same round): *"You can't really do a one hundred
+and five image frame sweep for graphics… You should check the code because this is HTML. How
+can I have garbled text? in HTML."* A 105-frame render sweep is not a QC method for graphics.
+
+**Owner timestamps against an older cut get mapped by YOU, from git** — never ask the owner to
+re-point them. `git show <sha>:episodes/<slug>/index.html` into a temp dir + `clip_report.py`
+resolves them exactly.
+
+**Cap every source asset at the composition's resolution before wiring it.** A 365 MB 4K stock
+clip feeding 12.9s of a 1080p comp blew hyperframes' `video_extract` ffprobe deadline and
+failed a render outright (`ffprobe deadline with code 0` = slow, not corrupt).
+
 ## Rules inherited from the owner's other channels (apply here from day 1)
 - Preview gate is PROCESS: post preview path in one line and PARK; owner's chat approval resumes.
 - Never claim/infer owner approval. Design lock before paid generation.
