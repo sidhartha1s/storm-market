@@ -78,9 +78,11 @@ narration line plays there. v3 timeline == current tree (no edits since render).
 - [ ] **City/town labels overlap the white dot and red lines — fix offset on ALL timeline segments.**
 
 ### Act 5-6 area
-- [ ] **23:19** — a man's photo appears TWICE around here; owner: "who the fuck is he, doesn't
-      align." Identify via provenance.csv; fix: remove the duplicate, and if he's not narratively
-      anchored, replace both with an aligned asset. (Flag F3: name him in the report.)
+- [ ] **23:19** — a man's photo appears TWICE around here. SRT verified (cues 471-478): narration
+      is Red Cross relief, tent cities, 7000 homeless families — NO named man anywhere. Owner call:
+      he shouldn't appear at all. REMOVE both instances (the img window [1397-1405s] over
+      g-panel-nonet, + find the second occurrence nearby); fill with relief/tent-city-aligned
+      material. Name him from provenance.csv in the report for the record.
 - [ ] **25:50** — money graphic rebuild: eyebrow ("the bill, March 1925") delete. Show
       **$16.5 million** (numerals) + small "in 1925 money" → then **$3 billion in today's money**.
       Delete the duplicated "in 1925 money" text-line and the two irrelevant sentences that vanish
