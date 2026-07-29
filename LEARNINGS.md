@@ -331,3 +331,34 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
   when a non-video is typed as a clip.
 - **Audit findings need adversarial verification before you act on them.** 81 raw findings became
   54 confirmed - a third were wrong, including several that would have sent me editing correct code.
+
+## ep3 v3 — the defects no code gate was looking for (2026-07-29)
+
+- **Run `blackdetect` on every render. The picture track can be empty and every static gate will
+  still pass.** ep3's segment scheduler advanced by `seg_dur + GAP` but only covered `seg_dur`
+  with picture windows, so the 0.75s breath between narration segments had nothing on tracks 1/2.
+  `ffmpeg -vf blackdetect=d=0.1:pix_th=0.10` on the draft found **81 black spans, 63 at segment
+  boundaries**; sampled frames were pure black. lint_timeline PASSED, graphics_qc PASSED,
+  hyperframes check found nothing — because none of them ask "is anything on screen at time t".
+  The gate that catches it is a union-coverage sweep of every element carrying
+  `data-start`+`data-duration`+`data-track-index`, compared against the comp duration.
+  Reference floor: ep2 (shipped) has 2 uncovered gaps, ep1 has 6. Anything in the dozens is a bug.
+- **Corollary: a coverage report must read the ELEMENT, not the animation array.** My first pass
+  parsed only the ken-burns `KB` array and the sub-composition hosts, and reported 63 gaps *plus*
+  16s phantom holes — because `<video>` clips carry their timing on the element itself and never
+  appear in KB. Same-shaped bug, opposite direction: it invented gaps that did not exist while
+  missing 32 real windows. Enumerate by attribute, never by animation bookkeeping.
+- **`blackdetect` false-positives on dark graphics.** Half the flagged spans were title cards on a
+  near-black background, correctly rendering. Verdict requires eyeballing a frame from each span
+  (dispatch a subagent — never Read frames into the main context). File size is a decent triage
+  signal: the truly-black JPEGs were 13KB, the content ones 38–47KB.
+- **"ffprobe deadline with code 0" is a size problem, not a corruption problem.** Render #7 died at
+  10% of `video_extract` after 141s. All 18 video assets probed clean. The cause was one 365MB
+  3840x2160 stock clip feeding 12.9s of a 1080p comp — 10x every other asset. Transcoding it to
+  1080p (365MB -> 54MB) is the durable fix; retrying the render is not. Cap source assets at the
+  composition's own resolution before wiring them.
+- **`hyperframes check` reports `data-end without data-duration` for every `<audio>`/`<video>` in
+  a composition whose source contains zero `data-end`.** It is validating a normalized DOM, not the
+  source. Verified pre-existing by running `check` against the git-HEAD index.html. It does not
+  block `render`. Don't burn a cycle chasing it — but do re-verify it is pre-existing rather than
+  assuming, by checking out the prior file and re-running.

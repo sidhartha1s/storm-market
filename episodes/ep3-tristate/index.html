@@ -41,7 +41,7 @@
 </head>
 <body>
 <div id="root" data-composition-id="ep3-tristate" data-start="0" data-width="1920" data-height="1080"
-     data-duration="2115" data-fps="30">
+     data-duration="2102" data-fps="30">
 
   <!-- narration -->
   <audio id="nx-h1s1" src="audio/h1-s1.wav" data-start="0.00" data-duration="16.64"></audio>
@@ -117,8 +117,8 @@
   <audio id="bgm-tense2" src="media/music/tense-curious-loop.mp3" data-start="1094.02" data-duration="198.96" data-volume="0" data-bed="1" data-callback="bed returns for the next act"></audio>
   <audio id="bgm-somber2" src="media/music/aftermath-somber-loop.mp3" data-start="1291.98" data-duration="347.52" data-volume="0" data-bed="1" data-callback="bed returns for the next act"></audio>
   <audio id="bgm-neutral1" src="media/music/neutral-underscore-loop.mp3" data-start="1638.50" data-duration="350.00" data-volume="0" data-bed="1"></audio>
-  <audio id="bgm-neutral1-1" src="media/music/neutral-underscore-loop.mp3" data-start="1988.50" data-duration="65.21" data-volume="0" data-bed="1" data-callback="bed continues across the act"></audio>
-  <audio id="bgm-hope1" src="media/music/hopeful-resolve-loop.mp3" data-start="2046.71" data-duration="68.00" data-volume="0" data-bed="1"></audio>
+  <audio id="bgm-neutral1-1" src="media/music/neutral-underscore-loop.mp3" data-start="1988.50" data-duration="52.21" data-volume="0" data-bed="1" data-callback="bed continues across the act"></audio>
+  <audio id="bgm-hope1" src="media/music/hopeful-resolve-loop.mp3" data-start="2033.71" data-duration="68.00" data-volume="0" data-bed="1"></audio>
 
   <!-- sfx -->
   <audio id="sfx-rumble" src="media/sfx/04_distant_storm_rumble.mp3" data-start="0" data-duration="36" data-volume="0" data-bed="1"></audio>
@@ -383,7 +383,7 @@
   <div id="host-g-fujita-254" data-composition-id="g-fujita" data-composition-src="compositions/g-fujita.html" data-start="1828.79" data-duration="44.83" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-g-modern-255" data-composition-id="g-modern" data-composition-src="compositions/g-modern.html" data-start="1873.62" data-duration="29.64" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-g-prep-257" data-composition-id="g-prep" data-composition-src="compositions/g-prep.html" data-start="1908.85" data-duration="22.00" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-close-282" data-composition-id="g-close" data-composition-src="compositions/g-close.html" data-start="2072.56" data-duration="42.44" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-close-282" data-composition-id="g-close" data-composition-src="compositions/g-close.html" data-start="2072.56" data-duration="29.44" data-track-index="2" data-width="1920" data-height="1080"></div>
 
   <!-- tracks 3/5/7: chips, quotes, lower thirds -->
   <section class="clip" id="card-date" data-start="0.30" data-duration="14.0" data-track-index="3" style="z-index:8"></section>
@@ -406,7 +406,7 @@
 window.__timelines = window.__timelines || {};
 (function() {
   const tl = gsap.timeline({ paused: true });
-  const DUR = 2115;
+  const DUR = 2102;
 
   tl.to("#bgm-dread1", { volume: 0.09, duration: 2 }, 36.50);
   tl.to("#bgm-dread1", { volume: 0.0, duration: 1.8 }, 384.00);
@@ -425,9 +425,9 @@ window.__timelines = window.__timelines || {};
   tl.to("#bgm-neutral1", { volume: 0.09, duration: 2 }, 1639.00);
   tl.to("#bgm-neutral1", { volume: 0.0, duration: 1.8 }, 1986.50);
   tl.to("#bgm-neutral1-1", { volume: 0.09, duration: 2 }, 1989.00);
-  tl.to("#bgm-neutral1-1", { volume: 0.0, duration: 1.8 }, 2051.71);
-  tl.to("#bgm-hope1", { volume: 0.09, duration: 2 }, 2047.21);
-  tl.to("#bgm-hope1", { volume: 0.0, duration: 1.8 }, 2112.71);
+  tl.to("#bgm-neutral1-1", { volume: 0.0, duration: 1.8 }, 2038.71);
+  tl.to("#bgm-hope1", { volume: 0.09, duration: 2 }, 2034.21);
+  tl.to("#bgm-hope1", { volume: 0.0, duration: 1.8 }, 2099.71);
   tl.to("#sfx-rumble", { volume: 0.55, duration: 2.0 }, 0.3);
   tl.to("#sfx-rumble", { volume: 0.75, duration: 1.0 }, 16.0);
   tl.to("#sfx-rumble", { volume: 0.0, duration: 2.5 }, 33.0);
