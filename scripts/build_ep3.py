@@ -498,6 +498,8 @@ def main():
         seg_at[sid] = seg_start
         global _ERA_POOL
         _ERA_POOL = PRE_STORM_SAFE if plan.get("era") == "pre" else None
+        global _ACT
+        _ACT = sid.split("-")[0]
         kind = plan["kind"]
 
         if kind == "graphic":
