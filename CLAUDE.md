@@ -169,9 +169,26 @@ can I have garbled text? in HTML."* A 105-frame render sweep is not a QC method 
 re-point them. `git show <sha>:episodes/<slug>/index.html` into a temp dir + `clip_report.py`
 resolves them exactly.
 
-**Cap every source asset at the composition's resolution before wiring it.** A 365 MB 4K stock
-clip feeding 12.9s of a 1080p comp blew hyperframes' `video_extract` ffprobe deadline and
-failed a render outright (`ffprobe deadline with code 0` = slow, not corrupt).
+**Cap every source asset at the composition's resolution before wiring it — and the gate
+that enforces it is `scripts/media_budget.py`, called by `render_preflight.py`.** This rule
+existed in prose through TWELVE failed ep3 v3 renders while seven clips sat at 1920x1440 in a
+1920x1080 comp and 240 MB of source fed 90s of screen time. A rule with no gate is a
+suggestion. The gate checks three numbers and refuses the render: clip resolution vs the
+composition, clip length vs the longest window that uses it, and total megabytes to decode.
+`scripts/optimize_clips.py <episode> --apply` fixes all three (originals move to media/_orig/).
+
+`ffprobe deadline with code 0` means SLOW, never corrupt. The deadline is 120s per probe,
+hardcoded in hyperframes 0.7.64 (`deadlineAtMs: Date.now() + 12e4`) — no env var raises it.
+The probe itself is fast (3.18s worst serial, 8.18s at six-way concurrency, measured with
+hyperframes' own `-count_packets` arguments by `scripts/probe_timing.py`); it blows the
+deadline queued behind the extract stage decoding oversized source. An idle box does NOT
+prevent this — attempt 12 failed with the machine quiet.
+
+**Launch a render as a harness-tracked background job.** `Start-Process` from a foreground
+tool call is killed when that call returns: attempt 11 logged its preflight line and died
+silently, no marker, no mp4. Verify liveness by COMMAND LINE
+(`Get-CimInstance Win32_Process | Where CommandLine -like '*hyperframes*'`), never by a
+process count — stale node/chrome processes read as a healthy render and cost an hour.
 
 ## Rules inherited from the owner's other channels (apply here from day 1)
 - Preview gate is PROCESS: post preview path in one line and PARK; owner's chat approval resumes.
