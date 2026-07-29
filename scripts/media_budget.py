@@ -104,12 +104,24 @@ def installed_probe_deadline():
 def ffprobe_spawn_cost():
     """Time an ffprobe spawn that touches no file, and say which binary is configured.
 
-    This box runs Defender + McAfee + CrowdStrike; all three scan every process creation and
-    the cost tracks binary SIZE, not work done. The 97 MB static build costs ~1.2s per spawn
-    and a render fires roughly 200 probes, which is what pushed a single probe past its
-    deadline through thirteen renders. The 224 KB shared build costs ~0.10s.
+    Security software on this box scans every process creation and the cost tracks binary
+    SIZE, not work done. The 96.6 MB static build costs ~1.2-1.3s per spawn and a render
+    fires roughly 200 probes, which is what pushed a single probe past its deadline through
+    thirteen renders. The 224 KB shared build costs ~0.10s. Measured 2026-07-29: Windows
+    Defender is in Passive Mode with real-time OFF and is NOT a contributor; the live
+    scanners are McAfee's mc-fw-host and CrowdStrike Falcon. Disabling McAfee's peripheral
+    services moved a spawn 1.337s -> 1.211s, i.e. nothing. Do not chase the scanners; the
+    binary size is the lever that works.
+
+    A configured path that does not exist is a HARD failure, never a fallback. render.cmd
+    once carried a formfeed byte where `\\f` belonged, so HYPERFRAMES_FFPROBE_PATH pointed at
+    a file that did not exist and hyperframes quietly fell back to the 96.6 MB binary on
+    PATH — the fix was in the tree and doing nothing.
     """
-    exe = os.environ.get("HYPERFRAMES_FFPROBE_PATH", "").strip() or "ffprobe"
+    exe = os.environ.get("HYPERFRAMES_FFPROBE_PATH", "").strip()
+    if exe and not Path(exe).exists():
+        return exe, None
+    exe = exe or "ffprobe"
     times = []
     for _ in range(3):
         t0 = time.perf_counter()
