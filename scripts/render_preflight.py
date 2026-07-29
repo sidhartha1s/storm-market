@@ -116,6 +116,12 @@ print(f"[preflight] OK — {len(busy)} heavy process(es), under the limit of {MA
 # directly: the render script calls this file and stops on a non-zero exit.
 here = Path(__file__).resolve().parent
 episode = Path(sys.argv[1]) if len(sys.argv) > 1 else Path.cwd()
+
+rc = version_check(here.parent)
+if rc:
+    print("[preflight] REFUSING TO RENDER — version pin is not trustworthy (see above).",
+          file=sys.stderr)
+    sys.exit(rc)
 budget = subprocess.run([sys.executable, str(here / "media_budget.py"), str(episode)],
                         capture_output=True, text=True)
 print(budget.stdout.rstrip())
