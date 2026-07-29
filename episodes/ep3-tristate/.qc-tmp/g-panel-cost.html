@@ -20,12 +20,12 @@
 <div id="root" data-composition-id="g-panel-cost" data-width="1920" data-height="1080">
   <div class="panel" id="g-panel-cost-panel">
     <div class="tick" id="g-panel-cost-tick"></div>
-    <div class="eyebrow" id="g-panel-cost-eb">THE BILL · MARCH 1925</div>
-    <div class="tname">$16.5 MILLION</div>
-    <div class="tsub">in nineteen twenty-five money</div>
-    
-    
-    <div class="row" id="g-panel-cost-r0"><span class="lab">IN TODAY'S MONEY</span>ON THE ORDER OF $3 BILLION</div><div class="row" id="g-panel-cost-r1">Not one city absorbing a disaster</div><div class="row" id="g-panel-cost-r2">A chain of small towns, each losing everything at once</div>
+    <div class="eyebrow" id="g-panel-cost-eb"></div>
+    <div class="tname" id="g-panel-cost-big">$16.5 MILLION</div>
+    <div class="tsub"><span class="lab" style="font-size:19px;color:#93a3b2;letter-spacing:4px;">IN 1925 MONEY</span></div>
+
+
+    <div class="row" id="g-panel-cost-r0"><span class="lab">IN TODAY'S MONEY</span>$3 BILLION</div><div class="row" id="g-panel-cost-r1"></div><div class="row" id="g-panel-cost-r2"></div>
   </div>
 </div>
 <script>
@@ -36,9 +36,12 @@ window.__timelines = window.__timelines || {};
   tl.set(["#g-panel-cost-r0", "#g-panel-cost-r1", "#g-panel-cost-r2"], {autoAlpha:0}, 0);
   tl.fromTo(P+"panel", {x:660}, {x:0, duration:0.7, ease:"power3.out"}, 0.0);
   tl.fromTo(P+"tick", {scaleY:0}, {scaleY:1, transformOrigin:"50% 0%", duration:23.90, ease:"none"}, 0.7);
-  tl.fromTo(P+"r0", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 11.48);
-  tl.fromTo(P+"r1", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 17.48);
-  tl.fromTo(P+"r2", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 22.92);
+  /* $3 billion lands on "in today's dollars ... three billion" (9.8s) */
+  tl.fromTo(P+"r0", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 9.90);
+  /* quiet emphasis beats through the hold — the figures breathe, no extra text */
+  tl.to(P+"big", {scale:1.05, duration:0.5, yoyo:true, repeat:1, transformOrigin:"0% 50%", ease:"power2.inOut"}, 6.20);
+  tl.to(P+"r0",  {scale:1.05, duration:0.5, yoyo:true, repeat:1, transformOrigin:"0% 50%", ease:"power2.inOut"}, 15.20);
+  tl.to(P+"big", {scale:1.04, duration:0.5, yoyo:true, repeat:1, transformOrigin:"0% 50%", ease:"power2.inOut"}, 20.40);
   tl.to(P+"panel", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 24.60);
   window.__timelines["g-panel-cost"] = tl;
 })();

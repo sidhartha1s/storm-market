@@ -2,43 +2,44 @@
 <style>html,body{margin:0;width:1920px;height:1080px;background:#111;overflow:hidden}</style>
 <script src="../gsap.min.js"></script></head><body>
 <style>
-  #root { position:absolute; inset:0; font-family:Arial, sans-serif;
-    background:radial-gradient(ellipse at 46% 52%, #0d141c 0%, #04070a 76%); overflow:hidden; }
-  .eyebrow { position:absolute; left:96px; top:76px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
-  .hl { position:absolute; left:96px; top:112px; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; }
-  .sub { position:absolute; left:96px; top:196px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; }
-  .drift { position:absolute; inset:-40% 0; opacity:0.30; pointer-events:none;
-    background:repeating-linear-gradient(0deg, rgba(120,150,180,0.16) 0 1px, transparent 1px 46px); }
-  .lab { font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; }
-  .val { font-size:30px; color:#dfe7ee; font-weight:700; letter-spacing:1px; }
-  .num { font-family:'Courier New',monospace; font-size:84px; color:#e74c3c; font-weight:700; line-height:1; }
-  .maplab { font-family:Arial,sans-serif; font-weight:700; font-size:25px; fill:#e8eef4; }
-  .foot { position:absolute; left:96px; bottom:74px; font-family:Georgia,serif; font-style:italic;
-    font-size:26px; color:#d8a13a; }
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif; }
+  .panel { position:absolute; right:0; top:0; bottom:0; width:760px; box-sizing:border-box;
+    background:linear-gradient(270deg, rgba(6,9,13,0.92) 74%, rgba(6,9,13,0)); padding:150px 70px 0 150px; }
+  .tick { position:absolute; left:96px; top:150px; width:4px; height:820px;
+    background:linear-gradient(180deg, #8e2020 0%, #d8a13a 100%); transform-origin:50% 0%; }
+  .hl { font-family:'Arial Black',Arial,sans-serif; font-size:60px; color:#f2f5f8; line-height:1.05; }
+  .src { position:absolute; left:150px; width:560px; }
+  .num { font-family:'Courier New',monospace; font-size:34px; color:#8e2020; font-weight:700; }
+  .nm { font-family:'Arial Black',Arial,sans-serif; font-size:34px; color:#f2f5f8; line-height:1.1; margin-top:2px; white-space:nowrap; }
+  .pv { font-size:20px; letter-spacing:1px; color:#93a3b2; font-weight:700; margin-top:6px; }
 </style>
 <div id="root" data-composition-id="g-sources" data-width="1920" data-height="1080">
-<div class="drift" id="g-sources-drift"></div>
-<div class="eyebrow" id="g-sources-eb">HOW THIS STORY IS BUILT</div><div class="hl" id="g-sources-hl">FOUR SOURCES</div><div class="sub" id="g-sources-sb">everything you will see comes from one of them</div><div id="g-sources-c0" style="position:absolute;left:96px;top:300px;width:1360px;border-left:6px solid #8e2020;background:linear-gradient(90deg,rgba(9,14,20,0.92),rgba(9,14,20,0.25));padding:18px 28px;box-sizing:border-box;"><span class="lab">SOURCE 01</span><div style="font-family:'Arial Black',Arial,sans-serif;font-size:38px;color:#f2f5f8;margin-top:6px">THE NEWSREEL</div><div style="font-family:Georgia,serif;font-style:italic;font-size:24px;color:#b8c6d4;margin-top:6px">Fox Movietone, 1925 — Univ. of South Carolina</div></div><div id="g-sources-c1" style="position:absolute;left:96px;top:450px;width:1360px;border-left:6px solid #8e2020;background:linear-gradient(90deg,rgba(9,14,20,0.92),rgba(9,14,20,0.25));padding:18px 28px;box-sizing:border-box;"><span class="lab">SOURCE 02</span><div style="font-family:'Arial Black',Arial,sans-serif;font-size:38px;color:#f2f5f8;margin-top:6px">WEATHER BUREAU RECORDS</div><div style="font-family:Georgia,serif;font-style:italic;font-size:24px;color:#b8c6d4;margin-top:6px">the original forecast documents</div></div><div id="g-sources-c2" style="position:absolute;left:96px;top:600px;width:1360px;border-left:6px solid #8e2020;background:linear-gradient(90deg,rgba(9,14,20,0.92),rgba(9,14,20,0.25));padding:18px 28px;box-sizing:border-box;"><span class="lab">SOURCE 03</span><div style="font-family:'Arial Black',Arial,sans-serif;font-size:38px;color:#f2f5f8;margin-top:6px">THE FRONT PAGES</div><div style="font-family:Georgia,serif;font-style:italic;font-size:24px;color:#b8c6d4;margin-top:6px">that week's newspapers, six states</div></div><div id="g-sources-c3" style="position:absolute;left:96px;top:750px;width:1360px;border-left:6px solid #8e2020;background:linear-gradient(90deg,rgba(9,14,20,0.92),rgba(9,14,20,0.25));padding:18px 28px;box-sizing:border-box;"><span class="lab">SOURCE 04</span><div style="font-family:'Arial Black',Arial,sans-serif;font-size:38px;color:#f2f5f8;margin-top:6px">MODERN REANALYSIS</div><div style="font-family:Georgia,serif;font-style:italic;font-size:24px;color:#b8c6d4;margin-top:6px">Johns, Burgess et al. · 2013</div></div><div class="foot" id="g-sources-ft">No source, no scene. Everything else stays out.</div>
+  <div class="panel" id="g-sources-panel">
+    <div class="tick" id="g-sources-tick"></div>
+    <div class="hl" id="g-sources-hl">FOUR<br>SOURCES</div>
+    <div class="src" id="g-sources-s1" style="top:330px"><div class="num">01</div><div class="nm">THE NEWSREEL</div><div class="pv">Fox Movietone, 1925 &middot; Univ. of South Carolina</div></div>
+    <div class="src" id="g-sources-s2" style="top:500px"><div class="num">02</div><div class="nm">WEATHER BUREAU RECORDS</div><div class="pv">the original forecast documents</div></div>
+    <div class="src" id="g-sources-s3" style="top:670px"><div class="num">03</div><div class="nm">THE FRONT PAGES</div><div class="pv">that week's newspapers, six states</div></div>
+    <div class="src" id="g-sources-s4" style="top:840px"><div class="num">04</div><div class="nm">MODERN REANALYSIS</div><div class="pv">Johns, Burgess et al. &middot; 2013</div></div>
+  </div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function() {
   const tl = gsap.timeline({ paused: true });
   const P = "#g-sources-";
-  tl.fromTo(P+"drift", {y:-120}, {y:120, duration:30.0, ease:"none"}, 0);
-  tl.fromTo(P+"eb", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.15);
-  tl.fromTo(P+"hl", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.35);
-  tl.fromTo(P+"sb", {autoAlpha:0, x:-24}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.55);
-  tl.fromTo(P+"c0", {autoAlpha:0, x:-70}, {autoAlpha:1, x:0, duration:0.55, ease:"power3.out"}, 2.2);
-  tl.fromTo(P+"c0", {scaleX:0.985}, {scaleX:1, duration:0.5, ease:"power2.out", transformOrigin:"left center"}, 2.2);
-  tl.fromTo(P+"c1", {autoAlpha:0, x:-70}, {autoAlpha:1, x:0, duration:0.55, ease:"power3.out"}, 8.0);
-  tl.fromTo(P+"c1", {scaleX:0.985}, {scaleX:1, duration:0.5, ease:"power2.out", transformOrigin:"left center"}, 8.0);
-  tl.fromTo(P+"c2", {autoAlpha:0, x:-70}, {autoAlpha:1, x:0, duration:0.55, ease:"power3.out"}, 13.5);
-  tl.fromTo(P+"c2", {scaleX:0.985}, {scaleX:1, duration:0.5, ease:"power2.out", transformOrigin:"left center"}, 13.5);
-  tl.fromTo(P+"c3", {autoAlpha:0, x:-70}, {autoAlpha:1, x:0, duration:0.55, ease:"power3.out"}, 19.0);
-  tl.fromTo(P+"c3", {scaleX:0.985}, {scaleX:1, duration:0.5, ease:"power2.out", transformOrigin:"left center"}, 19.0);
-  tl.fromTo(P+"ft", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.6}, 25.0);
-
+  tl.set([P+"s1",P+"s2",P+"s3",P+"s4"], {autoAlpha:0}, 0);
+  tl.fromTo(P+"panel", {x:660}, {x:0, duration:0.7, ease:"power3.out"}, 0.0);
+  tl.fromTo(P+"hl", {autoAlpha:0, x:30}, {autoAlpha:1, x:0, duration:0.55, ease:"power3.out"}, 0.6);
+  /* the tick grows across the whole window — continuous motion behind the reveals */
+  tl.fromTo(P+"tick", {scaleY:0}, {scaleY:1, duration:28.50, ease:"none"}, 0.7);
+  /* each source lands as it is named in the narration */
+  tl.fromTo(P+"s1", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 11.50);
+  tl.fromTo(P+"s2", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 14.90);
+  tl.fromTo(P+"s3", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 17.40);
+  tl.fromTo(P+"s4", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 20.20);
+  /* quiet emphasis on the hold ("where the record is uncertain, you will hear it") */
+  tl.to([P+"s1",P+"s2",P+"s3",P+"s4"], {x:10, duration:0.5, yoyo:true, repeat:1, stagger:0.08, ease:"power2.inOut"}, 25.20);
   window.__timelines["g-sources"] = tl;
 })();
 </script>

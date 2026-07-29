@@ -36,1151 +36,1166 @@
  },
  {
   "start": 25.71,
-  "dur": 8.28,
+  "dur": 5.78,
   "what": "still Wea00239_-_Flickr_-_NOAA_Photo_Library.jpg"
  },
  {
-  "start": 34.72,
+  "start": 32.22,
   "dur": 26,
   "what": "GRAPHIC g-wordban"
  },
  {
-  "start": 60.72,
+  "start": 58.22,
   "dur": 6.48,
   "what": "tail 11-Murphysboro_Pre-Tornado_1.png"
  },
  {
-  "start": 67.2,
+  "start": 64.7,
   "dur": 4.15,
   "what": "tail Annapolis_Business_street.png"
  },
  {
-  "start": 71.35,
+  "start": 68.85,
   "dur": 5.37,
   "what": "tail 11-Murphysboro_Pre-Tornado_1.png"
  },
  {
-  "start": 77.47,
+  "start": 74.97,
   "dur": 8.92,
   "what": "still finley-portrait-01.png"
  },
  {
-  "start": 86.39,
+  "start": 83.89,
   "dur": 5.71,
-  "what": "still DocFile__2_.jpg"
- },
- {
-  "start": 92.1,
-  "dur": 7.38,
   "what": "still finley-desk-01.png"
  },
  {
-  "start": 99.48,
-  "dur": 6.13,
+  "start": 89.6,
+  "dur": 7.38,
   "what": "still Tri_State_Tornado_Drawing.jpg"
  },
  {
-  "start": 105.61,
-  "dur": 8.22,
+  "start": 96.98,
+  "dur": 6.13,
   "what": "still finley-portrait-01.png"
  },
  {
-  "start": 114.58,
+  "start": 103.11,
+  "dur": 8.22,
+  "what": "still 11-Murphysboro_Pre-Tornado_1.png"
+ },
+ {
+  "start": 112.08,
   "dur": 22,
   "what": "GRAPHIC g-forecast"
  },
  {
-  "start": 136.58,
+  "start": 134.08,
   "dur": 1.4,
-  "what": "tail 11-Murphysboro_Pre-Tornado_1.png"
+  "what": "tail Annapolis_Business_street.png"
  },
  {
-  "start": 138.73,
-  "dur": 30,
-  "what": "GRAPHIC g-sources"
+  "start": 136.23,
+  "dur": 9.52,
+  "what": "still 1925_-_Murphysboro_22_-_Aerial_View(1).jpg"
  },
  {
-  "start": 169.52,
+  "start": 145.75,
+  "dur": 6.1,
+  "what": "still 13-Murphysboro_Aerial.png"
+ },
+ {
+  "start": 151.85,
+  "dur": 7.88,
+  "what": "still 1925_-_De_Soto_-_Birds_Eye_View.jpg"
+ },
+ {
+  "start": 159.73,
+  "dur": 6.54,
+  "what": "still X_West_Frankfort2_-_Aerial_View_West_Side_of_Town.jpg"
+ },
+ {
+  "start": 167.02,
   "dur": 8.46,
   "what": "still 12-Murphysboro_Pre-Tornado_2.png"
  },
  {
-  "start": 177.98,
+  "start": 175.48,
   "dur": 5.42,
   "what": "still Annapolis_Business_street.png"
  },
  {
-  "start": 183.4,
+  "start": 180.9,
   "dur": 7.01,
   "what": "still 12-Murphysboro_Pre-Tornado_2.png"
  },
  {
-  "start": 190.41,
+  "start": 187.91,
   "dur": 5.82,
   "what": "still 1925_-_Murphysboro_20_-_Business_District.jpg"
  },
  {
-  "start": 196.23,
+  "start": 193.73,
   "dur": 7.8,
   "what": "still 1925_-_Murphysboro_11_-_Residential_District.jpg"
  },
  {
-  "start": 204.03,
+  "start": 201.53,
   "dur": 6.21,
   "what": "still 12-Murphysboro_Pre-Tornado_2.png"
  },
  {
-  "start": 210.99,
+  "start": 208.49,
   "dur": 35.36,
   "what": "GRAPHIC g-metmap"
  },
  {
-  "start": 247.1,
+  "start": 244.6,
   "dur": 28,
   "what": "GRAPHIC g-scale"
  },
  {
-  "start": 275.1,
+  "start": 272.6,
   "dur": 2.96,
-  "what": "tail Annapolis_Business_street.png"
+  "what": "tail 1925_-_Murphysboro_20_-_Business_District.jpg"
  },
  {
-  "start": 278.81,
+  "start": 276.31,
   "dur": 4.52,
   "what": "stock stock-cloudsomen-02.mp4"
  },
  {
-  "start": 283.33,
+  "start": 280.83,
   "dur": 4.52,
   "what": "still 1925_-_Murphysboro_20_-_Business_District.jpg"
  },
  {
-  "start": 287.85,
+  "start": 285.35,
   "dur": 5.79,
   "what": "stock stock-cloudsrolling-03.mp4"
  },
  {
-  "start": 293.64,
+  "start": 291.14,
   "dur": 7.49,
   "what": "stock stock-lightning-01.mp4"
  },
  {
-  "start": 301.13,
+  "start": 298.63,
   "dur": 6.22,
   "what": "stock stock-cloudsomen-01.mp4"
  },
  {
-  "start": 307.35,
+  "start": 304.85,
   "dur": 8.34,
   "what": "stock stock-cloudsomen-02.mp4"
  },
  {
-  "start": 316.44,
+  "start": 313.94,
   "dur": 27,
   "what": "GRAPHIC g-lone"
  },
  {
-  "start": 343.44,
+  "start": 340.94,
   "dur": 5.56,
   "what": "tail stock-cloudsrolling-01.mp4"
  },
  {
-  "start": 349.75,
+  "start": 347.25,
   "dur": 7.49,
   "what": "still ai-schoolroom-coats.png"
  },
  {
-  "start": 357.24,
+  "start": 354.74,
   "dur": 5.2,
   "what": "still ai-miners-entering.png"
  },
  {
-  "start": 362.44,
+  "start": 359.94,
   "dur": 5.0,
   "what": "still ai-farmhouse-family.png"
  },
  {
-  "start": 367.44,
+  "start": 364.94,
   "dur": 8.4,
   "what": "still 20-De_Soto_School_1910.png"
  },
  {
-  "start": 376.58,
+  "start": 374.08,
   "dur": 23.16,
   "what": "GRAPHIC g-track-1"
  },
  {
-  "start": 400.49,
+  "start": 397.99,
   "dur": 8.75,
   "what": "still 02-Annapolis_Destruction.png"
  },
  {
-  "start": 409.24,
+  "start": 406.74,
   "dur": 5.6,
   "what": "still 03-Leadanna_Damage.png"
  },
  {
-  "start": 414.84,
+  "start": 412.34,
   "dur": 7.25,
   "what": "still Leadanna_lead_mines_after_1925_tornado.png"
  },
  {
-  "start": 422.09,
+  "start": 419.59,
   "dur": 6.02,
   "what": "still 05-Bollinger_County_Damage.png"
  },
  {
-  "start": 428.11,
+  "start": 425.61,
   "dur": 8.07,
   "what": "still 02-Annapolis_Destruction.png"
  },
  {
-  "start": 436.92,
+  "start": 434.42,
   "dur": 8.76,
   "what": "still 05-Bollinger_County_Damage.png"
  },
  {
-  "start": 445.68,
+  "start": 443.18,
   "dur": 5.61,
   "what": "still 1925tornado-p2o-b.jpg"
  },
  {
-  "start": 451.29,
+  "start": 448.79,
   "dur": 7.26,
   "what": "still 03-Leadanna_Damage.png"
  },
  {
-  "start": 458.55,
+  "start": 456.05,
   "dur": 6.02,
   "what": "still 02-Annapolis_Destruction.png"
  },
  {
-  "start": 465.33,
+  "start": 462.83,
   "dur": 7.82,
   "what": "still 06-Biehle_Damage_-_Theo_Holschen_Residence.jpg"
  },
  {
-  "start": 473.15,
+  "start": 470.65,
   "dur": 5.01,
   "what": "still ai-black-wall-fields.png"
  },
  {
-  "start": 478.16,
+  "start": 475.66,
   "dur": 6.47,
   "what": "still 07-Perry_County_Destruction.png"
  },
  {
-  "start": 484.63,
+  "start": 482.13,
   "dur": 5.37,
   "what": "still 1925tornado-p5o-c.jpg"
  },
  {
-  "start": 490.0,
+  "start": 487.5,
   "dur": 7.21,
   "what": "still 06-Biehle_Damage_-_Theo_Holschen_Residence.jpg"
  },
  {
-  "start": 497.96,
+  "start": 495.46,
   "dur": 36,
   "what": "GRAPHIC g-wires"
  },
  {
-  "start": 535.39,
+  "start": 532.89,
   "dur": 22.8,
   "what": "GRAPHIC g-track-2"
  },
  {
-  "start": 558.19,
+  "start": 555.69,
   "dur": 1.72,
   "what": "tail 05-Bollinger_County_Damage.png"
  },
  {
-  "start": 560.66,
+  "start": 558.16,
   "dur": 8.96,
   "what": "still 25-West_Frankfort_Orient_2_Aerial.png"
  },
  {
-  "start": 569.62,
+  "start": 567.12,
   "dur": 5.74,
   "what": "still 26-West_Frankfort_Coal_Cars.png"
  },
  {
-  "start": 575.36,
+  "start": 572.86,
   "dur": 7.42,
   "what": "still X_West_Frankfort3_-_Aerial_View_Orient_No_2_Mine.png"
  },
  {
-  "start": 582.78,
+  "start": 580.28,
   "dur": 6.16,
   "what": "still 1925_tornado_damage_9.webp"
  },
  {
-  "start": 588.94,
+  "start": 586.44,
   "dur": 8.26,
   "what": "still 25-West_Frankfort_Orient_2_Aerial.png"
  },
  {
-  "start": 597.97,
+  "start": 595.47,
   "dur": 8.95,
   "what": "still 1925_-_Gorham_-_Main_St.jpg"
  },
  {
-  "start": 606.92,
+  "start": 604.42,
   "dur": 5.73,
   "what": "still 1925_-_Gorham_-_Missouri_Pacific_Railway.jpg"
  },
  {
-  "start": 612.65,
+  "start": 610.15,
   "dur": 7.41,
   "what": "still 09-Gorham_Boxcars.png"
  },
  {
-  "start": 620.06,
+  "start": 617.56,
   "dur": 6.15,
   "what": "still 1925_-_Gorham_-_Post_Office_Area.jpg"
  },
  {
-  "start": 626.21,
+  "start": 623.71,
   "dur": 8.25,
   "what": "still 1925_-_Gorham_-_Main_St.jpg"
  },
  {
-  "start": 635.2,
+  "start": 632.7,
   "dur": 9.21,
   "what": "still 1925_-_Gorham_-_Post_Office_Area.jpg"
  },
  {
-  "start": 644.41,
+  "start": 641.91,
   "dur": 5.9,
   "what": "still 09-Gorham_Boxcars.png"
  },
  {
-  "start": 650.31,
+  "start": 647.81,
   "dur": 7.62,
   "what": "still 1925_tornado_damage_7.webp"
  },
  {
-  "start": 657.93,
+  "start": 655.43,
   "dur": 6.33,
   "what": "still 1925_-_Gorham_-_Post_Office_Area.jpg"
  },
  {
-  "start": 664.26,
+  "start": 661.76,
   "dur": 8.49,
   "what": "still 1925_tornado_damage_7.webp"
  },
  {
-  "start": 673.49,
+  "start": 670.99,
   "dur": 6.16,
   "what": "film mvtn-murphysboro-house-7s.mp4"
  },
  {
-  "start": 679.65,
+  "start": 677.15,
   "dur": 4.72,
   "what": "still 1925_-_Murphysboro_4_-_M_O_Railroad_Shops.jpg"
  },
  {
-  "start": 684.37,
+  "start": 681.87,
   "dur": 4.72,
   "what": "still 1925_-_Murphysboro_3_-_14th_St_at_Gartside.jpg"
  },
  {
-  "start": 689.09,
+  "start": 686.59,
   "dur": 4.72,
   "what": "still 1925_-_Murphysboro_14_-_M_O_Railyards_Aerial.jpg"
  },
  {
-  "start": 694.56,
+  "start": 692.06,
   "dur": 8.95,
   "what": "still 1925_-_Murphysboro_22_-_Aerial_View(1).jpg"
  },
  {
-  "start": 703.51,
+  "start": 701.01,
   "dur": 5.73,
   "what": "still 1925_-_Murphysboro_7a_-_Reliance_Mill.jpg"
  },
  {
-  "start": 709.24,
+  "start": 706.74,
   "dur": 7.41,
   "what": "still 1925_-_Murphysboro_18_-_Brown_Shoe_Company.jpg"
  },
  {
-  "start": 716.65,
+  "start": 714.15,
   "dur": 6.15,
   "what": "still 1925_-_Murphysboro_26_-_Looking_S_from_17th___Hortense.jpg"
  },
  {
-  "start": 722.8,
+  "start": 720.3,
   "dur": 8.25,
   "what": "still 1925_-_Murphysboro_22_-_Aerial_View(1).jpg"
  },
  {
-  "start": 731.79,
+  "start": 729.29,
   "dur": 8.93,
   "what": "still Tri-State_State_Tornado_Damage_Longfellow_School_2.jpg"
  },
  {
-  "start": 740.72,
+  "start": 738.22,
   "dur": 5.72,
   "what": "still 1925_-_Murphysboro_17_-_Longfellow_School.jpg"
  },
  {
-  "start": 746.44,
+  "start": 743.94,
   "dur": 7.39,
   "what": "still 1925_-_Murphysboro_6_-_Logan_School.jpg"
  },
  {
-  "start": 754.58,
+  "start": 752.08,
   "dur": 8.33,
   "what": "still 1925_-_Murphysboro_9_-_General_Damage.jpg"
  },
  {
-  "start": 762.91,
+  "start": 760.41,
   "dur": 5.33,
-  "what": "still 1925_-_Murphysboro_20_-_Business_District.jpg"
+  "what": "still 1925_tornado_damage_7.webp"
  },
  {
-  "start": 768.24,
+  "start": 765.74,
   "dur": 6.9,
   "what": "still 16-Murphysboro_SW_of_Logan_School.png"
  },
  {
-  "start": 775.14,
+  "start": 772.64,
   "dur": 5.72,
   "what": "still 1925_-_Murphysboro_9_-_General_Damage.jpg"
  },
  {
-  "start": 781.61,
+  "start": 779.11,
   "dur": 8.08,
   "what": "still 18-Murphysboro_Fire_Colorized.png"
  },
  {
-  "start": 789.69,
+  "start": 787.19,
   "dur": 5.18,
   "what": "still ai-fire-glow-night.png"
  },
  {
-  "start": 794.87,
+  "start": 792.37,
   "dur": 6.69,
   "what": "still 1925_-_Murphysboro_24_-_Blue_Front_Hotel_-_S_17th_St.jpg"
  },
  {
-  "start": 801.56,
+  "start": 799.06,
   "dur": 5.56,
   "what": "still 1925_-_Murphysboro_21_-_High_School_Aerial.jpg"
  },
  {
-  "start": 807.12,
+  "start": 804.62,
   "dur": 7.45,
   "what": "still 18-Murphysboro_Fire_Colorized.png"
  },
  {
-  "start": 815.32,
+  "start": 812.82,
   "dur": 8.61,
   "what": "still 1925_-_Murphysboro_21_-_High_School_Aerial.jpg"
  },
  {
-  "start": 823.93,
+  "start": 821.43,
   "dur": 5.52,
   "what": "still 13-Murphysboro_Aerial.png"
  },
  {
-  "start": 829.45,
+  "start": 826.95,
   "dur": 7.13,
   "what": "still 1925_-_Murphysboro_8_-_General_Damage.jpg"
  },
  {
-  "start": 836.58,
+  "start": 834.08,
   "dur": 5.92,
   "what": "still 1925_-_Murphysboro_21_-_High_School_Aerial.jpg"
  },
  {
-  "start": 842.5,
+  "start": 840.0,
   "dur": 7.94,
-  "what": "still 1925_tornado_damage_7.webp"
+  "what": "still 1925_-_Murphysboro_9_-_General_Damage.jpg"
  },
  {
-  "start": 851.19,
+  "start": 848.69,
   "dur": 11.88,
   "what": "GRAPHIC g-track-3"
  },
  {
-  "start": 863.82,
+  "start": 861.32,
   "dur": 9.46,
   "what": "still 21-De_Soso_School_Damage_1.png"
  },
  {
-  "start": 873.28,
+  "start": 870.78,
   "dur": 6.06,
   "what": "still 22-De_Soto_School_Damage_2.png"
  },
  {
-  "start": 879.34,
+  "start": 876.84,
   "dur": 7.83,
   "what": "still Illinois_-_Desoto_-_NARA_-_23939847.jpg"
  },
  {
-  "start": 887.17,
+  "start": 884.67,
   "dur": 6.5,
   "what": "still 1925_-_De_Soto_-_Birds_Eye_View.jpg"
  },
  {
-  "start": 893.67,
+  "start": 891.17,
   "dur": 8.72,
   "what": "still 19-De_Soto_Destruction.png"
  },
  {
-  "start": 903.13,
+  "start": 900.63,
   "dur": 8.25,
   "what": "still 20-De_Soto_School_1910.png"
  },
  {
-  "start": 911.38,
+  "start": 908.88,
   "dur": 5.28,
   "what": "still 21-De_Soso_School_Damage_1.png"
  },
  {
-  "start": 916.66,
+  "start": 914.16,
   "dur": 6.83,
   "what": "still Illinois_-_Desoto_-_NARA_-_23939847__cropped_.jpg"
  },
  {
-  "start": 923.49,
+  "start": 920.99,
   "dur": 5.67,
   "what": "still 20-De_Soto_School_1910.png"
  },
  {
-  "start": 929.16,
+  "start": 926.66,
   "dur": 7.6,
   "what": "still 21-De_Soso_School_Damage_1.png"
  },
  {
-  "start": 936.76,
+  "start": 934.26,
   "dur": 6.06,
-  "what": "still 1925_-_Murphysboro_9_-_General_Damage.jpg"
+  "what": "still 1925_tornado_damage_13.png"
  },
  {
-  "start": 943.56,
+  "start": 941.06,
   "dur": 8.27,
   "what": "still 24-Plumfield_School_Demolished.png"
  },
  {
-  "start": 951.83,
+  "start": 949.33,
   "dur": 5.3,
   "what": "still 28-White_County_Newman_School.png"
  },
  {
-  "start": 957.13,
+  "start": 954.63,
   "dur": 6.85,
   "what": "still X3_Enfield_-_Trousdale_School_SE_of_Town.png"
  },
  {
-  "start": 963.98,
+  "start": 961.48,
   "dur": 5.69,
   "what": "still 1925_-_Griffin_-_Griffin_School_1.jpg"
  },
  {
-  "start": 969.67,
+  "start": 967.17,
   "dur": 7.62,
   "what": "still 24-Plumfield_School_Demolished.png"
  },
  {
-  "start": 977.29,
+  "start": 974.79,
   "dur": 6.07,
   "what": "still 1925_tornado_damage_13.png"
  },
  {
-  "start": 984.11,
+  "start": 981.61,
   "dur": 8.36,
   "what": "still ai-miners-emerging.png"
  },
  {
-  "start": 992.47,
+  "start": 989.97,
   "dur": 5.36,
   "what": "still X_West_Frankfort3_-_Aerial_View_Orient_No_2_Mine.png"
  },
  {
-  "start": 997.83,
+  "start": 995.33,
   "dur": 6.92,
   "what": "still X_West_Frankfort2_-_Aerial_View_West_Side_of_Town.jpg"
  },
  {
-  "start": 1004.75,
+  "start": 1002.25,
   "dur": 5.75,
   "what": "still X_West_Frankfort1_-_Clyde_Reeds_Home.png"
  },
  {
-  "start": 1010.5,
+  "start": 1008.0,
   "dur": 7.71,
   "what": "still X_West_Frankfort4_-_James_Kerley_Home.png"
  },
  {
-  "start": 1018.21,
+  "start": 1015.71,
   "dur": 6.14,
   "what": "still 25-West_Frankfort_Orient_2_Aerial.png"
  },
  {
-  "start": 1024.35,
+  "start": 1021.85,
   "dur": 8.36,
   "what": "still ai-miners-emerging.png"
  },
  {
-  "start": 1033.46,
+  "start": 1030.96,
   "dur": 8.96,
   "what": "still X1_Hamilton_County_-_Lonnie_Smith_Home.png"
  },
  {
-  "start": 1042.42,
+  "start": 1039.92,
   "dur": 5.74,
   "what": "still 1925_tornado_damage_5.webp"
  },
  {
-  "start": 1048.16,
+  "start": 1045.66,
   "dur": 7.42,
   "what": "still 1925_tornado_damage_1.webp"
  },
  {
-  "start": 1055.58,
+  "start": 1053.08,
   "dur": 6.16,
   "what": "still X1_Hamilton_County_-_Lonnie_Smith_Home.png"
  },
  {
-  "start": 1062.49,
+  "start": 1059.99,
   "dur": 26,
   "what": "GRAPHIC g-baro"
  },
  {
-  "start": 1088.49,
+  "start": 1085.99,
   "dur": 5.78,
   "what": "tail 1925_tornado_damage_13.png"
  },
  {
-  "start": 1095.02,
+  "start": 1092.52,
   "dur": 10.8,
   "what": "GRAPHIC g-track-5"
  },
  {
-  "start": 1105.82,
+  "start": 1103.32,
   "dur": 7.23,
   "what": "tail 1925_-_Griffin_-_More_Damage.jpg"
  },
  {
-  "start": 1113.05,
+  "start": 1110.55,
   "dur": 4.63,
   "what": "tail 1925_-_Griffin_-_Residential_Damage_2.jpg"
  },
  {
-  "start": 1117.68,
+  "start": 1115.18,
   "dur": 5.98,
   "what": "tail 1925_-_Griffin_-_More_Damage.jpg"
  },
  {
-  "start": 1124.41,
+  "start": 1121.91,
   "dur": 9.23,
   "what": "still 29-Griffin_Devastation_1.png"
  },
  {
-  "start": 1133.64,
+  "start": 1131.14,
   "dur": 5.91,
   "what": "still 1925_-_Griffin_-_Brick_Buildings_Leveled_E_Side_of_Town.jpg"
  },
  {
-  "start": 1139.55,
+  "start": 1137.05,
   "dur": 7.64,
   "what": "still 30-Griffin_Devastation_2.png"
  },
  {
-  "start": 1147.19,
+  "start": 1144.69,
   "dur": 6.34,
   "what": "still ai-fire-glow-night.png"
  },
  {
-  "start": 1154.28,
+  "start": 1151.78,
   "dur": 9.12,
   "what": "still 1925_-_Griffin_-_Tents_Amidst_Damage.jpg"
  },
  {
-  "start": 1163.4,
+  "start": 1160.9,
   "dur": 5.84,
   "what": "still 1925_-_Griffin_-_Residential_Damage_1.jpg"
  },
  {
-  "start": 1169.24,
+  "start": 1166.74,
   "dur": 7.55,
   "what": "still 1925_-_Griffin_-_Building_Destroyed.jpg"
  },
  {
-  "start": 1176.79,
+  "start": 1174.29,
   "dur": 6.27,
   "what": "still 1925_-_Griffin_-_Tents_Amidst_Damage.jpg"
  },
  {
-  "start": 1183.06,
+  "start": 1180.56,
   "dur": 8.4,
   "what": "still 1925_-_Griffin_-_More_Damage.jpg"
  },
  {
-  "start": 1192.21,
+  "start": 1189.71,
   "dur": 8.22,
   "what": "still 1925_-_Princeton_-_Baldwin_Heights_Area_-_IA_PPL.jpg"
  },
  {
-  "start": 1200.43,
+  "start": 1197.93,
   "dur": 5.27,
   "what": "still 31-Princeton_Heinz_Plant.png"
  },
  {
-  "start": 1205.7,
+  "start": 1203.2,
   "dur": 6.81,
   "what": "still 1925_-_Princeton_-_Locomotive_Rolled_-_IA_GWC.jpg"
  },
  {
-  "start": 1212.51,
+  "start": 1210.01,
   "dur": 5.65,
   "what": "still 1925_-_Princeton_-_Baldwin_Heights_Area_-_IA_PPL.jpg"
  },
  {
-  "start": 1218.92,
+  "start": 1216.42,
   "dur": 8.32,
   "what": "still 1925_-_Princeton_-_McCaw_Subdivision_1_-_IA_GWC.jpg"
  },
  {
-  "start": 1227.24,
+  "start": 1224.74,
   "dur": 5.33,
   "what": "still 1925_-_Princeton_-_McCaw_Subdivision_2_-_IA_GWC.jpg"
  },
  {
-  "start": 1232.57,
+  "start": 1230.07,
   "dur": 6.89,
   "what": "still 1925_-_Princeton_-_Homes_Destroyed_near_Southern_Shops_-_IA_GWC.jpg"
  },
  {
-  "start": 1239.46,
+  "start": 1236.96,
   "dur": 5.72,
   "what": "still 1925_-_Princeton_-_Southern_Railway_Blacksmith_Shop_-_IA_PPL.jpg"
  },
  {
-  "start": 1245.18,
+  "start": 1242.68,
   "dur": 7.67,
   "what": "still 1925_-_Princeton_-_McCaw_Subdivision_1_-_IA_GWC.jpg"
  },
  {
-  "start": 1253.59,
+  "start": 1251.09,
   "dur": 30.8,
   "what": "GRAPHIC g-track-7"
  },
  {
-  "start": 1284.39,
+  "start": 1281.89,
   "dur": 7.84,
   "what": "tail 1925_-_Griffin_-_Residential_Damage_2.jpg"
  },
  {
-  "start": 1292.98,
+  "start": 1290.48,
   "dur": 8.96,
   "what": "still 1925_tornado_damage_14.png"
  },
  {
-  "start": 1301.94,
+  "start": 1299.44,
   "dur": 5.74,
   "what": "still 1925_tornado_damage_15.png"
  },
  {
-  "start": 1307.68,
+  "start": 1305.18,
   "dur": 7.42,
   "what": "still 1925_tornado_damage_11.jpg"
  },
  {
-  "start": 1315.1,
+  "start": 1312.6,
   "dur": 6.16,
   "what": "still 1925_tornado_damage_14.png"
  },
  {
-  "start": 1322.01,
+  "start": 1319.51,
   "dur": 42,
   "what": "GRAPHIC g-relief"
  },
  {
-  "start": 1365.4,
+  "start": 1362.9,
   "dur": 7.46,
   "what": "still 23-Royalton-Colp_Road_Bridge.png"
  },
  {
-  "start": 1372.86,
+  "start": 1370.36,
   "dur": 4.78,
   "what": "still X_West_Frankfort4_-_James_Kerley_Home.png"
  },
  {
-  "start": 1377.64,
+  "start": 1375.14,
   "dur": 6.18,
   "what": "still 1925_tornado_damage_2.webp"
  },
  {
-  "start": 1383.82,
+  "start": 1381.32,
   "dur": 5.13,
   "what": "still 1925_tornado_damage_8.webp"
  },
  {
-  "start": 1388.95,
+  "start": 1386.45,
   "dur": 6.88,
   "what": "still 23-Royalton-Colp_Road_Bridge.png"
  },
  {
-  "start": 1396.59,
+  "start": 1394.09,
   "dur": 8.35,
-  "what": "still marvin-portrait-01.jpg"
+  "what": "still 1925_-_Griffin_-_Tents_Amidst_Damage.jpg"
  },
  {
-  "start": 1404.94,
+  "start": 1402.44,
   "dur": 5.35,
   "what": "still 1925_tornado_damage_1.webp"
  },
  {
-  "start": 1410.29,
+  "start": 1407.79,
   "dur": 6.92,
   "what": "still 07-Perry_County_Destruction.png"
  },
  {
-  "start": 1417.21,
+  "start": 1414.71,
   "dur": 5.74,
-  "what": "still marvin-portrait-01.jpg"
- },
- {
-  "start": 1422.95,
-  "dur": 7.7,
   "what": "still 1925_tornado_damage_4.jpg"
  },
  {
-  "start": 1431.4,
+  "start": 1420.45,
+  "dur": 7.7,
+  "what": "still 1925_tornado_damage_2.webp"
+ },
+ {
+  "start": 1428.9,
   "dur": 7.51,
   "what": "paper The_Evansville_Press_Front_page_-_1925_tornado_coverage.jpg"
  },
  {
-  "start": 1438.91,
+  "start": 1436.41,
   "dur": 4.81,
   "what": "paper Marion_Evening_Post_Front_page_-_1925_tornado_coverage.jpg"
  },
  {
-  "start": 1443.72,
+  "start": 1441.22,
   "dur": 6.22,
   "what": "paper Anderson_Daily_Bulletin_Front_page_-_1925_tornado_coverage.png"
  },
  {
-  "start": 1449.94,
+  "start": 1447.44,
   "dur": 5.17,
   "what": "paper The_Butte_Daily_Post_Front_page_-_1925_tornado_coverage.jpg"
  },
  {
-  "start": 1455.11,
+  "start": 1452.61,
   "dur": 6.93,
   "what": "paper The_Evansville_Press_Front_page_-_1925_tornado_coverage.jpg"
  },
  {
-  "start": 1462.79,
+  "start": 1460.29,
   "dur": 8.44,
   "what": "paper The_Fresno_Morning_Republican_Front_page_-_1925_tornado_coverage.jpg"
  },
  {
-  "start": 1471.23,
+  "start": 1468.73,
   "dur": 5.4,
   "what": "paper Chicago_Herald_Examiner_Front_page_1925-03-20.jpg"
  },
  {
-  "start": 1476.63,
+  "start": 1474.13,
   "dur": 6.99,
   "what": "paper 1925_-_Princeton_-_Princeton_Clarion-News_-_IA_GWC.jpg"
  },
  {
-  "start": 1483.62,
+  "start": 1481.12,
   "dur": 5.8,
   "what": "paper Pc9-frnt.jpg"
  },
  {
-  "start": 1489.42,
+  "start": 1486.92,
   "dur": 7.78,
   "what": "paper The_Fresno_Morning_Republican_Front_page_-_1925_tornado_coverage.jpg"
  },
  {
-  "start": 1497.94,
+  "start": 1495.44,
   "dur": 7.35,
   "what": "film mvtn-centerpiece-aerial-30s.mp4"
  },
  {
-  "start": 1505.29,
+  "start": 1502.79,
   "dur": 7.35,
   "what": "still 1925_tornado_damage_4.jpg"
  },
  {
-  "start": 1512.64,
+  "start": 1510.14,
   "dur": 4.2,
   "what": "film mvtn-aerial-c-8s.mp4"
  },
  {
-  "start": 1516.84,
+  "start": 1514.34,
   "dur": 4.2,
   "what": "still 1925_tornado_damage_2.webp"
  },
  {
-  "start": 1521.04,
+  "start": 1518.54,
   "dur": 3.15,
   "what": "film mvtn-ground-b-6s.mp4"
  },
  {
-  "start": 1524.19,
+  "start": 1521.69,
   "dur": 3.15,
   "what": "still 1925_tornado_damage_8.webp"
  },
  {
-  "start": 1527.34,
+  "start": 1524.84,
   "dur": 9.25,
   "what": "still Wea00239_-_Flickr_-_NOAA_Photo_Library.jpg"
  },
  {
-  "start": 1537.33,
+  "start": 1534.83,
   "dur": 8.25,
   "what": "still 1925_tornado_damage_6.webp"
  },
  {
-  "start": 1545.58,
+  "start": 1543.08,
   "dur": 5.28,
   "what": "still 1925_tornado_damage_9.webp"
  },
  {
-  "start": 1550.86,
+  "start": 1548.36,
   "dur": 6.83,
   "what": "still 07-Perry_County_Destruction.png"
  },
  {
-  "start": 1557.69,
+  "start": 1555.19,
   "dur": 5.67,
   "what": "still 1925_tornado_damage_6.webp"
  },
  {
-  "start": 1563.36,
+  "start": 1560.86,
   "dur": 7.6,
   "what": "still 1925_tornado_damage_4.jpg"
  },
  {
-  "start": 1571.72,
+  "start": 1569.22,
   "dur": 7.74,
   "what": "still Tri_State_Tornado.jpg"
  },
  {
-  "start": 1579.46,
+  "start": 1576.96,
   "dur": 4.96,
   "what": "still 1925_-_Murphysboro_29_-_North_9th_Street_Park.jpg"
  },
  {
-  "start": 1584.42,
+  "start": 1581.92,
   "dur": 6.41,
   "what": "still Tri_State_Tornado.jpg"
  },
  {
-  "start": 1590.83,
+  "start": 1588.33,
   "dur": 5.32,
-  "what": "still 1925_tornado_damage_2.webp"
+  "what": "still 1925_tornado_damage_8.webp"
  },
  {
-  "start": 1596.91,
+  "start": 1594.41,
   "dur": 5.72,
   "what": "film mvtn-rebuild-bricklayers-12s.mp4"
  },
  {
-  "start": 1602.63,
+  "start": 1600.13,
   "dur": 5.72,
-  "what": "still 1925_tornado_damage_8.webp"
+  "what": "still 23-Royalton-Colp_Road_Bridge.png"
  },
  {
-  "start": 1608.35,
+  "start": 1605.85,
   "dur": 6.35,
   "what": "still 1925_-_De_Soto_-_Aftermath_Where_Homes_Were.jpg"
  },
  {
-  "start": 1614.7,
+  "start": 1612.2,
   "dur": 6.35,
   "what": "still 1925_-_De_Soto_-_Business_District.jpg"
  },
  {
-  "start": 1621.05,
+  "start": 1618.55,
   "dur": 6.35,
   "what": "still 1925_-_De_Soto_-_Business_District2.jpg"
  },
  {
-  "start": 1627.4,
+  "start": 1624.9,
   "dur": 5.68,
   "what": "still 1925_-_Princeton_-_Baldwin_Heights_School_2_-_IA_GWC.jpg"
  },
  {
-  "start": 1633.08,
+  "start": 1630.58,
   "dur": 5.68,
-  "what": "still 23-Royalton-Colp_Road_Bridge.png"
+  "what": "still 1925_-_Princeton_-_Heinz_Plant_1_-_IA_PPL.jpg"
  },
  {
-  "start": 1639.5,
+  "start": 1637.0,
   "dur": 22.56,
   "what": "GRAPHIC g-wordban2"
  },
  {
-  "start": 1662.81,
+  "start": 1660.31,
   "dur": 34.25,
   "what": "GRAPHIC g-timeline"
  },
  {
-  "start": 1697.06,
+  "start": 1694.56,
   "dur": 7.51,
   "what": "tail 1925_-_De_Soto_-_Business_District2.jpg"
  },
  {
-  "start": 1705.32,
+  "start": 1702.82,
   "dur": 38,
   "what": "GRAPHIC g-family"
  },
  {
-  "start": 1744.51,
+  "start": 1742.01,
   "dur": 29.74,
   "what": "GRAPHIC g-remeasure"
  },
  {
-  "start": 1774.25,
+  "start": 1771.75,
   "dur": 4.94,
   "what": "tail stock-windgrass-01.mp4"
  },
  {
-  "start": 1779.19,
+  "start": 1776.69,
   "dur": 3.16,
   "what": "tail stock-rainfield-01.mp4"
  },
  {
-  "start": 1782.35,
+  "start": 1779.85,
   "dur": 4.09,
   "what": "tail stock-windgrass-02.mp4"
  },
  {
-  "start": 1786.44,
+  "start": 1783.94,
   "dur": 3.39,
   "what": "tail stock-windgrass-01.mp4"
  },
  {
-  "start": 1790.58,
+  "start": 1788.08,
   "dur": 26,
   "what": "GRAPHIC g-compare"
  },
  {
-  "start": 1816.58,
+  "start": 1814.08,
   "dur": 6.99,
   "what": "tail 1925_-_De_Soto_-_Business_District2.jpg"
  },
  {
-  "start": 1823.57,
+  "start": 1821.07,
   "dur": 4.47,
   "what": "tail 1925_-_Murphysboro_29_-_North_9th_Street_Park.jpg"
  },
  {
-  "start": 1828.79,
+  "start": 1826.29,
   "dur": 44,
   "what": "GRAPHIC g-fujita"
  },
  {
-  "start": 1873.62,
+  "start": 1871.12,
   "dur": 29.64,
   "what": "GRAPHIC g-modern"
  },
  {
-  "start": 1903.26,
+  "start": 1900.76,
   "dur": 4.84,
   "what": "tail 1925_-_Princeton_-_Homes_in_Baldwin_Heights_Area_-_IA_PPL.jpg"
  },
  {
-  "start": 1908.85,
+  "start": 1906.35,
   "dur": 22,
   "what": "GRAPHIC g-prep"
  },
  {
-  "start": 1930.85,
+  "start": 1928.35,
   "dur": 7.92,
   "what": "tail 1925_-_Murphysboro_29_-_North_9th_Street_Park.jpg"
  },
  {
-  "start": 1938.77,
+  "start": 1936.27,
   "dur": 5.08,
   "what": "tail 1925_-_Princeton_-_Homes_in_Baldwin_Heights_Area_-_IA_PPL.jpg"
  },
  {
-  "start": 1944.6,
+  "start": 1942.1,
   "dur": 27.4,
   "what": "GRAPHIC g-centennial"
  },
  {
-  "start": 1972.83,
+  "start": 1970.33,
   "dur": 6.0,
   "what": "stock stock-windgrass-01.mp4"
  },
  {
-  "start": 1978.83,
+  "start": 1976.33,
   "dur": 5.5,
   "what": "stock stock-cloudsrolling-03.mp4"
  },
  {
-  "start": 1984.33,
+  "start": 1981.83,
   "dur": 5.5,
   "what": "stock stock-rainfield-02.mp4"
  },
  {
-  "start": 1989.83,
+  "start": 1987.33,
   "dur": 7.99,
   "what": "still ai-memorial-2025.png"
  },
  {
-  "start": 1997.82,
+  "start": 1995.32,
   "dur": 6.4,
   "what": "stock stock-windgrass-02.mp4"
  },
  {
-  "start": 2004.96,
+  "start": 2002.46,
   "dur": 8.89,
   "what": "still 13-Murphysboro_Aerial.png"
  },
  {
-  "start": 2013.85,
+  "start": 2011.35,
   "dur": 5.69,
-  "what": "still 1925_-_Murphysboro_22_-_Aerial_View(1).jpg"
+  "what": "still 1925_-_Princeton_-_Homes_in_Baldwin_Heights_Area_-_IA_PPL.jpg"
  },
  {
-  "start": 2019.54,
+  "start": 2017.04,
   "dur": 7.36,
   "what": "still 1925_-_De_Soto_-_Birds_Eye_View.jpg"
  },
  {
-  "start": 2026.9,
+  "start": 2024.4,
   "dur": 6.11,
   "what": "still X_West_Frankfort2_-_Aerial_View_West_Side_of_Town.jpg"
  },
  {
-  "start": 2033.01,
+  "start": 2030.51,
   "dur": 8.19,
-  "what": "still 13-Murphysboro_Aerial.png"
+  "what": "still 1925_-_Griffin_-_Griffin_School_1.jpg"
  },
  {
-  "start": 2041.95,
+  "start": 2039.45,
   "dur": 9.46,
   "what": "still 1925_-_Princeton_-_Baldwin_Heights_School_1_-_IA_PPL.jpg"
  },
  {
-  "start": 2051.41,
+  "start": 2048.91,
   "dur": 6.06,
-  "what": "still 1925_-_Princeton_-_Homes_in_Baldwin_Heights_Area_-_IA_PPL.jpg"
+  "what": "still 1925_-_Griffin_-_Griffin_School_1.jpg"
  },
  {
-  "start": 2057.47,
+  "start": 2054.97,
   "dur": 7.83,
   "what": "still 1925_-_Murphysboro_2_-_Murphysboro_Township_High_School.jpg"
  },
  {
-  "start": 2065.3,
+  "start": 2062.8,
   "dur": 6.5,
-  "what": "still 1925_-_Griffin_-_Griffin_School_1.jpg"
+  "what": "still 1925_-_Princeton_-_Heinz_Plant_1_-_IA_PPL.jpg"
  },
  {
-  "start": 2072.56,
+  "start": 2070.06,
   "dur": 25.9,
   "what": "GRAPHIC g-close"
  }

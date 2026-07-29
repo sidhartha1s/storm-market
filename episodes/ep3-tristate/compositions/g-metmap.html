@@ -121,7 +121,7 @@
   <div class="eyebrow" id="g-metmap-eb">SURFACE ANALYSIS &middot; MARCH 18, 1925</div>
   <div class="hl" id="g-metmap-hl">THE MORNING MAP</div>
   <div class="bar" id="g-metmap-bar"></div>
-  <div class="sub" id="g-metmap-sub">Eight o'clock. The set-up is already complete.</div>
+  <div class="sub" id="g-metmap-sub"><</div>
   <div class="stamp" id="g-metmap-stamp">PRIMED</div>
 
   <div class="clockwrap" id="g-metmap-clockwrap">
@@ -184,14 +184,14 @@ window.__timelines = window.__timelines || {};
 
   /* --- jet stream: draw, then advect for the whole window --- */
   tl.to(P+"jetghost", {strokeDashoffset:0, duration:2.40, ease:"power3.out"}, 17.20);
-  tl.to(P+"jetflow", {strokeDashoffset:-3600, duration:33.10, ease:"none"}, 0.90);
+  tl.to(P+"jetflow", {strokeDashoffset:-2100, duration:33.10, ease:"none"}, 0.90);
   tl.fromTo(P+"jetflow", {autoAlpha:0}, {autoAlpha:1, duration:0.70}, 1.80);
   tl.fromTo(P+"jetblock", {autoAlpha:0, x:-34}, {autoAlpha:1, x:0, duration:0.50, ease:"power3.out"}, 18.40);
   tl.fromTo(P+"jetlab", {autoAlpha:0, y:-18}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 18.40);
   tl.fromTo(P+"jetval", {autoAlpha:0, scale:1.6}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 19.15);
   tl.to(JET, {v:125, duration:1.10, ease:"power3.out", onUpdate:jetUpd}, 2.90);
   tl.fromTo(P+"jetlab2", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 19.70);
-  tl.to(P+"grat", {x:-48, duration:30.00, ease:"none"}, 3.00);
+  tl.to(P+"grat", {x:-58, duration:36.00, ease:"none"}, 3.00);
 
   /* --- cold, dry air: three ribbons draw SE, then flow for 29.5s at three speeds --- */
   tl.to(P+"k1", {strokeDashoffset:0, duration:1.70, ease:"power3.out"}, 13.50);
@@ -210,9 +210,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"iso1", {autoAlpha:0, scale:0.5}, {autoAlpha:0.75, scale:1, duration:0.90, ease:"power3.out", svgOrigin:"560 520"}, 2.20);
   tl.fromTo(P+"iso2", {autoAlpha:0, scale:0.5}, {autoAlpha:0.85, scale:1, duration:0.90, ease:"power3.out", svgOrigin:"560 520"}, 2.50);
   tl.fromTo(P+"spiral", {autoAlpha:0, scale:0.40}, {autoAlpha:1, scale:1, duration:0.85, ease:"power3.out", svgOrigin:"560 520"}, 2.90);
-  tl.to(P+"spiral", {rotation:340, duration:25.00, ease:"none", svgOrigin:"560 520"}, 3.00);
+  tl.to(P+"spiral", {rotation:250, duration:18.00, ease:"power1.out", svgOrigin:"560 520"}, 3.00);
   tl.fromTo(P+"ring", {autoAlpha:0}, {autoAlpha:1, duration:0.60}, 3.30);
-  tl.to(P+"ring", {rotation:-260, duration:24.50, ease:"none", svgOrigin:"560 520"}, 3.40);
+  tl.to(P+"ring", {rotation:-190, duration:17.50, ease:"power1.out", svgOrigin:"560 520"}, 3.40);
   tl.fromTo(P+"lglyph", {autoAlpha:0, scale:2.6}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in", svgOrigin:"560 520"}, 3.90);
   tl.fromTo(P+"lowblock", {autoAlpha:0, y:26}, {autoAlpha:1, y:0, duration:0.50, ease:"power3.out"}, 4.40);
   tl.fromTo(P+"lowlab", {autoAlpha:0, x:-22}, {autoAlpha:1, x:0, duration:0.40, ease:"power3.out"}, 4.40);
