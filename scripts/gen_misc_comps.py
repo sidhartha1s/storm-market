@@ -498,9 +498,10 @@ def centennial():
   .platefade { position:absolute; inset:0; pointer-events:none; background:
     linear-gradient(180deg, rgba(4,7,10,1) 0%, rgba(4,7,10,0) 15%,
                     rgba(4,7,10,0) 85%, rgba(4,7,10,1) 100%); }
-  .span { position:absolute; right:96px; top:92px; text-align:right;
+  /* 62px of Arial Black is ~75px of line box; at top:92 it ran into the caption at 168 */
+  .span { position:absolute; right:96px; top:80px; text-align:right; line-height:1;
     font-family:'Arial Black',Arial,sans-serif; font-size:62px; color:#e8c56a; letter-spacing:2px; }
-  .spanlab { position:absolute; right:96px; top:168px; text-align:right;
+  .spanlab { position:absolute; right:96px; top:174px; text-align:right;
     font-size:19px; letter-spacing:5px; color:#93a3b2; font-weight:700; }
   .pin { font-family:Arial,sans-serif; font-weight:700; font-size:22px; fill:#c8d3e0; }
   .pin.gone { fill:#e8c56a; font-size:27px; }
