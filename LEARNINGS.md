@@ -509,3 +509,32 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
   now lives here — a number already measured is not a tool), and `narration_picture_check.py`
   lost its place check (thirteen false positives to three real ones, propped up by a stoplist of
   words that are not towns) while keeping the era check, which is genuinely mechanical.
+- **THE ep3 v3 render RCA, after thirteen failures: process-spawn scanning, not media.**
+  This box runs **three** security products at once — Windows Defender, McAfee and
+  **CrowdStrike Falcon Sensor** — and all of them scan every process creation. The cost tracks
+  BINARY SIZE, not work done:
+
+  | binary | size | spawn |
+  |---|---|---|
+  | `cmd /c echo` | tiny, system | 0.063s |
+  | `where.exe` | small, signed | 0.172s |
+  | `python.exe` | medium | 0.251s |
+  | `ffprobe.exe` (Gyan essentials, static) | **97 MB** | **1.165s** |
+  | `ffprobe.exe` (Gyan **shared**) | **224 KB** | **0.102s** |
+
+  A render fires roughly 200 ffprobe spawns (21 video windows x ~3 probe types, ~70 audio
+  files x 2). At 1.2s each that is ~200s of pure scanning — and the observed `video_extract`
+  stage durations were 193s and 204s. When spawns collide the scanner serialises them and one
+  probe waits past its deadline, which is the `ffprobe deadline with code 0` failure.
+  **Fix: `winget install Gyan.FFmpeg.Shared` and point hyperframes at it with
+  `HYPERFRAMES_FFPROBE_PATH` / `HYPERFRAMES_FFMPEG_PATH`** (both render scripts now do).
+  Measured on the real probe over all 16 clips: 1.32s each -> 0.40s each, ~263s -> ~80s
+  projected per render.
+
+  **Why it took thirteen renders:** every earlier theory was about the MEDIA (a 4K asset,
+  contention, worker count, the deadline value). Cutting media 72%, halving workers, and
+  changing the deadline 120s->30s each changed NOTHING, and that was the signal — a
+  performance fix that moves the needle zero means the model of the problem is wrong. The
+  question that cracked it was "how long does ffprobe take when it opens no file at all?"
+  (1.4s, versus 0.06s for `cmd`). **When three independent fixes change nothing, stop fixing
+  and go measure the thing every attempt has in common.**
