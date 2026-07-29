@@ -360,8 +360,11 @@ def lone():
          f'<text x="1450" y="920" class="statelab2">INDIANA</text>'
          # the label belongs INSIDE the group it describes, so it dies with the cells
          f'<g id="{cid}-squall">{squall}'
+         # ceil, never a guess: a dasharray shorter than the line leaves the overhang
+         # painted as a second dash from frame one (1040 vs a true 1041.4px)
          f'<line id="{cid}-sqx" x1="452" y1="854" x2="1420" y2="470" stroke="#8e2020" '
-         f'stroke-width="5" stroke-dasharray="1040" stroke-dashoffset="1040"/>'
+         f'stroke-width="5" stroke-dasharray="{_ceil(452, 854, 1420, 470)}" '
+         f'stroke-dashoffset="{_ceil(452, 854, 1420, 470)}"/>'
          f'<text id="{cid}-sqlab" x="452" y="880" class="maplab" opacity="0">A SQUALL LINE · MANY STORMS</text>'
          f'</g>'
          f'<polyline id="{cid}-route" points="{route}" fill="none" stroke="#c0392b" stroke-width="8" '
