@@ -14,7 +14,10 @@ set HYPERFRAMES_FFMPEG_PATH=C:\Users\Sidhartha\AppData\Local\Microsoft\WinGet\Pa
 if not exist renders mkdir renders
 rem A render sharing this box with the Playwright QC gates starves at video_extract
 rem and dies with 'ffprobe deadline with code 0', which looks like a bad asset.
-python3 "C:\Users\Sidhartha\Automation Projects\storm-market\.worktrees\ep3-v2\scripts\render_preflight.py" "C:\Users\Sidhartha\Automation Projects\storm-market\.worktrees\ep3-v2\episodes\ep3-tristate" >> renders\render_v3_draft.log 2>&1
+rem Absolute interpreter path: a detached process (WMI Win32_Process.Create) does not inherit
+rem this shell's PATH, so bare `python3` resolved to the Microsoft Store stub and preflight
+rem exited 90 before npx ever started.
+"C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "C:\Users\Sidhartha\Automation Projects\storm-market\.worktrees\ep3-v2\scripts\render_preflight.py" "C:\Users\Sidhartha\Automation Projects\storm-market\.worktrees\ep3-v2\episodes\ep3-tristate" >> renders\render_v3_draft.log 2>&1
 if errorlevel 1 (
   echo 90 > renders\render_v3_draft_done.marker
   exit /b 90
