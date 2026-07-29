@@ -214,7 +214,11 @@ SHOTS = {
  # and was running 1925 wreckage photographs under it. The picture said 1925 while the
  # voice said 2025. No 2025 footage exists in the pool, so the beat is carried by a
  # designed card that does not pretend to be a photograph of anything.
- "a6-s3b": dict(kind="graphic", id="g-centennial"),
+ # The tail is pinned to era-neutral present-day footage: the act-6 default pool is entirely
+ # 1925 wreckage, so any retime that leaves >1.2s after the graphic would put 1925 photographs
+ # back under 2025 narration. Grass and rain, not storms — this beat is a memorial, not a hit.
+ "a6-s3b": dict(kind="graphic", id="g-centennial",
+        tail=[S+"stock-windgrass-02.mp4", S+"stock-rainfield-01.mp4", S+"stock-windgrass-01.mp4"]),
  "a6-s3e": dict(kind="stock", assets=[S+"stock-windgrass-01.mp4", S+"stock-rainfield-02.mp4",
         S+"stock-cloudsrolling-03.mp4", S+"stock-windgrass-02.mp4"]),
  "a6-s4d": dict(kind="stills", assets=[P+"13-Murphysboro_Aerial.png", P+"1925_-_Murphysboro_22_-_Aerial_View(1).jpg",
