@@ -922,6 +922,7 @@ window.__timelines = window.__timelines || {{}};
 
 
 if __name__ == "__main__":
+    check_hyperframes_current()
     vis, gfx, chips, audio, kbs, total, report, seg_at = main()
     emit(vis, gfx, chips, audio, kbs, total, report, seg_at)
     longest = sorted([r for r in report if not r[2].startswith("GRAPHIC")], key=lambda r: -r[1])[:8]
