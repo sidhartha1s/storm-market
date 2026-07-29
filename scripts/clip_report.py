@@ -59,7 +59,8 @@ print(f"windows: {len(rows)}  median: {lens[len(lens)//2]:.2f}s  "
 
 # coverage: any moment with no picture-track window is black
 total = float(re.search(r'data-duration="([\d.]+)"', h).group(1))
-spans = sorted((at, at + dur) for at, dur, *_ in rows)
+spans = sorted((at, at + dur) for at, dur, tr, *_ in rows if tr in PICTURE_TRACKS)
+overlay = sorted(set(tr for *_, tr, _, _ in [] ) )  # placeholder
 cur, holes = 0.0, []
 for a, b in spans:
     if a > cur + 0.05:
