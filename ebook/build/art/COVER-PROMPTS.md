@@ -74,8 +74,20 @@ government emblems, no watermarks, no page curl, no 3D book mockup.
 
 ---
 
-Byline locked: **Paul Reynolds** (collision-checked 2026-07-27 — several Paul Reynolds exist,
-none in weather, disaster, or preparedness).
+Byline: **Paul Raymond**, changed from Paul Reynolds on 2026-07-29 at the owner's request.
+
+**Collision check re-run for the new name on 2026-07-29, and it is worse than the old one.** Two
+live collisions, both flagged to the owner rather than silently accepted:
+
+- **Paul D. Raymond, Jr. is a real FEMA Executive Public Information Officer** and an instructor at
+  FEMA's National Disaster and Emergency Management University. That is a direct in-niche collision:
+  a preparedness book bylined Paul Raymond sits in the same field as a named federal official.
+- **Paul Raymond (1925–2008) was the British pornography publisher** behind Men Only, Escort,
+  Mayfair and Razzle, and **Paul Raymond Publications is still a trading adult-media brand.** A
+  reader searching the byline meets that brand on the first page of results.
+
+Paul Reynolds was chosen in the first place because it cleared both tests. The name change was made
+as instructed; the collision is the owner's call, not the agent's.
 
 Generate both. Save as:
 - `cover-us-clean.png` — no text, type composited in HTML

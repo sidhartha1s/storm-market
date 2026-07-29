@@ -44,7 +44,7 @@ pricing, the higher the conversion.
 4. **The money chapter** — the $3,029 / $43,600 gap, sourced, with the "what this is not" box
 5. Find your region — 5 cards, makes it personal before the ask
 6. Look inside — four real rendered pages, not a mockup
-7. Paul Reynolds — persona block with the quote
+7. Paul Raymond — persona block with the quote
 8. The offer — $47 struck from $87, everything included
 9. Free state packet — the email gate
 10. FAQ — including "isn't this free from FEMA?", answered honestly
@@ -95,8 +95,17 @@ your call, not mine to add silently. A real launch-price end date is honest and 
    partially-sourced CSV by design. ~51 rows × ~20 sourced fields of agency research outstanding.
 
 Also outstanding, not blocking: a **16:9 cover render** for the Gumroad product image and social
-cards, and a **dedicated Paul Reynolds headshot** — the portrait block currently crops his face out
-of the cover art with `background-position`, which works but is not ideal.
+cards, and a **dedicated Paul Raymond headshot** — the portrait block crops the face out of the
+cover art with `background-position`, which reads fine at the rendered size (verified on the
+screenshot 2026-07-29) but reuses the cover instead of being its own shot.
+
+**Byline changed to Paul Raymond on 2026-07-29** at the owner's request, replacing Paul Reynolds
+across this page, the sample, the cover art and the art notes. The cover byline was baked into the
+generated pixels, so `ebook/build/art/rename_byline.py` repaints that strip in place rather than
+regenerating owner-approved art; `landing/assets/cover.png` is the repainted file.
+**Collision warning on the record:** unlike Reynolds, Paul Raymond collides with a real FEMA
+Executive Public Information Officer (Paul D. Raymond, Jr.) and with Paul Raymond Publications, the
+British adult-magazine brand. Details in `ebook/build/art/COVER-PROMPTS.md`.
 
 ## Deploy (when unblocked, and with the owner)
 

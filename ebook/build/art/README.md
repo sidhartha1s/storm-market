@@ -2,7 +2,10 @@
 
 | File | Role |
 |---|---|
-| `cover-v2-paul.png` | **The cover.** Owner-selected 2026-07-27. Paul Reynolds portrait, shielded house, tornado. 1024×1536, 2:3. |
+| `cover-v3-raymond.png` | **The cover, as shipped.** Owner-selected art with the byline repainted to Paul Raymond, 2026-07-29. 1024×1536, 2:3. |
+| `cover-v2-paul.png` | The same art with the original **Paul Reynolds** byline. Kept as the source plate `rename_byline.py` reads. |
+| `rename_byline.py` | Repaints the byline strip on the selected art. Run it if the pen name changes again — it does not regenerate the art. |
+| `PlayfairDisplay.ttf` | The byline face (OFL). Pinned locally so the repaint is reproducible offline. |
 | `ref-yoder-cover.png` | Reference only — the Yoder cover. Internal design reference, never reproduced. |
 | `cover-us-typed.png` | Superseded. US hazard-map with baked type. |
 | `cover-us-clean.png` | Superseded. Clean hazard-map plate. |
@@ -37,6 +40,13 @@ Studied from `ref-yoder-cover.png`:
 
 **Our cover currently has 1, 4, 5 and 6 missing.** The title is the dominant type instead of the
 outcome. That is the gap to close in v3 — see the open items below.
+
+**2026-07-29 — byline changed to Paul Raymond, art untouched.** The generator baked the byline into
+the pixels, so a name change would normally mean regenerating and losing owner-approved art. Instead
+`rename_byline.py` repaints only the byline strip: it refills those 36 rows from the flat background
+either side, then redraws the name in Playfair Display at the metrics measured off the original
+glyphs (cap height 21px, baseline y=1491, left edge x=65, glyph pitch = ink width + 8px). Verified by
+eye at 100% and at 7x against the original. Shipped file is now `cover-v3-raymond.png`.
 
 ## FINAL — owner locked `cover-v2-paul.png` as shipped, 2026-07-27
 
