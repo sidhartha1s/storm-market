@@ -38,7 +38,7 @@ for m in re.finditer(r'<(section|video|img|div)\b([^>]*)>', h):
             s2 = re.search(r'src="([^"]+)"', inner)
             name = Path(s2.group(1)).name if s2 else "?"
         kind = "clip" if tag == "video" else "still"
-    rows.append((at, dur, tr.group(1), kind, name))
+    rows.append((at, dur, int(tr.group(1)), kind, name))
 
 rows.sort()
 
