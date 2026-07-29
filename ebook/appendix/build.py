@@ -20,7 +20,7 @@ D = "—"          # em dash, used in generated titles
 BOOK_CSS = HERE.parent / "build" / "book.css"
 
 # States per Appendix B page. fitcheck.mjs is the real gate on this number.
-PER_PAGE = 3   # 3 passes; 4 overflowed two pages (Texas, Washington) by ~130px
+PER_PAGE = 4   # 13 pages, verified against fitcheck after tightening the row
 FRONT_MATTER = HERE.parent / "manuscript" / "P0-front-matter.md"
 OUT = HERE / "out"
 
@@ -251,7 +251,9 @@ def build_appendix(complete, per_page=PER_PAGE):
 
     The pages do not reflow, so pagination is explicit rather than left to the browser, and
     fitcheck.mjs is the gate: if a page overflows, lower per_page or tighten the row. The first
-    version put all 51 states on one page and overflowed it by 24,533px.
+    version put all 51 states on one page and overflowed it by 24,533px, and 4 per page only
+    fits because the row was tightened afterwards — Texas and Washington, whose three hazard
+    names are the longest in the set, were the states that decided it.
     """
     row_tpl = read_template("appendix_row.html")
     ordered = sorted(complete, key=lambda r: r["state"])
