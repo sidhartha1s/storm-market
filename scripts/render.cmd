@@ -14,15 +14,26 @@ if "%SLUG%"=="" goto :usage
 set EP=%~dp0..\episodes\%SLUG%
 if not exist "%EP%\index.html" echo ERROR: no index.html in %EP% & exit /b 1
 
+REM CRF/FPS are tunable per render. Defaults reproduce the tested recipe (full crf16/30fps,
+REM draft crf32/15fps). For a smaller single-pass full render, author at 24fps and set
+REM RENDER_CRF=20 — visually lossless for this content, ~half the size, no transcode. See
+REM LEARNINGS.md "Render size + HEVC compression".
 if "%MODE%"=="draft" (
-  set QFLAGS=--quality draft --crf 32 --fps 15
+  set QUAL=draft
+  set _CRF=32
+  set _FPS=15
   if "%OUTBASE%"=="" set OUTBASE=%SLUG%-draft
 ) else if "%MODE%"=="full" (
-  set QFLAGS=--quality standard --crf 16 --fps 30
+  set QUAL=standard
+  set _CRF=16
+  set _FPS=30
   if "%OUTBASE%"=="" set OUTBASE=%SLUG%-final
 ) else (
   goto :usage
 )
+if defined RENDER_CRF set _CRF=%RENDER_CRF%
+if defined RENDER_FPS set _FPS=%RENDER_FPS%
+set QFLAGS=--quality %QUAL% --crf %_CRF% --fps %_FPS%
 
 cd /d "%EP%"
 REM QC tools (blank_scan.mjs, graphics_qc.mjs) stage _*_tmp.html in the episode root; if one is
