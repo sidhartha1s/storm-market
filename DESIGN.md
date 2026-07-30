@@ -278,7 +278,7 @@ shear arrows + rotating column, a conic-gradient supercell. A cone captioned "to
 captioned "warm air" conveys nothing — build the mechanism, animate it, let the label name it.
 
 ## 8. Hard gate — code QC, not frame QC
-`python3 scripts/graphics_qc.py episodes/<slug>` must exit 0 before any render. Frame renders
+`node scripts/graphics_qc.mjs .` (from the episode dir) must exit 0 before any render. Frame renders
 CONFIRM; they never DISCOVER. Sampling 105 frames of a 35-min cut inspects 0.3% of the runtime and
 cannot see text collision, empty containers, or crop errors — those are `getBoundingClientRect`
 assertions in the DOM. (ep3 v2 root cause.)
