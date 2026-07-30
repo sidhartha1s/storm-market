@@ -1,17 +1,27 @@
 #!/usr/bin/env python3
 """Post-render deliverables: -14 LUFS master + SRT, per repo CLAUDE.md step 7.
 
-Usage: python3 scripts/master_deliverables.py episodes/<slug> <render-basename>
+Usage: python3 scripts/master_deliverables.py episodes/<slug> <render-basename> [--hevc]
+
 e.g.:  python3 scripts/master_deliverables.py episodes/ep2-2011-super-outbreak ep2-final
+       python3 scripts/master_deliverables.py episodes/ep3-tristate ep3-final --hevc
 
 Reads  episodes/<slug>/renders/<basename>.mp4 and writes:
-  renders/<basename>-master.mp4  (video stream copied, single measured gain,
-                                  aac 256k; verified -14 LUFS +/-0.5, TP <= -0.9)
-  renders/<basename>.srt         (via scripts/build_srt.py)
+  renders/<basename>-master.mp4       (video stream copied, single measured gain,
+                                        aac 256k; verified -14 LUFS +/-0.5, TP <= -0.9)
+  renders/<basename>.srt              (via scripts/build_srt.py)
+  renders/<basename>-master-hevc.mp4  (--hevc only: GPU hevc_nvenc, audio bit-copied
+                                        from the master; ~2.5x smaller, visually lossless)
 
 Plain gain (not dynamic loudnorm) is deliberate: episode mixes land with tight
 LRA (~3.4 measured on ep2), where one measured gain preserves the mix exactly.
 Fails loud (exit 1) if the verify pass misses tolerance.
+
+--hevc uses GPU NVENC (fast: ~6x realtime). It requires an ffmpeg whose hevc_nvenc
+matches the box's Nvidia driver — the WinGet PATH ffmpeg (Gyan Essentials 8.1.1) works;
+the 8.1.2 shared build's NVENC needs driver 610+ and fails with API-version -40. If NVENC
+is unavailable this step fails loud (exit 2) rather than silently dropping to a 4-hour
+software x265 encode. See LEARNINGS.md "Render size + HEVC compression".
 """
 import json
 import re
