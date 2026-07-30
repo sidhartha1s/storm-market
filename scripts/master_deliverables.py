@@ -44,11 +44,34 @@ def measure(path: Path) -> dict:
         sys.exit(f"loudnorm measure failed on {path}:\n{r.stderr[-800:]}")
     return json.loads(m.group(0))
 
+def encode_hevc(master: Path, out: Path):
+    """GPU HEVC transcode of the finished master. Video re-encoded (visually lossless
+    cq22), audio bit-copied so the -14 LUFS mix is untouched. Fails loud if NVENC is
+    unavailable — never falls back to a multi-hour software encode."""
+    print(f"[5/5] GPU HEVC -> {out.name} (hevc_nvenc p7 cq22, audio copied) ...")
+    r = subprocess.run(
+        ["ffmpeg", "-hide_banner", "-y", "-i", str(master),
+         "-c:v", "hevc_nvenc", "-preset", "p7", "-tune", "hq", "-rc", "vbr",
+         "-cq", "22", "-pix_fmt", "yuv420p", "-tag:v", "hvc1",
+         "-c:a", "copy", str(out)],
+        capture_output=True, text=True)
+    if r.returncode != 0 or not out.exists() or out.stat().st_size == 0:
+        tail = r.stderr[-600:]
+        if "nvenc" in tail.lower() or "13.1" in tail:
+            sys.exit("HEVC FAILED: GPU NVENC unavailable (driver/ffmpeg mismatch). Use the "
+                     "PATH ffmpeg 8.1.1 build or update the Nvidia driver to 610+. Not "
+                     f"falling back to slow software x265.\n{tail}")
+        sys.exit(f"HEVC encode failed:\n{tail}")
+    mb = out.stat().st_size / 1e6
+    print(f"      {out.name} — {mb:.0f} MB")
+
 def main():
-    if len(sys.argv) != 3:
+    argv = [a for a in sys.argv[1:] if a != "--hevc"]
+    want_hevc = "--hevc" in sys.argv[1:]
+    if len(argv) != 2:
         sys.exit(__doc__)
-    ep = Path(sys.argv[1])
-    base = sys.argv[2]
+    ep = Path(argv[0])
+    base = argv[1]
     src = ep / "renders" / f"{base}.mp4"
     if not src.exists():
         sys.exit(f"no such render: {src}")
