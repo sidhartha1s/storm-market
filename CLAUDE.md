@@ -27,6 +27,15 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
 - **Cut for retention.** Segments and clips do not deserve long lengths by default.
 - Reference floors from the shipped cuts: ep2 = 187 windows / 10.0s median / 2 picture gaps.
   Uncovered picture gaps in the dozens is a bug, not a style.
+- **Chapter blackout is mandatory (owner order 2026-07-31).** ep1/ep2's 2-3s black cut between
+  acts is what makes them read like a documentary; ep3 dropped it. See DESIGN.md "Chapter
+  blackout" — every ep4+ builder inserts act-boundary blackouts.
+- **Panels slide out, never vanish (owner order 2026-07-31).** RHS fact panels exit `x:980,
+  autoAlpha:0` timed to the hard cut (comp duration ≥ host window). ep3 v5 removed the exit as a
+  one-off; ep4+ restore the timed slide-right exit. See DESIGN.md §5 "Panel exit TIMING".
+- **Ship a compressed HEVC master.** Full renders are ~5 GB at crf16/30fps; run
+  `master_deliverables.py … --hevc` for a ~2 GB GPU-HEVC master (visually lossless), or render
+  a smaller single pass with `RENDER_CRF=20` + author at 24fps. See LEARNINGS.md "Render size".
 
 ## The formula (from measured teardowns — follow, don't reinvent)
 - Hook in 10–15s: cold-open on found footage/audio OR present-tense stat. Thesis/foreshadow line
