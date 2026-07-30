@@ -186,6 +186,16 @@ floors/ceilings; taste stays with the model.
 
 - Hook: cold-open insert (911 audio / broadcast) or present-tense stat over motion. ≤15s to thesis.
 - After an emotional payoff: hold 2-4s, ambience up, then cut hard to the next act.
+- **Chapter blackout (documentary breath — ep1/ep2 device, MANDATORY ep4+; owner order
+  2026-07-31):** between acts, and on a key beat, cut to a full 2-3s BLACK. It resets the eye and
+  is what makes ep1/ep2 read like a documentary. ep1/ep2 place a plain black section on the
+  picture track:
+  `<section class="clip blackout" data-start="X" data-duration="2.4"–"3.0" data-track-index="1"></section>`
+  with `.blackout { position:absolute; inset:0; background:#000; }`. Cut TO black hard (no fade),
+  hold 2-3s in silence or low ambience, cut OUT to the next act. **ep3 dropped this entirely** —
+  its `build_ep3.py` generator never emitted blackout sections. A regression, not a style choice:
+  the next episode's builder MUST insert act-boundary blackouts (a `black`/`blackout` beat kind in
+  the shot table, or hand-placed). ep3 stays as shipped; do not re-render it for this.
 - Never two inserts back-to-back; narration re-anchors between them.
 - Stats mid-video, emotion banked at the end (teardown-verified pattern).
 - Micro-loops every 30-45s, phrasing varied; no recap; CTA short.
