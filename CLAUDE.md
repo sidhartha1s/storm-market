@@ -129,9 +129,11 @@ Per episode in `episodes/<slug>/`:
    on the final index.html; verify the artifact, not your memory (ep1 v2 RCA).**
    **The defects the owner names are a SAMPLE, not the set — dig for the rest yourself.**
 7. Deliverables per render, unasked: **`python3 scripts/master_deliverables.py
-   episodes/<slug> <render-basename>`** — one command produces the −14 LUFS master
+   episodes/<slug> <render-basename> [--hevc]`** — one command produces the −14 LUFS master
    (`-c:v copy` + measured gain, verified) AND the SRT (calls build_srt.py; requires the
-   `nx-*` narration audio-id convention). E2E-tested on ep2 2026-07-27. Plus updated
+   `nx-*` narration audio-id convention). `--hevc` adds a ~2 GB GPU-HEVC master (hevc_nvenc,
+   audio bit-copied; needs the PATH ffmpeg 8.1.1, not the 8.1.2 shared build — see LEARNINGS).
+   E2E-tested on ep2 2026-07-27. Plus updated
    `metadata.md` (titles,
    description, tags, chapters, AEO/SEO block, Education metadata: category Education, type
    Overview; credits; socials/handles) at publish time.
