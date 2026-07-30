@@ -257,6 +257,14 @@ Never a flat `#000`/`#0a1017` fill behind a graphic — always the textured radi
   spin column; `scale+rotation` over 12s on the supercell). A graphic longer than ~20s MUST carry
   a continuous element, not just discrete reveals.
 Fade-only graphics are a fail. Target ≥1 scale/slide tween per 2 reveals.
+- **Panel exit TIMING (owner, ep3 v4→v5, 2026-07-31):** the slide-right exit above is REQUIRED —
+  a panel slides out `x:980, autoAlpha:0`, it does not vanish. But time it to the END of the
+  panel's window: anchor the exit to the comp's last ~0.6s AND keep the comp duration ≥ its host
+  window, so the panel never leaves while its beat is still being spoken. ep3 v4's exit fired
+  early (the host window was extended past the comp by `close_picture_gaps`, so the exit landed
+  mid-beat); ep3 v5 over-corrected by DELETING the exit, so panels just disappear. Neither is the
+  contract — keep the slide-right exit, land it on the cut. (ep3 stays as shipped; ep4+ restore
+  the timed exit.)
 
 ## 6. Beat cadence + duration
 Beat = a visible change. Max 3s of no change inside any graphic window; ≤2.5s in the first 10s.
