@@ -537,3 +537,33 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
   question that cracked it was "how long does ffprobe take when it opens no file at all?"
   (1.4s, versus 0.06s for `cmd`). **When three independent fixes change nothing, stop fixing
   and go measure the thing every attempt has in common.**
+
+## Render size + HEVC compression (measured ep3 v5, 2026-07-30)
+
+A full render at `--crf 16 --fps 30` is ~20 Mbps → **5.08 GB for 34m56s**. That is near-lossless
+overkill for graphics/stills content. Two ways to ship smaller **without visible quality loss**:
+
+- **Single-pass (no extra step) — the "compress during render" answer:** hyperframes emits
+  **H.264 only** for mp4 (vp9 for webm); there is **no HEVC output flag**. But `--crf`, `--fps`,
+  and `--video-bitrate` are all render-time flags. Render the final at `--crf 19-20` and author
+  at **24 fps** (most YouTube docs) → ~1.5-2 GB H.264 in one pass, no transcode. The slow part is
+  frame *capture* (~1.2x realtime, ~98 min here); the encode target is nearly free to change.
+- **HEVC (extra shrink) needs a transcode** — hyperframes can't emit it. But the transcode only
+  decodes+encodes, it does NOT re-capture frames, so on GPU it is a ~6-min add-on, not a second render.
+
+**NVENC driver gotcha (cost an hour to spot):** the pinned **Gyan.FFmpeg.Shared 8.1.2** build's
+`hevc_nvenc` fails with `Driver does not support the required nvenc API version. Required: 13.1
+Found: 13.0` (exit -40) — its NVENC needs Nvidia driver 610+. The older **Gyan.FFmpeg.Essentials
+8.1.1** build on PATH has a compatible NVENC and works. Use 8.1.1 for NVENC, or update the driver.
+
+Measured HEVC transcode of the −14 LUFS master (5097 MB, `-c:a copy`, audio untouched):
+
+| encoder | speed on this box (GTX 1650) | wall time (35 min vid) | output |
+|---|---|---|---|
+| `libx265 -preset slow -crf 22` | **0.15x** | **~4 hours** | ~1.2 GB |
+| `hevc_nvenc -preset p7 -cq 22` (ffmpeg 8.1.1) | **5.96x** | **~6 min** | **2.19 GB** |
+
+**Takeaway:** software x265 `preset slow` is a non-starter for a review loop (0.15x). GPU
+`hevc_nvenc p7 cq22` gives a 2.3x shrink in 6 minutes, visually lossless, audio bit-copied. For
+future episodes the cleanest is to render at a higher CRF + 24 fps so the small file falls out of
+the render itself; reach for the GPU-HEVC pass only when you want the extra shrink.
