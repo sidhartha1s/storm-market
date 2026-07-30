@@ -112,7 +112,12 @@ def main():
     if r.returncode != 0:
         sys.exit("build_srt.py failed")
 
-    print(f"OK: {master} + {ep/'renders'/(base + '.srt')}")
+    outs = f"{master} + {ep/'renders'/(base + '.srt')}"
+    if want_hevc:
+        hevc = ep / "renders" / f"{base}-master-hevc.mp4"
+        encode_hevc(master, hevc)
+        outs += f" + {hevc}"
+    print(f"OK: {outs}")
 
 if __name__ == "__main__":
     main()
