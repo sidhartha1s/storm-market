@@ -72,6 +72,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#g1-eyebrow", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.6}, 0.3);
   tl.fromTo("#g1-place", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.6}, 0.6);
 
+  /* continuous element for the whole 57.31s window: a slow map push, ease:none */
+  tl.fromTo("#g1-mapwrap", {scale:1}, {scale:1.06, duration:57.3, ease:"none"}, 0);
+
   /* continuous element for the whole 56s window: the marker travels the full track */
   tl.to("#g1-marker", {left:680, top:520, duration:6.5, ease:"power1.in"}, 0.5);       // heading SE, pre-turn
   /* turned @7.46; hard @7.76; left @8.42; accelerated @10.6-11.18 -- the elbow lands on "left" */
