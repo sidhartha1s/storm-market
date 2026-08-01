@@ -58,8 +58,8 @@ dialogue unless it appears as an on-screen caption in a frame (noted where it do
 
 ### 4. `abc-3-storm-chasers-killed.mp4`
 - **Station / rights holder:** ABC News (network-official, channel_id `UCBi2mrWuNuyYy4gbM6fU18Q`)
-- **Proposed cut:** 0:00–0:04 (~4s) — rural field damage shot (snapped trees, downed line, EF0/EF1-level debris; frame1)
-- **Description (inferred):** damage b-roll opening the "3 Storm Chasers Killed" package; frame2 is a sunset storm-cloud transition; frame3 is a weather-map graphic (not needed for our cut)
+- **Proposed cut:** 0:03.2–0:06.9 (~3.7s — NUDGED from 0:00–0:04) — rural field damage shot (snapped trees, downed line, EF0/EF1-level debris; frame1)
+- **Transcript (VERBATIM, faster-whisper small.en):** "Among the 13 people killed in the Oklahoma Twister were three men" — original 0:00-0:04 window was ~3.2s of dead air/other audio before this narration starts, then chopped mid-word on "deeply"; nudged to start on-speech and end cleanly after "men," before "deeply involved in tornado research" continues.
 - **Beat served:** A3-S2/A3-S4 (TWISTEX death beat — establishing damage context)
 - **Frames:** `.../media/_gate/abc-3-storm-chasers-killed/frame1.jpg`, `frame2.jpg`, `frame3.jpg`
 - **Source URL:** `youtube.com/watch?v=O_LXG2aYfE4` — "3 Storm Chasers Killed in Oklahoma Tornadoes" (2013-06-03) per clip_hunt.md §3
