@@ -47,8 +47,8 @@ dialogue unless it appears as an on-screen caption in a frame (noted where it do
 
 ### 3. `kfor-sutton-very-close-call.mp4`
 - **Station / rights holder:** KFOR Oklahoma's News 4 (channel_id `UCEUYiWFyzpEBMZ3aG7ud7xg`)
-- **Proposed cut:** 0:00–0:04 (~4s) — trees whipping, tornado visible close behind the KFOR chase vehicle, "Live 4" bug on screen
-- **Description (inferred):** near-miss moment during Sutton's live chase, on-air "LIVE 4" bug confirms real-time station broadcast
+- **Proposed cut:** 0:00–0:04 (~4s, unchanged — verified clean) — trees whipping, tornado visible close behind the KFOR chase vehicle, "Live 4" bug on screen
+- **Transcript (VERBATIM, faster-whisper small.en):** "please do not ride this out in any interior closet or bathroom." A complete sentence, followed by a clean pause before the next line — no chop, no dead air within the window.
 - **Beat served:** A3-S1/A3-S1b (the trap tightening / escape margin beat) — near-miss tension
 - **Frames:** `.../media/_gate/kfor-sutton-very-close-call/frame1.jpg`, `frame2.jpg`, `frame3.jpg`
 - **Source URL:** `youtube.com/watch?v=t8dKk86Oa-o` — "LIVE: Emily Sutton Has Very Close Call" (2013-06-02) per clip_hunt.md §3
