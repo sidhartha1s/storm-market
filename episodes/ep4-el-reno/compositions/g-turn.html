@@ -86,6 +86,7 @@ window.__timelines = window.__timelines || {};
   tl.to("#g1-footprint", {left:980, top:380, scale:0.7, duration:2.8, ease:"power2.out"}, 8.42);
 
   /* speed readout: 35 @16.74; 50 @18.62-18.9 */
+  tl.fromTo("#g1-row1", {autoAlpha:0, x:40}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 16.0);
   const spd = {v:25};
   tl.to(spd, {v:35, duration:1.1, ease:"power2.out", onUpdate:()=>{document.getElementById("g1-speed").textContent=Math.round(spd.v);}}, 16.5);
   tl.to(spd, {v:52, duration:1.4, ease:"power3.out", onUpdate:()=>{document.getElementById("g1-speed").textContent=Math.round(spd.v)+"+";}}, 18.5);
