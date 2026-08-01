@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; }
+  .panel { position:absolute; right:0; top:0; bottom:0; width:820px; box-sizing:border-box;
+    background: linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); padding: 90px 70px 0 170px; overflow:hidden; }
+  .scan { position:absolute; left:0; right:0; height:140px; background:linear-gradient(180deg, rgba(216,161,58,0) 0%, rgba(216,161,58,0.06) 50%, rgba(216,161,58,0) 100%); }
+  .eyebrow { font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .tname { font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; line-height:1.05; margin-top:14px; }
+  .tsub { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:10px; }
+  .stamp { display:inline-block; margin-top:34px; font-family:'Arial Black',Arial,sans-serif; font-size:96px; color:#fff;
+    background:#8e2020; padding:2px 30px; letter-spacing:2px; }
+  .row { font-size:30px; color:#dfe7ee; font-weight:700; letter-spacing:1px; margin-top:22px; }
+  .row .lab { display:block; font-size:19px; color:#93a3b2; letter-spacing:4px; font-weight:700; }
+  #g-elreno-deaths { font-family:'Courier New',monospace; font-size:84px; color:#e74c3c; font-weight:700; margin-top:26px; }
+  .dlab { font-size:20px; color:#c8d3e0; letter-spacing:6px; font-weight:700; }
+  .warm { color:#e8c56a; }
+</style>
+<div id="root" data-composition-id="g-stat-elreno" data-width="1920" data-height="1080">
+  <div class="panel" id="g-elreno-panel">
+    <div class="scan" id="g-elreno-scan"></div>
+    <div class="eyebrow">OFFICIAL RECORD · NWS/RAXPOL</div>
+    <div class="tname">EL RENO, OK</div>
+    <div class="tsub">Canadian County · 6:03 PM</div>
+    <div><span class="stamp" id="g-elreno-stamp">EF3</span></div>
+    <div class="row" id="g-elreno-width"><span class="lab">&nbsp;</span>WIDTH 2.6 MILES — RECORD</div>
+    <div class="row" id="g-elreno-path"><span class="lab">PATH</span>16.3 MILES</div>
+    <div class="row" id="g-elreno-dur"><span class="lab">&nbsp;</span>ON GROUND 40 MIN</div>
+    <div id="g-elreno-deaths">0</div>
+    <div class="dlab" id="g-elreno-dlab">LIVES LOST</div>
+    <div class="row warm" id="g-elreno-warm">ALL EIGHT IN VEHICLES</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-elreno-";
+  tl.set([P+"deaths",P+"dlab",P+"width",P+"path",P+"dur",P+"warm",P+"stamp"], {autoAlpha:0}, 0);
+  /* cued to audio/a7-s3.words.json: "8@0.00" opens the segment; "vehicle@7.16" is the closest cue word
+     to the script's "vehicles" (audio has the singular) — flagged, not guessed past it */
+  tl.fromTo(P+"panel", {x:660}, {x:0, duration:0.7, ease:"power3.out"}, 0.0);
+  tl.fromTo(P+"stamp", {scale:2.6, autoAlpha:0}, {scale:1, autoAlpha:1, duration:0.35, ease:"power4.in"}, 0.5);
+  tl.set(P+"deaths", {autoAlpha:1}, 0.0);
+  tl.set(P+"dlab", {autoAlpha:1}, 0.0);
+  const cnt = {v:0};
+  tl.to(cnt, {v:8, duration:0.9, ease:"power4.out", onUpdate:function() {
+      const el = document.getElementById("g-elreno-deaths"); if (el) el.textContent = Math.round(cnt.v);
+  } }, 0.0);
+  tl.fromTo(P+"width", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 2.0);
+  tl.fromTo(P+"path", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 4.0);
+  tl.fromTo(P+"dur", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 6.0);
+  tl.fromTo(P+"warm", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 7.16);
+  /* continuous element for the remainder of the long window (38.29s) — a slow document-scan sweep down the panel */
+  tl.fromTo(P+"scan", {y:-140}, {y:1080, duration:29, ease:"none", repeat:1}, 8.5);
+  tl.to(P+"panel", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 37.69);
+  window.__timelines["g-stat-elreno"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
