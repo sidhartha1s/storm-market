@@ -104,9 +104,6 @@ TL = """<script>
   tl.to("#sfx-rain", { volume: 0.85, duration: 3.0 }, 1310.0);
   tl.to("#sfx-rain", { volume: 0.0,  duration: 3.0 }, 1351.0);
   /* cards: rise + settle, exit before window end */
-  [["#c-dateplace", 0.5], ["#c-moore", 97.5]].forEach(function(c) {
-    tl.fromTo(c + " .placecard", { autoAlpha: 0, y: 26 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, c[1] === undefined ? 0 : c[1]);
-  });
   tl.fromTo("#c-dateplace .placecard", { autoAlpha: 0, y: 26 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.7);
   tl.to("#c-dateplace .placecard", { autoAlpha: 0, y: -14, duration: 0.5, ease: "power2.in" }, 6.8);
   tl.fromTo("#c-moore .placecard", { autoAlpha: 0, y: 26 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 97.7);
