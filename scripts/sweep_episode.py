@@ -34,6 +34,12 @@ for m in re.finditer(r'<(section|video|div)\b([^>]*)>', h):
         continue
     cid = re.search(r'data-composition-id="([^"]+)"', a)
     src = re.search(r'src="([^"]+)"', a)
+    if not src and not cid and 'blackout' in a:
+        # deliberate black dip: a valid window with no asset of its own —
+        # never scan forward or it inherits the NEXT clip's src
+        wins.append(dict(at=float(st.group(1)), dur=float(du.group(1)),
+                         tr=int(tr.group(1)), name="[blackout]"))
+        continue
     if not src and not cid:
         inner = h[m.end():m.end() + 900]
         s2 = re.search(r'src="([^"]+)"', inner)
