@@ -71,6 +71,7 @@ window.__timelines = window.__timelines || {};
   tl.set("#g1-row2", {autoAlpha:0}, 0);
   tl.fromTo("#g1-eyebrow", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.6}, 0.3);
   tl.fromTo("#g1-place", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.6}, 0.6);
+  tl.fromTo("#g1-sub", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.6}, 1.4);
 
   /* continuous element for the whole 57.31s window: a slow map push, ease:none */
   tl.fromTo("#g1-mapwrap", {scale:1}, {scale:1.06, duration:57.3, ease:"none"}, 0);
