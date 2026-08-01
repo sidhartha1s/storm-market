@@ -20,7 +20,8 @@ for (const compFile of comps) {
   const html = readFileSync(join(__dirname, compFile), 'utf8');
   const m = html.match(/<template>([\s\S]*)<\/template>/);
   if (!m) { console.error(`${id}: no <template> found`); continue; }
-  const templateInner = m[1];
+  const scriptMatches = [...m[1].matchAll(/<script>([\s\S]*?)<\/script>/g)].map(s => s[1]);
+  const templateInner = m[1].replace(/<script>[\s\S]*?<\/script>/g, '');
 
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
   page.on('pageerror', e => console.error(`${id} pageerror:`, e.message));
@@ -31,6 +32,9 @@ for (const compFile of comps) {
   await page.evaluate((inner) => {
     document.body.innerHTML = inner;
   }, templateInner);
+  for (const s of scriptMatches) {
+    await page.addScriptTag({ content: s });
+  }
 
   const dur = await page.evaluate((id) => {
     const tl = window.__timelines && window.__timelines[id];
