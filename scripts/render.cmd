@@ -5,7 +5,7 @@ REM Example: scripts\render.cmd ep2-2011-super-outbreak full ep2-final
 REM Launch DETACHED (harness bg tasks get killed):
 REM   powershell Start-Process cmd.exe -ArgumentList '/c','"<ABS path>\scripts\render.cmd" <slug> <mode>' -WindowStyle Hidden
 REM Writes episodes\<slug>\render_<mode>.log and render_<mode>_done.marker (contains npx exit code).
-REM Version pin 0.7.81 must match config.yaml hyperframes_version — bump both together.
+REM Version pin 0.7.87 must match config.yaml hyperframes_version — bump both together.
 setlocal
 set SLUG=%~1
 set MODE=%~2
