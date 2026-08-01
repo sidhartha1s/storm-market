@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:#030507; font-family:Arial,sans-serif; }
+  .stage { position:absolute; inset:0; display:grid; place-items:center; }
+  .wrap { text-align:center; }
+  .twh { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:120px; color:#f2f5f8; letter-spacing:6px; }
+  .twh .amber { color:#d8a13a; }
+  .ep { font-family:Georgia,serif; font-style:italic; font-size:30px; color:#d8a13a; margin-top:26px; }
+  .tag { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#93a3b2; margin-top:16px; }
+</style>
+<div id="root" data-composition-id="g-outro" data-width="1920" data-height="1080">
+  <div class="stage">
+    <div class="wrap">
+      <div class="twh" id="g-outro4-twh">THE <span class="amber">WARNING</span> HOUR</div>
+      <div class="ep" id="g-outro4-ep">Episode 4 — El Reno 2013</div>
+      <div class="tag" id="g-outro4-tag">Learn what yours sounds like.</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#g-outro4-twh","#g-outro4-ep","#g-outro4-tag"], {autoAlpha:0}, 0);
+  /* cued to audio/a8-s1.words.json: "This@18.68 was@18.96 the@19.28 Warning@19.50 Hour.@19.78" — title match-cuts
+     onto the closing line; card does not dwell (contract: outro never sits) */
+  tl.fromTo("#g-outro4-twh", {autoAlpha:0, scale:1.14}, {autoAlpha:1, scale:1, duration:0.45, ease:"power3.out"}, 19.5);
+  tl.fromTo("#g-outro4-ep", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 20.5);
+  tl.fromTo("#g-outro4-tag", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 21.2);
+  window.__timelines["g-outro"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
