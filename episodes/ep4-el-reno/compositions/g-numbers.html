@@ -32,8 +32,9 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   tl.set(["#g-num2-hdr","#g-num2-r1","#g-num2-mid","#g-num2-r2","#g-num2-r3","#g-num2-sub"], {autoAlpha:0}, 0);
   /* cued to audio/a5-s2.words.json: "13@0.00 people@0.66 drowned@1.14" opens the segment (flood count lands first,
-     matching the narration order); "8@39.40 dead.@39.76" gives the tornado count; "21,@42.42" the total;
-     "larger@43.96 half@44.22..disaster@45.32 nobody@45.84 was@46.22 watching.@46.58" is the closing sub-line */
+     matching the narration order). The original cue math ("8@39.40 dead.@39.76" tornado count, "21,@42.42" total,
+     "larger@43.96..watching.@46.58" closing sub-line) assumed a ~47s host window — the actual host window is
+     32.0s, so the reveals below are compressed proportionally (~0.67x) to land inside that shorter cut. */
   tl.fromTo("#g-num2-hdr", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 0.0);
   function counter(sel, target, at, dur, fmt) {
     const o={v:0};
@@ -43,15 +44,15 @@ window.__timelines = window.__timelines || {};
   }
   tl.fromTo("#g-num2-r1", {autoAlpha:0, y:26}, {autoAlpha:1, y:0, duration:0.5}, 0.0);
   counter("#g-num2-v1", 13, 0.0, 1.0, v=>v+"");
-  tl.fromTo("#g-num2-mid", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 24.86);
-  tl.fromTo("#g-num2-r2", {autoAlpha:0, y:26}, {autoAlpha:1, y:0, duration:0.5}, 39.4);
-  counter("#g-num2-v2", 8, 39.4, 0.8, v=>v+"");
-  tl.fromTo("#g-num2-r3", {autoAlpha:0, y:26}, {autoAlpha:1, y:0, duration:0.5}, 42.42);
-  counter("#g-num2-v3", 21, 42.42, 1.0, v=>v+"");
-  tl.fromTo("#g-num2-sub", {autoAlpha:0}, {autoAlpha:1, duration:0.7}, 44.22);
-  /* continuous element bridging the 25s gap between the flood count and the tornado count on a graphic
-     this long (46.98s window) — a slow decorative ring rotation, per contract §5's continuous-motion rule */
-  tl.to("#g-num2-ring", {rotation:70, duration:46, ease:"none"}, 0.0);
+  tl.fromTo("#g-num2-mid", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 16.6);
+  tl.fromTo("#g-num2-r2", {autoAlpha:0, y:26}, {autoAlpha:1, y:0, duration:0.5}, 26.3);
+  counter("#g-num2-v2", 8, 26.3, 0.5, v=>v+"");
+  tl.fromTo("#g-num2-r3", {autoAlpha:0, y:26}, {autoAlpha:1, y:0, duration:0.5}, 28.3);
+  counter("#g-num2-v3", 21, 28.3, 0.7, v=>v+"");
+  tl.fromTo("#g-num2-sub", {autoAlpha:0}, {autoAlpha:1, duration:0.7}, 29.5);
+  /* continuous element bridging the gap between the flood count and the tornado count — a slow decorative
+     ring rotation spanning the full 32.0s window, per contract §5's continuous-motion rule */
+  tl.to("#g-num2-ring", {rotation:70, duration:31.8, ease:"none"}, 0.0);
   window.__timelines["g-numbers"] = tl;
 })();
 </script>
