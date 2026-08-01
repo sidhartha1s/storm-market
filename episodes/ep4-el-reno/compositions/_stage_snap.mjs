@@ -1,7 +1,7 @@
 import { readFileSync, mkdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { chromium } from '../../../scripts/playwright_env.mjs';
+import { chromium, chromiumExecutable } from '../../../scripts/playwright_env.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const gsapPath = join(__dirname, '..', 'gsap.min.js');
