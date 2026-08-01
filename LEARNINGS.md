@@ -2,7 +2,26 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
-## 2026-08-01 — ep4 design review (owner orders, all standing)
+## 2026-08-01 — ep4 design review round 2 (owner corrections, standing)
+
+1. **Repeat rule refined: repetition is allowed, OBVIOUS repetition is the sin.** Never
+   re-show an asset close to its last use (the "ah, he threw this again" moment). Spacing
+   floor ≈ 3–4 minutes between uses of the same asset/subject, different context, and never
+   twice in the same act stretch. This RELAXES "no repeats ever" — a well-spaced, re-graded
+   reuse is fine; lint's data-callback mechanism stays as the tracking device.
+2. **Hyperframes version check happens at EPISODE KICKOFF — first prompt, not at render.**
+   A version bump can change the whole wiring (0.7.81 already shortened the ffprobe deadline
+   4×); discovering it at render time is too late. Wired as step 0 of the episode skill's
+   preflight. Found live: pin 0.7.81 vs upstream 0.7.87 at ep4 kickoff — diff review before
+   production.
+3. **Stale-docs RCA (owner: "why did you miss PR #8?"):** session read CLAUDE/DESIGN/LEARNINGS
+   from the main checkout, which sat on another session's branch BEHIND origin/main — never
+   fetched or checked the branch first. The docs read were real files, just outdated — worst
+   kind of wrong (looks authoritative). Fix, wired into the episode skill preflight (the skill
+   lives OUTSIDE the repo, so it cannot itself go stale with the checkout):
+   `git fetch origin` → compare HEAD..origin/main → if behind, read docs FROM origin/main
+   (`git show origin/main:<file>`) or from a fresh worktree — never from an unsynced tree.
+4. **Paths in chat: always full absolute paths** (worktrees make relative paths un-openable).
 
 1. **Clip-sourcing gaps surface at SCRIPT time, never after render.** Every beat in
    edit_script.md names its intended clip/source; anything unsourceable is flagged to the
