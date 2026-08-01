@@ -95,7 +95,7 @@ All entries verified by pulling `channel_id` directly off the watch page, not tr
 - `youtube.com/watch?v=JHkC59lusxM` — KFOR, 2019 survivor-anniversary interview (2:16). Survivor testimony beat.
 - `youtube.com/watch?v=MIhp47Ak5Xc` — KFOR in-house 2026 retrospective, "Remembering the 2013 El Reno Tornado" (26:51) — re-airs original KFOR footage inside its own wrapper, arguably lower claim risk since it's self-licensed. **Best single source to mine first in this lane.**
 - `youtube.com/watch?v=HYwVu5trgR0` — KFOR 10-year recap (2023, 1:03). Cold-open stat beat.
-- **`youtube.com/watch?v=0oLnSb3n3Rc`** — News 9, "Storm Trackers Capture Video Of Tornado On The Ground Near El Reno" — **DATE-VERIFICATION FLAG: upload date 2024-05-20 suggests this may be a different, later El Reno-area tornado, not the 2013 event. Do not use until date/location confirmed against May 31 2013.**
+- ~~`youtube.com/watch?v=0oLnSb3n3Rc` — News 9, "Storm Trackers Capture Video Of Tornado On The Ground Near El Reno"~~ — **RESOLVED WRONG EVENT (see §5): confirmed 2024-05-20 footage, a hail/severe-thunderstorm warning, not the 2013 tornado. REMOVED from the usable shortlist.**
 - `youtube.com/watch?v=mvxzyozJoXI` — KOCO, one-year retrospective (2014, dup-listed in §2 for its govt-adjacent Moore cross-reference; also usable here for El Reno-specific re-aired shots).
 - `youtube.com/watch?v=ZtCxckc-cFA` — KOCO 10-year anniversary short (2023, 1:00). Anniversary framing beat.
 - `youtube.com/watch?v=aRdeq_MEOaM` — KOCO, "A storm that reshaped storm chasing" (2:04) — directly serves the Samaras/TWISTEX-changed-chasing thesis.
