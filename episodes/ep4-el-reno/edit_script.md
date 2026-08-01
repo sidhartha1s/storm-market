@@ -158,4 +158,10 @@ No real-person likenesses in ANY generated image (DESIGN.md rule).
 - Description: no-spoiler, courtesy credits (NOAA/NWS/FEMA/DVIDS), Education metadata per CLAUDE.md.
 
 ## Word budget check
-175+560+800+800+800+650+650+580+65 = **5,080 words** ≈ 35.7 min at 158 wpm ÷ 0.9 pacing → on target for ~36 min. Probe-TTS 2 segments before full script write.
+**Probe-TTS measured 2026-08-01 (probe-a0: 170.7 wpm, probe-a3: 161.8 wpm → plan at ~166 delivered).**
+Budget: 36 × 0.9 × 166 ≈ **5,375 words**. Act split: A0 185 · A1 590 · A2 845 · A3 845 · A4 845 · A5 690 · A6 690 · A7 615 · A8 70 ≈ 5,375.
+Sourcing: PD + stock ONLY, nothing paid (owner 2026-08-01). AI gap-fills self-generated via DeAPI keys, used sparingly — real clips carry the episode.
+
+---
+
+# SCRIPT (TTS-safe prose — resolved fact ledger only; segments parsed by scripts/tts_episode.py)
