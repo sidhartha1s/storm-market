@@ -1,17 +1,27 @@
 #!/usr/bin/env python3
 """Post-render deliverables: -14 LUFS master + SRT, per repo CLAUDE.md step 7.
 
-Usage: python3 scripts/master_deliverables.py episodes/<slug> <render-basename>
+Usage: python3 scripts/master_deliverables.py episodes/<slug> <render-basename> [--hevc]
+
 e.g.:  python3 scripts/master_deliverables.py episodes/ep2-2011-super-outbreak ep2-final
+       python3 scripts/master_deliverables.py episodes/ep3-tristate ep3-final --hevc
 
 Reads  episodes/<slug>/renders/<basename>.mp4 and writes:
-  renders/<basename>-master.mp4  (video stream copied, single measured gain,
-                                  aac 256k; verified -14 LUFS +/-0.5, TP <= -0.9)
-  renders/<basename>.srt         (via scripts/build_srt.py)
+  renders/<basename>-master.mp4       (video stream copied, single measured gain,
+                                        aac 256k; verified -14 LUFS +/-0.5, TP <= -0.9)
+  renders/<basename>.srt              (via scripts/build_srt.py)
+  renders/<basename>-master-hevc.mp4  (--hevc only: GPU hevc_nvenc, audio bit-copied
+                                        from the master; ~2.5x smaller, visually lossless)
 
 Plain gain (not dynamic loudnorm) is deliberate: episode mixes land with tight
 LRA (~3.4 measured on ep2), where one measured gain preserves the mix exactly.
 Fails loud (exit 1) if the verify pass misses tolerance.
+
+--hevc uses GPU NVENC (fast: ~6x realtime). It requires an ffmpeg whose hevc_nvenc
+matches the box's Nvidia driver — the WinGet PATH ffmpeg (Gyan Essentials 8.1.1) works;
+the 8.1.2 shared build's NVENC needs driver 610+ and fails with API-version -40. If NVENC
+is unavailable this step fails loud (exit 2) rather than silently dropping to a 4-hour
+software x265 encode. See LEARNINGS.md "Render size + HEVC compression".
 """
 import json
 import re
@@ -34,11 +44,34 @@ def measure(path: Path) -> dict:
         sys.exit(f"loudnorm measure failed on {path}:\n{r.stderr[-800:]}")
     return json.loads(m.group(0))
 
+def encode_hevc(master: Path, out: Path):
+    """GPU HEVC transcode of the finished master. Video re-encoded (visually lossless
+    cq22), audio bit-copied so the -14 LUFS mix is untouched. Fails loud if NVENC is
+    unavailable — never falls back to a multi-hour software encode."""
+    print(f"[5/5] GPU HEVC -> {out.name} (hevc_nvenc p7 cq22, audio copied) ...")
+    r = subprocess.run(
+        ["ffmpeg", "-hide_banner", "-y", "-i", str(master),
+         "-c:v", "hevc_nvenc", "-preset", "p7", "-tune", "hq", "-rc", "vbr",
+         "-cq", "22", "-pix_fmt", "yuv420p", "-tag:v", "hvc1",
+         "-c:a", "copy", str(out)],
+        capture_output=True, text=True)
+    if r.returncode != 0 or not out.exists() or out.stat().st_size == 0:
+        tail = r.stderr[-600:]
+        if "nvenc" in tail.lower() or "13.1" in tail:
+            sys.exit("HEVC FAILED: GPU NVENC unavailable (driver/ffmpeg mismatch). Use the "
+                     "PATH ffmpeg 8.1.1 build or update the Nvidia driver to 610+. Not "
+                     f"falling back to slow software x265.\n{tail}")
+        sys.exit(f"HEVC encode failed:\n{tail}")
+    mb = out.stat().st_size / 1e6
+    print(f"      {out.name} — {mb:.0f} MB")
+
 def main():
-    if len(sys.argv) != 3:
+    argv = [a for a in sys.argv[1:] if a != "--hevc"]
+    want_hevc = "--hevc" in sys.argv[1:]
+    if len(argv) != 2:
         sys.exit(__doc__)
-    ep = Path(sys.argv[1])
-    base = sys.argv[2]
+    ep = Path(argv[0])
+    base = argv[1]
     src = ep / "renders" / f"{base}.mp4"
     if not src.exists():
         sys.exit(f"no such render: {src}")
@@ -79,7 +112,12 @@ def main():
     if r.returncode != 0:
         sys.exit("build_srt.py failed")
 
-    print(f"OK: {master} + {ep/'renders'/(base + '.srt')}")
+    outs = f"{master} + {ep/'renders'/(base + '.srt')}"
+    if want_hevc:
+        hevc = ep / "renders" / f"{base}-master-hevc.mp4"
+        encode_hevc(master, hevc)
+        outs += f" + {hevc}"
+    print(f"OK: {outs}")
 
 if __name__ == "__main__":
     main()

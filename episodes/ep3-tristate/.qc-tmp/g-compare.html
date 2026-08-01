@@ -1,0 +1,237 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;width:1920px;height:1080px;background:#111;overflow:hidden}</style>
+<script src="../gsap.min.js"></script></head><body>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif; overflow:hidden;
+    background:radial-gradient(ellipse at 46% 52%, #0d141c 0%, #04070a 76%); }
+
+  /* ---- masthead ---- */
+  .eyebrow { position:absolute; left:96px; top:74px; font-size:22px; letter-spacing:6px;
+    color:#93a3b2; font-weight:700; line-height:1; }
+  .hl { position:absolute; left:96px; top:108px; font-family:'Arial Black',Arial,sans-serif;
+    font-size:52px; color:#f2f5f8; line-height:1; letter-spacing:1px; }
+  .topsub { position:absolute; left:96px; top:176px; font-family:Georgia,serif; font-style:italic;
+    font-size:27px; color:#d8a13a; line-height:1.2; }
+  .rlabel { position:absolute; right:96px; top:78px; font-size:19px; letter-spacing:4px;
+    color:#93a3b2; font-weight:700; line-height:1.2; text-align:right; }
+  .stamp { position:absolute; right:96px; top:106px; font-family:'Arial Black',Arial,sans-serif;
+    font-size:44px; line-height:1; color:#fff; background:#8e2020; padding:4px 22px;
+    letter-spacing:2px; }
+  .rsub { position:absolute; right:96px; top:166px; font-size:19px; letter-spacing:4px;
+    color:#5a768f; font-weight:700; line-height:1.2; text-align:right; }
+
+  /* ---- ranked rows ---- */
+  .row { position:absolute; left:0; right:0; height:124px; }
+  .rank { position:absolute; left:88px; top:8px; font-family:'Courier New',monospace;
+    font-size:46px; font-weight:700; line-height:1; }
+  .nm { position:absolute; left:176px; top:16px; font-family:'Arial Black',Arial,sans-serif;
+    font-size:30px; color:#f2f5f8; line-height:1; letter-spacing:1px; }
+  .sb { position:absolute; left:700px; top:18px; font-family:Georgia,serif; font-style:italic;
+    font-size:25px; color:#93a3b2; line-height:1.2; }
+  .rail { position:absolute; left:96px; top:62px; width:1344px; height:54px;
+    background:linear-gradient(180deg,#0f1922,#0a121a); border:1px solid #1b2836;
+    box-sizing:border-box; transform-origin:left center; }
+  .bar { position:absolute; left:96px; top:62px; height:54px; transform-origin:left center;
+    box-sizing:border-box; }
+  .num { position:absolute; right:250px; top:52px; font-family:'Courier New',monospace;
+    font-size:68px; font-weight:700; line-height:1; text-align:right; }
+  .unit { position:absolute; right:176px; top:90px; font-family:'Arial Black',Arial,sans-serif;
+    font-size:30px; color:#93a3b2; line-height:1; }
+  .rowlab { position:absolute; right:176px; top:22px; font-size:19px; letter-spacing:4px;
+    color:#5a768f; font-weight:700; line-height:1.2; text-align:right; }
+  .badge { position:absolute; left:400px; top:14px; font-family:'Arial Black',Arial,sans-serif;
+    font-size:26px; line-height:1; color:#fff; background:#8e2020; padding:6px 18px;
+    letter-spacing:3px; }
+  #g-compare-pulse3 { position:absolute; left:96px; top:62px; width:1344px; height:54px;
+    background:linear-gradient(90deg, rgba(192,57,43,0), rgba(231,76,60,0.55));
+    box-shadow:0 0 46px rgba(231,76,60,0.55); transform-origin:center center; }
+
+  /* ---- axis ---- */
+  #g-compare-axis { position:absolute; left:96px; top:792px; width:1344px; height:2px;
+    background:linear-gradient(90deg,#2a3644,#46586b); transform-origin:left center; }
+  .tmark { position:absolute; top:776px; width:2px; height:14px; background:#2a3644; }
+  .tick { position:absolute; top:802px; width:120px; margin-left:-60px; text-align:center;
+    font-size:19px; letter-spacing:2px; color:#93a3b2; font-weight:700; line-height:1.2; }
+
+  /* ---- close ---- */
+  .kicker { position:absolute; left:96px; top:880px; font-family:'Arial Black',Arial,sans-serif;
+    font-size:58px; line-height:1; color:#e74c3c; letter-spacing:2px; transform-origin:left center; }
+  .foot { position:absolute; left:96px; top:962px; font-family:Georgia,serif; font-style:italic;
+    font-size:26px; color:#d8a13a; line-height:1.2; }
+  .srcnote { position:absolute; right:96px; top:966px; font-size:19px; letter-spacing:4px;
+    color:#5a768f; font-weight:700; line-height:1.2; text-align:right; }
+</style>
+<div id="root" data-composition-id="g-compare" data-width="1920" data-height="1080">
+
+  <svg viewBox="0 0 1920 1080" style="position:absolute;inset:0">
+    <defs>
+      <pattern id="g-compare-ruler" width="44.5" height="40" patternUnits="userSpaceOnUse">
+        <rect x="0" y="0" width="2" height="40" fill="#101d28"/>
+      </pattern>
+    </defs>
+    <g id="g-compare-grid">
+      <rect x="-360" y="266" width="2640" height="520" fill="url(#g-compare-ruler)"/>
+    </g>
+    <rect x="96"   y="266" width="2" height="520" fill="#1b2a37"/>
+    <rect x="318"  y="266" width="2" height="520" fill="#16232e"/>
+    <rect x="541"  y="266" width="2" height="520" fill="#16232e"/>
+    <rect x="764"  y="266" width="2" height="520" fill="#16232e"/>
+    <rect x="986"  y="266" width="2" height="520" fill="#16232e"/>
+    <rect x="1208" y="266" width="2" height="520" fill="#16232e"/>
+    <rect x="1431" y="266" width="2" height="520" fill="#1b2a37"/>
+  </svg>
+
+  <div class="eyebrow" id="g-compare-eb"><</div>
+  <div class="hl" id="g-compare-hl">LONGEST TRACKS ON RECORD</div>
+  <div class="topsub" id="g-compare-topsub"><</div>
+  <div class="rlabel" id="g-compare-rlabel">RANKED BY</div>
+  <div class="stamp" id="g-compare-stamp">PATH LENGTH</div>
+  <div class="rsub" id="g-compare-rsub">STRICTEST MODERN MEASURE</div>
+
+  <!-- rank 03 -->
+  <div class="row" id="g-compare-row1" style="top:300px">
+    <div class="rank" id="g-compare-rk1" style="color:#5a768f">03</div>
+    <div class="nm" id="g-compare-nm1">CAROLINAS OUTBREAK</div>
+    <div class="sb" id="g-compare-sb1">North Carolina &middot; March 28, 1984</div>
+    <div class="rail" id="g-compare-rail1"></div>
+    <div class="bar" id="g-compare-bar1" style="width:374px; background:linear-gradient(90deg,#33556f,#7fb2e5)"></div>
+    <div class="rowlab" id="g-compare-rl1">CONTINUOUS PATH</div>
+    <div class="num" id="g-compare-n1" style="color:#7fb2e5">0</div>
+    <div class="unit" id="g-compare-u1">MI</div>
+  </div>
+
+  <!-- rank 02 -->
+  <div class="row" id="g-compare-row2" style="top:474px">
+    <div class="rank" id="g-compare-rk2" style="color:#d8a13a">02</div>
+    <div class="nm" id="g-compare-nm2">WOODWARD</div>
+    <div class="sb" id="g-compare-sb2">Oklahoma &middot; April 9, 1947</div>
+    <div class="rail" id="g-compare-rail2"></div>
+    <div class="bar" id="g-compare-bar2" style="width:890px; background:linear-gradient(90deg,#8a6420,#e8c56a)"></div>
+    <div class="rowlab" id="g-compare-rl2">CONTINUOUS PATH</div>
+    <div class="num" id="g-compare-n2" style="color:#e8c56a">0</div>
+    <div class="unit" id="g-compare-u2">MI</div>
+  </div>
+
+  <!-- rank 01 -->
+  <div class="row" id="g-compare-row3" style="top:648px">
+    <div class="rank" id="g-compare-rk3" style="color:#e74c3c">01</div>
+    <div class="nm" id="g-compare-nm3">TRI-STATE</div>
+    <div class="badge" id="g-compare-badge">RECORD</div>
+    <div class="sb" id="g-compare-sb3">Missouri &middot; Illinois &middot; Indiana &middot; March 18, 1925</div>
+    <div class="rail" id="g-compare-rail3"></div>
+    <div class="bar" id="g-compare-bar3" style="width:1344px; background:linear-gradient(90deg,#5e1a13,#c0392b 62%,#e74c3c)"></div>
+    <div id="g-compare-pulse3"></div>
+    <div class="rowlab" id="g-compare-rl3">CONTINUOUS PATH</div>
+    <div class="num" id="g-compare-n3" style="color:#e74c3c">0</div>
+    <div class="unit" id="g-compare-u3">MI</div>
+  </div>
+
+  <div id="g-compare-axis"></div>
+  <div class="tmark" id="g-compare-tm0" style="left:95px"></div>
+  <div class="tmark" id="g-compare-tm1" style="left:317px"></div>
+  <div class="tmark" id="g-compare-tm2" style="left:540px"></div>
+  <div class="tmark" id="g-compare-tm3" style="left:763px"></div>
+  <div class="tmark" id="g-compare-tm4" style="left:985px"></div>
+  <div class="tmark" id="g-compare-tm5" style="left:1207px"></div>
+  <div class="tmark" id="g-compare-tm6" style="left:1430px"></div>
+  <div class="tick" id="g-compare-tk0" style="left:96px">0</div>
+  <div class="tick" id="g-compare-tk1" style="left:318px">25</div>
+  <div class="tick" id="g-compare-tk2" style="left:541px">50</div>
+  <div class="tick" id="g-compare-tk3" style="left:764px">75</div>
+  <div class="tick" id="g-compare-tk4" style="left:986px">100</div>
+  <div class="tick" id="g-compare-tk5" style="left:1208px">125</div>
+  <div class="tick" id="g-compare-tk6" style="left:1431px">150</div>
+
+  <div class="kicker" id="g-compare-kicker">NOTHING ELSE COMES CLOSE</div>
+  <div class="foot" id="g-compare-foot"><</div>
+  <div class="srcnote" id="g-compare-src">SINGLE CONTINUOUS PATH &middot; MILES</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const P = "#g-compare-";
+  const tl = gsap.timeline({ paused: true });
+
+  const HIDE = [P+"eb",P+"hl",P+"topsub",P+"rlabel",P+"stamp",P+"rsub",
+                P+"rk1",P+"nm1",P+"sb1",P+"rl1",P+"n1",P+"u1",
+                P+"rk2",P+"nm2",P+"sb2",P+"rl2",P+"n2",P+"u2",
+                P+"rk3",P+"nm3",P+"sb3",P+"rl3",P+"n3",P+"u3",P+"badge",P+"pulse3",
+                P+"tk0",P+"tk1",P+"tk2",P+"tk3",P+"tk4",P+"tk5",P+"tk6",
+                P+"kicker",P+"foot",P+"src"];
+  tl.set(HIDE, {autoAlpha:0}, 0);
+  tl.set([P+"rail1",P+"rail2",P+"rail3",P+"bar1",P+"bar2",P+"bar3",P+"axis"], {scaleX:0}, 0);
+
+  function ctr(id, obj, val, at, dur) {
+    tl.to(obj, {v:val, duration:dur, ease:"power3.out", onUpdate:function(){
+      const e = document.getElementById(id); if (e) e.textContent = Math.round(obj.v);
+    }}, at);
+  }
+  const V1 = {v:0}, V2 = {v:0}, V3 = {v:0};
+
+  /* CONTINUOUS: the ruler grid drifts left for the whole window */
+  tl.to(P+"grid", {x:-178, duration:25.8, ease:"none"}, 0.2);
+
+  /* masthead */
+  tl.fromTo(P+"eb",     {autoAlpha:0, x:-34}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.15);
+  tl.fromTo(P+"hl",     {autoAlpha:0, y:-26}, {autoAlpha:1, y:0, duration:0.55, ease:"power3.out"}, 0.40);
+  tl.fromTo(P+"topsub", {autoAlpha:0, x:-28}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.70);
+  tl.fromTo(P+"rlabel", {autoAlpha:0, y:-18}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.95);
+  tl.fromTo(P+"stamp",  {autoAlpha:0, scale:1.5}, {autoAlpha:1, scale:1, duration:0.36, ease:"power4.in"}, 1.20);
+  tl.fromTo(P+"rsub",   {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 1.60);
+
+  /* axis + ruler ticks */
+  tl.fromTo(P+"axis", {scaleX:0}, {scaleX:1, duration:0.7, ease:"power3.out"}, 1.90);
+  tl.fromTo([P+"tk0",P+"tk1",P+"tk2",P+"tk3",P+"tk4",P+"tk5",P+"tk6"],
+            {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out", stagger:0.11}, 2.20);
+
+  /* ---- RANK 03 · CAROLINAS 1984 · 42 mi ---- */
+  tl.fromTo(P+"rk1",   {autoAlpha:0, scale:1.9}, {autoAlpha:1, scale:1, duration:0.32, ease:"power4.in"}, 3.30);
+  tl.fromTo(P+"nm1",   {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.45, ease:"power3.out"}, 3.60);
+  tl.fromTo(P+"sb1",   {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 3.90);
+  tl.fromTo(P+"rail1", {scaleX:0}, {scaleX:1, duration:0.45, ease:"power3.out"}, 4.20);
+  tl.fromTo(P+"rl1",   {autoAlpha:0, y:-14}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 4.45);
+  tl.fromTo(P+"bar1",  {scaleX:0}, {scaleX:1, duration:1.10, ease:"power3.out"}, 4.75);
+  tl.set([P+"n1",P+"u1"], {autoAlpha:1}, 4.75);
+  ctr("g-compare-n1", V1, 42, 4.75, 1.10);
+  tl.fromTo(P+"u1", {y:16}, {y:0, duration:0.4, ease:"power3.out"}, 5.95);
+
+  /* ---- RANK 02 · WOODWARD 1947 · 100 mi ---- */
+  tl.fromTo(P+"rk2",   {autoAlpha:0, scale:1.9}, {autoAlpha:1, scale:1, duration:0.32, ease:"power4.in"}, 7.60);
+  tl.fromTo(P+"nm2",   {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.45, ease:"power3.out"}, 7.90);
+  tl.fromTo(P+"sb2",   {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 8.20);
+  tl.fromTo(P+"rail2", {scaleX:0}, {scaleX:1, duration:0.45, ease:"power3.out"}, 8.50);
+  tl.fromTo(P+"rl2",   {autoAlpha:0, y:-14}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 8.75);
+  tl.fromTo(P+"bar2",  {scaleX:0}, {scaleX:1, duration:1.55, ease:"power3.out"}, 9.05);
+  tl.set([P+"n2",P+"u2"], {autoAlpha:1}, 9.05);
+  ctr("g-compare-n2", V2, 100, 9.05, 1.55);
+  tl.fromTo(P+"u2", {y:16}, {y:0, duration:0.4, ease:"power3.out"}, 10.70);
+
+  /* ---- RANK 01 · TRI-STATE 1925 · 151 mi ---- */
+  tl.fromTo(P+"rk3",   {autoAlpha:0, scale:1.9}, {autoAlpha:1, scale:1, duration:0.32, ease:"power4.in"}, 12.60);
+  tl.fromTo(P+"nm3",   {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.45, ease:"power3.out"}, 12.90);
+  tl.fromTo(P+"sb3",   {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 13.25);
+  tl.fromTo(P+"rail3", {scaleX:0}, {scaleX:1, duration:0.45, ease:"power3.out"}, 13.55);
+  tl.fromTo(P+"rl3",   {autoAlpha:0, y:-14}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 13.80);
+  tl.fromTo(P+"bar3",  {scaleX:0}, {scaleX:1, duration:2.30, ease:"power3.out"}, 14.10);
+  tl.set([P+"n3",P+"u3"], {autoAlpha:1}, 14.10);
+  ctr("g-compare-n3", V3, 151, 14.10, 2.30);
+  tl.fromTo(P+"u3", {y:16}, {y:0, duration:0.4, ease:"power3.out"}, 16.55);
+
+  /* the record stamp lands on the winner, then the bar breathes */
+  tl.fromTo(P+"badge", {autoAlpha:0, scale:1.7}, {autoAlpha:1, scale:1, duration:0.34, ease:"power4.in"}, 17.30);
+  tl.fromTo(P+"pulse3", {autoAlpha:0, scaleY:1}, {autoAlpha:0.85, scaleY:1.28, duration:0.85,
+            ease:"sine.inOut", yoyo:true, repeat:3}, 18.10);
+  tl.to(P+"n3", {scale:1.14, duration:0.55, ease:"power3.out", yoyo:true, repeat:3}, 19.20);
+
+  /* close */
+  tl.fromTo(P+"kicker", {autoAlpha:0, scale:1.22}, {autoAlpha:1, scale:1, duration:0.42, ease:"power4.in"}, 21.00);
+  tl.fromTo(P+"foot",   {autoAlpha:0, y:22}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 22.20);
+  tl.fromTo(P+"src",    {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 23.10);
+  /* closing pulse ends ON — the record bar is still glowing on the last frame */
+  tl.to(P+"pulse3", {autoAlpha:0.9, scaleY:1.22, duration:0.65, ease:"sine.inOut", yoyo:true, repeat:2}, 24.00);
+  tl.to(P+"kicker", {scale:1.05, duration:0.6, ease:"power3.out", yoyo:true, repeat:1}, 24.60);
+
+  window.__timelines["g-compare"] = tl;
+})();
+</script>
+</body></html>

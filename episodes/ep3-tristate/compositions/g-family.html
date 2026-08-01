@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 46% 52%, #0d141c 0%, #04070a 76%); overflow:hidden; }
+  .eyebrow { position:absolute; left:96px; top:76px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .hl { position:absolute; left:96px; top:112px; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; }
+  .sub { position:absolute; left:96px; top:196px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  .drift { position:absolute; inset:-40% 0; opacity:0.30; pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(120,150,180,0.16) 0 1px, transparent 1px 46px); }
+  .lab { font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; }
+  .val { font-size:30px; color:#dfe7ee; font-weight:700; letter-spacing:1px; }
+  .num { font-family:'Courier New',monospace; font-size:84px; color:#e74c3c; font-weight:700; line-height:1; }
+  .maplab { font-family:Arial,sans-serif; font-weight:700; font-size:25px; fill:#e8eef4; }
+  .foot { position:absolute; left:96px; bottom:74px; font-family:Georgia,serif; font-style:italic;
+    font-size:26px; color:#d8a13a; }
+</style>
+<div id="root" data-composition-id="g-family" data-width="1920" data-height="1080">
+<div class="drift" id="g-family-drift"></div>
+<div class="eyebrow" id="g-family-eb"><</div><div class="hl" id="g-family-hl">ONE TORNADO — OR MANY?</div><div class="sub" id="g-family-sb"><</div><svg viewBox="0 0 1920 1080" style="position:absolute;inset:0"><path id="g-family-one" d="M 200 470 L 1720 420" stroke="#c0392b" stroke-width="9" fill="none" stroke-dasharray="1530" stroke-dashoffset="1530"/><g id="g-family-fam" opacity="0"><path d="M 200 720 L 660 700" stroke="#e8c56a" stroke-width="8" fill="none"/><path d="M 720 697 L 1180 678" stroke="#e8c56a" stroke-width="8" fill="none"/><path d="M 1240 675 L 1720 655" stroke="#e8c56a" stroke-width="8" fill="none"/><circle id="g-family-g1" cx="690" cy="699" r="9" fill="#7fb2e5"/><circle id="g-family-g2" cx="1210" cy="677" r="9" fill="#7fb2e5"/></g></svg><div id="g-family-l1" style="position:absolute;left:200px;top:380px"><span class="lab">THE OFFICIAL VIEW</span><div class="val" style="color:#c0392b;font-size:34px;margin-top:6px">ONE CONTINUOUS TRACK — 219 MILES</div></div><div id="g-family-l2" style="position:absolute;left:200px;top:790px"><span class="lab">THE CHALLENGE</span><div class="val" style="color:#e8c56a;font-size:34px;margin-top:6px">A FAMILY OF TORNADOES — GAPS HIDDEN IN THE RAIN</div></div><div class="foot" id="g-family-ft">Modern reanalysis: the continuous track holds across most of the path.</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-family-";
+  tl.fromTo(P+"drift", {y:-120}, {y:120, duration:38.0, ease:"none"}, 0);
+  tl.fromTo(P+"eb", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.15);
+  tl.fromTo(P+"hl", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.35);
+  tl.fromTo(P+"sb", {autoAlpha:0, x:-24}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.55);
+  tl.to(P+"one", {strokeDashoffset:0, duration:5.0, ease:"none"}, 3.0);
+  tl.fromTo(P+"l1", {autoAlpha:0, x:-40}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 4.0);
+  tl.fromTo(P+"fam", {autoAlpha:0}, {autoAlpha:1, duration:0.8}, 12.0);
+  tl.fromTo(P+"l2", {autoAlpha:0, x:-40}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 12.6);
+  tl.fromTo(P+"g1", {attr:{r:9}}, {attr:{r:26}, duration:1.2, yoyo:true, repeat:11, ease:"sine.inOut"}, 14.0);
+  tl.fromTo(P+"g2", {attr:{r:9}}, {attr:{r:26}, duration:1.2, yoyo:true, repeat:11, ease:"sine.inOut"}, 14.6);
+  tl.fromTo(P+"ft", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.6}, 30.0);
+
+  window.__timelines["g-family"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

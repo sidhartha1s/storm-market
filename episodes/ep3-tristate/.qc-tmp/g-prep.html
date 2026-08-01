@@ -1,0 +1,290 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;width:1920px;height:1080px;background:#111;overflow:hidden}</style>
+<script src="../gsap.min.js"></script></head><body>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif; overflow:hidden;
+    background:radial-gradient(ellipse at 46% 52%, #0d141c 0%, #04070a 76%); }
+  #g-prep-bg { position:absolute; inset:0; }
+  .eyebrow { position:absolute; left:100px; top:60px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; opacity:0; }
+  .hl { position:absolute; left:100px; top:90px; font-family:'Arial Black',Arial,sans-serif; font-size:52px;
+    line-height:1.05; color:#f2f5f8; opacity:0; }
+  .sub { position:absolute; left:100px; top:160px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; opacity:0; }
+  #g-prep-div { position:absolute; left:100px; top:210px; width:1100px; height:2px;
+    background:linear-gradient(90deg,#3f5a72,#0d141c); transform-origin:left center; transform:scaleX(0); }
+
+  .row { position:absolute; left:100px; width:1120px; height:236px; opacity:0; }
+  #g-prep-row1 { top:250px; } #g-prep-row2 { top:512px; } #g-prep-row3 { top:774px; }
+  .acc { position:absolute; left:-22px; top:6px; width:5px; height:200px; background:#d8a13a; transform-origin:top center; transform:scaleY(0); }
+  #g-prep-acc3 { background:#c0392b; }
+  .dia { position:absolute; left:0; top:6px; }
+  .ridx { position:absolute; left:342px; top:2px; font-size:19px; letter-spacing:5px; color:#93a3b2; font-weight:700; opacity:0; }
+  .rtitle { position:absolute; left:342px; top:32px; font-family:'Arial Black',Arial,sans-serif; font-size:40px;
+    line-height:1.05; color:#f2f5f8; opacity:0; }
+  .rbody { position:absolute; left:342px; top:96px; width:660px; font-size:27px; line-height:1.4; color:#dfe7ee; opacity:0; }
+  .badge { position:absolute; left:0; top:202px; display:inline-block; font-family:'Arial Black',Arial,sans-serif;
+    font-size:26px; letter-spacing:2px; color:#fff; background:#8e2020; padding:2px 18px; opacity:0; }
+  #g-prep-badge3 { background:#c0392b; }
+  .dl { font-family:Arial,sans-serif; font-weight:700; font-size:17px; }
+  .dl2 { font-family:Arial,sans-serif; font-weight:700; font-size:15px; }
+
+  #g-prep-rp { position:absolute; left:1250px; top:220px; width:620px; height:800px; opacity:0;
+    background:linear-gradient(180deg, rgba(14,21,29,0.92), rgba(7,11,16,0.55));
+    border-left:3px solid #22303d; box-sizing:border-box; }
+  .zlab { position:absolute; left:40px; top:30px; font-size:19px; letter-spacing:5px; color:#93a3b2; font-weight:700; opacity:0; }
+  #g-prep-zdot { position:absolute; left:40px; top:294px; width:20px; height:20px; border-radius:50%;
+    background:#e8c56a; box-shadow:0 0 22px #e8c56aaa; opacity:0; }
+  #g-prep-zone { position:absolute; left:76px; top:60px; font-family:'Courier New',monospace; font-size:44px;
+    line-height:1.15; font-weight:700; color:#e8c56a; opacity:0; }
+  .zsub { position:absolute; left:40px; top:128px; width:540px; font-family:Georgia,serif; font-style:italic;
+    font-size:22px; color:#93a3b2; opacity:0; }
+  #g-prep-rpdiv { position:absolute; left:40px; top:180px; width:540px; height:2px;
+    background:linear-gradient(90deg,#31465a,#0d141c); transform-origin:left center; transform:scaleX(0); }
+  .rphdr { position:absolute; left:40px; top:214px; font-size:26px; letter-spacing:8px; color:#93a3b2; font-weight:700; opacity:0; }
+  .rpsub { position:absolute; left:40px; top:254px; font-size:19px; letter-spacing:4px; color:#6f8598; font-weight:700; opacity:0; }
+  .blab { position:absolute; left:40px; font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; opacity:0; }
+  .btrack { position:absolute; left:40px; width:400px; height:20px; background:#101820; border:1px solid #22303d; box-sizing:border-box; }
+  .bfill { position:absolute; left:0; top:0; bottom:0; transform-origin:left center; transform:scaleX(0);
+    background:linear-gradient(90deg,#5a768f,#d8a13a); }
+  #g-prep-fill4 { background:linear-gradient(90deg,#6d271f,#c0392b); }
+  .bval { position:absolute; left:458px; font-family:'Courier New',monospace; font-size:28px; font-weight:700; color:#e8c56a; opacity:0; }
+  #g-prep-val4 { color:#e74c3c; }
+  .note { position:absolute; left:40px; top:700px; width:540px; font-family:Georgia,serif; font-style:italic;
+    font-size:24px; line-height:1.3; color:#d8a13a; opacity:0; }
+
+  #g-prep-end { position:absolute; inset:0; opacity:0;
+    background:radial-gradient(ellipse at 50% 46%, rgba(13,20,28,0.96) 0%, rgba(4,7,10,0.97) 74%); }
+  .ec { position:absolute; left:0; width:1920px; text-align:center; opacity:0; }
+  #g-prep-eeb { top:306px; font-size:22px; letter-spacing:8px; color:#93a3b2; font-weight:700; }
+  #g-prep-el1 { top:402px; font-family:'Arial Black',Arial,sans-serif; font-size:62px; line-height:1.05; color:#f2f5f8; }
+  #g-prep-el2 { top:505px; font-family:'Arial Black',Arial,sans-serif; font-size:62px; line-height:1.05; color:#e8c56a; }
+  #g-prep-esub { top:626px; font-family:Georgia,serif; font-style:italic; font-size:28px; color:#d8a13a; }
+  #g-prep-esm  { top:690px; font-size:19px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  #g-prep-erule { position:absolute; left:750px; top:600px; width:420px; height:3px;
+    background:linear-gradient(90deg,rgba(216,161,58,0),#d8a13a,rgba(216,161,58,0)); transform-origin:center; transform:scaleX(0); }
+</style>
+<div id="root" data-composition-id="g-prep" data-width="1920" data-height="1080">
+
+  <svg id="g-prep-bg" viewBox="0 0 1920 1080">
+    <circle id="g-prep-ring1" cx="960" cy="560" r="470" fill="none" stroke="#17222e" stroke-width="2" stroke-dasharray="18 26"/>
+    <circle id="g-prep-ring2" cx="960" cy="560" r="342" fill="none" stroke="#131d27" stroke-width="2" stroke-dasharray="6 30"/>
+    <circle cx="960" cy="560" r="206" fill="none" stroke="#0f1822" stroke-width="2"/>
+  </svg>
+
+  <div class="eyebrow" id="g-prep-eb">PREPAREDNESS · WHAT THE SURVEYS SHOW</div>
+  <div class="hl" id="g-prep-hl">WHAT ACTUALLY KEEPS YOU ALIVE</div>
+  <div class="sub" id="g-prep-sub">Three rules. No equipment. No warning system required.</div>
+  <div id="g-prep-div"></div>
+
+  <!-- RULE 01 -->
+  <div class="row" id="g-prep-row1">
+    <div class="acc" id="g-prep-acc1"></div>
+    <svg class="dia" id="g-prep-svg1" width="300" height="190" viewBox="0 0 300 190">
+      <rect x="0" y="112" width="300" height="78" fill="#0b131b"/>
+      <line x1="12" y1="188" x2="40" y2="150" stroke="#16212c" stroke-width="2"/>
+      <line x1="52" y1="188" x2="80" y2="150" stroke="#16212c" stroke-width="2"/>
+      <line x1="252" y1="188" x2="280" y2="150" stroke="#16212c" stroke-width="2"/>
+      <line x1="0" y1="112" x2="300" y2="112" stroke="#5a768f" stroke-width="2"/>
+      <polygon points="30,52 150,10 270,52" fill="none" stroke="#93a3b2" stroke-width="3"/>
+      <path id="g-prep-house" d="M48 52 L48 112 L252 112 L252 52" fill="none" stroke="#c8d3e0" stroke-width="3"
+            stroke-dasharray="330" stroke-dashoffset="330"/>
+      <line x1="48" y1="84" x2="252" y2="84" stroke="#2a3644" stroke-width="2"/>
+      <rect id="g-prep-base" x="62" y="118" width="176" height="56" fill="#d8a13a26" stroke="#e8c56a" stroke-width="3"/>
+      <rect id="g-prep-halo1" x="52" y="108" width="196" height="76" fill="none" stroke="#e8c56a" stroke-width="3" opacity="0"/>
+      <text x="150" y="152" text-anchor="middle" class="dl" fill="#e8c56a">BASEMENT</text>
+      <text x="4" y="106" class="dl2" fill="#93a3b2">GRADE</text>
+    </svg>
+    <div class="ridx" id="g-prep-idx1">RULE 01</div>
+    <div class="rtitle" id="g-prep-t1">BELOW GROUND</div>
+    <div class="rbody" id="g-prep-b1"><</div>
+    <div class="badge" id="g-prep-badge1">SAFEST</div>
+  </div>
+
+  <!-- RULE 02 -->
+  <div class="row" id="g-prep-row2">
+    <div class="acc" id="g-prep-acc2"></div>
+    <svg class="dia" id="g-prep-svg2" width="300" height="190" viewBox="0 0 300 190">
+      <rect x="14" y="14" width="272" height="162" fill="#0b131b" stroke="#93a3b2" stroke-width="3"/>
+      <line id="g-prep-w1" x1="106" y1="14" x2="106" y2="14" stroke="#3c4d5e" stroke-width="3"/>
+      <line id="g-prep-w2" x1="200" y1="176" x2="200" y2="176" stroke="#3c4d5e" stroke-width="3"/>
+      <line id="g-prep-w3" x1="14" y1="95" x2="14" y2="95" stroke="#3c4d5e" stroke-width="3"/>
+      <line x1="46" y1="14" x2="86" y2="14" stroke="#7fb2e5" stroke-width="4"/>
+      <line x1="220" y1="14" x2="260" y2="14" stroke="#7fb2e5" stroke-width="4"/>
+      <line x1="14" y1="120" x2="14" y2="158" stroke="#7fb2e5" stroke-width="4"/>
+      <line x1="286" y1="44" x2="286" y2="82" stroke="#7fb2e5" stroke-width="4"/>
+      <rect id="g-prep-room" x="118" y="56" width="70" height="72" fill="#d8a13a26" stroke="#e8c56a" stroke-width="3"/>
+      <rect id="g-prep-halo2" x="108" y="46" width="90" height="92" fill="none" stroke="#e8c56a" stroke-width="3" opacity="0"/>
+      <text x="153" y="150" text-anchor="middle" class="dl" fill="#e8c56a">CENTRE</text>
+      <text x="22" y="36" class="dl2" fill="#7fb2e5">GLASS</text>
+    </svg>
+    <div class="ridx" id="g-prep-idx2">RULE 02</div>
+    <div class="rtitle" id="g-prep-t2">SMALL INTERIOR ROOM</div>
+    <div class="rbody" id="g-prep-b2"><</div>
+    <div class="badge" id="g-prep-badge2">NEXT BEST</div>
+  </div>
+
+  <!-- RULE 03 -->
+  <div class="row" id="g-prep-row3">
+    <div class="acc" id="g-prep-acc3"></div>
+    <svg class="dia" id="g-prep-svg3" width="300" height="190" viewBox="0 0 300 190">
+      <rect x="66" y="18" width="168" height="128" fill="#0e1620" stroke="#93a3b2" stroke-width="3"/>
+      <line id="g-prep-m1" x1="150" y1="18" x2="150" y2="18" stroke="#93a3b2" stroke-width="3"/>
+      <line id="g-prep-m2" x1="66" y1="82" x2="66" y2="82" stroke="#93a3b2" stroke-width="3"/>
+      <rect x="56" y="146" width="188" height="10" fill="#22303d"/>
+      <path id="g-prep-hatch" d="M74 26 L226 138 M226 26 L74 138" fill="none" stroke="#c0392b" stroke-width="5"
+            stroke-dasharray="380" stroke-dashoffset="380"/>
+      <circle id="g-prep-halo3" cx="150" cy="82" r="76" fill="none" stroke="#c0392b" stroke-width="3" opacity="0"/>
+      <text x="150" y="178" text-anchor="middle" class="dl2" fill="#93a3b2">GLASS FAILS FIRST</text>
+    </svg>
+    <div class="ridx" id="g-prep-idx3">RULE 03</div>
+    <div class="rtitle" id="g-prep-t3">AWAY FROM WINDOWS</div>
+    <div class="rbody" id="g-prep-b3"><</div>
+    <div class="badge" id="g-prep-badge3">NO GLASS</div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div id="g-prep-rp">
+    <div class="zlab" id="g-prep-zlab">SAFE ZONE · HIGHLIGHTED</div>
+    <div id="g-prep-zdot"></div>
+    <div id="g-prep-zone">BASEMENT</div>
+    <div class="zsub" id="g-prep-zsub">the pulse marks the safest place left</div>
+    <div id="g-prep-rpdiv"></div>
+    <div class="rphdr" id="g-prep-rphdr">ORDER OF PROTECTION</div>
+    <div class="rpsub" id="g-prep-rpsub">RANKED · BEST FIRST</div>
+
+    <div class="blab" id="g-prep-lab1" style="top:306px">BASEMENT OR STORM CELLAR</div>
+    <div class="btrack" style="top:334px"><div class="bfill" id="g-prep-fill1" style="width:400px"></div></div>
+    <div class="bval" id="g-prep-val1" style="top:328px">BEST</div>
+
+    <div class="blab" id="g-prep-lab2" style="top:402px">INTERIOR ROOM, NO WINDOWS</div>
+    <div class="btrack" style="top:430px"><div class="bfill" id="g-prep-fill2" style="width:318px"></div></div>
+    <div class="bval" id="g-prep-val2" style="top:424px">STRONG</div>
+
+    <div class="blab" id="g-prep-lab3" style="top:498px">INTERIOR HALL OR BATHTUB</div>
+    <div class="btrack" style="top:526px"><div class="bfill" id="g-prep-fill3" style="width:246px"></div></div>
+    <div class="bval" id="g-prep-val3" style="top:520px">GOOD</div>
+
+    <div class="blab" id="g-prep-lab4" style="top:594px">VEHICLE OR MOBILE HOME</div>
+    <div class="btrack" style="top:622px"><div class="bfill" id="g-prep-fill4" style="width:58px"></div></div>
+    <div class="bval" id="g-prep-val4" style="top:616px">LEAVE</div>
+
+    <div class="note" id="g-prep-note"><</div>
+  </div>
+
+  <!-- END CARD -->
+  <div id="g-prep-end">
+    <div class="ec" id="g-prep-eeb">THE THREE RULES</div>
+    <div class="ec" id="g-prep-el1">MINUTES ARE ENOUGH</div>
+    <div class="ec" id="g-prep-el2">— IF YOU USE THEM</div>
+    <div id="g-prep-erule"></div>
+    <div class="ec" id="g-prep-esub"><</div>
+    <div class="ec" id="g-prep-esm">MARCH 18, 1925 — AND EVERY DAY SINCE</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-prep-";
+  const setZone = (txt) => function() { const e = document.getElementById("g-prep-zone"); if (e) e.textContent = txt; };
+
+  /* header */
+  tl.fromTo(P+"eb",  {autoAlpha:0, x:-34}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.15);
+  tl.fromTo(P+"hl",  {autoAlpha:0, x:-40}, {autoAlpha:1, x:0, duration:0.6, ease:"power3.out"}, 0.40);
+  tl.fromTo(P+"sub", {autoAlpha:0, y:20},  {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 0.75);
+  tl.fromTo(P+"div", {scaleX:0}, {scaleX:1, duration:0.7, ease:"power3.out"}, 1.00);
+  /* continuous bed — spans the whole window */
+  tl.to(P+"ring1", {rotation:300, duration:20.0, ease:"none", svgOrigin:"960 560"}, 1.10);
+  tl.to(P+"ring2", {rotation:-240, duration:18.6, ease:"none", svgOrigin:"960 560"}, 1.25);
+
+  /* RULE 01 — below ground */
+  tl.fromTo(P+"row1", {autoAlpha:0, x:-46}, {autoAlpha:1, x:0, duration:0.55, ease:"power3.out"}, 1.50);
+  tl.fromTo(P+"acc1", {scaleY:0}, {scaleY:1, duration:0.5, ease:"power3.out"}, 1.80);
+  tl.fromTo(P+"house", {strokeDashoffset:330}, {strokeDashoffset:0, duration:0.9, ease:"power3.out"}, 2.00);
+  tl.fromTo(P+"rp", {autoAlpha:0, x:80}, {autoAlpha:1, x:0, duration:0.7, ease:"power3.out"}, 2.20);
+  tl.fromTo(P+"base", {scaleY:0.1, autoAlpha:0.2}, {scaleY:1, autoAlpha:1, duration:0.45, ease:"power4.in", svgOrigin:"150 174"}, 2.55);
+  tl.fromTo(P+"zlab", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 2.70);
+  tl.fromTo(P+"idx1", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 2.95);
+  tl.fromTo(P+"t1", {autoAlpha:0, scale:1.5}, {autoAlpha:1, scale:1, duration:0.38, ease:"power4.in"}, 3.15);
+  tl.fromTo(P+"b1", {autoAlpha:0, y:22}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 3.55);
+  tl.fromTo(P+"badge1", {autoAlpha:0, scale:2.4}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 4.20);
+  tl.fromTo(P+"halo1", {scale:0.84, autoAlpha:0}, {scale:1.1, autoAlpha:0.95, duration:1.05, yoyo:true, repeat:3, ease:"sine.inOut", svgOrigin:"150 146"}, 4.40);
+  tl.fromTo(P+"zone", {autoAlpha:0, x:20}, {autoAlpha:1, x:0, duration:0.4, ease:"power3.out"}, 4.55);
+  tl.fromTo(P+"zdot", {autoAlpha:0, scale:0.2}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 4.55);
+  tl.fromTo(P+"zsub", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 4.95);
+  tl.to(P+"zdot", {scale:1.35, duration:0.7, yoyo:true, repeat:15, ease:"sine.inOut"}, 5.10);
+
+  /* RULE 02 — small interior room */
+  tl.fromTo(P+"row2", {autoAlpha:0, x:-46}, {autoAlpha:1, x:0, duration:0.55, ease:"power3.out"}, 5.60);
+  tl.fromTo(P+"acc2", {scaleY:0}, {scaleY:1, duration:0.5, ease:"power3.out"}, 5.90);
+  tl.fromTo(P+"w1", {attr:{y2:14}}, {attr:{y2:176}, duration:0.5, ease:"power3.out"}, 6.20);
+  tl.fromTo(P+"w2", {attr:{y2:176}}, {attr:{y2:14}, duration:0.5, ease:"power3.out"}, 6.45);
+  tl.fromTo(P+"w3", {attr:{x2:14}}, {attr:{x2:106}, duration:0.45, ease:"power3.out"}, 6.70);
+  tl.fromTo(P+"room", {scale:0.15, autoAlpha:0.2}, {scale:1, autoAlpha:1, duration:0.45, ease:"power4.in", svgOrigin:"153 92"}, 7.05);
+  tl.fromTo(P+"idx2", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 7.30);
+  tl.fromTo(P+"t2", {autoAlpha:0, scale:1.5}, {autoAlpha:1, scale:1, duration:0.38, ease:"power4.in"}, 7.50);
+  tl.fromTo(P+"b2", {autoAlpha:0, y:22}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 7.90);
+  tl.fromTo(P+"badge2", {autoAlpha:0, scale:2.4}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 8.55);
+  tl.fromTo(P+"halo2", {scale:0.84, autoAlpha:0}, {scale:1.12, autoAlpha:0.95, duration:1.05, yoyo:true, repeat:3, ease:"sine.inOut", svgOrigin:"153 92"}, 8.90);
+  tl.to(P+"zone", {duration:0.01, onComplete:setZone("INTERIOR ROOM")}, 9.05);
+  tl.fromTo(P+"zone", {y:-16}, {y:0, duration:0.35, ease:"power3.out"}, 9.06);
+
+  /* RULE 03 — away from windows */
+  tl.fromTo(P+"row3", {autoAlpha:0, x:-46}, {autoAlpha:1, x:0, duration:0.55, ease:"power3.out"}, 9.70);
+  tl.fromTo(P+"acc3", {scaleY:0}, {scaleY:1, duration:0.5, ease:"power3.out"}, 10.00);
+  tl.fromTo(P+"m1", {attr:{y2:18}}, {attr:{y2:146}, duration:0.45, ease:"power3.out"}, 10.25);
+  tl.fromTo(P+"m2", {attr:{x2:66}}, {attr:{x2:234}, duration:0.45, ease:"power3.out"}, 10.60);
+  tl.fromTo(P+"idx3", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 11.05);
+  tl.fromTo(P+"t3", {autoAlpha:0, scale:1.5}, {autoAlpha:1, scale:1, duration:0.38, ease:"power4.in"}, 11.30);
+  tl.fromTo(P+"b3", {autoAlpha:0, y:22}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 11.70);
+  tl.fromTo(P+"hatch", {strokeDashoffset:380}, {strokeDashoffset:0, duration:0.8, ease:"power3.out"}, 12.30);
+  tl.fromTo(P+"badge3", {autoAlpha:0, scale:2.4}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 12.75);
+  tl.fromTo(P+"halo3", {scale:0.8, autoAlpha:0}, {scale:1.14, autoAlpha:0.95, duration:1.05, yoyo:true, repeat:3, ease:"sine.inOut", svgOrigin:"150 82"}, 12.95);
+  tl.to(P+"zone", {duration:0.01, onComplete:setZone("AWAY FROM GLASS")}, 13.05);
+  tl.fromTo(P+"zone", {y:-16}, {y:0, duration:0.35, ease:"power3.out"}, 13.06);
+
+  /* ranked panel */
+  tl.fromTo(P+"rpdiv", {scaleX:0}, {scaleX:1, duration:0.5, ease:"power3.out"}, 13.40);
+  tl.set(".btrack", {autoAlpha:0}, 0);
+  tl.to(".btrack", {autoAlpha:1, duration:0.40, ease:"power2.out"}, 13.70);
+  tl.fromTo(P+"rphdr", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 13.60);
+  tl.fromTo(P+"rpsub", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 13.80);
+  tl.fromTo(P+"lab1", {autoAlpha:0, x:-18}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 14.00);
+  tl.fromTo(P+"fill1", {scaleX:0}, {scaleX:1, duration:0.55, ease:"power3.out"}, 14.05);
+  tl.fromTo(P+"val1", {autoAlpha:0, x:16}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 14.35);
+  tl.fromTo(P+"lab2", {autoAlpha:0, x:-18}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 14.55);
+  tl.fromTo(P+"fill2", {scaleX:0}, {scaleX:1, duration:0.55, ease:"power3.out"}, 14.60);
+  tl.fromTo(P+"val2", {autoAlpha:0, x:16}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 14.90);
+  tl.fromTo(P+"lab3", {autoAlpha:0, x:-18}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 15.10);
+  tl.fromTo(P+"fill3", {scaleX:0}, {scaleX:1, duration:0.55, ease:"power3.out"}, 15.15);
+  tl.fromTo(P+"val3", {autoAlpha:0, x:16}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 15.45);
+  tl.fromTo(P+"lab4", {autoAlpha:0, x:-18}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 15.65);
+  tl.fromTo(P+"fill4", {scaleX:0}, {scaleX:1, duration:0.55, ease:"power4.in"}, 15.70);
+  tl.fromTo(P+"val4", {autoAlpha:0, x:16}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 16.00);
+  tl.fromTo(P+"note", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 16.25);
+
+  /* all three pulse together */
+  tl.to(P+"zone", {duration:0.01, onComplete:setZone("ALL THREE")}, 16.65);
+  tl.fromTo([P+"halo1",P+"halo2",P+"halo3"], {scale:0.86, autoAlpha:0}, {scale:1.12, autoAlpha:0.95, duration:0.85, yoyo:true, repeat:1, ease:"sine.inOut"}, 16.70);
+  tl.fromTo(P+"zdot", {scale:1}, {scale:1.7, duration:0.4, yoyo:true, repeat:1, ease:"power3.out"}, 17.30);
+
+  /* exit */
+  tl.to([P+"eb",P+"hl",P+"sub",P+"div"], {autoAlpha:0, y:-70, duration:0.6, ease:"power3.in"}, 17.85);
+  tl.to(P+"row1", {autoAlpha:0, x:-110, duration:0.6, ease:"power3.in"}, 17.90);
+  tl.to(P+"row2", {autoAlpha:0, x:-110, duration:0.6, ease:"power3.in"}, 18.02);
+  tl.to(P+"row3", {autoAlpha:0, x:-110, duration:0.6, ease:"power3.in"}, 18.14);
+  tl.to(P+"rp", {autoAlpha:0, x:170, duration:0.6, ease:"power3.in"}, 17.95);
+
+  /* end card */
+  tl.fromTo(P+"end", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 18.50);
+  tl.fromTo(P+"eeb", {autoAlpha:0, y:-18}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 18.70);
+  tl.fromTo(P+"el1", {autoAlpha:0, scale:1.32}, {autoAlpha:1, scale:1, duration:0.38, ease:"power4.in"}, 18.95);
+  tl.fromTo(P+"el2", {autoAlpha:0, scale:1.32}, {autoAlpha:1, scale:1, duration:0.38, ease:"power4.in"}, 19.45);
+  tl.fromTo(P+"erule", {scaleX:0}, {scaleX:1, duration:0.6, ease:"power3.out"}, 19.95);
+  tl.fromTo(P+"esub", {autoAlpha:0, y:22}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 20.30);
+  tl.fromTo(P+"esm", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 20.80);
+  tl.to(P+"end", {scale:1.03, duration:0.8, ease:"sine.inOut"}, 21.20);
+
+  window.__timelines["g-prep"] = tl;
+})();
+</script>
+</body></html>

@@ -186,6 +186,17 @@ floors/ceilings; taste stays with the model.
 
 - Hook: cold-open insert (911 audio / broadcast) or present-tense stat over motion. ≤15s to thesis.
 - After an emotional payoff: hold 2-4s, ambience up, then cut hard to the next act.
+- **Chapter blackout (documentary breath — ep1/ep2 device, MANDATORY ep4+; owner order
+  2026-07-31):** between acts, and on a key beat, cut to a full 2-3s BLACK. It resets the eye and
+  is what makes ep1/ep2 read like a documentary. ep1/ep2 place a plain black section on the
+  picture track:
+  `<section class="clip blackout" data-start="X" data-duration="2.4"–"3.0" data-track-index="1"></section>`
+  with `.blackout { position:absolute; inset:0; background:#000; }`. Cut TO black hard (no fade),
+  hold 2-3s in silence or low ambience, cut OUT to the next act. **ep3 kept only the cold-open
+  VOID (h1-s3) and dropped the recurring act-boundary blackouts** — its `build_ep3.py` generator
+  never emitted them between acts. A regression, not a style choice:
+  the next episode's builder MUST insert act-boundary blackouts (a `black`/`blackout` beat kind in
+  the shot table, or hand-placed). ep3 stays as shipped; do not re-render it for this.
 - Never two inserts back-to-back; narration re-anchors between them.
 - Stats mid-video, emotion banked at the end (teardown-verified pattern).
 - Micro-loops every 30-45s, phrasing varied; no recap; CTA short.
@@ -195,3 +206,80 @@ floors/ceilings; taste stays with the model.
   "Disasters don't ask permission. But they do send warnings. Learn what yours sounds like —
   so when it comes, you already know what to do. This was The Warning Hour." It plays over the
   title card; it IS the outro (still no recap, no content summary).
+
+---
+# GRAPHICS CONTRACT (binding, from ep2 — owner order 2026-07-29 after ep3 v2 scored 2/10)
+**Source of truth = `episodes/ep2-2011-super-outbreak/compositions/*.html`. READ THEM before
+authoring any graphic. Do not infer this language from a previous episode's index.html.**
+
+## 1. Authoring form — sub-composition files, always
+One graphic = one file `episodes/<slug>/compositions/g-<name>.html` with `<template>`, own
+`<style>`, own `#root[data-composition-id]`, own paused GSAP timeline registered to
+`window.__timelines["g-<name>"]`. Mounted from index.html as:
+`<div id="host-x" data-composition-id="g-x" data-composition-src="compositions/g-x.html"
+ data-start data-duration data-track-index data-width="1920" data-height="1080"></div>`
+NEVER build graphic DOM from JS `innerHTML` strings inside index.html — it kills the per-graphic
+design pass and makes code QC impossible. (ep3 v2 regression.)
+
+## 2. Panel anatomy — the stat card (ep2 g-stat-philly)
+Full-height right panel, NOT a floating box: `right:0; top:0; bottom:0; width:820px;
+background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0));
+padding:90px 70px 0 170px`. Content order, top to bottom:
+eyebrow → place name → serif-italic sub → stamp → labelled rows → counter → counter label.
+
+## 3. Type scale (literal, per role)
+| role | font | size | color | tracking |
+|---|---|---|---|---|
+| eyebrow | Arial 700 | 22px | #93a3b2 | 6px |
+| place/headline | Arial Black | 52px | #f2f5f8 | — |
+| serif sub | Georgia italic | 26px | #d8a13a | — |
+| stamp | Arial Black on #8e2020 | 96px | #fff | 2px |
+| row value | Arial 700 | 30px | #dfe7ee | 1px |
+| row label | Arial 700 | 19px | #93a3b2 | 4px |
+| counter | Courier New 700 | 84px | #e74c3c | — |
+| counter label | Arial 700 | 20px | #c8d3e0 | 6px |
+| section header | Arial 700 | 26px | #93a3b2 | 8px |
+Three tiers must be visible in every graphic: something ≥52px, something 26–30px, something ≤22px.
+Uniform small text = automatic fail.
+
+## 4. Palette semantics (fixed meaning, ≤10 colors per episode)
+`#8e2020` stamp block · `#c0392b`/`#e74c3c` death & danger · `#d8a13a`/`#e8c56a` serif subs,
+values, warm air · `#5a768f`/`#7fb2e5` cold air, cool diagram parts · `#93a3b2` labels/eyebrows ·
+`#f2f5f8` headlines · `#dfe7ee` body · bg `radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%)`.
+Never a flat `#000`/`#0a1017` fill behind a graphic — always the textured radial.
+
+## 5. Motion vocabulary (the thing ep3 v2 lacked)
+- panel enters `fromTo(x:660 → 0, 0.7, power3.out)`, exits `to(x:980, autoAlpha:0, 0.6, power3.in)`
+- stamp slams `fromTo(scale:2.6, autoAlpha:0 → scale:1, 0.35, power4.in)`
+- rows `fromTo(autoAlpha:0, y:24 → 0, 0.4)`, staggered ~0.6s apart
+- bars/arrows/gauges grow by `scaleX 0→1` with `transformOrigin:"left center"`, 0.5s
+- counters `to({v}, power4.out / power3.out)` with `onUpdate` writing `textContent`
+- one CONTINUOUS motion per long graphic (ep2: `rotation:200, duration:26, ease:"none"` on the
+  spin column; `scale+rotation` over 12s on the supercell). A graphic longer than ~20s MUST carry
+  a continuous element, not just discrete reveals.
+Fade-only graphics are a fail. Target ≥1 scale/slide tween per 2 reveals.
+- **Panel exit TIMING (owner, ep3 v4→v5, 2026-07-31):** the slide-right exit above is REQUIRED —
+  a panel slides out `x:980, autoAlpha:0`, it does not vanish. But time it to the END of the
+  panel's window: anchor the exit to the comp's last ~0.6s AND keep the comp duration ≥ its host
+  window, so the panel never leaves while its beat is still being spoken. ep3 v4's exit fired
+  early (the host window was extended past the comp by `close_picture_gaps`, so the exit landed
+  mid-beat); ep3 v5 over-corrected by DELETING the exit, so panels just disappear. Neither is the
+  contract — keep the slide-right exit, land it on the cut. (ep3 stays as shipped; ep4+ restore
+  the timed exit.)
+
+## 6. Beat cadence + duration
+Beat = a visible change. Max 3s of no change inside any graphic window; ≤2.5s in the first 10s.
+Long graphics are allowed (ep2 g-met = 81s) ONLY with a continuous motion element plus
+word-synced beats. Author beats against `audio/<seg>.words.json` and leave the spoken timestamp
+in a code comment, ep2-style: `/* FUEL @4.74; 1,000 @16.6; 2,000 @20.8 */`.
+
+## 7. Explain with a diagram, never a label on a shape
+ep2 built real widgets: a CAPE gauge with gradient fill, a layered lid cross-section, staggered
+shear arrows + rotating column, a conic-gradient supercell. A cone captioned "tornado" or a line
+captioned "warm air" conveys nothing — build the mechanism, animate it, let the label name it.
+
+## 8. Hard gate — code QC, not frame QC
+`node scripts/graphics_qc.mjs .` (from the episode dir) must exit 0 before any render. Frame renders
+CONFIRM; they never DISCOVER. Sampling 105 frames of a 35-min cut inspects 0.3% of the runtime and
+cannot see text collision, empty containers, or crop errors — those are `getBoundingClientRect`
+assertions in the DOM. (ep3 v2 root cause.)

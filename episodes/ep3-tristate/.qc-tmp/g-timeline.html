@@ -1,0 +1,346 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;width:1920px;height:1080px;background:#111;overflow:hidden}</style>
+<script src="../gsap.min.js"></script></head><body>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 46% 52%, #0d141c 0%, #04070a 76%); }
+
+  /* ---- header ---- */
+  .eyebrow { position:absolute; left:88px; top:46px; font-size:22px; line-height:26px;
+    letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .hl { position:absolute; left:88px; top:90px; font-family:'Arial Black',Arial,sans-serif;
+    font-size:58px; line-height:61px; color:#f2f5f8; letter-spacing:1px; }
+  .sub { position:absolute; left:88px; top:176px; font-family:Georgia,serif; font-style:italic;
+    font-size:28px; line-height:35px; color:#d8a13a; }
+
+  /* ---- lead-time counter (top right) ---- */
+  .cwrap { position:absolute; right:88px; top:56px; width:420px; text-align:right; }
+  .clab { font-size:20px; line-height:24px; letter-spacing:4px; color:#93a3b2; font-weight:700; }
+  .cnum { font-family:'Courier New',monospace; font-size:76px; line-height:84px; margin-top:12px;
+    color:#e8c56a; font-weight:700; }
+  .cunit { font-size:20px; line-height:24px; margin-top:10px; letter-spacing:2px; color:#c8d3e0; font-weight:700; }
+  .barwrap { position:absolute; right:88px; top:224px; width:240px; height:16px;
+    background:#101820; border:2px solid #22303d; box-sizing:border-box; }
+  .barfill { position:absolute; left:0; top:0; bottom:0; width:236px;
+    background:linear-gradient(90deg,#5a768f,#d8a13a 62%,#e8c56a); }
+  .scwrap { position:absolute; right:88px; top:248px; width:240px; display:flex;
+    justify-content:space-between; font-size:15px; line-height:20px; color:#5a768f;
+    font-weight:700; letter-spacing:2px; }
+
+  /* ---- milestone cards ---- */
+  .ms { position:absolute; width:272px; }
+  .tag { font-size:17px; line-height:20px; height:20px; letter-spacing:4px; color:#93a3b2; font-weight:700; }
+  .yr { margin-top:20px; font-family:'Arial Black',Arial,sans-serif; font-size:44px; line-height:48px;
+    color:#e8c56a; letter-spacing:1px; }
+  .rule { margin-top:12px; width:88px; height:3px; background:#8e2020; transform-origin:left center; }
+  .desc { margin-top:15px; font-size:21px; line-height:30px; color:#dfe7ee; }
+
+  /* ---- 1948 portrait ---- */
+  .photo { position:absolute; left:414px; top:226px; width:192px; height:200px; box-sizing:border-box;
+    border:2px solid #22303d; background:#080c11; padding:4px; }
+  .photo img { width:100%; height:100%; object-fit:contain; display:block; }
+  .cap1 { position:absolute; left:380px; top:436px; width:260px; text-align:center;
+    font-size:16px; line-height:20px; letter-spacing:2px; color:#c8d3e0; font-weight:700; }
+  .cap2 { position:absolute; left:380px; top:460px; width:260px; text-align:center;
+    font-family:Georgia,serif; font-style:italic; font-size:15px; line-height:19px; color:#7d8c9a; }
+
+  /* ---- diagram captions ---- */
+  .dcap { position:absolute; width:300px; text-align:center; font-size:18px; line-height:22px;
+    letter-spacing:3px; color:#93a3b2; font-weight:700; }
+
+  /* ---- contrast close ---- */
+  .cdiv { position:absolute; left:110px; top:918px; width:1700px; height:2px;
+    background:linear-gradient(90deg,#22303d,#3a4d60 50%,#22303d); transform-origin:left center; }
+  .stamp { position:absolute; display:inline-block; font-family:'Arial Black',Arial,sans-serif;
+    font-size:46px; line-height:46px; padding:10px 20px; letter-spacing:2px; }
+  .s-red { background:#8e2020; color:#ffffff; }
+  .s-gold { background:#d8a13a; color:#0d141c; }
+  .ctext { position:absolute; top:954px; font-family:'Arial Black',Arial,sans-serif;
+    font-size:30px; line-height:36px; letter-spacing:1px; }
+  .arrow { position:absolute; left:840px; top:966px; width:80px; height:4px;
+    background:linear-gradient(90deg,#5a768f,#e8c56a); transform-origin:left center; }
+  .ahead { position:absolute; left:920px; top:958px; width:0; height:0;
+    border-left:20px solid #e8c56a; border-top:10px solid transparent; border-bottom:10px solid transparent; }
+  .kick { position:absolute; left:110px; top:1022px; font-size:17px; line-height:20px;
+    letter-spacing:3px; color:#5a768f; font-weight:700; }
+
+  /* ---- svg type ---- */
+  .axlab { font-family:'Courier New',monospace; font-size:22px; font-weight:700; fill:#5a768f; }
+</style>
+
+<div id="root" data-composition-id="g-timeline" data-width="1920" data-height="1080">
+
+  <svg viewBox="0 0 1920 1080" style="position:absolute;inset:0">
+    <defs>
+      <filter id="tglow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <linearGradient id="axg" gradientUnits="userSpaceOnUse" x1="110" y1="0" x2="1810" y2="0">
+        <stop offset="0" stop-color="#5a768f"/><stop offset="0.55" stop-color="#d8a13a"/><stop offset="1" stop-color="#e8c56a"/>
+      </linearGradient>
+      <linearGradient id="swg" gradientUnits="userSpaceOnUse" x1="1120" y1="340" x2="1120" y2="254">
+        <stop offset="0" stop-color="#e8c56a" stop-opacity="0.05"/><stop offset="1" stop-color="#e8c56a" stop-opacity="0.75"/>
+      </linearGradient>
+    </defs>
+
+    <!-- frame furniture -->
+    <rect x="88" y="218" width="1744" height="2" fill="#131c26"/>
+    <rect x="72" y="44" width="56" height="3" fill="#2a3644"/><rect x="72" y="44" width="3" height="56" fill="#2a3644"/>
+    <rect x="1792" y="44" width="56" height="3" fill="#2a3644"/><rect x="1845" y="44" width="3" height="56" fill="#2a3644"/>
+    <rect x="72" y="1061" width="56" height="3" fill="#2a3644"/><rect x="72" y="1008" width="3" height="56" fill="#2a3644"/>
+    <rect x="1792" y="1061" width="56" height="3" fill="#2a3644"/><rect x="1845" y="1008" width="3" height="56" fill="#2a3644"/>
+
+    <!-- ruler ticks -->
+    <rect x="110" y="552" width="3" height="30" fill="#22303d"/>
+    <rect x="172" y="560" width="2" height="14" fill="#17222d"/>
+    <rect x="234" y="560" width="2" height="14" fill="#17222d"/>
+    <rect x="296" y="560" width="2" height="14" fill="#17222d"/>
+    <rect x="358" y="552" width="3" height="30" fill="#22303d"/>
+    <rect x="420" y="560" width="2" height="14" fill="#17222d"/>
+    <rect x="482" y="560" width="2" height="14" fill="#17222d"/>
+    <rect x="544" y="560" width="2" height="14" fill="#17222d"/>
+    <rect x="606" y="552" width="3" height="30" fill="#22303d"/>
+    <rect x="668" y="560" width="2" height="14" fill="#17222d"/>
+    <rect x="730" y="560" width="2" height="14" fill="#17222d"/>
+    <rect x="792" y="560" width="2" height="14" fill="#17222d"/>
+    <rect x="854" y="552" width="3" height="30" fill="#22303d"/>
+    <rect x="916" y="560" width="2" height="14" fill="#17222d"/>
+    <rect x="978" y="560" width="2" height="14" fill="#17222d"/>
+    <rect x="1040" y="560" width="2" height="14" fill="#17222d"/>
+    <rect x="1102" y="552" width="3" height="30" fill="#22303d"/>
+    <rect x="1164" y="560" width="2" height="14" fill="#17222d"/>
+    <rect x="1226" y="560" width="2" height="14" fill="#17222d"/>
+    <rect x="1288" y="560" width="2" height="14" fill="#17222d"/>
+    <rect x="1350" y="552" width="3" height="30" fill="#22303d"/>
+    <rect x="1412" y="560" width="2" height="14" fill="#17222d"/>
+    <rect x="1474" y="560" width="2" height="14" fill="#17222d"/>
+    <rect x="1536" y="560" width="2" height="14" fill="#17222d"/>
+    <rect x="1598" y="552" width="3" height="30" fill="#22303d"/>
+    <rect x="1660" y="560" width="2" height="14" fill="#17222d"/>
+    <rect x="1722" y="560" width="2" height="14" fill="#17222d"/>
+    <rect x="1784" y="552" width="3" height="30" fill="#22303d"/>
+
+    <!-- the axis -->
+    <line x1="110" y1="566" x2="1810" y2="566" stroke="#1a2531" stroke-width="5"/>
+    <line id="g-timeline-axis" x1="110" y1="566" x2="1810" y2="566" stroke="url(#axg)" stroke-width="7"
+      stroke-linecap="round" stroke-dasharray="1700" stroke-dashoffset="1700"/>
+    <text x="110" y="612" class="axlab">1925</text>
+    <text x="1810" y="612" text-anchor="end" class="axlab">2025</text>
+
+    <!-- connectors -->
+    <line id="g-timeline-c0" x1="190"  y1="490" x2="190"  y2="552" stroke="#3a4d60" stroke-width="3" stroke-dasharray="62" stroke-dashoffset="62"/>
+    <line id="g-timeline-c1" x1="500"  y1="580" x2="500"  y2="638" stroke="#3a4d60" stroke-width="3" stroke-dasharray="58" stroke-dashoffset="58"/>
+    <line id="g-timeline-c2" x1="810"  y1="490" x2="810"  y2="552" stroke="#3a4d60" stroke-width="3" stroke-dasharray="62" stroke-dashoffset="62"/>
+    <line id="g-timeline-c3" x1="1120" y1="580" x2="1120" y2="638" stroke="#3a4d60" stroke-width="3" stroke-dasharray="58" stroke-dashoffset="58"/>
+    <line id="g-timeline-c4" x1="1430" y1="490" x2="1430" y2="552" stroke="#3a4d60" stroke-width="3" stroke-dasharray="62" stroke-dashoffset="62"/>
+    <line id="g-timeline-c5" x1="1740" y1="580" x2="1740" y2="638" stroke="#3a4d60" stroke-width="3" stroke-dasharray="58" stroke-dashoffset="58"/>
+    <line id="g-timeline-pc" x1="500"  y1="492" x2="500"  y2="552" stroke="#3a4d60" stroke-width="3" stroke-dasharray="60" stroke-dashoffset="60"/>
+    <line id="g-timeline-rc" x1="1120" y1="484" x2="1120" y2="552" stroke="#3a4d60" stroke-width="3" stroke-dasharray="68" stroke-dashoffset="68"/>
+    <line id="g-timeline-fc" x1="1740" y1="484" x2="1740" y2="552" stroke="#3a4d60" stroke-width="3" stroke-dasharray="68" stroke-dashoffset="68"/>
+
+    <!-- doppler scope (1970s) -->
+    <g id="g-timeline-radar" opacity="0">
+      <circle cx="1120" cy="340" r="86" fill="#080f16" stroke="#22303d" stroke-width="2"/>
+      <circle cx="1120" cy="340" r="58" fill="none" stroke="#1b2733" stroke-width="2"/>
+      <circle cx="1120" cy="340" r="30" fill="none" stroke="#1b2733" stroke-width="2"/>
+      <rect x="1034" y="339" width="172" height="2" fill="#1b2733"/>
+      <rect x="1119" y="254" width="2" height="172" fill="#1b2733"/>
+      <path id="g-timeline-sweep" d="M1120 340 L1120 254 A86 86 0 0 1 1163 265.5 Z" fill="url(#swg)"/>
+      <circle cx="1140" cy="320" r="8" fill="#c0392b"/>
+      <circle cx="1157" cy="333" r="8" fill="#5a768f"/>
+      <circle cx="1120" cy="340" r="4" fill="#e8c56a"/>
+    </g>
+
+    <!-- alert phone (today) -->
+    <g id="g-timeline-phone" opacity="0">
+      <circle id="g-timeline-rip1" cx="1740" cy="332" r="16" fill="none" stroke="#e74c3c" stroke-width="3" opacity="0"/>
+      <circle id="g-timeline-rip2" cx="1740" cy="332" r="16" fill="none" stroke="#c0392b" stroke-width="3" opacity="0"/>
+      <rect x="1698" y="288" width="84" height="146" rx="12" fill="#0a1119" stroke="#93a3b2" stroke-width="3"/>
+      <rect id="g-timeline-band" x="1708" y="316" width="64" height="38" fill="#8e2020"/>
+      <rect x="1708" y="362" width="64" height="6" fill="#22303d"/>
+      <rect x="1708" y="376" width="44" height="6" fill="#22303d"/>
+      <rect x="1708" y="390" width="54" height="6" fill="#22303d"/>
+      <rect x="1718" y="298" width="44" height="5" rx="2.5" fill="#22303d"/>
+    </g>
+
+    <!-- milestone nodes -->
+    <circle id="g-timeline-n0" cx="190"  cy="566" r="0" fill="#f2f5f8"/>
+    <circle id="g-timeline-n1" cx="500"  cy="566" r="0" fill="#f2f5f8"/>
+    <circle id="g-timeline-n2" cx="810"  cy="566" r="0" fill="#f2f5f8"/>
+    <circle id="g-timeline-n3" cx="1120" cy="566" r="0" fill="#f2f5f8"/>
+    <circle id="g-timeline-n4" cx="1430" cy="566" r="0" fill="#f2f5f8"/>
+    <circle id="g-timeline-n5" cx="1740" cy="566" r="0" fill="#f2f5f8"/>
+    <circle id="g-timeline-g0" cx="190"  cy="566" r="12" fill="none" stroke="#e8c56a" stroke-width="3" opacity="0"/>
+    <circle id="g-timeline-g1" cx="500"  cy="566" r="12" fill="none" stroke="#e8c56a" stroke-width="3" opacity="0"/>
+    <circle id="g-timeline-g2" cx="810"  cy="566" r="12" fill="none" stroke="#e8c56a" stroke-width="3" opacity="0"/>
+    <circle id="g-timeline-g3" cx="1120" cy="566" r="12" fill="none" stroke="#e8c56a" stroke-width="3" opacity="0"/>
+    <circle id="g-timeline-g4" cx="1430" cy="566" r="12" fill="none" stroke="#e8c56a" stroke-width="3" opacity="0"/>
+    <circle id="g-timeline-g5" cx="1740" cy="566" r="12" fill="none" stroke="#e8c56a" stroke-width="3" opacity="0"/>
+
+    <!-- travelling head -->
+    <circle id="g-timeline-hring" cx="110" cy="566" r="26" fill="none" stroke="#e8c56a" stroke-width="2" opacity="0"/>
+    <circle id="g-timeline-head" cx="110" cy="566" r="0" fill="#e8c56a" filter="url(#tglow)"/>
+  </svg>
+
+  <div class="eyebrow" id="g-timeline-eb"><</div>
+  <div class="hl" id="g-timeline-hl">THE ROAD TO A WARNING</div>
+  <div class="sub" id="g-timeline-sb"><</div>
+
+  <div class="cwrap" id="g-timeline-cwrap">
+    <div class="clab">AVERAGE WARNING LEAD TIME</div>
+    <div class="cnum" id="g-timeline-cnum">0</div>
+    <div class="cunit">MINUTES &middot; NATIONAL AVERAGE</div>
+  </div>
+  <div class="barwrap" id="g-timeline-barwrap"><div class="barfill" id="g-timeline-barfill"></div></div>
+  <div class="scwrap" id="g-timeline-scwrap"><span>0</span><span>15 MIN</span></div>
+
+  <div class="ms" id="g-timeline-m0" style="left:60px;  top:244px;">
+    <div class="tag"  id="g-timeline-m0t">THE BAN EASES</div>
+    <div class="yr"   id="g-timeline-m0y">1938</div>
+    <div class="rule" id="g-timeline-m0r"></div>
+    <div class="desc" id="g-timeline-m0d">Weather Bureau eases its ban on the word tornado.</div>
+  </div>
+  <div class="ms" id="g-timeline-m1" style="left:370px; top:648px;">
+    <div class="tag"  id="g-timeline-m1t">FIRST FORECAST</div>
+    <div class="yr"   id="g-timeline-m1y">1948</div>
+    <div class="rule" id="g-timeline-m1r"></div>
+    <div class="desc" id="g-timeline-m1d">Fawbush and Miller call a tornado at Tinker Air Force Base. It hits.</div>
+  </div>
+  <div class="ms" id="g-timeline-m2" style="left:680px; top:244px;">
+    <div class="tag"  id="g-timeline-m2t">PUBLIC OUTLOOKS</div>
+    <div class="yr"   id="g-timeline-m2y">1952</div>
+    <div class="rule" id="g-timeline-m2r"></div>
+    <div class="desc" id="g-timeline-m2d">First public tornado forecasts go out nationwide.</div>
+  </div>
+  <div class="ms" id="g-timeline-m3" style="left:990px; top:648px;">
+    <div class="tag"  id="g-timeline-m3t">RADAR SEES SPIN</div>
+    <div class="yr"   id="g-timeline-m3y">1970s</div>
+    <div class="rule" id="g-timeline-m3r"></div>
+    <div class="desc" id="g-timeline-m3d">Doppler radar sees rotation before a funnel forms.</div>
+  </div>
+  <div class="ms" id="g-timeline-m4" style="left:1300px; top:244px;">
+    <div class="tag"  id="g-timeline-m4t">NATIONWIDE</div>
+    <div class="yr"   id="g-timeline-m4y">1990s</div>
+    <div class="rule" id="g-timeline-m4r"></div>
+    <div class="desc" id="g-timeline-m4d">NEXRAD puts 159 Doppler radars over the country.</div>
+  </div>
+  <div class="ms" id="g-timeline-m5" style="left:1610px; top:648px;">
+    <div class="tag"  id="g-timeline-m5t">IN EVERY POCKET</div>
+    <div class="yr"   id="g-timeline-m5y">TODAY</div>
+    <div class="rule" id="g-timeline-m5r"></div>
+    <div class="desc" id="g-timeline-m5d">Wireless alerts reach the phone in your pocket.</div>
+  </div>
+
+  <div class="photo" id="g-timeline-photo"><img src="media/portraits/fawbush-miller-portrait-01.jpg" alt=""></div>
+  <div class="cap1" id="g-timeline-cap1">FAWBUSH &amp; MILLER</div>
+  <div class="cap2" id="g-timeline-cap2">Tinker Field, Oklahoma</div>
+
+  <div class="dcap" id="g-timeline-rlab" style="left:970px;  top:442px;">NSSL &middot; UNION CITY 1973</div>
+  <div class="dcap" id="g-timeline-flab" style="left:1526px; top:442px; width:380px; font-size:17px; letter-spacing:2px;">WIRELESS EMERGENCY ALERTS</div>
+
+  <div class="cdiv"  id="g-timeline-cdiv"></div>
+  <div class="stamp s-red"  id="g-timeline-s1925"  style="left:110px; top:940px;">1925</div>
+  <div class="ctext" id="g-timeline-ct1" style="left:300px; color:#c0392b;">ZERO MINUTES OF WARNING</div>
+  <div class="arrow" id="g-timeline-arw"></div>
+  <div class="ahead" id="g-timeline-ahd"></div>
+  <div class="stamp s-gold" id="g-timeline-stoday" style="left:960px; top:940px;">TODAY</div>
+  <div class="ctext" id="g-timeline-ct2" style="left:1190px; color:#e8c56a;">MINUTES TO HOURS</div>
+  <div class="kick"  id="g-timeline-kick">WARNING LEAD TIME &mdash; 1925 VERSUS TODAY</div>
+</div>
+
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set("#g-timeline-cnum", {autoAlpha:0}, 0);
+  tl.to("#g-timeline-cnum", {autoAlpha:1, duration:0.25}, 19.05);
+  const P = "#g-timeline-";
+  const LEAD = { v: 0 };
+  function leadUpd() { const e = document.getElementById("g-timeline-cnum"); if (e) e.textContent = Math.round(LEAD.v); }
+
+  /* everything that reveals starts hidden */
+  tl.set([P+"eb",P+"hl",P+"sb",P+"cwrap",P+"barwrap",P+"scwrap",
+          P+"m0t",P+"m0y",P+"m0d",P+"m1t",P+"m1y",P+"m1d",P+"m2t",P+"m2y",P+"m2d",
+          P+"m3t",P+"m3y",P+"m3d",P+"m4t",P+"m4y",P+"m4d",P+"m5t",P+"m5y",P+"m5d",
+          P+"m0r",P+"m1r",P+"m2r",P+"m3r",P+"m4r",P+"m5r",
+          P+"photo",P+"cap1",P+"cap2",P+"rlab",P+"flab",
+          P+"cdiv",P+"s1925",P+"ct1",P+"arw",P+"ahd",P+"stoday",P+"ct2",P+"kick"], {autoAlpha:0}, 0);
+  tl.set([P+"barfill",P+"m0r",P+"m1r",P+"m2r",P+"m3r",P+"m4r",P+"m5r",P+"cdiv",P+"arw"],
+         {scaleX:0, transformOrigin:"left center"}, 0);
+
+  /* ---- header ---- */
+  tl.fromTo(P+"eb",    {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.50, ease:"power3.out"}, 0.15);
+  tl.fromTo(P+"hl",    {autoAlpha:0, x:-36}, {autoAlpha:1, x:0, duration:0.55, ease:"power3.out"}, 0.35);
+  tl.fromTo(P+"sb",    {autoAlpha:0, y:20},  {autoAlpha:1, y:0, duration:0.50, ease:"power3.out"}, 0.60);
+  tl.fromTo(P+"cwrap", {autoAlpha:0, x:34},  {autoAlpha:1, x:0, duration:0.55, ease:"power3.out"}, 1.00);
+  tl.fromTo(P+"barwrap",{autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 1.35);
+  tl.fromTo(P+"scwrap", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 1.65);
+
+  /* ---- the continuous axis: draws across almost the whole window ---- */
+  tl.to(P+"axis", {strokeDashoffset:0, duration:29.20, ease:"none"}, 0.80);
+  tl.fromTo(P+"head", {attr:{r:0}}, {attr:{r:16}, duration:0.40, ease:"power4.in"}, 0.80);
+  tl.fromTo(P+"hring", {autoAlpha:0}, {autoAlpha:0.45, duration:0.40}, 0.80);
+
+  /* head rides the axis, arriving on each milestone as it fires */
+  const SEG = [[0.80,2.20,190],[3.00,4.00,500],[7.00,5.50,810],[12.50,4.00,1120],
+               [16.50,4.00,1430],[20.50,4.00,1740],[24.50,5.50,1810]];
+  SEG.forEach(function(s) {
+    tl.to(P+"head",  {attr:{cx:s[2]}, duration:s[1], ease:"none"}, s[0]);
+    tl.to(P+"hring", {attr:{cx:s[2]}, duration:s[1], ease:"none"}, s[0]);
+  });
+
+  /* ---- six milestones ---- */
+  const MS = [{i:0,t:3.00},{i:1,t:7.00},{i:2,t:12.50},{i:3,t:16.50},{i:4,t:20.50},{i:5,t:24.50}];
+  MS.forEach(function(m) {
+    const i = m.i, t = m.t;
+    tl.to(P+"n"+i, {attr:{r:11}, duration:0.30, ease:"power4.in"}, t);
+    tl.fromTo(P+"g"+i, {attr:{r:12}, autoAlpha:0.95}, {attr:{r:58}, autoAlpha:0, duration:0.90, ease:"power2.out"}, t+0.05);
+    tl.to(P+"c"+i, {strokeDashoffset:0, duration:0.50, ease:"power3.out"}, t+0.15);
+    tl.fromTo(P+"m"+i+"t", {autoAlpha:0, y:26}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, t+0.35);
+    tl.fromTo(P+"m"+i+"y", {autoAlpha:0, y:34}, {autoAlpha:1, y:0, duration:0.50, ease:"power3.out"}, t+0.75);
+    tl.to(P+"m"+i+"r", {autoAlpha:1, scaleX:1, duration:0.45, ease:"power3.out"}, t+0.95);
+    tl.fromTo(P+"m"+i+"d", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.50, ease:"power3.out"}, t+1.15);
+  });
+
+  /* 1948 — the portrait */
+  tl.to(P+"pc", {strokeDashoffset:0, duration:0.45, ease:"power3.out"}, 8.60);
+  tl.fromTo(P+"photo", {autoAlpha:0, y:-28, scale:0.90}, {autoAlpha:1, y:0, scale:1, duration:0.70, ease:"power3.out"}, 8.80);
+  tl.fromTo(P+"cap1", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 9.50);
+  tl.fromTo(P+"cap2", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 9.80);
+
+  /* 1970s — the doppler scope, sweeping continuously */
+  tl.fromTo(P+"radar", {autoAlpha:0, scale:0.78}, {autoAlpha:1, scale:1, duration:0.60, ease:"power3.out"}, 17.90);
+  tl.to(P+"sweep", {rotation:1080, svgOrigin:"1120 340", duration:14.50, ease:"none"}, 18.20);
+  tl.to(P+"rc", {strokeDashoffset:0, duration:0.45, ease:"power3.out"}, 18.50);
+  tl.fromTo(P+"rlab", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 18.80);
+  tl.to(LEAD, {v:3, duration:0.70, ease:"power3.out", onUpdate:leadUpd}, 19.30);
+  tl.to(P+"barfill", {scaleX:0.20, duration:0.70, ease:"power3.out"}, 19.30);
+
+  /* 1990s — the network */
+  tl.to(LEAD, {v:6, duration:0.70, ease:"power3.out", onUpdate:leadUpd}, 22.10);
+  tl.to(P+"barfill", {scaleX:0.42, duration:0.70, ease:"power3.out"}, 22.10);
+
+  /* today — the alert in your pocket */
+  tl.fromTo(P+"phone", {autoAlpha:0, scale:0.80}, {autoAlpha:1, scale:1, duration:0.60, ease:"power3.out"}, 25.90);
+  tl.fromTo(P+"rip1", {attr:{r:16}, autoAlpha:0.90}, {attr:{r:64}, autoAlpha:0, duration:1.80, repeat:3, ease:"power2.out"}, 26.30);
+  tl.to(P+"band", {attr:{opacity:0.30}, duration:0.50, yoyo:true, repeat:7, ease:"sine.inOut"}, 26.60);
+  tl.fromTo(P+"rip2", {attr:{r:16}, autoAlpha:0.70}, {attr:{r:64}, autoAlpha:0, duration:1.80, repeat:3, ease:"power2.out"}, 26.90);
+  tl.to(P+"fc", {strokeDashoffset:0, duration:0.45, ease:"power3.out"}, 27.30);
+  tl.to(LEAD, {v:13, duration:0.90, ease:"power4.out", onUpdate:leadUpd}, 27.30);
+  tl.to(P+"barfill", {scaleX:1, duration:0.90, ease:"power4.out"}, 27.30);
+  tl.fromTo(P+"flab", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 27.90);
+
+  /* ---- the contrast close ---- */
+  tl.to(P+"cdiv", {autoAlpha:1, scaleX:1, duration:0.70, ease:"power3.out"}, 28.70);
+  tl.fromTo(P+"s1925", {scale:2.2, autoAlpha:0}, {scale:1, autoAlpha:1, duration:0.35, ease:"power4.in"}, 29.20);
+  tl.fromTo(P+"ct1", {autoAlpha:0, x:-26}, {autoAlpha:1, x:0, duration:0.50, ease:"power3.out"}, 29.70);
+  tl.to(P+"arw", {autoAlpha:1, scaleX:1, duration:0.50, ease:"power3.out"}, 30.30);
+  tl.fromTo(P+"ahd", {autoAlpha:0, x:-22}, {autoAlpha:1, x:0, duration:0.40, ease:"power3.out"}, 30.60);
+  tl.fromTo(P+"stoday", {scale:2.2, autoAlpha:0}, {scale:1, autoAlpha:1, duration:0.35, ease:"power4.in"}, 31.00);
+  tl.fromTo(P+"ct2", {autoAlpha:0, x:-26}, {autoAlpha:1, x:0, duration:0.50, ease:"power3.out"}, 31.50);
+  tl.fromTo(P+"kick", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 32.10);
+  tl.to(P+"head", {attr:{r:30}, duration:0.55, yoyo:true, repeat:2, ease:"sine.inOut"}, 32.60);
+  tl.to([P+"n0",P+"n1",P+"n2",P+"n3",P+"n4",P+"n5"], {attr:{r:14}, duration:0.80, ease:"power3.out"}, 33.10);
+
+  window.__timelines["g-timeline"] = tl;
+})();
+</script>
+</body></html>

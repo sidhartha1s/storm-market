@@ -1,0 +1,798 @@
+[
+ {
+  "id": "h1-s1",
+  "abs_start": 0.0,
+  "dur": 16.64,
+  "narration": "There is no photograph of this tornado. No film. No funnel caught on camera. Nothing. It moved too fast, it hid inside rain, and it killed people who stopped to look at it. Everything we have is what it left behind.",
+  "windows": [
+   " +0.00s +6.74s  v0",
+   " +6.74s +4.32s  v1",
+   "+11.06s +5.58s  v2"
+  ]
+ },
+ {
+  "id": "h1-s2",
+  "abs_start": 17.39,
+  "dur": 13.08,
+  "narration": "Days later, newsreel cameras reached the wreckage, and this is that film. By then, six hundred ninety-five people were already dead. And the government still refused to say the word tornado.",
+  "windows": [
+   " +0.00s +2.63s  mvtn-hook-aerial-bank-4s.mp4",
+   " +2.63s +2.63s  v5",
+   " +5.26s +2.63s  mvtn-hook-trainwreck-4s.mp4",
+   " +7.89s +2.63s  v7",
+   "+10.52s +6.05s  v8"
+  ]
+ },
+ {
+  "id": "a1-s1",
+  "abs_start": 34.72,
+  "dur": 42.0,
+  "narration": "To understand what happened on March eighteenth, you have to start decades earlier, in Washington. In the late eighteen hundreds, the United States Weather Bureau made a rule that sounds impossible today. Forecasters were forbidden to use the word tornado. The thinking was simple. Tornadoes could not be predicted, so the word could only cause panic. Better to say nothing at all. That rule, in one form or another, held for half a century. Generations of Americans grew up in tornado country without ever once hearing a tornado warning. Not because the danger was secret. Because the warning itself was against the rules.",
+  "windows": [
+   " +0.00s +26.00s  GRAPHIC g-wordban",
+   "+26.00s +6.48s  t10",
+   "+32.48s +4.15s  t11",
+   "+36.63s +5.37s  t12"
+  ]
+ },
+ {
+  "id": "a1-s1b",
+  "abs_start": 77.47,
+  "dur": 36.36,
+  "narration": "The tragedy inside that rule is that the science had already begun. In the eighteen eighties, an Army officer named John Park Finley was issuing experimental tornado alerts, and finding real patterns in the weather that preceded them. His work was shut down by the same institutional fear that built the ban. The men who ran the weather service were not fools. They were terrified of crying wolf, of panics, of being wrong in public. So for two generations, American forecasting simply looked away from the deadliest weather it had.",
+  "windows": [
+   " +0.00s +7.56s  v14",
+   " +0.00s +32.20s  GRAPHIC g-panel-finley",
+   " +7.56s +4.84s  v15",
+   "+12.40s +6.26s  v16",
+   "+18.66s +5.19s  v17",
+   "+23.85s +6.97s  v18",
+   "+30.82s +5.55s  v19"
+  ]
+ },
+ {
+  "id": "a1-s2",
+  "abs_start": 114.58,
+  "dur": 23.4,
+  "narration": "So here is the entire official forecast for Illinois, for Wednesday, March eighteenth, nineteen twenty-five. Rains and strong shifting winds. Five words for the deadliest tornado day in American history. No watches, no sirens, no radar. Every person you are about to meet walked into this day completely blind.",
+  "windows": [
+   " +0.00s +22.00s  GRAPHIC g-forecast"
+  ]
+ },
+ {
+  "id": "a1-s2c",
+  "abs_start": 138.73,
+  "dur": 30.04,
+  "narration": "One note before we walk the path, because this story is a century old and worth telling honestly. Everything you will see and hear is built from the original records. The newsreel film shot days after the storm. The Weather Bureau's own documents. The front pages of that week's newspapers. And a modern scientific reanalysis that re-measured the whole event. Where the record is uncertain, you will hear that it is uncertain.",
+  "windows": [
+   " +0.00s +30.00s  GRAPHIC g-sources"
+  ]
+ },
+ {
+  "id": "a1-s2b",
+  "abs_start": 169.52,
+  "dur": 40.72,
+  "narration": "It is worth pausing on what a warning would even have looked like in nineteen twenty-five. There was no radar. Weather observation meant a man reading instruments and mailing in the numbers. Radio was in its infancy, and no station anywhere broadcast storm warnings. News between towns moved by telephone and telegraph wire, and as we are about to see, the storm itself would be tearing those wires down as it went. Even if someone had seen it coming, even if the word had been legal, there was no machinery for outrunning a storm moving a mile a minute. Every town on the path would meet it the same way. Alone.",
+  "windows": [
+   " +0.00s +7.01s  v23",
+   " +7.01s +4.49s  v24",
+   "+11.50s +5.80s  v25",
+   "+17.30s +4.82s  v26",
+   "+22.12s +6.46s  v27",
+   "+28.58s +5.14s  v28",
+   "+33.72s +7.01s  v29"
+  ]
+ },
+ {
+  "id": "a1-s3",
+  "abs_start": 210.99,
+  "dur": 35.36,
+  "narration": "But the sky was already loaded. That morning, a powerful low pressure system was crossing Missouri, and it was dragging three air masses into one collision. Warm, wet air from the Gulf of Mexico surged north. Cold, dry air poured down behind it. And above them both, winds near a hundred miles an hour tilted the whole system forward. Meteorologists today call this a triple point. It is one of the most dangerous setups in severe weather. In nineteen twenty-five, nobody knew it existed.",
+  "windows": [
+   " +0.00s +34.00s  GRAPHIC g-metmap"
+  ]
+ },
+ {
+  "id": "a1-s4",
+  "abs_start": 247.1,
+  "dur": 30.96,
+  "narration": "And this storm had one more trick. It would not look like a tornado. It was wrapped in rain and cloud, a boiling black wall over a mile wide, sitting on the horizon like fog. People who had lived through twisters watched it come and did not run, because it did not match anything they knew. It was also moving at over sixty miles an hour, faster than almost any car on the roads that year. By the time the fog resolved into a funnel, it was already on top of you.",
+  "windows": [
+   " +0.00s +28.00s  GRAPHIC g-scale",
+   "+28.00s +2.96s  t32"
+  ]
+ },
+ {
+  "id": "a1-s4c",
+  "abs_start": 278.81,
+  "dur": 36.88,
+  "narration": "And here is what modern science found when it finally rebuilt that day, using the original nineteen twenty-five weather records. This storm got lucky, in the worst possible way. It formed right where a warm front met a tongue of dry air, and then it rode along that boundary like a train on a rail. Most storms cross their fuel supply and starve within the hour. This one stayed locked inside its perfect feeding zone for more than three hours. The forecasters of that era were not just forbidden to say tornado. They were looking for it in the wrong place entirely.",
+  "windows": [
+   " +0.00s +6.34s  stock-cloudsomen-02.mp4",
+   " +6.34s +4.06s  stock-cloudsrolling-03.mp4",
+   "+10.40s +5.25s  stock-lightning-01.mp4",
+   "+15.65s +4.36s  stock-cloudsomen-01.mp4",
+   "+20.01s +5.85s  stock-cloudsomen-02.mp4",
+   "+25.86s +4.66s  stock-cloudsomen-02.mp4",
+   "+30.52s +6.34s  v40"
+  ]
+ },
+ {
+  "id": "a1-s4d",
+  "abs_start": 316.44,
+  "dur": 32.56,
+  "narration": "Stranger still, the reanalysis suggests this was one single, isolated thunderstorm. Not a wall of storms, not a squall line. One lone supercell, crossing more than four hundred miles of the Midwest in about seven hours, with its tornado on the ground for most of the afternoon. Among every supercell track scientists have reconstructed, this parent storm ranks among the longest lived ever documented. The odds stacked against those towns that afternoon were almost cosmic.",
+  "windows": [
+   " +0.00s +6.77s  stock-cloudsrolling-01.mp4",
+   " +0.00s +27.00s  GRAPHIC g-panel-lone",
+   " +6.77s +4.33s  stock-tornado-01.mp4",
+   "+11.10s +5.60s  stock-cloudsrolling-02.mp4",
+   "+16.70s +4.65s  stock-cloudsrolling-01.mp4",
+   "+21.35s +6.24s  stock-tornado-01.mp4",
+   "+27.59s +4.97s  stock-cloudsrolling-01.mp4"
+  ]
+ },
+ {
+  "id": "a1-s5",
+  "abs_start": 349.75,
+  "dur": 22.08,
+  "narration": "March eighteenth began strangely warm. Children walked to school without their coats. Farmers worked open fields, miners went underground, and shopkeepers propped their doors open to the spring air. The only warning anyone would get that day was the sky itself. And the sky would give them minutes. Sometimes seconds.",
+  "windows": [
+   " +0.00s +6.40s  v49",
+   " +6.40s +4.10s  v50",
+   "+10.50s +5.30s  v51",
+   "+15.80s +4.40s  v52",
+   "+20.20s +5.90s  v53"
+  ]
+ },
+ {
+  "id": "a2-s1",
+  "abs_start": 376.58,
+  "dur": 23.16,
+  "narration": "At one minute past one in the afternoon, the storm touched ground in the timber country near Ellington, Missouri. Its first victim was a farmer, caught in the open with no shelter and no warning. For the next three and a half hours, this thing would never once leave the ground. Remember that clock in the corner. It does not stop until half past four.",
+  "windows": [
+   " +0.00s +23.16s  GRAPHIC g-track-1"
+  ]
+ },
+ {
+  "id": "a2-s1c",
+  "abs_start": 400.49,
+  "dur": 35.68,
+  "narration": "Do the arithmetic on that first leg, because it explains everything that follows. Annapolis lies roughly thirteen miles from where the storm touched down, and the storm covered that ground in thirteen minutes. A mile a minute, hour after hour. A tornado that moves at twenty miles an hour gives a town watching the horizon some chance to scatter. At sixty, the gap between seeing it and being inside it could be under a minute. Every town on this path was making life and death decisions on less time than it takes to lace a pair of boots.",
+  "windows": [
+   " +0.00s +7.41s  v56",
+   " +7.41s +4.75s  v57",
+   "+12.16s +6.14s  v58",
+   "+18.30s +5.10s  v59",
+   "+23.40s +6.83s  v60",
+   "+30.23s +5.44s  v61"
+  ]
+ },
+ {
+  "id": "a2-s2",
+  "abs_start": 436.92,
+  "dur": 25.16,
+  "narration": "Thirteen minutes later it found Annapolis, a little lead mining town of a few hundred people. It crossed the town in under a minute. When it was gone, about nine of every ten buildings were rubble. Survivors crawled out to find the school wrecked and the mine works tangled like string. Annapolis was the storm's first town. It would not be the worst. It would not even be close.",
+  "windows": [
+   " +0.00s +6.78s  v63",
+   " +0.00s +23.10s  GRAPHIC g-panel-annapolis",
+   " +6.78s +4.35s  v64",
+   "+11.13s +5.62s  v65",
+   "+16.75s +4.66s  v66",
+   "+21.41s +6.25s  v67"
+  ]
+ },
+ {
+  "id": "a2-s3",
+  "abs_start": 465.33,
+  "dur": 31.88,
+  "narration": "For the next hour it marched northeast through farm country, and it grew. Witnesses stopped describing a funnel and started describing a wall. In places it was a mile wide. It shredded farmsteads that had stood since the Civil War. It threw debris so high that letters and photographs from Missouri later fell from the sky over Illinois, a hundred miles away. One country school was lifted and thrown, and somehow every child inside lived. Luck like that was about to run out.",
+  "windows": [
+   " +0.00s +6.62s  v69",
+   " +6.62s +4.24s  v70",
+   "+10.86s +5.49s  v71",
+   "+16.35s +4.55s  v72",
+   "+20.90s +6.11s  v73",
+   "+27.01s +4.86s  v74"
+  ]
+ },
+ {
+  "id": "a2-s3b",
+  "abs_start": 497.96,
+  "dur": 36.68,
+  "narration": "And here is the cruelest mechanism of the whole afternoon. As the storm crossed each county, it took the telephone and telegraph lines down with it. The very wires that could have carried a warning to the next town were being destroyed by the thing they needed to warn about. Behind the storm, operators worked dead lines, trying to raise towns that no longer had a switchboard, or a telegraph office, or a main street. Ahead of it, the towns of Illinois went about a warm Wednesday afternoon, knowing nothing. The storm was outrunning its own bad news.",
+  "windows": [
+   " +0.00s +36.00s  GRAPHIC g-wires"
+  ]
+ },
+ {
+  "id": "a2-s4",
+  "abs_start": 535.39,
+  "dur": 24.52,
+  "narration": "Just before two thirty, the storm reached the Mississippi River. A mile of open water, the natural barrier that folklore said no tornado could cross. It crossed in about a minute. On the far bank lay the coal towns of southern Illinois, some of the most densely settled country on its whole path. The deadliest hour in American tornado history was about to begin.",
+  "windows": [
+   " +0.00s +22.80s  GRAPHIC g-track-2"
+  ]
+ },
+ {
+  "id": "a2-s4b",
+  "abs_start": 560.66,
+  "dur": 33.56,
+  "narration": "To understand the hour that follows, you have to understand what was waiting on the far bank. Southern Illinois in nineteen twenty-five was coal country at its peak. The seams under these counties fed the railroads and furnaces of half the nation, and the boom had pulled tens of thousands of families into tight rows of company houses around the mines. Towns here were not spread thin like the Missouri farm country behind the storm. They were packed. The deadliest tornado in American history was about to meet the densest towns on its path.",
+  "windows": [
+   " +0.00s +7.60s  v78",
+   " +7.60s +4.87s  v79",
+   "+12.47s +6.29s  v80",
+   "+18.76s +5.22s  v81",
+   "+23.98s +7.00s  v82",
+   "+30.98s +5.58s  v83"
+  ]
+ },
+ {
+  "id": "a3-s1",
+  "abs_start": 597.97,
+  "dur": 36.48,
+  "narration": "Gorham, Illinois. Population about five hundred. The storm needed less than four minutes to take the whole town. A reporter from the Saint Louis Post-Dispatch wrote down what one survivor told her. The air was full of everything. Boards, branches of trees, garments, stoves, all churning around together. She saw whole houses off their foundations. Thirty-four people died in Gorham, one out of every fifteen residents. And the storm was just getting started. Eight minutes ahead lay a city of twelve thousand.",
+  "windows": [
+   " +0.00s +7.58s  v85",
+   " +7.58s +4.86s  v86",
+   "+12.44s +6.28s  v87",
+   "+18.72s +5.21s  v88",
+   "+23.93s +6.99s  v89",
+   "+30.92s +5.57s  v90"
+  ]
+ },
+ {
+  "id": "a3-s1b",
+  "abs_start": 635.2,
+  "dur": 35.04,
+  "narration": "The wreckage at Gorham told investigators what kind of wind this was. Wooden planks were found driven through the trunks of living trees, like nails through a board. A century later, one of those tree trunks still sits in a museum in Jackson County, with the plank still buried in it. Physics has a blunt explanation. To make soft pine pierce hardwood, the air around it has to be moving at speeds no building of that era could survive. Modern surveys rate this storm at the top of the damage scale. F five. The worst that wind can do.",
+  "windows": [
+   " +0.00s +6.46s  v92",
+   " +0.00s +19.70s  GRAPHIC g-panel-gorham",
+   " +6.46s +4.14s  v93",
+   "+10.60s +5.35s  v94",
+   "+15.95s +4.44s  v95",
+   "+20.39s +5.95s  v96",
+   "+26.34s +4.74s  v97",
+   "+31.08s +6.46s  v98"
+  ]
+ },
+ {
+  "id": "a3-s2",
+  "abs_start": 673.49,
+  "dur": 20.32,
+  "narration": "At two thirty-four, the wall hit Murphysboro. It came in through the railroad yards, picking up freight cars, and then it went through the neighborhoods, block after block after block. In three minutes, over a hundred city blocks were leveled. And inside that footprint stood three schools, all in session.",
+  "windows": [
+   " +0.00s +6.16s  mvtn-murphysboro-house-7s.mp4",
+   " +6.16s +4.72s  v101",
+   "+10.88s +4.72s  v102",
+   "+15.60s +4.72s  v103"
+  ]
+ },
+ {
+  "id": "a3-s2b",
+  "abs_start": 694.56,
+  "dur": 36.48,
+  "narration": "To understand what Murphysboro lost, you have to know what it was. This was a railroad town. The Mobile and Ohio kept its shops here, and those shops, with the mines around them, fed thousands of families. In three minutes the storm wrecked the neighborhoods and gutted the industry that paid for them, all at once. A man could lose his house, his street, and the place he worked, in the time it took to get his family into a cellar. That is why this storm did not just wound these towns. It changed what they were for a generation.",
+  "windows": [
+   " +0.00s +7.58s  v105",
+   " +7.58s +4.86s  v106",
+   "+12.44s +6.28s  v107",
+   "+18.72s +5.21s  v108",
+   "+23.93s +6.99s  v109",
+   "+30.92s +5.57s  v110"
+  ]
+ },
+ {
+  "id": "a3-s3",
+  "abs_start": 731.79,
+  "dur": 22.04,
+  "narration": "At Longfellow School, the walls came down on the children at their desks. Seventeen died there. At Logan School, nine more. Teachers dug through brick with their hands, passing children out through gaps in the rubble. Some of those teachers were pulling out their own students one minute and searching for their own children the next.",
+  "windows": [
+   " +0.00s +6.98s  v112",
+   " +6.98s +4.47s  v113",
+   "+11.45s +5.78s  v114",
+   "+17.23s +4.80s  v115"
+  ]
+ },
+ {
+  "id": "a3-s3b",
+  "abs_start": 754.58,
+  "dur": 26.28,
+  "narration": "The first reporters reached Murphysboro that evening, and the dispatches they filed still read like fever dreams. The Saint Louis Post-Dispatch described bodies laid out in rows awaiting names, streets that had simply ceased to exist, and survivors wandering with no idea where their houses had been. Editors initially refused to run some of the numbers, assuming their own correspondents were exaggerating. They were not.",
+  "windows": [
+   " +0.00s +6.44s  v117",
+   " +6.44s +4.13s  v118",
+   "+10.57s +5.34s  v119",
+   "+15.91s +4.43s  v120",
+   "+20.34s +5.94s  v121"
+  ]
+ },
+ {
+  "id": "a3-s4",
+  "abs_start": 781.61,
+  "dur": 32.96,
+  "narration": "And then, with the town already flattened, Murphysboro caught fire. Stoves and gas lines burned under the wreckage, and the water mains were broken, so there was almost nothing to fight the flames with. People trapped under their own houses could hear the fires coming. Rescuers had to choose which voices to dig toward. When it was finally over, Murphysboro had lost two hundred thirty-four people. That is still, a century later, the most tornado deaths ever suffered by a single American town.",
+  "windows": [
+   " +0.00s +6.85s  v123",
+   " +6.85s +4.39s  v124",
+   "+11.24s +5.67s  v125",
+   "+16.91s +4.71s  v126",
+   "+21.62s +6.31s  v127",
+   "+27.93s +5.03s  v128"
+  ]
+ },
+ {
+  "id": "a3-s4c",
+  "abs_start": 815.32,
+  "dur": 30.12,
+  "narration": "Sit with Murphysboro's numbers for a moment, because they are hard to absorb at speed. Two hundred thirty-four dead. Six hundred twenty-three injured. Almost all of it inflicted in about three minutes. That is more than one person killed or wounded every single second the storm was inside the city limits. No American town, before or since, has lost so many to a tornado. And the storm's afternoon was barely half over.",
+  "windows": [
+   " +0.00s +7.30s  v130",
+   " +0.00s +24.90s  GRAPHIC g-panel-murphysboro",
+   " +7.30s +4.68s  v131",
+   "+11.98s +6.04s  v132",
+   "+18.02s +5.02s  v133",
+   "+23.04s +6.73s  v134",
+   "+29.77s +5.36s  v135"
+  ]
+ },
+ {
+  "id": "a3-s5",
+  "abs_start": 851.19,
+  "dur": 11.88,
+  "narration": "And understand what the map is telling you. Murphysboro was not the storm's end. It was one stop, in the middle of its path, at full strength, with the clock still running.",
+  "windows": [
+   " +0.00s +11.88s  GRAPHIC g-track-3"
+  ]
+ },
+ {
+  "id": "a3-s6",
+  "abs_start": 863.82,
+  "dur": 38.56,
+  "narration": "Eleven minutes later, De Soto. A village of six hundred, and a two-story brick schoolhouse with the children still inside. The storm took the school's upper floor and brought it down into the classrooms below. Thirty-three children died in that building. It remains the deadliest thing a tornado has ever done to a single school in this country. In a village that small, there was no family untouched. Parents dug at the school with their bare hands while their own homes burned behind them. One survivor, a seven-year-old girl, was pulled from the rubble having lost three sisters at once.",
+  "windows": [
+   " +0.00s +6.63s  v138",
+   " +6.63s +4.25s  v139",
+   "+10.88s +5.49s  v140",
+   "+16.37s +4.56s  v141",
+   "+20.93s +6.12s  v142",
+   "+27.05s +4.87s  v143",
+   "+31.92s +6.63s  v144"
+  ]
+ },
+ {
+  "id": "a3-s6b",
+  "abs_start": 903.13,
+  "dur": 39.68,
+  "narration": "Step back for a moment, because a pattern is forming that makes this storm unlike any other in American history. It struck at mid afternoon, on a school day, moving down a line of small towns where the school was often the biggest building on the street. Longfellow. Logan. De Soto. And country schoolhouses whose names never made the papers. Again and again, the deadliest address in town was the one where the children were. It is the reason survivors' accounts of this day return, over and over, to the same image. Parents running toward a school that was no longer there.",
+  "windows": [
+   " +0.00s +6.83s  v146",
+   " +0.00s +27.60s  GRAPHIC g-panel-desoto",
+   " +6.83s +4.37s  v147",
+   "+11.20s +5.65s  v148",
+   "+16.85s +4.69s  v149",
+   "+21.54s +6.29s  v150",
+   "+27.83s +5.01s  v151",
+   "+32.84s +6.83s  v152"
+  ]
+ },
+ {
+  "id": "a3-s6c",
+  "abs_start": 943.56,
+  "dur": 34.8,
+  "narration": "When researchers later mapped every documented point of damage along the path, they counted the buildings. Forty-eight of those damage points were schools. Most were one room schoolhouses, spaced about two miles apart across the farm country, because that was walking distance for a child in nineteen twenty-five. The geography that made school reachable is the same geography that put a school in the storm's path every two miles. On a Wednesday afternoon, at the worst possible hour, the path and the school day lined up.",
+  "windows": [
+   " +0.00s +6.85s  v154",
+   " +0.00s +22.70s  GRAPHIC g-panel-schools",
+   " +6.85s +4.39s  v155",
+   "+11.24s +5.67s  v156",
+   "+16.91s +4.71s  v157",
+   "+21.62s +6.31s  v158",
+   "+27.93s +5.03s  v159",
+   "+32.96s +6.85s  v160"
+  ]
+ },
+ {
+  "id": "a3-s7",
+  "abs_start": 984.11,
+  "dur": 48.6,
+  "narration": "At three o'clock the storm reached West Frankfort, a coal city of eighteen thousand. Nearly every able-bodied man was five hundred feet underground when it hit. The power died, and the cage stopped, so the miners climbed out by ladder, into open air, expecting to see their town. It was gone. The neighborhoods around the mine were simply gone. And because the men were underground, the dead were overwhelmingly the people they had left at home that morning. Women and children, by the dozens. Well over a hundred people died in West Frankfort, and the toll reached into the little mining settlements around it. In one of them, a village called Caldwell, a single extended family lost eleven members in one minute.",
+  "windows": [
+   " +0.00s +7.53s  v162",
+   " +7.53s +4.82s  v163",
+   "+12.35s +6.24s  v164",
+   "+18.59s +5.18s  v165",
+   "+23.77s +6.94s  v166",
+   "+30.71s +5.53s  v167",
+   "+36.24s +7.53s  v168",
+   "+43.77s +4.82s  v169"
+  ]
+ },
+ {
+  "id": "a3-s8",
+  "abs_start": 1033.46,
+  "dur": 25.28,
+  "narration": "Seven minutes later came Parrish. Twenty-two dead, and nine of every ten buildings destroyed. Parrish is different from every other name on this map, because Parrish never came back. The survivors buried their dead and moved away, and the town, as a town, simply stopped existing. The storm did not just kill people. It could erase the place itself.",
+  "windows": [
+   " +0.00s +6.93s  v171",
+   " +0.00s +25.50s  GRAPHIC g-panel-parrish",
+   " +6.93s +4.44s  v172",
+   "+11.37s +5.74s  v173",
+   "+17.11s +4.77s  v174",
+   "+21.88s +6.39s  v175"
+  ]
+ },
+ {
+  "id": "a3-s9",
+  "abs_start": 1062.49,
+  "dur": 29.28,
+  "narration": "We do have one scientific record from inside the disaster. A recording barometer at the Old Ben Coal Mine caught the storm's heart passing overhead. The needle plunged to twenty-eight point eight seven inches. At the time, that was the lowest pressure ever recorded inside an American tornado. The instrument had measured, in one violent stroke, what the people above ground already knew. This was not a normal storm.",
+  "windows": [
+   " +0.00s +26.00s  GRAPHIC g-baro",
+   "+26.00s +5.78s  t177"
+  ]
+ },
+ {
+  "id": "a4-s1",
+  "abs_start": 1095.02,
+  "dur": 28.64,
+  "narration": "The storm crossed out of Illinois, over the Wabash River, and into Indiana, still at full power after more than three hours on the ground. The village of Griffin was its first Indiana target. In Griffin, six of every ten people in town were killed or hurt, twenty-five dead and over two hundred injured, in less time than it takes to read this sentence. Farmers coming in from their fields could not find where the streets had been.",
+  "windows": [
+   " +0.00s +10.80s  GRAPHIC g-track-5",
+   "+10.80s +7.23s  t179",
+   "+18.03s +4.63s  t180",
+   "+22.66s +5.98s  t181"
+  ]
+ },
+ {
+  "id": "a4-s1d",
+  "abs_start": 1124.41,
+  "dur": 29.12,
+  "narration": "Griffin's schoolhouse came down with the rest of the town, and then, as in Murphysboro, fire found the wreckage. Some of the trapped could not be reached in time. It is one of the crueler patterns of this day. The storm passed a town in a minute, and then the stoves and lamps and gas lines it had scattered went to work on the ruins for hours. Survivors spoke of fighting two disasters, back to back, with the second one lit by the first.",
+  "windows": [
+   " +0.00s +7.14s  v183",
+   " +7.14s +4.57s  v184",
+   "+11.71s +5.91s  v185",
+   "+17.62s +4.91s  v186",
+   "+22.53s +6.58s  v187"
+  ]
+ },
+ {
+  "id": "a4-s1b",
+  "abs_start": 1154.28,
+  "dur": 34.68,
+  "narration": "By now the storm had been on the ground for three full hours, and that fact alone should not be possible. A typical tornado lives for minutes and covers a few miles. This one had crossed two entire states and was starting on a third, without weakening, without lifting, without once letting go of the earth. Meteorologists have argued for a century about how. Whatever the mechanism, the people of southern Indiana were now in the path of a storm that had already broken every rule the weather was supposed to obey.",
+  "windows": [
+   " +0.00s +6.40s  v189",
+   " +0.00s +24.50s  GRAPHIC g-panel-griffin",
+   " +6.40s +4.10s  v190",
+   "+10.50s +5.30s  v191",
+   "+15.80s +4.40s  v192",
+   "+20.20s +5.90s  v193",
+   "+26.10s +4.70s  v194",
+   "+30.80s +6.40s  v195"
+  ]
+ },
+ {
+  "id": "a4-s2",
+  "abs_start": 1192.21,
+  "dur": 25.96,
+  "narration": "At four eighteen it reached Princeton, a county seat of ten thousand, crowded that afternoon with shoppers. It tore through the south side of town, through homes and factories, and killed forty-five people. One young truck driver was picked up, stripped by the wind, thrown into a field, and lived to describe it. Princeton was the storm's last town. It had one more field to cross.",
+  "windows": [
+   " +0.00s +6.37s  v197",
+   " +6.37s +4.08s  v198",
+   "+10.45s +5.27s  v199",
+   "+15.72s +4.38s  v200",
+   "+20.10s +5.87s  v201"
+  ]
+ },
+ {
+  "id": "a4-s2b",
+  "abs_start": 1218.92,
+  "dur": 33.92,
+  "narration": "In its last miles, the storm wrote one more kind of story. The near miss. Farm families in its path watched it pass a field away, close enough to feel the pressure drop, and lived untouched while their neighbors' farms vanished. Along the whole two hundred nineteen miles, survival often came down to a few hundred feet or a few seconds. Sometimes it came down to which room of the house you were standing in. The people it spared would spend their lives telling the story. The people it found often never saw it at all.",
+  "windows": [
+   " +0.00s +7.05s  v203",
+   " +0.00s +26.50s  GRAPHIC g-panel-princeton",
+   " +7.05s +4.52s  v204",
+   "+11.57s +5.84s  v205",
+   "+17.41s +4.85s  v206",
+   "+22.26s +6.50s  v207",
+   "+28.76s +5.18s  v208"
+  ]
+ },
+ {
+  "id": "a4-s3",
+  "abs_start": 1253.59,
+  "dur": 31.64,
+  "narration": "At half past four, northeast of Princeton, the funnel finally narrowed, lifted, and dissolved into the rain. Three hours and twenty-nine minutes. Two hundred nineteen miles, the longest tornado track ever recorded on Earth. Six hundred ninety-five people dead. More than two thousand injured. Fifteen thousand homes destroyed. Nineteen communities in three states, hit in a single afternoon, by a single storm, without one word of warning.",
+  "windows": [
+   " +0.00s +30.80s  GRAPHIC g-track-7",
+   "+30.80s +4.78s  t210"
+  ]
+ },
+ {
+  "id": "a5-s1",
+  "abs_start": 1292.98,
+  "dur": 28.28,
+  "narration": "Night fell on the wreckage within hours. Survivors dug by lantern light and by the glow of the fires, calling names into the debris. Then the rain kept falling on towns where thousands of people no longer had a roof, and the rivers began to rise. Doctors operated by candlelight in churches and meeting halls, working through the night among the embers. In Murphysboro alone, the injured outnumbered the dead almost three to one.",
+  "windows": [
+   " +0.00s +6.93s  v213",
+   " +6.93s +4.44s  v214",
+   "+11.37s +5.74s  v215",
+   "+17.11s +4.77s  v216",
+   "+21.88s +6.39s  v217"
+  ]
+ },
+ {
+  "id": "a5-s1b",
+  "abs_start": 1322.01,
+  "dur": 42.64,
+  "narration": "Word finally moved the way it always did in nineteen twenty-five. Down whatever wires were left, and by messengers driving toward the smoke. Within hours, relief trains were loading in Saint Louis and Chicago, carrying doctors, nurses, and medical supplies toward towns most of the passengers had never heard of. They rode all night into a landscape with no lights, no stations, and in places, no track. The rescue of the Tri-State towns was improvised by neighbors first, and by strangers on trains second. The government agencies we would expect today did not exist. There was no such thing yet as federal disaster response.",
+  "windows": [
+   " +0.00s +42.00s  GRAPHIC g-relief"
+  ]
+ },
+ {
+  "id": "a5-s1c",
+  "abs_start": 1365.4,
+  "dur": 30.44,
+  "narration": "The scale of what came next has almost been forgotten. The Red Cross would spend over three million nineteen twenties dollars on this disaster, and the work ran for a full year. More than seven thousand families were left homeless or broken by the storm. Tent cities stood beside the ruined towns deep into the year, while houses went back up one at a time. For an organization built on volunteers and donations, it was among the largest relief operations America had ever mounted.",
+  "windows": [
+   " +0.00s +7.46s  v220",
+   " +0.00s +13.20s  GRAPHIC g-panel-redcross",
+   " +7.46s +4.78s  v221",
+   "+12.24s +6.18s  v222",
+   "+18.42s +5.13s  v223",
+   "+23.55s +6.88s  v224"
+  ]
+ },
+ {
+  "id": "a5-s1d",
+  "abs_start": 1396.59,
+  "dur": 31.56,
+  "narration": "And it is worth saying plainly. Nobody else was coming. In nineteen twenty-five there was no federal disaster agency, no national guard mobilization plan for storms, no emergency management of any kind. Washington's philosophy in that era was simple. Disasters were local problems. So the towns of the Tri-State were rebuilt by churches, neighbors, railroads, and a charity. The idea that a government should show up after a disaster is younger than this storm.",
+  "windows": [
+   " +0.00s +7.08s  v226",
+   " +0.00s +24.60s  GRAPHIC g-panel-nonet",
+   " +7.08s +4.53s  v227",
+   "+11.61s +5.86s  v228",
+   "+17.47s +4.87s  v229",
+   "+22.34s +6.52s  v230",
+   "+28.86s +5.20s  v231"
+  ]
+ },
+ {
+  "id": "a5-s2",
+  "abs_start": 1431.4,
+  "dur": 30.64,
+  "narration": "The next morning, the country found out. Headlines ran the width of every front page in America. One Chicago paper wrote that in the twinkling of an eye, Murphysboro was no more. For most Americans, those words, and these pages, were the disaster. Photography could show the aftermath, but no camera had caught the storm itself. It took days for the true death toll to stop climbing, as the missing were found, and the injured slipped away.",
+  "windows": [
+   " +0.00s +7.51s  v233",
+   " +7.51s +4.81s  v234",
+   "+12.32s +6.22s  v235",
+   "+18.54s +5.17s  v236",
+   "+23.71s +6.93s  v237"
+  ]
+ },
+ {
+  "id": "a5-s2c",
+  "abs_start": 1462.79,
+  "dur": 34.4,
+  "narration": "Follow those front pages across the week and you can watch the country learning, in slow motion, how bad it was. The first editions guessed at hundreds. Each day the figure climbed, as the missing lists shrank and the injured slipped away in makeshift wards. It took days for the number six hundred ninety-five to settle, and some historians argue the true toll was higher still, because farm-country deaths were counted loosely in nineteen twenty-five. The front page, in other words, was a wound that kept reopening every morning for a week.",
+  "windows": [
+   " +0.00s +7.15s  v239",
+   " +7.15s +4.58s  v240",
+   "+11.73s +5.92s  v241",
+   "+17.65s +4.91s  v242",
+   "+22.56s +6.59s  v243",
+   "+29.15s +5.25s  v244"
+  ]
+ },
+ {
+  "id": "a5-s3",
+  "abs_start": 1497.94,
+  "dur": 34.64,
+  "narration": "And then the newsreel cameras arrived. This footage, shot for Fox Movietone News, is among the only motion picture ever taken of what the Tri-State Tornado left behind. It played in theaters across the country, and it did what the headlines could not. It made the scale real. Relief poured in. The Red Cross raised millions. Factories sent tractors and work crews. Tent cities rose beside the ruins, and the burying began, hundreds of funerals, town by town, week after week.",
+  "windows": [
+   " +0.00s +5.46s  mvtn-centerpiece-aerial-30s.mp4",
+   " +5.46s +5.46s  v247",
+   "+10.92s +5.46s  v248",
+   "+16.38s +4.68s  mvtn-aerial-c-8s.mp4",
+   "+21.06s +4.68s  v250",
+   "+25.74s +3.51s  mvtn-ground-b-6s.mp4",
+   "+29.25s +3.51s  v252",
+   "+32.76s +5.85s  v253"
+  ]
+ },
+ {
+  "id": "a5-s3b",
+  "abs_start": 1537.33,
+  "dur": 33.64,
+  "narration": "The material loss was almost beyond the accounting of the day. Around sixteen and a half million dollars, in nineteen twenty-five money. In today's dollars, that is on the order of three billion. But the raw number hides the real shape of it. This was not one city absorbing a disaster with the rest of the country intact around it. It was a chain of small towns, each losing its homes, its school, and its industry on the same afternoon. The towns next door were too wrecked to help.",
+  "windows": [
+   " +0.00s +6.99s  v255",
+   " +0.00s +25.20s  GRAPHIC g-panel-cost",
+   " +6.99s +4.48s  v256",
+   "+11.47s +5.79s  v257",
+   "+17.26s +4.81s  v258",
+   "+22.07s +6.44s  v259",
+   "+28.51s +5.13s  v260"
+  ]
+ },
+ {
+  "id": "a5-s4",
+  "abs_start": 1571.72,
+  "dur": 24.44,
+  "narration": "In Murphysboro, someone set the grief to music. A song written in the ruins that spring, called After the Tornado Is Over, was sold to raise money for the survivors. The towns rebuilt, most of them, slowly, over decades. But the people who were there marked the rest of their lives by that afternoon. There was before the storm, and there was after.",
+  "windows": [
+   " +0.00s +5.99s  v262",
+   " +0.00s +22.80s  GRAPHIC g-panel-song",
+   " +5.99s +3.84s  v263",
+   " +9.83s +4.96s  v264",
+   "+14.79s +4.12s  v265",
+   "+18.91s +5.52s  v266"
+  ]
+ },
+ {
+  "id": "a5-s4b",
+  "abs_start": 1596.91,
+  "dur": 36.84,
+  "narration": "And then, for a long time, the country largely forgot. There was no famous name for this storm, no single city to anchor the memory, just a line of small towns that rebuilt quietly and carried it privately. But in those towns, it never faded. A century later, the descendants of survivors still tell the stories the way they were handed down. The sound like a thousand freight trains. The sky that turned black at midday. In southern Illinois, history still divides at March eighteenth. Before the storm, and after.",
+  "windows": [
+   " +0.00s +6.49s  mvtn-rebuild-bricklayers-12s.mp4",
+   " +6.49s +6.49s  v269",
+   "+12.98s +7.21s  v270",
+   "+20.19s +7.21s  v271",
+   "+27.40s +7.21s  v272",
+   "+34.61s +7.21s  v273"
+  ]
+ },
+ {
+  "id": "a6-s1",
+  "abs_start": 1639.5,
+  "dur": 22.56,
+  "narration": "Here is the hardest part of this story. After all of it, after six hundred ninety-five deaths, the rule did not change. The word tornado stayed effectively banned from American forecasts for more than a decade after the storm. The deadliest tornado in the nation's history was not enough, on its own, to make the warning legal.",
+  "windows": [
+   " +0.00s +22.56s  GRAPHIC g-wordban2"
+  ]
+ },
+ {
+  "id": "a6-s2",
+  "abs_start": 1662.81,
+  "dur": 41.76,
+  "narration": "Change came slowly, and then all at once. In the late nineteen thirties the Weather Bureau finally began easing the rule. In March nineteen forty-eight, two Air Force officers in Oklahoma issued the first successful tornado forecast in history. By nineteen fifty-two, the government was issuing public tornado outlooks. Then came radar, spotter networks, and the warning system we carry in our pockets today. A century ago, this storm killed six hundred ninety-five people who never heard it coming. Today, the same storm would still destroy the towns. But the people would know it was coming.",
+  "windows": [
+   " +0.00s +34.25s  GRAPHIC g-timeline",
+   "+34.25s +7.51s  t276"
+  ]
+ },
+ {
+  "id": "a6-s2b",
+  "abs_start": 1705.32,
+  "dur": 38.44,
+  "narration": "And the storm left science a mystery it is still working on. Was the Tri-State Tornado truly one tornado, on the ground for two hundred nineteen miles? Or was it a family of tornadoes, spun up one after another by the same parent storm, with the gaps hidden in the rain? Modern researchers have walked the records mile by mile, and the honest answer is that the continuous track holds up remarkably well across most of the path. But parts of it may never be settled. Every witness who could answer the question is gone, and the storm, as always, left no photograph.",
+  "windows": [
+   " +0.00s +38.00s  GRAPHIC g-family"
+  ]
+ },
+ {
+  "id": "a6-s2c",
+  "abs_start": 1744.51,
+  "dur": 45.32,
+  "narration": "In twenty thirteen, a team of severe storm scientists went back and re-walked the entire path through every record they could find. Their answer made the story stranger, not smaller. Count every documented point of damage, and the path stretches about two hundred thirty-five miles, longer than the official number. The stretch they could prove continuous beyond doubt still runs about one hundred fifty-one miles. And some of the famous gaps in the path turned out to be nothing but geography. One gap in Missouri sits over river floodplain, where there were simply no farms to destroy, and no destruction means no record. The storm may never have lifted at all.",
+  "windows": [
+   " +0.00s +29.74s  GRAPHIC g-remeasure",
+   "+29.74s +6.31s  t279",
+   "+36.05s +4.04s  t280",
+   "+40.09s +5.23s  t281"
+  ]
+ },
+ {
+  "id": "a6-s2d",
+  "abs_start": 1790.58,
+  "dur": 34.96,
+  "narration": "To feel how extreme that is, put it against everything else on record. The great Carolinas outbreak of nineteen eighty-four? Its longest continuous track ran about forty-two miles. The infamous Woodward, Oklahoma tornado of nineteen forty-seven, around a hundred. The Tri-State Tornado's most conservative, strictest, prove-it-or-drop-it measurement is one hundred fifty-one miles, and the honest measurement is far longer. A century of tornadoes, and second place is not even close.",
+  "windows": [
+   " +0.00s +26.00s  GRAPHIC g-compare",
+   "+26.00s +6.99s  t283",
+   "+32.99s +4.47s  t284"
+  ]
+ },
+ {
+  "id": "a6-s3",
+  "abs_start": 1828.79,
+  "dur": 44.08,
+  "narration": "The storm never stopped teaching. The scale we still use to rate tornado damage was created by Ted Fujita, a scientist who learned his forensic craft in the ruins of Hiroshima, reading destruction to understand the force that made it. Storms like this one are exactly what that method was built for, and the Tri-State record became a benchmark the science kept returning to. And in December twenty twenty-one, a violent long-track tornado tore through Kentucky, along a corridor eerily close to this one. It was a monster. But this time there were warnings, minutes and even hours of them. And that is the difference between dozens of deaths, and hundreds.",
+  "windows": [
+   " +0.00s +44.00s  GRAPHIC g-fujita"
+  ]
+ },
+ {
+  "id": "a6-s3c",
+  "abs_start": 1873.62,
+  "dur": 34.48,
+  "narration": "Run the same afternoon today, and it looks like a different universe. The outlook would flag those exact counties days in advance. By morning, a tornado watch. As the storm crossed Missouri, radar would track its rotation minute by minute, and every phone from Ellington to Princeton would sound before it arrived. The storm would be just as violent. The difference is that the people of Gorham and Murphysboro and De Soto would have what their great grandparents were denied by policy. They would know it was coming.",
+  "windows": [
+   " +0.00s +29.64s  GRAPHIC g-modern",
+   "+29.64s +4.84s  t287"
+  ]
+ },
+ {
+  "id": "a6-s3d",
+  "abs_start": 1908.85,
+  "dur": 35.0,
+  "narration": "Which leaves one practical lesson, and it has not changed in a century. A warning only works if you already know what you will do with it. The people who survived March eighteenth mostly survived by knowing, in the moment, where to go. Below ground beat above ground. A small interior room beat a wide open one. Away from windows beat next to them. Ten seconds of decision, made in advance, was the entire difference. That was true in nineteen twenty-five. It is exactly as true tonight.",
+  "windows": [
+   " +0.00s +22.00s  GRAPHIC g-prep",
+   "+22.00s +5.27s  t289",
+   "+27.27s +3.37s  t290",
+   "+30.64s +4.36s  t291"
+  ]
+ },
+ {
+  "id": "a6-s3b",
+  "abs_start": 1944.6,
+  "dur": 27.48,
+  "narration": "In March of twenty twenty-five, the towns along the path marked one hundred years. New historical markers went up in the places the storm erased, including towns like Parrish that exist today only as a name and a road. The crowds included the last threads of living connection. Children and grandchildren of survivors, reading lists of names into the spring air, in towns the storm once crossed in under a minute.",
+  "windows": [
+   " +0.00s +6.74s  v293",
+   " +6.74s +4.32s  v294",
+   "+11.06s +5.58s  v295",
+   "+16.64s +4.63s  v296",
+   "+21.27s +6.21s  v297"
+  ]
+ },
+ {
+  "id": "a6-s3e",
+  "abs_start": 1972.83,
+  "dur": 27.88,
+  "narration": "Walk the path today and the storm is still legible, if you know how to read it. Parrish is a name on a road sign beside an empty field. In the rebuilt towns, whole neighborhoods date suddenly from the late nineteen twenties, because everything older was erased in an afternoon. Local cemeteries carry rows of headstones that all say March eighteenth, nineteen twenty-five. The land remembers the line it drew, even where the people are gone.",
+  "windows": [
+   " +0.00s +6.52s  stock-windgrass-01.mp4",
+   " +6.52s +4.18s  stock-rainfield-02.mp4",
+   "+10.70s +5.40s  stock-cloudsrolling-03.mp4",
+   "+16.10s +4.48s  stock-windgrass-02.mp4",
+   "+20.58s +6.01s  stock-windgrass-01.mp4",
+   "+26.59s +4.79s  stock-windgrass-01.mp4"
+  ]
+ },
+ {
+  "id": "a6-s4d",
+  "abs_start": 2004.96,
+  "dur": 33.24,
+  "narration": "A hundred years on, the Tri-State Tornado remains the measuring stick every violent tornado is held against, and the question it asks has never expired. It is not whether such a storm can happen again. The atmosphere that built it still assembles, some spring afternoons, over the same three states. The question is only whether the warning will be heard, and believed, and acted on, in the handful of minutes it buys. That part has never depended on the weather. It depends on us.",
+  "windows": [
+   " +0.00s +7.53s  v306",
+   " +7.53s +4.82s  v307",
+   "+12.35s +6.24s  v308",
+   "+18.59s +5.18s  v309",
+   "+23.77s +6.94s  v310",
+   "+30.71s +5.53s  v311"
+  ]
+ },
+ {
+  "id": "a6-s4",
+  "abs_start": 2041.95,
+  "dur": 27.36,
+  "narration": "There is still no photograph of the Tri-State Tornado. After a hundred years, the storm itself remains invisible. What we have instead are the faces in these photographs. The miners, the teachers, the children walking to school without their coats. They are the only picture of it we will ever have. Six hundred ninety-five people, in nineteen communities, on one warm afternoon in March.",
+  "windows": [
+   " +0.00s +7.32s  v313",
+   " +7.32s +4.69s  v314",
+   "+12.01s +6.06s  v315",
+   "+18.07s +5.03s  v316",
+   "+23.10s +6.75s  v317"
+  ]
+ },
+ {
+  "id": "a6-s5",
+  "abs_start": 2072.56,
+  "dur": 16.4,
+  "narration": "Disasters don't ask permission. But they do send warnings. Learn what yours sounds like, so when it comes, you already know what to do. This was The Warning Hour. Episode Three. The Tornado With No Photograph.",
+  "windows": [
+   " +0.00s +16.40s  GRAPHIC g-close"
+  ]
+ }
+]

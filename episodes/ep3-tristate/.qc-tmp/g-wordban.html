@@ -1,0 +1,131 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;width:1920px;height:1080px;background:#111;overflow:hidden}</style>
+<script src="../gsap.min.js"></script></head><body>
+<style>
+  #root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 46% 52%, #0d141c 0%, #04070a 76%); }
+  /* --- continuous ledger / teletype substrate (carries motion the whole window) --- */
+  #g-wordban-ledger { position:absolute; left:0; right:0; top:-320px; height:1760px;
+    background:repeating-linear-gradient(180deg, rgba(0,0,0,0) 0 58px, #101b25 58px 60px); }
+  #g-wordban-tape { position:absolute; left:-120px; width:2160px; top:0; bottom:0;
+    background:repeating-linear-gradient(90deg, rgba(0,0,0,0) 0 118px, #0b141c 118px 120px); }
+  #g-wordban-margin { position:absolute; left:64px; top:0; bottom:0; width:3px; background:#3a1414; }
+  #g-wordban-margin2 { position:absolute; left:76px; top:0; bottom:0; width:1px; background:#291010; }
+  #g-wordban-sweep { position:absolute; left:0; top:0; bottom:0; width:220px;
+    background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(232,197,106,0.09) 50%, rgba(255,255,255,0) 100%); }
+  /* --- masthead: the Bureau (Washington) --- */
+  #g-wordban-hl { position:absolute; left:0; right:0; top:150px; text-align:center;
+    font-family:'Arial Black',Arial,sans-serif; font-size:64px; color:#f2f5f8; line-height:1.1; }
+  #g-wordban-sub { position:absolute; left:0; right:0; top:236px; text-align:center;
+    font-size:26px; letter-spacing:10px; color:#93a3b2; font-weight:700; }
+  #g-wordban-rule { position:absolute; left:560px; top:300px; width:800px; height:2px; background:#1b2734;
+    transform-origin:center center; }
+  /* --- the year count-up --- */
+  #g-wordban-yrlab { position:absolute; left:0; right:0; top:352px; text-align:center;
+    font-size:22px; letter-spacing:8px; color:#93a3b2; font-weight:700; }
+  #g-wordban-yr { position:absolute; left:0; right:0; top:384px; text-align:center;
+    font-family:'Courier New',monospace; font-size:150px; color:#e8c56a; font-weight:700; line-height:1; }
+  /* --- the word --- */
+  .lt { position:absolute; top:660px; width:148px; text-align:center; line-height:1;
+    font-family:'Courier New',monospace; font-weight:700; font-size:150px; color:#f2f5f8; }
+  .slot { position:absolute; top:796px; width:90px; height:4px; background:#182430; }
+  #g-wordban-caret { position:absolute; left:434px; top:670px; width:16px; height:128px;
+    background:#e8c56a; transform-origin:center center; }
+  #g-wordban-bar { position:absolute; left:398px; top:721px; width:1124px; height:34px;
+    background:#c0392b; transform-origin:left center; box-shadow:0 0 34px rgba(192,57,43,0.45); }
+  #g-wordban-bar2 { position:absolute; left:398px; top:759px; width:1124px; height:6px;
+    background:#e74c3c; transform-origin:left center; }
+</style>
+<div id="root" data-composition-id="g-wordban" data-width="1920" data-height="1080">
+  <div id="g-wordban-ledger"></div>
+  <div id="g-wordban-tape"></div>
+  <div id="g-wordban-margin"></div>
+  <div id="g-wordban-margin2"></div>
+
+  <div id="g-wordban-hl">UNITED STATES WEATHER BUREAU</div>
+  <div id="g-wordban-sub">WASHINGTON, D.C.</div>
+  <div id="g-wordban-rule"></div>
+
+  <div id="g-wordban-yrlab">DIRECTIVE ISSUED</div>
+  <div id="g-wordban-yr">1887</div>
+
+  <div class="slot" id="g-wordban-s0" style="left:471px"></div>
+  <div class="slot" id="g-wordban-s1" style="left:619px"></div>
+  <div class="slot" id="g-wordban-s2" style="left:767px"></div>
+  <div class="slot" id="g-wordban-s3" style="left:915px"></div>
+  <div class="slot" id="g-wordban-s4" style="left:1063px"></div>
+  <div class="slot" id="g-wordban-s5" style="left:1211px"></div>
+  <div class="slot" id="g-wordban-s6" style="left:1359px"></div>
+  <div class="lt" id="g-wordban-l0" style="left:442px">T</div>
+  <div class="lt" id="g-wordban-l1" style="left:590px">O</div>
+  <div class="lt" id="g-wordban-l2" style="left:738px">R</div>
+  <div class="lt" id="g-wordban-l3" style="left:886px">N</div>
+  <div class="lt" id="g-wordban-l4" style="left:1034px">A</div>
+  <div class="lt" id="g-wordban-l5" style="left:1182px">D</div>
+  <div class="lt" id="g-wordban-l6" style="left:1330px">O</div>
+  <div id="g-wordban-caret"></div>
+  <div id="g-wordban-bar"></div>
+  <div id="g-wordban-bar2"></div>
+  <div id="g-wordban-sweep"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-wordban-";
+  const YR = {v:1850};
+  function yrUpd(){ const e=document.getElementById("g-wordban-yr"); if(e) e.textContent=Math.round(YR.v); }
+
+  /* everything that reveals starts hidden */
+  tl.set([P+"hl",P+"sub",P+"rule",P+"yrlab",P+"yr",".lt",P+"caret",P+"bar",P+"bar2",P+"sweep"],
+         {autoAlpha:0}, 0);
+  tl.set([P+"rule",P+"bar",P+"bar2"], {scaleX:0}, 0);
+
+  /* CONTINUOUS: ledger rules drift down + column rules drift left across the whole window */
+  tl.to(P+"ledger", {y:240, duration:26, ease:"none"}, 0);
+  tl.to(P+"tape",   {x:-120, duration:26, ease:"none"}, 0);
+
+  /* BEAT 1 — the Bureau (Washington), 0-6s */
+  tl.fromTo(P+"hl",  {autoAlpha:0, y:-24}, {autoAlpha:1, y:0, duration:0.60, ease:"power3.out"}, 0.30);
+  tl.fromTo(P+"sub", {autoAlpha:0, y:-14}, {autoAlpha:1, y:0, duration:0.50, ease:"power3.out"}, 0.85);
+  tl.to(P+"rule", {autoAlpha:1, scaleX:1, duration:0.80, ease:"power3.out"}, 1.20);
+
+  /* BEAT 2 — year count-up (late 1800s -> 1887), 6.5s */
+  tl.set(P+"yr", {textContent:"1850"}, 0);
+  tl.fromTo(P+"yrlab", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 6.40);
+  tl.to(P+"yr", {autoAlpha:1, duration:0.35}, 6.60);
+  tl.to(YR, {v:1887, duration:2.20, ease:"power3.out", onUpdate:yrUpd}, 6.70);
+
+  /* the Bureau/year recede so the word owns the frame */
+  tl.to([P+"hl",P+"sub",P+"rule"], {autoAlpha:0.32, duration:0.6}, 12.4);
+
+  /* BEAT 3 — the word types in at "forbidden to use the word tornado" (13.5s) */
+  tl.to(P+"caret", {autoAlpha:1, duration:0.18}, 13.10);
+  tl.to(P+"caret", {scaleY:0.82, duration:0.45, yoyo:true, repeat:5, ease:"sine.inOut"}, 13.20);
+  const LT = ["l0","l1","l2","l3","l4","l5","l6"];
+  for (let i = 0; i < 7; i++) {
+    const t = 13.35 + 0.28 * i;
+    tl.fromTo(P+LT[i], {autoAlpha:0, scaleY:0.22, y:14},
+                       {autoAlpha:1, scaleY:1, y:0, duration:0.18, ease:"power4.in"}, t);
+    tl.to(P+"caret", {x:148*(i+1), duration:0.16, ease:"power3.out"}, t + 0.02);
+  }
+  tl.to(P+"caret", {autoAlpha:0, duration:0.22}, 15.55);
+
+  /* THE SLAM — a red bar drives through the word: forbidden */
+  tl.to(P+"bar",  {autoAlpha:1, scaleX:1, duration:0.34, ease:"power4.in"}, 16.00);
+  tl.to(".lt",    {x:7, duration:0.06, yoyo:true, repeat:5, ease:"none"}, 16.12);
+  tl.to(P+"bar2", {autoAlpha:1, scaleX:1, duration:0.42, ease:"power3.out"}, 16.42);
+  tl.to(".lt",    {autoAlpha:0.40, duration:0.55}, 16.88);
+
+  /* BEAT 4 — hold, continuous accents through the tail (a beat ~every 1.5s) */
+  tl.to(P+"bar", {scaleY:1.5, duration:0.40, yoyo:true, repeat:1, ease:"power2.inOut"}, 18.20);
+  tl.to(P+"yr",  {scale:1.08, duration:0.45, yoyo:true, repeat:1, ease:"power3.out"}, 19.60);
+  tl.set(P+"sweep", {autoAlpha:1}, 20.80);
+  tl.fromTo(P+"sweep", {x:-240}, {x:1700, duration:5.00, ease:"none"}, 20.80);
+  tl.to(P+"bar", {scaleY:1.35, duration:0.45, yoyo:true, repeat:1, ease:"power2.inOut"}, 22.40);
+  tl.to(".lt",   {autoAlpha:0.26, duration:0.80}, 24.20);
+
+  window.__timelines["g-wordban"] = tl;
+})();
+</script>
+</body></html>

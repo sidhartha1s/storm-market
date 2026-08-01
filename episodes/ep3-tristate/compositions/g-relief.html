@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 46% 52%, #0d141c 0%, #04070a 76%); overflow:hidden; }
+  .eyebrow { position:absolute; left:96px; top:76px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .hl { position:absolute; left:96px; top:112px; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; }
+  .sub { position:absolute; left:96px; top:196px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  .drift { position:absolute; inset:-40% 0; opacity:0.30; pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(120,150,180,0.16) 0 1px, transparent 1px 46px); }
+  .lab { font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; }
+  .val { font-size:30px; color:#dfe7ee; font-weight:700; letter-spacing:1px; }
+  .num { font-family:'Courier New',monospace; font-size:84px; color:#e74c3c; font-weight:700; line-height:1; }
+  .maplab { font-family:Arial,sans-serif; font-weight:700; font-size:25px; fill:#e8eef4; }
+  .foot { position:absolute; left:96px; bottom:74px; font-family:Georgia,serif; font-style:italic;
+    font-size:26px; color:#d8a13a; }
+</style>
+<div id="root" data-composition-id="g-relief" data-width="1920" data-height="1080">
+<div class="drift" id="g-relief-drift"></div>
+<div class="eyebrow" id="g-relief-eb">THAT NIGHT</div><div class="hl" id="g-relief-hl">THE TRAINS CAME</div><div class="sub" id="g-relief-sb">into a landscape with no lights and no telephones</div><svg viewBox="0 0 1920 1080" style="position:absolute;inset:0"><path id="g-relief-rt1" d="M 360 380 Q 620 470 880 570" stroke="#7fb2e5" stroke-width="6" fill="none" stroke-dasharray="14 12" stroke-dashoffset="0"/><path id="g-relief-rt2" d="M 1520 320 Q 1200 440 940 570" stroke="#7fb2e5" stroke-width="6" fill="none" stroke-dasharray="14 12" stroke-dashoffset="0"/><circle cx="905" cy="585" r="15" fill="#c0392b"/><text x="820" y="650" class="maplab" fill="#93a3b2">THE PATH</text><text x="300" y="350" class="maplab">ST. LOUIS</text><text x="1470" y="290" class="maplab">CHICAGO</text><circle id="g-relief-t1" cx="360" cy="380" r="0" fill="#e8c56a"/><circle id="g-relief-t2" cx="1520" cy="320" r="0" fill="#e8c56a"/></svg><div id="g-relief-r0" style="position:absolute;right:110px;top:300px;text-align:right"><div class="lab">FIRST RELIEF TRAIN</div><div class="val" style="margin-top:6px">LEFT WITHIN THE HOUR</div></div><div id="g-relief-r1" style="position:absolute;right:110px;top:440px;text-align:right"><div class="lab">CARRIED</div><div class="val" style="margin-top:6px">DOCTORS · NURSES · LANTERNS · COFFINS</div></div><div id="g-relief-r2" style="position:absolute;right:110px;top:580px;text-align:right"><div class="lab">FOUND</div><div class="val" style="margin-top:6px">TOWNS THAT COULD NOT CALL FOR HELP</div></div><div class="foot" id="g-relief-ft">Rescue arrived by rail, in the dark, hours after the last house fell.</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-relief-";
+  tl.fromTo(P+"drift", {y:-120}, {y:120, duration:42.0, ease:"none"}, 0);
+  tl.fromTo(P+"eb", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.15);
+  tl.fromTo(P+"hl", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.35);
+  tl.fromTo(P+"sb", {autoAlpha:0, x:-24}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.55);
+  tl.fromTo(P+"r0", {autoAlpha:0, x:40}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 9.0);
+  tl.fromTo(P+"r1", {autoAlpha:0, x:40}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 14.0);
+  tl.fromTo(P+"r2", {autoAlpha:0, x:40}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 19.5);
+  tl.fromTo(P+"t1", {attr:{r:0}}, {attr:{r:13}, duration:0.4, ease:"power4.in"}, 5.0);
+  tl.fromTo(P+"t2", {attr:{r:0}}, {attr:{r:13}, duration:0.4, ease:"power4.in"}, 6.2);
+  tl.to(P+"t1", {attr:{cx:880, cy:570}, duration:26.0, ease:"none"}, 5.4);
+  tl.to(P+"t2", {attr:{cx:940, cy:570}, duration:26.0, ease:"none"}, 6.6);
+  tl.to(P+"rt1", {attr:{"stroke-dashoffset":-520}, duration:30.0, ease:"none"}, 5.4);
+  tl.to(P+"rt2", {attr:{"stroke-dashoffset":-520}, duration:30.0, ease:"none"}, 6.6);
+  tl.fromTo(P+"ft", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.6}, 33.0);
+
+  window.__timelines["g-relief"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;width:1920px;height:1080px;background:#111;overflow:hidden}</style>
+<script src="../gsap.min.js"></script></head><body>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; overflow:hidden;
+    background:radial-gradient(ellipse at 46% 52%, #0d141c 0%, #04070a 76%); }
+
+  /* ---- header ---- */
+  .eb { position:absolute; left:88px; top:62px; font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; }
+  .hl { position:absolute; left:88px; top:92px; font-family:'Arial Black',Arial,sans-serif; font-size:60px;
+        line-height:1; color:#f2f5f8; letter-spacing:1px; }
+  .sub { position:absolute; left:88px; top:166px; font-family:Georgia,serif; font-style:italic; font-size:27px; color:#d8a13a; }
+  .stampwrap { position:absolute; right:88px; top:58px; text-align:right; }
+  .stamp { display:inline-block; font-family:'Arial Black',Arial,sans-serif; font-size:76px; line-height:1.1;
+           color:#fff; background:#8e2020; padding:2px 24px; letter-spacing:2px; }
+  .stamplab { font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; margin-top:12px; }
+  .hrule { position:absolute; left:88px; top:218px; width:1744px; height:2px; background:#22303d; transform-origin:left center; }
+
+  /* ---- measured rows ---- */
+  .rlab { position:absolute; left:88px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; }
+  .rttl { position:absolute; left:88px; font-family:'Arial Black',Arial,sans-serif; font-size:30px; line-height:1; letter-spacing:1px; }
+  .track { position:absolute; left:88px; width:1240px; height:34px; box-sizing:border-box;
+           border:2px solid #22303d; background:#0f1720; transform-origin:left center; }
+  .fill { position:absolute; inset:0; transform-origin:left center; }
+  .cap { position:absolute; width:4px; height:52px; transform-origin:center center; }
+  .rnum { position:absolute; right:88px; font-family:'Courier New',monospace; font-weight:700; font-size:62px; line-height:1; }
+  .runit { position:absolute; right:88px; font-size:17px; font-weight:700; letter-spacing:5px; color:#93a3b2; }
+  .chip { position:absolute; font-size:18px; font-weight:700; letter-spacing:2px; white-space:nowrap; }
+
+  /* ---- ruler (svg) ---- */
+  .tk { stroke:#33465a; stroke-width:2; }
+  .rtl { font-family:Arial,sans-serif; font-weight:700; font-size:15px; fill:#7d8c9a; }
+  .brklab { font-family:'Courier New',monospace; font-weight:700; font-size:20px; fill:#e8c56a; }
+
+  /* ---- floodplain gap bands ---- */
+  .gapband { position:absolute; top:544px; height:34px; transform-origin:center bottom;
+    background:repeating-linear-gradient(45deg,#5a768f66 0 5px,#5a768f00 5px 11px);
+    border-left:1px solid #7fb2e5; border-right:1px solid #7fb2e5; }
+
+  /* ---- footer ---- */
+  .footlab { position:absolute; left:88px; top:862px; font-size:19px; font-weight:700; letter-spacing:4px; color:#7fb2e5; }
+  .foot { position:absolute; left:88px; top:894px; font-family:Georgia,serif; font-style:italic; font-size:26px;
+          color:#d8a13a; white-space:nowrap; }
+  .spreadwrap { position:absolute; right:88px; top:858px; text-align:right; }
+  .spreadnum { font-family:'Courier New',monospace; font-weight:700; font-size:56px; line-height:1; color:#e8c56a; }
+  .spreadlab { font-size:18px; font-weight:700; letter-spacing:4px; color:#93a3b2; margin-top:14px; }
+  .botrule { position:absolute; left:88px; top:972px; width:1744px; height:2px; background:#16212c; transform-origin:left center; }
+  .src { position:absolute; left:88px; top:1002px; font-size:17px; font-weight:700; letter-spacing:3px; color:#5d6f80; }
+
+  /* ---- continuous measuring sweep ---- */
+  .sweep { position:absolute; left:90px; top:300px; width:2px; height:500px;
+           background:linear-gradient(180deg, rgba(232,197,106,0) 0%, rgba(232,197,106,0.55) 22%, rgba(232,197,106,0.55) 78%, rgba(232,197,106,0) 100%); }
+  .sweephead { position:absolute; left:-6px; top:-9px; width:14px; height:14px; background:#e8c56a; }
+</style>
+
+<div id="root" data-composition-id="g-remeasure" data-width="1920" data-height="1080">
+
+  <!-- ============ under-layer svg: rulers ============ -->
+  <svg id="g-remeasure-svgbase" viewBox="0 0 1920 1080" style="position:absolute;inset:0">
+    <!-- row 1 ruler -->
+    <line class="tk g-remeasure-r1maj" x1="90"     y1="398" x2="90"     y2="416"/>
+    <line class="tk g-remeasure-r1maj" x1="337.2"  y1="398" x2="337.2"  y2="416"/>
+    <line class="tk g-remeasure-r1maj" x1="584.4"  y1="398" x2="584.4"  y2="416"/>
+    <line class="tk g-remeasure-r1maj" x1="831.6"  y1="398" x2="831.6"  y2="416"/>
+    <line class="tk g-remeasure-r1maj" x1="1078.8" y1="398" x2="1078.8" y2="416"/>
+    <line class="tk g-remeasure-r1maj" x1="1326"   y1="398" x2="1326"   y2="416"/>
+    <line class="tk g-remeasure-r1min" x1="213.6"  y1="398" x2="213.6"  y2="408"/>
+    <line class="tk g-remeasure-r1min" x1="460.8"  y1="398" x2="460.8"  y2="408"/>
+    <line class="tk g-remeasure-r1min" x1="708"    y1="398" x2="708"    y2="408"/>
+    <line class="tk g-remeasure-r1min" x1="955.2"  y1="398" x2="955.2"  y2="408"/>
+    <line class="tk g-remeasure-r1min" x1="1202.4" y1="398" x2="1202.4" y2="408"/>
+    <text class="rtl g-remeasure-r1txt" x="90"     y="434" text-anchor="middle">0</text>
+    <text class="rtl g-remeasure-r1txt" x="337.2"  y="434" text-anchor="middle">50</text>
+    <text class="rtl g-remeasure-r1txt" x="584.4"  y="434" text-anchor="middle">100</text>
+    <text class="rtl g-remeasure-r1txt" x="831.6"  y="434" text-anchor="middle">150</text>
+    <text class="rtl g-remeasure-r1txt" x="1078.8" y="434" text-anchor="middle">200</text>
+    <text class="rtl g-remeasure-r1txt" x="1326"   y="434" text-anchor="middle">250</text>
+    <!-- row 2 ruler -->
+    <line class="tk g-remeasure-r2maj" x1="90"     y1="586" x2="90"     y2="604"/>
+    <line class="tk g-remeasure-r2maj" x1="337.2"  y1="586" x2="337.2"  y2="604"/>
+    <line class="tk g-remeasure-r2maj" x1="584.4"  y1="586" x2="584.4"  y2="604"/>
+    <line class="tk g-remeasure-r2maj" x1="831.6"  y1="586" x2="831.6"  y2="604"/>
+    <line class="tk g-remeasure-r2maj" x1="1078.8" y1="586" x2="1078.8" y2="604"/>
+    <line class="tk g-remeasure-r2maj" x1="1326"   y1="586" x2="1326"   y2="604"/>
+    <line class="tk g-remeasure-r2min" x1="213.6"  y1="586" x2="213.6"  y2="596"/>
+    <line class="tk g-remeasure-r2min" x1="460.8"  y1="586" x2="460.8"  y2="596"/>
+    <line class="tk g-remeasure-r2min" x1="708"    y1="586" x2="708"    y2="596"/>
+    <line class="tk g-remeasure-r2min" x1="955.2"  y1="586" x2="955.2"  y2="596"/>
+    <line class="tk g-remeasure-r2min" x1="1202.4" y1="586" x2="1202.4" y2="596"/>
+    <text class="rtl g-remeasure-r2txt" x="90"     y="622" text-anchor="middle">0</text>
+    <text class="rtl g-remeasure-r2txt" x="337.2"  y="622" text-anchor="middle">50</text>
+    <text class="rtl g-remeasure-r2txt" x="584.4"  y="622" text-anchor="middle">100</text>
+    <text class="rtl g-remeasure-r2txt" x="831.6"  y="622" text-anchor="middle">150</text>
+    <text class="rtl g-remeasure-r2txt" x="1078.8" y="622" text-anchor="middle">200</text>
+    <text class="rtl g-remeasure-r2txt" x="1326"   y="622" text-anchor="middle">250</text>
+    <!-- row 3 ruler -->
+    <line class="tk g-remeasure-r3maj" x1="90"     y1="774" x2="90"     y2="792"/>
+    <line class="tk g-remeasure-r3maj" x1="337.2"  y1="774" x2="337.2"  y2="792"/>
+    <line class="tk g-remeasure-r3maj" x1="584.4"  y1="774" x2="584.4"  y2="792"/>
+    <line class="tk g-remeasure-r3maj" x1="831.6"  y1="774" x2="831.6"  y2="792"/>
+    <line class="tk g-remeasure-r3maj" x1="1078.8" y1="774" x2="1078.8" y2="792"/>
+    <line class="tk g-remeasure-r3maj" x1="1326"   y1="774" x2="1326"   y2="792"/>
+    <line class="tk g-remeasure-r3min" x1="213.6"  y1="774" x2="213.6"  y2="784"/>
+    <line class="tk g-remeasure-r3min" x1="460.8"  y1="774" x2="460.8"  y2="784"/>
+    <line class="tk g-remeasure-r3min" x1="708"    y1="774" x2="708"    y2="784"/>
+    <line class="tk g-remeasure-r3min" x1="955.2"  y1="774" x2="955.2"  y2="784"/>
+    <line class="tk g-remeasure-r3min" x1="1202.4" y1="774" x2="1202.4" y2="784"/>
+    <text class="rtl g-remeasure-r3txt" x="90"     y="810" text-anchor="middle">0</text>
+    <text class="rtl g-remeasure-r3txt" x="337.2"  y="810" text-anchor="middle">50</text>
+    <text class="rtl g-remeasure-r3txt" x="584.4"  y="810" text-anchor="middle">100</text>
+    <text class="rtl g-remeasure-r3txt" x="831.6"  y="810" text-anchor="middle">150</text>
+    <text class="rtl g-remeasure-r3txt" x="1078.8" y="810" text-anchor="middle">200</text>
+    <text class="rtl g-remeasure-r3txt" x="1326"   y="810" text-anchor="middle">250</text>
+  </svg>
+
+  <!-- ============ header ============ -->
+  <div class="eb"  id="g-remeasure-eb">JOHNS, BURGESS ET AL. &middot; 2013</div>
+  <div class="hl"  id="g-remeasure-hl">THE PATH, REMEASURED</div>
+  <div class="sub" id="g-remeasure-sub"><</div>
+  <div class="stampwrap" id="g-remeasure-stampwrap">
+    <span class="stamp" id="g-remeasure-stamp">2013</span>
+    <div class="stamplab" id="g-remeasure-stamplab">REANALYSIS</div>
+  </div>
+  <div class="hrule" id="g-remeasure-hrule"></div>
+
+  <!-- ============ row 1 — official ============ -->
+  <div class="rlab" id="g-remeasure-r1lab" style="top:280px">01 &middot; OFFICIAL &middot; NWS STORM DATA</div>
+  <div class="rttl" id="g-remeasure-r1ttl" style="top:310px; color:#c0392b">THE ACCEPTED PATH</div>
+  <div class="track" id="g-remeasure-r1track" style="top:356px">
+    <div class="fill" id="g-remeasure-r1fill" style="background:linear-gradient(90deg,#6d1c15,#c0392b)"></div>
+  </div>
+  <div class="cap"  id="g-remeasure-r1cap" style="left:1171px; top:347px; background:#e74c3c"></div>
+  <div class="rnum" id="g-remeasure-r1num" style="top:294px; color:#e74c3c">0</div>
+  <div class="runit" id="g-remeasure-r1unit" style="top:366px">MILES &middot; OFFICIAL</div>
+  <div class="chip" id="g-remeasure-r1chip" style="left:1186px; top:362px; color:#93a3b2">BASELINE</div>
+
+  <!-- ============ row 2 — every documented damage point ============ -->
+  <div class="rlab" id="g-remeasure-r2lab" style="top:468px">02 &middot; EVERY DOCUMENTED DAMAGE POINT</div>
+  <div class="rttl" id="g-remeasure-r2ttl" style="top:498px; color:#e8c56a">THE FULL DAMAGE PATH</div>
+  <div class="track" id="g-remeasure-r2track" style="top:544px">
+    <div class="fill" id="g-remeasure-r2fill" style="background:linear-gradient(90deg,#7d5c1c,#e8c56a)"></div>
+  </div>
+  <div class="gapband" id="g-remeasure-gap1" style="left:377px; width:59px"></div>
+  <div class="gapband" id="g-remeasure-gap2" style="left:644px; width:59px"></div>
+  <div class="cap"  id="g-remeasure-r2cap" style="left:1250px; top:535px; background:#e8c56a"></div>
+  <div class="rnum" id="g-remeasure-r2num" style="top:482px; color:#e8c56a">0</div>
+  <div class="runit" id="g-remeasure-r2unit" style="top:554px">MILES &middot; DOCUMENTED</div>
+  <div class="chip" id="g-remeasure-r2chip" style="left:1265px; top:550px; color:#e8c56a">+16 MI</div>
+
+  <!-- ============ row 3 — continuous beyond doubt ============ -->
+  <div class="rlab" id="g-remeasure-r3lab" style="top:656px">03 &middot; CONTINUOUS BEYOND DOUBT</div>
+  <div class="rttl" id="g-remeasure-r3ttl" style="top:686px; color:#7fb2e5">PROVEN UNBROKEN</div>
+  <div class="track" id="g-remeasure-r3track" style="top:732px">
+    <div class="fill" id="g-remeasure-r3fill" style="background:linear-gradient(90deg,#2b4157,#7fb2e5)"></div>
+  </div>
+  <div class="cap"  id="g-remeasure-r3cap" style="left:834px; top:723px; background:#7fb2e5"></div>
+  <div class="rnum" id="g-remeasure-r3num" style="top:670px; color:#7fb2e5">0</div>
+  <div class="runit" id="g-remeasure-r3unit" style="top:742px">MILES &middot; CONTINUOUS</div>
+  <div class="chip" id="g-remeasure-r3chip" style="left:850px; top:738px; color:#7fb2e5">&minus;68 MI</div>
+
+  <!-- ============ continuous measuring sweep ============ -->
+  <div class="sweep" id="g-remeasure-sweep"><div class="sweephead" id="g-remeasure-sweephead"></div></div>
+
+  <!-- ============ over-layer svg: reference line + spread bracket ============ -->
+  <svg id="g-remeasure-svgtop" viewBox="0 0 1920 1080" style="position:absolute;inset:0">
+    <line id="g-remeasure-refline" x1="1172.7" y1="312" x2="1172.7" y2="800"
+          stroke="#4a6178" stroke-width="2" stroke-dasharray="7 9"/>
+    <path id="g-remeasure-brk" d="M836.5 816 L836.5 826 L1251.8 826 L1251.8 816"
+          fill="none" stroke="#8a7433" stroke-width="2" stroke-dasharray="440" stroke-dashoffset="440"/>
+    <text id="g-remeasure-brklab" class="brklab" x="1044" y="852" text-anchor="middle">84 MI</text>
+  </svg>
+  <div class="chip" id="g-remeasure-reflab" style="left:1186px; top:290px; font-size:16px; color:#93a3b2">OFFICIAL 219</div>
+
+  <!-- ============ footer ============ -->
+  <div class="footlab" id="g-remeasure-footlab">APPARENT GAPS IN THE DAMAGE RECORD</div>
+  <div class="foot" id="g-remeasure-foot"></div>
+  <div class="spreadwrap" id="g-remeasure-spreadwrap">
+    <div class="spreadnum" id="g-remeasure-spreadnum">0</div>
+    <div class="spreadlab" id="g-remeasure-spreadlab">MILES OF DISAGREEMENT</div>
+  </div>
+  <div class="botrule" id="g-remeasure-botrule"></div>
+  <div class="src" id="g-remeasure-src">ELECTRONIC J. SEVERE STORMS METEOROLOGY &middot; TRI-STATE REANALYSIS</div>
+</div>
+
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const P = "#g-remeasure-";
+  const tl = gsap.timeline({ paused: true });
+  tl.set("#g-remeasure-r1num", {autoAlpha:0}, 0);
+  tl.to("#g-remeasure-r1num", {autoAlpha:1, duration:0.25}, 4.65);
+  tl.set("#g-remeasure-r2num", {autoAlpha:0}, 0);
+  tl.to("#g-remeasure-r2num", {autoAlpha:1, duration:0.25}, 10.75);
+  tl.set("#g-remeasure-r3num", {autoAlpha:0}, 0);
+  tl.to("#g-remeasure-r3num", {autoAlpha:1, duration:0.25}, 17.65);
+  tl.set("#g-remeasure-spreadnum", {autoAlpha:0}, 0);
+  tl.to("#g-remeasure-spreadnum", {autoAlpha:1, duration:0.25}, 22.35);
+
+  function counter(id, obj) {
+    return function() { const e = document.getElementById(id); if (e) e.textContent = Math.round(obj.v); };
+  }
+  const C1 = {v:0}, C2 = {v:0}, C3 = {v:0}, CS = {v:0};
+  const u1 = counter("g-remeasure-r1num", C1), u2 = counter("g-remeasure-r2num", C2),
+        u3 = counter("g-remeasure-r3num", C3), us = counter("g-remeasure-spreadnum", CS);
+
+  /* ---- header ---- */
+  tl.fromTo(P+"eb",       {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.50, ease:"power3.out"}, 0.10);
+  tl.fromTo(P+"hl",       {autoAlpha:0, y:30},  {autoAlpha:1, y:0, duration:0.55, ease:"power3.out"}, 0.30);
+  tl.fromTo(P+"sub",      {autoAlpha:0, y:20},  {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 0.55);
+  tl.fromTo(P+"stamp",    {scale:2.6, autoAlpha:0}, {scale:1, autoAlpha:1, duration:0.35, ease:"power4.in"}, 0.80);
+  /* label lands only after the stamp finishes slamming — its 2.6x entry sweeps this space */
+  tl.fromTo(P+"stamplab", {autoAlpha:0, y:14},  {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 1.25);
+  tl.fromTo(P+"hrule",    {scaleX:0},           {scaleX:1, duration:0.70, ease:"power3.out", transformOrigin:"left center"}, 1.20);
+
+  /* ---- CONTINUOUS: the measuring sweep runs the whole window (1.40s -> 27.40s) ---- */
+  tl.fromTo(P+"sweep",     {x:0},        {x:1236, duration:26.0, ease:"none"}, 1.40);
+  tl.fromTo(P+"sweephead", {rotation:0}, {rotation:1080, duration:26.0, ease:"none"}, 1.40);
+
+  /* ---- reference line at the official 219 ---- */
+  tl.fromTo(P+"refline", {attr:{y2:312}, autoAlpha:0}, {attr:{y2:800}, autoAlpha:1, duration:0.80, ease:"power3.out"}, 2.30);
+  tl.fromTo(P+"reflab",  {autoAlpha:0, x:-18}, {autoAlpha:1, x:0, duration:0.40, ease:"power3.out"}, 2.90);
+
+  /* ---- row 1 · OFFICIAL 219 MILES ---- */
+  tl.fromTo(P+"r1lab",  {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 3.20);
+  tl.fromTo(P+"r1ttl",  {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 3.45);
+  tl.fromTo(P+"r1track",{scaleX:0},          {scaleX:1, duration:0.55, ease:"power3.out", transformOrigin:"left center"}, 3.70);
+  tl.fromTo(".g-remeasure-r1maj", {attr:{y2:398}, autoAlpha:0}, {attr:{y2:416}, autoAlpha:1, duration:0.35, stagger:0.05, ease:"power3.out"}, 4.10);
+  tl.fromTo(".g-remeasure-r1min", {attr:{y2:398}, autoAlpha:0}, {attr:{y2:408}, autoAlpha:1, duration:0.35, stagger:0.05, ease:"power3.out"}, 4.25);
+  tl.fromTo(".g-remeasure-r1txt", {autoAlpha:0, y:10}, {autoAlpha:1, y:0, duration:0.30, stagger:0.05, ease:"power3.out"}, 4.45);
+  tl.fromTo(P+"r1fill", {scaleX:0}, {scaleX:0.876, duration:3.00, ease:"power3.out", transformOrigin:"left center"}, 4.90);
+  tl.to(C1, {v:219, duration:3.00, ease:"power3.out", onUpdate:u1}, 4.90);
+  tl.fromTo(P+"r1cap",  {scaleY:0, autoAlpha:0}, {scaleY:1, autoAlpha:1, duration:0.35, ease:"power4.in"}, 7.90);
+  tl.fromTo(P+"r1chip", {autoAlpha:0, x:-16}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 8.20);
+  tl.fromTo(P+"r1unit", {autoAlpha:0, y:12}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 8.55);
+
+  /* ---- row 2 · EVERY DOCUMENTED DAMAGE POINT ~235 MILES ---- */
+  tl.fromTo(P+"r2lab",  {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 9.30);
+  tl.fromTo(P+"r2ttl",  {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 9.55);
+  tl.fromTo(P+"r2track",{scaleX:0},          {scaleX:1, duration:0.55, ease:"power3.out", transformOrigin:"left center"}, 9.80);
+  tl.fromTo(".g-remeasure-r2maj", {attr:{y2:586}, autoAlpha:0}, {attr:{y2:604}, autoAlpha:1, duration:0.35, stagger:0.05, ease:"power3.out"}, 10.20);
+  tl.fromTo(".g-remeasure-r2min", {attr:{y2:586}, autoAlpha:0}, {attr:{y2:596}, autoAlpha:1, duration:0.35, stagger:0.05, ease:"power3.out"}, 10.35);
+  tl.fromTo(".g-remeasure-r2txt", {autoAlpha:0, y:10}, {autoAlpha:1, y:0, duration:0.30, stagger:0.05, ease:"power3.out"}, 10.55);
+  tl.fromTo(P+"r2fill", {scaleX:0}, {scaleX:0.94, duration:3.20, ease:"power3.out", transformOrigin:"left center"}, 11.00);
+  tl.to(C2, {v:235, duration:3.20, ease:"power3.out", onUpdate:u2}, 11.00);
+  tl.fromTo(P+"r2cap",  {scaleY:0, autoAlpha:0}, {scaleY:1, autoAlpha:1, duration:0.35, ease:"power4.in"}, 14.20);
+  tl.fromTo(P+"r2chip", {autoAlpha:0, x:-16}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 14.50);
+  tl.fromTo(P+"r2unit", {autoAlpha:0, y:12}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 14.85);
+  tl.fromTo(".gapband",  {scaleY:0, autoAlpha:0}, {scaleY:1, autoAlpha:1, duration:0.40, stagger:0.20, ease:"power4.in"}, 15.20);
+
+  /* ---- row 3 · CONTINUOUS BEYOND DOUBT 151 MILES ---- */
+  tl.fromTo(P+"r3lab",  {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 16.20);
+  tl.fromTo(P+"r3ttl",  {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 16.45);
+  tl.fromTo(P+"r3track",{scaleX:0},          {scaleX:1, duration:0.55, ease:"power3.out", transformOrigin:"left center"}, 16.70);
+  tl.fromTo(".g-remeasure-r3maj", {attr:{y2:774}, autoAlpha:0}, {attr:{y2:792}, autoAlpha:1, duration:0.35, stagger:0.05, ease:"power3.out"}, 17.10);
+  tl.fromTo(".g-remeasure-r3min", {attr:{y2:774}, autoAlpha:0}, {attr:{y2:784}, autoAlpha:1, duration:0.35, stagger:0.05, ease:"power3.out"}, 17.25);
+  tl.fromTo(".g-remeasure-r3txt", {autoAlpha:0, y:10}, {autoAlpha:1, y:0, duration:0.30, stagger:0.05, ease:"power3.out"}, 17.45);
+  tl.fromTo(P+"r3fill", {scaleX:0}, {scaleX:0.604, duration:2.60, ease:"power3.out", transformOrigin:"left center"}, 17.90);
+  tl.to(C3, {v:151, duration:2.60, ease:"power3.out", onUpdate:u3}, 17.90);
+  tl.fromTo(P+"r3cap",  {scaleY:0, autoAlpha:0}, {scaleY:1, autoAlpha:1, duration:0.35, ease:"power4.in"}, 20.50);
+  tl.fromTo(P+"r3chip", {autoAlpha:0, x:-16}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 20.80);
+  tl.fromTo(P+"r3unit", {autoAlpha:0, y:12}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 21.15);
+
+  /* ---- the spread between measure 02 and measure 03 ---- */
+  tl.fromTo(P+"brk",    {strokeDashoffset:440}, {strokeDashoffset:0, duration:0.90, ease:"power3.out"}, 21.60);
+  tl.fromTo(P+"brklab", {autoAlpha:0, y:-12}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 22.30);
+  tl.fromTo(P+"spreadnum", {scale:1.5, autoAlpha:0}, {scale:1, autoAlpha:1, duration:0.45, ease:"power4.in"}, 22.60);
+  tl.to(CS, {v:84, duration:1.10, ease:"power3.out", onUpdate:us}, 22.60);
+  tl.fromTo(P+"spreadlab", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.40, ease:"power3.out"}, 23.20);
+
+  /* ---- footnote: the river-floodplain explanation ---- */
+  tl.fromTo(P+"footlab", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 23.90);
+  tl.fromTo(P+"foot",    {autoAlpha:0, y:22}, {autoAlpha:1, y:0, duration:0.60, ease:"power3.out"}, 24.30);
+  tl.to(".gapband", {scaleY:1.22, yoyo:true, repeat:3, duration:0.45, ease:"sine.inOut"}, 24.60);
+
+  /* ---- close ---- */
+  tl.fromTo(P+"botrule", {scaleX:0}, {scaleX:1, duration:0.70, ease:"power3.out", transformOrigin:"left center"}, 26.40);
+  tl.fromTo(P+"src",     {autoAlpha:0, x:-24}, {autoAlpha:1, x:0, duration:0.50, ease:"power3.out"}, 26.90);
+  tl.to(P+"refline", {attr:{"stroke-width":4}, yoyo:true, repeat:1, duration:0.40, ease:"power2.inOut"}, 27.60);
+  tl.to(P+"stamp",   {scale:1.07, yoyo:true, repeat:1, duration:0.35, ease:"power2.inOut"}, 28.30);
+  tl.to([P+"r1cap",P+"r2cap",P+"r3cap"], {scaleY:1.2, yoyo:true, repeat:1, duration:0.30, stagger:0.06, ease:"power2.inOut"}, 28.90);
+
+  window.__timelines["g-remeasure"] = tl;
+})();
+</script>
+</body></html>

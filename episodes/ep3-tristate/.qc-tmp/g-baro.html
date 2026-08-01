@@ -1,0 +1,216 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;width:1920px;height:1080px;background:#111;overflow:hidden}</style>
+<script src="../gsap.min.js"></script></head><body>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 46% 52%, #0d141c 0%, #04070a 76%); }
+  .eyebrow { position:absolute; left:88px; top:74px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .hl { position:absolute; left:88px; top:112px; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; line-height:1.05; }
+  .sub { position:absolute; left:88px; top:190px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  /* chart typography (SVG) */
+  .ylab { font-family:'Courier New',monospace; font-weight:700; font-size:22px; fill:#93a3b2; }
+  .xlab { font-family:Arial,sans-serif; font-weight:700; font-size:22px; fill:#93a3b2; }
+  .axt  { font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:3px; fill:#93a3b2; }
+  .toplab { font-family:Arial,sans-serif; font-weight:700; font-size:22px; letter-spacing:2px; fill:#e8c56a; }
+  .redlab { font-family:'Courier New',monospace; font-weight:700; font-size:26px; fill:#e74c3c; }
+  .lowlab { font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:4px; fill:#93a3b2; }
+  /* right readout panel */
+  .panel { position:absolute; right:0; top:0; bottom:0; width:560px; box-sizing:border-box;
+    background:linear-gradient(270deg, rgba(6,9,13,0.94) 68%, rgba(6,9,13,0)); padding:88px 50px 0 60px; }
+  .shdr { font-size:26px; letter-spacing:8px; color:#93a3b2; font-weight:700; }
+  #g-baro-val { font-family:'Courier New',monospace; font-size:84px; font-weight:700; color:#e74c3c; line-height:1; margin-top:18px; }
+  .vlab { font-size:20px; letter-spacing:6px; color:#c8d3e0; font-weight:700; margin-top:10px; }
+  .row { font-size:30px; color:#dfe7ee; font-weight:700; letter-spacing:1px; margin-top:22px; line-height:1.16; }
+  .row .lab { display:block; font-size:19px; color:#93a3b2; letter-spacing:4px; font-weight:700; line-height:1.16; }
+  #g-baro-shdr2 { margin-top:34px; }
+  #g-baro-bartrack { position:relative; width:440px; height:30px; margin-top:16px; box-sizing:border-box;
+    background:#101820; border:2px solid #2a3644; }
+  #g-baro-barfill { position:absolute; left:0; top:0; bottom:0; width:100%; transform-origin:left center;
+    background:linear-gradient(90deg,#8e2020,#c0392b 55%,#e74c3c); }
+  .bcap { font-size:19px; letter-spacing:3px; color:#93a3b2; font-weight:700; margin-top:14px; }
+  /* clock drum widget */
+  #g-baro-drumwrap { position:relative; width:450px; height:170px; margin-top:34px; }
+  #g-baro-drum { position:absolute; left:0; top:5px; width:160px; height:160px; box-sizing:border-box;
+    border:3px solid #2a3644; border-radius:50%; background:radial-gradient(circle at 40% 34%, #131e29, #070b10 72%); }
+  .tick { position:absolute; background:#5a768f; }
+  #g-baro-hand { position:absolute; left:76px; top:14px; width:3px; height:63px; background:#e8c56a; transform-origin:50% 100%; }
+  #g-baro-hub { position:absolute; left:71px; top:71px; width:12px; height:12px; border-radius:50%; background:#e8c56a; }
+  .dlab { position:absolute; left:196px; font-size:19px; font-weight:700; letter-spacing:4px; line-height:1; }
+  /* stamp */
+  #g-baro-srule { position:absolute; left:88px; top:900px; width:520px; height:4px; background:#d8a13a; transform-origin:left center; }
+  #g-baro-stamp { position:absolute; left:88px; top:916px; background:#8e2020; padding:16px 28px;
+    display:inline-block; }
+  /* Arial Black ink boxes run ~1.41em — leading must clear that, not just the em box */
+  .sline { font-family:'Arial Black',Arial,sans-serif; font-size:42px; color:#fff; letter-spacing:2px; line-height:1.32; }
+  .sline2 { margin-top:10px; }
+</style>
+<div id="root" data-composition-id="g-baro" data-width="1920" data-height="1080">
+  <svg viewBox="0 0 1920 1080" style="position:absolute;inset:0">
+    <rect x="250" y="270" width="1050" height="575" fill="#080d13" stroke="#16212c" stroke-width="2"/>
+    <line class="mg" x1="250" y1="382" x2="1300" y2="382" stroke="#0f1720" stroke-width="2"/>
+    <line class="mg" x1="250" y1="494" x2="1300" y2="494" stroke="#0f1720" stroke-width="2"/>
+    <line class="mg" x1="250" y1="606" x2="1300" y2="606" stroke="#0f1720" stroke-width="2"/>
+    <line class="mg" x1="250" y1="718" x2="1300" y2="718" stroke="#0f1720" stroke-width="2"/>
+    <rect id="g-baro-band" x="986" y="270" width="34" height="0" fill="#c0392b" opacity="0.18"/>
+    <line class="hg" x1="250" y1="326" x2="250" y2="326" stroke="#1b2734" stroke-width="2"/>
+    <line class="hg" x1="250" y1="438" x2="250" y2="438" stroke="#1b2734" stroke-width="2"/>
+    <line class="hg" x1="250" y1="550" x2="250" y2="550" stroke="#1b2734" stroke-width="2"/>
+    <line class="hg" x1="250" y1="662" x2="250" y2="662" stroke="#1b2734" stroke-width="2"/>
+    <line class="hg" x1="250" y1="774" x2="250" y2="774" stroke="#1b2734" stroke-width="2"/>
+    <line class="vg" x1="460"  y1="270" x2="460"  y2="270" stroke="#141f2a" stroke-width="2"/>
+    <line class="vg" x1="670"  y1="270" x2="670"  y2="270" stroke="#141f2a" stroke-width="2"/>
+    <line class="vg" x1="880"  y1="270" x2="880"  y2="270" stroke="#141f2a" stroke-width="2"/>
+    <line class="vg" x1="1090" y1="270" x2="1090" y2="270" stroke="#141f2a" stroke-width="2"/>
+    <line class="vg" x1="1300" y1="270" x2="1300" y2="270" stroke="#141f2a" stroke-width="2"/>
+    <line id="g-baro-xaxis" x1="250" y1="845" x2="250" y2="845" stroke="#3a4a5c" stroke-width="3"/>
+    <line id="g-baro-yaxis" x1="250" y1="270" x2="250" y2="270" stroke="#3a4a5c" stroke-width="3"/>
+    <path id="g-baro-ghost" opacity="0" fill="none" stroke="#22303d" stroke-width="3" stroke-dasharray="8 11"
+      d="M250,382 L320,388 L390,396 L460,404 L530,414 L600,428 L670,449 L730,478 L790,510 L840,548 L880,578 L910,606 L935,640 L960,678 L985,712 L1003,734 L1020,720 L1040,690 L1060,655 L1085,610 L1120,560 L1180,520 L1240,492 L1300,471"/>
+    <path id="g-baro-trace" fill="none" stroke="#e8c56a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"
+      stroke-dasharray="1300" stroke-dashoffset="1300"
+      d="M250,382 L320,388 L390,396 L460,404 L530,414 L600,428 L670,449 L730,478 L790,510 L840,548 L880,578 L910,606 L935,640 L960,678 L985,712 L1003,734 L1020,720 L1040,690 L1060,655 L1085,610 L1120,560 L1180,520 L1240,492 L1300,471"/>
+    <line id="g-baro-minh" x1="1003" y1="734" x2="1003" y2="734" stroke="#c0392b" stroke-width="2" stroke-dasharray="7 9"/>
+    <line id="g-baro-minv" x1="1003" y1="734" x2="1003" y2="734" stroke="#c0392b" stroke-width="2" stroke-dasharray="7 9"/>
+    <circle id="g-baro-lowdot" cx="1003" cy="734" r="0" fill="#e74c3c"/>
+    <circle id="g-baro-ring"  cx="1003" cy="734" r="0" fill="none" stroke="#e74c3c" stroke-width="3" opacity="0"/>
+    <circle id="g-baro-ring2" cx="1003" cy="734" r="0" fill="none" stroke="#e8c56a" stroke-width="2" opacity="0"/>
+    <circle id="g-baro-penhalo" cx="250" cy="382" r="0" fill="none" stroke="#e8c56a" stroke-width="2" opacity="0"/>
+    <circle id="g-baro-pen" cx="250" cy="382" r="0" fill="#f2f5f8"/>
+    <text class="ylab" x="232" y="331" text-anchor="end" opacity="0">29.60</text>
+    <text class="ylab" x="232" y="443" text-anchor="end" opacity="0">29.40</text>
+    <text class="ylab" x="232" y="555" text-anchor="end" opacity="0">29.20</text>
+    <text class="ylab" x="232" y="667" text-anchor="end" opacity="0">29.00</text>
+    <text class="ylab" x="232" y="779" text-anchor="end" opacity="0">28.80</text>
+    <text class="xlab" x="250"  y="890" text-anchor="middle" opacity="0">11 AM</text>
+    <text class="xlab" x="460"  y="890" text-anchor="middle" opacity="0">12 PM</text>
+    <text class="xlab" x="670"  y="890" text-anchor="middle" opacity="0">1 PM</text>
+    <text class="xlab" x="880"  y="890" text-anchor="middle" opacity="0">2 PM</text>
+    <text class="xlab" x="1090" y="890" text-anchor="middle" opacity="0">3 PM</text>
+    <text class="xlab" x="1300" y="890" text-anchor="middle" opacity="0">4 PM</text>
+    <text id="g-baro-axt"  class="axt" x="250"  y="254" text-anchor="start" opacity="0">INCHES OF MERCURY</text>
+    <text id="g-baro-timt" class="axt" x="1300" y="934" text-anchor="end"   opacity="0">LOCAL TIME</text>
+    <text id="g-baro-toplab" class="toplab" x="1003" y="258" text-anchor="middle" opacity="0">TORNADO PASSES 2:35 PM</text>
+    <text id="g-baro-redlab" class="redlab" x="1020" y="790" text-anchor="start" opacity="0">28.87 inHg</text>
+    <text id="g-baro-lowlab" class="lowlab" x="1020" y="820" text-anchor="start" opacity="0">LOWEST READING</text>
+  </svg>
+  <div class="eyebrow" id="g-baro-eb">INSTRUMENT RECORD &middot; OLD BEN MINE No. 8</div>
+  <div class="hl" id="g-baro-hl">THE BAROGRAPH</div>
+  <div class="sub" id="g-baro-sub">West Frankfort, Illinois</div>
+  <div class="panel" id="g-baro-panel">
+    <div class="shdr" id="g-baro-shdr">BAROGRAPH READING</div>
+    <div id="g-baro-val">29.50</div>
+    <div class="vlab" id="g-baro-vlab">INCHES OF MERCURY</div>
+    <div class="row" id="g-baro-r1"><span class="lab">TOTAL FALL</span>0.63 inHg</div>
+    <div class="row" id="g-baro-r2"><span class="lab">IN THE FINAL HOUR</span>0.40 inHg</div>
+    <div class="row" id="g-baro-r3"><span class="lab">TIME OF MINIMUM</span>2:35 PM LOCAL</div>
+    <div class="shdr" id="g-baro-shdr2">PRESSURE DROP</div>
+    <div id="g-baro-bartrack"><div id="g-baro-barfill"></div></div>
+    <div class="bcap" id="g-baro-bcap">29.50 DOWN TO 28.87</div>
+    <div id="g-baro-drumwrap">
+      <div id="g-baro-drum">
+        <span class="tick" style="left:77px; top:8px; width:3px; height:14px;"></span>
+        <span class="tick" style="left:77px; top:132px; width:3px; height:14px;"></span>
+        <span class="tick" style="left:8px; top:74px; width:14px; height:3px;"></span>
+        <span class="tick" style="left:132px; top:74px; width:14px; height:3px;"></span>
+        <div id="g-baro-hand"></div>
+        <div id="g-baro-hub"></div>
+      </div>
+      <div class="dlab" id="g-baro-dl1" style="top:52px; color:#93a3b2;">CLOCK DRUM</div>
+      <div class="dlab" id="g-baro-dl2" style="top:92px; color:#dfe7ee;">TURNING ALL DAY</div>
+    </div>
+  </div>
+  <div id="g-baro-srule"></div>
+  <div id="g-baro-stamp">
+    <div class="sline">LOWEST PRESSURE THEN EVER</div>
+    <div class="sline sline2">RECORDED IN A TORNADO</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const P = "#g-baro-";
+  const DASH = 1300;
+  const PR = {v:29.50};
+  function prUpd() { const e = document.getElementById("g-baro-val"); if (e) e.textContent = PR.v.toFixed(2); }
+  /* pen dot is driven BY the trace tween's own value — never its own keyframes,
+     so it can never run ahead of the line (ep3 v2 defect) */
+  function pen() {
+    const el = document.getElementById("g-baro-trace"); if (!el) return;
+    const off = parseFloat(getComputedStyle(el).strokeDashoffset) || 0;
+    const tot = el.getTotalLength();
+    let d = DASH - off; if (d < 0) d = 0; if (d > tot) d = tot;
+    const p = el.getPointAtLength(d);
+    const dot = document.getElementById("g-baro-pen");
+    const halo = document.getElementById("g-baro-penhalo");
+    if (dot)  { dot.setAttribute("cx", p.x);  dot.setAttribute("cy", p.y); }
+    if (halo) { halo.setAttribute("cx", p.x); halo.setAttribute("cy", p.y); }
+  }
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P+"shdr",P+"val",P+"vlab",P+"r1",P+"r2",P+"r3",P+"shdr2",P+"bartrack",
+          P+"bcap",P+"drumwrap",P+"dl1",P+"dl2",P+"stamp"], {autoAlpha:0}, 0);
+  tl.set(P+"barfill", {scaleX:0}, 0);
+  tl.set(P+"srule", {scaleX:0}, 0);
+
+  /* --- header block --- */
+  tl.fromTo(P+"eb",  {autoAlpha:0, x:-32}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.15);
+  tl.fromTo(P+"hl",  {autoAlpha:0, x:-32}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.35);
+  tl.fromTo(P+"sub", {autoAlpha:0, y:22},  {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 0.55);
+  /* CONTINUOUS: the clock drum turns for the whole window */
+  tl.to(P+"hand", {rotation:350, duration:25.40, ease:"none"}, 0.60);
+  tl.fromTo(P+"panel", {x:660}, {x:0, duration:0.7, ease:"power3.out"}, 0.70);
+
+  /* --- axis builds itself --- */
+  tl.to(P+"xaxis", {attr:{x2:1300}, duration:0.6, ease:"power3.out"}, 0.90);
+  tl.to(P+"yaxis", {attr:{y2:845},  duration:0.6, ease:"power3.out"}, 0.95);
+  tl.to(".hg", {attr:{x2:1300}, duration:0.5, stagger:0.07, ease:"power3.out"}, 1.15);
+  tl.to(".ylab", {opacity:1, duration:0.4, stagger:0.06}, 1.30);
+  tl.to(".vg", {attr:{y2:845}, duration:0.5, stagger:0.07, ease:"power3.out"}, 1.45);
+  tl.to(".xlab", {opacity:1, duration:0.4, stagger:0.05}, 1.60);
+  tl.fromTo([P+"axt",P+"timt"], {opacity:0, y:14}, {opacity:1, y:0, duration:0.4, ease:"power3.out"}, 1.75);
+  tl.to(P+"ghost", {opacity:0.55, duration:0.6}, 2.00);
+
+  /* --- the pencil draws (continuous, ~9s) --- */
+  tl.to(P+"trace", {strokeDashoffset:0, duration:9.00, ease:"none", onUpdate:pen}, 2.20);
+  tl.to(P+"pen", {attr:{r:8}, duration:0.4, ease:"power4.out"}, 2.20);
+  tl.fromTo(P+"penhalo", {attr:{r:0}, opacity:0}, {attr:{r:19}, opacity:0.5, duration:0.5, ease:"power3.out"}, 2.25);
+
+  /* --- the counter falls with the pen; lands as the trace bottoms out @8.31s --- */
+  tl.fromTo(P+"shdr", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 2.60);
+  tl.fromTo([P+"val",P+"vlab"], {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 3.10);
+  tl.to(PR, {v:29.38, duration:1.8,  ease:"power1.inOut", onUpdate:prUpd}, 3.30);
+  tl.to(PR, {v:29.12, duration:1.5,  ease:"power1.inOut", onUpdate:prUpd}, 5.20);
+  tl.to(PR, {v:28.87, duration:1.45, ease:"power4.out",   onUpdate:prUpd}, 6.90);
+
+  /* --- the minimum, annotated --- */
+  tl.to(P+"band", {attr:{height:575}, duration:0.7, ease:"power3.out"}, 8.35);
+  tl.to(P+"lowdot", {attr:{r:12}, duration:0.35, ease:"power4.in"}, 8.40);
+  tl.to(P+"minv", {attr:{y2:845}, duration:0.45, ease:"power3.out"}, 8.55);
+  tl.to(P+"minh", {attr:{x1:250}, duration:0.7, ease:"power3.out"}, 8.75);
+  tl.fromTo(P+"redlab", {opacity:0, x:-24}, {opacity:1, x:0, duration:0.4, ease:"power3.out"}, 8.95);
+  tl.fromTo(P+"lowlab", {opacity:0, y:14},  {opacity:1, y:0, duration:0.4, ease:"power3.out"}, 9.25);
+  tl.fromTo(P+"ring", {attr:{r:12}, opacity:0.9}, {attr:{r:74}, opacity:0, duration:1.1, ease:"power2.out"}, 9.60);
+  tl.fromTo(P+"toplab", {opacity:0, y:-18}, {opacity:1, y:0, duration:0.5, ease:"power3.out"}, 10.10);
+
+  /* --- the readout fills in --- */
+  tl.fromTo(P+"r1", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 11.40);
+  tl.fromTo(P+"r2", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 13.00);
+  tl.fromTo(P+"r3", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 14.60);
+  tl.fromTo(P+"shdr2", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 16.10);
+  tl.fromTo(P+"bartrack", {autoAlpha:0, scaleX:0.25}, {autoAlpha:1, scaleX:1, duration:0.5, transformOrigin:"left center", ease:"power3.out"}, 16.60);
+  tl.to(P+"barfill", {scaleX:1, duration:1.2, ease:"power3.out"}, 17.10);
+  tl.to(P+"bcap", {autoAlpha:1, duration:0.4}, 18.30);
+
+  /* --- the verdict --- */
+  tl.fromTo(P+"stamp", {scale:2.6, autoAlpha:0}, {scale:1, autoAlpha:1, duration:0.35, ease:"power4.in"}, 19.10);
+  tl.to(P+"srule", {scaleX:1, duration:0.5, ease:"power3.out"}, 19.45);
+  tl.fromTo(P+"drumwrap", {autoAlpha:0, y:26}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 20.20);
+  tl.to([P+"dl1",P+"dl2"], {autoAlpha:1, duration:0.4, stagger:0.18}, 21.00);
+  tl.fromTo(P+"ring2", {attr:{r:12}, opacity:0.8}, {attr:{r:88}, opacity:0, duration:1.2, ease:"power2.out"}, 22.00);
+  tl.to(P+"stamp", {scale:1.035, duration:0.55, yoyo:true, repeat:1, ease:"power2.inOut"}, 23.20);
+  tl.to(P+"val", {scale:1.06, duration:0.55, yoyo:true, repeat:1, transformOrigin:"left center", ease:"power2.inOut"}, 24.30);
+  tl.to(P+"lowdot", {attr:{r:17}, duration:0.5, yoyo:true, repeat:1, ease:"sine.inOut"}, 25.00);
+
+  window.__timelines["g-baro"] = tl;
+})();
+</script>
+</body></html>

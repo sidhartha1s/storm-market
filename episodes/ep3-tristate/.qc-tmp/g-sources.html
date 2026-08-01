@@ -1,0 +1,46 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;width:1920px;height:1080px;background:#111;overflow:hidden}</style>
+<script src="../gsap.min.js"></script></head><body>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif; }
+  .panel { position:absolute; right:0; top:0; bottom:0; width:760px; box-sizing:border-box;
+    background:linear-gradient(270deg, rgba(6,9,13,0.92) 74%, rgba(6,9,13,0)); padding:150px 70px 0 150px; }
+  .tick { position:absolute; left:96px; top:150px; width:4px; height:820px;
+    background:linear-gradient(180deg, #8e2020 0%, #d8a13a 100%); transform-origin:50% 0%; }
+  .hl { font-family:'Arial Black',Arial,sans-serif; font-size:60px; color:#f2f5f8; line-height:1.05; }
+  .src { position:absolute; left:150px; width:560px; }
+  .num { font-family:'Courier New',monospace; font-size:34px; color:#8e2020; font-weight:700; }
+  .nm { font-family:'Arial Black',Arial,sans-serif; font-size:34px; color:#f2f5f8; line-height:1.1; margin-top:2px; white-space:nowrap; }
+  .pv { font-size:20px; letter-spacing:1px; color:#93a3b2; font-weight:700; margin-top:6px; }
+</style>
+<div id="root" data-composition-id="g-sources" data-width="1920" data-height="1080">
+  <div class="panel" id="g-sources-panel">
+    <div class="tick" id="g-sources-tick"></div>
+    <div class="hl" id="g-sources-hl">FOUR<br>SOURCES</div>
+    <div class="src" id="g-sources-s1" style="top:330px"><div class="num">01</div><div class="nm">THE NEWSREEL</div><div class="pv">Fox Movietone, 1925 &middot; Univ. of South Carolina</div></div>
+    <div class="src" id="g-sources-s2" style="top:500px"><div class="num">02</div><div class="nm">WEATHER BUREAU RECORDS</div><div class="pv">the original forecast documents</div></div>
+    <div class="src" id="g-sources-s3" style="top:670px"><div class="num">03</div><div class="nm">THE FRONT PAGES</div><div class="pv">that week's newspapers, six states</div></div>
+    <div class="src" id="g-sources-s4" style="top:840px"><div class="num">04</div><div class="nm">MODERN REANALYSIS</div><div class="pv">Johns, Burgess et al. &middot; 2013</div></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-sources-";
+  tl.set([P+"s1",P+"s2",P+"s3",P+"s4"], {autoAlpha:0}, 0);
+  tl.fromTo(P+"panel", {x:660}, {x:0, duration:0.7, ease:"power3.out"}, 0.0);
+  tl.fromTo(P+"hl", {autoAlpha:0, x:30}, {autoAlpha:1, x:0, duration:0.55, ease:"power3.out"}, 0.6);
+  /* the tick grows across the whole window — continuous motion behind the reveals */
+  tl.fromTo(P+"tick", {scaleY:0}, {scaleY:1, duration:28.50, ease:"none"}, 0.7);
+  /* each source lands as it is named in the narration */
+  tl.fromTo(P+"s1", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 11.50);
+  tl.fromTo(P+"s2", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 14.90);
+  tl.fromTo(P+"s3", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 17.40);
+  tl.fromTo(P+"s4", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 20.20);
+  /* quiet emphasis on the hold ("where the record is uncertain, you will hear it") */
+  tl.to([P+"s1",P+"s2",P+"s3",P+"s4"], {x:10, duration:0.5, yoyo:true, repeat:1, stagger:0.08, ease:"power2.inOut"}, 25.20);
+  window.__timelines["g-sources"] = tl;
+})();
+</script>
+</body></html>

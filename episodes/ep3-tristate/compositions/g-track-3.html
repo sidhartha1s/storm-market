@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 46% 52%, #0d141c 0%, #04070a 76%); }
+  .eyebrow { position:absolute; left:88px; top:74px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .hl { position:absolute; left:88px; top:104px; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; }
+  .tollwrap { position:absolute; left:88px; top:196px; }
+  .toll { font-family:'Courier New',monospace; font-size:84px; color:#e74c3c; font-weight:700; line-height:1; }
+  .tolllab { font-size:20px; letter-spacing:6px; color:#c8d3e0; font-weight:700; margin-top:8px; }
+  .clockwrap { position:absolute; right:96px; top:78px; text-align:right; }
+  .clock { font-family:'Courier New',monospace; font-size:64px; color:#e8c56a; font-weight:700; line-height:1; }
+  .clocklab { font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; margin-top:8px; }
+  .miles { font-family:'Arial Black',Arial,sans-serif; font-size:44px; color:#f2f5f8; margin-top:26px; }
+  .mileslab { font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; margin-top:4px; }
+  .statelab { font-family:Georgia,serif; font-style:italic; font-size:27px; fill:#40607d; paint-order:stroke; stroke:#05070a; stroke-width:7px; stroke-linejoin:round;}
+  .town { font-family:Arial,sans-serif; font-weight:700; font-size:26px; fill:#e8eef4; paint-order:stroke; stroke:#05070a; stroke-width:7px; stroke-linejoin:round;}
+  .town.past { fill:#7d8c9a; }
+  .foot { position:absolute; left:88px; bottom:70px; font-family:Georgia,serif; font-style:italic;
+    font-size:26px; color:#d8a13a; }
+</style>
+<div id="root" data-composition-id="g-track-3" data-width="1920" data-height="1080">
+  <svg viewBox="0 0 1920 1080" style="position:absolute;inset:0"><defs><filter id="glow"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><line x1="664" y1="150" x2="664" y2="1010" stroke="#16212c" stroke-width="3"/><line x1="1272" y1="150" x2="1272" y2="1010" stroke="#16212c" stroke-width="3"/><text x="470" y="994" class="statelab">MISSOURI</text><text x="930" y="994" class="statelab">ILLINOIS</text><text x="1450" y="994" class="statelab">INDIANA</text><polyline points="300,792 404,745 556,690 690,636 780,600 858,566 962,528 1046,496 1168,456 1332,412 1452,372 1596,330" fill="none" stroke="#22303d" stroke-width="4" stroke-dasharray="9 12"/><polyline id="g-track-3-line" points="300,792 404,745 556,690 690,636 780,600 858,566" fill="none" stroke="#c0392b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="602" stroke-dashoffset="602"/><circle id="g-track-3-d0" cx="300" cy="792" r="0" fill="#f2f5f8"/><circle id="g-track-3-d1" cx="404" cy="745" r="0" fill="#f2f5f8"/><circle id="g-track-3-d2" cx="556" cy="690" r="0" fill="#f2f5f8"/><circle id="g-track-3-d3" cx="690" cy="636" r="0" fill="#f2f5f8"/><circle id="g-track-3-d4" cx="780" cy="600" r="0" fill="#f2f5f8"/><circle id="g-track-3-d5" cx="858" cy="566" r="0" fill="#f2f5f8"/><circle id="g-track-3-d6" cx="962" cy="528" r="5" fill="#3d5063"/><circle id="g-track-3-d7" cx="1046" cy="496" r="5" fill="#3d5063"/><circle id="g-track-3-d8" cx="1168" cy="456" r="5" fill="#3d5063"/><circle id="g-track-3-d9" cx="1332" cy="412" r="5" fill="#3d5063"/><circle id="g-track-3-d10" cx="1452" cy="372" r="5" fill="#3d5063"/><circle id="g-track-3-d11" cx="1596" cy="330" r="5" fill="#3d5063"/><circle id="g-track-3-storm" cx="300" cy="792" r="0" fill="#c0392b" filter="url(#glow)" opacity="0.92"/><circle id="g-track-3-ring" cx="300" cy="792" r="14" fill="none" stroke="#e8c56a" stroke-width="3" opacity="0"/><text id="g-track-3-t0" x="300" y="762" text-anchor="end" class="town" opacity="0">Ellington</text><text id="g-track-3-t1" x="404" y="791" text-anchor="start" class="town" opacity="0">Annapolis</text><text id="g-track-3-t2" x="556" y="660" text-anchor="start" class="town" opacity="0">Biehle</text><text id="g-track-3-t3" x="690" y="682" text-anchor="start" class="town" opacity="0">Gorham</text><text id="g-track-3-t4" x="780" y="646" text-anchor="end" class="town" opacity="0">Murphysboro</text><text id="g-track-3-t5" x="858" y="536" text-anchor="start" class="town" opacity="0">De Soto</text><text id="g-track-3-t6" x="962" y="574" text-anchor="start" class="town past" opacity="0.55">West Frankfort</text><text id="g-track-3-t7" x="1046" y="466" text-anchor="end" class="town past" opacity="0.55">Parrish</text><text id="g-track-3-t8" x="1168" y="502" text-anchor="start" class="town past" opacity="0.55">Crossville</text><text id="g-track-3-t9" x="1332" y="382" text-anchor="start" class="town past" opacity="0.55">Griffin</text><text id="g-track-3-t10" x="1452" y="418" text-anchor="start" class="town past" opacity="0.55">Princeton</text><text id="g-track-3-t11" x="1596" y="300" text-anchor="end" class="town past" opacity="0.55">Petersburg</text></svg>
+  <div class="eyebrow" id="g-track-3-eb">THE TRACK · MARCH 18, 1925</div>
+  <div class="hl" id="g-track-3-hl">ELEVEN MINUTES, TWO TOWNS</div>
+  <div class="tollwrap" id="g-track-3-tollwrap">
+    <div class="toll" id="g-track-3-toll">1</div>
+    <div class="tolllab">CONFIRMED DEAD SO FAR</div>
+  </div>
+  <div class="clockwrap" id="g-track-3-clockwrap">
+    <div class="clock" id="g-track-3-clock">1:01 PM</div>
+    <div class="clocklab">LOCAL TIME</div>
+    <div class="miles"><span id="g-track-3-mi">0</span> MI</div>
+    <div class="mileslab">ON THE GROUND</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const TOLL = {v:1}, MI = {v:0};
+  function tollUpd(){const e=document.getElementById("g-track-3-toll"); if(e) e.textContent=Math.round(TOLL.v);}
+  function miUpd(){const e=document.getElementById("g-track-3-mi"); if(e) e.textContent=Math.round(MI.v);}
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-track-3-";
+  tl.fromTo(P+"eb", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.15);
+  tl.fromTo(P+"hl", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.35);
+  tl.fromTo(P+"clockwrap", {autoAlpha:0, x:34}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.55);
+  tl.fromTo(P+"tollwrap", {autoAlpha:0, y:26}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 0.75);
+  tl.to(P+"line", {strokeDashoffset:0, duration:9.50, ease:"none"}, 0.9);
+  tl.to(P+"d0", {attr:{r:9}, duration:0.3, ease:"power4.in"}, 1.00);
+  tl.to(P+"t0", {opacity:1, duration:0.35}, 1.15);
+  tl.fromTo(P+"storm", {attr:{r:0}}, {attr:{r:19}, duration:0.45, ease:"power4.in"}, 0.9);
+  tl.to(P+"storm", {attr:{cx:404, cy:745}, duration:1.90, ease:"none"}, 0.90);
+  tl.to(P+"ring", {attr:{cx:404, cy:745}, duration:1.90, ease:"none"}, 0.90);
+  tl.fromTo(P+"ring", {attr:{r:14}, autoAlpha:0.95}, {attr:{r:52}, autoAlpha:0, duration:0.9, ease:"power2.out"}, 2.70);
+  tl.to(P+"d1", {attr:{r:9}, duration:0.3, ease:"power4.in"}, 2.65);
+  tl.to(P+"t1", {opacity:1, duration:0.35}, 2.75);
+  tl.to(P+"clock", {duration:0.01, onComplete:function(){const e=document.getElementById("g-track-3-clock"); if(e) e.textContent="1:14 PM";}}, 2.80);
+  tl.to(TOLL, {v:5, duration:0.85, ease:"power3.out", onUpdate:tollUpd}, 2.80);
+  tl.to(P+"storm", {attr:{cx:556, cy:690}, duration:1.90, ease:"none"}, 2.80);
+  tl.to(P+"ring", {attr:{cx:556, cy:690}, duration:1.90, ease:"none"}, 2.80);
+  tl.fromTo(P+"ring", {attr:{r:14}, autoAlpha:0.95}, {attr:{r:52}, autoAlpha:0, duration:0.9, ease:"power2.out"}, 4.60);
+  tl.to(P+"d2", {attr:{r:9}, duration:0.3, ease:"power4.in"}, 4.55);
+  tl.to(P+"t2", {opacity:1, duration:0.35}, 4.65);
+  tl.to(P+"clock", {duration:0.01, onComplete:function(){const e=document.getElementById("g-track-3-clock"); if(e) e.textContent="~1:30 PM";}}, 4.70);
+  tl.to(TOLL, {v:13, duration:0.85, ease:"power3.out", onUpdate:tollUpd}, 4.70);
+  tl.to(P+"storm", {attr:{cx:690, cy:636}, duration:1.90, ease:"none"}, 4.70);
+  tl.to(P+"ring", {attr:{cx:690, cy:636}, duration:1.90, ease:"none"}, 4.70);
+  tl.fromTo(P+"ring", {attr:{r:14}, autoAlpha:0.95}, {attr:{r:52}, autoAlpha:0, duration:0.9, ease:"power2.out"}, 6.50);
+  tl.to(P+"d3", {attr:{r:9}, duration:0.3, ease:"power4.in"}, 6.45);
+  tl.to(P+"t3", {opacity:1, duration:0.35}, 6.55);
+  tl.to(P+"clock", {duration:0.01, onComplete:function(){const e=document.getElementById("g-track-3-clock"); if(e) e.textContent="2:26 PM";}}, 6.60);
+  tl.to(TOLL, {v:39, duration:0.85, ease:"power3.out", onUpdate:tollUpd}, 6.60);
+  tl.to(P+"storm", {attr:{cx:780, cy:600}, duration:1.90, ease:"none"}, 6.60);
+  tl.to(P+"ring", {attr:{cx:780, cy:600}, duration:1.90, ease:"none"}, 6.60);
+  tl.fromTo(P+"ring", {attr:{r:14}, autoAlpha:0.95}, {attr:{r:52}, autoAlpha:0, duration:0.9, ease:"power2.out"}, 8.40);
+  tl.to(P+"d4", {attr:{r:9}, duration:0.3, ease:"power4.in"}, 8.35);
+  tl.to(P+"t4", {opacity:1, duration:0.35}, 8.45);
+  tl.to(P+"clock", {duration:0.01, onComplete:function(){const e=document.getElementById("g-track-3-clock"); if(e) e.textContent="2:34 PM";}}, 8.50);
+  tl.to(TOLL, {v:273, duration:0.85, ease:"power3.out", onUpdate:tollUpd}, 8.50);
+  tl.to(P+"storm", {attr:{cx:858, cy:566}, duration:1.90, ease:"none"}, 8.50);
+  tl.to(P+"ring", {attr:{cx:858, cy:566}, duration:1.90, ease:"none"}, 8.50);
+  tl.fromTo(P+"ring", {attr:{r:14}, autoAlpha:0.95}, {attr:{r:52}, autoAlpha:0, duration:0.9, ease:"power2.out"}, 10.30);
+  tl.to(P+"d5", {attr:{r:9}, duration:0.3, ease:"power4.in"}, 10.25);
+  tl.to(P+"t5", {opacity:1, duration:0.35}, 10.35);
+  tl.to(P+"clock", {duration:0.01, onComplete:function(){const e=document.getElementById("g-track-3-clock"); if(e) e.textContent="2:45 PM";}}, 10.40);
+  tl.to(TOLL, {v:342, duration:0.85, ease:"power3.out", onUpdate:tollUpd}, 10.40);
+  tl.to(MI, {v:106, duration:9.50, ease:"none", onUpdate:miUpd}, 0.9);
+  tl.to(P+"storm", {attr:{r:26}, duration:0.6, yoyo:true, repeat:3, ease:"sine.inOut"}, 10.40);
+  window.__timelines["g-track-3"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -302,6 +302,184 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
 - Snapshot pre-render QC caught both grade issues before paying for a render — keep snapshot
   sweep (≈13 frames) as the mandatory pre-render gate; post-render frame sweep stays too.
 
+## ep3 v2 (2026-07-28)
+- **`loop` attribute does NOT survive render**: hyperframes 0.7.64 video extraction ignores `loop`; a looped clip window longer than the source fails the 95% frame-coverage gate ("captured N of expected M frames"). Fix at the asset level: pre-loop the file with `ffmpeg -stream_loop N -i src -t <maxwin+2> -g 30 -keyint_min 30` and keep the filename. Never set `HF_VIDEO_COVERAGE_THRESHOLD=0` — the gate is right, the encode would freeze/blank.
+- **Don't run whisper transcription concurrently with a render**: CPU starvation made hyperframes' ffprobe miss its deadline ("[FFmpeg] ffprobe deadline with code 0") during video_extract. Sequence them.
+- **tts_ep3v2.cmd chained transcribe stage died silently after TTS DONE** (no marker, no log lines) — give each detached stage its OWN log + exit marker; a chained `goto`-loop .cmd hides which stage failed.
+- **StaticGuard boundary rule**: any GSAP fade that ends exactly at a clip-window boundary needs a `tl.set(..., {autoAlpha:0})` hard kill right after the fade, or validate flags stale-visibility risk.
+- **`hyperframes snapshot` accepts only one `--at`** — repeated flags silently collapse (and add a stray extra frame); loop one invocation per timestamp for fixchecks.
+
+## ep3 v3 (2026-07-29) — the "check the code, not the frames" rebuild
+- **`hyperframes check` (not the deprecated `validate`) is the real static gate.** It caught 19
+  errors a frame sweep never would. Run it before every render, not after.
+- **Never tween a layout/text-reflow property.** `gsap_non_transform_motion`: `letterSpacing`,
+  `width`, `height` snap to integer device pixels under the seek-by-frame capture engine and
+  stutter on any slow/ease-out move. Use transforms — `scaleX`/`scaleY` with an explicit
+  `transformOrigin`, or `x`/`y`. A growing bar is `scaleY:0→1`, never `height:0→900`.
+- **Never set an initial transform in CSS when GSAP will tween any transform on that element.**
+  `gsap_css_transform_conflict`: GSAP rewrites the whole transform matrix, silently discarding
+  a CSS `scaleX(0)` or a `translateX(-50%)` centering. Set the initial state with `tl.set(...)`
+  at t=0 instead.
+- **Sub-composition asset paths are resolved against the PROJECT ROOT, not the comp's own
+  directory.** `../media/x.jpg` renders but 404s in Studio preview. Always `media/x.jpg`.
+- **Quantize the timeline to the decimal grid you print at.** Accumulating `ct += w` in float
+  while emitting `{ct:.2f}` makes a window's printed end land 0.01s past the next window's
+  printed start — 44 same-track overlap errors. Round every start and duration to 2dp and
+  accumulate the rounded values, so end == next start bit-for-bit.
+- **A graphic's duration must be DERIVED from its resolved narration cues, never hand-estimated.**
+  Panels whose rows are cued off `words.json` slid off screen at the hand-guessed duration while
+  later rows were still firing on an off-screen card, and the host window sat empty for the rest
+  of the segment. `dur = max(declared, last_cue + tail)`.
+- **Clamp every clip window to the clip's own length at BUILD time** (`ffprobe`, cached). This is
+  the ep3-v2 frame-coverage failure caught one stage earlier, deterministically, instead of 20
+  minutes into a render.
+- **Hand-declared beat weights bypass the pacing clamps.** `mixed` segments rescale their weights
+  to fill the narration window, which pushed stills to 7.2s and a single clip to 16.4s while
+  `MAX_STILL` was 6.5. Any path that produces windows must go through the same splitter.
+- **Idle warnings on an overlay panel are not the same defect as idle on a full-frame graphic** —
+  the panel sits over a moving photo. But the card's own content still must not sit dead: one
+  continuous transform tween spanning the window fixes it and costs nothing.
+- **Tooling gotcha:** the Bash tool consumes backslashes in heredoc'd Python even inside a
+  quoted `<< 'EOF'`. `"\n"` arrives as a real newline, which silently corrupts source-generating
+  scripts. Build literal backslashes with `chr(92)`, and always `ast.parse` the result.
+- **Windows CRLF breaks naive line-joining repairs** — read/normalize with explicit
+  `.replace(chr(13)+chr(10), chr(10))` before any line-level surgery, and write back as bytes.
+
+## ep3 v3 - second audit round (2026-07-29)
+- **Cut rate is an asset-budget decision, not just a taste one.** ep2 (shipped, 7.5/10) holds an
+  11.0s median across 136 windows in 28 min. Driving ep3 to a 5.5s median needed ~260 windows in
+  35 min - roughly double the assets per minute - and the photo library could not feed it, so
+  frames silently repeated 5-12 times. Pick the median from `distinct_assets * 3 / minutes`, then
+  design the rhythm inside that budget. Landing at a 6.5s median with 216 windows fit 106 assets
+  with zero over the 3-use ceiling.
+- **Identify assets by content hash, never by path.** Six newspaper front pages existed
+  byte-identical under `media/newspapers/` and `media/photos/`; the reuse lint counted each path
+  separately, so one page reached nine on-screen uses under a ceiling of three.
+- **Count uses per WINDOW, not per `<img>` tag.** The letterbox treatment emits the same src twice
+  (blurred backdrop + foreground), which inflates a naive `grep src=` count by 2x and produces
+  false reuse findings. Two of my own audit agents were fooled by exactly this.
+- **A "credited" archival face is still a misattribution if no credit renders.** The Signal Corps
+  commander who shut Finley down sat under a panel headlined JOHN PARK FINLEY for 32 seconds; the
+  edit script said "credited" but no attribution element existed anywhere in the window. If a real
+  person's face is on screen under someone else's name, that is a factual error, not a design nit.
+- **Check for authored-but-unmounted compositions every build.** Three graphics passed every QC
+  gate while being mounted nowhere - including the stat panel for the episode's longest segment,
+  which therefore ran 48s with no graphic at all. `authored_ids - mounted_ids` must be empty.
+- **A counter must open on its first tick's value.** The path maps shipped the END toll in the DOM
+  (490 dead, 4:00 PM) and then animated backwards to 5 dead at 1:14 PM.
+- **Narration-cued means EVERY graphic, not just the ones with a cue helper.** The met map fired
+  its five labelled blocks in diagram order - four were 5-18s off their spoken word, one directly
+  contradicted the voiceover. Hand-authored compositions need the same words.json alignment the
+  generated panels get.
+- **`ffprobe` on a still image reports ~0.04s.** Any clamp that treats that as a clip duration will
+  cut a window into single-frame slivers. Guard duration probes by file extension and fail loud
+  when a non-video is typed as a clip.
+- **Audit findings need adversarial verification before you act on them.** 81 raw findings became
+  54 confirmed - a third were wrong, including several that would have sent me editing correct code.
+
+## ep3 v3 — the defects no code gate was looking for (2026-07-29)
+
+- **Run `blackdetect` on every render. The picture track can be empty and every static gate will
+  still pass.** ep3's segment scheduler advanced by `seg_dur + GAP` but only covered `seg_dur`
+  with picture windows, so the 0.75s breath between narration segments had nothing on tracks 1/2.
+  `ffmpeg -vf blackdetect=d=0.1:pix_th=0.10` on the draft found **81 black spans, 63 at segment
+  boundaries**; sampled frames were pure black. lint_timeline PASSED, graphics_qc PASSED,
+  hyperframes check found nothing — because none of them ask "is anything on screen at time t".
+  The gate that catches it is a union-coverage sweep of every element carrying
+  `data-start`+`data-duration`+`data-track-index`, compared against the comp duration.
+  Reference floor: ep2 (shipped) has 2 uncovered gaps, ep1 has 6. Anything in the dozens is a bug.
+- **Corollary: a coverage report must read the ELEMENT, not the animation array.** My first pass
+  parsed only the ken-burns `KB` array and the sub-composition hosts, and reported 63 gaps *plus*
+  16s phantom holes — because `<video>` clips carry their timing on the element itself and never
+  appear in KB. Same-shaped bug, opposite direction: it invented gaps that did not exist while
+  missing 32 real windows. Enumerate by attribute, never by animation bookkeeping.
+- **`blackdetect` false-positives on dark graphics.** Half the flagged spans were title cards on a
+  near-black background, correctly rendering. Verdict requires eyeballing a frame from each span
+  (dispatch a subagent — never Read frames into the main context). File size is a decent triage
+  signal: the truly-black JPEGs were 13KB, the content ones 38–47KB.
+- **"ffprobe deadline with code 0" is a size problem, not a corruption problem.** Render #7 died at
+  10% of `video_extract` after 141s. All 18 video assets probed clean. The cause was one 365MB
+  3840x2160 stock clip feeding 12.9s of a 1080p comp — 10x every other asset. Transcoding it to
+  1080p (365MB -> 54MB) is the durable fix; retrying the render is not. Cap source assets at the
+  composition's own resolution before wiring them.
+- **`hyperframes check` reports `data-end without data-duration` for every `<audio>`/`<video>` in
+  a composition whose source contains zero `data-end`.** It is validating a normalized DOM, not the
+  source. Verified pre-existing by running `check` against the git-HEAD index.html. It does not
+  block `render`. Don't burn a cycle chasing it — but do re-verify it is pre-existing rather than
+  assuming, by checking out the prior file and re-running.
+
+## ep3 v3 — stop rendering to find things a script can find (2026-07-29)
+
+- **Owner correction, and the sharpest one of this episode: renders 7, 8 and 9 all died to
+  defects I could have found before starting them.** I rendered, thought of a new check,
+  killed the render, rendered again. Every check I invented reactively is now a script that
+  runs in seconds — `scripts/sweep_episode.py`, `beat_density.py`, `blank_scan.mjs`,
+  `clip_report.py`. The rule: **exhaust every static gate, THEN render once.** A render is
+  the last step, not a diagnostic tool.
+- **You do not need a render to blackdetect.** `blank_scan.mjs` inlines each composition into
+  a bare page with gsap, seeks its timeline at 0.25s, and sums the on-screen area of every
+  element with computed opacity >= 0.06. A comp that goes empty shows up in seconds. It found
+  a real 0.75s hole in g-close between the closing lines and the title card. Exclude the
+  background texture (`.drift`) from the ink sum — it is present in every frame by
+  construction and would mask exactly the failure being looked for.
+- **When the owner gives timestamps against an old cut, MAP THEM YOURSELF.** I asked him to
+  re-point 5:48 and 28:04 because the v3 timeline had shifted. That was my job: the v2 draft
+  was built from a commit still in the tree, so `git show <sha>:episodes/<slug>/index.html`
+  into a temp dir plus the window ledger answers it in one command. Doing that showed his
+  5:16 and 5:48 notes were the SAME defect — one 33.4s stock cloud clip covering a whole
+  four-minute-mark passage — and that 28:04 was a 0.904-aspect portrait stretched full-frame
+  for 163 seconds.
+- **An SVG `stroke-dasharray` shorter than the line it hides paints the overhang as a second
+  dash, from frame one.** A route polyline measured 1377.6px and I wrote 1360: a 17.6px red
+  mark sat in Indiana for the first eleven seconds, an hour of story before the storm gets
+  there. Same bug again on the strikethrough line at 1040 vs 1041.4. Compute the length,
+  then `ceil() + 1`. Never type a dash length.
+- **`MotionPathPlugin` is not in the bundled `gsap.min.js`.** Move a marker along a route with
+  per-leg `attr:{cx,cy}` tweens timed to each leg's own length, or the speed jumps at corners.
+- **Chromium will not parse a staged page saved as `.html.tmp`.** MIME sniffing is by
+  extension; every composition reported "no timeline" until the file was renamed `.html`.
+  Keep it out of version control with `.gitignore`, not a clever extension.
+- **A blanket `fit="contain"` pillarboxes photos that were already the right shape.** Four
+  stills at 1.58-1.75 aspect were running inside blurred bars for nothing. Letterbox on the
+  IMAGE's aspect, not the segment's hint — with papers exempt, since cropping a front page
+  cuts the text.
+- **Retiring a graphic means retiring its generator entry, its `_durations.json` key and the
+  file.** Dropping only the mount left `g-panel-lone` authored-but-unmounted, which the
+  sweep caught immediately.
+- **The `ffprobe deadline with code 0` failure was never a bad asset — the deadline is 120s,
+  hardcoded.** hyperframes 0.7.64 wraps its probes in `deadlineAtMs: Date.now() + 12e4` with
+  no env override, and the probe it runs at `video_extract` is not the cheap duration read —
+  it is `-count_packets`, which walks every packet. Measured on an idle box with the exact
+  arguments: worst clip 3.05s, whole 16-clip pass 29.9s. The
+  failed render spent 274s inside `video_extract` before a single probe blew 120s, i.e. the
+  box was running roughly 40x slower than idle. Cost does NOT track file size — the 57 MB
+  transcode probes in 2.0s while a 10 MB lightning clip takes 3.05s — so the "4K asset"
+  theory was wrong twice over. The fix is `render_preflight.py` plus an otherwise-idle box.
+- **Coverage tools must name their picture tracks.** `clip_report.py` counted every track,
+  so nine overlay windows (date card, source chip, quote cards, lower-thirds) papered over
+  the black underneath them; the date card alone hid 0.30-14.3s. Whitelist the picture
+  tracks, then prove the check can still fail by deleting one still from a scratch copy.
+- **A gate that only counts the first cycle of a repeating tween reports moving frames as
+  dead.** `beat_density.py` scored `repeat:3` as one cycle; eight compositions carried
+  inflated max-still numbers. Total motion is `duration + repeat * (duration + repeatDelay)`,
+  and `yoyo` does not change it.
+- **The episode should end when the closing card's content ends.** Two bugs stacked: the
+  card's background drift ran 0.6s past its own credit fade, and the timeline's total ran
+  past the card, so `close_picture_gaps` stretched the host to reach it — 3.69s of frozen
+  black after the last visible frame. ep2, the shipped reference, ends at 0.00s of tail.
+  Trimming the ending then exposed a second defect: the leftover hold cut from the credits
+  to a 1925 damage photograph for 1.54s. The last segment in `ORDER` takes no tail.
+- **A substitution pool with no geography will contradict the narration.** Past the reuse
+  ceiling, `pick()` drew from a flat spare list and put the Heinz plant in Princeton,
+  Indiana under a sentence about Annapolis, Missouri — the far end of the track, three hours
+  later. Act-scoped pools first, global spares second. The narration/picture gate found it;
+  no human review had.
+- **Word-level timings turn "does the picture contradict the voice" into a script.**
+  `narration_picture_check.py` reads `audio/<seg>.words.json` and tests what is on screen at
+  the instant a year or a town is spoken. Build the place vocabulary from the archive's
+  filename convention (`1925_-_<Town>_-_`), not from every capitalised token — the loose
+  version called "Where", "Morning" and "Building" towns and buried three real findings in
+  thirteen false ones.
 **Render (2026-07-27, ep2 full render):**
 - Full-quality render died at 74% with `Protocol error: Target closed` after a burst of
   `net::ERR_NETWORK_CHANGED` on the localhost media server — a host network-interface change
@@ -310,3 +488,82 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
   `PRODUCER_PUPPETEER_PROTOCOL_TIMEOUT_MS=900000` alongside the nav-timeout var; avoid network
   changes during long renders. A ~28-min comp at standard/30fps ≈ 75+ min capture on this box —
   budget 2h wall-clock when the machine is also running other sessions.
+- **Check the hyperframes version before production starts, and read what changed.** Bumped
+  0.7.64 -> 0.7.81 on 2026-07-29 (owner order). The upgrade **shortens the ffprobe deadline
+  from 120s to 30s** (`Date.now() + 12e4` became `+ 3e4`) — the exact deadline twelve ep3 v3
+  renders died on. A newer version can be STRICTER, not just better, so every timing measured
+  against the old pin has a 4x smaller margin. `npm view hyperframes version` is one command
+  and belongs at the top of a production run, not after a failure.
+- **A rule with no gate is a suggestion (owner, 2026-07-29).** "Cap every source asset at the
+  composition's resolution" was written in CLAUDE.md and violated by seven clips through twelve
+  failed renders, because nothing checked it. The counter-question for any rule that keeps
+  getting broken is not "say it louder" — it is "what reads the number before the expensive
+  step?" `media_budget.py` reads three numbers in three seconds; the renders it replaces cost
+  forty minutes each.
+- **Keep code headache low (owner, 2026-07-29): if reasoning can do it, do not write a script.**
+  Code earns its place when the check is mechanical, repeated, and must never be forgotten —
+  deterministic gates, batch transforms, anything guarding money or a long render. Reasoning
+  owns taste and context. **The tell for a script that should have been a docs line: it needs a
+  hand-tuned stoplist to stop being wrong — that is judgement wearing a regex.** Applied the same
+  day to this repo's own new code: `probe_timing.py` deleted (a one-shot diagnostic whose answer
+  now lives here — a number already measured is not a tool), and `narration_picture_check.py`
+  lost its place check (thirteen false positives to three real ones, propped up by a stoplist of
+  words that are not towns) while keeping the era check, which is genuinely mechanical.
+- **THE ep3 v3 render RCA, after thirteen failures: process-spawn scanning, not media.**
+  Security software on this box scans every process creation, and the cost tracks
+  BINARY SIZE, not work done:
+
+  | binary | size | spawn |
+  |---|---|---|
+  | `cmd /c echo` | tiny, system | 0.063s |
+  | `where.exe` | small, signed | 0.172s |
+  | `python.exe` | medium | 0.251s |
+  | `ffprobe.exe` (Gyan essentials, static) | **97 MB** | **1.165s** |
+  | `ffprobe.exe` (Gyan **shared**) | **224 KB** | **0.102s** |
+
+  A render fires roughly 200 ffprobe spawns (21 video windows x ~3 probe types, ~70 audio
+  files x 2). At 1.2s each that is ~200s of pure scanning — and the observed `video_extract`
+  stage durations were 193s and 204s. When spawns collide the scanner serialises them and one
+  probe waits past its deadline, which is the `ffprobe deadline with code 0` failure.
+  **Fix: `winget install Gyan.FFmpeg.Shared` and point hyperframes at it with
+  `HYPERFRAMES_FFPROBE_PATH` / `HYPERFRAMES_FFMPEG_PATH`** (both render scripts now do).
+  Measured on the real probe over all 16 clips: 1.32s each -> 0.40s each, ~263s -> ~80s
+  projected per render.
+
+  **Why it took thirteen renders:** every earlier theory was about the MEDIA (a 4K asset,
+  contention, worker count, the deadline value). Cutting media 72%, halving workers, and
+  changing the deadline 120s->30s each changed NOTHING, and that was the signal — a
+  performance fix that moves the needle zero means the model of the problem is wrong. The
+  question that cracked it was "how long does ffprobe take when it opens no file at all?"
+  (1.4s, versus 0.06s for `cmd`). **When three independent fixes change nothing, stop fixing
+  and go measure the thing every attempt has in common.**
+
+## Render size + HEVC compression (measured ep3 v5, 2026-07-30)
+
+A full render at `--crf 16 --fps 30` is ~20 Mbps → **5.08 GB for 34m56s**. That is near-lossless
+overkill for graphics/stills content. Two ways to ship smaller **without visible quality loss**:
+
+- **Single-pass (no extra step) — the "compress during render" answer:** hyperframes emits
+  **H.264 only** for mp4 (vp9 for webm); there is **no HEVC output flag**. But `--crf`, `--fps`,
+  and `--video-bitrate` are all render-time flags. Render the final at `--crf 19-20` and author
+  at **24 fps** (most YouTube docs) → ~1.5-2 GB H.264 in one pass, no transcode. The slow part is
+  frame *capture* (~1.2x realtime, ~98 min here); the encode target is nearly free to change.
+- **HEVC (extra shrink) needs a transcode** — hyperframes can't emit it. But the transcode only
+  decodes+encodes, it does NOT re-capture frames, so on GPU it is a ~6-min add-on, not a second render.
+
+**NVENC driver gotcha (cost an hour to spot):** the pinned **Gyan.FFmpeg.Shared 8.1.2** build's
+`hevc_nvenc` fails with `Driver does not support the required nvenc API version. Required: 13.1
+Found: 13.0` (exit -40) — its NVENC needs Nvidia driver 610+. The older **Gyan.FFmpeg.Essentials
+8.1.1** build on PATH has a compatible NVENC and works. Use 8.1.1 for NVENC, or update the driver.
+
+Measured HEVC transcode of the −14 LUFS master (5097 MB, `-c:a copy`, audio untouched):
+
+| encoder | speed on this box (GTX 1650) | wall time (35 min vid) | output |
+|---|---|---|---|
+| `libx265 -preset slow -crf 22` | **0.15x** | **~4 hours** | ~1.2 GB |
+| `hevc_nvenc -preset p7 -cq 22` (ffmpeg 8.1.1) | **5.96x** | **~6 min** | **2.19 GB** |
+
+**Takeaway:** software x265 `preset slow` is a non-starter for a review loop (0.15x). GPU
+`hevc_nvenc p7 cq22` gives a 2.3x shrink in 6 minutes, visually lossless, audio bit-copied. For
+future episodes the cleanest is to render at a higher CRF + 24 fps so the small file falls out of
+the render itself; reach for the GPU-HEVC pass only when you want the extra shrink.
