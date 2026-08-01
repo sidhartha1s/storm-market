@@ -23,8 +23,8 @@ dialogue unless it appears as an on-screen caption in a frame (noted where it do
 
 ### 1. `twc-bettes-suv-toss-marquee.mp4`
 - **Station / rights holder:** The Weather Channel (network-official, channel_id `UCGTUbwceCMibvpbd2NaIP7A` per clip_hunt.md §3)
-- **Proposed cut:** 0:08–0:12 (~4s) — the truck-in-frame-with-funnel moment visible at frame2 (duration 87.5s total; this is the marquee "SUV tossed" segment itself)
-- **Description (inferred):** wide tornado shot, then a red pickup truck in frame with the funnel behind it, cutting to black — likely the toss impact moment
+- **Proposed cut:** 0:08–0:12 (~4s, unchanged — verified clean) — the truck-in-frame-with-funnel moment visible at frame2 (duration 87.5s total; this is the marquee "SUV tossed" segment itself)
+- **Transcript (VERBATIM, faster-whisper small.en):** "...wide and is heading right at Bettes [whisper heard "Betis"] and his team." (mid-narration fragment — this is TWC's own narration over the funnel/truck shot, not dialogue tied to the SUV toss itself). Window ends cleanly right after "team." into a brief pause before the next sentence starts — no mid-word chop.
 - **Beat served:** A3-S3b (Mike Bettes SUV-toss visual)
 - **Frames:** `C:/Users/Sidhartha/Automation Projects/storm-market/.worktrees/ep4-el-reno/episodes/ep4-el-reno/media/_gate/twc-bettes-suv-toss-marquee/frame1.jpg`, `frame2.jpg`, `frame3.jpg`
 - **Source URL:** `youtube.com/watch?v=35xCZqdc5u4` — "Tornado Hits The Weather Channel Crew" (2013-10-02) per clip_hunt.md §3
