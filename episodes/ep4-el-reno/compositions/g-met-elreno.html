@@ -74,7 +74,7 @@ window.__timelines = window.__timelines || {};
   const P = "#g-metel-";
   tl.set([P+"pot",P+"combine",P+"hdr",P+"lab-fuel",P+"lab-lid",P+"lab-dry",P+"arr1",P+"arr2",P+"arr3",P+"column"], {autoAlpha:0}, 0);
   tl.set(P+"column", {height:0}, 0);
-  tl.fromTo(P+"hdr", {autoAlpha:0, y:-18}, {autoAlpha:1, y:0, duration:0.6}, 0.8);      /* monsters @2.64 */
+  tl.fromTo(P+"hdr", {autoAlpha:0, y:-18}, {autoAlpha:1, y:0, duration:0.6}, 0.2);      /* monsters @2.64 */
   /* moist @4.84 — fuel layer + label */
   tl.fromTo(P+"pot", {autoAlpha:0, y:30}, {autoAlpha:1, y:0, duration:0.6}, 4.4);
   tl.fromTo(P+"lab-fuel", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.4}, 6.2);  /* fuel @6.44 */
