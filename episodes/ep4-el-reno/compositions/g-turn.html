@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; overflow:hidden; }
+  /* real NWS survey map, muted + scrimmed so any burned-in labels never fight our own text */
+  #g1-mapwrap { position:absolute; left:0; top:0; width:1100px; height:1080px; overflow:hidden; }
+  #g1-map { position:absolute; left:-140px; top:-90px; width:1400px; height:1300px; object-fit:cover;
+    filter:grayscale(0.55) contrast(1.05) brightness(0.6); opacity:0.55; }
+  #g1-scrim { position:absolute; inset:0; background:radial-gradient(ellipse at 40% 45%, rgba(6,9,13,0.35), rgba(6,9,13,0.86) 82%); }
+  #g1-svg { position:absolute; left:0; top:0; width:1100px; height:1080px; }
+  #g1-trackOld { stroke:#5a768f; stroke-width:5; fill:none; stroke-dasharray:14 10; opacity:0.9; }
+  #g1-trackNew { stroke:#e74c3c; stroke-width:7; fill:none; filter:drop-shadow(0 0 10px #c0392b88); }
+  #g1-marker { position:absolute; width:26px; height:26px; margin:-13px 0 0 -13px; border-radius:50%;
+    background:#e8c56a; box-shadow:0 0 0 6px #e8c56a33, 0 0 24px #e8c56a; }
+  #g1-ring { position:absolute; width:60px; height:60px; margin:-30px 0 0 -30px; border-radius:50%; border:3px solid #e74c3c; opacity:0; }
+  #g1-footprint { position:absolute; width:120px; height:120px; margin:-60px 0 0 -60px; border-radius:50%;
+    background:radial-gradient(circle, #c0392b55 0%, #c0392b22 55%, transparent 75%); }
+  .g1-lab { position:absolute; font-family:'Courier New',monospace; font-weight:700; color:#dfe7ee; font-size:22px; }
+  #g1-oldlab { color:#93a3b2; }
+  /* RHS panel — ep2 stat-card anatomy */
+  #g1-panel { position:absolute; right:0; top:0; bottom:0; width:820px;
+    background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); padding:90px 70px 0 170px; box-sizing:border-box; }
+  .g1-eyebrow { font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; }
+  .g1-place { font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; margin-top:14px; line-height:1.1; }
+  .g1-sub { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:16px; }
+  .g1-row { margin-top:46px; }
+  .g1-rowlab { font-weight:700; font-size:19px; letter-spacing:4px; color:#93a3b2; }
+  .g1-counter { font-family:'Courier New',monospace; font-weight:700; font-size:84px; color:#e74c3c; margin-top:6px; }
+  .g1-counterlab { font-weight:700; font-size:20px; letter-spacing:6px; color:#c8d3e0; }
+</style>
+<div id="root" data-composition-id="g-turn" data-width="1920" data-height="1080">
+  <div id="g1-mapwrap">
+    <img id="g1-map" src="../media/weathergov/wxgov-map-pns-damage-path.png">
+    <div id="g1-scrim"></div>
+    <svg id="g1-svg" viewBox="0 0 1100 1080">
+      <path id="g1-oldpath" d="M 460 220 L 700 470 L 940 630" class="g1-trackOld" style="opacity:0"/>
+      <path id="g1-newpath" d="M 460 220 L 680 520 L 980 380 L 1060 300" class="g1-trackNew"
+        style="stroke-dasharray:900; stroke-dashoffset:900"/>
+    </svg>
+    <div id="g1-footprint" style="left:460px; top:220px; transform:scale(0.4)"></div>
+    <div id="g1-ring" style="left:680px; top:520px;"></div>
+    <div id="g1-marker" style="left:460px; top:220px;"></div>
+    <div class="g1-lab" id="g1-oldlab" style="left:640px; top:640px; opacity:0">ASSUMED PATH · SE @ 25 MPH</div>
+  </div>
+  <div id="g1-panel">
+    <div class="g1-eyebrow" id="g1-eyebrow">NWS DAMAGE SURVEY · MAY 31, 2013</div>
+    <div class="g1-place" id="g1-place">THE TURN ON<br>HIGHWAY 81</div>
+    <div class="g1-sub" id="g1-sub">"It turned hard to the left, and as it turned, it accelerated."</div>
+    <div class="g1-row" id="g1-row1">
+      <div class="g1-rowlab">FORWARD SPEED</div>
+      <div class="g1-counter" id="g1-speed">25</div>
+      <div class="g1-counterlab">MILES PER HOUR</div>
+    </div>
+    <div class="g1-row" id="g1-row2" style="opacity:0">
+      <div class="g1-rowlab">PATH WIDTH</div>
+      <div class="g1-counter" id="g1-width" style="color:#e8c56a">0.5</div>
+      <div class="g1-counterlab">MILES</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#g1-panel","#g1-row2"], {autoAlpha:1}, 0);
+  tl.set("#g1-place", {autoAlpha:0, y:24}, 0);
+  tl.set(["#g1-eyebrow","#g1-sub","#g1-row1"], {autoAlpha:0}, 0);
+  tl.set("#g1-row2", {autoAlpha:0}, 0);
+  tl.fromTo("#g1-eyebrow", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.6}, 0.3);
+  tl.fromTo("#g1-place", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.6}, 0.6);
+
+  /* continuous element for the whole 57.31s window: a slow map push, ease:none */
+  tl.fromTo("#g1-mapwrap", {scale:1}, {scale:1.06, duration:57.3, ease:"none"}, 0);
+
+  /* continuous element for the whole 56s window: the marker travels the full track */
+  tl.to("#g1-marker", {left:680, top:520, duration:6.5, ease:"power1.in"}, 0.5);       // heading SE, pre-turn
+  /* turned @7.46; hard @7.76; left @8.42; accelerated @10.6-11.18 -- the elbow lands on "left" */
+  tl.to("#g1-newpath", {strokeDashoffset:0, duration:2.2, ease:"power2.out"}, 6.9);
+  tl.fromTo("#g1-ring", {autoAlpha:0, scale:0.4}, {autoAlpha:1, scale:2.6, duration:0.7, ease:"power4.in"}, 8.42);
+  tl.to("#g1-ring", {autoAlpha:0, duration:0.4}, 9.1);
+  tl.to("#g1-marker", {left:980, top:380, duration:2.8, ease:"power2.out"}, 8.42);
+  tl.to("#g1-footprint", {left:980, top:380, scale:0.7, duration:2.8, ease:"power2.out"}, 8.42);
+
+  /* speed readout: 35 @16.74; 50 @18.62-18.9 */
+  const spd = {v:25};
+  tl.to(spd, {v:35, duration:1.1, ease:"power2.out", onUpdate:()=>{document.getElementById("g1-speed").textContent=Math.round(spd.v);}}, 16.5);
+  tl.to(spd, {v:52, duration:1.4, ease:"power3.out", onUpdate:()=>{document.getElementById("g1-speed").textContent=Math.round(spd.v)+"+";}}, 18.5);
+  tl.to("#g1-marker", {left:1060, top:300, duration:2.6, ease:"none"}, 18.5);
+  tl.to("#g1-footprint", {left:1060, top:300, scale:0.9, duration:2.6, ease:"none"}, 18.5);
+
+  /* southeast @27.0; 25 mph (the old, now-wrong assumption) @28.18 -- show the ghost path, then erase it */
+  tl.fromTo(["#g1-oldpath","#g1-oldlab"], {autoAlpha:0}, {autoAlpha:0.85, duration:0.5}, 27.0);
+  /* no longer existed @31.02-32.18 -- the ghost path dies */
+  tl.to(["#g1-oldpath","#g1-oldlab"], {autoAlpha:0, duration:0.6}, 31.4);
+
+  /* wider @33.92; escape margin @34.78-35.6; faster @36.16; vehicles/wet section roads @36.88-38.6 */
+  tl.to("#g1-footprint", {scale:1.9, duration:2.2, ease:"power1.out"}, 33.9);
+  const wid = {v:0.5};
+  tl.to(wid, {v:2.6, duration:2.2, ease:"power1.out", onUpdate:()=>{document.getElementById("g1-width").textContent=wid.v.toFixed(1);}}, 33.9);
+  tl.to("#g1-footprint", {scale:2.4, duration:2.0, ease:"power2.out"}, 36.2);
+
+  /* hidden in rain @39.66-40.66 -- map dims further, storm becomes the only bright shape */
+  tl.to("#g1-map", {opacity:0.28, duration:1.2}, 39.5);
+  tl.to("#g1-scrim", {opacity:0.94, duration:1.2}, 39.5);
+
+  /* mathematics @41.6; rewritten @44.76-45.22; nobody's map @46.06-46.8 -- continuous slow pulse to end */
+  tl.to("#g1-footprint", {scale:2.7, duration:8, ease:"sine.inOut", yoyo:true, repeat:1}, 41.6);
+
+  /* exit timed to the hard cut at the end of the 56.61s host window */
+  tl.to("#root", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 56.0);
+
+  window.__timelines["g-turn"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
