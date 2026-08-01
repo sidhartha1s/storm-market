@@ -99,7 +99,7 @@ All entries verified by pulling `channel_id` directly off the watch page, not tr
 - `youtube.com/watch?v=mvxzyozJoXI` — KOCO, one-year retrospective (2014, dup-listed in §2 for its govt-adjacent Moore cross-reference; also usable here for El Reno-specific re-aired shots).
 - `youtube.com/watch?v=ZtCxckc-cFA` — KOCO 10-year anniversary short (2023, 1:00). Anniversary framing beat.
 - `youtube.com/watch?v=aRdeq_MEOaM` — KOCO, "A storm that reshaped storm chasing" (2:04) — directly serves the Samaras/TWISTEX-changed-chasing thesis.
-- **`youtube.com/watch?v=iK36H-jYwgE`** — KOCO, "Sky 5 shows destroyed homes after strong storm hits El Reno neighborhood" — **DATE-VERIFICATION FLAG: KOCO reuses the "El Reno" tag across multiple years' storms — confirm this is the 2013 event before use.**
+- ~~`youtube.com/watch?v=iK36H-jYwgE` — KOCO, "Sky 5 shows destroyed homes after strong storm hits El Reno neighborhood"~~ — **RESOLVED WRONG EVENT (see §5): confirmed upload date 2026-06-22, over a decade after the 2013 tornado. REMOVED from the usable shortlist.**
 - `youtube.com/watch?v=opEZ8hVGyB4`, `R_iM34O7Cs0`, `pMsfPk-FxxI` — KOCO 2019 survivor-testimony shorts (52s–2:01 each). High-value human-cost beats, low seconds needed.
 - **Note:** News9.com/kfor.com article pages may carry station-embedded video not mirrored to YouTube (e.g. `news9.com/story/5e6fd4b908ef1d09b20df98b`) — same rights holder either way, not independently re-verified this pass.
 - **Excluded:** any "KFOR tornado coverage" reupload attributed to `SRRadar` or `tom terry` — unverified private reuploads, not the station's own channel.
