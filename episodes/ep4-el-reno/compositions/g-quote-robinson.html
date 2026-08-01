@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; }
+  .doc { position:absolute; left:150px; top:120px; width:1220px; }
+  .doceye { font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .doctit { font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; margin-top:14px; }
+  .qmark { font-family:Georgia,serif; font-style:italic; font-size:120px; color:#2a3644; position:absolute; left:150px; top:330px; }
+  .qwrap { position:absolute; left:150px; top:400px; width:1500px; }
+  .qline { font-family:Georgia,serif; font-style:italic; font-size:44px; color:#dfe7ee; line-height:1.4; }
+  .attrib { position:absolute; left:150px; top:800px; font-size:26px; color:#d8a13a; font-weight:700; letter-spacing:1px; }
+  .stampsrc { position:absolute; right:150px; top:120px; font-size:19px; color:#93a3b2; letter-spacing:4px; font-weight:700; text-align:right; width:400px; }
+</style>
+<div id="root" data-composition-id="g-quote-robinson" data-width="1920" data-height="1080">
+  <div class="doc" id="g-qr-doc">
+    <div class="doceye">CHASER ACCOUNT · POST-EVENT INVESTIGATION</div>
+    <div class="doctit">DAN ROBINSON</div>
+  </div>
+  <div class="stampsrc" id="g-qr-src">QUOTED IN THE NWS<br>SERVICE ASSESSMENT</div>
+  <div class="qmark" id="g-qr-qmark">&ldquo;</div>
+  <div class="qwrap">
+    <div class="qline" id="g-qr-l1">Other than the TWISTEX Cobalt and a red pickup truck&hellip;</div>
+    <div class="qline" id="g-qr-l2">there were no other vehicles in our immediate vicinity.</div>
+    <div class="qline" id="g-qr-l3">Chaser traffic was a non-factor.</div>
+  </div>
+  <div class="attrib" id="g-qr-attrib">— Dan Robinson, quoted in the NWS Service Assessment</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#g-qr-doc","#g-qr-src","#g-qr-qmark","#g-qr-l1","#g-qr-l2","#g-qr-l3","#g-qr-attrib"], {autoAlpha:0}, 0);
+  /* cued to audio/a3-s3.words.json, relative to this comp's ~35s sub-window inside A3-S3: "Robinson@19.60 is@19.60 explicit@20.16"
+     opens the beat; the quoted lines below build against the narration's paraphrase of the same passage —
+     "other@23.04..pickup,@26.40" / "road@27.52 was@27.80 empty.@28.02" / "Chaser@28.40 traffic@29.38..non@30.20-factor,@30.44 his@31.28 words.@31.40" */
+  tl.fromTo("#g-qr-doc", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.6}, 0.6);
+  tl.fromTo("#g-qr-src", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 1.0);
+  tl.fromTo("#g-qr-qmark", {autoAlpha:0, scale:1.4}, {autoAlpha:1, scale:1, duration:0.4}, 3.4);
+  tl.fromTo("#g-qr-l1", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5}, 3.4);
+  tl.fromTo("#g-qr-l2", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5}, 8.4);
+  tl.fromTo("#g-qr-l3", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5}, 9.4);
+  tl.fromTo("#g-qr-attrib", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 12.0);
+  /* continuous element to cover the rest of the ~35s window: a slow document-scan sweep, ep2 g-sa-style hold */
+  tl.fromTo(".doc", {autoAlpha:1}, {autoAlpha:0.85, duration:14, ease:"none", yoyo:true, repeat:1}, 13.0);
+  tl.to("#g-qr-doc", {autoAlpha:0, y:-24, duration:0.5}, 34.0);
+  tl.to("#g-qr-src", {autoAlpha:0, duration:0.5}, 34.0);
+  tl.to(".qwrap", {autoAlpha:0, x:-40, duration:0.6, ease:"power3.in"}, 34.2);
+  tl.to("#g-qr-attrib", {autoAlpha:0, duration:0.5}, 34.2);
+  tl.to("#g-qr-qmark", {autoAlpha:0, duration:0.5}, 34.2);
+  window.__timelines["g-quote-robinson"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
