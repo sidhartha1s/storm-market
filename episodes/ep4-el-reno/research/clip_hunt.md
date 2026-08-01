@@ -19,7 +19,7 @@ Every URL from both source files is preserved below.
 | C-SPAN | 2 clips | Unconfirmed, pending page check | Public-event footage, terms TBC | Low, pending confirmation |
 | YouTube CC-BY search (dedicated pass) | 0 usable | 0s | N/A — dead lane | N/A |
 | archive.org | 1 item found, unusable | 0s | Unlicensed re-upload (Weather Channel special) | High — avoid |
-| Station-official broadcast (KFOR / News9 / KOCO) | 14 clips (2 pending date-match) | ~3–4s/pull × ~12 usable ≈ 40–50s | Claims-budgeted broadcast | Claims (survivable) |
+| Station-official broadcast (KFOR / News9 / KOCO) | 14 found, **2 confirmed WRONG EVENT and removed** → 12 usable | ~3–4s/pull × ~12 usable ≈ 40–50s | Claims-budgeted broadcast | Claims (survivable) |
 | Network-official broadcast (ABC / CNN / CBS / TWC) | 12 clips (1 pending date-match, 1 reupload excluded) | ~3–4s/pull × ~11 usable ≈ 35–45s | Claims-budgeted broadcast | Claims (survivable) |
 | Free stock (Pexels + Pixabay) | Open-ended bucket — 25+ search terms, 500+ combined results, 6 specific clips confirmed live | Effectively unlimited connective b-roll | Royalty-free stock license | None |
 | Paid — Pond5 | 6 confirmed clips | 5–10s each | Royalty-free, $59 Standard / $149 Premium per clip | None once purchased |
