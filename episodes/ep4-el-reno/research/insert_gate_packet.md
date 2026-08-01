@@ -115,8 +115,28 @@ dialogue unless it appears as an on-screen caption in a frame (noted where it do
 
 ### 9. `koco-survivor-testimony-a.mp4`
 - **Station / rights holder:** KOCO 5 News (channel_id `UCoIhMkbeDRBImkGiA5mZp5A`)
-- **Proposed cut:** 0:00–0:04 (~4s) — survivor on-camera, on-screen caption "Never thought it would happen to us, and it did." (frame1, verbatim caption visible in-frame)
-- **Description (verbatim on-screen caption):** "Never thought it would happen to us, and it did."
+- **Proposed cut:** ⚠️ UNVERIFIED — see flag below. Do NOT wire until owner confirms.
+- **FLAG (2026-08-01):** The claimed caption **"Never thought it would happen to us, and it did."**
+  does **not** appear anywhere in this file. Checked exhaustively: (1) faster-whisper small.en
+  transcribed the ENTIRE 120.4s clip verbatim (not just the proposed window) and that phrase is
+  not in it; (2) both sampled review frames (`frame1.jpg`, `frame2.jpg`) show the interview
+  subject with a station mic and no caption/lower-third text burned in at all. Either this quote
+  belongs to one of the other two unmapped KOCO 2019 survivor-testimony source URLs
+  (`opEZ8hVGyB4` / `R_iM34O7Cs0` / `pMsfPk-FxxI` — one is likely `-b` or `-c`, not `-a`) and was
+  mis-assigned to this filename, or the caption claim in the original packet entry was itself
+  unverified. **Recommend re-checking which of `koco-survivor-testimony-a/b/c.mp4` actually
+  contains that caption before approving this beat on the strength of that quote.**
+- **Full verbatim transcript of this file (faster-whisper small.en, entire 120.4s, for reference/re-triage):**
+  interview covers: hearing screaming, thinking they'd get out because she "could see holes,"
+  knowing her father was on the way, what she saw stepping outside ("a lot of destruction... I
+  saw some blood on the floor... just bodies everywhere... limbs, legs, arms"), whether it was a
+  "war zone or disaster zone," checking on friends/neighbors with trailers gone, and closing:
+  *"...because you never know when something's gonna happen and how quick it can happen. Yeah,
+  you don't think about it. That's right."* (~1:40–1:49) — this closing exchange is the closest
+  actual sentiment match to the packet's claimed quote ("never thought it would happen"), but it
+  is NOT the same wording and should not be presented as the verbatim caption.
+- **Description:** pending owner re-triage of the caption/filename mismatch above — do not treat
+  any quoted text for this clip as a verified caption until resolved.
 - **Beat served:** A7-S3 (human-cost close, restraint beat)
 - **Frames:** `.../media/_gate/koco-survivor-testimony-a/frame1.jpg`, `frame2.jpg`
 - **Source URL:** not recorded in clip_hunt.md (one of the 3 KOCO 2019 survivor-testimony shorts, `opEZ8hVGyB4` / `R_iM34O7Cs0` / `pMsfPk-FxxI` — not individually mapped to filenames in the hunt doc)
