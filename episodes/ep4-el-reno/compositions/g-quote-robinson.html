@@ -33,9 +33,9 @@ window.__timelines = window.__timelines || {};
 (function() {
   const tl = gsap.timeline({ paused: true });
   tl.set(["#g-qr-doc","#g-qr-src","#g-qr-qmark","#g-qr-l1","#g-qr-l2","#g-qr-l3","#g-qr-attrib"], {autoAlpha:0}, 0);
-  /* cued to audio/a3-s3.words.json, relative to this comp's ~35s sub-window inside A3-S3: "Robinson@19.60 is@19.60 explicit@20.16"
-     opens the beat; the quoted lines below build against the narration's paraphrase of the same passage —
-     "other@23.04..pickup,@26.40" / "road@27.52 was@27.80 empty.@28.02" / "Chaser@28.40 traffic@29.38..non@30.20-factor,@30.44 his@31.28 words.@31.40" */
+  /* cued to audio/a3-s3.words.json, relative to this comp's t=0; original cue math assumed a ~35s host
+     window ("Robinson@19.60".."his@31.28 words.@31.40" relative offsets) — the actual host window is
+     13.0s, so every reveal below is compressed to land inside that shorter cut instead */
   tl.fromTo("#g-qr-doc", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.6}, 0.6);
   tl.fromTo("#g-qr-src", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 1.0);
   tl.fromTo("#g-qr-qmark", {autoAlpha:0, scale:1.4}, {autoAlpha:1, scale:1, duration:0.4}, 3.4);
