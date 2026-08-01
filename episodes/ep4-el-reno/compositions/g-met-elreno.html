@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; }
+  .hdr { position:absolute; left:0; right:0; top:64px; text-align:center; font-weight:700; font-size:26px; letter-spacing:8px; color:#93a3b2; }
+  /* pot cross-section, center stage */
+  #g-metel-pot { position:absolute; left:460px; top:200px; width:1000px; height:560px; }
+  #g-metel-fuel { position:absolute; left:0; right:0; bottom:0; height:190px;
+    background:linear-gradient(0deg, #7d3f2a88, #7d3f2a22); }
+  .shimmer { position:absolute; bottom:20px; width:90px; height:130px; border-radius:50%;
+    background:radial-gradient(ellipse, #d8a13a33, transparent 70%); }
+  #g-metel-sh1 { left:140px; } #g-metel-sh2 { left:460px; } #g-metel-sh3 { left:760px; }
+  #g-metel-lid { position:absolute; left:0; right:0; bottom:188px; height:18px; background:#5a768f;
+    box-shadow:0 0 20px #5a768faa; }
+  #g-metel-lidL { position:absolute; left:0; width:50%; bottom:188px; height:18px; background:#5a768f; box-shadow:0 0 20px #5a768faa; }
+  #g-metel-lidR { position:absolute; right:0; width:50%; bottom:188px; height:18px; background:#5a768f; box-shadow:0 0 20px #5a768faa; }
+  #g-metel-dry { position:absolute; left:0; right:0; top:0; height:340px;
+    background:linear-gradient(180deg, #1a2e4222, #1a2e4266); }
+  .plab { position:absolute; font-size:21px; font-weight:700; color:#dfe7ee; letter-spacing:1px; }
+  #g-metel-lab-fuel { left:16px; bottom:150px; }
+  #g-metel-lab-lid { right:14px; bottom:216px; color:#9fc3e8; }
+  #g-metel-lab-dry { left:16px; top:14px; color:#8fa5bb; }
+  /* the updraft column that erupts when the lid breaks */
+  #g-metel-column { position:absolute; left:430px; bottom:190px; width:140px; height:0px;
+    background:linear-gradient(0deg, #d8a13a99, #c0392b66 80%); border-radius:40% 40% 10% 10%; }
+  /* rotation arrows (shear) */
+  .sarrow { position:absolute; height:0; border-top:6px solid #d8a13a; }
+  #g-metel-arr1 { left:60px;  bottom:250px; width:120px; border-color:#5a768f; }
+  #g-metel-arr2 { left:100px; bottom:360px; width:190px; border-color:#7d94ab; }
+  #g-metel-arr3 { left:150px; bottom:470px; width:260px; border-color:#d8a13a; }
+  /* supercell finale */
+  #g-metel-combine { position:absolute; inset:0; display:grid; place-items:center;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  #g-metel-super { width:400px; height:400px; border-radius:50%;
+    background:conic-gradient(#0b1016 0deg, #2a3644 80deg, #5a768f 165deg, #c0392b 225deg, #0b1016 360deg);
+    margin:0 auto; box-shadow:0 0 90px #c0392b33; }
+  #g-metel-clab { font-family:'Arial Black',Arial,sans-serif; font-size:62px; color:#f2f5f8; letter-spacing:4px; margin-top:40px; text-align:center; }
+  #g-metel-csub { font-family:Georgia,serif; font-style:italic; font-size:29px; color:#d8a13a; margin-top:12px; text-align:center; }
+  #g-metel-verdict { font-family:'Arial Black',Arial,sans-serif; font-size:34px; color:#e74c3c; letter-spacing:3px; margin-top:26px; text-align:center; }
+</style>
+<div id="root" data-composition-id="g-met-elreno" data-width="1920" data-height="1080">
+  <div class="hdr" id="g-metel-hdr">WHY THIS CORNER OF THE COUNTRY BUILDS MONSTERS</div>
+  <div id="g-metel-pot">
+    <div id="g-metel-dry"></div>
+    <div id="g-metel-fuel"></div>
+    <div class="shimmer" id="g-metel-sh1"></div>
+    <div class="shimmer" id="g-metel-sh2"></div>
+    <div class="shimmer" id="g-metel-sh3"></div>
+    <div id="g-metel-lidL"></div><div id="g-metel-lidR"></div>
+    <div id="g-metel-column"></div>
+    <span class="plab" id="g-metel-lab-fuel">WARM, MOIST GULF AIR — THE FUEL</span>
+    <span class="plab" id="g-metel-lab-lid">HOT, DRY AIR — THE LID</span>
+    <span class="plab" id="g-metel-lab-dry">BUILDS FOR HOURS, INSTEAD OF BURNING OFF</span>
+    <div class="sarrow" id="g-metel-arr1"></div>
+    <div class="sarrow" id="g-metel-arr2"></div>
+    <div class="sarrow" id="g-metel-arr3"></div>
+  </div>
+  <div id="g-metel-combine">
+    <div>
+      <div id="g-metel-super"></div>
+      <div id="g-metel-clab">A SUPERCELL</div>
+      <div id="g-metel-csub">a thunderstorm that rotates like a machine</div>
+      <div id="g-metel-verdict">OPEN FARMLAND · LATE MAY · SIX IN THE EVENING</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-metel-";
+  tl.set([P+"pot",P+"combine",P+"hdr",P+"lab-fuel",P+"lab-lid",P+"lab-dry",P+"arr1",P+"arr2",P+"arr3",P+"column"], {autoAlpha:0}, 0);
+  tl.set(P+"column", {height:0}, 0);
+  tl.fromTo(P+"hdr", {autoAlpha:0, y:-18}, {autoAlpha:1, y:0, duration:0.6}, 0.8);      /* monsters @2.64 */
+  /* moist @4.84 — fuel layer + label */
+  tl.fromTo(P+"pot", {autoAlpha:0, y:30}, {autoAlpha:1, y:0, duration:0.6}, 4.4);
+  tl.fromTo(P+"lab-fuel", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.4}, 6.2);  /* fuel @6.44 */
+  /* continuous element #1: fuel shimmer pulses the whole pot phase */
+  tl.to("#g-metel-sh1", {y:-36, autoAlpha:0.25, duration:2.2, repeat:12, yoyo:true, ease:"sine.inOut"}, 5.0);
+  tl.to("#g-metel-sh2", {y:-46, autoAlpha:0.3, duration:2.7, repeat:10, yoyo:true, ease:"sine.inOut"}, 5.6);
+  tl.to("#g-metel-sh3", {y:-30, autoAlpha:0.22, duration:2.0, repeat:13, yoyo:true, ease:"sine.inOut"}, 5.2);
+  /* lid @8.60, pot @11.86 — lid slides shut + labels */
+  tl.fromTo(P+"lidL", {x:-520, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.7, ease:"power3.out"}, 8.4);
+  tl.fromTo(P+"lidR", {x:520, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.7, ease:"power3.out"}, 8.4);
+  tl.fromTo(P+"lab-lid", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.4}, 11.6);
+  tl.fromTo(P+"lab-dry", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 14.6);             /* builds… @~15 */
+  /* breaks @18.16, once @19.96 — lid splits, ONE violent column erupts */
+  tl.to(P+"lidL", {x:-560, autoAlpha:0, duration:0.8, ease:"power3.in"}, 18.0);
+  tl.to(P+"lidR", {x:560, autoAlpha:0, duration:0.8, ease:"power3.in"}, 18.0);
+  tl.fromTo(P+"column", {autoAlpha:1, height:0}, {height:520, duration:1.6, ease:"power4.out"}, 18.6);
+  /* turn @25.64 / height @26.22 / rotate @28.96 — shear arrows + column begins turning */
+  tl.fromTo(P+"arr1", {scaleX:0, autoAlpha:0}, {scaleX:1, autoAlpha:1, duration:0.5, transformOrigin:"left center"}, 25.4);
+  tl.fromTo(P+"arr2", {scaleX:0, autoAlpha:0}, {scaleX:1, autoAlpha:1, duration:0.5, transformOrigin:"left center"}, 26.0);
+  tl.fromTo(P+"arr3", {scaleX:0, autoAlpha:0}, {scaleX:1, autoAlpha:1, duration:0.5, transformOrigin:"left center"}, 26.6);
+  tl.to(P+"column", {rotation:14, skewX:8, duration:3.4, ease:"power1.inOut"}, 28.7);
+  /* supercell @32.40 — combine takes over; continuous element #2: rotation to the end */
+  tl.fromTo(P+"combine", {autoAlpha:0}, {autoAlpha:1, duration:0.8}, 32.1);
+  tl.fromTo(P+"super", {scale:0.62, rotation:0}, {scale:1, rotation:150, duration:10.0, ease:"power1.out"}, 32.3);
+  tl.fromTo(P+"clab", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.5}, 33.6);     /* supercell @33.86 */
+  tl.fromTo(P+"csub", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 35.4);                /* farmland @35.60 */
+  tl.fromTo(P+"verdict", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5}, 40.0);  /* dangerous @40.20 */
+  /* exit — comp dur ≥ host window 42.43; fade the whole combine on the cut */
+  tl.to(P+"combine", {autoAlpha:0, duration:0.6, ease:"power3.in"}, 41.8);
+  tl.set([P+"pot",P+"hdr"], {autoAlpha:0}, 32.9);
+  window.__timelines["g-met-elreno"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
