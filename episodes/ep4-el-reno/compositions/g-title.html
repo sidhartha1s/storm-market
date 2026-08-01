@@ -36,6 +36,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#g-title-l2", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 1.6);
   tl.fromTo("#g-title-main", {autoAlpha:0, scale:1.18}, {autoAlpha:1, scale:1, duration:0.6, ease:"power2.out"}, 3.1);
   tl.fromTo("#g-title-sub", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 4.6);
+  /* continuous element for the whole 16s window: slow scale drift on the title block, ease:none */
+  tl.fromTo(".stack", {scale:1}, {scale:1.04, duration:16, ease:"none"}, 0);
   tl.to(".stack", {autoAlpha:0, duration:0.7}, 7.1);
   window.__timelines["g-title"] = tl;
 })();
