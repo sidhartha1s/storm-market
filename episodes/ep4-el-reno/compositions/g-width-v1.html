@@ -108,8 +108,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"hallam-lab", {autoAlpha:0, y:-10}, {autoAlpha:1, y:0, duration:0.5}, 39.3);
   tl.to(P+"hallam", {autoAlpha:0.15, duration:0.8, ease:"power2.in"}, 42.5);
 
-  /* record statement lands with "gone" */
-  tl.fromTo(P+"record", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.6}, 42.6);
+  /* record statement lands with "gone" — clear the counter first so the two never overlap */
+  tl.to(P+"counter-wrap", {autoAlpha:0, duration:0.4}, 42.6);
+  tl.fromTo(P+"record", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.6}, 43.0);
 
   /* exit — whole graphic slides off, timed to the end of the comp's window */
   tl.to(P+"wrap", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 54.65);
