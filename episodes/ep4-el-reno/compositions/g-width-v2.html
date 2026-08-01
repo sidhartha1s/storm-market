@@ -111,9 +111,10 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"manhattan", {autoAlpha:0, y:14}, {autoAlpha:0.9, y:0, duration:0.7, ease:"power2.out"}, 29.4);
   tl.fromTo(P+"manhattan-lab", {autoAlpha:0, y:10}, {autoAlpha:1, y:0, duration:0.5}, 29.7);
 
-  /* old record, set in Nebraska nine years earlier, was gone @38.94-42.92 — fade the comparison down, state the record */
+  /* old record, set in Nebraska nine years earlier, was gone @38.94-42.92 — fade the comparison down, clear the counter, state the record */
   tl.to(P+"manhattan", {autoAlpha:0.35, duration:0.8, ease:"power2.in"}, 38.9);
-  tl.fromTo(P+"record", {autoAlpha:0, y:-24}, {autoAlpha:1, y:0, duration:0.6}, 42.6);
+  tl.to(P+"counter-wrap", {autoAlpha:0, duration:0.4}, 42.6);
+  tl.fromTo(P+"record", {autoAlpha:0, y:-24}, {autoAlpha:1, y:0, duration:0.6}, 43.0);
 
   /* exit — whole graphic slides off, timed to the end of the comp's window */
   tl.to(P+"wrap", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 54.65);
