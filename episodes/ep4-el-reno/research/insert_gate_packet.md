@@ -103,8 +103,8 @@ dialogue unless it appears as an on-screen caption in a frame (noted where it do
 
 ### 8. `kfor-tenth-victim.mp4`
 - **Station / rights holder:** KFOR Oklahoma's News 4 (channel_id `UCEUYiWFyzpEBMZ3aG7ud7xg`)
-- **Proposed cut:** 0:00–0:04 (~4s) — daytime road scene, fire/rescue vehicles staged (frame1)
-- **Description (inferred):** "a tenth victim... discovered this morning" — death-toll update segment
+- **Proposed cut:** 0:00–0:03.8 (~3.8s — NUDGED end from 0:04) — daytime road scene, fire/rescue vehicles staged (frame1)
+- **Transcript (VERBATIM, faster-whisper small.en):** "Oklahoma's woke up once again this morning to tragedy" — original 0:04 end point chopped mid-word on "after"; trimmed ~0.2s earlier to end cleanly right after "tragedy." (~0.7s lead-in silence before speech starts is negligible, left as-is.)
 - **Beat served:** A4-S4/A7-S3 (death-toll / named-categories beat)
 - **Frames:** `.../media/_gate/kfor-tenth-victim/frame1.jpg`, `frame2.jpg`, `frame3.jpg`
 - **Source URL:** `youtube.com/watch?v=y65DPajL0wI` (2013-06-02) per clip_hunt.md §3
