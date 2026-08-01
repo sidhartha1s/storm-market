@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; overflow:hidden; }
+  #g-width-v2-wrap { position:absolute; inset:0; }
+  .hdr { position:absolute; left:0; right:0; top:64px; text-align:center; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; }
+  /* horizon field-of-view strip, 1920px wide = 3.2 mi FOV @ 600px/mi */
+  #g-width-v2-strip { position:absolute; left:0; right:0; top:420px; height:340px; overflow:hidden; }
+  #g-width-v2-sky { position:absolute; inset:0; background:linear-gradient(180deg, #10161f 0%, #1a222c 70%, #232b34 100%); }
+  #g-width-v2-ground { position:absolute; left:0; right:0; bottom:0; height:60px; background:#171d13; }
+  /* landmarks, fixed scale reference along the horizon */
+  .lm { position:absolute; bottom:60px; background:#0e131a; opacity:0.85; }
+  #g-width-v2-lm-silo { left:210px; width:22px; height:70px; border-radius:6px 6px 0 0; }
+  #g-width-v2-lm-tower { left:900px; width:8px; height:110px; }
+  #g-width-v2-lm-tower:after { content:""; position:absolute; top:-24px; left:-16px; width:40px; height:24px; background:#0e131a; border-radius:50% 50% 0 0; }
+  #g-width-v2-lm-barn { left:1560px; width:60px; height:44px; }
+  .lmlab { position:absolute; bottom:4px; font-size:19px; font-weight:700; color:#93a3b2; letter-spacing:2px; }
+  /* mile ticks under the strip */
+  #g-width-v2-ticks { position:absolute; left:0; right:0; top:770px; height:40px; }
+  .tick { position:absolute; bottom:0; width:2px; height:16px; background:#3a4652; }
+  .ticklab { position:absolute; bottom:20px; transform:translateX(-50%); font-size:19px; font-weight:700; color:#93a3b2; letter-spacing:2px; opacity:0; }
+  /* drifting rain texture over the whole strip — continuous motion for the full window */
+  #g-width-v2-rain { position:absolute; left:-400px; right:-400px; top:420px; height:340px;
+    background-image:repeating-linear-gradient(100deg, rgba(200,211,224,0.05) 0 2px, transparent 2px 34px);
+    opacity:0.6; }
+  /* the storm wall — widens across the strip, centered, from the horizon */
+  #g-width-v2-wall { position:absolute; left:50%; bottom:60px; top:420px; width:0; margin-left:0;
+    background:linear-gradient(180deg, rgba(20,24,30,0.2), rgba(15,17,20,0.92) 55%, rgba(10,12,14,0.98));
+    box-shadow:0 0 140px rgba(90,118,143,0.35); transform-origin:center bottom; }
+  /* Manhattan skyline silhouette, to scale, overlaid after the comparison lands */
+  #g-width-v2-manhattan { position:absolute; left:50%; bottom:60px; width:1073px; margin-left:-536.5px; height:64px; opacity:0;
+    background:repeating-linear-gradient(90deg, #7fb2e5 0 14px, transparent 14px 30px); clip-path:polygon(0 100%,0 40%,6% 40%,6% 70%,12% 70%,12% 20%,18% 20%,18% 60%,24% 60%,24% 10%,30% 10%,30% 55%,36% 55%,36% 30%,42% 30%,42% 65%,48% 65%,48% 5%,54% 5%,54% 50%,60% 50%,60% 25%,66% 25%,66% 60%,72% 60%,72% 15%,78% 15%,78% 45%,84% 45%,84% 70%,90% 70%,90% 20%,96% 20%,96% 55%,100% 55%,100% 100%); }
+  #g-width-v2-manhattan-lab { position:absolute; left:50%; bottom:130px; transform:translateX(-50%); font-size:19px; font-weight:700;
+    color:#7fb2e5; letter-spacing:2px; white-space:nowrap; opacity:0; }
+  /* counter block */
+  #g-width-v2-counter-wrap { position:absolute; left:0; right:0; bottom:150px; text-align:center; opacity:0; }
+  #g-width-v2-counter { font-family:'Courier New',monospace; font-weight:700; font-size:84px; color:#e74c3c; }
+  #g-width-v2-counter-lab { font-size:20px; font-weight:700; color:#c8d3e0; letter-spacing:6px; margin-top:4px; }
+  #g-width-v2-record { position:absolute; left:0; right:0; top:150px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
+    font-size:52px; color:#f2f5f8; opacity:0; }
+</style>
+<div id="root" data-composition-id="g-width-v2" data-width="1920" data-height="1080">
+  <div id="g-width-v2-wrap">
+    <div class="hdr" id="g-width-v2-hdr">GROUND LEVEL · WHAT THE ROAD SAW</div>
+    <div id="g-width-v2-strip">
+      <div id="g-width-v2-sky"></div>
+      <div id="g-width-v2-lm-silo" class="lm"></div><div class="lmlab" style="left:180px;">SILO</div>
+      <div id="g-width-v2-lm-tower" class="lm"></div><div class="lmlab" style="left:860px;">WATER TOWER</div>
+      <div id="g-width-v2-lm-barn" class="lm"></div><div class="lmlab" style="left:1540px;">BARN</div>
+      <div id="g-width-v2-wall"></div>
+      <div id="g-width-v2-manhattan"></div>
+      <div id="g-width-v2-ground"></div>
+    </div>
+    <div id="g-width-v2-rain"></div>
+    <div id="g-width-v2-ticks">
+      <div class="tick" style="left:960px;"></div><div class="ticklab" id="g-width-v2-tick-h" style="left:960px;">0.5 MI</div>
+      <div class="tick" style="left:660px;"></div><div class="ticklab" id="g-width-v2-tick-1a" style="left:660px;">1 MI</div>
+      <div class="tick" style="left:1260px;"></div><div class="ticklab" id="g-width-v2-tick-1b" style="left:1260px;">1 MI</div>
+      <div class="tick" style="left:60px;"></div><div class="ticklab" id="g-width-v2-tick-2a" style="left:60px;">2 MI</div>
+      <div class="tick" style="left:1860px;"></div><div class="ticklab" id="g-width-v2-tick-2b" style="left:1860px;">2 MI</div>
+    </div>
+    <div id="g-width-v2-manhattan-lab">MANHATTAN ISLAND WIDTH, TO SCALE</div>
+    <div id="g-width-v2-counter-wrap">
+      <div id="g-width-v2-counter">0.0</div>
+      <div id="g-width-v2-counter-lab">MILES ACROSS · EDGE TO EDGE</div>
+    </div>
+    <div id="g-width-v2-record">NO TORNADO HAD EVER BEEN THIS WIDE</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-width-v2-";
+  tl.set([P+"hdr", P+"manhattan", P+"manhattan-lab", P+"counter-wrap", P+"record",
+           P+"tick-h", P+"tick-1a", P+"tick-1b", P+"tick-2a", P+"tick-2b"], {autoAlpha:0}, 0);
+  tl.set(P+"wall", {scaleX:0}, 0);
+
+  tl.fromTo(P+"hdr", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.6}, 0.3);
+  tl.fromTo(P+"counter-wrap", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 0.6);
+
+  /* continuous drifting rain texture — the whole window, never stops */
+  tl.to(P+"rain", { x:-460, duration:55, ease:"none" }, 0);
+
+  const w = {v:0};
+  function upd() { const el=document.getElementById("g-width-v2-counter"); if(el) el.textContent = w.v.toFixed(1); }
+
+  /* half a mile @14.32-14.86 — wall widens past the silo */
+  tl.to(w, {v:0.5, duration:0.7, ease:"power2.out", onUpdate:upd}, 14.3);
+  tl.to(P+"wall", {scaleX:0.16, duration:0.7, ease:"power2.out"}, 14.3);
+  tl.fromTo(P+"tick-h", {autoAlpha:0}, {autoAlpha:1, duration:0.3}, 14.5);
+  /* full mile @16.56-16.84 — reaches the water tower */
+  tl.to(w, {v:1.0, duration:0.6, ease:"power1.inOut", onUpdate:upd}, 16.5);
+  tl.to(P+"wall", {scaleX:0.34, duration:0.6, ease:"power1.inOut"}, 16.5);
+  tl.fromTo([P+"tick-1a", P+"tick-1b"], {autoAlpha:0}, {autoAlpha:1, duration:0.3}, 16.7);
+  /* then two @18.14-18.64 — swallows the barn */
+  tl.to(w, {v:2.0, duration:0.7, ease:"power1.inOut", onUpdate:upd}, 18.1);
+  tl.to(P+"wall", {scaleX:0.65, duration:0.7, ease:"power1.inOut"}, 18.1);
+  tl.fromTo([P+"tick-2a", P+"tick-2b"], {autoAlpha:0}, {autoAlpha:1, duration:0.3}, 18.3);
+  /* 6:19 pm, circulation reaches 2.6 miles @24.04-25.3 — fills the whole 1920px strip, slows dramatically */
+  tl.to(w, {v:2.6, duration:1.6, ease:"power3.out", onUpdate:upd}, 24.0);
+  tl.to(P+"wall", {scaleX:1.0, duration:1.6, ease:"power3.out"}, 24.0);
+
+  /* Manhattan @29.42 — after 2.6 has landed */
+  tl.fromTo(P+"manhattan", {autoAlpha:0, y:14}, {autoAlpha:0.9, y:0, duration:0.7, ease:"power2.out"}, 29.4);
+  tl.fromTo(P+"manhattan-lab", {autoAlpha:0, y:10}, {autoAlpha:1, y:0, duration:0.5}, 29.7);
+
+  /* old record, set in Nebraska nine years earlier, was gone @38.94-42.92 — fade the comparison down, state the record */
+  tl.to(P+"manhattan", {autoAlpha:0.35, duration:0.8, ease:"power2.in"}, 38.9);
+  tl.fromTo(P+"record", {autoAlpha:0, y:-24}, {autoAlpha:1, y:0, duration:0.6}, 42.6);
+
+  /* exit — whole graphic slides off, timed to the end of the comp's window */
+  tl.to(P+"wrap", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 54.65);
+
+  window.__timelines["g-width-v2"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
