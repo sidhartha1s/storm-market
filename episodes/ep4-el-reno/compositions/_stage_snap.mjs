@@ -14,7 +14,7 @@ if (!comps.length) { console.error('usage: node _stage_snap.mjs <comp1> <comp2> 
 const outRoot = join(__dirname, 'media', '_snap');
 mkdirSync(outRoot, { recursive: true });
 
-const browser = await chromium.launch();
+const browser = await chromium.launch({ executablePath: chromiumExecutable() });
 for (const compFile of comps) {
   const id = compFile.replace(/\.html$/, '');
   const html = readFileSync(join(__dirname, compFile), 'utf8');
