@@ -52,7 +52,7 @@ set HYPERFRAMES_FFMPEG_PATH=C:\Users\Sidhartha\AppData\Local\Microsoft\WinGet\Pa
 REM worker count is tunable for RAM-tight full renders (fps30 workers use more memory than
 REM draft); default 3 as tested for draft, drop to 2 on a low-free-RAM box. Set RENDER_WORKERS.
 if not defined RENDER_WORKERS set RENDER_WORKERS=3
-call npx hyperframes@0.7.81 render . --gpu --browser-gpu --experimental-fast-capture=true %QFLAGS% --workers %RENDER_WORKERS% -o "renders/%OUTBASE%.mp4" > "render_%MODE%.log" 2>&1
+call npx hyperframes@0.7.87 render . --gpu --browser-gpu --experimental-fast-capture=true %QFLAGS% --workers %RENDER_WORKERS% -o "renders/%OUTBASE%.mp4" > "render_%MODE%.log" 2>&1
 set RC=%ERRORLEVEL%
 echo %RC% > "render_%MODE%_done.marker"
 exit /b %RC%
