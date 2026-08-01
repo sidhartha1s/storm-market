@@ -73,10 +73,11 @@ window.__timelines = window.__timelines || {};
 (function() {
   const tl = gsap.timeline({ paused: true });
   const P = "#g-width-v1-";
-  tl.set([P+"hdr", P+"manhattan", P+"manhattan-lab", P+"hallam", P+"hallam-lab", P+"counter-wrap", P+"record"], {autoAlpha:0}, 0);
+  tl.set([P+"hdr", P+"sub", P+"manhattan", P+"manhattan-lab", P+"hallam", P+"hallam-lab", P+"counter-wrap", P+"record"], {autoAlpha:0}, 0);
   tl.set(P+"footprint", {scale:0}, 0);
 
   tl.fromTo(P+"hdr", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.6}, 0.3);
+  tl.fromTo(P+"sub", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 0.7);
   tl.fromTo(P+"counter-wrap", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 0.6);
 
   /* continuous radar sweep — the whole window, never stops */
