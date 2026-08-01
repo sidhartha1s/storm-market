@@ -9,7 +9,10 @@ external:
   # md5 2d8ea8f14763932f3f76da67d7fd1612 — verify before every produce run (JP voice-ref gotcha)
 
 render:
-  hyperframes_version: "0.7.81"   # pinned; upgrade ritual = test render, diff, bump
+  hyperframes_version: "0.7.87"   # pinned; upgrade ritual = test render, diff, bump
+  # 0.7.81→0.7.87 bumped 2026-08-01 at ep4 kickoff (owner order: version check at first prompt).
+  # Diff review: research/hyperframes-081-to-087.md in ep4 — deadlines/timeouts/workers/encoder
+  # byte-identical; additive only (--capture-budget flag, fast-capture short-band refinement).
   # Bumped 2026-07-29 from 0.7.64 (owner order). CHECK BEFORE EVERY PRODUCTION RUN:
   #   npm view hyperframes version   -> if newer, pull and bump here before starting.
   # 0.7.81 SHORTENS the ffprobe deadline from 120s to 30s (Date.now() + 3e4). That is the
