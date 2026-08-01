@@ -43,7 +43,7 @@
 window.__timelines = window.__timelines || {};
 (function() {
   const tl = gsap.timeline({ paused: true });
-  tl.set(["#g-gear-hdr","#g-gear-sub","#g-gear-lab-main","#g-gear-lab-flank","#g-gear-footer"], {autoAlpha:0}, 0);
+  tl.set(["#g-gear-hdr","#g-gear-sub","#g-gear-lab-main","#g-gear-lab-flank","#g-gear-footer","#g-gear-hero"], {autoAlpha:0}, 0);
   tl.set(["#g-gear-main","#g-gear-flank"], {autoAlpha:0, scale:0.6}, 0);
   /* cued to audio/a2-s3c.words.json: "One@0.00..deserves@1.92 30@2.38 seconds@2.84..attention,@3.54" opens;
      "counterclockwise,@12.30" labels the main wheel; "clockwise.@31.32" labels the flank wheel;
@@ -51,15 +51,18 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#g-gear-hdr", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.5}, 0.3);
   tl.fromTo("#g-gear-sub", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 1.9);
   tl.fromTo("#g-gear-main", {autoAlpha:0, scale:0.6}, {autoAlpha:1, scale:1, duration:0.7, ease:"power2.out"}, 5.3);
-  /* continuous rotation the whole window — main wheel counterclockwise, flank wheel clockwise, driven by it */
-  tl.to("#g-gear-main", {rotation:-360, duration:67.9, ease:"none", repeat:-1}, 5.3);
+  /* continuous rotation the whole window — finite duration matching the 67.9s window (no repeat:-1, which
+     breaks the QC tool's duration calc). Main wheel spins counterclockwise ~5 full turns; flank wheel is
+     driven the opposite (clockwise) way, gearing metaphor from the script. */
+  tl.to("#g-gear-main", {rotation:-1800, duration:62.6, ease:"none"}, 5.3);
   tl.fromTo("#g-gear-lab-main", {autoAlpha:0, x:-20}, {autoAlpha:1, x:0, duration:0.5}, 11.2);
   tl.fromTo("#g-gear-flank", {autoAlpha:0, scale:0.4}, {autoAlpha:1, scale:1, duration:0.6, ease:"power2.out"}, 24.1);
-  tl.to("#g-gear-flank", {rotation:360, duration:43.6, ease:"none", repeat:-1}, 24.1);
+  tl.to("#g-gear-flank", {rotation:1150, duration:43.6, ease:"none"}, 24.1);
   tl.fromTo("#g-gear-lab-flank", {autoAlpha:0, x:20}, {autoAlpha:1, x:0, duration:0.5}, 31.3);
+  tl.fromTo("#g-gear-hero", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5}, 40.6);
   tl.fromTo("#g-gear-footer", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 48.3);
-  tl.to("#g-gear-footer", {autoAlpha:0.7, duration:2, yoyo:true, repeat:8}, 49.3);
-  tl.to(["#g-gear-wheels","#g-gear-footer","#g-gear-hdr","#g-gear-sub"], {autoAlpha:0, duration:0.7, ease:"power3.in"}, 67.2);
+  tl.to("#g-gear-footer", {autoAlpha:0.7, duration:2.2, yoyo:true, repeat:8}, 49.3);
+  tl.to(["#g-gear-wheels","#g-gear-footer","#g-gear-hdr","#g-gear-sub","#g-gear-hero"], {autoAlpha:0, duration:0.7, ease:"power3.in"}, 67.2);
   window.__timelines["g-gearing"] = tl;
 })();
 </script>
