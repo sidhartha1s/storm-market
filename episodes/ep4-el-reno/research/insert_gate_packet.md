@@ -35,8 +35,8 @@ dialogue unless it appears as an on-screen caption in a frame (noted where it do
 
 ### 2. `kfor-sutton-josefy-up-close.mp4`
 - **Station / rights holder:** KFOR Oklahoma's News 4 (station-official, channel_id `UCEUYiWFyzpEBMZ3aG7ud7xg`)
-- **Proposed cut:** 0:00–0:04 (~4s) — wide funnel shot from the chase vehicle (frame1/frame2 both show clear tornado-in-frame, windshield-mount POV)
-- **Description (inferred):** Emily Sutton/Kevin Josefy's KFOR chase vehicle up close with the tornado, windshield wiper visible in frame
+- **Proposed cut:** 0:02.4–0:06.4 (~4s — NUDGED from 0:00–0:04) — wide funnel shot from the chase vehicle (frame1/frame2 both show clear tornado-in-frame, windshield-mount POV)
+- **Transcript (VERBATIM, faster-whisper small.en):** "it has multiple vortices, I see the vortices swirling" — the original 0:00-0:04 window was ~2.4s of dead air before speech starts, then chopped mid-word on "multiple"; nudged +2.4s to land on-speech immediately and end cleanly right at the end of "swirling."
 - **Beat served:** A2-S4 (storm-coverage pull — rain-wrapped/multi-vortex visual)
 - **Frames:** `.../media/_gate/kfor-sutton-josefy-up-close/frame1.jpg`, `frame2.jpg`, `frame3.jpg`
 - **Source URL:** `youtube.com/watch?v=UjZDY142Y-Q` (2013-06-02) per clip_hunt.md §3
