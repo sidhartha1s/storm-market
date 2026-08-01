@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; }
+  .hdr { position:absolute; left:0; right:0; top:74px; text-align:center; font-weight:700; font-size:26px; letter-spacing:8px; color:#93a3b2; }
+  .sub { position:absolute; left:0; right:0; top:120px; text-align:center; font-family:Georgia,serif; font-style:italic; font-size:27px; color:#d8a13a; }
+  .stage { position:absolute; inset:0; display:grid; place-items:center; }
+  .wheels { position:relative; width:1100px; height:700px; }
+  #g-gear-main { position:absolute; left:120px; top:60px; width:560px; height:560px; border-radius:50%;
+    border:10px solid #2a3644; box-shadow:0 0 70px #5a768f33 inset; }
+  #g-gear-main .spoke { position:absolute; left:50%; top:0; width:6px; height:280px; background:#5a768f; transform-origin:bottom center; }
+  #g-gear-flank { position:absolute; right:40px; top:380px; width:220px; height:220px; border-radius:50%;
+    border:8px solid #8e2020; box-shadow:0 0 40px #c0392b33 inset; }
+  #g-gear-flank .spoke { position:absolute; left:50%; top:0; width:5px; height:110px; background:#c0392b; transform-origin:bottom center; }
+  .lab { position:absolute; text-align:center; font-family:'Arial Black',Arial,sans-serif; letter-spacing:2px; }
+  #g-gear-lab-main { left:60px; top:660px; width:680px; font-size:30px; color:#f2f5f8; }
+  #g-gear-lab-main .amber { color:#d8a13a; }
+  #g-gear-lab-flank { right:-40px; top:80px; width:340px; font-size:26px; color:#f2f5f8; }
+  #g-gear-lab-flank .red { color:#e74c3c; }
+  .arrowring { position:absolute; inset:0; border-radius:50%; border:3px dashed #d8a13a44; }
+  .footer { position:absolute; left:0; right:0; bottom:66px; text-align:center; font-family:Georgia,serif; font-style:italic; font-size:28px; color:#b8c6d4; }
+</style>
+<div id="root" data-composition-id="g-gearing" data-width="1920" data-height="1080">
+  <div class="hdr" id="g-gear-hdr">ONE RADAR DISCOVERY</div>
+  <div class="sub" id="g-gear-sub">the strangest thing this storm did</div>
+  <div class="stage">
+    <div class="wheels" id="g-gear-wheels">
+      <div id="g-gear-main"><div class="arrowring"></div><div class="spoke" id="g-gear-sp1"></div><div class="spoke" id="g-gear-sp2" style="transform:rotate(120deg)"></div><div class="spoke" id="g-gear-sp3" style="transform:rotate(240deg)"></div></div>
+      <div id="g-gear-flank"><div class="spoke" id="g-gear-sp4"></div><div class="spoke" id="g-gear-sp5" style="transform:rotate(180deg)"></div></div>
+      <div class="lab" id="g-gear-lab-main">MAIN TORNADO <span class="amber">&middot; COUNTERCLOCKWISE</span></div>
+      <div class="lab" id="g-gear-lab-flank">SATELLITE <span class="red">&middot; CLOCKWISE</span></div>
+    </div>
+  </div>
+  <div class="footer" id="g-gear-footer">atmospheric gearing — a small wheel driven backwards by a large one</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#g-gear-hdr","#g-gear-sub","#g-gear-lab-main","#g-gear-lab-flank","#g-gear-footer"], {autoAlpha:0}, 0);
+  tl.set(["#g-gear-main","#g-gear-flank"], {autoAlpha:0, scale:0.6}, 0);
+  /* cued to audio/a2-s3c.words.json: "One@0.00..deserves@1.92 30@2.38 seconds@2.84..attention,@3.54" opens;
+     "counterclockwise,@12.30" labels the main wheel; "clockwise.@31.32" labels the flank wheel;
+     "gearing.@48.32" lands the footer; "footnote.@67.32" closes the segment */
+  tl.fromTo("#g-gear-hdr", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.5}, 0.3);
+  tl.fromTo("#g-gear-sub", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 1.9);
+  tl.fromTo("#g-gear-main", {autoAlpha:0, scale:0.6}, {autoAlpha:1, scale:1, duration:0.7, ease:"power2.out"}, 5.3);
+  /* continuous rotation the whole window — main wheel counterclockwise, flank wheel clockwise, driven by it */
+  tl.to("#g-gear-main", {rotation:-360, duration:67.9, ease:"none", repeat:-1}, 5.3);
+  tl.fromTo("#g-gear-lab-main", {autoAlpha:0, x:-20}, {autoAlpha:1, x:0, duration:0.5}, 11.2);
+  tl.fromTo("#g-gear-flank", {autoAlpha:0, scale:0.4}, {autoAlpha:1, scale:1, duration:0.6, ease:"power2.out"}, 24.1);
+  tl.to("#g-gear-flank", {rotation:360, duration:43.6, ease:"none", repeat:-1}, 24.1);
+  tl.fromTo("#g-gear-lab-flank", {autoAlpha:0, x:20}, {autoAlpha:1, x:0, duration:0.5}, 31.3);
+  tl.fromTo("#g-gear-footer", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 48.3);
+  tl.to("#g-gear-footer", {autoAlpha:0.7, duration:2, yoyo:true, repeat:8}, 49.3);
+  tl.to(["#g-gear-wheels","#g-gear-footer","#g-gear-hdr","#g-gear-sub"], {autoAlpha:0, duration:0.7, ease:"power3.in"}, 67.2);
+  window.__timelines["g-gearing"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
