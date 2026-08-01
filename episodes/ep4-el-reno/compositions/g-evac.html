@@ -59,7 +59,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#g-evac-hdr", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.5}, 0.1);
   tl.fromTo("#g-evac-map", {autoAlpha:0}, {autoAlpha:1, duration:0.3}, 1.0);
   /* continuous element for the whole 37.2s window: slow map drift, ease:none */
-  tl.fromTo("#g-evac-map", {scale:1}, {scale:1.05, duration:37.2, ease:"none"}, 0);
+  tl.fromTo("#g-evac-map", {scale:1}, {scale:1.015, duration:37.2, ease:"none"}, 0);
   tl.fromTo("#g-evac-i40", {scaleX:0}, {scaleX:1, duration:0.7, ease:"power2.out"}, 2.0);
   tl.fromTo("#g-evac-i35", {scaleY:0}, {scaleY:1, duration:0.7, ease:"power2.out"}, 2.5);
   tl.fromTo("#g-evac-i44", {scaleY:0}, {scaleY:1, duration:0.7, ease:"power2.out"}, 3.0);
