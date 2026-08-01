@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; }
+  .hdr { position:absolute; left:0; right:0; top:64px; text-align:center; font-weight:700; font-size:26px; letter-spacing:8px; color:#93a3b2; }
+  .sub { position:absolute; left:0; right:0; top:108px; text-align:center; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  /* the path strip */
+  .stripwrap { position:absolute; left:150px; right:150px; top:300px; height:420px; }
+  .patharea { position:relative; width:100%; height:100%; }
+  .pathlabel { position:absolute; left:0; top:-40px; font-size:22px; font-weight:700; letter-spacing:4px; color:#93a3b2; }
+  .track { position:absolute; left:0; right:0; top:340px; height:6px; background:#2a3644; }
+  .di { position:absolute; top:314px; width:20px; height:20px; border-radius:50%; background:#5a768f; box-shadow:0 0 10px #5a768f88; }
+  .dicluster { position:absolute; top:296px; width:56px; text-align:center; font-size:15px; font-weight:700; color:#dfe7ee; }
+  /* damage-implied staircase, below track */
+  .stair { position:absolute; bottom:0; height:2px; background:#5a768f; transform-origin:left center; }
+  .stairlab { position:absolute; bottom:-30px; font-size:16px; color:#7fb2e5; font-weight:700; }
+  /* radar curve region, above track */
+  .curvearea { position:absolute; left:0; right:0; top:0; height:340px; }
+  .curvepath { position:absolute; bottom:0; height:2px; background:#c0392b; transform-origin:left center; }
+  .peak { position:absolute; width:3px; background:linear-gradient(0deg,#e74c3c,#c0392b00); }
+  .peaklab { position:absolute; font-family:'Courier New',monospace; font-weight:700; color:#e74c3c; font-size:30px; text-align:center; width:340px; }
+  .peaksub { position:absolute; font-size:17px; color:#93a3b2; font-weight:700; text-align:center; width:340px; letter-spacing:1px; }
+  .scanline { position:absolute; top:-6px; bottom:-6px; width:4px; background:#e8c56a; box-shadow:0 0 16px #e8c56a; }
+  /* gap zone highlight */
+  .gapzone { position:absolute; top:0; bottom:0; background:#c0392b18; border-left:2px dashed #c0392b; border-right:2px dashed #c0392b; }
+  .gaplab { position:absolute; top:-70px; width:100%; text-align:center; font-size:20px; font-weight:700; color:#e74c3c; letter-spacing:2px; }
+  .grasslab { position:absolute; bottom:60px; width:100%; text-align:center; font-family:Georgia,serif; font-style:italic; font-size:24px; color:#dfe7ee; }
+  /* ef3 stamp */
+  .stamp3 { position:absolute; top:250px; font-family:'Arial Black',Arial,sans-serif; font-size:72px; color:#fff; background:#8e2020; padding:2px 22px; }
+  /* bottom gap bar */
+  .barrow { position:absolute; left:150px; right:150px; top:840px; }
+  .barlabrow { display:flex; justify-content:space-between; font-size:19px; font-weight:700; color:#93a3b2; letter-spacing:2px; margin-bottom:10px; }
+  .bar { position:relative; height:44px; background:#101820; border:2px solid #2a3644; }
+  #g1-radarbar { position:absolute; left:0; top:0; bottom:0; width:100%; transform-origin:left center; background:linear-gradient(90deg,#5a768f,#c0392b); }
+  #g1-gapval { position:absolute; right:-140px; top:0; font-family:'Courier New',monospace; font-size:40px; font-weight:700; color:#e74c3c; }
+  .close { position:absolute; left:0; right:0; bottom:56px; text-align:center; font-family:Georgia,serif; font-style:italic; font-size:28px; color:#b8c6d4; }
+</style>
+<div id="root" data-composition-id="g-efscale-v1" data-width="1920" data-height="1080">
+  <div class="hdr" id="g1-hdr">WHY EF3 — THE SCALE RATES DAMAGE, NOT WIND</div>
+  <div class="sub" id="g1-sub">it measures what wind does — never what wind is</div>
+
+  <div class="stripwrap" id="g1-strip">
+    <div class="pathlabel" id="g1-pathlab">16-MILE PATH · ALMOST ALL OPEN FARMLAND</div>
+    <div class="track"></div>
+    <div class="curvearea">
+      <div class="curvepath" id="g1-curve" style="left:0; width:1620px; bottom:0; height:120px;"></div>
+      <div class="scanline" id="g1-scan"></div>
+      <div class="peak" id="g1-peak" style="left:760px; bottom:6px; height:280px;"></div>
+      <div class="peaklab" id="g1-peaklab" style="left:590px; top:0px;">291 MPH</div>
+      <div class="peaksub" id="g1-peaksub" style="left:590px; top:40px;">RADAR · SUB-VORTICES OVER EMPTY FIELDS</div>
+      <div class="gapzone" id="g1-gapzone" style="left:660px; width:340px;"></div>
+      <div class="gaplab" id="g1-gaplab">NOTHING TO INSPECT</div>
+    </div>
+    <div class="di" id="g1-di0" style="left:120px;"></div>
+    <div class="dicluster" id="g1-diclab0" style="left:96px;">RURAL<br>HOME</div>
+    <div class="di" id="g1-di1" style="left:1400px;"></div>
+    <div class="dicluster" id="g1-diclab1" style="left:1376px;">RURAL<br>HOME</div>
+    <div class="stamp3" id="g1-stamp" style="left:100px;">EF3</div>
+    <div class="grasslab" id="g1-grass">"Grass does not testify."</div>
+  </div>
+
+  <div class="barrow" id="g1-barrow">
+    <div class="barlabrow"><span>RADAR-MEASURED VS DAMAGE-IMPLIED WIND</span><span></span></div>
+    <div class="bar"><div id="g1-radarbar"></div></div>
+    <div id="g1-gapval">0%</div>
+  </div>
+
+  <div class="close" id="g1-close">The record width stands, measured by radar — the violence stays officially invisible.</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#g1-hdr","#g1-sub","#g1-strip","#g1-barrow","#g1-close"], {autoAlpha:0}, 0);
+  tl.set("#g1-curve", {scaleX:0}, 0);
+  tl.set(["#g1-di0","#g1-diclab0","#g1-di1","#g1-diclab1","#g1-stamp","#g1-peak","#g1-peaklab","#g1-peaksub","#g1-gapzone","#g1-gaplab","#g1-grass"], {autoAlpha:0}, 0);
+  tl.set("#g1-radarbar", {scaleX:0}, 0);
+
+  /* does not measure wind @0; measures what wind does @3.6 */
+  tl.fromTo("#g1-hdr", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.5}, 0.4);
+  tl.fromTo("#g1-sub", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 3.6);
+
+  /* survey teams walk the path @6.24 -> introduce the strip */
+  tl.fromTo("#g1-strip", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 6.2);
+  /* continuous radar scan sweeps the whole path for the full window — the one continuous element */
+  tl.fromTo("#g1-scan", {x:-10}, {x:1610, duration:74, ease:"none"}, 6.7);
+
+  /* well-built house swept @12.74; snapped power pole @17.74; no damage no evidence no rating @20.56 */
+  tl.fromTo("#g1-di0", {autoAlpha:0, scale:0.4}, {autoAlpha:1, scale:1, duration:0.3}, 12.9);
+  tl.fromTo("#g1-diclab0", {autoAlpha:0}, {autoAlpha:1, duration:0.3}, 13.2);
+  tl.fromTo("#g1-di1", {autoAlpha:0, scale:0.4}, {autoAlpha:1, scale:1, duration:0.3}, 17.9);
+  tl.fromTo("#g1-diclab1", {autoAlpha:0}, {autoAlpha:1, duration:0.3}, 18.2);
+
+  /* 16 miles, almost all open farmland @24.14-29.38 */
+  tl.fromTo("#g1-pathlab", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 24.2);
+
+  /* hundreds of damage points ... worst supported EF3 @30.72-38.28 -> the damage-implied curve grows, stamp lands where evidence maxes */
+  tl.to("#g1-curve", {scaleX:1, duration:2.4, ease:"power2.out"}, 31.0);
+  tl.fromTo("#g1-stamp", {scale:2.2, autoAlpha:0}, {scale:1, autoAlpha:1, duration:0.35, ease:"power4.in"}, 37.9);
+
+  /* mobile research radar measured winds above 290 mph @39.86-49 */
+  tl.fromTo("#g1-peak", {scaleY:0, autoAlpha:1}, {scaleY:1, duration:0.9, ease:"power2.out", transformOrigin:"bottom"}, 39.9);
+  tl.fromTo("#g1-peaklab", {autoAlpha:0, y:-14}, {autoAlpha:1, y:0, duration:0.4}, 43.2);
+  tl.fromTo("#g1-peaksub", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 46.5);
+
+  /* where the radar saw the most violent winds, surveyors found nothing to inspect @50.2-54.82 */
+  tl.fromTo("#g1-gapzone", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 50.2);
+  tl.fromTo("#g1-gaplab", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 53.4);
+  /* grass does not testify @55.24 */
+  tl.fromTo("#g1-grass", {autoAlpha:0, y:10}, {autoAlpha:1, y:0, duration:0.5}, 55.2);
+
+  /* across the whole path, radar ran 10-30% above damage-implied @58.78-64 */
+  tl.fromTo("#g1-barrow", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 58.7);
+  tl.to("#g1-radarbar", {scaleX:1, duration:1.6, ease:"power2.out"}, 59.5);
+  const gap = {v:0};
+  tl.to(gap, {v:30, duration:2.2, ease:"power3.out", onUpdate:gapUpd}, 60.4);
+  function gapUpd() { const el=document.getElementById("g1-gapval"); if(el) el.textContent = Math.round(gap.v) + "%"; }
+
+  /* the record width stands, measured by radar — the violence stays officially invisible @75.6-80.56 */
+  tl.fromTo("#g1-close", {autoAlpha:0}, {autoAlpha:1, duration:0.7}, 75.5);
+
+  /* slide-right exit, timed to the hard cut at the end of the 81.41s window */
+  tl.to("#root", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 80.8);
+
+  window.__timelines["g-efscale-v1"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
