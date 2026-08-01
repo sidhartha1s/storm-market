@@ -56,8 +56,10 @@ window.__timelines = window.__timelines || {};
   /* cued to audio/a4-s3.words.json: "researchers@1.66 studied@1.96 vehicle@2.52 movement@2.90 across@3.38 six@3.70
      American@4.04 metro@4.50 areas@4.86 hit@5.34" builds the schematic; the stat card lands after the buildup on
      "largest@11.90 tornado@12.32 evacuation@12.84 ever@13.62 measured@14.46 in@14.84 an@15.12 American@15.24 city.@15.64" */
-  tl.fromTo("#g-evac-hdr", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.5}, 0.6);
-  tl.fromTo("#g-evac-map", {autoAlpha:0}, {autoAlpha:1, duration:0.3}, 1.7);
+  tl.fromTo("#g-evac-hdr", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.5}, 0.1);
+  tl.fromTo("#g-evac-map", {autoAlpha:0}, {autoAlpha:1, duration:0.3}, 1.0);
+  /* continuous element for the whole 37.2s window: slow map drift, ease:none */
+  tl.fromTo("#g-evac-map", {scale:1}, {scale:1.05, duration:37.2, ease:"none"}, 0);
   tl.fromTo("#g-evac-i40", {scaleX:0}, {scaleX:1, duration:0.7, ease:"power2.out"}, 2.0);
   tl.fromTo("#g-evac-i35", {scaleY:0}, {scaleY:1, duration:0.7, ease:"power2.out"}, 2.5);
   tl.fromTo("#g-evac-i44", {scaleY:0}, {scaleY:1, duration:0.7, ease:"power2.out"}, 3.0);
