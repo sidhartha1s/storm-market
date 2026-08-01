@@ -43,6 +43,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#g-qr-l2", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5}, 8.4);
   tl.fromTo("#g-qr-l3", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5}, 9.4);
   tl.fromTo("#g-qr-attrib", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 12.0);
+  /* continuous element for the whole 13s window: slow push on the quote block, ease:none */
+  tl.fromTo(".qwrap", {scale:1}, {scale:1.03, duration:13, ease:"none"}, 0);
   /* continuous element to cover the rest of the ~35s window: a slow document-scan sweep, ep2 g-sa-style hold */
   tl.fromTo(".doc", {autoAlpha:1}, {autoAlpha:0.85, duration:14, ease:"none", yoyo:true, repeat:1}, 13.0);
   tl.to("#g-qr-doc", {autoAlpha:0, y:-24, duration:0.5}, 34.0);
