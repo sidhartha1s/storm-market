@@ -20,13 +20,13 @@ os.makedirs(STOCK_DIR, exist_ok=True)
 os.makedirs(FRAMES_DIR, exist_ok=True)
 
 def pexels_search(query, per_page=8):
-    url = f"https://api.pexels.com/videos/search?query={urllib.request.quote(query)}&per_page={per_page}&orientation=landscape"
-    req = urllib.request.Request(url, headers={"Authorization": PEXELS_KEY})
+    url = f"https://api.pexels.com/videos/search?query={urllib.parse.quote(query)}&per_page={per_page}&orientation=landscape"
+    req = urllib.request.Request(url, headers={"Authorization": PEXELS_KEY, "User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(req, timeout=30) as r:
         return json.load(r)
 
 def pixabay_search(query, per_page=8):
-    url = f"https://pixabay.com/api/videos/?key={PIXABAY_KEY}&q={urllib.request.quote(query)}&per_page={per_page}"
+    url = f"https://pixabay.com/api/videos/?key={PIXABAY_KEY}&q={urllib.parse.quote(query)}&per_page={per_page}"
     with urllib.request.urlopen(url, timeout=30) as r:
         return json.load(r)
 
