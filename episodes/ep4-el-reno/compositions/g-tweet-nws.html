@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; }
+  .doc { position:absolute; left:150px; top:150px; width:1300px; }
+  .doceye { font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .doctit { font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; margin-top:14px; line-height:1.1; }
+  .docsub { font-family:Georgia,serif; font-style:italic; font-size:27px; color:#d8a13a; margin-top:14px; }
+  .card { position:absolute; left:150px; top:440px; width:1440px; background:#0d131a; border:2px solid #2a3644; padding:56px 64px; box-sizing:border-box; }
+  .cline { font-size:38px; color:#f2f5f8; font-weight:700; line-height:1.5; }
+  .cline .hl { color:#e8c56a; }
+  .attrib { margin-top:36px; font-size:22px; color:#93a3b2; letter-spacing:2px; font-weight:700; }
+</style>
+<div id="root" data-composition-id="g-tweet-nws" data-width="1920" data-height="1080">
+  <div class="doc" id="g-tw-doc">
+    <div class="doceye">GOVERNMENT ADVISORY · POST-EVENT REVIEW</div>
+    <div class="doctit">NWS NORMAN — 1:00 PM SAFETY GUIDANCE</div>
+    <div class="docsub">AS QUOTED IN THE FEDERAL REVIEW</div>
+  </div>
+  <div class="card" id="g-tw-card">
+    <div class="cline" id="g-tw-l1">TORNADO SAFETY: If you choose to flee in your car,</div>
+    <div class="cline" id="g-tw-l2">plan for and anticipate <span class="hl">traffic jams</span> and <span class="hl">blocked roads</span>,</div>
+    <div class="cline" id="g-tw-l3"><span class="hl">hail</span>, <span class="hl">heavy rain</span> and <span class="hl">flooding</span>.</div>
+    <div class="attrib" id="g-tw-attrib">@NWSNorman · 1:00 PM · May 31 2013</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#g-tw-doc","#g-tw-card","#g-tw-l1","#g-tw-l2","#g-tw-l3","#g-tw-attrib"], {autoAlpha:0}, 0);
+  /* cued to audio/a4-s2.words.json, offset so this comp's t=0 = "At@16.46 one@16.66 o'clock@17.00" — the exact
+     advisory text lands word-for-word: "if@27.18..car,@28.72" / "plan@29.84..jams,@30.70" / "hail,@31.52..flooding.@33.02" */
+  tl.fromTo("#g-tw-doc", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.6}, 0.0);
+  tl.fromTo("#g-tw-card", {autoAlpha:0, y:30}, {autoAlpha:1, y:0, duration:0.6}, 4.5);
+  tl.fromTo("#g-tw-l1", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 10.72);
+  tl.fromTo("#g-tw-l2", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 13.38);
+  tl.fromTo("#g-tw-l3", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 15.06);
+  tl.fromTo("#g-tw-attrib", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 17.5);
+  tl.to("#g-tw-doc", {autoAlpha:0, y:-24, duration:0.5}, 27.0);
+  tl.to("#g-tw-card", {x:60, autoAlpha:0, duration:0.6, ease:"power3.in"}, 27.2);
+  window.__timelines["g-tweet-nws"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
