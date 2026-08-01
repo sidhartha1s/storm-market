@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; overflow:hidden; }
+  #g2-grid { position:absolute; left:0; top:0; width:1100px; height:1080px;
+    background-image:repeating-linear-gradient(0deg, #1c2732 0, #1c2732 2px, transparent 2px, transparent 138px),
+                      repeating-linear-gradient(90deg, #1c2732 0, #1c2732 2px, transparent 2px, transparent 138px);
+    opacity:0.7; }
+  .g2-mile { position:absolute; font-family:'Courier New',monospace; font-size:15px; color:#3a4855; }
+  #g2-hwy81 { position:absolute; left:940px; top:0; width:6px; height:1080px; background:#5a768f; box-shadow:0 0 14px #5a768f88; }
+  #g2-hwylab { position:absolute; left:960px; top:40px; font-family:'Courier New',monospace; font-weight:700; font-size:20px; color:#7fb2e5; letter-spacing:2px; }
+  #g2-storm { position:absolute; width:90px; height:90px; margin:-45px 0 0 -45px; border-radius:50%;
+    background:conic-gradient(#0b1016 0deg, #2a3644 60deg, #5a768f 150deg, #c0392b 210deg, #0b1016 360deg);
+    box-shadow:0 0 60px #c0392b44; }
+  .g2-arrow { position:absolute; height:6px; background:#3f7d44; transform-origin:left center; border-radius:3px; }
+  .g2-arrow:after { content:""; position:absolute; right:-4px; top:-7px; width:0; height:0;
+    border-left:14px solid currentColor; border-top:10px solid transparent; border-bottom:10px solid transparent; color:inherit; }
+  #g2-arr1 { color:#3f7d44; background:#3f7d44; left:520px; top:360px; width:220px; }
+  #g2-arr2 { color:#3f7d44; background:#3f7d44; left:520px; top:520px; width:220px; }
+  #g2-arr3 { color:#3f7d44; background:#3f7d44; left:520px; top:680px; width:220px; }
+  #g2-panel { position:absolute; right:0; top:0; bottom:0; width:820px;
+    background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); padding:90px 70px 0 170px; box-sizing:border-box; }
+  .g2-eyebrow { font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; }
+  .g2-place { font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; margin-top:14px; line-height:1.1; }
+  .g2-sub { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:16px; }
+  .g2-row { margin-top:42px; }
+  .g2-rowlab { font-weight:700; font-size:19px; letter-spacing:4px; color:#93a3b2; }
+  .g2-counter { font-family:'Courier New',monospace; font-weight:700; font-size:80px; color:#e74c3c; margin-top:6px; }
+  .g2-counterlab { font-weight:700; font-size:20px; letter-spacing:6px; color:#c8d3e0; }
+  #g2-verdict { position:absolute; left:60px; bottom:70px; width:900px; }
+  .g2-v1 { font-family:'Arial Black',Arial,sans-serif; font-size:38px; color:#f2f5f8; letter-spacing:1px; }
+</style>
+<div id="root" data-composition-id="g-turn-v2" data-width="1920" data-height="1080">
+  <div id="g2-grid"></div>
+  <div id="g2-hwy81"></div>
+  <div id="g2-hwylab">HIGHWAY 81</div>
+  <div class="g2-arrow" id="g2-arr1" style="opacity:0"></div>
+  <div class="g2-arrow" id="g2-arr2" style="opacity:0"></div>
+  <div class="g2-arrow" id="g2-arr3" style="opacity:0"></div>
+  <div id="g2-storm" style="left:480px; top:520px; transform:scale(0.35)"></div>
+  <div id="g2-verdict" style="opacity:0">
+    <div class="g2-v1" id="g2-vtext">A ROAD THAT WAS OUTSIDE THE STORM BECAME INSIDE IT.</div>
+  </div>
+  <div id="g2-panel">
+    <div class="g2-eyebrow" id="g2-eyebrow">WHY DRIVING AWAY FAILED</div>
+    <div class="g2-place" id="g2-place">THE GEOMETRY<br>THAT CLOSED</div>
+    <div class="g2-sub" id="g2-sub">"Something wider than their escape margin, faster than their vehicles."</div>
+    <div class="g2-row" id="g2-row1" style="opacity:0">
+      <div class="g2-rowlab">FORWARD SPEED</div>
+      <div class="g2-counter" id="g2-speed">25</div>
+      <div class="g2-counterlab">MILES PER HOUR</div>
+    </div>
+    <div class="g2-row" id="g2-row2" style="opacity:0">
+      <div class="g2-rowlab">PATH WIDTH</div>
+      <div class="g2-counter" id="g2-width" style="color:#e8c56a">0.5</div>
+      <div class="g2-counterlab">MILES</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#g2-place"], {autoAlpha:0, y:24}, 0);
+  tl.set(["#g2-eyebrow","#g2-sub"], {autoAlpha:0}, 0);
+  tl.fromTo("#g2-eyebrow", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.6}, 0.3);
+  tl.fromTo("#g2-place", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.6}, 0.6);
+  tl.fromTo("#g2-row1", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.4}, 1.4);
+
+  /* continuous element for the whole window: the storm cell drifts + rotates the entire 56s */
+  tl.to("#g2-storm", {rotation:260, duration:56, ease:"none"}, 0);
+  tl.to("#g2-storm", {left:920, top:420, duration:26, ease:"power1.inOut"}, 0.5);   // SE drift toward Hwy 81
+
+  /* escape arrows appear -- the chasers' assumed margin */
+  tl.fromTo(["#g2-arr1","#g2-arr2","#g2-arr3"], {autoAlpha:0, scaleX:0}, {autoAlpha:1, scaleX:1, duration:0.5, stagger:0.25, transformOrigin:"left center"}, 2.2);
+
+  /* turned @7.46; hard @7.76; left @8.42 -- storm elbows onto a new heading, ring pulse on the turn */
+  tl.to("#g2-storm", {left:700, top:660, duration:1.6, ease:"power2.in"}, 6.9);
+  tl.to("#g2-storm", {left:1000, top:520, duration:1.8, ease:"power3.out"}, 8.42);
+  /* accelerated @10.6-11.18 */
+  tl.fromTo("#g2-row1", {autoAlpha:0}, {autoAlpha:1, duration:0.3}, 10.6);
+
+  /* 35 @16.74; 50 @18.62-18.9 */
+  const spd = {v:25};
+  tl.to(spd, {v:35, duration:1.1, ease:"power2.out", onUpdate:()=>{document.getElementById("g2-speed").textContent=Math.round(spd.v);}}, 16.5);
+  tl.to(spd, {v:52, duration:1.4, ease:"power3.out", onUpdate:()=>{document.getElementById("g2-speed").textContent=Math.round(spd.v)+"+";}}, 18.5);
+  tl.to("#g2-storm", {left:1080, top:440, duration:9, ease:"none"}, 18.5);   // approaching the highway line
+
+  /* wider @33.92; escape margin @34.78-35.6 -- the storm swallows the road grid, arrows collapse */
+  tl.fromTo("#g2-row2", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.4}, 33.9);
+  tl.to("#g2-storm", {scale:2.6, duration:2.4, ease:"power1.out"}, 33.9);
+  const wid = {v:0.5};
+  tl.to(wid, {v:2.6, duration:2.4, ease:"power1.out", onUpdate:()=>{document.getElementById("g2-width").textContent=wid.v.toFixed(1);}}, 33.9);
+  tl.to(["#g2-arr1","#g2-arr2","#g2-arr3"], {backgroundColor:"#c0392b", color:"#c0392b", scaleX:0.3, duration:1.0, stagger:0.15, transformOrigin:"left center"}, 34.5);
+
+  /* faster @36.16; vehicles/wet section roads @36.88-38.6 -- arrows finish collapsing into the storm */
+  tl.to(["#g2-arr1","#g2-arr2","#g2-arr3"], {autoAlpha:0, scaleX:0, duration:0.6, stagger:0.1}, 37.6);
+
+  /* mathematics @41.6; rewritten @44.76-45.22; nobody's map @46.06-46.8 -- the verdict lands */
+  tl.fromTo("#g2-verdict", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.6}, 45.2);
+
+  /* exit timed to the hard cut at the end of the 56.61s host window */
+  tl.to("#root", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 56.0);
+
+  window.__timelines["g-turn-v2"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
