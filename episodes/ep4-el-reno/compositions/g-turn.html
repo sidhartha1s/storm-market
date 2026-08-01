@@ -54,7 +54,7 @@
       <div class="g1-counter" id="g1-speed">25</div>
       <div class="g1-counterlab">MILES PER HOUR</div>
     </div>
-    <div class="g1-row" id="g1-row2" style="opacity:0">
+    <div class="g1-row" id="g1-row2">
       <div class="g1-rowlab">PATH WIDTH</div>
       <div class="g1-counter" id="g1-width" style="color:#e8c56a">0.5</div>
       <div class="g1-counterlab">MILES</div>
@@ -100,6 +100,7 @@ window.__timelines = window.__timelines || {};
 
   /* wider @33.92; escape margin @34.78-35.6; faster @36.16; vehicles/wet section roads @36.88-38.6 */
   tl.to("#g1-footprint", {scale:1.9, duration:2.2, ease:"power1.out"}, 33.9);
+  tl.fromTo("#g1-row2", {autoAlpha:0, x:40}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 33.5);
   const wid = {v:0.5};
   tl.to(wid, {v:2.6, duration:2.2, ease:"power1.out", onUpdate:()=>{document.getElementById("g1-width").textContent=wid.v.toFixed(1);}}, 33.9);
   tl.to("#g1-footprint", {scale:2.4, duration:2.0, ease:"power2.out"}, 36.2);
@@ -112,7 +113,7 @@ window.__timelines = window.__timelines || {};
   tl.to("#g1-footprint", {scale:2.7, duration:8, ease:"sine.inOut", yoyo:true, repeat:1}, 41.6);
 
   /* exit timed to the hard cut at the end of the 57.31s host window — stays visible until the cut */
-  tl.to("#root", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 57.3);
+  tl.to("#root", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 57.0);
 
   window.__timelines["g-turn"] = tl;
 })();
