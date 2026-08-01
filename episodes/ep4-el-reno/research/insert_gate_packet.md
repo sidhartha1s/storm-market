@@ -10,7 +10,15 @@ is handled separately and is NOT one of these 21 — no action needed on it here
 The 9 SHORTLIST clips below now carry **verbatim faster-whisper (small.en) transcripts** of
 their proposed cut windows, generated 2026-08-01 by extracting each window (+ a few seconds of
 padding for sentence-boundary context) from `media/broadcast/` and transcribing locally — see
-each entry's "Transcript (VERBATIM, faster-whisper small.en)" line. Several proposed-cut windows
+each entry's "Transcript (VERBATIM, faster-whisper small.en)" line.
+
+**EDITOR RULINGS (main session, 2026-08-01):**
+- `abc-3-storm-chasers-killed`: audio says "13 people killed in the Oklahoma Twister" — early-reporting
+  conflation that contradicts our verified figure (8 tornado deaths). Cut is approved-candidate for
+  MUTED visual use only; its audio never plays.
+- `kfor-sutton-very-close-call` ("please do not ride this out in any interior closet or bathroom"):
+  promoted to COLD-OPEN ANCHOR candidate — intelligible, high-stakes, ep2-Spann-class. If approved,
+  it opens the episode at ~2.5s under the siren spine. Several proposed-cut windows
 were nudged by 1-3s where the original ≤4s window landed on a mid-word chop or mostly dead air;
 each change is called out in that clip's entry. The **BENCH** section (12 clips, below) and
 **PROVENANCE FLAGS** section remain **inferred from the 3 review frames + filename + clip_hunt.md
