@@ -91,8 +91,8 @@ dialogue unless it appears as an on-screen caption in a frame (noted where it do
 
 ### 7. `cnn-ethics-of-chasing.mp4`
 - **Station / rights holder:** CNN (network-official, channel_id `UCupvZG-5ko_eiXAupbDfxWw`)
-- **Proposed cut:** 0:00–0:04 (~4s) — CNN reporter on-scene at wreckage/debris pile, hand gesturing toward a crushed vehicle (frame1/2)
-- **Description (inferred):** field report tied to the "storm chasers killed" package; the chyron reads "3 STORM CHASERS KILLED IN TORNADO," suggesting this clip's opening segues from breaking news into the risk/ethics discussion (title implies later segment covers "too much risk")
+- **Proposed cut:** 0:00–0:04 (~4s, unchanged — verified clean) — CNN reporter on-scene at wreckage/debris pile, hand gesturing toward a crushed vehicle (frame1/2)
+- **Transcript (VERBATIM, faster-whisper small.en):** "Because you're watching Mother Nature at work and all the associated dynamics," — a complete clause ending on a natural pause (the next line, "it's fantastic," starts after the window). No chop, no dead air. Note: this line is someone (a chaser, before Tim Samaras is named later in the package) explaining the draw of chasing, not the reporter's own risk/ethics framing — confirms the clip does touch the "why do people do this" angle the title promises, though the specific 4s window is scene-setting rather than the explicit ethics debate.
 - **Beat served:** A3-S3/A6 (chasing-risk framing)
 - **Frames:** `.../media/_gate/cnn-ethics-of-chasing/frame1.jpg`, `frame2.jpg`, `frame3.jpg`
 - **Source URL:** `youtube.com/watch?v=OzNfXo8Sm-I` — "Are storm chasers taking too much risk?" (2013-06-04) per clip_hunt.md §3
