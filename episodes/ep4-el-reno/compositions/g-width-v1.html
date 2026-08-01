@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; overflow:hidden; }
+  #g-width-v1-wrap { position:absolute; inset:0; }
+  .hdr { position:absolute; left:0; right:0; top:64px; text-align:center; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; }
+  /* highway grid — top-down scale reference */
+  #g-width-v1-grid { position:absolute; left:50%; top:52%; width:1600px; height:1600px; margin-left:-800px; margin-top:-800px;
+    background-image:
+      repeating-linear-gradient(0deg, transparent 0 158px, rgba(147,163,178,0.16) 158px 160px),
+      repeating-linear-gradient(90deg, transparent 0 158px, rgba(147,163,178,0.16) 158px 160px);
+    opacity:0.5; }
+  /* mile-ring reference circles (0.5 / 1 / 2 / 2.6 mi @ ~158px per mile) */
+  .ring { position:absolute; left:50%; top:52%; border:1.5px dashed #3a4652; border-radius:50%; transform:translate(-50%,-50%); }
+  #g-width-v1-ring-h { width:158px; height:158px; }
+  #g-width-v1-ring-1 { width:316px; height:316px; }
+  #g-width-v1-ring-2 { width:632px; height:632px; }
+  #g-width-v1-ring-26 { width:822px; height:822px; border-color:#c0392b; }
+  .ringlab { position:absolute; font-size:19px; font-weight:700; color:#93a3b2; letter-spacing:2px; }
+  /* growing tornado footprint */
+  #g-width-v1-footprint { position:absolute; left:50%; top:52%; width:822px; height:822px; margin-left:-411px; margin-top:-411px;
+    border-radius:50%; transform:scale(0);
+    background:radial-gradient(ellipse at 50% 50%, rgba(90,118,143,0.55), rgba(30,20,20,0.85) 60%, rgba(142,32,32,0.65) 100%);
+    box-shadow:0 0 120px rgba(192,57,43,0.35); }
+  /* continuous radar sweep — runs the whole window */
+  #g-width-v1-sweep { position:absolute; left:50%; top:52%; width:822px; height:822px; margin-left:-411px; margin-top:-411px;
+    border-radius:50%; overflow:hidden; }
+  #g-width-v1-sweep-arm { position:absolute; left:50%; top:50%; width:411px; height:3px; transform-origin:left center;
+    background:linear-gradient(90deg, rgba(232,197,106,0.9), rgba(232,197,106,0)); }
+  /* Manhattan outline overlay, to scale (13.4mi x 2.3mi at 158px/mi ≈ 2117x363, scaled down 0.42 to fit frame) */
+  #g-width-v1-manhattan { position:absolute; left:50%; top:52%; width:889px; height:153px; margin-left:-444px; margin-top:-76px;
+    border:2px solid #7fb2e5; border-radius:70px 40px 40px 70px; opacity:0; }
+  #g-width-v1-manhattan-lab { position:absolute; left:50%; top:52%; margin-top:96px; transform:translateX(-50%); font-size:19px;
+    font-weight:700; color:#7fb2e5; letter-spacing:2px; white-space:nowrap; }
+  /* old-record comparison ring (Hallam NE 2004, 2.5 mi) */
+  #g-width-v1-hallam { position:absolute; left:50%; top:52%; width:790px; height:790px; margin-left:-395px; margin-top:-395px;
+    border:2px dashed #93a3b2; border-radius:50%; opacity:0; }
+  #g-width-v1-hallam-lab { position:absolute; left:50%; top:52%; margin-top:-455px; transform:translateX(-50%); font-size:19px;
+    font-weight:700; color:#93a3b2; letter-spacing:2px; white-space:nowrap; }
+  /* counter block, bottom center */
+  #g-width-v1-counter-wrap { position:absolute; left:0; right:0; bottom:96px; text-align:center; opacity:0; }
+  #g-width-v1-counter { font-family:'Courier New',monospace; font-weight:700; font-size:84px; color:#e74c3c; }
+  #g-width-v1-counter-lab { font-size:20px; font-weight:700; color:#c8d3e0; letter-spacing:6px; margin-top:4px; }
+  #g-width-v1-record { position:absolute; left:0; right:0; bottom:60px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
+    font-size:52px; color:#f2f5f8; opacity:0; }
+</style>
+<div id="root" data-composition-id="g-width-v1" data-width="1920" data-height="1080">
+  <div id="g-width-v1-wrap">
+    <div class="hdr" id="g-width-v1-hdr">TOP-DOWN · SCALE RECONSTRUCTION</div>
+    <div id="g-width-v1-grid"></div>
+    <div class="ring" id="g-width-v1-ring-h"></div>
+    <div class="ring" id="g-width-v1-ring-1"></div>
+    <div class="ring" id="g-width-v1-ring-2"></div>
+    <div class="ring" id="g-width-v1-ring-26"></div>
+    <div id="g-width-v1-footprint"></div>
+    <div id="g-width-v1-sweep"><div id="g-width-v1-sweep-arm"></div></div>
+    <div id="g-width-v1-manhattan"></div>
+    <div id="g-width-v1-manhattan-lab">MANHATTAN ISLAND · 13.4 × 2.3 MI, TO SCALE</div>
+    <div id="g-width-v1-hallam"></div>
+    <div id="g-width-v1-hallam-lab">OLD RECORD · HALLAM, NE 2004 · 2.5 MI</div>
+    <div id="g-width-v1-counter-wrap">
+      <div id="g-width-v1-counter">0.0</div>
+      <div id="g-width-v1-counter-lab">MILES ACROSS · EDGE TO EDGE</div>
+    </div>
+    <div id="g-width-v1-record">NO TORNADO HAD EVER BEEN THIS WIDE</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-width-v1-";
+  tl.set([P+"hdr", P+"manhattan", P+"manhattan-lab", P+"hallam", P+"hallam-lab", P+"counter-wrap", P+"record"], {autoAlpha:0}, 0);
+  tl.set(P+"footprint", {scale:0}, 0);
+
+  tl.fromTo(P+"hdr", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.6}, 0.3);
+  tl.fromTo(P+"counter-wrap", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 0.6);
+
+  /* continuous radar sweep — the whole window, never stops */
+  tl.to(P+"sweep-arm", { rotation:360, duration:55, ease:"none", transformOrigin:"left center" }, 0);
+
+  const w = {v:0};
+  function upd() { const el=document.getElementById("g-width-v1-counter"); if(el) el.textContent = w.v.toFixed(1); }
+
+  /* half @14.32-14.86 */
+  tl.to(w, {v:0.5, duration:0.7, ease:"power2.out", onUpdate:upd}, 14.3);
+  tl.to(P+"footprint", {scale:0.19, duration:0.7, ease:"power2.out"}, 14.3);
+  /* full mile @16.56-16.84 */
+  tl.to(w, {v:1.0, duration:0.6, ease:"power1.inOut", onUpdate:upd}, 16.5);
+  tl.to(P+"footprint", {scale:0.38, duration:0.6, ease:"power1.inOut"}, 16.5);
+  /* then two @18.14-18.64 */
+  tl.to(w, {v:2.0, duration:0.7, ease:"power1.inOut", onUpdate:upd}, 18.1);
+  tl.to(P+"footprint", {scale:0.77, duration:0.7, ease:"power1.inOut"}, 18.1);
+  /* 6:19 pm — south of El Reno, circulation reaches 2.6 miles @24.04-25.3 — final landing, slows dramatically */
+  tl.to(w, {v:2.6, duration:1.6, ease:"power3.out", onUpdate:upd}, 24.0);
+  tl.to(P+"footprint", {scale:1.0, duration:1.6, ease:"power3.out"}, 24.0);
+
+  /* Manhattan @29.42 — after 2.6 has landed */
+  tl.fromTo(P+"manhattan", {autoAlpha:0, scale:0.85}, {autoAlpha:1, scale:1, duration:0.7, ease:"power2.out"}, 29.4);
+  tl.fromTo(P+"manhattan-lab", {autoAlpha:0, y:12}, {autoAlpha:1, y:0, duration:0.5}, 29.7);
+
+  /* old record, set in Nebraska nine years earlier, was gone @38.94-42.92 */
+  tl.fromTo(P+"hallam", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 38.9);
+  tl.fromTo(P+"hallam-lab", {autoAlpha:0, y:-10}, {autoAlpha:1, y:0, duration:0.5}, 39.3);
+  tl.to(P+"hallam", {autoAlpha:0.15, duration:0.8, ease:"power2.in"}, 42.5);
+
+  /* record statement lands with "gone" */
+  tl.fromTo(P+"record", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.6}, 42.6);
+
+  /* exit — whole graphic slides off, timed to the end of the comp's window */
+  tl.to(P+"wrap", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 54.65);
+
+  window.__timelines["g-width-v1"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
