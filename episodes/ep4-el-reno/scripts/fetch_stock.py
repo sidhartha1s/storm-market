@@ -1,5 +1,6 @@
 import os, sys, json, subprocess, csv
 import urllib.request
+import urllib.parse
 
 PEXELS_KEY = None
 PIXABAY_KEY = None
