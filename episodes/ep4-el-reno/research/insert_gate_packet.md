@@ -7,11 +7,15 @@ clip_hunt.md §6 fair-use reality. All 21 candidate clips live in `media/broadca
 frames each in `media/_gate/<basename>/frame[1-3].jpg`. NWS Norman "Lessons" PD pull for A6-S3
 is handled separately and is NOT one of these 21 — no action needed on it here.
 
-All transcripts below are **inferred from the 3 review frames + filename + clip_hunt.md
-description, not verbatim captions** — no sidecar .srt/.vtt/.txt transcripts exist for any of
-these 21 clips (checked `media/broadcast/` and `research/`; none found). Do not treat any
-quoted-looking text as verified dialogue unless it appears as an on-screen caption in a frame
-(noted where it does).
+The 9 SHORTLIST clips below now carry **verbatim faster-whisper (small.en) transcripts** of
+their proposed cut windows, generated 2026-08-01 by extracting each window (+ a few seconds of
+padding for sentence-boundary context) from `media/broadcast/` and transcribing locally — see
+each entry's "Transcript (VERBATIM, faster-whisper small.en)" line. Several proposed-cut windows
+were nudged by 1-3s where the original ≤4s window landed on a mid-word chop or mostly dead air;
+each change is called out in that clip's entry. The **BENCH** section (12 clips, below) and
+**PROVENANCE FLAGS** section remain **inferred from the 3 review frames + filename + clip_hunt.md
+description only — not re-transcribed**; do not treat any quoted-looking text there as verified
+dialogue unless it appears as an on-screen caption in a frame (noted where it does).
 
 ---
 
