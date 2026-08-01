@@ -69,8 +69,8 @@ dialogue unless it appears as an on-screen caption in a frame (noted where it do
 
 ### 5. `cnn-samaras-family-interview.mp4`
 - **Station / rights holder:** CNN (network-official, channel_id `UCupvZG-5ko_eiXAupbDfxWw`)
-- **Proposed cut:** 0:00–0:04 (~4s) — Sal Lucido (Carl Young's stepfather) speaking to camera, lower-third names him (frame2)
-- **Description (inferred):** family-member studio-remote interview, humanizing the TWISTEX loss
+- **Proposed cut:** 0:03.0–0:07.0 (~4s — NUDGED from 0:00–0:04) — Sal Lucido (Carl Young's stepfather) speaking to camera, lower-third names him (frame2)
+- **Transcript (VERBATIM, faster-whisper small.en):** "Car[l] was killed Friday afternoon and I didn't hear about it" (whisper transcribed the name as "Car," almost certainly "Carl" — consistent with Carl Young). Original 0:00-0:04 window was ~3s of dead air before speech, then chopped mid-word on "killed"; nudged to start on-speech and end cleanly right before "until Sunday morning" continues.
 - **Beat served:** A7-S2 (TWISTEX legacy/humanizing beat)
 - **Frames:** `.../media/_gate/cnn-samaras-family-interview/frame1.jpg`, `frame2.jpg`, `frame3.jpg`
 - **Source URL:** `youtube.com/watch?v=GsCP83vwWCE` (2013-06-04) per clip_hunt.md §3
