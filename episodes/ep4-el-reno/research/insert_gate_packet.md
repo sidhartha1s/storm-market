@@ -80,8 +80,8 @@ dialogue unless it appears as an on-screen caption in a frame (noted where it do
 
 ### 6. `koco-reshaped-storm-chasing.mp4`
 - **Station / rights holder:** KOCO 5 News (station-official, channel_id `UCoIhMkbeDRBImkGiA5mZp5A`)
-- **Proposed cut:** 0:00–0:04 (~4s) — remote interview subject in front of a radar display on a home monitor (frame2/3)
-- **Description (inferred):** a chaser/meteorologist reflecting on how El Reno changed chase-community norms
+- **Proposed cut:** 0:00–0:03.8 (~3.8s — NUDGED end from 0:04) — remote interview subject in front of a radar display on a home monitor (frame2/3)
+- **Transcript (VERBATIM, faster-whisper small.en):** "the 2013 El Reno tornado and Oklahoma County flash flooding" — original 0:04 end point chopped mid-word on "left"; trimmed ~0.2s earlier to end cleanly right after "flooding," still under the 4s cap.
 - **Beat served:** A6-S3 (chase-culture reckoning, "what changed after")
 - **Frames:** `.../media/_gate/koco-reshaped-storm-chasing/frame1.jpg`, `frame2.jpg`, `frame3.jpg`
 - **Source URL:** `youtube.com/watch?v=aRdeq_MEOaM` — "A storm that reshaped storm chasing" (2:04) per clip_hunt.md §3
