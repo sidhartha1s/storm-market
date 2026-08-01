@@ -2,6 +2,18 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
+## 2026-08-01 — ep4 sourcing (pipeline)
+
+1. **provenance.csv is a shared ledger — every parallel sourcing agent's brief must say
+   APPEND-ONLY, and name the other writers.** ep4: one agent "regenerated" the csv covering
+   only its own lanes and silently dropped ~63 stock + 30 radar rows (155→108). Recovery =
+   each owning agent re-appends from its own transcript. Standing check before compose:
+   every file under media/ has exactly one provenance row, zero orphans both directions.
+2. **Multi-lane sourcing briefs need explicit lane-completion accounting** — the PD agent
+   reported "done" having executed lanes 1-7 of 8; the owed lane (broadcast gate candidates)
+   only surfaced because the report listed lanes by number. Number the lanes in the brief and
+   require a per-lane line in the report.
+
 ## 2026-08-01 — ep4 design review round 2 (owner corrections, standing)
 
 1. **Repeat rule refined: repetition is allowed, OBVIOUS repetition is the sin.** Never
