@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; }
+  .hdr { position:absolute; left:0; right:0; top:60px; text-align:center; font-weight:700; font-size:26px; letter-spacing:8px; color:#93a3b2; }
+  .sub { position:absolute; left:0; right:0; top:104px; text-align:center; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  .divider { position:absolute; left:960px; top:200px; bottom:300px; width:2px; background:#2a3644; }
+  .col { position:absolute; top:190px; width:720px; }
+  #g2-left { left:110px; }
+  #g2-right { left:1090px; }
+  .colhead { font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; margin-bottom:30px; }
+  .chain { position:relative; height:280px; }
+  .node { position:absolute; width:220px; text-align:center; }
+  .node .ic { width:90px; height:90px; margin:0 auto 12px; border:3px solid #5a768f; border-radius:10px; display:grid; place-items:center; font-size:13px; font-weight:700; color:#9db0c2; }
+  .node .lab { font-size:18px; font-weight:700; color:#dfe7ee; letter-spacing:1px; }
+  .arrow2 { position:absolute; top:38px; height:0; border-top:4px solid #5a768f; transform-origin:left center; }
+  #g2-house { left:0; }
+  #g2-degree { left:250px; }
+  #g2-implied { left:500px; }
+  #g2-arr-a { left:90px; width:150px; }
+  #g2-arr-b { left:340px; width:150px; }
+  .dish { position:absolute; top:20px; left:290px; width:140px; height:140px; }
+  .dishbase { position:absolute; inset:0; border-radius:50%; border:4px solid #7fb2e5; }
+  .beam { position:absolute; left:50%; top:50%; width:70px; height:4px; background:linear-gradient(90deg,#e8c56a,#e8c56a00); transform-origin:left center; }
+  .radarval { position:absolute; top:180px; left:0; right:0; text-align:center; }
+  .radarval .v { font-family:'Courier New',monospace; font-size:64px; font-weight:700; color:#e8c56a; }
+  .radarval .u { font-size:20px; color:#93a3b2; letter-spacing:2px; }
+  .direct { position:absolute; top:280px; left:0; right:0; text-align:center; font-size:18px; color:#dfe7ee; font-weight:700; letter-spacing:1px; }
+  /* shared storm + verdict row */
+  .storm { position:absolute; left:0; right:0; bottom:250px; text-align:center; }
+  .stormlab { font-size:20px; color:#93a3b2; font-weight:700; letter-spacing:3px; }
+  .verdictrow { position:absolute; left:150px; right:150px; bottom:130px; display:flex; justify-content:space-between; align-items:flex-end; }
+  .vcol { width:420px; text-align:center; }
+  .stamp2 { display:inline-block; font-family:'Arial Black',Arial,sans-serif; font-size:80px; color:#fff; background:#8e2020; padding:2px 26px; }
+  .radarbig { font-family:'Courier New',monospace; font-size:80px; font-weight:700; color:#e74c3c; }
+  .vlab { font-size:18px; color:#93a3b2; font-weight:700; letter-spacing:2px; margin-top:10px; }
+  .gapbar { position:absolute; left:150px; right:150px; bottom:70px; height:16px; background:#101820; border:2px solid #2a3644; }
+  #g2-gapfill { position:absolute; left:0; top:0; bottom:0; width:100%; transform-origin:left center; background:linear-gradient(90deg,#5a768f,#c0392b); }
+  .gaplab2 { position:absolute; left:0; right:0; bottom:92px; text-align:center; font-size:19px; font-weight:700; color:#e74c3c; letter-spacing:2px; }
+  .close2 { position:absolute; left:0; right:0; bottom:20px; text-align:center; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#b8c6d4; }
+</style>
+<div id="root" data-composition-id="g-efscale-v2" data-width="1920" data-height="1080">
+  <div class="hdr" id="g2-hdr">WHY EF3 — THE SCALE RATES DAMAGE, NOT WIND</div>
+  <div class="sub" id="g2-sub">two instruments, the same storm, two different numbers</div>
+  <div class="divider" id="g2-div"></div>
+
+  <div class="col" id="g2-left">
+    <div class="colhead">HOW A SURVEY WORKS</div>
+    <div class="chain">
+      <div class="arrow2" id="g2-arr-a"></div>
+      <div class="arrow2" id="g2-arr-b"></div>
+      <div class="node" id="g2-house"><div class="ic">HOUSE SWEPT<br>FROM FOUNDATION</div><div class="lab">STRUCTURE</div></div>
+      <div class="node" id="g2-degree"><div class="ic">DEGREE OF<br>DAMAGE</div><div class="lab">DAMAGE</div></div>
+      <div class="node" id="g2-implied"><div class="ic">ONE IMPLIED<br>WIND SPEED</div><div class="lab">IMPLIED MPH</div></div>
+    </div>
+    <div class="direct" id="g2-noev">no damage, no evidence, no rating</div>
+  </div>
+
+  <div class="col" id="g2-right">
+    <div class="colhead">HOW RADAR WORKS</div>
+    <div class="dish" id="g2-dish">
+      <div class="dishbase"></div>
+      <div class="beam" id="g2-beam"></div>
+    </div>
+    <div class="radarval"><span class="v" id="g2-radarval">0</span><span class="u"> MPH</span></div>
+    <div class="direct" id="g2-direct">samples the air directly — over empty fields, same as over a home</div>
+  </div>
+
+  <div class="storm" id="g2-storm"><div class="stormlab">SAME STORM · EL RENO, MAY 31 2013</div></div>
+
+  <div class="verdictrow" id="g2-verdict">
+    <div class="vcol"><span class="stamp2" id="g2-stamp">EF3</span><div class="vlab">SURVEY RATING</div></div>
+    <div class="vcol"><span class="radarbig" id="g2-radarbig">291</span><div class="vlab">RADAR MPH, NEAR-SURFACE</div></div>
+  </div>
+  <div class="gaplab2" id="g2-gaplab">RADAR RAN 10–30% ABOVE WHAT THE DAMAGE IMPLIED</div>
+  <div class="gapbar" id="g2-gapbar"><div id="g2-gapfill"></div></div>
+
+  <div class="close2" id="g2-close">The scale worked exactly as designed — it measures what a tornado destroys, not what it was.</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#g2-hdr","#g2-sub","#g2-div","#g2-left","#g2-right","#g2-storm","#g2-verdict","#g2-gaplab","#g2-gapbar","#g2-close"], {autoAlpha:0}, 0);
+  tl.set(["#g2-house","#g2-degree","#g2-implied","#g2-arr-a","#g2-arr-b","#g2-noev"], {autoAlpha:0}, 0);
+  tl.set(["#g2-arr-a","#g2-arr-b"], {scaleX:0}, 0);
+  tl.set("#g2-gapfill", {scaleX:0}, 0);
+  tl.set("#g2-radarbig", {autoAlpha:0}, 0);
+
+  /* does not measure wind @0; measures what wind does @3.6 */
+  tl.fromTo("#g2-hdr", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.5}, 0.4);
+  tl.fromTo("#g2-sub", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 3.6);
+  tl.fromTo("#g2-div", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 5.8);
+
+  /* survey teams walk the path, find damaged structures, work backward @6.24-12.12 */
+  tl.fromTo("#g2-left", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5}, 6.2);
+  tl.fromTo("#g2-house", {autoAlpha:0, scale:0.7}, {autoAlpha:1, scale:1, duration:0.4}, 6.6);
+
+  /* well-built house swept ... implies one wind speed @12.74-17.02 */
+  tl.to("#g2-arr-a", {scaleX:1, duration:0.4, transformOrigin:"left center"}, 13.9);
+  tl.fromTo("#g2-degree", {autoAlpha:0, scale:0.7}, {autoAlpha:1, scale:1, duration:0.4}, 14.3);
+  /* snapped power pole implies another @17.74-19.92 */
+  tl.to("#g2-arr-b", {scaleX:1, duration:0.4, transformOrigin:"left center"}, 18.6);
+  tl.fromTo("#g2-implied", {autoAlpha:0, scale:0.7}, {autoAlpha:1, scale:1, duration:0.4}, 19.0);
+  /* no damage, no evidence, no rating @20.56-23.44 */
+  tl.fromTo("#g2-noev", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 20.6);
+
+  /* introduce the radar side once "mobile research radar" is spoken @39.86 */
+  tl.fromTo("#g2-right", {autoAlpha:0, x:30}, {autoAlpha:1, x:0, duration:0.5}, 39.9);
+  /* continuous radar sweep for the rest of the window — the one continuous element */
+  tl.to("#g2-beam", {rotation:720, duration:40, ease:"none", transformOrigin:"left center"}, 40.4);
+  /* measured winds above 290 mph near the ground @43.2-45.46 */
+  const rv = {v:0};
+  tl.to(rv, {v:291, duration:2.0, ease:"power3.out", onUpdate:rvUpd}, 43.3);
+  function rvUpd() { const el=document.getElementById("g2-radarval"); if(el) el.textContent = Math.round(rv.v); }
+  /* in sub-vortices that spun across empty fields @46.52-48.98 */
+  tl.fromTo("#g2-direct", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 46.6);
+
+  /* now bring in the shared storm + verdict once both instruments have spoken, ahead of "the scale worked exactly as designed" @65.24 */
+  tl.fromTo("#g2-storm", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 58.8);
+  tl.fromTo("#g2-verdict", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5}, 59.4);
+  tl.fromTo("#g2-stamp", {scale:2.2, autoAlpha:0}, {scale:1, autoAlpha:1, duration:0.35, ease:"power4.in"}, 59.6);
+  tl.fromTo("#g2-radarbig", {scale:2.2, autoAlpha:0}, {scale:1, autoAlpha:1, duration:0.35, ease:"power4.in"}, 59.9);
+
+  /* the radar's numbers ran 10-30% above what the damage implied @58.78-64 (gap bar bridges the two verdicts) */
+  tl.fromTo("#g2-gaplab", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 60.5);
+  tl.fromTo("#g2-gapbar", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 60.5);
+  tl.to("#g2-gapfill", {scaleX:1, duration:2.2, ease:"power2.out"}, 60.9);
+
+  /* the scale worked exactly as designed... spent its fury on emptiness @65.24-74.28 */
+  tl.fromTo("#g2-close", {autoAlpha:0}, {autoAlpha:1, duration:0.7}, 65.3);
+
+  /* slide-right exit, timed to the hard cut at the end of the 81.41s window */
+  tl.to("#root", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 80.8);
+
+  window.__timelines["g-efscale-v2"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
