@@ -2,6 +2,25 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
+## 2026-08-01 — ep4 design review (owner orders, all standing)
+
+1. **Clip-sourcing gaps surface at SCRIPT time, never after render.** Every beat in
+   edit_script.md names its intended clip/source; anything unsourceable is flagged to the
+   owner immediately (he generates swap images). Corollary: clip breadth is a sourcing
+   BUDGET — compute target windows from runtime (ep2 floor: 187/28 min) and verify the asset
+   pool can feed the cut rate before authoring (ep3's pool starved its 5.5s-median attempt).
+2. **Key concept graphics: author 2–3 visual versions, snapshot, pick the one that lands the
+   concept without words.** Extends GRAPHICS CONTRACT §7 — the owner wants the mechanism
+   VISIBLE ("words can only carry so much"); a single first-idea graphic is not a design pass.
+3. **Blackout dips + minimal graphic text re-confirmed by owner at ep4 kickoff** (already
+   codified via PR #8: DESIGN.md "Chapter blackout", GRAPHICS CONTRACT). ep3's overall
+   craft/feel praised — keep its touch, restore what it dropped.
+4. **Chaser-footage question re-asked and re-settled: ban stands.** Owner floated graded
+   short chaser clips for the memorial beats; resolved against the 2026-07-26 Oldshue ruling
+   (strikes = channel-fatal, grading-to-disguise prohibited). Emotional connect = real
+   photos under memorial rules; LICENSED chaser footage is the only clip path (quotes being
+   gathered for owner decision).
+
 ## 2026-07-27 — ep2 hook rebuild + ship (hook contract now in DESIGN.md)
 
 **Editorial:**
