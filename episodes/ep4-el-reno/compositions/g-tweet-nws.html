@@ -40,6 +40,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#g-tw-l2", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 13.38);
   tl.fromTo("#g-tw-l3", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 15.06);
   tl.fromTo("#g-tw-attrib", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 17.5);
+  /* continuous element for the whole 36s window: slow push on the tweet card, ease:none */
+  tl.fromTo("#g-tw-card", {scale:1}, {scale:1.05, duration:36, ease:"none"}, 0);
   tl.to("#g-tw-doc", {autoAlpha:0, y:-24, duration:0.5}, 27.0);
   tl.to("#g-tw-card", {x:60, autoAlpha:0, duration:0.6, ease:"power3.in"}, 27.2);
   window.__timelines["g-tweet-nws"] = tl;
