@@ -30,14 +30,16 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   tl.set(["#g-outro4-twh","#g-outro4-ep","#g-outro4-tag"], {autoAlpha:0}, 0);
   /* cued to audio/a8-s1.words.json: "This@18.68 was@18.96 the@19.28 Warning@19.50 Hour.@19.78" — title match-cuts
-     onto the closing line; card does not dwell (contract: outro never sits). The signature line plays over
-     the preceding footage/graphic (not this card), so this comp carries a slow ambient glow through the
-     16s+ lead-in rather than sitting on a frozen black frame. */
-  tl.fromTo("#g-outro4-glow", {scale:0.85, autoAlpha:0.6}, {scale:1.15, autoAlpha:1, duration:3.25, ease:"sine.inOut", yoyo:true, repeat:5}, 0.0);
-  tl.fromTo("#g-outro4-twh", {autoAlpha:0, scale:1.14}, {autoAlpha:1, scale:1, duration:0.45, ease:"power3.out"}, 19.5);
-  tl.fromTo("#g-outro4-ep", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 20.3);
-  tl.fromTo("#g-outro4-tag", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 20.9);
-  tl.to(".wrap", {autoAlpha:0, duration:0.6, ease:"power3.in"}, 23.6);
+     onto the closing line; card does not dwell (contract: outro never sits). The original cue math assumed
+     a ~24s host window — the actual host window is 18.0s, so the reveals below are compressed proportionally
+     (~0.73x) to land inside that shorter cut. The signature line plays over the preceding footage/graphic
+     (not this card), so this comp carries a slow ambient glow through the lead-in rather than sitting on a
+     frozen black frame. */
+  tl.fromTo("#g-outro4-glow", {scale:0.85, autoAlpha:0.6}, {scale:1.15, autoAlpha:1, duration:2.38, ease:"sine.inOut", yoyo:true, repeat:5}, 0.0);
+  tl.fromTo("#g-outro4-twh", {autoAlpha:0, scale:1.14}, {autoAlpha:1, scale:1, duration:0.33, ease:"power3.out"}, 14.3);
+  tl.fromTo("#g-outro4-ep", {autoAlpha:0}, {autoAlpha:1, duration:0.37}, 14.9);
+  tl.fromTo("#g-outro4-tag", {autoAlpha:0}, {autoAlpha:1, duration:0.37}, 15.3);
+  tl.to(".wrap", {autoAlpha:0, duration:0.44, ease:"power3.in"}, 17.3);
   window.__timelines["g-outro"] = tl;
 })();
 </script>
