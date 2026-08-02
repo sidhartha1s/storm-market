@@ -19,15 +19,14 @@ HERE = Path(__file__).parent
 OUT = HERE / "out" / "figures.html"
 
 PAGE_TEMPLATE = '''<section class="page">
-  <div class="runhead"><span>Figure preview &middot; {fig_id}</span><span>Protection {protection}</span></div>
+  <div class="runhead"><span>Figure preview &middot; {fig_id}</span><span>{file} &middot; Protection {protection}</span></div>
   <div class="tag">Preview harness &mdash; not book content</div>
-  <h3 style="font-size:12pt;margin:5pt 0 9pt">{fig_id}</h3>
+  <h3 style="font-size:11pt;margin:4pt 0 7pt">{fig_id}</h3>
   {figure_html}
-  <div class="notdo" style="margin-top:10pt">
+  <div class="notdo" style="margin-top:8pt">
     <div class="lbl">Why this figure earns its place</div>
-    <p>{justification}</p>
+    <p style="font-size:8.4pt">{justification}</p>
   </div>
-  <p class="small" style="margin-top:6pt">Anchors in <code>{file}</code>.</p>
   <div class="folio"><span>figures_preview.py</span><span>{number}</span></div>
 </section>'''
 
