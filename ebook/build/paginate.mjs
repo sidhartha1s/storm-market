@@ -32,14 +32,21 @@
           followed by an h2 with no paragraph between them, so the run can be longer than one
           heading — a pairwise "heading + immediate next" check is not sufficient, it can
           strand an earlier heading when a later one gets pushed off; see isHeadingRunStart.)
-        - paragraphs, tables, lists, blockquotes and rules are atomic: review_pdf.py's parser
+        - paragraphs, tables, blockquotes and rules are atomic: review_pdf.py's parser
           already emits exactly one block per element, so "never split one across pages" is
           automatic. The tradeoff is deliberate: this book has no cheap way to split a
           paragraph across a page boundary without risking a citation superscript or a bolded
           phrase being torn across the cut, or a stray widow/orphan line, so no paragraph is
           ever split. The cost is a little unused whitespace at the bottom of some pages
-          instead of a broken paragraph; give the fixed-page/no-reflow model, that is the
+          instead of a broken paragraph; given the fixed-page/no-reflow model, that is the
           conservative side to err on.
+        - bulleted/numbered lists are the one exception: blocks_pipeline.py explodes every
+          <ul>/<ol> into one bare <li> block per item (see explode_lists there). A list item
+          is a complete unit like a paragraph, so a break between items is exactly as safe as
+          a break between paragraphs — and several hazard-playbook "Before" lists (10+
+          prioritized protections) are taller than one whole page, so keeping them as a
+          single opaque block would make them impossible to place at all. Tables/figures/
+          numbered-protection blocks stay atomic per the brief; lists were never named there.
         - a block that does not fit even a full, empty page is a genuine content problem
           (an oversized table, say) and is logged loudly rather than clipped or shrunk to fit.
    4. Splice in Appendix B (`../appendix/out/appendix-b.html`) as already-built fixed pages —
