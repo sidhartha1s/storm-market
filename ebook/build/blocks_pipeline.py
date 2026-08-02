@@ -167,6 +167,32 @@ def assign_groups(tags):
     return groups
 
 
+# Every manuscript file opens with its own "# Title" (and sometimes a subtitle line),
+# then an authoring-only "Target: N pages [· ~W words] · draft D, DATE" line before the
+# first real "##" section heading -- some files fold it into a longer line instead
+# ("Protections 1-12 · Target: 12 pages · draft 1, 2026-07-28"). It's a length-tracking
+# note for the writer, not content for the $47 reader, so it's dropped -- not rewritten,
+# and the manuscript .md files on disk are untouched, only the rendered copy is affected.
+# Confined to strictly before the file's first "##" heading, so a legitimate "Target:"
+# opening a sentence in the book's actual prose (which only ever appears after that
+# point) is never touched -- matching "Target:" anywhere in the file would risk exactly
+# that.
+TARGET_SCAFFOLD_RE = re.compile(r"\s*(?:·\s*)?Target:.*$")
+
+
+def strip_target_scaffold(text):
+    lines = text.split("\n")
+    boundary = next((i for i, l in enumerate(lines) if re.match(r"^#{2,6}\s", l)), len(lines))
+    out = []
+    for i, line in enumerate(lines):
+        if i < boundary and "Target:" in line:
+            line = TARGET_SCAFFOLD_RE.sub("", line).rstrip()
+            if not line:
+                continue  # the whole line was the scaffolding -- drop it, don't blank it
+        out.append(line)
+    return "\n".join(out)
+
+
 # P6-the-binder.md's "## The forms" heading onward is a field-by-field SPECIFICATION
 # for ../binder/build.py, not book prose to typeset — those 41 field lists are now real
 # fillable pages (see ../binder/out/binder.html, spliced in by paginate.mjs the same way
