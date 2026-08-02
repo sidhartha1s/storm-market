@@ -229,21 +229,39 @@ def render_inline(text):
     return text
 
 
+SPLIT_TOKEN_RE = re.compile(r"\*\*|\*|[(),]")
+
+
 def split_top(text, sep=","):
     """Split on sep at top level only — not inside parentheses (Form 4's Crisis lines
     field has a parenthetical with its own comma: "988 (Suicide & Crisis Lifeline —
-    call or text)")."""
-    parts, depth, cur = [], 0, ""
-    for ch in text:
-        if ch == "(":
-            depth += 1
-        elif ch == ")":
-            depth -= 1
-        if ch == sep and depth == 0:
+    call or text)") and not inside *italic* or **bold** markup (Form 11's Gas meter
+    field has an italic aside with its own commas: "and the rule written out — *only
+    if I smell gas, hear it, see damage, or am told to.*" — an earlier draft split
+    that aside into four garbled one-word fields and leaked the stray asterisks as
+    literal text, because it only guarded parentheses)."""
+    parts, cur = [], ""
+    paren_depth = 0
+    in_bold = in_italic = False
+    pos = 0
+    for m in SPLIT_TOKEN_RE.finditer(text):
+        tok = m.group()
+        if tok == sep and paren_depth == 0 and not in_bold and not in_italic:
+            cur += text[pos:m.start()]
             parts.append(cur.strip())
             cur = ""
         else:
-            cur += ch
+            cur += text[pos:m.end()]
+            if tok == "(":
+                paren_depth += 1
+            elif tok == ")":
+                paren_depth -= 1
+            elif tok == "**":
+                in_bold = not in_bold
+            elif tok == "*":
+                in_italic = not in_italic
+        pos = m.end()
+    cur += text[pos:]
     if cur.strip():
         parts.append(cur.strip())
     return parts
