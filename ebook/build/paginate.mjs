@@ -105,6 +105,7 @@ const PART_LABEL = {
   P6: 'Part Six — The Binder',
   P7: 'Part Seven — The 60 Days',
   SOURCES: 'Sources',
+  BINDER: 'The Binder — fillable pages',
   APPENDIX: 'Appendix B — State Directory',
 };
 
