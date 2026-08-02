@@ -75,7 +75,9 @@ def main():
         text = (rp.MS / name).read_text(encoding="utf-8")
         title = text.split("\n", 1)[0].lstrip("# ").strip()
         rp._CURRENT_CHAPTER[0] = title
-        for i, block_html in enumerate(rp.render_markdown(text)):
+        file_blocks = rp.render_markdown(text)
+        file_blocks[0] = chapter_opener_html(title)  # plain <h1> -> kicker + title
+        for i, block_html in enumerate(file_blocks):
             blocks.append({
                 "html": block_html,
                 "tag": tag_of(block_html),
