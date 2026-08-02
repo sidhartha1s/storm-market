@@ -194,6 +194,11 @@ Active cooling works: cool showers, wet cloths at neck and wrists, feet in cool 
 prolonged heat wave. For them, relocation is the protection, and it should be decided on day one, not
 day three.
 
+Three protections, three rooms, and they are usually not the same room — Figure 2 lines up what each
+one demands so you are not surprised the safe room and the warm room disagree about windows.
+
+«FIG: three-rooms»
+
 ---
 
 ### 30 · Reflective film and exterior shading
