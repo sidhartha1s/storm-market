@@ -220,6 +220,14 @@ function paginateBlocks(blocks, meas) {
   const fits = (i, atCursor) => bottomEdge(i, atCursor) <= BUDGET_PX;
   const newPage = () => { if (cur.length) pages.push(cur); cur = []; cursor = 0; };
 
+  // Full-group atomicity for h3-anchored spans (numbered protections, binder forms, the
+  // timeline's phase subheads — see assign_groups in blocks_pipeline.py): the whole span
+  // must land on one page or move together. Narrower "heading + immediate next block"
+  // atomicity for any other heading (h1/h2), so a big h2 section (which can contain a
+  // list already taller than a page) is not forced into one unsplittable mega-block.
+  const isGroupStart = i => blocks[i].group !== null && blocks[i].group !== undefined &&
+    (i === 0 || blocks[i - 1].group !== blocks[i].group);
+  const groupEnd = i => { const g = blocks[i].group; let j = i; while (j + 1 < N && blocks[j + 1].group === g) j++; return j; };
   const isHeadingRunStart = i => blocks[i].heading && (i === 0 || !blocks[i - 1].heading);
   const headingRunEnd = i => { let j = i; while (j < N && blocks[j].heading) j++; return Math.min(j, N - 1); };
 
@@ -228,7 +236,16 @@ function paginateBlocks(blocks, meas) {
     const b = blocks[i];
     if (b.fileStart && cur.length) newPage();
 
-    if (isHeadingRunStart(i)) {
+    if (isGroupStart(i)) {
+      const j = groupEnd(i);
+      let groupBottom = cursor;
+      for (let k = i; k <= j; k++) groupBottom += meas[k].mt + meas[k].h + (k < j ? meas[k].mb : 0);
+      const fitsGroup = groupBottom <= BUDGET_PX;
+      if (!fitsGroup) {
+        if (cur.length > 0) newPage();
+        else oversizedGroups.push({ file: b.file, html: b.html, neededPx: Math.round(groupBottom - cursor) });
+      }
+    } else if (isHeadingRunStart(i)) {
       const j = headingRunEnd(i);
       let groupBottom = cursor;
       for (let k = i; k <= j; k++) groupBottom += meas[k].mt + meas[k].h + (k < j ? meas[k].mb : 0);
