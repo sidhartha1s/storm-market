@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; }
+  .v2-hdr { position:absolute; left:0; right:0; top:56px; text-align:center; font-weight:700; font-size:26px; letter-spacing:8px; color:#93a3b2; }
+  .v2-divider { position:absolute; left:960px; top:150px; bottom:150px; width:2px; background:#2a3644; transform-origin:center top; }
+  .v2-side { position:absolute; top:150px; bottom:150px; width:760px; }
+  .v2-left { left:100px; }
+  .v2-right { right:100px; }
+  .v2-sidehdr { font-size:26px; font-weight:700; letter-spacing:3px; color:#93a3b2; }
+  .v2-left .v2-sidehdr { color:#d8a13a; }
+  .v2-right .v2-sidehdr { color:#e74c3c; }
+  .v2-stamp { display:inline-block; margin-top:34px; font-family:'Arial Black',Arial,sans-serif; font-size:96px; color:#fff; background:#8e2020; padding:2px 30px; }
+  .v2-di { position:absolute; width:70px; height:60px; background:#101820; border:2px solid #2a3644; display:grid; place-items:center; font-size:12px; color:#9db0c2; font-weight:700; text-align:center; line-height:1.15; transform-origin:center bottom; }
+  .v2-nothing { position:absolute; left:0; right:0; top:200px; text-align:center; font-size:22px; color:#5a4040; font-weight:700; letter-spacing:3px; }
+  .v2-gaugewrap { position:absolute; left:280px; bottom:0px; width:200px; height:520px; }
+  .v2-gaugetrack { position:absolute; left:70px; bottom:0; width:60px; height:520px; background:#101820; border:2px solid #2a3644; }
+  .v2-gaugefill { position:absolute; left:0; right:0; bottom:0; height:100%; background:linear-gradient(0deg,#c0392b,#e74c3c 60%,#ff8a65); transform-origin:center bottom; }
+  .v2-gaugeval { position:absolute; left:0; right:0; top:-56px; text-align:center; font-family:'Courier New',monospace; font-size:34px; color:#e74c3c; font-weight:700; }
+  .v2-sweeppivot { position:absolute; left:100px; bottom:0px; width:100px; height:520px; transform-origin:50% 100%; }
+  .v2-sweepline { position:absolute; left:49px; bottom:0; width:2px; height:520px; background:linear-gradient(0deg, rgba(231,76,60,0.9), rgba(231,76,60,0)); transform-origin:center bottom; }
+  .v2-close { position:absolute; left:0; right:0; bottom:60px; text-align:center; font-family:Georgia,serif; font-style:italic; font-size:30px; color:#b8c6d4; }
+  .v2-truth { position:absolute; left:0; right:0; bottom:110px; text-align:center; font-family:'Courier New',monospace; font-size:24px; color:#e74c3c; font-weight:700; letter-spacing:1px; }
+</style>
+<div id="root" data-composition-id="g-efscale-v2" data-width="1920" data-height="1080">
+  <div class="v2-hdr" id="g-v2-hdr">TWO INSTRUMENTS, ONE STORM</div>
+  <div class="v2-divider" id="g-v2-divider"></div>
+
+  <div class="v2-side v2-left" id="g-v2-left">
+    <div class="v2-sidehdr" id="g-v2-lefthdr">WHAT THE DAMAGE SAYS</div>
+    <div id="g-v2-stampwrap"><span class="v2-stamp" id="g-v2-stamp">EF3</span></div>
+    <div class="v2-di" id="g-v2-di0" style="left:60px; top:340px;">1-2 FAM<br/>HOME</div>
+    <div class="v2-di" id="g-v2-di1" style="left:160px; top:300px;">BARN</div>
+    <div class="v2-di" id="g-v2-di2" style="left:260px; top:360px;">POLE</div>
+    <div class="v2-nothing" id="g-v2-nothing">— NOTHING ELSE ON THIS STRETCH TO SURVEY —</div>
+  </div>
+
+  <div class="v2-side v2-right" id="g-v2-right">
+    <div class="v2-sidehdr" id="g-v2-righthdr">WHAT THE RADAR SAW</div>
+    <div class="v2-gaugewrap" id="g-v2-gaugewrap">
+      <div class="v2-sweeppivot" id="g-v2-sweeppivot"><div class="v2-sweepline" id="g-v2-sweepline"></div></div>
+      <div class="v2-gaugetrack" id="g-v2-gaugetrack">
+        <div class="v2-gaugefill" id="g-v2-gaugefill"></div>
+      </div>
+      <div class="v2-gaugeval" id="g-v2-gaugeval">290+ MPH</div>
+    </div>
+  </div>
+
+  <div class="v2-truth" id="g-v2-truth">RADAR RAN 10–30% ABOVE THE DAMAGE-IMPLIED WINDS</div>
+  <div class="v2-close" id="g-v2-close">Empty fields don't get cross-examined. This one should have.</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const ids = ["#g-v2-hdr","#g-v2-divider","#g-v2-lefthdr","#g-v2-righthdr","#g-v2-stampwrap",
+    "#g-v2-di0","#g-v2-di1","#g-v2-di2","#g-v2-nothing","#g-v2-gaugewrap","#g-v2-gaugeval",
+    "#g-v2-truth","#g-v2-close"];
+  tl.set(ids, {autoAlpha:0}, 0);
+  tl.set("#g-v2-divider", {scaleY:0}, 0);
+  tl.set("#g-v2-gaugefill", {scaleY:0}, 0);
+  tl.set(["#g-v2-di0","#g-v2-di1","#g-v2-di2"], {scale:0.6}, 0);
+
+  /* "The enhanced Fujita scale does not measure wind, it measures what wind does" @0.0-5.5 */
+  tl.fromTo("#g-v2-hdr", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.5}, 0.3);
+  tl.set("#g-v2-divider", {autoAlpha:1}, 2.0);
+  tl.to("#g-v2-divider", {scaleY:1, duration:1.0, ease:"power2.out"}, 2.0);
+
+  /* "Survey teams walk the path ... work backward" @6.24-12.12 — the courtroom LEFT stands up */
+  tl.fromTo("#g-v2-lefthdr", {autoAlpha:0, x:-20}, {autoAlpha:1, x:0, duration:0.5}, 6.24);
+
+  /* "A well-built house swept from its foundation implies one wind speed" @12.74 */
+  tl.fromTo("#g-v2-di0", {autoAlpha:0, scale:0.6}, {autoAlpha:1, scale:1, duration:0.3}, 12.74);
+  /* "A snapped power pole implies another" @17.74 */
+  tl.fromTo("#g-v2-di2", {autoAlpha:0, scale:0.6}, {autoAlpha:1, scale:1, duration:0.3}, 17.74);
+  tl.fromTo("#g-v2-di1", {autoAlpha:0, scale:0.6}, {autoAlpha:1, scale:1, duration:0.3}, 18.3);
+
+  /* radar sweep continuously scans the RIGHT gauge for the whole graphic — the instrument
+     that never stopped measuring, even before the storm gives it a number to show */
+  tl.set("#g-v2-sweeppivot", {autoAlpha:1}, 8.0);
+  tl.to("#g-v2-sweeppivot", {rotation:360, duration:4, ease:"none", repeat:-1}, 8.0);
+
+  /* "Now look at this tornado's path. 16 miles, almost all of it open farmland" @24.14-29.96 */
+  tl.fromTo("#g-v2-nothing", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 28.36);
+
+  /* "the worst of them, a handful of rural homes, supported EF3" @34.68-39.08 */
+  tl.fromTo("#g-v2-stampwrap", {autoAlpha:0, scale:2.2}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 38.28);
+
+  /* "But the mobile research radar ... measured winds above 290 miles per hour" @39.86-45.1 */
+  tl.fromTo("#g-v2-righthdr", {autoAlpha:0, x:20}, {autoAlpha:1, x:0, duration:0.5}, 39.86);
+  tl.set("#g-v2-gaugewrap", {autoAlpha:1}, 40.4);
+  tl.to("#g-v2-gaugefill", {scaleY:1, duration:2.4, ease:"power2.out"}, 40.4);
+  tl.fromTo("#g-v2-gaugeval", {autoAlpha:0, y:12}, {autoAlpha:1, y:0, duration:0.4}, 43.52);
+
+  /* "Where the radar saw the most violent winds, the surveyors found nothing to inspect.
+     Grass does not testify." @50.2-57.66 — the LEFT panel is left with literally nothing */
+  tl.to("#g-v2-nothing", {color:"#e74c3c", duration:0.4}, 53.34);
+  tl.fromTo("#g-v2-close", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 55.24);
+
+  /* "the radar's numbers ran 10-30% above what the damage implied" @61.54 */
+  tl.to("#g-v2-close", {autoAlpha:0, duration:0.4}, 60.6);
+  tl.fromTo("#g-v2-truth", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.5}, 61.54);
+
+  /* "The record width stands ... officially invisible" @75.6-78.98 */
+  tl.to("#g-v2-truth", {autoAlpha:0, duration:0.4}, 74.8);
+  tl.set("#g-v2-close", {autoAlpha:0}, 75.4);
+  tl.to("#g-v2-close", {text:"The record width stands, radar-measured. The violence stays officially invisible."}, 0);
+  tl.fromTo("#g-v2-close", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 75.6);
+
+  window.__timelines["g-efscale-v2"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
