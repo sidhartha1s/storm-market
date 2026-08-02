@@ -31,6 +31,11 @@ D = "—"  # em dash
 SECTION_RE = re.compile(r"^## Section ([A-Z]) — (.+?)\s*\((\d+) pages?\)\s*$")
 FORM_RE = re.compile(r"^### Form (\d+)\s*·\s*(.+)$")
 FRONT_SHEET_RE = re.compile(r"^## The one-page front sheet\s*$")
+# The italic "Serves ..." run is always the leading run on its line, but two forms
+# (29, 30) run field text on the *same* line right after the closing "*" instead of
+# starting a new paragraph — captured as `remainder` and fed back into the block
+# scanner rather than lost.
+SERVES_LEAD_RE = re.compile(r"^\*(.+?)\*\s*(.*)$")
 
 
 # ---------------------------------------------------------------- 1. parse the manuscript
