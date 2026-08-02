@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; overflow:hidden; }
+  .hdr-wrap { position:absolute; left:100px; top:80px; width:760px; }
+  .eyebrow { font-weight:700; font-size:22px; color:#93a3b2; letter-spacing:6px; }
+  .headline { font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; margin-top:14px; }
+  .sub { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:14px; }
+  /* the road */
+  .grid-lines { position:absolute; left:0; top:0; width:1920px; height:1080px;
+    background-image:repeating-linear-gradient(90deg, #1c273255 0px, #1c273255 2px, transparent 2px, transparent 220px); }
+  .road { position:absolute; left:60px; top:557px; width:1800px; height:6px; background:#5a768f; box-shadow:0 0 12px #5a768f66; }
+  .roadlab { position:absolute; left:60px; top:520px; font-size:20px; font-weight:700; letter-spacing:4px; color:#7fb2e5; }
+  .noTraffic { position:absolute; left:60px; top:600px; font-size:19px; font-weight:700; letter-spacing:2px; color:#93a3b2; width:700px; }
+  /* the widening circulation edge */
+  .edge { position:absolute; left:-260px; top:0; width:900px; height:1080px;
+    background:linear-gradient(90deg, transparent, #c0392b55 40%, #c0392b77 60%, transparent);
+    transform-origin:left center; }
+  .edgelab { position:absolute; left:0px; top:850px; width:520px; font-size:19px; font-weight:700; color:#e74c3c; letter-spacing:2px; }
+  /* the vehicles */
+  .veh { position:absolute; top:543px; width:30px; height:30px; border-radius:4px; z-index:6; }
+  #gg-robinson { background:#e8c56a; box-shadow:0 0 14px #e8c56aaa; }
+  #gg-cobalt { background:#f2f5f8; box-shadow:0 0 14px #f2f5f8aa; }
+  .vlab { position:absolute; top:498px; font-size:19px; font-weight:700; color:#dfe7ee; letter-spacing:1px; width:220px; }
+  .subv { position:absolute; width:12px; height:12px; border-radius:50%; background:#c0392b; box-shadow:0 0 16px #c0392baa; z-index:7; }
+  .stopped { position:absolute; top:590px; font-size:18px; font-weight:700; color:#93a3b2; letter-spacing:2px; }
+  /* big value tier */
+  .valwrap { position:absolute; right:110px; bottom:90px; text-align:right; }
+  .valnum { font-family:'Arial Black',Arial,sans-serif; font-size:68px; color:#e74c3c; }
+  .vallab { font-size:20px; font-weight:700; color:#c8d3e0; letter-spacing:4px; margin-top:6px; }
+</style>
+<div id="root" data-composition-id="g-grid" data-width="1920" data-height="1080">
+  <div class="grid-lines"></div>
+  <div class="hdr-wrap">
+    <div class="eyebrow" id="gg-eyebrow">6:19 PM · REUTER ROAD, EAST OF HWY 81</div>
+    <div class="headline" id="gg-headline">WHAT ACTUALLY CAUGHT THEM</div>
+    <div class="sub" id="gg-sub">Dan Robinson's own account, quoted in the federal Service Assessment</div>
+  </div>
+  <div class="road"></div>
+  <div class="roadlab">REUTER ROAD — DIRECTION OF TRAVEL: EAST</div>
+  <div class="edge" id="gg-edge"></div>
+  <div class="edgelab" id="gg-edgelab">CIRCULATION EDGE — WIDENING</div>
+  <div class="veh" id="gg-cobalt" style="left:680px;"></div>
+  <div class="vlab" id="gg-cobaltlab" style="left:640px;">TWISTEX · COBALT</div>
+  <div class="veh" id="gg-robinson" style="left:850px;"></div>
+  <div class="vlab" id="gg-robinsonlab" style="left:830px;">D. ROBINSON</div>
+  <div class="noTraffic" id="gg-notraffic">NO CHASER TRAFFIC — SA / ROBINSON: ONE PARKED PICKUP, NO ONE ELSE</div>
+  <div class="subv" id="gg-subv"></div>
+  <div class="stopped" id="gg-stopped" style="left:660px;">TIM SAMARAS — FOUND IN THE VEHICLE, SEAT BELT FASTENED</div>
+  <div class="valwrap" id="gg-valwrap">
+    <div class="valnum" id="gg-valnum">0</div>
+    <div class="vallab">MPH · SUB-VORTEX WINDS</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#gg-eyebrow","#gg-headline","#gg-sub","#gg-roadlab","#gg-edgelab","#gg-notraffic","#gg-valwrap","#gg-stopped"], {autoAlpha:0}, 0);
+  tl.set(["#gg-cobalt","#gg-cobaltlab","#gg-robinson","#gg-robinsonlab"], {autoAlpha:0}, 0);
+  tl.set("#gg-edge", {scaleX:0}, 0);
+  tl.set("#gg-subv", {autoAlpha:0}, 0);
+
+  /* "Just ahead of them...another veteran chaser, Dan Robinson" @0-5.34 */
+  tl.fromTo("#gg-eyebrow", {autoAlpha:0, x:-24}, {autoAlpha:1, x:0, duration:0.5}, 0.3);
+  tl.fromTo("#gg-headline", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.6}, 0.9);
+  tl.fromTo("#gg-sub", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 1.8);
+  tl.fromTo(".road", {scaleX:0}, {scaleX:1, duration:0.7, transformOrigin:"left center"}, 1.0);
+  tl.to("#gg-roadlab", {autoAlpha:1, duration:0.5}, 1.5);
+  tl.fromTo(["#gg-cobalt","#gg-cobaltlab"], {autoAlpha:0, scale:1.6}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 3.0);
+  tl.fromTo(["#gg-robinson","#gg-robinsonlab"], {autoAlpha:0, scale:1.6}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 4.7);
+  /* CONTINUOUS: both vehicles drift east along the road for the rest of the graphic */
+  tl.to("#gg-cobalt", {x:820, duration:52, ease:"none"}, 5.0);
+  tl.to("#gg-cobaltlab", {x:820, duration:52, ease:"none"}, 5.0);
+  tl.to("#gg-robinson", {x:900, duration:52, ease:"none"}, 5.0);
+  tl.to("#gg-robinsonlab", {x:900, duration:52, ease:"none"}, 5.0);
+
+  /* "the road was empty" @27.24-28.4 — the point: no other traffic */
+  tl.fromTo("#gg-notraffic", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.6}, 27.6);
+
+  /* "the circulation widened so fast, and turned so sharply" @38.6-42.34 — the edge sweeps the road */
+  tl.to("#gg-edge", {scaleX:1, duration:2.6, ease:"power3.in"}, 38.6);
+  tl.fromTo("#gg-edgelab", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 39.2);
+  tl.to("#gg-edge", {x:700, duration:2.6, ease:"power3.in"}, 41.0);
+
+  /* "a road which had been outside the tornado became inside it in under a minute" @43.0-47.24 */
+  tl.to("#gg-edge", {x:1000, duration:4.0, ease:"none"}, 43.6);
+
+  /* "Robinson's car took the edge and survived" @47.88-50.08 — his dot visibly crosses the red band, keeps moving */
+  tl.to("#gg-robinsonlab", {opacity:0.7, duration:0.3}, 48.4);
+
+  /* "the cobalt, seconds behind, took a sub vortex" @50.94-54.26 — the small intense core catches Cobalt */
+  tl.to("#gg-edge", {x:1250, duration:8.0, ease:"none"}, 51.0);
+  tl.set("#gg-subv", {left:695, top:548}, 51.2);
+  tl.fromTo("#gg-subv", {autoAlpha:0, scale:0.4}, {autoAlpha:1, scale:1, duration:0.4}, 51.2);
+  /* CONTINUOUS: sub-vortex orbits tightly around the Cobalt's last position */
+  tl.to("#gg-subv", {rotation:720, duration:6.5, ease:"none", transformOrigin:"-25px 8px"}, 51.6);
+
+  /* "its winds were measured at more than 250 miles per hour" @58.44-62.08 */
+  tl.fromTo("#gg-valwrap", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.5}, 58.6);
+  const w = {v:0};
+  tl.to(w, {v:250, duration:2.0, ease:"power2.out", onUpdate:()=>{const e=document.getElementById("gg-valnum"); if(e) e.textContent = Math.round(w.v)+"+";}}, 58.9);
+
+  /* "Tim Samaras was found still in the car" @62.66-64.92 — the quiet end. no crash, just stillness */
+  tl.to("#gg-cobalt", {opacity:0.4, duration:1.0}, 63.2);
+  tl.fromTo("#gg-stopped", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 63.6);
+  tl.set("#gg-stopped", {}, 63.6, function(){});
+
+  window.__timelines["g-grid"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
