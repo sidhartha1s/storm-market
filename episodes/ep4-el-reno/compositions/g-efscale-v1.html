@@ -181,7 +181,7 @@ window.__timelines = window.__timelines || {};
 
   /* continuous: a comet of radar energy runs the trace line through the rest of the survey story */
   tl.fromTo("#g-v1-comet", {x:0, autoAlpha:0}, {autoAlpha:1, duration:0.3}, 39.86);
-  tl.to("#g-v1-comet", {x:900, duration:20, ease:"none", repeat:2}, 39.86); /* finite: repeat:-1 breaks seek-render duration */
+  tl.to("#g-v1-comet", {x:900, duration:20, ease:"none", repeat:1}, 39.86); /* finite, ends 79.86 — inside the 81.6s window; repeat:-1 breaks seek-render duration */
 
   /* "near the ground," @45.46 */
   tl.to("#g-v1-290", {autoAlpha:0.7, y:-4, duration:0.4}, 45.46);
