@@ -1,0 +1,58 @@
+<!doctype html>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: Playfair; src: url("file:///C:/Users/Sidhartha/Automation%20Projects/storm-market/ebook/build/art/PlayfairDisplay.ttf"); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; background: #05070a; }
+  .field {
+    position: absolute; inset: -8%;
+    background: url("file:///C:/Users/Sidhartha/Automation%20Projects/storm-market/ebook/build/art/cover-v3-raymond.png") center 28% / cover no-repeat;
+    filter: blur(34px) saturate(1.1); transform: scale(1.15);
+  }
+  .veil {
+    position: absolute; inset: 0;
+    background: linear-gradient(100deg, rgba(5,7,10,.94) 0%, rgba(5,7,10,.88) 46%,
+                                        rgba(5,7,10,.55) 72%, rgba(5,7,10,.35) 100%);
+  }
+  .row { position: absolute; inset: 0; display: flex; align-items: center; gap: 70px;
+          padding: 0 96px; }
+  .copy { flex: 1 1 auto; max-width: 940px; }
+  .kicker {
+    font-family: Playfair, Georgia, serif; font-size: 21px; font-weight: 600;
+    letter-spacing: .34em; text-transform: uppercase; color: #e8a33a; margin-bottom: 30px;
+  }
+  h1 {
+    font-family: Playfair, Georgia, serif; font-size: 104px; line-height: .98;
+    color: #f4efe6; font-weight: 600; letter-spacing: -.01em;
+  }
+  .sub {
+    font-family: Playfair, Georgia, serif; font-size: 33px; line-height: 1.36;
+    color: #cdc6bb; margin-top: 30px; max-width: 820px;
+  }
+  .rule { width: 190px; height: 2px; background: #b06b06; margin: 40px 0 26px; }
+  .proof {
+    font-family: Playfair, Georgia, serif; font-size: 25px; letter-spacing: .13em;
+    text-transform: uppercase; color: #9a9188;
+  }
+  .byline {
+    font-family: Playfair, Georgia, serif; font-size: 25px; letter-spacing: .2em;
+    text-transform: uppercase; color: #f4efe6; margin-top: 34px;
+  }
+  .plate {
+    flex: 0 0 auto; height: 900px; border-radius: 3px;
+    box-shadow: 0 26px 70px rgba(0,0,0,.75);
+  }
+</style>
+<div class="field"></div><div class="veil"></div>
+<div class="row">
+  <div class="copy">
+    <p class="kicker">Storm Market Field Manual</p>
+    <h1>The<br>Storm-Ready<br>Home</h1>
+    <p class="sub">What the survivors did differently &mdash; and the 130 things
+      you can do before the next one.</p>
+    <div class="rule"></div>
+    <p class="proof">130 protections &middot; 23 hazards &middot; 60 days &middot; 5 regions</p>
+    <p class="byline">Paul Raymond</p>
+  </div>
+  <img class="plate" src="file:///C:/Users/Sidhartha/Automation%20Projects/storm-market/ebook/build/art/cover-v3-raymond.png">
+</div>

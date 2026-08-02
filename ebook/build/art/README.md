@@ -5,6 +5,10 @@
 | `cover-v3-raymond.png` | **The cover, as shipped.** Owner-selected art with the byline repainted to Paul Raymond, 2026-07-29. 1024×1536, 2:3. |
 | `cover-v2-paul.png` | The same art with the original **Paul Reynolds** byline. Kept as the source plate `rename_byline.py` reads. |
 | `rename_byline.py` | Repaints the byline strip on every plate that has one. Run it if the pen name changes again — it does not regenerate the art. `--check` reports the measured metrics without writing. |
+| `cover-16x9.png` | **Storefront image**, 1920×1080. Gumroad product art. Composed, not cropped: the cover stands right, the headline and proof line are typeset left so they survive thumbnail size. |
+| `headshot.png` | Author portrait, 500×600, cropped from the plate. Copied to `landing/assets/headshot.png`. |
+| `make_derived_art.py` | Builds both of the above from `cover-v3-raymond.png`. No image generation — re-run it after any cover change. |
+| `cover-16x9.html` | Generated layout the storefront image is captured from. Not hand-edited. |
 | `PlayfairDisplay.ttf` | The byline face (OFL). Pinned locally so the repaint is reproducible offline. |
 | `ref-yoder-cover.png` | Reference only — the Yoder cover. Internal design reference, never reproduced. |
 | `cover-1x1-raymond.png` | **1:1 crop of the shipped cover.** Gumroad product image and social card. Byline repainted. |
