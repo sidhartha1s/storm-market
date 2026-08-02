@@ -109,7 +109,7 @@ def fig_three_rooms():
     # outside an <svg> wrapper) and every card gets an explicit fixed height rather than
     # relying on flex cross-axis stretch — both were found, on inspection of the first
     # render, to be fragile under Chrome's headless layout at this box size.
-    CARD_H = "1.42in"
+    CARD_H = "1.6in"
 
     def card(title, icon_svg, lines, accent):
         items = "".join(
@@ -126,13 +126,13 @@ def fig_three_rooms():
         )
 
     icon_safe = (
-        f'<svg viewBox="0 0 40 40" width="26" height="26">'
+        f'<svg viewBox="0 0 40 40" style="width:26px;height:26px;display:block">'
         f'<rect x="4" y="4" width="32" height="32" fill="none" stroke="{INK}" stroke-width="2.5"/>'
         f'<rect x="13" y="13" width="14" height="14" fill="{AMBER_BG}" stroke="{AMBER}" stroke-width="2.5"/>'
         f'</svg>'
     )
     icon_warm = (
-        f'<svg viewBox="0 0 40 40" width="26" height="26">'
+        f'<svg viewBox="0 0 40 40" style="width:26px;height:26px;display:block">'
         f'<rect x="4" y="14" width="32" height="22" fill="none" stroke="{INK}" stroke-width="2.5"/>'
         f'<circle cx="20" cy="8" r="6" fill="none" stroke="{ALERT}" stroke-width="2"/>'
         f'<g stroke="{ALERT}" stroke-width="1.6">'
@@ -142,7 +142,7 @@ def fig_three_rooms():
         f'</g></svg>'
     )
     icon_cool = (
-        f'<svg viewBox="0 0 40 40" width="26" height="26">'
+        f'<svg viewBox="0 0 40 40" style="width:26px;height:26px;display:block">'
         f'<rect x="4" y="10" width="32" height="26" fill="none" stroke="{INK}" stroke-width="2.5"/>'
         f'<path d="M2 18 L14 18 L10 14 M14 18 L10 22" fill="none" stroke="{AMBER}" stroke-width="1.6"/>'
         f'<path d="M38 28 L26 28 L30 24 M26 28 L30 32" fill="none" stroke="{AMBER}" stroke-width="1.6"/>'
