@@ -290,7 +290,7 @@ def main():
         title = text.split("\n", 1)[0].lstrip("# ").strip()
         _CURRENT_CHAPTER[0] = title
         toc.append(f"<li>{html.escape(title)}</li>")
-        body.append(render_markdown(text))
+        body.append("\n".join(render_markdown(text)))
 
     # Sources chapter, grouped by chapter, numbered continuously.
     src_html = ['<h1>Sources</h1>']
