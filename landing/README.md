@@ -1,15 +1,17 @@
 # Landing page — The Storm-Ready Home
 
-Static, zero dependencies, zero build step. One HTML file with inline CSS, assets alongside it.
-Deploys to Cloudflare Pages as-is.
+Static page, zero build step: one HTML file with inline CSS, assets alongside it, no framework, no
+CDN. The one piece of server logic is `functions/api/subscribe.js`, a single Cloudflare Pages
+Function for the lead-magnet form — no bundler, no other backend. Deploys to Cloudflare Pages as-is.
 
-**NOT DEPLOYED. Not live anywhere.** See "Before it goes live" — three blockers, one of them is
+**NOT DEPLOYED. Not live anywhere.** See "Before it goes live" — four blockers, one of them is
 Gumroad.
 
 | File | What |
 |---|---|
 | `index.html` | The whole page. Inline CSS, no framework, no CDN, no external fonts. |
-| `assets/` | Cover, OG image, four real page shots from the book. |
+| `assets/` | Cover, OG image, headshot, four real page shots from the book. |
+| `functions/api/subscribe.js` | Pages Function behind the lead-magnet form. See "Mail provider". |
 | `widthcheck.mjs` | **Gate.** Fails if the page scrolls sideways at any width. |
 | `shot.mjs` | Full-page screenshots at true device widths. |
 
@@ -66,33 +68,36 @@ the numbers yourself.
 **No countdown timer or "203 people viewing".** The lawn page uses both. They are fabricated urgency;
 your call, not mine to add silently. A real launch-price end date is honest and easy to add.
 
-## Before it goes live — three blockers
+## Before it goes live — four blockers
 
 1. **Gumroad product does not exist.** The buy button at `#buy` has no URL. Create the product, then
    set `href` to the Gumroad URL and add their overlay script. Gumroad cannot show a struck-through
    price natively — put the $87 anchor in the product description and use a discount code for $47.
-2. **The lead-magnet form is not wired.** It posts to `/api/subscribe`, which does not exist. The
-   submit handler currently **fails loudly with an alert** rather than pretending to subscribe
-   anyone. Needs either a Cloudflare Pages Function forwarding to a mail provider, or a hosted form
-   endpoint. The 50 state packets must also exist before this can deliver anything.
-3. **The book's prose is complete; its citations are not.** All **130 of 130** protections and all
-   **23 of 23** hazard playbooks are drafted, plus front matter, people/places, the binder spec and the
-   60-day sequence — 117,554 words. **All 130 citation markers are now closed**: every one carries a
-   full citation and a retrieval date, and the handful of claims that could not be traced to a primary
-   document were cut rather than softened. Sourcing is no longer the gating item; layout is.
+2. **The lead-magnet form is now wired, but delivery is not finished.** `functions/api/subscribe.js`
+   is a Cloudflare Pages Function that validates the email + two-letter state code and forwards the
+   subscriber to Kit (see "Mail provider" below) — no more alert-only placeholder. What it does
+   **not** do: send the packet itself. It adds the subscriber with their state recorded as a custom
+   field; a Kit automation keyed on that field (built in the Kit dashboard, not in this repo) has to
+   actually email the right `<ABBR>.html`/PDF. That automation does not exist yet, and neither does
+   the Kit account — `KIT_API_KEY` must be set before this stops 500ing (see Deploy). The state
+   packets themselves are covered in blocker 4.
+3. **The book is written and fully sourced. The page count on this page is wrong.** All **130 of 130**
+   protections and all **23 of 23** hazard playbooks are drafted, plus front matter, people/places, the
+   binder spec and the 60-day sequence — **120,526 words, 0 open citations**, every claim carrying a
+   full citation and a retrieval date. Claims that could not be traced to a primary document were cut
+   rather than softened. Sourcing is finished; **layout is the gating item.**
 
-   On the **488** figure: it is now a **floor and needs resetting.** Prose excluding the Binder measures
-   114,637 words, and the rendered sample pages average **243 words per page** (measured, 11 body pages,
-   including ones carrying diagrams and tables). That gives 472 prose pages, plus 80 binder pages and 18
-   appendix pages — **about 570.** Closing the citations added ~23,600 words. The page currently
-   understates the product, which is the safe direction, but it is still inaccurate. **Recount against
-   the laid-out book and change every instance of 488 on the landing page before launch** — it appears
-   in the meta description, the hero subhead, the proof strip, the deliverables list and the delivery
-   section.
+   On the **488** figure: it is a **floor and it has to be reset before launch.** The projection from
+   measured density (243 words per page across 11 rendered sample pages) put the book near **570**, but
+   a projection is not a count — `ebook/build/paginate.mjs` lays the manuscript into real fixed pages
+   and its output is what settles this. **Change every instance of 488 once that number exists**: it
+   appears in the meta description, the hero subhead, the proof strip, the deliverables list and the
+   delivery section. It currently understates the product, which is the safe direction to be wrong in,
+   but it is still wrong.
 
-4. **The 50 state packets do not exist yet**, so the free-packet email gate has nothing to deliver
-   — but the dataset behind them is now half collected and `build.py --check` passes on all 51 rows
-   for the first time. Filled from national directories rather than 51 hand lookups: the three
+4. **The 51 state packets (50 states + DC) now exist as HTML** at `ebook/appendix/out/packets/
+   <ABBR>.html`, and `build.py` can render any of them to PDF — only 4 (CA, FL, IL, TX) have been
+   rendered so far as spot checks, not all 51. Filled from national directories rather than 51 hand lookups: the three
    hazards, their seasons and the region overlay (NCEI Storm Events deaths), the emergency
    management agency and its URL (usa.gov), the insurance regulator, its phone and its complaint
    page (NAIC), the energy-assistance page (ACF LIHEAP), and both private-well testing fields
@@ -102,10 +107,13 @@ your call, not mine to add silently. A real launch-price end date is honest and 
    national machine-readable table, which is why they are last. `ebook/appendix/README.md` lists
    every source found and every dead end tried.
 
-Also outstanding, not blocking: a **16:9 cover render** for the Gumroad product image and social
-cards, and a **dedicated Paul Raymond headshot** — the portrait block crops the face out of the
-cover art with `background-position`, which reads fine at the rendered size (verified on the
-screenshot 2026-07-29) but reuses the cover instead of being its own shot.
+**Both now done.** The **dedicated headshot** exists at `landing/assets/headshot.png` (500×600,
+5:6), cropped from the approved cover art by `ebook/build/art/make_derived_art.py`, so it stays in
+sync if the cover ever changes; the author-block portrait points at it directly instead of faking
+a crop of the full cover with `background-position`. The **16:9 cover render** exists at
+`ebook/build/art/cover-16x9.png` (1920×1080), composed from the same plate with the headline and
+proof line typeset into the left half so it stays legible at Gumroad's thumbnail size — it's the
+storefront image, waiting on the Gumroad product being created (blocker 1).
 
 **Byline changed to Paul Raymond on 2026-07-29** at the owner's request, replacing Paul Reynolds
 across this page, the sample, the cover art and the art notes. The cover byline was baked into the
@@ -115,7 +123,55 @@ regenerating owner-approved art; `landing/assets/cover.png` is the repainted fil
 Executive Public Information Officer (Paul D. Raymond, Jr.) and with Paul Raymond Publications, the
 British adult-magazine brand. Details in `ebook/build/art/COVER-PROMPTS.md`.
 
+## Mail provider
+
+`functions/api/subscribe.js` forwards the free-packet signup to **Kit** (`api.kit.com`, formerly
+ConvertKit), chosen over Mailchimp and Buttondown for one reason: free-tier headroom for a list
+that doesn't exist yet. Mailchimp's free tier was cut to 250 contacts / 500 sends a month in
+January 2026; Buttondown's free tier caps at 100 subscribers. Kit's free tier holds 10,000
+subscribers with full API access, and its v4 REST API is one POST with one header that upserts a
+subscriber and accepts arbitrary custom fields — no provider-side abstraction layer needed for a
+single provider.
+
+What the function does: `POST https://api.kit.com/v4/subscribers` with an `X-Kit-Api-Key` header,
+body `{ email_address, fields: { state } }`. That's it — it records the subscriber and their
+two-letter state. It does not tag, does not trigger a send, and does not know what a packet is.
+
+What it deliberately does **not** do, and who has to do it before this delivers anything real:
+
+1. **Create the Kit account and API key.** Account settings → Developer → API keys → generate a
+   v4 key (not the legacy v3 key). Set it as `KIT_API_KEY` in the Cloudflare Pages project (see
+   Deploy below). Nothing is stored in this repo.
+2. **Add a custom field with the key `state`** in Kit (Subscribers → Custom fields) before the
+   first real signup. Kit silently drops unknown field keys with a warning rather than erroring —
+   that's Kit's behavior, documented here so a missing field doesn't get mistaken for a bug in this
+   function later.
+3. **Build the actual delivery automation** in the Kit dashboard: a visual automation triggered on
+   subscribe, split on the `state` field, that emails the matching `ebook/appendix/out/packets/
+   <ABBR>.html` (or its PDF once rendered). Fifty-one branches, or one templated send pointing at a
+   hosted per-state URL — that design choice belongs to the owner, not hardcoded here.
+
+**Rate limiting:** same-IP throttle, 5 requests / 10 minutes, real and tested (see Deploy). It's a
+fixed-window counter kept in the Function's module scope, so it's enforced per isolate, not
+globally across Cloudflare's edge — a real throttle against one abusive client hitting one edge
+location, not a distributed guarantee. The code checks for an optional `SUBSCRIBE_RATE_LIMIT`
+binding (Cloudflare's declarative Rate Limiting binding, GA since 2025-09) and uses it instead if
+present; the in-memory path logs a `[FALLBACK]` line on every request so the gap stays visible. No
+binding is configured today — nothing to set up for this to work, it's just the softer of the two
+options.
+
 ## Deploy (when unblocked, and with the owner)
+
+**Confirmed ready, without deploying anything:**
+- `wrangler` 4.118.0 is installed and already authenticated in this environment (`npx wrangler
+  whoami` resolves to an existing Cloudflare account) — no credentials were created, requested, or
+  stored as part of this check.
+- `functions/api/subscribe.js` was validated locally with `npx wrangler pages dev .`: malformed
+  email → 400, malformed state → 400, GET → 405, `KIT_API_KEY` unset → loud 500 (never a fake
+  success), 6th request within 10 minutes from the same IP → 429, and — with a temporary local-only
+  fake key in `.dev.vars` (never committed; deleted immediately after the test) — a real network
+  round-trip to Kit's live API that correctly surfaced Kit's 401 as this function's 502. The dev
+  server was killed after testing; nothing was published.
 
 Cloudflare Pages, direct upload — no build:
 
@@ -124,6 +180,19 @@ npx wrangler pages project create storm-ready-home        # once
 npx wrangler pages deploy landing --project-name storm-ready-home
 ```
 
+**Environment variables that must be set before the first deploy** (Pages project → Settings →
+Environment variables, both Production and Preview):
+
+| Variable | Required | Notes |
+|---|---|---|
+| `KIT_API_KEY` | Yes | Kit v4 API key (see "Mail provider" above). Unset → every submission 500s loudly instead of silently succeeding. |
+
+`SUBSCRIBE_RATE_LIMIT` is an optional future binding, not a variable to set — see "Rate limiting"
+above.
+
 Then point the domain at it in the Cloudflare dashboard. Check before shipping: OG image resolves at
 an absolute URL, the buy button goes to a live Gumroad product, a real test purchase completes and
-delivers, and the refund path works.
+delivers, the refund path works, and a real Kit sign-up lands in the account with `state` populated.
+
+**Standing instruction: do not run either command above until Gumroad payments exist (blocker 1).
+This site is deploy-ready. It is not launch-ready.**
