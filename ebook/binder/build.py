@@ -799,6 +799,7 @@ def build_form(form):
     if n in MULTI_PAGE_BUILDERS:
         return MULTI_PAGE_BUILDERS[n](form)
     single = {
+        1: lambda: build_form1(form),
         3: lambda: build_form3(all_fields(form)),
         6: lambda: build_form6(form),
         7: lambda: build_form7(form),
@@ -809,9 +810,12 @@ def build_form(form):
         17: lambda: build_form17(form),
         18: lambda: build_form18(form),
         20: lambda: build_form20(form),
+        22: lambda: build_form22(form),
         23: lambda: build_form23(form),
         25: lambda: build_form25(form),
+        28: lambda: build_form28(form),
         30: lambda: build_form30(form),
+        37: lambda: build_form37(form),
         38: lambda: build_form38(form),
     }.get(n)
     if single:
