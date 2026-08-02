@@ -1,7 +1,7 @@
 # CLAUDE.md — storm-market (US weather/disaster documentary channel)
 
 Faceless YouTube channel: **narrated US weather/natural-disaster retrospectives** (tornado,
-hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English, 13–23 min episodes.
+hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English, 13–23 min episodes (default band, not a cap — owner ordered 30 min for ep2; confirm per episode).
 **Separate from JP-market** — no shared code, only the same external tool pattern.
 
 ## Why this niche (validated 2026-07-21, references/)
