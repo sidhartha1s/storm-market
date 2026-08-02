@@ -71,6 +71,6 @@ fetch" — no special flags, so any defect below is a visual/content finding, no
 | supercell-timelapse-06.mp4 | 8.00s | 1920x1080 | 25 | supercell-timelapse | dramatic shelf/wall cloud over a flat green field, small parked vehicle for scale | Pexels, "dramatic thunderstorm timelapse over field" | OK |
 
 ## Counts
-- **OK: 33**
-- **CAUTION: 13**
+- **OK: 34**
+- **CAUTION: 12**
 - **REJECT: 17**
