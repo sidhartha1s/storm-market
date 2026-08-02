@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; overflow:hidden; }
+  .hdr { position:absolute; left:0; top:56px; width:1100px; text-align:left; padding-left:90px; font-weight:700; font-size:26px; letter-spacing:8px; color:#93a3b2; }
+  /* growth-strip stage: five time-checkpoint bars building a widening profile */
+  .stage { position:absolute; left:60px; top:150px; width:1100px; height:820px; }
+  .baseline { position:absolute; left:90px; right:90px; top:700px; height:2px; background:#2a3644; }
+  .sweep { position:absolute; left:90px; top:100px; bottom:120px; width:3px; background:linear-gradient(180deg,transparent,#e8c56a55,transparent); opacity:0.6; }
+  .bar { position:absolute; bottom:120px; width:140px; height:580px; transform-origin:center bottom;
+    background:linear-gradient(0deg,#8e2020,#c0392b 55%,#e74c3c 100%); box-shadow:0 0 40px #c0392b44; }
+  #g-width-v3-b1 { left:90px; } #g-width-v3-b2 { left:270px; } #g-width-v3-b3 { left:450px; }
+  #g-width-v3-b4 { left:630px; } #g-width-v3-b5 { left:810px; }
+  .tlab { position:absolute; top:706px; width:140px; text-align:center; font-family:'Courier New',monospace; font-weight:700; font-size:20px; color:#93a3b2; opacity:0; }
+  #g-width-v3-t1 { left:90px; } #g-width-v3-t2 { left:270px; } #g-width-v3-t3 { left:450px; }
+  #g-width-v3-t4 { left:630px; } #g-width-v3-t5 { left:810px; }
+  /* Hallam ghost line -- fixed height = 2.17/2.6 of max bar height, drawn AFTER the landing */
+  #g-width-v3-hallam { position:absolute; left:90px; width:860px; bottom:344px; height:0; border-top:3px dashed #e8c56a; opacity:0; }
+  #g-width-v3-hallamlab { position:absolute; left:966px; bottom:352px; font-family:Georgia,serif; font-style:italic; font-size:20px; color:#e8c56a; white-space:nowrap; opacity:0; }
+  /* Manhattan bracket overlay across the final (6:19) bar, appears after the landing */
+  #g-width-v3-manhattan { position:absolute; left:810px; width:140px; bottom:120px; height:580px; border:3px dashed #dfe7ee; border-radius:24px/12px; opacity:0; }
+  #g-width-v3-manhattanlab { position:absolute; left:730px; width:300px; text-align:center; bottom:712px; font-family:'Arial Black',Arial,sans-serif; font-size:19px; color:#dfe7ee; letter-spacing:1px; opacity:0; }
+  #g-width-v3-milelab { position:absolute; left:810px; width:140px; text-align:center; bottom:706px; font-family:'Courier New',monospace; font-weight:700; font-size:24px; color:#e74c3c; opacity:0; }
+  .fline { position:absolute; left:50%; top:60px; transform:translateX(-50%); font-family:Georgia,serif; font-style:italic;
+    font-size:28px; color:#e8c56a; text-align:center; width:960px; opacity:0; }
+  /* panel */
+  .panel { position:absolute; right:0; top:0; bottom:0; width:820px; box-sizing:border-box;
+    background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); padding:90px 70px 0 170px; }
+  .eyebrow { font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .tname { font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; line-height:1.05; margin-top:14px; }
+  .tsub { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:10px; }
+  .row { font-size:30px; color:#dfe7ee; font-weight:700; letter-spacing:1px; margin-top:22px; }
+  .row .lab { display:block; font-size:19px; color:#93a3b2; letter-spacing:4px; font-weight:700; }
+  #g-width-v3-counter { font-family:'Courier New',monospace; font-size:84px; color:#e74c3c; font-weight:700; margin-top:26px; }
+  .dlab { font-size:20px; color:#c8d3e0; letter-spacing:6px; font-weight:700; }
+</style>
+<div id="root" data-composition-id="g-width-v3" data-width="1920" data-height="1080">
+  <div class="hdr" id="g-width-v3-hdr">SIXTEEN MINUTES, FIVE READINGS</div>
+  <div class="stage">
+    <div class="baseline"></div>
+    <div class="sweep" id="g-width-v3-sweep"></div>
+    <div class="bar" id="g-width-v3-b1"></div>
+    <div class="bar" id="g-width-v3-b2"></div>
+    <div class="bar" id="g-width-v3-b3"></div>
+    <div class="bar" id="g-width-v3-b4"></div>
+    <div class="bar" id="g-width-v3-b5"></div>
+    <div class="tlab" id="g-width-v3-t1">6:03 PM</div>
+    <div class="tlab" id="g-width-v3-t2">~6:09 PM</div>
+    <div class="tlab" id="g-width-v3-t3">~6:13 PM</div>
+    <div class="tlab" id="g-width-v3-t4">~6:16 PM</div>
+    <div class="tlab" id="g-width-v3-t5">6:19 PM</div>
+    <div id="g-width-v3-hallam"></div>
+    <div id="g-width-v3-hallamlab">PREVIOUS RECORD · HALLAM, NE · 2004</div>
+    <div id="g-width-v3-manhattan"></div>
+    <div id="g-width-v3-manhattanlab">MANHATTAN ISLAND · FOR SCALE</div>
+    <div id="g-width-v3-milelab">2.6 MI</div>
+    <div class="fline" id="g-width-v3-fline">A tornado this wide does not look like a tornado at all.</div>
+  </div>
+  <div class="panel" id="g-width-v3-panel">
+    <div class="eyebrow">RaXPol MOBILE RADAR · 6:19 PM CDT</div>
+    <div class="tname">SOUTH OF EL RENO</div>
+    <div class="tsub">Widest tornado ever measured</div>
+    <div class="row" id="g-width-v3-row1"><span class="lab">SIXTEEN MINUTES AFTER TOUCHDOWN</span>FROM A FEW HUNDRED YARDS</div>
+    <div id="g-width-v3-counter">0.0</div>
+    <div class="dlab">MILES ACROSS</div>
+    <div class="row" id="g-width-v3-row2" style="color:#e8c56a; opacity:0">WIDER THAN THE ISLAND OF MANHATTAN</div>
+    <div class="row" id="g-width-v3-row3" style="opacity:0">FAR EDGE BEYOND EYESIGHT · CLEAR AIR</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-width-v3-";
+  tl.set([P+"b1",P+"b2",P+"b3",P+"b4",P+"b5"], {scaleY:0.005, autoAlpha:1}, 0);
+  tl.set([P+"t1",P+"t2",P+"t3",P+"t4",P+"t5",P+"hallam",P+"hallamlab",P+"manhattan",P+"manhattanlab",P+"milelab",P+"row2",P+"row3",P+"fline"], {autoAlpha:0}, 0);
+  tl.set(P+"panel", {x:660}, 0);
+  tl.fromTo(P+"panel", {x:660}, {x:0, duration:0.7, ease:"power3.out"}, 0.2);
+  tl.fromTo(P+"hdr", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.6}, 0.4);
+  /* continuous scanning sweep-line across the whole strip -- satisfies the >20s continuous-motion rule */
+  tl.fromTo(P+"sweep", {x:0}, {x:860, duration:50, ease:"none"}, 4.0);
+  /* touchdown @3.8 "a few hundred yards" -> ordinary @8.06 */
+  tl.fromTo(P+"row1", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 3.8);
+  tl.fromTo(P+"t1", {autoAlpha:0}, {autoAlpha:1, duration:0.3}, 4.0);
+  tl.to(P+"b1", {scaleY:0.012, duration:0.5, ease:"power1.out"}, 4.1);
+  /* growth begins @9.38 -> half mile bar @14.32-15.32 (scaleY 0.192, 0.5mi) */
+  tl.fromTo(P+"t2", {autoAlpha:0}, {autoAlpha:1, duration:0.3}, 9.5);
+  tl.to(P+"b2", {scaleY:0.192, duration:5.9, ease:"power1.in"}, 9.4);
+  /* full mile bar @16.04-17.24 (scaleY 0.385) */
+  tl.fromTo(P+"t3", {autoAlpha:0}, {autoAlpha:1, duration:0.3}, 16.1);
+  tl.to(P+"b3", {scaleY:0.385, duration:1.2, ease:"power2.in"}, 16.04);
+  /* two-mile bar @18.14-18.64 (scaleY 0.769) */
+  tl.fromTo(P+"t4", {autoAlpha:0}, {autoAlpha:1, duration:0.3}, 18.2);
+  tl.to(P+"b4", {scaleY:0.769, duration:0.55, ease:"power2.in"}, 18.14);
+  /* 6:19 bar reaches 2.6 miles @19.38-25.86 -- rolls fast then slows dramatically into the landing */
+  tl.fromTo(P+"t5", {autoAlpha:0}, {autoAlpha:1, duration:0.3}, 19.5);
+  const cnt = {v:2.0};
+  tl.to(P+"b5", {scaleY:1.0, duration:6.4, ease:"power4.out"}, 19.4);
+  tl.to(cnt, {v:2.6, duration:6.4, ease:"power4.out", onUpdate:function() {
+      const el = document.getElementById("g-width-v3-counter"); if (el) el.textContent = cnt.v.toFixed(1);
+  } }, 19.4);
+  tl.fromTo(P+"milelab", {autoAlpha:0, y:8}, {autoAlpha:1, y:0, duration:0.4}, 25.9);
+  /* Manhattan bracket over the 6:19 bar @25.86-29.88 */
+  tl.fromTo(P+"manhattan", {scale:0.5, autoAlpha:0}, {scale:1, autoAlpha:0.9, duration:0.6, ease:"power2.out"}, 26.1);
+  tl.fromTo(P+"manhattanlab", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 26.4);
+  tl.fromTo(P+"row2", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 26.4);
+  /* far edge beyond horizon @30.66-37.88 */
+  tl.fromTo(P+"row3", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 30.9);
+  /* Hallam ghost line -- old Nebraska record, drawn AFTER the landing @38.72-42.92, gone @42.52 */
+  tl.fromTo(P+"hallam", {autoAlpha:0, scaleX:0.2}, {autoAlpha:0.85, scaleX:1, duration:0.8, ease:"power2.out", transformOrigin:"left center"}, 38.9);
+  tl.fromTo(P+"hallamlab", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 39.3);
+  tl.to(P+"hallam", {autoAlpha:0.25, duration:0.5}, 42.6);
+  /* final line @51.44-54.9 */
+  tl.fromTo(P+"fline", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.6}, 51.6);
+  /* panel exits on the cut */
+  tl.to(P+"panel", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 54.9);
+  window.__timelines["g-width-v3"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
