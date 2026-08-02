@@ -408,6 +408,11 @@ than one square inch per square foot of enclosed area, bottom of all openings no
 above grade, screens/louvers/valves permitted if they allow automatic entry and exit of floodwaters. |
 https://www.ecfr.gov/current/title-44/section-60.3 | retrieved 2026-07-29»
 
+Figure 7 shows why: sealed, the wall holds back water on one side only, and that differential is what
+collapses it. Vented, the water moves through and the wall never has to fight it.
+
+«FIG: flood-openings»
+
 **What this does not do:** wet floodproofing accepts water into the enclosure. Everything in there
 must be flood-resistant or elevated, which is Protection 81.
 
