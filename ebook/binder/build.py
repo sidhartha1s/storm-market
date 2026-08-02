@@ -501,13 +501,16 @@ def build_form4_pages(form):
                           3, numbered=False) + '</div>' +
              '<div class="bgroup"><h4>Utilities</h4>' +
              render_fields(split_top(g["Utilities"].rstrip("."), ","), cls_hint="med") + '</div>')
+    # Split at the sentence's own ", and " boundary: the 988 line is a fixed fact to
+    # print verbatim, the Disaster Distress Helpline is what the reader looks up and
+    # writes in. An earlier draft paraphrased the 988 line instead of quoting it.
+    crisis_fixed, _, crisis_fillin = g["Crisis lines"].partition(", and ")
     page2 = ('<div class="bgroup"><h4>Services</h4>' +
              render_fields(split_top(g["Services"].rstrip("."), ","), cls_hint="short") + '</div>' +
              render_field(whole("Your county's ten-digit emergency backup number")) +
              '<div class="bgroup"><h4>Crisis lines</h4>'
-             '<p class="small">988 — Suicide &amp; Crisis Lifeline. Call or text.</p>' +
-             render_field("The current Disaster Distress Helpline number and text option, "
-                          "copied from SAMHSA's page on the day you fill this in") + '</div>')
+             f'<p class="small">{render_inline(crisis_fixed)}.</p>' +
+             render_field(crisis_fillin.rstrip(".")) + '</div>')
     return [page1, page2]
 
 
