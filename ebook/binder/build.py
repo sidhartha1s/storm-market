@@ -12,9 +12,9 @@ the front matter's region table). A later manuscript edit flows through on the n
 
 Where the spec does not dictate a *layout* (table vs. checklist vs. plain lines, or how
 many rows/copies a form with no explicit page count gets), that choice is made in code
-and commented at the point it's made -- see FORM_LAYOUT and the per-form builders below.
-No field is invented to fill space: a form with 6 short fields gets 6 fill-lines, not a
-padded 12.
+and commented at the point it's made -- see build_form()'s dispatch and the per-form
+builders below. No field is invented to fill space: a form with 6 short fields gets 6
+fill-lines, not a padded 12.
 
 Usage:
     python3 build.py --check     # parse and report form/page counts, write nothing
