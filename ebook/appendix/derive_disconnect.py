@@ -75,7 +75,7 @@ RULES = {
                        "Oct 27 - Apr 1 for the 2025-26 season): no shutoff of heat-related service "
                        "for a household that files a financial-hardship form (Mass. Dept. of "
                        "Public Utilities).",
-                       "https://www.mass.gov/info-details/when-am-i-protected-from-having-your-utilities-shut-off")},
+                       "https://www.mass.gov/info-details/when-am-i-protected-from-having-my-utilities-shut-off")},
     "CT": {"winter": ("Winter moratorium, Nov 1 - May 1: no disconnection of gas/electric hardship "
                        "accounts lacking funds to pay in full; life-threatening loss-of-service "
                        "cases are protected year-round (PURA).",
