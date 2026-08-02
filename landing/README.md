@@ -1,7 +1,8 @@
 # Landing page — The Storm-Ready Home
 
-Static, zero dependencies, zero build step. One HTML file with inline CSS, assets alongside it.
-Deploys to Cloudflare Pages as-is.
+Static page, zero build step: one HTML file with inline CSS, assets alongside it, no framework, no
+CDN. The one piece of server logic is `functions/api/subscribe.js`, a single Cloudflare Pages
+Function for the lead-magnet form — no bundler, no other backend. Deploys to Cloudflare Pages as-is.
 
 **NOT DEPLOYED. Not live anywhere.** See "Before it goes live" — three blockers, one of them is
 Gumroad.
@@ -9,7 +10,8 @@ Gumroad.
 | File | What |
 |---|---|
 | `index.html` | The whole page. Inline CSS, no framework, no CDN, no external fonts. |
-| `assets/` | Cover, OG image, four real page shots from the book. |
+| `assets/` | Cover, OG image, headshot, four real page shots from the book. |
+| `functions/api/subscribe.js` | Pages Function behind the lead-magnet form. See "Mail provider". |
 | `widthcheck.mjs` | **Gate.** Fails if the page scrolls sideways at any width. |
 | `shot.mjs` | Full-page screenshots at true device widths. |
 
