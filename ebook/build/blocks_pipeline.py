@@ -115,6 +115,7 @@ def main():
         rp._CURRENT_CHAPTER[0] = title
         file_blocks = rp.render_markdown(text)
         file_blocks[0] = chapter_opener_html(title)  # plain <h1> -> kicker + title
+        file_blocks = explode_lists(file_blocks)
         for i, block_html in enumerate(file_blocks):
             blocks.append({
                 "html": block_html,
