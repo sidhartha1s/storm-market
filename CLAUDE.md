@@ -155,25 +155,26 @@ session held uncommitted changes — owner-flagged, do not repeat. First action 
 storm-market session: `git worktree list` + `git status` → if you are in the main checkout
 and about to write, STOP and make a worktree.
 
-## HARD RULE — check the hyperframes version before production starts (owner 2026-07-29)
-**You do not have to remember this — `render_preflight.py` enforces it**, because "remember
-to run npm view" is the same class of instruction as "remember to cap your assets", and that
-one survived twelve failed renders. The gate does two things:
-- **pin drift = hard fail (exit 5)**, checked offline: `config.yaml` and every live
-  `npx hyperframes@<pin>` must agree, or the render does not run the version anyone reviewed;
-- **newer release upstream = loud `[VERSION]` warning**, not a block — a render must not die
-  because npm is unreachable, but nobody gets to say they did not know.
+## HARD RULE — hyperframes runs on `latest`, never a hardcoded pin (owner 2026-08-02, supersedes
+## the 2026-07-29 pin-and-bump model below)
+**`config.yaml`'s `render.hyperframes_version` is `"latest"`** — render scripts resolve the
+version from npm at render time. `render_preflight.py` enforces the INVERSE of the old rule:
+- **a hardcoded `npx hyperframes@<number>` in any live render script = hard fail (exit 5)** —
+  a pin is now the defect, not the drift; the old gate's "config.yaml and every live pin must
+  agree" model is retired along with pinning itself;
+- **`config.yaml` missing `hyperframes_version` entirely** is a separate hard fail (exit 4) —
+  the field must exist and say `"latest"`.
 
 Still worth running by hand at the START of a production run, before TTS or sourcing:
 ```
-npm view hyperframes version          # newer than config.yaml? pull it and bump the pin
+npm view hyperframes version          # what does "latest" resolve to right now?
 ```
-Bump `config.yaml render.hyperframes_version` AND every `npx hyperframes@<pin>` in `scripts/`
-together — they are checked against each other in `render.cmd`'s header. Then read the diff
-for anything touching timeouts or the extract stage before trusting an old measurement.
-Bumped to **0.7.81** on 2026-07-29 (from 0.7.64). Worth knowing why that matters: 0.7.81
-**shortens the ffprobe deadline from 120s to 30s**. Every number measured against 0.7.64 has
-a 4x smaller margin now — a newer version can be STRICTER, not just better.
+This is no longer a bump decision — there is nothing to bump, `config.yaml` never pins a
+number. It is a heads-up: read the diff for anything touching timeouts, `video_extract`, or
+encoder flags before trusting an old measurement against whatever "latest" now is. Worth
+knowing why this matters: the 0.7.64 → 0.7.81 jump (2026-07-29) shortened the ffprobe deadline
+from 120s to 30s with zero warning — a newer version can be STRICTER, not just better, and
+since nothing is pinned anymore, every render silently rides whatever "latest" ships that day.
 
 ## HARD RULE — do not write code for what reasoning already does (owner 2026-07-29)
 **"Keep code headache low."** Before adding a script, a check, or a flag, answer one question:
