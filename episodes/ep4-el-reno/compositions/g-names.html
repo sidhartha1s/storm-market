@@ -16,6 +16,9 @@
   .label { font-size:28px; color:#dfe7ee; font-weight:700; letter-spacing:2px; margin-top:18px; }
   .headline { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:56px; color:#f2f5f8; line-height:1.15; max-width:1500px; }
   .subfact { font-family:Georgia,serif; font-style:italic; font-size:30px; color:#d8a13a; margin-top:26px; }
+  .accent { width:0; height:3px; background:#8e2020; margin:22px auto 0; transform-origin:left center; }
+  .list3 { display:flex; gap:60px; justify-content:center; margin-top:28px; }
+  .list3 span { font-size:26px; font-weight:700; color:#dfe7ee; letter-spacing:2px; }
 </style>
 <div id="root" data-composition-id="g-names" data-width="1920" data-height="1080">
   <div class="column" id="g-names-column"></div>
@@ -27,7 +30,23 @@
       <div><div class="eyebrow">IN THE FLOOD'S</div><div class="counter" id="g-names-c2">0</div></div>
     </div>
     <div class="beat" id="g-names-b3">
-      <div><div class="headline" id="g-names-head">THE WIDEST TORNADO EVER RECORDED</div><div class="subfact" id="g-names-sub">KILLED NO ONE IN A HOUSE.</div></div>
+      <div><div class="headline">EVERY TORNADO DEATH<div class="accent" id="g-names-acc3"></div></div><div class="subfact" id="g-names-sub3">WAS IN A VEHICLE — THE SENTENCE THIS STORM WROTE INTO HISTORY</div></div>
+    </div>
+    <div class="beat" id="g-names-b4">
+      <div><div class="headline">A CAR FEELS LIKE SAFETY<div class="accent" id="g-names-acc4"></div></div><div class="subfact" id="g-names-sub4">BECAUSE IT MOVES — MOVING IS NOT THE SAME AS ESCAPING</div></div>
+    </div>
+    <div class="beat" id="g-names-b5">
+      <div><div class="headline">YOU CANNOT OUTDRIVE WHAT YOU CANNOT SEE<div class="accent" id="g-names-acc5"></div></div><div class="subfact" id="g-names-sub5">OR OUTGUESS A STORM THAT CHANGES THE RULES MID-GAME</div></div>
+    </div>
+    <div class="beat" id="g-names-b6">
+      <div><div class="headline" id="g-names-head6">WHO SURVIVED THAT NIGHT IN OKLAHOMA CITY?</div>
+        <div class="list3" id="g-names-list6">
+          <span id="g-names-i1">STAYED LOW</span><span id="g-names-i2">STAYED HOME</span><span id="g-names-i3">STAYED OUT OF THE WATER</span>
+        </div>
+      </div>
+    </div>
+    <div class="beat" id="g-names-b7">
+      <div><div class="headline" id="g-names-head7">THE WIDEST TORNADO EVER RECORDED</div><div class="subfact" id="g-names-sub7">KILLED NO ONE IN A HOUSE.</div></div>
     </div>
   </div>
 </div>
@@ -35,32 +54,68 @@
 window.__timelines = window.__timelines || {};
 (function() {
   const tl = gsap.timeline({ paused: true });
-  tl.set(["#g-names-b1","#g-names-b2","#g-names-b3","#g-names-head","#g-names-sub"], {autoAlpha:0}, 0);
+  tl.set(["#g-names-b1","#g-names-b2","#g-names-b3","#g-names-b4","#g-names-b5","#g-names-b6","#g-names-b7"], {autoAlpha:0}, 0);
+  tl.set(["#g-names-sub3","#g-names-sub4","#g-names-sub5"], {autoAlpha:0}, 0);
+  tl.set(["#g-names-acc3","#g-names-acc4","#g-names-acc5"], {width:0}, 0);
+  tl.set(["#g-names-i1","#g-names-i2","#g-names-i3"], {autoAlpha:0}, 0);
 
-  /* continuous element for the whole >20s window: the column motif slowly turns throughout */
-  tl.fromTo("#g-names-column", {rotation:0}, {rotation:190, duration:37.4, ease:"none"}, 0);
+  /* CONTINUOUS element for the whole 38.44s window: the column motif slowly turns throughout */
+  tl.fromTo("#g-names-column", {rotation:0}, {rotation:195, duration:38.4, ease:"none"}, 0);
 
-  /* BEAT 1 — "Eight names in the tornado's column" @0.0 */
+  /* BEAT 1 — "8 names in the tornado's column," @0.00-2.00 */
   tl.fromTo("#g-names-b1", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.4, ease:"power2.out"}, 0.0);
   const c1 = {v:0};
   tl.to(c1, {v:8, duration:0.65, ease:"power4.out", onUpdate:function(){
     const el = document.getElementById("g-names-c1"); if (el) el.textContent = Math.round(c1.v);
   }}, 0.0);
-  tl.to("#g-names-b1", {autoAlpha:0, duration:0.4, ease:"power1.in"}, 2.35);
+  tl.to("#g-names-b1", {autoAlpha:0, duration:0.35, ease:"power1.in"}, 2.35);
 
-  /* BEAT 2 — "...13 in the flood's." @2.74 */
+  /* BEAT 2 — "13 in the floods." @2.74-3.90 */
   tl.fromTo("#g-names-b2", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.4, ease:"power2.out"}, 2.74);
   const c2 = {v:0};
   tl.to(c2, {v:13, duration:0.65, ease:"power4.out", onUpdate:function(){
     const el = document.getElementById("g-names-c2"); if (el) el.textContent = Math.round(c2.v);
   }}, 2.74);
-  tl.to("#g-names-b2", {autoAlpha:0, duration:0.5, ease:"power1.in"}, 34.15);
+  tl.to("#g-names-b2", {autoAlpha:0, duration:0.4, ease:"power1.in"}, 4.6);
 
-  /* BEAT 3 — closing fact, line-by-line: "widest" @34.76, "killed no one in a house" @36.64 */
-  tl.set("#g-names-b3", {autoAlpha:1}, 34.76);
-  tl.fromTo("#g-names-head", {autoAlpha:0, scale:1.08}, {autoAlpha:1, scale:1, duration:0.5, ease:"power2.out"}, 34.76);
-  tl.fromTo("#g-names-sub", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.5, ease:"power2.out"}, 36.64);
-  tl.to("#g-names-b3", {autoAlpha:0, duration:0.4, ease:"power1.in"}, 38.0);
+  /* BEAT 3 — "Every one of the tornado's dead was in a vehicle," @5.00-7.46 */
+  tl.fromTo("#g-names-b3", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.4, ease:"power2.out"}, 5.00);
+  tl.to("#g-names-acc3", {width:340, duration:0.5, ease:"power2.out"}, 5.3);
+  /* "and that is the sentence this storm wrote into history." @7.92-10.74 */
+  tl.fromTo("#g-names-sub3", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4}, 7.92);
+  tl.to("#g-names-b3", {autoAlpha:0, duration:0.4, ease:"power1.in"}, 10.9);
+
+  /* BEAT 4 — "A car feels like safety because it moves," @11.54-14.08 */
+  tl.fromTo("#g-names-b4", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.4, ease:"power2.out"}, 11.54);
+  tl.to("#g-names-acc4", {width:400, duration:0.5, ease:"power2.out"}, 11.84);
+  /* "...moving is not the same as escaping." @14.58-18.22 */
+  tl.fromTo("#g-names-sub4", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4}, 14.58);
+  tl.to("#g-names-b4", {autoAlpha:0, duration:0.4, ease:"power1.in"}, 18.5);
+
+  /* BEAT 5 — "You cannot outdrive what you cannot see," @18.94-21.06 */
+  tl.fromTo("#g-names-b5", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.4, ease:"power2.out"}, 18.94);
+  tl.to("#g-names-acc5", {width:460, duration:0.5, ease:"power2.out"}, 19.24);
+  /* "...you cannot outguess a storm that changes the rules mid-game." @21.48-24.80 */
+  tl.fromTo("#g-names-sub5", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4}, 21.48);
+  tl.to("#g-names-b5", {autoAlpha:0, duration:0.4, ease:"power1.in"}, 24.9);
+
+  /* BEAT 6 — "The people who survived that evening in Oklahoma City were," @25.40-28.46 */
+  tl.fromTo("#g-names-b6", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.4, ease:"power2.out"}, 25.40);
+  /* "...Oklahoma City" @27.32 — emphasis pulse breaks the long clause into two beats */
+  tl.to("#g-names-head6", {scale:1.04, duration:0.3, yoyo:true, repeat:1}, 27.32);
+  /* "overwhelmingly, the ones who stayed low," @29.32-31.46 */
+  tl.fromTo("#g-names-i1", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.35}, 30.36);
+  /* "stayed home," @32.08-32.44 */
+  tl.fromTo("#g-names-i2", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.35}, 32.08);
+  /* "and stayed out of the water." @33.08-33.96 */
+  tl.fromTo("#g-names-i3", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.35}, 33.08);
+  tl.to("#g-names-b6", {autoAlpha:0, duration:0.4, ease:"power1.in"}, 34.2);
+
+  /* BEAT 7 (closer) — "The widest tornado ever recorded" @34.64; "killed no one in a house." @36.64 */
+  tl.set("#g-names-b7", {autoAlpha:1}, 34.64);
+  tl.fromTo("#g-names-head7", {autoAlpha:0, scale:1.08}, {autoAlpha:1, scale:1, duration:0.5, ease:"power2.out"}, 34.64);
+  tl.fromTo("#g-names-sub7", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.5, ease:"power2.out"}, 36.64);
+  tl.to("#g-names-b7", {autoAlpha:0, duration:0.4, ease:"power1.in"}, 38.0);
 
   window.__timelines["g-names"] = tl;
 })();
