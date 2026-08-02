@@ -20,7 +20,9 @@ D = "—"          # em dash, used in generated titles
 BOOK_CSS = HERE.parent / "build" / "book.css"
 
 # States per Appendix B page. fitcheck.mjs is the real gate on this number.
-PER_PAGE = 4   # 13 pages, verified against fitcheck after tightening the row
+# Dropped from 4 to 3 on 2026-08-02: adding energy_assist_phone to the Appendix B row pushed
+# Maine, Rhode Island and Texas past the safe area at 4/page (up to +25px). 3/page passes.
+PER_PAGE = 3   # 17 pages, verified against fitcheck after adding energy_assist_phone
 FRONT_MATTER = HERE.parent / "manuscript" / "P0-front-matter.md"
 OUT = HERE / "out"
 
