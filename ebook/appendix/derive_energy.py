@@ -145,6 +145,7 @@ def main():
             "energy_assist_url": url,
             "energy_assist_url_src": SOURCE if url else "",
             "energy_assist_phone": phone,
+            "energy_assist_phone_src": SOURCE if phone else "",
         })
 
     with OUT.open("w", newline="", encoding="utf-8") as fh:

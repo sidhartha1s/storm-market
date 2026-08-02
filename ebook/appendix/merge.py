@@ -41,6 +41,7 @@ COLUMNS = [
     "pharmacy_refill_law", "pharmacy_refill_law_src",
     "winter_disconnect", "summer_disconnect",
     "energy_assist_url", "energy_assist_url_src",
+    "energy_assist_phone", "energy_assist_phone_src",
     "well_test_contact", "well_test_url", "well_test_url_src",
     "hazard_1", "hazard_2", "hazard_3",
     "season_1", "season_2", "season_3",
@@ -48,7 +49,8 @@ COLUMNS = [
 ]
 
 # Fragments in merge order. Later fragments never overwrite a value an earlier one supplied.
-FRAGMENTS = ["hazards.csv", "agencies.csv", "energy.csv", "water.csv"]
+FRAGMENTS = ["hazards.csv", "agencies.csv", "energy.csv", "water.csv",
+             "em_phone.csv", "mitigation.csv", "deductibles.csv", "pharmacy.csv", "disconnect.csv"]
 
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 

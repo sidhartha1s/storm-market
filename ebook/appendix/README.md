@@ -1,8 +1,12 @@
 # Appendix B — State Authority Directory, and the 50 state packets
 
-Status: **schema and generator built; six of the fourteen sourced column groups collected for all 51
-rows, and `build.py --check` passes.** The remaining groups are listed under Blockers with the aggregator
-hunt to date, including the dead ends, so nobody re-walks them.
+Status: **schema and generator built; every sourced column group has been attempted for all 51 rows, and
+`build.py --check` passes.** Two groups (`em_phone`, `wind_deductible_note`) are fully filled from a
+national directory. Four more (`mitigation_program`, `pharmacy_refill_law`, `winter_disconnect`,
+`summer_disconnect`) are filled state-by-state where a citable source exists — correctly partial, not
+incomplete, since most states genuinely have nothing to cite for several of these. One (`roof_acv_note`)
+stayed empty: no citable source was found for any state. The remaining gaps and the dead ends behind them
+are listed under Blockers so nobody re-walks them.
 
 This directory holds two deliverables that share one dataset:
 
@@ -57,6 +61,7 @@ from, and the row carries one `verified_on` date.
 | `winter_disconnect` | Winter disconnection moratorium, if any | Serves Playbook 11 |
 | `summer_disconnect` | Summer/heat disconnection protection, if any | Serves Playbook 10 |
 | `energy_assist_url`, `_src` | State low-income energy assistance page | |
+| `energy_assist_phone`, `_src` | LIHEAP public-inquiry phone number | Added 2026-08-02 — in an outage a reader needs a number more than a URL |
 | `well_test_contact` | Where private well owners get water tested | Serves Protections 9, 10 |
 | `well_test_url`, `_src` | | |
 | `hazard_1`, `hazard_2`, `hazard_3` | Top three hazards | Must match a Part Three playbook name exactly |
@@ -82,9 +87,34 @@ in its own `derive_*.py`, writes its own CSV fragment, and `merge.py` assembles 
 | `energy_assist_url` | ACF LIHEAP state and territory contact listing | `derive_energy.py` |
 | `well_test_contact` | EPA list of state SDWA laboratory certification programs, 40 CFR 142.10(b)(3)(i) | `derive_water.py` |
 | `well_test_url` | EPA "Private Drinking Water Well Programs in Your State" | `derive_water.py` |
+| `em_phone` | EMAC (Emergency Management Assistance Compact) state contact directory | `derive_em_phone.py` |
+| `wind_deductible_note` | NAIC "Hurricane Deductibles" topic page — the 19 states + DC it names, and an honest non-claim for the rest | `derive_deductibles.py` |
+| `mitigation_program`, `mitigation_url` | Hand-verified against each programme's own government page — no national list exists | `derive_mitigation.py` |
+| `pharmacy_refill_law` | Hand-verified against each state's own statute/rule (or licensing board's published guidance) — no working national table exists | `derive_pharmacy.py` |
+| `winter_disconnect`, `summer_disconnect` | Hand-verified against each state utility commission's own page or rule — no working national table exists | `derive_disconnect.py` |
 
 Nothing here is a scrape of a search result and nothing is a model guess. Where a source omits a state, the
 cell stays empty and the run prints which state and why.
+
+### Four citations point at a code republisher, and why
+
+Every source URL in `state_data.csv` was audited by host. Almost all are `.gov`, plus two national
+bodies that are the authority for their column (`content.naic.org` for insurance, `emacweb.org` for
+the emergency-management contact list) and four official state programme or agency sites that
+simply run on `.com`/`.org` domains (My Safe Florida Home, Strengthen Alabama Homes, the Florida,
+Mississippi and South Carolina emergency management divisions).
+
+Four pharmacy citations — Alabama, Oklahoma, Texas — and one Oregon rule cite `law.justia.com` or
+`oregon.public.law` rather than the state's own site. That is not laziness: those states publish
+their statutes through a **JavaScript-rendered portal that returns no statute text to any fetcher**,
+including headless Chrome given a 40-second budget. The republished text is verifiable and the
+section numbers are printed in the cell, so a reader can check it; the state's own page cannot be
+machine-verified from here at all. **California was moved to its primary source**
+(`leginfo.legislature.ca.gov`) once that one proved fetchable.
+
+Worth a human decision before launch: a paid emergency directory citing a third-party republisher
+for four rows is defensible but not ideal, and the fix is a person opening four state portals in a
+real browser and confirming the text.
 
 ### Being blocked is not being dead
 
@@ -117,8 +147,13 @@ common complaint in this category, and "blocked to us" is exactly the set a huma
 | `derive_agencies.py` | Emergency management and insurance regulator columns. Caches pages under `.agency-cache/`. |
 | `derive_energy.py` | Energy-assistance column from the ACF LIHEAP listing. |
 | `derive_water.py` | Private-well testing columns from two EPA sources. |
+| `derive_em_phone.py` | `em_phone` from EMAC's state contact directory. Caches the page under `.agency-cache/`. |
+| `derive_deductibles.py` | `wind_deductible_note` for all 51 rows, parsed from NAIC's Hurricane Deductibles page. |
+| `derive_mitigation.py` | `mitigation_program`/`mitigation_url` — 7 hand-researched states, documented dead ends for the rest. |
+| `derive_pharmacy.py` | `pharmacy_refill_law` — 15 hand-researched states, documented dead ends (Tennessee, Mississippi). |
+| `derive_disconnect.py` | `winter_disconnect`/`summer_disconnect` — 12 + 3 hand-researched states. |
 | `merge.py` | Assembles the fragments into `state_data.csv`. Fails if two fragments disagree on the state set. |
-| `hazards.csv`, `agencies.csv`, `energy.csv`, `water.csv` | The per-column fragments. Committed so a run is auditable. |
+| `hazards.csv`, `agencies.csv`, `energy.csv`, `water.csv`, `em_phone.csv`, `deductibles.csv`, `mitigation.csv`, `pharmacy.csv`, `disconnect.csv` | The per-column fragments. Committed so a run is auditable. |
 | `build.py` | Renders both outputs. Fails on missing `verified_on`, unknown hazard names, or a URL that is not `https://`. |
 | `templates/appendix_row.html` | The compact in-book row |
 | `templates/packet.html` | The 4-page per-state packet |
@@ -148,28 +183,64 @@ Chrome `--print-to-pdf` with an **absolute** output path.
 
 ## Blockers
 
-1. **Six column groups collected, six to go.** Filled for all 51 rows: hazards, seasons, regions,
-   `doi_phone`, `well_test_contact`; and near-complete `em_url`, `doi_url`, `doi_agency`, `well_test_url`,
-   `energy_assist_url`. **Still empty, with no working national source found yet:**
+1. **Twelve of the fourteen sourced column groups collected, two genuinely incomplete by design.**
+   Filled for all 51 rows: hazards, seasons, regions, `doi_phone`, `well_test_contact`, `em_phone`,
+   `wind_deductible_note`; and near-complete `em_url`, `doi_url`, `doi_agency`, `well_test_url`,
+   `energy_assist_url`. Correctly *partial* (a citable source exists for only some states, and the
+   rest were searched, not skipped): `mitigation_program`/`mitigation_url` (7/51),
+   `pharmacy_refill_law` (15/51), `winter_disconnect` (12/51), `summer_disconnect` (3/51). **Still
+   fully empty, with no working source found:**
 
    | Column | Status of the hunt |
    |---|---|
-   | `em_phone` | usa.gov's directory carries no phone. Scraping a number off each agency page is exactly the "inferred phone" the hard rule bans, so this needs a published list. |
    | `alerts_note`, `alerts_url` | County-level, so no national list exists. Best route: link discovery over the 51 agency pages already cached, publishing only a link whose own text names alerts. |
-   | `mitigation_program`, `mitigation_url` | Blank for most states by design — only a handful run one. FL, CA and AL are already written up in Part Five from their own programme pages. |
-   | `wind_deductible_note`, `roof_acv_note` | Regulatory facts, per state. NAIC publishes reports but no machine-readable table. |
-   | `pharmacy_refill_law` | NCSL holds the table; **ncsl.org sits behind a Cloudflare bot check** that headless Chrome does not clear. |
-   | `winter_disconnect`, `summer_disconnect` | The LIHEAP Clearinghouse held exactly this table; **`liheapch.acf.gov` and `liheapch.acf.hhs.gov` both time out entirely** — that site appears to be gone rather than blocked. Needs a replacement. |
+   | `roof_acv_note` | No national or per-state source ever resolved to a *citable regulatory fact*. NAIC's own Hurricane Deductibles page (used for `wind_deductible_note`) covers named-storm deductibles, not roof ACV schedules, and has no equivalent page for this. A law firm's 50-state "matching regulations" chart (mwl-law.com) fetches as an unreadable compressed PDF. Cosmetic-damage-exclusion endorsement lists (ISO forms HO 06 43/44) turned up only through secondary aggregator blog posts with no primary regulatory filing behind the "which states approved this form" claim — not solid enough to cite in an emergency directory. Left empty rather than publish a plausible-sounding but unverified state list. |
 
    Dead ends already tried, so nobody repeats them: `content.naic.org` through the indexing tool returns 3.5 KB
    of site chrome (fetch it raw instead — 154 KB, with the per-state data), `ready.gov` and `fema.gov` state
    lists 403, the `iii.org` deductible article 404s, `nclc.org` shutoff protections 404s, `neada.org` state
-   offices 404s.
+   offices 404s, `liheapch.acf.gov`/`liheapch.acf.hhs.gov` time out entirely, `ncsl.org` sits behind a
+   Cloudflare bot check headless Chrome does not clear, and the NGA's utility-affordability memo and its
+   linked PDF describe only an aggregate count of states with a COVID-era moratorium, never which states or
+   what the rule is.
 
-2. **One schema gap to decide.** `energy.csv` carries a verified public-inquiry phone for 49 states and the
-   schema has no column for it. `merge.py` reports the dropped column on every run rather than discarding it
-   silently. Worth adding — in an outage a reader needs a number more than a URL — but it is a schema
-   change, so it waits for a decision.
+   What broke those columns open instead, and what it cost:
+
+   - **`em_phone`** — usa.gov's directory carries no phone, and scraping one off each of 51 agency
+     sites is exactly the "inferred phone" the hard rule bans. EMAC (the Emergency Management
+     Assistance Compact, administered under NEMA) publishes one phone per state for its own
+     mutual-aid use, which is why it stays accurate: a wrong number there breaks EMAC's real
+     deployments, not just this book. `derive_em_phone.py`, 51/51.
+   - **`wind_deductible_note`** — NAIC's Hurricane Deductibles topic page states outright which 19
+     states plus DC have a named-storm deductible "as of June 2025." `derive_deductibles.py`
+     parses that sentence directly rather than hardcoding the list, so a re-run catches NAIC
+     updating it. 51/51 (a sourced note either way, not just for the 20 that are listed).
+   - **`mitigation_program`** — no national table exists; each of FL, CA, AL (already in Part
+     Five), LA, OK, SC and KY was confirmed against the programme's own government page.
+     Mississippi's "Strengthen Mississippi Homes" program was found and then dropped: its funding
+     was suspended by the legislature in a 2025 special session, and neither URL a search turns up
+     for it currently resolves (one is a live "Page not found" wrapper, the other 404s) — a
+     programme that cannot be pointed at a live official page isn't citable yet. Georgia's and
+     Mississippi's own FORTIFIED insurance-premium discounts run through state-created residual
+     insurers (GUA, MWUA), which is a rate discount, not a grant/credit *programme* — left out
+     rather than stretched to fit. `derive_mitigation.py`, 7/51.
+   - **`pharmacy_refill_law`** — NCSL's table is unreachable (see dead ends above). Healthcare
+     Ready's 2022 multi-state review was used only as a map of where to look, not as the citation:
+     it groups states into buckets without a citable statute for most of them. Every row in
+     `derive_pharmacy.py` traces to the state's own statute, admin rule, or (LA, GA) the licensing
+     board's own published guidance. One specific trap worth flagging: a search repeatedly
+     surfaced "Tennessee, TCA § 58-2-101, 20-day supply for displaced residents" as Tennessee's
+     provision — that section is the Emergency Management Act's *definitions* clause and says
+     nothing about pharmacy refills. Left blank rather than publish a citation that doesn't hold
+     up on inspection. 15/51.
+   - **`winter_disconnect`/`summer_disconnect`** — same shape as pharmacy: no working national
+     table, so each row in `derive_disconnect.py` is sourced to the state utility commission's own
+     page or rule (Minnesota, Kansas, New York, Massachusetts, Connecticut, Illinois, Michigan,
+     Ohio, Pennsylvania, Wisconsin, Iowa, Idaho for winter; Arizona, California, Texas for summer).
+     Most of these rules protect a narrower group than "everyone" — low income, a hardship
+     declaration, a kept payment plan — so the note says who is protected, not just the date
+     range. 12/51 and 3/51.
+
 2. **The landing page's free-packet email gate cannot deliver anything until packets exist.** Currently the
    form fails loudly by design rather than pretending to subscribe.
 3. **Re-verification cadence.** Agency URLs and phone numbers rot. The packets print `verified_on`, and the
