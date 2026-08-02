@@ -58,8 +58,9 @@ def version_check(repo):
     run the version anyone reviewed; that is worth blocking a render for, and it is checked
     offline. 'Is a newer hyperframes published' is a PLANNING question, not a render-gate one
     (owner 2026-07-29: it belongs where episode work starts, so a stale pin is caught before
-    TTS/sourcing/compose spend, not surfaced in a render log after 40 minutes). That check now
-    lives in build_ep3.py, which runs at compose time. See check_hyperframes_current().
+    TTS/sourcing/compose spend, not surfaced in a render log after 40 minutes). That kickoff
+    check is step 4 of the storm-episode skill preflight (npm view hyperframes version vs
+    config.yaml pin) — it has no code home since build_ep3.py was deleted 2026-08-02.
     """
     cfg = (repo / "config.yaml").read_text(encoding="utf-8", errors="replace")
     m = re.search(r'hyperframes_version:\s*"([\d.]+)"', cfg)
