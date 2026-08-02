@@ -2,6 +2,64 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
+## 2026-08-03 — ep4 sourcing/QC hardening (docs sweep after the documentary find)
+
+**New standing rule (owner order, verbatim intent):** if a sourced clip is having audio,
+transcribe it first — see what they're actually saying — and only THEN match-cut it, picking
+only the relevant items. Added to DESIGN.md's sourcing section as a rule, not a script: no
+per-clip transcript ever satisfies it by existing, the agent has to actually read it before
+choosing the cut.
+
+**Provenance and gate findings, this session:**
+- **A provenance row is a claim, not proof.** `provenance.csv` described an 8.5s, video-only,
+  no-audio stub as the "spine narration source" for the whole episode. Nobody had ffprobed the
+  file it pointed at. The real 25:47 documentary was sitting on the exact same YouTube URL the
+  whole time — re-pulling it (not re-sourcing) closed the gap. Rule: ffprobe duration/streams
+  on any file a provenance row makes a load-bearing claim about, before trusting the claim.
+- **PD at the container level does not make every frame inside it usable.** The NWS Norman
+  documentary is a US-government work, but two of its beats still carry passenger content: a
+  third-party photo credit ("Dick McGowan") burned into one shot, and — found only by extracting
+  frames across a target narration line — a private family photograph (a man with two young
+  children) spliced into the SAME beat the team had already ruled unusable from a KFOR
+  rebroadcast. Downloading the "clean" government source did not solve that beat; the personal
+  photo is baked into the government cut too. Verdict has to be per-frame, not per-source.
+- **The per-file reuse rule passed a cut in which 34% of the picture track was a repeat**, because
+  it only ever inspected one filename at a time — three uses of one file, twice each, all read as
+  individually fine. What the viewer experiences is the aggregate. `lint_timeline.py` now sums
+  every non-graphic window past first-use and fails if repeats exceed **12%** of the timed
+  picture track.
+- **Same-subject-family clips read as one shot jump-cutting, not two shots.** Two different
+  files of one subject (e.g. a dashboard-POV-rain series numbered `-02`/`-04`) cut close together
+  reads to a viewer as a jump cut on the same shot, even though the reuse-by-filename check sees
+  two distinct assets. `lint_timeline.py` now fails any same-subject-family pair inside 60
+  seconds, with an explicit `data-sequence="reason"` opt-out for a deliberately consecutive
+  series (a storm growing across three real frames, a damage sweep) — declared, not silently
+  allowed.
+- **`data-start` on a picture element lives on the `<section class="clip">` wrapper, not the
+  nested `<img>`.** A check that reads timing off the `img` tag itself finds nothing, reports
+  zero stills, and silently under-counts the whole picture track. `lint_timeline.py`'s section
+  handling now reads `data-start`/`data-duration` off the wrapping section and only pulls the
+  `src` from the nested `img`.
+- **A GSAP tween scheduled past its host window is invisible on screen AND inflates the
+  composition's reported duration** — a `repeat:2` tween at `duration:20` covers 60s of actual
+  motion, which can silently paper over a dead 60s inside an 81.6s host window if the check only
+  looks at the tween's own span and not where the host window actually ends. `beat_density.py`
+  now derives total tween span as `duration + repeat * (duration + repeatDelay)` and compares it
+  against the host window, not just the tween's declared duration.
+- **`beat_density.py` is a motion check, not an information check — know the difference.** A
+  thin rotating line or a slowly drifting decoration reads as "motion" to the tool and can carry
+  a 31-second frozen stat card past the gate clean, because nothing about the STAT itself
+  changes. The tool answers "did anything move"; "did the viewer learn anything new" is still
+  the self-audit's job (DESIGN.md's "graphics are sequences, not posters"), not a script's.
+- **Burned-in NEXRAD/AWIPS timestamps read in UTC; our narration speaks CDT.** Reconfirmed this
+  session on the El Reno radar loops — the fix is to relabel the plate (fine-print conversion or
+  a cropped/honest caption), never to change the narration to match the clock.
+- **Version pinning was enforcing the wrong direction.** The old preflight gate flagged pin
+  DRIFT (config.yaml vs. what render scripts hardcode) as the failure. `render_preflight.py` now
+  resolves hyperframes `latest` from npm at render time and FAILS if any live render script still
+  hardcodes a version — a hardcoded pin is now the defect the gate exists to catch, not the
+  currency check the old gate was protecting.
+
 ## 2026-08-02 — CHECKPOINT: revert to the ep2 method (owner order)
 
 **What happened:** ep1 (9/10) and ep2 (9/10) were hand-authored — the model read word
