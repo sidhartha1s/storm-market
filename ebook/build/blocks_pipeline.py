@@ -195,6 +195,9 @@ def main():
             "fileStart": False, "heading": False,
         })
 
+    for b in blocks:
+        b.setdefault("group", None)  # Sources-chapter blocks carry no h3 group
+
     print(json.dumps(blocks))
 
 
