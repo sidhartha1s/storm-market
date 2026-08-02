@@ -736,7 +736,7 @@ def build_form23(form):
     FORM_REPEAT) borrows Form 2's -- the reader is told that explicitly here rather
     than the borrowed count silently standing in as if it were sourced for this form."""
     items = standard_gobag_items()
-    return (render_checklist(items) +
+    return (f'<div class="tight-check">{render_checklist(items)}</div>' +
             '<p class="b-cont">Person-specific additions</p>' +
             render_table(["Item"], 5, numbered=False) +
             render_field("Size and season check date", cls_hint="short") +
@@ -1064,6 +1064,11 @@ def main():
     for s in sections:
         for f in s["forms"]:
             classify_form(f)
+
+    # Form 23's own count is borrowed from Form 2's explicit "Four pages" byline (see
+    # _parse_page_count) rather than a second literal 4 sitting in FORM_REPEAT.
+    form2 = next(f for s in sections for f in s["forms"] if f["number"] == 2)
+    FORM_REPEAT[23] = _parse_page_count(form2["serves_raw"])
 
     total_forms = sum(len(s["forms"]) for s in sections)
     if len(sections) != 7:

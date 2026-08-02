@@ -151,6 +151,12 @@
 .tight-fields .field { margin-bottom: 6pt; }
 .tight-fields .field label { margin-bottom: 1pt; }
 
+/* Form 23 only: its 15-item standard checklist plus the person-specific table and the new
+   "photocopy as needed" note (added so the reader knows Form 23's page count is borrowed --
+   see build_form23()) overflowed by 25px at the normal .bcheck spacing. Tightened here only,
+   same reasoning as .tight-fields above. */
+.tight-check .bcheck { margin-bottom: 6pt; }
+
 /* ---- .roomy: spends a sparse form's leftover page space on row height, up to a ceiling ---- */
 /* --extra-field / --extra-row / --extra-check are set inline per form/page in build.py's
    ROOMY_EXTRA(_PAGES) tables — a pt amount capped well under book.css's own row components,
