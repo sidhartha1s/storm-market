@@ -553,8 +553,8 @@ def build_form15(form):
     numbers are Serves 69-84 from this same form's byline, not a re-typed list."""
     fields = all_fields(form)
     first = fields[0].split(":")[-1].strip()  # "...columns for: applies to me" -> "applies to me"
-    columns = ["Protection"] + [first] + fields[1:]
-    return render_table(columns[1:], 16, prefill_col0=list(range(69, 85)))
+    columns = ["Protection", first] + fields[1:]
+    return render_table(columns, 16, prefill_col0=list(range(69, 85)), numbered=False)
 
 
 def build_form16(form):
