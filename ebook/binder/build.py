@@ -659,7 +659,9 @@ def build_form14_pages(form):
                 rows.append(f"<tr>{tds}</tr>")
         return f'<table class="btable tight" style="table-layout:auto">{"".join(rows)}</table>'
 
-    return [trade_table(trades[:3]), trade_table(trades[3:])]
+    weights = [0.3 + len(t["desc"].rstrip(".").split("·")) for t in trades]
+    (a0, a1), (b0, b1) = balanced_split(weights, 2)
+    return [trade_table(trades[a0:a1]), trade_table(trades[b0:b1])]
 
 
 def build_form15(form):
