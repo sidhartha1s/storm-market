@@ -116,7 +116,10 @@ Per episode in `episodes/<slug>/`:
       guidance for reasoning, never script-enforced.
    b. `scripts/lint_timeline.py` **exit 0 — HARD gate** for deterministic checks only:
       missing media, windows, audio overlap, and the no-repeat rule (reuse needs
-      `data-callback="reason"`, max 2 uses, last-90s recap zone exempt). It also PRINTS a
+      `data-callback="reason"`, max 3 uses total with 2 of them carrying the callback,
+      last-90s recap zone exempt) — PLUS (owner order 2026-08-02) an aggregate repeat-share
+      cap at 12% of the timed picture track, and a same-subject-family proximity gate (60s,
+      `data-sequence="reason"` opt-out for a deliberate consecutive series). It also PRINTS a
       pacing report for step (a)'s reasoning — report lines never fail the run.
    c. **The static suite — all green BEFORE any render** (see "HARD RULE — the render is the
       LAST step"): `sweep_episode.py`, `blank_scan.mjs`, `beat_density.py`, `graphics_qc.mjs`.
