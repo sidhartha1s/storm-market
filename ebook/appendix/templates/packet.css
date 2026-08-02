@@ -193,14 +193,19 @@
   font-family: var(--sans); font-size: 7pt; font-weight: 700;
   letter-spacing: .04em; text-transform: uppercase; color: var(--ink-mute);
 }
+/* Two real columns, so a wrapped .gov URL continues under the value and never runs back to
+   the left margin — where it reads as if it belonged to the row below, which in a directory
+   scanned one state at a time is a wrong answer and not merely an ugly one. Done with flex
+   rather than a hanging indent: a negative text-indent also drags the inline-block label out
+   past the page margin, where .page's overflow:hidden clips it ("EMERGENCY MGMT" printing as
+   "GENCY MGMT"). Only .stline gets columns; .streg keeps its inline label. */
 .stline {
   font-family: var(--serif); font-size: 8.2pt; line-height: 1.24;
-  margin: 0; color: var(--ink); overflow-wrap: anywhere;
+  margin: 0; color: var(--ink);
+  display: flex; align-items: baseline; gap: 0.06in;
 }
+.stval { flex: 1; min-width: 0; overflow-wrap: anywhere; }
 .ssn { font-family: var(--sans); font-size: 7.2pt; color: var(--ink-mute); }
-/* A hanging indent would align wrapped URLs under the value column, and was tried, but it
-   narrows the line enough to push Texas past the page box at 4 states per page. Four pages of
-   paper beat the alignment. */
 .stname .stver { float: right; font-size: 7pt; font-weight: 400; }
 
 /* Three-region states (Alaska, Colorado, Hawaii, Montana, Nebraska, Utah, Wyoming) ran 3-25px

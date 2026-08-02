@@ -1,0 +1,77 @@
+/* book-auto.css — supplementary styles for paginate.mjs's auto-laid pages.
+   Additive only: book.css is untouched (sample.html and its .prot-head / .tree / .money /
+   etc. hand-set components still render exactly as before). This file styles the plain
+   elements review_pdf.py's markdown parser emits (h1-h3, p, table, ul/ol, blockquote, hr)
+   for which book.css has no generic rule — book.css's own headings are `margin:0` with no
+   font-size because every hand-laid sample page sets its own inline size and spacing.
+   Loaded after book.css, so equal-specificity rules here win (see paginate.mjs). */
+
+/* ---- measurement + layout plumbing ---- */
+.auto-page { display: flex; flex-direction: column; }
+/* display:flex disables margin-collapsing between children and between a child and the
+   container, in both the measuring pass and the final book — the two are structurally
+   identical, so a height measured once holds true wherever a block ends up landing. */
+.page.measure { height: auto; overflow: visible; }
+
+/* ---- chapter / part opener (the file-starting h1) ---- */
+.chapter-open { margin: 0 0 15pt; }
+.chapter-open .kicker {
+  display: block; font-family: var(--sans); font-size: 8pt; letter-spacing: .2em;
+  color: var(--amber); text-transform: uppercase; font-weight: 700; margin-bottom: 7pt;
+}
+h1.chapter-open { font-size: 25pt; line-height: 1.08; letter-spacing: -.01em; font-weight: 600; }
+
+/* ---- section headings the parser emits generically ---- */
+.auto-page h2 { font-size: 15pt; line-height: 1.2; margin: 15pt 0 7pt; }
+.auto-page h1.chapter-open + h2 { margin-top: 0; }
+.auto-page h3 {
+  font-size: 11.5pt; line-height: 1.25; margin: 12pt 0 6pt;
+  border-left: 3px solid var(--amber); padding-left: 8pt;
+}
+
+/* ---- lists ----
+   blocks_pipeline.py explodes every <ul>/<ol> into bare <li> blocks (see explode_lists) so
+   a long list can break across a page like a run of paragraphs can — there is no <ul>/<ol>
+   parent to carry the marker or the indent, so this supplies both directly on the <li>. */
+.auto-page li.li-bare {
+  display: list-item; font-size: 9.7pt; line-height: 1.44;
+  margin: 0 0 4pt 15pt; padding-left: 2pt;
+}
+.auto-page li.li-ul { list-style-type: disc; list-style-position: outside; }
+.auto-page li.li-ol { list-style-type: none; }
+.auto-page li.li-ol .li-num { font-family: var(--sans); font-weight: 600; color: var(--ink-soft); margin-right: 2pt; }
+
+/* ---- tables (book.css only styles table.money / table.week, both hand-authored) ---- */
+.auto-page table {
+  width: 100%; border-collapse: collapse; margin: 8pt 0 10pt;
+  font-size: 7.6pt; line-height: 1.3; table-layout: auto;
+}
+.auto-page th, .auto-page td {
+  border: .5pt solid var(--rule); padding: 3pt 4pt; text-align: left; vertical-align: top;
+}
+.auto-page th {
+  background: #f2efe9; font-family: var(--sans); font-weight: 600; font-size: 6.8pt;
+  letter-spacing: .02em; text-transform: uppercase;
+}
+
+/* ---- blockquote ---- */
+.auto-page blockquote {
+  margin: 8pt 0 8pt 8pt; padding-left: 10pt; border-left: 2pt solid var(--rule);
+  color: var(--ink-soft); font-size: 9.4pt; line-height: 1.44;
+}
+
+/* ---- rule ---- */
+.auto-page hr { border: 0; height: .5pt; background: var(--rule); margin: 11pt 0; }
+
+/* ---- citation superscripts ---- */
+.auto-page sup.ref { font-size: 7pt; color: var(--amber); font-weight: 600; }
+
+/* ---- Sources chapter ---- */
+.auto-page p.meta { font-size: 8.6pt; line-height: 1.45; color: var(--ink-soft); margin: 0 0 12pt; }
+.auto-page p.src-ch {
+  font-family: var(--sans); font-size: 9.5pt; font-weight: 600; letter-spacing: .01em;
+  margin: 13pt 0 5pt; color: var(--ink);
+}
+.auto-page p.ref-item { font-size: 8.1pt; line-height: 1.42; margin: 0 0 5pt; }
+.auto-page p.ref-item .refnum { font-family: var(--sans); color: var(--ink-mute); margin-right: 2pt; }
+.auto-page p.ref-item.pending { color: var(--amber); }
