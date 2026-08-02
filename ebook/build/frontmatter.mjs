@@ -133,7 +133,10 @@ for (let i = 0; i < openers.length; i++) {
     // Look ahead to this part's own pages (up to the next kicker/runhead opener) for a
     // 'sub' entry — if it has one, it gets a headerless part row like Parts One-Five.
     let hasSections = false;
-    for (let j = i + 1; j < openers.length && openers[j].kind === 'sub'; j++) hasSections = true;
+    for (let j = i + 1; j < openers.length; j++) {
+      if (openers[j].kind === 'kicker' || openers[j].kind === 'runhead') break;
+      if (openers[j].kind === 'sub') { hasSections = true; break; }
+    }
     toc.push(hasSections ? { level: 'head', title: label } : { level: 'flat', title: label, page: o.page });
     openPartNum = null;
     continue;
