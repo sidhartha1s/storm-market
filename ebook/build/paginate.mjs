@@ -165,7 +165,12 @@ async function measureInChrome(url) {
 
 // ---------------------------------------------------------------- 1. blocks from Python
 function loadBlocks() {
-  const r = spawnSync('python3', [join(HERE, 'blocks_pipeline.py')], {
+  // Plain spawnSync('python3', ...) resolves to a Microsoft Store app-execution-alias
+  // stub ahead of the real interpreter on this box's PATH (it prints "Python was not
+  // found" and exits 9009) — Node's own Windows executable search order disagrees with
+  // the shell's. Routing through `cmd.exe /c` reuses cmd's PATH resolution, which finds
+  // the real python3 first, matching what running `python3` in a terminal actually does.
+  const r = spawnSync('cmd.exe', ['/c', 'python3', join(HERE, 'blocks_pipeline.py')], {
     maxBuffer: 64 * 1024 * 1024, encoding: 'utf-8',
   });
   if (r.status !== 0) {
