@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>The Widest Tornado Ever Recorded — The Warning Hour Ep. 4</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Georgia, 'Times New Roman', serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #05070a; }
+    video, .still-wrap { position: absolute; inset: 0; }
+    video { width: 100%; height: 100%; object-fit: cover; }
+    .still-wrap { overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    .contain-wrap img { object-fit: contain; background: #04070a; }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    .lt { position: absolute; left: 110px; bottom: 110px; z-index: 5; font-family: Arial, sans-serif; }
+    .lt .lt-loc { display: table; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 52px; color: #f2f5f8; background: rgba(5,8,12,0.78); padding: 4px 16px; text-shadow: 0 3px 24px rgba(0,0,0,0.85); }
+    .lt .lt-time { display: table; font-weight: 700; font-size: 27px; color: #f5d98b; background: rgba(5,8,12,0.78); padding: 6px 14px; margin-top: 10px; letter-spacing: 1px; }
+    .popup { position: absolute; font-family: Arial, sans-serif; font-weight: 700; background: rgba(10,14,18,0.87); border-left: 6px solid #c0392b; color: #f2f5f8; padding: 18px 34px; font-size: 40px; letter-spacing: 1px; z-index: 6; }
+    .popup .fine { display: block; font-weight: 400; font-size: 21px; color: #b8c6d4; margin-top: 8px; letter-spacing: 0.5px; }
+    .popup-amber { border-left-color: #d8a13a; }
+    .quotecard { position: absolute; left: 160px; right: 160px; bottom: 150px; z-index: 6; text-align: center; }
+    .quotecard .q { display: table; margin: 0 auto; font-family: Georgia, serif; font-style: italic; font-size: 44px; color: #f2f5f8; background: rgba(5,8,12,0.72); padding: 16px 40px; line-height: 1.35; text-shadow: 0 2px 18px rgba(0,0,0,0.9); }
+    .quotecard .attr { display: table; margin: 12px auto 0; font-family: Arial, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 3px; color: #d8a13a; background: rgba(5,8,12,0.72); padding: 8px 24px; }
+    .namecard { position: absolute; left: 0; right: 0; bottom: 200px; text-align: center; z-index: 5; }
+    .namecard .nc-name { display: table; margin: 0 auto; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 64px; color: #f2f5f8; letter-spacing: 1px; background: rgba(5,8,12,0.62); padding: 10px 42px; text-shadow: 0 3px 26px rgba(0,0,0,0.9); }
+    .namecard .nc-sub { display: table; margin: 10px auto 0; font-family: Georgia, serif; font-style: italic; font-size: 32px; color: #e8c56a; background: rgba(5,8,12,0.62); padding: 8px 30px; }
+    .srclab { position: absolute; right: 40px; bottom: 34px; z-index: 7; font-family: Arial, sans-serif; font-size: 19px; color: rgba(200,211,224,0.75); background: rgba(5,8,12,0.55); padding: 5px 12px; letter-spacing: 0.5px; }
+    .dispatchlab { position: absolute; left: 0; right: 0; top: 480px; text-align: center; z-index: 6; }
+    .dispatchlab .d1 { display: table; margin: 0 auto; font-family: 'Courier New', monospace; font-weight: 700; font-size: 40px; color: #e8c56a; letter-spacing: 4px; background: rgba(5,8,12,0.6); padding: 10px 30px; }
+    .dispatchlab .d2 { display: table; margin: 14px auto 0; font-family: Arial, sans-serif; font-size: 22px; letter-spacing: 3px; color: #93a3b2; background: rgba(5,8,12,0.6); padding: 6px 18px; }
+    #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90;
+      background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
+    #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.11; mix-blend-mode: overlay; }
+    #grade { position: absolute; inset: 0; pointer-events: none; z-index: 89; mix-blend-mode: soft-light; background-color: rgba(255,200,140,0.30); }
+    .dust { position: absolute; z-index: 92; pointer-events: none; border-radius: 50%; background: rgba(255,255,255,0.32); filter: blur(1.2px); }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="ep4-elreno" data-start="0" data-width="1920" data-height="1080" data-duration="1954" data-fps="30">
+
+  <!-- ======== MUSIC BEDS (volumes driven on master tl) ======== -->
+  <audio id="bgm-tense1" src="media/music/m-tense-3x.mp3" data-start="10.0" data-duration="299.0" data-volume="0" data-bed="1"></audio>
+  <audio id="bgm-dread1" src="media/music/m-dread-5x.mp3" data-start="311.0" data-duration="375.4" data-volume="0" data-bed="1"></audio>
+  <audio id="bgm-dread2" src="media/music/m-dread-5x.mp3" data-start="687.4" data-duration="348.3" data-volume="0" data-bed="1" data-callback="second dread window, the-turn act"></audio>
+  <audio id="bgm-tense2" src="media/music/m-tense-3x.mp3" data-start="1038.8" data-duration="253.2" data-volume="0" data-bed="1" data-callback="tense window for the exodus act"></audio>
+  <audio id="bgm-somber1" src="media/music/m-somber-2x.mp3" data-start="1294.0" data-duration="173.1" data-volume="0" data-bed="1"></audio>
+  <audio id="bgm-neutral1" src="media/music/m-neutral-3x.mp3" data-start="1469.1" data-duration="248.0" data-volume="0" data-bed="1"></audio>
+  <audio id="bgm-somber2" src="media/music/m-somber-2x.mp3" data-start="1719.6" data-duration="207.1" data-volume="0" data-bed="1" data-callback="somber return for the reckoning act"></audio>
+  <audio id="bgm-hope" src="media/music/m-hopeful-1x.mp3" data-start="1929.7" data-duration="24.3" data-volume="0" data-bed="1"></audio>
+
+  <!-- ======== SFX BEDS (sparse; volumedetect-compensated gains, verify post-render) ======== -->
+  <audio id="sfx-siren-hook" src="media/sfx/03_tornado_siren_waver.ogg" data-start="0" data-duration="21.6" data-volume="0" data-bed="1"></audio>
+  <audio id="sfx-rain-a5" src="media/sfx/01_rain_street_medium.mp3" data-start="1420.0" data-duration="45.0" data-volume="0" data-bed="1"></audio>
+
+  <!-- ======== NARRATION ======== -->
+  <audio id="nx-a0s2" src="audio/a0-s2.wav" data-start="21.60" data-duration="29.88" data-volume="1"></audio>
+  <audio id="nx-a0s3" src="audio/a0-s3.wav" data-start="52.40" data-duration="34.00" data-volume="1"></audio>
+  <audio id="nx-a1s1" src="audio/a1-s1.wav" data-start="88.90" data-duration="54.60" data-volume="1"></audio>
+  <audio id="nx-a1s1b" src="audio/a1-s1b.wav" data-start="144.40" data-duration="60.48" data-volume="1"></audio>
+  <audio id="nx-a1s2" src="audio/a1-s2.wav" data-start="205.80" data-duration="56.12" data-volume="1"></audio>
+  <audio id="nx-a1s3" src="audio/a1-s3.wav" data-start="262.80" data-duration="42.56" data-volume="1"></audio>
+  <audio id="nx-a2s1" src="audio/a2-s1.wav" data-start="311.00" data-duration="52.48" data-volume="1"></audio>
+  <audio id="nx-a2s1b" src="audio/a2-s1b.wav" data-start="364.40" data-duration="67.48" data-volume="1"></audio>
+  <audio id="nx-a2s2" src="audio/a2-s2.wav" data-start="432.80" data-duration="55.28" data-volume="1"></audio>
+  <audio id="nx-a2s3" src="audio/a2-s3.wav" data-start="490.10" data-duration="66.24" data-volume="1"></audio>
+  <audio id="nx-a2s3c" src="audio/a2-s3c.wav" data-start="557.30" data-duration="68.16" data-volume="1"></audio>
+  <audio id="nx-a2s3b" src="audio/a2-s3b.wav" data-start="626.40" data-duration="60.00" data-volume="1"></audio>
+  <audio id="nx-a3s1" src="audio/a3-s1.wav" data-start="687.40" data-duration="56.64" data-volume="1"></audio>
+  <audio id="nx-a3s1b" src="audio/a3-s1b.wav" data-start="744.90" data-duration="76.12" data-volume="1"></audio>
+  <audio id="nx-a3s2" src="audio/a3-s2.wav" data-start="821.90" data-duration="72.48" data-volume="1"></audio>
+  <audio id="nx-a3s3" src="audio/a3-s3.wav" data-start="895.30" data-duration="79.32" data-volume="1"></audio>
+  <audio id="nx-a3s3b" src="audio/a3-s3b.wav" data-start="979.60" data-duration="56.12" data-volume="1"></audio>
+  <audio id="nx-a4s1" src="audio/a4-s1.wav" data-start="1038.80" data-duration="64.24" data-volume="1"></audio>
+  <audio id="nx-a4s2" src="audio/a4-s2.wav" data-start="1103.90" data-duration="73.48" data-volume="1"></audio>
+  <audio id="nx-a4s3" src="audio/a4-s3.wav" data-start="1178.30" data-duration="36.80" data-volume="1"></audio>
+  <audio id="nx-a4s4" src="audio/a4-s4.wav" data-start="1216.00" data-duration="75.96" data-volume="1"></audio>
+  <audio id="nx-a5s1" src="audio/a5-s1.wav" data-start="1294.00" data-duration="54.64" data-volume="1"></audio>
+  <audio id="nx-a5s2" src="audio/a5-s2.wav" data-start="1349.50" data-duration="47.40" data-volume="1"></audio>
+  <audio id="nx-a5s2b" src="audio/a5-s2b.wav" data-start="1397.80" data-duration="65.32" data-volume="1"></audio>
+  <audio id="nx-a6s1" src="audio/a6-s1.wav" data-start="1469.10" data-duration="38.56" data-volume="1"></audio>
+  <audio id="nx-a6s2" src="audio/a6-s2.wav" data-start="1508.60" data-duration="81.60" data-volume="1"></audio>
+  <audio id="nx-a6s2b" src="audio/a6-s2b.wav" data-start="1591.10" data-duration="69.56" data-volume="1"></audio>
+  <audio id="nx-a6s3" src="audio/a6-s3.wav" data-start="1661.60" data-duration="55.48" data-volume="1"></audio>
+  <audio id="nx-a7s1" src="audio/a7-s1.wav" data-start="1719.60" data-duration="55.80" data-volume="1"></audio>
+  <audio id="nx-a7s2" src="audio/a7-s2.wav" data-start="1776.30" data-duration="53.96" data-volume="1"></audio>
+  <audio id="nx-a7s2b" src="audio/a7-s2b.wav" data-start="1831.20" data-duration="56.08" data-volume="1"></audio>
+  <audio id="nx-a7s3" src="audio/a7-s3.wav" data-start="1888.20" data-duration="38.44" data-volume="1"></audio>
+  <audio id="nx-a8s1" src="audio/a8-s1.wav" data-start="1929.70" data-duration="20.60" data-volume="1"></audio>
+
+  <!-- ======== INSERT AUDIO — NONE IN THIS DRAFT (owner gate pending; see research/insert_gate_packet.md) ======== -->
+
+  <!-- ======== VIDEO TRACK 1 — picture track (hand-authored per cut) ======== -->
+  <!-- A0 hook 0–19.0 · void 19.0–21.6 · a0-s2 21.6 · a0-s3 52.4 · dip 86.4–88.9 -->
+  <!-- [PICTURE TRACK AUTHORED IN NEXT PASS — awaiting eyeball ledgers] -->
+
+  <!-- ======== TRACK 2 — sub-composition graphics (added as authored) ======== -->
+
+  <!-- ======== TRACK 3/4 — lower-thirds, popups, source chips (added with picture pass) ======== -->
+
+  <!-- film layer (untimed, last) -->
+  <div id="grade"></div>
+  <div id="vignette"></div>
+  <canvas id="grain" width="480" height="270"></canvas>
+</div>
+
+<script src="grain.js"></script>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 1954;
+
+  /* ---- music bed volumes ---- */
+  tl.to("#bgm-tense1", { volume: 0.09, duration: 3.0 }, 12.0);
+  tl.to("#bgm-tense1", { volume: 0.13, duration: 1.5 }, 70.0);   /* title swell */
+  tl.to("#bgm-tense1", { volume: 0.0, duration: 2.0 }, 84.4);    /* dies into A0→A1 dip */
+  tl.to("#bgm-tense1", { volume: 0.09, duration: 2.5 }, 89.4);
+  tl.to("#bgm-tense1", { volume: 0.0, duration: 2.5 }, 305.5);
+  tl.to("#bgm-dread1", { volume: 0.10, duration: 2.5 }, 311.5);
+  tl.to("#bgm-dread1", { volume: 0.0, duration: 1.8 }, 486.2);   /* dies into post-2.6 dip */
+  tl.to("#bgm-dread1", { volume: 0.10, duration: 2.0 }, 490.6);
+  tl.to("#bgm-dread1", { volume: 0.0, duration: 2.0 }, 684.0);
+  tl.to("#bgm-dread2", { volume: 0.10, duration: 2.0 }, 687.9);
+  tl.to("#bgm-dread2", { volume: 0.0, duration: 2.2 }, 1033.3);  /* full shutdown into heaviest dip */
+  tl.to("#bgm-tense2", { volume: 0.09, duration: 2.5 }, 1039.3);
+  tl.to("#bgm-tense2", { volume: 0.0, duration: 2.0 }, 1289.8);
+  tl.to("#bgm-somber1", { volume: 0.10, duration: 2.5 }, 1294.5);
+  tl.to("#bgm-somber1", { volume: 0.0, duration: 2.0 }, 1465.0);
+  tl.to("#bgm-neutral1", { volume: 0.09, duration: 2.5 }, 1469.6);
+  tl.to("#bgm-neutral1", { volume: 0.0, duration: 2.2 }, 1714.8);
+  tl.to("#bgm-somber2", { volume: 0.10, duration: 2.5 }, 1720.1);
+  tl.to("#bgm-somber2", { volume: 0.0, duration: 2.5 }, 1924.0);
+  tl.to("#bgm-hope", { volume: 0.12, duration: 2.0 }, 1930.0);
+  tl.to("#bgm-hope", { volume: 0.0, duration: 2.6 }, 1951.2);
+
+  /* ---- SFX beds (siren source ~-20dB mean; rain ~-30dB → compensated) ---- */
+  tl.to("#sfx-siren-hook", { volume: 0.45, duration: 1.5 }, 0.2);
+  tl.to("#sfx-siren-hook", { volume: 0.16, duration: 0.8 }, 2.6);  /* duck under anchor slot */
+  tl.to("#sfx-siren-hook", { volume: 0.30, duration: 1.2 }, 14.5); /* swell at impact */
+  tl.to("#sfx-siren-hook", { volume: 0.0, duration: 3.2 }, 17.8);  /* dies into the void */
+  tl.to("#sfx-rain-a5", { volume: 0.8, duration: 3.0 }, 1421.0);
+  tl.to("#sfx-rain-a5", { volume: 0.0, duration: 3.0 }, 1461.0);
+
+  /* ---- Ken Burns pans on stills ---- */
+  function kb(sel, at, dur, fromScale, toScale, fromX, toX, fromY, toY) {
+    tl.fromTo(sel, { scale: fromScale, x: fromX, y: fromY },
+      { scale: toScale, x: toX, y: toY, duration: dur, ease: "none" }, at);
+  }
+
+  /* ---- popup / card / LT entrances ---- */
+  function popIn(sel, at) {
+    tl.fromTo(sel + " .popup, " + sel + " .lt, " + sel + " .quotecard, " + sel + " .dispatchlab, " + sel + " .namecard, " + sel + " .srclab",
+      { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power2.out" }, at);
+  }
+
+  filmLayer(tl, DUR);
+  window.__timelines["ep4-elreno"] = tl;
+})();
+</script>
+</body>
+</html>
