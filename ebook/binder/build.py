@@ -147,7 +147,7 @@ def parse_manuscript():
 
 BLOCKQUOTE_RE = re.compile(r"^>\s*(.*)$")
 BOLD_LABEL_RE = re.compile(r"\*\*([^*]+?)\*\*:?")
-SENT_SPLIT_RE = re.compile(r"(?<=[.:])\s+(?=[A-Z*])")
+SENT_SPLIT_RE = re.compile(r"(?<=[.:*])\s+(?=[A-Z*])")
 
 
 def join_block(raw_lines):
