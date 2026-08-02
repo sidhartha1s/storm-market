@@ -177,14 +177,9 @@ def fig_utility_shutoffs():
     {_text(2, 121, "wrench hangs here", size=7.4, color=ALERT)}
     <line x1="20" y1="123" x2="40" y2="128" stroke="{ALERT}" stroke-width="1.2" stroke-dasharray="2,2"/>
     <circle cx="66" cy="180" r="7" fill="none" stroke="{AMBER}" stroke-width="2"/>
-    {_text(66, 183, "W", size=7, weight=700, anchor="middle", color=AMBER}
+    {_text(66, 183, "W", size=7, weight=700, anchor="middle", color=AMBER)}
     {_text(66, 205, "water main shut-off", size=7.4, anchor="middle", color=AMBER)}
     '''
-    # note: the middle f-string above has a deliberate style — fixed just below.
-    body = body.replace(
-        '{_text(66, 183, "W", size=7, weight=700, anchor="middle", color=AMBER}',
-        _text(66, 183, "W", size=7, weight=700, anchor="middle", color=AMBER)
-    )
     return _figure(3, "Three shut-offs, three different places in the same house. Find and "
                    "label all three before you need one — locations vary by house; this shows "
                    "the pattern, not your address.",
