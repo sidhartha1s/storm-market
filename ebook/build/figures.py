@@ -476,22 +476,28 @@ def fig_disaster_timeline():
     logs = [math.log10(b) for b in bounds]
     lo, hi = logs[0] - 0.4, logs[-1]
     span = hi - lo
-    W = 460
-    xs = [10 + (l - lo) / span * W for l in logs]
+    MARGIN, W = 20, 440
+    xs = [MARGIN + (l - lo) / span * W for l in logs]
     bars = []
     for i in range(6):
-        x0 = xs[i - 1] if i > 0 else 10
+        x0 = xs[i - 1] if i > 0 else MARGIN
         x1 = xs[i]
         w = max(x1 - x0, 4)
         bars.append(f'<rect x="{x0:.1f}" y="60" width="{w:.1f}" height="34" '
                      f'fill="{colors[i]}" fill-opacity="0.20" stroke="{colors[i]}" stroke-width="1.4"/>')
-        mid = (x0 + x1) / 2
         above = i % 2 == 0
         ty = 52 if above else 112
-        ly = ty + (10 if above else 10)
-        bars.append(_text(mid, ty, names[i], size=7.2, weight=700, anchor="middle", color=colors[i]))
-        bars.append(_text(mid, ly, labels[i], size=6.6, anchor="middle", color=INK_MUTE))
-    body = "".join(bars) + _text(230, 135, "time axis is log-scaled &mdash; each phase is roughly an order of magnitude longer than the last", size=6.6, anchor="middle", color=INK_MUTE, italic=True)
+        ly = ty + 10
+        if w < 46:
+            # too narrow to center text under — set the label beside the bar instead,
+            # anchored so it never runs past the viewBox edge.
+            anchor = "start" if x1 < 200 else "end"
+            lx = x1 + 4 if anchor == "start" else x0 - 4
+        else:
+            anchor, lx = "middle", (x0 + x1) / 2
+        bars.append(_text(lx, ty, names[i], size=7.2, weight=700, anchor=anchor, color=colors[i]))
+        bars.append(_text(lx, ly, labels[i], size=6.6, anchor=anchor, color=INK_MUTE))
+    body = "".join(bars) + _text(235, 138, "time axis is log-scaled &mdash; each phase is roughly an order of magnitude longer than the last", size=6.6, anchor="middle", color=INK_MUTE, italic=True)
     return _figure(13, "The six phases are not equal lengths, and the mismatch is the point: "
                    "the violent window that gets almost all the attention is minutes, and the "
                    "phases that take most of the injuries are days to years.",
