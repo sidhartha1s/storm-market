@@ -510,7 +510,7 @@ def build_form8(form):
     front-matter data — see appendix/build.py's region_first_ten()), so the table is
     ten rows, not a guessed default."""
     body = (render_field("Your region or regions", cls_hint="med") +
-            render_table(["Protection", "Done on"], 10, prefill_col0=list(range(1, 11))))
+            render_table(["Protection", "Done on"], 10))
     return body
 
 
