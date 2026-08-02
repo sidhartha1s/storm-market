@@ -35,6 +35,9 @@ BINDER_CSS = HERE / "templates" / "binder.css"
 OUT = HERE / "out"
 D = "—"  # em dash
 
+PARSED_SECTIONS = None  # set once in main(); build_form30() needs Form 29's own field
+                        # list ("Same fields" — see build_form30's docstring)
+
 SECTION_RE = re.compile(r"^## Section ([A-Z]) — (.+?)\s*\((\d+) pages?\)\s*$")
 FORM_RE = re.compile(r"^### Form (\d+)\s*·\s*(.+)$")
 FRONT_SHEET_RE = re.compile(r"^## The one-page front sheet\s*$")
