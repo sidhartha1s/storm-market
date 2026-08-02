@@ -193,9 +193,10 @@ genuinely disputed among the people who study it — the effects of a high-altit
 small consumer electronics is the clearest example — this book says so, rather than picking whichever answer
 makes a better chapter.
 
-**Full citations are at the back**, by chapter. Images and illustrations are original diagrams or public
-domain material from US government sources, credited individually in the credits pages. Nothing in this book
-is stock photography of a disaster.
+**Full citations are at the back**, by chapter. Every figure in this book is an original diagram drawn
+for this edition — none is a photograph, a government graphic, or anyone else's image — and the full
+set is listed in the Credits section at the back, in Part Eight. Nothing in this book is stock
+photography of a disaster.
 
 ---
 

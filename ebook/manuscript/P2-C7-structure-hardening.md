@@ -222,6 +222,11 @@ Read the label inside the door: a wind-pressure rating there is worth photograph
 Protection 104. No rating means no rating — buy the bracing kit matched to your door's brand and
 width, and install the posts and floor brackets while the weather is boring.
 
+Figure 5 shows what "pushes up on the roof deck from underneath" actually looks like, braced against
+breached.
+
+«FIG: garage-door-pressure»
+
 **What this does not do:** bracing does not upgrade an unrated door to a rated one and earns no
 credit on its own; only a rated door verified at inspection does. It also does nothing for the
 pedestrian door into the house, which is the path the water takes.
@@ -312,6 +317,11 @@ of leaves and needles.
 https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=4291 |
 retrieved 2026-07-29»
 
+Figure 6 lines up the three bands so the nesting is visible at a glance — Zone 0 is not a separate
+project from Zone 1 and Zone 2, it is the innermost five feet of the same one.
+
+«FIG: defensible-space-zones»
+
 Look up your own state's version by searching your state fire authority's name and "defensible space."
 Where a state has no mandate, the California distances are the best-tested numbers available and there
 is no reason to use worse ones.
@@ -397,6 +407,11 @@ must automatically equalise hydrostatic flood forces; minimum of two openings, t
 than one square inch per square foot of enclosed area, bottom of all openings no higher than one foot
 above grade, screens/louvers/valves permitted if they allow automatic entry and exit of floodwaters. |
 https://www.ecfr.gov/current/title-44/section-60.3 | retrieved 2026-07-29»
+
+Figure 7 shows why: sealed, the wall holds back water on one side only, and that differential is what
+collapses it. Vented, the water moves through and the wall never has to fight it.
+
+«FIG: flood-openings»
 
 **What this does not do:** wet floodproofing accepts water into the enclosure. Everything in there
 must be flood-resistant or elevated, which is Protection 81.

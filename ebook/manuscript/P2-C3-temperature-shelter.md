@@ -33,6 +33,11 @@ a small high bathroom window is acceptable, a picture window is not. Then time t
 the house getting there. Over sixty seconds means pick a closer room. Say it out loud to everyone
 tonight and write it on Form 4.
 
+The plan below shows what "zero exterior walls" looks like on paper — the safe room touches none of
+the marked openings.
+
+«FIG: safe-room-plan»
+
 **What this does not do:** an interior room is not a shelter. It buys walls, not survival in a violent
 tornado. In a mobile or manufactured home no room qualifies — your safe room is elsewhere, and you
 leave on the watch, not the warning. See Protection 24.
@@ -189,6 +194,11 @@ Active cooling works: cool showers, wet cloths at neck and wrists, feet in cool 
 prolonged heat wave. For them, relocation is the protection, and it should be decided on day one, not
 day three.
 
+Three protections, three rooms, and they are usually not the same room — Figure 2 lines up what each
+one demands so you are not surprised the safe room and the warm room disagree about windows.
+
+«FIG: three-rooms»
+
 ---
 
 ### 30 · Reflective film and exterior shading
@@ -337,6 +347,10 @@ discover is seized during a burst pipe is not a shut-off.
 
 **On gas: shut it off only if you smell gas, hear it escaping, or are told to.** Once it is off, it
 stays off until the utility restores it — never relight it yourself.
+
+The three are rarely in the same place — Figure 3 shows the pattern of where to look.
+
+«FIG: utility-shutoffs»
 
 **What this does not do:** shutting off the main does not drain the pipes. Open the lowest taps
 afterwards to relieve what is still in the system.

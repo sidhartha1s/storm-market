@@ -121,6 +121,10 @@ from a plume.
   protective action plans and you need to know whether the children are sheltered in place or bussed to a
   named reception point.
 
+Figure 12 shows the two rings to scale — most readers will find themselves outside both.
+
+«FIG: radiological-zones»
+
 **If you are not inside a planning zone, this playbook is finished** and you can go to the next one. That is
 most readers, and saying so is part of being honest about proportion.
 

@@ -197,6 +197,10 @@ out of danger. Rainfall, surge, and tornadoes routinely occur well beyond it, an
 the cone about one time in three.
 «SRC: NHC, "Definition of the NHC Track Forecast Cone" — the cone encloses circles sized so that two-thirds of official forecast errors over a 5-year sample fall within them, and it depicts the probable track of the centre only, not the extent of impacts. https://www.nhc.noaa.gov/aboutcone.shtml | retrieved 2026-07-29»
 
+Figure 10 puts the cone next to what it leaves out.
+
+«FIG: hurricane-cone»
+
 What to read instead: the **surge inundation maps**, which show water depth over land and are the
 product most tied to fatalities, the wind arrival timing, and the rainfall forecast — which is
 frequently the deadliest element and is unrelated to the category.

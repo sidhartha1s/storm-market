@@ -228,6 +228,11 @@ carefully, appeal rather than accept, and plan for months.
 | Decompensation | 3 days–2 weeks | Medical decompensation | Believing it is over | Restore support; refill early; slow the physical work |
 | Recovery | 2 weeks–2 years | Money, mould, the mind | Cleaning up before documenting | Document, dry, file, appeal, plan for months |
 
+The table above treats all six rows as the same size. Figure 13 does not — laid out to actual scale,
+the phase everyone prepares for is a sliver, and the phases nobody prepares for are most of the line.
+
+«FIG: disaster-timeline»
+
 ---
 
 ## Why the clock matters more than the hazard

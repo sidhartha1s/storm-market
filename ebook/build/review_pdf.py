@@ -65,6 +65,7 @@ ORDER = [
     "P5-C4-electronics-radiological.md",
     "P6-the-binder.md",
     "P7-the-60-days.md",
+    "P8-credits.md",
 ]
 
 CSS = """

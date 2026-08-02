@@ -161,6 +161,11 @@ considerable = 1.75 in hail and/or 70 mph and does not; on average only 10 per c
 thunderstorms reach destructive each year, mostly damaging-wind events. |
 https://www.weather.gov/news/072221-svr-wea | retrieved 2026-07-29»
 
+Figure 11 puts the two hail sizes next to each other — an inch and change looks small in a sentence
+and different in a circle.
+
+«FIG: hail-damage-tiers»
+
 **When it is issued:** vehicles under cover or against a building. Everything loose brought in. Charge
 everything. Unplug what you can spare (Protection 120). Then get away from windows and go to an interior
 room — the same room as the tornado plan, because large hail breaks glass and a derecho's leading gust

@@ -31,6 +31,11 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 import review_pdf as rp  # noqa: E402
 
+try:
+    import figures  # noqa: E402  — provides render_figure(fig_id); may not exist yet
+except ImportError:
+    figures = None
+
 # Matches every file title in the manuscript: "Part Two, Chapter One — Water",
 # "Part Three, Playbook 1 — Tornado", "Part Six — The Binder". Used to split the
 # file-opening h1 into a small uppercase kicker ("PART TWO, CHAPTER ONE") plus the large
@@ -104,6 +109,39 @@ def explode_lists(block_list):
     return out
 
 
+FIG_RE = re.compile(r"^<p>«FIG:\s*([\w-]+)\s*»</p>$")
+
+
+def resolve_figures(block_list, filename):
+    """Replace a bare <p>«FIG: fig-id»</p> block — its own paragraph, blank lines around,
+    per the figures agent's marker convention (matching how «SRC:»/«CITE:» work) — with
+    figures.render_figure(fig_id)'s HTML.
+
+    Fails loud rather than leaving the marker in the rendered book or silently dropping the
+    figure: an unresolved marker reaching a reader's page is exactly the «CITE:» leak this
+    manuscript has been burned by once already (see manuscript/README.md). Each figure's
+    <svg> carries its own fixed height (the figures agent's convention, matching sample.html),
+    so it measures deterministically like any other block — no special-casing needed here
+    beyond the substitution itself; tag_of() reads it as a plain <figure> block, which is
+    atomic by default, matching the brief's "figures ... atomic" rule."""
+    out = []
+    for block_html in block_list:
+        m = FIG_RE.match(block_html)
+        if not m:
+            out.append(block_html)
+            continue
+        fig_id = m.group(1)
+        if figures is None:
+            sys.exit(f"FAIL: {filename} references «FIG: {fig_id}» but build/figures.py does not exist yet.")
+        if not hasattr(figures, "render_figure"):
+            sys.exit(f"FAIL: build/figures.py has no render_figure() — needed for {filename}'s «FIG: {fig_id}»")
+        try:
+            out.append(figures.render_figure(fig_id))
+        except Exception as e:
+            sys.exit(f"FAIL: {filename}'s «FIG: {fig_id}» could not be rendered: {e}")
+    return out
+
+
 def assign_groups(tags):
     """Group index per block: every h3 opens a new group that also covers every block up
     to (not including) the next h1/h2/h3. None outside any h3's span.
@@ -129,6 +167,57 @@ def assign_groups(tags):
     return groups
 
 
+# Every manuscript file opens with its own "# Title" (and sometimes a subtitle line),
+# then an authoring-only "Target: N pages [· ~W words] · draft D, DATE" line before the
+# first real "##" section heading -- some files fold it into a longer line instead
+# ("Protections 1-12 · Target: 12 pages · draft 1, 2026-07-28"). It's a length-tracking
+# note for the writer, not content for the $47 reader, so it's dropped -- not rewritten,
+# and the manuscript .md files on disk are untouched, only the rendered copy is affected.
+# Confined to strictly before the file's first "##" heading, so a legitimate "Target:"
+# opening a sentence in the book's actual prose (which only ever appears after that
+# point) is never touched -- matching "Target:" anywhere in the file would risk exactly
+# that.
+TARGET_SCAFFOLD_RE = re.compile(r"\s*(?:·\s*)?Target:.*$")
+
+
+def strip_target_scaffold(text):
+    lines = text.split("\n")
+    boundary = next((i for i, l in enumerate(lines) if re.match(r"^#{2,6}\s", l)), len(lines))
+    out = []
+    for i, line in enumerate(lines):
+        if i < boundary and "Target:" in line:
+            line = TARGET_SCAFFOLD_RE.sub("", line).rstrip()
+            if not line:
+                continue  # the whole line was the scaffolding -- drop it, don't blank it
+        out.append(line)
+    return "\n".join(out)
+
+
+# P6-the-binder.md's "## The forms" heading onward is a field-by-field SPECIFICATION
+# for ../binder/build.py, not book prose to typeset — those 41 field lists are now real
+# fillable pages (see ../binder/out/binder.html, spliced in by paginate.mjs the same way
+# Appendix B is), and printing both the spec and the pages would be redundant, and
+# would actively contradict them the moment the spec is edited and the pages rebuilt.
+BINDER_FILE = "P6-the-binder.md"
+BINDER_CUT_AT = "## The forms"
+
+
+def truncate_binder_spec(text, filename):
+    """Keep everything up to (not including) BINDER_CUT_AT — "## How the binder works"
+    and the front matter stay in the flow. Fails loudly if the heading moved or was
+    reworded, rather than silently falling back to printing the whole spec again."""
+    if filename != BINDER_FILE:
+        return text
+    idx = text.find(f"\n{BINDER_CUT_AT}\n")
+    if idx == -1:
+        sys.exit(f"FAIL: {filename} -- the '{BINDER_CUT_AT}' heading was not found. "
+                 "blocks_pipeline.py truncates the manuscript there so the binder's 41 "
+                 "form field lists aren't printed twice (once as spec prose, once as the "
+                 "real pages ../binder/build.py generates from the same spec) -- if the "
+                 "heading was renamed or moved, update BINDER_CUT_AT above.")
+    return text[:idx].rstrip() + "\n"
+
+
 def main():
     missing = [name for name in rp.ORDER if not (rp.MS / name).exists()]
     if missing:
@@ -137,10 +226,13 @@ def main():
     blocks = []
     for name in rp.ORDER:
         text = (rp.MS / name).read_text(encoding="utf-8")
+        text = strip_target_scaffold(text)
+        text = truncate_binder_spec(text, name)
         title = text.split("\n", 1)[0].lstrip("# ").strip()
         rp._CURRENT_CHAPTER[0] = title
         file_blocks = rp.render_markdown(text)
         file_blocks[0] = chapter_opener_html(title)  # plain <h1> -> kicker + title
+        file_blocks = resolve_figures(file_blocks, name)
         file_blocks = explode_lists(file_blocks)
         tags = [tag_of(bh) for bh in file_blocks]
         groups = assign_groups(tags)

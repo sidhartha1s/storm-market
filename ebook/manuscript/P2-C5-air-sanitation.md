@@ -59,6 +59,11 @@ sealed-battery units remove the dead-battery failure mode entirely and are worth
 Know the response: alarm sounds, everyone goes outside immediately, then call 911 or the gas utility
 from outside. Do not open windows and wait — you will disperse the evidence and stay in the building.
 
+Figure 8 lines up this protection with Protection 48 below — one placement rule for smoke, a
+different one for carbon monoxide, on the same house.
+
+«FIG: alarm-placement»
+
 **What this does not do:** an alarm is a warning, not a shield. It also does not detect natural gas,
 propane, or smoke unless it is a combination unit — three different sensors, three different jobs.
 
@@ -172,6 +177,10 @@ theatre. Change the filters.
 
 Build it correctly: filters oriented with airflow arrows pointing **into** the fan, joints sealed with
 tape so air cannot bypass the filters, and the cardboard shroud on the outlet side.
+
+Figure 9 shows the build exploded out — orientation and the shroud are the two parts people get backwards.
+
+«FIG: box-fan-filter»
 
 Run it in the room people are in — usually the same consolidated room from Protection 26 — and keep
 that room's door closed.

@@ -153,6 +153,10 @@ The sequence matters and the order is not optional:
 
 Learn this on a calm afternoon, not by flashlight. Hang the hose and the wrench on the tank itself.
 
+Figure 4 shows the five steps in order, and where each valve actually is on the tank.
+
+«FIG: water-heater-drawoff»
+
 **What this does not do:** it produces nothing in a tankless system, which stores no water at all.
 It also produces hot, sediment-heavy water that needs to cool and settle, and if your supply was
 already contaminated before the tank filled, the tank contents are contaminated too.
