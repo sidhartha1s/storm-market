@@ -141,15 +141,18 @@ def main():
         file_blocks = rp.render_markdown(text)
         file_blocks[0] = chapter_opener_html(title)  # plain <h1> -> kicker + title
         file_blocks = explode_lists(file_blocks)
+        tags = [tag_of(bh) for bh in file_blocks]
+        groups = assign_groups(tags)
         for i, block_html in enumerate(file_blocks):
             blocks.append({
                 "html": block_html,
-                "tag": tag_of(block_html),
+                "tag": tags[i],
                 "file": name,
                 "part": part_of(name),
                 "chapterTitle": short_title(title),
                 "fileStart": i == 0,
-                "heading": tag_of(block_html) in ("h1", "h2", "h3", "h4"),
+                "heading": tags[i] in ("h1", "h2", "h3", "h4"),
+                "group": (f"{name}#{groups[i]}" if groups[i] is not None else None),
             })
 
     # ---- Sources chapter, one block per reference (see module docstring) ----
