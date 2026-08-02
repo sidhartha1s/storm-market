@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; overflow:hidden; }
+  /* card 1 — the document plate */
+  .plate { position:absolute; left:50%; top:50%; width:1240px; transform:translate(-50%,-50%); }
+  .seal { position:absolute; left:-150px; top:50%; width:110px; height:110px; margin-top:-55px;
+    border:3px solid #5a768f; border-radius:50%; opacity:0.55; }
+  .seal::before { content:""; position:absolute; inset:14px; border:1px solid #5a768f; border-radius:50%; }
+  .eyebrow { font-weight:700; font-size:22px; color:#93a3b2; letter-spacing:6px; }
+  .divider { width:100%; height:1px; background:#1c2732; margin:22px 0 30px; }
+  .quoteline { font-family:Georgia,serif; font-size:42px; color:#f2f5f8; line-height:1.32; font-style:italic; position:relative; }
+  .quoteline .hl { position:relative; display:inline; }
+  .quoteline .hl .sweep { position:absolute; left:0; top:2px; bottom:-2px; width:0%; background:#8e2020; z-index:0; }
+  .quoteline .hl span.txt { position:relative; z-index:1; }
+  .plate2 .quoteline { color:#dfe7ee; }
+  .attrib { margin-top:26px; font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; }
+  .attrib b { color:#d8a13a; font-family:Arial,sans-serif; font-weight:700; letter-spacing:3px; }
+  /* card 2 */
+  .plate2 { position:absolute; left:50%; top:50%; width:1240px; transform:translate(-50%,-50%); }
+  .stamp2 { position:absolute; right:-40px; top:-70px; font-family:'Arial Black',Arial,sans-serif; font-size:22px; color:#8e2020; letter-spacing:3px; border:2px solid #8e2020; padding:6px 14px; transform:rotate(-6deg); opacity:0.85; }
+  /* closer */
+  .closer { position:absolute; left:0; right:0; bottom:120px; text-align:center; }
+  .closer .lab { display:inline-block; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; letter-spacing:3px; padding:14px 40px; border-top:2px solid #8e2020; border-bottom:2px solid #8e2020; }
+</style>
+<div id="root" data-composition-id="g-tweet-nws" data-width="1920" data-height="1080">
+
+  <div class="plate" id="gt-plate1">
+    <div class="seal" id="gt-seal"></div>
+    <div class="eyebrow" id="gt-eyebrow1">NWS NORMAN &middot; PUBLIC SAFETY GUIDANCE &middot; 1:00 PM CDT &middot; MAY 31, 2013</div>
+    <div class="divider"></div>
+    <div class="quoteline" id="gt-l1">"If you choose to <span class="hl" id="gt-hl"><span class="sweep" id="gt-sweep"></span><span class="txt">flee in your car,</span></span></div>
+    <div class="quoteline" id="gt-l2">plan for traffic jams, hail,</div>
+    <div class="quoteline" id="gt-l3">heavy rain and flooding."</div>
+  </div>
+
+  <div class="plate2" id="gt-plate2">
+    <div class="stamp2">OPPOSING VIEW</div>
+    <div class="eyebrow" id="gt-eyebrow2">NOAA &middot; SEVERE STORMS LABORATORY</div>
+    <div class="divider"></div>
+    <div class="quoteline" id="gt-l4">"Telling people they would not survive</div>
+    <div class="quoteline" id="gt-l5">above ground was dangerous."</div>
+    <div class="attrib" id="gt-attrib2">&mdash; <b>HAROLD BROOKS</b> &middot; NOAA</div>
+  </div>
+
+  <div class="closer" id="gt-closer">
+    <div class="lab" id="gt-closerlab">TWO DIRECTIONS AT ONCE</div>
+  </div>
+
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#gt-plate1","#gt-eyebrow1","#gt-l1","#gt-l2","#gt-l3"], {autoAlpha:0}, 0);
+  tl.set(["#gt-plate2","#gt-eyebrow2","#gt-l4","#gt-l5","#gt-attrib2"], {autoAlpha:0}, 0);
+  tl.set("#gt-closer", {autoAlpha:0}, 0);
+  tl.set("#gt-sweep", {width:"0%"}, 0);
+  tl.set("#gt-plate1", {x:-40}, 0);
+  tl.set("#gt-plate2", {x:40, scale:0.96}, 0);
+
+  /* host mounts abs 16.46 = "At one o'clock" — local t0 = abs-16.46 */
+
+  /* CONTINUOUS: the seal ring breathes for the whole card-1 dwell */
+  tl.to("#gt-seal", {scale:1.08, duration:3.2, ease:"none", repeat:6, yoyo:true, transformOrigin:"center center"}, 0.5);
+
+  /* eyebrow @16.76 "one o'clock...afternoon" */
+  tl.fromTo("#gt-plate1", {autoAlpha:0}, {autoAlpha:1, duration:0.1}, 0.3);
+  tl.fromTo("#gt-eyebrow1", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.5}, 0.3);
+  tl.to("#gt-plate1", {x:0, duration:0.6, ease:"power3.out"}, 0.3);
+
+  /* "It began" @25.3 -> local 8.84 */
+  /* line 1 "if you choose to flee in your car" @27.18-29.18 -> local 10.72-12.72 */
+  tl.fromTo("#gt-l1", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4}, 10.72);
+  /* highlight sweep lands ON "choose to flee in your car" @27.66-28.72 -> local 11.2-12.26 */
+  tl.to("#gt-sweep", {width:"100%", duration:1.06, ease:"none"}, 11.2);
+  tl.to("#gt-sweep", {opacity:0, duration:0.4}, 13.2);
+
+  /* line 2 "plan for traffic jams, hail," @29.84-31.6 -> local 13.38-15.14 */
+  tl.fromTo("#gt-l2", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4}, 13.38);
+  /* line 3 "heavy rain and flooding." @32.22-33.4 -> local 15.76-16.94 */
+  tl.fromTo("#gt-l3", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4}, 15.76);
+
+  /* card 1 exits as "meanwhile a senior government scientist" begins @38.38 -> local 21.92 */
+  tl.to("#gt-plate1", {x:-660, autoAlpha:0, duration:0.6, ease:"power3.in"}, 21.4);
+
+  /* card 2 enters with "argued the opposite" @40.56-41.64 -> local 24.1-25.18 */
+  tl.fromTo("#gt-plate2", {autoAlpha:0, scale:0.96}, {autoAlpha:1, scale:1, duration:0.5, ease:"power3.out"}, 24.1);
+  tl.fromTo("#gt-eyebrow2", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4}, 24.1);
+
+  /* quote line 4/5 "telling people they would not survive / above ground was dangerous" @42.28-45.28 -> local 25.82-28.82 */
+  tl.fromTo("#gt-l4", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4}, 25.82);
+  tl.fromTo("#gt-l5", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4}, 27.9);
+
+  /* attribution lands on "dangerous" settling, before "Read that again" @45.88 -> local 29.42 */
+  tl.fromTo("#gt-attrib2", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 29.0);
+
+  /* "Read that again" @45.88-46.74 -> local 29.42-30.28 — a hard flash punctuates it */
+  tl.to("#gt-plate2", {scale:1.02, duration:0.15, yoyo:true, repeat:1}, 29.42);
+
+  /* card 2 slides out ahead of the closing line @47.52 (In the same city) -> local 31.06 */
+  tl.to("#gt-plate2", {x:660, autoAlpha:0, duration:0.6, ease:"power3.in"}, 33.4);
+
+  /* closer "TWO DIRECTIONS AT ONCE" on its spoken words @52.36-53.66 -> local 35.9-37.2 */
+  tl.fromTo("#gt-closer", {autoAlpha:0}, {autoAlpha:1, duration:0.1}, 35.9);
+  tl.fromTo("#gt-closerlab", {autoAlpha:0, scale:1.5}, {autoAlpha:1, scale:1, duration:0.5, ease:"power4.in"}, 35.9);
+
+  /* clean end: closer holds through "the federal review..." then exits before host window ends (local 56.46) */
+  tl.to("#gt-closer", {autoAlpha:0, y:-30, duration:0.6, ease:"power3.in"}, 55.6);
+
+  window.__timelines["g-tweet-nws"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
