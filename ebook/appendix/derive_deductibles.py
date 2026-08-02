@@ -66,9 +66,7 @@ STATES = {
 # the cached page rather than hardcoded, so a re-run catches NAIC updating the list or the date.
 LIST_RE = re.compile(
     r"As of ([^,]+, \d{4}), (?:nineteen|\d+) states? and the District of Columbia have some form "
-    r"of\s*(?:<[^>]+>)?\s*hurricane or named storm deductible\s*(?:<[^>]+>)?\s*in place\. "
-    r"These states include ([^.]+)\.",
-    re.S)
+    r"of hurricane or named storm deductible in place\. These states include ([^.]+)\.")
 
 
 def cached(refresh=False):
@@ -81,7 +79,11 @@ def cached(refresh=False):
 
 
 def parse(page):
+    # All tags stripped to plain text first — the sentence is broken across several inline tags
+    # in the raw markup, so matching against tag-free text is far more robust than trying to
+    # thread the regex through however many <strong>/<a> wrappers happen to be present.
     text = re.sub(r"(?is)<(script|style).*?</\1>", " ", page)
+    text = re.sub(r"(?s)<[^>]+>", " ", text)
     match = LIST_RE.search(html.unescape(re.sub(r"\s+", " ", text)))
     if not match:
         raise SystemExit("FAIL: the 'nineteen states' sentence was not found — NAIC's page changed. "
