@@ -178,6 +178,10 @@ theatre. Change the filters.
 Build it correctly: filters oriented with airflow arrows pointing **into** the fan, joints sealed with
 tape so air cannot bypass the filters, and the cardboard shroud on the outlet side.
 
+Figure 9 shows the build exploded out — orientation and the shroud are the two parts people get backwards.
+
+«FIG: box-fan-filter»
+
 Run it in the room people are in — usually the same consolidated room from Protection 26 — and keep
 that room's door closed.
 
