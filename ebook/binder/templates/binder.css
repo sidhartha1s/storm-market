@@ -143,3 +143,10 @@
   font-family: var(--serif); font-size: 11.5pt; line-height: 1.5; text-align: center;
   border-top: 1pt solid var(--ink); padding-top: 14pt; margin-top: 10pt;
 }
+
+/* Form 2 only: thirteen fields plus its restored "stranger providing care" note
+   overflowed by 21px at book.css's normal .field spacing (see build_form2()) —
+   tightened here rather than loosening .field for every other form, which already
+   clears the page with headroom. */
+.tight-fields .field { margin-bottom: 6pt; }
+.tight-fields .field label { margin-bottom: 1pt; }
