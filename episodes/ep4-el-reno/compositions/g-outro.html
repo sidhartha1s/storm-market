@@ -6,15 +6,36 @@
 <style>
   #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial,sans-serif; }
   .stage { position:absolute; inset:0; display:grid; place-items:center; }
-  .wrap { text-align:center; }
-  .twh { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:104px; color:#f2f5f8; letter-spacing:5px; }
+  .ring { position:absolute; left:50%; top:50%; width:920px; height:920px; margin:-460px 0 0 -460px;
+    border-radius:50%; border:1px solid rgba(147,163,178,0.16); }
+  .tick { position:absolute; left:50%; top:50%; width:2px; height:16px; background:rgba(216,161,58,0.28);
+    transform-origin:1px 460px; margin:-460px 0 0 -1px; }
+  .sweep { position:absolute; left:50%; top:50%; width:920px; height:920px; margin:-460px 0 0 -460px;
+    border-radius:50%; transform-origin:center center;
+    background:conic-gradient(from 0deg, rgba(216,161,58,0.20), rgba(216,161,58,0) 32%, rgba(216,161,58,0) 100%); }
+  .wrap { text-align:center; position:relative; }
+  .eyebrow { font-size:22px; letter-spacing:8px; color:#93a3b2; font-weight:700; }
+  .twh { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:104px; color:#f2f5f8; letter-spacing:5px; margin-top:16px; }
   .twh .amber { color:#d8a13a; }
-  .ep { font-family:Georgia,serif; font-style:italic; font-size:30px; color:#93a3b2; margin-top:24px; }
+  .rule { width:120px; height:2px; background:#d8a13a; margin:26px auto; opacity:0.7; }
+  .ep { font-family:Georgia,serif; font-style:italic; font-size:30px; color:#93a3b2; }
 </style>
 <div id="root" data-composition-id="g-outro" data-width="1920" data-height="1080">
+  <div class="ring" id="g-outro-ring"></div>
+  <div class="sweep" id="g-outro-sweep"></div>
+  <div class="tick" id="g-outro-t1" style="transform:rotate(0deg)"></div>
+  <div class="tick" id="g-outro-t2" style="transform:rotate(45deg)"></div>
+  <div class="tick" id="g-outro-t3" style="transform:rotate(90deg)"></div>
+  <div class="tick" id="g-outro-t4" style="transform:rotate(135deg)"></div>
+  <div class="tick" id="g-outro-t5" style="transform:rotate(180deg)"></div>
+  <div class="tick" id="g-outro-t6" style="transform:rotate(225deg)"></div>
+  <div class="tick" id="g-outro-t7" style="transform:rotate(270deg)"></div>
+  <div class="tick" id="g-outro-t8" style="transform:rotate(315deg)"></div>
   <div class="stage">
     <div class="wrap" id="g-outro-wrap">
+      <div class="eyebrow" id="g-outro-eyebrow">THIS WAS</div>
       <div class="twh" id="g-outro-twh">THE <span class="amber">WARNING</span> HOUR</div>
+      <div class="rule" id="g-outro-rule"></div>
       <div class="ep" id="g-outro-ep">Episode 4 &mdash; El Reno 2013</div>
     </div>
   </div>
