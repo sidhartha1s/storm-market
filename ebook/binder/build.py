@@ -832,16 +832,26 @@ def build_form(form):
     }.get(n)
     if single:
         body = single()
-    elif n == 5:
-        body = build_table_per_form(form, rows=6)
-    elif n == 33:
-        body = build_table_per_form(form, rows=5)
-    elif any(u["type"] == "group" for u in form["units"]):
-        body = build_groups_generic(form)
-    elif n in CHECKLIST_FORMS:
-        body = render_checklist(all_fields(form))
     else:
-        body = render_fields(all_fields(form))
+        if n == 5:
+            body = build_table_per_form(form, rows=6)
+        elif n == 33:
+            body = build_table_per_form(form, rows=5)
+        elif any(u["type"] == "group" for u in form["units"]):
+            body = build_groups_generic(form)
+        elif n in CHECKLIST_FORMS:
+            body = render_checklist(all_fields(form))
+        else:
+            body = render_fields(all_fields(form))
+        # A blockquote in the spec is a note to the reader (per the brief) and must
+        # reach the page even on a form that otherwise takes a generic layout path --
+        # Form 2's "This is the page a stranger providing care needs..." was silently
+        # dropped here until this line existed, because none of the generic branches
+        # above ever looked at a form's 'note' units. Bespoke `single` builders own
+        # their own notes already (Form 7 inlines its "When ___ happens" line), so
+        # this only runs for the generic branch, never twice.
+        for note in units_of_type(form["units"], "note"):
+            body += f'<p class="b-note">{render_inline(note["text"])}</p>'
 
     repeat = FORM_REPEAT.get(n, 1)
     return [body] * repeat
