@@ -91,6 +91,10 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#g-v1-di1", {autoAlpha:0, scale:0.6}, {autoAlpha:1, scale:1, duration:0.25}, 18.3);
   tl.fromTo("#g-v1-bar1", {scaleY:0}, {scaleY:1, duration:0.5, ease:"power2.out"}, 18.5);
 
+  /* "No damage, no evidence, no rating" ~@20.5 — the evidence itself dims, then returns */
+  tl.to(["#g-v1-di0","#g-v1-di1","#g-v1-di2","#g-v1-bar0","#g-v1-bar1","#g-v1-bar2"], {autoAlpha:0.3, duration:0.9}, 20.5);
+  tl.to(["#g-v1-di0","#g-v1-di1","#g-v1-di2","#g-v1-bar0","#g-v1-bar1","#g-v1-bar2"], {autoAlpha:1, duration:0.7}, 23.0);
+
   /* "Now look at this tornado's path" @24.14 -> "16 miles" @25.98 */
   tl.to("#g-v1-pathlabel", {autoAlpha:1, duration:0.3}, 24.14);
   /* "almost all of it open farmland" @28.36 */
@@ -129,6 +133,8 @@ window.__timelines = window.__timelines || {};
   /* "The record width stands ... officially invisible" @75.6-78.98 */
   tl.set("#g-v1-close2", {display:"block"}, 75.6);
   tl.fromTo("#g-v1-close2", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 75.6);
+  /* "officially invisible" @78.98 — the radar figure itself dims out of the record */
+  tl.to("#g-v1-290", {autoAlpha:0.3, duration:0.8}, 78.98);
 
   window.__timelines["g-efscale-v1"] = tl;
 })();
