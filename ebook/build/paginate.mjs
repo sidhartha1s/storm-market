@@ -104,6 +104,7 @@ const PART_LABEL = {
   P5: 'Part Five — Warning, Documents, Money',
   P6: 'Part Six — The Binder',
   P7: 'Part Seven — The 60 Days',
+  P8: 'Part Eight — Credits',
   SOURCES: 'Sources',
   BINDER: 'The Binder — fillable pages',
   APPENDIX: 'Appendix B — State Directory',
