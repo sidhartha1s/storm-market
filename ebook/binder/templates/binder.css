@@ -55,6 +55,13 @@
   border-bottom: .75pt solid var(--ink-soft); padding: 10pt 5pt 4pt 0;
   vertical-align: bottom; font-size: 8.6pt; overflow: hidden;
 }
+/* Some column headers (Form 39's "approximate purchase date", Form 41's "what was
+   promised") are long single words in a narrow fixed-width column — without this a
+   long word doesn't wrap and visually overflows into the next column's header. */
+.btable th, .btable td { overflow-wrap: anywhere; }
+/* A checkbox cell used outside a flex container (Form 16's per-task cadence columns):
+   book.css's .box is sized by width/height, which a bare inline <span> ignores. */
+.btable .box-cell .box { display: inline-block; }
 .btable td.n {
   font-family: var(--sans); font-size: 8pt; color: var(--ink-mute);
   font-variant-numeric: tabular-nums; border-bottom: none;
