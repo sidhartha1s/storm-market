@@ -734,16 +734,25 @@ def build_form36_pages(form):
 def build_form38(form):
     """The gap worksheet. Each "difference" sentence is Your number / Policy number /
     Difference — rendered as a three-column row rather than three unrelated blanks, so
-    the arithmetic the spec is asking for is visually obvious."""
+    the arithmetic the spec is asking for is visually obvious. "Difference" is itself
+    just a column header, not a fourth value to fill in per row — an earlier draft
+    printed the word "difference" as a label AND swallowed the contents-value row's
+    real fourth field (its actual-cash-value note) into that same slot by assuming
+    every triple has exactly 3 fields; the contents row has 4, so it's handled as its
+    own extra note line instead of a column every other row would carry empty."""
     triples = units_of_type(form["units"], "fields")
-    rows = "".join(
-        f'<tr><td>{render_inline(t["fields"][0])}</td><td class="fill"></td>'
-        f'<td>{render_inline(t["fields"][1])}</td><td class="fill"></td>'
-        f'<td>{render_inline(t["fields"][2])}</td><td class="fill"></td></tr>'
-        for t in triples)
+    rows = []
+    for t in triples:
+        f = t["fields"]
+        rows.append(f'<tr><td>{render_inline(f[0])}</td><td class="fill"></td>'
+                    f'<td>{render_inline(f[1])}</td><td class="fill"></td>'
+                    f'<td class="fill"></td></tr>')
+        if len(f) > 3:  # the contents row alone carries an ACV-adjustment note
+            rows.append(f'<tr><td colspan="5" class="small">{render_inline(f[2])}'
+                        f'<span class="b-blank"></span></td></tr>')
     table = (f'<table class="btable" style="table-layout:auto">'
             f'<tr><th>Your number</th><th></th><th>Policy provides</th><th></th>'
-            f'<th>Difference</th><th></th></tr>{rows}</table>')
+            f'<th>Difference</th></tr>{"".join(rows)}</table>')
     texts = units_of_type(form["units"], "text")
     ded = next(t["text"] for t in texts if t["text"].startswith("Deductibles"))
     fed = next(t["text"] for t in texts if t["text"].startswith("Then: what federal"))
