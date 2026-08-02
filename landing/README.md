@@ -94,9 +94,9 @@ your call, not mine to add silently. A real launch-price end date is honest and 
    in the meta description, the hero subhead, the proof strip, the deliverables list and the delivery
    section.
 
-4. **The 50 state packets do not exist yet**, so the free-packet email gate has nothing to deliver
-   — but the dataset behind them is now half collected and `build.py --check` passes on all 51 rows
-   for the first time. Filled from national directories rather than 51 hand lookups: the three
+4. **The 51 state packets (50 states + DC) now exist as HTML** at `ebook/appendix/out/packets/
+   <ABBR>.html`, and `build.py` can render any of them to PDF — only 4 (CA, FL, IL, TX) have been
+   rendered so far as spot checks, not all 51. Filled from national directories rather than 51 hand lookups: the three
    hazards, their seasons and the region overlay (NCEI Storm Events deaths), the emergency
    management agency and its URL (usa.gov), the insurance regulator, its phone and its complaint
    page (NAIC), the energy-assistance page (ACF LIHEAP), and both private-well testing fields
