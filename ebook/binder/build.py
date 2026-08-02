@@ -661,7 +661,7 @@ def build_form20(form):
     "quantities and expiry dates," not invented."""
     return (render_table(["Item", "Quantity", "Expiry date"], 14) +
             '<p class="b-cont">Deep-pantry additions</p>' +
-            render_table(["Item", "Quantity", "Expiry date"], 8, numbered=False))
+            render_table(["Item", "Quantity", "Expiry date"], 6, numbered=False))
 
 
 def build_form23(form):
