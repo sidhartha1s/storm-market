@@ -89,8 +89,11 @@ def main():
             })
 
     # ---- Sources chapter, one block per reference (see module docstring) ----
-    blocks.append({"html": "<h1>Sources</h1>", "tag": "h1", "file": "SOURCES", "part": "SOURCES",
-                   "chapterTitle": "Sources", "fileStart": True, "heading": True})
+    blocks.append({
+        "html": '<h1 class="chapter-open"><span class="kicker">BACK MATTER</span>Sources</h1>',
+        "tag": "h1", "file": "SOURCES", "part": "SOURCES",
+        "chapterTitle": "Sources", "fileStart": True, "heading": True,
+    })
 
     resolved = sum(1 for *_, ok in rp.SOURCES if ok)
     pending = len(rp.SOURCES) - resolved
