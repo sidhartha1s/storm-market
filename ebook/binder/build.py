@@ -446,35 +446,37 @@ def build_form3(fields):
     return f'<div class="grid2">{one_animal(1)}{one_animal(2)}</div>'
 
 
-def build_form4(form):
+def build_form4_pages(form):
     """The contact sheet. Custom rather than the generic groups primitive because two
     of its seven bold-labelled groups are themselves repeated-row tables (two local
     contacts, three neighbours) and one (Crisis lines) mixes a fixed fact (988) with
     a field the reader still has to look up and write in — none of that is expressible
-    by the generic single-field-per-group renderer."""
+    by the generic single-field-per-group renderer. Measured to overflow the page by
+    ~500px as one page (fitcheck), so it splits at the natural boundary between the
+    people/utilities groups and the services/crisis-line groups."""
     g = group_map(form)
 
     def whole(label):
         return f'{label} {g[label]}'.replace("  ", " ").rstrip(". ")
 
-    parts = ['<div class="bgroup"><h4>Out-of-area contact</h4>' +
+    page1 = ('<div class="bgroup"><h4>Out-of-area contact</h4>' +
              render_fields(split_top(g["Out-of-area contact"].lstrip(", "), ","), cls_hint="med") +
-             '</div>']
-    parts.append(f'<div class="bgroup"><h4>{esc(whole("Two local emergency contacts"))}</h4>' +
-                 render_table(["Name", "Relationship", "Phone"], 2, numbered=False) + '</div>')
-    parts.append(f'<div class="bgroup"><h4>{esc(whole("Neighbours"))}</h4>' +
-                 render_table(["Name", "Phone", "Note — elderly, alone, disabled, medically dependent"],
-                              3, numbered=False) + '</div>')
-    parts.append('<div class="bgroup"><h4>Utilities</h4>' +
-                 render_fields(split_top(g["Utilities"].rstrip("."), ","), cls_hint="med") + '</div>')
-    parts.append('<div class="bgroup"><h4>Services</h4>' +
-                 render_fields(split_top(g["Services"].rstrip("."), ","), cls_hint="short") + '</div>')
-    parts.append(render_field(whole("Your county's ten-digit emergency backup number")))
-    parts.append('<div class="bgroup"><h4>Crisis lines</h4>'
-                 '<p class="small">988 — Suicide &amp; Crisis Lifeline. Call or text.</p>' +
-                 render_field("The current Disaster Distress Helpline number and text option, "
-                              "copied from SAMHSA's page on the day you fill this in") + '</div>')
-    return "".join(parts)
+             '</div>' +
+             f'<div class="bgroup"><h4>{esc(whole("Two local emergency contacts"))}</h4>' +
+             render_table(["Name", "Relationship", "Phone"], 2, numbered=False) + '</div>' +
+             f'<div class="bgroup"><h4>{esc(whole("Neighbours"))}</h4>' +
+             render_table(["Name", "Phone", "Note — elderly, alone, disabled, medically dependent"],
+                          3, numbered=False) + '</div>' +
+             '<div class="bgroup"><h4>Utilities</h4>' +
+             render_fields(split_top(g["Utilities"].rstrip("."), ","), cls_hint="med") + '</div>')
+    page2 = ('<div class="bgroup"><h4>Services</h4>' +
+             render_fields(split_top(g["Services"].rstrip("."), ","), cls_hint="short") + '</div>' +
+             render_field(whole("Your county's ten-digit emergency backup number")) +
+             '<div class="bgroup"><h4>Crisis lines</h4>'
+             '<p class="small">988 — Suicide &amp; Crisis Lifeline. Call or text.</p>' +
+             render_field("The current Disaster Distress Helpline number and text option, "
+                          "copied from SAMHSA's page on the day you fill this in") + '</div>')
+    return [page1, page2]
 
 
 def build_form6(form):
