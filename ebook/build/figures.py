@@ -213,7 +213,7 @@ def fig_water_heater_drawoff():
     {_text(180, 10, "cold inlet valve", size=6.8, anchor="end")}
     <path d="M256 34 v-12 h30" stroke="{INK}" stroke-width="1.6" fill="none"/>
     <rect x="288" y="16" width="10" height="10" fill="none" stroke="{INK}" stroke-width="1.4"/>
-    {_text(302, 24, "hot tap opened", size=6.8}
+    {_text(302, 24, "hot tap opened", size=6.8)}
     {_text(302, 33, "elsewhere", size=6.8)}
     <rect x="224" y="184" width="18" height="10" fill="none" stroke="{INK}" stroke-width="1.6"/>
     <path d="M233 194 v10 h20" stroke="{INK}" stroke-width="1.6" fill="none"/>
