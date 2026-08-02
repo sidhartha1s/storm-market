@@ -339,7 +339,8 @@ function spliceAppendix(appendixSections, startPageNo) {
 async function main() {
   const bookCss = readFileSync(join(HERE, 'book.css'), 'utf-8');
   const autoCss = readFileSync(join(HERE, 'book-auto.css'), 'utf-8');
-  const css = bookCss + '\n' + autoCss;
+  const packetCss = readFileSync(PACKET_CSS, 'utf-8');
+  const css = bookCss + '\n' + autoCss + '\n' + packetCss;
 
   console.log('reading manuscript blocks (python3 blocks_pipeline.py)...');
   const blocks = loadBlocks();
