@@ -348,6 +348,10 @@ discover is seized during a burst pipe is not a shut-off.
 **On gas: shut it off only if you smell gas, hear it escaping, or are told to.** Once it is off, it
 stays off until the utility restores it — never relight it yourself.
 
+The three are rarely in the same place — Figure 3 shows the pattern of where to look.
+
+«FIG: utility-shutoffs»
+
 **What this does not do:** shutting off the main does not drain the pipes. Open the lowest taps
 afterwards to relieve what is still in the system.
 
