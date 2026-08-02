@@ -193,10 +193,11 @@ floors/ceilings; taste stays with the model.
   `<section class="clip blackout" data-start="X" data-duration="2.4"–"3.0" data-track-index="1"></section>`
   with `.blackout { position:absolute; inset:0; background:#000; }`. Cut TO black hard (no fade),
   hold 2-3s in silence or low ambience, cut OUT to the next act. **ep3 kept only the cold-open
-  VOID (h1-s3) and dropped the recurring act-boundary blackouts** — its `build_ep3.py` generator
-  never emitted them between acts. A regression, not a style choice:
-  the next episode's builder MUST insert act-boundary blackouts (a `black`/`blackout` beat kind in
-  the shot table, or hand-placed). ep3 stays as shipped; do not re-render it for this.
+  VOID (h1-s3) and dropped the recurring act-boundary blackouts** — its (now-deleted)
+  `build_ep3.py` generator never emitted them between acts. A regression, not a style choice:
+  the next episode's editor MUST hand-place act-boundary blackouts. ep3 stays as shipped; do
+  not re-render it for this. (Generators were purged 2026-08-02 — see CLAUDE.md TRIPWIRE;
+  episode HTML is hand-authored, so "shot table" workflows no longer exist.)
 - Never two inserts back-to-back; narration re-anchors between them.
 - Stats mid-video, emotion banked at the end (teardown-verified pattern).
 - Micro-loops every 30-45s, phrasing varied; no recap; CTA short.
