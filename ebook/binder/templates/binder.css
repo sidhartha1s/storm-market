@@ -1,0 +1,119 @@
+/* Styles for the 41 binder forms.
+   book.css owns the shared shell (:root variables, .page, .folio, .runhead) and already
+   ships a small "fillable binder form" component set (.form-title, .form-sub, .field,
+   .field label, .line, .line.short, .grid2, .boxrow, .box) built for exactly this job —
+   those are reused directly rather than forked. Everything here is the layer book.css
+   doesn't have: repeated-row tables, checklists, and the bold-labelled "group" forms
+   (contact sheet, shut-offs, the three rooms, destinations...).
+   Fixed-size only: every .page is a 6x9in print box with overflow:hidden. */
+
+/* ---- page head: section kicker, form title, serves byline ---- */
+.b-kicker {
+  font-family: var(--sans); font-size: 7pt; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--amber);
+  margin: 0 0 6pt;
+}
+.b-serves {
+  font-family: var(--serif); font-style: italic; font-size: 8.8pt;
+  color: var(--ink-mute); margin: 0 0 13pt;
+}
+/* A page that is form N's second (or third...) page: the spec is explicit that a split
+   never happens mid-field, so the continued page opens with its own small head instead
+   of repeating the title, which would waste a line the form needs. */
+.b-cont {
+  font-family: var(--sans); font-size: 7.4pt; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--ink-mute);
+  margin: 0 0 13pt;
+}
+
+/* ---- notes: a blockquote from the spec, carried onto the page verbatim ---- */
+.b-note {
+  font-family: var(--serif); font-style: italic; font-size: 9.2pt; line-height: 1.4;
+  color: var(--ink-soft); border-left: 2pt solid var(--rule);
+  padding: 1pt 0 1pt 9pt; margin: 0 0 12pt;
+}
+
+/* ---- wider fill-lines than book.css's default 45% .short, for a mid-length value ---- */
+.line.med { width: 70%; }
+/* An inline blank inside a sentence a reader completes in place (Form 7's trigger
+   sentences carry their own "_____" in the manuscript) rather than a separate line
+   below — the fill point IS the sentence, so breaking it onto its own row would be a
+   layout invented past what the spec wrote. */
+.b-blank {
+  display: inline-block; width: 1.1in; border-bottom: .75pt solid var(--ink-soft);
+  vertical-align: -2pt; margin: 0 2pt;
+}
+
+/* ---- repeated-row tables (roster / log / inventory forms) ---- */
+.btable { width: 100%; border-collapse: collapse; margin: 0 0 10pt; table-layout: fixed; }
+.btable th {
+  font-family: var(--sans); font-size: 6.8pt; font-weight: 700;
+  letter-spacing: .05em; text-transform: uppercase; color: var(--ink-mute);
+  text-align: left; border-bottom: 1pt solid var(--ink); padding: 0 5pt 4pt 0;
+}
+.btable td {
+  border-bottom: .75pt solid var(--ink-soft); padding: 10pt 5pt 4pt 0;
+  vertical-align: bottom; font-size: 8.6pt; overflow: hidden;
+}
+.btable td.n {
+  font-family: var(--sans); font-size: 8pt; color: var(--ink-mute);
+  font-variant-numeric: tabular-nums; border-bottom: none;
+}
+
+/* ---- checklists (the spec's own wording: "Alert setup checklist", "The pre-fill
+   list", "House shutdown checklist", "Return checklist") ---- */
+.bchecklist { margin: 0 0 10pt; padding: 0; list-style: none; }
+.bcheck {
+  display: flex; align-items: baseline; gap: 7pt; margin: 0 0 8pt;
+  font-family: var(--serif); font-size: 9.7pt; line-height: 1.36;
+}
+.bcheck .box { flex: none; }
+/* A numbered variant for "In order:" checklists, where sequence matters more than a
+   check-off (Form 18's pre-fill list is done once, in a fixed order, not ticked off
+   item by item during an event). */
+.bcheck .bn {
+  flex: none; width: 13pt; font-family: var(--sans); font-weight: 700; font-size: 8.6pt;
+  color: var(--amber);
+}
+
+/* ---- bold-labelled "group" forms: a sub-heading per **Label**, its own fields under
+   it (contact sheet, shut-offs, the three rooms, destinations, backup power) ---- */
+.bgroup { margin: 0 0 11pt; }
+.bgroup h4 {
+  font-family: var(--sans); font-size: 8pt; font-weight: 700;
+  letter-spacing: .07em; text-transform: uppercase; color: var(--amber);
+  margin: 0 0 5pt;
+}
+.bgroup .field { margin-bottom: 7pt; }
+
+/* ---- signature / date line (Form 6, Form 7, Form 41's per-adult sign-off) ---- */
+.bsign {
+  display: flex; align-items: baseline; gap: 8pt; margin: 4pt 0 0;
+  font-family: var(--serif); font-size: 9.6pt;
+}
+.bsign .b-blank { flex: 1 1 auto; width: auto; }
+.bsign .b-blank.date { flex: 0 0 1.1in; }
+
+/* ---- totals / callout rows (power priority list, gap worksheet) ---- */
+.btotal {
+  border-top: 1pt solid var(--ink); margin-top: 4pt; padding-top: 6pt;
+  font-family: var(--sans); font-size: 8.6pt; font-weight: 700;
+  letter-spacing: .04em; text-transform: uppercase; color: var(--ink);
+  display: flex; justify-content: space-between;
+}
+
+/* ---- the front sheet (opens the binder) ---- */
+.bfs-table { width: 100%; border-collapse: collapse; margin: 4pt 0 14pt; }
+.bfs-table td {
+  border-bottom: .75pt solid var(--rule); padding: 7pt 0; vertical-align: top;
+  font-family: var(--serif); font-size: 9.6pt;
+}
+.bfs-table td.q { color: var(--ink-soft); }
+.bfs-table td.a {
+  width: 1.7in; text-align: right; font-family: var(--sans); font-size: 8.4pt;
+  font-weight: 700; color: var(--amber); text-transform: uppercase; letter-spacing: .04em;
+}
+.bfs-final {
+  font-family: var(--serif); font-size: 11.5pt; line-height: 1.5; text-align: center;
+  border-top: 1pt solid var(--ink); padding-top: 14pt; margin-top: 10pt;
+}
