@@ -881,7 +881,11 @@ def build_form(form):
     """Returns a list of page-body HTML fragments for one form (usually length 1)."""
     n = form["number"]
     if n in MULTI_PAGE_BUILDERS:
-        return MULTI_PAGE_BUILDERS[n](form)
+        pages = MULTI_PAGE_BUILDERS[n](form)
+        extras = ROOMY_EXTRA_PAGES.get(n)
+        if extras:
+            pages = [roomy(p, e) for p, e in zip(pages, extras)]
+        return pages
     single = {
         1: lambda: build_form1(form),
         2: lambda: build_form2(form),
