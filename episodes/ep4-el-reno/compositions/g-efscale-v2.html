@@ -82,7 +82,7 @@ window.__timelines = window.__timelines || {};
   /* radar sweep continuously scans the RIGHT gauge for the whole graphic — the instrument
      that never stopped measuring, even before the storm gives it a number to show */
   tl.set("#g-v2-sweeppivot", {autoAlpha:1}, 8.0);
-  tl.to("#g-v2-sweeppivot", {rotation:360, duration:4, ease:"none", repeat:-1}, 8.0);
+  tl.to("#g-v2-sweeppivot", {rotation:360, duration:4, ease:"none", repeat:19}, 8.0); /* finite: 4s/rev to ~84s; repeat:-1 breaks seek-render duration */
 
   /* "Now look at this tornado's path. 16 miles, almost all of it open farmland" @24.14-29.96 */
   tl.fromTo("#g-v2-nothing", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 28.36);
