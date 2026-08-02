@@ -25,6 +25,7 @@ import argparse
 import html as html_mod
 import re
 import sys
+from itertools import combinations
 from pathlib import Path
 
 HERE = Path(__file__).parent
