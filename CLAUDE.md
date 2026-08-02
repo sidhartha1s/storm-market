@@ -189,6 +189,15 @@ photograph, does this cut land, does the picture contradict the voice.*
 The tell for a script that should have been a docs line: it needs a hand-tuned stoplist to
 stop being wrong. That is judgment wearing a regex.
 
+**TRIPWIRE (owner 2026-08-02, after the ep3/ep4 regression):** any script that WRITES or
+INJECTS episode HTML — `index.html` or any `compositions/*.html` — is forbidden. Delete it
+on sight, before any other work. Every cut, hold, and graphic is hand-authored by the session
+via Edit/Write with per-cut judgment (the ep1/ep2 method). This is why ep1/ep2 were 9/10 and
+generator-built ep3 was 2/10. Checkers that READ episode HTML (sweep/lint/blank_scan/
+beat_density/graphics_qc) are fine — they check, they don't author. The generators
+(`build_ep3.py`, `gen_misc_comps.py`, `gen_panel_comps.py`, `gen_track_comps.py`) were
+deleted from the tree 2026-08-02; do not resurrect the pattern.
+
 Applied to this repo's own gates, 2026-07-29:
 - `media_budget.py` **stays code** — three numbers, run before every render, guards against
   repeating twelve failed renders. Exactly the mechanical-and-must-not-be-forgotten case.
