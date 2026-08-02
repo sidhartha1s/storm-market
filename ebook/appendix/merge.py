@@ -41,6 +41,7 @@ COLUMNS = [
     "pharmacy_refill_law", "pharmacy_refill_law_src",
     "winter_disconnect", "summer_disconnect",
     "energy_assist_url", "energy_assist_url_src",
+    "energy_assist_phone", "energy_assist_phone_src",
     "well_test_contact", "well_test_url", "well_test_url_src",
     "hazard_1", "hazard_2", "hazard_3",
     "season_1", "season_2", "season_3",
