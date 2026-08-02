@@ -167,6 +167,31 @@ def assign_groups(tags):
     return groups
 
 
+# P6-the-binder.md's "## The forms" heading onward is a field-by-field SPECIFICATION
+# for ../binder/build.py, not book prose to typeset — those 41 field lists are now real
+# fillable pages (see ../binder/out/binder.html, spliced in by paginate.mjs the same way
+# Appendix B is), and printing both the spec and the pages would be redundant, and
+# would actively contradict them the moment the spec is edited and the pages rebuilt.
+BINDER_FILE = "P6-the-binder.md"
+BINDER_CUT_AT = "## The forms"
+
+
+def truncate_binder_spec(text, filename):
+    """Keep everything up to (not including) BINDER_CUT_AT — "## How the binder works"
+    and the front matter stay in the flow. Fails loudly if the heading moved or was
+    reworded, rather than silently falling back to printing the whole spec again."""
+    if filename != BINDER_FILE:
+        return text
+    idx = text.find(f"\n{BINDER_CUT_AT}\n")
+    if idx == -1:
+        sys.exit(f"FAIL: {filename} -- the '{BINDER_CUT_AT}' heading was not found. "
+                 "blocks_pipeline.py truncates the manuscript there so the binder's 41 "
+                 "form field lists aren't printed twice (once as spec prose, once as the "
+                 "real pages ../binder/build.py generates from the same spec) -- if the "
+                 "heading was renamed or moved, update BINDER_CUT_AT above.")
+    return text[:idx].rstrip() + "\n"
+
+
 def main():
     missing = [name for name in rp.ORDER if not (rp.MS / name).exists()]
     if missing:
@@ -175,6 +200,7 @@ def main():
     blocks = []
     for name in rp.ORDER:
         text = (rp.MS / name).read_text(encoding="utf-8")
+        text = truncate_binder_spec(text, name)
         title = text.split("\n", 1)[0].lstrip("# ").strip()
         rp._CURRENT_CHAPTER[0] = title
         file_blocks = rp.render_markdown(text)
