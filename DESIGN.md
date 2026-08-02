@@ -51,6 +51,17 @@ Per beat: agent pulls 2-3 candidates, extracts frames, vision-checks, picks. Too
 License check per item; storm-chaser footage NEVER without license; news-network footage
 sparingly/short/narrated-over (claims budgeted, segments must survive being claimed).
 
+**Transcribe before you cut (owner order, verbatim intent, 2026-08-03): if a sourced clip is
+having audio, transcribe it first — see what they're actually saying — and only then match-cut
+it, picking only the relevant items.** This is a RULE, not a script: it does not get satisfied
+by a lint check or a generator step, it is something the agent DOES, by judgment, on every
+audio-bearing source before wiring. Run faster-whisper (or the episode's transcription setup)
+on the clip, read the actual transcript, and let the words decide both the in/out points and
+whether this candidate is even the right one to use — a frame-only or filename-only pick is not
+enough once the clip has its own audio to check. Applies to every `insert`, every broadcast pull,
+and every documentary/briefing source alike, before any of it reaches `edit_script.md` or a
+composition.
+
 ### Cold-open hook contract (owner-rated, ep2 rebuild — 2026-07-27)
 The first 25-30s decide the video. Owner rated ep2's first hook 0.6/10 and the rebuilt one
 shipped; these are the standing requirements for every episode's cold open:
