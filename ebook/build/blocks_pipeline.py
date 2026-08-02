@@ -31,6 +31,11 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 import review_pdf as rp  # noqa: E402
 
+try:
+    import figures  # noqa: E402  — provides render_figure(fig_id); may not exist yet
+except ImportError:
+    figures = None
+
 # Matches every file title in the manuscript: "Part Two, Chapter One — Water",
 # "Part Three, Playbook 1 — Tornado", "Part Six — The Binder". Used to split the
 # file-opening h1 into a small uppercase kicker ("PART TWO, CHAPTER ONE") plus the large
