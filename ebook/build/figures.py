@@ -156,8 +156,8 @@ def fig_three_rooms():
                ["Interior, small.", "South window for daytime sun.", "Body heat does the rest.",
                 "For: cold outage, days"], AMBER)
         + card("Cooling room &middot; P29", icon_cool,
-               ["Lowest floor, north side.", "Fewest windows, best cross-flow.",
-                "Fans exhaust, not blow on you.", "For: heat outage, days"], INK_SOFT)
+               ["Lowest floor, north side.", "Fewest windows, cross-flow.",
+                "Fans exhaust; don't aim at you.", "For: heat outage, days"], INK_SOFT)
     )
     inner = (f'<div style="display:flex;gap:8pt;box-sizing:border-box;height:{CARD_H}">'
              f'{cards}</div>')
