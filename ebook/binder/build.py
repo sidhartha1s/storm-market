@@ -126,8 +126,12 @@ def parse_manuscript():
             j = i + 1
             while j < n and not lines[j].strip():
                 j += 1
-            if j < n and lines[j].strip().startswith("*") and lines[j].strip().endswith("*"):
-                cur_form["serves_raw"] = lines[j].strip().strip("*")
+            sm = SERVES_LEAD_RE.match(lines[j].strip()) if j < n else None
+            if sm:
+                cur_form["serves_raw"] = sm.group(1).strip()
+                remainder = sm.group(2).strip()
+                if remainder:
+                    pending_block.append(remainder)
                 i = j + 1
             else:
                 i += 1
