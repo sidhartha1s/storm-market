@@ -533,23 +533,32 @@ def build_form9(form):
             f'{rows}</table>')
 
 
-def build_form14(form):
+def build_form14_pages(form):
     """The contractor list. Each **Trade:** group's "·"-separated items become rows
     under a trade sub-header, and the trailing "Each row: requested · quoted · done ·
-    documentation filed." sentence supplies the status columns every row gets."""
+    documentation filed." sentence supplies the status columns every row gets. All 21
+    items in one table overflowed the page by ~200px (fitcheck), so it splits at a
+    trade boundary — Roofer/Electrician/Plumber on page 1, HVAC/General on page 2 —
+    never mid-trade."""
     trades = units_of_type(form["units"], "group")
     status_fields = form["units"][-1]["fields"]  # ['Each row: requested','quoted','done','documentation filed']
+    if status_fields[0].split(":")[0].strip() != "Each row":
+        sys.exit("FAIL: Form 14's trailing status-column sentence moved or was reworded.")
     status_cols = [status_fields[0].split(":")[-1].strip()] + status_fields[1:]
-    ths = "<th>Item</th>" + "".join(f"<th>{esc(c.title())}</th>" for c in status_cols)
-    rows = [f"<tr>{ths}</tr>"]
-    for t in trades:
-        items = t["desc"].rstrip(".").split("·")
-        rows.append(f'<tr><td class="trade-head" colspan="{len(status_cols) + 1}">'
-                    f'{render_inline(t["label"])}</td></tr>')
-        for item in items:
-            tds = f"<td>{render_inline(item.strip())}</td>" + "<td></td>" * len(status_cols)
-            rows.append(f"<tr>{tds}</tr>")
-    return f'<table class="btable tight" style="table-layout:auto">{"".join(rows)}</table>'
+
+    def trade_table(subset):
+        ths = "<th>Item</th>" + "".join(f"<th>{esc(c.title())}</th>" for c in status_cols)
+        rows = [f"<tr>{ths}</tr>"]
+        for t in subset:
+            items = t["desc"].rstrip(".").split("·")
+            rows.append(f'<tr><td class="trade-head" colspan="{len(status_cols) + 1}">'
+                        f'{render_inline(t["label"])}</td></tr>')
+            for item in items:
+                tds = f"<td>{render_inline(item.strip())}</td>" + "<td></td>" * len(status_cols)
+                rows.append(f"<tr>{tds}</tr>")
+        return f'<table class="btable tight" style="table-layout:auto">{"".join(rows)}</table>'
+
+    return [trade_table(trades[:3]), trade_table(trades[3:])]
 
 
 def build_form15(form):
