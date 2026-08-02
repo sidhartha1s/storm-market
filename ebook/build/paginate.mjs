@@ -82,6 +82,8 @@ const cliArgs = process.argv.slice(2).filter(a => !a.startsWith('--'));
 const OUT = resolve(cliArgs[0] || join(HERE, 'book.html'));
 const APPENDIX_HTML = resolve(HERE, '../appendix/out/appendix-b.html');
 const PACKET_CSS = resolve(HERE, '../appendix/templates/packet.css');
+const BINDER_HTML = resolve(HERE, '../binder/out/binder.html');
+const BINDER_CSS = resolve(HERE, '../binder/templates/binder.css');
 
 // Page geometry — must match book.css's .page and fitcheck.mjs's PROBE exactly.
 const PAGE_H_IN = 9, PAD_TOP_IN = 0.72, FOOTER_RESERVE_IN = 0.52, DPI = 96;
@@ -102,7 +104,9 @@ const PART_LABEL = {
   P5: 'Part Five — Warning, Documents, Money',
   P6: 'Part Six — The Binder',
   P7: 'Part Seven — The 60 Days',
+  P8: 'Part Eight — Credits',
   SOURCES: 'Sources',
+  BINDER: 'The Binder — fillable pages',
   APPENDIX: 'Appendix B — State Directory',
 };
 
@@ -289,13 +293,32 @@ function paginateBlocks(blocks, meas) {
   return { pages, oversizedBlocks, oversizedGroups };
 }
 
-// ---------------------------------------------------------------- 4. appendix splice
-function loadAppendixPages() {
-  if (process.argv.includes('--no-appendix')) return [];
-  if (!existsSync(APPENDIX_HTML)) return [];
-  const html = readFileSync(APPENDIX_HTML, 'utf-8');
-  const sections = html.match(/<section class="page">[\s\S]*?<\/section>/g) || [];
-  return sections;
+// ---------------------------------------------------------------- 4. pre-built splices
+// Both Appendix B and the Binder are already-built fixed pages (../appendix/build.py,
+// ../binder/build.py) read fresh off disk on every run and never edited in place — the
+// same shape, just two different insertion points in the book (the Binder lands mid-
+// book, right after Part Six's own manuscript pages; Appendix B stays at the very end).
+function loadPrebuiltPages(path, disableFlag) {
+  if (process.argv.includes(disableFlag)) return [];
+  if (!existsSync(path)) return [];
+  const html = readFileSync(path, 'utf-8');
+  return html.match(/<section class="page">[\s\S]*?<\/section>/g) || [];
+}
+
+// Finds the last manuscript page (in fillResult.pages) carrying any P6-the-binder.md
+// content — the Binder's own 41 form pages are spliced in immediately after it, ahead
+// of Part Seven. Throws rather than silently splicing at the wrong spot if P6 stops
+// contributing any pages (e.g. blocks_pipeline.py's truncation ate the whole file).
+function findBinderSplitIndex(blocks, pages) {
+  let splitIdx = -1;
+  pages.forEach((idxs, i) => {
+    if (idxs.some(k => blocks[k].file === 'P6-the-binder.md')) splitIdx = i;
+  });
+  if (splitIdx === -1) {
+    throw new Error('no manuscript page carries P6-the-binder.md content -- cannot ' +
+      'find where to splice in the Binder pages.');
+  }
+  return splitIdx;
 }
 
 // ---------------------------------------------------------------- 5. assemble book.html
@@ -303,11 +326,14 @@ function folioHtml(left, right) {
   return `<div class="folio"><span>${left}</span><span>${right}</span></div>`;
 }
 
-function buildBookPages(blocks, fillResult) {
+// Renders one contiguous run of manuscript pages, numbering folios from startFolio+1.
+// Called twice (before and after the Binder splice) so the folio sequence stays
+// continuous across the inserted pages.
+function renderPageRange(blocks, pages, startFolio) {
   const out = [];
   const partCounts = {};
-  let pageNo = 0;
-  for (const idxs of fillResult.pages) {
+  let pageNo = startFolio;
+  for (const idxs of pages) {
     pageNo++;
     const first = blocks[idxs[0]];
     partCounts[first.part] = (partCounts[first.part] || 0) + 1;
@@ -317,22 +343,25 @@ function buildBookPages(blocks, fillResult) {
   return { html: out.join('\n'), partCounts, lastPageNo: pageNo };
 }
 
-function spliceAppendix(appendixSections, startPageNo) {
+function splicePrebuiltPages(sections, startPageNo, label) {
   const out = [];
   let pageNo = startPageNo;
-  for (const section of appendixSections) {
+  for (const section of sections) {
     pageNo++;
+    // Its own within-file folio is dropped and replaced with one carrying the book's
+    // running sequence — book.css positions every .folio at the same spot, so keeping
+    // both would print two overlapping folios per page.
     const own = section.match(/<p class="folio">\d+<\/p>\s*/);
     if (!own) {
       throw new Error(
-        `appendix page ${pageNo - startPageNo} carries no within-appendix folio to replace — ` +
-        'appendix/build.py changed its page footer, so this splice needs rechecking.');
+        `${label} page ${pageNo - startPageNo} carries no within-page folio to replace — ` +
+        'its build.py changed its page footer, so this splice needs rechecking.');
     }
     out.push(section
       .replace(own[0], '')
-      .replace('</section>', `${folioHtml('Appendix B', pageNo)}</section>`));
+      .replace('</section>', `${folioHtml(label, pageNo)}</section>`));
   }
-  return { html: out.join('\n'), count: appendixSections.length, lastPageNo: pageNo };
+  return { html: out.join('\n'), count: sections.length, lastPageNo: pageNo };
 }
 
 // ---------------------------------------------------------------- main
@@ -340,7 +369,14 @@ async function main() {
   const bookCss = readFileSync(join(HERE, 'book.css'), 'utf-8');
   const autoCss = readFileSync(join(HERE, 'book-auto.css'), 'utf-8');
   const packetCss = readFileSync(PACKET_CSS, 'utf-8');
-  const css = bookCss + '\n' + autoCss + '\n' + packetCss;
+  // binder.css is not optional the same way packetCss isn't (see the module docstring's
+  // note on Appendix B): the Binder's 41 pages carry .bgroup/.btable/.bchecklist markup
+  // but inline their own stylesheet standalone, which is discarded when only the
+  // <section>s are lifted out here. Missing it fails loudly rather than shipping
+  // unstyled/overflowing binder pages into the book.
+  if (!existsSync(BINDER_CSS)) throw new Error(`missing ${BINDER_CSS} -- run binder/build.py first.`);
+  const binderCss = readFileSync(BINDER_CSS, 'utf-8');
+  const css = bookCss + '\n' + autoCss + '\n' + packetCss + '\n' + binderCss;
 
   console.log('reading manuscript blocks (python3 blocks_pipeline.py)...');
   const blocks = loadBlocks();
@@ -351,17 +387,32 @@ async function main() {
 
   console.log('laying out pages...');
   const fillResult = paginateBlocks(blocks, meas);
-  const { html: bodyHtml, partCounts, lastPageNo } = buildBookPages(blocks, fillResult);
 
-  const appendixSections = loadAppendixPages();
+  const splitIdx = process.argv.includes('--no-binder')
+    ? fillResult.pages.length - 1
+    : findBinderSplitIndex(blocks, fillResult.pages);
+  const before = renderPageRange(blocks, fillResult.pages.slice(0, splitIdx + 1), 0);
+
+  const binderSections = loadPrebuiltPages(BINDER_HTML, '--no-binder');
+  const binderResult = binderSections.length
+    ? splicePrebuiltPages(binderSections, before.lastPageNo, 'The Binder')
+    : { html: '', count: 0, lastPageNo: before.lastPageNo };
+
+  const after = renderPageRange(blocks, fillResult.pages.slice(splitIdx + 1), binderResult.lastPageNo);
+
+  const partCounts = { ...before.partCounts };
+  for (const [part, n] of Object.entries(after.partCounts)) partCounts[part] = (partCounts[part] || 0) + n;
+  if (binderResult.count) partCounts.BINDER = binderResult.count;
+
+  const appendixSections = loadPrebuiltPages(APPENDIX_HTML, '--no-appendix');
   const appendixResult = appendixSections.length
-    ? spliceAppendix(appendixSections, lastPageNo)
-    : { html: '', count: 0, lastPageNo };
+    ? splicePrebuiltPages(appendixSections, after.lastPageNo, 'Appendix B')
+    : { html: '', count: 0, lastPageNo: after.lastPageNo };
   if (appendixResult.count) partCounts.APPENDIX = appendixResult.count;
 
   const doc = `<!doctype html><html lang="en"><head><meta charset="utf-8">` +
     `<title>The Storm-Ready Home</title><style>${css}</style></head><body>\n` +
-    `${bodyHtml}\n${appendixResult.html}\n</body></html>`;
+    `${before.html}\n${binderResult.html}\n${after.html}\n${appendixResult.html}\n</body></html>`;
   writeFileSync(OUT, doc, 'utf-8');
 
   console.log(`\nwrote ${OUT}`);
