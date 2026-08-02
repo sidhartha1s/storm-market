@@ -126,8 +126,13 @@ common complaint in this category, and "blocked to us" is exactly the set a huma
 | `derive_agencies.py` | Emergency management and insurance regulator columns. Caches pages under `.agency-cache/`. |
 | `derive_energy.py` | Energy-assistance column from the ACF LIHEAP listing. |
 | `derive_water.py` | Private-well testing columns from two EPA sources. |
+| `derive_em_phone.py` | `em_phone` from EMAC's state contact directory. Caches the page under `.agency-cache/`. |
+| `derive_deductibles.py` | `wind_deductible_note` for all 51 rows, parsed from NAIC's Hurricane Deductibles page. |
+| `derive_mitigation.py` | `mitigation_program`/`mitigation_url` — 7 hand-researched states, documented dead ends for the rest. |
+| `derive_pharmacy.py` | `pharmacy_refill_law` — 15 hand-researched states, documented dead ends (Tennessee, Mississippi). |
+| `derive_disconnect.py` | `winter_disconnect`/`summer_disconnect` — 12 + 3 hand-researched states. |
 | `merge.py` | Assembles the fragments into `state_data.csv`. Fails if two fragments disagree on the state set. |
-| `hazards.csv`, `agencies.csv`, `energy.csv`, `water.csv` | The per-column fragments. Committed so a run is auditable. |
+| `hazards.csv`, `agencies.csv`, `energy.csv`, `water.csv`, `em_phone.csv`, `deductibles.csv`, `mitigation.csv`, `pharmacy.csv`, `disconnect.csv` | The per-column fragments. Committed so a run is auditable. |
 | `build.py` | Renders both outputs. Fails on missing `verified_on`, unknown hazard names, or a URL that is not `https://`. |
 | `templates/appendix_row.html` | The compact in-book row |
 | `templates/packet.html` | The 4-page per-state packet |
