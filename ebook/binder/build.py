@@ -808,6 +808,18 @@ MULTI_PAGE_BUILDERS = {
 }
 
 
+def build_form2(form):
+    """Medical summary. Thirteen fields plus the "stranger providing care" note (see
+    the build_form() dispatch note on why that note was almost dropped) push a one-
+    page copy right to the edge -- fitcheck measured +21px once the note was restored.
+    Tightened field spacing here only, rather than loosening the shared .field
+    component everywhere else in the binder that already fits with headroom to spare."""
+    fields = all_fields(form)
+    note_text = units_of_type(form["units"], "note")[0]["text"]
+    return (f'<div class="tight-fields">{render_fields(fields)}</div>'
+            f'<p class="b-note">{render_inline(note_text)}</p>')
+
+
 def build_form(form):
     """Returns a list of page-body HTML fragments for one form (usually length 1)."""
     n = form["number"]
