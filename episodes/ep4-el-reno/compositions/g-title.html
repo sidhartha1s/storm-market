@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; }
+  .bg { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .stage { position:absolute; inset:0; display:grid; place-items:center; }
+  .stack { text-align:center; }
+  .main { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:84px; color:#f2f5f8; letter-spacing:2px; line-height:1.08; }
+  .sub { font-family:Georgia,serif; font-style:italic; font-size:34px; color:#d8a13a; letter-spacing:1px; margin-top:34px; }
+</style>
+<div id="root" data-composition-id="g-title" data-width="1920" data-height="1080">
+  <div class="bg" id="g-title-bg"></div>
+  <div class="stage" id="g-title-stage">
+    <div class="stack" id="g-title-stack">
+      <div class="main" id="g-title-main"><div>THE WIDEST TORNADO</div><div>EVER RECORDED</div></div>
+      <div class="sub" id="g-title-sub">EL RENO &middot; OKLAHOMA &middot; MAY 31, 2013</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#g-title-bg","#g-title-main","#g-title-sub"], {autoAlpha:0}, 0);
+  /* host mounts at a0-s3 start (global 52.40); comp-relative = a0-s3 words.json time */
+  /* "record" (first use, "this storm will hold a RECORD no tornado has ever held") @6.84 */
+  tl.fromTo("#g-title-bg", {autoAlpha:0}, {autoAlpha:1, duration:0.7, ease:"power1.out"}, 6.84);
+  tl.fromTo("#g-title-main", {autoAlpha:0, scale:1.14}, {autoAlpha:1, scale:1, duration:0.5, ease:"power2.out"}, 6.84);
+  /* place/date line lands right after, still inside the same breath ("...held. 2.6 miles wide...") */
+  tl.fromTo("#g-title-sub", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5, ease:"power2.out"}, 7.9);
+  /* one continuous slow scale drift on the whole stack from reveal to exit */
+  tl.fromTo("#g-title-stack", {scale:1}, {scale:1.045, duration:24.5, ease:"none"}, 6.84);
+  /* clean exit well before the 34.0s host window ends */
+  tl.to("#g-title-stage", {autoAlpha:0, duration:1.0, ease:"power1.in"}, 32.2);
+  tl.to("#g-title-bg", {autoAlpha:0, duration:1.0, ease:"power1.in"}, 32.2);
+  window.__timelines["g-title"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
