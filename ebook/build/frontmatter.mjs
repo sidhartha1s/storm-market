@@ -193,7 +193,7 @@ const coverHtml = `
 // invented. No ISBN, publisher, printing location or website exist anywhere in this repo,
 // so none are printed.
 const TITLE = 'The Storm-Ready Home';
-const SUBTITLE = 'What the survivors did differently—and the 130 things you can do before the next one.';
+const SUBTITLE = 'What the survivors did differently — and the 130 things you can do before the next one.';
 const AUTHOR = 'Paul Raymond';
 
 const titleHtml = `
