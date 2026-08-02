@@ -49,7 +49,7 @@ def build():
 <head>
 <meta charset="utf-8">
 <title>Figure set preview — The Storm-Ready Home</title>
-<link rel="stylesheet" href="book.css">
+<link rel="stylesheet" href="../book.css">
 </head>
 <body>
 {"".join(pages)}
