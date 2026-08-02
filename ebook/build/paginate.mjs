@@ -275,6 +275,7 @@ function paginateBlocks(blocks, meas) {
 
 // ---------------------------------------------------------------- 4. appendix splice
 function loadAppendixPages() {
+  if (process.argv.includes('--no-appendix')) return [];
   if (!existsSync(APPENDIX_HTML)) return [];
   const html = readFileSync(APPENDIX_HTML, 'utf-8');
   const sections = html.match(/<section class="page">[\s\S]*?<\/section>/g) || [];
