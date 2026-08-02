@@ -62,24 +62,42 @@ from verify_urls import DEAD
 HERE = Path(__file__).parent
 OUT = HERE / "mitigation.csv"
 
-# (abbr, state, program name, url) — url doubles as its own source, there being no secondary
-# citation more authoritative than the programme's own government page.
-PROGRAMS = [
-    ("FL", "Florida", "My Safe Florida Home",
-     "https://mysafeflhome.com/plan-your-storm-ready-home/"),
-    ("CA", "California", "Earthquake Brace + Bolt",
-     "https://www.insurance.ca.gov/0400-news/0102-alerts/2025/Earthquake-Brace-Bolt-Grant-Program-Op.cfm"),
-    ("AL", "Alabama", "Strengthen Alabama Homes",
-     "https://www.strengthenalabamahomes.com/"),
-    ("LA", "Louisiana", "Louisiana Fortify Homes Program",
-     "https://ldi.la.gov/fortifyhomes"),
-    ("OK", "Oklahoma", "Strengthen Oklahoma Homes Program (OKReady)",
-     "https://www.oid.ok.gov/okready/"),
-    ("SC", "South Carolina", "SC Safe Home Mitigation Grant Program",
-     "https://doi.sc.gov/605/SC-Safe-Home"),
-    ("KY", "Kentucky", "Strengthen Kentucky Homes Program",
-     "https://skh.ky.gov"),
-]
+# The fifty states plus DC, same set every other fragment covers — merge.py refuses to merge a
+# fragment whose state set does not match the others, so every state gets a row even though
+# 44 of them are blank on purpose.
+STATES = {
+    "AL": "Alabama", "AK": "Alaska", "AZ": "Arizona", "AR": "Arkansas", "CA": "California",
+    "CO": "Colorado", "CT": "Connecticut", "DE": "Delaware", "DC": "District of Columbia",
+    "FL": "Florida", "GA": "Georgia", "HI": "Hawaii", "ID": "Idaho", "IL": "Illinois",
+    "IN": "Indiana", "IA": "Iowa", "KS": "Kansas", "KY": "Kentucky", "LA": "Louisiana",
+    "ME": "Maine", "MD": "Maryland", "MA": "Massachusetts", "MI": "Michigan",
+    "MN": "Minnesota", "MS": "Mississippi", "MO": "Missouri", "MT": "Montana",
+    "NE": "Nebraska", "NV": "Nevada", "NH": "New Hampshire", "NJ": "New Jersey",
+    "NM": "New Mexico", "NY": "New York", "NC": "North Carolina", "ND": "North Dakota",
+    "OH": "Ohio", "OK": "Oklahoma", "OR": "Oregon", "PA": "Pennsylvania",
+    "RI": "Rhode Island", "SC": "South Carolina", "SD": "South Dakota", "TN": "Tennessee",
+    "TX": "Texas", "UT": "Utah", "VT": "Vermont", "VA": "Virginia", "WA": "Washington",
+    "WV": "West Virginia", "WI": "Wisconsin", "WY": "Wyoming",
+}
+
+# (abbr, program name, url) — url doubles as its own source, there being no secondary citation
+# more authoritative than the programme's own government page. Every other state is blank.
+PROGRAMS = {
+    "FL": ("My Safe Florida Home",
+           "https://mysafeflhome.com/plan-your-storm-ready-home/"),
+    "CA": ("Earthquake Brace + Bolt",
+           "https://www.insurance.ca.gov/0400-news/0102-alerts/2025/Earthquake-Brace-Bolt-Grant-Program-Op.cfm"),
+    "AL": ("Strengthen Alabama Homes",
+           "https://www.strengthenalabamahomes.com/"),
+    "LA": ("Louisiana Fortify Homes Program",
+           "https://ldi.la.gov/fortifyhomes"),
+    "OK": ("Strengthen Oklahoma Homes Program (OKReady)",
+           "https://www.oid.ok.gov/okready/"),
+    "SC": ("SC Safe Home Mitigation Grant Program",
+           "https://doi.sc.gov/605/SC-Safe-Home"),
+    "KY": ("Strengthen Kentucky Homes Program",
+           "https://skh.ky.gov"),
+}
 
 
 def main():
