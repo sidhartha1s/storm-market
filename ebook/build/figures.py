@@ -105,51 +105,66 @@ def fig_safe_room_plan():
 # Figure 2 — The three rooms (Form 12; serves Protections 23, 26, 29)
 # ---------------------------------------------------------------------------
 def fig_three_rooms():
+    # Every rule below is inline (no <style> block, no CSS classes, no SVG <marker>/<defs>
+    # outside an <svg> wrapper) and every card gets an explicit fixed height rather than
+    # relying on flex cross-axis stretch — both were found, on inspection of the first
+    # render, to be fragile under Chrome's headless layout at this box size.
+    CARD_H = "1.42in"
+
     def card(title, icon_svg, lines, accent):
-        items = "".join(f'<div class="tr-line">{ln}</div>' for ln in lines)
-        return (f'<div class="tr-card" style="border-color:{accent}">'
-                f'<div class="tr-icon">{icon_svg}</div>'
-                f'<div class="tr-title" style="color:{accent}">{title}</div>{items}</div>')
+        items = "".join(
+            f'<div style="font-size:7.2pt;line-height:1.32;color:{INK_SOFT};margin-bottom:2pt">{ln}</div>'
+            for ln in lines
+        )
+        return (
+            f'<div style="flex:1 1 0;box-sizing:border-box;height:{CARD_H};overflow:hidden;'
+            f'border:.75pt solid {accent};padding:6pt 7pt;background:#fff;font-family:{SANS}">'
+            f'<div style="margin-bottom:3pt">{icon_svg}</div>'
+            f'<div style="font-size:7.4pt;font-weight:700;letter-spacing:.03em;'
+            f'text-transform:uppercase;margin-bottom:4pt;color:{accent}">{title}</div>'
+            f'{items}</div>'
+        )
 
-    icon_safe = (f'<svg viewBox="0 0 40 40" width="30" height="30">'
-                 f'<rect x="4" y="4" width="32" height="32" fill="none" stroke="{INK}" stroke-width="2"/>'
-                 f'<rect x="13" y="13" width="14" height="14" fill="{AMBER_BG}" stroke="{AMBER}" stroke-width="2"/></svg>')
-    icon_warm = (f'<svg viewBox="0 0 40 40" width="30" height="30">'
-                 f'<rect x="4" y="10" width="32" height="26" fill="none" stroke="{INK}" stroke-width="2"/>'
-                 f'<circle cx="20" cy="4" r="5" fill="none" stroke="{ALERT}" stroke-width="2"/>'
-                 f'<g stroke="{ALERT}" stroke-width="1.4">'
-                 f'<line x1="20" y1="-4" x2="20" y2="-1"/><line x1="11" y1="-1" x2="13" y2="1"/>'
-                 f'<line x1="29" y1="-1" x2="27" y2="1"/></g></svg>')
-    icon_cool = (f'<svg viewBox="0 0 40 40" width="30" height="30">'
-                 f'<rect x="4" y="10" width="32" height="26" fill="none" stroke="{INK}" stroke-width="2"/>'
-                 f'<path d="M0 16 h10 M0 20 h14 M0 24 h10" stroke="{AMBER}" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>'
-                 f'<path d="M40 16 h-10 M40 24 h-10" stroke="{AMBER}" stroke-width="1.6" fill="none"/></svg>')
-
-    defs = (f'<defs><marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">'
-            f'<path d="M0,0 L6,3 L0,6 z" fill="{AMBER}"/></marker></defs>')
+    icon_safe = (
+        f'<svg viewBox="0 0 40 40" width="26" height="26">'
+        f'<rect x="4" y="4" width="32" height="32" fill="none" stroke="{INK}" stroke-width="2.5"/>'
+        f'<rect x="13" y="13" width="14" height="14" fill="{AMBER_BG}" stroke="{AMBER}" stroke-width="2.5"/>'
+        f'</svg>'
+    )
+    icon_warm = (
+        f'<svg viewBox="0 0 40 40" width="26" height="26">'
+        f'<rect x="4" y="14" width="32" height="22" fill="none" stroke="{INK}" stroke-width="2.5"/>'
+        f'<circle cx="20" cy="8" r="6" fill="none" stroke="{ALERT}" stroke-width="2"/>'
+        f'<g stroke="{ALERT}" stroke-width="1.6">'
+        f'<line x1="20" y1="0" x2="20" y2="2"/>'
+        f'<line x1="10" y1="4" x2="12" y2="6"/>'
+        f'<line x1="30" y1="4" x2="28" y2="6"/>'
+        f'</g></svg>'
+    )
+    icon_cool = (
+        f'<svg viewBox="0 0 40 40" width="26" height="26">'
+        f'<rect x="4" y="10" width="32" height="26" fill="none" stroke="{INK}" stroke-width="2.5"/>'
+        f'<path d="M2 18 L14 18 L10 14 M14 18 L10 22" fill="none" stroke="{AMBER}" stroke-width="1.6"/>'
+        f'<path d="M38 28 L26 28 L30 24 M26 28 L30 32" fill="none" stroke="{AMBER}" stroke-width="1.6"/>'
+        f'</svg>'
+    )
 
     cards = (
-        card("SAFE ROOM &middot; P23", icon_safe,
+        card("Safe room &middot; P23", icon_safe,
              ["Lowest floor.", "Zero exterior walls.", "No picture windows.", "For: wind, minutes"], ALERT)
-        + card("WARM ROOM &middot; P26", icon_warm,
-               ["Interior, small.", "South window for daytime sun.", "Body heat does the rest.", "For: cold outage, days"], AMBER)
-        + card("COOLING ROOM &middot; P29", icon_cool,
-               ["Lowest floor, north side.", "Fewest windows, best cross-flow.", "Fans exhaust, not blow on you above 90&deg;F.", "For: heat outage, days"], INK_SOFT)
+        + card("Warm room &middot; P26", icon_warm,
+               ["Interior, small.", "South window for daytime sun.", "Body heat does the rest.",
+                "For: cold outage, days"], AMBER)
+        + card("Cooling room &middot; P29", icon_cool,
+               ["Lowest floor, north side.", "Fewest windows, best cross-flow.",
+                "Fans exhaust, not blow on you.", "For: heat outage, days"], INK_SOFT)
     )
-    style = (
-        '<style>'
-        '.tr-wrap{display:flex;gap:8pt;font-family:' + SANS + '}'
-        '.tr-card{flex:1;border:.75pt solid;padding:6pt 7pt;background:#fff}'
-        '.tr-icon{margin-bottom:3pt}'
-        '.tr-title{font-size:7.4pt;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:4pt}'
-        '.tr-line{font-size:7.2pt;line-height:1.35;color:' + INK_SOFT + ';margin-bottom:2pt}'
-        '</style>'
-    )
-    inner = f'{style}<div class="tr-wrap" style="height:1.55in;box-sizing:border-box">{cards}</div>'
-    return (f'<figure>{defs}{inner}'
+    inner = (f'<div style="display:flex;gap:8pt;box-sizing:border-box;height:{CARD_H}">'
+             f'{cards}</div>')
+    return (f'<figure>{inner}'
             f'<figcaption><b>Figure 2</b> — One house, three different best rooms. The room that '
             f'protects you from wind is not the room that keeps you warm, which is not the room '
-            f'that keeps you cool — the criteria conflict on purpose. Original diagram.</figcaption>'
+            f'that keeps you cool &mdash; the criteria conflict on purpose. Original diagram.</figcaption>'
             f'</figure>')
 
 
