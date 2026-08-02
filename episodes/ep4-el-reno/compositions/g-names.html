@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .stage { position:absolute; inset:0; display:grid; place-items:center; }
+  .column { position:absolute; left:50%; top:50%; width:6px; height:640px;
+    background:linear-gradient(180deg, rgba(147,163,178,0), rgba(232,197,106,0.22), rgba(147,163,178,0));
+    transform-origin:center center; }
+  .beat { position:absolute; inset:0; display:grid; place-items:center; text-align:center; }
+  .eyebrow { font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .counter { font-family:'Courier New',monospace; font-weight:700; font-size:220px; color:#e74c3c; margin-top:14px; line-height:1; }
+  .label { font-size:28px; color:#dfe7ee; font-weight:700; letter-spacing:2px; margin-top:18px; }
+  .headline { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:56px; color:#f2f5f8; line-height:1.15; max-width:1500px; }
+  .subfact { font-family:Georgia,serif; font-style:italic; font-size:30px; color:#d8a13a; margin-top:26px; }
+</style>
+<div id="root" data-composition-id="g-names" data-width="1920" data-height="1080">
+  <div class="column" id="g-names-column"></div>
+  <div class="stage">
+    <div class="beat" id="g-names-b1">
+      <div><div class="eyebrow">IN THE TORNADO'S COLUMN</div><div class="counter" id="g-names-c1">0</div><div class="label">ALL IN VEHICLES</div></div>
+    </div>
+    <div class="beat" id="g-names-b2">
+      <div><div class="eyebrow">IN THE FLOOD'S</div><div class="counter" id="g-names-c2">0</div></div>
+    </div>
+    <div class="beat" id="g-names-b3">
+      <div><div class="headline" id="g-names-head">THE WIDEST TORNADO EVER RECORDED</div><div class="subfact" id="g-names-sub">KILLED NO ONE IN A HOUSE.</div></div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#g-names-b1","#g-names-b2","#g-names-b3","#g-names-head","#g-names-sub"], {autoAlpha:0}, 0);
+
+  /* continuous element for the whole >20s window: the column motif slowly turns throughout */
+  tl.fromTo("#g-names-column", {rotation:0}, {rotation:190, duration:37.4, ease:"none"}, 0);
+
+  /* BEAT 1 — "Eight names in the tornado's column" @0.0 */
+  tl.fromTo("#g-names-b1", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.4, ease:"power2.out"}, 0.0);
+  const c1 = {v:0};
+  tl.to(c1, {v:8, duration:0.65, ease:"power4.out", onUpdate:function(){
+    const el = document.getElementById("g-names-c1"); if (el) el.textContent = Math.round(c1.v);
+  }}, 0.0);
+  tl.to("#g-names-b1", {autoAlpha:0, duration:0.4, ease:"power1.in"}, 2.35);
+
+  /* BEAT 2 — "...13 in the flood's." @2.74 */
+  tl.fromTo("#g-names-b2", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.4, ease:"power2.out"}, 2.74);
+  const c2 = {v:0};
+  tl.to(c2, {v:13, duration:0.65, ease:"power4.out", onUpdate:function(){
+    const el = document.getElementById("g-names-c2"); if (el) el.textContent = Math.round(c2.v);
+  }}, 2.74);
+  tl.to("#g-names-b2", {autoAlpha:0, duration:0.5, ease:"power1.in"}, 34.15);
+
+  /* BEAT 3 — closing fact, line-by-line: "widest" @34.76, "killed no one in a house" @36.64 */
+  tl.set("#g-names-b3", {autoAlpha:1}, 34.76);
+  tl.fromTo("#g-names-head", {autoAlpha:0, scale:1.08}, {autoAlpha:1, scale:1, duration:0.5, ease:"power2.out"}, 34.76);
+  tl.fromTo("#g-names-sub", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.5, ease:"power2.out"}, 36.64);
+  tl.to("#g-names-b3", {autoAlpha:0, duration:0.4, ease:"power1.in"}, 38.0);
+
+  window.__timelines["g-names"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
