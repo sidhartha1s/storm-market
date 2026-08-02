@@ -821,9 +821,9 @@ def build_form(form):
     if single:
         body = single()
     elif n == 5:
-        body = build_table_per_form(form, rows=4)
+        body = build_table_per_form(form, rows=6)
     elif n == 33:
-        body = build_table_per_form(form, rows=3)
+        body = build_table_per_form(form, rows=5)
     elif any(u["type"] == "group" for u in form["units"]):
         body = build_groups_generic(form)
     elif n in CHECKLIST_FORMS:
