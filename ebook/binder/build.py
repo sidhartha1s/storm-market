@@ -849,11 +849,27 @@ def build_form41_pages(form):
 
 
 # Forms whose page repeats are identical copies of the same blank template — the spec
-# says so explicitly (Form 2, Form 39... no: 39/41/36 differ page to page, handled by
-# their own _pages() builders above). Form 23 has no stated count ("One page per
-# person"); 4 is used to match Form 2's own "one per person, plus spares" precedent for
-# the same household — flagged here and in the build report, not silently assumed.
-FORM_REPEAT = {2: 4, 23: 4}
+# says so explicitly for Form 2 ("Four pages -- one per person, plus spares"). Form 23
+# has no stated count of its own ("One page per person" -- no number), so it borrows
+# Form 2's count for the same household rather than a second hardcoded 4 -- see
+# _parse_page_count() below, called once PARSED_SECTIONS exists (main()), and
+# build_form23()'s own "photocopy as needed" line, which tells the reader the count is
+# borrowed, not sourced for Form 23 itself.
+FORM_REPEAT = {2: 4}
+
+_WORD_NUMS = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6}
+
+
+def _parse_page_count(serves_raw):
+    """Pulls the page count out of a form's own "Serves ... <Number> pages" byline
+    (Form 2: "Four pages -- one per person, plus spares.") so a count another form
+    borrows traces to the sentence that actually states it, not a bare integer typed
+    twice in code."""
+    m = re.search(r"\b(One|Two|Three|Four|Five|Six)\s+pages?\b", serves_raw)
+    if not m:
+        sys.exit(f"FAIL: expected an explicit '<Number> pages' phrase in: {serves_raw!r}")
+    return _WORD_NUMS[m.group(1).lower()]
+
 
 # Forms with their own multi-page builder (each page's content differs, so the builder
 # returns the full list rather than main() repeating one page N times). 4, 11, 14 and 36
@@ -865,34 +881,47 @@ MULTI_PAGE_BUILDERS = {
 }
 
 # A form with only a handful of fields/rows still gets book.css's normal fixed spacing,
-# which was tuned for a *full* page -- so a short form can leave most of its page blank
-# even though nothing about it is wrong (Form 18's five fields left 57% of the page
-# empty; roomcheck.mjs flagged 12 such pages, 2026-08-03). That leftover is the writing
-# room the spec's own section budget paid for, and the owner's rule is to spend it on
-# row height, not blank paper -- never on invented fields. Each value here is a pt
-# addition to the normal per-row margin/padding, computed once from roomcheck.mjs's
-# measured emptyPx on that exact page (targeting roughly a quarter of the page still
-# empty afterward, not zero -- a little air on a form a reader writes on by hand is
-# legible, not wasted) and re-verified by roomcheck.mjs / fitcheck.mjs after the build,
-# not by driving a browser from inside build.py itself. Pages that are the unavoidable
-# last page of a *section* (roomcheck flagged 4: Form 6, 10, 16, 35) are exempt per the
-# owner's own carve-out and are left at normal spacing.
+# tuned for a *full* page -- so a short form can leave most of its page blank even
+# though nothing about it is wrong. roomcheck.mjs flagged 12 such single pages plus 2
+# multi-page forms whose split dumped the remainder onto an under-filled page
+# (2026-08-03). The owner's rule, refined after a first pass overshot it: this is a
+# CEILING, not a fill target -- grow each write-in row up to roughly 0.55in total
+# (label + line + margin, or one table/checklist row) and stop there, even if the page
+# still shows white below. A short reference form that hits that ceiling with room to
+# spare is finished, not defective -- it is reported below, not chased further.
+# ROOMY_FIELD_PT / ROOMY_ROW_PT / ROOMY_CHECK_PT are that ceiling's headroom above each
+# component's own book.css/binder.css baseline (~36pt for a plain field, ~33pt inside a
+# .bgroup, ~25pt for a table row, ~21pt for a checklist item -- see binder.css's own
+# component rules), i.e. the most any page here is allowed to grow a row by:
+ROOMY_FIELD_PT = 4      # plain .field (label + line + 10pt margin)
+ROOMY_FIELD_GROUP_PT = 7   # .bgroup .field (7pt margin instead of 10pt -- more headroom)
+ROOMY_ROW_PT = 15       # .btable td (normal or .tight -- same ceiling, different base)
+ROOMY_CHECK_PT = 19     # .bcheck
+
+# Which forms get which ceiling(s). A form only appears here if roomcheck.mjs measured
+# genuine spare room on that exact page -- this never overrides a form (like Form 7's
+# tight 14-row page) that already needs its whole page and was never flagged.
 ROOMY_EXTRA = {
-    5: 22, 9: 24, 17: 14, 18: 36, 19: 36, 26: 22, 29: 15, 32: 36,
-    33: 23, 34: 10, 38: 17, 40: 15,
+    5: {"row": ROOMY_ROW_PT}, 9: {"row": ROOMY_ROW_PT}, 17: {"field": ROOMY_FIELD_PT, "row": ROOMY_ROW_PT},
+    18: {"field": ROOMY_FIELD_PT}, 19: {"field": ROOMY_FIELD_PT}, 26: {"field": ROOMY_FIELD_PT},
+    29: {"field": ROOMY_FIELD_PT}, 32: {"field": ROOMY_FIELD_PT}, 33: {"row": ROOMY_ROW_PT},
+    34: {"check": ROOMY_CHECK_PT}, 38: {"field": ROOMY_FIELD_PT, "row": ROOMY_ROW_PT},
+    40: {"field": ROOMY_FIELD_PT},
 }
-# Multi-page forms need one value per page: balanced_split() already evens out the
-# split itself, but the two pages can still have different amounts of space left over
-# (Form 11's page 2 has fewer, larger groups than page 1), so a single form-wide value
-# would either overflow the fuller page or under-fill the emptier one.
+# Multi-page forms: both pages get the same ceiling (it's a per-row cap, not a per-page
+# tuned target), EXCEPT where the ceiling itself would overflow the page -- Form 14's
+# 13-to-15-row tables have less spare room per page than the 15pt table ceiling needs,
+# so it's capped lower (10pt) there; Form 11's field ceiling (group context) is well
+# under either page's spare room, so it applies at full value on both.
 ROOMY_EXTRA_PAGES = {
-    11: [11, 32],
-    14: [4, 2],
+    11: [{"field": ROOMY_FIELD_GROUP_PT}] * 2,
+    14: [{"row": 10}] * 2,
 }
 
 
-def roomy(body_html, extra_pt):
-    return f'<div class="roomy" style="--extra:{extra_pt}pt">{body_html}</div>'
+def roomy(body_html, extras):
+    style = "; ".join(f"--extra-{k}:{v}pt" for k, v in extras.items())
+    return f'<div class="roomy" style="{style}">{body_html}</div>'
 
 
 def build_form2(form):
