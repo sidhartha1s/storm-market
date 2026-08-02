@@ -202,37 +202,38 @@ def fig_utility_shutoffs():
 # ---------------------------------------------------------------------------
 def fig_water_heater_drawoff():
     def step(n, x, y, text_lines):
-        t = "".join(_text(x + 16, y + 3 + i * 10, ln, size=7.4) for i, ln in enumerate(text_lines))
+        t = "".join(_text(x + 15, y + 3 + i * 9.5, ln, size=7.2) for i, ln in enumerate(text_lines))
         return (f'<circle cx="{x}" cy="{y}" r="8" fill="{AMBER}"/>'
                 f'{_text(x, y + 3, str(n), size=8.5, weight=700, color=PAPER, anchor="middle")}{t}')
 
     body = f'''
-    <rect x="150" y="30" width="70" height="120" rx="8" fill="none" stroke="{INK}" stroke-width="2.4"/>
-    <line x1="150" y1="20" x2="150" y2="30" stroke="{INK}" stroke-width="1.6"/>
-    <path d="M150 20 h-20" stroke="{INK}" stroke-width="1.6" fill="none"/>
-    <rect x="118" y="14" width="12" height="12" fill="none" stroke="{INK}" stroke-width="1.6"/>
-    {_text(112, 12, "cold inlet valve", size=7, anchor="end")}
-    <path d="M220 40 h20 v-14 h20" stroke="{INK}" stroke-width="1.6" fill="none"/>
-    <rect x="234" y="18" width="10" height="10" fill="none" stroke="{INK}" stroke-width="1.4"/>
-    {_text(248, 26, "hot tap opened elsewhere", size=7)}
-    <rect x="176" y="150" width="18" height="10" fill="none" stroke="{INK}" stroke-width="1.6"/>
-    <path d="M185 160 v14 h20" stroke="{INK}" stroke-width="1.6" fill="none"/>
-    {_text(210, 178, "drain valve &rarr; clean container", size=7)}
-    {_text(160, 165, "gas / breaker off at base", size=6.8, color=INK_MUTE)}
-    {step(1, 60, 20, ["kill the energy —", "gas pilot or breaker"])}
-    {step(2, 60, 55, ["shut the cold-water", "inlet at the tank"])}
-    {step(3, 60, 90, ["open a hot tap", "elsewhere to admit air"])}
-    {step(4, 60, 125, ["draw from the drain", "valve into a container"])}
-    {step(5, 60, 160, ["do not refill or", "re-energize until safe"])}
-    <line x1="70" y1="20" x2="118" y2="20" stroke="{INK_MUTE}" stroke-width="1" stroke-dasharray="2,2"/>
-    <line x1="70" y1="55" x2="150" y2="60" stroke="{INK_MUTE}" stroke-width="1" stroke-dasharray="2,2"/>
-    <line x1="70" y1="90" x2="220" y2="30" stroke="{INK_MUTE}" stroke-width="1" stroke-dasharray="2,2"/>
-    <line x1="70" y1="125" x2="180" y2="155" stroke="{INK_MUTE}" stroke-width="1" stroke-dasharray="2,2"/>
+    <rect x="196" y="34" width="74" height="150" rx="8" fill="none" stroke="{INK}" stroke-width="2.4"/>
+    <path d="M212 34 v-14 h-14" stroke="{INK}" stroke-width="1.6" fill="none"/>
+    <rect x="184" y="12" width="12" height="12" fill="none" stroke="{INK}" stroke-width="1.6"/>
+    {_text(180, 10, "cold inlet valve", size=6.8, anchor="end")}
+    <path d="M256 34 v-12 h30" stroke="{INK}" stroke-width="1.6" fill="none"/>
+    <rect x="288" y="16" width="10" height="10" fill="none" stroke="{INK}" stroke-width="1.4"/>
+    {_text(302, 24, "hot tap opened", size=6.8}
+    {_text(302, 33, "elsewhere", size=6.8)}
+    <rect x="224" y="184" width="18" height="10" fill="none" stroke="{INK}" stroke-width="1.6"/>
+    <path d="M233 194 v10 h20" stroke="{INK}" stroke-width="1.6" fill="none"/>
+    {_text(233, 216, "drain valve", size=6.8, anchor="middle")}
+    {_text(233, 225, "&rarr; clean container", size=6.8, anchor="middle")}
+    {_text(233, 245, "gas pilot / breaker off at the base first", size=6.8, color=INK_MUTE, anchor="middle")}
+    {step(1, 30, 24, ["kill the energy &mdash;", "gas pilot or breaker"])}
+    {step(2, 30, 66, ["shut the cold-water", "inlet at the tank"])}
+    {step(3, 30, 108, ["open a hot tap", "elsewhere, to admit air"])}
+    {step(4, 30, 150, ["draw from the drain", "valve into a container"])}
+    {step(5, 30, 192, ["do not refill or", "re-energize until safe"])}
+    <line x1="40" y1="24" x2="184" y2="18" stroke="{INK_MUTE}" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="40" y1="66" x2="196" y2="70" stroke="{INK_MUTE}" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="40" y1="108" x2="288" y2="21" stroke="{INK_MUTE}" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="40" y1="150" x2="224" y2="188" stroke="{INK_MUTE}" stroke-width="1" stroke-dasharray="2,2"/>
     '''
     return _figure(4, "The five-step draw-off sequence in order, and where each valve is on the "
                    "tank — a conventional water heater holds forty to eighty gallons of potable "
                    "water most households never think to use.",
-                   _svg((360, 200), 1.55, "Water heater schematic showing the five-step draw-off sequence", body))
+                   _svg((380, 260), 1.85, "Water heater schematic showing the five-step draw-off sequence", body))
 
 
 # ---------------------------------------------------------------------------
