@@ -4,7 +4,14 @@ Zero dependencies beyond Node and Chrome. No npm install, no external assets, no
 
 | File | What |
 |---|---|
+| `paginate.mjs` | **The layout pass.** Measures every block in Chrome, fills fixed pages, splices in the prebuilt binder and Appendix B, writes `book.html`. |
+| `blocks_pipeline.py` | Flattens the 43 manuscript files into an ordered block stream, resolving `«FIG:»` markers and dropping authoring scaffolding. |
+| `frontmatter.mjs` | Prepends cover, title, copyright and contents; writes `book-final.html`. Reads folios off the page, never computes them. |
+| `figures.py` | The 13 code-drawn diagrams, plus the manifest tying each to its file and protection. |
+| `figures_preview.py` | Renders every figure onto fixed pages for QC without a full book build. |
 | `book.css` | The print stylesheet. 6×9 trim, system fonts only, all figures code-drawn SVG. |
+| `book-auto.css` | The supplementary rules the auto-layout needs on top of `book.css`. |
+| `front.css` | Cover, title, copyright and contents styling. |
 | `sample.html` | 12-page sample spread — cover, legal, TOC, region finder, two protections, chapter opener, decision tree, the money page, a binder form, a 60-day week, the state directory. |
 | `fitcheck.mjs` | **Hard gate.** Fails the build if any page overflows its box. |
 | `sample.pdf` | Rendered output. Open this. |
@@ -43,18 +50,33 @@ HTML is perfectly fine. Re-run the same command with the sandbox disabled and it
 applies to `landing/widthcheck.mjs` and `landing/shot.mjs`. Verified 2026-07-29 — a run that failed
 this way passed unchanged outside the sandbox.
 
-## Measured page density — where the page count comes from
+## The page count is counted, not projected
 
-The 12-page sample's 11 body pages carry **2,673 words**, i.e. **243 words per page** average,
-already including pages that hold SVG diagrams and tables. That is the multiplier to use for any
-page projection, and it is measured rather than assumed.
+**486 pages.** `paginate.mjs` runs `blocks_pipeline.py` to flatten the manuscript into ~3,200 blocks,
+measures every one of them at the book's exact content width in headless Chrome, then fills fixed 6x9
+pages from those measurements. `frontmatter.mjs` prepends the cover, title page, copyright page and
+contents. `fitcheck.mjs` passes on all 486.
 
-Current manuscript: **117,554 words**, of which 114,637 are prose (the Binder's 2,917 words are laid
-out as fixed forms, not poured text). That is 472 prose pages, plus 80 binder pages and 18 appendix
-pages — **about 570**. The published figure of 488 is therefore a **floor**: the book is now
-materially longer than advertised, because closing all 130 citations added ~23,600 words of quoted
-primary material. Still a projection from density rather than a count of laid-out pages. **Recount
-after layout and reset the landing page figure before launch.**
+```
+Front matter (cover, title, copyright, contents)    6
+Part Zero — Front Matter                            7
+Part One — Why People Die                          26
+Part Two — The Core Six                            94
+Part Three — The Hazard Playbooks                 165
+Part Four — People and Places                      17
+Part Five — Warning, Documents, Money              59
+Part Six — The Binder (intro + 61 form pages)      62
+Part Seven — The 60 Days                           10
+Part Eight — Credits                                2
+Sources                                            21
+Appendix B — State Directory                       17
+```
+
+**The old density method was wrong and is kept here only as a warning.** It multiplied the manuscript
+word count by 243 words/page, measured off `sample.html`'s 11 hand-laid body pages, and predicted
+~570. Those sample pages are dense with wide-format components — spec grids, decision trees, money
+bignums, forms — which burn far more vertical space per word than flowing prose. Extrapolating from
+them overstated the book by roughly 17%. A page count is a measurement. Lay it out and count it.
 
 ## Layout rules that follow from the fixed-page model
 

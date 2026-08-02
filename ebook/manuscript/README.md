@@ -19,20 +19,31 @@ because it was a guess and the measurement exists.
 | Three — hazard playbooks | 23 | 56,759 | 234 | 204 | cross-referenced | 0 |
 | Four — people and places | 2 | 5,641 | 23 | 34 | cross-referenced | 0 |
 | Five — warning, documents, evacuation, electronics | 4 | 14,683 | 60 | 30 | 85–130 | 0 |
-| Six — the Binder (41 form specs, laid out as 80 form pages) | 1 | 2,917 | 80 | 80 | — | 0 |
+| Six — the Binder (41 form specs, laid out as 61 form pages) | 1 | 2,917 | 61 | 80 | — | 0 |
 | Seven — the 60 days | 1 | 3,142 | 13 | 22 | 45 scheduled | 0 |
 | Appendix B — state directory | generated | — | 18 | 18 | — | — |
-| **Total** | **41** | **117,554** | **~570** | **488** | **130/130** | **0** |
+| **Total** | **43** | **122,526** | **486** | **488** | **130/130** | **0** |
 
-**All 130 references now carry a full citation and a retrieval date. Zero pending.** Sourcing them
-added roughly 23,600 words of quoted primary material and analysis — which moves the page projection
-well past the published figure.
+**All 130 references now carry a full citation and a retrieval date. Zero pending.** 189 inline
+superscripts resolve to 141 unique references, numbered 1—141 with no gaps, and the Sources chapter
+carries exactly 141 matching entries.
 
-**The 488-page claim on the landing page is now a floor, not an estimate.** Prose excluding the
-Binder is 114,637 words, which at the measured 243 words per page is 472 pages, plus 80 Binder pages
-and 18 appendix pages — **about 570.** The advertised number understates the product rather than
-overstating it, which is the safe direction to be wrong in, but it is still wrong. **Recount after
-layout and reset the figure on the landing page before anything goes live.**
+**The page count is now counted, not projected.** `build/paginate.mjs` measures every block's real
+rendered height in headless Chrome and fills fixed 6x9 pages; `build/frontmatter.mjs` prepends the
+cover, title, copyright and contents. The result is **486 pages**, and `build/fitcheck.mjs` passes on
+every one of them.
+
+That lands within two pages of the 488 originally advertised, which is a coincidence rather than a
+vindication — the 570 that density projection predicted was wrong because it was extrapolated from
+`sample.html`'s hand-laid pages, which are dense with wide-format components that burn far more
+vertical space per word than flowing prose does. **Do not project page counts from word density
+again. Lay it out and count.**
+
+The Binder is the one row where the budget and the artifact still differ: 41 forms specified across a
+notional 80 pages, laid out as **61**. Nothing was dropped — every form is present and every explicit
+multiplier is honoured (Form 2 four pages, Form 39 six, Form 41 four), and four forms were split
+*further* than planned because they measured as overflowing. The per-section page estimates in P6
+were simply written before anything had been laid out at real scale.
 
 Part Three ran shorter than its 204pp budget and Parts Two and Five ran longer. That is fine and it
 was the right trade: the protections carry the detail and the playbooks stay navigable under stress,

@@ -41,7 +41,7 @@ description**, which is the owner's rule: the higher the credible savings delta 
 pricing, the higher the conversion.
 
 1. Hero — headline, sub, price CTA, cover
-2. Proof strip — 488 pages, 130 protections, 23 hazards, 60 days, 7-day refund
+2. Proof strip — 486 pages, 130 protections, 23 hazards, 60 days, 7-day refund
 3. What it is — counts grid, then all 23 hazards as chips so the scope is undeniable
 4. **The money chapter** — the $3,029 / $43,600 gap, sourced, with the "what this is not" box
 5. Find your region — 5 cards, makes it personal before the ask
@@ -81,19 +81,29 @@ your call, not mine to add silently. A real launch-price end date is honest and 
    actually email the right `<ABBR>.html`/PDF. That automation does not exist yet, and neither does
    the Kit account — `KIT_API_KEY` must be set before this stops 500ing (see Deploy). The state
    packets themselves are covered in blocker 4.
-3. **The book is written and fully sourced. The page count on this page is wrong.** All **130 of 130**
-   protections and all **23 of 23** hazard playbooks are drafted, plus front matter, people/places, the
-   binder spec and the 60-day sequence — **120,526 words, 0 open citations**, every claim carrying a
-   full citation and a retrieval date. Claims that could not be traced to a primary document were cut
-   rather than softened. Sourcing is finished; **layout is the gating item.**
+3. **The book is written, sourced, laid out and counted.** All **130 of 130** protections and all
+   **23 of 23** hazard playbooks, plus front matter, people/places, the 60-day sequence, 61 pages of
+   fillable binder forms, 13 original diagrams, a credits page, Sources and the 51-state directory.
+   Every claim carries a full citation and a retrieval date; claims that could not be traced to a
+   primary document were cut rather than softened.
 
-   On the **488** figure: it is a **floor and it has to be reset before launch.** The projection from
-   measured density (243 words per page across 11 rendered sample pages) put the book near **570**, but
-   a projection is not a count — `ebook/build/paginate.mjs` lays the manuscript into real fixed pages
-   and its output is what settles this. **Change every instance of 488 once that number exists**: it
-   appears in the meta description, the hero subhead, the proof strip, the deliverables list and the
-   delivery section. It currently understates the product, which is the safe direction to be wrong in,
-   but it is still wrong.
+   **The page figure is settled at 486** and every instance on this page has been reset — meta
+   description, hero subhead, proof strip, deliverables list, delivery section. It is a count, not a
+   projection: `ebook/build/paginate.mjs` measures every block in headless Chrome and fills fixed 6x9
+   pages, `ebook/build/frontmatter.mjs` prepends the cover, title page, copyright page and contents,
+   and `ebook/build/fitcheck.mjs` passes on all 486.
+
+   Two other claims on this page were corrected at the same time, because they described a product
+   that did not exist yet rather than the one in the repo:
+
+   - "The Binder — 80 pages" is now **61 pages**. 41 forms, all present, every explicit multiplier
+     honoured; the 80 was a per-section estimate written before anything was laid out.
+   - "All 50 State Packets" is now **51 — 50 states and DC**, which is what actually ships.
+
+   The "illustrated PDF" claim and the named floor-plan diagram for Protection 23 were **false when
+   written** — there were no figures in the book at all. They are true now: 13 code-drawn diagrams,
+   credited in Part Eight. The lesson worth keeping is that the copy was written from the plan and
+   nobody had checked it against the artifact.
 
 4. **The 51 state packets (50 states + DC) now exist as HTML** at `ebook/appendix/out/packets/
    <ABBR>.html`, and `build.py` can render any of them to PDF — only 4 (CA, FL, IL, TX) have been

@@ -166,7 +166,7 @@ target is what produces refunds and one-star "AI slop" reviews; every block belo
 | P6 The Binder | 80 | fillable plans, checklists, logs, wallet cards, home inventory, document vault |
 | P7 The 60 Days | 22 | day-by-day sequence, drill scripts, sources |
 | Appendix | 18 | state authority directory (compact lookup) |
-| **Total** | **488** | |
+| **Total** | **488** | Planned. **Built: 486**, counted by `ebook/build/paginate.mjs` + `frontmatter.mjs`, gated by `fitcheck.mjs`. The Binder came in at 61 rather than 80 (41 forms, none dropped); Appendix B at 17; a cover, title page, copyright page, 3-page contents and a credits page were added, and none of those were in this plan. |
 
 **Per-protection template** (Yoder's, adapted): number · one-line what-it-prevents · cost · time ·
 materials · steps · **what it does NOT do** (the honesty line that builds trust) · which regions
