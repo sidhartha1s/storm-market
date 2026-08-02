@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 40%, #0d1319 0%, #030507 80%); font-family:Arial,sans-serif; overflow:hidden; }
+  .hdr { position:absolute; left:0; top:56px; width:1100px; text-align:left; padding-left:90px; font-weight:700; font-size:26px; letter-spacing:8px; color:#93a3b2; }
+  /* horizon stage: left 2/3, elevation view -- ground plane + sky, storm wall grows edge to edge */
+  .stage { position:absolute; left:60px; top:150px; width:1100px; height:820px; overflow:hidden; }
+  .sky { position:absolute; left:0; right:0; top:0; height:620px; background:linear-gradient(180deg,#0c1116 0%,#141c24 70%,#1b2530 100%); }
+  .ground { position:absolute; left:0; right:0; top:620px; bottom:0; background:linear-gradient(180deg,#26201a,#161310); }
+  .road { position:absolute; left:0; right:0; top:618px; height:6px; background:#3a3a3a; }
+  .house { position:absolute; left:120px; top:590px; width:46px; height:30px; background:#3a3128; }
+  .roof { position:absolute; left:114px; top:568px; width:0; height:0; border-left:29px solid transparent; border-right:29px solid transparent; border-bottom:24px solid #241f1a; }
+  .horizonline { position:absolute; left:0; right:0; top:620px; height:1px; background:#3a4654; }
+  .eyelab { position:absolute; left:20px; top:598px; font-size:16px; letter-spacing:2px; color:#5a6b7a; font-weight:700; }
+  /* the storm wall -- fixed width 900px, centered, scaleX only (transformOrigin center bottom) */
+  #g-width-v2-wall { position:absolute; left:50%; bottom:200px; width:900px; height:420px; margin-left:-450px;
+    transform-origin:center bottom; background:linear-gradient(180deg,#1a2620 0%,#26362c 40%,#3a4a3a 75%,#4a5c48 100%);
+    box-shadow:0 0 100px #1a262080; clip-path:polygon(2% 100%, 0% 30%, 8% 8%, 20% 2%, 40% 6%, 55% 0%, 70% 5%, 85% 2%, 96% 10%, 100% 32%, 98% 100%); }
+  #g-width-v2-walltex { position:absolute; inset:0; background:repeating-linear-gradient(78deg, #ffffff08 0 6px, transparent 6px 16px); }
+  #g-width-v2-fardim { position:absolute; right:0; top:0; bottom:0; width:60%; background:linear-gradient(90deg, transparent, #030507 92%); opacity:0; }
+  /* width bracket -- children of wall so left:0/right:0 track the scaled edges */
+  .bcap { position:absolute; top:-46px; width:3px; height:40px; background:#e8c56a; }
+  #g-width-v2-capL { left:0; } #g-width-v2-capR { right:0; }
+  #g-width-v2-brow { position:absolute; left:0; right:0; top:-16px; height:2px; background:#e8c56a; }
+  /* Hallam ghost marker -- fixed pixel position (2.17/2.6 of half-width from center) */
+  #g-width-v2-hallam { position:absolute; bottom:200px; top:280px; width:0; border-left:3px dashed #e8c56a; opacity:0; }
+  #g-width-v2-hallamlab { position:absolute; bottom:830px; font-family:Georgia,serif; font-style:italic; font-size:20px; color:#e8c56a; white-space:nowrap; opacity:0; }
+  /* Manhattan overlay -- fixed-ratio box centered on wall */
+  #g-width-v2-manhattan { position:absolute; left:50%; bottom:200px; width:275px; height:420px; margin-left:-137px;
+    border:3px dashed #dfe7ee; border-radius:60px/30px; opacity:0; }
+  #g-width-v2-manhattanlab { position:absolute; left:50%; bottom:632px; transform:translateX(-50%); font-family:'Arial Black',Arial,sans-serif;
+    font-size:20px; color:#dfe7ee; letter-spacing:2px; white-space:nowrap; opacity:0; }
+  #g-width-v2-milelab { position:absolute; left:50%; top:40px; transform:translateX(-50%); font-family:'Courier New',monospace;
+    font-weight:700; font-size:56px; color:#e74c3c; white-space:nowrap; }
+  .fline { position:absolute; left:50%; bottom:40px; transform:translateX(-50%); font-family:Georgia,serif; font-style:italic;
+    font-size:28px; color:#e8c56a; text-align:center; width:960px; opacity:0; }
+  /* panel */
+  .panel { position:absolute; right:0; top:0; bottom:0; width:820px; box-sizing:border-box;
+    background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); padding:90px 70px 0 170px; }
+  .eyebrow { font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .tname { font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; line-height:1.05; margin-top:14px; }
+  .tsub { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:10px; }
+  .row { font-size:30px; color:#dfe7ee; font-weight:700; letter-spacing:1px; margin-top:22px; }
+  .row .lab { display:block; font-size:19px; color:#93a3b2; letter-spacing:4px; font-weight:700; }
+</style>
+<div id="root" data-composition-id="g-width-v2" data-width="1920" data-height="1080">
+  <div class="hdr" id="g-width-v2-hdr">GROUND-LEVEL VIEW · TO SCALE</div>
+  <div class="stage">
+    <div class="sky"></div>
+    <div class="ground"></div>
+    <div class="road"></div>
+    <div class="roof"></div>
+    <div class="house"></div>
+    <div class="horizonline"></div>
+    <div class="eyelab">EYESIGHT HORIZON, CLEAR AIR</div>
+    <div id="g-width-v2-milelab">0.0 MI</div>
+    <div id="g-width-v2-hallam"></div>
+    <div id="g-width-v2-hallamlab">PREVIOUS RECORD · HALLAM, NE · 2004</div>
+    <div id="g-width-v2-manhattan"></div>
+    <div id="g-width-v2-manhattanlab">MANHATTAN ISLAND · FOR SCALE</div>
+    <div id="g-width-v2-wall">
+      <div id="g-width-v2-walltex"></div>
+      <div class="bcap" id="g-width-v2-capL"></div>
+      <div class="bcap" id="g-width-v2-capR"></div>
+      <div id="g-width-v2-brow"></div>
+    </div>
+    <div id="g-width-v2-fardim"></div>
+    <div class="fline" id="g-width-v2-fline">A tornado this wide does not look like a tornado at all.</div>
+  </div>
+  <div class="panel" id="g-width-v2-panel">
+    <div class="eyebrow">RaXPol MOBILE RADAR · 6:19 PM CDT</div>
+    <div class="tname">SOUTH OF EL RENO</div>
+    <div class="tsub">Widest tornado ever measured</div>
+    <div class="row" id="g-width-v2-row1"><span class="lab">SIXTEEN MINUTES AFTER TOUCHDOWN</span>FROM A FEW HUNDRED YARDS</div>
+    <div class="row" id="g-width-v2-row2" style="color:#e8c56a; opacity:0">WIDER THAN THE ISLAND OF MANHATTAN</div>
+    <div class="row" id="g-width-v2-row3" style="opacity:0">FAR EDGE BEYOND EYESIGHT · CLEAR AIR</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-width-v2-";
+  tl.set(P+"wall", {scaleX:0.02, autoAlpha:1}, 0);
+  tl.set([P+"hallam",P+"hallamlab",P+"manhattan",P+"manhattanlab",P+"row2",P+"row3",P+"fline"], {autoAlpha:0}, 0);
+  tl.set(P+"fardim", {autoAlpha:0}, 0);
+  tl.set(P+"panel", {x:660}, 0);
+  tl.fromTo(P+"panel", {x:660}, {x:0, duration:0.7, ease:"power3.out"}, 0.2);
+  tl.fromTo(P+"hdr", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.6}, 0.4);
+  /* continuous drifting texture across the whole window -- satisfies the >20s continuous-motion rule */
+  tl.to(P+"walltex", {backgroundPosition:"400px 0", duration:50, ease:"none"}, 4.0);
+  /* touchdown @3.8 "a few hundred yards" -> ordinary @8.06 */
+  tl.fromTo(P+"row1", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 3.8);
+  tl.to(P+"wall", {scaleX:0.03, duration:0.5, ease:"power1.out"}, 4.1);
+  const cnt = {v:0.03};
+  function upd() { const el=document.getElementById("g-width-v2-milelab"); if(el) el.textContent = cnt.v.toFixed(2)+" MI"; }
+  tl.set(P+"milelab", {}, 0);
+  /* growth begins @9.38 -> half mile @14.32-15.32 (scaleX 0.192, 0.5mi) */
+  tl.to(P+"wall", {scaleX:0.192, duration:5.9, ease:"power1.in"}, 9.4);
+  tl.to(cnt, {v:0.5, duration:5.9, ease:"power1.in", onUpdate:upd}, 9.4);
+  /* full mile @16.04-17.24 (scaleX 0.385) */
+  tl.to(P+"wall", {scaleX:0.385, duration:1.2, ease:"power2.in"}, 16.04);
+  tl.to(cnt, {v:1.0, duration:1.2, ease:"power2.in", onUpdate:upd}, 16.04);
+  /* two @18.14-18.64 (scaleX 0.769) */
+  tl.to(P+"wall", {scaleX:0.769, duration:0.55, ease:"power2.in"}, 18.14);
+  tl.to(cnt, {v:2.0, duration:0.55, ease:"power2.in", onUpdate:upd}, 18.14);
+  /* 6:19, 2.6 miles @19.38-25.86 -- rolls fast then slows dramatically */
+  tl.to(P+"wall", {scaleX:1.0, duration:6.4, ease:"power4.out"}, 19.4);
+  tl.to(cnt, {v:2.6, duration:6.4, ease:"power4.out", onUpdate:upd}, 19.4);
+  /* far edge dims below the eyesight horizon on the landing beat */
+  tl.to(P+"fardim", {autoAlpha:0.9, duration:1.4}, 25.9);
+  /* Manhattan overlay -- wider than Manhattan @25.86-29.88 */
+  tl.fromTo(P+"manhattan", {scale:0.5, autoAlpha:0}, {scale:1, autoAlpha:0.9, duration:0.6, ease:"power2.out"}, 26.1);
+  tl.fromTo(P+"manhattanlab", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 26.4);
+  tl.fromTo(P+"row2", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 26.4);
+  /* far edge beyond horizon @30.66-37.88 */
+  tl.fromTo(P+"row3", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 30.9);
+  /* Hallam ghost marker -- old Nebraska record @38.72-42.92, gone @42.52 */
+  tl.fromTo(P+"hallam", {autoAlpha:0}, {autoAlpha:0.85, duration:0.8, ease:"power2.out"}, 38.9);
+  tl.fromTo(P+"hallamlab", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 39.3);
+  tl.to(P+"hallam", {autoAlpha:0.25, duration:0.5}, 42.6);
+  /* final line @51.44-54.9 */
+  tl.fromTo(P+"fline", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.6}, 51.6);
+  /* panel exits on the cut */
+  tl.to(P+"panel", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 54.9);
+  window.__timelines["g-width-v2"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
