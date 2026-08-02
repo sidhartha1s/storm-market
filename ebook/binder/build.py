@@ -827,6 +827,7 @@ def build_form(form):
         return MULTI_PAGE_BUILDERS[n](form)
     single = {
         1: lambda: build_form1(form),
+        2: lambda: build_form2(form),
         3: lambda: build_form3(all_fields(form)),
         6: lambda: build_form6(form),
         7: lambda: build_form7(form),
