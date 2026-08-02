@@ -221,10 +221,6 @@ Chrome `--print-to-pdf` with an **absolute** output path.
      declaration, a kept payment plan — so the note says who is protected, not just the date
      range. 12/51 and 3/51.
 
-2. **One schema gap to decide.** `energy.csv` carries a verified public-inquiry phone for 49 states and the
-   schema has no column for it. `merge.py` reports the dropped column on every run rather than discarding it
-   silently. Worth adding — in an outage a reader needs a number more than a URL — but it is a schema
-   change, so it waits for a decision.
 2. **The landing page's free-packet email gate cannot deliver anything until packets exist.** Currently the
    form fails loudly by design rather than pretending to subscribe.
 3. **Re-verification cadence.** Agency URLs and phone numbers rot. The packets print `verified_on`, and the
