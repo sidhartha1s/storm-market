@@ -62,7 +62,10 @@ def part_of(filename):
 
 
 def tag_of(block_html):
-    return block_html[1:block_html.index(">")] if block_html.startswith("<") else "p"
+    """First tag name, ignoring any attributes (chapter-opener h1s carry a class)."""
+    if not block_html.startswith("<"):
+        return "p"
+    return block_html[1:block_html.index(">")].split()[0]
 
 
 def main():
