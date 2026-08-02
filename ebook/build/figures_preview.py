@@ -37,7 +37,7 @@ def build():
         figure_html = render_figure(entry["id"])
         pages.append(PAGE_TEMPLATE.format(
             fig_id=html.escape(entry["id"]),
-            protection=html.escape(str(entry["protection"]) if entry["protection"] is not None else "&mdash;"),
+            protection=html.escape(str(entry["protection"]) if entry["protection"] is not None else "—"),
             figure_html=figure_html,
             justification=html.escape(entry["justification"]),
             file=html.escape(entry["file"]),
