@@ -317,6 +317,11 @@ of leaves and needles.
 https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=4291 |
 retrieved 2026-07-29»
 
+Figure 6 lines up the three bands so the nesting is visible at a glance — Zone 0 is not a separate
+project from Zone 1 and Zone 2, it is the innermost five feet of the same one.
+
+«FIG: defensible-space-zones»
+
 Look up your own state's version by searching your state fire authority's name and "defensible space."
 Where a state has no mandate, the California distances are the best-tested numbers available and there
 is no reason to use worse ones.
