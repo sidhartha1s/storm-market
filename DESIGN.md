@@ -160,12 +160,19 @@ floors/ceilings; taste stays with the model.
   exist for a reason.
 - **No visual repeats** in an episode. One reuse allowed only as intentional callback:
   different crop/grade, >5 min apart, flagged with `data-callback="reason"` on the element
-  (lint-enforced; max 2 uses; last 90s = summary zone, exempt — owner OK'd recap reuse).
+  (lint-enforced; max 3 uses total, 2 of which must carry `data-callback`; last 90s = summary
+  zone, exempt — owner OK'd recap reuse).
 - **No SUBJECT repeats either (ep1 v2 RCA)**: two different files of the same visual subject
   (two night-lamp-rain shots, two town aerials of the same look) read as a repeat to the
   viewer. Dedup by what the FRAME shows, not the filename. When authoring, group the shot
   list by subject family (night-rain, town-aerial, siren, rubble...) and use each family
-  ≤2 non-adjacent times per act stretch.
+  ≤2 non-adjacent times per act stretch (lint-enforced: any same-subject-family pair inside 60s
+  fails unless declared `data-sequence="reason"` for a deliberate consecutive series).
+- **Per-file reuse checks are not enough on their own (owner order 2026-08-02, after a cut
+  passed at 34% aggregate repeat share):** `lint_timeline.py` also sums every non-graphic
+  window past its first use and fails if repeats exceed **12% of the timed picture track** —
+  a cut can pass every individual file's reuse count and still read as the same pictures
+  cycling in aggregate.
 - **Sync rule**: the frame must not contradict the narration — named store, time-of-day,
   burned-in timestamps. Match the visual or use a neutral one.
 - **Burned-in radar/satellite timestamps (owner order 2026-07-26): map to the narration or
