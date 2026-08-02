@@ -2,6 +2,35 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
+## 2026-08-02 — CHECKPOINT: revert to the ep2 method (owner order)
+
+**What happened:** ep1 (9/10) and ep2 (9/10) were hand-authored — the model read word
+timestamps and made every cut as an editorial judgment, typed directly into index.html.
+ep3 sessions replaced that with generators (`build_ep3.py` 942 lines, `gen_misc_comps.py`,
+`gen_panel_comps.py`, `gen_track_comps.py` — ~2,700 lines emitting episode HTML from shot
+tables/templates). Output rhythm went metronomic → owner rated ep3 v2 2/10, ep4 (which
+inherited the branch + an injection pattern, `build_picture.py`/`inject_audio_hook.py`)
+worse. Quality curve tracked generator adoption exactly.
+
+**Why the existing rule failed:** (1) "AI-first, code-second" rule was written 2026-07-29 —
+mid-drift, same days build_ep3.py was written — and the generators stayed in the tree as
+precedent; (2) one ep3 session read docs from a stale checkout and never saw the rule;
+(3) the storm-episode skill carried no authorship rule at all.
+
+**The fix (this PR):** generators + per-episode .cmd forks deleted; TRIPWIRE added to
+CLAUDE.md HARD RULE and to the storm-episode skill's preflight; committed junk purged
+(.qc-tmp, .consumed, logs, __pycache__, SESSION_LEDGER, plan docs) + .gitignore extended.
+ep2 content verified byte-identical between origin/claude/ep2-ship (ff4cac5) and main —
+no content revert needed; the revert unit was the PROCESS, not the shipped episodes.
+
+**Kept from the ep3/ep4 era (explicitly, owner-approved):** research learnings
+(competitor-plagiarism rule, PD-by-age sourcing, per-cut frame verification), all READ-only
+QC checkers (sweep_episode, blank_scan, beat_density, graphics_qc, lint_timeline,
+media_budget, render_preflight), render-ops knowledge (workers pin, protocol timeouts,
+render-is-last-step), DESIGN.md graphics anatomy + hook contract + chapter blackouts,
+master_deliverables/render.cmd infra. ep1–ep3 shipped videos untouched; ep4 will be REDONE
+hand-authored from this base, reusing its research + assets.
+
 ## 2026-07-27 — ep2 hook rebuild + ship (hook contract now in DESIGN.md)
 
 **Editorial:**
