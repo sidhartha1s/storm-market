@@ -61,7 +61,7 @@ from, and the row carries one `verified_on` date.
 | `winter_disconnect` | Winter disconnection moratorium, if any | Serves Playbook 11 |
 | `summer_disconnect` | Summer/heat disconnection protection, if any | Serves Playbook 10 |
 | `energy_assist_url`, `_src` | State low-income energy assistance page | |
-| `energy_assist_phone`, `_src` | LIHEAP public-inquiry phone number | In an outage a reader needs a number more than a URL |
+| `energy_assist_phone`, `_src` | LIHEAP public-inquiry phone number | Added 2026-08-02 — in an outage a reader needs a number more than a URL |
 | `well_test_contact` | Where private well owners get water tested | Serves Protections 9, 10 |
 | `well_test_url`, `_src` | | |
 | `hazard_1`, `hazard_2`, `hazard_3` | Top three hazards | Must match a Part Three playbook name exactly |
