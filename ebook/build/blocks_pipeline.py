@@ -109,6 +109,39 @@ def explode_lists(block_list):
     return out
 
 
+FIG_RE = re.compile(r"^<p>«FIG:\s*([\w-]+)\s*»</p>$")
+
+
+def resolve_figures(block_list, filename):
+    """Replace a bare <p>«FIG: fig-id»</p> block — its own paragraph, blank lines around,
+    per the figures agent's marker convention (matching how «SRC:»/«CITE:» work) — with
+    figures.render_figure(fig_id)'s HTML.
+
+    Fails loud rather than leaving the marker in the rendered book or silently dropping the
+    figure: an unresolved marker reaching a reader's page is exactly the «CITE:» leak this
+    manuscript has been burned by once already (see manuscript/README.md). Each figure's
+    <svg> carries its own fixed height (the figures agent's convention, matching sample.html),
+    so it measures deterministically like any other block — no special-casing needed here
+    beyond the substitution itself; tag_of() reads it as a plain <figure> block, which is
+    atomic by default, matching the brief's "figures ... atomic" rule."""
+    out = []
+    for block_html in block_list:
+        m = FIG_RE.match(block_html)
+        if not m:
+            out.append(block_html)
+            continue
+        fig_id = m.group(1)
+        if figures is None:
+            sys.exit(f"FAIL: {filename} references «FIG: {fig_id}» but build/figures.py does not exist yet.")
+        if not hasattr(figures, "render_figure"):
+            sys.exit(f"FAIL: build/figures.py has no render_figure() — needed for {filename}'s «FIG: {fig_id}»")
+        try:
+            out.append(figures.render_figure(fig_id))
+        except Exception as e:
+            sys.exit(f"FAIL: {filename}'s «FIG: {fig_id}» could not be rendered: {e}")
+    return out
+
+
 def assign_groups(tags):
     """Group index per block: every h3 opens a new group that also covers every block up
     to (not including) the next h1/h2/h3. None outside any h3's span.
