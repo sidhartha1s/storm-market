@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; overflow:hidden; }
+  /* pulse-motion: city dot + expanding rings, continuous */
+  .pulsewrap { position:absolute; left:270px; top:540px; width:10px; height:10px; }
+  .citydot { position:absolute; left:-6px; top:-6px; width:12px; height:12px; border-radius:50%; background:#e8c56a; box-shadow:0 0 14px #e8c56aaa; z-index:3; }
+  .ring { position:absolute; left:-2px; top:-2px; width:4px; height:4px; border-radius:50%; border:2px solid #5a768f; transform-origin:center center; }
+  .eyebrow { position:absolute; left:120px; top:120px; font-weight:700; font-size:22px; color:#93a3b2; letter-spacing:6px; }
+  .stat { position:absolute; left:120px; right:120px; top:400px; font-family:'Arial Black',Arial,sans-serif; font-size:60px; color:#f2f5f8; line-height:1.28; }
+  .stat span { display:inline; }
+  .sub { position:absolute; left:120px; top:700px; font-family:Georgia,serif; font-style:italic; font-size:27px; color:#d8a13a; }
+  .analogy { position:absolute; left:120px; bottom:110px; }
+  .albox { display:inline-block; margin-right:60px; padding:14px 26px; border:1px solid #1c2732; }
+  .albig { font-family:'Arial Black',Arial,sans-serif; font-size:30px; color:#dfe7ee; letter-spacing:1px; }
+  .alsub { font-size:19px; color:#93a3b2; letter-spacing:3px; font-weight:700; margin-top:6px; }
+</style>
+<div id="root" data-composition-id="g-evac" data-width="1920" data-height="1080">
+
+  <div class="pulsewrap" id="ge-pulsewrap">
+    <div class="ring" id="ge-ring1"></div>
+    <div class="ring" id="ge-ring2"></div>
+    <div class="ring" id="ge-ring3"></div>
+    <div class="citydot"></div>
+  </div>
+
+  <div class="eyebrow" id="ge-eyebrow">VEHICLE-MOVEMENT STUDY &middot; SIX METRO AREAS</div>
+
+  <div class="stat" id="ge-stat">
+    <span id="ge-w1">THE</span> <span id="ge-w2">LARGEST</span> <span id="ge-w3">TORNADO</span> <span id="ge-w4">EVACUATION</span> <span id="ge-w5">EVER</span> <span id="ge-w6">MEASURED</span> <span id="ge-w7">IN</span> <span id="ge-w8">AN</span> <span id="ge-w9">AMERICAN</span> <span id="ge-w10">CITY</span>
+  </div>
+
+  <div class="sub" id="ge-sub">6 metro areas studied &middot; 2011&ndash;2018 &middot; none compared</div>
+
+  <div class="analogy" id="ge-analogy">
+    <div class="albox" id="ge-al1"><div class="albig">KATRINA &rarr; RITA</div><div class="alsub">2005</div></div>
+    <div class="albox" id="ge-al2"><div class="albig">MOORE &rarr; EL RENO</div><div class="alsub">11 DAYS</div></div>
+  </div>
+
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#ge-eyebrow","#ge-sub","#ge-al1","#ge-al2"], {autoAlpha:0}, 0);
+  tl.set(["#ge-w1","#ge-w2","#ge-w3","#ge-w4","#ge-w5","#ge-w6","#ge-w7","#ge-w8","#ge-w9","#ge-w10"], {autoAlpha:0}, 0);
+  tl.set(["#ge-ring1","#ge-ring2","#ge-ring3"], {autoAlpha:0, scale:1}, 0);
+
+  /* CONTINUOUS: three rings expand/fade from the city dot on a stagger, whole graphic */
+  function pulse(id, delay) {
+    tl.set(id, {scale:1, autoAlpha:0.8}, delay);
+    tl.to(id, {scale:60, autoAlpha:0, duration:3.2, ease:"none", repeat:9, repeatDelay:0.2}, delay);
+  }
+  pulse("#ge-ring1", 0.2);
+  pulse("#ge-ring2", 1.4);
+  pulse("#ge-ring3", 2.6);
+
+  /* eyebrow settles under "researchers studied vehicle movement across six American metro areas" @0-4.86 */
+  tl.fromTo("#ge-eyebrow", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.5}, 0.3);
+
+  /* stat headline builds word-by-word on "the largest tornado evacuation ever measured in an American city" @10.74-16.1 */
+  const words = [["#ge-w1",10.74],["#ge-w2",11.9],["#ge-w3",12.32],["#ge-w4",12.84],["#ge-w5",13.62],["#ge-w6",14.46],["#ge-w7",15.12],["#ge-w8",15.24],["#ge-w9",15.36],["#ge-w10",15.64]];
+  words.forEach(([sel,at]) => { tl.fromTo(sel, {autoAlpha:0, y:10}, {autoAlpha:1, y:0, duration:0.3}, at); });
+
+  /* sub lands right after "city." settles, before "Their conclusion" @16.78 */
+  tl.fromTo("#ge-sub", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 16.3);
+
+  /* analogy 1 "echoes an older disaster" @17.54-19.5 */
+  tl.fromTo("#ge-al1", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5}, 17.54);
+
+  /* analogy 2 "Moore was eleven days old" @32.64-34.36 */
+  tl.fromTo("#ge-al2", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5}, 32.64);
+
+  /* clean end ahead of "Oklahoma City ran." landing the cut, host window is 36.8s */
+  tl.to(["#ge-stat","#ge-sub","#ge-eyebrow"], {autoAlpha:0, duration:0.5}, 34.6);
+  tl.to(["#ge-al1","#ge-al2"], {autoAlpha:0, y:-20, duration:0.5}, 35.0);
+
+  window.__timelines["g-evac"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
