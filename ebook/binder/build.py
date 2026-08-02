@@ -753,11 +753,11 @@ def build_form39_pages(form):
     main_fields = units_of_type(form["units"], "fields")[0]["fields"]
     log_pages = []
     for _ in range(5):
-        log_pages.append(render_table(main_fields, 8, tight=True))
+        log_pages.append(render_table(main_fields, 11, tight=True))
     hv_fields = units_of_type(form["units"], "fields")[1]["fields"]
     hv_fields = [hv_fields[0].split(":")[-1].strip()] + hv_fields[1:]
     log_pages.append('<p class="form-sub">The high-value schedule.</p>' +
-                     render_table(hv_fields, 12, tight=True))
+                     render_table(hv_fields, 16, tight=True))
     return log_pages
 
 
