@@ -210,6 +210,117 @@ is during the rebuild rather than after the third flood.
 
 ---
 
+## Rip currents, on the same coastline
+
+This book ranks its playbooks by direct deaths in the NCEI Storm Events record, 2010 through 2025,
+and by that count rip currents do not appear anywhere in it. The reason is not the numbers. It is
+the address: this is a directory for the household, and a rip current kills someone in the water,
+not someone in a house. That distinction is real and the book holds it. But over the same
+fifteen-year window, the same federal database that ranked every other playbook in this section
+records **911 direct deaths from rip currents against 430 from wildfire** — a hazard that does get
+a full playbook here. A household that has just read how to elevate its furnace or clear its safe
+room is owed the fact that the water in front of a coastal or riverside property is not covered
+anywhere else in this book.
+«SRC: NOAA National Centers for Environmental Information, Storm Events Database, details files
+2010-2025 (author's tabulation across all states and territories, direct deaths by event type) —
+Rip Current recorded 911 direct deaths and Wildfire recorded 430 direct deaths over the same
+window, the same source and method this book uses to rank every state's top hazards. |
+https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/ | retrieved 2026-08-02»
+
+This is the one hazard in these pages that mostly kills people who are not at home. It belongs here
+anyway, because a coastal household — or any household on holiday at one — meets this water on an
+ordinary swim, not during an evacuation.
+
+**What a rip current actually is, and the one thing it is not.** It is a strong, narrow current of
+water running from close to the shoreline out past the line of breaking waves — scientists call it
+"a river of the sea," a literal description of what it does to sand, seaweed and swimmers. It forms
+on almost any beach with breaking waves, channelized ones can sit in the same spot for weeks, and
+the strongest can outrun an Olympic swimmer, reaching speeds of up to eight feet per second. What it
+is not is a whirlpool, and it does not pull anyone under. That belief is a mix-up with undertow, a
+separate and far weaker return flow near the sea bed; a person caught in a rip current stays on the
+surface the whole time, and the sensation of being dragged down is drowning panic and wave impact,
+not the current itself.
+«SRC: NOAA National Weather Service, "Rip Current Science" — a rip current is a strong, narrow,
+seaward flow of water that extends from close to the shoreline to outside of the surf zone,
+described as acting like "rivers of the sea"; channelized rip currents can persist in the same
+location for days, weeks or months; rip currents typically flow 1 to 2 feet per second and can
+reach speeds of up to 8 feet per second, on par with the fastest Olympic swimmers; undertow and rip
+currents are separate phenomena and neither pulls a person underwater, and the sensation of being
+pulled under is a combination of panic, exhaustion and being hit by breaking waves. |
+https://www.weather.gov/safety/ripcurrent-science | retrieved 2026-08-02»
+
+**The escape works only if you stop fighting it.** Relax first — the water will not take you under.
+Do not swim straight back against the flow; that is the fight a rip current always wins, even
+against a strong swimmer, because it runs faster than almost anyone can sustain. Swim across it
+instead, parallel to the shoreline or along the line of breaking waves, until the pull eases, then
+angle back toward the beach. If you cannot get out of it, stop swimming and float or tread water
+rather than exhaust yourself against it, and if you need help, wave and call out rather than spend
+the last of your strength trying to solve it alone.
+«SRC: NOAA National Weather Service, Weather-Ready Nation, "Social Media: Rip Currents (Summer)" —
+"Rip Currents: Know Your Options. If caught in a rip current: 1) Relax, rip currents don't pull you
+under. 2) Don't swim against the current. 3) Swim out of the current, then to shore. 4) If you
+can't escape, float or tread water. 5) If you need help, yell or wave for assistance." |
+https://www.weather.gov/wrn/summer-rip-currents-sm | retrieved 2026-08-02»
+
+**The trap inside the trap is trying to save somebody else.** The Weather Service's own warning for
+bystanders is blunter than the one for swimmers: many people have died trying to rescue someone
+caught in a rip current, not trying to save themselves. Its guidance is to assess the situation for
+ten seconds, get a lifeguard or call 911, throw a flotation device if one is available, and never go
+into the water without one. A shouted instruction to swim parallel to shore, from dry land, helps
+the swimmer. A second body in the water usually does not.
+«SRC: NOAA National Weather Service, Weather-Ready Nation, "Social Media: Rip Currents (Summer),"
+"Don't Put Yourself at Risk" — guidance for a bystander: carefully assess the situation, get help
+from a lifeguard or call 911, advise the person to swim following the shoreline to escape the
+current, throw a flotation device if one is available, and never enter the water without one,
+because "many people have died trying to rescue someone caught in a rip current." |
+https://www.weather.gov/wrn/summer-rip-currents-sm | retrieved 2026-08-02»
+
+**The forecast exists, and almost nobody checks it before a beach day.** Coastal Weather Service
+offices issue a Surf Zone Forecast that carries a three-level Rip Current Outlook — Low, Moderate or
+High — for the specific beach, the specific day. High means life-threatening rip currents are likely
+in the surf zone that day. Low still means they can occur near jetties, groins, reefs and piers, so
+low is never zero. It takes under a minute to check before leaving for the beach, and it is the same
+category of free, pre-existing forecast this book keeps pointing to elsewhere: the number already
+exists, and reading it before anyone goes in is the whole difference.
+«SRC: NOAA National Weather Service, "NWS Offices Issuing Surf Zone Forecasts" — Surf Zone Forecasts
+carry a three-level Rip Current Outlook: Low Risk ("life threatening rip currents often occur in the
+vicinity of groins, jetties, reefs, and piers"), Moderate Risk ("life threatening rip currents are
+possible in the surf zone"), and High Risk ("life threatening rip currents are likely in the surf
+zone"). | https://www.weather.gov/safety/ripcurrent-forecasts | retrieved 2026-08-02»
+
+**Beach flags help, and they have real limits.** Florida's beach warning flag program, one of the
+most established in the country, runs yellow (rip current activity expected — go in cautiously,
+don't swim alone), red (dangerous rip current activity expected — stay out of the water), and
+double red (water closed; entering it can mean arrest or a fine). The limit is that this is a state
+and local program, not a nationwide standard — colors and enforcement vary by beach, and some
+beaches fly nothing at all — and a flag describes the day's general surf hazard, not the location of
+a specific current, which can sit right next to a flag reading green.
+«SRC: NWS Tallahassee, "Be Aware Of... Florida's Beach Warning Flag Program" — Florida enacted a
+beach flag warning system in 2005 to provide daily information about rip currents at public
+beaches: yellow flags mean rip current activity is expected and swimmers should be cautious and not
+swim alone; red flags mean dangerous rip current activity is expected and it is recommended to stay
+out of the water; double red flags mean the water is closed and a swimmer could be arrested or fined
+for entering it. | https://www.weather.gov/media/tae/RipCurrentFlags.pdf | retrieved 2026-08-02»
+
+**The single action with the best evidence behind it costs nothing and changes where you put your
+towel.** Swim in sight of a lifeguard if at all possible: the chance of drowning at a beach with one
+on duty is estimated at one in eighteen million. The U.S. Lifesaving Association separately
+estimates that rip currents lead to tens of thousands of lifeguard rescues and over 100 drowning
+deaths in the United States every year. Check the surf zone forecast and the flag before anyone goes
+past the shore break, agree the escape technique out loud with anyone in the water who has not
+practiced it, and if someone is in trouble, get help and throw something that floats before
+considering going in yourself. That is a shorter set of actions than a playbook, because this is not
+one — but the actions are real, and the number that justified writing them down here is real too.
+«SRC: NOAA National Weather Service, "How to Avoid Getting Caught in a Rip Current" — the chance of
+drowning at a beach with an on-duty lifeguard is 1 in 18 million, per the U.S. Lifesaving
+Association. | https://www.weather.gov/safety/ripcurrent | retrieved 2026-08-02»
+«SRC: NOAA National Weather Service and U.S. Lifesaving Association, "NOAA and USLA Rip Current
+Safety Toolkit" — rip currents are the number-one hazard at a surf beach, leading to tens of
+thousands of lifeguard rescues and over 100 drowning fatalities every year in the United States. |
+https://www.weather.gov/safety/ripcurrent-toolkit | retrieved 2026-08-02»
+
+---
+
 ## The one-page version
 
 | | |
