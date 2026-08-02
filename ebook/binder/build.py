@@ -428,6 +428,35 @@ def build_table_per_form(form, rows):
     return lede + render_table(u["fields"], rows)
 
 
+def build_form1(form):
+    """Household roster. "One page, one row per person" names a table explicitly —
+    rendering it as one set of vertical fields (the generic fallback) would only hold
+    one person and leave most of the page blank. Eight rows covers most households
+    with room to spare; no fixed household size is given anywhere in the binder."""
+    return render_table(all_fields(form), 8)
+
+
+def build_form22(form):
+    """Fridge and freezer log. A log is inherently repeated entries (temperature
+    checked more than once during an outage), so it's a table, not one-time fields."""
+    return render_table(all_fields(form), 6)
+
+
+def build_form28(form):
+    """Alarm inventory. A household has several smoke/CO alarms — "inventory" is
+    plural by nature — so each alarm is a table row rather than one shared set of
+    fields for all of them."""
+    return render_table(all_fields(form), 8)
+
+
+def build_form37(form):
+    """Mitigation credits. "Each qualifying upgrade" names a per-upgrade row; the
+    carrier's own credit-table request date happens once, so it stands above the
+    table rather than being folded into a column."""
+    fields = all_fields(form)
+    return render_field(fields[0]) + render_table(fields[1:], 6)
+
+
 def build_form3(fields):
     """Animals (no pet count given in the spec). Two side-by-side blocks fit one page
     at book.css's field sizing; a household with more pets reuses a second blank copy
