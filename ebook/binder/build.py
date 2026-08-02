@@ -618,13 +618,18 @@ def build_form9(form):
 
 
 def build_form11_pages(form):
-    """Shut-offs. Five groups as one page overflowed by ~140px (fitcheck), so it
-    splits at a group boundary — the three "find it under pressure" shut-offs (water
-    main, gas, breaker) on page 1, the two slower ones (water heater, sprinklers/pool/
-    well/septic) on page 2."""
+    """Shut-offs. Five groups as one page overflowed by ~140px (fitcheck), so it needs
+    two pages -- but a fixed "first 3, then the rest" split put Water main + Gas meter +
+    Breaker panel (11 fields between them) on page 1 and Water heater + Sprinklers/pool/
+    well/septic (2 fields) on page 2, three-quarters empty (roomcheck, owner 2026-08-03).
+    balanced_split() weighs each group by its own field count instead, so the split point
+    follows the content rather than a fixed count."""
     groups = units_of_type(form["units"], "group")
-    page1 = render_groups(groups[:3])
-    page2 = render_groups(groups[3:])
+    weights = [0.35 + (render_group_desc(g["desc"]).count('<div class="field">') or 1)
+               for g in groups]
+    (a0, a1), (b0, b1) = balanced_split(weights, 2)
+    page1 = render_groups(groups[a0:a1])
+    page2 = render_groups(groups[b0:b1])
     return [page1, page2]
 
 
