@@ -730,12 +730,18 @@ def build_form20(form):
 def build_form23(form):
     """Go-bag contents, per person. The spec names "Standard contents checklist" but
     does not itemise it here — the itemised list lives under Protection 107 in Part
-    Five (see standard_gobag_items()), parsed from there rather than left blank."""
+    Five (see standard_gobag_items()), parsed from there rather than left blank.
+
+    "One page per person" gives no number of its own, so its repeat count (see
+    FORM_REPEAT) borrows Form 2's -- the reader is told that explicitly here rather
+    than the borrowed count silently standing in as if it were sourced for this form."""
     items = standard_gobag_items()
     return (render_checklist(items) +
             '<p class="b-cont">Person-specific additions</p>' +
             render_table(["Item"], 5, numbered=False) +
-            render_field("Size and season check date", cls_hint="short"))
+            render_field("Size and season check date", cls_hint="short") +
+            '<p class="b-note">One page per person — photocopy as needed for a larger '
+            'household.</p>')
 
 
 def build_form25(form):
