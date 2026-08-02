@@ -93,12 +93,98 @@
   <!-- ======== INSERT AUDIO — NONE IN THIS DRAFT (owner gate pending; see research/insert_gate_packet.md) ======== -->
 
   <!-- ======== VIDEO TRACK 1 — picture track (hand-authored per cut) ======== -->
-  <!-- A0 hook 0–19.0 · void 19.0–21.6 · a0-s2 21.6 · a0-s3 52.4 · dip 86.4–88.9 -->
-  <!-- [PICTURE TRACK AUTHORED IN NEXT PASS — awaiting eyeball ledgers] -->
 
-  <!-- ======== TRACK 2 — sub-composition graphics (added as authored) ======== -->
+  <!-- A0 HOOK 0–19.0: radar bloom → the real tornado (Snyder PD) → the wall. Anchor-voice
+       insert slot reserved 2.5–6.5 (owner gate pending, research/insert_gate_packet.md). -->
+  <section class="clip blackout" id="bo-hookopen" data-start="0" data-duration="2.4" data-track-index="1"></section>
+  <video id="vx-hookradar" src="media/nwsnorman/nwsnorman-elreno-radar-loop-a.mp4" data-start="2.4" data-duration="5.6" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-hooksnyder1" data-start="8.0" data-duration="3.5" data-track-index="1"><img id="kb-hooksnyder1" src="media/weathergov/wxgov-storm-photo-elreno-1.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-hooksnyder4" data-start="11.5" data-duration="3.5" data-track-index="1"><img id="kb-hooksnyder4" src="media/weathergov/wxgov-storm-photo-elreno-4.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-hookwall" data-start="15.0" data-duration="4.0" data-track-index="1"><img id="kb-hookwall" src="media/ai/ai-rain-wrapped-tornado-v1.png" alt=""></section>
+  <section class="clip blackout" id="bo-hookvoid" data-start="19.0" data-duration="2.6" data-track-index="1"></section>
 
-  <!-- ======== TRACK 3/4 — lower-thirds, popups, source chips (added with picture pass) ======== -->
+  <!-- A0-S2 21.6–51.48: the invisible wall -->
+  <section class="clip still-wrap" id="c-mvort1" data-start="21.6" data-duration="7.0" data-track-index="1"><img id="kb-mvort1" src="media/ai/ai-multi-vortex-tornado-v1.png" alt=""></section>
+  <video id="vx-dashfog" src="media/stock/dashboard-pov-rain-04.mp4" style="filter: brightness(0.8) saturate(0.6)" data-start="28.6" data-duration="5.9" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-shelfwall" data-start="34.5" data-duration="6.1" data-track-index="1"><img id="kb-shelfwall" src="media/ai/ai-rural-section-road-v2.png" alt=""></section>
+  <section class="clip still-wrap contain-wrap" id="c-vel2319" data-start="40.6" data-duration="6.4" data-track-index="1"><img id="kb-vel2319" src="media/radar/ktlx-vel-2319utc-1819cdt.png" alt=""></section>
+  <section class="clip still-wrap" id="c-super2" data-start="47.0" data-duration="5.4" data-track-index="1"><img id="kb-super2" src="media/ai/ai-supercell-structure-v2.png" alt=""></section>
+
+  <!-- A0-S3 52.4–86.4: thesis + title (g-title on track 2); dip runs to 88.9 -->
+  <section class="clip still-wrap contain-wrap" id="c-pnspath" data-start="52.4" data-duration="4.7" data-track-index="1"><img id="kb-pnspath" src="media/weathergov/wxgov-map-pns-damage-path.png" alt=""></section>
+  <section class="clip blackout" id="bo-title" data-start="57.1" data-duration="31.8" data-track-index="1"></section>
+
+  <!-- A1-S1 88.9–143.5: Moore, labeled on-screen -->
+  <video id="vx-moorebrief" src="media/nwsnorman/nwsnorman-moore-may20-briefing-a.mp4" data-start="88.9" data-duration="7.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-moore56" data-start="95.9" data-duration="7.5" data-track-index="1"><img id="kb-moore56" src="media/dvids/dvids-moore-137th-arw-938056.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-moore60" data-start="103.4" data-duration="7.0" data-track-index="1"><img id="kb-moore60" src="media/dvids/dvids-moore-137th-arw-938060.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-guard41" data-start="110.4" data-duration="7.0" data-track-index="1"><img id="kb-guard41" src="media/dvids/dvids-oknatlguard-response-940441.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-moore52" data-start="117.4" data-duration="7.0" data-track-index="1"><img id="kb-moore52" src="media/dvids/dvids-moore-137th-arw-938052.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-nightsearch" data-start="124.4" data-duration="7.0" data-track-index="1"><img id="kb-nightsearch" src="media/dvids/dvids-guardsman-firefighter-rubble-search-9148500.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-notheart" data-start="131.4" data-duration="7.0" data-track-index="1"><img id="kb-notheart" src="media/dvids/dvids-oknatlguard-response-940448.jpg" alt=""></section>
+  <video id="vx-officebroll" src="media/nwsnorman/nwsnorman-moore-may20-office-broll.mp4" data-start="138.4" data-duration="6.0" data-track-index="1" muted></video>
+
+  <!-- A1-S1b 144.4–204.88: eleven days of dread -->
+  <video id="vx-briefb" src="media/nwsnorman/nwsnorman-briefing-may17-18-b.mp4" data-start="144.4" data-duration="7.5" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-eoc" data-start="151.9" data-duration="7.0" data-track-index="1"><img id="kb-eoc" src="media/dvids/dvids-oknatlguard-response-940434.jpg" alt=""></section>
+  <video id="vx-brief1820" src="media/nwsnorman/nwsnorman-briefing-may18-20-outlook.mp4" data-start="158.9" data-duration="7.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap contain-wrap" id="c-safety1" data-start="165.9" data-duration="7.0" data-track-index="1"><img id="kb-safety1" src="media/weathergov/wxgov-graphic-tornado-safety.png" alt=""></section>
+  <video id="vx-radiodial" src="media/stock/radio-closeup-04.mp4" style="filter: saturate(0.75) brightness(0.9)" data-start="172.9" data-duration="6.5" data-track-index="1" muted></video>
+  <video id="vx-receiving" src="media/nwsnorman/nwsnorman-receiving-the-warning.mp4" data-start="179.4" data-duration="7.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-super1" data-start="186.4" data-duration="7.0" data-track-index="1"><img id="kb-super1" src="media/ai/ai-supercell-structure-v1.png" alt=""></section>
+  <video id="vx-dusk1" src="media/stock/dawn-dusk-sky-01.mp4" style="filter: brightness(0.85) saturate(0.75)" data-start="193.4" data-duration="6.0" data-track-index="1" muted></video>
+  <video id="vx-pasteldusk" src="media/stock/stormsky-timelapse-04.mp4" style="filter: brightness(0.8) saturate(0.7)" data-start="199.4" data-duration="6.4" data-track-index="1" muted></video>
+
+  <!-- A1-S2 205.8–261.92: Friday morning, the loaded atmosphere -->
+  <video id="vx-745am" src="media/nwsnorman/nwsnorman-elreno-may31-745am-update.mp4" data-start="205.8" data-duration="7.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap contain-wrap" id="c-overview1" data-start="212.8" data-duration="7.5" data-track-index="1"><img id="kb-overview1" src="media/weathergov/wxgov-map-overview1.png" alt=""></section>
+  <section class="clip still-wrap contain-wrap" id="c-ingredients" data-start="220.3" data-duration="7.5" data-track-index="1"><img id="kb-ingredients" src="media/weathergov/wxgov-map-ingredients.png" alt=""></section>
+  <video id="vx-wheat5" src="media/stock/plains-wheat-05.mp4" data-start="227.8" data-duration="7.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap contain-wrap" id="c-overview2" data-start="234.8" data-duration="7.0" data-track-index="1"><img id="kb-overview2" src="media/weathergov/wxgov-map-overview2.png" alt=""></section>
+  <video id="vx-tower2" src="media/stock/supercell-timelapse-02.mp4" style="filter: brightness(0.9) saturate(0.85)" data-start="241.8" data-duration="7.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-brennan" data-start="248.8" data-duration="7.0" data-track-index="1"><img id="kb-brennan" src="media/weathergov/wxgov-storm-photo-brennan-jontz.jpg" alt=""></section>
+  <video id="vx-radarloopa2" src="media/nwsnorman/nwsnorman-elreno-radar-loop-a.mp4" data-start="255.8" data-duration="6.1" data-track-index="1" muted data-callback="the 5:51 PM circulation the chasers were parked under, narrated now"></video>
+
+  <!-- A1-S3 262.8–305.36: g-met (track 2); hold; dip -->
+  <section class="clip blackout" id="bo-met" data-start="262.8" data-duration="42.6" data-track-index="1"></section>
+  <video id="vx-darksky" src="media/stock/stormsky-timelapse-01.mp4" style="filter: brightness(0.75)" data-start="305.4" data-duration="3.6" data-track-index="1" muted></video>
+  <section class="clip blackout" id="bo-a1end" data-start="309.0" data-duration="2.0" data-track-index="1"></section>
+
+  <!-- ======== TRACK 2 — sub-composition graphics ======== -->
+  <div id="host-title" data-composition-id="g-title" data-composition-src="compositions/g-title.html" data-start="52.4" data-duration="34.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-met" data-composition-id="g-met" data-composition-src="compositions/g-met.html" data-start="262.8" data-duration="42.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- ======== TRACK 3/4 — lower-thirds, popups, source chips ======== -->
+  <section class="clip" id="p-hookdate" data-start="0.35" data-duration="2.0" data-track-index="3">
+    <div class="lt" style="left:0; right:0; bottom:auto; top:480px; text-align:center;"><div class="lt-loc" style="margin:0 auto; font-size:58px;">EL RENO, OKLAHOMA — MAY 31, 2013</div></div>
+  </section>
+  <section class="clip" id="p-src-hookradar" data-start="2.5" data-duration="5.4" data-track-index="4">
+    <div class="srclab">NWS Norman radar · May 31, 2013 · times CDT</div>
+  </section>
+  <section class="clip" id="p-src-snyder1" data-start="8.1" data-duration="6.8" data-track-index="4">
+    <div class="srclab">Photo: J. Snyder · via NWS Norman event archive</div>
+  </section>
+  <section class="clip" id="p-lt-open" data-start="23.0" data-duration="9.0" data-track-index="3">
+    <div class="lt"><div class="lt-loc">EL RENO, OKLAHOMA</div><div class="lt-time">MAY 31, 2013 · EARLY EVENING</div></div>
+  </section>
+  <section class="clip" id="p-src-vel2319" data-start="40.7" data-duration="6.2" data-track-index="4">
+    <div class="srclab">NEXRAD KTLX archive · replotted · times UTC</div>
+  </section>
+  <section class="clip" id="p-lt-moore" data-start="90.0" data-duration="9.0" data-track-index="3">
+    <div class="lt"><div class="lt-loc">MOORE, OKLAHOMA</div><div class="lt-time">MAY 20, 2013 · ELEVEN DAYS EARLIER</div></div>
+  </section>
+  <section class="clip" id="p-src-dvids" data-start="96.0" data-duration="6.0" data-track-index="4">
+    <div class="srclab">Photos: Oklahoma National Guard · DVIDS · public domain</div>
+  </section>
+  <section class="clip" id="p-pop-moore" data-start="107.0" data-duration="8.0" data-track-index="3">
+    <div class="popup" style="left:140px; top:130px;">24 DEAD · EF5<span class="fine">Moore, Oklahoma — May 20, 2013 · seven children at Plaza Towers Elementary</span></div>
+  </section>
+  <section class="clip" id="p-src-spc" data-start="213.0" data-duration="7.2" data-track-index="4">
+    <div class="srclab">NWS Norman event archive · public domain</div>
+  </section>
+  <section class="clip" id="p-src-radarloopa2" data-start="255.9" data-duration="6.0" data-track-index="4">
+    <div class="srclab">NWS Norman radar · 5:51 PM CDT · circulation circled</div>
+  </section>
 
   <!-- film layer (untimed, last) -->
   <div id="grade"></div>
