@@ -352,6 +352,33 @@ def render_signature(count=1):
         for _ in range(count))
 
 
+def balanced_split(weights, k):
+    """Split a sequence of per-item weights into k contiguous, ordered parts (item order
+    never changes -- only where the page break falls), choosing whichever split minimizes
+    the heaviest part. Splitting a multi-page form at a fixed item-count boundary (e.g.
+    "first 3 groups, then the rest") assumes every item costs the same page space, which
+    groups/trades plainly don't (Form 11's "Gas meter" group is three fields and an aside;
+    its "Water heater" group is one line) -- that produced page 17: two fields on a page,
+    three-quarters empty, while page 16 was packed (owner 2026-08-03). n and k are always
+    small here (a handful of groups/trades, 2-3 pages), so brute-forcing every split-point
+    combination is simplest and exact -- no need for a smarter algorithm at this size.
+    Returns a list of k (start, end) index pairs into the original sequence."""
+    n = len(weights)
+    prefix = [0]
+    for w in weights:
+        prefix.append(prefix[-1] + w)
+    best_cuts, best_max = None, None
+    for cuts in combinations(range(1, n), k - 1):
+        bounds = (0,) + cuts + (n,)
+        sums = [prefix[bounds[i + 1]] - prefix[bounds[i]] for i in range(k)]
+        if any(s <= 0 for s in sums):
+            continue  # every page must carry at least one item
+        worst = max(sums)
+        if best_max is None or worst < best_max:
+            best_max, best_cuts = worst, bounds
+    return [(best_cuts[i], best_cuts[i + 1]) for i in range(k)]
+
+
 def units_of_type(units, *types):
     return [u for u in units if u["type"] in types]
 
