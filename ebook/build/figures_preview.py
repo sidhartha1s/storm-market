@@ -46,12 +46,22 @@ def build():
             number=entry["number"],
         ))
 
+    # Inlined, not linked — the exact pattern appendix/build.py's document() uses, and for
+    # the same reason: a relative <link> is one directory move away from silently rendering
+    # unstyled, and an unstyled preview is not a QC surface, it's a false pass. Fail loud
+    # rather than emit a page that quietly renders without book.css.
+    if not BOOK_CSS.exists():
+        sys.exit(f"FAIL: stylesheet {BOOK_CSS} is missing.")
+    css = BOOK_CSS.read_text(encoding="utf-8")
+
     doc = f'''<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <title>Figure set preview — The Storm-Ready Home</title>
-<link rel="stylesheet" href="../book.css">
+<style>
+{css}
+</style>
 </head>
 <body>
 {"".join(pages)}
