@@ -808,3 +808,90 @@ def render_front_sheet(rows, final_quote):
             f'<p class="bfs-final">{render_inline(final_quote)}</p>')
     return (f'<section class="page">\n<p class="runhead"><span>The Binder</span>'
             f'<span>The front sheet</span></p>\n{body}\n<p class="folio">1</p>\n</section>')
+
+
+# ---------------------------------------------------------------- 8. document assembly
+
+def document(body):
+    """Self-contained: book.css + binder.css inlined, so out/binder.html can be opened
+    or fitchecked on its own, the same way appendix/build.py's document() works."""
+    css = []
+    for path in (BOOK_CSS, BINDER_CSS):
+        if not path.exists():
+            sys.exit(f"FAIL: stylesheet {path} is missing.")
+        css.append(f"/* {path.name} */\n{path.read_text(encoding='utf-8')}")
+    return ("<!doctype html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n"
+            "<title>The Storm-Ready Home — The Binder</title>\n<style>\n" + "\n".join(css) +
+            f"\n</style>\n</head>\n<body>\n{body}\n</body>\n</html>\n")
+
+
+def main():
+    global PARSED_SECTIONS
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--check", action="store_true", help="parse and report, no HTML written")
+    parser.add_argument("--build", action="store_true", help="write out/binder.html")
+    args = parser.parse_args()
+    if not (args.check or args.build):
+        parser.error("nothing to do -- pass --check or --build")
+
+    sections, front_sheet_lines = parse_manuscript()
+    PARSED_SECTIONS = sections
+    for s in sections:
+        for f in s["forms"]:
+            classify_form(f)
+
+    total_forms = sum(len(s["forms"]) for s in sections)
+    if len(sections) != 7:
+        sys.exit(f"FAIL: found {len(sections)} sections, expected 7.")
+    if total_forms != 41:
+        sys.exit(f"FAIL: found {total_forms} forms, expected 41.")
+
+    fs_rows, fs_quote = parse_front_sheet(front_sheet_lines)
+    if not fs_rows or not fs_quote:
+        sys.exit("FAIL: the one-page front sheet did not parse "
+                 f"(rows={len(fs_rows)}, quote={'yes' if fs_quote else 'no'}).")
+
+    pages = [render_front_sheet(fs_rows, fs_quote)]
+    total_budget = sum(s["budget"] for s in sections)
+    report_lines = [f"1 front sheet page (not counted against the 80-page section budget)"]
+
+    for s in sections:
+        section_pages = 0
+        for f in s["forms"]:
+            bodies = build_form(f)
+            n_pages = len(bodies)
+            for i, body in enumerate(bodies):
+                cont = None
+                if n_pages > 1:
+                    cont = "continued" if i > 0 else None
+                head = form_head(f["title"], f["serves_raw"], cont_label=cont)
+                folio = len(pages) + 1  # 1-based, own-page numbering (paginate.mjs
+                                        # replaces this with the book sequence, exactly
+                                        # like the Appendix B splice)
+                pages.append(page_shell(s["letter"], s["title"],
+                                        f"Form {f['number']}", head, body, folio))
+                section_pages += 1
+        gap = section_pages - s["budget"]
+        report_lines.append(
+            f"Section {s['letter']} — {s['title']}: {section_pages} pages "
+            f"(budget {s['budget']}, {'+' if gap >= 0 else ''}{gap})")
+        total_budget -= 0  # (kept for clarity: budget already summed above)
+
+    total_pages = len(pages) - 1  # exclude the front sheet from the 80-page comparison
+    print(f"{len(sections)} sections, {total_forms} forms")
+    for line in report_lines:
+        print(f"  {line}")
+    print(f"\n{len(pages)} binder pages total ({total_pages} forms pages + 1 front sheet), "
+          f"vs. the stated 80-page target ({total_pages - 80:+d})")
+
+    if args.check:
+        return
+
+    OUT.mkdir(parents=True, exist_ok=True)
+    target = OUT / "binder.html"
+    target.write_text(document("\n".join(pages)), encoding="utf-8")
+    print(f"\nwrote {target}")
+
+
+if __name__ == "__main__":
+    main()
