@@ -162,23 +162,63 @@ Chrome `--print-to-pdf` with an **absolute** output path.
 
 ## Blockers
 
-1. **Six column groups collected, six to go.** Filled for all 51 rows: hazards, seasons, regions,
-   `doi_phone`, `well_test_contact`; and near-complete `em_url`, `doi_url`, `doi_agency`, `well_test_url`,
-   `energy_assist_url`. **Still empty, with no working national source found yet:**
+1. **Twelve of the fourteen sourced column groups collected, two genuinely incomplete by design.**
+   Filled for all 51 rows: hazards, seasons, regions, `doi_phone`, `well_test_contact`, `em_phone`,
+   `wind_deductible_note`; and near-complete `em_url`, `doi_url`, `doi_agency`, `well_test_url`,
+   `energy_assist_url`. Correctly *partial* (a citable source exists for only some states, and the
+   rest were searched, not skipped): `mitigation_program`/`mitigation_url` (7/51),
+   `pharmacy_refill_law` (15/51), `winter_disconnect` (12/51), `summer_disconnect` (3/51). **Still
+   fully empty, with no working source found:**
 
    | Column | Status of the hunt |
    |---|---|
-   | `em_phone` | usa.gov's directory carries no phone. Scraping a number off each agency page is exactly the "inferred phone" the hard rule bans, so this needs a published list. |
    | `alerts_note`, `alerts_url` | County-level, so no national list exists. Best route: link discovery over the 51 agency pages already cached, publishing only a link whose own text names alerts. |
-   | `mitigation_program`, `mitigation_url` | Blank for most states by design — only a handful run one. FL, CA and AL are already written up in Part Five from their own programme pages. |
-   | `wind_deductible_note`, `roof_acv_note` | Regulatory facts, per state. NAIC publishes reports but no machine-readable table. |
-   | `pharmacy_refill_law` | NCSL holds the table; **ncsl.org sits behind a Cloudflare bot check** that headless Chrome does not clear. |
-   | `winter_disconnect`, `summer_disconnect` | The LIHEAP Clearinghouse held exactly this table; **`liheapch.acf.gov` and `liheapch.acf.hhs.gov` both time out entirely** — that site appears to be gone rather than blocked. Needs a replacement. |
+   | `roof_acv_note` | No national or per-state source ever resolved to a *citable regulatory fact*. NAIC's own Hurricane Deductibles page (used for `wind_deductible_note`) covers named-storm deductibles, not roof ACV schedules, and has no equivalent page for this. A law firm's 50-state "matching regulations" chart (mwl-law.com) fetches as an unreadable compressed PDF. Cosmetic-damage-exclusion endorsement lists (ISO forms HO 06 43/44) turned up only through secondary aggregator blog posts with no primary regulatory filing behind the "which states approved this form" claim — not solid enough to cite in an emergency directory. Left empty rather than publish a plausible-sounding but unverified state list. |
 
    Dead ends already tried, so nobody repeats them: `content.naic.org` through the indexing tool returns 3.5 KB
    of site chrome (fetch it raw instead — 154 KB, with the per-state data), `ready.gov` and `fema.gov` state
    lists 403, the `iii.org` deductible article 404s, `nclc.org` shutoff protections 404s, `neada.org` state
-   offices 404s.
+   offices 404s, `liheapch.acf.gov`/`liheapch.acf.hhs.gov` time out entirely, `ncsl.org` sits behind a
+   Cloudflare bot check headless Chrome does not clear, and the NGA's utility-affordability memo and its
+   linked PDF describe only an aggregate count of states with a COVID-era moratorium, never which states or
+   what the rule is.
+
+   What broke those columns open instead, and what it cost:
+
+   - **`em_phone`** — usa.gov's directory carries no phone, and scraping one off each of 51 agency
+     sites is exactly the "inferred phone" the hard rule bans. EMAC (the Emergency Management
+     Assistance Compact, administered under NEMA) publishes one phone per state for its own
+     mutual-aid use, which is why it stays accurate: a wrong number there breaks EMAC's real
+     deployments, not just this book. `derive_em_phone.py`, 51/51.
+   - **`wind_deductible_note`** — NAIC's Hurricane Deductibles topic page states outright which 19
+     states plus DC have a named-storm deductible "as of June 2025." `derive_deductibles.py`
+     parses that sentence directly rather than hardcoding the list, so a re-run catches NAIC
+     updating it. 51/51 (a sourced note either way, not just for the 20 that are listed).
+   - **`mitigation_program`** — no national table exists; each of FL, CA, AL (already in Part
+     Five), LA, OK, SC and KY was confirmed against the programme's own government page.
+     Mississippi's "Strengthen Mississippi Homes" program was found and then dropped: its funding
+     was suspended by the legislature in a 2025 special session, and neither URL a search turns up
+     for it currently resolves (one is a live "Page not found" wrapper, the other 404s) — a
+     programme that cannot be pointed at a live official page isn't citable yet. Georgia's and
+     Mississippi's own FORTIFIED insurance-premium discounts run through state-created residual
+     insurers (GUA, MWUA), which is a rate discount, not a grant/credit *programme* — left out
+     rather than stretched to fit. `derive_mitigation.py`, 7/51.
+   - **`pharmacy_refill_law`** — NCSL's table is unreachable (see dead ends above). Healthcare
+     Ready's 2022 multi-state review was used only as a map of where to look, not as the citation:
+     it groups states into buckets without a citable statute for most of them. Every row in
+     `derive_pharmacy.py` traces to the state's own statute, admin rule, or (LA, GA) the licensing
+     board's own published guidance. One specific trap worth flagging: a search repeatedly
+     surfaced "Tennessee, TCA § 58-2-101, 20-day supply for displaced residents" as Tennessee's
+     provision — that section is the Emergency Management Act's *definitions* clause and says
+     nothing about pharmacy refills. Left blank rather than publish a citation that doesn't hold
+     up on inspection. 15/51.
+   - **`winter_disconnect`/`summer_disconnect`** — same shape as pharmacy: no working national
+     table, so each row in `derive_disconnect.py` is sourced to the state utility commission's own
+     page or rule (Minnesota, Kansas, New York, Massachusetts, Connecticut, Illinois, Michigan,
+     Ohio, Pennsylvania, Wisconsin, Iowa, Idaho for winter; Arizona, California, Texas for summer).
+     Most of these rules protect a narrower group than "everyone" — low income, a hardship
+     declaration, a kept payment plan — so the note says who is protected, not just the date
+     range. 12/51 and 3/51.
 
 2. **One schema gap to decide.** `energy.csv` carries a verified public-inquiry phone for 49 states and the
    schema has no column for it. `merge.py` reports the dropped column on every run rather than discarding it
