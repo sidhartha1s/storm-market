@@ -103,6 +103,31 @@ def explode_lists(block_list):
     return out
 
 
+def assign_groups(tags):
+    """Group index per block: every h3 opens a new group that also covers every block up
+    to (not including) the next h1/h2/h3. None outside any h3's span.
+
+    The brief calls out "the numbered-protection blocks" as atomic — never split across
+    pages — alongside tables and figures. In this manuscript that is exactly what an h3
+    marks: the 130 "### N · Name" protection entries in Part Two and Part Five, the 41
+    "### Form N" entries in the Binder, and the six "### phase" subheads in the timeline
+    chapter. All of them are a self-contained unit a reader looks up by number/name, so
+    the same atomicity is applied uniformly rather than pattern-matching the "### N ·"
+    numbering specifically. h1/h2 keep the narrower "heading not last on a page" check in
+    paginate.mjs instead of full-group atomicity — grouping a whole h2 section (which can
+    contain a 10-item list already taller than a page) would just recreate the oversized-
+    block problem explode_lists exists to solve."""
+    groups = [None] * len(tags)
+    gid = None
+    for i, tag in enumerate(tags):
+        if tag == "h3":
+            gid = i  # group id = the h3's own index; unique and stable
+        elif tag in ("h1", "h2"):
+            gid = None
+        groups[i] = gid
+    return groups
+
+
 def main():
     missing = [name for name in rp.ORDER if not (rp.MS / name).exists()]
     if missing:
