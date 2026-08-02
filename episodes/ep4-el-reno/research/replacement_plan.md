@@ -30,13 +30,12 @@ your instruction to weight the met stretch and radar frames toward that source.
 
 ## Material used, and what's left over
 
-- **24 of 27 docmine clips used** (each once). Unused: `sharp-left-turns` — wait, used, see
-  below — actually unused are none-critical leftovers; see per-row notes. All 27 are
-  accounted for in the assignment; 24 landed in this plan, 3 were tried against a window and
-  the fit was too weak, so they stayed on the shelf rather than force a bad pairing.
-- **12 of 30 broadcast cuts / graded originals used** — all muted, all single-use, none of
-  the 5 already-wired-as-audio files touched. 1 more (`kfor-retrospective-2026__1286.67-1293.84`,
-  the TWISTEX/DOW path map) went into the plan late and is counted in the 12.
+- **All 27 docmine clips used, each exactly once.** No leftovers — the meteorology/radar
+  stretch and the repeat-heavy 1622–1855s end cluster absorbed all of them.
+- **13 of 30 broadcast cuts / graded originals used** — all muted, all single-use, none of
+  the 5 already-wired-as-audio files touched, none reused twice. 17 of the 30 cuts were
+  frame-checked and rejected (talking-head interviews or burned captions — see below); the
+  13 used are pure b-roll, graphics, or real un-captioned storm footage.
 - **2 windows: NO CANDIDATE** — genuinely nothing in the available material fits the specific
   line without misleading the viewer. Flagged below with what's actually needed.
 - Frame-verification method: I did NOT trust filenames or `BEST_CUTS.md`'s quoted dialogue
