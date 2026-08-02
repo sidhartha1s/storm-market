@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; overflow:hidden; }
+  /* CONTINUOUS: rising water band, bottom of frame */
+  .waterband { position:absolute; left:0; right:0; bottom:0; height:1080px; transform-origin:bottom center; transform:scaleY(0);
+    background:linear-gradient(0deg, #0d2436ee 0%, #0d243688 60%, transparent 100%); z-index:0; }
+  .waterline { position:absolute; left:0; right:0; bottom:0; height:2px; background:#5a768f; box-shadow:0 0 10px #5a768f88; z-index:1; }
+
+  .compare { position:absolute; left:0; right:0; top:300px; z-index:2; }
+  .cwrap { position:absolute; text-align:center; }
+  #gf-c1 { left:180px; width:760px; }
+  #gf-c2 { left:1060px; width:640px; }
+  .cval { font-family:'Courier New',monospace; font-weight:700; color:#c0392b; }
+  #gf-v1 { font-size:170px; }
+  #gf-v2 { font-size:96px; color:#5a768f; }
+  .clab { font-size:26px; letter-spacing:6px; color:#c8d3e0; font-weight:700; margin-top:6px; }
+  .cscale { font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; margin-top:10px; }
+
+  .subline { position:absolute; left:0; right:0; top:640px; text-align:center; font-family:Georgia,serif; font-style:italic; font-size:29px; color:#d8a13a; z-index:2; }
+
+  .reveal { position:absolute; left:0; right:0; top:800px; text-align:center; z-index:2; }
+  .rlab { font-size:23px; letter-spacing:5px; color:#93a3b2; font-weight:700; }
+  .rval { font-family:'Arial Black',Arial,sans-serif; font-size:120px; color:#e74c3c; margin-top:10px; }
+</style>
+<div id="root" data-composition-id="g-flood" data-width="1920" data-height="1080">
+
+  <div class="waterband" id="gfl-water"></div>
+  <div class="waterline" id="gfl-waterline"></div>
+
+  <div class="compare" id="gf-compare">
+    <div class="cwrap" id="gf-c1">
+      <div class="cval" id="gf-v1">0</div>
+      <div class="clab">DROWNED</div>
+    </div>
+    <div class="cwrap" id="gf-c2">
+      <div class="cval" id="gf-v2">8</div>
+      <div class="clab">THE TORNADO</div>
+      <div class="cscale">FOR SCALE</div>
+    </div>
+  </div>
+
+  <div class="subline" id="gf-sub">THE DEADLIEST FLOOD IN OKLAHOMA CITY HISTORY</div>
+
+  <div class="reveal" id="gf-reveal">
+    <div class="rlab" id="gf-rlab">THE FULL NUMBER FOR THAT NIGHT</div>
+    <div class="rval" id="gf-rval">0</div>
+  </div>
+
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#gf-c1","#gf-c2","#gf-sub","#gf-reveal"], {autoAlpha:0}, 0);
+  tl.set("#gfl-water", {scaleY:0}, 0);
+
+  /* CONTINUOUS: the flood rises for the whole 47.4s window, never resets */
+  tl.to("#gfl-water", {scaleY:0.62, duration:47.0, ease:"none"}, 0.3);
+  tl.to("#gfl-waterline", {y:-670, duration:47.0, ease:"none"}, 0.3);
+
+  /* "13 people drowned that night" @0-2.24 — counter rolls fast then settles dramatically slow */
+  tl.fromTo("#gf-c1", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.3}, 0.0);
+  const d13 = {v:0};
+  tl.to(d13, {v:13, duration:1.9, ease:"power4.out", onUpdate:()=>{
+    const e=document.getElementById("gf-v1"); if(e) e.textContent = Math.round(d13.v);
+  }}, 0.0);
+
+  /* "8 . THE TORNADO" settles beside it for scale, already-fixed, no roll — the comparison lands right after 13 */
+  tl.fromTo("#gf-c2", {autoAlpha:0, x:20}, {autoAlpha:1, x:0, duration:0.5}, 2.4);
+
+  /* sub-line "remains the deadliest flood event in the city's history" @7.68-10.46 */
+  tl.fromTo("#gf-sub", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.5}, 7.68);
+
+  /* comparison exits ahead of the reveal, clearing the frame @36.0 ("A city that had just run...") */
+  tl.to("#gf-c1", {x:-100, autoAlpha:0, duration:0.6, ease:"power3.in"}, 36.0);
+  tl.to("#gf-c2", {x:100, autoAlpha:0, duration:0.6, ease:"power3.in"}, 36.0);
+  tl.to("#gf-sub", {autoAlpha:0, duration:0.5}, 36.0);
+
+  /* "the full number for that night is twenty one" @40.84-42.96 — builds label then the number */
+  tl.fromTo("#gf-rlab", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4}, 40.84);
+  tl.fromTo("#gf-reveal", {autoAlpha:0}, {autoAlpha:1, duration:0.1}, 40.84);
+  const d21 = {v:8};
+  tl.to(d21, {v:21, duration:1.6, ease:"power3.out", onUpdate:()=>{
+    const e=document.getElementById("gf-rval"); if(e) e.textContent = Math.round(d21.v);
+  }}, 41.36);
+
+  /* clean end — hold on 21 through "the disaster nobody was watching" then exit before the cut, host window 47.4s */
+  tl.to("#gf-reveal", {autoAlpha:0, y:-24, duration:0.6, ease:"power3.in"}, 46.4);
+
+  window.__timelines["g-flood"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
