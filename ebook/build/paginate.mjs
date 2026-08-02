@@ -292,13 +292,32 @@ function paginateBlocks(blocks, meas) {
   return { pages, oversizedBlocks, oversizedGroups };
 }
 
-// ---------------------------------------------------------------- 4. appendix splice
-function loadAppendixPages() {
-  if (process.argv.includes('--no-appendix')) return [];
-  if (!existsSync(APPENDIX_HTML)) return [];
-  const html = readFileSync(APPENDIX_HTML, 'utf-8');
-  const sections = html.match(/<section class="page">[\s\S]*?<\/section>/g) || [];
-  return sections;
+// ---------------------------------------------------------------- 4. pre-built splices
+// Both Appendix B and the Binder are already-built fixed pages (../appendix/build.py,
+// ../binder/build.py) read fresh off disk on every run and never edited in place — the
+// same shape, just two different insertion points in the book (the Binder lands mid-
+// book, right after Part Six's own manuscript pages; Appendix B stays at the very end).
+function loadPrebuiltPages(path, disableFlag) {
+  if (process.argv.includes(disableFlag)) return [];
+  if (!existsSync(path)) return [];
+  const html = readFileSync(path, 'utf-8');
+  return html.match(/<section class="page">[\s\S]*?<\/section>/g) || [];
+}
+
+// Finds the last manuscript page (in fillResult.pages) carrying any P6-the-binder.md
+// content — the Binder's own 41 form pages are spliced in immediately after it, ahead
+// of Part Seven. Throws rather than silently splicing at the wrong spot if P6 stops
+// contributing any pages (e.g. blocks_pipeline.py's truncation ate the whole file).
+function findBinderSplitIndex(blocks, pages) {
+  let splitIdx = -1;
+  pages.forEach((idxs, i) => {
+    if (idxs.some(k => blocks[k].file === 'P6-the-binder.md')) splitIdx = i;
+  });
+  if (splitIdx === -1) {
+    throw new Error('no manuscript page carries P6-the-binder.md content -- cannot ' +
+      'find where to splice in the Binder pages.');
+  }
+  return splitIdx;
 }
 
 // ---------------------------------------------------------------- 5. assemble book.html
@@ -306,11 +325,14 @@ function folioHtml(left, right) {
   return `<div class="folio"><span>${left}</span><span>${right}</span></div>`;
 }
 
-function buildBookPages(blocks, fillResult) {
+// Renders one contiguous run of manuscript pages, numbering folios from startFolio+1.
+// Called twice (before and after the Binder splice) so the folio sequence stays
+// continuous across the inserted pages.
+function renderPageRange(blocks, pages, startFolio) {
   const out = [];
   const partCounts = {};
-  let pageNo = 0;
-  for (const idxs of fillResult.pages) {
+  let pageNo = startFolio;
+  for (const idxs of pages) {
     pageNo++;
     const first = blocks[idxs[0]];
     partCounts[first.part] = (partCounts[first.part] || 0) + 1;
@@ -320,22 +342,25 @@ function buildBookPages(blocks, fillResult) {
   return { html: out.join('\n'), partCounts, lastPageNo: pageNo };
 }
 
-function spliceAppendix(appendixSections, startPageNo) {
+function splicePrebuiltPages(sections, startPageNo, label) {
   const out = [];
   let pageNo = startPageNo;
-  for (const section of appendixSections) {
+  for (const section of sections) {
     pageNo++;
+    // Its own within-file folio is dropped and replaced with one carrying the book's
+    // running sequence — book.css positions every .folio at the same spot, so keeping
+    // both would print two overlapping folios per page.
     const own = section.match(/<p class="folio">\d+<\/p>\s*/);
     if (!own) {
       throw new Error(
-        `appendix page ${pageNo - startPageNo} carries no within-appendix folio to replace — ` +
-        'appendix/build.py changed its page footer, so this splice needs rechecking.');
+        `${label} page ${pageNo - startPageNo} carries no within-page folio to replace — ` +
+        'its build.py changed its page footer, so this splice needs rechecking.');
     }
     out.push(section
       .replace(own[0], '')
-      .replace('</section>', `${folioHtml('Appendix B', pageNo)}</section>`));
+      .replace('</section>', `${folioHtml(label, pageNo)}</section>`));
   }
-  return { html: out.join('\n'), count: appendixSections.length, lastPageNo: pageNo };
+  return { html: out.join('\n'), count: sections.length, lastPageNo: pageNo };
 }
 
 // ---------------------------------------------------------------- main
