@@ -65,7 +65,7 @@ STATES = {
 # The sentence naming the 19 states is stable enough to parse directly, but it is re-parsed from
 # the cached page rather than hardcoded, so a re-run catches NAIC updating the list or the date.
 LIST_RE = re.compile(
-    r"As of ([^,]+, \d{4}), (?:nineteen|\d+) states? and the District of Columbia have some form "
+    r"As of ([^,]+), (?:nineteen|\d+) states? and the District of Columbia have some form "
     r"of hurricane or named storm deductible in place\. These states include ([^.]+)\.")
 
 
