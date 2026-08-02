@@ -930,6 +930,8 @@ def build_form(form):
         for note in units_of_type(form["units"], "note"):
             body += f'<p class="b-note">{render_inline(note["text"])}</p>'
 
+    if n in ROOMY_EXTRA:
+        body = roomy(body, ROOMY_EXTRA[n])
     repeat = FORM_REPEAT.get(n, 1)
     return [body] * repeat
 
