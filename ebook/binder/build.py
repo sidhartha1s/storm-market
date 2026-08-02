@@ -532,8 +532,11 @@ def build_form7(form):
         f'<tr><td>{render_inline(item)}</td><td class="fill"></td></tr>' for item in items)
     table = (f'<table class="btable tight"><tr><th>When this happens</th>'
              f'<th>We will {D} without further discussion</th></tr>{rows}</table>')
-    note = ('<p class="b-note">When ' + render_inline("_____") + ' happens, we ' +
-            render_inline("_____") + ', without further discussion.</p>')
+    # Rendered from the parsed blockquote unit itself, not retyped -- an earlier draft
+    # hand-typed this sentence, which happened to match but would have silently gone
+    # stale if the spec's wording ever changed.
+    note_text = units_of_type(form["units"], "note")[0]["text"]
+    note = f'<p class="b-note">{render_inline(note_text)}</p>'
     # "a signature line for every adult, and a date" — the household size isn't
     # given anywhere in the binder, so three lines are offered (covers most
     # households; a larger one adds a line by hand, which costs nothing on a page
