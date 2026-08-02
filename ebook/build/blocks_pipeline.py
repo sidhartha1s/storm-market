@@ -68,6 +68,41 @@ def tag_of(block_html):
     return block_html[1:block_html.index(">")].split()[0]
 
 
+LI_RE = re.compile(r"<li>(.*?)</li>", re.S)
+
+
+def explode_lists(block_list):
+    """Split every <ul>/<ol> block into one block per <li>.
+
+    Tables, figures and the numbered-protection blocks must never split across a page
+    (task brief); plain bulleted/numbered lists are not on that list, and several hazard
+    playbooks have a "Before" list of ten-plus prioritized protections that is taller than
+    a whole page by itself — kept as one opaque block it can never be placed at all. A list
+    item is a complete, self-contained unit like a paragraph, so splitting between items
+    carries none of the widow/orphan risk a mid-paragraph split would.
+
+    Each <li> becomes its own bare <li> block (no <ul>/<ol> wrapper) — Chrome applies
+    `display:list-item` to <li> regardless of its parent, so it still renders as a list
+    item; book-auto.css supplies the bullet/number and indent that a real <ul>/<ol> parent
+    would otherwise provide. This also sidesteps the alternative (re-opening/closing a
+    <ul>...</ul> wrapper on whichever page a split lands on, and re-numbering an <ol> with
+    a `start=`) for no real benefit, since a bare <li> needs neither.
+    """
+    out = []
+    for block_html in block_list:
+        tag = tag_of(block_html)
+        if tag not in ("ul", "ol"):
+            out.append(block_html)
+            continue
+        items = LI_RE.findall(block_html)
+        for n, inner in enumerate(items, start=1):
+            if tag == "ol":
+                out.append(f'<li class="li-bare li-ol"><span class="li-num">{n}.</span> {inner}</li>')
+            else:
+                out.append(f'<li class="li-bare li-ul">{inner}</li>')
+    return out
+
+
 def main():
     missing = [name for name in rp.ORDER if not (rp.MS / name).exists()]
     if missing:
