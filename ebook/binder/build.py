@@ -864,6 +864,36 @@ MULTI_PAGE_BUILDERS = {
     36: build_form36_pages, 39: build_form39_pages, 41: build_form41_pages,
 }
 
+# A form with only a handful of fields/rows still gets book.css's normal fixed spacing,
+# which was tuned for a *full* page -- so a short form can leave most of its page blank
+# even though nothing about it is wrong (Form 18's five fields left 57% of the page
+# empty; roomcheck.mjs flagged 12 such pages, 2026-08-03). That leftover is the writing
+# room the spec's own section budget paid for, and the owner's rule is to spend it on
+# row height, not blank paper -- never on invented fields. Each value here is a pt
+# addition to the normal per-row margin/padding, computed once from roomcheck.mjs's
+# measured emptyPx on that exact page (targeting roughly a quarter of the page still
+# empty afterward, not zero -- a little air on a form a reader writes on by hand is
+# legible, not wasted) and re-verified by roomcheck.mjs / fitcheck.mjs after the build,
+# not by driving a browser from inside build.py itself. Pages that are the unavoidable
+# last page of a *section* (roomcheck flagged 4: Form 6, 10, 16, 35) are exempt per the
+# owner's own carve-out and are left at normal spacing.
+ROOMY_EXTRA = {
+    5: 22, 9: 24, 17: 14, 18: 36, 19: 36, 26: 22, 29: 15, 32: 36,
+    33: 23, 34: 10, 38: 17, 40: 15,
+}
+# Multi-page forms need one value per page: balanced_split() already evens out the
+# split itself, but the two pages can still have different amounts of space left over
+# (Form 11's page 2 has fewer, larger groups than page 1), so a single form-wide value
+# would either overflow the fuller page or under-fill the emptier one.
+ROOMY_EXTRA_PAGES = {
+    11: [11, 32],
+    14: [4, 2],
+}
+
+
+def roomy(body_html, extra_pt):
+    return f'<div class="roomy" style="--extra:{extra_pt}pt">{body_html}</div>'
+
 
 def build_form2(form):
     """Medical summary. Thirteen fields plus the "stranger providing care" note (see
