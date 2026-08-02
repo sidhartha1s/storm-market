@@ -605,7 +605,7 @@ def build_form20(form):
     pantry additions" is a second, shorter table for longer-life stock the fourteen-day
     rotation doesn't cover — column names (item/quantity/expiry) are the spec's own
     "quantities and expiry dates," not invented."""
-    return (render_table(["Item", "Quantity", "Expiry date"], 14, prefill_col0=list(range(1, 15))) +
+    return (render_table(["Item", "Quantity", "Expiry date"], 14) +
             '<p class="b-cont">Deep-pantry additions</p>' +
             render_table(["Item", "Quantity", "Expiry date"], 5, numbered=False))
 
