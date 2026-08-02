@@ -86,6 +86,11 @@ in its own `derive_*.py`, writes its own CSV fragment, and `merge.py` assembles 
 | `energy_assist_url` | ACF LIHEAP state and territory contact listing | `derive_energy.py` |
 | `well_test_contact` | EPA list of state SDWA laboratory certification programs, 40 CFR 142.10(b)(3)(i) | `derive_water.py` |
 | `well_test_url` | EPA "Private Drinking Water Well Programs in Your State" | `derive_water.py` |
+| `em_phone` | EMAC (Emergency Management Assistance Compact) state contact directory | `derive_em_phone.py` |
+| `wind_deductible_note` | NAIC "Hurricane Deductibles" topic page — the 19 states + DC it names, and an honest non-claim for the rest | `derive_deductibles.py` |
+| `mitigation_program`, `mitigation_url` | Hand-verified against each programme's own government page — no national list exists | `derive_mitigation.py` |
+| `pharmacy_refill_law` | Hand-verified against each state's own statute/rule (or licensing board's published guidance) — no working national table exists | `derive_pharmacy.py` |
+| `winter_disconnect`, `summer_disconnect` | Hand-verified against each state utility commission's own page or rule — no working national table exists | `derive_disconnect.py` |
 
 Nothing here is a scrape of a search result and nothing is a model guess. Where a source omits a state, the
 cell stays empty and the run prints which state and why.
