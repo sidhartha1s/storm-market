@@ -82,6 +82,8 @@ const cliArgs = process.argv.slice(2).filter(a => !a.startsWith('--'));
 const OUT = resolve(cliArgs[0] || join(HERE, 'book.html'));
 const APPENDIX_HTML = resolve(HERE, '../appendix/out/appendix-b.html');
 const PACKET_CSS = resolve(HERE, '../appendix/templates/packet.css');
+const BINDER_HTML = resolve(HERE, '../binder/out/binder.html');
+const BINDER_CSS = resolve(HERE, '../binder/templates/binder.css');
 
 // Page geometry — must match book.css's .page and fitcheck.mjs's PROBE exactly.
 const PAGE_H_IN = 9, PAD_TOP_IN = 0.72, FOOTER_RESERVE_IN = 0.52, DPI = 96;
