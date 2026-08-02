@@ -269,7 +269,7 @@ def render_markdown(md):
             i += 1
         out.append(f"<p>{inline(' '.join(block))}</p>")
 
-    return "\n".join(out)
+    return out
 
 
 def main():
