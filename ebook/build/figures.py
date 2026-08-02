@@ -61,12 +61,12 @@ def _figure(number, caption, inner_html):
 def _text(x, y, s, size=8, weight=400, color=INK_MUTE, anchor="start", family=SANS, italic=False):
     style = "italic" if italic else "normal"
     return (f'<text x="{x}" y="{y}" font-family="{family}" font-size="{size}" '
-            f'font-weight="{weight}" font-style="{style}" fill="{color}" '
-            f'text-anchor="{anchor}">{s}</text>')
+            f'font-weight="{weight}" font-style="{style}" '
+            f'text-anchor="{anchor}" style="fill:{color}">{s}</text>')
 
 
 def _label_dot(x, y, r=3, color=AMBER):
-    return f'<circle cx="{x}" cy="{y}" r="{r}" fill="{color}"/>'
+    return f'<circle cx="{x}" cy="{y}" r="{r}" style="fill:{color}"/>'
 
 
 # ---------------------------------------------------------------------------
@@ -74,14 +74,14 @@ def _label_dot(x, y, r=3, color=AMBER):
 # ---------------------------------------------------------------------------
 def fig_safe_room_plan():
     body = f'''
-    <rect x="6" y="6" width="328" height="116" fill="none" stroke="{INK}" stroke-width="2.5"/>
-    <line x1="118" y1="6" x2="118" y2="78" stroke="{INK}" stroke-width="1.6"/>
-    <line x1="118" y1="78" x2="232" y2="78" stroke="{INK}" stroke-width="1.6"/>
-    <line x1="232" y1="6" x2="232" y2="78" stroke="{INK}" stroke-width="1.6"/>
-    <line x1="232" y1="40" x2="334" y2="40" stroke="{INK}" stroke-width="1.6"/>
-    <rect x="118" y="40" width="114" height="38" fill="{AMBER_BG}" stroke="{AMBER}" stroke-width="2"/>
+    <rect x="6" y="6" width="328" height="116" stroke-width="2.5" style="fill:none;stroke:{INK}"/>
+    <line x1="118" y1="6" x2="118" y2="78" stroke-width="1.6" style="stroke:{INK}"/>
+    <line x1="118" y1="78" x2="232" y2="78" stroke-width="1.6" style="stroke:{INK}"/>
+    <line x1="232" y1="6" x2="232" y2="78" stroke-width="1.6" style="stroke:{INK}"/>
+    <line x1="232" y1="40" x2="334" y2="40" stroke-width="1.6" style="stroke:{INK}"/>
+    <rect x="118" y="40" width="114" height="38" stroke-width="2" style="fill:{AMBER_BG};stroke:{AMBER}"/>
     {_text(175, 63, "SAFE ROOM", size=10, weight=700, color=AMBER, anchor="middle")}
-    <g stroke="{ALERT}" stroke-width="2.4">
+    <g stroke-width="2.4" style="stroke:{ALERT}">
       <line x1="30" y1="6" x2="66" y2="6"/><line x1="84" y1="6" x2="108" y2="6"/>
       <line x1="6" y1="52" x2="6" y2="88"/><line x1="334" y1="60" x2="334" y2="96"/>
       <line x1="150" y1="122" x2="190" y2="122"/><line x1="248" y1="122" x2="286" y2="122"/>
@@ -91,7 +91,7 @@ def fig_safe_room_plan():
     {_text(280, 104, "living", size=8, anchor="end")}
     {_text(46, 104, "garage", size=8)}
     <g transform="translate(6,140)">
-      <line x1="0" y1="0" x2="18" y2="0" stroke="{ALERT}" stroke-width="2.4"/>
+      <line x1="0" y1="0" x2="18" y2="0" stroke-width="2.4" style="stroke:{ALERT}"/>
       {_text(24, 3, "exterior window or door — the safe room touches none", size=7.6)}
     </g>
     '''
@@ -127,15 +127,15 @@ def fig_three_rooms():
 
     icon_safe = (
         f'<svg viewBox="0 0 40 40" style="width:26px;height:26px;display:block">'
-        f'<rect x="4" y="4" width="32" height="32" fill="none" stroke="{INK}" stroke-width="2.5"/>'
-        f'<rect x="13" y="13" width="14" height="14" fill="{AMBER_BG}" stroke="{AMBER}" stroke-width="2.5"/>'
+        f'<rect x="4" y="4" width="32" height="32" stroke-width="2.5" style="fill:none;stroke:{INK}"/>'
+        f'<rect x="13" y="13" width="14" height="14" stroke-width="2.5" style="fill:{AMBER_BG};stroke:{AMBER}"/>'
         f'</svg>'
     )
     icon_warm = (
         f'<svg viewBox="0 0 40 40" style="width:26px;height:26px;display:block">'
-        f'<rect x="4" y="14" width="32" height="22" fill="none" stroke="{INK}" stroke-width="2.5"/>'
-        f'<circle cx="20" cy="8" r="6" fill="none" stroke="{ALERT}" stroke-width="2"/>'
-        f'<g stroke="{ALERT}" stroke-width="1.6">'
+        f'<rect x="4" y="14" width="32" height="22" stroke-width="2.5" style="fill:none;stroke:{INK}"/>'
+        f'<circle cx="20" cy="8" r="6" stroke-width="2" style="fill:none;stroke:{ALERT}"/>'
+        f'<g stroke-width="1.6" style="stroke:{ALERT}">'
         f'<line x1="20" y1="0" x2="20" y2="2"/>'
         f'<line x1="10" y1="4" x2="12" y2="6"/>'
         f'<line x1="30" y1="4" x2="28" y2="6"/>'
@@ -143,9 +143,9 @@ def fig_three_rooms():
     )
     icon_cool = (
         f'<svg viewBox="0 0 40 40" style="width:26px;height:26px;display:block">'
-        f'<rect x="4" y="10" width="32" height="26" fill="none" stroke="{INK}" stroke-width="2.5"/>'
-        f'<path d="M2 18 L14 18 L10 14 M14 18 L10 22" fill="none" stroke="{AMBER}" stroke-width="1.6"/>'
-        f'<path d="M38 28 L26 28 L30 24 M26 28 L30 32" fill="none" stroke="{AMBER}" stroke-width="1.6"/>'
+        f'<rect x="4" y="10" width="32" height="26" stroke-width="2.5" style="fill:none;stroke:{INK}"/>'
+        f'<path d="M2 18 L14 18 L10 14 M14 18 L10 22" stroke-width="1.6" style="fill:none;stroke:{AMBER}"/>'
+        f'<path d="M38 28 L26 28 L30 24 M26 28 L30 32" stroke-width="1.6" style="fill:none;stroke:{AMBER}"/>'
         f'</svg>'
     )
 
@@ -173,21 +173,21 @@ def fig_three_rooms():
 # ---------------------------------------------------------------------------
 def fig_utility_shutoffs():
     body = f'''
-    <path d="M20 90 L140 20 L260 90 Z" fill="none" stroke="{INK}" stroke-width="2"/>
-    <rect x="40" y="90" width="200" height="90" fill="none" stroke="{INK}" stroke-width="2.2"/>
-    <line x1="40" y1="140" x2="240" y2="140" stroke="{INK_MUTE}" stroke-width="1.2" stroke-dasharray="3,3"/>
+    <path d="M20 90 L140 20 L260 90 Z" stroke-width="2" style="fill:none;stroke:{INK}"/>
+    <rect x="40" y="90" width="200" height="90" stroke-width="2.2" style="fill:none;stroke:{INK}"/>
+    <line x1="40" y1="140" x2="240" y2="140" stroke-width="1.2" stroke-dasharray="3,3" style="stroke:{INK_MUTE}"/>
     {_text(244, 137, "main floor", size=7, color=INK_MUTE)}
     {_text(244, 176, "basement / crawlspace", size=7, color=INK_MUTE)}
-    <rect x="330" y="150" width="26" height="26" fill="none" stroke="{INK}" stroke-width="1.6"/>
+    <rect x="330" y="150" width="26" height="26" stroke-width="1.6" style="fill:none;stroke:{INK}"/>
     {_text(343, 168, "P", size=9, weight=700, anchor="middle")}
     {_text(322, 195, "electrical panel", size=7.4, anchor="end")}
-    <line x1="330" y1="163" x2="240" y2="163" stroke="{AMBER}" stroke-width="1.4" stroke-dasharray="2,2"/>
-    <circle cx="16" cy="130" r="7" fill="none" stroke="{ALERT}" stroke-width="2"/>
+    <line x1="330" y1="163" x2="240" y2="163" stroke-width="1.4" stroke-dasharray="2,2" style="stroke:{AMBER}"/>
+    <circle cx="16" cy="130" r="7" stroke-width="2" style="fill:none;stroke:{ALERT}"/>
     {_text(16, 133, "G", size=8, weight=700, anchor="middle", color=ALERT)}
     {_text(2, 112, "gas shut-off,", size=7.4, color=ALERT)}
     {_text(2, 121, "wrench hangs here", size=7.4, color=ALERT)}
-    <line x1="20" y1="123" x2="40" y2="128" stroke="{ALERT}" stroke-width="1.2" stroke-dasharray="2,2"/>
-    <circle cx="66" cy="180" r="7" fill="none" stroke="{AMBER}" stroke-width="2"/>
+    <line x1="20" y1="123" x2="40" y2="128" stroke-width="1.2" stroke-dasharray="2,2" style="stroke:{ALERT}"/>
+    <circle cx="66" cy="180" r="7" stroke-width="2" style="fill:none;stroke:{AMBER}"/>
     {_text(66, 183, "W", size=7, weight=700, anchor="middle", color=AMBER)}
     {_text(66, 205, "water main shut-off", size=7.4, anchor="middle", color=AMBER)}
     '''
@@ -203,20 +203,20 @@ def fig_utility_shutoffs():
 def fig_water_heater_drawoff():
     def step(n, x, y, text_lines):
         t = "".join(_text(x + 15, y + 3 + i * 9.5, ln, size=7.2) for i, ln in enumerate(text_lines))
-        return (f'<circle cx="{x}" cy="{y}" r="8" fill="{AMBER}"/>'
+        return (f'<circle cx="{x}" cy="{y}" r="8" style="fill:{AMBER}"/>'
                 f'{_text(x, y + 3, str(n), size=8.5, weight=700, color=PAPER, anchor="middle")}{t}')
 
     body = f'''
-    <rect x="196" y="34" width="74" height="150" rx="8" fill="none" stroke="{INK}" stroke-width="2.4"/>
-    <path d="M212 34 v-14 h-14" stroke="{INK}" stroke-width="1.6" fill="none"/>
-    <rect x="184" y="12" width="12" height="12" fill="none" stroke="{INK}" stroke-width="1.6"/>
+    <rect x="196" y="34" width="74" height="150" rx="8" stroke-width="2.4" style="fill:none;stroke:{INK}"/>
+    <path d="M212 34 v-14 h-14" stroke-width="1.6" style="stroke:{INK};fill:none"/>
+    <rect x="184" y="12" width="12" height="12" stroke-width="1.6" style="fill:none;stroke:{INK}"/>
     {_text(180, 10, "cold inlet valve", size=6.8, anchor="end")}
-    <path d="M256 34 v-12 h30" stroke="{INK}" stroke-width="1.6" fill="none"/>
-    <rect x="288" y="16" width="10" height="10" fill="none" stroke="{INK}" stroke-width="1.4"/>
+    <path d="M256 34 v-12 h30" stroke-width="1.6" style="stroke:{INK};fill:none"/>
+    <rect x="288" y="16" width="10" height="10" stroke-width="1.4" style="fill:none;stroke:{INK}"/>
     {_text(302, 24, "hot tap opened", size=6.8)}
     {_text(302, 33, "elsewhere", size=6.8)}
-    <rect x="224" y="184" width="18" height="10" fill="none" stroke="{INK}" stroke-width="1.6"/>
-    <path d="M233 194 v10 h20" stroke="{INK}" stroke-width="1.6" fill="none"/>
+    <rect x="224" y="184" width="18" height="10" stroke-width="1.6" style="fill:none;stroke:{INK}"/>
+    <path d="M233 194 v10 h20" stroke-width="1.6" style="stroke:{INK};fill:none"/>
     {_text(233, 216, "drain valve", size=6.8, anchor="middle")}
     {_text(233, 225, "&rarr; clean container", size=6.8, anchor="middle")}
     {_text(233, 245, "gas pilot / breaker off at the base first", size=6.8, color=INK_MUTE, anchor="middle")}
@@ -225,10 +225,10 @@ def fig_water_heater_drawoff():
     {step(3, 30, 108, ["open a hot tap", "elsewhere, to admit air"])}
     {step(4, 30, 150, ["draw from the drain", "valve into a container"])}
     {step(5, 30, 192, ["do not refill or", "re-energize until safe"])}
-    <line x1="40" y1="24" x2="184" y2="18" stroke="{INK_MUTE}" stroke-width="1" stroke-dasharray="2,2"/>
-    <line x1="40" y1="66" x2="196" y2="70" stroke="{INK_MUTE}" stroke-width="1" stroke-dasharray="2,2"/>
-    <line x1="40" y1="108" x2="288" y2="21" stroke="{INK_MUTE}" stroke-width="1" stroke-dasharray="2,2"/>
-    <line x1="40" y1="150" x2="224" y2="188" stroke="{INK_MUTE}" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="40" y1="24" x2="184" y2="18" stroke-width="1" stroke-dasharray="2,2" style="stroke:{INK_MUTE}"/>
+    <line x1="40" y1="66" x2="196" y2="70" stroke-width="1" stroke-dasharray="2,2" style="stroke:{INK_MUTE}"/>
+    <line x1="40" y1="108" x2="288" y2="21" stroke-width="1" stroke-dasharray="2,2" style="stroke:{INK_MUTE}"/>
+    <line x1="40" y1="150" x2="224" y2="188" stroke-width="1" stroke-dasharray="2,2" style="stroke:{INK_MUTE}"/>
     '''
     return _figure(4, "The five-step draw-off sequence in order, and where each valve is on the "
                    "tank — a conventional water heater holds forty to eighty gallons of potable "
@@ -242,18 +242,18 @@ def fig_water_heater_drawoff():
 def fig_garage_door_pressure():
     body = f'''
     <g>
-      <rect x="14" y="34" width="150" height="70" fill="#f2efe9" stroke="{INK}" stroke-width="2"/>
-      <path d="M14 34 L89 10 L164 34" fill="none" stroke="{INK}" stroke-width="2"/>
-      <rect x="36" y="58" width="106" height="46" fill="#fff" stroke="{INK}" stroke-width="1.4"/>
-      <g stroke="{INK_MUTE}" stroke-width="1.6"><line x1="0" y1="74" x2="30" y2="74"/><line x1="0" y1="88" x2="30" y2="88"/></g>
+      <rect x="14" y="34" width="150" height="70" stroke-width="2" style="fill:#f2efe9;stroke:{INK}"/>
+      <path d="M14 34 L89 10 L164 34" stroke-width="2" style="fill:none;stroke:{INK}"/>
+      <rect x="36" y="58" width="106" height="46" stroke-width="1.4" style="fill:#fff;stroke:{INK}"/>
+      <g stroke-width="1.6" style="stroke:{INK_MUTE}"><line x1="0" y1="74" x2="30" y2="74"/><line x1="0" y1="88" x2="30" y2="88"/></g>
       {_text(89, 118, "braced &mdash; 16 ft door holds", size=7.6, anchor="middle")}
       {_text(89, 127, "pressure stays outside", size=7.6, anchor="middle")}
     </g>
     <g>
-      <rect x="214" y="34" width="150" height="70" fill="#f2efe9" stroke="{INK}" stroke-width="2"/>
-      <path d="M210 30 L289 4 L368 30" fill="none" stroke="{ALERT}" stroke-width="2.4"/>
-      <path d="M240 58 l106 0 l-16 46 l-74 0z" fill="{AMBER_BG}" stroke="{ALERT}" stroke-width="1.6"/>
-      <g stroke="{ALERT}" stroke-width="1.8">
+      <rect x="214" y="34" width="150" height="70" stroke-width="2" style="fill:#f2efe9;stroke:{INK}"/>
+      <path d="M210 30 L289 4 L368 30" stroke-width="2.4" style="fill:none;stroke:{ALERT}"/>
+      <path d="M240 58 l106 0 l-16 46 l-74 0z" stroke-width="1.6" style="fill:{AMBER_BG};stroke:{ALERT}"/>
+      <g stroke-width="1.8" style="stroke:{ALERT}">
         <line x1="268" y1="98" x2="268" y2="66"/><line x1="289" y1="100" x2="289" y2="62"/><line x1="310" y1="98" x2="310" y2="66"/>
       </g>
       {_text(289, 118, "breached &mdash; wind fills house,", size=7.6, anchor="middle", color=ALERT)}
@@ -271,21 +271,21 @@ def fig_garage_door_pressure():
 # ---------------------------------------------------------------------------
 def fig_defensible_space_zones():
     body = f'''
-    <rect x="10" y="52" width="34" height="34" fill="none" stroke="{INK}" stroke-width="2.2"/>
-    <path d="M10 52 L27 38 L44 52" fill="none" stroke="{INK}" stroke-width="2.2"/>
-    <rect x="44" y="30" width="26" height="106" fill="{ALERT}" fill-opacity="0.16" stroke="{ALERT}" stroke-width="1.4"/>
+    <rect x="10" y="52" width="34" height="34" stroke-width="2.2" style="fill:none;stroke:{INK}"/>
+    <path d="M10 52 L27 38 L44 52" stroke-width="2.2" style="fill:none;stroke:{INK}"/>
+    <rect x="44" y="30" width="26" height="106" stroke-width="1.4" style="fill:{ALERT};fill-opacity:0.16;stroke:{ALERT}"/>
     {_text(57, 24, "ZONE 0", size=7.2, weight=700, anchor="middle", color=ALERT)}
     {_text(57, 150, "0&ndash;5 ft", size=7.2, anchor="middle", color=ALERT)}
-    <rect x="70" y="30" width="120" height="106" fill="{AMBER}" fill-opacity="0.14" stroke="{AMBER}" stroke-width="1.4"/>
+    <rect x="70" y="30" width="120" height="106" stroke-width="1.4" style="fill:{AMBER};fill-opacity:0.14;stroke:{AMBER}"/>
     {_text(130, 24, "ZONE 1", size=7.2, weight=700, anchor="middle", color=AMBER)}
     {_text(130, 150, "5&ndash;30 ft &mdash; thinned, irrigated", size=7.2, anchor="middle", color=AMBER)}
-    <rect x="190" y="30" width="150" height="106" fill="{INK_MUTE}" fill-opacity="0.12" stroke="{INK_MUTE}" stroke-width="1.4"/>
+    <rect x="190" y="30" width="150" height="106" stroke-width="1.4" style="fill:{INK_MUTE};fill-opacity:0.12;stroke:{INK_MUTE}"/>
     {_text(265, 24, "ZONE 2", size=7.2, weight=700, anchor="middle", color=INK_SOFT)}
     {_text(265, 150, "30&ndash;100 ft &mdash; ladder fuels removed", size=7.2, anchor="middle", color=INK_SOFT)}
-    <path d="M340 40 l14 -6 l0 4 l10 0 l0 4 l-10 0 l0 4 z" fill="{INK_MUTE}"/>
+    <path d="M340 40 l14 -6 l0 4 l10 0 l0 4 l-10 0 l0 4 z" style="fill:{INK_MUTE}"/>
     {_text(358, 30, "scale compressed", size=6.6, color=INK_MUTE)}
     {_text(358, 39, "past 30 ft", size=6.6, color=INK_MUTE)}
-    <line x1="44" y1="90" x2="10" y2="90" stroke="{INK}" stroke-width="1"/>
+    <line x1="44" y1="90" x2="10" y2="90" stroke-width="1" style="stroke:{INK}"/>
     '''
     return _figure(6, "The three bands California statute defines around a structure: an "
                    "ember-resistant Zone 0 to five feet, thinned and irrigated Zone 1 to thirty "
@@ -298,22 +298,22 @@ def fig_defensible_space_zones():
 # ---------------------------------------------------------------------------
 def fig_flood_openings():
     body = f'''
-    <line x1="6" y1="150" x2="374" y2="150" stroke="{INK_MUTE}" stroke-width="1.2"/>
+    <line x1="6" y1="150" x2="374" y2="150" stroke-width="1.2" style="stroke:{INK_MUTE}"/>
     {_text(378, 153, "grade", size=7, color=INK_MUTE)}
-    <rect x="90" y="60" width="200" height="90" fill="#f2efe9" stroke="{INK}" stroke-width="2.2"/>
-    <rect x="6" y="96" width="84" height="8" fill="{AMBER_BG}" stroke="{AMBER}" stroke-width="1.4"/>
+    <rect x="90" y="60" width="200" height="90" stroke-width="2.2" style="fill:#f2efe9;stroke:{INK}"/>
+    <rect x="6" y="96" width="84" height="8" stroke-width="1.4" style="fill:{AMBER_BG};stroke:{AMBER}"/>
     {_text(48, 92, "water outside", size=7, anchor="middle", color=AMBER)}
-    <rect x="290" y="96" width="84" height="8" fill="{AMBER_BG}" stroke="{AMBER}" stroke-width="1.4"/>
+    <rect x="290" y="96" width="84" height="8" stroke-width="1.4" style="fill:{AMBER_BG};stroke:{AMBER}"/>
     {_text(332, 92, "water inside", size=7, anchor="middle", color=AMBER)}
-    <rect x="110" y="128" width="22" height="14" fill="none" stroke="{ALERT}" stroke-width="1.8"/>
-    <rect x="248" y="128" width="22" height="14" fill="none" stroke="{ALERT}" stroke-width="1.8"/>
-    <path d="M90 135 h20 M132 135 h20" stroke="{ALERT}" stroke-width="1.4" marker-end="url(#fo-arrow)"/>
-    <path d="M228 135 h20 M270 135 h20" stroke="{ALERT}" stroke-width="1.4" marker-end="url(#fo-arrow)"/>
+    <rect x="110" y="128" width="22" height="14" stroke-width="1.8" style="fill:none;stroke:{ALERT}"/>
+    <rect x="248" y="128" width="22" height="14" stroke-width="1.8" style="fill:none;stroke:{ALERT}"/>
+    <path d="M90 135 h20 M132 135 h20" stroke-width="1.4" marker-end="url(#fo-arrow)" style="stroke:{ALERT}"/>
+    <path d="M228 135 h20 M270 135 h20" stroke-width="1.4" marker-end="url(#fo-arrow)" style="stroke:{ALERT}"/>
     <defs><marker id="fo-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-      <path d="M0,0 L6,3 L0,6 z" fill="{ALERT}"/></marker></defs>
+      <path d="M0,0 L6,3 L0,6 z" style="fill:{ALERT}"/></marker></defs>
     {_text(190, 30, "minimum two openings, engineered to equalize pressure", size=7.6, anchor="middle", weight=700, color=ALERT)}
-    <line x1="121" y1="128" x2="150" y2="46" stroke="{INK_MUTE}" stroke-width="1" stroke-dasharray="2,2"/>
-    <line x1="259" y1="128" x2="230" y2="46" stroke="{INK_MUTE}" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="121" y1="128" x2="150" y2="46" stroke-width="1" stroke-dasharray="2,2" style="stroke:{INK_MUTE}"/>
+    <line x1="259" y1="128" x2="230" y2="46" stroke-width="1" stroke-dasharray="2,2" style="stroke:{INK_MUTE}"/>
     {_text(190, 172, "opening bottom &le; 1 ft above grade &middot; net free area &ge; 1 sq in per sq ft enclosed", size=7.2, anchor="middle", color=INK_SOFT)}
     '''
     return _figure(7, "Flood vents let water move through an enclosure instead of pushing "
@@ -327,14 +327,14 @@ def fig_flood_openings():
 # ---------------------------------------------------------------------------
 def fig_alarm_placement():
     def alarm(x, y, label, color=AMBER):
-        return (f'<circle cx="{x}" cy="{y}" r="7" fill="{PAPER}" stroke="{color}" stroke-width="2"/>'
+        return (f'<circle cx="{x}" cy="{y}" r="7" stroke-width="2" style="fill:{PAPER};stroke:{color}"/>'
                 f'{_text(x, y + 3, label, size=7, weight=700, anchor="middle", color=color)}')
 
     body = f'''
-    <path d="M20 44 L170 12 L320 44" fill="none" stroke="{INK}" stroke-width="2"/>
-    <rect x="20" y="44" width="300" height="70" fill="none" stroke="{INK}" stroke-width="2"/>
-    <line x1="130" y1="44" x2="130" y2="114" stroke="{INK_MUTE}" stroke-width="1.2"/>
-    <line x1="210" y1="44" x2="210" y2="114" stroke="{INK_MUTE}" stroke-width="1.2"/>
+    <path d="M20 44 L170 12 L320 44" stroke-width="2" style="fill:none;stroke:{INK}"/>
+    <rect x="20" y="44" width="300" height="70" stroke-width="2" style="fill:none;stroke:{INK}"/>
+    <line x1="130" y1="44" x2="130" y2="114" stroke-width="1.2" style="stroke:{INK_MUTE}"/>
+    <line x1="210" y1="44" x2="210" y2="114" stroke-width="1.2" style="stroke:{INK_MUTE}"/>
     {_text(75, 60, "bedroom", size=7, anchor="middle", color=INK_MUTE)}
     {_text(170, 60, "hallway", size=7, anchor="middle", color=INK_MUTE)}
     {_text(265, 60, "bedroom", size=7, anchor="middle", color=INK_MUTE)}
@@ -342,10 +342,10 @@ def fig_alarm_placement():
     {alarm(75, 52, "S")}
     {alarm(265, 52, "S")}
     {alarm(170, 52, "C+S")}
-    <rect x="20" y="114" width="300" height="60" fill="none" stroke="{INK}" stroke-width="2"/>
+    <rect x="20" y="114" width="300" height="60" stroke-width="2" style="fill:none;stroke:{INK}"/>
     {_text(170, 108, "main floor", size=7, anchor="middle", color=INK_MUTE)}
     {alarm(170, 122, "C+S")}
-    <rect x="20" y="174" width="300" height="46" fill="none" stroke="{INK}" stroke-width="2"/>
+    <rect x="20" y="174" width="300" height="46" stroke-width="2" style="fill:none;stroke:{INK}"/>
     {_text(170, 168, "basement", size=7, anchor="middle", color=INK_MUTE)}
     {alarm(170, 182, "C")}
     <g transform="translate(20,232)">
@@ -364,20 +364,20 @@ def fig_alarm_placement():
 # ---------------------------------------------------------------------------
 def fig_box_fan_filter():
     def filt(x):
-        return (f'<rect x="{x}" y="24" width="10" height="110" fill="#fff" stroke="{INK}" stroke-width="1.6"/>'
-                f'<path d="M{x+5} 40 v18" stroke="{AMBER}" stroke-width="1.6" marker-end="url(#bf-arrow)"/>'
-                f'<path d="M{x+5} 78 v18" stroke="{AMBER}" stroke-width="1.6" marker-end="url(#bf-arrow)"/>'
+        return (f'<rect x="{x}" y="24" width="10" height="110" stroke-width="1.6" style="fill:#fff;stroke:{INK}"/>'
+                f'<path d="M{x+5} 40 v18" stroke-width="1.6" marker-end="url(#bf-arrow)" style="stroke:{AMBER}"/>'
+                f'<path d="M{x+5} 78 v18" stroke-width="1.6" marker-end="url(#bf-arrow)" style="stroke:{AMBER}"/>'
                 f'<path d="M{x+5} 96 v-18" stroke-width="0"/>')
 
     body = f'''
     <defs><marker id="bf-arrow" markerWidth="6" markerHeight="6" refX="3" refY="5" orient="auto">
-      <path d="M0,0 L6,0 L3,6 z" fill="{AMBER}"/></marker></defs>
+      <path d="M0,0 L6,0 L3,6 z" style="fill:{AMBER}"/></marker></defs>
     {filt(60)}{filt(76)}{filt(92)}{filt(108)}
-    <path d="M60 24 h58 M60 134 h58" stroke="{ALERT}" stroke-width="2" stroke-dasharray="3,2"/>
+    <path d="M60 24 h58 M60 134 h58" stroke-width="2" stroke-dasharray="3,2" style="stroke:{ALERT}"/>
     {_text(89, 16, "tape seals every seam", size=6.8, anchor="middle", color=ALERT)}
-    <circle cx="210" cy="79" r="46" fill="none" stroke="{INK}" stroke-width="2.2"/>
-    <rect x="164" y="33" width="92" height="92" fill="none" stroke="{INK}" stroke-width="2.2"/>
-    <path d="M256 40 L300 20 L300 138 L256 118" fill="{AMBER_BG}" stroke="{AMBER}" stroke-width="1.6"/>
+    <circle cx="210" cy="79" r="46" stroke-width="2.2" style="fill:none;stroke:{INK}"/>
+    <rect x="164" y="33" width="92" height="92" stroke-width="2.2" style="fill:none;stroke:{INK}"/>
+    <path d="M256 40 L300 20 L300 138 L256 118" stroke-width="1.6" style="fill:{AMBER_BG};stroke:{AMBER}"/>
     {_text(300, 12, "cardboard shroud", size=7, anchor="middle", color=AMBER)}
     {_text(300, 152, "reduces recirculation", size=7, anchor="middle", color=AMBER)}
     {_text(210, 79, "&#8594;", size=20, anchor="middle", weight=700)}
@@ -397,16 +397,16 @@ def fig_box_fan_filter():
 def fig_hurricane_cone():
     body = f'''
     <path d="M10 90 C 120 20, 260 20, 380 -10 L380 190 C 260 160, 120 160, 10 90 Z"
-      fill="{AMBER}" fill-opacity="0.12" stroke="{AMBER}" stroke-width="1.2" stroke-dasharray="3,2"/>
+      stroke-width="1.2" stroke-dasharray="3,2" style="fill:{AMBER};fill-opacity:0.12;stroke:{AMBER}"/>
     {_text(190, 8, "actual hazard extent &mdash; surge, rain, tornadoes", size=7.6, anchor="middle", color=AMBER, weight=700)}
-    <path d="M10 90 L380 30 L380 150 Z" fill="{INK}" fill-opacity="0.14" stroke="{INK}" stroke-width="1.8"/>
-    <line x1="10" y1="90" x2="380" y2="90" stroke="{INK}" stroke-width="1.2" stroke-dasharray="2,2"/>
+    <path d="M10 90 L380 30 L380 150 Z" stroke-width="1.8" style="fill:{INK};fill-opacity:0.14;stroke:{INK}"/>
+    <line x1="10" y1="90" x2="380" y2="90" stroke-width="1.2" stroke-dasharray="2,2" style="stroke:{INK}"/>
     {_text(190, 84, "cone: probable path of the storm's CENTER only", size=7.6, anchor="middle", weight=700)}
-    <circle cx="10" cy="90" r="5" fill="{INK}"/>
+    <circle cx="10" cy="90" r="5" style="fill:{INK}"/>
     {_text(10, 108, "now", size=7, anchor="middle")}
-    <circle cx="392" cy="176" r="4" fill="{ALERT}"/>
+    <circle cx="392" cy="176" r="4" style="fill:{ALERT}"/>
     {_text(392, 190, "actual track,", size=6.8, anchor="end", color=ALERT)}
-    <path d="M375 165 L392 176" stroke="{ALERT}" stroke-width="1.2"/>
+    <path d="M375 165 L392 176" stroke-width="1.2" style="stroke:{ALERT}"/>
     {_text(190, 205, "&asymp;1 in 3 times, the storm's center ends up outside the cone (NHC, 5-yr sample)", size=7.4, anchor="middle", color=INK_SOFT)}
     '''
     return _figure(10, "The cone shows where the storm's center is likely to track. It says "
@@ -420,17 +420,17 @@ def fig_hurricane_cone():
 # ---------------------------------------------------------------------------
 def fig_hail_damage_tiers():
     body = f'''
-    <rect x="10" y="140" width="100" height="30" fill="none" stroke="{INK_MUTE}" stroke-width="1.6"/>
+    <rect x="10" y="140" width="100" height="30" stroke-width="1.6" style="fill:none;stroke:{INK_MUTE}"/>
     {_text(60, 128, "BASE", size=8, weight=700, anchor="middle", color=INK_MUTE)}
     {_text(60, 158, "no tag &mdash; still act", size=7.2, anchor="middle", color=INK_MUTE)}
-    <rect x="130" y="100" width="100" height="70" fill="{AMBER_BG}" stroke="{AMBER}" stroke-width="1.8"/>
+    <rect x="130" y="100" width="100" height="70" stroke-width="1.8" style="fill:{AMBER_BG};stroke:{AMBER}"/>
     {_text(180, 88, "CONSIDERABLE", size=8, weight=700, anchor="middle", color=AMBER)}
-    <circle cx="160" cy="140" r="10.5" fill="none" stroke="{AMBER}" stroke-width="1.6"/>
+    <circle cx="160" cy="140" r="10.5" stroke-width="1.6" style="fill:none;stroke:{AMBER}"/>
     {_text(180, 155, "1.75 in hail (golf ball)", size=7, anchor="start", color=AMBER)}
     {_text(180, 165, "or 70 mph wind", size=7, anchor="start", color=AMBER)}
-    <rect x="250" y="50" width="120" height="120" fill="{AMBER_BG}" stroke="{ALERT}" stroke-width="2.2"/>
+    <rect x="250" y="50" width="120" height="120" stroke-width="2.2" style="fill:{AMBER_BG};stroke:{ALERT}"/>
     {_text(310, 38, "DESTRUCTIVE", size=8, weight=700, anchor="middle", color=ALERT)}
-    <circle cx="285" cy="110" r="16.5" fill="none" stroke="{ALERT}" stroke-width="2"/>
+    <circle cx="285" cy="110" r="16.5" stroke-width="2" style="fill:none;stroke:{ALERT}"/>
     {_text(305, 130, "2.75 in hail (baseball)", size=7, anchor="start", color=ALERT)}
     {_text(305, 140, "or 80 mph wind", size=7, anchor="start", color=ALERT)}
     {_text(305, 155, "auto-fires a Wireless", size=7, anchor="start", color=ALERT)}
@@ -447,9 +447,9 @@ def fig_hail_damage_tiers():
 # ---------------------------------------------------------------------------
 def fig_radiological_zones():
     body = f'''
-    <circle cx="150" cy="150" r="140" fill="{AMBER_BG}" fill-opacity="0.5" stroke="{AMBER}" stroke-width="1.6"/>
-    <circle cx="150" cy="150" r="34" fill="{ALERT}" fill-opacity="0.18" stroke="{ALERT}" stroke-width="1.8"/>
-    <rect x="146" y="146" width="8" height="8" fill="{INK}"/>
+    <circle cx="150" cy="150" r="140" stroke-width="1.6" style="fill:{AMBER_BG};fill-opacity:0.5;stroke:{AMBER}"/>
+    <circle cx="150" cy="150" r="34" stroke-width="1.8" style="fill:{ALERT};fill-opacity:0.18;stroke:{ALERT}"/>
+    <rect x="146" y="146" width="8" height="8" style="fill:{INK}"/>
     {_text(150, 195, "10 mi", size=9, weight=700, anchor="middle", color=ALERT)}
     {_text(150, 207, "plume exposure pathway", size=7, anchor="middle", color=ALERT)}
     {_text(150, 217, "shelter, evacuate, KI", size=7, anchor="middle", color=ALERT)}
@@ -483,8 +483,8 @@ def fig_disaster_timeline():
         x0 = xs[i - 1] if i > 0 else MARGIN
         x1 = xs[i]
         w = max(x1 - x0, 4)
-        bars.append(f'<rect x="{x0:.1f}" y="60" width="{w:.1f}" height="34" '
-                     f'fill="{colors[i]}" fill-opacity="0.20" stroke="{colors[i]}" stroke-width="1.4"/>')
+        bars.append(f'<rect x="{x0:.1f}" y="60" width="{w:.1f}" height="34" stroke-width="1.4" '
+                     f'style="fill:{colors[i]};fill-opacity:0.20;stroke:{colors[i]}"/>')
         above = i % 2 == 0
         ty = 52 if above else 112
         ly = ty + 10
