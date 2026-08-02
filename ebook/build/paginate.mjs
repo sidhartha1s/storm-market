@@ -50,11 +50,19 @@
         - a block that does not fit even a full, empty page is a genuine content problem
           (an oversized table, say) and is logged loudly rather than clipped or shrunk to fit.
    4. Splice in Appendix B (`../appendix/out/appendix-b.html`) as already-built fixed pages —
-      it is owned by a different agent and is read fresh off disk on every run, never edited;
-      this script only adds a `.folio` to each of its pages (in memory, for the copy written
-      into book.html) so its page numbers continue the book's sequence.
-   5. Emit book.html with book.css + book-auto.css inlined, and print the page count and the
-      per-part breakdown.
+      it is read fresh off disk on every run and never edited on disk. Two things happen to
+      the in-memory copy: its own within-appendix `.folio` is dropped (book.css positions
+      every `.folio` absolutely at the same spot, so keeping it would print two overlapping
+      folios per page), and a book-sequence `.folio` is added in its place.
+   5. Emit book.html with book.css + book-auto.css + the appendix's packet.css inlined, and
+      print the page count and the per-part breakdown.
+
+      packet.css is not optional: appendix-b.html carries the `.stblock` markup but inlines
+      its own stylesheet, which is discarded when only the `<section>`s are lifted out. Without
+      it the state blocks fall back to browser-default heading and paragraph metrics and
+      overflow the 6x9 box by 40-194px — pages that pass fitcheck standalone and fail here.
+      Its 45 selectors were checked against book.css and book-auto.css: zero overlap, so it
+      cannot alter how a manuscript page measures or renders.
 
    Usage: node paginate.mjs [out.html]
    Requires: Chrome (CHROME_BIN env var to override), python3. No npm dependencies. */
@@ -231,6 +239,26 @@ function paginateBlocks(blocks, meas) {
   const groupEnd = i => { const g = blocks[i].group; let j = i; while (j + 1 < N && blocks[j + 1].group === g) j++; return j; };
   const isHeadingRunStart = i => blocks[i].heading && (i === 0 || !blocks[i - 1].heading);
   const headingRunEnd = i => { let j = i; while (j < N && blocks[j].heading) j++; return Math.min(j, N - 1); };
+  const spanHeight = (i, j) => {
+    let h = 0;
+    for (let k = i; k <= j; k++) h += meas[k].mt + meas[k].h + (k < j ? meas[k].mb : 0);
+    return h;
+  };
+
+  // Tries to keep [i..j] together. If it doesn't fit where we are but WOULD fit a fresh
+  // page, starts one. If it wouldn't fit even a fresh page, that's a genuine oversized
+  // span — flag it loudly and let the per-block loop place as much as fits (there is no
+  // clipping/shrinking option), rather than silently letting it split unremarked. Must
+  // re-check against a *fresh* budget (cursor 0) rather than assuming "moved to a new
+  // page" alone is sufficient — a span that is simply too tall for any one page will
+  // still overflow after the move, and that case needs its own report, not a shrug.
+  function tryKeepTogether(i, j, html, file) {
+    if (spanHeight(i, j) + cursor <= BUDGET_PX) return; // already fits where we are
+    if (cur.length > 0) newPage();
+    if (spanHeight(i, j) > BUDGET_PX) {
+      oversizedGroups.push({ file, html, neededPx: Math.round(spanHeight(i, j)) });
+    }
+  }
 
   let i = 0;
   while (i < N) {
@@ -238,23 +266,9 @@ function paginateBlocks(blocks, meas) {
     if (b.fileStart && cur.length) newPage();
 
     if (isGroupStart(i)) {
-      const j = groupEnd(i);
-      let groupBottom = cursor;
-      for (let k = i; k <= j; k++) groupBottom += meas[k].mt + meas[k].h + (k < j ? meas[k].mb : 0);
-      const fitsGroup = groupBottom <= BUDGET_PX;
-      if (!fitsGroup) {
-        if (cur.length > 0) newPage();
-        else oversizedGroups.push({ file: b.file, html: b.html, neededPx: Math.round(groupBottom - cursor) });
-      }
+      tryKeepTogether(i, groupEnd(i), b.html, b.file);
     } else if (isHeadingRunStart(i)) {
-      const j = headingRunEnd(i);
-      let groupBottom = cursor;
-      for (let k = i; k <= j; k++) groupBottom += meas[k].mt + meas[k].h + (k < j ? meas[k].mb : 0);
-      const fitsGroup = groupBottom <= BUDGET_PX;
-      if (!fitsGroup) {
-        if (cur.length > 0) newPage();
-        else oversizedGroups.push({ file: b.file, html: b.html, neededPx: Math.round(groupBottom - cursor) });
-      }
+      tryKeepTogether(i, headingRunEnd(i), b.html, b.file);
     }
 
     if (fits(i, cursor)) {
