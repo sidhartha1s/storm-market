@@ -368,7 +368,14 @@ async function main() {
   const bookCss = readFileSync(join(HERE, 'book.css'), 'utf-8');
   const autoCss = readFileSync(join(HERE, 'book-auto.css'), 'utf-8');
   const packetCss = readFileSync(PACKET_CSS, 'utf-8');
-  const css = bookCss + '\n' + autoCss + '\n' + packetCss;
+  // binder.css is not optional the same way packetCss isn't (see the module docstring's
+  // note on Appendix B): the Binder's 41 pages carry .bgroup/.btable/.bchecklist markup
+  // but inline their own stylesheet standalone, which is discarded when only the
+  // <section>s are lifted out here. Missing it fails loudly rather than shipping
+  // unstyled/overflowing binder pages into the book.
+  if (!existsSync(BINDER_CSS)) throw new Error(`missing ${BINDER_CSS} -- run binder/build.py first.`);
+  const binderCss = readFileSync(BINDER_CSS, 'utf-8');
+  const css = bookCss + '\n' + autoCss + '\n' + packetCss + '\n' + binderCss;
 
   console.log('reading manuscript blocks (python3 blocks_pipeline.py)...');
   const blocks = loadBlocks();
@@ -379,17 +386,32 @@ async function main() {
 
   console.log('laying out pages...');
   const fillResult = paginateBlocks(blocks, meas);
-  const { html: bodyHtml, partCounts, lastPageNo } = buildBookPages(blocks, fillResult);
 
-  const appendixSections = loadAppendixPages();
+  const splitIdx = process.argv.includes('--no-binder')
+    ? fillResult.pages.length - 1
+    : findBinderSplitIndex(blocks, fillResult.pages);
+  const before = renderPageRange(blocks, fillResult.pages.slice(0, splitIdx + 1), 0);
+
+  const binderSections = loadPrebuiltPages(BINDER_HTML, '--no-binder');
+  const binderResult = binderSections.length
+    ? splicePrebuiltPages(binderSections, before.lastPageNo, 'The Binder')
+    : { html: '', count: 0, lastPageNo: before.lastPageNo };
+
+  const after = renderPageRange(blocks, fillResult.pages.slice(splitIdx + 1), binderResult.lastPageNo);
+
+  const partCounts = { ...before.partCounts };
+  for (const [part, n] of Object.entries(after.partCounts)) partCounts[part] = (partCounts[part] || 0) + n;
+  if (binderResult.count) partCounts.BINDER = binderResult.count;
+
+  const appendixSections = loadPrebuiltPages(APPENDIX_HTML, '--no-appendix');
   const appendixResult = appendixSections.length
-    ? spliceAppendix(appendixSections, lastPageNo)
-    : { html: '', count: 0, lastPageNo };
+    ? splicePrebuiltPages(appendixSections, after.lastPageNo, 'Appendix B')
+    : { html: '', count: 0, lastPageNo: after.lastPageNo };
   if (appendixResult.count) partCounts.APPENDIX = appendixResult.count;
 
   const doc = `<!doctype html><html lang="en"><head><meta charset="utf-8">` +
     `<title>The Storm-Ready Home</title><style>${css}</style></head><body>\n` +
-    `${bodyHtml}\n${appendixResult.html}\n</body></html>`;
+    `${before.html}\n${binderResult.html}\n${after.html}\n${appendixResult.html}\n</body></html>`;
   writeFileSync(OUT, doc, 'utf-8');
 
   console.log(`\nwrote ${OUT}`);
