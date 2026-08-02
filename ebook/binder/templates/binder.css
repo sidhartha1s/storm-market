@@ -151,13 +151,14 @@
 .tight-fields .field { margin-bottom: 6pt; }
 .tight-fields .field label { margin-bottom: 1pt; }
 
-/* ---- .roomy: spends a sparse form's leftover page space on row height ---- */
-/* --extra is set inline per form/page in build.py's ROOMY_EXTRA(_PAGES) tables, sized from
-   the real roomcheck.mjs measurement of that page — see the comment there for why. Every
-   selector below only adds to the property it targets, so the rest of each component's
-   normal book.css/binder.css sizing (widths, fonts, borders) is untouched. */
-.roomy .field { margin-bottom: calc(10pt + var(--extra, 0pt)); }
-.roomy .field .line { height: calc(15pt + var(--extra, 0pt) * 0.4); }
-.roomy .btable td { padding-top: calc(10pt + var(--extra, 0pt)); }
-.roomy .btable.tight td { padding-top: calc(5pt + var(--extra, 0pt)); }
-.roomy .bcheck { margin-bottom: calc(8pt + var(--extra, 0pt)); }
+/* ---- .roomy: spends a sparse form's leftover page space on row height, up to a ceiling ---- */
+/* --extra-field / --extra-row / --extra-check are set inline per form/page in build.py's
+   ROOMY_EXTRA(_PAGES) tables — a pt amount capped well under book.css's own row components,
+   never a fill-to-percentage target (see the comment there for why). Each grows the one part
+   of its component that is actually writing room for the reader's pen: a field's blank line,
+   a table cell's padding, a checklist row's own spacing — not the surrounding margins, and
+   nothing else about that component's sizing (width, font, border) changes. */
+.roomy .field .line { height: calc(15pt + var(--extra-field, 0pt)); }
+.roomy .btable td { padding-top: calc(10pt + var(--extra-row, 0pt)); }
+.roomy .btable.tight td { padding-top: calc(5pt + var(--extra-row, 0pt)); }
+.roomy .bcheck { margin-bottom: calc(8pt + var(--extra-check, 0pt)); }
