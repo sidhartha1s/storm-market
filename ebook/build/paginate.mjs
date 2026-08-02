@@ -322,8 +322,15 @@ function spliceAppendix(appendixSections, startPageNo) {
   let pageNo = startPageNo;
   for (const section of appendixSections) {
     pageNo++;
-    const withFolio = section.replace('</section>', `${folioHtml('Appendix B', pageNo)}</section>`);
-    out.push(withFolio);
+    const own = section.match(/<p class="folio">\d+<\/p>\s*/);
+    if (!own) {
+      throw new Error(
+        `appendix page ${pageNo - startPageNo} carries no within-appendix folio to replace — ` +
+        'appendix/build.py changed its page footer, so this splice needs rechecking.');
+    }
+    out.push(section
+      .replace(own[0], '')
+      .replace('</section>', `${folioHtml('Appendix B', pageNo)}</section>`));
   }
   return { html: out.join('\n'), count: appendixSections.length, lastPageNo: pageNo };
 }
