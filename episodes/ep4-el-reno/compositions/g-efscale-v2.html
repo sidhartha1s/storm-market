@@ -107,9 +107,8 @@ window.__timelines = window.__timelines || {};
 
   /* "The record width stands ... officially invisible" @75.6-78.98 */
   tl.to("#g-v2-truth", {autoAlpha:0, duration:0.4}, 74.8);
-  tl.set("#g-v2-close", {autoAlpha:0}, 75.4);
-  tl.to("#g-v2-close", {text:"The record width stands, radar-measured. The violence stays officially invisible."}, 0);
-  tl.fromTo("#g-v2-close", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 75.6);
+  tl.set("#g-v2-close2", {display:"block"}, 75.6);
+  tl.fromTo("#g-v2-close2", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 75.6);
 
   window.__timelines["g-efscale-v2"] = tl;
 })();
