@@ -70,7 +70,8 @@ const CHROME = process.env.CHROME_BIN
   || 'C:/Program Files/Google/Chrome/Application/chrome.exe';
 const PORT = 9531 + (process.pid % 120);
 
-const OUT = resolve(process.argv[2] || join(HERE, 'book.html'));
+const cliArgs = process.argv.slice(2).filter(a => !a.startsWith('--'));
+const OUT = resolve(cliArgs[0] || join(HERE, 'book.html'));
 const APPENDIX_HTML = resolve(HERE, '../appendix/out/appendix-b.html');
 
 // Page geometry — must match book.css's .page and fitcheck.mjs's PROBE exactly.
