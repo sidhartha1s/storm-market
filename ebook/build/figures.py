@@ -90,10 +90,6 @@ def fig_safe_room_plan():
     {_text(280, 28, "kitchen", size=8, anchor="end")}
     {_text(280, 104, "living", size=8, anchor="end")}
     {_text(46, 104, "garage", size=8)}
-    {_text(340, 64, "zero exterior", size=7.4, color=ALERT)}
-    {_text(340, 74, "walls, zero", size=7.4, color=ALERT)}
-    {_text(340, 84, "windows", size=7.4, color=ALERT)}
-    <line x1="232" y1="59" x2="336" y2="63" stroke="{ALERT}" stroke-width="1" stroke-dasharray="2,2"/>
     <g transform="translate(6,140)">
       <line x1="0" y1="0" x2="18" y2="0" stroke="{ALERT}" stroke-width="2.4"/>
       {_text(24, 3, "exterior window or door — the safe room touches none", size=7.6)}
