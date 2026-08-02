@@ -361,9 +361,17 @@ def standard_gobag_items():
     if start is None:
         sys.exit(f"FAIL: Protection 107 not found in {GOBAG_SOURCE} — Form 23 needs it "
                   "for the standard contents list.")
-    for line in lines[start:start + 20]:
+    # The sentence wraps across several source lines (it's one prose paragraph in the
+    # manuscript, not one physical line) — paragraph-join up to the next blank line
+    # before extracting it, or only the first wrapped line was ever captured.
+    for i, line in enumerate(lines[start:start + 20]):
         if line.startswith("Contents that earn their weight:"):
-            sentence = line.split(":", 1)[1].strip().rstrip(".")
+            para = [line]
+            for cont in lines[start + i + 1:start + i + 10]:
+                if not cont.strip():
+                    break
+                para.append(cont)
+            sentence = " ".join(para).split(":", 1)[1].strip().rstrip(".")
             items = split_top(sentence, ",")
             items[-1] = re.sub(r"^and\s+", "", items[-1])
             return items
