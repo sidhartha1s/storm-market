@@ -178,7 +178,7 @@ window.__timelines = window.__timelines || {};
   /* "The federal review of the event" @54.12-55.90 → local 37.62-39.40 */
   tl.fromTo("#gt-row1", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4}, 37.62);
   /* "...does not pin the exodus on one broadcaster." @55.90-58.78 → local 39.40-42.28 */
-  tl.call(function(){ const el=document.querySelector("#gt-row1"); }, null, 40.70);
+  tl.to("#gt-underline2", {scaleX:1, duration:0.9, ease:"power2.out"}, 40.70);
 
   /* "It finds that the message system itself," @59.70-61.74 → local 43.20-45.24 */
   tl.fromTo("#gt-row2", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4}, 43.20);
