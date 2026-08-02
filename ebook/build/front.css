@@ -1,0 +1,40 @@
+/* front.css — styles for the cover/title/copyright/TOC pages only.
+   Inlined into book-final.html by frontmatter.mjs; never linked separately, so the built
+   file stays self-contained. book.css already owns .cover, .page, .folio, .legal and the
+   .toc/.toc .part/.toc .row shell (built ahead of this file for exactly this purpose) —
+   this file only adds what those don't cover: title-page centering and the TOC dot leader
+   / indented-child row, none of which collide with book.css's selectors. */
+
+.fm-title {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.fm-title h1 {
+  font-size: 27pt;
+  line-height: 1.14;
+  letter-spacing: -.01em;
+}
+.fm-title .fm-sub {
+  font-size: 11pt;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin-top: 16pt;
+}
+.fm-title .fm-byline {
+  font-family: var(--sans);
+  font-size: 10pt;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-top: 30pt;
+}
+
+/* TOC dot leader — a flex-grow middle span between the entry text and its page number,
+   sitting inside the existing .toc .row (which already does justify-content: space-between). */
+.toc .row .ti { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.toc .row .dots { flex: 1 1 auto; border-bottom: 1pt dotted var(--rule); margin: 0 6pt 3.5pt; }
+.toc .row.sub { padding-left: 14pt; }
+.toc .row.sub .ti { color: var(--ink-soft); }
