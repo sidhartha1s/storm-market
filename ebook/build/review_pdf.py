@@ -167,7 +167,13 @@ def inline(text):
 def render_markdown(md):
     """Deliberately minimal: this repo has no markdown dependency and does not need one.
     Handles what the manuscript actually uses — headings, paragraphs, lists, tables,
-    blockquotes, rules, fenced code."""
+    blockquotes, rules, fenced code.
+
+    Returns the list of top-level block HTML strings (one per heading/paragraph/table/
+    list/blockquote/rule/code-block), not a joined string — paginate.mjs's block-stream
+    builder (blocks_pipeline.py) reuses this list directly so the book layout shares the
+    exact same parser and citation handling as this review PDF, instead of a second parser
+    drifting out of sync. main() below joins the list for its own flowing-HTML output."""
     out = []
     lines = md.split("\n")
     i = 0
@@ -263,7 +269,7 @@ def render_markdown(md):
             i += 1
         out.append(f"<p>{inline(' '.join(block))}</p>")
 
-    return "\n".join(out)
+    return out
 
 
 def main():
@@ -284,7 +290,7 @@ def main():
         title = text.split("\n", 1)[0].lstrip("# ").strip()
         _CURRENT_CHAPTER[0] = title
         toc.append(f"<li>{html.escape(title)}</li>")
-        body.append(render_markdown(text))
+        body.append("\n".join(render_markdown(text)))
 
     # Sources chapter, grouped by chapter, numbered continuously.
     src_html = ['<h1>Sources</h1>']
