@@ -55,6 +55,14 @@ STATES = {
 
 PHONE_RE = re.compile(r"\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}")
 
+# An address line (a street number or a PO Box) marks the end of the agency-name header. Some
+# paragraphs put a military JFHQ designation before the agency name (Montana) or an "of" prefix
+# on it (Washington), so the state name is looked for anywhere in the header, not just word one —
+# but never past this boundary, because several *other* states' street addresses contain the word
+# "Washington" (New York's own "1220 Washington Avenue", Indiana's "West Washington Street") and
+# matching those would silently hand Washington State a New York phone number.
+ADDRESS_LINE = re.compile(r"^\s*(\d|P\.?\s*O\.?\s*Box)", re.I)
+
 
 def cached(refresh=False):
     CACHE.mkdir(exist_ok=True)
@@ -65,18 +73,29 @@ def cached(refresh=False):
     return path.read_text(encoding="utf-8", errors="replace")
 
 
+def header_of(para):
+    """The lines of a paragraph up to (not including) the first address line."""
+    text = re.sub(r"(?s)<a[^>]*>.*?</a>", " ", para)  # drop the trailing link/URL
+    header = []
+    for line in re.split(r"(?i)<br\s*/?>", text):
+        if ADDRESS_LINE.match(line):
+            break
+        header.append(line)
+    return header
+
+
 def phones_by_state(page):
-    """Split the page into its per-agency <p> blocks and pull the first non-fax phone
-    out of each state's own paragraph. Matching starts at the state's full name so
-    "New York" cannot match inside "New York City" text or the wrong neighbour block."""
+    """Split the page into its per-agency <p> blocks, find the one whose header names each
+    state, and pull the first non-fax phone out of that paragraph."""
     found = {}
     paragraphs = re.findall(r"(?is)<p(?:\s[^>]*)?>(.*?)</p>", page)
+    headers = [" ".join(header_of(p)) for p in paragraphs]
     for state in STATES.values():
-        for para in paragraphs:
-            text = re.sub(r"(?s)<a[^>]*>.*?</a>", " ", para)  # drop the trailing link/URL
-            if not text.lstrip().startswith(state):
+        pattern = re.compile(rf"\b{re.escape(state)}\b")
+        for para, header in zip(paragraphs, headers):
+            if not pattern.search(header):
                 continue
-            lines = re.split(r"(?i)<br\s*/?>", text)
+            lines = re.split(r"(?i)<br\s*/?>", re.sub(r"(?s)<a[^>]*>.*?</a>", " ", para))
             for line in lines:
                 if "fax" in line.lower():
                     continue
