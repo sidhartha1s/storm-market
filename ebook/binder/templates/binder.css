@@ -59,6 +59,19 @@
   font-family: var(--sans); font-size: 8pt; color: var(--ink-mute);
   font-variant-numeric: tabular-nums; border-bottom: none;
 }
+/* A tighter row for forms whose row count (14, 16 tasks, Form 7's 14 hazards...) needs
+   the extra headroom more than the extra breathing space between rows. */
+.btable.tight th, .btable.tight td { padding: 5pt 4pt 5pt 0; font-size: 8.2pt; }
+/* A cell that is itself a fill-line rather than a labelled .field (Form 7, 9, 38's
+   table rows have no room for a label above the line). */
+.btable td.fill { border-bottom: .75pt solid var(--ink-soft); }
+.btable td.box-cell { text-align: center; }
+/* Form 14's per-trade sub-header row, inside the same table as its items. */
+.btable td.trade-head {
+  font-family: var(--sans); font-size: 7.2pt; font-weight: 700;
+  letter-spacing: .05em; text-transform: uppercase; color: var(--amber);
+  border-bottom: .75pt solid var(--rule); padding-top: 9pt;
+}
 
 /* ---- checklists (the spec's own wording: "Alert setup checklist", "The pre-fill
    list", "House shutdown checklist", "Return checklist") ---- */
