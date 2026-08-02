@@ -45,11 +45,20 @@ const body = book.slice(bodyStart);
 const pageRe = /<section class="page(?: auto-page)?">([\s\S]*?)<\/section>/g;
 
 // Chapter/part openers carry <h1 class="chapter-open"><span class="kicker">KICKER</span>Title</h1>.
-// Appendix B has no such h1 — it repeats <p class="runhead">Appendix B — ...</p> on every
-// one of its pages instead, so it's picked up as a "new title" transition: the first page
-// whose runhead text differs from whatever section was open before it.
+// Appendix B has no such h1 — it repeats <p class="runhead">Appendix B — ...</p> (one text
+// node, no spans) on every one of its pages instead, so it's picked up as a "new title"
+// transition: the first page whose runhead text differs from whatever section was open before it.
+//
+// The Binder uses a THIRD shape for its own internal sections: <p class="runhead"><span>The
+// Binder</span><span>Section A — The household</span></p> — the left span repeats the open
+// chapter (like the folio's left column), the right span names the current lettered section.
+// Only the "Section X — ..." shaped values are real section starts; the Binder also has intro
+// pages (e.g. "The front sheet") carrying this same markup that are not sections and are
+// deliberately not picked up — matches the instruction to add section rows, not form rows.
+const SECTION_RE = /^Section \S+ — /;
 const openers = [];
 let currentTitle = null;
+let currentSub = null;
 let m;
 while ((m = pageRe.exec(body))) {
   const content = m[1];
@@ -62,6 +71,7 @@ while ((m = pageRe.exec(body))) {
     const title = h1M[2].replace(/<[^>]+>/g, '').trim();
     openers.push({ kind: 'kicker', kicker, title, page });
     currentTitle = title;
+    currentSub = null;
     continue;
   }
 
@@ -69,6 +79,17 @@ while ((m = pageRe.exec(body))) {
   if (rhM && rhM[1].trim() !== currentTitle) {
     openers.push({ kind: 'runhead', title: rhM[1].trim(), page });
     currentTitle = rhM[1].trim();
+    currentSub = null;
+    continue;
+  }
+
+  const subM = content.match(/<p class="runhead"><span>[^<]*<\/span><span>([^<]*)<\/span><\/p>/);
+  if (subM) {
+    const sub = subM[1].trim();
+    if (SECTION_RE.test(sub) && sub !== currentSub) {
+      openers.push({ kind: 'sub', title: sub, page });
+      currentSub = sub;
+    }
   }
 }
 if (!openers.length) throw new Error('frontmatter.mjs: found no chapter/part openers in book.html — layout shape changed?');
