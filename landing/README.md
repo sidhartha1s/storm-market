@@ -71,10 +71,14 @@ your call, not mine to add silently. A real launch-price end date is honest and 
 1. **Gumroad product does not exist.** The buy button at `#buy` has no URL. Create the product, then
    set `href` to the Gumroad URL and add their overlay script. Gumroad cannot show a struck-through
    price natively — put the $87 anchor in the product description and use a discount code for $47.
-2. **The lead-magnet form is not wired.** It posts to `/api/subscribe`, which does not exist. The
-   submit handler currently **fails loudly with an alert** rather than pretending to subscribe
-   anyone. Needs either a Cloudflare Pages Function forwarding to a mail provider, or a hosted form
-   endpoint. The 50 state packets must also exist before this can deliver anything.
+2. **The lead-magnet form is now wired, but delivery is not finished.** `functions/api/subscribe.js`
+   is a Cloudflare Pages Function that validates the email + two-letter state code and forwards the
+   subscriber to Kit (see "Mail provider" below) — no more alert-only placeholder. What it does
+   **not** do: send the packet itself. It adds the subscriber with their state recorded as a custom
+   field; a Kit automation keyed on that field (built in the Kit dashboard, not in this repo) has to
+   actually email the right `<ABBR>.html`/PDF. That automation does not exist yet, and neither does
+   the Kit account — `KIT_API_KEY` must be set before this stops 500ing (see Deploy). The state
+   packets themselves are covered in blocker 4.
 3. **The book's prose is complete; its citations are not.** All **130 of 130** protections and all
    **23 of 23** hazard playbooks are drafted, plus front matter, people/places, the binder spec and the
    60-day sequence — 117,554 words. **All 130 citation markers are now closed**: every one carries a
