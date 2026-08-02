@@ -637,9 +637,10 @@ def build_form14_pages(form):
     """The contractor list. Each **Trade:** group's "·"-separated items become rows
     under a trade sub-header, and the trailing "Each row: requested · quoted · done ·
     documentation filed." sentence supplies the status columns every row gets. All 21
-    items in one table overflowed the page by ~200px (fitcheck), so it splits at a
-    trade boundary — Roofer/Electrician/Plumber on page 1, HVAC/General on page 2 —
-    never mid-trade."""
+    items in one table overflowed the page by ~200px (fitcheck), so it needs two pages
+    — split at a trade boundary (never mid-trade), chosen by balanced_split() weighing
+    each trade by its own item count (Roofer's 7 items are not the same page weight as
+    HVAC's 3), rather than a fixed "first 3 trades" cut."""
     trades = units_of_type(form["units"], "group")
     status_fields = form["units"][-1]["fields"]  # ['Each row: requested','quoted','done','documentation filed']
     if status_fields[0].split(":")[0].strip() != "Each row":
