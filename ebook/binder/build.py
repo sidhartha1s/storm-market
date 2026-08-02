@@ -769,10 +769,10 @@ def build_form41_pages(form):
     ident = units_of_type(form["units"], "fields")[0]["fields"]
     texts = units_of_type(form["units"], "text")
     page1 = render_fields(ident, cls_hint="med") + '<p class="b-cont">Call log</p>' + \
-        render_table([c.strip() for c in texts[0]["text"].split(":", 1)[1].rstrip(".").split(",")], 6, tight=True)
-    page2 = render_table([c.strip() for c in texts[1]["text"].split(":", 1)[1].rstrip(".").split(",")], 10)
-    page3 = render_table([c.strip() for c in texts[2]["text"].split(":", 1)[1].rstrip(".").split(",")], 8)
-    page4 = render_table([c.strip() for c in texts[3]["text"].split(":", 1)[1].rstrip(".").split(",")], 8)
+        render_table([c.strip() for c in texts[0]["text"].split(":", 1)[1].rstrip(".").split(",")], 9, tight=True)
+    page2 = render_table([c.strip() for c in texts[1]["text"].split(":", 1)[1].rstrip(".").split(",")], 12)
+    page3 = render_table([c.strip() for c in texts[2]["text"].split(":", 1)[1].rstrip(".").split(",")], 11)
+    page4 = render_table([c.strip() for c in texts[3]["text"].split(":", 1)[1].rstrip(".").split(",")], 11)
     return [page1, page2, page3, page4]
 
 
