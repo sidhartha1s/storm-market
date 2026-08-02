@@ -755,8 +755,13 @@ def build_form41_pages(form):
 FORM_REPEAT = {2: 4, 23: 4}
 
 # Forms with their own multi-page builder (each page's content differs, so the builder
-# returns the full list rather than main() repeating one page N times).
-MULTI_PAGE_BUILDERS = {36: build_form36_pages, 39: build_form39_pages, 41: build_form41_pages}
+# returns the full list rather than main() repeating one page N times). 4, 11, 14 and 36
+# started as single-page builders and were moved here once fitcheck measured them
+# overflowing the page box — see each builder's own docstring for the measured amount.
+MULTI_PAGE_BUILDERS = {
+    4: build_form4_pages, 11: build_form11_pages, 14: build_form14_pages,
+    36: build_form36_pages, 39: build_form39_pages, 41: build_form41_pages,
+}
 
 
 def build_form(form):
@@ -766,12 +771,10 @@ def build_form(form):
         return MULTI_PAGE_BUILDERS[n](form)
     single = {
         3: lambda: build_form3(all_fields(form)),
-        4: lambda: build_form4(form),
         6: lambda: build_form6(form),
         7: lambda: build_form7(form),
         8: lambda: build_form8(form),
         9: lambda: build_form9(form),
-        14: lambda: build_form14(form),
         15: lambda: build_form15(form),
         16: lambda: build_form16(form),
         17: lambda: build_form17(form),
