@@ -96,14 +96,24 @@ if (!openers.length) throw new Error('frontmatter.mjs: found no chapter/part ope
 
 // ---------- 2. turn openers into TOC rows ----------
 // A "PART X" kicker with no matching "PART X, CHAPTER/PLAYBOOK ..." anywhere is a single-page
-// part (Front Matter, the Binder, the 60 Days) and renders as one flat row. A "PART X, ..."
-// kicker groups under a part-header row (using the front matter's own description of that
-// part), with each chapter/playbook indented beneath it. Back matter and Appendix B are
-// top-level flat rows with no part.
+// part (Front Matter, the 60 Days) and renders as one flat row. A "PART X, ..." kicker groups
+// under a part-header row (using the front matter's own description of that part), with each
+// chapter/playbook indented beneath it. Back matter and Appendix B are top-level flat rows
+// with no part. The Binder is a "PART X" bare kicker too, but when its pages carry lettered
+// "sub" sections (see above), it renders the same head+children way as Parts One-Five instead
+// of a flat row — the section rows need a home, and reusing that exact pattern means no new
+// visual weight is introduced, just the two levels the rest of the contents already use.
 const toc = [];
 let openPartNum = null;
 
-for (const o of openers) {
+for (let i = 0; i < openers.length; i++) {
+  const o = openers[i];
+
+  if (o.kind === 'sub') {
+    toc.push({ level: 'child', title: o.title, page: o.page });
+    continue;
+  }
+
   if (o.kind === 'runhead') {
     toc.push({ level: 'flat', title: o.title, page: o.page });
     openPartNum = null;
@@ -119,11 +129,12 @@ for (const o of openers) {
   const bare = o.kicker.match(/^PART (\S+)$/);
   if (bare) {
     const num = bare[1];
-    if (num === 'ZERO') {
-      toc.push({ level: 'flat', title: o.title, page: o.page });
-    } else {
-      toc.push({ level: 'flat', title: `Part ${WORD_NUM[num] ?? num} — ${o.title}`, page: o.page });
-    }
+    const label = num === 'ZERO' ? o.title : `Part ${WORD_NUM[num] ?? num} — ${o.title}`;
+    // Look ahead to this part's own pages (up to the next kicker/runhead opener) for a
+    // 'sub' entry — if it has one, it gets a headerless part row like Parts One-Five.
+    let hasSections = false;
+    for (let j = i + 1; j < openers.length && openers[j].kind === 'sub'; j++) hasSections = true;
+    toc.push(hasSections ? { level: 'head', title: label } : { level: 'flat', title: label, page: o.page });
     openPartNum = null;
     continue;
   }
