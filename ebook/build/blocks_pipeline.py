@@ -226,6 +226,7 @@ def main():
     blocks = []
     for name in rp.ORDER:
         text = (rp.MS / name).read_text(encoding="utf-8")
+        text = strip_target_scaffold(text)
         text = truncate_binder_spec(text, name)
         title = text.split("\n", 1)[0].lstrip("# ").strip()
         rp._CURRENT_CHAPTER[0] = title
