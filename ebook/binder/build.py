@@ -677,7 +677,6 @@ def build_form36_pages(form):
     separate policies) still overflowed both pages by ~115px each (fitcheck), so it
     splits into 3 at group boundaries instead of shrinking type or clipping content."""
     g = group_map(form)
-    top_fields = units_of_type(form["units"][0:1][0]["fields"] if False else form["units"], "fields")
     top_fields = units_of_type(form["units"], "fields")[0]["fields"]
     page1 = (render_fields(top_fields, cls_hint="med") +
             render_group("Dwelling limit", g["Dwelling limit"]) +
