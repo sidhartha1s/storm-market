@@ -29,9 +29,17 @@ h1.chapter-open { font-size: 25pt; line-height: 1.08; letter-spacing: -.01em; fo
   border-left: 3px solid var(--amber); padding-left: 8pt;
 }
 
-/* ---- lists ---- */
-.auto-page ul, .auto-page ol { margin: 0 0 9pt; padding-left: 15pt; }
-.auto-page li { font-size: 9.7pt; line-height: 1.44; margin: 0 0 4pt; }
+/* ---- lists ----
+   blocks_pipeline.py explodes every <ul>/<ol> into bare <li> blocks (see explode_lists) so
+   a long list can break across a page like a run of paragraphs can — there is no <ul>/<ol>
+   parent to carry the marker or the indent, so this supplies both directly on the <li>. */
+.auto-page li.li-bare {
+  display: list-item; font-size: 9.7pt; line-height: 1.44;
+  margin: 0 0 4pt 15pt; padding-left: 2pt;
+}
+.auto-page li.li-ul { list-style-type: disc; list-style-position: outside; }
+.auto-page li.li-ol { list-style-type: none; }
+.auto-page li.li-ol .li-num { font-family: var(--sans); font-weight: 600; color: var(--ink-soft); margin-right: 2pt; }
 
 /* ---- tables (book.css only styles table.money / table.week, both hand-authored) ---- */
 .auto-page table {
