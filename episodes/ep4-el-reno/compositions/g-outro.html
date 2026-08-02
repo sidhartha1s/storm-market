@@ -44,12 +44,22 @@
 window.__timelines = window.__timelines || {};
 (function() {
   const tl = gsap.timeline({ paused: true });
-  tl.set(["#g-outro-twh","#g-outro-ep"], {autoAlpha:0}, 0);
+  const TICKS = "#g-outro-t1,#g-outro-t2,#g-outro-t3,#g-outro-t4,#g-outro-t5,#g-outro-t6,#g-outro-t7,#g-outro-t8";
+  tl.set(["#g-outro-eyebrow","#g-outro-twh","#g-outro-rule","#g-outro-ep","#g-outro-ring",TICKS], {autoAlpha:0}, 0);
+
+  /* continuous element for the whole 24.3s window: a slow radar-sweep motif behind the
+     card (thematic — the show's meteorology thread), covers the pre-entrance quiet too */
+  tl.fromTo("#g-outro-sweep", {rotation:0}, {rotation:130, duration:24.3, ease:"none"}, 0);
+  tl.fromTo("#g-outro-ring", {autoAlpha:0}, {autoAlpha:1, duration:1.4, ease:"power2.out"}, 0.4);
+  tl.fromTo(TICKS, {autoAlpha:0}, {autoAlpha:1, duration:1.4, ease:"power2.out", stagger:0.06}, 0.6);
+
   /* host mounts at a8-s1 start; match-cut title on the spoken words "The Warning Hour" @19.5 ("Warning") */
-  tl.fromTo("#g-outro-twh", {autoAlpha:0, scale:1.16}, {autoAlpha:1, scale:1, duration:0.45, ease:"power3.out"}, 19.5);
-  /* sub-line lands right after "Hour." finishes @20.14 */
+  tl.fromTo("#g-outro-eyebrow", {autoAlpha:0, y:12}, {autoAlpha:1, y:0, duration:0.35, ease:"power2.out"}, 19.15);
+  tl.fromTo("#g-outro-twh", {autoAlpha:0, scale:1.16}, {autoAlpha:1, scale:1, duration:0.45, ease:"power4.out"}, 19.5);
+  /* sub-line + rule land right after "Hour." finishes @20.14 */
+  tl.fromTo("#g-outro-rule", {autoAlpha:0, scaleX:0}, {autoAlpha:1, scaleX:1, duration:0.4, ease:"power3.out"}, 20.1);
   tl.fromTo("#g-outro-ep", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.5, ease:"power2.out"}, 20.4);
-  /* subtle continuous drift so the card is never a frozen still while it holds */
+  /* subtle continuous drift so the card itself is never a frozen still while it holds */
   tl.fromTo("#g-outro-wrap", {scale:1}, {scale:1.02, duration:4.4, ease:"none"}, 19.5);
   /* card holds to the very last frame — comp ends at 24.3, no exit tween, no dead tail */
   window.__timelines["g-outro"] = tl;
