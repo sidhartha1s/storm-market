@@ -672,25 +672,27 @@ def build_form30(form):
 
 def build_form36_pages(form):
     """The insurance audit. Dense enough (five identity fields plus eleven bold-
-    labelled money/coverage groups) that one page cannot hold it at a legible size —
-    it splits at the natural boundary between "what the policy is" (page 1) and
-    "what it excludes / the sub-limits / the final question" (page 2), never mid-field."""
+    labelled money/coverage groups) that one page cannot hold it at a legible size.
+    A 2-page split (policy identity + limits/deductibles, then exclusions/sub-limits/
+    separate policies) still overflowed both pages by ~115px each (fitcheck), so it
+    splits into 3 at group boundaries instead of shrinking type or clipping content."""
     g = group_map(form)
+    top_fields = units_of_type(form["units"][0:1][0]["fields"] if False else form["units"], "fields")
     top_fields = units_of_type(form["units"], "fields")[0]["fields"]
     page1 = (render_fields(top_fields, cls_hint="med") +
             render_group("Dwelling limit", g["Dwelling limit"]) +
-            render_group("Contents limit", g["Contents limit"]) +
-            render_group("Deductibles", g["Deductibles"]) +
+            render_group("Contents limit", g["Contents limit"]))
+    page2 = (render_group("Deductibles", g["Deductibles"]) +
             render_group("Roof settlement basis", g["Roof settlement basis"]) +
-            render_group("Loss of use", g["Loss of use"]))
+            render_group("Loss of use", g["Loss of use"]) +
+            render_group("Exclusions confirmed", g["Exclusions confirmed"]))
     texts = units_of_type(form["units"], "text")
     question = " ".join(t["text"] for t in texts)
-    page2 = (render_group("Exclusions confirmed", g["Exclusions confirmed"]) +
-            render_group("Sub-limits", g["Sub-limits"]) +
+    page3 = (render_group("Sub-limits", g["Sub-limits"]) +
             render_group("Separate policies", g["Separate policies"]) +
             f'<p class="b-note">{render_inline(question)}</p>' +
             render_field("Answer", cls_hint=""))
-    return [page1, page2]
+    return [page1, page2, page3]
 
 
 def build_form38(form):
