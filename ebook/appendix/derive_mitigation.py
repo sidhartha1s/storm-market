@@ -106,18 +106,20 @@ def main():
     args = parser.parse_args()
 
     rows, dropped, blocked, checks = [], [], [], []
-    for abbr, state, program, url in PROGRAMS:
+    for abbr, state in STATES.items():
         row = {"state": state, "abbr": abbr,
-               "mitigation_program": program, "mitigation_url": url,
-               "mitigation_url_src": url}
-        if not args.no_verify:
-            verdict, _, why = verify_urls.check(url)
-            checks.append(verdict)
-            if verdict == DEAD:
-                dropped.append((state, url, why))
-                row["mitigation_program"] = row["mitigation_url"] = row["mitigation_url_src"] = ""
-            elif verdict == "blocked":
-                blocked.append((state, url, why))
+               "mitigation_program": "", "mitigation_url": "", "mitigation_url_src": ""}
+        if abbr in PROGRAMS:
+            program, url = PROGRAMS[abbr]
+            row["mitigation_program"], row["mitigation_url"], row["mitigation_url_src"] = program, url, url
+            if not args.no_verify:
+                verdict, _, why = verify_urls.check(url)
+                checks.append(verdict)
+                if verdict == DEAD:
+                    dropped.append((state, url, why))
+                    row["mitigation_program"] = row["mitigation_url"] = row["mitigation_url_src"] = ""
+                elif verdict == "blocked":
+                    blocked.append((state, url, why))
         rows.append(row)
 
     with OUT.open("w", newline="", encoding="utf-8") as fh:
