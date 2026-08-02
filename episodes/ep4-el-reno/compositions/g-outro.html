@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial,sans-serif; }
+  .stage { position:absolute; inset:0; display:grid; place-items:center; }
+  .wrap { text-align:center; }
+  .twh { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:104px; color:#f2f5f8; letter-spacing:5px; }
+  .twh .amber { color:#d8a13a; }
+  .ep { font-family:Georgia,serif; font-style:italic; font-size:30px; color:#93a3b2; margin-top:24px; }
+</style>
+<div id="root" data-composition-id="g-outro" data-width="1920" data-height="1080">
+  <div class="stage">
+    <div class="wrap" id="g-outro-wrap">
+      <div class="twh" id="g-outro-twh">THE <span class="amber">WARNING</span> HOUR</div>
+      <div class="ep" id="g-outro-ep">Episode 4 &mdash; El Reno 2013</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#g-outro-twh","#g-outro-ep"], {autoAlpha:0}, 0);
+  /* host mounts at a8-s1 start; match-cut title on the spoken words "The Warning Hour" @19.5 ("Warning") */
+  tl.fromTo("#g-outro-twh", {autoAlpha:0, scale:1.16}, {autoAlpha:1, scale:1, duration:0.45, ease:"power3.out"}, 19.5);
+  /* sub-line lands right after "Hour." finishes @20.14 */
+  tl.fromTo("#g-outro-ep", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.5, ease:"power2.out"}, 20.4);
+  /* subtle continuous drift so the card is never a frozen still while it holds */
+  tl.fromTo("#g-outro-wrap", {scale:1}, {scale:1.02, duration:4.4, ease:"none"}, 19.5);
+  /* card holds to the very last frame — comp ends at 24.3, no exit tween, no dead tail */
+  window.__timelines["g-outro"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
