@@ -45,11 +45,20 @@ const body = book.slice(bodyStart);
 const pageRe = /<section class="page(?: auto-page)?">([\s\S]*?)<\/section>/g;
 
 // Chapter/part openers carry <h1 class="chapter-open"><span class="kicker">KICKER</span>Title</h1>.
-// Appendix B has no such h1 — it repeats <p class="runhead">Appendix B — ...</p> on every
-// one of its pages instead, so it's picked up as a "new title" transition: the first page
-// whose runhead text differs from whatever section was open before it.
+// Appendix B has no such h1 — it repeats <p class="runhead">Appendix B — ...</p> (one text
+// node, no spans) on every one of its pages instead, so it's picked up as a "new title"
+// transition: the first page whose runhead text differs from whatever section was open before it.
+//
+// The Binder uses a THIRD shape for its own internal sections: <p class="runhead"><span>The
+// Binder</span><span>Section A — The household</span></p> — the left span repeats the open
+// chapter (like the folio's left column), the right span names the current lettered section.
+// Only the "Section X — ..." shaped values are real section starts; the Binder also has intro
+// pages (e.g. "The front sheet") carrying this same markup that are not sections and are
+// deliberately not picked up — matches the instruction to add section rows, not form rows.
+const SECTION_RE = /^Section \S+ — /;
 const openers = [];
 let currentTitle = null;
+let currentSub = null;
 let m;
 while ((m = pageRe.exec(body))) {
   const content = m[1];
@@ -62,6 +71,7 @@ while ((m = pageRe.exec(body))) {
     const title = h1M[2].replace(/<[^>]+>/g, '').trim();
     openers.push({ kind: 'kicker', kicker, title, page });
     currentTitle = title;
+    currentSub = null;
     continue;
   }
 
@@ -69,20 +79,41 @@ while ((m = pageRe.exec(body))) {
   if (rhM && rhM[1].trim() !== currentTitle) {
     openers.push({ kind: 'runhead', title: rhM[1].trim(), page });
     currentTitle = rhM[1].trim();
+    currentSub = null;
+    continue;
+  }
+
+  const subM = content.match(/<p class="runhead"><span>[^<]*<\/span><span>([^<]*)<\/span><\/p>/);
+  if (subM) {
+    const sub = subM[1].trim();
+    if (SECTION_RE.test(sub) && sub !== currentSub) {
+      openers.push({ kind: 'sub', title: sub, page });
+      currentSub = sub;
+    }
   }
 }
 if (!openers.length) throw new Error('frontmatter.mjs: found no chapter/part openers in book.html — layout shape changed?');
 
 // ---------- 2. turn openers into TOC rows ----------
 // A "PART X" kicker with no matching "PART X, CHAPTER/PLAYBOOK ..." anywhere is a single-page
-// part (Front Matter, the Binder, the 60 Days) and renders as one flat row. A "PART X, ..."
-// kicker groups under a part-header row (using the front matter's own description of that
-// part), with each chapter/playbook indented beneath it. Back matter and Appendix B are
-// top-level flat rows with no part.
+// part (Front Matter, the 60 Days) and renders as one flat row. A "PART X, ..." kicker groups
+// under a part-header row (using the front matter's own description of that part), with each
+// chapter/playbook indented beneath it. Back matter and Appendix B are top-level flat rows
+// with no part. The Binder is a "PART X" bare kicker too, but when its pages carry lettered
+// "sub" sections (see above), it renders the same head+children way as Parts One-Five instead
+// of a flat row — the section rows need a home, and reusing that exact pattern means no new
+// visual weight is introduced, just the two levels the rest of the contents already use.
 const toc = [];
 let openPartNum = null;
 
-for (const o of openers) {
+for (let i = 0; i < openers.length; i++) {
+  const o = openers[i];
+
+  if (o.kind === 'sub') {
+    toc.push({ level: 'child', title: o.title, page: o.page });
+    continue;
+  }
+
   if (o.kind === 'runhead') {
     toc.push({ level: 'flat', title: o.title, page: o.page });
     openPartNum = null;
@@ -98,11 +129,15 @@ for (const o of openers) {
   const bare = o.kicker.match(/^PART (\S+)$/);
   if (bare) {
     const num = bare[1];
-    if (num === 'ZERO') {
-      toc.push({ level: 'flat', title: o.title, page: o.page });
-    } else {
-      toc.push({ level: 'flat', title: `Part ${WORD_NUM[num] ?? num} — ${o.title}`, page: o.page });
+    const label = num === 'ZERO' ? o.title : `Part ${WORD_NUM[num] ?? num} — ${o.title}`;
+    // Look ahead to this part's own pages (up to the next kicker/runhead opener) for a
+    // 'sub' entry — if it has one, it gets a headerless part row like Parts One-Five.
+    let hasSections = false;
+    for (let j = i + 1; j < openers.length; j++) {
+      if (openers[j].kind === 'kicker' || openers[j].kind === 'runhead') break;
+      if (openers[j].kind === 'sub') { hasSections = true; break; }
     }
+    toc.push(hasSections ? { level: 'head', title: label } : { level: 'flat', title: label, page: o.page });
     openPartNum = null;
     continue;
   }
