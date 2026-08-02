@@ -13,3 +13,10 @@ scratch__*
 _blank_tmp.html*
 _snap_tmp.html*
 *.html.retired
+*.log
+__pycache__/
+*.pyc
+.consumed/
+SESSION_LEDGER.md
+.worktrees/
+.playwright-cli/
