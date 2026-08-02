@@ -533,6 +533,17 @@ def build_form9(form):
             f'{rows}</table>')
 
 
+def build_form11_pages(form):
+    """Shut-offs. Five groups as one page overflowed by ~140px (fitcheck), so it
+    splits at a group boundary — the three "find it under pressure" shut-offs (water
+    main, gas, breaker) on page 1, the two slower ones (water heater, sprinklers/pool/
+    well/septic) on page 2."""
+    groups = units_of_type(form["units"], "group")
+    page1 = render_groups(groups[:3])
+    page2 = render_groups(groups[3:])
+    return [page1, page2]
+
+
 def build_form14_pages(form):
     """The contractor list. Each **Trade:** group's "·"-separated items become rows
     under a trade sub-header, and the trailing "Each row: requested · quoted · done ·
