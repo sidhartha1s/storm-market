@@ -11,12 +11,14 @@ opening the manuscript file. That review header is preview-harness scaffolding â
 part of what ships in the book.
 """
 import html
+import sys
 from pathlib import Path
 
 from figures import FIGURES, render_figure
 
 HERE = Path(__file__).parent
 OUT = HERE / "out" / "figures.html"
+BOOK_CSS = HERE / "book.css"
 
 PAGE_TEMPLATE = '''<section class="page">
   <div class="runhead"><span>Figure preview &middot; {fig_id}</span><span>{file} &middot; Protection {protection}</span></div>
