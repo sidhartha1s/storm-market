@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; }
+  .v1-hdr { position:absolute; left:0; right:0; top:64px; text-align:center; font-weight:700; font-size:26px; letter-spacing:8px; color:#93a3b2; }
+  .v1-sub { position:absolute; left:0; right:0; top:108px; text-align:center; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  .v1-strip { position:absolute; left:120px; right:120px; top:260px; height:560px; }
+  .v1-baseline { position:absolute; left:0; right:0; top:460px; height:3px; background:#2a3644; transform-origin:left center; }
+  .v1-pathlabel { position:absolute; left:0; top:470px; font-size:19px; color:#93a3b2; font-weight:700; letter-spacing:4px; }
+  .v1-di { position:absolute; bottom:600px; width:56px; height:56px; background:#101820; border:2px solid #2a3644; display:grid; place-items:center; font-size:11px; color:#9db0c2; font-weight:700; text-align:center; line-height:1.15; transform-origin:center bottom; }
+  .v1-bar { position:absolute; bottom:100px; width:40px; background:linear-gradient(180deg,#e8c56a,#d8a13a); transform-origin:center bottom; }
+  .v1-stamp { position:absolute; top:260px; font-family:'Arial Black',Arial,sans-serif; font-size:64px; color:#fff; background:#8e2020; padding:2px 22px; transform-origin:center center; }
+  .v1-trace { position:absolute; left:0; right:0; top:0px; height:6px; background:linear-gradient(90deg,#e74c3c,#c0392b); transform-origin:left center; box-shadow:0 0 18px rgba(231,76,60,0.6); }
+  .v1-comet { position:absolute; top:-9px; width:24px; height:24px; border-radius:50%; background:radial-gradient(circle,#fff,#e74c3c 70%,transparent); }
+  .v1-290 { position:absolute; top:-56px; font-size:30px; color:#e74c3c; font-weight:700; letter-spacing:1px; }
+  .v1-gap { position:absolute; bottom:100px; top:0px; background:rgba(231,76,60,0.08); border-left:2px dashed #5a4040; border-right:2px dashed #5a4040; }
+  .v1-gaplabel { position:absolute; bottom:-40px; font-size:19px; color:#93a3b2; font-weight:700; letter-spacing:3px; text-align:center; }
+  .v1-gapstat { position:absolute; left:0; right:0; bottom:24px; text-align:center; font-family:'Courier New',monospace; font-size:24px; color:#e74c3c; font-weight:700; }
+  .v1-close1 { position:absolute; left:0; right:0; bottom:44px; text-align:center; font-family:Georgia,serif; font-style:italic; font-size:30px; color:#b8c6d4; }
+  .v1-close2 { position:absolute; left:0; right:0; bottom:44px; text-align:center; font-family:Georgia,serif; font-style:italic; font-size:30px; color:#b8c6d4; }
+</style>
+<div id="root" data-composition-id="g-efscale-v1" data-width="1920" data-height="1080">
+  <div class="v1-hdr" id="g-v1-hdr">READING THE WIND FROM WHAT IT BROKE</div>
+  <div class="v1-sub" id="g-v1-sub">El Reno's own path shows the method — and its blind spot</div>
+  <div class="v1-strip" id="g-v1-strip">
+    <div class="v1-baseline" id="g-v1-baseline"></div>
+    <div class="v1-pathlabel" id="g-v1-pathlabel" style="left:0px;">16 MILES OF PATH — MOSTLY OPEN FARMLAND</div>
+
+    <div class="v1-di" id="g-v1-di0" style="left:40px;">1-2 FAM<br/>HOME</div>
+    <div class="v1-bar" id="g-v1-bar0" style="left:48px; height:120px;"></div>
+    <div class="v1-di" id="g-v1-di1" style="left:130px;">MOBILE<br/>HOME</div>
+    <div class="v1-bar" id="g-v1-bar1" style="left:138px; height:90px;"></div>
+    <div class="v1-di" id="g-v1-di2" style="left:220px;">POLE</div>
+    <div class="v1-bar" id="g-v1-bar2" style="left:228px; height:70px;"></div>
+
+    <div class="v1-gap" id="g-v1-gap" style="left:340px; width:820px;"></div>
+    <div class="v1-gaplabel" id="g-v1-gaplabel" style="left:340px; width:820px;">EMPTY FARMLAND — NOTHING TO INSPECT</div>
+
+    <div class="v1-di" id="g-v1-di3" style="left:1220px;">1-2 FAM<br/>HOME</div>
+    <div class="v1-bar" id="g-v1-bar3" style="left:1228px; height:150px;"></div>
+    <div class="v1-di" id="g-v1-di4" style="left:1310px;">1-2 FAM<br/>HOME</div>
+    <div class="v1-bar" id="g-v1-bar4" style="left:1318px; height:160px;"></div>
+    <div class="v1-di" id="g-v1-di5" style="left:1400px;">BARN</div>
+    <div class="v1-bar" id="g-v1-bar5" style="left:1408px; height:110px;"></div>
+
+    <div class="v1-stamp" id="g-v1-stamp" style="left:1450px;">EF3</div>
+
+    <div class="v1-trace" id="g-v1-trace">
+      <div class="v1-comet" id="g-v1-comet" style="left:0px;"></div>
+      <div class="v1-290" id="g-v1-290" style="left:640px;">290+ MPH — RADAR MEASURED</div>
+    </div>
+  </div>
+  <div class="v1-gapstat" id="g-v1-gapstat">RADAR RAN 10–30% ABOVE WHAT THE DAMAGE IMPLIED</div>
+  <div class="v1-close1" id="g-v1-close1">Grass does not testify.</div>
+  <div class="v1-close2" id="g-v1-close2" style="display:none;">The record width stands — the violence stays officially invisible.</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const ids = ["#g-v1-hdr","#g-v1-sub","#g-v1-baseline","#g-v1-pathlabel",
+    "#g-v1-di0","#g-v1-bar0","#g-v1-di1","#g-v1-bar1","#g-v1-di2","#g-v1-bar2",
+    "#g-v1-gap","#g-v1-gaplabel","#g-v1-di3","#g-v1-bar3","#g-v1-di4","#g-v1-bar4",
+    "#g-v1-di5","#g-v1-bar5","#g-v1-stamp","#g-v1-trace","#g-v1-290",
+    "#g-v1-gapstat","#g-v1-close1","#g-v1-close2"];
+  tl.set(ids, {autoAlpha:0}, 0);
+  tl.set(["#g-v1-bar0","#g-v1-bar1","#g-v1-bar2","#g-v1-bar3","#g-v1-bar4","#g-v1-bar5"], {scaleY:0}, 0);
+  tl.set("#g-v1-baseline", {scaleX:0}, 0);
+  tl.set("#g-v1-trace", {scaleX:0}, 0);
+
+  /* "The enhanced Fujita scale does not measure wind" @0.0 */
+  tl.fromTo("#g-v1-hdr", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.5}, 0.3);
+  /* "it measures what wind does" @3.6 */
+  tl.fromTo("#g-v1-sub", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 3.6);
+  /* "Survey teams walk the path" @6.24 */
+  tl.set("#g-v1-baseline", {autoAlpha:1}, 6.24);
+  tl.to("#g-v1-baseline", {scaleX:1, duration:0.8, ease:"power2.out"}, 6.24);
+  tl.fromTo("#g-v1-pathlabel", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 7.5);
+
+  /* "A well-built house swept from its foundation implies one wind speed" @12.74 */
+  tl.fromTo("#g-v1-di0", {autoAlpha:0, scale:0.6}, {autoAlpha:1, scale:1, duration:0.25}, 12.74);
+  tl.fromTo("#g-v1-bar0", {scaleY:0}, {scaleY:1, duration:0.5, ease:"power2.out"}, 12.95);
+
+  /* "A snapped power pole implies another" @17.74 */
+  tl.fromTo("#g-v1-di2", {autoAlpha:0, scale:0.6}, {autoAlpha:1, scale:1, duration:0.25}, 17.74);
+  tl.fromTo("#g-v1-bar2", {scaleY:0}, {scaleY:1, duration:0.5, ease:"power2.out"}, 17.95);
+  /* mobile home DI rides along with the pole beat so the strip reads as one method @18.0 */
+  tl.fromTo("#g-v1-di1", {autoAlpha:0, scale:0.6}, {autoAlpha:1, scale:1, duration:0.25}, 18.3);
+  tl.fromTo("#g-v1-bar1", {scaleY:0}, {scaleY:1, duration:0.5, ease:"power2.out"}, 18.5);
+
+  /* "Now look at this tornado's path" @24.14 -> "16 miles" @25.98 */
+  tl.to("#g-v1-pathlabel", {autoAlpha:1, duration:0.3}, 24.14);
+  /* "almost all of it open farmland" @28.36 */
+  tl.fromTo("#g-v1-gap", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 28.36);
+  tl.fromTo("#g-v1-gaplabel", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 29.2);
+
+  /* "The survey teams catalogued hundreds of damage points" @30.72 */
+  tl.fromTo("#g-v1-di3", {autoAlpha:0, scale:0.6}, {autoAlpha:1, scale:1, duration:0.25}, 30.72);
+  tl.fromTo("#g-v1-bar3", {scaleY:0}, {scaleY:1, duration:0.5, ease:"power2.out"}, 30.9);
+  /* "the worst of them, a handful of rural homes" @34.68 */
+  tl.fromTo("#g-v1-di4", {autoAlpha:0, scale:0.6}, {autoAlpha:1, scale:1, duration:0.25}, 34.68);
+  tl.fromTo("#g-v1-bar4", {scaleY:0}, {scaleY:1, duration:0.5, ease:"power2.out"}, 34.9);
+  tl.fromTo("#g-v1-di5", {autoAlpha:0, scale:0.6}, {autoAlpha:1, scale:1, duration:0.25}, 35.7);
+  tl.fromTo("#g-v1-bar5", {scaleY:0}, {scaleY:1, duration:0.5, ease:"power2.out"}, 35.9);
+
+  /* "supported EF3" @38.28 — the stamp slams */
+  tl.fromTo("#g-v1-stamp", {autoAlpha:0, scale:2.4}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 38.28);
+
+  /* "But the mobile research radar sitting on that storm" @39.86 — the trace draws in, ABOVE the bars */
+  tl.set("#g-v1-trace", {autoAlpha:1}, 39.86);
+  tl.to("#g-v1-trace", {scaleX:1, duration:2.2, ease:"power2.out"}, 39.86);
+  /* "measured winds above 290 miles per hour" @43.2 */
+  tl.fromTo("#g-v1-290", {autoAlpha:0, y:-10}, {autoAlpha:1, y:0, duration:0.4}, 43.52);
+
+  /* continuous motion: a comet of radar energy runs the trace line for the WHOLE window,
+     visible proof the radar kept sampling even where the ground had nothing to show */
+  tl.fromTo("#g-v1-comet", {x:0, autoAlpha:0}, {autoAlpha:1, duration:0.3}, 39.86);
+  tl.to("#g-v1-comet", {x:1680, duration:20, ease:"none", repeat:2}, 39.86); /* finite: covers host window to ~100s; repeat:-1 breaks seek-render duration */
+
+  /* "Grass does not testify" @55.24 */
+  tl.fromTo("#g-v1-close1", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 55.24);
+  /* "the radar's numbers ran 10-30% above what the damage implied" @61.54 */
+  tl.to("#g-v1-close1", {autoAlpha:0, duration:0.4}, 60.6);
+  tl.fromTo("#g-v1-gapstat", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.5}, 61.54);
+
+  /* "The record width stands ... officially invisible" @75.6-78.98 */
+  tl.set("#g-v1-close2", {display:"block"}, 75.6);
+  tl.fromTo("#g-v1-close2", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 75.6);
+
+  window.__timelines["g-efscale-v1"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
