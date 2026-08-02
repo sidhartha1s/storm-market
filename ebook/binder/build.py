@@ -386,3 +386,422 @@ def form_head(form_title, serves_raw, cont_label=None):
     if serves_raw:
         head += f'<p class="b-serves">{render_inline(serves_raw)}</p>'
     return head
+
+
+def group_map(form):
+    return {u["label"]: u["desc"] for u in units_of_type(form["units"], "group")}
+
+
+def all_fields(form):
+    out = []
+    for u in units_of_type(form["units"], "fields"):
+        out.extend(u["fields"])
+    return out
+
+
+# ---------------------------------------------------------------- 6. generic primitives
+
+CHECKLIST_FORMS = {10, 34, 35}      # the spec's own wording: "...checklist"
+GROUP_AS_CHECKLIST_FORMS = {24}     # "Five-minute list" / "Thirty-minute list" — items to
+                                     # grab, not values to record, so a box reads better
+                                     # than a blank line.
+
+
+def build_groups_generic(form):
+    groups = units_of_type(form["units"], "group")
+    if form["number"] in GROUP_AS_CHECKLIST_FORMS:
+        parts = []
+        for g in groups:
+            items = split_top(g["desc"].rstrip("."), ",")
+            parts.append(f'<div class="bgroup"><h4>{render_inline(g["label"])}</h4>'
+                         f'{render_checklist(items)}</div>')
+        return "".join(parts)
+    return render_groups(groups)
+
+
+def build_table_per_form(form, rows):
+    u = units_of_type(form["units"], "table_per")[0]
+    lede = f'<p class="form-sub">One row per {esc(u["entity"])}.</p>'
+    return lede + render_table(u["fields"], rows)
+
+
+def build_form3(fields):
+    """Animals (no pet count given in the spec). Two side-by-side blocks fit one page
+    at book.css's field sizing; a household with more pets reuses a second blank copy
+    of this page, the same way Form 2's spares work for people."""
+    last = fields[-1]  # "the three phone numbers: pet-friendly shelter, boarding
+                        # facility, out-of-area contact who would take them"
+    label, _, detail = last.partition(":")
+    subs = split_top(detail, ",") if detail else []
+    tail = (f'<div class="bgroup"><h4>{render_inline(label.strip())}</h4>{render_fields(subs)}</div>'
+            if subs else render_field(last))
+
+    def one_animal(n):
+        return (f'<div><p class="b-cont">Animal {n}</p>'
+                f'{render_fields(fields[:-1], cls_hint="med")}{tail}</div>')
+
+    return f'<div class="grid2">{one_animal(1)}{one_animal(2)}</div>'
+
+
+def build_form4(form):
+    """The contact sheet. Custom rather than the generic groups primitive because two
+    of its seven bold-labelled groups are themselves repeated-row tables (two local
+    contacts, three neighbours) and one (Crisis lines) mixes a fixed fact (988) with
+    a field the reader still has to look up and write in — none of that is expressible
+    by the generic single-field-per-group renderer."""
+    g = group_map(form)
+
+    def whole(label):
+        return f'{label} {g[label]}'.replace("  ", " ").rstrip(". ")
+
+    parts = ['<div class="bgroup"><h4>Out-of-area contact</h4>' +
+             render_fields(split_top(g["Out-of-area contact"].lstrip(", "), ","), cls_hint="med") +
+             '</div>']
+    parts.append(f'<div class="bgroup"><h4>{esc(whole("Two local emergency contacts"))}</h4>' +
+                 render_table(["Name", "Relationship", "Phone"], 2, numbered=False) + '</div>')
+    parts.append(f'<div class="bgroup"><h4>{esc(whole("Neighbours"))}</h4>' +
+                 render_table(["Name", "Phone", "Note — elderly, alone, disabled, medically dependent"],
+                              3, numbered=False) + '</div>')
+    parts.append('<div class="bgroup"><h4>Utilities</h4>' +
+                 render_fields(split_top(g["Utilities"].rstrip("."), ","), cls_hint="med") + '</div>')
+    parts.append('<div class="bgroup"><h4>Services</h4>' +
+                 render_fields(split_top(g["Services"].rstrip("."), ","), cls_hint="short") + '</div>')
+    parts.append(render_field(whole("Your county's ten-digit emergency backup number")))
+    parts.append('<div class="bgroup"><h4>Crisis lines</h4>'
+                 '<p class="small">988 — Suicide &amp; Crisis Lifeline. Call or text.</p>' +
+                 render_field("The current Disaster Distress Helpline number and text option, "
+                              "copied from SAMHSA's page on the day you fill this in") + '</div>')
+    return "".join(parts)
+
+
+def build_form6(form):
+    g = group_map(form)
+    body = (render_field(f'Near home: {g["Near home"].rstrip(".")}') +
+            render_field(f'Out of area: {g["Out of area"].rstrip(".")}') +
+            '<p class="b-serves"><strong>We have agreed: nobody goes back for anybody.</strong></p>' +
+            render_signature(1))
+    return body
+
+
+def build_form7(form):
+    """The trigger plan. "Rows for:" names the hazards as row LABELS, not column
+    headers (see classify_unit) — each row completes "When [hazard] happens, we
+    _____", so the hazard name is pre-filled and the reader only fills the response.
+    A tight row height (see .btable.tight) is needed to fit all 14 rows plus the
+    signature block on one page — this is "the single most important page in the
+    binder" per the spec, so it does not get a second page to breathe into."""
+    items = units_of_type(form["units"], "rows_for")[0]["items"]
+    rows = "".join(
+        f'<tr><td>{render_inline(item)}</td><td class="fill"></td></tr>' for item in items)
+    table = (f'<table class="btable tight"><tr><th>When this happens</th>'
+             f'<th>We will {D} without further discussion</th></tr>{rows}</table>')
+    note = ('<p class="b-note">When ' + render_inline("_____") + ' happens, we ' +
+            render_inline("_____") + ', without further discussion.</p>')
+    # "a signature line for every adult, and a date" — the household size isn't
+    # given anywhere in the binder, so three lines are offered (covers most
+    # households; a larger one adds a line by hand, which costs nothing on a page
+    # that is otherwise full).
+    return note + table + render_signature(3)
+
+
+def build_form8(form):
+    """Region priority worksheet. "your ten protections in order" is an explicit
+    count (also matches the ten-row table every packet already builds from the same
+    front-matter data — see appendix/build.py's region_first_ten()), so the table is
+    ten rows, not a guessed default."""
+    body = (render_field("Your region or regions", cls_hint="med") +
+            render_table(["Protection", "Done on"], 10, prefill_col0=list(range(1, 11))))
+    return body
+
+
+def build_form9(form):
+    """The vulnerability walk. Completed twice — once in heavy rain, once dry — so
+    each question gets two answer columns rather than one, per the spec's own
+    instruction, not a layout invented past it."""
+    texts = units_of_type(form["units"], "text")
+    questions = [q.strip() + "?" for q in texts[1]["text"].rstrip("?").split("?") if q.strip()]
+    rows = "".join(
+        f'<tr><td>{render_inline(q)}</td><td class="fill"></td><td class="fill"></td></tr>'
+        for q in questions)
+    return (f'<table class="btable tight" style="table-layout:auto">'
+            f'<tr><th>{render_inline(texts[0]["text"])}</th><th>Heavy rain</th><th>Dry weather</th></tr>'
+            f'{rows}</table>')
+
+
+def build_form14(form):
+    """The contractor list. Each **Trade:** group's "·"-separated items become rows
+    under a trade sub-header, and the trailing "Each row: requested · quoted · done ·
+    documentation filed." sentence supplies the status columns every row gets."""
+    trades = units_of_type(form["units"], "group")
+    status_fields = form["units"][-1]["fields"]  # ['Each row: requested','quoted','done','documentation filed']
+    status_cols = [status_fields[0].split(":")[-1].strip()] + status_fields[1:]
+    ths = "<th>Item</th>" + "".join(f"<th>{esc(c.title())}</th>" for c in status_cols)
+    rows = [f"<tr>{ths}</tr>"]
+    for t in trades:
+        items = t["desc"].rstrip(".").split("·")
+        rows.append(f'<tr><td class="trade-head" colspan="{len(status_cols) + 1}">'
+                    f'{render_inline(t["label"])}</td></tr>')
+        for item in items:
+            tds = f"<td>{render_inline(item.strip())}</td>" + "<td></td>" * len(status_cols)
+            rows.append(f"<tr>{tds}</tr>")
+    return f'<table class="btable tight" style="table-layout:auto">{"".join(rows)}</table>'
+
+
+def build_form15(form):
+    """Structural protections progress. "Sixteen rows...for: A · B · C" gives both an
+    explicit row count and the column list in one sentence; the sixteen protection
+    numbers are Serves 69-84 from this same form's byline, not a re-typed list."""
+    fields = all_fields(form)
+    first = fields[0].split(":")[-1].strip()  # "...columns for: applies to me" -> "applies to me"
+    columns = ["Protection"] + [first] + fields[1:]
+    return render_table(columns[1:], 16, prefill_col0=list(range(69, 85)))
+
+
+def build_form16(form):
+    """Maintenance calendar. "Monthly, seasonal and annual: A · B · ..." lists the
+    ROWS (ten tasks), each checked off under whichever cadence applies — this is the
+    "Rows for:" shape (see Form 7) under different wording, so it's handled the same
+    way rather than as ten flat fields."""
+    fields = all_fields(form)
+    first = fields[0].split(":")[-1].strip()
+    tasks = [first] + fields[1:]
+    rows = "".join(
+        f'<tr><td>{render_inline(t)}</td><td class="box-cell"><span class="box"></span></td>'
+        f'<td class="box-cell"><span class="box"></span></td><td class="box-cell"><span class="box"></span></td>'
+        f'<td class="fill"></td></tr>' for t in tasks)
+    return (f'<table class="btable tight" style="table-layout:auto">'
+            f'<tr><th>Task</th><th>Monthly</th><th>Seasonal</th><th>Annual</th><th>Last done</th></tr>'
+            f'{rows}</table>')
+
+
+def build_form17(form):
+    """Water sizing and store. The formula sentence becomes four short blanks feeding
+    one big result blank; "Then a store log: A, B, C, D" names the log's own columns."""
+    texts = units_of_type(form["units"], "text")
+    formula = ('<div class="field"><label>People &times; gallons per day &times; days, '
+               'plus animals</label><div class="line"></div></div>'
+               '<div class="field"><label>Your number (total gallons to store)</label>'
+               '<div class="line"></div></div>')
+    log_cols = texts[1]["text"].split(":", 1)[1].rstrip(".").split(",")
+    return formula + render_table([c.strip() for c in log_cols], 6)
+
+
+def build_form18(form):
+    """The pre-fill list. "In order:" makes this a sequence, not a checkbox set — the
+    reader still has to write which tub/pot/bottle, so each item gets a numbered
+    fill-line rather than a tick-box."""
+    text = units_of_type(form["units"], "text")[0]["text"]
+    items = split_top(text.split(":", 1)[1].rstrip("."), ",")
+    items[-1] = re.sub(r"^and\s+", "", items[-1])
+    lis = "".join(
+        f'<div class="field"><label><span class="bn">{i}.</span> {render_inline(item)}</label>'
+        f'<div class="line"></div></div>'
+        for i, item in enumerate(items, start=1))
+    return lis
+
+
+def build_form20(form):
+    """The no-cook pantry. "Fourteen-day list" is an explicit row count; "the deep-
+    pantry additions" is a second, shorter table for longer-life stock the fourteen-day
+    rotation doesn't cover — column names (item/quantity/expiry) are the spec's own
+    "quantities and expiry dates," not invented."""
+    return (render_table(["Item", "Quantity", "Expiry date"], 14, prefill_col0=list(range(1, 15))) +
+            '<p class="b-cont">Deep-pantry additions</p>' +
+            render_table(["Item", "Quantity", "Expiry date"], 5, numbered=False))
+
+
+def build_form23(form):
+    """Go-bag contents, per person. The spec names "Standard contents checklist" but
+    does not itemise it here — the itemised list lives under Protection 107 in Part
+    Five (see standard_gobag_items()), parsed from there rather than left blank."""
+    items = standard_gobag_items()
+    return (render_checklist(items) +
+            '<p class="b-cont">Person-specific additions</p>' +
+            render_table(["Item"], 5, numbered=False) +
+            render_field("Size and season check date", cls_hint="short"))
+
+
+def build_form25(form):
+    """The power priority list. "One row per load, in priority order" names no fixed
+    count — eight rows is a working household's typical load list (fridge, well pump,
+    furnace fan, medical device, router, a few lights/chargers...) with the total row
+    the spec calls for underneath."""
+    fields = all_fields(form)
+    first = fields[0].split(":")[-1].strip()
+    cols = [first] + fields[1:]
+    return (render_table(cols, 8) +
+            '<div class="btotal"><span>Total watts to size against</span>'
+            '<span class="b-blank"></span></div>')
+
+
+def build_form30(form):
+    """Route two. The spec literally says "Same fields" — Form 29's own field list is
+    reused rather than retyped a second time, plus the one thing this form adds: the
+    no-shared-bottleneck caveat, carried forward as a note since it's the one way
+    Route two must differ from Route one."""
+    form29 = next(f for s in PARSED_SECTIONS for f in s["forms"] if f["number"] == 29)
+    fields = all_fields(form29)
+    caveat = next(u["label"] for u in units_of_type(form["units"], "group"))
+    return render_fields(fields) + f'<p class="b-note">{render_inline(caveat)}</p>'
+
+
+def build_form36_pages(form):
+    """The insurance audit. Dense enough (five identity fields plus eleven bold-
+    labelled money/coverage groups) that one page cannot hold it at a legible size —
+    it splits at the natural boundary between "what the policy is" (page 1) and
+    "what it excludes / the sub-limits / the final question" (page 2), never mid-field."""
+    g = group_map(form)
+    top_fields = units_of_type(form["units"], "fields")[0]["fields"]
+    page1 = (render_fields(top_fields, cls_hint="med") +
+            render_group("Dwelling limit", g["Dwelling limit"]) +
+            render_group("Contents limit", g["Contents limit"]) +
+            render_group("Deductibles", g["Deductibles"]) +
+            render_group("Roof settlement basis", g["Roof settlement basis"]) +
+            render_group("Loss of use", g["Loss of use"]))
+    texts = units_of_type(form["units"], "text")
+    question = " ".join(t["text"] for t in texts)
+    page2 = (render_group("Exclusions confirmed", g["Exclusions confirmed"]) +
+            render_group("Sub-limits", g["Sub-limits"]) +
+            render_group("Separate policies", g["Separate policies"]) +
+            f'<p class="b-note">{render_inline(question)}</p>' +
+            render_field("Answer", cls_hint=""))
+    return [page1, page2]
+
+
+def build_form38(form):
+    """The gap worksheet. Each "difference" sentence is Your number / Policy number /
+    Difference — rendered as a three-column row rather than three unrelated blanks, so
+    the arithmetic the spec is asking for is visually obvious."""
+    triples = units_of_type(form["units"], "fields")
+    rows = "".join(
+        f'<tr><td>{render_inline(t["fields"][0])}</td><td class="fill"></td>'
+        f'<td>{render_inline(t["fields"][1])}</td><td class="fill"></td>'
+        f'<td>{render_inline(t["fields"][2])}</td><td class="fill"></td></tr>'
+        for t in triples)
+    table = (f'<table class="btable" style="table-layout:auto">'
+            f'<tr><th>Your number</th><th></th><th>Policy provides</th><th></th>'
+            f'<th>Difference</th><th></th></tr>{rows}</table>')
+    texts = units_of_type(form["units"], "text")
+    ded = next(t["text"] for t in texts if t["text"].startswith("Deductibles"))
+    fed = next(t["text"] for t in texts if t["text"].startswith("Then: what federal"))
+    final_group = units_of_type(form["units"], "group")[0]["label"]
+    return (table + render_field(ded.rstrip(".")) + f'<p class="small">{render_inline(fed)}</p>' +
+            render_field("Honest total") +
+            f'<p class="b-serves"><strong>{render_inline(final_group)}</strong></p>')
+
+
+def build_form39_pages(form):
+    """Home inventory log. Six pages, explicit in the spec ("Six pages"). Five carry
+    the room-by-room log (nine columns, so a small tight table); the sixth is the
+    separate high-value schedule the spec names as "then," a distinct list with its
+    own three columns rather than more rows of the main log."""
+    main_fields = units_of_type(form["units"], "fields")[0]["fields"]
+    log_pages = []
+    for _ in range(5):
+        log_pages.append(render_table(main_fields, 8, tight=True))
+    hv_fields = units_of_type(form["units"], "fields")[1]["fields"]
+    hv_fields = [hv_fields[0].split(":")[-1].strip()] + hv_fields[1:]
+    log_pages.append('<p class="form-sub">The high-value schedule.</p>' +
+                     render_table(hv_fields, 12, tight=True))
+    return log_pages
+
+
+def build_form41_pages(form):
+    """The claim log. Four pages, explicit in the spec ("Four pages"), and it already
+    names four distinct logs (call / expense / mitigation / discard) plus the claim's
+    own identity fields — one log per page is the spec's own structure, not a layout
+    invented for it."""
+    ident = units_of_type(form["units"], "fields")[0]["fields"]
+    texts = units_of_type(form["units"], "text")
+    page1 = render_fields(ident, cls_hint="med") + '<p class="b-cont">Call log</p>' + \
+        render_table([c.strip() for c in texts[0]["text"].split(":", 1)[1].rstrip(".").split(",")], 6, tight=True)
+    page2 = render_table([c.strip() for c in texts[1]["text"].split(":", 1)[1].rstrip(".").split(",")], 10)
+    page3 = render_table([c.strip() for c in texts[2]["text"].split(":", 1)[1].rstrip(".").split(",")], 8)
+    page4 = render_table([c.strip() for c in texts[3]["text"].split(":", 1)[1].rstrip(".").split(",")], 8)
+    return [page1, page2, page3, page4]
+
+
+# Forms whose page repeats are identical copies of the same blank template — the spec
+# says so explicitly (Form 2, Form 39... no: 39/41/36 differ page to page, handled by
+# their own _pages() builders above). Form 23 has no stated count ("One page per
+# person"); 4 is used to match Form 2's own "one per person, plus spares" precedent for
+# the same household — flagged here and in the build report, not silently assumed.
+FORM_REPEAT = {2: 4, 23: 4}
+
+# Forms with their own multi-page builder (each page's content differs, so the builder
+# returns the full list rather than main() repeating one page N times).
+MULTI_PAGE_BUILDERS = {36: build_form36_pages, 39: build_form39_pages, 41: build_form41_pages}
+
+
+def build_form(form):
+    """Returns a list of page-body HTML fragments for one form (usually length 1)."""
+    n = form["number"]
+    if n in MULTI_PAGE_BUILDERS:
+        return MULTI_PAGE_BUILDERS[n](form)
+    single = {
+        3: lambda: build_form3(all_fields(form)),
+        4: lambda: build_form4(form),
+        6: lambda: build_form6(form),
+        7: lambda: build_form7(form),
+        8: lambda: build_form8(form),
+        9: lambda: build_form9(form),
+        14: lambda: build_form14(form),
+        15: lambda: build_form15(form),
+        16: lambda: build_form16(form),
+        17: lambda: build_form17(form),
+        18: lambda: build_form18(form),
+        20: lambda: build_form20(form),
+        23: lambda: build_form23(form),
+        25: lambda: build_form25(form),
+        30: lambda: build_form30(form),
+        38: lambda: build_form38(form),
+    }.get(n)
+    if single:
+        body = single()
+    elif n == 5:
+        body = build_table_per_form(form, rows=4)
+    elif n == 33:
+        body = build_table_per_form(form, rows=3)
+    elif any(u["type"] == "group" for u in form["units"]):
+        body = build_groups_generic(form)
+    elif n in CHECKLIST_FORMS:
+        body = render_checklist(all_fields(form))
+    else:
+        body = render_fields(all_fields(form))
+
+    repeat = FORM_REPEAT.get(n, 1)
+    return [body] * repeat
+
+
+# ---------------------------------------------------------------- 7. the front sheet
+
+def parse_front_sheet(lines):
+    rows = []
+    final_quote = ""
+    for line in lines:
+        s = line.strip()
+        if not s:
+            continue
+        if s.startswith("|"):
+            cells = [c.strip() for c in s.strip("|").split("|")]
+            if all(re.fullmatch(r"-+", c) for c in cells if c) or not any(cells):
+                continue
+            if len(cells) == 2:
+                rows.append(cells)
+        elif s.startswith(">"):
+            final_quote += (" " if final_quote else "") + s.lstrip(">").strip()
+    return rows, final_quote
+
+
+def render_front_sheet(rows, final_quote):
+    trs = []
+    for q, a in rows:
+        cls = "a blank" if "_" in a else "a"
+        trs.append(f'<tr><td class="q">{render_inline(q)}</td><td class="{cls}">{render_inline(a)}</td></tr>')
+    body = ('<h2 class="form-title">The binder, at a glance</h2>'
+            '<p class="form-sub">Filled in last — every answer here is completed somewhere else in the '
+            'binder first.</p>'
+            f'<table class="bfs-table">{"".join(trs)}</table>'
+            f'<p class="bfs-final">{render_inline(final_quote)}</p>')
+    return (f'<section class="page">\n<p class="runhead"><span>The Binder</span>'
+            f'<span>The front sheet</span></p>\n{body}\n<p class="folio">1</p>\n</section>')
