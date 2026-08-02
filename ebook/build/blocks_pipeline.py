@@ -32,11 +32,12 @@ sys.path.insert(0, str(Path(__file__).parent))
 import review_pdf as rp  # noqa: E402
 
 # Matches every file title in the manuscript: "Part Two, Chapter One — Water",
-# "Part Six — The Binder". Used to split the file-opening h1 into a small uppercase
-# kicker ("PART TWO, CHAPTER ONE") plus the large title line, the way a real chapter
-# opener is set — book.css has no ready-made component for this (sample.html hand-set
-# each one), so paginate.mjs supplies a small generic .chapter-open style instead.
-TITLE_RE = re.compile(r"^(Part [A-Za-z]+(?:, Chapter [A-Za-z]+)?)\s*—\s*(.+)$")
+# "Part Three, Playbook 1 — Tornado", "Part Six — The Binder". Used to split the
+# file-opening h1 into a small uppercase kicker ("PART TWO, CHAPTER ONE") plus the large
+# title line, the way a real chapter opener is set — book.css has no ready-made component
+# for this (sample.html hand-set each one), so paginate.mjs supplies a small generic
+# .chapter-open style instead.
+TITLE_RE = re.compile(r"^(Part [A-Za-z]+(?:, (?:Chapter|Playbook) [A-Za-z0-9]+)?)\s*—\s*(.+)$")
 
 
 def short_title(h1_text):
