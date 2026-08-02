@@ -179,6 +179,7 @@ def main():
         rp._CURRENT_CHAPTER[0] = title
         file_blocks = rp.render_markdown(text)
         file_blocks[0] = chapter_opener_html(title)  # plain <h1> -> kicker + title
+        file_blocks = resolve_figures(file_blocks, name)
         file_blocks = explode_lists(file_blocks)
         tags = [tag_of(bh) for bh in file_blocks]
         groups = assign_groups(tags)
