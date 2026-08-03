@@ -28,6 +28,22 @@ The 9 flagged rows split as: 1 disputed-licence Commons file (RaXPol) and 8 thir
 living on a `.gov` URL. All 9 are corrected in `provenance.csv` as of this pass — none carry a
 license.
 
+**Wired status, checked against `index.html` 2026-08-03 — only 2 of the 9 are in the cut.**
+An earlier claim that all 9 were wired was wrong.
+- WIRED: `wxgov-storm-photo-elreno-5.jpg` (Snyder, cold open 10.5s/+4.5s) and
+  `wxgov-supercell-photo-magnuson.jpg` (Magnuson, 1784.3s/+8.0s). **Owner decision 2026-08-03:
+  keep both, credit in the description, no permission emails.** Description credits are in
+  `metadata.md`; a credit is not a licence, and the residual risk is a manual photographer
+  claim (stills are not Content ID material). Owner accepted that risk knowingly.
+- NOT WIRED (7, no action needed): `wxgov-storm-photo-elreno-{1,2,3,4,6}.jpg`,
+  `wxgov-storm-photo-brennan-jontz.jpg`, `wikimedia-raxpol-radar-2324z.png`.
+
+On Snyder specifically: NOAA's SPC-hosted animation carries embedded `jeffrey.snyder@noaa.gov`
+metadata, so he is an NSSL radar scientist — but his affiliation runs through OU/CIMMS, a
+cooperative institute whose staff are university rather than federal employees. That is exactly
+the affiliation that does not produce a federal-PD work, so the noaa.gov address settles nothing
+either way. Magnuson shows no federal affiliation at all.
+
 ---
 
 ## FLAGGED — act on these (9 files)
