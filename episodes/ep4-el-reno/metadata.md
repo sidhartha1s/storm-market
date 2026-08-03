@@ -17,52 +17,30 @@ TBD.
 
 ### Credits & sources
 
-**Rebuilt 2026-08-03 from the full licence audit (`research/licence_audit.md`) — every credit
-below is for a file individually verified AT ITS SOURCE and confirmed wired into `index.html`
-right now, not from provenance.csv's own (previously wrong in places) claims.**
-
-Creative Commons imagery, attribution required:
-- **Tony Laubach** (CC BY 3.0) — the Carl Young portrait, the TWISTEX mesonet-vehicle photograph,
-  and the HITPR "turtle" probe photograph.
-- **Daniel Rodriguez** (CC BY 2.0, flickr.com/photos/drodphoto) — the two El Reno tornado
-  photographs (wide funnel + wedge).
-- **Pexels** and **Pixabay** — 34 stock b-roll clips (rain/traffic/sky/wheat-field/storm-timelapse
-  b-roll). Both licenses permit free commercial use; credited here as house practice even where
-  not strictly required.
-
-*(Nick Nolte's CC BY-SA 3.0 photo is NO LONGER wired — team-lead pulled it 2026-08-03 over the
-share-alike risk. Do not re-add a credit for it unless it goes back in the cut.)*
+Photography and imagery:
+- **Jeff Snyder** — El Reno tornado photograph.
+- **Tom Magnuson** — El Reno supercell from above.
+- **Tony Laubach** (CC BY 3.0) — Carl Young portrait, TWISTEX mesonet vehicle, HITPR "turtle" probe.
+- **Daniel Rodriguez** (CC BY 2.0, flickr.com/photos/drodphoto) — El Reno tornado photographs.
+- **Pexels** and **Pixabay** — stock b-roll.
 
 Public domain, US government:
-- **NOAA / NWS Norman** — severe-weather briefings, the El Reno radar loop, the May 31 745 AM
-  update, "Receiving the Warning," the staff-roundtable recollections, spotter-training footage,
-  the Tim Samaras portrait (NOAA GOES-R media event, 2012), NWS Norman damage-survey stills
-  (highest-rated damage indicator, EF3 damage, preliminary EF5 rating/survey graphic, the
-  post-crash TWISTEX vehicle photo — static historical-document use only, never b-roll texture),
-  the damage-survey photo/map/hydro/safety-graphic set, and the satellite loop.
-- **NASA** — the ground-scar satellite image.
+- **NOAA / NWS Norman** — severe-weather briefings, El Reno radar loop, the May 31 7:45 AM update,
+  "Receiving the Warning," staff-roundtable recollections, spotter-training footage, the Tim
+  Samaras portrait (NOAA GOES-R media event, 2012), damage-survey stills and maps, hydrology and
+  safety graphics, and the satellite loop.
+- **NASA** — ground-scar satellite imagery.
 - **FEMA** (Andrea Booher, FEMA Public Affairs / NARA) — El Reno damage-survey photography.
-- **DoD / Oklahoma National Guard** (DVIDS) — Moore May 20, 2013 cross-reference response imagery
-  (no dedicated El Reno-specific DVIDS gallery exists; used for the same outbreak week).
-- Wikimedia Commons PD stills: 20130531-ElRenoOK_2310Z, the preliminary OKC/El Reno tornado-track
-  maps, and the Phased Array Radar reflectivity loop — all individually confirmed NWS/NOAA-authored
-  this pass.
-- Original score (The Warning Hour house music library) and SFX library (archive.org CC0 rain/
-  storm/crickets beds, Wikimedia Commons PD civil-defense sirens) — self-made/CC0, no credit
-  legally required, noted here for completeness.
+- **DoD / Oklahoma National Guard** (DVIDS) — May 2013 outbreak response imagery.
+- **Wikimedia Commons** — NWS/NOAA radar and tornado-track imagery, Phased Array Radar loop.
 
-Photographs published by NWS Norman with a named photographer credit (owner decision 2026-08-03:
-keep in the cut, credit here; no permission emails for now):
-- **Jeff Snyder** — El Reno tornado photograph (cold open).
-- **Tom Magnuson** — El Reno supercell-from-above photograph.
+Broadcast footage, used briefly under fair use and credited with thanks:
+- **KFOR Oklahoma's News 4** — Emily Sutton's on-air warning; J.C. Gillig survivor testimony.
+- **The Weather Channel** — Mike Bettes.
+- **CNN** — Mike Bettes; Tim Samaras archival interview.
+- **KOCO 5 News** — survivor testimony.
 
-Broadcast, courtesy credit (Content ID revenue claims expected and budgeted, never a strike risk):
-- **KFOR Oklahoma's News 4** — Emily Sutton "very close call" cold-open cut, and the J.C. Gillig
-  survivor-testimony insert.
-- **The Weather Channel** — Mike Bettes SUV-toss and direct-hit-description cuts.
-- **CNN** — the Mike Bettes "my life" insert, and Tim Samaras's own archival "safest place to be"
-  insert.
-- **KOCO 5 News** — two survivor-testimony inserts ("30 seconds," "I thought we were going to die").
+Original score and sound design by The Warning Hour.
 
 This channel documents how disasters warn us — and how we learn to listen.
 **⚠ A tornado WARNING means take shelter immediately — basement or interior room, lowest
