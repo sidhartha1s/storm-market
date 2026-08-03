@@ -5,7 +5,8 @@ REM Example: scripts\render.cmd ep2-2011-super-outbreak full ep2-final
 REM Launch DETACHED (harness bg tasks get killed):
 REM   powershell Start-Process cmd.exe -ArgumentList '/c','"<ABS path>\scripts\render.cmd" <slug> <mode>' -WindowStyle Hidden
 REM Writes episodes\<slug>\render_<mode>.log and render_<mode>_done.marker (contains npx exit code).
-REM Version pin 0.7.89 must match config.yaml hyperframes_version — bump both together.
+REM NEVER pin a hyperframes version here (owner order 2026-08-02). The version is resolved from
+REM npm at run time and echoed into the log. render_preflight.py FAILS on any hardcoded pin.
 setlocal
 set SLUG=%~1
 set MODE=%~2
