@@ -48,41 +48,6 @@ floor, away from windows. On high-risk days, know where you'll shelter BEFORE th
 
 — The Warning Hour
 
----
-**Licence status of the 9 audit-flagged files — corrected 2026-08-03 against `index.html`.**
-An earlier version of this block said all 9 were wired. That was wrong; only **2** are in the
-cut. Verified by grepping the timeline, not from provenance.csv.
-
-WIRED (2) — owner decided 2026-08-03 to keep both and credit in the description:
-1. `wxgov-storm-photo-elreno-5.jpg` — "Photos Courtesy of Jeff Snyder" on the live NWS Norman
-   page. Cold open, 10.5s, 4.5s long. Note in Snyder's favour: NOAA's own SPC-hosted animation
-   carries embedded `jeffrey.snyder@noaa.gov` metadata, so he is a NOAA/NSSL radar scientist —
-   but he is affiliated through OU/CIMMS, a *cooperative institute*, whose staff are university
-   rather than federal employees. That is exactly the affiliation that does NOT produce a
-   federal-PD work, so the noaa.gov address does not settle it either way.
-2. `wxgov-supercell-photo-magnuson.jpg` — "Photo courtesy Tom Magnuson." At 29:44, 8.0s.
-   No evidence of any federal affiliation; treat as an outside contributor's photograph.
-
-NOT WIRED (7) — on disk, never made the picture track, no credit owed unless one goes back in:
-`wxgov-storm-photo-elreno-{1,2,3,4,6}.jpg` (Snyder), `wxgov-storm-photo-brennan-jontz.jpg`
-(Brennan Joseph), and `wikimedia-raxpol-radar-2324z.png` (Commons file carries a live deletion
-nomination disputing its PD status — RaXPol is University of Oklahoma research data, not a
-federal work).
-
-**Standing caveat, recorded because the channel's own rule says it:** a description credit is
-not a licence. Neither photograph is Content ID exposure — that system fingerprints audio and
-video, not stills — so the realistic risk is a manual claim from the photographer, which is
-low-frequency and reversible. That is the risk the owner accepted; it is not a licence grant.
-
-Full per-file findings, bucket counts, and what was and wasn't independently re-verified this
-pass are in `research/licence_audit.md`.
-
-Also note: the full NWS Norman documentary (`nwsnorman-lessons-most-dangerous-tornado-full.mp4`)
-is sourced and provenance-logged but not yet cut into the picture track — its PD/NWS-Norman
-credit is already covered by the "NOAA / NWS Norman" line above, in advance of that wiring.
-ABC News clips are downloaded and provenance-logged but still not wired into `index.html` —
-no ABC credit line above until that changes.
-
 ## Tags
 TBD.
 
