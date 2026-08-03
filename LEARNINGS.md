@@ -2,6 +2,32 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
+## 2026-08-03 — the three static gates are all blind to a graphic that idles (found post-render)
+
+The ep4 remaster draft rendered clean on every static gate, then post-render detection found
+two idling graphics the gates had passed. All three failures are structural, not one-off:
+
+- **`beat_density.py` measures gaps BETWEEN beats, not the gap BEFORE the first one.** It
+  scored g-efscale-v1's dead stretch at 0.10s while the graphic's first ~12.7s were two small
+  header lines on an empty field. A graphic whose first substantive beat lands at t=12 passes
+  a "no dead stretch" check trivially, because there is no *interior* gap. Leading dead time
+  needs its own check — first-substantive-beat must land inside ~1.5s of window open.
+- **`blackdetect` false-positives every dark graphic.** A frame counts as black only when 98%
+  of pixels fall below the luminance threshold, so a legible dark panel with small bright text
+  (g-tweet-nws, g-names) trips it. 3 of the 4 long "black spans" in this render were fine on
+  eyeball. Never act on a blackdetect span without pulling the frame — but never dismiss one
+  either: the 4th was real.
+- **`freezedetect` is the gate that actually caught an idling graphic** (g-met, 7.6s of no
+  visible change at comp-local t=10.3–17.9). It is currently a post-render check only, which
+  means it can only ever find the defect after 33 minutes of rendering. The equivalent check
+  belongs pre-render, walking each composition's GSAP timeline for any window >4s with no
+  property change scheduled.
+
+Root editorial cause of the g-efscale-v1 case, worth separating from the tooling: the graphic
+was not too slow, the **window opened ~13s too early against its narration**. The fix is to
+trim the window head and let real footage hold that time — not to compress the graphic's
+internal beats, which are matched to spoken lines and would desync if pulled earlier.
+
 ## 2026-08-03 — ep4 sourcing/QC hardening (docs sweep after the documentary find)
 
 **New standing rule (owner order, verbatim intent):** if a sourced clip is having audio,
