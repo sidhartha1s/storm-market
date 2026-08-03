@@ -53,6 +53,11 @@ Public domain, US government:
   storm/crickets beds, Wikimedia Commons PD civil-defense sirens) — self-made/CC0, no credit
   legally required, noted here for completeness.
 
+Photographs published by NWS Norman with a named photographer credit (owner decision 2026-08-03:
+keep in the cut, credit here; no permission emails for now):
+- **Jeff Snyder** — El Reno tornado photograph (cold open).
+- **Tom Magnuson** — El Reno supercell-from-above photograph.
+
 Broadcast, courtesy credit (Content ID revenue claims expected and budgeted, never a strike risk):
 - **KFOR Oklahoma's News 4** — Emily Sutton "very close call" cold-open cut, and the J.C. Gillig
   survivor-testimony insert.
