@@ -1,9 +1,7 @@
 # Episode 4 — El Reno 2013 · Publish Metadata (DRAFT — episode in progress, 2026-08-03)
 
-Episode not yet rendered — title/chapters/tags/AEO/thumbnail sections below are TBD until the
-picture track and final cut lock. This file exists now to keep the credits block current with
-what is actually wired in `index.html`, per repo CLAUDE.md's "docs maintenance is part of the
-same change" rule — see below for the one exception flagged.
+Title/chapters/tags/AEO/thumbnail are TBD until final cut lock. Everything below is publish
+copy — it goes in the video description as written.
 
 ## Title options
 TBD — script/edit not locked yet.
