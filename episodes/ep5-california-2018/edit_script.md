@@ -162,7 +162,7 @@
   At seven forty that evening he was driving toward the fire, going to help people evacuate, when
   the vortex found the road. // His last radio call asked for a helicopter to drop water on his own
   position. There was no helicopter that could fly into that. He did not get out.
-- **INSERT-04** (owner-confirm; OPTIONAL, if claim-safe): a few seconds of Stoke's mayday radio
+- **INSERT-04b** (owner-confirm; OPTIONAL, if claim-safe): a few seconds of Stoke's mayday radio
   traffic, or a memorial line read on-air. *[to source; else render as attributed on-screen text.]*
 - **memorial dwell** (≤4–5s): Jeremy Stoke portrait (verify usage rights) → cut to symbolic (a
   Redding street), never linger on the face.
