@@ -9,8 +9,9 @@
 - **Channel:** The Warning Hour. **Slug:** `ep5-california-2018`.
 - **Working title:** *The Fire That Made Its Own Tornado — California, 2018*
   - alt: *The Day a Wildfire Grew a Tornado — California 2018* / *2018: The Year Fire Became Weather*
-- **Runtime target:** ~33 min. **Word budget:** ~4,700 (33 × 0.9 × 158) — NOT LOCKED until
-  probe-TTS of 2 segments confirms delivered wpm. Full narration below runs ≈ 4,600 words.
+- **Runtime target:** ~34–35 min. **Word budget LOCKED by probe-TTS 2026-08-05:** measured
+  158 wpm (long-sentence seg) / 139 wpm (punchy seg), blended ≈ 145 wpm delivered →
+  4,600 words ≈ 34–35 min. Probes: `audio/probe-a.wav`, `audio/probe-b.wav`.
 - **Voice:** pocket-TTS Pharaoh clone (config `external.*`). Narration below is readable-form;
   the TTS pass mechanically converts (numbers/dates spelled, <24-word sentences, no paired dashes).
 - **Scope:** duology. Carr Fire (Jul 2018, the fire tornado) front half; Camp Fire (Nov 2018,
