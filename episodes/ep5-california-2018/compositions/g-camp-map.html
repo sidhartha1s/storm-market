@@ -20,12 +20,17 @@
 <div id="root" data-composition-id="g-camp-map" data-width="1920" data-height="1080">
   <div class="hdr" id="g-camp-map-hdr">PARADISE ON THE RIDGE &middot; NOVEMBER 8</div>
   <svg width="1920" height="1080" style="position:absolute; inset:0;">
-    <!-- canyons flanking the ridge -->
-    <path d="M760,150 L680,950" stroke="#1a2732" stroke-width="80" opacity="0.55"/>
-    <path d="M1180,150 L1260,950" stroke="#1a2732" stroke-width="80" opacity="0.55"/>
+    <!-- canyons flanking the ridge — irregular river-cut walls, not straight bridge piers -->
+    <path d="M780,150 Q740,320 760,480 Q780,660 680,950" stroke="#141e28" stroke-width="96" fill="none" opacity="0.7"/>
+    <path d="M1160,150 Q1210,340 1180,520 Q1160,700 1270,950" stroke="#141e28" stroke-width="96" fill="none" opacity="0.7"/>
+    <path d="M780,150 Q740,320 760,480 Q780,660 680,950" stroke="#0d141c" stroke-width="40" fill="none" opacity="0.8"/>
+    <path d="M1160,150 Q1210,340 1180,520 Q1160,700 1270,950" stroke="#0d141c" stroke-width="40" fill="none" opacity="0.8"/>
+    <!-- contour hints on the ridge flanks -->
+    <path d="M830,290 Q815,500 835,750" stroke="#3a4a58" stroke-width="1.5" fill="none" opacity="0.5"/>
+    <path d="M1110,290 Q1128,500 1105,750" stroke="#3a4a58" stroke-width="1.5" fill="none" opacity="0.5"/>
     <!-- the ridge (town) -->
     <rect x="820" y="300" width="300" height="440" rx="10" fill="#232d38" opacity="0"/>
-    <rect id="g-camp-map-town" x="820" y="300" width="300" height="440" rx="10" fill="#2b3742" opacity="0"/>
+    <rect id="g-camp-map-town" x="820" y="300" width="300" height="440" rx="10" fill="#2e3c48" opacity="0"/>
     <!-- roads down -->
     <path id="g-camp-map-skyway" d="M900,740 Q820,880 680,960" stroke="#5a6472" stroke-width="8" fill="none" opacity="0"/>
     <path id="g-camp-map-pentz" d="M1080,740 Q1180,880 1300,960" stroke="#3a4450" stroke-width="5" fill="none" opacity="0"/>
