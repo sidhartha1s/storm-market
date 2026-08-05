@@ -295,6 +295,13 @@
 1. Probe-TTS 2 segments → confirm wpm → adjust word budget/length.
 2. TTS per narration segment → wavs + words.json.
 3. Source clips (2–3 candidates/beat, provenance rows, frame-verify) — INSERTs to owner individually.
+   Incl. **real human portraits** (owner: "get those human images if you can show for a bit"):
+   Jeremy Stoke, Don Ray Smith, Melody Bledsoe, Kevin McKay — publicly documented, usage-verified,
+   shown ≤4–5s once then cut to symbolic (memorial-dwell rule); NO child-victim likeness.
 4. Resolve the open verification items above.
-5. Hand-author index.html + compositions/g-*.html (GRAPHICS CONTRACT).
-6. Static QC suite green → draft render → owner preview → full.
+5. Hand-author index.html + compositions/g-*.html (GRAPHICS CONTRACT). Creative discretion = mine
+   (owner delegated). **Match-cut scene-to-scene** and match-cut the channel title to the closing
+   line (owner order + DESIGN.md).
+6. Static QC suite green → **verify the code + timing once** (owner order: graphics_qc + lint_timeline
+   exit 0, beat_density, blank_scan, media_budget/render_preflight; timing checked once against
+   words.json) → draft render → owner preview → full.
