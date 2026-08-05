@@ -66,6 +66,18 @@ When one sitting can't hold the whole script (fatigue is how structure gets miss
 4. All of it is text briefs and judgment — no code, no schema, nothing that can break midrun.
    A missing brief line degrades to "writer uses judgment," never to a crash.
 
+## Script fact-QC layer (owner order 2026-08-05 — runs BEFORE TTS, zero cost)
+
+Two passes, both pre-TTS, both free:
+1. **In-session eyeball:** re-walk every number, name, date, distance, and death count in the
+   draft against the research reports. Arithmetic too (day gaps, per-count divisions). Fix on
+   the spot; anything unsourced gets `[verify]` or gets cut.
+2. **Verification agents' verdicts applied:** every `[verify]`-gated line resolves to
+   CONFIRMED (marker removed) / CORRECTED (line rewritten) / UNVERIFIED (line CUT — the
+   conditional-fact rule: drop entirely, never soften into "reportedly").
+Standing sub-rules: dual-scope stats name their scope in the same sentence; quotes carry their
+attribution; TTS does not run until the script has zero open `[verify]` markers.
+
 ## Insert-transcription rule (owner order 2026-08-05)
 
 Every `insert` (audio-carrying clip) is **transcribed in full (faster-whisper) BEFORE cut
