@@ -160,8 +160,11 @@
   Redding street), never linger on the face.
 - **narration (Bledsoe):** A few miles away, in a home in Redding, seventy-year-old Melody Bledsoe
   was watching her two great-grandchildren, James, who was five, and Emily, who was four. // Their
-  great-grandfather had driven out for supplies. The fire came faster than anyone believed it could.
-  // The boy reached his great-grandfather by phone. The words are in the record: "Grandpa, come
+  great-grandfather, Ed, had left the house earlier that day and was trying to get back to them.
+  The fire moved faster than anyone believed it could. *[FAIRNESS: competitor's telling was
+  publicly corrected (399 likes) for implying Ed was callous — he was not; he tried and could not
+  reach them. Verify exact whereabouts, see open items.]*
+  // The boy reached him by phone. The words are in the record: "Grandpa, come
   and get me. The fire's coming in the back door." // He tried. The roads were already gone.
 - **memorial dwell** (≤4–5s): symbolic imagery only (three candles / a wet blanket motif —
   dramatized, NO real-child likeness). **narration:** When they were found, Melody was covering both
