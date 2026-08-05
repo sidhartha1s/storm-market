@@ -150,6 +150,14 @@
 ## ACT 3 — the eight (≈12:00–16:30)  *[Carr emotion banked]*
 - **narration:** The vortex was on the ground for about thirty minutes. In that half hour, and the
   hours around it, the Carr Fire took eight lives.
+- **narration (Don Smith):** Don Ray Smith was eighty-one, a contract bulldozer operator, cutting
+  fire line ahead of the flames when the front overran him. Other dozer operators nearby got out,
+  barely.
+- **INSERT-04a** (owner-confirm; 911 audio = PD, claim-safe): the surviving dozer crew's call to
+  dispatch — windows blown from the cab, a voice saying he cannot last much longer. This is the
+  reference video's single most-reacted beat (785-like comment: "made me tear up"). **Trace to the
+  original dispatch/news release — do NOT re-rip from the competitor.** Trim to end on the complete line.
+- **memorial dwell** (≤4–5s): Don Ray Smith portrait (verify usage) → cut to a dozer line in the hills.
 - **narration (Stoke):** Jeremy Stoke was thirty-seven, a fire inspector for the city of Redding.
   At seven forty that evening he was driving toward the fire, going to help people evacuate, when
   the vortex found the road. // His last radio call asked for a helicopter to drop water on his own
