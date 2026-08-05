@@ -18,6 +18,7 @@
 | Blackout | 2–3s black between acts (hard cut in/out) | the documentary breath |
 | Emotion | stats mid-act; emotion banked at act ends; the heaviest vignette at the episode's final third | teardown-verified pattern |
 | TTS breath | holds/voids are WRITTEN pauses — a `hold` segment is a scripted breath, not dead air; full stops = hard breaks | pacing lives in the script, not post |
+| Language | **4th-grader readable** (owner 2026-08-05): short words, concrete pictures, one idea per sentence; emotion comes from facts and rhythm, never from vocabulary | TTS syncs clean; the shipped eps' register |
 | Graphic trigger | spatial claim → map · mechanism → animated diagram · number cluster → stat card · reveal/correction → dedicated graphic | "show, don't make the viewer look at stuff" |
 
 ## The open-loop registry (the spine of scaling)
