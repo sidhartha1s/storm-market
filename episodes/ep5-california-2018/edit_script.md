@@ -122,7 +122,11 @@
   air of the burn. On its own, that spin means nothing. // But a rising column does to spinning air
   what a spinning skater does when she pulls in her arms. It stretches it. It concentrates it. It
   makes it faster. // This is exactly how an ordinary tornado forms under a thunderstorm. The only
-  difference here was the storm. The storm was the fire.
+  difference here was the storm. The storm was the fire. // But heat alone could never have done
+  it. The sky above Redding had to be primed for spin, the same unstable air an ordinary tornado
+  needs. The fire did not break the rules of weather. It met them, and it became the trigger the
+  sky was waiting for. *[most-loved audience concept: "the fire is just the trigger the atmosphere
+  needed" — state it plainly, the competitor only implies it.]*
 - **graphic `g-vortex` (payoff beat):** **narration:** At around seven thirty in the evening, the
   spin reached the ground. A vortex roughly one thousand feet wide. Winds the National Weather
   Service later estimated near one hundred forty-three miles an hour. Strong enough to rate an EF
