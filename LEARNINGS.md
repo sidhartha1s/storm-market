@@ -38,9 +38,10 @@ Every owner correction / measured surprise lands here same session. Newest first
    911/dispatch recordings CPRA-released = CLEAR-TO-USE from the original holder. Raw
    Broadcastify scanner rips = HELD (no license path). Camp Fire bystander evacuation clips +
    sheriff bodycam = strike-class (chaser-equivalent), network-aired re-cuts only.
-9. **When an aggregate stat is uncited, compute it from primary records ourselves** (ep5: the
-   "70 of 84 died at home" figure wasn't stated in the DA report — we tallied the report's ~85
-   per-victim narratives by agent read, judgment not regex). Verification + net-info-gain in one.
+9. **When an aggregate stat is uncited, compute it from primary records ourselves** (ep5: the widely-cited
+   "70 of 84 died at home" figure isn't stated anywhere in the DA report — our own tally of its
+   84 per-victim narratives, agent read, judgment not regex: 71 at/just outside home, 10 fleeing,
+   15 mobility-limited). Verification + net-info-gain in one.
 10. **Subagent gotcha:** general-purpose research agents that spawn their OWN sub-agents return
     placeholder "waiting for reports" results (nested subagents never report back). Brief
     workers to do the work THEMSELVES; a status-shaped final message = re-dispatch immediately.

@@ -11,7 +11,8 @@
   - alt: *The Day a Wildfire Grew a Tornado — California 2018* / *2018: The Year Fire Became Weather*
 - **Runtime target:** ~34–35 min. **Word budget LOCKED by probe-TTS 2026-08-05:** measured
   158 wpm (long-sentence seg) / 139 wpm (punchy seg), blended ≈ 145 wpm delivered →
-  4,600 words ≈ 34–35 min. Probes: `audio/probe-a.wav`, `audio/probe-b.wav`.
+  4,600 words ≈ 34–35 min. Probes: `audio/probe-a.txt`/`probe-b.txt` (committed) → wavs
+  local-only (`episodes/*/audio/*.wav` is gitignored).
 - **Voice:** pocket-TTS Pharaoh clone (config `external.*`). Narration below is readable-form;
   the TTS pass mechanically converts (numbers/dates spelled, <24-word sentences, no paired dashes).
 - **Scope:** duology. Carr Fire (Jul 2018, the fire tornado) front half; Camp Fire (Nov 2018,
@@ -89,7 +90,8 @@ transcript's action/emotion peak; excerpt + transcript path logged here AND in p
 | L8 | "you picture them in their cars — that is not what happened" | A5 | A5 (g-hook corrective) |
 | L9 | "both had been predicted" | A4 (grand jury) | A6 (thesis + close) |
 
-## Verification status (updated 2026-08-05 — fact-QC passes 1+2 applied)
+## Verification status (updated 2026-08-05 — fact-QC passes 1+2 applied; ONE inline marker
+still open below — it gates TTS, not this design PR)
 
 **CLOSED (verdicts applied in script):** Lareau paper hedge (title poses the question; "may have
 been" language in Act 2) · "second-ever after Canberra 2003" (study author's own claim) · Ed
