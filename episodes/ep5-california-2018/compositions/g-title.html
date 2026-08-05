@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:#030507; font-family:Arial,sans-serif; }
+  .stage { position:absolute; inset:0; display:grid; place-items:center; }
+  .stack { text-align:center; }
+  .l1 { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:76px; color:#e74c3c; letter-spacing:6px; }
+  .l2 { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:60px; color:#f2f5f8; letter-spacing:10px; margin-top:18px; }
+  .main { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:120px; color:#f2f5f8; letter-spacing:4px; line-height:1.02; margin-top:46px; }
+  .sub { font-family:Georgia,serif; font-style:italic; font-size:36px; color:#d8a13a; margin-top:28px; }
+</style>
+<div id="root" data-composition-id="g-title" data-width="1920" data-height="1080">
+  <div class="stage">
+    <div class="stack">
+      <div class="l1" id="g-title-l1">CALIFORNIA, 2018</div>
+      <div class="l2" id="g-title-l2">TWO FIRES</div>
+      <div class="main" id="g-title-main">THE WARNING HOUR</div>
+      <div class="sub" id="g-title-sub">The Fire That Made Its Own Tornado</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* match-cut: "main" lands on the spoken "This was The Warning Hour" — retune offset when wiring index */
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#g-title-l1","#g-title-l2","#g-title-main","#g-title-sub"], {autoAlpha:0}, 0);
+  tl.fromTo("#g-title-l1", {autoAlpha:0, scale:1.4}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 0.4);
+  tl.fromTo("#g-title-l2", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 2.0);
+  tl.fromTo("#g-title-main", {autoAlpha:0, scale:1.1}, {autoAlpha:1, scale:1, duration:0.8, ease:"power2.out"}, 4.4);
+  tl.fromTo("#g-title-sub", {autoAlpha:0}, {autoAlpha:1, duration:0.7}, 5.4);
+  tl.to(".stack", {autoAlpha:0, duration:1.3}, 9.2);
+  window.__timelines["g-title"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
