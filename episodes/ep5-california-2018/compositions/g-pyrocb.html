@@ -88,9 +88,11 @@ window.__timelines = window.__timelines || {};
   tl.to([P+"anvil",P+"anvillab"],{autoAlpha:1,duration:1.0,ease:"power2.out"},21.0);
   // radar triangulation (this sub-beat is reused/mounted again for A2-S9)
   tl.to(P+"anvillab",{autoAlpha:0,duration:0.5},29.4); // hand off the anvil beat before MEDFORD lands in its box
-  tl.to([P+"r1",P+"r2",P+"r3",P+"rl1",P+"rl2",P+"rl3"],{autoAlpha:1,duration:0.5,stagger:0.25},30.0);
-  tl.to(P+"beams",{autoAlpha:1,duration:1.2},31.2);
-  tl.to(P+"foot",{autoAlpha:1,duration:0.7},32.2);
+  tl.to([P+"r1",P+"r2",P+"r3",P+"rl1",P+"rl2",P+"rl3"],{autoAlpha:1,duration:0.5,stagger:0.25},29.6);
+  tl.to(P+"beams",{autoAlpha:1,duration:1.0},30.6);
+  // soft exit — everything settles out before the hard cut instead of chopping mid-thought
+  tl.to([P+"col",P+"anvil",P+"h",P+"hlab",P+"time",P+"anvillab",P+"beams",P+"hdr",".tick",
+         P+"r1",P+"r2",P+"r3",P+"rl1",P+"rl2",P+"rl3"],{autoAlpha:0,duration:0.9},31.9);
   window.__timelines["g-pyrocb"] = tl;
 })();
 </script>
