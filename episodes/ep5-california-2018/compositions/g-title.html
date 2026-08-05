@@ -4,35 +4,41 @@
 <body>
 <template>
 <style>
-  #root { position:absolute; inset:0; background:#030507; font-family:Arial,sans-serif; }
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; }
+  /* transparent root — the title rides the cold-open footage, no black hold */
+  .scrim { position:absolute; inset:0;
+    background:radial-gradient(ellipse at 50% 55%, rgba(3,5,7,0.62) 0%, rgba(3,5,7,0.18) 62%, rgba(3,5,7,0) 100%); }
   .stage { position:absolute; inset:0; display:grid; place-items:center; }
   .stack { text-align:center; }
-  .l1 { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:76px; color:#e74c3c; letter-spacing:6px; }
-  .l2 { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:60px; color:#f2f5f8; letter-spacing:10px; margin-top:18px; }
-  .main { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:120px; color:#f2f5f8; letter-spacing:4px; line-height:1.02; margin-top:46px; }
-  .sub { font-family:Georgia,serif; font-style:italic; font-size:36px; color:#d8a13a; margin-top:28px; }
+  .l1 { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:40px; color:#e74c3c; letter-spacing:8px;
+    text-shadow:0 2px 18px rgba(0,0,0,0.8); }
+  .main { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:124px; color:#f2f5f8; letter-spacing:4px;
+    line-height:1.02; margin-top:30px; text-shadow:0 4px 30px rgba(0,0,0,0.85); }
+  .sub { font-family:Georgia,serif; font-style:italic; font-size:34px; color:#e8c56a; margin-top:24px;
+    text-shadow:0 2px 14px rgba(0,0,0,0.8); }
 </style>
 <div id="root" data-composition-id="g-title" data-width="1920" data-height="1080">
+  <div class="scrim" id="g-title-scrim"></div>
   <div class="stage">
     <div class="stack">
-      <div class="l1" id="g-title-l1">CALIFORNIA, 2018</div>
-      <div class="l2" id="g-title-l2">TWO FIRES</div>
+      <div class="l1" id="g-title-l1">CALIFORNIA &middot; 2018</div>
       <div class="main" id="g-title-main">THE WARNING HOUR</div>
-      <div class="sub" id="g-title-sub">The Fire That Made Its Own Tornado</div>
+      <div class="sub" id="g-title-sub">The fire that made its own tornado</div>
     </div>
   </div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function() {
-  /* match-cut: "main" lands on the spoken "This was The Warning Hour" — retune offset when wiring index */
   const tl = gsap.timeline({ paused: true });
-  tl.set(["#g-title-l1","#g-title-l2","#g-title-main","#g-title-sub"], {autoAlpha:0}, 0);
-  tl.fromTo("#g-title-l1", {autoAlpha:0, scale:1.4}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 0.4);
-  tl.fromTo("#g-title-l2", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 2.0);
-  tl.fromTo("#g-title-main", {autoAlpha:0, scale:1.1}, {autoAlpha:1, scale:1, duration:0.8, ease:"power2.out"}, 4.4);
-  tl.fromTo("#g-title-sub", {autoAlpha:0}, {autoAlpha:1, duration:0.7}, 5.4);
-  tl.to(".stack", {autoAlpha:0, duration:1.3}, 9.2);
+  tl.set(["#g-title-l1","#g-title-main","#g-title-sub"], {autoAlpha:0}, 0);
+  tl.fromTo("#g-title-scrim", {autoAlpha:0}, {autoAlpha:1, duration:0.8}, 0);
+  tl.fromTo("#g-title-l1", {autoAlpha:0, y:-14}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.5);
+  tl.fromTo("#g-title-main", {autoAlpha:0, scale:1.08}, {autoAlpha:1, scale:1, duration:0.7, ease:"power2.out"}, 1.1);
+  tl.fromTo("#g-title-sub", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 2.4);
+  tl.to("#g-title-main", {scale:1.03, duration:2.3, ease:"none"}, 1.8); // slow push, never frozen
+  tl.to(".stack", {autoAlpha:0, duration:0.9}, 6.6);
+  tl.to("#g-title-scrim", {autoAlpha:0, duration:0.9}, 6.8); /* ends 7.7 — inside the 8.0s host window */
   window.__timelines["g-title"] = tl;
 })();
 </script>
