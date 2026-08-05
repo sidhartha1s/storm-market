@@ -74,6 +74,16 @@
 - "football field per second" — **peak ~90-min rate**, not 24-hr average; qualify on screen.
 - Camp ember "10 km" — Lareau 2026 abstract-only; attribute as the study's finding.
 - Rose Farrell / "Feather Canyon facility" — UNVERIFIED; do not use unless confirmed.
+- **Ed Bledsoe's whereabouts** — "buying supplies" (facts pass) vs "left earlier / tried to
+  return" (audience correction). CONFLICT → resolve via primary source; frame sympathetically,
+  never imply abandonment.
+- **The ignition driver's fate** — was the trailer owner ever identified, cited, or sued? Audience
+  fixates (2.7K likes); competitor never resolves it. Source and close the loop, or drop cleanly.
+- **Local-witness sensory texture** — Manzanita brush burning hot, the "sunrise at ten PM" glow
+  over Redding, ember-holes burned into trees miles from the vortex. Vivid, from Redding-area
+  commenters, UNVERIFIED — confirm before use.
+- **Warning-loop closure (already banked, keep):** the first-ever fire-vortex tornado warning
+  (2020 Loyalton) answers the exact thread the competitor drops — retained in Act 2.
 
 ---
 
