@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; overflow:hidden;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .hdr { position:absolute; left:0; right:0; top:60px; text-align:center; font-weight:700;
+    font-size:24px; letter-spacing:7px; color:#93a3b2; opacity:0; }
+  .lbl { position:absolute; font-family:'Arial Black',Arial,sans-serif; font-size:30px; color:#f2f5f8; opacity:0; }
+  .sub { position:absolute; font-family:Georgia,serif; font-style:italic; font-size:22px; color:#b8c6d4; opacity:0; }
+  #g-carr-map-date { position:absolute; left:120px; bottom:90px; font-family:'Courier New',monospace;
+    font-size:26px; color:#d8a13a; letter-spacing:2px; opacity:0; }
+</style>
+<div id="root" data-composition-id="g-carr-map" data-width="1920" data-height="1080">
+  <div class="hdr" id="g-carr-map-hdr">THE CARR FIRE &middot; JULY 2018</div>
+  <svg width="1920" height="1080" style="position:absolute; inset:0;">
+    <!-- terrain -->
+    <path d="M0,760 Q300,600 620,700 T1200,640" stroke="#243040" stroke-width="2" fill="none" opacity="0.6"/>
+    <path d="M0,860 Q360,720 700,800 T1300,760" stroke="#1c2732" stroke-width="2" fill="none" opacity="0.5"/>
+    <!-- Sacramento River -->
+    <path id="g-carr-map-river" d="M1150,120 C1120,360 1200,560 1150,960" stroke="#3a6ea5" stroke-width="10"
+      fill="none" stroke-linecap="round" opacity="0"/>
+    <!-- Hwy 299 -->
+    <path d="M120,720 Q500,700 980,700" stroke="#4a566422" stroke-width="26" fill="none"/>
+    <path id="g-carr-map-hwy" d="M120,720 Q500,700 980,700" stroke="#5a6472" stroke-width="3"
+      stroke-dasharray="14 12" fill="none" opacity="0"/>
+    <!-- spread arrow -->
+    <path id="g-carr-map-spread" d="M300,715 Q750,690 1120,690" stroke="#e07a4a" stroke-width="6"
+      fill="none" stroke-linecap="round" opacity="0" stroke-dasharray="1000" stroke-dashoffset="1000"/>
+    <circle id="g-carr-map-ign" cx="300" cy="715" r="0" fill="#e74c3c"/>
+    <g id="g-carr-map-city" opacity="0">
+      <circle cx="1330" cy="690" r="60" fill="none" stroke="#c0392b" stroke-width="3"/>
+      <circle cx="1330" cy="690" r="40" fill="#c0392b22"/>
+    </g>
+  </svg>
+  <div class="lbl" id="g-carr-map-ignlbl" style="left:180px; top:610px;">IGNITION</div>
+  <div class="sub" id="g-carr-map-ignsub" style="left:180px; top:650px;">Hwy 299 &middot; a trailer's flat tire</div>
+  <div class="lbl" id="g-carr-map-riverlbl" style="left:1000px; top:360px; color:#7fb2e5;">SACRAMENTO<br>RIVER</div>
+  <div class="lbl" id="g-carr-map-citylbl" style="left:1250px; top:760px;">REDDING</div>
+  <div class="sub" id="g-carr-map-citysub" style="left:1250px; top:800px;">population 90,000</div>
+  <div id="g-carr-map-date">JULY 23 &rarr; JULY 26</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl=gsap.timeline({paused:true});
+  const P="#g-carr-map-";
+  /* beats vs A1-S3/S4 (retune at index): ignition@1 hwy@2 river@5 spread@7 crosses@11 Redding@13 */
+  tl.set([P+"hdr",P+"ignlbl",P+"ignsub",P+"riverlbl",P+"citylbl",P+"citysub",P+"date"],{autoAlpha:0},0);
+  tl.fromTo(P+"hdr",{autoAlpha:0,y:-14},{autoAlpha:1,y:0,duration:0.6},0.3);
+  tl.to(P+"hwy",{autoAlpha:1,duration:0.6},1.2);
+  tl.to(P+"ign",{attr:{r:12},duration:0.4,ease:"power4.in"},1.6);
+  tl.to([P+"ignlbl",P+"ignsub",P+"date"],{autoAlpha:1,duration:0.5},1.8);
+  tl.to(P+"ign",{attr:{r:16},duration:1.0,ease:"sine.inOut",repeat:-1,yoyo:true},2.2); // continuous pulse
+  tl.to(P+"river",{autoAlpha:0.95,duration:1.0},4.8);
+  tl.to([P+"riverlbl"],{autoAlpha:1,duration:0.5},5.2);
+  tl.to(P+"spread",{autoAlpha:1,duration:0.3},7.0);
+  tl.to(P+"spread",{strokeDashoffset:0,duration:5.0,ease:"power1.inOut"},7.0); // fire crawls east
+  tl.to(P+"city",{autoAlpha:1,duration:0.8},12.0);
+  tl.to([P+"citylbl",P+"citysub"],{autoAlpha:1,duration:0.5},12.4);
+  window.__timelines["g-carr-map"]=tl;
+})();
+</script>
+</template>
+</body>
+</html>
