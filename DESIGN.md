@@ -18,6 +18,15 @@ design review) before any paid generation:
 | `insert` | the clip's OWN audio | interview / TV news / radio / 911 call | OWNER CONFIRMS every insert before it enters a render |
 | `graphic` | optional VO | radar loop / map / timeline animation | self-made from NEXRAD/data = zero claim risk |
 
+## Script writing (ep5+, owner-ordered 2026-08-05)
+
+**Read `references/script-scaling.md` before writing any script** — the retention lattice:
+per-minute invariant cadences, 3–6 min self-similar acts, loop-table plant/pay, text-only act
+briefs (no JSON/code), 4th-grader language, spice = clarifying footnote not filler. It also
+carries the **pre-TTS fact-QC layer** (eyeball pass + verification verdicts; zero open
+`[verify]` markers before TTS) and the **insert-transcription rule** (transcribe every insert
+in full BEFORE cut selection; cut at the transcript's action/emotion peak).
+
 ## Audio rules (hard)
 
 - Every sourced clip is **muted by default**. Exactly one exception: `insert` segments, where the
