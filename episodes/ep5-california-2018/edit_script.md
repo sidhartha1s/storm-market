@@ -242,7 +242,8 @@
   gridlock through fire on both sides. // When the smoke came into the bus, he tore off his own
   shirt, soaked it, cut it into strips, and passed them back so the children could breathe. // Every
   one of those twenty-two children lived.
-- **memorial/quiet dwell** (≤4s): dramatized bus-in-smoke plate (AI, no real-child likeness).
+- **memorial/quiet dwell** (≤4s): Kevin McKay portrait (verify usage; he lived, this is a hero
+  beat not a memorial) → dramatized bus-in-smoke plate (AI, no real-child likeness).
 - **graphic `g-hook` (the corrective — the episode's sharpest net-info-gain):** **narration:** And
   here is the thing almost every telling of this fire gets wrong. // We picture the dead in their
   cars, trapped in the traffic on the Skyway. But when investigators counted, of the eighty-four
