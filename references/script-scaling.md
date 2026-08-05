@@ -34,27 +34,36 @@ Every episode keeps a LOOP TABLE in its edit_script:
 3. Re-run the loop table: every new act plants one, pays one.
 4. Cadences unchanged. A 500x script is just more 3–6 min mini-episodes on the same lattice,
    arranged so stakes DESCEND into the close (no recap, no outro summary).
-5. Info:fluff at 35 min ≈ 70–80% info. Fluff = sensory texture, dwell, foreshadow — earns its
-   seat only where a beat needs air. Never force it.
+5. **Spice ≠ fluff (owner definition, 2026-08-05):** spice is the clarifying footnote — the one
+   example that makes a number felt ("a football field per second"), the one analogy that makes a
+   mechanism click ("a skater pulling in her arms"), the one sensory detail that makes a place
+   real ("a sunrise behind the hospital at ten PM"). Salt on the food: adds clarity or relatability,
+   never length for its own sake. At 35 min: 70–80% info, spice where a beat needs it. Don't force it.
 
-## Act-planner template (fill per act, per episode — JSON for planning, prose for writing)
+## Act brief (text-only — one short block per act, written before the act's prose)
 
-```json
-{
-  "act": "A2-pyrotornadogenesis",
-  "minutes": 5.5,
-  "words": 800,
-  "job": "the science wedge — fire builds its own storm, then a tornado",
-  "hook_in": "the air itself had changed",
-  "plants_loop": "no warning existed for this",
-  "pays_loop": "what crossed the river (A1)",
-  "rehooks": ["CAL FIRE vortex reprise @~2min", "radar triangulation graphic @~4min"],
-  "emotion_bank": "low — this act is info; emotion is A3's job",
-  "tempo": "slow-build -> fast reveal -> slow hold",
-  "graphics": ["g-pyrocb", "g-vortex"],
-  "exit": "hold 3s on the ice-topped plume, blackout"
-}
-```
+No JSON, no schema, nothing parseable — a brief is six plain lines a writer reads and follows.
+Format-proof by construction: there is nothing to fail midrun.
+
+> **ACT — [name] · [minutes] min · ~[words] words**
+> **Job:** the one thing this act must accomplish.
+> **In / out:** the hook-in line idea → the exit beat (hold/blackout).
+> **Loops:** plants [x] · pays [y].
+> **Rehooks:** the 2–3 real beats (insert / graphic reveal / stat spike) and roughly where.
+> **Tempo + emotion:** the pacing wave shape, and how much emotion this act banks (info acts bank little — that's the next act's job).
+
+## Scaling by agents (orchestrator mode — for very long scripts)
+
+When one sitting can't hold the whole script (fatigue is how structure gets missed):
+1. The ORCHESTRATOR (main session) writes ALL act briefs first — the full loop table, word
+   allotments, and cadence sheet. Structure is decided once, globally, before any prose.
+2. One writer agent per act (or per arc of 2–3 acts). Each gets: this file + its act brief +
+   the loop table + the previous act's closing lines (for the seam). It writes prose only.
+3. The orchestrator splices, then re-walks the seams itself: every loop planted got paid,
+   rehook cadence unbroken across seams, no phrase or image repeated across acts, transitions
+   rewritten by hand where two agents' voices meet.
+4. All of it is text briefs and judgment — no code, no schema, nothing that can break midrun.
+   A missing brief line degrades to "writer uses judgment," never to a crash.
 
 ## Insert-transcription rule (owner order 2026-08-05)
 
