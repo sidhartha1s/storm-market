@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; overflow:hidden;
+    background:radial-gradient(ellipse at 50% 42%, #0b1016 0%, #030507 78%); }
+  .hdr { position:absolute; left:0; right:0; top:64px; text-align:center; font-weight:700;
+    font-size:26px; letter-spacing:8px; color:#93a3b2; }
+  /* altitude axis */
+  .axis { position:absolute; left:150px; top:150px; bottom:150px; width:2px; background:#2a3644; }
+  .tick { position:absolute; left:150px; font-family:'Courier New',monospace; font-size:20px; color:#93a3b2; transform:translateY(-50%); }
+  .tick span { position:absolute; left:-120px; width:110px; text-align:right; }
+  .tick:before { content:""; position:absolute; left:0; top:50%; width:14px; height:2px; background:#2a3644; }
+  /* plume column */
+  #g-pyrocb-col { position:absolute; left:640px; bottom:150px; width:260px; height:760px; transform-origin:bottom center;
+    background:linear-gradient(0deg, rgba(192,57,43,0.6), rgba(216,161,58,0.3) 40%, rgba(159,195,232,0.14) 100%);
+    filter:blur(2px); opacity:0; }
+  #g-pyrocb-anvil { position:absolute; left:470px; top:150px; width:600px; height:150px; opacity:0;
+    background:radial-gradient(ellipse at 50% 60%, rgba(230,238,246,0.9), rgba(159,195,232,0.35) 60%, rgba(159,195,232,0) 80%);
+    border-radius:50%; }
+  .ember { position:absolute; width:6px; height:6px; border-radius:50%; background:#e8c56a; box-shadow:0 0 8px #d8a13a; }
+  /* readouts */
+  #g-pyrocb-h { position:absolute; left:960px; top:250px; font-family:'Courier New',monospace; font-weight:700;
+    font-size:76px; color:#7fb2e5; opacity:0; }
+  #g-pyrocb-hlab { position:absolute; left:962px; top:340px; font-size:20px; letter-spacing:5px; color:#c8d3e0; opacity:0; }
+  #g-pyrocb-time { position:absolute; left:960px; top:430px; font-family:'Arial Black',Arial,sans-serif;
+    font-size:30px; color:#d8a13a; opacity:0; }
+  .anvillab { position:absolute; left:1120px; top:170px; font-family:Georgia,serif; font-style:italic;
+    font-size:26px; color:#9fc3e8; opacity:0; width:360px; }
+  /* radar triangulation */
+  .radar { position:absolute; width:16px; height:16px; border-radius:50%; background:#e74c3c; box-shadow:0 0 14px #e74c3c; opacity:0; }
+  #g-pyrocb-r1 { left:300px; bottom:230px; } #g-pyrocb-r2 { left:1500px; bottom:360px; } #g-pyrocb-r3 { left:1200px; top:220px; }
+  .rlab { position:absolute; font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:2px; color:#f2f5f8; opacity:0; }
+  #g-pyrocb-rl1 { left:250px; bottom:200px; } #g-pyrocb-rl2 { left:1440px; bottom:330px; } #g-pyrocb-rl3 { left:1150px; top:190px; }
+  #g-pyrocb-beams { position:absolute; inset:0; opacity:0; }
+  .footnote { position:absolute; left:0; right:0; bottom:70px; text-align:center; font-family:Georgia,serif;
+    font-style:italic; font-size:25px; color:#b8c6d4; opacity:0; }
+</style>
+<div id="root" data-composition-id="g-pyrocb" data-width="1920" data-height="1080">
+  <div class="hdr" id="g-pyrocb-hdr">THE FIRE MADE ITS OWN STORM</div>
+  <div class="axis"></div>
+  <div class="tick" style="top:900px"><span>0</span></div>
+  <div class="tick" style="top:660px"><span>4 miles</span></div>
+  <div class="tick" style="top:400px"><span>8 miles</span></div>
+  <div class="tick" style="top:210px"><span>39,000 ft</span></div>
+  <div id="g-pyrocb-col"></div>
+  <div id="g-pyrocb-anvil"></div>
+  <svg id="g-pyrocb-beams" width="1920" height="1080">
+    <line x1="308" y1="835" x2="770" y2="470" stroke="#e74c3c" stroke-width="2" stroke-dasharray="6 6" opacity="0.6"/>
+    <line x1="1508" y1="705" x2="770" y2="470" stroke="#e74c3c" stroke-width="2" stroke-dasharray="6 6" opacity="0.6"/>
+    <line x1="1208" y1="235" x2="770" y2="470" stroke="#e74c3c" stroke-width="2" stroke-dasharray="6 6" opacity="0.6"/>
+  </svg>
+  <div class="radar" id="g-pyrocb-r1"></div><div class="radar" id="g-pyrocb-r2"></div><div class="radar" id="g-pyrocb-r3"></div>
+  <div class="rlab" id="g-pyrocb-rl1">BEALE</div><div class="rlab" id="g-pyrocb-rl2">EUREKA</div><div class="rlab" id="g-pyrocb-rl3">MEDFORD</div>
+  <div id="g-pyrocb-h">4</div>
+  <div id="g-pyrocb-hlab">MILES HIGH</div>
+  <div id="g-pyrocb-time">4 miles to 8 miles in 15 minutes</div>
+  <div class="anvillab" id="g-pyrocb-anvillab">at the top, a cap of ice &mdash; a fire wearing a thundercloud</div>
+  <div class="footnote" id="g-pyrocb-foot">three radars watched it from three directions at once</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const root = document.getElementById("g-pyrocb-col").parentNode;
+  const embers=[]; for(let i=0;i<14;i++){const e=document.createElement("div");e.className="ember";
+    e.style.left=(700+(Math.sin(i*1.3)*90))+"px"; e.style.bottom="150px"; e.style.opacity="0";
+    root.appendChild(e); embers.push(e);}
+  const tl = gsap.timeline({ paused:true });
+  const P="#g-pyrocb-";
+  /* beats vs A2-S2 words.json (retune at index): "column explode upward"@6 "four to eight in fifteen"@12
+     "cap of ice"@22 "pyrocumulonimbus"@30 ; radar beat belongs to A2-S9 (separate mount) */
+  tl.set([P+"col",P+"anvil",P+"h",P+"hlab",P+"time",P+"anvillab",P+"foot",P+"beams",
+          P+"r1",P+"r2",P+"r3",P+"rl1",P+"rl2",P+"rl3"],{autoAlpha:0},0);
+  tl.set(P+"col",{scaleY:0.12},0);
+  tl.fromTo(P+"hdr",{autoAlpha:0,y:-16},{autoAlpha:1,y:0,duration:0.6},0.4);
+  // plume grows 4→8 mi with the counter + continuous embers
+  tl.to(P+"col",{autoAlpha:1,duration:0.6},5.5);
+  tl.to(P+"col",{scaleY:0.62,duration:1.6,ease:"power2.out"},5.8);
+  tl.to([P+"h",P+"hlab",P+"time"],{autoAlpha:1,duration:0.5},6.0);
+  const h={v:4}; tl.to(h,{v:8,duration:3.0,ease:"power1.inOut",onUpdate:function(){
+    const el=document.getElementById("g-pyrocb-h"); if(el) el.textContent=Math.round(h.v);}},9.0);
+  tl.to(P+"col",{scaleY:1,duration:3.0,ease:"power1.inOut"},9.0);
+  embers.forEach((e,i)=>{ tl.to(e,{opacity:0.85,duration:0.3},7+(i*0.1)%2);
+    tl.to(e,{bottom:"+=680",opacity:0,duration:3.0,ease:"power1.in",repeat:-1,repeatDelay:0.4},7+(i*0.12)); });
+  // ice anvil
+  tl.to([P+"anvil",P+"anvillab"],{autoAlpha:1,duration:1.0,ease:"power2.out"},21.0);
+  // radar triangulation (this sub-beat is reused/mounted again for A2-S9)
+  tl.to([P+"r1",P+"r2",P+"r3",P+"rl1",P+"rl2",P+"rl3"],{autoAlpha:1,duration:0.5,stagger:0.25},30.0);
+  tl.to(P+"beams",{autoAlpha:1,duration:1.2},31.2);
+  tl.to(P+"foot",{autoAlpha:1,duration:0.7},32.2);
+  window.__timelines["g-pyrocb"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
