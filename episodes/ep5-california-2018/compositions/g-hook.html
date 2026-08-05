@@ -99,8 +99,13 @@ window.__timelines = window.__timelines || {};
   const cnt={v:0}; tl.to(P+"bignum",{autoAlpha:1,duration:0.5},25.5);
   tl.to(cnt,{v:71,duration:3.4,ease:"power2.out",onUpdate:function(){
     const el=document.getElementById("g-hook-count"); if(el) el.textContent=Math.round(cnt.v);}},25.5);
-  tl.to(P+"rows",{autoAlpha:1,duration:0.6},30.5);
-  tl.fromTo(P+"kicker",{autoAlpha:0,scale:1.15},{autoAlpha:1,scale:1,duration:0.7,ease:"power3.out"},39.5);
+  // rows land one at a time — a list to follow, not a paragraph to read
+  tl.fromTo(".r",{autoAlpha:0,x:24},{autoAlpha:1,x:0,duration:0.4,stagger:1.1},30.0);
+  tl.set(P+"rows",{autoAlpha:1},29.9);
+  tl.fromTo(P+"kicker",{autoAlpha:0,scale:1.15},{autoAlpha:1,scale:1,duration:0.7,ease:"power3.out"},36.2);
+  // soft exit before the hard cut
+  tl.to([P+"grid",P+"bignum",P+"legend",P+"rows",P+"hdr"],{autoAlpha:0,duration:0.8},38.9);
+  tl.to(P+"kicker",{autoAlpha:0,duration:0.6},39.3);
   window.__timelines["g-hook"]=tl;
 })();
 </script>
