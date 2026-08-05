@@ -24,11 +24,9 @@
     .quotecard { position: absolute; left: 160px; right: 160px; bottom: 150px; z-index: 6; text-align: center; }
     .quotecard .q { display: table; margin: 0 auto; font-family: Georgia, serif; font-style: italic; font-size: 44px; color: #f2f5f8; background: rgba(5,8,12,0.72); padding: 16px 40px; line-height: 1.35; text-shadow: 0 2px 18px rgba(0,0,0,0.9); }
     .quotecard .attr { display: table; margin: 12px auto 0; font-family: Arial, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 3px; color: #d8a13a; background: rgba(5,8,12,0.72); padding: 8px 24px; }
-    .namecard { position: absolute; left: 0; right: 0; bottom: 170px; text-align: center; z-index: 5; }
+    .namecard { position: absolute; left: 0; right: 0; bottom: 150px; text-align: center; z-index: 5; }
     .namecard .nc-name { display: table; margin: 0 auto; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 64px; color: #f2f5f8; letter-spacing: 1px; background: rgba(5,8,12,0.62); padding: 10px 42px; text-shadow: 0 3px 26px rgba(0,0,0,0.9); }
     .namecard .nc-sub { display: table; margin: 10px auto 0; font-family: Georgia, serif; font-style: italic; font-size: 32px; color: #e8c56a; background: rgba(5,8,12,0.62); padding: 8px 30px; }
-    .portrait-frame { position: absolute; left: 150px; top: 170px; width: 470px; height: 640px; z-index: 5; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.7); }
-    .portrait-frame img { width: 100%; height: 100%; object-fit: cover; }
     .srclab { position: absolute; right: 40px; bottom: 34px; z-index: 7; font-family: Arial, sans-serif; font-size: 19px; color: rgba(200,211,224,0.75); background: rgba(5,8,12,0.55); padding: 5px 12px; letter-spacing: 0.5px; }
     .dispatchlab { position: absolute; left: 0; right: 0; top: 470px; text-align: center; z-index: 6; }
     .dispatchlab .d1 { display: table; margin: 0 auto; font-family: 'Courier New', monospace; font-weight: 700; font-size: 40px; color: #e8c56a; letter-spacing: 4px; background: rgba(5,8,12,0.6); padding: 10px 30px; }
@@ -101,109 +99,78 @@
   <audio id="nx-a6s6" src="audio/a6-s6.wav" data-start="1841.3" data-duration="37.64" data-volume="1"></audio>
   <audio id="nx-a6s4" src="audio/a6-s4.wav" data-start="1879.64" data-duration="34.28" data-volume="1"></audio>
 
-  <!-- INSERT AUDIO (owner-gated; ducked): 911 dispatch, Carr Fire night. Placed muted-under for draft;
-       see summary — the emotional 911 audio cut needs a dedicated silent window at owner sign-off. -->
+  <!-- INSERT AUDIO (owner-gated; ducked): 911 dispatch, Carr Fire night. For draft the 911 video runs
+       MUTED as picture; the emotional audio-carrying cut needs a dedicated silent window at owner sign-off. -->
 
   <!-- ============================ PICTURE TRACK 1 / GRAPHIC HOSTS (track 2) ============================ -->
   <!-- NOTE (draft): 32 source assets for ~32 min forces long kenburns holds + reuse near the cap-3 floor.
        This cut is for STRUCTURE / PACING / SCRIPT / GRAPHICS review. A full render needs ~2-3x more B-roll. -->
+
   <!-- ===== COLD OPEN (0–32.92): the fire tornado, mid-action ===== -->
   <section class="clip blackout" id="bo-lead" data-start="0" data-duration="2.0" data-track-index="1"></section>
   <video id="vx-firenado1" src="media/calfire-firenado-heli-storyful.mp4" style="filter: saturate(0.85) contrast(1.08) brightness(0.98)" data-start="2.0" data-duration="19.07" data-track-index="1" data-volume="0.12"></video>
   <video id="vx-smokeaer1" src="media/stock-smoke-plume-aerial-dense-02.mp4" style="filter: brightness(0.7) saturate(0.6)" data-start="21.07" data-duration="2.85" data-track-index="1" muted></video>
   <section class="clip blackout" id="bo-titlecut" data-start="23.92" data-duration="0.28" data-track-index="1"></section>
+  <div id="host-title" data-composition-id="g-title" data-composition-src="compositions/g-title.html" data-start="24.2" data-duration="8.72" data-track-index="2" data-width="1920" data-height="1080"></div>
 
   <!-- ===== ACT 1 — AN ORDINARY FIRE (32.92–202.66) ===== -->
-  <!-- a1-s1: flat tire / Hwy 299 / dry hills -->
   <video id="vx-foresta1" src="media/stock-forestfire-aerial-01.mp4" style="filter: brightness(0.82) saturate(0.7)" data-start="32.92" data-duration="7.08" data-track-index="1" muted></video>
   <video id="vx-canopy1" src="media/stock-smoke-plume-canopy-01.mp4" style="filter: brightness(0.8) saturate(0.65)" data-start="40.0" data-duration="8.0" data-track-index="1" muted></video>
   <video id="vx-forestb1" src="media/stock-forestfire-aerial-02.mp4" style="filter: brightness(0.82) saturate(0.7)" data-start="48.0" data-duration="8.82" data-track-index="1" muted></video>
-  <!-- a1-s2: bare rim sparks / 113° / manzanita like dead wood -->
   <section class="clip still-wrap contain-wrap" id="c-modisnat1" data-start="56.82" data-duration="13.18" data-track-index="1"><img id="kb-modisnat1" src="media/nasa-modis-carrfire-natural-color.jpg" alt=""></section>
   <video id="vx-flamesfw1" src="media/stock-flames-closeup-firewood-01.mp4" style="filter: saturate(0.9) contrast(1.1)" data-start="70.0" data-duration="8.0" data-track-index="1" muted></video>
   <video id="vx-flameslogs1" src="media/stock-flames-closeup-logs-03.mp4" style="filter: saturate(0.9) contrast(1.1)" data-start="78.0" data-duration="12.88" data-track-index="1" muted></video>
-  <!-- a1-s3: named Carr / east / three days / river barrier — MAP -->
   <div id="host-carrmap" data-composition-id="g-carr-map" data-composition-src="compositions/g-carr-map.html" data-start="90.88" data-duration="13.12" data-track-index="2" data-width="1920" data-height="1080"></div>
   <video id="vx-carrwater1" src="media/dvids-carr-fire-water-drop.mp4" style="filter: brightness(0.92) saturate(0.85)" data-start="104.0" data-duration="10.0" data-track-index="1" muted></video>
   <video id="vx-carrmaffs1" src="media/dvids-carr-fire-maffs-broll.mp4" style="filter: brightness(0.92) saturate(0.85)" data-start="114.0" data-duration="10.0" data-track-index="1" muted></video>
   <video id="vx-foresta2" src="media/stock-forestfire-aerial-01.mp4" style="filter: brightness(0.8) saturate(0.68)" data-start="124.0" data-duration="7.7" data-track-index="1" data-callback="carr fire second day in the hills" muted></video>
-  <!-- a1-s4: morning Jul 26 / runs at the water / 38,000 evacuate -->
   <section class="clip still-wrap contain-wrap" id="c-modisswir1" data-start="131.7" data-duration="12.3" data-track-index="1"><img id="kb-modisswir1" src="media/nasa-modis-carrfire-falsecolor-swir.jpg" alt=""></section>
   <video id="vx-nightroad1" src="media/stock-night-road-taillights-01.mp4" style="filter: brightness(0.85) saturate(0.7)" data-start="144.0" data-duration="7.0" data-track-index="1" muted></video>
   <video id="vx-nightroad2" src="media/stock-night-road-taillights-02.mp4" style="filter: brightness(0.85) saturate(0.7)" data-start="151.0" data-duration="6.16" data-track-index="1" muted></video>
-  <!-- a1-s5: reaches river / does not stop / branches falling / orange sky -->
   <video id="vx-flamesfire1" src="media/stock-flames-closeup-fire-02.mp4" style="filter: saturate(0.92) contrast(1.12)" data-start="157.16" data-duration="10.84" data-track-index="1" muted></video>
   <video id="vx-smokeaer2" src="media/stock-smoke-plume-aerial-dense-02.mp4" style="filter: brightness(0.72) saturate(0.62)" data-start="168.0" data-duration="8.0" data-track-index="1" data-callback="smoke over the river at dusk" muted></video>
   <section class="clip still-wrap contain-wrap" id="c-modisnat2" data-start="176.0" data-duration="10.0" data-track-index="1" data-callback="the plume over Redding the night it crossed"><img id="kb-modisnat2" src="media/nasa-modis-carrfire-natural-color.jpg" alt=""></section>
   <video id="vx-flameslogs2" src="media/stock-flames-closeup-logs-03.mp4" style="filter: saturate(0.95) contrast(1.15) brightness(1.05)" data-start="186.0" data-duration="4.22" data-track-index="1" data-callback="the sky turns orange" muted></video>
-  <!-- a1-s6: not the fire the crews fought / changing the sky -->
   <video id="vx-canopy2" src="media/stock-smoke-plume-canopy-01.mp4" style="filter: brightness(0.75) saturate(0.6)" data-start="190.22" data-duration="6.78" data-track-index="1" data-callback="the column building over the ridge" muted></video>
-  <video id="vx-pyrocb2a" src="media/nasa-goes16-carr-pyrocb-2panel.mp4" style="filter: brightness(1.0)" data-start="197.0" data-duration="5.66" data-track-index="1" muted></video>
+  <video id="vx-pyrocb2a" src="media/nasa-goes16-carr-pyrocb-2panel.mp4" data-start="197.0" data-duration="5.66" data-track-index="1" muted></video>
   <section class="clip blackout" id="bo-a2" data-start="202.66" data-duration="3.0" data-track-index="1"></section>
 
   <!-- ===== ACT 2 — THE FIRE THAT BECAME WEATHER (205.66–658.86) ===== -->
-  <!-- a2-s1: what a great fire does to the air -->
-  <video id="vx-pyrocb4a" src="media/nasa-goes16-carr-pyrocb-4panel.mp4" data-start="205.66" data-duration="12.34" data-track-index="1" muted></video>
-  <video id="vx-flamesfire2" src="media/stock-flames-closeup-fire-02.mp4" style="filter: saturate(0.9) contrast(1.12)" data-start="218.0" data-duration="13.68" data-track-index="1" data-callback="the column that stopped behaving like smoke" muted></video>
-  <!-- a2-s2: radar watched it 4→8mi / anvil / pyrocumulonimbus — GRAPHIC -->
+  <video id="vx-pyrocb4a" src="media/nasa-goes16-carr-pyrocb-4panel.mp4" data-start="205.66" data-duration="26.02" data-track-index="1" muted></video>
   <div id="host-pyrocb" data-composition-id="g-pyrocb" data-composition-src="compositions/g-pyrocb.html" data-start="231.68" data-duration="33.02" data-track-index="2" data-width="1920" data-height="1080"></div>
   <video id="vx-pyrocb2b" src="media/nasa-goes16-carr-pyrocb-2panel.mp4" data-start="264.7" data-duration="8.84" data-track-index="1" data-callback="the real satellite loop of the fire cloud" muted></video>
-  <!-- a2-s3: heat alone can't spin / air already loaded / Great Plains ingredients -->
   <section class="clip still-wrap contain-wrap" id="c-modisswir2" data-start="273.54" data-duration="12.46" data-track-index="1" data-callback="the burn footprint under the loaded sky"><img id="kb-modisswir2" src="media/nasa-modis-carrfire-falsecolor-swir.jpg" alt=""></section>
   <video id="vx-forestb2" src="media/stock-forestfire-aerial-02.mp4" style="filter: brightness(0.8) saturate(0.66)" data-start="286.0" data-duration="8.0" data-track-index="1" data-callback="the restless air over the burn" muted></video>
   <video id="vx-flamesfw2" src="media/stock-flames-closeup-firewood-01.mp4" style="filter: saturate(0.9) contrast(1.1)" data-start="294.0" data-duration="7.48" data-track-index="1" data-callback="the trigger the sky was waiting for" muted></video>
-  <!-- a2-s4: the mechanism / boundary turns / skater / the storm was the fire — GRAPHIC -->
   <div id="host-vortex" data-composition-id="g-vortex" data-composition-src="compositions/g-vortex.html" data-start="301.48" data-duration="35.12" data-track-index="2" data-width="1920" data-height="1080"></div>
   <video id="vx-pyrocb4b" src="media/nasa-goes16-carr-pyrocb-4panel.mp4" data-start="336.6" data-duration="10.7" data-track-index="1" data-callback="the storm that was the fire" muted></video>
-  <!-- a2-s5: 7:30pm vortex touched down / 1000ft / 143mph / EF3 — PAYOFF the hook -->
   <video id="vx-firenado2" src="media/calfire-firenado-heli-storyful.mp4" style="filter: saturate(0.88) contrast(1.1) brightness(1.0)" data-start="347.3" data-duration="19.07" data-track-index="1" data-callback="the fire tornado from the cold open, now named" data-volume="0.1"></video>
   <section class="clip still-wrap contain-wrap" id="c-svsscar1" data-start="366.37" data-duration="11.51" data-track-index="1"><img id="kb-svsscar1" src="media/nasa-svs-carrfire-landsat-burnscar.png" alt=""></section>
-  <!-- a2-s6: 30 min / 2700° / pulled towers / threw a container -->
   <video id="vx-carrmaffs2" src="media/dvids-carr-fire-maffs-broll.mp4" style="filter: brightness(0.9) saturate(0.82)" data-start="377.88" data-duration="10.12" data-track-index="1" data-callback="air attack against a fire that answered to nothing" muted></video>
   <video id="vx-carrwater2" src="media/dvids-carr-fire-water-drop.mp4" style="filter: brightness(0.9) saturate(0.82)" data-start="388.0" data-duration="10.86" data-track-index="1" data-callback="water on a fire making its own wind" muted></video>
-  <!-- a2-s7: first fire tornado ever recorded? / NWS no box / fire whirl / scientists careful -->
   <section class="clip still-wrap contain-wrap" id="c-svsscar2" data-start="398.86" data-duration="13.14" data-track-index="1" data-callback="the scar the vortex cut, from orbit"><img id="kb-svsscar2" src="media/nasa-svs-carrfire-landsat-burnscar.png" alt=""></section>
   <video id="vx-burnaer1a" src="media/stock-burned-neighborhood-aerial-01.mp4" style="filter: brightness(0.85) saturate(0.72)" data-start="412.0" data-duration="23.32" data-track-index="1" muted></video>
-  <!-- a2-s8: no tornado warning / Loyalton 2020 / page written because of Redding -->
-  <video id="vx-nightroad1b" src="media/stock-night-road-taillights-01.mp4" style="filter: brightness(0.82) saturate(0.66)" data-start="435.32" data-duration="8.68" data-track-index="1" data-callback="the night no rulebook had a page for" muted></video>
-  <video id="vx-burnaer2a" src="media/stock-burned-neighborhood-aerial-02.mp4" style="filter: brightness(0.85) saturate(0.72)" data-start="444.0" data-duration="27.98" data-track-index="1" muted></video>
-  <!-- a2-s9: reconstructed from 3 radars Beale/Eureka/Medford / 2nd ever / Canberra 2003 -->
-  <video id="vx-burnaer1b" src="media/stock-burned-neighborhood-aerial-01.mp4" style="filter: brightness(0.8) saturate(0.7)" data-start="471.98" data-duration="22.02" data-track-index="1" data-callback="the ground three radars had been watching" muted></video>
-  <video id="vx-fftruck1a" src="media/stock-firefighters-truck-01.mp4" style="filter: brightness(0.9) saturate(0.8)" data-start="494.0" data-duration="6.8" data-track-index="1" muted></video>
-  <!-- a2-s10: the science took years / the vortex took minutes / not an empty field -->
-  <video id="vx-fftruck2a" src="media/stock-firefighters-truck-02.mp4" style="filter: brightness(0.9) saturate(0.8)" data-start="500.8" data-duration="8.02" data-track-index="1" muted></video>
-  <!-- a2-s11: why this fire / brush moisture / three loaded guns -->
-  <video id="vx-fftruck2b" src="media/stock-firefighters-truck-02.mp4" style="filter: brightness(0.88) saturate(0.78)" data-start="508.82" data-duration="19.18" data-track-index="1" data-callback="the crews who measured the fuel that was ready" muted></video>
-  <video id="vx-fftruck1b" src="media/stock-firefighters-truck-01.mp4" style="filter: brightness(0.88) saturate(0.78)" data-start="528.0" data-duration="15.32" data-track-index="1" data-callback="three loaded guns, one evening" muted></video>
-  <!-- a2-s12: they watched it live on radar / a hook of rotation / no button for this -->
+  <video id="vx-burnaer2a" src="media/stock-burned-neighborhood-aerial-02.mp4" style="filter: brightness(0.85) saturate(0.72)" data-start="435.32" data-duration="36.66" data-track-index="1" muted></video>
+  <video id="vx-burnaer1b" src="media/stock-burned-neighborhood-aerial-01.mp4" style="filter: brightness(0.8) saturate(0.7)" data-start="471.98" data-duration="28.82" data-track-index="1" data-callback="the ground three radars had been watching" muted></video>
+  <video id="vx-fftruck2a" src="media/stock-firefighters-truck-02.mp4" style="filter: brightness(0.9) saturate(0.8)" data-start="500.8" data-duration="27.2" data-track-index="1" muted></video>
+  <video id="vx-fftruck1b" src="media/stock-firefighters-truck-01.mp4" style="filter: brightness(0.88) saturate(0.78)" data-start="528.0" data-duration="15.32" data-track-index="1" muted></video>
   <div id="host-pyrocb2" data-composition-id="g-pyrocb" data-composition-src="compositions/g-pyrocb.html" data-start="543.32" data-duration="33.02" data-track-index="2" data-width="1920" data-height="1080" data-callback="the radar-triangulation beat, watched live"></div>
-  <video id="vx-flamesfire-a2s12" src="media/stock-flames-closeup-fire-02.mp4" style="filter: saturate(0.85) contrast(1.1) brightness(0.85)" data-start="576.34" data-duration="5.52" data-track-index="1" data-callback="a tornado forming inside the smoke" muted></video>
-  <!-- a2-s13: the vortex's ground effect on Lake Keswick Estates (77s) — bridge to the eight -->
-  <video id="vx-firenado-a2s13" src="media/calfire-firenado-heli-storyful.mp4" style="filter: saturate(0.85) contrast(1.1) brightness(0.95)" data-start="581.86" data-duration="19.07" data-track-index="1" data-callback="RECAP the fire tornado over the neighborhood it tore apart" data-volume="0"></video>
-  <section class="clip still-wrap contain-wrap" id="c-svsscar3" data-start="600.93" data-duration="18.0" data-track-index="1" data-callback="the western edge of Redding, scoured"><img id="kb-svsscar3" src="media/nasa-svs-carrfire-landsat-burnscar.png" alt=""></section>
-  <video id="vx-burnaer2b" src="media/stock-burned-neighborhood-aerial-02.mp4" style="filter: brightness(0.82) saturate(0.7)" data-start="618.93" data-duration="20.0" data-track-index="1" data-callback="homes not burned but scattered" muted></video>
+  <video id="vx-pyrocb2c" src="media/nasa-goes16-carr-pyrocb-2panel.mp4" data-start="576.34" data-duration="5.52" data-track-index="1" data-callback="a hook of rotation inside the smoke" muted></video>
+  <video id="vx-firenado-a2s13" src="media/calfire-firenado-heli-storyful.mp4" style="filter: saturate(0.85) contrast(1.1) brightness(0.95)" data-start="581.86" data-duration="19.07" data-track-index="1" data-callback="the fire tornado over the neighborhood it tore apart" data-volume="0"></video>
+  <video id="vx-burnaer2b" src="media/stock-burned-neighborhood-aerial-02.mp4" style="filter: brightness(0.82) saturate(0.7)" data-start="600.93" data-duration="38.0" data-track-index="1" data-callback="homes not burned but scattered" muted></video>
   <section class="clip still-wrap contain-wrap" id="c-modisswir3" data-start="638.93" data-duration="19.93" data-track-index="1" data-callback="who could not get out of its way"><img id="kb-modisswir3" src="media/nasa-modis-carrfire-falsecolor-swir.jpg" alt=""></section>
   <section class="clip blackout" id="bo-a3" data-start="658.86" data-duration="3.0" data-track-index="1"></section>
 
   <!-- ===== ACT 3 — THE EIGHT (661.86–894.8) ===== -->
-  <!-- a3-s1: the Carr Fire took eight lives / these are their stories -->
-  <video id="vx-fftruck2-a3" src="media/stock-firefighters-truck-02.mp4" style="filter: brightness(0.7) saturate(0.7)" data-start="661.86" data-duration="7.94" data-track-index="1" data-callback="the eight who stood between the fire and the town" muted></video>
-  <!-- a3-s2 + a3-s3: Don Ray Smith, the dozer operators / the recording -->
-  <video id="vx-dozer911" src="media/dozer-911-carr-fire-recordsearchlight.mp4" style="filter: brightness(0.78) saturate(0.7) contrast(1.05)" data-start="669.8" data-duration="30.34" data-track-index="1" muted></video>
-  <!-- a3-s4: Jeremy Stoke / mayday on Buenaventura -->
+  <video id="vx-dozer911" src="media/dozer-911-carr-fire-recordsearchlight.mp4" style="filter: brightness(0.78) saturate(0.7) contrast(1.05)" data-start="661.86" data-duration="39.18" data-track-index="1" muted></video>
   <video id="vx-nightroad2-a3" src="media/stock-night-road-taillights-02.mp4" style="filter: brightness(0.7) saturate(0.6)" data-start="701.04" data-duration="8.0" data-track-index="1" data-callback="the road he drove toward the fire" muted></video>
-  <section class="clip still-wrap contain-wrap portrait-still" id="c-stoke" data-start="709.04" data-duration="29.32" data-track-index="1"><img id="kb-stoke" src="media/portrait-stoke.jpg" alt=""></section>
-  <!-- a3-s5 + a3-s6: Melody Bledsoe / Ed / "Grandpa, come and get me" -->
-  <section class="clip still-wrap contain-wrap portrait-still" id="c-bledsoe" data-start="739.06" data-duration="25.0" data-track-index="1"><img id="kb-bledsoe" src="media/portrait-bledsoe.jpg" alt=""></section>
-  <video id="vx-flamesfire-a3s6" src="media/stock-flames-closeup-fire-02.mp4" style="filter: saturate(0.85) contrast(1.1) brightness(0.7)" data-start="764.06" data-duration="34.98" data-track-index="1" data-callback="the fire coming in the back door" muted></video>
-  <!-- a3-s7: Melody covered the children with her body -->
+  <section class="clip still-wrap contain-wrap" id="c-stoke" data-start="709.04" data-duration="30.02" data-track-index="1"><img id="kb-stoke" src="media/portrait-stoke.jpg" alt=""></section>
+  <section class="clip still-wrap contain-wrap" id="c-bledsoe" data-start="739.06" data-duration="25.0" data-track-index="1"><img id="kb-bledsoe" src="media/portrait-bledsoe.jpg" alt=""></section>
+  <video id="vx-flamesfire-a3s6" src="media/stock-flames-closeup-fire-02.mp4" style="filter: saturate(0.85) contrast(1.1) brightness(0.7)" data-start="764.06" data-duration="34.96" data-track-index="1" data-callback="the fire coming in the back door" muted></video>
   <section class="clip blackout" id="bo-a3s7" data-start="799.02" data-duration="0.72" data-track-index="1"></section>
-  <section class="clip still-wrap contain-wrap portrait-still" id="c-bledsoe2" data-start="799.74" data-duration="14.42" data-track-index="1" data-callback="she did everything a human being could do"><img id="kb-bledsoe2" src="media/portrait-bledsoe.jpg" alt=""></section>
-  <!-- a3-s8: Carr toll — STAT CARD -->
+  <section class="clip still-wrap contain-wrap" id="c-bledsoe2" data-start="799.74" data-duration="14.42" data-track-index="1" data-callback="she did everything a human being could do"><img id="kb-bledsoe2" src="media/portrait-bledsoe.jpg" alt=""></section>
   <div id="host-statcarr" data-composition-id="g-stat-carr" data-composition-src="compositions/g-stat-carr.html" data-start="814.16" data-duration="24.92" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <!-- a3-s9: a thousand homes / a slab and a chimney -->
-  <video id="vx-burnaer1-a3" src="media/stock-burned-neighborhood-aerial-01.mp4" style="filter: brightness(0.82) saturate(0.68)" data-start="839.78" data-duration="26.82" data-track-index="1" data-callback="a thousand families back to a concrete slab" muted></video>
-  <!-- a3-s10: the men on the other dozers lived / someone has to stand between -->
+  <video id="vx-burnaer1-a3" src="media/stock-burned-neighborhood-aerial-01.mp4" style="filter: brightness(0.82) saturate(0.68)" data-start="839.08" data-duration="27.52" data-track-index="1" data-callback="a thousand families back to a concrete slab" muted></video>
   <video id="vx-fftruck1-a3" src="media/stock-firefighters-truck-01.mp4" style="filter: brightness(0.82) saturate(0.72)" data-start="866.6" data-duration="28.2" data-track-index="1" data-callback="the ones who kept working the line" muted></video>
   <section class="clip blackout" id="bo-bridge" data-start="894.8" data-duration="3.0" data-track-index="1"></section>
 
@@ -213,78 +180,51 @@
   <section class="clip blackout" id="bo-a4" data-start="937.16" data-duration="3.0" data-track-index="1"></section>
 
   <!-- ===== ACT 4 — THE MORNING OF NOVEMBER 8 (940.16–1211.68) ===== -->
-  <!-- a4-s1: Paradise on the ridge / two canyons / Skyway / the grand jury — MAP -->
   <div id="host-campmap" data-composition-id="g-camp-map" data-composition-src="compositions/g-camp-map.html" data-start="940.16" data-duration="23.0" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <section class="clip still-wrap contain-wrap" id="c-usgsbefore2" data-start="963.16" data-duration="24.84" data-track-index="1" data-callback="the town on the ridge, before"><img id="kb-usgsbefore2" src="media/usgs-lcmap-paradise-before-campfire.jpg" alt=""></section>
-  <!-- a4-s2: the Caribou-Palermo line / the C-hook / 97 years / it broke -->
+  <section class="clip still-wrap contain-wrap" id="c-usgsbefore2" data-start="963.16" data-duration="25.54" data-track-index="1" data-callback="the town on the ridge, before"><img id="kb-usgsbefore2" src="media/usgs-lcmap-paradise-before-campfire.jpg" alt=""></section>
   <video id="vx-forestb-a4" src="media/stock-forestfire-aerial-02.mp4" style="filter: brightness(0.82) saturate(0.68)" data-start="988.7" data-duration="17.0" data-track-index="1" data-callback="the canyon where the hook hung" muted></video>
   <video id="vx-flamesfw-a4" src="media/stock-flames-closeup-firewood-01.mp4" style="filter: saturate(0.9) contrast(1.15)" data-start="1005.7" data-duration="24.7" data-track-index="1" data-callback="molten metal into the brush" muted></video>
-  <!-- a4-s3: 6:33 Camp Fire logged / red-flag / 200 days no rain / canyon a chimney -->
-  <section class="clip still-wrap contain-wrap" id="c-landsatcamp1" data-start="1030.4" data-duration="34.28" data-track-index="1"><img id="kb-landsatcamp1" src="media/nasa-landsat-campfire-swir-fireline.jpg" alt=""></section>
-  <!-- a4-s4: the plume joined the attack / raining fire / a football field per second -->
-  <video id="vx-flamesfire-a4" src="media/stock-flames-closeup-fire-02.mp4" style="filter: saturate(0.95) contrast(1.18) brightness(1.08)" data-start="1065.38" data-duration="34.96" data-track-index="1" data-callback="the fire that was raining fire" muted></video>
-  <!-- a4-s5: 30 fires inside Paradise by 8:30 / burning from inside out — EMBER GRAPHIC -->
+  <section class="clip still-wrap contain-wrap" id="c-landsatcamp1" data-start="1030.4" data-duration="34.98" data-track-index="1"><img id="kb-landsatcamp1" src="media/nasa-landsat-campfire-swir-fireline.jpg" alt=""></section>
+  <video id="vx-flamesfire-a4" src="media/stock-flames-closeup-fire-02.mp4" style="filter: saturate(0.95) contrast(1.18) brightness(1.08)" data-start="1065.38" data-duration="35.66" data-track-index="1" data-callback="the fire that was raining fire" muted></video>
   <div id="host-ember" data-composition-id="g-ember" data-composition-src="compositions/g-ember.html" data-start="1101.04" data-duration="23.0" data-track-index="2" data-width="1920" data-height="1080"></div>
   <video id="vx-smokecanopy-a4" src="media/stock-smoke-plume-canopy-01.mp4" style="filter: brightness(0.85) saturate(0.7)" data-start="1124.04" data-duration="6.38" data-track-index="1" data-callback="the town already on fire before breakfast" muted></video>
-  <!-- a4-s6: the hook did not have to break / untrained inspectors -->
-  <section class="clip still-wrap contain-wrap" id="c-landsatcamp2" data-start="1130.42" data-duration="24.0" data-track-index="1" data-callback="the fire line the inspections never stopped"><img id="kb-landsatcamp2" src="media/nasa-landsat-campfire-swir-fireline.jpg" alt=""></section>
-  <video id="vx-campbh1" src="media/dvids-campfire-blackhawk-aerial-broll.mp4" style="filter: brightness(0.9) saturate(0.8)" data-start="1154.42" data-duration="24.52" data-track-index="1" muted></video>
-  <!-- a4-s7: Captain McKenzie / "potential of a major incident" / 7 miles in an hour -->
-  <video id="vx-campbh2" src="media/dvids-campfire-blackhawk-aerial-broll.mp4" style="filter: brightness(0.9) saturate(0.8)" data-start="1179.64" data-duration="32.04" data-track-index="1" data-callback="the air view of a fire nothing built would stop" muted></video>
+  <section class="clip still-wrap contain-wrap" id="c-modiscamp1" data-start="1130.42" data-duration="24.0" data-track-index="1"><img id="kb-modiscamp1" src="media/nasa-modis-campfire-smoke-california.jpg" alt=""></section>
+  <video id="vx-campbh1" src="media/dvids-campfire-blackhawk-aerial-broll.mp4" style="filter: brightness(0.9) saturate(0.8)" data-start="1154.42" data-duration="57.26" data-track-index="1" muted></video>
   <section class="clip blackout" id="bo-a5" data-start="1211.68" data-duration="3.0" data-track-index="1"></section>
 
   <!-- ===== ACT 5 — EIGHTY-FIVE (1214.68–1570.68) ===== -->
-  <!-- a5-s1: the sheriff / mass alert failed / door to door / sky black at 9am -->
   <video id="vx-nightroad2-a5" src="media/stock-night-road-taillights-02.mp4" style="filter: brightness(0.6) saturate(0.55)" data-start="1214.68" data-duration="12.0" data-track-index="1" data-callback="deputies going street by street in the dark" muted></video>
   <video id="vx-flameslogs-a5" src="media/stock-flames-closeup-logs-03.mp4" style="filter: saturate(0.9) contrast(1.15) brightness(0.9)" data-start="1226.68" data-duration="17.14" data-track-index="1" data-callback="the sky going black at nine in the morning" muted></video>
-  <!-- a5-s2: the whole town on the Skyway / abandoned cars / taillights into smoke -->
-  <video id="vx-nightroad1-a5" src="media/stock-night-road-taillights-01.mp4" style="filter: brightness(0.7) saturate(0.6)" data-start="1243.82" data-duration="26.44" data-track-index="1" data-callback="the line of taillights down the hill" muted></video>
-  <!-- a5-s3: Kevin McKay / the school bus / 22 children / his shirt torn into strips -->
-  <section class="clip still-wrap contain-wrap portrait-still" id="c-mckay" data-start="1270.96" data-duration="24.0" data-track-index="1"><img id="kb-mckay" src="media/portrait-mckay.jpg" alt=""></section>
+  <video id="vx-nightroad1-a5" src="media/stock-night-road-taillights-01.mp4" style="filter: brightness(0.7) saturate(0.6)" data-start="1243.82" data-duration="27.14" data-track-index="1" data-callback="the line of taillights down the hill" muted></video>
+  <section class="clip still-wrap contain-wrap" id="c-mckay" data-start="1270.96" data-duration="24.0" data-track-index="1"><img id="kb-mckay" src="media/portrait-mckay.jpg" alt=""></section>
   <video id="vx-campbh-a5s3" src="media/dvids-campfire-blackhawk-aerial-broll.mp4" style="filter: brightness(0.8) saturate(0.72)" data-start="1294.96" data-duration="22.1" data-track-index="1" data-callback="five hours through the burning town" muted></video>
-  <!-- a5-s4: the DA corrective — 71 of 84 at home — HOOK GRAPHIC -->
   <div id="host-hook" data-composition-id="g-hook" data-composition-src="compositions/g-hook.html" data-start="1317.06" data-duration="40.0" data-track-index="2" data-width="1920" data-height="1080"></div>
   <section class="clip still-wrap contain-wrap" id="c-usgsafter1" data-start="1357.06" data-duration="20.02" data-track-index="1"><img id="kb-usgsafter1" src="media/usgs-lcmap-paradise-after-campfire.jpg" alt=""></section>
-  <!-- a5-s5: shelter worked where flight could not / the parking lot island -->
-  <video id="vx-fftruck2-a5" src="media/stock-firefighters-truck-02.mp4" style="filter: brightness(0.85) saturate(0.78)" data-start="1377.08" data-duration="24.08" data-track-index="1" data-callback="firefighters holding one island of nothing to burn" muted></video>
-  <!-- a5-s6: eighty-five died / each revision a person / a name someone was still saying -->
+  <video id="vx-fftruck2-a5" src="media/stock-firefighters-truck-02.mp4" style="filter: brightness(0.85) saturate(0.78)" data-start="1377.08" data-duration="24.78" data-track-index="1" data-callback="firefighters holding one island of nothing to burn" muted></video>
   <section class="clip still-wrap contain-wrap" id="c-usgsafter2" data-start="1401.86" data-duration="21.58" data-track-index="1" data-callback="the town, after"><img id="kb-usgsafter2" src="media/usgs-lcmap-paradise-after-campfire.jpg" alt=""></section>
-  <!-- a5-s7: in one morning / 18,804 buildings / 153k acres / $16.5B — STAT CARD -->
   <div id="host-statcamp" data-composition-id="g-stat-camp" data-composition-src="compositions/g-stat-camp.html" data-start="1423.44" data-duration="20.6" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <!-- a5-s8: Anastasia Skinner / went into labor / paramedic Mickey Huber -->
   <video id="vx-fftruck1-a5" src="media/stock-firefighters-truck-01.mp4" style="filter: brightness(0.88) saturate(0.8)" data-start="1444.04" data-duration="23.24" data-track-index="1" data-callback="a paramedic in the middle of the impossible" muted></video>
-  <!-- a5-s9: read their names / Andrade, Downer, Foss — the ones who could not move fast enough -->
-  <section class="clip still-wrap contain-wrap" id="c-camprelief1" data-start="1467.28" data-duration="37.76" data-track-index="1"><img id="kb-camprelief1" src="media/dvids-camp-fire-relief-paradise.jpg" alt=""></section>
-  <!-- a5-s10: the alert that never arrived / a human chain / missed at the end of a quiet road -->
-  <video id="vx-nightroad2-a5s10" src="media/stock-night-road-taillights-02.mp4" style="filter: brightness(0.62) saturate(0.55)" data-start="1505.74" data-duration="12.0" data-track-index="1" data-callback="neighborhoods already burning, leaning on the horn" muted></video>
-  <video id="vx-campbh-a5s10" src="media/dvids-campfire-blackhawk-aerial-broll.mp4" style="filter: brightness(0.78) saturate(0.7)" data-start="1517.74" data-duration="22.6" data-track-index="1" data-callback="the streets the knock never reached" muted></video>
-  <!-- a5-s11: people saved people / the parking-lot ring held -->
+  <section class="clip still-wrap contain-wrap" id="c-camprelief1" data-start="1467.28" data-duration="38.46" data-track-index="1"><img id="kb-camprelief1" src="media/dvids-camp-fire-relief-paradise.jpg" alt=""></section>
+  <section class="clip still-wrap contain-wrap" id="c-modiscamp2" data-start="1505.74" data-duration="35.3" data-track-index="1" data-callback="the alert that never arrived over a burning town"><img id="kb-modiscamp2" src="media/nasa-modis-campfire-smoke-california.jpg" alt=""></section>
   <video id="vx-fftruck2-a5s11" src="media/stock-firefighters-truck-02.mp4" style="filter: brightness(0.85) saturate(0.78)" data-start="1541.04" data-duration="29.64" data-track-index="1" data-callback="engines parked in a ring, the center lived" muted></video>
   <section class="clip blackout" id="bo-a6" data-start="1570.68" data-duration="3.0" data-track-index="1"></section>
 
-  <!-- ===== ACT 6 — THE RECKONING + THE CLOSE (1573.68–1913.92) ===== -->
-  <!-- a6-s1: the hook belonged to PG&E / 84 counts / $3.5M / 70 cents on the dollar -->
+  <!-- ===== ACT 6 — THE RECKONING + THE CLOSE (1573.68–1913.92); recap zone from ~1828 ===== -->
   <section class="clip still-wrap contain-wrap" id="c-landsatcamp-a6" data-start="1573.68" data-duration="29.0" data-track-index="1" data-callback="the line that carried the spark"><img id="kb-landsatcamp-a6" src="media/nasa-landsat-campfire-swir-fireline.jpg" alt=""></section>
-  <video id="vx-campbh-a6s1" src="media/dvids-campfire-blackhawk-aerial-broll.mp4" style="filter: brightness(0.8) saturate(0.72)" data-start="1602.68" data-duration="28.88" data-track-index="1" data-callback="a century of metal ground to nothing" muted></video>
-  <!-- a6-s2: the Carr couple / never charged / the whole story of blame -->
+  <video id="vx-campbh-a6s1" src="media/dvids-campfire-blackhawk-aerial-broll.mp4" style="filter: brightness(0.8) saturate(0.72)" data-start="1602.68" data-duration="29.58" data-track-index="1" data-callback="a century of metal ground to nothing" muted></video>
   <section class="clip still-wrap contain-wrap" id="c-svsscar-a6" data-start="1632.26" data-duration="21.0" data-track-index="1" data-callback="one fire began with bad luck"><img id="kb-svsscar-a6" src="media/nasa-svs-carrfire-landsat-burnscar.png" alt=""></section>
-  <video id="vx-nightroad1-a6s2" src="media/stock-night-road-taillights-01.mp4" style="filter: brightness(0.7) saturate(0.6)" data-start="1653.26" data-duration="20.82" data-track-index="1" data-callback="Highway 299, where the other fire was born" muted></video>
-  <!-- a6-s7: the scattering / 50,000 displaced / the Walmart camp / homelessness for years -->
+  <video id="vx-carrwater-a6s2" src="media/dvids-carr-fire-water-drop.mp4" style="filter: brightness(0.85) saturate(0.78)" data-start="1653.26" data-duration="20.82" data-track-index="1" data-callback="the road agencies the lawsuits went after" muted></video>
   <section class="clip still-wrap contain-wrap" id="c-usgsafter-a6s7" data-start="1674.08" data-duration="30.0" data-track-index="1" data-callback="a slab and a chimney in a dead town"><img id="kb-usgsafter-a6s7" src="media/usgs-lcmap-paradise-after-campfire.jpg" alt=""></section>
   <section class="clip still-wrap contain-wrap" id="c-camprelief-a6s7" data-start="1704.08" data-duration="26.0" data-track-index="1" data-callback="relief supplies for a scattered town"><img id="kb-camprelief-a6s7" src="media/dvids-camp-fire-relief-paradise.jpg" alt=""></section>
   <video id="vx-burnaer2-a6s7" src="media/stock-burned-neighborhood-aerial-02.mp4" style="filter: brightness(0.82) saturate(0.7)" data-start="1730.08" data-duration="22.74" data-track-index="1" data-callback="the story the cameras always leave" muted></video>
-  <!-- a6-s5: Paradise came back smaller / PSPS shutoffs / a fix Paradise paid for -->
   <section class="clip still-wrap contain-wrap" id="c-usgsbefore-a6s5" data-start="1752.82" data-duration="16.0" data-track-index="1" data-callback="what the ridge was, before"><img id="kb-usgsbefore-a6s5" src="media/usgs-lcmap-paradise-before-campfire.jpg" alt=""></section>
-  <video id="vx-forestb-a6s5" src="media/stock-forestfire-aerial-02.mp4" style="filter: brightness(0.85) saturate(0.72)" data-start="1768.82" data-duration="17.96" data-track-index="1" data-callback="the power cut when the wind rises now" muted></video>
-  <!-- a6-s3: two fires / nature faster than science / systems slower than the fire / not ifs -->
-  <video id="vx-firenado-a6s3" src="media/calfire-firenado-heli-storyful.mp4" style="filter: saturate(0.85) contrast(1.1) brightness(0.95)" data-start="1786.48" data-duration="19.07" data-track-index="1" data-callback="RECAP nature moving faster than our science" data-volume="0"></video>
-  <section class="clip still-wrap contain-wrap" id="c-landsatcamp-a6s3" data-start="1805.55" data-duration="35.75" data-track-index="1" data-callback="RECAP the worn part, the erased town"><img id="kb-landsatcamp-a6s3" src="media/nasa-landsat-campfire-swir-fireline.jpg" alt=""></section>
-  <!-- a6-s6: the science did not stand still / but the dry years get drier (RECAP ZONE 1824+) -->
-  <video id="vx-pyrocb4-a6s6" src="media/nasa-goes16-carr-pyrocb-4panel.mp4" data-start="1841.3" data-duration="20.0" data-track-index="1" data-callback="RECAP the fingerprint we can read now" muted></video>
-  <section class="clip still-wrap contain-wrap" id="c-svsscar-a6s6" data-start="1861.3" data-duration="18.34" data-track-index="1" data-callback="RECAP the towns pushing into the trees"><img id="kb-svsscar-a6s6" src="media/nasa-svs-carrfire-landsat-burnscar.png" alt=""></section>
-  <!-- a6-s4: the warnings were there / know your roads / This was The Warning Hour (CLOSER) -->
-  <section class="clip still-wrap contain-wrap" id="c-usgsafter-a6s4" data-start="1879.64" data-duration="18.0" data-track-index="1" data-callback="RECAP what was missing was the hour to act"><img id="kb-usgsafter-a6s4" src="media/usgs-lcmap-paradise-after-campfire.jpg" alt=""></section>
-  <video id="vx-firenado-close" src="media/calfire-firenado-heli-storyful.mp4" style="filter: saturate(0.8) contrast(1.08) brightness(0.9)" data-start="1897.64" data-duration="16.28" data-track-index="1" data-callback="RECAP the close, the fire that made its own tornado" data-volume="0"></video>
+  <section class="clip still-wrap contain-wrap" id="c-modiscamp3" data-start="1768.82" data-duration="17.66" data-track-index="1" data-callback="the power cut when the wind rises now"><img id="kb-modiscamp3" src="media/nasa-modis-campfire-smoke-california.jpg" alt=""></section>
+  <section class="clip still-wrap contain-wrap" id="c-modiscarrnat-a6s3" data-start="1786.48" data-duration="23.52" data-track-index="1" data-callback="eight miles into the sky, a tornado of its own heat"><img id="kb-modiscarrnat-a6s3" src="media/nasa-modis-carrfire-natural-color.jpg" alt=""></section>
+  <section class="clip still-wrap contain-wrap" id="c-landsatcamp-a6s3" data-start="1810.0" data-duration="31.3" data-track-index="1" data-callback="the town erased through roads and warnings"><img id="kb-landsatcamp-a6s3" src="media/nasa-landsat-campfire-swir-fireline.jpg" alt=""></section>
+  <video id="vx-pyrocb4-a6s6" src="media/nasa-goes16-carr-pyrocb-4panel.mp4" data-start="1841.3" data-duration="20.0" data-track-index="1" data-callback="the fingerprint we can read now" muted></video>
+  <section class="clip still-wrap contain-wrap" id="c-svsscar-a6s6" data-start="1861.3" data-duration="18.34" data-track-index="1" data-callback="the towns pushing into the trees"><img id="kb-svsscar-a6s6" src="media/nasa-svs-carrfire-landsat-burnscar.png" alt=""></section>
+  <section class="clip still-wrap contain-wrap" id="c-usgsafter-a6s4" data-start="1879.64" data-duration="18.0" data-track-index="1" data-callback="what was missing was the hour to act"><img id="kb-usgsafter-a6s4" src="media/usgs-lcmap-paradise-after-campfire.jpg" alt=""></section>
+  <video id="vx-firenado-close" src="media/calfire-firenado-heli-storyful.mp4" style="filter: saturate(0.8) contrast(1.08) brightness(0.9)" data-start="1897.64" data-duration="16.28" data-track-index="1" data-callback="the fire that made its own tornado, one last time" data-volume="0"></video>
   <section class="clip blackout" id="bo-end" data-start="1913.92" data-duration="4.08" data-track-index="1"></section>
 
   <!-- ============================ TRACK 3 — CARDS ============================ -->
@@ -316,11 +256,11 @@
   <section class="clip" id="p-nc-stoke" data-start="712.0" data-duration="9.0" data-track-index="3">
     <div class="namecard"><div class="nc-name">JEREMY STOKE</div><div class="nc-sub">37 · Redding Fire inspector · died on Buenaventura Blvd</div></div>
   </section>
-  <section class="clip" id="p-q-grandpa" data-start="775.0" data-duration="14.0" data-track-index="3">
-    <div class="quotecard"><div class="q">"Grandpa. Come and get me. The fire's coming in the back door."</div><div class="attr">JAMES ROBERTS, AGE 5 · TO ED BLEDSOE, BY PHONE</div></div>
-  </section>
   <section class="clip" id="p-nc-melody" data-start="742.0" data-duration="9.0" data-track-index="3">
     <div class="namecard"><div class="nc-name">MELODY BLEDSOE · 70</div><div class="nc-sub">with James, 5, and Emily, 4 · Quartz Hill Road</div></div>
+  </section>
+  <section class="clip" id="p-q-grandpa" data-start="775.0" data-duration="14.0" data-track-index="3">
+    <div class="quotecard"><div class="q">"Grandpa. Come and get me. The fire's coming in the back door."</div><div class="attr">JAMES, AGE 5 · TO ED BLEDSOE, BY PHONE</div></div>
   </section>
   <section class="clip" id="p-lt-paradise" data-start="944.0" data-duration="10.0" data-track-index="3">
     <div class="lt"><div class="lt-loc">PARADISE, CALIFORNIA</div><div class="lt-time">NOVEMBER 8, 2018 · 6:33 AM</div></div>
@@ -331,14 +271,14 @@
   <section class="clip" id="p-pop-second" data-start="1070.0" data-duration="9.0" data-track-index="3">
     <div class="popup" style="left:130px; top:130px;">A FOOTBALL FIELD EVERY SECOND<span class="fine">at the Camp Fire's most explosive 90 minutes</span></div>
   </section>
-  <section class="clip" id="p-nc-mckay" data-start="1274.0" data-duration="10.0" data-track-index="3">
-    <div class="namecard"><div class="nc-name">KEVIN McKAY</div><div class="nc-sub">Paradise school-bus driver · 22 children · every one lived</div></div>
-  </section>
   <section class="clip" id="p-q-sheriff" data-start="1218.0" data-duration="11.0" data-track-index="3">
     <div class="quotecard"><div class="q">"The fire was outrunning our ability to warn people before we even understood we were in a race."</div><div class="attr">BUTTE COUNTY SHERIFF</div></div>
   </section>
+  <section class="clip" id="p-nc-mckay" data-start="1274.0" data-duration="10.0" data-track-index="3">
+    <div class="namecard"><div class="nc-name">KEVIN McKAY</div><div class="nc-sub">Paradise school-bus driver · 22 children · every one lived</div></div>
+  </section>
   <section class="clip" id="p-nc-victims" data-start="1472.0" data-duration="30.0" data-track-index="3">
-    <div class="namecard"><div class="nc-name" style="font-size:44px;">RAFAELA ANDRADE · 84 &nbsp;·&nbsp; ANDREW DOWNER · 54 &nbsp;·&nbsp; ERNEST FOSS · 63</div><div class="nc-sub">among the eighty-five — people who could not move fast enough</div></div>
+    <div class="namecard"><div class="nc-name" style="font-size:42px;">RAFAELA ANDRADE · 84 &nbsp; ANDREW DOWNER · 54 &nbsp; ERNEST FOSS · 63</div><div class="nc-sub">among the eighty-five — people who could not move fast enough</div></div>
   </section>
   <section class="clip" id="p-pop-pge" data-start="1600.0" data-duration="12.0" data-track-index="3">
     <div class="popup" style="left:130px; top:120px;">PG&amp;E — GUILTY, 84 COUNTS<span class="fine">Involuntary manslaughter · ~$3.5M max fine · ~$41,000 per life · fund paid ~70¢ on the dollar</span></div>
@@ -371,24 +311,27 @@ window.__timelines = window.__timelines || {};
   kb("#kb-modisswir2", 273.54, 12.46, 1.05, 1.16, 0, -18, 0, -12);
   kb("#kb-svsscar1", 366.37, 11.51, 1.0, 1.12, 0, 22, 0, -14);
   kb("#kb-svsscar2", 398.86, 13.14, 1.12, 1.24, 20, -20, 12, -16);
-  kb("#kb-svsscar3", 600.93, 18.0, 1.0, 1.18, 0, -28, 0, -16);
   kb("#kb-modisswir3", 638.93, 19.93, 1.06, 1.2, 0, 24, 0, -18);
-  kb("#kb-stoke", 709.04, 29.32, 1.04, 1.14, 0, 10, 0, -8);
+  kb("#kb-stoke", 709.04, 30.02, 1.04, 1.14, 0, 10, 0, -8);
   kb("#kb-bledsoe", 739.06, 25.0, 1.04, 1.14, 0, -10, 0, -8);
   kb("#kb-bledsoe2", 799.74, 14.42, 1.1, 1.02, 8, -6, 6, -4);
   kb("#kb-usgsbefore1", 915.8, 21.36, 1.0, 1.12, 0, 18, 0, -10);
-  kb("#kb-usgsbefore2", 963.16, 24.84, 1.12, 1.0, -18, 12, -10, 6);
-  kb("#kb-landsatcamp1", 1030.4, 34.28, 1.0, 1.2, 0, -26, 0, -16);
-  kb("#kb-landsatcamp2", 1130.42, 24.0, 1.16, 1.02, 20, -14, 12, -8);
+  kb("#kb-usgsbefore2", 963.16, 25.54, 1.12, 1.0, -18, 12, -10, 6);
+  kb("#kb-landsatcamp1", 1030.4, 34.98, 1.0, 1.2, 0, -26, 0, -16);
+  kb("#kb-modiscamp1", 1130.42, 24.0, 1.05, 1.18, 0, 22, 0, -12);
+  kb("#kb-mckay", 1270.96, 24.0, 1.04, 1.14, 0, 8, 0, -8);
   kb("#kb-usgsafter1", 1357.06, 20.02, 1.0, 1.14, 0, 22, 0, -12);
   kb("#kb-usgsafter2", 1401.86, 21.58, 1.12, 1.0, -18, 12, -10, 6);
-  kb("#kb-camprelief1", 1467.28, 37.76, 1.05, 1.2, 0, -24, 0, -14);
+  kb("#kb-camprelief1", 1467.28, 38.46, 1.05, 1.2, 0, -24, 0, -14);
+  kb("#kb-modiscamp2", 1505.74, 35.3, 1.04, 1.18, 0, 20, 0, -12);
   kb("#kb-landsatcamp-a6", 1573.68, 29.0, 1.0, 1.16, 0, 22, 0, -14);
   kb("#kb-svsscar-a6", 1632.26, 21.0, 1.1, 1.0, 18, -12, 10, -6);
   kb("#kb-usgsafter-a6s7", 1674.08, 30.0, 1.0, 1.16, 0, -22, 0, -14);
   kb("#kb-camprelief-a6s7", 1704.08, 26.0, 1.06, 1.18, 0, 20, 0, -12);
   kb("#kb-usgsbefore-a6s5", 1752.82, 16.0, 1.0, 1.1, 0, 14, 0, -8);
-  kb("#kb-landsatcamp-a6s3", 1805.55, 35.75, 1.04, 1.2, 0, -24, 0, -16);
+  kb("#kb-modiscamp3", 1768.82, 17.66, 1.06, 1.16, 0, -16, 0, -10);
+  kb("#kb-modiscarrnat-a6s3", 1786.48, 23.52, 1.04, 1.16, 0, 20, 0, -12);
+  kb("#kb-landsatcamp-a6s3", 1810.0, 31.3, 1.04, 1.2, 0, -24, 0, -16);
   kb("#kb-svsscar-a6s6", 1861.3, 18.34, 1.0, 1.14, 0, 20, 0, -12);
   kb("#kb-usgsafter-a6s4", 1879.64, 18.0, 1.1, 1.0, -14, 10, -8, 5);
 
