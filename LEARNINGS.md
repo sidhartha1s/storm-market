@@ -2,6 +2,49 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
+## 2026-08-05 — ep5 kickoff: the retention lattice + script fact-QC layer (owner orders, all standing from ep5 on)
+
+**New standing process (each has its full text where noted):**
+1. **Retention lattice — `references/script-scaling.md` (NEW, read before writing any script).**
+   A 10/10 short script scores on its *cadences*, not length; runtime scales by ADDING 3–6 min
+   self-similar acts, never by stretching beats. Per-minute invariants (rehook 45–60s, micro-loop
+   30–45s, info beat 2–3s on graphics, pacing wave, loop-table plant/pay). Owner: keep it
+   **text-only — no JSON, no schema, zero code complexity**; "spice" = the clarifying footnote/
+   relatable example (salt, not filler; 70–80% info at 35 min). Orchestrator mode for very long
+   scripts: orchestrator writes ALL act briefs + loop table first, one writer agent per act,
+   orchestrator re-walks the seams itself.
+2. **Script fact-QC layer (pre-TTS, zero cost — owner order).** Pass 1: in-session eyeball of
+   every number/name/date/distance INCLUDING arithmetic (ep5 pass 1 caught 9 bugs — among them a
+   106→105 day-gap math error and a wrong 100-mi distance). Pass 2: verification agents close
+   every `[verify]` marker → CONFIRMED / CORRECTED / CUT (conditional-fact rule: drop, never
+   soften). TTS does not run with open markers.
+3. **Insert-transcription rule (owner order):** every audio-carrying insert is transcribed in
+   full (faster-whisper) BEFORE cut selection; the cut is chosen at the transcript's
+   action/emotion peak; excerpt + transcript logged in edit_script + provenance.
+4. **Hook: NO black start (owner order).** Frame one is mid-action — the episode's defining shot
+   already moving, anchor audio already mid-transmission. The 2–3s VOID survives only as the
+   hook's END punctuation. (DESIGN.md hook contract amended.)
+5. **Language: 4th-grader readable (owner).** Short words, concrete pictures; emotion from facts
+   and rhythm, never vocabulary. Matches the shipped eps' register; TTS syncs cleaner.
+6. **Real human portraits (owner):** show the real faces briefly — per-person licensing verdicts
+   first; ≤4–5s dwell, once, then symbolic; never a child victim's likeness.
+
+**Measured / sourced this session:**
+7. **Probe-TTS: punchy prose runs SLOWER.** Long-sentence segment 158 wpm, short-sentence segment
+   139 wpm, blended ≈145. Budget words at the measured blend of the episode's actual style —
+   the single planning figure (158) over-budgets a punchy script by ~9%.
+8. **Licensing (Carr/Camp):** CAL FIRE firenado heli clip = USE-WITH-CREDIT (CA state-works PD
+   doctrine; AB 2880 died 2016; source Storyful's CAL FIRE-credited copy, not network versions).
+   911/dispatch recordings CPRA-released = CLEAR-TO-USE from the original holder. Raw
+   Broadcastify scanner rips = HELD (no license path). Camp Fire bystander evacuation clips +
+   sheriff bodycam = strike-class (chaser-equivalent), network-aired re-cuts only.
+9. **When an aggregate stat is uncited, compute it from primary records ourselves** (ep5: the
+   "70 of 84 died at home" figure wasn't stated in the DA report — we tallied the report's ~85
+   per-victim narratives by agent read, judgment not regex). Verification + net-info-gain in one.
+10. **Subagent gotcha:** general-purpose research agents that spawn their OWN sub-agents return
+    placeholder "waiting for reports" results (nested subagents never report back). Brief
+    workers to do the work THEMSELVES; a status-shaped final message = re-dispatch immediately.
+
 ## 2026-08-02 — CHECKPOINT: revert to the ep2 method (owner order)
 
 **What happened:** ep1 (9/10) and ep2 (9/10) were hand-authored — the model read word
