@@ -194,6 +194,19 @@ floors/ceilings; taste stays with the model.
 - **Lower-third sub-lines**: high contrast or backing bar — no dark italic on busy ground.
 - **Outro**: match-cut the channel title to the closing line; card does not sit.
 
+## Duration is EARNED, not assigned (owner order 2026-08-05 — binding)
+The picture is cut TO the narration, beat by beat. A shot's length is set by what it **earns** —
+motion, new information, emotional weight, and matching the spoken line — never by "fill the window,"
+"dodge the reuse cap," or "sit under the 12s ceiling." The QC gates (`still ≤12s`, `reuse ≤3`) are
+**bore-thresholds, not targets**: most stills earn 4–8s; the cap is where repetition reads as a
+clip-reel. Deciding picture by arithmetic — dividing runtime across the asset pool so coverage works
+— is the ep3 slideshow failure and produces long dead holds. Graphics/maps/stat-cards are **primary
+content** for their beats, not deficit-filler; a designed card for a beat with no honest footage is
+legitimate. **Consequence:** short retention cuts exhaust a small asset pool ~3× faster than holds —
+if tight cutting runs out of distinct, voice-matching material before the runtime ends, that is the
+real (retention) shortfall; fix it upstream/per-beat (shorten the script, source the specific clip,
+or add a data-carrying graphic), never by holding to fill. See LEARNINGS.md same-date entry.
+
 ## Editing grammar (seed — grows via LEARNINGS.md)
 
 - Hook: cold-open insert (911 audio / broadcast) or present-tense stat over motion. ≤15s to thesis.
