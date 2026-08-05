@@ -640,3 +640,36 @@ Measured HEVC transcode of the −14 LUFS master (5097 MB, `-c:a copy`, audio un
 `hevc_nvenc p7 cq22` gives a 2.3x shrink in 6 minutes, visually lossless, audio bit-copied. For
 future episodes the cleanest is to render at a higher CRF + 24 fps so the small file falls out of
 the render itself; reach for the GPU-HEVC pass only when you want the extra shrink.
+
+## Duplicate element ids render BLACK — and no gate caught it (measured ep5, 2026-08-06)
+
+Two `<video>` windows shared `id="vx-carrwaterb2"` (a copy-paste slip during the retention
+re-cut). hyperframes keys frame placement by element id, so the FIRST window (581.9s, 8s)
+rendered **pure black** while every static gate passed — sweep, lint, blank_scan and
+graphics_qc all read attributes, none checks id uniqueness. Found only by post-render
+`verify_render.sh` blackdetect + eyeballing the frame. **Check before every render:**
+`grep -o ' id="[^"]*"' index.html | sort | uniq -d` must print nothing. (Candidate for a
+sweep_episode.py check — mechanical, must-never-forget.)
+
+## optimize_clips.py strips audio and ignores bitrate (measured ep5, 2026-08-06)
+
+Two silent failure modes in one script, both hit on ep5:
+- **`-an` is unconditional** — it stripped the audio track from all 4 owner-gated INSERT
+  clips (the whole point of an insert is its audio). Nothing warned. Restored from
+  `media/_orig/` with `-c:a aac`. Rule: after ANY optimize pass, ffprobe the insert clips
+  for an audio stream before rendering.
+- **It only checks resolution and window-length, not bitrate.** ffmpeg scene cuts made with
+  stream-copy keep the source's 15-19 Mbps, so 78 within-spec clips still totalled 645 MB
+  against the 150 MB decode budget. Fix: re-encode cuts at libx264 crf 23-27 when cutting
+  (~0.5 MB/s lands the budget); crf 27-32 passes cost little on graded b-roll.
+
+## Harness background tasks get reaped — long renders need schtasks (measured ep5, 2026-08-06)
+
+Two draft renders launched via the harness's background Bash died mid-capture (41% and 33%)
+when the harness killed the task — the CHILD TREE dies too, a few minutes later (the log
+keeps heartbeating briefly, which reads as "survived" and isn't). `Start-Process` was already
+known-fatal (ep3 attempt 11). The reliable launcher on this box is a one-shot **Windows
+scheduled task**: `schtasks /create /tn ep5draft /tr "cmd /c cd /d <worktree> &&
+scripts\render.cmd <slug> draft" /sc once /st 23:59 /f && schtasks /run /tn ep5draft` —
+fully detached, survives the session. Watch it with a log-mtime stall monitor (>10 min
+silent = dead), never with a process-name count (MCP daemons match loose filters).
