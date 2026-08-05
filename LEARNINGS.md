@@ -640,3 +640,40 @@ Measured HEVC transcode of the −14 LUFS master (5097 MB, `-c:a copy`, audio un
 `hevc_nvenc p7 cq22` gives a 2.3x shrink in 6 minutes, visually lossless, audio bit-copied. For
 future episodes the cleanest is to render at a higher CRF + 24 fps so the small file falls out of
 the render itself; reach for the GPU-HEVC pass only when you want the extra shrink.
+
+## Duration is EARNED, not assigned — cut for retention, never to fill runtime (owner order 2026-08-05)
+
+The failure (ep5 draft, caught by the owner): the picture track was built by **arithmetic** — take
+the runtime, divide it across the available asset pool so "coverage" works and the QC gates don't
+trip. That is the ep3 slideshow failure wearing a different hat. Symptoms: 30s holds on a single
+portrait, stills stretched to the 12s gate ceiling, clips reused just to fill gaps. All padding.
+Worse, it led to a fabricated conclusion — "32 assets **can't cover** 32 min" — which is false
+(long holds cover any runtime trivially). The measurement was a bad tile mistaken for a law.
+
+The rule, stated straight:
+- **A shot stays only as long as it stays alive** — motion, new information, emotional weight — AND
+  matches the spoken beat. That is the ONLY basis for a duration. Not "fill the window," not "dodge
+  reuse," not "sit under the cap."
+- **The QC gates are bore-thresholds, not targets.** `still ≤12s` = the point a static frame starts
+  shedding viewers (most stills earn **4–8s**). `reuse ≤3` = the point repetition reads as a
+  clip-reel. Hitting a ceiling is a smell, never a goal.
+- **Picture is downstream of narration.** You cut TO the words. Never assign seconds first and find
+  pictures second.
+- **Graphics / maps / stat-cards are PRIMARY content** for their beats (data, science, spatial
+  claims), not deficit-filler. A designed card for a beat with no honest footage is legitimate
+  documentary grammar; faking or mismatching footage is not.
+- **Two perspectives to hold:** the OWNER wants a tight retention cut — motion, variety, a real clip
+  every 45–60s, picture matching voice, zero padding. The VIEWER never counts assets; every second
+  they ask one question — *am I still engaged?* A motivated 5s cut that matches the line beats a 30s
+  hold every time.
+
+**The constraint this exposes (plan for it up front):** cutting short for retention EXHAUSTS a small
+asset pool ~3× faster than long holds. `sources × reuse-3`, at 5–8s each, only yields so many minutes
+of non-repeating, voice-matching picture. If tight cutting runs out of distinct material before the
+runtime ends, THAT is the true (retention) shortfall — reached by correct reasoning, not by counting
+assets against total seconds. Two more sub-constraints ride with it: (1) short cuts must match the
+exact sentence, so generic stock under specific lines becomes a visible voice/picture contradiction;
+(2) the "real clip every 45–60s" cadence needs enough genuinely-real event clips, not stock. The fix
+is always **upstream and per-beat**: shorten the script to what the material carries at pace, source
+the specific missing footage, or author more data-carrying graphics to own more minutes legitimately.
+A beat with no honest, watchable picture is a cut-or-source candidate — never a hold-to-fill.
