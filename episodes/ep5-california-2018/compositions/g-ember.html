@@ -67,7 +67,10 @@ window.__timelines = window.__timelines || {};
   spots.forEach((s,i)=>{ tl.fromTo(s,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1,duration:0.3,ease:"power3.out"},14.0+i*0.18); });
   tl.to(cnt,{v:32,duration:5.4,ease:"none",onUpdate:function(){
     const el=document.getElementById("g-ember-count"); if(el) el.textContent=Math.round(cnt.v)+"+";}},14.0);
-  tl.to(P+"foot",{autoAlpha:1,duration:0.7},22.0);
+  tl.to(P+"foot",{autoAlpha:1,duration:0.7},20.4);
+  // soft exit before the cut
+  tl.to([P+"hdr",P+"front",P+"frontlbl",P+"town",P+"townlbl",P+"count",P+"clab",P+"foot",".spot"],
+        {autoAlpha:0,duration:0.8},22.1);
   window.__timelines["g-ember"]=tl;
 })();
 </script>
