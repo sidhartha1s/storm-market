@@ -466,3 +466,181 @@ pays L3. Rehooks: pyroCb satellite loop, vortex reprise, radar graphic.*
    scene-to-scene; 2–3 versions of g-vortex + g-hook).
 6. Static QC all green → verify code + timing once against words.json → draft render →
    owner preview (park) → full render → master_deliverables --hevc.
+
+---
+
+# TTS SEGMENTS (parsed by scripts/tts_episode.py — TTS-safe text, source of truth for narration audio)
+
+### A0-S1 — narration (cold open)
+> This is not a tornado. This is a wildfire. And on one July evening in two thousand eighteen, it hung above a city of ninety thousand people. It did something fire is almost never able to do. It reached into the sky. And it built one.
+
+### A1-S1 — narration
+> Every disaster has an ordinary beginning. This one began with a flat tire. On the afternoon of July twenty-third, two thousand eighteen, a travel trailer was rolling up Highway two ninety-nine. It was climbing through the dry hills west of Redding, California. Somewhere on that road, one of its tires failed. The drivers didn't notice.
+
+### A1-S2 — narration
+> The wheel kept turning on its bare steel rim, grinding the asphalt, mile after mile, scratching out a thin trail of sparks. The grass beside that highway had been drying out all summer. California was coming out of its driest years on record. A July heat wave had just pushed Redding to one hundred thirteen degrees. The hills were not landscape anymore. They were fuel. Much of that brush was manzanita. It was so dry that summer that the living bushes burned like dead wood.
+
+### A1-S3 — narration
+> By the time anyone saw smoke, the fire had a name. The Carr Fire, after the road where it was born. And a direction. East. Toward the city. For three days, it behaved like the fires California knows. It burned through the Whiskeytown hills. Crews cut their lines. Aircraft flew their water runs, back and forth. Redding watched the smoke on the ridgeline the way you watch weather that belongs to someone else. Between the fire and the city ran the Sacramento River. Two hundred feet of moving water. The kind of barrier a city trusts.
+
+### A1-S4 — narration
+> On the morning of July twenty-sixth, the Carr Fire was still out in the hills. The morning news called it a threat to the edges of town. By afternoon, in that record heat, it began to run, straight at the water. Evacuation orders started going out, block by block, then neighborhood by neighborhood. Soon thirty-eight thousand people were moving at once.
+
+### A1-S5 — narration
+> That evening, the fire reached the far bank of the Sacramento River. The barrier the city trusted. It did not stop. It did not even slow down. Whole burning branches were falling out of the sky, far ahead of the flames. The river was two hundred feet wide. The fire stepped over it like a crack in the pavement. Across Redding, people watched the night sky over the river turn orange. A sunrise, hours after sunset, on the wrong side of town.
+
+### A1-S6 — narration
+> Because what crossed the river that night was not the fire the crews had been fighting for three days. By then, the Carr Fire wasn't just burning the hills. It was changing the sky above them.
+
+### A2-S1 — narration
+> To understand what happened over Redding, start with what a great fire does to the air above it. Fire heats air. Hot air rises. A fire the size of a city block sends up a column you can see for miles. But the Carr Fire was now burning tens of thousands of acres at once. Its column stopped behaving like smoke. It started behaving like a storm.
+
+### A2-S2 — narration
+> On the evening of July twenty-sixth, weather radar watched that column explode upward. From four miles high to eight miles high, in fifteen minutes. At the top, eight miles up, the air is far below freezing. The smoke plume grew a cap of ice. An anvil, like a thunderhead. Meteorologists have a name for this. A pyrocumulonimbus. A fire cloud. The Carr Fire had built its own thunderstorm. And that storm behaved like thunderstorms do. It made its own wind. It made its own lightning. It answered to nothing on the ground.
+
+### A2-S3 — narration
+> Now, heat alone cannot build a tornado. If it could, every big burn would spin. That evening, the air over Shasta County was already loaded. Unstable, restless, with winds that changed direction as you went higher. The same ingredients the Great Plains feeds its tornadoes. The fire did not break the rules of weather. The fire was the trigger the sky was waiting for.
+
+### A2-S4 — narration
+> Here is the mechanism. Along the fire's western edge, cool river air met superheated air off the burn. The boundary between them began to turn. A lazy, invisible spin, close to the ground. Harmless, on any other day. Above it, the fire cloud was inhaling. A column of rising air, accelerating upward, right over that spin. A rising column does to spinning air what a skater does when she pulls in her arms. It stretches it. Tightens it. Speeds it up. This is exactly how ordinary tornadoes are born under thunderstorms. There was only one difference here. The storm was the fire.
+
+### A2-S5 — narration
+> At about seven thirty in the evening, the spin touched ground on the west side of Redding. A vortex a thousand feet wide at its base. Winds the National Weather Service would later put near one hundred forty-three miles per hour. CAL FIRE's own investigators allowed up to one hundred sixty-five. On the scale we use for tornadoes, that is an EF three. Not like a tornado. Tornado strength, by the same measure we rate them in Oklahoma.
+
+### A2-S6 — narration
+> It stayed on the ground, feeding, for close to half an hour. Temperatures inside are estimated to have reached twenty-seven hundred degrees Fahrenheit. It pulled two steel high-voltage towers out of the ground and folded them. It stripped the bark off oak trees. It picked up a steel shipping container and threw it.
+
+### A2-S7 — narration
+> You will hear this event called the first fire tornado ever recorded. The truth is stranger. The National Weather Service had no box for what it was seeing. Officially, it logged the thing as a fire whirl. Language written for spinning embers the size of a dust devil. The scientists who studied it were careful too. Their own paper asks, right in its title, whether this was a true tornado born of fire. Their honest answer. It may have been. Nothing like it had ever been measured over an American fire.
+
+### A2-S8 — narration
+> No tornado warning was issued that evening. There was no procedure on Earth for issuing one. The forecasters were watching a tornado being born on radar, inside a fire. And the rulebook had no page for it. It took two more years. In August of twenty twenty, a fire vortex rose over the Loyalton Fire, north of Lake Tahoe. The Weather Service issued what is believed to be the first tornado warning ever given for a fire-made vortex. That page exists now. It was written because of Redding.
+
+### A2-S9 — narration
+> Scientists reconstructed the Carr vortex afterward from three separate radar sites. Beale. Eureka. Medford. Three radars, watching the same column of spinning smoke from three directions at once. In the published record, it stands as only the second fire-generated vortex ever documented at true tornado strength. The first was Australia's Canberra firestorm, in two thousand three.
+
+### A2-S10 — narration
+> The science would take years. The vortex took minutes. And it was not spinning in an empty field.
+
+### A3-S1 — narration
+> The Carr Fire took eight lives. Five of them on that single evening. These are their stories.
+
+### A3-S2 — narration
+> Don Ray Smith was eighty-one years old. A bulldozer operator out of Pollock Pines, hired to cut fire line. He had been doing this work for decades. That evening he was alone on a dozer line northwest of the city when the fire front overran his position. Nearby, another dozer crew was caught in the same run.
+
+### A3-S3 — narration
+> The men in that recording survived. Don Smith did not. He was the Carr Fire's first victim.
+
+### A3-S4 — narration
+> Jeremy Stoke was thirty-seven. A fire inspector for the City of Redding. A husband and a father. When the fire crossed the river he did what Redding firefighters did that night. He drove toward it, to get people out. At seven thirty-nine in the evening he was on Buenaventura Boulevard when the vortex crossed the road. His last transmission was a mayday. He gave his position. He asked for a water drop on his own location. There was no aircraft on Earth that could fly into that column. He died on the road, in the storm the fire had made.
+
+### A3-S5 — narration
+> And on Quartz Hill Road, in a house on the edge of the city, Melody Bledsoe was home with her two great-grandchildren. James was five. Emily was four. Her husband Ed had gone to a doctor's appointment that day, before there was any sign of danger. Then Melody called. The fire was at the house.
+
+### A3-S6 — narration
+> Ed dropped everything and drove. Traffic blocked his road home, so he left the car and ran. On the way he stopped to help a burned man he found on the road. He tried a second route by car. Officers stopped him. The fire was already there. James reached him by phone. The words are in the public record. They are the hardest thing in this story. Grandpa. Come and get me. The fire's coming in the back door. Ed stayed on the phone with the boy until the line went dead. He spent the rest of that night trying to reach a house that could not be reached.
+
+### A3-S7 — narration
+> When crews reached the house, they found that Melody had gathered the children under a wet blanket, covering them with her body. She was seventy years old. She did everything a human being could do, to the very end.
+
+### A3-S8 — narration
+> The Carr Fire burned for thirty-eight days. Two hundred twenty-nine thousand acres. Sixteen hundred buildings. More than a billion and a half dollars. Eight people. By the end of August it was contained, and California exhaled. The newspapers called it the disaster of the year. It should have been. It was not even close.
+
+### B1-S1 — narration
+> The vortex died over Redding in July. One hundred and five days later, about ninety miles to the south, something very different was about to go wrong. The Carr Fire was nature moving faster than our science. What came next was our own machines, our own roads, our own warnings. Everything people built to keep people safe, failing at once. On a ridge in the Sierra foothills sat a town of twenty-seven thousand people. Many of them retirees. Pine trees over every street. One main road down the hill. The town was called Paradise.
+
+### A4-S1 — narration
+> Paradise sits on a ridge between two canyons, like a ship's deck between two furnaces. Beautiful. And cornered. To leave town, nearly everyone funnels onto a handful of roads. The main one, the Skyway, runs four lanes downhill toward Chico. None of this was a secret. In two thousand eight, a Butte County grand jury studied the town and wrote it down in plain English. In a major fire, these roads cannot empty Paradise in time. They could clear maybe a quarter of the population in two hours. Six years after that warning, the town narrowed the Skyway. Two lanes taken away, for calmer everyday traffic. The road out of Paradise got smaller.
+
+### A4-S2 — narration
+> Forty miles northeast, across the Feather River canyon, ran a line of steel towers built in nineteen twenty-one. The Caribou-Palermo line, carrying hydroelectric power down from the Sierra for Pacific Gas and Electric. On one of those towers hung a C-shaped steel hook, holding a live high-voltage line. It had hung there for ninety-seven years. Swinging in the canyon wind, wearing away by fractions of a millimeter, year after year. From the width of your finger down to almost nothing. At six fifteen on the morning of November eighth, two thousand eighteen, in a fifty-mile-an-hour wind, it broke.
+
+### A4-S3 — narration
+> The live wire dropped, arced against the tower, and sprayed molten metal into the brush of the canyon below. At six thirty-three, CAL FIRE logged a new start near Camp Creek Road. The Camp Fire. The county was under a red-flag warning that morning. Humidity under twenty percent. Gusts near fifty. It had barely rained in Paradise in roughly two hundred days. The canyon acted as a chimney. The fire that came out of it was moving too fast for anyone to even talk about stopping it.
+
+### A4-S4 — narration
+> And here the Camp Fire did what the Carr Fire had taught scientists to fear. Its own plume joined the attack. The convection column lofted burning embers thousands of feet up and threw them ahead of the front. Some, radar analysis later showed, landed miles in advance of the flames. The fire was raining fire. At its worst, the fire was consuming the equivalent of a football field every second. Not per hour. Per second, at its peak, in its most explosive ninety minutes.
+
+### A4-S5 — narration
+> By eight thirty in the morning, two hours after the hook broke, more than thirty separate fires were already burning inside Paradise. Seeded by the ember rain, miles ahead of the main front. The town did not have a fire coming toward it. The town was already on fire, from the inside out, before most people had finished breakfast. Twenty-seven thousand people. A quarter could get out in two hours. They were about to get minutes.
+
+### A5-S1 — narration
+> The sheriff of Butte County said it afterward in one sentence. The fire was outrunning our ability to warn people before we even understood we were in a race. The county tried to push a mass alert to every phone. The system failed. And no one realized it had failed until the next day. So deputies and officers went street by street, door by door, with sirens and loudspeakers. While the sky went black at nine in the morning.
+
+### A5-S2 — narration
+> What the evacuation actually looked like was this. The entire town, on the Skyway at once, in the dark. Engines crawling. Embers hitting the windshields. Both shoulders of the road on fire. People abandoned cars and ran. People gave strangers their seats. The line of taillights went down the hill into the smoke. Nobody in it knew if the road ahead was open.
+
+### A5-S3 — narration
+> In the middle of it was a school bus. Kevin McKay drove a school bus for the Paradise school district. That morning, at Ponderosa Elementary, there were twenty-two children whose parents could not reach them. McKay took them, plus two teachers, and pointed the bus downhill into a five-hour crawl through the burning town. When the smoke started filling the bus and the little ones started going quiet, he pulled off his own shirt. He had the teachers tear it into strips and soak them in water. They passed the wet cloth back so the children could breathe through it. Five hours. Fire on both sides of the road. Twenty-two children. Every single one of them lived.
+
+### A5-S4 — narration
+> Now. Hold the picture you have in your head. The cars, the gridlock, the people trapped on the road. Because here is the thing almost every telling of this fire gets wrong. When the district attorney wrote the report, it described where every single victim was found. We went through it, name by name. Of the eighty-four deaths in the criminal case, ten died trying to flee. Eight in their vehicles. Two on foot. Seventy-one were found in their own homes, or just outside their own front doors. Fifty-eight of them never made it out of the house. And fifteen of the dead, the report says plainly, used wheelchairs, or walkers, or oxygen tanks, or could not drive. People who could not leave without help. No help could reach them. The traffic did not kill Paradise. Staying killed Paradise. And most of the people who stayed never chose to.
+
+### A5-S5 — narration
+> And in the middle of the impossible, shelter worked where flight could not. More than a hundred people lived through the fire's worst hours standing in a parking lot in the center of town. Ringed by fire engines, while everything around the asphalt burned. Firefighters kept them alive by holding one island of nothing to burn. Know your roads. And know where the asphalt is.
+
+### A5-S6 — narration
+> Eighty-five people died in the Camp Fire. Even that number had to fight to exist. It rose to eighty-six when survivors died of their injuries. Then it fell back, when investigators found one victim had been counted twice. Eighty-five. Each revision was a person, with a name someone was still saying.
+
+### A5-S7 — narration
+> In one morning. Eighteen thousand, eight hundred and four buildings. One hundred fifty-three thousand acres. Sixteen and a half billion dollars. And a town of twenty-seven thousand people that effectively ceased to exist between breakfast and lunch.
+
+### A6-S1 — narration
+> The hook that broke belonged to Pacific Gas and Electric. Investigators found hooks from the same line worn the same way. A century of metal, ground down to a few millimeters. Inspections that should have caught it had been done from the ground, or from a helicopter window, for decades. Two years later, PG and E stood in a Butte County courtroom. It pleaded guilty to eighty-four counts of involuntary manslaughter. Not eighty-five. Prosecutors left out one victim they could not prove had died of the fire itself. The maximum fine the law allowed came to about three and a half million dollars. Roughly forty-one thousand dollars per count. The company moved through bankruptcy. A thirteen and a half billion dollar fund was set up for the survivors of its fires. Paid, in the end, at seventy cents on the dollar.
+
+### A6-S2 — narration
+> And what about the couple whose trailer started the Carr Fire? The flat tire on Highway two ninety-nine? Investigators never released their names. They were never charged. Never fined. Never sued. It was an accident, and the law treated it like one. The lawsuits that followed went after the agencies that managed the road, for the dry brush growing along it. Hold those two endings side by side. One fire began with bad luck that could happen to anyone. The other began with a worn part that a company had a century to replace. That difference is the whole story of blame.
+
+### A6-S3 — narration
+> Two fires. Ninety miles and one hundred five days apart. One reached eight miles into the sky and built a tornado out of its own heat. Nature, moving faster than our science. The other started with a worn piece of steel no bigger than your hand. It erased a town through roads and warnings we had been told, in writing, would fail. Our systems, moving slower than the fire. For a hundred years California called these things brush fires. In two thousand eighteen they stopped behaving like brush. They started behaving like weather on one end, and like industrial disaster on the other. The record heat that set up Redding. The bone-dry November that set up Paradise. The science is blunt about the direction this is moving. The next Carr, the next Camp. Those are not ifs.
+
+### A6-S4 — narration
+> But here is what else was true in two thousand eighteen. The grand jury report existed. The evacuation plan existed. The radar was watching. The warnings were there. What was missing was the hour to act on them. Disasters don't ask permission. But they do send warnings. Learn what yours sounds like. Know your roads before you need them. Know where you'd go if the alert never came. So that when it comes, you already know what to do. This was The Warning Hour.
+
+### A2-S11 — narration
+> Why this fire, and not the thousand before it? The answer was in the brush. Investigators measured the moisture inside the living plants on those hillsides. In a normal year, green manzanita holds enough water to resist a fire. That July, the moisture had dropped so low that the living brush burned like kindling. The fuel was ready. The heat was extreme. And the sky was unstable. Three loaded guns, and the Carr Fire pulled all three triggers on the same evening.
+
+### A3-S9 — narration
+> Eight people is a number you can hold in your head. Here is the one you cannot. The Carr Fire destroyed more than a thousand homes. A thousand families who drove back, days later, to a concrete slab and a chimney standing in the ash. The fire tornado lasted half an hour. For the people of Redding, the Carr Fire never really ended. It just stopped burning.
+
+### A4-S6 — narration
+> And the hook did not have to break. For years, the towers of the Caribou-Palermo line were checked by workers the company itself later admitted were untrained for the job. The men sent up to inspect the hardware had never been taught what a healthy hook looked like. So they could not see a dying one. The report is blunt about it. To judge how much metal a hook had lost, you have to know what it looked like new. These inspectors did not. On that same tower, a second hook was wearing through in exactly the same way. The company knew that steel rubbing on steel wears out. It had replaced worn parts on this very line before. And still, year after year, the hook was left to hang, and thin, and wait.
+
+### A5-S8 — narration
+> The stories from that morning are almost too much to believe. Anastasia Skinner was nine months pregnant when the fire came. In the middle of the evacuation, she went into labor. She called nine one one. A Butte County paramedic named Mickey Huber reached her and helped bring her baby into the world, while the town around them burned. She named the child after the man who saved them both.
+
+### A5-S9 — narration
+> But most of the eighty-five did not get a rescue. To understand who died in Paradise, read their names. Rafaela Andrade, eighty-four, who could not walk without a walker, found inside her home. Andrew Downer, fifty-four, a man in a wheelchair who could not drive, found just outside his front door. Ernest Foss, sixty-three, found near his home with his oxygen tank beside him. These were not people who ignored a warning. These were people who could not move fast enough, in a town that could not warn them in time, on roads that could not carry them out.
+
+### A6-S5 — narration
+> Paradise did not disappear. Some of it came back. The town rebuilt, slower and smaller, with wider plans for the roads and a hard memory of the morning the sky went dark. California changed too. When the wind rises now and the brush is dry, the power company shuts the electricity off on purpose, to whole counties at a time, rather than risk another spark. It is a blunt fix for a problem a hundred years in the making. But it is a fix that Paradise paid for.
+
+### A2-S12 — narration
+> Here is the part that still unsettles the scientists. They did not piece this together years later from the wreckage. They watched it happen, live, on radar, that evening. The same Doppler radar that tracks thunderstorms across the plains was staring at the Carr Fire, and it saw a hook of rotation curl up inside the smoke. A signature that, over any ordinary storm, would have sent forecasters reaching for the tornado button. But there was no button for this. They watched a tornado form, in real time, and could only write down what they saw.
+
+### A3-S10 — narration
+> The men on the other dozers lived. They drove through fire to reach a cleared patch of dirt and waited out the front, listening on the radio as the calls for help came in and then stopped. One of them kept working the fire lines for days afterward. When people ask why anyone would do that job, that is the answer. Someone has to stand between the fire and the town. In Redding, that summer, eight of them did not come home.
+
+### A4-S7 — narration
+> Down in the canyon, a CAL FIRE captain named Matt McKenzie was one of the first to reach the new fire. He looked at the flames, the wind, and the slope, and he made a call to his dispatch center that turned out to be the truest sentence of the day. This, he said, has the potential of a major incident. It was six forty-four in the morning. One hour later, the fire had traveled seven miles and reached the edge of Paradise. Nothing built by people was going to stop it.
+
+### A5-S10 — narration
+> The warning that should have saved lives never arrived. Butte County tried to trigger the federal alert system, the one that lights up every phone in range. It did not go out. And the staff did not even learn it had failed until the next day. So the warning became a human chain. Deputies driving into neighborhoods that were already burning, leaning on the horn, shouting for people to go now. Some streets got the knock. Many did not. The people most likely to be missed were the ones living alone at the end of a quiet road.
+
+### A5-S11 — narration
+> And yet, in the worst of it, people saved people. When the roads choked and the fire closed in, more than a hundred strangers crowded into a parking lot in the middle of town. Firefighters parked their engines in a ring and fought to keep that one square of pavement from catching. Cars burned at the edges. The people in the center lived. It was not a plan. It was a last resort that worked, because someone chose to stand their ground for them.
+
+### A6-S6 — narration
+> The science did not stand still after two thousand eighteen. Forecasters now know the radar fingerprint of a fire that is about to spin. They have a warning they can issue, and they have used it. Researchers can watch a smoke plume climb and tell you when it is turning into a storm. We understand these fires better than we ever have. What we have not solved is the harder half. The dry years are getting drier. The towns keep pushing into the trees. And the warning, however good it gets, still only works if someone is there to hear it, with somewhere to go.
+
+### A2-S13 — narration
+<!-- EXPANSION 2026-08-05 (owner: march for 32 min). Front-half escalation: the vortex crosses
+     the river into Redding proper. Timeline placement: after A2-S12, before A3-S1 (science→human
+     bridge). Visual: g-carr-map river-crossing beat + calfire-firenado-heli clip + night-road stock. -->
+> For most of that evening, the people of Redding believed one thing would save them. The Sacramento River. A wide, cold ribbon of water on the west edge of town. Fire does not cross rivers. Everyone knew that. It was the wall the whole city was standing behind. At about seven thirty, the vortex reached that wall. And it did not stop. The spinning column threw burning debris across the water, hundreds of feet, into the dry neighborhoods on the far bank. Lake Keswick Estates. Land Park. Quiet streets of ordinary homes, on the Redding side, where no one thought the fire could reach. Within minutes, those streets were burning. The order went out to evacuate the city itself. Nearly forty thousand people. In the dark, on a summer evening, with a fire behind them that was making its own wind. Traffic filled every road out of Redding at once. Parents drove with children in the back and embers on the windshield. Behind them, a fire had just done the one thing they had been promised it could never do. It had crossed the river. The wall they trusted was gone.
+
+### A6-S7 — narration
+<!-- EXPANSION 2026-08-05 (owner: march for 32 min). Late emotional bank: the Camp displacement
+     aftermath. Timeline placement: after A6-S6 (science), before A6-S5 (rebuild). Mirrors A3-S9
+     Carr closer. Visual: aftermath-slab stock + Paradise before/after USGS + designed toll card. -->
+> When the fire was out, a different disaster began. The one that does not make the news. Paradise was gone, but its people were not. Fifty thousand of them, from Paradise and the towns around it, suddenly had nowhere to live. There were not fifty thousand empty homes in Butte County. There were barely any. So people slept where they could. In cars. In tents. In the parking lot of a Walmart in nearby Chico, a camp appeared within days. Hundreds of survivors, living on the asphalt, in the November cold. Volunteers brought food and blankets. Then sickness moved through the crowded tents, and even that refuge had to be cleared. For most of them, there was no going home. Home was a concrete slab and a chimney in a dead town on the ridge. A year later, thousands were still in trailers and spare rooms and motels. Paradise, a town of nearly twenty-seven thousand people, came back as a town of a few thousand. The fire lasted a morning. The homelessness it made lasted years. The flames are the story for one night. The scattering of a whole town is the story for the rest of these people's lives.
