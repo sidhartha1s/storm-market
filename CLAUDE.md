@@ -25,6 +25,15 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
 - **Match ep2's anatomy, and CHECK it — don't assume it.** Owner: *"I'm damn sure you didn't
   check. You assumed it."* **Never edit ep2. It is shipped.**
 - **Cut for retention.** Segments and clips do not deserve long lengths by default.
+- **Duration is EARNED, not assigned (owner order 2026-08-05).** Cut the picture TO the narration,
+  beat by beat; a shot's length is set by what it earns (motion, new info, emotion, matching the
+  line), never to fill runtime or to sit under a gate ceiling. `still ≤12s` / `reuse ≤3` are
+  bore-thresholds, not targets (most stills earn 4–8s). Dividing runtime across the asset pool so
+  "coverage" works is the ep3 slideshow failure. Graphics/maps/stat-cards are primary content for
+  their beats, not filler. Short retention cuts exhaust a small pool ~3× faster than holds — if you
+  run out of distinct, voice-matching material before the runtime ends, that is the real shortfall;
+  fix it upstream/per-beat (shorten script, source the clip, add a graphic), never a hold-to-fill.
+  Full rule in LEARNINGS.md + DESIGN.md (same date).
 - Reference floors from the shipped cuts: ep2 = 187 windows / 10.0s median / 2 picture gaps.
   Uncovered picture gaps in the dozens is a bug, not a style.
 - **Chapter blackout is mandatory (owner order 2026-07-31).** ep1/ep2's 2-3s black cut between
