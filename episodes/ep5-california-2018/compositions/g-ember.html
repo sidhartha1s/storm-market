@@ -13,7 +13,7 @@
   .frontlbl { position:absolute; left:70px; bottom:100px; font-family:'Arial Black',Arial,sans-serif;
     font-size:26px; color:#e07a4a; opacity:0; }
   .town { position:absolute; right:180px; bottom:150px; top:260px; width:360px;
-    border-left:2px dashed #2a3644; opacity:0; }
+    border-left:2px dashed #2a3644; background:linear-gradient(90deg, rgba(43,55,66,0.35), rgba(43,55,66,0.08)); opacity:0; }
   .townlbl { position:absolute; right:200px; top:200px; font-family:'Arial Black',Arial,sans-serif;
     font-size:28px; color:#f2f5f8; opacity:0; }
   .ember { position:absolute; width:6px; height:6px; border-radius:50%; background:#e8c56a; box-shadow:0 0 8px #d8a13a; }
@@ -51,6 +51,7 @@ window.__timelines = window.__timelines || {};
   tl.set([P+"hdr",P+"frontlbl",P+"townlbl",P+"town",P+"count",P+"clab",P+"foot"],{autoAlpha:0},0);
   tl.fromTo(P+"hdr",{autoAlpha:0,y:-14},{autoAlpha:1,y:0,duration:0.6},0.3);
   tl.to([P+"front",P+"frontlbl"],{autoAlpha:1,duration:0.6},1.2);
+  tl.to(P+"front",{opacity:0.72,duration:0.55,ease:"sine.inOut",yoyo:true,repeat:38},1.8); // fire front flickers through the window
   tl.to([P+"town",P+"townlbl"],{autoAlpha:1,duration:0.6},2.4);
   // embers arc from front to town — continuous stream
   function launchEmber(delay){ const e=document.createElement("div"); e.className="ember";
@@ -59,7 +60,8 @@ window.__timelines = window.__timelines || {};
     tl.to(e,{left:"1250px",top:"420px",duration:1.6,ease:"power1.in"},delay);
     tl.to(e,{top:"460px",duration:1.0,ease:"power2.in"},delay+0.8);
     tl.to(e,{opacity:0,duration:0.3},delay+1.6); }
-  for(let i=0;i<20;i++) launchEmber(6.0 + i*0.35);
+  // a thin trickle starts almost immediately — the stage is never a bar and a box with a void between
+  for(let i=0;i<38;i++) launchEmber(3.0 + i*0.46);
   // spot fires bloom + counter
   const cnt={v:0}; tl.to([P+"count",P+"clab"],{autoAlpha:1,duration:0.5},13.5);
   spots.forEach((s,i)=>{ tl.fromTo(s,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1,duration:0.3,ease:"power3.out"},14.0+i*0.18); });
