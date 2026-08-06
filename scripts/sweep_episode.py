@@ -34,12 +34,15 @@ for m in re.finditer(r'<(section|video|div)\b([^>]*)>', h):
         continue
     cid = re.search(r'data-composition-id="([^"]+)"', a)
     src = re.search(r'src="([^"]+)"', a)
-    if not src and not cid:
+    cls = re.search(r'class="([^"]*)"', a)
+    is_black = bool(cls and "blackout" in cls.group(1))
+    if not src and not cid and not is_black:
         inner = h[m.end():m.end() + 900]
         s2 = re.search(r'src="([^"]+)"', inner)
         src = s2
     wins.append(dict(at=float(st.group(1)), dur=float(du.group(1)), tr=int(tr.group(1)),
-                     name=cid.group(1) if cid else (src.group(1) if src else "?")))
+                     name="[blackout]" if is_black else
+                          (cid.group(1) if cid else (src.group(1) if src else "?"))))
 
 pic = sorted([w for w in wins if w["tr"] in (1, 2)], key=lambda w: w["at"])
 
@@ -63,8 +66,8 @@ for tr in {w["tr"] for w in wins}:
             ov.append((tr, a["name"], b["name"], round(a["at"] + a["dur"] - b["at"], 3)))
 report("same-track overlap", ov, lambda x: f"track {x[0]} {x[1]} over {x[2]} by {x[3]}s")
 
-# 3. adjacent duplicate cuts on track 1
-t1 = [w for w in pic if w["tr"] == 1]
+# 3. adjacent duplicate cuts on track 1 (blackouts are structure, not footage)
+t1 = [w for w in pic if w["tr"] == 1 and w["name"] != "[blackout]"]
 dup = [(a["at"], a["name"]) for a, b in zip(t1, t1[1:]) if a["name"] == b["name"]]
 report("adjacent duplicate cuts", dup, lambda x: f"{x[0]}s {Path(x[1]).name}")
 
@@ -74,8 +77,30 @@ report("asset reuse <= 3", [(n, c) for n, c in uses.items() if c > 3],
        lambda x: f"{Path(x[0]).name} x{x[1]}")
 
 # 5. missing media
-miss = [w["name"] for w in pic if w["tr"] == 1 and not (ep / w["name"]).exists()]
+miss = [w["name"] for w in t1 if not (ep / w["name"]).exists()]
 report("media files exist", sorted(set(miss)))
+
+# 5b. duplicate element ids — hyperframes keys frame placement by id; a duplicate
+# renders one window BLACK while every attribute-level check passes (ep5 v1, 8s hole)
+ids = Counter(re.findall(r' id="([^"]+)"', h))
+report("element ids unique", sorted(n for n, c in ids.items() if c > 1))
+
+# 5c. visual-identity repeats — the viewer sees SOURCES, not filenames. Cuts a/b/c of one
+# homogeneous source read as the same clip (ep5 v1: burnaer02 family 16x, fire02 4x in
+# the first five minutes). Flag any source family appearing twice within 60s, or >6/episode.
+fam_uses = {}
+for w in t1:
+    fam = re.sub(r'-[a-f]\.mp4$', '', Path(w["name"]).name).replace(".mp4", "")
+    fam_uses.setdefault(fam, []).append(w["at"])
+fam_bad = []
+for fam, ats in fam_uses.items():
+    ats.sort()
+    tight = [(a, b) for a, b in zip(ats, ats[1:]) if b - a < 60]
+    if tight:
+        fam_bad.append((fam, f"{len(ats)}x, {len(tight)} pair(s) <60s apart at {int(tight[0][0])}s"))
+    elif len(ats) > 6:
+        fam_bad.append((fam, f"{len(ats)}x across the episode"))
+report("source-family repeats (viewer identity)", fam_bad, lambda x: f"{x[0]}: {x[1]}")
 
 # 6. authored but unmounted compositions
 authored = {p.stem for p in (ep / "compositions").glob("*.html")}
