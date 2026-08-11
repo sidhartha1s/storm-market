@@ -93,13 +93,13 @@ for w in t1:
     fam = re.sub(r'-[a-f]\.mp4$', '', Path(w["name"]).name).replace(".mp4", "")
     fam_uses.setdefault(fam, []).append((w["at"], w["at"] + w["dur"]))
 fam_bad = []
-for fam, wins in fam_uses.items():
-    wins.sort()
+for fam, fwins in fam_uses.items():
+    fwins.sort()
     # a cut that CONTINUES the same source (next window starts as the last ends) is one
     # sequence, not a repeat — the sin is interruption-and-return, not a split shot
-    tight = [(a[0], b[0]) for a, b in zip(wins, wins[1:])
+    tight = [(a[0], b[0]) for a, b in zip(fwins, fwins[1:])
              if b[0] - a[0] < 60 and b[0] - a[1] > 0.5]
-    ats = [w[0] for w in wins]
+    ats = [w[0] for w in fwins]
     if tight:
         fam_bad.append((fam, f"{len(ats)}x, {len(tight)} pair(s) <60s apart at {int(tight[0][0])}s"))
     elif len(ats) > 6:
