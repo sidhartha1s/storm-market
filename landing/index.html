@@ -718,14 +718,6 @@ magnetForm.addEventListener('submit',async e=>{
   new IntersectionObserver(([e])=>{offerVisible=e.isIntersecting;update();},{threshold:.15}).observe(offer);
 })();
 
-// Scroll reveal
-(function(){
-  const els=document.querySelectorAll('.rv');
-  const io=new IntersectionObserver(entries=>{
-    for(const e of entries) if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
-  },{threshold:.08});
-  els.forEach(el=>io.observe(el));
-})();
 </script>
 </body>
 </html>
