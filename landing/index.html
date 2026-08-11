@@ -257,13 +257,8 @@ footer .small{color:#7e8783}
   color:var(--sky-dim);letter-spacing:.06em;margin-top:2px}
 .stickybar .btn{padding:14px 28px;font-size:17px;white-space:nowrap;flex:0 0 auto}
 
-/* reveal on scroll */
-.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
-.rv.in{opacity:1;transform:none}
-
 @media (prefers-reduced-motion:reduce){
   .hero::before{animation:none}
-  .rv{opacity:1;transform:none;transition:none}
   .live .dot{animation:none}
 }
 @media (max-width:880px){
