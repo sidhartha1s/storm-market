@@ -62,10 +62,12 @@ window.__timelines = window.__timelines || {};
   tl.set([P+"hdr",P+"scope",P+"sweep",P+"site",P+"sitesub",P+"hooklab",P+"hooksub",P+"btn"],{autoAlpha:0},0);
   tl.fromTo(P+"hdr",{autoAlpha:0,y:-16},{autoAlpha:1,y:0,duration:0.6},0.5);
   tl.to(P+"scope",{autoAlpha:1,duration:0.9},2.2);
-  tl.to(P+"sweep",{autoAlpha:0.9,duration:0.4},3.0);
+  tl.to(P+"sweep",{autoAlpha:1,duration:0.4},3.0);
   tl.to(P+"sweep",{rotation:360,duration:4.0,ease:"none",repeat:7},3.0); // sweep turns through the window
-  tl.to([P+"site",P+"sitesub"],{autoAlpha:1,duration:0.5},10.5);
-  tl.to(P+"echo",{autoAlpha:1,duration:1.4},14.0); // the smoke mass paints
+  tl.to([P+"site",P+"sitesub"],{autoAlpha:1,duration:0.5},4.0);
+  // the smoke mass paints in sweeps from early on — the scope is never an empty stage
+  tl.fromTo(P+"echo",{autoAlpha:0,scale:0.35,transformOrigin:"46% 46%"},{autoAlpha:0.55,scale:0.7,duration:4.0,ease:"power1.inOut"},6.0);
+  tl.to(P+"echo",{autoAlpha:1,scale:1,duration:3.0,ease:"power1.inOut"},13.0); // "staring at the Carr Fire"
   // the hook curls up inside the smoke, drawn on as the line is spoken
   tl.to(P+"hook",{autoAlpha:1,duration:0.3},19.6);
   tl.to(P+"hook path",{strokeDashoffset:0,duration:2.0,ease:"power1.inOut"},19.8);
