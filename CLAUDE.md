@@ -22,9 +22,31 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   the thing on screen: "WHAT THEY EXPECTED · ROPE FUNNEL" vs "WHAT ARRIVED · A WALL OF DEBRIS".
 - **The picture must not contradict the voice.** ep3 narrated March 2025 over 1925 wreckage
   photos for 27s. If no asset exists, build an honest designed card — never fabricate footage.
-- **Match ep2's anatomy, and CHECK it — don't assume it.** Owner: *"I'm damn sure you didn't
-  check. You assumed it."* **Never edit ep2. It is shipped.**
-- **Cut for retention.** Segments and clips do not deserve long lengths by default.
+- **Match the shipped panel anatomy, and CHECK it — don't assume it.** Owner: *"I'm damn sure
+  you didn't check. You assumed it."* The reference comps live in
+  `references/editing-patterns/` (owner order 2026-08-12: episode folders get DELETED after
+  publish — docs never cite `episodes/<slug>/...` for a pattern; copy shipped patterns into
+  that folder same session). **Never edit a shipped episode.**
+- **Cut for retention — but duration is EARNED (owner 2026-08-12 update).** Video beats may run
+  **up to 12-15s** when the clip genuinely matches the narration; motion earns time. Cadence
+  anxiety is retired; per-beat matching is not. **Stills: 3-6s MAX, always with motion
+  (zoom/pan), then cut — "this is not a PowerPoint presentation."** Prefer video over stills
+  everywhere; maximum video segments.
+- **Content-ID discipline for long pulls:** any claim-risk clip (news/broadcast/YouTuber) held
+  longer than ~12-15s needs narration over it; TRANSCRIBE such clips first and cut at the best
+  moment. News clips WITH their commentary audio are allowed — the audio mix (TTS alone, clip
+  audio alone, both interleaved) is a per-cut editor decision, made with reasoning.
+- **SFX is default-ON (owner 2026-08-12, reversing the owner-optional default):** one base
+  tone/bed across the episode + swells at peak moments (~every 45-60s as the script peaks).
+  Library (`assets/sfx/`) or ffmpeg-synthesized only — NEVER downloaded music; audio Content ID
+  is fatal (a claimed clip can be cut; a claimed music bed poisons the whole video). Verify the
+  layer post-render (volumedetect).
+- **Grading:** unified subtle grade template on all broadcast/news/private clips (anti-flag +
+  look consistency); stock/PD exempt. When doubtful about a grade or a claim risk — stop and ask.
+- **Sourcing bar (owner 2026-08-12): find 3-4x more candidates than you need.** Millions of PD
+  and news clips exist — "short of clips" means stop everything and source better. Use
+  PySceneDetect (validate install first) to split long sources into scene cuts instead of
+  burning agent passes; spread the cuts ACROSS the episode, never back-to-back.
 - Reference floors from the shipped cuts: ep2 = 187 windows / 10.0s median / 2 picture gaps.
   Uncovered picture gaps in the dozens is a bug, not a style.
 - **Chapter blackout is mandatory (owner order 2026-07-31).** ep1/ep2's 2-3s black cut between
