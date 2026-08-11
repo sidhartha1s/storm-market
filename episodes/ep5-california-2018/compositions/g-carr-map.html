@@ -10,8 +10,8 @@
     font-size:24px; letter-spacing:7px; color:#93a3b2; opacity:0; }
   .lbl { position:absolute; font-family:'Arial Black',Arial,sans-serif; font-size:30px; color:#f2f5f8; opacity:0; }
   .sub { position:absolute; font-family:Georgia,serif; font-style:italic; font-size:22px; color:#b8c6d4; opacity:0; }
-  #g-carr-map-date { position:absolute; left:120px; bottom:90px; font-family:'Courier New',monospace;
-    font-size:26px; color:#d8a13a; letter-spacing:2px; opacity:0; }
+  #g-carr-map-date { position:absolute; right:120px; bottom:80px; text-align:right; font-family:'Courier New',monospace;
+    font-size:44px; font-weight:700; color:#d8a13a; letter-spacing:2px; opacity:0; }
 </style>
 <div id="root" data-composition-id="g-carr-map" data-width="1920" data-height="1080">
   <div class="hdr" id="g-carr-map-hdr">THE CARR FIRE &middot; JULY 2018</div>
@@ -53,7 +53,7 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"hwy",{autoAlpha:1,duration:0.6},1.2);
   tl.to(P+"ign",{attr:{r:12},duration:0.4,ease:"power4.in"},1.6);
   tl.to([P+"ignlbl",P+"ignsub",P+"date"],{autoAlpha:1,duration:0.5},1.8);
-  tl.to(P+"ign",{attr:{r:16},duration:1.0,ease:"sine.inOut",repeat:-1,yoyo:true},2.2); // continuous pulse
+  tl.to(P+"ign",{attr:{r:16},duration:1.0,ease:"sine.inOut",repeat:10,yoyo:true},2.2); // pulses to the cut
   tl.to(P+"river",{autoAlpha:0.95,duration:1.0},4.8);
   tl.to([P+"riverlbl"],{autoAlpha:1,duration:0.5},5.2);
   tl.to(P+"spread",{autoAlpha:1,duration:0.3},7.0);
