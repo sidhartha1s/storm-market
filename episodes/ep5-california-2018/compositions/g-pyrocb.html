@@ -84,15 +84,13 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"col",{scaleY:1,duration:3.0,ease:"power1.inOut"},9.0);
   embers.forEach((e,i)=>{ tl.to(e,{opacity:0.85,duration:0.3},7+(i*0.1)%2);
     tl.to(e,{bottom:"+=680",opacity:0,duration:3.0,ease:"power1.in",repeat:6,repeatDelay:0.4},7+(i*0.12)); });
-  // ice anvil
-  tl.to([P+"anvil",P+"anvillab"],{autoAlpha:1,duration:1.0,ease:"power2.out"},21.0);
-  // radar triangulation (this sub-beat is reused/mounted again for A2-S9)
-  tl.to(P+"anvillab",{autoAlpha:0,duration:0.5},29.4); // hand off the anvil beat before MEDFORD lands in its box
-  tl.to([P+"r1",P+"r2",P+"r3",P+"rl1",P+"rl2",P+"rl3"],{autoAlpha:1,duration:0.5,stagger:0.25},29.6);
-  tl.to(P+"beams",{autoAlpha:1,duration:1.0},30.6);
-  // soft exit — everything settles out before the hard cut instead of chopping mid-thought
-  tl.to([P+"col",P+"anvil",P+"h",P+"hlab",P+"time",P+"anvillab",P+"beams",P+"hdr",".tick",
-         P+"r1",P+"r2",P+"r3",P+"rl1",P+"rl2",P+"rl3"],{autoAlpha:0,duration:0.9},31.9);
+  // ice anvil — "grew a cap of ice"@18.1, "anvil"@19.2
+  tl.to([P+"anvil",P+"anvillab"],{autoAlpha:1,duration:1.0,ease:"power2.out"},18.5);
+  // the storm gets its NAME as it's spoken — "pyrocumulonimbus"@24.9 (radar beat moved to its own comp for A2-S12)
+  tl.fromTo(P+"name",{autoAlpha:0,y:14},{autoAlpha:1,y:0,duration:0.6,ease:"power2.out"},24.7);
+  // soft exit — last beat lands 25.3, holds, exit clears 32.8 before the 33.02 cut
+  tl.to([P+"col",P+"anvil",P+"h",P+"hlab",P+"time",P+"anvillab",P+"name",P+"hdr",".tick"],
+        {autoAlpha:0,duration:0.9},31.9);
   window.__timelines["g-pyrocb"] = tl;
 })();
 </script>
