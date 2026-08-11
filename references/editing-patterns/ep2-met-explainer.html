@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; }
+  .hdr { position:absolute; left:0; right:0; top:70px; text-align:center; font-weight:700; font-size:26px; letter-spacing:8px; color:#93a3b2; }
+  .ing { position:absolute; top:170px; width:520px; }
+  #g-met-ing1 { left:90px; } #g-met-ing2 { left:700px; } #g-met-ing3 { left:1310px; }
+  .ing .num { font-family:'Arial Black',Arial,sans-serif; font-size:30px; color:#d8a13a; letter-spacing:4px; }
+  .ing .nm { font-family:'Arial Black',Arial,sans-serif; font-size:56px; color:#f2f5f8; margin-top:6px; }
+  .ing .desc { font-family:Georgia,serif; font-style:italic; font-size:25px; color:#b8c6d4; margin-top:10px; line-height:1.35; }
+  /* CAPE gauge */
+  .gauge { position:relative; width:460px; height:56px; background:#101820; border:2px solid #2a3644; margin-top:26px; }
+  #g-met-gfill { position:absolute; left:0; top:0; bottom:0; width:460px; transform-origin:left center;
+    background:linear-gradient(90deg,#3f7d44,#d8a13a 55%,#c0392b); }
+  .gtick { position:absolute; top:60px; font-size:20px; color:#93a3b2; font-weight:700; }
+  #g-met-gval { font-family:'Courier New',monospace; font-size:64px; color:#e8c56a; font-weight:700; margin-top:40px; }
+  .gunit { font-size:22px; color:#93a3b2; letter-spacing:2px; }
+  /* lid diagram */
+  .lidbox { position:relative; width:460px; height:240px; margin-top:26px; }
+  .lid-warm { position:absolute; left:0; right:0; bottom:0; height:90px; background:linear-gradient(0deg,#7d3f2a66,#7d3f2a22); }
+  #g-met-lid { position:absolute; left:0; right:0; bottom:88px; height:16px; background:#5a768f; box-shadow:0 0 18px #5a768faa; }
+  .lid-cool { position:absolute; left:0; right:0; top:0; height:130px; background:linear-gradient(180deg,#1a2e4211,#1a2e4266); }
+  .lidlab { position:absolute; font-size:20px; font-weight:700; color:#dfe7ee; letter-spacing:1px; }
+  /* spin column */
+  .spinbox { position:relative; width:460px; height:280px; margin-top:26px; }
+  .arrow { position:absolute; height:0; border-top:6px solid #d8a13a; width:150px; }
+  .arrow:after { content:""; }
+  #g-met-arr1 { left:20px; top:220px; width:110px; border-color:#5a768f; }
+  #g-met-arr2 { left:60px; top:150px; width:170px; border-color:#7d94ab; }
+  #g-met-arr3 { left:110px; top:80px; width:240px; border-color:#d8a13a; }
+  #g-met-column { position:absolute; right:40px; top:16px; width:150px; height:250px; border:3px dashed #c8d3e0;
+    border-radius:48% / 12%; opacity:0.9; }
+  #g-met-helval { position:absolute; right:12px; top:120px; font-family:'Courier New',monospace; font-size:52px; color:#e8c56a; font-weight:700; }
+  /* combine */
+  .combine { position:absolute; inset:0; display:grid; place-items:center; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .cwrap { text-align:center; }
+  #g-met-super { width:420px; height:420px; border-radius:50%;
+    background:conic-gradient(#0b1016 0deg, #2a3644 90deg, #5a768f 170deg, #c0392b 220deg, #0b1016 360deg);
+    margin:0 auto; box-shadow:0 0 90px #c0392b33; }
+  .clab { font-family:'Arial Black',Arial,sans-serif; font-size:64px; color:#f2f5f8; letter-spacing:4px; margin-top:44px; }
+  .csub { font-family:Georgia,serif; font-style:italic; font-size:30px; color:#d8a13a; margin-top:14px; }
+</style>
+<div id="root" data-composition-id="g-met" data-width="1920" data-height="1080">
+  <div class="hdr" id="g-met-hdr">WHAT A VIOLENT TORNADO REQUIRES</div>
+  <div class="ing" id="g-met-ing1">
+    <div class="num">INGREDIENT 01</div><div class="nm">FUEL</div>
+    <div class="desc">Warm, humid air near the ground — measured in joules per kilogram (CAPE)</div>
+    <div class="gauge"><div id="g-met-gfill"></div></div>
+    <span class="gtick" style="left:0">0</span><span class="gtick" style="left:200px">ordinary storm ~1,000</span>
+    <div id="g-met-gval">0</div><div class="gunit">J/KG · APRIL 27, 2011</div>
+  </div>
+  <div class="ing" id="g-met-ing2">
+    <div class="num">INGREDIENT 02</div><div class="nm">A LID</div>
+    <div class="desc">A stable layer that traps the fuel for hours — so it builds instead of burning off</div>
+    <div class="lidbox">
+      <div class="lid-cool"></div><div id="g-met-lid"></div><div class="lid-warm"></div>
+      <span class="lidlab" style="left:10px; top:10px;">cool, dry air</span>
+      <span class="lidlab" style="left:10px; bottom:12px;">warm, moist air — building</span>
+      <span class="lidlab" style="right:6px; bottom:96px; color:#9fc3e8;">THE LID</span>
+    </div>
+  </div>
+  <div class="ing" id="g-met-ing3">
+    <div class="num">INGREDIENT 03</div><div class="nm">SPIN</div>
+    <div class="desc">Winds changing speed and direction with height — any storm that breaks the lid begins to rotate</div>
+    <div class="spinbox">
+      <div class="arrow" id="g-met-arr1"></div>
+      <div class="arrow" id="g-met-arr2"></div>
+      <div class="arrow" id="g-met-arr3"></div>
+      <div id="g-met-column"></div>
+      <div id="g-met-helval">0</div>
+    </div>
+    <div class="gunit" id="g-met-hellab">STORM-RELATIVE HELICITY · m²/s²</div>
+  </div>
+  <div class="combine" id="g-met-combine">
+    <div class="cwrap">
+      <div id="g-met-super"></div>
+      <div class="clab" id="g-met-clab">SUPERCELLS</div>
+      <div class="csub" id="g-met-csub">storms that rotate like machines — and they had all day to work</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#g-met-ing1","#g-met-ing2","#g-met-ing3","#g-met-combine","#g-met-hdr"], {autoAlpha:0}, 0);
+  tl.set("#g-met-gfill", {scaleX:0}, 0);
+  tl.fromTo("#g-met-hdr", {autoAlpha:0, y:-18}, {autoAlpha:1, y:0, duration:0.6}, 0.6);
+  /* FUEL @4.74; 1,000 @16.6; 2,000 @20.8; 3,000 @23.3 */
+  tl.fromTo("#g-met-ing1", {autoAlpha:0, y:30}, {autoAlpha:1, y:0, duration:0.5}, 4.7);
+  const cape = {v:0};
+  tl.to(cape, {v:1000, duration:1.6, ease:"power2.out", onUpdate:capeUpd}, 15.4);
+  tl.to("#g-met-gfill", {scaleX:0.33, duration:1.6, ease:"power2.out"}, 15.4);
+  tl.to(cape, {v:2000, duration:1.4, ease:"power1.inOut", onUpdate:capeUpd}, 20.2);
+  tl.to("#g-met-gfill", {scaleX:0.66, duration:1.4, ease:"power1.inOut"}, 20.2);
+  tl.to(cape, {v:3000, duration:1.6, ease:"power3.out", onUpdate:capeUpd}, 22.9);
+  tl.to("#g-met-gfill", {scaleX:1, duration:1.6, ease:"power3.out"}, 22.9);
+  function capeUpd() { const el=document.getElementById("g-met-gval"); if(el) el.textContent = Math.round(cape.v).toLocaleString("en-US"); }
+  /* LID @30.86 */
+  tl.fromTo("#g-met-ing2", {autoAlpha:0, y:30}, {autoAlpha:1, y:0, duration:0.5}, 30.6);
+  tl.fromTo("#g-met-lid", {scaleY:0.2, autoAlpha:0.3}, {scaleY:1, autoAlpha:1, duration:0.8}, 31.6);
+  /* SPIN @40.64; arrows stagger; helicity 450 @62.6 → 600 @64.08 */
+  tl.fromTo("#g-met-ing3", {autoAlpha:0, y:30}, {autoAlpha:1, y:0, duration:0.5}, 40.4);
+  tl.fromTo("#g-met-arr1", {scaleX:0}, {scaleX:1, duration:0.5, transformOrigin:"left center"}, 41.4);
+  tl.fromTo("#g-met-arr2", {scaleX:0}, {scaleX:1, duration:0.5, transformOrigin:"left center"}, 42.0);
+  tl.fromTo("#g-met-arr3", {scaleX:0}, {scaleX:1, duration:0.5, transformOrigin:"left center"}, 42.6);
+  tl.to("#g-met-column", {rotation:200, duration:26, ease:"none"}, 43.5);
+  const hel = {v:0};
+  tl.to(hel, {v:450, duration:1.4, ease:"power2.out", onUpdate:helUpd}, 62.2);
+  tl.to(hel, {v:600, duration:1.2, ease:"power3.out", onUpdate:helUpd}, 63.9);
+  function helUpd() { const el=document.getElementById("g-met-helval"); if(el) el.textContent = Math.round(hel.v); }
+  /* TOGETHER @69.46 → combine; MACHINES @78.68 */
+  tl.fromTo("#g-met-combine", {autoAlpha:0}, {autoAlpha:1, duration:0.8}, 69.2);
+  tl.fromTo("#g-met-super", {scale:0.6, rotation:0}, {scale:1, rotation:160, duration:12, ease:"power1.out"}, 69.4);
+  tl.fromTo("#g-met-clab", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.5}, 70.4);
+  tl.fromTo("#g-met-csub", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 78.5);
+  window.__timelines["g-met"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

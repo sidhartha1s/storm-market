@@ -673,3 +673,22 @@ scheduled task**: `schtasks /create /tn ep5draft /tr "cmd /c cd /d <worktree> &&
 scripts\render.cmd <slug> draft" /sc once /st 23:59 /f && schtasks /run /tn ep5draft` —
 fully detached, survives the session. Watch it with a log-mtime stall monitor (>10 min
 silent = dead), never with a process-name count (MCP daemons match loose filters).
+
+## Owner pivot 2026-08-12 — cadence, sourcing, SFX, durable references
+
+- **Cadence anxiety retired:** video beats up to 12-15s when genuinely matched; stills 3-6s MAX
+  with motion (sweep now enforces 6s, was 12s); prefer video everywhere. Claim-risk pulls >12-15s
+  need narration over them; transcribe news clips before cutting.
+- **SFX is default-ON now** (base tone + peak swells, library/ffmpeg-synth only) — ep5 v2 shipped
+  with a single wind bed the owner heard as "buzzing"; a low-volume steady loop under silence
+  reads as a defect, not atmosphere. Design per scene, verify post-render.
+- **Docs must not cite episode paths** — episode folders get deleted after publish. Shipped
+  patterns get COPIED into `references/editing-patterns/` the same session ("you want it to be
+  gone with the wind?").
+- **Docs drift is a real defect class:** "still ≤12s" survived two owner cadence corrections
+  ("will your grandfather come and revise this?"). Any editorial rule change sweeps CLAUDE.md,
+  DESIGN.md, LEARNINGS.md AND the gate scripts in the same session.
+- **Graphics exits need ~1s land time** after the last beat — v2 cut scenes one or two frames
+  after motion ended, repeatedly ("one time is okay... three and four and five times?").
+- **PySceneDetect** (scenedetect.com) approved for splitting long sources into scene cuts —
+  validate on this box before first use; cheaper than agent OCR passes.
