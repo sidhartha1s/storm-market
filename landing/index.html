@@ -765,6 +765,34 @@ footer .small{color:#7e8783}
   </div>
 </footer>
 
+<!-- ================= POPUPS ================= -->
+<!-- Soft (30s): free state packet nudge. Hard (exit intent / 3min): straight to checkout. -->
+<div class="pop" id="pop-soft" role="dialog" aria-modal="true" aria-label="Free state packet">
+  <div class="panel">
+    <button class="x" data-close aria-label="Close">×</button>
+    <div class="eyebrow">Before you go further</div>
+    <h3>Your state's storm packet is <em>free.</em></h3>
+    <p>Four pages: your forecast office, your county alert signup, your insurance department's
+      mitigation credits, and the three hazards your state actually gets. No purchase — just
+      pick your state below.</p>
+    <a class="btn" href="#free" data-close>Get My Free State Packet</a>
+    <a class="alt" href="#inside" data-close>or see inside the book &rarr;</a>
+  </div>
+</div>
+<div class="pop" id="pop-hard" role="dialog" aria-modal="true" aria-label="Before you leave">
+  <div class="panel">
+    <button class="x" data-close aria-label="Close">×</button>
+    <img class="mini" src="assets/cover.png" alt="The Storm-Ready Home cover">
+    <div class="eyebrow">Wait — one thing</div>
+    <h3>The most important week in the book costs <em>nothing.</em></h3>
+    <p>Week four — the safe room, the document vault, the helmet rule — is free to do, and it's
+      the week the disaster reports keep citing. The $47 is refundable for seven days.
+      The quiet window before the next storm isn't.</p>
+    <a class="btn checkout" href="#offer" data-close>Get the Manual · $47 &rarr;</a>
+    <a class="alt" href="#inside" data-close>or see what's inside &rarr;</a>
+  </div>
+</div>
+
 <!-- ================= STICKY CTA ================= -->
 <div class="stickybar" id="stickybar" aria-hidden="true">
   <div class="wrap">
