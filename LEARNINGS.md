@@ -658,6 +658,13 @@ Two silent failure modes in one script, both hit on ep5:
   clips (the whole point of an insert is its audio). Nothing warned. Restored from
   `media/_orig/` with `-c:a aac`. Rule: after ANY optimize pass, ffprobe the insert clips
   for an audio stream before rendering.
+  **RECURRED on ep5 v3 (2026-08-12):** an ad-hoc media-budget crf pass re-encoded every
+  mounted mp4 >900KB with `-an` and stripped ins-mckay again; render failed loud at
+  `audio_processing_failed` (hyperframes' extractAudioFromVideo, stage "extract", found no
+  audio stream — that error code means AN AUDIBLE VIDEO ELEMENT, not a corrupt file). The
+  rule is not about optimize_clips.py — it is about `-an` in ANY batch: exclude every
+  element mounted un-muted / data-has-audio from the batch, and ffprobe all audible
+  elements for an audio stream as the last step before any render.
 - **It only checks resolution and window-length, not bitrate.** ffmpeg scene cuts made with
   stream-copy keep the source's 15-19 Mbps, so 78 within-spec clips still totalled 645 MB
   against the 150 MB decode budget. Fix: re-encode cuts at libx264 crf 23-27 when cutting
