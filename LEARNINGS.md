@@ -641,39 +641,54 @@ Measured HEVC transcode of the −14 LUFS master (5097 MB, `-c:a copy`, audio un
 future episodes the cleanest is to render at a higher CRF + 24 fps so the small file falls out of
 the render itself; reach for the GPU-HEVC pass only when you want the extra shrink.
 
-## Duration is EARNED, not assigned — cut for retention, never to fill runtime (owner order 2026-08-05)
+## Duplicate element ids render BLACK — and no gate caught it (measured ep5, 2026-08-06)
 
-The failure (ep5 draft, caught by the owner): the picture track was built by **arithmetic** — take
-the runtime, divide it across the available asset pool so "coverage" works and the QC gates don't
-trip. That is the ep3 slideshow failure wearing a different hat. Symptoms: 30s holds on a single
-portrait, stills stretched to the 12s gate ceiling, clips reused just to fill gaps. All padding.
-Worse, it led to a fabricated conclusion — "32 assets **can't cover** 32 min" — which is false
-(long holds cover any runtime trivially). The measurement was a bad tile mistaken for a law.
+Two `<video>` windows shared `id="vx-carrwaterb2"` (a copy-paste slip during the retention
+re-cut). hyperframes keys frame placement by element id, so the FIRST window (581.9s, 8s)
+rendered **pure black** while every static gate passed — sweep, lint, blank_scan and
+graphics_qc all read attributes, none checks id uniqueness. Found only by post-render
+`verify_render.sh` blackdetect + eyeballing the frame. **Check before every render:**
+`grep -o ' id="[^"]*"' index.html | sort | uniq -d` must print nothing. (Candidate for a
+sweep_episode.py check — mechanical, must-never-forget.)
 
-The rule, stated straight:
-- **A shot stays only as long as it stays alive** — motion, new information, emotional weight — AND
-  matches the spoken beat. That is the ONLY basis for a duration. Not "fill the window," not "dodge
-  reuse," not "sit under the cap."
-- **The QC gates are bore-thresholds, not targets.** `still ≤12s` = the point a static frame starts
-  shedding viewers (most stills earn **4–8s**). `reuse ≤3` = the point repetition reads as a
-  clip-reel. Hitting a ceiling is a smell, never a goal.
-- **Picture is downstream of narration.** You cut TO the words. Never assign seconds first and find
-  pictures second.
-- **Graphics / maps / stat-cards are PRIMARY content** for their beats (data, science, spatial
-  claims), not deficit-filler. A designed card for a beat with no honest footage is legitimate
-  documentary grammar; faking or mismatching footage is not.
-- **Two perspectives to hold:** the OWNER wants a tight retention cut — motion, variety, a real clip
-  every 45–60s, picture matching voice, zero padding. The VIEWER never counts assets; every second
-  they ask one question — *am I still engaged?* A motivated 5s cut that matches the line beats a 30s
-  hold every time.
+## optimize_clips.py strips audio and ignores bitrate (measured ep5, 2026-08-06)
 
-**The constraint this exposes (plan for it up front):** cutting short for retention EXHAUSTS a small
-asset pool ~3× faster than long holds. `sources × reuse-3`, at 5–8s each, only yields so many minutes
-of non-repeating, voice-matching picture. If tight cutting runs out of distinct material before the
-runtime ends, THAT is the true (retention) shortfall — reached by correct reasoning, not by counting
-assets against total seconds. Two more sub-constraints ride with it: (1) short cuts must match the
-exact sentence, so generic stock under specific lines becomes a visible voice/picture contradiction;
-(2) the "real clip every 45–60s" cadence needs enough genuinely-real event clips, not stock. The fix
-is always **upstream and per-beat**: shorten the script to what the material carries at pace, source
-the specific missing footage, or author more data-carrying graphics to own more minutes legitimately.
-A beat with no honest, watchable picture is a cut-or-source candidate — never a hold-to-fill.
+Two silent failure modes in one script, both hit on ep5:
+- **`-an` is unconditional** — it stripped the audio track from all 4 owner-gated INSERT
+  clips (the whole point of an insert is its audio). Nothing warned. Restored from
+  `media/_orig/` with `-c:a aac`. Rule: after ANY optimize pass, ffprobe the insert clips
+  for an audio stream before rendering.
+- **It only checks resolution and window-length, not bitrate.** ffmpeg scene cuts made with
+  stream-copy keep the source's 15-19 Mbps, so 78 within-spec clips still totalled 645 MB
+  against the 150 MB decode budget. Fix: re-encode cuts at libx264 crf 23-27 when cutting
+  (~0.5 MB/s lands the budget); crf 27-32 passes cost little on graded b-roll.
+
+## Harness background tasks get reaped — long renders need schtasks (measured ep5, 2026-08-06)
+
+Two draft renders launched via the harness's background Bash died mid-capture (41% and 33%)
+when the harness killed the task — the CHILD TREE dies too, a few minutes later (the log
+keeps heartbeating briefly, which reads as "survived" and isn't). `Start-Process` was already
+known-fatal (ep3 attempt 11). The reliable launcher on this box is a one-shot **Windows
+scheduled task**: `schtasks /create /tn ep5draft /tr "cmd /c cd /d <worktree> &&
+scripts\render.cmd <slug> draft" /sc once /st 23:59 /f && schtasks /run /tn ep5draft` —
+fully detached, survives the session. Watch it with a log-mtime stall monitor (>10 min
+silent = dead), never with a process-name count (MCP daemons match loose filters).
+
+## Owner pivot 2026-08-12 — cadence, sourcing, SFX, durable references
+
+- **Cadence anxiety retired:** video beats up to 12-15s when genuinely matched; stills 3-6s MAX
+  with motion (sweep now enforces 6s, was 12s); prefer video everywhere. Claim-risk pulls >12-15s
+  need narration over them; transcribe news clips before cutting.
+- **SFX is default-ON now** (base tone + peak swells, library/ffmpeg-synth only) — ep5 v2 shipped
+  with a single wind bed the owner heard as "buzzing"; a low-volume steady loop under silence
+  reads as a defect, not atmosphere. Design per scene, verify post-render.
+- **Docs must not cite episode paths** — episode folders get deleted after publish. Shipped
+  patterns get COPIED into `references/editing-patterns/` the same session ("you want it to be
+  gone with the wind?").
+- **Docs drift is a real defect class:** "still ≤12s" survived two owner cadence corrections
+  ("will your grandfather come and revise this?"). Any editorial rule change sweeps CLAUDE.md,
+  DESIGN.md, LEARNINGS.md AND the gate scripts in the same session.
+- **Graphics exits need ~1s land time** after the last beat — v2 cut scenes one or two frames
+  after motion ended, repeatedly ("one time is okay... three and four and five times?").
+- **PySceneDetect** (scenedetect.com) approved for splitting long sources into scene cuts —
+  validate on this box before first use; cheaper than agent OCR passes.
