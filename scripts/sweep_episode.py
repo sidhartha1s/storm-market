@@ -154,10 +154,10 @@ report("graphic window fits its timeline", overrun,
 # coverage. Reveal-vs-spoken-word alignment is still verified by reading words.json when
 # a composition is authored — it is not, and must not pretend to be, automated here.
 
-# 9. long stills
+# 9. long stills — owner 2026-08-12: stills are 3-6s with motion, "not a PowerPoint"
 long_still = [(w["at"], w["name"], w["dur"]) for w in t1
-              if w["dur"] > 12.0 and not w["name"].endswith(".mp4")]
-report("no still over 12s", long_still, lambda x: f"{x[0]}s {Path(x[1]).name} {x[2]}s")
+              if w["dur"] > 6.0 and not w["name"].endswith(".mp4")]
+report("no still over 6s", long_still, lambda x: f"{x[0]}s {Path(x[1]).name} {x[2]}s")
 
 print()
 print("SWEEP", "FAIL" if fails else "PASS", "-", len(fails), "failing checks")
