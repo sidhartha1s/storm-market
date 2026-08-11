@@ -84,8 +84,10 @@ shipped; these are the standing requirements for every episode's cold open:
 ### Broadcast-clip rehook cadence (owner order 2026-07-26)
 Core audience is 40–70+ — they watched these events on live TV; real broadcast/news/PD/survivor
 clips are the nostalgia rehook, stock footage only fills between them. **A real clip lands every
-45–60s (or as the beat needs), never long stretches of pure stock.** Network news: 3–4s max per
-use, narrated-over, courtesy credit in description — credit manages goodwill, it does NOT remove
+45–60s (or as the beat needs), never long stretches of pure stock.** Network news: transcribe
+first, cut at the best moment; up to ~12-15s per pull when narrated over (owner 2026-08-12 —
+commentary audio may be featured, audio mix is a per-cut editor decision), courtesy credit in
+description — credit manages goodwill, it does NOT remove
 claim risk, and it never substitutes for a license. **Claims-vs-strikes distinction (Oldshue
 ruling): network/TV material draws Content ID revenue claims (budgeted, survivable); independent
 chaser/streamer footage draws manual copyright strikes (channel-fatal) — the NEVER-without-license
@@ -182,9 +184,11 @@ floors/ceilings; taste stays with the model.
   graphic/text/quote element as a viewer** — for each one ask: landing, idling, or minor fix?
   Table the verdicts (the "is it sitting for the egg to hatch" pass). Same pass re-checks clip
   pacing. This is an AI-judgment step — never enforced by script.
-- **Cut-pacing baselines (guidance for the editor's reasoning, NOT code-enforced):** stills
-  4-7s · video clips 8-12s (motion earns time) · hooks 2-4s · graphics for as long as they
-  keep delivering new information. Deviate whenever the beat demands it — reason per shot.
+- **Cut-pacing baselines (guidance for the editor's reasoning; the still cap IS code-enforced
+  in sweep):** stills 3-6s MAX with motion, never longer (owner 2026-08-12) · video clips up to
+  12-15s when the clip matches the narration (motion earns time) · hooks 2-4s · graphics for as
+  long as they keep delivering new information, PLUS ~1s of land time after the last beat —
+  never cut ON motion (owner 2026-08-12). Deviate whenever the beat demands it — reason per shot.
 - **Naming: one asset = one exact filename, cited by filename always** — never prose aliases
   ("cupcake renamed fruit-cake" ban). Different stock files of similar subjects are legitimate
   different shots; the sin is re-showing ONE file under different references. Edit script
@@ -193,19 +197,6 @@ floors/ceilings; taste stays with the model.
   figure; secondary stats appear after the landing.
 - **Lower-third sub-lines**: high contrast or backing bar — no dark italic on busy ground.
 - **Outro**: match-cut the channel title to the closing line; card does not sit.
-
-## Duration is EARNED, not assigned (owner order 2026-08-05 — binding)
-The picture is cut TO the narration, beat by beat. A shot's length is set by what it **earns** —
-motion, new information, emotional weight, and matching the spoken line — never by "fill the window,"
-"dodge the reuse cap," or "sit under the 12s ceiling." The QC gates (`still ≤12s`, `reuse ≤3`) are
-**bore-thresholds, not targets**: most stills earn 4–8s; the cap is where repetition reads as a
-clip-reel. Deciding picture by arithmetic — dividing runtime across the asset pool so coverage works
-— is the ep3 slideshow failure and produces long dead holds. Graphics/maps/stat-cards are **primary
-content** for their beats, not deficit-filler; a designed card for a beat with no honest footage is
-legitimate. **Consequence:** short retention cuts exhaust a small asset pool ~3× faster than holds —
-if tight cutting runs out of distinct, voice-matching material before the runtime ends, that is the
-real (retention) shortfall; fix it upstream/per-beat (shorten the script, source the specific clip,
-or add a data-carrying graphic), never by holding to fill. See LEARNINGS.md same-date entry.
 
 ## Editing grammar (seed — grows via LEARNINGS.md)
 
