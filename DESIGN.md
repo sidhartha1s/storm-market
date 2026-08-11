@@ -84,8 +84,10 @@ shipped; these are the standing requirements for every episode's cold open:
 ### Broadcast-clip rehook cadence (owner order 2026-07-26)
 Core audience is 40–70+ — they watched these events on live TV; real broadcast/news/PD/survivor
 clips are the nostalgia rehook, stock footage only fills between them. **A real clip lands every
-45–60s (or as the beat needs), never long stretches of pure stock.** Network news: 3–4s max per
-use, narrated-over, courtesy credit in description — credit manages goodwill, it does NOT remove
+45–60s (or as the beat needs), never long stretches of pure stock.** Network news: transcribe
+first, cut at the best moment; up to ~12-15s per pull when narrated over (owner 2026-08-12 —
+commentary audio may be featured, audio mix is a per-cut editor decision), courtesy credit in
+description — credit manages goodwill, it does NOT remove
 claim risk, and it never substitutes for a license. **Claims-vs-strikes distinction (Oldshue
 ruling): network/TV material draws Content ID revenue claims (budgeted, survivable); independent
 chaser/streamer footage draws manual copyright strikes (channel-fatal) — the NEVER-without-license
