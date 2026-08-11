@@ -852,19 +852,76 @@ magnetForm.addEventListener('submit',async e=>{
   }
 });
 
-// Live viewer counter — decorative ambience, a bounded random walk between 87 and 99.
+// ---- Gumroad checkout target ----
+// Set this to the real product URL once the Gumroad account exists, e.g.
+//   const GUMROAD_URL='https://paulraymond.gumroad.com/l/storm-ready-home';
+// Every checkout CTA (offer button + hard popup) picks it up automatically;
+// while null they fall back to scrolling to #offer.
+const GUMROAD_URL=null;
+(function(){
+  if(!GUMROAD_URL)return;
+  for(const a of document.querySelectorAll('#buy,.pop .checkout')){
+    a.href=GUMROAD_URL+'?wanted=true';
+    a.removeAttribute('data-close');
+  }
+})();
+
+// Live viewer counter — decorative ambience: random value in [80,115], re-rolled every 2-3s.
 // JS-rendered and hidden until first tick so it never shows a stale hardcoded number.
 (function(){
   const el=document.getElementById('live'), n=document.getElementById('live-n');
-  let v=87+Math.floor(Math.random()*13);
-  const tick=()=>{
-    v+=Math.random()<.5?-1:1;
-    if(v<87)v=87+Math.floor(Math.random()*3);
-    if(v>99)v=99-Math.floor(Math.random()*3);
-    n.textContent=v;
-  };
+  const tick=()=>{n.textContent=80+Math.floor(Math.random()*36);};
   tick(); el.hidden=false;
-  setInterval(tick,1000+Math.floor(Math.random()*700));
+  (function loop(){setTimeout(()=>{tick();loop();},2000+Math.floor(Math.random()*1000));})();
+})();
+
+// Looping launch countdown — evergreen timer. A deadline 6-14h out is stored in localStorage
+// so it survives reloads; when it expires a fresh one is rolled. HH:MM:SS, ticks every second.
+(function(){
+  const out=document.getElementById('countdown');
+  const KEY='srh-deadline';
+  const roll=()=>{const d=Date.now()+(6+Math.random()*8)*3600*1000;localStorage.setItem(KEY,d);return d;};
+  let dl=+localStorage.getItem(KEY)||roll();
+  const tick=()=>{
+    let s=Math.floor((dl-Date.now())/1000);
+    if(s<=0){dl=roll();s=Math.floor((dl-Date.now())/1000);}
+    const h=String(Math.floor(s/3600)).padStart(2,'0'),
+          m=String(Math.floor(s%3600/60)).padStart(2,'0'),
+          x=String(s%60).padStart(2,'0');
+    out.textContent=`${h}:${m}:${x}`;
+  };
+  tick(); setInterval(tick,1000);
+})();
+
+// ---- Popups ----
+// Soft popup at 30s (free packet). Hard popup on exit intent, or at 3min as fallback —
+// each fires at most once per session; hard popup suppresses a pending soft one.
+(function(){
+  const shown=k=>sessionStorage.getItem(k);
+  const mark=k=>sessionStorage.setItem(k,'1');
+  let open=null;
+  const show=id=>{
+    if(open||shown(id))return;
+    open=document.getElementById(id);
+    open.classList.add('on'); mark(id);
+    document.body.style.overflow='hidden';
+  };
+  const close=()=>{
+    if(!open)return;
+    open.classList.remove('on'); open=null;
+    document.body.style.overflow='';
+  };
+  for(const pop of document.querySelectorAll('.pop')){
+    pop.addEventListener('click',e=>{
+      if(e.target===pop||e.target.closest('[data-close]'))close();
+    });
+  }
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+  setTimeout(()=>show('pop-soft'),30000);
+  setTimeout(()=>show('pop-hard'),180000);
+  document.addEventListener('mouseout',e=>{
+    if(!e.relatedTarget&&e.clientY<=8)show('pop-hard');
+  });
 })();
 
 // Sticky CTA — slides in once the hero CTA scrolls out, slides away while the offer
