@@ -86,8 +86,9 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   usage cap, courtesy credit in description. + Pexels/Pixabay stock. + self-made radar/map
   graphics (NEXRAD archive data). + AI b-roll (LTX / z-image via DeAPI).
 - 911 audio + FEMA survivor interviews + govt hearings = the emotional layer. PD, claim-free.
-- News footage (AP/Getty/network): sparingly, short (3–4s/use), narrated over, courtesy credit
-  in description — expect Content ID revenue claims on those segments (claims ≠ strikes); never
+- News footage (AP/Getty/network): transcribe first, cut at the best moment; up to ~12-15s per
+  pull when narrated over (short 3-5s cutters still the default rhythm), courtesy credit in
+  description — expect Content ID revenue claims on those segments (claims ≠ strikes); never
   build a segment that dies if claimed. **Rehook cadence (owner 2026-07-26): a REAL clip
   (broadcast/PD/survivor) every 45–60s — core audience 40–70+ saw these events live; stock only
   fills between real clips.** Full rule in DESIGN.md.
