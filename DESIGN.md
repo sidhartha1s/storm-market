@@ -184,9 +184,11 @@ floors/ceilings; taste stays with the model.
   graphic/text/quote element as a viewer** — for each one ask: landing, idling, or minor fix?
   Table the verdicts (the "is it sitting for the egg to hatch" pass). Same pass re-checks clip
   pacing. This is an AI-judgment step — never enforced by script.
-- **Cut-pacing baselines (guidance for the editor's reasoning, NOT code-enforced):** stills
-  4-7s · video clips 8-12s (motion earns time) · hooks 2-4s · graphics for as long as they
-  keep delivering new information. Deviate whenever the beat demands it — reason per shot.
+- **Cut-pacing baselines (guidance for the editor's reasoning; the still cap IS code-enforced
+  in sweep):** stills 3-6s MAX with motion, never longer (owner 2026-08-12) · video clips up to
+  12-15s when the clip matches the narration (motion earns time) · hooks 2-4s · graphics for as
+  long as they keep delivering new information, PLUS ~1s of land time after the last beat —
+  never cut ON motion (owner 2026-08-12). Deviate whenever the beat demands it — reason per shot.
 - **Naming: one asset = one exact filename, cited by filename always** — never prose aliases
   ("cupcake renamed fruit-cake" ban). Different stock files of similar subjects are legitimate
   different shots; the sin is re-showing ONE file under different references. Edit script
