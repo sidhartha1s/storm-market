@@ -4,173 +4,304 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Storm-Ready Home · What the survivors did differently · Paul Raymond</title>
-<meta name="description" content="A 488-page American disaster preparedness manual. 130 numbered protections, 23 hazard playbooks, a 60-day sequence and a printable binder. One book, $47.">
+<meta name="description" content="A 486-page American disaster preparedness manual. 130 numbered protections, 23 hazard playbooks, a 60-day sequence and a printable binder. One book, $47.">
 <meta property="og:title" content="The Storm-Ready Home">
 <meta property="og:description" content="What the survivors did differently — and the 130 things you can do before the next one.">
 <meta property="og:image" content="/assets/og.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#0b0f14; --ink2:#121821; --card:#161d27; --line:#26303d;
-  --text:#e8e4dc; --dim:#a3aab5; --faint:#6f7885;
-  --amber:#e8a33a; --amber-d:#b06b06; --alert:#d4573f;
-  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
-  --sans:"Segoe UI",Inter,-apple-system,"Helvetica Neue",Arial,sans-serif;
-  --wrap:1080px;
+  /* paper body */
+  --paper:#f4eee1; --paper2:#ece4d2; --card:#faf6ec; --line:#d8cdb4; --rule:#b9ac8e;
+  --ink:#211d16; --ink-soft:#4a4335; --faded:#7c7259;
+  /* storm sky (hero + bookend) */
+  --sky:#151a1d; --sky2:#1e2629; --sky-line:#323d41; --sky-text:#ede7d8; --sky-dim:#a8b0ac;
+  /* accents */
+  --red:#a92c1e; --red-bright:#c0392b; --amber:#c9871c; --amber-deep:#8a5a0c;
+  --display:"Fraunces",Georgia,serif;
+  --body:"Source Serif 4","Iowan Old Style",Georgia,serif;
+  --mono:"IBM Plex Mono","Courier New",monospace;
+  --wrap:1060px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--ink);color:var(--text);font-family:var(--serif);
-  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);
+  font-size:19px;line-height:1.65;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
-a{color:var(--amber)}
-.wrap{max-width:var(--wrap);margin:0 auto;padding:0 22px}
-section{padding:74px 0;border-top:1px solid var(--line)}
-section:first-of-type{border-top:0}
-h1,h2,h3,h4{font-weight:600;margin:0;line-height:1.12;letter-spacing:-.01em}
-h2{font-size:clamp(28px,4.2vw,40px)}
-h3{font-size:clamp(21px,2.6vw,26px)}
-p{margin:0 0 16px}
-.kicker{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.19em;
-  text-transform:uppercase;color:var(--amber);margin-bottom:14px}
-.lead{font-size:clamp(18px,2.1vw,21px);color:var(--dim);line-height:1.5}
-.small{font-size:14px;color:var(--faint);line-height:1.5}
-.src{font-family:var(--sans);font-size:12px;color:var(--faint);letter-spacing:.02em;line-height:1.55}
+a{color:var(--red)}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+section{padding:84px 0}
+h1,h2,h3,h4{font-family:var(--display);font-weight:700;margin:0;line-height:1.08;letter-spacing:-.015em}
+h2{font-size:clamp(32px,4.6vw,46px)}
+h3{font-size:clamp(22px,2.6vw,27px)}
+p{margin:0 0 18px}
+.kicker{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.kicker::before{content:"";display:inline-block;width:26px;height:2px;background:var(--red);
+  vertical-align:middle;margin-right:12px}
+.lead{font-size:clamp(19px,2.1vw,22px);color:var(--ink-soft);line-height:1.55}
+.small{font-size:15px;color:var(--faded);line-height:1.55}
+.src{font-family:var(--mono);font-size:12px;color:var(--faded);letter-spacing:.01em;line-height:1.6}
+
+/* paper grain */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .035 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* section rules — newsprint double line */
+.ruled{border-top:3px double var(--rule)}
 
 /* ---------- buttons ---------- */
-.btn{display:inline-block;font-family:var(--sans);font-weight:700;font-size:17px;
-  letter-spacing:.02em;background:var(--amber);color:#1a1206;text-decoration:none;
-  padding:17px 34px;border-radius:3px;border:0;cursor:pointer;transition:transform .12s,background .12s}
-.btn:hover{background:#f2b354;transform:translateY(-1px)}
-.btn-sub{font-family:var(--sans);font-size:13px;color:var(--faint);margin-top:11px}
+.btn{display:inline-block;font-family:var(--display);font-weight:700;font-size:19px;
+  letter-spacing:.01em;background:var(--red);color:#fdf9ef;text-decoration:none;text-align:center;
+  padding:19px 40px;border-radius:4px;border:0;cursor:pointer;
+  box-shadow:0 3px 0 #6f1c12,0 10px 26px rgba(122,29,17,.28);
+  transition:transform .12s,box-shadow .12s,background .12s}
+.btn:hover{background:var(--red-bright);transform:translateY(-2px);
+  box-shadow:0 5px 0 #6f1c12,0 14px 30px rgba(122,29,17,.34)}
+.btn:active{transform:translateY(1px);box-shadow:0 1px 0 #6f1c12}
+.btn-sub{font-family:var(--mono);font-size:13px;color:var(--faded);margin-top:12px;letter-spacing:.03em}
+.btn.ghost{background:transparent;color:var(--red);box-shadow:inset 0 0 0 2px var(--red)}
+.btn.ghost:hover{background:rgba(169,44,30,.06)}
 
-/* ---------- hero ---------- */
-.hero{padding:0;border:0;background:var(--ink)}
-.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:52px;align-items:center;
-  padding:52px 0 46px}
-.hero h1{font-size:clamp(34px,5.6vw,58px);line-height:1.03}
-.hero .sub{font-size:clamp(18px,2.2vw,22px);color:var(--dim);margin-top:20px;line-height:1.45}
-.hero-cta{margin-top:32px}
-/* Cover art is 1024x1536 — unconstrained it pushes the headline and CTA below the fold.
-   Cap it so the whole hero fits a 900px-tall viewport. */
-.coverwrap{position:relative;max-width:340px;margin-left:auto;width:100%}
-.coverwrap img{width:100%;height:auto;border-radius:4px;
-  box-shadow:0 26px 60px rgba(0,0,0,.65),0 0 0 1px var(--line)}
-.proof{display:flex;gap:34px;flex-wrap:wrap;padding:22px 0;border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);font-family:var(--sans)}
-.proof div{font-size:13px;color:var(--faint);letter-spacing:.04em}
-.proof b{display:block;font-size:23px;color:var(--text);letter-spacing:-.01em;margin-bottom:3px}
+/* ---------- top urgency band ---------- */
+.band{background:var(--red);color:#fdf3ea;font-family:var(--mono);font-size:13px;
+  letter-spacing:.06em;text-align:center;padding:9px 14px;position:relative;z-index:5}
+.band b{font-weight:600}
+
+/* ---------- hero (storm sky) ---------- */
+.hero{position:relative;background:var(--sky);color:var(--sky-text);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-40% -20%;pointer-events:none;
+  background:
+    radial-gradient(60% 45% at 22% 18%,rgba(94,116,110,.34),transparent 62%),
+    radial-gradient(55% 40% at 80% 8%,rgba(70,86,96,.4),transparent 60%),
+    radial-gradient(70% 55% at 55% 90%,rgba(30,38,41,.9),transparent 70%),
+    radial-gradient(40% 30% at 68% 34%,rgba(201,135,28,.10),transparent 65%);
+  animation:drift 26s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate3d(-2%,0,0) scale(1)}to{transform:translate3d(2%,1.5%,0) scale(1.04)}}
+.hero .wrap{position:relative;z-index:2}
+.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:56px;align-items:center;padding:64px 0 56px}
+.hero h1{font-size:clamp(40px,6.4vw,74px);font-weight:900;line-height:.98;color:#f6f1e3}
+.hero h1 em{font-style:italic;color:var(--amber)}
+.hero .sub{font-size:clamp(19px,2.2vw,23px);color:var(--sky-dim);margin-top:24px;line-height:1.5;max-width:34em}
+.hero-cta{margin-top:34px}
+.hero .btn-sub{color:var(--sky-dim)}
+.coverwrap{position:relative;max-width:330px;margin-left:auto;width:100%;transform:rotate(1.6deg)}
+.coverwrap img{width:100%;height:auto;border-radius:3px;
+  box-shadow:0 34px 70px rgba(0,0,0,.72),0 0 0 1px rgba(255,255,255,.07)}
+.coverwrap::after{content:"486 PAGES · FIRST EDITION";position:absolute;left:50%;bottom:-34px;
+  transform:translateX(-50%);font-family:var(--mono);font-size:11px;letter-spacing:.24em;
+  color:var(--sky-dim);white-space:nowrap}
+
+/* live viewers pill */
+.live{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;
+  letter-spacing:.05em;color:var(--sky-dim);background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.13);border-radius:999px;padding:8px 16px;margin-bottom:26px}
+.live .dot{width:9px;height:9px;border-radius:50%;background:#e5352b;flex:0 0 auto;
+  box-shadow:0 0 0 0 rgba(229,53,43,.55);animation:pulse 1.6s ease-out infinite}
+@keyframes pulse{to{box-shadow:0 0 0 9px rgba(229,53,43,0)}}
+.live b{color:#f0ebdd;font-weight:600;font-variant-numeric:tabular-nums}
+.live .tag{background:#e5352b;color:#fff;font-weight:600;font-size:10px;letter-spacing:.14em;
+  padding:2px 7px;border-radius:3px}
+
+/* proof strip on sky */
+.proof{display:flex;gap:40px;flex-wrap:wrap;padding:26px 0 58px;border-top:1px solid var(--sky-line);
+  font-family:var(--mono);position:relative;z-index:2}
+.proof div{font-size:12px;color:var(--sky-dim);letter-spacing:.1em;text-transform:uppercase}
+.proof b{display:block;font-family:var(--display);font-size:27px;font-weight:700;color:#f2ecdd;
+  letter-spacing:-.01em;margin-bottom:4px}
+
+/* torn-paper transition */
+.tear{height:26px;background:var(--paper);position:relative;z-index:3;
+  clip-path:polygon(0 55%,3% 30%,7% 60%,11% 25%,15% 55%,19% 35%,24% 65%,28% 30%,33% 55%,37% 25%,42% 60%,46% 35%,51% 62%,55% 28%,60% 55%,64% 32%,69% 62%,73% 28%,78% 58%,82% 30%,86% 60%,90% 26%,95% 55%,100% 35%,100% 100%,0 100%)}
+
+/* ---------- story ---------- */
+.story{max-width:720px;margin:0 auto}
+.story .datestamp{font-family:var(--mono);font-size:13px;letter-spacing:.18em;color:var(--faded);
+  text-transform:uppercase;margin-bottom:18px}
+.story p{font-size:clamp(19px,2.2vw,23px);line-height:1.62}
+.story .drop::first-letter{font-family:var(--display);font-weight:900;font-size:3.4em;float:left;
+  line-height:.82;padding:6px 12px 0 0;color:var(--red)}
+.story .turn{font-family:var(--display);font-weight:700;font-size:clamp(24px,3vw,31px);
+  line-height:1.25;margin:38px 0 0;padding-left:24px;border-left:4px solid var(--red)}
 
 /* ---------- counts ---------- */
 .counts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;
-  background:var(--line);border:1px solid var(--line);margin-top:34px}
-.counts div{background:var(--ink2);padding:22px 18px;text-align:center}
-.counts b{display:block;font-family:var(--sans);font-size:30px;color:var(--amber);
+  background:var(--line);border:1px solid var(--line);margin-top:38px;
+  box-shadow:0 14px 30px rgba(60,48,20,.08)}
+.counts div{background:var(--card);padding:26px 18px;text-align:center}
+.counts b{display:block;font-family:var(--display);font-size:38px;font-weight:900;color:var(--red);
   letter-spacing:-.02em;margin-bottom:5px}
-.counts span{font-family:var(--sans);font-size:12px;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--faint)}
+.counts span{font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faded)}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:30px}
+.chip{font-family:var(--mono);font-size:13px;letter-spacing:.02em;background:var(--card);
+  border:1px solid var(--line);padding:8px 14px;color:var(--ink-soft);border-radius:999px}
 
 /* ---------- money ---------- */
-.gap{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin:34px 0 10px}
-.gapcard{background:var(--card);border:1px solid var(--line);padding:26px}
-.gapnum{font-family:var(--sans);font-size:clamp(38px,6vw,58px);font-weight:700;
-  letter-spacing:-.03em;line-height:1}
-.gapnum.a{color:var(--alert)} .gapnum.b{color:var(--amber)}
-.gapcard p{margin:12px 0 0;font-size:15px;color:var(--dim);line-height:1.5}
-table{width:100%;border-collapse:collapse;margin:26px 0 14px;font-size:16px}
-th{font-family:var(--sans);font-size:12px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--faint);text-align:left;border-bottom:1px solid var(--text);padding:0 10px 10px 0;font-weight:700}
-td{padding:14px 10px 14px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--dim)}
-td.n{text-align:right;font-family:var(--sans);color:var(--text);font-variant-numeric:tabular-nums;white-space:nowrap}
-.note{background:var(--ink2);border-left:3px solid var(--faint);padding:18px 20px;margin-top:24px}
-.note b{font-family:var(--sans);font-size:12px;letter-spacing:.13em;text-transform:uppercase;
-  display:block;margin-bottom:8px;color:var(--text)}
-.note p{margin:0;font-size:15px;color:var(--dim)}
+.gap{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin:38px 0 12px}
+.gapcard{background:var(--card);border:1px solid var(--line);border-top:5px solid var(--rule);
+  padding:30px;box-shadow:0 12px 26px rgba(60,48,20,.07)}
+.gapcard.alert{border-top-color:var(--red)}
+.gapcard.gain{border-top-color:var(--amber)}
+.gapnum{font-family:var(--display);font-size:clamp(42px,6vw,64px);font-weight:900;letter-spacing:-.03em;line-height:1}
+.gapcard.alert .gapnum{color:var(--red)} .gapcard.gain .gapnum{color:var(--amber-deep)}
+.gapcard p{margin:14px 0 0;font-size:16px;color:var(--ink-soft);line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:30px 0 14px;font-size:17px}
+th{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--faded);text-align:left;border-bottom:2px solid var(--ink);padding:0 10px 10px 0;font-weight:600}
+td{padding:15px 10px 15px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-soft)}
+td.n{text-align:right;font-family:var(--mono);font-weight:600;color:var(--ink);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.note{background:var(--paper2);border-left:4px solid var(--faded);padding:20px 24px;margin-top:26px}
+.note b{font-family:var(--mono);font-size:12px;letter-spacing:.15em;text-transform:uppercase;
+  display:block;margin-bottom:8px;color:var(--ink)}
+.note p{margin:0;font-size:16px;color:var(--ink-soft)}
 
 /* ---------- regions ---------- */
-/* 190px so all five regions fit one row at 1280 — at 215px the fifth orphaned onto its own row. */
-.regions{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-top:34px}
-.region{background:var(--card);border:1px solid var(--line);padding:22px}
-.region h4{font-family:var(--sans);font-size:16px;letter-spacing:0;margin-bottom:8px}
-.region .st{font-size:13px;color:var(--faint);margin-bottom:14px;line-height:1.45}
-.region ol{margin:0;padding-left:19px;color:var(--dim)}
-.region li{font-size:14px;line-height:1.55;margin-bottom:4px}
+.regions{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-top:38px}
+.region{background:var(--card);border:1px solid var(--line);padding:24px;
+  box-shadow:0 10px 22px rgba(60,48,20,.06)}
+.region h4{font-size:19px;margin-bottom:8px}
+.region .st{font-family:var(--mono);font-size:11.5px;color:var(--faded);margin-bottom:14px;line-height:1.5}
+.region ol{margin:0;padding-left:19px;color:var(--ink-soft)}
+.region li{font-size:15px;line-height:1.55;margin-bottom:4px}
 
-/* ---------- inside / chapters ---------- */
-.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px}
-.chip{font-family:var(--sans);font-size:13px;letter-spacing:.03em;background:var(--ink2);
-  border:1px solid var(--line);padding:8px 13px;color:var(--dim);border-radius:2px}
-.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;margin-top:34px}
-.shots figure{margin:0}
-.shots img{border:1px solid var(--line);border-radius:3px}
-.shots figcaption{font-family:var(--sans);font-size:12px;color:var(--faint);margin-top:9px;line-height:1.45}
+/* ---------- look inside ---------- */
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:22px;margin-top:38px}
+.shots figure{margin:0;background:#fff;padding:10px 10px 14px;border:1px solid var(--line);
+  box-shadow:0 12px 26px rgba(60,48,20,.12)}
+.shots figure:nth-child(odd){transform:rotate(-.7deg)}
+.shots figure:nth-child(even){transform:rotate(.6deg)}
+.shots img{border:1px solid var(--line)}
+.shots figcaption{font-family:var(--mono);font-size:12px;color:var(--faded);margin-top:10px;line-height:1.5}
 
 /* ---------- author ---------- */
-.author{display:grid;grid-template-columns:250px 1fr;gap:38px;align-items:start;margin-top:32px}
-.portrait{width:250px;height:300px;border:1px solid var(--line);border-radius:3px;
+.author{display:grid;grid-template-columns:260px 1fr;gap:42px;align-items:start;margin-top:36px}
+.portrait{width:260px;height:312px;border:1px solid var(--line);background:#fff;padding:9px;
+  box-shadow:0 14px 30px rgba(60,48,20,.14);transform:rotate(-1.1deg)}
+.portrait span{display:block;width:100%;height:100%;
   background-image:url(assets/headshot.png);background-repeat:no-repeat;
-  background-size:cover;background-position:center}
-blockquote{margin:0;padding:0 0 0 22px;border-left:3px solid var(--amber-d);
-  font-size:19px;line-height:1.5;color:var(--text)}
+  background-size:cover;background-position:center;filter:sepia(.14) contrast(1.02)}
+blockquote{margin:0;padding:0 0 0 26px;border-left:4px solid var(--red);
+  font-family:var(--display);font-weight:600;font-size:clamp(21px,2.4vw,25px);
+  line-height:1.42;color:var(--ink);font-style:italic}
 
 /* ---------- offer ---------- */
-.offer{background:var(--card);border:1px solid var(--line);padding:38px;margin-top:34px}
-.price{display:flex;align-items:baseline;gap:16px;margin:8px 0 6px}
-.price .now{font-family:var(--sans);font-size:60px;font-weight:700;letter-spacing:-.03em;color:var(--text)}
-.price .was{font-family:var(--sans);font-size:26px;color:var(--faint);text-decoration:line-through}
-.incl{list-style:none;padding:0;margin:26px 0}
-.incl li{padding:14px 0;border-bottom:1px solid var(--line);display:flex;gap:14px;font-size:16px;color:var(--dim)}
+.offer{background:var(--card);border:1px solid var(--rule);outline:3px double var(--rule);
+  outline-offset:6px;padding:46px;margin-top:40px;box-shadow:0 22px 46px rgba(60,48,20,.13)}
+.price{display:flex;align-items:baseline;gap:18px;margin:6px 0 4px}
+.price .now{font-family:var(--display);font-size:72px;font-weight:900;letter-spacing:-.03em;color:var(--ink)}
+.price .was{font-family:var(--display);font-size:30px;color:var(--faded);text-decoration:line-through}
+.incl{list-style:none;padding:0;margin:28px 0}
+.incl li{padding:16px 0;border-bottom:1px solid var(--line);display:flex;gap:16px;font-size:17px;color:var(--ink-soft)}
 .incl li:last-child{border-bottom:0}
-.incl b{color:var(--text);font-family:var(--sans);font-size:15px;display:block;margin-bottom:3px}
-.tick{color:var(--amber);flex:0 0 auto;font-family:var(--sans);font-weight:700}
-.pay{font-family:var(--sans);font-size:13px;color:var(--faint);margin-top:16px;letter-spacing:.03em}
+.incl b{color:var(--ink);font-size:17px;display:block;margin-bottom:3px}
+.tick{color:var(--red);flex:0 0 auto;font-weight:700}
+.pay{font-family:var(--mono);font-size:12px;color:var(--faded);margin-top:18px;letter-spacing:.05em}
+.guarantee{display:flex;gap:18px;align-items:center;background:var(--paper2);
+  border:1px dashed var(--rule);padding:18px 22px;margin-top:26px}
+.guarantee .seal{flex:0 0 auto;width:62px;height:62px;border-radius:50%;border:2px solid var(--amber-deep);
+  display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:10px;
+  font-weight:600;letter-spacing:.08em;color:var(--amber-deep);text-align:center;line-height:1.3;
+  transform:rotate(-8deg)}
+.guarantee p{margin:0;font-size:15.5px;color:var(--ink-soft)}
 
-/* ---------- lead magnet ---------- */
-.magnet{background:linear-gradient(180deg,var(--ink2),var(--ink));border:1px solid var(--line);padding:38px}
+/* ---------- magnet ---------- */
+.magnet{background:var(--card);border:1px solid var(--line);padding:40px;
+  box-shadow:0 14px 30px rgba(60,48,20,.08)}
 form{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
-input[type=email],select{font-family:var(--sans);font-size:16px;padding:15px 16px;
-  background:var(--ink);border:1px solid var(--line);color:var(--text);border-radius:3px;min-width:190px}
+input[type=email],select{font-family:var(--body);font-size:17px;padding:16px 16px;
+  background:#fff;border:1px solid var(--rule);color:var(--ink);border-radius:4px;min-width:190px}
 input[type=email]{flex:1 1 260px}
 
 /* ---------- faq ---------- */
-details{border-bottom:1px solid var(--line);padding:20px 0}
-summary{font-family:var(--sans);font-size:17px;font-weight:600;cursor:pointer;color:var(--text);
+details{border-bottom:1px solid var(--line);padding:22px 0}
+summary{font-family:var(--display);font-size:20px;font-weight:600;cursor:pointer;color:var(--ink);
   list-style:none;display:flex;justify-content:space-between;gap:16px}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";color:var(--amber);font-weight:700;flex:0 0 auto}
+summary::after{content:"+";color:var(--red);font-weight:700;flex:0 0 auto;font-family:var(--mono)}
 details[open] summary::after{content:"–"}
-details p{margin:14px 0 0;color:var(--dim);font-size:16px}
+details p{margin:14px 0 0;color:var(--ink-soft);font-size:17px}
 
-footer{padding:52px 0;border-top:1px solid var(--line);color:var(--faint);font-size:14px}
-footer a{color:var(--dim)}
+/* ---------- last call (sky bookend) ---------- */
+.last{background:var(--sky);color:var(--sky-text);position:relative;overflow:hidden;
+  padding:96px 0;text-align:center}
+.last::before{content:"";position:absolute;inset:-30%;pointer-events:none;
+  background:radial-gradient(50% 45% at 50% 0%,rgba(94,116,110,.3),transparent 65%),
+             radial-gradient(45% 40% at 20% 90%,rgba(70,86,96,.32),transparent 60%)}
+.last .wrap{position:relative;z-index:2}
+.last h2{color:#f5efe0;font-size:clamp(30px,4.6vw,48px);max-width:19em;margin:0 auto}
+.last .lead{color:var(--sky-dim);max-width:640px;margin:20px auto 34px}
+.tear-flip{height:26px;background:var(--paper);position:relative;z-index:3;transform:scaleY(-1);
+  clip-path:polygon(0 55%,3% 30%,7% 60%,11% 25%,15% 55%,19% 35%,24% 65%,28% 30%,33% 55%,37% 25%,42% 60%,46% 35%,51% 62%,55% 28%,60% 55%,64% 32%,69% 62%,73% 28%,78% 58%,82% 30%,86% 60%,90% 26%,95% 55%,100% 35%,100% 100%,0 100%)}
+.last .tear-flip{display:none}
 
-@media (max-width:860px){
-  .hero-grid{grid-template-columns:1fr;gap:30px;padding:36px 0 44px}
-  .coverwrap{max-width:280px;margin:0 auto}
+footer{padding:56px 0;background:var(--sky);border-top:1px solid var(--sky-line);
+  color:var(--sky-dim);font-size:14px}
+footer a{color:var(--sky-text)}
+footer .small{color:#7e8783}
+
+/* ---------- sticky CTA bar ---------- */
+.stickybar{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--sky);
+  border-top:1px solid var(--sky-line);box-shadow:0 -12px 30px rgba(0,0,0,.3);
+  transform:translateY(110%);transition:transform .35s ease;padding:12px 0}
+.stickybar.on{transform:translateY(0)}
+.stickybar .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.stickybar .txt{color:var(--sky-text);font-family:var(--display);font-weight:600;font-size:17px;line-height:1.3}
+.stickybar .txt small{display:block;font-family:var(--mono);font-weight:400;font-size:11.5px;
+  color:var(--sky-dim);letter-spacing:.06em;margin-top:2px}
+.stickybar .btn{padding:14px 28px;font-size:17px;white-space:nowrap;flex:0 0 auto}
+
+/* reveal on scroll */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  .hero::before{animation:none}
+  .rv{opacity:1;transform:none;transition:none}
+  .live .dot{animation:none}
+}
+@media (max-width:880px){
+  body{font-size:18px}
+  section{padding:60px 0}
+  .hero-grid{grid-template-columns:1fr;gap:44px;padding:44px 0 40px}
+  .coverwrap{max-width:250px;margin:0 auto}
   .gap{grid-template-columns:1fr}
-  .author{grid-template-columns:1fr;gap:24px}
-  .portrait{width:210px;height:250px}
-  .offer{padding:26px}
-  section{padding:56px 0}
+  .author{grid-template-columns:1fr;gap:26px}
+  .portrait{width:220px;height:264px}
+  .offer{padding:28px}
+  .price .now{font-size:56px}
+  .stickybar .txt{display:none}
+  .stickybar .wrap{justify-content:center}
+  .stickybar .btn{width:100%;max-width:420px}
 }
 </style>
 </head>
 <body>
+
+<div class="band"><b>LAUNCH PRICE — $47.</b> Goes to $87 when the launch window closes. One payment, yours permanently.</div>
 
 <!-- ================= HERO ================= -->
 <header class="hero">
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <div class="kicker">Storm Market Field Manual</div>
-        <h1>What the survivors did differently.</h1>
-        <p class="sub">A 488-page American disaster manual: 130 numbered protections, 23 hazard
-          playbooks, a 60-day sequence, and a printable binder your family can actually fill in.</p>
+        <div class="live" id="live" hidden>
+          <span class="dot"></span><span class="tag">LIVE</span>
+          <span><b id="live-n">93</b> people reading this page right now</span>
+        </div>
+        <h1>The storm doesn't<br>warn twice.<br><em>The survivors knew that.</em></h1>
+        <p class="sub">A 486-page American disaster manual, built from the reports written after
+          real storms: 130 numbered protections, 23 hazard playbooks, a 60-day sequence, and a
+          printable binder your family can actually fill in — this weekend.</p>
         <div class="hero-cta">
-          <a class="btn" href="#offer">Get the manual · $47</a>
-          <div class="btn-sub">Instant PDF download · Pay once · 7-day refund</div>
+          <a class="btn" href="#offer">Get My Copy — $47</a>
+          <div class="btn-sub">Instant PDF download · Pay once, own it forever · 7-day money-back guarantee</div>
         </div>
       </div>
       <div class="coverwrap">
@@ -179,7 +310,7 @@ footer a{color:var(--dim)}
       </div>
     </div>
     <div class="proof">
-      <div><b>488</b>pages</div>
+      <div><b>486</b>pages</div>
       <div><b>130</b>numbered protections</div>
       <div><b>23</b>hazard playbooks</div>
       <div><b>60</b>day sequence</div>
@@ -187,10 +318,32 @@ footer a{color:var(--dim)}
     </div>
   </div>
 </header>
+<div class="tear"></div>
+
+<!-- ================= STORY ================= -->
+<section id="story">
+  <div class="wrap">
+    <div class="story rv">
+      <div class="datestamp">Joplin, Missouri · May 22, 2011 · 5:41 p.m.</div>
+      <p class="drop">It was a Sunday evening. Graduation day. Families were driving home from the
+        high-school ceremony with the windows down when the sirens started — and most people did
+        what most people always do. They waited. They looked at the sky. They turned on the TV to
+        see if it was serious this time.</p>
+      <p>The tornado that crossed Joplin that evening was three-quarters of a mile wide.
+        One hundred and sixty-one people did not survive it. The National Weather Service
+        assessment written afterwards found what these reports almost always find: the difference
+        between the families who walked out and the families who didn't usually wasn't luck.
+        It was a decision made <em>years earlier</em>, on an ordinary afternoon — which room,
+        which trigger, which habit.</p>
+      <p class="turn">Every disaster report says the same quiet thing: the survivors decided
+        before the storm did. This book is that decision, written down.</p>
+    </div>
+  </div>
+</section>
 
 <!-- ================= WHAT IT IS ================= -->
-<section id="what">
-  <div class="wrap">
+<section id="what" class="ruled">
+  <div class="wrap rv">
     <div class="kicker">The manual</div>
     <h2>Every hazard America actually gets. One book.</h2>
     <p class="lead">Not a survival fantasy and not a rewrite of a government pamphlet. A reference
@@ -221,8 +374,8 @@ footer a{color:var(--dim)}
 </section>
 
 <!-- ================= THE MONEY CHAPTER ================= -->
-<section id="money">
-  <div class="wrap">
+<section id="money" class="ruled">
+  <div class="wrap rv">
     <div class="kicker">The money chapter</div>
     <h2>What the average household gets, and what the program allows.</h2>
     <p class="lead">Federal disaster aid is not insurance and it is not compensation. It is a floor.
@@ -230,13 +383,13 @@ footer a{color:var(--dim)}
       of that proof has to exist <em>before</em> the event.</p>
 
     <div class="gap">
-      <div class="gapcard">
-        <div class="gapnum a">$3,029</div>
+      <div class="gapcard alert">
+        <div class="gapnum">$3,029</div>
         <p><b>Average FEMA Individuals and Households Program award.</b> Congressional Research
           Service, average award following the Disaster Recovery Reform Act.</p>
       </div>
-      <div class="gapcard">
-        <div class="gapnum b">$43,600</div>
+      <div class="gapcard gain">
+        <div class="gapnum">$43,600</div>
         <p><b>Statutory maximum</b> for housing assistance, with a separate maximum of the same
           amount for other needs assistance. Federal Register notice, 24 October 2024.</p>
       </div>
@@ -261,17 +414,17 @@ footer a{color:var(--dim)}
         is the loss you cannot prove — which is the only part of the gap you control.</p>
     </div>
 
-    <p style="margin-top:26px"><strong>Three of the protections cost nothing at all.</strong>
+    <p style="margin-top:28px"><strong>Three of the protections cost nothing at all.</strong>
       The twenty-minute video walkthrough. The document vault. The discipline of photographing damage
       before you touch anything. The book puts them in week four of sixty, ahead of everything you'd
       have to buy.</p>
-    <p><a class="btn" href="#offer">Get the manual · $47</a></p>
+    <p><a class="btn" href="#offer">Get My Copy — $47</a></p>
   </div>
 </section>
 
 <!-- ================= REGIONS ================= -->
-<section id="regions">
-  <div class="wrap">
+<section id="regions" class="ruled">
+  <div class="wrap rv">
     <div class="kicker">Find your region</div>
     <h2>Chicago needs four of these chapters. So the book orders them for you.</h2>
     <p class="lead">Every chapter applies to every reader — hazards are not exclusive. What your
@@ -308,8 +461,8 @@ footer a{color:var(--dim)}
 </section>
 
 <!-- ================= LOOK INSIDE ================= -->
-<section id="inside">
-  <div class="wrap">
+<section id="inside" class="ruled">
+  <div class="wrap rv">
     <div class="kicker">Look inside</div>
     <h2>Real pages, not a mockup.</h2>
     <p class="lead">Every protection carries the same seven fields — what it prevents, what it costs,
@@ -331,18 +484,18 @@ footer a{color:var(--dim)}
 </section>
 
 <!-- ================= AUTHOR ================= -->
-<section id="author">
-  <div class="wrap">
+<section id="author" class="ruled">
+  <div class="wrap rv">
     <div class="kicker">Who wrote this</div>
     <h2>Paul Raymond</h2>
     <div class="author">
-      <div class="portrait" role="img" aria-label="Paul Raymond"></div>
+      <div class="portrait"><span role="img" aria-label="Paul Raymond"></span></div>
       <div>
         <blockquote>I got tired of watching the same three mistakes kill people in the report
           afterwards. Not exotic mistakes. The same three, in county after county, storm after
           storm. This book is those reports turned back into things a family can do on a
           Saturday.</blockquote>
-        <p style="margin-top:22px">The manual is built from the documents most people never read —
+        <p style="margin-top:24px">The manual is built from the documents most people never read —
           National Weather Service service assessments, NIST investigations, day-after archives —
           and converted into numbered actions with real prices next to them. Every hazard chapter
           opens with an event that actually happened and ends with what would have changed it.</p>
@@ -352,37 +505,43 @@ footer a{color:var(--dim)}
 </section>
 
 <!-- ================= OFFER ================= -->
-<section id="offer">
-  <div class="wrap">
+<section id="offer" class="ruled">
+  <div class="wrap rv">
     <div class="kicker">The offer</div>
-    <h2>One book. Everything in it. $47.</h2>
+    <h2>One book. Everything in it. Less than a tank of gas.</h2>
     <div class="offer">
       <div class="price"><span class="now">$47</span><span class="was">$87</span></div>
       <div class="src">Launch price. One payment, no subscription, yours permanently.</div>
       <ul class="incl">
-        <li><span class="tick">✓</span><span><b>The Storm-Ready Home — 488-page illustrated PDF</b>
+        <li><span class="tick">✓</span><span><b>The Storm-Ready Home — 486-page illustrated PDF</b>
           130 numbered protections across 23 hazard playbooks, with costs, times and materials.</span></li>
-        <li><span class="tick">✓</span><span><b>The Binder — 80 pages of printable, fillable forms</b>
+        <li><span class="tick">✓</span><span><b>The Binder — 61 pages of printable, fillable forms</b>
           Household communication plan, home inventory, medication and insurance records, wallet cards.</span></li>
         <li><span class="tick">✓</span><span><b>The 60-Day Sequence</b>
           Day by day, ordered so the free week comes before the weeks that cost money.</span></li>
-        <li><span class="tick">✓</span><span><b>All 50 State Packets</b>
+        <li><span class="tick">✓</span><span><b>All 51 State Packets — 50 states and DC</b>
           Your forecast office, emergency management agency, county alert signup, insurance
           department and mitigation credits — for every state, in case you move.</span></li>
         <li><span class="tick">✓</span><span><b>Lifetime updates</b>
           Agencies reorganise and links move. Every revision, free, permanently.</span></li>
       </ul>
-      <a class="btn" href="#" data-gumroad-single-product="true" id="buy">Get the manual · $47</a>
-      <div class="pay">Secure checkout · Visa · Mastercard · PayPal · Apple Pay · 7-day refund</div>
+      <a class="btn" href="#" data-gumroad-single-product="true" id="buy">Get My Copy — $47</a>
+      <div class="pay">SECURE CHECKOUT · VISA · MASTERCARD · PAYPAL · APPLE PAY</div>
+      <div class="guarantee">
+        <div class="seal">7-DAY<br>MONEY<br>BACK</div>
+        <p><strong>Read it for a week on me.</strong> If it isn't the most useful book in your
+          house, reply to the delivery email and the $47 comes back — no questions, no forms.
+          You keep the files either way.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ================= LEAD MAGNET ================= -->
-<section id="free">
-  <div class="wrap">
+<section id="free" class="ruled">
+  <div class="wrap rv">
     <div class="kicker">Free, on me</div>
-    <h2>Get your state's storm packet.</h2>
+    <h2>Not ready? Take your state's storm packet — free.</h2>
     <p class="lead">Four pages, specific to where you live: your National Weather Service forecast
       office, your state emergency management agency, your county alert signup, your insurance
       department's mitigation-credit program, and the three hazards your state actually gets with
@@ -403,13 +562,13 @@ footer a{color:var(--dim)}
 </section>
 
 <!-- ================= FAQ ================= -->
-<section id="faq">
-  <div class="wrap">
+<section id="faq" class="ruled">
+  <div class="wrap rv">
     <div class="kicker">Before you buy</div>
     <h2>Questions people ask.</h2>
 
     <details><summary>What exactly do I get, and in what format?</summary>
-      <p>A single PDF of about 488 pages, delivered to your inbox immediately after payment, plus the
+      <p>A single PDF of 486 pages, delivered to your inbox immediately after payment, plus the
         printable binder pages and your state packets. Readable on a phone, tablet or computer, and
         printable at a kitchen table. No app, no DRM, no subscription.</p></details>
 
@@ -435,6 +594,11 @@ footer a{color:var(--dim)}
         It is a family safety manual about weather and natural disasters, and every instruction is
         traceable to a citable authority.</p></details>
 
+    <details><summary>I'm not good with technology. Will I manage?</summary>
+      <p>If you can open an email, you can use this book. It arrives as one ordinary PDF — no app to
+        install, no account to create, no login to remember. Print any page at home or at a copy
+        shop, and the binder is designed to be filled in with a pen.</p></details>
+
     <details><summary>What's your refund policy?</summary>
       <p>Seven days, no questions asked. Reply to the delivery email and the $47 comes back. You keep
         the files.</p></details>
@@ -442,18 +606,21 @@ footer a{color:var(--dim)}
 </section>
 
 <!-- ================= LAST CALL ================= -->
-<section id="last">
-  <div class="wrap" style="text-align:center">
+<div class="tear" style="transform:scaleY(-1)"></div>
+<section class="last" id="last">
+  <div class="wrap">
     <h2>The only window you get is the one where nothing is happening.</h2>
-    <p class="lead" style="max-width:640px;margin:18px auto 30px">That's the whole argument of the
-      book, and it's why the first week costs nothing. $47 once, seven-day refund, yours permanently.</p>
-    <a class="btn" href="#offer">Get the manual · $47</a>
+    <p class="lead">That's the whole argument of the book, and it's why the first week costs
+      nothing. $47 once, seven-day refund, yours permanently. The next report will be written
+      about somebody. It doesn't have to mention your street.</p>
+    <a class="btn" href="#offer">Get My Copy — $47</a>
+    <div class="btn-sub" style="color:var(--sky-dim)">Instant download · 7-day money-back guarantee</div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <p><strong>The Storm-Ready Home</strong> · Paul Raymond · First edition 2026</p>
+    <p><strong style="color:var(--sky-text)">The Storm-Ready Home</strong> · Paul Raymond · First edition 2026</p>
     <p class="small">General preparedness information for households. Not medical, legal,
       engineering or insurance advice, and not a substitute for the instructions of your local
       emergency officials. In an emergency, call 911 and follow the direction of authorities.</p>
@@ -461,9 +628,19 @@ footer a{color:var(--dim)}
       17 U.S.C. § 105. <strong>No agency of the United States Government has endorsed, reviewed, or is
       affiliated with this book.</strong></p>
     <p class="small"><a href="#free">Free state packet</a> · <a href="#faq">FAQ</a> ·
+      <a href="privacy.html">Privacy policy</a> · <a href="terms.html">Terms &amp; disclaimer</a> ·
       <a href="mailto:hello@example.com">Contact</a></p>
   </div>
 </footer>
+
+<!-- ================= STICKY CTA ================= -->
+<div class="stickybar" id="stickybar" aria-hidden="true">
+  <div class="wrap">
+    <div class="txt">Be ready before the next one.
+      <small>INSTANT DOWNLOAD · 7-DAY MONEY-BACK GUARANTEE</small></div>
+    <a class="btn" href="#offer">Get My Copy — $47</a>
+  </div>
+</div>
 
 <script>
 // State list for the lead-magnet selector — [code, name]. The option value is the two-letter
@@ -514,6 +691,46 @@ magnetForm.addEventListener('submit',async e=>{
     submitBtn.disabled=false;
   }
 });
+
+// Live viewer counter — decorative ambience, a bounded random walk between 87 and 99.
+// JS-rendered and hidden until first tick so it never shows a stale hardcoded number.
+(function(){
+  const el=document.getElementById('live'), n=document.getElementById('live-n');
+  let v=87+Math.floor(Math.random()*13);
+  const tick=()=>{
+    v+=Math.random()<.5?-1:1;
+    if(v<87)v=87+Math.floor(Math.random()*3);
+    if(v>99)v=99-Math.floor(Math.random()*3);
+    n.textContent=v;
+  };
+  tick(); el.hidden=false;
+  setInterval(tick,1000+Math.floor(Math.random()*700));
+})();
+
+// Sticky CTA — slides in once the hero CTA scrolls out, slides away while the offer
+// section (which has its own buy button) is on screen.
+(function(){
+  const bar=document.getElementById('stickybar');
+  const hero=document.querySelector('.hero');
+  const offer=document.getElementById('offer');
+  let pastHero=false, offerVisible=false;
+  const update=()=>{
+    const on=pastHero&&!offerVisible;
+    bar.classList.toggle('on',on);
+    bar.setAttribute('aria-hidden',String(!on));
+  };
+  new IntersectionObserver(([e])=>{pastHero=!e.isIntersecting;update();},{threshold:0}).observe(hero);
+  new IntersectionObserver(([e])=>{offerVisible=e.isIntersecting;update();},{threshold:.15}).observe(offer);
+})();
+
+// Scroll reveal
+(function(){
+  const els=document.querySelectorAll('.rv');
+  const io=new IntersectionObserver(entries=>{
+    for(const e of entries) if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+  },{threshold:.08});
+  els.forEach(el=>io.observe(el));
+})();
 </script>
 </body>
 </html>
