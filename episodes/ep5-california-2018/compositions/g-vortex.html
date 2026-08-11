@@ -99,16 +99,18 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"s2",{autoAlpha:0,y:18},{autoAlpha:1,y:0,duration:0.4},16.0);
   embers.forEach((e,i)=>{ tl.to(e,{opacity:0.9,duration:0.3},16.2 + (i*0.12)%2);
     tl.to(e,{bottom:"+=560",opacity:0,duration:2.4,ease:"power1.in",repeat:6,repeatDelay:0.3},16.2+(i*0.15)); });
-  // the stretch → funnel grows from ground and spins continuously
+  // the stretch → funnel grows from ground; the SPIN is striation drift inside the cone,
+  // never a 2D rotation of the cone itself (pinwheel-tumble looked wrong — owner 5:31 note)
   tl.to(P+"funnel",{autoAlpha:1,duration:0.6},24.0);
   tl.fromTo(P+"funnel",{scaleY:0.1,scaleX:0.5},{scaleY:1,scaleX:1,duration:2.2,ease:"power3.out"},24.0);
-  tl.to(P+"funnel",{rotation:360,duration:5.5,ease:"none",repeat:1},24.0);
+  tl.to(P+"funnel",{backgroundPositionX:"-660px",duration:9.5,ease:"none"},24.0); // bands race around the column
+  tl.to(P+"funnel",{skewX:3,duration:1.3,ease:"sine.inOut",yoyo:true,repeat:7},24.0); // the column sways
   tl.fromTo(P+"s3",{autoAlpha:0,scale:1.3},{autoAlpha:1,scale:1,duration:0.5,ease:"power4.in"},24.4);
   tl.fromTo(P+"serif",{autoAlpha:0},{autoAlpha:1,duration:0.7},29.0);
-  // readout slams on "tornado strength"
-  tl.fromTo(P+"readout",{autoAlpha:0,x:40},{autoAlpha:1,x:0,duration:0.6},33.5);
-  const mph={v:60}; tl.to(mph,{v:143,duration:1.4,ease:"power3.out",onUpdate:function(){
-    const el=document.getElementById("g-vortex-mph"); if(el) el.textContent=Math.round(mph.v);}},33.7);
+  // 143-mph/EF3 stat belongs to the p-pop-ef3 card at 352s — no duplicate readout here.
+  // last beat lands 29.7; exit clears 34.7 before the 35.12 cut
+  tl.to([P+"hdr",P+"serif",P+"coollab",P+"hotlab",P+"coolbar",P+"hotbar",P+"curl",
+         P+"plume",P+"funnel",P+"s1",P+"s2",P+"s3",".ember"],{autoAlpha:0,duration:0.9},33.8);
   window.__timelines["g-vortex"] = tl;
 })();
 </script>
