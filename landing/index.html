@@ -163,7 +163,8 @@ td.n{text-align:right;font-family:var(--mono);font-weight:600;color:var(--ink);
 .note p{margin:0;font-size:16px;color:var(--ink-soft)}
 
 /* ---------- regions ---------- */
-.regions{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-top:38px}
+/* 178px min so all five regions fit one row inside the 1060 wrap (5×~195 + 4×16 gaps). */
+.regions{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:16px;margin-top:38px}
 .region{background:var(--card);border:1px solid var(--line);padding:24px;
   box-shadow:0 10px 22px rgba(60,48,20,.06)}
 .region h4{font-size:19px;margin-bottom:8px}
