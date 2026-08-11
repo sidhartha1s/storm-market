@@ -91,6 +91,10 @@ report("element ids unique", sorted(n for n, c in ids.items() if c > 1))
 fam_uses = {}
 for w in t1:
     fam = re.sub(r'-[a-f]\.mp4$', '', Path(w["name"]).name).replace(".mp4", "")
+    # victim portraits deliberately RETURN within their own vignette (namecard -> face ->
+    # quote); that is narrative continuation, not a b-roll repeat — the owner's complaint
+    if fam.startswith("portrait-"):
+        continue
     fam_uses.setdefault(fam, []).append((w["at"], w["at"] + w["dur"]))
 fam_bad = []
 for fam, fwins in fam_uses.items():
