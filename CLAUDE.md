@@ -16,8 +16,8 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
 - **SHOW, don't make the viewer "look at stuff."** Put the thing in the middle or across the
   whole RHS the way ep2 does. A stat asserted as text over b-roll is a miss.
 - **Any spatial claim gets a MAP.** "400 miles", "seven hours", "three states" — a map, not
-  cloud footage. ep3's `g-lone` is the reference; it also shows the pattern for fitting a
-  route onto a real map plate (anchor on measurable landmarks, fit on the mileage column).
+  cloud footage. Reference: `references/editing-patterns/ep3-map-route-fit.html` (fitting a
+  route onto a real map plate: anchor on measurable landmarks, fit on the mileage column).
 - **No ambiguous labels.** "what they knew" and an unexplained cone were both flagged. Name
   the thing on screen: "WHAT THEY EXPECTED · ROPE FUNNEL" vs "WHAT ARRIVED · A WALL OF DEBRIS".
 - **The picture must not contradict the voice.** ep3 narrated March 2025 over 1925 wreckage
