@@ -59,10 +59,9 @@ window.__timelines = window.__timelines || {};
     root.appendChild(e); embers.push(e);}
   const tl = gsap.timeline({ paused:true });
   const P="#g-pyrocb-";
-  /* beats vs A2-S2 words.json (retune at index): "column explode upward"@6 "four to eight in fifteen"@12
-     "cap of ice"@22 "pyrocumulonimbus"@30 ; radar beat belongs to A2-S9 (separate mount) */
-  tl.set([P+"col",P+"anvil",P+"h",P+"hlab",P+"time",P+"anvillab",P+"beams",
-          P+"r1",P+"r2",P+"r3",P+"rl1",P+"rl2",P+"rl3"],{autoAlpha:0},0);
+  /* beats vs A2-S2 words.json: "column explode upward"@6 "four to eight in fifteen"@12
+     "cap of ice"@18.1 "anvil"@19.2 "pyrocumulonimbus"@24.9 ; radar beat lives in g-pyrocb-radar (A2-S12) */
+  tl.set([P+"col",P+"anvil",P+"h",P+"hlab",P+"time",P+"anvillab",P+"name"],{autoAlpha:0},0);
   tl.set(P+"col",{scaleY:0.12},0);
   tl.fromTo(P+"hdr",{autoAlpha:0,y:-16},{autoAlpha:1,y:0,duration:0.6},0.4);
   tl.fromTo(".tick",{autoAlpha:0,x:-12},{autoAlpha:1,x:0,duration:0.4,stagger:0.35},1.6); // altitude scale builds in
