@@ -32,12 +32,16 @@ window.__timelines = window.__timelines || {};
 (function() {
   const tl = gsap.timeline({ paused: true });
   tl.set(["#g-title-main","#g-title-sub"], {autoAlpha:0}, 0);
-  tl.fromTo("#g-title-scrim", {autoAlpha:0}, {autoAlpha:1, duration:0.8}, 0);
-  tl.fromTo("#g-title-main", {autoAlpha:0, scale:1.08}, {autoAlpha:1, scale:1, duration:0.7, ease:"power2.out"}, 0.7);
-  tl.fromTo("#g-title-sub", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 2.0);
-  tl.to("#g-title-main", {scale:1.03, duration:2.3, ease:"none"}, 1.8); // slow push, never frozen
-  tl.to(".stack", {autoAlpha:0, duration:0.9}, 6.6);
-  tl.to("#g-title-scrim", {autoAlpha:0, duration:0.9}, 6.8); /* ends 7.7 — inside the 8.0s host window */
+  tl.fromTo("#g-title-scrim", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 0);
+  // the window opens ON the boom (riser peaks at 24.2) — the title SLAMS, it does not fade
+  tl.fromTo("#g-title-main", {autoAlpha:0, scale:1.45}, {autoAlpha:1, scale:1, duration:0.28, ease:"power4.out"}, 0.15);
+  tl.to("#g-title-main", {x:6, duration:0.05, yoyo:true, repeat:5, ease:"none"}, 0.43); // impact shake
+  tl.set("#g-title-main", {x:0}, 0.73);
+  tl.to("#g-title-rule", {width:760, duration:0.7, ease:"power2.out"}, 0.9);
+  tl.fromTo("#g-title-sub", {autoAlpha:0, y:10}, {autoAlpha:1, y:0, duration:0.6}, 1.5);
+  tl.to("#g-title-main", {scale:1.04, duration:4.4, ease:"none"}, 1.2); // slow push, never frozen
+  tl.to(".stack", {autoAlpha:0, duration:0.9}, 7.2);
+  tl.to("#g-title-scrim", {autoAlpha:0, duration:0.9}, 7.4); /* ends 8.3 — inside the 8.72s host window */
   window.__timelines["g-title"] = tl;
 })();
 </script>
