@@ -75,9 +75,9 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"hooksub",{autoAlpha:1,duration:0.6},23.5);
   tl.to(P+"hook",{scale:1.06,transformOrigin:"50% 55%",duration:0.9,ease:"sine.inOut",yoyo:true,repeat:8},20.5);
   tl.fromTo(P+"btn",{autoAlpha:0,y:12},{autoAlpha:1,y:0,duration:0.6},29.3);
-  // exit with land time before the 33.02 cut
+  // exit LANDS on the 33.02 cut — no dark-bg gap before the next shot
   tl.to([P+"hdr",P+"scope",P+"sweep",P+"site",P+"sitesub",P+"hooklab",P+"hooksub",P+"btn"],
-        {autoAlpha:0,duration:0.8},31.8);
+        {autoAlpha:0,duration:0.7},32.3);
   window.__timelines["g-pyrocb-radar"] = tl;
 })();
 </script>
