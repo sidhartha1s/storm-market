@@ -123,7 +123,7 @@
   <video id="vx-firenado-b1" src="media/scenes/firenado-b.mp4" style="filter: saturate(0.85) contrast(1.08)" data-start="19.6" data-duration="3.3" data-track-index="1" data-callback="second angle lands on the line — built a tornado out of flame" muted></video>
   <section class="clip blackout" id="bo-hook" data-start="22.9" data-duration="1.0" data-track-index="1"></section>
   <audio id="ins-coldopen911" src="media/dozer911-coldopen.wav" data-start="0.3" data-duration="3.86" data-volume="1"></audio>
-  <audio id="sx-riser01" src="media/sfx-riser.wav" data-bed data-start="14.1" data-duration="8.0" data-volume="0.45"></audio>
+  <audio id="sx-riser01" src="media/sfx-riser-drums.wav" data-bed data-start="14.1" data-duration="8.0" data-volume="0.5"></audio>
 
   <!-- ============ SFX LAYER (owner 2026-08-12: base tone + peak swells ~45-60s; synth/library only) ============ -->
   <!-- beds: brown-noise rumble ~21dB under narration; title card 23.92-32.92 and victim segment 1487.87-1594.27 stay silent -->
@@ -136,54 +136,66 @@
   <audio id="sx-bed-act6" src="media/sfx-rumble-bed-long.mp3" data-bed data-start="1585.25" data-duration="329.38" data-volume="0.8"></audio>
   <!-- v4 MUSIC layer (synthesized score beds, claim-free by construction; ~20dB under narration;
        silent through the victim vignettes 661.9-790 and 1487.9-1594.3 — names get silence) -->
-  <audio id="sx-mus-act1" src="media/score-act1.mp3" data-bed data-start="23.9" data-duration="169.74" data-volume="0.35"></audio>
-  <audio id="sx-mus-act2" src="media/score-act2.mp3" data-bed data-start="196.64" data-duration="453.2" data-volume="0.35"></audio>
-  <audio id="sx-mus-act3" src="media/score-act3.mp3" data-bed data-start="780.98" data-duration="112.54" data-volume="0.35"></audio>
-  <audio id="sx-mus-act4" src="media/score-act4.mp3" data-bed data-start="896.52" data-duration="316.88" data-volume="0.35"></audio>
-  <audio id="sx-mus-act5" src="media/score-act5.mp3" data-bed data-start="1213.4" data-duration="265.45" data-volume="0.35"></audio>
-  <audio id="sx-mus-act6" src="media/score-act6.mp3" data-bed data-start="1585.25" data-duration="329.38" data-volume="0.35"></audio>
+  <audio id="sx-mus-act1" src="media/bed-drone-act1.mp3" data-bed data-start="23.9" data-duration="169.74" data-volume="0.12"></audio>
+  <audio id="sx-mus-act2" src="media/bed-drone-act2.mp3" data-bed data-start="196.64" data-duration="453.2" data-volume="0.12"></audio>
+  <audio id="sx-mus-act3" src="media/score-act3-somber.mp3" data-bed data-start="780.98" data-duration="112.54" data-volume="0.7"></audio>
+  <audio id="sx-mus-act4" src="media/bed-drone-act4.mp3" data-bed data-start="896.52" data-duration="316.88" data-volume="0.12"></audio>
+  <audio id="sx-mus-act5" src="media/score-act5-tension.mp3" data-bed data-start="1213.4" data-duration="265.45" data-volume="0.08"></audio>
+  <audio id="sx-mus-act6" src="media/score-act6-ext.mp3" data-bed data-start="1585.25" data-duration="329.38" data-volume="0.1"></audio>
+  <!-- v5 diegetic ambience (owner assets 2026-08-13): crackle under active-burn stretches, wind at
+       the windstorm beats (narration says "wind" 1012.9/1026.8/gusts 1049.8, "winds" 258.6/278.7),
+       sirens where narration says sirens/alert (1224.9-1236.7) and at the act-2 evacuation (632.7).
+       Victim-silence windows 652.88-780.98 / 1478.88-1585.25 kept clear of new mounts. -->
+  <audio id="sx-crk-hook" src="media/sfx-crackle-loop.mp3" data-bed data-start="0" data-duration="22.9" data-volume="0.55"></audio>
+  <audio id="sx-crk-a1" src="media/sfx-crackle-loop.mp3" data-bed data-start="96.0" data-duration="94.0" data-volume="0.5"></audio>
+  <audio id="sx-crk-a2" src="media/sfx-crackle-loop.mp3" data-bed data-start="340.0" data-duration="90.0" data-volume="0.5"></audio>
+  <audio id="sx-crk-a4" src="media/sfx-crackle-loop.mp3" data-bed data-start="940.0" data-duration="90.0" data-volume="0.5"></audio>
+  <audio id="sx-crk-a5" src="media/sfx-crackle-loop.mp3" data-bed data-start="1230.0" data-duration="80.0" data-volume="0.5"></audio>
+  <audio id="sx-wind-a2" src="media/sfx-wind-loop.wav" data-bed data-start="254.0" data-duration="35.0" data-volume="0.25"></audio>
+  <audio id="sx-wind-a4" src="media/sfx-wind-loop.wav" data-bed data-start="1008.0" data-duration="40.0" data-volume="0.28"></audio>
+  <audio id="sx-siren-skyway" src="media/sfx-siren-cd.wav" data-bed data-start="1224.0" data-duration="45.0" data-volume="0.16"></audio>
+  <audio id="sx-siren-evac2" src="media/sfx-siren-truck.wav" data-bed data-start="631.0" data-duration="10.03" data-volume="0.14"></audio>
   <!-- swells at narrative peaks -->
-  <audio id="sx-sw02" src="media/sfx-swell.wav" data-bed data-start="52.78" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw03" src="media/sfx-swell.wav" data-bed data-start="94.48" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw04" src="media/sfx-swell.wav" data-bed data-start="136.48" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw05" src="media/sfx-swell.wav" data-bed data-start="180.68" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw06" src="media/sfx-swell.wav" data-bed data-start="222.18" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw07" src="media/sfx-swell.wav" data-bed data-start="255.18" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw08" src="media/sfx-swell.wav" data-bed data-start="291.98" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw09" src="media/sfx-swell.wav" data-bed data-start="327.08" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw10" src="media/sfx-swell.wav" data-bed data-start="389.38" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw11" src="media/sfx-swell.wav" data-bed data-start="432.48" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw12" src="media/sfx-swell.wav" data-bed data-start="462.48" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw13" src="media/sfx-swell.wav" data-bed data-start="499.28" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw14" src="media/sfx-swell.wav" data-bed data-start="533.78" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw15" src="media/sfx-swell.wav" data-bed data-start="572.38" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw16" src="media/sfx-swell.wav" data-bed data-start="622.48" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw17" src="media/sfx-swell.wav" data-bed data-start="737.28" data-duration="5" data-volume="0.5"></audio>
-  <audio id="sx-sw18" src="media/sfx-swell.wav" data-bed data-start="837.98" data-duration="5" data-volume="0.5"></audio>
-  <audio id="sx-sw19" src="media/sfx-swell.wav" data-bed data-start="938.38" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw20" src="media/sfx-swell.wav" data-bed data-start="986.98" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw21" src="media/sfx-swell.wav" data-bed data-start="1028.58" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw22" src="media/sfx-swell.wav" data-bed data-start="1099.28" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw23" src="media/sfx-swell.wav" data-bed data-start="1128.68" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw24" src="media/sfx-swell.wav" data-bed data-start="1185.88" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw25" src="media/sfx-swell.wav" data-bed data-start="1249.48" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw26" src="media/sfx-swell.wav" data-bed data-start="1276.58" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw27" src="media/sfx-swell.wav" data-bed data-start="1388.18" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw28" src="media/sfx-swell.wav" data-bed data-start="1434.48" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw29" src="media/sfx-swell.wav" data-bed data-start="1643.38" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw30" src="media/sfx-swell.wav" data-bed data-start="1685.18" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw31" src="media/sfx-swell.wav" data-bed data-start="1763.88" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw32" src="media/sfx-swell.wav" data-bed data-start="1797.58" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw33" src="media/sfx-swell.wav" data-bed data-start="1862.01" data-duration="5" data-volume="0.7"></audio>
-  <audio id="sx-sw34" src="media/sfx-swell.wav" data-bed data-start="1921.11" data-duration="5" data-volume="0.5"></audio>
+  <audio id="sx-sw02" src="media/sfx-swell-drums.wav" data-bed data-start="52.78" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw03" src="media/sfx-swell-drums.wav" data-bed data-start="94.48" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw04" src="media/sfx-swell-drums.wav" data-bed data-start="136.48" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw05" src="media/sfx-swell-drums.wav" data-bed data-start="180.68" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw06" src="media/sfx-swell-drums.wav" data-bed data-start="222.18" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw07" src="media/sfx-swell-drums.wav" data-bed data-start="255.18" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw08" src="media/sfx-swell-drums.wav" data-bed data-start="291.98" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw09" src="media/sfx-swell-drums.wav" data-bed data-start="327.08" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw10" src="media/sfx-swell-drums.wav" data-bed data-start="389.38" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw11" src="media/sfx-swell-drums.wav" data-bed data-start="432.48" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw12" src="media/sfx-swell-drums.wav" data-bed data-start="462.48" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw13" src="media/sfx-swell-drums.wav" data-bed data-start="499.28" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw14" src="media/sfx-swell-drums.wav" data-bed data-start="533.78" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw15" src="media/sfx-swell-drums.wav" data-bed data-start="572.38" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw16" src="media/sfx-swell-drums.wav" data-bed data-start="622.48" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw18" src="media/sfx-swell-drums.wav" data-bed data-start="837.98" data-duration="5" data-volume="0.5"></audio>
+  <audio id="sx-sw19" src="media/sfx-swell-drums.wav" data-bed data-start="938.38" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw20" src="media/sfx-swell-drums.wav" data-bed data-start="986.98" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw21" src="media/sfx-swell-drums.wav" data-bed data-start="1028.58" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw22" src="media/sfx-swell-drums.wav" data-bed data-start="1099.28" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw23" src="media/sfx-swell-drums.wav" data-bed data-start="1128.68" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw24" src="media/sfx-swell-drums.wav" data-bed data-start="1185.88" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw25" src="media/sfx-swell-drums.wav" data-bed data-start="1249.48" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw26" src="media/sfx-swell-drums.wav" data-bed data-start="1276.58" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw27" src="media/sfx-swell-drums.wav" data-bed data-start="1388.18" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw28" src="media/sfx-swell-drums.wav" data-bed data-start="1434.48" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw29" src="media/sfx-swell-drums.wav" data-bed data-start="1643.38" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw30" src="media/sfx-swell-drums.wav" data-bed data-start="1685.18" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw31" src="media/sfx-swell-drums.wav" data-bed data-start="1763.88" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw32" src="media/sfx-swell-drums.wav" data-bed data-start="1797.58" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw33" src="media/sfx-swell-drums.wav" data-bed data-start="1862.01" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw34" src="media/sfx-swell-drums.wav" data-bed data-start="1921.11" data-duration="5" data-volume="0.5"></audio>
   <!-- sub-booms at act turns / hard reveals -->
-  <audio id="sx-bm01" src="media/sfx-boom.wav" data-bed data-start="0.5" data-duration="3" data-volume="0.8"></audio>
-  <audio id="sx-bm02" src="media/sfx-boom.wav" data-bed data-start="342.98" data-duration="3" data-volume="0.8"></audio>
-  <audio id="sx-bm03" src="media/sfx-boom.wav" data-bed data-start="652.84" data-duration="3" data-volume="0.8"></audio>
-  <audio id="sx-bm04" src="media/sfx-boom.wav" data-bed data-start="896.52" data-duration="3" data-volume="0.8"></audio>
-  <audio id="sx-bm05" src="media/sfx-boom.wav" data-bed data-start="1328.63" data-duration="3" data-volume="0.8"></audio>
-  <audio id="sx-bm06" src="media/sfx-boom.wav" data-bed data-start="1585.25" data-duration="3" data-volume="0.8"></audio>
-  <audio id="sx-bm07" src="media/sfx-boom.wav" data-bed data-start="1900.86" data-duration="3" data-volume="0.8"></audio>
+  <audio id="sx-bm01" src="media/sfx-hit-kick.wav" data-bed data-start="0.5" data-duration="2.2" data-volume="0.6"></audio>
+  <audio id="sx-bm02" src="media/sfx-hit-kick.wav" data-bed data-start="342.98" data-duration="2.2" data-volume="0.6"></audio>
+  <audio id="sx-bm03" src="media/sfx-hit-kick.wav" data-bed data-start="652.84" data-duration="2.2" data-volume="0.6"></audio>
+  <audio id="sx-bm04" src="media/sfx-hit-kick.wav" data-bed data-start="896.52" data-duration="2.2" data-volume="0.6"></audio>
+  <audio id="sx-bm05" src="media/sfx-hit-kick.wav" data-bed data-start="1328.63" data-duration="2.2" data-volume="0.6"></audio>
+  <audio id="sx-bm06" src="media/sfx-hit-kick.wav" data-bed data-start="1585.25" data-duration="2.2" data-volume="0.6"></audio>
+  <audio id="sx-bm07" src="media/sfx-hit-kick.wav" data-bed data-start="1900.86" data-duration="2.2" data-volume="0.6"></audio>
 
   <!-- ===== ACT 1 — AN ORDINARY FIRE 32.92–202.66 ===== -->
   <!-- a1-s1 flat tire / dry hills -->
