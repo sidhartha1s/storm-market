@@ -711,8 +711,8 @@ window.__timelines = window.__timelines || {};
 
   /* insert audio ducking is native: narration windows and insert windows never overlap (timeline-is-master) */
 
-  /* montage cut punch on the cold-open reveal */
-  [6.0, 10.2, 18.2].forEach(function(t) {
+  /* montage cut punch on the cold-open reveal (v4 hook cut points) */
+  [6.0, 9.9, 13.9, 19.6, 21.9].forEach(function(t) {
     tl.fromTo("#vignette", { opacity: 1 }, { opacity: 0.62, duration: 0.12, yoyo: true, repeat: 1 }, t - 0.06);
   });
 
