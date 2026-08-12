@@ -63,12 +63,14 @@ window.__timelines = window.__timelines || {};
 (function() {
   const grid = document.getElementById("g-hook-grid");
   const cells=[];
-  // 84 cells: 71 home (amber), 10 fleeing (red), 3 other (blue). 15 of the home cells get a mobility ring.
-  const mobility = new Set([2,7,11,15,19,23,28,31,36,40,44,49,53,58,63]);
+  // 84 cells, color-coded by category (owner v4): 58 inside amber, 13 front-door orange,
+  // 10 fleeing red, 3 other gray. The 15 who couldn't leave without help cross-cut the home
+  // groups — they carry a TEAL ring (a color, not the old white outline).
+  const mobility = new Set([2,7,11,15,19,23,28,31,36,40,44,49,53,60,66]);
   for(let i=0;i<84;i++){ const c=document.createElement("div"); c.className="cell";
     const h=document.createElement("div"); h.className="house"; const r=document.createElement("div"); r.className="ring";
     c.appendChild(h); c.appendChild(r);
-    let col = i<71 ? "#e8c56a" : (i<81 ? "#e74c3c" : "#5a768f");
+    let col = i<58 ? "#e8c56a" : (i<71 ? "#e07a4a" : (i<81 ? "#e74c3c" : "#5a768f"));
     c._col=col; c._mob = i<71 && mobility.has(i);
     grid.appendChild(c); cells.push(c); }
   // road cars
