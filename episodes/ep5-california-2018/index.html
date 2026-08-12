@@ -640,7 +640,14 @@
 window.__timelines = window.__timelines || {};
 (function() {
   const tl = gsap.timeline({ paused: true });
-  const DUR = 1942;
+  const DUR = 1948.43;
+
+  /* ---- blur-fill behind letterboxed stills (owner v4: no black bars on mixed-AR photos) ---- */
+  document.querySelectorAll(".contain-wrap").forEach(function(w){
+    const im = w.querySelector("img"); if (!im) return;
+    const bg = im.cloneNode(); bg.removeAttribute("id"); bg.className = "blurfill";
+    w.insertBefore(bg, im);
+  });
 
   /* ---- Ken Burns pans on stills (every still moves) ---- */
   function kb(sel, at, dur, fromScale, toScale, fromX, toX, fromY, toY) {
