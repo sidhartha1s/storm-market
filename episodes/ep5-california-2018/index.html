@@ -105,15 +105,17 @@
   <!-- ============ PICTURE — track 1 clips (video ≤~8s, stills 3-5s w/ kenburns), track 2 graphic hosts ============ -->
 
   <!-- ===== COLD OPEN 0–32.92 — the fire tornado, mid-action ===== -->
-  <section class="clip blackout" id="bo-lead" data-start="0" data-duration="0.5" data-track-index="1"></section>
-  <video id="vx-firenado-a1" src="media/scenes/firenado-a.mp4" style="filter: saturate(0.85) contrast(1.08)" data-start="0.5" data-duration="8.2" data-track-index="1" muted></video>
-  <video id="vx-firenado-b1" src="media/scenes/firenado-b.mp4" style="filter: saturate(0.85) contrast(1.08)" data-start="8.7" data-duration="9.5" data-track-index="1" muted></video>
-  <video id="vx-goes2pa1" src="media/scenes/goes2p-a.mp4" data-start="18.2" data-duration="5.72" data-track-index="1" muted></video>
-  <video id="vx-itf2townwide3" src="media/scenes/itf2-townwide.mp4" style="filter: brightness(0.85) saturate(0.9)" data-start="23.92" data-duration="4.0" data-track-index="1" data-callback="the year in one shot — a town burning at night" muted></video>
-  <video id="vx-itf2dashdrive3" src="media/scenes/itf2-dashdrive.mp4" style="filter: brightness(0.9)" data-start="27.92" data-duration="3.92" data-track-index="1" data-callback="the drive every evacuee made" muted></video>
-  <video id="vx-itf2pinesfire3" src="media/scenes/itf2-pinesfire.mp4" style="filter: brightness(0.88)" data-start="31.84" data-duration="1.08" data-track-index="1" data-callback="final use — cutter into act one" muted></video>
-  <div id="host-title" data-composition-id="g-title" data-composition-src="compositions/g-title.html" data-start="24.2" data-duration="8.0" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <audio id="ins-coldopen911" src="media/dozer911-coldopen.wav" data-start="0.5" data-duration="3.86" data-volume="1"></audio>
+  <!-- HOOK v4: 6-beat montage, no lead blackout; 911 audio first, riser 16.2->24.2 into title boom -->
+  <video id="vx-firenado-a1" src="media/scenes/firenado-a.mp4" style="filter: saturate(0.85) contrast(1.08)" data-start="0" data-duration="6.0" data-track-index="1" muted></video>
+  <video id="vx-itf2dashdrive3" src="media/scenes/itf2-dashdrive.mp4" style="filter: brightness(0.9)" data-start="6.0" data-duration="3.9" data-track-index="1" data-callback="in-cab through the embers — the drive every evacuee made" muted></video>
+  <video id="vx-itf2townwide3" src="media/scenes/itf2-townwide.mp4" style="filter: brightness(0.85) saturate(0.9)" data-start="9.9" data-duration="4.0" data-track-index="1" data-callback="the year in one shot — a town burning at night" muted></video>
+  <video id="vx-nightroad01c1" src="media/scenes/nightroad01-c.mp4" style="filter: brightness(0.75) saturate(0.6)" data-start="13.9" data-duration="5.7" data-track-index="1" data-callback="hook montage — the evacuation, bumper to bumper" muted></video>
+  <video id="vx-firenado-b1" src="media/scenes/firenado-b.mp4" style="filter: saturate(0.85) contrast(1.08)" data-start="19.6" data-duration="2.3" data-track-index="1" data-callback="second angle lands on the line — built a tornado out of flame" muted></video>
+  <video id="vx-goes2pa1" src="media/scenes/goes2p-a.mp4" data-start="21.9" data-duration="2.3" data-track-index="1" muted></video>
+  <div id="host-title" data-composition-id="g-title" data-composition-src="compositions/g-title.html" data-start="24.2" data-duration="8.72" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <audio id="ins-coldopen911" src="media/dozer911-coldopen.wav" data-start="0.3" data-duration="3.86" data-volume="1"></audio>
+  <audio id="sx-riser01" src="media/sfx-riser.wav" data-bed data-start="16.2" data-duration="8.0" data-volume="0.6"></audio>
+  <audio id="sx-bm00" src="media/sfx-boom.wav" data-bed data-start="24.2" data-duration="3" data-volume="0.8"></audio>
 
   <!-- ============ SFX LAYER (owner 2026-08-12: base tone + peak swells ~45-60s; synth/library only) ============ -->
   <!-- beds: brown-noise rumble ~21dB under narration; title card 23.92-32.92 and victim segment 1487.87-1594.27 stay silent -->
