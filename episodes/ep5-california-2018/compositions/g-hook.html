@@ -80,35 +80,40 @@ window.__timelines = window.__timelines || {};
 
   const tl=gsap.timeline({paused:true});
   const P="#g-hook-";
-  /* beats vs A5-S4 (retune at index): "picture in your head"@2 "gets wrong"@9
-     "name by name"@14 "ten died fleeing"@20 "seventy-one at home"@26 "traffic did not kill"@40 */
+  /* beats vs A5-S4 words.json (mount 1337.65, window 60.0): "hold the picture"@1.2 "gets wrong"@11.9
+     "DA wrote the report"@13.5 "name by name"@20.3 "10 died trying to flee"@24.8 "71 in their own homes"@30.3
+     "front doors"@34.6 "58 never made it out"@35.8 "15 ... wheelchairs or walkers"@38.8-46.1
+     "no help could reach them"@49.7 "traffic did not kill Paradise"@51.8 tail ends ~59.2 */
   tl.set([P+"hdr",P+"pichead",P+"road",P+"grid",P+"bignum",P+"legend",P+"rows",P+"kicker"],{autoAlpha:0},0);
   tl.fromTo(P+"hdr",{autoAlpha:0,y:-16},{autoAlpha:1,y:0,duration:0.6},0.4);
   // state 1 — the wrong picture
   tl.to(P+"pichead",{autoAlpha:1,duration:0.6},1.6);
   tl.to(P+"road",{autoAlpha:1,duration:0.8},2.2);
   tl.to(".car",{y:"+=26",duration:1.3,ease:"sine.inOut",yoyo:true,repeat:7},2.4); // traffic creeps until the flip
-  tl.to(P+"grid",{y:"-=8",duration:2.2,ease:"sine.inOut",yoyo:true,repeat:11},13.4); // grid breathes through the reveal
-  // flip: dismiss the road, reveal the grid dim
-  tl.to([P+"pichead",P+"road"],{autoAlpha:0,duration:0.7},12.5);
+  tl.to(P+"grid",{y:"-=8",duration:2.2,ease:"sine.inOut",yoyo:true,repeat:19},13.4); // grid breathes through the reveal
+  // flip on "gets wrong": dismiss the road, reveal the grid dim
+  tl.to([P+"pichead",P+"road"],{autoAlpha:0,duration:0.7},12.2);
   tl.to(P+"grid",{autoAlpha:1,duration:0.25},13.38); // reveal lands with the first cells — container never sits empty
   cells.forEach((c,i)=>{ tl.fromTo(c,{autoAlpha:0,scale:0.4},{autoAlpha:1,scale:1,duration:0.25,ease:"power2.out"},13.4+i*0.02); });
-  // fleeing light up first (the small truth), then home floods
-  tl.to(P+"legend",{autoAlpha:1,duration:0.5},19.5);
-  cells.forEach((c,i)=>{ if(i>=71){ tl.to(c.querySelector(".house"),{backgroundColor:c._col,duration:0.3},20.0+(i-71)*0.05);
-    tl.set(c.querySelector(".house"),{boxShadow:"0 0 12px "+c._col},20.0+(i-71)*0.05); }});
-  cells.forEach((c,i)=>{ if(i<71){ tl.to(c.querySelector(".house"),{backgroundColor:c._col,duration:0.3},25.5+i*0.05);
-    if(c._mob) tl.to(c.querySelector(".ring"),{borderColor:"#fff",duration:0.3},25.5+i*0.05); }});
-  const cnt={v:0}; tl.to(P+"bignum",{autoAlpha:1,duration:0.5},25.5);
+  // fleeing light up on "10 died trying to flee" (the small truth), then home floods on "71"
+  tl.to(P+"legend",{autoAlpha:1,duration:0.5},23.5);
+  cells.forEach((c,i)=>{ if(i>=71){ tl.to(c.querySelector(".house"),{backgroundColor:c._col,duration:0.3},24.8+(i-71)*0.05);
+    tl.set(c.querySelector(".house"),{boxShadow:"0 0 12px "+c._col},24.8+(i-71)*0.05); }});
+  cells.forEach((c,i)=>{ if(i<71){ tl.to(c.querySelector(".house"),{backgroundColor:c._col,duration:0.3},30.3+i*0.05); }});
+  const cnt={v:0}; tl.to(P+"bignum",{autoAlpha:1,duration:0.5},30.3);
   tl.to(cnt,{v:71,duration:3.4,ease:"power2.out",onUpdate:function(){
-    const el=document.getElementById("g-hook-count"); if(el) el.textContent=Math.round(cnt.v);}},25.5);
-  // rows land one at a time — a list to follow, not a paragraph to read
-  tl.fromTo(".r",{autoAlpha:0,x:24},{autoAlpha:1,x:0,duration:0.4,stagger:1.1},30.0);
-  tl.set(P+"rows",{autoAlpha:1},29.9);
-  tl.fromTo(P+"kicker",{autoAlpha:0,scale:1.15},{autoAlpha:1,scale:1,duration:0.7,ease:"power3.out"},36.2);
-  // soft exit before the hard cut
-  tl.to([P+"grid",P+"bignum",P+"legend",P+"rows",P+"hdr"],{autoAlpha:0,duration:0.8},38.9);
-  tl.to(P+"kicker",{autoAlpha:0,duration:0.6},39.3);
+    const el=document.getElementById("g-hook-count"); if(el) el.textContent=Math.round(cnt.v);}},30.3);
+  // rows land with their spoken numbers — a list to follow, not a paragraph to read
+  tl.set(P+"rows",{autoAlpha:1},35.5);
+  const rowEls=document.querySelectorAll(".r"), rowAt=[35.7,37.0,38.0,38.9];
+  rowEls.forEach((r,i)=>{ tl.fromTo(r,{autoAlpha:0,x:24},{autoAlpha:1,x:0,duration:0.4},rowAt[i]); });
+  // the 15 teal rings draw exactly on "used wheelchairs or walkers or oxygen tanks"
+  cells.forEach((c)=>{ if(c._mob) tl.to(c.querySelector(".ring"),{borderColor:"#4ecdc4",duration:0.4},39.0); });
+  cells.forEach((c)=>{ if(c._mob) tl.to(c.querySelector(".ring"),{boxShadow:"0 0 10px #4ecdc4",duration:0.9,ease:"sine.inOut",yoyo:true,repeat:9},40.0); }); // pulse through "no help could reach them"
+  tl.fromTo(P+"kicker",{autoAlpha:0,scale:1.15},{autoAlpha:1,scale:1,duration:0.7,ease:"power3.out"},51.6);
+  // soft exit before the hard cut at 60.0
+  tl.to([P+"grid",P+"bignum",P+"legend",P+"rows",P+"hdr"],{autoAlpha:0,duration:0.8},58.2);
+  tl.to(P+"kicker",{autoAlpha:0,duration:0.6},58.8);
   window.__timelines["g-hook"]=tl;
 })();
 </script>
