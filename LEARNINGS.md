@@ -665,6 +665,13 @@ Two silent failure modes in one script, both hit on ep5:
   rule is not about optimize_clips.py — it is about `-an` in ANY batch: exclude every
   element mounted un-muted / data-has-audio from the batch, and ffprobe all audible
   elements for an audio stream as the last step before any render.
+  **Corollary (ep5 v4, 2026-08-12): a "lost" source is probably in `media/_orig/`.**
+  Two audio-stripped sources triggered a re-download hunt (Wayback CDX + Brightcove id
+  spelunking for a Gannett CDN mp4) while byte-identical audio-bearing originals sat in
+  `media/_orig/` the whole time — optimize passes MOVE originals there. Check `_orig/`
+  (and `_orig_media/`) before any re-download. Bonus fact recovered anyway: the dozer-911
+  mp4 URL is `media.gannett-cdn.com/28911775001/28911775001_5851158634001_5851141890001.mp4`
+  (still live; provenance.csv row elided it with `...`— never elide URLs in provenance).
 - **It only checks resolution and window-length, not bitrate.** ffmpeg scene cuts made with
   stream-copy keep the source's 15-19 Mbps, so 78 within-spec clips still totalled 645 MB
   against the 150 MB decode budget. Fix: re-encode cuts at libx264 crf 23-27 when cutting
