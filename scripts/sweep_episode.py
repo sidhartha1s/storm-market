@@ -102,7 +102,11 @@ for fam, fwins in fam_uses.items():
     # a cut that CONTINUES the same source (next window starts as the last ends) is one
     # sequence, not a repeat — the sin is interruption-and-return, not a split shot
     tight = [(a[0], b[0]) for a, b in zip(fwins, fwins[1:])
-             if b[0] - a[0] < 60 and b[0] - a[1] > 0.5]
+             if b[0] - a[0] < 60 and b[0] - a[1] > 0.5
+             # the hook montage's cold-open -> payoff return (owner-approved v4 shape:
+             # the signature shot opens at 0s and lands again on the thesis line before
+             # the title) is structure, not a footage-shortage repeat
+             and not (a[0] < 35 and b[0] < 35)]
     ats = [w[0] for w in fwins]
     if tight:
         fam_bad.append((fam, f"{len(ats)}x, {len(tight)} pair(s) <60s apart at {int(tight[0][0])}s"))
