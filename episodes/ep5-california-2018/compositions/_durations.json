@@ -2,11 +2,15 @@
  "g-camp-map": 23.2,
  "g-carr-map": 13.2,
  "g-ember": 23.25,
- "g-hook": 39.9,
+ "g-hook": 59.4,
  "g-pyrocb-radar": 35,
  "g-pyrocb": 32.8,
  "g-stat-camp": 16.8,
  "g-stat-carr": 22.6,
- "g-title": 7.7,
- "g-vortex": 37.05
+ "g-title": 8.3,
+ "g-vortex": 37.05,
+ "_shot_g-camp-map": 23.2,
+ "_shot_g-hook": 59.4,
+ "_shot_g-stat-camp": 16.8,
+ "_shot_g-stat-carr": 22.6
 }
