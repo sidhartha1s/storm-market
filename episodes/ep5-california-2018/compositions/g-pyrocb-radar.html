@@ -60,7 +60,7 @@ window.__timelines = window.__timelines || {};
   /* beats vs A2-S12 words.json: "watched...live on radar"@8.5-11.2, "radar...staring"@14,
      "saw a hook of rotation curl"@19.8-21.5, "signature"@23.6, "no button for this"@29-31.4 */
   tl.set([P+"hdr",P+"scope",P+"sweep",P+"site",P+"sitesub",P+"hooklab",P+"hooksub",P+"btn"],{autoAlpha:0},0);
-  tl.fromTo(P+"hdr",{autoAlpha:0,y:-16},{autoAlpha:1,y:0,duration:0.6},0.5);
+  tl.fromTo(P+"hdr",{autoAlpha:0,y:-16},{autoAlpha:1,y:0,duration:0.6},0.15);
   tl.to(P+"scope",{autoAlpha:1,duration:0.9},2.2);
   tl.to(P+"sweep",{autoAlpha:1,duration:0.4},3.0);
   tl.to(P+"sweep",{rotation:360,duration:4.0,ease:"none",repeat:7},3.0); // sweep turns through the window
