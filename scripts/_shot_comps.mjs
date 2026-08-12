@@ -6,11 +6,7 @@ const ep = resolve(process.argv[2]);
 const OUT = join(ep, '_compshots');
 if (!existsSync(OUT)) mkdirSync(OUT, { recursive: true });
 const plan = {
-  'g-title': [3, 7],
-  'g-carr-map': [3, 9, 12.5],
-  'g-vortex': [10, 26, 31],
-  'g-pyrocb': [12, 20, 26],
-  'g-pyrocb-radar': [5, 16, 22, 30],
+  'g-title': [0.3, 0.6, 1.2, 3, 7.6],
 };
 const browser = await chromium.launch({ executablePath: chromiumExecutable() });
 const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
