@@ -162,6 +162,48 @@ report("graphic window fits its timeline", overrun,
 # coverage. Reveal-vs-spoken-word alignment is still verified by reading words.json when
 # a composition is authored — it is not, and must not pretend to be, automated here.
 
+# 8. luma gate — owner 2026-08-13 (ep5 v4 shipped one near-black taillight source TEN times):
+# any mounted video whose mid-file frame reads YAVG < 25 is unwatchably dark. Probes are cached
+# by (path, mtime) in media/.luma-cache.json so repeat sweeps stay fast.
+import subprocess
+luma_cache_p = ep / "media" / ".luma-cache.json"
+try:
+    luma_cache = json.loads(luma_cache_p.read_text())
+except Exception:
+    luma_cache = {}
+dark = []
+probed = set()
+for w in t1:
+    if not w["name"].endswith(".mp4") or w["name"] in probed:
+        continue
+    probed.add(w["name"])
+    p = ep / w["name"]
+    if not p.exists():
+        continue
+    key = f'{w["name"]}|{int(p.stat().st_mtime)}'
+    if key not in luma_cache:
+        try:
+            dur_s = float(subprocess.run(
+                ["ffprobe", "-v", "quiet", "-show_entries", "format=duration", "-of", "csv=p=0", str(p)],
+                capture_output=True, text=True, timeout=30).stdout.strip())
+            r = subprocess.run(
+                ["ffmpeg", "-ss", str(dur_s / 2), "-i", str(p), "-frames:v", "1",
+                 "-vf", "signalstats,metadata=print:file=-", "-f", "null", "-"],
+                capture_output=True, text=True, timeout=30)
+            mm = re.search(r"YAVG=([\d.]+)", r.stdout + r.stderr)
+            luma_cache[key] = float(mm.group(1)) if mm else -1.0
+        except Exception:
+            luma_cache[key] = -1.0
+    y = luma_cache[key]
+    if 0 <= y < 25:
+        dark.append((w["name"], y))
+try:
+    luma_cache_p.write_text(json.dumps(luma_cache))
+except Exception:
+    pass
+report("luma gate (no near-black sources, YAVG>=25)", dark,
+       lambda x: f"{Path(x[0]).name} YAVG={x[1]:.1f}")
+
 # 9. long stills — owner 2026-08-12: stills are 3-6s with motion, "not a PowerPoint"
 long_still = [(w["at"], w["name"], w["dur"]) for w in t1
               if w["dur"] > 6.0 and not w["name"].endswith(".mp4")]
