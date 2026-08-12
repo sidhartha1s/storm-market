@@ -171,23 +171,22 @@ try:
     luma_cache = json.loads(luma_cache_p.read_text())
 except Exception:
     luma_cache = {}
-dark = []
-probed = set()
+# videos play from FILE START: a window of duration d shows file[0..d], so the
+# representative frame is at d/2 of the SHORTEST mounted window — not the file middle.
+shortest = {}
 for w in t1:
-    if not w["name"].endswith(".mp4") or w["name"] in probed:
-        continue
-    probed.add(w["name"])
-    p = ep / w["name"]
+    if w["name"].endswith(".mp4"):
+        shortest[w["name"]] = min(shortest.get(w["name"], 1e9), w["dur"])
+dark = []
+for name, sdur in sorted(shortest.items()):
+    p = ep / name
     if not p.exists():
         continue
-    key = f'{w["name"]}|{int(p.stat().st_mtime)}'
+    key = f'{name}|{int(p.stat().st_mtime)}|{round(sdur / 2, 1)}'
     if key not in luma_cache:
         try:
-            dur_s = float(subprocess.run(
-                ["ffprobe", "-v", "quiet", "-show_entries", "format=duration", "-of", "csv=p=0", str(p)],
-                capture_output=True, text=True, timeout=30).stdout.strip())
             r = subprocess.run(
-                ["ffmpeg", "-ss", str(dur_s / 2), "-i", str(p), "-frames:v", "1",
+                ["ffmpeg", "-ss", str(round(sdur / 2, 2)), "-i", str(p), "-frames:v", "1",
                  "-vf", "signalstats,metadata=print:file=-", "-f", "null", "-"],
                 capture_output=True, text=True, timeout=30)
             mm = re.search(r"YAVG=([\d.]+)", r.stdout + r.stderr)
@@ -196,7 +195,7 @@ for w in t1:
             luma_cache[key] = -1.0
     y = luma_cache[key]
     if 0 <= y < 25:
-        dark.append((w["name"], y))
+        dark.append((name, y))
 try:
     luma_cache_p.write_text(json.dumps(luma_cache))
 except Exception:
