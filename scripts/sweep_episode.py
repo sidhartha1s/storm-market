@@ -173,16 +173,23 @@ try:
 except Exception:
     luma_cache = {}
 
+probe_failed = []  # a failed probe is a FAILED gate, never a silent pass
+
 def cached_yavg(key, ffmpeg_args):
-    """Run an ffmpeg probe whose output contains a signalstats YAVG line; cache by key."""
+    """Run an ffmpeg probe whose output contains a signalstats YAVG line; cache by key.
+    Failures are NOT cached (retried next run) and land in probe_failed — fail loud."""
     if key not in luma_cache:
         try:
             r = subprocess.run(["ffmpeg"] + ffmpeg_args, capture_output=True, text=True,
                                timeout=60)
             mm = re.search(r"YAVG=([\d.]+)", r.stdout + r.stderr)
-            luma_cache[key] = float(mm.group(1)) if mm else -1.0
-        except Exception:
-            luma_cache[key] = -1.0
+            if not mm:
+                probe_failed.append((key, "no YAVG in ffmpeg output"))
+                return None
+            luma_cache[key] = float(mm.group(1))
+        except Exception as e:
+            probe_failed.append((key, repr(e)[:80]))
+            return None
     return luma_cache[key]
 
 # videos play from FILE START: a window of duration d shows file[0..d], so the
