@@ -55,6 +55,10 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   is failure-thin. Source assertion AUDIO like clips: 911 calls, presser sound, survivor voice,
   sirens/ambience — and per-act music with real character (known-good tracks + recipe live in
   `assets/sfx/deapi/README.md`; owner Pixabay pack in `assets/sfx/owner-2026-08-13/`).
+- **Siren terminology (owner 2026-08-13, STANDING):** "siren" = tornado/civil-defense siren
+  (the wailing air-raid type, e.g. `soundreality-civil-defense-siren-128262.mp3`); "weewoo" =
+  ambulance/police/firetruck siren. When the owner asks for a siren, it is the tornado siren
+  unless he says weewoo.
 - **Preview = 98% production quality (owner):** a "rough draft" preview is a full-quality cut at
   draft encode settings — never a placeholder. Before ANY render: full audio-mixdown listen +
   hook watch (the experience pass); a known-below-spec layer means STOP and report, not render.
