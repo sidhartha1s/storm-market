@@ -96,7 +96,8 @@ def main():
         af = (f"volume={round(loud_gain, 2)}dB,"
               f"alimiter=limit={10 ** ((TARGET_TP - 1.0) / 20):.4f}:attack=5:release=80:level=false")
         print(f"      input {in_i} LUFS / TP {in_tp} dBTP -> gain {loud_gain:+.2f} dB "
-              f"+ TP limiter at {TARGET_TP} dB (plain gain would land {gain:+.2f})")
+              f"+ limiter ceiling {TARGET_TP - 1.0} dBFS for the {TARGET_TP} dBTP target "
+              f"(plain gain would land {gain:+.2f})")
     else:
         af = f"volume={gain}dB"
         print(f"      input {in_i} LUFS / TP {in_tp} dBTP -> gain {gain:+.2f} dB")
