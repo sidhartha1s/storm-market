@@ -566,7 +566,12 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
   from 120s to 30s** (`Date.now() + 12e4` became `+ 3e4`) — the exact deadline twelve ep3 v3
   renders died on. A newer version can be STRICTER, not just better, so every timing measured
   against the old pin has a 4x smaller margin. `npm view hyperframes version` is one command
-  and belongs at the top of a production run, not after a failure.
+  and belongs at the top of a production run, not after a failure. Bumped 0.7.81 -> 0.7.107 on
+  2026-08-14 after the ritual: changelog audit (827 commits; relevant = extraction memory
+  bounding, hidden-audio excluded from render mix, WebGPU capture fixes; ffprobe 30s deadline
+  UNCHANGED, verified in dist) + A/B render of demo-joplin-90 at full quality — identical
+  duration/blackdetect, RMS delta 0.006 dB, SSIM 0.997, spot frames clean. No behavior change
+  observed; the hidden-audio mix change did not alter loudness on a comp using visible audio tags.
 - **A rule with no gate is a suggestion (owner, 2026-07-29).** "Cap every source asset at the
   composition's resolution" was written in CLAUDE.md and violated by seven clips through twelve
   failed renders, because nothing checked it. The counter-question for any rule that keeps
