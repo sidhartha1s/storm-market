@@ -15,6 +15,9 @@ Reads  episodes/<slug>/renders/<basename>.mp4 and writes:
 
 Plain gain (not dynamic loudnorm) is deliberate: episode mixes land with tight
 LRA (~3.4 measured on ep2), where one measured gain preserves the mix exactly.
+Exception (2026-08-13): when the source's true peak would cap the gain >0.5 dB
+below the loudness target, the loudness gain is applied WITH a true-peak
+alimiter — renders can touch 0 dBFS and a quiet master is the worse trade.
 Fails loud (exit 1) if the verify pass misses tolerance.
 
 --hevc uses GPU NVENC (fast: ~6x realtime). It requires an ffmpeg whose hevc_nvenc
