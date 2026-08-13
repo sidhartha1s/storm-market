@@ -4,13 +4,15 @@ Static page, zero build step: one HTML file with inline CSS, assets alongside it
 CDN. The one piece of server logic is `functions/api/subscribe.js`, a single Cloudflare Pages
 Function for the lead-magnet form — no bundler, no other backend. Deploys to Cloudflare Pages as-is.
 
-**NOT DEPLOYED. Not live anywhere.** See "Before it goes live" — three blockers, one of them is
+**NOT DEPLOYED. Not live anywhere.** See "Before it goes live" — four blockers, one of them is
 Gumroad.
 
 | File | What |
 |---|---|
-| `index.html` | The whole page. Inline CSS, no framework, no CDN, no external fonts. |
-| `assets/` | Cover, OG image, headshot, four real page shots from the book. |
+| `index.html` | The whole page. Inline CSS, no framework. One CDN dependency: Google Fonts (Fraunces / Source Serif 4 / IBM Plex Mono), added in the 2026-08-13 redesign. |
+| `privacy.html`, `terms.html` | Generic text-only legal pages, linked in the footer, noindexed. |
+| `og-src.html` | Source for `assets/og.png` (1200×630 social card). Regenerate: `node shot.mjs og-src.html ./out 1200`, crop to 630. |
+| `assets/` | Cover + headshot (compressed JPEGs; the PNG originals remain as source), OG card, four real page shots, five Paul photos (selfie, plywood, binder, field kit, stage). |
 | `functions/api/subscribe.js` | Pages Function behind the lead-magnet form. See "Mail provider". |
 | `widthcheck.mjs` | **Gate.** Fails if the page scrolls sideways at any width. |
 | `shot.mjs` | Full-page screenshots at true device widths. |
@@ -41,7 +43,7 @@ description**, which is the owner's rule: the higher the credible savings delta 
 pricing, the higher the conversion.
 
 1. Hero — headline, sub, price CTA, cover
-2. Proof strip — 488 pages, 130 protections, 23 hazards, 60 days, 7-day refund
+2. Proof strip — 486 pages, 130 protections, 23 hazards, 60 days, 7-day refund
 3. What it is — counts grid, then all 23 hazards as chips so the scope is undeniable
 4. **The money chapter** — the $3,029 / $43,600 gap, sourced, with the "what this is not" box
 5. Find your region — 5 cards, makes it personal before the ask
@@ -68,7 +70,7 @@ the numbers yourself.
 **No countdown timer or "203 people viewing".** The lawn page uses both. They are fabricated urgency;
 your call, not mine to add silently. A real launch-price end date is honest and easy to add.
 
-## Before it goes live — three blockers
+## Before it goes live — four blockers
 
 1. **Gumroad product does not exist.** The buy button at `#buy` has no URL. Create the product, then
    set `href` to the Gumroad URL and add their overlay script. Gumroad cannot show a struck-through
@@ -81,20 +83,29 @@ your call, not mine to add silently. A real launch-price end date is honest and 
    actually email the right `<ABBR>.html`/PDF. That automation does not exist yet, and neither does
    the Kit account — `KIT_API_KEY` must be set before this stops 500ing (see Deploy). The state
    packets themselves are covered in blocker 4.
-3. **The book's prose is complete; its citations are not.** All **130 of 130** protections and all
-   **23 of 23** hazard playbooks are drafted, plus front matter, people/places, the binder spec and the
-   60-day sequence — 117,554 words. **All 130 citation markers are now closed**: every one carries a
-   full citation and a retrieval date, and the handful of claims that could not be traced to a primary
-   document were cut rather than softened. Sourcing is no longer the gating item; layout is.
+3. **The book is written, sourced, laid out and counted.** All **130 of 130** protections and all
+   **23 of 23** hazard playbooks, plus front matter, people/places, the 60-day sequence, 61 pages of
+   fillable binder forms, 13 original diagrams, a credits page, Sources and the 51-state directory.
+   Every claim carries a full citation and a retrieval date; claims that could not be traced to a
+   primary document were cut rather than softened.
 
-   On the **488** figure: it is now a **floor and needs resetting.** Prose excluding the Binder measures
-   114,637 words, and the rendered sample pages average **243 words per page** (measured, 11 body pages,
-   including ones carrying diagrams and tables). That gives 472 prose pages, plus 80 binder pages and 18
-   appendix pages — **about 570.** Closing the citations added ~23,600 words. The page currently
-   understates the product, which is the safe direction, but it is still inaccurate. **Recount against
-   the laid-out book and change every instance of 488 on the landing page before launch** — it appears
-   in the meta description, the hero subhead, the proof strip, the deliverables list and the delivery
-   section.
+   **The page figure is settled at 486** and every instance on this page has been reset — meta
+   description, hero subhead, proof strip, deliverables list, delivery section. It is a count, not a
+   projection: `ebook/build/paginate.mjs` measures every block in headless Chrome and fills fixed 6x9
+   pages, `ebook/build/frontmatter.mjs` prepends the cover, title page, copyright page and contents,
+   and `ebook/build/fitcheck.mjs` passes on all 486.
+
+   Two other claims on this page were corrected at the same time, because they described a product
+   that did not exist yet rather than the one in the repo:
+
+   - "The Binder — 80 pages" is now **61 pages**. 41 forms, all present, every explicit multiplier
+     honoured; the 80 was a per-section estimate written before anything was laid out.
+   - "All 50 State Packets" is now **51 — 50 states and DC**, which is what actually ships.
+
+   The "illustrated PDF" claim and the named floor-plan diagram for Protection 23 were **false when
+   written** — there were no figures in the book at all. They are true now: 13 code-drawn diagrams,
+   credited in Part Eight. The lesson worth keeping is that the copy was written from the plan and
+   nobody had checked it against the artifact.
 
 4. **The 51 state packets (50 states + DC) now exist as HTML** at `ebook/appendix/out/packets/
    <ABBR>.html`, and `build.py` can render any of them to PDF — only 4 (CA, FL, IL, TX) have been
