@@ -12,8 +12,8 @@ visible in the asset table the whole time and nothing looked at it:
   - 240 MB of source had to be decoded to fill about 90s of screen time.
 
 The probe that dies is not slow on its own — 3.18s serial, 8.18s at six-way
-concurrency, against a deadline hardcoded at 120s in hyperframes 0.7.64. It dies
-queued behind that decode.
+concurrency, against a deadline hardcoded in hyperframes (120s in 0.7.64; 30s since
+0.7.81, unchanged through 0.7.107). It dies queued behind that decode.
 
 So this checks the cost BEFORE a render, and `render_preflight.py` calls it, which
 means the render script itself refuses to start. Every check below is a number that
