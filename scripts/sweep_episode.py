@@ -4,7 +4,9 @@ Each check prints PASS/FAIL and the offending items. No check depends on a rende
 """
 import json
 import re
+import subprocess
 import sys
+import tempfile
 from collections import Counter
 from pathlib import Path
 
