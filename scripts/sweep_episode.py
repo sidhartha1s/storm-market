@@ -169,7 +169,8 @@ report("graphic window fits its timeline", overrun,
 # by (path, mtime) in media/.luma-cache.json so repeat sweeps stay fast.
 luma_cache_p = ep / "media" / ".luma-cache.json"
 try:
-    luma_cache = json.loads(luma_cache_p.read_text())
+    # drop legacy -1.0 "failed probe" entries — failures are reported, never cached
+    luma_cache = {k: v for k, v in json.loads(luma_cache_p.read_text()).items() if v >= 0}
 except Exception:
     luma_cache = {}
 
