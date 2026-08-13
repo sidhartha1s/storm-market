@@ -706,3 +706,77 @@ silent = dead), never with a process-name count (MCP daemons match loose filters
   after motion ended, repeatedly ("one time is okay... three and four and five times?").
 - **PySceneDetect** (scenedetect.com) approved for splitting long sources into scene cuts —
   validate on this box before first use; cheaper than agent OCR passes.
+
+## The doctor rule — known-below-spec = STOP, never render (owner, ep5 v4 RCA, 2026-08-13)
+v4 shipped a music layer I knew was below the ordered spec ("Hybrid C") — flagged it in my own
+park summary and rendered anyway. Owner burned a review cycle discovering what I already knew.
+Standing rule: the moment a deliverable is known below spec, STOP before the render, state
+exactly what is broken, give options, wait. A render on a known defect wastes GPU hours AND the
+owner's review hours. Corollary: verification gates check STRUCTURE; before any render also do
+an EXPERIENCE pass — listen to the full audio mixdown, watch the hook, spot-watch 3 random
+minutes. A green suite on an unwatchable artifact is a failed QC.
+
+## Sourcing doctrine for future episodes (owner, ep5 review, 2026-08-13)
+ep5 mounted 142 cuts that traced to only ~30 real source acquisitions — 5-6 reels re-sliced.
+Owner: "30 sources should be 60. The clips are there." Count SOURCES, not cuts; and count
+ASSERTION assets specifically (broadcast pulls, day-after newspapers, official audio, presser
+clips, survivor clips, before/after stills) — third-party proof that the thing happened beats
+another angle of the same b-roll. Re-slicing a reel is editing, not sourcing.
+
+## Music policy update (owner order 2026-08-13, supersedes "never downloaded music")
+Owner-provided Pixabay downloads (assets/sfx/owner-2026-08-13/) and DeAPI-generated tracks are
+ALLOWED as music/SFX. Still forbidden: anything ripped from YouTube/unlicensed. DeAPI recipe:
+POST /api/v2/audio/music (multipart; model AceStep_1_5_Turbo, guidance_scale exactly 1,
+inference_steps exactly 8, lyrics "[Instrumental]", format mp3, max 300s) — poll
+GET /api/v2/jobs/{request_id} (NOT /requests/ — that 404s). ~$0.0009 per 60s. Generated tracks
+pad ~3s of tail silence — trim/fade before mounting. Keys in repo-root .env (gitignored).
+
+## Audio mixdown as a pre-render gate (ep5 v5, 2026-08-13)
+Build the full audio mix from index.html (atrim+adelay+volume+amix, normalize=0) and scan 30s
+windows with volumedetect BEFORE rendering. Caught: kick hit (vol 0.6) stacking with narration
+start at an act boundary = 0dB clip. Hits under speech need ~0.4. Target: mix mean ≈ -19,
+window peaks ≤ -1.5. Also: sparse-keyframe warnings in the render log (dvbhawk-helipov,
+calfire-itf-willhappenagain) cause freezes — re-encode with -g 30 before the next full render.
+
+## Owner answer standards (transcript sweep, 2026-08-13)
+- A "what's your math / on what basis" question gets the actual logic and data, answered FIRST,
+  before any pivot to fixes. Padded defensive estimates read as lying — quote compute-real time.
+- Anything that went wrong twice gets a process RCA (what gate should have caught it, why it
+  didn't), and the fix lands in the durable docs the same session — corrections that live only
+  in chat evaporate.
+- "News" (or any single named source) is one of ten thousand — never over-index on a source
+  because the owner mentioned it once.
+- Same-cut reuse: a specific short cut never repeats in a tight window; different in/out points
+  of a longer reel are different cuts. The sweep family gate encodes this — keep it calibrated.
+
+## HF studio (`hyperframes preview`) — capabilities and traps (ep5 v5c, 2026-08-14)
+- **Studio cannot preview a full media-heavy episode.** Opening the 32-min comp fired 2,200+
+  media requests at once — canvas stays black, audio never starts, node server crawls. For an
+  audio/hook check, build a trimmed scaffold comp instead (junction media/audio, subtree-filter
+  index to the window, clamp root data-duration).
+- **Runtime comp length = max(element windows, LAST GSAP TWEEN POSITION)** — data-duration alone
+  doesn't clamp playback. Trimming a comp means trimming the script's tween/kb positions too.
+- **`data-composition-id` is a contract with the timeline JS** — renaming it breaks the runtime
+  (`StaticGuard: Timeline registered as X but no element has data-composition-id=X`).
+- **Studio MUTATES index.html** (stamps `data-hf-id` on every element). Harmless to renders, but
+  any script matching tag shapes must not assume attribute order (build_srt.py fixed 2026-08-14).
+  Diff index.html after any studio session before trusting downstream tooling.
+- **Studio realtime playback jitters video under a transform tween** (per-tick video seeks) —
+  looks like violent shake; the seek-by-frame RENDER is clean. Verify motion complaints against
+  render frames (tblend diff series: shake = sawtooth; smooth = flat bands) before "fixing".
+
+## Full-render stability on this box (ep5 v5c, two attempts, 2026-08-14)
+- **Close studios/headless browsers before a full render.** Attempt 1 died at frame 29553
+  (capture page hung 4+ min, then Page.captureScreenshot protocol error) with 2 studio servers +
+  8 chrome-headless shells resident. Attempt 2, same comp, clean box: completed. Free-RAM dipped
+  to 0.4GB mid-render and survived — contention, not the comp, is the killer.
+- **No resume exists** (0.7.81): captured frames stream to the encoder and are deleted; a crashed
+  run leaves nothing reusable. Budget a full restart into any crash.
+- **Baseline speed: ~600-900 frames/min at 1080p30, 2 workers** (0.3-0.5x realtime) — matches
+  ep2's 75-min/28-min history. 3000fpm/1.1x-realtime expectations don't hold on this box.
+- **Delete `render_*_done.marker` BEFORE relaunching a same-name render** — a stale marker from
+  the failed attempt made the watcher report the new run dead (false "exit=1").
+- **schtasks wrappers: never bare `python3`** — cmd resolves it to the Microsoft Store stub
+  (exit 9009). Use the full `...\Python312\python.exe` path.
+- **Harness reaping applies to ALL long background jobs, not just renders** — a 10-min master
+  build got killed mid-measure. Anything over ~2 min goes schtasks + done-marker + Monitor.
