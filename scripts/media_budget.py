@@ -83,7 +83,7 @@ def installed_probe_deadline():
     """Read the ffprobe deadline out of the installed hyperframes bundle.
 
     It is a hardcoded literal with no env override, and it CHANGES between releases:
-    0.7.64 allowed 120s, 0.7.81 allows 30s. Twelve renders died against that number
+    0.7.64 allowed 120s, 0.7.81 cut it to 30s (unchanged through 0.7.107). Twelve renders died against that number
     while nobody could see it, so the gate prints it every run.
     """
     npx = Path.home() / "AppData" / "Local" / "npm-cache" / "_npx"
