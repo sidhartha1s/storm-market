@@ -63,13 +63,29 @@ def main():
                                env={**__import__("os").environ, "PYTHONUTF8": "1", "PYTHONUNBUFFERED": "1"})
             if r.returncode != 0:
                 sys.exit(f"[tts_episode] FAIL on {sid}")
-        d = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
+        # ffprobe immediately after write can return empty on this box (Defender scan lock);
+        # retry briefly before failing loud.
+        d = None
+        for attempt in range(4):
+            out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
                                   "-of", "default=nw=1:nk=1", str(wav)],
-                                 capture_output=True, text=True).stdout.strip())
+                                 capture_output=True, text=True).stdout.strip()
+            if out:
+                d = float(out)
+                break
+            __import__("time").sleep(3)
+        if d is None:
+            sys.exit(f"[tts_episode] ffprobe returned empty for {wav} after 4 attempts")
         manifest[sid] = {"wav": f"audio/{sid}.wav", "duration": round(d, 3),
                          "words": len(text.split())}
         print(f"[tts_episode] {sid}: {d:.1f}s ({len(text.split())} words)", flush=True)
-    (ep / "audio" / "manifest.json").write_text(json.dumps(manifest, indent=1), encoding="utf-8")
+    # --only must not amputate the manifest: merge into whatever is already there
+    mpath = ep / "audio" / "manifest.json"
+    if only and mpath.exists():
+        prior = json.loads(mpath.read_text(encoding="utf-8"))
+        prior.update(manifest)
+        manifest = prior
+    mpath.write_text(json.dumps(manifest, indent=1), encoding="utf-8")
     total = sum(v["duration"] for v in manifest.values())
     print(f"[tts_episode] DONE — {len(manifest)} segments, {total/60:.1f} min narration")
 

@@ -1,0 +1,79 @@
+"""Report animation beat density per composition.
+
+A "beat" is any GSAP call scheduled at an explicit timeline position. The
+metric that matters is the largest interval between consecutive beats: that is
+how long the frame can sit visually unchanged. Continuous tweens (a spine that
+grows for 20s, a marker that crawls a map) are counted as covering their whole
+span, not just their start, so a graphic with one long moving element does not
+read as dead.
+"""
+import re
+import sys
+from pathlib import Path
+
+ep = Path(sys.argv[1])
+idx = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
+hosts = {m.group(1): float(m.group(3))
+         for m in re.finditer(r'data-composition-id="([^"]+)"[^>]*'
+                              r'data-start="([\d.]+)"\s+data-duration="([\d.]+)"', idx)}
+
+CALL = re.compile(r'tl\.(to|from|fromTo|set|add)\s*\(', re.S)
+
+rows = []
+for f in sorted((ep / "compositions").glob("*.html")):
+    gid = f.stem
+    if gid not in hosts:
+        continue
+    src = f.read_text(encoding="utf-8", errors="replace")
+    spans = []
+    for m in CALL.finditer(src):
+        # walk to the matching close paren, then read the trailing position arg
+        depth, i = 0, m.end() - 1
+        while i < len(src):
+            if src[i] == "(":
+                depth += 1
+            elif src[i] == ")":
+                depth -= 1
+                if depth == 0:
+                    break
+            i += 1
+        body = src[m.end():i]
+        tail = body.rsplit(",", 1)[-1].strip()
+        pos = re.fullmatch(r'([\d.]+)', tail)
+        if not pos:
+            continue
+        at = float(pos.group(1))
+        dur = re.findall(r'duration:\s*([\d.]+)', body)
+        d = max(float(x) for x in dur) if dur else 0.0
+        # a repeating tween keeps moving for repeat+1 cycles (yoyo reverses but does not
+        # change the total). Counting only the first cycle reported blinking markers and
+        # pulsing dots as dead frames.
+        rep = re.search(r'repeat:\s*(-?\d+)', body)
+        if rep:
+            n = int(rep.group(1))
+            rd = re.search(r'repeatDelay:\s*([\d.]+)', body)
+            cycle = d + (float(rd.group(1)) if rd else 0.0)
+            d = hosts[gid] if n < 0 else d + n * cycle
+        spans.append((at, at + d))
+
+    win = hosts[gid]
+    if not spans:
+        rows.append((gid, win, 0, win, "NO BEATS"))
+        continue
+    spans.sort()
+    cur, gap, when = 0.0, 0.0, 0.0
+    for a, b in spans:
+        if a - cur > gap:
+            gap, when = a - cur, cur
+        cur = max(cur, b)
+    if win - cur > gap:
+        gap, when = win - cur, cur
+    rows.append((gid, win, len(spans), round(gap, 2), f"at {when:.1f}s"))
+
+rows.sort(key=lambda r: -r[3])
+print(f"{'composition':22} {'window':>7} {'beats':>6} {'max still':>10}  where")
+for gid, win, n, gap, when in rows:
+    flag = "  <-- DEAD" if gap >= 4.0 else ""
+    print(f"{gid:22} {win:6.1f}s {n:6} {gap:9.2f}s  {when}{flag}")
+worst = [r for r in rows if r[3] >= 4.0]
+print(f"\ncompositions with a >=4s motionless stretch: {len(worst)}/{len(rows)}")

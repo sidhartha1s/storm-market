@@ -7,7 +7,7 @@ Checks episodes/<slug>/index.html:
   2. every data-start / data-start+data-duration window sits inside the composition duration
   3. audio elements: narration wavs must not overlap each other or any insert audio
   4. NO-REPEAT (owner, ep1 v2 RCA): a visual file may appear in ONE timed window only.
-     Reuse requires data-callback="<reason>" on the element — and even then max 2 total uses.
+     Reuse requires data-callback="<reason>" on the element — max 3 total uses (owner 2026-07-28).
      Elements inside the last 90s (summary/outro zone) are exempt (owner: recap reuse is fine).
   5. CADENCE REPORT (owner 2026-07-23: pacing = AI judgment, NEVER code-enforced): shots over
      baseline (stills >7s, videos >12s) are PRINTED as a report for the editor-agent to reason
@@ -61,6 +61,33 @@ def main():
         if not src.startswith("http") and not (ep / src).exists():
             findings.append(f"missing script: {src}")
 
+    # PICTURE COVERAGE (owner 2026-07-29, owed to main): the v3 draft rendered black at
+    # segment seams — instants where the picture tracks (1 = base visuals, 2 = graphics)
+    # covered nothing. This is a DETERMINISTIC coverage check on the assembled timeline, not
+    # a pixel blackdetect: a pixel scan false-positives on dark graphics in motion (three of
+    # v3's flagged spans were exactly that), while a coverage gap is a real hole that always
+    # renders black. Every instant in (0, comp_dur) must sit inside at least one picture window.
+    pic = []
+    for e in re.finditer(r'<(video|section|div)\b([^>]*)>', html):
+        a = e.group(2)
+        tr = re.search(r'data-track-index="(\d+)"', a)
+        st = re.search(r'data-start="([\d.]+)"', a)
+        du = re.search(r'data-duration="([\d.]+)"', a)
+        if tr and st and du and tr.group(1) in ("1", "2"):
+            s = float(st.group(1))
+            pic.append((s, s + float(du.group(1))))
+    pic.sort()
+    if pic:
+        cursor = 0.0
+        for s, e in pic:
+            if s > cursor + 0.03:                 # a hole before this window opens
+                findings.append(f"picture gap: nothing on tracks 1/2 from {cursor:.2f}s to {s:.2f}s "
+                                f"({s - cursor:.2f}s of black)")
+            cursor = max(cursor, e)
+        if cursor < comp_dur - 0.03:
+            findings.append(f"picture gap: nothing on tracks 1/2 from {cursor:.2f}s to end "
+                            f"{comp_dur:.2f}s ({comp_dur - cursor:.2f}s of black)")
+
     # 4+5: no-repeat + cadence on VISUAL windows.
     # Collect (src, start, dur, has_callback, has_holdok) for videos and timed <section><img>.
     visuals = []
@@ -96,8 +123,11 @@ def main():
             reports.append(f"[pacing report] {'still' if is_still else 'video'} {src} holds {du:.1f}s at {st:.0f}s (baseline {limit}s) — editor: reason about it")
     for src, uses in by_src.items():
         timed = [(st, du, cb) for st, du, cb in uses if st < summary_zone]
-        if len(timed) > 2:
-            findings.append(f"repeat: {src} used {len(timed)}x — max 2 (one + one flagged callback)")
+        # owner rule 2026-07-28: an image may return up to 3x if each return is justified
+        if len(timed) > 3:
+            findings.append(f"repeat: {src} used {len(timed)}x — max 3, each reuse data-callback'd")
+        elif len(timed) == 3 and sum(1 for _, _, cb in timed if cb) < 2:
+            findings.append(f"repeat: {src} used 3x but only {sum(1 for _, _, cb in timed if cb)} reuse(s) carry data-callback")
         elif len(timed) == 2 and not any(cb for _, _, cb in timed):
             findings.append(f"repeat: {src} used 2x with no data-callback=\"reason\" on the reuse")
 

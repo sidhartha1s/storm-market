@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; overflow:hidden;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .hdr { position:absolute; left:0; right:0; top:60px; text-align:center; font-weight:700;
+    font-size:24px; letter-spacing:7px; color:#93a3b2; opacity:0; }
+  .lbl { position:absolute; font-family:'Arial Black',Arial,sans-serif; font-size:28px; color:#f2f5f8; opacity:0; }
+  .sub { position:absolute; font-family:Georgia,serif; font-style:italic; font-size:22px; color:#b8c6d4; opacity:0; }
+  .warn { position:absolute; left:120px; top:150px; font-family:Arial,sans-serif; font-weight:700;
+    font-size:24px; color:#e8c56a; background:rgba(16,22,30,0.55); backdrop-filter:blur(12px);
+    border:1px solid rgba(216,161,58,0.35); border-radius:12px;
+    padding:12px 22px; opacity:0; max-width:520px; line-height:1.3; }
+  .canyon-lbl { position:absolute; font-family:Georgia,serif; font-style:italic; font-size:20px;
+    color:#6d7d8d; opacity:0; letter-spacing:1px; }
+</style>
+<div id="root" data-composition-id="g-camp-map" data-width="1920" data-height="1080">
+  <div class="hdr" id="g-camp-map-hdr">PARADISE ON THE RIDGE &middot; NOVEMBER 8</div>
+  <svg width="1920" height="1080" style="position:absolute; inset:0;">
+    <!-- canyons flanking the ridge — irregular river-cut walls, not straight bridge piers -->
+    <path d="M780,150 Q740,320 760,480 Q780,660 680,950" stroke="#141e28" stroke-width="96" fill="none" opacity="0.7"/>
+    <path d="M1160,150 Q1210,340 1180,520 Q1160,700 1270,950" stroke="#141e28" stroke-width="96" fill="none" opacity="0.7"/>
+    <path d="M780,150 Q740,320 760,480 Q780,660 680,950" stroke="#0d141c" stroke-width="40" fill="none" opacity="0.8"/>
+    <path d="M1160,150 Q1210,340 1180,520 Q1160,700 1270,950" stroke="#0d141c" stroke-width="40" fill="none" opacity="0.8"/>
+    <!-- contour hints on the ridge flanks -->
+    <path d="M830,290 Q815,500 835,750" stroke="#3a4a58" stroke-width="1.5" fill="none" opacity="0.5"/>
+    <path d="M1110,290 Q1128,500 1105,750" stroke="#3a4a58" stroke-width="1.5" fill="none" opacity="0.5"/>
+    <!-- the ridge (town) -->
+    <rect x="820" y="300" width="300" height="440" rx="10" fill="#232d38" opacity="0"/>
+    <rect id="g-camp-map-town" x="820" y="300" width="300" height="440" rx="10" fill="#2e3c48" opacity="0"/>
+    <!-- roads down -->
+    <path id="g-camp-map-skyway" d="M900,740 Q820,880 680,960" stroke="#5a6472" stroke-width="8" fill="none" opacity="0"/>
+    <path id="g-camp-map-pentz" d="M1080,740 Q1180,880 1300,960" stroke="#3a4450" stroke-width="5" fill="none" opacity="0"/>
+    <path id="g-camp-map-pearson" d="M980,740 L960,960" stroke="#3a4450" stroke-width="5" fill="none" opacity="0"/>
+    <!-- Pulga ignition NE + fire arrow to town -->
+    <circle id="g-camp-map-ign" cx="1480" cy="240" r="0" fill="#e74c3c"/>
+    <path id="g-camp-map-fire" d="M1470,255 Q1300,380 1120,460" stroke="#e07a4a" stroke-width="7"
+      fill="none" stroke-linecap="round" opacity="0" stroke-dasharray="700" stroke-dashoffset="700"/>
+  </svg>
+  <div class="lbl" id="g-camp-map-townlbl" style="left:848px; top:462px; font-size:54px;">PARADISE</div>
+  <div class="sub" id="g-camp-map-townsub" style="left:862px; top:530px;">27,000 people</div>
+  <div class="lbl" id="g-camp-map-ignlbl" style="left:1380px; top:150px; color:#e07a4a;">CARIBOU-PALERMO<br>LINE &middot; PULGA</div>
+  <div class="lbl" id="g-camp-map-skylbl" style="left:540px; top:930px; font-size:24px;">SKYWAY</div>
+  <div class="sub" id="g-camp-map-skysub" style="left:540px; top:966px;">the one road down</div>
+  <div class="warn" id="g-camp-map-warn">2008 grand jury: these roads clear a quarter of the town in two hours.</div>
+  <div class="canyon-lbl" id="g-camp-map-cyn1" style="left:560px; top:420px;">BUTTE CREEK<br>CANYON</div>
+  <div class="canyon-lbl" id="g-camp-map-cyn2" style="left:1240px; top:560px;">FEATHER RIVER<br>CANYON</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl=gsap.timeline({paused:true});
+  const P="#g-camp-map-";
+  /* beats vs A4-S1/S2 (retune at index): ridge/town@1 roads@4 skyway@6 grand-jury warn@10 ignition@ (A4-S2)18 fire arrow@20 */
+  tl.set([P+"hdr",P+"townlbl",P+"townsub",P+"ignlbl",P+"skylbl",P+"skysub",P+"warn"],{autoAlpha:0},0);
+  tl.fromTo(P+"hdr",{autoAlpha:0,y:-14},{autoAlpha:1,y:0,duration:0.6},0.3);
+  tl.to(P+"town",{autoAlpha:1,duration:0.8},1.2);
+  tl.to(P+"town",{opacity:0.65,duration:1.4,ease:"sine.inOut",yoyo:true,repeat:14},2.2); // the town breathes — alive, cornered
+  tl.to([P+"townlbl",P+"townsub"],{autoAlpha:1,duration:0.5},1.6);
+  tl.to([P+"skyway",P+"pentz",P+"pearson"],{autoAlpha:1,duration:0.8,stagger:0.25},4.0);
+  tl.to([P+"skylbl",P+"skysub"],{autoAlpha:1,duration:0.5},6.0);
+  tl.to([P+"cyn1",P+"cyn2"],{autoAlpha:0.85,duration:0.8},2.6); // the canyons that make the ridge a trap
+  tl.to(P+"warn",{autoAlpha:1,duration:0.7},9.5);
+  // ignition + fire arrow (this half belongs to A4-S2/S3 — retune)
+  tl.to(P+"ign",{attr:{r:13},duration:0.4,ease:"power4.in"},17.5);
+  tl.to([P+"ignlbl"],{autoAlpha:1,duration:0.5},17.8);
+  tl.to(P+"ign",{attr:{r:17},duration:1.0,ease:"sine.inOut",repeat:4,yoyo:true},18.0); // pulses to the cut
+  tl.to(P+"fire",{autoAlpha:1,duration:0.3},19.5);
+  tl.to(P+"fire",{strokeDashoffset:0,duration:3.5,ease:"power2.in"},19.5); // 7 miles in an hour
+  window.__timelines["g-camp-map"]=tl;
+})();
+</script>
+</template>
+</body>
+</html>

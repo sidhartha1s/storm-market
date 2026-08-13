@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 46% 52%, #0d141c 0%, #04070a 76%); overflow:hidden; }
+  .eyebrow { position:absolute; left:96px; top:76px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .hl { position:absolute; left:96px; top:112px; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; }
+  .sub { position:absolute; left:96px; top:196px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  .drift { position:absolute; inset:-40% 0; opacity:0.30; pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(120,150,180,0.16) 0 1px, transparent 1px 46px); }
+  .lab { font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; }
+  .val { font-size:30px; color:#dfe7ee; font-weight:700; letter-spacing:1px; }
+  .num { font-family:'Courier New',monospace; font-size:84px; color:#e74c3c; font-weight:700; line-height:1; }
+  .maplab { font-family:Arial,sans-serif; font-weight:700; font-size:25px; fill:#e8eef4; }
+  .foot { position:absolute; left:96px; bottom:74px; font-family:Georgia,serif; font-style:italic;
+    font-size:26px; color:#d8a13a; }
+</style>
+<div id="root" data-composition-id="g-wires" data-width="1920" data-height="1080">
+<div class="drift" id="g-wires-drift"></div>
+<div class="eyebrow" id="g-wires-eb"></div><div class="hl" id="g-wires-hl">IT CUT ITS OWN WIRES</div><div class="sub" id="g-wires-sb"></div><svg viewBox="0 0 1920 1080" style="position:absolute;inset:0"><line id="g-wires-wire" x1="240" y1="560" x2="1650" y2="560" stroke="#7fb2e5" stroke-width="5"/><rect id="g-wires-p0" x="240" y="530" width="7" height="120" fill="#5a768f"/><rect id="g-wires-p1" x="368" y="530" width="7" height="120" fill="#5a768f"/><rect id="g-wires-p2" x="496" y="530" width="7" height="120" fill="#5a768f"/><rect id="g-wires-p3" x="624" y="530" width="7" height="120" fill="#5a768f"/><rect id="g-wires-p4" x="752" y="530" width="7" height="120" fill="#5a768f"/><rect id="g-wires-p5" x="880" y="530" width="7" height="120" fill="#5a768f"/><rect id="g-wires-p6" x="1008" y="530" width="7" height="120" fill="#5a768f"/><rect id="g-wires-p7" x="1136" y="530" width="7" height="120" fill="#5a768f"/><rect id="g-wires-p8" x="1264" y="530" width="7" height="120" fill="#5a768f"/><rect id="g-wires-p9" x="1392" y="530" width="7" height="120" fill="#5a768f"/><rect id="g-wires-p10" x="1520" y="530" width="7" height="120" fill="#5a768f"/><rect id="g-wires-p11" x="1648" y="530" width="7" height="120" fill="#5a768f"/><circle id="g-wires-storm" cx="200" cy="560" r="0" fill="#c0392b" opacity="0.9"/><text id="g-wires-t1" x="240" y="500" class="maplab" fill="#93a3b2">TELEGRAPH &amp; TELEPHONE LINE</text></svg><div class="foot" id="g-wires-ft">Every town it hit lost the only way to warn the next one.</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-wires-";
+  tl.fromTo(P+"drift", {y:-120}, {y:120, duration:36.0, ease:"none"}, 0);
+  const CNT={v:0};
+  function cu(){const e=document.getElementById('g-wires-cv'); if(e) e.textContent=Math.round(CNT.v);}
+  tl.fromTo(P+"eb", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.15);
+  tl.fromTo(P+"hl", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.35);
+  tl.fromTo(P+"sb", {autoAlpha:0, x:-24}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.55);
+  tl.fromTo(P+"storm", {attr:{r:0}}, {attr:{r:26}, duration:0.5, ease:"power4.in"}, 3.0);
+  tl.to(P+"storm", {attr:{cx:1680}, duration:24.0, ease:"none"}, 3.4);
+  tl.to(P+"wire", {attr:{x1:1680}, duration:24.0, ease:"none"}, 3.4);
+  tl.set(["#g-wires-p0", "#g-wires-p1", "#g-wires-p2", "#g-wires-p3", "#g-wires-p4", "#g-wires-p5", "#g-wires-p6", "#g-wires-p7", "#g-wires-p8", "#g-wires-p9", "#g-wires-p10", "#g-wires-p11"], {transformOrigin:"bottom center"}, 0);
+  tl.to(P+"p0", {rotation:58, y:14, duration:0.55, ease:"power4.in"}, 4.05);
+  tl.to(CNT, {v:1, duration:0.3, onUpdate:cu}, 4.05);
+  tl.to(P+"p1", {rotation:-62, y:14, duration:0.55, ease:"power4.in"}, 6.12);
+  tl.to(CNT, {v:2, duration:0.3, onUpdate:cu}, 6.12);
+  tl.to(P+"p2", {rotation:58, y:14, duration:0.55, ease:"power4.in"}, 8.20);
+  tl.to(CNT, {v:3, duration:0.3, onUpdate:cu}, 8.20);
+  tl.to(P+"p3", {rotation:-62, y:14, duration:0.55, ease:"power4.in"}, 10.28);
+  tl.to(CNT, {v:4, duration:0.3, onUpdate:cu}, 10.28);
+  tl.to(P+"p4", {rotation:58, y:14, duration:0.55, ease:"power4.in"}, 12.35);
+  tl.to(CNT, {v:5, duration:0.3, onUpdate:cu}, 12.35);
+  tl.to(P+"p5", {rotation:-62, y:14, duration:0.55, ease:"power4.in"}, 14.43);
+  tl.to(CNT, {v:6, duration:0.3, onUpdate:cu}, 14.43);
+  tl.to(P+"p6", {rotation:58, y:14, duration:0.55, ease:"power4.in"}, 16.50);
+  tl.to(CNT, {v:7, duration:0.3, onUpdate:cu}, 16.50);
+  tl.to(P+"p7", {rotation:-62, y:14, duration:0.55, ease:"power4.in"}, 18.58);
+  tl.to(CNT, {v:8, duration:0.3, onUpdate:cu}, 18.58);
+  tl.to(P+"p8", {rotation:58, y:14, duration:0.55, ease:"power4.in"}, 20.65);
+  tl.to(CNT, {v:9, duration:0.3, onUpdate:cu}, 20.65);
+  tl.to(P+"p9", {rotation:-62, y:14, duration:0.55, ease:"power4.in"}, 22.73);
+  tl.to(CNT, {v:10, duration:0.3, onUpdate:cu}, 22.73);
+  tl.to(P+"p10", {rotation:58, y:14, duration:0.55, ease:"power4.in"}, 24.81);
+  tl.to(CNT, {v:11, duration:0.3, onUpdate:cu}, 24.81);
+  tl.to(P+"p11", {rotation:-62, y:14, duration:0.55, ease:"power4.in"}, 26.88);
+  tl.to(CNT, {v:12, duration:0.3, onUpdate:cu}, 26.88);
+  tl.fromTo(P+"ft", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.6}, 29.5);
+
+  window.__timelines["g-wires"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

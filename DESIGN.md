@@ -18,6 +18,15 @@ design review) before any paid generation:
 | `insert` | the clip's OWN audio | interview / TV news / radio / 911 call | OWNER CONFIRMS every insert before it enters a render |
 | `graphic` | optional VO | radar loop / map / timeline animation | self-made from NEXRAD/data = zero claim risk |
 
+## Script writing (ep5+, owner-ordered 2026-08-05)
+
+**Read `references/script-scaling.md` before writing any script** — the retention lattice:
+per-minute invariant cadences, 3–6 min self-similar acts, loop-table plant/pay, text-only act
+briefs (no JSON/code), 4th-grader language, spice = clarifying footnote not filler. It also
+carries the **pre-TTS fact-QC layer** (eyeball pass + verification verdicts; zero open
+`[verify]` markers before TTS) and the **insert-transcription rule** (transcribe every insert
+in full BEFORE cut selection; cut at the transcript's action/emotion peak).
+
 ## Audio rules (hard)
 
 - Every sourced clip is **muted by default**. Exactly one exception: `insert` segments, where the
@@ -51,11 +60,34 @@ Per beat: agent pulls 2-3 candidates, extracts frames, vision-checks, picks. Too
 License check per item; storm-chaser footage NEVER without license; news-network footage
 sparingly/short/narrated-over (claims budgeted, segments must survive being claimed).
 
+### Cold-open hook contract (owner-rated, ep2 rebuild — 2026-07-27; amended 2026-08-05)
+The first 25-30s decide the video. Owner rated ep2's first hook 0.6/10 and the rebuilt one
+shipped; these are the standing requirements for every episode's cold open:
+- **NO black start (owner order 2026-08-05, ep5+): frame one is MID-ACTION** — the episode's
+  defining shot already moving, anchor audio already mid-transmission. High curiosity, high
+  impact from the first frame. The 2-3s VOID below survives only as the hook's END punctuation.
+- **An intelligible, high-stakes ANCHOR line starts by ~2.5s** — a real broadcast/dispatch
+  voice saying something a viewer cannot skip (ep2: Spann's live "tornado emergency"). Not
+  ambience, not music, not a fragment.
+- **Date/place title card inside the first second** (viewer must know where/when instantly).
+- **Every cut lands ON an audio event** (a line ends, a roar starts, a siren swells) — never
+  cut mid-sentence, never let commentary "just start" and get cut off.
+- **A sonic spine runs the whole hook** (ep2: siren — fade in from black, duck under the
+  anchor voice, swell at impact, die into the void). No silent clips, no dead air.
+- **Inserts end on their complete emotional statement** — trim orphan tails ruthlessly
+  ("we knew something was coming." — stop. Nothing after).
+- **End the hook with a 2-3s VOID (black + fading spine) before the narrator enters** — the
+  contrast is the hook's punctuation.
+- Few clips, each earning its slot (ep2: warning → impact → dispatch → void). More clips ≠
+  more captivating; undifferentiated montage is what scored 0.6.
+
 ### Broadcast-clip rehook cadence (owner order 2026-07-26)
 Core audience is 40–70+ — they watched these events on live TV; real broadcast/news/PD/survivor
 clips are the nostalgia rehook, stock footage only fills between them. **A real clip lands every
-45–60s (or as the beat needs), never long stretches of pure stock.** Network news: 3–4s max per
-use, narrated-over, courtesy credit in description — credit manages goodwill, it does NOT remove
+45–60s (or as the beat needs), never long stretches of pure stock.** Network news: transcribe
+first, cut at the best moment; up to ~12-15s per pull when narrated over (owner 2026-08-12 —
+commentary audio may be featured, audio mix is a per-cut editor decision), courtesy credit in
+description — credit manages goodwill, it does NOT remove
 claim risk, and it never substitutes for a license. **Claims-vs-strikes distinction (Oldshue
 ruling): network/TV material draws Content ID revenue claims (budgeted, survivable); independent
 chaser/streamer footage draws manual copyright strikes (channel-fatal) — the NEVER-without-license
@@ -66,8 +98,8 @@ obfuscation.**
 ## Composition authoring rules
 
 - Animations JS/WAAPI only — CSS @keyframes disables fast-capture (measured 2026-07-21).
-- Render: `npx hyperframes@<pin> render . --gpu --browser-gpu --experimental-fast-capture=true
-  --quality standard --crf 16 --fps 30`.
+- Render: `scripts\render.cmd <slug> <draft|full>` — full recipe (flags, env vars, `--workers 3`
+  pin) baked in; see repo CLAUDE.md step 5. Never hand-type render commands.
 - Each episode's index.html is authored fresh (agent-as-editor). Reusable CSS snippets may
   accumulate in `assets/styles/` but NO scene templates — template-ification is the failure mode
   this design exists to avoid.
@@ -152,9 +184,11 @@ floors/ceilings; taste stays with the model.
   graphic/text/quote element as a viewer** — for each one ask: landing, idling, or minor fix?
   Table the verdicts (the "is it sitting for the egg to hatch" pass). Same pass re-checks clip
   pacing. This is an AI-judgment step — never enforced by script.
-- **Cut-pacing baselines (guidance for the editor's reasoning, NOT code-enforced):** stills
-  4-7s · video clips 8-12s (motion earns time) · hooks 2-4s · graphics for as long as they
-  keep delivering new information. Deviate whenever the beat demands it — reason per shot.
+- **Cut-pacing baselines (guidance for the editor's reasoning; the still cap IS code-enforced
+  in sweep):** stills 3-6s MAX with motion, never longer (owner 2026-08-12) · video clips up to
+  12-15s when the clip matches the narration (motion earns time) · hooks 2-4s · graphics for as
+  long as they keep delivering new information, PLUS ~1s of land time after the last beat —
+  never cut ON motion (owner 2026-08-12). Deviate whenever the beat demands it — reason per shot.
 - **Naming: one asset = one exact filename, cited by filename always** — never prose aliases
   ("cupcake renamed fruit-cake" ban). Different stock files of similar subjects are legitimate
   different shots; the sin is re-showing ONE file under different references. Edit script
@@ -168,6 +202,18 @@ floors/ceilings; taste stays with the model.
 
 - Hook: cold-open insert (911 audio / broadcast) or present-tense stat over motion. ≤15s to thesis.
 - After an emotional payoff: hold 2-4s, ambience up, then cut hard to the next act.
+- **Chapter blackout (documentary breath — ep1/ep2 device, MANDATORY ep4+; owner order
+  2026-07-31):** between acts, and on a key beat, cut to a full 2-3s BLACK. It resets the eye and
+  is what makes ep1/ep2 read like a documentary. ep1/ep2 place a plain black section on the
+  picture track:
+  `<section class="clip blackout" data-start="X" data-duration="2.4"–"3.0" data-track-index="1"></section>`
+  with `.blackout { position:absolute; inset:0; background:#000; }`. Cut TO black hard (no fade),
+  hold 2-3s in silence or low ambience, cut OUT to the next act. **ep3 kept only the cold-open
+  VOID (h1-s3) and dropped the recurring act-boundary blackouts** — its (now-deleted)
+  `build_ep3.py` generator never emitted them between acts. A regression, not a style choice:
+  the next episode's editor MUST hand-place act-boundary blackouts. ep3 stays as shipped; do
+  not re-render it for this. (Generators were purged 2026-08-02 — see CLAUDE.md TRIPWIRE;
+  episode HTML is hand-authored, so "shot table" workflows no longer exist.)
 - Never two inserts back-to-back; narration re-anchors between them.
 - Stats mid-video, emotion banked at the end (teardown-verified pattern).
 - Micro-loops every 30-45s, phrasing varied; no recap; CTA short.
@@ -177,3 +223,80 @@ floors/ceilings; taste stays with the model.
   "Disasters don't ask permission. But they do send warnings. Learn what yours sounds like —
   so when it comes, you already know what to do. This was The Warning Hour." It plays over the
   title card; it IS the outro (still no recap, no content summary).
+
+---
+# GRAPHICS CONTRACT (binding, from ep2 — owner order 2026-07-29 after ep3 v2 scored 2/10)
+**Source of truth = `episodes/ep2-2011-super-outbreak/compositions/*.html`. READ THEM before
+authoring any graphic. Do not infer this language from a previous episode's index.html.**
+
+## 1. Authoring form — sub-composition files, always
+One graphic = one file `episodes/<slug>/compositions/g-<name>.html` with `<template>`, own
+`<style>`, own `#root[data-composition-id]`, own paused GSAP timeline registered to
+`window.__timelines["g-<name>"]`. Mounted from index.html as:
+`<div id="host-x" data-composition-id="g-x" data-composition-src="compositions/g-x.html"
+ data-start data-duration data-track-index data-width="1920" data-height="1080"></div>`
+NEVER build graphic DOM from JS `innerHTML` strings inside index.html — it kills the per-graphic
+design pass and makes code QC impossible. (ep3 v2 regression.)
+
+## 2. Panel anatomy — the stat card (ep2 g-stat-philly)
+Full-height right panel, NOT a floating box: `right:0; top:0; bottom:0; width:820px;
+background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0));
+padding:90px 70px 0 170px`. Content order, top to bottom:
+eyebrow → place name → serif-italic sub → stamp → labelled rows → counter → counter label.
+
+## 3. Type scale (literal, per role)
+| role | font | size | color | tracking |
+|---|---|---|---|---|
+| eyebrow | Arial 700 | 22px | #93a3b2 | 6px |
+| place/headline | Arial Black | 52px | #f2f5f8 | — |
+| serif sub | Georgia italic | 26px | #d8a13a | — |
+| stamp | Arial Black on #8e2020 | 96px | #fff | 2px |
+| row value | Arial 700 | 30px | #dfe7ee | 1px |
+| row label | Arial 700 | 19px | #93a3b2 | 4px |
+| counter | Courier New 700 | 84px | #e74c3c | — |
+| counter label | Arial 700 | 20px | #c8d3e0 | 6px |
+| section header | Arial 700 | 26px | #93a3b2 | 8px |
+Three tiers must be visible in every graphic: something ≥52px, something 26–30px, something ≤22px.
+Uniform small text = automatic fail.
+
+## 4. Palette semantics (fixed meaning, ≤10 colors per episode)
+`#8e2020` stamp block · `#c0392b`/`#e74c3c` death & danger · `#d8a13a`/`#e8c56a` serif subs,
+values, warm air · `#5a768f`/`#7fb2e5` cold air, cool diagram parts · `#93a3b2` labels/eyebrows ·
+`#f2f5f8` headlines · `#dfe7ee` body · bg `radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%)`.
+Never a flat `#000`/`#0a1017` fill behind a graphic — always the textured radial.
+
+## 5. Motion vocabulary (the thing ep3 v2 lacked)
+- panel enters `fromTo(x:660 → 0, 0.7, power3.out)`, exits `to(x:980, autoAlpha:0, 0.6, power3.in)`
+- stamp slams `fromTo(scale:2.6, autoAlpha:0 → scale:1, 0.35, power4.in)`
+- rows `fromTo(autoAlpha:0, y:24 → 0, 0.4)`, staggered ~0.6s apart
+- bars/arrows/gauges grow by `scaleX 0→1` with `transformOrigin:"left center"`, 0.5s
+- counters `to({v}, power4.out / power3.out)` with `onUpdate` writing `textContent`
+- one CONTINUOUS motion per long graphic (ep2: `rotation:200, duration:26, ease:"none"` on the
+  spin column; `scale+rotation` over 12s on the supercell). A graphic longer than ~20s MUST carry
+  a continuous element, not just discrete reveals.
+Fade-only graphics are a fail. Target ≥1 scale/slide tween per 2 reveals.
+- **Panel exit TIMING (owner, ep3 v4→v5, 2026-07-31):** the slide-right exit above is REQUIRED —
+  a panel slides out `x:980, autoAlpha:0`, it does not vanish. But time it to the END of the
+  panel's window: anchor the exit to the comp's last ~0.6s AND keep the comp duration ≥ its host
+  window, so the panel never leaves while its beat is still being spoken. ep3 v4's exit fired
+  early (the host window was extended past the comp by `close_picture_gaps`, so the exit landed
+  mid-beat); ep3 v5 over-corrected by DELETING the exit, so panels just disappear. Neither is the
+  contract — keep the slide-right exit, land it on the cut. (ep3 stays as shipped; ep4+ restore
+  the timed exit.)
+
+## 6. Beat cadence + duration
+Beat = a visible change. Max 3s of no change inside any graphic window; ≤2.5s in the first 10s.
+Long graphics are allowed (ep2 g-met = 81s) ONLY with a continuous motion element plus
+word-synced beats. Author beats against `audio/<seg>.words.json` and leave the spoken timestamp
+in a code comment, ep2-style: `/* FUEL @4.74; 1,000 @16.6; 2,000 @20.8 */`.
+
+## 7. Explain with a diagram, never a label on a shape
+ep2 built real widgets: a CAPE gauge with gradient fill, a layered lid cross-section, staggered
+shear arrows + rotating column, a conic-gradient supercell. A cone captioned "tornado" or a line
+captioned "warm air" conveys nothing — build the mechanism, animate it, let the label name it.
+
+## 8. Hard gate — code QC, not frame QC
+`node scripts/graphics_qc.mjs .` (from the episode dir) must exit 0 before any render. Frame renders
+CONFIRM; they never DISCOVER. Sampling 105 frames of a 35-min cut inspects 0.3% of the runtime and
+cannot see text collision, empty containers, or crop errors — those are `getBoundingClientRect`
+assertions in the DOM. (ep3 v2 root cause.)
