@@ -21,8 +21,19 @@ SESSION_LEDGER.md
 .worktrees/
 .playwright-cli/
 
-# secrets
-.env
+# ebook build outputs — regenerable from manuscript + build scripts
+ebook/build/review/
+ebook/appendix/out/
+
+# Appendix B: NCEI Storm Events yearly CSVs, ~180 MB, re-fetchable
+# with `python3 ebook/appendix/derive_hazards.py --fetch`
+ebook/appendix/.storm-events-cache/
+ebook/appendix/.agency-cache/
+
+# landing local dev + binder build outputs (regenerable; binder PDF: see ebook/binder/README.md)
+landing/.wrangler/
+ebook/binder/out/
+.qc-shots/
 
 # runtime artifacts (render done-markers, HF studio caches)
 *.marker

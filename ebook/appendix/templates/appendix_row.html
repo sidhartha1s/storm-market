@@ -1,0 +1,22 @@
+<!-- One compact Appendix B row per state, rendered into the book's fixed 6x9 pages.
+
+     Deliberately a *lookup*, not a dossier. The full per-state detail — mitigation programme,
+     deductible and roof-settlement notes, emergency refill provision, disconnection moratoria —
+     lives in that state's packet, where the reader only ever sees their own. Carrying all of it
+     for 51 states in the book pushed Appendix B to roughly 51 pages against an 18-page budget,
+     and it was 49 states of detail no reader asked for.
+
+     Empty fields render as an em dash — never as invented text. -->
+<div class="stblock">
+  <h3 class="stname">{{state}} <span class="stabbr">{{abbr}}</span>
+    <span class="stver">verified {{verified_on}}</span></h3>
+  <p class="sthaz">{{hazard_1}} <span class="pb">P{{playbook_1}}</span> <span class="ssn">{{season_1}}</span>
+    · {{hazard_2}} <span class="pb">P{{playbook_2}}</span> <span class="ssn">{{season_2}}</span>
+    · {{hazard_3}} <span class="pb">P{{playbook_3}}</span> <span class="ssn">{{season_3}}</span></p>
+  <p class="streg"><span class="stlab">Region</span> {{regions}}</p>
+  <p class="stline"><span class="stlab">Emergency mgmt</span><span class="stval">{{em_phone}} · {{em_url}}</span></p>
+  <p class="stline"><span class="stlab">Insurance</span><span class="stval">{{doi_phone}} · {{doi_url}}</span></p>
+  <p class="stline"><span class="stlab">Alerts</span><span class="stval">{{alerts_url}}</span></p>
+  <p class="stline"><span class="stlab">Energy aid</span><span class="stval">{{energy_assist_phone}} · {{energy_assist_url}}</span></p>
+  <p class="stline"><span class="stlab">Well testing</span><span class="stval">{{well_test_url}}</span></p>
+</div>
