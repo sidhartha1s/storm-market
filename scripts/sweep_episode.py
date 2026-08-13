@@ -211,7 +211,7 @@ for name, sdur in sorted(shortest.items()):
     y = cached_yavg(f'{name}|{int(p.stat().st_mtime)}|{round(sdur / 2, 1)}',
                     ["-ss", str(round(sdur / 2, 2)), "-i", str(p), "-frames:v", "1",
                      "-vf", "signalstats,metadata=print:file=-", "-f", "null", "-"])
-    if 0 <= y < 25:
+    if y is not None and y < 25:
         dark.append((name, y))
 report("luma gate (no near-black sources, YAVG>=25)", dark,
        lambda x: f"{Path(x[0]).name} YAVG={x[1]:.1f}")
