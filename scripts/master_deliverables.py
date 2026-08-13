@@ -106,7 +106,7 @@ def main():
     print("[3/4] verifying master loudness ...")
     v = measure(master)
     out_i, out_tp = float(v["input_i"]), float(v["input_tp"])
-    expected_i = in_i + gain
+    expected_i = in_i + (loud_gain if loud_gain - gain > 0.5 else gain)
     print(f"      master {out_i} LUFS / TP {out_tp} dBTP (expected ~{expected_i:.2f})")
     if abs(out_i - expected_i) > TOL_I or out_tp > -0.9:
         sys.exit(f"FAIL: master out of tolerance (I {out_i} vs {expected_i:.2f} "
