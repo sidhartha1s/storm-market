@@ -203,6 +203,44 @@ except Exception:
 report("luma gate (no near-black sources, YAVG>=25)", dark,
        lambda x: f"{Path(x[0]).name} YAVG={x[1]:.1f}")
 
+# 8b. motion gate — ep5 v5 shipped 5 dozerreel cuts that were FROZEN STILLS at the source
+# (cut from a 911-audio reel's photo-slideshow sections). A mounted video whose first and
+# last shown frames differ by YAVG < 0.6 is a still pretending to be a clip. Same cache file.
+def _frame(p, t, out):
+    subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(p), "-ss", str(t),
+                    "-frames:v", "1", out], capture_output=True, timeout=60)
+import tempfile
+_tmpa = str(Path(tempfile.gettempdir()) / "_sweep_ma.png")
+_tmpb = str(Path(tempfile.gettempdir()) / "_sweep_mb.png")
+frozen = []
+for name, sdur in sorted(shortest.items()):
+    p = ep / name
+    if not p.exists() or sdur < 2.0:
+        continue
+    key = f'MOTION|{name}|{int(p.stat().st_mtime)}|{round(sdur, 1)}'
+    if key not in luma_cache:
+        try:
+            _frame(p, 0.4, _tmpa)
+            _frame(p, sdur - 0.4, _tmpb)
+            r = subprocess.run(
+                ["ffmpeg", "-hide_banner", "-i", _tmpa, "-i", _tmpb, "-lavfi",
+                 "blend=all_mode=difference,signalstats,metadata=print:file=-",
+                 "-frames:v", "1", "-f", "null", "-"],
+                capture_output=True, text=True, timeout=60)
+            mm = re.search(r"YAVG=([\d.]+)", r.stdout + r.stderr)
+            luma_cache[key] = float(mm.group(1)) if mm else -1.0
+        except Exception:
+            luma_cache[key] = -1.0
+    y = luma_cache[key]
+    if 0 <= y < 0.6:
+        frozen.append((name, y))
+try:
+    luma_cache_p.write_text(json.dumps(luma_cache))
+except Exception:
+    pass
+report("motion gate (no frozen-still sources, frame diff >= 0.6)", frozen,
+       lambda x: f"{Path(x[0]).name} diff={x[1]:.3f}")
+
 # 9. long stills — owner 2026-08-12: stills are 3-6s with motion, "not a PowerPoint"
 long_still = [(w["at"], w["name"], w["dur"]) for w in t1
               if w["dur"] > 6.0 and not w["name"].endswith(".mp4")]
