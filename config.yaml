@@ -9,12 +9,13 @@ external:
   # md5 2d8ea8f14763932f3f76da67d7fd1612 — verify before every produce run (JP voice-ref gotcha)
 
 render:
-  hyperframes_version: "0.7.81"   # pinned; upgrade ritual = test render, diff, bump
-  # Bumped 2026-07-29 from 0.7.64 (owner order). CHECK BEFORE EVERY PRODUCTION RUN:
+  hyperframes_version: "0.7.107"  # pinned; upgrade ritual = test render, diff, bump
+  # Bumped 2026-08-14 from 0.7.81 (owner order; A/B test render on demo-joplin-90).
+  # CHECK BEFORE EVERY PRODUCTION RUN:
   #   npm view hyperframes version   -> if newer, pull and bump here before starting.
-  # 0.7.81 SHORTENS the ffprobe deadline from 120s to 30s (Date.now() + 3e4). That is the
-  # deadline twelve ep3 v3 renders died on, so this version is STRICTER about heavy media,
-  # not more forgiving. media_budget.py is what keeps it satisfied.
+  # The 30s ffprobe deadline (Date.now() + 3e4) introduced in 0.7.81 is UNCHANGED in
+  # 0.7.107 (verified in dist) — heavy media still dies against it; media_budget.py is
+  # what keeps it satisfied.
   fps: 30
   quality: standard               # "high" silently picks libx265 CPU on this box (JP measured)
   crf: 16
