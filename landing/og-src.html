@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Source for assets/og.png (1200x630). Regenerate:
+     node shot.mjs og-src.html ../.qc-shots/og 1200  → crop is exact, body is fixed-size. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=IBM+Plex+Mono:wght@600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{width:1200px;height:630px;overflow:hidden;position:relative;background:#151a1d;
+  font-family:"Fraunces",Georgia,serif}
+.sky{position:absolute;inset:-30%;
+  background:
+    radial-gradient(60% 45% at 20% 15%,rgba(94,116,110,.36),transparent 62%),
+    radial-gradient(55% 40% at 78% 10%,rgba(70,86,96,.42),transparent 60%),
+    radial-gradient(70% 55% at 55% 95%,rgba(24,30,33,.95),transparent 70%),
+    radial-gradient(40% 30% at 66% 40%,rgba(201,135,28,.12),transparent 65%)}
+.wrap{position:absolute;inset:0;display:flex;align-items:center;gap:56px;padding:0 70px}
+.txt{flex:1}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:20px;font-weight:600;
+  letter-spacing:.24em;color:#c9871c;margin-bottom:26px}
+h1{font-size:74px;font-weight:900;line-height:1.02;color:#f6f1e3;letter-spacing:-.015em}
+h1 em{font-style:italic;color:#c9871c}
+.sub{font-family:"IBM Plex Mono",monospace;font-size:21px;color:#a8b0ac;
+  margin-top:30px;letter-spacing:.06em}
+.sub b{color:#f0ebdd}
+.cover{flex:0 0 330px;transform:rotate(2deg)}
+.cover img{width:330px;display:block;border-radius:4px;
+  box-shadow:0 40px 80px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.08)}
+.rule{position:absolute;left:0;right:0;bottom:0;height:12px;background:#a92c1e}
+</style>
+</head>
+<body>
+<div class="sky"></div>
+<div class="wrap">
+  <div class="txt">
+    <div class="kicker">A 486-PAGE FIELD MANUAL</div>
+    <h1>What the survivors did <em>differently.</em></h1>
+    <div class="sub"><b>130 protections</b> · every US hazard · <b>$47</b>, once</div>
+  </div>
+  <div class="cover"><img src="assets/cover.jpg" alt=""></div>
+</div>
+<div class="rule"></div>
+</body>
+</html>
