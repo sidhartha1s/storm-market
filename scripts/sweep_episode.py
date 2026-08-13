@@ -173,9 +173,14 @@ except Exception:
     luma_cache = {}
 # videos play from FILE START: a window of duration d shows file[0..d], so the
 # representative frame is at d/2 of the SHORTEST mounted window — not the file middle.
+still_ok_srcs = set()
+for m2 in re.finditer(r'<video[^>]*data-still-ok="[^"]*"[^>]*>', h):
+    s2 = re.search(r'src="([^"]+)"', m2.group(0))
+    if s2:
+        still_ok_srcs.add(s2.group(1))
 shortest = {}
 for w in t1:
-    if w["name"].endswith(".mp4"):
+    if w["name"].endswith(".mp4") and w["name"] not in still_ok_srcs:
         shortest[w["name"]] = min(shortest.get(w["name"], 1e9), w["dur"])
 dark = []
 for name, sdur in sorted(shortest.items()):
