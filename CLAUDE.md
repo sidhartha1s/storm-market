@@ -224,9 +224,10 @@ npm view hyperframes version          # newer than config.yaml? pull it and bump
 Bump `config.yaml render.hyperframes_version` AND every `npx hyperframes@<pin>` in `scripts/`
 together — they are checked against each other in `render.cmd`'s header. Then read the diff
 for anything touching timeouts or the extract stage before trusting an old measurement.
-Bumped to **0.7.81** on 2026-07-29 (from 0.7.64). Worth knowing why that matters: 0.7.81
-**shortens the ffprobe deadline from 120s to 30s**. Every number measured against 0.7.64 has
-a 4x smaller margin now — a newer version can be STRICTER, not just better.
+Bumped to **0.7.107** on 2026-08-14 (from 0.7.81; A/B-tested on demo-joplin-90). History:
+0.7.81 (2026-07-29) **shortened the ffprobe deadline from 120s to 30s** — every number measured
+against 0.7.64 has a 4x smaller margin; the 30s deadline is UNCHANGED in 0.7.107 (verified in
+dist). A newer version can be STRICTER, not just better.
 
 ## HARD RULE — do not write code for what reasoning already does (owner 2026-07-29)
 **"Keep code headache low."** Before adding a script, a check, or a flag, answer one question:
