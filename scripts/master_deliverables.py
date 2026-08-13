@@ -81,13 +81,24 @@ def main():
     m = measure(src)
     in_i, in_tp = float(m["input_i"]), float(m["input_tp"])
     # one gain satisfying both the loudness target and the true-peak ceiling
-    gain = round(min(TARGET_I - in_i, TARGET_TP - in_tp), 2)
-    print(f"      input {in_i} LUFS / TP {in_tp} dBTP -> gain {gain:+.2f} dB")
+    loud_gain = TARGET_I - in_i
+    gain = round(min(loud_gain, TARGET_TP - in_tp), 2)
+    # when hot peaks cap the gain >0.5 dB below the loudness target, take the loudness
+    # gain and let a true-peak limiter catch the few hot samples instead of shipping a
+    # quiet master (renders can touch 0 dBFS — measured on ep5 v4/v5, 2026-08-13)
+    if loud_gain - gain > 0.5:
+        af = (f"volume={round(loud_gain, 2)}dB,"
+              f"alimiter=limit={10 ** (TARGET_TP / 20):.4f}:attack=5:release=80:level=false")
+        print(f"      input {in_i} LUFS / TP {in_tp} dBTP -> gain {loud_gain:+.2f} dB "
+              f"+ TP limiter at {TARGET_TP} dB (plain gain would land {gain:+.2f})")
+    else:
+        af = f"volume={gain}dB"
+        print(f"      input {in_i} LUFS / TP {in_tp} dBTP -> gain {gain:+.2f} dB")
 
     print(f"[2/4] writing {master.name} (video copy, aac 256k) ...")
     r = subprocess.run(
         ["ffmpeg", "-hide_banner", "-y", "-i", str(src), "-c:v", "copy",
-         "-af", f"volume={gain}dB", "-c:a", "aac", "-b:a", "256k", str(master)],
+         "-af", af, "-c:a", "aac", "-b:a", "256k", str(master)],
         capture_output=True, text=True)
     if r.returncode != 0:
         sys.exit(f"master encode failed:\n{r.stderr[-800:]}")
