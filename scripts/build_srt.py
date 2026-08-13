@@ -27,7 +27,7 @@ def main():
 
     cues = []
     # insert: no transcript, label it
-    ins = re.search(r'<audio id="nx-ins1"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"', html)
+    ins = re.search(r'<audio [^>]*?id="nx-ins1"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"', html)
     if ins:
         s = float(ins.group(1))
         cues.append((s + 0.4, s + float(ins.group(2)) - 0.2, "[DISPATCH RECORDING — JASPER COUNTY FIRE]"))
