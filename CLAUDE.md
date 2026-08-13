@@ -38,11 +38,37 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   audio alone, both interleaved) is a per-cut editor decision, made with reasoning.
 - **SFX is default-ON (owner 2026-08-12, reversing the owner-optional default):** one base
   tone/bed across the episode + swells at peak moments (~every 45-60s as the script peaks).
-  Library (`assets/sfx/`) or ffmpeg-synthesized only — NEVER downloaded music; audio Content ID
-  is fatal (a claimed clip can be cut; a claimed music bed poisons the whole video). Verify the
-  layer post-render (volumedetect).
+  Library (`assets/sfx/`), owner-provided Pixabay downloads (`assets/sfx/owner-2026-08-13/`),
+  DeAPI-generated tracks (keys in repo-root `.env`, recipe in LEARNINGS.md), or ffmpeg-synthesized.
+  NEVER YouTube-ripped/unlicensed music; audio Content ID is fatal (a claimed clip can be cut; a
+  claimed music bed poisons the whole video). (Owner 2026-08-13, supersedes the blanket
+  "never downloaded music".) Verify the layer post-render (volumedetect) AND pre-render via the
+  full audio-mixdown gate (LEARNINGS.md).
 - **Grading:** unified subtle grade template on all broadcast/news/private clips (anti-flag +
   look consistency); stock/PD exempt. When doubtful about a grade or a claim risk — stop and ask.
+- **Audio-first open (owner, ep5):** the episode MUST open with audio — mid-action, high
+  curiosity, high impact. A clip without audio is dead; never open on black or a silent visual.
+- **Risers/builds land WITH the narration (owner 2026-08-13):** a riser peaks and ends exactly
+  where the narration line stops (or a few ms after) — never still climbing after the voice is
+  done. Hits under speech mount ~0.4 volume (0.6 stacks to 0 dBFS — measured ep5).
+- **Non-narration audio budget (owner 2026-08-13):** ~30s of external audio in a 32-min episode
+  is failure-thin. Source assertion AUDIO like clips: 911 calls, presser sound, survivor voice,
+  sirens/ambience — and per-act music with real character (known-good tracks + recipe live in
+  `assets/sfx/deapi/README.md`; owner Pixabay pack in `assets/sfx/owner-2026-08-13/`).
+- **Siren terminology (owner 2026-08-13, STANDING):** "siren" = tornado/civil-defense siren
+  (the wailing air-raid type, e.g. `soundreality-civil-defense-siren-128262.mp3`); "weewoo" =
+  ambulance/police/firetruck siren. When the owner asks for a siren, it is the tornado siren
+  unless he says weewoo.
+- **Preview = 98% production quality (owner):** a "rough draft" preview is a full-quality cut at
+  draft encode settings — never a placeholder. Before ANY render: full audio-mixdown listen +
+  hook watch (the experience pass); a known-below-spec layer means STOP and report, not render.
+- **Script never references its own structure (owner):** no "concluding", "summarizing", "in
+  this video" — reads as a seam, instant viewer skip.
+- **Graphics text discipline (owner, ep3-ep5 recurring):** proper case, never all-lowercase;
+  reduce text per frame (one idea at a time, no disjointed stat spray); a graphic holds until
+  its point fully lands (never cut early) and never starts before its trigger moment or after a
+  blank gap; ≥3 type tiers per designed card (graphics_qc flat-type gate: small <26 / mid /
+  big ≥52 px must all appear).
 - **Sourcing bar (owner 2026-08-12): find 3-4x more candidates than you need.** Millions of PD
   and news clips exist — "short of clips" means stop everything and source better. Use
   PySceneDetect (validate install first) to split long sources into scene cuts instead of

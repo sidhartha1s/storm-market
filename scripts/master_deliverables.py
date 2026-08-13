@@ -15,6 +15,9 @@ Reads  episodes/<slug>/renders/<basename>.mp4 and writes:
 
 Plain gain (not dynamic loudnorm) is deliberate: episode mixes land with tight
 LRA (~3.4 measured on ep2), where one measured gain preserves the mix exactly.
+Exception (2026-08-13): when the source's true peak would cap the gain >0.5 dB
+below the loudness target, the loudness gain is applied WITH a true-peak
+alimiter — renders can touch 0 dBFS and a quiet master is the worse trade.
 Fails loud (exit 1) if the verify pass misses tolerance.
 
 --hevc uses GPU NVENC (fast: ~6x realtime). It requires an ffmpeg whose hevc_nvenc
@@ -81,13 +84,28 @@ def main():
     m = measure(src)
     in_i, in_tp = float(m["input_i"]), float(m["input_tp"])
     # one gain satisfying both the loudness target and the true-peak ceiling
-    gain = round(min(TARGET_I - in_i, TARGET_TP - in_tp), 2)
-    print(f"      input {in_i} LUFS / TP {in_tp} dBTP -> gain {gain:+.2f} dB")
+    loud_gain = TARGET_I - in_i
+    gain = round(min(loud_gain, TARGET_TP - in_tp), 2)
+    # when hot peaks cap the gain >0.5 dB below the loudness target, take the loudness
+    # gain and let a true-peak limiter catch the few hot samples instead of shipping a
+    # quiet master (renders can touch 0 dBFS — measured on ep5 v4/v5, 2026-08-13)
+    limited = loud_gain - gain > 0.5
+    if limited:
+        # limit 1 dB under the TP target: alimiter caps SAMPLE peaks, while loudnorm
+        # measures inter-sample true peak, which overshoots ~0.9 dB after AAC (measured)
+        af = (f"volume={round(loud_gain, 2)}dB,"
+              f"alimiter=limit={10 ** ((TARGET_TP - 1.0) / 20):.4f}:attack=5:release=80:level=false")
+        print(f"      input {in_i} LUFS / TP {in_tp} dBTP -> gain {loud_gain:+.2f} dB "
+              f"+ limiter ceiling {TARGET_TP - 1.0} dBFS for the {TARGET_TP} dBTP target "
+              f"(plain gain would land {gain:+.2f})")
+    else:
+        af = f"volume={gain}dB"
+        print(f"      input {in_i} LUFS / TP {in_tp} dBTP -> gain {gain:+.2f} dB")
 
     print(f"[2/4] writing {master.name} (video copy, aac 256k) ...")
     r = subprocess.run(
         ["ffmpeg", "-hide_banner", "-y", "-i", str(src), "-c:v", "copy",
-         "-af", f"volume={gain}dB", "-c:a", "aac", "-b:a", "256k", str(master)],
+         "-af", af, "-c:a", "aac", "-b:a", "256k", str(master)],
         capture_output=True, text=True)
     if r.returncode != 0:
         sys.exit(f"master encode failed:\n{r.stderr[-800:]}")
@@ -95,7 +113,7 @@ def main():
     print("[3/4] verifying master loudness ...")
     v = measure(master)
     out_i, out_tp = float(v["input_i"]), float(v["input_tp"])
-    expected_i = in_i + gain
+    expected_i = in_i + (loud_gain if limited else gain)
     print(f"      master {out_i} LUFS / TP {out_tp} dBTP (expected ~{expected_i:.2f})")
     if abs(out_i - expected_i) > TOL_I or out_tp > -0.9:
         sys.exit(f"FAIL: master out of tolerance (I {out_i} vs {expected_i:.2f} "

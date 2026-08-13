@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; overflow:hidden;
+    background:radial-gradient(ellipse at 50% 42%, #0b1016 0%, #030507 78%); }
+  .hdr { position:absolute; left:0; right:0; top:64px; text-align:center; font-weight:700;
+    font-size:26px; letter-spacing:8px; color:#93a3b2; }
+  .scene { position:absolute; left:0; right:0; top:150px; bottom:0; }
+  .ground { position:absolute; left:0; right:0; bottom:150px; height:3px; background:#2a3644; }
+  /* converging air */
+  .airlab { position:absolute; font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:1px; }
+  #g-vortex-coollab { left:150px; bottom:180px; color:#7fb2e5; }
+  #g-vortex-hotlab  { right:150px; bottom:180px; color:#e07a4a; text-align:right; }
+  .airbar { position:absolute; bottom:160px; height:10px; }
+  #g-vortex-coolbar { left:120px; width:520px; background:linear-gradient(90deg,#1a2e42,#5a768f); transform-origin:left center; }
+  #g-vortex-hotbar  { right:120px; width:520px; background:linear-gradient(270deg,#3a1410,#c0392b); transform-origin:right center; }
+  /* the low spin curl */
+  #g-vortex-curl { position:absolute; left:50%; bottom:158px; width:120px; height:120px; margin-left:-60px;
+    border:5px dashed #d8a13a; border-radius:50%; opacity:0; }
+  /* updraft column (continuous rising) */
+  #g-vortex-plume { position:absolute; left:50%; bottom:161px; width:230px; margin-left:-115px; height:640px;
+    background:linear-gradient(0deg, rgba(192,57,43,0.55) 0%, rgba(216,161,58,0.28) 45%, rgba(159,195,232,0.10) 100%);
+    filter:blur(3px); opacity:0; transform-origin:bottom center; }
+  .ember { position:absolute; width:7px; height:7px; border-radius:50%; background:#e8c56a; box-shadow:0 0 8px #d8a13a; }
+  /* the vortex funnel */
+  #g-vortex-funnel { position:absolute; left:50%; bottom:161px; width:180px; margin-left:-90px; height:600px;
+    background:repeating-linear-gradient(78deg, rgba(192,57,43,0.62) 0px, rgba(224,122,74,0.5) 22px, rgba(90,118,143,0.34) 44px, rgba(192,57,43,0.62) 66px);
+    clip-path:polygon(38% 0, 62% 0, 100% 100%, 0 100%); transform-origin:bottom center; opacity:0;
+    filter:blur(1px); }
+  /* labels */
+  .step { position:absolute; font-family:'Arial Black',Arial,sans-serif; color:#f2f5f8; opacity:0; }
+  #g-vortex-s1 { left:760px; bottom:300px; font-size:30px; color:#d8a13a; }
+  #g-vortex-s2 { left:410px; top:330px; font-size:34px; text-align:right; width:380px; }
+  #g-vortex-s3 { left:1160px; top:330px; font-size:52px; color:#e74c3c; }
+  .serif { position:absolute; left:0; right:0; top:96px; text-align:center; font-family:Georgia,serif;
+    font-style:italic; font-size:26px; color:#b8c6d4; opacity:0; }
+</style>
+<div data-hf-id="hf-i7vz" id="root" data-composition-id="g-vortex" data-width="1920" data-height="1080">
+  <div data-hf-id="hf-qyil" class="hdr" id="g-vortex-hdr">HOW A FIRE BUILDS A TORNADO</div>
+  <div data-hf-id="hf-cenn" class="serif" id="g-vortex-serif">The fire did not break the rules of weather — it met them</div>
+  <div data-hf-id="hf-wua0" class="scene">
+    <div data-hf-id="hf-ygft" class="ground"></div>
+    <div data-hf-id="hf-p45o" class="airbar" id="g-vortex-coolbar"></div>
+    <div data-hf-id="hf-l22a" class="airbar" id="g-vortex-hotbar"></div>
+    <div data-hf-id="hf-9seb" class="airlab" id="g-vortex-coollab">COOL RIVER AIR</div>
+    <div data-hf-id="hf-ohk7" class="airlab" id="g-vortex-hotlab">SUPERHEATED<br data-hf-id="hf-x5px">BURN AIR</div>
+    <div data-hf-id="hf-dg1s" id="g-vortex-curl"></div>
+    <div data-hf-id="hf-viet" id="g-vortex-plume"></div>
+    <div data-hf-id="hf-6wuy" id="g-vortex-funnel"></div>
+    <div data-hf-id="hf-5t2g" class="step" id="g-vortex-s1">The boundary begins to turn</div>
+    <div data-hf-id="hf-ugs6" class="step" id="g-vortex-s2">The fire cloud inhales</div>
+    <div data-hf-id="hf-nl4m" class="step" id="g-vortex-s3">The spin is stretched</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const root = document.getElementById("g-vortex-funnel").parentNode;
+  // rising embers along the updraft — created in JS, animated by GSAP (no CSS @keyframes)
+  const embers = [];
+  for (let i=0;i<16;i++){ const e=document.createElement("div"); e.className="ember";
+    e.style.left=(50 + (Math.sin(i)*7)) + "%"; e.style.bottom="161px"; e.style.opacity="0";
+    root.appendChild(e); embers.push(e); }
+
+  const tl = gsap.timeline({ paused: true });
+  const P="#g-vortex-";
+  /* beats vs A2-S4 words.json (retune when wiring index):
+     "western edge"@2 "boundary began to turn"@8 "fire cloud was inhaling"@16
+     "skater pulls in her arms"@24 "storm was the fire"@34 */
+  tl.set([P+"s1",P+"s2",P+"s3",P+"serif",P+"curl",P+"plume",P+"funnel"],{autoAlpha:0},0);
+  tl.set([P+"coolbar",P+"hotbar"],{scaleX:0},0);
+  tl.fromTo(P+"hdr",{autoAlpha:0,y:-16},{autoAlpha:1,y:0,duration:0.6},0.4);
+  // converging air
+  tl.fromTo(P+"coollab",{autoAlpha:0},{autoAlpha:1,duration:0.4},1.6);
+  tl.fromTo(P+"hotlab",{autoAlpha:0},{autoAlpha:1,duration:0.4},1.6);
+  tl.to(P+"coolbar",{scaleX:1,duration:1.2,ease:"power2.out"},2.0);
+  tl.to(P+"hotbar",{scaleX:1,duration:1.2,ease:"power2.out"},2.0);
+  tl.to([P+"coolbar",P+"hotbar"],{opacity:0.55,duration:1.1,ease:"sine.inOut",yoyo:true,repeat:28},3.3); // air masses keep converging
+  // faint updraft rises from the start — the boundary isn't an empty stage while the spin builds
+  tl.to(P+"plume",{autoAlpha:0.4,duration:1.6},4.2);
+  tl.fromTo(P+"plume",{scaleY:0.12},{scaleY:0.55,duration:10.5,ease:"none"},4.2);
+  // the spin curl appears + rotates continuously (the continuous element)
+  tl.to(P+"curl",{autoAlpha:0.9,duration:0.5},7.6);
+  tl.fromTo(P+"s1",{autoAlpha:0,y:18},{autoAlpha:1,y:0,duration:0.4},8.0);
+  tl.to(P+"curl",{rotation:360,duration:14,ease:"none",repeat:1},7.6);
+  // updraft plume rises (continuous ember flow)
+  tl.to(P+"plume",{autoAlpha:1,duration:0.8},15.5);
+  tl.to(P+"plume",{scaleY:1,duration:2.0,ease:"power2.out"},15.5);
+  tl.fromTo(P+"s2",{autoAlpha:0,y:18},{autoAlpha:1,y:0,duration:0.4},16.0);
+  embers.forEach((e,i)=>{ tl.to(e,{opacity:0.9,duration:0.3},16.2 + (i*0.12)%2);
+    tl.to(e,{bottom:"+=560",opacity:0,duration:2.4,ease:"power1.in",repeat:6,repeatDelay:0.3},16.2+(i*0.15)); });
+  // the stretch → funnel grows from ground; the SPIN is striation drift inside the cone,
+  // never a 2D rotation of the cone itself (pinwheel-tumble looked wrong — owner 5:31 note)
+  tl.to(P+"funnel",{autoAlpha:1,duration:0.6},24.0);
+  tl.fromTo(P+"funnel",{scaleY:0.1,scaleX:0.5},{scaleY:1,scaleX:1,duration:2.2,ease:"power3.out"},24.0);
+  tl.to(P+"funnel",{backgroundPositionX:"-660px",duration:9.5,ease:"none"},24.0); // bands race around the column
+  tl.to(P+"funnel",{skewX:3,duration:1.3,ease:"sine.inOut",yoyo:true,repeat:7},24.0); // the column sways
+  tl.fromTo(P+"s3",{autoAlpha:0,scale:1.3},{autoAlpha:1,scale:1,duration:0.5,ease:"power4.in"},24.4);
+  tl.fromTo(P+"serif",{autoAlpha:0},{autoAlpha:1,duration:0.7},29.0);
+  // 143-mph/EF3 stat belongs to the p-pop-ef3 card at 352s — no duplicate readout here.
+  // last beat lands 29.7; exit clears 34.7 before the 35.12 cut
+  tl.to([P+"hdr",P+"serif",P+"coollab",P+"hotlab",P+"coolbar",P+"hotbar",P+"curl",
+         P+"plume",P+"funnel",P+"s1",P+"s2",P+"s3",".ember"],{autoAlpha:0,duration:0.9},33.8);
+  window.__timelines["g-vortex"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

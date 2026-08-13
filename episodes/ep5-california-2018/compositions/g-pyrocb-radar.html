@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; overflow:hidden;
+    background:radial-gradient(ellipse at 50% 45%, #0a0f14 0%, #030507 78%); }
+  .hdr { position:absolute; left:0; right:0; top:64px; text-align:center; font-weight:700;
+    font-size:26px; letter-spacing:8px; color:#93a3b2; opacity:0; }
+  /* radar scope */
+  #g-pcr-scope { position:absolute; left:460px; top:190px; width:720px; height:720px; opacity:0; }
+  #g-pcr-sweep { position:absolute; left:820px; top:550px; width:360px; height:3px; transform-origin:left center;
+    background:linear-gradient(90deg, rgba(127,178,229,0.9), rgba(127,178,229,0)); opacity:0; }
+  /* readout rail */
+  #g-pcr-site { position:absolute; left:1280px; top:250px; font-family:'Courier New',monospace; font-weight:700;
+    font-size:34px; color:#7fb2e5; opacity:0; }
+  #g-pcr-sitesub { position:absolute; left:1282px; top:300px; font-size:19px; letter-spacing:4px; color:#93a3b2; opacity:0; }
+  #g-pcr-hooklab { position:absolute; left:1280px; top:424px; font-family:'Arial Black',Arial,sans-serif;
+    font-size:52px; color:#e74c3c; opacity:0; }
+  #g-pcr-hooksub { position:absolute; left:1282px; top:498px; font-family:Georgia,serif; font-style:italic;
+    font-size:24px; color:#b8c6d4; opacity:0; width:420px; }
+  #g-pcr-btn { position:absolute; left:1280px; top:640px; font-family:'Courier New',monospace; font-weight:700;
+    font-size:30px; color:#d8a13a; opacity:0; width:440px; }
+</style>
+<div data-hf-id="hf-e6u7" id="root" data-composition-id="g-pyrocb-radar" data-width="1920" data-height="1080">
+  <div data-hf-id="hf-ryr3" class="hdr" id="g-pcr-hdr">THEY WATCHED IT LIVE</div>
+  <svg data-hf-id="hf-e39m" id="g-pcr-scope" width="720" height="720" viewBox="0 0 720 720">
+    <circle data-hf-id="hf-f3ie" cx="360" cy="360" r="340" fill="rgba(70,100,130,0.07)" stroke="#44586c" stroke-width="2.5" />
+    <circle data-hf-id="hf-02fm" cx="360" cy="360" r="240" fill="none" stroke="#37485a" stroke-width="2" />
+    <circle data-hf-id="hf-jmpt" cx="360" cy="360" r="140" fill="none" stroke="#37485a" stroke-width="2" />
+    <line data-hf-id="hf-4wf9" x1="360" y1="20" x2="360" y2="700" stroke="#2a3846" stroke-width="1.5" />
+    <line data-hf-id="hf-fsmd" x1="20" y1="360" x2="700" y2="360" stroke="#2a3846" stroke-width="1.5" />
+    <!-- smoke echo mass (reflectivity blob) -->
+    <g data-hf-id="hf-2ljc" id="g-pcr-echo" opacity="0">
+      <ellipse data-hf-id="hf-abj2" cx="330" cy="330" rx="130" ry="105" fill="#2e7d32" opacity="0.55" />
+      <ellipse data-hf-id="hf-l2rl" cx="345" cy="340" rx="88" ry="70" fill="#c8b900" opacity="0.6" />
+      <ellipse data-hf-id="hf-qw72" cx="358" cy="350" rx="52" ry="42" fill="#e07a4a" opacity="0.75" />
+    </g>
+    <!-- hook of rotation: velocity couplet + hook appendage -->
+    <g data-hf-id="hf-0tyi" id="g-pcr-hook" opacity="0">
+      <path data-hf-id="hf-c1hl" d="M400,392 q44,10 40,52 q-6,44 -56,38 q-34,-4 -36,-34" fill="none" stroke="#e74c3c" stroke-width="9" stroke-linecap="round" stroke-dasharray="260" stroke-dashoffset="260" />
+      <circle data-hf-id="hf-jp45" cx="382" cy="418" r="17" fill="#e74c3c" opacity="0.85" />
+      <circle data-hf-id="hf-v2vv" cx="416" cy="438" r="17" fill="#27ae60" opacity="0.85" />
+    </g>
+  </svg>
+  <div data-hf-id="hf-fd2z" id="g-pcr-sweep"></div>
+  <div data-hf-id="hf-ur5k" id="g-pcr-site">DOPPLER · KBBX</div>
+  <div data-hf-id="hf-6tkr" id="g-pcr-sitesub">JULY 26, 2018 · EVENING SCAN</div>
+  <div data-hf-id="hf-yurr" id="g-pcr-hooklab">HOOK OF ROTATION</div>
+  <div data-hf-id="hf-r0eq" id="g-pcr-hooksub">The signature that, over any ordinary storm, means tornado</div>
+  <div data-hf-id="hf-frkt" id="g-pcr-btn">NO TORNADO WARNING EXISTS FOR A FIRE</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused:true });
+  const P = "#g-pcr-";
+  /* beats vs A2-S12 words.json: "watched...live on radar"@8.5-11.2, "radar...staring"@14,
+     "saw a hook of rotation curl"@19.8-21.5, "signature"@23.6, "no button for this"@29-31.4 */
+  tl.set([P+"hdr",P+"scope",P+"sweep",P+"site",P+"sitesub",P+"hooklab",P+"hooksub",P+"btn"],{autoAlpha:0},0);
+  tl.fromTo(P+"hdr",{autoAlpha:0,y:-16},{autoAlpha:1,y:0,duration:0.6},0.15);
+  tl.to(P+"scope",{autoAlpha:1,duration:0.9},2.2);
+  tl.to(P+"sweep",{autoAlpha:1,duration:0.4},3.0);
+  tl.to(P+"sweep",{rotation:360,duration:4.0,ease:"none",repeat:7},3.0); // sweep turns through the window
+  tl.to([P+"site",P+"sitesub"],{autoAlpha:1,duration:0.5},4.0);
+  // the smoke mass paints in sweeps from early on — the scope is never an empty stage
+  tl.fromTo(P+"echo",{autoAlpha:0,scale:0.35,transformOrigin:"46% 46%"},{autoAlpha:0.55,scale:0.7,duration:4.0,ease:"power1.inOut"},6.0);
+  tl.to(P+"echo",{autoAlpha:1,scale:1,duration:3.0,ease:"power1.inOut"},13.0); // "staring at the Carr Fire"
+  // the hook curls up inside the smoke, drawn on as the line is spoken
+  tl.to(P+"hook",{autoAlpha:1,duration:0.3},19.6);
+  tl.to(P+"hook path",{strokeDashoffset:0,duration:2.0,ease:"power1.inOut"},19.8);
+  tl.fromTo(P+"hooklab",{autoAlpha:0,x:16},{autoAlpha:1,x:0,duration:0.5},20.2);
+  tl.to(P+"hooksub",{autoAlpha:1,duration:0.6},23.5);
+  tl.to(P+"hook",{scale:1.06,transformOrigin:"50% 55%",duration:0.9,ease:"sine.inOut",yoyo:true,repeat:8},20.5);
+  tl.fromTo(P+"btn",{autoAlpha:0,y:12},{autoAlpha:1,y:0,duration:0.6},29.3);
+  // exit LANDS on the 33.02 cut — no dark-bg gap before the next shot
+  tl.to([P+"hdr",P+"scope",P+"sweep",P+"site",P+"sitesub",P+"hooklab",P+"hooksub",P+"btn"],
+        {autoAlpha:0,duration:0.7},32.3);
+  window.__timelines["g-pyrocb-radar"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

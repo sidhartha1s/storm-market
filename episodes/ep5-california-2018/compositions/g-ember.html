@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; overflow:hidden;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .hdr { position:absolute; left:0; right:0; top:60px; text-align:center; font-weight:700;
+    font-size:24px; letter-spacing:7px; color:#93a3b2; opacity:0; }
+  #g-ember-front { position:absolute; left:120px; bottom:150px; width:14px; top:220px;
+    background:linear-gradient(180deg,#c0392b,#e07a4a); box-shadow:0 0 30px #c0392b; opacity:0; }
+  .frontlbl { position:absolute; left:70px; bottom:100px; font-family:'Arial Black',Arial,sans-serif;
+    font-size:26px; color:#e07a4a; opacity:0; }
+  .town { position:absolute; right:180px; bottom:150px; top:260px; width:360px;
+    border-left:2px dashed #2a3644; background:linear-gradient(90deg, rgba(43,55,66,0.35), rgba(43,55,66,0.08)); opacity:0; }
+  .townlbl { position:absolute; right:200px; top:200px; font-family:'Arial Black',Arial,sans-serif;
+    font-size:28px; color:#f2f5f8; opacity:0; }
+  .ember { position:absolute; width:6px; height:6px; border-radius:50%; background:#e8c56a; box-shadow:0 0 8px #d8a13a; }
+  .spot { position:absolute; width:10px; height:10px; border-radius:50%; background:#e74c3c;
+    box-shadow:0 0 14px #e74c3c; opacity:0; }
+  #g-ember-count { position:absolute; left:0; right:0; top:150px; text-align:center;
+    font-family:'Courier New',monospace; font-weight:700; font-size:84px; color:#e74c3c; opacity:0; }
+  #g-ember-clab { position:absolute; left:0; right:0; top:250px; text-align:center;
+    font-family:Arial,sans-serif; font-weight:700; font-size:22px; letter-spacing:5px; color:#c8d3e0; opacity:0; }
+  .foot { position:absolute; left:0; right:0; bottom:80px; text-align:center; font-family:Georgia,serif;
+    font-style:italic; font-size:26px; color:#b8c6d4; opacity:0; }
+</style>
+<div data-hf-id="hf-jz8a" id="root" data-composition-id="g-ember" data-width="1920" data-height="1080">
+  <div data-hf-id="hf-7p0o" class="hdr" id="g-ember-hdr">THE FIRE THREW FIRE AHEAD OF ITSELF</div>
+  <div data-hf-id="hf-pv5k" id="g-ember-front"></div>
+  <div data-hf-id="hf-dn37" class="frontlbl" id="g-ember-frontlbl">FIRE FRONT</div>
+  <div data-hf-id="hf-oh28" class="town" id="g-ember-town"></div>
+  <div data-hf-id="hf-guh5" class="townlbl" id="g-ember-townlbl">PARADISE</div>
+  <div data-hf-id="hf-ct98" id="g-ember-count">0</div>
+  <div data-hf-id="hf-hckw" id="g-ember-clab">SPOT FIRES INSIDE TOWN BY 8:30 A.M.</div>
+  <div data-hf-id="hf-54ff" class="foot" id="g-ember-foot">Embers landed miles ahead of the flames — the town burned from the inside out</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const root=document.getElementById("g-ember-front").parentNode;
+  const embers=[], spots=[];
+  // spot-fire locations inside the "town" zone (right side)
+  for(let i=0;i<32;i++){ const s=document.createElement("div"); s.className="spot";
+    s.style.left=(1180 + (i*37)%520)+"px"; s.style.top=(320 + (i*53)%520)+"px";
+    root.appendChild(s); spots.push(s); }
+  const tl=gsap.timeline({paused:true});
+  const P="#g-ember-";
+  /* beats vs A4-S4/S5 (retune at index): front@1 embers arc@6 spot fires bloom + counter@14 foot@24 */
+  tl.set([P+"hdr",P+"frontlbl",P+"townlbl",P+"town",P+"count",P+"clab",P+"foot"],{autoAlpha:0},0);
+  tl.fromTo(P+"hdr",{autoAlpha:0,y:-14},{autoAlpha:1,y:0,duration:0.6},0.3);
+  tl.to([P+"front",P+"frontlbl"],{autoAlpha:1,duration:0.6},1.2);
+  tl.to(P+"front",{opacity:0.72,duration:0.55,ease:"sine.inOut",yoyo:true,repeat:38},1.8); // fire front flickers through the window
+  tl.to([P+"town",P+"townlbl"],{autoAlpha:1,duration:0.6},2.4);
+  // embers arc from front to town — continuous stream
+  function launchEmber(delay){ const e=document.createElement("div"); e.className="ember";
+    e.style.left="134px"; e.style.top="300px"; e.style.opacity="0"; root.appendChild(e); embers.push(e);
+    tl.to(e,{opacity:0.9,duration:0.2},delay);
+    tl.to(e,{left:"1250px",top:"420px",duration:1.6,ease:"power1.in"},delay);
+    tl.to(e,{top:"460px",duration:1.0,ease:"power2.in"},delay+0.8);
+    tl.to(e,{opacity:0,duration:0.3},delay+1.6); }
+  // a thin trickle starts almost immediately — the stage is never a bar and a box with a void between
+  for(let i=0;i<38;i++) launchEmber(3.0 + i*0.46);
+  // spot fires bloom + counter
+  const cnt={v:0}; tl.to([P+"count",P+"clab"],{autoAlpha:1,duration:0.5},13.5);
+  spots.forEach((s,i)=>{ tl.fromTo(s,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1,duration:0.3,ease:"power3.out"},14.0+i*0.18); });
+  tl.to(cnt,{v:32,duration:5.4,ease:"none",onUpdate:function(){
+    const el=document.getElementById("g-ember-count"); if(el) el.textContent=Math.round(cnt.v)+"+";}},14.0);
+  tl.to(P+"foot",{autoAlpha:1,duration:0.7},20.4);
+  // soft exit before the cut
+  tl.to([P+"hdr",P+"front",P+"frontlbl",P+"town",P+"townlbl",P+"count",P+"clab",P+"foot",".spot"],
+        {autoAlpha:0,duration:0.7},22.1);
+  window.__timelines["g-ember"]=tl;
+})();
+</script>
+</template>
+</body>
+</html>

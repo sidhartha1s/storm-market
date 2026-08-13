@@ -4,7 +4,9 @@ Each check prints PASS/FAIL and the offending items. No check depends on a rende
 """
 import json
 import re
+import subprocess
 import sys
+import tempfile
 from collections import Counter
 from pathlib import Path
 
@@ -17,7 +19,7 @@ def report(name, bad, detail=lambda x: str(x)):
     if bad:
         fails.append(name)
         print(f"FAIL {name}: {len(bad)}")
-        for b in bad[:8]:
+        for b in bad[:40]:  # a truncated report hid 16 of 24 family findings once — print them all
             print("      ", detail(b))
     else:
         print(f"PASS {name}")
@@ -91,6 +93,10 @@ report("element ids unique", sorted(n for n, c in ids.items() if c > 1))
 fam_uses = {}
 for w in t1:
     fam = re.sub(r'-[a-f]\.mp4$', '', Path(w["name"]).name).replace(".mp4", "")
+    # victim portraits deliberately RETURN within their own vignette (namecard -> face ->
+    # quote); that is narrative continuation, not a b-roll repeat — the owner's complaint
+    if fam.startswith("portrait-"):
+        continue
     fam_uses.setdefault(fam, []).append((w["at"], w["at"] + w["dur"]))
 fam_bad = []
 for fam, fwins in fam_uses.items():
@@ -98,7 +104,11 @@ for fam, fwins in fam_uses.items():
     # a cut that CONTINUES the same source (next window starts as the last ends) is one
     # sequence, not a repeat — the sin is interruption-and-return, not a split shot
     tight = [(a[0], b[0]) for a, b in zip(fwins, fwins[1:])
-             if b[0] - a[0] < 60 and b[0] - a[1] > 0.5]
+             if b[0] - a[0] < 60 and b[0] - a[1] > 0.5
+             # the hook montage's cold-open -> payoff return (owner-approved v4 shape:
+             # the signature shot opens at 0s and lands again on the thesis line before
+             # the title) is structure, not a footage-shortage repeat
+             and not (a[0] < 35 and b[0] < 35)]
     ats = [w[0] for w in fwins]
     if tight:
         fam_bad.append((fam, f"{len(ats)}x, {len(tight)} pair(s) <60s apart at {int(tight[0][0])}s"))
@@ -153,6 +163,94 @@ report("graphic window fits its timeline", overrun,
 # every input. A gate that cannot fail is worse than no gate, because it is counted as
 # coverage. Reveal-vs-spoken-word alignment is still verified by reading words.json when
 # a composition is authored — it is not, and must not pretend to be, automated here.
+
+# 8. luma gate — owner 2026-08-13 (ep5 v4 shipped one near-black taillight source TEN times):
+# any mounted video whose mid-file frame reads YAVG < 25 is unwatchably dark. Probes are cached
+# by (path, mtime) in media/.luma-cache.json so repeat sweeps stay fast.
+luma_cache_p = ep / "media" / ".luma-cache.json"
+try:
+    # drop legacy -1.0 "failed probe" entries — failures are reported, never cached
+    luma_cache = {k: v for k, v in json.loads(luma_cache_p.read_text()).items() if v >= 0}
+except Exception:
+    luma_cache = {}
+
+probe_failed = []  # a failed probe is a FAILED gate, never a silent pass
+
+def cached_yavg(key, ffmpeg_args):
+    """Run an ffmpeg probe whose output contains a signalstats YAVG line; cache by key.
+    Failures are NOT cached (retried next run) and land in probe_failed — fail loud."""
+    if key not in luma_cache:
+        try:
+            r = subprocess.run(["ffmpeg"] + ffmpeg_args, capture_output=True, text=True,
+                               timeout=60)
+            mm = re.search(r"YAVG=([\d.]+)", r.stdout + r.stderr)
+            if not mm:
+                probe_failed.append((key, "no YAVG in ffmpeg output"))
+                return None
+            luma_cache[key] = float(mm.group(1))
+        except Exception as e:
+            probe_failed.append((key, repr(e)[:80]))
+            return None
+    return luma_cache[key]
+
+# videos play from FILE START: a window of duration d shows file[0..d], so the
+# representative frame is at d/2 of the SHORTEST mounted window — not the file middle.
+still_ok_srcs = set()
+for m2 in re.finditer(r'<video[^>]*data-still-ok="[^"]*"[^>]*>', h):
+    s2 = re.search(r'src="([^"]+)"', m2.group(0))
+    if s2:
+        still_ok_srcs.add(s2.group(1))
+shortest = {}
+for w in t1:
+    if w["name"].endswith(".mp4") and w["name"] not in still_ok_srcs:
+        shortest[w["name"]] = min(shortest.get(w["name"], 1e9), w["dur"])
+dark = []
+for name, sdur in sorted(shortest.items()):
+    p = ep / name
+    if not p.exists():
+        continue
+    y = cached_yavg(f'{name}|{int(p.stat().st_mtime)}|{round(sdur / 2, 1)}',
+                    ["-ss", str(round(sdur / 2, 2)), "-i", str(p), "-frames:v", "1",
+                     "-vf", "signalstats,metadata=print:file=-", "-f", "null", "-"])
+    if y is not None and y < 25:
+        dark.append((name, y))
+report("luma gate (no near-black sources, YAVG>=25)", dark,
+       lambda x: f"{Path(x[0]).name} YAVG={x[1]:.1f}")
+
+# 8b. motion gate — ep5 v5 shipped 5 dozerreel cuts that were FROZEN STILLS at the source
+# (cut from a 911-audio reel's photo-slideshow sections). A mounted video whose first and
+# last shown frames differ by YAVG < 0.6 is a still pretending to be a clip. Same cache file.
+def _frame(p, t, out):
+    # -ss BEFORE -i: keyframe seek, not a linear decode of the whole source
+    Path(out).unlink(missing_ok=True)  # stale frame from the previous clip must never be diffed
+    subprocess.run(["ffmpeg", "-y", "-v", "error", "-ss", str(t), "-i", str(p),
+                    "-frames:v", "1", out], capture_output=True, timeout=60)
+    return Path(out).exists()
+
+_tmpa = str(Path(tempfile.gettempdir()) / "_sweep_ma.png")
+_tmpb = str(Path(tempfile.gettempdir()) / "_sweep_mb.png")
+frozen = []
+for name, sdur in sorted(shortest.items()):
+    p = ep / name
+    if not p.exists() or sdur < 2.0:
+        continue
+    key = f'MOTION|{name}|{int(p.stat().st_mtime)}|{round(sdur, 1)}'
+    if key not in luma_cache:
+        if not (_frame(p, 0.4, _tmpa) and _frame(p, sdur - 0.4, _tmpb)):
+            probe_failed.append((key, "frame extraction failed"))
+            continue
+    y = cached_yavg(key, ["-hide_banner", "-i", _tmpa, "-i", _tmpb, "-lavfi",
+                          "blend=all_mode=difference,signalstats,metadata=print:file=-",
+                          "-frames:v", "1", "-f", "null", "-"])
+    if y is not None and y < 0.6:
+        frozen.append((name, y))
+try:
+    luma_cache_p.write_text(json.dumps(luma_cache))
+except Exception:
+    pass
+report("motion gate (no frozen-still sources, frame diff >= 0.6)", frozen,
+       lambda x: f"{Path(x[0]).name} diff={x[1]:.3f}")
+report("media probes succeeded", probe_failed, lambda x: f"{x[0]}: {x[1]}")
 
 # 9. long stills — owner 2026-08-12: stills are 3-6s with motion, "not a PowerPoint"
 long_still = [(w["at"], w["name"], w["dur"]) for w in t1

@@ -54,7 +54,7 @@ for m in re.finditer(r'<(section|video|div|img)\b([^>]*)>', h):
 pictures.sort()
 
 segments = {}       # segment id -> (start, duration)
-for m in re.finditer(r'<audio id="nx-([\w]+)"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"', h):
+for m in re.finditer(r'<audio [^>]*?id="nx-([\w]+)"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"', h):
     segments[m.group(1)] = (float(m.group(2)), float(m.group(3)))
 
 
