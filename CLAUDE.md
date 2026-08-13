@@ -297,8 +297,9 @@ suggestion. The gate checks three numbers and refuses the render: clip resolutio
 composition, clip length vs the longest window that uses it, and total megabytes to decode.
 `scripts/optimize_clips.py <episode> --apply` fixes all three (originals move to media/_orig/).
 
-`ffprobe deadline with code 0` means SLOW, never corrupt. The deadline is 120s per probe,
-hardcoded in hyperframes 0.7.64 (`deadlineAtMs: Date.now() + 12e4`) — no env var raises it.
+`ffprobe deadline with code 0` means SLOW, never corrupt. The deadline is 30s per probe,
+hardcoded since hyperframes 0.7.81 (`deadlineAtMs: Date.now() + 3e4`; 120s back in 0.7.64) —
+no env var raises it.
 The probe itself is fast (3.18s worst serial, 8.18s at six-way concurrency, measured with
 hyperframes' own `-count_packets` arguments, measured 2026-07-29); it blows the
 deadline queued behind the extract stage decoding oversized source. An idle box does NOT
