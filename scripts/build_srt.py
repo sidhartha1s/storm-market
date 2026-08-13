@@ -32,7 +32,7 @@ def main():
         s = float(ins.group(1))
         cues.append((s + 0.4, s + float(ins.group(2)) - 0.2, "[DISPATCH RECORDING — JASPER COUNTY FIRE]"))
 
-    for m in re.finditer(r'<audio id="nx-(?!ins)[^"]*" src="(audio/[^"]+)\.wav" data-start="([\d.]+)"', html):
+    for m in re.finditer(r'<audio [^>]*?id="nx-(?!ins)[^"]*" src="(audio/[^"]+)\.wav" data-start="([\d.]+)"', html):
         wj = ep / f"{m.group(1)}.words.json"
         if not wj.exists():
             sys.exit(f"missing words.json: {wj}")
