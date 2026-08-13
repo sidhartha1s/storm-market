@@ -221,8 +221,11 @@ report("luma gate (no near-black sources, YAVG>=25)", dark,
 # last shown frames differ by YAVG < 0.6 is a still pretending to be a clip. Same cache file.
 def _frame(p, t, out):
     # -ss BEFORE -i: keyframe seek, not a linear decode of the whole source
+    Path(out).unlink(missing_ok=True)  # stale frame from the previous clip must never be diffed
     subprocess.run(["ffmpeg", "-y", "-v", "error", "-ss", str(t), "-i", str(p),
                     "-frames:v", "1", out], capture_output=True, timeout=60)
+    return Path(out).exists()
+
 _tmpa = str(Path(tempfile.gettempdir()) / "_sweep_ma.png")
 _tmpb = str(Path(tempfile.gettempdir()) / "_sweep_mb.png")
 frozen = []
@@ -232,12 +235,13 @@ for name, sdur in sorted(shortest.items()):
         continue
     key = f'MOTION|{name}|{int(p.stat().st_mtime)}|{round(sdur, 1)}'
     if key not in luma_cache:
-        _frame(p, 0.4, _tmpa)
-        _frame(p, sdur - 0.4, _tmpb)
+        if not (_frame(p, 0.4, _tmpa) and _frame(p, sdur - 0.4, _tmpb)):
+            probe_failed.append((key, "frame extraction failed"))
+            continue
     y = cached_yavg(key, ["-hide_banner", "-i", _tmpa, "-i", _tmpb, "-lavfi",
                           "blend=all_mode=difference,signalstats,metadata=print:file=-",
                           "-frames:v", "1", "-f", "null", "-"])
-    if 0 <= y < 0.6:
+    if y is not None and y < 0.6:
         frozen.append((name, y))
 try:
     luma_cache_p.write_text(json.dumps(luma_cache))
@@ -245,6 +249,7 @@ except Exception:
     pass
 report("motion gate (no frozen-still sources, frame diff >= 0.6)", frozen,
        lambda x: f"{Path(x[0]).name} diff={x[1]:.3f}")
+report("media probes succeeded", probe_failed, lambda x: f"{x[0]}: {x[1]}")
 
 # 9. long stills — owner 2026-08-12: stills are 3-6s with motion, "not a PowerPoint"
 long_still = [(w["at"], w["name"], w["dur"]) for w in t1
