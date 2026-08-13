@@ -89,7 +89,8 @@ def main():
     # when hot peaks cap the gain >0.5 dB below the loudness target, take the loudness
     # gain and let a true-peak limiter catch the few hot samples instead of shipping a
     # quiet master (renders can touch 0 dBFS — measured on ep5 v4/v5, 2026-08-13)
-    if loud_gain - gain > 0.5:
+    limited = loud_gain - gain > 0.5
+    if limited:
         # limit 1 dB under the TP target: alimiter caps SAMPLE peaks, while loudnorm
         # measures inter-sample true peak, which overshoots ~0.9 dB after AAC (measured)
         af = (f"volume={round(loud_gain, 2)}dB,"
