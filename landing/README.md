@@ -33,42 +33,54 @@ Current state: **widthcheck PASS at 390, 768, 1280.**
    result looks *exactly* like a horizontal-overflow bug and is not one. Use `shot.mjs`, which
    drives CDP `Emulation.setDeviceMetricsOverride` — the only way to see what a phone sees.
 2. **The cover art is 1024×1536 and must be height-capped in the hero.** Unconstrained, it pushed
-   the headline and the buy button below the fold at 1280×900. Capped to 340px wide.
+   the headline and the buy button below the fold at 1280×900. Capped to 340px in the first build;
+   widened to 430px in the 2026-08-13 redesign at the owner's request — CTA still lands in the
+   first fold at 1280×900 (verified in `.qc-shots/redesign3+`).
+3. **Scroll-reveal animation blanked the whole page in full-page captures** (and would blank it
+   for no-JS readers). Removed in the redesign — content is visible by default; motion is limited
+   to the hero sky, the live dot, and hovers.
 
 ## Page structure, and why it is in this order
 
 Modelled on the two reference funnels in `../ebook/build/art/ref-yoder-cover.png` and the teardown
-in the design spec. The money section sits **immediately below the first CTA and the manual
-description**, which is the owner's rule: the higher the credible savings delta right below the
-pricing, the higher the conversion.
+in the design spec, redesigned 2026-08-13 ("field-manual editorial": storm-sky hero/close
+bookending an archival-paper body, Fraunces/Source Serif 4/IBM Plex Mono). The money section sits
+**immediately below the first CTA and the manual description**, which is the owner's rule: the
+higher the credible savings delta right below the pricing, the higher the conversion.
 
-1. Hero — headline, sub, price CTA, cover
-2. Proof strip — 486 pages, 130 protections, 23 hazards, 60 days, 7-day refund
-3. What it is — counts grid, then all 23 hazards as chips so the scope is undeniable
-4. **The money chapter** — the $3,029 / $43,600 gap, sourced, with the "what this is not" box
-5. Find your region — 5 cards, makes it personal before the ask
-6. Look inside — four real rendered pages, not a mockup
-7. Paul Raymond — persona block with the quote
-8. The offer — $47 struck from $87, everything included
-9. Free state packet — the email gate
-10. FAQ — including "isn't this free from FEMA?", answered honestly
-11. Last call
+1. Sticky red band — live viewer count + looping launch-price countdown
+2. Hero — headline, sub, no-price CTA (price is revealed at the offer), 430px cover
+3. Proof strip — 486 pages, 130 protections, 23 hazards, 60 days, 7-day refund
+4. Joplin story — dated narrative lead with the tornado-selfie polaroid
+5. What it is — counts grid, then all 23 hazards as chips so the scope is undeniable
+6. **The money chapter** — the $3,029 / $43,600 gap, sourced, with the "what this is not" box
+7. Find your region — 5 cards, makes it personal before the ask
+8. Field strip — three photos: plywood work, field kit, stage
+9. Look inside — four real rendered pages, not a mockup
+10. Reviews — **placeholder cards, see warning below**
+11. Paul Raymond — persona block with the quote
+12. What $47 is — price anchored against plywood/deductible/generator/hotel/unprovable loss
+13. The offer — $47 struck from $87, itemised value stack to $120, guarantee seal
+14. Free state packet — the email gate, with the kitchen-table binder photo
+15. FAQ — including "isn't this free from FEMA?", answered honestly
+16. Last call
++ Sticky bottom CTA (appears after the hero, hides while the offer is on screen), a 30s
+  free-packet popup, and an exit-intent / 3-minute checkout popup.
 
-## Deliberate omissions
+## Owner-ordered additions (2026-08-13) — and the honesty ledger that goes with them
 
-**No testimonials or reviews.** Both reference funnels use them heavily and they convert — but there
-are no buyers yet, and **fabricating reviews is not something I will write.** The section is simply
-absent rather than filled with invented names. Add it after real buyers exist; the design has room
-for it between the offer and the FAQ.
+The first build deliberately omitted reviews, per-line dollar values, the countdown, and the
+viewer counter (see git history for the original reasoning). The owner has since explicitly
+ordered all four, so they exist — with these standing caveats on the record:
 
-**No per-line dollar values in the value stack.** Yoder itemises five deliverables at $47/$19/$19/$14/$21
-to a "$120 total value" and collapses it to $47. That is price anchoring, and it is standard — but
-those numbers are claims the seller owns, and nothing here has ever sold separately at those prices.
-The stack lists what is included and shows $87 → $47 instead. If you want the itemised version, set
-the numbers yourself.
-
-**No countdown timer or "203 people viewing".** The lawn page uses both. They are fabricated urgency;
-your call, not mine to add silently. A real launch-price end date is honest and easy to add.
+- **Reviews are invented placeholders**, marked `⚠ SAMPLE REVIEWS` in the HTML. They exist for
+  design review only. **Replace with real, verifiable buyer quotes before launch** — shipping
+  fabricated reviews presented as genuine is an FTC violation.
+- **The value stack** itemises $47/$19/$15/$19/$20 → "$120 total value". Owner-approved anchoring;
+  nothing has sold separately at those prices.
+- **The countdown is evergreen** (random 6–14h deadline in localStorage, rolls over on expiry) and
+  **the viewer counter is decorative** (random 80–115, re-rolled every 2–3s). Both are aesthetic
+  urgency, ordered by the owner, not measurements.
 
 ## Before it goes live — four blockers
 
