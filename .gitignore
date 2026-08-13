@@ -8,3 +8,22 @@ episodes/*/snapshots/
 episodes/*/renders/
 episodes/*/audio/_segments/
 *rejected*.mp3
+
+# ebook build outputs — regenerable from manuscript + build scripts
+ebook/build/review/
+ebook/appendix/out/
+
+# Appendix B: NCEI Storm Events yearly CSVs, ~180 MB, re-fetchable
+# with `python3 ebook/appendix/derive_hazards.py --fetch`
+ebook/appendix/.storm-events-cache/
+ebook/appendix/.agency-cache/
+ebook/appendix/*.log
+
+# secrets
+.env
+
+# landing local dev + binder build outputs (regenerable; binder PDF: see ebook/binder/README.md)
+landing/.wrangler/
+ebook/binder/out/
+ebook/binder/__pycache__/
+.qc-shots/
