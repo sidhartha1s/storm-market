@@ -9,6 +9,8 @@
 <meta property="og:description" content="What the survivors did differently — and the 130 things you can do before the next one.">
 <meta property="og:image" content="/assets/og.png">
 <meta property="og:type" content="website">
+<!-- TODO before deploy: add og:url once the domain exists, e.g.
+     <meta property="og:url" content="https://YOURDOMAIN.com/"> -->
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +20,7 @@
 :root{
   /* paper body */
   --paper:#f4eee1; --paper2:#ece4d2; --card:#faf6ec; --line:#d8cdb4; --rule:#b9ac8e;
-  --ink:#211d16; --ink-soft:#4a4335; --faded:#7c7259;
+  --ink:#211d16; --ink-soft:#4a4335; --faded:#6b6249;
   /* storm sky (hero + bookend) */
   --sky:#151a1d; --sky2:#1e2629; --sky-line:#323d41; --sky-text:#ede7d8; --sky-dim:#a8b0ac;
   /* accents */
@@ -429,7 +431,7 @@ footer .small{color:#7e8783}
       <div><b>23</b><span>Hazards</span></div>
       <div><b>60</b><span>Days</span></div>
       <div><b>5</b><span>Regions</span></div>
-      <div><b>50</b><span>State packets</span></div>
+      <div><b>51</b><span>State packets</span></div>
     </div>
     <div class="chips">
       <span class="chip">Tornado</span><span class="chip">Hurricane &amp; storm surge</span>
@@ -940,17 +942,27 @@ const GUMROAD_URL=null;
 (function(){
   const shown=k=>sessionStorage.getItem(k);
   const mark=k=>sessionStorage.setItem(k,'1');
-  let open=null;
+  let open=null,lastFocus=null;
+  // inert everything behind the dialog so Tab and screen readers stay inside it
+  const setInert=on=>{
+    for(const el of document.body.children)
+      if(!(el===open||el.contains?.(open)))el.inert=on;
+  };
   const show=id=>{
     if(open||shown(id))return;
     open=document.getElementById(id);
     open.classList.add('on'); mark(id);
     document.body.style.overflow='hidden';
+    setInert(true);
+    lastFocus=document.activeElement;
+    open.querySelector('.x')?.focus();
   };
   const close=()=>{
     if(!open)return;
+    setInert(false);
     open.classList.remove('on'); open=null;
     document.body.style.overflow='';
+    lastFocus?.focus?.(); lastFocus=null;
   };
   for(const pop of document.querySelectorAll('.pop')){
     pop.addEventListener('click',e=>{
