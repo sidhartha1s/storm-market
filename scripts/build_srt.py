@@ -26,13 +26,21 @@ def main():
     html = (ep / "index.html").read_text(encoding="utf-8")
 
     cues = []
-    # insert: no transcript, label it
-    ins = re.search(r'<audio id="nx-ins1"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"', html)
-    if ins:
-        s = float(ins.group(1))
-        cues.append((s + 0.4, s + float(ins.group(2)) - 0.2, "[DISPATCH RECORDING — JASPER COUNTY FIRE]"))
+    # inserts (archival audio, no transcript): label each from its data-srt-label attribute.
+    # An insert WITHOUT a label is a hard error — a silent skip shipped ep5's SRT with no
+    # 911 caption (the old code hardcoded another episode's nx-ins1/Jasper County values).
+    for ins in re.finditer(r'<audio [^>]*?id="(?:nx-)?ins[^"]*"[^>]*>', html):
+        st = re.search(r'data-start="([\d.]+)"', ins.group(0))
+        du = re.search(r'data-duration="([\d.]+)"', ins.group(0))
+        lab = re.search(r'data-srt-label="([^"]+)"', ins.group(0))
+        if not (st and du):
+            continue
+        if not lab:
+            sys.exit(f"insert audio has no data-srt-label (SRT caption text): {ins.group(0)[:120]}")
+        s = float(st.group(1))
+        cues.append((s + 0.4, s + float(du.group(1)) - 0.2, lab.group(1)))
 
-    for m in re.finditer(r'<audio id="nx-(?!ins)[^"]*" src="(audio/[^"]+)\.wav" data-start="([\d.]+)"', html):
+    for m in re.finditer(r'<audio [^>]*?id="nx-(?!ins)[^"]*" src="(audio/[^"]+)\.wav" data-start="([\d.]+)"', html):
         wj = ep / f"{m.group(1)}.words.json"
         if not wj.exists():
             sys.exit(f"missing words.json: {wj}")

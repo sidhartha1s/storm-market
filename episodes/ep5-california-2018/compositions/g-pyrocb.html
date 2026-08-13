@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; overflow:hidden;
+    background:radial-gradient(ellipse at 50% 42%, #0b1016 0%, #030507 78%); }
+  .hdr { position:absolute; left:0; right:0; top:64px; text-align:center; font-weight:700;
+    font-size:26px; letter-spacing:8px; color:#93a3b2; }
+  /* altitude axis */
+  .axis { position:absolute; left:150px; top:150px; bottom:150px; width:2px; background:#2a3644; }
+  .tick { position:absolute; left:150px; font-family:'Courier New',monospace; font-size:20px; color:#93a3b2; transform:translateY(-50%); }
+  .tick span { position:absolute; left:-120px; width:110px; text-align:right; }
+  .tick:before { content:""; position:absolute; left:0; top:50%; width:14px; height:2px; background:#2a3644; }
+  /* plume column */
+  #g-pyrocb-col { position:absolute; left:640px; bottom:150px; width:260px; height:760px; transform-origin:bottom center;
+    background:linear-gradient(0deg, rgba(192,57,43,0.6), rgba(216,161,58,0.3) 40%, rgba(159,195,232,0.14) 100%);
+    filter:blur(2px); opacity:0; }
+  #g-pyrocb-anvil { position:absolute; left:470px; top:150px; width:600px; height:150px; opacity:0;
+    background:radial-gradient(ellipse at 50% 60%, rgba(230,238,246,0.9), rgba(159,195,232,0.35) 60%, rgba(159,195,232,0) 80%);
+    border-radius:50%; }
+  .ember { position:absolute; width:6px; height:6px; border-radius:50%; background:#e8c56a; box-shadow:0 0 8px #d8a13a; }
+  /* readouts */
+  #g-pyrocb-h { position:absolute; left:960px; top:250px; font-family:'Courier New',monospace; font-weight:700;
+    font-size:76px; color:#7fb2e5; opacity:0; }
+  #g-pyrocb-hlab { position:absolute; left:962px; top:340px; font-size:20px; letter-spacing:5px; color:#c8d3e0; opacity:0; }
+  #g-pyrocb-time { position:absolute; left:960px; top:430px; font-family:'Arial Black',Arial,sans-serif;
+    font-size:30px; color:#d8a13a; opacity:0; }
+  .anvillab { position:absolute; left:1120px; top:170px; font-family:Georgia,serif; font-style:italic;
+    font-size:26px; color:#9fc3e8; opacity:0; width:360px; }
+  #g-pyrocb-name { position:absolute; left:960px; top:560px; font-family:'Arial Black',Arial,sans-serif;
+    font-size:44px; color:#f2f5f8; letter-spacing:2px; opacity:0; }
+  #g-pyrocb-name span { display:block; font-family:Georgia,serif; font-style:italic; font-weight:400;
+    font-size:26px; color:#e8c56a; letter-spacing:0.5px; margin-top:10px; }
+  .footnote { position:absolute; left:0; right:0; bottom:70px; text-align:center; font-family:Georgia,serif;
+    font-style:italic; font-size:25px; color:#b8c6d4; opacity:0; }
+</style>
+<div data-hf-id="hf-ibta" id="root" data-composition-id="g-pyrocb" data-width="1920" data-height="1080">
+  <div data-hf-id="hf-jj77" class="hdr" id="g-pyrocb-hdr">THE FIRE MADE ITS OWN STORM</div>
+  <div data-hf-id="hf-2hmb" class="axis"></div>
+  <div data-hf-id="hf-eucx" class="tick" style="top:900px"><span data-hf-id="hf-i6df">0</span></div>
+  <div data-hf-id="hf-te3o" class="tick" style="top:660px"><span data-hf-id="hf-m78b">4 MI</span></div>
+  <div data-hf-id="hf-tu9w" class="tick" style="top:400px"><span data-hf-id="hf-relz">8 MI</span></div>
+  <div data-hf-id="hf-fy9f" id="g-pyrocb-col"></div>
+  <div data-hf-id="hf-27sv" id="g-pyrocb-anvil"></div>
+  <div data-hf-id="hf-f747" id="g-pyrocb-name">PYROCUMULONIMBUS<span data-hf-id="hf-ixz3">A fire thunderstorm</span></div>
+  <div data-hf-id="hf-i51n" id="g-pyrocb-h">4</div>
+  <div data-hf-id="hf-ivo8" id="g-pyrocb-hlab">MILES HIGH</div>
+  <div data-hf-id="hf-h9g7" id="g-pyrocb-time">4 miles to 8 miles in 15 minutes</div>
+  <div data-hf-id="hf-65ip" class="anvillab" id="g-pyrocb-anvillab">Ice cap at 39,000 ft — airliner cruising height</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const root = document.getElementById("g-pyrocb-col").parentNode;
+  const embers=[]; for(let i=0;i<14;i++){const e=document.createElement("div");e.className="ember";
+    e.style.left=(700+(Math.sin(i*1.3)*90))+"px"; e.style.bottom="150px"; e.style.opacity="0";
+    root.appendChild(e); embers.push(e);}
+  const tl = gsap.timeline({ paused:true });
+  const P="#g-pyrocb-";
+  /* beats vs A2-S2 words.json: "column explode upward"@6 "four to eight in fifteen"@12
+     "cap of ice"@18.1 "anvil"@19.2 "pyrocumulonimbus"@24.9 ; radar beat lives in g-pyrocb-radar (A2-S12) */
+  tl.set([P+"col",P+"anvil",P+"h",P+"hlab",P+"time",P+"anvillab",P+"name"],{autoAlpha:0},0);
+  tl.set(P+"col",{scaleY:0.12},0);
+  tl.fromTo(P+"hdr",{autoAlpha:0,y:-16},{autoAlpha:1,y:0,duration:0.6},0.4);
+  tl.fromTo(".tick",{autoAlpha:0,x:-12},{autoAlpha:1,x:0,duration:0.4,stagger:0.35},1.6); // altitude scale builds in
+  // plume grows 4→8 mi with the counter + continuous embers
+  tl.to(P+"col",{autoAlpha:1,duration:0.6},5.5);
+  tl.to(P+"col",{scaleX:1.07,duration:1.4,ease:"sine.inOut",yoyo:true,repeat:18},6.2); // column churns through the window
+  tl.to(P+"col",{scaleY:0.62,duration:1.6,ease:"power2.out"},5.8);
+  tl.to([P+"h",P+"hlab",P+"time"],{autoAlpha:1,duration:0.5},6.0);
+  const h={v:4}; tl.to(h,{v:8,duration:3.0,ease:"power1.inOut",onUpdate:function(){
+    const el=document.getElementById("g-pyrocb-h"); if(el) el.textContent=Math.round(h.v);}},9.0);
+  tl.to(P+"col",{scaleY:1,duration:3.0,ease:"power1.inOut"},9.0);
+  embers.forEach((e,i)=>{ tl.to(e,{opacity:0.85,duration:0.3},7+(i*0.1)%2);
+    tl.to(e,{bottom:"+=680",opacity:0,duration:3.0,ease:"power1.in",repeat:6,repeatDelay:0.4},7+(i*0.12)); });
+  // ice anvil — "grew a cap of ice"@18.1, "anvil"@19.2
+  tl.to([P+"anvil",P+"anvillab"],{autoAlpha:1,duration:1.0,ease:"power2.out"},18.5);
+  // the storm gets its NAME as it's spoken — "pyrocumulonimbus"@24.9 (radar beat moved to its own comp for A2-S12)
+  tl.fromTo(P+"name",{autoAlpha:0,y:14},{autoAlpha:1,y:0,duration:0.6,ease:"power2.out"},24.7);
+  // soft exit — last beat lands 25.3, holds, exit clears 32.8 before the 33.02 cut
+  tl.to([P+"col",P+"anvil",P+"h",P+"hlab",P+"time",P+"anvillab",P+"name",P+"hdr",".tick"],
+        {autoAlpha:0,duration:0.9},31.9);
+  window.__timelines["g-pyrocb"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

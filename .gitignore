@@ -20,3 +20,11 @@ __pycache__/
 SESSION_LEDGER.md
 .worktrees/
 .playwright-cli/
+
+# secrets
+.env
+
+# runtime artifacts (render done-markers, HF studio caches)
+*.marker
+episodes/*/.thumbnails/
+episodes/*/.waveform-cache/
