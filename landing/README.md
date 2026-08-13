@@ -115,7 +115,10 @@ ordered all four, so they exist — with these standing caveats on the record:
    that did not exist yet rather than the one in the repo:
 
    - "The Binder — 80 pages" is now **61 pages**. 41 forms, all present, every explicit multiplier
-     honoured; the 80 was a per-section estimate written before anything was laid out.
+     honoured; the 80 was a per-section estimate written before anything was laid out. The binder
+     also ships as its own file now: `ebook/binder/out/The-Storm-Ready-Home-Binder.pdf` (61 pages,
+     661 KB, rendered 2026-08-13) — so the "printable, fillable forms" offer bullet matches the
+     delivery instead of pointing into the middle of the 486-page book.
    - "All 50 State Packets" is now **51 — 50 states and DC**, which is what actually ships.
 
    The "illustrated PDF" claim and the named floor-plan diagram for Protection 23 were **false when
