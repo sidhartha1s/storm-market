@@ -165,12 +165,24 @@ report("graphic window fits its timeline", overrun,
 # 8. luma gate — owner 2026-08-13 (ep5 v4 shipped one near-black taillight source TEN times):
 # any mounted video whose mid-file frame reads YAVG < 25 is unwatchably dark. Probes are cached
 # by (path, mtime) in media/.luma-cache.json so repeat sweeps stay fast.
-import subprocess
 luma_cache_p = ep / "media" / ".luma-cache.json"
 try:
     luma_cache = json.loads(luma_cache_p.read_text())
 except Exception:
     luma_cache = {}
+
+def cached_yavg(key, ffmpeg_args):
+    """Run an ffmpeg probe whose output contains a signalstats YAVG line; cache by key."""
+    if key not in luma_cache:
+        try:
+            r = subprocess.run(["ffmpeg"] + ffmpeg_args, capture_output=True, text=True,
+                               timeout=60)
+            mm = re.search(r"YAVG=([\d.]+)", r.stdout + r.stderr)
+            luma_cache[key] = float(mm.group(1)) if mm else -1.0
+        except Exception:
+            luma_cache[key] = -1.0
+    return luma_cache[key]
+
 # videos play from FILE START: a window of duration d shows file[0..d], so the
 # representative frame is at d/2 of the SHORTEST mounted window — not the file middle.
 still_ok_srcs = set()
@@ -187,24 +199,11 @@ for name, sdur in sorted(shortest.items()):
     p = ep / name
     if not p.exists():
         continue
-    key = f'{name}|{int(p.stat().st_mtime)}|{round(sdur / 2, 1)}'
-    if key not in luma_cache:
-        try:
-            r = subprocess.run(
-                ["ffmpeg", "-ss", str(round(sdur / 2, 2)), "-i", str(p), "-frames:v", "1",
-                 "-vf", "signalstats,metadata=print:file=-", "-f", "null", "-"],
-                capture_output=True, text=True, timeout=30)
-            mm = re.search(r"YAVG=([\d.]+)", r.stdout + r.stderr)
-            luma_cache[key] = float(mm.group(1)) if mm else -1.0
-        except Exception:
-            luma_cache[key] = -1.0
-    y = luma_cache[key]
+    y = cached_yavg(f'{name}|{int(p.stat().st_mtime)}|{round(sdur / 2, 1)}',
+                    ["-ss", str(round(sdur / 2, 2)), "-i", str(p), "-frames:v", "1",
+                     "-vf", "signalstats,metadata=print:file=-", "-f", "null", "-"])
     if 0 <= y < 25:
         dark.append((name, y))
-try:
-    luma_cache_p.write_text(json.dumps(luma_cache))
-except Exception:
-    pass
 report("luma gate (no near-black sources, YAVG>=25)", dark,
        lambda x: f"{Path(x[0]).name} YAVG={x[1]:.1f}")
 
@@ -212,9 +211,9 @@ report("luma gate (no near-black sources, YAVG>=25)", dark,
 # (cut from a 911-audio reel's photo-slideshow sections). A mounted video whose first and
 # last shown frames differ by YAVG < 0.6 is a still pretending to be a clip. Same cache file.
 def _frame(p, t, out):
-    subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(p), "-ss", str(t),
+    # -ss BEFORE -i: keyframe seek, not a linear decode of the whole source
+    subprocess.run(["ffmpeg", "-y", "-v", "error", "-ss", str(t), "-i", str(p),
                     "-frames:v", "1", out], capture_output=True, timeout=60)
-import tempfile
 _tmpa = str(Path(tempfile.gettempdir()) / "_sweep_ma.png")
 _tmpb = str(Path(tempfile.gettempdir()) / "_sweep_mb.png")
 frozen = []
@@ -224,19 +223,11 @@ for name, sdur in sorted(shortest.items()):
         continue
     key = f'MOTION|{name}|{int(p.stat().st_mtime)}|{round(sdur, 1)}'
     if key not in luma_cache:
-        try:
-            _frame(p, 0.4, _tmpa)
-            _frame(p, sdur - 0.4, _tmpb)
-            r = subprocess.run(
-                ["ffmpeg", "-hide_banner", "-i", _tmpa, "-i", _tmpb, "-lavfi",
-                 "blend=all_mode=difference,signalstats,metadata=print:file=-",
-                 "-frames:v", "1", "-f", "null", "-"],
-                capture_output=True, text=True, timeout=60)
-            mm = re.search(r"YAVG=([\d.]+)", r.stdout + r.stderr)
-            luma_cache[key] = float(mm.group(1)) if mm else -1.0
-        except Exception:
-            luma_cache[key] = -1.0
-    y = luma_cache[key]
+        _frame(p, 0.4, _tmpa)
+        _frame(p, sdur - 0.4, _tmpb)
+    y = cached_yavg(key, ["-hide_banner", "-i", _tmpa, "-i", _tmpb, "-lavfi",
+                          "blend=all_mode=difference,signalstats,metadata=print:file=-",
+                          "-frames:v", "1", "-f", "null", "-"])
     if 0 <= y < 0.6:
         frozen.append((name, y))
 try:
