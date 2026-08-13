@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>The Fire That Made Its Own Tornado — California 2018 — The Warning Hour Ep. 5</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Georgia, 'Times New Roman', serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #05070a; }
+    video, .still-wrap { position: absolute; inset: 0; }
+    video { width: 100%; height: 100%; object-fit: cover; }
+    .still-wrap { overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    .contain-wrap img { object-fit: contain; }
+    .contain-wrap img.blurfill { object-fit: cover; filter: blur(26px) brightness(0.5) saturate(0.85); transform: scale(1.12); }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    .lt { position: absolute; left: 110px; bottom: 110px; z-index: 5; font-family: Arial, sans-serif; }
+    .lt .lt-loc { display: table; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 52px; color: #f2f5f8; background: rgba(5,8,12,0.78); padding: 4px 16px; text-shadow: 0 3px 24px rgba(0,0,0,0.85); }
+    .lt .lt-time { display: table; font-weight: 700; font-size: 27px; color: #f5d98b; background: rgba(5,8,12,0.78); padding: 6px 14px; margin-top: 10px; letter-spacing: 1px; }
+    .popup { position: absolute; font-family: Arial, sans-serif; font-weight: 700;
+      background: rgba(16,22,30,0.55); backdrop-filter: blur(14px) saturate(1.2); -webkit-backdrop-filter: blur(14px) saturate(1.2);
+      border: 1px solid rgba(255,255,255,0.14); border-radius: 14px; box-shadow: 0 10px 40px rgba(0,0,0,0.45);
+      color: #f2f5f8; padding: 18px 34px; font-size: 40px; letter-spacing: 1px; z-index: 6; }
+    .popup .fine { display: block; font-weight: 400; font-size: 21px; color: #c8d3e0; margin-top: 8px; letter-spacing: 0.5px; }
+    .popup-amber { border-color: rgba(216,161,58,0.4); }
+    .quotecard { position: absolute; left: 160px; right: 160px; bottom: 150px; z-index: 6; text-align: center; }
+    .quotecard .q { display: table; margin: 0 auto; font-family: Georgia, serif; font-style: italic; font-size: 44px; color: #f2f5f8; background: rgba(5,8,12,0.72); padding: 16px 40px; line-height: 1.35; text-shadow: 0 2px 18px rgba(0,0,0,0.9); }
+    .quotecard .attr { display: table; margin: 12px auto 0; font-family: Arial, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 3px; color: #d8a13a; background: rgba(5,8,12,0.72); padding: 8px 24px; }
+    .polwrap { position: absolute; inset: 0; display: grid; place-items: center; z-index: 5;
+      backdrop-filter: blur(14px) brightness(0.65); -webkit-backdrop-filter: blur(14px) brightness(0.65); }
+    .polaroid { background: #f4f0e6; padding: 20px 20px 0; box-shadow: 0 18px 60px rgba(0,0,0,0.65); }
+    .polaroid img { display: block; width: 460px; height: 460px; object-fit: cover; }
+    .pol-cap { font-family: Georgia, serif; font-size: 34px; color: #2a2622; text-align: center; padding: 16px 8px 20px; }
+    .pol-cap span { display: block; font-style: italic; font-size: 21px; color: #6b6257; margin-top: 6px; }
+    .namecard { position: absolute; left: 0; right: 0; bottom: 150px; text-align: center; z-index: 5; }
+    .namecard .nc-name { display: table; margin: 0 auto; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 64px; color: #f2f5f8; letter-spacing: 1px; background: rgba(5,8,12,0.62); padding: 10px 42px; text-shadow: 0 3px 26px rgba(0,0,0,0.9); }
+    .namecard .nc-sub { display: table; margin: 10px auto 0; font-family: Georgia, serif; font-style: italic; font-size: 32px; color: #e8c56a; background: rgba(5,8,12,0.62); padding: 8px 30px; }
+    .srclab { position: absolute; right: 40px; bottom: 34px; z-index: 7; font-family: Arial, sans-serif; font-size: 19px; color: rgba(200,211,224,0.75); background: rgba(5,8,12,0.55); padding: 5px 12px; letter-spacing: 0.5px; }
+    .dispatchlab { position: absolute; left: 0; right: 0; top: 470px; text-align: center; z-index: 6; }
+    .dispatchlab .d1 { display: table; margin: 0 auto; font-family: 'Courier New', monospace; font-weight: 700; font-size: 40px; color: #e8c56a; letter-spacing: 4px; background: rgba(5,8,12,0.6); padding: 10px 30px; }
+    .dispatchlab .d2 { display: table; margin: 14px auto 0; font-family: Arial, sans-serif; font-size: 22px; letter-spacing: 3px; color: #93a3b2; background: rgba(5,8,12,0.6); padding: 6px 18px; }
+    #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90;
+      background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
+    #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.11; mix-blend-mode: overlay; }
+    #grade { position: absolute; inset: 0; pointer-events: none; z-index: 89; mix-blend-mode: soft-light; background-color: rgba(255,150,90,0.24); }
+    .dust { position: absolute; z-index: 92; pointer-events: none; border-radius: 50%; background: rgba(255,255,255,0.32); filter: blur(1.2px); }
+  </style>
+</head>
+<body>
+<div data-hf-id="hf-ydem" id="root" data-composition-id="ep5-hookstudio" data-start="0" data-width="1920" data-height="1080" data-duration="23.9" data-fps="30">
+
+  <!-- ============ NARRATION (56) + INSERT AUDIO WINDOWS (4) — from audio/timeline.txt ============ -->
+  <audio data-hf-id="hf-s3q2" id="nx-a0s1" src="audio/a0-s1.wav" data-start="6.0" data-duration="16.04" data-volume="1"></audio>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <!-- ============ PICTURE — track 1 clips (video ≤~8s, stills 3-5s w/ kenburns), track 2 graphic hosts ============ -->
+
+  <!-- ===== COLD OPEN 0–32.92 — the fire tornado, mid-action ===== -->
+  <!-- HOOK v5 (owner 2026-08-13): NO title card, NO NASA cut; firenado-b runs full length into a
+       hole was CUT, not filled: firenado-b covers the narration tail (ends 22.9), 1.0s black
+       breath 22.9-23.9, act 1 starts 23.9. Riser ends WITH the narration line (~22.04).
+       Runtime 1948.43 -> 1939.41. -->
+  <video data-hf-id="hf-tlj2" id="vx-firenado-a1" src="media/scenes/firenado-a.mp4" style="filter: saturate(0.85) contrast(1.08)" data-start="0" data-duration="6.0" data-track-index="1" muted></video>
+  <video data-hf-id="hf-de4f" id="vx-itf2dashdrive3" src="media/scenes/itf2-dashdrive.mp4" style="filter: brightness(0.9)" data-start="6.0" data-duration="3.9" data-track-index="1" data-callback="in-cab through the embers — the drive every evacuee made" muted></video>
+  <video data-hf-id="hf-ogz3" id="vx-itf2townwide3" src="media/scenes/itf2-townwide.mp4" style="filter: brightness(0.85) saturate(0.9)" data-start="9.9" data-duration="4.0" data-track-index="1" data-callback="the year in one shot — a town burning at night" muted></video>
+  <video data-hf-id="hf-hkgu" id="vx-dashjamhook" src="media/scenes/dozerreel-dashjam.mp4" style="filter: brightness(0.9) saturate(0.85) contrast(1.05)" data-start="13.9" data-duration="5.7" data-track-index="1" data-callback="hook montage — the evacuation, bumper to bumper" muted></video>
+  <video data-hf-id="hf-ponm" id="vx-firenado-b1" src="media/scenes/firenado-b.mp4" style="filter: saturate(0.85) contrast(1.08)" data-start="19.6" data-duration="3.3" data-track-index="1" data-callback="second angle lands on the line — built a tornado out of flame" muted></video>
+  <section data-hf-id="hf-fgev" class="clip blackout" id="bo-hook" data-start="22.9" data-duration="1.0" data-track-index="1"></section>
+  <audio data-hf-id="hf-qv6h" id="ins-coldopen911" src="media/dozer911-coldopen.wav" data-start="0.3" data-duration="3.86" data-volume="1"></audio>
+  <audio data-hf-id="hf-7dgq" id="sx-riser01" src="media/sfx-riser-wildfire.mp3" data-bed="" data-start="14.6" data-duration="9.0" data-volume="0.21"></audio>
+
+  <!-- ============ SFX LAYER (owner 2026-08-12: base tone + peak swells ~45-60s; synth/library only) ============ -->
+  <!-- beds: brown-noise rumble ~21dB under narration; title card 23.92-32.92 and victim segment 1487.87-1594.27 stay silent -->
+  <audio data-hf-id="hf-y7oh" id="sx-bed-cold" src="media/sfx-rumble-bed-long.mp3" data-bed="" data-start="0" data-duration="22.9" data-volume="1"></audio>
+  
+  
+  
+  
+  
+  
+  <!-- v4 MUSIC layer (synthesized score beds, claim-free by construction; ~20dB under narration;
+       silent through the victim vignettes 661.9-790 and 1487.9-1594.3 — names get silence) -->
+  
+  
+  
+  
+  
+  
+  <!-- v5 diegetic ambience (owner assets 2026-08-13): crackle under active-burn stretches, wind at
+       the windstorm beats (narration says "wind" 1012.9/1026.8/gusts 1049.8, "winds" 258.6/278.7),
+       sirens where narration says sirens/alert (1224.9-1236.7) and at the act-2 evacuation (632.7).
+       Victim-silence windows 652.88-780.98 / 1478.88-1585.25 kept clear of new mounts. -->
+  <audio data-hf-id="hf-sioe" id="sx-crk-hook" src="media/sfx-crackle-loop.mp3" data-bed="" data-start="0" data-duration="22.9" data-volume="0.42"></audio>
+  
+  
+  
+  
+  
+  
+  
+  
+  <audio data-hf-id="hf-tkm7" id="sx-siren-hook" src="media/sfx-siren-tornado-hook.wav" data-bed="" data-start="0" data-duration="22.5" data-volume="0.12"></audio>
+  <!-- swells at narrative peaks -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- sub-booms at act turns / hard reveals -->
+  <audio data-hf-id="hf-zlh2" id="sx-bm01" src="media/sfx-hit-kick.wav" data-bed="" data-start="0.5" data-duration="2.2" data-volume="0.4"></audio>
+  
+  
+  
+  
+  
+  
+
+  <!-- ===== ACT 1 — AN ORDINARY FIRE 32.92–202.66 ===== -->
+  <!-- a1-s1 flat tire / dry hills -->
+  
+  
+  
+  <!-- a1-s2 sparks / 113° / manzanita -->
+  
+  
+  
+  
+  
+  
+  
+  <!-- a1-s3 named / east / crews / river — MAP -->
+  
+  
+  
+  
+  
+  <!-- a1-s4 it runs / evacuation -->
+  
+  
+  
+  
+  
+  
+  
+  <!-- a1-s5 river crossing / orange sky -->
+  
+  
+  
+  
+  
+  
+  
+  <!-- a1-s6 changing the sky -->
+  
+  
+  
+
+  <!-- ===== ACT 2 — THE FIRE THAT BECAME WEATHER 205.66–658.86 ===== -->
+  <!-- a2-s1 what a great fire does to the air -->
+  
+  
+  
+  
+  
+  <!-- a2-s2 pyroCb — GRAPHIC -->
+  
+  
+  <!-- a2-s3 the loaded sky -->
+  
+  
+  
+  
+  
+  
+  <!-- a2-s4 pyrotornadogenesis — GRAPHIC -->
+  
+  
+  
+  <!-- a2-s5 touchdown — HOOK PAYOFF -->
+  
+  
+  
+  
+  <!-- a2-s6 2700° / towers / container -->
+  
+  
+  
+  <!-- a2-s7 "fire whirl" — no box for it -->
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- a2-s8 no warning / Loyalton -->
+  
+  
+  
+  
+  
+  
+  <!-- a2-s9 three radars -->
+  
+  
+  
+  
+  <!-- a2-s10 not an empty field -->
+  
+  <!-- a2-s11 the brush was ready -->
+  
+  
+  
+  
+  
+  
+  <!-- a2-s12 watched live on radar — GRAPHIC remount -->
+  
+  
+  <!-- a2-s13 ground effect on Lake Keswick Estates -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <!-- ===== ACT 3 — THE EIGHT 661.86–902.54 ===== -->
+  <!-- a3-s1 eight lives -->
+  
+  <!-- a3-s2 Don Smith / the dozer line -->
+  
+  
+  
+  
+  <!-- INSERT: real 911 audio (owner gate at preview) -->
+  
+  
+  
+  <!-- a3-s3 the men in that recording survived -->
+  
+  <!-- a3-s4 Jeremy Stoke -->
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- a3-s5 Melody Bledsoe -->
+  
+  
+  
+  
+  
+  <!-- a3-s6 Ed's run / "Grandpa, come and get me" -->
+  
+  
+  
+  
+  
+  
+  <!-- a3-s7 under a wet blanket -->
+  
+  
+  
+  <!-- a3-s8 Carr toll — STAT CARD over aftermath footage (ep2 panel pattern) -->
+  
+  
+  
+  
+  
+  <!-- a3-s9 a slab and a chimney -->
+  
+  
+  
+  
+  <!-- a3-s10 the other dozers lived -->
+  
+  
+  
+  
+  
+
+  <!-- ===== BRIDGE — 2018 WAS NOT DONE 905.54–944.9 ===== -->
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <!-- ===== ACT 4 — THE MORNING OF NOVEMBER 8 947.9–1219.42 ===== -->
+  <!-- a4-s1 the ridge / grand jury — MAP -->
+  
+  
+  
+  
+  
+  <!-- a4-s2 the C-hook -->
+  
+  
+  
+  
+  
+  
+  
+  <!-- a4-s3 6:33 — the Camp Fire -->
+  
+  
+  
+  
+  
+  
+  <!-- a4-s4 raining fire -->
+  
+  
+  
+  
+  
+  <!-- a4-s5 thirty fires inside town — EMBER GRAPHIC -->
+  
+  
+  <!-- a4-s6 untrained inspectors -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- a4-s7 McKenzie: potential of a major incident -->
+  
+  
+  
+  
+  
+
+  <!-- ===== ACT 5 — EIGHTY-FIVE 1222.42–1591.27 ===== -->
+  <!-- a5-s1 the failed alert -->
+  
+  
+  
+  
+  
+  <!-- INSERT: Honea (owner gate at preview) -->
+  
+  
+  
+  <!-- a5-s2 the Skyway at once -->
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- a5-s3 the bus -->
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- INSERT: McKay (owner gate at preview) -->
+  
+  
+  
+  <!-- a5-s4 the DA corrective — HOOK GRAPHIC -->
+  
+  <!-- v4: g-hook extended to 60s (wheelchair line + kicker now inside the comp) — the four clips it covered are removed -->
+
+  <!-- a5-s5 the parking lot island -->
+  
+  
+  
+  
+  <!-- a5-s6 eighty-five -->
+  
+  
+  
+  
+  
+  <!-- a5-s7 one morning — STAT CARD over aftermath footage (ep2 panel pattern) -->
+  
+  
+  
+  
+  <!-- a5-s8 Skinner / Huber -->
+  
+  
+  
+  
+  <!-- a5-s9 read their names -->
+  
+  
+  
+  
+  
+  
+  
+  <!-- a5-s10 the human chain -->
+  
+  
+  
+  
+  
+  
+  
+  <!-- a5-s11 people saved people -->
+  
+  
+  
+  
+  
+  
+
+  <!-- ===== ACT 6 — THE RECKONING + THE CLOSE 1594.27–1937.73 (recap zone ≥ ~1852) ===== -->
+  <!-- a6-s1 PG&E -->
+  <!-- v4: duplicate g-camp-map remount removed (owner) — real clips matched to the PG&E narration -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- a6-s2 the trailer couple / the whole story of blame -->
+  
+  
+  
+  
+  
+  
+  <!-- a6-s7 the scattering -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- a6-s5 rebuild / PSPS -->
+  
+  
+  
+  
+  
+  
+  <!-- a6-s3 two fires — the synthesis -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- INSERT: "and it will happen again" (owner gate at preview) -->
+  
+  
+  <!-- a6-s6 the science did not stand still (recap zone) -->
+  
+  
+  
+  
+  
+  
+  <!-- a6-s4 the closer -->
+  
+  
+  
+  
+  
+  
+  
+
+  <!-- ============ TRACK 3 — CARDS ============ -->
+  <section data-hf-id="hf-6b3z" class="clip" id="p-src-firenado" data-start="0.6" data-duration="2.2" data-track-index="3">
+    <div data-hf-id="hf-uf6b" class="srclab">FIRE TORNADO — COURTESY CAL FIRE / via Storyful</div>
+  </section>
+  <section data-hf-id="hf-e6kb" class="clip" id="p-lt-cold" data-start="3.0" data-duration="3.0" data-track-index="3">
+    <div data-hf-id="hf-156o" class="lt"><div data-hf-id="hf-hycy" class="lt-loc">REDDING, CALIFORNIA</div><div data-hf-id="hf-dj06" class="lt-time">JULY 26, 2018 · 7:39 PM</div></div>
+  </section>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- v4: victim polaroids, match-cut to the spoken names (Andrade@1495.4 Downer@1501.8 Foss@1509.3) -->
+  
+  
+  
+  
+  
+  
+
+  <!-- film layer (untimed, last) -->
+  <div data-hf-id="hf-9j86" id="grade"></div>
+  <div data-hf-id="hf-h7i3" id="vignette"></div>
+  <canvas data-hf-id="hf-g1u5" id="grain" width="480" height="270"></canvas>
+</div>
+
+<script src="grain.js"></script>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 23.9;
+
+  /* ---- blur-fill behind letterboxed stills (owner v4: no black bars on mixed-AR photos) ---- */
+  document.querySelectorAll(".contain-wrap").forEach(function(w){
+    const im = w.querySelector("img"); if (!im) return;
+    const bg = im.cloneNode(); bg.removeAttribute("id"); bg.className = "blurfill";
+    w.insertBefore(bg, im);
+  });
+
+  /* ---- Ken Burns pans on stills (every still moves) ---- */
+  function kb(sel, at, dur, fromScale, toScale, fromX, toX, fromY, toY) {
+    tl.fromTo(sel, { scale: fromScale, x: fromX, y: fromY },
+      { scale: toScale, x: toX, y: toY, duration: dur, ease: "none" }, at);
+  }
+  kb("#kb-modisnat1", 56.82, 5.0, 1.06, 1.14, 0, -16, 0, -10);
+  kb("#kb-modisswir1", 77.82, 5.0, 1.0, 1.1, 0, 14, 0, -8);
+  kb("#kb-modisnat2", 128.0, 3.7, 1.12, 1.04, -14, 8, -8, 5);
+  kb("#kb-modisswir2", 272.7, 5.8, 1.05, 1.13, 0, -12, 0, -8);
+  kb("#kb-svsscar1", 364.0, 5.88, 1.0, 1.1, 0, 14, 0, -9);
+  kb("#kb-modisnat3", 419.86, 4.64, 1.08, 1.0, 10, -6, 6, -4);
+  kb("#kb-modisswir3", 515.0, 5.0, 1.04, 1.12, 0, 12, 0, -8);
+  kb("#kb-svsscar3", 597.86, 5.0, 1.0, 1.1, 0, -14, 0, -8);
+  kb("#kb-stoke1", 714.78, 5.0, 1.03, 1.1, 0, 6, 0, -5);
+  kb("#kb-stoke2", 727.78, 5.0, 1.1, 1.03, 6, -4, 5, -3);
+  kb("#kb-bledsoe1", 746.8, 5.0, 1.03, 1.1, 0, -6, 0, -5);
+  kb("#kb-usgsbefore1", 911.54, 5.0, 1.0, 1.09, 0, 12, 0, -7);
+  kb("#kb-usgsbefore3", 970.9, 5.0, 1.0, 1.08, 0, -10, 0, -6);
+  kb("#kb-modiscamp1", 983.9, 7.54, 1.04, 1.12, 0, 12, 0, -8);
+  kb("#kb-landsatcamp1", 1004.44, 5.0, 1.0, 1.1, 0, -12, 0, -8);
+  kb("#kb-modiscamp2", 1023.94, 5.0, 1.1, 1.02, -10, 6, -6, 4);
+  kb("#kb-landsatcamp2", 1054.0, 5.0, 1.08, 1.16, 8, -8, 6, -6);
+  kb("#kb-landsatcamp3", 1138.16, 5.0, 1.0, 1.09, 0, 10, 0, -6);
+  kb("#kb-modiscamp3", 1157.7, 5.0, 1.04, 1.12, 0, -10, 0, -7);
+  kb("#kb-mckay1", 1286.13, 5.0, 1.03, 1.1, 0, 5, 0, -4);
+  kb("#kb-mckay2", 1299.13, 5.0, 1.1, 1.03, 5, -3, 4, -2);
+  kb("#kb-mckay3", 1312.13, 5.0, 1.02, 1.09, 0, -4, 0, -3);
+  kb("#kb-camprelief1", 1415.67, 6.78, 1.04, 1.14, 0, -12, 0, -8);
+  kb("#kb-usgsafter3", 1422.45, 5.0, 1.0, 1.08, 0, -10, 0, -6);
+  kb("#kb-camprelief2", 1474.73, 5.0, 1.1, 1.02, 8, -5, 6, -4);
+  kb("#kb-svsscar5", 1652.85, 5.0, 1.08, 1.0, 8, -5, 6, -4);
+  kb("#kb-camprelief4", 1704.67, 5.0, 1.04, 1.12, 0, 10, 0, -7);
+  kb("#kb-usgsbefore4", 1753.41, 5.0, 1.0, 1.08, 0, 8, 0, -5);
+  kb("#kb-usgsafter6", 1909.88, 5.0, 1.0, 1.08, 0, -8, 0, -5);
+
+  /* ---- card entrances ---- */
+  function popIn(sel, at) {
+    tl.fromTo(sel + " .popup, " + sel + " .lt, " + sel + " .quotecard, " + sel + " .dispatchlab, " + sel + " .namecard, " + sel + " .srclab, " + sel + " .polaroid",
+      { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power2.out" }, at);
+  }
+  ["#p-src-firenado|0.8","#p-lt-cold|3.3","#p-pop-113|67.18","#p-lt-ignition|85.38","#p-pop-38k|137.38",
+   "#p-pop-ef3|343.38","#p-nc-smith|663.38","#p-dispatch911|683.78","#p-nc-stoke|706.58","#p-nc-melody|738.58",
+   "#p-q-grandpa|774.78","#p-lt-paradise|943.28","#p-pop-hook|991.78","#p-pop-second|1083.78","#p-q-sheriff|1217.38",
+   "#p-src-honea|1242.58","#p-nc-mckay|1278.38","#p-src-mckay|1324.78","#p-pol-andrade|1486.38","#p-pol-downer|1492.78","#p-pol-foss|1500.28","#p-pop-pge|1611.38",
+   "#p-src-again|1852.78","#p-q-close|1914.38"].forEach(function(spec) {
+    const parts = spec.split("|");
+    popIn(parts[0], parseFloat(parts[1]));
+  });
+
+  /* insert audio ducking is native: narration windows and insert windows never overlap (timeline-is-master) */
+
+  /* no asset sits static (owner 2026-08-13): slow drift zooms on the hook's low-motion shots */
+  tl.fromTo("#vx-dashjamhook", { scale: 1.0 }, { scale: 1.08, duration: 5.7, ease: "none" }, 13.9);
+  tl.fromTo("#vx-foresta1", { scale: 1.0 }, { scale: 1.07, duration: 7.98, ease: "none" }, 23.9);
+  tl.fromTo("#vx-canopy1", { scale: 1.08 }, { scale: 1.0, duration: 8.0, ease: "none" }, 31.88);
+  tl.fromTo("#vx-forestb1", { scale: 1.0 }, { scale: 1.07, duration: 7.92, ease: "none" }, 39.88);
+
+  /* drift zooms on deliberate archival stills (owner: no asset sits static) */
+  tl.fromTo("#ins-dozer911", { scale: 1.0 }, { scale: 1.07, duration: 7.5, ease: "none" }, 683.38);
+  tl.fromTo("#vx-trappedv3", { scale: 1.05 }, { scale: 1.0, duration: 2.12, ease: "none" }, 836.38);
+  tl.fromTo("#vx-trappedv2", { scale: 1.0 }, { scale: 1.07, duration: 6.73, ease: "none" }, 1249.24);
+  tl.fromTo("#vx-dozerbreakv1", { scale: 1.06 }, { scale: 1.0, duration: 5.2, ease: "none" }, 1236.64);
+  tl.fromTo("#vx-dozerbreakv2", { scale: 1.0 }, { scale: 1.06, duration: 5.0, ease: "none" }, 1484.45);
+  tl.fromTo("#vx-dozerbreakv", { scale: 1.06 }, { scale: 1.0, duration: 5.2, ease: "none" }, 1544.81);
+  tl.fromTo("#vx-itf3ckpt1", { scale: 1.0 }, { scale: 1.06, duration: 5.0, ease: "none" }, 1044.98);
+  tl.fromTo("#vx-itf3wing1", { scale: 1.06 }, { scale: 1.0, duration: 5.0, ease: "none" }, 1014.92);
+
+  /* montage cut punch on the cold-open reveal (v5 hook cut points; 23.9 = out of the black breath) */
+  [6.0, 9.9, 13.9, 19.6, 23.9].forEach(function(t) {
+    tl.fromTo("#vignette", { opacity: 1 }, { opacity: 0.62, duration: 0.12, yoyo: true, repeat: 1 }, t - 0.06);
+  });
+
+  filmLayer(tl, DUR);
+  window.__timelines["ep5-california2018"] = tl;
+})();
+</script>
+</body>
+</html>
