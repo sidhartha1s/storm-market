@@ -84,9 +84,13 @@ ordered all four, so they exist — with these standing caveats on the record:
 
 ## Before it goes live — four blockers
 
-1. **Gumroad product does not exist.** The buy button at `#buy` has no URL. Create the product, then
-   set `href` to the Gumroad URL and add their overlay script. Gumroad cannot show a struck-through
-   price natively — put the $87 anchor in the product description and use a discount code for $47.
+1. **Gumroad product does not exist.** The buy button at `#buy` has no URL. Create the product,
+   then set the `GUMROAD_URL` const at the top of the page script — the offer button and the
+   exit-intent popup pick it up automatically (`?wanted=true` direct checkout). Gumroad cannot
+   show a struck-through price natively — put the $87 anchor in the product description and use a
+   discount code for $47. Also pending owner input: the Cloudflare Web Analytics token (beacon is
+   in the page, commented out with `YOUR_TOKEN_HERE`) and the real contact email (footer + legal
+   pages still say `hello@example.com`).
 2. **The lead-magnet form is now wired, but delivery is not finished.** `functions/api/subscribe.js`
    is a Cloudflare Pages Function that validates the email + two-letter state code and forwards the
    subscriber to Kit (see "Mail provider" below) — no more alert-only placeholder. What it does
