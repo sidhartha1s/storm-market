@@ -91,16 +91,14 @@ def version_check(repo, mode):
     FULL render refuses to start while npm has a newer hyperframes than the pin, and the
     unblock is `python3 scripts/pin_ritual.py` — the scripted A/B ritual that verifies and
     bumps in ~10-25 min. Upstream ships ~1.6 releases/day; the old non-blocking warning let
-    the pin rot 26 versions in 2 weeks. Drafts get the loud warning only (iteration speed),
-    and npm being unreachable NEVER blocks a render — offline means currency unknown, not
-    stale.
+    the pin rot 26 versions in 2 weeks. Drafts skip the registry lookup entirely (iteration
+    speed — the answer would not block anyway), and npm being unreachable NEVER blocks a
+    render — offline means currency unknown, not stale.
     """
-    cfg = (repo / "config.yaml").read_text(encoding="utf-8", errors="replace")
-    m = re.search(r'hyperframes_version:\s*"([\d.]+)"', cfg)
-    if not m:
+    pinned = parse_pin(repo)
+    if pinned is None:
         print("[version] no hyperframes_version in config.yaml", file=sys.stderr)
         return 4
-    pinned = m.group(1)
 
     drift = []
     for script in sorted((repo / "scripts").glob("*.cmd")):
