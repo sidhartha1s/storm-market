@@ -135,8 +135,9 @@ print(f"[preflight] OK — {len(busy)} heavy process(es), under the limit of {MA
 # directly: the render script calls this file and stops on a non-zero exit.
 here = Path(__file__).resolve().parent
 episode = Path(sys.argv[1]) if len(sys.argv) > 1 else Path.cwd()
+mode = sys.argv[2] if len(sys.argv) > 2 else "full"
 
-rc = version_check(here.parent)
+rc = version_check(here.parent, mode)
 if rc:
     print("[preflight] REFUSING TO RENDER — version pin is not trustworthy (see above).",
           file=sys.stderr)
