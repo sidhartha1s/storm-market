@@ -30,6 +30,7 @@ Exit codes: 0 pin current or bumped clean; 2 setup error; 3 metric drift (no bum
             4 npm unreachable (currency unknowable — this tool exists to answer it).
 """
 import json
+import os
 import re
 import shutil
 import subprocess
