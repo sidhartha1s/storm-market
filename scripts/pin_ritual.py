@@ -86,15 +86,17 @@ def render(version, out_mp4):
     log = DEMO / f"pin-ritual-{version}.log"
     print(f"[ritual] rendering demo at {version} -> {out_mp4.name} (log {log.name})")
     env = dict(**os.environ,
-               HYPERFRAMES_FFPROBE_PATH=str(FFBIN / "ffprobe.exe"),
-               HYPERFRAMES_FFMPEG_PATH=str(FFBIN / "ffmpeg.exe"),
+               HYPERFRAMES_FFPROBE_PATH=str(FFPROBE),
+               HYPERFRAMES_FFMPEG_PATH=str(FFMPEG),
                PRODUCER_PAGE_NAVIGATION_TIMEOUT_MS="120000",
                PRODUCER_PUPPETEER_PROTOCOL_TIMEOUT_MS="900000")
     with open(log, "w", encoding="utf-8") as lf:
-        r = subprocess.run([npx, f"hyperframes@{version}", "render", str(DEMO),
+        # -y: an uncached version makes npx prompt "Ok to proceed?" and a detached run
+        # hangs on it until the timeout (measured: 40 min lost on 0.7.109's first run).
+        r = subprocess.run([npx, "-y", f"hyperframes@{version}", "render", str(DEMO),
                             *RENDER_FLAGS, "-o", str(out_mp4)],
                            stdout=lf, stderr=subprocess.STDOUT, env=env,
-                           timeout=2400, cwd=DEMO)
+                           stdin=subprocess.DEVNULL, timeout=2400, cwd=DEMO)
     if r.returncode != 0 or not out_mp4.exists():
         sys.exit(f"[ritual] render at {version} FAILED (exit {r.returncode}) — see {log}")
 
