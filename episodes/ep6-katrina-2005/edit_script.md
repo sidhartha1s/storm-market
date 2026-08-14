@@ -242,4 +242,421 @@ instances (D2, D3, D16) get the amber serif variant so past-tense reads instantl
 
 # SCRIPT (typed segments; prose = readable-form, TTS pass converts; [verify] markers must be ZERO before TTS)
 
-*(segments follow in part 2 of this file)*
+Legend: `narration` = own TTS wav · `hold` = no voice, ambience only · `insert` = clip's own audio
+(owner-gated) · `graphic` = g-* composition, VO optional. Visual intent names candidate sources by
+inventory # (footage-inventory.md). Every hold >8s carries its reason.
+
+## HOOK — The Rescue (~0:00–1:10)
+
+**h1-s1 · insert (INS-01 anchor under hoist video)** — FRAME ONE: USCG hoist over flooded rooftops,
+already mid-lift, rotor audio live (S-1 must-find video; fallback #6 Guard Blackhawk). Date/place
+card D1 "NEW ORLEANS · AUGUST 29, 2005" inside first second. At ~2.0s the 911 call cuts through
+(Dubreuil St attic caller, #46; exact excerpt chosen from transcript at the emotion peak; ends on
+her complete statement). Sonic spine: rotor + water-lap bed under everything.
+
+**h1-s2 · hold (~3s)** — hard cut ON the caller's line ending → black floodwater pouring through a
+breached wall (WWL #38 or PD aerial of 17th St gap; graded). Bed swells. Reason: the image IS the
+sentence; no voice competes with it.
+
+**h1-s3 · insert (INS-02, ~5s)** — radio-static bridge, then the NPR pull, aired the next morning:
+*"New Orleans was spared the worst of Hurricane Katrina…"* (alt if pull unusable: designed
+headline card, narrator silent). Riser starts under it.
+
+**h1-s4 · narration (~48 words)**
+That report aired the morning after landfall. It was wrong before it was broadcast. By the time
+the country heard it, the water was already inside the city, and it was rising an inch a minute.
+The hurricane missed New Orleans. The city drowned anyway. *(riser peaks and ends WITH "anyway")*
+
+**h1-s5 · hold — THE VOID (2.5s)** — hard cut to black. Spine dies. Silence. *(the hook's punctuation)*
+
+## ACT 1 — A City Below the Sea (~1:10–4:40, ~470 words)
+
+**a1-s1 · graphic g-bowl + VO (~95 words)**
+New Orleans is shaped like a bowl. The Mississippi River runs along one rim. Lake Pontchartrain
+sits on the other. And most of the city lies between them, below the level of both. In some
+neighborhoods the ground sits ten feet under the sea. Rain cannot drain out of this city. Every
+drop has to be pumped up and over the rim. People here do not live beside the water. They live
+inside it, behind walls, the way a ship's crew lives behind a hull.
+*(g-bowl beats: rim labels → below-sea shading → pump arrows → hull line. New info every 2-3s.)*
+
+**a1-s2 · narration over levee/canal aerials (#16, #25) (~75 words)**
+The hull is real. Earthen levees and concrete floodwalls wrap the city, hundreds of miles of them.
+And cut through that shield run drainage canals. Open channels of water reaching from the lake
+deep into the city's neighborhoods, each lined with its own thin concrete wall. The strength of
+the whole city comes down to the weakest wall on the weakest canal. So. Who checks the walls?
+*(micro-loop: "who checks the walls")*
+
+**a1-s3 · narration, Betsy archival stills (#16 era-verified) + D2 popup (~85 words)**
+New Orleans already knew what failure felt like. In September of 1965, Hurricane Betsy pushed the
+lake into these same streets. People drowned in their attics in the Lower Ninth Ward. Congress
+moved within weeks. It ordered the Army Corps of Engineers to build a shield around the city,
+strong enough for the worst storm the region was ever likely to see. The plan was supposed to
+take about thirteen years to finish. [verify: 13-year original estimate — GAO-06-244T]
+
+**a1-s4 · graphic (timeline bar 1965→2005) + VO (~70 words)**
+Forty years later, the shield was still not finished. Government auditors put it at roughly
+sixty-five percent complete. And the finished parts had a problem of their own. The ground under
+New Orleans sinks a little every year. Walls built to a safe height in one decade quietly dropped
+below it in the next. The fence was unfinished, and parts of it were shrinking.
+
+**a1-s5 · narration, "Washing Away" front-page card + D3 popup (~95 words)**
+None of this was secret. In June of 2002, the city's own newspaper ran a five-day warning series
+called Washing Away. Its first sentence: "It's only a matter of time before South Louisiana takes
+a direct hit from a major hurricane." The reporters printed a likely death toll. Somewhere between
+twenty-five thousand and one hundred thousand people. That landed on driveways and kitchen tables
+across New Orleans, three years before Katrina had a name. The warning was not missing. It was
+delivered to the door.
+*(pull-quote card: real T-P front page #61/#62, quote line highlighted on its spoken word)*
+
+**a1-s6 · narration (~50 words) — L1 plant**
+And buried in the engineering files sat one more detail. The canal floodwalls stood on sheets of
+steel, driven down to anchor them in the soft ground. How deep that steel actually went, and how
+deep the drawings said it went, would turn out to be two different numbers. Hold that thought.
+
+**a1-s7 · hold (~2.5s)** — slow aerial of the city at dusk, bed low. Reason: let L1 land before the
+act turn. → **BLACKOUT (2.5s)**
+
+## ACT 2 — The Storm (~4:40–8:10, ~480 words)
+
+**a2-s1 · graphic g-track opens mid-motion + VO + D4 popup (~80 words)**
+Twelve hundred miles away, over the warm shallows of the Bahamas, satellites were watching a
+cluster of thunderstorms trying to become something. On August 23rd, 2005, it became the twelfth
+tropical depression of the season. A day later it had a name. Katrina. Nobody in Louisiana looked
+up. Storms are born out there every August. Almost all of them die as names on a list.
+
+**a2-s2 · narration, FL landfall WWL/network beat (#42, short) + D5 popup (~70 words)**
+This one did not. On August 25th, Katrina crossed South Florida as a Category 1, with winds near
+eighty miles per hour. Six people died there. Then the storm slid off the coast, into the Gulf of
+Mexico. And the Gulf, that week, was exactly what a hurricane wants. Hot water, running deep.
+
+**a2-s3 · graphic (engine diagram inside g-track) + VO (~85 words)**
+A hurricane is an engine. Warm seawater is its fuel. Most storms churn up cold water from below
+and starve themselves. But Katrina crossed a current where the warmth runs deep, so the engine
+never starved. [verify: Loop Current crossing — NHC TCR discussion] Over two days it went from a
+Category 1 to a Category 3, then a Category 4. And on the morning of August 28th, in less than
+twelve hours, it became a Category 5.
+*(GOES loop #17/#20 escalating behind the diagram; D6 popup on "August 28th")*
+
+**a2-s4 · graphic stat slam + satellite loop (~90 words)**
+At that point the numbers stop sounding like weather. Sustained winds of one hundred seventy-three
+miles per hour. A central pressure of nine hundred two millibars, among the lowest ever measured
+in an Atlantic hurricane. Tropical-storm winds reached two hundred miles out from the eye. Put
+that circle over a map and it swallows the whole northern Gulf Coast at once. This was no longer a
+question of whether someone would be hit. Everyone in the circle already was.
+*(stats slam ON their spoken words, ep2-style; no pre-reveal)*
+
+**a2-s5 · narration over track-cone tightening (~105 words) — L2 plant**
+And here is the part of this story nobody expects. The forecast was nearly perfect. Two and a half
+days before landfall, the Hurricane Center drew its line to the Louisiana coast. Katrina followed
+that line almost exactly. The official track errors in the final two days were among the smallest
+ever recorded for a major hurricane. Emergency managers had fifty-six hours of clear, correct
+warning. More than two full days. Most disasters begin with a surprise. This one began with a
+bullseye. The forecast was nearly perfect. Remember that. It is what makes everything that follows
+hard to hear.
+*(g-track: 56-hour counter ticks up as cone tightens)*
+
+**a2-s6 · hold (~2.5s)** — satellite eye filling the frame, bed drops to a low pulse. Reason: scale
+lands in silence. → **BLACKOUT (2.5s)**
+
+## ACT 3 — The Warning (~8:10–12:10, ~560 words)
+
+**a3-s1 · narration, quiet Sunday-morning New Orleans b-roll (#38 pre-storm WWL, graded) (~65 words)**
+Sunday, August 28th. A hot, still morning in New Orleans. Church bells, coffee, a normal weekend
+sky. Out in the Gulf, four hundred miles of hurricane were turning toward the city at about
+thirteen miles an hour. Slow enough to feel unreal. Fast enough that everything that needed to
+happen now had about twenty-four hours to happen in.
+
+**a3-s2 · graphic (NHC advisory text #31) + VO + D6 continuity (~55 words)**
+At seven that morning, the Hurricane Center's advisory used a phrase forecasters almost never
+type. "Potentially catastrophic Category 5 hurricane." Not strong. Not dangerous. Catastrophic,
+in the official forecast, in capital letters. In the forecast office across the lake in Slidell,
+one man read the data and decided plain language was not enough.
+
+**a3-s3 · graphic g-bulletin (teletype) + VO + D7 popup (~120 words)**
+His name was Robert Ricks. He grew up in the Ninth Ward. His family had lived through Betsy. At
+eleven minutes past ten, he sent a bulletin that veterans of the Weather Service still talk about.
+It said, in plain block letters: devastating damage expected. A most powerful hurricane with
+unprecedented strength. Most of the area will be uninhabitable for weeks, perhaps longer. Water
+shortages will make human suffering incredible by modern standards. Persons exposed to the winds
+will face certain death if struck. He was not exaggerating. He said later he had been editing
+himself down, trying to find things to take out. Every line you just heard is real, and every line
+came true.
+*(g-bulletin: real verbatim lines type on their spoken words; the rest of the product scrolls faint)*
+
+**a3-s4 · insert INS-04a (WWL evac coverage, short) + narration + D8 popup (~90 words)**
+One hour later, at eleven in the morning, Mayor Ray Nagin stood at a podium and did something no
+New Orleans mayor had ever done. He ordered a mandatory evacuation of the entire city. Nineteen
+hours before landfall. On the highways, every lane was already running one direction. Out. About
+one point two million people left south Louisiana in a day and a half, roughly ninety percent of
+the people in the storm's path. It was, by the numbers, one of the most successful evacuations in
+American history.
+
+**a3-s5 · narration, evacuee/traffic stills (#14 FEMA) (~90 words)**
+By the numbers. But a number was missing from it. Tens of thousands of people were still in the
+bowl. Some had no car. Some had no money, at the end of the month, for gas or a motel. Some were
+too old or too sick to move, or caring for someone who was. And some had ridden out Betsy and
+Camille and simply did not believe the water would come for them this time. The city knew these
+people existed. The plan for them fit in one word. Superdome.
+
+**a3-s6 · narration + Superdome exterior lines (#2, #14) + D9 popup (~85 words) — L3 plant**
+At noon on Sunday, the city opened the Superdome as what officials called a refuge of last
+resort. Not a shelter. A refuge of last resort, a place to survive the wind and nothing more. By
+nightfall, roughly ten thousand people were inside, in lines that wrapped around the building,
+carrying garbage bags of clothes. National Guard soldiers searched them at the doors. Remember
+that phrase. Refuge of last resort. We are going to find out exactly what it meant.
+
+**a3-s7 · hold (~3s)** — dusk shot of the Dome, city lights, bed to low drone. Reason: the act's
+dread must settle before landfall. → **BLACKOUT (2.5s)**
+
+## ACT 4 — Landfall (~12:10–16:40, ~620 words)
+
+**a4-s1 · insert INS-04b (WWL landfall-morning coverage, short) then narration + D10 popup (~85 words)**
+Six ten AM. Monday, August 29th. Katrina came ashore at Buras, Louisiana, a fishing town at the
+mouth of the Mississippi. The storm had weakened overnight, from a Category 5 to a Category 3.
+Winds near one hundred twenty-seven miles per hour. In Buras, the water simply removed the town.
+And then, for the next three hours, the eye of the storm did New Orleans a favor. It turned
+slightly east. The city would not take the direct hit. Mississippi would.
+
+**a4-s2 · narration + radar frames (KLIX, timestamps honest) + D11 popup (~80 words) — L4 plant**
+The radar station at Slidell tracked the eyewall as it came on. At eight forty-two, forecasters
+warned of gusts over one hundred miles per hour crossing the lake. Then, at eight fifty-four in
+the morning, the radar near the city went silent. [verify: KLIX last transmitted scan 1354 UTC —
+AMS/NCDC, MED] The eyewall was passing directly over the antenna. From that moment, through the
+worst hours of the storm, the picture went dark. Remember the silence. Things happened inside it.
+
+**a4-s3 · graphic g-surge-ms + VO (~110 words)**
+At nine forty-five the center crossed the coast again, at the Louisiana-Mississippi line. And here
+the Gulf of Mexico stood up and walked onto the land. At Pass Christian, Mississippi, the storm
+surge reached twenty-seven point eight feet. That is seawater the height of a three-story
+building, moving with the weight of an ocean behind it. Waveland. Bay St. Louis. Pass Christian.
+Long Beach. Gulfport. Biloxi. Along miles of coast, the first three or four blocks of town were
+not damaged. They were removed. Slabs stayed. Addresses stayed. Everything above the slab went
+inland or out to sea.
+*(g-surge-ms: surge bar grows against house silhouette; town names stamp along the coast map)*
+
+**a4-s4 · narration, USGS before/after pairs (#28, #29) (~85 words)**
+One hundred seventy-two people died in Mississippi that morning. Whole retirement communities,
+gone between breakfast and noon. If you lived on that coast, you will already know something
+strange about this story. The country barely remembers your part of it. Katrina made landfall on
+Mississippi. Mississippi took the storm. New Orleans, thirty-five miles from the center, took
+something else. Something slower, and in its own way, worse. Because while the Gulf was erasing
+Waveland, the phones inside New Orleans had already started ringing.
+*(before/after wipes ON the town names; micro-loop close)*
+
+**a4-s5 · narration, WWL/CNN evening irony + D12 popup (~130 words)**
+By Monday evening, the storm was inland and dying, and a story was forming on the news wires. New
+Orleans had been spared the worst. The morning after landfall, national radio said exactly that.
+Spared the worst. And measured in wind, it was even true. But the same newscast, in the same
+breath, reported two levee breaches already pouring lake water into the city. Nobody put the two
+sentences together. On screens across America, the relief headline and the drowning city ran side
+by side, and the relief headline won the evening. Inside the bowl there was no electricity, no
+radar, and almost no working phones. The one thing rising faster than the water was the distance
+between what the country believed and what was true.
+*(visual: real Wayback CNN homepage capture, 5:55 PM Aug 29, screenshot honest; then black water at night)*
+
+**a4-s6 · hold (~3s)** — black water sliding through a residential street at night, bed = water +
+distant alarms. Reason: the irony must curdle before the forensic act. → **BLACKOUT (2.5s)**
+
+## ACT 5 — The Breaches (~16:40–21:10, ~620 words)
+
+**a5-s1 · narration, breach aerials (#25 NOAA NGS) (~90 words)**
+Here is what was happening inside the radar silence. Katrina's surge did not just press on the
+lakefront. It pushed up the drainage canals, those open channels reaching into the city's heart,
+and it pressed on the thin walls beside them. Before seven that morning, a floodwall on the London
+Avenue Canal gave way. [verify: London Ave east breach ~6-7 AM timing — MED source] Around seven
+forty-five, people near the Industrial Canal heard something like an explosion. A wall section
+collapsed, and a gap nearly a thousand feet wide opened into the Lower Ninth Ward.
+
+**a5-s2 · narration, Lower Ninth imagery + barge beat (~85 words)**
+The Lower Ninth went under in minutes. Houses floated off their slabs with families inside. A
+steel barge, two hundred feet long, washed through the gap and came to rest on top of a
+neighborhood. For years people said the barge caused the breach. Engineers later proved it did
+not. The wall failed first, on its own, and the barge simply drifted through the wound. Keep that
+distinction. This episode keeps coming back to it. Walls that failed on their own.
+
+**a5-s3 · graphic g-iwall ★ + VO (~150 words)**
+And at the 17th Street Canal, the biggest drainage canal in the city, the wall did something the
+engineering textbooks said it must never do. The water that morning reached about ten and a half
+feet up a wall built to hold fourteen. It never got near the top. But the pressure leaned the
+concrete outward, just slightly, and that lean opened a thin gap between the wall and the soil
+holding it. Water poured down into the gap, and now the pressure was not pushing on the wall
+anymore. It was pushing on the ground under it. Beneath that levee lay a soft layer of old swamp
+clay. The clay sheared, the way mud slides off a shovel, and the wall rode the ground sideways
+into the neighborhood behind it. It did not overflow. It moved. A floodwall is very unforgiving.
+It is either there, or it is not.
+*(g-iwall v1-v3 to be authored; beats word-synced: load → lean → gap → clay shear → slide)*
+
+**a5-s4 · graphic g-iwall part 2 (the receipt) + VO (~105 words) — L1 pay**
+Months later, engineers ran sonar along the wreckage, looking for the steel sheets that were
+supposed to anchor that wall deep in the ground. The design drawings called for steel driven
+seventeen and a half feet below sea level. The sonar found it stopped at about ten. Seven feet of
+promised steel that was never there. And the trail led back to a load test the Corps of Engineers
+had run on its own wall design in the nineteen eighties, a test whose results, read correctly,
+said the steel needed to go far deeper in soil this soft. [verify: E-99 depth-implication figures
+before quoting numbers] The drawings said one thing. The ground held another.
+
+**a5-s5 · graphic g-floodmap + VO + stat beats (~110 words)**
+By the end of Monday the city had not one broken wall but dozens of failure points. The official
+investigation would eventually count fifty breaches across the region's defenses. Forty-six of
+them were overwhelmed the way you would expect, water pouring over the top and chewing the levee
+apart from behind. Four were not. Four walls, including the 17th Street and London Avenue canals,
+failed below the level they were designed to hold. The system did not lose to a storm bigger than
+its design. Parts of it lost to a storm smaller than its promise. Water kept flowing for two more
+days. By Wednesday, eighty percent of New Orleans was under water.
+*(g-floodmap: neighborhoods fill hour by hour; counter rolls to 80; depth callouts to 15 ft)*
+
+**a5-s6 · narration (~55 words) — L5 plant**
+Stand in the flooded Lower Ninth for one more second before we move on. Every ruined block you are
+looking at now traces back to engineering decisions with names and dates attached. Hold one
+question until the end of this story. For all of this, who paid? The answer is coming, and you
+will not like it.
+
+**a5-s7 · hold (~2.5s)** — still water over rooftops at dawn, bed thins. → **BLACKOUT (2.5s)**
+
+## ACT 6 — The Week After (~21:10–25:40, ~620 words)
+
+**a6-s1 · narration, Superdome aerial mid-orbit (#2, #14) (~85 words) — L3 pay begins**
+Remember the phrase. Refuge of last resort. By midweek, the building held around twenty-three
+thousand people. The storm had peeled sheets of the roof away over their heads. Then the power
+died, and the plumbing died, and the air conditioning died, in a domed building in Louisiana in
+August. No working toilets for a crowd the size of a small city. Food and water ran to rations.
+The refuge of last resort was now the largest stranded population in America.
+
+**a6-s2 · narration, front pages + crowd stills (wide, no identifiable children) (~95 words)**
+And then the stories started. Rumors moved through the crowd and onto the airwaves. Murders in
+the dark. Bodies stacked in the freezers, as many as two hundred. Officials repeated the rumors on
+national television, and for a week, America believed the Superdome had become a war zone. Months
+later, investigators counted what actually happened there. Six people died in that building. Four
+from illness. One overdose. One suicide. No murders. The truth was bad enough. Twenty-three
+thousand people abandoned in the heat for five days. The myth just pointed the shame at the
+wrong people.
+
+**a6-s3 · narration + Convention Center beat + D13 popup (~90 words)**
+A mile away, the story the country should have been told was assembling itself. On Wednesday,
+police began directing people to the Convention Center, telling them buses would come. As many as
+twenty-five thousand gathered there. There was no food. No water. No guards. No buses. And for two
+days, the officials running the federal response said, on camera, that they were only just
+learning those people existed. Reporters were broadcasting live from the building. The government
+said it did not know. Both of those sentences were true at the same time.
+
+**a6-s4 · narration, comms-collapse beat (~75 words)**
+How does a government lose twenty-five thousand people in its own city? Like this. The storm took
+out three million phone lines and nearly fifteen hundred cell towers. Police radios in New Orleans
+went dark; officers passed notes by hand. City Hall was an island. For days, the people running
+the rescue could not reliably talk to each other, and information moved at the speed of rumor.
+The country watched it live. The responders could not.
+
+**a6-s5 · insert INS-03 (Nagin WWL outburst, transcript-cut) + D14 popup + narration (~55 words)**
+On Thursday night, the mayor went on the radio and stopped being polite. *(insert: the cut lands on
+his complete sentence; excerpt + transcript path logged at sourcing)* Whatever else history says
+about Ray Nagin, that night he said what the whole bowl was thinking.
+
+**a6-s6 · graphic g-stat-uscg + rescue footage (S-1 pool, different cuts than hook) (~95 words)**
+And yet, in the same city, in the same week, one part of the response worked like a machine. The
+Coast Guard started flying before the wind stopped. Helicopter crews hoisted people off rooftops
+one at a time, hour after hour, day and night, for a week. Count what they did. Thirty-three
+thousand five hundred people saved. Twenty-four thousand of them lifted straight out of the water
+and off the roofs. The system did not fail because everyone failed. It failed at the top, while
+the people at the bottom of it kept working.
+
+**a6-s7 · narration, Gretna bridge beat (wide framing) (~70 words)**
+The week's ugliest hour came on a bridge. Thousands tried to walk out of the drowned city, over
+the river to the dry suburb of Gretna. Police from that suburb met the crowd at the crest and
+fired shotguns over their heads. Gretna says it had no power, no shelter, and no choice. The
+people on the bridge, most of them Black, heard something else in it. That argument has never
+ended.
+
+**a6-s8 · insert INS-05 (Bush "Brownie" — WH pool) + D15 popup + narration (~55 words) — L6 plant**
+On Friday, the president stood beside his FEMA director and praised him. *(insert lands on the
+sentence)* Ten days later, that director resigned. And in the files of his own agency sat a
+document that turns this whole story from a tragedy into something harder to forgive. Because
+someone had rehearsed this exact disaster.
+
+**a6-s9 · hold (~2.5s)** — helicopter silhouette against sunset over water. → **BLACKOUT (2.5s)**
+
+## ACT 7 — The Reckoning + The People (~25:40–30:00, ~630 words)
+
+**a7-s1 · graphic g-pam + D16 amber popup + VO (~135 words) — L6 pay**
+Thirteen months before Katrina, in July of 2004, about three hundred emergency officials from
+every level of government met in Baton Rouge for a week-long exercise. FEMA paid for it. On their
+screens was a fictional hurricane aimed at New Orleans. They named it Pam. Pam was a Category 3.
+Its simulated surge topped the levees and put the city under water. The planners' projections:
+more than a million people evacuated. Half a million buildings destroyed. And a death toll over
+sixty thousand. The exercise predicted the overwhelmed shelters. It predicted evacuees stranded on
+the highways. It predicted hospitals losing power with patients inside. The plan to fix all of it
+was supposed to come next, in follow-up sessions. The follow-up was never finished. The money ran
+out. Thirteen months later, the real storm arrived.
+*(g-pam rows: PREDICTED / HAPPENED, revealed pair by pair on the spoken words)*
+
+**a7-s2 · narration + Strock presser still + D17 popup (~90 words) — L0 pay begins**
+So no one gets to call this a surprise. In June of 2006, the commander of the Army Corps of
+Engineers stood in front of cameras and said something no one in his position had ever said. This
+was the first time the Corps had to stand up and admit a catastrophic failure of one of its own
+projects. The engineers' professional association went further. It called the flooding of New
+Orleans the worst engineering catastrophe in the history of the United States. Not the worst
+storm. The worst engineering failure.
+
+**a7-s3 · narration (~85 words) — L5 pay**
+Now the question from the Lower Ninth. Who paid? Here is the answer. A law from 1928 makes the
+federal government immune from lawsuits over flood-control works, no matter what. The courts
+looked at walls that fell below their own design load, at admissions from the builders themselves,
+and ruled that not one dollar of damages could be collected. One judge found a way through, on one
+channel, for four families. A higher court took even that away. For the drowning of a major
+American city, the legal price paid was zero.
+
+**a7-s4 · graphic g-stat-toll + VO (~90 words)**
+The human price was not zero. The official count, after years of study, stands at one thousand
+three hundred ninety-two lives, taking the storm and its aftermath together, across all five
+states. Louisiana buried the most. And the record shows exactly who the water took. Four out of
+ten drowned. Nearly half of Louisiana's dead were seventy-five or older. The people who could not
+climb to an attic. The people who stayed because leaving was harder for them than for anyone
+else. The flood found the oldest people in the bowl, and it kept them.
+*(counter rolls fast, slows into 1,392; secondary rows appear after the landing)*
+
+**a7-s5 · narration, vignette (Charity rooftop) (~85 words)**
+One of them died on a hospital roof. At Charity Hospital, doctors moved the whole emergency room
+upstairs by flashlight and hand-pumped air into patients for days. One elderly woman lay on the
+helipad, waiting for a helicopter, her husband beside her, fanning her in the heat. She died on
+the roof, waiting. The doctor who told her story afterward said he did not know where her husband
+had gone. He did not know if the man even knew she was dead.
+*(visual: Charity exterior + helipad aerial, symbolic; no patient imagery; attribution chip
+"account: Charity Hospital physician, CBS interview, Sept 2005")* [verify: physician name from
+original CBS credits before any name is shown]
+
+**a7-s6 · narration + city-return imagery (~70 words)**
+New Orleans lost more than a third of its people in the months after the storm, and many never
+came back. The ones who did divide their lives with a phrase you will hear in every neighborhood.
+Before the storm. After the storm. The city has new walls now. Fourteen and a half billion
+dollars of them, finished in 2022. *(D18 popup)* They are stronger, deeper, and honestly built.
+And they are rated for a storm smaller than Katrina.
+[verify: HSDRRS 100-year design vs Katrina recurrence — phrase precisely or cut final sentence]
+
+**a7-s7 · graphic g-close + VO (~75 words) — signature close**
+Disasters do not ask permission. But they do send warnings. New Orleans got its warnings in
+writing, three years early, on the front page. It got a full-dress rehearsal, one year early,
+with the death toll attached. The warnings were all there. What was missing was anyone required
+to act on them. Learn what your warnings sound like, and decide, now, what you will do when one
+arrives. This was The Warning Hour. Episode six.
+*(match-cut channel card on "The Warning Hour"; card does not sit; episode number on card)*
+
+---
+
+## Word count & pacing check (draft)
+Hook ~48 · A1 ~470 · A2 ~485 · A3 ~565 · A4 ~620 · A5 ~595 · A6 ~620 · A7 ~630 → **~4,035 words**
+≈ 27.8 min narration at 145 wpm + inserts/holds/blackouts ≈ **30 min runtime.** Probe-TTS 2
+segments (one long-sentence, one punchy) before locking; adjust ±10% by trimming A2/A6 first.
+
+## Open [verify] ledger (must be ZERO before TTS — verification agents close these)
+1. a1-s3: original 13-year completion estimate for LP&V project (GAO doc).
+2. a2-s3: Loop Current crossing as the rapid-intensification driver (NHC TCR discussion section).
+3. a4-s2: KLIX last transmitted scan 8:54 AM CDT (AMS/NCDC — MED; either confirm or soften to
+   "the radar picture from Slidell went dark").
+4. a5-s1: London Avenue east-breach timing "before seven" (MED source; soften if unconfirmed).
+5. a5-s4: E-99 load-test implication figures (31–46 ft) — currently NOT quoted in prose (kept
+   qualitative); confirm before adding numbers, else prose stands as-is.
+6. a7-s5: Charity physician name from original CBS credits (only if a name is displayed).
+7. a7-s6: HSDRRS "rated for a storm smaller than Katrina" precision — confirm 100-year design
+   level vs Katrina's estimated recurrence interval, else cut the sentence.
+8. Cross-check EVERY on-screen stat card against spoken script word-for-word at compose
+   (the competitor shipped "+15,000 Deaths" against a spoken 1,400 — audience caught it).
+
