@@ -51,16 +51,19 @@ def heavy_processes():
     return found
 
 
-def version_check(repo):
-    """Pin drift ONLY — the one version fact that is a render-time invariant.
+def version_check(repo, mode):
+    """Pin drift (offline) + pin currency (registry).
 
-    config.yaml and the npx pin in the render scripts disagreeing means the render does not
-    run the version anyone reviewed; that is worth blocking a render for, and it is checked
-    offline. 'Is a newer hyperframes published' is a PLANNING question, not a render-gate one
-    (owner 2026-07-29: it belongs where episode work starts, so a stale pin is caught before
-    TTS/sourcing/compose spend, not surfaced in a render log after 40 minutes). That kickoff
-    check is step 4 of the storm-episode skill preflight (npm view hyperframes version vs
-    config.yaml pin) — it has no code home since build_ep3.py was deleted 2026-08-02.
+    Drift: config.yaml and the npx pin in the render scripts disagreeing means the render
+    does not run the version anyone reviewed — hard fail, checked offline.
+
+    Currency (owner 2026-08-14, supersedes the 2026-07-29 'planning question' ruling): a
+    FULL render refuses to start while npm has a newer hyperframes than the pin, and the
+    unblock is `python3 scripts/pin_ritual.py` — the scripted A/B ritual that verifies and
+    bumps in ~10-25 min. Upstream ships ~1.6 releases/day; the old non-blocking warning let
+    the pin rot 26 versions in 2 weeks. Drafts get the loud warning only (iteration speed),
+    and npm being unreachable NEVER blocks a render — offline means currency unknown, not
+    stale.
     """
     cfg = (repo / "config.yaml").read_text(encoding="utf-8", errors="replace")
     m = re.search(r'hyperframes_version:\s*"([\d.]+)"', cfg)
@@ -82,7 +85,31 @@ def version_check(repo):
             print(f"    {name} runs hyperframes@{used}", file=sys.stderr)
         return 5
 
-    print(f"[version] pin {pinned}; render scripts agree (currency checked at compose time)")
+    latest = None
+    npm = shutil.which("npm")
+    if npm:
+        try:
+            out = subprocess.run([npm, "view", "hyperframes", "version"],
+                                 capture_output=True, text=True, timeout=30).stdout.strip()
+            if re.fullmatch(r"[\d.]+", out):
+                latest = out
+        except (subprocess.TimeoutExpired, OSError):
+            pass
+    if latest is None:
+        print(f"[version] pin {pinned}; scripts agree. Currency UNKNOWN (npm unreachable) "
+              "— proceeding, an offline box must not kill a render.")
+        return 0
+    if tuple(map(int, latest.split("."))) > tuple(map(int, pinned.split("."))):
+        if mode == "full":
+            print(f"[version] PIN STALE — npm latest is {latest}, pin is {pinned}. A full "
+                  f"render must run a verified-current pin.\n[version] Unblock: python3 "
+                  f"scripts/pin_ritual.py  (A/B-verifies and bumps, ~10-25 min)",
+                  file=sys.stderr)
+            return 6
+        print(f"[version] WARNING: pin {pinned} is stale (npm latest {latest}) — draft may "
+              f"proceed; run scripts/pin_ritual.py before the full render.")
+        return 0
+    print(f"[version] pin {pinned}; render scripts agree; current (npm latest {latest})")
     return 0
 
 
