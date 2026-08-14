@@ -128,12 +128,15 @@ Primary sources only (IPET, ILIT/Berkeley, GAO, House/Senate reports, USACE, USC
 
 ---
 
-## OPEN ITEMS (need one more primary-source pass before air)
+## OPEN ITEMS — STATUS AFTER SECOND PASS
 
-- Exact verbatim "did not perform as a system" quote — pin to specific IPET or ILIT PDF page.
-- Original Times-Picayune "Washing Away" June 2002 series — get direct nola.com/archived URLs and exact pull-quotes (currently sourced via retrospective/academic-archive pointers only).
-- Exact date/transcript of Bush's "heck of a job, Brownie" remark (commonly Sept 2, 2005 — needs primary transcript, e.g., White House press archive).
-- Exact House Report 109-377 page numbers for the three block quotes in Section 9.
-- Primary Census Bureau/Brookings source for the "1M+ displaced / 600,000 households at one month" Gulf-wide displacement figures (currently sourced via Data Center compilation).
-- Cross-check the "more than 50 breach locations" total city-wide against IPET's own count (currently sourced via secondary/History.com summary of ASCE findings).
-- Confirm Superdome evacuation completion date (Sept 4, 2005) and 13-month closure against a primary FEMA/Corps or Superdome-operator timeline.
+**RESOLVED (6 of 7):**
+1. "Did not perform as a system" quote — wording resolved ("the system did not perform as a system... was a system in name only," attributed to the Corps' own IPET post-mortem via City Journal). Exact IPET volume/page number NOT pinned (IPET's own PDFs returned 403/unreadable in this pass) — see residual note in Section 2.
+2. Times-Picayune "Washing Away" — fully resolved: dates (June 23–26, 2002), 3 direct nola.com URLs, 3 verbatim quotes.
+3. Bush "Brownie" quote — fully resolved: exact quote, date (Sept 2, 2005), location (Mobile Regional Airport, AL), primary White House transcript URL.
+5. Displacement figure — fully resolved: two scoped primary numbers (CRS ~700,000 "acutely impacted"; Census/Brookings 1M+ "displaced," 600,000 households at one month, 378,000 net loss in Greater New Orleans).
+6. Breach count vs. IPET — fully resolved: IPET enumerates 50 total breaches (4 foundation-failure/below-design-load, 46 overtopping-induced).
+7. Superdome full-evacuation date — resolved: last evacuees departed Saturday Sept 3, 2005; fully evacuated by Sept 4, 2005 (NBC News; direct WebFetch of the article was blocked, confirmed via search-engine text extraction only).
+
+**STILL OPEN (1 of 7, partial):**
+4. House Report 109-377 exact page/chapter cites — only 1 of the 5 quotes ("litany of mistakes...") was pinned to a location (the Preface, verbatim-confirmed via archive.org OCR full text). The other four quotes ("failure of initiative to get beyond design and organizational compromises," "man's folly"/"nature's wrath," "No one is in charge," "complete breakdown in communications that paralyzed command and control") remain well-attested in wording via secondary sources (TIME, NBC News) but unpinned to a page/chapter — every primary-PDF fetch route tried (govinfo.gov, nrc.gov mirror, UNT Digital Library, archive.org djvu OCR) either 403'd, returned only a cover page, or got truncated by the fetch tool before reaching the report's Levees/Communications chapters. Recommend: download https://archive.org/stream/failureofinitiat0000unit/failureofinitiat0000unit_djvu.txt directly (not through WebFetch) and grep locally if exact page cites are required before air.
