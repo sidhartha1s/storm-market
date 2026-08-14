@@ -36,14 +36,16 @@ async function endpoint() {
 }
 function connect(wsUrl) {
   const ws = new WebSocket(wsUrl); let id = 0; const pending = new Map();
+  const attached = []; // sessionIds of auto-attached child frame targets
   const ready = new Promise((res, rej) => { ws.onopen = res; ws.onerror = rej; });
   ws.onmessage = e => { const m = JSON.parse(e.data);
+    if (m.method === 'Target.attachedToTarget') attached.push(m.params.sessionId);
     if (m.id && pending.has(m.id)) { const { res, rej } = pending.get(m.id); pending.delete(m.id);
       m.error ? rej(new Error(m.error.message)) : res(m.result); } };
   const send = (method, params = {}, sessionId) => new Promise((res, rej) => {
     const msg = { id: ++id, method, params }; if (sessionId) msg.sessionId = sessionId;
     pending.set(msg.id, { res, rej }); ws.send(JSON.stringify(msg)); });
-  return { ready, send, close: () => ws.close() };
+  return { ready, send, attached, close: () => ws.close() };
 }
 
 const { ready, send, close } = connect(await endpoint());
