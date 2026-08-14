@@ -198,6 +198,8 @@ def main():
     if record is None:
         render(pin, base_mp4)
         record = {"version": pin, **measure(base_mp4)}
+        # persist NOW — a crash in the candidate render must not cost this ~13 min again
+        BASELINE_JSON.write_text(json.dumps(record, indent=2), encoding="utf-8")
     base_has_mp4 = base_mp4.exists()
 
     cand_mp4 = renders / f"pin-baseline-{latest}.mp4"
