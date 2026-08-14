@@ -67,8 +67,9 @@ await send('Page.enable', {}, sessionId);
 // session per out-of-process frame, which is the only way to inspect what actually rendered.
 await send('Target.setAutoAttach',
   { autoAttach: true, waitForDebuggerOnStart: false, flatten: true }, sessionId);
+const VW = Number(process.env.VIEW_W || 1280);
 await send('Emulation.setDeviceMetricsOverride',
-  { width: 1280, height: 1000, deviceScaleFactor: 1, mobile: false }, sessionId);
+  { width: VW, height: 1000, deviceScaleFactor: 1, mobile: VW < 700 }, sessionId);
 await send('Page.navigate', { url: URL_TO_CHECK }, sessionId);
 await sleep(6000); // React shell + iframe mount
 
@@ -81,10 +82,16 @@ const READ = `(() => {
   return html;
 })()`;
 let dom = '';
+let frameUrl = null; // standalone URL of the frame holding our custom HTML
 for (const s of [sessionId, ...attached]) {
   try {
     const { result: r } = await send('Runtime.evaluate', { expression: READ, returnByValue: true }, s);
-    dom += r?.value || '';
+    const html = r?.value || '';
+    if (!frameUrl && /class="(srh|prp)"/.test(html)) {
+      const { result: u } = await send('Runtime.evaluate', { expression: 'location.href', returnByValue: true }, s);
+      frameUrl = u?.value || null;
+    }
+    dom += html;
   } catch {} // a frame can detach mid-read; the others still answer
 }
 console.log(`frames inspected: ${1 + attached.length}`);
@@ -106,12 +113,27 @@ let fail = 0;
 for (const [label, ok] of checks) { console.log(`${ok ? 'ok  ' : 'FAIL'}  ${label}`); if (!ok) fail++; }
 
 if (SHOT) {
+  // A full-page shot of the PARENT captures only the fold — its scrollHeight is just the
+  // viewport, and forcing a tall viewport makes the host app paint blank (measured).
+  // Capturing the frame's own session is refused outright: "Command can only be executed on
+  // top-level targets". So load the frame's URL AS a top-level page. It is a real server
+  // route (…/l/<permalink>/landing/embed) and our HTML carries its own <style>, so it renders
+  // standalone exactly as it does embedded.
+  if (!frameUrl) throw new Error('no content frame found — nothing to screenshot');
+  const { targetId: shotTarget } = await send('Target.createTarget', { url: 'about:blank' });
+  const { sessionId: shotSession } = await send('Target.attachToTarget', { targetId: shotTarget, flatten: true });
+  await send('Page.enable', {}, shotSession);
+  await send('Emulation.setDeviceMetricsOverride',
+    { width: VW, height: 1000, deviceScaleFactor: 1, mobile: VW < 700 }, shotSession);
+  await send('Page.navigate', { url: frameUrl }, shotSession);
+  await sleep(4000);
   const { result: h } = await send('Runtime.evaluate',
-    { expression: 'document.documentElement.scrollHeight', returnByValue: true }, sessionId);
+    { expression: 'Math.max(document.documentElement.scrollHeight, document.body.scrollHeight)',
+      returnByValue: true }, shotSession);
   const { data } = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true,
-    clip: { x: 0, y: 0, width: 1280, height: Math.min(h.value, 16000), scale: 1 } }, sessionId);
+    clip: { x: 0, y: 0, width: VW, height: Math.min(h.value, 16000), scale: 1 } }, shotSession);
   writeFileSync(SHOT, Buffer.from(data, 'base64'));
-  console.log(`screenshot -> ${SHOT}`);
+  console.log(`screenshot -> ${SHOT}  (${VW}x${h.value}, from ${frameUrl})`);
 }
 close();
 console.log(fail ? `\n${fail} check(s) FAILED` : '\nPASS — custom page is live and rendering.');
