@@ -102,9 +102,9 @@ def render(version, out_mp4):
 
 
 def measure(mp4):
-    dur = float(run([str(FFBIN / "ffprobe.exe"), "-v", "error", "-show_entries",
+    dur = float(run([str(FFPROBE), "-v", "error", "-show_entries",
                      "format=duration", "-of", "csv=p=0", str(mp4)]).stdout.strip())
-    r = run([str(FFBIN / "ffmpeg.exe"), "-hide_banner", "-i", str(mp4),
+    r = run([str(FFMPEG), "-hide_banner", "-i", str(mp4),
              "-vf", "blackdetect=d=0.5", "-af", "astats=metadata=1",
              "-f", "null", "-"], timeout=600)
     txt = r.stdout + r.stderr
