@@ -120,7 +120,7 @@ def measure(mp4):
 
 
 def ssim(a, b):
-    r = run([str(FFBIN / "ffmpeg.exe"), "-hide_banner", "-i", str(a), "-i", str(b),
+    r = run([str(FFMPEG), "-hide_banner", "-i", str(a), "-i", str(b),
              "-lavfi", "ssim", "-f", "null", "-"], timeout=600)
     m = re.search(r"All:([\d.]+)", r.stdout + r.stderr)
     return float(m.group(1)) if m else None
