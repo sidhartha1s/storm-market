@@ -57,7 +57,7 @@ higher the credible savings delta right below the pricing, the higher the conver
 7. Find your region — 5 cards, makes it personal before the ask
 8. Field strip — three photos: plywood work, field kit, stage
 9. Look inside — four real rendered pages, not a mockup
-10. Reviews — **placeholder cards, see warning below**
+10. Reviews — **invented placeholder cards, owner-accepted for now (see below)**
 11. Paul Raymond — persona block with the quote
 12. What $47 is — price anchored against plywood/deductible/generator/hotel/unprovable loss
 13. The offer — $47 struck from $87, itemised value stack to $120, guarantee seal
@@ -73,9 +73,10 @@ The first build deliberately omitted reviews, per-line dollar values, the countd
 viewer counter (see git history for the original reasoning). The owner has since explicitly
 ordered all four, so they exist — with these standing caveats on the record:
 
-- **Reviews are invented placeholders**, marked `⚠ SAMPLE REVIEWS` in the HTML. They exist for
-  design review only. **Replace with real, verifiable buyer quotes before launch** — shipping
-  fabricated reviews presented as genuine is an FTC violation.
+- **Reviews are invented placeholders.** The owner reviewed them and ordered them kept as-is with
+  the in-file warning marker removed (2026-08-14, "reviews are fine for now / no marker"). The
+  standing recommendation on the record is unchanged: swap in real, verifiable buyer quotes once
+  they exist — fabricated reviews presented as genuine are an FTC liability.
 - **The value stack** itemises $47/$19/$15/$19/$20 → "$120 total value". Owner-approved anchoring;
   nothing has sold separately at those prices.
 - **The countdown is evergreen** (random 6–14h deadline in localStorage, rolls over on expiry) and
