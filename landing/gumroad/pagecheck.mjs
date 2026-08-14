@@ -88,15 +88,20 @@ for (const s of [sessionId, ...attached]) {
   } catch {} // a frame can detach mid-read; the others still answer
 }
 console.log(`frames inspected: ${1 + attached.length}`);
-const checks = [
-  ['custom page mounted (.srh wrapper)', dom.includes('class="srh"')],
-  ['buy elements present', (dom.match(/data-gumroad-action="buy"/g) || []).length >= 1],
-  ['price shown', dom.includes('$47')],
+const common = [
   ['media-library images', (dom.match(/public-files\.gumroad\.com/g) || []).length >= 3],
-  ['Joplin story', dom.includes('Joplin')],
   ['dark-mode rules', dom.includes('prefers-color-scheme:dark')],
   ['author byline', dom.includes('Paul Raymond')],
 ];
+const checks = KIND === 'product'
+  ? [['custom page mounted (.srh wrapper)', dom.includes('class="srh"')],
+     ['buy elements present', (dom.match(/data-gumroad-action="buy"/g) || []).length >= 1],
+     ['price shown', dom.includes('$47')],
+     ['Joplin story', dom.includes('Joplin')],
+     ...common]
+  : [['custom page mounted (.prp wrapper)', dom.includes('class="prp"')],
+     ['links to the product', dom.includes('/l/ebook')],
+     ...common];
 let fail = 0;
 for (const [label, ok] of checks) { console.log(`${ok ? 'ok  ' : 'FAIL'}  ${label}`); if (!ok) fail++; }
 
