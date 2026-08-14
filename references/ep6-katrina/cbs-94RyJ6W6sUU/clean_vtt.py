@@ -43,22 +43,16 @@ def main(vtt_path, out_path):
         text_lines = [clean_line(l) for l in lines[timing_idx+1:]]
         text_lines = [l for l in text_lines if l]
         if text_lines:
-            entries.append((start, " ".join(text_lines)))
+            # rolling 2-line window: line[0] = previous cue's newest line, line[-1] = this cue's newest line
+            entries.append((start, text_lines[-1]))
 
-    # Dedupe: rolling captions repeat previous line(s). Keep only new tail text per timestamp.
-    # Strategy: track last emitted full text; for each entry, if it's a superset continuation,
-    # emit only the new words compared to previous entry's text.
+    # Dedupe consecutive identical newest-lines (happens on the tiny 0.01s intermediate cues)
     out_lines = []
-    prev_text = ""
+    prev_text = None
     for start, text in entries:
         if text == prev_text:
             continue
-        if prev_text and text.startswith(prev_text):
-            new_part = text[len(prev_text):].strip()
-        else:
-            new_part = text
-        if new_part:
-            out_lines.append((start, new_part))
+        out_lines.append((start, text))
         prev_text = text
 
     # Merge consecutive fragments into readable lines grouped by ~8 sec gaps into sentences is optional.
