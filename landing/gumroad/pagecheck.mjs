@@ -48,7 +48,7 @@ function connect(wsUrl) {
   return { ready, send, attached, close: () => ws.close() };
 }
 
-const { ready, send, close } = connect(await endpoint());
+const { ready, send, attached, close } = connect(await endpoint());
 await ready;
 const { targetId } = await send('Target.createTarget', { url: 'about:blank' });
 const { sessionId } = await send('Target.attachToTarget', { targetId, flatten: true });
