@@ -63,7 +63,9 @@ def ff_paths():
     return Path(probe.strip()), Path(mpeg.strip())
 
 
-FFPROBE, FFMPEG = ff_paths()
+# resolved in main() AFTER the check-only/currency early exits — a box without the
+# render toolchain can still answer "is the pin current"
+FFPROBE = FFMPEG = None
 
 # Identity thresholds: the demo comp is deterministic, so a version that changes
 # nothing lands well inside these (measured 0.7.81 vs 0.7.107: duration exact,
