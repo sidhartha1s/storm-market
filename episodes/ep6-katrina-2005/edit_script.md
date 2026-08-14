@@ -14,9 +14,10 @@
   - alt B: *The Hurricane That Missed New Orleans — Katrina 2005*
 - **Thumbnail concept:** real aerial of flooded New Orleans grid (NOAA NGS/FEMA PD), rooftop in
   frame, bold "KATRINA 2005" — NO AI thumbnail (competitor audience actively polices AI; top-comment backlash documented).
-- **Runtime target: 30 min (owner order).** Word budget planning figure: 30 × 0.9 × 158 ≈ **4,270
-  words**; **probe-TTS 2 segments before locking** (ep5 measured blend 145 → likely ~3,900; adjust
-  after probe). Current draft ≈ 4,100 words.
+- **Runtime target: 30 min (owner order).** Word budget **LOCKED by probe-TTS 2026-08-15**:
+  probe-a (flowing) 141.9 wpm, probe-b (punchy) 132.9 wpm, blend ≈ 137.5 → budget ≈ 3,710 words.
+  Script trimmed to ≈ 3,790 words ≈ 30.3 min runtime. Probes: `audio/probe-a.txt`/`probe-b.txt`
+  (committed; wavs local-only).
 - **Voice:** pocket-TTS Pharaoh clone (config `external.*`; verify voice-ref md5 before produce).
   Narration below is readable-form; TTS pass mechanically converts (numbers/dates spelled out,
   <24-word sentences, no paired dashes).
