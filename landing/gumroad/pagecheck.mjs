@@ -64,17 +64,22 @@ await send('Emulation.setDeviceMetricsOverride',
 await send('Page.navigate', { url: URL_TO_CHECK }, sessionId);
 await sleep(6000); // React shell + iframe mount
 
-// Walk the top document AND every same-process frame, concatenating their HTML.
-const { result } = await send('Runtime.evaluate', {
-  expression: `(() => {
-    let html = document.documentElement.outerHTML;
-    for (const f of document.querySelectorAll('iframe')) {
-      try { if (f.contentDocument) html += f.contentDocument.documentElement.outerHTML; } catch (e) {}
-    }
-    return html;
-  })()`, returnByValue: true }, sessionId);
-
-const dom = result.value || '';
+// Collect the top document plus every attached (out-of-process) frame's document.
+const READ = `(() => {
+  let html = document.documentElement.outerHTML;
+  for (const f of document.querySelectorAll('iframe')) {
+    try { if (f.contentDocument) html += f.contentDocument.documentElement.outerHTML; } catch (e) {}
+  }
+  return html;
+})()`;
+let dom = '';
+for (const s of [sessionId, ...attached]) {
+  try {
+    const { result: r } = await send('Runtime.evaluate', { expression: READ, returnByValue: true }, s);
+    dom += r?.value || '';
+  } catch {} // a frame can detach mid-read; the others still answer
+}
+console.log(`frames inspected: ${1 + attached.length}`);
 const checks = [
   ['custom page mounted (.srh wrapper)', dom.includes('class="srh"')],
   ['buy elements present', (dom.match(/data-gumroad-action="buy"/g) || []).length >= 1],
