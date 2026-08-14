@@ -37,17 +37,33 @@ import subprocess
 import sys
 from pathlib import Path
 
+from render_preflight import npm_latest, parse_pin, semver
+
 REPO = Path(__file__).resolve().parent.parent
 DEMO = REPO / "episodes" / "demo-joplin-90"
 BASELINE_JSON = Path(__file__).resolve().parent / "pin_baseline.json"
+RENDER_CMD = Path(__file__).resolve().parent / "render.cmd"
 
 # Mirrors render.cmd full-quality flags — the ritual must exercise the production
 # recipe, not a lighter one. Bump both together.
 RENDER_FLAGS = ["--gpu", "--browser-gpu", "--experimental-fast-capture=true",
                 "--quality", "standard", "--crf", "16", "--fps", "30", "--workers", "3"]
-FFBIN = Path(r"C:\Users\Sidhartha\AppData\Local\Microsoft\WinGet\Packages"
-             r"\Gyan.FFmpeg.Shared_Microsoft.Winget.Source_8wekyb3d8bbwe"
-             r"\ffmpeg-8.1.2-full_build-shared\bin")
+
+
+def ff_paths():
+    """ffmpeg/ffprobe from render.cmd's `set HYPERFRAMES_FF*_PATH=` lines — the render
+    recipe is the single source of truth for which build measures (a wrong/stale build
+    silently disagrees on blackdetect/astats, see LEARNINGS on the shared-build spawn cost)."""
+    txt = RENDER_CMD.read_text(encoding="utf-8", errors="replace")
+    paths = dict(re.findall(r"^set (HYPERFRAMES_FF(?:MPEG|PROBE)_PATH)=(.+)$", txt,
+                            re.MULTILINE))
+    probe, mpeg = paths.get("HYPERFRAMES_FFPROBE_PATH"), paths.get("HYPERFRAMES_FFMPEG_PATH")
+    if not (probe and mpeg and Path(probe.strip()).exists() and Path(mpeg.strip()).exists()):
+        sys.exit("[ritual] could not resolve ffprobe/ffmpeg from render.cmd's set lines")
+    return Path(probe.strip()), Path(mpeg.strip())
+
+
+FFPROBE, FFMPEG = ff_paths()
 
 # Identity thresholds: the demo comp is deterministic, so a version that changes
 # nothing lands well inside these (measured 0.7.81 vs 0.7.107: duration exact,
