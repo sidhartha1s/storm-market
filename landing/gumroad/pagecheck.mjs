@@ -51,6 +51,16 @@ await ready;
 const { targetId } = await send('Target.createTarget', { url: 'about:blank' });
 const { sessionId } = await send('Target.attachToTarget', { targetId, flatten: true });
 await send('Page.enable', {}, sessionId);
+
+// Gumroad mounts the custom HTML in a CROSS-ORIGIN sandboxed iframe, so the parent
+// document cannot read it (contentDocument is null by design). Auto-attach gives us a
+// session per out-of-process frame, which is the only way to inspect what actually rendered.
+const frameSessions = [];
+ws_onAttach: {
+  // collected via the raw socket below
+}
+await send('Target.setAutoAttach',
+  { autoAttach: true, waitForDebuggerOnStart: false, flatten: true }, sessionId);
 await send('Emulation.setDeviceMetricsOverride',
   { width: 1280, height: 1000, deviceScaleFactor: 1, mobile: false }, sessionId);
 await send('Page.navigate', { url: URL_TO_CHECK }, sessionId);
