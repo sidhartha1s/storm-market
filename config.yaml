@@ -9,13 +9,12 @@ external:
   # md5 2d8ea8f14763932f3f76da67d7fd1612 — verify before every produce run (JP voice-ref gotcha)
 
 render:
-  hyperframes_version: "0.7.107"  # pinned; upgrade ritual = test render, diff, bump
-  # Bumped 2026-08-14 from 0.7.81 (owner order; A/B test render on demo-joplin-90).
-  # CHECK BEFORE EVERY PRODUCTION RUN:
-  #   npm view hyperframes version   -> if newer, pull and bump here before starting.
-  # The 30s ffprobe deadline (Date.now() + 3e4) introduced in 0.7.81 is UNCHANGED in
-  # 0.7.107 (verified in dist) — heavy media still dies against it; media_budget.py is
-  # what keeps it satisfied.
+  hyperframes_version: "0.7.107"  # pinned; managed by scripts/pin_ritual.py — do not hand-edit
+  # Staleness is machine-enforced (owner 2026-08-14): render_preflight.py hard-blocks FULL
+  # renders when npm has a newer version; the unblock is `python3 scripts/pin_ritual.py`,
+  # which A/B-renders demo-joplin-90 against scripts/pin_baseline.json and bumps this pin
+  # (plus every live scripts/*.cmd) only on identical metrics. Pin history in LEARNINGS.md.
+  # The 30s ffprobe deadline (Date.now() + 3e4, since 0.7.81) is why media_budget.py exists.
   fps: 30
   quality: standard               # "high" silently picks libx265 CPU on this box (JP measured)
   crf: 16
