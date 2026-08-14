@@ -132,39 +132,44 @@ def version_check(repo, mode):
     return 0
 
 
-busy = heavy_processes()
-if len(busy) > MAX_HEAVY:
-    print(f"[preflight] REFUSING TO RENDER — {len(busy)} heavy processes are competing "
-          f"for the CPU (limit {MAX_HEAVY}):", file=sys.stderr)
-    for name, pid, mb in sorted(busy, key=lambda p: -p[2]):
-        print(f"    {name:14} pid {pid:>7}  {mb:>6} MB", file=sys.stderr)
-    print("[preflight] Close the QC browsers / stop background agents, then re-launch.",
-          file=sys.stderr)
-    print("[preflight] A render that starts here fails at video_extract with "
-          "'ffprobe deadline with code 0', which reads like a bad asset and is not.",
-          file=sys.stderr)
-    sys.exit(2)
+def main():
+    busy = heavy_processes()
+    if len(busy) > MAX_HEAVY:
+        print(f"[preflight] REFUSING TO RENDER — {len(busy)} heavy processes are competing "
+              f"for the CPU (limit {MAX_HEAVY}):", file=sys.stderr)
+        for name, pid, mb in sorted(busy, key=lambda p: -p[2]):
+            print(f"    {name:14} pid {pid:>7}  {mb:>6} MB", file=sys.stderr)
+        print("[preflight] Close the QC browsers / stop background agents, then re-launch.",
+              file=sys.stderr)
+        print("[preflight] A render that starts here fails at video_extract with "
+              "'ffprobe deadline with code 0', which reads like a bad asset and is not.",
+              file=sys.stderr)
+        sys.exit(2)
 
-print(f"[preflight] OK — {len(busy)} heavy process(es), under the limit of {MAX_HEAVY}.")
+    print(f"[preflight] OK — {len(busy)} heavy process(es), under the limit of {MAX_HEAVY}.")
 
-# An idle box is not enough. Eleven of the twelve failed renders were started with the
-# machine quiet and died anyway, because the media itself was too expensive to extract.
-# The asset check is part of preflight so it cannot be skipped by launching a render
-# directly: the render script calls this file and stops on a non-zero exit.
-here = Path(__file__).resolve().parent
-episode = Path(sys.argv[1]) if len(sys.argv) > 1 else Path.cwd()
-mode = sys.argv[2] if len(sys.argv) > 2 else "full"
+    # An idle box is not enough. Eleven of the twelve failed renders were started with the
+    # machine quiet and died anyway, because the media itself was too expensive to extract.
+    # The asset check is part of preflight so it cannot be skipped by launching a render
+    # directly: the render script calls this file and stops on a non-zero exit.
+    here = Path(__file__).resolve().parent
+    episode = Path(sys.argv[1]) if len(sys.argv) > 1 else Path.cwd()
+    mode = sys.argv[2] if len(sys.argv) > 2 else "full"
 
-rc = version_check(here.parent, mode)
-if rc:
-    print("[preflight] REFUSING TO RENDER — version pin is not trustworthy (see above).",
-          file=sys.stderr)
-    sys.exit(rc)
-budget = subprocess.run([sys.executable, str(here / "media_budget.py"), str(episode)],
-                        capture_output=True, text=True)
-print(budget.stdout.rstrip())
-if budget.returncode != 0:
-    print(budget.stderr.rstrip(), file=sys.stderr)
-    print("[preflight] REFUSING TO RENDER — media budget gate failed (see above).",
-          file=sys.stderr)
-    sys.exit(3)
+    rc = version_check(here.parent, mode)
+    if rc:
+        print("[preflight] REFUSING TO RENDER — version pin is not trustworthy (see above).",
+              file=sys.stderr)
+        sys.exit(rc)
+    budget = subprocess.run([sys.executable, str(here / "media_budget.py"), str(episode)],
+                            capture_output=True, text=True)
+    print(budget.stdout.rstrip())
+    if budget.returncode != 0:
+        print(budget.stderr.rstrip(), file=sys.stderr)
+        print("[preflight] REFUSING TO RENDER — media budget gate failed (see above).",
+              file=sys.stderr)
+        sys.exit(3)
+
+
+if __name__ == "__main__":
+    main()
