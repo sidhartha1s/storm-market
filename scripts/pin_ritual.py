@@ -161,8 +161,14 @@ def bump_pins(new):
 
 def main():
     check_only = "--check-only" in sys.argv
-    pin = current_pin()
-    latest = npm_latest()
+    pin = parse_pin(REPO)
+    if pin is None:
+        sys.exit("[ritual] no hyperframes_version in config.yaml")
+    latest = npm_latest(timeout=60)
+    if latest is None:
+        # preflight tolerates an unreachable npm; this tool's entire job is the answer
+        print("[ritual] npm unreachable — currency unknowable", file=sys.stderr)
+        return 4
     if semver(latest) <= semver(pin):
         print(f"[ritual] pin {pin} is current (npm latest {latest})")
         return 0
