@@ -87,8 +87,12 @@ Primary source: https://www.weather.gov/lix/NPW_28_1011 — confidence: HIGH (ve
   - Statewide (Louisiana): Gov. Blanco estimated **~1.2 million people, ~92% of the at-risk population**, evacuated before landfall; "tens of thousands" remained, "many...the region's most vulnerable." — source: White House Lessons Learned, Ch. 3 — confidence: HIGH
   - New Orleans city: NWS Service Assessment states an evacuation rate of **approximately 80%** of the New Orleans population. — source: NWS Service Assessment — confidence: HIGH
   - Jefferson Parish specifically: **83% evacuation rate (375,000 of 450,000 residents)**. — source: NWS Service Assessment — confidence: HIGH
-- Superdome as "refuge of last resort": opened **28 August 2005** (city converted it from a special-needs shelter to a general-population shelter of last resort as the state of emergency was declared). Pre-midnight (i.e., before the storm arrived) population estimated at **10,000–12,000**, including 300–500 special-needs evacuees. — source: White House Lessons Learned, Ch. 3 — confidence: HIGH
-- Peak Superdome population (after the storm, as rescues brought in more people): commonly cited as **20,000–30,000**, figures vary by source; no single authoritative peak figure was found in a primary government document in this pass. — source: secondary reporting (CNN, Wikipedia derivative) — confidence: LOW/MED — see OPEN ITEMS
+- Superdome as "refuge of last resort" — full population progression, RESOLVED with dated figures from the House Select Bipartisan Committee, "A Failure of Initiative" (Evacuation chapter, https://biotech.law.lsu.edu/katrina/govdocs/109-377/evac.pdf):
+  - **Opening announced**: at the Nagin/Blanco press conference, 28 August 2005: "At noon today, the Superdome will then be opened up as a refuge of last resort, where we will start to take citizens that cannot evacuate."
+  - **At landfall** (6:10 AM CDT, 29 August): "approximately 10-12,000 people were sheltered in the Superdome."
+  - **HSOC Spot Report #30**, 2:00 AM CDT, Wednesday, 31 August: 12,000–15,000 people at the Superdome.
+  - **Peak, per the Wednesday-noon (31 August) video teleconference**: population had "swollen to approximately 23,000." This is the best-sourced peak figure — treat ~23,000 (Wed. 31 Aug, noon) as the authoritative peak population, not the commonly-repeated 20,000–30,000 secondary-source range.
+  - confidence: HIGH (RESOLVED)
 
 ## 5. Mississippi coast impact
 
