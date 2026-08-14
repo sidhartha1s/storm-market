@@ -178,6 +178,9 @@ def main():
     if check_only:
         return 3
 
+    global FFPROBE, FFMPEG
+    FFPROBE, FFMPEG = ff_paths()
+
     if not (DEMO / "index.html").exists():
         sys.exit(f"[ritual] demo episode missing: {DEMO}")
     html = (DEMO / "index.html").read_text(encoding="utf-8", errors="replace")
