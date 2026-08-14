@@ -90,8 +90,9 @@ ordered all four, so they exist — with these standing caveats on the record:
    exit-intent popup pick it up automatically (`?wanted=true` direct checkout). Gumroad cannot
    show a struck-through price natively — put the $87 anchor in the product description and use a
    discount code for $47. Also pending owner input: the Cloudflare Web Analytics token (beacon is
-   in the page, commented out with `YOUR_TOKEN_HERE`) and the real contact email (footer + legal
-   pages still say `hello@example.com`).
+   in the page, commented out with `YOUR_TOKEN_HERE`). Contact email: owner decided 2026-08-14
+   there is none for now — footer + legal pages say "reply to your purchase receipt" (all
+   support runs through Gumroad).
 2. **The lead-magnet form is now wired, but delivery is not finished.** `functions/api/subscribe.js`
    is a Cloudflare Pages Function that validates the email + two-letter state code and forwards the
    subscriber to Kit (see "Mail provider" below) — no more alert-only placeholder. What it does
@@ -226,5 +227,7 @@ Then point the domain at it in the Cloudflare dashboard. Check before shipping: 
 an absolute URL, the buy button goes to a live Gumroad product, a real test purchase completes and
 delivers, the refund path works, and a real Kit sign-up lands in the account with `state` populated.
 
-**Standing instruction: do not run either command above until Gumroad payments exist (blocker 1).
-This site is deploy-ready. It is not launch-ready.**
+**Deployed 2026-08-14 to https://paulraymond.pages.dev by owner order** (supersedes the earlier
+do-not-deploy-before-Gumroad instruction). Deployed ≠ launched: the buy button and the free-packet
+form stay inert until the Gumroad products exist — the form errors loudly on submit (KIT backend
+unconfigured; will be replaced by a Gumroad free-product link).
