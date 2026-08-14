@@ -102,7 +102,7 @@ def render(version, out_mp4):
         sys.exit("[ritual] npx not on PATH")
     log = DEMO / f"pin-ritual-{version}.log"
     print(f"[ritual] rendering demo at {version} -> {out_mp4.name} (log {log.name})")
-    env = dict(**__import__("os").environ,
+    env = dict(**os.environ,
                HYPERFRAMES_FFPROBE_PATH=str(FFBIN / "ffprobe.exe"),
                HYPERFRAMES_FFMPEG_PATH=str(FFBIN / "ffmpeg.exe"),
                PRODUCER_PAGE_NAVIGATION_TIMEOUT_MS="120000",
