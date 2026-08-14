@@ -208,26 +208,27 @@ session held uncommitted changes — owner-flagged, do not repeat. First action 
 storm-market session: `git worktree list` + `git status` → if you are in the main checkout
 and about to write, STOP and make a worktree.
 
-## HARD RULE — check the hyperframes version before production starts (owner 2026-07-29)
-**You do not have to remember this — `render_preflight.py` enforces it**, because "remember
-to run npm view" is the same class of instruction as "remember to cap your assets", and that
-one survived twelve failed renders. The gate does two things:
-- **pin drift = hard fail (exit 5)**, checked offline: `config.yaml` and every live
-  `npx hyperframes@<pin>` must agree, or the render does not run the version anyone reviewed;
-- **newer release upstream = loud `[VERSION]` warning**, not a block — a render must not die
-  because npm is unreachable, but nobody gets to say they did not know.
-
-Still worth running by hand at the START of a production run, before TTS or sourcing:
-```
-npm view hyperframes version          # newer than config.yaml? pull it and bump the pin
-```
-Bump `config.yaml render.hyperframes_version` AND every `npx hyperframes@<pin>` in `scripts/`
-together — they are checked against each other in `render.cmd`'s header. Then read the diff
-for anything touching timeouts or the extract stage before trusting an old measurement.
-Bumped to **0.7.107** on 2026-08-14 (from 0.7.81; A/B-tested on demo-joplin-90). History:
-0.7.81 (2026-07-29) **shortened the ffprobe deadline from 120s to 30s** — every number measured
-against 0.7.64 has a 4x smaller margin; the 30s deadline is UNCHANGED in 0.7.107 (verified in
-dist). A newer version can be STRICTER, not just better.
+## HARD RULE — the pin stays current, and the machine enforces it (owner 2026-08-14,
+supersedes the 2026-07-29 warn-only ruling)
+**The pin policy is deliberate** — renders run the version that was reviewed; upstream ships
+~1.6 releases/day with behavior changes in minor bumps (0.7.81 cut the ffprobe deadline 4x;
+0.7.107 changed the hidden-audio mix). **The refresh is no longer manual.** Three pieces:
+- **`render_preflight.py`** (now actually called by `render.cmd`, both modes): pin drift
+  between config.yaml and any live `npx hyperframes@<pin>` = hard fail (exit 5); **stale pin
+  = hard fail for FULL renders (exit 6)**, loud warning for drafts; npm unreachable NEVER
+  blocks (currency unknown ≠ stale).
+- **`scripts/pin_ritual.py`** — the unblock. Scripted A/B: renders demo-joplin-90 at the
+  candidate version, diffs against the committed baseline record (`scripts/pin_baseline.json`
+  + cached baseline mp4 for SSIM), and on identical metrics (duration / blackdetect map /
+  RMS ±0.2 dB / SSIM ≥0.99) bumps config.yaml + every live scripts/*.cmd and refreshes the
+  baseline. Metric drift = exit 3, NO bump — a human reads the changelog and decides.
+  ~10-13 min when the baseline record is current, ~25 when it isn't. Run it from a worktree;
+  commit + PR the bump it makes.
+- **Read the changelog anyway** when the ritual bumps across many versions — a passing demo
+  A/B proves render identity, not that no new flag or timeout matters for a 32-min episode.
+Pin history: 0.7.64 → 0.7.81 (2026-07-29; **ffprobe deadline 120s → 30s** — margins shrank
+4x) → 0.7.107 (2026-08-14, hand A/B) → ritual-managed from here. A newer version can be
+STRICTER, not just better.
 
 ## HARD RULE — do not write code for what reasoning already does (owner 2026-07-29)
 **"Keep code headache low."** Before adding a script, a check, or a flag, answer one question:
