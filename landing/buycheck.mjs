@@ -12,6 +12,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
 const URL_TO_CHECK = process.argv[2] || 'https://paulraymond.pages.dev/';
+const PRODUCT_NAME = process.env.PRODUCT_NAME || 'The Storm-Ready Home';
 const CHROME = process.env.CHROME_BIN || 'C:/Program Files/Google/Chrome/Application/chrome.exe';
 const PORT = 9700 + (process.pid % 90);
 
