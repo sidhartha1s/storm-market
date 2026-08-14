@@ -113,30 +113,21 @@ def version_check(repo, mode):
             print(f"    {name} runs hyperframes@{used}", file=sys.stderr)
         return 5
 
-    latest = None
-    npm = shutil.which("npm")
-    if npm:
-        try:
-            out = subprocess.run([npm, "view", "hyperframes", "version"],
-                                 capture_output=True, text=True, timeout=30).stdout.strip()
-            if re.fullmatch(r"[\d.]+", out):
-                latest = out
-        except (subprocess.TimeoutExpired, OSError):
-            pass
+    if mode != "full":
+        print(f"[version] pin {pinned}; render scripts agree (currency checked on full "
+              "renders and by pin_ritual.py, not on drafts)")
+        return 0
+    latest = npm_latest()
     if latest is None:
         print(f"[version] pin {pinned}; scripts agree. Currency UNKNOWN (npm unreachable) "
               "— proceeding, an offline box must not kill a render.")
         return 0
-    if tuple(map(int, latest.split("."))) > tuple(map(int, pinned.split("."))):
-        if mode == "full":
-            print(f"[version] PIN STALE — npm latest is {latest}, pin is {pinned}. A full "
-                  f"render must run a verified-current pin.\n[version] Unblock: python3 "
-                  f"scripts/pin_ritual.py  (A/B-verifies and bumps, ~10-25 min)",
-                  file=sys.stderr)
-            return 6
-        print(f"[version] WARNING: pin {pinned} is stale (npm latest {latest}) — draft may "
-              f"proceed; run scripts/pin_ritual.py before the full render.")
-        return 0
+    if semver(latest) > semver(pinned):
+        print(f"[version] PIN STALE — npm latest is {latest}, pin is {pinned}. A full "
+              f"render must run a verified-current pin.\n[version] Unblock: python3 "
+              f"scripts/pin_ritual.py  (A/B-verifies and bumps, ~10-25 min)",
+              file=sys.stderr)
+        return 6
     print(f"[version] pin {pinned}; render scripts agree; current (npm latest {latest})")
     return 0
 
