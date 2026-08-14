@@ -66,8 +66,10 @@ Roll back to Gumroad's default product page with
 
 2. **A custom product page replaces the native buy button**, so `landing.html` must carry its
    own. Every CTA is `data-gumroad-action="buy"`; live values use
-   `data-gumroad-field="name|price|rating|review-count"` (rating and review-count keep the
-   fallback text written into the element until reviews exist).
+   `data-gumroad-field="name|price"`. **`rating` and `review-count` are deliberately absent**
+   — with zero reviews they render "Be the first to rate it · no reviews yet" directly beneath
+   the testimonials, which reads as Gumroad contradicting them. The markup to restore them sits
+   commented in `landing.html` at the end of the reviews section; put it back once reviews exist.
 
 ## Why pagecheck.mjs exists rather than a curl
 
