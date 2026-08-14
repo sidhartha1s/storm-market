@@ -892,11 +892,9 @@ magnetForm.addEventListener('submit',async e=>{
 });
 
 // ---- Gumroad checkout target ----
-// Set this to the real product URL once the Gumroad account exists, e.g.
-//   const GUMROAD_URL='https://paulraymond.gumroad.com/l/storm-ready-home';
-// Every checkout CTA (offer button + hard popup) picks it up automatically;
-// while null they fall back to scrolling to #offer.
-const GUMROAD_URL=null;
+// Every checkout CTA (offer button + hard popup) picks this up automatically.
+// Set to null to fall back to scrolling to #offer.
+const GUMROAD_URL='https://paulraymond.gumroad.com/l/ebook';
 (function(){
   if(!GUMROAD_URL)return;
   for(const a of document.querySelectorAll('#buy,.pop .checkout')){
