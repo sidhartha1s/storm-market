@@ -58,6 +58,11 @@ Roll back to Gumroad's default product page with
    | paul-binder.jpg | `https://public-files.gumroad.com/2z7lprph1l42ypknjk6wfly0jr0v` |
    | paul-stage.jpg | `https://public-files.gumroad.com/3dvo3r1m4d9tsyx3pu2in6akecw7` |
    | field-kit.jpg | `https://public-files.gumroad.com/78n8pu7la9dng9q0b0ghpv8hd93l` |
+   | avatar.jpg (profile masthead) | `https://public-files.gumroad.com/elldfxffu83lvrf7xt2uin2k4a7b` |
+
+   `avatar.jpg` is a square crop of `headshot.jpg`, generated with Pillow — see the command in
+   the git history for this file. It is committed rather than left as a one-off so the masthead
+   image stays regenerable if the cover art ever changes.
 
 2. **A custom product page replaces the native buy button**, so `landing.html` must carry its
    own. Every CTA is `data-gumroad-action="buy"`; live values use
@@ -71,6 +76,14 @@ Gumroad serves the product page as a React shell and mounts the custom HTML in a
 `iframe.contentDocument` from the parent — that is `null` by design. `pagecheck.mjs` uses CDP
 `Target.setAutoAttach` to get a session per out-of-process frame and reads each one. Both
 failure modes were hit while building this; the checker is the record of that.
+
+Screenshots have a third trap. A full-page capture of the parent yields only the fold (the
+parent's `scrollHeight` is just its viewport), forcing a tall viewport makes the host app paint
+**blank white**, and capturing the frame's own session is refused outright — CDP answers
+`Command can only be executed on top-level targets`. What works: read the frame's `location.href`
+(a real route, `…/l/<permalink>/landing/embed`) and load *that* as a top-level page. The custom
+HTML carries its own `<style>`, so it renders standalone exactly as it does embedded.
+`VIEW_W` sets the capture width for responsive checks.
 
 ## Not doable from the CLI
 
