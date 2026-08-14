@@ -74,9 +74,14 @@ for (const [label, href] of [['buy', state.buy], ['popup', state.popup]]) {
   }
   const r = await fetch(href, { redirect: 'follow' });
   const body = await r.text();
-  const named = /"name"\s*:\s*"([^"]+)"/.exec(body)?.[1] ?? '(name not found)';
-  const ok = r.ok && /"name"\s*:\s*"/.test(body);
-  console.log(`${ok ? 'ok  ' : 'FAIL'}  ${label} -> ${r.status}  product: ${named}`);
+  // `?wanted=true` serves Gumroad's CHECKOUT page, not the product page, so the
+  // product-page JSON blob is absent by design. What must be true of the checkout:
+  // it names this product and it carries checkout machinery.
+  const namesProduct = body.includes(PRODUCT_NAME);
+  const isCheckout = /cart|checkout/i.test(body);
+  const ok = r.ok && namesProduct && isCheckout;
+  console.log(`${ok ? 'ok  ' : 'FAIL'}  ${label} -> ${r.status}  ` +
+    `names "${PRODUCT_NAME}": ${namesProduct}  checkout page: ${isCheckout}`);
   if (!ok) fail++;
 }
 console.log(fail ? `\n${fail} check(s) FAILED` : '\nPASS — every checkout CTA resolves to the live product.');
