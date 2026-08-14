@@ -572,6 +572,14 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
   UNCHANGED, verified in dist) + A/B render of demo-joplin-90 at full quality — identical
   duration/blackdetect, RMS delta 0.006 dB, SSIM 0.997, spot frames clean. No behavior change
   observed; the hidden-audio mix change did not alter loudness on a comp using visible audio tags.
+  **Ritual scripted 2026-08-14 (owner: manual refresh was "stupid" — pin rotted 26 versions in
+  2 weeks while the warn-only banner fired unheard):** `scripts/pin_ritual.py` runs the whole
+  thing (npm view, candidate render of demo-joplin-90, metric diff vs committed
+  `pin_baseline.json`, auto-bump on identical metrics, exit 3 + no bump on drift), and
+  `render_preflight.py` — now actually invoked by `render.cmd` — hard-blocks FULL renders on a
+  stale pin (exit 6) while drafts only warn. npm unreachable never blocks. Baseline mp4 is an
+  on-disk cache (`episodes/demo-joplin-90/renders/pin-baseline-<ver>.mp4`); when absent, the
+  ritual re-renders the baseline too (metrics-only compare if that ever fails to keep SSIM).
 - **A rule with no gate is a suggestion (owner, 2026-07-29).** "Cap every source asset at the
   composition's resolution" was written in CLAUDE.md and violated by seven clips through twelve
   failed renders, because nothing checked it. The counter-question for any rule that keeps
