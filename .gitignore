@@ -39,3 +39,4 @@ ebook/binder/out/
 *.marker
 episodes/*/.thumbnails/
 episodes/*/.waveform-cache/
+.wrangler/
