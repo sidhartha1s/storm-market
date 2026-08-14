@@ -16,8 +16,12 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
 const URL_TO_CHECK = process.argv[2];
-const SHOT = process.argv[3];
-if (!URL_TO_CHECK) { console.error('usage: node pagecheck.mjs <url> [out.png]'); process.exit(2); }
+const KIND = process.argv[3] || 'product';
+const SHOT = process.argv[4];
+if (!URL_TO_CHECK || !['product', 'profile'].includes(KIND)) {
+  console.error('usage: node pagecheck.mjs <url> [product|profile] [out.png]');
+  process.exit(2);
+}
 
 const CHROME = process.env.CHROME_BIN || 'C:/Program Files/Google/Chrome/Application/chrome.exe';
 const PORT = 9810 + (process.pid % 80);
