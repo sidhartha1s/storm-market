@@ -273,8 +273,8 @@ The hurricane missed New Orleans. The city drowned anyway. *(riser peaks and end
 
 **a1-s1 · graphic g-bowl + VO (~95 words)**
 New Orleans is shaped like a bowl. The Mississippi River runs along one rim. Lake Pontchartrain
-sits on the other. And most of the city lies between them, below the level of both. Whole
-neighborhoods sit below the level of the sea. Rain cannot drain out of this city. Every
+sits on the other. And most of the city lies between them, below the level of both. In some
+neighborhoods the ground sits as much as ten feet below the sea. Rain cannot drain out of this city. Every
 drop has to be pumped up and over the rim. People here live behind walls, the way a
 ship's crew lives behind a hull.
 *(g-bowl beats: rim labels → below-sea shading → pump arrows → hull line. New info every 2-3s.)*
@@ -289,8 +289,7 @@ deep into the city's neighborhoods, each lined with its own thin concrete wall. 
 New Orleans already knew what failure felt like. In September of 1965, Hurricane Betsy pushed the
 lake into these same streets. People drowned in their attics in the Lower Ninth Ward. Congress
 moved within weeks. It ordered the Army Corps of Engineers to build a shield around the city,
-strong enough for the worst storm the region was ever likely to see. The plan was supposed to
-take about thirteen years to finish. [verify: 13-year original estimate — GAO-06-244T]
+strong enough for the worst storm the region was ever likely to see. The plan was supposed to take about thirteen years to finish.
 
 **a1-s4 · graphic (timeline bar 1965→2005) + VO (~70 words)**
 Forty years later, the shield was still not finished. Government auditors put it at roughly
@@ -329,7 +328,7 @@ Mexico. And the Gulf, that week, was exactly what a hurricane wants. Hot water, 
 **a2-s3 · graphic (engine diagram inside g-track) + VO (~85 words)**
 A hurricane is an engine. Warm seawater is its fuel. Most storms churn up cold water from below
 and starve themselves. But Katrina crossed a current where the warmth runs deep, so the engine
-never starved. [verify: Loop Current crossing — NHC TCR discussion] Over two days it went from a
+never starved. *(source: NASA/JPL Loop Current page, not the NHC TCR, for any on-screen credit)* Over two days it went from a
 Category 1 to a Category 3, then a Category 4. And on the morning of August 28th, in less than
 twelve hours, it became a Category 5.
 *(GOES loop #17/#20 escalating behind the diagram; D6 popup on "August 28th")*
@@ -411,9 +410,8 @@ the east. The city would not take the direct hit. Mississippi would.
 
 **a4-s2 · narration + radar frames (KLIX, timestamps honest) + D11 popup (~80 words) — L4 plant**
 The radar station at Slidell tracked the eyewall as it came on. At eight forty-two, forecasters
-warned of gusts over one hundred miles per hour crossing the lake. Then, at eight fifty-four in
-the morning, the radar near the city went silent. [verify: KLIX last transmitted scan 1354 UTC —
-AMS/NCDC, MED] The eyewall was passing directly over the antenna. Through the worst
+warned of gusts over one hundred miles per hour crossing the lake. Then, at eight fifty-four in the morning, the radar near the city stopped
+transmitting. *(confirmed: last sweep 1354 UTC, AMS + Lee et al. 2008 GRL)* The eyewall was passing directly over the antenna. Through the worst
 hours of the storm, the picture stayed dark. Remember the silence. Things happened inside it.
 
 **a4-s3 · graphic g-surge-ms + VO (~110 words)**
@@ -429,8 +427,8 @@ inland or out to sea.
 **a4-s4 · narration, USGS before/after pairs (#28, #29) (~85 words)**
 One hundred seventy-two people died in Mississippi that morning. If you lived on that coast, you
 already know the strange part. The country barely remembers you. Katrina made landfall on
-Mississippi. Mississippi took the storm. New Orleans, thirty-five miles from the center, [verify: 35-mi margin, NHC Adv 27 primary pull]
-took something else. Something slower, and in its own way, worse. Because while the Gulf was erasing
+Mississippi. Mississippi took the storm. New Orleans, spared the eyewall's core, took
+something else. Something slower, and in its own way, worse. Because while the Gulf was erasing
 Waveland, the phones inside New Orleans had already started ringing.
 *(before/after wipes ON the town names; micro-loop close)*
 
@@ -451,8 +449,8 @@ distant alarms. Reason: the irony must curdle before the forensic act. → **BLA
 **a5-s1 · narration, breach aerials (#25 NOAA NGS) (~90 words)**
 Here is what was happening inside the radar silence. Katrina's surge pushed up the drainage
 canals, those open channels reaching into the city's heart, and pressed on the thin walls beside
-them. Before seven that morning, a floodwall on the London
-Avenue Canal gave way. [verify: London Ave east breach ~6-7 AM timing — MED source] Around seven
+them. Between six and seven that
+morning, a floodwall on the London Avenue Canal gave way. Around seven
 forty-five, people near the Industrial Canal heard something like an explosion. A wall section
 collapsed, and a gap nearly a thousand feet wide opened into the Lower Ninth Ward.
 
@@ -479,8 +477,8 @@ Months later, engineers ran sonar along the wreckage, looking for the anchoring 
 seventeen and a half feet below sea level. The sonar found it stopped at about ten. Seven feet of
 promised steel that was never there. And the trail led back to a load test the Corps of Engineers
 had run on its own wall design in the nineteen eighties, a test whose results, read correctly,
-said the steel needed to go far deeper in soil this soft. [verify: E-99 depth-implication figures
-before quoting numbers] The drawings said one thing. The ground held another.
+said the steel needed to go far deeper in soil this soft. *(E-99 confirmed qualitatively;
+never quote the 31-46 ft figures — secondary only)* The drawings said one thing. The ground held another.
 
 **a5-s5 · graphic g-floodmap + VO + stat beats (~110 words)**
 By the end of Monday the city had not one broken wall but dozens. The official investigation
@@ -489,8 +487,7 @@ them were overwhelmed the way you would expect, water pouring over the top and c
 apart from behind. Four were not. Four walls, including the 17th Street and London Avenue canals,
 failed below the level they were designed to hold. The system did not lose to a storm bigger than
 its design. Parts of it lost to a storm smaller than its promise. Water kept flowing for two more
-days. By Wednesday, eighty percent of New Orleans was under water. [verify: 80%-by-Aug-31 timing
-to a primary cite]
+days. By Tuesday, eighty percent of New Orleans was under water. *(NASA MODIS, Aug 30 11:45 AM)*
 *(g-floodmap: neighborhoods fill hour by hour; counter rolls to 80; depth callouts to 15 ft)*
 
 **a5-s6 · narration (~55 words) — L5 plant**
@@ -603,16 +600,17 @@ helipad, waiting for a helicopter, her husband beside her, fanning her in the he
 the roof, waiting. The doctor who told her story afterward said he did not know where her husband
 had gone. He did not know if the man even knew she was dead.
 *(visual: Charity exterior + helipad aerial, symbolic; no patient imagery; attribution chip
-"account: Charity Hospital physician, CBS interview, Sept 2005")* [verify: physician name from
-original CBS credits before any name is shown]
+"account: Dr. Ben deBoisblanc, Charity Hospital, CBS interview, Sept 2005")* *(name CONFIRMED;
+fanning detail verbatim in the broadcast transcript at 9:05-9:20)*
 
 **a7-s6 · narration + city-return imagery (~70 words)**
 New Orleans lost more than half its people in the year after the storm, and many never came
-back. [verify: 484,674 to 230,172, Data Center compilation of Census data] The ones who came back divide their
+back. *(484,674 April 2000 census vs 230,172 July 2006 estimate, The Data Center — confirmed)* The ones who came back divide their
 lives with a phrase. Before the storm. After the storm. The city has new walls now. Fourteen and a half billion
-dollars of them, finished in 2022. *(D18 popup)* They are stronger, deeper, and honestly built.
-And they are rated for a storm smaller than Katrina.
-[verify: HSDRRS 100-year design vs Katrina recurrence — phrase precisely or cut final sentence]
+dollars of them, finished in 2022. *(D18 popup)* They are stronger, deeper, and honestly built. They
+are made to hold back a storm the city should see about once a century. Katrina, the studies
+say, was rarer and worse than that. *(IPET ~400-yr surge estimate; secondary-sourced, phrasing
+kept qualitative)*
 
 **a7-s7 · graphic g-close + VO (~75 words) — signature close**
 Disasters do not ask permission. But they do send warnings. New Orleans got its warnings in
@@ -629,17 +627,27 @@ arrives. This was The Warning Hour. Episode six.
 = 137.5. Budget = 30 x 0.9 x 137.5 = ~3,710 words. Post-trim draft = ~3,790 words = ~27.6 min
 narration + inserts/holds/blackouts = **~30.3 min runtime.** Probes committed at audio/probe-*.txt.
 
-## Open [verify] ledger (must be ZERO before TTS — verification agents close these)
-1. a1-s3: original 13-year completion estimate for LP&V project (GAO doc).
-2. a2-s3: Loop Current crossing as the rapid-intensification driver (NHC TCR discussion section).
-3. a4-s2: KLIX last transmitted scan 8:54 AM CDT (AMS/NCDC — MED; either confirm or soften to
-   "the radar picture from Slidell went dark").
-4. a5-s1: London Avenue east-breach timing "before seven" (MED source; soften if unconfirmed).
-5. a5-s4: E-99 load-test implication figures (31–46 ft) — currently NOT quoted in prose (kept
-   qualitative); confirm before adding numbers, else prose stands as-is.
-6. a7-s5: Charity physician name from original CBS credits (only if a name is displayed).
-7. a7-s6: HSDRRS "rated for a storm smaller than Katrina" precision — confirm 100-year design
-   level vs Katrina's estimated recurrence interval, else cut the sentence.
-8. Cross-check EVERY on-screen stat card against spoken script word-for-word at compose
-   (the competitor shipped "+15,000 Deaths" against a spoken 1,400 — audience caught it).
+## [verify] ledger — ROUND 1 CLOSED 2026-08-15 (zero open markers in prose; evidence in
+## references/ep6-katrina/verify-round1.md)
+1. LP&V 13-year estimate — CONFIRMED (GAO-06-244T: "about 13 years... about $85 million").
+2. Loop Current — CONFIRMED via NASA/JPL (the NHC TCR itself credits an upper-level anticyclone,
+   NOT the Loop Current — any on-screen credit says NASA/JPL, never NHC).
+3. KLIX 8:54 AM — CONFIRMED twice over (AMS table + Lee et al. 2008 GRL); phrased as "stopped
+   transmitting" (the radar kept operating — it was the data feed that died).
+4. London Ave timing — SOFTENED to "between six and seven that morning" (east breach).
+5. E-99 — CONFIRMED qualitatively; the 31–46 ft figures stay OUT of prose (secondary-only).
+6. Charity physician — Dr. Ben deBoisblanc CONFIRMED (CBS retrospective); the fanning detail is
+   verbatim in the broadcast transcript at 9:05–9:20 (references/.../cbs-*/transcript.txt).
+7. HSDRRS — rephrased qualitative ("once a century" vs "rarer and worse"); IPET ~400-yr surge
+   estimate is secondary-sourced, so no hard number is spoken.
+8. Elevation — "as much as ten feet below the sea" CONFIRMED (USGS/GNOCDC; eastern NOLA deeper).
+9. 80% flooded — CORRECTED to Tuesday (NASA MODIS Aug 30, 11:45 AM CDT).
+10. 35-mile margin — DROPPED (Advisory-27's 35 mi is a 10 AM position, not closest approach
+    ~23 mi; prose now says "spared the eyewall's core" — no number, no ambiguity).
+11. Population halved — CONFIRMED (484,674 → 230,172, The Data Center).
+12. NPR "spared the worst" audio — LIVE and downloadable (INS-02 viable).
+
+STANDING compose-time gate: cross-check EVERY on-screen stat card against the spoken script
+word-for-word (the competitor shipped "+15,000 Deaths" against a spoken 1,400 — audience caught
+it in top comments).
 
