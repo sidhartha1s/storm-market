@@ -580,6 +580,10 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
   stale pin (exit 6) while drafts only warn. npm unreachable never blocks. Baseline mp4 is an
   on-disk cache (`episodes/demo-joplin-90/renders/pin-baseline-<ver>.mp4`); when absent, the
   ritual re-renders the baseline too (metrics-only compare if that ever fails to keep SSIM).
+  **Gotcha that cost 40 min:** `npx hyperframes@<uncached-version>` prompts "Ok to proceed?"
+  and a detached run hangs on stdin until the timeout — every scripted npx call needs `-y`
+  AND `stdin=DEVNULL`. (The schtasks cmd wrappers dodged this by accident; python
+  subprocess did not.)
 - **A rule with no gate is a suggestion (owner, 2026-07-29).** "Cap every source asset at the
   composition's resolution" was written in CLAUDE.md and violated by seven clips through twelve
   failed renders, because nothing checked it. The counter-question for any rule that keeps
