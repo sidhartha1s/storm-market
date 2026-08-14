@@ -36,6 +36,16 @@ if defined RENDER_FPS set _FPS=%RENDER_FPS%
 set QFLAGS=--quality %QUAL% --crf %_CRF% --fps %_FPS%
 
 cd /d "%EP%"
+REM Preflight gate (busy box / media budget / pin drift / pin currency). CLAUDE.md has always
+REM said "the render script calls this file" — as of 2026-08-14 it actually does. Full python
+REM path: under schtasks/cmd, bare python3 resolves to the MS Store stub (exit 9009).
+"C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0render_preflight.py" "%EP%" %MODE%
+if errorlevel 1 (
+  set RC=%ERRORLEVEL%
+  echo PREFLIGHT REFUSED exit %RC% — see output above
+  echo %RC% > "render_%MODE%_done.marker"
+  exit /b %RC%
+)
 REM QC tools (blank_scan.mjs, graphics_qc.mjs) stage _*_tmp.html in the episode root; if one is
 REM left behind, hyperframes discovers it as a second root composition and warns of duplicate
 REM audio. Sweep them before every render — a render dir must contain exactly one root index.html.
