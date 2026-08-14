@@ -20,6 +20,7 @@ is the same class of instruction as "remember to cap your assets" — which surv
 twelve failed renders precisely because nothing checked it.
 """
 import re
+import shutil
 import subprocess
 import sys
 from pathlib import Path
