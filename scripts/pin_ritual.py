@@ -212,6 +212,11 @@ def main():
         print("[ritual] no baseline mp4 on disk — SSIM skipped (metrics-only compare)")
 
     drifts = compare(record, cand, ssim_all)
+    if base_has_mp4 and ssim_all is None:
+        # an un-computable SSIM (e.g. resolution change broke the filter) is a failed
+        # visual gate, never a silent pass
+        drifts.append("SSIM could not be computed from ffmpeg output — visual identity "
+                      "UNVERIFIED")
     print(f"[ritual] {pin} vs {latest}: duration {record['duration']:.3f}/"
           f"{cand['duration']:.3f}s, black {len(record['blackdetect'])}/"
           f"{len(cand['blackdetect'])} segs, RMS {record['rms_db']:.3f}/"
