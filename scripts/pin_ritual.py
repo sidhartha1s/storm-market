@@ -151,8 +151,6 @@ def bump_pins(new):
                           rf"\g<1>{new}\g<2>", cfg.read_text(encoding="utf-8")),
                    encoding="utf-8")
     for script in sorted((REPO / "scripts").glob("*.cmd")):
-        if any(h in script.name for h in HISTORICAL):
-            continue
         txt = script.read_text(encoding="utf-8")
         if "npx hyperframes@" in txt:
             script.write_text(re.sub(r"(hyperframes@)[\d.]+", rf"\g<1>{new}", txt),
