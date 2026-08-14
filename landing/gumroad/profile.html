@@ -24,6 +24,8 @@
 .prp img{max-width:100%;display:block}
 .prp h1,.prp h2,.prp h3{font-family:var(--display);font-weight:700;margin:0;line-height:1.1;
   letter-spacing:-.012em}
+/* the sandbox supplies no h2 size — set it explicitly or it renders at body size */
+.prp h2{font-size:clamp(26px,4vw,38px)}
 .prp p{margin:0 0 16px}
 .prp .kicker{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.22em;
   text-transform:uppercase;color:var(--red);margin-bottom:14px}
