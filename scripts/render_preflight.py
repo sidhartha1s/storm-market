@@ -32,6 +32,35 @@ HEAVY_MB = 120
 WATCH = ("chrome.exe", "msedge.exe", "ffmpeg.exe", "ffprobe.exe")
 
 
+# --- version helpers (shared: pin_ritual.py imports these) ---------------------
+
+def parse_pin(repo):
+    """The pinned hyperframes version from config.yaml, or None if the key is missing."""
+    m = re.search(r'hyperframes_version:\s*"([\d.]+)"',
+                  (repo / "config.yaml").read_text(encoding="utf-8", errors="replace"))
+    return m.group(1) if m else None
+
+
+def npm_latest(timeout=30):
+    """Latest hyperframes on npm, or None (npm missing/unreachable/garbage output).
+
+    None means currency is UNKNOWN — each caller decides what that implies
+    (preflight proceeds, the ritual hard-fails)."""
+    npm = shutil.which("npm")
+    if not npm:
+        return None
+    try:
+        out = subprocess.run([npm, "view", "hyperframes", "version"],
+                             capture_output=True, text=True, timeout=timeout).stdout.strip()
+    except (subprocess.TimeoutExpired, OSError):
+        return None
+    return out if re.fullmatch(r"[\d.]+", out) else None
+
+
+def semver(v):
+    return tuple(int(x) for x in v.split("."))
+
+
 def heavy_processes():
     out = subprocess.run(["tasklist", "/FO", "CSV", "/NH"],
                          capture_output=True, text=True).stdout
