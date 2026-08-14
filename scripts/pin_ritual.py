@@ -73,42 +73,9 @@ BLACK_TOL = 0.10        # seconds, per boundary
 RMS_TOL = 0.20          # dB
 SSIM_MIN = 0.99
 
-# Retired per-episode scripts keep their shipped pins — history, not a run path
-# (same exclusion as render_preflight.py's drift check).
-HISTORICAL = ("ep2", "ep3v2")
-
 
 def run(cmd, **kw):
     return subprocess.run(cmd, capture_output=True, text=True, **kw)
-
-
-def current_pin():
-    m = re.search(r'hyperframes_version:\s*"([\d.]+)"',
-                  (REPO / "config.yaml").read_text(encoding="utf-8"))
-    if not m:
-        sys.exit("[ritual] no hyperframes_version in config.yaml")
-    return m.group(1)
-
-
-def npm_latest():
-    npm = shutil.which("npm")
-    if not npm:
-        print("[ritual] npm not on PATH", file=sys.stderr)
-        sys.exit(4)
-    try:
-        r = run([npm, "view", "hyperframes", "version"], timeout=60)
-    except subprocess.TimeoutExpired:
-        print("[ritual] npm view timed out — currency unknowable", file=sys.stderr)
-        sys.exit(4)
-    v = r.stdout.strip()
-    if r.returncode != 0 or not re.fullmatch(r"[\d.]+", v):
-        print(f"[ritual] npm view failed: {r.stderr.strip()[:200]}", file=sys.stderr)
-        sys.exit(4)
-    return v
-
-
-def semver(v):
-    return tuple(int(x) for x in v.split("."))
 
 
 def render(version, out_mp4):
