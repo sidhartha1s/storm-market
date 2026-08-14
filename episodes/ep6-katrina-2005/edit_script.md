@@ -264,7 +264,7 @@ headline card, narrator silent). Riser starts under it.
 
 **h1-s4 · narration (~48 words)**
 That report aired the morning after landfall. It was wrong before it was broadcast. By the time
-the country heard it, the water was already inside the city, and it was rising an inch a minute.
+the country heard it, the water was already inside the city, and it was still rising.
 The hurricane missed New Orleans. The city drowned anyway. *(riser peaks and ends WITH "anyway")*
 
 **h1-s5 · hold — THE VOID (2.5s)** — hard cut to black. Spine dies. Silence. *(the hook's punctuation)*
@@ -273,8 +273,8 @@ The hurricane missed New Orleans. The city drowned anyway. *(riser peaks and end
 
 **a1-s1 · graphic g-bowl + VO (~95 words)**
 New Orleans is shaped like a bowl. The Mississippi River runs along one rim. Lake Pontchartrain
-sits on the other. And most of the city lies between them, below the level of both. In some
-neighborhoods the ground sits ten feet under the sea. Rain cannot drain out of this city. Every
+sits on the other. And most of the city lies between them, below the level of both. Whole
+neighborhoods sit below the level of the sea. Rain cannot drain out of this city. Every
 drop has to be pumped up and over the rim. People here do not live beside the water. They live
 inside it, behind walls, the way a ship's crew lives behind a hull.
 *(g-bowl beats: rim labels → below-sea shading → pump arrows → hull line. New info every 2-3s.)*
@@ -300,7 +300,7 @@ New Orleans sinks a little every year. Walls built to a safe height in one decad
 below it in the next. The fence was unfinished, and parts of it were shrinking.
 
 **a1-s5 · narration, "Washing Away" front-page card + D3 popup (~95 words)**
-None of this was secret. In June of 2002, the city's own newspaper ran a five-day warning series
+None of this was secret. In June of 2002, the city's own newspaper ran a front-page warning series
 called Washing Away. Its first sentence: "It's only a matter of time before South Louisiana takes
 a direct hit from a major hurricane." The reporters printed a likely death toll. Somewhere between
 twenty-five thousand and one hundred thousand people. That landed on driveways and kitchen tables
@@ -319,7 +319,7 @@ act turn. → **BLACKOUT (2.5s)**
 ## ACT 2 — The Storm (~4:40–8:10, ~480 words)
 
 **a2-s1 · graphic g-track opens mid-motion + VO + D4 popup (~80 words)**
-Twelve hundred miles away, over the warm shallows of the Bahamas, satellites were watching a
+Far to the east, over the warm shallows of the Bahamas, satellites were watching a
 cluster of thunderstorms trying to become something. On August 23rd, 2005, it became the twelfth
 tropical depression of the season. A day later it had a name. Katrina. Nobody in Louisiana looked
 up. Storms are born out there every August. Almost all of them die as names on a list.
@@ -340,7 +340,7 @@ twelve hours, it became a Category 5.
 **a2-s4 · graphic stat slam + satellite loop (~90 words)**
 At that point the numbers stop sounding like weather. Sustained winds of one hundred seventy-three
 miles per hour. A central pressure of nine hundred two millibars, among the lowest ever measured
-in an Atlantic hurricane. Tropical-storm winds reached two hundred miles out from the eye. Put
+in an Atlantic hurricane. Tropical-storm winds reached more than two hundred miles out from the eye. Put
 that circle over a map and it swallows the whole northern Gulf Coast at once. This was no longer a
 question of whether someone would be hit. Everyone in the circle already was.
 *(stats slam ON their spoken words, ep2-style; no pre-reveal)*
@@ -348,8 +348,8 @@ question of whether someone would be hit. Everyone in the circle already was.
 **a2-s5 · narration over track-cone tightening (~105 words) — L2 plant**
 And here is the part of this story nobody expects. The forecast was nearly perfect. Two and a half
 days before landfall, the Hurricane Center drew its line to the Louisiana coast. Katrina followed
-that line almost exactly. The official track errors in the final two days were among the smallest
-ever recorded for a major hurricane. Emergency managers had fifty-six hours of clear, correct
+that line almost exactly. In the final two days, every new forecast lined up almost directly on
+top of the storm's actual path. Emergency managers had fifty-six hours of clear, correct
 warning. More than two full days. Most disasters begin with a surprise. This one began with a
 bullseye. The forecast was nearly perfect. Remember that. It is what makes everything that follows
 hard to hear.
@@ -362,9 +362,8 @@ lands in silence. → **BLACKOUT (2.5s)**
 
 **a3-s1 · narration, quiet Sunday-morning New Orleans b-roll (#38 pre-storm WWL, graded) (~65 words)**
 Sunday, August 28th. A hot, still morning in New Orleans. Church bells, coffee, a normal weekend
-sky. Out in the Gulf, four hundred miles of hurricane were turning toward the city at about
-thirteen miles an hour. Slow enough to feel unreal. Fast enough that everything that needed to
-happen now had about twenty-four hours to happen in.
+sky. Out in the Gulf, more than four hundred miles of hurricane were turning toward the city.
+Everything that needed to happen now had about twenty-four hours to happen in.
 
 **a3-s2 · graphic (NHC advisory text #31) + VO + D6 continuity (~55 words)**
 At seven that morning, the Hurricane Center's advisory used a phrase forecasters almost never
@@ -388,7 +387,7 @@ One hour later, at eleven in the morning, Mayor Ray Nagin stood at a podium and 
 New Orleans mayor had ever done. He ordered a mandatory evacuation of the entire city. Nineteen
 hours before landfall. On the highways, every lane was already running one direction. Out. About
 one point two million people left south Louisiana in a day and a half, roughly ninety percent of
-the people in the storm's path. It was, by the numbers, one of the most successful evacuations in
+the people at risk. It was, by the numbers, one of the most successful evacuations in
 American history.
 
 **a3-s5 · narration, evacuee/traffic stills (#14 FEMA) (~90 words)**
@@ -400,8 +399,9 @@ people existed. The plan for them fit in one word. Superdome.
 
 **a3-s6 · narration + Superdome exterior lines (#2, #14) + D9 popup (~85 words) — L3 plant**
 At noon on Sunday, the city opened the Superdome as what officials called a refuge of last
-resort. Not a shelter. A refuge of last resort, a place to survive the wind and nothing more. By
-nightfall, roughly ten thousand people were inside, in lines that wrapped around the building,
+resort. Not a shelter. A refuge of last resort, a place to survive the wind and nothing more. By the
+time the storm arrived, more than ten thousand people were inside. They had waited in lines that
+wrapped around the building,
 carrying garbage bags of clothes. National Guard soldiers searched them at the doors. Remember
 that phrase. Refuge of last resort. We are going to find out exactly what it meant.
 
@@ -438,8 +438,8 @@ inland or out to sea.
 One hundred seventy-two people died in Mississippi that morning. Whole retirement communities,
 gone between breakfast and noon. If you lived on that coast, you will already know something
 strange about this story. The country barely remembers your part of it. Katrina made landfall on
-Mississippi. Mississippi took the storm. New Orleans, thirty-five miles from the center, took
-something else. Something slower, and in its own way, worse. Because while the Gulf was erasing
+Mississippi. Mississippi took the storm. New Orleans, thirty-five miles from the center, [verify: 35-mi margin, NHC Adv 27 primary pull]
+took something else. Something slower, and in its own way, worse. Because while the Gulf was erasing
 Waveland, the phones inside New Orleans had already started ringing.
 *(before/after wipes ON the town names; micro-loop close)*
 
@@ -469,7 +469,7 @@ collapsed, and a gap nearly a thousand feet wide opened into the Lower Ninth War
 
 **a5-s2 · narration, Lower Ninth imagery + barge beat (~85 words)**
 The Lower Ninth went under in minutes. Houses floated off their slabs with families inside. A
-steel barge, two hundred feet long, washed through the gap and came to rest on top of a
+massive steel barge washed through the gap and came to rest on top of a
 neighborhood. For years people said the barge caused the breach. Engineers later proved it did
 not. The wall failed first, on its own, and the barge simply drifted through the wound. Keep that
 distinction. This episode keeps coming back to it. Walls that failed on their own.
@@ -482,8 +482,8 @@ concrete outward, just slightly, and that lean opened a thin gap between the wal
 holding it. Water poured down into the gap, and now the pressure was not pushing on the wall
 anymore. It was pushing on the ground under it. Beneath that levee lay a soft layer of old swamp
 clay. The clay sheared, the way mud slides off a shovel, and the wall rode the ground sideways
-into the neighborhood behind it. It did not overflow. It moved. A floodwall is very unforgiving.
-It is either there, or it is not.
+into the neighborhood behind it. It did not overflow. It moved. A floodwall has no halfway.
+It holds, or it is gone.
 *(g-iwall v1-v3 to be authored; beats word-synced: load → lean → gap → clay shear → slide)*
 
 **a5-s4 · graphic g-iwall part 2 (the receipt) + VO (~105 words) — L1 pay**
@@ -502,7 +502,8 @@ them were overwhelmed the way you would expect, water pouring over the top and c
 apart from behind. Four were not. Four walls, including the 17th Street and London Avenue canals,
 failed below the level they were designed to hold. The system did not lose to a storm bigger than
 its design. Parts of it lost to a storm smaller than its promise. Water kept flowing for two more
-days. By Wednesday, eighty percent of New Orleans was under water.
+days. By Wednesday, eighty percent of New Orleans was under water. [verify: 80%-by-Aug-31 timing
+to a primary cite]
 *(g-floodmap: neighborhoods fill hour by hour; counter rolls to 80; depth callouts to 15 ft)*
 
 **a5-s6 · narration (~55 words) — L5 plant**
@@ -528,7 +529,7 @@ the dark. Bodies stacked in the freezers, as many as two hundred. Officials repe
 national television, and for a week, America believed the Superdome had become a war zone. Months
 later, investigators counted what actually happened there. Six people died in that building. Four
 from illness. One overdose. One suicide. No murders. The truth was bad enough. Twenty-three
-thousand people abandoned in the heat for five days. The myth just pointed the shame at the
+thousand people abandoned in the heat for nearly a week. The myth just pointed the shame at the
 wrong people.
 
 **a6-s3 · narration + Convention Center beat + D13 popup (~90 words)**
@@ -542,7 +543,7 @@ said it did not know. Both of those sentences were true at the same time.
 **a6-s4 · narration, comms-collapse beat (~75 words)**
 How does a government lose twenty-five thousand people in its own city? Like this. The storm took
 out three million phone lines and nearly fifteen hundred cell towers. Police radios in New Orleans
-went dark; officers passed notes by hand. City Hall was an island. For days, the people running
+went dark. City Hall was an island. For days, the people running
 the rescue could not reliably talk to each other, and information moved at the speed of rumor.
 The country watched it live. The responders could not.
 
@@ -606,9 +607,9 @@ American city, the legal price paid was zero.
 
 **a7-s4 · graphic g-stat-toll + VO (~90 words)**
 The human price was not zero. The official count, after years of study, stands at one thousand
-three hundred ninety-two lives, taking the storm and its aftermath together, across all five
-states. Louisiana buried the most. And the record shows exactly who the water took. Four out of
-ten drowned. Nearly half of Louisiana's dead were seventy-five or older. The people who could not
+three hundred ninety-two lives, taking the storm and its aftermath together, across the Gulf
+states. Louisiana buried the most. And Louisiana's own records show exactly who the water took.
+Four out of ten of its dead drowned. Nearly half were seventy-five or older. The people who could not
 climb to an attic. The people who stayed because leaving was harder for them than for anyone
 else. The flood found the oldest people in the bowl, and it kept them.
 *(counter rolls fast, slows into 1,392; secondary rows appear after the landing)*
@@ -624,8 +625,8 @@ had gone. He did not know if the man even knew she was dead.
 original CBS credits before any name is shown]
 
 **a7-s6 · narration + city-return imagery (~70 words)**
-New Orleans lost more than a third of its people in the months after the storm, and many never
-came back. The ones who did divide their lives with a phrase you will hear in every neighborhood.
+New Orleans lost more than half its people in the year after the storm, and many never came
+back. [verify: 484,674 to 230,172, Data Center compilation of Census data] The ones who did divide their lives with a phrase you will hear in every neighborhood.
 Before the storm. After the storm. The city has new walls now. Fourteen and a half billion
 dollars of them, finished in 2022. *(D18 popup)* They are stronger, deeper, and honestly built.
 And they are rated for a storm smaller than Katrina.

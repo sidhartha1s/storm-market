@@ -39,3 +39,8 @@ ebook/binder/out/
 *.marker
 episodes/*/.thumbnails/
 episodes/*/.waveform-cache/
+
+# episode reference teardowns: videos/frames are regenerable via yt-dlp/ffmpeg — text stays, media doesn't
+references/*/*/*.webm
+references/*/*/contact-sheets/
+references/*/dh-hook-frames/
