@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:'Courier New',monospace;
+    background: radial-gradient(ellipse at 50% 30%, #171208 0%, #0a0704 70%); }
+  .gp-hdr { position:absolute; left:200px; top:120px; }
+  .gp-hdr .h1 { font-family:'Arial Black',Arial,sans-serif; font-size:54px; color:#d8a13a; letter-spacing:3px; }
+  .gp-hdr .h2 { font-size:26px; font-weight:700; color:#a08a5a; letter-spacing:4px; margin-top:10px; }
+  .gp-rows { position:absolute; left:200px; top:320px; right:560px; }
+  .gp-row { font-size:36px; font-weight:700; color:#e8dcc0; letter-spacing:1px; padding:16px 0;
+    border-bottom:1px dashed rgba(216,161,58,0.3); }
+  .gp-row b { color:#d8a13a; }
+  .gp-row.hot { color:#f0d0c0; }
+  .gp-row.hot b { color:#e74c3c; font-size:44px; }
+  .gp-stamp { position:absolute; right:150px; top:330px; font-family:'Arial Black',Arial,sans-serif; font-size:52px;
+    color:#b83227; border:8px solid #b83227; padding:14px 30px; letter-spacing:4px; transform:rotate(8deg);
+    background:rgba(10,7,4,0.5); }
+  .gp-verdict { position:absolute; left:0; right:0; bottom:96px; text-align:center; font-family:Georgia,serif; }
+  .gp-verdict .v1 { display:table; margin:0 auto; font-size:34px; font-style:italic; color:#e8dcc0;
+    background:rgba(10,7,4,0.7); padding:10px 30px; }
+  #gp-paper { position:absolute; inset:0; pointer-events:none; opacity:0.35;
+    background: repeating-linear-gradient(0deg, transparent 0 46px, rgba(216,161,58,0.05) 46px 47px); }
+</style>
+<div id="root" data-composition-id="g-pam" data-width="1920" data-height="1080">
+  <div id="gp-paper"></div>
+  <div class="gp-hdr" id="g-pam-hdr">
+    <div class="h1" id="g-pam-h1">EXERCISE: HURRICANE PAM</div>
+    <div class="h2" id="g-pam-h2">BATON ROUGE · JULY 2004 · ~300 OFFICIALS · FEMA-FUNDED</div>
+  </div>
+  <div class="gp-rows">
+    <div class="gp-row" id="g-pam-r0">SIMULATED: <b>CATEGORY 3 · LEVEES TOPPED · CITY FLOODED</b></div>
+    <div class="gp-row" id="g-pam-r1">PROJECTED EVACUATION: <b>OVER 1,000,000 PEOPLE</b></div>
+    <div class="gp-row" id="g-pam-r2">PROJECTED BUILDINGS DESTROYED: <b>500,000</b></div>
+    <div class="gp-row hot" id="g-pam-r3">PROJECTED DEATH TOLL: <b>60,000+</b></div>
+    <div class="gp-row" id="g-pam-r4">PREDICTED: <b>SHELTERS OVERWHELMED</b></div>
+    <div class="gp-row" id="g-pam-r5">PREDICTED: <b>EVACUEES STRANDED ON HIGHWAYS</b></div>
+    <div class="gp-row" id="g-pam-r6">PREDICTED: <b>HOSPITALS LOSE POWER, PATIENTS INSIDE</b></div>
+  </div>
+  <div class="gp-stamp" id="g-pam-stamp">FOLLOW-UP<br>NEVER FUNDED</div>
+  <div class="gp-verdict" id="g-pam-verdict"><div class="v1">Thirteen months later, the real storm arrived.</div></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* host 1386.04-1447.20 (61.16s = a7-s1). Cues (rel): pam named 19.82, category 21.76,
+     surge-topped 23.94, million 31.56, half-million-buildings 33.56, 60k toll ~37,
+     shelters 41.32, highways 44.88, hospitals 46.58, never-finished 54.84, real-storm ~58.5.
+     Amber dossier — D16 amber stamp fires separately in the master at 2.6. */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-pam-";
+  tl.set([P+"r0",P+"r1",P+"r2",P+"r3",P+"r4",P+"r5",P+"r6",P+"stamp",P+"verdict"], { autoAlpha: 0 }, 0);
+  tl.fromTo(P+"hdr", { autoAlpha: 0, y: -16 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power2.out" }, 1.0);
+  tl.fromTo(P+"r0", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.5 }, 21.6);
+  tl.fromTo(P+"r1", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.5 }, 31.4);
+  tl.fromTo(P+"r2", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.5 }, 33.5);
+  tl.fromTo(P+"r3", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.5 }, 36.6);
+  tl.fromTo(P+"r3", { scale: 1.04 }, { scale: 1.0, duration: 0.9, ease: "power2.out" }, 37.1);
+  tl.fromTo(P+"r4", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.5 }, 41.2);
+  tl.fromTo(P+"r5", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.5 }, 44.7);
+  tl.fromTo(P+"r6", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.5 }, 46.4);
+  /* the stamp slams on "never finished" */
+  tl.fromTo(P+"stamp", { autoAlpha: 0, scale: 2.6, rotation: 8 }, { autoAlpha: 1, scale: 1, rotation: 8, duration: 0.35, ease: "power4.in" }, 54.7);
+  tl.fromTo(P+"verdict", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 58.2);
+  /* paper drift + slow zoom (motion floor) */
+  tl.fromTo("#root", { scale: 1.0, transformOrigin: "center" }, { scale: 1.04, duration: 61, ease: "none" }, 0);
+  tl.to("#root", { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 60.6);
+  window.__timelines["g-pam"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
