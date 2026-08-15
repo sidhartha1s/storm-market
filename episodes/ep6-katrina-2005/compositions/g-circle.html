@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:#04070c; overflow:hidden; font-family:Arial,sans-serif; }
+  #g-circle-cam { position:absolute; left:0; top:0; width:2700px; height:1669px; transform-origin:0 0; }
+  #g-circle-cam img { position:absolute; left:0; top:0; width:2700px; height:1669px; }
+  /* the wind field: 200-mile reach ring, centered on the Cat-5 position in plate pixels */
+  #g-circle-field { position:absolute; left:1080px; top:1290px; width:0px; height:0px; border-radius:50%;
+    border:8px solid rgba(231,76,60,0.85); background:rgba(231,76,60,0.13);
+    box-shadow:0 0 60px rgba(231,76,60,0.4); transform:translate(-50%,-50%); }
+  .panel { position:absolute; right:0; top:0; bottom:0; width:760px; box-sizing:border-box; z-index:5;
+    background: linear-gradient(270deg, rgba(10,15,21,0.72) 70%, rgba(10,15,21,0));
+    backdrop-filter: blur(16px) saturate(1.15); -webkit-backdrop-filter: blur(16px) saturate(1.15);
+    border-left: 1px solid rgba(255,255,255,0.1); padding: 110px 70px 0 90px; }
+  .tname { font-family:'Arial Black',Arial,sans-serif; font-size:48px; color:#f2f5f8; line-height:1.1; }
+  .tsub { font-family:Georgia,serif; font-style:italic; font-size:25px; color:#d8a13a; margin-top:10px; }
+  .row { margin-top:34px; }
+  .row .lab { display:block; font-size:19px; color:#93a3b2; letter-spacing:4px; font-weight:700; }
+  .row .val { font-family:'Courier New',monospace; font-size:72px; font-weight:700; color:#f2f5f8; }
+  .row .unit { font-size:30px; color:#c8d3e0; font-weight:700; }
+  .row.hot .val { color:#e74c3c; }
+  .foot { margin-top:40px; font-family:Georgia,serif; font-style:italic; font-size:27px; color:#e8edf2; line-height:1.4; }
+</style>
+<div id="root" data-composition-id="g-circle" data-width="1920" data-height="1080">
+  <div id="g-circle-cam">
+    <img src="../media/maps/baseplate-gulf-track-map-katrina2005.png" alt="">
+    <div id="g-circle-field"></div>
+  </div>
+  <div class="panel" id="g-circle-panel">
+    <div class="tname">NO LONGER WEATHER</div>
+    <div class="tsub">Sunday morning, August 28 &middot; open Gulf</div>
+    <div class="row hot" id="g-circle-wind"><span class="lab">SUSTAINED WINDS</span><span class="val">173</span> <span class="unit">MPH</span></div>
+    <div class="row" id="g-circle-pres"><span class="lab">CENTRAL PRESSURE</span><span class="val">902</span> <span class="unit">MB</span></div>
+    <div class="row" id="g-circle-reach"><span class="lab">STORM WINDS REACHED</span><span class="val">200+</span> <span class="unit">MILES OUT</span></div>
+    <div class="foot" id="g-circle-foot">Everyone inside the circle was already hit.</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* host 286.36-317.44 (31.08s). Beats (rel): winds ~5, pressure ~10.5, reach ~17, circle-over-map ~21.5,
+     "everyone in the circle" ~27. Panel slides in; the field ring grows ON "circle over a map". */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-circle-";
+  /* camera: wide Gulf view, slow push the whole window */
+  tl.set(P.slice(0,-1)+"-cam", { scale: 0.78, x: 960 - 1100 * 0.78, y: 540 - 1250 * 0.78 }, 0);
+  tl.to(P+"cam", { scale: 0.84, x: 960 - 1100 * 0.84, y: 540 - 1250 * 0.84, duration: 31, ease: "none" }, 0);
+  tl.set([P+"wind", P+"pres", P+"reach", P+"foot"], { autoAlpha: 0 }, 0);
+  tl.fromTo(P+"panel", { x: 660 }, { x: 0, duration: 0.7, ease: "power3.out" }, 0.4);
+  tl.fromTo(P+"wind", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 4.6);
+  tl.fromTo(P+"pres", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 10.2);
+  tl.fromTo(P+"reach", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 16.6);
+  /* the circle: 200 miles ≈ 640 plate px radius at this plate scale — swallows the coast */
+  tl.to(P+"field", { width: 1280, height: 1280, duration: 4.5, ease: "power2.out" }, 21.3);
+  tl.to(P+"field", { boxShadow: "0 0 90px rgba(231,76,60,0.6)", duration: 1.2, yoyo: true, repeat: 3 }, 25.8);
+  tl.fromTo(P+"foot", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 26.8);
+  /* exit: panel slides out, timed to the hard cut */
+  tl.to(P+"panel", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 30.3);
+  tl.to("#root", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 30.7);
+  window.__timelines["g-circle"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
