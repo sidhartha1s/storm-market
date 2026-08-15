@@ -57,12 +57,20 @@ def main():
         txt, wav = ep / "audio" / f"{sid}.txt", ep / "audio" / f"{sid}.wav"
         txt.write_text(text, encoding="utf-8")
         if not wav.exists():
-            r = subprocess.run([ext["pocket_venv_python"], ext["tts_clone_py"],
-                                "--text-file", str(txt), "--out", str(wav),
-                                "--voice", ext["voice_ref"]],
-                               env={**__import__("os").environ, "PYTHONUTF8": "1", "PYTHONUNBUFFERED": "1"})
+            # tts_clone.py intermittently dies at CUDA init/clone with a native crash (no
+            # traceback, non-zero exit; ep6 measured ~1 in 8 segments, same input passes on
+            # rerun). One loud retry per segment; a second consecutive failure is real.
+            for attempt in (1, 2):
+                r = subprocess.run([ext["pocket_venv_python"], ext["tts_clone_py"],
+                                    "--text-file", str(txt), "--out", str(wav),
+                                    "--voice", ext["voice_ref"]],
+                                   env={**__import__("os").environ, "PYTHONUTF8": "1", "PYTHONUNBUFFERED": "1"})
+                if r.returncode == 0:
+                    break
+                print(f"[tts_episode] [FALLBACK] {sid} attempt {attempt} exited "
+                      f"{r.returncode} (0x{r.returncode & 0xFFFFFFFF:08X})", flush=True)
             if r.returncode != 0:
-                sys.exit(f"[tts_episode] FAIL on {sid}")
+                sys.exit(f"[tts_episode] FAIL on {sid} after retry, exit {r.returncode}")
         # ffprobe immediately after write can return empty on this box (Defender scan lock);
         # retry briefly before failing loud.
         d = None
