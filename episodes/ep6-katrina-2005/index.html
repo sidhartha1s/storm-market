@@ -745,6 +745,36 @@ window.__timelines = window.__timelines || {};
   drift("#c-resigndark", 1378.42, 5.12);
   drift("#c-hodgesdark", 1588.64, 2.06);
 
+  /* a4-s1 Buras landfall card */
+  drift("#c-buras-dark", 592.78, 10.38);
+  reveal("#p-buras .bu-1", 593.8); reveal("#p-buras .bu-2", 596.4); reveal("#p-buras .bu-3", 599.4);
+
+  /* a4-s5 two-headlines split card */
+  drift("#c-headlines-dark", 733.9, 23.16);
+  tl.fromTo("#p-headlines .hl-rule", { autoAlpha: 0, scaleY: 0, transformOrigin: "top" }, { autoAlpha: 1, scaleY: 1, duration: 0.7, ease: "power2.out" }, 736.0);
+  reveal("#p-headlines .hl-L", 737.0, 10); reveal("#p-headlines .hl-R", 741.5, 10);
+  reveal("#p-headlines .hl-foot", 749.0);
+
+  /* a6-s4 comms hole — build signal bars, pulse them, then kill them one by one */
+  (function() {
+    const wrap = document.getElementById("comms-bars");
+    if (!wrap) return;
+    const N = 9;
+    for (let i = 0; i < N; i++) {
+      const b = document.createElement("div");
+      b.style.cssText = "width:26px;background:linear-gradient(180deg,#6fb3d9,#2b6a8c);border-radius:3px;";
+      b.style.height = (40 + (i % 5) * 34) + "px";
+      wrap.appendChild(b);
+      tl.fromTo(b, { autoAlpha: 0, scaleY: 0.2, transformOrigin: "bottom" }, { autoAlpha: 1, scaleY: 1, duration: 0.4, ease: "power2.out" }, 1159.0 + i * 0.12);
+      /* live pulse until it dies */
+      const dieAt = 1163.5 + i * 0.7;
+      tl.to(b, { scaleY: 0.5 + 0.5 * Math.abs(Math.sin(i * 1.7)), duration: 0.35, ease: "sine.inOut", yoyo: true, repeat: Math.max(1, Math.round((dieAt - 1160.5) / 0.7)) }, 1160.5);
+      /* fall dark */
+      tl.to(b, { background: "#242c36", scaleY: 0.16, transformOrigin: "bottom", duration: 0.4, ease: "power2.in" }, dieAt);
+    }
+  })();
+  reveal("#p-comms .cm-1", 1166.0); reveal("#p-comms .cm-2", 1170.0);
+
   filmLayer(tl, DUR);
   window.__timelines["ep6-katrina2005"] = tl;
 })();
