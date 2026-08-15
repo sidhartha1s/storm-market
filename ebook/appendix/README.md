@@ -13,7 +13,7 @@ This directory holds two deliverables that share one dataset:
 | Deliverable | Where it goes | Pages |
 |---|---|---|
 | **Appendix B** — compact state lookup | in the book, one row per state | ~18 |
-| **The 50 state packets** — free lead magnet + buyer bonus | landing page email gate, one PDF per state | ~4 each |
+| **The 50 state packets** — free lead magnet + buyer bonus | a $0 Gumroad product (`/l/packet`), all 51 zipped; also bundled with the paid product | ~4 each |
 
 Same CSV, two renderers. That is the whole reason the 50-states problem became tractable: the owner's
 objection was correct — *"suppose im from chicago, why the hell would i need to know 49 other states'
@@ -95,6 +95,26 @@ in its own `derive_*.py`, writes its own CSV fragment, and `merge.py` assembles 
 
 Nothing here is a scrape of a search result and nothing is a model guess. Where a source omits a state, the
 cell stays empty and the run prints which state and why.
+
+### Four citations point at a code republisher, and why
+
+Every source URL in `state_data.csv` was audited by host. Almost all are `.gov`, plus two national
+bodies that are the authority for their column (`content.naic.org` for insurance, `emacweb.org` for
+the emergency-management contact list) and four official state programme or agency sites that
+simply run on `.com`/`.org` domains (My Safe Florida Home, Strengthen Alabama Homes, the Florida,
+Mississippi and South Carolina emergency management divisions).
+
+Four pharmacy citations — Alabama, Oklahoma, Texas — and one Oregon rule cite `law.justia.com` or
+`oregon.public.law` rather than the state's own site. That is not laziness: those states publish
+their statutes through a **JavaScript-rendered portal that returns no statute text to any fetcher**,
+including headless Chrome given a 40-second budget. The republished text is verifiable and the
+section numbers are printed in the cell, so a reader can check it; the state's own page cannot be
+machine-verified from here at all. **California was moved to its primary source**
+(`leginfo.legislature.ca.gov`) once that one proved fetchable.
+
+Worth a human decision before launch: a paid emergency directory citing a third-party republisher
+for four rows is defensible but not ideal, and the fix is a person opening four state portals in a
+real browser and confirming the text.
 
 ### Being blocked is not being dead
 
