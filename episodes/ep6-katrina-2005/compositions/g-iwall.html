@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family: Arial, sans-serif;
+    background: radial-gradient(ellipse at 50% 30%, #0c141f 0%, #05080d 72%); }
+  .gi-title { position:absolute; left:0; right:0; top:84px; text-align:center;
+    font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; letter-spacing:2px; }
+  .gi-sub { position:absolute; left:0; right:0; top:156px; text-align:center;
+    font-family:Georgia,serif; font-style:italic; font-size:27px; color:#d8a13a; }
+  svg { position:absolute; left:160px; top:235px; }
+  .gi-lab { font-family:'Arial Black',Arial,sans-serif; font-size:28px; fill:#e8edf2; }
+  .gi-lab-sm { font-family:Arial,sans-serif; font-weight:700; font-size:20px; fill:#93a3b2; letter-spacing:3px; }
+  .gi-hot { font-family:'Arial Black',Arial,sans-serif; font-size:32px; fill:#e74c3c; }
+  .gi-gauge { font-family:'Courier New',monospace; font-weight:700; font-size:26px; fill:#6fb3d9; }
+  .gi-verdict { position:absolute; left:0; right:0; bottom:74px; text-align:center;
+    font-family:Georgia,serif; font-style:italic; font-size:38px; color:#e8edf2; }
+  .gi-verdict b { color:#e74c3c; font-style:normal; font-family:'Arial Black',Arial,sans-serif; }
+</style>
+<div id="root" data-composition-id="g-iwall" data-width="1920" data-height="1080">
+  <div class="gi-title" id="g-iwall-title">How a Wall Fails Without Overflowing</div>
+  <div class="gi-sub" id="g-iwall-sub">17th Street Canal &middot; the morning of August 29</div>
+  <svg id="g-iwall-svg" width="1600" height="640" viewBox="0 0 1600 640">
+    <defs>
+      <clipPath id="gi-gapclip"><rect id="g-iwall-gaprect" x="778" y="470" width="0" height="130"/></clipPath>
+    </defs>
+    <!-- soil block (everything right of the wall rides this in the shear) -->
+    <g id="g-iwall-soilblock">
+      <rect x="800" y="360" width="800" height="120" fill="#4a3b28" stroke="#6b5638" stroke-width="2"/>
+      <rect x="800" y="480" width="800" height="120" fill="#3a4149" stroke="#525c66" stroke-width="2"/>
+      <text class="gi-lab-sm" x="1210" y="428" fill="#c9b08a">LEVEE FILL</text>
+      <text id="g-iwall-claylab" class="gi-lab-sm" x="1180" y="552" fill="#8fa3b8">SOFT SWAMP CLAY</text>
+      <rect id="g-iwall-house" x="1380" y="270" width="150" height="90" fill="#2a3442" stroke="#48586c" stroke-width="2"/>
+      <path id="g-iwall-roof" d="M1368,270 L1455,215 L1542,270 Z" fill="#374357" stroke="#48586c" stroke-width="2"/>
+      <text class="gi-lab-sm" x="1372" y="392" fill="#93a3b2">NEIGHBORHOOD</text>
+    </g>
+    <!-- canal water (left of wall) -->
+    <rect id="g-iwall-water" x="0" y="415" width="780" height="185" fill="#1d4a63"/>
+    <text id="g-iwall-waterlab" class="gi-lab" x="60" y="390" fill="#6fb3d9">CANAL</text>
+    <!-- water surface line, rises to 10.5ft mark -->
+    <line id="g-iwall-wsurf" x1="0" y1="415" x2="780" y2="415" stroke="#6fb3d9" stroke-width="4"/>
+    <!-- the I-wall: concrete panel on sheet pile, pivots at base -->
+    <g id="g-iwall-wallgrp">
+      <rect id="g-iwall-wall" x="780" y="255" width="22" height="225" fill="#b9c2cc" stroke="#dde5ec" stroke-width="2"/>
+      <rect id="g-iwall-sheetpile" x="784" y="480" width="14" height="95" fill="#7e8a96" stroke="#9aa7b4" stroke-width="1.5" stroke-dasharray="7 5"/>
+    </g>
+    <text id="g-iwall-wallab" class="gi-lab-sm" x="700" y="238" fill="#dde5ec">FLOODWALL</text>
+    <!-- design vs actual gauge -->
+    <g id="g-iwall-gauge" opacity="0">
+      <line x1="740" y1="255" x2="740" y2="600" stroke="#93a3b2" stroke-width="2"/>
+      <line x1="728" y1="270" x2="752" y2="270" stroke="#f5d98b" stroke-width="3"/>
+      <text class="gi-gauge" x="580" y="278" fill="#f5d98b">14 FT design</text>
+      <line x1="728" y1="360" x2="752" y2="360" stroke="#6fb3d9" stroke-width="3"/>
+      <text id="g-iwall-gauge-act" class="gi-gauge" x="560" y="352">10.5 FT actual</text>
+    </g>
+    <!-- gap wedge between wall base and soil -->
+    <path id="g-iwall-gap" d="M802,470 L818,470 L806,600 L802,600 Z" fill="#0b0e13" opacity="0"/>
+    <!-- water invading the gap (clipped fill) -->
+    <rect x="778" y="470" width="44" height="130" fill="#2a6a8f" clip-path="url(#gi-gapclip)"/>
+    <!-- pressure arrows: on the wall, then under the soil -->
+    <g id="g-iwall-parr-wall" opacity="0">
+      <path d="M640,440 L750,440" stroke="#e74c3c" stroke-width="8" fill="none"/><path d="M746,428 L776,440 L746,452 Z" fill="#e74c3c"/>
+      <path d="M660,505 L750,505" stroke="#e74c3c" stroke-width="8" fill="none"/><path d="M746,493 L776,505 L746,517 Z" fill="#e74c3c"/>
+    </g>
+    <g id="g-iwall-parr-soil" opacity="0">
+      <path d="M820,545 L950,545" stroke="#e74c3c" stroke-width="9" fill="none"/><path d="M946,531 L982,545 L946,559 Z" fill="#e74c3c"/>
+      <text class="gi-hot" x="838" y="528">PUSHING THE GROUND</text>
+    </g>
+    <!-- shear plane flash -->
+    <line id="g-iwall-shear" x1="800" y1="480" x2="1600" y2="480" stroke="#e74c3c" stroke-width="5" stroke-dasharray="22 14" opacity="0"/>
+  </svg>
+  <div class="gi-verdict" id="g-iwall-verdict">A floodwall has no halfway. <b>It holds, or it is gone.</b></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* host 820.48-874.44 (53.96s). Cues (rel): 10.5ft @10.12, 14ft design @12.42, leaned @16.52,
+     gap @21.24, water-down-gap ~24-27, pressure-on-ground ~29-32, clay @37.12, sheared @38.68,
+     rode-sideways @43.6, "no halfway" @50.7. */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-iwall-";
+  tl.set(P+"verdict", { autoAlpha: 0 }, 0);
+  tl.fromTo(P+"title", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.2);
+  tl.fromTo(P+"sub", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.6);
+  tl.fromTo(P+"svg", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.8, ease: "power2.out" }, 1.0);
+  /* water breathes the whole time (motion floor) */
+  tl.to(P+"water", { y: -3, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 31 }, 1.0);
+  tl.to(P+"wsurf", { y: -3, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 31 }, 1.0);
+  /* gauge lands on the numbers */
+  tl.fromTo(P+"gauge", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 9.9);
+  tl.fromTo(P+"gauge-act", { scale: 1.5, transformOrigin: "left center" }, { scale: 1, duration: 0.35, ease: "power4.in" }, 10.12);
+  /* the lean: wall pivots at its base on "leaned" */
+  tl.to(P+"wallgrp", { rotation: 4.5, transformOrigin: "791px 480px", duration: 2.2, ease: "power1.inOut" }, 16.5);
+  /* gap opens on "gap" */
+  tl.fromTo(P+"gap", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 21.2);
+  tl.fromTo(P+"gap", { scaleX: 0.3, transformOrigin: "left center" }, { scaleX: 1, duration: 1.4, ease: "power2.out" }, 21.2);
+  /* water pours DOWN into the gap */
+  tl.to(P+"gaprect", { attr: { height: 130 }, duration: 2.4, ease: "power2.in" }, 24.0);
+  /* pressure story: arrows leave the wall, attack the ground */
+  tl.fromTo(P+"parr-wall", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 13.0);
+  tl.to(P+"parr-wall", { autoAlpha: 0, duration: 0.6 }, 28.6);
+  tl.fromTo(P+"parr-soil", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.6 }, 29.4);
+  /* clay layer named, then the shear plane flashes */
+  tl.fromTo(P+"claylab", { fill: "#8fa3b8" }, { fill: "#e74c3c", duration: 0.4 }, 37.1);
+  tl.fromTo(P+"shear", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35 }, 38.6);
+  tl.to(P+"shear", { strokeDashoffset: -180, duration: 14, ease: "none" }, 38.6);
+  /* the failure: wall + everything behind it rides sideways on "sideways" */
+  tl.to([P+"wallgrp", P+"soilblock", P+"gap"], { x: 120, duration: 4.0, ease: "power2.in" }, 42.8);
+  /* canal water follows through the hole */
+  tl.to(P+"water", { scaleX: 1.18, transformOrigin: "left center", duration: 3.2, ease: "power2.in" }, 44.6);
+  /* verdict line on "halfway" */
+  tl.fromTo(P+"verdict", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power2.out" }, 50.5);
+  /* slow global drift */
+  tl.fromTo(P+"svg", { scale: 1.0, transformOrigin: "center" }, { scale: 1.03, duration: 53, ease: "none" }, 0.8);
+  tl.to("#root", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 53.5);
+  window.__timelines["g-iwall"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
