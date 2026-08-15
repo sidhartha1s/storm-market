@@ -34,7 +34,7 @@ window.__timelines = window.__timelines || {};
   tl.set([P+"quote", P+"attr"], { autoAlpha: 0 }, 0);
   tl.fromTo(P+"eyebrow", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.25);
   /* live waveform: staggered bar pulse, runs the whole window (motion never stops) */
-  const bars = document.querySelectorAll(P.slice(1) ? "#g-hook-npr-wave i" : "i");
+  const bars = document.querySelectorAll("#g-hook-npr-wave i");
   bars.forEach(function(b, i) {
     tl.to(b, { scaleY: 2.6 + 2.2 * Math.abs(Math.sin(i * 1.7)), duration: 0.42 + (i % 5) * 0.06,
       ease: "sine.inOut", yoyo: true, repeat: 17, repeatDelay: 0 }, 0.2 + (i % 7) * 0.09);
