@@ -367,7 +367,10 @@
   <!-- AUTHOR -->
   <section>
     <div class="kicker">Who wrote this</div>
-    <h2 data-gumroad-field="name">The Storm-Ready Home</h2>
+    <!-- Static, NOT data-gumroad-field="name" — that field is the PRODUCT name, so this heading
+         rendered "The Storm-Ready Home" under a "Who wrote this" kicker, and a screen-reader user
+         navigating by heading never reached the author at all. -->
+    <h2>Paul Raymond</h2>
     <div class="author">
       <figure>
         <img src="https://public-files.gumroad.com/2z7lprph1l42ypknjk6wfly0jr0v"
