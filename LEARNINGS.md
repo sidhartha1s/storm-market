@@ -2,6 +2,43 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
+## 2026-08-16 — ep6 render-failure ledger (3 compile failures, each root-caused)
+
+A. **Animated GIFs kill the compile — never mount a .gif.** hyperframes transcodes every
+   GIF at compile with a hardcoded 300s timeout; a 1.6 MB 24-frame radar GIF blew it
+   (fail #1). Convert before wiring: single-frame GIF → PNG (`-frames:v 1`), animated GIF
+   → mp4. Two of ep6's three "animated" GIFs were actually single-frame — probe
+   `nb_frames` first.
+
+B. **Every mounted video needs an audio stream in hyperframes ≥0.7.109 — even muted
+   b-roll can be registered as an audio slot.** Fail #3 was `kb-radarloop-audio`: a
+   `-an` mp4 I created got an audio reference and compile threw
+   `ASSET_MEDIA_TYPE_MISMATCH (expected: audio)`. The CLI does NOT name the culprit —
+   found it by temporarily instrumenting `mismatches.push` in the npx-cached cli.js
+   (revert after). Fix: mux silence — `-f lavfi -i anullsrc=r=48000:cl=stereo -shortest
+   -c:v copy -c:a aac`. Note `optimize_clips.py` strips audio (`-an`) from everything it
+   touches: after every optimize pass, re-mux original audio onto audible clips from
+   `media/_orig/` AND expect this class of error on new `-an` assets.
+
+C. **Audio slots longer than their file are silently truncated (compile WARN, not fail)
+   — read the WARNs of a FAILED render, they're real defects.** Fail #2's log exposed 5
+   beds shorter than their wired windows (worst: 33.5s drone on a 345.4s slot = 5min of
+   missing bed that lint/sweep never see). Fix: loop-extend the file to the wired length
+   (`-stream_loop N -t <dur>` + 2.5s afade out), or correct data-duration to the true
+   file length when the shortfall is a natural tail.
+
+D. **schtasks tasks do NOT start on battery by default** — a /run leaves them "Queued"
+   forever. After /create, always:
+   `Set-ScheduledTask -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries
+   -DontStopIfGoingOnBatteries)`. Battery also power-throttles extract/encode — plug in
+   for renders.
+
+E. **Clip windows must never exceed real clip length** (draft-blocking freeze class):
+   7 ep6 clips were wired longer than their footage (worst +4.8s). Detector: ffprobe
+   every `<video>` src vs its data-duration. Fixes by size: big overshoot → re-extract
+   longer from the source reel (per-segment cropdetect again); small (<1s) → setpts
+   speed-stretch ≤10% (+ atempo on audible clips).
+
 ## 2026-08-15 — ep6 owner rules + broadcast-geometry gotchas (later same day)
 
 A. **Owner-gate style change (owner 2026-08-15, supersedes per-insert one-message-each):
