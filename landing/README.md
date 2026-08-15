@@ -64,7 +64,7 @@ higher the credible savings delta right below the pricing, the higher the conver
 11. Paul Raymond — persona block with the quote
 12. What $47 is — price anchored against plywood/deductible/generator/hotel/unprovable loss
 13. The offer — $47 struck from $87, itemised value stack to $120, guarantee seal
-14. Free state packet — the email gate, with the kitchen-table binder photo
+14. Free state packet — a link to the $0 Gumroad product, with the kitchen-table binder photo
 15. FAQ — including "isn't this free from FEMA?", answered honestly
 16. Last call
 + Sticky bottom CTA (appears after the hero, hides while the offer is on screen), a 30s
