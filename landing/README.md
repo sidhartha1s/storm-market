@@ -86,24 +86,23 @@ ordered all four, so they exist — with these standing caveats on the record:
   **the viewer counter is decorative** (random 80–115, re-rolled every 2–3s). Both are aesthetic
   urgency, ordered by the owner, not measurements.
 
-## Before it goes live — four blockers
+## Status
 
-1. **Gumroad product does not exist.** The buy button at `#buy` has no URL. Create the product,
-   then set the `GUMROAD_URL` const at the top of the page script — the offer button and the
-   exit-intent popup pick it up automatically (`?wanted=true` direct checkout). Gumroad cannot
-   show a struck-through price natively — put the $87 anchor in the product description and use a
-   discount code for $47. Also pending owner input: the Cloudflare Web Analytics token (beacon is
-   in the page, commented out with `YOUR_TOKEN_HERE`). Contact email: owner decided 2026-08-14
-   there is none for now — footer + legal pages say "reply to your purchase receipt" (all
-   support runs through Gumroad).
-2. **The lead-magnet form is now wired, but delivery is not finished.** `functions/api/subscribe.js`
-   is a Cloudflare Pages Function that validates the email + two-letter state code and forwards the
-   subscriber to Kit (see "Mail provider" below) — no more alert-only placeholder. What it does
-   **not** do: send the packet itself. It adds the subscriber with their state recorded as a custom
-   field; a Kit automation keyed on that field (built in the Kit dashboard, not in this repo) has to
-   actually email the right `<ABBR>.html`/PDF. That automation does not exist yet, and neither does
-   the Kit account — `KIT_API_KEY` must be set before this stops 500ing (see Deploy). The state
-   packets themselves are covered in blocker 4.
+1. **Gumroad is wired and carries the files.** `GUMROAD_URL` at the top of the page script points
+   at `/l/ebook`; the offer button and the exit-intent popup rewrite themselves to `?wanted=true`
+   direct checkout. The product carries the 486-page manual, the 61-page binder and the state-packet
+   zip, and an explicit 7-day refund policy. Contact email: owner decided 2026-08-14 there is none —
+   footer + legal pages say "reply to your purchase receipt", and all support runs through Gumroad.
+
+   Still open: the **Cloudflare Web Analytics token** (beacon is in the page, commented out with
+   `YOUR_TOKEN_HERE`). It cannot be scripted from here — the wrangler OAuth token carries no
+   `analytics` scope. Easiest path is the dashboard toggle on the Pages project, which injects the
+   beacon itself and makes the commented block unnecessary.
+2. **The free state packets ship from Gumroad too** (`/l/packet`, $0, all 51 in one zip). This
+   replaced a Cloudflare Pages Function that forwarded signups to Kit: it needed a `KIT_API_KEY`
+   that never existed, so it 500'd on every real submit while the page promised a packet. Gumroad
+   already does the email capture and the delivery, so the function and its Kit dependency were
+   deleted rather than configured. **There is no server logic in this project any more.**
 3. **The book is written, sourced, laid out and counted.** All **130 of 130** protections and all
    **23 of 23** hazard playbooks, plus front matter, people/places, the 60-day sequence, 61 pages of
    fillable binder forms, 13 original diagrams, a credits page, Sources and the 51-state directory.
