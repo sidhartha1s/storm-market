@@ -838,55 +838,6 @@ footer .small{color:#7e8783}
 </div>
 
 <script>
-// State list for the lead-magnet selector — [code, name]. The option value is the two-letter
-// code /api/subscribe expects (it maps 1:1 to the packet filenames, e.g. TX.html); the label
-// stays the full name so the dropdown reads normally.
-const STATES=[["AL","Alabama"],["AK","Alaska"],["AZ","Arizona"],["AR","Arkansas"],
-["CA","California"],["CO","Colorado"],["CT","Connecticut"],["DE","Delaware"],
-["DC","District of Columbia"],["FL","Florida"],["GA","Georgia"],["HI","Hawaii"],["ID","Idaho"],
-["IL","Illinois"],["IN","Indiana"],["IA","Iowa"],["KS","Kansas"],["KY","Kentucky"],
-["LA","Louisiana"],["ME","Maine"],["MD","Maryland"],["MA","Massachusetts"],["MI","Michigan"],
-["MN","Minnesota"],["MS","Mississippi"],["MO","Missouri"],["MT","Montana"],["NE","Nebraska"],
-["NV","Nevada"],["NH","New Hampshire"],["NJ","New Jersey"],["NM","New Mexico"],["NY","New York"],
-["NC","North Carolina"],["ND","North Dakota"],["OH","Ohio"],["OK","Oklahoma"],["OR","Oregon"],
-["PA","Pennsylvania"],["RI","Rhode Island"],["SC","South Carolina"],["SD","South Dakota"],
-["TN","Tennessee"],["TX","Texas"],["UT","Utah"],["VT","Vermont"],["VA","Virginia"],
-["WA","Washington"],["WV","West Virginia"],["WI","Wisconsin"],["WY","Wyoming"]];
-const sel=document.querySelector('select[name=state]');
-for(const [code,name] of STATES){const o=document.createElement('option');o.value=code;o.textContent=name;sel.append(o);}
-
-// Wired to the Cloudflare Pages Function at /api/subscribe (landing/functions/api/subscribe.js).
-// On success: real confirmation. On failure: the actual error the function returned — never a
-// fake success. If the fetch itself fails (network/offline), that's the same loud-failure floor
-// the placeholder used before this was wired up.
-const magnetForm=document.getElementById('magnet-form');
-const magnetMsg=document.getElementById('magnet-msg');
-magnetForm.addEventListener('submit',async e=>{
-  e.preventDefault();
-  const email=magnetForm.email.value.trim();
-  const state=magnetForm.state.value;
-  const submitBtn=magnetForm.querySelector('button[type=submit]');
-  submitBtn.disabled=true;
-  try{
-    const res=await fetch('/api/subscribe',{
-      method:'POST',
-      headers:{'content-type':'application/json'},
-      body:JSON.stringify({email,state}),
-    });
-    const data=await res.json().catch(()=>({}));
-    if(res.ok && data.ok){
-      magnetMsg.textContent="Sent — check your inbox for your state's storm packet.";
-      magnetForm.reset();
-    }else{
-      magnetMsg.textContent=data.error||`Something went wrong (${res.status}). Try again in a moment.`;
-    }
-  }catch(err){
-    magnetMsg.textContent='Could not reach the server. Check your connection and try again.';
-  }finally{
-    submitBtn.disabled=false;
-  }
-});
-
 // ---- Gumroad checkout target ----
 // Every checkout CTA (offer button + hard popup) picks this up automatically.
 // Set to null to fall back to scrolling to #offer.
