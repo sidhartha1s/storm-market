@@ -13,10 +13,17 @@ crosses from `paulraymond.pages.dev` to Gumroad never sees a design seam.
 ## The funnel
 
 ```
-paulraymond.pages.dev  ──[Get My Copy]──►  gumroad.com/l/ebook?wanted=true  ──►  checkout
-                                                    ▲
-       gumroad.com/  ──[Read what's inside]─────────┘
+paulraymond.pages.dev  ──[Get My Copy]────────►  gumroad.com/l/ebook?wanted=true  ──►  checkout
+          │                                                 ▲
+          └──[Send My State Packet — Free]──►  /l/packet     │      ($0, all 51 packets in one zip)
+                                                             │
+              gumroad.com/  ──[Read what's inside]───────────┘
 ```
+
+`/l/packet` is why this project has no backend. The free packets used to go through a Cloudflare
+Pages Function into Kit; it 500'd on every real submit because its API key never existed. Gumroad
+already does email capture and delivery, so the lead magnet became a $0 product and the function
+was deleted. See `landing/README.md` § "No mail provider, deliberately".
 
 `landing/index.html` sets `GUMROAD_URL` and rewrites the offer button + exit-intent popup to
 `?wanted=true`, which opens Gumroad's checkout directly rather than the product page. Verify
