@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; }
+  /* right-rail panel over rescue footage on track 1 (ep2 panel pattern, transparent root) */
+  .panel { position:absolute; right:0; top:0; bottom:0; width:800px; box-sizing:border-box;
+    background: linear-gradient(270deg, rgba(10,15,21,0.68) 70%, rgba(10,15,21,0));
+    backdrop-filter: blur(16px) saturate(1.15); -webkit-backdrop-filter: blur(16px) saturate(1.15);
+    border-left: 1px solid rgba(255,255,255,0.1); padding: 120px 70px 0 100px; }
+  .tname { font-family:'Arial Black',Arial,sans-serif; font-size:50px; color:#f2f5f8; line-height:1.08; }
+  .tsub { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:10px; }
+  .cnum { font-family:'Courier New',monospace; font-size:110px; font-weight:700; color:#6fb3d9; margin-top:40px; }
+  .clab { font-size:21px; color:#93a3b2; letter-spacing:5px; font-weight:700; }
+  .row { font-size:31px; color:#dfe7ee; font-weight:700; letter-spacing:1px; margin-top:26px; }
+  .row .lab { display:block; font-size:19px; color:#93a3b2; letter-spacing:4px; font-weight:700; }
+  .foot { margin-top:44px; font-family:Georgia,serif; font-style:italic; font-size:28px; color:#e8edf2; line-height:1.45; }
+  .foot b { color:#d8a13a; font-style:normal; }
+</style>
+<div id="root" data-composition-id="g-stat-uscg" data-width="1920" data-height="1080">
+  <div class="panel" id="g-stat-uscg-panel">
+    <div class="tname">THE ONE MACHINE THAT WORKED</div>
+    <div class="tsub">United States Coast Guard &middot; week of August 29</div>
+    <div class="cnum" id="g-stat-uscg-num">0</div>
+    <div class="clab" id="g-stat-uscg-numlab">PEOPLE SAVED</div>
+    <div class="row" id="g-stat-uscg-r1"><span class="lab">LIFTED FROM WATER &amp; ROOFTOPS</span>24,000</div>
+    <div class="foot" id="g-stat-uscg-foot">The system did not fail because everyone failed. <b>It failed at the top.</b></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* host 1253.56-1288.36 (34.8s = a6-s6). Cues (rel): "count what they did" 17.5,
+     33,500 ~19.5-22, 24,000 ~23-26, "failed at the top" 31.4-33.2. Rescue b-roll runs
+     on track 1 to the left; panel slides in on the count. */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-stat-uscg-";
+  tl.set([P+"num", P+"numlab", P+"r1", P+"foot"], { autoAlpha: 0 }, 0);
+  tl.fromTo(P+"panel", { x: 660 }, { x: 0, duration: 0.7, ease: "power3.out" }, 16.8);
+  tl.set([P+"num", P+"numlab"], { autoAlpha: 1 }, 19.2);
+  const cnt = { v: 0 };
+  tl.to(cnt, { v: 33500, duration: 2.6, ease: "power2.out", onUpdate: function() {
+    const el = document.getElementById("g-stat-uscg-num");
+    if (el) el.textContent = Math.round(cnt.v).toLocaleString("en-US");
+  } }, 19.4);
+  tl.fromTo(P+"r1", { autoAlpha: 0, y: 22 }, { autoAlpha: 1, y: 0, duration: 0.45 }, 23.2);
+  tl.fromTo(P+"foot", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 31.2);
+  /* exit slides right, timed to the hard cut at window end */
+  tl.to(P+"panel", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 34.1);
+  window.__timelines["g-stat-uscg"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
