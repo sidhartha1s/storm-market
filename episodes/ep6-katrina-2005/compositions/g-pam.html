@@ -54,8 +54,9 @@ window.__timelines = window.__timelines || {};
      Amber dossier — D16 amber stamp fires separately in the master at 2.6. */
   const tl = gsap.timeline({ paused: true });
   const P = "#g-pam-";
-  tl.set([P+"r0",P+"r1",P+"r2",P+"r3",P+"r4",P+"r5",P+"r6",P+"stamp",P+"verdict"], { autoAlpha: 0 }, 0);
+  tl.set([P+"r0",P+"r1",P+"r2",P+"r3",P+"r4",P+"r5",P+"r6",P+"stamp",P+"verdict",P+"src"], { autoAlpha: 0 }, 0);
   tl.fromTo(P+"hdr", { autoAlpha: 0, y: -16 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power2.out" }, 1.0);
+  tl.fromTo(P+"src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 2.0);
   tl.fromTo(P+"r0", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.5 }, 21.6);
   tl.fromTo(P+"r1", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.5 }, 31.4);
   tl.fromTo(P+"r2", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.5 }, 33.5);
