@@ -717,6 +717,8 @@ window.__timelines = window.__timelines || {};
   /* ---- designed multi-element cards: staggered reveals + a slow drift so nothing sits static ---- */
   function reveal(sel, at, y) { tl.fromTo(sel, { autoAlpha: 0, y: (y||14) }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power2.out" }, at); }
   function drift(sel, at, dur) { tl.fromTo(sel, { scale: 1.0, transformOrigin: "center" }, { scale: 1.03, duration: dur, ease: "none" }, at); }
+  /* card entrance: pop-in on the spoken cue (cards are track-3 mounted; the hard unmount is the exit) */
+  function popIn(sel, at) { tl.fromTo(sel, { autoAlpha: 0, y: 16, scale: 1.12 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.4, ease: "power3.out" }, at); }
 
   /* a3-s5 "who could not leave" — human-cost list */
   drift("#c-nocar-dark", 505.9, 24.68);
