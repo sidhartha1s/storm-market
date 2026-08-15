@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>The Flood They Rehearsed — New Orleans 2005 — The Warning Hour Ep. 6</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Georgia, 'Times New Roman', serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070c; }
+    video, .still-wrap { position: absolute; inset: 0; }
+    video { width: 100%; height: 100%; object-fit: cover; }
+    .still-wrap { overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    .contain-wrap img { object-fit: contain; }
+    .contain-wrap img.blurfill { object-fit: cover; filter: blur(26px) brightness(0.45) saturate(0.8); transform: scale(1.12); }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    /* ---- date match-cut stamp (owner-requested device; ep2 stamp anatomy) ---- */
+    .stamp { position: absolute; left: 110px; top: 110px; z-index: 6; font-family: 'Arial Black', Arial, sans-serif;
+      background: #8e2020; color: #f4f0e8; padding: 14px 30px 16px; box-shadow: 0 14px 50px rgba(0,0,0,0.6);
+      transform-origin: center; }
+    .stamp .st-eyebrow { display: block; font-size: 20px; font-weight: 900; letter-spacing: 6px; color: rgba(244,240,232,0.85); }
+    .stamp .st-day { display: block; font-size: 66px; font-weight: 900; letter-spacing: 2px; line-height: 1.05; }
+    .stamp .st-time { display: block; font-family: Arial, sans-serif; font-weight: 700; font-size: 23px; letter-spacing: 3px; color: #f5d98b; margin-top: 6px; }
+    .stamp-amber { background: rgba(26,20,8,0.88); border: 1px solid rgba(216,161,58,0.5); color: #d8a13a; }
+    .stamp-amber .st-eyebrow { color: rgba(216,161,58,0.8); }
+    .stamp-amber .st-time { color: #c8b98a; }
+    /* ---- shared card styles (ep5 lineage) ---- */
+    .lt { position: absolute; left: 110px; bottom: 110px; z-index: 5; font-family: Arial, sans-serif; }
+    .lt .lt-loc { display: table; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 52px; color: #f2f5f8; background: rgba(5,8,12,0.78); padding: 4px 16px; text-shadow: 0 3px 24px rgba(0,0,0,0.85); }
+    .lt .lt-time { display: table; font-weight: 700; font-size: 27px; color: #f5d98b; background: rgba(5,8,12,0.78); padding: 6px 14px; margin-top: 10px; letter-spacing: 1px; }
+    .popup { position: absolute; font-family: Arial, sans-serif; font-weight: 700;
+      background: rgba(14,20,28,0.6); backdrop-filter: blur(14px) saturate(1.2); -webkit-backdrop-filter: blur(14px) saturate(1.2);
+      border: 1px solid rgba(255,255,255,0.14); border-radius: 14px; box-shadow: 0 10px 40px rgba(0,0,0,0.45);
+      color: #f2f5f8; padding: 18px 34px; font-size: 40px; letter-spacing: 1px; z-index: 6; }
+    .popup .fine { display: block; font-weight: 400; font-size: 21px; color: #c8d3e0; margin-top: 8px; letter-spacing: 0.5px; }
+    .quotecard { position: absolute; left: 160px; right: 160px; bottom: 150px; z-index: 6; text-align: center; }
+    .quotecard .q { display: table; margin: 0 auto; font-family: Georgia, serif; font-style: italic; font-size: 44px; color: #f2f5f8; background: rgba(5,8,12,0.72); padding: 16px 40px; line-height: 1.35; text-shadow: 0 2px 18px rgba(0,0,0,0.9); }
+    .quotecard .attr { display: table; margin: 12px auto 0; font-family: Arial, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 3px; color: #d8a13a; background: rgba(5,8,12,0.72); padding: 8px 24px; }
+    .namecard { position: absolute; left: 0; right: 0; bottom: 150px; text-align: center; z-index: 5; }
+    .namecard .nc-name { display: table; margin: 0 auto; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 64px; color: #f2f5f8; letter-spacing: 1px; background: rgba(5,8,12,0.62); padding: 10px 42px; text-shadow: 0 3px 26px rgba(0,0,0,0.9); }
+    .namecard .nc-sub { display: table; margin: 10px auto 0; font-family: Georgia, serif; font-style: italic; font-size: 32px; color: #e8c56a; background: rgba(5,8,12,0.62); padding: 8px 30px; }
+    .srclab { position: absolute; right: 40px; bottom: 34px; z-index: 7; font-family: Arial, sans-serif; font-size: 19px; color: rgba(200,211,224,0.75); background: rgba(5,8,12,0.55); padding: 5px 12px; letter-spacing: 0.5px; }
+    .dispatchlab { position: absolute; left: 0; right: 0; top: 470px; text-align: center; z-index: 6; }
+    .dispatchlab .d1 { display: table; margin: 0 auto; font-family: 'Courier New', monospace; font-weight: 700; font-size: 40px; color: #e8c56a; letter-spacing: 4px; background: rgba(5,8,12,0.6); padding: 10px 30px; }
+    .dispatchlab .d2 { display: table; margin: 14px auto 0; font-family: Arial, sans-serif; font-size: 22px; letter-spacing: 3px; color: #93a3b2; background: rgba(5,8,12,0.6); padding: 6px 18px; }
+    /* hook loop line typography */
+    .loopline { position: absolute; left: 0; right: 0; top: 44%; text-align: center; z-index: 8; }
+    .loopline .l1 { display: table; margin: 0 auto; font-family: Georgia, serif; font-size: 58px; color: #e8edf2; background: rgba(4,7,12,0.55); padding: 12px 38px; letter-spacing: 1px; }
+    .loopline .l2 { display: table; margin: 16px auto 0; font-family: Georgia, serif; font-style: italic; font-size: 58px; color: #d8a13a; background: rgba(4,7,12,0.55); padding: 12px 38px; }
+    #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90;
+      background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
+    #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.11; mix-blend-mode: overlay; }
+    /* flood story: cold steel grade, not ep5's fire-orange */
+    #grade { position: absolute; inset: 0; pointer-events: none; z-index: 89; mix-blend-mode: soft-light; background-color: rgba(96,138,178,0.22); }
+    .dust { position: absolute; z-index: 92; pointer-events: none; border-radius: 50%; background: rgba(255,255,255,0.32); filter: blur(1.2px); }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="ep6-katrina2005" data-start="0" data-width="1920" data-height="1080" data-duration="1738.96" data-fps="30">
+
+  <!-- ============ NARRATION (50) — from audio/timeline.txt (manifest-derived, do not hand-drift) ============ -->
+  <audio id="nx-h1s4" src="audio/h1-s4.wav" data-start="22.3" data-duration="13.68" data-volume="1"></audio>
+  <audio id="nx-a1s1" src="audio/a1-s1.wav" data-start="38.78" data-duration="28.4" data-volume="1"></audio>
+  <audio id="nx-a1s2" src="audio/a1-s2.wav" data-start="67.88" data-duration="25.16" data-volume="1"></audio>
+  <audio id="nx-a1s3" src="audio/a1-s3.wav" data-start="93.74" data-duration="29.32" data-volume="1"></audio>
+  <audio id="nx-a1s4" src="audio/a1-s4.wav" data-start="123.76" data-duration="19.16" data-volume="1"></audio>
+  <audio id="nx-a1s5" src="audio/a1-s5.wav" data-start="143.62" data-duration="34.64" data-volume="1"></audio>
+  <audio id="nx-a1s6" src="audio/a1-s6.wav" data-start="178.96" data-duration="19.76" data-volume="1"></audio>
+  <audio id="nx-a2s1" src="audio/a2-s1.wav" data-start="202.42" data-duration="26.92" data-volume="1"></audio>
+  <audio id="nx-a2s2" src="audio/a2-s2.wav" data-start="230.04" data-duration="23.76" data-volume="1"></audio>
+  <audio id="nx-a2s3" src="audio/a2-s3.wav" data-start="254.5" data-duration="31.16" data-volume="1"></audio>
+  <audio id="nx-a2s4" src="audio/a2-s4.wav" data-start="286.36" data-duration="31.08" data-volume="1"></audio>
+  <audio id="nx-a2s5" src="audio/a2-s5.wav" data-start="318.14" data-duration="39.6" data-volume="1"></audio>
+  <audio id="nx-a3s1" src="audio/a3-s1.wav" data-start="361.44" data-duration="19.72" data-volume="1"></audio>
+  <audio id="nx-a3s2" src="audio/a3-s2.wav" data-start="381.86" data-duration="24.16" data-volume="1"></audio>
+  <audio id="nx-a3s3" src="audio/a3-s3.wav" data-start="406.72" data-duration="49.6" data-volume="1"></audio>
+  <audio id="nx-a3s4" src="audio/a3-s4.wav" data-start="457.02" data-duration="34.88" data-volume="1"></audio>
+  <audio id="nx-a3s5" src="audio/a3-s5.wav" data-start="498.9" data-duration="31.68" data-volume="1"></audio>
+  <audio id="nx-a3s6" src="audio/a3-s6.wav" data-start="531.28" data-duration="33.8" data-volume="1"></audio>
+  <audio id="nx-a4s1" src="audio/a4-s1.wav" data-start="568.78" data-duration="33.68" data-volume="1"></audio>
+  <audio id="nx-a4s2" src="audio/a4-s2.wav" data-start="603.16" data-duration="29.4" data-volume="1"></audio>
+  <audio id="nx-a4s3" src="audio/a4-s3.wav" data-start="633.26" data-duration="45.4" data-volume="1"></audio>
+  <audio id="nx-a4s4" src="audio/a4-s4.wav" data-start="679.36" data-duration="29.84" data-volume="1"></audio>
+  <audio id="nx-a4s5" src="audio/a4-s5.wav" data-start="709.9" data-duration="45.96" data-volume="1"></audio>
+  <audio id="nx-a5s1" src="audio/a5-s1.wav" data-start="759.56" data-duration="32.08" data-volume="1"></audio>
+  <audio id="nx-a5s2" src="audio/a5-s2.wav" data-start="792.34" data-duration="27.44" data-volume="1"></audio>
+  <audio id="nx-a5s3" src="audio/a5-s3.wav" data-start="820.48" data-duration="53.96" data-volume="1"></audio>
+  <audio id="nx-a5s4" src="audio/a5-s4.wav" data-start="875.14" data-duration="34.16" data-volume="1"></audio>
+  <audio id="nx-a5s5" src="audio/a5-s5.wav" data-start="910.0" data-duration="49.96" data-volume="1"></audio>
+  <audio id="nx-a5s5b" src="audio/a5-s5b.wav" data-start="960.66" data-duration="52.48" data-volume="1"></audio>
+  <audio id="nx-a5s6" src="audio/a5-s6.wav" data-start="1019.14" data-duration="15.28" data-volume="1"></audio>
+  <audio id="nx-a6s1" src="audio/a6-s1.wav" data-start="1038.12" data-duration="32.96" data-volume="1"></audio>
+  <audio id="nx-a6s2" src="audio/a6-s2.wav" data-start="1071.78" data-duration="41.88" data-volume="1"></audio>
+  <audio id="nx-a6s3" src="audio/a6-s3.wav" data-start="1114.36" data-duration="35.2" data-volume="1"></audio>
+  <audio id="nx-a6s4" src="audio/a6-s4.wav" data-start="1150.26" data-duration="25.56" data-volume="1"></audio>
+  <audio id="nx-a6s4b" src="audio/a6-s4b.wav" data-start="1176.52" data-duration="50.32" data-volume="1"></audio>
+  <audio id="nx-a6s5a" src="audio/a6-s5a.wav" data-start="1227.54" data-duration="4.76" data-volume="1"></audio>
+  <audio id="nx-a6s5b" src="audio/a6-s5b.wav" data-start="1246.9" data-duration="5.96" data-volume="1"></audio>
+  <audio id="nx-a6s6" src="audio/a6-s6.wav" data-start="1253.56" data-duration="34.8" data-volume="1"></audio>
+  <audio id="nx-a6s7" src="audio/a6-s7.wav" data-start="1289.06" data-duration="26.32" data-volume="1"></audio>
+  <audio id="nx-a6s7b" src="audio/a6-s7b.wav" data-start="1316.08" data-duration="36.48" data-volume="1"></audio>
+  <audio id="nx-a6s8a" src="audio/a6-s8a.wav" data-start="1353.26" data-duration="5.16" data-volume="1"></audio>
+  <audio id="nx-a6s8b" src="audio/a6-s8b.wav" data-start="1367.42" data-duration="14.92" data-volume="1"></audio>
+  <audio id="nx-a7s1" src="audio/a7-s1.wav" data-start="1386.04" data-duration="61.16" data-volume="1"></audio>
+  <audio id="nx-a7s2" src="audio/a7-s2.wav" data-start="1447.9" data-duration="33.76" data-volume="1"></audio>
+  <audio id="nx-a7s3" src="audio/a7-s3.wav" data-start="1482.36" data-duration="47.24" data-volume="1"></audio>
+  <audio id="nx-a7s4" src="audio/a7-s4.wav" data-start="1530.3" data-duration="50.4" data-volume="1"></audio>
+  <audio id="nx-a7s4b" src="audio/a7-s4b.wav" data-start="1590.7" data-duration="37.52" data-volume="1"></audio>
+  <audio id="nx-a7s5" src="audio/a7-s5.wav" data-start="1628.92" data-duration="30.08" data-volume="1"></audio>
+  <audio id="nx-a7s6" src="audio/a7-s6.wav" data-start="1659.7" data-duration="43.64" data-volume="1"></audio>
+  <audio id="nx-a7s7" src="audio/a7-s7.wav" data-start="1704.04" data-duration="31.72" data-volume="1"></audio>
+
+  <!-- ============ INSERT AUDIO (owner-gated; ins04a/b, ins05, ins06 windows reserved, mounted on approval) ============ -->
+  <audio id="ins-911attic" src="media/ins01-hook.wav" data-start="1.6" data-duration="7.35" data-volume="1" data-srt-label="[911 CALL — 2544 DUBREUIL ST, NEW ORLEANS — AUG 29, 2005]"></audio>
+  <audio id="ins-nprdodged" src="media/ins02-hook.wav" data-start="14.1" data-duration="7.9" data-volume="1" data-srt-label="[NPR 'DAY TO DAY' — AUG 30, 2005]"></audio>
+  <audio id="ins-naginradio" src="media/ins03-nagin.wav" data-start="1232.8" data-duration="13.6" data-volume="1" data-srt-label="[WWL RADIO — MAYOR RAY NAGIN WITH GARLAND ROBINETTE]"></audio>
+  <!-- RESERVED ins04a 492.40+6.00 WWL evac chyron (clip_a; owner gate) -->
+  <!-- RESERVED ins04b 1013.64+5.00 WWL flooded courtyard/wading (clip_b; owner gate) -->
+  <!-- RESERVED ins05 1358.92+8.00 Bush "Brownie" (src-fed2; owner gate) -->
+  <!-- RESERVED ins06 1581.20+9.00 House testimony Dec 2005 (src-fed2; owner gate) -->
+
+  <!-- ============ HOOK 0–38.78 — "The Rescue" (owner-locked): hoist mid-action, rotor live ============ -->
+  <video id="vx-hookhoist" src="media/hook-hoist.mp4" style="filter: saturate(0.82) contrast(1.1) brightness(0.95)" data-start="0" data-duration="9.0" data-track-index="1" data-volume="0.55"></video>
+  <section class="clip still-wrap" id="c-hookbreach" data-start="9.0" data-duration="5.1" data-track-index="1">
+    <img id="kb-hookbreach" src="media/sat/katrina-nola-levee-break-fema.jpg" alt=""></section>
+  <!-- NPR misdirection beat: designed headline card sub-comp over calm morning-after -->
+  <div id="host-hooknpr" data-composition-id="g-hook-npr" data-composition-src="compositions/g-hook-npr.html" data-start="14.1" data-duration="8.2" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- h1-s4 turn: water rising under the words, then the loop line lands as typography -->
+  <video id="vx-hookrise" src="media/hook-floodrise.mp4" style="filter: saturate(0.8) contrast(1.08) brightness(0.9)" data-start="22.3" data-duration="8.9" data-track-index="1" muted></video>
+  <section class="clip" id="c-hookloop" data-start="31.2" data-duration="4.9" data-track-index="1" style="background:#04070c;">
+    <div class="loopline" id="hookloopline">
+      <div class="l1" id="loop-l1">The hurricane missed New Orleans.</div>
+      <div class="l2" id="loop-l2">The city drowned anyway.</div>
+    </div>
+  </section>
+  <section class="clip blackout" id="bo-void" data-start="36.28" data-duration="2.5" data-track-index="1"></section>
+  <!-- D1 hook stamp -->
+  <section class="clip" id="p-d1" data-start="0.5" data-duration="3.0" data-track-index="3">
+    <div class="stamp" id="st-d1"><span class="st-eyebrow">NEW ORLEANS</span><span class="st-day">AUG 29</span><span class="st-time">2005 · 6:10 AM LANDFALL</span></div>
+  </section>
+  <section class="clip" id="p-src-hoist" data-start="4.2" data-duration="4.0" data-track-index="3">
+    <div class="srclab">U.S. COAST GUARD — AIR STATION AERIAL, NEW ORLEANS</div>
+  </section>
+
+  <!-- ============ SFX LAYER — beds + scores + ambience + swells + booms (audio-mixdown gate pre-render) ============ -->
+  <!-- beds: rumble under everything except A7 people close; ocean/water bed in hook + act 5 -->
+  <audio id="sx-bed-hook" src="media/sfx-rumble-bed-long.mp3" data-bed="" data-start="0" data-duration="36.28" data-volume="1"></audio>
+  <audio id="sx-water-hook" src="media/solarmusic-ocean-waves-112906.mp3" data-bed="" data-start="8.6" data-duration="14.0" data-volume="0.35"></audio>
+  <audio id="sx-bed-act1" src="media/sfx-rumble-bed-long.mp3" data-bed="" data-start="38.78" data-duration="161.14" data-volume="1"></audio>
+  <audio id="sx-bed-act2" src="media/sfx-rumble-bed-long.mp3" data-bed="" data-start="202.42" data-duration="156.52" data-volume="1"></audio>
+  <audio id="sx-bed-act3" src="media/sfx-rumble-bed-long.mp3" data-bed="" data-start="361.44" data-duration="204.84" data-volume="1"></audio>
+  <audio id="sx-bed-act4" src="media/sfx-rumble-bed-long.mp3" data-bed="" data-start="568.78" data-duration="188.28" data-volume="1"></audio>
+  <audio id="sx-bed-act5" src="media/sfx-rumble-bed-long.mp3" data-bed="" data-start="759.56" data-duration="276.06" data-volume="1"></audio>
+  <audio id="sx-bed-act6" src="media/sfx-rumble-bed-long.mp3" data-bed="" data-start="1038.12" data-duration="345.42" data-volume="1"></audio>
+  <audio id="sx-bed-act7" src="media/sfx-rumble-bed-long.mp3" data-bed="" data-start="1386.04" data-duration="242.88" data-volume="0.6"></audio>
+  <!-- scores: tension on the breaches act, industrial drone on the week-after, close on the people end -->
+  <audio id="sx-mus-act5" src="media/score-act5-tension.mp3" data-bed="" data-start="759.56" data-duration="276.06" data-volume="0.08"></audio>
+  <audio id="sx-mus-act6" src="media/freesound_community-industrial-pulse-drone-27456.mp3" data-bed="" data-start="1038.12" data-duration="345.42" data-volume="0.1"></audio>
+  <audio id="sx-mus-close" src="media/score-act6-close.mp3" data-bed="" data-start="1628.92" data-duration="106.84" data-volume="0.5"></audio>
+  <audio id="sx-mus-somber" src="media/score-act3-somber.mp3" data-bed="" data-start="1530.3" data-duration="97.92" data-volume="0.45"></audio>
+  <!-- diegetic ambience: rain/wind at landfall, water in the breaches, murmur at the dome, rotor at the rescues -->
+  <audio id="sx-rain-a4" src="media/rain-loop.mp3" data-bed="" data-start="568.78" data-duration="64.0" data-volume="0.3"></audio>
+  <audio id="sx-wind-a4" src="media/wind-loop.mp3" data-bed="" data-start="603.16" data-duration="75.0" data-volume="0.28"></audio>
+  <audio id="sx-water-a5" src="media/ambience/water2_heavy_river.mp3" data-bed="" data-start="875.14" data-duration="84.8" data-volume="0.3"></audio>
+  <audio id="sx-murmur-a6" src="media/ambience/crowdmurmur1.mp3" data-bed="" data-start="1038.12" data-duration="33.0" data-volume="0.25"></audio>
+  <audio id="sx-rotor-a6" src="media/ambience/rotor2_helicopter_ambience.mp3" data-bed="" data-start="1253.56" data-duration="34.8" data-volume="0.3"></audio>
+  <!-- riser peaks and dies WITH "anyway" (34.84 + word tail ≈ 35.98) -->
+  <audio id="sx-riser-hook" src="media/soundreality-riser-wildfire-285209.mp3" data-bed="" data-start="27.98" data-duration="8.0" data-volume="0.28"></audio>
+  <!-- swells at rehook peaks (~45-60s cadence, segment starts) -->
+  <audio id="sx-sw01" src="media/sfx-swell.wav" data-bed="" data-start="8.9" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-sw02" src="media/sfx-swell.wav" data-bed="" data-start="66.9" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw03" src="media/sfx-swell.wav" data-bed="" data-start="122.9" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw04" src="media/sfx-swell.wav" data-bed="" data-start="178.1" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw05" src="media/sfx-swell.wav" data-bed="" data-start="253.9" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw06" src="media/sfx-swell.wav" data-bed="" data-start="317.5" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw07" src="media/sfx-swell.wav" data-bed="" data-start="406.1" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw08" src="media/sfx-swell.wav" data-bed="" data-start="456.4" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw09" src="media/sfx-swell.wav" data-bed="" data-start="530.6" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw10" src="media/sfx-swell.wav" data-bed="" data-start="632.6" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw11" src="media/sfx-swell.wav" data-bed="" data-start="708.6" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw12" src="media/sfx-swell.wav" data-bed="" data-start="819.8" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw13" src="media/sfx-swell.wav" data-bed="" data-start="874.5" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw14" src="media/sfx-swell.wav" data-bed="" data-start="959.9" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw15" src="media/sfx-swell.wav" data-bed="" data-start="1071.1" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw16" src="media/sfx-swell.wav" data-bed="" data-start="1149.6" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw17" src="media/sfx-swell.wav" data-bed="" data-start="1226.9" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw18" src="media/sfx-swell.wav" data-bed="" data-start="1288.4" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw19" src="media/sfx-swell.wav" data-bed="" data-start="1352.6" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw20" src="media/sfx-swell.wav" data-bed="" data-start="1447.3" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw21" src="media/sfx-swell.wav" data-bed="" data-start="1529.7" data-duration="5" data-volume="0.35"></audio>
+  <audio id="sx-sw22" src="media/sfx-swell.wav" data-bed="" data-start="1659.1" data-duration="5" data-volume="0.35"></audio>
+  <!-- booms at act turns -->
+  <audio id="sx-bm01" src="media/sfx-boom.wav" data-bed="" data-start="38.78" data-duration="2.2" data-volume="0.4"></audio>
+  <audio id="sx-bm02" src="media/sfx-boom.wav" data-bed="" data-start="202.42" data-duration="2.2" data-volume="0.4"></audio>
+  <audio id="sx-bm03" src="media/sfx-boom.wav" data-bed="" data-start="361.44" data-duration="2.2" data-volume="0.4"></audio>
+  <audio id="sx-bm04" src="media/sfx-boom.wav" data-bed="" data-start="568.78" data-duration="2.2" data-volume="0.4"></audio>
+  <audio id="sx-bm05" src="media/sfx-boom.wav" data-bed="" data-start="759.56" data-duration="2.2" data-volume="0.4"></audio>
+  <audio id="sx-bm06" src="media/sfx-boom.wav" data-bed="" data-start="1038.12" data-duration="2.2" data-volume="0.4"></audio>
+  <audio id="sx-bm07" src="media/sfx-boom.wav" data-bed="" data-start="1386.04" data-duration="2.2" data-volume="0.4"></audio>
+
+  <!-- ============ ACT BLACKOUTS (chapter device, mandatory) ============ -->
+  <section class="clip blackout" id="bo-a1" data-start="199.92" data-duration="2.5" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-a2" data-start="358.94" data-duration="2.5" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-a3" data-start="566.28" data-duration="2.5" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-a4" data-start="757.06" data-duration="2.5" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-a5" data-start="1035.62" data-duration="2.5" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-a6" data-start="1383.54" data-duration="2.5" data-track-index="1"></section>
+
+  <!-- ============ ACT 1 — A CITY BELOW THE SEA 38.78–199.92 (picture pass) ============ -->
+  <!-- ============ ACT 2 — THE STORM 202.42–358.94 (picture pass) ============ -->
+  <!-- ============ ACT 3 — THE WARNING 361.44–566.28 (picture pass) ============ -->
+  <!-- ============ ACT 4 — LANDFALL 568.78–757.06 (picture pass) ============ -->
+  <!-- ============ ACT 5 — THE BREACHES 759.56–1035.62 (picture pass) ============ -->
+  <!-- ============ ACT 6 — THE WEEK AFTER 1038.12–1383.54 (picture pass) ============ -->
+  <!-- ============ ACT 7 — THE RECKONING + THE PEOPLE 1386.04–1738.96 (picture pass) ============ -->
+
+  <!-- ============ DATE MATCH-CUT STAMPS D2–D18 (word-cued from words.json; slam in, hold ~3s) ============ -->
+  <section class="clip" id="p-d2" data-start="97.28" data-duration="3.2" data-track-index="3">
+    <div class="stamp stamp-amber" id="st-d2"><span class="st-eyebrow">FLASHBACK</span><span class="st-day">SEPT 1965</span><span class="st-time">HURRICANE BETSY</span></div></section>
+  <section class="clip" id="p-d3" data-start="145.98" data-duration="3.2" data-track-index="3">
+    <div class="stamp stamp-amber" id="st-d3"><span class="st-eyebrow">FLASHBACK</span><span class="st-day">JUNE 2002</span><span class="st-time">"WASHING AWAY"</span></div></section>
+  <section class="clip" id="p-d4" data-start="211.16" data-duration="3.0" data-track-index="3">
+    <div class="stamp" id="st-d4"><span class="st-eyebrow">AUGUST 2005</span><span class="st-day">AUG 23</span><span class="st-time">TROPICAL DEPRESSION TWELVE</span></div></section>
+  <section class="clip" id="p-d5" data-start="232.44" data-duration="3.0" data-track-index="3">
+    <div class="stamp" id="st-d5"><span class="st-eyebrow">AUGUST 2005</span><span class="st-day">AUG 25</span><span class="st-time">FLORIDA LANDFALL</span></div></section>
+  <section class="clip" id="p-d6" data-start="382.38" data-duration="3.0" data-track-index="3">
+    <div class="stamp" id="st-d6"><span class="st-eyebrow">SUNDAY</span><span class="st-day">AUG 28</span><span class="st-time">7:00 AM</span></div></section>
+  <section class="clip" id="p-d7" data-start="414.12" data-duration="3.0" data-track-index="3">
+    <div class="stamp" id="st-d7"><span class="st-eyebrow">SUNDAY</span><span class="st-day">AUG 28</span><span class="st-time">10:11 AM</span></div></section>
+  <section class="clip" id="p-d8" data-start="457.48" data-duration="3.0" data-track-index="3">
+    <div class="stamp" id="st-d8"><span class="st-eyebrow">SUNDAY</span><span class="st-day">AUG 28</span><span class="st-time">11:00 AM</span></div></section>
+  <section class="clip" id="p-d9" data-start="531.74" data-duration="3.0" data-track-index="3">
+    <div class="stamp" id="st-d9"><span class="st-eyebrow">SUNDAY</span><span class="st-day">AUG 28</span><span class="st-time">NOON</span></div></section>
+  <section class="clip" id="p-d10" data-start="568.78" data-duration="3.2" data-track-index="3">
+    <div class="stamp" id="st-d10"><span class="st-eyebrow">MONDAY</span><span class="st-day">AUG 29</span><span class="st-time">6:10 AM · LANDFALL</span></div></section>
+  <section class="clip" id="p-d11" data-start="616.0" data-duration="3.0" data-track-index="3">
+    <div class="stamp" id="st-d11"><span class="st-eyebrow">MONDAY</span><span class="st-day">AUG 29</span><span class="st-time">8:54 AM · RADAR DARK</span></div></section>
+  <section class="clip" id="p-d12a" data-start="710.44" data-duration="3.0" data-track-index="3">
+    <div class="stamp" id="st-d12a"><span class="st-eyebrow">MONDAY</span><span class="st-day">AUG 29</span><span class="st-time">EVENING</span></div></section>
+  <section class="clip" id="p-d12b" data-start="946.72" data-duration="3.0" data-track-index="3">
+    <div class="stamp" id="st-d12b"><span class="st-eyebrow">TUESDAY</span><span class="st-day">AUG 30</span><span class="st-time">80% UNDER WATER</span></div></section>
+  <section class="clip" id="p-d13" data-start="1116.02" data-duration="3.0" data-track-index="3">
+    <div class="stamp" id="st-d13"><span class="st-eyebrow">WEDNESDAY</span><span class="st-day">AUG 31</span><span class="st-time">CONVENTION CENTER</span></div></section>
+  <section class="clip" id="p-d14" data-start="1185.18" data-duration="3.0" data-track-index="3">
+    <div class="stamp" id="st-d14"><span class="st-eyebrow">THURSDAY</span><span class="st-day">SEPT 1</span><span class="st-time">DAY FOUR</span></div></section>
+  <section class="clip" id="p-d15" data-start="1316.52" data-duration="3.0" data-track-index="3">
+    <div class="stamp" id="st-d15"><span class="st-eyebrow">FRIDAY</span><span class="st-day">SEPT 2</span><span class="st-time">DAY FIVE</span></div></section>
+  <section class="clip" id="p-d16" data-start="1388.66" data-duration="3.2" data-track-index="3">
+    <div class="stamp stamp-amber" id="st-d16"><span class="st-eyebrow">FLASHBACK · 13 MONTHS BEFORE</span><span class="st-day">JULY 2004</span><span class="st-time">HURRICANE PAM</span></div></section>
+  <section class="clip" id="p-d17" data-start="1451.18" data-duration="3.0" data-track-index="3">
+    <div class="stamp" id="st-d17"><span class="st-eyebrow">THE RECKONING</span><span class="st-day">JUNE 2006</span><span class="st-time">THE CORPS ADMITS</span></div></section>
+  <section class="clip" id="p-d18" data-start="1689.0" data-duration="3.0" data-track-index="3">
+    <div class="stamp" id="st-d18"><span class="st-eyebrow">TODAY'S WALLS</span><span class="st-day">MAY 2022</span><span class="st-time">$14.5 BILLION · HSDRRS</span></div></section>
+
+  <!-- film layer (untimed, last) -->
+  <div id="grade"></div>
+  <div id="vignette"></div>
+  <canvas id="grain" width="480" height="270"></canvas>
+</div>
+
+<script src="grain.js"></script>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 1738.96;
+
+  /* blur-fill behind letterboxed stills */
+  document.querySelectorAll(".contain-wrap").forEach(function(w){
+    const im = w.querySelector("img"); if (!im) return;
+    const bg = im.cloneNode(); bg.removeAttribute("id"); bg.className = "blurfill";
+    w.insertBefore(bg, im);
+  });
+
+  /* Ken Burns helper (every still moves) */
+  function kb(sel, at, dur, fromScale, toScale, fromX, toX, fromY, toY) {
+    tl.fromTo(sel, { scale: fromScale, x: fromX, y: fromY },
+      { scale: toScale, x: toX, y: toY, duration: dur, ease: "none" }, at);
+  }
+  /* hook breach still: hard push-in, the water IS the sentence */
+  kb("#kb-hookbreach", 9.0, 5.1, 1.04, 1.22, 0, -22, 0, -14);
+
+  /* date stamps: slam in (contract vocabulary), slide-fade out at window end */
+  function stamp(sel, at, hold) {
+    tl.fromTo(sel, { scale: 2.6, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.35, ease: "power4.in" }, at);
+    tl.to(sel, { autoAlpha: 0, y: -26, duration: 0.25, ease: "power2.in" }, at + hold - 0.25);
+  }
+  stamp("#st-d1", 0.5, 3.0);
+  stamp("#st-d2", 97.28, 3.2);  stamp("#st-d3", 145.98, 3.2); stamp("#st-d4", 211.16, 3.0);
+  stamp("#st-d5", 232.44, 3.0); stamp("#st-d6", 382.38, 3.0); stamp("#st-d7", 414.12, 3.0);
+  stamp("#st-d8", 457.48, 3.0); stamp("#st-d9", 531.74, 3.0); stamp("#st-d10", 568.78, 3.2);
+  stamp("#st-d11", 616.0, 3.0); stamp("#st-d12a", 710.44, 3.0); stamp("#st-d12b", 946.72, 3.0);
+  stamp("#st-d13", 1116.02, 3.0); stamp("#st-d14", 1185.18, 3.0); stamp("#st-d15", 1316.52, 3.0);
+  stamp("#st-d16", 1388.66, 3.2); stamp("#st-d17", 1451.18, 3.0); stamp("#st-d18", 1689.0, 3.0);
+
+  /* hook: loop line lands word-synced — "The hurricane missed" @31.44, "anyway" @34.84 */
+  tl.fromTo("#loop-l1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 31.3);
+  tl.fromTo("#loop-l2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 33.5);
+  /* src label fade for the hoist */
+  tl.fromTo("#p-src-hoist .srclab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 4.3);
+  /* hoist slow drift (SD upscale hides in motion) */
+  tl.fromTo("#vx-hookhoist", { scale: 1.02 }, { scale: 1.09, duration: 9.0, ease: "none" }, 0);
+  /* flood-rise under the turn */
+  tl.fromTo("#vx-hookrise", { scale: 1.0 }, { scale: 1.07, duration: 8.9, ease: "none" }, 22.3);
+
+  filmLayer(tl, DUR);
+  window.__timelines["ep6-katrina2005"] = tl;
+})();
+</script>
+</body>
+</html>
