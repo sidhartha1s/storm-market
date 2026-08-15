@@ -328,8 +328,8 @@ Mexico. And the Gulf, that week, was exactly what a hurricane wants. Hot water, 
 
 **a2-s3 · graphic (engine diagram inside g-track) + VO (~85 words)**
 A hurricane is an engine. Warm seawater is its fuel. Most storms churn up cold water from below
-and starve themselves. But Katrina crossed a current where the warmth runs deep, so the engine
-never starved. *(source: NASA/JPL Loop Current page, not the NHC TCR, for any on-screen credit)* Over two days it went from a
+and starve themselves. But Katrina crossed a current where the warmth runs deep, so the engine never starved. It fed
+on a deep warm eddy the whole way north. *(source: NASA/JPL Loop Current page, not the NHC TCR, for any on-screen credit)* Over two days it went from a
 Category 1 to a Category 3, then a Category 4. And on the morning of August 28th, in less than
 twelve hours, it became a Category 5.
 *(GOES loop #17/#20 escalating behind the diagram; D6 popup on "August 28th")*
@@ -337,8 +337,8 @@ twelve hours, it became a Category 5.
 **a2-s4 · graphic stat slam + satellite loop (~90 words)**
 At that point the numbers stop sounding like weather. Sustained winds of one hundred seventy-three
 miles per hour. A central pressure of nine hundred two millibars, among the lowest ever measured
-in an Atlantic hurricane. Tropical-storm winds reached more than two hundred miles out from the eye. Put
-that circle over a map and it swallows the whole northern Gulf Coast at once.
+in an Atlantic hurricane. Tropical-storm winds reached more than two hundred miles out from the eye. Put that circle over a map and it swallows the whole northern Gulf Coast at once. This was no
+longer a question of whether someone would be hit. Everyone in the circle already was.
 *(stats slam ON their spoken words, ep2-style; no pre-reveal)*
 
 **a2-s5 · narration over track-cone tightening (~105 words) — L2 plant**
@@ -369,7 +369,8 @@ one man read the data and decided plain language was not enough.
 His name was Robert Ricks. He grew up in the Ninth Ward. His family had lived through Betsy. At
 eleven minutes past ten, he sent a bulletin that veterans of the Weather Service still talk about.
 It said, in plain block letters: devastating damage expected. A most powerful hurricane with
-unprecedented strength. Most of the area will be uninhabitable for weeks, perhaps longer. Water
+unprecedented strength, rivaling the intensity of Hurricane Camille of nineteen sixty-nine. Most
+of the area will be uninhabitable for weeks, perhaps longer. Water
 shortages will make human suffering incredible by modern standards. Persons exposed to the winds
 will face certain death if struck. He said later he had been editing
 himself down, trying to find things to take out. Every line you just heard came true.
@@ -393,9 +394,8 @@ people existed. The plan for them fit in one word. Superdome.
 **a3-s6 · narration + Superdome exterior lines (#2, #14) + D9 popup (~85 words) — L3 plant**
 At noon on Sunday, the city opened the Superdome as what officials called a refuge of last
 resort. Not a shelter. A place to survive the wind and nothing more. By the
-time the storm arrived, more than ten thousand people were inside. They had waited in lines that
-wrapped around the building,
-carrying garbage bags of clothes. Remember that phrase. Refuge of last resort. We are going to find out exactly what it meant.
+time the storm arrived, more than ten thousand people were inside. They had waited in lines that wrapped around the building, carrying garbage bags of clothes.
+National Guard soldiers searched them at the doors. Remember that phrase. Refuge of last resort. We are going to find out exactly what it meant.
 
 **a3-s7 · hold (~3s)** — dusk shot of the Dome, city lights, bed to low drone. Reason: the act's
 dread must settle before landfall. → **BLACKOUT (2.5s)**
@@ -487,8 +487,9 @@ would eventually count fifty breaches. Forty-six of
 them were overwhelmed the way you would expect, water pouring over the top and chewing the levee
 apart from behind. Four were not. Four walls, including the 17th Street and London Avenue canals,
 failed below the level they were designed to hold. The system did not lose to a storm bigger than
-its design. Parts of it lost to a storm smaller than its promise. Water kept flowing for two more
-days. By Tuesday, eighty percent of New Orleans was under water. *(NASA MODIS, Aug 30 11:45 AM)*
+its design. Parts of it lost to a storm smaller than its promise. Water kept flowing for two more days. By Tuesday, eighty percent of New Orleans was under water.
+It would take forty-three days to pump the city dry. Halfway through, a second hurricane, Rita,
+put part of it back under water. *(NASA MODIS, Aug 30 11:45 AM)*
 *(g-floodmap: neighborhoods fill hour by hour; counter rolls to 80; depth callouts to 15 ft)*
 
 **a5-s6 · narration (~55 words) — L5 plant**
@@ -537,7 +538,7 @@ about Ray Nagin, that night he said what the whole bowl was thinking.
 **a6-s6 · graphic g-stat-uscg + rescue footage (S-1 pool, different cuts than hook) (~95 words)**
 And yet, in the same city, in the same week, one part of the response worked like a machine. The
 Coast Guard started flying before the wind stopped. Helicopter crews hoisted people off rooftops
-one at a time, hour after hour, for a week. Count what they did. Thirty-three
+one at a time, hour after hour, day and night, for a week. Count what they did. Thirty-three
 thousand five hundred people saved. Twenty-four thousand of them lifted straight out of the water
 and off the roofs. The system did not fail because everyone failed. It failed at the top, while
 the people at the bottom of it kept working.
@@ -581,14 +582,17 @@ storm. The worst engineering failure.
 Now the question from the Lower Ninth. Who paid? A law from 1928 makes the federal
 government immune from lawsuits over flood-control works, no matter what. The courts saw walls
 that fell below their own design load, and admissions from the builders themselves, and ruled
-that not one dollar could be collected. One judge found a way through, for four families. A
-higher court took even that away. For the drowning of a major American city, the legal price
-was zero.
+that not one dollar could be collected. One judge found a crack in the shield. A shipping channel east of the city was a navigation
+project, not a flood wall, so it was not immune. He ruled the Corps negligent for letting it
+rot, and awarded four families about seven hundred thousand dollars. The appeals court erased
+even that. For the drowning of a major American city, the legal price was zero.
 
 **a7-s4 · graphic g-stat-toll + VO (~90 words)**
 The human price was not zero. The official count, after years of study, stands at one thousand
 three hundred ninety-two lives, taking the storm and its aftermath together, across the Gulf
-states. Louisiana buried the most. And Louisiana's own records show exactly who the water took.
+states. For years the number told was eighteen hundred or more. In twenty twenty-three,
+scientists re-read the medical records of more than a thousand victims and set the record
+straight. Louisiana buried the most. And Louisiana's own records show exactly who the water took.
 Four out of ten of its dead drowned. Nearly half were seventy-five or older. The people who could not
 climb to an attic. The people who stayed because leaving was harder for them than for anyone
 else. The flood found the oldest people in the bowl, and it kept them.
@@ -652,3 +656,197 @@ STANDING compose-time gate: cross-check EVERY on-screen stat card against the sp
 word-for-word (the competitor shipped "+15,000 Deaths" against a spoken 1,400 — audience caught
 it in top comments).
 
+
+
+---
+
+# TTS SEGMENTS (machine-read by scripts/tts_episode.py — TTS-safe form; source of truth for narration audio)
+
+Note: A6-S5a/b and A6-S8a/b split around their inserts. Prose above is the readable form;
+these blockquotes are the mechanical conversion (numbers spelled, <24-word sentences).
+
+### H1-S4 — narration
+
+> That report was wrong before it aired. By the time the country heard it, the water was already inside the city, and still rising. The hurricane missed New Orleans. The city drowned anyway.
+
+### A1-S1 — narration
+
+> New Orleans is shaped like a bowl. The Mississippi River runs along one rim. Lake Pontchartrain sits on the other. And most of the city lies between them, below the level of both. In some neighborhoods the ground sits as much as ten feet below the sea. Rain cannot drain out of this city. Every drop has to be pumped up and over the rim. People here live behind walls, the way a ship's crew lives behind a hull.
+
+### A1-S2 — narration
+
+> The hull is real. Earthen levees and concrete floodwalls wrap the city, hundreds of miles of them. And cut through that shield run drainage canals. Open channels of water reaching from the lake deep into the city's neighborhoods, each lined with its own thin concrete wall. The strength of the whole city comes down to the weakest wall. So. Who checks the walls?
+
+### A1-S3 — narration
+
+> New Orleans already knew what failure felt like. In September of nineteen sixty-five, Hurricane Betsy pushed the lake into these same streets. People drowned in their attics in the Lower Ninth Ward. Congress moved within weeks. It ordered the Army Corps of Engineers to build a shield around the city. Strong enough, they said, for the worst storm the region was ever likely to see. The plan was supposed to take about thirteen years to finish.
+
+### A1-S4 — narration
+
+> Forty years later, the shield was still not finished. Government auditors put it at roughly sixty-five percent complete. And the finished parts had their own problem. The ground under New Orleans sinks a little every year. Walls built to a safe height in one decade quietly dropped below it in the next.
+
+### A1-S5 — narration
+
+> None of this was secret. In June of two thousand two, the city's own newspaper ran a front-page warning series called Washing Away. Its first sentence read, it's only a matter of time before South Louisiana takes a direct hit from a major hurricane. The reporters printed a likely death toll. Somewhere between twenty-five thousand and one hundred thousand people. That landed on driveways across New Orleans, three years before Katrina had a name. The warning was not missing. It was delivered to the door.
+
+### A1-S6 — narration
+
+> And buried in the engineering files sat one more detail. The canal floodwalls stood on sheets of steel, driven down to anchor them in the soft ground. How deep that steel actually went, and how deep the drawings said it went, would turn out to be two different numbers. Hold that thought.
+
+### A2-S1 — narration
+
+> Far to the east, over the warm shallows of the Bahamas, satellites were watching a cluster of thunderstorms trying to become something. On August twenty-third, two thousand five, it became a tropical depression. A day later it had a name. Katrina. Nobody in Louisiana looked up. Storms are born out there every August. Almost all of them die as names on a list.
+
+### A2-S2 — narration
+
+> This one did not. On August twenty-fifth, Katrina crossed South Florida as a Category one, with winds near eighty miles per hour. Six people died there. Then the storm slid off the coast, into the Gulf of Mexico. And the Gulf, that week, was exactly what a hurricane wants. Hot water, running deep.
+
+### A2-S3 — narration
+
+> A hurricane is an engine. Warm seawater is its fuel. Most storms churn up cold water from below and starve themselves. But Katrina crossed a current where the warmth runs deep, so the engine never starved. It fed on a deep warm eddy the whole way north. Over two days it went from a Category one to a Category three, then a Category four. And on the morning of August twenty-eighth, in less than twelve hours, it became a Category five.
+
+### A2-S4 — narration
+
+> At that point the numbers stop sounding like weather. Sustained winds of one hundred seventy-three miles per hour. A central pressure of nine hundred two millibars, among the lowest ever measured in an Atlantic hurricane. Tropical storm winds reached more than two hundred miles out from the eye. Put that circle over a map and it swallows the whole northern Gulf Coast at once. This was no longer a question of whether someone would be hit. Everyone in the circle already was.
+
+### A2-S5 — narration
+
+> And here is the part of this story nobody expects. The forecast was nearly perfect. Two and a half days before landfall, the Hurricane Center drew its line to the Louisiana coast. Katrina followed that line almost exactly. In the final two days, every new forecast lined up almost directly on top of the storm's actual path. Emergency managers had fifty-six hours of clear, correct warning. Most disasters begin with a surprise. This one began with a bullseye. Remember that nearly perfect forecast. It is what makes everything that follows hard to hear.
+
+### A3-S1 — narration
+
+> Sunday, August twenty-eighth. A hot, still morning in New Orleans. Church bells, coffee, a normal weekend sky. Out in the Gulf, more than four hundred miles of hurricane were turning toward the city. Everything that needed to happen now had about twenty-four hours to happen in.
+
+### A3-S2 — narration
+
+> At seven that morning, the Hurricane Center's advisory used a phrase forecasters almost never type. Potentially catastrophic Category five hurricane. Not strong. Not dangerous. Catastrophic, in capital letters. In the forecast office across the lake in Slidell, one man read the data and decided plain language was not enough.
+
+### A3-S3 — narration
+
+> His name was Robert Ricks. He grew up in the Ninth Ward. His family had lived through Betsy. At eleven minutes past ten, he sent a bulletin that veterans of the Weather Service still talk about. It said, in plain block letters. Devastating damage expected. A most powerful hurricane with unprecedented strength, rivaling the intensity of Hurricane Camille of nineteen sixty-nine. Most of the area will be uninhabitable for weeks, perhaps longer. Water shortages will make human suffering incredible by modern standards. Persons exposed to the winds will face certain death if struck. He said later he had been editing himself down, trying to find things to take out. Every line you just heard came true.
+
+### A3-S4 — narration
+
+> At eleven that morning, Mayor Ray Nagin stood at a podium and did something no New Orleans mayor had ever done. He ordered a mandatory evacuation of the entire city. Nineteen hours before landfall. On the highways, every lane was already running one direction. Out. About one point two million people left south Louisiana in a day and a half. That was roughly ninety percent of the people at risk. It was, by the numbers, one of the most successful evacuations in American history.
+
+### A3-S5 — narration
+
+> By the numbers. But a number was missing from it. Tens of thousands of people were still in the bowl. Some had no car. Some had no money, at the end of the month, for gas or a motel. Some were too old or too sick to move, or caring for someone who was. And some had ridden out Betsy and Camille and simply did not believe the water would come for them this time. The city knew these people existed. The plan for them fit in one word. Superdome.
+
+### A3-S6 — narration
+
+> At noon on Sunday, the city opened the Superdome as what officials called a refuge of last resort. Not a shelter. A place to survive the wind and nothing more. By the time the storm arrived, more than ten thousand people were inside. They had waited in lines that wrapped around the building, carrying garbage bags of clothes. National Guard soldiers searched them at the doors. Remember that phrase. Refuge of last resort. We are going to find out exactly what it meant.
+
+### A4-S1 — narration
+
+> Six ten AM. Monday, August twenty-ninth. Katrina came ashore at Buras, Louisiana, a fishing town at the mouth of the Mississippi. The storm had weakened overnight, from a Category five to a Category three. Winds near one hundred twenty-seven miles per hour. In Buras, the water simply removed the town. And then the eye of the storm did New Orleans a favor. It passed to the east. The city would not take the direct hit. Mississippi would.
+
+### A4-S2 — narration
+
+> The radar station at Slidell tracked the eyewall as it came on. At eight forty-two, forecasters warned of gusts over one hundred miles per hour crossing the lake. Then, at eight fifty-four in the morning, the radar near the city stopped transmitting. The eyewall was passing directly over the antenna. Through the worst hours of the storm, the picture stayed dark. Remember the silence. Things happened inside it.
+
+### A4-S3 — narration
+
+> At nine forty-five the center crossed the coast again, at the Louisiana Mississippi line. And here the Gulf of Mexico stood up and walked onto the land. At Pass Christian, Mississippi, the storm surge reached twenty-seven point eight feet. That is seawater the height of a three story building, moving with the weight of an ocean behind it. Waveland. Bay Saint Louis. Pass Christian. Long Beach. Gulfport. Biloxi. Along miles of coast, the first three or four blocks of town were not damaged. They were removed. Slabs stayed. Addresses stayed. Everything above the slab went inland or out to sea.
+
+### A4-S4 — narration
+
+> One hundred seventy-two people died in Mississippi that morning. If you lived on that coast, you already know the strange part. The country barely remembers you. Katrina made landfall on Mississippi. Mississippi took the storm. New Orleans, spared the eyewall's core, took something else. Something slower, and in its own way, worse. Because while the Gulf was erasing Waveland, the phones inside New Orleans had already started ringing.
+
+### A4-S5 — narration
+
+> By Monday evening, the storm was inland and dying, and a story was forming on the news wires. New Orleans had been spared the worst. National radio said exactly that, the morning after landfall. And measured in wind, it was even true. But the same newscast reported two levee breaches already pouring lake water into the city. Nobody put the two sentences together. The relief headline and the drowning city ran side by side, and the relief headline won the evening. Inside the bowl there was no power, no radar, and almost no phones. The one thing rising faster than the water was the distance between what the country believed and what was true.
+
+### A5-S1 — narration
+
+> Here is what was happening inside the radar silence. Katrina's surge pushed up the drainage canals, those open channels reaching into the city's heart. It pressed on the thin walls beside them. Between six and seven that morning, a floodwall on the London Avenue Canal gave way. Around seven forty-five, people near the Industrial Canal heard something like an explosion. A wall section collapsed, and a gap nearly a thousand feet wide opened into the Lower Ninth Ward.
+
+### A5-S2 — narration
+
+> The Lower Ninth went under in minutes. Houses floated off their slabs with families inside. A massive steel barge washed through the gap and came to rest on top of a neighborhood. For years people said the barge caused the breach. Engineers later proved it did not. The wall failed first, on its own, and the barge simply drifted through the wound. Keep that distinction. Walls that failed on their own.
+
+### A5-S3 — narration
+
+> And at the Seventeenth Street Canal, the city's biggest, the wall did something engineering textbooks said it must never do. The water that morning reached about ten and a half feet up a wall built to hold fourteen. It never got near the top. But the pressure leaned the concrete outward, just slightly. That lean opened a thin gap between the wall and the soil holding it. Water poured down into the gap, and now the pressure was not pushing on the wall anymore. It was pushing on the ground under it. Beneath that levee lay a soft layer of old swamp clay. The clay sheared, the way mud slides off a shovel, and the wall rode the ground sideways into the neighborhood behind it. It did not overflow. It moved. A floodwall has no halfway. It holds, or it is gone.
+
+### A5-S4 — narration
+
+> Months later, engineers ran sonar along the wreckage, looking for the anchoring steel. The design drawings called for steel driven seventeen and a half feet below sea level. The sonar found it stopped at about ten. Seven feet of promised steel that was never there. And the trail led back to a load test the Corps had run on its own wall design in the nineteen eighties. Read correctly, that test said the steel needed to go far deeper in soil this soft. The drawings said one thing. The ground held another.
+
+### A5-S5 — narration
+
+> By the end of Monday the city had not one broken wall but dozens. The official investigation would eventually count fifty breaches. Forty-six of them were overwhelmed the way you would expect, water pouring over the top and chewing the levee apart from behind. Four were not. Four walls, including the Seventeenth Street and London Avenue canals, failed below the level they were designed to hold. The system did not lose to a storm bigger than its design. Parts of it lost to a storm smaller than its promise. Water kept flowing for two more days. By Tuesday, eighty percent of New Orleans was under water. It would take forty-three days to pump the city dry. Halfway through, a second hurricane, Rita, put part of it back under water.
+
+### A5-S6 — narration
+
+> Every ruined block in this water traces back to engineering decisions with names and dates attached. Hold one question until the end of this story. For all of this, who paid? The answer is coming, and you will not like it.
+
+### A6-S1 — narration
+
+> Remember the phrase. Refuge of last resort. By midweek, the building held around twenty-three thousand people. The storm had peeled sheets of the roof away over their heads. Then the power died, and the plumbing died, and the air conditioning died, in a domed building in Louisiana in August. No working toilets for a crowd the size of a small city. Food and water ran to rations. The refuge of last resort was now the largest stranded population in America.
+
+### A6-S2 — narration
+
+> Then the rumors started, and they moved faster than the water. Murders in the dark. Bodies stacked in the freezers, as many as two hundred. Officials repeated the rumors on national television, and for a week, America believed the Superdome had become a war zone. Months later, investigators counted what actually happened there. Six people died in that building. Four from illness. One overdose. One suicide. No murders. The truth was bad enough. Twenty-three thousand people abandoned in the heat for nearly a week. The myth just pointed the shame at the wrong people.
+
+### A6-S3 — narration
+
+> A mile away, on Wednesday, police began directing people to the Convention Center, telling them buses would come. As many as twenty-five thousand gathered there. There was no food. No water. No guards. No buses. And for two days, the officials running the federal response said, on camera, that they were only just learning those people existed. Reporters were broadcasting live from the building. The government said it did not know. Both of those sentences were true at the same time.
+
+### A6-S4 — narration
+
+> How does a government lose twenty-five thousand people in its own city? Like this. The storm took out three million phone lines and nearly fifteen hundred cell towers. Police radios went dark. For days, the people running the rescue could not talk to each other, and information moved at the speed of rumor. The country watched it live. The responders could not.
+
+### A6-S5a — narration
+
+> On Thursday night, the mayor went on the radio and stopped being polite.
+
+### A6-S5b — narration
+
+> Whatever else history says about Ray Nagin, that night he said what the whole bowl was thinking.
+
+### A6-S6 — narration
+
+> And yet, in the same city, in the same week, one part of the response worked like a machine. The Coast Guard started flying before the wind stopped. Helicopter crews hoisted people off rooftops one at a time, hour after hour, day and night, for a week. Count what they did. Thirty-three thousand five hundred people saved. Twenty-four thousand of them lifted straight out of the water and off the roofs. The system did not fail because everyone failed. It failed at the top, while the people at the bottom of it kept working.
+
+### A6-S7 — narration
+
+> The week's ugliest hour came on a bridge. Thousands tried to walk out of the drowned city, over the river to the dry suburb of Gretna. Police from that suburb met the crowd at the crest and fired shotguns over their heads. Gretna says it had no power, no shelter, and no choice. The people on the bridge, most of them Black, heard something else in it. That argument has never ended.
+
+### A6-S8a — narration
+
+> On Friday, the president stood beside his FEMA director and praised him.
+
+### A6-S8b — narration
+
+> Ten days later, that director resigned. And in the files of his own agency sat a document that turns this whole story from a tragedy into something harder to forgive. Because someone had rehearsed this exact disaster.
+
+### A7-S1 — narration
+
+> Thirteen months before Katrina, in July of two thousand four, about three hundred emergency officials met in Baton Rouge for a week long exercise. They came from every level of government, and FEMA paid for it. On their screens was a fictional hurricane aimed at New Orleans. They named it Pam. Pam was a Category three. Its simulated surge topped the levees and put the city under water. The planners wrote down their projections. More than a million people evacuated. Half a million buildings destroyed. And a death toll over sixty thousand. The exercise predicted the overwhelmed shelters. It predicted evacuees stranded on the highways. It predicted hospitals losing power with patients inside. The plan to fix all of it was supposed to come next. The follow-up was never finished. The money ran out. Thirteen months later, the real storm arrived.
+
+### A7-S2 — narration
+
+> So no one gets to call this a surprise. In June of two thousand six, the commander of the Army Corps of Engineers faced the cameras. He said something no one in his position had ever said. This was the first time the Corps had to stand up and admit a catastrophic failure of one of its own projects. The engineers' professional association went further. It called the flooding of New Orleans the worst engineering catastrophe in the history of the United States. Not the worst storm. The worst engineering failure.
+
+### A7-S3 — narration
+
+> Now the question from the Lower Ninth. Who paid? A law from nineteen twenty-eight makes the federal government immune from lawsuits over flood control works, no matter what. The courts saw walls that fell below their own design load. They saw admissions from the builders themselves. And they ruled that not one dollar could be collected. One judge found a crack in the shield. A shipping channel east of the city was a navigation project, not a flood wall, so it was not immune. He ruled the Corps negligent for letting it rot, and awarded four families about seven hundred thousand dollars. The appeals court erased even that. For the drowning of a major American city, the legal price was zero.
+
+### A7-S4 — narration
+
+> The human price was not zero. The official count, after years of study, stands at one thousand three hundred ninety-two lives. That counts the storm and its aftermath together, across the Gulf states. For years the number told was eighteen hundred or more. In twenty twenty-three, scientists re-read the medical records of more than a thousand victims and set the record straight. Louisiana buried the most. And Louisiana's own records show exactly who the water took. Four out of ten of its dead drowned. Nearly half were seventy-five or older. The people who could not climb to an attic. The people who stayed because leaving was harder for them than for anyone else. The flood found the oldest people in the bowl, and it kept them.
+
+### A7-S5 — narration
+
+> One of them died on a hospital roof. At Charity Hospital, doctors moved the whole emergency room upstairs by flashlight and hand pumped air into patients for days. One elderly woman lay on the helipad, waiting for a helicopter, her husband beside her, fanning her in the heat. She died on the roof, waiting. The doctor who told her story afterward said he did not know where her husband had gone. He did not know if the man even knew she was dead.
+
+### A7-S6 — narration
+
+> More than a million people scattered across the Gulf states. A month after the storm, six hundred thousand households still had no home to go back to. New Orleans lost more than half its people in the year after the storm, and many never came back. The ones who came back divide their lives with a phrase. Before the storm. After the storm. The city has new walls now. Fourteen and a half billion dollars of them, finished in twenty twenty-two. They are stronger, deeper, and honestly built. They are made to hold back a storm the city should see about once a century. Katrina, the studies say, was rarer and worse than that.
+
+### A7-S7 — narration
+
+> Disasters do not ask permission. But they do send warnings. New Orleans got its warnings in writing, three years early, on the front page. It got a full dress rehearsal, one year early, with the death toll attached. The warnings were all there. What was missing was anyone required to act on them. Learn what your warnings sound like, and decide, now, what you will do when one arrives. This was The Warning Hour. Episode six.
+
+TOTAL TTS WORDS: 3574

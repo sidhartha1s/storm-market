@@ -44,3 +44,6 @@ episodes/*/.waveform-cache/
 references/*/*/*.webm
 references/*/*/contact-sheets/
 references/*/dh-hook-frames/
+
+# per-cut frame-verification scratch (regenerable via ffmpeg)
+episodes/*/frames_check/
