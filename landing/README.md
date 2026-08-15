@@ -1,11 +1,13 @@
 # Landing page — The Storm-Ready Home
 
 Static page, zero build step: one HTML file with inline CSS, assets alongside it, no framework, no
-CDN. The one piece of server logic is `functions/api/subscribe.js`, a single Cloudflare Pages
-Function for the lead-magnet form — no bundler, no other backend. Deploys to Cloudflare Pages as-is.
+CDN, **and no server logic at all**. Money and email both live on Gumroad — the paid manual at
+`/l/ebook`, the free state packets at `/l/packet`. Deploys to Cloudflare Pages as-is.
 
-**NOT DEPLOYED. Not live anywhere.** See "Before it goes live" — four blockers, one of them is
-Gumroad.
+**Live at https://paulraymond.pages.dev.** Redeploy with
+`npx wrangler pages deploy <this dir> --project-name paulraymond --branch main`.
+**`--branch main` is required** — without it wrangler publishes to a preview alias named after your
+git branch and production silently keeps serving the old build.
 
 | File | What |
 |---|---|
