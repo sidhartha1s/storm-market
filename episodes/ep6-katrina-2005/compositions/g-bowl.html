@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family: Arial, sans-serif;
+    background: radial-gradient(ellipse at 50% 30%, #0d1622 0%, #05080d 70%); }
+  .gb-title { position:absolute; left:0; right:0; top:96px; text-align:center;
+    font-family:'Arial Black',Arial,sans-serif; font-size:56px; color:#f2f5f8; letter-spacing:2px; }
+  .gb-sub { position:absolute; left:0; right:0; top:172px; text-align:center;
+    font-family:Georgia,serif; font-style:italic; font-size:28px; color:#d8a13a; }
+  svg { position:absolute; left:110px; top:260px; }
+  .gb-lab { font-family:'Arial Black',Arial,sans-serif; font-size:30px; fill:#e8edf2; }
+  .gb-lab-sm { font-family:Arial,sans-serif; font-weight:700; font-size:21px; fill:#93a3b2; letter-spacing:3px; }
+  .gb-sea { font-family:Arial,sans-serif; font-weight:700; font-size:23px; fill:#6fb3d9; letter-spacing:4px; }
+  .gb-depth { font-family:'Arial Black',Arial,sans-serif; font-size:40px; fill:#e74c3c; }
+  .gb-depth-sm { font-family:Arial,sans-serif; font-weight:700; font-size:20px; fill:#c8d3e0; letter-spacing:2px; }
+  .gb-hull { position:absolute; left:0; right:0; bottom:88px; text-align:center;
+    font-family:Georgia,serif; font-style:italic; font-size:34px; color:#e8edf2; }
+  .gb-hull b { color:#d8a13a; font-style:normal; font-family:'Arial Black',Arial,sans-serif; }
+</style>
+<div id="root" data-composition-id="g-bowl" data-width="1920" data-height="1080">
+  <div class="gb-title" id="g-bowl-title">A City Below the Sea</div>
+  <div class="gb-sub" id="g-bowl-sub">the shape of New Orleans, side-on</div>
+  <svg id="g-bowl-svg" width="1700" height="620" viewBox="0 0 1700 620">
+    <!-- water bodies -->
+    <path id="g-bowl-riverwater" d="M60,300 Q160,285 260,300 L260,420 L60,420 Z" fill="#1d4a63" opacity="0"/>
+    <path id="g-bowl-lakewater" d="M1440,290 Q1550,278 1660,290 L1660,420 L1440,420 Z" fill="#1d4a63" opacity="0"/>
+    <!-- bowl ground profile: rims high at both ends, city sagging below sea level -->
+    <path id="g-bowl-ground" d="M60,420 L200,420 Q300,255 390,255 Q460,255 560,330 Q850,505 1140,470 Q1330,440 1400,268 Q1450,252 1520,265 L1660,420 L1660,600 L60,600 Z"
+      fill="#2a3442" stroke="#48586c" stroke-width="3" opacity="0"/>
+    <!-- sea level dashed line -->
+    <line id="g-bowl-sealine" x1="60" y1="300" x2="1660" y2="300" stroke="#6fb3d9" stroke-width="3" stroke-dasharray="18 12"/>
+    <text id="g-bowl-sealab" class="gb-sea" x="820" y="286">SEA LEVEL</text>
+    <!-- levee rims -->
+    <path id="g-bowl-rim-l" d="M330,268 Q390,238 450,268 L430,300 L350,300 Z" fill="#5d4a33" stroke="#8a6f4d" stroke-width="2" opacity="0"/>
+    <path id="g-bowl-rim-r" d="M1350,272 Q1405,242 1460,272 L1440,300 L1370,300 Z" fill="#5d4a33" stroke="#8a6f4d" stroke-width="2" opacity="0"/>
+    <!-- labels -->
+    <text id="g-bowl-lab-river" class="gb-lab" x="80" y="255" opacity="0">MISSISSIPPI RIVER</text>
+    <text id="g-bowl-lab-lake" class="gb-lab" x="1400" y="245" opacity="0">LAKE PONTCHARTRAIN</text>
+    <text id="g-bowl-lab-city" class="gb-lab" x="740" y="560" opacity="0">NEW ORLEANS</text>
+    <text id="g-bowl-lab-rims" class="gb-lab-sm" x="330" y="228" opacity="0">LEVEE</text>
+    <text id="g-bowl-lab-rims2" class="gb-lab-sm" x="1355" y="232" opacity="0">LEVEE</text>
+    <!-- depth callout -->
+    <line id="g-bowl-depthline" x1="880" y1="300" x2="880" y2="492" stroke="#e74c3c" stroke-width="3" opacity="0"/>
+    <text id="g-bowl-depth" class="gb-depth" x="905" y="420" opacity="0">10 FT DOWN</text>
+    <text id="g-bowl-depthsm" class="gb-depth-sm" x="905" y="452" opacity="0">SOME NEIGHBORHOODS</text>
+    <!-- pump arrows: water lifted up and over the rim -->
+    <g id="g-bowl-pump" opacity="0">
+      <path d="M1120,470 L1120,330 Q1120,296 1170,296 L1330,296" fill="none" stroke="#6fb3d9" stroke-width="7" stroke-dasharray="16 12"/>
+      <path d="M1318,278 L1352,296 L1318,314 Z" fill="#6fb3d9"/>
+      <text class="gb-lab-sm" x="1140" y="376" fill="#6fb3d9">PUMPED UP &amp; OVER</text>
+    </g>
+  </svg>
+  <div class="gb-hull" id="g-bowl-hull">People here live behind walls &mdash; <b>the way a crew lives behind a hull.</b></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* host 38.78-67.18 (28.4s). Word cues (segment-relative): bowl 1.6, river 3.28,
+     pontchartrain 6.1, "below the level" 11.16, "ten feet below" ~16.1, pumped 21.56,
+     walls 24.82, hull 27.74. New info every 2-3s; nothing sits still. */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-bowl-";
+  tl.set([P+"hull"], { autoAlpha: 0 }, 0);
+  tl.fromTo(P+"title", { autoAlpha: 0, y: -16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.2);
+  tl.fromTo(P+"sub", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.7);
+  /* the bowl draws itself on "bowl" */
+  tl.fromTo(P+"ground", { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.9, ease: "power2.out" }, 1.6);
+  tl.fromTo(P+"sealine", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 1.1, ease: "power2.inOut" }, 2.0);
+  tl.fromTo(P+"sealab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 2.7);
+  /* river on its word */
+  tl.fromTo(P+"riverwater", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 3.3);
+  tl.fromTo(P+"lab-river", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.45 }, 3.5);
+  /* lake on its word */
+  tl.fromTo(P+"lakewater", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 6.1);
+  tl.fromTo(P+"lab-lake", { autoAlpha: 0, x: 14 }, { autoAlpha: 1, x: 0, duration: 0.45 }, 6.3);
+  /* city label as "most of the city lies between them" */
+  tl.fromTo(P+"lab-city", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 9.2);
+  /* depth callout on "below" */
+  tl.fromTo(P+"depthline", { scaleY: 0, transformOrigin: "top center", autoAlpha: 1 }, { scaleY: 1, duration: 0.6, ease: "power2.out" }, 15.8);
+  tl.fromTo(P+"depth", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.in" }, 16.3);
+  tl.fromTo(P+"depthsm", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 16.8);
+  /* pumps on "pumped" — arrow dash crawls so the motion never dies */
+  tl.fromTo(P+"pump", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 21.5);
+  tl.to(P+"pump path", { strokeDashoffset: -140, duration: 6.4, ease: "none" }, 21.5);
+  /* rims + hull line on "walls" */
+  tl.fromTo([P+"rim-l", P+"rim-r"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, stagger: 0.12 }, 24.7);
+  tl.fromTo([P+"lab-rims", P+"lab-rims2"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35, stagger: 0.12 }, 25.0);
+  tl.fromTo(P+"hull", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power2.out" }, 26.4);
+  /* slow whole-diagram drift so no frame is static */
+  tl.fromTo(P+"svg", { scale: 1.0, transformOrigin: "center" }, { scale: 1.035, duration: 28.0, ease: "none" }, 0.3);
+  /* exit: fade down into the cut at window end */
+  tl.to("#root", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 28.0);
+  window.__timelines["g-bowl"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
