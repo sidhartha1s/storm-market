@@ -13,7 +13,7 @@ This directory holds two deliverables that share one dataset:
 | Deliverable | Where it goes | Pages |
 |---|---|---|
 | **Appendix B** — compact state lookup | in the book, one row per state | ~18 |
-| **The 50 state packets** — free lead magnet + buyer bonus | landing page email gate, one PDF per state | ~4 each |
+| **The 50 state packets** — free lead magnet + buyer bonus | a $0 Gumroad product (`/l/packet`), all 51 zipped; also bundled with the paid product | ~4 each |
 
 Same CSV, two renderers. That is the whole reason the 50-states problem became tractable: the owner's
 objection was correct — *"suppose im from chicago, why the hell would i need to know 49 other states'
