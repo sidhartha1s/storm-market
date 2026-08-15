@@ -180,25 +180,18 @@ posts anywhere now.
 Cloudflare Pages, direct upload — no build:
 
 ```bash
-npx wrangler pages project create storm-ready-home        # once
-npx wrangler pages deploy landing --project-name storm-ready-home
+npx wrangler pages deploy landing --project-name paulraymond --branch main
 ```
 
-**Environment variables that must be set before the first deploy** (Pages project → Settings →
-Environment variables, both Production and Preview):
+**`--branch main` is not optional.** Wrangler names the deployment target after your git branch, so
+from a feature branch it publishes to a preview alias (`<branch>.paulraymond.pages.dev`) and
+production keeps serving the previous build with no error anywhere. This was hit for real on
+2026-08-15 while shipping a factual correction — the fix went live only on the alias.
 
-| Variable | Required | Notes |
-|---|---|---|
-| `KIT_API_KEY` | Yes | Kit v4 API key (see "Mail provider" above). Unset → every submission 500s loudly instead of silently succeeding. |
+No environment variables. No bindings. Nothing to configure — the project is static files.
 
-`SUBSCRIBE_RATE_LIMIT` is an optional future binding, not a variable to set — see "Rate limiting"
-above.
+Check after shipping: `node buycheck.mjs` (the buy button resolves to a live checkout),
+`node gumroad/pagecheck.mjs https://paulraymond.gumroad.com/l/ebook product`, and the free-packet
+button reaching `/l/packet`.
 
-Then point the domain at it in the Cloudflare dashboard. Check before shipping: OG image resolves at
-an absolute URL, the buy button goes to a live Gumroad product, a real test purchase completes and
-delivers, the refund path works, and a real Kit sign-up lands in the account with `state` populated.
-
-**Deployed 2026-08-14 to https://paulraymond.pages.dev by owner order** (supersedes the earlier
-do-not-deploy-before-Gumroad instruction). Deployed ≠ launched: the buy button and the free-packet
-form stay inert until the Gumroad products exist — the form errors loudly on submit (KIT backend
-unconfigured; will be replaced by a Gumroad free-product link).
+**Live since 2026-08-14 at https://paulraymond.pages.dev.**
