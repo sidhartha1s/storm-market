@@ -57,6 +57,9 @@ window.__timelines = window.__timelines || {};
   });
   /* cursor blink for the full window */
   tl.to("#g-bulletin-cursor", { autoAlpha: 0, duration: 0.42, ease: "steps(1)", yoyo: true, repeat: 57 }, 0.5);
+  /* the urgent banner slams in first, then a slow warning pulse so it never sits dead */
+  tl.fromTo("#g-bulletin-flash", { autoAlpha: 0, scale: 1.15, transformOrigin: "left center" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 0.4);
+  tl.to("#g-bulletin-flash", { opacity: 0.72, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 40 }, 1.2);
   tl.fromTo("#g-bulletin-src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 3.0);
   /* CRT drift: slow zoom the whole card */
   tl.fromTo("#root", { scale: 1.0, transformOrigin: "center" }, { scale: 1.04, duration: 49, ease: "none" }, 0);
