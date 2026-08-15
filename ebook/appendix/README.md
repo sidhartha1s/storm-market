@@ -241,7 +241,10 @@ Chrome `--print-to-pdf` with an **absolute** output path.
      declaration, a kept payment plan — so the note says who is protected, not just the date
      range. 12/51 and 3/51.
 
-2. **The landing page's free-packet email gate cannot deliver anything until packets exist.** Currently the
-   form fails loudly by design rather than pretending to subscribe.
+2. **Delivery is Gumroad's, not ours (2026-08-15).** The packets ship as a $0 Gumroad product at
+   `/l/packet` — all 51 in one zip, built by zipping `out/packets/*.pdf`. The landing page links
+   straight to it. The email-gate Pages Function that used to sit here was deleted: it needed a Kit
+   API key that never existed and returned HTTP 500 on every real submit. Re-zip and re-upload the
+   product's file whenever the packets are regenerated.
 3. **Re-verification cadence.** Agency URLs and phone numbers rot. The packets print `verified_on`, and the
    set needs a re-check before each launch push.
