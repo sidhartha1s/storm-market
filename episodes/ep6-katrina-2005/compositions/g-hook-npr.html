@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family: Georgia, serif; background:#07090d; }
+  /* national-radio morning-after moment: dark studio card, live waveform, the quote lands on its spoken word */
+  .npr-eyebrow { position:absolute; left:0; right:0; top:210px; text-align:center;
+    font-family:Arial,sans-serif; font-weight:700; font-size:26px; letter-spacing:8px; color:#93a3b2; }
+  .npr-wave { position:absolute; left:50%; top:320px; transform:translateX(-50%); display:flex; gap:9px; height:120px; align-items:center; }
+  .npr-wave i { display:block; width:10px; height:24px; background:#3d5a74; }
+  .npr-quote { position:absolute; left:160px; right:160px; top:490px; text-align:center;
+    font-style:italic; font-size:74px; line-height:1.25; color:#e8edf2; }
+  .npr-quote .qhot { color:#d8a13a; }
+  .npr-attr { position:absolute; left:0; right:0; top:760px; text-align:center;
+    font-family:Arial,sans-serif; font-weight:700; font-size:24px; letter-spacing:5px; color:#7e8ea0; }
+</style>
+<div id="root" data-composition-id="g-hook-npr" data-width="1920" data-height="1080">
+  <div class="npr-eyebrow" id="g-hook-npr-eyebrow">THE MORNING AFTER · NATIONAL RADIO · AUGUST 30, 2005</div>
+  <div class="npr-wave" id="g-hook-npr-wave">
+    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+  </div>
+  <div class="npr-quote" id="g-hook-npr-quote">"&hellip;a lot of people breathed a sigh of relief &mdash; <span class="qhot" id="g-hook-npr-hot">New Orleans had dodged the bullet.</span>"</div>
+  <div class="npr-attr" id="g-hook-npr-attr">NPR "DAY TO DAY" · HEARD NATIONWIDE</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* host window 14.1-22.3 (8.2s). Spoken beats (ins02 offsets): "sigh of relief" ~4.0,
+     "dodged the bullet" ~4.85-7.0. Quote body in with the voice, hot phrase lands ON the words. */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-hook-npr-";
+  tl.set([P+"quote", P+"attr"], { autoAlpha: 0 }, 0);
+  tl.fromTo(P+"eyebrow", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.25);
+  /* live waveform: staggered bar pulse, runs the whole window (motion never stops) */
+  const bars = document.querySelectorAll(P.slice(1) ? "#g-hook-npr-wave i" : "i");
+  bars.forEach(function(b, i) {
+    tl.to(b, { scaleY: 2.6 + 2.2 * Math.abs(Math.sin(i * 1.7)), duration: 0.42 + (i % 5) * 0.06,
+      ease: "sine.inOut", yoyo: true, repeat: 17, repeatDelay: 0 }, 0.2 + (i % 7) * 0.09);
+  });
+  tl.set(P+"hot", { color: "#e8edf2" }, 0);           /* hot phrase starts cold */
+  tl.fromTo(P+"quote", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power2.out" }, 2.2);
+  tl.to(P+"hot", { color: "#d8a13a", duration: 0.3 }, 4.85);   /* lands on the spoken phrase */
+  tl.fromTo(P+"quote", { scale: 1.0 }, { scale: 1.03, duration: 3.3, ease: "none" }, 4.85);
+  tl.fromTo(P+"attr", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 5.8);
+  /* die into the hard cut at window end */
+  tl.to("#root", { autoAlpha: 0, duration: 0.25, ease: "power2.in" }, 7.95);
+  window.__timelines["g-hook-npr"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
