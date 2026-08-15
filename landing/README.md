@@ -158,55 +158,24 @@ regenerating owner-approved art; `landing/assets/cover.png` is the repainted fil
 Executive Public Information Officer (Paul D. Raymond, Jr.) and with Paul Raymond Publications, the
 British adult-magazine brand. Details in `ebook/build/art/COVER-PROMPTS.md`.
 
-## Mail provider
+## No mail provider, deliberately
 
-`functions/api/subscribe.js` forwards the free-packet signup to **Kit** (`api.kit.com`, formerly
-ConvertKit), chosen over Mailchimp and Buttondown for one reason: free-tier headroom for a list
-that doesn't exist yet. Mailchimp's free tier was cut to 250 contacts / 500 sends a month in
-January 2026; Buttondown's free tier caps at 100 subscribers. Kit's free tier holds 10,000
-subscribers with full API access, and its v4 REST API is one POST with one header that upserts a
-subscriber and accepts arbitrary custom fields — no provider-side abstraction layer needed for a
-single provider.
+There was one: a Cloudflare Pages Function posting free-packet signups to Kit's v4 API, with a
+same-IP throttle and a `[FALLBACK]` line on the in-memory path. It was deleted on 2026-08-15, and
+the reason is worth keeping.
 
-What the function does: `POST https://api.kit.com/v4/subscribers` with an `X-Kit-Api-Key` header,
-body `{ email_address, fields: { state } }`. That's it — it records the subscriber and their
-two-letter state. It does not tag, does not trigger a send, and does not know what a packet is.
+It needed a `KIT_API_KEY` that was never created, so on the live site every submit returned
+`HTTP 500 {"error":"Sign-ups aren't working right now."}` while the button above it said "Send my
+state packet". It also only ever recorded a subscriber — the automation that would actually email
+the right packet lived in a Kit dashboard that did not exist either. Two unbuilt pieces standing
+between a promise on the page and anything reaching a reader.
 
-What it deliberately does **not** do, and who has to do it before this delivers anything real:
+Gumroad already does email capture, delivery and unsubscribe, and it was already carrying the paid
+product. So the packets became a $0 Gumroad product (`/l/packet`) and the function, the Kit
+dependency, the state `<select>` and its 51-entry JS array all came out. Nothing on this site
+posts anywhere now.
 
-1. **Create the Kit account and API key.** Account settings → Developer → API keys → generate a
-   v4 key (not the legacy v3 key). Set it as `KIT_API_KEY` in the Cloudflare Pages project (see
-   Deploy below). Nothing is stored in this repo.
-2. **Add a custom field with the key `state`** in Kit (Subscribers → Custom fields) before the
-   first real signup. Kit silently drops unknown field keys with a warning rather than erroring —
-   that's Kit's behavior, documented here so a missing field doesn't get mistaken for a bug in this
-   function later.
-3. **Build the actual delivery automation** in the Kit dashboard: a visual automation triggered on
-   subscribe, split on the `state` field, that emails the matching `ebook/appendix/out/packets/
-   <ABBR>.html` (or its PDF once rendered). Fifty-one branches, or one templated send pointing at a
-   hosted per-state URL — that design choice belongs to the owner, not hardcoded here.
-
-**Rate limiting:** same-IP throttle, 5 requests / 10 minutes, real and tested (see Deploy). It's a
-fixed-window counter kept in the Function's module scope, so it's enforced per isolate, not
-globally across Cloudflare's edge — a real throttle against one abusive client hitting one edge
-location, not a distributed guarantee. The code checks for an optional `SUBSCRIBE_RATE_LIMIT`
-binding (Cloudflare's declarative Rate Limiting binding, GA since 2025-09) and uses it instead if
-present; the in-memory path logs a `[FALLBACK]` line on every request so the gap stays visible. No
-binding is configured today — nothing to set up for this to work, it's just the softer of the two
-options.
-
-## Deploy (when unblocked, and with the owner)
-
-**Confirmed ready, without deploying anything:**
-- `wrangler` 4.118.0 is installed and already authenticated in this environment (`npx wrangler
-  whoami` resolves to an existing Cloudflare account) — no credentials were created, requested, or
-  stored as part of this check.
-- `functions/api/subscribe.js` was validated locally with `npx wrangler pages dev .`: malformed
-  email → 400, malformed state → 400, GET → 405, `KIT_API_KEY` unset → loud 500 (never a fake
-  success), 6th request within 10 minutes from the same IP → 429, and — with a temporary local-only
-  fake key in `.dev.vars` (never committed; deleted immediately after the test) — a real network
-  round-trip to Kit's live API that correctly surfaced Kit's 401 as this function's 502. The dev
-  server was killed after testing; nothing was published.
+## Deploy
 
 Cloudflare Pages, direct upload — no build:
 
