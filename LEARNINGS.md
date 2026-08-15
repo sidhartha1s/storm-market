@@ -30,6 +30,13 @@ Every owner correction / measured surprise lands here same session. Newest first
    `d1ldvf68ux039x.cloudfront.net/thumbs/photos/{bucket}/{id}/2000w_q95.jpg` works headless.
 6. **schtasks under Git Bash needs `MSYS2_ARG_CONV_EXCL='*'`** or `/Create`/`/Run` get mangled
    into paths.
+7. **Scene picking from long reels: contact sheets FIRST, never per-frame agent probing (owner
+   correction 2026-08-15).** An agent "watching" a reel by extracting one frame at a time is a
+   blind person borrowing eyes one glance at a time. The pipeline is: PySceneDetect CSV (already
+   the standing rule) → deterministic script renders labeled contact-sheet grids (~30 scene
+   thumbnails per image, scene number + timestamp burned in) → judgment reads the SHEETS and
+   tags scene numbers per beat → one ffmpeg batch extracts the tags. Code does everything
+   deterministic; eyes only choose.
 
 ## 2026-08-05 — ep5 kickoff: the retention lattice + script fact-QC layer (owner orders, all standing from ep5 on)
 
