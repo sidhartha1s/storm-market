@@ -76,8 +76,8 @@
  },
  "a3-s4": {
   "wav": "audio/a3-s4.wav",
-  "duration": 34.16,
-  "words": 84
+  "duration": 34.88,
+  "words": 86
  },
  "a3-s5": {
   "wav": "audio/a3-s5.wav",
@@ -139,6 +139,11 @@
   "duration": 49.96,
   "words": 129
  },
+ "a5-s5b": {
+  "wav": "audio/a5-s5b.wav",
+  "duration": 52.48,
+  "words": 138
+ },
  "a5-s6": {
   "wav": "audio/a5-s6.wav",
   "duration": 15.28,
@@ -164,6 +169,11 @@
   "duration": 25.56,
   "words": 62
  },
+ "a6-s4b": {
+  "wav": "audio/a6-s4b.wav",
+  "duration": 50.32,
+  "words": 130
+ },
  "a6-s5a": {
   "wav": "audio/a6-s5a.wav",
   "duration": 4.76,
@@ -183,6 +193,11 @@
   "wav": "audio/a6-s7.wav",
   "duration": 26.32,
   "words": 72
+ },
+ "a6-s7b": {
+  "wav": "audio/a6-s7b.wav",
+  "duration": 36.48,
+  "words": 94
  },
  "a6-s8a": {
   "wav": "audio/a6-s8a.wav",
@@ -213,6 +228,11 @@
   "wav": "audio/a7-s4.wav",
   "duration": 50.4,
   "words": 126
+ },
+ "a7-s4b": {
+  "wav": "audio/a7-s4b.wav",
+  "duration": 37.52,
+  "words": 99
  },
  "a7-s5": {
   "wav": "audio/a7-s5.wav",
