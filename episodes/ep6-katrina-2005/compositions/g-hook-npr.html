@@ -37,7 +37,7 @@ window.__timelines = window.__timelines || {};
   const bars = document.querySelectorAll("#g-hook-npr-wave i");
   bars.forEach(function(b, i) {
     tl.to(b, { scaleY: 2.6 + 2.2 * Math.abs(Math.sin(i * 1.7)), duration: 0.42 + (i % 5) * 0.06,
-      ease: "sine.inOut", yoyo: true, repeat: 12, repeatDelay: 0 }, 0.2 + (i % 7) * 0.09);
+      ease: "sine.inOut", yoyo: true, repeat: 10, repeatDelay: 0 }, 0.2 + (i % 7) * 0.09);
   });
   tl.set(P+"hot", { color: "#e8edf2" }, 0);           /* hot phrase starts cold */
   tl.fromTo(P+"quote", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power2.out" }, 2.2);
