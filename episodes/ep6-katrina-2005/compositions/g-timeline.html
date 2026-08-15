@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif;
+    background: radial-gradient(ellipse at 50% 35%, #0c141f 0%, #05080d 72%); }
+  .gtm-title { position:absolute; left:0; right:0; top:150px; text-align:center;
+    font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; letter-spacing:2px; }
+  .gtm-bar-wrap { position:absolute; left:260px; right:260px; top:420px; }
+  .gtm-rail { height:56px; background:#1a2331; border:2px solid #3a4a5e; position:relative; }
+  #g-timeline-fill { position:absolute; left:0; top:0; bottom:0; width:0%; background:linear-gradient(90deg,#3d6a54,#5a9678); }
+  .gtm-y0 { position:absolute; left:0; top:76px; font-family:'Arial Black',Arial,sans-serif; font-size:36px; color:#c8d3e0; }
+  .gtm-y1 { position:absolute; right:0; top:76px; font-family:'Arial Black',Arial,sans-serif; font-size:36px; color:#c8d3e0; }
+  #g-timeline-pct { position:absolute; left:65%; top:-96px; transform:translateX(-50%); text-align:center;
+    font-family:'Arial Black',Arial,sans-serif; font-size:74px; color:#e74c3c; }
+  #g-timeline-pct span { display:block; font-family:Arial,sans-serif; font-size:20px; letter-spacing:4px; color:#93a3b2; }
+  .gtm-note { position:absolute; left:0; right:0; top:640px; text-align:center;
+    font-family:Georgia,serif; font-style:italic; font-size:32px; color:#e8edf2; }
+  .gtm-note b { color:#d8a13a; font-style:normal; }
+  .gtm-sink { position:absolute; left:0; right:0; top:730px; text-align:center;
+    font-size:24px; font-weight:700; letter-spacing:3px; color:#8a97a5; }
+</style>
+<div id="root" data-composition-id="g-timeline" data-width="1920" data-height="1080">
+  <div class="gtm-title" id="g-timeline-title">Forty Years of "Almost Done"</div>
+  <div class="gtm-bar-wrap">
+    <div class="gtm-rail">
+      <div id="g-timeline-fill"></div>
+      <div id="g-timeline-pct">~65%<span>COMPLETE · 2005 · GAO</span></div>
+    </div>
+    <div class="gtm-y0" id="g-timeline-y0">1965 · BETSY</div>
+    <div class="gtm-y1" id="g-timeline-y1">2005 · KATRINA</div>
+  </div>
+  <div class="gtm-note" id="g-timeline-note">And the finished parts were <b>quietly sinking</b> below their own safe height.</div>
+  <div class="gtm-sink" id="g-timeline-sink">THE GROUND UNDER NEW ORLEANS SUBSIDES EVERY YEAR</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* host 123.76-142.92 (19.16s = a1-s4). Cues (rel): "forty years later" ~0-2, "sixty-five percent" ~5.5,
+     "sinks a little every year" 12.28, "dropped below it" ~16. */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-timeline-";
+  tl.set([P+"pct", P+"note", P+"sink"], { autoAlpha: 0 }, 0);
+  tl.fromTo(P+"title", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 0.3);
+  tl.fromTo([P+"y0", P+"y1"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, stagger: 0.15 }, 0.8);
+  /* the bar crawls 40 years and stalls at 65% on the spoken number */
+  tl.to(P+"fill", { width: "65%", duration: 4.4, ease: "power1.inOut" }, 1.2);
+  tl.fromTo(P+"pct", { autoAlpha: 0, scale: 1.8 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.in" }, 5.5);
+  /* subsidence: the whole bar sags on "sinks" */
+  tl.to(".gtm-bar-wrap", { y: 26, duration: 3.6, ease: "power1.inOut" }, 12.2);
+  tl.fromTo(P+"note", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 12.4);
+  tl.fromTo(P+"sink", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 15.8);
+  tl.fromTo("#root", { scale: 1.0, transformOrigin: "center" }, { scale: 1.03, duration: 19, ease: "none" }, 0);
+  tl.to("#root", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 18.7);
+  window.__timelines["g-timeline"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
