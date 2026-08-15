@@ -135,8 +135,8 @@ priority line. PySceneDetect splits the WWL reels; cuts spread across the episod
 | D11 | AUG 29 · 8:54 AM | radar goes silent | A4 |
 | D12 | AUG 30 | "spared the worst" / 80% | A4/A5 |
 | D13 | AUG 31 | Convention Center crowds | A6 |
-| D14 | SEPT 1 | Nagin radio outburst | A6 |
-| D15 | SEPT 2 | "Brownie" / relief arrives | A6 |
+| D14 | SEPT 1 | pops on A6-S4b's spoken "September first" (rumor day); Nagin radio that night | A6 |
+| D15 | SEPT 2 | pops on A6-S7b's spoken "Friday" (convoy); "Brownie" same day | A6 |
 | D16 | JULY 2004 (amber flashback variant) | Pam reveal | A7 |
 | D17 | JUNE 2006 | Strock admission | A7 |
 | D18 | MAY 2022 | new walls handed over | A7 |
@@ -164,6 +164,7 @@ instances (D2, D3, D16) get the amber serif variant so past-tense reads instantl
 | L4 | "At eight fifty-four, the radar near the city went silent." | A4 | A5 (what happened under the silence) |
 | L5 | "Remember the water in the Lower Ninth. We will come back to who paid for it." | A5 | A7 (sovereign immunity: no one) |
 | L6 | "Someone had rehearsed this exact disaster." | A6 | A7 (Hurricane Pam) |
+| L7 | "Keep the name Mister Go. You will hear it again, in a courtroom." | A5-S5b | A7-S3 (MRGO negligence ruling, erased on appeal) |
 
 ## ACT BRIEFS (script-scaling format)
 
@@ -381,8 +382,7 @@ At eleven that morning, Mayor Ray Nagin stood at a podium and did something no
 New Orleans mayor had ever done. He ordered a mandatory evacuation of the entire city. Nineteen
 hours before landfall. On the highways, every lane was already running one direction. Out. About
 one point two million people left south Louisiana in a day and a half, roughly ninety percent of
-the people at risk. It was, by the numbers, one of the most successful evacuations in
-American history.
+the people at risk. By the numbers, researchers would later call it the most successful highway evacuation in American history.
 
 **a3-s5 · narration, evacuee/traffic stills (#14 FEMA) (~90 words)**
 By the numbers. But a number was missing from it. Tens of thousands of people were still in the
@@ -493,6 +493,8 @@ put part of it back under water. *(NASA MODIS, Aug 30 11:45 AM)*
 *(g-floodmap: neighborhoods fill hour by hour; counter rolls to 80; depth callouts to 15 ft)*
 
 **a5-s6 · narration (~55 words) — L5 plant**
+And the drowned city was not even the whole flood. East of New Orleans lies Saint Bernard Parish, a strip of towns between the marsh and a shipping channel. The channel was called the Mississippi River Gulf Outlet. Locals just said Mister Go. It was dug in the sixties as a shortcut for ships, and it runs nearly straight in from the open Gulf. That morning it worked like a funnel. The surge rode the channel in, swelled by as much as forty percent, and slammed into the parish. Near the Industrial Canal, the water climbed three feet in fifteen minutes. Then it came faster. Within hours, virtually every home in Saint Bernard Parish stood in water. Not most of them. Nearly all of them. Keep the name Mister Go. You will hear it again, in a courtroom. *(g-floodmap MRGO-funnel variant: arrow riding the channel into the parish; St. Bernard flood aerials from the sat/NWS pool; plants the A7-S3 navigation-channel ruling - loop L7.)*
+
 Every ruined block in this water traces back to engineering decisions with names and dates
 attached. Hold one
 question until the end of this story. For all of this, who paid? The answer is coming, and you
@@ -531,6 +533,8 @@ the people running the rescue could not talk to each other, and information move
 The country watched it live. The responders could not.
 
 **a6-s5 · insert INS-03 (Nagin WWL outburst, transcript-cut) + D14 popup + narration (~55 words)**
+Into that silence poured rumor, and rumor was not harmless. Word spread of snipers firing on rescue helicopters. On September first, the air ambulance service flying patients out of the Superdome suspended its flights, after a report of shots fired at a helicopter. Some boat rescues slowed the same day. Sick people waited while the aircraft that could carry them sat on the ground, grounded by a story. A month later, military and law enforcement officials said they could not confirm a single case of gunfire aimed at a rescue helicopter. Some of the shots people heard were survivors firing into the air, trying to be found. The city was not hunting its rescuers. But for a day, America believed it was, and the rescue slowed to match the story. *(visual: rumor-era chyron pulls from aug30/aug31 reels, short + narrated over; USCG helo stills; quiet designed card for the not-one-confirmed-case line; D14 date popup fires on the spoken September first.)*
+
 On Thursday night, the mayor went on the radio and stopped being polite. *(insert: the cut lands on
 his complete sentence; excerpt + transcript path logged at sourcing)* Whatever else history says
 about Ray Nagin, that night he said what the whole bowl was thinking.
@@ -551,6 +555,8 @@ people on the bridge, most of them Black, heard something else in it. That argum
 ended.
 
 **a6-s8 · insert INS-05 (Bush "Brownie" — WH pool) + D15 popup + narration (~55 words) — L6 plant**
+On Friday, four days after landfall, the cavalry finally came. A National Guard convoy rolled through the water to the Convention Center before midday. More than a thousand soldiers moved in with food, water, and order, and secured the building in half an hour without firing a shot. People who had waited four days in the heat stood and applauded the trucks. Some just wept. Four days. That is how long it took the most powerful country on earth to bring water to a crowd it could see on live television the entire time. *(visual: DVIDS 408695 California NG convoy video muted under narration - its SOT stays an INS candidate, not used here; Honore stills; crowd reaction only via claim-class network pulls, short, or PD stills; D15 stamps on the spoken Friday.)*
+
 On Friday, the president stood beside his FEMA director and praised him. *(insert lands on the
 sentence)* Ten days later, that director resigned. And in the files of his own agency sat a
 document that turns this whole story from a tragedy into something harder to forgive. Because
@@ -599,6 +605,8 @@ else. The flood found the oldest people in the bowl, and it kept them.
 *(counter rolls fast, slows into 1,392; secondary rows appear after the landing)*
 
 **a7-s5 · narration, vignette (Charity rooftop) (~85 words)**
+In Saint Bernard Parish, the water that came up Mister Go reached a one story nursing home called Saint Rita's. The home had not evacuated. Thirty-five residents drowned there, in water that rose three feet in the first fifteen minutes, and then came faster. The owners were charged with thirty-five counts of negligent homicide, one for every resident who died. Two years later, a jury acquitted them on every count. Hold that pairing in your mind. The state could put two nursing home owners on trial. The builders of the floodwalls could not be put on trial at all. *(visual: St. Bernard flood aerials; designed memorial-tone card - Saint Rita's name + count; NO period photos of the home in pool, never fabricate one.)*
+
 One of them died on a hospital roof. At Charity Hospital, doctors moved the whole emergency room
 upstairs by flashlight and hand-pumped air into patients for days. One elderly woman lay on the
 helipad, waiting for a helicopter, her husband beside her, fanning her in the heat. She died on
@@ -727,7 +735,7 @@ these blockquotes are the mechanical conversion (numbers spelled, <24-word sente
 
 ### A3-S4 — narration
 
-> At eleven that morning, Mayor Ray Nagin stood at a podium and did something no New Orleans mayor had ever done. He ordered a mandatory evacuation of the entire city. Nineteen hours before landfall. On the highways, every lane was already running one direction. Out. About one point two million people left south Louisiana in a day and a half. That was roughly ninety percent of the people at risk. It was, by the numbers, one of the most successful evacuations in American history.
+> At eleven that morning, Mayor Ray Nagin stood at a podium and did something no New Orleans mayor had ever done. He ordered a mandatory evacuation of the entire city. Nineteen hours before landfall. On the highways, every lane was already running one direction. Out. About one point two million people left south Louisiana in a day and a half. That was roughly ninety percent of the people at risk. By the numbers, researchers would later call it the most successful highway evacuation in American history.
 
 ### A3-S5 — narration
 
@@ -777,6 +785,10 @@ these blockquotes are the mechanical conversion (numbers spelled, <24-word sente
 
 > By the end of Monday the city had not one broken wall but dozens. The official investigation would eventually count fifty breaches. Forty-six of them were overwhelmed the way you would expect, water pouring over the top and chewing the levee apart from behind. Four were not. Four walls, including the Seventeenth Street and London Avenue canals, failed below the level they were designed to hold. The system did not lose to a storm bigger than its design. Parts of it lost to a storm smaller than its promise. Water kept flowing for two more days. By Tuesday, eighty percent of New Orleans was under water. It would take forty-three days to pump the city dry. Halfway through, a second hurricane, Rita, put part of it back under water.
 
+### A5-S5b — narration
+
+> And the drowned city was not even the whole flood. East of New Orleans lies Saint Bernard Parish, a strip of towns between the marsh and a shipping channel. The channel was called the Mississippi River Gulf Outlet. Locals just said Mister Go. It was dug in the sixties as a shortcut for ships, and it runs nearly straight in from the open Gulf. That morning it worked like a funnel. The surge rode the channel in, swelled by as much as forty percent, and slammed into the parish. Near the Industrial Canal, the water climbed three feet in fifteen minutes. Then it came faster. Within hours, virtually every home in Saint Bernard Parish stood in water. Not most of them. Nearly all of them. Keep the name Mister Go. You will hear it again, in a courtroom.
+
 ### A5-S6 — narration
 
 > Every ruined block in this water traces back to engineering decisions with names and dates attached. Hold one question until the end of this story. For all of this, who paid? The answer is coming, and you will not like it.
@@ -797,6 +809,10 @@ these blockquotes are the mechanical conversion (numbers spelled, <24-word sente
 
 > How does a government lose twenty-five thousand people in its own city? Like this. The storm took out three million phone lines and nearly fifteen hundred cell towers. Police radios went dark. For days, the people running the rescue could not talk to each other, and information moved at the speed of rumor. The country watched it live. The responders could not.
 
+### A6-S4b — narration
+
+> Into that silence poured rumor, and rumor was not harmless. Word spread of snipers firing on rescue helicopters. On September first, the air ambulance service flying patients out of the Superdome suspended its flights, after a report of shots fired at a helicopter. Some boat rescues slowed the same day. Sick people waited while the aircraft that could carry them sat on the ground, grounded by a story. A month later, military and law enforcement officials said they could not confirm a single case of gunfire aimed at a rescue helicopter. Some of the shots people heard were survivors firing into the air, trying to be found. The city was not hunting its rescuers. But for a day, America believed it was, and the rescue slowed to match the story.
+
 ### A6-S5a — narration
 
 > On Thursday night, the mayor went on the radio and stopped being polite.
@@ -812,6 +828,10 @@ these blockquotes are the mechanical conversion (numbers spelled, <24-word sente
 ### A6-S7 — narration
 
 > The week's ugliest hour came on a bridge. Thousands tried to walk out of the drowned city, over the river to the dry suburb of Gretna. Police from that suburb met the crowd at the crest and fired shotguns over their heads. Gretna says it had no power, no shelter, and no choice. The people on the bridge, most of them Black, heard something else in it. That argument has never ended.
+
+### A6-S7b — narration
+
+> On Friday, four days after landfall, the cavalry finally came. A National Guard convoy rolled through the water to the Convention Center before midday. More than a thousand soldiers moved in with food, water, and order, and secured the building in half an hour without firing a shot. People who had waited four days in the heat stood and applauded the trucks. Some just wept. Four days. That is how long it took the most powerful country on earth to bring water to a crowd it could see on live television the entire time.
 
 ### A6-S8a — narration
 
@@ -837,6 +857,10 @@ these blockquotes are the mechanical conversion (numbers spelled, <24-word sente
 
 > The human price was not zero. The official count, after years of study, stands at one thousand three hundred ninety-two lives. That counts the storm and its aftermath together, across the Gulf states. For years the number told was eighteen hundred or more. In twenty twenty-three, scientists re-read the medical records of more than a thousand victims and set the record straight. Louisiana buried the most. And Louisiana's own records show exactly who the water took. Four out of ten of its dead drowned. Nearly half were seventy-five or older. The people who could not climb to an attic. The people who stayed because leaving was harder for them than for anyone else. The flood found the oldest people in the bowl, and it kept them.
 
+### A7-S4b — narration
+
+> In Saint Bernard Parish, the water that came up Mister Go reached a one story nursing home called Saint Rita's. The home had not evacuated. Thirty-five residents drowned there, in water that rose three feet in the first fifteen minutes, and then came faster. The owners were charged with thirty-five counts of negligent homicide, one for every resident who died. Two years later, a jury acquitted them on every count. Hold that pairing in your mind. The state could put two nursing home owners on trial. The builders of the floodwalls could not be put on trial at all.
+
 ### A7-S5 — narration
 
 > One of them died on a hospital roof. At Charity Hospital, doctors moved the whole emergency room upstairs by flashlight and hand pumped air into patients for days. One elderly woman lay on the helipad, waiting for a helicopter, her husband beside her, fanning her in the heat. She died on the roof, waiting. The doctor who told her story afterward said he did not know where her husband had gone. He did not know if the man even knew she was dead.
@@ -849,4 +873,4 @@ these blockquotes are the mechanical conversion (numbers spelled, <24-word sente
 
 > Disasters do not ask permission. But they do send warnings. New Orleans got its warnings in writing, three years early, on the front page. It got a full dress rehearsal, one year early, with the death toll attached. The warnings were all there. What was missing was anyone required to act on them. Learn what your warnings sound like, and decide, now, what you will do when one arrives. This was The Warning Hour. Episode six.
 
-TOTAL TTS WORDS: 3574
+TOTAL TTS WORDS: 4037
