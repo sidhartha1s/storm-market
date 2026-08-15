@@ -72,8 +72,11 @@ window.__timelines = window.__timelines || {};
      Depth scale: 28 px/ft → -10 ft = 280px, -17.5 ft = 490px. */
   const tl = gsap.timeline({ paused: true });
   const P = "#g-receipt-";
-  tl.set([P+"d1", P+"d2", P+"void", P+"voidlab", P+"foot", P+"verdict", P+"scan"], { autoAlpha: 0 }, 0);
+  tl.set([P+"d1", P+"d2", P+"void", P+"voidlab", P+"foot", P+"verdict", P+"scan", P+"pile1", P+"pile2"], { autoAlpha: 0 }, 0);
   tl.set(P+"v2", { color: "#e8edf2" }, 0);
+  /* piles stay invisible until they grow (a 0-height bordered div still draws a stub line) */
+  tl.set(P+"pile1", { autoAlpha: 1 }, 7.2);
+  tl.set(P+"pile2", { autoAlpha: 1 }, 12.4);
   tl.fromTo(P+"title", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 0.4);
   tl.fromTo(P+"sub", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 1.0);
   tl.fromTo(".gr-sea", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 1.6);
