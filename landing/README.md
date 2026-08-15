@@ -15,7 +15,8 @@ git branch and production silently keeps serving the old build.
 | `privacy.html`, `terms.html` | Generic text-only legal pages, linked in the footer, noindexed. |
 | `og-src.html` | Source for `assets/og.png` (1200×630 social card). Regenerate: `node shot.mjs og-src.html ./out 1200`, crop to 630. |
 | `assets/` | Cover + headshot (compressed JPEGs; the PNG originals remain as source), OG card, four real page shots, five Paul photos (selfie, plywood, binder, field kit, stage). |
-| `functions/api/subscribe.js` | Pages Function behind the lead-magnet form. See "Mail provider". |
+| `gumroad/` | The two Gumroad surfaces (custom product page + storefront profile) and their checkers. |
+| `buycheck.mjs` | **Gate.** Reads the buy button's *resolved* href in a real browser and confirms it reaches a live checkout. |
 | `widthcheck.mjs` | **Gate.** Fails if the page scrolls sideways at any width. |
 | `shot.mjs` | Full-page screenshots at true device widths. |
 
