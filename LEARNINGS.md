@@ -2,6 +2,32 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
+## 2026-08-15 — ep6 owner rules + broadcast-geometry gotchas (later same day)
+
+A. **Owner-gate style change (owner 2026-08-15, supersedes per-insert one-message-each):
+   batch ALL owner approval asks into ONE message, as EARLY as possible.** Scattered
+   mid-run checkpoints buried in summaries don't reliably reach him and become "probable
+   failure or escalation later." A true blocker = STOP and ask plainly; everything else gets
+   decided by the editor and reported. Asking twice for something already confirmed is a
+   defect. (He flagged the ep6 insert slate "go ahead" under this rule.)
+B. **The hook must contain ZERO muted/mediocre elements (owner 2026-08-15).** Every hook
+   beat is mid-action WITH audio — natural wind/water, reporter, 911/dispatch, or narrator.
+   A silent still in the hook is a bug (ep6's breach still at 9.0-14.1s was replaced with
+   surge-water video carrying its own live audio). A designed dead-silence void beat remains
+   allowed — that's an audio EVENT, not a mute.
+C. **Video-range black is Y=16, not 0.** A pillarbox/blanking detector thresholded at
+   "luma < 4" passes limited-range black bars. This exact miss made two sessions measure the
+   same WWL reels and reach opposite conclusions (pillarboxed vs clean). Threshold ≤17, or
+   use cropdetect.
+D. **Broadcast compilation reels have PER-SEGMENT geometry — run cropdetect per cut window,
+   never one blanket crop per reel.** The WWL aug28-31 reels are 1280x720 progressive
+   carriers with 4:3 content whose active rect varies segment to segment (w 938-974,
+   x 152-174, some with top blanking). One measured crop applied reel-wide leaves 10-20px
+   black slivers on other segments. Recipe: cropdetect on the exact source window → inset
+   ~6px → crop to 16:9 inside the active rect (house style, matches the DVIDS recipe) →
+   scale 1920x1080. Then verify numerically with 12px edge strips (Y>17) AND one eyeball
+   frame.
+
 ## 2026-08-15 — ep6 TTS + sourcing (measured surprises)
 
 1. **Probe-TTS can undershoot the delivered pace by 10+ wpm.** ep6 probes measured a 137.5
