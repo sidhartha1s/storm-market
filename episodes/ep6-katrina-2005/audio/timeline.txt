@@ -1,0 +1,68 @@
+# ep6 timeline — generated from manifest; TOTAL 1738.96s = 28.98 min
+video     hook-hoist   start=0.00     dur=9.00    end=9.00     USCG hoist DVIDS312918, rotor audio live
+card      D1           start=0.50     dur=3.00    end=3.50     NEW ORLEANS - AUGUST 29, 2005
+ins       ins01        start=1.60     dur=7.35    end=8.95     911 Dubreuil attic call
+video     hook-breach  start=9.00     dur=5.10    end=14.10    breach water pour, bed swell, no voice
+ins       ins02        start=14.10    dur=7.90    end=22.00    NPR dodged-the-bullet, static bridge 13.5
+nx        h1-s4        start=22.30    dur=13.68   end=35.98    turn + loop; riser peaks with last word
+void      void         start=36.28    dur=2.50    end=38.78    THE VOID
+nx        a1-s1        start=38.78    dur=28.40   end=67.18    
+nx        a1-s2        start=67.88    dur=25.16   end=93.04    
+nx        a1-s3        start=93.74    dur=29.32   end=123.06   
+nx        a1-s4        start=123.76   dur=19.16   end=142.92   
+nx        a1-s5        start=143.62   dur=34.64   end=178.26   
+nx        a1-s6        start=178.96   dur=19.76   end=198.72   
+blackout  bo-a1        start=199.92   dur=2.50    end=202.42   act 1->2
+nx        a2-s1        start=202.42   dur=26.92   end=229.34   
+nx        a2-s2        start=230.04   dur=23.76   end=253.80   
+nx        a2-s3        start=254.50   dur=31.16   end=285.66   
+nx        a2-s4        start=286.36   dur=31.08   end=317.44   
+nx        a2-s5        start=318.14   dur=39.60   end=357.74   
+blackout  bo-a2        start=358.94   dur=2.50    end=361.44   act 2->3
+nx        a3-s1        start=361.44   dur=19.72   end=381.16   
+nx        a3-s2        start=381.86   dur=24.16   end=406.02   
+nx        a3-s3        start=406.72   dur=49.60   end=456.32   
+nx        a3-s4        start=457.02   dur=34.88   end=491.90   
+ins       ins04a       start=492.40   dur=6.00    end=498.40   WWL evac chyron pull
+nx        a3-s5        start=498.90   dur=31.68   end=530.58   
+nx        a3-s6        start=531.28   dur=33.80   end=565.08   
+blackout  bo-a3        start=566.28   dur=2.50    end=568.78   act 3->4
+nx        a4-s1        start=568.78   dur=33.68   end=602.46   
+nx        a4-s2        start=603.16   dur=29.40   end=632.56   
+nx        a4-s3        start=633.26   dur=45.40   end=678.66   
+nx        a4-s4        start=679.36   dur=29.84   end=709.20   
+nx        a4-s5        start=709.90   dur=45.96   end=755.86   
+blackout  bo-a4        start=757.06   dur=2.50    end=759.56   act 4->5
+nx        a5-s1        start=759.56   dur=32.08   end=791.64   
+nx        a5-s2        start=792.34   dur=27.44   end=819.78   
+nx        a5-s3        start=820.48   dur=53.96   end=874.44   
+nx        a5-s4        start=875.14   dur=34.16   end=909.30   
+nx        a5-s5        start=910.00   dur=49.96   end=959.96   
+nx        a5-s5b       start=960.66   dur=52.48   end=1013.14  
+ins       ins04b       start=1013.64  dur=5.00    end=1018.64  WWL flooded courtyard/wading
+nx        a5-s6        start=1019.14  dur=15.28   end=1034.42  
+blackout  bo-a5        start=1035.62  dur=2.50    end=1038.12  act 5->6
+nx        a6-s1        start=1038.12  dur=32.96   end=1071.08  
+nx        a6-s2        start=1071.78  dur=41.88   end=1113.66  
+nx        a6-s3        start=1114.36  dur=35.20   end=1149.56  
+nx        a6-s4        start=1150.26  dur=25.56   end=1175.82  
+nx        a6-s4b       start=1176.52  dur=50.32   end=1226.84  
+nx        a6-s5a       start=1227.54  dur=4.76    end=1232.30  
+ins       ins03        start=1232.80  dur=13.60   end=1246.40  Nagin radio peak
+nx        a6-s5b       start=1246.90  dur=5.96    end=1252.86  
+nx        a6-s6        start=1253.56  dur=34.80   end=1288.36  
+nx        a6-s7        start=1289.06  dur=26.32   end=1315.38  
+nx        a6-s7b       start=1316.08  dur=36.48   end=1352.56  
+nx        a6-s8a       start=1353.26  dur=5.16    end=1358.42  
+ins       ins05        start=1358.92  dur=8.00    end=1366.92  Bush Brownie [RESERVED pending src-fed2]
+nx        a6-s8b       start=1367.42  dur=14.92   end=1382.34  
+blackout  bo-a6        start=1383.54  dur=2.50    end=1386.04  act 6->7
+nx        a7-s1        start=1386.04  dur=61.16   end=1447.20  
+nx        a7-s2        start=1447.90  dur=33.76   end=1481.66  
+nx        a7-s3        start=1482.36  dur=47.24   end=1529.60  
+nx        a7-s4        start=1530.30  dur=50.40   end=1580.70  
+ins       ins06        start=1581.20  dur=9.00    end=1590.20  House testimony [RESERVED pending src-fed2]
+nx        a7-s4b       start=1590.70  dur=37.52   end=1628.22  
+nx        a7-s5        start=1628.92  dur=30.08   end=1659.00  
+nx        a7-s6        start=1659.70  dur=43.64   end=1703.34  
+nx        a7-s7        start=1704.04  dur=31.72   end=1735.76  
