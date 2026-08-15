@@ -2,6 +2,35 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
+## 2026-08-15 — ep6 TTS + sourcing (measured surprises)
+
+1. **Probe-TTS can undershoot the delivered pace by 10+ wpm.** ep6 probes measured a 137.5
+   blend; the 46-segment manifest ground truth came out 149.1 wpm (ep1's 153.5 was the better
+   prior). The probe segments were unrepresentatively slow-styled. Budget scripts on the
+   manifest wpm of the PREVIOUS episode, then verify against the new manifest after the first
+   full TTS run and expand/trim THEN — the probe only catches gross errors.
+2. **QC gate that caught a real gap: diff whisper-heard words.json against the source .txt per
+   segment** (normalize digits + number-words + homophones like Corps/core; flag <0.90
+   similarity or >8% word-count drift). BUT verify a flag before re-synthesizing: whisper
+   small.en deterministically swallowed a whole mid-file sentence (a5-s4, 6s of clean audio
+   heard as one token) while the AUDIO was complete — chunk-level transcription of
+   `audio/_segments/*.wav` + the concat.txt order proves which side is broken. Fix for a bad
+   words.json: re-transcribe per chunk and offset by cumulative ffprobe durations
+   (deterministic, exact) — do NOT re-run TTS for a whisper mishearing.
+3. **tts_clone.py caches sentence chunks in `audio/_segments/` ("exists, skip").** Sidelining a
+   segment's output wav does NOT force re-synthesis — the concat rebuilds byte-identical audio
+   from cached chunks. To truly regenerate, clear that segment's chunk wavs too. (Also means
+   text edits within a segment re-synthesize only changed sentences — cheap.)
+4. **pocket-TTS intermittently dies at CUDA init/clone with a native crash** (no traceback,
+   ~1 in 8 segments on the GTX 1650, same input passes on rerun). `tts_episode.py` now does one
+   loud `[FALLBACK]`-logged retry per segment and hard-fails on a second consecutive failure.
+5. **DVIDS image IDs are a single global sequential counter** — numerically adjacent IDs are
+   unrelated uploads; always verify each image's title page. DVIDS search/NARA REST are
+   JS/auth-gated for scripts; the direct CDN pattern
+   `d1ldvf68ux039x.cloudfront.net/thumbs/photos/{bucket}/{id}/2000w_q95.jpg` works headless.
+6. **schtasks under Git Bash needs `MSYS2_ARG_CONV_EXCL='*'`** or `/Create`/`/Run` get mangled
+   into paths.
+
 ## 2026-08-05 — ep5 kickoff: the retention lattice + script fact-QC layer (owner orders, all standing from ep5 on)
 
 **New standing process (each has its full text where noted):**
