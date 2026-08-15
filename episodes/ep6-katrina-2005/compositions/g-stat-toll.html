@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif;
+    background: radial-gradient(ellipse at 50% 40%, #0b1016 0%, #04070b 75%); }
+  .gtl-eyebrow { position:absolute; left:0; right:0; top:200px; text-align:center;
+    font-weight:700; font-size:26px; letter-spacing:8px; color:#93a3b2; }
+  .gtl-num { position:absolute; left:0; right:0; top:280px; text-align:center;
+    font-family:'Arial Black',Arial,sans-serif; font-size:220px; color:#f2f5f8; letter-spacing:6px; }
+  .gtl-scope { position:absolute; left:0; right:0; top:560px; text-align:center;
+    font-family:Georgia,serif; font-style:italic; font-size:30px; color:#c8d3e0; }
+  .gtl-note { position:absolute; left:0; right:0; top:640px; text-align:center;
+    font-size:24px; font-weight:700; letter-spacing:2px; color:#8a97a5; }
+  .gtl-note b { color:#d8a13a; }
+  .gtl-rows { position:absolute; left:0; right:0; top:740px; text-align:center; }
+  .gtl-rows div { display:inline-block; margin:0 34px; font-weight:700; font-size:30px; color:#dfe7ee;
+    letter-spacing:1px; }
+  .gtl-rows .lab { display:block; font-size:19px; color:#93a3b2; letter-spacing:4px; margin-bottom:6px; }
+  .gtl-rows b { color:#e74c3c; font-family:'Arial Black',Arial,sans-serif; font-size:44px; }
+</style>
+<div id="root" data-composition-id="g-stat-toll" data-width="1920" data-height="1080">
+  <div class="gtl-eyebrow" id="g-stat-toll-eyebrow">THE HUMAN PRICE · KATRINA AND ITS AFTERMATH · GULF STATES</div>
+  <div class="gtl-num" id="g-stat-toll-num">0</div>
+  <div class="gtl-scope" id="g-stat-toll-scope">lives &mdash; the official count, after years of study</div>
+  <div class="gtl-note" id="g-stat-toll-note">FOR YEARS THE NUMBER TOLD WAS 1,800+ &mdash; <b>A 2023 RE-READ OF THE RECORDS SET IT STRAIGHT</b></div>
+  <div class="gtl-rows" id="g-stat-toll-rows">
+    <div id="g-stat-toll-r1"><span class="lab">OF LOUISIANA'S DEAD</span><b>4 IN 10</b> DROWNED</div>
+    <div id="g-stat-toll-r2"><span class="lab">NEARLY HALF WERE</span><b>75 OR OLDER</b></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* host 1530.30-1580.70 (50.4s = a7-s4). Cues (rel): 1,392 @6.7, eighteen-hundred ~14.5,
+     2023 @18.94, Louisiana 26.62, 4-in-10 @33.74, 75+ @36.74, attic @41.4.
+     Restrained memorial tone — no spectacle; the somber score bed sits under this window. */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-stat-toll-";
+  tl.set([P+"note", P+"r1", P+"r2"], { autoAlpha: 0 }, 0);
+  tl.fromTo(P+"eyebrow", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 1.5);
+  tl.fromTo(P+"scope", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 2.2);
+  /* the count rises to 1,392 and lands exactly on the spoken figure */
+  const cnt = { v: 0 };
+  tl.to(cnt, { v: 1392, duration: 4.6, ease: "power2.out", onUpdate: function() {
+    const el = document.getElementById("g-stat-toll-num");
+    if (el) el.textContent = Math.round(cnt.v).toLocaleString("en-US");
+  } }, 2.4);
+  tl.fromTo(P+"note", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.6 }, 14.2);
+  tl.fromTo(P+"r1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 33.5);
+  tl.fromTo(P+"r2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 36.5);
+  /* breathing zoom only — this card must feel still, not dead */
+  tl.fromTo("#root", { scale: 1.0, transformOrigin: "center" }, { scale: 1.03, duration: 50, ease: "none" }, 0);
+  tl.to("#root", { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 49.9);
+  window.__timelines["g-stat-toll"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
