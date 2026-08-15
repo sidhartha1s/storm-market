@@ -84,7 +84,7 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"wavetop", { x: -160, duration: 3.2, ease: "sine.inOut", yoyo: true, repeat: 13 }, 8.0);
   /* the number lands with the spoken figure */
   tl.fromTo(P+"measure", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 14.8);
-  tl.fromTo(P+"num", { scale: 1.7, transformOrigin: "left center" }, { scale: 1, duration: 0.35, ease: "power4.in" }, 15.3);
+  tl.fromTo(P+"num", { scale: 1.45, transformOrigin: "left bottom" }, { scale: 1, duration: 0.35, ease: "power4.in" }, 15.3);
   /* towns ping on their names */
   [["t1",22.3],["t2",23.9],["t3",25.4],["t4",26.9],["t5",28.5],["t6",29.8]].forEach(function(x) {
     tl.to(P+x[0], { autoAlpha: 1, color: "#f2f5f8", duration: 0.25 }, x[1]);
