@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Georgia,serif;
+    background: radial-gradient(ellipse at 50% 42%, #0b1118 0%, #04060a 78%); }
+  .gc-line { position:absolute; left:0; right:0; top:38%; text-align:center; }
+  .gc-line .l1 { display:table; margin:0 auto; font-size:52px; font-style:italic; color:#e8edf2;
+    padding:12px 40px; line-height:1.35; }
+  .gc-line .l2 { display:table; margin:22px auto 0; font-size:36px; font-style:italic; color:#d8a13a; padding:8px 30px; }
+  .gc-brand { position:absolute; left:0; right:0; top:62%; text-align:center; }
+  .gc-brand .b1 { font-family:'Arial Black',Arial,sans-serif; font-size:54px; letter-spacing:10px; color:#f2f5f8; }
+  .gc-brand .b2 { margin-top:12px; font-family:Arial,sans-serif; font-weight:700; font-size:24px; letter-spacing:8px; color:#93a3b2; }
+</style>
+<div id="root" data-composition-id="g-close" data-width="1920" data-height="1080">
+  <div class="gc-line" id="g-close-line">
+    <div class="l1" id="g-close-l1">Learn what your warnings sound like.</div>
+    <div class="l2" id="g-close-l2">Decide, now, what you will do when one arrives.</div>
+  </div>
+  <div class="gc-brand" id="g-close-brand">
+    <div class="b1" id="g-close-b1">THE WARNING HOUR</div>
+    <div class="b2" id="g-close-b2">EPISODE SIX</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* host 1704.04-1735.76 (31.72s = a7-s7). Cues (rel): "learn what your warnings" ~20,
+     "decide, now" ~23.5, "This was The Warning Hour" ~27.5, "Episode six" ~30.
+     First 19s the narration recaps the thesis over track-1 footage — this card is only
+     mounted from ~1723 in the master; comp times below are relative to ITS host window. */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-close-";
+  tl.set([P+"l2", P+"brand"], { autoAlpha: 0 }, 0);
+  tl.fromTo(P+"l1", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.8, ease: "power2.out" }, 0.4);
+  tl.fromTo(P+"l2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.7, ease: "power2.out" }, 3.6);
+  tl.fromTo(P+"brand", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.9 }, 7.6);
+  tl.fromTo(P+"b2", { letterSpacing: "16px" }, { letterSpacing: "8px", duration: 2.2, ease: "power2.out" }, 7.6);
+  /* slow breathing to the end; the episode dies to black with the bed */
+  tl.fromTo("#root", { scale: 1.0, transformOrigin: "center" }, { scale: 1.025, duration: 13, ease: "none" }, 0);
+  tl.to("#root", { autoAlpha: 0, duration: 1.2, ease: "power2.in" }, 11.6);
+  window.__timelines["g-close"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
