@@ -39,8 +39,16 @@ window.__timelines = window.__timelines || {};
      the burned-in NOAA track; ring + cat label carry the state. */
   const tl = gsap.timeline({ paused: true });
   const cam = "#g-track-cam", ring = "#g-track-ring";
+  /* camera clamp: the plate (2700x1669) must always cover the 1920x1080 viewport —
+     unclamped centering on near-edge points left a ~200px black band (owner nit, 04:09) */
+  function camPos(px, py, z) {
+    const x = Math.min(0, Math.max(1920 - 2700 * z, 960 - px * z));
+    const y = Math.min(0, Math.max(1080 - 1669 * z, 540 - py * z));
+    return { x: x, y: y };
+  }
   function look(px, py, z, at, dur, ease) {
-    tl.to(cam, { scale: z, x: 960 - px * z, y: 540 - py * z, duration: dur, ease: ease || "power1.inOut" }, at);
+    const p = camPos(px, py, z);
+    tl.to(cam, { scale: z, x: p.x, y: p.y, duration: dur, ease: ease || "power1.inOut" }, at);
   }
   function ringAt(px, py, at, dur) {
     tl.to(ring, { left: px, top: py, duration: dur, ease: "power1.inOut" }, at);
