@@ -107,7 +107,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"shear", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35 }, 38.6);
   tl.to(P+"shear", { strokeDashoffset: -180, duration: 14, ease: "none" }, 38.6);
   /* the failure: wall + everything behind it rides sideways on "sideways" */
-  tl.to([P+"wallgrp", P+"soilblock", P+"gap"], { x: 120, duration: 4.0, ease: "power2.in" }, 42.8);
+  /* shift reduced 120→60: at 120 the house + NEIGHBORHOOD label left the 1600px viewBox (owner nit) */
+  tl.to([P+"wallgrp", P+"soilblock", P+"gap"], { x: 60, duration: 4.0, ease: "power2.in" }, 42.8);
   /* canal water follows through the hole */
   tl.to(P+"water", { scaleX: 1.18, transformOrigin: "left center", duration: 3.2, ease: "power2.in" }, 44.6);
   /* verdict line on "halfway" */
