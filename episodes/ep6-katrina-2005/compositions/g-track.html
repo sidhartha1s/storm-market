@@ -54,7 +54,7 @@ window.__timelines = window.__timelines || {};
     tl.to(ring, { left: px, top: py, duration: dur, ease: "power1.inOut" }, at);
   }
   /* open on the Bahamas birth point */
-  tl.set(cam, { scale: 1.1, x: 960 - 1769 * 1.1, y: 540 - 1364 * 1.1 }, 0);
+  (function(){ const p = camPos(1769, 1364, 1.1); tl.set(cam, { scale: 1.1, x: p.x, y: p.y }, 0); })();
   tl.set(["#g-track-chip-fl", "#g-track-chip-gulf"], { autoAlpha: 0 }, 0);
   tl.fromTo("#g-track-title", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 0.3);
   tl.fromTo("#g-track-src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.8);
