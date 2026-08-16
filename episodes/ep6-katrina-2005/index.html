@@ -119,24 +119,29 @@
   <audio id="ins-naginradio" src="media/ins03-nagin.wav" data-start="1232.8" data-duration="13.6" data-volume="1" data-srt-label="[WWL RADIO — MAYOR RAY NAGIN WITH GARLAND ROBINETTE]"></audio>
   <!-- ins04a/b, ins05, ins06 are VIDEO inserts mounted on their tracks below (owner flagged the slate GO 2026-08-15) -->
 
-  <!-- ============ HOOK 0–38.78 — "The Rescue" (owner-locked): hoist mid-action, rotor live ============ -->
-  <video id="vx-hookhoist" src="media/hook-hoist.mp4" style="filter: saturate(0.82) contrast(1.1) brightness(0.95)" data-start="0" data-duration="9.0" data-track-index="1" data-volume="0.55"></video>
-  <!-- breach beat: churning surge water, ITS OWN LIVE AUDIO under the 911 call tail (owner: no muted hook elements) -->
-  <video id="vx-hookbreach" src="media/scenes/wwl-breach-water-1.mp4" style="filter: saturate(0.8) contrast(1.1) brightness(0.88)" data-start="9.0" data-duration="5.1" data-track-index="1" data-volume="0.9"></video>
-  <!-- NPR misdirection beat: designed headline card sub-comp over calm morning-after -->
-  <div id="host-hooknpr" data-composition-id="g-hook-npr" data-composition-src="compositions/g-hook-npr.html" data-start="14.1" data-duration="8.2" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <!-- h1-s4 turn: water rising under the words, then the loop line lands as typography -->
-  <video id="vx-hookrise" src="media/hook-floodrise.mp4" style="filter: saturate(0.8) contrast(1.08) brightness(0.9)" data-start="22.3" data-duration="8.9" data-track-index="1" muted></video>
-  <section class="clip" id="c-hookloop" data-start="31.2" data-duration="5.1" data-track-index="1" style="background:#04070c;">
+  <!-- ============ HOOK 0–23.08 — "The Rescue" v2 (owner pick 2026-08-16, option a: short, no 911) ============ -->
+  <!-- Beat 1: hoist mid-action, rotor live + faint tornado siren; NPR "dodged the bullet" audio captioned on-screen -->
+  <video id="vx-hookhoist" src="media/hook-hoist.mp4" style="filter: saturate(0.82) contrast(1.1) brightness(0.95)" data-start="0" data-duration="8.9" data-track-index="1" data-volume="0.55"></video>
+  <!-- Beat 2: hard cut on the NPR line's last word → water rising under the narrator's turn -->
+  <video id="vx-hookrise" src="media/hook-floodrise.mp4" style="filter: saturate(0.8) contrast(1.08) brightness(0.9)" data-start="8.9" data-duration="8.9" data-track-index="1" muted></video>
+  <section class="clip" id="c-hookloop" data-start="17.8" data-duration="5.28" data-track-index="1" style="background:#04070c;">
     <div class="loopline" id="hookloopline">
       <div class="l1" id="loop-l1">The hurricane missed New Orleans.</div>
       <div class="l2" id="loop-l2">The city drowned anyway.</div>
     </div>
   </section>
-  <section class="clip blackout" id="bo-void" data-start="36.28" data-duration="2.5" data-track-index="1"></section>
-  <!-- D1 hook stamp -->
+  <section class="clip blackout" id="bo-void" data-start="23.08" data-duration="1.5" data-track-index="1"></section>
+  <!-- D1 hook popup — Abril figure style (replaces red stamp block) -->
   <section class="clip" id="p-d1" data-start="0.5" data-duration="3.0" data-track-index="3">
-    <div class="stamp" id="st-d1"><span class="st-eyebrow">NEW ORLEANS</span><span class="st-day">AUG 29</span><span class="st-time">2005 · 6:10 AM LANDFALL</span></div>
+    <div class="popfig" id="st-d1" style="top:24%"><span class="pf-big">AUG 29</span><span class="pf-sub">NEW ORLEANS · 2005</span></div>
+  </section>
+  <!-- NPR caption: burned transcript so the audio never needs decoding (owner order) -->
+  <section class="clip" id="p-cap-npr" data-start="1.0" data-duration="7.8" data-track-index="3">
+    <div class="capvig"></div>
+    <div class="hookcap" id="cap-npr">
+      <div class="q">&ldquo;A lot of people kind of breathed a sigh of relief &mdash; thinking that New Orleans <em>had dodged the bullet</em>.&rdquo;</div>
+      <div class="src">NPR &lsquo;DAY TO DAY&rsquo; &middot; THE MORNING AFTER</div>
+    </div>
   </section>
   <section class="clip" id="p-src-hoist" data-start="4.2" data-duration="4.0" data-track-index="3">
     <div class="srclab">U.S. COAST GUARD — AIR STATION AERIAL, NEW ORLEANS</div>
