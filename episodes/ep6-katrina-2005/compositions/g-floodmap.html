@@ -55,9 +55,11 @@ window.__timelines = window.__timelines || {};
      x1.709 to 2280x1594; pin coords already in scaled px. */
   const tl = gsap.timeline({ paused: true });
   const P = "#g-floodmap-";
-  const Z = 0.85;
-  tl.set(P+"cam", { scale: Z, x: 960 - 1100 * Z, y: 540 - 700 * Z }, 0);
-  tl.to(P+"cam", { scale: Z + 0.06, x: 960 - 1100 * (Z + 0.06), y: 540 - 700 * (Z + 0.06), duration: 50, ease: "none" }, 0);
+  /* Z raised 0.85→1.15 (owner 15:38): tighter on the flood bowl, crops the scan's baked-in
+     legend/title text out of frame for the whole window */
+  const Z = 1.15;
+  tl.set(P+"cam", { scale: Z, x: 960 - 1000 * Z, y: 540 - 700 * Z }, 0);
+  tl.to(P+"cam", { scale: Z + 0.07, x: 960 - 1000 * (Z + 0.07), y: 540 - 700 * (Z + 0.07), duration: 50, ease: "none" }, 0);
   tl.set([P+"stat", P+"c1", P+"c2", P+"c3"], { autoAlpha: 0 }, 0);
   tl.set([P+"pin1", P+"pin2", P+"pin3"], { autoAlpha: 0 }, 0);
   tl.fromTo(P+"title", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 0.3);
