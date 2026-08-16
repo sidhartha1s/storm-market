@@ -59,8 +59,8 @@ window.__timelines = window.__timelines || {};
      scan's baked-in legend/title. New frame covers the parish/MRGO region only, plate covers the
      full viewport, legend + scan text cropped out. */
   const Z = 1.10;
-  tl.set(P+"cam", { scale: Z, x: -335, y: -537 }, 0);
-  tl.to(P+"cam", { scale: Z + 0.05, x: -335 - 1177 * 0.05, y: -537 - 979 * 0.05, duration: 52, ease: "none" }, 0);
+  tl.set(P+"cam", { scale: Z, x: -280, y: -537 }, 0);
+  tl.to(P+"cam", { scale: Z + 0.05, x: -280 - 1177 * 0.05, y: -537 - 979 * 0.05, duration: 52, ease: "none" }, 0);
   tl.set([P+"parish", P+"parishlab", P+"chip-mrgo", P+"chip-surge", P+"verdict"], { autoAlpha: 0 }, 0);
   tl.fromTo(P+"title", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 0.3);
   tl.fromTo(P+"src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.8);
