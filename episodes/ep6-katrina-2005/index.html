@@ -722,15 +722,19 @@ window.__timelines = window.__timelines || {};
   stamp("#st-d13", 1116.02, 3.0); stamp("#st-d14", 1185.18, 3.0); stamp("#st-d15", 1316.52, 3.0);
   stamp("#st-d16", 1388.66, 3.2); stamp("#st-d17", 1451.18, 3.0); stamp("#st-d18", 1689.0, 3.0);
 
-  /* hook: loop line lands word-synced — "The hurricane missed" @31.44, "anyway" @34.84 */
-  tl.fromTo("#loop-l1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 31.3);
-  tl.fromTo("#loop-l2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 33.5);
+  /* hook v2 (option a): narration 9.1→22.78; loop lines word-synced (rel 8.9-ish into segment) */
+  tl.fromTo("#loop-l1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 18.1);
+  tl.fromTo("#loop-l2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 20.3);
+  /* D1 Abril popup + NPR caption reveals */
+  tl.fromTo("#st-d1", { autoAlpha: 0, y: 16, scale: 1.12 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.4, ease: "power3.out" }, 0.6);
+  tl.fromTo("#p-cap-npr .capvig", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 1.0);
+  tl.fromTo("#cap-npr", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power2.out" }, 1.2);
   /* src label fade for the hoist */
   tl.fromTo("#p-src-hoist .srclab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 4.3);
   /* hoist slow drift (SD upscale hides in motion) */
-  tl.fromTo("#vx-hookhoist", { scale: 1.02 }, { scale: 1.09, duration: 9.0, ease: "none" }, 0);
+  tl.fromTo("#vx-hookhoist", { scale: 1.02 }, { scale: 1.09, duration: 8.9, ease: "none" }, 0);
   /* flood-rise under the turn */
-  tl.fromTo("#vx-hookrise", { scale: 1.0 }, { scale: 1.07, duration: 8.9, ease: "none" }, 22.3);
+  tl.fromTo("#vx-hookrise", { scale: 1.0 }, { scale: 1.07, duration: 8.9, ease: "none" }, 8.9);
 
   /* ---- a3-s1 calm-Sunday plate: slow push toward the city ---- */
   kb("#kb-sunplate", 361.44, 20.42, 1.14, 1.24, 40, -30, 26, -18);
