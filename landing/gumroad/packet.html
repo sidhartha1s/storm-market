@@ -1,0 +1,136 @@
+<!-- paulraymond.gumroad.com/l/packet — custom landing page for the FREE state-packet product.
+     Published with: gumroad products page publish pZ-CrhNGscFjV5NENkQsQg== ./packet.html
+     Same field-manual identity as /l/ebook and paulraymond.pages.dev. Job of this page:
+     get the email with ZERO friction, then hand the reader to the paid manual. -->
+<style>
+:root{
+  --paper:#f4eee1; --card:#faf6ec; --line:#d8cdb4; --rule:#b9ac8e;
+  --ink:#211d16; --ink-soft:#4a4335; --faded:#6b6249;
+  --red:#a92c1e; --red-bright:#c0392b; --amber:#c9871c;
+  --display:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --mono:ui-monospace,"Cascadia Mono",Consolas,"Courier New",monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#14181b; --card:#1b2225; --line:#2e383c; --rule:#3d4a4f;
+    --ink:#ece6d8; --ink-soft:#bcc3bf; --faded:#8e9793;
+    --red:#d9503c; --red-bright:#e4634e; --amber:#e0a338;
+  }
+}
+.srh *{box-sizing:border-box}
+.srh{background:var(--paper);color:var(--ink);font-family:var(--display);font-size:18px;
+  line-height:1.65;margin:0 auto;max-width:880px}
+.srh img{max-width:100%;display:block}
+.srh h1,.srh h2,.srh h3{font-family:var(--display);font-weight:700;margin:0;line-height:1.12;
+  letter-spacing:-.012em}
+.srh h1{font-size:clamp(30px,5vw,46px)}
+.srh h2{font-size:clamp(24px,3.6vw,34px)}
+.srh p{margin:0 0 16px}
+.srh .kicker{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--red);margin-bottom:14px}
+.srh section{padding:46px 26px;border-top:3px double var(--rule)}
+.srh section:first-child{border-top:0}
+.srh .lead{font-size:clamp(17px,2vw,20px);color:var(--ink-soft);line-height:1.55}
+.srh .btn{display:inline-block;font-family:var(--display);font-weight:700;font-size:19px;
+  background:var(--red);color:#fdf9ef;text-decoration:none;text-align:center;cursor:pointer;
+  border:0;padding:17px 36px;border-radius:4px;
+  box-shadow:0 3px 0 #6f1c12,0 10px 24px rgba(122,29,17,.26);
+  transition:transform .12s,box-shadow .12s,background .12s}
+.srh .btn:hover{background:var(--red-bright);transform:translateY(-2px);
+  box-shadow:0 5px 0 #6f1c12,0 14px 28px rgba(122,29,17,.32)}
+.srh .btn:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.srh .btn-sub{font-family:var(--mono);font-size:12px;color:var(--faded);margin-top:10px}
+.srh .hero{display:grid;grid-template-columns:1fr 300px;gap:34px;align-items:center}
+.srh .hero figure{margin:0;background:var(--card);padding:10px 10px 12px;
+  border:1px solid var(--line);box-shadow:0 14px 30px rgba(0,0,0,.16);transform:rotate(1.4deg)}
+.srh .hero img{border:1px solid var(--line)}
+.srh figcaption{font-family:var(--mono);font-size:11px;color:var(--faded);margin-top:9px;
+  line-height:1.5;text-align:center}
+.srh ul.inside{list-style:none;margin:0 0 22px;padding:0}
+.srh ul.inside li{padding:12px 0 12px 34px;position:relative;border-bottom:1px solid var(--line);
+  font-size:17px;color:var(--ink-soft)}
+.srh ul.inside li::before{content:"✓";position:absolute;left:4px;color:var(--red);font-weight:700}
+.srh .cross{background:var(--card);border:1px solid var(--rule);outline:3px double var(--rule);
+  outline-offset:6px;padding:28px;display:grid;grid-template-columns:150px 1fr;gap:26px;
+  align-items:center;margin-top:8px}
+.srh .cross img{border-radius:3px;box-shadow:0 14px 30px rgba(0,0,0,.3);transform:rotate(-1.6deg)}
+.srh .cross h3{font-size:clamp(20px,2.6vw,26px);margin-bottom:8px}
+.srh .cross p{font-size:16px;color:var(--ink-soft);margin-bottom:14px}
+.srh .cross a.go{font-family:var(--display);font-weight:700;color:var(--red);text-decoration:underline;
+  text-underline-offset:3px;font-size:17px}
+.srh .fine{padding:24px 26px;color:var(--faded);font-size:13px;line-height:1.6;
+  border-top:1px solid var(--line)}
+@media (max-width:700px){
+  .srh{font-size:17px}
+  .srh section{padding:32px 18px}
+  .srh .hero{grid-template-columns:1fr;gap:22px}
+  .srh .hero figure{max-width:280px;margin:0 auto;transform:none}
+  .srh .btn{display:block;width:100%}
+  .srh .cross{grid-template-columns:1fr;padding:20px}
+  .srh .cross img{max-width:150px;margin:0 auto}
+}
+@media (prefers-reduced-motion:reduce){
+  .srh .btn{transition:none}
+  .srh .btn:hover{transform:none}
+}
+</style>
+
+<div class="srh">
+
+  <section>
+    <div class="hero">
+      <div>
+        <div class="kicker">Free · No catch · All 50 states + DC</div>
+        <h1>Your state's storm packet. Four pages. Free.</h1>
+        <p class="lead">The numbers you'll wish you had written down <em>before</em> the sirens:
+          your National Weather Service forecast office, your state emergency management agency,
+          your county alert signup, your insurance department's mitigation-credit program — and
+          the three hazards your state actually gets, with the months they arrive.</p>
+        <button class="btn" data-gumroad-action="buy">Send Me the Packets — Free</button>
+        <div class="btn-sub">Instant download · Every state in one file · No payment details asked</div>
+      </div>
+      <figure>
+        <img src="https://public-files.gumroad.com/2z7lprph1l42ypknjk6wfly0jr0v"
+             alt="Filling in the printed packet at a kitchen table" width="1254" height="1254">
+        <figcaption>Print yours, fill it in, put it on the fridge.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="kicker">What's in it</div>
+    <h2>The one-page directory your county never mails you.</h2>
+    <ul class="inside">
+      <li><strong>Your NWS forecast office</strong> — the people who actually issue your warnings, and where to follow them.</li>
+      <li><strong>Your state emergency management agency</strong> — the office that runs the response when it's real.</li>
+      <li><strong>Your county alert signup</strong> — the local system the national alerts don't carry. Most families have never enrolled.</li>
+      <li><strong>Your insurance department's mitigation-credit program</strong> — the discounts your insurer doesn't advertise.</li>
+      <li><strong>Your three hazards, with their season</strong> — what your state actually gets, and when it arrives.</li>
+    </ul>
+    <button class="btn" data-gumroad-action="buy">Get the Packets</button>
+  </section>
+
+  <section>
+    <div class="kicker">If you want the whole plan</div>
+    <h2>The packet tells you who to call. The book tells you what to do.</h2>
+    <div class="cross">
+      <a href="/l/ebook"><img src="https://public-files.gumroad.com/ldxt1k0a2pu4odbkeyuyc0kavyat"
+           alt="The Storm-Ready Home — book cover" width="1024" height="1536"></a>
+      <div>
+        <h3>The Storm-Ready Home — $47</h3>
+        <p>486 pages, 130 numbered protections across 23 hazard playbooks, a 60-day sequence that
+          starts with a week costing nothing, and a printable binder your family fills in at the
+          kitchen table. Built from the reports written after real storms. 7-day money-back
+          guarantee.</p>
+        <a class="go" href="/l/ebook">Read what's inside &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="fine">
+    <p><strong>Paul Raymond</strong> · Field manuals from the reports written after real storms.</p>
+    <p>General preparedness information for households; not medical, legal, engineering or insurance
+      advice. In an emergency, call 911 and follow the direction of your local officials.</p>
+  </div>
+
+</div>
