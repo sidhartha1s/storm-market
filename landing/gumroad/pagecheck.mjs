@@ -95,9 +95,14 @@ for (const s of [sessionId, ...attached]) {
   } catch {} // a frame can detach mid-read; the others still answer
 }
 console.log(`frames inspected: ${1 + attached.length}`);
+// packet's own layout carries 2 media-library images; product/profile carry more.
+const MIN_IMAGES = KIND === 'packet' ? 2 : 3;
 const common = [
-  ['media-library images', (dom.match(/public-files\.gumroad\.com/g) || []).length >= 3],
-  ['dark-mode rules', dom.includes('prefers-color-scheme:dark')],
+  ['media-library images', (dom.match(/public-files\.gumroad\.com/g) || []).length >= MIN_IMAGES],
+  // Light-locked 2026-08-16: pages.dev has no dark mode, so an adaptive checkout broke
+  // brand continuity for dark-OS visitors at the payment moment. Assert the lock holds.
+  ['light-locked (no dark palette)', !dom.includes('prefers-color-scheme:dark')],
+  ['paper palette present', dom.includes('#f4eee1')],
   ['author byline', dom.includes('Paul Raymond')],
 ];
 const checks = KIND === 'product'
