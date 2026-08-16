@@ -45,6 +45,21 @@
     .dispatchlab { position: absolute; left: 0; right: 0; top: 470px; text-align: center; z-index: 6; }
     .dispatchlab .d1 { display: table; margin: 0 auto; font-family: 'Courier New', monospace; font-weight: 700; font-size: 40px; color: #e8c56a; letter-spacing: 4px; background: rgba(5,8,12,0.6); padding: 10px 30px; }
     .dispatchlab .d2 { display: table; margin: 14px auto 0; font-family: Arial, sans-serif; font-size: 22px; letter-spacing: 3px; color: #93a3b2; background: rgba(5,8,12,0.6); padding: 6px 18px; }
+    /* ---- Abril figure popup (owner 2026-08-16: replaces red stamp blocks; red eerie, shadow, no bg block) ---- */
+    @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+    .popfig { position: absolute; left: 50%; top: 46%; transform: translate(-50%,-50%); text-align: center; z-index: 6; white-space: nowrap; }
+    .popfig .pf-big { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 150px; color: #d0121f; letter-spacing: 0.04em;
+      text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+    .popfig .pf-sub { display: block; margin-top: 10px; font-family: Arial, sans-serif; font-weight: 700; font-size: 32px; color: #e8e3d8;
+      letter-spacing: 0.42em; text-shadow: 0 0 14px rgba(0,0,0,0.95), 0 3px 10px #000; }
+    /* hook NPR caption: burned transcript + local scrim so it reads over any footage */
+    .capvig { position: absolute; inset: 0; z-index: 7; pointer-events: none;
+      background: radial-gradient(ellipse 70% 42% at 50% 82%, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.2) 55%, rgba(0,0,0,0) 78%); }
+    .hookcap { position: absolute; left: 50%; bottom: 110px; transform: translateX(-50%); width: 1500px; text-align: center; z-index: 8; }
+    .hookcap .q { font-family: Arial, sans-serif; font-weight: 800; font-size: 58px; line-height: 1.25; color: #f4f0e8;
+      text-shadow: 0 0 16px rgba(0,0,0,0.95), 0 4px 18px #000; }
+    .hookcap .q em { color: #e74c3c; font-style: normal; }
+    .hookcap .src { margin-top: 14px; font-family: Arial, sans-serif; font-weight: 700; font-size: 26px; letter-spacing: 0.28em; color: #b9c4cf; text-shadow: 0 2px 8px #000; }
     /* hook loop line typography */
     .loopline { position: absolute; left: 0; right: 0; top: 44%; text-align: center; z-index: 8; }
     .loopline .l1 { display: table; margin: 0 auto; font-family: Georgia, serif; font-size: 58px; color: #e8edf2; background: rgba(4,7,12,0.55); padding: 12px 38px; letter-spacing: 1px; }
