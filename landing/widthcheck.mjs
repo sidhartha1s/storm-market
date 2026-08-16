@@ -66,14 +66,25 @@ function connect(wsUrl) {
 
 // Reports the document overflow plus every element whose box crosses the viewport's right edge.
 // Skips descendants of an already-reported culprit so the output names causes, not symptoms.
+// Also skips elements clipped by an ancestor with overflow hidden/auto/scroll on x — a carousel
+// track or a masked wordmark is SUPPOSED to be wider than the viewport; the page-level invariant
+// ("the body never scrolls sideways") is what the `over` measurement itself guards.
 const PROBE = `(() => {
   const vw = document.documentElement.clientWidth;
   const over = document.documentElement.scrollWidth - vw;
+  const clipped = el => {
+    for (let a = el.parentElement; a && a !== document.body; a = a.parentElement) {
+      const ox = getComputedStyle(a).overflowX;
+      if (ox === 'hidden' || ox === 'auto' || ox === 'scroll' || ox === 'clip') return true;
+    }
+    return false;
+  };
   const bad = [];
   for (const el of document.querySelectorAll('body *')) {
     const r = el.getBoundingClientRect();
     if (r.width === 0 || r.height === 0) continue;
     if (r.right <= vw + 1 && r.left >= -1) continue;
+    if (clipped(el)) continue;
     if (bad.some(b => b.el.contains(el))) continue;
     bad.push({ el, desc:
       el.tagName.toLowerCase()
