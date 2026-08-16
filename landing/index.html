@@ -491,7 +491,7 @@ footer .small{color:#7e8783}
       The twenty-minute video walkthrough of every room. The document vault. The insurance audit that
       makes you read the five numbers on your own policy. All three sit in week four of eight — the
       paper week, which the book places before every week that costs money.</p>
-    <p><a class="btn" href="#offer">Get My Copy — $47</a></p>
+    <p><a class="btn checkout" href="#offer">Get My Copy — $47</a></p>
   </div>
 </section>
 
@@ -778,7 +778,7 @@ footer .small{color:#7e8783}
     <p class="lead">That's the whole argument of the book, and it's why the first week costs
       nothing. $47 once, seven-day refund, yours permanently. The next report will be written
       about somebody. It doesn't have to mention your street.</p>
-    <a class="btn" href="#offer">Get My Copy — $47</a>
+    <a class="btn checkout" href="#offer">Get My Copy — $47</a>
     <div class="btn-sub" style="color:var(--sky-dim)">Instant download · 7-day money-back guarantee</div>
   </div>
 </section>
@@ -829,7 +829,7 @@ footer .small{color:#7e8783}
   <div class="wrap">
     <div class="txt">Be ready before the next one.
       <small>INSTANT DOWNLOAD · 7-DAY MONEY-BACK GUARANTEE</small></div>
-    <a class="btn" href="#offer">Get My Copy — $47</a>
+    <a class="btn checkout" href="#offer">Get My Copy — $47</a>
   </div>
 </div>
 
@@ -840,7 +840,7 @@ footer .small{color:#7e8783}
 const GUMROAD_URL='https://paulraymond.gumroad.com/l/ebook';
 (function(){
   if(!GUMROAD_URL)return;
-  for(const a of document.querySelectorAll('#buy,.pop .checkout')){
+  for(const a of document.querySelectorAll('#buy,.checkout')){
     a.href=GUMROAD_URL+'?wanted=true';
     a.removeAttribute('data-close');
   }

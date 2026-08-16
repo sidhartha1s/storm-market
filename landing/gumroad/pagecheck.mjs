@@ -18,8 +18,8 @@ import { join } from 'node:path';
 const URL_TO_CHECK = process.argv[2];
 const KIND = process.argv[3] || 'product';
 const SHOT = process.argv[4];
-if (!URL_TO_CHECK || !['product', 'profile'].includes(KIND)) {
-  console.error('usage: node pagecheck.mjs <url> [product|profile] [out.png]');
+if (!URL_TO_CHECK || !['product', 'packet', 'profile'].includes(KIND)) {
+  console.error('usage: node pagecheck.mjs <url> [product|packet|profile] [out.png]');
   process.exit(2);
 }
 
@@ -105,6 +105,11 @@ const checks = KIND === 'product'
      ['buy elements present', (dom.match(/data-gumroad-action="buy"/g) || []).length >= 1],
      ['price shown', dom.includes('$47')],
      ['Joplin story', dom.includes('Joplin')],
+     ...common]
+  : KIND === 'packet'
+  ? [['custom page mounted (.srh wrapper)', dom.includes('class="srh"')],
+     ['buy elements present', (dom.match(/data-gumroad-action="buy"/g) || []).length >= 1],
+     ['cross-sell to the manual', dom.includes('/l/ebook')],
      ...common]
   : [['custom page mounted (.prp wrapper)', dom.includes('class="prp"')],
      ['links to the product', dom.includes('/l/ebook')],
