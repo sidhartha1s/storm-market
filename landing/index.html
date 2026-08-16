@@ -197,6 +197,19 @@ td.n{text-align:right;font-family:var(--mono);font-weight:600;color:var(--ink);
 .review{background:var(--card);border:1px solid var(--line);padding:26px;
   box-shadow:0 10px 22px rgba(60,48,20,.07);display:flex;flex-direction:column;gap:12px}
 .stars{color:var(--red);font-size:15px;letter-spacing:.18em}
+/* trust strip — early-buyer fix: proof + guarantee within two screens, no price */
+.truststrip{background:var(--card);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.truststrip .wrap{display:flex;align-items:center;justify-content:center;gap:26px;flex-wrap:wrap;
+  padding:16px 24px;font-size:15.5px}
+.truststrip .stars{font-size:14px}
+.truststrip .t{color:var(--ink-soft)}
+.truststrip .t b{color:var(--ink)}
+.truststrip .sep{color:var(--rule)}
+.truststrip .go{font-family:var(--display);font-weight:700;font-size:15.5px;color:#fdf9ef;
+  background:var(--red);text-decoration:none;padding:9px 20px;border-radius:4px;white-space:nowrap}
+.truststrip .go:hover{background:var(--red-bright)}
+@media (max-width:700px){.truststrip .sep{display:none}.truststrip .wrap{gap:10px;padding:14px 16px}}
+
 .review p{margin:0;font-size:16.5px;color:var(--ink-soft);line-height:1.6}
 .review .who{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--faded);
   text-transform:uppercase;margin-top:auto;padding-top:6px;border-top:1px solid var(--line)}
@@ -385,6 +398,19 @@ footer .small{color:#7e8783}
 </header>
 <div class="tear"></div>
 
+<!-- ================= TRUST STRIP ================= -->
+<div class="truststrip">
+  <div class="wrap">
+    <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+    <span class="t"><b>Rated five stars</b> by early readers</span>
+    <span class="sep">&middot;</span>
+    <span class="t">Built from <b>National Weather Service &amp; FEMA</b> post-storm reports</span>
+    <span class="sep">&middot;</span>
+    <span class="t"><b>7-day</b> money-back guarantee</span>
+    <a class="go" href="#offer">Get My Copy &rarr;</a>
+  </div>
+</div>
+
 <!-- ================= STORY ================= -->
 <section id="story">
   <div class="wrap">
@@ -394,13 +420,13 @@ footer .small{color:#7e8783}
         high-school ceremony with the windows down when the sirens started — and most people did
         what most people always do. They waited. They looked at the sky. They turned on the TV to
         see if it was serious this time.</p>
-      <p>The sirens sounded at 5:11. The tornado touched down at 5:34. In those twenty-three
-        minutes almost nobody moved. One hundred and fifty-eight people were killed directly that
-        evening, and four more in the days that followed. The National Weather Service assessment
-        written afterwards is blunt about why: most residents did not take protective action
-        until they had gone and found <em>confirmation</em> — seeing it themselves, hearing it
-        said on air, or waiting for the second siren. The families who moved at 5:11 had decided
-        what 5:11 meant long before it happened.</p>
+      <p>The sirens sounded at 5:11. The tornado touched down at 5:34. <strong>In those
+        twenty-three minutes almost nobody moved.</strong> One hundred and fifty-eight people were
+        killed directly that evening, and four more in the days that followed. The National Weather
+        Service assessment written afterwards is blunt about why: <strong>most residents did not
+        take protective action until they had gone and found confirmation</strong> — seeing it
+        themselves, hearing it said on air, or waiting for the second siren. <strong>The families
+        who moved at 5:11 had decided what 5:11 meant long before it happened.</strong></p>
       <figure class="fieldshot">
         <img src="assets/paul-tornado-selfie.jpg"
              alt="Paul Raymond in the field, a tornado on the ground behind him">
