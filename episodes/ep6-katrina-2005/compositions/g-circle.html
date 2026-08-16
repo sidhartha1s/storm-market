@@ -50,8 +50,14 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const P = "#g-circle-";
   /* camera: wide Gulf view, slow push the whole window */
-  tl.set(P+"cam", { scale: 0.78, x: 960 - 1100 * 0.78, y: 540 - 1250 * 0.78 }, 0);
-  tl.to(P+"cam", { scale: 0.84, x: 960 - 1100 * 0.84, y: 540 - 1250 * 0.84, duration: 31, ease: "none" }, 0);
+  /* clamped so the plate always covers the frame (owner nit 4:54: left+bottom crop) */
+  function camPos(px, py, z) {
+    return { x: Math.min(0, Math.max(1920 - 2700 * z, 960 - px * z)),
+             y: Math.min(0, Math.max(1080 - 1669 * z, 540 - py * z)) };
+  }
+  (function(){ const a = camPos(1100, 1250, 0.78), b = camPos(1100, 1250, 0.84);
+    tl.set(P+"cam", { scale: 0.78, x: a.x, y: a.y }, 0);
+    tl.to(P+"cam", { scale: 0.84, x: b.x, y: b.y, duration: 31, ease: "none" }, 0); })();
   tl.set([P+"wind", P+"pres", P+"reach", P+"foot"], { autoAlpha: 0 }, 0);
   tl.fromTo(P+"panel", { x: 660 }, { x: 0, duration: 0.7, ease: "power3.out" }, 0.4);
   tl.fromTo(P+"wind", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 4.6);
