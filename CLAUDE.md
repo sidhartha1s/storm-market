@@ -244,14 +244,23 @@ photograph, does this cut land, does the picture contradict the voice.*
 The tell for a script that should have been a docs line: it needs a hand-tuned stoplist to
 stop being wrong. That is judgment wearing a regex.
 
-**TRIPWIRE (owner 2026-08-02, after the ep3/ep4 regression):** any script that WRITES or
-INJECTS episode HTML — `index.html` or any `compositions/*.html` — is forbidden. Delete it
-on sight, before any other work. Every cut, hold, and graphic is hand-authored by the session
-via Edit/Write with per-cut judgment (the ep1/ep2 method). This is why ep1/ep2 were 9/10 and
-generator-built ep3 was 2/10. Checkers that READ episode HTML (sweep/lint/blank_scan/
-beat_density/graphics_qc) are fine — they check, they don't author. The generators
-(`build_ep3.py`, `gen_misc_comps.py`, `gen_panel_comps.py`, `gen_track_comps.py`) were
-deleted from the tree 2026-08-02; do not resurrect the pattern.
+**TRIPWIRE (owner 2026-08-02, amended 2026-08-16):** any script that AUTHORS episode HTML —
+generates, chooses, or alters cuts, holds, graphics, on-screen text, asset picks, or the
+relative design of timings in `index.html` or `compositions/*.html` — is forbidden. Delete it
+on sight. Every editorial decision is hand-authored by the session via Edit/Write with
+per-cut judgment (the ep1/ep2 method). This is why ep1/ep2 were 9/10 and generator-built ep3
+was 2/10. The deleted generators (`build_ep3.py`, `gen_*.py`) are the banned pattern; do not
+resurrect it. **The test: if the script must know what a beat MEANS, it is authoring.**
+**Allowed (owner 2026-08-16): one-shot MECHANICAL TRANSFORMS of already-hand-authored
+decisions** — global retimes, uniform attribute arithmetic, mechanical renames — under ALL of
+these conditions: (1) deterministic and content-blind (pure math/renames, zero editorial
+choice); (2) the session reviews the resulting diff; (3) the full static gate suite passes
+after (lint_timeline exit 0, blank_scan, beat_density, graphics_qc, overlap_check, driver
+check, media_budget); (4) the script is one-shot — run from scratch space, never committed,
+gone after use, never promoted into pipeline machinery; (5) the transform is declared in the
+PR body. A transform that fails verification gets root-caused, not re-run blind.
+Checkers that READ episode HTML (sweep/lint/blank_scan/beat_density/graphics_qc/
+overlap_check) remain always fine — they check, they don't author.
 
 Applied to this repo's own gates, 2026-07-29:
 - `media_budget.py` **stays code** — three numbers, run before every render, guards against
