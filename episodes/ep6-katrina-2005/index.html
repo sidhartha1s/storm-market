@@ -794,7 +794,13 @@ window.__timelines = window.__timelines || {};
 
   /* a3-s6 "refuge of last resort" — definition card */
   drift("#c-refuge-dark", 545.28, 19.8);
-  reveal("#p-refuge .rf-1", 547.0); reveal("#p-refuge .rf-2", 551.5); reveal("#p-refuge .rf-3", 557.0);
+  /* word-synced to a3-s6 (owner nit: reveals ran ~10s behind the voice, read as out-of-order) */
+  reveal("#p-refuge .rf-1", 536.7); reveal("#p-refuge .rf-2", 538.8); reveal("#p-refuge .rf-3", 545.3);
+  /* the 10,000 counts up as the line is spoken (owner: show the figure in motion) */
+  (function(){ const o = { v: 0 }; tl.to(o, { v: 10000, duration: 2.2, ease: "power2.out", onUpdate: function(){
+    const el = document.getElementById("rf-count"); if (el) el.textContent = Math.round(o.v).toLocaleString("en-US"); } }, 545.4); })();
+  /* "Remember that phrase" — pulse the title */
+  tl.fromTo("#p-refuge .rf-1", { scale: 1 }, { scale: 1.06, duration: 0.35, yoyo: true, repeat: 1, ease: "power2.inOut" }, 560.2);
 
   /* a6-s3 Convention Center — the four nothings */
   drift("#c-ccdark", 1113.66, 35.9);
