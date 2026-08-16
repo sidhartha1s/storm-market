@@ -815,6 +815,10 @@ window.__timelines = window.__timelines || {};
   drift("#c-rumordark", 1108.78, 4.88);
   drift("#c-rumor2dark", 1207.19, 20.37);
 
+  /* $0 hammer (owner 25:18: static number read as unfinished) — slam + camera-shake beat */
+  tl.fromTo("#p-pop-zero", { scale: 2.2, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.28, ease: "power4.in" }, 1517.0);
+  tl.to("#p-pop-zero", { x: 7, duration: 0.05, yoyo: true, repeat: 5, ease: "none" }, 1517.28);
+
   /* a6-s7b "FOUR DAYS" hammer, word-synced */
   drift("#c-fourdark", 1335.61, 16.95);
   tl.fromTo("#p-fourdays div:first-child", { autoAlpha: 0, scale: 2.4 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.in" }, 1341.9);
