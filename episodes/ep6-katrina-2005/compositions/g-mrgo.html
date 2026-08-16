@@ -17,6 +17,9 @@
   .g-mrgo-chip { position:absolute; white-space:nowrap; font-weight:700; font-size:28px; color:#f2f5f8;
     background:rgba(5,8,12,0.72); padding:10px 20px; letter-spacing:1px; border-left:5px solid #d8a13a; z-index:5; }
   .g-mrgo-chip .sm { display:block; font-weight:400; font-size:20px; color:#c8d3e0; letter-spacing:2px; margin-top:4px; }
+  /* right-edge fade: masks the scan's baked-in annotation column that survives the crop */
+  .gm-edgefade { position:absolute; right:0; top:0; bottom:0; width:220px; z-index:4; pointer-events:none;
+    background:linear-gradient(90deg, rgba(4,6,10,0) 0%, rgba(4,6,10,0.85) 70%, #04060a 100%); }
   .gm-title { position:absolute; left:110px; top:96px; z-index:5; font-family:'Arial Black',Arial,sans-serif;
     font-size:46px; color:#f2f5f8; background:rgba(5,8,12,0.62); padding:8px 24px; letter-spacing:2px; }
   .gm-verdict { position:absolute; left:0; right:0; bottom:110px; z-index:6; text-align:center; }
