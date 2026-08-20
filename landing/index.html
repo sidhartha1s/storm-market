@@ -1102,7 +1102,14 @@ const GUMROAD_URL='https://paulraymond.gumroad.com/l/ebook';
   }
   document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
   setTimeout(()=>show('pop-soft'),30000);
-  setTimeout(()=>show('pop-hard'),180000);
+  // Hard popup: desktop exit-intent (unchanged) — mobile has no mouseout, so its
+  // fallback only fires once the reader has scrolled past ~60% of the page.
+  const scrolledPast60=()=>{
+    const doc=document.documentElement;
+    const scrollable=doc.scrollHeight-doc.clientHeight;
+    return scrollable<=0||(window.scrollY/scrollable)>=0.6;
+  };
+  setTimeout(()=>{if(scrolledPast60())show('pop-hard');},180000);
   document.addEventListener('mouseout',e=>{
     if(!e.relatedTarget&&e.clientY<=8)show('pop-hard');
   });
