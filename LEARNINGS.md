@@ -16,9 +16,9 @@ B. **Every mounted video needs an audio stream in hyperframes ≥0.7.109 — eve
    `ASSET_MEDIA_TYPE_MISMATCH (expected: audio)`. The CLI does NOT name the culprit —
    found it by temporarily instrumenting `mismatches.push` in the npx-cached cli.js
    (revert after). Fix: mux silence — `-f lavfi -i anullsrc=r=48000:cl=stereo -shortest
-   -c:v copy -c:a aac`. Note `optimize_clips.py` strips audio (`-an`) from everything it
-   touches: after every optimize pass, re-mux original audio onto audible clips from
-   `media/_orig/` AND expect this class of error on new `-an` assets.
+   -c:v copy -c:a aac`. (SUPERSEDED 2026-08-17: `optimize_clips.py` no longer strips
+   audio — it preserves the source track and muxes silence into mute clips itself. The
+   re-mux ritual is retired; the anullsrc recipe stays useful for one-off assets.)
 
 C. **Audio slots longer than their file are silently truncated (compile WARN, not fail)
    — read the WARNs of a FAILED render, they're real defects.** Fail #2's log exposed 5
