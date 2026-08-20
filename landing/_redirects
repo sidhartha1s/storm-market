@@ -1,3 +1,5 @@
-https://www.paulraymond.online/* https://paulraymond.online/:splat 301
+# www->apex is a Cloudflare zone Redirect Rule (dashboard), not supported here.
+# Per-episode YouTube links: add one static line per episode at publish time, e.g.
+#   /yt/joplin / ?utm_source=youtube&utm_medium=video&utm_campaign=joplin 302
+# (Pages does not substitute :splat inside query strings.)
 /yt https://paulraymond.online/?utm_source=youtube&utm_medium=video&utm_campaign=channel 302
-/yt/* https://paulraymond.online/?utm_source=youtube&utm_medium=video&utm_campaign=:splat 302
