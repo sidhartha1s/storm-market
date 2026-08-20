@@ -118,7 +118,8 @@ for crf in CRF_LADDER:
         break
     if crf != CRF_LADDER[-1]:
         print(f"still over the {BUDGET_MB} MB budget — escalating crf")
-if total_after > BUDGET_MB:
-    print(f"WARNING: {total_after:.0f} MB still over {BUDGET_MB} MB at crf "
-          f"{CRF_LADDER[-1]} — reduce clip count/length, don't render")
 print("originals in media/_orig/ — rebuild index.html, the window caps come from vdur()")
+if total_after > BUDGET_MB:
+    print(f"FAIL: {total_after:.0f} MB still over {BUDGET_MB} MB at crf "
+          f"{CRF_LADDER[-1]} — reduce clip count/length, don't render")
+    raise SystemExit(1)
