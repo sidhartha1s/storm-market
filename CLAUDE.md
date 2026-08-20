@@ -172,7 +172,9 @@ Per episode in `episodes/<slug>/`:
       `data-callback="reason"`, max 2 uses, last-90s recap zone exempt). It also PRINTS a
       pacing report for step (a)'s reasoning — report lines never fail the run.
    c. **The static suite — all green BEFORE any render** (see "HARD RULE — the render is the
-      LAST step"): `sweep_episode.py`, `blank_scan.mjs`, `beat_density.py`, `graphics_qc.mjs`.
+      LAST step"): `sweep_episode.py`, `blank_scan.mjs`, `beat_density.py`, `graphics_qc.mjs`,
+      `overlap_check.mjs`, `audio_levels.py` (exit 0 — insert/narration/bed level gate, run
+      before every mixdown build).
    d. Per-composition snapshot of anything NEW or changed (stage into a bare page, seek,
       screenshot 4-6 points, subagent reads them) — never a whole-episode frame sweep.
    e. Post-render only: `scripts/verify_render.sh <episode-dir> <basename>` — blackdetect,
