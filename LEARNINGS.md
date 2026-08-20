@@ -896,3 +896,18 @@ calfire-itf-willhappenagain) cause freezes — re-encode with -g 30 before the n
   (exit 9009). Use the full `...\Python312\python.exe` path.
 - **Harness reaping applies to ALL long background jobs, not just renders** — a 10-min master
   build got killed mid-measure. Anything over ~2 min goes schtasks + done-marker + Monitor.
+
+## Audio levels + media budget hardening (ep6, 2026-08-17)
+- **Insert audibility is a FILE problem, not an attr problem.** NPR hook insert sat at
+  data-volume 1.0 and was still 6.8 dB under narration — the source wav was quiet.
+  Gain-normalize insert FILES to the narration median (measure with volumedetect) before the
+  mixdown gate. `alimiter` boosts by default (`level=1`); pass `level=0` or check the result —
+  it overshot two inserts +5 dB before correction.
+- **`scripts/audio_levels.py` is the gate for this** (run before every mixdown build):
+  effective dB = file mean_volume + 20·log10(data-volume); narration median is the reference;
+  inserts must land ±2.5 dB of it; music beds fail if >30 dB under; beds warn when competing
+  with voice. Catches the ep6 NPR defect and the ep6-v1 "score at 0.08 = silent" defect.
+- **`optimize_clips.py` now escalates crf (23→27→31) until under the 150 MB media budget and
+  PRESERVES audio** (aac copy-encode; silent track muxed for mute clips). The old `-an` pass
+  forced a 15-clip re-mux ritual + 36-clip silent-track patch every optimize run — retired.
+  Measured ep6: 51 clips crf23 = 194 MB, crf27 = 143 MB; crf27 invisible under archival grain.
