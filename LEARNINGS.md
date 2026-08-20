@@ -781,6 +781,8 @@ Two silent failure modes in one script, both hit on ep5:
   rule is not about optimize_clips.py — it is about `-an` in ANY batch: exclude every
   element mounted un-muted / data-has-audio from the batch, and ffprobe all audible
   elements for an audio stream as the last step before any render.
+  (2026-08-17: optimize_clips.py itself now preserves audio + muxes silence for mute
+  clips — see "Audio levels + media budget hardening". The any-ad-hoc-batch rule stands.)
   **Corollary (ep5 v4, 2026-08-12): a "lost" source is probably in `media/_orig/`.**
   Two audio-stripped sources triggered a re-download hunt (Wayback CDX + Brightcove id
   spelunking for a Gannett CDN mp4) while byte-identical audio-bearing originals sat in
