@@ -1114,7 +1114,7 @@ const GUMROAD_URL='https://paulraymond.gumroad.com/l/ebook';
   const update=()=>{
     const on=pastHero&&!offerVisible;
     bar.classList.toggle('on',on);
-    bar.setAttribute('aria-hidden',String(!on));
+    bar.inert=!on;
   };
   new IntersectionObserver(([e])=>{pastHero=!e.isIntersecting;update();},{threshold:0}).observe(hero);
   new IntersectionObserver(([e])=>{offerVisible=e.isIntersecting;update();},{threshold:.15}).observe(offer);
