@@ -44,6 +44,9 @@ for m in re.finditer(r"<(audio|video)\b([^>]*)>", html):
     vol = re.search(r'data-volume="([\d.]+)"', attrs)
     if not (src and eid):
         continue
+    # Videos without data-volume are muted BY CONVENTION (DESIGN.md "muted-clips
+    # default") — hyperframes mounts them silent, so skipping them is correct.
+    # An audible video always carries an explicit data-volume in this repo.
     v = float(vol.group(1)) if vol else (1.0 if m.group(1) == "audio" else 0.0)
     if v <= 0:
         continue
