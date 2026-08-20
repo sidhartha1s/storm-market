@@ -1,0 +1,99 @@
+"""Audio-level gate: every audible element lands where its class belongs.
+
+Why this exists: ep6 shipped a mixdown where the NPR hook insert was 6.8 dB
+quieter than narration (source wav quiet, attr volume already 1.0) and an
+earlier cut had a score bed at data-volume 0.08 — inaudible under a -16 LUFS
+mix. Both defects are three numbers per element; a human ear catches them only
+after a full listen. Mechanical, repeated, must never be forgotten -> code.
+
+Checks (effective dB = file mean_volume + 20*log10(data-volume)):
+  1. Narration (nx-*): reference = median; any segment >3 dB off median = FAIL.
+  2. Inserts (ins-*): effective level within +/-2.5 dB of narration ref = FAIL
+     otherwise ("dispatch must be as audible as narration" — owner 2026-08-17).
+  3. Beds/SFX/music (sx-*): effective level must sit BELOW narration ref
+     (never competes) and ABOVE ref-30 dB (audible at all). WARN outside,
+     FAIL only if a music bed (sx-mus-*) is inaudible (<ref-30).
+  4. Audible video clips (data-volume>0): WARN if above narration ref
+     (clip audio shouting over voice).
+
+Usage: python3 scripts/audio_levels.py episodes/<slug>
+Exit 0 = pass. Exit 1 = level defects, do not build the mixdown yet.
+"""
+import math
+import re
+import statistics
+import subprocess
+import sys
+from pathlib import Path
+
+ep = Path(sys.argv[1])
+html = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
+
+def file_mean_db(p):
+    out = subprocess.run(
+        ["ffmpeg", "-i", str(p), "-map", "0:a:0", "-af", "volumedetect",
+         "-f", "null", "-"], capture_output=True, text=True).stderr
+    m = re.search(r"mean_volume: (-?[\d.]+) dB", out)
+    return float(m.group(1)) if m else None
+
+els = []
+for m in re.finditer(r"<(audio|video)\b([^>]*)>", html):
+    attrs = m.group(2)
+    src = re.search(r'src="([^"]+)"', attrs)
+    eid = re.search(r'id="([^"]+)"', attrs)
+    vol = re.search(r'data-volume="([\d.]+)"', attrs)
+    if not (src and eid):
+        continue
+    v = float(vol.group(1)) if vol else (1.0 if m.group(1) == "audio" else 0.0)
+    if v <= 0:
+        continue
+    els.append((eid.group(1), src.group(1), v))
+
+cache, rows = {}, []
+for eid, src, v in els:
+    p = ep / src
+    if src not in cache:
+        cache[src] = file_mean_db(p) if p.exists() else None
+    mean = cache[src]
+    if mean is None:
+        rows.append((eid, src, v, None, None))
+        continue
+    rows.append((eid, src, v, mean, mean + 20 * math.log10(v)))
+
+narr = [eff for eid, _, _, _, eff in rows if eid.startswith("nx-") and eff is not None]
+if not narr:
+    print("[audio_levels] FAIL — no nx-* narration elements found")
+    raise SystemExit(1)
+ref = statistics.median(narr)
+print(f"[audio_levels] narration reference (median of {len(narr)} nx-*): {ref:.1f} dB")
+
+fails, warns = [], []
+for eid, src, v, mean, eff in rows:
+    if eff is None:
+        fails.append(f"{eid}: no audio stream / unreadable ({src})")
+        continue
+    d = eff - ref
+    if eid.startswith("nx-"):
+        if abs(d) > 3.0:
+            fails.append(f"{eid}: narration {d:+.1f} dB off reference")
+    elif eid.startswith("ins-"):
+        if abs(d) > 2.5:
+            fails.append(f"{eid}: insert {d:+.1f} dB vs narration (fix the FILE gain, attr vol is {v})")
+    elif eid.startswith("sx-"):
+        if eid.startswith("sx-mus") and d < -30:
+            fails.append(f"{eid}: music bed inaudible ({d:+.1f} dB vs narration)")
+        elif d > -3:
+            warns.append(f"{eid}: bed only {d:+.1f} dB under narration — competes with voice")
+        elif d < -30:
+            warns.append(f"{eid}: bed {d:+.1f} dB vs narration — near-inaudible, intended?")
+    else:  # audible video clip
+        if d > 0:
+            warns.append(f"{eid}: clip audio {d:+.1f} dB ABOVE narration")
+
+for w in warns:
+    print(f"  warn  {w}")
+for f in fails:
+    print(f"  FAIL  {f}")
+print(f"[audio_levels] {'FAIL' if fails else 'PASS'} — {len(rows)} audible elements, "
+      f"{len(fails)} failures, {len(warns)} warnings")
+raise SystemExit(1 if fails else 0)
