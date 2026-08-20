@@ -79,9 +79,11 @@ New session: read this FIRST, then repo CLAUDE.md + DESIGN.md + LEARNINGS.md (to
   (contents = exit code), log `render_draft.log`. Monitor log-mtime for stalls (>12 min).
 - Cheap render monitoring: /loop 3m cron reading the log tail (ScheduleWakeup is INVISIBLE
   to the owner — use CronCreate loops).
-- optimize_clips.py strips audio from EVERYTHING (`-an`) — audible clips (hook-hoist,
-  wwl-breach-water-1, ins04a/b, ins05, ins06 — all data-volume>0 in index.html) must get
-  audio re-muxed from media/_orig/ after any optimize pass.
+- optimize_clips.py (since 2026-08-17) preserves audio and muxes silence into mute clips;
+  crf escalates 23→27→31 until under the 150 MB budget. CAVEAT: it re-encodes from
+  media/_orig/ backups — any per-file gain fix applied AFTER an optimize pass (ep6 insert
+  normalization) is reverted by a rerun; run `scripts/audio_levels.py` after every optimize
+  pass to catch this.
 - Owner rules active this episode: batch ALL approval asks into ONE early message; hook has
   ZERO muted elements; a work order is a standing goal until verified done; deliver = artifact
   path the owner can eyeball.
