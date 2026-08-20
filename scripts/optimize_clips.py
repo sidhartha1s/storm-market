@@ -30,6 +30,8 @@ ep = Path(sys.argv[1])
 apply = "--apply" in sys.argv
 MARGIN = 1.5          # headroom over the longest window, so vdur() never clips a window
 GOP = 15              # draft renders at 15fps; a keyframe per second keeps seeks cheap
+BUDGET_MB = 150       # must match media_budget.py; crf escalates until under this
+CRF_LADDER = [23, 27, 31]  # ep6 measured: 51 clips at crf23 = 194 MB, crf27 = 143 MB
 
 h = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
 used = {}
