@@ -1,0 +1,12 @@
+import { chromium, chromiumExecutable } from './playwright_env.mjs';
+const browser = await chromium.launch({ headless: true, executablePath: chromiumExecutable() });
+const page = await browser.newPage();
+const errs = [];
+page.on('pageerror', e => errs.push('PAGEERROR: ' + e.message));
+page.on('console', m => { if (m.type() === 'error') errs.push('CONSOLE: ' + m.text()); });
+await page.goto('file:///C:/Users/Sidhartha/Automation Projects/storm-market/.worktrees/ep6-katrina/episodes/ep6-katrina-2005/index.html', { waitUntil: 'load', timeout: 30000 });
+await page.waitForTimeout(2500);
+const reg = await page.evaluate(() => Object.keys(window.__timelines || {}));
+console.log('registered timelines:', JSON.stringify(reg));
+console.log(errs.slice(0, 6).join('\n') || 'no page errors');
+await browser.close();

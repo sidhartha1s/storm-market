@@ -30,6 +30,8 @@ ep = Path(sys.argv[1])
 apply = "--apply" in sys.argv
 MARGIN = 1.5          # headroom over the longest window, so vdur() never clips a window
 GOP = 15              # draft renders at 15fps; a keyframe per second keeps seeks cheap
+BUDGET_MB = 150       # must match media_budget.py; crf escalates until under this
+CRF_LADDER = [23, 27, 31]  # ep6 measured: 51 clips at crf23 = 194 MB, crf27 = 143 MB
 
 h = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
 used = {}
@@ -68,27 +70,55 @@ if not apply:
     raise SystemExit(0)
 
 orig_dir.mkdir(parents=True, exist_ok=True)
-total_after = 0
-for src, mb, w, hgt, dur, keep in plan:
-    p = ep / src
-    backup = orig_dir / Path(src).name
-    if not backup.exists():
-        shutil.copy2(p, backup)
-    tmp = p.with_suffix(".opt.mp4")
-    cmd = ["ffmpeg", "-y", "-v", "error", "-i", str(p), "-t", f"{keep:.2f}",
-           "-an", "-vf", "scale=-2:'min(1080,ih)'", "-c:v", "libx264",
-           "-preset", "veryfast", "-crf", "23", "-g", str(GOP), "-pix_fmt", "yuv420p",
-           "-movflags", "+faststart", str(tmp)]
-    r = subprocess.run(cmd, capture_output=True, text=True)
-    if r.returncode != 0 or not tmp.exists():
-        print(f"FAILED {Path(src).name}: {r.stderr.strip()[:120]}")
-        tmp.unlink(missing_ok=True)
-        continue
-    tmp.replace(p)
-    after = p.stat().st_size / 1e6
-    total_after += after
-    print(f"{Path(src).name:44} {mb:7.1f} -> {after:6.1f} MB")
 
-print(f"\n{total_before:.0f} MB -> {total_after:.0f} MB "
-      f"({100 * (1 - total_after / total_before):.0f}% less to decode)")
+def has_audio(p):
+    out = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "a",
+                          "-show_entries", "stream=codec_type", "-of", "csv=p=0",
+                          str(p)], capture_output=True, text=True).stdout
+    return bool(out.strip())
+
+def encode(src_file, out_file, keep, crf, audio):
+    # Audio is PRESERVED (ep6 lesson: -an forced a re-mux ritual on every audible
+    # clip and a silent-track patch on every muted one — hyperframes >=0.7.109
+    # requires an audio stream on every mounted video). Clips with no audio get
+    # a silent track muxed in the same pass.
+    base = ["ffmpeg", "-y", "-v", "error", "-i", str(src_file)]
+    if audio:
+        maps = ["-map", "0:v", "-map", "0:a:0", "-c:a", "aac", "-b:a", "96k"]
+    else:
+        base += ["-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo"]
+        maps = ["-map", "0:v", "-map", "1:a", "-c:a", "aac", "-b:a", "32k", "-shortest"]
+    cmd = base + ["-t", f"{keep:.2f}", *maps,
+                  "-vf", "scale=-2:'min(1080,ih)'", "-c:v", "libx264",
+                  "-preset", "veryfast", "-crf", str(crf), "-g", str(GOP),
+                  "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(out_file)]
+    return subprocess.run(cmd, capture_output=True, text=True)
+
+for crf in CRF_LADDER:
+    total_after = 0
+    for src, mb, w, hgt, dur, keep in plan:
+        p = ep / src
+        backup = orig_dir / Path(src).name
+        if not backup.exists():
+            shutil.copy2(p, backup)
+        tmp = p.with_suffix(".opt.mp4")
+        r = encode(backup, tmp, keep, crf, has_audio(backup))
+        if r.returncode != 0 or not tmp.exists():
+            print(f"FAILED {Path(src).name}: {r.stderr.strip()[:120]}")
+            tmp.unlink(missing_ok=True)
+            total_after += p.stat().st_size / 1e6
+            continue
+        tmp.replace(p)
+        after = p.stat().st_size / 1e6
+        total_after += after
+        print(f"crf{crf} {Path(src).name:42} {mb:7.1f} -> {after:6.1f} MB")
+    print(f"\ncrf {crf}: {total_before:.0f} MB -> {total_after:.0f} MB "
+          f"({100 * (1 - total_after / total_before):.0f}% less to decode)")
+    if total_after <= BUDGET_MB:
+        break
+    if crf != CRF_LADDER[-1]:
+        print(f"still over the {BUDGET_MB} MB budget — escalating crf")
+if total_after > BUDGET_MB:
+    print(f"WARNING: {total_after:.0f} MB still over {BUDGET_MB} MB at crf "
+          f"{CRF_LADDER[-1]} — reduce clip count/length, don't render")
 print("originals in media/_orig/ — rebuild index.html, the window caps come from vdur()")

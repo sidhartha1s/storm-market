@@ -674,7 +674,9 @@ Two silent failure modes in one script, both hit on ep5:
 - **`-an` is unconditional** — it stripped the audio track from all 4 owner-gated INSERT
   clips (the whole point of an insert is its audio). Nothing warned. Restored from
   `media/_orig/` with `-c:a aac`. Rule: after ANY optimize pass, ffprobe the insert clips
-  for an audio stream before rendering.
+  for an audio stream before rendering. (2026-08-17: optimize_clips.py itself now preserves
+  audio + muxes silence for mute clips — see "Audio levels + media budget hardening". The
+  ffprobe-before-render rule stands for any ad-hoc batch.)
   **RECURRED on ep5 v3 (2026-08-12):** an ad-hoc media-budget crf pass re-encoded every
   mounted mp4 >900KB with `-an` and stripped ins-mckay again; render failed loud at
   `audio_processing_failed` (hyperframes' extractAudioFromVideo, stage "extract", found no
@@ -797,3 +799,22 @@ calfire-itf-willhappenagain) cause freezes — re-encode with -g 30 before the n
   (exit 9009). Use the full `...\Python312\python.exe` path.
 - **Harness reaping applies to ALL long background jobs, not just renders** — a 10-min master
   build got killed mid-measure. Anything over ~2 min goes schtasks + done-marker + Monitor.
+
+
+## Audio levels + media budget hardening (ep6, 2026-08-17)
+- **Insert audibility is a FILE problem, not an attr problem.** ep6's NPR hook insert sat at
+  data-volume 1.0 and was still 6.8 dB under narration — the source wav was quiet.
+  Gain-normalize insert FILES to the narration median before the mixdown gate. `alimiter`
+  boosts by default (`level=1`); pass `level=0` or check the result.
+- **`scripts/audio_levels.py` is the gate** (run before every mixdown build): effective dB =
+  file mean_volume + 20*log10(data-volume); narration median is the reference; inserts must
+  land within ±2.5 dB of it; music beds FAIL if >30 dB under (inaudible); beds warn when
+  competing with voice. Verified on ep6 (121 elements) + a negative test (quiet insert and
+  dead bed both caught, exit 1).
+- **`optimize_clips.py` now escalates crf (23→27→31) until under the 150 MB media budget and
+  PRESERVES audio** (source track re-encoded aac; silent track muxed into mute clips —
+  hyperframes ≥0.7.109 requires an audio stream on every mounted video). The old `-an` pass
+  and its re-mux ritual are retired. CAVEAT: it re-encodes from `media/_orig/` backups, so a
+  rerun reverts any per-file gain fix applied after a previous pass — audio_levels.py catches
+  this. Measured ep6: 51 clips crf23 = 194 MB, crf27 = 143 MB; crf27 invisible under archival
+  VHS grain.
