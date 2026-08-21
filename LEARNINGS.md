@@ -913,3 +913,12 @@ calfire-itf-willhappenagain) cause freezes — re-encode with -g 30 before the n
   PRESERVES audio** (aac copy-encode; silent track muxed for mute clips). The old `-an` pass
   forced a 15-clip re-mux ritual + 36-clip silent-track patch every optimize run — retired.
   Measured ep6: 51 clips crf23 = 194 MB, crf27 = 143 MB; crf27 invisible under archival grain.
+
+## No visible windows, ever (owner 2026-08-21)
+- schtasks interactive tasks pop a cmd window on the desktop. ALL scheduled/background
+  commands run through `scripts/run_hidden.vbs` (wscript, window style 0 — no flash):
+  `/tr "wscript.exe <abs>\scripts\run_hidden.vbs cmd.exe /c <abs>\scripts\render.cmd <slug> <mode>"`.
+  Never a bare `cmd /c` task action, never foreground `cmd //c` runs of render.cmd either.
+- render.cmd preflight also refuses when ≥3 heavy processes (e.g. leftover headless chrome
+  from QC runs) are alive — exit 2 with marker written but log untouched; kill QC browsers
+  first, then relaunch.
