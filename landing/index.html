@@ -1294,10 +1294,17 @@ const GUMROAD_URL='https://paulraymond.gumroad.com/l/ebook';
   const KEY='srh-toast-dismiss-until';
   const isDismissed=()=>{const t=+localStorage.getItem(KEY);return t&&Date.now()<t;};
 
+  const footerEl=document.querySelector('footer');
   const positionToast=()=>{
     const mobile=innerWidth<560;
     const barH=(bar&&bar.classList.contains('on'))?bar.getBoundingClientRect().height:0;
-    toast.style.bottom=(barH+(mobile?10:16))+'px';
+    // keep the toast clear of the footer's link row when it scrolls into view
+    let footerOverlap=0;
+    if(footerEl){
+      const fr=footerEl.getBoundingClientRect();
+      if(fr.top<innerHeight)footerOverlap=innerHeight-fr.top;
+    }
+    toast.style.bottom=(Math.max(barH,footerOverlap)+(mobile?10:16))+'px';
   };
   addEventListener('scroll',positionToast,{passive:true});
   addEventListener('resize',positionToast);
