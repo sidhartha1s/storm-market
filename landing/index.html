@@ -1270,6 +1270,75 @@ const GUMROAD_URL='https://paulraymond.gumroad.com/l/ebook';
   new IntersectionObserver(([e])=>{offerVisible=e.isIntersecting;update();},{threshold:.15}).observe(offer);
 })();
 
+// ---- Recently-bought toast ----
+// Bottom-left "social proof" card. First toast ~12s after load, visible ~6s, then a new
+// one every 25-45s. Dismissing (x) hides it for the rest of this session AND the next 24h
+// via a localStorage timestamp. Names/cities are decorative (not a real purchase feed).
+(function(){
+  const PEOPLE=[
+    ["Tom R.","San Antonio, TX"],["Linda K.","Tulsa, OK"],["Dale M.","Springfield, MO"],
+    ["Carol S.","Wichita, KS"],["Gene P.","Tampa, FL"],["Ruth A.","Baton Rouge, LA"],
+    ["Frank D.","Mobile, AL"],["Walt H.","Savannah, GA"],["Eleanor B.","Charlotte, NC"],
+    ["Pat G.","Columbia, SC"],["Roy N.","Nashville, TN"],["Diane W.","Little Rock, AR"],
+    ["Margaret C.","Omaha, NE"],["Sam O.","Des Moines, IA"],["Rosa V.","Columbus, OH"],
+    ["Betty J.","Jackson, MS"],["Harold F.","Louisville, KY"],["Nancy T.","Indianapolis, IN"],
+    ["Earl G.","Peoria, IL"],["Doris L.","Richmond, VA"],["Gerald K.","Amarillo, TX"],
+    ["Joan R.","Norman, OK"],["Wayne S.","Joplin, MO"],
+  ].map(([name,city])=>({name,city}));
+
+  const toast=document.getElementById('toast');
+  if(!toast)return;
+  const body=toast.querySelector('.body');
+  const closeBtn=toast.querySelector('.x');
+  const bar=document.getElementById('stickybar');
+  const KEY='srh-toast-dismiss-until';
+  const isDismissed=()=>{const t=+localStorage.getItem(KEY);return t&&Date.now()<t;};
+
+  const positionToast=()=>{
+    const mobile=innerWidth<560;
+    const barH=(bar&&bar.classList.contains('on'))?bar.getBoundingClientRect().height:0;
+    toast.style.bottom=(barH+(mobile?10:16))+'px';
+  };
+  addEventListener('scroll',positionToast,{passive:true});
+  addEventListener('resize',positionToast);
+
+  let lastIdx=-1;
+  const pick=()=>{
+    let i=Math.floor(Math.random()*PEOPLE.length);
+    if(PEOPLE.length>1)while(i===lastIdx)i=Math.floor(Math.random()*PEOPLE.length);
+    lastIdx=i;
+    return PEOPLE[i];
+  };
+
+  let hideTimer=null;
+  const show=()=>{
+    if(isDismissed())return;
+    const {name,city}=pick();
+    const mins=3+Math.floor(Math.random()*56);
+    body.innerHTML=`<b>${name}</b> from ${city} just got The Storm-Ready Home<span class="when">${mins}m ago</span>`;
+    positionToast();
+    toast.classList.add('on');
+    clearTimeout(hideTimer);
+    hideTimer=setTimeout(()=>toast.classList.remove('on'),6000);
+  };
+
+  closeBtn.addEventListener('click',()=>{
+    localStorage.setItem(KEY,Date.now()+24*3600*1000);
+    clearTimeout(hideTimer);
+    toast.classList.remove('on');
+  });
+
+  if(!isDismissed()){
+    setTimeout(function loop(){
+      show();
+      setTimeout(loop,25000+Math.random()*20000);
+    },12000);
+  }
+
+  // exposed for the screenshot/QC pass — force-shows one toast immediately
+  window.__showToast=show;
+})();
+
 </script>
 
 </body>
