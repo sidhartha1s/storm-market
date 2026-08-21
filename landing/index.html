@@ -715,36 +715,42 @@ footer .small{color:#7e8783}
     <p class="lead">Every chapter applies to every reader — hazards are not exclusive. What your
       region changes is the order. The front matter hands you your ordered first ten, and the
       60-day sequence takes the rest.</p>
-    <div class="regionpick">
-      <div role="tablist" aria-label="Regions">
-        <button role="tab" id="rt0" aria-selected="true" aria-controls="rp0">Tornado Alley</button>
-        <button role="tab" id="rt1" aria-selected="false" aria-controls="rp1">Hurricane Coast</button>
-        <button role="tab" id="rt2" aria-selected="false" aria-controls="rp2">Wildfire West</button>
-        <button role="tab" id="rt3" aria-selected="false" aria-controls="rp3">Ice &amp; Snow North</button>
-        <button role="tab" id="rt4" aria-selected="false" aria-controls="rp4">Quake West</button>
-      </div>
-      <div>
-        <div class="region on" role="tabpanel" id="rp0" aria-labelledby="rt0">
+    <div class="regionpick" role="tablist" aria-label="Regions">
+      <div class="rcard on" data-region="tornado" role="tab" id="rt0" aria-selected="true" aria-controls="rp0" tabindex="0">
+        <div class="rcard-label">Tornado Alley</div>
+        <div class="rcard-body" role="tabpanel" id="rp0" aria-labelledby="rt0">
           <h3>Tornado Alley</h3>
           <div class="st">KS · OK · TX · NE · IA · MO · AR · IL · IN · KY · TN · N. AL · MS</div>
           <ol><li>Safe room selection</li><li>The helmet rule</li><li>Two alert paths</li><li>NOAA radio, SAME</li></ol>
         </div>
-        <div class="region" role="tabpanel" id="rp1" aria-labelledby="rt1">
+      </div>
+      <div class="rcard" data-region="hurricane" role="tab" id="rt1" aria-selected="false" aria-controls="rp1" tabindex="-1">
+        <div class="rcard-label">Hurricane Coast</div>
+        <div class="rcard-body" role="tabpanel" id="rp1" aria-labelledby="rt1">
           <h3>Hurricane Coast</h3>
           <div class="st">TX · LA · MS · AL · FL · GA · SC · NC · VA · MD · DE · NJ · NY · New England</div>
           <ol><li>Leave-early trigger</li><li>Window protection</li><li>Garage door bracing</li><li>Sealed roof deck</li></ol>
         </div>
-        <div class="region" role="tabpanel" id="rp2" aria-labelledby="rt2">
+      </div>
+      <div class="rcard" data-region="wildfire" role="tab" id="rt2" aria-selected="false" aria-controls="rp2" tabindex="-1">
+        <div class="rcard-label">Wildfire West</div>
+        <div class="rcard-body" role="tabpanel" id="rp2" aria-labelledby="rt2">
           <h3>Wildfire West</h3>
           <div class="st">CA · OR · WA · ID · MT · NV · UT · AZ · NM · CO · WY</div>
           <ol><li>Ember vents, Zone 0</li><li>Defensible space</li><li>Red Flag &amp; evac zone</li><li>MERV-13 filtration</li></ol>
         </div>
-        <div class="region" role="tabpanel" id="rp3" aria-labelledby="rt3">
+      </div>
+      <div class="rcard" data-region="ice" role="tab" id="rt3" aria-selected="false" aria-controls="rp3" tabindex="-1">
+        <div class="rcard-label">Ice &amp; Snow North</div>
+        <div class="rcard-body" role="tabpanel" id="rp3" aria-labelledby="rt3">
           <h3>Ice &amp; Snow North</h3>
           <div class="st">MN · WI · MI · ND · SD · NY · VT · NH · ME · PA · OH</div>
           <ol><li>Pipe freeze prevention</li><li>Shut-off literacy</li><li>Warm-room consolidation</li><li>Generator siting</li></ol>
         </div>
-        <div class="region" role="tabpanel" id="rp4" aria-labelledby="rt4">
+      </div>
+      <div class="rcard" data-region="quake" role="tab" id="rt4" aria-selected="false" aria-controls="rp4" tabindex="-1">
+        <div class="rcard-label">Quake West</div>
+        <div class="rcard-body" role="tabpanel" id="rp4" aria-labelledby="rt4">
           <h3>Quake West</h3>
           <div class="st">CA · OR · WA · AK · HI · NV · UT · MO bootheel</div>
           <ol><li>Anchoring &amp; strapping</li><li>Gas shutoff literacy</li><li>Water store</li><li>Trauma kit</li></ol>
