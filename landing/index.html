@@ -403,6 +403,25 @@ footer .small{color:#7e8783}
   color:var(--sky-dim);letter-spacing:.06em;margin-top:2px}
 .stickybar .btn{padding:14px 28px;font-size:17px;white-space:nowrap;flex:0 0 auto}
 
+/* ---------- recent-purchase toast ---------- */
+.toast{position:fixed;left:16px;bottom:16px;z-index:45;max-width:300px;
+  background:var(--paper2);border:1px solid var(--line);border-radius:6px;
+  box-shadow:0 12px 28px rgba(60,48,20,.2);padding:12px 14px;
+  display:flex;gap:10px;align-items:flex-start;
+  transform:translateY(140%);opacity:0;transition:transform .4s ease,opacity .4s ease;
+  pointer-events:none}
+.toast.on{transform:translateY(0);opacity:1;pointer-events:auto}
+.toast .glyph{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:var(--red);
+  color:#fdf9ef;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.toast .body{flex:1;font-size:13.5px;line-height:1.4;color:var(--ink-soft)}
+.toast .body b{color:var(--ink)}
+.toast .body .when{display:block;font-family:var(--mono);font-size:11px;color:var(--faded);margin-top:3px}
+.toast .x{flex:0 0 auto;background:none;border:0;cursor:pointer;color:var(--faded);font-size:16px;
+  padding:2px;line-height:1;min-width:22px;min-height:22px}
+.toast .x:hover{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.toast{transition:opacity .25s}}
+@media (max-width:560px){.toast{left:10px;right:10px;max-width:none;bottom:10px;padding:10px 12px}}
+
 /* ---------- popups ---------- */
 .pop{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;
   padding:20px;background:rgba(12,14,15,.72)}
