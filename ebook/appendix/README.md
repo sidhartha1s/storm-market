@@ -193,6 +193,17 @@ readers reach first.
 
 ## Blockers
 
+0. **The dataset, `templates/packet.html`, and `ebook/build/book.css` had gone missing from `origin/main`
+   (2026-08-23).** `build.py --packets` failed outright — `state_data.csv does not exist` — because the
+   commit line that produced the sourced 51-row dataset (`40fb265` and its ancestors) was never actually
+   merged into main, despite this README describing the data as complete. The blobs were still reachable
+   (dangling, not garbage-collected), so `state_data.csv`, all nine `*.csv` fragments, `derive_agencies.py`,
+   `derive_hazards.py`, `derive_water.py`, `verify_urls.py`, `templates/packet.html`, and `book.css` were
+   recovered with `git checkout 40fb265 -- <path>` (data) and `git checkout ba14be0 -- ebook/build/book.css`
+   (the stylesheet `build.py` requires) rather than regenerated or invented. `build.py --check` now passes
+   51/51 again. **Someone should find out why that commit range never merged and fix the actual gap** — this
+   recovery unblocks the rehook feature but does not explain how main lost committed, sourced content.
+
 1. **Twelve of the fourteen sourced column groups collected, two genuinely incomplete by design.**
    Filled for all 51 rows: hazards, seasons, regions, `doi_phone`, `well_test_contact`, `em_phone`,
    `wind_deductible_note`; and near-complete `em_url`, `doi_url`, `doi_agency`, `well_test_url`,
