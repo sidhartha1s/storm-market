@@ -49,14 +49,15 @@ window.__timelines = window.__timelines || {};
      "everyone in the circle" ~27. Panel slides in; the field ring grows ON "circle over a map". */
   const tl = gsap.timeline({ paused: true });
   const P = "#g-circle-";
-  /* camera: wide Gulf view, slow push the whole window */
-  /* clamped so the plate always covers the frame (owner nit 4:54: left+bottom crop) */
-  function camPos(px, py, z) {
-    return { x: Math.min(0, Math.max(1920 - 2700 * z, 960 - px * z)),
-             y: Math.min(0, Math.max(1080 - 1669 * z, 540 - py * z)) };
+  /* camera (owner 4:55): storm + full 200-mile ring on the LEFT, glass panel on the RIGHT, never
+     overlapping. Field center (plate 1080,1290) is parked at screen (640,560); the ring's 512px
+     radius then spans x 128-1152 (panel starts at 1190) and y 48-1072 — fully in frame. The plate
+     ends at screen y≈863 at this framing; the bottom fade below hides that edge (g-mrgo pattern). */
+  function camAt(px, py, z, sx, sy) {
+    return { x: Math.min(0, Math.max(1920 - 2700 * z, sx - px * z)), y: sy - py * z };
   }
-  (function(){ const a = camPos(1100, 1250, 0.78), b = camPos(1100, 1250, 0.84);
-    tl.set(P+"cam", { scale: 0.78, x: a.x, y: a.y }, 0);
+  (function(){ const a = camAt(1080, 1290, 0.80, 640, 560), b = camAt(1080, 1290, 0.84, 640, 560);
+    tl.set(P+"cam", { scale: 0.80, x: a.x, y: a.y }, 0);
     tl.to(P+"cam", { scale: 0.84, x: b.x, y: b.y, duration: 31, ease: "none" }, 0); })();
   tl.set([P+"wind", P+"pres", P+"reach", P+"foot"], { autoAlpha: 0 }, 0);
   tl.set(P+"panel", { yPercent: -50 }, 0);
