@@ -159,7 +159,7 @@ for (const h of hosts) {
                    box: { left: r.left, top: r.top, right: r.right, bottom: r.bottom } });
       }
       return out;
-    }, { compId: h.comp, rel });
+    }, { compId: h.comp, rel, leafSrc: LEAF_FN });
     // C: comp-internal pair collisions
     for (let i = 0; i < nodes.length; i++) for (let j = i + 1; j < nodes.length; j++) {
       const a = nodes[i], b = nodes[j];
