@@ -922,3 +922,22 @@ calfire-itf-willhappenagain) cause freezes — re-encode with -g 30 before the n
 - render.cmd preflight also refuses when ≥3 heavy processes (e.g. leftover headless chrome
   from QC runs) are alive — exit 2 with marker written but log untouched; kill QC browsers
   first, then relaunch.
+
+## ep6 draft v2 review — text collisions were a CHECKER false negative (owner 2026-08-22)
+- **overlap_check v1 checked the wrong slices.** It sampled one instant per card/comp pair and
+  never looked at comp-INTERNAL text or mid-tween positions; every owner screenshot (AUG 23 over
+  the DEPRESSION chip, FLORIDA LANDFALL mangle, 80% twice) was in a class it did not sample.
+  v2: stage each comp (template → bare gsap page — loading the raw `<template>` file renders
+  NOTHING and silently PASSes), step 0.5s through the host window, post-transform bboxes of all
+  visible leaf text, pair intersection >25% of the smaller box, dup-fact strings, card zones vs
+  comp text. Two real bugs it then caught in its own first runs: the template staging (above) and
+  a card whose only line held an `<em>` had NO leaf → full-frame zone → "collided with everything".
+- **Rules now in DESIGN.md "On-screen text rules"**: zone occupancy, one fact one instance, no
+  decorative eyebrows, narration order/wording, glass under any text over footage, small text
+  never alone (BFMG). Encoded because the same four habits shipped in v1 AND v2.
+- **Pre-render frame composites without a render:** a one-shot playwright script can hide every
+  `[data-start]` element outside T, seek videos (`currentTime`), inject the comp template into
+  its host div and seek both timelines — ~5s per frame, faithful enough for layout QC at every
+  owner-flagged timestamp. Scratch-space only (tripwire: it reads, never authors).
+- **Source-ends-early is a source fact, not a window bug:** ins-hodges "cut before finishing" —
+  the C-SPAN pull itself ends at 7.44s; nothing to extend. Report it, don't pad.
