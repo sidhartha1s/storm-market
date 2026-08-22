@@ -79,7 +79,7 @@ const cardInfo = await page.evaluate(({ ids, leafSrc }) => {
     out[id] = { zone: u || { left: r.left, top: r.top, right: r.right, bottom: r.bottom }, texts };
   }
   return out;
-}, cards.map(c => c.id));
+}, { ids: cards.map(c => c.id), leafSrc: LEAF_FN });
 
 const interFrac = (a, b) => {
   const w = Math.min(a.right, b.right) - Math.max(a.left, b.left);
