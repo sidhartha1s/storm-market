@@ -286,23 +286,71 @@ def build_appendix(complete, per_page=PER_PAGE):
           f"{per_page} per page")
 
 
-def build_packets(complete, only=None):
+def make_qr_data_uri(data):
+    """PNG QR code, error-correction M, as a base64 data: URI so the packet stays a
+    standalone file (no separate image asset to lose track of)."""
+    try:
+        import qrcode
+    except ImportError:
+        sys.exit("FAIL: the 'qrcode' package is required for --rehook. Install with "
+                 "'pip install \"qrcode[pil]\"'.")
+    img = qrcode.make(data, error_correction=qrcode.constants.ERROR_CORRECT_M, box_size=10, border=2)
+    buf = BytesIO()
+    img.save(buf, format="PNG")
+    return "data:image/png;base64," + base64.b64encode(buf.getvalue()).decode("ascii")
+
+
+def build_packets(complete, only=None, rehook=False):
     tpl = read_template("packet.html")
     table = region_first_ten()
-    directory = OUT / "packets"
+    directory = OUT / ("packets-free" if rehook else "packets")
     directory.mkdir(parents=True, exist_ok=True)
+
+    rehook_html = ""
+    if rehook:
+        qr_uri = make_qr_data_uri(REHOOK_URL)
+        rehook_html = read_template("rehook.html").replace("{{qr_data_uri}}", qr_uri)
+
     written = 0
     for row in complete:
         if only and row["abbr"] not in only:
             continue
         target = directory / f"{row['abbr']}.html"
         title = f"The Storm-Ready Home {D} {row['state']} State Packet"
-        body = fill(tpl, row, first_ten=first_ten_html(row, table))
+        body = fill(tpl, row, first_ten=first_ten_html(row, table)) + rehook_html
         target.write_text(document(title, body), encoding="utf-8")
         written += 1
-    print(f"wrote {written} packet(s) to {directory}")
+    print(f"wrote {written} packet(s) to {directory}" + (" (FREE edition, +rehook page)" if rehook else ""))
     if not written:
         sys.exit("FAIL: no packets written — no complete rows matched.")
+
+
+def render_pdfs(directory):
+    """Chrome headless print-to-pdf, one packet at a time. Chrome refuses a relative
+    --print-to-pdf path with 'Access is denied', so every path here is resolved absolute
+    (same constraint review_pdf.py works around)."""
+    html_files = sorted(directory.glob("*.html"))
+    if not html_files:
+        sys.exit(f"FAIL: no .html files in {directory} — run --packets first.")
+    for html_path in html_files:
+        pdf_path = html_path.with_suffix(".pdf").resolve()
+        subprocess.run(
+            [CHROME, "--headless=new", "--disable-gpu", "--no-pdf-header-footer",
+             f"--print-to-pdf={pdf_path}", html_path.resolve().as_uri()],
+            check=True, capture_output=True,
+        )
+    print(f"wrote {len(html_files)} PDF(s) in {directory}")
+
+
+def build_zip(directory, zip_name):
+    pdfs = sorted(directory.glob("*.pdf"))
+    if not pdfs:
+        sys.exit(f"FAIL: no .pdf files in {directory} — run --pdf first.")
+    zip_path = OUT / zip_name
+    with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
+        for pdf in pdfs:
+            zf.write(pdf, arcname=pdf.name)
+    print(f"wrote {zip_path} — {len(pdfs)} PDF(s), {zip_path.stat().st_size / 1_048_576:.1f} MB")
 
 
 def main():
