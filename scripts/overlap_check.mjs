@@ -135,13 +135,14 @@ for (const h of hosts) {
   const activeCardsAt = (t) => cards.filter(c => t >= c.start && t <= c.start + c.dur && cardInfo[c.id]);
   for (let rel = 0.4; rel < h.dur; rel += STEP) {
     const tAbs = h.start + rel;
-    const nodes = await p2.evaluate(({ compId, rel }) => {
+    const nodes = await p2.evaluate(({ compId, rel, leafSrc }) => {
+      const isLeaf = eval(leafSrc);
       const tl = (window.__timelines || {})[compId];
       if (tl && tl.seek) { tl.pause && tl.pause(); tl.seek(rel); }
       const out = [];
       for (const el of document.querySelectorAll('div,span,text,tspan')) {
         if (!el.textContent || !el.textContent.trim()) continue;
-        if (el.children.length > 0 && el.tagName.toLowerCase() !== 'text') continue;
+        if (!isLeaf(el) && el.tagName.toLowerCase() !== 'text') continue;
         let vis = true, n = el;
         while (n && n !== document.body) {
           const s = getComputedStyle(n);
