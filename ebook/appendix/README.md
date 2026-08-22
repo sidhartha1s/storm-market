@@ -146,12 +146,20 @@ python3 build.py --check                 # validate the CSV only, exit 1 on any 
 python3 build.py --appendix              # writes out/appendix-b.html
 python3 build.py --packets               # writes out/packets/<abbr>.html for every complete row
 python3 build.py --packets --only IL,TX  # a subset while iterating
+
+# PDF + zip, per edition:
+python3 build.py --pdf --zip                    # default edition: out/packets/*.pdf ->
+                                                 #   out/The-Storm-Ready-Home-State-Packets.zip
+python3 build.py --packets --rehook             # FREE edition HTML: out/packets-free/<abbr>.html
+python3 build.py --pdf  --rehook                # FREE edition PDF:  out/packets-free/<abbr>.pdf
+python3 build.py --zip  --rehook                # -> out/The-Storm-Ready-Home-State-Packets-FREE.zip
 ```
 
-Then the HTML goes through the same `fitcheck.mjs` gate as the rest of the book, and the packets go through
-Chrome `--print-to-pdf` with an **absolute** output path.
+Then the HTML goes through the same `fitcheck.mjs` gate as the rest of the book, and `--pdf` drives Chrome
+`--print-to-pdf` with an **absolute** output path (`build.py`'s own `render_pdfs()` now does this — see
+"Two editions, one flag" below for why there are two output directories).
 
-## Packet structure — 4 pages
+## Packet structure — 4 pages (5 in the FREE edition)
 
 1. **Your state, your three hazards** — with season windows, and your region's first-ten protection list.
 2. **Who to call** — emergency management, insurance regulator, energy assistance, well testing, with the
@@ -160,6 +168,28 @@ Chrome `--print-to-pdf` with an **absolute** output path.
    note, the emergency refill law, the disconnection protections.
 4. **Your one-page plan** — a condensed version of the binder front sheet, pre-filled with the state's
    specifics.
+5. **FREE edition only — the rehook page** (`--rehook`). A closing page pointing the reader at the paid
+   book: kicker, headline, six bullet points ending in the price, and a centered QR code (`templates/
+   rehook.html` + the `.rehook`/`.rh-*` rules in `templates/packet.css`). The QR encodes
+   `https://paulraymond.online/packet?utm_source=packet&utm_medium=pdf&utm_campaign=qr` at
+   error-correction M via the `qrcode` package (`pip install "qrcode[pil]"` if missing), embedded as a
+   base64 PNG data URI so the packet stays one standalone file. Never appears in the default build —
+   paid-bundle buyers already own the book.
+
+### Two editions, one flag
+
+`--rehook` switches `build_packets()` to `out/packets-free/` instead of `out/packets/` and appends the
+5th page; every other flag (`--pdf`, `--zip`) follows the same switch so the two editions never collide
+on disk. Two Gumroad products consume the two zips:
+
+| Zip | Gumroad product | Contains |
+|---|---|---|
+| `out/The-Storm-Ready-Home-State-Packets.zip` (no `--rehook`) | paid ebook bundle, `cYjHuPgp7BYJuqTbibM1tA==` | 51 four-page packets, no QR page |
+| `out/The-Storm-Ready-Home-State-Packets-FREE.zip` (`--rehook`) | free packet product, `pZ-CrhNGscFjV5NENkQsQg==` | 51 five-page packets, QR page closes each one |
+
+Re-run both editions and re-upload both zips whenever `state_data.csv` or either template changes — one
+zip going stale while the other updates is worse than neither updating, since the FREE edition is the one
+readers reach first.
 
 ## Blockers
 
