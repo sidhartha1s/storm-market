@@ -50,10 +50,13 @@ window.__timelines = window.__timelines || {};
   /* the bar crawls 40 years and stalls at 65% on the spoken number */
   tl.to(P+"fill", { width: "65%", duration: 4.4, ease: "power1.inOut" }, 1.2);
   tl.fromTo(P+"pct", { autoAlpha: 0, scale: 1.8 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.in" }, 5.5);
-  /* subsidence: the whole bar sags on "sinks" */
-  tl.to(".gtm-bar-wrap", { y: 26, duration: 3.6, ease: "power1.inOut" }, 12.2);
-  tl.fromTo(P+"note", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 12.4);
-  tl.fromTo(P+"sink", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 15.8);
+  /* word-synced (a1-s4.words.json): "own problem" 8.5-9.8 · "sinks a little every year" 11.2-13.5 ·
+     "walls built ... drop below it in the next" 14.8-18.4 */
+  tl.fromTo(P+"note", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45 }, 8.6);
+  tl.to(".gtm-bar-wrap", { y: 26, duration: 3.6, ease: "power1.inOut" }, 11.3);
+  tl.fromTo(P+"sink", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.45 }, 11.4);
+  tl.to(P+"note", { autoAlpha: 0, y: -10, duration: 0.3 }, 14.6);
+  tl.fromTo(P+"note2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45 }, 14.9);
   tl.fromTo("#root", { scale: 1.0, transformOrigin: "center" }, { scale: 1.03, duration: 19, ease: "none" }, 0);
   tl.to("#root", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 18.7);
   window.__timelines["g-timeline"] = tl;
