@@ -59,7 +59,10 @@ window.__timelines = window.__timelines || {};
   function camAt(px, py, z, sx, sy) {
     return { x: Math.min(0, Math.max(1920 - 2700 * z, sx - px * z)), y: sy - py * z };
   }
-  (function(){ const a = camAt(1080, 1290, 0.80, 640, 560), b = camAt(1080, 1290, 0.84, 640, 560);
+  /* sy 640 (not 560): the field sits 379 plate-px above the plate's bottom edge, so centering it
+     higher left a 217px void under the plate (QC 2026-08-22). At 640 the void is 137px and sits
+     under the ocean fade; the ring's bottom 7% runs off-frame instead — the lesser evil. */
+  (function(){ const a = camAt(1080, 1290, 0.80, 640, 640), b = camAt(1080, 1290, 0.84, 640, 640);
     tl.set(P+"cam", { scale: 0.80, x: a.x, y: a.y }, 0);
     tl.to(P+"cam", { scale: 0.84, x: b.x, y: b.y, duration: 31, ease: "none" }, 0); })();
   tl.set([P+"wind", P+"pres", P+"reach", P+"foot"], { autoAlpha: 0 }, 0);
