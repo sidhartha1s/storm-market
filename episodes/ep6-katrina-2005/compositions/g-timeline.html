@@ -44,7 +44,7 @@ window.__timelines = window.__timelines || {};
      "sinks a little every year" 12.28, "dropped below it" ~16. */
   const tl = gsap.timeline({ paused: true });
   const P = "#g-timeline-";
-  tl.set([P+"pct", P+"note", P+"sink"], { autoAlpha: 0 }, 0);
+  tl.set([P+"pct", P+"note", P+"note2", P+"sink"], { autoAlpha: 0 }, 0);
   tl.fromTo(P+"title", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 0.3);
   tl.fromTo([P+"y0", P+"y1"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, stagger: 0.15 }, 0.8);
   /* the bar crawls 40 years and stalls at 65% on the spoken number */
