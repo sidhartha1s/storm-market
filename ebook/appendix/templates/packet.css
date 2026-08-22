@@ -209,3 +209,38 @@
 /* Three-region states (Alaska, Colorado, Hawaii, Montana, Nebraska, Utah, Wyoming) ran 3-25px
    past the page box, so the cover's vertical rhythm is tuned to the worst case rather than the
    common one. fitcheck.mjs over all 51 packets is the gate. */
+
+/* ---- page 5, the FREE-edition rehook (build.py --rehook only) ---- */
+
+.rehook { display: flex; flex-direction: column; align-items: center; text-align: center; }
+
+.rh-head {
+  font-family: var(--serif); font-size: 22pt; line-height: 1.16;
+  color: var(--ink); margin: 0 0 14pt; max-width: 4.3in;
+}
+
+.rh-list {
+  list-style: none; margin: 0 0 18pt; padding: 0;
+  font-family: var(--serif); font-size: 11pt; line-height: 1.7; color: var(--ink-soft);
+}
+.rh-list li { margin: 0; }
+.rh-list li:last-child { font-weight: 700; color: var(--amber); font-size: 13pt; }
+
+.rh-qr-wrap { margin: 0 0 16pt; }
+
+/* 2in = 50.8mm, comfortably above the 45mm floor. */
+.rh-qr { width: 2in; height: 2in; display: block; margin: 0 auto 8pt; }
+
+.rh-url {
+  font-family: var(--sans); font-size: 12pt; font-weight: 700;
+  letter-spacing: .01em; color: var(--ink); margin: 0 0 3pt;
+}
+.rh-scan {
+  font-family: var(--sans); font-size: 8.4pt; letter-spacing: .04em;
+  text-transform: uppercase; color: var(--ink-mute); margin: 0;
+}
+
+.rh-footer {
+  font-family: var(--sans); font-size: 8pt; letter-spacing: .06em;
+  color: var(--ink-mute); margin-top: auto;
+}
