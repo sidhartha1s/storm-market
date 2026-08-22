@@ -847,6 +847,9 @@ window.__timelines = window.__timelines || {};
   function drift(sel, at, dur) { tl.fromTo(sel, { scale: 1.0, transformOrigin: "center" }, { scale: 1.03, duration: dur, ease: "none" }, at); }
   /* card entrance: pop-in on the spoken cue (cards are track-3 mounted; the hard unmount is the exit) */
   function popIn(sel, at) { tl.fromTo(sel, { autoAlpha: 0, y: 16, scale: 1.12 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.4, ease: "power3.out" }, at); }
+  /* a1-s6: question lands on "how deep" 174.96; second line waits for "two different numbers" 181.2 */
+  tl.set("#p-d-steel .d2", { autoAlpha: 0 }, 0);
+  reveal("#p-d-steel .d2", 181.3);
 
   /* a3-s5 "who could not leave" — human-cost list */
   drift("#c-nocar-dark", 508.2, 5.9);
