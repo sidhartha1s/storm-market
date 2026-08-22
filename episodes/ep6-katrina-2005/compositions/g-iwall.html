@@ -93,7 +93,7 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"wsurf", { y: -3, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 31 }, 1.0);
   /* gauge lands on the numbers */
   tl.fromTo(P+"gauge", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 9.9);
-  tl.fromTo(P+"gauge-act", { scale: 1.5, transformOrigin: "left center" }, { scale: 1, duration: 0.35, ease: "power4.in" }, 10.12);
+  tl.fromTo(P+"gauge-act", { scale: 1.5, transformOrigin: "right center" }, { scale: 1, duration: 0.35, ease: "power4.in" }, 10.12);
   /* the lean: wall pivots at its base on "leaned" */
   tl.to(P+"wallgrp", { rotation: 4.5, transformOrigin: "791px 480px", duration: 2.2, ease: "power1.inOut" }, 16.5);
   /* gap opens on "gap" */
