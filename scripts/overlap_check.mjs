@@ -15,7 +15,7 @@ import path from 'path';
 
 const EXE = 'C:/Users/Sidhartha/AppData/Local/ms-playwright/chromium-1228/chrome-win64/chrome.exe';
 const STEP = 0.5;
-const AREA_FRAC = 0.08;
+const AREA_FRAC = 0.25;   // heavy overlap = garble; line-box touches of stacked title/subtitle are fine
 const epDir = path.resolve(process.argv[2] || '.');
 const indexPath = path.join(epDir, 'index.html');
 const html = fs.readFileSync(indexPath, 'utf8');
@@ -42,6 +42,12 @@ const normFact = (s) => {
   if (!/\d/.test(n) && n.length < 6) return null;
   return n;
 };
+
+// a text leaf = no children, or only inline emphasis children (<em>/<b>/<i>/<strong>/<sup>/<sub>).
+// Without this a card whose only line holds an <em> had NO leaves, fell back to the full-frame
+// section rect, and "collided" with everything (p-cap-npr, 2026-08-22).
+const LEAF_FN = `(el) => el.children.length === 0 ||
+  [...el.children].every(k => /^(EM|B|I|STRONG|SUP|SUB)$/.test(k.tagName))`;
 
 const browser = await chromium.launch({ headless: true, executablePath: EXE });
 const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
@@ -85,6 +91,12 @@ const interFrac = (a, b) => {
 };
 
 const findings = new Set();
+// pair findings keyed WITHOUT time so a persistent collision reports once with its time range
+const pairFinds = new Map();
+const addPair = (key, t) => {
+  const e = pairFinds.get(key);
+  if (e) { e.t1 = t; } else pairFinds.set(key, { t0: t, t1: t });
+};
 
 // Class A: card vs card (time overlap + zone intersection)
 for (let i = 0; i < cards.length; i++) for (let j = i + 1; j < cards.length; j++) {
@@ -152,7 +164,7 @@ for (const h of hosts) {
       if (a.ok || b.ok) continue;
       if (a.text === b.text && interFrac(a.box, b.box) > 0.9) continue; // same node seen twice
       if (interFrac(a.box, b.box) > AREA_FRAC)
-        findings.add(`comp-internal: ${h.comp} @${tAbs.toFixed(1)}s "${a.text.slice(0, 28)}" x "${b.text.slice(0, 28)}"`);
+        addPair(`comp-internal: ${h.comp} "${a.text.slice(0, 28)}" x "${b.text.slice(0, 28)}"`, tAbs);
     }
     // B: comp text vs active card zone; D: duplicate facts comp-vs-card and comp-internal
     const act = activeCardsAt(tAbs);
@@ -161,7 +173,7 @@ for (const h of hosts) {
       const f = normFact(text);
       if (!f) return;
       if (factSeen.has(f) && factSeen.get(f) !== who)
-        findings.add(`dup-fact: "${f}" shown twice @${tAbs.toFixed(1)}s (${factSeen.get(f)} + ${who})`);
+        addPair(`dup-fact: "${f}" shown twice (${factSeen.get(f)} + ${who})`, tAbs);
       else factSeen.set(f, who);
     };
     for (const nd of nodes) addFact(nd.text, h.comp);
@@ -171,7 +183,7 @@ for (const h of hosts) {
       for (const nd of nodes) {
         if (nd.ok) continue;
         if (interFrac(nd.box, cardInfo[c.id].zone) > AREA_FRAC)
-          findings.add(`sandwich: #${c.id} over ${h.comp} text "${nd.text.slice(0, 32)}" @${tAbs.toFixed(1)}s`);
+          addPair(`sandwich: #${c.id} over ${h.comp} text "${nd.text.slice(0, 32)}"`, tAbs);
       }
     }
   }
@@ -179,6 +191,8 @@ for (const h of hosts) {
 }
 await browser.close();
 
+for (const [k, v] of pairFinds)
+  findings.add(`${k} @${v.t0.toFixed(1)}${v.t1 > v.t0 ? '-' + v.t1.toFixed(1) : ''}s`);
 const out = [...findings];
 if (out.length) {
   console.log(`OVERLAP CHECK v2: ${out.length} finding(s)`);
