@@ -362,10 +362,21 @@ def main():
                              "fitcheck reports an overflow")
     parser.add_argument("--packets", action="store_true", help="render the per-state packets")
     parser.add_argument("--only", help="comma-separated state abbreviations")
+    parser.add_argument("--rehook", action="store_true",
+                        help="FREE edition only: add the buy-the-book QR page, and write to "
+                             "out/packets-free/ instead of out/packets/. Never applies to the "
+                             "paid bundle build — run --packets a second time WITHOUT --rehook "
+                             "for that.")
+    parser.add_argument("--pdf", action="store_true",
+                        help="Chrome print-to-pdf every packet in the --rehook (or default) "
+                             "output directory")
+    parser.add_argument("--zip", action="store_true",
+                        help="zip that directory's PDFs into out/The-Storm-Ready-Home-"
+                             "State-Packets[-FREE].zip")
     args = parser.parse_args()
 
-    if not (args.check or args.appendix or args.packets):
-        parser.error("nothing to do — pass --check, --appendix or --packets")
+    if not (args.check or args.appendix or args.packets or args.pdf or args.zip):
+        parser.error("nothing to do — pass --check, --appendix, --packets, --pdf or --zip")
 
     rows = load_rows()
     complete, problems = validate(rows)
@@ -383,7 +394,15 @@ def main():
     if args.appendix:
         build_appendix(complete, per_page=args.per_page)
     if args.packets:
-        build_packets(complete, only)
+        build_packets(complete, only, rehook=args.rehook)
+
+    directory = OUT / ("packets-free" if args.rehook else "packets")
+    if args.pdf:
+        render_pdfs(directory)
+    if args.zip:
+        zip_name = ("The-Storm-Ready-Home-State-Packets-FREE.zip" if args.rehook
+                   else "The-Storm-Ready-Home-State-Packets.zip")
+        build_zip(directory, zip_name)
 
 
 if __name__ == "__main__":
