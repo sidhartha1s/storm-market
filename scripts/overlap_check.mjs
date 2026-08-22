@@ -95,13 +95,30 @@ for (let i = 0; i < cards.length; i++) for (let j = i + 1; j < cards.length; j++
     findings.add(`card-vs-card: #${cards[i].id} + #${cards[j].id} co-occur ${t.toFixed(2)}s, zones intersect`);
 }
 
-// Classes B/C/D: per comp host, step the comp timeline through its whole window
+// Classes B/C/D: per comp host, step the comp timeline through its whole window.
+// Comps are <template>-wrapped — loading the raw file renders NOTHING (the v2.0 false-negative
+// that let the AUG 23 collision ship). Stage template content into a bare gsap page, same as
+// graphics_qc.standalone().
+const TMP = path.join(epDir, '.qc-tmp');
+if (!fs.existsSync(TMP)) fs.mkdirSync(TMP, { recursive: true });
+const stage = (file) => {
+  const raw = fs.readFileSync(file, 'utf8');
+  const t = raw.match(/<template>([\s\S]*?)<\/template>/);
+  const body = t ? t[1] : raw;
+  const out = path.join(TMP, 'ov-' + path.basename(file));
+  fs.writeFileSync(out, `<!doctype html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;width:1920px;height:1080px;background:#111;overflow:hidden}</style>
+<script src="../gsap.min.js"></script></head><body>${body}</body></html>`, 'utf8');
+  return out;
+};
 for (const h of hosts) {
   const compPath = path.join(epDir, h.compSrc);
   if (!fs.existsSync(compPath)) { findings.add(`missing comp file: ${h.compSrc}`); continue; }
   const p2 = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
-  await p2.goto('file:///' + compPath.replace(/\\/g, '/'));
+  await p2.goto('file:///' + stage(compPath).replace(/\\/g, '/'));
   await p2.waitForTimeout(500);
+  const reg = await p2.evaluate((id) => !!((window.__timelines || {})[id]), h.comp);
+  if (!reg) { findings.add(`comp timeline not registered when staged: ${h.comp}`); await p2.close(); continue; }
   const activeCardsAt = (t) => cards.filter(c => t >= c.start && t <= c.start + c.dur && cardInfo[c.id]);
   for (let rel = 0.4; rel < h.dur; rel += STEP) {
     const tAbs = h.start + rel;
