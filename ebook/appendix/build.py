@@ -7,10 +7,14 @@ every row must carry the date it was verified.
 """
 
 import argparse
+import base64
 import csv
 import html
 import re
+import subprocess
 import sys
+import zipfile
+from io import BytesIO
 from pathlib import Path
 
 HERE = Path(__file__).parent
@@ -18,6 +22,12 @@ CSV_PATH = HERE / "state_data.csv"
 TEMPLATES = HERE / "templates"
 D = "—"          # em dash, used in generated titles
 BOOK_CSS = HERE.parent / "build" / "book.css"
+CHROME = r"C:/Program Files/Google/Chrome/Application/chrome.exe"
+
+# The FREE edition's closing page. Buyers of the paid ebook bundle already own the book, so
+# the default build (no --rehook) must never carry this page — only the $0 Gumroad packet
+# product does.
+REHOOK_URL = "https://paulraymond.online/packet?utm_source=packet&utm_medium=pdf&utm_campaign=qr"
 
 # States per Appendix B page. fitcheck.mjs is the real gate on this number.
 # Dropped from 4 to 3 on 2026-08-02: adding energy_assist_phone to the Appendix B row pushed
