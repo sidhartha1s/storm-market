@@ -116,6 +116,27 @@ obfuscation.**
   `hyperframes check` + snapshot grid), plus targeted frames at every region changed since the
   last render. 18 frames on a 28-min cut is not a review (owner, ep2 v1).
 
+### On-screen text rules (owner review of ep6 draft v2, 2026-08-22 — the "3-4 recurring mistakes")
+- **Zone occupancy.** Screen zones: title (top-left), centre popup, lower-third, RHS panel,
+  source credit (a corner). ONE text element per zone per time window. Before placing any text,
+  list what occupies every zone during its window — INCLUDING where animated elements travel
+  (a chip that pans under a moving ring collides mid-tween). Intentional layering (a label ON a
+  map feature) carries `data-overlap-ok="reason"`. `scripts/overlap_check.mjs` enforces it:
+  0.5s steps, post-transform bboxes, comp-internal AND comp-vs-card pairs.
+- **One fact, one instance.** A date / percentage / number appears ONCE per frame. If the
+  graphic already prints "AUG 30", no popup says it again. (Dup-fact check in overlap_check.)
+- **No decorative eyebrows.** Kill "AUGUST 2005"-style eyebrows over a big "AUG 25". Functional
+  context only — the italic date line inside a glass panel (g-circle pattern) is the approved
+  form.
+- **Narration order, narration words.** Text reveals land in the order the voice says them and
+  use the voice's wording ("SOME HAD NO MONEY", not a rewritten paraphrase). Sync to
+  `audio/<seg>.words.json`; never "Yoda" (card-layout order).
+- **Any text over footage sits on glass.** `.glasscard` (rgba(10,16,24,.55), blur 18px, 1px
+  white@.14 border, radius 28) is the ONE treatment — no bare text on moving footage, no
+  mid-beat swap from footage to a dark card for readability.
+- **Small text never carries a moment alone (BFMG).** A quote card, a cost list, a headline
+  pair = glass card OVER footage. Dark-gradient `c-*dark` fillers are for ≤5s bridges only.
+
 ## Content ID / claims protocol (owner-settled 2026-07-22)
 
 Content ID cannot be scanned offline — the protocol is layered:
