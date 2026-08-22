@@ -788,9 +788,12 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#loop-l1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 18.1);
   tl.fromTo("#loop-l2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 20.3);
   /* D1 Abril popup + NPR caption reveals */
-  tl.fromTo("#st-d1", { autoAlpha: 0, y: 16, scale: 1.12 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.4, ease: "power3.out" }, 0.6);
-  tl.fromTo("#p-cap-npr .capvig", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 1.0);
-  tl.fromTo("#cap-npr", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power2.out" }, 1.2);
+  /* one thing at a time: clip alone → caption lands on the spoken line → date slams in on
+     "That report was wrong" over the rising water, holds 4.6s (owner 2026-08-22) */
+  tl.fromTo("#st-d1", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.in" }, 9.3);
+  tl.to("#st-d1", { autoAlpha: 0, y: -26, duration: 0.3, ease: "power2.in" }, 13.6);
+  tl.fromTo("#p-cap-npr .capvig", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 1.3);
+  tl.fromTo("#cap-npr", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power2.out" }, 1.4);
   /* src label fade for the hoist */
   tl.fromTo("#p-src-hoist .srclab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 4.3);
   /* hoist slow drift (SD upscale hides in motion) */
