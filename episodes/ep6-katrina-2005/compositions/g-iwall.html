@@ -48,14 +48,15 @@
       <rect id="g-iwall-wall" x="780" y="255" width="22" height="225" fill="#b9c2cc" stroke="#dde5ec" stroke-width="2"/>
       <rect id="g-iwall-sheetpile" x="784" y="480" width="14" height="95" fill="#7e8a96" stroke="#9aa7b4" stroke-width="1.5" stroke-dasharray="7 5"/>
     </g>
-    <text id="g-iwall-wallab" class="gi-lab-sm" x="700" y="238" fill="#dde5ec">FLOODWALL</text>
-    <!-- design vs actual gauge -->
+    <text id="g-iwall-wallab" class="gi-lab-sm" x="791" y="236" text-anchor="middle" fill="#dde5ec">FLOODWALL</text>
+    <!-- design vs actual gauge: ruler at x=700, readings end-anchored LEFT of it so no text
+         crosses the ruler line or the wall -->
     <g id="g-iwall-gauge" opacity="0">
-      <line x1="740" y1="255" x2="740" y2="600" stroke="#93a3b2" stroke-width="2"/>
-      <line x1="728" y1="270" x2="752" y2="270" stroke="#f5d98b" stroke-width="3"/>
-      <text class="gi-gauge" x="580" y="278" fill="#f5d98b">14 FT design</text>
-      <line x1="728" y1="360" x2="752" y2="360" stroke="#6fb3d9" stroke-width="3"/>
-      <text id="g-iwall-gauge-act" class="gi-gauge" x="560" y="352">10.5 FT actual</text>
+      <line x1="700" y1="255" x2="700" y2="600" stroke="#93a3b2" stroke-width="2"/>
+      <line x1="688" y1="270" x2="712" y2="270" stroke="#f5d98b" stroke-width="3"/>
+      <text class="gi-gauge" x="676" y="278" text-anchor="end" fill="#f5d98b">14 FT design</text>
+      <line x1="688" y1="360" x2="712" y2="360" stroke="#6fb3d9" stroke-width="3"/>
+      <text id="g-iwall-gauge-act" class="gi-gauge" x="676" y="368" text-anchor="end">10.5 FT actual</text>
     </g>
     <!-- gap wedge between wall base and soil -->
     <path id="g-iwall-gap" d="M802,470 L818,470 L806,600 L802,600 Z" fill="#0b0e13" opacity="0"/>
