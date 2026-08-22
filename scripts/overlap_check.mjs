@@ -56,7 +56,8 @@ await page.waitForTimeout(600);
 
 // card zones + card texts measured once on the bare index page (cards are static layouts; their
 // entrance tweens move them but they settle in their authored zone — the zone IS the reservation)
-const cardInfo = await page.evaluate((ids) => {
+const cardInfo = await page.evaluate(({ ids, leafSrc }) => {
+  const isLeaf = eval(leafSrc);
   const out = {};
   for (const id of ids) {
     const el = document.getElementById(id);
@@ -66,7 +67,7 @@ const cardInfo = await page.evaluate((ids) => {
     let u = null; const texts = [];
     for (const c of el.querySelectorAll('div,span,text')) {
       if (!c.textContent.trim()) continue;
-      if (c.children.length > 0) continue;
+      if (!isLeaf(c)) continue;
       const cr = c.getBoundingClientRect();
       if (cr.width < 2 || cr.height < 2) continue;
       texts.push(c.textContent.trim());
