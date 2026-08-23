@@ -151,7 +151,7 @@ instances (D2, D3, D16) get the amber serif variant so past-tense reads instantl
 | INS-03 | Nagin WWL radio outburst, Sept 1 | archive.org (#44) | claim-class | A6 |
 | INS-04 | WWL-TV coverage moments (2–3 distinct cuts across acts) | archive.org #38 | claim-class | A3/A4/A5 rehooks |
 | INS-05 | Bush "Again, Brownie, you're doing a heck of a job" | WH archive transcript + press-pool video (PD-FED) | PD-FED if WH feed | A6 |
-| INS-06 | Survivor testimony line (Dec 2005 House hearing) | #59 Democracy Now (verify terms) / #34 WH VTC | verify | A7 |
+| INS-06 | Survivor testimony line (Dec 2005 House hearing) — SHIPPED: Leah Hodges "we left body bags behind… her two children out" (C-SPAN row #53, local pull `media/audio-assert/ins06_house_testimony.mp4` @770.96s, 8.85s) | #53 C-SPAN (claim-class) | claim-class | A7 |
 | INS-07 | Honoré briefing beat | DVIDS sweep | PD-FED | A6 |
 
 ## LOOP TABLE (plant → pay; every act plants one and pays one)
