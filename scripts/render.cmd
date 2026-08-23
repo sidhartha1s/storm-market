@@ -56,6 +56,10 @@ REM cost tracks binary size (96.6 MB static ffprobe = 1.337s per spawn, 224 KB s
 REM 0.100s). A render fires ~200 probes. These two paths MUST resolve — media_budget.py
 REM fails the render if they do not, because a bad path silently falls back to the slow
 REM ffprobe on PATH and the deadline failure comes straight back. See LEARNINGS.md.
+REM hyperframes >=0.8 telemetry spawns DETACHED `node -e fetch(...)` children with no windowsHide
+REM = a visible console window per flush (owner 2026-08-23). Opt out unconditionally.
+set HYPERFRAMES_NO_TELEMETRY=1
+set DO_NOT_TRACK=1
 set HYPERFRAMES_FFPROBE_PATH=C:\Users\Sidhartha\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Shared_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.2-full_build-shared\bin\ffprobe.exe
 set HYPERFRAMES_FFMPEG_PATH=C:\Users\Sidhartha\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Shared_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.2-full_build-shared\bin\ffmpeg.exe
 REM worker count is tunable for RAM-tight full renders (fps30 workers use more memory than
