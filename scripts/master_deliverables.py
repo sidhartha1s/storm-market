@@ -74,9 +74,35 @@ def encode_hevc(master: Path, out: Path):
     mb = out.stat().st_size / 1e6
     print(f"      {out.name} — {mb:.0f} MB")
 
+def encode_2k(master: Path, out: Path):
+    """GPU h264 lanczos upscale of the finished master to 2560x1440 — the YouTube upload
+    file (1440p uploads get the higher VP9 bitrate tier). Audio bit-copied so the verified
+    -14 LUFS mix is untouched. Fails loud if NVENC is unavailable (same ffmpeg-build caveat
+    as encode_hevc). cq19 + 24M matches the ep1 2026-08-24 verified settings."""
+    print(f"[2K ] GPU 1440p -> {out.name} (h264_nvenc p5 cq19 24M, lanczos, audio copied) ...")
+    r = subprocess.run(
+        ["ffmpeg", "-hide_banner", "-y", "-i", str(master),
+         "-vf", "scale=2560:1440:flags=lanczos",
+         "-c:v", "h264_nvenc", "-preset", "p5", "-rc", "vbr",
+         "-cq", "19", "-b:v", "24M", "-maxrate", "34M", "-bufsize", "48M",
+         "-pix_fmt", "yuv420p", "-colorspace", "bt709",
+         "-color_primaries", "bt709", "-color_trc", "bt709",
+         "-c:a", "copy", "-movflags", "+faststart", str(out)],
+        capture_output=True, text=True)
+    if r.returncode != 0 or not out.exists() or out.stat().st_size == 0:
+        tail = r.stderr[-600:]
+        if "nvenc" in tail.lower():
+            sys.exit("2K FAILED: GPU NVENC unavailable (driver/ffmpeg mismatch). Use the "
+                     "PATH ffmpeg 8.1.1 build or update the Nvidia driver. Not falling "
+                     f"back to a software encode.\n{tail}")
+        sys.exit(f"2K encode failed:\n{tail}")
+    mb = out.stat().st_size / 1e6
+    print(f"      {out.name} — {mb:.0f} MB")
+
 def main():
-    argv = [a for a in sys.argv[1:] if a != "--hevc"]
+    argv = [a for a in sys.argv[1:] if a not in ("--hevc", "--no-2k")]
     want_hevc = "--hevc" in sys.argv[1:]
+    want_2k = "--no-2k" not in sys.argv[1:]
     if len(argv) != 2:
         sys.exit(__doc__)
     ep = Path(argv[0])
