@@ -800,10 +800,13 @@ window.__timelines = window.__timelines || {};
     popIn(parts[0], parseFloat(parts[1]));
   });
 
-  /* radio card: waveform bars pulse through the Nagin insert window */
+  /* radio card: waveform bars pulse WHILE Nagin speaks (ins-naginradio 1211.1+13.6) and go still
+     under the narrator — v3 had it inverted (owner 20:15). Each bar's repeat count lands its last
+     cycle at ≈1224.7 regardless of its own period. */
   document.querySelectorAll(".rwb").forEach(function(b, i) {
-    tl.to(b, { scaleY: 2.4 + 2.4 * Math.abs(Math.sin(i * 2.1)), duration: 0.4 + (i % 5) * 0.07,
-      ease: "sine.inOut", yoyo: true, repeat: 47 }, 1227.8 + (i % 7) * 0.08);
+    var dur = 0.4 + (i % 5) * 0.07;
+    tl.to(b, { scaleY: 2.4 + 2.4 * Math.abs(Math.sin(i * 2.1)), duration: dur,
+      ease: "sine.inOut", yoyo: true, repeat: Math.round(13.4 / dur) - 1 }, 1211.1 + (i % 7) * 0.08);
   });
 
   /* slow drift on low-motion video cuts (no asset sits static) */
