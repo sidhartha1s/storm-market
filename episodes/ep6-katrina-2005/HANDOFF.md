@@ -12,7 +12,7 @@ This handoff is obsolete: the episode is rendered, mastered, and PR'd. Final sta
   attribution block for the Wikimedia stills is in `metadata.md` — those credits are
   license-mandatory, not courtesy.
 - **Known accepted nits at ship:** vx-four1 (21:54) is the collapsed Twin Span aerial, not the
-  Gretna bridge (owner reviewed, "not a huge flag"); g-mrgo base image keeps its edge-cropped
+  Gretna bridge (owner: "not a huge flag", reviewing the spot himself); g-mrgo base image keeps its edge-cropped
   USGS legend (owner: keep the base image); designed dark-card holds trip freezedetect/
   blackdetect (list in LEARNINGS "ep6 ship").
 - **Patterns preserved** (episode folders get deleted after publish):
