@@ -13,8 +13,16 @@ reference: https://deapi.ai/llms.txt
 | `score-act5-tension.mp3` | tense cinematic strings ostinato, rising dread, no drums | 270s | ep5 act 5 (the trap) — LOUD source (mean −11.5 dB), mount ~0.08 |
 | `score-act6-close.mp3` | melancholic ambient piano + soft strings, grief and quiet hope | 300s | ep5 act 6 (close); `score-act6-ext.mp3` in ep5 media = self-crossfaded to 329.38s |
 | `test-dark-ambient-60s.mp3` | dark ambient drone, low strings, wildfire tension | 60s | validation test, usable as a bed |
+| `score-act1-darkambient.mp3` | dark ambient, sub-bass, slow dread (ep6 act 1 "the bowl") | 168s | ep6 act 1, mount ~0.2 |
+| `score-act2-unease.mp3` | uneasy strings/pad, storm forming (ep6 act 2) | 170s | ep6 act 2 |
+| `score-act3-urgent.mp3` | urgent pulsing strings, evacuation (ep6 act 3) | 215s | ep6 act 3 |
+| `score-act4-stormhybrid.mp3` | hybrid orchestral/drone, landfall (ep6 act 4) | 195s | ep6 act 4 |
 
-Total generation cost for all four: **$0.0080**.
+ep6 also reuses `score-act3-somber.mp3` (self-crossfaded to 243.5s as its act-7 bed) and
+`score-act6-close.mp3` (close). The ep6 act-6 bed is NOT DeAPI — it is the owner-pack
+industrial-pulse drone, loop-extended (see `../provenance.md`).
+
+Total generation cost, all tracks: under **$0.02**.
 
 ## Recipe (validated end-to-end 2026-08-13)
 
