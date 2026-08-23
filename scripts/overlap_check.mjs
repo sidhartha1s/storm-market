@@ -4,7 +4,8 @@
 // (AUG 30 twice, 80% twice) straight through it. v2 fixes both false-negative classes:
 //   1) For every comp host window, step the comp's OWN timeline densely (0.5s) and collect the
 //      bboxes of ALL visible leaf text nodes — post-transform, so camera pans/tweens count.
-//   2) Flag any text pair whose intersection exceeds 8% of the smaller box (comp-internal AND
+//   2) Flag any text pair whose intersection exceeds AREA_FRAC of the smaller box (25% — the
+//      initial 8% draft flagged line-box touches of stacked title/subtitle pairs; comp-internal AND
 //      comp-vs-active-card), unless either element carries data-overlap-ok="reason".
 //   3) Duplicate-fact: two visible nodes rendering the same normalized fact string (dates,
 //      percentages, numbers) at the same instant = FAIL — one fact, one on-screen instance.
