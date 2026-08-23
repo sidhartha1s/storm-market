@@ -76,8 +76,12 @@ shipped; these are the standing requirements for every episode's cold open:
   anchor voice, swell at impact, die into the void). No silent clips, no dead air.
 - **Inserts end on their complete emotional statement** — trim orphan tails ruthlessly
   ("we knew something was coming." — stop. Nothing after).
-- **End the hook with a 2-3s VOID (black + fading spine) before the narrator enters** — the
-  contrast is the hook's punctuation.
+- **End the hook with a 1.5s VOID (black + fading spine) before the narrator enters** — the
+  contrast is the hook's punctuation (was 2-3s; owner cut it 2026-08-16: 1.5s+ anywhere else
+  reads as dead air).
+- **Date/place popup (popfig) inside the first second**; the captioned anchor line appears
+  ONLY for the words it covers — match-cut the caption to where its text starts in the audio,
+  never show the tail text while the head is still being spoken (owner, ep6 v3).
 - Few clips, each earning its slot (ep2: warning → impact → dispatch → void). More clips ≠
   more captivating; undifferentiated montage is what scored 0.6.
 
