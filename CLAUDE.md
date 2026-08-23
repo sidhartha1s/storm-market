@@ -184,10 +184,15 @@ Per episode in `episodes/<slug>/`:
    on the final index.html; verify the artifact, not your memory (ep1 v2 RCA).**
    **The defects the owner names are a SAMPLE, not the set — dig for the rest yourself.**
 7. Deliverables per render, unasked: **`python3 scripts/master_deliverables.py
-   episodes/<slug> <render-basename> [--hevc]`** — one command produces the −14 LUFS master
-   (`-c:v copy` + measured gain, verified) AND the SRT (calls build_srt.py; requires the
-   `nx-*` narration audio-id convention). `--hevc` adds a ~2 GB GPU-HEVC master (hevc_nvenc,
-   audio bit-copied; needs the PATH ffmpeg 8.1.1, not the 8.1.2 shared build — see LEARNINGS).
+   episodes/<slug> <render-basename> [--hevc] [--no-2k]`** — one command produces the −14 LUFS
+   master (`-c:v copy` + measured gain, verified), the SRT (calls build_srt.py; requires the
+   `nx-*` narration audio-id convention), AND — default ON (owner order 2026-08-24) — the
+   **1440p YouTube upload file** (`-master-1440p.mp4`: h264_nvenc lanczos upscale, audio
+   bit-copied; a 1440p upload gets YouTube's higher VP9 bitrate tier — visibly cleaner
+   playback than the same content uploaded at 1080p; ~10 min, skip with `--no-2k`). Drafts
+   and previews stay 1080p as-is. `--hevc` adds a ~2 GB GPU-HEVC master (hevc_nvenc,
+   audio bit-copied). Both GPU steps need the PATH ffmpeg 8.1.1, not the 8.1.2 shared
+   build — see LEARNINGS.
    E2E-tested on ep2 2026-07-27. Plus updated
    `metadata.md` (titles,
    description, tags, chapters, AEO/SEO block, Education metadata: category Education, type
