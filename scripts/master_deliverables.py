@@ -1,17 +1,23 @@
 #!/usr/bin/env python3
 """Post-render deliverables: -14 LUFS master + SRT, per repo CLAUDE.md step 7.
 
-Usage: python3 scripts/master_deliverables.py episodes/<slug> <render-basename> [--hevc]
+Usage: python3 scripts/master_deliverables.py episodes/<slug> <render-basename> [--hevc] [--no-2k]
 
 e.g.:  python3 scripts/master_deliverables.py episodes/ep2-2011-super-outbreak ep2-final
        python3 scripts/master_deliverables.py episodes/ep3-tristate ep3-final --hevc
 
 Reads  episodes/<slug>/renders/<basename>.mp4 and writes:
-  renders/<basename>-master.mp4       (video stream copied, single measured gain,
-                                        aac 256k; verified -14 LUFS +/-0.5, TP <= -0.9)
-  renders/<basename>.srt              (via scripts/build_srt.py)
-  renders/<basename>-master-hevc.mp4  (--hevc only: GPU hevc_nvenc, audio bit-copied
-                                        from the master; ~2.5x smaller, visually lossless)
+  renders/<basename>-master.mp4        (video stream copied, single measured gain,
+                                         aac 256k; verified -14 LUFS +/-0.5, TP <= -0.9)
+  renders/<basename>.srt               (via scripts/build_srt.py)
+  renders/<basename>-master-1440p.mp4  (default, skip with --no-2k: GPU h264_nvenc
+                                         lanczos upscale to 2560x1440, audio bit-copied
+                                         from the master — THE YOUTUBE UPLOAD FILE; a
+                                         1440p upload gets YouTube's higher VP9 bitrate
+                                         tier, visibly cleaner playback than a 1080p
+                                         upload of identical content)
+  renders/<basename>-master-hevc.mp4   (--hevc only: GPU hevc_nvenc, audio bit-copied
+                                         from the master; ~2.5x smaller, visually lossless)
 
 Plain gain (not dynamic loudnorm) is deliberate: episode mixes land with tight
 LRA (~3.4 measured on ep2), where one measured gain preserves the mix exactly.
