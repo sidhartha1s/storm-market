@@ -163,6 +163,10 @@ def main():
         sys.exit("build_srt.py failed")
 
     outs = f"{master} + {ep/'renders'/(base + '.srt')}"
+    if want_2k:
+        up = ep / "renders" / f"{base}-master-1440p.mp4"
+        encode_2k(master, up)
+        outs += f" + {up}"
     if want_hevc:
         hevc = ep / "renders" / f"{base}-master-hevc.mp4"
         encode_hevc(master, hevc)
