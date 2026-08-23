@@ -53,6 +53,8 @@ p{margin:0 0 18px}
 .src{font-family:var(--mono);font-size:12px;color:var(--faded);letter-spacing:.01em;line-height:1.6}
 .pricerow{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;margin:0 0 30px}
 .pricerow .btn{flex:0 0 auto}
+.buywrap{display:flex;flex-direction:column;align-items:flex-end;text-align:right}
+@media (max-width:600px){.buywrap{align-items:stretch;text-align:left}}
 @media (max-width:600px){.pricerow{flex-direction:column;align-items:flex-start;gap:16px}.pricerow .btn{width:100%;text-align:center}}
 
 /* paper grain */
@@ -346,7 +348,7 @@ details p{margin:14px 0 0;color:var(--ink-soft);font-size:17px}
 
 /* ---------- last call (sky bookend) ---------- */
 .last{background:var(--sky);color:var(--sky-text);position:relative;overflow:hidden;
-  padding:96px 0;text-align:center}
+  padding:96px 0 56px;text-align:center}
 .last::before{content:"";position:absolute;inset:-30%;pointer-events:none;
   background:radial-gradient(50% 45% at 50% 0%,rgba(94,116,110,.3),transparent 65%),
              radial-gradient(45% 40% at 20% 90%,rgba(70,86,96,.32),transparent 60%)}
@@ -357,7 +359,7 @@ details p{margin:14px 0 0;color:var(--ink-soft);font-size:17px}
   clip-path:polygon(0 55%,3% 30%,7% 60%,11% 25%,15% 55%,19% 35%,24% 65%,28% 30%,33% 55%,37% 25%,42% 60%,46% 35%,51% 62%,55% 28%,60% 55%,64% 32%,69% 62%,73% 28%,78% 58%,82% 30%,86% 60%,90% 26%,95% 55%,100% 35%,100% 100%,0 100%)}
 .last .tear-flip{display:none}
 
-footer{padding:64px 0 42px;background:var(--sky);border-top:1px solid var(--sky-line);position:relative;overflow:hidden;
+footer{padding:8px 0 42px;background:var(--sky);position:relative;overflow:hidden;
   color:var(--sky-dim);font-size:14px}
 footer .wordmark{position:absolute;left:50%;bottom:-.18em;transform:translateX(-50%);
   font-family:var(--display);font-weight:900;font-size:clamp(70px,13vw,190px);letter-spacing:-.04em;
@@ -373,6 +375,7 @@ footer a{color:var(--sky-text)}
 footer .small{color:#7e8783}
 
 /* ---------- sticky CTA bar ---------- */
+@media (min-width:900px){.stickybar{display:none}}
 .stickybar{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--sky);
   border-top:1px solid var(--sky-line);box-shadow:0 -12px 30px rgba(0,0,0,.3);
   transform:translateY(110%);transition:transform .35s ease;padding:12px 0}
@@ -971,8 +974,10 @@ footer .small{color:#7e8783}
         <div><span>Total value</span><b>$120</b></div>
         <div class="pay-row"><span>You pay today</span><b>$47</b></div>
       </div>
-      <a class="btn" href="https://paulraymond.gumroad.com/l/ebook?wanted=true" id="buy">Get My Copy — $47</a>
-      <div class="pay">SECURE CHECKOUT · VISA · MASTERCARD · PAYPAL · APPLE PAY</div>
+      <div class="buywrap">
+        <a class="btn" href="https://paulraymond.gumroad.com/l/ebook?wanted=true" id="buy">Get My Copy — $47</a>
+        <div class="pay">SECURE CHECKOUT · VISA · MASTERCARD · PAYPAL · APPLE PAY</div>
+      </div>
       <div class="guarantee">
         <div class="seal">7-DAY<br>MONEY<br>BACK</div>
         <p><strong>Read it for a week on me.</strong> If it isn't the most useful book in your
@@ -1178,11 +1183,11 @@ document.getElementById('totop')?.addEventListener('click',()=>window.scrollTo({
   const KEY='srh-toast-dismiss-until';
   const isDismissed=()=>{const t=+localStorage.getItem(KEY);return t&&Date.now()<t;};
 
-  const footerEl=document.querySelector('footer');
+  const footerEl=document.querySelector('footer .small:last-of-type')||document.querySelector('footer');
   const positionToast=()=>{
     const mobile=innerWidth<560;
     const barH=(bar&&bar.classList.contains('on'))?bar.getBoundingClientRect().height:0;
-    // keep the toast clear of the footer's link row when it scrolls into view
+    // keep the toast clear of the footer's link row (last paragraph) when it scrolls into view
     let footerOverlap=0;
     if(footerEl){
       const fr=footerEl.getBoundingClientRect();
