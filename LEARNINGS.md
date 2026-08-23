@@ -939,5 +939,55 @@ calfire-itf-willhappenagain) cause freezes — re-encode with -g 30 before the n
   `[data-start]` element outside T, seek videos (`currentTime`), inject the comp template into
   its host div and seek both timelines — ~5s per frame, faithful enough for layout QC at every
   owner-flagged timestamp. Scratch-space only (tripwire: it reads, never authors).
-- **Source-ends-early is a source fact, not a window bug:** ins-hodges "cut before finishing" —
-  the C-SPAN pull itself ends at 7.44s; nothing to extend. Report it, don't pad.
+- **"Source ends early" — check what the SOURCE is before saying so (corrected 2026-08-23):**
+  ins-hodges "cut before finishing" was first answered "the C-SPAN pull ends at 7.44s, nothing to
+  extend". Wrong: the 7.44s file was OUR pull; the source is the local 39-minute C-SPAN hearing
+  (`media/audio-assert/ins06_house_testimony.mp4`, transcript alongside). Re-cut to the sentence
+  end (8.85s) and retimed everything after it by +1.55s. Never call a pull "the source".
+
+## ep6 ship (2026-08-23) — hyperframes 0.8.x, the hidden-console chain, and a preflight bug
+- **hyperframes 0.8.x opens a visible Windows Terminal tab per ffprobe/ffmpeg spawn on this
+  box; 0.7.109 does not.** Measured with a process watcher during a hidden demo render: every
+  `ffprobe.exe`/`ffmpeg.exe` child of the 0.8.10 render node got its own `conhost.exe` (a new
+  console) and `OpenConsole.exe` (a Windows Terminal tab) appeared at the same instants — with
+  the render launched through `run_hidden.vbs` exactly like the 0.7.109 renders that show
+  nothing. Owner saw "lots of CMDs, 4 at a time". 0.8.10 spawns its ffmpeg/ffprobe children with
+  different flags than 0.7.109 (eight `windowsHide:true` sites vs two, new stdio shapes) and
+  under node 24's libuv those allocate a fresh console. The telemetry opt-out
+  (`HYPERFRAMES_NO_TELEMETRY=1` / `DO_NOT_TRACK=1`) was a red herring — one detached `node -e
+  fetch` per run, not the tab source; the env stays set (harmless) but is not the fix.
+  **Decision (owner):** ep6 full render on 0.7.109 with the explicit, logged override
+  `RENDER_PIN_STALE_OK=1` (render_preflight.py prints `[OVERRIDE]`); pin stays 0.7.109 until an
+  upstream version spawns ffmpeg hidden. The 0.8.10 demo render itself PASSED (4m08s, mp4 on
+  disk) — the blocker is the windows, not the output. Kill rule: stop the TASK and kill its
+  process TREE from the task's root pid; `*hyperframes*`/`*pin_ritual*` command-line matches also
+  hit this session's own bash tool shells (and other sessions') — done twice, never again.
+- **render.cmd ran preflight BEFORE its own `set HYPERFRAMES_FF*_PATH` lines** → media_budget.py
+  measured the slow PATH ffprobe and refused the full render (marker 3). Reordered 2026-08-23:
+  env first, then preflight. The draft path had passed only because the PATH spawn happened to be
+  under the threshold that day.
+- **16 GB is not "room for everything".** frame composites (80 videos in one page) +
+  overlap_check + a demo render + faster-whisper concurrently → `mkl_malloc`, `uv_spawn EAGAIN`,
+  "Unable to capture screenshot" at frame 390. One browser-heavy job at a time; check
+  `FreePhysicalMemory` before launching (2.5 GB free → `RENDER_WORKERS=2`, 7.5 GB → 3).
+  Separately: the faster-whisper `small.en` cache on this box is corrupt (`mkl_malloc` regardless
+  of RAM) — use `base.en` int8.
+- **Subagent briefs must forbid `cd`.** Two Explore agents issued `cd`-prefixed Bash and produced
+  8+ permission prompts on the owner's screen in auto mode. Prefer Grep/Read in the main session;
+  any subagent with Bash gets "never cd; absolute paths only" in the brief.
+- **overlap_check v2 must `page.close()` the index page before staging comps** — the episode page
+  holds ~80 videos; keeping it open while staging 14 comps crashed the renderer ("Target
+  crashed"). Fixed in `scripts/overlap_check.mjs`.
+- **Gate noise to expect on a finished episode:** `sweep_episode.py` FAILs on src-less `<section>`
+  gradients (`?` rows: same-track overlap, adjacent duplicate, asset reuse, media exists) and on
+  stills >6s that the lint pacing report already lists — lint is the hard gate. `verify_render`
+  blackdetect (pix_th 0.10) flags every dark-card beat as "black" and freezedetect flags the
+  designed dark-card holds (ep6 final: 730.7/7.1s, 1120.6/8.0s, 1225.2/6.6s radio-widget tail,
+  1288.4/6.0s, 1494.4/11.4s) — read them against the timeline, they are not blank frames. Also:
+  ffmpeg progress uses `\r`, so `tail`/`grep` on verify output hides the `freeze_start` lines —
+  `tr '\r' '\n'` first, or run freezedetect with `-nostats`.
+- **Credits need provenance rows for EVERY still.** The seven owner-supplied Wikimedia stills
+  (charity-web-c*, hsdrrs-web-c*) had no provenance row; licence/author were pulled from the
+  Commons API and the files matched to the Commons thumbnails by a subagent before writing the
+  CC-BY attribution block (`media/provenance-wikimedia-stills.csv`). Four of the six used are
+  CC BY / CC BY-SA — attribution is mandatory, not courtesy.
