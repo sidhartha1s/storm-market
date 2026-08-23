@@ -13,7 +13,7 @@ post-render (LEARNINGS item 7 — these sources run ~15dB quieter than the ACE m
 | 04_distant_storm_rumble.mp3 | Pixabay | Pixabay license | distant thunder bed |
 | 05_town_evening_crickets.mp3 | Pixabay | Pixabay license | quiet-town evening ambience |
 | rain-loop.mp3 | self-made (acrossfade self-concat of 01) | derivative | 174s seamless loop |
-| wind-loop.mp3 | self-made (acrossfade self-concat of 02) | derivative | 183s seamless loop |
+| wind-loop.mp3 | self-made (acrossfade self-concat of 02) | derivative | 183s seamless loop — **BANNED as a bed (owner 2026-08-16, ep6 10:05: reads as unexplained "steady wind" under narration).** Kept only for transient gusts under on-screen wind. |
 
 Detailed per-file source URLs: `episodes/ep1-joplin/media/provenance.csv` (sfx rows).
 - sfx-rumble-bed-long.mp3 / sfx-swell.wav / sfx-boom.wav — ffmpeg-synthesized (anoisesrc brown/pink, sine 48Hz), 2026-08-12, ep5. Claim-free by construction.
