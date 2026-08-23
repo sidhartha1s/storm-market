@@ -183,8 +183,8 @@ hand-authored from this base, reusing its research + assets.
    sonic build. What fixed it: an intelligible ANCHOR line (Spann's live "tornado emergency")
    starting by ~2.5s; every cut lands ON an audio event; a siren spine that builds start→duck→
    swell→die; the insert trimmed to end on its complete emotional statement ("we knew something
-   was coming" — nothing after); date/place card in the first second; a 2-3s dead-silent VOID
-   before the narrator enters. Full contract in DESIGN.md — apply from ep3 scene one, don't
+   was coming" — nothing after); date/place card in the first second; a dead-silent VOID
+   before the narrator enters (2-3s then; **1.5s since the 2026-08-16 blackout table**). Full contract in DESIGN.md — apply from ep3 scene one, don't
    rediscover it.
 2. **Dual-scope statistics must be self-disambiguating in publish copy.** 324 (outbreak) vs 316
    (Apr 27 alone) are both correct, but a reviewer read them as a contradiction — a viewer will
