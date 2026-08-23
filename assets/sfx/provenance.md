@@ -17,3 +17,11 @@ post-render (LEARNINGS item 7 — these sources run ~15dB quieter than the ACE m
 
 Detailed per-file source URLs: `episodes/ep1-joplin/media/provenance.csv` (sfx rows).
 - sfx-rumble-bed-long.mp3 / sfx-swell.wav / sfx-boom.wav — ffmpeg-synthesized (anoisesrc brown/pink, sine 48Hz), 2026-08-12, ep5. Claim-free by construction.
+- `owner-2026-08-13/` — owner's Pixabay pack (Pixabay license): civil-defense siren (= "siren"
+  in owner vocabulary; ep6 hook `sfx-siren-hook.mp3` is its first 14.5s, mounted 0.144),
+  risers, percussion hits, ocean waves (ep6 hook water bed), wind variants, industrial-pulse
+  drone (freesound_community; ep6 act-6 bed `score-act6-drone-ext.mp3` = this drone
+  self-crossfaded to 353s). Weewoo sirens (police/fire) live here too — never the "siren".
+- Music scores (DeAPI-generated, claim-free): `deapi/README.md`. Music layer is default-ON
+  since ep5/ep6 (one bed per act + swells + a riser into every act boundary, peaking WITH the
+  narration line).
