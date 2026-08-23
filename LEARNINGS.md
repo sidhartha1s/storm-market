@@ -2,6 +2,26 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
+## 2026-08-24 — 1440p upload tier + NVENC-first for mp4 surgery (owner orders, ep1 insert session)
+
+1. **1440p is the upload resolution from now on (owner order).** YouTube assigns bitrate tiers
+   by resolution: a 1080p upload gets the ~2.5–4 Mbps VP9 tier, the SAME content uploaded at
+   2560×1440 gets ~9–20 Mbps — and viewers watching "1080p" on a 1440p upload are served the
+   better-fed stream. `master_deliverables.py` now emits `-master-1440p.mp4` by default
+   (h264_nvenc p5 cq19 24M, lanczos upscale from the finished master, audio bit-copied;
+   `--no-2k` skips). Hyperframes capture stays 1080p — comps are authored in 1080 coordinates,
+   sources are 1080p, and native 1440p capture would ~2.25x the render time for zero real detail.
+2. **mp4 surgery on finished renders = h264_nvenc FIRST, never libx264 (measured 2026-08-24).**
+   Ep1 15s-insert job on the 17-min master: h264_nvenc p5 cq19 ≈ 7 min; libx264 preset slow
+   crf16 was on pace for ~90 min (killed at 0.2x realtime). At 14–16 Mbps consumer-master
+   bitrates the quality difference does not survive YouTube's transcode. The PATH ffmpeg
+   (Gyan 8.1.1) has working NVENC on this box — same build caveat as the `--hevc` step.
+3. **Frame-accurate insert/splice recipe (proven on ep1):** find the true cut with
+   `select='gt(scene,0.25)',showinfo` + eyeball extracted frames; single-pass filter_complex
+   trim/concat from the ORIGINALS (never a second generation from an intermediate); verify
+   splice frames + duration on the output; shift SRT cues and chapter timestamps by the net
+   insert-minus-removed delta.
+
 ## 2026-08-05 — ep5 kickoff: the retention lattice + script fact-QC layer (owner orders, all standing from ep5 on)
 
 **New standing process (each has its full text where noted):**
