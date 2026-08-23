@@ -65,7 +65,7 @@ The first 25-30s decide the video. Owner rated ep2's first hook 0.6/10 and the r
 shipped; these are the standing requirements for every episode's cold open:
 - **NO black start (owner order 2026-08-05, ep5+): frame one is MID-ACTION** — the episode's
   defining shot already moving, anchor audio already mid-transmission. High curiosity, high
-  impact from the first frame. The 2-3s VOID below survives only as the hook's END punctuation.
+  impact from the first frame. The VOID below survives only as the hook's END punctuation.
 - **An intelligible, high-stakes ANCHOR line starts by ~2.5s** — a real broadcast/dispatch
   voice saying something a viewer cannot skip (ep2: Spann's live "tornado emergency"). Not
   ambience, not music, not a fragment.
