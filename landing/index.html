@@ -404,6 +404,12 @@ footer .small{color:#7e8783}
 @media (prefers-reduced-motion:reduce){.toast{transition:opacity .25s}}
 @media (max-width:560px){.toast{left:10px;right:10px;max-width:none;bottom:10px;padding:10px 12px}}
 
+.statepick{display:flex;gap:12px;align-items:stretch;flex-wrap:wrap;margin-top:14px}
+.statepick select{flex:1 1 220px;min-height:52px;padding:0 14px;font:inherit;font-size:16px;color:var(--ink);
+  background:var(--paper2);border:1px solid var(--rule);border-radius:4px}
+.statepick select:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.statepick .btn{flex:0 0 auto}
+@media (max-width:600px){.statepick .btn{width:100%;text-align:center}}
 /* ---------- popups ---------- */
 .pop{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;
   padding:20px;background:rgba(12,14,15,.72)}
@@ -993,10 +999,10 @@ footer .small{color:#7e8783}
   <div class="wrap">
     <div class="kicker">Free, on me</div>
     <h2>Not ready? Take your state's storm packet — free.</h2>
-    <p class="lead">Four pages, specific to where you live: your National Weather Service forecast
-      office, your state emergency management agency, your county alert signup, your insurance
-      department's mitigation-credit program, and the three hazards your state actually gets with
-      the months they arrive.</p>
+    <p class="lead">Four pages, specific to where you live: the three hazards your state actually
+      gets and the months they arrive, who to call — emergency management, insurance regulator,
+      energy assistance — your state's mitigation program and deductible rules, and a one-page
+      plan pre-filled with your state's specifics.</p>
     <div class="magnet">
       <div class="magnet-grid">
       <figure class="magnet-photo">
@@ -1007,11 +1013,15 @@ footer .small{color:#7e8783}
           table, with a pen.</figcaption>
       </figure>
       <div>
-      <strong>Take yours — and every other state's while you're there.</strong>
-      <p><a class="btn" id="packet" href="https://paulraymond.gumroad.com/l/packet?wanted=true">
-        Send My State Packet — Free</a></p>
-      <p class="small" style="margin-top:16px">All fifty states and DC, in one download. Costs
-        nothing, and you keep it whether or not you ever buy the manual.</p>
+      <strong>Pick your state. The packet is in your inbox in under a minute.</strong>
+      <div class="statepick">
+        <select id="state-select" aria-label="Your state">
+          <option value="">Choose your state…</option><option value="Alabama">Alabama</option><option value="Alaska">Alaska</option><option value="Arizona">Arizona</option><option value="Arkansas">Arkansas</option><option value="California">California</option><option value="Colorado">Colorado</option><option value="Connecticut">Connecticut</option><option value="Delaware">Delaware</option><option value="District of Columbia">District of Columbia</option><option value="Florida">Florida</option><option value="Georgia">Georgia</option><option value="Hawaii">Hawaii</option><option value="Idaho">Idaho</option><option value="Illinois">Illinois</option><option value="Indiana">Indiana</option><option value="Iowa">Iowa</option><option value="Kansas">Kansas</option><option value="Kentucky">Kentucky</option><option value="Louisiana">Louisiana</option><option value="Maine">Maine</option><option value="Maryland">Maryland</option><option value="Massachusetts">Massachusetts</option><option value="Michigan">Michigan</option><option value="Minnesota">Minnesota</option><option value="Mississippi">Mississippi</option><option value="Missouri">Missouri</option><option value="Montana">Montana</option><option value="Nebraska">Nebraska</option><option value="Nevada">Nevada</option><option value="New Hampshire">New Hampshire</option><option value="New Jersey">New Jersey</option><option value="New Mexico">New Mexico</option><option value="New York">New York</option><option value="North Carolina">North Carolina</option><option value="North Dakota">North Dakota</option><option value="Ohio">Ohio</option><option value="Oklahoma">Oklahoma</option><option value="Oregon">Oregon</option><option value="Pennsylvania">Pennsylvania</option><option value="Rhode Island">Rhode Island</option><option value="South Carolina">South Carolina</option><option value="South Dakota">South Dakota</option><option value="Tennessee">Tennessee</option><option value="Texas">Texas</option><option value="Utah">Utah</option><option value="Vermont">Vermont</option><option value="Virginia">Virginia</option><option value="Washington">Washington</option><option value="West Virginia">West Virginia</option><option value="Wisconsin">Wisconsin</option><option value="Wyoming">Wyoming</option>
+        </select>
+        <a class="btn" id="packet" href="https://paulraymond.gumroad.com/l/packet?wanted=true">Send My State Packet — Free</a>
+      </div>
+      <p class="small" style="margin-top:16px">Costs nothing, and you keep it whether or not you
+        ever buy the manual. Every state and DC is covered.</p>
       </div>
       </div>
     </div>
@@ -1108,9 +1118,9 @@ footer .small{color:#7e8783}
     <button class="x" data-close aria-label="Close">×</button>
     <div class="eyebrow">Before you go further</div>
     <h3>Your state's storm packet is <em>free.</em></h3>
-    <p>Four pages: your forecast office, your county alert signup, your insurance department's
-      mitigation credits, and the three hazards your state actually gets. No purchase — just
-      pick your state below.</p>
+    <p>Four pages: the three hazards your state actually gets, who to call, your state's
+      mitigation program and deductible rules, and a one-page plan. No purchase — just pick
+      your state.</p>
     <a class="btn" href="#free" data-close>Get My Free State Packet</a>
     <a class="alt" href="#inside" data-close>or see inside the book &rarr;</a>
   </div>
@@ -1233,6 +1243,14 @@ document.getElementById('totop')?.addEventListener('click',()=>window.scrollTo({
 
   // exposed for the screenshot/QC pass — force-shows one toast immediately
   window.__showToast=show;
+})();
+// ---- Free packet: state picker pre-selects the Gumroad variant ----
+(function(){
+  const sel=document.getElementById('state-select'), a=document.getElementById('packet');
+  if(!sel||!a)return;
+  const base='https://paulraymond.gumroad.com/l/packet?wanted=true';
+  const sync=()=>{a.href=sel.value?base+'&variant='+encodeURIComponent(sel.value):base;};
+  sel.addEventListener('change',sync); sync();
 })();
 // ---- Gumroad checkout target ----
 // Every checkout CTA (offer button + hard popup) picks this up automatically.
