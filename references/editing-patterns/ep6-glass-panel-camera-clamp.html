@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:#07131f; overflow:hidden; font-family:Arial,sans-serif; }
+  #g-circle-cam { position:absolute; left:0; top:0; width:2700px; height:1669px; transform-origin:0 0; }
+  #g-circle-cam img { position:absolute; left:0; top:0; width:2700px; height:1669px; }
+  /* the wind field: 200-mile reach ring, centered on the Cat-5 position in plate pixels */
+  #g-circle-field { position:absolute; left:1080px; top:1290px; width:0px; height:0px; border-radius:50%;
+    border:8px solid rgba(231,76,60,0.85); background:rgba(231,76,60,0.13);
+    box-shadow:0 0 60px rgba(231,76,60,0.4); transform:translate(-50%,-50%); }
+  .gc-bottomfade { position:absolute; left:0; right:0; bottom:0; height:300px; z-index:4; pointer-events:none;
+    background:linear-gradient(180deg, rgba(7,19,31,0) 0%, rgba(7,19,31,0.85) 60%, #07131f 100%); }
+  /* glass card template (owner-approved 2026-08-16): rounded, fixed width, capped padding —
+     the house RHS-panel look; long strings must wrap inside, never widen the card */
+  .panel { position:absolute; right:90px; top:50%; width:640px; box-sizing:border-box; z-index:5; /* yPercent:-50 set in JS (gsap owns transform) */
+    background: rgba(10,16,24,0.52);
+    backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+    border: 1px solid rgba(255,255,255,0.14); border-radius: 28px;
+    box-shadow: 0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10);
+    padding: 56px 60px; overflow: hidden; }
+  .tname { font-family:'Arial Black',Arial,sans-serif; font-size:48px; color:#f2f5f8; line-height:1.1; }
+  .tsub { font-family:Georgia,serif; font-style:italic; font-size:25px; color:#d8a13a; margin-top:10px; }
+  .row { margin-top:34px; }
+  .row .lab { display:block; font-size:19px; color:#93a3b2; letter-spacing:4px; font-weight:700; }
+  .row .val { font-family:'Courier New',monospace; font-size:72px; font-weight:700; color:#f2f5f8; }
+  .row .unit { font-size:30px; color:#c8d3e0; font-weight:700; }
+  .row.hot .val { color:#e74c3c; }
+  .foot { margin-top:40px; font-family:Georgia,serif; font-style:italic; font-size:27px; color:#e8edf2; line-height:1.4; }
+</style>
+<div id="root" data-composition-id="g-circle" data-width="1920" data-height="1080">
+  <div id="g-circle-cam">
+    <img src="../media/maps/baseplate-gulf-track-map-katrina2005.png" alt="">
+    <div id="g-circle-field"></div>
+  </div>
+  <div class="gc-bottomfade"></div>
+  <div class="panel" id="g-circle-panel">
+    <div class="tname">NO LONGER WEATHER</div>
+    <div class="tsub">Sunday morning, August 28 &middot; open Gulf</div>
+    <div class="row hot" id="g-circle-wind"><span class="lab">SUSTAINED WINDS</span><span class="val">173</span> <span class="unit">MPH</span></div>
+    <div class="row" id="g-circle-pres"><span class="lab">CENTRAL PRESSURE</span><span class="val">902</span> <span class="unit">MB</span></div>
+    <div class="row" id="g-circle-reach"><span class="lab">STORM WINDS REACHED</span><span class="val">200+</span> <span class="unit">MILES OUT</span></div>
+    <div class="foot" id="g-circle-foot">Everyone inside the circle was already hit.</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* host 286.36-317.44 (31.08s). Beats (rel): winds ~5, pressure ~10.5, reach ~17, circle-over-map ~21.5,
+     "everyone in the circle" ~27. Panel slides in; the field ring grows ON "circle over a map". */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-circle-";
+  /* camera (owner 4:55): storm + full 200-mile ring on the LEFT, glass panel on the RIGHT, never
+     overlapping. Field center (plate 1080,1290) is parked at screen (640,560); the ring's 512px
+     radius then spans x 128-1152 (panel starts at 1190) and y 48-1072 — fully in frame. The plate
+     ends at screen y≈863 at this framing; the bottom fade below hides that edge (g-mrgo pattern). */
+  function camAt(px, py, z, sx, sy) {
+    return { x: Math.min(0, Math.max(1920 - 2700 * z, sx - px * z)), y: sy - py * z };
+  }
+  /* sy 640 (not 560): the field sits 379 plate-px above the plate's bottom edge, so centering it
+     higher left a 217px void under the plate (QC 2026-08-22). At 640 the void is 137px and sits
+     under the ocean fade; the ring's bottom 7% runs off-frame instead — the lesser evil. */
+  (function(){ const a = camAt(1080, 1290, 0.80, 640, 640), b = camAt(1080, 1290, 0.84, 640, 640);
+    tl.set(P+"cam", { scale: 0.80, x: a.x, y: a.y }, 0);
+    tl.to(P+"cam", { scale: 0.84, x: b.x, y: b.y, duration: 31, ease: "none" }, 0); })();
+  tl.set([P+"wind", P+"pres", P+"reach", P+"foot"], { autoAlpha: 0 }, 0);
+  tl.set(P+"panel", { yPercent: -50 }, 0);
+  tl.fromTo(P+"panel", { x: 800 }, { x: 0, duration: 0.7, ease: "power3.out" }, 0.4);
+  tl.fromTo(P+"wind", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 4.6);
+  tl.fromTo(P+"pres", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 10.2);
+  tl.fromTo(P+"reach", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 16.6);
+  /* the circle: 200 miles ≈ 640 plate px radius at this plate scale — swallows the coast */
+  tl.to(P+"field", { width: 1280, height: 1280, duration: 4.5, ease: "power2.out" }, 21.3);
+  tl.to(P+"field", { boxShadow: "0 0 90px rgba(231,76,60,0.6)", duration: 1.2, yoyo: true, repeat: 3 }, 25.8);
+  tl.fromTo(P+"foot", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 26.8);
+  /* exit: panel slides out, timed to the hard cut */
+  tl.to(P+"panel", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 30.3);
+  tl.to("#root", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 30.7);
+  window.__timelines["g-circle"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
