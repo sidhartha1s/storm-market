@@ -110,8 +110,11 @@ obfuscation.**
 - **Exit animations end fully gone (owner review 2026-07-26):** every panel/graphic exit tween
   finishes at `autoAlpha:0` AND overshoots any slide (a 660px slide on an 820px panel left a
   stuck sliver for ~1s). Verify each sub-comp with a snapshot at host-window-end − 0.5s.
-- Text-over-media always gets a dark backing chip; panel gradients use `box-sizing:border-box`
-  with text inside the solid zone.
+- Text-over-media always sits on the `.glasscard` panel (rgba(10,16,24,.55) + blur 18px +
+  1px white@.14 border, radius 28 — see "On-screen text rules" below; `quotecard.glasscard`
+  drops the box-shadow); panel gradients use `box-sizing:border-box` with text inside the
+  solid zone. Dates/figures use the Abril `popfig` popup (red, text-shadow, ≤3 words, mid-screen)
+  — never a colour-block date card.
 - **AI-first, code-second (owner directive 2026-07-26, from 6-channel experience):** scripts
   exist for deterministic checks (lint) ONLY. Pacing, grading, clip choice, placement, SFX are
   per-case editor judgment — never encode editorial baselines as enforcement, never constrain
