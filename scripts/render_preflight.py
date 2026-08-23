@@ -19,6 +19,7 @@ the media budget (media_budget.py) and the version pin. "Remember to run npm vie
 is the same class of instruction as "remember to cap your assets" — which survived
 twelve failed renders precisely because nothing checked it.
 """
+import os
 import re
 import shutil
 import subprocess
