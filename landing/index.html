@@ -381,6 +381,24 @@ footer .small{color:#7e8783}
   color:var(--sky-dim);letter-spacing:.06em;margin-top:2px}
 .stickybar .btn{padding:14px 28px;font-size:17px;white-space:nowrap;flex:0 0 auto}
 
+.toast{position:fixed;left:16px;bottom:16px;z-index:45;max-width:300px;
+  background:var(--paper2);border:1px solid var(--line);border-radius:6px;
+  box-shadow:0 12px 28px rgba(60,48,20,.2);padding:12px 14px;
+  display:flex;gap:10px;align-items:flex-start;
+  transform:translateY(140%);opacity:0;transition:transform .4s ease,opacity .4s ease;
+  pointer-events:none}
+.toast.on{transform:translateY(0);opacity:1;pointer-events:auto}
+.toast .glyph{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:var(--red);
+  color:#fdf9ef;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.toast .body{flex:1;font-size:13.5px;line-height:1.4;color:var(--ink-soft)}
+.toast .body b{color:var(--ink)}
+.toast .body .when{display:block;font-family:var(--mono);font-size:11px;color:var(--faded);margin-top:3px}
+.toast .x{flex:0 0 auto;background:none;border:0;cursor:pointer;color:var(--faded);font-size:16px;
+  padding:2px;line-height:1;min-width:22px;min-height:22px}
+.toast .x:hover{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.toast{transition:opacity .25s}}
+@media (max-width:560px){.toast{left:10px;right:10px;max-width:none;bottom:10px;padding:10px 12px}}
+
 /* ---------- popups ---------- */
 .pop{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;
   padding:20px;background:rgba(12,14,15,.72)}
@@ -1069,6 +1087,11 @@ footer .small{color:#7e8783}
 
 <!-- ================= POPUPS ================= -->
 <!-- Soft (30s): free state packet nudge. Hard (exit intent / 3min): straight to checkout. -->
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <span class="glyph" aria-hidden="true">&#10003;</span>
+  <span class="body"></span>
+  <button class="x" type="button" aria-label="Dismiss">&times;</button>
+</div>
 <div class="pop" id="pop-soft" role="dialog" aria-modal="true" aria-label="Free state packet">
   <div class="panel">
     <button class="x" data-close aria-label="Close">×</button>
@@ -1125,6 +1148,81 @@ footer .small{color:#7e8783}
 // back to top
 document.getElementById('totop')?.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
+// ---- Recently-bought toast ----
+// Bottom-left "social proof" card. First toast ~5s after load, visible 4s, then a new
+// one after a 3.5-6s gap. Dismissing (x) hides it for the rest of this session AND the next 24h
+// via a localStorage timestamp. Names/cities are decorative (not a real purchase feed).
+(function(){
+  const PEOPLE=[
+    ["Tom R.","San Antonio, TX"],["Linda K.","Tulsa, OK"],["Dale M.","Springfield, MO"],
+    ["Carol S.","Wichita, KS"],["Gene P.","Tampa, FL"],["Ruth A.","Baton Rouge, LA"],
+    ["Frank D.","Mobile, AL"],["Walt H.","Savannah, GA"],["Eleanor B.","Charlotte, NC"],
+    ["Pat G.","Columbia, SC"],["Roy N.","Nashville, TN"],["Diane W.","Little Rock, AR"],
+    ["Margaret C.","Omaha, NE"],["Sam O.","Des Moines, IA"],["Rosa V.","Columbus, OH"],
+    ["Betty J.","Jackson, MS"],["Harold F.","Louisville, KY"],["Nancy T.","Indianapolis, IN"],
+    ["Earl G.","Peoria, IL"],["Doris L.","Richmond, VA"],["Gerald K.","Amarillo, TX"],
+    ["Joan R.","Norman, OK"],["Wayne S.","Joplin, MO"],
+  ].map(([name,city])=>({name,city}));
+
+  const toast=document.getElementById('toast');
+  if(!toast)return;
+  const body=toast.querySelector('.body');
+  const closeBtn=toast.querySelector('.x');
+  const bar=document.getElementById('stickybar');
+  const KEY='srh-toast-dismiss-until';
+  const isDismissed=()=>{const t=+localStorage.getItem(KEY);return t&&Date.now()<t;};
+
+  const footerEl=document.querySelector('footer');
+  const positionToast=()=>{
+    const mobile=innerWidth<560;
+    const barH=(bar&&bar.classList.contains('on'))?bar.getBoundingClientRect().height:0;
+    // keep the toast clear of the footer's link row when it scrolls into view
+    let footerOverlap=0;
+    if(footerEl){
+      const fr=footerEl.getBoundingClientRect();
+      if(fr.top<innerHeight)footerOverlap=innerHeight-fr.top;
+    }
+    toast.style.bottom=(Math.max(barH,footerOverlap)+(mobile?10:16))+'px';
+  };
+  addEventListener('scroll',positionToast,{passive:true});
+  addEventListener('resize',positionToast);
+
+  let lastIdx=-1;
+  const pick=()=>{
+    let i=Math.floor(Math.random()*PEOPLE.length);
+    if(PEOPLE.length>1)while(i===lastIdx)i=Math.floor(Math.random()*PEOPLE.length);
+    lastIdx=i;
+    return PEOPLE[i];
+  };
+
+  let hideTimer=null;
+  const show=()=>{
+    if(isDismissed())return;
+    const {name,city}=pick();
+    const mins=3+Math.floor(Math.random()*56);
+    body.innerHTML=`<b>${name}</b> from ${city} just got The Storm-Ready Home<span class="when">${mins}m ago</span>`;
+    positionToast();
+    toast.classList.add('on');
+    clearTimeout(hideTimer);
+    hideTimer=setTimeout(()=>toast.classList.remove('on'),4000);
+  };
+
+  closeBtn.addEventListener('click',()=>{
+    localStorage.setItem(KEY,Date.now()+24*3600*1000);
+    clearTimeout(hideTimer);
+    toast.classList.remove('on');
+  });
+
+  if(!isDismissed()){
+    setTimeout(function loop(){
+      show();
+      setTimeout(loop,4000+3500+Math.random()*2500);
+    },5000);
+  }
+
+  // exposed for the screenshot/QC pass — force-shows one toast immediately
+  window.__showToast=show;
+})();
 // ---- Gumroad checkout target ----
 // Every checkout CTA (offer button + hard popup) picks this up automatically.
 // Set to null to fall back to scrolling to #offer.
