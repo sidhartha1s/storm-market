@@ -5,7 +5,8 @@ REM Example: scripts\render.cmd ep2-2011-super-outbreak full ep2-final
 REM Launch DETACHED (harness bg tasks get killed):
 REM   powershell Start-Process cmd.exe -ArgumentList '/c','"<ABS path>\scripts\render.cmd" <slug> <mode>' -WindowStyle Hidden
 REM Writes episodes\<slug>\render_<mode>.log and render_<mode>_done.marker (contains npx exit code).
-REM Version pin 0.7.107 must match config.yaml hyperframes_version — bump both together.
+REM Version pin must match config.yaml hyperframes_version — pin_ritual.py bumps both together.
+REM Stale-pin full renders need RENDER_PIN_STALE_OK=1 (owner override, printed by preflight).
 setlocal
 set SLUG=%~1
 set MODE=%~2
