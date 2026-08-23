@@ -80,6 +80,9 @@ const cardInfo = await page.evaluate(({ ids, leafSrc }) => {
   }
   return out;
 }, { ids: cards.map(c => c.id), leafSrc: LEAF_FN });
+// the bare index page holds ~80 <video> elements; keeping it open while comps are staged
+// crashed the renderer ("Target crashed") on a 16 GB box — release it before staging
+await page.close();
 
 const interFrac = (a, b) => {
   const w = Math.min(a.right, b.right) - Math.max(a.left, b.left);
