@@ -75,9 +75,20 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   burning agent passes; spread the cuts ACROSS the episode, never back-to-back.
 - Reference floors from the shipped cuts: ep2 = 187 windows / 10.0s median / 2 picture gaps.
   Uncovered picture gaps in the dozens is a bug, not a style.
-- **Chapter blackout is mandatory (owner order 2026-07-31).** ep1/ep2's 2-3s black cut between
-  acts is what makes them read like a documentary; ep3 dropped it. See DESIGN.md "Chapter
-  blackout" — every ep4+ builder inserts act-boundary blackouts.
+- **Chapter blackout is mandatory (owner order 2026-07-31; durations re-set 2026-08-16).** A
+  hard black cut between acts is what makes ep1/ep2 read like a documentary; ep3 dropped it.
+  Owner's duration table: **0.6–0.9s = chapter break · 1.0–1.3s = dramatic punctuation ·
+  1.5s+ = dead air** (hook-end void: 1.5s). Seamless butt-cuts need no blackout at all. See
+  DESIGN.md "Chapter blackout" — every builder hand-places act-boundary blackouts.
+- **On-screen text rules (owner, ep6 v2 review 2026-08-22) — DESIGN.md "On-screen text rules":**
+  one text element per zone per window (`overlap_check.mjs` v2 enforces), one fact one instance,
+  no decorative eyebrows, reveals in narration order/wording, `.glasscard` under any text over
+  footage, small text never carries a moment alone (BFMG). Dates/figures = Abril `popfig`
+  popups (red, ≤3 words, mid-screen), never colour-block date cards.
+- **No visible windows, ever (owner 2026-08-21):** every scheduled/background command runs via
+  `scripts/run_hidden.vbs`; a render or ritual that opens a visible Chrome/cmd window is killed
+  on sight and reported, not retried. hyperframes 0.8.x opened visible tabs twice on this box
+  (2026-08-22/23) — pin stays 0.7.109 until that is understood (LEARNINGS).
 - **Panels slide out, never vanish (owner order 2026-07-31).** RHS fact panels exit `x:980,
   autoAlpha:0` timed to the hard cut (comp duration ≥ host window). ep3 v5 removed the exit as a
   one-off; ep4+ restore the timed slide-right exit. See DESIGN.md §5 "Panel exit TIMING".
