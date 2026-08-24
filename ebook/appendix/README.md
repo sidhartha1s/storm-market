@@ -13,7 +13,7 @@ This directory holds two deliverables that share one dataset:
 | Deliverable | Where it goes | Pages |
 |---|---|---|
 | **Appendix B** — compact state lookup | in the book, one row per state | ~18 |
-| **The 50 state packets** — free lead magnet + buyer bonus | landing page email gate, one PDF per state | ~4 each |
+| **The 50 state packets** — free lead magnet + buyer bonus | a $0 Gumroad product (`/l/packet`), all 51 zipped; also bundled with the paid product | ~4 each |
 
 Same CSV, two renderers. That is the whole reason the 50-states problem became tractable: the owner's
 objection was correct — *"suppose im from chicago, why the hell would i need to know 49 other states'
@@ -146,12 +146,20 @@ python3 build.py --check                 # validate the CSV only, exit 1 on any 
 python3 build.py --appendix              # writes out/appendix-b.html
 python3 build.py --packets               # writes out/packets/<abbr>.html for every complete row
 python3 build.py --packets --only IL,TX  # a subset while iterating
+
+# PDF + zip, per edition:
+python3 build.py --pdf --zip                    # default edition: out/packets/*.pdf ->
+                                                 #   out/The-Storm-Ready-Home-State-Packets.zip
+python3 build.py --packets --rehook             # FREE edition HTML: out/packets-free/<abbr>.html
+python3 build.py --pdf  --rehook                # FREE edition PDF:  out/packets-free/<abbr>.pdf
+python3 build.py --zip  --rehook                # -> out/The-Storm-Ready-Home-State-Packets-FREE.zip
 ```
 
-Then the HTML goes through the same `fitcheck.mjs` gate as the rest of the book, and the packets go through
-Chrome `--print-to-pdf` with an **absolute** output path.
+Then the HTML goes through the same `fitcheck.mjs` gate as the rest of the book, and `--pdf` drives Chrome
+`--print-to-pdf` with an **absolute** output path (`build.py`'s own `render_pdfs()` now does this — see
+"Two editions, one flag" below for why there are two output directories).
 
-## Packet structure — 4 pages
+## Packet structure — 4 pages (5 in the FREE edition)
 
 1. **Your state, your three hazards** — with season windows, and your region's first-ten protection list.
 2. **Who to call** — emergency management, insurance regulator, energy assistance, well testing, with the
@@ -160,8 +168,41 @@ Chrome `--print-to-pdf` with an **absolute** output path.
    note, the emergency refill law, the disconnection protections.
 4. **Your one-page plan** — a condensed version of the binder front sheet, pre-filled with the state's
    specifics.
+5. **FREE edition only — the rehook page** (`--rehook`). A closing page pointing the reader at the paid
+   book: kicker, headline, six bullet points ending in the price, and a centered QR code (`templates/
+   rehook.html` + the `.rehook`/`.rh-*` rules in `templates/packet.css`). The QR encodes
+   `https://paulraymond.online/packet?utm_source=packet&utm_medium=pdf&utm_campaign=qr` at
+   error-correction M via the `qrcode` package (`pip install "qrcode[pil]"` if missing), embedded as a
+   base64 PNG data URI so the packet stays one standalone file. Never appears in the default build —
+   paid-bundle buyers already own the book.
+
+### Two editions, one flag
+
+`--rehook` switches `build_packets()` to `out/packets-free/` instead of `out/packets/` and appends the
+5th page; every other flag (`--pdf`, `--zip`) follows the same switch so the two editions never collide
+on disk. Two Gumroad products consume the two zips:
+
+| Zip | Gumroad product | Contains |
+|---|---|---|
+| `out/The-Storm-Ready-Home-State-Packets.zip` (no `--rehook`) | paid ebook bundle, `cYjHuPgp7BYJuqTbibM1tA==` | 51 four-page packets, no QR page |
+| `out/The-Storm-Ready-Home-State-Packets-FREE.zip` (`--rehook`) | free packet product, `pZ-CrhNGscFjV5NENkQsQg==` | 51 five-page packets, QR page closes each one |
+
+Re-run both editions and re-upload both zips whenever `state_data.csv` or either template changes — one
+zip going stale while the other updates is worse than neither updating, since the FREE edition is the one
+readers reach first.
 
 ## Blockers
+
+0. **The dataset, `templates/packet.html`, and `ebook/build/book.css` had gone missing from `origin/main`
+   (2026-08-23).** `build.py --packets` failed outright — `state_data.csv does not exist` — because the
+   commit line that produced the sourced 51-row dataset (`40fb265` and its ancestors) was never actually
+   merged into main, despite this README describing the data as complete. The blobs were still reachable
+   (dangling, not garbage-collected), so `state_data.csv`, all nine `*.csv` fragments, `derive_agencies.py`,
+   `derive_hazards.py`, `derive_water.py`, `verify_urls.py`, `templates/packet.html`, and `book.css` were
+   recovered with `git checkout 40fb265 -- <path>` (data) and `git checkout ba14be0 -- ebook/build/book.css`
+   (the stylesheet `build.py` requires) rather than regenerated or invented. `build.py --check` now passes
+   51/51 again. **Someone should find out why that commit range never merged and fix the actual gap** — this
+   recovery unblocks the rehook feature but does not explain how main lost committed, sourced content.
 
 1. **Twelve of the fourteen sourced column groups collected, two genuinely incomplete by design.**
    Filled for all 51 rows: hazards, seasons, regions, `doi_phone`, `well_test_contact`, `em_phone`,
@@ -221,7 +262,10 @@ Chrome `--print-to-pdf` with an **absolute** output path.
      declaration, a kept payment plan — so the note says who is protected, not just the date
      range. 12/51 and 3/51.
 
-2. **The landing page's free-packet email gate cannot deliver anything until packets exist.** Currently the
-   form fails loudly by design rather than pretending to subscribe.
+2. **Delivery is Gumroad's, not ours (2026-08-15).** The packets ship as a $0 Gumroad product at
+   `/l/packet` — all 51 in one zip, built by zipping `out/packets/*.pdf`. The landing page links
+   straight to it. The email-gate Pages Function that used to sit here was deleted: it needed a Kit
+   API key that never existed and returned HTTP 500 on every real submit. Re-zip and re-upload the
+   product's file whenever the packets are regenerated.
 3. **Re-verification cadence.** Agency URLs and phone numbers rot. The packets print `verified_on`, and the
    set needs a re-check before each launch push.

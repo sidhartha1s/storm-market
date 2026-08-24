@@ -2,6 +2,26 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
+## 2026-08-24 — 1440p upload tier + NVENC-first for mp4 surgery (owner orders, ep1 insert session)
+
+1. **1440p is the upload resolution from now on (owner order).** YouTube assigns bitrate tiers
+   by resolution: a 1080p upload gets the ~2.5–4 Mbps VP9 tier, the SAME content uploaded at
+   2560×1440 gets ~9–20 Mbps — and viewers watching "1080p" on a 1440p upload are served the
+   better-fed stream. `master_deliverables.py` now emits `-master-1440p.mp4` by default
+   (h264_nvenc p5 cq19 24M, lanczos upscale from the finished master, audio bit-copied;
+   `--no-2k` skips). Hyperframes capture stays 1080p — comps are authored in 1080 coordinates,
+   sources are 1080p, and native 1440p capture would ~2.25x the render time for zero real detail.
+2. **mp4 surgery on finished renders = h264_nvenc FIRST, never libx264 (measured 2026-08-24).**
+   Ep1 15s-insert job on the 17-min master: h264_nvenc p5 cq19 ≈ 7 min; libx264 preset slow
+   crf16 was on pace for ~90 min (killed at 0.2x realtime). At 14–16 Mbps consumer-master
+   bitrates the quality difference does not survive YouTube's transcode. The PATH ffmpeg
+   (Gyan 8.1.1) has working NVENC on this box — same build caveat as the `--hevc` step.
+3. **Frame-accurate insert/splice recipe (proven on ep1):** find the true cut with
+   `select='gt(scene,0.25)',showinfo` + eyeball extracted frames; single-pass filter_complex
+   trim/concat from the ORIGINALS (never a second generation from an intermediate); verify
+   splice frames + duration on the output; shift SRT cues and chapter timestamps by the net
+   insert-minus-removed delta.
+
 ## 2026-08-16 — ep6 render-failure ledger (3 compile failures, each root-caused)
 
 A. **Animated GIFs kill the compile — never mount a .gif.** hyperframes transcodes every
@@ -773,7 +793,9 @@ Two silent failure modes in one script, both hit on ep5:
 - **`-an` is unconditional** — it stripped the audio track from all 4 owner-gated INSERT
   clips (the whole point of an insert is its audio). Nothing warned. Restored from
   `media/_orig/` with `-c:a aac`. Rule: after ANY optimize pass, ffprobe the insert clips
-  for an audio stream before rendering.
+  for an audio stream before rendering. (2026-08-17: optimize_clips.py itself now preserves
+  audio + muxes silence for mute clips — see "Audio levels + media budget hardening". The
+  ffprobe-before-render rule stands for any ad-hoc batch.)
   **RECURRED on ep5 v3 (2026-08-12):** an ad-hoc media-budget crf pass re-encoded every
   mounted mp4 >900KB with `-an` and stripped ins-mckay again; render failed loud at
   `audio_processing_failed` (hyperframes' extractAudioFromVideo, stage "extract", found no
@@ -913,6 +935,9 @@ calfire-itf-willhappenagain) cause freezes — re-encode with -g 30 before the n
   PRESERVES audio** (aac copy-encode; silent track muxed for mute clips). The old `-an` pass
   forced a 15-clip re-mux ritual + 36-clip silent-track patch every optimize run — retired.
   Measured ep6: 51 clips crf23 = 194 MB, crf27 = 143 MB; crf27 invisible under archival grain.
+  CAVEAT (ep1 session, 2026-08-24 merge): optimize_clips re-encodes from `media/_orig/`
+  backups, so a rerun reverts any per-file gain fix applied after a previous pass —
+  audio_levels.py catches this.
 
 ## No visible windows, ever (owner 2026-08-21)
 - schtasks interactive tasks pop a cmd window on the desktop. ALL scheduled/background

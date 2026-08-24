@@ -1,0 +1,173 @@
+<!-- paulraymond.gumroad.com — storefront profile page.
+     Published with: gumroad pages push profile ./profile.html
+     Same field-manual identity as the product page and paulraymond.pages.dev.
+     Product links are same-origin Gumroad links, so no target="_blank". -->
+<style>
+:root{
+  --paper:#f4eee1; --card:#faf6ec; --line:#d8cdb4; --rule:#b9ac8e;
+  --ink:#211d16; --ink-soft:#4a4335; --faded:#6b6249;
+  --sky:#151a1d; --sky-line:#323d41; --sky-text:#ede7d8; --sky-dim:#a8b0ac;
+  --red:#a92c1e; --red-bright:#c0392b; --amber:#c9871c;
+  --display:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --mono:ui-monospace,"Cascadia Mono",Consolas,"Courier New",monospace;
+}
+.prp *{box-sizing:border-box}
+.prp{background:var(--paper);color:var(--ink);font-family:var(--display);font-size:18px;
+  line-height:1.65;margin:0 auto;max-width:980px}
+.prp img{max-width:100%;display:block}
+.prp h1,.prp h2,.prp h3{font-family:var(--display);font-weight:700;margin:0;line-height:1.1;
+  letter-spacing:-.012em}
+/* the sandbox supplies no h2 size — set it explicitly or it renders at body size */
+.prp h2{font-size:clamp(26px,4vw,38px)}
+.prp p{margin:0 0 16px}
+.prp .kicker{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--red);margin-bottom:14px}
+
+/* masthead */
+.prp .top{background:var(--sky);color:var(--sky-text);padding:48px 28px;position:relative;overflow:hidden}
+.prp .top::before{content:"";position:absolute;inset:-40% -20%;pointer-events:none;
+  background:radial-gradient(60% 45% at 25% 15%,rgba(94,116,110,.32),transparent 62%),
+             radial-gradient(55% 40% at 80% 10%,rgba(70,86,96,.4),transparent 60%)}
+.prp .top>*{position:relative;z-index:2}
+.prp .mast{display:grid;grid-template-columns:150px 1fr;gap:30px;align-items:center}
+.prp .dp{width:150px;height:150px;border-radius:50%;overflow:hidden;border:3px solid rgba(255,255,255,.15);
+  box-shadow:0 16px 36px rgba(0,0,0,.5)}
+.prp .dp img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.prp .top h1{font-size:clamp(30px,4.6vw,46px);color:#f6f1e3}
+.prp .top .role{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--amber);margin-bottom:12px}
+.prp .top p{color:var(--sky-dim);margin:14px 0 0;font-size:clamp(16px,1.9vw,19px);max-width:44em}
+
+/* body */
+.prp section{padding:52px 28px;border-top:3px double var(--rule)}
+.prp .lead{font-size:clamp(18px,2vw,21px);color:var(--ink-soft);line-height:1.55}
+
+/* product card */
+.prp .prod{display:grid;grid-template-columns:250px 1fr;gap:34px;align-items:center;
+  background:var(--card);border:1px solid var(--rule);outline:3px double var(--rule);
+  outline-offset:6px;padding:34px;margin-top:30px}
+.prp .prod .shot{transform:rotate(-1.6deg)}
+.prp .prod .shot img{border-radius:3px;box-shadow:0 20px 44px rgba(0,0,0,.32)}
+.prp .prod h3{font-size:clamp(24px,3vw,31px);margin-bottom:10px}
+.prp .prod p{font-size:16.5px;color:var(--ink-soft)}
+.prp .facts{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--faded);margin:16px 0 22px}
+.prp .facts b{display:block;font-family:var(--display);font-size:21px;letter-spacing:0;
+  color:var(--ink);text-transform:none;margin-bottom:2px}
+.prp .btn{display:inline-block;font-family:var(--display);font-weight:700;font-size:18px;
+  background:var(--red);color:#fdf9ef;text-decoration:none;text-align:center;
+  padding:16px 34px;border-radius:4px;box-shadow:0 3px 0 #6f1c12,0 10px 24px rgba(122,29,17,.26);
+  transition:transform .12s,box-shadow .12s,background .12s}
+.prp .btn:hover{background:var(--red-bright);transform:translateY(-2px);
+  box-shadow:0 5px 0 #6f1c12,0 14px 28px rgba(122,29,17,.32)}
+.prp .btn:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.prp .btn-sub{font-family:var(--mono);font-size:12px;color:var(--faded);margin-top:10px}
+
+/* strip */
+.prp .strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;margin-top:28px}
+.prp figure{margin:0;background:var(--card);padding:10px 10px 12px;border:1px solid var(--line);
+  box-shadow:0 12px 26px rgba(0,0,0,.14)}
+.prp figure img{border:1px solid var(--line);aspect-ratio:1/1;object-fit:cover}
+.prp figcaption{font-family:var(--mono);font-size:11px;color:var(--faded);margin-top:9px;
+  line-height:1.5;text-align:center}
+.prp blockquote{margin:26px 0 0;padding:0 0 0 24px;border-left:4px solid var(--red);font-size:clamp(19px,2.2vw,23px);line-height:1.45}
+.prp blockquote em{font-style:italic;color:var(--red)}
+.prp .fine{padding:30px 28px;color:var(--faded);font-size:13px;line-height:1.6;
+  border-top:1px solid var(--line)}
+
+@media (max-width:820px){
+  .prp{font-size:17px}
+  .prp .top,.prp section{padding:34px 20px}
+  .prp .mast{grid-template-columns:1fr;gap:20px;text-align:center}
+  .prp .dp{margin:0 auto}
+  .prp .top p{margin-left:auto;margin-right:auto}
+  .prp .prod{grid-template-columns:1fr;gap:24px;padding:22px}
+  .prp .prod .shot{max-width:210px;margin:0 auto}
+  .prp .btn{display:block;width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  .prp .btn{transition:none}
+  .prp .btn:hover{transform:none}
+}
+</style>
+
+<div class="prp">
+
+  <header class="top">
+    <div class="mast">
+      <div class="dp">
+        <img src="https://public-files.gumroad.com/elldfxffu83lvrf7xt2uin2k4a7b"
+             alt="Paul Raymond" width="640" height="640">
+      </div>
+      <div>
+        <div class="role">Field manuals · American disasters</div>
+        <h1>Paul Raymond</h1>
+        <p>I read the reports that get written after the storm — National Weather Service service
+          assessments, NIST investigations, day-after archives — and turn them into things a family
+          can actually do on a Saturday.</p>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="kicker">The book</div>
+    <h2>What the survivors did differently.</h2>
+    <div class="prod">
+      <div class="shot">
+        <a href="/l/ebook"><img src="https://public-files.gumroad.com/ldxt1k0a2pu4odbkeyuyc0kavyat"
+             alt="The Storm-Ready Home — book cover" width="1024" height="1536"></a>
+      </div>
+      <div>
+        <h3>The Storm-Ready Home</h3>
+        <p>Every hazard America actually gets, in one 486-page manual: 130 numbered protections
+          across 23 hazard playbooks, each with what it prevents, what it costs, how long it takes,
+          and the line most books leave out — what it does not do.</p>
+        <div class="facts">
+          <div><b>486</b>pages</div>
+          <div><b>130</b>protections</div>
+          <div><b>23</b>playbooks</div>
+          <div><b>61</b>binder forms</div>
+          <div><b>51</b>state packets</div>
+        </div>
+        <a class="btn" href="/l/ebook">Read what's inside — $47</a>
+        <div class="btn-sub">Instant PDF · Pay once · 7-day money-back guarantee</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="kicker">How it's made</div>
+    <h2>Every protection in the book has been done by hand first.</h2>
+    <p class="lead">Nothing in here is theory borrowed from a pamphlet. The prices are real prices,
+      the steps are steps I have done, and every figure is cited to the document that issued it.</p>
+    <div class="strip">
+      <figure>
+        <img src="https://public-files.gumroad.com/8nuuivv3ojs5fruxvjzc2i48caet"
+             alt="Fastening plywood window protection in driving rain" width="1254" height="1254">
+        <figcaption>Window protection — done before the season, not the siren.</figcaption>
+      </figure>
+      <figure>
+        <img src="https://public-files.gumroad.com/78n8pu7la9dng9q0b0ghpv8hd93l"
+             alt="NOAA weather radio, helmet and field binder" width="1254" height="1254">
+        <figcaption>The field kit. Your household version costs a tenth as much.</figcaption>
+      </figure>
+      <figure>
+        <img src="https://public-files.gumroad.com/2z7lprph1l42ypknjk6wfly0jr0v"
+             alt="Filling in the printed binder at a kitchen table" width="1254" height="1254">
+        <figcaption>The binder, as intended — kitchen table, with a pen.</figcaption>
+      </figure>
+    </div>
+    <blockquote>I got tired of watching the same three mistakes kill people in the report afterwards.
+      Not exotic mistakes. <em>The same three, in county after county, storm after storm.</em></blockquote>
+  </section>
+
+  <div class="fine">
+    <p><strong>Paul Raymond</strong> · First edition 2026</p>
+    <p>General preparedness information for households. Not medical, legal, engineering or insurance
+      advice, and not a substitute for the instructions of your local emergency officials. In an
+      emergency, call 911 and follow the direction of authorities. Public-domain material reproduced
+      under 17 U.S.C. &sect; 105. No agency of the United States Government has endorsed, reviewed,
+      or is affiliated with this book.</p>
+  </div>
+
+</div>

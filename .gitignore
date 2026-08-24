@@ -47,3 +47,5 @@ references/*/dh-hook-frames/
 
 # per-cut frame-verification scratch (regenerable via ffmpeg)
 episodes/*/frames_check/
+
+.wrangler/

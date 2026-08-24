@@ -97,6 +97,9 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
 - **Ship a compressed HEVC master.** Full renders are ~5 GB at crf16/30fps; run
   `master_deliverables.py … --hevc` for a ~2 GB GPU-HEVC master (visually lossless), or render
   a smaller single pass with `RENDER_CRF=20` + author at 24fps. See LEARNINGS.md "Render size".
+- **Upload the 1440p file, not the 1080p master (owner order 2026-08-24).** Deliverables
+  produce `-master-1440p.mp4` by default — that is the YouTube upload artifact. The 1080p
+  copy-master stays the archive; the 1440p upscale can be deleted after upload.
 
 ## The formula (from measured teardowns — follow, don't reinvent)
 - Hook in 10–15s: cold-open on found footage/audio OR present-tense stat. Thesis/foreshadow line
@@ -186,8 +189,9 @@ Per episode in `episodes/<slug>/`:
       pacing report for step (a)'s reasoning — report lines never fail the run.
    c. **The static suite — all green BEFORE any render** (see "HARD RULE — the render is the
       LAST step"): `sweep_episode.py`, `blank_scan.mjs`, `beat_density.py`, `graphics_qc.mjs`,
-      `overlap_check.mjs`, `audio_levels.py` (exit 0 — insert/narration/bed level gate, run
-      before every mixdown build).
+      `overlap_check.mjs` v2 (text collisions incl. comp-internal + mid-tween, duplicate
+      facts), `audio_levels.py` (exit 0 — insert/narration/bed level gate, run before every
+      mixdown build).
    d. Per-composition snapshot of anything NEW or changed (stage into a bare page, seek,
       screenshot 4-6 points, subagent reads them) — never a whole-episode frame sweep.
    e. Post-render only: `scripts/verify_render.sh <episode-dir> <basename>` — blackdetect,
@@ -197,10 +201,15 @@ Per episode in `episodes/<slug>/`:
    on the final index.html; verify the artifact, not your memory (ep1 v2 RCA).**
    **The defects the owner names are a SAMPLE, not the set — dig for the rest yourself.**
 7. Deliverables per render, unasked: **`python3 scripts/master_deliverables.py
-   episodes/<slug> <render-basename> [--hevc]`** — one command produces the −14 LUFS master
-   (`-c:v copy` + measured gain, verified) AND the SRT (calls build_srt.py; requires the
-   `nx-*` narration audio-id convention). `--hevc` adds a ~2 GB GPU-HEVC master (hevc_nvenc,
-   audio bit-copied; needs the PATH ffmpeg 8.1.1, not the 8.1.2 shared build — see LEARNINGS).
+   episodes/<slug> <render-basename> [--hevc] [--no-2k]`** — one command produces the −14 LUFS
+   master (`-c:v copy` + measured gain, verified), the SRT (calls build_srt.py; requires the
+   `nx-*` narration audio-id convention), AND — default ON (owner order 2026-08-24) — the
+   **1440p YouTube upload file** (`-master-1440p.mp4`: h264_nvenc lanczos upscale, audio
+   bit-copied; a 1440p upload gets YouTube's higher VP9 bitrate tier — visibly cleaner
+   playback than the same content uploaded at 1080p; ~10 min, skip with `--no-2k`). Drafts
+   and previews stay 1080p as-is. `--hevc` adds a ~2 GB GPU-HEVC master (hevc_nvenc,
+   audio bit-copied). Both GPU steps need the PATH ffmpeg 8.1.1, not the 8.1.2 shared
+   build — see LEARNINGS.
    E2E-tested on ep2 2026-07-27. Plus updated
    `metadata.md` (titles,
    description, tags, chapters, AEO/SEO block, Education metadata: category Education, type

@@ -7,10 +7,14 @@ every row must carry the date it was verified.
 """
 
 import argparse
+import base64
 import csv
 import html
 import re
+import subprocess
 import sys
+import zipfile
+from io import BytesIO
 from pathlib import Path
 
 HERE = Path(__file__).parent
@@ -18,6 +22,12 @@ CSV_PATH = HERE / "state_data.csv"
 TEMPLATES = HERE / "templates"
 D = "—"          # em dash, used in generated titles
 BOOK_CSS = HERE.parent / "build" / "book.css"
+CHROME = r"C:/Program Files/Google/Chrome/Application/chrome.exe"
+
+# The FREE edition's closing page. Buyers of the paid ebook bundle already own the book, so
+# the default build (no --rehook) must never carry this page — only the $0 Gumroad packet
+# product does.
+REHOOK_URL = "https://paulraymond.online/packet?utm_source=packet&utm_medium=pdf&utm_campaign=qr"
 
 # States per Appendix B page. fitcheck.mjs is the real gate on this number.
 # Dropped from 4 to 3 on 2026-08-02: adding energy_assist_phone to the Appendix B row pushed
@@ -276,23 +286,71 @@ def build_appendix(complete, per_page=PER_PAGE):
           f"{per_page} per page")
 
 
-def build_packets(complete, only=None):
+def make_qr_data_uri(data):
+    """PNG QR code, error-correction M, as a base64 data: URI so the packet stays a
+    standalone file (no separate image asset to lose track of)."""
+    try:
+        import qrcode
+    except ImportError:
+        sys.exit("FAIL: the 'qrcode' package is required for --rehook. Install with "
+                 "'pip install \"qrcode[pil]\"'.")
+    img = qrcode.make(data, error_correction=qrcode.constants.ERROR_CORRECT_M, box_size=10, border=2)
+    buf = BytesIO()
+    img.save(buf, format="PNG")
+    return "data:image/png;base64," + base64.b64encode(buf.getvalue()).decode("ascii")
+
+
+def build_packets(complete, only=None, rehook=False):
     tpl = read_template("packet.html")
     table = region_first_ten()
-    directory = OUT / "packets"
+    directory = OUT / ("packets-free" if rehook else "packets")
     directory.mkdir(parents=True, exist_ok=True)
+
+    rehook_html = ""
+    if rehook:
+        qr_uri = make_qr_data_uri(REHOOK_URL)
+        rehook_html = read_template("rehook.html").replace("{{qr_data_uri}}", qr_uri)
+
     written = 0
     for row in complete:
         if only and row["abbr"] not in only:
             continue
         target = directory / f"{row['abbr']}.html"
         title = f"The Storm-Ready Home {D} {row['state']} State Packet"
-        body = fill(tpl, row, first_ten=first_ten_html(row, table))
+        body = fill(tpl, row, first_ten=first_ten_html(row, table)) + rehook_html
         target.write_text(document(title, body), encoding="utf-8")
         written += 1
-    print(f"wrote {written} packet(s) to {directory}")
+    print(f"wrote {written} packet(s) to {directory}" + (" (FREE edition, +rehook page)" if rehook else ""))
     if not written:
         sys.exit("FAIL: no packets written — no complete rows matched.")
+
+
+def render_pdfs(directory):
+    """Chrome headless print-to-pdf, one packet at a time. Chrome refuses a relative
+    --print-to-pdf path with 'Access is denied', so every path here is resolved absolute
+    (same constraint review_pdf.py works around)."""
+    html_files = sorted(directory.glob("*.html"))
+    if not html_files:
+        sys.exit(f"FAIL: no .html files in {directory} — run --packets first.")
+    for html_path in html_files:
+        pdf_path = html_path.with_suffix(".pdf").resolve()
+        subprocess.run(
+            [CHROME, "--headless=new", "--disable-gpu", "--no-pdf-header-footer",
+             f"--print-to-pdf={pdf_path}", html_path.resolve().as_uri()],
+            check=True, capture_output=True,
+        )
+    print(f"wrote {len(html_files)} PDF(s) in {directory}")
+
+
+def build_zip(directory, zip_name):
+    pdfs = sorted(directory.glob("*.pdf"))
+    if not pdfs:
+        sys.exit(f"FAIL: no .pdf files in {directory} — run --pdf first.")
+    zip_path = OUT / zip_name
+    with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
+        for pdf in pdfs:
+            zf.write(pdf, arcname=pdf.name)
+    print(f"wrote {zip_path} — {len(pdfs)} PDF(s), {zip_path.stat().st_size / 1_048_576:.1f} MB")
 
 
 def main():
@@ -304,10 +362,21 @@ def main():
                              "fitcheck reports an overflow")
     parser.add_argument("--packets", action="store_true", help="render the per-state packets")
     parser.add_argument("--only", help="comma-separated state abbreviations")
+    parser.add_argument("--rehook", action="store_true",
+                        help="FREE edition only: add the buy-the-book QR page, and write to "
+                             "out/packets-free/ instead of out/packets/. Never applies to the "
+                             "paid bundle build — run --packets a second time WITHOUT --rehook "
+                             "for that.")
+    parser.add_argument("--pdf", action="store_true",
+                        help="Chrome print-to-pdf every packet in the --rehook (or default) "
+                             "output directory")
+    parser.add_argument("--zip", action="store_true",
+                        help="zip that directory's PDFs into out/The-Storm-Ready-Home-"
+                             "State-Packets[-FREE].zip")
     args = parser.parse_args()
 
-    if not (args.check or args.appendix or args.packets):
-        parser.error("nothing to do — pass --check, --appendix or --packets")
+    if not (args.check or args.appendix or args.packets or args.pdf or args.zip):
+        parser.error("nothing to do — pass --check, --appendix, --packets, --pdf or --zip")
 
     rows = load_rows()
     complete, problems = validate(rows)
@@ -325,7 +394,15 @@ def main():
     if args.appendix:
         build_appendix(complete, per_page=args.per_page)
     if args.packets:
-        build_packets(complete, only)
+        build_packets(complete, only, rehook=args.rehook)
+
+    directory = OUT / ("packets-free" if args.rehook else "packets")
+    if args.pdf:
+        render_pdfs(directory)
+    if args.zip:
+        zip_name = ("The-Storm-Ready-Home-State-Packets-FREE.zip" if args.rehook
+                   else "The-Storm-Ready-Home-State-Packets.zip")
+        build_zip(directory, zip_name)
 
 
 if __name__ == "__main__":

@@ -1,11 +1,13 @@
 # Landing page — The Storm-Ready Home
 
 Static page, zero build step: one HTML file with inline CSS, assets alongside it, no framework, no
-CDN. The one piece of server logic is `functions/api/subscribe.js`, a single Cloudflare Pages
-Function for the lead-magnet form — no bundler, no other backend. Deploys to Cloudflare Pages as-is.
+CDN, **and no server logic at all**. Money and email both live on Gumroad — the paid manual at
+`/l/ebook`, the free state packets at `/l/packet`. Deploys to Cloudflare Pages as-is.
 
-**NOT DEPLOYED. Not live anywhere.** See "Before it goes live" — four blockers, one of them is
-Gumroad.
+**Live at https://paulraymond.pages.dev.** Redeploy with
+`npx wrangler pages deploy <this dir> --project-name paulraymond --branch main`.
+**`--branch main` is required** — without it wrangler publishes to a preview alias named after your
+git branch and production silently keeps serving the old build.
 
 | File | What |
 |---|---|
@@ -13,7 +15,8 @@ Gumroad.
 | `privacy.html`, `terms.html` | Generic text-only legal pages, linked in the footer, noindexed. |
 | `og-src.html` | Source for `assets/og.png` (1200×630 social card). Regenerate: `node shot.mjs og-src.html ./out 1200`, crop to 630. |
 | `assets/` | Cover + headshot (compressed JPEGs; the PNG originals remain as source), OG card, four real page shots, five Paul photos (selfie, plywood, binder, field kit, stage). |
-| `functions/api/subscribe.js` | Pages Function behind the lead-magnet form. See "Mail provider". |
+| `gumroad/` | The two Gumroad surfaces (custom product page + storefront profile) and their checkers. |
+| `buycheck.mjs` | **Gate.** Reads the buy button's *resolved* href in a real browser and confirms it reaches a live checkout. |
 | `widthcheck.mjs` | **Gate.** Fails if the page scrolls sideways at any width. |
 | `shot.mjs` | Full-page screenshots at true device widths. |
 
@@ -61,7 +64,7 @@ higher the credible savings delta right below the pricing, the higher the conver
 11. Paul Raymond — persona block with the quote
 12. What $47 is — price anchored against plywood/deductible/generator/hotel/unprovable loss
 13. The offer — $47 struck from $87, itemised value stack to $120, guarantee seal
-14. Free state packet — the email gate, with the kitchen-table binder photo
+14. Free state packet — a link to the $0 Gumroad product, with the kitchen-table binder photo
 15. FAQ — including "isn't this free from FEMA?", answered honestly
 16. Last call
 + Sticky bottom CTA (appears after the hero, hides while the offer is on screen), a 30s
@@ -83,24 +86,23 @@ ordered all four, so they exist — with these standing caveats on the record:
   **the viewer counter is decorative** (random 80–115, re-rolled every 2–3s). Both are aesthetic
   urgency, ordered by the owner, not measurements.
 
-## Before it goes live — four blockers
+## Status
 
-1. **Gumroad product does not exist.** The buy button at `#buy` has no URL. Create the product,
-   then set the `GUMROAD_URL` const at the top of the page script — the offer button and the
-   exit-intent popup pick it up automatically (`?wanted=true` direct checkout). Gumroad cannot
-   show a struck-through price natively — put the $87 anchor in the product description and use a
-   discount code for $47. Also pending owner input: the Cloudflare Web Analytics token (beacon is
-   in the page, commented out with `YOUR_TOKEN_HERE`). Contact email: owner decided 2026-08-14
-   there is none for now — footer + legal pages say "reply to your purchase receipt" (all
-   support runs through Gumroad).
-2. **The lead-magnet form is now wired, but delivery is not finished.** `functions/api/subscribe.js`
-   is a Cloudflare Pages Function that validates the email + two-letter state code and forwards the
-   subscriber to Kit (see "Mail provider" below) — no more alert-only placeholder. What it does
-   **not** do: send the packet itself. It adds the subscriber with their state recorded as a custom
-   field; a Kit automation keyed on that field (built in the Kit dashboard, not in this repo) has to
-   actually email the right `<ABBR>.html`/PDF. That automation does not exist yet, and neither does
-   the Kit account — `KIT_API_KEY` must be set before this stops 500ing (see Deploy). The state
-   packets themselves are covered in blocker 4.
+1. **Gumroad is wired and carries the files.** `GUMROAD_URL` at the top of the page script points
+   at `/l/ebook`; the offer button and the exit-intent popup rewrite themselves to `?wanted=true`
+   direct checkout. The product carries the 486-page manual, the 61-page binder and the state-packet
+   zip, and an explicit 7-day refund policy. Contact email: owner decided 2026-08-14 there is none —
+   footer + legal pages say "reply to your purchase receipt", and all support runs through Gumroad.
+
+   Still open: the **Cloudflare Web Analytics token** (beacon is in the page, commented out with
+   `YOUR_TOKEN_HERE`). It cannot be scripted from here — the wrangler OAuth token carries no
+   `analytics` scope. Easiest path is the dashboard toggle on the Pages project, which injects the
+   beacon itself and makes the commented block unnecessary.
+2. **The free state packets ship from Gumroad too** (`/l/packet`, $0, all 51 in one zip). This
+   replaced a Cloudflare Pages Function that forwarded signups to Kit: it needed a `KIT_API_KEY`
+   that never existed, so it 500'd on every real submit while the page promised a packet. Gumroad
+   already does the email capture and the delivery, so the function and its Kit dependency were
+   deleted rather than configured. **There is no server logic in this project any more.**
 3. **The book is written, sourced, laid out and counted.** All **130 of 130** protections and all
    **23 of 23** hazard playbooks, plus front matter, people/places, the 60-day sequence, 61 pages of
    fillable binder forms, 13 original diagrams, a credits page, Sources and the 51-state directory.
@@ -156,78 +158,40 @@ regenerating owner-approved art; `landing/assets/cover.png` is the repainted fil
 Executive Public Information Officer (Paul D. Raymond, Jr.) and with Paul Raymond Publications, the
 British adult-magazine brand. Details in `ebook/build/art/COVER-PROMPTS.md`.
 
-## Mail provider
+## No mail provider, deliberately
 
-`functions/api/subscribe.js` forwards the free-packet signup to **Kit** (`api.kit.com`, formerly
-ConvertKit), chosen over Mailchimp and Buttondown for one reason: free-tier headroom for a list
-that doesn't exist yet. Mailchimp's free tier was cut to 250 contacts / 500 sends a month in
-January 2026; Buttondown's free tier caps at 100 subscribers. Kit's free tier holds 10,000
-subscribers with full API access, and its v4 REST API is one POST with one header that upserts a
-subscriber and accepts arbitrary custom fields — no provider-side abstraction layer needed for a
-single provider.
+There was one: a Cloudflare Pages Function posting free-packet signups to Kit's v4 API, with a
+same-IP throttle and a `[FALLBACK]` line on the in-memory path. It was deleted on 2026-08-15, and
+the reason is worth keeping.
 
-What the function does: `POST https://api.kit.com/v4/subscribers` with an `X-Kit-Api-Key` header,
-body `{ email_address, fields: { state } }`. That's it — it records the subscriber and their
-two-letter state. It does not tag, does not trigger a send, and does not know what a packet is.
+It needed a `KIT_API_KEY` that was never created, so on the live site every submit returned
+`HTTP 500 {"error":"Sign-ups aren't working right now."}` while the button above it said "Send my
+state packet". It also only ever recorded a subscriber — the automation that would actually email
+the right packet lived in a Kit dashboard that did not exist either. Two unbuilt pieces standing
+between a promise on the page and anything reaching a reader.
 
-What it deliberately does **not** do, and who has to do it before this delivers anything real:
+Gumroad already does email capture, delivery and unsubscribe, and it was already carrying the paid
+product. So the packets became a $0 Gumroad product (`/l/packet`) and the function, the Kit
+dependency, the state `<select>` and its 51-entry JS array all came out. Nothing on this site
+posts anywhere now.
 
-1. **Create the Kit account and API key.** Account settings → Developer → API keys → generate a
-   v4 key (not the legacy v3 key). Set it as `KIT_API_KEY` in the Cloudflare Pages project (see
-   Deploy below). Nothing is stored in this repo.
-2. **Add a custom field with the key `state`** in Kit (Subscribers → Custom fields) before the
-   first real signup. Kit silently drops unknown field keys with a warning rather than erroring —
-   that's Kit's behavior, documented here so a missing field doesn't get mistaken for a bug in this
-   function later.
-3. **Build the actual delivery automation** in the Kit dashboard: a visual automation triggered on
-   subscribe, split on the `state` field, that emails the matching `ebook/appendix/out/packets/
-   <ABBR>.html` (or its PDF once rendered). Fifty-one branches, or one templated send pointing at a
-   hosted per-state URL — that design choice belongs to the owner, not hardcoded here.
-
-**Rate limiting:** same-IP throttle, 5 requests / 10 minutes, real and tested (see Deploy). It's a
-fixed-window counter kept in the Function's module scope, so it's enforced per isolate, not
-globally across Cloudflare's edge — a real throttle against one abusive client hitting one edge
-location, not a distributed guarantee. The code checks for an optional `SUBSCRIBE_RATE_LIMIT`
-binding (Cloudflare's declarative Rate Limiting binding, GA since 2025-09) and uses it instead if
-present; the in-memory path logs a `[FALLBACK]` line on every request so the gap stays visible. No
-binding is configured today — nothing to set up for this to work, it's just the softer of the two
-options.
-
-## Deploy (when unblocked, and with the owner)
-
-**Confirmed ready, without deploying anything:**
-- `wrangler` 4.118.0 is installed and already authenticated in this environment (`npx wrangler
-  whoami` resolves to an existing Cloudflare account) — no credentials were created, requested, or
-  stored as part of this check.
-- `functions/api/subscribe.js` was validated locally with `npx wrangler pages dev .`: malformed
-  email → 400, malformed state → 400, GET → 405, `KIT_API_KEY` unset → loud 500 (never a fake
-  success), 6th request within 10 minutes from the same IP → 429, and — with a temporary local-only
-  fake key in `.dev.vars` (never committed; deleted immediately after the test) — a real network
-  round-trip to Kit's live API that correctly surfaced Kit's 401 as this function's 502. The dev
-  server was killed after testing; nothing was published.
+## Deploy
 
 Cloudflare Pages, direct upload — no build:
 
 ```bash
-npx wrangler pages project create storm-ready-home        # once
-npx wrangler pages deploy landing --project-name storm-ready-home
+npx wrangler pages deploy landing --project-name paulraymond --branch main
 ```
 
-**Environment variables that must be set before the first deploy** (Pages project → Settings →
-Environment variables, both Production and Preview):
+**`--branch main` is not optional.** Wrangler names the deployment target after your git branch, so
+from a feature branch it publishes to a preview alias (`<branch>.paulraymond.pages.dev`) and
+production keeps serving the previous build with no error anywhere. This was hit for real on
+2026-08-15 while shipping a factual correction — the fix went live only on the alias.
 
-| Variable | Required | Notes |
-|---|---|---|
-| `KIT_API_KEY` | Yes | Kit v4 API key (see "Mail provider" above). Unset → every submission 500s loudly instead of silently succeeding. |
+No environment variables. No bindings. Nothing to configure — the project is static files.
 
-`SUBSCRIBE_RATE_LIMIT` is an optional future binding, not a variable to set — see "Rate limiting"
-above.
+Check after shipping: `node buycheck.mjs` (the buy button resolves to a live checkout),
+`node gumroad/pagecheck.mjs https://paulraymond.gumroad.com/l/ebook product`, and the free-packet
+button reaching `/l/packet`.
 
-Then point the domain at it in the Cloudflare dashboard. Check before shipping: OG image resolves at
-an absolute URL, the buy button goes to a live Gumroad product, a real test purchase completes and
-delivers, the refund path works, and a real Kit sign-up lands in the account with `state` populated.
-
-**Deployed 2026-08-14 to https://paulraymond.pages.dev by owner order** (supersedes the earlier
-do-not-deploy-before-Gumroad instruction). Deployed ≠ launched: the buy button and the free-packet
-form stay inert until the Gumroad products exist — the form errors loudly on submit (KIT backend
-unconfigured; will be replaced by a Gumroad free-product link).
+**Live since 2026-08-14 at https://paulraymond.pages.dev.**
