@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:#050705; font-family:'Courier New',monospace; }
+  .gt-flash { position:absolute; left:200px; top:78px; font-family:'Arial Black',Arial,sans-serif;
+    font-size:54px; color:#f2f5f8; letter-spacing:2px; background:rgba(140,30,30,0.9); padding:8px 28px; }
+  .gt-wrap { position:absolute; left:200px; right:200px; top:186px; }
+  .gt-hdr { font-size:27px; color:#7ba97b; letter-spacing:2px; line-height:1.6; white-space:pre-wrap; }
+  .gt-body { margin-top:44px; font-size:42px; font-weight:700; color:#c9e8c9; letter-spacing:1px; line-height:1.7; white-space:pre-wrap; }
+  .gt-body .hot { color:#f0f7f0; background:rgba(140,30,30,0.55); padding:0 6px; }
+  .gt-cursor { display:inline-block; width:22px; height:44px; background:#c9e8c9; vertical-align:-6px; }
+  .gt-src { position:absolute; right:40px; bottom:34px; font-family:Arial,sans-serif; font-size:19px;
+    color:rgba(200,211,224,0.75); background:rgba(5,8,12,0.55); padding:5px 12px; letter-spacing:0.5px; }
+  #gt-scan { position:absolute; inset:0; pointer-events:none;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.16) 0 2px, transparent 2px 5px); }
+</style>
+<div id="root" data-composition-id="g-bulletin" data-width="1920" data-height="1080">
+  <div class="gt-flash" id="g-bulletin-flash">&#9888; URGENT WEATHER MESSAGE</div>
+  <div class="gt-wrap">
+    <div class="gt-hdr" id="g-bulletin-hdr"></div>
+    <div class="gt-body"><span id="g-bulletin-body"></span><span class="gt-cursor" id="g-bulletin-cursor"></span></div>
+  </div>
+  <div class="gt-src" id="g-bulletin-src">NWS NEW ORLEANS/BATON ROUGE — URGENT WEATHER MESSAGE, AUG 28 2005, 10:11 AM CDT (VERBATIM)</div>
+  <div id="gt-scan"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* host 406.72-456.32 (49.6s). Narration cues (rel): ricks named 1.34, "sent a bulletin" 10.24,
+     DEVASTATING 16.58, UNPRECEDENTED 20.7, CAMILLE 24.44, UNINHABITABLE 28.6, WEEKS 29.64.
+     The machine types WITH the voice — each phrase completes as it is spoken. */
+  const tl = gsap.timeline({ paused: true });
+  const HDR = "NATIONAL WEATHER SERVICE NEW ORLEANS LA\n1011 AM CDT SUN AUG 28 2005";
+  const SEGS = [
+    { text: "\n...DEVASTATING DAMAGE EXPECTED...\n", at: 14.9, dur: 2.6 },
+    { text: "\nHURRICANE KATRINA...A MOST POWERFUL HURRICANE WITH UNPRECEDENTED STRENGTH...", at: 18.3, dur: 4.4 },
+    { text: "\nRIVALING THE INTENSITY OF HURRICANE CAMILLE OF 1969.\n", at: 23.2, dur: 2.9 },
+    { text: "\nMOST OF THE AREA WILL BE UNINHABITABLE FOR WEEKS...", at: 27.0, dur: 3.4 },
+    { text: "PERHAPS LONGER.", at: 31.2, dur: 1.6 }
+  ];
+  const hdrEl = () => document.getElementById("g-bulletin-hdr");
+  const bodyEl = () => document.getElementById("g-bulletin-body");
+  const hstate = { n: 0 };
+  tl.to(hstate, { n: HDR.length, duration: 4.2, ease: "none", onUpdate: function() {
+    const el = hdrEl(); if (el) el.textContent = HDR.slice(0, Math.round(hstate.n));
+  } }, 2.0);
+  let acc = "";
+  SEGS.forEach(function(seg) {
+    const st = { n: 0 }, base = acc;
+    tl.to(st, { n: seg.text.length, duration: seg.dur, ease: "none", onUpdate: function() {
+      const el = bodyEl(); if (el) el.textContent = base + seg.text.slice(0, Math.round(st.n));
+    } }, seg.at);
+    acc += seg.text;
+  });
+  /* cursor blink for the full window */
+  tl.to("#g-bulletin-cursor", { autoAlpha: 0, duration: 0.42, ease: "steps(1)", yoyo: true, repeat: 57 }, 0.5);
+  /* the urgent banner slams in first, then a slow warning pulse so it never sits dead */
+  tl.fromTo("#g-bulletin-flash", { autoAlpha: 0, scale: 1.15, transformOrigin: "left center" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 0.4);
+  tl.to("#g-bulletin-flash", { opacity: 0.72, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 40 }, 1.2);
+  tl.fromTo("#g-bulletin-src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 3.0);
+  /* CRT drift: slow zoom the whole card */
+  tl.fromTo("#root", { scale: 1.0, transformOrigin: "center" }, { scale: 1.04, duration: 49, ease: "none" }, 0);
+  /* hold the finished page while the narration lands "veteran forecasters had never typed", then die */
+  tl.to("#root", { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 49.1);
+  window.__timelines["g-bulletin"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

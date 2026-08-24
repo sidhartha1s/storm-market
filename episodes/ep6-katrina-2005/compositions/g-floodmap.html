@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:#04070c; overflow:hidden; font-family:Arial,sans-serif; }
+  #g-floodmap-cam { position:absolute; left:0; top:0; width:2280px; height:1594px; transform-origin:0 0; }
+  #g-floodmap-cam img { position:absolute; left:0; top:0; width:2280px; height:1594px; }
+  /* flood pools: soft blue radials that grow from each breach (plate pixels) */
+  .fm-pool { position:absolute; border-radius:50%; transform:translate(-50%,-50%);
+    background:radial-gradient(circle, rgba(16,56,108,0.72) 0%, rgba(16,56,108,0.40) 55%, transparent 72%); width:0; height:0; }
+  .fm-pin { position:absolute; width:34px; height:34px; margin:-17px 0 0 -17px; border-radius:50%;
+    border:5px solid #e74c3c; background:rgba(231,76,60,0.25); box-shadow:0 0 26px rgba(231,76,60,0.6); }
+  .fm-pinlab { position:absolute; white-space:nowrap; left:26px; top:-14px; font-weight:700; font-size:24px; color:#f2f5f8;
+    background:rgba(5,8,12,0.72); padding:5px 12px; border-left:4px solid #e74c3c; }
+  .fm-title { position:absolute; left:110px; top:96px; z-index:5; font-family:'Arial Black',Arial,sans-serif;
+    font-size:46px; color:#f2f5f8; background:rgba(5,8,12,0.62); padding:8px 24px; letter-spacing:2px; }
+  .fm-stat { position:absolute; right:130px; bottom:150px; z-index:5; text-align:right; }
+  .fm-stat .big { font-family:'Arial Black',Arial,sans-serif; font-size:120px; color:#e74c3c;
+    background:rgba(5,8,12,0.66); padding:0 26px; display:inline-block; }
+  .fm-stat .sm { display:block; margin-top:10px; font-weight:700; font-size:26px; letter-spacing:3px; color:#dfe7ee;
+    background:rgba(5,8,12,0.66); padding:8px 16px; }
+  .fm-counts { position:absolute; left:110px; bottom:150px; z-index:5; font-family:'Courier New',monospace; }
+  .fm-counts div { font-size:36px; font-weight:700; color:#dfe7ee; background:rgba(5,8,12,0.66); padding:8px 18px; margin-top:10px; }
+  .fm-counts b { color:#e74c3c; }
+  .fm-src { position:absolute; right:40px; bottom:34px; z-index:5; font-size:19px; color:rgba(200,211,224,0.75);
+    background:rgba(5,8,12,0.55); padding:5px 12px; }
+</style>
+<div id="root" data-composition-id="g-floodmap" data-width="1920" data-height="1080">
+  <div class="fm-title" id="g-floodmap-title">Fifty Breaches, One Bowl</div>
+  <div id="g-floodmap-cam">
+    <img src="../media/maps/baseplate-neworleans-elevation-lake-canals.jpg" alt="">
+    <div class="fm-pool" id="g-floodmap-pool1" style="left:274px; top:547px;"></div>
+    <div class="fm-pool" id="g-floodmap-pool2" style="left:667px; top:564px;"></div>
+    <div class="fm-pool" id="g-floodmap-pool3" style="left:1000px; top:838px;"></div>
+    <div class="fm-pin" id="g-floodmap-pin1" style="left:274px; top:547px;"><span class="fm-pinlab">17TH STREET CANAL</span></div>
+    <div class="fm-pin" id="g-floodmap-pin2" style="left:667px; top:564px;"><span class="fm-pinlab">LONDON AVENUE CANAL</span></div>
+    <div class="fm-pin" id="g-floodmap-pin3" style="left:1000px; top:838px;"><span class="fm-pinlab">INDUSTRIAL CANAL</span></div>
+  </div>
+  <div class="fm-counts" id="g-floodmap-counts">
+    <div id="g-floodmap-c1">BREACHES: <b>50</b></div>
+    <div id="g-floodmap-c2">OVERTOPPED: 46</div>
+    <div id="g-floodmap-c3">FAILED BELOW DESIGN: <b>4</b></div>
+  </div>
+  <div class="fm-stat" id="g-floodmap-stat"><span class="big" id="g-floodmap-pct">80%</span><span class="sm">OF NEW ORLEANS UNDER WATER · AUG 30</span></div>
+  <div class="fm-src" id="g-floodmap-src">ELEVATION: W. SCOTT LINCOLN / NWS · BREACH SET: IPET FINAL REPORT</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* host 910.0-959.96 (49.96s = a5-s5). Cues (rel): "fifty breaches" ~4.5, forty-six ~8,
+     four-below-design ~14.5, canal names ~18-22, "smaller than its promise" ~29,
+     Tuesday/80% @36.72, "forty-three days" ~41, Rita reflood ~45. Plate is 1334x933 scaled
+     x1.709 to 2280x1594; pin coords already in scaled px. */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-floodmap-";
+  /* Z raised 0.85→1.15 (owner 15:38): tighter on the flood bowl, crops the scan's baked-in
+     legend/title text out of frame for the whole window */
+  const Z = 1.15;
+  tl.set(P+"cam", { scale: Z, x: 960 - 1000 * Z, y: 540 - 700 * Z }, 0);
+  tl.to(P+"cam", { scale: Z + 0.07, x: 960 - 1000 * (Z + 0.07), y: 540 - 700 * (Z + 0.07), duration: 50, ease: "none" }, 0);
+  tl.set([P+"stat", P+"c1", P+"c2", P+"c3"], { autoAlpha: 0 }, 0);
+  tl.set([P+"pin1", P+"pin2", P+"pin3"], { autoAlpha: 0 }, 0);
+  tl.fromTo(P+"title", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 0.3);
+  tl.fromTo(P+"src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.8);
+  /* counters land with the voice */
+  tl.fromTo(P+"c1", { autoAlpha: 0, x: -18 }, { autoAlpha: 1, x: 0, duration: 0.4 }, 4.3);
+  tl.fromTo(P+"c2", { autoAlpha: 0, x: -18 }, { autoAlpha: 1, x: 0, duration: 0.4 }, 7.8);
+  tl.fromTo(P+"c3", { autoAlpha: 0, x: -18 }, { autoAlpha: 1, x: 0, duration: 0.4 }, 14.3);
+  /* the four named walls: pins slam on their names */
+  [["pin1", 18.0], ["pin2", 20.2], ["pin3", 22.0]].forEach(function(x) {
+    tl.fromTo(P+x[0], { autoAlpha: 0, scale: 2.4 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.in" }, x[1]);
+    tl.to(P+x[0], { scale: 1.15, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 20 }, x[1] + 0.4);
+  });
+  /* the pools spread — water flows for two days */
+  tl.to(P+"pool1", { width: 900, height: 700, duration: 12, ease: "power1.in" }, 24.0);
+  tl.to(P+"pool2", { width: 950, height: 720, duration: 12, ease: "power1.in" }, 25.0);
+  tl.to(P+"pool3", { width: 850, height: 650, duration: 12, ease: "power1.in" }, 26.0);
+  /* 80% lands on "Tuesday" */
+  tl.fromTo(P+"stat", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 36.5);
+  /* slam from 1.3 not 1.8: at 1.8 the scaled glyphs swept over the INDUSTRIAL CANAL pin label */
+  tl.fromTo(P+"pct", { scale: 1.3, transformOrigin: "right bottom" }, { scale: 1, duration: 0.35, ease: "power4.in" }, 36.7);
+  /* Rita reflood: pools pulse back up */
+  tl.to([P+"pool1", P+"pool2", P+"pool3"], { opacity: 0.55, duration: 1.2, yoyo: true, repeat: 1 }, 45.0);
+  tl.to("#root", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 49.5);
+  window.__timelines["g-floodmap"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

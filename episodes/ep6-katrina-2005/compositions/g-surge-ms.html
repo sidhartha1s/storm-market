@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif;
+    background: radial-gradient(ellipse at 50% 25%, #0c141f 0%, #05080d 72%); }
+  .gs-title { position:absolute; left:0; right:0; top:88px; text-align:center;
+    font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; letter-spacing:2px; }
+  .gs-sub { position:absolute; left:0; right:0; top:160px; text-align:center;
+    font-family:Georgia,serif; font-style:italic; font-size:27px; color:#d8a13a; }
+  /* left: surge vs building */
+  svg { position:absolute; left:150px; top:250px; }
+  .gs-lab-sm { font-family:Arial,sans-serif; font-weight:700; font-size:20px; fill:#93a3b2; letter-spacing:3px; }
+  .gs-big { font-family:'Arial Black',Arial,sans-serif; font-size:64px; fill:#e74c3c; }
+  .gs-big-sm { font-family:Arial,sans-serif; font-weight:700; font-size:24px; fill:#c8d3e0; letter-spacing:2px; }
+  /* right: town roll */
+  .gs-towns { position:absolute; right:170px; top:250px; width:560px; }
+  .gs-town { font-family:'Arial Black',Arial,sans-serif; font-size:40px; color:#5a6a7c; padding:12px 0; letter-spacing:2px;
+    border-bottom:1px solid rgba(255,255,255,0.08); }
+  .gs-town.on { color:#f2f5f8; }
+  .gs-verdict { position:absolute; left:0; right:0; bottom:86px; text-align:center;
+    font-family:Georgia,serif; font-style:italic; font-size:36px; color:#e8edf2; }
+  .gs-verdict b { color:#e74c3c; font-style:normal; font-family:'Arial Black',Arial,sans-serif; }
+</style>
+<div id="root" data-composition-id="g-surge-ms" data-width="1920" data-height="1080">
+  <div class="gs-title" id="g-surge-title">The Gulf Walks Ashore</div>
+  <div class="gs-sub" id="g-surge-sub">Mississippi coast &middot; 9:45 AM, August 29</div>
+  <svg id="g-surge-svg" width="1000" height="640" viewBox="0 0 1000 640">
+    <defs>
+      <clipPath id="gsm-waterclip"><rect id="g-surge-waterrect" x="0" y="640" width="1000" height="0"/></clipPath>
+    </defs>
+    <!-- ground line -->
+    <rect x="0" y="580" width="1000" height="60" fill="#2a3442"/>
+    <!-- three-story building, floors marked -->
+    <g id="g-surge-bldg">
+      <rect x="620" y="220" width="240" height="360" fill="#2c3846" stroke="#7a90a8" stroke-width="4"/>
+      <line x1="620" y1="340" x2="860" y2="340" stroke="#48586c" stroke-width="2"/>
+      <line x1="620" y1="460" x2="860" y2="460" stroke="#48586c" stroke-width="2"/>
+      <text class="gs-lab-sm" x="875" y="520" fill="#7e8ea0">FLOOR 1</text>
+      <text class="gs-lab-sm" x="875" y="400" fill="#7e8ea0">FLOOR 2</text>
+      <text class="gs-lab-sm" x="875" y="286" fill="#7e8ea0">FLOOR 3</text>
+    </g>
+    <!-- the surge: clipped water block rising to 27.8ft (= just over the 3rd floor line) -->
+    <g clip-path="url(#gsm-waterclip)">
+      <rect x="0" y="230" width="1000" height="350" fill="#1d4a63" opacity="0.92"/>
+      <path id="g-surge-wavetop" d="M0,236 Q80,224 160,236 T320,236 T480,236 T640,236 T800,236 T960,236 L1000,236 L1000,250 L0,250 Z" fill="#2a6a8f"/>
+    </g>
+    <!-- surge measure -->
+    <g id="g-surge-measure" opacity="0">
+      <line x1="90" y1="580" x2="90" y2="238" stroke="#e74c3c" stroke-width="4"/>
+      <text id="g-surge-num" class="gs-big" x="120" y="300">27.8 FT</text>
+      <text class="gs-big-sm" x="122" y="348">STORM SURGE · PASS CHRISTIAN</text>
+    </g>
+  </svg>
+  <div class="gs-towns" id="g-surge-towns">
+    <div class="gs-town" id="g-surge-t1">WAVELAND</div>
+    <div class="gs-town" id="g-surge-t2">BAY ST. LOUIS</div>
+    <div class="gs-town" id="g-surge-t3">PASS CHRISTIAN</div>
+    <div class="gs-town" id="g-surge-t4">LONG BEACH</div>
+    <div class="gs-town" id="g-surge-t5">GULFPORT</div>
+    <div class="gs-town" id="g-surge-t6">BILOXI</div>
+  </div>
+  <div class="gs-verdict" id="g-surge-verdict">The first blocks of town were not damaged. <b>They were removed.</b></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* host 633.26-678.66 (45.4s). Cues (rel): 9:45 @0.42, "Gulf stood up" ~8, surge word 13.22,
+     27.8ft ~15.5, towns: waveland 22.46, bay ~24, pass ~25.5, long beach ~27, gulfport 28.68,
+     biloxi 29.92, "blocks removed" ~33-37, slabs stayed ~38-42. */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-surge-";
+  tl.set([P+"measure", P+"verdict"], { autoAlpha: 0 }, 0);
+  tl.set([P+"t1",P+"t2",P+"t3",P+"t4",P+"t5",P+"t6"], { autoAlpha: 0.35 }, 0);
+  tl.fromTo(P+"title", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 0.2);
+  tl.fromTo(P+"sub", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.6);
+  tl.fromTo(P+"svg", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.7, ease: "power2.out" }, 1.2);
+  tl.fromTo(P+"towns", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.7 }, 1.6);
+  /* the water stands up on "the Gulf stood up and walked onto the land" */
+  tl.to(P+"waterrect", { attr: { y: 230, height: 410 }, duration: 6.5, ease: "power2.inOut" }, 8.0);
+  /* wave top undulates for the entire window (motion floor) */
+  tl.to(P+"wavetop", { x: -160, duration: 3.2, ease: "sine.inOut", yoyo: true, repeat: 11 }, 8.0);
+  /* the number lands with the spoken figure */
+  tl.fromTo(P+"measure", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 14.8);
+  tl.fromTo(P+"num", { scale: 1.45, transformOrigin: "left bottom" }, { scale: 1, duration: 0.35, ease: "power4.in" }, 15.3);
+  /* towns ping on their names */
+  [["t1",22.3],["t2",23.9],["t3",25.4],["t4",26.9],["t5",28.5],["t6",29.8]].forEach(function(x) {
+    tl.to(P+x[0], { autoAlpha: 1, color: "#f2f5f8", duration: 0.25 }, x[1]);
+    tl.fromTo(P+x[0], { x: 0 }, { x: 14, duration: 0.18, yoyo: true, repeat: 1, ease: "power2.out" }, x[1]);
+  });
+  /* verdict on "removed" */
+  tl.fromTo(P+"verdict", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 34.0);
+  /* slow global drift */
+  tl.fromTo("#root", { scale: 1.0, transformOrigin: "center" }, { scale: 1.035, duration: 45.8, ease: "none" }, 0);
+  tl.to("#root", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 45.75);
+  window.__timelines["g-surge-ms"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

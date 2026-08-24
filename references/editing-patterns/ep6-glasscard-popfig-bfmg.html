@@ -1,0 +1,65 @@
+<!--
+  ep6-glasscard-popfig-bfmg.html — the three ep6 (Katrina 2005) on-screen-text devices, copied
+  verbatim from the shipped index.html (owner-approved draft v3, 2026-08-23). Episode folders get
+  deleted after publish; this file is the reference. Rules these implement: DESIGN.md "On-screen
+  text rules" + "Chapter blackout" table; repo CLAUDE.md "On-screen text rules".
+
+  1. .glasscard  — THE one treatment for any text over footage (blur backdrop, 1px light border,
+                   28px radius). Quote cards drop the outer box-shadow (owner 24:15: "no dark halo").
+  2. .popfig     — Abril Fatface figure/date popup: red, text-shadow, mid-screen, ≤3 words, NO
+                   colour-block background. Replaces the ep1-ep5 red "stamp" date cards.
+                   Amber variant for money/figures. Font file: fonts/AbrilFatface-Regular.ttf (OFL).
+  3. BFMG        — "b-roll footage + motion graphic": three muted graded clips on track 1 with the
+                   glasscard text on track 3 landing WITH the narration line (here 1319.9), never
+                   on a plain dark gradient. Second use of a clip carries data-callback.
+  Times are the shipped episode clock; keep the shapes, re-time per episode.
+-->
+<style>
+  /* glass card — the ONE treatment for any text over footage (owner 12:03: no bare text on
+     moving footage, no mid-beat background swaps); same recipe as the g-circle panel */
+  .glasscard { background: rgba(10,16,24,0.55); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+    border: 1px solid rgba(255,255,255,0.14); border-radius: 28px; padding: 40px 56px; box-sizing: border-box;
+    box-shadow: 0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
+  .quotecard { position: absolute; left: 160px; right: 160px; bottom: 150px; z-index: 6; text-align: center; }
+  .quotecard.glasscard { left: 260px; right: 260px; box-shadow: none; } /* owner 24:15: glass + text alone, no halo */
+  .quotecard .q { display: table; margin: 0 auto; font-family: Georgia, serif; font-style: italic; font-size: 44px; color: #f2f5f8; background: rgba(5,8,12,0.72); padding: 16px 40px; line-height: 1.35; text-shadow: 0 2px 18px rgba(0,0,0,0.9); }
+  .quotecard .attr { display: table; margin: 12px auto 0; font-family: Arial, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 3px; color: #d8a13a; background: rgba(5,8,12,0.72); padding: 8px 24px; }
+
+  /* ---- Abril figure popup (owner 2026-08-16: replaces red stamp blocks; red eerie, shadow, no bg block) ---- */
+  @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+  .popfig { position: absolute; left: 0; right: 0; top: 38%; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; }
+  .popfig-amber .pf-big { color: #d8a13a; text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(90,60,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+  .popfig .pf-big { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 150px; color: #d0121f; letter-spacing: 0.04em;
+    text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+  .popfig .pf-sub { display: block; margin-top: 10px; font-family: Arial, sans-serif; font-weight: 700; font-size: 32px; color: #e8e3d8;
+    letter-spacing: 0.42em; text-shadow: 0 0 14px rgba(0,0,0,0.95), 0 3px 10px #000; }
+</style>
+
+<!-- 2. popfig: hook date, 0.3s in, gone at 4.4s as the caption lands (one fact, one instance) -->
+<section class="clip" id="p-d1" data-start="0.3" data-duration="4.4" data-track-index="3">
+  <div class="popfig" id="st-d1"><span class="pf-big">AUG 29</span></div>
+</section>
+
+<!-- 3. BFMG: footage under the "four days" card — never a dark gradient carrying text alone -->
+<video id="vx-four1" src="media/scenes/b7-gretna-bridge-c1.mp4" style="filter: saturate(0.85) contrast(1.08) brightness(0.88)" data-start="1313.91" data-duration="6.5" data-track-index="1" muted></video>
+<video id="vx-four2" src="media/scenes/nagin-interview-superdome.mp4" style="filter: saturate(0.85) contrast(1.08) brightness(0.88)" data-start="1320.41" data-duration="6.0" data-track-index="1" muted></video>
+<video id="vx-four3" src="media/scenes/b5-comms-dark-c1.mp4" data-callback="the dark city returns under 'four days' — 2nd use" style="filter: saturate(0.8) contrast(1.08) brightness(0.8)" data-start="1326.41" data-duration="5.15" data-track-index="1" muted></video>
+<section class="clip" id="p-fourdays" data-start="1319.9" data-duration="9.5" data-track-index="3">
+  <div class="fourcount glasscard" style="position:absolute; left:50%; top:30%; transform:translateX(-50%); text-align:center; width:1500px;">
+    <div style="font-family:'Arial Black',Arial,sans-serif; font-size:150px; color:#e74c3c; line-height:1;">FOUR DAYS</div>
+    <div style="margin-top:22px; font-family:Georgia,serif; font-style:italic; font-size:30px; color:#e8edf2;">to bring water to a crowd the country watched on live television the entire time.</div>
+  </div>
+</section>
+
+<!-- 1. glasscard quote over b/w footage (24:15) -->
+<section class="clip" id="p-q-asce" data-start="1450.0" data-duration="7.6" data-track-index="3">
+  <div class="quotecard glasscard"><div class="q">The worst engineering catastrophe in the history of the United States.</div><div class="attr">THE ENGINEERING PROFESSION'S OWN VERDICT ON THE FLOODING OF NEW ORLEANS</div></div>
+</section>
+
+<script>
+  /* popfig in/out: punch in, lift out — timed to the spoken date, never to the card layout */
+  tl.fromTo("#st-d1", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.in" }, 0.3);
+  tl.to("#st-d1", { autoAlpha: 0, y: -26, duration: 0.3, ease: "power2.in" }, 4.4);
+  /* BFMG card lands with the narration line */
+  tl.fromTo("#p-fourdays .fourcount", { autoAlpha: 0, scale: 1.12 }, { autoAlpha: 1, scale: 1, duration: 0.6, ease: "power3.out" }, 1319.9);
+</script>

@@ -65,7 +65,7 @@ The first 25-30s decide the video. Owner rated ep2's first hook 0.6/10 and the r
 shipped; these are the standing requirements for every episode's cold open:
 - **NO black start (owner order 2026-08-05, ep5+): frame one is MID-ACTION** — the episode's
   defining shot already moving, anchor audio already mid-transmission. High curiosity, high
-  impact from the first frame. The 2-3s VOID below survives only as the hook's END punctuation.
+  impact from the first frame. The VOID below survives only as the hook's END punctuation.
 - **An intelligible, high-stakes ANCHOR line starts by ~2.5s** — a real broadcast/dispatch
   voice saying something a viewer cannot skip (ep2: Spann's live "tornado emergency"). Not
   ambience, not music, not a fragment.
@@ -76,8 +76,12 @@ shipped; these are the standing requirements for every episode's cold open:
   anchor voice, swell at impact, die into the void). No silent clips, no dead air.
 - **Inserts end on their complete emotional statement** — trim orphan tails ruthlessly
   ("we knew something was coming." — stop. Nothing after).
-- **End the hook with a 2-3s VOID (black + fading spine) before the narrator enters** — the
-  contrast is the hook's punctuation.
+- **End the hook with a 1.5s VOID (black + fading spine) before the narrator enters** — the
+  contrast is the hook's punctuation (was 2-3s; owner cut it 2026-08-16: 1.5s+ anywhere else
+  reads as dead air).
+- **Date/place popup (popfig) inside the first second**; the captioned anchor line appears
+  ONLY for the words it covers — match-cut the caption to where its text starts in the audio,
+  never show the tail text while the head is still being spoken (owner, ep6 v3).
 - Few clips, each earning its slot (ep2: warning → impact → dispatch → void). More clips ≠
   more captivating; undifferentiated montage is what scored 0.6.
 
@@ -106,8 +110,11 @@ obfuscation.**
 - **Exit animations end fully gone (owner review 2026-07-26):** every panel/graphic exit tween
   finishes at `autoAlpha:0` AND overshoots any slide (a 660px slide on an 820px panel left a
   stuck sliver for ~1s). Verify each sub-comp with a snapshot at host-window-end − 0.5s.
-- Text-over-media always gets a dark backing chip; panel gradients use `box-sizing:border-box`
-  with text inside the solid zone.
+- Text-over-media always sits on the `.glasscard` panel (rgba(10,16,24,.55) + blur 18px +
+  1px white@.14 border, radius 28 — see "On-screen text rules" below; `quotecard.glasscard`
+  drops the box-shadow); panel gradients use `box-sizing:border-box` with text inside the
+  solid zone. Dates/figures use the Abril `popfig` popup (red, text-shadow, ≤3 words, mid-screen)
+  — never a colour-block date card.
 - **AI-first, code-second (owner directive 2026-07-26, from 6-channel experience):** scripts
   exist for deterministic checks (lint) ONLY. Pacing, grading, clip choice, placement, SFX are
   per-case editor judgment — never encode editorial baselines as enforcement, never constrain
@@ -115,6 +122,27 @@ obfuscation.**
 - **Render QC density:** eyeball ≈ 1 frame / 15-20s of runtime on every render (dense sweep or
   `hyperframes check` + snapshot grid), plus targeted frames at every region changed since the
   last render. 18 frames on a 28-min cut is not a review (owner, ep2 v1).
+
+### On-screen text rules (owner review of ep6 draft v2, 2026-08-22 — the "3-4 recurring mistakes")
+- **Zone occupancy.** Screen zones: title (top-left), centre popup, lower-third, RHS panel,
+  source credit (a corner). ONE text element per zone per time window. Before placing any text,
+  list what occupies every zone during its window — INCLUDING where animated elements travel
+  (a chip that pans under a moving ring collides mid-tween). Intentional layering (a label ON a
+  map feature) carries `data-overlap-ok="reason"`. `scripts/overlap_check.mjs` enforces it:
+  0.5s steps, post-transform bboxes, comp-internal AND comp-vs-card pairs.
+- **One fact, one instance.** A date / percentage / number appears ONCE per frame. If the
+  graphic already prints "AUG 30", no popup says it again. (Dup-fact check in overlap_check.)
+- **No decorative eyebrows.** Kill "AUGUST 2005"-style eyebrows over a big "AUG 25". Functional
+  context only — the italic date line inside a glass panel (g-circle pattern) is the approved
+  form.
+- **Narration order, narration words.** Text reveals land in the order the voice says them and
+  use the voice's wording ("SOME HAD NO MONEY", not a rewritten paraphrase). Sync to
+  `audio/<seg>.words.json`; never "Yoda" (card-layout order).
+- **Any text over footage sits on glass.** `.glasscard` (rgba(10,16,24,.55), blur 18px, 1px
+  white@.14 border, radius 28) is the ONE treatment — no bare text on moving footage, no
+  mid-beat swap from footage to a dark card for readability.
+- **Small text never carries a moment alone (BFMG).** A quote card, a cost list, a headline
+  pair = glass card OVER footage. Dark-gradient `c-*dark` fillers are for ≤5s bridges only.
 
 ## Content ID / claims protocol (owner-settled 2026-07-22)
 
@@ -203,12 +231,16 @@ floors/ceilings; taste stays with the model.
 - Hook: cold-open insert (911 audio / broadcast) or present-tense stat over motion. ≤15s to thesis.
 - After an emotional payoff: hold 2-4s, ambience up, then cut hard to the next act.
 - **Chapter blackout (documentary breath — ep1/ep2 device, MANDATORY ep4+; owner order
-  2026-07-31):** between acts, and on a key beat, cut to a full 2-3s BLACK. It resets the eye and
-  is what makes ep1/ep2 read like a documentary. ep1/ep2 place a plain black section on the
-  picture track:
-  `<section class="clip blackout" data-start="X" data-duration="2.4"–"3.0" data-track-index="1"></section>`
+  2026-07-31; durations re-set 2026-08-16):** between acts, and on a key beat, cut to a full
+  BLACK. It resets the eye and is what makes ep1/ep2 read like a documentary. **Duration table
+  (owner): 0.6–0.9s = chapter break · 1.0–1.3s = dramatic punctuation · 1.5s+ = dead air.**
+  A seamless butt-cut (e.g. a panel's timed slide-out straight into the next shot) needs NO
+  blackout — only where a blackout exists does the table apply. Place a plain black section
+  on the picture track:
+  `<section class="clip blackout" data-start="X" data-duration="0.7"–"1.2" data-track-index="1"></section>`
   with `.blackout { position:absolute; inset:0; background:#000; }`. Cut TO black hard (no fade),
-  hold 2-3s in silence or low ambience, cut OUT to the next act. **ep3 kept only the cold-open
+  hold in silence or low ambience, cut OUT to the next act. (ep1/ep2 shipped 2.4–3.0s; ep6 is
+  the first cut on the table.) **ep3 kept only the cold-open
   VOID (h1-s3) and dropped the recurring act-boundary blackouts** — its (now-deleted)
   `build_ep3.py` generator never emitted them between acts. A regression, not a style choice:
   the next episode's editor MUST hand-place act-boundary blackouts. ep3 stays as shipped; do

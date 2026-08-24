@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif;
+    background: radial-gradient(ellipse at 50% 35%, #0c141f 0%, #05080d 72%); }
+  .gr-title { position:absolute; left:0; right:0; top:96px; text-align:center;
+    font-family:'Arial Black',Arial,sans-serif; font-size:54px; color:#f2f5f8; letter-spacing:2px; }
+  .gr-sub { position:absolute; left:0; right:0; top:170px; text-align:center;
+    font-family:Georgia,serif; font-style:italic; font-size:27px; color:#d8a13a; }
+  /* depth stage: sea-level rule + two descending piles */
+  .gr-stage { position:absolute; left:360px; right:360px; top:280px; height:560px; }
+  .gr-sea { position:absolute; left:0; right:0; top:0; border-top:3px solid #6fb3d9; }
+  .gr-sealab { position:absolute; right:0; top:12px; font-size:20px; letter-spacing:4px; color:#6fb3d9; font-weight:700; }
+  .gr-col { position:absolute; top:0; width:300px; }
+  .gr-col.left { left:80px; } .gr-col.right { right:80px; }
+  .gr-collab { position:absolute; top:-58px; left:0; right:0; text-align:center; white-space:nowrap;
+    font-family:'Arial Black',Arial,sans-serif; font-size:28px; color:#c8d3e0; }
+  .gr-pile { position:absolute; left:110px; top:0; width:80px; height:0;
+    background:linear-gradient(180deg,#5a6b7d,#3a4a5e); border:2px solid #7d8fa3; border-top:none; box-sizing:border-box; }
+  .gr-depth { position:absolute; left:0; right:0; text-align:center;
+    font-family:'Courier New',monospace; font-size:56px; font-weight:700; color:#6fb3d9; }
+  .gr-depth span { display:block; font-family:Arial,sans-serif; font-size:19px; letter-spacing:4px; color:#93a3b2; }
+  /* the missing 7 ft on the sonar side: dashed void between -10 and -17.5 */
+  #g-receipt-void { position:absolute; width:80px; border:3px dashed #e74c3c;
+    border-top:none; box-sizing:border-box; background:rgba(231,76,60,0.14); }
+  #g-receipt-voidlab { position:absolute; text-align:right; width:360px;
+    font-family:'Arial Black',Arial,sans-serif; font-size:34px; color:#e74c3c; line-height:1.15; }
+  #g-receipt-voidlab .fine { display:block; font-family:Arial,sans-serif; font-weight:700;
+    font-size:19px; letter-spacing:3px; color:#c98a80; margin-top:8px; }
+  /* sonar sweep line */
+  #g-receipt-scan { position:absolute; left:60px; width:180px; top:0; border-top:2px solid #9fd8f2;
+    box-shadow:0 0 18px 2px rgba(159,216,242,0.7); }
+  .gr-foot { position:absolute; left:0; right:0; top:892px; text-align:center;
+    font-family:Georgia,serif; font-style:italic; font-size:30px; color:#e8edf2; }
+  .gr-foot b { color:#d8a13a; font-style:normal; }
+  .gr-verdict { position:absolute; left:0; right:0; top:960px; text-align:center;
+    font-family:Georgia,serif; font-style:italic; font-size:34px; color:#e8edf2; }
+  .gr-verdict b { color:#d8a13a; font-style:normal; }
+</style>
+<div id="root" data-composition-id="g-receipt" data-width="1920" data-height="1080">
+  <div class="gr-title" id="g-receipt-title">The Receipt</div>
+  <div class="gr-sub" id="g-receipt-sub">17th Street Canal &middot; how deep the anchoring steel really went</div>
+  <div class="gr-stage">
+    <div class="gr-sea"><div class="gr-sealab">SEA LEVEL</div></div>
+    <div class="gr-col left" id="g-receipt-coldraw">
+      <div class="gr-collab">THE DRAWINGS SAID</div>
+      <div class="gr-pile" id="g-receipt-pile1"></div>
+      <div class="gr-depth" id="g-receipt-d1" style="top:496px;">&minus;17.5 FT<span>DESIGN DEPTH</span></div>
+    </div>
+    <div class="gr-col right" id="g-receipt-colsonar">
+      <div class="gr-collab">THE SONAR FOUND</div>
+      <div class="gr-pile" id="g-receipt-pile2"></div>
+      <div class="gr-depth" id="g-receipt-d2" style="top:236px; left:210px; width:420px; text-align:left;">&minus;10 FT<span>WHERE THE STEEL STOPPED</span></div>
+      <div id="g-receipt-scan"></div>
+      <div id="g-receipt-void" style="top:280px; height:210px; left:110px;"></div>
+    </div>
+    <div id="g-receipt-voidlab" style="top:346px; right:300px;">7 FT OF PROMISED STEEL<span class="fine">WAS NEVER THERE</span></div>
+  </div>
+  <div class="gr-foot" id="g-receipt-foot">The Corps&rsquo; own <b>1980s load test</b> said the steel had to go far deeper in soil this soft.</div>
+  <div class="gr-verdict" id="g-receipt-verdict">The drawings said one thing. <b id="g-receipt-v2">The ground held another.</b></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* host 875.14-909.30 (34.16s = a5-s4, L1 pay). Cues (rel): "sonar" 2.28, "seventeen and a
+     half" ~9.3-10.0, "sonar found it stopped at about ten" 12.28-13.9, "Seven feet" 14.76,
+     "never there" 17.2, "load test" 19.9, "read correctly / deeper / soft" 26.0-29.0,
+     "drawings said one thing" 31.06, "ground held another" 32.48-33.16.
+     Depth scale: 28 px/ft → -10 ft = 280px, -17.5 ft = 490px. */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-receipt-";
+  tl.set([P+"d1", P+"d2", P+"void", P+"voidlab", P+"foot", P+"verdict", P+"scan", P+"pile1", P+"pile2"], { autoAlpha: 0 }, 0);
+  tl.set(P+"v2", { color: "#e8edf2" }, 0);
+  /* piles stay invisible until they grow (a 0-height bordered div still draws a stub line) */
+  tl.set(P+"pile1", { autoAlpha: 1 }, 7.2);
+  tl.set(P+"pile2", { autoAlpha: 1 }, 12.4);
+  tl.fromTo(P+"title", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 0.4);
+  tl.fromTo(P+"sub", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 1.0);
+  tl.fromTo(".gr-sea", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 1.6);
+  tl.fromTo(".gr-collab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, stagger: 0.2 }, 2.0);
+  /* the drawings pile drives down to -17.5 on the spoken design depth */
+  tl.to(P+"pile1", { height: 490, duration: 2.6, ease: "power1.inOut" }, 7.2);
+  tl.fromTo(P+"d1", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.in" }, 9.8);
+  /* sonar sweep descends the right column and the real pile stops at -10 */
+  tl.fromTo(P+"scan", { autoAlpha: 0, top: 0 }, { autoAlpha: 1, top: 280, duration: 1.5, ease: "none" }, 12.3);
+  tl.to(P+"scan", { autoAlpha: 0, duration: 0.3 }, 13.9);
+  tl.to(P+"pile2", { height: 280, duration: 1.4, ease: "power1.inOut" }, 12.4);
+  tl.fromTo(P+"d2", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.in" }, 13.9);
+  /* "Seven feet of promised steel that was never there" — the void flags red */
+  tl.fromTo(P+"void", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 14.8);
+  tl.fromTo(P+"voidlab", { autoAlpha: 0, x: 26 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power2.out" }, 15.1);
+  /* the load-test trail */
+  tl.fromTo(P+"foot", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.6 }, 19.9);
+  /* re-emphasis on "read correctly, said the steel needed to go far deeper" */
+  tl.fromTo(P+"foot", { scale: 1 }, { scale: 1.04, duration: 0.5, yoyo: true, repeat: 1, ease: "power2.inOut" }, 26.0);
+  /* verdict, two halves on their spoken words */
+  tl.fromTo(P+"verdict", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 30.9);
+  tl.to(P+"v2", { color: "#d8a13a", duration: 0.4 }, 32.5);
+  /* slow breath across the whole card; exit before the hard cut at 34.16 */
+  tl.fromTo("#root", { scale: 1.0, transformOrigin: "center" }, { scale: 1.028, duration: 34, ease: "none" }, 0);
+  tl.to("#root", { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 33.7);
+  window.__timelines["g-receipt"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

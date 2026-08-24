@@ -87,7 +87,11 @@ def render(version, out_mp4):
         sys.exit("[ritual] npx not on PATH")
     log = DEMO / f"pin-ritual-{version}.log"
     print(f"[ritual] rendering demo at {version} -> {out_mp4.name} (log {log.name})")
+    # hyperframes >=0.8 flushes PostHog telemetry via a DETACHED `node -e fetch(...)` child
+    # without windowsHide -> one visible console window per flush on Windows (owner saw
+    # "lots of CMDs, 4 at a time", 2026-08-23). Opt out; never a visible window.
     env = dict(**os.environ,
+               HYPERFRAMES_NO_TELEMETRY="1", DO_NOT_TRACK="1",
                HYPERFRAMES_FFPROBE_PATH=str(FFPROBE),
                HYPERFRAMES_FFMPEG_PATH=str(FFMPEG),
                PRODUCER_PAGE_NAVIGATION_TIMEOUT_MS="120000",

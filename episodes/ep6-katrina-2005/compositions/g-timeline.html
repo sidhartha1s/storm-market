@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif;
+    background: radial-gradient(ellipse at 50% 35%, #0c141f 0%, #05080d 72%); }
+  .gtm-title { position:absolute; left:0; right:0; top:220px; text-align:center;
+    font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; letter-spacing:2px; }
+  .gtm-bar-wrap { position:absolute; left:260px; right:260px; top:520px; }
+  .gtm-rail { height:56px; background:#1a2331; border:2px solid #3a4a5e; position:relative; }
+  #g-timeline-fill { position:absolute; left:0; top:0; bottom:0; width:0%; background:linear-gradient(90deg,#3d6a54,#5a9678); }
+  .gtm-y0 { position:absolute; left:0; top:76px; font-family:'Arial Black',Arial,sans-serif; font-size:36px; color:#c8d3e0; }
+  .gtm-y1 { position:absolute; right:0; top:76px; font-family:'Arial Black',Arial,sans-serif; font-size:36px; color:#c8d3e0; }
+  #g-timeline-pct { position:absolute; left:65%; top:-148px; transform:translateX(-50%); text-align:center;
+    font-family:'Arial Black',Arial,sans-serif; font-size:74px; color:#e74c3c; }
+  #g-timeline-pct span { display:block; font-family:Arial,sans-serif; font-size:20px; letter-spacing:4px; color:#93a3b2; margin-top:4px; }
+  .gtm-note { position:absolute; left:0; right:0; top:760px; text-align:center;
+    font-family:Georgia,serif; font-style:italic; font-size:32px; color:#e8edf2; }
+  .gtm-note b { color:#d8a13a; font-style:normal; }
+  .gtm-sink { position:absolute; left:0; right:0; top:850px; text-align:center;
+    font-size:24px; font-weight:700; letter-spacing:3px; color:#8a97a5; }
+</style>
+<div id="root" data-composition-id="g-timeline" data-width="1920" data-height="1080">
+  <div class="gtm-title" id="g-timeline-title">Forty Years of "Almost Done"</div>
+  <div class="gtm-bar-wrap">
+    <div class="gtm-rail">
+      <div id="g-timeline-fill"></div>
+      <div id="g-timeline-pct">~65%<span>COMPLETE</span></div>
+    </div>
+    <div class="gtm-y0" id="g-timeline-y0">1965 · BETSY</div>
+    <div class="gtm-y1" id="g-timeline-y1">2005 · KATRINA</div>
+  </div>
+  <!-- text lands in NARRATION order, same words the voice says (owner 2:06 "no Yoda") -->
+  <div class="gtm-note" id="g-timeline-note">The finished parts had <b>their own problem.</b></div>
+  <div class="gtm-sink" id="g-timeline-sink">THE GROUND UNDER NEW ORLEANS SINKS A LITTLE EVERY YEAR</div>
+  <div class="gtm-note" id="g-timeline-note2">Walls built to a safe height in one decade <b>quietly drop below it</b> in the next.</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* host 123.76-142.92 (19.16s = a1-s4). Cues (rel): "forty years later" ~0-2, "sixty-five percent" ~5.5,
+     "sinks a little every year" 12.28, "dropped below it" ~16. */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-timeline-";
+  tl.set([P+"pct", P+"note", P+"note2", P+"sink"], { autoAlpha: 0 }, 0);
+  tl.fromTo(P+"title", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 0.3);
+  tl.fromTo([P+"y0", P+"y1"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, stagger: 0.15 }, 0.8);
+  /* the bar crawls 40 years and stalls at 65% on the spoken number */
+  tl.to(P+"fill", { width: "65%", duration: 4.4, ease: "power1.inOut" }, 1.2);
+  tl.fromTo(P+"pct", { autoAlpha: 0, scale: 1.8 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.in" }, 5.5);
+  /* word-synced (a1-s4.words.json): "own problem" 8.5-9.8 · "sinks a little every year" 11.2-13.5 ·
+     "walls built ... drop below it in the next" 14.8-18.4 */
+  tl.fromTo(P+"note", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45 }, 8.6);
+  tl.to(".gtm-bar-wrap", { y: 26, duration: 3.6, ease: "power1.inOut" }, 11.3);
+  tl.fromTo(P+"sink", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.45 }, 11.4);
+  tl.to(P+"note", { autoAlpha: 0, y: -10, duration: 0.3 }, 14.6);
+  tl.fromTo(P+"note2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45 }, 14.9);
+  tl.fromTo("#root", { scale: 1.0, transformOrigin: "center" }, { scale: 1.03, duration: 19, ease: "none" }, 0);
+  tl.to("#root", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 18.7);
+  window.__timelines["g-timeline"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

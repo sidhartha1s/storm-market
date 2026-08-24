@@ -5,7 +5,8 @@ REM Example: scripts\render.cmd ep2-2011-super-outbreak full ep2-final
 REM Launch DETACHED (harness bg tasks get killed):
 REM   powershell Start-Process cmd.exe -ArgumentList '/c','"<ABS path>\scripts\render.cmd" <slug> <mode>' -WindowStyle Hidden
 REM Writes episodes\<slug>\render_<mode>.log and render_<mode>_done.marker (contains npx exit code).
-REM Version pin 0.7.107 must match config.yaml hyperframes_version — bump both together.
+REM Version pin must match config.yaml hyperframes_version — pin_ritual.py bumps both together.
+REM Stale-pin full renders need RENDER_PIN_STALE_OK=1 (owner override, printed by preflight).
 setlocal
 set SLUG=%~1
 set MODE=%~2
@@ -36,9 +37,22 @@ if defined RENDER_FPS set _FPS=%RENDER_FPS%
 set QFLAGS=--quality %QUAL% --crf %_CRF% --fps %_FPS%
 
 cd /d "%EP%"
+REM Shared ffmpeg build: security software on this box scans every process creation and the
+REM cost tracks binary size (96.6 MB static ffprobe = 1.337s per spawn, 224 KB shared =
+REM 0.100s). A render fires ~200 probes. These two paths MUST resolve — media_budget.py
+REM fails the render if they do not, because a bad path silently falls back to the slow
+REM ffprobe on PATH and the deadline failure comes straight back. See LEARNINGS.md.
+REM hyperframes >=0.8 telemetry spawns DETACHED `node -e fetch(...)` children with no windowsHide
+REM = a visible console window per flush (owner 2026-08-23). Opt out unconditionally.
+set HYPERFRAMES_NO_TELEMETRY=1
+set DO_NOT_TRACK=1
+set HYPERFRAMES_FFPROBE_PATH=C:\Users\Sidhartha\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Shared_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.2-full_build-shared\bin\ffprobe.exe
+set HYPERFRAMES_FFMPEG_PATH=C:\Users\Sidhartha\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Shared_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.2-full_build-shared\bin\ffmpeg.exe
 REM Preflight gate (busy box / media budget / pin drift / pin currency). CLAUDE.md has always
 REM said "the render script calls this file" — as of 2026-08-14 it actually does. Full python
 REM path: under schtasks/cmd, bare python3 resolves to the MS Store stub (exit 9009).
+REM MUST run AFTER the FF*_PATH lines above: media_budget.py measures the ffprobe the env names,
+REM and with no env it measures the slow PATH build and refuses (ep6 full attempt 1, 2026-08-23).
 "C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0render_preflight.py" "%EP%" %MODE%
 if errorlevel 1 (
   echo PREFLIGHT REFUSED exit %ERRORLEVEL% — see output above
@@ -51,13 +65,6 @@ REM audio. Sweep them before every render — a render dir must contain exactly 
 del /q _*_tmp.html 2>nul
 set PRODUCER_PAGE_NAVIGATION_TIMEOUT_MS=120000
 set PRODUCER_PUPPETEER_PROTOCOL_TIMEOUT_MS=900000
-REM Shared ffmpeg build: security software on this box scans every process creation and the
-REM cost tracks binary size (96.6 MB static ffprobe = 1.337s per spawn, 224 KB shared =
-REM 0.100s). A render fires ~200 probes. These two paths MUST resolve — media_budget.py
-REM fails the render if they do not, because a bad path silently falls back to the slow
-REM ffprobe on PATH and the deadline failure comes straight back. See LEARNINGS.md.
-set HYPERFRAMES_FFPROBE_PATH=C:\Users\Sidhartha\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Shared_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.2-full_build-shared\bin\ffprobe.exe
-set HYPERFRAMES_FFMPEG_PATH=C:\Users\Sidhartha\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Shared_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.2-full_build-shared\bin\ffmpeg.exe
 REM worker count is tunable for RAM-tight full renders (fps30 workers use more memory than
 REM draft); default 3 as tested for draft, drop to 2 on a low-free-RAM box. Set RENDER_WORKERS.
 if not defined RENDER_WORKERS set RENDER_WORKERS=3

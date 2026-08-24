@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:#04070c; overflow:hidden; font-family:Arial,sans-serif; }
+  #g-mrgo-cam { position:absolute; left:0; top:0; width:2280px; height:1594px; transform-origin:0 0; }
+  #g-mrgo-cam img { position:absolute; left:0; top:0; width:2280px; height:1594px; }
+  /* St. Bernard highlight polygon (Arabi/Chalmette down-river, plate px) */
+  #g-mrgo-parish { position:absolute; left:960px; top:900px; width:900px; height:560px;
+    border:6px dashed rgba(231,76,60,0.85); border-radius:40px; background:rgba(231,76,60,0.10); }
+  #g-mrgo-parishlab { position:absolute; left:1010px; top:930px; font-family:'Arial Black',Arial,sans-serif;
+    font-size:44px; color:#f2f5f8; background:rgba(5,8,12,0.72); padding:8px 20px; letter-spacing:2px; }
+  /* the funnel arrow: rides in from the SE marsh toward the Industrial Canal */
+  svg.fun { position:absolute; left:0; top:0; width:2280px; height:1594px; }
+  .g-mrgo-chip { position:absolute; white-space:nowrap; font-weight:700; font-size:28px; color:#f2f5f8;
+    background:rgba(5,8,12,0.72); padding:10px 20px; letter-spacing:1px; border-left:5px solid #d8a13a; z-index:5; }
+  .g-mrgo-chip .sm { display:block; font-weight:400; font-size:20px; color:#c8d3e0; letter-spacing:2px; margin-top:4px; }
+  /* right-edge fade: masks the scan's baked-in annotation column that survives the crop */
+  .gm-edgefade { position:absolute; right:0; top:0; bottom:0; width:220px; z-index:4; pointer-events:none;
+    background:linear-gradient(90deg, rgba(4,6,10,0) 0%, rgba(4,6,10,0.85) 70%, #04060a 100%); }
+  .gm-title { position:absolute; left:110px; top:96px; z-index:5; font-family:'Arial Black',Arial,sans-serif;
+    font-size:46px; color:#f2f5f8; background:rgba(5,8,12,0.62); padding:8px 24px; letter-spacing:2px; }
+  .gm-verdict { position:absolute; left:0; right:0; bottom:110px; z-index:6; text-align:center; }
+  .gm-verdict .v1 { display:table; margin:0 auto; font-family:'Arial Black',Arial,sans-serif; font-size:52px;
+    color:#e74c3c; background:rgba(5,8,12,0.75); padding:10px 34px; letter-spacing:2px; }
+  .gm-verdict .v2 { display:table; margin:12px auto 0; font-family:Georgia,serif; font-style:italic; font-size:30px;
+    color:#e8edf2; background:rgba(5,8,12,0.75); padding:8px 26px; }
+  .gm-src { position:absolute; right:40px; bottom:34px; z-index:5; font-size:19px; color:rgba(200,211,224,0.75);
+    background:rgba(5,8,12,0.55); padding:5px 12px; }
+</style>
+<div id="root" data-composition-id="g-mrgo" data-width="1920" data-height="1080">
+  <div class="gm-edgefade"></div>
+  <div class="gm-title" id="g-mrgo-title">"Mister Go" &mdash; the Funnel</div>
+  <div id="g-mrgo-cam">
+    <img src="../media/maps/baseplate-neworleans-elevation-lake-canals.jpg" alt="">
+    <!-- hot orange, not blue: the plate's flood tints swallowed the blue arrow (owner 16:17, v3) -->
+    <svg class="fun" viewBox="0 0 2280 1594" style="filter: drop-shadow(0 0 12px rgba(0,0,0,0.85));">
+      <path id="g-mrgo-channel" d="M2270,1180 Q1800,1080 1420,970 Q1180,905 1030,850" fill="none"
+        stroke="#ff7a45" stroke-width="30" stroke-linecap="round" stroke-dasharray="60 34" opacity="0"/>
+      <path id="g-mrgo-head" d="M1080,800 L1002,846 L1082,894 Z" fill="#ff7a45" opacity="0"/>
+    </svg>
+    <div id="g-mrgo-parish"></div>
+    <div id="g-mrgo-parishlab">ST. BERNARD PARISH</div>
+    <div class="g-mrgo-chip" id="g-mrgo-chip-mrgo" style="left:950px; top:1000px;">MISSISSIPPI RIVER GULF OUTLET<span class="sm">DUG IN THE 1960s · RUNS STRAIGHT IN FROM THE GULF</span></div>
+    <div class="g-mrgo-chip" id="g-mrgo-chip-surge" style="left:1050px; top:700px;">SURGE AMPLIFIED UP TO 40%<span class="sm">THE "FUNNEL EFFECT" · IPET / TEAM LOUISIANA</span></div>
+  </div>
+  <div class="gm-verdict" id="g-mrgo-verdict">
+    <div class="v1" id="g-mrgo-v1">VIRTUALLY EVERY HOME FLOODED</div>
+    <div class="v2" id="g-mrgo-v2">three feet in fifteen minutes &mdash; then faster</div>
+  </div>
+  <div class="gm-src" id="g-mrgo-src">ELEVATION: W. SCOTT LINCOLN / NWS · FINDING: IPET · DUVAL RULING</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* host 960.66-1013.14 (52.48s = a5-s5b). Cues (rel): St. Bernard ~4.5, Mister Go ~10.5,
+     dug-in-the-sixties ~14, funnel ~17.5, +40% ~20.5, Industrial Canal / 3ft-15min ~25-29,
+     "virtually every home" ~32.5, keep-the-name ~44. Camera sits SE of the city. */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-mrgo-";
+  /* Z raised 0.72→1.10 (owner 16:16): old framing left a ~290px black band right AND showed the
+     scan's baked-in legend/title. New frame covers the parish/MRGO region only, plate covers the
+     full viewport, legend + scan text cropped out. */
+  const Z = 1.10;
+  tl.set(P+"cam", { scale: Z, x: -280, y: -537 }, 0);
+  tl.to(P+"cam", { scale: Z + 0.05, x: -280 - 1177 * 0.05, y: -537 - 979 * 0.05, duration: 52, ease: "none" }, 0);
+  tl.set([P+"parish", P+"parishlab", P+"chip-mrgo", P+"chip-surge", P+"verdict"], { autoAlpha: 0 }, 0);
+  tl.fromTo(P+"title", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 0.3);
+  tl.fromTo(P+"src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.8);
+  /* parish outline on its name */
+  tl.fromTo(P+"parish", { autoAlpha: 0, scale: 1.08 }, { autoAlpha: 1, scale: 1, duration: 0.6, ease: "power2.out" }, 4.3);
+  tl.fromTo(P+"parishlab", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.45 }, 4.6);
+  /* the channel names itself */
+  tl.fromTo(P+"chip-mrgo", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 8.2);
+  /* channel draws in from the Gulf on "funnel"; dashes crawl the rest of the window */
+  tl.fromTo(P+"channel", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 16.8);
+  tl.fromTo(P+"channel", { strokeDashoffset: 1400 }, { strokeDashoffset: 0, duration: 3.2, ease: "power2.in" }, 16.8);
+  tl.fromTo(P+"head", { autoAlpha: 0, scale: 0.4, transformOrigin: "center" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 19.7);
+  tl.to(P+"channel", { strokeDashoffset: -560, duration: 30, ease: "none" }, 20.2);
+  /* amplification chip on the number */
+  tl.fromTo(P+"chip-surge", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 20.3);
+  /* parish floods: fill deepens through the 3ft/15min passage */
+  tl.to(P+"parish", { backgroundColor: "rgba(30,90,140,0.42)", duration: 6.0, ease: "power1.in" }, 25.5);
+  /* verdict on "virtually every home" */
+  tl.fromTo(P+"verdict", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power2.out" }, 32.3);
+  /* "keep the name" — the channel chip re-pulses */
+  tl.fromTo(P+"chip-mrgo", { scale: 1.0 }, { scale: 1.06, duration: 0.5, yoyo: true, repeat: 3, ease: "sine.inOut" }, 44.0);
+  tl.to("#root", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 52.0);
+  window.__timelines["g-mrgo"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

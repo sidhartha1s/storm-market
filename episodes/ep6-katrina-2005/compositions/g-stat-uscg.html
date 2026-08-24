@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif;
+    background: radial-gradient(ellipse at 50% 38%, #0a1420 0%, #04070b 74%); }
+  .gu-eyebrow { position:absolute; left:0; right:0; top:170px; text-align:center;
+    font-weight:700; font-size:24px; letter-spacing:7px; color:#6fb3d9; }
+  .gu-title { position:absolute; left:0; right:0; top:224px; text-align:center;
+    font-family:'Arial Black',Arial,sans-serif; font-size:62px; color:#f2f5f8; letter-spacing:2px; }
+  .gu-num { position:absolute; left:0; right:0; top:352px; text-align:center; line-height:180px; height:180px;
+    font-family:'Arial Black',Arial,sans-serif; font-size:180px; color:#6fb3d9; letter-spacing:4px; }
+  .gu-numlab { position:absolute; left:0; right:0; top:594px; text-align:center;
+    font-size:23px; font-weight:700; letter-spacing:6px; color:#93a3b2; }
+  .gu-row { position:absolute; left:0; right:0; top:678px; text-align:center;
+    font-size:40px; font-weight:700; letter-spacing:1px; color:#dfe7ee; }
+  .gu-row .lab { display:block; font-size:19px; color:#93a3b2; letter-spacing:4px; font-weight:700; margin-bottom:8px; }
+  .gu-foot { position:absolute; left:0; right:0; top:800px; text-align:center;
+    font-family:Georgia,serif; font-style:italic; font-size:31px; color:#e8edf2; line-height:1.4; }
+  .gu-foot b { color:#d8a13a; font-style:normal; }
+</style>
+<div id="root" data-composition-id="g-stat-uscg" data-width="1920" data-height="1080">
+  <div class="gu-eyebrow" id="g-stat-uscg-eyebrow">UNITED STATES COAST GUARD &middot; WEEK OF AUGUST 29</div>
+  <div class="gu-title" id="g-stat-uscg-title">THE ONE MACHINE THAT WORKED</div>
+  <div class="gu-num" id="g-stat-uscg-num">0</div>
+  <div class="gu-numlab" id="g-stat-uscg-numlab">PEOPLE PULLED FROM WATER &amp; ROOFTOPS</div>
+  <div class="gu-row" id="g-stat-uscg-r1"><span class="lab">LIFTED BY AIR CREWS ALONE</span>24,000</div>
+  <div class="gu-foot" id="g-stat-uscg-foot">The system did not fail because everyone failed. <b>It failed at the top.</b></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* host 1270.13-1288.36 (18.23s = a6-s6 tail). Cues (rel): card opens on "count what they
+     did" ~0.9, 33,500 spoken ~2.9-5.4, 24,000 ~6.4, "failed at the top" ~14.8-16.6.
+     Rescue b-roll (swimmer, rescue3) runs the 16.5s BEFORE this card on track 1. */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-stat-uscg-";
+  tl.set([P+"num", P+"numlab", P+"r1", P+"foot"], { autoAlpha: 0 }, 0);
+  tl.fromTo(P+"eyebrow", { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 0.3);
+  tl.fromTo(P+"title", { autoAlpha: 0, y: -12 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power2.out" }, 0.7);
+  /* the count rises to 33,500 and lands on the spoken figure */
+  tl.set([P+"num", P+"numlab"], { autoAlpha: 1 }, 2.6);
+  const cnt = { v: 0 };
+  tl.to(cnt, { v: 33500, duration: 2.6, ease: "power2.out", onUpdate: function() {
+    const el = document.getElementById("g-stat-uscg-num");
+    if (el) el.textContent = Math.round(cnt.v).toLocaleString("en-US");
+  } }, 2.8);
+  tl.fromTo(P+"r1", { autoAlpha: 0, y: 22 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power2.out" }, 6.4);
+  tl.fromTo(P+"foot", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.6 }, 14.6);
+  /* re-emphasis pulse on "at the top" */
+  tl.fromTo(P+"foot", { scale: 1 }, { scale: 1.035, duration: 0.4, yoyo: true, repeat: 1, ease: "power2.inOut" }, 15.9);
+  /* slow breath across the whole card */
+  tl.fromTo("#root", { scale: 1.0, transformOrigin: "center" }, { scale: 1.028, duration: 18.2, ease: "none" }, 0);
+  tl.to("#root", { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 17.8);
+  window.__timelines["g-stat-uscg"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
