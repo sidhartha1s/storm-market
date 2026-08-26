@@ -20,7 +20,7 @@ git branch and production silently keeps serving the old build.
 | `widthcheck.mjs` | **Gate.** Fails if the page scrolls sideways at any width. |
 | `shot.mjs` | Full-page screenshots at true device widths. |
 | `field-notes/` | Blog ("Field Notes"): one dispatch per published episode + evergreen field guides. Each dispatch embeds the live YouTube video at the top. |
-| `resources/` | Seven printable checklists + hub — the free, ungated link-bait layer. Print-to-PDF is the download; no email gate. |
+| `resources/` | Seven checklist pages + hub — free to read on the page (SEO layer). The printable pack (`/l/checklists`) and the state packets (`/l/packet`) are email-gated via free Gumroad products; every page carries the $47 book as the primary CTA. |
 | `states/` | 51 state guides + menu, **generated** by `tools/gen_states.py` from `tools/state_data.csv`. Edit the CSV or the template in the script, re-run `python3 tools/gen_states.py`, commit the output. Never hand-edit a state page. |
 | `about/` | Author page. Method-led, pen-name framing — no falsifiable credentials, ever (owner-approved 2026-08-26). |
 | `llms.txt`, `sitemap.xml` | Page map for crawlers/LLMs. Regenerate the sitemap whenever a page is added (it lists every `*/index.html`). |
@@ -29,8 +29,14 @@ git branch and production silently keeps serving the old build.
 
 - **Shared design language.** Every content page copies the landing tokens (paper/storm-sky
   palette, Fraunces / Source Serif 4 / IBM Plex Mono, mono kickers) and the shared nav:
-  Field Notes · Free Checklists · State Guides · The Book · red YouTube button. Inline CSS per
-  page, no build step — same as `index.html`.
+  Field Notes · Free Checklists · State Guides · YouTube · red **Get the Book — $47** button
+  (sticky nav, the only solid-red control; ≤540px shows brand + book button only). Inline CSS
+  per page, no build step — same as `index.html`.
+- **Book first, candy second (owner 2026-08-26).** The $47 book is the product; free pages are
+  the sample. Every content page carries the book in the sticky nav, a sample strip, a book CTA
+  card with the real cover (`assets/cover-mini.webp`, never a CSS fake) and the footer book
+  row. The printable pack and state packets are email-gated through free Gumroad products
+  (`/l/checklists` — owner creates it, copy in `gumroad/checklists.md`; `/l/packet?variant=`).
 - **Blog metadata comes from YouTube, never from `episodes/<slug>/metadata.md`.** The owner
   may retitle or re-describe a video after upload; the dispatch mirrors the LIVE title,
   chapters and FAQ block. Channel: https://www.youtube.com/@PaulRaymond-s9v.
