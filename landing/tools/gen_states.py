@@ -289,11 +289,9 @@ NAV = """
     <nav>
       <a href="/field-notes/">Field Notes</a>
       <a href="/resources/">Free Checklists</a>
-      <a class="{states_on}" href="/states/">State Guides</a>
-      <a href="/#offer">The Book</a>
-      <a class="yt" href="https://www.youtube.com/@PaulRaymond-s9v">
-        <svg viewBox="0 0 24 24"><path d="M23 7.5s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C16.6 4 12 4 12 4s-4.6 0-7.8.2c-.4.1-1.4.1-2.3 1-.7.7-.9 2.3-.9 2.3S.8 9.4.8 11.3v1.4c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.9.9 2 .9 2.5 1 1.8.2 7.6.2 7.6.2s4.6 0 7.8-.2c.4-.1 1.4-.1 2.3-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8v-1.4c0-1.9-.2-3.8-.2-3.8zM9.8 14.9V8.6l6.1 3.2-6.1 3.1z"/></svg>
-        The Warning Hour</a>
+      <a class="on" href="/states/">State Guides</a>
+      <a class="ytl" href="https://www.youtube.com/@PaulRaymond-s9v" rel="noopener">&#9654; The Warning Hour</a>
+      <a class="buy" href="/#offer">Get the Book &mdash; $47</a>
     </nav>
   </div>
 </div>
@@ -302,16 +300,24 @@ NAV = """
 FOOTER = """
 <footer>
   <div class="wrap">
-    <p><strong>The Storm-Ready Home</strong> · Paul Raymond · First edition 2026</p>
-    <p>General preparedness information for households. Not medical, legal,
+    <div class="bookrow">
+      <img src="/assets/cover-mini.webp" alt="The Storm-Ready Home by Paul Raymond &mdash; book cover" width="96" height="144" loading="lazy">
+      <div>
+        <h3>The Storm-Ready Home</h3>
+        <p>486 pages &middot; 130 numbered protections &middot; 23 hazard playbooks &middot; the 60-day sequence &middot; the 61-page printable binder. $47, instant PDF, 7-day money-back guarantee.</p>
+      </div>
+      <a class="btn" href="/#offer">Get the Book &mdash; $47 &rarr;</a>
+    </div>
+    <p class="small">General preparedness information for households. Not medical, legal,
       engineering or insurance advice, and not a substitute for the instructions of your local
       emergency officials. In an emergency, call 911 and follow the direction of authorities.</p>
-    <p>Figures cited to their issuing documents. Public-domain material reproduced under
+    <p class="small">Figures cited to their issuing documents. Public-domain material reproduced under
       17 U.S.C. &sect; 105. <strong>No agency of the United States Government has endorsed, reviewed, or is
       affiliated with this book.</strong></p>
-    <p><a href="/#offer">Free state packet</a> · <a href="/#faq">FAQ</a> ·
-      <a href="/privacy.html">Privacy policy</a> · <a href="/terms.html">Terms &amp; disclaimer</a> ·
-      <span>Support: reply to your purchase receipt</span></p>
+    <p class="small"><a href="/#offer">Get the book</a> &middot; <a href="/">Home</a> &middot; <a href="/field-notes/">Field Notes</a> &middot;
+      <a href="/resources/">Free checklists</a> &middot; <a href="/states/">State guides</a> &middot;
+      <a href="/about/">About</a> &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a> &middot;
+      <a href="https://www.youtube.com/@PaulRaymond-s9v" rel="noopener">&#9654; The Warning Hour on YouTube</a></p>
   </div>
 </footer>
 """
@@ -337,6 +343,48 @@ def head(title, description, canonical, favicon="data:,"):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>{STYLE}</style>
+<style id="chrome">
+.topnav{{position:sticky;top:0;z-index:40;box-shadow:0 6px 24px rgba(0,0,0,.35)}}
+.topnav nav a.buy{{background:var(--red);color:#fff!important;font-family:var(--display);font-weight:700;
+  font-size:15px;letter-spacing:0;text-transform:none;padding:9px 18px;border-radius:2px;
+  box-shadow:0 8px 20px rgba(169,44,30,.4);border:0}}
+.topnav nav a.buy:hover{{background:var(--red-bright)}}
+.topnav nav a.ytl{{color:var(--sky-dim)}}
+@media(max-width:760px){{.topnav .wrap{{gap:12px;padding:10px 16px}}.topnav nav{{gap:12px}}
+  .topnav nav a.buy{{padding:8px 12px;font-size:14px}}.topnav nav a.ytl{{display:none}}}}
+footer{{background:var(--sky);color:var(--sky-dim)}}
+footer .bookrow{{display:grid;grid-template-columns:96px 1fr auto;gap:26px;align-items:center;
+  background:#1e2629;border:1px solid var(--sky-line);padding:22px 26px;margin-bottom:34px}}
+footer .bookrow img{{width:96px;height:auto;box-shadow:0 12px 26px rgba(0,0,0,.55);transform:rotate(-1.6deg)}}
+footer .bookrow h3{{font-family:var(--display);font-size:22px;color:var(--sky-text);margin:0 0 6px;line-height:1.1}}
+footer .bookrow p{{font-size:15px;color:var(--sky-dim);margin:0;line-height:1.5}}
+footer .bookrow .btn{{white-space:nowrap}}
+footer .small{{font-family:var(--mono);font-size:12px;line-height:1.7;max-width:70em;color:var(--sky-dim)}}
+footer a{{color:var(--sky-text)}}
+@media(max-width:760px){{footer .bookrow{{grid-template-columns:96px 1fr}}footer .bookrow .btn{{grid-column:1/-1;text-align:center}}}}
+.bookcta .cover{{background:none;padding:0;display:block;overflow:hidden}}
+.bookcta .cover img{{width:100%;height:100%;object-fit:cover;display:block}}
+.samplestrip{{display:flex;align-items:center;gap:18px;background:var(--sky);color:var(--sky-text);
+  padding:16px 22px;margin:34px 0 10px;border-left:4px solid var(--amber)}}
+.samplestrip img{{width:46px;height:auto;flex:none;box-shadow:0 8px 18px rgba(0,0,0,.5);transform:rotate(-2deg)}}
+.samplestrip p{{margin:0;font-size:16px;color:var(--sky-dim);line-height:1.45}}
+.samplestrip b{{color:#fff}}
+.samplestrip a{{color:var(--amber);font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;
+  text-transform:uppercase;white-space:nowrap;margin-left:auto;text-decoration:none}}
+.samplestrip a:hover{{color:#fff}}
+@media(max-width:640px){{.samplestrip{{flex-wrap:wrap}}.samplestrip a{{margin-left:0}}}}
+.gate{{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--amber);
+  padding:30px 32px;margin:44px 0 24px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}}
+.gate .k{{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber-deep,#8a5a0c);margin-bottom:8px}}
+.gate h3{{font-family:var(--display);font-size:24px;margin:0 0 8px;line-height:1.1}}
+.gate p{{margin:0;font-size:16.5px;color:var(--ink-soft)}}
+.gate .ghost{{display:inline-block;border:2px solid var(--ink);color:var(--ink);font-family:var(--display);
+  font-weight:700;font-size:17px;padding:12px 24px;border-radius:2px;text-decoration:none;white-space:nowrap}}
+.gate .ghost:hover{{background:var(--ink);color:var(--paper)}}
+.gate .sub{{font-family:var(--mono);font-size:12px;color:var(--faded);margin-top:8px}}
+@media(max-width:640px){{.gate{{grid-template-columns:1fr}}}}
+@media print{{.topnav,footer,.samplestrip,.gate,.bookcta{{display:none!important}}}}
+</style>
 </head>
 <body>
 """
@@ -485,7 +533,7 @@ def build_state_page(row):
     """
 
     book_cta = f"""<div class="bookcta">
-      <div class="cover"><span>The<br><em>Storm-Ready</em><br>Home</span></div>
+      <div class="cover"><img src="/assets/cover-mini.webp" alt="The Storm-Ready Home by Paul Raymond &mdash; book cover" loading="lazy" width="150" height="225"></div>
       <div>
         <h3>The 130 things you can do before the next one.</h3>
         <p>A 486-page manual built from the post-storm reports. 130 numbered protections,
@@ -585,9 +633,10 @@ def build_menu(rows):
             slug = slug_for(state)
             hazards = [row[f"hazard_{i}"].strip() for i in (1, 2, 3) if row[f"hazard_{i}"].strip()]
             teaser = ", ".join(hazards)
-            cards += f"""<a href="/states/{slug}/">
+            cards += f"""<a href="/states/{slug}/" data-name="{esc(state.lower())}">
         <h3>{esc(state)}</h3>
         <p>{esc(teaser)}</p>
+        <span class="go">Open the {esc(state)} guide &rarr;</span>
       </a>
       """
         body += f"""<div class="regionhead">{esc(region)}</div>
