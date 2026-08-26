@@ -19,6 +19,35 @@ git branch and production silently keeps serving the old build.
 | `buycheck.mjs` | **Gate.** Reads the buy button's *resolved* href in a real browser and confirms it reaches a live checkout. |
 | `widthcheck.mjs` | **Gate.** Fails if the page scrolls sideways at any width. |
 | `shot.mjs` | Full-page screenshots at true device widths. |
+| `field-notes/` | Blog ("Field Notes"): one dispatch per published episode + evergreen field guides. Each dispatch embeds the live YouTube video at the top. |
+| `resources/` | Seven printable checklists + hub — the free, ungated link-bait layer. Print-to-PDF is the download; no email gate. |
+| `states/` | 51 state guides + menu, **generated** by `tools/gen_states.py` from `tools/state_data.csv`. Edit the CSV or the template in the script, re-run `python3 tools/gen_states.py`, commit the output. Never hand-edit a state page. |
+| `about/` | Author page. Method-led, pen-name framing — no falsifiable credentials, ever (owner-approved 2026-08-26). |
+| `llms.txt`, `sitemap.xml` | Page map for crawlers/LLMs. Regenerate the sitemap whenever a page is added (it lists every `*/index.html`). |
+
+## Content pages (added 2026-08-26) — the rules
+
+- **Shared design language.** Every content page copies the landing tokens (paper/storm-sky
+  palette, Fraunces / Source Serif 4 / IBM Plex Mono, mono kickers) and the shared nav:
+  Field Notes · Free Checklists · State Guides · The Book · red YouTube button. Inline CSS per
+  page, no build step — same as `index.html`.
+- **Blog metadata comes from YouTube, never from `episodes/<slug>/metadata.md`.** The owner
+  may retitle or re-describe a video after upload; the dispatch mirrors the LIVE title,
+  chapters and FAQ block. Channel: https://www.youtube.com/@PaulRaymond-s9v.
+- **Keyword targets were validated against Google Autosuggest (US), not guessed.** Notably:
+  "safe room checklist" barely exists — the page targets "tornado safe room in house / cost /
+  storm shelter vs safe room"; "emergency binder checklist/template/printables" is the
+  strongest commercial cluster; state pages lead with "<state> storm shelter rebate/grant".
+- **No fabricated facts, testimonials, or urgency widgets on content pages.** Figures keep
+  their citation; state pages omit any section whose CSV field is empty rather than inventing.
+- **Schema:** dispatches carry Article + VideoObject + FAQPage + BreadcrumbList; checklists
+  carry FAQPage (+ HowTo where stepwise); state pages FAQPage; about carries Person with
+  `sameAs` → the channel. Direct-answer paragraph under every H1 (AI-overview bait).
+- **Search Console** is verified for `sc-domain:paulraymond.online`; API access via the
+  service account documented in the owner's memory (never the Simplotel gws stack).
+- **Adding an episode dispatch:** copy `field-notes/joplin-tornado-2011/index.html`, swap the
+  video id + live metadata, add the card to `field-notes/index.html`, add a `/yt/<slug>` line
+  to `_redirects`, regenerate `sitemap.xml`, add the URL to `llms.txt`.
 
 ## Verify
 
