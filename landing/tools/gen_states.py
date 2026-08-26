@@ -655,24 +655,40 @@ def build_menu(rows):
     canonical = f"{SITE}/states/"
 
     doc = head(title, description, canonical)
+    doc += MENU_EXTRA_CSS
     doc += NAV.format(states_on="on")
     doc += f"""
 <header class="masthead">
-  <div class="col">
-    <div class="dispatch-no">State Guides</div>
-    <h1>State-by-State Storm Guides</h1>
-    <p class="standfirst">Pick your state for its hazards, shelter and mitigation money,
-      emergency contacts, and the rules worth knowing before the next warning — every fact
-      linked to its source.</p>
+  <div class="col" style="max-width:1000px">
+    <div class="dispatch-no">State Guides · 50 states + DC</div>
+    <h1>Where do you live?</h1>
+    <p class="standfirst">Every state has a page: the three hazards it actually faces, the
+      shelter rebates and grants on offer, who answers the phone before and after, and the
+      rules worth knowing — every fact linked to its source.</p>
+    <div class="finder">
+      <input id="q" type="search" placeholder="Type your state&hellip;" autocomplete="off" aria-label="Find your state">
+      <span class="hint">or scroll and tap any card &darr;</span>
+    </div>
   </div>
 </header>
 
+<div class="menubook">
+  <div class="col" style="max-width:1000px">
+    <img src="/assets/cover-mini.webp" alt="" aria-hidden="true" width="64" height="96">
+    <p><b>Every state packet is already inside the book.</b> The Storm-Ready Home ships all 51
+      state packets with its 130 protections, 23 hazard playbooks and the printable binder.</p>
+    <a class="btn" href="/#offer">Get the Book &mdash; $47 &rarr;</a>
+  </div>
+</div>
+
 <article>
   <div class="col" style="max-width:1000px">
+    <p class="nomatch" id="nomatch" hidden>No state matches that &mdash; check the spelling, or scroll.</p>
     {body}
   </div>
 </article>
 """
+    doc += MENU_EXTRA_JS
     doc += FOOTER
     doc += "</body>\n</html>\n"
     return doc
