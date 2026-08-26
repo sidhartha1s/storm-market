@@ -323,6 +323,49 @@ FOOTER = """
 """
 
 
+MENU_EXTRA_CSS = """<style id="menu-extra">
+.finder{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:30px}
+.finder input{flex:1 1 320px;max-width:460px;font-family:var(--body);font-size:21px;padding:14px 18px;
+  background:#fff;color:var(--ink);border:2px solid var(--amber);border-radius:2px;outline:none;
+  box-shadow:0 14px 30px rgba(0,0,0,.35)}
+.finder input:focus{border-color:#fff}
+.finder .hint{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--sky-dim)}
+.menubook{background:var(--red);color:#fdf3ea;position:relative;z-index:2}
+.menubook .col{display:flex;align-items:center;gap:22px;flex-wrap:wrap;padding-top:18px;padding-bottom:18px}
+.menubook img{width:64px;height:auto;box-shadow:0 10px 22px rgba(0,0,0,.4);transform:rotate(-2deg);flex:none}
+.menubook p{margin:0;flex:1 1 320px;font-size:16.5px;line-height:1.45}
+.menubook b{font-family:var(--display);color:#fff}
+.menubook .btn{background:#fff;color:var(--red);box-shadow:none;white-space:nowrap}
+.menubook .btn:hover{background:var(--paper)}
+.menugrid a{position:relative;display:flex;flex-direction:column;gap:6px;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+.menugrid a:hover,.menugrid a:focus-visible{transform:translateY(-4px);box-shadow:0 18px 34px rgba(60,48,20,.18);border-color:var(--red)}
+.menugrid a .go{margin-top:auto;padding-top:10px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--red);font-weight:600}
+.menugrid a[hidden]{display:none}
+.regionhead[hidden]{display:none}
+.nomatch{font-family:var(--mono);font-size:14px;color:var(--faded);padding:18px 0}
+</style>
+"""
+
+MENU_EXTRA_JS = """<script>
+(function(){
+  var q=document.getElementById('q'), cards=[].slice.call(document.querySelectorAll('.menugrid a')),
+      heads=[].slice.call(document.querySelectorAll('.regionhead')), none=document.getElementById('nomatch');
+  if(!q)return;
+  q.addEventListener('input',function(){
+    var v=q.value.trim().toLowerCase(), shown=0;
+    cards.forEach(function(a){var on=!v||a.dataset.name.indexOf(v)>-1;a.hidden=!on;if(on)shown++;});
+    heads.forEach(function(h){var g=h.nextElementSibling;h.hidden=!!v&&!g.querySelector('a:not([hidden])');});
+    none.hidden=shown>0;
+  });
+  q.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){var first=cards.filter(function(a){return !a.hidden;})[0];if(first)location.href=first.href;}
+  });
+})();
+</script>
+"""
+
+
 def head(title, description, canonical, favicon="data:,"):
     return f"""<!doctype html>
 <html lang="en">
