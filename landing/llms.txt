@@ -13,7 +13,7 @@ The site is the sales page for the book, plus free resources: written dispatches
 - [Field Notes](https://paulraymond.online/field-notes/): written dispatches from The Warning Hour episodes.
 - [Joplin Tornado 2011](https://paulraymond.online/field-notes/joplin-tornado-2011/): why 24 minutes of warning wasn't enough — Episode 1 dispatch with the full video.
 - [Tornado Warning vs. Watch](https://paulraymond.online/field-notes/tornado-warning-vs-watch/): the NWS definitions, what each asks of you, and the siren myths.
-- [Free Storm Checklists](https://paulraymond.online/resources/): printable checklists — no email required.
+- [Free Storm Checklists](https://paulraymond.online/resources/): seven storm checklists, free to read; printable pack by email.
 - [Family Emergency Plan Template](https://paulraymond.online/resources/family-emergency-plan-template/)
 - [Tornado Safe Room Guide](https://paulraymond.online/resources/tornado-safe-room/)
 - [Go Bag Checklist](https://paulraymond.online/resources/go-bag-checklist/)
@@ -31,5 +31,5 @@ The site is the sales page for the book, plus free resources: written dispatches
 - Author: Paul Raymond. Book: The Storm-Ready Home, 486 pages, PDF.
 - Price: $47 one-time. Refunds: 7 days, no questions asked.
 - Built from National Weather Service and FEMA post-storm reports; figures cited to their issuing documents.
-- The free checklists and state guides require no email and no purchase.
+- The checklists and state guides are free to read without purchase; the printable pack and per-state packets are delivered by email (free Gumroad products).
 - Not medical, legal, engineering, financial, or insurance advice.
