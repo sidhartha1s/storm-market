@@ -1,14 +1,28 @@
 # The Storm-Ready Home
 
-> A 486-page American disaster-preparedness manual by Paul Raymond: 130 numbered protections, 23 hazard playbooks, a 60-day preparation sequence, and a printable family binder. Digital book (PDF), $47, 7-day money-back guarantee, sold via Gumroad.
+> A 486-page American disaster-preparedness manual by Paul Raymond: 130 numbered protections, 23 hazard playbooks, a 60-day preparation sequence, and a printable family binder. Digital book (PDF), $47, 7-day money-back guarantee, sold via Gumroad. Companion to The Warning Hour, Paul Raymond's documentary channel on American storms.
 
-The site is a single sales page for the book, plus a free state-specific preparedness packet as a sample.
+The site is the sales page for the book, plus free resources: written dispatches for each episode of The Warning Hour (Field Notes), printable preparedness checklists, a storm-preparedness guide for every US state and DC, and a free state-specific preparedness packet.
 
 ## Pages
 
 - [Home / the book](https://paulraymond.online/): what the book covers, who wrote it, sample pages, FAQ, and purchase.
 - [Buy the book](https://paulraymond.gumroad.com/l/ebook): $47 checkout, instant PDF delivery.
 - [Free state packet](https://paulraymond.gumroad.com/l/packet): one state-specific preparedness packet, free.
+- [About Paul Raymond](https://paulraymond.online/about/): the method — primary documents only, every figure cited, honest limits stated.
+- [Field Notes](https://paulraymond.online/field-notes/): written dispatches from The Warning Hour episodes.
+- [Joplin Tornado 2011](https://paulraymond.online/field-notes/joplin-tornado-2011/): why 24 minutes of warning wasn't enough — Episode 1 dispatch with the full video.
+- [Tornado Warning vs. Watch](https://paulraymond.online/field-notes/tornado-warning-vs-watch/): the NWS definitions, what each asks of you, and the siren myths.
+- [Free Storm Checklists](https://paulraymond.online/resources/): printable checklists — no email required.
+- [Family Emergency Plan Template](https://paulraymond.online/resources/family-emergency-plan-template/)
+- [Tornado Safe Room Guide](https://paulraymond.online/resources/tornado-safe-room/)
+- [Go Bag Checklist](https://paulraymond.online/resources/go-bag-checklist/)
+- [Emergency Binder](https://paulraymond.online/resources/emergency-binder/)
+- [Hurricane Preparedness Checklist](https://paulraymond.online/resources/hurricane-preparedness-checklist/)
+- [Tornado Preparedness Checklist](https://paulraymond.online/resources/tornado-preparedness-checklist/)
+- [Home Inventory for Insurance](https://paulraymond.online/resources/home-inventory-for-insurance/)
+- [State Storm Guides](https://paulraymond.online/states/): shelter rebates and grants, emergency agencies, insurance regulators, and the top hazards for all 50 states and DC.
+- [The Warning Hour on YouTube](https://www.youtube.com/@PaulRaymond-s9v): the documentary channel behind the book.
 - [Terms & disclaimer](https://paulraymond.online/terms.html): refund policy, informational-purposes disclaimer, liability.
 - [Privacy policy](https://paulraymond.online/privacy.html): what data is collected and how it is used.
 
@@ -17,4 +31,5 @@ The site is a single sales page for the book, plus a free state-specific prepare
 - Author: Paul Raymond. Book: The Storm-Ready Home, 486 pages, PDF.
 - Price: $47 one-time. Refunds: 7 days, no questions asked.
 - Built from National Weather Service and FEMA post-storm reports; figures cited to their issuing documents.
+- The free checklists and state guides require no email and no purchase.
 - Not medical, legal, engineering, financial, or insurance advice.
