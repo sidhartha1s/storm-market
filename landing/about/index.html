@@ -67,7 +67,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opac
 article{position:relative;z-index:2;padding:8px 0 30px}
 article h2{font-size:clamp(26px,3.2vw,33px);margin:52px 0 20px}
 .shots{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:44px 0}
-.shots figure{margin:0;background:var(--card);border:1px solid var(--line);padding:10px}
+.shots figure{margin:0;min-width:0;background:var(--card);border:1px solid var(--line);padding:10px}
+.shots img{width:100%}
 .shots figcaption{font-family:var(--mono);font-size:12.5px;color:var(--faded);padding:10px 4px 2px;letter-spacing:.04em}
 @media(max-width:640px){.shots{grid-template-columns:1fr}}
 .method{list-style:none;margin:34px 0;padding:0;border-top:2px solid var(--ink)}
