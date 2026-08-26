@@ -164,8 +164,72 @@ footer strong{color:var(--sky-text)}
   color:var(--faded);border-top:2px solid var(--ink);padding-top:10px;margin:40px 0 20px}
 @media(max-width:860px){.menugrid{grid-template-columns:1fr}}
 </style>
+<style id="chrome">
+.topnav{position:sticky;top:0;z-index:40;box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.topnav nav a.buy{background:var(--red);color:#fff!important;font-family:var(--display);font-weight:700;
+  font-size:15px;letter-spacing:0;text-transform:none;padding:9px 18px;border-radius:2px;
+  box-shadow:0 8px 20px rgba(169,44,30,.4);border:0}
+.topnav nav a.buy:hover{background:var(--red-bright)}
+.topnav nav a.ytl{color:var(--sky-dim)}
+@media(max-width:760px){.topnav .wrap{gap:12px;padding:10px 16px}.topnav nav{gap:12px}
+  .topnav nav a.buy{padding:8px 12px;font-size:14px}.topnav nav a.ytl{display:none}}
+footer{background:var(--sky);color:var(--sky-dim)}
+footer .bookrow{display:grid;grid-template-columns:96px 1fr auto;gap:26px;align-items:center;
+  background:#1e2629;border:1px solid var(--sky-line);padding:22px 26px;margin-bottom:34px}
+footer .bookrow img{width:96px;height:auto;box-shadow:0 12px 26px rgba(0,0,0,.55);transform:rotate(-1.6deg)}
+footer .bookrow h3{font-family:var(--display);font-size:22px;color:var(--sky-text);margin:0 0 6px;line-height:1.1}
+footer .bookrow p{font-size:15px;color:var(--sky-dim);margin:0;line-height:1.5}
+footer .bookrow .btn{white-space:nowrap}
+footer .small{font-family:var(--mono);font-size:12px;line-height:1.7;max-width:70em;color:var(--sky-dim)}
+footer a{color:var(--sky-text)}
+@media(max-width:760px){footer .bookrow{grid-template-columns:96px 1fr}footer .bookrow .btn{grid-column:1/-1;text-align:center}}
+.bookcta .cover{background:none;padding:0;display:block;overflow:hidden}
+.bookcta .cover img{width:100%;height:100%;object-fit:cover;display:block}
+.samplestrip{display:flex;align-items:center;gap:18px;background:var(--sky);color:var(--sky-text);
+  padding:16px 22px;margin:34px 0 10px;border-left:4px solid var(--amber)}
+.samplestrip img{width:46px;height:auto;flex:none;box-shadow:0 8px 18px rgba(0,0,0,.5);transform:rotate(-2deg)}
+.samplestrip p{margin:0;font-size:16px;color:var(--sky-dim);line-height:1.45}
+.samplestrip b{color:#fff}
+.samplestrip a{color:var(--amber);font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;
+  text-transform:uppercase;white-space:nowrap;margin-left:auto;text-decoration:none}
+.samplestrip a:hover{color:#fff}
+@media(max-width:640px){.samplestrip{flex-wrap:wrap}.samplestrip a{margin-left:0}}
+.gate{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--amber);
+  padding:30px 32px;margin:44px 0 24px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+.gate .k{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber-deep,#8a5a0c);margin-bottom:8px}
+.gate h3{font-family:var(--display);font-size:24px;margin:0 0 8px;line-height:1.1}
+.gate p{margin:0;font-size:16.5px;color:var(--ink-soft)}
+.gate .ghost{display:inline-block;border:2px solid var(--ink);color:var(--ink);font-family:var(--display);
+  font-weight:700;font-size:17px;padding:12px 24px;border-radius:2px;text-decoration:none;white-space:nowrap}
+.gate .ghost:hover{background:var(--ink);color:var(--paper)}
+.gate .sub{font-family:var(--mono);font-size:12px;color:var(--faded);margin-top:8px}
+@media(max-width:640px){.gate{grid-template-columns:1fr}}
+@media print{.topnav,footer,.samplestrip,.gate,.bookcta{display:none!important}}
+</style>
 </head>
 <body>
+<style id="menu-extra">
+.finder{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:30px}
+.finder input{flex:1 1 320px;max-width:460px;font-family:var(--body);font-size:21px;padding:14px 18px;
+  background:#fff;color:var(--ink);border:2px solid var(--amber);border-radius:2px;outline:none;
+  box-shadow:0 14px 30px rgba(0,0,0,.35)}
+.finder input:focus{border-color:#fff}
+.finder .hint{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--sky-dim)}
+.menubook{background:var(--red);color:#fdf3ea;position:relative;z-index:2}
+.menubook .col{display:flex;align-items:center;gap:22px;flex-wrap:wrap;padding-top:18px;padding-bottom:18px}
+.menubook img{width:64px;height:auto;box-shadow:0 10px 22px rgba(0,0,0,.4);transform:rotate(-2deg);flex:none}
+.menubook p{margin:0;flex:1 1 320px;font-size:16.5px;line-height:1.45}
+.menubook b{font-family:var(--display);color:#fff}
+.menubook .btn{background:#fff;color:var(--red);box-shadow:none;white-space:nowrap}
+.menubook .btn:hover{background:var(--paper)}
+.menugrid a{position:relative;display:flex;flex-direction:column;gap:6px;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+.menugrid a:hover,.menugrid a:focus-visible{transform:translateY(-4px);box-shadow:0 18px 34px rgba(60,48,20,.18);border-color:var(--red)}
+.menugrid a .go{margin-top:auto;padding-top:10px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--red);font-weight:600}
+.menugrid a[hidden]{display:none}
+.regionhead[hidden]{display:none}
+.nomatch{font-family:var(--mono);font-size:14px;color:var(--faded);padding:18px 0}
+</style>
 
 <div class="topnav">
   <div class="wrap">
@@ -174,262 +238,349 @@ footer strong{color:var(--sky-text)}
       <a href="/field-notes/">Field Notes</a>
       <a href="/resources/">Free Checklists</a>
       <a class="on" href="/states/">State Guides</a>
-      <a href="/#offer">The Book</a>
-      <a class="yt" href="https://www.youtube.com/@PaulRaymond-s9v">
-        <svg viewBox="0 0 24 24"><path d="M23 7.5s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C16.6 4 12 4 12 4s-4.6 0-7.8.2c-.4.1-1.4.1-2.3 1-.7.7-.9 2.3-.9 2.3S.8 9.4.8 11.3v1.4c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.9.9 2 .9 2.5 1 1.8.2 7.6.2 7.6.2s4.6 0 7.8-.2c.4-.1 1.4-.1 2.3-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8v-1.4c0-1.9-.2-3.8-.2-3.8zM9.8 14.9V8.6l6.1 3.2-6.1 3.1z"/></svg>
-        The Warning Hour</a>
+      <a class="ytl" href="https://www.youtube.com/@PaulRaymond-s9v" rel="noopener">&#9654; The Warning Hour</a>
+      <a class="buy" href="/#offer">Get the Book &mdash; $47</a>
     </nav>
   </div>
 </div>
 
 <header class="masthead">
-  <div class="col">
-    <div class="dispatch-no">State Guides</div>
-    <h1>State-by-State Storm Guides</h1>
-    <p class="standfirst">Pick your state for its hazards, shelter and mitigation money,
-      emergency contacts, and the rules worth knowing before the next warning — every fact
-      linked to its source.</p>
+  <div class="col" style="max-width:1000px">
+    <div class="dispatch-no">State Guides · 50 states + DC</div>
+    <h1>Where do you live?</h1>
+    <p class="standfirst">Every state has a page: the three hazards it actually faces, the
+      shelter rebates and grants on offer, who answers the phone before and after, and the
+      rules worth knowing — every fact linked to its source.</p>
+    <div class="finder">
+      <input id="q" type="search" placeholder="Type your state&hellip;" autocomplete="off" aria-label="Find your state">
+      <span class="hint">or scroll and tap any card &darr;</span>
+    </div>
   </div>
 </header>
 
+<div class="menubook">
+  <div class="col" style="max-width:1000px">
+    <img src="/assets/cover-mini.webp" alt="" aria-hidden="true" width="64" height="96">
+    <p><b>Every state packet is already inside the book.</b> The Storm-Ready Home ships all 51
+      state packets with its 130 protections, 23 hazard playbooks and the printable binder.</p>
+    <a class="btn" href="/#offer">Get the Book &mdash; $47 &rarr;</a>
+  </div>
+</div>
+
 <article>
   <div class="col" style="max-width:1000px">
+    <p class="nomatch" id="nomatch" hidden>No state matches that &mdash; check the spelling, or scroll.</p>
     <div class="regionhead">Tornado Alley</div>
     <div class="menugrid">
-      <a href="/states/alabama/">
+      <a href="/states/alabama/" data-name="alabama">
         <h3>Alabama</h3>
         <p>Tornado, Hail and derecho, Lightning</p>
+        <span class="go">Open the Alabama guide &rarr;</span>
       </a>
-      <a href="/states/arkansas/">
+      <a href="/states/arkansas/" data-name="arkansas">
         <h3>Arkansas</h3>
         <p>Extreme rainfall and flash flood, Tornado, Hail and derecho</p>
+        <span class="go">Open the Arkansas guide &rarr;</span>
       </a>
-      <a href="/states/colorado/">
+      <a href="/states/colorado/" data-name="colorado">
         <h3>Colorado</h3>
         <p>Extreme rainfall and flash flood, Riverine and coastal flooding, Lightning</p>
+        <span class="go">Open the Colorado guide &rarr;</span>
       </a>
-      <a href="/states/georgia/">
+      <a href="/states/georgia/" data-name="georgia">
         <h3>Georgia</h3>
         <p>Tornado, Hurricane and storm surge, Hail and derecho</p>
+        <span class="go">Open the Georgia guide &rarr;</span>
       </a>
-      <a href="/states/illinois/">
+      <a href="/states/illinois/" data-name="illinois">
         <h3>Illinois</h3>
         <p>Extreme cold, Extreme heat, Tornado</p>
+        <span class="go">Open the Illinois guide &rarr;</span>
       </a>
-      <a href="/states/indiana/">
+      <a href="/states/indiana/" data-name="indiana">
         <h3>Indiana</h3>
         <p>Hail and derecho, Tornado, Riverine and coastal flooding</p>
+        <span class="go">Open the Indiana guide &rarr;</span>
       </a>
-      <a href="/states/iowa/">
+      <a href="/states/iowa/" data-name="iowa">
         <h3>Iowa</h3>
         <p>Tornado, Hail and derecho, Blizzard and ice storm</p>
+        <span class="go">Open the Iowa guide &rarr;</span>
       </a>
-      <a href="/states/kansas/">
+      <a href="/states/kansas/" data-name="kansas">
         <h3>Kansas</h3>
         <p>Extreme heat, Extreme rainfall and flash flood, Extreme cold</p>
+        <span class="go">Open the Kansas guide &rarr;</span>
       </a>
-      <a href="/states/kentucky/">
+      <a href="/states/kentucky/" data-name="kentucky">
         <h3>Kentucky</h3>
         <p>Tornado, Extreme rainfall and flash flood, Riverine and coastal flooding</p>
+        <span class="go">Open the Kentucky guide &rarr;</span>
       </a>
-      <a href="/states/louisiana/">
+      <a href="/states/louisiana/" data-name="louisiana">
         <h3>Louisiana</h3>
         <p>Extreme heat, Extreme rainfall and flash flood, Tornado</p>
+        <span class="go">Open the Louisiana guide &rarr;</span>
       </a>
-      <a href="/states/michigan/">
+      <a href="/states/michigan/" data-name="michigan">
         <h3>Michigan</h3>
         <p>Hail and derecho, Extreme cold, Tornado</p>
+        <span class="go">Open the Michigan guide &rarr;</span>
       </a>
-      <a href="/states/minnesota/">
+      <a href="/states/minnesota/" data-name="minnesota">
         <h3>Minnesota</h3>
         <p>Extreme cold, Hail and derecho, Extreme heat</p>
+        <span class="go">Open the Minnesota guide &rarr;</span>
       </a>
-      <a href="/states/mississippi/">
+      <a href="/states/mississippi/" data-name="mississippi">
         <h3>Mississippi</h3>
         <p>Tornado, Hail and derecho, Extreme heat</p>
+        <span class="go">Open the Mississippi guide &rarr;</span>
       </a>
-      <a href="/states/missouri/">
+      <a href="/states/missouri/" data-name="missouri">
         <h3>Missouri</h3>
         <p>Tornado, Extreme heat, Extreme rainfall and flash flood</p>
+        <span class="go">Open the Missouri guide &rarr;</span>
       </a>
-      <a href="/states/nebraska/">
+      <a href="/states/nebraska/" data-name="nebraska">
         <h3>Nebraska</h3>
         <p>Riverine and coastal flooding, Hail and derecho, Extreme rainfall and flash flood</p>
+        <span class="go">Open the Nebraska guide &rarr;</span>
       </a>
-      <a href="/states/ohio/">
+      <a href="/states/ohio/" data-name="ohio">
         <h3>Ohio</h3>
         <p>Tornado, Hail and derecho, Riverine and coastal flooding</p>
+        <span class="go">Open the Ohio guide &rarr;</span>
       </a>
-      <a href="/states/oklahoma/">
+      <a href="/states/oklahoma/" data-name="oklahoma">
         <h3>Oklahoma</h3>
         <p>Tornado, Extreme rainfall and flash flood, Riverine and coastal flooding</p>
+        <span class="go">Open the Oklahoma guide &rarr;</span>
       </a>
-      <a href="/states/south-dakota/">
+      <a href="/states/south-dakota/" data-name="south dakota">
         <h3>South Dakota</h3>
         <p>Blizzard and ice storm, Extreme cold, Riverine and coastal flooding</p>
+        <span class="go">Open the South Dakota guide &rarr;</span>
       </a>
-      <a href="/states/tennessee/">
+      <a href="/states/tennessee/" data-name="tennessee">
         <h3>Tennessee</h3>
         <p>Tornado, Extreme rainfall and flash flood, Extreme heat</p>
+        <span class="go">Open the Tennessee guide &rarr;</span>
       </a>
-      <a href="/states/texas/">
+      <a href="/states/texas/" data-name="texas">
         <h3>Texas</h3>
         <p>Extreme rainfall and flash flood, Extreme heat, Extreme cold</p>
+        <span class="go">Open the Texas guide &rarr;</span>
       </a>
-      <a href="/states/wisconsin/">
+      <a href="/states/wisconsin/" data-name="wisconsin">
         <h3>Wisconsin</h3>
         <p>Extreme cold, Extreme heat, Hail and derecho</p>
+        <span class="go">Open the Wisconsin guide &rarr;</span>
       </a>
       
     </div>
     <div class="regionhead">Hurricane Coast</div>
     <div class="menugrid">
-      <a href="/states/connecticut/">
+      <a href="/states/connecticut/" data-name="connecticut">
         <h3>Connecticut</h3>
         <p>Hail and derecho, Blizzard and ice storm, Extreme rainfall and flash flood</p>
+        <span class="go">Open the Connecticut guide &rarr;</span>
       </a>
-      <a href="/states/delaware/">
+      <a href="/states/delaware/" data-name="delaware">
         <h3>Delaware</h3>
         <p>Blizzard and ice storm, Extreme rainfall and flash flood, Extreme heat</p>
+        <span class="go">Open the Delaware guide &rarr;</span>
       </a>
-      <a href="/states/washington-dc/">
+      <a href="/states/washington-dc/" data-name="district of columbia">
         <h3>District of Columbia</h3>
         <p>Lightning, Blizzard and ice storm</p>
+        <span class="go">Open the District of Columbia guide &rarr;</span>
       </a>
-      <a href="/states/florida/">
+      <a href="/states/florida/" data-name="florida">
         <h3>Florida</h3>
         <p>Hurricane and storm surge, Lightning, Hail and derecho</p>
+        <span class="go">Open the Florida guide &rarr;</span>
       </a>
-      <a href="/states/hawaii/">
+      <a href="/states/hawaii/" data-name="hawaii">
         <h3>Hawaii</h3>
         <p>Wildfire, Extreme rainfall and flash flood, Riverine and coastal flooding</p>
+        <span class="go">Open the Hawaii guide &rarr;</span>
       </a>
-      <a href="/states/maine/">
+      <a href="/states/maine/" data-name="maine">
         <h3>Maine</h3>
         <p>Hail and derecho, Riverine and coastal flooding, Extreme cold</p>
+        <span class="go">Open the Maine guide &rarr;</span>
       </a>
-      <a href="/states/maryland/">
+      <a href="/states/maryland/" data-name="maryland">
         <h3>Maryland</h3>
         <p>Extreme heat, Hail and derecho, Extreme rainfall and flash flood</p>
+        <span class="go">Open the Maryland guide &rarr;</span>
       </a>
-      <a href="/states/massachusetts/">
+      <a href="/states/massachusetts/" data-name="massachusetts">
         <h3>Massachusetts</h3>
         <p>Hail and derecho, Lightning, Tornado</p>
+        <span class="go">Open the Massachusetts guide &rarr;</span>
       </a>
-      <a href="/states/new-hampshire/">
+      <a href="/states/new-hampshire/" data-name="new hampshire">
         <h3>New Hampshire</h3>
         <p>Hail and derecho, Blizzard and ice storm, Hurricane and storm surge</p>
+        <span class="go">Open the New Hampshire guide &rarr;</span>
       </a>
-      <a href="/states/new-jersey/">
+      <a href="/states/new-jersey/" data-name="new jersey">
         <h3>New Jersey</h3>
         <p>Extreme rainfall and flash flood, Hail and derecho, Lightning</p>
+        <span class="go">Open the New Jersey guide &rarr;</span>
       </a>
-      <a href="/states/new-york/">
+      <a href="/states/new-york/" data-name="new york">
         <h3>New York</h3>
         <p>Blizzard and ice storm, Extreme heat, Riverine and coastal flooding</p>
+        <span class="go">Open the New York guide &rarr;</span>
       </a>
-      <a href="/states/north-carolina/">
+      <a href="/states/north-carolina/" data-name="north carolina">
         <h3>North Carolina</h3>
         <p>Extreme rainfall and flash flood, Hail and derecho, Tornado</p>
+        <span class="go">Open the North Carolina guide &rarr;</span>
       </a>
-      <a href="/states/rhode-island/">
+      <a href="/states/rhode-island/" data-name="rhode island">
         <h3>Rhode Island</h3>
         <p>Hail and derecho, Extreme heat</p>
+        <span class="go">Open the Rhode Island guide &rarr;</span>
       </a>
-      <a href="/states/south-carolina/">
+      <a href="/states/south-carolina/" data-name="south carolina">
         <h3>South Carolina</h3>
         <p>Hurricane and storm surge, Extreme rainfall and flash flood, Hail and derecho</p>
+        <span class="go">Open the South Carolina guide &rarr;</span>
       </a>
-      <a href="/states/virginia/">
+      <a href="/states/virginia/" data-name="virginia">
         <h3>Virginia</h3>
         <p>Hail and derecho, Extreme rainfall and flash flood, Tornado</p>
+        <span class="go">Open the Virginia guide &rarr;</span>
       </a>
       
     </div>
     <div class="regionhead">Wildfire West</div>
     <div class="menugrid">
-      <a href="/states/alaska/">
+      <a href="/states/alaska/" data-name="alaska">
         <h3>Alaska</h3>
         <p>Extreme rainfall and flash flood, Riverine and coastal flooding, Extreme cold</p>
+        <span class="go">Open the Alaska guide &rarr;</span>
       </a>
-      <a href="/states/arizona/">
+      <a href="/states/arizona/" data-name="arizona">
         <h3>Arizona</h3>
         <p>Extreme heat, Extreme rainfall and flash flood, Extreme cold</p>
+        <span class="go">Open the Arizona guide &rarr;</span>
       </a>
-      <a href="/states/california/">
+      <a href="/states/california/" data-name="california">
         <h3>California</h3>
         <p>Wildfire, Extreme heat, Hail and derecho</p>
+        <span class="go">Open the California guide &rarr;</span>
       </a>
-      <a href="/states/idaho/">
+      <a href="/states/idaho/" data-name="idaho">
         <h3>Idaho</h3>
         <p>Hail and derecho, Blizzard and ice storm, Extreme cold</p>
+        <span class="go">Open the Idaho guide &rarr;</span>
       </a>
-      <a href="/states/montana/">
+      <a href="/states/montana/" data-name="montana">
         <h3>Montana</h3>
         <p>Blizzard and ice storm, Hail and derecho, Riverine and coastal flooding</p>
+        <span class="go">Open the Montana guide &rarr;</span>
       </a>
-      <a href="/states/nevada/">
+      <a href="/states/nevada/" data-name="nevada">
         <h3>Nevada</h3>
         <p>Extreme heat, Extreme cold, Extreme rainfall and flash flood</p>
+        <span class="go">Open the Nevada guide &rarr;</span>
       </a>
-      <a href="/states/new-mexico/">
+      <a href="/states/new-mexico/" data-name="new mexico">
         <h3>New Mexico</h3>
         <p>Extreme rainfall and flash flood, Hail and derecho, Wildfire</p>
+        <span class="go">Open the New Mexico guide &rarr;</span>
       </a>
-      <a href="/states/north-dakota/">
+      <a href="/states/north-dakota/" data-name="north dakota">
         <h3>North Dakota</h3>
         <p>Tornado, Riverine and coastal flooding, Blizzard and ice storm</p>
+        <span class="go">Open the North Dakota guide &rarr;</span>
       </a>
-      <a href="/states/oregon/">
+      <a href="/states/oregon/" data-name="oregon">
         <h3>Oregon</h3>
         <p>Extreme heat, Hail and derecho, Blizzard and ice storm</p>
+        <span class="go">Open the Oregon guide &rarr;</span>
       </a>
-      <a href="/states/utah/">
+      <a href="/states/utah/" data-name="utah">
         <h3>Utah</h3>
         <p>Extreme rainfall and flash flood, Extreme heat, Hail and derecho</p>
+        <span class="go">Open the Utah guide &rarr;</span>
       </a>
-      <a href="/states/washington/">
+      <a href="/states/washington/" data-name="washington">
         <h3>Washington</h3>
         <p>Extreme rainfall and flash flood, Hail and derecho, Extreme heat</p>
+        <span class="go">Open the Washington guide &rarr;</span>
       </a>
-      <a href="/states/wyoming/">
+      <a href="/states/wyoming/" data-name="wyoming">
         <h3>Wyoming</h3>
         <p>Extreme rainfall and flash flood, Blizzard and ice storm, Lightning</p>
+        <span class="go">Open the Wyoming guide &rarr;</span>
       </a>
       
     </div>
     <div class="regionhead">Ice &amp; Snow North</div>
     <div class="menugrid">
-      <a href="/states/pennsylvania/">
+      <a href="/states/pennsylvania/" data-name="pennsylvania">
         <h3>Pennsylvania</h3>
         <p>Extreme heat, Hail and derecho, Extreme rainfall and flash flood</p>
+        <span class="go">Open the Pennsylvania guide &rarr;</span>
       </a>
-      <a href="/states/vermont/">
+      <a href="/states/vermont/" data-name="vermont">
         <h3>Vermont</h3>
         <p>Extreme rainfall and flash flood, Hail and derecho, Extreme heat</p>
+        <span class="go">Open the Vermont guide &rarr;</span>
       </a>
-      <a href="/states/west-virginia/">
+      <a href="/states/west-virginia/" data-name="west virginia">
         <h3>West Virginia</h3>
         <p>Extreme rainfall and flash flood, Riverine and coastal flooding, Hail and derecho</p>
+        <span class="go">Open the West Virginia guide &rarr;</span>
       </a>
       
     </div>
     
   </div>
 </article>
+<script>
+(function(){
+  var q=document.getElementById('q'), cards=[].slice.call(document.querySelectorAll('.menugrid a')),
+      heads=[].slice.call(document.querySelectorAll('.regionhead')), none=document.getElementById('nomatch');
+  if(!q)return;
+  q.addEventListener('input',function(){
+    var v=q.value.trim().toLowerCase(), shown=0;
+    cards.forEach(function(a){var on=!v||a.dataset.name.indexOf(v)>-1;a.hidden=!on;if(on)shown++;});
+    heads.forEach(function(h){var g=h.nextElementSibling;h.hidden=!!v&&!g.querySelector('a:not([hidden])');});
+    none.hidden=shown>0;
+  });
+  q.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){var first=cards.filter(function(a){return !a.hidden;})[0];if(first)location.href=first.href;}
+  });
+})();
+</script>
 
 <footer>
   <div class="wrap">
-    <p><strong>The Storm-Ready Home</strong> · Paul Raymond · First edition 2026</p>
-    <p>General preparedness information for households. Not medical, legal,
+    <div class="bookrow">
+      <img src="/assets/cover-mini.webp" alt="The Storm-Ready Home by Paul Raymond &mdash; book cover" width="96" height="144" loading="lazy">
+      <div>
+        <h3>The Storm-Ready Home</h3>
+        <p>486 pages &middot; 130 numbered protections &middot; 23 hazard playbooks &middot; the 60-day sequence &middot; the 61-page printable binder. $47, instant PDF, 7-day money-back guarantee.</p>
+      </div>
+      <a class="btn" href="/#offer">Get the Book &mdash; $47 &rarr;</a>
+    </div>
+    <p class="small">General preparedness information for households. Not medical, legal,
       engineering or insurance advice, and not a substitute for the instructions of your local
       emergency officials. In an emergency, call 911 and follow the direction of authorities.</p>
-    <p>Figures cited to their issuing documents. Public-domain material reproduced under
+    <p class="small">Figures cited to their issuing documents. Public-domain material reproduced under
       17 U.S.C. &sect; 105. <strong>No agency of the United States Government has endorsed, reviewed, or is
       affiliated with this book.</strong></p>
-    <p><a href="/#offer">Free state packet</a> · <a href="/#faq">FAQ</a> ·
-      <a href="/privacy.html">Privacy policy</a> · <a href="/terms.html">Terms &amp; disclaimer</a> ·
-      <span>Support: reply to your purchase receipt</span></p>
+    <p class="small"><a href="/#offer">Get the book</a> &middot; <a href="/">Home</a> &middot; <a href="/field-notes/">Field Notes</a> &middot;
+      <a href="/resources/">Free checklists</a> &middot; <a href="/states/">State guides</a> &middot;
+      <a href="/about/">About</a> &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a> &middot;
+      <a href="https://www.youtube.com/@PaulRaymond-s9v" rel="noopener">&#9654; The Warning Hour on YouTube</a></p>
   </div>
 </footer>
 </body>
