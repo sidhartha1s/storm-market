@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  EXEMPLAR: numbers-rollup.html
+  WHAT IT IS: stacked big-number roll-up rows — a header, then up to four rows of counted
+  Courier New figures each with a caption label, closing on a source citation.
+  SOURCE: episodes/ep2-2011-super-outbreak/compositions/g-numbers.html (fidelity-extracted,
+  copy genericized).
+
+  PARAMS TO EDIT (marked <!-- EDIT-ME --> inline):
+    - hdr: date range + "THE OFFICIAL RECORD" style eyebrow.
+    - each row's label text and counter target number (in the counter() calls) and format
+      function (plain integer, "$"+B format, etc — see v5's dollar formatter).
+    - cite: source citation line.
+
+  TIMING KNOBS: each row fades in (y:26->0, 0.5s), its counter starts ~0.2s after and runs
+  1.6-2.4s power4.out landing exactly on the row's caption — never let the counter finish before
+  or after the label reveal. Rows are spaced ~6s apart (info beat every 2-3s is satisfied by the
+  reveal + count sequence inside each row, not by the row-to-row gap alone — keep sub-beats
+  moving). Citation fades in last, well after the final row settles.
+
+  COPY into episodes/<slug>/compositions/ and hand-retune — never script-generate.
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; background:#030507; font-family:Arial,sans-serif; }
+  .hdr { position:absolute; left:0; right:0; top:80px; text-align:center; font-weight:700; font-size:26px; letter-spacing:8px; color:#93a3b2; }
+  .row { position:absolute; left:0; right:0; text-align:center; }
+  #numrollup-r1 { top:200px; } #numrollup-r2 { top:400px; } #numrollup-r3 { top:640px; } #numrollup-r4 { top:820px; }
+  .val { font-family:'Courier New',monospace; font-weight:700; font-size:150px; color:#e8c56a; }
+  #numrollup-v2 { color:#e74c3c; }
+  .lab { font-size:30px; letter-spacing:6px; color:#c8d3e0; font-weight:700; margin-top:4px; }
+  .small .val { font-size:88px; } .small .lab { font-size:23px; }
+  .cite { position:absolute; left:0; right:0; bottom:60px; text-align:center; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#5d6d7c; }
+  .split { display:inline-block; margin:0 60px; }
+</style>
+<div id="root" data-composition-id="numrollup" data-width="1920" data-height="1080">
+  <div class="hdr" id="numrollup-hdr"><!-- EDIT-ME: date/scope · THE OFFICIAL RECORD --></div>
+  <div class="row" id="numrollup-r1"><div class="val" id="numrollup-v1">0</div><div class="lab"><!-- EDIT-ME: row 1 label --></div></div>
+  <div class="row" id="numrollup-r2"><div class="val" id="numrollup-v2">0</div><div class="lab"><!-- EDIT-ME: row 2 label --></div></div>
+  <div class="row small" id="numrollup-r3">
+    <span class="split"><span class="val" id="numrollup-v3" style="color:#e74c3c">0</span><div class="lab"><!-- EDIT-ME: row 3a label --></div></span>
+    <span class="split"><span class="val" id="numrollup-v4" style="color:#e74c3c">0</span><div class="lab"><!-- EDIT-ME: row 3b label --></div></span>
+  </div>
+  <div class="row small" id="numrollup-r4"><span class="val" id="numrollup-v5">$0</span><div class="lab"><!-- EDIT-ME: row 4 label --></div></div>
+  <div class="cite" id="numrollup-cite"><!-- EDIT-ME: source citation --></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#numrollup-hdr","#numrollup-r1","#numrollup-r2","#numrollup-r3","#numrollup-r4","#numrollup-cite"], {autoAlpha:0}, 0);
+  tl.fromTo("#numrollup-hdr", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 0.4);
+  function counter(sel, target, at, dur, fmt) {
+    const o={v:0};
+    tl.to(o, {v:target, duration:dur, ease:"power4.out", onUpdate:()=>{
+      const e=document.querySelector(sel); if(e) e.textContent = fmt(Math.round(o.v));
+    }}, at);
+  }
+  tl.fromTo("#numrollup-r1", {autoAlpha:0, y:26}, {autoAlpha:1, y:0, duration:0.5}, 4.3);
+  counter("#numrollup-v1", 368, 4.5, 2.2, v=>v+""); /* EDIT-ME: row 1 target */
+  tl.fromTo("#numrollup-r2", {autoAlpha:0, y:26}, {autoAlpha:1, y:0, duration:0.5}, 10.3);
+  counter("#numrollup-v2", 324, 10.5, 2.4, v=>v+""); /* EDIT-ME: row 2 target */
+  tl.fromTo("#numrollup-r3", {autoAlpha:0, y:26}, {autoAlpha:1, y:0, duration:0.5}, 16.9);
+  counter("#numrollup-v3", 316, 17.1, 1.6, v=>v+""); /* EDIT-ME: row 3a target */
+  counter("#numrollup-v4", 234, 19.6, 1.6, v=>v+""); /* EDIT-ME: row 3b target */
+  tl.fromTo("#numrollup-r4", {autoAlpha:0, y:26}, {autoAlpha:1, y:0, duration:0.5}, 23.3);
+  counter("#numrollup-v5", 10.2*10, 23.5, 1.8, v=>"$"+(v/10).toFixed(1)+"B"); /* EDIT-ME: row 4 target + format */
+  tl.fromTo("#numrollup-cite", {autoAlpha:0}, {autoAlpha:1, duration:0.8}, 33.6);
+  window.__timelines["numrollup"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
