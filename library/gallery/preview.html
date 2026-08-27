@@ -22,6 +22,7 @@
   const src = await (await fetch('../inhouse/' + file)).text();
   const doc = new DOMParser().parseFromString(src, 'text/html');
   const tpl = doc.querySelector('template');
+  if (!tpl) { document.title = 'NO-TEMPLATE ' + file; return; }
   document.getElementById('stage').append(tpl.content.cloneNode(true));
   for (const s of doc.querySelectorAll('script')) {
     if (!s.src) { try { (0, eval)(s.textContent); } catch (e) { document.title = 'EVAL-ERR ' + e.message; return; } }
