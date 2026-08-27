@@ -73,7 +73,7 @@ window.__timelines = window.__timelines || {};
   tl.set([P+"pct", P+"note", P+"note2", P+"sink"], { autoAlpha: 0 }, 0);
   tl.fromTo(P+"title", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 0.3);
   tl.fromTo([P+"y0", P+"y1"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, stagger: 0.15 }, 0.8);
-  /* the bar crawls and stalls exactly on the spoken percentage — EDIT-ME: target width */
+  /* the bar crawls and stalls exactly on the spoken percentage — EDIT-ME: sample copy — 65% is the real New Orleans levee-system figure, replace with the episode's target width */
   tl.to(P+"fill", { width: "65%", duration: 4.4, ease: "power1.inOut" }, 1.2);
   tl.fromTo(P+"pct", { autoAlpha: 0, scale: 1.8 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.in" }, 5.5);
   tl.fromTo(P+"note", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45 }, 8.6);
