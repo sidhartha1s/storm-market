@@ -223,8 +223,12 @@ Per episode in `episodes/<slug>/`:
   `python3 -m http.server 8765` from `library/` → `http://localhost:8765/gallery/`. Before
   hand-authoring any graphic: search the index (grep/read — it's one JSON) and/or
   `npx hyperframes catalog --query "<intent>"`, copy the closest match into the episode,
-  hand-retune per beat. Scratch-authoring allowed with a one-line reason in edit_script.md.
-  The generator tripwire is untouched — the library is starting points, never builders.
+  hand-retune per beat. `npx hyperframes add <name>` lands new official items into
+  `library/official/` (hyperframes.json paths) — it never writes into an episode; copying
+  into `episodes/<slug>/compositions/` is always a hand step. A worked example of the full
+  flow lives at `library/inhouse/examples/joplin-stat-panel.html`. Scratch-authoring allowed
+  with a one-line reason in edit_script.md. The generator tripwire is untouched — the
+  library is starting points, never builders.
 - **Draft-proxy review loop (owner order 2026-07-26): every review cut ships as a DRAFT render
   first** — `scripts\render.cmd <slug> draft [out-basename]` (draft = crf 32 / 15fps / 3
   workers baked in; measured 2026-07-26 on ep1 17:17 comp: 21m 16s vs 39m 32s full; 258 MB vs
