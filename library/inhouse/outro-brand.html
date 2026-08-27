@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  EXEMPLAR: outro-brand.html
+  WHAT IT IS: the "THE / WARNING / HOUR" brand outro — the show's closing card, episode-number
+  line, and CTA tag, dying to black with the score bed.
+  SOURCE: episodes/ep2-2011-super-outbreak/compositions/g-outro.html (fidelity-extracted, copy
+  genericized). Compare episodes/ep6-katrina-2005/compositions/g-close.html for a variant that
+  leads with a two-line spoken thesis recap ABOVE the brand lockup before the same brand block —
+  use that pattern when the episode wants a thesis close instead of a bare brand card.
+
+  PARAMS TO EDIT (marked <!-- EDIT-ME --> inline):
+    - episode number/title line.
+    - CTA tag line.
+
+  TIMING KNOBS: brand wordmark pops in first (scale 1.14->1, 0.45s) at t=0.55 — anchor that to
+  landing ON the spoken brand name; episode line +1.25s; tag +1.2s; whole card fades at t=6.8
+  over 1.0s. Keep the wordmark entrance snapped tight to the VO — it is the payoff beat.
+
+  COPY into episodes/<slug>/compositions/ and hand-retune — never script-generate.
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; background:#030507; font-family:Arial,sans-serif; }
+  .stage { position:absolute; inset:0; display:grid; place-items:center; }
+  .wrap { text-align:center; }
+  .twh { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:120px; color:#f2f5f8; letter-spacing:6px; }
+  .twh .amber { color:#d8a13a; }
+  .ep { font-family:Georgia,serif; font-style:italic; font-size:30px; color:#d8a13a; margin-top:26px; }
+  .tag { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#93a3b2; margin-top:16px; }
+</style>
+<div id="root" data-composition-id="outrobrand" data-width="1920" data-height="1080">
+  <div class="stage">
+    <div class="wrap">
+      <div class="twh" id="outrobrand-twh">THE <span class="amber">WARNING</span> HOUR</div>
+      <div class="ep" id="outrobrand-ep"><!-- EDIT-ME: Episode N — Title --></div>
+      <div class="tag" id="outrobrand-tag"><!-- EDIT-ME: CTA line --></div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#outrobrand-twh","#outrobrand-ep","#outrobrand-tag"], {autoAlpha:0}, 0);
+  /* snap the wordmark to land ON the spoken brand name */
+  tl.fromTo("#outrobrand-twh", {autoAlpha:0, scale:1.14}, {autoAlpha:1, scale:1, duration:0.45, ease:"power3.out"}, 0.55);
+  tl.fromTo("#outrobrand-ep", {autoAlpha:0}, {autoAlpha:1, duration:0.7}, 1.8);
+  tl.fromTo("#outrobrand-tag", {autoAlpha:0}, {autoAlpha:1, duration:0.7}, 3.0);
+  tl.to(".wrap", {autoAlpha:0, duration:1.0}, 6.8);
+  window.__timelines["outrobrand"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
