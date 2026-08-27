@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  EXEMPLAR: title-card.html
+  WHAT IT IS: episode title card — a stacked centered reveal (cold-open hook line, then the
+  full episode title, then a Georgia-italic amber date/brand subline).
+  SOURCE: episodes/ep2-2011-super-outbreak/compositions/g-title.html (fidelity-extracted, only
+  copy genericized).
+
+  PARAMS TO EDIT (marked <!-- EDIT-ME --> inline):
+    - l1: the cold-open hook stat/line (Arial Black, red).
+    - l2: the short punch line under it (Arial Black, white, wide tracking).
+    - main: the two-line episode title (Arial Black 128 — the crown headline).
+    - sub: Georgia italic amber date + channel name.
+
+  TIMING KNOBS: every cue below is anchored to a SPOKEN moment in the narration (see the
+  inline comment on l1) — when retuning, re-anchor to your own words.json timestamps, keep the
+  same relative pacing (l1 pops almost immediately, l2 ~4.3s later, main is the payoff ~11.5s
+  after l2, sub follows +1.3s, whole stack fades ~6s after main lands).
+
+  COPY into episodes/<slug>/compositions/ and hand-retune — never script-generate.
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; background:#030507; font-family:Arial,sans-serif; }
+  .stage { position:absolute; inset:0; display:grid; place-items:center; }
+  .stack { text-align:center; }
+  .l1 { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:92px; color:#e74c3c; letter-spacing:3px; }
+  .l2 { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:76px; color:#f2f5f8; letter-spacing:8px; margin-top:16px; }
+  .main { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:132px; color:#f2f5f8; letter-spacing:2px; line-height:1.02; margin-top:44px; }
+  .sub { font-family:Georgia,serif; font-style:italic; font-size:38px; color:#d8a13a; margin-top:30px; }
+</style>
+<div id="root" data-composition-id="titlecard" data-width="1920" data-height="1080">
+  <div class="stage">
+    <div class="stack">
+      <div class="l1" id="titlecard-l1"><!-- EDIT-ME: cold-open hook line --></div>
+      <div class="l2" id="titlecard-l2"><!-- EDIT-ME: punch line --></div>
+      <div class="main" id="titlecard-main"><div><!-- EDIT-ME: title line 1 --></div><div><!-- EDIT-ME: title line 2 --></div></div>
+      <div class="sub" id="titlecard-sub"><!-- EDIT-ME: date range · channel name --></div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#titlecard-l1","#titlecard-l2","#titlecard-main","#titlecard-sub"], {autoAlpha:0}, 0);
+  /* re-anchor every "at" value to your own words.json cue when retuning */
+  tl.fromTo("#titlecard-l1", {autoAlpha:0, scale:1.5}, {autoAlpha:1, scale:1, duration:0.3, ease:"power4.in"}, 0.46);
+  tl.fromTo("#titlecard-l2", {autoAlpha:0, y:26}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 4.8);
+  tl.fromTo("#titlecard-main", {autoAlpha:0, scale:1.12}, {autoAlpha:1, scale:1, duration:0.9, ease:"power2.out"}, 16.3);
+  tl.fromTo("#titlecard-sub", {autoAlpha:0}, {autoAlpha:1, duration:0.8}, 17.6);
+  tl.to(".stack", {autoAlpha:0, duration:1.2}, 23.6);
+  window.__timelines["titlecard"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
