@@ -105,8 +105,16 @@ obfuscation.**
 - Render: `scripts\render.cmd <slug> <draft|full>` — full recipe (flags, env vars, `--workers 3`
   pin) baked in; see repo CLAUDE.md step 5. Never hand-type render commands.
 - Each episode's index.html is authored fresh (agent-as-editor). Reusable CSS snippets may
-  accumulate in `assets/styles/` but NO scene templates — template-ification is the failure mode
-  this design exists to avoid.
+  accumulate in `assets/styles/`. **Library-first (owner order 2026-08-27, amends the earlier
+  blanket "NO scene templates" line):** before hand-authoring any graphic, search
+  `library/catalog-index.json` (in-house exemplars + triaged official HyperFrames catalog;
+  browse: `python3 -m http.server 8765` from `library/` → `/gallery/`) and
+  `npx hyperframes catalog --query "<intent>"`. COPY the closest exemplar/snippet/official
+  block into the episode and HAND-RETUNE it per beat — the ep2 `g-*.html` method. Building
+  from scratch stays allowed with a one-line reason in `edit_script.md`. What remains BANNED
+  is unchanged: scripts/generators that emit or alter episode HTML (the tripwire in
+  CLAUDE.md). A template is a starting point an agent edits with per-cut judgment, never a
+  builder that outputs a finished scene.
 - **Exit animations end fully gone (owner review 2026-07-26):** every panel/graphic exit tween
   finishes at `autoAlpha:0` AND overshoots any slide (a 660px slide on an 820px panel left a
   stuck sliver for ~1s). Verify each sub-comp with a snapshot at host-window-end − 0.5s.
