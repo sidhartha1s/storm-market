@@ -1,0 +1,152 @@
+[
+  {
+    "name": "date-stamp",
+    "kind": "snippet",
+    "title": "Date/time stamp card",
+    "description": "Red match-cut stamp for a date or timestamp, slams in and slide-fades out. Amber variant available. Being superseded by popfig for new date reveals per owner 2026-08-16 guidance, but still valid for match-cut beats.",
+    "tags": ["date", "stamp", "match-cut", "text-card"],
+    "params": ["st-eyebrow text", "st-day text", "st-time text", "stamp vs stamp-amber", "position (default top-left)"],
+    "source_episode": "ep6-katrina-2005",
+    "css_classes": [".stamp", ".st-eyebrow", ".st-day", ".st-time", ".stamp-amber"]
+  },
+  {
+    "name": "lower-third",
+    "kind": "snippet",
+    "title": "Location + time lower-third",
+    "description": "Bottom-left location label over a time chip, the standard scene-setting lower-third used across every episode.",
+    "tags": ["lower-third", "location", "time", "text-card"],
+    "params": ["lt-loc text", "lt-time text"],
+    "source_episode": "ep6-katrina-2005 (ep3 adds inset:auto)",
+    "css_classes": [".lt", ".lt-loc", ".lt-time"]
+  },
+  {
+    "name": "popup-chip",
+    "kind": "snippet",
+    "title": "Frosted glass popup stat chip",
+    "description": "Backdrop-blurred rounded chip for a headline stat with an optional fine-print subline. Freely positioned (inline left/top).",
+    "tags": ["popup", "stat", "text-card", "glass"],
+    "params": ["main text", "fine text", "position (inline left/top/right/bottom)"],
+    "source_episode": "ep6-katrina-2005",
+    "css_classes": [".popup", ".fine"]
+  },
+  {
+    "name": "source-label",
+    "kind": "snippet",
+    "title": "Source/credit label",
+    "description": "Small bottom-right (or repositioned) credit chip identifying the footage source, e.g. broadcaster or agency.",
+    "tags": ["source", "credit", "attribution", "text-card"],
+    "params": ["label text", "position (default bottom-right)"],
+    "source_episode": "ep6-katrina-2005",
+    "css_classes": [".srclab"]
+  },
+  {
+    "name": "quote-card",
+    "kind": "snippet",
+    "title": "Pull-quote card",
+    "description": "Centered italic quote with an amber attribution line beneath it. Has a glasscard variant for text directly over moving footage.",
+    "tags": ["quote", "attribution", "text-card"],
+    "params": ["quote text", "attribution text", "plain vs .glasscard variant"],
+    "source_episode": "ep2-2011-super-outbreak (carried into ep6)",
+    "css_classes": [".quotecard", ".q", ".attr", ".quotecard.glasscard"]
+  },
+  {
+    "name": "glass-panel",
+    "kind": "snippet",
+    "title": "Glass card treatment",
+    "description": "The one approved treatment for any text block sitting directly over moving footage: blurred dark glass panel, no bare text. Combine with quotecard or other text blocks.",
+    "tags": ["glass", "backdrop-blur", "panel", "footage-safe-text"],
+    "params": ["padding/size to fit content", "border-radius"],
+    "source_episode": "ep6-katrina-2005",
+    "css_classes": [".glasscard"]
+  },
+  {
+    "name": "name-card",
+    "kind": "snippet",
+    "title": "Full-width namecard",
+    "description": "Centered speaker/subject identification card: bold name line over an italic amber subtitle (title/role).",
+    "tags": ["namecard", "lower-third", "identification", "text-card"],
+    "params": ["nc-name text", "nc-sub text"],
+    "source_episode": "ep6-katrina-2005",
+    "css_classes": [".namecard", ".nc-name", ".nc-sub"]
+  },
+  {
+    "name": "dispatch-card",
+    "kind": "snippet",
+    "title": "Radio/dispatch two-line card",
+    "description": "Monospace headline line (radio call, dispatch code) over a smaller grey-blue label line, centered mid-frame.",
+    "tags": ["dispatch", "radio", "monospace", "text-card"],
+    "params": ["d1 text (Courier)", "d2 text (label)"],
+    "source_episode": "ep6-katrina-2005",
+    "css_classes": [".dispatchlab", ".d1", ".d2"]
+  },
+  {
+    "name": "abril-figure-popup",
+    "kind": "snippet",
+    "title": "Abril figure date/stat popup",
+    "description": "Large eerie red display-face popup for a date or standalone figure, mid-screen, no background block. Owner's current default for date/figure reveals (2026-08-16), replacing .stamp. Amber variant available.",
+    "tags": ["date", "figure", "display-type", "popup", "text-card"],
+    "params": ["pf-big text", "pf-sub text", "popfig vs popfig-amber", "requires vendored AbrilFatface-Regular.ttf"],
+    "source_episode": "ep6-katrina-2005",
+    "css_classes": [".popfig", ".pf-big", ".pf-sub", ".popfig-amber"]
+  },
+  {
+    "name": "blackout",
+    "kind": "snippet",
+    "title": "Chapter blackout",
+    "description": "Full-frame hard black cut used for act/chapter boundaries. Duration is the editorial decision (owner table: 0.6-0.9s chapter break, 1.0-1.3s dramatic punctuation, 1.5s+ dead air) — this snippet is just the plate.",
+    "tags": ["blackout", "chapter-break", "transition"],
+    "params": ["section data-duration controls on-screen time"],
+    "source_episode": "ep6-katrina-2005",
+    "css_classes": [".blackout"]
+  },
+  {
+    "name": "polaroid-portrait",
+    "kind": "snippet",
+    "title": "Polaroid victim/witness portrait",
+    "description": "Centered rotated polaroid-style photo card with a serif caption line and italic detail sub-line, used for match-cutting to spoken names (e.g. victim identification).",
+    "tags": ["portrait", "polaroid", "victim", "identification", "text-card"],
+    "params": ["portrait image", "name + age caption", "detail sub-line", "rotation angle"],
+    "source_episode": "ep5-california-2018",
+    "css_classes": [".polwrap", ".polaroid", ".pol-cap"]
+  },
+  {
+    "name": "pillarbox-blurfill",
+    "kind": "snippet",
+    "title": "Letterboxed still pillarbox pattern",
+    "description": "For a still whose aspect ratio doesn't fill 1920x1080: a contain-fit sharp image over a blurred cover-fit duplicate of the same image, so there are never bare black bars. Requires the wirePillarboxBlurfill() DOM-clone helper from helpers.js run once before the timeline builds.",
+    "tags": ["pillarbox", "letterbox", "blur-fill", "still"],
+    "params": ["source image", "requires helpers.js wirePillarboxBlurfill() call"],
+    "source_episode": "ep6-katrina-2005",
+    "css_classes": [".contain-wrap", ".blurfill"]
+  },
+  {
+    "name": "dim-scrim",
+    "kind": "snippet",
+    "title": "Dim / heavy-dim scrim",
+    "description": "Flat dark overlay to knock back a busy background plate so foreground text/cards read cleanly. Two strengths.",
+    "tags": ["scrim", "dim", "overlay", "footage-safe-text"],
+    "params": ["dim vs dim-heavy strength"],
+    "source_episode": "ep1-joplin",
+    "css_classes": [".dim", ".dim-heavy"]
+  },
+  {
+    "name": "archival-stock-grade",
+    "kind": "snippet",
+    "title": "Archival/stock look filter",
+    "description": "Per-clip CSS filter (not the #grade overlay) that ages archival photos or desaturates stock footage to match the episode's unified look. Applied directly to the clip/image element, not the composition.",
+    "tags": ["grade", "filter", "archival", "stock", "look"],
+    "params": ["archgrade vs stockgrade variant"],
+    "source_episode": "ep1-joplin / ep3-tristate",
+    "css_classes": [".archgrade", ".stockgrade"]
+  },
+  {
+    "name": "film-layer",
+    "kind": "snippet",
+    "title": "Film layer: grade + vignette + grain + dust",
+    "description": "The whole-episode look layer: soft-light color grade tint (per-episode, e.g. cold/flood or warm/fire), radial vignette, seeded canvas grain, and drifting dust specks. grain.js is vendored per-episode and driven by filmLayer(tl, DUR) after the composition's GSAP timeline exists.",
+    "tags": ["grain", "vignette", "grade", "dust", "film-look", "whole-episode"],
+    "params": ["#grade background-color (per-episode tint)", "DUR (composition duration)", "vendored grain.js path"],
+    "source_episode": "assets/styles/grain.js (canonical); #grade values from ep6 (cold) and ep5 (warm)",
+    "css_classes": ["#vignette", "#grain", "#grade", ".dust"]
+  }
+]
