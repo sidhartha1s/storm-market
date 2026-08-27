@@ -79,7 +79,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"r3", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 5.6);
   const cnt = {v:0};
   tl.set([P+"deaths",P+"dlab"], {autoAlpha:1}, 8.6);
-  tl.to(cnt, {v:85, duration:1.4, ease:"power3.out", onUpdate:function() { /* EDIT-ME: target figure */
+  tl.to(cnt, {v:85, duration:1.4, ease:"power3.out", onUpdate:function() { /* EDIT-ME: sample copy — 85 is the Camp Fire's real toll, replace with the episode's figure */
       const el = document.getElementById("statpanel-deaths"); if (el) el.textContent = Math.round(cnt.v);
   } }, 8.6);
   tl.fromTo(P+"gone", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.5}, 12.5);
