@@ -217,6 +217,14 @@ Per episode in `episodes/<slug>/`:
 - Long episodes: chunk renders only if a single render proves unstable — don't pre-build JP's
   chunk machinery until an episode actually needs it. From ep2 on, AUTHOR compositions as
   sub-compositions (one per act) so per-act re-renders are native (owner-approved 2026-07-26).
+- **MG library-first (owner order 2026-08-27):** `library/` holds the motion-graphics library —
+  `catalog-index.json` (in-house exemplars + snippets + ~195 storm-triaged official HyperFrames
+  catalog items, 82 with local source in `library/official/`), browseable via
+  `python3 -m http.server 8765` from `library/` → `http://localhost:8765/gallery/`. Before
+  hand-authoring any graphic: search the index (grep/read — it's one JSON) and/or
+  `npx hyperframes catalog --query "<intent>"`, copy the closest match into the episode,
+  hand-retune per beat. Scratch-authoring allowed with a one-line reason in edit_script.md.
+  The generator tripwire is untouched — the library is starting points, never builders.
 - **Draft-proxy review loop (owner order 2026-07-26): every review cut ships as a DRAFT render
   first** — `scripts\render.cmd <slug> draft [out-basename]` (draft = crf 32 / 15fps / 3
   workers baked in; measured 2026-07-26 on ep1 17:17 comp: 21m 16s vs 39m 32s full; 258 MB vs
