@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  EXEMPLAR: ef-ladder.html
+  WHAT IT IS: EF-scale rung ladder skeleton — a two-column explainer: LHS grid of damage-
+  indicator tiles building one at a time, RHS a rating "ladder" of wind-speed rungs, closing on
+  a verdict stamp + reasoning line.
+  SOURCE: episodes/ep2-2011-super-outbreak/compositions/g-efscale.html (fidelity-extracted,
+  copy genericized). NOTE: episodes/ep4-el-reno/compositions/ has a richer damage-indicator/
+  scale treatment worth checking (g-scale.html, g-fujita.html, g-metmap.html) if a future build
+  wants a more elaborate meteorology-explainer than this skeleton — not extracted here since the
+  brief asked for the ep2 g-efscale lineage specifically.
+
+  PARAMS TO EDIT (marked <!-- EDIT-ME --> inline):
+    - hdr/sub: explainer headline + subline.
+    - names[] array: the damage-indicator tile labels (28 tiles built programmatically from
+      this array — this loop is a one-shot DOM-build helper, not editorial authorship, so it
+      stays in-file; the CONTENT of names[] is what you edit).
+    - dislab: the "28 DAMAGE INDICATORS..." caption under the tile grid.
+    - ladder rungs: rating bands + wind-speed ranges (currently EF0-EF1/EF2-EF3/EF4/EF5 — keep
+      the ladder if the episode is EF-scale specific, or relabel bands for a different scale).
+    - verdict stamp + vsub: the case-study rating this composition lands on.
+    - close: the closing reasoning line.
+
+  TIMING KNOBS: header+sub 0.5-4.1s, then 28 tiles build in one at a time every 0.34s starting
+  8.5s (keep that per-tile stagger — it's what keeps this segment from ever going motionless),
+  dislab caption at 21.5s, ladder slides in at 26.0s, verdict stamp pops (scale 2.4->1) at
+  41.7s, closing line at 55.5s. Re-anchor every "at" to your own words.json when retuning; keep
+  the tile-build stagger relationship intact even if you change tile count.
+
+  COPY into episodes/<slug>/compositions/ and hand-retune — never script-generate.
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; }
+  .hdr { position:absolute; left:0; right:0; top:74px; text-align:center; font-weight:700; font-size:26px; letter-spacing:8px; color:#93a3b2; }
+  .sub { position:absolute; left:0; right:0; top:118px; text-align:center; font-family:Georgia,serif; font-style:italic; font-size:28px; color:#d8a13a; }
+  .dis { position:absolute; left:170px; top:210px; width:900px; }
+  .di { position:relative; float:left; width:100px; height:88px; margin:0 10px 10px 0; background:#101820; border:2px solid #2a3644; display:grid; place-items:center; font-size:15px; color:#9db0c2; font-weight:700; text-align:center; line-height:1.2; }
+  .dislab { position:absolute; left:170px; top:700px; width:900px; font-size:24px; color:#dfe7ee; font-weight:700; letter-spacing:1px; }
+  .ladder { position:absolute; right:150px; top:210px; width:480px; }
+  .ladlab { font-size:22px; letter-spacing:4px; color:#93a3b2; font-weight:700; margin-bottom:18px; }
+  .rung { position:relative; height:74px; margin-bottom:10px; background:#101820; border-left:10px solid #2a3644; }
+  .rung .r { position:absolute; left:22px; top:16px; font-family:'Arial Black',Arial,sans-serif; font-size:34px; color:#dfe7ee; }
+  .rung .w { position:absolute; right:20px; top:22px; font-family:'Courier New',monospace; font-size:24px; color:#93a3b2; }
+  #efladder-r5 { border-left-color:#8e2020; }
+  #efladder-verdict { position:absolute; right:150px; top:760px; width:480px; }
+  .stamp4 { display:inline-block; font-family:'Arial Black',Arial,sans-serif; font-size:84px; color:#fff; background:#8e2020; padding:2px 28px; }
+  .vsub { font-size:26px; color:#e8c56a; font-weight:700; margin-top:14px; }
+  .close { position:absolute; left:0; right:0; bottom:64px; text-align:center; font-family:Georgia,serif; font-style:italic; font-size:32px; color:#b8c6d4; }
+</style>
+<div id="root" data-composition-id="efladder" data-width="1920" data-height="1080">
+  <div class="hdr" id="efladder-hdr"><!-- EDIT-ME: explainer headline --></div>
+  <div class="sub" id="efladder-sub"><!-- EDIT-ME: explainer subline --></div>
+  <div class="dis" id="efladder-dis"></div>
+  <div class="dislab" id="efladder-dislab"><!-- EDIT-ME: damage-indicator caption --></div>
+  <div class="ladder" id="efladder-ladder">
+    <div class="ladlab"><!-- EDIT-ME: ladder caption --></div>
+    <div class="rung" id="efladder-r0"><span class="r">EF0&ndash;EF1</span><span class="w">65&ndash;110 MPH</span></div>
+    <div class="rung" id="efladder-r2"><span class="r">EF2&ndash;EF3</span><span class="w">111&ndash;165 MPH</span></div>
+    <div class="rung" id="efladder-r4"><span class="r">EF4</span><span class="w">166&ndash;200 MPH</span></div>
+    <div class="rung" id="efladder-r5"><span class="r">EF5</span><span class="w">200+ MPH &middot; open-ended</span></div>
+  </div>
+  <div id="efladder-verdict">
+    <span class="stamp4" id="efladder-stamp"><!-- EDIT-ME: verdict rating --></span>
+    <div class="vsub" id="efladder-vsub"><!-- EDIT-ME: case-study reasoning --></div>
+  </div>
+  <div class="close" id="efladder-close"><!-- EDIT-ME: closing reasoning line --></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* build 28 DI tiles synchronously — a one-shot DOM-build helper, not authoring; edit names[] */
+  const names = ["MOBILE HOME","1-2 FAM HOME","APT BLDG","MOTEL","MASONRY","SCHOOL","HIGH SCHOOL","LOW-RISE","MID-RISE","HIGH-RISE","INST BLDG","METAL BLDG","BARN","WAREHOUSE","TRANS TOWER","STRIP MALL","BIG BOX","AUTO SHOWRM","SVC STATION","CHURCH","FREESTAND TWR","POLE","TREE HW","TREE SW","JR HIGH","SM RETAIL","SM PROF","CANOPY"];
+  const dis = document.getElementById("efladder-dis");
+  for (let i=0;i<28;i++) { const d=document.createElement("div"); d.className="di"; d.id="efladder-di"+i; d.textContent=names[i]; dis.appendChild(d); }
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#efladder-hdr","#efladder-sub","#efladder-dis","#efladder-dislab","#efladder-ladder","#efladder-verdict","#efladder-close"], {autoAlpha:0}, 0);
+  tl.fromTo("#efladder-hdr", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.5}, 0.5);
+  tl.fromTo("#efladder-sub", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 3.6);
+  tl.set("#efladder-dis", {autoAlpha:1}, 8.4);
+  for (let i=0;i<28;i++) {
+    tl.fromTo("#efladder-di"+i, {autoAlpha:0, scale:0.7}, {autoAlpha:1, scale:1, duration:0.18}, 8.5+i*0.34);
+  }
+  tl.fromTo("#efladder-dislab", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 21.5);
+  tl.fromTo("#efladder-ladder", {autoAlpha:0, x:30}, {autoAlpha:1, x:0, duration:0.6}, 26.0);
+  tl.fromTo("#efladder-verdict", {autoAlpha:0}, {autoAlpha:1, duration:0.2}, 41.6);
+  tl.fromTo("#efladder-stamp", {scale:2.4}, {scale:1, duration:0.35, ease:"power4.in"}, 41.7);
+  tl.fromTo("#efladder-close", {autoAlpha:0}, {autoAlpha:1, duration:0.7}, 55.5);
+  window.__timelines["efladder"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
