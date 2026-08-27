@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<!-- Renders one library/inhouse exemplar standalone: ?f=stat-panel.html&t=0.6 (t = fraction of timeline).
+     Instantiates the exemplar's <template>, evals its timeline script, seeks. Used for gallery thumbnails
+     and manual scrubbing. gsap.min.js is vendored beside this file (repo convention: vendored per LEARNINGS #3). -->
+<head>
+<meta charset="utf-8">
+<style>
+  html,body { margin:0; background:#04070a; }
+  #stage { position:relative; width:1920px; height:1080px; overflow:hidden; transform-origin:top left; }
+</style>
+<script src="gsap.min.js"></script>
+</head>
+<body>
+<div id="stage"></div>
+<script>
+(async () => {
+  const q = new URLSearchParams(location.search);
+  const file = q.get('f'), frac = parseFloat(q.get('t') || '0.6');
+  const scale = Math.min(innerWidth / 1920, innerHeight / 1080);
+  document.getElementById('stage').style.transform = `scale(${scale})`;
+  const src = await (await fetch('../inhouse/' + file)).text();
+  const doc = new DOMParser().parseFromString(src, 'text/html');
+  const tpl = doc.querySelector('template');
+  document.getElementById('stage').append(tpl.content.cloneNode(true));
+  for (const s of doc.querySelectorAll('script')) {
+    if (!s.src) { try { (0, eval)(s.textContent); } catch (e) { document.title = 'EVAL-ERR ' + e.message; return; } }
+  }
+  const tls = window.__timelines || {};
+  const tl = Object.values(tls)[0];
+  if (tl) { tl.seek(tl.duration() * frac); document.title = 'OK ' + file + ' @' + (tl.duration() * frac).toFixed(1) + 's'; }
+  else document.title = 'NO-TIMELINE ' + file;
+})();
+</script>
+</body>
+</html>
