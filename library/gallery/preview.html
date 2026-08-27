@@ -28,7 +28,14 @@
   }
   const tls = window.__timelines || {};
   const tl = Object.values(tls)[0];
-  if (tl) { tl.seek(tl.duration() * frac); document.title = 'OK ' + file + ' @' + (tl.duration() * frac).toFixed(1) + 's'; }
+  if (tl) {
+    // Sweep-seek: GSAP fires onUpdate callbacks (typewriters, counters) only while the playhead
+    // moves WITHIN a tween's window — a single jump past it applies values but skips callbacks.
+    const target = tl.duration() * frac;
+    for (let t = 0; t < target; t += 0.2) tl.seek(t, false);
+    tl.seek(target, false);
+    document.title = 'OK ' + file + ' @' + target.toFixed(1) + 's';
+  }
   else document.title = 'NO-TIMELINE ' + file;
 })();
 </script>
