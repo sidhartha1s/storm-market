@@ -54,12 +54,13 @@
 window.__timelines = window.__timelines || {};
 (function() {
   const tl = gsap.timeline({ paused: true });
-  const HDR = "EDIT-ME: BULLETIN HEADER LINE 1\nEDIT-ME: BULLETIN HEADER LINE 2";
+  /* EDIT-ME: sample copy below shows the intended shape — replace with the episode's verbatim
+     bulletin text, "at"/"dur" anchored to words.json */
+  const HDR = "URGENT - TORNADO WARNING\nNATIONAL WEATHER SERVICE — SAMPLE FIELD OFFICE";
   const SEGS = [
-    /* EDIT-ME: one entry per spoken phrase — "at"/"dur" anchored to words.json */
-    { text: "\n...PHRASE ONE...\n", at: 14.9, dur: 2.6 },
-    { text: "\nPHRASE TWO...", at: 18.3, dur: 4.4 },
-    { text: "\nPHRASE THREE.", at: 23.2, dur: 2.9 }
+    { text: "\n...A LARGE AND EXTREMELY DANGEROUS TORNADO IS ON THE GROUND...\n", at: 14.9, dur: 2.6 },
+    { text: "\nTAKE COVER NOW. MOVE TO A BASEMENT OR AN INTERIOR ROOM ON THE LOWEST FLOOR.", at: 18.3, dur: 4.4 },
+    { text: "\nTHIS IS A PARTICULARLY DANGEROUS SITUATION.", at: 23.2, dur: 2.9 }
   ];
   const hdrEl = () => document.getElementById("bultype-hdr");
   const bodyEl = () => document.getElementById("bultype-body");
