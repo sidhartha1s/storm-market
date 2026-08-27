@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  EXEMPLAR: stat-timeline.html
+  WHAT IT IS: horizontal chronology strip — a title, a growing progress rail between two year
+  endpoints with a stalling percent readout, then two sequential narration-order text beats
+  (the "twist"/complication) below it, all on a slow breathing zoom.
+  SOURCE: episodes/ep6-katrina-2005/compositions/g-timeline.html (fidelity-extracted, copy
+  genericized). NOTE ON SOURCING: no dedicated year-axis/stepped-label chronology composition
+  exists anywhere in the repo (grepped all episodes for "year axis"/"chronology"/"stepped
+  label" — no hits); this is the closest analog (a two-endpoint year rail with a growing fill)
+  and is extracted as the best-available stand-in per the brief's "skip with a note if not"
+  instruction, but flagged: if a true multi-year-tick chronology strip is needed, it must be
+  hand-authored fresh, not stretched from this file.
+
+  PARAMS TO EDIT (marked <!-- EDIT-ME --> inline):
+    - title: the chronology's headline.
+    - y0/y1: the two endpoint year+event labels.
+    - fill %: the width target in the tl.to(...width...) call AND the displayed pct span text.
+    - note/note2/sink: the sequential narration-order text beats (keep narration word order —
+      "no Yoda" per this episode's own in-code comment).
+
+  TIMING KNOBS: title+endpoints reveal first (0.3-0.95s), rail fills over 4.4s landing exactly
+  on the spoken percentage (5.5s), first note beat follows (8.6s), rail nudges up (y:26) as a
+  second beat displaces it (11.3-11.4s), first note fades as the second lands (14.6-14.9s).
+  Whole card breathes (scale 1.0->1.03) across its full window and fades ~0.3s before the host
+  window ends.
+
+  COPY into episodes/<slug>/compositions/ and hand-retune — never script-generate.
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif;
+    background: radial-gradient(ellipse at 50% 35%, #0c141f 0%, #05080d 72%); }
+  .title { position:absolute; left:0; right:0; top:220px; text-align:center;
+    font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; letter-spacing:2px; }
+  .bar-wrap { position:absolute; left:260px; right:260px; top:520px; }
+  .rail { height:56px; background:#1a2331; border:2px solid #3a4a5e; position:relative; }
+  #stattimeline-fill { position:absolute; left:0; top:0; bottom:0; width:0%; background:linear-gradient(90deg,#3d6a54,#5a9678); }
+  .y0 { position:absolute; left:0; top:76px; font-family:'Arial Black',Arial,sans-serif; font-size:36px; color:#c8d3e0; }
+  .y1 { position:absolute; right:0; top:76px; font-family:'Arial Black',Arial,sans-serif; font-size:36px; color:#c8d3e0; }
+  #stattimeline-pct { position:absolute; left:65%; top:-148px; transform:translateX(-50%); text-align:center;
+    font-family:'Arial Black',Arial,sans-serif; font-size:74px; color:#e74c3c; }
+  #stattimeline-pct span { display:block; font-family:Arial,sans-serif; font-size:20px; letter-spacing:4px; color:#93a3b2; margin-top:4px; }
+  .note { position:absolute; left:0; right:0; top:760px; text-align:center;
+    font-family:Georgia,serif; font-style:italic; font-size:32px; color:#e8edf2; }
+  .note b { color:#d8a13a; font-style:normal; }
+  .sink { position:absolute; left:0; right:0; top:850px; text-align:center;
+    font-size:24px; font-weight:700; letter-spacing:3px; color:#8a97a5; }
+</style>
+<div id="root" data-composition-id="stattimeline" data-width="1920" data-height="1080">
+  <div class="title" id="stattimeline-title"><!-- EDIT-ME: chronology headline --></div>
+  <div class="bar-wrap">
+    <div class="rail">
+      <div id="stattimeline-fill"></div>
+      <div id="stattimeline-pct"><!-- EDIT-ME: ~NN% --><span>COMPLETE</span></div>
+    </div>
+    <div class="y0" id="stattimeline-y0"><!-- EDIT-ME: start year · event --></div>
+    <div class="y1" id="stattimeline-y1"><!-- EDIT-ME: end year · event --></div>
+  </div>
+  <!-- text lands in NARRATION order, same words the voice says -->
+  <div class="note" id="stattimeline-note"><!-- EDIT-ME: first text beat --></div>
+  <div class="sink" id="stattimeline-sink"><!-- EDIT-ME: mid caption --></div>
+  <div class="note" id="stattimeline-note2"><!-- EDIT-ME: second text beat --></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#stattimeline-";
+  tl.set([P+"pct", P+"note", P+"note2", P+"sink"], { autoAlpha: 0 }, 0);
+  tl.fromTo(P+"title", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 0.3);
+  tl.fromTo([P+"y0", P+"y1"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, stagger: 0.15 }, 0.8);
+  /* the bar crawls and stalls exactly on the spoken percentage — EDIT-ME: target width */
+  tl.to(P+"fill", { width: "65%", duration: 4.4, ease: "power1.inOut" }, 1.2);
+  tl.fromTo(P+"pct", { autoAlpha: 0, scale: 1.8 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.in" }, 5.5);
+  tl.fromTo(P+"note", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45 }, 8.6);
+  tl.to(".bar-wrap", { y: 26, duration: 3.6, ease: "power1.inOut" }, 11.3);
+  tl.fromTo(P+"sink", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.45 }, 11.4);
+  tl.to(P+"note", { autoAlpha: 0, y: -10, duration: 0.3 }, 14.6);
+  tl.fromTo(P+"note2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45 }, 14.9);
+  tl.fromTo("#root", { scale: 1.0, transformOrigin: "center" }, { scale: 1.03, duration: 19, ease: "none" }, 0);
+  tl.to("#root", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 18.7);
+  window.__timelines["stattimeline"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
