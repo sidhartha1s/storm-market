@@ -1016,3 +1016,15 @@ calfire-itf-willhappenagain) cause freezes — re-encode with -g 30 before the n
   Commons API and the files matched to the Commons thumbnails by a subagent before writing the
   CC-BY attribution block (`media/provenance-wikimedia-stills.csv`). Four of the six used are
   CC BY / CC BY-SA — attribution is mandatory, not courtesy.
+
+- **MG library built (2026-08-27, owner-ordered).** `library/` = catalog-index.json (195
+  storm-relevant official HyperFrames items triaged by 12 vision agents from 286 candidates;
+  82 top-scored with full local source in `library/official/`) + 8 in-house exemplars +
+  15 overlay-snippet groups extracted from shipped eps (`library/inhouse/`), + localhost
+  gallery (`library/gallery/`, serve from `library/`). Extraction gotcha worth remembering:
+  **sub-comps inherit color/font from the EPISODE index.html body styles** — an extracted
+  g-*.html is NOT self-contained until those inherited rules are baked into its own <style>
+  (first extraction pass rendered black-on-black). Official catalog metadata lives cached at
+  `~/.hyperframes/cache/` (374 registry JSONs, zero network to enumerate); each docs page
+  `.md` ships the item's full HTML source; `npx hyperframes catalog --query` is built-in
+  semantic search — never build a custom one.
