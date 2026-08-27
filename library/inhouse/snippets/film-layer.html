@@ -1,0 +1,35 @@
+<!-- ============================================================================
+     The Warning Hour — overlay chrome snippet library (film-layer.html)
+     COPY these three pieces into the episode's index.html — do not link this
+     file from a composition.
+
+     grain.js is VENDORED PER-EPISODE (copy assets/styles/grain.js into
+     episodes/<slug>/ alongside the episode, then <script src="grain.js"></script>
+     or inline it) — it is not loaded from a shared path. This file documents the
+     paste-in CSS + markup + call site; the canonical implementation lives at
+     assets/styles/grain.js (read that file for the full mulberry32 grain +
+     dust-speck implementation — don't hand-retype it, copy it).
+     ============================================================================ -->
+
+<!-- 1. CSS — add to the episode's <style> block -->
+<style>
+  #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90;
+    background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
+  #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.11; mix-blend-mode: overlay; }
+  /* #grade's background-color is the per-episode color story — see tokens.md "Grade tints".
+     Cold/flood shown here (ep6); fire/warm variant: rgba(255,150,90,0.24). */
+  #grade { position: absolute; inset: 0; pointer-events: none; z-index: 89; mix-blend-mode: soft-light; background-color: rgba(96,138,178,0.22); }
+  .dust { position: absolute; z-index: 92; pointer-events: none; border-radius: 50%; background: rgba(255,255,255,0.32); filter: blur(1.2px); }
+</style>
+
+<!-- 2. Markup — last children of #root, untimed (filmLayer() drives them via GSAP) -->
+<div id="grade"></div>
+<div id="vignette"></div>
+<canvas id="grain" width="480" height="270"></canvas>
+
+<!-- 3. Script — vendor grain.js into the episode dir, then call after `tl` exists -->
+<script src="grain.js"></script>
+<script>
+  // inside the same IIFE that builds `tl` and before it's returned/started:
+  filmLayer(tl, DUR); // DUR = composition duration in seconds (root's data-duration)
+</script>
