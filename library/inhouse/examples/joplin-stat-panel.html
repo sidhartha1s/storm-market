@@ -3,7 +3,15 @@
 <head><meta charset="UTF-8"></head>
 <body>
 <!--
-  EXEMPLAR: stat-panel.html
+  WORKED EXAMPLE: joplin-stat-panel.html — derived from ../stat-panel.html (2026-08-27 dry run)
+  WHAT IT SHOWS: the full pick-and-tweak flow on a real brief ("casualty stat hit for the
+  Joplin 2011 tornado"): the stat-panel exemplar was copied, its copy slots hand-retuned
+  (title/date/stamp/3 fact rows/counter target 158/closing line), ids re-prefixed to
+  joplinstat-*, and every load-bearing tween timing left untouched. Use it as the reference
+  for how a library item becomes an episode graphic — do NOT copy this file into an episode;
+  start from ../stat-panel.html.
+
+  Original exemplar context below:
   WHAT IT IS: RHS 820px "official record" stat panel — a translucent blur card that slides in
   over the episode's track-1 footage and lists disaster facts, ending on a counted death toll.
   The single most-reused sub-comp in the show (28 uses across ep2-ep5).
@@ -19,7 +27,7 @@
   PARAMS TO EDIT (marked <!-- EDIT-ME --> inline):
     - eyebrow-less tname/tsub headline text, stamp label, each fact row label+value, death toll
       target number, "gone" closing line.
-    - id prefix "statpanel-" — re-prefix per composition instance when copying.
+    - id prefix "joplinstat-" — re-prefix per composition instance when copying.
 
   TIMING KNOBS (do not casually change — these are load-bearing):
     - panel entrance: fromTo x:660 -> x:0, duration 0.7, power3.out, at t=0.
@@ -48,28 +56,28 @@
     background:#8e2020; padding:8px 26px; letter-spacing:3px; }
   .row { font-size:30px; color:#dfe7ee; font-weight:700; letter-spacing:1px; margin-top:20px; }
   .row .lab { display:block; font-size:19px; color:#93a3b2; letter-spacing:4px; font-weight:700; }
-  #statpanel-deaths { font-family:'Courier New',monospace; font-size:84px; color:#e74c3c; font-weight:700; margin-top:24px; }
+  #joplinstat-deaths { font-family:'Courier New',monospace; font-size:84px; color:#e74c3c; font-weight:700; margin-top:24px; }
   .dlab { font-size:20px; color:#c8d3e0; letter-spacing:6px; font-weight:700; }
   .gone { font-family:Georgia,serif; font-style:italic; font-size:28px; color:#e8c56a; margin-top:22px; }
 </style>
-<div id="root" data-composition-id="statpanel" data-width="1920" data-height="1080">
-  <div class="panel" id="statpanel-panel">
+<div id="root" data-composition-id="joplinstat" data-width="1920" data-height="1080">
+  <div class="panel" id="joplinstat-panel">
     <div class="tname">The Joplin Tornado</div>
     <div class="tsub">Joplin, Missouri &middot; May 22, 2011</div>
-    <div><span class="stamp" id="statpanel-stamp">Deadliest Since 1947</span></div>
-    <div class="row" id="statpanel-r1"><span class="lab">Rating</span>EF5</div>
-    <div class="row" id="statpanel-r2"><span class="lab">Warning Ignored</span>22 Minutes</div>
-    <div class="row" id="statpanel-r3"><span class="lab">Width</span>One Mile Wide</div>
-    <div id="statpanel-deaths">0</div>
-    <div class="dlab" id="statpanel-dlab">LIVES LOST</div>
-    <div class="gone" id="statpanel-gone">One hundred fifty-eight names on a wall that should not exist.</div>
+    <div><span class="stamp" id="joplinstat-stamp">Deadliest Since 1947</span></div>
+    <div class="row" id="joplinstat-r1"><span class="lab">Rating</span>EF5</div>
+    <div class="row" id="joplinstat-r2"><span class="lab">Warning Ignored</span>22 Minutes</div>
+    <div class="row" id="joplinstat-r3"><span class="lab">Width</span>One Mile Wide</div>
+    <div id="joplinstat-deaths">0</div>
+    <div class="dlab" id="joplinstat-dlab">LIVES LOST</div>
+    <div class="gone" id="joplinstat-gone">One hundred fifty-eight names on a wall that should not exist.</div>
   </div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function() {
   const tl = gsap.timeline({ paused: true });
-  const P = "#statpanel-";
+  const P = "#joplinstat-";
   tl.set([P+"deaths",P+"dlab",P+"r1",P+"r2",P+"r3",P+"gone",P+"stamp"], {autoAlpha:0}, 0);
   tl.fromTo(P+"panel", {x:660}, {x:0, duration:0.7, ease:"power3.out"}, 0.0);
   tl.fromTo(P+"stamp", {scale:2.2, autoAlpha:0}, {scale:1, autoAlpha:1, duration:0.35, ease:"power4.in"}, 0.9);
@@ -80,11 +88,11 @@ window.__timelines = window.__timelines || {};
   const cnt = {v:0};
   tl.set([P+"deaths",P+"dlab"], {autoAlpha:1}, 8.6);
   tl.to(cnt, {v:158, duration:1.4, ease:"power3.out", onUpdate:function() { /* target: Joplin 2011 death toll */
-      const el = document.getElementById("statpanel-deaths"); if (el) el.textContent = Math.round(cnt.v);
+      const el = document.getElementById("joplinstat-deaths"); if (el) el.textContent = Math.round(cnt.v);
   } }, 8.6);
   tl.fromTo(P+"gone", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.5}, 12.5);
   tl.to(P+"panel", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 16.2); /* host window ~17s — exit rides the cut */
-  window.__timelines["statpanel"] = tl;
+  window.__timelines["joplinstat"] = tl;
 })();
 </script>
 </template>
