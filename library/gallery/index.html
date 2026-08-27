@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Warning Hour — MG Library</title>
+<style>
+  :root { --blue:#2563eb; --blue-soft:#dbeafe; --ink:#1e293b; --sub:#64748b; --bg:#f0f6ff; --card:#ffffff; --line:#dbe4f0; }
+  * { box-sizing:border-box; margin:0; }
+  body { font:15px/1.45 system-ui, Segoe UI, Arial, sans-serif; background:var(--bg); color:var(--ink); padding:24px; }
+  h1 { font-size:22px; margin-bottom:4px; }
+  .sub { color:var(--sub); margin-bottom:16px; }
+  .bar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:18px; position:sticky; top:0; background:var(--bg); padding:8px 0; z-index:5; }
+  .bar select, .bar input[type=search] { padding:7px 10px; border:1px solid var(--line); border-radius:8px; background:var(--card); font-size:14px; }
+  .bar input[type=search] { min-width:220px; }
+  .chip { padding:6px 12px; border:1px solid var(--line); border-radius:999px; background:var(--card); cursor:pointer; font-size:13px; user-select:none; }
+  .chip.on { background:var(--blue); color:#fff; border-color:var(--blue); }
+  .count { color:var(--sub); font-size:13px; margin-left:auto; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; }
+  .thumb { aspect-ratio:16/9; background:#0b1016; position:relative; cursor:pointer; }
+  .thumb img, .thumb video { width:100%; height:100%; object-fit:cover; display:block; }
+  .thumb .noimg { color:#93a3b2; display:flex; height:100%; align-items:center; justify-content:center; font-size:13px; }
+  .badge { position:absolute; top:8px; left:8px; background:var(--blue); color:#fff; border-radius:6px; padding:2px 8px; font-size:12px; font-weight:700; }
+  .badge.s5 { background:#059669; } .badge.s3 { background:#94a3b8; } .badge.s2 { background:#cbd5e1; color:#475569; }
+  .src { position:absolute; top:8px; right:8px; background:rgba(15,23,42,.75); color:#fff; border-radius:6px; padding:2px 8px; font-size:11px; }
+  .src.inhouse { background:#b45309; }
+  .body { padding:12px 14px 14px; display:flex; flex-direction:column; gap:6px; flex:1; }
+  .t { font-weight:700; font-size:15px; }
+  .use { color:var(--blue); font-size:13px; font-weight:600; }
+  .d { color:var(--sub); font-size:13px; }
+  .tw { font-size:12.5px; color:#475569; background:var(--blue-soft); border-radius:8px; padding:6px 8px; }
+  .foot { display:flex; gap:8px; margin-top:auto; padding-top:8px; align-items:center; }
+  .foot a { color:var(--blue); font-size:13px; text-decoration:none; }
+  .cmd { font:12px ui-monospace, Consolas, monospace; background:#eef2f7; border:1px solid var(--line); border-radius:6px; padding:4px 8px; cursor:pointer; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; max-width:200px; }
+  .cmd.copied { background:#dcfce7; }
+  h2.cat { margin:26px 0 10px; font-size:17px; color:#334155; border-bottom:2px solid var(--line); padding-bottom:6px; text-transform:capitalize; }
+</style>
+</head>
+<body>
+<h1>The Warning Hour — Motion Graphics Library</h1>
+<div class="sub">Official HyperFrames catalog (triaged for storm-doc relevance) + in-house exemplars. Click a thumbnail to play its preview where one exists.</div>
+<div class="bar">
+  <input type="search" id="q" placeholder="search name / use / tags…">
+  <select id="cat"><option value="">all categories</option></select>
+  <select id="src"><option value="">official + in-house</option><option value="official">official only</option><option value="inhouse">in-house only</option></select>
+  <span class="chip" data-min="4">score ≥ 4</span>
+  <span class="chip" data-min="5">score 5 only</span>
+  <span class="count" id="count"></span>
+</div>
+<div id="root"></div>
+<script>
+let ALL = [], minScore = 0;
+const el = (t, c, h) => { const e = document.createElement(t); if (c) e.className = c; if (h !== undefined) e.innerHTML = h; return e; };
+
+async function load() {
+  const idx = await (await fetch('../catalog-index.json')).json();
+  ALL = (idx.official || []).slice();
+  for (const src of ['../inhouse/index.json', '../inhouse/snippets/index.json']) {
+    try {
+      const inh = await (await fetch(src)).json();
+      for (const it of (Array.isArray(inh) ? inh : (inh.items || []))) {
+        ALL.push(Object.assign({ source: 'inhouse', score: 5, category: 'in-house', relevant: 'yes',
+          storm_use: (it.tags || []).join(', '), tweak_notes: (it.params || []).map(p => typeof p === 'string' ? p : p.name || JSON.stringify(p)).join(', ') }, it));
+      }
+    } catch (e) {}
+  }
+  const cats = [...new Set(ALL.map(i => i.category))].sort();
+  for (const c of cats) document.getElementById('cat').append(new Option(c, c));
+  render();
+}
+
+function thumbFor(it) {
+  const th = el('div', 'thumb');
+  const local = `media/posters/${it.name}.png`, frame = `media/frames/${it.name}_1.jpg`, vid = `media/videos/${it.name}.mp4`;
+  const img = el('img');
+  img.loading = 'lazy';
+  img.onerror = () => {
+    if (img.src.endsWith('.png')) img.src = frame;
+    else if (img.src.endsWith('_1.jpg') && it.poster_url) { img.onerror = () => img.replaceWith(el('div', 'noimg', 'no preview — judge from description')); img.src = it.poster_url; }
+    else img.replaceWith(el('div', 'noimg', 'no preview — judge from description'));
+  };
+  img.src = it.source === 'inhouse' ? (it.thumb || frame) : local;
+  th.append(img);
+  th.onclick = async () => {
+    const v = el('video'); v.controls = true; v.autoplay = true; v.loop = true; v.muted = true;
+    v.onerror = () => { if (it.preview_video_url && !v.dataset.retried) { v.dataset.retried = 1; v.src = it.preview_video_url; } };
+    v.src = vid; th.replaceChildren(v);
+  };
+  const b = el('span', 'badge s' + (it.score >= 5 ? 5 : it.score), String(it.score)); if (it.score === 4) b.className = 'badge';
+  th.append(b, el('span', 'src' + (it.source === 'inhouse' ? ' inhouse' : ''), it.source === 'inhouse' ? 'IN-HOUSE' : (it.kind || 'official')));
+  return th;
+}
+
+function card(it) {
+  const c = el('div', 'card');
+  c.append(thumbFor(it));
+  const b = el('div', 'body');
+  b.append(el('div', 't', it.title || it.name));
+  if (it.storm_use && it.storm_use !== 'none') b.append(el('div', 'use', '→ ' + it.storm_use));
+  b.append(el('div', 'd', it.description || ''));
+  if (it.tweak_notes) b.append(el('div', 'tw', '✎ ' + it.tweak_notes));
+  const f = el('div', 'foot');
+  if (it.install) {
+    const cmd = el('span', 'cmd', it.install); cmd.title = 'click to copy';
+    cmd.onclick = () => { navigator.clipboard.writeText(it.install); cmd.classList.add('copied'); setTimeout(() => cmd.classList.remove('copied'), 900); };
+    f.append(cmd);
+  }
+  if (it.docs) f.append(Object.assign(el('a', '', 'docs'), { href: it.docs, target: '_blank' }));
+  if (it.local_html) f.append(Object.assign(el('a', '', 'source'), { href: '../' + it.local_html, target: '_blank' }));
+  if (it.file) f.append(Object.assign(el('a', '', 'open'), { href: '../inhouse/' + it.file, target: '_blank' }));
+  b.append(f); c.append(b);
+  return c;
+}
+
+function render() {
+  const q = document.getElementById('q').value.toLowerCase();
+  const cat = document.getElementById('cat').value, src = document.getElementById('src').value;
+  const root = document.getElementById('root'); root.replaceChildren();
+  const list = ALL.filter(i =>
+    (!cat || i.category === cat) && (!src || (i.source || 'official') === src) && (i.score || 0) >= minScore &&
+    (!q || [i.name, i.title, i.description, i.storm_use, (i.tags || []).join(' ')].join(' ').toLowerCase().includes(q)));
+  const byCat = {};
+  for (const i of list) (byCat[i.category] ||= []).push(i);
+  for (const c of Object.keys(byCat).sort((a, b) => a === 'in-house' ? -1 : b === 'in-house' ? 1 : a.localeCompare(b))) {
+    root.append(el('h2', 'cat', `${c} (${byCat[c].length})`));
+    const g = el('div', 'grid');
+    for (const i of byCat[c].sort((x, y) => (y.score || 0) - (x.score || 0))) g.append(card(i));
+    root.append(g);
+  }
+  document.getElementById('count').textContent = list.length + ' items';
+}
+
+document.getElementById('q').oninput = render;
+document.getElementById('cat').onchange = render;
+document.getElementById('src').onchange = render;
+for (const ch of document.querySelectorAll('.chip')) ch.onclick = () => {
+  const was = ch.classList.contains('on');
+  document.querySelectorAll('.chip').forEach(x => x.classList.remove('on'));
+  minScore = was ? 0 : +ch.dataset.min; if (!was) ch.classList.add('on'); render();
+};
+load();
+</script>
+</body>
+</html>
