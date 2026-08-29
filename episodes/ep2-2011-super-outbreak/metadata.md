@@ -2,7 +2,7 @@
 
 Final cut: `renders/ep2-final-master.mp4` (28:12, −14 LUFS; owner re-cut with the Storm-Ready Home CTA at 8:26–8:42).
 **Upload file: `renders/ep2-final-master-1440p.mp4`** (h264_nvenc 2560×1440 lanczos upscale, audio bit-copied).
-Subtitles: `renders/ep2-final.srt` (561 cues, re-timed to the v2 cut). Timestamps below are v2.
+Subtitles: `renders/ep2-final.srt` (562 cues, re-timed to the v2 cut; the cue straddling the CTA was split). Timestamps below are v2.
 Category: **Education** · Learning type: **Overview** · Language: English · Not made for kids.
 
 ## Title options (pick one — formula-tested)
