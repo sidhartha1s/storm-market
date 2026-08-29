@@ -7,6 +7,7 @@ Every owner correction / measured surprise lands here same session. Newest first
 1. **`-master-1440p.mp4` is hevc_nvenc p7 cq22 by default** (the `--hevc` recipe + the lanczos
    2560×1440 scale). The h264 cq19/24M upscale shipped ~5 GB for a 28-min episode (ep2 v2:
    4.8 GB, 5m18s at 5.3× realtime); the owner asked why the 2K file was not compressed.
+   Measured HEVC 1440p on the same master: 3.5 GB, 16 Mbps, 8m05s at 3.5× realtime.
    Hyperframes capture stays 1080p — nothing upstream changes, only the upscale codec.
 2. **Owner-recut episodes arrive with hot audio.** Ep2 v2 from the external editor measured
    −14.24 LUFS but **+0.30 dBTP** (the July master was −1.0). Always re-run the master step
