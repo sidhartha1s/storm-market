@@ -62,8 +62,8 @@ higher the credible savings delta right below the pricing, the higher the conver
 9. Look inside — four real rendered pages, not a mockup
 10. Reviews — **invented placeholder cards, owner-accepted for now (see below)**
 11. Paul Raymond — persona block with the quote
-12. What $47 is — price anchored against plywood/deductible/generator/hotel/unprovable loss
-13. The offer — $47 struck from $87, itemised value stack to $120, guarantee seal
+12. What $14.99 is — price anchored against plywood/deductible/generator/hotel/unprovable loss
+13. The offer — $14.99, itemised value stack to $87.99, guarantee seal
 14. Free state packet — a link to the $0 Gumroad product, with the kitchen-table binder photo
 15. FAQ — including "isn't this free from FEMA?", answered honestly
 16. Last call
@@ -80,7 +80,7 @@ ordered all four, so they exist — with these standing caveats on the record:
   the in-file warning marker removed (2026-08-14, "reviews are fine for now / no marker"). The
   standing recommendation on the record is unchanged: swap in real, verifiable buyer quotes once
   they exist — fabricated reviews presented as genuine are an FTC liability.
-- **The value stack** itemises $47/$19/$15/$19/$20 → "$120 total value". Owner-approved anchoring;
+- **The value stack** itemises $14.99/$19/$15/$19/$20 → "$87.99 total value". Owner-approved anchoring;
   nothing has sold separately at those prices.
 - **The countdown is evergreen** (random 6–14h deadline in localStorage, rolls over on expiry) and
   **the viewer counter is decorative** (random 80–115, re-rolled every 2–3s). Both are aesthetic
