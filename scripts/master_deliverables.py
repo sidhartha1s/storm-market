@@ -16,7 +16,7 @@ Reads  episodes/<slug>/renders/<basename>.mp4 and writes:
                                          FILE; a 1440p upload gets YouTube's higher VP9
                                          bitrate tier, visibly cleaner playback than a
                                          1080p upload of identical content. HEVC since
-                                         2026-08-29 (owner order): ~2.5 GB instead of the
+                                         2026-08-29 (owner order): ~3.5 GB instead of the
                                          ~5 GB h264 cq19/24M file)
   renders/<basename>-master-hevc.mp4   (--hevc only: GPU hevc_nvenc, audio bit-copied
                                          from the master; ~2.5x smaller, visually lossless)
@@ -81,7 +81,7 @@ def encode_2k(master: Path, out: Path):
     file (1440p uploads get the higher VP9 bitrate tier). Audio bit-copied so the verified
     -14 LUFS mix is untouched. Fails loud if NVENC is unavailable (same ffmpeg-build caveat
     as encode_hevc). hevc_nvenc p7 cq22 (the encode_hevc recipe) replaced h264 cq19/24M on
-    2026-08-29 (owner order): the same visually-lossless tier at roughly half the size."""
+    2026-08-29 (owner order): ep2 v2 measured 3.5 GB vs 4.8 GB, 8 min at 3.5x realtime."""
     print(f"[2K ] GPU 1440p -> {out.name} (hevc_nvenc p7 cq22, lanczos, audio copied) ...")
     r = subprocess.run(
         ["ffmpeg", "-hide_banner", "-y", "-i", str(master),
