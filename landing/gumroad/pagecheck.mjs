@@ -108,7 +108,7 @@ const common = [
 const checks = KIND === 'product'
   ? [['custom page mounted (.srh wrapper)', dom.includes('class="srh"')],
      ['buy elements present', (dom.match(/data-gumroad-action="buy"/g) || []).length >= 1],
-     ['price shown', dom.includes('$47')],
+     ['price shown', dom.includes('$14.99')],
      ['Joplin story', dom.includes('Joplin')],
      ...common]
   : KIND === 'packet'
