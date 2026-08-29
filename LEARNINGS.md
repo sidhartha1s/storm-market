@@ -2,6 +2,23 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
+## 2026-08-29 — 1440p upload file is HEVC now (owner order, ep2 CTA re-cut session)
+
+1. **`-master-1440p.mp4` is hevc_nvenc p7 cq22 by default** (the `--hevc` recipe + the lanczos
+   2560×1440 scale). The h264 cq19/24M upscale shipped ~5 GB for a 28-min episode (ep2 v2:
+   4.8 GB, 5m18s at 5.3× realtime); the owner asked why the 2K file was not compressed.
+   Hyperframes capture stays 1080p — nothing upstream changes, only the upscale codec.
+2. **Owner-recut episodes arrive with hot audio.** Ep2 v2 from the external editor measured
+   −14.24 LUFS but **+0.30 dBTP** (the July master was −1.0). Always re-run the master step
+   (gain + alimiter, video copy) on an owner-supplied cut before the 2K upscale, never
+   bit-copy its audio.
+3. **Locating edits in an owner re-cut: audio cross-correlation, not frame diffs.** A
+   re-export changes grain/grading enough that 32×18 frame hashes disagree (~15–18 mean
+   diff) even on identical content; 4 s narration windows cross-correlated at 8 kHz gave
+   corr ≥0.98 and pinned every cut to 0.1 s (ep2 v2: trims 2.4 s @0:21, 3.2 s @5:45,
+   CTA +15.0 s @8:26, trim 2.2 s after). Map SRT + chapters piecewise through that table and
+   split any cue that straddles the inserted segment.
+
 ## 2026-08-24 — 1440p upload tier + NVENC-first for mp4 surgery (owner orders, ep1 insert session)
 
 1. **1440p is the upload resolution from now on (owner order).** YouTube assigns bitrate tiers
