@@ -10,12 +10,14 @@ Reads  episodes/<slug>/renders/<basename>.mp4 and writes:
   renders/<basename>-master.mp4        (video stream copied, single measured gain,
                                          aac 256k; verified -14 LUFS +/-0.5, TP <= -0.9)
   renders/<basename>.srt               (via scripts/build_srt.py)
-  renders/<basename>-master-1440p.mp4  (default, skip with --no-2k: GPU h264_nvenc
-                                         lanczos upscale to 2560x1440, audio bit-copied
-                                         from the master — THE YOUTUBE UPLOAD FILE; a
-                                         1440p upload gets YouTube's higher VP9 bitrate
-                                         tier, visibly cleaner playback than a 1080p
-                                         upload of identical content)
+  renders/<basename>-master-1440p.mp4  (default, skip with --no-2k: GPU hevc_nvenc
+                                         p7 cq22 lanczos upscale to 2560x1440, audio
+                                         bit-copied from the master — THE YOUTUBE UPLOAD
+                                         FILE; a 1440p upload gets YouTube's higher VP9
+                                         bitrate tier, visibly cleaner playback than a
+                                         1080p upload of identical content. HEVC since
+                                         2026-08-29 (owner order): ~2.5 GB instead of the
+                                         ~5 GB h264 cq19/24M file)
   renders/<basename>-master-hevc.mp4   (--hevc only: GPU hevc_nvenc, audio bit-copied
                                          from the master; ~2.5x smaller, visually lossless)
 
@@ -75,16 +77,17 @@ def encode_hevc(master: Path, out: Path):
     print(f"      {out.name} — {mb:.0f} MB")
 
 def encode_2k(master: Path, out: Path):
-    """GPU h264 lanczos upscale of the finished master to 2560x1440 — the YouTube upload
+    """GPU HEVC lanczos upscale of the finished master to 2560x1440 — the YouTube upload
     file (1440p uploads get the higher VP9 bitrate tier). Audio bit-copied so the verified
     -14 LUFS mix is untouched. Fails loud if NVENC is unavailable (same ffmpeg-build caveat
-    as encode_hevc). cq19 + 24M matches the ep1 2026-08-24 verified settings."""
-    print(f"[2K ] GPU 1440p -> {out.name} (h264_nvenc p5 cq19 24M, lanczos, audio copied) ...")
+    as encode_hevc). hevc_nvenc p7 cq22 (the encode_hevc recipe) replaced h264 cq19/24M on
+    2026-08-29 (owner order): the same visually-lossless tier at roughly half the size."""
+    print(f"[2K ] GPU 1440p -> {out.name} (hevc_nvenc p7 cq22, lanczos, audio copied) ...")
     r = subprocess.run(
         ["ffmpeg", "-hide_banner", "-y", "-i", str(master),
          "-vf", "scale=2560:1440:flags=lanczos",
-         "-c:v", "h264_nvenc", "-preset", "p5", "-rc", "vbr",
-         "-cq", "19", "-b:v", "24M", "-maxrate", "34M", "-bufsize", "48M",
+         "-c:v", "hevc_nvenc", "-preset", "p7", "-tune", "hq", "-rc", "vbr",
+         "-cq", "22", "-tag:v", "hvc1",
          "-pix_fmt", "yuv420p", "-colorspace", "bt709",
          "-color_primaries", "bt709", "-color_trc", "bt709",
          "-c:a", "copy", "-movflags", "+faststart", str(out)],
