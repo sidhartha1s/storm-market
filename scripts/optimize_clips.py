@@ -34,6 +34,11 @@ BUDGET_MB = 150       # must match media_budget.py; crf escalates until under th
 CRF_LADDER = [23, 27, 31, 33, 35]  # ep6 measured: 51 clips at crf23 = 194 MB, crf27 = 143 MB;
 # ep4 measured 2026-08-30: 119 clips of high-entropy weather stock at crf23 = 491 MB, so the
 # ladder needs the 33/35 rungs to be able to land under the budget at all.
+# --crf N: run ONE rung instead of the ladder. Use it when a previous pass already measured the
+# set (ep4: crf23 = 491 MB; ratios crf27 0.6x / crf31 0.33x / crf35 0.2x predict the landing
+# rung) - the ladder re-encodes every clip per rung and wastes ~7 min a rung otherwise.
+if "--crf" in sys.argv:
+    CRF_LADDER = [int(sys.argv[sys.argv.index("--crf") + 1])]
 
 h = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
 used = {}
