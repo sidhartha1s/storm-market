@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-width-v1 — THE WIDTH RECORD as ranked rails (retuned from library/inhouse/ranked-bars.html,
+  ep3 g-compare lineage). Mounted over a2-s2 from its first word; comp time == a2-s2 words.json.
+  Narration order drives the rows: El Reno's counter rolls 0.2 → 0.5 → 1 → 2 → 2.6 on the spoken
+  numbers, THEN Manhattan lands ("wider than the island of Manhattan" @28.0), THEN the old record
+  ("The old record, set in Nebraska nine years earlier, was gone" @38.7), THEN the RECORD badge on
+  "No tornado in recorded history had ever been this wide" @43.5. Rail scale 0–3 mi (448 px/mi).
+  /* a2-s2 words: 6.03@3.8 · few hundred yards@6.1 · Half a mile@14.3 · full mile@16.6 · two@18.3 ·
+     6.19@19.6 · 2.6 miles across@24.0–25.3 · Manhattan@29.4 · horizon@34.0 · old record@38.9 ·
+     Nebraska@40.3 · gone@42.5 · No tornado@43.5 · this wide@46.2 · people underneath it@50.0 */
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif; overflow:hidden; color:#f2f5f8;
+    background:radial-gradient(ellipse at 46% 52%, #0d141c 0%, #04070a 76%); }
+  .eyebrow { position:absolute; left:96px; top:74px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; line-height:1; }
+  .hl { position:absolute; left:96px; top:108px; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; line-height:1; letter-spacing:1px; }
+  .topsub { position:absolute; left:96px; top:176px; font-family:Georgia,serif; font-style:italic; font-size:27px; color:#d8a13a; line-height:1.2; }
+  .rlabel { position:absolute; right:96px; top:78px; font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; line-height:1.2; text-align:right; }
+  .stamp { position:absolute; right:96px; top:106px; font-family:'Arial Black',Arial,sans-serif; font-size:44px; line-height:1; color:#fff; background:#8e2020; padding:4px 22px; letter-spacing:2px; }
+  .rsub { position:absolute; right:96px; top:166px; font-size:19px; letter-spacing:4px; color:#5a768f; font-weight:700; line-height:1.2; text-align:right; }
+  .row { position:absolute; left:0; right:0; height:124px; }
+  .rank { position:absolute; left:88px; top:8px; font-family:'Courier New',monospace; font-size:46px; font-weight:700; line-height:1; }
+  .nm { position:absolute; left:176px; top:16px; font-family:'Arial Black',Arial,sans-serif; font-size:30px; color:#f2f5f8; line-height:1; letter-spacing:1px; }
+  .sb { position:absolute; left:700px; top:18px; font-family:Georgia,serif; font-style:italic; font-size:25px; color:#93a3b2; line-height:1.2; }
+  .rail { position:absolute; left:96px; top:62px; width:1344px; height:54px; background:linear-gradient(180deg,#0f1922,#0a121a); border:1px solid #1b2836; box-sizing:border-box; transform-origin:left center; }
+  .bar { position:absolute; left:96px; top:62px; height:54px; transform-origin:left center; box-sizing:border-box; }
+  .num { position:absolute; right:250px; top:52px; font-family:'Courier New',monospace; font-size:68px; font-weight:700; line-height:1; text-align:right; }
+  .unit { position:absolute; right:176px; top:90px; font-family:'Arial Black',Arial,sans-serif; font-size:30px; color:#93a3b2; line-height:1; }
+  .rowlab { position:absolute; right:176px; top:22px; font-size:19px; letter-spacing:4px; color:#5a768f; font-weight:700; line-height:1.2; text-align:right; }
+  .badge { position:absolute; left:400px; top:14px; font-family:'Arial Black',Arial,sans-serif; font-size:26px; line-height:1; color:#fff; background:#8e2020; padding:6px 18px; letter-spacing:3px; }
+  #gw1-pulse1 { position:absolute; left:96px; top:62px; width:1344px; height:54px; background:linear-gradient(90deg, rgba(192,57,43,0), rgba(231,76,60,0.55)); box-shadow:0 0 46px rgba(231,76,60,0.55); transform-origin:center center; }
+  #gw1-axis { position:absolute; left:96px; top:792px; width:1344px; height:2px; background:linear-gradient(90deg,#2a3644,#46586b); transform-origin:left center; }
+  .tmark { position:absolute; top:776px; width:2px; height:14px; background:#2a3644; }
+  .tick { position:absolute; top:802px; width:120px; margin-left:-60px; text-align:center; font-size:19px; letter-spacing:2px; color:#93a3b2; font-weight:700; line-height:1.2; }
+  .kicker { position:absolute; left:96px; top:880px; font-family:'Arial Black',Arial,sans-serif; font-size:58px; line-height:1; color:#e74c3c; letter-spacing:2px; transform-origin:left center; }
+  .foot { position:absolute; left:96px; top:962px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; line-height:1.2; }
+  .srcnote { position:absolute; right:96px; top:966px; font-size:19px; letter-spacing:4px; color:#5a768f; font-weight:700; line-height:1.2; text-align:right; }
+  /* the growth stage readout: the clock the counter is racing (one fact once — the time lives here only) */
+  .clock { position:absolute; left:176px; top:246px; font-family:'Courier New',monospace; font-size:30px; font-weight:700; color:#e8c56a; letter-spacing:2px; }
+</style>
+<div id="root" data-composition-id="g-width-v1" data-width="1920" data-height="1080">
+  <svg viewBox="0 0 1920 1080" style="position:absolute;inset:0">
+    <defs><pattern id="gw1-ruler" width="44.5" height="40" patternUnits="userSpaceOnUse"><rect x="0" y="0" width="2" height="40" fill="#101d28"/></pattern></defs>
+    <g id="gw1-grid"><rect x="-360" y="266" width="2640" height="520" fill="url(#gw1-ruler)"/></g>
+    <rect x="96" y="266" width="2" height="520" fill="#1b2a37"/><rect x="320" y="266" width="2" height="520" fill="#16232e"/>
+    <rect x="544" y="266" width="2" height="520" fill="#16232e"/><rect x="768" y="266" width="2" height="520" fill="#16232e"/>
+    <rect x="992" y="266" width="2" height="520" fill="#16232e"/><rect x="1216" y="266" width="2" height="520" fill="#16232e"/>
+    <rect x="1440" y="266" width="2" height="520" fill="#1b2a37"/>
+  </svg>
+
+  <div class="eyebrow" id="gw1-eb">&lt; EL RENO · SIXTEEN MINUTES AFTER TOUCHDOWN</div>
+  <div class="hl" id="gw1-hl">HOW WIDE IT GREW</div>
+  <div class="topsub" id="gw1-topsub">the circulation, edge to edge, as the radar measured it</div>
+  <div class="rlabel" id="gw1-rlabel">MEASURED BY</div>
+  <div class="stamp" id="gw1-stamp">RAPID-SCAN RADAR</div>
+  <div class="rsub" id="gw1-rsub">RaXPol · UNIVERSITY OF OKLAHOMA</div>
+
+  <!-- row 1: EL RENO — the live counter -->
+  <div class="row" id="gw1-row1" style="top:300px">
+    <div class="rank" id="gw1-rk1" style="color:#e74c3c">01</div>
+    <div class="nm" id="gw1-nm1">EL RENO</div>
+    <div class="badge" id="gw1-badge">RECORD</div>
+    <div class="sb" id="gw1-sb1">Oklahoma &middot; May 31, 2013</div>
+    <div class="rail" id="gw1-rail1"></div>
+    <div class="bar" id="gw1-bar1" style="width:1165px; background:linear-gradient(90deg,#5e1a13,#c0392b 62%,#e74c3c)"></div>
+    <div id="gw1-pulse1"></div>
+    <div class="rowlab" id="gw1-rl1">CIRCULATION WIDTH</div>
+    <div class="num" id="gw1-n1" style="color:#e74c3c">0.0</div>
+    <div class="unit" id="gw1-u1">MI</div>
+  </div>
+  <div class="clock" id="gw1-clock">6:03 PM</div>
+
+  <!-- row 2: MANHATTAN -->
+  <div class="row" id="gw1-row2" style="top:474px">
+    <div class="rank" id="gw1-rk2" style="color:#7fb2e5">&mdash;</div>
+    <div class="nm" id="gw1-nm2">THE ISLAND OF MANHATTAN</div>
+    <div class="sb" id="gw1-sb2">New York &middot; at its widest point</div>
+    <div class="rail" id="gw1-rail2"></div>
+    <div class="bar" id="gw1-bar2" style="width:1030px; background:linear-gradient(90deg,#33556f,#7fb2e5)"></div>
+    <div class="rowlab" id="gw1-rl2">EAST TO WEST</div>
+    <div class="num" id="gw1-n2" style="color:#7fb2e5">0.0</div>
+    <div class="unit" id="gw1-u2">MI</div>
+  </div>
+
+  <!-- row 3: HALLAM — the old record -->
+  <div class="row" id="gw1-row3" style="top:648px">
+    <div class="rank" id="gw1-rk3" style="color:#d8a13a">02</div>
+    <div class="nm" id="gw1-nm3">HALLAM</div>
+    <div class="sb" id="gw1-sb3">Nebraska &middot; May 22, 2004 &middot; the old record</div>
+    <div class="rail" id="gw1-rail3"></div>
+    <div class="bar" id="gw1-bar3" style="width:1120px; background:linear-gradient(90deg,#8a6420,#e8c56a)"></div>
+    <div class="rowlab" id="gw1-rl3">DAMAGE PATH WIDTH</div>
+    <div class="num" id="gw1-n3" style="color:#e8c56a">0.0</div>
+    <div class="unit" id="gw1-u3">MI</div>
+  </div>
+
+  <div id="gw1-axis"></div>
+  <div class="tmark" id="gw1-tm0" style="left:95px"></div><div class="tmark" id="gw1-tm1" style="left:319px"></div>
+  <div class="tmark" id="gw1-tm2" style="left:543px"></div><div class="tmark" id="gw1-tm3" style="left:767px"></div>
+  <div class="tmark" id="gw1-tm4" style="left:991px"></div><div class="tmark" id="gw1-tm5" style="left:1215px"></div>
+  <div class="tmark" id="gw1-tm6" style="left:1439px"></div>
+  <div class="tick" id="gw1-tk0" style="left:96px">0</div><div class="tick" id="gw1-tk1" style="left:320px">0.5</div>
+  <div class="tick" id="gw1-tk2" style="left:544px">1</div><div class="tick" id="gw1-tk3" style="left:768px">1.5</div>
+  <div class="tick" id="gw1-tk4" style="left:992px">2</div><div class="tick" id="gw1-tk5" style="left:1216px">2.5</div>
+  <div class="tick" id="gw1-tk6" style="left:1440px">3 MI</div>
+
+  <div class="kicker" id="gw1-kicker">NO TORNADO IN RECORDED HISTORY</div>
+  <div class="foot" id="gw1-foot">had ever been this wide.</div>
+  <div class="srcnote" id="gw1-src">MARSHALL ET AL. &middot; NWS NORMAN</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const P = "#gw1-";
+  const tl = gsap.timeline({ paused: true });
+  const HIDE = [P+"eb",P+"hl",P+"topsub",P+"rlabel",P+"stamp",P+"rsub",P+"clock",
+                P+"rk1",P+"nm1",P+"sb1",P+"rl1",P+"n1",P+"u1",P+"badge",P+"pulse1",
+                P+"rk2",P+"nm2",P+"sb2",P+"rl2",P+"n2",P+"u2",
+                P+"rk3",P+"nm3",P+"sb3",P+"rl3",P+"n3",P+"u3",
+                P+"tk0",P+"tk1",P+"tk2",P+"tk3",P+"tk4",P+"tk5",P+"tk6",P+"kicker",P+"foot",P+"src"];
+  tl.set(HIDE, {autoAlpha:0}, 0);
+  tl.set([P+"rail1",P+"rail2",P+"rail3",P+"bar1",P+"bar2",P+"bar3",P+"axis"], {scaleX:0}, 0);
+  function ctr(id, obj, val, at, dur, ease) {
+    tl.to(obj, {v:val, duration:dur, ease:ease||"power3.out", onUpdate:function(){
+      const e = document.getElementById(id); if (e) e.textContent = obj.v.toFixed(1); }}, at);
+  }
+  const V1 = {v:0}, V2 = {v:0}, V3 = {v:0};
+  /* CONTINUOUS: the ruler grid drifts for the whole window */
+  tl.to(P+"grid", {x:-260, duration:47.0, ease:"none"}, 0.2);
+
+  /* masthead — "Watch what happens in the sixteen minutes after touchdown" 0.0–2.5 */
+  tl.fromTo(P+"eb",     {autoAlpha:0, x:-34}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.15);
+  tl.fromTo(P+"hl",     {autoAlpha:0, y:-26}, {autoAlpha:1, y:0, duration:0.55, ease:"power3.out"}, 0.55);
+  tl.fromTo(P+"topsub", {autoAlpha:0, x:-28}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 1.10);
+  tl.fromTo(P+"rlabel", {autoAlpha:0, y:-18}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 1.60);
+  tl.fromTo(P+"stamp",  {autoAlpha:0, scale:1.5}, {autoAlpha:1, scale:1, duration:0.36, ease:"power4.in"}, 2.00);
+  tl.fromTo(P+"rsub",   {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 2.50);
+  /* axis + ticks land under "At 6:03" 3.7 */
+  tl.fromTo(P+"axis", {scaleX:0}, {scaleX:1, duration:0.7, ease:"power3.out"}, 3.0);
+  tl.fromTo([P+"tk0",P+"tk1",P+"tk2",P+"tk3",P+"tk4",P+"tk5",P+"tk6"], {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out", stagger:0.09}, 3.3);
+
+  /* ---- EL RENO row: "At 6:03, the tornado is a few hundred yards across. Ordinary." ---- */
+  tl.fromTo(P+"rk1",   {autoAlpha:0, scale:1.9}, {autoAlpha:1, scale:1, duration:0.32, ease:"power4.in"}, 3.8);
+  tl.fromTo(P+"nm1",   {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.45, ease:"power3.out"}, 4.1);
+  tl.fromTo(P+"sb1",   {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 4.4);
+  tl.fromTo(P+"clock", {autoAlpha:0, y:10}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 4.6);
+  tl.fromTo(P+"rail1", {scaleX:0}, {scaleX:1, duration:0.45, ease:"power3.out"}, 5.0);
+  tl.fromTo(P+"rl1",   {autoAlpha:0, y:-14}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 5.4);
+  tl.set([P+"n1",P+"u1"], {autoAlpha:1}, 6.0);
+  /* "a few hundred yards across" 6.1 → 0.2 mi (bar 1165px == 2.6 mi; scaleX = mi/2.6) */
+  tl.fromTo(P+"bar1", {scaleX:0}, {scaleX:0.2/2.6, duration:0.9, ease:"power3.out"}, 6.1);
+  ctr("gw1-n1", V1, 0.2, 6.1, 0.9);
+  /* "pulling in air faster than anyone watching has ever seen" 10.0–13.3: a nervous tremor on the bar */
+  tl.to(P+"bar1", {scaleX:0.25/2.6, duration:0.5, ease:"sine.inOut", yoyo:true, repeat:5}, 10.0);
+  /* "Half a mile wide" 14.3 · "Then a full mile" 16.6 · "Then two" 18.3 */
+  tl.to(P+"bar1", {scaleX:0.5/2.6, duration:0.7, ease:"power2.out"}, 14.3);  ctr("gw1-n1", V1, 0.5, 14.3, 0.7, "power2.out");
+  tl.to(P+"bar1", {scaleX:1.0/2.6, duration:0.7, ease:"power2.out"}, 16.6);  ctr("gw1-n1", V1, 1.0, 16.6, 0.7, "power2.out");
+  tl.to(P+"bar1", {scaleX:2.0/2.6, duration:0.7, ease:"power2.out"}, 18.3);  ctr("gw1-n1", V1, 2.0, 18.3, 0.7, "power2.out");
+  /* "At 6:19 in the evening" 19.6 — the clock turns */
+  tl.to(P+"clock", {autoAlpha:0, y:-8, duration:0.2}, 19.5);
+  tl.call(function(){ const e=document.getElementById("gw1-clock"); if(e) e.textContent="6:19 PM"; }, null, 19.7);
+  tl.to(P+"clock", {autoAlpha:1, y:0, duration:0.3}, 19.75);
+  /* "the circulation reaches 2.6 miles across" 23.1–25.3 — rolls fast then lands slow (numbers rule) */
+  tl.to(P+"bar1", {scaleX:1, duration:2.2, ease:"power4.out"}, 23.3);  ctr("gw1-n1", V1, 2.6, 23.3, 2.2, "power4.out");
+  tl.fromTo(P+"pulse1", {autoAlpha:0, scaleY:1}, {autoAlpha:0.85, scaleY:1.28, duration:0.85, ease:"sine.inOut", yoyo:true, repeat:3}, 25.4);
+  tl.to(P+"n1", {scale:1.14, duration:0.55, ease:"power3.out", yoyo:true, repeat:1}, 25.6);
+
+  /* ---- MANHATTAN row: "Edge to edge, that is wider than the island of Manhattan" 25.9–29.4 ---- */
+  tl.fromTo(P+"rk2",   {autoAlpha:0, scale:1.9}, {autoAlpha:1, scale:1, duration:0.32, ease:"power4.in"}, 28.0);
+  tl.fromTo(P+"nm2",   {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.45, ease:"power3.out"}, 28.9);
+  tl.fromTo(P+"sb2",   {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 29.4);
+  tl.fromTo(P+"rail2", {scaleX:0}, {scaleX:1, duration:0.45, ease:"power3.out"}, 29.6);
+  tl.fromTo(P+"rl2",   {autoAlpha:0, y:-14}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 29.9);
+  tl.set([P+"n2",P+"u2"], {autoAlpha:1}, 30.1);
+  tl.fromTo(P+"bar2",  {scaleX:0}, {scaleX:1, duration:1.4, ease:"power3.out"}, 30.1);
+  ctr("gw1-n2", V2, 2.3, 30.1, 1.4);
+  /* "the far side would be beyond the horizon" 32.5–34.0: the El Reno bar breathes past Manhattan */
+  tl.to(P+"pulse1", {autoAlpha:0.7, scaleY:1.2, duration:0.6, ease:"sine.inOut", yoyo:true, repeat:3}, 33.0);
+
+  /* ---- HALLAM row: "The old record, set in Nebraska nine years earlier, was gone." 38.7–42.5 ---- */
+  tl.fromTo(P+"rk3",   {autoAlpha:0, scale:1.9}, {autoAlpha:1, scale:1, duration:0.32, ease:"power4.in"}, 38.9);
+  tl.fromTo(P+"nm3",   {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.45, ease:"power3.out"}, 39.3);
+  tl.fromTo(P+"sb3",   {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 40.3);
+  tl.fromTo(P+"rail3", {scaleX:0}, {scaleX:1, duration:0.45, ease:"power3.out"}, 40.5);
+  tl.fromTo(P+"rl3",   {autoAlpha:0, y:-14}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 40.8);
+  tl.set([P+"n3",P+"u3"], {autoAlpha:1}, 41.0);
+  tl.fromTo(P+"bar3",  {scaleX:0}, {scaleX:1, duration:1.2, ease:"power3.out"}, 41.0);
+  ctr("gw1-n3", V3, 2.5, 41.0, 1.2);
+  /* "was gone" 42.3 — the old record dims */
+  tl.to([P+"bar3",P+"n3",P+"nm3"], {opacity:0.45, duration:0.6}, 42.4);
+
+  /* ---- RECORD: "No tornado in recorded history had ever been this wide." 43.5–46.5 ---- */
+  tl.fromTo(P+"badge", {autoAlpha:0, scale:1.7}, {autoAlpha:1, scale:1, duration:0.34, ease:"power4.in"}, 43.6);
+  tl.fromTo(P+"kicker", {autoAlpha:0, scale:1.22}, {autoAlpha:1, scale:1, duration:0.42, ease:"power4.in"}, 43.7);
+  tl.fromTo(P+"foot",   {autoAlpha:0, y:22}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 46.0);
+  tl.fromTo(P+"src",    {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 46.3);
+  tl.to(P+"pulse1", {autoAlpha:0.9, scaleY:1.22, duration:0.65, ease:"sine.inOut", yoyo:true, repeat:1}, 46.0);
+  /* exit: the whole card slides right and out on the cut (47.5) — never vanishes */
+  tl.to("#root > *", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in", stagger:0.0}, 46.9);
+
+  window.__timelines["g-width-v1"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
