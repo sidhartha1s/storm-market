@@ -165,13 +165,15 @@ Per episode in `episodes/<slug>/`:
    target_total_minutes × 0.9 × ~158** (measured 2026-07-26: ep1 manifest ground truth 153.5 wpm,
    ep2 probe 159-168 — the old "137" figure was stale/wrong; ALWAYS probe-TTS 2 segments and
    recompute before finalizing script length; ep5 measured a 139–158 spread by sentence style,
-   blended 145 — punchy prose runs slower, budget on the blend).
+   blended 145 — punchy prose runs slower, budget on the blend). **The CTA hinge is named in
+   the design (segment before / segment after, est. timestamp) — DESIGN.md "CTA contract".**
 2. TTS **per narration segment** → wavs + per-segment words.json (faster-whisper).
 3. Sourcing: agent downloads all clips itself (archive.org/FEMA/NOAA/yt-dlp/stock-fetch/NEXRAD);
    2-3 candidates per key beat, frame-checked. Owner only confirms `insert` clips (audio-carrying).
 4. Compose `index.html` **directly as a hyperframes composition** — the agent authors the edit
    like a human editor (JS/WAAPI animation ONLY — CSS @keyframes disables fast-capture). Assets
-   in `episodes/<slug>/media/`.
+   in `episodes/<slug>/media/`. Mount the CTA from `config.yaml channel.cta` (staged into
+   `media/cta/`, wiring in DESIGN.md "CTA contract").
 5. Render: **`scripts\render.cmd <slug> <draft|full>`** — the whole recipe (version pin, both
    timeout env vars, `--workers 3`, log + exit-code marker) is baked in; launch it DETACHED
    (Start-Process, see the script header — quote the space-containing path). E2E-tested
@@ -191,7 +193,8 @@ Per episode in `episodes/<slug>/`:
       LAST step"): `sweep_episode.py`, `blank_scan.mjs`, `beat_density.py`, `graphics_qc.mjs`,
       `overlap_check.mjs` v2 (text collisions incl. comp-internal + mid-tween, duplicate
       facts), `audio_levels.py` (exit 0 — insert/narration/bed level gate, run before every
-      mixdown build).
+      mixdown build). `sweep_episode.py` also FAILS a missing/misplaced CTA (config window,
+      duration, own audio, SRT label, md5 vs `assets/cta/`).
    d. Per-composition snapshot of anything NEW or changed (stage into a bare page, seek,
       screenshot 4-6 points, subagent reads them) — never a whole-episode frame sweep.
    e. Post-render only: `scripts/verify_render.sh <episode-dir> <basename>` — blackdetect,
@@ -214,7 +217,9 @@ Per episode in `episodes/<slug>/`:
    E2E-tested on ep2 2026-07-27. Plus updated
    `metadata.md` (titles,
    description, tags, chapters, AEO/SEO block, Education metadata: category Education, type
-   Overview; credits; socials/handles) at publish time.
+   Overview; credits; socials/handles) at publish time. **Description contract: the FIRST URL
+   is `channel.cta.first_link` (Paul says "first link in the description" on camera) + the
+   "📘 The book mentioned at mm:ss" line; no chapter marker at the CTA (DESIGN.md "CTA contract").**
 - Long episodes: chunk renders only if a single render proves unstable — don't pre-build JP's
   chunk machinery until an episode actually needs it. From ep2 on, AUTHOR compositions as
   sub-compositions (one per act) so per-act re-renders are native (owner-approved 2026-07-26).
@@ -363,6 +368,8 @@ process count — stale node/chrome processes read as a healthy render and cost 
 - Never claim/infer owner approval. Design lock before paid generation.
 - Paid API railguards (budget caps, dry-run first, incremental progress) per global CLAUDE.md.
 - No recap/outro; descending stakes order; micro-loops every 30–45s; no-spoiler metadata.
+- **The ebook CTA is must-keep (owner 2026-08-30):** every episode, 30–40% in, hook > CTA >
+  payoff, from `config.yaml channel.cta` — DESIGN.md "CTA contract". Never skipped or moved.
 - All git/gh as `sidhartha1s`. PRs small, rebase-merge, docs sweep in same PR.
 - python3 never python. Node ≥ 22 for hyperframes.
 

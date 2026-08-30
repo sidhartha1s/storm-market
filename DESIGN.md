@@ -85,6 +85,36 @@ shipped; these are the standing requirements for every episode's cold open:
 - Few clips, each earning its slot (ep2: warning → impact → dispatch → void). More clips ≠
   more captivating; undifferentiated montage is what scored 0.6.
 
+### CTA contract (owner order 2026-08-30 — must-keep, every episode)
+The ebook CTA (Paul on camera, 15.1s, QR + "first link in the description") is a fixed element of
+every episode from ep4 on. File, duration, window and labels live in `config.yaml channel.cta`
+(current: `assets/cta/paul-storm-ready-v4c.mp4`, README + transcript beside it) — never a
+per-episode copy of the rule, never a hand-edited path. Shape: **hook > CTA > payoff**.
+- **Window: the CTA starts inside 30–40% of total runtime** — after the episode has earned it,
+  before the first big payoff lands. `sweep_episode.py` fails outside the window.
+- **Hinge is scripted, not spliced:** the narration segment BEFORE it ends on a tease (an open
+  loop planted in the words — "...that gap was about to close, on the most experienced observers
+  alive"), the segment AFTER opens with the payoff in its first sentence. The script's loop table
+  carries the pair as `cta-hinge` (references/script-scaling.md). No natural tease at 30–40% =
+  rewrite the script, not move the CTA.
+- **Dips:** 1.0s black in, 1.0s black out (dramatic-punctuation tier). Hard cut into the payoff
+  clip after the out-dip; the payoff clip is REAL footage, never a graphic.
+- **Audio:** the CTA carries its own VO (`data-volume="1"`); narration is silent under it (lint
+  overlap rule); score/SFX bed ducked ≥12 dB or out. Never within 60s of another audio-carrying
+  insert (the "never two inserts back-to-back" rule).
+- **Not a chapter boundary:** the CTA sits inside the preceding chapter; the next chapter starts
+  on the payoff sentence, so chapter-scrubbing lands on the payoff, not the ad.
+- **Deliverables:** SRT cue from `data-srt-label`; `metadata.md` description puts
+  `channel.cta.first_link` as the FIRST URL (above socials) and carries the ep2-style line
+  "📘 The book mentioned at mm:ss — Storm-Ready Home ... https://paulraymond.online".
+- **Never** skipped, shortened, moved to the outro, muted, or replaced by a text card. A re-cut of
+  the clip is a NEW versioned file + config bump (old file stays: shipped episodes reproduce).
+- Wiring (staged episode-relative — `render.cmd` cds into the episode dir, no `../` srcs):
+  copy the asset to `media/cta/<file>` (gitignored; sweep md5-checks it against `assets/cta/`), then
+  `<video id="ins-cta-paul" src="media/cta/paul-storm-ready-v4c.mp4" data-start="<T>"
+  data-duration="15.104" data-track-index="1" data-volume="1" data-srt-label="<channel.cta.srt_label>">`
+  with a 1.0s blackout element before and after on the picture track.
+
 ### Broadcast-clip rehook cadence (owner order 2026-07-26)
 Core audience is 40–70+ — they watched these events on live TV; real broadcast/news/PD/survivor
 clips are the nostalgia rehook, stock footage only fills between them. **A real clip lands every
