@@ -31,7 +31,9 @@ apply = "--apply" in sys.argv
 MARGIN = 1.5          # headroom over the longest window, so vdur() never clips a window
 GOP = 15              # draft renders at 15fps; a keyframe per second keeps seeks cheap
 BUDGET_MB = 150       # must match media_budget.py; crf escalates until under this
-CRF_LADDER = [23, 27, 31]  # ep6 measured: 51 clips at crf23 = 194 MB, crf27 = 143 MB
+CRF_LADDER = [23, 27, 31, 33, 35]  # ep6 measured: 51 clips at crf23 = 194 MB, crf27 = 143 MB;
+# ep4 measured 2026-08-30: 119 clips of high-entropy weather stock at crf23 = 491 MB, so the
+# ladder needs the 33/35 rungs to be able to land under the budget at all.
 
 h = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
 used = {}
@@ -40,6 +42,10 @@ for m in re.finditer(r'<video\b([^>]*)>', h):
     src = re.search(r'src="([^"]+)"', attrs)
     dur = re.search(r'data-duration="([\d.]+)"', attrs)
     if not (src and dur):
+        continue
+    if src.group(1).startswith("media/cta/"):
+        # The staged CTA must stay byte-identical to assets/cta/ (sweep_episode md5 gate);
+        # media_budget still counts its bytes, so the rest of the cut fits in what is left.
         continue
     used[src.group(1)] = max(used.get(src.group(1), 0.0), float(dur.group(1)))
 

@@ -174,6 +174,13 @@ def main():
     print(budget.stdout.rstrip())
     if budget.returncode != 0:
         print(budget.stderr.rstrip(), file=sys.stderr)
+        # Owner per-render override (ep4, 2026-08-30): the 150 MB line was set from ep3's
+        # 67-OK / 240-fail measurement and never re-measured; a deliberate calibration render
+        # is the only real test. Never silent — the override names itself in the render log.
+        if os.environ.get("RENDER_MEDIA_BUDGET_OK") == "1":
+            print("[preflight] [OVERRIDE] MEDIA BUDGET FAILED — rendering anyway: "
+                  "RENDER_MEDIA_BUDGET_OK=1 set by the owner for this run (calibration).")
+            return
         print("[preflight] REFUSING TO RENDER — media budget gate failed (see above).",
               file=sys.stderr)
         sys.exit(3)
