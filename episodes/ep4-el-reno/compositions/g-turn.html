@@ -62,6 +62,7 @@
     <polyline id="gt-route" points="360,560 640,620 760,660 900,600 1100,540 1260,500 1460,450 1660,430" fill="none" stroke="#c0392b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1500" stroke-dashoffset="1500"/>
     <!-- the circulation: moving and widening -->
     <circle id="gt-cell" cx="640" cy="620" r="60" fill="url(#gt-core)" stroke="#e74c3c" stroke-width="5" filter="url(#gt-glow)"/>
+    <circle id="gt-rain" cx="900" cy="600" r="0" fill="#5a768f" opacity="0"/>  <!-- drawn BEFORE the labels/chasers so 'hidden in rain' covers the cell, not the text (compshots 08-30) -->
     <text id="gt-turnlab" x="760" y="720" text-anchor="middle" class="redlab" opacity="0">6:09 PM · HARD LEFT</text>
     <!-- chasers on Reuter Road, east of the storm, facing US-81 -->
     <g id="gt-chasers" opacity="0">
@@ -73,7 +74,6 @@
       <text id="gt-marginlab" x="900" y="618" text-anchor="middle" class="maplab" style="fill:#e8c56a">ESCAPE MARGIN</text>
     </g>
     <!-- rain curtain over the circulation ("completely hidden in rain") -->
-    <circle id="gt-rain" cx="900" cy="600" r="0" fill="#5a768f" opacity="0"/>
   </svg>
   <div class="eyebrow" id="gt-eb">NWS NORMAN SERVICE ASSESSMENT · 6:09 PM</div>
   <div class="hl" id="gt-hl">THE TURN</div>
