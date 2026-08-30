@@ -2,6 +2,47 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
+## 2026-08-30 — ep4 v3 rewire on the main architecture (word-synced wire, first in-timeline CTA)
+
+1. **"Matchcut everything to the transcript" (owner, mid-build) = every cut lands on a spoken word.**
+   The wire was built from a phrase→timestamp lookup over `audio/*.words.json` + `timeline_v3.json`
+   (scratch `wordsync.py`: deterministic, prints times, authors nothing), then hand-placed. Numbers
+   spoken as digits ("2.6", "6:08", "24") tokenise oddly in whisper output — query the surrounding
+   words ("miles wide", "warning went out") and read the raw word list for the exact tick.
+2. **Graded broadcast cuts can be SILENT copies.** `graded/kfor-sutton-very-close-call-hookcut__…`
+   and `graded/twc-bettes-suv-toss-hookcut__…` have no audio stream; the audio-bearing files were
+   `graded/hook-anchor-voice.mp4` (no provenance row, no transcript — re-transcribed: "please do not
+   ride this out in any interior closet or bathroom") and the UNGRADED `cuts/` twin. `audio_levels.py`
+   is the gate that catches it ("no audio stream"), then "insert −5.0 dB vs narration" → fix the
+   FILE gain (ffmpeg `-af volume=+5dB`, video stream copied, new provenance row) — never the attr.
+3. **Sourcing agents rename files under a running build.** DVIDS `*-clean.mp4` became
+   `CAUTION-captioned-DO-NOT-USE-*` between my inventory and the wire (burned-in captions found on
+   second look). lint_timeline's "missing file" is the tripwire; re-`ls` every agent-touched folder
+   before wiring, never trust an inventory older than the agent.
+4. **Luma gate swaps, not exemptions.** 8 mounted sources read YAVG<25 (radar-on-black docmine loops,
+   NWS title card, two dim NWS office clips, one flood cut at 24.7). Probe candidates first
+   (`ffmpeg -ss mid -frames:v 1 -vf signalstats`), swap to bright twins (GOES loop 80, briefing
+   cuts 77–154, radar-loop-c 202 — trimmed to a 12 s derived cut so media_budget decodes 12 s, not
+   130 s). A 130 s file behind a 10 s window is a media_budget miss waiting to happen.
+5. **Never run two sweeps at once.** `sweep_episode.py` shares `%TEMP%\_sweep_ma.png` for the motion
+   gate; a second concurrent run dies with `PermissionError [WinError 32]` mid-gate and the first
+   one wedges. One sweep, backgrounded, logged — and the 10-min Bash timeout is not the sweep's
+   problem (it is 5–12 min on 300+ windows).
+6. **Track discipline for overlays:** cards on track 3, source labels on track 4 — the sweep's
+   same-track-overlap gate flags a label under a card as a collision (it is one: two text
+   elements, one track, one window). ep6 had them sharing track 3 and got away with it by timing.
+7. **Source-family repeats are measured by filename family, not by file.** Three
+   `dvids-291199-flashlight-search-{a,b,c}` inside 50 s and `spotter-training-{d,e}` 21 s apart both
+   failed "viewer identity"; the fix is a different family, not a different letter.
+8. **CTA hinge shipped exactly per the contract** (tease a2-s3b → 1.2 s dip → 15.104 s Paul → 1.0 s
+   dip → payoff a3-s1; 554.96/1568.08 = 35.4 %); `sweep_episode.py` 5d PASS on the real episode is
+   the first end-to-end proof of the 08-30 contract. Pattern banked:
+   `references/editing-patterns/ep4-cta-hinge.html`.
+9. **Media mix on the wire (measured, index.html):** video 63 % · stills 25 % (77 stills, none >6 s,
+   all Ken Burns) · comps 11 %. Stills over the 15 % target are radar plates + maps + survey docs;
+   the KTLX loops (src-radar, not delivered at wire time) are the lever — swapping the 12 radar
+   PNGs to loops moves ~60 s to video.
+
 ## 2026-08-30 — the ebook CTA is a channel asset + a must-keep contract (owner order, ep4 rewire kickoff)
 
 1. **The CTA was never in the pipeline.** ep2's Paul CTA was spliced into the finished mp4 by the

@@ -15,6 +15,7 @@ pattern worth copying, copy the comp into this folder the same session.
 | `ep5-terrain-map.html` | Designed terrain map: irregular canyon walls + contour hints + canyon labels so geography reads as geography | ep5 |
 | `ep6-glasscard-popfig-bfmg.html` | The three ep6 text devices: `.glasscard` (the ONE treatment for text over footage; quote variant drops the halo), `.popfig` Abril date/figure popup (red, shadow, mid-screen, ≤3 words, no colour block — replaces the red stamp cards; font in `fonts/`), and a BFMG block (three graded clips under a glass card that lands WITH the narration line) | ep6 (owner-approved v3 2026-08-23) |
 | `ep6-glass-panel-camera-clamp.html` | Track-dots map + RHS glass panel on a camera that zooms/pans but is CLAMPED so the subject (the red circle) stays fully in frame and the panel never covers the dots | ep6 4:55 (owner: "great potential" → fixed) |
+| `ep4-cta-hinge.html` | The in-timeline ebook CTA block (DESIGN.md "CTA contract"): tease segment ending on a scripted open loop → 1.2 s blackout → Paul CTA on track 1 with its OWN audio (`data-volume="1"` + `data-srt-label`), no bed/score under it → 1.0 s blackout → payoff sentence with a real clip + boom; score/bed windows split around it; chapter marker at the payoff, never at the CTA | ep4 9:14–9:31 (first episode with the CTA inside the composition; owner order 2026-08-30) |
 
 ep6 also ships the checker the text rules depend on: `scripts/overlap_check.mjs` v2 stages every
 comp template into a bare gsap page, steps 0.5s through each host window, and intersects the
