@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-dimethod — WHY EF3: the scale rates damage, not wind (retuned from library/inhouse/ef-ladder.html,
+  ep2 g-efscale lineage; the tile grid becomes the 16-mile path strip with the damage points the
+  survey actually found, and the ladder becomes two gauges: what the damage implies vs what the
+  radar measured). Mounted over the whole of a6-s2 (81.6 s); comp time == a6-s2 words.json:
+  /* does not measure wind@1.7 · measures what wind does@3.9–4.8 · survey teams walk the path@6.2–7.2 ·
+     work backward@11.4 · well-built house swept@13.0–13.9 · one wind speed@15.8 · snapped power pole@18.0 ·
+     No damage, no evidence, no rating@20.6–23.1 · 16 miles@26.0 · open farmland@29.0 ·
+     hundreds of damage points@32.6 · handful of rural homes supported EF3@35.7–38.3 ·
+     mobile research radar@40.2 · above 290@43.2–43.5 · sub-vortices across empty fields@46.5–49.0 ·
+     surveyors found nothing to inspect@53.4–54.8 · Grass does not testify@55.2–57.0 ·
+     10–30% above@61.5–62.8 · scale worked exactly as designed@65.2–67.1 · spent its fury on emptiness@73.2–74.3 ·
+     record width stands, measured by radar@75.6–77.8 · violence stays officially invisible@79.0–80.6 */
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; color:#dfe7ee; overflow:hidden; }
+  .hdr { position:absolute; left:0; right:0; top:74px; text-align:center; font-weight:700; font-size:26px; letter-spacing:8px; color:#93a3b2; }
+  .sub { position:absolute; left:0; right:0; top:118px; text-align:center; font-family:Georgia,serif; font-style:italic; font-size:28px; color:#d8a13a; }
+  /* LHS: the path strip */
+  .pathwrap { position:absolute; left:120px; top:250px; width:1000px; }
+  .pathlab { font-size:22px; letter-spacing:4px; color:#93a3b2; font-weight:700; margin-bottom:14px; }
+  .strip { position:relative; height:120px; background:linear-gradient(180deg,#101820,#0a121a); border:1px solid #1b2836; box-sizing:border-box; overflow:hidden; }
+  .grass { position:absolute; inset:0; background:repeating-linear-gradient(90deg, rgba(90,120,70,0.18) 0 6px, transparent 6px 22px); }
+  .di { position:absolute; bottom:0; width:26px; background:#8e2020; transform-origin:bottom; }
+  .dilab { position:absolute; top:-40px; left:-60px; width:150px; text-align:center; font-size:17px; letter-spacing:1px; color:#e8c56a; font-weight:700; line-height:1.1; }
+  .milelab { position:absolute; top:130px; font-size:19px; letter-spacing:2px; color:#5a768f; font-weight:700; }
+  .core { position:absolute; top:-6px; height:132px; width:0; background:linear-gradient(180deg, rgba(231,76,60,0.0), rgba(231,76,60,0.45) 50%, rgba(231,76,60,0.0)); }
+  .corelab { position:absolute; top:172px; left:0; font-family:'Arial Black',Arial,sans-serif; font-size:24px; color:#e74c3c; letter-spacing:1px; }
+  .found { position:absolute; left:120px; top:470px; font-family:Georgia,serif; font-style:italic; font-size:28px; color:#dfe7ee; }
+  .found b { font-family:'Courier New',monospace; font-style:normal; font-size:34px; color:#e8c56a; }
+  /* RHS: two gauges */
+  .gauges { position:absolute; right:120px; top:250px; width:560px; }
+  .glab { font-size:22px; letter-spacing:4px; color:#93a3b2; font-weight:700; margin-bottom:18px; }
+  .g { position:relative; height:112px; margin-bottom:22px; background:#101820; border-left:10px solid #2a3644; }
+  .g .n { position:absolute; left:22px; top:12px; font-size:19px; letter-spacing:3px; color:#93a3b2; font-weight:700; }
+  .g .v { position:absolute; left:22px; top:40px; font-family:'Courier New',monospace; font-size:56px; font-weight:700; line-height:1; }
+  .g .u { position:absolute; right:22px; top:58px; font-family:'Arial Black',Arial,sans-serif; font-size:24px; color:#93a3b2; }
+  .g .fill { position:absolute; left:0; bottom:0; height:8px; width:100%; transform-origin:left center; }
+  #gd-gdmg { border-left-color:#d8a13a; } #gd-grad { border-left-color:#8e2020; }
+  .verdict { position:absolute; right:120px; top:560px; width:560px; }
+  .stamp4 { display:inline-block; font-family:'Arial Black',Arial,sans-serif; font-size:84px; color:#fff; background:#8e2020; padding:2px 28px; }
+  .vsub { font-size:26px; color:#e8c56a; font-weight:700; margin-top:14px; }
+  .gap { position:absolute; right:120px; top:770px; width:560px; font-size:22px; letter-spacing:3px; color:#93a3b2; font-weight:700; }
+  .gap b { font-family:'Courier New',monospace; font-size:44px; color:#e74c3c; letter-spacing:0; display:block; margin-top:6px; }
+  .close { position:absolute; left:0; right:0; bottom:64px; text-align:center; font-family:Georgia,serif; font-style:italic; font-size:34px; color:#b8c6d4; }
+</style>
+<div id="root" data-composition-id="g-dimethod" data-width="1920" data-height="1080">
+  <div class="hdr" id="gd-hdr">THE ENHANCED FUJITA SCALE</div>
+  <div class="sub" id="gd-sub">it does not measure wind &mdash; it measures what wind does</div>
+
+  <div class="pathwrap" id="gd-pathwrap">
+    <div class="pathlab" id="gd-pathlab">THE PATH THE SURVEY TEAMS WALKED &middot; 16 MILES</div>
+    <div class="strip" id="gd-strip">
+      <div class="grass" id="gd-grass"></div>
+      <div class="core" id="gd-core"></div>
+      <div class="di" id="gd-di1" style="left:110px; height:44px;"><div class="dilab">RURAL HOME</div></div>
+      <div class="di" id="gd-di2" style="left:300px; height:30px;"><div class="dilab">POWER POLES</div></div>
+      <div class="di" id="gd-di3" style="left:520px; height:36px;"><div class="dilab">BARN</div></div>
+      <div class="di" id="gd-di4" style="left:640px; height:52px;"><div class="dilab">RURAL HOMES</div></div>
+      <div class="di" id="gd-di5" style="left:880px; height:78px;"><div class="dilab">MANUFACTURED HOMES</div></div>
+    </div>
+    <div class="milelab" id="gd-m0" style="left:0">MILE 0 &middot; WEST OF EL RENO</div>
+    <div class="milelab" id="gd-m16" style="right:0">MILE 16 &middot; PAST I-40</div>
+    <div class="corelab" id="gd-corelab">THE MOST VIOLENT WINDS &middot; OPEN FIELDS</div>
+  </div>
+  <div class="found" id="gd-found"><b id="gd-cnt">0</b> damage points catalogued &mdash; the worst of them supported EF3</div>
+
+  <div class="gauges" id="gd-gauges">
+    <div class="glab" id="gd-glab">TWO ANSWERS FOR ONE STORM</div>
+    <div class="g" id="gd-gdmg"><div class="n">WHAT THE DAMAGE IMPLIES</div><div class="v" style="color:#e8c56a"><span id="gd-vdmg">0</span></div><div class="u">MPH</div><div class="fill" id="gd-fdmg" style="background:linear-gradient(90deg,#8a6420,#e8c56a); transform:scaleX(0)"></div></div>
+    <div class="g" id="gd-grad"><div class="n">WHAT THE RADAR MEASURED</div><div class="v" style="color:#e74c3c"><span id="gd-vrad">0</span>+</div><div class="u">MPH</div><div class="fill" id="gd-frad" style="background:linear-gradient(90deg,#5e1a13,#e74c3c); transform:scaleX(0)"></div></div>
+  </div>
+  <div class="verdict" id="gd-verdict"><span class="stamp4" id="gd-stamp">EF3</span><div class="vsub" id="gd-vsub">the official rating &middot; a handful of rural homes</div></div>
+  <div class="gap" id="gd-gap">RADAR ABOVE DAMAGE-IMPLIED WINDS<b id="gd-gapv">10&ndash;30%</b></div>
+  <div class="close" id="gd-close">Grass does not testify.</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const P = "#gd-";
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P+"hdr",P+"sub",P+"pathwrap",P+"found",P+"gauges",P+"verdict",P+"gap",P+"close",P+"corelab",P+"m0",P+"m16",P+"core"], {autoAlpha:0}, 0);
+  tl.set([P+"di1",P+"di2",P+"di3",P+"di4",P+"di5"], {scaleY:0, autoAlpha:0}, 0);
+  const CNT = {v:0}, VD = {v:0}, VR = {v:0};
+  function cUpd(){ const e=document.getElementById("gd-cnt"); if(e) e.textContent = Math.round(CNT.v); }
+  function dUpd(){ const e=document.getElementById("gd-vdmg"); if(e) e.textContent = Math.round(VD.v); }
+  function rUpd(){ const e=document.getElementById("gd-vrad"); if(e) e.textContent = Math.round(VR.v); }
+  /* CONTINUOUS: the grass pattern crawls the whole 81 s — the path is being walked */
+  tl.fromTo(P+"grass", {backgroundPositionX:"0px"}, {backgroundPositionX:"-1400px", duration:81.0, ease:"none"}, 0);
+
+  tl.fromTo(P+"hdr", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.5}, 0.4);      /* The enhanced Fujita scale */
+  tl.fromTo(P+"sub", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 3.9);                  /* measures what wind does */
+  /* "Survey teams walk the path after the storm" 6.2 */
+  tl.fromTo(P+"pathwrap", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.6, ease:"power3.out"}, 6.2);
+  tl.fromTo([P+"m0",P+"m16"], {autoAlpha:0, y:10}, {autoAlpha:1, y:0, duration:0.4, stagger:0.2}, 7.4);
+  /* "find damaged structures, and work backward" 9.0–11.6 */
+  tl.fromTo(P+"gauges", {autoAlpha:0, x:40}, {autoAlpha:1, x:0, duration:0.6, ease:"power3.out"}, 11.4);
+  /* "A well-built house swept from its foundation implies one wind speed" 13.0–16.6 */
+  tl.to(P+"di1", {scaleY:1, autoAlpha:1, duration:0.5, ease:"power3.out"}, 13.2);
+  tl.to(VD, {v:150, duration:1.2, ease:"power3.out", onUpdate:dUpd}, 15.8);
+  tl.to(P+"fdmg", {scaleX:150/300, duration:1.2, ease:"power3.out"}, 15.8);
+  /* "A snapped power pole implies another" 18.0–19.5 */
+  tl.to(P+"di2", {scaleY:1, autoAlpha:1, duration:0.5, ease:"power3.out"}, 18.1);
+  tl.to(VD, {v:120, duration:0.9, ease:"power3.out", onUpdate:dUpd}, 19.1);
+  tl.to(P+"fdmg", {scaleX:120/300, duration:0.9, ease:"power3.out"}, 19.1);
+  /* "No damage, no evidence, no rating." 20.6–23.1: the empty grass pulses */
+  tl.to(P+"grass", {opacity:0.35, duration:0.5, yoyo:true, repeat:3, ease:"sine.inOut"}, 20.7);
+  /* "16 miles, almost all of it open farmland" 26.0–29.4 */
+  tl.to(P+"pathlab", {scale:1.05, transformOrigin:"left center", duration:0.4, yoyo:true, repeat:1}, 26.0);
+  /* "hundreds of damage points" 32.6 — counter; "handful of rural homes supported EF3" 35.7–38.3 */
+  tl.fromTo(P+"found", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.5}, 31.8);
+  tl.to(CNT, {v:312, duration:2.4, ease:"power3.out", onUpdate:cUpd}, 32.4);
+  tl.to(P+"di3", {scaleY:1, autoAlpha:1, duration:0.4, ease:"power3.out"}, 32.8);
+  tl.to(P+"di4", {scaleY:1, autoAlpha:1, duration:0.4, ease:"power3.out"}, 33.6);
+  tl.to(P+"di5", {scaleY:1, autoAlpha:1, duration:0.4, ease:"power3.out"}, 34.4);
+  tl.to(VD, {v:160, duration:1.4, ease:"power3.out", onUpdate:dUpd}, 36.0);
+  tl.to(P+"fdmg", {scaleX:160/300, duration:1.4, ease:"power3.out"}, 36.0);
+  tl.fromTo(P+"verdict", {autoAlpha:0}, {autoAlpha:1, duration:0.2}, 37.8);
+  tl.fromTo(P+"stamp", {scale:2.4}, {scale:1, duration:0.35, ease:"power4.in"}, 37.9);
+  /* "the mobile research radar ... measured winds above 290 miles per hour" 40.2–44.9 */
+  tl.to(VR, {v:290, duration:2.6, ease:"power3.out", onUpdate:rUpd}, 42.4);
+  tl.to(P+"frad", {scaleX:290/300, duration:2.6, ease:"power3.out"}, 42.4);
+  /* "in sub-vortices that spun across empty fields" 46.5–49.0: the violent core lights the EMPTY stretch */
+  tl.set(P+"core", {left:"700px", autoAlpha:1}, 46.6);
+  tl.to(P+"core", {width:"170px", duration:1.6, ease:"power2.out"}, 46.6);
+  tl.fromTo(P+"corelab", {autoAlpha:0, y:8}, {autoAlpha:1, y:0, duration:0.4}, 48.4);
+  /* "the surveyors found nothing to inspect" 53.3–54.8 */
+  tl.to(P+"core", {opacity:0.55, duration:0.5, yoyo:true, repeat:3, ease:"sine.inOut"}, 53.4);
+  /* "Grass does not testify." 55.2–57.0 */
+  tl.fromTo(P+"close", {autoAlpha:0}, {autoAlpha:1, duration:0.7}, 55.3);
+  /* "the radar's numbers ran 10–30% above what the damage implied" 60.4–63.9 */
+  tl.fromTo(P+"gap", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.5}, 61.4);
+  tl.fromTo(P+"gapv", {scale:1.5}, {scale:1, duration:0.4, ease:"power4.in"}, 61.9);
+  /* "The scale worked exactly as designed." 65.2–67.1: the stamp re-slams */
+  tl.fromTo(P+"stamp", {scale:1.25}, {scale:1, duration:0.35, ease:"power4.in"}, 65.4);
+  /* "spent its fury on emptiness" 73.2–74.3: the core breathes once more */
+  tl.to(P+"core", {width:"230px", opacity:0.9, duration:0.9, yoyo:true, repeat:1, ease:"sine.inOut"}, 73.2);
+  /* "The record width stands, measured by radar. The violence stays officially invisible." 75.6–80.6 */
+  tl.to(P+"frad", {opacity:0.35, duration:0.8}, 79.2);
+  tl.to(P+"vrad", {opacity:0.35, duration:0.8}, 79.2);
+  /* exit on the cut (81.6): slide right, gone */
+  tl.to("#root > *", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 81.0);
+  window.__timelines["g-dimethod"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
