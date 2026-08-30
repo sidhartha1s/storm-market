@@ -100,7 +100,7 @@ def encode(src_file, out_file, keep, crf, audio):
         base += ["-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo"]
         maps = ["-map", "0:v", "-map", "1:a", "-c:a", "aac", "-b:a", "32k", "-shortest"]
     cmd = base + ["-t", f"{keep:.2f}", *maps,
-                  "-vf", "scale=-2:'min(1080,ih)'", "-c:v", "libx264",
+                  "-vf", "scale=w='min(1920,iw)':h='min(1080,ih)':force_original_aspect_ratio=decrease:force_divisible_by=2", "-c:v", "libx264",
                   "-preset", "veryfast", "-crf", str(crf), "-g", str(GOP),
                   "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(out_file)]
     return subprocess.run(cmd, capture_output=True, text=True)
