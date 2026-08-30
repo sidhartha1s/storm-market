@@ -60,6 +60,40 @@ Every owner correction / measured surprise lands here same session. Newest first
     on-screen dates (src-pd frame check) and was wired for an hour before the report landed. Any
     long radar/office file inherited from an earlier attempt gets a frame read before the wire, not
     after.
+14. **The 150 MB media budget is real on 0.7.109 — measured 2026-08-30 (owner-ordered calibration).**
+    `media_budget.py` refused 262 MB / 119 clips; the line came from ep3's 67-OK / 240-fail and had
+    never been re-tested, so the draft was launched with **444 MB** of source under the logged
+    `RENDER_MEDIA_BUDGET_OK=1` override. Result: `video_extract` "ended" normally at 240 s, then
+    `Video "vx-sattl" captured 0 of expected 88 frames (+13 more)`. RCA from the hyperframes source:
+    14 of 152 clips died at the ffprobe step inside extraction (hardcoded 30 s deadline, misses run
+    under `Promise.all` while 3 workers decode) and left EMPTY `hfcache-v4-*.partial-<pid>-*` dirs in
+    the extract cache; `HF_VIDEO_EXTRACTION_FAILURE_MODE` defaults to `off`, which DROPS typed
+    extraction failures without a log line — the coverage gate is the only symptom. `render.cmd`
+    now sets `observe` so the kinds are named. Verdict: 444 MB fails for exactly the mechanism the
+    gate models; the real threshold between 150 and 444 stays unmeasured (renders are not
+    diagnostics) — the line stays at 150. The cost on ep4: 119 clips of high-entropy stock land at
+    crf 33-35 (~1.5 Mbps) — invisible in a crf32 draft, a visible ceiling on the full render; the
+    trade (fewer clips vs source quality) is the owner's call, recorded in HANDOFF.
+15. **`media/_orig/` carried over from the remaster copy (228 pristine originals, 3.8 GB).**
+    `optimize_clips.py` encodes from the `_orig` backup when one exists, so the "optimize" pass
+    re-encoded 40-50 Mbps 1080p stock and GREW the set 262 -> 491 MB at crf23. Preset (veryfast /
+    medium / slow) and `hqdn3d` denoise change nothing — the cost is real motion entropy (wheat,
+    rain on pavement), not grain. When copying an episode's `media/` forward, know what `_orig/`
+    holds before running the optimizer.
+16. **Two gates in direct conflict:** `optimize_clips.py` re-encoded the staged CTA (24 -> 7.8 MB)
+    and `sweep_episode.py` then failed it on md5 vs `assets/cta/`. Fixed in the script (skips
+    `media/cta/`), restored from `_orig`, md5 verified. Side effect to watch: the byte-identical CTA
+    has an 8.3 s GOP (hyperframes compiler warns "sparse keyframes ... frame freezing") — if the
+    draft shows a freeze at 9:15-9:30 the fix is a short-GOP re-encode of the asset as a new
+    versioned file, not of the staged copy.
+17. **`schtasks //Create //ST <now+1> ... ; schtasks //Run` fires the task TWICE** (the //Run and the
+    scheduled time). The second ep4 draft instance hit the heavy-process gate on the first one's
+    Chrome, refused, and wrote `render_draft_done.marker` = 2 while the real render was still
+    extracting — a false failure signal. Either //Run with a far-future //ST, or //ST alone.
+18. **Never match a process on a substring that your own command line contains.** The draft waiter
+    polled `CommandLine -like '*verify_r10*'` from a shell whose command line contained
+    `verify_r10` — it waited on itself for 45 min; the taskkill that "fixed" it matched the same way
+    and killed my own shell. Exclude `*Win32_Process*` (the poller) from every such query.
 
 ## 2026-08-30 — the ebook CTA is a channel asset + a must-keep contract (owner order, ep4 rewire kickoff)
 
