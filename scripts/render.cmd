@@ -45,6 +45,9 @@ REM ffprobe on PATH and the deadline failure comes straight back. See LEARNINGS.
 REM hyperframes >=0.8 telemetry spawns DETACHED `node -e fetch(...)` children with no windowsHide
 REM = a visible console window per flush (owner 2026-08-23). Opt out unconditionally.
 set HYPERFRAMES_NO_TELEMETRY=1
+REM Name typed extraction failures in the log (ep4 2026-08-30: 0.7.109 default 'off' drops them and
+REM the only symptom is the later 'captured 0 of expected N' coverage gate). observe = log only.
+set HF_VIDEO_EXTRACTION_FAILURE_MODE=observe
 set DO_NOT_TRACK=1
 set HYPERFRAMES_FFPROBE_PATH=C:\Users\Sidhartha\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Shared_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.2-full_build-shared\bin\ffprobe.exe
 set HYPERFRAMES_FFMPEG_PATH=C:\Users\Sidhartha\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Shared_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.2-full_build-shared\bin\ffmpeg.exe
