@@ -30,6 +30,8 @@ channel:
     file: assets/cta/paul-storm-ready-v4c.mp4     # md5 34b6b40bdf772d75d4c7ebf11a0e2a80 — swap = NEW versioned file + bump here, never overwrite
     duration: 15.104
     transcript: assets/cta/paul-storm-ready-v4c.txt
+    exempt:                       # shipped BEFORE the contract (2026-08-30) — never extended; demo-* dirs skip by having no epN prefix
+      [ep1-joplin, ep2-2011-super-outbreak, ep3-tristate, ep5-california-2018, ep6-katrina-2005]
     window: [0.30, 0.40]          # CTA data-start as a fraction of total runtime: hook > CTA > payoff
     dip_in: 1.0                   # black before/after, seconds (blackout table: dramatic punctuation)
     dip_out: 1.0
