@@ -185,7 +185,8 @@
   <video id="vx-srv" src="media/nwsnorman/docmine/storm-relative-velocity.mp4" data-start="314.56" data-duration="5.86" data-track-index="1"></video>
   <video id="vx-wxsat" src="media/weathergov/wxgov-satellite-loop-elreno.mp4" data-start="320.42" data-duration="6.0" data-track-index="1"></video>
   <video id="vx-sattl" src="media/nwsnorman/docmine/satellite-timelapse.mp4" data-start="326.42" data-duration="5.83" data-track-index="1"></video>
-  <video id="vx-radarloopc" src="media/nwsnorman/cuts/nwsnorman-elreno-radar-loop-c__0.00-12.00.mp4" data-start="332.25" data-duration="10.13" data-track-index="1"></video>
+  <section class="clip still-wrap contain-wrap" id="c-ref2309" data-start="332.25" data-duration="5.0" data-track-index="1"><img id="kb-ref2309" src="media/radar/ktlx-ref-2309utc-1809cdt.png" alt=""></section>
+  <section class="clip still-wrap contain-wrap" id="c-ref2332" data-start="337.25" data-duration="5.13" data-track-index="1"><img id="kb-ref2332" src="media/radar/ktlx-ref-2332utc-1832cdt.png" alt=""></section>
   <video id="vx-inflow" src="media/nwsnorman/docmine/inflow-winds-callout.mp4" data-start="342.38" data-duration="6.0" data-track-index="1"></video>
   <video id="vx-dash1" src="media/stock/dashboard-pov-rain-01.mp4" data-start="348.38" data-duration="5.5" data-track-index="1"></video>
   <section class="clip still-wrap contain-wrap" id="c-overview2" data-start="353.88" data-duration="4.0" data-track-index="1"><img id="kb-overview2" src="media/weathergov/wxgov-map-overview2.png" alt=""></section>
@@ -540,6 +541,8 @@ window.__timelines = window.__timelines || {};
   kb("#kb-overview1", 271.26, 3.1, 1.04, 1.1, 0, -8, 0, -5);
   kb("#kb-scar1", 279.96, 4.1, 1.0, 1.09, 0, 10, 0, -6);
   kb("#kb-supercellai", 298.56, 4.0, 1.06, 1.14, 0, -8, 0, -6);
+  kb("#kb-ref2309", 332.25, 5.0, 1.0, 1.1, 0, -10, 0, 8);
+  kb("#kb-ref2332", 337.25, 5.13, 1.1, 1.2, -8, -16, 6, 12);
   kb("#kb-overview2", 353.88, 4.0, 1.02, 1.1, 0, 8, 0, -5);
   kb("#kb-vel2314", 367.9, 3.34, 1.0, 1.08, 0, -8, 0, 6);
   kb("#kb-wedge2", 424.24, 3.3, 1.1, 1.0, 8, -5, 6, -4);
@@ -609,7 +612,7 @@ window.__timelines = window.__timelines || {};
   function drift(sel, at, dur) { tl.fromTo(sel, { scale: 1.0, transformOrigin: "center" }, { scale: 1.04, duration: dur, ease: "none" }, at); }
   [["#vx-outlook",195.18,6.0],["#vx-surfmap",206.18,3.12],["#vx-windsmap",209.3,6.0],["#vx-capemap",215.3,4.92],["#vx-shearmap",220.22,4.88],
    ["#vx-jetmap",236.64,4.44],["#vx-cleannorth",274.36,5.6],["#vx-reportdots",302.56,6.0],["#vx-dow",308.56,6.0],["#vx-srv",314.56,5.86],
-   ["#vx-wxsat",320.42,6.0],["#vx-sattl",326.42,5.83],["#vx-radarloopc",332.25,10.13],["#vx-inflow",342.38,6.0],["#vx-calumet",357.88,4.0],
+   ["#vx-wxsat",320.42,6.0],["#vx-sattl",326.42,5.83],["#vx-inflow",342.38,6.0],["#vx-calumet",357.88,4.0],
    ["#vx-spcsat",464.68,3.0],["#vx-paddle",721.16,6.0],["#vx-sharpleft",812.76,6.0],["#vx-dow2",829.26,6.0],
    ["#vx-reportdots2",998.84,6.0],["#vx-cleani40",1048.24,6.0],["#vx-wxsat2",1115.42,7.34],["#vx-ef0contour",1234.44,5.9],
    ["#vx-cleannorth2",1363.37,5.81],["#vx-paddle2",1450.68,6.0],["#vx-srv2",1497.88,2.68]].forEach(function(d){ drift(d[0], d[1], d[2]); });
