@@ -93,11 +93,18 @@ report("element ids unique", sorted(n for n, c in ids.items() if c > 1))
 # config.yaml channel.cta; the hinge (tease -> CTA -> payoff) stays editorial.
 import yaml  # noqa: E402
 _cfg = yaml.safe_load((Path(__file__).resolve().parent.parent / "config.yaml").read_text(encoding="utf-8"))
-cta = _cfg["channel"]["cta"]
+cta = (_cfg.get("channel") or {}).get("cta")
+if not cta:
+    sys.exit("config.yaml has no channel.cta block — the CTA contract needs it (DESIGN.md)")
 cta_name = Path(cta["file"]).name
 cta_bad = []
+_slug = ep.resolve().name
+_cta_applies = bool(re.match(r"ep\d+", _slug)) and _slug not in (cta.get("exempt") or [])
 cm = re.search(r'<video\b[^>]*src="([^"]*' + re.escape(cta_name) + r')"[^>]*>', h)
-if not cm:
+if not _cta_applies:
+    # episodes shipped before the contract (config channel.cta.exempt) and demo-* dirs are not re-wired
+    print(f"SKIP CTA present + placed — {_slug} is exempt (shipped pre-contract) or not an epN episode")
+elif not cm:
     cta_bad.append(f"no <video> whose src ends in {cta_name} (config channel.cta.file)")
 else:
     a = cm.group(0)
@@ -119,8 +126,11 @@ else:
                 cta_bad.append(f"narration {n.group(1)} overlaps the CTA (must be silent under it)")
         for o in re.finditer(r'<(?:audio|video)\b[^>]*id="(?:nx-)?ins[^"]*"[^>]*>', h):
             os_ = re.search(r'data-start="([\d.]+)"', o.group(0))
-            if cta_name not in o.group(0) and os_ and -60 < float(os_.group(1)) - s < d + 60:
+            muted = o.group(0).startswith("<video") and not re.search(r'data-volume="1(?:\.0+)?"', o.group(0))
+            if cta_name not in o.group(0) and not muted and os_ and -60 < float(os_.group(1)) - s < d + 60:
                 print(f"WARN  another insert within 60s of the CTA: {o.group(0)[:80]}")
+if cm and _cta_applies:
+    a = cm.group(0)
     if not re.search(r'data-volume="1(?:\.0+)?"', a):
         cta_bad.append('CTA needs data-volume="1" (it carries its own VO)')
     if 'data-srt-label="' not in a:
@@ -131,7 +141,8 @@ else:
         cta_bad.append(f"staged file missing: {staged}")
     elif hashlib.md5(staged.read_bytes()).hexdigest() != hashlib.md5(asset.read_bytes()).hexdigest():
         cta_bad.append(f"staged {cm.group(1)} differs from {cta['file']} (md5)")
-report("CTA present + placed (config channel.cta)", cta_bad)
+if _cta_applies:
+    report("CTA present + placed (config channel.cta)", cta_bad)
 
 # 5c. visual-identity repeats — the viewer sees SOURCES, not filenames. Cuts a/b/c of one
 # homogeneous source read as the same clip (ep5 v1: burnaer02 family 16x, fire02 4x in

@@ -323,7 +323,7 @@ renders on any fucking video ever."*
 
 Run ALL of these to green BEFORE launching a render, every time:
 ```
-python3 scripts/sweep_episode.py episodes/<slug>     # 10 structural checks
+python3 scripts/sweep_episode.py episodes/<slug>     # 15 structural checks incl. the CTA gate
 node    scripts/blank_scan.mjs   <abs episode dir>   # pre-render blackdetect
 python3 scripts/beat_density.py  episodes/<slug>     # motionless stretches
 node    scripts/graphics_qc.mjs  .                   # from the episode dir

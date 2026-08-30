@@ -85,13 +85,14 @@ shipped; these are the standing requirements for every episode's cold open:
 - Few clips, each earning its slot (ep2: warning → impact → dispatch → void). More clips ≠
   more captivating; undifferentiated montage is what scored 0.6.
 
-### CTA contract (owner order 2026-08-30 — must-keep, every episode)
+### CTA contract (owner order 2026-08-30 — must-keep, every episode from ep4 on)
 The ebook CTA (Paul on camera, 15.1s, QR + "first link in the description") is a fixed element of
 every episode from ep4 on. File, duration, window and labels live in `config.yaml channel.cta`
 (current: `assets/cta/paul-storm-ready-v4c.mp4`, README + transcript beside it) — never a
 per-episode copy of the rule, never a hand-edited path. Shape: **hook > CTA > payoff**.
 - **Window: the CTA starts inside 30–40% of total runtime** — after the episode has earned it,
-  before the first big payoff lands. `sweep_episode.py` fails outside the window.
+  before the first big payoff lands. `sweep_episode.py` fails outside the window (episodes shipped
+  before the contract are listed in `channel.cta.exempt` — never extended; `demo-*` dirs print SKIP).
 - **Hinge is scripted, not spliced:** the narration segment BEFORE it ends on a tease (an open
   loop planted in the words — "...that gap was about to close, on the most experienced observers
   alive"), the segment AFTER opens with the payoff in its first sentence. The script's loop table
