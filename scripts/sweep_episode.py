@@ -2,6 +2,7 @@
 
 Each check prints PASS/FAIL and the offending items. No check depends on a render.
 """
+import hashlib
 import json
 import re
 import subprocess
@@ -86,6 +87,51 @@ report("media files exist", sorted(set(miss)))
 # renders one window BLACK while every attribute-level check passes (ep5 v1, 8s hole)
 ids = Counter(re.findall(r' id="([^"]+)"', h))
 report("element ids unique", sorted(n for n, c in ids.items() if c > 1))
+
+# 5d. CTA present + placed (owner order 2026-08-30, DESIGN.md "CTA contract"): the ebook CTA is a
+# must-keep element of every episode. Deterministic part only — file/duration/window/labels from
+# config.yaml channel.cta; the hinge (tease -> CTA -> payoff) stays editorial.
+import yaml  # noqa: E402
+_cfg = yaml.safe_load((Path(__file__).resolve().parent.parent / "config.yaml").read_text(encoding="utf-8"))
+cta = _cfg["channel"]["cta"]
+cta_name = Path(cta["file"]).name
+cta_bad = []
+cm = re.search(r'<video\b[^>]*src="([^"]*' + re.escape(cta_name) + r')"[^>]*>', h)
+if not cm:
+    cta_bad.append(f"no <video> whose src ends in {cta_name} (config channel.cta.file)")
+else:
+    a = cm.group(0)
+    st = re.search(r'data-start="([\d.]+)"', a)
+    du = re.search(r'data-duration="([\d.]+)"', a)
+    if not (st and du):
+        cta_bad.append("CTA element lacks data-start / data-duration")
+    else:
+        s, d = float(st.group(1)), float(du.group(1))
+        if abs(d - float(cta["duration"])) > 0.05:
+            cta_bad.append(f"data-duration {d} != config {cta['duration']}")
+        lo, hi = cta["window"]
+        if not (lo <= s / total <= hi):
+            cta_bad.append(f"starts at {s}s = {s / total:.0%} of {total}s — outside {lo:.0%}-{hi:.0%}")
+        for n in re.finditer(r'<audio\b[^>]*id="(nx-(?!ins)[^"]*)"[^>]*>', h):
+            ns, nd = (re.search(r'data-start="([\d.]+)"', n.group(0)),
+                      re.search(r'data-duration="([\d.]+)"', n.group(0)))
+            if ns and nd and float(ns.group(1)) < s + d and float(ns.group(1)) + float(nd.group(1)) > s:
+                cta_bad.append(f"narration {n.group(1)} overlaps the CTA (must be silent under it)")
+        for o in re.finditer(r'<(?:audio|video)\b[^>]*id="(?:nx-)?ins[^"]*"[^>]*>', h):
+            os_ = re.search(r'data-start="([\d.]+)"', o.group(0))
+            if cta_name not in o.group(0) and os_ and -60 < float(os_.group(1)) - s < d + 60:
+                print(f"WARN  another insert within 60s of the CTA: {o.group(0)[:80]}")
+    if not re.search(r'data-volume="1(?:\.0+)?"', a):
+        cta_bad.append('CTA needs data-volume="1" (it carries its own VO)')
+    if 'data-srt-label="' not in a:
+        cta_bad.append("CTA needs data-srt-label (its SRT cue)")
+    staged = ep / cm.group(1)
+    asset = Path(__file__).resolve().parent.parent / cta["file"]
+    if not staged.exists():
+        cta_bad.append(f"staged file missing: {staged}")
+    elif hashlib.md5(staged.read_bytes()).hexdigest() != hashlib.md5(asset.read_bytes()).hexdigest():
+        cta_bad.append(f"staged {cm.group(1)} differs from {cta['file']} (md5)")
+report("CTA present + placed (config channel.cta)", cta_bad)
 
 # 5c. visual-identity repeats — the viewer sees SOURCES, not filenames. Cuts a/b/c of one
 # homogeneous source read as the same clip (ep5 v1: burnaer02 family 16x, fire02 4x in

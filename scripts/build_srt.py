@@ -29,7 +29,11 @@ def main():
     # inserts (archival audio, no transcript): label each from its data-srt-label attribute.
     # An insert WITHOUT a label is a hard error — a silent skip shipped ep5's SRT with no
     # 911 caption (the old code hardcoded another episode's nx-ins1/Jasper County values).
-    for ins in re.finditer(r'<audio [^>]*?id="(?:nx-)?ins[^"]*"[^>]*>', html):
+    # <video id="ins…" data-volume="1"> inserts (ep6 WWL/C-SPAN cuts, the CTA) carry their own
+    # audio on the picture track — they get a cue too (2026-08-30; muted videos are skipped).
+    for ins in re.finditer(r'<(?:audio|video) [^>]*?id="(?:nx-)?ins[^"]*"[^>]*>', html):
+        if ins.group(0).startswith("<video") and not re.search(r'data-volume="1(?:\.0+)?"', ins.group(0)):
+            continue
         st = re.search(r'data-start="([\d.]+)"', ins.group(0))
         du = re.search(r'data-duration="([\d.]+)"', ins.group(0))
         lab = re.search(r'data-srt-label="([^"]+)"', ins.group(0))
