@@ -26,11 +26,15 @@
 Every episode keeps a LOOP TABLE in its edit_script:
 - **1 episode loop**: planted in the hook, paid in the final act. (ep5: "fire is not supposed to do this" → "the warnings were there.")
 - **1 loop per act**: planted in that act, paid within 1–2 acts. Each act ALSO pays off one earlier loop — an act that only plants is a tease; an act that only pays is a dead end.
+- **1 CTA hinge (REQUIRED, owner 2026-08-30 — DESIGN.md "CTA contract")**: a tease→payoff pair
+  whose tease ends the segment at 30–40% of runtime and whose payoff opens the next segment's first
+  sentence; the 15.1s CTA sits between them. Listed in the loop table as `cta-hinge` with the two
+  segment ids. If no honest payoff falls in that band, restructure the acts — the CTA never moves.
 - Loops close honestly. A dropped loop is the #1 tell of stretched runtime (competitor teardown: the "radar could warn us someday" tease that never resolves).
 
 ## The scaling recipe (x → 2x → 3x…)
 
-1. **Never lengthen an act past 6 min.** More runtime = more acts.
+1. **Never lengthen an act past 6 min.** More runtime = more acts. Runtime arithmetic = narration + hook void + blackouts + the 15.1s CTA + its two 1.0s dips.
 2. Each added act needs its own **new material**: a vignette + a mechanism/analysis pair (info first, spice second). No new material → don't add the act → the honest runtime is shorter.
 3. Re-run the loop table: every new act plants one, pays one.
 4. Cadences unchanged. A 500x script is just more 3–6 min mini-episodes on the same lattice,
@@ -50,6 +54,7 @@ Format-proof by construction: there is nothing to fail midrun.
 > **Job:** the one thing this act must accomplish.
 > **In / out:** the hook-in line idea → the exit beat (hold/blackout).
 > **Loops:** plants [x] · pays [y].
+> **CTA hinge:** (only in the act that carries it) tease = last line of [seg] → CTA → payoff = first line of [seg].
 > **Rehooks:** the 2–3 real beats (insert / graphic reveal / stat spike) and roughly where.
 > **Tempo + emotion:** the pacing wave shape, and how much emotion this act banks (info acts bank little — that's the next act's job).
 

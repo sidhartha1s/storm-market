@@ -2,6 +2,23 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
+## 2026-08-30 — the ebook CTA is a channel asset + a must-keep contract (owner order, ep4 rewire kickoff)
+
+1. **The CTA was never in the pipeline.** ep2's Paul CTA was spliced into the finished mp4 by the
+   owner outside the repo (LEARNINGS 08-29: located by cross-correlation), ep5/ep6 shipped with
+   none, and the clip itself lived only in `Videos\storm-insert-work` — unfindable from the repo.
+   Now: `assets/cta/paul-storm-ready-v4c.mp4` (tracked; `.gitignore` negation — the only mp4 in
+   git), transcript + README beside it, `config.yaml channel.cta` as the single source of truth.
+2. **Placement is a contract, not taste:** hook > CTA > payoff, start inside 30–40% of runtime,
+   scripted tease before / payoff first-sentence after, 1.0s dips, own audio, no chapter boundary,
+   first link in the description = the ebook. DESIGN.md "CTA contract"; `sweep_episode.py` fails a
+   missing or misplaced CTA; `script-scaling.md` requires a `cta-hinge` loop-table row.
+3. **`build_srt.py` only saw `<audio id="ins…">` inserts** — ep6-style `<video id="ins…"
+   data-volume="1">` inserts (and the CTA) got no SRT cue. Fixed: video inserts with
+   `data-volume="1"` are cued from their `data-srt-label` too.
+4. ep4 (El Reno) is the first in-timeline use; the contract is "verified" only once ep4's draft
+   shows the CTA landing on the hinge and the sweep passes on it.
+
 ## 2026-08-29 — 1440p upload file is HEVC now (owner order, ep2 CTA re-cut session)
 
 1. **`-master-1440p.mp4` is hevc_nvenc p7 cq22 by default** (the `--hevc` recipe + the lanczos
