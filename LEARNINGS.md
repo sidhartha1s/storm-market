@@ -43,6 +43,24 @@ Every owner correction / measured surprise lands here same session. Newest first
    the KTLX loops (src-radar, not delivered at wire time) are the lever — swapping the 12 radar
    PNGs to loops moves ~60 s to video.
 
+10. **Motion gate reads the SOURCE, and PowerPoint decks are stills.** src-pd's 8 "briefing" cuts are
+    narrated slide decks (frame diff 0.00–0.21) and five of the salvaged NWS office/briefing files are
+    near-static (0.31–0.52); five docmine map plates sit at 0.36–0.57 vs the 0.6 floor. Sweep 3 failed
+    14 windows. Rule applied: real motion video where a clean candidate exists, otherwise mount the
+    plate HONESTLY as a `still-wrap` PNG with Ken Burns (frame at 3 s, provenance row as a derived
+    still) — never a drifting `<video>` pretending to move. Cost: stills share 25 % → 28 %.
+11. **Sequence for a sweep-clean build on a 300-window wire:** lint (30 s) → overlap/graphics/beat
+    (1–2 min) → audio_levels (2 min) → ONE sweep (8–12 min; luma + motion gates probe every source)
+    → fix → re-sweep. Four sweep rounds this build (track overlap + family repeats → luma → motion →
+    PASS); budget ~45 min of sweeps into any rewire.
+12. **Comp snapshot loop caught what the code gates cannot:** kicker second line landing 0.9 s before
+    the comp exit, a rain-curtain wash hiding the labels it was drawn over (fix = draw order, not
+    opacity), a track line through "HARD LEFT". 3 rounds, 33 frames, ~15 min, Sonnet reviewers.
+13. **Mislabeled source in the salvage:** `nwsnorman-elreno-radar-loop-c.mp4` carries April 9, 2013
+    on-screen dates (src-pd frame check) and was wired for an hour before the report landed. Any
+    long radar/office file inherited from an earlier attempt gets a frame read before the wire, not
+    after.
+
 ## 2026-08-30 — the ebook CTA is a channel asset + a must-keep contract (owner order, ep4 rewire kickoff)
 
 1. **The CTA was never in the pipeline.** ep2's Paul CTA was spliced into the finished mp4 by the
