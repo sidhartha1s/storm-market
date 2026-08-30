@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-width-v2 — THE WIDTH RECORD as a circulation ring growing on the section-road grid (scratch
+  approach, one-line reason in edit_script.md: no library exemplar draws a to-scale footprint).
+  Scale: 250 px per mile — the grid squares ARE the narration's "section roads a mile apart".
+  Same word-sync as v1 (comp time == a2-s2 words.json): 0.2 mi @6.1 · 0.5 @14.3 · 1 @16.6 · 2 @18.3 ·
+  2.6 @23.3–25.5 · Manhattan band @28.0 · Hallam dashed ring @38.9, fades @42.4 · RECORD @43.6.
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif; overflow:hidden; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .eyebrow { position:absolute; left:96px; top:74px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .hl { position:absolute; left:96px; top:108px; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; letter-spacing:1px; }
+  .sub { position:absolute; left:96px; top:176px; font-family:Georgia,serif; font-style:italic; font-size:27px; color:#d8a13a; }
+  .rdg { position:absolute; right:96px; top:88px; text-align:right; }
+  .rdgnum { font-family:'Courier New',monospace; font-size:96px; color:#e74c3c; font-weight:700; line-height:1; }
+  .rdglab { font-size:20px; letter-spacing:6px; color:#c8d3e0; font-weight:700; margin-top:8px; }
+  .clock { position:absolute; right:96px; top:236px; text-align:right; font-family:'Courier New',monospace; font-size:30px; font-weight:700; color:#e8c56a; letter-spacing:2px; }
+  .maplab { font-family:Arial,sans-serif; font-weight:700; font-size:22px; letter-spacing:4px; fill:#93a3b2; }
+  .biglab { font-family:'Arial Black',Arial,sans-serif; font-size:30px; fill:#f2f5f8; letter-spacing:1px; }
+  .amberlab { font-family:Georgia,serif; font-style:italic; font-size:26px; fill:#e8c56a; }
+  .kicker { position:absolute; left:96px; top:880px; font-family:'Arial Black',Arial,sans-serif; font-size:58px; color:#e74c3c; letter-spacing:2px; transform-origin:left center; }
+  .foot { position:absolute; left:96px; top:962px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  .srcnote { position:absolute; right:96px; top:966px; font-size:19px; letter-spacing:4px; color:#5a768f; font-weight:700; text-align:right; }
+  .badge { position:absolute; right:96px; top:300px; font-family:'Arial Black',Arial,sans-serif; font-size:26px; color:#fff; background:#8e2020; padding:6px 18px; letter-spacing:3px; }
+</style>
+<div id="root" data-composition-id="g-width-v2" data-width="1920" data-height="1080">
+  <svg viewBox="0 0 1920 1080" style="position:absolute;inset:0">
+    <defs>
+      <pattern id="gw2-mile" width="250" height="250" patternUnits="userSpaceOnUse" x="85" y="65">
+        <rect x="0" y="0" width="250" height="250" fill="none" stroke="#16232e" stroke-width="2"/>
+      </pattern>
+      <radialGradient id="gw2-core" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#e74c3c" stop-opacity="0.55"/><stop offset="70%" stop-color="#c0392b" stop-opacity="0.28"/><stop offset="100%" stop-color="#8e2020" stop-opacity="0.05"/>
+      </radialGradient>
+      <filter id="gw2-glow"><feGaussianBlur stdDeviation="12" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <g id="gw2-grid"><rect x="-500" y="-500" width="2920" height="2080" fill="url(#gw2-mile)"/></g>
+    <text id="gw2-gridlab" x="96" y="1012" class="maplab" opacity="0">EACH SQUARE · ONE MILE · A SECTION ROAD ON EVERY LINE</text>
+    <!-- Hallam 2004 — the old record, a dashed ring the new one swallows -->
+    <circle id="gw2-hallam" cx="960" cy="590" r="0" fill="none" stroke="#e8c56a" stroke-width="4" stroke-dasharray="14 12" opacity="0"/>
+    <text id="gw2-hallamlab" x="960" y="900" text-anchor="middle" class="amberlab" opacity="0">Hallam, Nebraska · 2004 · 2.5 miles · the old record</text>
+    <!-- the circulation -->
+    <circle id="gw2-ring" cx="960" cy="590" r="25" fill="url(#gw2-core)" stroke="#e74c3c" stroke-width="6" filter="url(#gw2-glow)"/>
+    <!-- Manhattan, east to west, laid across the ring -->
+    <g id="gw2-man" opacity="0">
+      <rect id="gw2-manbar" x="672" y="574" width="575" height="32" rx="6" fill="#7fb2e5" opacity="0.85"/>
+      <text x="960" y="640" text-anchor="middle" class="biglab" fill="#f2f5f8">THE ISLAND OF MANHATTAN</text>
+      <text x="960" y="674" text-anchor="middle" class="maplab">EAST TO WEST · 2.3 MILES</text>
+    </g>
+  </svg>
+  <div class="eyebrow" id="gw2-eb">&lt; EL RENO · SIXTEEN MINUTES AFTER TOUCHDOWN</div>
+  <div class="hl" id="gw2-hl">HOW WIDE IT GREW</div>
+  <div class="sub" id="gw2-sub">the circulation, edge to edge, on the mile grid it crossed</div>
+  <div class="rdg" id="gw2-rdg"><div class="rdgnum"><span id="gw2-mi">0.0</span> MI</div><div class="rdglab">ACROSS</div></div>
+  <div class="clock" id="gw2-clock">6:03 PM</div>
+  <div class="badge" id="gw2-badge">RECORD</div>
+  <div class="kicker" id="gw2-kicker">NO TORNADO IN RECORDED HISTORY</div>
+  <div class="foot" id="gw2-foot">had ever been this wide.</div>
+  <div class="srcnote" id="gw2-src">RaXPol · MARSHALL ET AL. · 250 PX = 1 MI</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const P = "#gw2-";
+  const tl = gsap.timeline({ paused: true });
+  const PX = 250; /* px per mile */
+  tl.set([P+"eb",P+"hl",P+"sub",P+"rdg",P+"clock",P+"badge",P+"kicker",P+"foot",P+"src"], {autoAlpha:0}, 0);
+  const MI = {v:0};
+  function upd(){ const e=document.getElementById("gw2-mi"); if(e) e.textContent = MI.v.toFixed(1); }
+  function grow(mi, at, dur, ease){ tl.to(P+"ring", {attr:{r: mi*PX/2}, duration:dur, ease:ease||"power2.out"}, at); tl.to(MI, {v:mi, duration:dur, ease:ease||"power2.out", onUpdate:upd}, at); }
+  /* CONTINUOUS: the grid drifts as if the storm is moving over it */
+  tl.to(P+"grid", {x:-140, y:-40, duration:47.0, ease:"none"}, 0);
+  tl.fromTo(P+"eb",  {autoAlpha:0, x:-34}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.15);
+  tl.fromTo(P+"hl",  {autoAlpha:0, y:-26}, {autoAlpha:1, y:0, duration:0.55, ease:"power3.out"}, 0.55);
+  tl.fromTo(P+"sub", {autoAlpha:0, x:-28}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 1.10);
+  tl.fromTo(P+"gridlab", {opacity:0}, {opacity:0.9, duration:0.5}, 2.0);
+  /* "At 6:03 ... a few hundred yards across. Ordinary." */
+  tl.fromTo(P+"rdg", {autoAlpha:0, x:40}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 3.8);
+  tl.fromTo(P+"clock", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 4.2);
+  grow(0.2, 6.1, 0.9);
+  tl.to(P+"ring", {attr:{r:0.25*PX/2}, duration:0.5, ease:"sine.inOut", yoyo:true, repeat:5}, 10.0);  /* pulling in air 10.0–13.3 */
+  grow(0.5, 14.3, 0.7); grow(1.0, 16.6, 0.7); grow(2.0, 18.3, 0.7);
+  tl.to(P+"clock", {autoAlpha:0, y:-8, duration:0.2}, 19.5);
+  tl.call(function(){ const e=document.getElementById("gw2-clock"); if(e) e.textContent="6:19 PM"; }, null, 19.7);
+  tl.to(P+"clock", {autoAlpha:1, y:0, duration:0.3}, 19.75);
+  grow(2.6, 23.3, 2.2, "power4.out");
+  tl.to(P+"ring", {attr:{"stroke-width":10}, duration:0.5, yoyo:true, repeat:3, ease:"sine.inOut"}, 25.5);
+  /* Manhattan lands across the ring 28.0 */
+  tl.fromTo(P+"man", {opacity:0}, {opacity:1, duration:0.5}, 28.0);
+  tl.fromTo(P+"manbar", {attr:{width:0}}, {attr:{width:575}, duration:1.4, ease:"power3.out"}, 28.2);
+  /* "beyond the horizon of most people's eyesight" 33.5–35.6: a breath on the ring */
+  tl.to(P+"ring", {attr:{r:2.7*PX/2}, duration:0.7, ease:"sine.inOut", yoyo:true, repeat:1}, 33.6);
+  /* Hallam dashed ring 38.9 — "was gone" 42.4 */
+  tl.to(P+"man", {opacity:0.35, duration:0.5}, 38.6);
+  tl.fromTo(P+"hallam", {opacity:0, attr:{r:0}}, {opacity:0.95, attr:{r:2.5*PX/2}, duration:1.2, ease:"power3.out"}, 38.9);
+  tl.fromTo(P+"hallamlab", {opacity:0}, {opacity:0.95, duration:0.5}, 39.6);
+  tl.to([P+"hallam",P+"hallamlab"], {opacity:0.25, duration:0.8}, 42.4);
+  /* RECORD 43.6 */
+  tl.fromTo(P+"badge", {autoAlpha:0, scale:1.7}, {autoAlpha:1, scale:1, duration:0.34, ease:"power4.in"}, 43.6);
+  tl.fromTo(P+"kicker", {autoAlpha:0, scale:1.22}, {autoAlpha:1, scale:1, duration:0.42, ease:"power4.in"}, 43.7);
+  tl.fromTo(P+"foot", {autoAlpha:0, y:22}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 46.0);
+  tl.fromTo(P+"src", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 46.3);
+  tl.to("#root > *", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 46.9);
+  window.__timelines["g-width-v2"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
