@@ -89,3 +89,6 @@ All 8: 1920x1080, h264 crf18, 30fps, no audio, 6s each, static single frame thro
 - Provenance rows added: 15 (`media/provenance.csv`, dated 2026-08-30).
 - Raw DVIDS downloads kept at `media/dvids/_raw/` (3 files, ~250MB combined) for future re-cutting
   if more windows are wanted later.
+- Scratch work (scenedetect CSVs, contact sheets) sits at `episodes/ep4-el-reno/tmp_scenedetect/`
+  (~6MB) — sandbox policy blocked `rm -rf` from this session; safe to delete, not referenced by
+  anything else.
