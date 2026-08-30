@@ -1,0 +1,52 @@
+state,abbr,hazard_1,hazard_2,hazard_3,season_1,season_2,season_3,region_overlay,deaths_1,deaths_2,deaths_3,deaths_total
+Alabama,AL,Tornado,Hail and derecho,Lightning,Apr,Mar–Aug,Jun–Jul,Tornado Alley|Hurricane Coast,307,32,20,402
+Alaska,AK,Extreme rainfall and flash flood,Riverine and coastal flooding,Extreme cold,Aug–Nov,Sep–Nov,Dec–Mar,Wildfire West|Ice & Snow North|Quake West,16,3,3,24
+Arizona,AZ,Extreme heat,Extreme rainfall and flash flood,Extreme cold,Jun–Aug,Jun–Aug,Jan–Mar,Wildfire West,1839,53,25,1967
+Arkansas,AR,Extreme rainfall and flash flood,Tornado,Hail and derecho,Apr–Jun,Apr–May,Apr–Jun,Tornado Alley,52,51,26,173
+California,CA,Wildfire,Extreme heat,Hail and derecho,Oct–Jan,Jun–Aug,Oct–Mar,Wildfire West|Quake West,238,74,63,519
+Colorado,CO,Extreme rainfall and flash flood,Riverine and coastal flooding,Lightning,Jul–Sep,May–Jun,May–Jul,Tornado Alley|Wildfire West|Ice & Snow North,21,14,12,72
+Connecticut,CT,Hail and derecho,Blizzard and ice storm,Extreme rainfall and flash flood,Mar–Aug,Jan–Feb,Aug,Hurricane Coast|Ice & Snow North,14,3,3,25
+Delaware,DE,Blizzard and ice storm,Extreme rainfall and flash flood,Extreme heat,Feb,Aug,Jun–Jul,Hurricane Coast,2,2,2,8
+District of Columbia,DC,Lightning,Blizzard and ice storm,,Aug,Jan,,Hurricane Coast|Ice & Snow North,3,1,,4
+Florida,FL,Hurricane and storm surge,Lightning,Hail and derecho,Sep,May–Aug,Feb–Jul,Hurricane Coast,127,72,21,259
+Georgia,GA,Tornado,Hurricane and storm surge,Hail and derecho,Jan–Apr,Sep,Jan–Jul,Tornado Alley|Hurricane Coast,49,34,33,144
+Hawaii,HI,Wildfire,Extreme rainfall and flash flood,Riverine and coastal flooding,Aug,Aug–Jan,Feb,Hurricane Coast|Wildfire West|Quake West,103,8,1,113
+Idaho,ID,Hail and derecho,Blizzard and ice storm,Extreme cold,May–Aug,Oct–Dec,Oct–Jan,Wildfire West|Ice & Snow North|Quake West,13,13,3,32
+Illinois,IL,Extreme cold,Extreme heat,Tornado,Jan–Feb,Jul,Nov–Feb,Tornado Alley|Ice & Snow North,101,89,33,292
+Indiana,IN,Hail and derecho,Tornado,Riverine and coastal flooding,Jun–Aug,Mar,Mar–Jul,Tornado Alley|Ice & Snow North,34,22,18,107
+Iowa,IA,Tornado,Hail and derecho,Blizzard and ice storm,Mar–May,May–Aug,Jan–Feb,Tornado Alley|Ice & Snow North,17,10,7,48
+Kansas,KS,Extreme heat,Extreme rainfall and flash flood,Extreme cold,Jul,Jul–Aug,Feb,Tornado Alley|Wildfire West|Ice & Snow North,8,6,5,35
+Kentucky,KY,Tornado,Extreme rainfall and flash flood,Riverine and coastal flooding,Dec–Mar,May–Jul,Feb–Apr,Tornado Alley,117,80,35,289
+Louisiana,LA,Extreme heat,Extreme rainfall and flash flood,Tornado,Jul–Aug,Mar–Jun,Dec–Apr,Tornado Alley|Hurricane Coast,24,24,23,137
+Maine,ME,Hail and derecho,Riverine and coastal flooding,Extreme cold,Jul–Dec,Dec–Apr,Oct,Hurricane Coast|Ice & Snow North,8,3,1,13
+Maryland,MD,Extreme heat,Hail and derecho,Extreme rainfall and flash flood,Jul,Jul–Dec,Jul–Sep,Hurricane Coast|Ice & Snow North,41,9,8,73
+Massachusetts,MA,Hail and derecho,Lightning,Tornado,Dec–Apr,Sep,Jun,Hurricane Coast|Ice & Snow North,9,4,3,19
+Michigan,MI,Hail and derecho,Extreme cold,Tornado,Jul–Sep,Jan,May–Aug,Tornado Alley|Ice & Snow North,18,9,6,47
+Minnesota,MN,Extreme cold,Hail and derecho,Extreme heat,Jan–Feb,May–Jul,Jul–Aug,Tornado Alley|Ice & Snow North,21,12,6,54
+Mississippi,MS,Tornado,Hail and derecho,Extreme heat,Mar–Apr,Mar–Jun,Jul–Aug,Tornado Alley|Hurricane Coast,128,27,15,199
+Missouri,MO,Tornado,Extreme heat,Extreme rainfall and flash flood,May,Jul,Nov–May,Tornado Alley|Ice & Snow North,198,67,55,405
+Montana,MT,Blizzard and ice storm,Hail and derecho,Riverine and coastal flooding,Oct–Jan,Jun–Jul,May,Wildfire West|Ice & Snow North|Quake West,14,5,4,30
+Nebraska,NE,Riverine and coastal flooding,Hail and derecho,Extreme rainfall and flash flood,Mar–May,Aug–Oct,Mar–Jul,Tornado Alley|Wildfire West|Ice & Snow North,5,4,3,22
+Nevada,NV,Extreme heat,Extreme cold,Extreme rainfall and flash flood,Jun–Jul,Dec–Jan,Aug–Sep,Wildfire West|Quake West,500,12,10,529
+New Hampshire,NH,Hail and derecho,Blizzard and ice storm,Hurricane and storm surge,Jul–Nov,Jun–Jan,Aug,Hurricane Coast|Ice & Snow North,5,3,2,12
+New Jersey,NJ,Extreme rainfall and flash flood,Hail and derecho,Lightning,Sep,Jun–Oct,Jun–Aug,Hurricane Coast|Ice & Snow North,31,22,11,87
+New Mexico,NM,Extreme rainfall and flash flood,Hail and derecho,Wildfire,Jul–Sep,Mar–May,Apr–Jun,Wildfire West,35,5,5,58
+New York,NY,Blizzard and ice storm,Extreme heat,Riverine and coastal flooding,Nov–Dec,Jul,Oct,Hurricane Coast|Ice & Snow North,48,44,43,229
+North Carolina,NC,Extreme rainfall and flash flood,Hail and derecho,Tornado,Sep,Mar–Jul,Apr,Hurricane Coast,120,45,34,270
+North Dakota,ND,Tornado,Riverine and coastal flooding,Blizzard and ice storm,Jun–Jul,Apr–May,Apr,Wildfire West|Ice & Snow North,5,4,3,21
+Ohio,OH,Tornado,Hail and derecho,Riverine and coastal flooding,Mar–Jun,Mar–Aug,Feb–May,Tornado Alley|Ice & Snow North,15,15,14,86
+Oklahoma,OK,Tornado,Extreme rainfall and flash flood,Riverine and coastal flooding,May,Apr–Jun,Feb–May,Tornado Alley|Wildfire West,81,45,22,194
+Oregon,OR,Extreme heat,Hail and derecho,Blizzard and ice storm,Jun,Sep–Dec,Jan,Wildfire West|Quake West,158,19,18,225
+Pennsylvania,PA,Extreme heat,Hail and derecho,Extreme rainfall and flash flood,Jul,Feb–Aug,Jul–Sep,Ice & Snow North,90,30,28,199
+Rhode Island,RI,Hail and derecho,Extreme heat,,Mar,Jul,,Hurricane Coast|Ice & Snow North,2,1,,3
+South Carolina,SC,Hurricane and storm surge,Extreme rainfall and flash flood,Hail and derecho,Sep,Sep–Oct,Apr–Jul,Hurricane Coast,26,24,17,96
+South Dakota,SD,Blizzard and ice storm,Extreme cold,Riverine and coastal flooding,Dec–Feb,Jan–Feb,Mar–Jun,Tornado Alley|Wildfire West|Ice & Snow North,13,9,5,39
+Tennessee,TN,Tornado,Extreme rainfall and flash flood,Extreme heat,Mar–Apr,May–Sep,Jul–Aug,Tornado Alley,101,64,49,311
+Texas,TX,Extreme rainfall and flash flood,Extreme heat,Extreme cold,May–Aug,May–Jul,Feb,Tornado Alley|Hurricane Coast|Wildfire West,358,192,99,851
+Utah,UT,Extreme rainfall and flash flood,Extreme heat,Hail and derecho,Aug–Sep,Jul,Jun–Aug,Wildfire West|Ice & Snow North|Quake West,33,10,10,76
+Vermont,VT,Extreme rainfall and flash flood,Hail and derecho,Extreme heat,Jul–Aug,Jul–Dec,Jul,Ice & Snow North,8,6,5,22
+Virginia,VA,Hail and derecho,Extreme rainfall and flash flood,Tornado,Mar–Jul,May–Oct,Feb–Apr,Hurricane Coast,33,19,11,85
+Washington,WA,Extreme rainfall and flash flood,Hail and derecho,Extreme heat,Mar,Oct–Jan,Jun–Jul,Wildfire West|Quake West,44,29,11,107
+West Virginia,WV,Extreme rainfall and flash flood,Riverine and coastal flooding,Hail and derecho,Jun–Jul,Feb–Jun,May–Sep,Ice & Snow North,41,15,6,66
+Wisconsin,WI,Extreme cold,Extreme heat,Hail and derecho,Nov–Jan,Jul,Feb–Aug,Tornado Alley|Ice & Snow North,72,24,12,140
+Wyoming,WY,Extreme rainfall and flash flood,Blizzard and ice storm,Lightning,Jul,Oct–Dec,Jun–Aug,Wildfire West|Ice & Snow North|Quake West,5,4,3,17
