@@ -63,8 +63,11 @@ All 8: 1920x1080, h264 crf18, 30fps, no audio, 6s each, static single frame thro
    wreckage/blue-flag close shot that looked clean on a coarse 1s contact sheet, but a precision
    re-check showed the produced package has near-continuous burned-in stat captions and
    crossfade wipes throughout its 62s runtime — no clean 5+s window exists. Two attempted cuts
-   were made, verified captioned, and **discarded** (not added to provenance/pool). Not
-   recommended for reuse without a full manual scrub-through if the team wants that aerial shot.
+   were made, verified captioned, and are **NOT usable as-is** — left on disk renamed
+   `media/dvids/CAUTION-captioned-DO-NOT-USE-dvids-883792-aerial-flyover.mp4` and
+   `...-wreckage-flag.mp4` (no provenance row, do not wire) so they don't get mistaken for
+   cleared assets. Not recommended for reuse without a full manual scrub-through if the team
+   wants that aerial shot. Raw source is at `media/dvids/_raw/dvids-883792-137th-response-may20.mp4`.
 
 ## Searched, not found (confirms existing gaps in footage_sources.md)
 
