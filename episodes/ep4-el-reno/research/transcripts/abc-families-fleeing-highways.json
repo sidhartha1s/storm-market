@@ -1,0 +1,6210 @@
+{
+  "slug": "abc-families-fleeing-highways",
+  "language": "en",
+  "duration": 164.44375,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.38,
+      "text": "Part of what made this round of tornadoes in and around Oklahoma City, particularly terrifying,",
+      "words": [
+        {
+          "word": " Part",
+          "start": 0.0,
+          "end": 0.22,
+          "prob": 0.625
+        },
+        {
+          "word": " of",
+          "start": 0.22,
+          "end": 0.38,
+          "prob": 0.993
+        },
+        {
+          "word": " what",
+          "start": 0.38,
+          "end": 0.48,
+          "prob": 0.996
+        },
+        {
+          "word": " made",
+          "start": 0.48,
+          "end": 0.66,
+          "prob": 0.994
+        },
+        {
+          "word": " this",
+          "start": 0.66,
+          "end": 1.02,
+          "prob": 0.939
+        },
+        {
+          "word": " round",
+          "start": 1.02,
+          "end": 1.22,
+          "prob": 0.695
+        },
+        {
+          "word": " of",
+          "start": 1.22,
+          "end": 1.38,
+          "prob": 0.911
+        },
+        {
+          "word": " tornadoes",
+          "start": 1.38,
+          "end": 1.86,
+          "prob": 0.876
+        },
+        {
+          "word": " in",
+          "start": 1.86,
+          "end": 2.14,
+          "prob": 0.944
+        },
+        {
+          "word": " and",
+          "start": 2.14,
+          "end": 2.24,
+          "prob": 0.892
+        },
+        {
+          "word": " around",
+          "start": 2.24,
+          "end": 2.46,
+          "prob": 0.972
+        },
+        {
+          "word": " Oklahoma",
+          "start": 2.46,
+          "end": 2.86,
+          "prob": 0.989
+        },
+        {
+          "word": " City,",
+          "start": 2.86,
+          "end": 3.28,
+          "prob": 0.946
+        },
+        {
+          "word": " particularly",
+          "start": 3.82,
+          "end": 3.82,
+          "prob": 0.962
+        },
+        {
+          "word": " terrifying,",
+          "start": 3.82,
+          "end": 4.38,
+          "prob": 0.957
+        }
+      ]
+    },
+    {
+      "start": 5.0,
+      "end": 9.22,
+      "text": "was that thousands of families were trapped in their cars, traffic coming to a standstill on major",
+      "words": [
+        {
+          "word": " was",
+          "start": 5.0,
+          "end": 5.16,
+          "prob": 0.975
+        },
+        {
+          "word": " that",
+          "start": 5.16,
+          "end": 5.32,
+          "prob": 0.965
+        },
+        {
+          "word": " thousands",
+          "start": 5.32,
+          "end": 5.76,
+          "prob": 0.972
+        },
+        {
+          "word": " of",
+          "start": 5.76,
+          "end": 6.0,
+          "prob": 0.995
+        },
+        {
+          "word": " families",
+          "start": 6.0,
+          "end": 6.36,
+          "prob": 0.993
+        },
+        {
+          "word": " were",
+          "start": 6.36,
+          "end": 6.54,
+          "prob": 0.986
+        },
+        {
+          "word": " trapped",
+          "start": 6.54,
+          "end": 6.78,
+          "prob": 0.971
+        },
+        {
+          "word": " in",
+          "start": 6.78,
+          "end": 6.98,
+          "prob": 0.994
+        },
+        {
+          "word": " their",
+          "start": 6.98,
+          "end": 7.14,
+          "prob": 0.99
+        },
+        {
+          "word": " cars,",
+          "start": 7.14,
+          "end": 7.4,
+          "prob": 0.99
+        },
+        {
+          "word": " traffic",
+          "start": 7.84,
+          "end": 7.84,
+          "prob": 0.991
+        },
+        {
+          "word": " coming",
+          "start": 7.84,
+          "end": 8.12,
+          "prob": 0.989
+        },
+        {
+          "word": " to",
+          "start": 8.12,
+          "end": 8.26,
+          "prob": 0.988
+        },
+        {
+          "word": " a",
+          "start": 8.26,
+          "end": 8.36,
+          "prob": 0.979
+        },
+        {
+          "word": " standstill",
+          "start": 8.36,
+          "end": 8.9,
+          "prob": 0.986
+        },
+        {
+          "word": " on",
+          "start": 8.9,
+          "end": 9.04,
+          "prob": 0.834
+        },
+        {
+          "word": " major",
+          "start": 9.04,
+          "end": 9.22,
+          "prob": 0.952
+        }
+      ]
+    },
+    {
+      "start": 9.22,
+      "end": 14.0,
+      "text": "highways with that storm brewing. Closer the gridlock proving deadly in the end of course,",
+      "words": [
+        {
+          "word": " highways",
+          "start": 9.22,
+          "end": 9.64,
+          "prob": 0.993
+        },
+        {
+          "word": " with",
+          "start": 9.64,
+          "end": 10.3,
+          "prob": 0.774
+        },
+        {
+          "word": " that",
+          "start": 10.3,
+          "end": 10.44,
+          "prob": 0.989
+        },
+        {
+          "word": " storm",
+          "start": 10.44,
+          "end": 10.78,
+          "prob": 0.995
+        },
+        {
+          "word": " brewing.",
+          "start": 10.78,
+          "end": 11.22,
+          "prob": 0.998
+        },
+        {
+          "word": " Closer",
+          "start": 11.74,
+          "end": 12.06,
+          "prob": 0.93
+        },
+        {
+          "word": " the",
+          "start": 12.06,
+          "end": 12.22,
+          "prob": 0.397
+        },
+        {
+          "word": " gridlock",
+          "start": 12.22,
+          "end": 12.54,
+          "prob": 0.934
+        },
+        {
+          "word": " proving",
+          "start": 12.54,
+          "end": 12.82,
+          "prob": 0.967
+        },
+        {
+          "word": " deadly",
+          "start": 12.82,
+          "end": 13.1,
+          "prob": 0.979
+        },
+        {
+          "word": " in",
+          "start": 13.1,
+          "end": 13.42,
+          "prob": 0.792
+        },
+        {
+          "word": " the",
+          "start": 13.42,
+          "end": 13.5,
+          "prob": 0.999
+        },
+        {
+          "word": " end",
+          "start": 13.5,
+          "end": 13.66,
+          "prob": 0.996
+        },
+        {
+          "word": " of",
+          "start": 13.66,
+          "end": 13.8,
+          "prob": 0.502
+        },
+        {
+          "word": " course,",
+          "start": 13.8,
+          "end": 14.0,
+          "prob": 0.98
+        }
+      ]
+    },
+    {
+      "start": 14.22,
+      "end": 18.68,
+      "text": "this happened right around the rush hour. Many family said they'd been told to try to flee the storms.",
+      "words": [
+        {
+          "word": " this",
+          "start": 14.22,
+          "end": 14.28,
+          "prob": 0.984
+        },
+        {
+          "word": " happened",
+          "start": 14.28,
+          "end": 14.48,
+          "prob": 0.984
+        },
+        {
+          "word": " right",
+          "start": 14.48,
+          "end": 14.82,
+          "prob": 0.995
+        },
+        {
+          "word": " around",
+          "start": 14.82,
+          "end": 14.98,
+          "prob": 0.994
+        },
+        {
+          "word": " the",
+          "start": 14.98,
+          "end": 15.2,
+          "prob": 0.996
+        },
+        {
+          "word": " rush",
+          "start": 15.2,
+          "end": 15.4,
+          "prob": 0.937
+        },
+        {
+          "word": " hour.",
+          "start": 15.4,
+          "end": 15.7,
+          "prob": 0.985
+        },
+        {
+          "word": " Many",
+          "start": 16.22,
+          "end": 16.3,
+          "prob": 0.988
+        },
+        {
+          "word": " family",
+          "start": 16.3,
+          "end": 16.58,
+          "prob": 0.208
+        },
+        {
+          "word": " said",
+          "start": 16.58,
+          "end": 16.9,
+          "prob": 0.972
+        },
+        {
+          "word": " they'd",
+          "start": 16.9,
+          "end": 17.12,
+          "prob": 0.76
+        },
+        {
+          "word": " been",
+          "start": 17.12,
+          "end": 17.24,
+          "prob": 0.988
+        },
+        {
+          "word": " told",
+          "start": 17.24,
+          "end": 17.5,
+          "prob": 0.999
+        },
+        {
+          "word": " to",
+          "start": 17.5,
+          "end": 17.7,
+          "prob": 0.884
+        },
+        {
+          "word": " try",
+          "start": 17.7,
+          "end": 17.92,
+          "prob": 0.936
+        },
+        {
+          "word": " to",
+          "start": 17.92,
+          "end": 18.02,
+          "prob": 0.992
+        },
+        {
+          "word": " flee",
+          "start": 18.02,
+          "end": 18.22,
+          "prob": 0.992
+        },
+        {
+          "word": " the",
+          "start": 18.22,
+          "end": 18.4,
+          "prob": 0.986
+        },
+        {
+          "word": " storms.",
+          "start": 18.4,
+          "end": 18.68,
+          "prob": 0.982
+        }
+      ]
+    },
+    {
+      "start": 19.3,
+      "end": 22.3,
+      "text": "ABC's Alex Perez also in Oklahoma tonight on that part of the story.",
+      "words": [
+        {
+          "word": " ABC's",
+          "start": 19.3,
+          "end": 19.58,
+          "prob": 0.877
+        },
+        {
+          "word": " Alex",
+          "start": 19.58,
+          "end": 19.78,
+          "prob": 0.973
+        },
+        {
+          "word": " Perez",
+          "start": 19.78,
+          "end": 20.04,
+          "prob": 0.731
+        },
+        {
+          "word": " also",
+          "start": 20.04,
+          "end": 20.4,
+          "prob": 0.597
+        },
+        {
+          "word": " in",
+          "start": 20.4,
+          "end": 20.68,
+          "prob": 0.963
+        },
+        {
+          "word": " Oklahoma",
+          "start": 20.68,
+          "end": 21.0,
+          "prob": 0.964
+        },
+        {
+          "word": " tonight",
+          "start": 21.0,
+          "end": 21.36,
+          "prob": 0.98
+        },
+        {
+          "word": " on",
+          "start": 21.36,
+          "end": 21.52,
+          "prob": 0.927
+        },
+        {
+          "word": " that",
+          "start": 21.52,
+          "end": 21.66,
+          "prob": 0.994
+        },
+        {
+          "word": " part",
+          "start": 21.66,
+          "end": 21.86,
+          "prob": 0.995
+        },
+        {
+          "word": " of",
+          "start": 21.86,
+          "end": 21.96,
+          "prob": 0.998
+        },
+        {
+          "word": " the",
+          "start": 21.96,
+          "end": 22.04,
+          "prob": 0.995
+        },
+        {
+          "word": " story.",
+          "start": 22.04,
+          "end": 22.3,
+          "prob": 0.997
+        }
+      ]
+    },
+    {
+      "start": 24.2,
+      "end": 30.28,
+      "text": "With the deadly tornado looming above, a driver's nightmare was unfolding below. Complete gridlock",
+      "words": [
+        {
+          "word": " With",
+          "start": 24.2,
+          "end": 24.68,
+          "prob": 0.838
+        },
+        {
+          "word": " the",
+          "start": 24.68,
+          "end": 24.88,
+          "prob": 0.994
+        },
+        {
+          "word": " deadly",
+          "start": 24.88,
+          "end": 25.3,
+          "prob": 0.994
+        },
+        {
+          "word": " tornado",
+          "start": 25.3,
+          "end": 25.62,
+          "prob": 0.996
+        },
+        {
+          "word": " looming",
+          "start": 25.62,
+          "end": 26.18,
+          "prob": 0.995
+        },
+        {
+          "word": " above,",
+          "start": 26.18,
+          "end": 26.58,
+          "prob": 0.996
+        },
+        {
+          "word": " a",
+          "start": 26.82,
+          "end": 26.98,
+          "prob": 0.983
+        },
+        {
+          "word": " driver's",
+          "start": 26.98,
+          "end": 27.46,
+          "prob": 0.92
+        },
+        {
+          "word": " nightmare",
+          "start": 27.46,
+          "end": 27.76,
+          "prob": 0.992
+        },
+        {
+          "word": " was",
+          "start": 27.76,
+          "end": 28.18,
+          "prob": 0.993
+        },
+        {
+          "word": " unfolding",
+          "start": 28.18,
+          "end": 28.44,
+          "prob": 0.993
+        },
+        {
+          "word": " below.",
+          "start": 28.44,
+          "end": 29.04,
+          "prob": 0.994
+        },
+        {
+          "word": " Complete",
+          "start": 29.38,
+          "end": 29.58,
+          "prob": 0.979
+        },
+        {
+          "word": " gridlock",
+          "start": 29.58,
+          "end": 30.28,
+          "prob": 0.987
+        }
+      ]
+    },
+    {
+      "start": 30.28,
+      "end": 35.8,
+      "text": "along Interstate 40 and roadways across central Oklahoma. You look at it on TV and you see it coming",
+      "words": [
+        {
+          "word": " along",
+          "start": 30.28,
+          "end": 30.62,
+          "prob": 0.176
+        },
+        {
+          "word": " Interstate",
+          "start": 30.62,
+          "end": 30.88,
+          "prob": 0.351
+        },
+        {
+          "word": " 40",
+          "start": 30.88,
+          "end": 31.4,
+          "prob": 0.975
+        },
+        {
+          "word": " and",
+          "start": 31.4,
+          "end": 31.76,
+          "prob": 0.67
+        },
+        {
+          "word": " roadways",
+          "start": 31.76,
+          "end": 32.18,
+          "prob": 0.744
+        },
+        {
+          "word": " across",
+          "start": 32.18,
+          "end": 32.52,
+          "prob": 0.865
+        },
+        {
+          "word": " central",
+          "start": 32.52,
+          "end": 33.14,
+          "prob": 0.7
+        },
+        {
+          "word": " Oklahoma.",
+          "start": 33.14,
+          "end": 33.62,
+          "prob": 0.978
+        },
+        {
+          "word": " You",
+          "start": 34.0,
+          "end": 34.18,
+          "prob": 0.656
+        },
+        {
+          "word": " look",
+          "start": 34.18,
+          "end": 34.38,
+          "prob": 0.963
+        },
+        {
+          "word": " at",
+          "start": 34.38,
+          "end": 34.52,
+          "prob": 0.986
+        },
+        {
+          "word": " it",
+          "start": 34.52,
+          "end": 34.62,
+          "prob": 0.977
+        },
+        {
+          "word": " on",
+          "start": 34.62,
+          "end": 34.74,
+          "prob": 0.989
+        },
+        {
+          "word": " TV",
+          "start": 34.74,
+          "end": 34.96,
+          "prob": 0.952
+        },
+        {
+          "word": " and",
+          "start": 34.96,
+          "end": 35.2,
+          "prob": 0.923
+        },
+        {
+          "word": " you",
+          "start": 35.2,
+          "end": 35.32,
+          "prob": 0.972
+        },
+        {
+          "word": " see",
+          "start": 35.32,
+          "end": 35.46,
+          "prob": 0.909
+        },
+        {
+          "word": " it",
+          "start": 35.46,
+          "end": 35.58,
+          "prob": 0.992
+        },
+        {
+          "word": " coming",
+          "start": 35.58,
+          "end": 35.8,
+          "prob": 0.984
+        }
+      ]
+    },
+    {
+      "start": 35.8,
+      "end": 40.1,
+      "text": "and you say, that's it, I'm leaving. I'm not going to wait around another second for this one.",
+      "words": [
+        {
+          "word": " and",
+          "start": 35.8,
+          "end": 36.12,
+          "prob": 0.814
+        },
+        {
+          "word": " you",
+          "start": 36.12,
+          "end": 36.32,
+          "prob": 0.977
+        },
+        {
+          "word": " say,",
+          "start": 36.32,
+          "end": 36.58,
+          "prob": 0.985
+        },
+        {
+          "word": " that's",
+          "start": 36.6,
+          "end": 36.94,
+          "prob": 0.734
+        },
+        {
+          "word": " it,",
+          "start": 36.94,
+          "end": 37.04,
+          "prob": 0.991
+        },
+        {
+          "word": " I'm",
+          "start": 37.12,
+          "end": 37.14,
+          "prob": 0.989
+        },
+        {
+          "word": " leaving.",
+          "start": 37.14,
+          "end": 37.36,
+          "prob": 0.996
+        },
+        {
+          "word": " I'm",
+          "start": 38.12,
+          "end": 38.26,
+          "prob": 0.775
+        },
+        {
+          "word": " not",
+          "start": 38.26,
+          "end": 38.4,
+          "prob": 0.903
+        },
+        {
+          "word": " going",
+          "start": 38.4,
+          "end": 38.48,
+          "prob": 0.61
+        },
+        {
+          "word": " to",
+          "start": 38.48,
+          "end": 38.58,
+          "prob": 0.997
+        },
+        {
+          "word": " wait",
+          "start": 38.58,
+          "end": 38.68,
+          "prob": 0.994
+        },
+        {
+          "word": " around",
+          "start": 38.68,
+          "end": 38.94,
+          "prob": 0.931
+        },
+        {
+          "word": " another",
+          "start": 38.94,
+          "end": 39.1,
+          "prob": 0.981
+        },
+        {
+          "word": " second",
+          "start": 39.1,
+          "end": 39.54,
+          "prob": 0.992
+        },
+        {
+          "word": " for",
+          "start": 39.54,
+          "end": 39.72,
+          "prob": 0.98
+        },
+        {
+          "word": " this",
+          "start": 39.72,
+          "end": 39.9,
+          "prob": 0.998
+        },
+        {
+          "word": " one.",
+          "start": 39.9,
+          "end": 40.1,
+          "prob": 0.991
+        }
+      ]
+    },
+    {
+      "start": 40.34,
+      "end": 45.66,
+      "text": "Beverly L. Lam is one of thousands who panicked and got on the road trying to escape the twister's",
+      "words": [
+        {
+          "word": " Beverly",
+          "start": 40.34,
+          "end": 40.58,
+          "prob": 0.954
+        },
+        {
+          "word": " L.",
+          "start": 40.58,
+          "end": 40.9,
+          "prob": 0.316
+        },
+        {
+          "word": " Lam",
+          "start": 40.94,
+          "end": 41.18,
+          "prob": 0.659
+        },
+        {
+          "word": " is",
+          "start": 41.18,
+          "end": 41.42,
+          "prob": 0.963
+        },
+        {
+          "word": " one",
+          "start": 41.42,
+          "end": 41.66,
+          "prob": 0.978
+        },
+        {
+          "word": " of",
+          "start": 41.66,
+          "end": 41.8,
+          "prob": 0.998
+        },
+        {
+          "word": " thousands",
+          "start": 41.8,
+          "end": 42.22,
+          "prob": 0.985
+        },
+        {
+          "word": " who",
+          "start": 42.22,
+          "end": 42.56,
+          "prob": 0.945
+        },
+        {
+          "word": " panicked",
+          "start": 42.56,
+          "end": 42.9,
+          "prob": 0.924
+        },
+        {
+          "word": " and",
+          "start": 42.9,
+          "end": 43.28,
+          "prob": 0.954
+        },
+        {
+          "word": " got",
+          "start": 43.28,
+          "end": 43.54,
+          "prob": 0.988
+        },
+        {
+          "word": " on",
+          "start": 43.54,
+          "end": 43.74,
+          "prob": 0.995
+        },
+        {
+          "word": " the",
+          "start": 43.74,
+          "end": 43.84,
+          "prob": 0.998
+        },
+        {
+          "word": " road",
+          "start": 43.84,
+          "end": 44.1,
+          "prob": 0.997
+        },
+        {
+          "word": " trying",
+          "start": 44.1,
+          "end": 44.48,
+          "prob": 0.778
+        },
+        {
+          "word": " to",
+          "start": 44.48,
+          "end": 44.62,
+          "prob": 0.995
+        },
+        {
+          "word": " escape",
+          "start": 44.62,
+          "end": 44.94,
+          "prob": 0.998
+        },
+        {
+          "word": " the",
+          "start": 44.94,
+          "end": 45.26,
+          "prob": 0.975
+        },
+        {
+          "word": " twister's",
+          "start": 45.26,
+          "end": 45.66,
+          "prob": 0.634
+        }
+      ]
+    },
+    {
+      "start": 45.66,
+      "end": 51.52,
+      "text": "path. Problem is she drove right into what seemed like a parking lot. We thought we had more time",
+      "words": [
+        {
+          "word": " path.",
+          "start": 45.66,
+          "end": 45.9,
+          "prob": 0.987
+        },
+        {
+          "word": " Problem",
+          "start": 46.36,
+          "end": 46.76,
+          "prob": 0.884
+        },
+        {
+          "word": " is",
+          "start": 46.76,
+          "end": 47.04,
+          "prob": 0.995
+        },
+        {
+          "word": " she",
+          "start": 47.04,
+          "end": 47.3,
+          "prob": 0.77
+        },
+        {
+          "word": " drove",
+          "start": 47.3,
+          "end": 47.48,
+          "prob": 0.997
+        },
+        {
+          "word": " right",
+          "start": 47.48,
+          "end": 47.92,
+          "prob": 0.989
+        },
+        {
+          "word": " into",
+          "start": 47.92,
+          "end": 48.3,
+          "prob": 0.989
+        },
+        {
+          "word": " what",
+          "start": 48.3,
+          "end": 48.6,
+          "prob": 0.971
+        },
+        {
+          "word": " seemed",
+          "start": 48.6,
+          "end": 48.88,
+          "prob": 0.976
+        },
+        {
+          "word": " like",
+          "start": 48.88,
+          "end": 49.3,
+          "prob": 0.995
+        },
+        {
+          "word": " a",
+          "start": 49.3,
+          "end": 49.4,
+          "prob": 0.996
+        },
+        {
+          "word": " parking",
+          "start": 49.4,
+          "end": 49.64,
+          "prob": 1.0
+        },
+        {
+          "word": " lot.",
+          "start": 49.64,
+          "end": 50.02,
+          "prob": 0.94
+        },
+        {
+          "word": " We",
+          "start": 50.3,
+          "end": 50.58,
+          "prob": 0.985
+        },
+        {
+          "word": " thought",
+          "start": 50.58,
+          "end": 50.74,
+          "prob": 0.989
+        },
+        {
+          "word": " we",
+          "start": 50.74,
+          "end": 50.88,
+          "prob": 0.995
+        },
+        {
+          "word": " had",
+          "start": 50.88,
+          "end": 51.0,
+          "prob": 0.994
+        },
+        {
+          "word": " more",
+          "start": 51.0,
+          "end": 51.2,
+          "prob": 0.999
+        },
+        {
+          "word": " time",
+          "start": 51.2,
+          "end": 51.52,
+          "prob": 0.999
+        }
+      ]
+    },
+    {
+      "start": 51.52,
+      "end": 58.4,
+      "text": "and weren't expecting this mass exodus of people coming out and as we turned and got out into a",
+      "words": [
+        {
+          "word": " and",
+          "start": 51.52,
+          "end": 51.72,
+          "prob": 0.943
+        },
+        {
+          "word": " weren't",
+          "start": 51.72,
+          "end": 52.16,
+          "prob": 0.978
+        },
+        {
+          "word": " expecting",
+          "start": 52.16,
+          "end": 52.48,
+          "prob": 0.996
+        },
+        {
+          "word": " this",
+          "start": 52.48,
+          "end": 52.9,
+          "prob": 0.987
+        },
+        {
+          "word": " mass",
+          "start": 52.9,
+          "end": 53.12,
+          "prob": 0.988
+        },
+        {
+          "word": " exodus",
+          "start": 53.12,
+          "end": 53.72,
+          "prob": 0.992
+        },
+        {
+          "word": " of",
+          "start": 53.72,
+          "end": 54.04,
+          "prob": 0.984
+        },
+        {
+          "word": " people",
+          "start": 54.04,
+          "end": 54.36,
+          "prob": 0.998
+        },
+        {
+          "word": " coming",
+          "start": 54.36,
+          "end": 55.26,
+          "prob": 0.971
+        },
+        {
+          "word": " out",
+          "start": 55.26,
+          "end": 55.64,
+          "prob": 0.999
+        },
+        {
+          "word": " and",
+          "start": 55.64,
+          "end": 56.32,
+          "prob": 0.533
+        },
+        {
+          "word": " as",
+          "start": 56.32,
+          "end": 56.92,
+          "prob": 0.9
+        },
+        {
+          "word": " we",
+          "start": 56.92,
+          "end": 57.06,
+          "prob": 0.998
+        },
+        {
+          "word": " turned",
+          "start": 57.06,
+          "end": 57.28,
+          "prob": 0.981
+        },
+        {
+          "word": " and",
+          "start": 57.28,
+          "end": 57.52,
+          "prob": 0.939
+        },
+        {
+          "word": " got",
+          "start": 57.52,
+          "end": 57.84,
+          "prob": 0.988
+        },
+        {
+          "word": " out",
+          "start": 57.84,
+          "end": 57.98,
+          "prob": 0.983
+        },
+        {
+          "word": " into",
+          "start": 57.98,
+          "end": 58.26,
+          "prob": 0.972
+        },
+        {
+          "word": " a",
+          "start": 58.26,
+          "end": 58.4,
+          "prob": 0.953
+        }
+      ]
+    },
+    {
+      "start": 58.4,
+      "end": 62.8,
+      "text": "line, then we realized it was just bumper to bumper and gridlock. And as she peered out the back",
+      "words": [
+        {
+          "word": " line,",
+          "start": 58.4,
+          "end": 58.6,
+          "prob": 0.144
+        },
+        {
+          "word": " then",
+          "start": 58.76,
+          "end": 58.82,
+          "prob": 0.847
+        },
+        {
+          "word": " we",
+          "start": 58.82,
+          "end": 58.96,
+          "prob": 0.978
+        },
+        {
+          "word": " realized",
+          "start": 58.96,
+          "end": 59.26,
+          "prob": 0.929
+        },
+        {
+          "word": " it",
+          "start": 59.26,
+          "end": 59.64,
+          "prob": 0.822
+        },
+        {
+          "word": " was",
+          "start": 59.64,
+          "end": 59.82,
+          "prob": 0.77
+        },
+        {
+          "word": " just",
+          "start": 59.82,
+          "end": 59.94,
+          "prob": 0.309
+        },
+        {
+          "word": " bumper",
+          "start": 59.94,
+          "end": 60.18,
+          "prob": 0.94
+        },
+        {
+          "word": " to",
+          "start": 60.18,
+          "end": 60.36,
+          "prob": 0.783
+        },
+        {
+          "word": " bumper",
+          "start": 60.36,
+          "end": 60.68,
+          "prob": 0.994
+        },
+        {
+          "word": " and",
+          "start": 60.68,
+          "end": 60.82,
+          "prob": 0.413
+        },
+        {
+          "word": " gridlock.",
+          "start": 60.82,
+          "end": 61.22,
+          "prob": 0.577
+        },
+        {
+          "word": " And",
+          "start": 61.52,
+          "end": 61.76,
+          "prob": 0.42
+        },
+        {
+          "word": " as",
+          "start": 61.76,
+          "end": 61.9,
+          "prob": 0.921
+        },
+        {
+          "word": " she",
+          "start": 61.9,
+          "end": 62.04,
+          "prob": 0.973
+        },
+        {
+          "word": " peered",
+          "start": 62.04,
+          "end": 62.38,
+          "prob": 0.903
+        },
+        {
+          "word": " out",
+          "start": 62.38,
+          "end": 62.5,
+          "prob": 0.991
+        },
+        {
+          "word": " the",
+          "start": 62.5,
+          "end": 62.64,
+          "prob": 0.988
+        },
+        {
+          "word": " back",
+          "start": 62.64,
+          "end": 62.8,
+          "prob": 0.99
+        }
+      ]
+    },
+    {
+      "start": 62.8,
+      "end": 68.68,
+      "text": "window, she snapped his pick with her iPhone, the storm now right behind her. It's really approaching",
+      "words": [
+        {
+          "word": " window,",
+          "start": 62.8,
+          "end": 63.06,
+          "prob": 0.974
+        },
+        {
+          "word": " she",
+          "start": 63.38,
+          "end": 63.48,
+          "prob": 0.992
+        },
+        {
+          "word": " snapped",
+          "start": 63.48,
+          "end": 63.72,
+          "prob": 0.989
+        },
+        {
+          "word": " his",
+          "start": 63.72,
+          "end": 63.98,
+          "prob": 0.639
+        },
+        {
+          "word": " pick",
+          "start": 63.98,
+          "end": 64.36,
+          "prob": 0.802
+        },
+        {
+          "word": " with",
+          "start": 64.36,
+          "end": 64.64,
+          "prob": 0.98
+        },
+        {
+          "word": " her",
+          "start": 64.64,
+          "end": 64.78,
+          "prob": 0.982
+        },
+        {
+          "word": " iPhone,",
+          "start": 64.78,
+          "end": 65.06,
+          "prob": 0.779
+        },
+        {
+          "word": " the",
+          "start": 65.44,
+          "end": 65.54,
+          "prob": 0.981
+        },
+        {
+          "word": " storm",
+          "start": 65.54,
+          "end": 65.88,
+          "prob": 0.865
+        },
+        {
+          "word": " now",
+          "start": 65.88,
+          "end": 66.28,
+          "prob": 0.63
+        },
+        {
+          "word": " right",
+          "start": 66.28,
+          "end": 66.6,
+          "prob": 0.967
+        },
+        {
+          "word": " behind",
+          "start": 66.6,
+          "end": 67.06,
+          "prob": 0.993
+        },
+        {
+          "word": " her.",
+          "start": 67.06,
+          "end": 67.38,
+          "prob": 0.98
+        },
+        {
+          "word": " It's",
+          "start": 67.74,
+          "end": 67.9,
+          "prob": 0.856
+        },
+        {
+          "word": " really",
+          "start": 67.9,
+          "end": 68.1,
+          "prob": 0.99
+        },
+        {
+          "word": " approaching",
+          "start": 68.1,
+          "end": 68.68,
+          "prob": 0.979
+        }
+      ]
+    },
+    {
+      "start": 68.68,
+      "end": 73.5,
+      "text": "you faster than you can get away from it. Then you start to get a little frightened. Many were",
+      "words": [
+        {
+          "word": " you",
+          "start": 68.68,
+          "end": 68.94,
+          "prob": 0.991
+        },
+        {
+          "word": " faster",
+          "start": 68.94,
+          "end": 69.14,
+          "prob": 0.989
+        },
+        {
+          "word": " than",
+          "start": 69.14,
+          "end": 69.44,
+          "prob": 0.933
+        },
+        {
+          "word": " you",
+          "start": 69.44,
+          "end": 69.58,
+          "prob": 0.992
+        },
+        {
+          "word": " can",
+          "start": 69.58,
+          "end": 69.7,
+          "prob": 0.988
+        },
+        {
+          "word": " get",
+          "start": 69.7,
+          "end": 69.8,
+          "prob": 0.995
+        },
+        {
+          "word": " away",
+          "start": 69.8,
+          "end": 69.98,
+          "prob": 0.996
+        },
+        {
+          "word": " from",
+          "start": 69.98,
+          "end": 70.2,
+          "prob": 0.994
+        },
+        {
+          "word": " it.",
+          "start": 70.2,
+          "end": 70.34,
+          "prob": 0.986
+        },
+        {
+          "word": " Then",
+          "start": 70.82,
+          "end": 71.02,
+          "prob": 0.968
+        },
+        {
+          "word": " you",
+          "start": 71.02,
+          "end": 71.16,
+          "prob": 0.975
+        },
+        {
+          "word": " start",
+          "start": 71.16,
+          "end": 71.34,
+          "prob": 0.986
+        },
+        {
+          "word": " to",
+          "start": 71.34,
+          "end": 71.5,
+          "prob": 0.993
+        },
+        {
+          "word": " get",
+          "start": 71.5,
+          "end": 71.6,
+          "prob": 0.995
+        },
+        {
+          "word": " a",
+          "start": 71.6,
+          "end": 71.66,
+          "prob": 0.995
+        },
+        {
+          "word": " little",
+          "start": 71.66,
+          "end": 71.78,
+          "prob": 0.993
+        },
+        {
+          "word": " frightened.",
+          "start": 71.78,
+          "end": 72.48,
+          "prob": 0.602
+        },
+        {
+          "word": " Many",
+          "start": 72.88,
+          "end": 73.28,
+          "prob": 0.914
+        },
+        {
+          "word": " were",
+          "start": 73.28,
+          "end": 73.5,
+          "prob": 0.969
+        }
+      ]
+    },
+    {
+      "start": 73.5,
+      "end": 79.6,
+      "text": "torn by conflicting messages. Some local media urge residents to get in their cars and flee south.",
+      "words": [
+        {
+          "word": " torn",
+          "start": 73.5,
+          "end": 73.78,
+          "prob": 0.993
+        },
+        {
+          "word": " by",
+          "start": 73.78,
+          "end": 74.08,
+          "prob": 0.993
+        },
+        {
+          "word": " conflicting",
+          "start": 74.08,
+          "end": 74.38,
+          "prob": 0.992
+        },
+        {
+          "word": " messages.",
+          "start": 74.38,
+          "end": 75.3,
+          "prob": 0.99
+        },
+        {
+          "word": " Some",
+          "start": 75.76,
+          "end": 75.76,
+          "prob": 0.99
+        },
+        {
+          "word": " local",
+          "start": 75.76,
+          "end": 76.04,
+          "prob": 0.968
+        },
+        {
+          "word": " media",
+          "start": 76.04,
+          "end": 76.42,
+          "prob": 0.994
+        },
+        {
+          "word": " urge",
+          "start": 76.42,
+          "end": 76.82,
+          "prob": 0.608
+        },
+        {
+          "word": " residents",
+          "start": 76.82,
+          "end": 77.24,
+          "prob": 0.995
+        },
+        {
+          "word": " to",
+          "start": 77.24,
+          "end": 77.62,
+          "prob": 0.997
+        },
+        {
+          "word": " get",
+          "start": 77.62,
+          "end": 77.78,
+          "prob": 0.998
+        },
+        {
+          "word": " in",
+          "start": 77.78,
+          "end": 77.88,
+          "prob": 0.963
+        },
+        {
+          "word": " their",
+          "start": 77.88,
+          "end": 78.0,
+          "prob": 0.991
+        },
+        {
+          "word": " cars",
+          "start": 78.0,
+          "end": 78.32,
+          "prob": 0.989
+        },
+        {
+          "word": " and",
+          "start": 78.32,
+          "end": 78.96,
+          "prob": 0.983
+        },
+        {
+          "word": " flee",
+          "start": 78.96,
+          "end": 79.26,
+          "prob": 0.996
+        },
+        {
+          "word": " south.",
+          "start": 79.26,
+          "end": 79.6,
+          "prob": 0.877
+        }
+      ]
+    },
+    {
+      "start": 80.02,
+      "end": 87.84,
+      "text": "I think the reason for this is because May 20th is still, as I've said, is just very much still in",
+      "words": [
+        {
+          "word": " I",
+          "start": 80.02,
+          "end": 80.14,
+          "prob": 0.633
+        },
+        {
+          "word": " think",
+          "start": 80.14,
+          "end": 80.4,
+          "prob": 0.997
+        },
+        {
+          "word": " the",
+          "start": 80.4,
+          "end": 80.66,
+          "prob": 0.988
+        },
+        {
+          "word": " reason",
+          "start": 80.66,
+          "end": 81.14,
+          "prob": 0.93
+        },
+        {
+          "word": " for",
+          "start": 81.14,
+          "end": 81.42,
+          "prob": 0.996
+        },
+        {
+          "word": " this",
+          "start": 81.42,
+          "end": 81.68,
+          "prob": 0.996
+        },
+        {
+          "word": " is",
+          "start": 81.68,
+          "end": 82.26,
+          "prob": 0.99
+        },
+        {
+          "word": " because",
+          "start": 82.26,
+          "end": 82.82,
+          "prob": 0.995
+        },
+        {
+          "word": " May",
+          "start": 82.82,
+          "end": 84.12,
+          "prob": 0.948
+        },
+        {
+          "word": " 20th",
+          "start": 84.12,
+          "end": 84.68,
+          "prob": 0.796
+        },
+        {
+          "word": " is",
+          "start": 84.68,
+          "end": 84.68,
+          "prob": 0.812
+        },
+        {
+          "word": " still,",
+          "start": 84.68,
+          "end": 84.94,
+          "prob": 0.992
+        },
+        {
+          "word": " as",
+          "start": 85.26,
+          "end": 85.72,
+          "prob": 0.983
+        },
+        {
+          "word": " I've",
+          "start": 85.72,
+          "end": 85.92,
+          "prob": 0.986
+        },
+        {
+          "word": " said,",
+          "start": 85.92,
+          "end": 86.12,
+          "prob": 0.997
+        },
+        {
+          "word": " is",
+          "start": 86.24,
+          "end": 86.34,
+          "prob": 0.617
+        },
+        {
+          "word": " just",
+          "start": 86.34,
+          "end": 86.56,
+          "prob": 0.869
+        },
+        {
+          "word": " very",
+          "start": 86.56,
+          "end": 87.02,
+          "prob": 0.995
+        },
+        {
+          "word": " much",
+          "start": 87.02,
+          "end": 87.28,
+          "prob": 0.999
+        },
+        {
+          "word": " still",
+          "start": 87.28,
+          "end": 87.62,
+          "prob": 0.992
+        },
+        {
+          "word": " in",
+          "start": 87.62,
+          "end": 87.84,
+          "prob": 0.949
+        }
+      ]
+    },
+    {
+      "start": 87.84,
+      "end": 93.56,
+      "text": "our hearts and minds. And this is too much too soon and we didn't expect this at all. And I think",
+      "words": [
+        {
+          "word": " our",
+          "start": 87.84,
+          "end": 87.96,
+          "prob": 0.434
+        },
+        {
+          "word": " hearts",
+          "start": 87.96,
+          "end": 88.16,
+          "prob": 0.978
+        },
+        {
+          "word": " and",
+          "start": 88.16,
+          "end": 88.38,
+          "prob": 0.985
+        },
+        {
+          "word": " minds.",
+          "start": 88.38,
+          "end": 88.56,
+          "prob": 0.966
+        },
+        {
+          "word": " And",
+          "start": 88.66,
+          "end": 88.84,
+          "prob": 0.575
+        },
+        {
+          "word": " this",
+          "start": 88.84,
+          "end": 88.98,
+          "prob": 0.487
+        },
+        {
+          "word": " is",
+          "start": 88.98,
+          "end": 89.1,
+          "prob": 0.764
+        },
+        {
+          "word": " too",
+          "start": 89.1,
+          "end": 89.76,
+          "prob": 0.641
+        },
+        {
+          "word": " much",
+          "start": 89.76,
+          "end": 89.96,
+          "prob": 0.554
+        },
+        {
+          "word": " too",
+          "start": 89.96,
+          "end": 90.32,
+          "prob": 0.484
+        },
+        {
+          "word": " soon",
+          "start": 90.32,
+          "end": 90.62,
+          "prob": 0.877
+        },
+        {
+          "word": " and",
+          "start": 90.62,
+          "end": 91.6,
+          "prob": 0.244
+        },
+        {
+          "word": " we",
+          "start": 91.6,
+          "end": 91.82,
+          "prob": 0.967
+        },
+        {
+          "word": " didn't",
+          "start": 91.82,
+          "end": 92.06,
+          "prob": 0.946
+        },
+        {
+          "word": " expect",
+          "start": 92.06,
+          "end": 92.36,
+          "prob": 0.982
+        },
+        {
+          "word": " this",
+          "start": 92.36,
+          "end": 92.8,
+          "prob": 0.974
+        },
+        {
+          "word": " at",
+          "start": 92.8,
+          "end": 92.96,
+          "prob": 0.976
+        },
+        {
+          "word": " all.",
+          "start": 92.96,
+          "end": 93.12,
+          "prob": 0.992
+        },
+        {
+          "word": " And",
+          "start": 93.28,
+          "end": 93.3,
+          "prob": 0.952
+        },
+        {
+          "word": " I",
+          "start": 93.3,
+          "end": 93.42,
+          "prob": 0.979
+        },
+        {
+          "word": " think",
+          "start": 93.42,
+          "end": 93.56,
+          "prob": 0.985
+        }
+      ]
+    },
+    {
+      "start": 93.56,
+      "end": 99.92,
+      "text": "it instilled a little bit of paranoia in people. But that paranoia led to a traffic standstill and",
+      "words": [
+        {
+          "word": " it",
+          "start": 93.56,
+          "end": 93.78,
+          "prob": 0.979
+        },
+        {
+          "word": " instilled",
+          "start": 93.78,
+          "end": 94.38,
+          "prob": 0.976
+        },
+        {
+          "word": " a",
+          "start": 94.38,
+          "end": 94.52,
+          "prob": 0.992
+        },
+        {
+          "word": " little",
+          "start": 94.52,
+          "end": 94.66,
+          "prob": 0.932
+        },
+        {
+          "word": " bit",
+          "start": 94.66,
+          "end": 94.8,
+          "prob": 0.951
+        },
+        {
+          "word": " of",
+          "start": 94.8,
+          "end": 94.9,
+          "prob": 0.989
+        },
+        {
+          "word": " paranoia",
+          "start": 94.9,
+          "end": 95.34,
+          "prob": 0.948
+        },
+        {
+          "word": " in",
+          "start": 95.34,
+          "end": 95.78,
+          "prob": 0.976
+        },
+        {
+          "word": " people.",
+          "start": 95.78,
+          "end": 96.08,
+          "prob": 0.976
+        },
+        {
+          "word": " But",
+          "start": 96.46,
+          "end": 96.76,
+          "prob": 0.724
+        },
+        {
+          "word": " that",
+          "start": 96.76,
+          "end": 96.94,
+          "prob": 0.952
+        },
+        {
+          "word": " paranoia",
+          "start": 96.94,
+          "end": 97.3,
+          "prob": 0.974
+        },
+        {
+          "word": " led",
+          "start": 97.3,
+          "end": 97.96,
+          "prob": 0.969
+        },
+        {
+          "word": " to",
+          "start": 97.96,
+          "end": 98.18,
+          "prob": 0.996
+        },
+        {
+          "word": " a",
+          "start": 98.18,
+          "end": 98.32,
+          "prob": 0.989
+        },
+        {
+          "word": " traffic",
+          "start": 98.32,
+          "end": 98.56,
+          "prob": 0.971
+        },
+        {
+          "word": " standstill",
+          "start": 98.56,
+          "end": 99.58,
+          "prob": 0.917
+        },
+        {
+          "word": " and",
+          "start": 99.58,
+          "end": 99.92,
+          "prob": 0.913
+        }
+      ]
+    },
+    {
+      "start": 99.92,
+      "end": 106.38,
+      "text": "proved deadly, nine killed. Alam ended up driving to a nearby convenience store and seeking shelter",
+      "words": [
+        {
+          "word": " proved",
+          "start": 99.92,
+          "end": 100.4,
+          "prob": 0.836
+        },
+        {
+          "word": " deadly,",
+          "start": 100.4,
+          "end": 100.76,
+          "prob": 0.959
+        },
+        {
+          "word": " nine",
+          "start": 101.3,
+          "end": 101.42,
+          "prob": 0.845
+        },
+        {
+          "word": " killed.",
+          "start": 101.42,
+          "end": 102.02,
+          "prob": 0.866
+        },
+        {
+          "word": " Alam",
+          "start": 102.46,
+          "end": 102.8,
+          "prob": 0.233
+        },
+        {
+          "word": " ended",
+          "start": 102.8,
+          "end": 103.12,
+          "prob": 0.904
+        },
+        {
+          "word": " up",
+          "start": 103.12,
+          "end": 103.36,
+          "prob": 0.998
+        },
+        {
+          "word": " driving",
+          "start": 103.36,
+          "end": 103.62,
+          "prob": 0.998
+        },
+        {
+          "word": " to",
+          "start": 103.62,
+          "end": 103.9,
+          "prob": 0.996
+        },
+        {
+          "word": " a",
+          "start": 103.9,
+          "end": 104.02,
+          "prob": 0.997
+        },
+        {
+          "word": " nearby",
+          "start": 104.02,
+          "end": 104.2,
+          "prob": 0.985
+        },
+        {
+          "word": " convenience",
+          "start": 104.2,
+          "end": 104.66,
+          "prob": 0.924
+        },
+        {
+          "word": " store",
+          "start": 104.66,
+          "end": 105.4,
+          "prob": 0.998
+        },
+        {
+          "word": " and",
+          "start": 105.4,
+          "end": 105.64,
+          "prob": 0.987
+        },
+        {
+          "word": " seeking",
+          "start": 105.64,
+          "end": 105.96,
+          "prob": 0.996
+        },
+        {
+          "word": " shelter",
+          "start": 105.96,
+          "end": 106.38,
+          "prob": 0.997
+        }
+      ]
+    },
+    {
+      "start": 106.38,
+      "end": 111.64,
+      "text": "in a freezer with several others. But Oklahoma City Mayor Mick Cornett scolding those residents",
+      "words": [
+        {
+          "word": " in",
+          "start": 106.38,
+          "end": 106.74,
+          "prob": 0.981
+        },
+        {
+          "word": " a",
+          "start": 106.74,
+          "end": 106.84,
+          "prob": 0.998
+        },
+        {
+          "word": " freezer",
+          "start": 106.84,
+          "end": 107.12,
+          "prob": 0.995
+        },
+        {
+          "word": " with",
+          "start": 107.12,
+          "end": 107.6,
+          "prob": 0.983
+        },
+        {
+          "word": " several",
+          "start": 107.6,
+          "end": 107.78,
+          "prob": 0.998
+        },
+        {
+          "word": " others.",
+          "start": 107.78,
+          "end": 108.28,
+          "prob": 0.995
+        },
+        {
+          "word": " But",
+          "start": 108.66,
+          "end": 108.7,
+          "prob": 0.996
+        },
+        {
+          "word": " Oklahoma",
+          "start": 108.7,
+          "end": 108.92,
+          "prob": 0.982
+        },
+        {
+          "word": " City",
+          "start": 108.92,
+          "end": 109.24,
+          "prob": 0.909
+        },
+        {
+          "word": " Mayor",
+          "start": 109.24,
+          "end": 109.56,
+          "prob": 0.839
+        },
+        {
+          "word": " Mick",
+          "start": 109.56,
+          "end": 109.82,
+          "prob": 0.457
+        },
+        {
+          "word": " Cornett",
+          "start": 109.82,
+          "end": 110.3,
+          "prob": 0.592
+        },
+        {
+          "word": " scolding",
+          "start": 110.3,
+          "end": 110.94,
+          "prob": 0.873
+        },
+        {
+          "word": " those",
+          "start": 110.94,
+          "end": 111.28,
+          "prob": 0.988
+        },
+        {
+          "word": " residents",
+          "start": 111.28,
+          "end": 111.64,
+          "prob": 0.998
+        }
+      ]
+    },
+    {
+      "start": 112.14,
+      "end": 116.6,
+      "text": "who took to the roads. They should have known better. They'd had two or three days to know this",
+      "words": [
+        {
+          "word": " who",
+          "start": 112.14,
+          "end": 112.38,
+          "prob": 0.963
+        },
+        {
+          "word": " took",
+          "start": 112.38,
+          "end": 112.54,
+          "prob": 0.997
+        },
+        {
+          "word": " to",
+          "start": 112.54,
+          "end": 112.72,
+          "prob": 0.991
+        },
+        {
+          "word": " the",
+          "start": 112.72,
+          "end": 112.84,
+          "prob": 0.998
+        },
+        {
+          "word": " roads.",
+          "start": 112.84,
+          "end": 113.06,
+          "prob": 0.969
+        },
+        {
+          "word": " They",
+          "start": 113.5,
+          "end": 113.74,
+          "prob": 0.965
+        },
+        {
+          "word": " should",
+          "start": 113.74,
+          "end": 113.98,
+          "prob": 0.991
+        },
+        {
+          "word": " have",
+          "start": 113.98,
+          "end": 114.12,
+          "prob": 0.917
+        },
+        {
+          "word": " known",
+          "start": 114.12,
+          "end": 114.3,
+          "prob": 0.997
+        },
+        {
+          "word": " better.",
+          "start": 114.3,
+          "end": 114.68,
+          "prob": 0.999
+        },
+        {
+          "word": " They'd",
+          "start": 115.16,
+          "end": 115.2,
+          "prob": 0.92
+        },
+        {
+          "word": " had",
+          "start": 115.2,
+          "end": 115.34,
+          "prob": 0.981
+        },
+        {
+          "word": " two",
+          "start": 115.34,
+          "end": 115.58,
+          "prob": 0.952
+        },
+        {
+          "word": " or",
+          "start": 115.58,
+          "end": 115.7,
+          "prob": 0.997
+        },
+        {
+          "word": " three",
+          "start": 115.7,
+          "end": 115.88,
+          "prob": 0.998
+        },
+        {
+          "word": " days",
+          "start": 115.88,
+          "end": 116.08,
+          "prob": 0.997
+        },
+        {
+          "word": " to",
+          "start": 116.08,
+          "end": 116.34,
+          "prob": 0.998
+        },
+        {
+          "word": " know",
+          "start": 116.34,
+          "end": 116.46,
+          "prob": 0.998
+        },
+        {
+          "word": " this",
+          "start": 116.46,
+          "end": 116.6,
+          "prob": 0.904
+        }
+      ]
+    },
+    {
+      "start": 116.6,
+      "end": 121.5,
+      "text": "storm was likely. Wow, some tough words there from the mayor, particularly given how jittery everyone",
+      "words": [
+        {
+          "word": " storm",
+          "start": 116.6,
+          "end": 116.86,
+          "prob": 0.477
+        },
+        {
+          "word": " was",
+          "start": 116.86,
+          "end": 117.06,
+          "prob": 0.945
+        },
+        {
+          "word": " likely.",
+          "start": 117.06,
+          "end": 117.36,
+          "prob": 0.957
+        },
+        {
+          "word": " Wow,",
+          "start": 118.18,
+          "end": 118.5,
+          "prob": 0.291
+        },
+        {
+          "word": " some",
+          "start": 118.62,
+          "end": 118.7,
+          "prob": 0.607
+        },
+        {
+          "word": " tough",
+          "start": 118.7,
+          "end": 118.92,
+          "prob": 0.205
+        },
+        {
+          "word": " words",
+          "start": 118.92,
+          "end": 119.12,
+          "prob": 0.549
+        },
+        {
+          "word": " there",
+          "start": 119.12,
+          "end": 119.32,
+          "prob": 0.857
+        },
+        {
+          "word": " from",
+          "start": 119.32,
+          "end": 119.5,
+          "prob": 0.855
+        },
+        {
+          "word": " the",
+          "start": 119.5,
+          "end": 119.62,
+          "prob": 0.961
+        },
+        {
+          "word": " mayor,",
+          "start": 119.62,
+          "end": 119.84,
+          "prob": 0.93
+        },
+        {
+          "word": " particularly",
+          "start": 119.96,
+          "end": 120.14,
+          "prob": 0.98
+        },
+        {
+          "word": " given",
+          "start": 120.14,
+          "end": 120.46,
+          "prob": 0.948
+        },
+        {
+          "word": " how",
+          "start": 120.46,
+          "end": 120.58,
+          "prob": 0.985
+        },
+        {
+          "word": " jittery",
+          "start": 120.58,
+          "end": 121.04,
+          "prob": 0.95
+        },
+        {
+          "word": " everyone",
+          "start": 121.04,
+          "end": 121.5,
+          "prob": 0.918
+        }
+      ]
+    },
+    {
+      "start": 121.5,
+      "end": 126.08,
+      "text": "was after having survived just a week ago what happened. Then the storms were turning. But Alex,",
+      "words": [
+        {
+          "word": " was",
+          "start": 121.5,
+          "end": 121.94,
+          "prob": 0.99
+        },
+        {
+          "word": " after",
+          "start": 121.94,
+          "end": 122.18,
+          "prob": 0.876
+        },
+        {
+          "word": " having",
+          "start": 122.18,
+          "end": 122.6,
+          "prob": 0.983
+        },
+        {
+          "word": " survived",
+          "start": 122.6,
+          "end": 122.82,
+          "prob": 0.993
+        },
+        {
+          "word": " just",
+          "start": 122.82,
+          "end": 123.22,
+          "prob": 0.88
+        },
+        {
+          "word": " a",
+          "start": 123.22,
+          "end": 123.36,
+          "prob": 0.995
+        },
+        {
+          "word": " week",
+          "start": 123.36,
+          "end": 123.54,
+          "prob": 0.941
+        },
+        {
+          "word": " ago",
+          "start": 123.54,
+          "end": 123.76,
+          "prob": 0.966
+        },
+        {
+          "word": " what",
+          "start": 123.76,
+          "end": 123.94,
+          "prob": 0.533
+        },
+        {
+          "word": " happened.",
+          "start": 123.94,
+          "end": 124.2,
+          "prob": 0.986
+        },
+        {
+          "word": " Then",
+          "start": 124.66,
+          "end": 124.88,
+          "prob": 0.834
+        },
+        {
+          "word": " the",
+          "start": 124.88,
+          "end": 125.0,
+          "prob": 0.969
+        },
+        {
+          "word": " storms",
+          "start": 125.0,
+          "end": 125.16,
+          "prob": 0.939
+        },
+        {
+          "word": " were",
+          "start": 125.16,
+          "end": 125.44,
+          "prob": 0.338
+        },
+        {
+          "word": " turning.",
+          "start": 125.44,
+          "end": 125.74,
+          "prob": 0.974
+        },
+        {
+          "word": " But",
+          "start": 125.88,
+          "end": 125.92,
+          "prob": 0.974
+        },
+        {
+          "word": " Alex,",
+          "start": 125.92,
+          "end": 126.08,
+          "prob": 0.857
+        }
+      ]
+    },
+    {
+      "start": 126.08,
+      "end": 129.74,
+      "text": "you reached out to the National Weather Service today. What are you supposed to do? Are you ever",
+      "words": [
+        {
+          "word": " you",
+          "start": 126.08,
+          "end": 126.32,
+          "prob": 0.983
+        },
+        {
+          "word": " reached",
+          "start": 126.32,
+          "end": 126.46,
+          "prob": 0.912
+        },
+        {
+          "word": " out",
+          "start": 126.46,
+          "end": 126.68,
+          "prob": 0.999
+        },
+        {
+          "word": " to",
+          "start": 126.68,
+          "end": 126.82,
+          "prob": 0.992
+        },
+        {
+          "word": " the",
+          "start": 126.82,
+          "end": 126.9,
+          "prob": 0.99
+        },
+        {
+          "word": " National",
+          "start": 126.9,
+          "end": 127.08,
+          "prob": 0.854
+        },
+        {
+          "word": " Weather",
+          "start": 127.08,
+          "end": 127.4,
+          "prob": 0.968
+        },
+        {
+          "word": " Service",
+          "start": 127.4,
+          "end": 127.8,
+          "prob": 0.973
+        },
+        {
+          "word": " today.",
+          "start": 127.8,
+          "end": 127.98,
+          "prob": 0.953
+        },
+        {
+          "word": " What",
+          "start": 128.1,
+          "end": 128.16,
+          "prob": 0.962
+        },
+        {
+          "word": " are",
+          "start": 128.16,
+          "end": 128.28,
+          "prob": 0.986
+        },
+        {
+          "word": " you",
+          "start": 128.28,
+          "end": 128.36,
+          "prob": 0.996
+        },
+        {
+          "word": " supposed",
+          "start": 128.36,
+          "end": 128.52,
+          "prob": 0.941
+        },
+        {
+          "word": " to",
+          "start": 128.52,
+          "end": 128.82,
+          "prob": 0.993
+        },
+        {
+          "word": " do?",
+          "start": 128.82,
+          "end": 128.94,
+          "prob": 0.995
+        },
+        {
+          "word": " Are",
+          "start": 129.06,
+          "end": 129.12,
+          "prob": 0.938
+        },
+        {
+          "word": " you",
+          "start": 129.12,
+          "end": 129.22,
+          "prob": 0.998
+        },
+        {
+          "word": " ever",
+          "start": 129.22,
+          "end": 129.74,
+          "prob": 0.985
+        }
+      ]
+    },
+    {
+      "start": 129.74,
+      "end": 135.54,
+      "text": "supposed to flee a storm in your car? Well, David, the National Weather Service says you should",
+      "words": [
+        {
+          "word": " supposed",
+          "start": 129.74,
+          "end": 130.0,
+          "prob": 0.983
+        },
+        {
+          "word": " to",
+          "start": 130.0,
+          "end": 130.22,
+          "prob": 0.998
+        },
+        {
+          "word": " flee",
+          "start": 130.22,
+          "end": 130.38,
+          "prob": 0.939
+        },
+        {
+          "word": " a",
+          "start": 130.38,
+          "end": 130.5,
+          "prob": 0.978
+        },
+        {
+          "word": " storm",
+          "start": 130.5,
+          "end": 130.72,
+          "prob": 0.999
+        },
+        {
+          "word": " in",
+          "start": 130.72,
+          "end": 130.86,
+          "prob": 0.972
+        },
+        {
+          "word": " your",
+          "start": 130.86,
+          "end": 130.96,
+          "prob": 0.998
+        },
+        {
+          "word": " car?",
+          "start": 130.96,
+          "end": 131.14,
+          "prob": 0.999
+        },
+        {
+          "word": " Well,",
+          "start": 133.16,
+          "end": 133.56,
+          "prob": 0.953
+        },
+        {
+          "word": " David,",
+          "start": 133.68,
+          "end": 133.84,
+          "prob": 0.991
+        },
+        {
+          "word": " the",
+          "start": 133.98,
+          "end": 134.04,
+          "prob": 0.976
+        },
+        {
+          "word": " National",
+          "start": 134.04,
+          "end": 134.18,
+          "prob": 0.953
+        },
+        {
+          "word": " Weather",
+          "start": 134.18,
+          "end": 134.46,
+          "prob": 0.98
+        },
+        {
+          "word": " Service",
+          "start": 134.46,
+          "end": 134.86,
+          "prob": 0.961
+        },
+        {
+          "word": " says",
+          "start": 134.86,
+          "end": 135.02,
+          "prob": 0.989
+        },
+        {
+          "word": " you",
+          "start": 135.02,
+          "end": 135.26,
+          "prob": 0.969
+        },
+        {
+          "word": " should",
+          "start": 135.26,
+          "end": 135.54,
+          "prob": 0.994
+        }
+      ]
+    },
+    {
+      "start": 135.54,
+      "end": 141.26,
+      "text": "never get in your car and try to flee a tornado unless you have several hours to get ahead of it.",
+      "words": [
+        {
+          "word": " never",
+          "start": 135.54,
+          "end": 135.98,
+          "prob": 0.997
+        },
+        {
+          "word": " get",
+          "start": 135.98,
+          "end": 136.32,
+          "prob": 0.998
+        },
+        {
+          "word": " in",
+          "start": 136.32,
+          "end": 136.48,
+          "prob": 0.996
+        },
+        {
+          "word": " your",
+          "start": 136.48,
+          "end": 136.64,
+          "prob": 0.997
+        },
+        {
+          "word": " car",
+          "start": 136.64,
+          "end": 136.94,
+          "prob": 0.999
+        },
+        {
+          "word": " and",
+          "start": 136.94,
+          "end": 137.12,
+          "prob": 0.986
+        },
+        {
+          "word": " try",
+          "start": 137.12,
+          "end": 137.32,
+          "prob": 0.972
+        },
+        {
+          "word": " to",
+          "start": 137.32,
+          "end": 137.56,
+          "prob": 0.996
+        },
+        {
+          "word": " flee",
+          "start": 137.56,
+          "end": 137.8,
+          "prob": 0.981
+        },
+        {
+          "word": " a",
+          "start": 137.8,
+          "end": 137.98,
+          "prob": 0.995
+        },
+        {
+          "word": " tornado",
+          "start": 137.98,
+          "end": 138.36,
+          "prob": 0.998
+        },
+        {
+          "word": " unless",
+          "start": 138.36,
+          "end": 138.82,
+          "prob": 0.748
+        },
+        {
+          "word": " you",
+          "start": 138.82,
+          "end": 139.14,
+          "prob": 0.996
+        },
+        {
+          "word": " have",
+          "start": 139.14,
+          "end": 139.24,
+          "prob": 0.998
+        },
+        {
+          "word": " several",
+          "start": 139.24,
+          "end": 139.42,
+          "prob": 0.997
+        },
+        {
+          "word": " hours",
+          "start": 139.42,
+          "end": 140.0,
+          "prob": 0.995
+        },
+        {
+          "word": " to",
+          "start": 140.0,
+          "end": 140.26,
+          "prob": 0.996
+        },
+        {
+          "word": " get",
+          "start": 140.26,
+          "end": 140.38,
+          "prob": 0.997
+        },
+        {
+          "word": " ahead",
+          "start": 140.38,
+          "end": 140.98,
+          "prob": 0.996
+        },
+        {
+          "word": " of",
+          "start": 140.98,
+          "end": 141.16,
+          "prob": 0.997
+        },
+        {
+          "word": " it.",
+          "start": 141.16,
+          "end": 141.26,
+          "prob": 0.996
+        }
+      ]
+    },
+    {
+      "start": 141.26,
+      "end": 145.74,
+      "text": "Now they say if you are already in your car and cannot get to somewhere safe, you should move your",
+      "words": [
+        {
+          "word": " Now",
+          "start": 141.26,
+          "end": 141.42,
+          "prob": 0.996
+        },
+        {
+          "word": " they",
+          "start": 141.42,
+          "end": 141.56,
+          "prob": 0.673
+        },
+        {
+          "word": " say",
+          "start": 141.56,
+          "end": 141.72,
+          "prob": 0.996
+        },
+        {
+          "word": " if",
+          "start": 141.72,
+          "end": 141.92,
+          "prob": 0.762
+        },
+        {
+          "word": " you",
+          "start": 141.92,
+          "end": 142.04,
+          "prob": 0.998
+        },
+        {
+          "word": " are",
+          "start": 142.04,
+          "end": 142.16,
+          "prob": 0.975
+        },
+        {
+          "word": " already",
+          "start": 142.16,
+          "end": 142.62,
+          "prob": 0.994
+        },
+        {
+          "word": " in",
+          "start": 142.62,
+          "end": 142.9,
+          "prob": 0.998
+        },
+        {
+          "word": " your",
+          "start": 142.9,
+          "end": 143.06,
+          "prob": 0.997
+        },
+        {
+          "word": " car",
+          "start": 143.06,
+          "end": 143.3,
+          "prob": 0.996
+        },
+        {
+          "word": " and",
+          "start": 143.3,
+          "end": 143.46,
+          "prob": 0.955
+        },
+        {
+          "word": " cannot",
+          "start": 143.46,
+          "end": 143.8,
+          "prob": 0.961
+        },
+        {
+          "word": " get",
+          "start": 143.8,
+          "end": 144.04,
+          "prob": 0.999
+        },
+        {
+          "word": " to",
+          "start": 144.04,
+          "end": 144.18,
+          "prob": 0.981
+        },
+        {
+          "word": " somewhere",
+          "start": 144.18,
+          "end": 144.38,
+          "prob": 0.959
+        },
+        {
+          "word": " safe,",
+          "start": 144.38,
+          "end": 144.7,
+          "prob": 0.996
+        },
+        {
+          "word": " you",
+          "start": 145.08,
+          "end": 145.14,
+          "prob": 0.994
+        },
+        {
+          "word": " should",
+          "start": 145.14,
+          "end": 145.3,
+          "prob": 0.999
+        },
+        {
+          "word": " move",
+          "start": 145.3,
+          "end": 145.52,
+          "prob": 0.997
+        },
+        {
+          "word": " your",
+          "start": 145.52,
+          "end": 145.74,
+          "prob": 0.997
+        }
+      ]
+    },
+    {
+      "start": 145.74,
+      "end": 151.18,
+      "text": "car away from traffic lanes and put your seatbelt on and make sure your head is beneath the windows.",
+      "words": [
+        {
+          "word": " car",
+          "start": 145.74,
+          "end": 145.98,
+          "prob": 0.643
+        },
+        {
+          "word": " away",
+          "start": 145.98,
+          "end": 146.34,
+          "prob": 0.986
+        },
+        {
+          "word": " from",
+          "start": 146.34,
+          "end": 146.76,
+          "prob": 0.994
+        },
+        {
+          "word": " traffic",
+          "start": 146.76,
+          "end": 147.04,
+          "prob": 0.951
+        },
+        {
+          "word": " lanes",
+          "start": 147.04,
+          "end": 147.48,
+          "prob": 0.92
+        },
+        {
+          "word": " and",
+          "start": 147.48,
+          "end": 147.72,
+          "prob": 0.791
+        },
+        {
+          "word": " put",
+          "start": 147.72,
+          "end": 147.86,
+          "prob": 0.812
+        },
+        {
+          "word": " your",
+          "start": 147.86,
+          "end": 148.04,
+          "prob": 0.973
+        },
+        {
+          "word": " seatbelt",
+          "start": 148.04,
+          "end": 148.5,
+          "prob": 0.757
+        },
+        {
+          "word": " on",
+          "start": 148.5,
+          "end": 148.74,
+          "prob": 0.995
+        },
+        {
+          "word": " and",
+          "start": 148.74,
+          "end": 148.9,
+          "prob": 0.959
+        },
+        {
+          "word": " make",
+          "start": 148.9,
+          "end": 149.06,
+          "prob": 0.996
+        },
+        {
+          "word": " sure",
+          "start": 149.06,
+          "end": 149.22,
+          "prob": 0.997
+        },
+        {
+          "word": " your",
+          "start": 149.22,
+          "end": 149.42,
+          "prob": 0.991
+        },
+        {
+          "word": " head",
+          "start": 149.42,
+          "end": 149.76,
+          "prob": 0.999
+        },
+        {
+          "word": " is",
+          "start": 149.76,
+          "end": 150.26,
+          "prob": 0.991
+        },
+        {
+          "word": " beneath",
+          "start": 150.26,
+          "end": 150.56,
+          "prob": 0.997
+        },
+        {
+          "word": " the",
+          "start": 150.56,
+          "end": 150.88,
+          "prob": 0.999
+        },
+        {
+          "word": " windows.",
+          "start": 150.88,
+          "end": 151.18,
+          "prob": 0.976
+        }
+      ]
+    },
+    {
+      "start": 151.58,
+      "end": 156.7,
+      "text": "But of course, the first line of defense is always to try to get to a shelter like our friend Beverly",
+      "words": [
+        {
+          "word": " But",
+          "start": 151.58,
+          "end": 151.58,
+          "prob": 0.97
+        },
+        {
+          "word": " of",
+          "start": 151.58,
+          "end": 151.7,
+          "prob": 0.88
+        },
+        {
+          "word": " course,",
+          "start": 151.7,
+          "end": 151.88,
+          "prob": 0.985
+        },
+        {
+          "word": " the",
+          "start": 152.18,
+          "end": 152.22,
+          "prob": 0.995
+        },
+        {
+          "word": " first",
+          "start": 152.22,
+          "end": 152.44,
+          "prob": 0.994
+        },
+        {
+          "word": " line",
+          "start": 152.44,
+          "end": 152.7,
+          "prob": 0.997
+        },
+        {
+          "word": " of",
+          "start": 152.7,
+          "end": 152.82,
+          "prob": 0.999
+        },
+        {
+          "word": " defense",
+          "start": 152.82,
+          "end": 153.04,
+          "prob": 0.947
+        },
+        {
+          "word": " is",
+          "start": 153.04,
+          "end": 153.54,
+          "prob": 0.988
+        },
+        {
+          "word": " always",
+          "start": 153.54,
+          "end": 153.74,
+          "prob": 0.997
+        },
+        {
+          "word": " to",
+          "start": 153.74,
+          "end": 153.9,
+          "prob": 0.995
+        },
+        {
+          "word": " try",
+          "start": 153.9,
+          "end": 154.16,
+          "prob": 0.997
+        },
+        {
+          "word": " to",
+          "start": 154.16,
+          "end": 154.34,
+          "prob": 0.992
+        },
+        {
+          "word": " get",
+          "start": 154.34,
+          "end": 154.5,
+          "prob": 0.999
+        },
+        {
+          "word": " to",
+          "start": 154.5,
+          "end": 154.7,
+          "prob": 0.995
+        },
+        {
+          "word": " a",
+          "start": 154.7,
+          "end": 154.84,
+          "prob": 0.986
+        },
+        {
+          "word": " shelter",
+          "start": 154.84,
+          "end": 155.18,
+          "prob": 0.998
+        },
+        {
+          "word": " like",
+          "start": 155.18,
+          "end": 155.92,
+          "prob": 0.472
+        },
+        {
+          "word": " our",
+          "start": 155.92,
+          "end": 156.28,
+          "prob": 0.984
+        },
+        {
+          "word": " friend",
+          "start": 156.28,
+          "end": 156.48,
+          "prob": 0.98
+        },
+        {
+          "word": " Beverly",
+          "start": 156.48,
+          "end": 156.7,
+          "prob": 0.89
+        }
+      ]
+    },
+    {
+      "start": 156.7,
+      "end": 162.46,
+      "text": "did. And of course, the reminder again, never try to get in your car and escape a tornado unless you",
+      "words": [
+        {
+          "word": " did.",
+          "start": 156.7,
+          "end": 157.08,
+          "prob": 0.983
+        },
+        {
+          "word": " And",
+          "start": 157.3,
+          "end": 157.32,
+          "prob": 0.942
+        },
+        {
+          "word": " of",
+          "start": 157.32,
+          "end": 157.58,
+          "prob": 0.902
+        },
+        {
+          "word": " course,",
+          "start": 157.58,
+          "end": 157.8,
+          "prob": 0.995
+        },
+        {
+          "word": " the",
+          "start": 157.88,
+          "end": 158.08,
+          "prob": 0.794
+        },
+        {
+          "word": " reminder",
+          "start": 158.08,
+          "end": 158.28,
+          "prob": 0.975
+        },
+        {
+          "word": " again,",
+          "start": 158.28,
+          "end": 159.0,
+          "prob": 0.737
+        },
+        {
+          "word": " never",
+          "start": 159.02,
+          "end": 159.62,
+          "prob": 0.993
+        },
+        {
+          "word": " try",
+          "start": 159.62,
+          "end": 159.84,
+          "prob": 0.535
+        },
+        {
+          "word": " to",
+          "start": 159.84,
+          "end": 160.06,
+          "prob": 0.997
+        },
+        {
+          "word": " get",
+          "start": 160.06,
+          "end": 160.2,
+          "prob": 0.997
+        },
+        {
+          "word": " in",
+          "start": 160.2,
+          "end": 160.28,
+          "prob": 0.989
+        },
+        {
+          "word": " your",
+          "start": 160.28,
+          "end": 160.4,
+          "prob": 0.997
+        },
+        {
+          "word": " car",
+          "start": 160.4,
+          "end": 160.72,
+          "prob": 0.999
+        },
+        {
+          "word": " and",
+          "start": 160.72,
+          "end": 160.98,
+          "prob": 0.993
+        },
+        {
+          "word": " escape",
+          "start": 160.98,
+          "end": 161.32,
+          "prob": 0.991
+        },
+        {
+          "word": " a",
+          "start": 161.32,
+          "end": 161.52,
+          "prob": 0.881
+        },
+        {
+          "word": " tornado",
+          "start": 161.52,
+          "end": 161.86,
+          "prob": 0.998
+        },
+        {
+          "word": " unless",
+          "start": 161.86,
+          "end": 162.26,
+          "prob": 0.776
+        },
+        {
+          "word": " you",
+          "start": 162.26,
+          "end": 162.46,
+          "prob": 0.997
+        }
+      ]
+    },
+    {
+      "start": 162.46,
+      "end": 164.34,
+      "text": "have several hours to work with.",
+      "words": [
+        {
+          "word": " have",
+          "start": 162.46,
+          "end": 162.62,
+          "prob": 0.222
+        },
+        {
+          "word": " several",
+          "start": 162.62,
+          "end": 163.14,
+          "prob": 0.987
+        },
+        {
+          "word": " hours",
+          "start": 163.14,
+          "end": 163.58,
+          "prob": 0.996
+        },
+        {
+          "word": " to",
+          "start": 163.58,
+          "end": 163.98,
+          "prob": 0.992
+        },
+        {
+          "word": " work",
+          "start": 163.98,
+          "end": 164.16,
+          "prob": 0.996
+        },
+        {
+          "word": " with.",
+          "start": 164.16,
+          "end": 164.34,
+          "prob": 0.977
+        }
+      ]
+    }
+  ],
+  "words": [
+    {
+      "word": " Part",
+      "start": 0.0,
+      "end": 0.22
+    },
+    {
+      "word": " of",
+      "start": 0.22,
+      "end": 0.38
+    },
+    {
+      "word": " what",
+      "start": 0.38,
+      "end": 0.48
+    },
+    {
+      "word": " made",
+      "start": 0.48,
+      "end": 0.66
+    },
+    {
+      "word": " this",
+      "start": 0.66,
+      "end": 1.02
+    },
+    {
+      "word": " round",
+      "start": 1.02,
+      "end": 1.22
+    },
+    {
+      "word": " of",
+      "start": 1.22,
+      "end": 1.38
+    },
+    {
+      "word": " tornadoes",
+      "start": 1.38,
+      "end": 1.86
+    },
+    {
+      "word": " in",
+      "start": 1.86,
+      "end": 2.14
+    },
+    {
+      "word": " and",
+      "start": 2.14,
+      "end": 2.24
+    },
+    {
+      "word": " around",
+      "start": 2.24,
+      "end": 2.46
+    },
+    {
+      "word": " Oklahoma",
+      "start": 2.46,
+      "end": 2.86
+    },
+    {
+      "word": " City,",
+      "start": 2.86,
+      "end": 3.28
+    },
+    {
+      "word": " particularly",
+      "start": 3.82,
+      "end": 3.82
+    },
+    {
+      "word": " terrifying,",
+      "start": 3.82,
+      "end": 4.38
+    },
+    {
+      "word": " was",
+      "start": 5.0,
+      "end": 5.16
+    },
+    {
+      "word": " that",
+      "start": 5.16,
+      "end": 5.32
+    },
+    {
+      "word": " thousands",
+      "start": 5.32,
+      "end": 5.76
+    },
+    {
+      "word": " of",
+      "start": 5.76,
+      "end": 6.0
+    },
+    {
+      "word": " families",
+      "start": 6.0,
+      "end": 6.36
+    },
+    {
+      "word": " were",
+      "start": 6.36,
+      "end": 6.54
+    },
+    {
+      "word": " trapped",
+      "start": 6.54,
+      "end": 6.78
+    },
+    {
+      "word": " in",
+      "start": 6.78,
+      "end": 6.98
+    },
+    {
+      "word": " their",
+      "start": 6.98,
+      "end": 7.14
+    },
+    {
+      "word": " cars,",
+      "start": 7.14,
+      "end": 7.4
+    },
+    {
+      "word": " traffic",
+      "start": 7.84,
+      "end": 7.84
+    },
+    {
+      "word": " coming",
+      "start": 7.84,
+      "end": 8.12
+    },
+    {
+      "word": " to",
+      "start": 8.12,
+      "end": 8.26
+    },
+    {
+      "word": " a",
+      "start": 8.26,
+      "end": 8.36
+    },
+    {
+      "word": " standstill",
+      "start": 8.36,
+      "end": 8.9
+    },
+    {
+      "word": " on",
+      "start": 8.9,
+      "end": 9.04
+    },
+    {
+      "word": " major",
+      "start": 9.04,
+      "end": 9.22
+    },
+    {
+      "word": " highways",
+      "start": 9.22,
+      "end": 9.64
+    },
+    {
+      "word": " with",
+      "start": 9.64,
+      "end": 10.3
+    },
+    {
+      "word": " that",
+      "start": 10.3,
+      "end": 10.44
+    },
+    {
+      "word": " storm",
+      "start": 10.44,
+      "end": 10.78
+    },
+    {
+      "word": " brewing.",
+      "start": 10.78,
+      "end": 11.22
+    },
+    {
+      "word": " Closer",
+      "start": 11.74,
+      "end": 12.06
+    },
+    {
+      "word": " the",
+      "start": 12.06,
+      "end": 12.22
+    },
+    {
+      "word": " gridlock",
+      "start": 12.22,
+      "end": 12.54
+    },
+    {
+      "word": " proving",
+      "start": 12.54,
+      "end": 12.82
+    },
+    {
+      "word": " deadly",
+      "start": 12.82,
+      "end": 13.1
+    },
+    {
+      "word": " in",
+      "start": 13.1,
+      "end": 13.42
+    },
+    {
+      "word": " the",
+      "start": 13.42,
+      "end": 13.5
+    },
+    {
+      "word": " end",
+      "start": 13.5,
+      "end": 13.66
+    },
+    {
+      "word": " of",
+      "start": 13.66,
+      "end": 13.8
+    },
+    {
+      "word": " course,",
+      "start": 13.8,
+      "end": 14.0
+    },
+    {
+      "word": " this",
+      "start": 14.22,
+      "end": 14.28
+    },
+    {
+      "word": " happened",
+      "start": 14.28,
+      "end": 14.48
+    },
+    {
+      "word": " right",
+      "start": 14.48,
+      "end": 14.82
+    },
+    {
+      "word": " around",
+      "start": 14.82,
+      "end": 14.98
+    },
+    {
+      "word": " the",
+      "start": 14.98,
+      "end": 15.2
+    },
+    {
+      "word": " rush",
+      "start": 15.2,
+      "end": 15.4
+    },
+    {
+      "word": " hour.",
+      "start": 15.4,
+      "end": 15.7
+    },
+    {
+      "word": " Many",
+      "start": 16.22,
+      "end": 16.3
+    },
+    {
+      "word": " family",
+      "start": 16.3,
+      "end": 16.58
+    },
+    {
+      "word": " said",
+      "start": 16.58,
+      "end": 16.9
+    },
+    {
+      "word": " they'd",
+      "start": 16.9,
+      "end": 17.12
+    },
+    {
+      "word": " been",
+      "start": 17.12,
+      "end": 17.24
+    },
+    {
+      "word": " told",
+      "start": 17.24,
+      "end": 17.5
+    },
+    {
+      "word": " to",
+      "start": 17.5,
+      "end": 17.7
+    },
+    {
+      "word": " try",
+      "start": 17.7,
+      "end": 17.92
+    },
+    {
+      "word": " to",
+      "start": 17.92,
+      "end": 18.02
+    },
+    {
+      "word": " flee",
+      "start": 18.02,
+      "end": 18.22
+    },
+    {
+      "word": " the",
+      "start": 18.22,
+      "end": 18.4
+    },
+    {
+      "word": " storms.",
+      "start": 18.4,
+      "end": 18.68
+    },
+    {
+      "word": " ABC's",
+      "start": 19.3,
+      "end": 19.58
+    },
+    {
+      "word": " Alex",
+      "start": 19.58,
+      "end": 19.78
+    },
+    {
+      "word": " Perez",
+      "start": 19.78,
+      "end": 20.04
+    },
+    {
+      "word": " also",
+      "start": 20.04,
+      "end": 20.4
+    },
+    {
+      "word": " in",
+      "start": 20.4,
+      "end": 20.68
+    },
+    {
+      "word": " Oklahoma",
+      "start": 20.68,
+      "end": 21.0
+    },
+    {
+      "word": " tonight",
+      "start": 21.0,
+      "end": 21.36
+    },
+    {
+      "word": " on",
+      "start": 21.36,
+      "end": 21.52
+    },
+    {
+      "word": " that",
+      "start": 21.52,
+      "end": 21.66
+    },
+    {
+      "word": " part",
+      "start": 21.66,
+      "end": 21.86
+    },
+    {
+      "word": " of",
+      "start": 21.86,
+      "end": 21.96
+    },
+    {
+      "word": " the",
+      "start": 21.96,
+      "end": 22.04
+    },
+    {
+      "word": " story.",
+      "start": 22.04,
+      "end": 22.3
+    },
+    {
+      "word": " With",
+      "start": 24.2,
+      "end": 24.68
+    },
+    {
+      "word": " the",
+      "start": 24.68,
+      "end": 24.88
+    },
+    {
+      "word": " deadly",
+      "start": 24.88,
+      "end": 25.3
+    },
+    {
+      "word": " tornado",
+      "start": 25.3,
+      "end": 25.62
+    },
+    {
+      "word": " looming",
+      "start": 25.62,
+      "end": 26.18
+    },
+    {
+      "word": " above,",
+      "start": 26.18,
+      "end": 26.58
+    },
+    {
+      "word": " a",
+      "start": 26.82,
+      "end": 26.98
+    },
+    {
+      "word": " driver's",
+      "start": 26.98,
+      "end": 27.46
+    },
+    {
+      "word": " nightmare",
+      "start": 27.46,
+      "end": 27.76
+    },
+    {
+      "word": " was",
+      "start": 27.76,
+      "end": 28.18
+    },
+    {
+      "word": " unfolding",
+      "start": 28.18,
+      "end": 28.44
+    },
+    {
+      "word": " below.",
+      "start": 28.44,
+      "end": 29.04
+    },
+    {
+      "word": " Complete",
+      "start": 29.38,
+      "end": 29.58
+    },
+    {
+      "word": " gridlock",
+      "start": 29.58,
+      "end": 30.28
+    },
+    {
+      "word": " along",
+      "start": 30.28,
+      "end": 30.62
+    },
+    {
+      "word": " Interstate",
+      "start": 30.62,
+      "end": 30.88
+    },
+    {
+      "word": " 40",
+      "start": 30.88,
+      "end": 31.4
+    },
+    {
+      "word": " and",
+      "start": 31.4,
+      "end": 31.76
+    },
+    {
+      "word": " roadways",
+      "start": 31.76,
+      "end": 32.18
+    },
+    {
+      "word": " across",
+      "start": 32.18,
+      "end": 32.52
+    },
+    {
+      "word": " central",
+      "start": 32.52,
+      "end": 33.14
+    },
+    {
+      "word": " Oklahoma.",
+      "start": 33.14,
+      "end": 33.62
+    },
+    {
+      "word": " You",
+      "start": 34.0,
+      "end": 34.18
+    },
+    {
+      "word": " look",
+      "start": 34.18,
+      "end": 34.38
+    },
+    {
+      "word": " at",
+      "start": 34.38,
+      "end": 34.52
+    },
+    {
+      "word": " it",
+      "start": 34.52,
+      "end": 34.62
+    },
+    {
+      "word": " on",
+      "start": 34.62,
+      "end": 34.74
+    },
+    {
+      "word": " TV",
+      "start": 34.74,
+      "end": 34.96
+    },
+    {
+      "word": " and",
+      "start": 34.96,
+      "end": 35.2
+    },
+    {
+      "word": " you",
+      "start": 35.2,
+      "end": 35.32
+    },
+    {
+      "word": " see",
+      "start": 35.32,
+      "end": 35.46
+    },
+    {
+      "word": " it",
+      "start": 35.46,
+      "end": 35.58
+    },
+    {
+      "word": " coming",
+      "start": 35.58,
+      "end": 35.8
+    },
+    {
+      "word": " and",
+      "start": 35.8,
+      "end": 36.12
+    },
+    {
+      "word": " you",
+      "start": 36.12,
+      "end": 36.32
+    },
+    {
+      "word": " say,",
+      "start": 36.32,
+      "end": 36.58
+    },
+    {
+      "word": " that's",
+      "start": 36.6,
+      "end": 36.94
+    },
+    {
+      "word": " it,",
+      "start": 36.94,
+      "end": 37.04
+    },
+    {
+      "word": " I'm",
+      "start": 37.12,
+      "end": 37.14
+    },
+    {
+      "word": " leaving.",
+      "start": 37.14,
+      "end": 37.36
+    },
+    {
+      "word": " I'm",
+      "start": 38.12,
+      "end": 38.26
+    },
+    {
+      "word": " not",
+      "start": 38.26,
+      "end": 38.4
+    },
+    {
+      "word": " going",
+      "start": 38.4,
+      "end": 38.48
+    },
+    {
+      "word": " to",
+      "start": 38.48,
+      "end": 38.58
+    },
+    {
+      "word": " wait",
+      "start": 38.58,
+      "end": 38.68
+    },
+    {
+      "word": " around",
+      "start": 38.68,
+      "end": 38.94
+    },
+    {
+      "word": " another",
+      "start": 38.94,
+      "end": 39.1
+    },
+    {
+      "word": " second",
+      "start": 39.1,
+      "end": 39.54
+    },
+    {
+      "word": " for",
+      "start": 39.54,
+      "end": 39.72
+    },
+    {
+      "word": " this",
+      "start": 39.72,
+      "end": 39.9
+    },
+    {
+      "word": " one.",
+      "start": 39.9,
+      "end": 40.1
+    },
+    {
+      "word": " Beverly",
+      "start": 40.34,
+      "end": 40.58
+    },
+    {
+      "word": " L.",
+      "start": 40.58,
+      "end": 40.9
+    },
+    {
+      "word": " Lam",
+      "start": 40.94,
+      "end": 41.18
+    },
+    {
+      "word": " is",
+      "start": 41.18,
+      "end": 41.42
+    },
+    {
+      "word": " one",
+      "start": 41.42,
+      "end": 41.66
+    },
+    {
+      "word": " of",
+      "start": 41.66,
+      "end": 41.8
+    },
+    {
+      "word": " thousands",
+      "start": 41.8,
+      "end": 42.22
+    },
+    {
+      "word": " who",
+      "start": 42.22,
+      "end": 42.56
+    },
+    {
+      "word": " panicked",
+      "start": 42.56,
+      "end": 42.9
+    },
+    {
+      "word": " and",
+      "start": 42.9,
+      "end": 43.28
+    },
+    {
+      "word": " got",
+      "start": 43.28,
+      "end": 43.54
+    },
+    {
+      "word": " on",
+      "start": 43.54,
+      "end": 43.74
+    },
+    {
+      "word": " the",
+      "start": 43.74,
+      "end": 43.84
+    },
+    {
+      "word": " road",
+      "start": 43.84,
+      "end": 44.1
+    },
+    {
+      "word": " trying",
+      "start": 44.1,
+      "end": 44.48
+    },
+    {
+      "word": " to",
+      "start": 44.48,
+      "end": 44.62
+    },
+    {
+      "word": " escape",
+      "start": 44.62,
+      "end": 44.94
+    },
+    {
+      "word": " the",
+      "start": 44.94,
+      "end": 45.26
+    },
+    {
+      "word": " twister's",
+      "start": 45.26,
+      "end": 45.66
+    },
+    {
+      "word": " path.",
+      "start": 45.66,
+      "end": 45.9
+    },
+    {
+      "word": " Problem",
+      "start": 46.36,
+      "end": 46.76
+    },
+    {
+      "word": " is",
+      "start": 46.76,
+      "end": 47.04
+    },
+    {
+      "word": " she",
+      "start": 47.04,
+      "end": 47.3
+    },
+    {
+      "word": " drove",
+      "start": 47.3,
+      "end": 47.48
+    },
+    {
+      "word": " right",
+      "start": 47.48,
+      "end": 47.92
+    },
+    {
+      "word": " into",
+      "start": 47.92,
+      "end": 48.3
+    },
+    {
+      "word": " what",
+      "start": 48.3,
+      "end": 48.6
+    },
+    {
+      "word": " seemed",
+      "start": 48.6,
+      "end": 48.88
+    },
+    {
+      "word": " like",
+      "start": 48.88,
+      "end": 49.3
+    },
+    {
+      "word": " a",
+      "start": 49.3,
+      "end": 49.4
+    },
+    {
+      "word": " parking",
+      "start": 49.4,
+      "end": 49.64
+    },
+    {
+      "word": " lot.",
+      "start": 49.64,
+      "end": 50.02
+    },
+    {
+      "word": " We",
+      "start": 50.3,
+      "end": 50.58
+    },
+    {
+      "word": " thought",
+      "start": 50.58,
+      "end": 50.74
+    },
+    {
+      "word": " we",
+      "start": 50.74,
+      "end": 50.88
+    },
+    {
+      "word": " had",
+      "start": 50.88,
+      "end": 51.0
+    },
+    {
+      "word": " more",
+      "start": 51.0,
+      "end": 51.2
+    },
+    {
+      "word": " time",
+      "start": 51.2,
+      "end": 51.52
+    },
+    {
+      "word": " and",
+      "start": 51.52,
+      "end": 51.72
+    },
+    {
+      "word": " weren't",
+      "start": 51.72,
+      "end": 52.16
+    },
+    {
+      "word": " expecting",
+      "start": 52.16,
+      "end": 52.48
+    },
+    {
+      "word": " this",
+      "start": 52.48,
+      "end": 52.9
+    },
+    {
+      "word": " mass",
+      "start": 52.9,
+      "end": 53.12
+    },
+    {
+      "word": " exodus",
+      "start": 53.12,
+      "end": 53.72
+    },
+    {
+      "word": " of",
+      "start": 53.72,
+      "end": 54.04
+    },
+    {
+      "word": " people",
+      "start": 54.04,
+      "end": 54.36
+    },
+    {
+      "word": " coming",
+      "start": 54.36,
+      "end": 55.26
+    },
+    {
+      "word": " out",
+      "start": 55.26,
+      "end": 55.64
+    },
+    {
+      "word": " and",
+      "start": 55.64,
+      "end": 56.32
+    },
+    {
+      "word": " as",
+      "start": 56.32,
+      "end": 56.92
+    },
+    {
+      "word": " we",
+      "start": 56.92,
+      "end": 57.06
+    },
+    {
+      "word": " turned",
+      "start": 57.06,
+      "end": 57.28
+    },
+    {
+      "word": " and",
+      "start": 57.28,
+      "end": 57.52
+    },
+    {
+      "word": " got",
+      "start": 57.52,
+      "end": 57.84
+    },
+    {
+      "word": " out",
+      "start": 57.84,
+      "end": 57.98
+    },
+    {
+      "word": " into",
+      "start": 57.98,
+      "end": 58.26
+    },
+    {
+      "word": " a",
+      "start": 58.26,
+      "end": 58.4
+    },
+    {
+      "word": " line,",
+      "start": 58.4,
+      "end": 58.6
+    },
+    {
+      "word": " then",
+      "start": 58.76,
+      "end": 58.82
+    },
+    {
+      "word": " we",
+      "start": 58.82,
+      "end": 58.96
+    },
+    {
+      "word": " realized",
+      "start": 58.96,
+      "end": 59.26
+    },
+    {
+      "word": " it",
+      "start": 59.26,
+      "end": 59.64
+    },
+    {
+      "word": " was",
+      "start": 59.64,
+      "end": 59.82
+    },
+    {
+      "word": " just",
+      "start": 59.82,
+      "end": 59.94
+    },
+    {
+      "word": " bumper",
+      "start": 59.94,
+      "end": 60.18
+    },
+    {
+      "word": " to",
+      "start": 60.18,
+      "end": 60.36
+    },
+    {
+      "word": " bumper",
+      "start": 60.36,
+      "end": 60.68
+    },
+    {
+      "word": " and",
+      "start": 60.68,
+      "end": 60.82
+    },
+    {
+      "word": " gridlock.",
+      "start": 60.82,
+      "end": 61.22
+    },
+    {
+      "word": " And",
+      "start": 61.52,
+      "end": 61.76
+    },
+    {
+      "word": " as",
+      "start": 61.76,
+      "end": 61.9
+    },
+    {
+      "word": " she",
+      "start": 61.9,
+      "end": 62.04
+    },
+    {
+      "word": " peered",
+      "start": 62.04,
+      "end": 62.38
+    },
+    {
+      "word": " out",
+      "start": 62.38,
+      "end": 62.5
+    },
+    {
+      "word": " the",
+      "start": 62.5,
+      "end": 62.64
+    },
+    {
+      "word": " back",
+      "start": 62.64,
+      "end": 62.8
+    },
+    {
+      "word": " window,",
+      "start": 62.8,
+      "end": 63.06
+    },
+    {
+      "word": " she",
+      "start": 63.38,
+      "end": 63.48
+    },
+    {
+      "word": " snapped",
+      "start": 63.48,
+      "end": 63.72
+    },
+    {
+      "word": " his",
+      "start": 63.72,
+      "end": 63.98
+    },
+    {
+      "word": " pick",
+      "start": 63.98,
+      "end": 64.36
+    },
+    {
+      "word": " with",
+      "start": 64.36,
+      "end": 64.64
+    },
+    {
+      "word": " her",
+      "start": 64.64,
+      "end": 64.78
+    },
+    {
+      "word": " iPhone,",
+      "start": 64.78,
+      "end": 65.06
+    },
+    {
+      "word": " the",
+      "start": 65.44,
+      "end": 65.54
+    },
+    {
+      "word": " storm",
+      "start": 65.54,
+      "end": 65.88
+    },
+    {
+      "word": " now",
+      "start": 65.88,
+      "end": 66.28
+    },
+    {
+      "word": " right",
+      "start": 66.28,
+      "end": 66.6
+    },
+    {
+      "word": " behind",
+      "start": 66.6,
+      "end": 67.06
+    },
+    {
+      "word": " her.",
+      "start": 67.06,
+      "end": 67.38
+    },
+    {
+      "word": " It's",
+      "start": 67.74,
+      "end": 67.9
+    },
+    {
+      "word": " really",
+      "start": 67.9,
+      "end": 68.1
+    },
+    {
+      "word": " approaching",
+      "start": 68.1,
+      "end": 68.68
+    },
+    {
+      "word": " you",
+      "start": 68.68,
+      "end": 68.94
+    },
+    {
+      "word": " faster",
+      "start": 68.94,
+      "end": 69.14
+    },
+    {
+      "word": " than",
+      "start": 69.14,
+      "end": 69.44
+    },
+    {
+      "word": " you",
+      "start": 69.44,
+      "end": 69.58
+    },
+    {
+      "word": " can",
+      "start": 69.58,
+      "end": 69.7
+    },
+    {
+      "word": " get",
+      "start": 69.7,
+      "end": 69.8
+    },
+    {
+      "word": " away",
+      "start": 69.8,
+      "end": 69.98
+    },
+    {
+      "word": " from",
+      "start": 69.98,
+      "end": 70.2
+    },
+    {
+      "word": " it.",
+      "start": 70.2,
+      "end": 70.34
+    },
+    {
+      "word": " Then",
+      "start": 70.82,
+      "end": 71.02
+    },
+    {
+      "word": " you",
+      "start": 71.02,
+      "end": 71.16
+    },
+    {
+      "word": " start",
+      "start": 71.16,
+      "end": 71.34
+    },
+    {
+      "word": " to",
+      "start": 71.34,
+      "end": 71.5
+    },
+    {
+      "word": " get",
+      "start": 71.5,
+      "end": 71.6
+    },
+    {
+      "word": " a",
+      "start": 71.6,
+      "end": 71.66
+    },
+    {
+      "word": " little",
+      "start": 71.66,
+      "end": 71.78
+    },
+    {
+      "word": " frightened.",
+      "start": 71.78,
+      "end": 72.48
+    },
+    {
+      "word": " Many",
+      "start": 72.88,
+      "end": 73.28
+    },
+    {
+      "word": " were",
+      "start": 73.28,
+      "end": 73.5
+    },
+    {
+      "word": " torn",
+      "start": 73.5,
+      "end": 73.78
+    },
+    {
+      "word": " by",
+      "start": 73.78,
+      "end": 74.08
+    },
+    {
+      "word": " conflicting",
+      "start": 74.08,
+      "end": 74.38
+    },
+    {
+      "word": " messages.",
+      "start": 74.38,
+      "end": 75.3
+    },
+    {
+      "word": " Some",
+      "start": 75.76,
+      "end": 75.76
+    },
+    {
+      "word": " local",
+      "start": 75.76,
+      "end": 76.04
+    },
+    {
+      "word": " media",
+      "start": 76.04,
+      "end": 76.42
+    },
+    {
+      "word": " urge",
+      "start": 76.42,
+      "end": 76.82
+    },
+    {
+      "word": " residents",
+      "start": 76.82,
+      "end": 77.24
+    },
+    {
+      "word": " to",
+      "start": 77.24,
+      "end": 77.62
+    },
+    {
+      "word": " get",
+      "start": 77.62,
+      "end": 77.78
+    },
+    {
+      "word": " in",
+      "start": 77.78,
+      "end": 77.88
+    },
+    {
+      "word": " their",
+      "start": 77.88,
+      "end": 78.0
+    },
+    {
+      "word": " cars",
+      "start": 78.0,
+      "end": 78.32
+    },
+    {
+      "word": " and",
+      "start": 78.32,
+      "end": 78.96
+    },
+    {
+      "word": " flee",
+      "start": 78.96,
+      "end": 79.26
+    },
+    {
+      "word": " south.",
+      "start": 79.26,
+      "end": 79.6
+    },
+    {
+      "word": " I",
+      "start": 80.02,
+      "end": 80.14
+    },
+    {
+      "word": " think",
+      "start": 80.14,
+      "end": 80.4
+    },
+    {
+      "word": " the",
+      "start": 80.4,
+      "end": 80.66
+    },
+    {
+      "word": " reason",
+      "start": 80.66,
+      "end": 81.14
+    },
+    {
+      "word": " for",
+      "start": 81.14,
+      "end": 81.42
+    },
+    {
+      "word": " this",
+      "start": 81.42,
+      "end": 81.68
+    },
+    {
+      "word": " is",
+      "start": 81.68,
+      "end": 82.26
+    },
+    {
+      "word": " because",
+      "start": 82.26,
+      "end": 82.82
+    },
+    {
+      "word": " May",
+      "start": 82.82,
+      "end": 84.12
+    },
+    {
+      "word": " 20th",
+      "start": 84.12,
+      "end": 84.68
+    },
+    {
+      "word": " is",
+      "start": 84.68,
+      "end": 84.68
+    },
+    {
+      "word": " still,",
+      "start": 84.68,
+      "end": 84.94
+    },
+    {
+      "word": " as",
+      "start": 85.26,
+      "end": 85.72
+    },
+    {
+      "word": " I've",
+      "start": 85.72,
+      "end": 85.92
+    },
+    {
+      "word": " said,",
+      "start": 85.92,
+      "end": 86.12
+    },
+    {
+      "word": " is",
+      "start": 86.24,
+      "end": 86.34
+    },
+    {
+      "word": " just",
+      "start": 86.34,
+      "end": 86.56
+    },
+    {
+      "word": " very",
+      "start": 86.56,
+      "end": 87.02
+    },
+    {
+      "word": " much",
+      "start": 87.02,
+      "end": 87.28
+    },
+    {
+      "word": " still",
+      "start": 87.28,
+      "end": 87.62
+    },
+    {
+      "word": " in",
+      "start": 87.62,
+      "end": 87.84
+    },
+    {
+      "word": " our",
+      "start": 87.84,
+      "end": 87.96
+    },
+    {
+      "word": " hearts",
+      "start": 87.96,
+      "end": 88.16
+    },
+    {
+      "word": " and",
+      "start": 88.16,
+      "end": 88.38
+    },
+    {
+      "word": " minds.",
+      "start": 88.38,
+      "end": 88.56
+    },
+    {
+      "word": " And",
+      "start": 88.66,
+      "end": 88.84
+    },
+    {
+      "word": " this",
+      "start": 88.84,
+      "end": 88.98
+    },
+    {
+      "word": " is",
+      "start": 88.98,
+      "end": 89.1
+    },
+    {
+      "word": " too",
+      "start": 89.1,
+      "end": 89.76
+    },
+    {
+      "word": " much",
+      "start": 89.76,
+      "end": 89.96
+    },
+    {
+      "word": " too",
+      "start": 89.96,
+      "end": 90.32
+    },
+    {
+      "word": " soon",
+      "start": 90.32,
+      "end": 90.62
+    },
+    {
+      "word": " and",
+      "start": 90.62,
+      "end": 91.6
+    },
+    {
+      "word": " we",
+      "start": 91.6,
+      "end": 91.82
+    },
+    {
+      "word": " didn't",
+      "start": 91.82,
+      "end": 92.06
+    },
+    {
+      "word": " expect",
+      "start": 92.06,
+      "end": 92.36
+    },
+    {
+      "word": " this",
+      "start": 92.36,
+      "end": 92.8
+    },
+    {
+      "word": " at",
+      "start": 92.8,
+      "end": 92.96
+    },
+    {
+      "word": " all.",
+      "start": 92.96,
+      "end": 93.12
+    },
+    {
+      "word": " And",
+      "start": 93.28,
+      "end": 93.3
+    },
+    {
+      "word": " I",
+      "start": 93.3,
+      "end": 93.42
+    },
+    {
+      "word": " think",
+      "start": 93.42,
+      "end": 93.56
+    },
+    {
+      "word": " it",
+      "start": 93.56,
+      "end": 93.78
+    },
+    {
+      "word": " instilled",
+      "start": 93.78,
+      "end": 94.38
+    },
+    {
+      "word": " a",
+      "start": 94.38,
+      "end": 94.52
+    },
+    {
+      "word": " little",
+      "start": 94.52,
+      "end": 94.66
+    },
+    {
+      "word": " bit",
+      "start": 94.66,
+      "end": 94.8
+    },
+    {
+      "word": " of",
+      "start": 94.8,
+      "end": 94.9
+    },
+    {
+      "word": " paranoia",
+      "start": 94.9,
+      "end": 95.34
+    },
+    {
+      "word": " in",
+      "start": 95.34,
+      "end": 95.78
+    },
+    {
+      "word": " people.",
+      "start": 95.78,
+      "end": 96.08
+    },
+    {
+      "word": " But",
+      "start": 96.46,
+      "end": 96.76
+    },
+    {
+      "word": " that",
+      "start": 96.76,
+      "end": 96.94
+    },
+    {
+      "word": " paranoia",
+      "start": 96.94,
+      "end": 97.3
+    },
+    {
+      "word": " led",
+      "start": 97.3,
+      "end": 97.96
+    },
+    {
+      "word": " to",
+      "start": 97.96,
+      "end": 98.18
+    },
+    {
+      "word": " a",
+      "start": 98.18,
+      "end": 98.32
+    },
+    {
+      "word": " traffic",
+      "start": 98.32,
+      "end": 98.56
+    },
+    {
+      "word": " standstill",
+      "start": 98.56,
+      "end": 99.58
+    },
+    {
+      "word": " and",
+      "start": 99.58,
+      "end": 99.92
+    },
+    {
+      "word": " proved",
+      "start": 99.92,
+      "end": 100.4
+    },
+    {
+      "word": " deadly,",
+      "start": 100.4,
+      "end": 100.76
+    },
+    {
+      "word": " nine",
+      "start": 101.3,
+      "end": 101.42
+    },
+    {
+      "word": " killed.",
+      "start": 101.42,
+      "end": 102.02
+    },
+    {
+      "word": " Alam",
+      "start": 102.46,
+      "end": 102.8
+    },
+    {
+      "word": " ended",
+      "start": 102.8,
+      "end": 103.12
+    },
+    {
+      "word": " up",
+      "start": 103.12,
+      "end": 103.36
+    },
+    {
+      "word": " driving",
+      "start": 103.36,
+      "end": 103.62
+    },
+    {
+      "word": " to",
+      "start": 103.62,
+      "end": 103.9
+    },
+    {
+      "word": " a",
+      "start": 103.9,
+      "end": 104.02
+    },
+    {
+      "word": " nearby",
+      "start": 104.02,
+      "end": 104.2
+    },
+    {
+      "word": " convenience",
+      "start": 104.2,
+      "end": 104.66
+    },
+    {
+      "word": " store",
+      "start": 104.66,
+      "end": 105.4
+    },
+    {
+      "word": " and",
+      "start": 105.4,
+      "end": 105.64
+    },
+    {
+      "word": " seeking",
+      "start": 105.64,
+      "end": 105.96
+    },
+    {
+      "word": " shelter",
+      "start": 105.96,
+      "end": 106.38
+    },
+    {
+      "word": " in",
+      "start": 106.38,
+      "end": 106.74
+    },
+    {
+      "word": " a",
+      "start": 106.74,
+      "end": 106.84
+    },
+    {
+      "word": " freezer",
+      "start": 106.84,
+      "end": 107.12
+    },
+    {
+      "word": " with",
+      "start": 107.12,
+      "end": 107.6
+    },
+    {
+      "word": " several",
+      "start": 107.6,
+      "end": 107.78
+    },
+    {
+      "word": " others.",
+      "start": 107.78,
+      "end": 108.28
+    },
+    {
+      "word": " But",
+      "start": 108.66,
+      "end": 108.7
+    },
+    {
+      "word": " Oklahoma",
+      "start": 108.7,
+      "end": 108.92
+    },
+    {
+      "word": " City",
+      "start": 108.92,
+      "end": 109.24
+    },
+    {
+      "word": " Mayor",
+      "start": 109.24,
+      "end": 109.56
+    },
+    {
+      "word": " Mick",
+      "start": 109.56,
+      "end": 109.82
+    },
+    {
+      "word": " Cornett",
+      "start": 109.82,
+      "end": 110.3
+    },
+    {
+      "word": " scolding",
+      "start": 110.3,
+      "end": 110.94
+    },
+    {
+      "word": " those",
+      "start": 110.94,
+      "end": 111.28
+    },
+    {
+      "word": " residents",
+      "start": 111.28,
+      "end": 111.64
+    },
+    {
+      "word": " who",
+      "start": 112.14,
+      "end": 112.38
+    },
+    {
+      "word": " took",
+      "start": 112.38,
+      "end": 112.54
+    },
+    {
+      "word": " to",
+      "start": 112.54,
+      "end": 112.72
+    },
+    {
+      "word": " the",
+      "start": 112.72,
+      "end": 112.84
+    },
+    {
+      "word": " roads.",
+      "start": 112.84,
+      "end": 113.06
+    },
+    {
+      "word": " They",
+      "start": 113.5,
+      "end": 113.74
+    },
+    {
+      "word": " should",
+      "start": 113.74,
+      "end": 113.98
+    },
+    {
+      "word": " have",
+      "start": 113.98,
+      "end": 114.12
+    },
+    {
+      "word": " known",
+      "start": 114.12,
+      "end": 114.3
+    },
+    {
+      "word": " better.",
+      "start": 114.3,
+      "end": 114.68
+    },
+    {
+      "word": " They'd",
+      "start": 115.16,
+      "end": 115.2
+    },
+    {
+      "word": " had",
+      "start": 115.2,
+      "end": 115.34
+    },
+    {
+      "word": " two",
+      "start": 115.34,
+      "end": 115.58
+    },
+    {
+      "word": " or",
+      "start": 115.58,
+      "end": 115.7
+    },
+    {
+      "word": " three",
+      "start": 115.7,
+      "end": 115.88
+    },
+    {
+      "word": " days",
+      "start": 115.88,
+      "end": 116.08
+    },
+    {
+      "word": " to",
+      "start": 116.08,
+      "end": 116.34
+    },
+    {
+      "word": " know",
+      "start": 116.34,
+      "end": 116.46
+    },
+    {
+      "word": " this",
+      "start": 116.46,
+      "end": 116.6
+    },
+    {
+      "word": " storm",
+      "start": 116.6,
+      "end": 116.86
+    },
+    {
+      "word": " was",
+      "start": 116.86,
+      "end": 117.06
+    },
+    {
+      "word": " likely.",
+      "start": 117.06,
+      "end": 117.36
+    },
+    {
+      "word": " Wow,",
+      "start": 118.18,
+      "end": 118.5
+    },
+    {
+      "word": " some",
+      "start": 118.62,
+      "end": 118.7
+    },
+    {
+      "word": " tough",
+      "start": 118.7,
+      "end": 118.92
+    },
+    {
+      "word": " words",
+      "start": 118.92,
+      "end": 119.12
+    },
+    {
+      "word": " there",
+      "start": 119.12,
+      "end": 119.32
+    },
+    {
+      "word": " from",
+      "start": 119.32,
+      "end": 119.5
+    },
+    {
+      "word": " the",
+      "start": 119.5,
+      "end": 119.62
+    },
+    {
+      "word": " mayor,",
+      "start": 119.62,
+      "end": 119.84
+    },
+    {
+      "word": " particularly",
+      "start": 119.96,
+      "end": 120.14
+    },
+    {
+      "word": " given",
+      "start": 120.14,
+      "end": 120.46
+    },
+    {
+      "word": " how",
+      "start": 120.46,
+      "end": 120.58
+    },
+    {
+      "word": " jittery",
+      "start": 120.58,
+      "end": 121.04
+    },
+    {
+      "word": " everyone",
+      "start": 121.04,
+      "end": 121.5
+    },
+    {
+      "word": " was",
+      "start": 121.5,
+      "end": 121.94
+    },
+    {
+      "word": " after",
+      "start": 121.94,
+      "end": 122.18
+    },
+    {
+      "word": " having",
+      "start": 122.18,
+      "end": 122.6
+    },
+    {
+      "word": " survived",
+      "start": 122.6,
+      "end": 122.82
+    },
+    {
+      "word": " just",
+      "start": 122.82,
+      "end": 123.22
+    },
+    {
+      "word": " a",
+      "start": 123.22,
+      "end": 123.36
+    },
+    {
+      "word": " week",
+      "start": 123.36,
+      "end": 123.54
+    },
+    {
+      "word": " ago",
+      "start": 123.54,
+      "end": 123.76
+    },
+    {
+      "word": " what",
+      "start": 123.76,
+      "end": 123.94
+    },
+    {
+      "word": " happened.",
+      "start": 123.94,
+      "end": 124.2
+    },
+    {
+      "word": " Then",
+      "start": 124.66,
+      "end": 124.88
+    },
+    {
+      "word": " the",
+      "start": 124.88,
+      "end": 125.0
+    },
+    {
+      "word": " storms",
+      "start": 125.0,
+      "end": 125.16
+    },
+    {
+      "word": " were",
+      "start": 125.16,
+      "end": 125.44
+    },
+    {
+      "word": " turning.",
+      "start": 125.44,
+      "end": 125.74
+    },
+    {
+      "word": " But",
+      "start": 125.88,
+      "end": 125.92
+    },
+    {
+      "word": " Alex,",
+      "start": 125.92,
+      "end": 126.08
+    },
+    {
+      "word": " you",
+      "start": 126.08,
+      "end": 126.32
+    },
+    {
+      "word": " reached",
+      "start": 126.32,
+      "end": 126.46
+    },
+    {
+      "word": " out",
+      "start": 126.46,
+      "end": 126.68
+    },
+    {
+      "word": " to",
+      "start": 126.68,
+      "end": 126.82
+    },
+    {
+      "word": " the",
+      "start": 126.82,
+      "end": 126.9
+    },
+    {
+      "word": " National",
+      "start": 126.9,
+      "end": 127.08
+    },
+    {
+      "word": " Weather",
+      "start": 127.08,
+      "end": 127.4
+    },
+    {
+      "word": " Service",
+      "start": 127.4,
+      "end": 127.8
+    },
+    {
+      "word": " today.",
+      "start": 127.8,
+      "end": 127.98
+    },
+    {
+      "word": " What",
+      "start": 128.1,
+      "end": 128.16
+    },
+    {
+      "word": " are",
+      "start": 128.16,
+      "end": 128.28
+    },
+    {
+      "word": " you",
+      "start": 128.28,
+      "end": 128.36
+    },
+    {
+      "word": " supposed",
+      "start": 128.36,
+      "end": 128.52
+    },
+    {
+      "word": " to",
+      "start": 128.52,
+      "end": 128.82
+    },
+    {
+      "word": " do?",
+      "start": 128.82,
+      "end": 128.94
+    },
+    {
+      "word": " Are",
+      "start": 129.06,
+      "end": 129.12
+    },
+    {
+      "word": " you",
+      "start": 129.12,
+      "end": 129.22
+    },
+    {
+      "word": " ever",
+      "start": 129.22,
+      "end": 129.74
+    },
+    {
+      "word": " supposed",
+      "start": 129.74,
+      "end": 130.0
+    },
+    {
+      "word": " to",
+      "start": 130.0,
+      "end": 130.22
+    },
+    {
+      "word": " flee",
+      "start": 130.22,
+      "end": 130.38
+    },
+    {
+      "word": " a",
+      "start": 130.38,
+      "end": 130.5
+    },
+    {
+      "word": " storm",
+      "start": 130.5,
+      "end": 130.72
+    },
+    {
+      "word": " in",
+      "start": 130.72,
+      "end": 130.86
+    },
+    {
+      "word": " your",
+      "start": 130.86,
+      "end": 130.96
+    },
+    {
+      "word": " car?",
+      "start": 130.96,
+      "end": 131.14
+    },
+    {
+      "word": " Well,",
+      "start": 133.16,
+      "end": 133.56
+    },
+    {
+      "word": " David,",
+      "start": 133.68,
+      "end": 133.84
+    },
+    {
+      "word": " the",
+      "start": 133.98,
+      "end": 134.04
+    },
+    {
+      "word": " National",
+      "start": 134.04,
+      "end": 134.18
+    },
+    {
+      "word": " Weather",
+      "start": 134.18,
+      "end": 134.46
+    },
+    {
+      "word": " Service",
+      "start": 134.46,
+      "end": 134.86
+    },
+    {
+      "word": " says",
+      "start": 134.86,
+      "end": 135.02
+    },
+    {
+      "word": " you",
+      "start": 135.02,
+      "end": 135.26
+    },
+    {
+      "word": " should",
+      "start": 135.26,
+      "end": 135.54
+    },
+    {
+      "word": " never",
+      "start": 135.54,
+      "end": 135.98
+    },
+    {
+      "word": " get",
+      "start": 135.98,
+      "end": 136.32
+    },
+    {
+      "word": " in",
+      "start": 136.32,
+      "end": 136.48
+    },
+    {
+      "word": " your",
+      "start": 136.48,
+      "end": 136.64
+    },
+    {
+      "word": " car",
+      "start": 136.64,
+      "end": 136.94
+    },
+    {
+      "word": " and",
+      "start": 136.94,
+      "end": 137.12
+    },
+    {
+      "word": " try",
+      "start": 137.12,
+      "end": 137.32
+    },
+    {
+      "word": " to",
+      "start": 137.32,
+      "end": 137.56
+    },
+    {
+      "word": " flee",
+      "start": 137.56,
+      "end": 137.8
+    },
+    {
+      "word": " a",
+      "start": 137.8,
+      "end": 137.98
+    },
+    {
+      "word": " tornado",
+      "start": 137.98,
+      "end": 138.36
+    },
+    {
+      "word": " unless",
+      "start": 138.36,
+      "end": 138.82
+    },
+    {
+      "word": " you",
+      "start": 138.82,
+      "end": 139.14
+    },
+    {
+      "word": " have",
+      "start": 139.14,
+      "end": 139.24
+    },
+    {
+      "word": " several",
+      "start": 139.24,
+      "end": 139.42
+    },
+    {
+      "word": " hours",
+      "start": 139.42,
+      "end": 140.0
+    },
+    {
+      "word": " to",
+      "start": 140.0,
+      "end": 140.26
+    },
+    {
+      "word": " get",
+      "start": 140.26,
+      "end": 140.38
+    },
+    {
+      "word": " ahead",
+      "start": 140.38,
+      "end": 140.98
+    },
+    {
+      "word": " of",
+      "start": 140.98,
+      "end": 141.16
+    },
+    {
+      "word": " it.",
+      "start": 141.16,
+      "end": 141.26
+    },
+    {
+      "word": " Now",
+      "start": 141.26,
+      "end": 141.42
+    },
+    {
+      "word": " they",
+      "start": 141.42,
+      "end": 141.56
+    },
+    {
+      "word": " say",
+      "start": 141.56,
+      "end": 141.72
+    },
+    {
+      "word": " if",
+      "start": 141.72,
+      "end": 141.92
+    },
+    {
+      "word": " you",
+      "start": 141.92,
+      "end": 142.04
+    },
+    {
+      "word": " are",
+      "start": 142.04,
+      "end": 142.16
+    },
+    {
+      "word": " already",
+      "start": 142.16,
+      "end": 142.62
+    },
+    {
+      "word": " in",
+      "start": 142.62,
+      "end": 142.9
+    },
+    {
+      "word": " your",
+      "start": 142.9,
+      "end": 143.06
+    },
+    {
+      "word": " car",
+      "start": 143.06,
+      "end": 143.3
+    },
+    {
+      "word": " and",
+      "start": 143.3,
+      "end": 143.46
+    },
+    {
+      "word": " cannot",
+      "start": 143.46,
+      "end": 143.8
+    },
+    {
+      "word": " get",
+      "start": 143.8,
+      "end": 144.04
+    },
+    {
+      "word": " to",
+      "start": 144.04,
+      "end": 144.18
+    },
+    {
+      "word": " somewhere",
+      "start": 144.18,
+      "end": 144.38
+    },
+    {
+      "word": " safe,",
+      "start": 144.38,
+      "end": 144.7
+    },
+    {
+      "word": " you",
+      "start": 145.08,
+      "end": 145.14
+    },
+    {
+      "word": " should",
+      "start": 145.14,
+      "end": 145.3
+    },
+    {
+      "word": " move",
+      "start": 145.3,
+      "end": 145.52
+    },
+    {
+      "word": " your",
+      "start": 145.52,
+      "end": 145.74
+    },
+    {
+      "word": " car",
+      "start": 145.74,
+      "end": 145.98
+    },
+    {
+      "word": " away",
+      "start": 145.98,
+      "end": 146.34
+    },
+    {
+      "word": " from",
+      "start": 146.34,
+      "end": 146.76
+    },
+    {
+      "word": " traffic",
+      "start": 146.76,
+      "end": 147.04
+    },
+    {
+      "word": " lanes",
+      "start": 147.04,
+      "end": 147.48
+    },
+    {
+      "word": " and",
+      "start": 147.48,
+      "end": 147.72
+    },
+    {
+      "word": " put",
+      "start": 147.72,
+      "end": 147.86
+    },
+    {
+      "word": " your",
+      "start": 147.86,
+      "end": 148.04
+    },
+    {
+      "word": " seatbelt",
+      "start": 148.04,
+      "end": 148.5
+    },
+    {
+      "word": " on",
+      "start": 148.5,
+      "end": 148.74
+    },
+    {
+      "word": " and",
+      "start": 148.74,
+      "end": 148.9
+    },
+    {
+      "word": " make",
+      "start": 148.9,
+      "end": 149.06
+    },
+    {
+      "word": " sure",
+      "start": 149.06,
+      "end": 149.22
+    },
+    {
+      "word": " your",
+      "start": 149.22,
+      "end": 149.42
+    },
+    {
+      "word": " head",
+      "start": 149.42,
+      "end": 149.76
+    },
+    {
+      "word": " is",
+      "start": 149.76,
+      "end": 150.26
+    },
+    {
+      "word": " beneath",
+      "start": 150.26,
+      "end": 150.56
+    },
+    {
+      "word": " the",
+      "start": 150.56,
+      "end": 150.88
+    },
+    {
+      "word": " windows.",
+      "start": 150.88,
+      "end": 151.18
+    },
+    {
+      "word": " But",
+      "start": 151.58,
+      "end": 151.58
+    },
+    {
+      "word": " of",
+      "start": 151.58,
+      "end": 151.7
+    },
+    {
+      "word": " course,",
+      "start": 151.7,
+      "end": 151.88
+    },
+    {
+      "word": " the",
+      "start": 152.18,
+      "end": 152.22
+    },
+    {
+      "word": " first",
+      "start": 152.22,
+      "end": 152.44
+    },
+    {
+      "word": " line",
+      "start": 152.44,
+      "end": 152.7
+    },
+    {
+      "word": " of",
+      "start": 152.7,
+      "end": 152.82
+    },
+    {
+      "word": " defense",
+      "start": 152.82,
+      "end": 153.04
+    },
+    {
+      "word": " is",
+      "start": 153.04,
+      "end": 153.54
+    },
+    {
+      "word": " always",
+      "start": 153.54,
+      "end": 153.74
+    },
+    {
+      "word": " to",
+      "start": 153.74,
+      "end": 153.9
+    },
+    {
+      "word": " try",
+      "start": 153.9,
+      "end": 154.16
+    },
+    {
+      "word": " to",
+      "start": 154.16,
+      "end": 154.34
+    },
+    {
+      "word": " get",
+      "start": 154.34,
+      "end": 154.5
+    },
+    {
+      "word": " to",
+      "start": 154.5,
+      "end": 154.7
+    },
+    {
+      "word": " a",
+      "start": 154.7,
+      "end": 154.84
+    },
+    {
+      "word": " shelter",
+      "start": 154.84,
+      "end": 155.18
+    },
+    {
+      "word": " like",
+      "start": 155.18,
+      "end": 155.92
+    },
+    {
+      "word": " our",
+      "start": 155.92,
+      "end": 156.28
+    },
+    {
+      "word": " friend",
+      "start": 156.28,
+      "end": 156.48
+    },
+    {
+      "word": " Beverly",
+      "start": 156.48,
+      "end": 156.7
+    },
+    {
+      "word": " did.",
+      "start": 156.7,
+      "end": 157.08
+    },
+    {
+      "word": " And",
+      "start": 157.3,
+      "end": 157.32
+    },
+    {
+      "word": " of",
+      "start": 157.32,
+      "end": 157.58
+    },
+    {
+      "word": " course,",
+      "start": 157.58,
+      "end": 157.8
+    },
+    {
+      "word": " the",
+      "start": 157.88,
+      "end": 158.08
+    },
+    {
+      "word": " reminder",
+      "start": 158.08,
+      "end": 158.28
+    },
+    {
+      "word": " again,",
+      "start": 158.28,
+      "end": 159.0
+    },
+    {
+      "word": " never",
+      "start": 159.02,
+      "end": 159.62
+    },
+    {
+      "word": " try",
+      "start": 159.62,
+      "end": 159.84
+    },
+    {
+      "word": " to",
+      "start": 159.84,
+      "end": 160.06
+    },
+    {
+      "word": " get",
+      "start": 160.06,
+      "end": 160.2
+    },
+    {
+      "word": " in",
+      "start": 160.2,
+      "end": 160.28
+    },
+    {
+      "word": " your",
+      "start": 160.28,
+      "end": 160.4
+    },
+    {
+      "word": " car",
+      "start": 160.4,
+      "end": 160.72
+    },
+    {
+      "word": " and",
+      "start": 160.72,
+      "end": 160.98
+    },
+    {
+      "word": " escape",
+      "start": 160.98,
+      "end": 161.32
+    },
+    {
+      "word": " a",
+      "start": 161.32,
+      "end": 161.52
+    },
+    {
+      "word": " tornado",
+      "start": 161.52,
+      "end": 161.86
+    },
+    {
+      "word": " unless",
+      "start": 161.86,
+      "end": 162.26
+    },
+    {
+      "word": " you",
+      "start": 162.26,
+      "end": 162.46
+    },
+    {
+      "word": " have",
+      "start": 162.46,
+      "end": 162.62
+    },
+    {
+      "word": " several",
+      "start": 162.62,
+      "end": 163.14
+    },
+    {
+      "word": " hours",
+      "start": 163.14,
+      "end": 163.58
+    },
+    {
+      "word": " to",
+      "start": 163.58,
+      "end": 163.98
+    },
+    {
+      "word": " work",
+      "start": 163.98,
+      "end": 164.16
+    },
+    {
+      "word": " with.",
+      "start": 164.16,
+      "end": 164.34
+    }
+  ]
+}

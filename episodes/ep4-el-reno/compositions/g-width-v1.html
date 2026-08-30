@@ -20,7 +20,7 @@
   .eyebrow { position:absolute; left:96px; top:74px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; line-height:1; }
   .hl { position:absolute; left:96px; top:108px; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; line-height:1; letter-spacing:1px; }
   .topsub { position:absolute; left:96px; top:176px; font-family:Georgia,serif; font-style:italic; font-size:27px; color:#d8a13a; line-height:1.2; }
-  .rlabel { position:absolute; right:96px; top:78px; font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; line-height:1.2; text-align:right; }
+  .rlabel { position:absolute; right:96px; top:62px; font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; line-height:1.2; text-align:right; }
   .stamp { position:absolute; right:96px; top:106px; font-family:'Arial Black',Arial,sans-serif; font-size:44px; line-height:1; color:#fff; background:#8e2020; padding:4px 22px; letter-spacing:2px; }
   .rsub { position:absolute; right:96px; top:166px; font-size:19px; letter-spacing:4px; color:#5a768f; font-weight:700; line-height:1.2; text-align:right; }
   .row { position:absolute; left:0; right:0; height:124px; }
@@ -138,7 +138,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"hl",     {autoAlpha:0, y:-26}, {autoAlpha:1, y:0, duration:0.55, ease:"power3.out"}, 0.55);
   tl.fromTo(P+"topsub", {autoAlpha:0, x:-28}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 1.10);
   tl.fromTo(P+"rlabel", {autoAlpha:0, y:-18}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 1.60);
-  tl.fromTo(P+"stamp",  {autoAlpha:0, scale:1.5}, {autoAlpha:1, scale:1, duration:0.36, ease:"power4.in"}, 2.00);
+  tl.fromTo(P+"stamp",  {autoAlpha:0, scale:1.15, transformOrigin:"right top"}, {autoAlpha:1, scale:1, duration:0.36, ease:"power4.in"}, 2.00);
   tl.fromTo(P+"rsub",   {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 2.50);
   /* axis + ticks land under "At 6:03" 3.7 */
   tl.fromTo(P+"axis", {scaleX:0}, {scaleX:1, duration:0.7, ease:"power3.out"}, 3.0);

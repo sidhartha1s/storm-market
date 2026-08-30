@@ -1,0 +1,6668 @@
+{
+  "slug": "kfor-flooded-streets-metro",
+  "language": "en",
+  "duration": 170.2486875,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.08,
+      "text": "now the Southwest 89th and May where Sarah Selly has been live and she showed us some damage from",
+      "words": [
+        {
+          "word": " now",
+          "start": 0.0,
+          "end": 0.18,
+          "prob": 0.041
+        },
+        {
+          "word": " the",
+          "start": 0.18,
+          "end": 0.32,
+          "prob": 0.506
+        },
+        {
+          "word": " Southwest",
+          "start": 0.32,
+          "end": 0.64,
+          "prob": 0.133
+        },
+        {
+          "word": " 89th",
+          "start": 0.64,
+          "end": 1.54,
+          "prob": 0.817
+        },
+        {
+          "word": " and",
+          "start": 1.54,
+          "end": 1.66,
+          "prob": 0.747
+        },
+        {
+          "word": " May",
+          "start": 1.66,
+          "end": 1.94,
+          "prob": 0.775
+        },
+        {
+          "word": " where",
+          "start": 1.94,
+          "end": 2.22,
+          "prob": 0.698
+        },
+        {
+          "word": " Sarah",
+          "start": 2.22,
+          "end": 2.46,
+          "prob": 0.691
+        },
+        {
+          "word": " Selly",
+          "start": 2.46,
+          "end": 2.92,
+          "prob": 0.539
+        },
+        {
+          "word": " has",
+          "start": 2.92,
+          "end": 3.26,
+          "prob": 0.984
+        },
+        {
+          "word": " been",
+          "start": 3.26,
+          "end": 3.44,
+          "prob": 0.977
+        },
+        {
+          "word": " live",
+          "start": 3.44,
+          "end": 3.76,
+          "prob": 0.981
+        },
+        {
+          "word": " and",
+          "start": 3.76,
+          "end": 4.3,
+          "prob": 0.717
+        },
+        {
+          "word": " she",
+          "start": 4.3,
+          "end": 4.58,
+          "prob": 0.993
+        },
+        {
+          "word": " showed",
+          "start": 4.58,
+          "end": 5.1,
+          "prob": 0.989
+        },
+        {
+          "word": " us",
+          "start": 5.1,
+          "end": 5.24,
+          "prob": 0.994
+        },
+        {
+          "word": " some",
+          "start": 5.24,
+          "end": 5.44,
+          "prob": 0.993
+        },
+        {
+          "word": " damage",
+          "start": 5.44,
+          "end": 5.76,
+          "prob": 0.977
+        },
+        {
+          "word": " from",
+          "start": 5.76,
+          "end": 6.08,
+          "prob": 0.985
+        }
+      ]
+    },
+    {
+      "start": 6.08,
+      "end": 12.38,
+      "text": "before and I'm sure you have found more since then Sarah. Yes that's right Meg we actually have found",
+      "words": [
+        {
+          "word": " before",
+          "start": 6.08,
+          "end": 6.46,
+          "prob": 0.993
+        },
+        {
+          "word": " and",
+          "start": 6.46,
+          "end": 6.64,
+          "prob": 0.614
+        },
+        {
+          "word": " I'm",
+          "start": 6.64,
+          "end": 6.74,
+          "prob": 0.987
+        },
+        {
+          "word": " sure",
+          "start": 6.74,
+          "end": 6.94,
+          "prob": 0.994
+        },
+        {
+          "word": " you",
+          "start": 6.94,
+          "end": 7.12,
+          "prob": 0.994
+        },
+        {
+          "word": " have",
+          "start": 7.12,
+          "end": 7.28,
+          "prob": 0.994
+        },
+        {
+          "word": " found",
+          "start": 7.28,
+          "end": 7.56,
+          "prob": 0.989
+        },
+        {
+          "word": " more",
+          "start": 7.56,
+          "end": 8.0,
+          "prob": 0.975
+        },
+        {
+          "word": " since",
+          "start": 8.0,
+          "end": 8.28,
+          "prob": 0.975
+        },
+        {
+          "word": " then",
+          "start": 8.28,
+          "end": 8.7,
+          "prob": 0.713
+        },
+        {
+          "word": " Sarah.",
+          "start": 8.7,
+          "end": 8.96,
+          "prob": 0.474
+        },
+        {
+          "word": " Yes",
+          "start": 10.34,
+          "end": 10.82,
+          "prob": 0.923
+        },
+        {
+          "word": " that's",
+          "start": 10.82,
+          "end": 11.04,
+          "prob": 0.575
+        },
+        {
+          "word": " right",
+          "start": 11.04,
+          "end": 11.18,
+          "prob": 0.994
+        },
+        {
+          "word": " Meg",
+          "start": 11.18,
+          "end": 11.34,
+          "prob": 0.72
+        },
+        {
+          "word": " we",
+          "start": 11.34,
+          "end": 11.56,
+          "prob": 0.35
+        },
+        {
+          "word": " actually",
+          "start": 11.56,
+          "end": 11.8,
+          "prob": 0.977
+        },
+        {
+          "word": " have",
+          "start": 11.8,
+          "end": 12.04,
+          "prob": 0.991
+        },
+        {
+          "word": " found",
+          "start": 12.04,
+          "end": 12.38,
+          "prob": 0.992
+        }
+      ]
+    },
+    {
+      "start": 12.38,
+      "end": 16.34,
+      "text": "more damage we've gotten a better look at what actually happened out here on Southwest 89th",
+      "words": [
+        {
+          "word": " more",
+          "start": 12.38,
+          "end": 12.96,
+          "prob": 0.968
+        },
+        {
+          "word": " damage",
+          "start": 12.96,
+          "end": 13.18,
+          "prob": 0.976
+        },
+        {
+          "word": " we've",
+          "start": 13.18,
+          "end": 13.38,
+          "prob": 0.774
+        },
+        {
+          "word": " gotten",
+          "start": 13.38,
+          "end": 13.54,
+          "prob": 0.966
+        },
+        {
+          "word": " a",
+          "start": 13.54,
+          "end": 13.66,
+          "prob": 0.86
+        },
+        {
+          "word": " better",
+          "start": 13.66,
+          "end": 13.8,
+          "prob": 0.998
+        },
+        {
+          "word": " look",
+          "start": 13.8,
+          "end": 14.08,
+          "prob": 0.982
+        },
+        {
+          "word": " at",
+          "start": 14.08,
+          "end": 14.24,
+          "prob": 0.991
+        },
+        {
+          "word": " what",
+          "start": 14.24,
+          "end": 14.42,
+          "prob": 0.982
+        },
+        {
+          "word": " actually",
+          "start": 14.42,
+          "end": 14.72,
+          "prob": 0.981
+        },
+        {
+          "word": " happened",
+          "start": 14.72,
+          "end": 15.06,
+          "prob": 0.966
+        },
+        {
+          "word": " out",
+          "start": 15.06,
+          "end": 15.22,
+          "prob": 0.99
+        },
+        {
+          "word": " here",
+          "start": 15.22,
+          "end": 15.38,
+          "prob": 0.997
+        },
+        {
+          "word": " on",
+          "start": 15.38,
+          "end": 15.5,
+          "prob": 0.989
+        },
+        {
+          "word": " Southwest",
+          "start": 15.5,
+          "end": 15.72,
+          "prob": 0.795
+        },
+        {
+          "word": " 89th",
+          "start": 15.72,
+          "end": 16.34,
+          "prob": 0.971
+        }
+      ]
+    },
+    {
+      "start": 16.34,
+      "end": 21.0,
+      "text": "here this is the apartments the hunt apartments all right our focus right now is going to be",
+      "words": [
+        {
+          "word": " here",
+          "start": 16.34,
+          "end": 16.42,
+          "prob": 0.613
+        },
+        {
+          "word": " this",
+          "start": 16.42,
+          "end": 16.56,
+          "prob": 0.379
+        },
+        {
+          "word": " is",
+          "start": 16.56,
+          "end": 16.7,
+          "prob": 0.984
+        },
+        {
+          "word": " the",
+          "start": 16.7,
+          "end": 16.8,
+          "prob": 0.951
+        },
+        {
+          "word": " apartments",
+          "start": 16.8,
+          "end": 17.16,
+          "prob": 0.782
+        },
+        {
+          "word": " the",
+          "start": 17.16,
+          "end": 17.92,
+          "prob": 0.782
+        },
+        {
+          "word": " hunt",
+          "start": 17.92,
+          "end": 18.12,
+          "prob": 0.675
+        },
+        {
+          "word": " apartments",
+          "start": 18.12,
+          "end": 18.78,
+          "prob": 0.91
+        },
+        {
+          "word": " all",
+          "start": 18.78,
+          "end": 19.52,
+          "prob": 0.28
+        },
+        {
+          "word": " right",
+          "start": 19.52,
+          "end": 19.66,
+          "prob": 0.991
+        },
+        {
+          "word": " our",
+          "start": 19.66,
+          "end": 19.9,
+          "prob": 0.871
+        },
+        {
+          "word": " focus",
+          "start": 19.9,
+          "end": 20.16,
+          "prob": 0.992
+        },
+        {
+          "word": " right",
+          "start": 20.16,
+          "end": 20.42,
+          "prob": 0.997
+        },
+        {
+          "word": " now",
+          "start": 20.42,
+          "end": 20.6,
+          "prob": 0.994
+        },
+        {
+          "word": " is",
+          "start": 20.6,
+          "end": 20.72,
+          "prob": 0.991
+        },
+        {
+          "word": " going",
+          "start": 20.72,
+          "end": 20.8,
+          "prob": 0.661
+        },
+        {
+          "word": " to",
+          "start": 20.8,
+          "end": 20.86,
+          "prob": 0.997
+        },
+        {
+          "word": " be",
+          "start": 20.86,
+          "end": 21.0,
+          "prob": 0.991
+        }
+      ]
+    },
+    {
+      "start": 22.06,
+      "end": 28.42,
+      "text": "mnop this little area right here the apartments are labeled by alphabetical and as you can see",
+      "words": [
+        {
+          "word": " mnop",
+          "start": 22.06,
+          "end": 22.54,
+          "prob": 0.542
+        },
+        {
+          "word": " this",
+          "start": 22.54,
+          "end": 23.02,
+          "prob": 0.858
+        },
+        {
+          "word": " little",
+          "start": 23.02,
+          "end": 23.2,
+          "prob": 0.996
+        },
+        {
+          "word": " area",
+          "start": 23.2,
+          "end": 23.48,
+          "prob": 0.998
+        },
+        {
+          "word": " right",
+          "start": 23.48,
+          "end": 23.84,
+          "prob": 0.994
+        },
+        {
+          "word": " here",
+          "start": 23.84,
+          "end": 24.3,
+          "prob": 0.997
+        },
+        {
+          "word": " the",
+          "start": 24.3,
+          "end": 25.22,
+          "prob": 0.785
+        },
+        {
+          "word": " apartments",
+          "start": 25.22,
+          "end": 25.46,
+          "prob": 0.972
+        },
+        {
+          "word": " are",
+          "start": 25.46,
+          "end": 25.72,
+          "prob": 0.986
+        },
+        {
+          "word": " labeled",
+          "start": 25.72,
+          "end": 25.9,
+          "prob": 0.985
+        },
+        {
+          "word": " by",
+          "start": 25.9,
+          "end": 26.32,
+          "prob": 0.994
+        },
+        {
+          "word": " alphabetical",
+          "start": 26.32,
+          "end": 27.18,
+          "prob": 0.985
+        },
+        {
+          "word": " and",
+          "start": 27.18,
+          "end": 27.74,
+          "prob": 0.959
+        },
+        {
+          "word": " as",
+          "start": 27.74,
+          "end": 27.88,
+          "prob": 0.996
+        },
+        {
+          "word": " you",
+          "start": 27.88,
+          "end": 28.0,
+          "prob": 0.999
+        },
+        {
+          "word": " can",
+          "start": 28.0,
+          "end": 28.12,
+          "prob": 0.999
+        },
+        {
+          "word": " see",
+          "start": 28.12,
+          "end": 28.42,
+          "prob": 0.997
+        }
+      ]
+    },
+    {
+      "start": 28.42,
+      "end": 36.46,
+      "text": "apartment O and apartment P the roof is pretty much lifted off of this so this happened I believe",
+      "words": [
+        {
+          "word": " apartment",
+          "start": 28.42,
+          "end": 28.98,
+          "prob": 0.015
+        },
+        {
+          "word": " O",
+          "start": 28.98,
+          "end": 29.32,
+          "prob": 0.225
+        },
+        {
+          "word": " and",
+          "start": 29.32,
+          "end": 29.66,
+          "prob": 0.773
+        },
+        {
+          "word": " apartment",
+          "start": 29.66,
+          "end": 29.92,
+          "prob": 0.864
+        },
+        {
+          "word": " P",
+          "start": 29.92,
+          "end": 30.3,
+          "prob": 0.589
+        },
+        {
+          "word": " the",
+          "start": 30.3,
+          "end": 31.16,
+          "prob": 0.281
+        },
+        {
+          "word": " roof",
+          "start": 31.16,
+          "end": 31.54,
+          "prob": 0.946
+        },
+        {
+          "word": " is",
+          "start": 31.54,
+          "end": 32.08,
+          "prob": 0.888
+        },
+        {
+          "word": " pretty",
+          "start": 32.08,
+          "end": 32.28,
+          "prob": 0.969
+        },
+        {
+          "word": " much",
+          "start": 32.28,
+          "end": 32.54,
+          "prob": 0.946
+        },
+        {
+          "word": " lifted",
+          "start": 32.54,
+          "end": 33.2,
+          "prob": 0.951
+        },
+        {
+          "word": " off",
+          "start": 33.2,
+          "end": 33.4,
+          "prob": 0.959
+        },
+        {
+          "word": " of",
+          "start": 33.4,
+          "end": 33.54,
+          "prob": 0.941
+        },
+        {
+          "word": " this",
+          "start": 33.54,
+          "end": 33.72,
+          "prob": 0.803
+        },
+        {
+          "word": " so",
+          "start": 33.72,
+          "end": 35.28,
+          "prob": 0.062
+        },
+        {
+          "word": " this",
+          "start": 35.28,
+          "end": 35.68,
+          "prob": 0.963
+        },
+        {
+          "word": " happened",
+          "start": 35.68,
+          "end": 35.94,
+          "prob": 0.959
+        },
+        {
+          "word": " I",
+          "start": 35.94,
+          "end": 36.18,
+          "prob": 0.736
+        },
+        {
+          "word": " believe",
+          "start": 36.18,
+          "end": 36.46,
+          "prob": 0.955
+        }
+      ]
+    },
+    {
+      "start": 36.46,
+      "end": 41.4,
+      "text": "during the wind part of this event the straight line winds and things that came through here",
+      "words": [
+        {
+          "word": " during",
+          "start": 36.46,
+          "end": 36.92,
+          "prob": 0.983
+        },
+        {
+          "word": " the",
+          "start": 36.92,
+          "end": 37.22,
+          "prob": 0.975
+        },
+        {
+          "word": " wind",
+          "start": 37.22,
+          "end": 37.58,
+          "prob": 0.642
+        },
+        {
+          "word": " part",
+          "start": 37.58,
+          "end": 38.02,
+          "prob": 0.988
+        },
+        {
+          "word": " of",
+          "start": 38.02,
+          "end": 38.34,
+          "prob": 0.985
+        },
+        {
+          "word": " this",
+          "start": 38.34,
+          "end": 38.76,
+          "prob": 0.976
+        },
+        {
+          "word": " event",
+          "start": 38.76,
+          "end": 39.32,
+          "prob": 0.935
+        },
+        {
+          "word": " the",
+          "start": 39.32,
+          "end": 39.68,
+          "prob": 0.614
+        },
+        {
+          "word": " straight",
+          "start": 39.68,
+          "end": 39.96,
+          "prob": 0.968
+        },
+        {
+          "word": " line",
+          "start": 39.96,
+          "end": 40.12,
+          "prob": 0.971
+        },
+        {
+          "word": " winds",
+          "start": 40.12,
+          "end": 40.32,
+          "prob": 0.888
+        },
+        {
+          "word": " and",
+          "start": 40.32,
+          "end": 40.48,
+          "prob": 0.872
+        },
+        {
+          "word": " things",
+          "start": 40.48,
+          "end": 40.68,
+          "prob": 0.94
+        },
+        {
+          "word": " that",
+          "start": 40.68,
+          "end": 40.78,
+          "prob": 0.833
+        },
+        {
+          "word": " came",
+          "start": 40.78,
+          "end": 40.92,
+          "prob": 0.99
+        },
+        {
+          "word": " through",
+          "start": 40.92,
+          "end": 41.14,
+          "prob": 0.961
+        },
+        {
+          "word": " here",
+          "start": 41.14,
+          "end": 41.4,
+          "prob": 0.966
+        }
+      ]
+    },
+    {
+      "start": 42.18,
+      "end": 46.54,
+      "text": "then it rained for a good hour because we were sitting in this rain this blinding rain here we",
+      "words": [
+        {
+          "word": " then",
+          "start": 42.18,
+          "end": 42.44,
+          "prob": 0.487
+        },
+        {
+          "word": " it",
+          "start": 42.44,
+          "end": 42.58,
+          "prob": 0.967
+        },
+        {
+          "word": " rained",
+          "start": 42.58,
+          "end": 42.9,
+          "prob": 0.571
+        },
+        {
+          "word": " for",
+          "start": 42.9,
+          "end": 43.16,
+          "prob": 0.988
+        },
+        {
+          "word": " a",
+          "start": 43.16,
+          "end": 43.24,
+          "prob": 0.994
+        },
+        {
+          "word": " good",
+          "start": 43.24,
+          "end": 43.38,
+          "prob": 0.982
+        },
+        {
+          "word": " hour",
+          "start": 43.38,
+          "end": 43.72,
+          "prob": 0.973
+        },
+        {
+          "word": " because",
+          "start": 43.72,
+          "end": 44.22,
+          "prob": 0.963
+        },
+        {
+          "word": " we",
+          "start": 44.22,
+          "end": 44.38,
+          "prob": 0.971
+        },
+        {
+          "word": " were",
+          "start": 44.38,
+          "end": 44.48,
+          "prob": 0.962
+        },
+        {
+          "word": " sitting",
+          "start": 44.48,
+          "end": 44.64,
+          "prob": 0.979
+        },
+        {
+          "word": " in",
+          "start": 44.64,
+          "end": 44.84,
+          "prob": 0.981
+        },
+        {
+          "word": " this",
+          "start": 44.84,
+          "end": 44.98,
+          "prob": 0.986
+        },
+        {
+          "word": " rain",
+          "start": 44.98,
+          "end": 45.24,
+          "prob": 0.97
+        },
+        {
+          "word": " this",
+          "start": 45.24,
+          "end": 45.46,
+          "prob": 0.231
+        },
+        {
+          "word": " blinding",
+          "start": 45.46,
+          "end": 45.78,
+          "prob": 0.954
+        },
+        {
+          "word": " rain",
+          "start": 45.78,
+          "end": 46.14,
+          "prob": 0.988
+        },
+        {
+          "word": " here",
+          "start": 46.14,
+          "end": 46.44,
+          "prob": 0.977
+        },
+        {
+          "word": " we",
+          "start": 46.44,
+          "end": 46.54,
+          "prob": 0.96
+        }
+      ]
+    },
+    {
+      "start": 46.54,
+      "end": 51.84,
+      "text": "couldn't even get out of the car and it hailed so you can imagine after that this these apartments",
+      "words": [
+        {
+          "word": " couldn't",
+          "start": 46.54,
+          "end": 46.74,
+          "prob": 0.973
+        },
+        {
+          "word": " even",
+          "start": 46.74,
+          "end": 46.88,
+          "prob": 0.975
+        },
+        {
+          "word": " get",
+          "start": 46.88,
+          "end": 47.02,
+          "prob": 0.994
+        },
+        {
+          "word": " out",
+          "start": 47.02,
+          "end": 47.12,
+          "prob": 0.974
+        },
+        {
+          "word": " of",
+          "start": 47.12,
+          "end": 47.2,
+          "prob": 0.989
+        },
+        {
+          "word": " the",
+          "start": 47.2,
+          "end": 47.28,
+          "prob": 0.995
+        },
+        {
+          "word": " car",
+          "start": 47.28,
+          "end": 47.5,
+          "prob": 0.994
+        },
+        {
+          "word": " and",
+          "start": 47.5,
+          "end": 48.08,
+          "prob": 0.935
+        },
+        {
+          "word": " it",
+          "start": 48.08,
+          "end": 48.18,
+          "prob": 0.855
+        },
+        {
+          "word": " hailed",
+          "start": 48.18,
+          "end": 48.42,
+          "prob": 0.729
+        },
+        {
+          "word": " so",
+          "start": 48.42,
+          "end": 49.46,
+          "prob": 0.67
+        },
+        {
+          "word": " you",
+          "start": 49.46,
+          "end": 49.56,
+          "prob": 0.997
+        },
+        {
+          "word": " can",
+          "start": 49.56,
+          "end": 49.66,
+          "prob": 0.961
+        },
+        {
+          "word": " imagine",
+          "start": 49.66,
+          "end": 49.94,
+          "prob": 0.992
+        },
+        {
+          "word": " after",
+          "start": 49.94,
+          "end": 50.32,
+          "prob": 0.992
+        },
+        {
+          "word": " that",
+          "start": 50.32,
+          "end": 50.68,
+          "prob": 0.979
+        },
+        {
+          "word": " this",
+          "start": 50.68,
+          "end": 51.22,
+          "prob": 0.715
+        },
+        {
+          "word": " these",
+          "start": 51.22,
+          "end": 51.56,
+          "prob": 0.868
+        },
+        {
+          "word": " apartments",
+          "start": 51.56,
+          "end": 51.84,
+          "prob": 0.971
+        }
+      ]
+    },
+    {
+      "start": 52.66,
+      "end": 57.74,
+      "text": "flooded O and P did and that caused damage to M and N that's the owner right there of",
+      "words": [
+        {
+          "word": " flooded",
+          "start": 52.66,
+          "end": 53.02,
+          "prob": 0.0
+        },
+        {
+          "word": " O",
+          "start": 53.02,
+          "end": 53.38,
+          "prob": 0.104
+        },
+        {
+          "word": " and",
+          "start": 53.38,
+          "end": 53.54,
+          "prob": 0.585
+        },
+        {
+          "word": " P",
+          "start": 53.54,
+          "end": 53.72,
+          "prob": 0.949
+        },
+        {
+          "word": " did",
+          "start": 53.72,
+          "end": 53.98,
+          "prob": 0.597
+        },
+        {
+          "word": " and",
+          "start": 53.98,
+          "end": 54.56,
+          "prob": 0.515
+        },
+        {
+          "word": " that",
+          "start": 54.56,
+          "end": 54.68,
+          "prob": 0.973
+        },
+        {
+          "word": " caused",
+          "start": 54.68,
+          "end": 54.9,
+          "prob": 0.578
+        },
+        {
+          "word": " damage",
+          "start": 54.9,
+          "end": 55.24,
+          "prob": 0.815
+        },
+        {
+          "word": " to",
+          "start": 55.24,
+          "end": 55.58,
+          "prob": 0.904
+        },
+        {
+          "word": " M",
+          "start": 55.58,
+          "end": 55.92,
+          "prob": 0.466
+        },
+        {
+          "word": " and",
+          "start": 55.92,
+          "end": 56.08,
+          "prob": 0.791
+        },
+        {
+          "word": " N",
+          "start": 56.08,
+          "end": 56.26,
+          "prob": 0.881
+        },
+        {
+          "word": " that's",
+          "start": 56.26,
+          "end": 56.66,
+          "prob": 0.583
+        },
+        {
+          "word": " the",
+          "start": 56.66,
+          "end": 56.78,
+          "prob": 0.978
+        },
+        {
+          "word": " owner",
+          "start": 56.78,
+          "end": 57.0,
+          "prob": 0.94
+        },
+        {
+          "word": " right",
+          "start": 57.0,
+          "end": 57.28,
+          "prob": 0.934
+        },
+        {
+          "word": " there",
+          "start": 57.28,
+          "end": 57.46,
+          "prob": 0.88
+        },
+        {
+          "word": " of",
+          "start": 57.46,
+          "end": 57.74,
+          "prob": 0.864
+        }
+      ]
+    },
+    {
+      "start": 57.74,
+      "end": 63.98,
+      "text": "apartment M he just came home probably about five or ten minutes ago it's pretty upset right now he's",
+      "words": [
+        {
+          "word": " apartment",
+          "start": 57.74,
+          "end": 58.28,
+          "prob": 0.608
+        },
+        {
+          "word": " M",
+          "start": 58.28,
+          "end": 58.68,
+          "prob": 0.793
+        },
+        {
+          "word": " he",
+          "start": 58.68,
+          "end": 59.32,
+          "prob": 0.208
+        },
+        {
+          "word": " just",
+          "start": 59.32,
+          "end": 59.58,
+          "prob": 0.989
+        },
+        {
+          "word": " came",
+          "start": 59.58,
+          "end": 59.84,
+          "prob": 0.995
+        },
+        {
+          "word": " home",
+          "start": 59.84,
+          "end": 60.12,
+          "prob": 0.994
+        },
+        {
+          "word": " probably",
+          "start": 60.12,
+          "end": 60.6,
+          "prob": 0.854
+        },
+        {
+          "word": " about",
+          "start": 60.6,
+          "end": 60.94,
+          "prob": 0.97
+        },
+        {
+          "word": " five",
+          "start": 60.94,
+          "end": 61.34,
+          "prob": 0.617
+        },
+        {
+          "word": " or",
+          "start": 61.34,
+          "end": 61.5,
+          "prob": 0.987
+        },
+        {
+          "word": " ten",
+          "start": 61.5,
+          "end": 61.66,
+          "prob": 0.393
+        },
+        {
+          "word": " minutes",
+          "start": 61.66,
+          "end": 61.88,
+          "prob": 0.986
+        },
+        {
+          "word": " ago",
+          "start": 61.88,
+          "end": 62.2,
+          "prob": 0.989
+        },
+        {
+          "word": " it's",
+          "start": 62.2,
+          "end": 63.16,
+          "prob": 0.542
+        },
+        {
+          "word": " pretty",
+          "start": 63.16,
+          "end": 63.24,
+          "prob": 0.991
+        },
+        {
+          "word": " upset",
+          "start": 63.24,
+          "end": 63.42,
+          "prob": 0.977
+        },
+        {
+          "word": " right",
+          "start": 63.42,
+          "end": 63.76,
+          "prob": 0.983
+        },
+        {
+          "word": " now",
+          "start": 63.76,
+          "end": 63.9,
+          "prob": 0.983
+        },
+        {
+          "word": " he's",
+          "start": 63.9,
+          "end": 63.98,
+          "prob": 0.89
+        }
+      ]
+    },
+    {
+      "start": 63.98,
+      "end": 67.6,
+      "text": "on the phone we saw him go in kind of look at the damage for the first time he came back out he slammed",
+      "words": [
+        {
+          "word": " on",
+          "start": 63.98,
+          "end": 64.08,
+          "prob": 0.997
+        },
+        {
+          "word": " the",
+          "start": 64.08,
+          "end": 64.14,
+          "prob": 0.988
+        },
+        {
+          "word": " phone",
+          "start": 64.14,
+          "end": 64.36,
+          "prob": 0.997
+        },
+        {
+          "word": " we",
+          "start": 64.36,
+          "end": 64.88,
+          "prob": 0.725
+        },
+        {
+          "word": " saw",
+          "start": 64.88,
+          "end": 65.0,
+          "prob": 0.968
+        },
+        {
+          "word": " him",
+          "start": 65.0,
+          "end": 65.12,
+          "prob": 0.916
+        },
+        {
+          "word": " go",
+          "start": 65.12,
+          "end": 65.24,
+          "prob": 0.992
+        },
+        {
+          "word": " in",
+          "start": 65.24,
+          "end": 65.5,
+          "prob": 0.933
+        },
+        {
+          "word": " kind",
+          "start": 65.5,
+          "end": 65.72,
+          "prob": 0.806
+        },
+        {
+          "word": " of",
+          "start": 65.72,
+          "end": 65.84,
+          "prob": 0.989
+        },
+        {
+          "word": " look",
+          "start": 65.84,
+          "end": 65.94,
+          "prob": 0.979
+        },
+        {
+          "word": " at",
+          "start": 65.94,
+          "end": 66.04,
+          "prob": 0.992
+        },
+        {
+          "word": " the",
+          "start": 66.04,
+          "end": 66.08,
+          "prob": 0.987
+        },
+        {
+          "word": " damage",
+          "start": 66.08,
+          "end": 66.26,
+          "prob": 0.935
+        },
+        {
+          "word": " for",
+          "start": 66.26,
+          "end": 66.38,
+          "prob": 0.498
+        },
+        {
+          "word": " the",
+          "start": 66.38,
+          "end": 66.46,
+          "prob": 0.99
+        },
+        {
+          "word": " first",
+          "start": 66.46,
+          "end": 66.6,
+          "prob": 0.996
+        },
+        {
+          "word": " time",
+          "start": 66.6,
+          "end": 66.78,
+          "prob": 0.994
+        },
+        {
+          "word": " he",
+          "start": 66.78,
+          "end": 66.88,
+          "prob": 0.802
+        },
+        {
+          "word": " came",
+          "start": 66.88,
+          "end": 67.06,
+          "prob": 0.999
+        },
+        {
+          "word": " back",
+          "start": 67.06,
+          "end": 67.24,
+          "prob": 0.995
+        },
+        {
+          "word": " out",
+          "start": 67.24,
+          "end": 67.38,
+          "prob": 0.924
+        },
+        {
+          "word": " he",
+          "start": 67.38,
+          "end": 67.48,
+          "prob": 0.814
+        },
+        {
+          "word": " slammed",
+          "start": 67.48,
+          "end": 67.6,
+          "prob": 0.918
+        }
+      ]
+    },
+    {
+      "start": 67.6,
+      "end": 73.1,
+      "text": "the door he went over and talked to the apartment manager about what was going on I asked him",
+      "words": [
+        {
+          "word": " the",
+          "start": 67.6,
+          "end": 67.86,
+          "prob": 0.995
+        },
+        {
+          "word": " door",
+          "start": 67.86,
+          "end": 68.02,
+          "prob": 0.999
+        },
+        {
+          "word": " he",
+          "start": 68.02,
+          "end": 68.22,
+          "prob": 0.957
+        },
+        {
+          "word": " went",
+          "start": 68.22,
+          "end": 68.32,
+          "prob": 0.997
+        },
+        {
+          "word": " over",
+          "start": 68.32,
+          "end": 68.56,
+          "prob": 0.998
+        },
+        {
+          "word": " and",
+          "start": 68.56,
+          "end": 68.64,
+          "prob": 0.992
+        },
+        {
+          "word": " talked",
+          "start": 68.64,
+          "end": 68.82,
+          "prob": 0.912
+        },
+        {
+          "word": " to",
+          "start": 68.82,
+          "end": 69.08,
+          "prob": 0.993
+        },
+        {
+          "word": " the",
+          "start": 69.08,
+          "end": 70.06,
+          "prob": 0.87
+        },
+        {
+          "word": " apartment",
+          "start": 70.06,
+          "end": 70.52,
+          "prob": 0.886
+        },
+        {
+          "word": " manager",
+          "start": 70.52,
+          "end": 70.94,
+          "prob": 0.994
+        },
+        {
+          "word": " about",
+          "start": 70.94,
+          "end": 71.28,
+          "prob": 0.99
+        },
+        {
+          "word": " what",
+          "start": 71.28,
+          "end": 71.44,
+          "prob": 0.985
+        },
+        {
+          "word": " was",
+          "start": 71.44,
+          "end": 71.58,
+          "prob": 0.988
+        },
+        {
+          "word": " going",
+          "start": 71.58,
+          "end": 71.7,
+          "prob": 0.997
+        },
+        {
+          "word": " on",
+          "start": 71.7,
+          "end": 71.98,
+          "prob": 0.995
+        },
+        {
+          "word": " I",
+          "start": 71.98,
+          "end": 72.72,
+          "prob": 0.829
+        },
+        {
+          "word": " asked",
+          "start": 72.72,
+          "end": 72.9,
+          "prob": 0.988
+        },
+        {
+          "word": " him",
+          "start": 72.9,
+          "end": 73.1,
+          "prob": 0.985
+        }
+      ]
+    },
+    {
+      "start": 73.1,
+      "end": 77.2,
+      "text": "briefly what had happened and he said there's a lot of water damage in his apartment so I'm assuming",
+      "words": [
+        {
+          "word": " briefly",
+          "start": 73.1,
+          "end": 73.26,
+          "prob": 0.953
+        },
+        {
+          "word": " what",
+          "start": 73.26,
+          "end": 73.5,
+          "prob": 0.986
+        },
+        {
+          "word": " had",
+          "start": 73.5,
+          "end": 73.62,
+          "prob": 0.9
+        },
+        {
+          "word": " happened",
+          "start": 73.62,
+          "end": 73.9,
+          "prob": 0.987
+        },
+        {
+          "word": " and",
+          "start": 73.9,
+          "end": 74.02,
+          "prob": 0.967
+        },
+        {
+          "word": " he",
+          "start": 74.02,
+          "end": 74.12,
+          "prob": 0.996
+        },
+        {
+          "word": " said",
+          "start": 74.12,
+          "end": 74.24,
+          "prob": 0.997
+        },
+        {
+          "word": " there's",
+          "start": 74.24,
+          "end": 74.46,
+          "prob": 0.973
+        },
+        {
+          "word": " a",
+          "start": 74.46,
+          "end": 74.54,
+          "prob": 0.998
+        },
+        {
+          "word": " lot",
+          "start": 74.54,
+          "end": 74.72,
+          "prob": 0.997
+        },
+        {
+          "word": " of",
+          "start": 74.72,
+          "end": 74.88,
+          "prob": 0.987
+        },
+        {
+          "word": " water",
+          "start": 74.88,
+          "end": 75.4,
+          "prob": 0.992
+        },
+        {
+          "word": " damage",
+          "start": 75.4,
+          "end": 75.68,
+          "prob": 0.975
+        },
+        {
+          "word": " in",
+          "start": 75.68,
+          "end": 76.06,
+          "prob": 0.997
+        },
+        {
+          "word": " his",
+          "start": 76.06,
+          "end": 76.26,
+          "prob": 0.998
+        },
+        {
+          "word": " apartment",
+          "start": 76.26,
+          "end": 76.58,
+          "prob": 0.974
+        },
+        {
+          "word": " so",
+          "start": 76.58,
+          "end": 76.9,
+          "prob": 0.917
+        },
+        {
+          "word": " I'm",
+          "start": 76.9,
+          "end": 76.96,
+          "prob": 0.909
+        },
+        {
+          "word": " assuming",
+          "start": 76.96,
+          "end": 77.2,
+          "prob": 0.998
+        }
+      ]
+    },
+    {
+      "start": 77.2,
+      "end": 81.76,
+      "text": "that's the same for apartment N and you can imagine this is not good if you live out here at",
+      "words": [
+        {
+          "word": " that's",
+          "start": 77.2,
+          "end": 77.56,
+          "prob": 0.996
+        },
+        {
+          "word": " the",
+          "start": 77.56,
+          "end": 77.68,
+          "prob": 0.998
+        },
+        {
+          "word": " same",
+          "start": 77.68,
+          "end": 77.88,
+          "prob": 0.992
+        },
+        {
+          "word": " for",
+          "start": 77.88,
+          "end": 78.2,
+          "prob": 0.976
+        },
+        {
+          "word": " apartment",
+          "start": 78.2,
+          "end": 78.8,
+          "prob": 0.942
+        },
+        {
+          "word": " N",
+          "start": 78.8,
+          "end": 79.26,
+          "prob": 0.14
+        },
+        {
+          "word": " and",
+          "start": 79.26,
+          "end": 79.48,
+          "prob": 0.918
+        },
+        {
+          "word": " you",
+          "start": 79.48,
+          "end": 79.6,
+          "prob": 0.995
+        },
+        {
+          "word": " can",
+          "start": 79.6,
+          "end": 79.7,
+          "prob": 0.981
+        },
+        {
+          "word": " imagine",
+          "start": 79.7,
+          "end": 79.88,
+          "prob": 0.986
+        },
+        {
+          "word": " this",
+          "start": 79.88,
+          "end": 80.1,
+          "prob": 0.971
+        },
+        {
+          "word": " is",
+          "start": 80.1,
+          "end": 80.2,
+          "prob": 0.993
+        },
+        {
+          "word": " not",
+          "start": 80.2,
+          "end": 80.84,
+          "prob": 0.991
+        },
+        {
+          "word": " good",
+          "start": 80.84,
+          "end": 81.04,
+          "prob": 0.994
+        },
+        {
+          "word": " if",
+          "start": 81.04,
+          "end": 81.18,
+          "prob": 0.968
+        },
+        {
+          "word": " you",
+          "start": 81.18,
+          "end": 81.26,
+          "prob": 0.978
+        },
+        {
+          "word": " live",
+          "start": 81.26,
+          "end": 81.38,
+          "prob": 0.997
+        },
+        {
+          "word": " out",
+          "start": 81.38,
+          "end": 81.52,
+          "prob": 0.997
+        },
+        {
+          "word": " here",
+          "start": 81.52,
+          "end": 81.68,
+          "prob": 0.996
+        },
+        {
+          "word": " at",
+          "start": 81.68,
+          "end": 81.76,
+          "prob": 0.946
+        }
+      ]
+    },
+    {
+      "start": 81.76,
+      "end": 87.78,
+      "text": "the hunt apartments right there that's a huge tree gives you another idea of how significant this",
+      "words": [
+        {
+          "word": " the",
+          "start": 81.76,
+          "end": 81.86,
+          "prob": 0.174
+        },
+        {
+          "word": " hunt",
+          "start": 81.86,
+          "end": 82.02,
+          "prob": 0.351
+        },
+        {
+          "word": " apartments",
+          "start": 82.02,
+          "end": 82.24,
+          "prob": 0.606
+        },
+        {
+          "word": " right",
+          "start": 82.24,
+          "end": 83.52,
+          "prob": 0.527
+        },
+        {
+          "word": " there",
+          "start": 83.52,
+          "end": 83.82,
+          "prob": 0.564
+        },
+        {
+          "word": " that's",
+          "start": 83.82,
+          "end": 84.4,
+          "prob": 0.43
+        },
+        {
+          "word": " a",
+          "start": 84.4,
+          "end": 84.44,
+          "prob": 0.943
+        },
+        {
+          "word": " huge",
+          "start": 84.44,
+          "end": 84.62,
+          "prob": 0.614
+        },
+        {
+          "word": " tree",
+          "start": 84.62,
+          "end": 85.08,
+          "prob": 0.824
+        },
+        {
+          "word": " gives",
+          "start": 85.08,
+          "end": 85.8,
+          "prob": 0.141
+        },
+        {
+          "word": " you",
+          "start": 85.8,
+          "end": 85.9,
+          "prob": 0.826
+        },
+        {
+          "word": " another",
+          "start": 85.9,
+          "end": 86.02,
+          "prob": 0.729
+        },
+        {
+          "word": " idea",
+          "start": 86.02,
+          "end": 86.3,
+          "prob": 0.968
+        },
+        {
+          "word": " of",
+          "start": 86.3,
+          "end": 86.52,
+          "prob": 0.905
+        },
+        {
+          "word": " how",
+          "start": 86.52,
+          "end": 86.66,
+          "prob": 0.98
+        },
+        {
+          "word": " significant",
+          "start": 86.66,
+          "end": 87.26,
+          "prob": 0.963
+        },
+        {
+          "word": " this",
+          "start": 87.26,
+          "end": 87.78,
+          "prob": 0.923
+        }
+      ]
+    },
+    {
+      "start": 87.78,
+      "end": 94.52,
+      "text": "wind was the tree is a pretty big pine tree and it was lifted out of its root system and then just",
+      "words": [
+        {
+          "word": " wind",
+          "start": 87.78,
+          "end": 87.96,
+          "prob": 0.936
+        },
+        {
+          "word": " was",
+          "start": 87.96,
+          "end": 88.34,
+          "prob": 0.98
+        },
+        {
+          "word": " the",
+          "start": 88.34,
+          "end": 89.28,
+          "prob": 0.229
+        },
+        {
+          "word": " tree",
+          "start": 89.28,
+          "end": 89.52,
+          "prob": 0.981
+        },
+        {
+          "word": " is",
+          "start": 89.52,
+          "end": 90.0,
+          "prob": 0.988
+        },
+        {
+          "word": " a",
+          "start": 90.0,
+          "end": 90.12,
+          "prob": 0.99
+        },
+        {
+          "word": " pretty",
+          "start": 90.12,
+          "end": 90.44,
+          "prob": 0.983
+        },
+        {
+          "word": " big",
+          "start": 90.44,
+          "end": 90.78,
+          "prob": 0.992
+        },
+        {
+          "word": " pine",
+          "start": 90.78,
+          "end": 91.08,
+          "prob": 0.992
+        },
+        {
+          "word": " tree",
+          "start": 91.08,
+          "end": 91.46,
+          "prob": 0.996
+        },
+        {
+          "word": " and",
+          "start": 91.46,
+          "end": 92.24,
+          "prob": 0.826
+        },
+        {
+          "word": " it",
+          "start": 92.24,
+          "end": 92.4,
+          "prob": 0.996
+        },
+        {
+          "word": " was",
+          "start": 92.4,
+          "end": 92.52,
+          "prob": 0.996
+        },
+        {
+          "word": " lifted",
+          "start": 92.52,
+          "end": 92.82,
+          "prob": 0.986
+        },
+        {
+          "word": " out",
+          "start": 92.82,
+          "end": 93.08,
+          "prob": 0.997
+        },
+        {
+          "word": " of",
+          "start": 93.08,
+          "end": 93.18,
+          "prob": 0.988
+        },
+        {
+          "word": " its",
+          "start": 93.18,
+          "end": 93.3,
+          "prob": 0.962
+        },
+        {
+          "word": " root",
+          "start": 93.3,
+          "end": 93.52,
+          "prob": 0.911
+        },
+        {
+          "word": " system",
+          "start": 93.52,
+          "end": 93.92,
+          "prob": 0.998
+        },
+        {
+          "word": " and",
+          "start": 93.92,
+          "end": 94.18,
+          "prob": 0.968
+        },
+        {
+          "word": " then",
+          "start": 94.18,
+          "end": 94.32,
+          "prob": 0.984
+        },
+        {
+          "word": " just",
+          "start": 94.32,
+          "end": 94.52,
+          "prob": 0.995
+        }
+      ]
+    },
+    {
+      "start": 94.52,
+      "end": 100.76,
+      "text": "kind of laid down on its side and there's another tree right behind it same story across the street",
+      "words": [
+        {
+          "word": " kind",
+          "start": 94.52,
+          "end": 94.84,
+          "prob": 0.808
+        },
+        {
+          "word": " of",
+          "start": 94.84,
+          "end": 94.96,
+          "prob": 0.985
+        },
+        {
+          "word": " laid",
+          "start": 94.96,
+          "end": 95.1,
+          "prob": 0.982
+        },
+        {
+          "word": " down",
+          "start": 95.1,
+          "end": 95.38,
+          "prob": 0.997
+        },
+        {
+          "word": " on",
+          "start": 95.38,
+          "end": 95.54,
+          "prob": 0.998
+        },
+        {
+          "word": " its",
+          "start": 95.54,
+          "end": 95.66,
+          "prob": 0.922
+        },
+        {
+          "word": " side",
+          "start": 95.66,
+          "end": 96.08,
+          "prob": 0.995
+        },
+        {
+          "word": " and",
+          "start": 96.08,
+          "end": 96.66,
+          "prob": 0.811
+        },
+        {
+          "word": " there's",
+          "start": 96.66,
+          "end": 96.86,
+          "prob": 0.996
+        },
+        {
+          "word": " another",
+          "start": 96.86,
+          "end": 97.06,
+          "prob": 0.995
+        },
+        {
+          "word": " tree",
+          "start": 97.06,
+          "end": 97.4,
+          "prob": 0.993
+        },
+        {
+          "word": " right",
+          "start": 97.4,
+          "end": 97.86,
+          "prob": 0.977
+        },
+        {
+          "word": " behind",
+          "start": 97.86,
+          "end": 98.16,
+          "prob": 0.999
+        },
+        {
+          "word": " it",
+          "start": 98.16,
+          "end": 98.38,
+          "prob": 0.992
+        },
+        {
+          "word": " same",
+          "start": 98.38,
+          "end": 98.96,
+          "prob": 0.773
+        },
+        {
+          "word": " story",
+          "start": 98.96,
+          "end": 99.46,
+          "prob": 0.992
+        },
+        {
+          "word": " across",
+          "start": 99.46,
+          "end": 100.22,
+          "prob": 0.754
+        },
+        {
+          "word": " the",
+          "start": 100.22,
+          "end": 100.58,
+          "prob": 0.997
+        },
+        {
+          "word": " street",
+          "start": 100.58,
+          "end": 100.76,
+          "prob": 0.989
+        }
+      ]
+    },
+    {
+      "start": 100.76,
+      "end": 107.26,
+      "text": "here another good idea of what happened out here on 89th this is an entire system of electrical",
+      "words": [
+        {
+          "word": " here",
+          "start": 100.76,
+          "end": 101.06,
+          "prob": 0.984
+        },
+        {
+          "word": " another",
+          "start": 101.06,
+          "end": 101.44,
+          "prob": 0.909
+        },
+        {
+          "word": " good",
+          "start": 101.44,
+          "end": 102.06,
+          "prob": 0.996
+        },
+        {
+          "word": " idea",
+          "start": 102.06,
+          "end": 102.42,
+          "prob": 0.999
+        },
+        {
+          "word": " of",
+          "start": 102.42,
+          "end": 102.76,
+          "prob": 0.992
+        },
+        {
+          "word": " what",
+          "start": 102.76,
+          "end": 102.9,
+          "prob": 0.998
+        },
+        {
+          "word": " happened",
+          "start": 102.9,
+          "end": 103.16,
+          "prob": 0.983
+        },
+        {
+          "word": " out",
+          "start": 103.16,
+          "end": 103.34,
+          "prob": 0.987
+        },
+        {
+          "word": " here",
+          "start": 103.34,
+          "end": 103.5,
+          "prob": 0.997
+        },
+        {
+          "word": " on",
+          "start": 103.5,
+          "end": 103.64,
+          "prob": 0.991
+        },
+        {
+          "word": " 89th",
+          "start": 103.64,
+          "end": 104.26,
+          "prob": 0.666
+        },
+        {
+          "word": " this",
+          "start": 104.26,
+          "end": 105.26,
+          "prob": 0.595
+        },
+        {
+          "word": " is",
+          "start": 105.26,
+          "end": 105.66,
+          "prob": 0.992
+        },
+        {
+          "word": " an",
+          "start": 105.66,
+          "end": 105.92,
+          "prob": 0.975
+        },
+        {
+          "word": " entire",
+          "start": 105.92,
+          "end": 106.26,
+          "prob": 0.999
+        },
+        {
+          "word": " system",
+          "start": 106.26,
+          "end": 106.72,
+          "prob": 0.995
+        },
+        {
+          "word": " of",
+          "start": 106.72,
+          "end": 106.98,
+          "prob": 0.988
+        },
+        {
+          "word": " electrical",
+          "start": 106.98,
+          "end": 107.26,
+          "prob": 0.979
+        }
+      ]
+    },
+    {
+      "start": 107.26,
+      "end": 112.94,
+      "text": "wires completely over on its side and those wires are all down that means that nobody in this area",
+      "words": [
+        {
+          "word": " wires",
+          "start": 107.26,
+          "end": 107.74,
+          "prob": 0.0
+        },
+        {
+          "word": " completely",
+          "start": 107.74,
+          "end": 108.44,
+          "prob": 0.395
+        },
+        {
+          "word": " over",
+          "start": 108.44,
+          "end": 109.06,
+          "prob": 0.851
+        },
+        {
+          "word": " on",
+          "start": 109.06,
+          "end": 109.28,
+          "prob": 0.943
+        },
+        {
+          "word": " its",
+          "start": 109.28,
+          "end": 109.38,
+          "prob": 0.646
+        },
+        {
+          "word": " side",
+          "start": 109.38,
+          "end": 109.8,
+          "prob": 0.902
+        },
+        {
+          "word": " and",
+          "start": 109.8,
+          "end": 110.42,
+          "prob": 0.453
+        },
+        {
+          "word": " those",
+          "start": 110.42,
+          "end": 110.56,
+          "prob": 0.906
+        },
+        {
+          "word": " wires",
+          "start": 110.56,
+          "end": 110.8,
+          "prob": 0.992
+        },
+        {
+          "word": " are",
+          "start": 110.8,
+          "end": 111.04,
+          "prob": 0.989
+        },
+        {
+          "word": " all",
+          "start": 111.04,
+          "end": 111.2,
+          "prob": 0.989
+        },
+        {
+          "word": " down",
+          "start": 111.2,
+          "end": 111.4,
+          "prob": 0.991
+        },
+        {
+          "word": " that",
+          "start": 111.4,
+          "end": 111.58,
+          "prob": 0.221
+        },
+        {
+          "word": " means",
+          "start": 111.58,
+          "end": 111.74,
+          "prob": 0.985
+        },
+        {
+          "word": " that",
+          "start": 111.74,
+          "end": 111.92,
+          "prob": 0.937
+        },
+        {
+          "word": " nobody",
+          "start": 111.92,
+          "end": 112.22,
+          "prob": 0.987
+        },
+        {
+          "word": " in",
+          "start": 112.22,
+          "end": 112.42,
+          "prob": 0.974
+        },
+        {
+          "word": " this",
+          "start": 112.42,
+          "end": 112.56,
+          "prob": 0.994
+        },
+        {
+          "word": " area",
+          "start": 112.56,
+          "end": 112.94,
+          "prob": 0.997
+        }
+      ]
+    },
+    {
+      "start": 112.94,
+      "end": 118.14,
+      "text": "has any kind of power there's a completely dark neighborhood past this a church and other things",
+      "words": [
+        {
+          "word": " has",
+          "start": 112.94,
+          "end": 113.3,
+          "prob": 0.987
+        },
+        {
+          "word": " any",
+          "start": 113.3,
+          "end": 113.42,
+          "prob": 0.986
+        },
+        {
+          "word": " kind",
+          "start": 113.42,
+          "end": 113.6,
+          "prob": 0.989
+        },
+        {
+          "word": " of",
+          "start": 113.6,
+          "end": 113.72,
+          "prob": 0.995
+        },
+        {
+          "word": " power",
+          "start": 113.72,
+          "end": 114.04,
+          "prob": 0.998
+        },
+        {
+          "word": " there's",
+          "start": 114.04,
+          "end": 114.8,
+          "prob": 0.586
+        },
+        {
+          "word": " a",
+          "start": 114.8,
+          "end": 114.94,
+          "prob": 0.973
+        },
+        {
+          "word": " completely",
+          "start": 114.94,
+          "end": 115.26,
+          "prob": 0.99
+        },
+        {
+          "word": " dark",
+          "start": 115.26,
+          "end": 115.56,
+          "prob": 0.989
+        },
+        {
+          "word": " neighborhood",
+          "start": 115.56,
+          "end": 116.06,
+          "prob": 0.987
+        },
+        {
+          "word": " past",
+          "start": 116.06,
+          "end": 116.64,
+          "prob": 0.623
+        },
+        {
+          "word": " this",
+          "start": 116.64,
+          "end": 116.98,
+          "prob": 0.928
+        },
+        {
+          "word": " a",
+          "start": 116.98,
+          "end": 117.24,
+          "prob": 0.396
+        },
+        {
+          "word": " church",
+          "start": 117.24,
+          "end": 117.44,
+          "prob": 0.964
+        },
+        {
+          "word": " and",
+          "start": 117.44,
+          "end": 117.7,
+          "prob": 0.631
+        },
+        {
+          "word": " other",
+          "start": 117.7,
+          "end": 117.88,
+          "prob": 0.859
+        },
+        {
+          "word": " things",
+          "start": 117.88,
+          "end": 118.14,
+          "prob": 0.985
+        }
+      ]
+    },
+    {
+      "start": 118.14,
+      "end": 125.32,
+      "text": "none of it is lit up the road out here while you were sitting out here was completely flooded",
+      "words": [
+        {
+          "word": " none",
+          "start": 118.14,
+          "end": 118.62,
+          "prob": 0.817
+        },
+        {
+          "word": " of",
+          "start": 118.62,
+          "end": 118.8,
+          "prob": 0.998
+        },
+        {
+          "word": " it",
+          "start": 118.8,
+          "end": 118.88,
+          "prob": 0.985
+        },
+        {
+          "word": " is",
+          "start": 118.88,
+          "end": 119.0,
+          "prob": 0.99
+        },
+        {
+          "word": " lit",
+          "start": 119.0,
+          "end": 119.16,
+          "prob": 0.987
+        },
+        {
+          "word": " up",
+          "start": 119.16,
+          "end": 119.36,
+          "prob": 0.996
+        },
+        {
+          "word": " the",
+          "start": 119.36,
+          "end": 120.1,
+          "prob": 0.686
+        },
+        {
+          "word": " road",
+          "start": 120.1,
+          "end": 120.46,
+          "prob": 0.992
+        },
+        {
+          "word": " out",
+          "start": 120.46,
+          "end": 120.8,
+          "prob": 0.995
+        },
+        {
+          "word": " here",
+          "start": 120.8,
+          "end": 121.1,
+          "prob": 0.997
+        },
+        {
+          "word": " while",
+          "start": 121.1,
+          "end": 121.58,
+          "prob": 0.977
+        },
+        {
+          "word": " you",
+          "start": 121.58,
+          "end": 121.72,
+          "prob": 0.809
+        },
+        {
+          "word": " were",
+          "start": 121.72,
+          "end": 121.8,
+          "prob": 0.604
+        },
+        {
+          "word": " sitting",
+          "start": 121.8,
+          "end": 122.0,
+          "prob": 0.994
+        },
+        {
+          "word": " out",
+          "start": 122.0,
+          "end": 122.24,
+          "prob": 0.997
+        },
+        {
+          "word": " here",
+          "start": 122.24,
+          "end": 122.5,
+          "prob": 0.996
+        },
+        {
+          "word": " was",
+          "start": 122.5,
+          "end": 123.44,
+          "prob": 0.957
+        },
+        {
+          "word": " completely",
+          "start": 123.44,
+          "end": 124.22,
+          "prob": 0.98
+        },
+        {
+          "word": " flooded",
+          "start": 124.22,
+          "end": 125.32,
+          "prob": 0.992
+        }
+      ]
+    },
+    {
+      "start": 125.32,
+      "end": 131.64,
+      "text": "it was several inches almost a foot maybe a foot and a half deep full of water it's just now",
+      "words": [
+        {
+          "word": " it",
+          "start": 125.32,
+          "end": 125.92,
+          "prob": 0.889
+        },
+        {
+          "word": " was",
+          "start": 125.92,
+          "end": 126.04,
+          "prob": 0.993
+        },
+        {
+          "word": " several",
+          "start": 126.04,
+          "end": 126.5,
+          "prob": 0.984
+        },
+        {
+          "word": " inches",
+          "start": 126.5,
+          "end": 127.08,
+          "prob": 0.99
+        },
+        {
+          "word": " almost",
+          "start": 127.08,
+          "end": 127.5,
+          "prob": 0.976
+        },
+        {
+          "word": " a",
+          "start": 127.5,
+          "end": 127.68,
+          "prob": 0.98
+        },
+        {
+          "word": " foot",
+          "start": 127.68,
+          "end": 127.9,
+          "prob": 0.978
+        },
+        {
+          "word": " maybe",
+          "start": 127.9,
+          "end": 128.12,
+          "prob": 0.925
+        },
+        {
+          "word": " a",
+          "start": 128.12,
+          "end": 128.28,
+          "prob": 0.982
+        },
+        {
+          "word": " foot",
+          "start": 128.28,
+          "end": 128.42,
+          "prob": 0.991
+        },
+        {
+          "word": " and",
+          "start": 128.42,
+          "end": 128.52,
+          "prob": 0.945
+        },
+        {
+          "word": " a",
+          "start": 128.52,
+          "end": 128.58,
+          "prob": 0.957
+        },
+        {
+          "word": " half",
+          "start": 128.58,
+          "end": 128.76,
+          "prob": 0.999
+        },
+        {
+          "word": " deep",
+          "start": 128.76,
+          "end": 129.0,
+          "prob": 0.991
+        },
+        {
+          "word": " full",
+          "start": 129.0,
+          "end": 130.16,
+          "prob": 0.967
+        },
+        {
+          "word": " of",
+          "start": 130.16,
+          "end": 130.3,
+          "prob": 0.993
+        },
+        {
+          "word": " water",
+          "start": 130.3,
+          "end": 130.58,
+          "prob": 0.999
+        },
+        {
+          "word": " it's",
+          "start": 130.58,
+          "end": 131.3,
+          "prob": 0.947
+        },
+        {
+          "word": " just",
+          "start": 131.3,
+          "end": 131.44,
+          "prob": 0.993
+        },
+        {
+          "word": " now",
+          "start": 131.44,
+          "end": 131.64,
+          "prob": 0.963
+        }
+      ]
+    },
+    {
+      "start": 131.64,
+      "end": 136.46,
+      "text": "beginning to receding people can drive on this street here but the folks here at the hunt",
+      "words": [
+        {
+          "word": " beginning",
+          "start": 131.64,
+          "end": 131.84,
+          "prob": 0.738
+        },
+        {
+          "word": " to",
+          "start": 131.84,
+          "end": 132.04,
+          "prob": 0.999
+        },
+        {
+          "word": " receding",
+          "start": 132.04,
+          "end": 132.46,
+          "prob": 0.805
+        },
+        {
+          "word": " people",
+          "start": 132.46,
+          "end": 132.64,
+          "prob": 0.983
+        },
+        {
+          "word": " can",
+          "start": 132.64,
+          "end": 132.86,
+          "prob": 0.985
+        },
+        {
+          "word": " drive",
+          "start": 132.86,
+          "end": 133.52,
+          "prob": 0.977
+        },
+        {
+          "word": " on",
+          "start": 133.52,
+          "end": 133.8,
+          "prob": 0.997
+        },
+        {
+          "word": " this",
+          "start": 133.8,
+          "end": 133.96,
+          "prob": 0.812
+        },
+        {
+          "word": " street",
+          "start": 133.96,
+          "end": 134.24,
+          "prob": 0.938
+        },
+        {
+          "word": " here",
+          "start": 134.24,
+          "end": 134.6,
+          "prob": 0.993
+        },
+        {
+          "word": " but",
+          "start": 134.6,
+          "end": 135.24,
+          "prob": 0.907
+        },
+        {
+          "word": " the",
+          "start": 135.24,
+          "end": 135.44,
+          "prob": 0.997
+        },
+        {
+          "word": " folks",
+          "start": 135.44,
+          "end": 135.66,
+          "prob": 0.993
+        },
+        {
+          "word": " here",
+          "start": 135.66,
+          "end": 135.92,
+          "prob": 0.988
+        },
+        {
+          "word": " at",
+          "start": 135.92,
+          "end": 136.02,
+          "prob": 0.981
+        },
+        {
+          "word": " the",
+          "start": 136.02,
+          "end": 136.12,
+          "prob": 0.985
+        },
+        {
+          "word": " hunt",
+          "start": 136.12,
+          "end": 136.46,
+          "prob": 0.248
+        }
+      ]
+    },
+    {
+      "start": 136.46,
+      "end": 141.68,
+      "text": "apartments particularly the ones who live in this front section here they got the run of this",
+      "words": [
+        {
+          "word": " apartments",
+          "start": 136.46,
+          "end": 136.94,
+          "prob": 0.0
+        },
+        {
+          "word": " particularly",
+          "start": 136.94,
+          "end": 137.28,
+          "prob": 0.095
+        },
+        {
+          "word": " the",
+          "start": 137.28,
+          "end": 137.68,
+          "prob": 0.887
+        },
+        {
+          "word": " ones",
+          "start": 137.68,
+          "end": 137.86,
+          "prob": 0.94
+        },
+        {
+          "word": " who",
+          "start": 137.86,
+          "end": 138.0,
+          "prob": 0.926
+        },
+        {
+          "word": " live",
+          "start": 138.0,
+          "end": 138.14,
+          "prob": 0.967
+        },
+        {
+          "word": " in",
+          "start": 138.14,
+          "end": 138.26,
+          "prob": 0.878
+        },
+        {
+          "word": " this",
+          "start": 138.26,
+          "end": 138.48,
+          "prob": 0.981
+        },
+        {
+          "word": " front",
+          "start": 138.48,
+          "end": 139.2,
+          "prob": 0.868
+        },
+        {
+          "word": " section",
+          "start": 139.2,
+          "end": 139.68,
+          "prob": 0.976
+        },
+        {
+          "word": " here",
+          "start": 139.68,
+          "end": 140.08,
+          "prob": 0.953
+        },
+        {
+          "word": " they",
+          "start": 140.08,
+          "end": 140.92,
+          "prob": 0.137
+        },
+        {
+          "word": " got",
+          "start": 140.92,
+          "end": 141.06,
+          "prob": 0.93
+        },
+        {
+          "word": " the",
+          "start": 141.06,
+          "end": 141.2,
+          "prob": 0.983
+        },
+        {
+          "word": " run",
+          "start": 141.2,
+          "end": 141.44,
+          "prob": 0.805
+        },
+        {
+          "word": " of",
+          "start": 141.44,
+          "end": 141.54,
+          "prob": 0.912
+        },
+        {
+          "word": " this",
+          "start": 141.54,
+          "end": 141.68,
+          "prob": 0.986
+        }
+      ]
+    },
+    {
+      "start": 141.68,
+      "end": 146.34,
+      "text": "wind system that came down 89th and they're going to have a lot of cleaning up and a lot of things",
+      "words": [
+        {
+          "word": " wind",
+          "start": 141.68,
+          "end": 141.84,
+          "prob": 0.86
+        },
+        {
+          "word": " system",
+          "start": 141.84,
+          "end": 142.14,
+          "prob": 0.974
+        },
+        {
+          "word": " that",
+          "start": 142.14,
+          "end": 142.36,
+          "prob": 0.962
+        },
+        {
+          "word": " came",
+          "start": 142.36,
+          "end": 142.56,
+          "prob": 0.996
+        },
+        {
+          "word": " down",
+          "start": 142.56,
+          "end": 142.8,
+          "prob": 0.989
+        },
+        {
+          "word": " 89th",
+          "start": 142.8,
+          "end": 143.64,
+          "prob": 0.66
+        },
+        {
+          "word": " and",
+          "start": 143.64,
+          "end": 144.24,
+          "prob": 0.82
+        },
+        {
+          "word": " they're",
+          "start": 144.24,
+          "end": 144.6,
+          "prob": 0.792
+        },
+        {
+          "word": " going",
+          "start": 144.6,
+          "end": 144.72,
+          "prob": 0.722
+        },
+        {
+          "word": " to",
+          "start": 144.72,
+          "end": 144.8,
+          "prob": 0.984
+        },
+        {
+          "word": " have",
+          "start": 144.8,
+          "end": 144.92,
+          "prob": 0.995
+        },
+        {
+          "word": " a",
+          "start": 144.92,
+          "end": 144.98,
+          "prob": 0.992
+        },
+        {
+          "word": " lot",
+          "start": 144.98,
+          "end": 145.16,
+          "prob": 0.998
+        },
+        {
+          "word": " of",
+          "start": 145.16,
+          "end": 145.26,
+          "prob": 0.99
+        },
+        {
+          "word": " cleaning",
+          "start": 145.26,
+          "end": 145.6,
+          "prob": 0.986
+        },
+        {
+          "word": " up",
+          "start": 145.6,
+          "end": 145.82,
+          "prob": 0.992
+        },
+        {
+          "word": " and",
+          "start": 145.82,
+          "end": 145.9,
+          "prob": 0.901
+        },
+        {
+          "word": " a",
+          "start": 145.9,
+          "end": 145.96,
+          "prob": 0.986
+        },
+        {
+          "word": " lot",
+          "start": 145.96,
+          "end": 146.12,
+          "prob": 0.998
+        },
+        {
+          "word": " of",
+          "start": 146.12,
+          "end": 146.2,
+          "prob": 0.995
+        },
+        {
+          "word": " things",
+          "start": 146.2,
+          "end": 146.34,
+          "prob": 0.996
+        }
+      ]
+    },
+    {
+      "start": 146.34,
+      "end": 149.68,
+      "text": "they're going to have to do and your heart really goes out to these folks because you look at it and",
+      "words": [
+        {
+          "word": " they're",
+          "start": 146.34,
+          "end": 146.5,
+          "prob": 0.846
+        },
+        {
+          "word": " going",
+          "start": 146.5,
+          "end": 146.62,
+          "prob": 0.857
+        },
+        {
+          "word": " to",
+          "start": 146.62,
+          "end": 146.68,
+          "prob": 0.977
+        },
+        {
+          "word": " have",
+          "start": 146.68,
+          "end": 146.78,
+          "prob": 0.969
+        },
+        {
+          "word": " to",
+          "start": 146.78,
+          "end": 146.88,
+          "prob": 0.993
+        },
+        {
+          "word": " do",
+          "start": 146.88,
+          "end": 147.04,
+          "prob": 0.953
+        },
+        {
+          "word": " and",
+          "start": 147.04,
+          "end": 147.26,
+          "prob": 0.79
+        },
+        {
+          "word": " your",
+          "start": 147.26,
+          "end": 147.58,
+          "prob": 0.957
+        },
+        {
+          "word": " heart",
+          "start": 147.58,
+          "end": 147.8,
+          "prob": 0.994
+        },
+        {
+          "word": " really",
+          "start": 147.8,
+          "end": 147.94,
+          "prob": 0.958
+        },
+        {
+          "word": " goes",
+          "start": 147.94,
+          "end": 148.14,
+          "prob": 0.99
+        },
+        {
+          "word": " out",
+          "start": 148.14,
+          "end": 148.32,
+          "prob": 0.697
+        },
+        {
+          "word": " to",
+          "start": 148.32,
+          "end": 148.44,
+          "prob": 0.436
+        },
+        {
+          "word": " these",
+          "start": 148.44,
+          "end": 148.56,
+          "prob": 0.884
+        },
+        {
+          "word": " folks",
+          "start": 148.56,
+          "end": 148.74,
+          "prob": 0.978
+        },
+        {
+          "word": " because",
+          "start": 148.74,
+          "end": 149.02,
+          "prob": 0.951
+        },
+        {
+          "word": " you",
+          "start": 149.02,
+          "end": 149.18,
+          "prob": 0.982
+        },
+        {
+          "word": " look",
+          "start": 149.18,
+          "end": 149.28,
+          "prob": 0.979
+        },
+        {
+          "word": " at",
+          "start": 149.28,
+          "end": 149.46,
+          "prob": 0.968
+        },
+        {
+          "word": " it",
+          "start": 149.46,
+          "end": 149.6,
+          "prob": 0.865
+        },
+        {
+          "word": " and",
+          "start": 149.6,
+          "end": 149.68,
+          "prob": 0.955
+        }
+      ]
+    },
+    {
+      "start": 149.68,
+      "end": 154.12,
+      "text": "you realize that not only did they have the wind damage but then these apartments were just like",
+      "words": [
+        {
+          "word": " you",
+          "start": 149.68,
+          "end": 149.76,
+          "prob": 0.934
+        },
+        {
+          "word": " realize",
+          "start": 149.76,
+          "end": 150.02,
+          "prob": 0.981
+        },
+        {
+          "word": " that",
+          "start": 150.02,
+          "end": 150.36,
+          "prob": 0.95
+        },
+        {
+          "word": " not",
+          "start": 150.36,
+          "end": 150.9,
+          "prob": 0.975
+        },
+        {
+          "word": " only",
+          "start": 150.9,
+          "end": 151.22,
+          "prob": 0.998
+        },
+        {
+          "word": " did",
+          "start": 151.22,
+          "end": 151.38,
+          "prob": 0.444
+        },
+        {
+          "word": " they",
+          "start": 151.38,
+          "end": 151.5,
+          "prob": 0.978
+        },
+        {
+          "word": " have",
+          "start": 151.5,
+          "end": 151.64,
+          "prob": 0.988
+        },
+        {
+          "word": " the",
+          "start": 151.64,
+          "end": 151.76,
+          "prob": 0.984
+        },
+        {
+          "word": " wind",
+          "start": 151.76,
+          "end": 151.92,
+          "prob": 0.947
+        },
+        {
+          "word": " damage",
+          "start": 151.92,
+          "end": 152.34,
+          "prob": 0.956
+        },
+        {
+          "word": " but",
+          "start": 152.34,
+          "end": 152.92,
+          "prob": 0.853
+        },
+        {
+          "word": " then",
+          "start": 152.92,
+          "end": 153.1,
+          "prob": 0.855
+        },
+        {
+          "word": " these",
+          "start": 153.1,
+          "end": 153.32,
+          "prob": 0.962
+        },
+        {
+          "word": " apartments",
+          "start": 153.32,
+          "end": 153.6,
+          "prob": 0.967
+        },
+        {
+          "word": " were",
+          "start": 153.6,
+          "end": 153.88,
+          "prob": 0.944
+        },
+        {
+          "word": " just",
+          "start": 153.88,
+          "end": 154.04,
+          "prob": 0.933
+        },
+        {
+          "word": " like",
+          "start": 154.04,
+          "end": 154.12,
+          "prob": 0.705
+        }
+      ]
+    },
+    {
+      "start": 154.12,
+      "end": 159.0,
+      "text": "sitting ducks and the rain just came along and just obliterated what was inside those apartments so",
+      "words": [
+        {
+          "word": " sitting",
+          "start": 154.12,
+          "end": 154.42,
+          "prob": 0.99
+        },
+        {
+          "word": " ducks",
+          "start": 154.42,
+          "end": 154.74,
+          "prob": 0.945
+        },
+        {
+          "word": " and",
+          "start": 154.74,
+          "end": 155.04,
+          "prob": 0.926
+        },
+        {
+          "word": " the",
+          "start": 155.04,
+          "end": 155.14,
+          "prob": 0.976
+        },
+        {
+          "word": " rain",
+          "start": 155.14,
+          "end": 155.36,
+          "prob": 0.997
+        },
+        {
+          "word": " just",
+          "start": 155.36,
+          "end": 155.66,
+          "prob": 0.975
+        },
+        {
+          "word": " came",
+          "start": 155.66,
+          "end": 155.86,
+          "prob": 0.998
+        },
+        {
+          "word": " along",
+          "start": 155.86,
+          "end": 156.1,
+          "prob": 0.997
+        },
+        {
+          "word": " and",
+          "start": 156.1,
+          "end": 156.32,
+          "prob": 0.986
+        },
+        {
+          "word": " just",
+          "start": 156.32,
+          "end": 156.52,
+          "prob": 0.929
+        },
+        {
+          "word": " obliterated",
+          "start": 156.52,
+          "end": 157.56,
+          "prob": 0.996
+        },
+        {
+          "word": " what",
+          "start": 157.56,
+          "end": 157.7,
+          "prob": 0.97
+        },
+        {
+          "word": " was",
+          "start": 157.7,
+          "end": 157.84,
+          "prob": 0.997
+        },
+        {
+          "word": " inside",
+          "start": 157.84,
+          "end": 158.04,
+          "prob": 0.997
+        },
+        {
+          "word": " those",
+          "start": 158.04,
+          "end": 158.3,
+          "prob": 0.925
+        },
+        {
+          "word": " apartments",
+          "start": 158.3,
+          "end": 158.58,
+          "prob": 0.939
+        },
+        {
+          "word": " so",
+          "start": 158.58,
+          "end": 159.0,
+          "prob": 0.613
+        }
+      ]
+    },
+    {
+      "start": 159.46,
+      "end": 164.48,
+      "text": "a lot of cleanup and a lot of work to do coming up back to you all certainly some displaced residents",
+      "words": [
+        {
+          "word": " a",
+          "start": 159.46,
+          "end": 159.86,
+          "prob": 0.889
+        },
+        {
+          "word": " lot",
+          "start": 159.86,
+          "end": 160.16,
+          "prob": 0.998
+        },
+        {
+          "word": " of",
+          "start": 160.16,
+          "end": 160.28,
+          "prob": 0.987
+        },
+        {
+          "word": " cleanup",
+          "start": 160.28,
+          "end": 160.56,
+          "prob": 0.675
+        },
+        {
+          "word": " and",
+          "start": 160.56,
+          "end": 160.82,
+          "prob": 0.922
+        },
+        {
+          "word": " a",
+          "start": 160.82,
+          "end": 160.88,
+          "prob": 0.982
+        },
+        {
+          "word": " lot",
+          "start": 160.88,
+          "end": 161.04,
+          "prob": 0.999
+        },
+        {
+          "word": " of",
+          "start": 161.04,
+          "end": 161.12,
+          "prob": 0.993
+        },
+        {
+          "word": " work",
+          "start": 161.12,
+          "end": 161.26,
+          "prob": 0.997
+        },
+        {
+          "word": " to",
+          "start": 161.26,
+          "end": 161.48,
+          "prob": 0.995
+        },
+        {
+          "word": " do",
+          "start": 161.48,
+          "end": 161.64,
+          "prob": 0.992
+        },
+        {
+          "word": " coming",
+          "start": 161.64,
+          "end": 162.12,
+          "prob": 0.956
+        },
+        {
+          "word": " up",
+          "start": 162.12,
+          "end": 162.34,
+          "prob": 0.987
+        },
+        {
+          "word": " back",
+          "start": 162.34,
+          "end": 162.56,
+          "prob": 0.909
+        },
+        {
+          "word": " to",
+          "start": 162.56,
+          "end": 162.72,
+          "prob": 0.991
+        },
+        {
+          "word": " you",
+          "start": 162.72,
+          "end": 162.8,
+          "prob": 0.989
+        },
+        {
+          "word": " all",
+          "start": 162.8,
+          "end": 162.94,
+          "prob": 0.887
+        },
+        {
+          "word": " certainly",
+          "start": 162.94,
+          "end": 163.2,
+          "prob": 0.284
+        },
+        {
+          "word": " some",
+          "start": 163.2,
+          "end": 163.62,
+          "prob": 0.935
+        },
+        {
+          "word": " displaced",
+          "start": 163.62,
+          "end": 163.94,
+          "prob": 0.557
+        },
+        {
+          "word": " residents",
+          "start": 163.94,
+          "end": 164.48,
+          "prob": 0.977
+        }
+      ]
+    },
+    {
+      "start": 164.48,
+      "end": 169.32,
+      "text": "there for sure thank you very much Sarah Sellier putting live at Southwest 89th and May",
+      "words": [
+        {
+          "word": " there",
+          "start": 164.48,
+          "end": 164.96,
+          "prob": 0.027
+        },
+        {
+          "word": " for",
+          "start": 164.96,
+          "end": 165.24,
+          "prob": 0.854
+        },
+        {
+          "word": " sure",
+          "start": 165.24,
+          "end": 165.48,
+          "prob": 0.978
+        },
+        {
+          "word": " thank",
+          "start": 165.48,
+          "end": 165.74,
+          "prob": 0.067
+        },
+        {
+          "word": " you",
+          "start": 165.74,
+          "end": 165.94,
+          "prob": 0.988
+        },
+        {
+          "word": " very",
+          "start": 165.94,
+          "end": 166.06,
+          "prob": 0.979
+        },
+        {
+          "word": " much",
+          "start": 166.06,
+          "end": 166.36,
+          "prob": 0.99
+        },
+        {
+          "word": " Sarah",
+          "start": 166.36,
+          "end": 166.58,
+          "prob": 0.63
+        },
+        {
+          "word": " Sellier",
+          "start": 166.58,
+          "end": 166.92,
+          "prob": 0.463
+        },
+        {
+          "word": " putting",
+          "start": 166.92,
+          "end": 167.14,
+          "prob": 0.853
+        },
+        {
+          "word": " live",
+          "start": 167.14,
+          "end": 167.34,
+          "prob": 0.681
+        },
+        {
+          "word": " at",
+          "start": 167.34,
+          "end": 167.48,
+          "prob": 0.716
+        },
+        {
+          "word": " Southwest",
+          "start": 167.48,
+          "end": 167.66,
+          "prob": 0.897
+        },
+        {
+          "word": " 89th",
+          "start": 167.66,
+          "end": 168.9,
+          "prob": 0.837
+        },
+        {
+          "word": " and",
+          "start": 168.9,
+          "end": 169.06,
+          "prob": 0.789
+        },
+        {
+          "word": " May",
+          "start": 169.06,
+          "end": 169.32,
+          "prob": 0.767
+        }
+      ]
+    },
+    {
+      "start": 169.32,
+      "end": 170.16,
+      "text": "whatever new room",
+      "words": [
+        {
+          "word": " whatever",
+          "start": 169.32,
+          "end": 169.76,
+          "prob": 0.149
+        },
+        {
+          "word": " new",
+          "start": 169.76,
+          "end": 170.02,
+          "prob": 0.731
+        },
+        {
+          "word": " room",
+          "start": 170.02,
+          "end": 170.16,
+          "prob": 0.441
+        }
+      ]
+    }
+  ],
+  "words": [
+    {
+      "word": " now",
+      "start": 0.0,
+      "end": 0.18
+    },
+    {
+      "word": " the",
+      "start": 0.18,
+      "end": 0.32
+    },
+    {
+      "word": " Southwest",
+      "start": 0.32,
+      "end": 0.64
+    },
+    {
+      "word": " 89th",
+      "start": 0.64,
+      "end": 1.54
+    },
+    {
+      "word": " and",
+      "start": 1.54,
+      "end": 1.66
+    },
+    {
+      "word": " May",
+      "start": 1.66,
+      "end": 1.94
+    },
+    {
+      "word": " where",
+      "start": 1.94,
+      "end": 2.22
+    },
+    {
+      "word": " Sarah",
+      "start": 2.22,
+      "end": 2.46
+    },
+    {
+      "word": " Selly",
+      "start": 2.46,
+      "end": 2.92
+    },
+    {
+      "word": " has",
+      "start": 2.92,
+      "end": 3.26
+    },
+    {
+      "word": " been",
+      "start": 3.26,
+      "end": 3.44
+    },
+    {
+      "word": " live",
+      "start": 3.44,
+      "end": 3.76
+    },
+    {
+      "word": " and",
+      "start": 3.76,
+      "end": 4.3
+    },
+    {
+      "word": " she",
+      "start": 4.3,
+      "end": 4.58
+    },
+    {
+      "word": " showed",
+      "start": 4.58,
+      "end": 5.1
+    },
+    {
+      "word": " us",
+      "start": 5.1,
+      "end": 5.24
+    },
+    {
+      "word": " some",
+      "start": 5.24,
+      "end": 5.44
+    },
+    {
+      "word": " damage",
+      "start": 5.44,
+      "end": 5.76
+    },
+    {
+      "word": " from",
+      "start": 5.76,
+      "end": 6.08
+    },
+    {
+      "word": " before",
+      "start": 6.08,
+      "end": 6.46
+    },
+    {
+      "word": " and",
+      "start": 6.46,
+      "end": 6.64
+    },
+    {
+      "word": " I'm",
+      "start": 6.64,
+      "end": 6.74
+    },
+    {
+      "word": " sure",
+      "start": 6.74,
+      "end": 6.94
+    },
+    {
+      "word": " you",
+      "start": 6.94,
+      "end": 7.12
+    },
+    {
+      "word": " have",
+      "start": 7.12,
+      "end": 7.28
+    },
+    {
+      "word": " found",
+      "start": 7.28,
+      "end": 7.56
+    },
+    {
+      "word": " more",
+      "start": 7.56,
+      "end": 8.0
+    },
+    {
+      "word": " since",
+      "start": 8.0,
+      "end": 8.28
+    },
+    {
+      "word": " then",
+      "start": 8.28,
+      "end": 8.7
+    },
+    {
+      "word": " Sarah.",
+      "start": 8.7,
+      "end": 8.96
+    },
+    {
+      "word": " Yes",
+      "start": 10.34,
+      "end": 10.82
+    },
+    {
+      "word": " that's",
+      "start": 10.82,
+      "end": 11.04
+    },
+    {
+      "word": " right",
+      "start": 11.04,
+      "end": 11.18
+    },
+    {
+      "word": " Meg",
+      "start": 11.18,
+      "end": 11.34
+    },
+    {
+      "word": " we",
+      "start": 11.34,
+      "end": 11.56
+    },
+    {
+      "word": " actually",
+      "start": 11.56,
+      "end": 11.8
+    },
+    {
+      "word": " have",
+      "start": 11.8,
+      "end": 12.04
+    },
+    {
+      "word": " found",
+      "start": 12.04,
+      "end": 12.38
+    },
+    {
+      "word": " more",
+      "start": 12.38,
+      "end": 12.96
+    },
+    {
+      "word": " damage",
+      "start": 12.96,
+      "end": 13.18
+    },
+    {
+      "word": " we've",
+      "start": 13.18,
+      "end": 13.38
+    },
+    {
+      "word": " gotten",
+      "start": 13.38,
+      "end": 13.54
+    },
+    {
+      "word": " a",
+      "start": 13.54,
+      "end": 13.66
+    },
+    {
+      "word": " better",
+      "start": 13.66,
+      "end": 13.8
+    },
+    {
+      "word": " look",
+      "start": 13.8,
+      "end": 14.08
+    },
+    {
+      "word": " at",
+      "start": 14.08,
+      "end": 14.24
+    },
+    {
+      "word": " what",
+      "start": 14.24,
+      "end": 14.42
+    },
+    {
+      "word": " actually",
+      "start": 14.42,
+      "end": 14.72
+    },
+    {
+      "word": " happened",
+      "start": 14.72,
+      "end": 15.06
+    },
+    {
+      "word": " out",
+      "start": 15.06,
+      "end": 15.22
+    },
+    {
+      "word": " here",
+      "start": 15.22,
+      "end": 15.38
+    },
+    {
+      "word": " on",
+      "start": 15.38,
+      "end": 15.5
+    },
+    {
+      "word": " Southwest",
+      "start": 15.5,
+      "end": 15.72
+    },
+    {
+      "word": " 89th",
+      "start": 15.72,
+      "end": 16.34
+    },
+    {
+      "word": " here",
+      "start": 16.34,
+      "end": 16.42
+    },
+    {
+      "word": " this",
+      "start": 16.42,
+      "end": 16.56
+    },
+    {
+      "word": " is",
+      "start": 16.56,
+      "end": 16.7
+    },
+    {
+      "word": " the",
+      "start": 16.7,
+      "end": 16.8
+    },
+    {
+      "word": " apartments",
+      "start": 16.8,
+      "end": 17.16
+    },
+    {
+      "word": " the",
+      "start": 17.16,
+      "end": 17.92
+    },
+    {
+      "word": " hunt",
+      "start": 17.92,
+      "end": 18.12
+    },
+    {
+      "word": " apartments",
+      "start": 18.12,
+      "end": 18.78
+    },
+    {
+      "word": " all",
+      "start": 18.78,
+      "end": 19.52
+    },
+    {
+      "word": " right",
+      "start": 19.52,
+      "end": 19.66
+    },
+    {
+      "word": " our",
+      "start": 19.66,
+      "end": 19.9
+    },
+    {
+      "word": " focus",
+      "start": 19.9,
+      "end": 20.16
+    },
+    {
+      "word": " right",
+      "start": 20.16,
+      "end": 20.42
+    },
+    {
+      "word": " now",
+      "start": 20.42,
+      "end": 20.6
+    },
+    {
+      "word": " is",
+      "start": 20.6,
+      "end": 20.72
+    },
+    {
+      "word": " going",
+      "start": 20.72,
+      "end": 20.8
+    },
+    {
+      "word": " to",
+      "start": 20.8,
+      "end": 20.86
+    },
+    {
+      "word": " be",
+      "start": 20.86,
+      "end": 21.0
+    },
+    {
+      "word": " mnop",
+      "start": 22.06,
+      "end": 22.54
+    },
+    {
+      "word": " this",
+      "start": 22.54,
+      "end": 23.02
+    },
+    {
+      "word": " little",
+      "start": 23.02,
+      "end": 23.2
+    },
+    {
+      "word": " area",
+      "start": 23.2,
+      "end": 23.48
+    },
+    {
+      "word": " right",
+      "start": 23.48,
+      "end": 23.84
+    },
+    {
+      "word": " here",
+      "start": 23.84,
+      "end": 24.3
+    },
+    {
+      "word": " the",
+      "start": 24.3,
+      "end": 25.22
+    },
+    {
+      "word": " apartments",
+      "start": 25.22,
+      "end": 25.46
+    },
+    {
+      "word": " are",
+      "start": 25.46,
+      "end": 25.72
+    },
+    {
+      "word": " labeled",
+      "start": 25.72,
+      "end": 25.9
+    },
+    {
+      "word": " by",
+      "start": 25.9,
+      "end": 26.32
+    },
+    {
+      "word": " alphabetical",
+      "start": 26.32,
+      "end": 27.18
+    },
+    {
+      "word": " and",
+      "start": 27.18,
+      "end": 27.74
+    },
+    {
+      "word": " as",
+      "start": 27.74,
+      "end": 27.88
+    },
+    {
+      "word": " you",
+      "start": 27.88,
+      "end": 28.0
+    },
+    {
+      "word": " can",
+      "start": 28.0,
+      "end": 28.12
+    },
+    {
+      "word": " see",
+      "start": 28.12,
+      "end": 28.42
+    },
+    {
+      "word": " apartment",
+      "start": 28.42,
+      "end": 28.98
+    },
+    {
+      "word": " O",
+      "start": 28.98,
+      "end": 29.32
+    },
+    {
+      "word": " and",
+      "start": 29.32,
+      "end": 29.66
+    },
+    {
+      "word": " apartment",
+      "start": 29.66,
+      "end": 29.92
+    },
+    {
+      "word": " P",
+      "start": 29.92,
+      "end": 30.3
+    },
+    {
+      "word": " the",
+      "start": 30.3,
+      "end": 31.16
+    },
+    {
+      "word": " roof",
+      "start": 31.16,
+      "end": 31.54
+    },
+    {
+      "word": " is",
+      "start": 31.54,
+      "end": 32.08
+    },
+    {
+      "word": " pretty",
+      "start": 32.08,
+      "end": 32.28
+    },
+    {
+      "word": " much",
+      "start": 32.28,
+      "end": 32.54
+    },
+    {
+      "word": " lifted",
+      "start": 32.54,
+      "end": 33.2
+    },
+    {
+      "word": " off",
+      "start": 33.2,
+      "end": 33.4
+    },
+    {
+      "word": " of",
+      "start": 33.4,
+      "end": 33.54
+    },
+    {
+      "word": " this",
+      "start": 33.54,
+      "end": 33.72
+    },
+    {
+      "word": " so",
+      "start": 33.72,
+      "end": 35.28
+    },
+    {
+      "word": " this",
+      "start": 35.28,
+      "end": 35.68
+    },
+    {
+      "word": " happened",
+      "start": 35.68,
+      "end": 35.94
+    },
+    {
+      "word": " I",
+      "start": 35.94,
+      "end": 36.18
+    },
+    {
+      "word": " believe",
+      "start": 36.18,
+      "end": 36.46
+    },
+    {
+      "word": " during",
+      "start": 36.46,
+      "end": 36.92
+    },
+    {
+      "word": " the",
+      "start": 36.92,
+      "end": 37.22
+    },
+    {
+      "word": " wind",
+      "start": 37.22,
+      "end": 37.58
+    },
+    {
+      "word": " part",
+      "start": 37.58,
+      "end": 38.02
+    },
+    {
+      "word": " of",
+      "start": 38.02,
+      "end": 38.34
+    },
+    {
+      "word": " this",
+      "start": 38.34,
+      "end": 38.76
+    },
+    {
+      "word": " event",
+      "start": 38.76,
+      "end": 39.32
+    },
+    {
+      "word": " the",
+      "start": 39.32,
+      "end": 39.68
+    },
+    {
+      "word": " straight",
+      "start": 39.68,
+      "end": 39.96
+    },
+    {
+      "word": " line",
+      "start": 39.96,
+      "end": 40.12
+    },
+    {
+      "word": " winds",
+      "start": 40.12,
+      "end": 40.32
+    },
+    {
+      "word": " and",
+      "start": 40.32,
+      "end": 40.48
+    },
+    {
+      "word": " things",
+      "start": 40.48,
+      "end": 40.68
+    },
+    {
+      "word": " that",
+      "start": 40.68,
+      "end": 40.78
+    },
+    {
+      "word": " came",
+      "start": 40.78,
+      "end": 40.92
+    },
+    {
+      "word": " through",
+      "start": 40.92,
+      "end": 41.14
+    },
+    {
+      "word": " here",
+      "start": 41.14,
+      "end": 41.4
+    },
+    {
+      "word": " then",
+      "start": 42.18,
+      "end": 42.44
+    },
+    {
+      "word": " it",
+      "start": 42.44,
+      "end": 42.58
+    },
+    {
+      "word": " rained",
+      "start": 42.58,
+      "end": 42.9
+    },
+    {
+      "word": " for",
+      "start": 42.9,
+      "end": 43.16
+    },
+    {
+      "word": " a",
+      "start": 43.16,
+      "end": 43.24
+    },
+    {
+      "word": " good",
+      "start": 43.24,
+      "end": 43.38
+    },
+    {
+      "word": " hour",
+      "start": 43.38,
+      "end": 43.72
+    },
+    {
+      "word": " because",
+      "start": 43.72,
+      "end": 44.22
+    },
+    {
+      "word": " we",
+      "start": 44.22,
+      "end": 44.38
+    },
+    {
+      "word": " were",
+      "start": 44.38,
+      "end": 44.48
+    },
+    {
+      "word": " sitting",
+      "start": 44.48,
+      "end": 44.64
+    },
+    {
+      "word": " in",
+      "start": 44.64,
+      "end": 44.84
+    },
+    {
+      "word": " this",
+      "start": 44.84,
+      "end": 44.98
+    },
+    {
+      "word": " rain",
+      "start": 44.98,
+      "end": 45.24
+    },
+    {
+      "word": " this",
+      "start": 45.24,
+      "end": 45.46
+    },
+    {
+      "word": " blinding",
+      "start": 45.46,
+      "end": 45.78
+    },
+    {
+      "word": " rain",
+      "start": 45.78,
+      "end": 46.14
+    },
+    {
+      "word": " here",
+      "start": 46.14,
+      "end": 46.44
+    },
+    {
+      "word": " we",
+      "start": 46.44,
+      "end": 46.54
+    },
+    {
+      "word": " couldn't",
+      "start": 46.54,
+      "end": 46.74
+    },
+    {
+      "word": " even",
+      "start": 46.74,
+      "end": 46.88
+    },
+    {
+      "word": " get",
+      "start": 46.88,
+      "end": 47.02
+    },
+    {
+      "word": " out",
+      "start": 47.02,
+      "end": 47.12
+    },
+    {
+      "word": " of",
+      "start": 47.12,
+      "end": 47.2
+    },
+    {
+      "word": " the",
+      "start": 47.2,
+      "end": 47.28
+    },
+    {
+      "word": " car",
+      "start": 47.28,
+      "end": 47.5
+    },
+    {
+      "word": " and",
+      "start": 47.5,
+      "end": 48.08
+    },
+    {
+      "word": " it",
+      "start": 48.08,
+      "end": 48.18
+    },
+    {
+      "word": " hailed",
+      "start": 48.18,
+      "end": 48.42
+    },
+    {
+      "word": " so",
+      "start": 48.42,
+      "end": 49.46
+    },
+    {
+      "word": " you",
+      "start": 49.46,
+      "end": 49.56
+    },
+    {
+      "word": " can",
+      "start": 49.56,
+      "end": 49.66
+    },
+    {
+      "word": " imagine",
+      "start": 49.66,
+      "end": 49.94
+    },
+    {
+      "word": " after",
+      "start": 49.94,
+      "end": 50.32
+    },
+    {
+      "word": " that",
+      "start": 50.32,
+      "end": 50.68
+    },
+    {
+      "word": " this",
+      "start": 50.68,
+      "end": 51.22
+    },
+    {
+      "word": " these",
+      "start": 51.22,
+      "end": 51.56
+    },
+    {
+      "word": " apartments",
+      "start": 51.56,
+      "end": 51.84
+    },
+    {
+      "word": " flooded",
+      "start": 52.66,
+      "end": 53.02
+    },
+    {
+      "word": " O",
+      "start": 53.02,
+      "end": 53.38
+    },
+    {
+      "word": " and",
+      "start": 53.38,
+      "end": 53.54
+    },
+    {
+      "word": " P",
+      "start": 53.54,
+      "end": 53.72
+    },
+    {
+      "word": " did",
+      "start": 53.72,
+      "end": 53.98
+    },
+    {
+      "word": " and",
+      "start": 53.98,
+      "end": 54.56
+    },
+    {
+      "word": " that",
+      "start": 54.56,
+      "end": 54.68
+    },
+    {
+      "word": " caused",
+      "start": 54.68,
+      "end": 54.9
+    },
+    {
+      "word": " damage",
+      "start": 54.9,
+      "end": 55.24
+    },
+    {
+      "word": " to",
+      "start": 55.24,
+      "end": 55.58
+    },
+    {
+      "word": " M",
+      "start": 55.58,
+      "end": 55.92
+    },
+    {
+      "word": " and",
+      "start": 55.92,
+      "end": 56.08
+    },
+    {
+      "word": " N",
+      "start": 56.08,
+      "end": 56.26
+    },
+    {
+      "word": " that's",
+      "start": 56.26,
+      "end": 56.66
+    },
+    {
+      "word": " the",
+      "start": 56.66,
+      "end": 56.78
+    },
+    {
+      "word": " owner",
+      "start": 56.78,
+      "end": 57.0
+    },
+    {
+      "word": " right",
+      "start": 57.0,
+      "end": 57.28
+    },
+    {
+      "word": " there",
+      "start": 57.28,
+      "end": 57.46
+    },
+    {
+      "word": " of",
+      "start": 57.46,
+      "end": 57.74
+    },
+    {
+      "word": " apartment",
+      "start": 57.74,
+      "end": 58.28
+    },
+    {
+      "word": " M",
+      "start": 58.28,
+      "end": 58.68
+    },
+    {
+      "word": " he",
+      "start": 58.68,
+      "end": 59.32
+    },
+    {
+      "word": " just",
+      "start": 59.32,
+      "end": 59.58
+    },
+    {
+      "word": " came",
+      "start": 59.58,
+      "end": 59.84
+    },
+    {
+      "word": " home",
+      "start": 59.84,
+      "end": 60.12
+    },
+    {
+      "word": " probably",
+      "start": 60.12,
+      "end": 60.6
+    },
+    {
+      "word": " about",
+      "start": 60.6,
+      "end": 60.94
+    },
+    {
+      "word": " five",
+      "start": 60.94,
+      "end": 61.34
+    },
+    {
+      "word": " or",
+      "start": 61.34,
+      "end": 61.5
+    },
+    {
+      "word": " ten",
+      "start": 61.5,
+      "end": 61.66
+    },
+    {
+      "word": " minutes",
+      "start": 61.66,
+      "end": 61.88
+    },
+    {
+      "word": " ago",
+      "start": 61.88,
+      "end": 62.2
+    },
+    {
+      "word": " it's",
+      "start": 62.2,
+      "end": 63.16
+    },
+    {
+      "word": " pretty",
+      "start": 63.16,
+      "end": 63.24
+    },
+    {
+      "word": " upset",
+      "start": 63.24,
+      "end": 63.42
+    },
+    {
+      "word": " right",
+      "start": 63.42,
+      "end": 63.76
+    },
+    {
+      "word": " now",
+      "start": 63.76,
+      "end": 63.9
+    },
+    {
+      "word": " he's",
+      "start": 63.9,
+      "end": 63.98
+    },
+    {
+      "word": " on",
+      "start": 63.98,
+      "end": 64.08
+    },
+    {
+      "word": " the",
+      "start": 64.08,
+      "end": 64.14
+    },
+    {
+      "word": " phone",
+      "start": 64.14,
+      "end": 64.36
+    },
+    {
+      "word": " we",
+      "start": 64.36,
+      "end": 64.88
+    },
+    {
+      "word": " saw",
+      "start": 64.88,
+      "end": 65.0
+    },
+    {
+      "word": " him",
+      "start": 65.0,
+      "end": 65.12
+    },
+    {
+      "word": " go",
+      "start": 65.12,
+      "end": 65.24
+    },
+    {
+      "word": " in",
+      "start": 65.24,
+      "end": 65.5
+    },
+    {
+      "word": " kind",
+      "start": 65.5,
+      "end": 65.72
+    },
+    {
+      "word": " of",
+      "start": 65.72,
+      "end": 65.84
+    },
+    {
+      "word": " look",
+      "start": 65.84,
+      "end": 65.94
+    },
+    {
+      "word": " at",
+      "start": 65.94,
+      "end": 66.04
+    },
+    {
+      "word": " the",
+      "start": 66.04,
+      "end": 66.08
+    },
+    {
+      "word": " damage",
+      "start": 66.08,
+      "end": 66.26
+    },
+    {
+      "word": " for",
+      "start": 66.26,
+      "end": 66.38
+    },
+    {
+      "word": " the",
+      "start": 66.38,
+      "end": 66.46
+    },
+    {
+      "word": " first",
+      "start": 66.46,
+      "end": 66.6
+    },
+    {
+      "word": " time",
+      "start": 66.6,
+      "end": 66.78
+    },
+    {
+      "word": " he",
+      "start": 66.78,
+      "end": 66.88
+    },
+    {
+      "word": " came",
+      "start": 66.88,
+      "end": 67.06
+    },
+    {
+      "word": " back",
+      "start": 67.06,
+      "end": 67.24
+    },
+    {
+      "word": " out",
+      "start": 67.24,
+      "end": 67.38
+    },
+    {
+      "word": " he",
+      "start": 67.38,
+      "end": 67.48
+    },
+    {
+      "word": " slammed",
+      "start": 67.48,
+      "end": 67.6
+    },
+    {
+      "word": " the",
+      "start": 67.6,
+      "end": 67.86
+    },
+    {
+      "word": " door",
+      "start": 67.86,
+      "end": 68.02
+    },
+    {
+      "word": " he",
+      "start": 68.02,
+      "end": 68.22
+    },
+    {
+      "word": " went",
+      "start": 68.22,
+      "end": 68.32
+    },
+    {
+      "word": " over",
+      "start": 68.32,
+      "end": 68.56
+    },
+    {
+      "word": " and",
+      "start": 68.56,
+      "end": 68.64
+    },
+    {
+      "word": " talked",
+      "start": 68.64,
+      "end": 68.82
+    },
+    {
+      "word": " to",
+      "start": 68.82,
+      "end": 69.08
+    },
+    {
+      "word": " the",
+      "start": 69.08,
+      "end": 70.06
+    },
+    {
+      "word": " apartment",
+      "start": 70.06,
+      "end": 70.52
+    },
+    {
+      "word": " manager",
+      "start": 70.52,
+      "end": 70.94
+    },
+    {
+      "word": " about",
+      "start": 70.94,
+      "end": 71.28
+    },
+    {
+      "word": " what",
+      "start": 71.28,
+      "end": 71.44
+    },
+    {
+      "word": " was",
+      "start": 71.44,
+      "end": 71.58
+    },
+    {
+      "word": " going",
+      "start": 71.58,
+      "end": 71.7
+    },
+    {
+      "word": " on",
+      "start": 71.7,
+      "end": 71.98
+    },
+    {
+      "word": " I",
+      "start": 71.98,
+      "end": 72.72
+    },
+    {
+      "word": " asked",
+      "start": 72.72,
+      "end": 72.9
+    },
+    {
+      "word": " him",
+      "start": 72.9,
+      "end": 73.1
+    },
+    {
+      "word": " briefly",
+      "start": 73.1,
+      "end": 73.26
+    },
+    {
+      "word": " what",
+      "start": 73.26,
+      "end": 73.5
+    },
+    {
+      "word": " had",
+      "start": 73.5,
+      "end": 73.62
+    },
+    {
+      "word": " happened",
+      "start": 73.62,
+      "end": 73.9
+    },
+    {
+      "word": " and",
+      "start": 73.9,
+      "end": 74.02
+    },
+    {
+      "word": " he",
+      "start": 74.02,
+      "end": 74.12
+    },
+    {
+      "word": " said",
+      "start": 74.12,
+      "end": 74.24
+    },
+    {
+      "word": " there's",
+      "start": 74.24,
+      "end": 74.46
+    },
+    {
+      "word": " a",
+      "start": 74.46,
+      "end": 74.54
+    },
+    {
+      "word": " lot",
+      "start": 74.54,
+      "end": 74.72
+    },
+    {
+      "word": " of",
+      "start": 74.72,
+      "end": 74.88
+    },
+    {
+      "word": " water",
+      "start": 74.88,
+      "end": 75.4
+    },
+    {
+      "word": " damage",
+      "start": 75.4,
+      "end": 75.68
+    },
+    {
+      "word": " in",
+      "start": 75.68,
+      "end": 76.06
+    },
+    {
+      "word": " his",
+      "start": 76.06,
+      "end": 76.26
+    },
+    {
+      "word": " apartment",
+      "start": 76.26,
+      "end": 76.58
+    },
+    {
+      "word": " so",
+      "start": 76.58,
+      "end": 76.9
+    },
+    {
+      "word": " I'm",
+      "start": 76.9,
+      "end": 76.96
+    },
+    {
+      "word": " assuming",
+      "start": 76.96,
+      "end": 77.2
+    },
+    {
+      "word": " that's",
+      "start": 77.2,
+      "end": 77.56
+    },
+    {
+      "word": " the",
+      "start": 77.56,
+      "end": 77.68
+    },
+    {
+      "word": " same",
+      "start": 77.68,
+      "end": 77.88
+    },
+    {
+      "word": " for",
+      "start": 77.88,
+      "end": 78.2
+    },
+    {
+      "word": " apartment",
+      "start": 78.2,
+      "end": 78.8
+    },
+    {
+      "word": " N",
+      "start": 78.8,
+      "end": 79.26
+    },
+    {
+      "word": " and",
+      "start": 79.26,
+      "end": 79.48
+    },
+    {
+      "word": " you",
+      "start": 79.48,
+      "end": 79.6
+    },
+    {
+      "word": " can",
+      "start": 79.6,
+      "end": 79.7
+    },
+    {
+      "word": " imagine",
+      "start": 79.7,
+      "end": 79.88
+    },
+    {
+      "word": " this",
+      "start": 79.88,
+      "end": 80.1
+    },
+    {
+      "word": " is",
+      "start": 80.1,
+      "end": 80.2
+    },
+    {
+      "word": " not",
+      "start": 80.2,
+      "end": 80.84
+    },
+    {
+      "word": " good",
+      "start": 80.84,
+      "end": 81.04
+    },
+    {
+      "word": " if",
+      "start": 81.04,
+      "end": 81.18
+    },
+    {
+      "word": " you",
+      "start": 81.18,
+      "end": 81.26
+    },
+    {
+      "word": " live",
+      "start": 81.26,
+      "end": 81.38
+    },
+    {
+      "word": " out",
+      "start": 81.38,
+      "end": 81.52
+    },
+    {
+      "word": " here",
+      "start": 81.52,
+      "end": 81.68
+    },
+    {
+      "word": " at",
+      "start": 81.68,
+      "end": 81.76
+    },
+    {
+      "word": " the",
+      "start": 81.76,
+      "end": 81.86
+    },
+    {
+      "word": " hunt",
+      "start": 81.86,
+      "end": 82.02
+    },
+    {
+      "word": " apartments",
+      "start": 82.02,
+      "end": 82.24
+    },
+    {
+      "word": " right",
+      "start": 82.24,
+      "end": 83.52
+    },
+    {
+      "word": " there",
+      "start": 83.52,
+      "end": 83.82
+    },
+    {
+      "word": " that's",
+      "start": 83.82,
+      "end": 84.4
+    },
+    {
+      "word": " a",
+      "start": 84.4,
+      "end": 84.44
+    },
+    {
+      "word": " huge",
+      "start": 84.44,
+      "end": 84.62
+    },
+    {
+      "word": " tree",
+      "start": 84.62,
+      "end": 85.08
+    },
+    {
+      "word": " gives",
+      "start": 85.08,
+      "end": 85.8
+    },
+    {
+      "word": " you",
+      "start": 85.8,
+      "end": 85.9
+    },
+    {
+      "word": " another",
+      "start": 85.9,
+      "end": 86.02
+    },
+    {
+      "word": " idea",
+      "start": 86.02,
+      "end": 86.3
+    },
+    {
+      "word": " of",
+      "start": 86.3,
+      "end": 86.52
+    },
+    {
+      "word": " how",
+      "start": 86.52,
+      "end": 86.66
+    },
+    {
+      "word": " significant",
+      "start": 86.66,
+      "end": 87.26
+    },
+    {
+      "word": " this",
+      "start": 87.26,
+      "end": 87.78
+    },
+    {
+      "word": " wind",
+      "start": 87.78,
+      "end": 87.96
+    },
+    {
+      "word": " was",
+      "start": 87.96,
+      "end": 88.34
+    },
+    {
+      "word": " the",
+      "start": 88.34,
+      "end": 89.28
+    },
+    {
+      "word": " tree",
+      "start": 89.28,
+      "end": 89.52
+    },
+    {
+      "word": " is",
+      "start": 89.52,
+      "end": 90.0
+    },
+    {
+      "word": " a",
+      "start": 90.0,
+      "end": 90.12
+    },
+    {
+      "word": " pretty",
+      "start": 90.12,
+      "end": 90.44
+    },
+    {
+      "word": " big",
+      "start": 90.44,
+      "end": 90.78
+    },
+    {
+      "word": " pine",
+      "start": 90.78,
+      "end": 91.08
+    },
+    {
+      "word": " tree",
+      "start": 91.08,
+      "end": 91.46
+    },
+    {
+      "word": " and",
+      "start": 91.46,
+      "end": 92.24
+    },
+    {
+      "word": " it",
+      "start": 92.24,
+      "end": 92.4
+    },
+    {
+      "word": " was",
+      "start": 92.4,
+      "end": 92.52
+    },
+    {
+      "word": " lifted",
+      "start": 92.52,
+      "end": 92.82
+    },
+    {
+      "word": " out",
+      "start": 92.82,
+      "end": 93.08
+    },
+    {
+      "word": " of",
+      "start": 93.08,
+      "end": 93.18
+    },
+    {
+      "word": " its",
+      "start": 93.18,
+      "end": 93.3
+    },
+    {
+      "word": " root",
+      "start": 93.3,
+      "end": 93.52
+    },
+    {
+      "word": " system",
+      "start": 93.52,
+      "end": 93.92
+    },
+    {
+      "word": " and",
+      "start": 93.92,
+      "end": 94.18
+    },
+    {
+      "word": " then",
+      "start": 94.18,
+      "end": 94.32
+    },
+    {
+      "word": " just",
+      "start": 94.32,
+      "end": 94.52
+    },
+    {
+      "word": " kind",
+      "start": 94.52,
+      "end": 94.84
+    },
+    {
+      "word": " of",
+      "start": 94.84,
+      "end": 94.96
+    },
+    {
+      "word": " laid",
+      "start": 94.96,
+      "end": 95.1
+    },
+    {
+      "word": " down",
+      "start": 95.1,
+      "end": 95.38
+    },
+    {
+      "word": " on",
+      "start": 95.38,
+      "end": 95.54
+    },
+    {
+      "word": " its",
+      "start": 95.54,
+      "end": 95.66
+    },
+    {
+      "word": " side",
+      "start": 95.66,
+      "end": 96.08
+    },
+    {
+      "word": " and",
+      "start": 96.08,
+      "end": 96.66
+    },
+    {
+      "word": " there's",
+      "start": 96.66,
+      "end": 96.86
+    },
+    {
+      "word": " another",
+      "start": 96.86,
+      "end": 97.06
+    },
+    {
+      "word": " tree",
+      "start": 97.06,
+      "end": 97.4
+    },
+    {
+      "word": " right",
+      "start": 97.4,
+      "end": 97.86
+    },
+    {
+      "word": " behind",
+      "start": 97.86,
+      "end": 98.16
+    },
+    {
+      "word": " it",
+      "start": 98.16,
+      "end": 98.38
+    },
+    {
+      "word": " same",
+      "start": 98.38,
+      "end": 98.96
+    },
+    {
+      "word": " story",
+      "start": 98.96,
+      "end": 99.46
+    },
+    {
+      "word": " across",
+      "start": 99.46,
+      "end": 100.22
+    },
+    {
+      "word": " the",
+      "start": 100.22,
+      "end": 100.58
+    },
+    {
+      "word": " street",
+      "start": 100.58,
+      "end": 100.76
+    },
+    {
+      "word": " here",
+      "start": 100.76,
+      "end": 101.06
+    },
+    {
+      "word": " another",
+      "start": 101.06,
+      "end": 101.44
+    },
+    {
+      "word": " good",
+      "start": 101.44,
+      "end": 102.06
+    },
+    {
+      "word": " idea",
+      "start": 102.06,
+      "end": 102.42
+    },
+    {
+      "word": " of",
+      "start": 102.42,
+      "end": 102.76
+    },
+    {
+      "word": " what",
+      "start": 102.76,
+      "end": 102.9
+    },
+    {
+      "word": " happened",
+      "start": 102.9,
+      "end": 103.16
+    },
+    {
+      "word": " out",
+      "start": 103.16,
+      "end": 103.34
+    },
+    {
+      "word": " here",
+      "start": 103.34,
+      "end": 103.5
+    },
+    {
+      "word": " on",
+      "start": 103.5,
+      "end": 103.64
+    },
+    {
+      "word": " 89th",
+      "start": 103.64,
+      "end": 104.26
+    },
+    {
+      "word": " this",
+      "start": 104.26,
+      "end": 105.26
+    },
+    {
+      "word": " is",
+      "start": 105.26,
+      "end": 105.66
+    },
+    {
+      "word": " an",
+      "start": 105.66,
+      "end": 105.92
+    },
+    {
+      "word": " entire",
+      "start": 105.92,
+      "end": 106.26
+    },
+    {
+      "word": " system",
+      "start": 106.26,
+      "end": 106.72
+    },
+    {
+      "word": " of",
+      "start": 106.72,
+      "end": 106.98
+    },
+    {
+      "word": " electrical",
+      "start": 106.98,
+      "end": 107.26
+    },
+    {
+      "word": " wires",
+      "start": 107.26,
+      "end": 107.74
+    },
+    {
+      "word": " completely",
+      "start": 107.74,
+      "end": 108.44
+    },
+    {
+      "word": " over",
+      "start": 108.44,
+      "end": 109.06
+    },
+    {
+      "word": " on",
+      "start": 109.06,
+      "end": 109.28
+    },
+    {
+      "word": " its",
+      "start": 109.28,
+      "end": 109.38
+    },
+    {
+      "word": " side",
+      "start": 109.38,
+      "end": 109.8
+    },
+    {
+      "word": " and",
+      "start": 109.8,
+      "end": 110.42
+    },
+    {
+      "word": " those",
+      "start": 110.42,
+      "end": 110.56
+    },
+    {
+      "word": " wires",
+      "start": 110.56,
+      "end": 110.8
+    },
+    {
+      "word": " are",
+      "start": 110.8,
+      "end": 111.04
+    },
+    {
+      "word": " all",
+      "start": 111.04,
+      "end": 111.2
+    },
+    {
+      "word": " down",
+      "start": 111.2,
+      "end": 111.4
+    },
+    {
+      "word": " that",
+      "start": 111.4,
+      "end": 111.58
+    },
+    {
+      "word": " means",
+      "start": 111.58,
+      "end": 111.74
+    },
+    {
+      "word": " that",
+      "start": 111.74,
+      "end": 111.92
+    },
+    {
+      "word": " nobody",
+      "start": 111.92,
+      "end": 112.22
+    },
+    {
+      "word": " in",
+      "start": 112.22,
+      "end": 112.42
+    },
+    {
+      "word": " this",
+      "start": 112.42,
+      "end": 112.56
+    },
+    {
+      "word": " area",
+      "start": 112.56,
+      "end": 112.94
+    },
+    {
+      "word": " has",
+      "start": 112.94,
+      "end": 113.3
+    },
+    {
+      "word": " any",
+      "start": 113.3,
+      "end": 113.42
+    },
+    {
+      "word": " kind",
+      "start": 113.42,
+      "end": 113.6
+    },
+    {
+      "word": " of",
+      "start": 113.6,
+      "end": 113.72
+    },
+    {
+      "word": " power",
+      "start": 113.72,
+      "end": 114.04
+    },
+    {
+      "word": " there's",
+      "start": 114.04,
+      "end": 114.8
+    },
+    {
+      "word": " a",
+      "start": 114.8,
+      "end": 114.94
+    },
+    {
+      "word": " completely",
+      "start": 114.94,
+      "end": 115.26
+    },
+    {
+      "word": " dark",
+      "start": 115.26,
+      "end": 115.56
+    },
+    {
+      "word": " neighborhood",
+      "start": 115.56,
+      "end": 116.06
+    },
+    {
+      "word": " past",
+      "start": 116.06,
+      "end": 116.64
+    },
+    {
+      "word": " this",
+      "start": 116.64,
+      "end": 116.98
+    },
+    {
+      "word": " a",
+      "start": 116.98,
+      "end": 117.24
+    },
+    {
+      "word": " church",
+      "start": 117.24,
+      "end": 117.44
+    },
+    {
+      "word": " and",
+      "start": 117.44,
+      "end": 117.7
+    },
+    {
+      "word": " other",
+      "start": 117.7,
+      "end": 117.88
+    },
+    {
+      "word": " things",
+      "start": 117.88,
+      "end": 118.14
+    },
+    {
+      "word": " none",
+      "start": 118.14,
+      "end": 118.62
+    },
+    {
+      "word": " of",
+      "start": 118.62,
+      "end": 118.8
+    },
+    {
+      "word": " it",
+      "start": 118.8,
+      "end": 118.88
+    },
+    {
+      "word": " is",
+      "start": 118.88,
+      "end": 119.0
+    },
+    {
+      "word": " lit",
+      "start": 119.0,
+      "end": 119.16
+    },
+    {
+      "word": " up",
+      "start": 119.16,
+      "end": 119.36
+    },
+    {
+      "word": " the",
+      "start": 119.36,
+      "end": 120.1
+    },
+    {
+      "word": " road",
+      "start": 120.1,
+      "end": 120.46
+    },
+    {
+      "word": " out",
+      "start": 120.46,
+      "end": 120.8
+    },
+    {
+      "word": " here",
+      "start": 120.8,
+      "end": 121.1
+    },
+    {
+      "word": " while",
+      "start": 121.1,
+      "end": 121.58
+    },
+    {
+      "word": " you",
+      "start": 121.58,
+      "end": 121.72
+    },
+    {
+      "word": " were",
+      "start": 121.72,
+      "end": 121.8
+    },
+    {
+      "word": " sitting",
+      "start": 121.8,
+      "end": 122.0
+    },
+    {
+      "word": " out",
+      "start": 122.0,
+      "end": 122.24
+    },
+    {
+      "word": " here",
+      "start": 122.24,
+      "end": 122.5
+    },
+    {
+      "word": " was",
+      "start": 122.5,
+      "end": 123.44
+    },
+    {
+      "word": " completely",
+      "start": 123.44,
+      "end": 124.22
+    },
+    {
+      "word": " flooded",
+      "start": 124.22,
+      "end": 125.32
+    },
+    {
+      "word": " it",
+      "start": 125.32,
+      "end": 125.92
+    },
+    {
+      "word": " was",
+      "start": 125.92,
+      "end": 126.04
+    },
+    {
+      "word": " several",
+      "start": 126.04,
+      "end": 126.5
+    },
+    {
+      "word": " inches",
+      "start": 126.5,
+      "end": 127.08
+    },
+    {
+      "word": " almost",
+      "start": 127.08,
+      "end": 127.5
+    },
+    {
+      "word": " a",
+      "start": 127.5,
+      "end": 127.68
+    },
+    {
+      "word": " foot",
+      "start": 127.68,
+      "end": 127.9
+    },
+    {
+      "word": " maybe",
+      "start": 127.9,
+      "end": 128.12
+    },
+    {
+      "word": " a",
+      "start": 128.12,
+      "end": 128.28
+    },
+    {
+      "word": " foot",
+      "start": 128.28,
+      "end": 128.42
+    },
+    {
+      "word": " and",
+      "start": 128.42,
+      "end": 128.52
+    },
+    {
+      "word": " a",
+      "start": 128.52,
+      "end": 128.58
+    },
+    {
+      "word": " half",
+      "start": 128.58,
+      "end": 128.76
+    },
+    {
+      "word": " deep",
+      "start": 128.76,
+      "end": 129.0
+    },
+    {
+      "word": " full",
+      "start": 129.0,
+      "end": 130.16
+    },
+    {
+      "word": " of",
+      "start": 130.16,
+      "end": 130.3
+    },
+    {
+      "word": " water",
+      "start": 130.3,
+      "end": 130.58
+    },
+    {
+      "word": " it's",
+      "start": 130.58,
+      "end": 131.3
+    },
+    {
+      "word": " just",
+      "start": 131.3,
+      "end": 131.44
+    },
+    {
+      "word": " now",
+      "start": 131.44,
+      "end": 131.64
+    },
+    {
+      "word": " beginning",
+      "start": 131.64,
+      "end": 131.84
+    },
+    {
+      "word": " to",
+      "start": 131.84,
+      "end": 132.04
+    },
+    {
+      "word": " receding",
+      "start": 132.04,
+      "end": 132.46
+    },
+    {
+      "word": " people",
+      "start": 132.46,
+      "end": 132.64
+    },
+    {
+      "word": " can",
+      "start": 132.64,
+      "end": 132.86
+    },
+    {
+      "word": " drive",
+      "start": 132.86,
+      "end": 133.52
+    },
+    {
+      "word": " on",
+      "start": 133.52,
+      "end": 133.8
+    },
+    {
+      "word": " this",
+      "start": 133.8,
+      "end": 133.96
+    },
+    {
+      "word": " street",
+      "start": 133.96,
+      "end": 134.24
+    },
+    {
+      "word": " here",
+      "start": 134.24,
+      "end": 134.6
+    },
+    {
+      "word": " but",
+      "start": 134.6,
+      "end": 135.24
+    },
+    {
+      "word": " the",
+      "start": 135.24,
+      "end": 135.44
+    },
+    {
+      "word": " folks",
+      "start": 135.44,
+      "end": 135.66
+    },
+    {
+      "word": " here",
+      "start": 135.66,
+      "end": 135.92
+    },
+    {
+      "word": " at",
+      "start": 135.92,
+      "end": 136.02
+    },
+    {
+      "word": " the",
+      "start": 136.02,
+      "end": 136.12
+    },
+    {
+      "word": " hunt",
+      "start": 136.12,
+      "end": 136.46
+    },
+    {
+      "word": " apartments",
+      "start": 136.46,
+      "end": 136.94
+    },
+    {
+      "word": " particularly",
+      "start": 136.94,
+      "end": 137.28
+    },
+    {
+      "word": " the",
+      "start": 137.28,
+      "end": 137.68
+    },
+    {
+      "word": " ones",
+      "start": 137.68,
+      "end": 137.86
+    },
+    {
+      "word": " who",
+      "start": 137.86,
+      "end": 138.0
+    },
+    {
+      "word": " live",
+      "start": 138.0,
+      "end": 138.14
+    },
+    {
+      "word": " in",
+      "start": 138.14,
+      "end": 138.26
+    },
+    {
+      "word": " this",
+      "start": 138.26,
+      "end": 138.48
+    },
+    {
+      "word": " front",
+      "start": 138.48,
+      "end": 139.2
+    },
+    {
+      "word": " section",
+      "start": 139.2,
+      "end": 139.68
+    },
+    {
+      "word": " here",
+      "start": 139.68,
+      "end": 140.08
+    },
+    {
+      "word": " they",
+      "start": 140.08,
+      "end": 140.92
+    },
+    {
+      "word": " got",
+      "start": 140.92,
+      "end": 141.06
+    },
+    {
+      "word": " the",
+      "start": 141.06,
+      "end": 141.2
+    },
+    {
+      "word": " run",
+      "start": 141.2,
+      "end": 141.44
+    },
+    {
+      "word": " of",
+      "start": 141.44,
+      "end": 141.54
+    },
+    {
+      "word": " this",
+      "start": 141.54,
+      "end": 141.68
+    },
+    {
+      "word": " wind",
+      "start": 141.68,
+      "end": 141.84
+    },
+    {
+      "word": " system",
+      "start": 141.84,
+      "end": 142.14
+    },
+    {
+      "word": " that",
+      "start": 142.14,
+      "end": 142.36
+    },
+    {
+      "word": " came",
+      "start": 142.36,
+      "end": 142.56
+    },
+    {
+      "word": " down",
+      "start": 142.56,
+      "end": 142.8
+    },
+    {
+      "word": " 89th",
+      "start": 142.8,
+      "end": 143.64
+    },
+    {
+      "word": " and",
+      "start": 143.64,
+      "end": 144.24
+    },
+    {
+      "word": " they're",
+      "start": 144.24,
+      "end": 144.6
+    },
+    {
+      "word": " going",
+      "start": 144.6,
+      "end": 144.72
+    },
+    {
+      "word": " to",
+      "start": 144.72,
+      "end": 144.8
+    },
+    {
+      "word": " have",
+      "start": 144.8,
+      "end": 144.92
+    },
+    {
+      "word": " a",
+      "start": 144.92,
+      "end": 144.98
+    },
+    {
+      "word": " lot",
+      "start": 144.98,
+      "end": 145.16
+    },
+    {
+      "word": " of",
+      "start": 145.16,
+      "end": 145.26
+    },
+    {
+      "word": " cleaning",
+      "start": 145.26,
+      "end": 145.6
+    },
+    {
+      "word": " up",
+      "start": 145.6,
+      "end": 145.82
+    },
+    {
+      "word": " and",
+      "start": 145.82,
+      "end": 145.9
+    },
+    {
+      "word": " a",
+      "start": 145.9,
+      "end": 145.96
+    },
+    {
+      "word": " lot",
+      "start": 145.96,
+      "end": 146.12
+    },
+    {
+      "word": " of",
+      "start": 146.12,
+      "end": 146.2
+    },
+    {
+      "word": " things",
+      "start": 146.2,
+      "end": 146.34
+    },
+    {
+      "word": " they're",
+      "start": 146.34,
+      "end": 146.5
+    },
+    {
+      "word": " going",
+      "start": 146.5,
+      "end": 146.62
+    },
+    {
+      "word": " to",
+      "start": 146.62,
+      "end": 146.68
+    },
+    {
+      "word": " have",
+      "start": 146.68,
+      "end": 146.78
+    },
+    {
+      "word": " to",
+      "start": 146.78,
+      "end": 146.88
+    },
+    {
+      "word": " do",
+      "start": 146.88,
+      "end": 147.04
+    },
+    {
+      "word": " and",
+      "start": 147.04,
+      "end": 147.26
+    },
+    {
+      "word": " your",
+      "start": 147.26,
+      "end": 147.58
+    },
+    {
+      "word": " heart",
+      "start": 147.58,
+      "end": 147.8
+    },
+    {
+      "word": " really",
+      "start": 147.8,
+      "end": 147.94
+    },
+    {
+      "word": " goes",
+      "start": 147.94,
+      "end": 148.14
+    },
+    {
+      "word": " out",
+      "start": 148.14,
+      "end": 148.32
+    },
+    {
+      "word": " to",
+      "start": 148.32,
+      "end": 148.44
+    },
+    {
+      "word": " these",
+      "start": 148.44,
+      "end": 148.56
+    },
+    {
+      "word": " folks",
+      "start": 148.56,
+      "end": 148.74
+    },
+    {
+      "word": " because",
+      "start": 148.74,
+      "end": 149.02
+    },
+    {
+      "word": " you",
+      "start": 149.02,
+      "end": 149.18
+    },
+    {
+      "word": " look",
+      "start": 149.18,
+      "end": 149.28
+    },
+    {
+      "word": " at",
+      "start": 149.28,
+      "end": 149.46
+    },
+    {
+      "word": " it",
+      "start": 149.46,
+      "end": 149.6
+    },
+    {
+      "word": " and",
+      "start": 149.6,
+      "end": 149.68
+    },
+    {
+      "word": " you",
+      "start": 149.68,
+      "end": 149.76
+    },
+    {
+      "word": " realize",
+      "start": 149.76,
+      "end": 150.02
+    },
+    {
+      "word": " that",
+      "start": 150.02,
+      "end": 150.36
+    },
+    {
+      "word": " not",
+      "start": 150.36,
+      "end": 150.9
+    },
+    {
+      "word": " only",
+      "start": 150.9,
+      "end": 151.22
+    },
+    {
+      "word": " did",
+      "start": 151.22,
+      "end": 151.38
+    },
+    {
+      "word": " they",
+      "start": 151.38,
+      "end": 151.5
+    },
+    {
+      "word": " have",
+      "start": 151.5,
+      "end": 151.64
+    },
+    {
+      "word": " the",
+      "start": 151.64,
+      "end": 151.76
+    },
+    {
+      "word": " wind",
+      "start": 151.76,
+      "end": 151.92
+    },
+    {
+      "word": " damage",
+      "start": 151.92,
+      "end": 152.34
+    },
+    {
+      "word": " but",
+      "start": 152.34,
+      "end": 152.92
+    },
+    {
+      "word": " then",
+      "start": 152.92,
+      "end": 153.1
+    },
+    {
+      "word": " these",
+      "start": 153.1,
+      "end": 153.32
+    },
+    {
+      "word": " apartments",
+      "start": 153.32,
+      "end": 153.6
+    },
+    {
+      "word": " were",
+      "start": 153.6,
+      "end": 153.88
+    },
+    {
+      "word": " just",
+      "start": 153.88,
+      "end": 154.04
+    },
+    {
+      "word": " like",
+      "start": 154.04,
+      "end": 154.12
+    },
+    {
+      "word": " sitting",
+      "start": 154.12,
+      "end": 154.42
+    },
+    {
+      "word": " ducks",
+      "start": 154.42,
+      "end": 154.74
+    },
+    {
+      "word": " and",
+      "start": 154.74,
+      "end": 155.04
+    },
+    {
+      "word": " the",
+      "start": 155.04,
+      "end": 155.14
+    },
+    {
+      "word": " rain",
+      "start": 155.14,
+      "end": 155.36
+    },
+    {
+      "word": " just",
+      "start": 155.36,
+      "end": 155.66
+    },
+    {
+      "word": " came",
+      "start": 155.66,
+      "end": 155.86
+    },
+    {
+      "word": " along",
+      "start": 155.86,
+      "end": 156.1
+    },
+    {
+      "word": " and",
+      "start": 156.1,
+      "end": 156.32
+    },
+    {
+      "word": " just",
+      "start": 156.32,
+      "end": 156.52
+    },
+    {
+      "word": " obliterated",
+      "start": 156.52,
+      "end": 157.56
+    },
+    {
+      "word": " what",
+      "start": 157.56,
+      "end": 157.7
+    },
+    {
+      "word": " was",
+      "start": 157.7,
+      "end": 157.84
+    },
+    {
+      "word": " inside",
+      "start": 157.84,
+      "end": 158.04
+    },
+    {
+      "word": " those",
+      "start": 158.04,
+      "end": 158.3
+    },
+    {
+      "word": " apartments",
+      "start": 158.3,
+      "end": 158.58
+    },
+    {
+      "word": " so",
+      "start": 158.58,
+      "end": 159.0
+    },
+    {
+      "word": " a",
+      "start": 159.46,
+      "end": 159.86
+    },
+    {
+      "word": " lot",
+      "start": 159.86,
+      "end": 160.16
+    },
+    {
+      "word": " of",
+      "start": 160.16,
+      "end": 160.28
+    },
+    {
+      "word": " cleanup",
+      "start": 160.28,
+      "end": 160.56
+    },
+    {
+      "word": " and",
+      "start": 160.56,
+      "end": 160.82
+    },
+    {
+      "word": " a",
+      "start": 160.82,
+      "end": 160.88
+    },
+    {
+      "word": " lot",
+      "start": 160.88,
+      "end": 161.04
+    },
+    {
+      "word": " of",
+      "start": 161.04,
+      "end": 161.12
+    },
+    {
+      "word": " work",
+      "start": 161.12,
+      "end": 161.26
+    },
+    {
+      "word": " to",
+      "start": 161.26,
+      "end": 161.48
+    },
+    {
+      "word": " do",
+      "start": 161.48,
+      "end": 161.64
+    },
+    {
+      "word": " coming",
+      "start": 161.64,
+      "end": 162.12
+    },
+    {
+      "word": " up",
+      "start": 162.12,
+      "end": 162.34
+    },
+    {
+      "word": " back",
+      "start": 162.34,
+      "end": 162.56
+    },
+    {
+      "word": " to",
+      "start": 162.56,
+      "end": 162.72
+    },
+    {
+      "word": " you",
+      "start": 162.72,
+      "end": 162.8
+    },
+    {
+      "word": " all",
+      "start": 162.8,
+      "end": 162.94
+    },
+    {
+      "word": " certainly",
+      "start": 162.94,
+      "end": 163.2
+    },
+    {
+      "word": " some",
+      "start": 163.2,
+      "end": 163.62
+    },
+    {
+      "word": " displaced",
+      "start": 163.62,
+      "end": 163.94
+    },
+    {
+      "word": " residents",
+      "start": 163.94,
+      "end": 164.48
+    },
+    {
+      "word": " there",
+      "start": 164.48,
+      "end": 164.96
+    },
+    {
+      "word": " for",
+      "start": 164.96,
+      "end": 165.24
+    },
+    {
+      "word": " sure",
+      "start": 165.24,
+      "end": 165.48
+    },
+    {
+      "word": " thank",
+      "start": 165.48,
+      "end": 165.74
+    },
+    {
+      "word": " you",
+      "start": 165.74,
+      "end": 165.94
+    },
+    {
+      "word": " very",
+      "start": 165.94,
+      "end": 166.06
+    },
+    {
+      "word": " much",
+      "start": 166.06,
+      "end": 166.36
+    },
+    {
+      "word": " Sarah",
+      "start": 166.36,
+      "end": 166.58
+    },
+    {
+      "word": " Sellier",
+      "start": 166.58,
+      "end": 166.92
+    },
+    {
+      "word": " putting",
+      "start": 166.92,
+      "end": 167.14
+    },
+    {
+      "word": " live",
+      "start": 167.14,
+      "end": 167.34
+    },
+    {
+      "word": " at",
+      "start": 167.34,
+      "end": 167.48
+    },
+    {
+      "word": " Southwest",
+      "start": 167.48,
+      "end": 167.66
+    },
+    {
+      "word": " 89th",
+      "start": 167.66,
+      "end": 168.9
+    },
+    {
+      "word": " and",
+      "start": 168.9,
+      "end": 169.06
+    },
+    {
+      "word": " May",
+      "start": 169.06,
+      "end": 169.32
+    },
+    {
+      "word": " whatever",
+      "start": 169.32,
+      "end": 169.76
+    },
+    {
+      "word": " new",
+      "start": 169.76,
+      "end": 170.02
+    },
+    {
+      "word": " room",
+      "start": 170.02,
+      "end": 170.16
+    }
+  ]
+}

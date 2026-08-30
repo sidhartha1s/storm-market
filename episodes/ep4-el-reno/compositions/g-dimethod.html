@@ -121,7 +121,7 @@ window.__timelines = window.__timelines || {};
   tl.to(VD, {v:160, duration:1.4, ease:"power3.out", onUpdate:dUpd}, 36.0);
   tl.to(P+"fdmg", {scaleX:160/300, duration:1.4, ease:"power3.out"}, 36.0);
   tl.fromTo(P+"verdict", {autoAlpha:0}, {autoAlpha:1, duration:0.2}, 37.8);
-  tl.fromTo(P+"stamp", {scale:2.4}, {scale:1, duration:0.35, ease:"power4.in"}, 37.9);
+  tl.fromTo(P+"stamp", {scale:1.1, autoAlpha:0, transformOrigin:"left top"}, {scale:1, autoAlpha:1, duration:0.35, ease:"power4.in"}, 37.9);
   /* "the mobile research radar ... measured winds above 290 miles per hour" 40.2–44.9 */
   tl.to(VR, {v:290, duration:2.6, ease:"power3.out", onUpdate:rUpd}, 42.4);
   tl.to(P+"frad", {scaleX:290/300, duration:2.6, ease:"power3.out"}, 42.4);
@@ -137,7 +137,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"gap", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.5}, 61.4);
   tl.fromTo(P+"gapv", {scale:1.5}, {scale:1, duration:0.4, ease:"power4.in"}, 61.9);
   /* "The scale worked exactly as designed." 65.2–67.1: the stamp re-slams */
-  tl.fromTo(P+"stamp", {scale:1.25}, {scale:1, duration:0.35, ease:"power4.in"}, 65.4);
+  tl.to(P+"stamp", {backgroundColor:"#d63a2a", duration:0.3, yoyo:true, repeat:1, ease:"sine.inOut"}, 65.4); /* re-slam as a colour pulse: no geometry change, no collision with vsub */
   /* "spent its fury on emptiness" 73.2–74.3: the core breathes once more */
   tl.to(P+"core", {width:"230px", opacity:0.9, duration:0.9, yoyo:true, repeat:1, ease:"sine.inOut"}, 73.2);
   /* "The record width stands, measured by radar. The violence stays officially invisible." 75.6–80.6 */
