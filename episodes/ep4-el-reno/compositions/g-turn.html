@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-turn — THE LEFT TURN AND THE ESCAPE MARGIN, drawn on the section-road grid (retuned from
+  references/editing-patterns/ep3-map-route-fit.html: a route drawn ON the spoken word with a moving
+  cell and live readouts; plate replaced by a designed 1-mile grid because the narration itself
+  describes "a grid of section roads a mile apart" — geometry from the NWS Norman path map:
+  formed W of El Reno, ESE, hard left near Reuter Rd at 6:09, crossed US-81 south of town, then
+  I-40 near Banner Rd). Scale 200 px = 1 mile. Mounted at a3-s1 + 7.0 s (after the real
+  sharp-left-turns footage carries the payoff sentence). Comp time = a3-s1 words.json − 7.0:
+  /* turned hard to the left@0.5 · accelerated@3.6 · 35 mph@9.7 · more than 50@11.4 ·
+     inflow winds made driving away difficult@12.8–14.9 · every chaser built their position@16.0–18.3 ·
+     southeast at 25@20.0–21.2 · no longer existed@24.0 · wider than their escape margin@26.9–28.1 ·
+     faster than their vehicles@29.2 · hidden in rain@32.7 · mathematics ... rewritten@34.6–37.8 ·
+     nobody's map had updated yet@38.8–40.4 */
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif; overflow:hidden; color:#f2f5f8;
+    background:radial-gradient(ellipse at 46% 52%, #0d141c 0%, #04070a 76%); }
+  .eyebrow { position:absolute; left:96px; top:76px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .hl { position:absolute; left:96px; top:112px; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; }
+  .sub { position:absolute; left:96px; top:196px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  .rdg { position:absolute; right:96px; top:88px; text-align:right; }
+  .rdgnum { font-family:'Courier New',monospace; font-size:76px; color:#e8c56a; font-weight:700; line-height:1; }
+  .rdglab { font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; margin-top:6px; }
+  .verdict { position:absolute; left:96px; top:262px; font-family:'Arial Black',Arial,sans-serif; font-size:40px; color:#f2f5f8; }
+  .verdictsub { position:absolute; left:96px; top:318px; font-family:Georgia,serif; font-style:italic; font-size:25px; color:#b8c6d4; }
+  .foot { position:absolute; left:96px; bottom:74px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  .maplab { font-family:Arial,sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+  .roadlab { font-family:Arial,sans-serif; font-weight:700; font-size:20px; letter-spacing:2px; fill:#7f8fa0; }
+  .biglab { font-family:'Arial Black',Arial,sans-serif; font-size:28px; fill:#f2f5f8; }
+  .redlab { font-family:'Arial Black',Arial,sans-serif; font-size:26px; fill:#e74c3c; letter-spacing:2px; }
+</style>
+<div id="root" data-composition-id="g-turn" data-width="1920" data-height="1080">
+  <svg viewBox="0 0 1920 1080" style="position:absolute;inset:0">
+    <defs>
+      <pattern id="gt-mile" width="200" height="200" patternUnits="userSpaceOnUse" x="60" y="40">
+        <rect x="0" y="0" width="200" height="200" fill="none" stroke="#16232e" stroke-width="2"/>
+      </pattern>
+      <radialGradient id="gt-core" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#e74c3c" stop-opacity="0.5"/><stop offset="70%" stop-color="#c0392b" stop-opacity="0.24"/><stop offset="100%" stop-color="#8e2020" stop-opacity="0.04"/>
+      </radialGradient>
+      <filter id="gt-glow"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <g id="gt-grid"><rect x="-400" y="-400" width="2720" height="1880" fill="url(#gt-mile)"/></g>
+    <!-- roads: US-81 north–south, I-40 east–west, Reuter Road (a section road) -->
+    <line x1="1260" y1="0" x2="1260" y2="1080" stroke="#2c3b4a" stroke-width="8"/>
+    <line x1="0" y1="440" x2="1920" y2="440" stroke="#2c3b4a" stroke-width="10"/>
+    <line x1="0" y1="640" x2="1920" y2="640" stroke="#20303d" stroke-width="4"/>
+    <text x="1276" y="1040" class="roadlab">US-81</text>
+    <text x="1720" y="428" class="roadlab">I-40</text>
+    <text x="110" y="628" class="roadlab">REUTER ROAD</text>
+    <rect x="1225" y="360" width="70" height="52" fill="#1b2a37" stroke="#46586b" stroke-width="2"/>
+    <text x="1310" y="396" class="biglab">EL RENO</text>
+    <!-- the path as the storm WAS expected: southeast, 25 mph (ghost) -->
+    <polyline id="gt-ghost" points="360,560 640,620 900,690 1160,760 1400,830" fill="none" stroke="#5a768f" stroke-width="5" stroke-dasharray="16 14" opacity="0"/>
+    <text id="gt-ghostlab" x="1180" y="810" class="maplab" opacity="0">EXPECTED · SOUTHEAST · 25 MPH</text>
+    <!-- the real path: ESE, then the hard left at 6:09, across US-81 and I-40 -->
+    <polyline id="gt-route" points="360,560 640,620 760,660 900,600 1100,540 1260,500 1460,450 1660,430" fill="none" stroke="#c0392b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1500" stroke-dashoffset="1500"/>
+    <!-- the circulation: moving and widening -->
+    <circle id="gt-cell" cx="640" cy="620" r="60" fill="url(#gt-core)" stroke="#e74c3c" stroke-width="5" filter="url(#gt-glow)"/>
+    <text id="gt-turnlab" x="760" y="720" text-anchor="middle" class="redlab" opacity="0">6:09 PM · HARD LEFT</text>
+    <!-- chasers on Reuter Road, east of the storm, facing US-81 -->
+    <g id="gt-chasers" opacity="0">
+      <circle cx="1060" cy="640" r="11" fill="#f2f5f8"/>
+      <circle cx="1120" cy="640" r="11" fill="#f2f5f8"/>
+      <text x="1000" y="680" class="maplab">CHASERS · REUTER ROAD</text>
+      <!-- their escape margin: the mile of road between them and the storm's edge -->
+      <line id="gt-margin" x1="760" y1="640" x2="1040" y2="640" stroke="#e8c56a" stroke-width="4" stroke-dasharray="10 8"/>
+      <text id="gt-marginlab" x="900" y="618" text-anchor="middle" class="maplab" style="fill:#e8c56a">ESCAPE MARGIN</text>
+    </g>
+    <!-- rain curtain over the circulation ("completely hidden in rain") -->
+    <circle id="gt-rain" cx="900" cy="600" r="0" fill="#5a768f" opacity="0"/>
+  </svg>
+  <div class="eyebrow" id="gt-eb">NWS NORMAN SERVICE ASSESSMENT · 6:09 PM</div>
+  <div class="hl" id="gt-hl">THE TURN</div>
+  <div class="sub" id="gt-sub">it turned hard to the left, and as it turned, it accelerated</div>
+  <div class="verdict" id="gt-vd">THAT STORM NO LONGER EXISTED</div>
+  <div class="verdictsub" id="gt-vds">wider than their escape margin · faster than their vehicles · hidden in rain</div>
+  <div class="rdg" id="gt-rdg"><div class="rdgnum"><span id="gt-mph">35</span> MPH</div><div class="rdglab">FORWARD SPEED</div><div class="rdgnum" style="margin-top:34px"><span id="gt-wid">1.0</span> MI</div><div class="rdglab">ACROSS</div></div>
+  <div class="foot" id="gt-ft">Nobody's map had updated yet.</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#gt-";
+  tl.set([P+"eb",P+"hl",P+"sub",P+"vd",P+"vds",P+"rdg",P+"ft"], {autoAlpha:0}, 0);
+  const SP = {v:35}, WI = {v:1.0};
+  function spUpd(){ const e=document.getElementById("gt-mph"); if(e) e.textContent = Math.round(SP.v); }
+  function wiUpd(){ const e=document.getElementById("gt-wid"); if(e) e.textContent = WI.v.toFixed(1); }
+  /* CONTINUOUS: grid drift the whole window */
+  tl.to(P+"grid", {x:-120, y:-30, duration:41.0, ease:"none"}, 0);
+  tl.fromTo(P+"eb",  {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.1);
+  tl.fromTo(P+"hl",  {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.3);
+  tl.fromTo(P+"sub", {autoAlpha:0, x:-24}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.6);
+  /* the route draws to the elbow on "turned hard to the left" 0.5, keeps drawing as "it accelerated" 3.6 */
+  tl.to(P+"route", {strokeDashoffset:1500-430, duration:1.4, ease:"none"}, 0.3);
+  tl.to(P+"cell", {attr:{cx:760, cy:660}, duration:1.4, ease:"none"}, 0.3);
+  tl.fromTo(P+"turnlab", {opacity:0}, {opacity:1, duration:0.4}, 1.7);
+  tl.to(P+"route", {strokeDashoffset:1500-780, duration:3.0, ease:"power2.in"}, 3.6);
+  tl.to(P+"cell", {attr:{cx:1000, cy:570, r:120}, duration:3.0, ease:"power2.in"}, 3.6);
+  /* readouts: "Forward speed climbed from roughly 35 ... to more than 50" 8.0–11.6 */
+  tl.fromTo(P+"rdg", {autoAlpha:0, x:40}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 8.0);
+  tl.to(SP, {v:52, duration:2.4, ease:"power3.out", onUpdate:spUpd}, 9.6);
+  tl.to(WI, {v:2.6, duration:2.4, ease:"power3.out", onUpdate:wiUpd}, 9.6);
+  tl.to(P+"cell", {attr:{r:200}, duration:2.4, ease:"power3.out"}, 9.6);
+  /* "made driving away from it difficult" 12.8–14.9: inflow — the ghost path shows what they planned for */
+  tl.fromTo(P+"ghost", {opacity:0}, {opacity:0.85, duration:0.5}, 16.0);       /* "Every chaser ... built their position" */
+  tl.fromTo(P+"ghostlab", {opacity:0}, {opacity:0.9, duration:0.5}, 20.0);     /* "southeast at 25 miles per hour" */
+  tl.fromTo(P+"chasers", {opacity:0}, {opacity:1, duration:0.5}, 17.0);
+  /* "That storm no longer existed" 22.7–24.6: the ghost dies, the verdict lands */
+  tl.to([P+"ghost",P+"ghostlab"], {opacity:0, duration:0.6}, 23.0);
+  tl.fromTo(P+"vd", {autoAlpha:0, x:-40}, {autoAlpha:1, x:0, duration:0.6, ease:"power3.out"}, 23.8);
+  /* "wider than their escape margin" 26.9: the margin line is eaten by the circulation */
+  tl.to(P+"cell", {attr:{cx:1060, cy:560, r:260}, duration:2.5, ease:"power2.in"}, 26.6);
+  tl.to(P+"route", {strokeDashoffset:1500-1000, duration:2.5, ease:"power2.in"}, 26.6);
+  tl.to([P+"margin",P+"marginlab"], {opacity:0.15, duration:0.8}, 27.8);
+  tl.fromTo(P+"vds", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.6, ease:"power3.out"}, 27.0);
+  /* "faster than their vehicles on wet section roads" 29.2 */
+  tl.to(SP, {v:55, duration:1.0, ease:"power2.out", onUpdate:spUpd}, 29.2);
+  /* "completely hidden in rain" 32.3–33.4: the rain curtain closes over the circulation */
+  tl.to(P+"rain", {attr:{cx:1060, cy:560, r:320}, opacity:0.55, duration:1.2, ease:"power2.out"}, 32.4);
+  /* "the mathematics of every escape route ... rewritten" 34.6–37.8: the route finishes across US-81 and I-40 */
+  tl.to(P+"route", {strokeDashoffset:0, duration:3.2, ease:"none"}, 34.6);
+  tl.to(P+"cell", {attr:{cx:1460, cy:450, r:200}, duration:3.2, ease:"none"}, 34.6);
+  tl.to(P+"rain", {attr:{cx:1460, cy:450, r:270}, duration:3.2, ease:"none"}, 34.6);
+  /* "and nobody's map had updated yet" 38.8–40.4 */
+  tl.fromTo(P+"ft", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.6}, 38.9);
+  /* exit on the cut at 41.0: slide right, gone */
+  tl.to("#root > *", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 40.4);
+  window.__timelines["g-turn"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
