@@ -2,6 +2,8 @@ episodes/*/media/
 episodes/*/narration.wav
 episodes/*/renders/
 *.mp4
+# the channel CTA is a tracked asset (owner order 2026-08-30) - the only mp4 in git
+!assets/cta/*.mp4
 .env
 episodes/*/audio/*.wav
 episodes/*/snapshots/
