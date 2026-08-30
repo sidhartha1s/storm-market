@@ -1,0 +1,2494 @@
+{
+  "clip": "koco-one-year-ago",
+  "duration": 138.484,
+  "language": "en",
+  "segments": [
+    {
+      "start": 4.4,
+      "end": 9.62,
+      "text": "The record-setting 2-and-a-half-mile-wide tornado taking lives and too many homes to",
+      "words": [
+        {
+          "word": "The",
+          "start": 4.4,
+          "end": 4.88
+        },
+        {
+          "word": "record",
+          "start": 4.88,
+          "end": 5.36
+        },
+        {
+          "word": "-setting",
+          "start": 5.36,
+          "end": 5.78
+        },
+        {
+          "word": "2",
+          "start": 5.78,
+          "end": 6.1
+        },
+        {
+          "word": "-and",
+          "start": 6.1,
+          "end": 6.24
+        },
+        {
+          "word": "-a",
+          "start": 6.24,
+          "end": 6.28
+        },
+        {
+          "word": "-half",
+          "start": 6.28,
+          "end": 6.44
+        },
+        {
+          "word": "-mile",
+          "start": 6.44,
+          "end": 6.72
+        },
+        {
+          "word": "-wide",
+          "start": 6.72,
+          "end": 7.06
+        },
+        {
+          "word": "tornado",
+          "start": 7.06,
+          "end": 7.4
+        },
+        {
+          "word": "taking",
+          "start": 7.4,
+          "end": 7.76
+        },
+        {
+          "word": "lives",
+          "start": 7.76,
+          "end": 8.22
+        },
+        {
+          "word": "and",
+          "start": 8.22,
+          "end": 8.8
+        },
+        {
+          "word": "too",
+          "start": 8.8,
+          "end": 8.96
+        },
+        {
+          "word": "many",
+          "start": 8.96,
+          "end": 9.1
+        },
+        {
+          "word": "homes",
+          "start": 9.1,
+          "end": 9.4
+        },
+        {
+          "word": "to",
+          "start": 9.4,
+          "end": 9.62
+        }
+      ]
+    },
+    {
+      "start": 9.62,
+      "end": 9.94,
+      "text": "count.",
+      "words": [
+        {
+          "word": "count.",
+          "start": 9.62,
+          "end": 9.94
+        }
+      ]
+    },
+    {
+      "start": 10.16,
+      "end": 13.68,
+      "text": "Now nearly one year later, El Reno is still on the road to recovery.",
+      "words": [
+        {
+          "word": "Now",
+          "start": 10.16,
+          "end": 10.18
+        },
+        {
+          "word": "nearly",
+          "start": 10.18,
+          "end": 10.44
+        },
+        {
+          "word": "one",
+          "start": 10.44,
+          "end": 10.78
+        },
+        {
+          "word": "year",
+          "start": 10.78,
+          "end": 10.96
+        },
+        {
+          "word": "later,",
+          "start": 10.96,
+          "end": 11.24
+        },
+        {
+          "word": "El",
+          "start": 11.38,
+          "end": 11.44
+        },
+        {
+          "word": "Reno",
+          "start": 11.44,
+          "end": 11.64
+        },
+        {
+          "word": "is",
+          "start": 11.64,
+          "end": 11.9
+        },
+        {
+          "word": "still",
+          "start": 11.9,
+          "end": 12.28
+        },
+        {
+          "word": "on",
+          "start": 12.28,
+          "end": 12.82
+        },
+        {
+          "word": "the",
+          "start": 12.82,
+          "end": 12.92
+        },
+        {
+          "word": "road",
+          "start": 12.92,
+          "end": 13.04
+        },
+        {
+          "word": "to",
+          "start": 13.04,
+          "end": 13.22
+        },
+        {
+          "word": "recovery.",
+          "start": 13.22,
+          "end": 13.68
+        }
+      ]
+    },
+    {
+      "start": 13.92,
+      "end": 14.88,
+      "text": "Good evening and thanks for joining us.",
+      "words": [
+        {
+          "word": "Good",
+          "start": 13.92,
+          "end": 13.98
+        },
+        {
+          "word": "evening",
+          "start": 13.98,
+          "end": 14.14
+        },
+        {
+          "word": "and",
+          "start": 14.14,
+          "end": 14.28
+        },
+        {
+          "word": "thanks",
+          "start": 14.28,
+          "end": 14.42
+        },
+        {
+          "word": "for",
+          "start": 14.42,
+          "end": 14.52
+        },
+        {
+          "word": "joining",
+          "start": 14.52,
+          "end": 14.7
+        },
+        {
+          "word": "us.",
+          "start": 14.7,
+          "end": 14.88
+        }
+      ]
+    },
+    {
+      "start": 15.04,
+      "end": 15.66,
+      "text": "I'm Morgan Chesky.",
+      "words": [
+        {
+          "word": "I'm",
+          "start": 15.04,
+          "end": 15.08
+        },
+        {
+          "word": "Morgan",
+          "start": 15.08,
+          "end": 15.26
+        },
+        {
+          "word": "Chesky.",
+          "start": 15.26,
+          "end": 15.66
+        }
+      ]
+    },
+    {
+      "start": 15.96,
+      "end": 17.14,
+      "text": "Ariel has the night off.",
+      "words": [
+        {
+          "word": "Ariel",
+          "start": 15.96,
+          "end": 16.26
+        },
+        {
+          "word": "has",
+          "start": 16.26,
+          "end": 16.56
+        },
+        {
+          "word": "the",
+          "start": 16.56,
+          "end": 16.72
+        },
+        {
+          "word": "night",
+          "start": 16.72,
+          "end": 16.84
+        },
+        {
+          "word": "off.",
+          "start": 16.84,
+          "end": 17.14
+        }
+      ]
+    },
+    {
+      "start": 17.58,
+      "end": 22.24,
+      "text": "Tomorrow marks one year since that monster twister with 300-mile-per-hour winds touched",
+      "words": [
+        {
+          "word": "Tomorrow",
+          "start": 17.58,
+          "end": 17.82
+        },
+        {
+          "word": "marks",
+          "start": 17.82,
+          "end": 18.2
+        },
+        {
+          "word": "one",
+          "start": 18.2,
+          "end": 18.62
+        },
+        {
+          "word": "year",
+          "start": 18.62,
+          "end": 18.94
+        },
+        {
+          "word": "since",
+          "start": 18.94,
+          "end": 19.16
+        },
+        {
+          "word": "that",
+          "start": 19.16,
+          "end": 19.4
+        },
+        {
+          "word": "monster",
+          "start": 19.4,
+          "end": 19.88
+        },
+        {
+          "word": "twister",
+          "start": 19.88,
+          "end": 20.24
+        },
+        {
+          "word": "with",
+          "start": 20.24,
+          "end": 20.48
+        },
+        {
+          "word": "300",
+          "start": 20.48,
+          "end": 21.08
+        },
+        {
+          "word": "-mile",
+          "start": 21.08,
+          "end": 21.28
+        },
+        {
+          "word": "-per",
+          "start": 21.28,
+          "end": 21.48
+        },
+        {
+          "word": "-hour",
+          "start": 21.48,
+          "end": 21.64
+        },
+        {
+          "word": "winds",
+          "start": 21.64,
+          "end": 22.0
+        },
+        {
+          "word": "touched",
+          "start": 22.0,
+          "end": 22.24
+        }
+      ]
+    },
+    {
+      "start": 22.24,
+      "end": 22.7,
+      "text": "down.",
+      "words": [
+        {
+          "word": "down.",
+          "start": 22.24,
+          "end": 22.7
+        }
+      ]
+    },
+    {
+      "start": 23.16,
+      "end": 27.98,
+      "text": "It started in a rural area but eventually tracked over the interstate, leaving a 16-mile-wide",
+      "words": [
+        {
+          "word": "It",
+          "start": 23.16,
+          "end": 23.32
+        },
+        {
+          "word": "started",
+          "start": 23.32,
+          "end": 23.56
+        },
+        {
+          "word": "in",
+          "start": 23.56,
+          "end": 23.78
+        },
+        {
+          "word": "a",
+          "start": 23.78,
+          "end": 23.94
+        },
+        {
+          "word": "rural",
+          "start": 23.94,
+          "end": 24.16
+        },
+        {
+          "word": "area",
+          "start": 24.16,
+          "end": 24.46
+        },
+        {
+          "word": "but",
+          "start": 24.46,
+          "end": 24.62
+        },
+        {
+          "word": "eventually",
+          "start": 24.62,
+          "end": 24.82
+        },
+        {
+          "word": "tracked",
+          "start": 24.82,
+          "end": 25.32
+        },
+        {
+          "word": "over",
+          "start": 25.32,
+          "end": 25.52
+        },
+        {
+          "word": "the",
+          "start": 25.52,
+          "end": 25.66
+        },
+        {
+          "word": "interstate,",
+          "start": 25.66,
+          "end": 25.98
+        },
+        {
+          "word": "leaving",
+          "start": 26.42,
+          "end": 26.54
+        },
+        {
+          "word": "a",
+          "start": 26.54,
+          "end": 26.8
+        },
+        {
+          "word": "16",
+          "start": 26.8,
+          "end": 27.3
+        },
+        {
+          "word": "-mile",
+          "start": 27.3,
+          "end": 27.64
+        },
+        {
+          "word": "-wide",
+          "start": 27.64,
+          "end": 27.98
+        }
+      ]
+    },
+    {
+      "start": 27.98,
+      "end": 29.28,
+      "text": "trail of death and",
+      "words": [
+        {
+          "word": "trail",
+          "start": 27.98,
+          "end": 28.28
+        },
+        {
+          "word": "of",
+          "start": 28.28,
+          "end": 28.56
+        },
+        {
+          "word": "death",
+          "start": 28.56,
+          "end": 28.82
+        },
+        {
+          "word": "and",
+          "start": 28.82,
+          "end": 29.28
+        }
+      ]
+    },
+    {
+      "start": 29.28,
+      "end": 29.84,
+      "text": "destruction.",
+      "words": [
+        {
+          "word": "destruction.",
+          "start": 29.28,
+          "end": 29.84
+        }
+      ]
+    },
+    {
+      "start": 30.5,
+      "end": 31.84,
+      "text": "KSCO's Kim Passoth is in",
+      "words": [
+        {
+          "word": "KSCO's",
+          "start": 30.5,
+          "end": 30.94
+        },
+        {
+          "word": "Kim",
+          "start": 30.94,
+          "end": 31.06
+        },
+        {
+          "word": "Passoth",
+          "start": 31.06,
+          "end": 31.56
+        },
+        {
+          "word": "is",
+          "start": 31.56,
+          "end": 31.72
+        },
+        {
+          "word": "in",
+          "start": 31.72,
+          "end": 31.84
+        }
+      ]
+    },
+    {
+      "start": 31.84,
+      "end": 33.14,
+      "text": "El Reno tonight. And",
+      "words": [
+        {
+          "word": "El",
+          "start": 31.84,
+          "end": 32.02
+        },
+        {
+          "word": "Reno",
+          "start": 32.02,
+          "end": 32.24
+        },
+        {
+          "word": "tonight.",
+          "start": 32.24,
+          "end": 32.62
+        },
+        {
+          "word": "And",
+          "start": 33.1,
+          "end": 33.14
+        }
+      ]
+    },
+    {
+      "start": 33.14,
+      "end": 33.78,
+      "text": "Kim has been a long",
+      "words": [
+        {
+          "word": "Kim",
+          "start": 33.14,
+          "end": 33.28
+        },
+        {
+          "word": "has",
+          "start": 33.28,
+          "end": 33.36
+        },
+        {
+          "word": "been",
+          "start": 33.36,
+          "end": 33.5
+        },
+        {
+          "word": "a",
+          "start": 33.5,
+          "end": 33.6
+        },
+        {
+          "word": "long",
+          "start": 33.6,
+          "end": 33.78
+        }
+      ]
+    },
+    {
+      "start": 33.78,
+      "end": 35.04,
+      "text": "year. Where do things",
+      "words": [
+        {
+          "word": "year.",
+          "start": 33.78,
+          "end": 34.14
+        },
+        {
+          "word": "Where",
+          "start": 34.72,
+          "end": 34.78
+        },
+        {
+          "word": "do",
+          "start": 34.78,
+          "end": 34.9
+        },
+        {
+          "word": "things",
+          "start": 34.9,
+          "end": 35.04
+        }
+      ]
+    },
+    {
+      "start": 35.04,
+      "end": 35.76,
+      "text": "stand now?",
+      "words": [
+        {
+          "word": "stand",
+          "start": 35.04,
+          "end": 35.42
+        },
+        {
+          "word": "now?",
+          "start": 35.42,
+          "end": 35.76
+        }
+      ]
+    },
+    {
+      "start": 37.22,
+      "end": 38.16,
+      "text": "Well Morgan, most of",
+      "words": [
+        {
+          "word": "Well",
+          "start": 37.22,
+          "end": 37.34
+        },
+        {
+          "word": "Morgan,",
+          "start": 37.34,
+          "end": 37.64
+        },
+        {
+          "word": "most",
+          "start": 37.84,
+          "end": 37.98
+        },
+        {
+          "word": "of",
+          "start": 37.98,
+          "end": 38.16
+        }
+      ]
+    },
+    {
+      "start": 38.16,
+      "end": 38.8,
+      "text": "the homes and",
+      "words": [
+        {
+          "word": "the",
+          "start": 38.16,
+          "end": 38.34
+        },
+        {
+          "word": "homes",
+          "start": 38.34,
+          "end": 38.58
+        },
+        {
+          "word": "and",
+          "start": 38.58,
+          "end": 38.8
+        }
+      ]
+    },
+    {
+      "start": 38.8,
+      "end": 40.02,
+      "text": "businesses have been",
+      "words": [
+        {
+          "word": "businesses",
+          "start": 38.8,
+          "end": 39.22
+        },
+        {
+          "word": "have",
+          "start": 39.22,
+          "end": 39.76
+        },
+        {
+          "word": "been",
+          "start": 39.76,
+          "end": 40.02
+        }
+      ]
+    },
+    {
+      "start": 40.02,
+      "end": 40.94,
+      "text": "rebuilt. But there are",
+      "words": [
+        {
+          "word": "rebuilt.",
+          "start": 40.02,
+          "end": 40.46
+        },
+        {
+          "word": "But",
+          "start": 40.64,
+          "end": 40.66
+        },
+        {
+          "word": "there",
+          "start": 40.66,
+          "end": 40.8
+        },
+        {
+          "word": "are",
+          "start": 40.8,
+          "end": 40.94
+        }
+      ]
+    },
+    {
+      "start": 40.94,
+      "end": 42.0,
+      "text": "a few of them like this",
+      "words": [
+        {
+          "word": "a",
+          "start": 40.94,
+          "end": 41.1
+        },
+        {
+          "word": "few",
+          "start": 41.1,
+          "end": 41.3
+        },
+        {
+          "word": "of",
+          "start": 41.3,
+          "end": 41.4
+        },
+        {
+          "word": "them",
+          "start": 41.4,
+          "end": 41.6
+        },
+        {
+          "word": "like",
+          "start": 41.6,
+          "end": 41.76
+        },
+        {
+          "word": "this",
+          "start": 41.76,
+          "end": 42.0
+        }
+      ]
+    },
+    {
+      "start": 42.0,
+      "end": 43.78,
+      "text": "house off of Route 66",
+      "words": [
+        {
+          "word": "house",
+          "start": 42.0,
+          "end": 42.32
+        },
+        {
+          "word": "off",
+          "start": 42.32,
+          "end": 42.82
+        },
+        {
+          "word": "of",
+          "start": 42.82,
+          "end": 43.0
+        },
+        {
+          "word": "Route",
+          "start": 43.0,
+          "end": 43.12
+        },
+        {
+          "word": "66",
+          "start": 43.12,
+          "end": 43.78
+        }
+      ]
+    },
+    {
+      "start": 43.78,
+      "end": 45.16,
+      "text": "that remain virtually",
+      "words": [
+        {
+          "word": "that",
+          "start": 43.78,
+          "end": 44.12
+        },
+        {
+          "word": "remain",
+          "start": 44.12,
+          "end": 44.44
+        },
+        {
+          "word": "virtually",
+          "start": 44.44,
+          "end": 45.16
+        }
+      ]
+    },
+    {
+      "start": 45.16,
+      "end": 46.5,
+      "text": "untouched. Debris",
+      "words": [
+        {
+          "word": "untouched.",
+          "start": 45.16,
+          "end": 45.74
+        },
+        {
+          "word": "Debris",
+          "start": 46.28,
+          "end": 46.5
+        }
+      ]
+    },
+    {
+      "start": 46.5,
+      "end": 47.36,
+      "text": "still throughout the",
+      "words": [
+        {
+          "word": "still",
+          "start": 46.5,
+          "end": 46.82
+        },
+        {
+          "word": "throughout",
+          "start": 46.82,
+          "end": 47.16
+        },
+        {
+          "word": "the",
+          "start": 47.16,
+          "end": 47.36
+        }
+      ]
+    },
+    {
+      "start": 47.36,
+      "end": 48.16,
+      "text": "yard. You can see",
+      "words": [
+        {
+          "word": "yard.",
+          "start": 47.36,
+          "end": 47.62
+        },
+        {
+          "word": "You",
+          "start": 47.74,
+          "end": 47.78
+        },
+        {
+          "word": "can",
+          "start": 47.78,
+          "end": 47.94
+        },
+        {
+          "word": "see",
+          "start": 47.94,
+          "end": 48.16
+        }
+      ]
+    },
+    {
+      "start": 48.16,
+      "end": 49.62,
+      "text": "this garage door is",
+      "words": [
+        {
+          "word": "this",
+          "start": 48.16,
+          "end": 48.66
+        },
+        {
+          "word": "garage",
+          "start": 48.66,
+          "end": 49.08
+        },
+        {
+          "word": "door",
+          "start": 49.08,
+          "end": 49.42
+        },
+        {
+          "word": "is",
+          "start": 49.42,
+          "end": 49.62
+        }
+      ]
+    },
+    {
+      "start": 49.62,
+      "end": 50.56,
+      "text": "still wrapped around",
+      "words": [
+        {
+          "word": "still",
+          "start": 49.62,
+          "end": 49.84
+        },
+        {
+          "word": "wrapped",
+          "start": 49.84,
+          "end": 50.24
+        },
+        {
+          "word": "around",
+          "start": 50.24,
+          "end": 50.56
+        }
+      ]
+    },
+    {
+      "start": 50.56,
+      "end": 51.92,
+      "text": "a fence. It looks as",
+      "words": [
+        {
+          "word": "a",
+          "start": 50.56,
+          "end": 50.76
+        },
+        {
+          "word": "fence.",
+          "start": 50.76,
+          "end": 51.04
+        },
+        {
+          "word": "It",
+          "start": 51.4,
+          "end": 51.48
+        },
+        {
+          "word": "looks",
+          "start": 51.48,
+          "end": 51.72
+        },
+        {
+          "word": "as",
+          "start": 51.72,
+          "end": 51.92
+        }
+      ]
+    },
+    {
+      "start": 51.92,
+      "end": 53.12,
+      "text": "if the tornado were",
+      "words": [
+        {
+          "word": "if",
+          "start": 51.92,
+          "end": 52.08
+        },
+        {
+          "word": "the",
+          "start": 52.08,
+          "end": 52.2
+        },
+        {
+          "word": "tornado",
+          "start": 52.2,
+          "end": 52.6
+        },
+        {
+          "word": "were",
+          "start": 52.6,
+          "end": 53.12
+        }
+      ]
+    },
+    {
+      "start": 53.12,
+      "end": 53.84,
+      "text": "just yesterday.",
+      "words": [
+        {
+          "word": "just",
+          "start": 53.12,
+          "end": 53.42
+        },
+        {
+          "word": "yesterday.",
+          "start": 53.42,
+          "end": 53.84
+        }
+      ]
+    },
+    {
+      "start": 55.8,
+      "end": 56.62,
+      "text": "It's just heart",
+      "words": [
+        {
+          "word": "It's",
+          "start": 55.8,
+          "end": 56.28
+        },
+        {
+          "word": "just",
+          "start": 56.28,
+          "end": 56.38
+        },
+        {
+          "word": "heart",
+          "start": 56.38,
+          "end": 56.62
+        }
+      ]
+    },
+    {
+      "start": 56.62,
+      "end": 62.26,
+      "text": "to see. We had a lot of loss in El Reno. The mayor of El Reno says the loss of lives",
+      "words": [
+        {
+          "word": "to",
+          "start": 56.62,
+          "end": 57.0
+        },
+        {
+          "word": "see.",
+          "start": 57.0,
+          "end": 57.3
+        },
+        {
+          "word": "We",
+          "start": 58.56,
+          "end": 58.58
+        },
+        {
+          "word": "had",
+          "start": 58.58,
+          "end": 58.74
+        },
+        {
+          "word": "a",
+          "start": 58.74,
+          "end": 58.82
+        },
+        {
+          "word": "lot",
+          "start": 58.82,
+          "end": 58.96
+        },
+        {
+          "word": "of",
+          "start": 58.96,
+          "end": 59.06
+        },
+        {
+          "word": "loss",
+          "start": 59.06,
+          "end": 59.32
+        },
+        {
+          "word": "in",
+          "start": 59.32,
+          "end": 59.54
+        },
+        {
+          "word": "El",
+          "start": 59.54,
+          "end": 59.64
+        },
+        {
+          "word": "Reno.",
+          "start": 59.64,
+          "end": 59.82
+        },
+        {
+          "word": "The",
+          "start": 59.98,
+          "end": 59.98
+        },
+        {
+          "word": "mayor",
+          "start": 59.98,
+          "end": 60.2
+        },
+        {
+          "word": "of",
+          "start": 60.2,
+          "end": 60.34
+        },
+        {
+          "word": "El",
+          "start": 60.34,
+          "end": 60.48
+        },
+        {
+          "word": "Reno",
+          "start": 60.48,
+          "end": 60.76
+        },
+        {
+          "word": "says",
+          "start": 60.76,
+          "end": 61.14
+        },
+        {
+          "word": "the",
+          "start": 61.14,
+          "end": 61.38
+        },
+        {
+          "word": "loss",
+          "start": 61.38,
+          "end": 61.64
+        },
+        {
+          "word": "of",
+          "start": 61.64,
+          "end": 61.86
+        },
+        {
+          "word": "lives",
+          "start": 61.86,
+          "end": 62.26
+        }
+      ]
+    },
+    {
+      "start": 62.26,
+      "end": 66.5,
+      "text": "forever changed this small community. This house is completely gone. Four storm chasers",
+      "words": [
+        {
+          "word": "forever",
+          "start": 62.26,
+          "end": 62.76
+        },
+        {
+          "word": "changed",
+          "start": 62.76,
+          "end": 63.28
+        },
+        {
+          "word": "this",
+          "start": 63.28,
+          "end": 63.56
+        },
+        {
+          "word": "small",
+          "start": 63.56,
+          "end": 63.9
+        },
+        {
+          "word": "community.",
+          "start": 63.9,
+          "end": 64.26
+        },
+        {
+          "word": "This",
+          "start": 64.62,
+          "end": 64.76
+        },
+        {
+          "word": "house",
+          "start": 64.76,
+          "end": 64.96
+        },
+        {
+          "word": "is",
+          "start": 64.96,
+          "end": 65.12
+        },
+        {
+          "word": "completely",
+          "start": 65.12,
+          "end": 65.3
+        },
+        {
+          "word": "gone.",
+          "start": 65.3,
+          "end": 65.54
+        },
+        {
+          "word": "Four",
+          "start": 65.72,
+          "end": 65.72
+        },
+        {
+          "word": "storm",
+          "start": 65.72,
+          "end": 66.08
+        },
+        {
+          "word": "chasers",
+          "start": 66.08,
+          "end": 66.5
+        }
+      ]
+    },
+    {
+      "start": 66.5,
+      "end": 71.3,
+      "text": "and four others died with a tornado. Toss their cars. It's just truly unbelievable.",
+      "words": [
+        {
+          "word": "and",
+          "start": 66.5,
+          "end": 66.8
+        },
+        {
+          "word": "four",
+          "start": 66.8,
+          "end": 67.04
+        },
+        {
+          "word": "others",
+          "start": 67.04,
+          "end": 67.4
+        },
+        {
+          "word": "died",
+          "start": 67.4,
+          "end": 67.8
+        },
+        {
+          "word": "with",
+          "start": 67.8,
+          "end": 68.08
+        },
+        {
+          "word": "a",
+          "start": 68.08,
+          "end": 68.24
+        },
+        {
+          "word": "tornado.",
+          "start": 68.24,
+          "end": 68.72
+        },
+        {
+          "word": "Toss",
+          "start": 69.18,
+          "end": 69.26
+        },
+        {
+          "word": "their",
+          "start": 69.26,
+          "end": 69.52
+        },
+        {
+          "word": "cars.",
+          "start": 69.52,
+          "end": 69.88
+        },
+        {
+          "word": "It's",
+          "start": 70.28,
+          "end": 70.46
+        },
+        {
+          "word": "just",
+          "start": 70.46,
+          "end": 70.54
+        },
+        {
+          "word": "truly",
+          "start": 70.54,
+          "end": 70.8
+        },
+        {
+          "word": "unbelievable.",
+          "start": 70.8,
+          "end": 71.3
+        }
+      ]
+    },
+    {
+      "start": 71.7,
+      "end": 75.58,
+      "text": "Multiple vortex tornado on the ground. Matt White says many more lives could have been",
+      "words": [
+        {
+          "word": "Multiple",
+          "start": 71.7,
+          "end": 71.7
+        },
+        {
+          "word": "vortex",
+          "start": 71.7,
+          "end": 72.12
+        },
+        {
+          "word": "tornado",
+          "start": 72.12,
+          "end": 72.5
+        },
+        {
+          "word": "on",
+          "start": 72.5,
+          "end": 72.86
+        },
+        {
+          "word": "the",
+          "start": 72.86,
+          "end": 73.04
+        },
+        {
+          "word": "ground.",
+          "start": 73.04,
+          "end": 73.3
+        },
+        {
+          "word": "Matt",
+          "start": 73.68,
+          "end": 73.68
+        },
+        {
+          "word": "White",
+          "start": 73.68,
+          "end": 73.9
+        },
+        {
+          "word": "says",
+          "start": 73.9,
+          "end": 74.16
+        },
+        {
+          "word": "many",
+          "start": 74.16,
+          "end": 74.48
+        },
+        {
+          "word": "more",
+          "start": 74.48,
+          "end": 74.74
+        },
+        {
+          "word": "lives",
+          "start": 74.74,
+          "end": 75.04
+        },
+        {
+          "word": "could",
+          "start": 75.04,
+          "end": 75.3
+        },
+        {
+          "word": "have",
+          "start": 75.3,
+          "end": 75.42
+        },
+        {
+          "word": "been",
+          "start": 75.42,
+          "end": 75.58
+        }
+      ]
+    },
+    {
+      "start": 75.58,
+      "end": 80.12,
+      "text": "lost were it not for the early warnings, an unusual storm track. If it was one",
+      "words": [
+        {
+          "word": "lost",
+          "start": 75.58,
+          "end": 76.08
+        },
+        {
+          "word": "were",
+          "start": 76.08,
+          "end": 76.38
+        },
+        {
+          "word": "it",
+          "start": 76.38,
+          "end": 76.52
+        },
+        {
+          "word": "not",
+          "start": 76.52,
+          "end": 76.64
+        },
+        {
+          "word": "for",
+          "start": 76.64,
+          "end": 76.82
+        },
+        {
+          "word": "the",
+          "start": 76.82,
+          "end": 76.94
+        },
+        {
+          "word": "early",
+          "start": 76.94,
+          "end": 77.24
+        },
+        {
+          "word": "warnings,",
+          "start": 77.24,
+          "end": 77.78
+        },
+        {
+          "word": "an",
+          "start": 78.08,
+          "end": 78.16
+        },
+        {
+          "word": "unusual",
+          "start": 78.16,
+          "end": 78.56
+        },
+        {
+          "word": "storm",
+          "start": 78.56,
+          "end": 79.16
+        },
+        {
+          "word": "track.",
+          "start": 79.16,
+          "end": 79.52
+        },
+        {
+          "word": "If",
+          "start": 79.6,
+          "end": 79.68
+        },
+        {
+          "word": "it",
+          "start": 79.68,
+          "end": 79.76
+        },
+        {
+          "word": "was",
+          "start": 79.76,
+          "end": 79.86
+        },
+        {
+          "word": "one",
+          "start": 79.86,
+          "end": 80.12
+        }
+      ]
+    },
+    {
+      "start": 80.12,
+      "end": 84.12,
+      "text": "more mile over it would have took the whole community of El Reno out. Homes, the stock",
+      "words": [
+        {
+          "word": "more",
+          "start": 80.12,
+          "end": 80.26
+        },
+        {
+          "word": "mile",
+          "start": 80.26,
+          "end": 80.46
+        },
+        {
+          "word": "over",
+          "start": 80.46,
+          "end": 80.76
+        },
+        {
+          "word": "it",
+          "start": 80.76,
+          "end": 80.9
+        },
+        {
+          "word": "would",
+          "start": 80.9,
+          "end": 81.04
+        },
+        {
+          "word": "have",
+          "start": 81.04,
+          "end": 81.16
+        },
+        {
+          "word": "took",
+          "start": 81.16,
+          "end": 81.36
+        },
+        {
+          "word": "the",
+          "start": 81.36,
+          "end": 81.56
+        },
+        {
+          "word": "whole",
+          "start": 81.56,
+          "end": 81.82
+        },
+        {
+          "word": "community",
+          "start": 81.82,
+          "end": 82.28
+        },
+        {
+          "word": "of",
+          "start": 82.28,
+          "end": 82.5
+        },
+        {
+          "word": "El",
+          "start": 82.5,
+          "end": 82.62
+        },
+        {
+          "word": "Reno",
+          "start": 82.62,
+          "end": 82.78
+        },
+        {
+          "word": "out.",
+          "start": 82.78,
+          "end": 83.0
+        },
+        {
+          "word": "Homes,",
+          "start": 83.42,
+          "end": 83.42
+        },
+        {
+          "word": "the",
+          "start": 83.74,
+          "end": 83.76
+        },
+        {
+          "word": "stock",
+          "start": 83.76,
+          "end": 84.12
+        }
+      ]
+    },
+    {
+      "start": 84.12,
+      "end": 88.5,
+      "text": "The Canadian Valley Technology Center all took a direct hit.",
+      "words": [
+        {
+          "word": "The",
+          "start": 84.12,
+          "end": 84.78
+        },
+        {
+          "word": "Canadian",
+          "start": 84.78,
+          "end": 85.04
+        },
+        {
+          "word": "Valley",
+          "start": 85.04,
+          "end": 85.56
+        },
+        {
+          "word": "Technology",
+          "start": 85.56,
+          "end": 86.12
+        },
+        {
+          "word": "Center",
+          "start": 86.12,
+          "end": 86.72
+        },
+        {
+          "word": "all",
+          "start": 86.72,
+          "end": 87.32
+        },
+        {
+          "word": "took",
+          "start": 87.32,
+          "end": 87.74
+        },
+        {
+          "word": "a",
+          "start": 87.74,
+          "end": 87.9
+        },
+        {
+          "word": "direct",
+          "start": 87.9,
+          "end": 88.18
+        },
+        {
+          "word": "hit.",
+          "start": 88.18,
+          "end": 88.5
+        }
+      ]
+    },
+    {
+      "start": 88.62,
+      "end": 91.44,
+      "text": "The roof was gone. There was heavy water damage.",
+      "words": [
+        {
+          "word": "The",
+          "start": 88.62,
+          "end": 88.7
+        },
+        {
+          "word": "roof",
+          "start": 88.7,
+          "end": 88.9
+        },
+        {
+          "word": "was",
+          "start": 88.9,
+          "end": 89.18
+        },
+        {
+          "word": "gone.",
+          "start": 89.18,
+          "end": 89.52
+        },
+        {
+          "word": "There",
+          "start": 89.96,
+          "end": 89.96
+        },
+        {
+          "word": "was",
+          "start": 89.96,
+          "end": 90.1
+        },
+        {
+          "word": "heavy",
+          "start": 90.1,
+          "end": 90.66
+        },
+        {
+          "word": "water",
+          "start": 90.66,
+          "end": 90.98
+        },
+        {
+          "word": "damage.",
+          "start": 90.98,
+          "end": 91.44
+        }
+      ]
+    },
+    {
+      "start": 91.84,
+      "end": 94.28,
+      "text": "Damage at the Indian Health Center forced it to shut.",
+      "words": [
+        {
+          "word": "Damage",
+          "start": 91.84,
+          "end": 91.84
+        },
+        {
+          "word": "at",
+          "start": 91.84,
+          "end": 92.0
+        },
+        {
+          "word": "the",
+          "start": 92.0,
+          "end": 92.14
+        },
+        {
+          "word": "Indian",
+          "start": 92.14,
+          "end": 92.42
+        },
+        {
+          "word": "Health",
+          "start": 92.42,
+          "end": 92.74
+        },
+        {
+          "word": "Center",
+          "start": 92.74,
+          "end": 93.1
+        },
+        {
+          "word": "forced",
+          "start": 93.1,
+          "end": 93.66
+        },
+        {
+          "word": "it",
+          "start": 93.66,
+          "end": 93.86
+        },
+        {
+          "word": "to",
+          "start": 93.86,
+          "end": 94.02
+        },
+        {
+          "word": "shut.",
+          "start": 94.02,
+          "end": 94.28
+        }
+      ]
+    },
+    {
+      "start": 94.58,
+      "end": 97.62,
+      "text": "Today is a day of anticipation, a day of joy and excitement.",
+      "words": [
+        {
+          "word": "Today",
+          "start": 94.58,
+          "end": 94.74
+        },
+        {
+          "word": "is",
+          "start": 94.74,
+          "end": 95.0
+        },
+        {
+          "word": "a",
+          "start": 95.0,
+          "end": 95.08
+        },
+        {
+          "word": "day",
+          "start": 95.08,
+          "end": 95.24
+        },
+        {
+          "word": "of",
+          "start": 95.24,
+          "end": 95.38
+        },
+        {
+          "word": "anticipation,",
+          "start": 95.38,
+          "end": 95.94
+        },
+        {
+          "word": "a",
+          "start": 96.56,
+          "end": 96.6
+        },
+        {
+          "word": "day",
+          "start": 96.6,
+          "end": 96.76
+        },
+        {
+          "word": "of",
+          "start": 96.76,
+          "end": 96.92
+        },
+        {
+          "word": "joy",
+          "start": 96.92,
+          "end": 97.12
+        },
+        {
+          "word": "and",
+          "start": 97.12,
+          "end": 97.28
+        },
+        {
+          "word": "excitement.",
+          "start": 97.28,
+          "end": 97.62
+        }
+      ]
+    },
+    {
+      "start": 97.94,
+      "end": 100.9,
+      "text": "One year later, the Health Center is celebrating reopening.",
+      "words": [
+        {
+          "word": "One",
+          "start": 97.94,
+          "end": 98.12
+        },
+        {
+          "word": "year",
+          "start": 98.12,
+          "end": 98.28
+        },
+        {
+          "word": "later,",
+          "start": 98.28,
+          "end": 98.68
+        },
+        {
+          "word": "the",
+          "start": 98.96,
+          "end": 99.04
+        },
+        {
+          "word": "Health",
+          "start": 99.04,
+          "end": 99.24
+        },
+        {
+          "word": "Center",
+          "start": 99.24,
+          "end": 99.5
+        },
+        {
+          "word": "is",
+          "start": 99.5,
+          "end": 99.74
+        },
+        {
+          "word": "celebrating",
+          "start": 99.74,
+          "end": 100.28
+        },
+        {
+          "word": "reopening.",
+          "start": 100.28,
+          "end": 100.9
+        }
+      ]
+    },
+    {
+      "start": 101.22,
+      "end": 105.8,
+      "text": "Most of the people have all stayed. They're building back. They want to be here.",
+      "words": [
+        {
+          "word": "Most",
+          "start": 101.22,
+          "end": 101.36
+        },
+        {
+          "word": "of",
+          "start": 101.36,
+          "end": 101.52
+        },
+        {
+          "word": "the",
+          "start": 101.52,
+          "end": 101.6
+        },
+        {
+          "word": "people",
+          "start": 101.6,
+          "end": 101.8
+        },
+        {
+          "word": "have",
+          "start": 101.8,
+          "end": 102.32
+        },
+        {
+          "word": "all",
+          "start": 102.32,
+          "end": 102.54
+        },
+        {
+          "word": "stayed.",
+          "start": 102.54,
+          "end": 102.96
+        },
+        {
+          "word": "They're",
+          "start": 103.62,
+          "end": 103.68
+        },
+        {
+          "word": "building",
+          "start": 103.68,
+          "end": 103.88
+        },
+        {
+          "word": "back.",
+          "start": 103.88,
+          "end": 104.3
+        },
+        {
+          "word": "They",
+          "start": 104.82,
+          "end": 105.02
+        },
+        {
+          "word": "want",
+          "start": 105.02,
+          "end": 105.28
+        },
+        {
+          "word": "to",
+          "start": 105.28,
+          "end": 105.4
+        },
+        {
+          "word": "be",
+          "start": 105.4,
+          "end": 105.52
+        },
+        {
+          "word": "here.",
+          "start": 105.52,
+          "end": 105.8
+        }
+      ]
+    },
+    {
+      "start": 106.06,
+      "end": 109.36,
+      "text": "You can see all the new construction on the new roofs or the completed roofs.",
+      "words": [
+        {
+          "word": "You",
+          "start": 106.06,
+          "end": 106.16
+        },
+        {
+          "word": "can",
+          "start": 106.16,
+          "end": 106.28
+        },
+        {
+          "word": "see",
+          "start": 106.28,
+          "end": 106.4
+        },
+        {
+          "word": "all",
+          "start": 106.4,
+          "end": 106.5
+        },
+        {
+          "word": "the",
+          "start": 106.5,
+          "end": 106.6
+        },
+        {
+          "word": "new",
+          "start": 106.6,
+          "end": 106.74
+        },
+        {
+          "word": "construction",
+          "start": 106.74,
+          "end": 107.12
+        },
+        {
+          "word": "on",
+          "start": 107.12,
+          "end": 107.48
+        },
+        {
+          "word": "the",
+          "start": 107.48,
+          "end": 107.54
+        },
+        {
+          "word": "new",
+          "start": 107.54,
+          "end": 107.7
+        },
+        {
+          "word": "roofs",
+          "start": 107.7,
+          "end": 108.0
+        },
+        {
+          "word": "or",
+          "start": 108.0,
+          "end": 108.6
+        },
+        {
+          "word": "the",
+          "start": 108.6,
+          "end": 108.68
+        },
+        {
+          "word": "completed",
+          "start": 108.68,
+          "end": 108.96
+        },
+        {
+          "word": "roofs.",
+          "start": 108.96,
+          "end": 109.36
+        }
+      ]
+    },
+    {
+      "start": 109.82,
+      "end": 112.6,
+      "text": "There was at least 30 houses that were affected.",
+      "words": [
+        {
+          "word": "There",
+          "start": 109.82,
+          "end": 109.9
+        },
+        {
+          "word": "was",
+          "start": 109.9,
+          "end": 110.08
+        },
+        {
+          "word": "at",
+          "start": 110.08,
+          "end": 110.24
+        },
+        {
+          "word": "least",
+          "start": 110.24,
+          "end": 110.68
+        },
+        {
+          "word": "30",
+          "start": 110.68,
+          "end": 111.12
+        },
+        {
+          "word": "houses",
+          "start": 111.12,
+          "end": 111.62
+        },
+        {
+          "word": "that",
+          "start": 111.62,
+          "end": 112.06
+        },
+        {
+          "word": "were",
+          "start": 112.06,
+          "end": 112.24
+        },
+        {
+          "word": "affected.",
+          "start": 112.24,
+          "end": 112.6
+        }
+      ]
+    },
+    {
+      "start": 112.6,
+      "end": 114.44,
+      "text": "no one in our neighborhood",
+      "words": [
+        {
+          "word": "no",
+          "start": 112.6,
+          "end": 113.5
+        },
+        {
+          "word": "one",
+          "start": 113.5,
+          "end": 113.78
+        },
+        {
+          "word": "in",
+          "start": 113.78,
+          "end": 113.92
+        },
+        {
+          "word": "our",
+          "start": 113.92,
+          "end": 114.08
+        },
+        {
+          "word": "neighborhood",
+          "start": 114.08,
+          "end": 114.44
+        }
+      ]
+    },
+    {
+      "start": 114.44,
+      "end": 115.6,
+      "text": "think God was hurt.\"",
+      "words": [
+        {
+          "word": "think",
+          "start": 114.44,
+          "end": 114.74
+        },
+        {
+          "word": "God",
+          "start": 114.74,
+          "end": 114.98
+        },
+        {
+          "word": "was",
+          "start": 114.98,
+          "end": 115.16
+        },
+        {
+          "word": "hurt.\"",
+          "start": 115.16,
+          "end": 115.6
+        }
+      ]
+    },
+    {
+      "start": 115.6,
+      "end": 116.64,
+      "text": "Like many of his neighbors,",
+      "words": [
+        {
+          "word": "Like",
+          "start": 115.6,
+          "end": 115.68
+        },
+        {
+          "word": "many",
+          "start": 115.68,
+          "end": 115.92
+        },
+        {
+          "word": "of",
+          "start": 115.92,
+          "end": 116.12
+        },
+        {
+          "word": "his",
+          "start": 116.12,
+          "end": 116.28
+        },
+        {
+          "word": "neighbors,",
+          "start": 116.28,
+          "end": 116.64
+        }
+      ]
+    },
+    {
+      "start": 117.02,
+      "end": 118.06,
+      "text": "Fred Horn is still in the",
+      "words": [
+        {
+          "word": "Fred",
+          "start": 117.02,
+          "end": 117.12
+        },
+        {
+          "word": "Horn",
+          "start": 117.12,
+          "end": 117.46
+        },
+        {
+          "word": "is",
+          "start": 117.46,
+          "end": 117.62
+        },
+        {
+          "word": "still",
+          "start": 117.62,
+          "end": 117.86
+        },
+        {
+          "word": "in",
+          "start": 117.86,
+          "end": 117.96
+        },
+        {
+          "word": "the",
+          "start": 117.96,
+          "end": 118.06
+        }
+      ]
+    },
+    {
+      "start": 118.06,
+      "end": 119.06,
+      "text": "process of rebuilding.",
+      "words": [
+        {
+          "word": "process",
+          "start": 118.06,
+          "end": 118.4
+        },
+        {
+          "word": "of",
+          "start": 118.4,
+          "end": 118.6
+        },
+        {
+          "word": "rebuilding.",
+          "start": 118.6,
+          "end": 119.06
+        }
+      ]
+    },
+    {
+      "start": 119.76,
+      "end": 121.26,
+      "text": "He's lived here for 35",
+      "words": [
+        {
+          "word": "He's",
+          "start": 119.76,
+          "end": 119.98
+        },
+        {
+          "word": "lived",
+          "start": 119.98,
+          "end": 120.14
+        },
+        {
+          "word": "here",
+          "start": 120.14,
+          "end": 120.48
+        },
+        {
+          "word": "for",
+          "start": 120.48,
+          "end": 120.78
+        },
+        {
+          "word": "35",
+          "start": 120.78,
+          "end": 121.26
+        }
+      ]
+    },
+    {
+      "start": 121.26,
+      "end": 121.8,
+      "text": "years.",
+      "words": [
+        {
+          "word": "years.",
+          "start": 121.26,
+          "end": 121.8
+        }
+      ]
+    },
+    {
+      "start": 125.94,
+      "end": 127.26,
+      "text": "And Fred wrote out that",
+      "words": [
+        {
+          "word": "And",
+          "start": 125.94,
+          "end": 126.42
+        },
+        {
+          "word": "Fred",
+          "start": 126.42,
+          "end": 126.64
+        },
+        {
+          "word": "wrote",
+          "start": 126.64,
+          "end": 126.86
+        },
+        {
+          "word": "out",
+          "start": 126.86,
+          "end": 127.08
+        },
+        {
+          "word": "that",
+          "start": 127.08,
+          "end": 127.26
+        }
+      ]
+    },
+    {
+      "start": 127.26,
+      "end": 128.72,
+      "text": "record tornado while his",
+      "words": [
+        {
+          "word": "record",
+          "start": 127.26,
+          "end": 127.76
+        },
+        {
+          "word": "tornado",
+          "start": 127.76,
+          "end": 128.28
+        },
+        {
+          "word": "while",
+          "start": 128.28,
+          "end": 128.54
+        },
+        {
+          "word": "his",
+          "start": 128.54,
+          "end": 128.72
+        }
+      ]
+    },
+    {
+      "start": 128.72,
+      "end": 130.08,
+      "text": "home was wiped away.",
+      "words": [
+        {
+          "word": "home",
+          "start": 128.72,
+          "end": 129.04
+        },
+        {
+          "word": "was",
+          "start": 129.04,
+          "end": 129.28
+        },
+        {
+          "word": "wiped",
+          "start": 129.28,
+          "end": 129.7
+        },
+        {
+          "word": "away.",
+          "start": 129.7,
+          "end": 130.08
+        }
+      ]
+    },
+    {
+      "start": 130.26,
+      "end": 131.24,
+      "text": "Coming up tonight at 6",
+      "words": [
+        {
+          "word": "Coming",
+          "start": 130.26,
+          "end": 130.38
+        },
+        {
+          "word": "up",
+          "start": 130.38,
+          "end": 130.6
+        },
+        {
+          "word": "tonight",
+          "start": 130.6,
+          "end": 130.84
+        },
+        {
+          "word": "at",
+          "start": 130.84,
+          "end": 131.0
+        },
+        {
+          "word": "6",
+          "start": 131.0,
+          "end": 131.24
+        }
+      ]
+    },
+    {
+      "start": 131.24,
+      "end": 132.48,
+      "text": "we'll have his story of",
+      "words": [
+        {
+          "word": "we'll",
+          "start": 131.24,
+          "end": 131.46
+        },
+        {
+          "word": "have",
+          "start": 131.46,
+          "end": 131.58
+        },
+        {
+          "word": "his",
+          "start": 131.58,
+          "end": 131.72
+        },
+        {
+          "word": "story",
+          "start": 131.72,
+          "end": 132.08
+        },
+        {
+          "word": "of",
+          "start": 132.08,
+          "end": 132.48
+        }
+      ]
+    },
+    {
+      "start": 132.48,
+      "end": 134.06,
+      "text": "survival and recovery.",
+      "words": [
+        {
+          "word": "survival",
+          "start": 132.48,
+          "end": 132.98
+        },
+        {
+          "word": "and",
+          "start": 132.98,
+          "end": 133.46
+        },
+        {
+          "word": "recovery.",
+          "start": 133.46,
+          "end": 134.06
+        }
+      ]
+    },
+    {
+      "start": 134.68,
+      "end": 135.46,
+      "text": "Live tonight, Nell Reno,",
+      "words": [
+        {
+          "word": "Live",
+          "start": 134.68,
+          "end": 134.78
+        },
+        {
+          "word": "tonight,",
+          "start": 134.78,
+          "end": 135.06
+        },
+        {
+          "word": "Nell",
+          "start": 135.18,
+          "end": 135.26
+        },
+        {
+          "word": "Reno,",
+          "start": 135.26,
+          "end": 135.46
+        }
+      ]
+    },
+    {
+      "start": 135.74,
+      "end": 138.16,
+      "text": "Kim Passoff, KOCO, 5 News.",
+      "words": [
+        {
+          "word": "Kim",
+          "start": 135.74,
+          "end": 135.78
+        },
+        {
+          "word": "Passoff,",
+          "start": 135.78,
+          "end": 136.3
+        },
+        {
+          "word": "KOCO,",
+          "start": 136.44,
+          "end": 137.08
+        },
+        {
+          "word": "5",
+          "start": 137.64,
+          "end": 137.86
+        },
+        {
+          "word": "News.",
+          "start": 137.86,
+          "end": 138.16
+        }
+      ]
+    }
+  ]
+}

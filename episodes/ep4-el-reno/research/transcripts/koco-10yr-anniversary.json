@@ -1,0 +1,71 @@
+{
+  "clip": "koco-10yr-anniversary",
+  "duration": 59.699,
+  "language": "en",
+  "segments": [
+    {
+      "start": 2.98,
+      "end": 4.38,
+      "text": "Thank you.",
+      "words": [
+        {
+          "word": "Thank",
+          "start": 2.98,
+          "end": 4.38
+        },
+        {
+          "word": "you.",
+          "start": 4.38,
+          "end": 4.38
+        }
+      ]
+    },
+    {
+      "start": 58.26,
+      "end": 59.66,
+      "text": "Thank you so much for joining us today.",
+      "words": [
+        {
+          "word": "Thank",
+          "start": 58.26,
+          "end": 59.66
+        },
+        {
+          "word": "you",
+          "start": 59.66,
+          "end": 59.66
+        },
+        {
+          "word": "so",
+          "start": 59.66,
+          "end": 59.66
+        },
+        {
+          "word": "much",
+          "start": 59.66,
+          "end": 59.66
+        },
+        {
+          "word": "for",
+          "start": 59.66,
+          "end": 59.66
+        },
+        {
+          "word": "joining",
+          "start": 59.66,
+          "end": 59.66
+        },
+        {
+          "word": "us",
+          "start": 59.66,
+          "end": 59.66
+        },
+        {
+          "word": "today.",
+          "start": 59.66,
+          "end": 59.66
+        }
+      ]
+    }
+  ]
+}

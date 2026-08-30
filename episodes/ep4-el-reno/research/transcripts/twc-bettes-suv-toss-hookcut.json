@@ -1,0 +1,69 @@
+{
+  "clip": "twc-bettes-suv-toss-hookcut",
+  "duration": 3.52,
+  "language": "en",
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.3,
+      "text": "Miles Y, and is heading right at Betis and his team.",
+      "words": [
+        {
+          "word": "Miles",
+          "start": 0.0,
+          "end": 0.26
+        },
+        {
+          "word": "Y,",
+          "start": 0.26,
+          "end": 0.62
+        },
+        {
+          "word": "and",
+          "start": 1.06,
+          "end": 1.2
+        },
+        {
+          "word": "is",
+          "start": 1.2,
+          "end": 1.34
+        },
+        {
+          "word": "heading",
+          "start": 1.34,
+          "end": 1.62
+        },
+        {
+          "word": "right",
+          "start": 1.62,
+          "end": 2.04
+        },
+        {
+          "word": "at",
+          "start": 2.04,
+          "end": 2.36
+        },
+        {
+          "word": "Betis",
+          "start": 2.36,
+          "end": 2.7
+        },
+        {
+          "word": "and",
+          "start": 2.7,
+          "end": 2.88
+        },
+        {
+          "word": "his",
+          "start": 2.88,
+          "end": 3.02
+        },
+        {
+          "word": "team.",
+          "start": 3.02,
+          "end": 3.3
+        }
+      ]
+    }
+  ]
+}

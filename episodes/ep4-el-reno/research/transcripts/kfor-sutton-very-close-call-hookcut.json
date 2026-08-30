@@ -1,0 +1,74 @@
+{
+  "clip": "kfor-sutton-very-close-call-hookcut",
+  "duration": 4.011,
+  "language": "en",
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.36,
+      "text": "please do not ride this out in any interior closet or bathroom",
+      "words": [
+        {
+          "word": "please",
+          "start": 0.0,
+          "end": 0.38
+        },
+        {
+          "word": "do",
+          "start": 0.38,
+          "end": 0.68
+        },
+        {
+          "word": "not",
+          "start": 0.68,
+          "end": 0.88
+        },
+        {
+          "word": "ride",
+          "start": 0.88,
+          "end": 1.12
+        },
+        {
+          "word": "this",
+          "start": 1.12,
+          "end": 1.3
+        },
+        {
+          "word": "out",
+          "start": 1.3,
+          "end": 1.54
+        },
+        {
+          "word": "in",
+          "start": 1.54,
+          "end": 1.72
+        },
+        {
+          "word": "any",
+          "start": 1.72,
+          "end": 2.0
+        },
+        {
+          "word": "interior",
+          "start": 2.0,
+          "end": 2.3
+        },
+        {
+          "word": "closet",
+          "start": 2.3,
+          "end": 2.68
+        },
+        {
+          "word": "or",
+          "start": 2.68,
+          "end": 2.92
+        },
+        {
+          "word": "bathroom",
+          "start": 2.92,
+          "end": 3.36
+        }
+      ]
+    }
+  ]
+}

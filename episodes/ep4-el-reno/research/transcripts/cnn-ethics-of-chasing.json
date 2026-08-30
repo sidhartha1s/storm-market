@@ -1,0 +1,1985 @@
+{
+  "clip": "cnn-ethics-of-chasing",
+  "duration": 114.869,
+  "language": "en",
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.92,
+      "text": "Because you're watching mother nature at work and all the associated dynamics, it's fantastic.",
+      "words": [
+        {
+          "word": "Because",
+          "start": 0.0,
+          "end": 0.3
+        },
+        {
+          "word": "you're",
+          "start": 0.3,
+          "end": 0.56
+        },
+        {
+          "word": "watching",
+          "start": 0.56,
+          "end": 0.82
+        },
+        {
+          "word": "mother",
+          "start": 0.82,
+          "end": 1.1
+        },
+        {
+          "word": "nature",
+          "start": 1.1,
+          "end": 1.48
+        },
+        {
+          "word": "at",
+          "start": 1.48,
+          "end": 1.68
+        },
+        {
+          "word": "work",
+          "start": 1.68,
+          "end": 1.96
+        },
+        {
+          "word": "and",
+          "start": 1.96,
+          "end": 2.44
+        },
+        {
+          "word": "all",
+          "start": 2.44,
+          "end": 2.58
+        },
+        {
+          "word": "the",
+          "start": 2.58,
+          "end": 2.74
+        },
+        {
+          "word": "associated",
+          "start": 2.74,
+          "end": 3.24
+        },
+        {
+          "word": "dynamics,",
+          "start": 3.24,
+          "end": 3.9
+        },
+        {
+          "word": "it's",
+          "start": 4.32,
+          "end": 4.92
+        },
+        {
+          "word": "fantastic.",
+          "start": 4.92,
+          "end": 4.92
+        }
+      ]
+    },
+    {
+      "start": 5.52,
+      "end": 6.8,
+      "text": "It's absolutely fantastic.",
+      "words": [
+        {
+          "word": "It's",
+          "start": 5.52,
+          "end": 5.68
+        },
+        {
+          "word": "absolutely",
+          "start": 5.68,
+          "end": 6.12
+        },
+        {
+          "word": "fantastic.",
+          "start": 6.12,
+          "end": 6.8
+        }
+      ]
+    },
+    {
+      "start": 7.3,
+      "end": 10.46,
+      "text": "A veteran storm chaser, Tim Samaras, made a living getting inside the storm,",
+      "words": [
+        {
+          "word": "A",
+          "start": 7.3,
+          "end": 7.32
+        },
+        {
+          "word": "veteran",
+          "start": 7.32,
+          "end": 7.5
+        },
+        {
+          "word": "storm",
+          "start": 7.5,
+          "end": 7.78
+        },
+        {
+          "word": "chaser,",
+          "start": 7.78,
+          "end": 8.12
+        },
+        {
+          "word": "Tim",
+          "start": 8.32,
+          "end": 8.38
+        },
+        {
+          "word": "Samaras,",
+          "start": 8.38,
+          "end": 8.8
+        },
+        {
+          "word": "made",
+          "start": 8.82,
+          "end": 8.96
+        },
+        {
+          "word": "a",
+          "start": 8.96,
+          "end": 9.08
+        },
+        {
+          "word": "living",
+          "start": 9.08,
+          "end": 9.26
+        },
+        {
+          "word": "getting",
+          "start": 9.26,
+          "end": 9.48
+        },
+        {
+          "word": "inside",
+          "start": 9.48,
+          "end": 9.92
+        },
+        {
+          "word": "the",
+          "start": 9.92,
+          "end": 10.1
+        },
+        {
+          "word": "storm,",
+          "start": 10.1,
+          "end": 10.46
+        }
+      ]
+    },
+    {
+      "start": 10.84,
+      "end": 14.38,
+      "text": "studying tornadoes and their fury for the past 25 years.",
+      "words": [
+        {
+          "word": "studying",
+          "start": 10.84,
+          "end": 11.22
+        },
+        {
+          "word": "tornadoes",
+          "start": 11.22,
+          "end": 11.72
+        },
+        {
+          "word": "and",
+          "start": 11.72,
+          "end": 12.06
+        },
+        {
+          "word": "their",
+          "start": 12.06,
+          "end": 12.22
+        },
+        {
+          "word": "fury",
+          "start": 12.22,
+          "end": 12.52
+        },
+        {
+          "word": "for",
+          "start": 12.52,
+          "end": 12.82
+        },
+        {
+          "word": "the",
+          "start": 12.82,
+          "end": 12.94
+        },
+        {
+          "word": "past",
+          "start": 12.94,
+          "end": 13.18
+        },
+        {
+          "word": "25",
+          "start": 13.18,
+          "end": 13.88
+        },
+        {
+          "word": "years.",
+          "start": 13.88,
+          "end": 14.38
+        }
+      ]
+    },
+    {
+      "start": 14.68,
+      "end": 16.96,
+      "text": "The safest place to be is right here in this vehicle.",
+      "words": [
+        {
+          "word": "The",
+          "start": 14.68,
+          "end": 14.78
+        },
+        {
+          "word": "safest",
+          "start": 14.78,
+          "end": 14.98
+        },
+        {
+          "word": "place",
+          "start": 14.98,
+          "end": 15.34
+        },
+        {
+          "word": "to",
+          "start": 15.34,
+          "end": 15.54
+        },
+        {
+          "word": "be",
+          "start": 15.54,
+          "end": 15.7
+        },
+        {
+          "word": "is",
+          "start": 15.7,
+          "end": 15.82
+        },
+        {
+          "word": "right",
+          "start": 15.82,
+          "end": 16.04
+        },
+        {
+          "word": "here",
+          "start": 16.04,
+          "end": 16.3
+        },
+        {
+          "word": "in",
+          "start": 16.3,
+          "end": 16.46
+        },
+        {
+          "word": "this",
+          "start": 16.46,
+          "end": 16.62
+        },
+        {
+          "word": "vehicle.",
+          "start": 16.62,
+          "end": 16.96
+        }
+      ]
+    },
+    {
+      "start": 17.32,
+      "end": 20.74,
+      "text": "The 54-year-old researcher and two others from his team, including his son,",
+      "words": [
+        {
+          "word": "The",
+          "start": 17.32,
+          "end": 17.42
+        },
+        {
+          "word": "54",
+          "start": 17.42,
+          "end": 17.78
+        },
+        {
+          "word": "-year",
+          "start": 17.78,
+          "end": 17.92
+        },
+        {
+          "word": "-old",
+          "start": 17.92,
+          "end": 18.04
+        },
+        {
+          "word": "researcher",
+          "start": 18.04,
+          "end": 18.46
+        },
+        {
+          "word": "and",
+          "start": 18.46,
+          "end": 18.76
+        },
+        {
+          "word": "two",
+          "start": 18.76,
+          "end": 18.94
+        },
+        {
+          "word": "others",
+          "start": 18.94,
+          "end": 19.18
+        },
+        {
+          "word": "from",
+          "start": 19.18,
+          "end": 19.44
+        },
+        {
+          "word": "his",
+          "start": 19.44,
+          "end": 19.6
+        },
+        {
+          "word": "team,",
+          "start": 19.6,
+          "end": 19.84
+        },
+        {
+          "word": "including",
+          "start": 20.0,
+          "end": 20.28
+        },
+        {
+          "word": "his",
+          "start": 20.28,
+          "end": 20.54
+        },
+        {
+          "word": "son,",
+          "start": 20.54,
+          "end": 20.74
+        }
+      ]
+    },
+    {
+      "start": 21.02,
+      "end": 24.82,
+      "text": "were killed Friday when a tornado crushed their vehicle near El Reno, Oklahoma.",
+      "words": [
+        {
+          "word": "were",
+          "start": 21.02,
+          "end": 21.24
+        },
+        {
+          "word": "killed",
+          "start": 21.24,
+          "end": 21.46
+        },
+        {
+          "word": "Friday",
+          "start": 21.46,
+          "end": 21.76
+        },
+        {
+          "word": "when",
+          "start": 21.76,
+          "end": 21.94
+        },
+        {
+          "word": "a",
+          "start": 21.94,
+          "end": 22.06
+        },
+        {
+          "word": "tornado",
+          "start": 22.06,
+          "end": 22.3
+        },
+        {
+          "word": "crushed",
+          "start": 22.3,
+          "end": 22.7
+        },
+        {
+          "word": "their",
+          "start": 22.7,
+          "end": 22.92
+        },
+        {
+          "word": "vehicle",
+          "start": 22.92,
+          "end": 23.36
+        },
+        {
+          "word": "near",
+          "start": 23.36,
+          "end": 23.84
+        },
+        {
+          "word": "El",
+          "start": 23.84,
+          "end": 24.06
+        },
+        {
+          "word": "Reno,",
+          "start": 24.06,
+          "end": 24.34
+        },
+        {
+          "word": "Oklahoma.",
+          "start": 24.46,
+          "end": 24.82
+        }
+      ]
+    },
+    {
+      "start": 25.48,
+      "end": 26.4,
+      "text": "His brother was shocked.",
+      "words": [
+        {
+          "word": "His",
+          "start": 25.48,
+          "end": 25.62
+        },
+        {
+          "word": "brother",
+          "start": 25.62,
+          "end": 25.84
+        },
+        {
+          "word": "was",
+          "start": 25.84,
+          "end": 26.12
+        },
+        {
+          "word": "shocked.",
+          "start": 26.12,
+          "end": 26.4
+        }
+      ]
+    },
+    {
+      "start": 26.66,
+      "end": 29.92,
+      "text": "I just couldn't ever think it would ever happen to him because of his level of expertise",
+      "words": [
+        {
+          "word": "I",
+          "start": 26.66,
+          "end": 26.78
+        },
+        {
+          "word": "just",
+          "start": 26.78,
+          "end": 26.98
+        },
+        {
+          "word": "couldn't",
+          "start": 26.98,
+          "end": 27.14
+        },
+        {
+          "word": "ever",
+          "start": 27.14,
+          "end": 27.4
+        },
+        {
+          "word": "think",
+          "start": 27.4,
+          "end": 27.58
+        },
+        {
+          "word": "it",
+          "start": 27.58,
+          "end": 27.7
+        },
+        {
+          "word": "would",
+          "start": 27.7,
+          "end": 27.76
+        },
+        {
+          "word": "ever",
+          "start": 27.76,
+          "end": 27.92
+        },
+        {
+          "word": "happen",
+          "start": 27.92,
+          "end": 28.26
+        },
+        {
+          "word": "to",
+          "start": 28.26,
+          "end": 28.4
+        },
+        {
+          "word": "him",
+          "start": 28.4,
+          "end": 28.52
+        },
+        {
+          "word": "because",
+          "start": 28.52,
+          "end": 28.74
+        },
+        {
+          "word": "of",
+          "start": 28.74,
+          "end": 28.88
+        },
+        {
+          "word": "his",
+          "start": 28.88,
+          "end": 28.98
+        },
+        {
+          "word": "level",
+          "start": 28.98,
+          "end": 29.28
+        },
+        {
+          "word": "of",
+          "start": 29.28,
+          "end": 29.46
+        },
+        {
+          "word": "expertise",
+          "start": 29.46,
+          "end": 29.92
+        }
+      ]
+    },
+    {
+      "start": 29.92,
+      "end": 34.2,
+      "text": "years of being able to of doing this. Tim wasn't the only storm chaser in",
+      "words": [
+        {
+          "word": "years",
+          "start": 29.92,
+          "end": 30.86
+        },
+        {
+          "word": "of",
+          "start": 30.86,
+          "end": 31.22
+        },
+        {
+          "word": "being",
+          "start": 31.22,
+          "end": 31.36
+        },
+        {
+          "word": "able",
+          "start": 31.36,
+          "end": 31.6
+        },
+        {
+          "word": "to",
+          "start": 31.6,
+          "end": 31.76
+        },
+        {
+          "word": "of",
+          "start": 31.76,
+          "end": 32.0
+        },
+        {
+          "word": "doing",
+          "start": 32.0,
+          "end": 32.26
+        },
+        {
+          "word": "this.",
+          "start": 32.26,
+          "end": 32.52
+        },
+        {
+          "word": "Tim",
+          "start": 32.82,
+          "end": 32.84
+        },
+        {
+          "word": "wasn't",
+          "start": 32.84,
+          "end": 33.12
+        },
+        {
+          "word": "the",
+          "start": 33.12,
+          "end": 33.22
+        },
+        {
+          "word": "only",
+          "start": 33.22,
+          "end": 33.42
+        },
+        {
+          "word": "storm",
+          "start": 33.42,
+          "end": 33.74
+        },
+        {
+          "word": "chaser",
+          "start": 33.74,
+          "end": 34.02
+        },
+        {
+          "word": "in",
+          "start": 34.02,
+          "end": 34.2
+        }
+      ]
+    },
+    {
+      "start": 34.2,
+      "end": 35.3,
+      "text": "trouble that day.",
+      "words": [
+        {
+          "word": "trouble",
+          "start": 34.2,
+          "end": 34.4
+        },
+        {
+          "word": "that",
+          "start": 34.4,
+          "end": 34.64
+        },
+        {
+          "word": "day.",
+          "start": 34.64,
+          "end": 35.3
+        }
+      ]
+    },
+    {
+      "start": 45.38,
+      "end": 50.14,
+      "text": "The erratic track of this storm sudden left turn caught many off guard. This",
+      "words": [
+        {
+          "word": "The",
+          "start": 45.38,
+          "end": 45.9
+        },
+        {
+          "word": "erratic",
+          "start": 45.9,
+          "end": 46.42
+        },
+        {
+          "word": "track",
+          "start": 46.42,
+          "end": 46.82
+        },
+        {
+          "word": "of",
+          "start": 46.82,
+          "end": 47.0
+        },
+        {
+          "word": "this",
+          "start": 47.0,
+          "end": 47.14
+        },
+        {
+          "word": "storm",
+          "start": 47.14,
+          "end": 47.48
+        },
+        {
+          "word": "sudden",
+          "start": 47.48,
+          "end": 47.94
+        },
+        {
+          "word": "left",
+          "start": 47.94,
+          "end": 48.22
+        },
+        {
+          "word": "turn",
+          "start": 48.22,
+          "end": 48.48
+        },
+        {
+          "word": "caught",
+          "start": 48.48,
+          "end": 48.7
+        },
+        {
+          "word": "many",
+          "start": 48.7,
+          "end": 49.0
+        },
+        {
+          "word": "off",
+          "start": 49.0,
+          "end": 49.26
+        },
+        {
+          "word": "guard.",
+          "start": 49.26,
+          "end": 49.5
+        },
+        {
+          "word": "This",
+          "start": 49.96,
+          "end": 50.14
+        }
+      ]
+    },
+    {
+      "start": 50.14,
+      "end": 55.22,
+      "text": "map shows just how popular storm chasing has become. Each dot represents a vehicle.",
+      "words": [
+        {
+          "word": "map",
+          "start": 50.14,
+          "end": 50.34
+        },
+        {
+          "word": "shows",
+          "start": 50.34,
+          "end": 50.56
+        },
+        {
+          "word": "just",
+          "start": 50.56,
+          "end": 50.86
+        },
+        {
+          "word": "how",
+          "start": 50.86,
+          "end": 51.12
+        },
+        {
+          "word": "popular",
+          "start": 51.12,
+          "end": 51.56
+        },
+        {
+          "word": "storm",
+          "start": 51.56,
+          "end": 51.86
+        },
+        {
+          "word": "chasing",
+          "start": 51.86,
+          "end": 52.14
+        },
+        {
+          "word": "has",
+          "start": 52.14,
+          "end": 52.38
+        },
+        {
+          "word": "become.",
+          "start": 52.38,
+          "end": 52.74
+        },
+        {
+          "word": "Each",
+          "start": 53.2,
+          "end": 53.4
+        },
+        {
+          "word": "dot",
+          "start": 53.4,
+          "end": 53.72
+        },
+        {
+          "word": "represents",
+          "start": 53.72,
+          "end": 54.44
+        },
+        {
+          "word": "a",
+          "start": 54.44,
+          "end": 54.78
+        },
+        {
+          "word": "vehicle.",
+          "start": 54.78,
+          "end": 55.22
+        }
+      ]
+    },
+    {
+      "start": 55.72,
+      "end": 59.12,
+      "text": "If you put yourself a hundred yards away from debris flying you put yourself in",
+      "words": [
+        {
+          "word": "If",
+          "start": 55.72,
+          "end": 55.82
+        },
+        {
+          "word": "you",
+          "start": 55.82,
+          "end": 55.88
+        },
+        {
+          "word": "put",
+          "start": 55.88,
+          "end": 56.0
+        },
+        {
+          "word": "yourself",
+          "start": 56.0,
+          "end": 56.38
+        },
+        {
+          "word": "a",
+          "start": 56.38,
+          "end": 56.88
+        },
+        {
+          "word": "hundred",
+          "start": 56.88,
+          "end": 57.02
+        },
+        {
+          "word": "yards",
+          "start": 57.02,
+          "end": 57.3
+        },
+        {
+          "word": "away",
+          "start": 57.3,
+          "end": 57.5
+        },
+        {
+          "word": "from",
+          "start": 57.5,
+          "end": 57.68
+        },
+        {
+          "word": "debris",
+          "start": 57.68,
+          "end": 57.92
+        },
+        {
+          "word": "flying",
+          "start": 57.92,
+          "end": 58.28
+        },
+        {
+          "word": "you",
+          "start": 58.28,
+          "end": 58.52
+        },
+        {
+          "word": "put",
+          "start": 58.52,
+          "end": 58.66
+        },
+        {
+          "word": "yourself",
+          "start": 58.66,
+          "end": 58.96
+        },
+        {
+          "word": "in",
+          "start": 58.96,
+          "end": 59.12
+        }
+      ]
+    },
+    {
+      "start": 59.12,
+      "end": 62.7,
+      "text": "pretty grave danger. Mike Ailes knows a lot about tornadoes. He was part of the",
+      "words": [
+        {
+          "word": "pretty",
+          "start": 59.12,
+          "end": 59.26
+        },
+        {
+          "word": "grave",
+          "start": 59.26,
+          "end": 59.54
+        },
+        {
+          "word": "danger.",
+          "start": 59.54,
+          "end": 59.88
+        },
+        {
+          "word": "Mike",
+          "start": 60.22,
+          "end": 60.34
+        },
+        {
+          "word": "Ailes",
+          "start": 60.34,
+          "end": 60.6
+        },
+        {
+          "word": "knows",
+          "start": 60.6,
+          "end": 60.76
+        },
+        {
+          "word": "a",
+          "start": 60.76,
+          "end": 60.92
+        },
+        {
+          "word": "lot",
+          "start": 60.92,
+          "end": 61.06
+        },
+        {
+          "word": "about",
+          "start": 61.06,
+          "end": 61.28
+        },
+        {
+          "word": "tornadoes.",
+          "start": 61.28,
+          "end": 61.68
+        },
+        {
+          "word": "He",
+          "start": 61.96,
+          "end": 61.98
+        },
+        {
+          "word": "was",
+          "start": 61.98,
+          "end": 62.14
+        },
+        {
+          "word": "part",
+          "start": 62.14,
+          "end": 62.38
+        },
+        {
+          "word": "of",
+          "start": 62.38,
+          "end": 62.58
+        },
+        {
+          "word": "the",
+          "start": 62.58,
+          "end": 62.7
+        }
+      ]
+    },
+    {
+      "start": 62.7,
+      "end": 66.6,
+      "text": "research team that the movie Twister was based on. He thinks storm chasing",
+      "words": [
+        {
+          "word": "research",
+          "start": 62.7,
+          "end": 63.06
+        },
+        {
+          "word": "team",
+          "start": 63.06,
+          "end": 63.42
+        },
+        {
+          "word": "that",
+          "start": 63.42,
+          "end": 63.68
+        },
+        {
+          "word": "the",
+          "start": 63.68,
+          "end": 63.82
+        },
+        {
+          "word": "movie",
+          "start": 63.82,
+          "end": 64.04
+        },
+        {
+          "word": "Twister",
+          "start": 64.04,
+          "end": 64.44
+        },
+        {
+          "word": "was",
+          "start": 64.44,
+          "end": 64.66
+        },
+        {
+          "word": "based",
+          "start": 64.66,
+          "end": 64.92
+        },
+        {
+          "word": "on.",
+          "start": 64.92,
+          "end": 65.22
+        },
+        {
+          "word": "He",
+          "start": 65.76,
+          "end": 65.92
+        },
+        {
+          "word": "thinks",
+          "start": 65.92,
+          "end": 66.1
+        },
+        {
+          "word": "storm",
+          "start": 66.1,
+          "end": 66.34
+        },
+        {
+          "word": "chasing",
+          "start": 66.34,
+          "end": 66.6
+        }
+      ]
+    },
+    {
+      "start": 66.6,
+      "end": 69.88,
+      "text": "has gone too far. It's no longer pictures of tornadoes that people want.",
+      "words": [
+        {
+          "word": "has",
+          "start": 66.6,
+          "end": 67.16
+        },
+        {
+          "word": "gone",
+          "start": 67.16,
+          "end": 67.34
+        },
+        {
+          "word": "too",
+          "start": 67.34,
+          "end": 67.54
+        },
+        {
+          "word": "far.",
+          "start": 67.54,
+          "end": 67.88
+        },
+        {
+          "word": "It's",
+          "start": 68.16,
+          "end": 68.26
+        },
+        {
+          "word": "no",
+          "start": 68.26,
+          "end": 68.38
+        },
+        {
+          "word": "longer",
+          "start": 68.38,
+          "end": 68.58
+        },
+        {
+          "word": "pictures",
+          "start": 68.58,
+          "end": 68.84
+        },
+        {
+          "word": "of",
+          "start": 68.84,
+          "end": 69.0
+        },
+        {
+          "word": "tornadoes",
+          "start": 69.0,
+          "end": 69.3
+        },
+        {
+          "word": "that",
+          "start": 69.3,
+          "end": 69.42
+        },
+        {
+          "word": "people",
+          "start": 69.42,
+          "end": 69.6
+        },
+        {
+          "word": "want.",
+          "start": 69.6,
+          "end": 69.88
+        }
+      ]
+    },
+    {
+      "start": 70.02,
+      "end": 74.22,
+      "text": "It's video of debris or buildings blowing up or trees being blown around",
+      "words": [
+        {
+          "word": "It's",
+          "start": 70.02,
+          "end": 70.14
+        },
+        {
+          "word": "video",
+          "start": 70.14,
+          "end": 70.56
+        },
+        {
+          "word": "of",
+          "start": 70.56,
+          "end": 70.9
+        },
+        {
+          "word": "debris",
+          "start": 70.9,
+          "end": 71.44
+        },
+        {
+          "word": "or",
+          "start": 71.44,
+          "end": 71.72
+        },
+        {
+          "word": "buildings",
+          "start": 71.72,
+          "end": 72.02
+        },
+        {
+          "word": "blowing",
+          "start": 72.02,
+          "end": 72.24
+        },
+        {
+          "word": "up",
+          "start": 72.24,
+          "end": 72.58
+        },
+        {
+          "word": "or",
+          "start": 72.58,
+          "end": 72.98
+        },
+        {
+          "word": "trees",
+          "start": 72.98,
+          "end": 73.46
+        },
+        {
+          "word": "being",
+          "start": 73.46,
+          "end": 73.66
+        },
+        {
+          "word": "blown",
+          "start": 73.66,
+          "end": 73.9
+        },
+        {
+          "word": "around",
+          "start": 73.9,
+          "end": 74.22
+        }
+      ]
+    },
+    {
+      "start": 74.22,
+      "end": 78.64,
+      "text": "so people are taking, I think, big big chances. But it's not just scientists",
+      "words": [
+        {
+          "word": "so",
+          "start": 74.22,
+          "end": 74.5
+        },
+        {
+          "word": "people",
+          "start": 74.5,
+          "end": 74.76
+        },
+        {
+          "word": "are",
+          "start": 74.76,
+          "end": 74.96
+        },
+        {
+          "word": "taking,",
+          "start": 74.96,
+          "end": 75.26
+        },
+        {
+          "word": "I",
+          "start": 75.44,
+          "end": 75.9
+        },
+        {
+          "word": "think,",
+          "start": 75.9,
+          "end": 76.12
+        },
+        {
+          "word": "big",
+          "start": 76.62,
+          "end": 76.92
+        },
+        {
+          "word": "big",
+          "start": 76.92,
+          "end": 77.12
+        },
+        {
+          "word": "chances.",
+          "start": 77.12,
+          "end": 77.44
+        },
+        {
+          "word": "But",
+          "start": 77.74,
+          "end": 77.88
+        },
+        {
+          "word": "it's",
+          "start": 77.88,
+          "end": 78.0
+        },
+        {
+          "word": "not",
+          "start": 78.0,
+          "end": 78.12
+        },
+        {
+          "word": "just",
+          "start": 78.12,
+          "end": 78.3
+        },
+        {
+          "word": "scientists",
+          "start": 78.3,
+          "end": 78.64
+        }
+      ]
+    },
+    {
+      "start": 78.64,
+      "end": 83.02,
+      "text": "and videographers. Thrill seekers hoping to capture chaos up close. Tornado tours",
+      "words": [
+        {
+          "word": "and",
+          "start": 78.64,
+          "end": 78.8
+        },
+        {
+          "word": "videographers.",
+          "start": 78.8,
+          "end": 79.34
+        },
+        {
+          "word": "Thrill",
+          "start": 79.82,
+          "end": 79.98
+        },
+        {
+          "word": "seekers",
+          "start": 79.98,
+          "end": 80.16
+        },
+        {
+          "word": "hoping",
+          "start": 80.16,
+          "end": 80.5
+        },
+        {
+          "word": "to",
+          "start": 80.5,
+          "end": 80.7
+        },
+        {
+          "word": "capture",
+          "start": 80.7,
+          "end": 80.92
+        },
+        {
+          "word": "chaos",
+          "start": 80.92,
+          "end": 81.3
+        },
+        {
+          "word": "up",
+          "start": 81.3,
+          "end": 81.56
+        },
+        {
+          "word": "close.",
+          "start": 81.56,
+          "end": 81.88
+        },
+        {
+          "word": "Tornado",
+          "start": 82.6,
+          "end": 82.6
+        },
+        {
+          "word": "tours",
+          "start": 82.6,
+          "end": 83.02
+        }
+      ]
+    },
+    {
+      "start": 83.02,
+      "end": 87.16,
+      "text": "are big business in these parts. Just like people go to see the whales and",
+      "words": [
+        {
+          "word": "are",
+          "start": 83.02,
+          "end": 83.32
+        },
+        {
+          "word": "big",
+          "start": 83.32,
+          "end": 83.6
+        },
+        {
+          "word": "business",
+          "start": 83.6,
+          "end": 83.98
+        },
+        {
+          "word": "in",
+          "start": 83.98,
+          "end": 84.22
+        },
+        {
+          "word": "these",
+          "start": 84.22,
+          "end": 84.38
+        },
+        {
+          "word": "parts.",
+          "start": 84.38,
+          "end": 84.68
+        },
+        {
+          "word": "Just",
+          "start": 84.96,
+          "end": 85.18
+        },
+        {
+          "word": "like",
+          "start": 85.18,
+          "end": 85.44
+        },
+        {
+          "word": "people",
+          "start": 85.44,
+          "end": 85.9
+        },
+        {
+          "word": "go",
+          "start": 85.9,
+          "end": 86.06
+        },
+        {
+          "word": "to",
+          "start": 86.06,
+          "end": 86.18
+        },
+        {
+          "word": "see",
+          "start": 86.18,
+          "end": 86.3
+        },
+        {
+          "word": "the",
+          "start": 86.3,
+          "end": 86.44
+        },
+        {
+          "word": "whales",
+          "start": 86.44,
+          "end": 86.74
+        },
+        {
+          "word": "and",
+          "start": 86.74,
+          "end": 87.16
+        }
+      ]
+    },
+    {
+      "start": 87.16,
+      "end": 90.58,
+      "text": "everything else. They want to see tornadoes. They want to see the big ones.",
+      "words": [
+        {
+          "word": "everything",
+          "start": 87.16,
+          "end": 87.38
+        },
+        {
+          "word": "else.",
+          "start": 87.38,
+          "end": 87.82
+        },
+        {
+          "word": "They",
+          "start": 88.44,
+          "end": 88.54
+        },
+        {
+          "word": "want",
+          "start": 88.54,
+          "end": 88.78
+        },
+        {
+          "word": "to",
+          "start": 88.78,
+          "end": 88.92
+        },
+        {
+          "word": "see",
+          "start": 88.92,
+          "end": 89.18
+        },
+        {
+          "word": "tornadoes.",
+          "start": 89.18,
+          "end": 89.7
+        },
+        {
+          "word": "They",
+          "start": 89.82,
+          "end": 89.86
+        },
+        {
+          "word": "want",
+          "start": 89.86,
+          "end": 89.96
+        },
+        {
+          "word": "to",
+          "start": 89.96,
+          "end": 90.02
+        },
+        {
+          "word": "see",
+          "start": 90.02,
+          "end": 90.1
+        },
+        {
+          "word": "the",
+          "start": 90.1,
+          "end": 90.22
+        },
+        {
+          "word": "big",
+          "start": 90.22,
+          "end": 90.36
+        },
+        {
+          "word": "ones.",
+          "start": 90.36,
+          "end": 90.58
+        }
+      ]
+    },
+    {
+      "start": 90.78,
+      "end": 94.48,
+      "text": "That's what we do. We take them out. But for meteorologists and researchers, on",
+      "words": [
+        {
+          "word": "That's",
+          "start": 90.78,
+          "end": 91.12
+        },
+        {
+          "word": "what",
+          "start": 91.12,
+          "end": 91.24
+        },
+        {
+          "word": "we",
+          "start": 91.24,
+          "end": 91.38
+        },
+        {
+          "word": "do.",
+          "start": 91.38,
+          "end": 91.58
+        },
+        {
+          "word": "We",
+          "start": 91.68,
+          "end": 91.78
+        },
+        {
+          "word": "take",
+          "start": 91.78,
+          "end": 91.96
+        },
+        {
+          "word": "them",
+          "start": 91.96,
+          "end": 92.06
+        },
+        {
+          "word": "out.",
+          "start": 92.06,
+          "end": 92.26
+        },
+        {
+          "word": "But",
+          "start": 92.74,
+          "end": 92.86
+        },
+        {
+          "word": "for",
+          "start": 92.86,
+          "end": 92.96
+        },
+        {
+          "word": "meteorologists",
+          "start": 92.96,
+          "end": 93.46
+        },
+        {
+          "word": "and",
+          "start": 93.46,
+          "end": 93.6
+        },
+        {
+          "word": "researchers,",
+          "start": 93.6,
+          "end": 94.02
+        },
+        {
+          "word": "on",
+          "start": 94.32,
+          "end": 94.48
+        }
+      ]
+    },
+    {
+      "start": 94.48,
+      "end": 97.9,
+      "text": "the ground measurements are vital because so much still needs to be",
+      "words": [
+        {
+          "word": "the",
+          "start": 94.48,
+          "end": 94.6
+        },
+        {
+          "word": "ground",
+          "start": 94.6,
+          "end": 94.88
+        },
+        {
+          "word": "measurements",
+          "start": 94.88,
+          "end": 95.26
+        },
+        {
+          "word": "are",
+          "start": 95.26,
+          "end": 95.58
+        },
+        {
+          "word": "vital",
+          "start": 95.58,
+          "end": 95.94
+        },
+        {
+          "word": "because",
+          "start": 95.94,
+          "end": 96.5
+        },
+        {
+          "word": "so",
+          "start": 96.5,
+          "end": 96.84
+        },
+        {
+          "word": "much",
+          "start": 96.84,
+          "end": 97.08
+        },
+        {
+          "word": "still",
+          "start": 97.08,
+          "end": 97.42
+        },
+        {
+          "word": "needs",
+          "start": 97.42,
+          "end": 97.62
+        },
+        {
+          "word": "to",
+          "start": 97.62,
+          "end": 97.78
+        },
+        {
+          "word": "be",
+          "start": 97.78,
+          "end": 97.9
+        }
+      ]
+    },
+    {
+      "start": 97.9,
+      "end": 100.6,
+      "text": "learned when it comes to violent weather. We still don't know everything about",
+      "words": [
+        {
+          "word": "learned",
+          "start": 97.9,
+          "end": 98.1
+        },
+        {
+          "word": "when",
+          "start": 98.1,
+          "end": 98.28
+        },
+        {
+          "word": "it",
+          "start": 98.28,
+          "end": 98.4
+        },
+        {
+          "word": "comes",
+          "start": 98.4,
+          "end": 98.56
+        },
+        {
+          "word": "to",
+          "start": 98.56,
+          "end": 98.82
+        },
+        {
+          "word": "violent",
+          "start": 98.82,
+          "end": 99.18
+        },
+        {
+          "word": "weather.",
+          "start": 99.18,
+          "end": 99.48
+        },
+        {
+          "word": "We",
+          "start": 99.7,
+          "end": 99.74
+        },
+        {
+          "word": "still",
+          "start": 99.74,
+          "end": 99.94
+        },
+        {
+          "word": "don't",
+          "start": 99.94,
+          "end": 100.08
+        },
+        {
+          "word": "know",
+          "start": 100.08,
+          "end": 100.2
+        },
+        {
+          "word": "everything",
+          "start": 100.2,
+          "end": 100.4
+        },
+        {
+          "word": "about",
+          "start": 100.4,
+          "end": 100.6
+        }
+      ]
+    },
+    {
+      "start": 100.6,
+      "end": 104.2,
+      "text": "tornadoes and it's really important to go measure because you can't measure",
+      "words": [
+        {
+          "word": "tornadoes",
+          "start": 100.6,
+          "end": 101.02
+        },
+        {
+          "word": "and",
+          "start": 101.02,
+          "end": 101.42
+        },
+        {
+          "word": "it's",
+          "start": 101.42,
+          "end": 101.62
+        },
+        {
+          "word": "really",
+          "start": 101.62,
+          "end": 101.86
+        },
+        {
+          "word": "important",
+          "start": 101.86,
+          "end": 102.24
+        },
+        {
+          "word": "to",
+          "start": 102.24,
+          "end": 102.46
+        },
+        {
+          "word": "go",
+          "start": 102.46,
+          "end": 102.58
+        },
+        {
+          "word": "measure",
+          "start": 102.58,
+          "end": 103.04
+        },
+        {
+          "word": "because",
+          "start": 103.04,
+          "end": 103.66
+        },
+        {
+          "word": "you",
+          "start": 103.66,
+          "end": 103.78
+        },
+        {
+          "word": "can't",
+          "start": 103.78,
+          "end": 104.0
+        },
+        {
+          "word": "measure",
+          "start": 104.0,
+          "end": 104.2
+        }
+      ]
+    },
+    {
+      "start": 104.2,
+      "end": 106.96,
+      "text": "with a radar. You can see things aloft. You can't really measure what's on the",
+      "words": [
+        {
+          "word": "with",
+          "start": 104.2,
+          "end": 104.34
+        },
+        {
+          "word": "a",
+          "start": 104.34,
+          "end": 104.44
+        },
+        {
+          "word": "radar.",
+          "start": 104.44,
+          "end": 104.62
+        },
+        {
+          "word": "You",
+          "start": 104.68,
+          "end": 104.8
+        },
+        {
+          "word": "can",
+          "start": 104.8,
+          "end": 104.94
+        },
+        {
+          "word": "see",
+          "start": 104.94,
+          "end": 105.2
+        },
+        {
+          "word": "things",
+          "start": 105.2,
+          "end": 105.48
+        },
+        {
+          "word": "aloft.",
+          "start": 105.48,
+          "end": 105.8
+        },
+        {
+          "word": "You",
+          "start": 105.94,
+          "end": 105.96
+        },
+        {
+          "word": "can't",
+          "start": 105.96,
+          "end": 106.18
+        },
+        {
+          "word": "really",
+          "start": 106.18,
+          "end": 106.28
+        },
+        {
+          "word": "measure",
+          "start": 106.28,
+          "end": 106.54
+        },
+        {
+          "word": "what's",
+          "start": 106.54,
+          "end": 106.72
+        },
+        {
+          "word": "on",
+          "start": 106.72,
+          "end": 106.84
+        },
+        {
+          "word": "the",
+          "start": 106.84,
+          "end": 106.96
+        }
+      ]
+    },
+    {
+      "start": 106.96,
+      "end": 110.82,
+      "text": "ground. So very dedicated people that have, you know, risked their life to",
+      "words": [
+        {
+          "word": "ground.",
+          "start": 106.96,
+          "end": 107.2
+        },
+        {
+          "word": "So",
+          "start": 107.36,
+          "end": 107.54
+        },
+        {
+          "word": "very",
+          "start": 107.54,
+          "end": 108.32
+        },
+        {
+          "word": "dedicated",
+          "start": 108.32,
+          "end": 108.76
+        },
+        {
+          "word": "people",
+          "start": 108.76,
+          "end": 109.14
+        },
+        {
+          "word": "that",
+          "start": 109.14,
+          "end": 109.32
+        },
+        {
+          "word": "have,",
+          "start": 109.32,
+          "end": 109.46
+        },
+        {
+          "word": "you",
+          "start": 109.46,
+          "end": 109.76
+        },
+        {
+          "word": "know,",
+          "start": 109.76,
+          "end": 109.9
+        },
+        {
+          "word": "risked",
+          "start": 109.96,
+          "end": 110.16
+        },
+        {
+          "word": "their",
+          "start": 110.16,
+          "end": 110.34
+        },
+        {
+          "word": "life",
+          "start": 110.34,
+          "end": 110.58
+        },
+        {
+          "word": "to",
+          "start": 110.58,
+          "end": 110.82
+        }
+      ]
+    },
+    {
+      "start": 110.82,
+      "end": 113.5,
+      "text": "do that. There's value created by that.",
+      "words": [
+        {
+          "word": "do",
+          "start": 110.82,
+          "end": 111.28
+        },
+        {
+          "word": "that.",
+          "start": 111.28,
+          "end": 111.5
+        },
+        {
+          "word": "There's",
+          "start": 111.74,
+          "end": 112.14
+        },
+        {
+          "word": "value",
+          "start": 112.14,
+          "end": 112.68
+        },
+        {
+          "word": "created",
+          "start": 112.68,
+          "end": 113.08
+        },
+        {
+          "word": "by",
+          "start": 113.08,
+          "end": 113.3
+        },
+        {
+          "word": "that.",
+          "start": 113.3,
+          "end": 113.5
+        }
+      ]
+    }
+  ]
+}
