@@ -173,6 +173,32 @@ Title as above. Thumbnail: real NWS/NOAA storm photo or our radar re-plot + "EL 
 
 # SCRIPT — narration verbatim from DESIGN v2 (wavs in audio/, no re-TTS); 27 kept segments, 6 CUT segments listed at the end for the record
 
+## Hook v2 (owner-approved direction 2026-08-31 — exchange cut, ultra hook 0:00-0:31)
+Replaces the A0-S2/A0-S3 open (those segments stay in audio/ but are NOT wired in v2).
+Archival exchange: Samaras' own voice cold open ("safest place... this vehicle", CNN cut #1,
+ARCHIVAL srclab — footage is from an earlier chase, the label keeps the picture honest) ->
+narrator irony line -> survivor stinger -> numbers triple-cut -> KFOR "do not ride this out" ->
+TWC Bettes toss -> record/chasers thesis -> "thirty seconds" black-frame stinger -> title line ->
+1.2 s blackout. Beds: rain 0.10 + weewoo (police 240674) 0.12 + drone 0.08; drum kicks 0.4 on the
+numbers cuts; riser 0.35 peaking exactly at "storm chasers alive." Full silence at the blackout.
+Intro v2 (0:31-~1:04) = A0-S8, compressed thesis (fluff lines cut per owner review); A1 unchanged
+after the void, retimed earlier by the measured delta.
+
+### A0-S4 — narration (hook, after the Samaras cold open)
+> However, the man saying that has only ninety minutes to live.
+
+### A0-S5 — narration (hook, numbers triple-cut)
+> Two point six miles wide, with three hundred mile an hour winds, but invisible to human eyes.
+
+### A0-S6 — narration (hook, thesis)
+> Tonight, this storm breaks a record no tornado has ever held. And it kills the most careful storm chasers alive.
+
+### A0-S7 — narration (hook, title beat)
+> This is El Reno.
+
+### A0-S8 — narration (intro v2, replaces wired A0-S2 + A0-S3)
+> It is wrapped in curtains of rain, and almost nobody in its path can see it coming. It is growing faster than anyone has ever seen a tornado grow, and it is about to change direction without warning. Twenty one people will not survive the night. And yet the official rating in the record books says EF three. Because this tornado did something no tornado had ever done before. The men who understood this storm best were the ones it caught.
+
 ### A0-S2 — narration
 > The widest tornado ever measured on this planet is on the ground right now, and almost nobody in its path can see it. It is wrapped in curtains of rain, and from the highway it looks like nothing more than a gray wall of water sliding across the fields. But inside that wall, instruments are recording winds close to three hundred miles per hour. It is growing faster than anyone has ever seen a tornado grow, and it is about to change direction without warning.
 
