@@ -246,7 +246,7 @@ floors/ceilings; taste stays with the model.
   2-3s (a label, a number, the polygon, an annotation, a state change). Motion without new
   information is an animated still. Reveal every element ON its spoken word; text cards build
   line-by-line, never all-at-once; a finished graphic exits, it does not sit.
-- **Mandatory self-audit before render (owner order 2026-07-23): after authoring, re-walk every
+- **Mandatory self-audit before render: after authoring, re-walk every
   graphic/text/quote element as a viewer** — for each one ask: landing, idling, or minor fix?
   Table the verdicts (the "is it sitting for the egg to hatch" pass). Same pass re-checks clip
   pacing. This is an AI-judgment step — never enforced by script.
