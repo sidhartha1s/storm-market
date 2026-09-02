@@ -63,7 +63,7 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   hook watch (the experience pass); a known-below-spec layer means STOP and report, not render.
 - **Script never references its own structure:** no "concluding", "summarizing", "in
   this video" — reads as a seam, instant viewer skip.
-- **Graphics text discipline (owner, ep3-ep5 recurring):** proper case, never all-lowercase;
+- **Graphics text discipline:** proper case, never all-lowercase;
   reduce text per frame (one idea at a time, no disjointed stat spray); a graphic holds until
   its point fully lands (never cut early) and never starts before its trigger moment or after a
   blank gap; ≥3 type tiers per designed card (graphics_qc flat-type gate: small <26 / mid /
