@@ -81,7 +81,7 @@ shipped; these are the standing requirements for every episode's cold open:
   reads as dead air).
 - **Date/place popup (popfig) inside the first second**; the captioned anchor line appears
   ONLY for the words it covers — match-cut the caption to where its text starts in the audio,
-  never show the tail text while the head is still being spoken (owner, ep6 v3).
+  never show the tail text while the head is still being spoken.
 - Few clips, each earning its slot (ep2: warning → impact → dispatch → void). More clips ≠
   more captivating; undifferentiated montage is what scored 0.6.
 
