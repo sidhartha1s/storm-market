@@ -161,6 +161,7 @@ quoted section header.
   `~/.hyperframes/cache/` (374 registry JSONs, zero network to enumerate); each docs page
   `.md` ships the item's full HTML source; `npx hyperframes catalog --query` is built-in
   semantic search — never build a custom one.
+
 ## ep6 draft v2 review — text collisions were a CHECKER false negative (owner 2026-08-22)
 - **overlap_check v1 checked the wrong slices.** It sampled one instant per card/comp pair and
   never looked at comp-INTERNAL text or mid-tween positions; every owner screenshot (AUG 23 over
