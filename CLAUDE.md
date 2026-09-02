@@ -204,7 +204,7 @@ Per episode in `episodes/<slug>/`:
 7. Deliverables per render, unasked: **`python3 scripts/master_deliverables.py
    episodes/<slug> <render-basename> [--hevc] [--no-2k]`** — one command produces the −14 LUFS
    master (`-c:v copy` + measured gain, verified), the SRT (calls build_srt.py; requires the
-   `nx-*` narration audio-id convention), AND — default ON (owner order 2026-08-24) — the
+   `nx-*` narration audio-id convention), AND — default ON — the
    **1440p YouTube upload file** (`-master-1440p.mp4`: hevc_nvenc p7 cq22 lanczos upscale, ~3.5 GB / 16 Mbps
    for 28 min, audio bit-copied; a 1440p upload gets YouTube's higher VP9 bitrate tier —
    visibly cleaner playback than the same content uploaded at 1080p; ~8 min at 3.5×
