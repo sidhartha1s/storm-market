@@ -116,7 +116,7 @@ per-episode copy of the rule, never a hand-edited path. Shape: **hook > CTA > pa
   data-duration="15.104" data-track-index="1" data-volume="1" data-srt-label="<channel.cta.srt_label>">`
   with a 1.0s blackout element before and after on the picture track.
 
-### Broadcast-clip rehook cadence (owner order 2026-07-26)
+### Broadcast-clip rehook cadence
 Core audience is 40–70+ — they watched these events on live TV; real broadcast/news/PD/survivor
 clips are the nostalgia rehook, stock footage only fills between them. **A real clip lands every
 45–60s (or as the beat needs), never long stretches of pure stock.** Network news: transcribe
