@@ -1,4 +1,4 @@
-# DESIGN.md — storm-market editing architecture (owner-settled 2026-07-22)
+# DESIGN.md — storm-market editing architecture
 
 ## Core principle: the TIMELINE is master, narration is one element on it
 
