@@ -145,7 +145,7 @@ obfuscation.**
   is unchanged: scripts/generators that emit or alter episode HTML (the tripwire in
   CLAUDE.md). A template is a starting point an agent edits with per-cut judgment, never a
   builder that outputs a finished scene.
-- **Exit animations end fully gone (owner review 2026-07-26):** every panel/graphic exit tween
+- **Exit animations end fully gone:** every panel/graphic exit tween
   finishes at `autoAlpha:0` AND overshoots any slide (a 660px slide on an 820px panel left a
   stuck sliver for ~1s). Verify each sub-comp with a snapshot at host-window-end − 0.5s.
 - Text-over-media always sits on the `.glasscard` panel (rgba(10,16,24,.55) + blur 18px +
