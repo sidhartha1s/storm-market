@@ -96,7 +96,7 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
 - **Ship a compressed HEVC master.** Full renders are ~5 GB at crf16/30fps; run
   `master_deliverables.py … --hevc` for a ~2 GB GPU-HEVC master (visually lossless), or render
   a smaller single pass with `RENDER_CRF=20` + author at 24fps. See LEARNINGS.md "Render size".
-- **Upload the 1440p file, not the 1080p master (owner order 2026-08-24).** Deliverables
+- **Upload the 1440p file, not the 1080p master.** Deliverables
   produce `-master-1440p.mp4` by default — that is the YouTube upload artifact. The 1080p
   copy-master stays the archive; the 1440p upscale can be deleted after upload.
 
