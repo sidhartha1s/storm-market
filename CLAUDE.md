@@ -152,8 +152,7 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   the source, compensate gain, verify the layer post-render (LEARNINGS item 7).
 
 ## Pipeline (hyperframes-heavy, minimal code — deliberate contrast to JP-market)
-**Read `DESIGN.md` before any episode work — it is the editing architecture (owner-settled
-2026-07-22): timeline-is-master, typed edit script (narration / hold / insert / graphic),
+**Read `DESIGN.md` before any episode work — it is the editing architecture: timeline-is-master, typed edit script (narration / hold / insert / graphic),
 per-segment TTS, LLM-as-editor placement, muted-clips default, owner gate on every insert.**
 Per episode in `episodes/<slug>/`:
 1. `edit_script.md` — typed segment list (see DESIGN.md) + per-beat visual intent. Owner signs
