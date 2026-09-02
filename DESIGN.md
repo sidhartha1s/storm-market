@@ -287,7 +287,7 @@ floors/ceilings; taste stays with the model.
 - Never two inserts back-to-back; narration re-anchors between them.
 - Stats mid-video, emotion banked at the end (teardown-verified pattern).
 - Micro-loops every 30-45s, phrasing varied; no recap; CTA short.
-- **Signature closing footnote (owner order 2026-07-22, channel = The Warning Hour):** every
+- **Signature closing footnote (channel = The Warning Hour):** every
   episode ends on a short, punchy, WARM and positive beat — preparedness, never fearmongering —
   landing on the channel name. Canonical shape (tweak per episode, keep the cadence):
   "Disasters don't ask permission. But they do send warnings. Learn what yours sounds like —
