@@ -207,7 +207,7 @@ Tense/curious instrumental bed per episode — generate via DeAPI ACE music when
 narration (~-14dB), rises during holds. Bed choice is an editorial call, owner ear-checks at
 preview.
 
-## Character sub-arcs (owner-settled 2026-07-22 — include them)
+## Character sub-arcs
 
 The hit videos' vignettes about real people ARE the banked emotional payoff + net-info-gain.
 **Memorial portrait dwell (owner 2026-07-22): a real person's face stays on screen briefly —
