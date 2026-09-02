@@ -161,7 +161,7 @@ obfuscation.**
   `hyperframes check` + snapshot grid), plus targeted frames at every region changed since the
   last render. 18 frames on a 28-min cut is not a review.
 
-### On-screen text rules (owner review of ep6 draft v2, 2026-08-22 — the "3-4 recurring mistakes")
+### On-screen text rules
 - **Zone occupancy.** Screen zones: title (top-left), centre popup, lower-third, RHS panel,
   source credit (a corner). ONE text element per zone per time window. Before placing any text,
   list what occupies every zone during its window — INCLUDING where animated elements travel
