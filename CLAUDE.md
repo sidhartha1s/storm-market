@@ -41,9 +41,8 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   Library (`assets/sfx/`), owner-provided Pixabay downloads (`assets/sfx/owner-2026-08-13/`),
   DeAPI-generated tracks (keys in repo-root `.env`, recipe in LEARNINGS.md), or ffmpeg-synthesized.
   NEVER YouTube-ripped/unlicensed music; audio Content ID is fatal (a claimed clip can be cut; a
-  claimed music bed poisons the whole video). (Owner 2026-08-13, supersedes the blanket
-  "never downloaded music".) Verify the layer post-render (volumedetect) AND pre-render via the
-  full audio-mixdown gate (LEARNINGS.md).
+  claimed music bed poisons the whole video). Verify the layer post-render (volumedetect) AND
+  pre-render via the full audio-mixdown gate (LEARNINGS.md).
 - **Grading:** unified subtle grade template on all broadcast/news/private clips (anti-flag +
   look consistency); stock/PD exempt. When doubtful about a grade or a claim risk — stop and ask.
 - **Audio-first open (owner, ep5):** the episode MUST open with audio — mid-action, high
