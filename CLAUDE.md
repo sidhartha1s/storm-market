@@ -50,7 +50,7 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
 - **Risers/builds land WITH the narration:** a riser peaks and ends exactly
   where the narration line stops (or a few ms after) — never still climbing after the voice is
   done. Hits under speech mount ~0.4 volume (0.6 stacks to 0 dBFS — measured ep5).
-- **Non-narration audio budget (owner 2026-08-13):** ~30s of external audio in a 32-min episode
+- **Non-narration audio budget:** ~30s of external audio in a 32-min episode
   is failure-thin. Source assertion AUDIO like clips: 911 calls, presser sound, survivor voice,
   sirens/ambience — and per-act music with real character (known-good tracks + recipe live in
   `assets/sfx/deapi/README.md`; owner Pixabay pack in `assets/sfx/owner-2026-08-13/`).
