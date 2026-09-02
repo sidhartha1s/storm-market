@@ -90,7 +90,7 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   ffprobe/ffmpeg spawn on this box (see LEARNINGS.md) — pin stays
   0.7.109 until an upstream version spawns them hidden; full renders on the stale pin use the
   owner's logged override `RENDER_PIN_STALE_OK=1` (`scripts/ep6_full_task.cmd` is the pattern).
-- **Panels slide out, never vanish (owner order 2026-07-31).** RHS fact panels exit `x:980,
+- **Panels slide out, never vanish.** RHS fact panels exit `x:980,
   autoAlpha:0` timed to the hard cut (comp duration ≥ host window). ep3 v5 removed the exit as a
   one-off; ep4+ restore the timed slide-right exit. See DESIGN.md §5 "Panel exit TIMING".
 - **Ship a compressed HEVC master.** Full renders are ~5 GB at crf16/30fps; run
