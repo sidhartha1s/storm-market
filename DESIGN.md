@@ -268,10 +268,10 @@ floors/ceilings; taste stays with the model.
 
 - Hook: cold-open insert (911 audio / broadcast) or present-tense stat over motion. ≤15s to thesis.
 - After an emotional payoff: hold 2-4s, ambience up, then cut hard to the next act.
-- **Chapter blackout (documentary breath — ep1/ep2 device, MANDATORY ep4+; owner order
-  2026-07-31; durations re-set 2026-08-16):** between acts, and on a key beat, cut to a full
-  BLACK. It resets the eye and is what makes ep1/ep2 read like a documentary. **Duration table
-  (owner): 0.6–0.9s = chapter break · 1.0–1.3s = dramatic punctuation · 1.5s+ = dead air.**
+- **Chapter blackout (documentary breath — ep1/ep2 device, MANDATORY ep4+):** between acts,
+  and on a key beat, cut to a full BLACK. It resets the eye and is what makes ep1/ep2 read like
+  a documentary. **Duration table: 0.6–0.9s = chapter break · 1.0–1.3s = dramatic punctuation ·
+  1.5s+ = dead air.**
   A seamless butt-cut (e.g. a panel's timed slide-out straight into the next shot) needs NO
   blackout — only where a blackout exists does the table apply. Place a plain black section
   on the picture track:
