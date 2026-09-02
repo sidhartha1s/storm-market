@@ -193,7 +193,7 @@ Content ID cannot be scanned offline — the protocol is layered:
    Content ID before publish. Wait for Checks to pass (+ a few hours soak — matches can lag),
    swap any claimed segment while still private, THEN flip public. Never publish blind.
 
-## Look: grain layer (owner order 2026-07-22)
+## Look: grain layer
 
 Every clip renders under a unified film layer: animated grain (SVG turbulence or canvas noise,
 JS-driven — never CSS @keyframes), subtle vignette, occasional drifting dust specks. Purpose:
