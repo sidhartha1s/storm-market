@@ -221,7 +221,7 @@ Per episode in `episodes/<slug>/`:
 - Long episodes: chunk renders only if a single render proves unstable — don't pre-build JP's
   chunk machinery until an episode actually needs it. From ep2 on, AUTHOR compositions as
   sub-compositions (one per act) so per-act re-renders are native.
-- **MG library-first (owner order 2026-08-27):** `library/` holds the motion-graphics library —
+- **MG library-first:** `library/` holds the motion-graphics library —
   `catalog-index.json` (in-house exemplars + snippets + ~195 storm-triaged official HyperFrames
   catalog items, 82 with local source in `library/official/`), browseable via
   `python3 -m http.server 8765` from `library/` → `http://localhost:8765/gallery/`. Before
