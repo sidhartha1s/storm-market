@@ -74,7 +74,7 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   burning agent passes; spread the cuts ACROSS the episode, never back-to-back.
 - Reference floors from the shipped cuts: ep2 = 187 windows / 10.0s median / 2 picture gaps.
   Uncovered picture gaps in the dozens is a bug, not a style.
-- **Chapter blackout is mandatory (owner order 2026-07-31; durations re-set 2026-08-16).** A
+- **Chapter blackout is mandatory.** A
   hard black cut between acts is what makes ep1/ep2 read like a documentary; ep3 dropped it.
   Owner's duration table: **0.6–0.9s = chapter break · 1.0–1.3s = dramatic punctuation ·
   1.5s+ = dead air** (hook-end void: 1.5s). Seamless butt-cuts need no blackout at all. See
