@@ -328,7 +328,7 @@ Plus, for any NEW or changed composition: stage it into a bare page with gsap, s
 timeline, screenshot 4-6 points and have a subagent read them (never Read frames into the
 main context). That loop caught eight defects in two new graphics in about ten minutes.
 
-**QC the CODE, not a frame sweep** (owner, same round): *"You can't really do a one hundred
+**QC the CODE, not a frame sweep:** *"You can't really do a one hundred
 and five image frame sweep for graphics… You should check the code because this is HTML. How
 can I have garbled text? in HTML."* A 105-frame render sweep is not a QC method for graphics.
 
