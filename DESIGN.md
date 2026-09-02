@@ -241,7 +241,7 @@ floors/ceilings; taste stays with the model.
   crop/cut them out of frame** — cropping is a legitimate alternative to honest-labeling when
   the clock itself isn't the story. Watch UTC-vs-local (NEXRAD burns UTC). Grain filter over
   archive graphics as needed to unify the look.
-- **Graphics never idle — graphics are SEQUENCES, not posters (owner, ep1 v3 planning).**
+- **Graphics never idle — graphics are SEQUENCES, not posters.**
   The clock is INFORMATION, not motion: something the viewer didn't know yet must land every
   2-3s (a label, a number, the polygon, an annotation, a state change). Motion without new
   information is an animated still. Reveal every element ON its spoken word; text cards build
