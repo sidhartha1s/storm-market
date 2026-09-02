@@ -45,7 +45,7 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   pre-render via the full audio-mixdown gate (LEARNINGS.md).
 - **Grading:** unified subtle grade template on all broadcast/news/private clips (anti-flag +
   look consistency); stock/PD exempt. When doubtful about a grade or a claim risk — stop and ask.
-- **Audio-first open (owner, ep5):** the episode MUST open with audio — mid-action, high
+- **Audio-first open:** the episode MUST open with audio — mid-action, high
   curiosity, high impact. A clip without audio is dead; never open on black or a silent visual.
 - **Risers/builds land WITH the narration (owner 2026-08-13):** a riser peaks and ends exactly
   where the narration line stops (or a few ms after) — never still climbing after the voice is
