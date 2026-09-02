@@ -24,9 +24,9 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   photos for 27s. If no asset exists, build an honest designed card — never fabricate footage.
 - **Match the shipped panel anatomy, and CHECK it — don't assume it.** Owner: *"I'm damn sure
   you didn't check. You assumed it."* The reference comps live in
-  `references/editing-patterns/` (owner order 2026-08-12: episode folders get DELETED after
-  publish — docs never cite `episodes/<slug>/...` for a pattern; copy shipped patterns into
-  that folder same session). **Never edit a shipped episode.**
+  `references/editing-patterns/`. Episode folders get DELETED after publish, so docs never
+  cite `episodes/<slug>/...` for a pattern — copy shipped patterns into that folder same
+  session. **Never edit a shipped episode.**
 - **Cut for retention — but duration is EARNED (owner 2026-08-12 update).** Video beats may run
   **up to 12-15s** when the clip genuinely matches the narration; motion earns time. Cadence
   anxiety is retired; per-beat matching is not. **Stills: 3-6s MAX, always with motion
