@@ -79,7 +79,7 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   Owner's duration table: **0.6–0.9s = chapter break · 1.0–1.3s = dramatic punctuation ·
   1.5s+ = dead air** (hook-end void: 1.5s). Seamless butt-cuts need no blackout at all. See
   DESIGN.md "Chapter blackout" — every builder hand-places act-boundary blackouts.
-- **On-screen text rules (owner, ep6 v2 review 2026-08-22) — DESIGN.md "On-screen text rules":**
+- **On-screen text rules — DESIGN.md "On-screen text rules":**
   one text element per zone per window (`overlap_check.mjs` v2 enforces), one fact one instance,
   no decorative eyebrows, reveals in narration order/wording, `.glasscard` under any text over
   footage, small text never carries a moment alone (BFMG). Dates/figures = Abril `popfig`
