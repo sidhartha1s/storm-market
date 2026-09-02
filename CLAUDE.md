@@ -363,7 +363,7 @@ process count — stale node/chrome processes read as a healthy render and cost 
 - Never claim/infer owner approval. Design lock before paid generation.
 - Paid API railguards (budget caps, dry-run first, incremental progress) per global CLAUDE.md.
 - No recap/outro; descending stakes order; micro-loops every 30–45s; no-spoiler metadata.
-- **The ebook CTA is must-keep (owner 2026-08-30):** every episode, 30–40% in, hook > CTA >
+- **The ebook CTA is must-keep:** every episode, 30–40% in, hook > CTA >
   payoff, from `config.yaml channel.cta` — DESIGN.md "CTA contract". Never skipped or moved.
 - All git/gh as `sidhartha1s`. PRs small, rebase-merge, docs sweep in same PR.
 - python3 never python. Node ≥ 22 for hyperframes.
