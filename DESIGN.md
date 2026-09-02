@@ -2,7 +2,7 @@
 
 ## Core principle: the TIMELINE is master, narration is one element on it
 
-The "AI-ey" failure mode (owner-named): TTS starts, talks 20 min over b-roll, TTS ends. Rejected.
+The "AI-ey" failure mode: TTS starts, talks 20 min over b-roll, TTS ends. Rejected.
 This channel edits like a human documentary editor: narration blocks, breathing room, inserts,
 tempo changes. The model IS the editor; hyperframes is the substrate; code is a thin utility layer.
 
