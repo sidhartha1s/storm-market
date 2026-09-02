@@ -47,7 +47,7 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   look consistency); stock/PD exempt. When doubtful about a grade or a claim risk — stop and ask.
 - **Audio-first open:** the episode MUST open with audio — mid-action, high
   curiosity, high impact. A clip without audio is dead; never open on black or a silent visual.
-- **Risers/builds land WITH the narration (owner 2026-08-13):** a riser peaks and ends exactly
+- **Risers/builds land WITH the narration:** a riser peaks and ends exactly
   where the narration line stops (or a few ms after) — never still climbing after the voice is
   done. Hits under speech mount ~0.4 volume (0.6 stacks to 0 dBFS — measured ep5).
 - **Non-narration audio budget (owner 2026-08-13):** ~30s of external audio in a 32-min episode
