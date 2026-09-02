@@ -311,7 +311,7 @@ Applied to this repo's own gates, 2026-07-29:
   real ones. Whether a photograph of the next town along the track belongs under this sentence
   is an editorial call — it belongs in the segment read, not in a regex.
 
-## HARD RULE — the render is the LAST step (owner correction 2026-07-29, ep3 v3)
+## HARD RULE — the render is the LAST step
 **Never use a render as a diagnostic tool.** ep3 v3 burned nine render attempts; three were
 killed for defects that were sitting in the code the whole time. Owner: *"no fucking 9000
 renders on any fucking video ever."*
