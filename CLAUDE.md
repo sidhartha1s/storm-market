@@ -36,7 +36,7 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   longer than ~12-15s needs narration over it; TRANSCRIBE such clips first and cut at the best
   moment. News clips WITH their commentary audio are allowed — the audio mix (TTS alone, clip
   audio alone, both interleaved) is a per-cut editor decision, made with reasoning.
-- **SFX is default-ON (owner 2026-08-12, reversing the owner-optional default):** one base
+- **SFX is default-ON:** one base
   tone/bed across the episode + swells at peak moments (~every 45-60s as the script peaks).
   Library (`assets/sfx/`), owner-provided Pixabay downloads (`assets/sfx/owner-2026-08-13/`),
   DeAPI-generated tracks (keys in repo-root `.env`, recipe in LEARNINGS.md), or ffmpeg-synthesized.
