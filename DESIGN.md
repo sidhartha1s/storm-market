@@ -120,8 +120,8 @@ per-episode copy of the rule, never a hand-edited path. Shape: **hook > CTA > pa
 Core audience is 40–70+ — they watched these events on live TV; real broadcast/news/PD/survivor
 clips are the nostalgia rehook, stock footage only fills between them. **A real clip lands every
 45–60s (or as the beat needs), never long stretches of pure stock.** Network news: transcribe
-first, cut at the best moment; up to ~12-15s per pull when narrated over (owner 2026-08-12 —
-commentary audio may be featured, audio mix is a per-cut editor decision), courtesy credit in
+first, cut at the best moment; up to ~12-15s per pull when narrated over (commentary audio may
+be featured, audio mix is a per-cut editor decision), courtesy credit in
 description — credit manages goodwill, it does NOT remove
 claim risk, and it never substitutes for a license. **Claims-vs-strikes distinction (Oldshue
 ruling): network/TV material draws Content ID revenue claims (budgeted, survivable); independent
