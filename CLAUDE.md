@@ -84,10 +84,10 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   no decorative eyebrows, reveals in narration order/wording, `.glasscard` under any text over
   footage, small text never carries a moment alone (BFMG). Dates/figures = Abril `popfig`
   popups (red, ≤3 words, mid-screen), never colour-block date cards.
-- **No visible windows, ever (owner 2026-08-21):** every scheduled/background command runs via
+- **No visible windows, ever:** every scheduled/background command runs via
   `scripts/run_hidden.vbs`; a render or ritual that opens a visible Chrome/cmd window is killed
   on sight and reported, not retried. hyperframes 0.8.x opens a Windows Terminal tab per
-  ffprobe/ffmpeg spawn on this box (measured 2026-08-23, LEARNINGS "ep6 ship") — pin stays
+  ffprobe/ffmpeg spawn on this box (see LEARNINGS.md) — pin stays
   0.7.109 until an upstream version spawns them hidden; full renders on the stale pin use the
   owner's logged override `RENDER_PIN_STALE_OK=1` (`scripts/ep6_full_task.cmd` is the pattern).
 - **Panels slide out, never vanish (owner order 2026-07-31).** RHS fact panels exit `x:980,
