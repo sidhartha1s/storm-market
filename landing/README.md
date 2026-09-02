@@ -4,7 +4,7 @@ Static page, zero build step: one HTML file with inline CSS, assets alongside it
 CDN, **and no server logic at all**. Money and email both live on Gumroad — the paid manual at
 `/l/ebook`, the free state packets at `/l/packet`. Deploys to Cloudflare Pages as-is.
 
-**Live at https://paulraymond.pages.dev.** Redeploy with
+**Live at https://paulraymond.online** (Cloudflare Pages project `paulraymond`; `paulraymond.pages.dev` is the same build). Redeploy with
 `npx wrangler pages deploy <this dir> --project-name paulraymond --branch main`.
 **`--branch main` is required** — without it wrangler publishes to a preview alias named after your
 git branch and production silently keeps serving the old build.
@@ -129,10 +129,8 @@ ordered all four, so they exist — with these standing caveats on the record:
    zip, and an explicit 7-day refund policy. Contact email: owner decided 2026-08-14 there is none —
    footer + legal pages say "reply to your purchase receipt", and all support runs through Gumroad.
 
-   Still open: the **Cloudflare Web Analytics token** (beacon is in the page, commented out with
-   `YOUR_TOKEN_HERE`). It cannot be scripted from here — the wrangler OAuth token carries no
-   `analytics` scope. Easiest path is the dashboard toggle on the Pages project, which injects the
-   beacon itself and makes the commented block unnecessary.
+   The Cloudflare Web Analytics beacon block was removed from the page; enable analytics via the
+   dashboard toggle on the Pages project if wanted (it injects its own beacon).
 2. **The free state packets ship from Gumroad too** (`/l/packet`, $0, all 51 in one zip). This
    replaced a Cloudflare Pages Function that forwarded signups to Kit: it needed a `KIT_API_KEY`
    that never existed, so it 500'd on every real submit while the page promised a packet. Gumroad
@@ -183,7 +181,7 @@ sync if the cover ever changes; the author-block portrait points at it directly 
 a crop of the full cover with `background-position`. The **16:9 cover render** exists at
 `ebook/build/art/cover-16x9.png` (1920×1080), composed from the same plate with the headline and
 proof line typeset into the left half so it stays legible at Gumroad's thumbnail size — it's the
-storefront image, waiting on the Gumroad product being created (blocker 1).
+storefront image on the Gumroad product (`/l/ebook`, published, $14.99).
 
 **Byline changed to Paul Raymond on 2026-07-29** at the owner's request, replacing Paul Reynolds
 across this page, the sample, the cover art and the art notes. The cover byline was baked into the
