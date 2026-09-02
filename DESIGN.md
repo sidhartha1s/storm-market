@@ -153,7 +153,7 @@ obfuscation.**
   drops the box-shadow); panel gradients use `box-sizing:border-box` with text inside the
   solid zone. Dates/figures use the Abril `popfig` popup (red, text-shadow, ≤3 words, mid-screen)
   — never a colour-block date card.
-- **AI-first, code-second (owner directive 2026-07-26, from 6-channel experience):** scripts
+- **AI-first, code-second (from 6-channel experience):** scripts
   exist for deterministic checks (lint) ONLY. Pacing, grading, clip choice, placement, SFX are
   per-case editor judgment — never encode editorial baselines as enforcement, never constrain
   the editor with code before it has seen the specific problem.
