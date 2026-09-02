@@ -368,7 +368,7 @@ process count — stale node/chrome processes read as a healthy render and cost 
 - All git/gh as `sidhartha1s`. PRs small, rebase-merge, docs sweep in same PR.
 - python3 never python. Node ≥ 22 for hyperframes.
 
-## Learnings discipline (owner order 2026-07-22)
+## Learnings discipline
 **`LEARNINGS.md` is updated the same session as any owner correction or measured surprise** —
 hyperframes gotchas, sourcing findings, editorial rules. Read it before every episode build,
 alongside DESIGN.md. When patterns stabilize (~2-3 episodes), promote the stable workflow into
