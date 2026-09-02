@@ -248,12 +248,11 @@ session held uncommitted changes — owner-flagged, do not repeat. First action 
 storm-market session: `git worktree list` + `git status` → if you are in the main checkout
 and about to write, STOP and make a worktree.
 
-## HARD RULE — the pin stays current, and the machine enforces it (owner 2026-08-14,
-supersedes the 2026-07-29 warn-only ruling)
+## HARD RULE — the pin stays current, and the machine enforces it
 **The pin policy is deliberate** — renders run the version that was reviewed; upstream ships
 ~1.6 releases/day with behavior changes in minor bumps (0.7.81 cut the ffprobe deadline 4x;
-0.7.107 changed the hidden-audio mix). **The refresh is no longer manual.** Three pieces:
-- **`render_preflight.py`** (now actually called by `render.cmd`, both modes): pin drift
+0.7.107 changed the hidden-audio mix). **The refresh is automated.** Three pieces:
+- **`render_preflight.py`** (called by `render.cmd`, both modes): pin drift
   between config.yaml and any live `npx hyperframes@<pin>` = hard fail (exit 5); **stale pin
   = hard fail for FULL renders (exit 6)**, loud warning for drafts; npm unreachable NEVER
   blocks (currency unknown ≠ stale).
