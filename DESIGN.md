@@ -18,7 +18,7 @@ design review) before any paid generation:
 | `insert` | the clip's OWN audio | interview / TV news / radio / 911 call | OWNER CONFIRMS every insert before it enters a render |
 | `graphic` | optional VO | radar loop / map / timeline animation | self-made from NEXRAD/data = zero claim risk |
 
-## Script writing (ep5+, owner-ordered 2026-08-05)
+## Script writing (ep5+)
 
 **Read `references/script-scaling.md` before writing any script** — the retention lattice:
 per-minute invariant cadences, 3–6 min self-similar acts, loop-table plant/pay, text-only act
