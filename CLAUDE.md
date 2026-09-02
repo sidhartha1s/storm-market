@@ -9,7 +9,7 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   Dark Horizon 23 videos → 271K avg. Formula teardown in `references/script-teardown.md`.
 - Per-video economics beat cadence: quality > volume. Target 2–4 episodes/month.
 
-## Graphics & editorial taste (owner review of ep3 v2, 2026-07-29 — 2/10)
+## Graphics & editorial taste
 - **Motion graphics must have motion.** No frozen full-frame hold. Every composition carries a
   continuous element across its whole window; measured by `beat_density.py` — target zero
   compositions with a motionless stretch ≥ 4s (ep3 v3 ships at 0/38, worst gap 1.6s).
