@@ -283,7 +283,7 @@ floors/ceilings; taste stays with the model.
   `build_ep3.py` generator never emitted them between acts. A regression, not a style choice:
   the next episode's editor MUST hand-place act-boundary blackouts. ep3 stays as shipped; do
   not re-render it for this. (Generators were purged 2026-08-02 — see CLAUDE.md TRIPWIRE;
-  episode HTML is hand-authored, so "shot table" workflows no longer exist.)
+  episode HTML is hand-authored — there are no "shot table" workflows.)
 - Never two inserts back-to-back; narration re-anchors between them.
 - Stats mid-video, emotion banked at the end (teardown-verified pattern).
 - Micro-loops every 30-45s, phrasing varied; no recap; CTA short.
