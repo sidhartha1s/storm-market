@@ -267,7 +267,7 @@ and about to write, STOP and make a worktree.
   A/B proves render identity, not that no new flag or timeout matters for a 32-min episode.
   A newer version can be STRICTER, not just better.
 
-## HARD RULE — do not write code for what reasoning already does (owner 2026-07-29)
+## HARD RULE — do not write code for what reasoning already does
 **"Keep code headache low."** Before adding a script, a check, or a flag, answer one question:
 *can an agent reading the artifact do this at least as well?* If yes, it is a docs line, not a
 file. Run this gate the way `/simplify` is run — on every script this repo grows, including
