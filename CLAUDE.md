@@ -58,7 +58,7 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   (the wailing air-raid type, e.g. `soundreality-civil-defense-siren-128262.mp3`); "weewoo" =
   ambulance/police/firetruck siren. When the owner asks for a siren, it is the tornado siren
   unless he says weewoo.
-- **Preview = 98% production quality (owner):** a "rough draft" preview is a full-quality cut at
+- **Preview = 98% production quality:** a "rough draft" preview is a full-quality cut at
   draft encode settings — never a placeholder. Before ANY render: full audio-mixdown listen +
   hook watch (the experience pass); a known-below-spec layer means STOP and report, not render.
 - **Script never references its own structure (owner):** no "concluding", "summarizing", "in
