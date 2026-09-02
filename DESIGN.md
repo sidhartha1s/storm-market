@@ -294,7 +294,7 @@ floors/ceilings; taste stays with the model.
   title card; it IS the outro (still no recap, no content summary).
 
 ---
-# GRAPHICS CONTRACT (binding, from ep2 — owner order 2026-07-29 after ep3 v2 scored 2/10)
+# GRAPHICS CONTRACT (binding, from ep2)
 **Source of truth = `episodes/ep2-2011-super-outbreak/compositions/*.html`. READ THEM before
 authoring any graphic. Do not infer this language from a previous episode's index.html.**
 
