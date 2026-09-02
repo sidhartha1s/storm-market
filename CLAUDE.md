@@ -240,7 +240,7 @@ Per episode in `episodes/<slug>/`:
   Studio preview cannot realtime-play 15+ min media-heavy comps — don't offer it for review.
   Full-quality render ONLY after owner approves the draft.
 
-## HARD RULE — worktree isolation (owner correction 2026-07-28, ep3 v1 violation)
+## HARD RULE — worktree isolation
 **NEVER build or edit in the main checkout. EVERY episode/feature session starts with
 `git worktree add .worktrees/<task> -b <branch>` BEFORE the first file write.** The main
 checkout is shared by parallel sessions; v1 of ep3 was built directly in it while another
