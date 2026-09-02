@@ -200,7 +200,7 @@ JS-driven — never CSS @keyframes), subtle vignette, occasional drifting dust s
 one filmic look that also hides stock/archive/AI seams. Reusable snippet `assets/styles/grain.js`
 — a snippet, not a scene template.
 
-## Music (owner order 2026-07-22)
+## Music
 
 Tense/curious instrumental bed per episode — generate via DeAPI ACE music when available
 (keys in ./.env), else PD/CC0 fallback (attribution logged in provenance). Ducked under
