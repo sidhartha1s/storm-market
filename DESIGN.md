@@ -136,8 +136,7 @@ obfuscation.**
 - Render: `scripts\render.cmd <slug> <draft|full>` — full recipe (flags, env vars, `--workers 3`
   pin) baked in; see repo CLAUDE.md step 5. Never hand-type render commands.
 - Each episode's index.html is authored fresh (agent-as-editor). Reusable CSS snippets may
-  accumulate in `assets/styles/`. **Library-first (owner order 2026-08-27, amends the earlier
-  blanket "NO scene templates" line):** before hand-authoring any graphic, search
+  accumulate in `assets/styles/`. **Library-first:** before hand-authoring any graphic, search
   `library/catalog-index.json` (in-house exemplars + triaged official HyperFrames catalog;
   browse: `python3 -m http.server 8765` from `library/` → `/gallery/`) and
   `npx hyperframes catalog --query "<intent>"`. COPY the closest exemplar/snippet/official
