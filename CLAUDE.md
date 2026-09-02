@@ -288,7 +288,7 @@ on sight. Every editorial decision is hand-authored by the session via Edit/Writ
 per-cut judgment (the ep1/ep2 method). This is why ep1/ep2 were 9/10 and generator-built ep3
 was 2/10. The deleted generators (`build_ep3.py`, `gen_*.py`) are the banned pattern; do not
 resurrect it. **The test: if the script must know what a beat MEANS, it is authoring.**
-**Allowed (owner 2026-08-16): one-shot MECHANICAL TRANSFORMS of already-hand-authored
+**Allowed: one-shot MECHANICAL TRANSFORMS of already-hand-authored
 decisions** — global retimes, uniform attribute arithmetic, mechanical renames — under ALL of
 these conditions: (1) deterministic and content-blind (pure math/renames, zero editorial
 choice); (2) the session reviews the resulting diff; (3) the full static gate suite passes
