@@ -281,7 +281,7 @@ photograph, does this cut land, does the picture contradict the voice.*
 The tell for a script that should have been a docs line: it needs a hand-tuned stoplist to
 stop being wrong. That is judgment wearing a regex.
 
-**TRIPWIRE (owner 2026-08-02, amended 2026-08-16):** any script that AUTHORS episode HTML —
+**TRIPWIRE:** any script that AUTHORS episode HTML —
 generates, chooses, or alters cuts, holds, graphics, on-screen text, asset picks, or the
 relative design of timings in `index.html` or `compositions/*.html` — is forbidden. Delete it
 on sight. Every editorial decision is hand-authored by the session via Edit/Write with
