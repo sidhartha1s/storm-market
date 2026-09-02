@@ -60,7 +60,7 @@ Per beat: agent pulls 2-3 candidates, extracts frames, vision-checks, picks. Too
 License check per item; storm-chaser footage NEVER without license; news-network footage
 sparingly/short/narrated-over (claims budgeted, segments must survive being claimed).
 
-### Cold-open hook contract (owner-rated, ep2 rebuild — 2026-07-27; amended 2026-08-05)
+### Cold-open hook contract
 The first 25-30s decide the video. Owner rated ep2's first hook 0.6/10 and the rebuilt one
 shipped; these are the standing requirements for every episode's cold open:
 - **NO black start (owner order 2026-08-05, ep5+): frame one is MID-ACTION** — the episode's
