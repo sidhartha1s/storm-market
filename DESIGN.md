@@ -222,7 +222,7 @@ hook cuts 2-3s · body 4-8s · holds 3-10s · inserts 5-15s. The editing agent p
 point from that segment's words.json (cut on the word being spoken). Lint enforces only hard
 floors/ceilings; taste stays with the model.
 
-## Cadence + sync rules (owner review, ep1 v1 — 2026-07-22)
+## Cadence + sync rules
 
 - **Reason every hold**: any shot >8s carries a written justification in the edit script
   ("lets the beat land" is valid; "clip was that long" is not). Vary rhythm — 1.5s stingers
