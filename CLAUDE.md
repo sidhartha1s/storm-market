@@ -27,7 +27,7 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   `references/editing-patterns/`. Episode folders get DELETED after publish, so docs never
   cite `episodes/<slug>/...` for a pattern — copy shipped patterns into that folder same
   session. **Never edit a shipped episode.**
-- **Cut for retention — but duration is EARNED (owner 2026-08-12 update).** Video beats may run
+- **Cut for retention — but duration is EARNED.** Video beats may run
   **up to 12-15s** when the clip genuinely matches the narration; motion earns time. Cadence
   anxiety is retired; per-beat matching is not. **Stills: 3-6s MAX, always with motion
   (zoom/pan), then cut — "this is not a PowerPoint presentation."** Prefer video over stills
