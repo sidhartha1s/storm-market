@@ -181,7 +181,7 @@ Per episode in `episodes/<slug>/`:
    during a final render. 20-min ≈ 30–60 min on this box (GTX 1650 + 16GB); ep2's 28-min full
    took ~75 min at 2 workers.
 6. QC gates, in order (all mandatory before render):
-   a. **Graphics/pacing self-audit (AI judgment, owner order 2026-07-23):** re-walk every
+   a. **Graphics/pacing self-audit (AI judgment):** re-walk every
       graphic, text card, quote, and clip as a viewer — landing / idling / minor fix? — and
       apply fixes. Info beat every 2-3s on graphics; pacing baselines in DESIGN.md are
       guidance for reasoning, never script-enforced.
