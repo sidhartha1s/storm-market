@@ -133,7 +133,7 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   build a segment that dies if claimed. **Rehook cadence: a REAL clip
   (broadcast/PD/survivor) every 45–60s — core audience 40–70+ saw these events live; stock only
   fills between real clips.** Full rule in DESIGN.md.
-  **Broadcast variety rule (owner 2026-07-26): keep broadcast pulls SHORT and MEANINGFUL —
+  **Broadcast variety rule: keep broadcast pulls SHORT and MEANINGFUL —
   length is editor judgment (a few seconds, not 12s+ single pulls; "4,4,4" was an example, not
   a formula); vary sources, cuts, and chapters; never reuse the same broadcast cut twice; grade
   all broadcast/private-rec clips with a unified look (stock/PD exempt). Re-read the clip's
