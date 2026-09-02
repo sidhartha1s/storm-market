@@ -182,7 +182,7 @@ obfuscation.**
 - **Small text never carries a moment alone (BFMG).** A quote card, a cost list, a headline
   pair = glass card OVER footage. Dark-gradient `c-*dark` fillers are for ≤5s bridges only.
 
-## Content ID / claims protocol (owner-settled 2026-07-22)
+## Content ID / claims protocol
 
 Content ID cannot be scanned offline — the protocol is layered:
 1. **Structural immunity**: PD / stock / self-made / AI assets are un-claimable by construction.
