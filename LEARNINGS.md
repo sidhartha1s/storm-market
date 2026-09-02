@@ -2,6 +2,52 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
+## Promoted rules index
+
+Standing rules still governing episode quality, compacted from the journal below. Each
+line is a pointer, not a copy — find the full context by searching the journal for the
+quoted section header.
+
+- The ebook CTA is a must-keep contract: hook > CTA > payoff, landing 30–40% into runtime, from `config.yaml channel.cta`. → §"the ebook CTA is a channel asset + a must-keep contract"
+- The 1440p HEVC file is the YouTube upload artifact; re-run the master gain/limiter step on any owner-supplied cut before the 2K upscale, never bit-copy its audio. → §"1440p upload file is HEVC now"
+- mp4 surgery on a finished render uses h264_nvenc first, never libx264 — the quality gap doesn't survive YouTube's transcode at consumer-master bitrates. → §"1440p upload tier + NVENC-first for mp4 surgery"
+- Convert GIFs before mounting (single-frame → PNG, animated → mp4); every mounted video needs an audio stream — mux silence into mute clips. → §"ep6 render-failure ledger"
+- Audio slots longer than their file are silently truncated (WARN, not FAIL) — read the WARNs of a failed render; clip windows must never exceed the real clip length. → §"ep6 render-failure ledger"
+- Batch every owner approval ask into ONE message, as early as possible — scattered mid-run checkpoints don't reliably land. → §"ep6 owner rules + broadcast-geometry gotchas"
+- The hook must contain zero muted/mediocre elements — every beat is mid-action with its own audio. → §"ep6 owner rules + broadcast-geometry gotchas"
+- Video-range black is Y=16, not 0 — threshold pillarbox/blanking detectors at ≤17, or use cropdetect. → §"ep6 owner rules + broadcast-geometry gotchas"
+- Broadcast compilation reels have per-segment geometry — run cropdetect per cut window, never one blanket crop per reel. → §"ep6 owner rules + broadcast-geometry gotchas"
+- Budget scripts on the previous episode's manifest wpm, then verify against the new manifest after the first full TTS run — probe-TTS only catches gross errors. → §"ep6 TTS + sourcing"
+- Scene picking from long reels goes through contact sheets first — never per-frame agent probing. → §"ep6 TTS + sourcing"
+- Scripts are written on the retention lattice (`references/script-scaling.md`) — read it before writing any script. → §"ep5 kickoff: the retention lattice + script fact-QC layer"
+- Script fact-QC closes every `[verify]` marker before TTS runs; a conditional fact that fails verification gets cut, never softened. → §"ep5 kickoff: the retention lattice + script fact-QC layer"
+- Every audio-carrying insert is transcribed in full before cut selection; the cut lands on the transcript's action/emotion peak. → §"ep5 kickoff: the retention lattice + script fact-QC layer"
+- The hook has no black start — frame one is already mid-action, anchor audio already mid-transmission. → §"ep5 kickoff: the retention lattice + script fact-QC layer"
+- The generator tripwire: any script that authors episode HTML (chooses cuts, holds, graphics, timings) is forbidden — delete it on sight. → §"CHECKPOINT: revert to the ep2 method"
+- The full hook contract lives in DESIGN.md — apply it from episode scene one, don't rediscover it. → §"ep2 hook rebuild + ship"
+- `--workers` must be pinned on every full render, never left on "auto". → §"ep2 hook rebuild + ship"
+- Shipping while another session holds `.git/index.lock`: work from a `git worktree add`, never touch the main checkout. → §"ep2 hook rebuild + ship"
+- Insert/AV cuts land on sentence boundaries via transcript, always — never mid-sentence. → §"ep2 v1 owner review"
+- Verify each CUT, not just the source video — extract a frame from the cut itself and check chyrons/landmarks against the claimed event. → §"ep2 v1 owner review"
+- The draft-proxy render (`--quality draft --crf 32 --fps 15 --workers 3`) is the mandatory review path; full-quality renders only after the owner approves the draft. → §"draft-proxy render validated"
+- Cadence is reasoned per clip, never defaulted — any hold over ~8s needs a written reason; no visual repeats within an episode outside a flagged callback. → §"owner review of ep1 v1"
+- The sync rule: the frame on screen must never contradict the narration (named entity / time-of-day / timestamp ⇒ a matching or neutral visual). → §"owner review of ep1 v1"
+- Never claim an editorial rule "fixed" from memory — re-run the lint/checks on the actual final file before claiming it. → §"RCA: "repeats fixed" claim was FALSE"
+- Exhaust every static gate, then render once — a render is the last step, never a diagnostic tool. → §"ep3 v3 — stop rendering to find things a script can find"
+- Run blackdetect on every render — the picture track can be empty while every static gate (lint, graphics_qc, hyperframes check) still passes. → §"ep3 v3 — the defects no code gate was looking for"
+- `grep -o ' id="[^"]*"' index.html | sort | uniq -d` must print nothing before every render — duplicate element ids render black with no gate catching it. → §"Duplicate element ids render BLACK"
+- `optimize_clips.py` must preserve audio and mux silence for mute clips; ffprobe every insert clip for an audio stream before rendering. → §"optimize_clips.py strips audio and ignores bitrate"
+- Long renders launch via schtasks (or `run_hidden.vbs`), never harness background Bash — the reaped child tree dies silently mid-capture. → §"Harness background tasks get reaped"
+- Stills run 3–6s max, always with motion; video beats may run up to 12–15s when the clip genuinely matches the narration. → §"Owner pivot 2026-08-12"
+- The doctor rule: a known-below-spec deliverable means STOP before the render, state exactly what's broken, and wait — never render on a known defect. → §"The doctor rule"
+- Count SOURCES, not cuts, when sourcing — assertion assets (broadcast pulls, official audio, survivor clips) beat another angle of the same b-roll. → §"Sourcing doctrine for future episodes"
+- The full audio-mixdown scan (volumedetect on 30s windows) is a mandatory pre-render gate, not optional. → §"Audio mixdown as a pre-render gate"
+- `scripts/audio_levels.py` is the gate for insert/narration/bed levels — run it before every mixdown build. → §"Audio levels + media budget hardening"
+- No visible windows, ever — every scheduled/background command runs through `scripts/run_hidden.vbs`. → §"No visible windows, ever"
+- The on-screen text rules (zone occupancy, one fact one instance, no decorative eyebrows, glass under text over footage) live in DESIGN.md — `overlap_check.mjs` v2 enforces them. → §"ep6 draft v2 review — text collisions were a CHECKER false negative"
+- hyperframes 0.8.x opens visible console windows on this box — the pin stays 0.7.109 until an upstream version spawns ffmpeg/ffprobe hidden. → §"ep6 ship"
+- Search `library/catalog-index.json` / `npx hyperframes catalog --query` before hand-authoring any graphic — MG library-first. → §"ep6 ship"
+
 ## 2026-08-30 — the ebook CTA is a channel asset + a must-keep contract (owner order, ep4 rewire kickoff)
 
 1. **The CTA was never in the pipeline.** ep2's Paul CTA was spliced into the finished mp4 by the
@@ -56,6 +102,113 @@ Every owner correction / measured surprise lands here same session. Newest first
    trim/concat from the ORIGINALS (never a second generation from an intermediate); verify
    splice frames + duration on the output; shift SRT cues and chapter timestamps by the net
    insert-minus-removed delta.
+
+## ep6 ship (2026-08-23) — hyperframes 0.8.x, the hidden-console chain, and a preflight bug
+- **hyperframes 0.8.x opens a visible Windows Terminal tab per ffprobe/ffmpeg spawn on this
+  box; 0.7.109 does not.** Measured with a process watcher during a hidden demo render: every
+  `ffprobe.exe`/`ffmpeg.exe` child of the 0.8.10 render node got its own `conhost.exe` (a new
+  console) and `OpenConsole.exe` (a Windows Terminal tab) appeared at the same instants — with
+  the render launched through `run_hidden.vbs` exactly like the 0.7.109 renders that show
+  nothing. Owner saw "lots of CMDs, 4 at a time". 0.8.10 spawns its ffmpeg/ffprobe children with
+  different flags than 0.7.109 (eight `windowsHide:true` sites vs two, new stdio shapes) and
+  under node 24's libuv those allocate a fresh console. The telemetry opt-out
+  (`HYPERFRAMES_NO_TELEMETRY=1` / `DO_NOT_TRACK=1`) was a red herring — one detached `node -e
+  fetch` per run, not the tab source; the env stays set (harmless) but is not the fix.
+  **Decision (owner):** ep6 full render on 0.7.109 with the explicit, logged override
+  `RENDER_PIN_STALE_OK=1` (render_preflight.py prints `[OVERRIDE]`); pin stays 0.7.109 until an
+  upstream version spawns ffmpeg hidden. The 0.8.10 demo render itself PASSED (4m08s, mp4 on
+  disk) — the blocker is the windows, not the output. Kill rule: stop the TASK and kill its
+  process TREE from the task's root pid; `*hyperframes*`/`*pin_ritual*` command-line matches also
+  hit this session's own bash tool shells (and other sessions') — done twice, never again.
+- **render.cmd ran preflight BEFORE its own `set HYPERFRAMES_FF*_PATH` lines** → media_budget.py
+  measured the slow PATH ffprobe and refused the full render (marker 3). Reordered 2026-08-23:
+  env first, then preflight. The draft path had passed only because the PATH spawn happened to be
+  under the threshold that day.
+- **16 GB is not "room for everything".** frame composites (80 videos in one page) +
+  overlap_check + a demo render + faster-whisper concurrently → `mkl_malloc`, `uv_spawn EAGAIN`,
+  "Unable to capture screenshot" at frame 390. One browser-heavy job at a time; check
+  `FreePhysicalMemory` before launching (2.5 GB free → `RENDER_WORKERS=2`, 7.5 GB → 3).
+  Separately: the faster-whisper `small.en` cache on this box is corrupt (`mkl_malloc` regardless
+  of RAM) — use `base.en` int8.
+- **Subagent briefs must forbid `cd`.** Two Explore agents issued `cd`-prefixed Bash and produced
+  8+ permission prompts on the owner's screen in auto mode. Prefer Grep/Read in the main session;
+  any subagent with Bash gets "never cd; absolute paths only" in the brief.
+- **overlap_check v2 must `page.close()` the index page before staging comps** — the episode page
+  holds ~80 videos; keeping it open while staging 14 comps crashed the renderer ("Target
+  crashed"). Fixed in `scripts/overlap_check.mjs`.
+- **Gate noise to expect on a finished episode:** `sweep_episode.py` FAILs on src-less `<section>`
+  gradients (`?` rows: same-track overlap, adjacent duplicate, asset reuse, media exists) and on
+  stills >6s that the lint pacing report already lists — lint is the hard gate. `verify_render`
+  blackdetect (pix_th 0.10) flags every dark-card beat as "black" and freezedetect flags the
+  designed dark-card holds (ep6 final: 730.7/7.1s, 1120.6/8.0s, 1225.2/6.6s radio-widget tail,
+  1288.4/6.0s, 1494.4/11.4s) — read them against the timeline, they are not blank frames. Also:
+  ffmpeg progress uses `\r`, so `tail`/`grep` on verify output hides the `freeze_start` lines —
+  `tr '\r' '\n'` first, or run freezedetect with `-nostats`.
+- **Credits need provenance rows for EVERY still.** The seven owner-supplied Wikimedia stills
+  (charity-web-c*, hsdrrs-web-c*) had no provenance row; licence/author were pulled from the
+  Commons API and the files matched to the Commons thumbnails by a subagent before writing the
+  CC-BY attribution block (`media/provenance-wikimedia-stills.csv`). Four of the six used are
+  CC BY / CC BY-SA — attribution is mandatory, not courtesy.
+
+- **MG library built (2026-08-27, owner-ordered).** `library/` = catalog-index.json (195
+  storm-relevant official HyperFrames items triaged by 12 vision agents from 286 candidates;
+  82 top-scored with full local source in `library/official/`) + 8 in-house exemplars +
+  15 overlay-snippet groups extracted from shipped eps (`library/inhouse/`), + localhost
+  gallery (`library/gallery/`, serve from `library/`). Extraction gotcha worth remembering:
+  **sub-comps inherit color/font from the EPISODE index.html body styles** — an extracted
+  g-*.html is NOT self-contained until those inherited rules are baked into its own <style>
+  (first extraction pass rendered black-on-black). Official catalog metadata lives cached at
+  `~/.hyperframes/cache/` (374 registry JSONs, zero network to enumerate); each docs page
+  `.md` ships the item's full HTML source; `npx hyperframes catalog --query` is built-in
+  semantic search — never build a custom one.
+## ep6 draft v2 review — text collisions were a CHECKER false negative (owner 2026-08-22)
+- **overlap_check v1 checked the wrong slices.** It sampled one instant per card/comp pair and
+  never looked at comp-INTERNAL text or mid-tween positions; every owner screenshot (AUG 23 over
+  the DEPRESSION chip, FLORIDA LANDFALL mangle, 80% twice) was in a class it did not sample.
+  v2: stage each comp (template → bare gsap page — loading the raw `<template>` file renders
+  NOTHING and silently PASSes), step 0.5s through the host window, post-transform bboxes of all
+  visible leaf text, pair intersection >25% of the smaller box, dup-fact strings, card zones vs
+  comp text. Two real bugs it then caught in its own first runs: the template staging (above) and
+  a card whose only line held an `<em>` had NO leaf → full-frame zone → "collided with everything".
+- **Rules now in DESIGN.md "On-screen text rules"**: zone occupancy, one fact one instance, no
+  decorative eyebrows, narration order/wording, glass under any text over footage, small text
+  never alone (BFMG). Encoded because the same four habits shipped in v1 AND v2.
+- **Pre-render frame composites without a render:** a one-shot playwright script can hide every
+  `[data-start]` element outside T, seek videos (`currentTime`), inject the comp template into
+  its host div and seek both timelines — ~5s per frame, faithful enough for layout QC at every
+  owner-flagged timestamp. Scratch-space only (tripwire: it reads, never authors).
+- **"Source ends early" — check what the SOURCE is before saying so (corrected 2026-08-23):**
+  ins-hodges "cut before finishing" was first answered "the C-SPAN pull ends at 7.44s, nothing to
+  extend". Wrong: the 7.44s file was OUR pull; the source is the local 39-minute C-SPAN hearing
+  (`media/audio-assert/ins06_house_testimony.mp4`, transcript alongside). Re-cut to the sentence
+  end (8.85s) and retimed everything after it by +1.55s. Never call a pull "the source".
+
+## No visible windows, ever (owner 2026-08-21)
+- schtasks interactive tasks pop a cmd window on the desktop. ALL scheduled/background
+  commands run through `scripts/run_hidden.vbs` (wscript, window style 0 — no flash):
+  `/tr "wscript.exe <abs>\scripts\run_hidden.vbs cmd.exe /c <abs>\scripts\render.cmd <slug> <mode>"`.
+  Never a bare `cmd /c` task action, never foreground `cmd //c` runs of render.cmd either.
+- render.cmd preflight also refuses when ≥3 heavy processes (e.g. leftover headless chrome
+  from QC runs) are alive — exit 2 with marker written but log untouched; kill QC browsers
+  first, then relaunch.
+
+## Audio levels + media budget hardening (ep6, 2026-08-17)
+- **Insert audibility is a FILE problem, not an attr problem.** NPR hook insert sat at
+  data-volume 1.0 and was still 6.8 dB under narration — the source wav was quiet.
+  Gain-normalize insert FILES to the narration median (measure with volumedetect) before the
+  mixdown gate. `alimiter` boosts by default (`level=1`); pass `level=0` or check the result —
+  it overshot two inserts +5 dB before correction.
+- **`scripts/audio_levels.py` is the gate for this** (run before every mixdown build):
+  effective dB = file mean_volume + 20·log10(data-volume); narration median is the reference;
+  inserts must land ±2.5 dB of it; music beds fail if >30 dB under; beds warn when competing
+  with voice. Catches the ep6 NPR defect and the ep6-v1 "score at 0.08 = silent" defect.
+- **`optimize_clips.py` now escalates crf (23→27→31) until under the 150 MB media budget and
+  PRESERVES audio** (aac copy-encode; silent track muxed for mute clips). The old `-an` pass
+  forced a 15-clip re-mux ritual + 36-clip silent-track patch every optimize run — retired.
+  Measured ep6: 51 clips crf23 = 194 MB, crf27 = 143 MB; crf27 invisible under archival grain.
+  CAVEAT (ep1 session, 2026-08-24 merge): optimize_clips re-encodes from `media/_orig/`
+  backups, so a rerun reverts any per-file gain fix applied after a previous pass —
+  audio_levels.py catches this.
 
 ## 2026-08-16 — ep6 render-failure ledger (3 compile failures, each root-caused)
 
@@ -156,6 +309,150 @@ D. **Broadcast compilation reels have PER-SEGMENT geometry — run cropdetect pe
    tags scene numbers per beat → one ffmpeg batch extracts the tags. Code does everything
    deterministic; eyes only choose.
 
+## Full-render stability on this box (ep5 v5c, two attempts, 2026-08-14)
+- **Close studios/headless browsers before a full render.** Attempt 1 died at frame 29553
+  (capture page hung 4+ min, then Page.captureScreenshot protocol error) with 2 studio servers +
+  8 chrome-headless shells resident. Attempt 2, same comp, clean box: completed. Free-RAM dipped
+  to 0.4GB mid-render and survived — contention, not the comp, is the killer.
+- **No resume exists** (0.7.81): captured frames stream to the encoder and are deleted; a crashed
+  run leaves nothing reusable. Budget a full restart into any crash.
+- **Baseline speed: ~600-900 frames/min at 1080p30, 2 workers** (0.3-0.5x realtime) — matches
+  ep2's 75-min/28-min history. 3000fpm/1.1x-realtime expectations don't hold on this box.
+- **Delete `render_*_done.marker` BEFORE relaunching a same-name render** — a stale marker from
+  the failed attempt made the watcher report the new run dead (false "exit=1").
+- **schtasks wrappers: never bare `python3`** — cmd resolves it to the Microsoft Store stub
+  (exit 9009). Use the full `...\Python312\python.exe` path.
+- **Harness reaping applies to ALL long background jobs, not just renders** — a 10-min master
+  build got killed mid-measure. Anything over ~2 min goes schtasks + done-marker + Monitor.
+
+## HF studio (`hyperframes preview`) — capabilities and traps (ep5 v5c, 2026-08-14)
+- **Studio cannot preview a full media-heavy episode.** Opening the 32-min comp fired 2,200+
+  media requests at once — canvas stays black, audio never starts, node server crawls. For an
+  audio/hook check, build a trimmed scaffold comp instead (junction media/audio, subtree-filter
+  index to the window, clamp root data-duration).
+- **Runtime comp length = max(element windows, LAST GSAP TWEEN POSITION)** — data-duration alone
+  doesn't clamp playback. Trimming a comp means trimming the script's tween/kb positions too.
+- **`data-composition-id` is a contract with the timeline JS** — renaming it breaks the runtime
+  (`StaticGuard: Timeline registered as X but no element has data-composition-id=X`).
+- **Studio MUTATES index.html** (stamps `data-hf-id` on every element). Harmless to renders, but
+  any script matching tag shapes must not assume attribute order (build_srt.py fixed 2026-08-14).
+  Diff index.html after any studio session before trusting downstream tooling.
+- **Studio realtime playback jitters video under a transform tween** (per-tick video seeks) —
+  looks like violent shake; the seek-by-frame RENDER is clean. Verify motion complaints against
+  render frames (tblend diff series: shake = sawtooth; smooth = flat bands) before "fixing".
+
+## Owner answer standards (transcript sweep, 2026-08-13)
+- A "what's your math / on what basis" question gets the actual logic and data, answered FIRST,
+  before any pivot to fixes. Padded defensive estimates read as lying — quote compute-real time.
+- Anything that went wrong twice gets a process RCA (what gate should have caught it, why it
+  didn't), and the fix lands in the durable docs the same session — corrections that live only
+  in chat evaporate.
+- "News" (or any single named source) is one of ten thousand — never over-index on a source
+  because the owner mentioned it once.
+- Same-cut reuse: a specific short cut never repeats in a tight window; different in/out points
+  of a longer reel are different cuts. The sweep family gate encodes this — keep it calibrated.
+
+## Audio mixdown as a pre-render gate (ep5 v5, 2026-08-13)
+Build the full audio mix from index.html (atrim+adelay+volume+amix, normalize=0) and scan 30s
+windows with volumedetect BEFORE rendering. Caught: kick hit (vol 0.6) stacking with narration
+start at an act boundary = 0dB clip. Hits under speech need ~0.4. Target: mix mean ≈ -19,
+window peaks ≤ -1.5. Also: sparse-keyframe warnings in the render log (dvbhawk-helipov,
+calfire-itf-willhappenagain) cause freezes — re-encode with -g 30 before the next full render.
+
+## Music policy update (owner order 2026-08-13, supersedes "never downloaded music")
+Owner-provided Pixabay downloads (assets/sfx/owner-2026-08-13/) and DeAPI-generated tracks are
+ALLOWED as music/SFX. Still forbidden: anything ripped from YouTube/unlicensed. DeAPI recipe:
+POST /api/v2/audio/music (multipart; model AceStep_1_5_Turbo, guidance_scale exactly 1,
+inference_steps exactly 8, lyrics "[Instrumental]", format mp3, max 300s) — poll
+GET /api/v2/jobs/{request_id} (NOT /requests/ — that 404s). ~$0.0009 per 60s. Generated tracks
+pad ~3s of tail silence — trim/fade before mounting. Keys in repo-root .env (gitignored).
+
+## Sourcing doctrine for future episodes (owner, ep5 review, 2026-08-13)
+ep5 mounted 142 cuts that traced to only ~30 real source acquisitions — 5-6 reels re-sliced.
+Owner: "30 sources should be 60. The clips are there." Count SOURCES, not cuts; and count
+ASSERTION assets specifically (broadcast pulls, day-after newspapers, official audio, presser
+clips, survivor clips, before/after stills) — third-party proof that the thing happened beats
+another angle of the same b-roll. Re-slicing a reel is editing, not sourcing.
+
+## The doctor rule — known-below-spec = STOP, never render (owner, ep5 v4 RCA, 2026-08-13)
+v4 shipped a music layer I knew was below the ordered spec ("Hybrid C") — flagged it in my own
+park summary and rendered anyway. Owner burned a review cycle discovering what I already knew.
+Standing rule: the moment a deliverable is known below spec, STOP before the render, state
+exactly what is broken, give options, wait. A render on a known defect wastes GPU hours AND the
+owner's review hours. Corollary: verification gates check STRUCTURE; before any render also do
+an EXPERIENCE pass — listen to the full audio mixdown, watch the hook, spot-watch 3 random
+minutes. A green suite on an unwatchable artifact is a failed QC.
+
+## Owner pivot 2026-08-12 — cadence, sourcing, SFX, durable references
+
+- **Cadence anxiety retired:** video beats up to 12-15s when genuinely matched; stills 3-6s MAX
+  with motion (sweep now enforces 6s, was 12s); prefer video everywhere. Claim-risk pulls >12-15s
+  need narration over them; transcribe news clips before cutting.
+- **SFX is default-ON now** (base tone + peak swells, library/ffmpeg-synth only) — ep5 v2 shipped
+  with a single wind bed the owner heard as "buzzing"; a low-volume steady loop under silence
+  reads as a defect, not atmosphere. Design per scene, verify post-render.
+- **Docs must not cite episode paths** — episode folders get deleted after publish. Shipped
+  patterns get COPIED into `references/editing-patterns/` the same session ("you want it to be
+  gone with the wind?").
+- **Docs drift is a real defect class:** "still ≤12s" survived two owner cadence corrections
+  ("will your grandfather come and revise this?"). Any editorial rule change sweeps CLAUDE.md,
+  DESIGN.md, LEARNINGS.md AND the gate scripts in the same session.
+- **Graphics exits need ~1s land time** after the last beat — v2 cut scenes one or two frames
+  after motion ended, repeatedly ("one time is okay... three and four and five times?").
+- **PySceneDetect** (scenedetect.com) approved for splitting long sources into scene cuts —
+  validate on this box before first use; cheaper than agent OCR passes.
+
+## Harness background tasks get reaped — long renders need schtasks (measured ep5, 2026-08-06)
+
+Two draft renders launched via the harness's background Bash died mid-capture (41% and 33%)
+when the harness killed the task — the CHILD TREE dies too, a few minutes later (the log
+keeps heartbeating briefly, which reads as "survived" and isn't). `Start-Process` was already
+known-fatal (ep3 attempt 11). The reliable launcher on this box is a one-shot **Windows
+scheduled task**: `schtasks /create /tn ep5draft /tr "cmd /c cd /d <worktree> &&
+scripts\render.cmd <slug> draft" /sc once /st 23:59 /f && schtasks /run /tn ep5draft` —
+fully detached, survives the session. Watch it with a log-mtime stall monitor (>10 min
+silent = dead), never with a process-name count (MCP daemons match loose filters).
+
+## optimize_clips.py strips audio and ignores bitrate (measured ep5, 2026-08-06)
+
+Two silent failure modes in one script, both hit on ep5:
+- **`-an` is unconditional** — it stripped the audio track from all 4 owner-gated INSERT
+  clips (the whole point of an insert is its audio). Nothing warned. Restored from
+  `media/_orig/` with `-c:a aac`. Rule: after ANY optimize pass, ffprobe the insert clips
+  for an audio stream before rendering. (2026-08-17: optimize_clips.py itself now preserves
+  audio + muxes silence for mute clips — see "Audio levels + media budget hardening". The
+  ffprobe-before-render rule stands for any ad-hoc batch.)
+  **RECURRED on ep5 v3 (2026-08-12):** an ad-hoc media-budget crf pass re-encoded every
+  mounted mp4 >900KB with `-an` and stripped ins-mckay again; render failed loud at
+  `audio_processing_failed` (hyperframes' extractAudioFromVideo, stage "extract", found no
+  audio stream — that error code means AN AUDIBLE VIDEO ELEMENT, not a corrupt file). The
+  rule is not about optimize_clips.py — it is about `-an` in ANY batch: exclude every
+  element mounted un-muted / data-has-audio from the batch, and ffprobe all audible
+  elements for an audio stream as the last step before any render.
+  (2026-08-17: optimize_clips.py itself now preserves audio + muxes silence for mute
+  clips — see "Audio levels + media budget hardening". The any-ad-hoc-batch rule stands.)
+  **Corollary (ep5 v4, 2026-08-12): a "lost" source is probably in `media/_orig/`.**
+  Two audio-stripped sources triggered a re-download hunt (Wayback CDX + Brightcove id
+  spelunking for a Gannett CDN mp4) while byte-identical audio-bearing originals sat in
+  `media/_orig/` the whole time — optimize passes MOVE originals there. Check `_orig/`
+  (and `_orig_media/`) before any re-download. Bonus fact recovered anyway: the dozer-911
+  mp4 URL is `media.gannett-cdn.com/28911775001/28911775001_5851158634001_5851141890001.mp4`
+  (still live; provenance.csv row elided it with `...`— never elide URLs in provenance).
+- **It only checks resolution and window-length, not bitrate.** ffmpeg scene cuts made with
+  stream-copy keep the source's 15-19 Mbps, so 78 within-spec clips still totalled 645 MB
+  against the 150 MB decode budget. Fix: re-encode cuts at libx264 crf 23-27 when cutting
+  (~0.5 MB/s lands the budget); crf 27-32 passes cost little on graded b-roll.
+
+## Duplicate element ids render BLACK — and no gate caught it (measured ep5, 2026-08-06)
+
+Two `<video>` windows shared `id="vx-carrwaterb2"` (a copy-paste slip during the retention
+re-cut). hyperframes keys frame placement by element id, so the FIRST window (581.9s, 8s)
+rendered **pure black** while every static gate passed — sweep, lint, blank_scan and
+graphics_qc all read attributes, none checks id uniqueness. Found only by post-render
+`verify_render.sh` blackdetect + eyeballing the frame. **Check before every render:**
+`grep -o ' id="[^"]*"' index.html | sort | uniq -d` must print nothing. (Candidate for a
+sweep_episode.py check — mechanical, must-never-forget.)
+
 ## 2026-08-05 — ep5 kickoff: the retention lattice + script fact-QC layer (owner orders, all standing from ep5 on)
 
 **New standing process (each has its full text where noted):**
@@ -228,6 +525,289 @@ media_budget, render_preflight), render-ops knowledge (workers pin, protocol tim
 render-is-last-step), DESIGN.md graphics anatomy + hook contract + chapter blackouts,
 master_deliverables/render.cmd infra. ep1–ep3 shipped videos untouched; ep4 will be REDONE
 hand-authored from this base, reusing its research + assets.
+
+## Render size + HEVC compression (measured ep3 v5, 2026-07-30)
+
+A full render at `--crf 16 --fps 30` is ~20 Mbps → **5.08 GB for 34m56s**. That is near-lossless
+overkill for graphics/stills content. Two ways to ship smaller **without visible quality loss**:
+
+- **Single-pass (no extra step) — the "compress during render" answer:** hyperframes emits
+  **H.264 only** for mp4 (vp9 for webm); there is **no HEVC output flag**. But `--crf`, `--fps`,
+  and `--video-bitrate` are all render-time flags. Render the final at `--crf 19-20` and author
+  at **24 fps** (most YouTube docs) → ~1.5-2 GB H.264 in one pass, no transcode. The slow part is
+  frame *capture* (~1.2x realtime, ~98 min here); the encode target is nearly free to change.
+- **HEVC (extra shrink) needs a transcode** — hyperframes can't emit it. But the transcode only
+  decodes+encodes, it does NOT re-capture frames, so on GPU it is a ~6-min add-on, not a second render.
+
+**NVENC driver gotcha (cost an hour to spot):** the pinned **Gyan.FFmpeg.Shared 8.1.2** build's
+`hevc_nvenc` fails with `Driver does not support the required nvenc API version. Required: 13.1
+Found: 13.0` (exit -40) — its NVENC needs Nvidia driver 610+. The older **Gyan.FFmpeg.Essentials
+8.1.1** build on PATH has a compatible NVENC and works. Use 8.1.1 for NVENC, or update the driver.
+
+Measured HEVC transcode of the −14 LUFS master (5097 MB, `-c:a copy`, audio untouched):
+
+| encoder | speed on this box (GTX 1650) | wall time (35 min vid) | output |
+|---|---|---|---|
+| `libx265 -preset slow -crf 22` | **0.15x** | **~4 hours** | ~1.2 GB |
+| `hevc_nvenc -preset p7 -cq 22` (ffmpeg 8.1.1) | **5.96x** | **~6 min** | **2.19 GB** |
+
+**Takeaway:** software x265 `preset slow` is a non-starter for a review loop (0.15x). GPU
+`hevc_nvenc p7 cq22` gives a 2.3x shrink in 6 minutes, visually lossless, audio bit-copied. For
+future episodes the cleanest is to render at a higher CRF + 24 fps so the small file falls out of
+the render itself; reach for the GPU-HEVC pass only when you want the extra shrink.
+
+## ep3 v3 — stop rendering to find things a script can find (2026-07-29)
+
+- **Owner correction, and the sharpest one of this episode: renders 7, 8 and 9 all died to
+  defects I could have found before starting them.** I rendered, thought of a new check,
+  killed the render, rendered again. Every check I invented reactively is now a script that
+  runs in seconds — `scripts/sweep_episode.py`, `beat_density.py`, `blank_scan.mjs`,
+  `clip_report.py`. The rule: **exhaust every static gate, THEN render once.** A render is
+  the last step, not a diagnostic tool.
+- **You do not need a render to blackdetect.** `blank_scan.mjs` inlines each composition into
+  a bare page with gsap, seeks its timeline at 0.25s, and sums the on-screen area of every
+  element with computed opacity >= 0.06. A comp that goes empty shows up in seconds. It found
+  a real 0.75s hole in g-close between the closing lines and the title card. Exclude the
+  background texture (`.drift`) from the ink sum — it is present in every frame by
+  construction and would mask exactly the failure being looked for.
+- **When the owner gives timestamps against an old cut, MAP THEM YOURSELF.** I asked him to
+  re-point 5:48 and 28:04 because the v3 timeline had shifted. That was my job: the v2 draft
+  was built from a commit still in the tree, so `git show <sha>:episodes/<slug>/index.html`
+  into a temp dir plus the window ledger answers it in one command. Doing that showed his
+  5:16 and 5:48 notes were the SAME defect — one 33.4s stock cloud clip covering a whole
+  four-minute-mark passage — and that 28:04 was a 0.904-aspect portrait stretched full-frame
+  for 163 seconds.
+- **An SVG `stroke-dasharray` shorter than the line it hides paints the overhang as a second
+  dash, from frame one.** A route polyline measured 1377.6px and I wrote 1360: a 17.6px red
+  mark sat in Indiana for the first eleven seconds, an hour of story before the storm gets
+  there. Same bug again on the strikethrough line at 1040 vs 1041.4. Compute the length,
+  then `ceil() + 1`. Never type a dash length.
+- **`MotionPathPlugin` is not in the bundled `gsap.min.js`.** Move a marker along a route with
+  per-leg `attr:{cx,cy}` tweens timed to each leg's own length, or the speed jumps at corners.
+- **Chromium will not parse a staged page saved as `.html.tmp`.** MIME sniffing is by
+  extension; every composition reported "no timeline" until the file was renamed `.html`.
+  Keep it out of version control with `.gitignore`, not a clever extension.
+- **A blanket `fit="contain"` pillarboxes photos that were already the right shape.** Four
+  stills at 1.58-1.75 aspect were running inside blurred bars for nothing. Letterbox on the
+  IMAGE's aspect, not the segment's hint — with papers exempt, since cropping a front page
+  cuts the text.
+- **Retiring a graphic means retiring its generator entry, its `_durations.json` key and the
+  file.** Dropping only the mount left `g-panel-lone` authored-but-unmounted, which the
+  sweep caught immediately.
+- **The `ffprobe deadline with code 0` failure was never a bad asset — the deadline is 120s,
+  hardcoded.** hyperframes 0.7.64 wraps its probes in `deadlineAtMs: Date.now() + 12e4` with
+  no env override, and the probe it runs at `video_extract` is not the cheap duration read —
+  it is `-count_packets`, which walks every packet. Measured on an idle box with the exact
+  arguments: worst clip 3.05s, whole 16-clip pass 29.9s. The
+  failed render spent 274s inside `video_extract` before a single probe blew 120s, i.e. the
+  box was running roughly 40x slower than idle. Cost does NOT track file size — the 57 MB
+  transcode probes in 2.0s while a 10 MB lightning clip takes 3.05s — so the "4K asset"
+  theory was wrong twice over. The fix is `render_preflight.py` plus an otherwise-idle box.
+- **Coverage tools must name their picture tracks.** `clip_report.py` counted every track,
+  so nine overlay windows (date card, source chip, quote cards, lower-thirds) papered over
+  the black underneath them; the date card alone hid 0.30-14.3s. Whitelist the picture
+  tracks, then prove the check can still fail by deleting one still from a scratch copy.
+- **A gate that only counts the first cycle of a repeating tween reports moving frames as
+  dead.** `beat_density.py` scored `repeat:3` as one cycle; eight compositions carried
+  inflated max-still numbers. Total motion is `duration + repeat * (duration + repeatDelay)`,
+  and `yoyo` does not change it.
+- **The episode should end when the closing card's content ends.** Two bugs stacked: the
+  card's background drift ran 0.6s past its own credit fade, and the timeline's total ran
+  past the card, so `close_picture_gaps` stretched the host to reach it — 3.69s of frozen
+  black after the last visible frame. ep2, the shipped reference, ends at 0.00s of tail.
+  Trimming the ending then exposed a second defect: the leftover hold cut from the credits
+  to a 1925 damage photograph for 1.54s. The last segment in `ORDER` takes no tail.
+- **A substitution pool with no geography will contradict the narration.** Past the reuse
+  ceiling, `pick()` drew from a flat spare list and put the Heinz plant in Princeton,
+  Indiana under a sentence about Annapolis, Missouri — the far end of the track, three hours
+  later. Act-scoped pools first, global spares second. The narration/picture gate found it;
+  no human review had.
+- **Word-level timings turn "does the picture contradict the voice" into a script.**
+  `narration_picture_check.py` reads `audio/<seg>.words.json` and tests what is on screen at
+  the instant a year or a town is spoken. Build the place vocabulary from the archive's
+  filename convention (`1925_-_<Town>_-_`), not from every capitalised token — the loose
+  version called "Where", "Morning" and "Building" towns and buried three real findings in
+  thirteen false ones.
+**Render (2026-07-27, ep2 full render):**
+- Full-quality render died at 74% with `Protocol error: Target closed` after a burst of
+  `net::ERR_NETWORK_CHANGED` on the localhost media server — a host network-interface change
+  (Wi-Fi/VPN flip) mid-capture kills the Puppeteer browser's media fetches. Environmental, not
+  a comp defect (same comp draft-rendered clean). Fix: relaunch with
+  `PRODUCER_PUPPETEER_PROTOCOL_TIMEOUT_MS=900000` alongside the nav-timeout var; avoid network
+  changes during long renders. A ~28-min comp at standard/30fps ≈ 75+ min capture on this box —
+  budget 2h wall-clock when the machine is also running other sessions.
+- **Check the hyperframes version before production starts, and read what changed.** Bumped
+  0.7.64 -> 0.7.81 on 2026-07-29 (owner order). The upgrade **shortens the ffprobe deadline
+  from 120s to 30s** (`Date.now() + 12e4` became `+ 3e4`) — the exact deadline twelve ep3 v3
+  renders died on. A newer version can be STRICTER, not just better, so every timing measured
+  against the old pin has a 4x smaller margin. `npm view hyperframes version` is one command
+  and belongs at the top of a production run, not after a failure. Bumped 0.7.81 -> 0.7.107 on
+  2026-08-14 after the ritual: changelog audit (827 commits; relevant = extraction memory
+  bounding, hidden-audio excluded from render mix, WebGPU capture fixes; ffprobe 30s deadline
+  UNCHANGED, verified in dist) + A/B render of demo-joplin-90 at full quality — identical
+  duration/blackdetect, RMS delta 0.006 dB, SSIM 0.997, spot frames clean. No behavior change
+  observed; the hidden-audio mix change did not alter loudness on a comp using visible audio tags.
+  **Ritual scripted 2026-08-14 (owner: manual refresh was "stupid" — pin rotted 26 versions in
+  2 weeks while the warn-only banner fired unheard):** `scripts/pin_ritual.py` runs the whole
+  thing (npm view, candidate render of demo-joplin-90, metric diff vs committed
+  `pin_baseline.json`, auto-bump on identical metrics, exit 3 + no bump on drift), and
+  `render_preflight.py` — now actually invoked by `render.cmd` — hard-blocks FULL renders on a
+  stale pin (exit 6) while drafts only warn. npm unreachable never blocks. Baseline mp4 is an
+  on-disk cache (`episodes/demo-joplin-90/renders/pin-baseline-<ver>.mp4`); when absent, the
+  ritual re-renders the baseline too (metrics-only compare if that ever fails to keep SSIM).
+  **Gotcha that cost 40 min:** `npx hyperframes@<uncached-version>` prompts "Ok to proceed?"
+  and a detached run hangs on stdin until the timeout — every scripted npx call needs `-y`
+  AND `stdin=DEVNULL`. (The schtasks cmd wrappers dodged this by accident; python
+  subprocess did not.)
+- **A rule with no gate is a suggestion (owner, 2026-07-29).** "Cap every source asset at the
+  composition's resolution" was written in CLAUDE.md and violated by seven clips through twelve
+  failed renders, because nothing checked it. The counter-question for any rule that keeps
+  getting broken is not "say it louder" — it is "what reads the number before the expensive
+  step?" `media_budget.py` reads three numbers in three seconds; the renders it replaces cost
+  forty minutes each.
+- **Keep code headache low (owner, 2026-07-29): if reasoning can do it, do not write a script.**
+  Code earns its place when the check is mechanical, repeated, and must never be forgotten —
+  deterministic gates, batch transforms, anything guarding money or a long render. Reasoning
+  owns taste and context. **The tell for a script that should have been a docs line: it needs a
+  hand-tuned stoplist to stop being wrong — that is judgement wearing a regex.** Applied the same
+  day to this repo's own new code: `probe_timing.py` deleted (a one-shot diagnostic whose answer
+  now lives here — a number already measured is not a tool), and `narration_picture_check.py`
+  lost its place check (thirteen false positives to three real ones, propped up by a stoplist of
+  words that are not towns) while keeping the era check, which is genuinely mechanical.
+- **THE ep3 v3 render RCA, after thirteen failures: process-spawn scanning, not media.**
+  Security software on this box scans every process creation, and the cost tracks
+  BINARY SIZE, not work done:
+
+  | binary | size | spawn |
+  |---|---|---|
+  | `cmd /c echo` | tiny, system | 0.063s |
+  | `where.exe` | small, signed | 0.172s |
+  | `python.exe` | medium | 0.251s |
+  | `ffprobe.exe` (Gyan essentials, static) | **97 MB** | **1.165s** |
+  | `ffprobe.exe` (Gyan **shared**) | **224 KB** | **0.102s** |
+
+  A render fires roughly 200 ffprobe spawns (21 video windows x ~3 probe types, ~70 audio
+  files x 2). At 1.2s each that is ~200s of pure scanning — and the observed `video_extract`
+  stage durations were 193s and 204s. When spawns collide the scanner serialises them and one
+  probe waits past its deadline, which is the `ffprobe deadline with code 0` failure.
+  **Fix: `winget install Gyan.FFmpeg.Shared` and point hyperframes at it with
+  `HYPERFRAMES_FFPROBE_PATH` / `HYPERFRAMES_FFMPEG_PATH`** (both render scripts now do).
+  Measured on the real probe over all 16 clips: 1.32s each -> 0.40s each, ~263s -> ~80s
+  projected per render.
+
+  **Why it took thirteen renders:** every earlier theory was about the MEDIA (a 4K asset,
+  contention, worker count, the deadline value). Cutting media 72%, halving workers, and
+  changing the deadline 120s->30s each changed NOTHING, and that was the signal — a
+  performance fix that moves the needle zero means the model of the problem is wrong. The
+  question that cracked it was "how long does ffprobe take when it opens no file at all?"
+  (1.4s, versus 0.06s for `cmd`). **When three independent fixes change nothing, stop fixing
+  and go measure the thing every attempt has in common.**
+
+## ep3 v3 — the defects no code gate was looking for (2026-07-29)
+
+- **Run `blackdetect` on every render. The picture track can be empty and every static gate will
+  still pass.** ep3's segment scheduler advanced by `seg_dur + GAP` but only covered `seg_dur`
+  with picture windows, so the 0.75s breath between narration segments had nothing on tracks 1/2.
+  `ffmpeg -vf blackdetect=d=0.1:pix_th=0.10` on the draft found **81 black spans, 63 at segment
+  boundaries**; sampled frames were pure black. lint_timeline PASSED, graphics_qc PASSED,
+  hyperframes check found nothing — because none of them ask "is anything on screen at time t".
+  The gate that catches it is a union-coverage sweep of every element carrying
+  `data-start`+`data-duration`+`data-track-index`, compared against the comp duration.
+  Reference floor: ep2 (shipped) has 2 uncovered gaps, ep1 has 6. Anything in the dozens is a bug.
+- **Corollary: a coverage report must read the ELEMENT, not the animation array.** My first pass
+  parsed only the ken-burns `KB` array and the sub-composition hosts, and reported 63 gaps *plus*
+  16s phantom holes — because `<video>` clips carry their timing on the element itself and never
+  appear in KB. Same-shaped bug, opposite direction: it invented gaps that did not exist while
+  missing 32 real windows. Enumerate by attribute, never by animation bookkeeping.
+- **`blackdetect` false-positives on dark graphics.** Half the flagged spans were title cards on a
+  near-black background, correctly rendering. Verdict requires eyeballing a frame from each span
+  (dispatch a subagent — never Read frames into the main context). File size is a decent triage
+  signal: the truly-black JPEGs were 13KB, the content ones 38–47KB.
+- **"ffprobe deadline with code 0" is a size problem, not a corruption problem.** Render #7 died at
+  10% of `video_extract` after 141s. All 18 video assets probed clean. The cause was one 365MB
+  3840x2160 stock clip feeding 12.9s of a 1080p comp — 10x every other asset. Transcoding it to
+  1080p (365MB -> 54MB) is the durable fix; retrying the render is not. Cap source assets at the
+  composition's own resolution before wiring them.
+- **`hyperframes check` reports `data-end without data-duration` for every `<audio>`/`<video>` in
+  a composition whose source contains zero `data-end`.** It is validating a normalized DOM, not the
+  source. Verified pre-existing by running `check` against the git-HEAD index.html. It does not
+  block `render`. Don't burn a cycle chasing it — but do re-verify it is pre-existing rather than
+  assuming, by checking out the prior file and re-running.
+
+## ep3 v3 - second audit round (2026-07-29)
+- **Cut rate is an asset-budget decision, not just a taste one.** ep2 (shipped, 7.5/10) holds an
+  11.0s median across 136 windows in 28 min. Driving ep3 to a 5.5s median needed ~260 windows in
+  35 min - roughly double the assets per minute - and the photo library could not feed it, so
+  frames silently repeated 5-12 times. Pick the median from `distinct_assets * 3 / minutes`, then
+  design the rhythm inside that budget. Landing at a 6.5s median with 216 windows fit 106 assets
+  with zero over the 3-use ceiling.
+- **Identify assets by content hash, never by path.** Six newspaper front pages existed
+  byte-identical under `media/newspapers/` and `media/photos/`; the reuse lint counted each path
+  separately, so one page reached nine on-screen uses under a ceiling of three.
+- **Count uses per WINDOW, not per `<img>` tag.** The letterbox treatment emits the same src twice
+  (blurred backdrop + foreground), which inflates a naive `grep src=` count by 2x and produces
+  false reuse findings. Two of my own audit agents were fooled by exactly this.
+- **A "credited" archival face is still a misattribution if no credit renders.** The Signal Corps
+  commander who shut Finley down sat under a panel headlined JOHN PARK FINLEY for 32 seconds; the
+  edit script said "credited" but no attribution element existed anywhere in the window. If a real
+  person's face is on screen under someone else's name, that is a factual error, not a design nit.
+- **Check for authored-but-unmounted compositions every build.** Three graphics passed every QC
+  gate while being mounted nowhere - including the stat panel for the episode's longest segment,
+  which therefore ran 48s with no graphic at all. `authored_ids - mounted_ids` must be empty.
+- **A counter must open on its first tick's value.** The path maps shipped the END toll in the DOM
+  (490 dead, 4:00 PM) and then animated backwards to 5 dead at 1:14 PM.
+- **Narration-cued means EVERY graphic, not just the ones with a cue helper.** The met map fired
+  its five labelled blocks in diagram order - four were 5-18s off their spoken word, one directly
+  contradicted the voiceover. Hand-authored compositions need the same words.json alignment the
+  generated panels get.
+- **`ffprobe` on a still image reports ~0.04s.** Any clamp that treats that as a clip duration will
+  cut a window into single-frame slivers. Guard duration probes by file extension and fail loud
+  when a non-video is typed as a clip.
+- **Audit findings need adversarial verification before you act on them.** 81 raw findings became
+  54 confirmed - a third were wrong, including several that would have sent me editing correct code.
+
+## ep3 v3 (2026-07-29) — the "check the code, not the frames" rebuild
+- **`hyperframes check` (not the deprecated `validate`) is the real static gate.** It caught 19
+  errors a frame sweep never would. Run it before every render, not after.
+- **Never tween a layout/text-reflow property.** `gsap_non_transform_motion`: `letterSpacing`,
+  `width`, `height` snap to integer device pixels under the seek-by-frame capture engine and
+  stutter on any slow/ease-out move. Use transforms — `scaleX`/`scaleY` with an explicit
+  `transformOrigin`, or `x`/`y`. A growing bar is `scaleY:0→1`, never `height:0→900`.
+- **Never set an initial transform in CSS when GSAP will tween any transform on that element.**
+  `gsap_css_transform_conflict`: GSAP rewrites the whole transform matrix, silently discarding
+  a CSS `scaleX(0)` or a `translateX(-50%)` centering. Set the initial state with `tl.set(...)`
+  at t=0 instead.
+- **Sub-composition asset paths are resolved against the PROJECT ROOT, not the comp's own
+  directory.** `../media/x.jpg` renders but 404s in Studio preview. Always `media/x.jpg`.
+- **Quantize the timeline to the decimal grid you print at.** Accumulating `ct += w` in float
+  while emitting `{ct:.2f}` makes a window's printed end land 0.01s past the next window's
+  printed start — 44 same-track overlap errors. Round every start and duration to 2dp and
+  accumulate the rounded values, so end == next start bit-for-bit.
+- **A graphic's duration must be DERIVED from its resolved narration cues, never hand-estimated.**
+  Panels whose rows are cued off `words.json` slid off screen at the hand-guessed duration while
+  later rows were still firing on an off-screen card, and the host window sat empty for the rest
+  of the segment. `dur = max(declared, last_cue + tail)`.
+- **Clamp every clip window to the clip's own length at BUILD time** (`ffprobe`, cached). This is
+  the ep3-v2 frame-coverage failure caught one stage earlier, deterministically, instead of 20
+  minutes into a render.
+- **Hand-declared beat weights bypass the pacing clamps.** `mixed` segments rescale their weights
+  to fill the narration window, which pushed stills to 7.2s and a single clip to 16.4s while
+  `MAX_STILL` was 6.5. Any path that produces windows must go through the same splitter.
+- **Idle warnings on an overlay panel are not the same defect as idle on a full-frame graphic** —
+  the panel sits over a moving photo. But the card's own content still must not sit dead: one
+  continuous transform tween spanning the window fixes it and costs nothing.
+- **Tooling gotcha:** the Bash tool consumes backslashes in heredoc'd Python even inside a
+  quoted `<< 'EOF'`. `"\n"` arrives as a real newline, which silently corrupts source-generating
+  scripts. Build literal backslashes with `chr(92)`, and always `ast.parse` the result.
+- **Windows CRLF breaks naive line-joining repairs** — read/normalize with explicit
+  `.replace(chr(13)+chr(10), chr(10))` before any line-level surgery, and write back as bytes.
+
+## ep3 v2 (2026-07-28)
+- **`loop` attribute does NOT survive render**: hyperframes 0.7.64 video extraction ignores `loop`; a looped clip window longer than the source fails the 95% frame-coverage gate ("captured N of expected M frames"). Fix at the asset level: pre-loop the file with `ffmpeg -stream_loop N -i src -t <maxwin+2> -g 30 -keyint_min 30` and keep the filename. Never set `HF_VIDEO_COVERAGE_THRESHOLD=0` — the gate is right, the encode would freeze/blank.
+- **Don't run whisper transcription concurrently with a render**: CPU starvation made hyperframes' ffprobe miss its deadline ("[FFmpeg] ffprobe deadline with code 0") during video_extract. Sequence them.
+- **tts_ep3v2.cmd chained transcribe stage died silently after TTS DONE** (no marker, no log lines) — give each detached stage its OWN log + exit marker; a chained `goto`-loop .cmd hides which stage failed.
+- **StaticGuard boundary rule**: any GSAP fade that ends exactly at a clip-window boundary needs a `tl.set(..., {autoAlpha:0})` hard kill right after the fade, or validate flags stale-visibility risk.
+- **`hyperframes snapshot` accepts only one `--at`** — repeated flags silently collapse (and add a stray extra frame); loop one invocation per timestamp for fixchecks.
 
 ## 2026-07-27 — ep2 hook rebuild + ship (hook contract now in DESIGN.md)
 
@@ -528,538 +1108,3 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
 - xstack contact sheets pad undefined regions GREEN — padding, not video content; don't panic.
 - Snapshot pre-render QC caught both grade issues before paying for a render — keep snapshot
   sweep (≈13 frames) as the mandatory pre-render gate; post-render frame sweep stays too.
-
-## ep3 v2 (2026-07-28)
-- **`loop` attribute does NOT survive render**: hyperframes 0.7.64 video extraction ignores `loop`; a looped clip window longer than the source fails the 95% frame-coverage gate ("captured N of expected M frames"). Fix at the asset level: pre-loop the file with `ffmpeg -stream_loop N -i src -t <maxwin+2> -g 30 -keyint_min 30` and keep the filename. Never set `HF_VIDEO_COVERAGE_THRESHOLD=0` — the gate is right, the encode would freeze/blank.
-- **Don't run whisper transcription concurrently with a render**: CPU starvation made hyperframes' ffprobe miss its deadline ("[FFmpeg] ffprobe deadline with code 0") during video_extract. Sequence them.
-- **tts_ep3v2.cmd chained transcribe stage died silently after TTS DONE** (no marker, no log lines) — give each detached stage its OWN log + exit marker; a chained `goto`-loop .cmd hides which stage failed.
-- **StaticGuard boundary rule**: any GSAP fade that ends exactly at a clip-window boundary needs a `tl.set(..., {autoAlpha:0})` hard kill right after the fade, or validate flags stale-visibility risk.
-- **`hyperframes snapshot` accepts only one `--at`** — repeated flags silently collapse (and add a stray extra frame); loop one invocation per timestamp for fixchecks.
-
-## ep3 v3 (2026-07-29) — the "check the code, not the frames" rebuild
-- **`hyperframes check` (not the deprecated `validate`) is the real static gate.** It caught 19
-  errors a frame sweep never would. Run it before every render, not after.
-- **Never tween a layout/text-reflow property.** `gsap_non_transform_motion`: `letterSpacing`,
-  `width`, `height` snap to integer device pixels under the seek-by-frame capture engine and
-  stutter on any slow/ease-out move. Use transforms — `scaleX`/`scaleY` with an explicit
-  `transformOrigin`, or `x`/`y`. A growing bar is `scaleY:0→1`, never `height:0→900`.
-- **Never set an initial transform in CSS when GSAP will tween any transform on that element.**
-  `gsap_css_transform_conflict`: GSAP rewrites the whole transform matrix, silently discarding
-  a CSS `scaleX(0)` or a `translateX(-50%)` centering. Set the initial state with `tl.set(...)`
-  at t=0 instead.
-- **Sub-composition asset paths are resolved against the PROJECT ROOT, not the comp's own
-  directory.** `../media/x.jpg` renders but 404s in Studio preview. Always `media/x.jpg`.
-- **Quantize the timeline to the decimal grid you print at.** Accumulating `ct += w` in float
-  while emitting `{ct:.2f}` makes a window's printed end land 0.01s past the next window's
-  printed start — 44 same-track overlap errors. Round every start and duration to 2dp and
-  accumulate the rounded values, so end == next start bit-for-bit.
-- **A graphic's duration must be DERIVED from its resolved narration cues, never hand-estimated.**
-  Panels whose rows are cued off `words.json` slid off screen at the hand-guessed duration while
-  later rows were still firing on an off-screen card, and the host window sat empty for the rest
-  of the segment. `dur = max(declared, last_cue + tail)`.
-- **Clamp every clip window to the clip's own length at BUILD time** (`ffprobe`, cached). This is
-  the ep3-v2 frame-coverage failure caught one stage earlier, deterministically, instead of 20
-  minutes into a render.
-- **Hand-declared beat weights bypass the pacing clamps.** `mixed` segments rescale their weights
-  to fill the narration window, which pushed stills to 7.2s and a single clip to 16.4s while
-  `MAX_STILL` was 6.5. Any path that produces windows must go through the same splitter.
-- **Idle warnings on an overlay panel are not the same defect as idle on a full-frame graphic** —
-  the panel sits over a moving photo. But the card's own content still must not sit dead: one
-  continuous transform tween spanning the window fixes it and costs nothing.
-- **Tooling gotcha:** the Bash tool consumes backslashes in heredoc'd Python even inside a
-  quoted `<< 'EOF'`. `"\n"` arrives as a real newline, which silently corrupts source-generating
-  scripts. Build literal backslashes with `chr(92)`, and always `ast.parse` the result.
-- **Windows CRLF breaks naive line-joining repairs** — read/normalize with explicit
-  `.replace(chr(13)+chr(10), chr(10))` before any line-level surgery, and write back as bytes.
-
-## ep3 v3 - second audit round (2026-07-29)
-- **Cut rate is an asset-budget decision, not just a taste one.** ep2 (shipped, 7.5/10) holds an
-  11.0s median across 136 windows in 28 min. Driving ep3 to a 5.5s median needed ~260 windows in
-  35 min - roughly double the assets per minute - and the photo library could not feed it, so
-  frames silently repeated 5-12 times. Pick the median from `distinct_assets * 3 / minutes`, then
-  design the rhythm inside that budget. Landing at a 6.5s median with 216 windows fit 106 assets
-  with zero over the 3-use ceiling.
-- **Identify assets by content hash, never by path.** Six newspaper front pages existed
-  byte-identical under `media/newspapers/` and `media/photos/`; the reuse lint counted each path
-  separately, so one page reached nine on-screen uses under a ceiling of three.
-- **Count uses per WINDOW, not per `<img>` tag.** The letterbox treatment emits the same src twice
-  (blurred backdrop + foreground), which inflates a naive `grep src=` count by 2x and produces
-  false reuse findings. Two of my own audit agents were fooled by exactly this.
-- **A "credited" archival face is still a misattribution if no credit renders.** The Signal Corps
-  commander who shut Finley down sat under a panel headlined JOHN PARK FINLEY for 32 seconds; the
-  edit script said "credited" but no attribution element existed anywhere in the window. If a real
-  person's face is on screen under someone else's name, that is a factual error, not a design nit.
-- **Check for authored-but-unmounted compositions every build.** Three graphics passed every QC
-  gate while being mounted nowhere - including the stat panel for the episode's longest segment,
-  which therefore ran 48s with no graphic at all. `authored_ids - mounted_ids` must be empty.
-- **A counter must open on its first tick's value.** The path maps shipped the END toll in the DOM
-  (490 dead, 4:00 PM) and then animated backwards to 5 dead at 1:14 PM.
-- **Narration-cued means EVERY graphic, not just the ones with a cue helper.** The met map fired
-  its five labelled blocks in diagram order - four were 5-18s off their spoken word, one directly
-  contradicted the voiceover. Hand-authored compositions need the same words.json alignment the
-  generated panels get.
-- **`ffprobe` on a still image reports ~0.04s.** Any clamp that treats that as a clip duration will
-  cut a window into single-frame slivers. Guard duration probes by file extension and fail loud
-  when a non-video is typed as a clip.
-- **Audit findings need adversarial verification before you act on them.** 81 raw findings became
-  54 confirmed - a third were wrong, including several that would have sent me editing correct code.
-
-## ep3 v3 — the defects no code gate was looking for (2026-07-29)
-
-- **Run `blackdetect` on every render. The picture track can be empty and every static gate will
-  still pass.** ep3's segment scheduler advanced by `seg_dur + GAP` but only covered `seg_dur`
-  with picture windows, so the 0.75s breath between narration segments had nothing on tracks 1/2.
-  `ffmpeg -vf blackdetect=d=0.1:pix_th=0.10` on the draft found **81 black spans, 63 at segment
-  boundaries**; sampled frames were pure black. lint_timeline PASSED, graphics_qc PASSED,
-  hyperframes check found nothing — because none of them ask "is anything on screen at time t".
-  The gate that catches it is a union-coverage sweep of every element carrying
-  `data-start`+`data-duration`+`data-track-index`, compared against the comp duration.
-  Reference floor: ep2 (shipped) has 2 uncovered gaps, ep1 has 6. Anything in the dozens is a bug.
-- **Corollary: a coverage report must read the ELEMENT, not the animation array.** My first pass
-  parsed only the ken-burns `KB` array and the sub-composition hosts, and reported 63 gaps *plus*
-  16s phantom holes — because `<video>` clips carry their timing on the element itself and never
-  appear in KB. Same-shaped bug, opposite direction: it invented gaps that did not exist while
-  missing 32 real windows. Enumerate by attribute, never by animation bookkeeping.
-- **`blackdetect` false-positives on dark graphics.** Half the flagged spans were title cards on a
-  near-black background, correctly rendering. Verdict requires eyeballing a frame from each span
-  (dispatch a subagent — never Read frames into the main context). File size is a decent triage
-  signal: the truly-black JPEGs were 13KB, the content ones 38–47KB.
-- **"ffprobe deadline with code 0" is a size problem, not a corruption problem.** Render #7 died at
-  10% of `video_extract` after 141s. All 18 video assets probed clean. The cause was one 365MB
-  3840x2160 stock clip feeding 12.9s of a 1080p comp — 10x every other asset. Transcoding it to
-  1080p (365MB -> 54MB) is the durable fix; retrying the render is not. Cap source assets at the
-  composition's own resolution before wiring them.
-- **`hyperframes check` reports `data-end without data-duration` for every `<audio>`/`<video>` in
-  a composition whose source contains zero `data-end`.** It is validating a normalized DOM, not the
-  source. Verified pre-existing by running `check` against the git-HEAD index.html. It does not
-  block `render`. Don't burn a cycle chasing it — but do re-verify it is pre-existing rather than
-  assuming, by checking out the prior file and re-running.
-
-## ep3 v3 — stop rendering to find things a script can find (2026-07-29)
-
-- **Owner correction, and the sharpest one of this episode: renders 7, 8 and 9 all died to
-  defects I could have found before starting them.** I rendered, thought of a new check,
-  killed the render, rendered again. Every check I invented reactively is now a script that
-  runs in seconds — `scripts/sweep_episode.py`, `beat_density.py`, `blank_scan.mjs`,
-  `clip_report.py`. The rule: **exhaust every static gate, THEN render once.** A render is
-  the last step, not a diagnostic tool.
-- **You do not need a render to blackdetect.** `blank_scan.mjs` inlines each composition into
-  a bare page with gsap, seeks its timeline at 0.25s, and sums the on-screen area of every
-  element with computed opacity >= 0.06. A comp that goes empty shows up in seconds. It found
-  a real 0.75s hole in g-close between the closing lines and the title card. Exclude the
-  background texture (`.drift`) from the ink sum — it is present in every frame by
-  construction and would mask exactly the failure being looked for.
-- **When the owner gives timestamps against an old cut, MAP THEM YOURSELF.** I asked him to
-  re-point 5:48 and 28:04 because the v3 timeline had shifted. That was my job: the v2 draft
-  was built from a commit still in the tree, so `git show <sha>:episodes/<slug>/index.html`
-  into a temp dir plus the window ledger answers it in one command. Doing that showed his
-  5:16 and 5:48 notes were the SAME defect — one 33.4s stock cloud clip covering a whole
-  four-minute-mark passage — and that 28:04 was a 0.904-aspect portrait stretched full-frame
-  for 163 seconds.
-- **An SVG `stroke-dasharray` shorter than the line it hides paints the overhang as a second
-  dash, from frame one.** A route polyline measured 1377.6px and I wrote 1360: a 17.6px red
-  mark sat in Indiana for the first eleven seconds, an hour of story before the storm gets
-  there. Same bug again on the strikethrough line at 1040 vs 1041.4. Compute the length,
-  then `ceil() + 1`. Never type a dash length.
-- **`MotionPathPlugin` is not in the bundled `gsap.min.js`.** Move a marker along a route with
-  per-leg `attr:{cx,cy}` tweens timed to each leg's own length, or the speed jumps at corners.
-- **Chromium will not parse a staged page saved as `.html.tmp`.** MIME sniffing is by
-  extension; every composition reported "no timeline" until the file was renamed `.html`.
-  Keep it out of version control with `.gitignore`, not a clever extension.
-- **A blanket `fit="contain"` pillarboxes photos that were already the right shape.** Four
-  stills at 1.58-1.75 aspect were running inside blurred bars for nothing. Letterbox on the
-  IMAGE's aspect, not the segment's hint — with papers exempt, since cropping a front page
-  cuts the text.
-- **Retiring a graphic means retiring its generator entry, its `_durations.json` key and the
-  file.** Dropping only the mount left `g-panel-lone` authored-but-unmounted, which the
-  sweep caught immediately.
-- **The `ffprobe deadline with code 0` failure was never a bad asset — the deadline is 120s,
-  hardcoded.** hyperframes 0.7.64 wraps its probes in `deadlineAtMs: Date.now() + 12e4` with
-  no env override, and the probe it runs at `video_extract` is not the cheap duration read —
-  it is `-count_packets`, which walks every packet. Measured on an idle box with the exact
-  arguments: worst clip 3.05s, whole 16-clip pass 29.9s. The
-  failed render spent 274s inside `video_extract` before a single probe blew 120s, i.e. the
-  box was running roughly 40x slower than idle. Cost does NOT track file size — the 57 MB
-  transcode probes in 2.0s while a 10 MB lightning clip takes 3.05s — so the "4K asset"
-  theory was wrong twice over. The fix is `render_preflight.py` plus an otherwise-idle box.
-- **Coverage tools must name their picture tracks.** `clip_report.py` counted every track,
-  so nine overlay windows (date card, source chip, quote cards, lower-thirds) papered over
-  the black underneath them; the date card alone hid 0.30-14.3s. Whitelist the picture
-  tracks, then prove the check can still fail by deleting one still from a scratch copy.
-- **A gate that only counts the first cycle of a repeating tween reports moving frames as
-  dead.** `beat_density.py` scored `repeat:3` as one cycle; eight compositions carried
-  inflated max-still numbers. Total motion is `duration + repeat * (duration + repeatDelay)`,
-  and `yoyo` does not change it.
-- **The episode should end when the closing card's content ends.** Two bugs stacked: the
-  card's background drift ran 0.6s past its own credit fade, and the timeline's total ran
-  past the card, so `close_picture_gaps` stretched the host to reach it — 3.69s of frozen
-  black after the last visible frame. ep2, the shipped reference, ends at 0.00s of tail.
-  Trimming the ending then exposed a second defect: the leftover hold cut from the credits
-  to a 1925 damage photograph for 1.54s. The last segment in `ORDER` takes no tail.
-- **A substitution pool with no geography will contradict the narration.** Past the reuse
-  ceiling, `pick()` drew from a flat spare list and put the Heinz plant in Princeton,
-  Indiana under a sentence about Annapolis, Missouri — the far end of the track, three hours
-  later. Act-scoped pools first, global spares second. The narration/picture gate found it;
-  no human review had.
-- **Word-level timings turn "does the picture contradict the voice" into a script.**
-  `narration_picture_check.py` reads `audio/<seg>.words.json` and tests what is on screen at
-  the instant a year or a town is spoken. Build the place vocabulary from the archive's
-  filename convention (`1925_-_<Town>_-_`), not from every capitalised token — the loose
-  version called "Where", "Morning" and "Building" towns and buried three real findings in
-  thirteen false ones.
-**Render (2026-07-27, ep2 full render):**
-- Full-quality render died at 74% with `Protocol error: Target closed` after a burst of
-  `net::ERR_NETWORK_CHANGED` on the localhost media server — a host network-interface change
-  (Wi-Fi/VPN flip) mid-capture kills the Puppeteer browser's media fetches. Environmental, not
-  a comp defect (same comp draft-rendered clean). Fix: relaunch with
-  `PRODUCER_PUPPETEER_PROTOCOL_TIMEOUT_MS=900000` alongside the nav-timeout var; avoid network
-  changes during long renders. A ~28-min comp at standard/30fps ≈ 75+ min capture on this box —
-  budget 2h wall-clock when the machine is also running other sessions.
-- **Check the hyperframes version before production starts, and read what changed.** Bumped
-  0.7.64 -> 0.7.81 on 2026-07-29 (owner order). The upgrade **shortens the ffprobe deadline
-  from 120s to 30s** (`Date.now() + 12e4` became `+ 3e4`) — the exact deadline twelve ep3 v3
-  renders died on. A newer version can be STRICTER, not just better, so every timing measured
-  against the old pin has a 4x smaller margin. `npm view hyperframes version` is one command
-  and belongs at the top of a production run, not after a failure. Bumped 0.7.81 -> 0.7.107 on
-  2026-08-14 after the ritual: changelog audit (827 commits; relevant = extraction memory
-  bounding, hidden-audio excluded from render mix, WebGPU capture fixes; ffprobe 30s deadline
-  UNCHANGED, verified in dist) + A/B render of demo-joplin-90 at full quality — identical
-  duration/blackdetect, RMS delta 0.006 dB, SSIM 0.997, spot frames clean. No behavior change
-  observed; the hidden-audio mix change did not alter loudness on a comp using visible audio tags.
-  **Ritual scripted 2026-08-14 (owner: manual refresh was "stupid" — pin rotted 26 versions in
-  2 weeks while the warn-only banner fired unheard):** `scripts/pin_ritual.py` runs the whole
-  thing (npm view, candidate render of demo-joplin-90, metric diff vs committed
-  `pin_baseline.json`, auto-bump on identical metrics, exit 3 + no bump on drift), and
-  `render_preflight.py` — now actually invoked by `render.cmd` — hard-blocks FULL renders on a
-  stale pin (exit 6) while drafts only warn. npm unreachable never blocks. Baseline mp4 is an
-  on-disk cache (`episodes/demo-joplin-90/renders/pin-baseline-<ver>.mp4`); when absent, the
-  ritual re-renders the baseline too (metrics-only compare if that ever fails to keep SSIM).
-  **Gotcha that cost 40 min:** `npx hyperframes@<uncached-version>` prompts "Ok to proceed?"
-  and a detached run hangs on stdin until the timeout — every scripted npx call needs `-y`
-  AND `stdin=DEVNULL`. (The schtasks cmd wrappers dodged this by accident; python
-  subprocess did not.)
-- **A rule with no gate is a suggestion (owner, 2026-07-29).** "Cap every source asset at the
-  composition's resolution" was written in CLAUDE.md and violated by seven clips through twelve
-  failed renders, because nothing checked it. The counter-question for any rule that keeps
-  getting broken is not "say it louder" — it is "what reads the number before the expensive
-  step?" `media_budget.py` reads three numbers in three seconds; the renders it replaces cost
-  forty minutes each.
-- **Keep code headache low (owner, 2026-07-29): if reasoning can do it, do not write a script.**
-  Code earns its place when the check is mechanical, repeated, and must never be forgotten —
-  deterministic gates, batch transforms, anything guarding money or a long render. Reasoning
-  owns taste and context. **The tell for a script that should have been a docs line: it needs a
-  hand-tuned stoplist to stop being wrong — that is judgement wearing a regex.** Applied the same
-  day to this repo's own new code: `probe_timing.py` deleted (a one-shot diagnostic whose answer
-  now lives here — a number already measured is not a tool), and `narration_picture_check.py`
-  lost its place check (thirteen false positives to three real ones, propped up by a stoplist of
-  words that are not towns) while keeping the era check, which is genuinely mechanical.
-- **THE ep3 v3 render RCA, after thirteen failures: process-spawn scanning, not media.**
-  Security software on this box scans every process creation, and the cost tracks
-  BINARY SIZE, not work done:
-
-  | binary | size | spawn |
-  |---|---|---|
-  | `cmd /c echo` | tiny, system | 0.063s |
-  | `where.exe` | small, signed | 0.172s |
-  | `python.exe` | medium | 0.251s |
-  | `ffprobe.exe` (Gyan essentials, static) | **97 MB** | **1.165s** |
-  | `ffprobe.exe` (Gyan **shared**) | **224 KB** | **0.102s** |
-
-  A render fires roughly 200 ffprobe spawns (21 video windows x ~3 probe types, ~70 audio
-  files x 2). At 1.2s each that is ~200s of pure scanning — and the observed `video_extract`
-  stage durations were 193s and 204s. When spawns collide the scanner serialises them and one
-  probe waits past its deadline, which is the `ffprobe deadline with code 0` failure.
-  **Fix: `winget install Gyan.FFmpeg.Shared` and point hyperframes at it with
-  `HYPERFRAMES_FFPROBE_PATH` / `HYPERFRAMES_FFMPEG_PATH`** (both render scripts now do).
-  Measured on the real probe over all 16 clips: 1.32s each -> 0.40s each, ~263s -> ~80s
-  projected per render.
-
-  **Why it took thirteen renders:** every earlier theory was about the MEDIA (a 4K asset,
-  contention, worker count, the deadline value). Cutting media 72%, halving workers, and
-  changing the deadline 120s->30s each changed NOTHING, and that was the signal — a
-  performance fix that moves the needle zero means the model of the problem is wrong. The
-  question that cracked it was "how long does ffprobe take when it opens no file at all?"
-  (1.4s, versus 0.06s for `cmd`). **When three independent fixes change nothing, stop fixing
-  and go measure the thing every attempt has in common.**
-
-## Render size + HEVC compression (measured ep3 v5, 2026-07-30)
-
-A full render at `--crf 16 --fps 30` is ~20 Mbps → **5.08 GB for 34m56s**. That is near-lossless
-overkill for graphics/stills content. Two ways to ship smaller **without visible quality loss**:
-
-- **Single-pass (no extra step) — the "compress during render" answer:** hyperframes emits
-  **H.264 only** for mp4 (vp9 for webm); there is **no HEVC output flag**. But `--crf`, `--fps`,
-  and `--video-bitrate` are all render-time flags. Render the final at `--crf 19-20` and author
-  at **24 fps** (most YouTube docs) → ~1.5-2 GB H.264 in one pass, no transcode. The slow part is
-  frame *capture* (~1.2x realtime, ~98 min here); the encode target is nearly free to change.
-- **HEVC (extra shrink) needs a transcode** — hyperframes can't emit it. But the transcode only
-  decodes+encodes, it does NOT re-capture frames, so on GPU it is a ~6-min add-on, not a second render.
-
-**NVENC driver gotcha (cost an hour to spot):** the pinned **Gyan.FFmpeg.Shared 8.1.2** build's
-`hevc_nvenc` fails with `Driver does not support the required nvenc API version. Required: 13.1
-Found: 13.0` (exit -40) — its NVENC needs Nvidia driver 610+. The older **Gyan.FFmpeg.Essentials
-8.1.1** build on PATH has a compatible NVENC and works. Use 8.1.1 for NVENC, or update the driver.
-
-Measured HEVC transcode of the −14 LUFS master (5097 MB, `-c:a copy`, audio untouched):
-
-| encoder | speed on this box (GTX 1650) | wall time (35 min vid) | output |
-|---|---|---|---|
-| `libx265 -preset slow -crf 22` | **0.15x** | **~4 hours** | ~1.2 GB |
-| `hevc_nvenc -preset p7 -cq 22` (ffmpeg 8.1.1) | **5.96x** | **~6 min** | **2.19 GB** |
-
-**Takeaway:** software x265 `preset slow` is a non-starter for a review loop (0.15x). GPU
-`hevc_nvenc p7 cq22` gives a 2.3x shrink in 6 minutes, visually lossless, audio bit-copied. For
-future episodes the cleanest is to render at a higher CRF + 24 fps so the small file falls out of
-the render itself; reach for the GPU-HEVC pass only when you want the extra shrink.
-
-## Duplicate element ids render BLACK — and no gate caught it (measured ep5, 2026-08-06)
-
-Two `<video>` windows shared `id="vx-carrwaterb2"` (a copy-paste slip during the retention
-re-cut). hyperframes keys frame placement by element id, so the FIRST window (581.9s, 8s)
-rendered **pure black** while every static gate passed — sweep, lint, blank_scan and
-graphics_qc all read attributes, none checks id uniqueness. Found only by post-render
-`verify_render.sh` blackdetect + eyeballing the frame. **Check before every render:**
-`grep -o ' id="[^"]*"' index.html | sort | uniq -d` must print nothing. (Candidate for a
-sweep_episode.py check — mechanical, must-never-forget.)
-
-## optimize_clips.py strips audio and ignores bitrate (measured ep5, 2026-08-06)
-
-Two silent failure modes in one script, both hit on ep5:
-- **`-an` is unconditional** — it stripped the audio track from all 4 owner-gated INSERT
-  clips (the whole point of an insert is its audio). Nothing warned. Restored from
-  `media/_orig/` with `-c:a aac`. Rule: after ANY optimize pass, ffprobe the insert clips
-  for an audio stream before rendering. (2026-08-17: optimize_clips.py itself now preserves
-  audio + muxes silence for mute clips — see "Audio levels + media budget hardening". The
-  ffprobe-before-render rule stands for any ad-hoc batch.)
-  **RECURRED on ep5 v3 (2026-08-12):** an ad-hoc media-budget crf pass re-encoded every
-  mounted mp4 >900KB with `-an` and stripped ins-mckay again; render failed loud at
-  `audio_processing_failed` (hyperframes' extractAudioFromVideo, stage "extract", found no
-  audio stream — that error code means AN AUDIBLE VIDEO ELEMENT, not a corrupt file). The
-  rule is not about optimize_clips.py — it is about `-an` in ANY batch: exclude every
-  element mounted un-muted / data-has-audio from the batch, and ffprobe all audible
-  elements for an audio stream as the last step before any render.
-  (2026-08-17: optimize_clips.py itself now preserves audio + muxes silence for mute
-  clips — see "Audio levels + media budget hardening". The any-ad-hoc-batch rule stands.)
-  **Corollary (ep5 v4, 2026-08-12): a "lost" source is probably in `media/_orig/`.**
-  Two audio-stripped sources triggered a re-download hunt (Wayback CDX + Brightcove id
-  spelunking for a Gannett CDN mp4) while byte-identical audio-bearing originals sat in
-  `media/_orig/` the whole time — optimize passes MOVE originals there. Check `_orig/`
-  (and `_orig_media/`) before any re-download. Bonus fact recovered anyway: the dozer-911
-  mp4 URL is `media.gannett-cdn.com/28911775001/28911775001_5851158634001_5851141890001.mp4`
-  (still live; provenance.csv row elided it with `...`— never elide URLs in provenance).
-- **It only checks resolution and window-length, not bitrate.** ffmpeg scene cuts made with
-  stream-copy keep the source's 15-19 Mbps, so 78 within-spec clips still totalled 645 MB
-  against the 150 MB decode budget. Fix: re-encode cuts at libx264 crf 23-27 when cutting
-  (~0.5 MB/s lands the budget); crf 27-32 passes cost little on graded b-roll.
-
-## Harness background tasks get reaped — long renders need schtasks (measured ep5, 2026-08-06)
-
-Two draft renders launched via the harness's background Bash died mid-capture (41% and 33%)
-when the harness killed the task — the CHILD TREE dies too, a few minutes later (the log
-keeps heartbeating briefly, which reads as "survived" and isn't). `Start-Process` was already
-known-fatal (ep3 attempt 11). The reliable launcher on this box is a one-shot **Windows
-scheduled task**: `schtasks /create /tn ep5draft /tr "cmd /c cd /d <worktree> &&
-scripts\render.cmd <slug> draft" /sc once /st 23:59 /f && schtasks /run /tn ep5draft` —
-fully detached, survives the session. Watch it with a log-mtime stall monitor (>10 min
-silent = dead), never with a process-name count (MCP daemons match loose filters).
-
-## Owner pivot 2026-08-12 — cadence, sourcing, SFX, durable references
-
-- **Cadence anxiety retired:** video beats up to 12-15s when genuinely matched; stills 3-6s MAX
-  with motion (sweep now enforces 6s, was 12s); prefer video everywhere. Claim-risk pulls >12-15s
-  need narration over them; transcribe news clips before cutting.
-- **SFX is default-ON now** (base tone + peak swells, library/ffmpeg-synth only) — ep5 v2 shipped
-  with a single wind bed the owner heard as "buzzing"; a low-volume steady loop under silence
-  reads as a defect, not atmosphere. Design per scene, verify post-render.
-- **Docs must not cite episode paths** — episode folders get deleted after publish. Shipped
-  patterns get COPIED into `references/editing-patterns/` the same session ("you want it to be
-  gone with the wind?").
-- **Docs drift is a real defect class:** "still ≤12s" survived two owner cadence corrections
-  ("will your grandfather come and revise this?"). Any editorial rule change sweeps CLAUDE.md,
-  DESIGN.md, LEARNINGS.md AND the gate scripts in the same session.
-- **Graphics exits need ~1s land time** after the last beat — v2 cut scenes one or two frames
-  after motion ended, repeatedly ("one time is okay... three and four and five times?").
-- **PySceneDetect** (scenedetect.com) approved for splitting long sources into scene cuts —
-  validate on this box before first use; cheaper than agent OCR passes.
-
-## The doctor rule — known-below-spec = STOP, never render (owner, ep5 v4 RCA, 2026-08-13)
-v4 shipped a music layer I knew was below the ordered spec ("Hybrid C") — flagged it in my own
-park summary and rendered anyway. Owner burned a review cycle discovering what I already knew.
-Standing rule: the moment a deliverable is known below spec, STOP before the render, state
-exactly what is broken, give options, wait. A render on a known defect wastes GPU hours AND the
-owner's review hours. Corollary: verification gates check STRUCTURE; before any render also do
-an EXPERIENCE pass — listen to the full audio mixdown, watch the hook, spot-watch 3 random
-minutes. A green suite on an unwatchable artifact is a failed QC.
-
-## Sourcing doctrine for future episodes (owner, ep5 review, 2026-08-13)
-ep5 mounted 142 cuts that traced to only ~30 real source acquisitions — 5-6 reels re-sliced.
-Owner: "30 sources should be 60. The clips are there." Count SOURCES, not cuts; and count
-ASSERTION assets specifically (broadcast pulls, day-after newspapers, official audio, presser
-clips, survivor clips, before/after stills) — third-party proof that the thing happened beats
-another angle of the same b-roll. Re-slicing a reel is editing, not sourcing.
-
-## Music policy update (owner order 2026-08-13, supersedes "never downloaded music")
-Owner-provided Pixabay downloads (assets/sfx/owner-2026-08-13/) and DeAPI-generated tracks are
-ALLOWED as music/SFX. Still forbidden: anything ripped from YouTube/unlicensed. DeAPI recipe:
-POST /api/v2/audio/music (multipart; model AceStep_1_5_Turbo, guidance_scale exactly 1,
-inference_steps exactly 8, lyrics "[Instrumental]", format mp3, max 300s) — poll
-GET /api/v2/jobs/{request_id} (NOT /requests/ — that 404s). ~$0.0009 per 60s. Generated tracks
-pad ~3s of tail silence — trim/fade before mounting. Keys in repo-root .env (gitignored).
-
-## Audio mixdown as a pre-render gate (ep5 v5, 2026-08-13)
-Build the full audio mix from index.html (atrim+adelay+volume+amix, normalize=0) and scan 30s
-windows with volumedetect BEFORE rendering. Caught: kick hit (vol 0.6) stacking with narration
-start at an act boundary = 0dB clip. Hits under speech need ~0.4. Target: mix mean ≈ -19,
-window peaks ≤ -1.5. Also: sparse-keyframe warnings in the render log (dvbhawk-helipov,
-calfire-itf-willhappenagain) cause freezes — re-encode with -g 30 before the next full render.
-
-## Owner answer standards (transcript sweep, 2026-08-13)
-- A "what's your math / on what basis" question gets the actual logic and data, answered FIRST,
-  before any pivot to fixes. Padded defensive estimates read as lying — quote compute-real time.
-- Anything that went wrong twice gets a process RCA (what gate should have caught it, why it
-  didn't), and the fix lands in the durable docs the same session — corrections that live only
-  in chat evaporate.
-- "News" (or any single named source) is one of ten thousand — never over-index on a source
-  because the owner mentioned it once.
-- Same-cut reuse: a specific short cut never repeats in a tight window; different in/out points
-  of a longer reel are different cuts. The sweep family gate encodes this — keep it calibrated.
-
-## HF studio (`hyperframes preview`) — capabilities and traps (ep5 v5c, 2026-08-14)
-- **Studio cannot preview a full media-heavy episode.** Opening the 32-min comp fired 2,200+
-  media requests at once — canvas stays black, audio never starts, node server crawls. For an
-  audio/hook check, build a trimmed scaffold comp instead (junction media/audio, subtree-filter
-  index to the window, clamp root data-duration).
-- **Runtime comp length = max(element windows, LAST GSAP TWEEN POSITION)** — data-duration alone
-  doesn't clamp playback. Trimming a comp means trimming the script's tween/kb positions too.
-- **`data-composition-id` is a contract with the timeline JS** — renaming it breaks the runtime
-  (`StaticGuard: Timeline registered as X but no element has data-composition-id=X`).
-- **Studio MUTATES index.html** (stamps `data-hf-id` on every element). Harmless to renders, but
-  any script matching tag shapes must not assume attribute order (build_srt.py fixed 2026-08-14).
-  Diff index.html after any studio session before trusting downstream tooling.
-- **Studio realtime playback jitters video under a transform tween** (per-tick video seeks) —
-  looks like violent shake; the seek-by-frame RENDER is clean. Verify motion complaints against
-  render frames (tblend diff series: shake = sawtooth; smooth = flat bands) before "fixing".
-
-## Full-render stability on this box (ep5 v5c, two attempts, 2026-08-14)
-- **Close studios/headless browsers before a full render.** Attempt 1 died at frame 29553
-  (capture page hung 4+ min, then Page.captureScreenshot protocol error) with 2 studio servers +
-  8 chrome-headless shells resident. Attempt 2, same comp, clean box: completed. Free-RAM dipped
-  to 0.4GB mid-render and survived — contention, not the comp, is the killer.
-- **No resume exists** (0.7.81): captured frames stream to the encoder and are deleted; a crashed
-  run leaves nothing reusable. Budget a full restart into any crash.
-- **Baseline speed: ~600-900 frames/min at 1080p30, 2 workers** (0.3-0.5x realtime) — matches
-  ep2's 75-min/28-min history. 3000fpm/1.1x-realtime expectations don't hold on this box.
-- **Delete `render_*_done.marker` BEFORE relaunching a same-name render** — a stale marker from
-  the failed attempt made the watcher report the new run dead (false "exit=1").
-- **schtasks wrappers: never bare `python3`** — cmd resolves it to the Microsoft Store stub
-  (exit 9009). Use the full `...\Python312\python.exe` path.
-- **Harness reaping applies to ALL long background jobs, not just renders** — a 10-min master
-  build got killed mid-measure. Anything over ~2 min goes schtasks + done-marker + Monitor.
-
-## Audio levels + media budget hardening (ep6, 2026-08-17)
-- **Insert audibility is a FILE problem, not an attr problem.** NPR hook insert sat at
-  data-volume 1.0 and was still 6.8 dB under narration — the source wav was quiet.
-  Gain-normalize insert FILES to the narration median (measure with volumedetect) before the
-  mixdown gate. `alimiter` boosts by default (`level=1`); pass `level=0` or check the result —
-  it overshot two inserts +5 dB before correction.
-- **`scripts/audio_levels.py` is the gate for this** (run before every mixdown build):
-  effective dB = file mean_volume + 20·log10(data-volume); narration median is the reference;
-  inserts must land ±2.5 dB of it; music beds fail if >30 dB under; beds warn when competing
-  with voice. Catches the ep6 NPR defect and the ep6-v1 "score at 0.08 = silent" defect.
-- **`optimize_clips.py` now escalates crf (23→27→31) until under the 150 MB media budget and
-  PRESERVES audio** (aac copy-encode; silent track muxed for mute clips). The old `-an` pass
-  forced a 15-clip re-mux ritual + 36-clip silent-track patch every optimize run — retired.
-  Measured ep6: 51 clips crf23 = 194 MB, crf27 = 143 MB; crf27 invisible under archival grain.
-  CAVEAT (ep1 session, 2026-08-24 merge): optimize_clips re-encodes from `media/_orig/`
-  backups, so a rerun reverts any per-file gain fix applied after a previous pass —
-  audio_levels.py catches this.
-
-## No visible windows, ever (owner 2026-08-21)
-- schtasks interactive tasks pop a cmd window on the desktop. ALL scheduled/background
-  commands run through `scripts/run_hidden.vbs` (wscript, window style 0 — no flash):
-  `/tr "wscript.exe <abs>\scripts\run_hidden.vbs cmd.exe /c <abs>\scripts\render.cmd <slug> <mode>"`.
-  Never a bare `cmd /c` task action, never foreground `cmd //c` runs of render.cmd either.
-- render.cmd preflight also refuses when ≥3 heavy processes (e.g. leftover headless chrome
-  from QC runs) are alive — exit 2 with marker written but log untouched; kill QC browsers
-  first, then relaunch.
-
-## ep6 draft v2 review — text collisions were a CHECKER false negative (owner 2026-08-22)
-- **overlap_check v1 checked the wrong slices.** It sampled one instant per card/comp pair and
-  never looked at comp-INTERNAL text or mid-tween positions; every owner screenshot (AUG 23 over
-  the DEPRESSION chip, FLORIDA LANDFALL mangle, 80% twice) was in a class it did not sample.
-  v2: stage each comp (template → bare gsap page — loading the raw `<template>` file renders
-  NOTHING and silently PASSes), step 0.5s through the host window, post-transform bboxes of all
-  visible leaf text, pair intersection >25% of the smaller box, dup-fact strings, card zones vs
-  comp text. Two real bugs it then caught in its own first runs: the template staging (above) and
-  a card whose only line held an `<em>` had NO leaf → full-frame zone → "collided with everything".
-- **Rules now in DESIGN.md "On-screen text rules"**: zone occupancy, one fact one instance, no
-  decorative eyebrows, narration order/wording, glass under any text over footage, small text
-  never alone (BFMG). Encoded because the same four habits shipped in v1 AND v2.
-- **Pre-render frame composites without a render:** a one-shot playwright script can hide every
-  `[data-start]` element outside T, seek videos (`currentTime`), inject the comp template into
-  its host div and seek both timelines — ~5s per frame, faithful enough for layout QC at every
-  owner-flagged timestamp. Scratch-space only (tripwire: it reads, never authors).
-- **"Source ends early" — check what the SOURCE is before saying so (corrected 2026-08-23):**
-  ins-hodges "cut before finishing" was first answered "the C-SPAN pull ends at 7.44s, nothing to
-  extend". Wrong: the 7.44s file was OUR pull; the source is the local 39-minute C-SPAN hearing
-  (`media/audio-assert/ins06_house_testimony.mp4`, transcript alongside). Re-cut to the sentence
-  end (8.85s) and retimed everything after it by +1.55s. Never call a pull "the source".
-
-## ep6 ship (2026-08-23) — hyperframes 0.8.x, the hidden-console chain, and a preflight bug
-- **hyperframes 0.8.x opens a visible Windows Terminal tab per ffprobe/ffmpeg spawn on this
-  box; 0.7.109 does not.** Measured with a process watcher during a hidden demo render: every
-  `ffprobe.exe`/`ffmpeg.exe` child of the 0.8.10 render node got its own `conhost.exe` (a new
-  console) and `OpenConsole.exe` (a Windows Terminal tab) appeared at the same instants — with
-  the render launched through `run_hidden.vbs` exactly like the 0.7.109 renders that show
-  nothing. Owner saw "lots of CMDs, 4 at a time". 0.8.10 spawns its ffmpeg/ffprobe children with
-  different flags than 0.7.109 (eight `windowsHide:true` sites vs two, new stdio shapes) and
-  under node 24's libuv those allocate a fresh console. The telemetry opt-out
-  (`HYPERFRAMES_NO_TELEMETRY=1` / `DO_NOT_TRACK=1`) was a red herring — one detached `node -e
-  fetch` per run, not the tab source; the env stays set (harmless) but is not the fix.
-  **Decision (owner):** ep6 full render on 0.7.109 with the explicit, logged override
-  `RENDER_PIN_STALE_OK=1` (render_preflight.py prints `[OVERRIDE]`); pin stays 0.7.109 until an
-  upstream version spawns ffmpeg hidden. The 0.8.10 demo render itself PASSED (4m08s, mp4 on
-  disk) — the blocker is the windows, not the output. Kill rule: stop the TASK and kill its
-  process TREE from the task's root pid; `*hyperframes*`/`*pin_ritual*` command-line matches also
-  hit this session's own bash tool shells (and other sessions') — done twice, never again.
-- **render.cmd ran preflight BEFORE its own `set HYPERFRAMES_FF*_PATH` lines** → media_budget.py
-  measured the slow PATH ffprobe and refused the full render (marker 3). Reordered 2026-08-23:
-  env first, then preflight. The draft path had passed only because the PATH spawn happened to be
-  under the threshold that day.
-- **16 GB is not "room for everything".** frame composites (80 videos in one page) +
-  overlap_check + a demo render + faster-whisper concurrently → `mkl_malloc`, `uv_spawn EAGAIN`,
-  "Unable to capture screenshot" at frame 390. One browser-heavy job at a time; check
-  `FreePhysicalMemory` before launching (2.5 GB free → `RENDER_WORKERS=2`, 7.5 GB → 3).
-  Separately: the faster-whisper `small.en` cache on this box is corrupt (`mkl_malloc` regardless
-  of RAM) — use `base.en` int8.
-- **Subagent briefs must forbid `cd`.** Two Explore agents issued `cd`-prefixed Bash and produced
-  8+ permission prompts on the owner's screen in auto mode. Prefer Grep/Read in the main session;
-  any subagent with Bash gets "never cd; absolute paths only" in the brief.
-- **overlap_check v2 must `page.close()` the index page before staging comps** — the episode page
-  holds ~80 videos; keeping it open while staging 14 comps crashed the renderer ("Target
-  crashed"). Fixed in `scripts/overlap_check.mjs`.
-- **Gate noise to expect on a finished episode:** `sweep_episode.py` FAILs on src-less `<section>`
-  gradients (`?` rows: same-track overlap, adjacent duplicate, asset reuse, media exists) and on
-  stills >6s that the lint pacing report already lists — lint is the hard gate. `verify_render`
-  blackdetect (pix_th 0.10) flags every dark-card beat as "black" and freezedetect flags the
-  designed dark-card holds (ep6 final: 730.7/7.1s, 1120.6/8.0s, 1225.2/6.6s radio-widget tail,
-  1288.4/6.0s, 1494.4/11.4s) — read them against the timeline, they are not blank frames. Also:
-  ffmpeg progress uses `\r`, so `tail`/`grep` on verify output hides the `freeze_start` lines —
-  `tr '\r' '\n'` first, or run freezedetect with `-nostats`.
-- **Credits need provenance rows for EVERY still.** The seven owner-supplied Wikimedia stills
-  (charity-web-c*, hsdrrs-web-c*) had no provenance row; licence/author were pulled from the
-  Commons API and the files matched to the Commons thumbnails by a subagent before writing the
-  CC-BY attribution block (`media/provenance-wikimedia-stills.csv`). Four of the six used are
-  CC BY / CC BY-SA — attribution is mandatory, not courtesy.
-
-- **MG library built (2026-08-27, owner-ordered).** `library/` = catalog-index.json (195
-  storm-relevant official HyperFrames items triaged by 12 vision agents from 286 candidates;
-  82 top-scored with full local source in `library/official/`) + 8 in-house exemplars +
-  15 overlay-snippet groups extracted from shipped eps (`library/inhouse/`), + localhost
-  gallery (`library/gallery/`, serve from `library/`). Extraction gotcha worth remembering:
-  **sub-comps inherit color/font from the EPISODE index.html body styles** — an extracted
-  g-*.html is NOT self-contained until those inherited rules are baked into its own <style>
-  (first extraction pass rendered black-on-black). Official catalog metadata lives cached at
-  `~/.hyperframes/cache/` (374 registry JSONs, zero network to enumerate); each docs page
-  `.md` ships the item's full HTML source; `npx hyperframes catalog --query` is built-in
-  semantic search — never build a custom one.
