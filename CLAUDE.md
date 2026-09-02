@@ -233,7 +233,7 @@ Per episode in `episodes/<slug>/`:
   flow lives at `library/inhouse/examples/joplin-stat-panel.html`. Scratch-authoring allowed
   with a one-line reason in edit_script.md. The generator tripwire is untouched — the
   library is starting points, never builders.
-- **Draft-proxy review loop (owner order 2026-07-26): every review cut ships as a DRAFT render
+- **Draft-proxy review loop: every review cut ships as a DRAFT render
   first** — `scripts\render.cmd <slug> draft [out-basename]` (draft = crf 32 / 15fps / 3
   workers baked in; measured 2026-07-26 on ep1 17:17 comp: 21m 16s vs 39m 32s full; 258 MB vs
   1775 MB; 1080p15, text fully readable).
