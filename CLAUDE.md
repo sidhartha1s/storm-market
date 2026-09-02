@@ -61,7 +61,7 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
 - **Preview = 98% production quality:** a "rough draft" preview is a full-quality cut at
   draft encode settings — never a placeholder. Before ANY render: full audio-mixdown listen +
   hook watch (the experience pass); a known-below-spec layer means STOP and report, not render.
-- **Script never references its own structure (owner):** no "concluding", "summarizing", "in
+- **Script never references its own structure:** no "concluding", "summarizing", "in
   this video" — reads as a seam, instant viewer skip.
 - **Graphics text discipline (owner, ep3-ep5 recurring):** proper case, never all-lowercase;
   reduce text per frame (one idea at a time, no disjointed stat spray); a graphic holds until
