@@ -126,6 +126,8 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
 - Spine: **US-govt public domain** (NOAA/NWS/NHC, FEMA media library, USGS, Coast Guard) — no
   usage cap, courtesy credit in description. + Pexels/Pixabay stock. + self-made radar/map
   graphics (NEXRAD archive data). + AI b-roll (LTX / z-image via DeAPI).
+  `scripts/gen_ai_stills.py` generates documentary-style AI stills via DeAPI (Z-Image-Turbo
+  INT8) — a one-off episode still-gen script, not a per-episode data engine.
 - 911 audio + FEMA survivor interviews + govt hearings = the emotional layer. PD, claim-free.
 - News footage (AP/Getty/network): transcribe first, cut at the best moment; up to ~12-15s per
   pull when narrated over (short 3-5s cutters still the default rhythm), courtesy credit in
