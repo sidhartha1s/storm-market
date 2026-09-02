@@ -68,7 +68,7 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   its point fully lands (never cut early) and never starts before its trigger moment or after a
   blank gap; ≥3 type tiers per designed card (graphics_qc flat-type gate: small <26 / mid /
   big ≥52 px must all appear).
-- **Sourcing bar (owner 2026-08-12): find 3-4x more candidates than you need.** Millions of PD
+- **Sourcing bar: find 3-4x more candidates than you need.** Millions of PD
   and news clips exist — "short of clips" means stop everything and source better. Use
   PySceneDetect (validate install first) to split long sources into scene cuts instead of
   burning agent passes; spread the cuts ACROSS the episode, never back-to-back.
