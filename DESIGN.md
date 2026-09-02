@@ -237,7 +237,7 @@ floors/ceilings; taste stays with the model.
   ≤2 non-adjacent times per act stretch.
 - **Sync rule**: the frame must not contradict the narration — named store, time-of-day,
   burned-in timestamps. Match the visual or use a neutral one.
-- **Burned-in radar/satellite timestamps (owner order 2026-07-26): map to the narration or
+- **Burned-in radar/satellite timestamps: map to the narration or
   crop/cut them out of frame** — cropping is a legitimate alternative to honest-labeling when
   the clock itself isn't the story. Watch UTC-vs-local (NEXRAD burns UTC). Grain filter over
   archive graphics as needed to unify the look.
