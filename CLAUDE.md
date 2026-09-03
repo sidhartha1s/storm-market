@@ -267,7 +267,9 @@ and about to write, STOP and make a worktree.
   commit + PR the bump it makes.
 - **Read the changelog anyway** when the ritual bumps across many versions — a passing demo
   A/B proves render identity, not that no new flag or timeout matters for a 32-min episode.
-  A newer version can be STRICTER, not just better.
+Pin history: 0.7.64 → 0.7.81 (2026-07-29; **ffprobe deadline 120s → 30s** — margins shrank
+4x) → 0.7.107 (2026-08-14, hand A/B) → ritual-managed from here. A newer version can be
+STRICTER, not just better.
 
 ## HARD RULE — do not write code for what reasoning already does
 **"Keep code headache low."** Before adding a script, a check, or a flag, answer one question:
