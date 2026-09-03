@@ -193,16 +193,18 @@
   font-family: var(--sans); font-size: 7pt; font-weight: 700;
   letter-spacing: .04em; text-transform: uppercase; color: var(--ink-mute);
 }
-/* Hanging indent, so a wrapped URL continues under the value column instead of running back
-   under the label. Without it a long .gov URL starts again at the left margin and reads as
-   though it belongs to the row below — in a directory scanned one state at a time, that is a
-   wrong answer, not just an ugly one. It costs line width, which is why it only became
-   affordable at 3 states per page; at 4 it pushed Texas past the box. */
+/* Two real columns, so a wrapped .gov URL continues under the value and never runs back to
+   the left margin — where it reads as if it belonged to the row below, which in a directory
+   scanned one state at a time is a wrong answer and not merely an ugly one. Done with flex
+   rather than a hanging indent: a negative text-indent also drags the inline-block label out
+   past the page margin, where .page's overflow:hidden clips it ("EMERGENCY MGMT" printing as
+   "GENCY MGMT"). Only .stline gets columns; .streg keeps its inline label. */
 .stline {
   font-family: var(--serif); font-size: 8.2pt; line-height: 1.24;
-  margin: 0; color: var(--ink); overflow-wrap: anywhere;
-  padding-left: 0.92in; text-indent: -0.92in;
+  margin: 0; color: var(--ink);
+  display: flex; align-items: baseline; gap: 0.06in;
 }
+.stval { flex: 1; min-width: 0; overflow-wrap: anywhere; }
 .ssn { font-family: var(--sans); font-size: 7.2pt; color: var(--ink-mute); }
 .stname .stver { float: right; font-size: 7pt; font-weight: 400; }
 

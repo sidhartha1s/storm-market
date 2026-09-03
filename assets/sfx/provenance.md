@@ -16,3 +16,4 @@ post-render (LEARNINGS item 7 — these sources run ~15dB quieter than the ACE m
 | wind-loop.mp3 | self-made (acrossfade self-concat of 02) | derivative | 183s seamless loop |
 
 Detailed per-file source URLs: `episodes/ep1-joplin/media/provenance.csv` (sfx rows).
+06_film_projector_loop.mp3 | synthesized (ffmpeg pink noise + 52Hz hum + 24Hz gated click train) | self-made, no license

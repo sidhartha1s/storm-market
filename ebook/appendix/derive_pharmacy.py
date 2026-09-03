@@ -164,7 +164,6 @@ def main():
         print(f"\n{len(dropped)} URL(s) dropped as gone:")
         for state, url, why in dropped:
             print(f"  {state}: {url}  [{why}]")
-    missing = sorted(set(STATES.values()) - {LAWS.get(a) and s for a, s in STATES.items() if a in LAWS})
     print("\nSee the module docstring for the Tennessee and Mississippi dead ends, and note that "
           "every state not listed in LAWS was searched and no citable standing provision was found.")
 

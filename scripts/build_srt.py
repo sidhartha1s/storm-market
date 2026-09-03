@@ -55,6 +55,9 @@ def main():
         if line:
             cues.append((start, end, " ".join(line)))
 
+    if not cues:
+        sys.exit(f"no narration <audio id=\"nx-*\"> tags found in {ep}/index.html — "
+                 "episode doesn't follow the nx-* audio naming convention (see DESIGN.md)")
     cues.sort()
     out = ep / "renders" / f"{out_base}.srt"
     with out.open("w", encoding="utf-8") as f:

@@ -53,6 +53,10 @@ NEGATIVE = (
 )
 
 STILLS = [
+    ("ai-lake-martin-dusk",
+     "lakeside wooden cabins on a dark Alabama lake at dusk, violent storm sky "
+     "overhead, last grey-green light on the water, trees whipping, no people, "
+     "cinematic documentary still"),
     ("ai-ms-farmland-wedge",
      "a massive dark wedge tornado over empty Mississippi farmland, late "
      "afternoon storm light, wide flat fields, distant funnel touching down"),

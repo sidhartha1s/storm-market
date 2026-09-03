@@ -210,16 +210,16 @@ def fig_water_heater_drawoff():
     <rect x="196" y="34" width="74" height="150" rx="8" stroke-width="2.4" style="fill:none;stroke:{INK}"/>
     <path d="M212 34 v-14 h-14" stroke-width="1.6" style="stroke:{INK};fill:none"/>
     <rect x="184" y="12" width="12" height="12" stroke-width="1.6" style="fill:none;stroke:{INK}"/>
-    {_text(180, 10, "cold inlet valve", size=6.8, anchor="end")}
+    {_text(180, 10, "cold inlet valve", size=7, anchor="end")}
     <path d="M256 34 v-12 h30" stroke-width="1.6" style="stroke:{INK};fill:none"/>
     <rect x="288" y="16" width="10" height="10" stroke-width="1.4" style="fill:none;stroke:{INK}"/>
-    {_text(302, 24, "hot tap opened", size=6.8)}
-    {_text(302, 33, "elsewhere", size=6.8)}
+    {_text(302, 24, "hot tap opened", size=7)}
+    {_text(302, 33, "elsewhere", size=7)}
     <rect x="224" y="184" width="18" height="10" stroke-width="1.6" style="fill:none;stroke:{INK}"/>
     <path d="M233 194 v10 h20" stroke-width="1.6" style="stroke:{INK};fill:none"/>
-    {_text(233, 216, "drain valve", size=6.8, anchor="middle")}
-    {_text(233, 225, "&rarr; clean container", size=6.8, anchor="middle")}
-    {_text(233, 245, "gas pilot / breaker off at the base first", size=6.8, color=INK_MUTE, anchor="middle")}
+    {_text(233, 216, "drain valve", size=7, anchor="middle")}
+    {_text(233, 225, "&rarr; clean container", size=7, anchor="middle")}
+    {_text(233, 245, "gas pilot / breaker off at the base first", size=7, color=INK_MUTE, anchor="middle")}
     {step(1, 30, 24, ["kill the energy &mdash;", "gas pilot or breaker"])}
     {step(2, 30, 66, ["shut the cold-water", "inlet at the tank"])}
     {step(3, 30, 108, ["open a hot tap", "elsewhere, to admit air"])}
@@ -283,8 +283,8 @@ def fig_defensible_space_zones():
     {_text(265, 24, "ZONE 2", size=7.2, weight=700, anchor="middle", color=INK_SOFT)}
     {_text(265, 150, "30&ndash;100 ft &mdash; ladder fuels removed", size=7.2, anchor="middle", color=INK_SOFT)}
     <path d="M340 40 l14 -6 l0 4 l10 0 l0 4 l-10 0 l0 4 z" style="fill:{INK_MUTE}"/>
-    {_text(358, 30, "scale compressed", size=6.6, color=INK_MUTE)}
-    {_text(358, 39, "past 30 ft", size=6.6, color=INK_MUTE)}
+    {_text(358, 30, "scale compressed", size=7, color=INK_MUTE)}
+    {_text(358, 39, "past 30 ft", size=7, color=INK_MUTE)}
     <line x1="44" y1="90" x2="10" y2="90" stroke-width="1" style="stroke:{INK}"/>
     '''
     return _figure(6, "The three bands California statute defines around a structure: an "
@@ -374,7 +374,7 @@ def fig_box_fan_filter():
       <path d="M0,0 L6,0 L3,6 z" style="fill:{AMBER}"/></marker></defs>
     {filt(60)}{filt(76)}{filt(92)}{filt(108)}
     <path d="M60 24 h58 M60 134 h58" stroke-width="2" stroke-dasharray="3,2" style="stroke:{ALERT}"/>
-    {_text(89, 16, "tape seals every seam", size=6.8, anchor="middle", color=ALERT)}
+    {_text(89, 16, "tape seals every seam", size=7, anchor="middle", color=ALERT)}
     <circle cx="210" cy="79" r="46" stroke-width="2.2" style="fill:none;stroke:{INK}"/>
     <rect x="164" y="33" width="92" height="92" stroke-width="2.2" style="fill:none;stroke:{INK}"/>
     <path d="M256 40 L300 20 L300 138 L256 118" stroke-width="1.6" style="fill:{AMBER_BG};stroke:{AMBER}"/>
@@ -405,7 +405,7 @@ def fig_hurricane_cone():
     <circle cx="10" cy="90" r="5" style="fill:{INK}"/>
     {_text(10, 108, "now", size=7, anchor="middle")}
     <circle cx="392" cy="176" r="4" style="fill:{ALERT}"/>
-    {_text(392, 190, "actual track,", size=6.8, anchor="end", color=ALERT)}
+    {_text(392, 190, "actual track,", size=7, anchor="end", color=ALERT)}
     <path d="M375 165 L392 176" stroke-width="1.2" style="stroke:{ALERT}"/>
     {_text(190, 205, "&asymp;1 in 3 times, the storm's center ends up outside the cone (NHC, 5-yr sample)", size=7.4, anchor="middle", color=INK_SOFT)}
     '''
@@ -496,8 +496,8 @@ def fig_disaster_timeline():
         else:
             anchor, lx = "middle", (x0 + x1) / 2
         bars.append(_text(lx, ty, names[i], size=7.2, weight=700, anchor=anchor, color=colors[i]))
-        bars.append(_text(lx, ly, labels[i], size=6.6, anchor=anchor, color=INK_MUTE))
-    body = "".join(bars) + _text(235, 138, "time axis is log-scaled &mdash; each phase is roughly an order of magnitude longer than the last", size=6.6, anchor="middle", color=INK_MUTE, italic=True)
+        bars.append(_text(lx, ly, labels[i], size=7, anchor=anchor, color=INK_MUTE))
+    body = "".join(bars) + _text(235, 138, "time axis is log-scaled &mdash; each phase is roughly an order of magnitude longer than the last", size=7, anchor="middle", color=INK_MUTE, italic=True)
     return _figure(13, "The six phases are not equal lengths, and the mismatch is the point: "
                    "the violent window that gets almost all the attention is minutes, and the "
                    "phases that take most of the injuries are days to years.",

@@ -63,9 +63,19 @@ def main():
                                env={**__import__("os").environ, "PYTHONUTF8": "1", "PYTHONUNBUFFERED": "1"})
             if r.returncode != 0:
                 sys.exit(f"[tts_episode] FAIL on {sid}")
-        d = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
+        # ffprobe immediately after write can return empty on this box (Defender scan lock);
+        # retry briefly before failing loud.
+        d = None
+        for attempt in range(4):
+            out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
                                   "-of", "default=nw=1:nk=1", str(wav)],
-                                 capture_output=True, text=True).stdout.strip())
+                                 capture_output=True, text=True).stdout.strip()
+            if out:
+                d = float(out)
+                break
+            __import__("time").sleep(3)
+        if d is None:
+            sys.exit(f"[tts_episode] ffprobe returned empty for {wav} after 4 attempts")
         manifest[sid] = {"wav": f"audio/{sid}.wav", "duration": round(d, 3),
                          "words": len(text.split())}
         print(f"[tts_episode] {sid}: {d:.1f}s ({len(text.split())} words)", flush=True)

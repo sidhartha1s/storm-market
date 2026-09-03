@@ -128,7 +128,7 @@ def main():
         writer.writerows(rows)
 
     filled = sum(1 for r in rows if r["mitigation_program"])
-    print(f"wrote {OUT}  ({len(rows)} rows researched, {filled} with a confirmed programme)")
+    print(f"wrote {OUT}  ({len(rows)} rows, {filled} with a confirmed programme)")
     if checks:
         print(f"  checks: {verify_urls.summarise(checks)}")
     if blocked:

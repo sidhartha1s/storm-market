@@ -2,6 +2,88 @@
 
 Every owner correction / measured surprise lands here same session. Newest first.
 
+## 2026-07-28 — ep3 overnight build (Tri-State 1925, all-archival episode)
+
+**Editorial / research:**
+1. **Competitor scripts plagiarize each other — never trust their "facts."** Three of seven
+   reference videos shared near-identical scripts (same hook line, same thesis sentence, same
+   "Sam Flowers" first-victim name). Fact-verify found NO source for "Sam Flowers"; the Indiana
+   basketball final was two days BEFORE the storm (competitors say after); "mud-brick school"
+   unverified. Rule: any fact appearing only in competitor videos is presumed copied fiction
+   until a primary source confirms it.
+2. **Pre-1930 events are an asset goldmine now (PD-by-age since 2026):** Fox Movietone reels
+   at USC MIRC download via the CONTENTdm JSON API (digital.tcl.sc.edu dmGetItemInfo → CloudFront
+   URL) even though the main library site is Cloudflare-walled. NWS PAH event pages carry
+   town-labeled photo archives (88 photos for this event). Chronicling America FILES
+   (tile.loc.gov) are hard Cloudflare-gated for all headless tools — use Wikimedia Commons
+   front-page scans instead, or grab ChronAm pages by hand in a real browser.
+3. **"No photograph of the tornado exists" hooks came from competitor COMMENTS** — top-liked
+   comments carry differentiation gold (viewer-verified fact gaps). Keep mining source_comments.
+
+**Pipeline (all reproduced this build):**
+4. **pocket-TTS intermittently dies at model-load (~1 in 15 segments)** — nondeterministic,
+   environmental (VRAM contention). Fix: retry loop around tts_episode.py; successes persist.
+   Also: ffprobe right after wav write can return empty (Defender scan lock) — tts_episode.py
+   now retries the probe 4× before failing loud.
+5. **transcribe_episode.py needs JP-market `.venv` python (faster-whisper), NOT python3** —
+   plain python3 ImportErrors silently inside a .cmd chain. The .cmd wrapper "finished" without
+   producing words.json.
+6. **.cmd files written via bash heredoc get LF endings — cmd.exe silently breaks on `goto`
+   labels.** Write .cmd files with CRLF (python '
+'.join) always.
+7. **hyperframes 0.7.64 StaticGuard contract:** every timed `<section>` needs `class="clip"`
+   or it renders for the ENTIRE composition (full-screen graphic SVGs would cover everything).
+   Positioned card classes (.lt/.popup/.srclab/...) need `inset:auto` to neutralize .clip's
+   inset:0. Asset paths must stay inside the episode dir (`../../assets/` 404s in
+   preview/validate) — copy shared SFX into media/sfx/.
+8. **whisper words.json writes numbers as digits** ("234", "1948,") — word-timestamp lookups
+   must search digit tokens, not spelled-out words.
+9. **Snapshot sweeps at this scale (78 frames) must run DETACHED like renders** — harness kills
+   them in background bash too. Same .cmd + marker pattern as render.cmd.
+10. **Subagent instant-idle failure mode:** some spawned QC agents idle seconds after spawn with
+   zero output (3 of 6 tonight). Detection: idle notification with no artifact on disk. Fix:
+   ping once, then respawn with a smaller task (contact sheets, split halves) — don't wait.
+
+
+## 2026-07-27 — ep2 hook rebuild + ship (hook contract now in DESIGN.md)
+
+**Editorial:**
+1. **The hook contract (owner rated old hook 0.6/10, demanded 9.8+ "unskipable").** What made
+   it 0.6: four undifferentiated clips in 12s, no intelligible speech until 0:22, one silent
+   clip, mid-sentence commentary fragments, an orphan audio tail after the emotional line, no
+   sonic build. What fixed it: an intelligible ANCHOR line (Spann's live "tornado emergency")
+   starting by ~2.5s; every cut lands ON an audio event; a siren spine that builds start→duck→
+   swell→die; the insert trimmed to end on its complete emotional statement ("we knew something
+   was coming" — nothing after); date/place card in the first second; a 2-3s dead-silent VOID
+   before the narrator enters. Full contract in DESIGN.md — apply from ep3 scene one, don't
+   rediscover it.
+2. **Dual-scope statistics must be self-disambiguating in publish copy.** 324 (outbreak) vs 316
+   (Apr 27 alone) are both correct, but a reviewer read them as a contradiction — a viewer will
+   too. Any copy using a scoped figure names the scope in the same sentence.
+
+**Pipeline / tooling (all reproduced):**
+3. **`--workers` must be pinned on full renders** — omitted, hyperframes "auto" resolved to 1
+   worker on a loaded box (2× slower than the 3-worker draft). Recipe in CLAUDE.md/DESIGN.md
+   now pins `--workers 3`.
+4. **`render . <file.html>` entry arg is IGNORED by hyperframes 0.7.64** — it silently renders
+   the default composition. There is no partial/preview render via entry file; use duration
+   overrides or sub-comp renders instead.
+5. **Start-Process ArgumentList quoting:** a .cmd path containing spaces must carry embedded
+   escaped quotes (`'\"C:\...path with spaces...\.cmd\"'`) — unquoted, cmd.exe silently no-ops
+   and no log ever appears.
+6. **Harness kills long-running background Bash watchers between turns** — completion watches
+   on renders must use the Monitor tool (poll a done-marker every ~120s), and the filter must
+   emit on ALL terminal states (complete AND error/fail lines), not just success.
+7. **Master pass numbers (ep2):** full-comp mix landed −13.13 LUFS / TP +0.05 (hot). Master =
+   `-c:v copy -af volume=-1.05dB -c:a aac -b:a 256k` → −14.19 LUFS / TP −1.01, verified with a
+   second loudnorm read. Plain gain beats dynamic loudnorm when input LRA is already tight (3.4).
+8. **Shipping while another session holds `.git/index.lock`:** `git worktree add <dir> -b
+   <branch> origin/main` succeeds despite the lock (index.lock only guards the main checkout's
+   index). Copy changed files in, commit/push/PR/merge from the worktree — the other session's
+   checkout and branch are never touched. Note: the auto-commit hook fires inside worktrees too
+   (an Edit there self-commits); `git worktree remove` can hit Windows Permission-denied — `mv`
+   the dir to trash + `git worktree prune` works.
+
 ## 2026-07-26 — ep2 v1 owner review (9/10; every item below is a standing rule now)
 
 **Editorial (owner corrections):**
@@ -30,6 +112,12 @@ Every owner correction / measured surprise lands here same session. Newest first
   text-over-media element gets a dark backing chip.
 
 **Process:**
+- **Verify each CUT, not just the source video.** An official CBS upload titled for the April 2011
+  Alabama outbreak contained Henryville, IN (March 2012) footage inside its montage — caught only
+  because a chyron was legible in a snapshot frame. Rule: before wiring any broadcast cut, extract
+  a frame FROM THE CUT and check chyrons/landmarks against the event; title + official channel are
+  not provenance for individual shots.
+
 - **Provenance notes are load-bearing at COMPOSE time.** cullman-aftermath.mp4 carried a
   "2017-era footage" warning in provenance.csv and still got wired into a 2011 documentary
   (twice). Rule: before wiring any clip, re-read its provenance row; a "backup only"/era
@@ -256,3 +344,12 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
 - xstack contact sheets pad undefined regions GREEN — padding, not video content; don't panic.
 - Snapshot pre-render QC caught both grade issues before paying for a render — keep snapshot
   sweep (≈13 frames) as the mandatory pre-render gate; post-render frame sweep stays too.
+
+**Render (2026-07-27, ep2 full render):**
+- Full-quality render died at 74% with `Protocol error: Target closed` after a burst of
+  `net::ERR_NETWORK_CHANGED` on the localhost media server — a host network-interface change
+  (Wi-Fi/VPN flip) mid-capture kills the Puppeteer browser's media fetches. Environmental, not
+  a comp defect (same comp draft-rendered clean). Fix: relaunch with
+  `PRODUCER_PUPPETEER_PROTOCOL_TIMEOUT_MS=900000` alongside the nav-timeout var; avoid network
+  changes during long renders. A ~28-min comp at standard/30fps ≈ 75+ min capture on this box —
+  budget 2h wall-clock when the machine is also running other sessions.

@@ -1,11 +1,14 @@
 # The Storm-Ready Home — Phase 1 Outline
 
-Date: 2026-07-26 · Status: awaiting owner sign-off (gates all prose)
+Date: 2026-07-26 · **Status 2026-07-29: prose draft 1 complete against this outline.**
 Design contract: `docs/superpowers/specs/2026-07-25-ebook-funnel-design.md`
+Manuscript status and what is outstanding: `manuscript/README.md`
 
-**Counted total: 130 protections.** That is the enumerated number, not a rounded one. The sales page
-uses 130 only if the outline survives review at 130 — if chapters merge, the number drops and the
-page follows it.
+**Counted total: 130 protections, and the number survived writing.** All 130 are drafted, verified
+programmatically for gaps and duplicates. Four planned items turned out to be paragraphs rather than
+protections and were folded into neighbours; one slot (120) was a duplicate of Protection 46 and was
+reassigned. Both changes are recorded in the sections below, and **the manuscript is now ground truth
+for numbering — not this file.** Where they disagreed, this file was corrected.
 
 ## Per-protection template (every one of the 130 gets all seven fields in prose)
 
@@ -175,43 +178,53 @@ page follows it.
 
 ### Evacuation and mobility (106–116)
 
+Titles below are **as drafted**, which supersedes the pre-prose plan. Four planned items were folded
+into neighbouring protections rather than given their own numbers, because each was a paragraph rather
+than a protection: livestock (noted as out-of-scope inside 109), school reunification and release
+authorisation (inside 112), the disability transport registry (inside 111), and vehicle-in-water window
+escape (inside 115). The shelter-vs-evacuate matrix became the trigger plan, Protection 95.
+
 | # | Protection |
 |---|---|
-| 106 | Go-bag per person, 72 hours, actually packed |
-| 107 | Vehicle — the half-tank rule and the winter kit |
-| 108 | Two evacuation routes and a rally point |
-| 109 | The out-of-area contact person |
-| 110 | Pet evacuation — carriers, records, pet-friendly lodging list built in advance |
-| 111 | Livestock and large animal plan |
-| 112 | Evacuation timing — the leave-early trigger, written down |
-| 113 | Shelter-in-place vs evacuate — the decision matrix |
-| 114 | Children — school reunification plan and authorization forms on file |
-| 115 | Elderly and disability — transport assistance registry |
-| 116 | Vehicle flood escape — window breaker, and never entering moving water |
+| 106 | Two routes out, driven — including the bottleneck a map does not show |
+| 107 | The go-bag, per person |
+| 108 | The five-minute list and the thirty-minute list |
+| 109 | Pets, planned properly — carriers, records, pet-friendly lodging |
+| 110 | Fuel discipline — the half-tank rule in season |
+| 111 | Where you are going, specifically — three destinations, plus the transport registry |
+| 112 | The out-of-area contact — plus school reunification and release authorisation |
+| 113 | Shutting the house down as you leave |
+| 114 | Vertical evacuation — going up, not out, and when it is wrong |
+| 115 | Driving in it — the four rules, plus escaping a vehicle in water |
+| 116 | Coming back |
 
 ### Electronics, data, communications (117–124)
 
 | # | Protection |
 |---|---|
-| 117 | Offline copies of the data you cannot re-create |
-| 118 | Charged-device discipline and power bank rotation |
-| 119 | Faraday container for a backup radio and drive — what it does, what it doesn't |
-| 120 | Unplug protocol before storms and geomagnetic events |
-| 121 | Paper backup of essential information |
-| 122 | FRS/GMRS radios and realistic range expectations |
-| 123 | Analog and landline fallback |
-| 124 | Printed maps and a compass, for when GPS is not the answer |
+| 117 | Charge, in layers — packs, vehicle, solar |
+| 118 | Offline maps, documents and reference |
+| 119 | A radio that is not a phone |
+| 120 | Unplug on warning — the free companion to Protection 46 |
+| 121 | Short-range radios, for talking to each other (FRS/GMRS, realistic range) |
+| 122 | The shielded box, done proportionately — EMP and geomagnetic, honestly scaled |
+| 123 | A backup of your life, off-site — and restoring one file to prove it |
+| 124 | Lightning, for people |
+
+Note: whole-home and point-of-use surge protection is **Protection 46**, in the power chapter. The
+original plan duplicated it here; 120 is the free unplug protocol that 46 cross-references, and the
+freed slot became 121.
 
 ### Radiological and hazmat (125–130)
 
 | # | Protection |
 |---|---|
-| 125 | Are you inside a 10-mile Emergency Planning Zone? The NRC lookup |
-| 126 | Shelter vs evacuate, per your county's actual plan |
-| 127 | Potassium iodide — what it protects, what it doesn't, who should not take it |
-| 128 | Rail, pipeline, and refinery proximity lookup |
-| 129 | Sealing a room against a chemical release |
-| 130 | Leaving on foot — upwind and uphill |
+| 125 | Knowing your radiological proximity — plus rail, pipeline and facility proximity |
+| 126 | Shelter-in-place for a plume — go in, stay in, tune in; on foot, upwind and uphill |
+| 127 | Potassium iodide, and its limits |
+| 128 | Household chemicals, stored so a flood does not make them a hazard |
+| 129 | The gas and carbon monoxide response |
+| 130 | The annual review — the protection that protects the other 129 |
 
 ---
 
@@ -223,12 +236,12 @@ skip what doesn't — and it is what stops the book from reading as homework.
 
 | Week | Theme | Protections |
 |---|---|---|
-| 1 | **Free and instant** — nothing bought | 85, 86, 88, 95, 109, 43 |
+| 1 | **Free and instant** — nothing bought | 85, 86, 88, 95, 112, 43 |
 | 2 | **Water** | 1, 2, 3, 4, 7 |
 | 3 | **Food and cold chain** | 13, 15, 18, 22 |
 | 4 | **The paper week** — documents, inventory, insurance | 96, 97, 100, 102 |
 | 5 | **Power and light** | 37, 38, 46, 47, 48 |
-| 6 | **Shelter and the safe room** | 23, 25, 35, 106 |
+| 6 | **Shelter and the safe room** | 23, 25, 35, 107 |
 | 7 | **Air and medical** | 49, 50, 52, 57, 58, 59 |
 | 8 | **Structure — the weekend builds** | Region-dependent: from 69, 73, 74, 77, 78, 82, 83 |
 | Close | **The drill** | Run the plan with the family. Two scenarios, timed. |
@@ -246,15 +259,15 @@ sets the order of the first ten.
 
 | Rank | Tornado Alley | Hurricane Coast | Wildfire West | Ice & Snow North | Quake West |
 |---|---|---|---|---|---|
-| 1 | 23 safe room | 112 leave-early trigger | 76 ember vents / Zone 0 | 34 pipe freeze | 83 anchoring |
-| 2 | 25 helmet rule | 73 window protection | 77 defensible space | 35 shut-off literacy | 84 gas shutoff |
+| 1 | 23 safe room | 95 trigger plan | 76 ember vents / Zone 0 | 34 pipe freeze | 83 anchoring |
+| 2 | 25 helmet rule | 73 window protection | 77 defensible space | 35 shut-off literacy | 84 gas flex / auto shutoff |
 | 3 | 85 two alert paths | 74 garage door | 91 Red Flag + evac zone | 26 warm room | 1 water store |
 | 4 | 87 NOAA SAME | 69 sealed roof deck | 49 MERV-13 | 32 generator CO | 43 light + shoes bedside |
 | 5 | 95 trigger plan | 103 flood insurance 30-day | 50 box-fan filter | 36 sump + battery | 57 trauma kit |
-| 6 | 106 go-bag | 1 water store | 52 N95 | 82 backwater valve | 58 Stop the Bleed |
-| 7 | 74 garage door | 32 generator CO | 106 go-bag | 13 no-cook pantry | 109 out-of-area contact |
-| 8 | 69 sealed roof deck | 108 two routes | 112 leave-early trigger | 28 sleeping bag rating | 98 cash |
-| 9 | 96 document vault | 96 document vault | 108 two routes | 47 CO alarms | 106 go-bag |
+| 6 | 107 go-bag | 1 water store | 52 N95 | 82 backwater valve | 58 Stop the Bleed |
+| 7 | 74 garage door | 32 generator CO | 107 go-bag | 13 no-cook pantry | 112 out-of-area contact |
+| 8 | 69 sealed roof deck | 106 two routes | 95 trigger plan | 28 sleeping bag rating | 98 cash |
+| 9 | 96 document vault | 96 document vault | 106 two routes | 47 CO alarms | 107 go-bag |
 | 10 | 100 home inventory | 100 home inventory | 100 home inventory | 100 home inventory | 100 home inventory |
 
 Protection 100 (home inventory) is rank 10 in every region — it is the one action that pays in every
@@ -282,11 +295,25 @@ Each playbook runs the same five beats so the book is navigable under stress:
 
 ---
 
-## Open items
+## Open items — updated 2026-07-29
 
-- **Protection cost bands** — every one of the 130 needs a real 2026 price, captured with a dated
-  source at prose time. None are written yet, none are guessed.
-- **Money Chapter figures** — unsourced by design; see the spec. Hail, fire loss, and sewer backup
-  are the three strongest deltas now that they are in scope.
-- **DeAPI keys** — image slots defined at prose time; book lays out complete on code-drawn SVG.
+**Closed since the outline was written:** all 130 protections drafted · all 23 hazard playbooks
+drafted · front matter, people/places, binder and 60-day sequence drafted · page count now measured
+(243 words/page from the rendered sample) rather than estimated · state-directory schema and
+generator built with a fail-loud validator.
+
+**Still open, in the order they gate launch:**
+
+- **150 open `«CITE:»` markers.** Every one is either replaced with a primary source and a retrieval
+  date, or the claim is cut. This is now the largest single item and it is research, not writing.
+- **Protection cost bands** — written as bands in prose, but each needs a real dated 2026 retail
+  source before layout. None are invented; where no source was available the band is
+  deliberately wide.
+- **State directory data** — ~51 rows × ~20 sourced fields. `appendix/build.py` refuses to render a
+  row missing a source URL or a verification date, so this cannot be faked into existence.
+- **Layout** — 41 markdown files hand-laid into fixed 6×9 pages, `fitcheck` exit 0 throughout.
+- **Money Chapter figures** — the Tier A gap figures are sourced (see `MONEY-CHAPTER-RESEARCH.md`);
+  the hail, fire-loss and sewer-backup deltas are still unsourced and the NFPA fire-loss average was
+  never obtained because the source PDF indexed as raw binary. Not guessed.
+- **DeAPI keys** — image slots defined; the book lays out complete on code-drawn SVG without them.
 - **Title** — not locked. A/B list to be drafted with the landing page.
