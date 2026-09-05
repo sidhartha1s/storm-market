@@ -323,9 +323,9 @@ document card — the court-record language revealed line by line, attributed.
 
 **a5-s3 (narration, ~110 w)** — GRAPHIC g-decision part 2: twin reservoir columns filling in
 real time against dated tick marks; "HALF A FOOT PER HOUR" popfig.
-> Now run the four days again from inside the dams. A third of the rain that fell on the
-> watersheds above Addicks and Barker in those four days averaged thirty one inches. The
-> nineteen forties design storm, arrived at last, almost to the inch. The dry reservoirs
+> Now run the four days again from inside the dams. The rain that fell on the watersheds
+> above Addicks and Barker averaged thirty one inches across those four days. The nineteen
+> forties design storm, arrived at last, almost to the inch. The dry reservoirs
 > became lakes rising more than half a foot every hour. Both pools passed every level ever
 > recorded. And the engineers were staring at the oldest trade in flood control. Hold the
 > water and gamble with the dams themselves, or open the gates and flood the people
