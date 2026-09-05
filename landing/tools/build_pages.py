@@ -595,8 +595,9 @@ def convert_hero_grid(content, depth):
 
 def generic_cleanup(content):
     """Kickers/leads/bylines/misc wrapper divs with no chrome equivalent:
-    map the ones chrome styles, unwrap the rest (orphan closing tags left
-    behind are silently ignored by the HTML5 parser)."""
+    map the ones chrome styles, properly unwrap the rest via unwrap_divs()
+    (open AND matching close both removed -- see unwrap_divs docstring for
+    why a stray close cannot just be left behind)."""
     content = re.sub(r'<div class="kicker">(.*?)</div>', lambda m: '<p class="kick">%s</p>' % m.group(1), content, flags=re.S)
     content = re.sub(r'<div class="dispatch-no">(.*?)</div>\s*<div class="datestamp">(.*?)</div>',
                       lambda m: '<p class="kick">%s &middot; %s</p>' % (m.group(1), m.group(2)), content, flags=re.S)
