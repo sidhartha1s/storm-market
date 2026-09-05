@@ -92,7 +92,7 @@ Blackouts 0.6–0.9s at every act seam (NONE at hook→intro, owner order); 1.0s
 
 **i1-s2 (narration, ~60 w)** — VIDEO: flooded freeway aerial → submerged suburbs (PD); counter
 popfig "1,000,000,000,000 GALLONS" rolling on the number.
-> One trillion gallons fall on Harris County alone. A hundred and three people die. Whole
+> One trillion gallons fall on Harris County alone. More than a hundred people die. Whole
 > neighborhoods drown. And when it is over, almost everyone on Earth files it away the same
 > way. A monster storm. A natural disaster. Nobody's fault.
 
