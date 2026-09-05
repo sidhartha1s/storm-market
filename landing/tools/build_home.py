@@ -468,10 +468,10 @@ SHEET_READERS = """
 # ---------------------------------------------------------------------------
 SHEET_PAUL = """
 <section class="sheet" id="sheet-paul">
-  <p class="kick">Who wrote this</p>
+  <p class="kick">Who wrote this &middot; Paul Raymond</p>
   <div class="row">
     <div>
-      <h2>Paul Raymond</h2>
+      <h2>Written by hands that have done every protection in it.</h2>
       <p style="font-family:var(--display);font-weight:700;font-size:23px;line-height:1.4;color:var(--ink);border-left:4px solid var(--tab2);padding-left:20px;margin:0 0 22px">
         "I got tired of watching the same three mistakes kill people in the report
         afterwards. Not exotic mistakes. The same three, in county after county, storm
@@ -485,6 +485,22 @@ SHEET_PAUL = """
     </div>
     <figure style="margin:0"><img class="photo" src="assets/headshot.webp" width="500"
       height="600" alt="Paul Raymond" loading="lazy"></figure>
+  </div>
+
+  <p class="kick" style="margin-top:54px">The work, not the theory</p>
+  <div class="gallery" style="grid-template-columns:repeat(3,1fr)">
+    <figure><img src="assets/paul-plywood.webp" width="672" height="672"
+      alt="Paul Raymond fastening plywood window protection in driving rain" loading="lazy">
+      <figcaption>Protection 73, opening protection, done before the season, not the
+        siren.</figcaption></figure>
+    <figure><img src="assets/field-kit.webp" width="672" height="672"
+      alt="NOAA weather radio, helmet and field binder laid out on a table" loading="lazy">
+      <figcaption>The field kit behind the book. Your household version costs a tenth as
+        much.</figcaption></figure>
+    <figure><img src="assets/paul-stage.webp" width="672" height="448"
+      alt="Paul Raymond holding The Storm-Ready Home while speaking to an audience" loading="lazy">
+      <figcaption>Explaining the part nobody believes: the first week of the plan costs
+        nothing.</figcaption></figure>
   </div>
 </section>
 """
