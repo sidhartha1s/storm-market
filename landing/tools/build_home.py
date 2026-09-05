@@ -608,7 +608,7 @@ SHEET_GET = """
       &middot; 7-day money-back guarantee</p>
   </div>
 </section>
-""" % STATE_OPTIONS
+"""
 
 SHEETS = (
     SHEET_START + SHEET_WHY + SHEET_INSIDE + SHEET_SAVES + SHEET_READERS
