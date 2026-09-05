@@ -307,7 +307,8 @@ SHEET_INSIDE = """
     <span class="chip">Electronics &amp; records</span>
   </div>
 
-  <h2 style="margin-top:54px">Most families sit in two of these regions. The book orders
+  <p class="kick" style="margin-top:54px">Find your region</p>
+  <h2>Most families sit in two of these regions. The book orders
     the chapters for you.</h2>
   <p class="lead">Every chapter applies to every reader: hazards are not exclusive. What your
     region changes is the order. The front matter hands you your ordered first ten, and the
