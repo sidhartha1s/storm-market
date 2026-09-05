@@ -553,13 +553,13 @@ def convert_pg_grid(content):
 
 
 def convert_proof_strip(content):
-    m = re.search(r'<div class="proof">(.*?)</div>\s*</div>', content, re.S)
+    m = re.search(r'<div class="proof">', content)
     if not m:
         return content
-    whole = m.group(0)
+    start, end, whole = find_balanced(content, re.compile(r'<div class="proof">'), "div")
     items = re.findall(r"<div><b>(.*?)</b>(.*?)</div>", whole, re.S)
     line = " &middot; ".join("%s %s" % (a.strip(), b.strip()) for a, b in items)
-    return content[: m.start()] + '<p class="kick">%s</p>\n' % line + content[m.end():]
+    return content[:start] + '<p class="kick">%s</p>\n' % line + content[end:]
 
 
 def convert_mealcard(content):
