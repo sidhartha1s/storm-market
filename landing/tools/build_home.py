@@ -440,6 +440,7 @@ SHEET_SAVES = """
 # ---------------------------------------------------------------------------
 SHEET_READERS = """
 <section class="sheet" id="sheet-readers">
+  <p class="kick">From readers</p>
   <h2>The binder is on their refrigerators now.</h2>
   <div class="quotes">
     <blockquote class="quote recent"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="tag">Tornado &middot; this spring</span><p>"When the sirens went off we already knew which room to go to. Grabbed the bag, grabbed the dog, done. We lost part of the roof. Nobody got hurt."</p><cite>Janet &middot; Kentucky</cite></blockquote>
