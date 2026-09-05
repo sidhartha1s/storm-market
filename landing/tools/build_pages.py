@@ -392,26 +392,64 @@ def extract_printbar(content):
     return new_content, extracted
 
 
-def convert_bookcta(content):
-    """Keep bookcta inline (it is real page copy), simplified to chrome idiom."""
+def convert_standalone_gate(content):
+    """A .gate block NOT wrapped in .printbar (the resources hub's own free-
+    pack CTA) -- convert it inline to the same simplified idiom, in place."""
+    m = re.search(r'<div class="gate">', content)
+    if not m:
+        return content
+    start, end, whole = find_balanced(content, re.compile(r'<div class="gate">'), "div")
+    k_m = re.search(r'<div class="k">(.*?)</div>', whole, re.S)
+    h3_m = re.search(r"<h3>(.*?)</h3>", whole, re.S)
+    p_m = re.search(r"<p>(.*?)</p>", whole, re.S)
+    sub_m = re.search(r'<div class="sub">(.*?)</div>', whole, re.S)
+    ghost_m = re.search(r'<a class="ghost" href="([^"]*)"[^>]*>(.*?)</a>', whole, re.S)
+    new_block = (
+        '<p class="kick">%s</p>\n<h3>%s</h3>\n<p>%s</p>\n'
+        '<p><a class="btn ghost" href="%s">%s</a></p>\n'
+        '<p style="font-size:14px;color:var(--faded)">%s</p>\n'
+        % (
+            clean_text(k_m.group(1)) if k_m else "",
+            h3_m.group(1).strip() if h3_m else "",
+            p_m.group(1).strip() if p_m else "",
+            ghost_m.group(1) if ghost_m else BUY,
+            ghost_m.group(2).strip() if ghost_m else "",
+            sub_m.group(1).strip() if sub_m else "",
+        )
+    )
+    return content[:start] + new_block + content[end:]
 
-    def conv(m):
-        whole = m.group(0)
+
+def convert_bookcta(content):
+    """Keep bookcta inline (it is real page copy), simplified to chrome idiom.
+    Uses balanced-div extraction (bookcta nests a .cover div and, on some
+    pages, a .ctarow div with a second button) so nothing inside is dropped."""
+    out = []
+    pos = 0
+    open_re = re.compile(r'<div class="bookcta">')
+    while True:
+        m = open_re.search(content, pos)
+        if not m:
+            out.append(content[pos:])
+            break
+        out.append(content[pos:m.start()])
+        start, end, whole = find_balanced(content[m.start():], open_re, "div")
         h3_m = re.search(r"<h3>(.*?)</h3>", whole, re.S)
         p_m = re.search(r"<p>(.*?)</p>", whole, re.S)
-        a_m = re.search(r'<a class="btn"[^>]*href="([^"]*)"[^>]*>(.*?)</a>', whole, re.S)
+        btns = re.findall(r'<a class="btn[^"]*"[^>]*href="([^"]*)"[^>]*>(.*?)</a>', whole, re.S)
         sub_m = re.search(r'<div class="btn-sub">(.*?)</div>', whole, re.S)
         h3 = h3_m.group(1).strip() if h3_m else ""
         p = p_m.group(1).strip() if p_m else ""
-        href = a_m.group(1) if a_m else BUY
-        btn = a_m.group(2).strip() if a_m else "Get the Book"
         sub = sub_m.group(1).strip() if sub_m else ""
-        return (
-            '<p><strong>%s</strong> %s</p>\n<p><a class="btn" href="%s">%s</a></p>\n'
-            '<p style="font-size:14px;color:var(--faded)">%s</p>\n' % (h3, p, href, btn, sub)
+        btn_html = "".join('<p><a class="btn" href="%s">%s</a></p>\n' % (href, txt.strip()) for href, txt in btns) or (
+            '<p><a class="btn" href="%s">Get the Book</a></p>\n' % BUY
         )
-
-    return re.sub(r'<div class="bookcta">.*?</div>\s*</div>', conv, content, flags=re.S)
+        out.append(
+            '<p><strong>%s</strong> %s</p>\n%s'
+            '<p style="font-size:14px;color:var(--faded)">%s</p>\n' % (h3, p, btn_html, sub)
+        )
+        pos = m.start() + end
+    return "".join(out)
 
 
 def convert_sources_and_chapters(content):
