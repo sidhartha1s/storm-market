@@ -617,7 +617,7 @@ def generic_cleanup(content):
     content = re.sub(r'<p class="meta">', '<p class="kick">', content)
     # Pure layout wrappers -- strip the opening tag only; unmatched closing
     # </div> tags are dropped silently by every HTML5 parser.
-    content = re.sub(r'<div class="(?:wrap|col|grid|text|topnav)"[^>]*>', "", content)
+    content = unwrap_divs(content, "wrap|col|grid|text|topnav")
     return content
 
 
