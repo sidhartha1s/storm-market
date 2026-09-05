@@ -123,6 +123,33 @@ def inner_of(whole, tag):
     return whole[m.end():close.start()]
 
 
+def unwrap_divs(content, class_alt):
+    """Properly unwrap every <div class="X"> whose class matches class_alt
+    (a regex alternation like "wrap|col|grid"): remove the OPEN tag AND its
+    true matching CLOSE tag, keeping the inner content in place.
+
+    Stripping only the opening tag and leaving the closing tag as a "harmless
+    orphan" is WRONG: HTML's stack-based parser pops whatever real <div> is
+    currently innermost-open when it hits any </div>, so a stray close
+    prematurely closes a real ancestor (chrome's .sheet-wrap, .binder, a
+    .row, ...) rather than being ignored -- this broke .sheet-wrap's
+    overflow:hidden clipping and the .binder grid on several pages before
+    this helper replaced the naive open-tag-only strips."""
+    open_re = re.compile(r'<div class="(?:%s)"[^>]*>' % class_alt)
+    out = []
+    pos = 0
+    while True:
+        m = open_re.search(content, pos)
+        if not m:
+            out.append(content[pos:])
+            break
+        out.append(content[pos:m.start()])
+        start, end, whole = find_balanced(content[m.start():], open_re, "div")
+        out.append(inner_of(whole, "div"))
+        pos = m.start() + end
+    return "".join(out)
+
+
 def strip_tags(s):
     return re.sub(r"<[^>]+>", " ", s)
 
