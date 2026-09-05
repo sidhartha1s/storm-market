@@ -489,7 +489,7 @@ SHEET_PAUL = """
   </div>
 
   <p class="kick" style="margin-top:54px">The work, not the theory</p>
-  <div class="gallery" style="grid-template-columns:repeat(3,1fr)">
+  <div class="gallery g3">
     <figure><img src="assets/paul-plywood.webp" width="672" height="672"
       alt="Paul Raymond fastening plywood window protection in driving rain" loading="lazy">
       <figcaption>Protection 73, opening protection, done before the season, not the
