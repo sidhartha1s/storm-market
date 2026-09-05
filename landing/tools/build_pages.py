@@ -587,6 +587,7 @@ def transform_content(content, depth):
     content = extract_and_drop_exhibit_wrapper(content)
     content = convert_samplestrip(content)
     content, extracted_gate = extract_printbar(content)
+    content = convert_standalone_gate(content)
     content = convert_bookcta(content)
     content = convert_sources_and_chapters(content)
     content = convert_note_callout(content)
