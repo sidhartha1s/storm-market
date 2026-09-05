@@ -379,8 +379,7 @@ def convert_tvframe(content):
 def extract_and_drop_exhibit_wrapper(content):
     """<div class="exhibit"> is purely a layout wrapper around the tvframe
     figure -- unwrap it (leave the figure in place)."""
-    content = re.sub(r'<div class="exhibit">\s*', "", content)
-    return content
+    return unwrap_divs(content, "exhibit")
 
 
 def convert_samplestrip(content):
