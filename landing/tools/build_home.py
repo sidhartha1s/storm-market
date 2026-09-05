@@ -396,7 +396,8 @@ SHEET_SAVES = """
     four of eight, the paper week, which the book places before every week that costs
     money.</p>
 
-  <h2 style="margin-top:54px">One bad afternoon, two ways it can go.</h2>
+  <p class="kick" style="margin-top:54px">What $14.99 is</p>
+  <h2>One bad afternoon, two ways it can go.</h2>
   <p class="lead">Nobody ever wished they'd spent it on one more tank of gas. Put the price
     next to what it's up against. This isn't just a book you read, it's the cheapest item on
     a list where everything else costs real money, and it tells you which of those things
