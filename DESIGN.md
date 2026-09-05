@@ -61,6 +61,12 @@ License check per item; storm-chaser footage NEVER without license; news-network
 sparingly/short/narrated-over (claims budgeted, segments must survive being claimed).
 
 ### Cold-open hook contract (owner-rated, ep2 rebuild — 2026-07-27; amended 2026-08-05)
+> Read `references/script-framework.md` FIRST (owner order 2026-09-06): hook doctrine (the hook
+> continues the title's exact frame; ROI stated, explanation withheld), ROI-drip pacing across
+> the runtime, and the one-product rule (narration+visual+audio judged as a single unit). The
+> contract below is the AV floor; the framework governs what the hook SAYS and how the episode
+> pays it off. It also permits owner-ordered per-episode deviations (e.g. ep7 narrator-from-zero,
+> no post-hook void).
 The first 25-30s decide the video. Owner rated ep2's first hook 0.6/10 and the rebuilt one
 shipped; these are the standing requirements for every episode's cold open:
 - **NO black start (owner order 2026-08-05, ep5+): frame one is MID-ACTION** — the episode's
