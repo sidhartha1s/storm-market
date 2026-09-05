@@ -426,6 +426,8 @@ SHEET_SAVES = """
       <div class="col-total"><span>$87.99 of value, once</span><b>$14.99</b></div>
     </div>
   </div>
+  <p class="vsnote" style="font-family:var(--mono);font-size:14px;color:var(--faded)">The
+    manual that sequences all of it, starting with the free week: $14.99, once.</p>
   <p class="vsnote">And the protection the reports keep coming back to, the written trigger
     plan, Protection 95, costs nothing at all. If one page of this book changes one decision
     on one bad afternoon, the price stops being a number worth discussing.</p>
