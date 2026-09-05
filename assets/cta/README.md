@@ -6,6 +6,14 @@ Deterministic gate: `scripts/sweep_episode.py` ("CTA present + placed"). SRT cue
 ## Current file
 | Field | Value |
 |---|---|
+| File | `paul-storm-ready-v5.mp4` (1920×1080 h264/aac 30fps, **15.633 s**, 38 MB) |
+| md5 | `eab9687e317991cb4c3a343574e9cb8f` |
+| Transcript | `paul-storm-ready-v5.txt` (same 4-sentence VO as v4c; whisper-verified against the audio 2026-09-06) |
+| Source | owner master `C:\Users\Sidhartha\Downloads\Paul Raymond CTA Master.mp4` (2026-09-01), confirmed as final 2026-09-06 (ep7 kickoff) |
+
+### Previous file (kept — shipped episodes reproduce)
+| Field | Value |
+|---|---|
 | File | `paul-storm-ready-v4c.mp4` (1920×1080, h264/aac, **15.104 s**, 24 MB) |
 | md5 | `34b6b40bdf772d75d4c7ebf11a0e2a80` |
 | Transcript | `paul-storm-ready-v4c.txt` (4 sentences; whisper-verified against the audio) |
