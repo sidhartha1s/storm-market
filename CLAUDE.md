@@ -158,8 +158,10 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
 per-segment TTS, LLM-as-editor placement, muted-clips default, owner gate on every insert.**
 Per episode in `episodes/<slug>/`:
 1. `edit_script.md` — typed segment list (see DESIGN.md) + per-beat visual intent. Owner signs
-   off design BEFORE paid spend or bulk sourcing. **Script is written on the retention lattice —
-   `references/script-scaling.md` (owner-ordered 2026-08-05): read it first.** It carries the
+   off design BEFORE paid spend or bulk sourcing. **Before writing any hook or script, read
+   `references/script-framework.md` (owner-ordered 2026-09-06) — hook doctrine (BMW rule,
+   ROI-first), ROI-drip pacing, and the narration+visual+audio one-product rule — then
+   `references/script-scaling.md` (owner-ordered 2026-08-05), the retention lattice.** It carries the
    scaling method (acts, not stretched beats), the pre-TTS fact-QC layer (zero open `[verify]`
    markers before TTS), and the insert-transcription rule. **Length planning: narration words =
    target_total_minutes × 0.9 × ~158** (measured 2026-07-26: ep1 manifest ground truth 153.5 wpm,
