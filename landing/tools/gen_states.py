@@ -393,11 +393,25 @@ def build_menu(rows):
         description = description[:155]
     description = denash(description)
 
-    items = sorted(rows, key=lambda r: r["state"].strip())
-    grid_items = "".join(
-        f'<li><a href="{esc(slug_for(r["state"].strip()))}/">{esc(r["state"].strip())}</a></li>'
-        for r in items
-    )
+    groups = {}
+    for row in rows:
+        primary = row["region_overlay"].split("|")[0].strip() or "Other"
+        groups.setdefault(primary, []).append(row)
+    order = sorted(groups.keys(), key=lambda k: (-len(groups[k]), k))
+
+    region_html = ""
+    for region in order:
+        items = sorted(groups[region], key=lambda r: r["state"].strip())
+        grid_items = "".join(
+            f'<li data-name="{esc(r["state"].strip().lower())}">'
+            f'<a href="{esc(slug_for(r["state"].strip()))}/">{esc(r["state"].strip())}</a></li>'
+            for r in items
+        )
+        region_html += f"""<div class="regionhead">{esc(region)}</div>
+      <ul class="stategrid">
+        {grid_items}
+      </ul>
+      """
 
     sheets = [f"""<section class="sheet" id="sheet-directory">
       <p class="kick">State Guides &middot; 50 states + DC</p>
@@ -405,9 +419,12 @@ def build_menu(rows):
       <p class="lead">Every state has a page: the three hazards it actually faces, the
         shelter rebates and grants on offer, who answers the phone before and after, and the
         rules worth knowing, every fact linked to its source.</p>
-      <ul class="stategrid">
-        {grid_items}
-      </ul>
+      <div class="finder">
+        <input id="q" type="search" placeholder="Type your state&hellip;" autocomplete="off" aria-label="Find your state">
+        <span class="hint">or scroll and tap any state &darr;</span>
+      </div>
+      <p class="nomatch" id="nomatch" hidden>No state matches that, check the spelling, or scroll.</p>
+      {region_html}
     </section>""", f"""<section class="sheet" id="sheet-book">
       <p class="kick">Get the Book</p>
       <h2>Every state packet is already inside the book.</h2>
@@ -430,13 +447,41 @@ def build_menu(rows):
 <meta property="og:url" content="{esc(canonical)}">
 <meta name="twitter:card" content="summary_large_image">
 <style>
-.stategrid{{list-style:none;margin:26px 0 0;padding:0;display:grid;
+.finder{{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:24px 0 8px}}
+.finder input{{flex:1 1 320px;max-width:420px;font-family:var(--body);font-size:20px;padding:12px 16px;
+  background:#fff;color:var(--ink);border:2px solid var(--cta);border-radius:6px;outline:none}}
+.finder input:focus{{box-shadow:0 0 0 3px rgba(194,87,27,.25)}}
+.finder .hint{{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--faded)}}
+.nomatch{{font-family:var(--mono);font-size:14px;color:var(--faded);padding:12px 0}}
+.nomatch[hidden]{{display:none}}
+.regionhead{{font-family:var(--mono);font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--faded);border-top:2px solid var(--ink);padding-top:10px;margin:34px 0 6px}}
+.regionhead[hidden]{{display:none}}
+.stategrid{{list-style:none;margin:14px 0 0;padding:0;display:grid;
   grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:4px 20px}}
 .stategrid li{{border-bottom:1px solid var(--rule)}}
+.stategrid li[hidden]{{display:none}}
 .stategrid a{{display:block;padding:9px 2px;font-size:17px;color:var(--ink);text-decoration:none}}
 .stategrid a:hover{{color:var(--cta)}}
 @media(max-width:640px){{.stategrid{{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}}}}
 </style>"""
+
+    body_extra = """<script>
+(function(){
+  var q=document.getElementById('q'), items=[].slice.call(document.querySelectorAll('.stategrid li')),
+      heads=[].slice.call(document.querySelectorAll('.regionhead')), none=document.getElementById('nomatch');
+  if(!q)return;
+  q.addEventListener('input',function(){
+    var v=q.value.trim().toLowerCase(), shown=0;
+    items.forEach(function(li){var on=!v||li.dataset.name.indexOf(v)>-1;li.hidden=!on;if(on)shown++;});
+    heads.forEach(function(h){var grid=h.nextElementSibling;h.hidden=!!v&&!grid.querySelector('li:not([hidden])');});
+    none.hidden=shown>0;
+  });
+  q.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){var first=items.filter(function(li){return !li.hidden;})[0];if(first)location.href=first.querySelector('a').href;}
+  });
+})();
+</script>"""
 
     return chrome.render(
         title=esc(title),
@@ -446,6 +491,7 @@ def build_menu(rows):
         sheets="\n".join(sheets),
         depth=1,
         head_extra=head_extra,
+        body_extra=body_extra,
     )
 
 
