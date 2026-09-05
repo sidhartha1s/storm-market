@@ -113,7 +113,6 @@ def find_balanced(html, open_re, tag):
             pos = nxt_close.end()
     end = pos
     whole = html[start:end]
-    inner = html[m.end():end - len(html[nxt_close.start():end])] if False else None
     return start, end, whole
 
 
