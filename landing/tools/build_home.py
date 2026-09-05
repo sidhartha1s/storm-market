@@ -373,8 +373,8 @@ SHEET_SAVES = """
     <tr class="total"><td>Also on the record</td><td>Figure</td></tr>
     <tr><td>Share of housing-assistance recipients who received the maximum</td><td>10.8%</td></tr>
     <tr><td>Share of all recipients earning $30,000 a year or less</td><td>53.6%</td></tr>
-    <tr><td>Average award, homeowners, 2016 to 2018</td><td>~$4,200</td></tr>
-    <tr><td>Average award, renters, 2016 to 2018</td><td>~$1,700</td></tr>
+    <tr><td>Average award, homeowners, 2016&#8211;2018</td><td>~$4,200</td></tr>
+    <tr><td>Average award, renters, 2016&#8211;2018</td><td>~$1,700</td></tr>
   </table>
   <p style="font-family:var(--mono);font-size:12px;color:var(--faded);margin-top:6px">Source:
     Congressional Research Service, <em>FEMA Individual Assistance Grants for Disaster
