@@ -326,7 +326,8 @@ SHEET_INSIDE = """
       <p>Anchoring &amp; strapping, gas shutoff literacy, water store, trauma kit.</p></li>
   </ol>
 
-  <h2 style="margin-top:54px">Real pages, not a mockup.</h2>
+  <p class="kick" style="margin-top:54px">Look inside</p>
+  <h2>Real pages, not a mockup.</h2>
   <p class="lead">Every protection carries the same seven fields: what it prevents, what it
     costs, how long it takes, what to buy, the steps, which regions rank it first, and the
     line most books leave out: what it does not do.</p>
