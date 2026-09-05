@@ -162,7 +162,8 @@ HEAD_EXTRA = """
 .gapcard.gain b{color:var(--good)}
 .gapcard p{margin:10px 0 0;color:var(--soft);font-size:15px}
 .ruled .rst{grid-column:2;display:block;font-family:var(--mono);font-size:12px;color:var(--faded);margin:2px 0 4px}
-@media (max-width:900px){.gap2{grid-template-columns:1fr}}
+.gallery.g3{grid-template-columns:repeat(3,1fr)}
+@media (max-width:900px){.gap2{grid-template-columns:1fr}.gallery.g3{grid-template-columns:1fr}}
 </style>
 """
 
