@@ -580,8 +580,11 @@ def convert_mealcard(content):
 
 def convert_hero_grid(content, depth):
     """resources hub header: drop the decorative .fan cover stack, keep text."""
-    content = re.sub(r'<div class="fan"[^>]*>.*?</div>\s*', "", content, flags=re.S)
-    content = re.sub(r'<div class="hero-grid">\s*<div>', "<div>", content)
+    fan_m = re.search(r'<div class="fan"[^>]*>', content)
+    if fan_m:
+        start, end, whole = find_balanced(content, re.compile(r'<div class="fan"[^>]*>'), "div")
+        content = content[:start] + content[end:]
+    content = unwrap_divs(content, "hero-grid")
     content = re.sub(r'<div class="kicker">(.*?)</div>', lambda m: '<p class="kick">%s</p>' % m.group(1), content)
     content = re.sub(r'<p class="sub">', '<p class="lead">', content)
     content = re.sub(r'<div class="fine">(.*?)</div>', lambda m: '<p style="font-size:14px;color:var(--faded)">%s</p>' % m.group(1), content)
