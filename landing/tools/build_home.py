@@ -536,6 +536,7 @@ SHEET_GET = """
 <section class="sheet" id="sheet-get">
   <div class="order">
     <div>
+      <p class="kick">The offer</p>
       <h2>One book. Everything in it. Yours in two minutes.</h2>
       <p class="lead">Instant PDF download. Pay once, own it forever.</p>
       <img src="assets/cover-mini.webp" width="260" height="347" alt=""
