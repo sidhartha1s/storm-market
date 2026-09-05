@@ -423,9 +423,8 @@ continuous element per long graphic, slide-out exits, beats word-synced to words
 2. Cedar Bayou — NOT used. STATUS: avoided.
 3. "1:40 AM" — NOT used ("middle of the night... hours ahead of their announced schedule",
    per the verified window). STATUS: resolved by wording.
-4. Combined death toll — "a hundred and three" (intro i1-s2) sits at the low end of the
-   103–105 range; per facts-timeline the honest form is the range. ACTION: keep "more than a
-   hundred" OR verify one figure — final pass decision. **OPEN**
+4. Combined death toll — narration uses "more than a hundred" (i1-s2), inside the verified
+   103–105 range; act 3 uses the HIGH-confidence "sixty eight" direct figure. STATUS: resolved.
 5. Katy Prairie "fraction of itself" — REPORTING-sourced; wording kept vague (no acreage
    claim). STATUS: resolved by wording.
 6. "17,000 rescues" = government + volunteers combined (NWS SA) — narration says "together",
