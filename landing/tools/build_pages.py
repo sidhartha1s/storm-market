@@ -290,7 +290,16 @@ def convert_defs(content):
     start, end, whole = find_balanced(content[m.start():], re.compile(r'<div class="defs">'), "div")
     whole_start = m.start()
     inner = inner_of(whole, "div")
-    defs = re.findall(r'<div class="def(?: warn)?">(.*?)</div>', inner, re.S)
+    defs = []
+    search_from = 0
+    def_open_re = re.compile(r'<div class="def(?: warn)?">')
+    while True:
+        dm = def_open_re.search(inner, search_from)
+        if not dm:
+            break
+        d_start, d_end, d_whole = find_balanced(inner[dm.start():], re.compile(r'<div class="def(?: warn)?">'), "div")
+        defs.append(inner_of(d_whole, "div"))
+        search_from = dm.start() + d_end
     lis = []
     for d in defs:
         word_m = re.search(r'<div class="word">(.*?)</div>', d, re.S)
