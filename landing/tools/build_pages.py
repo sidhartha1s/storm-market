@@ -567,6 +567,14 @@ def generic_cleanup(content):
     content = re.sub(r'<p class="secondary">', "<p>", content)
     content = re.sub(r'<p class="internal">', "<p>", content)
     content = re.sub(r'<button class="printbtn"[^>]*>.*?</button>\s*', "", content, flags=re.S)
+    content = re.sub(r'<div class="shots">', '<div class="gallery">', content)
+    content = re.sub(
+        r'<div class="honest">(.*?)</div>',
+        lambda m: '<blockquote class="quote"><p>%s</p></blockquote>' % m.group(1).strip(),
+        content, flags=re.S,
+    )
+    content = re.sub(r'<div class="nextup">(.*?)</div>', lambda m: '<p class="kick">%s</p>' % m.group(1).strip(), content, flags=re.S)
+    content = re.sub(r'<p class="meta">', '<p class="kick">', content)
     # Pure layout wrappers -- strip the opening tag only; unmatched closing
     # </div> tags are dropped silently by every HTML5 parser.
     content = re.sub(r'<div class="(?:wrap|col|grid|text|topnav)"[^>]*>', "", content)
