@@ -214,19 +214,29 @@ def get_content_region(html, simple):
 
 def convert_details_faq(content):
     """<div class="faq|faqbox">...<details><summary>Q</summary><p>A</p></details>...</div>
-    -> <dl class="faq"><div><dt>Q</dt><dd>A</dd></div>...</dl>"""
-    pattern = re.compile(r'<div class="(?:faq|faqbox)">(.*?)</div>\s*(?=<h2|<div class="bookcta"|<p class="secondary"|<div class="sources"|$)', re.S)
-
-    def conv_one(m):
-        inner = m.group(1)
+    -> <dl class="faq"><div><dt>Q</dt><dd>A</dd></div>...</dl>
+    Uses balanced-div extraction -- a lookahead-terminated non-greedy match
+    can silently swallow real content past the real close (caught in review:
+    it ate a whole bookcta block on one page)."""
+    open_re = re.compile(r'<div class="(?:faq|faqbox)">')
+    out = []
+    pos = 0
+    while True:
+        m = open_re.search(content, pos)
+        if not m:
+            out.append(content[pos:])
+            break
+        out.append(content[pos:m.start()])
+        start, end, whole = find_balanced(content[m.start():], open_re, "div")
+        inner = inner_of(whole, "div")
         items = re.findall(r"<details>\s*<summary>(.*?)</summary>\s*(.*?)</details>", inner, re.S)
         rows = []
         for q, a in items:
             a = re.sub(r"</?p>", "", a).strip()
             rows.append("<div><dt>%s</dt><dd>%s</dd></div>" % (q.strip(), a))
-        return '<dl class="faq">%s</dl>\n' % "".join(rows)
-
-    return pattern.sub(conv_one, content)
+        out.append('<dl class="faq">%s</dl>\n' % "".join(rows))
+        pos = m.start() + end
+    return "".join(out)
 
 
 def convert_list_blocks(content):
