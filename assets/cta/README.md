@@ -24,7 +24,8 @@ Deterministic gate: `scripts/sweep_episode.py` ("CTA present + placed"). SRT cue
 | First shipped | ep2 v2 (owner re-cut, spliced at 8:26–8:42 outside the pipeline); ep4 = first in-timeline use |
 
 ## Version history
-- **v4c** (2026-08-28) — HeyGen talking head, QR on chest. CURRENT.
+- **v5** (2026-09-01, adopted 2026-09-06) — owner-supplied "Paul Raymond CTA Master", same VO, 15.633 s. CURRENT (first use: ep7).
+- v4c (2026-08-28) — HeyGen talking head, QR on chest. Shipped in ep2 v2/ep4.
 - v4b (2026-08-23) — DeAPI/LTX lipsync (clips A seed 7 + B seed 11 bridged), same composite; `archive/insert-v4b-final_deapi-paul.mp4`. Superseded.
 - earlier (2026-08-16) — `Videos\storm-ready-insert.mp4`, 14.8 s, first cut.
 - experiment (2026-08-29) — local Wav2Lip re-sync (`local-lipsync/paul60_wav2lip.mp4`, 60 s, 540×960). Not shipped, not a CTA.
