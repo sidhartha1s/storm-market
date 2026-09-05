@@ -495,9 +495,13 @@ def convert_note_cards(content):
 def convert_pg_grid(content):
     """resources hub: .grid > .pg cards -> <ol class="ruled">"""
     m = re.search(r'<div class="grid">', content)
-    if not m:
-        return content
+    if not m or '<div class="pg' not in content[m.start():]:
+        return content  # only the resources-hub card grid uses .pg -- any
+        # other <div class="grid"> (e.g. about's portrait/text intro layout)
+        # is a plain layout wrapper and must be left for generic_cleanup.
     start, end, whole = find_balanced(content, re.compile(r'<div class="grid">'), "div")
+    if '<div class="pg' not in whole:
+        return content
     inner = inner_of(whole, "div")
     cards = re.findall(r'<div class="pg(?: book)?">(.*?)</div>\s*(?=<div class="pg|$)', inner, re.S)
     lis = []
