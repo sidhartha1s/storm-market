@@ -644,7 +644,11 @@ def main():
         head_extra=HEAD_EXTRA,
         body_extra=BODY_EXTRA,
     )
-    html = html.replace("@@BUY@@", chrome.BUY).replace("@@PACKET@@", chrome.PACKET)
+    html = (
+        html.replace("@@BUY@@", chrome.BUY)
+        .replace("@@PACKET@@", chrome.PACKET)
+        .replace("@@STATES@@", STATE_OPTIONS)
+    )
     OUT.write_text(html, encoding="utf-8")
     print(f"wrote {OUT} ({len(html)} bytes)")
 
