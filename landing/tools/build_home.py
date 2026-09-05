@@ -582,7 +582,7 @@ SHEET_GET = """
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
         <select id="state-select" aria-label="Your state"
           style="flex:1 1 220px;min-height:52px;padding:0 14px;font:inherit;font-size:16px;color:var(--ink);background:#fffdf7;border:1px solid var(--rule);border-radius:6px">
-          %s
+          @@STATES@@
         </select>
         <a class="btn" id="packet" href="@@PACKET@@">Send My State Packet, Free</a>
       </div>
