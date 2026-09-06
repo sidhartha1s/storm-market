@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* honest designed card — no 1940s footage of the dams exists (sourcing verified); per taste
+     rule "if no asset exists, build an honest designed card — never fabricate footage" */
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #10130f 0%, #050604 78%); overflow:hidden; }
+  .drift { position:absolute; inset:-40% 0; opacity:0.20; pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(180,170,140,0.13) 0 1px, transparent 1px 46px); }
+  .eyebrow { position:absolute; left:96px; top:76px; font-size:22px; letter-spacing:6px; color:#a8a08a; font-weight:700; }
+  .hl { position:absolute; left:96px; top:112px; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#efe9d8; }
+  .sub { position:absolute; left:96px; top:196px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  .yr { position:absolute; right:96px; top:82px; font-family:'Courier New',monospace; font-size:88px; color:#d8a13a; font-weight:700; }
+  .yrlab { position:absolute; right:96px; top:186px; font-size:19px; letter-spacing:4px; color:#a8a08a; font-weight:700; text-align:right; }
+  .schlab { font-family:'Courier New',monospace; font-weight:700; font-size:23px; fill:#d8ceae; letter-spacing:2px; }
+  .schsmall { font-family:'Courier New',monospace; font-weight:700; font-size:18px; fill:#a8a08a; letter-spacing:2px; }
+  .mission { position:absolute; left:0; right:0; bottom:104px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
+    font-size:42px; color:#efe9d8; letter-spacing:2px; }
+</style>
+<div id="root" data-composition-id="g-1938" data-width="1920" data-height="1080">
+<div class="drift" id="g-38-drift"></div>
+<svg id="g-38-svg" viewBox="0 0 1920 1080" style="position:absolute;inset:0">
+  <!-- blueprint-style schematic: two dam arcs west of a city dot, drawn like a 1940s plan sheet -->
+  <g stroke="#d8ceae" fill="none" opacity="0.92">
+    <path id="g-38-damA" d="M 520 380 Q 700 330 880 400" stroke-width="7" stroke-dasharray="420" stroke-dashoffset="420"/>
+    <path id="g-38-damB" d="M 480 690 Q 660 640 840 710" stroke-width="7" stroke-dasharray="420" stroke-dashoffset="420"/>
+    <path id="g-38-bayou" d="M 880 400 C 1080 480 1240 530 1500 555 M 840 710 C 1040 640 1240 580 1500 560" stroke-width="3" stroke-dasharray="1300" stroke-dashoffset="1300" opacity="0.7"/>
+  </g>
+  <circle id="g-38-city" cx="1560" cy="556" r="0" fill="#d8a13a"/>
+  <text id="g-38-citylab" x="1560" y="518" text-anchor="middle" class="schlab">DOWNTOWN HOUSTON</text>
+  <text id="g-38-alab" x="700" y="310" text-anchor="middle" class="schlab" opacity="0">ADDICKS</text>
+  <text id="g-38-blab" x="660" y="770" text-anchor="middle" class="schlab" opacity="0">BARKER</text>
+  <!-- the design-storm figure + the unbought land hatch -->
+  <g id="g-38-ds" opacity="0">
+    <text x="700" y="520" text-anchor="middle" class="schlab" font-size="44" fill="#d8a13a">31.4″</text>
+    <text x="700" y="556" text-anchor="middle" class="schsmall">THE DESIGN STORM</text>
+  </g>
+  <g id="g-38-hatch" opacity="0">
+    <path d="M 430 420 l 60 -60 M 460 470 l 100 -100 M 490 520 l 130 -130 M 520 570 l 140 -140" stroke="#8e2020" stroke-width="4"/>
+    <text x="470" y="612" class="schsmall" fill="#c96a5a">LAND NOT BOUGHT</text>
+  </g>
+</svg>
+<div class="eyebrow" id="g-38-eb">BUFFALO BAYOU AND TRIBUTARIES PROJECT · ACT OF CONGRESS, 1938</div>
+<div class="hl" id="g-38-hl">BORN FROM A FLOOD</div>
+<div class="sub" id="g-38-sb">Houston drowned twice — the dams were the answer</div>
+<div class="yr" id="g-38-yr">1940s</div>
+<div class="yrlab" id="g-38-yrlab">WWII-ERA CONSTRUCTION</div>
+<div class="mission" id="g-38-ms">ONE MISSION: PROTECT DOWNTOWN HOUSTON</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* a5-s1 words: born from a flood@1.36-2.04 · drowned twice 1920s-30s@3.76-6.14 · Congress@7.34 ·
+     dams built west@7.98-8.8 · one mission@9.86-10.12 · Protect Downtown Houston@11.5-12.28 ·
+     engineers of the 1940s@14.04-14.88 · Design Storm@18.32-18.7 · 31.4 inches@19.74-21.36
+     (card exits ~18s in; the doc trade-off lines land in g-decision-doc next segment) */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-38-";
+  tl.set([P+"ms",P+"yr",P+"yrlab"], {autoAlpha:0}, 0);
+  tl.fromTo(P+"drift", {y:-90}, {y:90, duration:18.0, ease:"none"}, 0);   // continuous
+  tl.fromTo(P+"eb", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.3);
+  tl.fromTo(P+"hl", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 1.3);   // "born from a flood"
+  tl.fromTo(P+"sb", {autoAlpha:0, x:-24}, {autoAlpha:1, x:0, duration:0.5}, 3.7);                      // "drowned twice"
+  /* dams draw ON "dams built west of town" @7.98 */
+  tl.to(P+"damA", {strokeDashoffset:0, duration:1.2, ease:"power2.inOut"}, 7.9);
+  tl.to(P+"damB", {strokeDashoffset:0, duration:1.2, ease:"power2.inOut"}, 8.4);
+  tl.fromTo(P+"alab", {opacity:0}, {opacity:1, duration:0.4}, 8.9);
+  tl.fromTo(P+"blab", {opacity:0}, {opacity:1, duration:0.4}, 9.3);
+  /* mission ON "Protect Downtown Houston" @11.5; bayou lines run to the city dot */
+  tl.to(P+"bayou", {strokeDashoffset:0, duration:1.6, ease:"power2.inOut"}, 10.2);
+  tl.fromTo(P+"city", {attr:{r:0}}, {attr:{r:12}, duration:0.4, ease:"back.out(2)"}, 11.2);
+  tl.fromTo(P+"citylab", {opacity:0}, {opacity:1, duration:0.4}, 11.4);
+  tl.fromTo(P+"ms", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.55, ease:"power3.out"}, 11.6);
+  /* era stamp ON "engineers of the 1940s" @14.04 */
+  tl.fromTo(P+"yr", {autoAlpha:0, scale:1.8}, {autoAlpha:1, scale:1, duration:0.4, ease:"power4.in"}, 14.0);
+  tl.fromTo(P+"yrlab", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 14.5);
+  /* hatch: the unbought land, planted just before the exit (paid fully by g-decision-doc) */
+  tl.fromTo(P+"hatch", {opacity:0}, {opacity:1, duration:0.5}, 16.2);
+  /* exit on the final 0.6s of the 18s host window */
+  tl.to([P+"hl",P+"sb",P+"eb",P+"ms",P+"yr",P+"yrlab"], {x:980, autoAlpha:0, duration:0.55, ease:"power3.in"}, 17.4);
+  tl.to(P+"svg", {autoAlpha:0, duration:0.5}, 17.5);
+  window.__timelines["g-1938"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
