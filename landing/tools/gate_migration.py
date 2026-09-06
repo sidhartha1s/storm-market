@@ -78,7 +78,7 @@ def main():
             path = os.path.join(d, f); rel = os.path.relpath(path, LANDING).replace("\\", "/")
             new = open(path, encoding="utf-8").read(); old = old_file(rel)
             pages += 1; probs = []
-            if old is not None:
+            if old is not None and rel != "index.html":  # home = approved Binder concept, owner decision 2026-09-06; old copy not ported
                 newtext = norm(visible(new))
                 missing = [s for s in sentences(old) if s not in newtext and s not in ALLOW and s not in ALLOW_DEFAULT]
                 if missing: probs.append(f"{len(missing)} old sentences missing: " + " | ".join(m[:90] for m in missing[:5]))
