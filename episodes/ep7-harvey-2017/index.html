@@ -10,19 +10,14 @@
     #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070c; }
     video, .still-wrap { position: absolute; inset: 0; }
     video { width: 100%; height: 100%; object-fit: cover; }
-    .still-wrap { overflow: hidden; }
-    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
     .clip { position: absolute; inset: 0; }
     .blackout { position: absolute; inset: 0; background: #000; }
-    /* ---- glasscard: THE one treatment for text over footage (ep6 device) ---- */
+    .gr { filter: saturate(0.85) contrast(1.08) brightness(0.88); } /* unified broadcast grade; PD/stock exempt */
+    /* ---- glasscard (ep6 device) ---- */
     .glasscard { background: rgba(10,16,24,0.55); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
       border: 1px solid rgba(255,255,255,0.14); border-radius: 28px; padding: 40px 56px; box-sizing: border-box;
       box-shadow: 0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
-    .quotecard { position: absolute; left: 260px; right: 260px; bottom: 150px; z-index: 6; text-align: center; }
-    .quotecard.glasscard { box-shadow: none; }
-    .quotecard .q { display: table; margin: 0 auto; font-family: Georgia, serif; font-style: italic; font-size: 42px; color: #f2f5f8; line-height: 1.35; text-shadow: 0 2px 18px rgba(0,0,0,0.9); }
-    .quotecard .attr { display: table; margin: 14px auto 0; font-family: Arial, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 3px; color: #d8a13a; }
-    /* ---- Abril popfig (red figure/date popups; amber variant for money/figures) ---- */
+    /* ---- Abril popfig ---- */
     @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
     .popfig { position: absolute; left: 0; right: 0; top: 38%; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; }
     .popfig .pf-big { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 150px; color: #d0121f; letter-spacing: 0.04em;
@@ -32,69 +27,150 @@
     .popfig-white .pf-big { color: #f2f5f8; text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(40,60,80,0.6), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
     .popfig-amber .pf-big { color: #d8a13a; text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(90,60,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
     #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.11; mix-blend-mode: overlay; }
-    .credit { position: absolute; right: 42px; bottom: 34px; z-index: 7; font-family: Arial, sans-serif; font-weight: 700;
-      font-size: 17px; letter-spacing: 2px; color: rgba(220,228,236,0.55); text-shadow: 0 1px 6px #000; }
   </style>
 </head>
 <body>
-<div id="root" data-composition-id="ep7-harvey2017" data-start="0" data-width="1920" data-height="1080" data-duration="1055.2" data-fps="30">
+<div id="root" data-composition-id="ep7-harvey2017" data-start="0" data-width="1920" data-height="1080" data-duration="1055.5" data-fps="30">
 
-  <!-- ============================== NARRATION (track 0, nx-* convention for build_srt) ============================== -->
+  <!-- ============ NARRATION (nx-* for build_srt) ============ -->
   <audio id="nx-h1s1" src="audio/h1-s1.wav" data-start="0" data-duration="21.88" data-volume="1"></audio>
   <audio id="nx-i1s1" src="audio/i1-s1.wav" data-start="22.23" data-duration="25.28" data-volume="1"></audio>
   <audio id="nx-i1s2" src="audio/i1-s2.wav" data-start="47.86" data-duration="19.56" data-volume="1"></audio>
   <audio id="nx-i1s3" src="audio/i1-s3.wav" data-start="67.77" data-duration="21.88" data-volume="1"></audio>
   <audio id="nx-a1s1" src="audio/a1-s1.wav" data-start="90.35" data-duration="30.72" data-volume="1"></audio>
-  <audio id="nx-a1s3" src="audio/a1-s3.wav" data-start="129.77" data-duration="33.76" data-volume="1"></audio>
-  <audio id="nx-a1s4" src="audio/a1-s4.wav" data-start="163.88" data-duration="37.96" data-volume="1"></audio>
-  <audio id="nx-a1s5" src="audio/a1-s5.wav" data-start="202.19" data-duration="27.12" data-volume="1"></audio>
-  <audio id="nx-a1s6" src="audio/a1-s6.wav" data-start="229.66" data-duration="28.28" data-volume="1"></audio>
-  <audio id="nx-a2s1" src="audio/a2-s1.wav" data-start="258.64" data-duration="36.08" data-volume="1"></audio>
-  <audio id="nx-a2s2" src="audio/a2-s2.wav" data-start="295.07" data-duration="30.20" data-volume="1"></audio>
-  <audio id="nx-a2s3" src="audio/a2-s3.wav" data-start="325.62" data-duration="32.20" data-volume="1"></audio>
-  <audio id="nx-a2s4" src="audio/a2-s4.wav" data-start="358.17" data-duration="26.88" data-volume="1"></audio>
-  <audio id="nx-a3s1" src="audio/a3-s1.wav" data-start="402.68" data-duration="42.80" data-volume="1"></audio>
-  <audio id="nx-a3s4" src="audio/a3-s4.wav" data-start="459.53" data-duration="32.52" data-volume="1"></audio>
-  <audio id="nx-a3s5" src="audio/a3-s5.wav" data-start="492.40" data-duration="32.64" data-volume="1"></audio>
-  <audio id="nx-a3s6" src="audio/a3-s6.wav" data-start="525.39" data-duration="36.12" data-volume="1"></audio>
-  <audio id="nx-a3s7" src="audio/a3-s7.wav" data-start="564.51" data-duration="15.16" data-volume="1"></audio>
-  <audio id="nx-a4s1" src="audio/a4-s1.wav" data-start="580.47" data-duration="38.68" data-volume="1"></audio>
-  <audio id="nx-a4s2" src="audio/a4-s2.wav" data-start="619.50" data-duration="36.44" data-volume="1"></audio>
-  <audio id="nx-a4s3" src="audio/a4-s3.wav" data-start="656.29" data-duration="36.48" data-volume="1"></audio>
-  <audio id="nx-a4s4" src="audio/a4-s4.wav" data-start="693.12" data-duration="23.32" data-volume="1"></audio>
-  <audio id="nx-a5s1" src="audio/a5-s1.wav" data-start="717.24" data-duration="37.20" data-volume="1"></audio>
-  <audio id="nx-a5s2" src="audio/a5-s2.wav" data-start="754.79" data-duration="35.44" data-volume="1"></audio>
-  <audio id="nx-a5s3" src="audio/a5-s3.wav" data-start="790.58" data-duration="36.04" data-volume="1"></audio>
-  <audio id="nx-a5s5" src="audio/a5-s5.wav" data-start="837.32" data-duration="35.16" data-volume="1"></audio>
-  <audio id="nx-a5s6" src="audio/a5-s6.wav" data-start="872.83" data-duration="38.00" data-volume="1"></audio>
-  <audio id="nx-a6s1" src="audio/a6-s1.wav" data-start="915.23" data-duration="42.76" data-volume="1"></audio>
-  <audio id="nx-a6s2" src="audio/a6-s2.wav" data-start="958.34" data-duration="39.80" data-volume="1"></audio>
-  <audio id="nx-a6s3" src="audio/a6-s3.wav" data-start="998.49" data-duration="23.48" data-volume="1"></audio>
-  <audio id="nx-c1s1" src="audio/c1-s1.wav" data-start="1022.87" data-duration="32.32" data-volume="1"></audio>
+  <audio id="nx-a1s3" src="audio/a1-s3.wav" data-start="131.003" data-duration="33.76" data-volume="1"></audio>
+  <audio id="nx-a1s4" src="audio/a1-s4.wav" data-start="165.113" data-duration="37.96" data-volume="1"></audio>
+  <audio id="nx-a1s5" src="audio/a1-s5.wav" data-start="203.423" data-duration="27.12" data-volume="1"></audio>
+  <audio id="nx-a1s6" src="audio/a1-s6.wav" data-start="230.893" data-duration="28.28" data-volume="1"></audio>
+  <audio id="nx-a2s1" src="audio/a2-s1.wav" data-start="259.873" data-duration="36.08" data-volume="1"></audio>
+  <audio id="nx-a2s2" src="audio/a2-s2.wav" data-start="296.303" data-duration="30.20" data-volume="1"></audio>
+  <audio id="nx-a2s3" src="audio/a2-s3.wav" data-start="326.853" data-duration="32.20" data-volume="1"></audio>
+  <audio id="nx-a2s4" src="audio/a2-s4.wav" data-start="359.403" data-duration="26.88" data-volume="1"></audio>
+  <audio id="nx-a3s1" src="audio/a3-s1.wav" data-start="403.916" data-duration="42.80" data-volume="1"></audio>
+  <audio id="nx-a3s4" src="audio/a3-s4.wav" data-start="459.832" data-duration="32.52" data-volume="1"></audio>
+  <audio id="nx-a3s5" src="audio/a3-s5.wav" data-start="492.702" data-duration="32.64" data-volume="1"></audio>
+  <audio id="nx-a3s6" src="audio/a3-s6.wav" data-start="525.692" data-duration="36.12" data-volume="1"></audio>
+  <audio id="nx-a3s7" src="audio/a3-s7.wav" data-start="564.812" data-duration="15.16" data-volume="1"></audio>
+  <audio id="nx-a4s1" src="audio/a4-s1.wav" data-start="580.772" data-duration="38.68" data-volume="1"></audio>
+  <audio id="nx-a4s2" src="audio/a4-s2.wav" data-start="619.802" data-duration="36.44" data-volume="1"></audio>
+  <audio id="nx-a4s3" src="audio/a4-s3.wav" data-start="656.592" data-duration="36.48" data-volume="1"></audio>
+  <audio id="nx-a4s4" src="audio/a4-s4.wav" data-start="693.422" data-duration="23.32" data-volume="1"></audio>
+  <audio id="nx-a5s1" src="audio/a5-s1.wav" data-start="717.542" data-duration="37.20" data-volume="1"></audio>
+  <audio id="nx-a5s2" src="audio/a5-s2.wav" data-start="755.092" data-duration="35.44" data-volume="1"></audio>
+  <audio id="nx-a5s3" src="audio/a5-s3.wav" data-start="790.882" data-duration="36.04" data-volume="1"></audio>
+  <audio id="nx-a5s5" src="audio/a5-s5.wav" data-start="837.622" data-duration="35.16" data-volume="1"></audio>
+  <audio id="nx-a5s6" src="audio/a5-s6.wav" data-start="873.132" data-duration="38.00" data-volume="1"></audio>
+  <audio id="nx-a6s1" src="audio/a6-s1.wav" data-start="915.532" data-duration="42.76" data-volume="1"></audio>
+  <audio id="nx-a6s2" src="audio/a6-s2.wav" data-start="958.642" data-duration="39.80" data-volume="1"></audio>
+  <audio id="nx-a6s3" src="audio/a6-s3.wav" data-start="998.792" data-duration="23.48" data-volume="1"></audio>
+  <audio id="nx-c1s1" src="audio/c1-s1.wav" data-start="1023.172" data-duration="32.32" data-volume="1"></audio>
 
-  <!-- ============================== INSERTS (audio-carrying; OWNER-GATED — wired after the batched approval; windows reserved) ==============================
-       INS-01 landfall broadcast pull  @121.42  ~8.0s   (act 1)
-       INS-02 Turner presser           @445.83  ~7.0s   (act 3)
-       INS-03 Abbott briefing          @453.18  ~6.0s   (act 3)
-       INS-04 Zetterstrom USACE presser@826.97  ~10.0s  (act 5)
-  -->
+  <!-- ============ INSERTS (audio-carrying; owner slate posted 2026-09-06 — render blocked until approved) ============ -->
+  <video id="ins-01-wind" class="gr" src="media/scenes/INS01-wind-account.mp4" data-start="121.42" data-duration="9.233" data-track-index="1" data-volume="1" data-srt-label="[SURVIVOR — ARANSAS PASS, AP ARCHIVE]"></video>
+  <video id="ins-02-turner" class="gr" src="media/scenes/INS02-turner.mp4" data-start="447.066" data-duration="5.433" data-track-index="1" data-volume="1" data-srt-label="[MAYOR SYLVESTER TURNER — AUG 27 2017]"></video>
+  <video id="ins-03-abbott" class="gr" src="media/scenes/INS03-abbott.mp4" data-start="452.849" data-duration="6.633" data-track-index="1" data-volume="1" data-srt-label="[GOV. GREG ABBOTT — AUG 25 2017]"></video>
+  <video id="ins-04-zetterstrom" src="media/scenes/INS04-zetterstrom.mp4" data-start="827.272" data-duration="10.0" data-track-index="1" data-volume="1" data-srt-label="[COL. LARS ZETTERSTROM — U.S. ARMY CORPS OF ENGINEERS]"></video>
 
-  <!-- ============================== CTA (must-keep; config channel.cta; own audio; inside act-2 chapter) ============================== -->
-  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v5.mp4" data-start="386.05" data-duration="15.633" data-track-index="1" data-volume="1" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
+  <!-- ============ CTA (must-keep, config channel.cta; starts 387.283 = 36.7% of 1055.5) ============ -->
+  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v5.mp4" data-start="387.283" data-duration="15.633" data-track-index="1" data-volume="1" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
 
-  <!-- ============================== GRAPHICS (track 2 hosts, word-synced comps) ============================== -->
+  <!-- ============ GRAPHICS (track 2) ============ -->
   <div id="host-roster" data-composition-id="g-roster" data-composition-src="compositions/g-roster.html" data-start="67.77" data-duration="21.88" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-stall" data-composition-id="g-stall" data-composition-src="compositions/g-stall.html" data-start="129.77" data-duration="34.11" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-rainfall" data-composition-id="g-rainfall" data-composition-src="compositions/g-rainfall.html" data-start="163.88" data-duration="38.31" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-watershed" data-composition-id="g-watershed" data-composition-src="compositions/g-watershed.html" data-start="295.07" data-duration="30.55" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-floodpool" data-composition-id="g-floodpool" data-composition-src="compositions/g-floodpool.html" data-start="580.47" data-duration="39.03" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-decision-doc" data-composition-id="g-decision-doc" data-composition-src="compositions/g-decision-doc.html" data-start="754.79" data-duration="35.79" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-decision-fill" data-composition-id="g-decision-fill" data-composition-src="compositions/g-decision-fill.html" data-start="790.58" data-duration="36.39" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-verdict-up" data-composition-id="g-verdict-up" data-composition-src="compositions/g-verdict-up.html" data-start="915.23" data-duration="43.11" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-verdict-down" data-composition-id="g-verdict-down" data-composition-src="compositions/g-verdict-down.html" data-start="958.34" data-duration="40.15" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-stall" data-composition-id="g-stall" data-composition-src="compositions/g-stall.html" data-start="131.003" data-duration="34.11" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-rainfall" data-composition-id="g-rainfall" data-composition-src="compositions/g-rainfall.html" data-start="165.113" data-duration="38.31" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-watershed" data-composition-id="g-watershed" data-composition-src="compositions/g-watershed.html" data-start="296.303" data-duration="30.55" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-floodpool" data-composition-id="g-floodpool" data-composition-src="compositions/g-floodpool.html" data-start="580.772" data-duration="39.03" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-fema" data-composition-id="g-fema" data-composition-src="compositions/g-fema.html" data-start="656.592" data-duration="36.83" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-1938" data-composition-id="g-1938" data-composition-src="compositions/g-1938.html" data-start="717.542" data-duration="18.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-decision-doc" data-composition-id="g-decision-doc" data-composition-src="compositions/g-decision-doc.html" data-start="755.092" data-duration="35.79" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-decision-fill" data-composition-id="g-decision-fill" data-composition-src="compositions/g-decision-fill.html" data-start="790.882" data-duration="36.39" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-verdict-up" data-composition-id="g-verdict-up" data-composition-src="compositions/g-verdict-up.html" data-start="915.532" data-duration="43.11" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-verdict-down" data-composition-id="g-verdict-down" data-composition-src="compositions/g-verdict-down.html" data-start="958.642" data-duration="40.15" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-outro" data-composition-id="g-outro" data-composition-src="compositions/g-outro.html" data-start="1053.57" data-duration="1.92" data-track-index="2" data-width="1920" data-height="1080"></div>
 
-  <!-- ============================== HOOK TEXT MATCH-CUTS (owner order: text lands ON the spoken word; h1 words.json) ============================== -->
-  <!-- HURRICANE HARVEY @0.84 · HOUSTON (red) @5.64 · THE UNITED STATES GOVERNMENT @11.78 · AUGUST 2017 @14.46 -->
+  <!-- ============ PICTURE TRACK (track 1) — hand-placed; .gr = broadcast grade, PD/stock exempt ============ -->
+  <!-- HOOK: 4 VIDEO slots, cuts land on the audio beats -->
+  <video id="vx-hk1" src="media/scenes/hk1-wide-flood-aerial.mp4" data-start="0" data-duration="5.5" data-track-index="1" muted></video>
+  <video id="vx-hk2" src="media/scenes/hk2-boat-wake.mp4" data-start="5.5" data-duration="5.0" data-track-index="1" muted></video>
+  <video id="vx-hk3" src="media/scenes/hk3-gate-release.mp4" data-start="10.5" data-duration="5.5" data-track-index="1" muted></video>
+  <video id="vx-hk4" src="media/scenes/hk4-night-chaos.mp4" data-start="16.0" data-duration="6.23" data-track-index="1" muted></video>
+  <!-- INTRO -->
+  <video id="vx-goes" src="media/scenes/in1-goes.mp4" data-start="22.23" data-duration="12.0" data-track-index="1" muted></video>
+  <video id="vx-coastdebris" class="gr" src="media/scenes/in2-coast-debris.mp4" data-start="34.23" data-duration="8.0" data-track-index="1" muted></video>
+  <video id="vx-windshield" src="media/scenes/in3-windshield.mp4" data-start="42.23" data-duration="5.63" data-track-index="1" muted></video>
+  <video id="vx-culdesac" class="gr" src="media/scenes/in4-culdesac.mp4" data-start="47.86" data-duration="9.5" data-track-index="1" muted></video>
+  <video id="vx-palms" class="gr" src="media/scenes/in5-palms-suburb.mp4" data-start="57.36" data-duration="10.41" data-track-index="1" muted></video>
+  <!-- ACT 1 -->
+  <video id="vx-palmthrash" class="gr" src="media/scenes/a1a-palm-thrash.mp4" data-start="90.35" data-duration="13.3" data-track-index="1" muted></video>
+  <video id="vx-streetdebris" class="gr" src="media/scenes/a1b-street-debris.mp4" data-start="103.65" data-duration="8.8" data-track-index="1" muted></video>
+  <video id="vx-flattened" src="media/scenes/a1c-flattened-town.mp4" data-start="112.45" data-duration="8.97" data-track-index="1" muted></video>
+  <!-- under g-rainfall (panel comp — footage carries the left 2/3) -->
+  <video id="vx-u1rain" src="media/scenes/u1-rain-night.mp4" data-start="165.113" data-duration="13.0" data-track-index="1" muted></video>
+  <video id="vx-u3reswater" class="gr" src="media/scenes/u3-reservoir-water.mp4" data-start="178.113" data-duration="12.8" data-track-index="1" muted></video>
+  <video id="vx-u2homes" class="gr" src="media/scenes/u2-aerial-homes.mp4" data-start="190.913" data-duration="12.51" data-track-index="1" muted></video>
+  <video id="vx-spillway" class="gr" src="media/scenes/r1-spillway-drone.mp4" data-start="203.423" data-duration="10.0" data-track-index="1" muted></video>
+  <video id="vx-subcar" class="gr" src="media/scenes/r2-submerged-car.mp4" data-start="213.423" data-duration="8.0" data-track-index="1" muted></video>
+  <video id="vx-floodstreet" class="gr" src="media/scenes/r3-flood-street.mp4" data-start="221.423" data-duration="9.47" data-track-index="1" muted></video>
+  <video id="vx-houstongrid" class="gr" src="media/scenes/g1-houston-grid.mp4" data-start="230.893" data-duration="10.0" data-track-index="1" muted></video>
+  <video id="vx-farmgrid" class="gr" src="media/scenes/g2-farm-grid.mp4" data-start="240.893" data-duration="9.0" data-track-index="1" muted></video>
+  <video id="vx-treeline" class="gr" src="media/scenes/g3-treeline.mp4" data-start="249.893" data-duration="9.28" data-track-index="1" muted></video>
+  <!-- ACT 2 -->
+  <video id="vx-bussheet" class="gr" src="media/scenes/p1-bus-sheet.mp4" data-start="259.873" data-duration="11.0" data-track-index="1" muted></video>
+  <video id="vx-drainage" src="media/scenes/p2-drainage.mp4" data-start="270.873" data-duration="12.6" data-track-index="1" muted></video>
+  <video id="vx-interchange" src="media/scenes/p3-interchange.mp4" data-start="283.473" data-duration="12.83" data-track-index="1" muted></video>
+  <video id="vx-allison1" class="gr" src="media/scenes/al1-allison-aerial.mp4" data-start="326.853" data-duration="12.8" data-track-index="1" muted></video>
+  <video id="vx-allison2" class="gr" src="media/scenes/al2-allison-yard.mp4" data-start="339.653" data-duration="10.9" data-track-index="1" muted></video>
+  <video id="vx-allison3" class="gr" src="media/scenes/al3-allison-b.mp4" data-start="350.553" data-duration="8.85" data-track-index="1" muted></video>
+  <video id="vx-calmdrive" src="media/scenes/pc1-calm-drive.mp4" data-start="359.403" data-duration="14.8" data-track-index="1" muted></video>
+  <video id="vx-drystreet" class="gr" src="media/scenes/pc2-dry-street.mp4" data-start="374.203" data-duration="12.08" data-track-index="1" muted></video>
+  <!-- ACT 3 -->
+  <video id="vx-rita1" class="gr" src="media/scenes/rt1-gridlock-intro.mp4" data-start="403.916" data-duration="13.8" data-track-index="1" muted></video>
+  <video id="vx-rita2" class="gr" src="media/scenes/rt2-gridlock-horizon.mp4" data-start="417.716" data-duration="13.5" data-track-index="1" muted></video>
+  <video id="vx-rita3" class="gr" src="media/scenes/rt3-heat-dashboard.mp4" data-start="431.216" data-duration="7.8" data-track-index="1" muted></video>
+  <video id="vx-rita4" class="gr" src="media/scenes/rt4-heat-b.mp4" data-start="439.016" data-duration="8.05" data-track-index="1" muted></video>
+  <video id="vx-nightrain" class="gr" src="media/scenes/n1-night-rain-street.mp4" data-start="459.482" data-duration="9.5" data-track-index="1" muted></video>
+  <video id="vx-floodlot" class="gr" src="media/scenes/n2-flooded-lot.mp4" data-start="468.982" data-duration="9.8" data-track-index="1" muted></video>
+  <video id="vx-floodground" src="media/scenes/n4-flood-ground.mp4" data-start="478.782" data-duration="7.2" data-track-index="1" muted></video>
+  <video id="vx-puntevac" src="media/scenes/n3-punt-evac.mp4" data-start="485.982" data-duration="6.72" data-track-index="1" muted></video>
+  <video id="vx-waders" src="media/scenes/n5-waders-night.mp4" data-start="492.702" data-duration="10.8" data-track-index="1" muted></video>
+  <video id="vx-nightdrone" class="gr" src="media/scenes/n7-night-drone.mp4" data-start="503.502" data-duration="9.8" data-track-index="1" muted></video>
+  <video id="vx-calmernight" src="media/scenes/n6-calmer-night.mp4" data-start="513.302" data-duration="8.4" data-track-index="1" muted></video>
+  <video id="vx-hoistday" src="media/scenes/n8-hoist-day.mp4" data-start="521.702" data-duration="3.99" data-track-index="1" muted></video>
+  <video id="vx-boatlaunch" src="media/scenes/c1-boat-launch.mp4" data-start="525.692" data-duration="6.0" data-track-index="1" muted></video>
+  <video id="vx-hoistchild" src="media/scenes/c2-hoist-child.mp4" data-start="531.692" data-duration="8.5" data-track-index="1" muted></video>
+  <video id="vx-convoy" src="media/scenes/c3-convoy.mp4" data-start="540.192" data-duration="8.5" data-track-index="1" muted></video>
+  <video id="vx-rescuedfam" src="media/scenes/c4-rescued-family.mp4" data-start="548.692" data-duration="8.0" data-track-index="1" muted></video>
+  <video id="vx-jayhawk" src="media/scenes/c5-jayhawk.mp4" data-start="556.692" data-duration="5.12" data-track-index="1" muted></video>
+  <video id="vx-calmstreet" src="media/scenes/h1-calm-street.mp4" data-start="561.812" data-duration="11.2" data-track-index="1" muted></video>
+  <video id="vx-puntslow" src="media/scenes/h2-punt-slow.mp4" data-start="573.012" data-duration="6.96" data-track-index="1" muted></video>
+  <!-- ACT 4 -->
+  <video id="vx-suburbdev" src="media/scenes/s1-suburb-dev.mp4" data-start="619.802" data-duration="9.2" data-track-index="1" muted></video>
+  <video id="vx-suburbair" class="gr" src="media/scenes/s3-suburb-air.mp4" data-start="629.002" data-duration="10.7" data-track-index="1" muted></video>
+  <video id="vx-soccer" src="media/scenes/s2-soccer-park.mp4" data-start="639.702" data-duration="11.2" data-track-index="1" muted></video>
+  <video id="vx-drydamaged" class="gr" src="media/scenes/s4-dry-damaged.mp4" data-start="650.902" data-duration="5.69" data-track-index="1" muted></video>
+  <video id="vx-quietbayou" class="gr" src="media/scenes/f1-quiet-bayou.mp4" data-start="656.592" data-duration="13.2" data-track-index="1" muted></video>
+  <video id="vx-canalcalm" src="media/scenes/f2-canal-calm.mp4" data-start="669.792" data-duration="13.2" data-track-index="1" muted></video>
+  <video id="vx-suburbmuted" src="media/scenes/f3-suburb-muted.mp4" data-start="682.992" data-duration="10.43" data-track-index="1" muted></video>
+  <video id="vx-gatewalk" src="media/scenes/d1-gate-walkway.mp4" data-start="693.422" data-duration="12.2" data-track-index="1" muted></video>
+  <video id="vx-damskyline" src="media/scenes/d2-dam-skyline.mp4" data-start="705.622" data-duration="11.12" data-track-index="1" muted></video>
+  <!-- ACT 5 (g-1938 card covers 717.542-735.542) -->
+  <video id="vx-cranerebar" src="media/scenes/m1-crane-rebar.mp4" data-start="735.542" data-duration="10.4" data-track-index="1" muted></video>
+  <video id="vx-gatestruct" src="media/scenes/m2-gate-structure.mp4" data-start="745.942" data-duration="9.15" data-track-index="1" muted></video>
+  <video id="vx-resfull" src="media/scenes/r4-res-full.mp4" data-start="837.272" data-duration="4.8" data-track-index="1" muted></video>
+  <video id="vx-relspill" src="media/scenes/a5-release-spillway.mp4" data-start="842.072" data-duration="10.6" data-track-index="1" muted></video>
+  <video id="vx-gatesopened" class="gr" src="media/scenes/r5-gates-opened.mp4" data-start="852.672" data-duration="11.2" data-track-index="1" muted></video>
+  <video id="vx-waterrising" class="gr" src="media/scenes/r6-water-rising.mp4" data-start="863.872" data-duration="8.9" data-track-index="1" muted></video>
+  <video id="vx-sig" src="media/scenes/sig-sunny-flood.mp4" data-start="872.772" data-duration="10.2" data-track-index="1" muted></video>
+  <video id="vx-floodtrees" src="media/scenes/x1-flooded-trees.mp4" data-start="882.972" data-duration="7.2" data-track-index="1" muted></video>
+  <video id="vx-homesb" class="gr" src="media/scenes/x2-aerial-homes-b.mp4" data-start="890.172" data-duration="12.7" data-track-index="1" muted></video>
+  <video id="vx-sunwater" class="gr" src="media/scenes/x3-sun-water.mp4" data-start="902.872" data-duration="11.76" data-track-index="1" muted></video>
+  <!-- ACT 6 close -->
+  <video id="vx-moderndam" src="media/scenes/e1-modern-dam.mp4" data-start="998.792" data-duration="12.7" data-track-index="1" muted></video>
+  <video id="vx-canalcalm2" src="media/scenes/f2-canal-calm.mp4" data-callback="calm canal returns for the modern-bayou close — 2nd use, 5.5 min after g-fema underlay" data-start="1011.492" data-duration="10.78" data-track-index="1" muted></video>
+  <video id="vx-dusk1" src="media/scenes/z1-dusk-lake.mp4" data-start="1023.172" data-duration="16.2" data-track-index="1" muted></video>
+  <video id="vx-dusk2" src="media/scenes/z2-dusk-lake-b.mp4" data-start="1039.372" data-duration="16.13" data-track-index="1" muted></video>
+
+  <!-- ============ HOOK TEXT MATCH-CUTS (on the spoken word, h1 words.json) ============ -->
   <section class="clip" id="p-hk-harvey" data-start="0.84" data-duration="3.4" data-track-index="3">
     <div class="popfig popfig-white" id="st-hk-harvey" style="top:30%"><span class="pf-big" style="font-size:110px">HURRICANE HARVEY</span></div>
   </section>
@@ -107,41 +183,54 @@
   <section class="clip" id="p-hk-aug" data-start="14.46" data-duration="4.2" data-track-index="3">
     <div class="popfig" id="st-hk-aug"><span class="pf-big">AUGUST 2017</span></div>
   </section>
+  <!-- ============ BODY POPFIGS (dates/figures device, one fact one instance) ============ -->
+  <section class="clip" id="p-allison" data-start="330.11" data-duration="3.2" data-track-index="3">
+    <div class="popfig" id="st-allison"><span class="pf-big" style="font-size:120px">ALLISON · 2001</span></div>
+  </section>
+  <section class="clip" id="p-rita" data-start="407.84" data-duration="3.5" data-track-index="3">
+    <div class="popfig" id="st-rita"><span class="pf-big" style="font-size:120px">RITA · 2005</span></div>
+  </section>
+  <section class="clip" id="p-calls" data-start="499.44" data-duration="3.2" data-track-index="3">
+    <div class="popfig" id="st-calls"><span class="pf-big">75,000</span><span class="pf-sub">CALLS TO 911</span></div>
+  </section>
+  <section class="clip" id="p-rescues" data-start="541.33" data-duration="3.2" data-track-index="3">
+    <div class="popfig popfig-amber" id="st-rescues"><span class="pf-big">17,000</span><span class="pf-sub">WATER RESCUES</span></div>
+  </section>
+  <section class="clip" id="p-aug28" data-start="839.02" data-duration="3.5" data-track-index="3">
+    <div class="popfig" id="st-aug28"><span class="pf-big">AUGUST 28</span><span class="pf-sub">BEFORE DAWN</span></div>
+  </section>
 
-  <!-- ============================== BLACKOUTS + HOLD GAPS (owner duration table) ============================== -->
+  <!-- ============ BLACKOUTS + CTA DIPS (owner duration table; NO blackout hook→intro) ============ -->
   <section class="clip blackout" id="bo-intro-a1" data-start="89.65" data-duration="0.70" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-a1-a2"   data-start="257.94" data-duration="0.70" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-cta-in"  data-start="385.05" data-duration="1.00" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-cta-out" data-start="401.68" data-duration="1.00" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-a3-a4"   data-start="579.67" data-duration="0.80" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-a4-a5"   data-start="716.44" data-duration="0.80" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-a5-a6"   data-start="914.33" data-duration="0.90" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-a6-c1"   data-start="1021.97" data-duration="0.90" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-a1-a2"   data-start="259.173" data-duration="0.70" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-cta-in"  data-start="386.283" data-duration="1.00" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-cta-out" data-start="402.916" data-duration="1.00" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-a3-a4"   data-start="579.972" data-duration="0.80" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-a4-a5"   data-start="716.742" data-duration="0.80" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-a5-a6"   data-start="914.632" data-duration="0.90" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-a6-c1"   data-start="1022.272" data-duration="0.90" data-track-index="1"></section>
 
-  <!-- ============================== PICTURE TRACK (track 1) ==============================
-       Wired after clip selection from media/ (candidates + contact sheets). Every graphic
-       window above runs full-frame on track 2, so picture-track coverage is needed for:
-       hook 0-21.9 (4 VIDEO slots, S-1) · i1-s1/s2 (22.2-67.8) · a1-s1+INS-01 (90.3-129.8)
-       · a1-s5/s6 (202.2-257.9) · a2-s1 (258.6-295.1) · a2-s3/s4 (325.6-385.1) · act 3
-       (402.7-579.7 incl. holds) · a4-s2/s3/s4 (619.5-716.4) · a5-s1 (717.2-754.8) ·
-       INS-04+a5-s5/s6 (827.0-914.3) · a6-s3 (998.5-1022.0) · close (1022.9-1055.2). -->
-
-  <!-- grain layer (unified filmic look, JS-driven) -->
   <canvas id="grain" width="960" height="540"></canvas>
 </div>
 <script src="grain.js"></script>
 <script>
-  /* Popfig in/out (device timing per ep6: punch in on the word, lift out) */
   window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   function pop(sel, at, out) {
     tl.fromTo(sel, { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.in" }, at);
     tl.to(sel, { autoAlpha: 0, y: -26, duration: 0.3, ease: "power2.in" }, out);
   }
+  /* hook match-cuts */
   pop("#st-hk-harvey", 0.84, 3.94);
   pop("#st-hk-houston", 5.64, 8.24);
   pop("#st-hk-gov", 11.78, 13.98);
   pop("#st-hk-aug", 14.46, 18.36);
+  /* body figures — each ON its spoken word */
+  pop("#st-allison", 330.11, 333.01);
+  pop("#st-rita", 407.84, 411.04);
+  pop("#st-calls", 499.44, 502.34);
+  pop("#st-rescues", 541.33, 544.23);
+  pop("#st-aug28", 839.02, 842.22);
   window.__timelines["ep7-harvey2017"] = tl;
 </script>
 </body>
