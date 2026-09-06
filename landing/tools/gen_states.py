@@ -429,7 +429,7 @@ def build_menu(rows):
         rules worth knowing, every fact linked to its source.</p>
       <div class="finder">
         <input id="q" type="search" placeholder="Type your state&hellip;" autocomplete="off" aria-label="Find your state">
-        <span class="hint">or scroll and tap any state &darr;</span>
+        <span class="hint">or scroll and tap any card &darr;</span>
       </div>
       <p class="nomatch" id="nomatch" hidden>No state matches that, check the spelling, or scroll.</p>
       {region_html}
