@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); overflow:hidden; }
+  .drift { position:absolute; inset:-40% 0; opacity:0.22; pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(120,150,180,0.13) 0 1px, transparent 1px 54px); }
+  .brand { position:absolute; left:0; right:0; top:44%; text-align:center; }
+  .brand .bt { font-family:'Arial Black',Arial,sans-serif; font-size:96px; color:#f2f5f8; letter-spacing:6px; }
+  .brand .bs { font-family:Georgia,serif; font-style:italic; font-size:30px; color:#d8a13a; margin-top:18px; letter-spacing:2px; }
+  .brand .bl { width:0; height:4px; background:#8e2020; margin:26px auto 0; }
+</style>
+<div id="root" data-composition-id="g-outro" data-width="1920" data-height="1080">
+<div class="drift" id="g-out-drift"></div>
+<div class="brand" id="g-out-brand">
+  <div class="bt" id="g-out-bt">THE WARNING HOUR</div>
+  <div class="bl" id="g-out-bl"></div>
+  <div class="bs" id="g-out-bs">disasters don't ask permission — but they do send warnings</div>
+</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* c1-s1 tail: "This was the Warning Hour" @30.4-31.5 (segment-local) — the host window for this
+     comp starts at that phrase; timings below are comp-local from that match-cut. */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-out-";
+  tl.fromTo(P+"drift", {y:-80}, {y:80, duration:9.5, ease:"none"}, 0);
+  tl.fromTo(P+"bt", {autoAlpha:0, scale:1.12, letterSpacing:"14px"}, {autoAlpha:1, scale:1, letterSpacing:"6px", duration:0.7, ease:"power3.out"}, 0.05);
+  tl.to(P+"bl", {width:560, duration:0.8, ease:"power2.out"}, 0.6);
+  tl.fromTo(P+"bs", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.6}, 1.1);
+  tl.to(P+"bt", {scale:1.025, duration:6.5, ease:"none"}, 1.0);   // continuous slow push
+  tl.to([P+"bt",P+"bs",P+"bl"], {autoAlpha:0, duration:0.8, ease:"power2.in"}, 8.4);
+  window.__timelines["g-outro"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
