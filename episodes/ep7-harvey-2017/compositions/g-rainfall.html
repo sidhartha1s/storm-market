@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif; }
+  .panel { position:absolute; right:0; top:0; bottom:0; width:820px; box-sizing:border-box;
+    background: linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); padding: 90px 70px 0 170px; }
+  .eyebrow { font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .tname { font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; line-height:1.05; margin-top:14px; }
+  .tsub { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:10px; }
+  .cnum { font-family:'Courier New',monospace; font-size:96px; color:#e74c3c; font-weight:700; margin-top:30px; line-height:1; }
+  .clab { font-size:20px; color:#c8d3e0; letter-spacing:6px; font-weight:700; margin-top:6px; }
+  .row { font-size:30px; color:#dfe7ee; font-weight:700; letter-spacing:1px; margin-top:24px; }
+  .row .lab { display:block; font-size:19px; color:#93a3b2; letter-spacing:4px; font-weight:700; }
+  /* the color-scale strip: the NWS legend running out of colors */
+  .scale { margin-top:34px; }
+  .scale .slab { font-size:19px; color:#93a3b2; letter-spacing:4px; font-weight:700; margin-bottom:10px; }
+  .bars { display:flex; height:46px; width:560px; }
+  .bars div { flex:1; transform-origin:left center; }
+  .newlab { font-size:22px; color:#e8c56a; font-weight:700; letter-spacing:2px; margin-top:10px; }
+</style>
+<div id="root" data-composition-id="g-rainfall" data-width="1920" data-height="1080">
+  <div class="panel" id="g-rain-panel">
+    <div class="eyebrow">U.S. RAINFALL RECORD · NHC FINAL REPORT</div>
+    <div class="tname">NEDERLAND, TEXAS</div>
+    <div class="tsub">a rain gauge near Beaumont · Aug 24 – Sep 1</div>
+    <div class="cnum"><span id="g-rain-count">0.00</span>″</div>
+    <div class="clab" id="g-rain-clab">MOST RAIN FROM ONE STORM · U.S. HISTORY</div>
+    <div class="row" id="g-rain-hou"><span class="lab">HOUSTON METRO</span>36 – 48 INCHES</div>
+    <div class="scale" id="g-rain-scale">
+      <div class="slab">THE RAINFALL MAP LEGEND</div>
+      <div class="bars">
+        <div id="g-rain-b1" style="background:#3f7f3f"></div>
+        <div id="g-rain-b2" style="background:#c9c94a"></div>
+        <div id="g-rain-b3" style="background:#c97f2e"></div>
+        <div id="g-rain-b4" style="background:#b03a2e"></div>
+        <div id="g-rain-b5" style="background:#6d3580"></div>
+        <div id="g-rain-b6" style="background:#9b59b6"></div>
+        <div id="g-rain-b7" style="background:#f1b7d8"></div>
+      </div>
+      <div class="newlab" id="g-rain-newlab">+ TWO NEW COLORS, INVENTED FOR HARVEY</div>
+    </div>
+    <div class="row" id="g-rain-ret" style="color:#e8c56a"><span class="lab">NOAA EXCEEDANCE ANALYSIS</span>A 1,000-YEAR FLOOD, OR WORSE</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* a1-s4 words: instruments@1.86 · Nederland@4.32 · 60.58@6.3-7.76 · one storm/history@11.36-12.92 ·
+     36 to 48@15.28-16.68 · ran out of colors@20.1-20.94 · new shades of purple@23.6-24.48 ·
+     1-in-1000@29.56-30.62 · not a 500@32.4-33.8 · 1000-year or worse@35.16-37.12 */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-rain-";
+  tl.set([P+"clab",P+"hou",P+"scale",P+"newlab",P+"ret"], {autoAlpha:0}, 0);
+  tl.fromTo(P+"panel", {x:660}, {x:0, duration:0.7, ease:"power3.out"}, 0.2);
+  /* counter rolls fast then slows into 60.58 — lands as the number is spoken @6.3-7.76 */
+  const C={v:0};
+  tl.to(C, {v:60.58, duration:4.6, ease:"power3.out", onUpdate:function(){
+    const e=document.getElementById("g-rain-count"); if(e) e.textContent=C.v.toFixed(2);
+  }}, 3.2);
+  tl.fromTo(P+"clab", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 9.1);   // "most rain ever recorded"
+  tl.fromTo(P+"hou", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 15.2);   // "36 to 48"
+  /* legend strip ON "rainfall maps" @18.8; old bars grow left→right */
+  tl.fromTo(P+"scale", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 18.7);
+  for (let i=1;i<=5;i++)
+    tl.fromTo(P+"b"+i, {scaleX:0}, {scaleX:1, duration:0.30, ease:"power2.out"}, 19.0+0.22*(i-1));
+  /* the two NEW colors punch in ON "new shades of purple" @23.6-24.48 */
+  tl.fromTo(P+"b6", {scaleX:0}, {scaleX:1, duration:0.4, ease:"back.out(1.6)"}, 23.6);
+  tl.fromTo(P+"b7", {scaleX:0}, {scaleX:1, duration:0.4, ease:"back.out(1.6)"}, 24.3);
+  tl.fromTo(P+"newlab", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4}, 24.7);
+  /* return period ON "1 in 1,000" @29.56 */
+  tl.fromTo(P+"ret", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.45}, 29.5);
+  /* gentle continuous life on the counter color so no ≥4s dead stretch late */
+  tl.to(P+"count", {color:"#ff6b5a", duration:6, yoyo:true, repeat:3, ease:"sine.inOut"}, 8.0);
+  /* slide-right exit on the comp's final 0.6s */
+  tl.to(P+"panel", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 37.8);
+  window.__timelines["g-rainfall"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
