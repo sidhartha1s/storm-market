@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Field Notes — Dispatches from The Warning Hour · Paul Raymond</title>
+<meta name="description" content="Dispatches from The Warning Hour: what the post-storm reports actually found, episode by episode — Joplin, the warnings, the fixes, and what a household can do about each one.">
+<link rel="canonical" href="https://paulraymond.online/field-notes/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Field Notes — Dispatches from The Warning Hour">
+<meta property="og:description" content="What the post-storm reports actually found — and what a household can do about each one.">
+<meta property="og:url" content="https://paulraymond.online/field-notes/">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4eee1; --paper2:#ece4d2; --card:#faf6ec; --line:#d8cdb4; --rule:#b9ac8e;
+  --ink:#211d16; --ink-soft:#4a4335; --faded:#6b6249;
+  --sky:#151a1d; --sky2:#1e2629; --sky-line:#323d41; --sky-text:#ede7d8; --sky-dim:#a8b0ac;
+  --red:#a92c1e; --red-bright:#c0392b; --amber:#c9871c;
+  --display:"Fraunces",Georgia,serif;
+  --body:"Source Serif 4","Iowan Old Style",Georgia,serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --wrap:1140px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);
+  font-size:19px;line-height:1.65;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block;height:auto}
+a{color:var(--red)}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;line-height:1.08;letter-spacing:-.015em}
+p{margin:0 0 18px}
+.kicker{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.kicker::before{content:"";display:inline-block;width:26px;height:2px;background:var(--red);
+  vertical-align:middle;margin-right:12px}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .035 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+.topnav{background:var(--sky);border-bottom:1px solid var(--sky-line);position:relative;z-index:3}
+.topnav .wrap{display:flex;align-items:center;gap:28px;padding:14px 24px}
+.brand{font-family:var(--display);font-weight:900;font-size:19px;color:var(--sky-text);
+  text-decoration:none;letter-spacing:-.01em}
+.brand em{font-style:italic;color:var(--amber)}
+.topnav nav{margin-left:auto;display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.topnav nav a{font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--sky-dim);text-decoration:none}
+.topnav nav a:hover{color:var(--sky-text)}
+.topnav nav a.on{color:var(--amber)}
+.topnav .yt{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--sky-line);
+  padding:7px 14px;border-radius:2px;color:var(--sky-text)!important}
+.topnav .yt:hover{border-color:var(--red-bright);background:var(--red);color:#fff!important}
+.topnav .yt svg{width:16px;height:16px;fill:currentColor}
+@media(max-width:760px){.topnav nav{gap:14px}.topnav nav a{font-size:11px}}
+.masthead{position:relative;background:var(--sky);color:var(--sky-text);overflow:hidden;z-index:2}
+.masthead::before{content:"";position:absolute;inset:-40% -20%;pointer-events:none;
+  background:
+    radial-gradient(60% 45% at 22% 18%,rgba(94,116,110,.34),transparent 62%),
+    radial-gradient(55% 40% at 80% 8%,rgba(70,86,96,.4),transparent 60%),
+    radial-gradient(70% 55% at 55% 90%,rgba(30,38,41,.9),transparent 70%);
+  animation:drift 26s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate3d(-2%,0,0) scale(1)}to{transform:translate3d(2%,1.5%,0) scale(1.04)}}
+@media (prefers-reduced-motion:reduce){.masthead::before{animation:none}}
+.masthead .wrap{position:relative;z-index:2;padding-top:76px;padding-bottom:64px}
+.masthead h1{font-size:clamp(40px,6vw,68px);font-weight:900;color:#f6f1e3}
+.masthead h1 em{font-style:italic;color:var(--amber)}
+.masthead .sub{font-size:clamp(19px,2.1vw,22px);color:var(--sky-dim);max-width:34em;margin-top:20px}
+.feed{padding:72px 0 90px;position:relative;z-index:2}
+.notegrid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:40px}
+.note{background:var(--card);border:1px solid var(--line);text-decoration:none;color:var(--ink);
+  display:flex;flex-direction:column;transition:transform .18s ease,box-shadow .18s ease}
+.note:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(60,48,20,.16)}
+.note .thumb{aspect-ratio:16/9;background:radial-gradient(70% 90% at 30% 20%,#39454a,#161c1f);overflow:hidden}
+.note .thumb img{width:100%;height:100%;object-fit:cover}
+.note .pad{padding:24px 26px 28px}
+.note .meta{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--red);margin-bottom:10px}
+.note h2{font-size:26px;line-height:1.15;margin-bottom:12px}
+.note p{font-size:16.5px;color:var(--ink-soft);margin:0}
+@media(max-width:820px){.notegrid{grid-template-columns:1fr}}
+.nextup{border:1px dashed var(--rule);padding:26px 30px;margin-top:28px;
+  font-family:var(--mono);font-size:14px;color:var(--faded);letter-spacing:.04em}
+footer{background:var(--sky);color:var(--sky-dim);padding:44px 0;position:relative;z-index:2}
+footer .small{font-family:var(--mono);font-size:12px;line-height:1.7;max-width:70em}
+footer a{color:var(--sky-text)}
+</style>
+<style id="chrome">
+.topnav{position:sticky;top:0;z-index:40;box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.topnav nav a.buy{background:var(--red);color:#fff!important;font-family:var(--display);font-weight:700;
+  font-size:15px;letter-spacing:0;text-transform:none;padding:9px 18px;border-radius:2px;
+  box-shadow:0 8px 20px rgba(169,44,30,.4);border:0}
+.topnav nav a.buy:hover{background:var(--red-bright)}
+.topnav nav a.ytl{color:var(--sky-dim)}
+@media(max-width:760px){.topnav .wrap{gap:12px;padding:10px 16px}.topnav nav{gap:12px}
+  .topnav nav a.buy{padding:8px 12px;font-size:14px}.topnav nav a.ytl{display:none}}
+@media(max-width:540px){.topnav nav a:not(.buy){display:none}.topnav .brand{white-space:nowrap}}
+footer{background:var(--sky);color:var(--sky-dim)}
+footer .bookrow{display:grid;grid-template-columns:96px 1fr auto;gap:26px;align-items:center;
+  background:#1e2629;border:1px solid var(--sky-line);padding:22px 26px;margin-bottom:34px}
+footer .bookrow img{width:96px;height:auto;box-shadow:0 12px 26px rgba(0,0,0,.55);transform:rotate(-1.6deg)}
+footer .bookrow h3{font-family:var(--display);font-size:22px;color:var(--sky-text);margin:0 0 6px;line-height:1.1}
+footer .bookrow p{font-size:15px;color:var(--sky-dim);margin:0;line-height:1.5}
+footer .bookrow .btn{white-space:nowrap}
+footer .small{font-family:var(--mono);font-size:12px;line-height:1.7;max-width:70em;color:var(--sky-dim)}
+footer a{color:var(--sky-text)}
+@media(max-width:760px){footer .bookrow{grid-template-columns:96px 1fr}footer .bookrow .btn{grid-column:1/-1;text-align:center}}
+.bookcta .cover{background:none;padding:0;display:block;overflow:hidden}
+.bookcta .cover img{width:100%;height:100%;object-fit:cover;display:block}
+.samplestrip{display:flex;align-items:center;gap:18px;background:var(--sky);color:var(--sky-text);
+  padding:16px 22px;margin:34px 0 10px;border-left:4px solid var(--amber)}
+.samplestrip img{width:46px;height:auto;flex:none;box-shadow:0 8px 18px rgba(0,0,0,.5);transform:rotate(-2deg)}
+.samplestrip p{margin:0;font-size:16px;color:var(--sky-dim);line-height:1.45}
+.samplestrip b{color:#fff}
+.samplestrip a{color:var(--amber);font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;
+  text-transform:uppercase;white-space:nowrap;margin-left:auto;text-decoration:none}
+.samplestrip a:hover{color:#fff}
+@media(max-width:640px){.samplestrip{flex-wrap:wrap}.samplestrip a{margin-left:0}}
+.gate{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--amber);
+  padding:30px 32px;margin:44px 0 24px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+.gate .k{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber-deep,#8a5a0c);margin-bottom:8px}
+.gate h3{font-family:var(--display);font-size:24px;margin:0 0 8px;line-height:1.1}
+.gate p{margin:0;font-size:16.5px;color:var(--ink-soft)}
+.gate .ghost{display:inline-block;border:2px solid var(--ink);color:var(--ink);font-family:var(--display);
+  font-weight:700;font-size:17px;padding:12px 24px;border-radius:2px;text-decoration:none;white-space:nowrap}
+.gate .ghost:hover{background:var(--ink);color:var(--paper)}
+.gate .sub{font-family:var(--mono);font-size:12px;color:var(--faded);margin-top:8px}
+@media(max-width:640px){.gate{grid-template-columns:1fr}}
+@media print{.topnav,footer,.samplestrip,.gate,.bookcta{display:none!important}}
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <div class="wrap">
+    <a class="brand" href="/">Paul <em>Raymond</em></a>
+    <nav>
+      <a class="on" href="/field-notes/">Field Notes</a>
+      <a href="/resources/">Free Checklists</a>
+      <a href="/states/">State Guides</a>
+      <a class="ytl" href="https://www.youtube.com/@PaulRaymond-s9v" rel="noopener">&#9654; The Warning Hour</a>
+      <a class="buy" href="/#offer">Get the Book &mdash; $14.99</a>
+    </nav>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <h1>Field Notes.<br><em>What the reports actually found.</em></h1>
+    <p class="sub">Every episode of The Warning Hour starts in the documents written after real
+      storms — service assessments, technical investigations, dispatch logs. These are the
+      dispatches: the story, the findings, and what a household can do about each one.</p>
+  </div>
+</header>
+
+<section class="feed">
+  <div class="wrap">
+    <div class="kicker">The archive</div>
+    <div class="notegrid">
+      <a class="note" href="/field-notes/joplin-tornado-2011/">
+        <div class="thumb"><img src="https://i.ytimg.com/vi/s--FjTUXU-w/hq720.jpg" alt="Episode 1 — The Deadliest U.S. Tornado Since 1950, Joplin 2011" loading="lazy" width="720" height="404"></div>
+        <div class="pad">
+          <div class="meta">Dispatch Nº 001 · May 22, 2011 · Episode</div>
+          <h2>The Joplin tornado had 24 minutes of warning. It wasn't enough.</h2>
+          <p>Nearly double the national average lead time, sirens that sounded twice — and still
+            the deadliest single tornado in modern American history. Why more warning didn't mean
+            more safety.</p>
+        </div>
+      </a>
+      <a class="note" href="/field-notes/tornado-warning-vs-watch/">
+        <div class="thumb"></div>
+        <div class="pad">
+          <div class="meta">Field Guide · Warning literacy</div>
+          <h2>Tornado warning vs. watch — the difference, in one sentence each.</h2>
+          <p>Three words, routinely understood backwards, and the whole plan depends on them.
+            Plus the siren myths that get people hurt, and the manufactured-home exception.</p>
+        </div>
+      </a>
+    </div>
+    <div class="nextup">NEXT DISPATCH — The 2011 Super Outbreak: four states, 360 tornadoes, one
+      day. Publishing with Episode 2.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="bookrow">
+      <img src="/assets/cover-mini.webp" alt="The Storm-Ready Home by Paul Raymond &mdash; book cover" width="96" height="144">
+      <div>
+        <h3>The Storm-Ready Home</h3>
+        <p>486 pages &middot; 130 numbered protections &middot; 23 hazard playbooks &middot; the 60-day sequence &middot; the 61-page printable binder. $14.99, instant PDF, 7-day money-back guarantee.</p>
+      </div>
+      <a class="btn" href="/#offer">Get the Book &mdash; $14.99 &rarr;</a>
+    </div>
+    <p class="small">General preparedness information for households. Not medical, legal,
+      engineering or insurance advice, and not a substitute for the instructions of your local
+      emergency officials. In an emergency, call 911 and follow the direction of authorities.</p>
+    <p class="small">Figures cited to their issuing documents. Public-domain material reproduced under
+      17 U.S.C. &sect; 105. <strong>No agency of the United States Government has endorsed, reviewed, or is
+      affiliated with this book.</strong></p>
+    <p class="small"><a href="/#offer">Get the book</a> &middot; <a href="/">Home</a> &middot; <a href="/field-notes/">Field Notes</a> &middot;
+      <a href="/resources/">Free checklists</a> &middot; <a href="/states/">State guides</a> &middot;
+      <a href="/about/">About</a> &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a> &middot;
+      <a href="https://www.youtube.com/@PaulRaymond-s9v" rel="noopener">&#9654; The Warning Hour on YouTube</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

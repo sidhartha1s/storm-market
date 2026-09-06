@@ -55,7 +55,8 @@ await sleep(3500); // let the page's inline script wire the CTAs
 const { result } = await send('Runtime.evaluate', {
   expression: `JSON.stringify({
     buy:      document.getElementById('buy')?.getAttribute('href') ?? null,
-    popup:    document.querySelector('.pop .checkout')?.getAttribute('href') ?? null,
+    band:     document.querySelector('.band .go')?.getAttribute('href') ?? null,
+    dock:     document.querySelector('.pill .btn')?.getAttribute('href') ?? null,
     buyLabel: document.getElementById('buy')?.textContent.trim() ?? null,
     viewers:  document.getElementById('live-n')?.textContent ?? null,
     countdown:document.getElementById('countdown')?.textContent ?? null
@@ -65,11 +66,12 @@ close();
 const state = JSON.parse(result.value);
 console.log(`page      ${URL_TO_CHECK}`);
 console.log(`buy       ${state.buy}   (${state.buyLabel})`);
-console.log(`popup CTA ${state.popup}`);
+console.log(`band CTA ${state.band}`);
+console.log(`dock CTA ${state.dock}`);
 console.log(`live band viewers=${state.viewers} countdown=${state.countdown}`);
 
 let fail = 0;
-for (const [label, href] of [['buy', state.buy], ['popup', state.popup]]) {
+for (const [label, href] of [['buy', state.buy], ['band', state.band], ['dock', state.dock]]) {
   if (!href || href === '#' || href.startsWith('#')) {
     console.log(`FAIL  ${label} CTA is not wired to a checkout (href=${href})`); fail++; continue;
   }

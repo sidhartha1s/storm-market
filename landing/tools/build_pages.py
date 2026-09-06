@@ -162,9 +162,58 @@ def clean_text(s):
     return s
 
 
+# Hand-picked tab labels, keyed by the start of the heading text (after clean_text).
+# Anything not listed falls back to the first words of the heading.
+TAB_LABELS = {
+    "The reports get written": "The reports",
+    "The method, in four rules": "The method",
+    "What the report": "The report",
+    "Where the work lives": "The work",
+    "Privacy Policy": "Privacy",
+    "Terms of Use": "Terms",
+    "That page isn't here": "Not found",
+    "Field Notes.": "Dispatches",
+    "The Joplin tornado had": "Joplin, 2011",
+    "Questions people ask about Joplin": "Questions",
+    "The part the episode": "Your part",
+    "More field notes": "More notes",
+    "Watch. Warning. Advisory.": "Watch vs warning",
+    "Why sirens make this worse": "Sirens",
+    "Questions people ask": "Questions",
+    "Seven pages,": "Pick a page",
+    "Seven pages are a taste": "The book",
+    "Emergency binder checklist": "The binder",
+    "What belongs in an emergency binder": "What goes in",
+    "Where your state's mitigation credits": "State credits",
+    "What the free version doesn't": "Free vs book",
+    "Family emergency plan template": "The plan",
+    "Two independent alert paths": "Alert paths",
+    "Evacuation zone and safe room": "Zone and room",
+    "What this plan doesn't do": "Limits",
+    "Go bag checklist": "The go bag",
+    "The kids' go bag": "Kids' bag",
+    "What a go bag doesn't cover": "Limits",
+    "Home inventory for insurance": "The inventory",
+    "Photograph your mitigation work": "Mitigation",
+    "What documentation cannot do": "Limits",
+    "Hurricane preparedness checklist": "Before season",
+    "When a watch is issued": "Watch issued",
+    "Reading the cone correctly": "The cone",
+    "Tornado preparedness checklist": "The plan",
+    "The kit": "The kit",
+    "Reading a radar loop": "Radar",
+    "Tornado safe room in house": "Safe room",
+    "Storm shelter vs safe room": "Shelter vs room",
+    "Tornado safe room cost": "Cost",
+    "What should you have in a storm shelter": "What to stock",
+}
+
 def short_label(text, maxwords=3):
-    words = clean_text(text).split(" ")
-    words = [w for w in words if w]
+    t = clean_text(text)
+    for k, v in TAB_LABELS.items():
+        if t.startswith(k):
+            return v
+    words = [w for w in t.split(" ") if w]
     return " ".join(words[:maxwords])
 
 
@@ -658,6 +707,22 @@ def transform_content(content, depth):
 # Split transformed content into <section class="sheet"> blocks at each <h2>.
 # ---------------------------------------------------------------------------
 
+def balance_divs(chunk):
+    """Splitting at <h2> can cut through a wrapper <div>. Drop closers that have no opener
+    in this chunk and close any opener left open, so a sheet never pops the page chrome."""
+    depth = 0
+    out = []
+    for tok in re.split(r"(<div[^>]*>|</div>)", chunk):
+        if tok.startswith("<div"):
+            depth += 1
+        elif tok == "</div>":
+            if depth == 0:
+                continue
+            depth -= 1
+        out.append(tok)
+    return "".join(out) + "</div>" * depth
+
+
 def split_sections(content, simple, tab1_label_override=None):
     h2_positions = [m.start() for m in re.finditer(r"<h2\b", content)]
     tabs = []
@@ -682,6 +747,7 @@ def split_sections(content, simple, tab1_label_override=None):
         if i == 0 and tab1_label_override:
             label = tab1_label_override
         sid = "sheet-%d" % (i + 1)
+        chunk = balance_divs(chunk)
         sheets.append('<section class="sheet" id="%s">%s</section>' % (sid, chunk))
         tabs.append((sid, label))
     return tabs, sheets
@@ -747,7 +813,7 @@ def main():
         out = build_page(spec)
         dest = os.path.join(LANDING, spec["rel"])
         with open(dest, "w", encoding="utf-8") as f:
-            f.write(out)
+            f.write(out.replace(chr(0x2014), ',').replace('&mdash;', ',').replace('background:#000"', 'background:#0b0f14"'))
         written += 1
         print("wrote", spec["rel"])
     print("%d files written" % written)

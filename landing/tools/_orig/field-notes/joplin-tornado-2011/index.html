@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Joplin Tornado 2011 — Why 24 Minutes of Warning Wasn't Enough</title>
+<meta name="description" content="The Joplin tornado had 24 minutes of warning — nearly double the national average — and still killed 161 people. What the sirens said, what the town heard, and the fix that followed.">
+<link rel="canonical" href="https://paulraymond.online/field-notes/joplin-tornado-2011/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Joplin 2011: The 24 Minutes Nobody Believed">
+<meta property="og:description" content="Nearly double the national average warning time. Still the deadliest single tornado in modern American history. Why?">
+<meta property="og:url" content="https://paulraymond.online/field-notes/joplin-tornado-2011/">
+<meta property="og:image" content="https://i.ytimg.com/vi/s--FjTUXU-w/maxresdefault.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4eee1; --paper2:#ece4d2; --card:#faf6ec; --line:#d8cdb4; --rule:#b9ac8e;
+  --ink:#211d16; --ink-soft:#4a4335; --faded:#6b6249;
+  --sky:#151a1d; --sky2:#1e2629; --sky-line:#323d41; --sky-text:#ede7d8; --sky-dim:#a8b0ac;
+  --red:#a92c1e; --red-bright:#c0392b; --amber:#c9871c; --amber-deep:#8a5a0c;
+  --display:"Fraunces",Georgia,serif;
+  --body:"Source Serif 4","Iowan Old Style",Georgia,serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --wrap:1140px; --col:720px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);
+  font-size:19px;line-height:1.65;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block;height:auto}
+a{color:var(--red)}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.col{max-width:var(--col);margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;line-height:1.08;letter-spacing:-.015em}
+p{margin:0 0 18px}
+.kicker{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.kicker::before{content:"";display:inline-block;width:26px;height:2px;background:var(--red);
+  vertical-align:middle;margin-right:12px}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .035 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+.topnav{background:var(--sky);border-bottom:1px solid var(--sky-line);position:relative;z-index:3}
+.topnav .wrap{display:flex;align-items:center;gap:28px;padding:14px 24px}
+.brand{font-family:var(--display);font-weight:900;font-size:19px;color:var(--sky-text);
+  text-decoration:none;letter-spacing:-.01em}
+.brand em{font-style:italic;color:var(--amber)}
+.topnav nav{margin-left:auto;display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.topnav nav a{font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--sky-dim);text-decoration:none}
+.topnav nav a:hover{color:var(--sky-text)}
+.topnav nav a.on{color:var(--amber)}
+.topnav .yt{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--sky-line);
+  padding:7px 14px;border-radius:2px;color:var(--sky-text)!important}
+.topnav .yt:hover{border-color:var(--red-bright);background:var(--red);color:#fff!important}
+.topnav .yt svg{width:16px;height:16px;fill:currentColor}
+@media(max-width:760px){.topnav nav{gap:14px}.topnav nav a{font-size:11px}}
+.masthead{position:relative;background:var(--sky);color:var(--sky-text);overflow:hidden;z-index:2}
+.masthead::before{content:"";position:absolute;inset:-40% -20%;pointer-events:none;
+  background:
+    radial-gradient(60% 45% at 22% 18%,rgba(94,116,110,.34),transparent 62%),
+    radial-gradient(55% 40% at 80% 8%,rgba(70,86,96,.4),transparent 60%),
+    radial-gradient(70% 55% at 55% 90%,rgba(30,38,41,.9),transparent 70%),
+    radial-gradient(40% 30% at 68% 34%,rgba(201,135,28,.10),transparent 65%);
+  animation:drift 26s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate3d(-2%,0,0) scale(1)}to{transform:translate3d(2%,1.5%,0) scale(1.04)}}
+@media (prefers-reduced-motion:reduce){.masthead::before{animation:none}}
+.masthead .col{position:relative;z-index:2;padding-top:72px;padding-bottom:0}
+.dispatch-no{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--amber);margin-bottom:18px}
+.dispatch-no::before{content:"";display:inline-block;width:26px;height:2px;background:var(--amber);
+  vertical-align:middle;margin-right:12px}
+.datestamp{font-family:var(--mono);font-size:14px;color:var(--sky-dim);letter-spacing:.06em;margin-bottom:22px}
+.masthead h1{font-size:clamp(36px,5.4vw,60px);font-weight:900;color:#f6f1e3;max-width:16em}
+.masthead h1 em{font-style:italic;color:var(--amber)}
+.standfirst{font-size:clamp(19px,2.1vw,22px);color:var(--sky-dim);line-height:1.55;
+  max-width:32em;margin-top:22px}
+.byline{display:flex;align-items:center;gap:14px;margin-top:30px;padding-bottom:56px}
+.byline .face{width:44px;height:44px;border-radius:50%;border:1px solid var(--sky-line);flex:none;
+  background-image:url(/assets/headshot.webp);background-size:cover;background-position:center top}
+.byline .who{font-family:var(--mono);font-size:13px;color:var(--sky-dim);line-height:1.6}
+.byline .who b{color:var(--sky-text);font-weight:600}
+.exhibit{position:relative;z-index:2;margin-top:-1px;background:
+  linear-gradient(var(--sky) 0 55%,var(--paper) 55% 100%)}
+.exhibit .col{padding-top:0;padding-bottom:0}
+.tvframe{background:var(--card);border:1px solid var(--line);padding:12px;margin:0;
+  box-shadow:0 30px 60px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.06);
+  transform:rotate(-.4deg)}
+.tvframe .screen{position:relative;aspect-ratio:16/9;background:#000}
+.tvframe iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.tvframe figcaption{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--faded);padding:12px 4px 2px}
+.tvframe figcaption b{color:var(--red);font-weight:600}
+article{position:relative;z-index:2;padding:64px 0 20px}
+.drop::first-letter{font-family:var(--display);font-weight:900;font-size:74px;line-height:.8;
+  float:left;padding:8px 12px 0 0;color:var(--red)}
+article h2{font-size:clamp(27px,3.4vw,34px);margin:52px 0 20px}
+.pull{margin:44px 0;padding:0 0 0 26px;border-left:4px solid var(--red);
+  font-family:var(--display);font-weight:600;font-size:clamp(21px,2.4vw,25px);
+  line-height:1.35;color:var(--ink-soft);display:block}
+.pull .src{display:block;font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--faded);margin-top:14px}
+.protections{list-style:none;margin:34px 0;padding:0;border-top:2px solid var(--ink)}
+.protections li{display:grid;grid-template-columns:64px 1fr;gap:18px;align-items:baseline;
+  padding:18px 0;border-bottom:1px solid var(--rule)}
+.protections .n{font-family:var(--mono);font-weight:600;font-size:14px;color:var(--red);letter-spacing:.06em}
+.protections b{font-family:var(--display);font-weight:700}
+.chapters{background:var(--paper2);border:1px solid var(--line);padding:28px 30px;margin:44px 0}
+.chapters h3{font-size:17px;font-family:var(--mono);font-weight:600;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink-soft);margin-bottom:16px}
+.chapters ol{list-style:none;margin:0;padding:0;columns:2;column-gap:40px}
+.chapters li{font-size:16px;padding:5px 0;break-inside:avoid}
+.chapters .t{font-family:var(--mono);font-size:13px;color:var(--red);font-weight:500;margin-right:10px}
+.chapters a{color:inherit;text-decoration:none}
+.chapters a:hover .t{color:var(--red-bright)}
+@media(max-width:640px){.chapters ol{columns:1}}
+.faqbox{margin:48px 0}
+.faqbox details{border:1px solid var(--line);background:var(--card);margin-bottom:10px;padding:0 22px}
+.faqbox summary{font-family:var(--display);font-weight:700;font-size:19px;cursor:pointer;
+  padding:16px 0;list-style-position:outside}
+.faqbox p{font-size:17px;color:var(--ink-soft);padding-bottom:16px;margin:0}
+.bookcta{display:grid;grid-template-columns:150px 1fr;gap:30px;align-items:center;
+  background:var(--card);border:1px solid var(--line);border-top:4px solid var(--red);
+  padding:32px;margin:56px 0;box-shadow:0 14px 30px rgba(60,48,20,.12)}
+.bookcta .cover{aspect-ratio:2/3;box-shadow:0 18px 34px rgba(0,0,0,.4);transform:rotate(-1.6deg);overflow:hidden}
+.bookcta .cover img{width:100%;height:100%;object-fit:cover}
+.bookcta h3{font-size:23px;margin-bottom:10px}
+.bookcta p{font-size:17px;color:var(--ink-soft);margin-bottom:16px}
+.btn{display:inline-block;background:var(--red);color:#fff;text-decoration:none;
+  font-family:var(--display);font-weight:700;font-size:18px;padding:14px 30px;border-radius:2px;
+  box-shadow:0 10px 24px rgba(169,44,30,.35)}
+.btn:hover{background:var(--red-bright)}
+.btn-sub{font-family:var(--mono);font-size:12.5px;color:var(--faded);margin-top:10px;letter-spacing:.04em}
+@media(max-width:640px){.bookcta{grid-template-columns:1fr}.bookcta .cover{max-width:150px}}
+.sources{border:1px dashed var(--rule);padding:24px 28px;margin:48px 0 12px}
+.sources h3{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--faded);margin-bottom:12px}
+.sources ul{margin:0;padding-left:20px;font-size:15.5px;color:var(--ink-soft)}
+.sources li{margin-bottom:6px}
+.morenotes{background:var(--paper2);border-top:1px solid var(--line);padding:76px 0 84px;
+  position:relative;z-index:2}
+.morenotes h2{font-size:clamp(30px,4vw,40px);margin-bottom:36px}
+.notegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.note{background:var(--card);border:1px solid var(--line);text-decoration:none;color:var(--ink);
+  display:flex;flex-direction:column;transition:transform .18s ease,box-shadow .18s ease}
+.note:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(60,48,20,.16)}
+.note .thumb{aspect-ratio:16/9;background:radial-gradient(70% 90% at 30% 20%,#39454a,#161c1f)}
+.note .thumb img{width:100%;height:100%;object-fit:cover}
+.note .pad{padding:20px 22px 24px}
+.note .meta{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--red);margin-bottom:10px}
+.note h3{font-size:20px;line-height:1.2;margin-bottom:10px}
+.note p{font-size:15.5px;color:var(--ink-soft);margin:0}
+@media(max-width:860px){.notegrid{grid-template-columns:1fr}}
+footer{background:var(--sky);color:var(--sky-dim);padding:44px 0;position:relative;z-index:2}
+footer .small{font-family:var(--mono);font-size:12px;line-height:1.7;max-width:70em}
+footer a{color:var(--sky-text)}
+@media print{.topnav,.bookcta,.morenotes,footer,.tvframe{display:none}body{background:#fff;color:#000}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Joplin Tornado 2011 — Why 24 Minutes of Warning Wasn't Enough",
+      "author": {"@type": "Person", "name": "Paul Raymond", "url": "https://paulraymond.online/about/"},
+      "datePublished": "2026-08-26",
+      "mainEntityOfPage": "https://paulraymond.online/field-notes/joplin-tornado-2011/",
+      "image": "https://i.ytimg.com/vi/s--FjTUXU-w/maxresdefault.jpg"
+    },
+    {
+      "@type": "VideoObject",
+      "name": "The Deadliest U.S. Tornado Since 1950 — Joplin, 2011",
+      "description": "On a graduation Sunday in May 2011, an EF5 tornado carved a 21-mile scar through Joplin, Missouri. The sirens sounded. Twice. The warning came 24 minutes early — nearly double the national average. It still became the deadliest single tornado in modern American history.",
+      "thumbnailUrl": "https://i.ytimg.com/vi/s--FjTUXU-w/maxresdefault.jpg",
+      "uploadDate": "2026-08-23T11:58:12-07:00",
+      "duration": "PT17M29S",
+      "contentUrl": "https://www.youtube.com/watch?v=s--FjTUXU-w",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/s--FjTUXU-w",
+      "publisher": {"@type": "Person", "name": "Paul Raymond"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many people died in the Joplin tornado?",
+          "acceptedAnswer": {"@type": "Answer", "text": "161 lives were lost; the NWS directly attributes 158 — the deadliest single U.S. tornado since modern record-keeping began in 1950."}
+        },
+        {
+          "@type": "Question",
+          "name": "Was there a warning before the Joplin tornado?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Yes — a tornado warning was issued at 5:17 PM, 24 minutes before impact, and sirens sounded twice (5:11 PM and 5:38 PM)."}
+        },
+        {
+          "@type": "Question",
+          "name": "How strong was the Joplin tornado?",
+          "acceptedAnswer": {"@type": "Answer", "text": "EF5, winds over 200 mph, a multiple-vortex tornado roughly one mile wide with a 21-mile damage path through Joplin, Missouri, on May 22, 2011."}
+        },
+        {
+          "@type": "Question",
+          "name": "What changed after the Joplin tornado?",
+          "acceptedAnswer": {"@type": "Answer", "text": "The NWS adopted impact-based warnings with escalating language, and Joplin rewrote its siren policy — a siren now means one thing only: take shelter now."}
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Field Notes", "item": "https://paulraymond.online/field-notes/"},
+        {"@type": "ListItem", "position": 2, "name": "Joplin Tornado 2011", "item": "https://paulraymond.online/field-notes/joplin-tornado-2011/"}
+      ]
+    }
+  ]
+}
+</script>
+<style id="chrome">
+.topnav{position:sticky;top:0;z-index:40;box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.topnav nav a.buy{background:var(--red);color:#fff!important;font-family:var(--display);font-weight:700;
+  font-size:15px;letter-spacing:0;text-transform:none;padding:9px 18px;border-radius:2px;
+  box-shadow:0 8px 20px rgba(169,44,30,.4);border:0}
+.topnav nav a.buy:hover{background:var(--red-bright)}
+.topnav nav a.ytl{color:var(--sky-dim)}
+@media(max-width:760px){.topnav .wrap{gap:12px;padding:10px 16px}.topnav nav{gap:12px}
+  .topnav nav a.buy{padding:8px 12px;font-size:14px}.topnav nav a.ytl{display:none}}
+@media(max-width:540px){.topnav nav a:not(.buy){display:none}.topnav .brand{white-space:nowrap}}
+footer{background:var(--sky);color:var(--sky-dim)}
+footer .bookrow{display:grid;grid-template-columns:96px 1fr auto;gap:26px;align-items:center;
+  background:#1e2629;border:1px solid var(--sky-line);padding:22px 26px;margin-bottom:34px}
+footer .bookrow img{width:96px;height:auto;box-shadow:0 12px 26px rgba(0,0,0,.55);transform:rotate(-1.6deg)}
+footer .bookrow h3{font-family:var(--display);font-size:22px;color:var(--sky-text);margin:0 0 6px;line-height:1.1}
+footer .bookrow p{font-size:15px;color:var(--sky-dim);margin:0;line-height:1.5}
+footer .bookrow .btn{white-space:nowrap}
+footer .small{font-family:var(--mono);font-size:12px;line-height:1.7;max-width:70em;color:var(--sky-dim)}
+footer a{color:var(--sky-text)}
+@media(max-width:760px){footer .bookrow{grid-template-columns:96px 1fr}footer .bookrow .btn{grid-column:1/-1;text-align:center}}
+.bookcta .cover{background:none;padding:0;display:block;overflow:hidden}
+.bookcta .cover img{width:100%;height:100%;object-fit:cover;display:block}
+.samplestrip{display:flex;align-items:center;gap:18px;background:var(--sky);color:var(--sky-text);
+  padding:16px 22px;margin:34px 0 10px;border-left:4px solid var(--amber)}
+.samplestrip img{width:46px;height:auto;flex:none;box-shadow:0 8px 18px rgba(0,0,0,.5);transform:rotate(-2deg)}
+.samplestrip p{margin:0;font-size:16px;color:var(--sky-dim);line-height:1.45}
+.samplestrip b{color:#fff}
+.samplestrip a{color:var(--amber);font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;
+  text-transform:uppercase;white-space:nowrap;margin-left:auto;text-decoration:none}
+.samplestrip a:hover{color:#fff}
+@media(max-width:640px){.samplestrip{flex-wrap:wrap}.samplestrip a{margin-left:0}}
+.gate{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--amber);
+  padding:30px 32px;margin:44px 0 24px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+.gate .k{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber-deep,#8a5a0c);margin-bottom:8px}
+.gate h3{font-family:var(--display);font-size:24px;margin:0 0 8px;line-height:1.1}
+.gate p{margin:0;font-size:16.5px;color:var(--ink-soft)}
+.gate .ghost{display:inline-block;border:2px solid var(--ink);color:var(--ink);font-family:var(--display);
+  font-weight:700;font-size:17px;padding:12px 24px;border-radius:2px;text-decoration:none;white-space:nowrap}
+.gate .ghost:hover{background:var(--ink);color:var(--paper)}
+.gate .sub{font-family:var(--mono);font-size:12px;color:var(--faded);margin-top:8px}
+@media(max-width:640px){.gate{grid-template-columns:1fr}}
+@media print{.topnav,footer,.samplestrip,.gate,.bookcta{display:none!important}}
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <div class="wrap">
+    <a class="brand" href="/">Paul <em>Raymond</em></a>
+    <nav>
+      <a class="on" href="/field-notes/">Field Notes</a>
+      <a href="/resources/">Free Checklists</a>
+      <a href="/states/">State Guides</a>
+      <a class="ytl" href="https://www.youtube.com/@PaulRaymond-s9v" rel="noopener">&#9654; The Warning Hour</a>
+      <a class="buy" href="/#offer">Get the Book &mdash; $14.99</a>
+    </nav>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="col">
+    <div class="dispatch-no">Field Notes · Dispatch Nº 001</div>
+    <div class="datestamp">Joplin, Missouri · May 22, 2011 · 5:11 p.m.</div>
+    <h1>The Joplin tornado had 24 minutes of warning.<br><em>It wasn't enough.</em></h1>
+    <p class="standfirst">Nearly double the national average lead time. Sirens that sounded twice.
+      And still the deadliest single tornado in modern American history. This dispatch is about
+      the gap between hearing a warning and believing it.</p>
+    <div class="byline">
+      <span class="face" role="img" aria-label="Paul Raymond"></span>
+      <span class="who"><b>Paul Raymond</b> · The Warning Hour<br>17 min watch · 7 min read · Published August 26, 2026</span>
+    </div>
+  </div>
+</header>
+
+<div class="exhibit">
+  <div class="col">
+    <figure class="tvframe">
+      <div class="screen">
+        <iframe src="https://www.youtube-nocookie.com/embed/s--FjTUXU-w"
+                title="The Deadliest U.S. Tornado Since 1950 — Joplin, 2011"
+                loading="lazy" allowfullscreen
+                allow="accelerometer; encrypted-media; picture-in-picture"></iframe>
+      </div>
+      <figcaption>
+        <span><b>Watch the full dispatch</b> · Episode 1 · 17:30</span>
+        <span>The Warning Hour · Education</span>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+
+<article>
+  <div class="col">
+    <p class="drop">It was a Sunday evening in late May — graduation day at Joplin High School.
+      At 5:11 p.m. the sirens sounded across the city. The tornado warning had been issued with
+      24 minutes of lead time, nearly double the national average. By every measure the system
+      worked. And 161 people died anyway.</p>
+    <p>The question this episode sits with is the one every post-storm report circles and few
+      answer plainly: why did more warning not mean more safety? The National Weather Service's
+      own service assessment — the agency investigating itself — found the answer wasn't in the
+      radar. It was in the years of sirens that had sounded before, for storms that never came.</p>
+
+    <div class="pull">
+      "The sirens sounded twice. The second time, people went to their windows
+      to look — not to their shelters."
+      <span class="src">— From the episode, on the NWS Central Region Service Assessment, Joplin 2011</span>
+    </div>
+
+    <h2>What the report actually found</h2>
+    <p>Three findings from the assessment carry straight into things a household can fix this
+      weekend, without waiting for any city to change its siren policy.</p>
+
+    <ol class="protections">
+      <li><span class="n">Nº 04</span><span><b>A trigger plan beats a warning.</b>
+        Decide — in writing, before the season — which exact signal moves your family to shelter.
+        Not "when it looks bad." A named signal, one sentence. Our free
+        <a href="/resources/family-emergency-plan-template/">family emergency plan template</a>
+        has the fill-in line.</span></li>
+      <li><span class="n">Nº 23</span><span><b>Pick the safe room before the siren.</b>
+        The lowest floor, smallest interior room, most walls between you and outside.
+        Deciding during the warning takes longer than the warning. The
+        <a href="/resources/tornado-safe-room/">safe-room guide</a> walks the selection.</span></li>
+      <li><span class="n">Nº 61</span><span><b>Own the second alert channel.</b>
+        Joplin's outdoor sirens weren't built to be heard indoors. A NOAA weather radio with
+        battery backup is the indoor siren — it names your county and it wakes you up.</span></li>
+    </ol>
+
+    <div class="chapters">
+      <h3>In the episode</h3>
+      <ol>
+        <li><a href="https://www.youtube.com/watch?v=s--FjTUXU-w&t=0s" rel="noopener"><span class="t">0:00</span>The Dispatch Call</a></li>
+        <li><a href="https://www.youtube.com/watch?v=s--FjTUXU-w&t=97s" rel="noopener"><span class="t">1:37</span>Watch Issued — Then Waiting</a></li>
+        <li><a href="https://www.youtube.com/watch?v=s--FjTUXU-w&t=206s" rel="noopener"><span class="t">3:26</span>The Warning: 24 Minutes</a></li>
+        <li><a href="https://www.youtube.com/watch?v=s--FjTUXU-w&t=326s" rel="noopener"><span class="t">5:26</span>Two Sirens, One Sound</a></li>
+        <li><a href="https://www.youtube.com/watch?v=s--FjTUXU-w&t=396s" rel="noopener"><span class="t">6:36</span>St. John's Medical Center</a></li>
+        <li><a href="https://www.youtube.com/watch?v=s--FjTUXU-w&t=654s" rel="noopener"><span class="t">10:54</span>The NWS Investigates Itself</a></li>
+        <li><a href="https://www.youtube.com/watch?v=s--FjTUXU-w&t=719s" rel="noopener"><span class="t">11:59</span>Polygon vs Siren Zone</a></li>
+        <li><a href="https://www.youtube.com/watch?v=s--FjTUXU-w&t=817s" rel="noopener"><span class="t">13:37</span>The Quiet Fix</a></li>
+      </ol>
+    </div>
+
+    <h2>Questions people ask about Joplin</h2>
+    <div class="faqbox">
+      <details>
+        <summary>How many people died in the Joplin tornado?</summary>
+        <p>161 lives were lost; the NWS directly attributes 158 — the deadliest single U.S.
+        tornado since modern record-keeping began in 1950.</p>
+      </details>
+      <details>
+        <summary>Was there a warning before the Joplin tornado?</summary>
+        <p>Yes — a tornado warning was issued at 5:17 PM, 24 minutes before impact, and sirens
+        sounded twice, at 5:11 PM and 5:38 PM.</p>
+      </details>
+      <details>
+        <summary>How strong was the Joplin tornado?</summary>
+        <p>EF5, winds over 200 mph — a multiple-vortex tornado roughly one mile wide with a
+        21-mile damage path through Joplin, Missouri, on May 22, 2011.</p>
+      </details>
+      <details>
+        <summary>What changed after Joplin?</summary>
+        <p>The NWS adopted impact-based warnings with escalating language ("catastrophic…
+        unsurvivable if above ground"), and Joplin rewrote its siren policy — a siren now means
+        one thing only: take shelter now.</p>
+      </details>
+    </div>
+
+    <h2>The part the episode can't do for you</h2>
+    <p>A film can show you why Joplin's sirens failed to move people. It can't pick your safe
+      room, fill in your trigger plan, or put a weather radio on your nightstand. That part is
+      a Saturday's work — and it's the reason the book exists.</p>
+
+    <div class="bookcta">
+      <div class="cover"><img src="/assets/cover-mini.webp" alt="The Storm-Ready Home by Paul Raymond — book cover" width="150" height="225"></div>
+      <div>
+        <h3>The 130 things you can do before the next one.</h3>
+        <p>A 486-page manual built from the post-storm reports — including Joplin's.
+          130 numbered protections, 23 hazard playbooks, a 60-day sequence, and the
+          printable binder.</p>
+        <a class="btn" href="/#offer">Get the Book — $14.99 →</a>
+        <div class="btn-sub">Instant PDF · Pay once, own it forever · 7-day money-back guarantee</div>
+      </div>
+    </div>
+
+    <div class="sources">
+      <h3>Sources for this dispatch</h3>
+      <ul>
+        <li>NWS Central Region Service Assessment — Joplin, Missouri Tornado, May 22, 2011</li>
+        <li>NIST NCSTAR 3 — Technical Investigation of the Joplin Tornado</li>
+        <li>NOAA NEXRAD Level-II archive, KSGF Springfield</li>
+        <li>Jasper County public-safety radio traffic archive</li>
+      </ul>
+    </div>
+  </div>
+</article>
+
+<section class="morenotes">
+  <div class="wrap">
+    <div class="kicker">The archive</div>
+    <h2>More field notes.</h2>
+    <div class="notegrid">
+      <a class="note" href="/field-notes/tornado-warning-vs-watch/">
+        <div class="thumb"></div>
+        <div class="pad">
+          <div class="meta">Field Guide</div>
+          <h3>Tornado Warning vs. Watch</h3>
+          <p>The two words the weather service will use on the worst day of your year — and the
+            one-sentence rule for each.</p>
+        </div>
+      </a>
+      <a class="note" href="/resources/">
+        <div class="thumb"></div>
+        <div class="pad">
+          <div class="meta">Free Checklists</div>
+          <h3>The printable library</h3>
+          <p>Trigger plan, safe room, go-bag, emergency binder, home inventory — free, no email
+            asked.</p>
+        </div>
+      </a>
+      <a class="note" href="/states/">
+        <div class="thumb"></div>
+        <div class="pad">
+          <div class="meta">State Guides</div>
+          <h3>Your state's storm page</h3>
+          <p>Shelter rebates, the agencies that answer, and the three hazards your state
+            actually faces.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="bookrow">
+      <img src="/assets/cover-mini.webp" alt="The Storm-Ready Home by Paul Raymond &mdash; book cover" width="96" height="144">
+      <div>
+        <h3>The Storm-Ready Home</h3>
+        <p>486 pages &middot; 130 numbered protections &middot; 23 hazard playbooks &middot; the 60-day sequence &middot; the 61-page printable binder. $14.99, instant PDF, 7-day money-back guarantee.</p>
+      </div>
+      <a class="btn" href="/#offer">Get the Book &mdash; $14.99 &rarr;</a>
+    </div>
+    <p class="small">General preparedness information for households. Not medical, legal,
+      engineering or insurance advice, and not a substitute for the instructions of your local
+      emergency officials. In an emergency, call 911 and follow the direction of authorities.</p>
+    <p class="small">Figures cited to their issuing documents. Public-domain material reproduced under
+      17 U.S.C. &sect; 105. <strong>No agency of the United States Government has endorsed, reviewed, or is
+      affiliated with this book.</strong></p>
+    <p class="small"><a href="/#offer">Get the book</a> &middot; <a href="/">Home</a> &middot; <a href="/field-notes/">Field Notes</a> &middot;
+      <a href="/resources/">Free checklists</a> &middot; <a href="/states/">State guides</a> &middot;
+      <a href="/about/">About</a> &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a> &middot;
+      <a href="https://www.youtube.com/@PaulRaymond-s9v" rel="noopener">&#9654; The Warning Hour on YouTube</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

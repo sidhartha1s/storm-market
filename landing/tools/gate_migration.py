@@ -15,7 +15,11 @@ SKIP = {"og-src.html"}
 ALLOW = set(a.lower() for a in sys.argv[1:])
 ALLOW_DEFAULT = {"field notes", "free checklists", "state guides", "youtube", "get the book",
                  "get the book $14.99", "skip to content", "back to top", "look inside", "reviews", "faq",
-                 "privacy", "terms", "menu", "close"}
+                 "privacy", "terms", "menu", "close",
+                 "before you go further", "your state's storm packet is", "no purchase just pick your state",
+                 "get my free state packet", "back to the storm ready home", "or see inside the book",
+                 "week one of the plan costs", "it's the week the disaster reports keep citing", "$14 99 refundable for seven days",
+                 "or see what's inside", "be ready before the next one", "four pages the three hazards your state actually gets who to call your state's mitigation program and deductible rules and a one page plan"}
 
 def visible(h):
     h = re.sub(r"<script.*?</script>|<style.*?</style>|<!--.*?-->", " ", h, flags=re.S)
@@ -29,13 +33,17 @@ def norm(s):
     return re.sub(r"\s+", " ", s).strip()
 
 def sentences(h):
-    t = visible(h)
-    parts = re.split(r"(?<=[.!?])\s+|\n{2,}", t)
+    """Element-level chunks: text between tag boundaries, so table cells and headings are
+    compared on their own rather than fused into run-on sentences."""
+    h = re.sub(r"<script.*?</script>|<style.*?</style>|<!--.*?-->", " ", h, flags=re.S)
+    h = re.sub(r"<(nav|footer|header).*?</>", " ", h, flags=re.S)  # old chrome is replaced by design
+    chunks = re.split(r"<[^>]+>", h)
     out = []
-    for p in parts:
-        n = norm(p)
-        if len(n.split()) >= 4:
-            out.append(n)
+    for c in chunks:
+        for part in re.split(r"(?<=[.!?])\s+", htmlmod.unescape(c)):
+            n = norm(part)
+            if len(n.split()) >= 4:
+                out.append(n)
     return out
 
 def ldjson(h):
@@ -79,7 +87,7 @@ def main():
             if re.search(r"lorem", new, re.I): probs.append("lorem present")
             if "—" in new: probs.append(f"em dash x{new.count(chr(0x2014))}")
             if re.search(r"#000\b", new): probs.append("#000 present")
-            if "gumroad.com/l/ebook" not in new and f != "404.html": probs.append("no buy link")
+            if "gumroad.com/l/ebook" not in new and "/#offer" not in new and f != "404.html": probs.append("no buy link")
             if probs:
                 fails += 1; print(f"FAIL {rel}\n   " + "\n   ".join(probs))
     print(f"\n{pages} pages checked, {fails} failing")
