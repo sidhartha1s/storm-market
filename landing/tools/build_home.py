@@ -582,7 +582,7 @@ SHEET_GET = """
         <span>Total value</span><span>$87.99</span></p>
       <p style="display:flex;justify-content:space-between;font-family:var(--display);font-weight:700;font-size:19px;color:var(--ink);margin:0 0 16px">
         <span>You pay today</span><span style="color:var(--cta)">$14.99</span></p>
-      <a class="btn" style="width:100%" href="@@BUY@@">Get My Copy</a>
+      <a class="btn" id="buy" style="width:100%" href="@@BUY@@">Get My Copy</a>
       <p style="margin:10px 0 0;text-align:center;font-family:var(--mono);font-size:12px;color:var(--faded)">
         Secure checkout &middot; Visa &middot; Mastercard &middot; PayPal &middot; Apple Pay</p>
       <div class="guar"><div class="seal">7-DAY<br>MONEY<br>BACK</div><p style="margin:0;font-size:16px">
