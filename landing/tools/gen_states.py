@@ -466,12 +466,16 @@ def build_menu(rows):
   color:var(--faded);border-top:2px solid var(--ink);padding-top:10px;margin:34px 0 6px}}
 .regionhead[hidden]{{display:none}}
 .stategrid{{list-style:none;margin:14px 0 0;padding:0;display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:4px 20px}}
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:6px 20px}}
 .stategrid li{{border-bottom:1px solid var(--rule)}}
 .stategrid li[hidden]{{display:none}}
-.stategrid a{{display:block;padding:9px 2px;font-size:17px;color:var(--ink);text-decoration:none}}
-.stategrid a:hover{{color:var(--cta)}}
-@media(max-width:640px){{.stategrid{{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}}}}
+.stategrid a{{display:block;padding:10px 2px 12px;text-decoration:none;color:var(--ink)}}
+.stategrid a:hover b{{color:var(--cta)}}
+.stategrid b{{display:block;font-family:var(--display);font-weight:700;font-size:18px}}
+.stategrid .hz{{display:block;font-size:14px;color:var(--soft);margin-top:2px}}
+.stategrid .go{{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--cta);margin-top:6px}}
+@media(max-width:640px){{.stategrid{{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}}}}
 </style>"""
 
     body_extra = """<script>
