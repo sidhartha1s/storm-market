@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); overflow:hidden; }
+  .eyebrow { position:absolute; left:96px; top:76px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .hl { position:absolute; left:96px; top:112px; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; }
+  .sub { position:absolute; left:96px; top:196px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  .lab { font-size:19px; letter-spacing:4px; fill:#93a3b2; font-weight:700; }
+  .big { font-family:'Arial Black',Arial,sans-serif; font-size:30px; fill:#f2f5f8; letter-spacing:1px; }
+  .rate { position:absolute; right:96px; top:88px; text-align:right; }
+  .ratenum { font-family:'Courier New',monospace; font-size:76px; color:#e74c3c; font-weight:700; line-height:1.05; }
+  .ratelab { font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; margin-top:6px; }
+  .choice { position:absolute; left:0; right:0; bottom:96px; text-align:center; }
+  .choice .a, .choice .b { display:inline-block; font-family:'Arial Black',Arial,sans-serif; font-size:36px; padding:18px 40px;
+    border:2px solid rgba(255,255,255,0.18); border-radius:14px; color:#f2f5f8; background:rgba(10,16,24,0.72); }
+  .choice .or { display:inline-block; font-family:Georgia,serif; font-style:italic; font-size:30px; color:#d8a13a; margin:0 26px; }
+</style>
+<div id="root" data-composition-id="g-decision-fill" data-width="1920" data-height="1080">
+<svg id="g-df-svg" viewBox="0 0 1920 1080" style="position:absolute;inset:0">
+  <defs>
+    <linearGradient id="dfwater" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7fb2e5"/><stop offset="100%" stop-color="#2e4a6a"/></linearGradient>
+  </defs>
+  <!-- twin reservoir columns; water rises against record tick marks -->
+  <g id="g-df-colA">
+    <rect x="420" y="300" width="260" height="560" fill="rgba(147,163,178,0.10)" stroke="#5a768f" stroke-width="3"/>
+    <rect id="g-df-wA" x="420" y="860" width="260" height="0" fill="url(#dfwater)" opacity="0.9"/>
+    <line id="g-df-recA" x1="400" y1="438" x2="700" y2="438" stroke="#e8c56a" stroke-width="3" stroke-dasharray="10 8" opacity="0"/>
+    <text id="g-df-recAlab" x="404" y="424" class="lab" fill="#e8c56a" opacity="0">HIGHEST EVER RECORDED</text>
+    <text x="550" y="920" text-anchor="middle" class="big">ADDICKS</text>
+    <text id="g-df-lvlA" x="550" y="962" text-anchor="middle" class="lab" opacity="0">109.1 FT · ALL-TIME RECORD</text>
+  </g>
+  <g id="g-df-colB">
+    <rect x="1240" y="300" width="260" height="560" fill="rgba(147,163,178,0.10)" stroke="#5a768f" stroke-width="3"/>
+    <rect id="g-df-wB" x="1240" y="860" width="260" height="0" fill="url(#dfwater)" opacity="0.9"/>
+    <line id="g-df-recB" x1="1220" y1="452" x2="1520" y2="452" stroke="#e8c56a" stroke-width="3" stroke-dasharray="10 8" opacity="0"/>
+    <text id="g-df-recBlab" x="1224" y="438" class="lab" fill="#e8c56a" opacity="0">HIGHEST EVER RECORDED</text>
+    <text x="1370" y="920" text-anchor="middle" class="big">BARKER</text>
+    <text id="g-df-lvlB" x="1370" y="962" text-anchor="middle" class="lab" opacity="0">101.6 FT · ALL-TIME RECORD</text>
+  </g>
+  <!-- the design storm callout between the columns -->
+  <g id="g-df-ds" opacity="0">
+    <text x="960" y="470" text-anchor="middle" class="big" fill="#e8c56a" font-size="44">31.4″</text>
+    <text x="960" y="508" text-anchor="middle" class="lab">THE 1940s DESIGN STORM</text>
+    <text x="960" y="570" text-anchor="middle" class="big" fill="#e74c3c" font-size="44">~31″</text>
+    <text x="960" y="608" text-anchor="middle" class="lab" fill="#e74c3c">WHAT HARVEY DELIVERED</text>
+  </g>
+</svg>
+<div class="eyebrow" id="g-df-eb">INSIDE THE DAMS · AUGUST 25–28, 2017</div>
+<div class="hl" id="g-df-hl">THE POOLS PASS EVERY RECORD</div>
+<div class="sub" id="g-df-sb">the storm they planned around, arrived at last</div>
+<div class="rate" id="g-df-rate"><div class="ratenum">+0.5 FT</div><div class="ratelab">RISING · EVERY HOUR</div></div>
+<div class="choice" id="g-df-choice">
+  <span class="a" id="g-df-cha">HOLD · GAMBLE THE DAMS</span><span class="or">or</span><span class="b" id="g-df-chb" style="border-color:rgba(231,76,60,0.7)">OPEN · FLOOD ON PURPOSE</span>
+</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* a5-s3 words: inside the dams@1.94-2.6 · 31 inches@7.52-8.06 · design storm@10.86-12.36 ·
+     almost to the inch@14.34-15.32 · lakes rising@17.84-18.2 · half a foot every hour@19.12-20.02 ·
+     passed every level@21.7-22.78 · oldest trade@26.84-27.14 · hold the water@28.96-29.48 ·
+     open the gates@32.56-32.98 · on purpose@34.86-35.14 */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-df-";
+  tl.set([P+"ds",P+"rate",P+"choice",P+"lvlA",P+"lvlB"], {autoAlpha:0}, 0);
+  tl.fromTo(P+"eb", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.3);
+  tl.fromTo(P+"hl", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 1.9);   // "inside the dams"
+  tl.fromTo(P+"sb", {autoAlpha:0, x:-24}, {autoAlpha:1, x:0, duration:0.5}, 2.3);
+  tl.fromTo([P+"colA",P+"colB"], {autoAlpha:0, y:30}, {autoAlpha:1, y:0, duration:0.6, ease:"power3.out", stagger:0.2}, 2.2);
+  /* design-storm numbers ON "31 inches" @7.52 and "design storm" @10.86 */
+  tl.fromTo(P+"ds", {autoAlpha:0, scale:1.1}, {autoAlpha:1, scale:1, duration:0.6, ease:"power3.out"}, 7.4);
+  /* water rises continuously from "lakes rising" @17.84 to the end of the comp (the continuous element) */
+  tl.fromTo(P+"wA", {attr:{y:860, height:0}}, {attr:{y:392, height:468}, duration:16.5, ease:"power1.in"}, 16.6);
+  tl.fromTo(P+"wB", {attr:{y:860, height:0}}, {attr:{y:406, height:454}, duration:16.5, ease:"power1.in"}, 16.6);
+  /* rate readout ON "half a foot every hour" @19.12 */
+  tl.fromTo(P+"rate", {autoAlpha:0, x:40}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 19.0);
+  /* record lines cross ON "passed every level ever recorded" @21.7 */
+  tl.fromTo([P+"recA",P+"recAlab"], {opacity:0}, {opacity:1, duration:0.4}, 21.6);
+  tl.fromTo([P+"recB",P+"recBlab"], {opacity:0}, {opacity:1, duration:0.4}, 22.0);
+  tl.fromTo(P+"lvlA", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 23.2);
+  tl.fromTo(P+"lvlB", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 23.6);
+  /* the two choices land ON their spoken halves */
+  tl.fromTo(P+"cha", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 28.9);  // "hold the water"
+  tl.fromTo(P+"chb", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 32.5);  // "open the gates"
+  tl.set(P+"choice", {autoAlpha:1}, 28.8);
+  /* "on purpose" pulse @34.86 */
+  tl.fromTo(P+"chb", {boxShadow:"0 0 0 rgba(231,76,60,0)"}, {boxShadow:"0 0 46px rgba(231,76,60,0.55)", duration:0.5, ease:"power2.out"}, 34.8);
+  /* exit on the final 0.6s */
+  tl.to([P+"hl",P+"sb",P+"eb",P+"rate",P+"choice"], {x:980, autoAlpha:0, duration:0.55, ease:"power3.in"}, 35.8);
+  tl.to(P+"svg", {autoAlpha:0, duration:0.5}, 35.9);
+  window.__timelines["g-decision-fill"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
