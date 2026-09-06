@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif; }
+  .panel { position:absolute; right:0; top:0; bottom:0; width:820px; box-sizing:border-box;
+    background: linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); padding: 90px 70px 0 170px; }
+  .eyebrow { font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .tname { font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; line-height:1.05; margin-top:14px; }
+  .tsub { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:10px; }
+  .safe { display:inline-block; margin-top:34px; font-family:'Arial Black',Arial,sans-serif; font-size:64px; color:#fff;
+    background:#3f6f4f; padding:6px 34px; letter-spacing:2px; position:relative; }
+  .safe .x { position:absolute; left:-3%; top:50%; width:0; height:8px; background:#e74c3c; }
+  .row { font-size:30px; color:#dfe7ee; font-weight:700; letter-spacing:1px; margin-top:26px; }
+  .row .lab { display:block; font-size:19px; color:#93a3b2; letter-spacing:4px; font-weight:700; }
+  .cnum { font-family:'Courier New',monospace; font-size:84px; color:#e74c3c; font-weight:700; margin-top:26px; line-height:1; }
+  .clab { font-size:20px; color:#c8d3e0; letter-spacing:6px; font-weight:700; margin-top:6px; }
+</style>
+<div id="root" data-composition-id="g-fema" data-width="1920" data-height="1080">
+  <div class="panel" id="g-fm-panel">
+    <div class="eyebrow">THE OFFICIAL FLOOD MAPS</div>
+    <div class="tname">“YOU ARE SAFE”</div>
+    <div class="tsub">what the lines told the families</div>
+    <div><span class="safe" id="g-fm-safe">LOW RISK<span class="x" id="g-fm-x"></span></span></div>
+    <div class="row" id="g-fm-allison"><span class="lab">ALLISON · 2001</span>ALMOST HALF FLOODED OUTSIDE EVERY ZONE</div>
+    <div class="cnum" id="g-fm-cnum"><span id="g-fm-count">0</span> IN 10</div>
+    <div class="clab" id="g-fm-clab">FLOODED HOMES · NO FLOOD INSURANCE</div>
+    <div class="row" id="g-fm-drop" style="color:#e8c56a"><span class="lab">2012 → 2017 · HARRIS COUNTY</span>25,000 FEWER FLOOD POLICIES</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* a4-s3 words: told these families they were safe@3.26-4.54 · Allison@5.82 · almost half /
+     outside every mapped flood zone@6.86-10.3 · repeated the trick at scale@11.62-12.62 ·
+     8 in 10@19.56-20.06 · no flood coverage@22.26-22.86 · gone down by 25,000@28.92-30.26 ·
+     less insured@32.24-32.5 */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-fm-";
+  tl.set([P+"allison",P+"cnum",P+"clab",P+"drop"], {autoAlpha:0}, 0);
+  tl.fromTo(P+"panel", {x:660}, {x:0, duration:0.7, ease:"power3.out"}, 0.4);
+  /* LOW RISK stamp ON "they were safe" @4.14 */
+  tl.fromTo(P+"safe", {scale:2.2, autoAlpha:0}, {scale:1, autoAlpha:1, duration:0.35, ease:"power4.in"}, 4.1);
+  /* Allison receipt ON "Allison" @5.82 */
+  tl.fromTo(P+"allison", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 6.8);
+  /* the LOW RISK promise gets struck through ON "repeated the trick at scale" @11.62 */
+  tl.to(P+"x", {width:"106%", duration:0.5, ease:"power3.in"}, 11.6);
+  /* 8-in-10 counter ON "8 in 10" @19.56 */
+  const C={v:0};
+  tl.fromTo([P+"cnum",P+"clab"], {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 19.4);
+  tl.to(C, {v:8, duration:1.6, ease:"power3.out", onUpdate:function(){
+    const e=document.getElementById("g-fm-count"); if(e) e.textContent=Math.round(C.v);
+  }}, 19.5);
+  /* policy drop ON "gone down by 25,000" @28.92 */
+  tl.fromTo(P+"drop", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.45}, 28.8);
+  /* continuous life: counter breathe + slow content drift (no ≥4s dead stretch) */
+  tl.to(P+"cnum", {scale:1.03, duration:1.7, yoyo:true, repeat:9, ease:"sine.inOut", transformOrigin:"left center"}, 21.2);
+  tl.fromTo(".panel > *", {y:0}, {y:-8, duration:33, ease:"none"}, 2.5);
+  tl.to(P+"safe", {opacity:0.85, duration:1.5, yoyo:true, repeat:4, ease:"sine.inOut"}, 12.4);
+  /* slide-right exit on the final 0.6s */
+  tl.to(P+"panel", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 36.2);
+  window.__timelines["g-fema"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
