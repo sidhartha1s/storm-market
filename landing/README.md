@@ -1,7 +1,6 @@
 # Landing page — The Storm-Ready Home
 
-Static page, zero build step: one HTML file with inline CSS, assets alongside it, no framework, no
-CDN, **and no server logic at all**. Money and email both live on Gumroad — the paid manual at
+Static site, no framework, no server logic. Since the 2026-09-06 Binder redesign every page is **generated**: `python3 landing/tools/build_home.py && python3 landing/tools/build_pages.py && python3 landing/tools/gen_states.py`, then `python3 landing/tools/gate_migration.py`. Money and email both live on Gumroad — the paid manual at
 `/l/ebook`, the free state packets at `/l/packet`. Deploys to Cloudflare Pages as-is.
 
 **Live at https://paulraymond.online** (Cloudflare Pages project `paulraymond`; `paulraymond.pages.dev` is the same build). Redeploy with
@@ -11,7 +10,10 @@ git branch and production silently keeps serving the old build.
 
 | File | What |
 |---|---|
-| `index.html` | The whole page. Inline CSS, no framework. One CDN dependency: Google Fonts (Fraunces / Source Serif 4 / IBM Plex Mono), added in the 2026-08-13 redesign. |
+| `index.html` | **Generated** by `tools/build_home.py` (Binder design, 2026-09-06). Edit the content strings in that script, never the HTML. Inline CSS from `tools/chrome.py`; Google Fonts is the only CDN dependency. |
+| `tools/chrome.py` | The one shared chrome for every page: CSS, urgency band (viewer count, rolling 2h45-3h countdown, CTA), pinned index-tab nav, dock, toast, legal footer, JS. Change it here, then rebuild all three generators. |
+| `tools/build_pages.py` | Generates the 14 hand pages (about, privacy, terms, 404, field-notes, resources) from the pre-Binder copies in `tools/_orig/`. Tab labels live in its `TAB_LABELS` dict. |
+| `tools/gate_migration.py` | **Gate.** Every page vs `main`: old visible text present, JSON-LD equal, no lorem / em dash / #000, buy path present. Run before any deploy. |
 | `privacy.html`, `terms.html` | Generic text-only legal pages, linked in the footer, noindexed. |
 | `og-src.html` | Source for `assets/og.png` (1200×630 social card). Regenerate: `node shot.mjs og-src.html ./out 1200`, crop to 630. |
 | `assets/` | Cover + headshot (compressed JPEGs; the PNG originals remain as source), OG card, four real page shots, five Paul photos (selfie, plywood, binder, field kit, stage). |
