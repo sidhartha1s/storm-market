@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); overflow:hidden; }
+  .drift { position:absolute; inset:-40% 0; opacity:0.28; pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(120,150,180,0.15) 0 1px, transparent 1px 48px); }
+  .eyebrow { position:absolute; left:96px; top:76px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .hl { position:absolute; left:96px; top:112px; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; }
+  .sub { position:absolute; left:96px; top:196px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  .maplab { font-family:Arial,sans-serif; font-weight:700; font-size:24px; fill:#e8eef4; letter-spacing:2px; }
+  .ridgelab { font-family:Arial,sans-serif; font-weight:700; font-size:22px; fill:#7fb2e5; letter-spacing:3px; }
+  .verdict { position:absolute; left:96px; bottom:150px; font-family:'Arial Black',Arial,sans-serif; font-size:44px; color:#f2f5f8; }
+  .verdictsub { position:absolute; left:96px; bottom:96px; font-family:Georgia,serif; font-style:italic; font-size:25px; color:#b8c6d4; }
+  .rdg { position:absolute; right:96px; top:88px; text-align:right; }
+  .rdgnum { font-family:'Courier New',monospace; font-size:76px; color:#e8c56a; font-weight:700; line-height:1; }
+  .rdglab { font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; margin-top:6px; }
+</style>
+<div id="root" data-composition-id="g-stall" data-width="1920" data-height="1080">
+<div class="drift" id="g-stall-drift"></div>
+<svg viewBox="0 0 1920 1080" style="position:absolute;inset:0">
+  <defs>
+    <filter id="stglow"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <radialGradient id="ridgefill"><stop offset="0%" stop-color="rgba(90,118,143,0.42)"/><stop offset="100%" stop-color="rgba(90,118,143,0.04)"/></radialGradient>
+  </defs>
+  <!-- simplified Texas gulf coastline, Brownsville→Louisiana, hand-plotted -->
+  <path id="g-stall-coast" d="M 430 980 L 520 870 L 600 800 L 700 742 L 820 700 L 940 668 L 1080 640 L 1240 622 L 1400 616 L 1560 620"
+        fill="none" stroke="#5a768f" stroke-width="4" stroke-dasharray="1260" stroke-dashoffset="1260" opacity="0.9"/>
+  <text id="g-stall-gulflab" x="1150" y="880" class="maplab" opacity="0" fill="#7fb2e5" font-style="italic">GULF OF MEXICO</text>
+  <text id="g-stall-rockportlab" x="838" y="672" class="maplab" opacity="0">ROCKPORT</text>
+  <circle id="g-stall-rockport" cx="855" cy="700" r="0" fill="#93a3b2"/>
+  <text id="g-stall-houstonlab" x="1210" y="588" class="maplab" opacity="0" fill="#e74c3c">HOUSTON</text>
+  <circle id="g-stall-houston" cx="1250" cy="612" r="0" fill="#e74c3c"/>
+  <!-- ridge domes: Four Corners (upper-left) + northern Gulf (lower-right) -->
+  <ellipse id="g-stall-ridge1" cx="360" cy="290" rx="0" ry="0" fill="url(#ridgefill)" stroke="#5a768f" stroke-width="3"/>
+  <text id="g-stall-r1lab" x="360" y="290" text-anchor="middle" class="ridgelab" opacity="0">HIGH · FOUR CORNERS</text>
+  <ellipse id="g-stall-ridge2" cx="1560" cy="840" rx="0" ry="0" fill="url(#ridgefill)" stroke="#5a768f" stroke-width="3"/>
+  <text id="g-stall-r2lab" x="1560" y="845" text-anchor="middle" class="ridgelab" opacity="0">HIGH · NORTHERN GULF</text>
+  <!-- Harvey: spiral marker, track in from SE, stall loop between the domes -->
+  <polyline id="g-stall-track" points="1750,1010 1560,930 1350,850 1150,790 1000,745 900,718 862,706"
+        fill="none" stroke="#c0392b" stroke-width="6" stroke-linecap="round" stroke-dasharray="1080" stroke-dashoffset="1080"/>
+  <g id="g-stall-storm" opacity="0">
+    <circle cx="0" cy="0" r="34" fill="rgba(192,57,43,0.25)"/>
+    <path d="M -6 -30 A 30 30 0 0 1 26 -14 M 6 30 A 30 30 0 0 1 -26 14" fill="none" stroke="#e74c3c" stroke-width="7" stroke-linecap="round" filter="url(#stglow)"/>
+    <circle cx="0" cy="0" r="9" fill="#e74c3c"/>
+  </g>
+  <text id="g-stall-deadlab" x="985" y="520" text-anchor="middle" class="maplab" opacity="0" fill="#d8a13a">THE DEAD SPACE · STEERING SHUT OFF</text>
+</svg>
+<div class="eyebrow" id="g-stall-eb">NHC TROPICAL CYCLONE REPORT · AL092017</div>
+<div class="hl" id="g-stall-hl">WHY HARVEY STOPPED</div>
+<div class="sub" id="g-stall-sb">two highs, one storm trapped between them</div>
+<div class="rdg" id="g-stall-rdg"><div class="rdgnum"><span id="g-stall-days">0</span> DAYS</div><div class="rdglab">STALLED OVER THE COAST</div></div>
+<div class="verdict" id="g-stall-vd">IT JUST HAS TO SIT.</div>
+<div class="verdictsub" id="g-stall-vds">a storm with nowhere to go does not have to be strong to be deadly</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* a1-s3 words: wrong@2.44 · Rockies@7.02 · names two@10.3 · Four Corners@13.5 · second dome/Gulf@14.96-16.84 ·
+     dead space@19.06 · shut off@22.16 · deadly@26.42 · sit@28.26 · four days@29.56 · Harvey sat@32.8 */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-stall-";
+  tl.fromTo(P+"drift", {y:-110}, {y:110, duration:34.3, ease:"none"}, 0);            // continuous element
+  tl.fromTo(P+"eb", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.15);
+  tl.fromTo(P+"hl", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.4);
+  tl.fromTo(P+"sb", {autoAlpha:0, x:-24}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.7);
+  tl.to(P+"coast", {strokeDashoffset:0, duration:2.2, ease:"power2.inOut"}, 0.8);
+  tl.fromTo(P+"gulflab", {opacity:0}, {opacity:0.75, duration:0.6}, 2.2);
+  tl.fromTo(P+"rockport", {attr:{r:0}}, {attr:{r:9}, duration:0.4, ease:"back.out(2)"}, 3.6);   // "Harvey did not stall..."
+  tl.fromTo(P+"rockportlab", {opacity:0}, {opacity:0.9, duration:0.4}, 3.8);
+  tl.fromTo(P+"houston", {attr:{r:0}}, {attr:{r:11}, duration:0.4, ease:"back.out(2)"}, 4.4);
+  tl.fromTo(P+"houstonlab", {opacity:0}, {opacity:1, duration:0.4}, 4.6);
+  /* the storm arrives while the myth line is spoken */
+  tl.set(P+"storm", {x:1750, y:1010, autoAlpha:1}, 1.2);
+  tl.to(P+"track", {strokeDashoffset:0, duration:5.6, ease:"power1.inOut"}, 1.2);
+  tl.to(P+"storm", {x:862, y:706, duration:5.6, ease:"power1.inOut"}, 1.2);
+  tl.to(P+"storm", {rotation:360, duration:6, repeat:5, ease:"none", transformOrigin:"0px 0px", svgOrigin:"0 0"}, 0); // continuous spin
+  /* ridge one ON "Four Corners" @13.5 */
+  tl.to(P+"ridge1", {attr:{rx:300, ry:190}, duration:0.9, ease:"power3.out"}, 13.4);
+  tl.fromTo(P+"r1lab", {opacity:0}, {opacity:1, duration:0.5}, 13.9);
+  /* ridge two ON "second dome over the northern Gulf" @14.96→16.84 */
+  tl.to(P+"ridge2", {attr:{rx:300, ry:180}, duration:0.9, ease:"power3.out"}, 15.9);
+  tl.fromTo(P+"r2lab", {opacity:0}, {opacity:1, duration:0.5}, 16.5);
+  /* dead space ON "dead space" @19.06; storm drifts a slow trapped loop through 28s */
+  tl.fromTo(P+"deadlab", {opacity:0}, {opacity:0.95, duration:0.6}, 19.0);
+  tl.to(P+"storm", {motionPath:false, x:900, y:660, duration:2.4, ease:"sine.inOut"}, 19.2);
+  tl.to(P+"storm", {x:940, y:700, duration:2.4, ease:"sine.inOut"}, 21.6);
+  tl.to(P+"storm", {x:880, y:690, duration:2.2, ease:"sine.inOut"}, 24.0);
+  tl.to(P+"storm", {x:915, y:672, duration:2.2, ease:"sine.inOut"}, 26.2);
+  /* verdict ON "It just has to sit" @27.2-28.26 */
+  tl.fromTo(P+"vd", {autoAlpha:0, y:26}, {autoAlpha:1, y:0, duration:0.55, ease:"power3.out"}, 27.4);
+  tl.fromTo(P+"vds", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5}, 28.1);
+  /* days counter ON "for four days" @29.34 */
+  const D={v:0};
+  tl.fromTo(P+"rdg", {autoAlpha:0, x:40}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 29.3);
+  tl.to(D, {v:4, duration:2.4, ease:"power2.out", onUpdate:function(){
+    const e=document.getElementById("g-stall-days"); if(e) e.textContent=Math.round(D.v);
+  }}, 29.5);
+  /* slide-right exit timed to the comp's last 0.6s (host window = comp duration) */
+  tl.to([P+"hl",P+"sb",P+"eb",P+"vd",P+"vds",P+"rdg"], {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 33.7);
+  tl.to("#g-stall-drift", {autoAlpha:0, duration:0.5}, 33.8);
+  window.__timelines["g-stall"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
