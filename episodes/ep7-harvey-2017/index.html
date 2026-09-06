@@ -30,7 +30,7 @@
   </style>
 </head>
 <body>
-<div id="root" data-composition-id="ep7-harvey2017" data-start="0" data-width="1920" data-height="1080" data-duration="1055.5" data-fps="30">
+<div id="root" data-composition-id="ep7-harvey2017" data-start="0" data-width="1920" data-height="1080" data-duration="1060.5" data-fps="30">
 
   <!-- ============ NARRATION (nx-* for build_srt) ============ -->
   <audio id="nx-h1s1" src="audio/h1-s1.wav" data-start="0" data-duration="21.88" data-volume="1"></audio>
@@ -65,10 +65,23 @@
   <audio id="nx-a6s3" src="audio/a6-s3.wav" data-start="998.792" data-duration="23.48" data-volume="1"></audio>
   <audio id="nx-c1s1" src="audio/c1-s1.wav" data-start="1023.172" data-duration="32.32" data-volume="1"></audio>
 
+  <!-- ============ AUDIO BEDS + SFX (track 0 ambience; riser peaks WITH "government"; beds duck out for CTA window) ============ -->
+  <audio id="bed-rain" src="media/beds/bed-rain-hook.m4a" data-start="0" data-duration="89.65" data-volume="0.9"></audio>
+  <audio id="sfx-riser" src="media/beds/riser-hook.m4a" data-start="6.6" data-duration="7.0" data-volume="0.55"></audio>
+  <audio id="bed-act1" src="media/beds/bed-act1.m4a" data-start="22.23" data-duration="236.94" data-volume="0.12"></audio>
+  <audio id="bed-act2" src="media/beds/bed-act2.m4a" data-start="259.873" data-duration="126.41" data-volume="0.15"></audio>
+  <audio id="bed-act3" src="media/beds/bed-act3.m4a" data-start="403.916" data-duration="176.06" data-volume="0.12"></audio>
+  <audio id="bed-act4" src="media/beds/bed-act4.m4a" data-start="580.772" data-duration="135.97" data-volume="0.15"></audio>
+  <audio id="bed-act5" src="media/beds/bed-act5.m4a" data-start="717.542" data-duration="197.09" data-volume="0.08"></audio>
+  <audio id="bed-rumble5" src="media/beds/bed-rumble-act5.m4a" data-start="790.882" data-duration="120.02" data-volume="0.5"></audio>
+  <audio id="bed-act6" src="media/beds/bed-act6.m4a" data-start="915.532" data-duration="106.74" data-volume="0.4"></audio>
+  <audio id="bed-close" src="media/beds/bed-close.m4a" data-start="1023.172" data-duration="37.33" data-volume="0.15"></audio>
+  <audio id="sfx-hit-aug28" src="media/beds/hit-aug28.m4a" data-start="839.02" data-duration="2.5" data-volume="0.4"></audio>
+
   <!-- ============ INSERTS (audio-carrying; owner slate posted 2026-09-06 — render blocked until approved) ============ -->
-  <video id="ins-01-wind" class="gr" src="media/scenes/INS01-wind-account.mp4" data-start="121.42" data-duration="9.233" data-track-index="1" data-volume="1" data-srt-label="[SURVIVOR — ARANSAS PASS, AP ARCHIVE]"></video>
+  <video id="ins-01-wind" class="gr" src="media/scenes/INS01-wind-account.mp4" data-start="121.77" data-duration="9.233" data-track-index="1" data-volume="1" data-srt-label="[SURVIVOR — ARANSAS PASS, AP ARCHIVE]"></video>
   <video id="ins-02-turner" class="gr" src="media/scenes/INS02-turner.mp4" data-start="447.066" data-duration="5.433" data-track-index="1" data-volume="1" data-srt-label="[MAYOR SYLVESTER TURNER — AUG 27 2017]"></video>
-  <video id="ins-03-abbott" class="gr" src="media/scenes/INS03-abbott.mp4" data-start="452.849" data-duration="6.633" data-track-index="1" data-volume="1" data-srt-label="[GOV. GREG ABBOTT — AUG 25 2017]"></video>
+  <video id="ins-03-abbott" class="gr" src="media/scenes/INS03-abbott.mp4" data-start="452.499" data-duration="6.633" data-track-index="1" data-volume="1" data-srt-label="[GOV. GREG ABBOTT — AUG 25 2017]"></video>
   <video id="ins-04-zetterstrom" src="media/scenes/INS04-zetterstrom.mp4" data-start="827.272" data-duration="10.0" data-track-index="1" data-volume="1" data-srt-label="[COL. LARS ZETTERSTROM — U.S. ARMY CORPS OF ENGINEERS]"></video>
 
   <!-- ============ CTA (must-keep, config channel.cta; starts 387.283 = 36.7% of 1055.5) ============ -->
@@ -86,7 +99,7 @@
   <div id="host-decision-fill" data-composition-id="g-decision-fill" data-composition-src="compositions/g-decision-fill.html" data-start="790.882" data-duration="36.39" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-verdict-up" data-composition-id="g-verdict-up" data-composition-src="compositions/g-verdict-up.html" data-start="915.532" data-duration="43.11" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-verdict-down" data-composition-id="g-verdict-down" data-composition-src="compositions/g-verdict-down.html" data-start="958.642" data-duration="40.15" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-outro" data-composition-id="g-outro" data-composition-src="compositions/g-outro.html" data-start="1053.57" data-duration="1.92" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-outro" data-composition-id="g-outro" data-composition-src="compositions/g-outro.html" data-start="1053.57" data-duration="6.93" data-track-index="2" data-width="1920" data-height="1080"></div>
 
   <!-- ============ PICTURE TRACK (track 1) — hand-placed; .gr = broadcast grade, PD/stock exempt ============ -->
   <!-- HOOK: 4 VIDEO slots, cuts land on the audio beats -->
@@ -103,7 +116,7 @@
   <!-- ACT 1 -->
   <video id="vx-palmthrash" class="gr" src="media/scenes/a1a-palm-thrash.mp4" data-start="90.35" data-duration="13.3" data-track-index="1" muted></video>
   <video id="vx-streetdebris" class="gr" src="media/scenes/a1b-street-debris.mp4" data-start="103.65" data-duration="8.8" data-track-index="1" muted></video>
-  <video id="vx-flattened" src="media/scenes/a1c-flattened-town.mp4" data-start="112.45" data-duration="8.97" data-track-index="1" muted></video>
+  <video id="vx-flattened" src="media/scenes/a1c-flattened-town.mp4" data-start="112.45" data-duration="9.32" data-track-index="1" muted></video>
   <!-- under g-rainfall (panel comp — footage carries the left 2/3) -->
   <video id="vx-u1rain" src="media/scenes/u1-rain-night.mp4" data-start="165.113" data-duration="13.0" data-track-index="1" muted></video>
   <video id="vx-u3reswater" class="gr" src="media/scenes/u3-reservoir-water.mp4" data-start="178.113" data-duration="12.8" data-track-index="1" muted></video>
@@ -128,7 +141,7 @@
   <video id="vx-rita2" class="gr" src="media/scenes/rt2-gridlock-horizon.mp4" data-start="417.716" data-duration="13.5" data-track-index="1" muted></video>
   <video id="vx-rita3" class="gr" src="media/scenes/rt3-heat-dashboard.mp4" data-start="431.216" data-duration="7.8" data-track-index="1" muted></video>
   <video id="vx-rita4" class="gr" src="media/scenes/rt4-heat-b.mp4" data-start="439.016" data-duration="8.05" data-track-index="1" muted></video>
-  <video id="vx-nightrain" class="gr" src="media/scenes/n1-night-rain-street.mp4" data-start="459.482" data-duration="9.5" data-track-index="1" muted></video>
+  <video id="vx-nightrain" class="gr" src="media/scenes/n1-night-rain-street.mp4" data-start="459.132" data-duration="9.85" data-track-index="1" muted></video>
   <video id="vx-floodlot" class="gr" src="media/scenes/n2-flooded-lot.mp4" data-start="468.982" data-duration="9.8" data-track-index="1" muted></video>
   <video id="vx-floodground" src="media/scenes/n4-flood-ground.mp4" data-start="478.782" data-duration="7.2" data-track-index="1" muted></video>
   <video id="vx-puntevac" src="media/scenes/n3-punt-evac.mp4" data-start="485.982" data-duration="6.72" data-track-index="1" muted></video>
@@ -144,10 +157,10 @@
   <video id="vx-calmstreet" src="media/scenes/h1-calm-street.mp4" data-start="561.812" data-duration="11.2" data-track-index="1" muted></video>
   <video id="vx-puntslow" src="media/scenes/h2-punt-slow.mp4" data-start="573.012" data-duration="6.96" data-track-index="1" muted></video>
   <!-- ACT 4 -->
-  <video id="vx-suburbdev" src="media/scenes/s1-suburb-dev.mp4" data-start="619.802" data-duration="9.2" data-track-index="1" muted></video>
-  <video id="vx-suburbair" class="gr" src="media/scenes/s3-suburb-air.mp4" data-start="629.002" data-duration="10.7" data-track-index="1" muted></video>
-  <video id="vx-soccer" src="media/scenes/s2-soccer-park.mp4" data-start="639.702" data-duration="11.2" data-track-index="1" muted></video>
-  <video id="vx-drydamaged" class="gr" src="media/scenes/s4-dry-damaged.mp4" data-start="650.902" data-duration="5.69" data-track-index="1" muted></video>
+  <video id="vx-suburbdev" src="media/scenes/s1-suburb-dev.mp4" data-start="619.802" data-duration="7.8" data-track-index="1" muted></video>
+  <video id="vx-suburbair" class="gr" src="media/scenes/s3-suburb-air.mp4" data-start="627.602" data-duration="10.7" data-track-index="1" muted></video>
+  <video id="vx-soccer" src="media/scenes/s2-soccer-park.mp4" data-start="638.302" data-duration="11.2" data-track-index="1" muted></video>
+  <video id="vx-drydamaged" class="gr" src="media/scenes/s4-dry-damaged.mp4" data-start="649.502" data-duration="7.09" data-track-index="1" muted></video>
   <video id="vx-quietbayou" class="gr" src="media/scenes/f1-quiet-bayou.mp4" data-start="656.592" data-duration="13.2" data-track-index="1" muted></video>
   <video id="vx-canalcalm" src="media/scenes/f2-canal-calm.mp4" data-start="669.792" data-duration="13.2" data-track-index="1" muted></video>
   <video id="vx-suburbmuted" src="media/scenes/f3-suburb-muted.mp4" data-start="682.992" data-duration="10.43" data-track-index="1" muted></video>
