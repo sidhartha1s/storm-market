@@ -402,11 +402,19 @@ def build_menu(rows):
     region_html = ""
     for region in order:
         items = sorted(groups[region], key=lambda r: r["state"].strip())
-        grid_items = "".join(
-            f'<li data-name="{esc(r["state"].strip().lower())}">'
-            f'<a href="{esc(slug_for(r["state"].strip()))}/">{esc(r["state"].strip())}</a></li>'
-            for r in items
-        )
+        grid_items = ""
+        for r in items:
+            state_r = r["state"].strip()
+            hazards_r = [r[f"hazard_{i}"].strip() for i in (1, 2, 3) if r[f"hazard_{i}"].strip()]
+            teaser = ", ".join(hazards_r)
+            grid_items += (
+                f'<li data-name="{esc(state_r.lower())}">'
+                f'<a href="{esc(slug_for(state_r))}/">'
+                f'<b>{esc(state_r)}</b>'
+                f'<span class="hz">{esc(teaser)}</span>'
+                f'<span class="go">Open the {esc(state_r)} guide &rarr;</span>'
+                f"</a></li>"
+            )
         region_html += f"""<div class="regionhead">{esc(region)}</div>
       <ul class="stategrid">
         {grid_items}
