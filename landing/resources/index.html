@@ -80,6 +80,7 @@ a{color:var(--tab2)}
   box-shadow:inset 3px 0 0 rgba(0,0,0,.25),0 4px 10px -4px rgba(0,0,0,.5);transition:transform .2s;position:relative}
 .tabs a small{display:block;font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.12em;opacity:.8}
 .tabs a:hover{transform:translateX(4px)}
+.tabs a:focus-visible{outline:3px solid var(--cta);outline-offset:2px}
 .tabs a[aria-current=true]{transform:translateX(8px);background:var(--paper);color:var(--ink);box-shadow:inset 3px 0 0 rgba(0,0,0,.15),0 8px 16px -6px rgba(0,0,0,.6)}
 .tabs a[aria-current=true] small{color:var(--cta);opacity:1}
 .tabs a[aria-current=true]::after{content:"";position:absolute;left:-8px;top:0;bottom:0;width:8px;background:var(--paper)}
@@ -136,8 +137,8 @@ figcaption{font-family:var(--hand);font-size:22px;color:var(--soft);margin-top:1
 .col.bad .col-head{color:var(--bad)}.col.good .col-head{color:var(--good)}
 .col ul{list-style:none;margin:0;padding:0}
 .col li{display:flex;justify-content:space-between;gap:14px;align-items:baseline;padding:10px 0;border-bottom:1px solid rgba(0,0,0,.12);font-size:18px;line-height:1.35}
-.col li em{font-style:normal;font-family:var(--mono);font-size:15px;color:var(--faded)}
-.col li b{font-family:var(--mono);font-weight:500;white-space:nowrap;font-size:17px}
+.col li em{font-style:normal;font-family:var(--mono);font-size:18px;color:var(--faded)}
+.col li b{font-family:var(--mono);font-weight:500;white-space:nowrap;font-size:18px}
 .col.bad li b{color:var(--bad)}.col.good li b{color:var(--good)}
 .col-total{display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;font-family:var(--display);font-weight:700;font-size:20px}
 .col-total b{font-family:var(--display);font-weight:900;font-size:40px;letter-spacing:-.02em;line-height:1}
