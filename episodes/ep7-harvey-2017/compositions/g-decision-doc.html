@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); overflow:hidden; }
+  .drift { position:absolute; inset:-40% 0; opacity:0.24; pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(120,150,180,0.14) 0 1px, transparent 1px 50px); }
+  .eyebrow { position:absolute; left:96px; top:76px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .hl { position:absolute; left:96px; top:112px; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; }
+  .sub { position:absolute; left:96px; top:196px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  /* the document: a paper card, court-record language revealed line by line */
+  .doc { position:absolute; left:50%; top:290px; transform:translateX(-50%); width:1180px; box-sizing:border-box;
+    background:linear-gradient(180deg, #e9e4d6, #ded7c4); border-radius:6px; padding:56px 72px;
+    box-shadow:0 40px 120px rgba(0,0,0,0.65); color:#2a2620; }
+  .doc .dochead { font-size:20px; letter-spacing:5px; font-weight:700; color:#6d6353; }
+  .doc .docline { font-family:Georgia,serif; font-size:33px; line-height:1.5; margin-top:26px; color:#2a2620; }
+  .doc .docline b { background:rgba(192,57,43,0.22); padding:0 6px; }
+  .stamp2009 { position:absolute; right:150px; top:640px; transform:rotate(-8deg); font-family:'Arial Black',Arial,sans-serif;
+    font-size:56px; color:#8e2020; border:6px solid #8e2020; padding:10px 28px; letter-spacing:3px; background:rgba(233,228,214,0.06); }
+  .stampsub { display:block; font-size:22px; letter-spacing:5px; margin-top:6px; color:#8e2020; }
+  .foot { position:absolute; left:96px; bottom:84px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#b8c6d4; }
+</style>
+<div id="root" data-composition-id="g-decision-doc" data-width="1920" data-height="1080">
+<div class="drift" id="g-dd-drift"></div>
+<div class="eyebrow" id="g-dd-eb">FROM THE COURT RECORD · 1940s PLANNING FILES</div>
+<div class="hl" id="g-dd-hl">THEY WROTE IT DOWN</div>
+<div class="sub" id="g-dd-sb">the trade-off, in the government's own paperwork</div>
+<div class="doc" id="g-dd-doc">
+  <div class="dochead">BUFFALO BAYOU AND TRIBUTARIES PROJECT · U.S. ARMY CORPS OF ENGINEERS</div>
+  <div class="docline" id="g-dd-l1">In a severe future storm, the government would be placed in the position of <b>having to flood the area within the reservoir</b>…</div>
+  <div class="docline" id="g-dd-l2">…<b>with the accompanying damages</b>, in order to <b>protect downstream improvements</b>.</div>
+  <div class="docline" id="g-dd-l3" style="font-size:26px; color:#6d6353;">— planning record quoted in the federal takings litigation; the land was never bought.</div>
+</div>
+<div class="stamp2009" id="g-dd-stamp">DSAC I<span class="stampsub">EXTREMELY HIGH RISK · 2009</span></div>
+<div class="foot" id="g-dd-ft">the gate repairs were still unfinished when Harvey stalled</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* a5-s2 words: paperwork@0.84 · quiet part plainly@1.86-2.56 · one day/severe storm@3.94-5.6 ·
+     have to flood the land@7.2-8.02 · accompanying damages@10.2-10.66 · protect the city downstream@12.16-13.04 ·
+     sentence sat in the record@14.86-15.9 · 2009@20.48 · most dangerous@24.72-24.92 ·
+     extremely high risk@27.2-27.76 · immediate action/failure@29.2-30.82 · unfinished@33.46 */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-dd-";
+  tl.set([P+"l1",P+"l2",P+"l3",P+"stamp",P+"ft"], {autoAlpha:0}, 0);
+  tl.fromTo(P+"drift", {y:-100}, {y:100, duration:35.9, ease:"none"}, 0);   // continuous
+  tl.fromTo(P+"eb", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.3);
+  tl.fromTo(P+"hl", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.8);   // "paperwork"
+  tl.fromTo(P+"sb", {autoAlpha:0, x:-24}, {autoAlpha:1, x:0, duration:0.5}, 1.9);                      // "the quiet part"
+  /* paper slides up ON "One day" @3.94; slow continuous settle across its life */
+  tl.fromTo(P+"doc", {autoAlpha:0, y:70}, {autoAlpha:1, y:0, duration:0.8, ease:"power3.out"}, 3.9);
+  tl.to(P+"doc", {y:-16, duration:26, ease:"none"}, 5.0);
+  /* record lines land ON their spoken phrases */
+  tl.fromTo(P+"l1", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.55}, 6.4);   // "the government would have to flood"
+  tl.fromTo(P+"l2", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.55}, 10.1);  // "accompanying damages"
+  tl.fromTo(P+"l3", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.5}, 14.8);   // "that sentence sat in the record"
+  /* 2009 risk stamp slams ON "extremely high risk" @27.2 */
+  tl.fromTo(P+"stamp", {scale:2.4, autoAlpha:0, rotation:-8}, {scale:1, autoAlpha:1, rotation:-8, duration:0.4, ease:"power4.in"}, 27.1);
+  /* footer ON "still unfinished" @33.2 */
+  tl.fromTo(P+"ft", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.5}, 33.2);
+  /* exit: paper drops away, text slides right, on the final 0.6s */
+  tl.to(P+"doc", {y:120, autoAlpha:0, duration:0.6, ease:"power3.in"}, 35.3);
+  tl.to([P+"hl",P+"sb",P+"eb",P+"stamp",P+"ft"], {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 35.3);
+  window.__timelines["g-decision-doc"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
