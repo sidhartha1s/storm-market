@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); overflow:hidden; }
+  .drift { position:absolute; inset:-40% 0; opacity:0.24; pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(120,150,180,0.14) 0 1px, transparent 1px 50px); }
+  .eyebrow { position:absolute; left:96px; top:76px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .hl { position:absolute; left:96px; top:112px; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; }
+  .sub { position:absolute; left:96px; top:196px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  .case { position:absolute; left:50%; top:300px; transform:translateX(-50%); width:1240px; box-sizing:border-box;
+    background:rgba(10,16,24,0.66); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; padding:52px 68px; }
+  .case .ch { font-size:20px; letter-spacing:5px; color:#93a3b2; font-weight:700; }
+  .case .cn { font-family:Georgia,serif; font-style:italic; font-size:34px; color:#f2f5f8; margin-top:14px; }
+  .case .rulel { font-family:'Arial Black',Arial,sans-serif; font-size:48px; color:#e74c3c; margin-top:34px; }
+  .case .ruleq { font-family:Georgia,serif; font-style:italic; font-size:30px; color:#e8edf2; margin-top:20px; line-height:1.45; }
+  .case .aff { font-size:24px; letter-spacing:3px; color:#e8c56a; font-weight:700; margin-top:30px; }
+  .foot { position:absolute; left:0; right:0; bottom:96px; text-align:center; }
+  .foot .w { display:inline-block; font-family:'Arial Black',Arial,sans-serif; font-size:56px; color:#f2f5f8; margin:0 30px; }
+</style>
+<div id="root" data-composition-id="g-verdict-up" data-width="1920" data-height="1080">
+<div class="drift" id="g-vu-drift"></div>
+<div class="eyebrow" id="g-vu-eb">U.S. COURT OF FEDERAL CLAIMS · THE UPSTREAM CASE</div>
+<div class="hl" id="g-vu-hl">THE FAMILIES SUED</div>
+<div class="sub" id="g-vu-sb">not for the hurricane — for the trade-offs</div>
+<div class="case" id="g-vu-case">
+  <div class="ch">IN RE: UPSTREAM ADDICKS &amp; BARKER FLOOD-CONTROL RESERVOIRS · 2019</div>
+  <div class="cn" id="g-vu-cn">Fifth Amendment — private property shall not be taken for public use, without just compensation</div>
+  <div class="rulel" id="g-vu-rule">LIABLE · A TAKING</div>
+  <div class="ruleq" id="g-vu-q">not a disaster — a taking of private property, and the government must pay for what it takes</div>
+  <div class="aff" id="g-vu-aff">AFFIRMED ON APPEAL · FEDERAL CIRCUIT · DECEMBER 2025</div>
+</div>
+<div class="foot" id="g-vu-ft"><span class="w" id="g-vu-w1">PERMANENT.</span><span class="w" id="g-vu-w2" style="color:#e74c3c">DESIGNED.</span></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* a6-s1 words: families sued@0.44-0.86 · not for the hurricane@2.36-2.94 · trade-offs@4.46-4.76 ·
+     2019@6.0 · not a disaster@19.18-19.54 · taking of private property@21.34-22.3 ·
+     Fifth Amendment@23.74-23.9 · must pay@25.26-25.6 · appealed@28.18 · December 2025@29.68-30.04 ·
+     affirmed@32.86 · inevitably happen again@37.36-38.38 · permanent@39.84 · designed@41.54 */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-vu-";
+  tl.set([P+"case",P+"rule",P+"q",P+"aff",P+"ft",P+"w1",P+"w2"], {autoAlpha:0}, 0);
+  tl.fromTo(P+"drift", {y:-100}, {y:100, duration:43.1, ease:"none"}, 0);   // continuous
+  tl.fromTo(P+"hl", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.4);   // "the families sued"
+  tl.fromTo(P+"sb", {autoAlpha:0, x:-24}, {autoAlpha:1, x:0, duration:0.5}, 2.3);                      // "not for the hurricane"
+  tl.fromTo(P+"eb", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 5.8);   // "In 2019, a federal judge"
+  /* case card ON "2019" @6.0 */
+  tl.fromTo(P+"case", {autoAlpha:0, y:50}, {autoAlpha:1, y:0, duration:0.7, ease:"power3.out"}, 6.2);
+  tl.to(P+"case", {y:-12, duration:32, ease:"none"}, 7.2);   // slow settle, keeps life
+  /* ruling stamp ON "It is a taking" @21.34 */
+  tl.fromTo(P+"rule", {autoAlpha:0, scale:2.2}, {autoAlpha:1, scale:1, duration:0.4, ease:"power4.in"}, 21.2);
+  tl.fromTo(P+"q", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.55}, 23.6);   // "Fifth Amendment... must pay"
+  /* affirmance ON "December 2025 ... affirmed" @29.68-33.24 */
+  tl.fromTo(P+"aff", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.5}, 32.6);
+  /* the two hammer words ON "permanent" @39.84 and "designed" @41.54 */
+  tl.set(P+"ft", {autoAlpha:1}, 39.5);
+  tl.fromTo(P+"w1", {autoAlpha:0, scale:1.6}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 39.8);
+  tl.fromTo(P+"w2", {autoAlpha:0, scale:1.6}, {autoAlpha:1, scale:1, duration:0.35, ease:"power4.in"}, 41.5);
+  /* exit on the final 0.6s */
+  tl.to([P+"case",P+"hl",P+"sb",P+"eb",P+"ft"], {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 42.5);
+  window.__timelines["g-verdict-up"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
