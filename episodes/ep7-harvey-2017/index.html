@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>The Real Villains of Hurricane Harvey — The Warning Hour Ep. 7</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Georgia, 'Times New Roman', serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070c; }
+    video, .still-wrap { position: absolute; inset: 0; }
+    video { width: 100%; height: 100%; object-fit: cover; }
+    .still-wrap { overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    /* ---- glasscard: THE one treatment for text over footage (ep6 device) ---- */
+    .glasscard { background: rgba(10,16,24,0.55); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+      border: 1px solid rgba(255,255,255,0.14); border-radius: 28px; padding: 40px 56px; box-sizing: border-box;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
+    .quotecard { position: absolute; left: 260px; right: 260px; bottom: 150px; z-index: 6; text-align: center; }
+    .quotecard.glasscard { box-shadow: none; }
+    .quotecard .q { display: table; margin: 0 auto; font-family: Georgia, serif; font-style: italic; font-size: 42px; color: #f2f5f8; line-height: 1.35; text-shadow: 0 2px 18px rgba(0,0,0,0.9); }
+    .quotecard .attr { display: table; margin: 14px auto 0; font-family: Arial, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 3px; color: #d8a13a; }
+    /* ---- Abril popfig (red figure/date popups; amber variant for money/figures) ---- */
+    @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+    .popfig { position: absolute; left: 0; right: 0; top: 38%; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; }
+    .popfig .pf-big { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 150px; color: #d0121f; letter-spacing: 0.04em;
+      text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+    .popfig .pf-sub { display: block; margin-top: 10px; font-family: Arial, sans-serif; font-weight: 700; font-size: 32px; color: #e8e3d8;
+      letter-spacing: 0.42em; text-shadow: 0 0 14px rgba(0,0,0,0.95), 0 3px 10px #000; }
+    .popfig-white .pf-big { color: #f2f5f8; text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(40,60,80,0.6), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+    .popfig-amber .pf-big { color: #d8a13a; text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(90,60,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+    #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.11; mix-blend-mode: overlay; }
+    .credit { position: absolute; right: 42px; bottom: 34px; z-index: 7; font-family: Arial, sans-serif; font-weight: 700;
+      font-size: 17px; letter-spacing: 2px; color: rgba(220,228,236,0.55); text-shadow: 0 1px 6px #000; }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="ep7-harvey2017" data-start="0" data-width="1920" data-height="1080" data-duration="1055.2" data-fps="30">
+
+  <!-- ============================== NARRATION (track 0, nx-* convention for build_srt) ============================== -->
+  <audio id="nx-h1s1" src="audio/h1-s1.wav" data-start="0" data-duration="21.88" data-volume="1"></audio>
+  <audio id="nx-i1s1" src="audio/i1-s1.wav" data-start="22.23" data-duration="25.28" data-volume="1"></audio>
+  <audio id="nx-i1s2" src="audio/i1-s2.wav" data-start="47.86" data-duration="19.56" data-volume="1"></audio>
+  <audio id="nx-i1s3" src="audio/i1-s3.wav" data-start="67.77" data-duration="21.88" data-volume="1"></audio>
+  <audio id="nx-a1s1" src="audio/a1-s1.wav" data-start="90.35" data-duration="30.72" data-volume="1"></audio>
+  <audio id="nx-a1s3" src="audio/a1-s3.wav" data-start="129.77" data-duration="33.76" data-volume="1"></audio>
+  <audio id="nx-a1s4" src="audio/a1-s4.wav" data-start="163.88" data-duration="37.96" data-volume="1"></audio>
+  <audio id="nx-a1s5" src="audio/a1-s5.wav" data-start="202.19" data-duration="27.12" data-volume="1"></audio>
+  <audio id="nx-a1s6" src="audio/a1-s6.wav" data-start="229.66" data-duration="28.28" data-volume="1"></audio>
+  <audio id="nx-a2s1" src="audio/a2-s1.wav" data-start="258.64" data-duration="36.08" data-volume="1"></audio>
+  <audio id="nx-a2s2" src="audio/a2-s2.wav" data-start="295.07" data-duration="30.20" data-volume="1"></audio>
+  <audio id="nx-a2s3" src="audio/a2-s3.wav" data-start="325.62" data-duration="32.20" data-volume="1"></audio>
+  <audio id="nx-a2s4" src="audio/a2-s4.wav" data-start="358.17" data-duration="26.88" data-volume="1"></audio>
+  <audio id="nx-a3s1" src="audio/a3-s1.wav" data-start="402.68" data-duration="42.80" data-volume="1"></audio>
+  <audio id="nx-a3s4" src="audio/a3-s4.wav" data-start="459.53" data-duration="32.52" data-volume="1"></audio>
+  <audio id="nx-a3s5" src="audio/a3-s5.wav" data-start="492.40" data-duration="32.64" data-volume="1"></audio>
+  <audio id="nx-a3s6" src="audio/a3-s6.wav" data-start="525.39" data-duration="36.12" data-volume="1"></audio>
+  <audio id="nx-a3s7" src="audio/a3-s7.wav" data-start="564.51" data-duration="15.16" data-volume="1"></audio>
+  <audio id="nx-a4s1" src="audio/a4-s1.wav" data-start="580.47" data-duration="38.68" data-volume="1"></audio>
+  <audio id="nx-a4s2" src="audio/a4-s2.wav" data-start="619.50" data-duration="36.44" data-volume="1"></audio>
+  <audio id="nx-a4s3" src="audio/a4-s3.wav" data-start="656.29" data-duration="36.48" data-volume="1"></audio>
+  <audio id="nx-a4s4" src="audio/a4-s4.wav" data-start="693.12" data-duration="23.32" data-volume="1"></audio>
+  <audio id="nx-a5s1" src="audio/a5-s1.wav" data-start="717.24" data-duration="37.20" data-volume="1"></audio>
+  <audio id="nx-a5s2" src="audio/a5-s2.wav" data-start="754.79" data-duration="35.44" data-volume="1"></audio>
+  <audio id="nx-a5s3" src="audio/a5-s3.wav" data-start="790.58" data-duration="36.04" data-volume="1"></audio>
+  <audio id="nx-a5s5" src="audio/a5-s5.wav" data-start="837.32" data-duration="35.16" data-volume="1"></audio>
+  <audio id="nx-a5s6" src="audio/a5-s6.wav" data-start="872.83" data-duration="38.00" data-volume="1"></audio>
+  <audio id="nx-a6s1" src="audio/a6-s1.wav" data-start="915.23" data-duration="42.76" data-volume="1"></audio>
+  <audio id="nx-a6s2" src="audio/a6-s2.wav" data-start="958.34" data-duration="39.80" data-volume="1"></audio>
+  <audio id="nx-a6s3" src="audio/a6-s3.wav" data-start="998.49" data-duration="23.48" data-volume="1"></audio>
+  <audio id="nx-c1s1" src="audio/c1-s1.wav" data-start="1022.87" data-duration="32.32" data-volume="1"></audio>
+
+  <!-- ============================== INSERTS (audio-carrying; OWNER-GATED — wired after the batched approval; windows reserved) ==============================
+       INS-01 landfall broadcast pull  @121.42  ~8.0s   (act 1)
+       INS-02 Turner presser           @445.83  ~7.0s   (act 3)
+       INS-03 Abbott briefing          @453.18  ~6.0s   (act 3)
+       INS-04 Zetterstrom USACE presser@826.97  ~10.0s  (act 5)
+  -->
+
+  <!-- ============================== CTA (must-keep; config channel.cta; own audio; inside act-2 chapter) ============================== -->
+  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v5.mp4" data-start="386.05" data-duration="15.633" data-track-index="1" data-volume="1" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
+
+  <!-- ============================== GRAPHICS (track 2 hosts, word-synced comps) ============================== -->
+  <div id="host-roster" data-composition-id="g-roster" data-composition-src="compositions/g-roster.html" data-start="67.77" data-duration="21.88" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-stall" data-composition-id="g-stall" data-composition-src="compositions/g-stall.html" data-start="129.77" data-duration="34.11" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-rainfall" data-composition-id="g-rainfall" data-composition-src="compositions/g-rainfall.html" data-start="163.88" data-duration="38.31" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-watershed" data-composition-id="g-watershed" data-composition-src="compositions/g-watershed.html" data-start="295.07" data-duration="30.55" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-floodpool" data-composition-id="g-floodpool" data-composition-src="compositions/g-floodpool.html" data-start="580.47" data-duration="39.03" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-decision-doc" data-composition-id="g-decision-doc" data-composition-src="compositions/g-decision-doc.html" data-start="754.79" data-duration="35.79" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-decision-fill" data-composition-id="g-decision-fill" data-composition-src="compositions/g-decision-fill.html" data-start="790.58" data-duration="36.39" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-verdict-up" data-composition-id="g-verdict-up" data-composition-src="compositions/g-verdict-up.html" data-start="915.23" data-duration="43.11" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-verdict-down" data-composition-id="g-verdict-down" data-composition-src="compositions/g-verdict-down.html" data-start="958.34" data-duration="40.15" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- ============================== HOOK TEXT MATCH-CUTS (owner order: text lands ON the spoken word; h1 words.json) ============================== -->
+  <!-- HURRICANE HARVEY @0.84 · HOUSTON (red) @5.64 · THE UNITED STATES GOVERNMENT @11.78 · AUGUST 2017 @14.46 -->
+  <section class="clip" id="p-hk-harvey" data-start="0.84" data-duration="3.4" data-track-index="3">
+    <div class="popfig popfig-white" id="st-hk-harvey" style="top:30%"><span class="pf-big" style="font-size:110px">HURRICANE HARVEY</span></div>
+  </section>
+  <section class="clip" id="p-hk-houston" data-start="5.64" data-duration="2.9" data-track-index="3">
+    <div class="popfig" id="st-hk-houston"><span class="pf-big">HOUSTON</span></div>
+  </section>
+  <section class="clip" id="p-hk-gov" data-start="11.78" data-duration="2.5" data-track-index="3">
+    <div class="popfig popfig-white" id="st-hk-gov" style="top:34%"><span class="pf-big" style="font-size:96px">THE UNITED STATES GOVERNMENT</span></div>
+  </section>
+  <section class="clip" id="p-hk-aug" data-start="14.46" data-duration="4.2" data-track-index="3">
+    <div class="popfig" id="st-hk-aug"><span class="pf-big">AUGUST 2017</span></div>
+  </section>
+
+  <!-- ============================== BLACKOUTS + HOLD GAPS (owner duration table) ============================== -->
+  <section class="clip blackout" id="bo-intro-a1" data-start="89.65" data-duration="0.70" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-a1-a2"   data-start="257.94" data-duration="0.70" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-cta-in"  data-start="385.05" data-duration="1.00" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-cta-out" data-start="401.68" data-duration="1.00" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-a3-a4"   data-start="579.67" data-duration="0.80" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-a4-a5"   data-start="716.44" data-duration="0.80" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-a5-a6"   data-start="914.33" data-duration="0.90" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-a6-c1"   data-start="1021.97" data-duration="0.90" data-track-index="1"></section>
+
+  <!-- ============================== PICTURE TRACK (track 1) ==============================
+       Wired after clip selection from media/ (candidates + contact sheets). Every graphic
+       window above runs full-frame on track 2, so picture-track coverage is needed for:
+       hook 0-21.9 (4 VIDEO slots, S-1) · i1-s1/s2 (22.2-67.8) · a1-s1+INS-01 (90.3-129.8)
+       · a1-s5/s6 (202.2-257.9) · a2-s1 (258.6-295.1) · a2-s3/s4 (325.6-385.1) · act 3
+       (402.7-579.7 incl. holds) · a4-s2/s3/s4 (619.5-716.4) · a5-s1 (717.2-754.8) ·
+       INS-04+a5-s5/s6 (827.0-914.3) · a6-s3 (998.5-1022.0) · close (1022.9-1055.2). -->
+
+  <!-- grain layer (unified filmic look, JS-driven) -->
+  <canvas id="grain" width="960" height="540"></canvas>
+</div>
+<script src="grain.js"></script>
+<script>
+  /* Popfig in/out (device timing per ep6: punch in on the word, lift out) */
+  window.__timelines = window.__timelines || {};
+  const tl = gsap.timeline({ paused: true });
+  function pop(sel, at, out) {
+    tl.fromTo(sel, { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.in" }, at);
+    tl.to(sel, { autoAlpha: 0, y: -26, duration: 0.3, ease: "power2.in" }, out);
+  }
+  pop("#st-hk-harvey", 0.84, 3.94);
+  pop("#st-hk-houston", 5.64, 8.24);
+  pop("#st-hk-gov", 11.78, 13.98);
+  pop("#st-hk-aug", 14.46, 18.36);
+  window.__timelines["ep7-harvey2017"] = tl;
+</script>
+</body>
+</html>
