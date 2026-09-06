@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); overflow:hidden; }
+  .drift { position:absolute; inset:-40% 0; opacity:0.26; pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(120,150,180,0.15) 0 1px, transparent 1px 52px); }
+  .eyebrow { position:absolute; left:0; right:0; top:96px; text-align:center; font-size:22px; letter-spacing:8px; color:#93a3b2; font-weight:700; }
+  .hl { position:absolute; left:0; right:0; top:136px; text-align:center; font-family:'Arial Black',Arial,sans-serif; font-size:58px; color:#f2f5f8; }
+  .cards { position:absolute; left:120px; right:120px; top:300px; display:flex; gap:36px; }
+  .card { flex:1; height:520px; box-sizing:border-box; padding:44px 34px; border:1px solid rgba(255,255,255,0.12); border-radius:18px;
+    background:linear-gradient(180deg, rgba(14,20,28,0.92), rgba(8,12,17,0.96)); }
+  .card .no { font-family:'Courier New',monospace; font-size:84px; color:#e74c3c; font-weight:700; line-height:1; }
+  .card .nm { font-family:'Arial Black',Arial,sans-serif; font-size:34px; color:#f2f5f8; margin-top:26px; line-height:1.15; }
+  .card .ds { font-family:Georgia,serif; font-style:italic; font-size:24px; color:#d8a13a; margin-top:18px; line-height:1.35; }
+  .foot { position:absolute; left:0; right:0; bottom:110px; text-align:center; font-family:Georgia,serif; font-style:italic; font-size:27px; color:#b8c6d4; }
+</style>
+<div id="root" data-composition-id="g-roster" data-width="1920" data-height="1080">
+<div class="drift" id="g-roster-drift"></div>
+<div class="eyebrow" id="g-roster-eb">THE FLOOD HAD FOUR AUTHORS</div>
+<div class="hl" id="g-roster-hl">THE REAL VILLAINS</div>
+<div class="cards">
+  <div class="card" id="g-roster-c1"><div class="no">01</div><div class="nm">THE STORM THAT REFUSED TO MOVE</div><div class="ds">four days, parked</div></div>
+  <div class="card" id="g-roster-c2"><div class="no">02</div><div class="nm">THE CITY THAT PAVED ITS DEFENSES</div><div class="ds">concrete where the prairie was</div></div>
+  <div class="card" id="g-roster-c3"><div class="no">03</div><div class="nm">THE MAPS NOBODY WAS SHOWN</div><div class="ds">the homes were drawn inside the water</div></div>
+  <div class="card" id="g-roster-c4"><div class="no">04</div><div class="nm">THE DECISION IN THE DARK</div><div class="ds">the gates, opened on purpose</div></div>
+</div>
+<div class="foot" id="g-roster-ft">one of them is about to be found innocent</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* i1-s3 words: four authors@2.02-2.44 · storm refused to move@3.88-5.28 · paved over@7.04 ·
+     maps@9.96 / never shown@13.42-13.7 · decision@16.28 / quiet room@17.8-18.12 / on purpose@20.96 */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-roster-";
+  tl.set([P+"c1",P+"c2",P+"c3",P+"c4",P+"ft"], {autoAlpha:0}, 0);
+  tl.fromTo(P+"drift", {y:-100}, {y:100, duration:22.3, ease:"none"}, 0);            // continuous element
+  tl.fromTo(P+"eb", {autoAlpha:0, y:-18}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 1.9); // "four authors"
+  tl.fromTo(P+"hl", {autoAlpha:0, scale:1.14}, {autoAlpha:1, scale:1, duration:0.55, ease:"power3.out"}, 2.3);
+  /* each card lands ON its spoken phrase */
+  tl.fromTo(P+"c1", {autoAlpha:0, y:40}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 3.8);   // "a storm that refused to move"
+  tl.fromTo(P+"c2", {autoAlpha:0, y:40}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 6.9);   // "paved over its own defenses"
+  tl.fromTo(P+"c3", {autoAlpha:0, y:40}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 9.9);   // "a set of maps"
+  tl.fromTo(P+"c4", {autoAlpha:0, y:40}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 16.2);  // "a decision"
+  /* card 4 pulses ON "on purpose" @20.96 */
+  tl.fromTo(P+"c4", {borderColor:"rgba(255,255,255,0.12)"}, {borderColor:"rgba(231,76,60,0.85)", duration:0.5, ease:"power2.out"}, 20.9);
+  tl.fromTo(P+"ft", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.5}, 21.4);
+  /* slow settle drift on the card row keeps motion between reveals */
+  tl.fromTo(".cards", {y:12}, {y:-10, duration:20, ease:"none"}, 2.0);
+  /* exit: slide right, fully gone, on the final 0.6s */
+  tl.to([".cards",P+"hl",P+"eb",P+"ft"], {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 21.7);
+  window.__timelines["g-roster"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
