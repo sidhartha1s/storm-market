@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); overflow:hidden; }
+  /* real map plate of west Houston (media/maps/, PD — plate worker); band-cropped like the ep3 plate */
+  .plateband { position:absolute; inset:0; overflow:hidden; }
+  .plate { position:absolute; left:0; top:-120px; width:1920px;
+    opacity:0.72; filter:grayscale(0.30) brightness(0.72) contrast(1.08); }
+  .platefade { position:absolute; inset:0; pointer-events:none; background:
+    linear-gradient(180deg, rgba(4,7,10,0.95) 0%, rgba(4,7,10,0) 18%, rgba(4,7,10,0) 82%, rgba(4,7,10,0.95) 100%); }
+  .platevig { position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(ellipse at 42% 55%, rgba(4,7,10,0) 42%, rgba(4,7,10,0.78) 97%); }
+  .eyebrow { position:absolute; left:96px; top:76px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .hl { position:absolute; left:96px; top:112px; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; }
+  .sub { position:absolute; left:96px; top:196px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  .maplab { font-family:Arial,sans-serif; font-weight:700; font-size:24px; fill:#e8eef4; letter-spacing:2px; }
+  .poollab { font-family:Arial,sans-serif; font-weight:700; font-size:26px; fill:#7fb2e5; letter-spacing:3px; }
+  .rdg { position:absolute; right:96px; top:88px; text-align:right; }
+  .rdgnum { font-family:'Courier New',monospace; font-size:84px; color:#e74c3c; font-weight:700; line-height:1; }
+  .rdglab { font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; margin-top:6px; }
+  .foot { position:absolute; left:96px; bottom:84px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; }
+</style>
+<div id="root" data-composition-id="g-floodpool" data-width="1920" data-height="1080">
+<div class="plateband"><img class="plate" id="g-fp-plate" src="media/maps/floodpool-plate.png" alt=""><div class="platefade"></div><div class="platevig"></div></div>
+<svg id="g-fp-svg" viewBox="0 0 1920 1080" style="position:absolute;inset:0">
+  <defs>
+    <filter id="fpglow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <!-- the two dams (dam line arcs) + designed flood-pool boundaries; geometry re-anchored to the
+       real plate's landmarks when the plate lands (ep3 map-route-fit method: anchor on measurable
+       features, fit on the boundary) -->
+  <path id="g-fp-damA" d="M 690 330 L 980 350" stroke="#93a3b2" stroke-width="9" stroke-linecap="round" opacity="0"/>
+  <text id="g-fp-damAlab" x="840" y="312" text-anchor="middle" class="maplab" opacity="0">ADDICKS DAM</text>
+  <path id="g-fp-damB" d="M 640 700 L 920 720" stroke="#93a3b2" stroke-width="9" stroke-linecap="round" opacity="0"/>
+  <text id="g-fp-damBlab" x="790" y="770" text-anchor="middle" class="maplab" opacity="0">BARKER DAM</text>
+  <!-- flood pool boundaries draw themselves (stroke trace) -->
+  <path id="g-fp-poolA" d="M 690 330 C 520 300 380 360 350 470 C 330 560 430 620 560 600 C 680 585 760 500 980 350 Z"
+        fill="rgba(90,140,190,0.16)" stroke="#7fb2e5" stroke-width="5" stroke-dasharray="1780" stroke-dashoffset="1780"/>
+  <path id="g-fp-poolB" d="M 640 700 C 470 680 330 740 320 850 C 315 940 440 990 580 960 C 700 935 780 830 920 720 Z"
+        fill="rgba(90,140,190,0.16)" stroke="#7fb2e5" stroke-width="5" stroke-dasharray="1720" stroke-dashoffset="1720"/>
+  <text id="g-fp-poolAlab" x="470" y="455" class="poollab" opacity="0">THE FLOOD POOL</text>
+  <text id="g-fp-poolBlab" x="450" y="850" class="poollab" opacity="0">THE FLOOD POOL</text>
+  <!-- subdivision footprints INSIDE the pool lines: small home clusters, revealed one by one -->
+  <g id="g-fp-homes" filter="url(#fpglow)">
+    <g id="g-fp-hg1" opacity="0"><rect x="470" y="420" width="16" height="12" fill="#e8c56a"/><rect x="492" y="422" width="16" height="12" fill="#e8c56a"/><rect x="514" y="418" width="16" height="12" fill="#e8c56a"/><rect x="480" y="440" width="16" height="12" fill="#e8c56a"/><rect x="504" y="442" width="16" height="12" fill="#e8c56a"/></g>
+    <g id="g-fp-hg2" opacity="0"><rect x="560" y="500" width="16" height="12" fill="#e8c56a"/><rect x="582" y="502" width="16" height="12" fill="#e8c56a"/><rect x="604" y="498" width="16" height="12" fill="#e8c56a"/><rect x="570" y="520" width="16" height="12" fill="#e8c56a"/><rect x="594" y="522" width="16" height="12" fill="#e8c56a"/><rect x="618" y="518" width="16" height="12" fill="#e8c56a"/></g>
+    <g id="g-fp-hg3" opacity="0"><rect x="420" y="540" width="16" height="12" fill="#e8c56a"/><rect x="442" y="542" width="16" height="12" fill="#e8c56a"/><rect x="464" y="538" width="16" height="12" fill="#e8c56a"/></g>
+    <g id="g-fp-hg4" opacity="0"><rect x="450" y="790" width="16" height="12" fill="#e8c56a"/><rect x="472" y="792" width="16" height="12" fill="#e8c56a"/><rect x="494" y="788" width="16" height="12" fill="#e8c56a"/><rect x="460" y="810" width="16" height="12" fill="#e8c56a"/><rect x="484" y="812" width="16" height="12" fill="#e8c56a"/></g>
+    <g id="g-fp-hg5" opacity="0"><rect x="560" y="870" width="16" height="12" fill="#e8c56a"/><rect x="582" y="872" width="16" height="12" fill="#e8c56a"/><rect x="604" y="868" width="16" height="12" fill="#e8c56a"/><rect x="572" y="890" width="16" height="12" fill="#e8c56a"/></g>
+  </g>
+  <text id="g-fp-inside" x="640" y="640" text-anchor="middle" class="maplab" fill="#e8c56a" opacity="0" font-size="28">BUILT INSIDE THE LINES</text>
+  <!-- downtown, the thing being protected -->
+  <circle id="g-fp-dt" cx="1560" cy="560" r="0" fill="#93a3b2"/>
+  <text id="g-fp-dtlab" x="1560" y="522" text-anchor="middle" class="maplab" opacity="0">DOWNTOWN HOUSTON</text>
+  <path id="g-fp-bayou" d="M 980 350 C 1120 430 1280 500 1520 556" fill="none" stroke="#5a768f" stroke-width="5" stroke-dasharray="640" stroke-dashoffset="640" opacity="0.9"/>
+  <text id="g-fp-bayoulab" x="1240" y="430" class="maplab" opacity="0" font-style="italic" fill="#7fb2e5">BUFFALO BAYOU</text>
+</svg>
+<div class="eyebrow" id="g-fp-eb">U.S. ARMY CORPS OF ENGINEERS · DESIGNED INUNDATION</div>
+<div class="hl" id="g-fp-hl">THE LINES ON THE MAP</div>
+<div class="sub" id="g-fp-sb">the land the water is designed to cover</div>
+<div class="rdg" id="g-fp-rdg"><div class="rdgnum">~<span id="g-fp-homesnum">0</span></div><div class="rdglab">HOMES BUILT INSIDE THE FLOOD POOLS</div></div>
+<div class="foot" id="g-fp-ft">dry almost all the time — soccer fields, hiking trails, subdivisions</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* a4-s1 words: Addicks and Barker@3.88-4.76 · dry almost all the time@11.4-12.74 ·
+     soccer fields/trails@14.42-15.72 · government's own maps@17.36-18.06 · line around each one@18.96-19.8 ·
+     Flood Pool@20.6-20.82 · designed to cover@23.0-23.6 · by 2017@26.38-27.24 · 14,000@29.12-29.68 ·
+     built inside those lines@31.08-32.04 · subdivisions@33.28 · inside the pool@37.08-37.74 */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-fp-";
+  tl.set([P+"rdg",P+"ft"], {autoAlpha:0}, 0);
+  /* continuous: slow plate push the whole comp */
+  tl.fromTo(P+"plate", {scale:1.0}, {scale:1.07, duration:39.0, ease:"none", transformOrigin:"40% 55%"}, 0);
+  tl.fromTo(P+"eb", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.3);
+  tl.fromTo(P+"hl", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.6);
+  tl.fromTo(P+"sb", {autoAlpha:0, x:-24}, {autoAlpha:1, x:0, duration:0.5}, 0.9);
+  /* dams ON "Addicks and Barker" @3.88 */
+  tl.fromTo(P+"damA", {opacity:0}, {opacity:1, duration:0.5}, 3.8);
+  tl.fromTo(P+"damAlab", {opacity:0}, {opacity:1, duration:0.4}, 4.0);
+  tl.fromTo(P+"damB", {opacity:0}, {opacity:1, duration:0.5}, 4.5);
+  tl.fromTo(P+"damBlab", {opacity:0}, {opacity:1, duration:0.4}, 4.7);
+  /* downtown + bayou ON "hold back two reservoirs" @9.48 (the protected thing) */
+  tl.to(P+"bayou", {strokeDashoffset:0, duration:1.6, ease:"power2.inOut"}, 9.4);
+  tl.fromTo(P+"bayoulab", {opacity:0}, {opacity:0.85, duration:0.5}, 10.2);
+  tl.fromTo(P+"dt", {attr:{r:0}}, {attr:{r:12}, duration:0.4, ease:"back.out(2)"}, 10.6);
+  tl.fromTo(P+"dtlab", {opacity:0}, {opacity:1, duration:0.4}, 10.8);
+  /* footer ON "dry enough for soccer fields" @13.62 */
+  tl.fromTo(P+"ft", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.5}, 13.6);
+  /* pool boundaries trace ON "a line around each one" @18.96; labels ON "Flood Pool" @20.6 */
+  tl.to(P+"poolA", {strokeDashoffset:0, duration:2.6, ease:"power2.inOut"}, 18.9);
+  tl.to(P+"poolB", {strokeDashoffset:0, duration:2.6, ease:"power2.inOut"}, 19.5);
+  tl.fromTo(P+"poolAlab", {opacity:0}, {opacity:1, duration:0.5}, 20.6);
+  tl.fromTo(P+"poolBlab", {opacity:0}, {opacity:1, duration:0.5}, 21.0);
+  /* pools breathe (continuous through the back half) */
+  tl.fromTo([P+"poolA",P+"poolB"], {attr:{"fill-opacity":0.10}}, {attr:{"fill-opacity":0.26}, duration:2.6, yoyo:true, repeat:6, ease:"sine.inOut"}, 21.4);
+  /* homes counter ON "by 2017, roughly 14,000" @26.38-29.68 */
+  const H={v:0};
+  tl.fromTo(P+"rdg", {autoAlpha:0, x:40}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 28.6);
+  tl.to(H, {v:14000, duration:2.6, ease:"power3.out", onUpdate:function(){
+    const e=document.getElementById("g-fp-homesnum"); if(e) e.textContent=Math.round(H.v).toLocaleString("en-US");
+  }}, 28.9);
+  /* home clusters appear inside the lines ON "built inside those lines" @31.08 → "subdivisions" @33.28 */
+  tl.fromTo(P+"hg1", {opacity:0}, {opacity:1, duration:0.35}, 31.0);
+  tl.fromTo(P+"hg2", {opacity:0}, {opacity:1, duration:0.35}, 31.5);
+  tl.fromTo(P+"hg3", {opacity:0}, {opacity:1, duration:0.35}, 32.0);
+  tl.fromTo(P+"hg4", {opacity:0}, {opacity:1, duration:0.35}, 33.3);
+  tl.fromTo(P+"hg5", {opacity:0}, {opacity:1, duration:0.35}, 33.9);
+  /* the landing line ON "inside the pool" @37.08 */
+  tl.fromTo(P+"inside", {opacity:0}, {opacity:1, duration:0.5}, 37.0);
+  /* exit on the final 0.6s */
+  tl.to([P+"hl",P+"sb",P+"eb",P+"rdg",P+"ft"], {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 38.4);
+  tl.to([P+"svg",P+"plate"], {autoAlpha:0, duration:0.5}, 38.5);
+  window.__timelines["g-floodpool"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
