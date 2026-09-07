@@ -19,13 +19,19 @@ Default for us: **A**, with B's data-feed holds (USGS / NOAA / NASA loops, label
 every 2–3 min as credibility anchors. Never AI-only: the AI-stills-only video (n_41Jzj3KPU) is the
 weakest of the set and audiences call out AI inserts by timestamp even at 1k subs.
 
-## Hook (0–45 s)
-1. Say the title's headline number or claim in the first two sentences (10–15 s), spoken and popped.
-2. Withhold the real angle one beat: surface story → "but that's not the real threat" → thesis.
+## Structure (owner rule 2026-09-08)
+HOOK **3–10 s** (one present-tense sentence paying off the title, spoken + red popfig) → INTRO to
+~1:10 (stakes numbers, open loops, promise) → CHAPTERS → PAYOFF → WARM CLOSE → subscribe.
+Size every section in words before TTS at the delivered pace (~148 wpm ≈ 2.47 words/s with
+atempo 1.15): 8:30 ≈ 1,260 words, 9:30 ≈ 1,410, 12:00 ≈ 1,780. Table goes in packaging.md.
+
+## Hook + intro (0–1:10)
+1. The hook sentence says the title's headline number or claim (3–10 s), spoken and popped.
+2. Intro withholds the real angle one beat: surface story → "but that's not the real threat" → thesis + open loop.
 3. Best carry-over pattern (3r5HgsfWtRQ, 129× subs): the title's odd claim IS the hook's literal
-   thesis, resolved with a real precedent (date + death toll) by 45 s.
+   thesis, resolved with a real precedent (date + death toll) inside the intro.
 4. Weakest: a title that names no subject (YHjdguvoksw). Always name the hazard.
-5. Thumbnail phrase (≤4 words, TOP of frame) is spoken aloud inside the hook.
+5. Thumbnail phrase (≤4 words, TOP of frame) is spoken aloud inside the intro.
 
 ## Body
 - 8–12 idea blocks of 45–75 s; each ends on a connective (but / and / however) into the next.
@@ -36,7 +42,7 @@ weakest of the set and audiences call out AI inserts by timestamp even at 1k sub
 - Real-clip rehook every 45–60 s (channel rule); stock / stills only fill between real clips.
 - Content-gap layer from comments: the whole niche's top comments ask "is this exaggerated?" and
   nobody answers on-screen. One explicit "what is NOT happening" beat per video.
-- Word budget at 150–160 delivered wpm: 8:30 → ~1,300 words; 12:00 → ~1,850 words.
+- Word budget at ~148 delivered wpm (2.47 w/s): 8:30 → 1,260 words; 9:30 → 1,410; 12:00 → 1,780.
 
 ## On-screen text layer
 - Numbers: red popfig (Abril, text-shadow, ≤3 words) synced to the spoken word, PLUS a bottom-left
