@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  BREAKING-LANE TEMPLATE: breaking-bug.html
+  WHAT IT IS: lower-third news bug — red kicker tab ("WARNING" / "BREAKING") + channel wordmark,
+  and a rotating headline strip that swaps text every ~12 s. FORMAT.md rule: real channel name only,
+  never an invented network. Mount on track 3 for a whole chapter (or the whole video); it is
+  transparent outside the strip. Sits bottom-left; the data chip (index.html .chip) sits above it,
+  so keep the strip at bottom:0 and ≤96 px tall.
+
+  PARAMS (EDIT-ME): kicker text, HEADLINES array (each ≤60 chars), ROTATE seconds.
+  COPY into episodes/<slug>/compositions/ and re-prefix ids per instance.
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; }
+  .strip { position:absolute; left:0; right:0; bottom:0; height:92px; display:flex; align-items:stretch;
+    background:linear-gradient(90deg, rgba(4,7,12,0.94) 0%, rgba(4,7,12,0.82) 70%, rgba(4,7,12,0.6) 100%);
+    border-top:2px solid #d0121f; }
+  .kick { display:flex; align-items:center; padding:0 34px; background:#d0121f; color:#fff;
+    font-family:'Arial Black',Arial,sans-serif; font-size:34px; letter-spacing:5px; }
+  .wm { display:flex; align-items:center; padding:0 26px; color:#d8a13a; font-family:Georgia,serif; font-style:italic; font-size:26px;
+    border-right:1px solid rgba(255,255,255,0.14); white-space:nowrap; }
+  .hl { display:flex; align-items:center; padding:0 30px; color:#f4f0e8; font-weight:700; font-size:34px; letter-spacing:1px; white-space:nowrap; overflow:hidden; }
+</style>
+<div id="root" data-composition-id="bug" data-width="1920" data-height="1080">
+  <div class="strip" id="bug-strip">
+    <div class="kick" id="bug-kick">WARNING<!-- EDIT-ME --></div>
+    <div class="wm">The Warning Hour</div>
+    <div class="hl" id="bug-hl"></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const HEADLINES = [ /* EDIT-ME */
+    "NOAA: 69% CHANCE OF THE STRONGEST EL NIÑO ON RECORD",
+    "CALIFORNIA IN THE 'ABOVE NORMAL' PRECIPITATION CATEGORY",
+    "PEAK EXPECTED OCTOBER THROUGH JANUARY",
+  ];
+  const ROTATE = 12; /* seconds per headline */
+  const tl = gsap.timeline({ paused: true });
+  const hl = document.getElementById("bug-hl");
+  tl.fromTo("#bug-strip", {y:96}, {y:0, duration:0.45, ease:"power3.out"}, 0);
+  /* deterministic swaps: every ROTATE s, slide the old line down, set text, slide the new line up */
+  const total = HEADLINES.length * 20; /* enough cycles for a 240 s host; unmount ends it */
+  for (let i = 0; i < total; i++) {
+    const at = 0.3 + i * ROTATE;
+    const text = HEADLINES[i % HEADLINES.length];
+    if (i > 0) tl.to(hl, {y:40, autoAlpha:0, duration:0.25, ease:"power2.in"}, at - 0.25);
+    tl.set(hl, {textContent:text}, at);
+    tl.fromTo(hl, {y:-40, autoAlpha:0}, {y:0, autoAlpha:1, duration:0.3, ease:"power2.out"}, at);
+  }
+  window.__timelines["bug"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
