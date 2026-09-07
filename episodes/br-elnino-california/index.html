@@ -37,6 +37,12 @@
       border: 1px solid rgba(255,255,255,0.14); border-radius: 28px; padding: 44px 60px; box-sizing: border-box; }
     .quotecard .q { font-family: Georgia, serif; font-style: italic; font-size: 50px; color: #f2f5f8; line-height: 1.3; }
     .quotecard .attr { margin-top: 18px; font-family: Arial, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 4px; color: #d8a13a; }
+    /* ---- lower-third news bug (inline; real channel name only) ---- */
+    .bugstrip { position: absolute; left: 0; right: 0; bottom: 0; height: 92px; display: flex; align-items: stretch; z-index: 5;
+      background: linear-gradient(90deg, rgba(4,7,12,0.94) 0%, rgba(4,7,12,0.82) 70%, rgba(4,7,12,0.6) 100%); border-top: 2px solid #d0121f; }
+    .bugstrip .bk { display: flex; align-items: center; padding: 0 34px; background: #d0121f; color: #fff; font-family: 'Arial Black', Arial, sans-serif; font-size: 34px; letter-spacing: 5px; }
+    .bugstrip .bw { display: flex; align-items: center; padding: 0 26px; color: #d8a13a; font-family: Georgia, serif; font-style: italic; font-size: 26px; border-right: 1px solid rgba(255,255,255,0.14); white-space: nowrap; }
+    .bugstrip .bh { display: flex; align-items: center; padding: 0 30px; color: #f4f0e8; font-weight: 700; font-size: 34px; letter-spacing: 1px; white-space: nowrap; overflow: hidden; }
     /* ---- film layer ---- */
     #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90; background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
     #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.10; mix-blend-mode: overlay; }
@@ -45,7 +51,7 @@
   </style>
 </head>
 <body>
-<div id="root" data-composition-id="br-elnino-california" data-start="0" data-width="1920" data-height="1080" data-duration="584.98" data-fps="30">
+<div id="root" data-composition-id="br-elnino-california" data-start="0" data-width="1920" data-height="1080" data-duration="583.0" data-fps="30">
 
   <!-- ============ NARRATION (16) — audio/timeline.json ============ -->
   <audio id="nx-h1s1" src="audio/h1-s1.wav" data-start="0" data-duration="9.28" data-volume="1"></audio>
@@ -73,32 +79,36 @@
   <!-- ============ MUSIC + BEDS (one tense bed under narration, ducked out for the CTA) ============ -->
   <audio id="sx-mus-a" src="media/score-act5-tension.mp3" data-bed="" data-start="0" data-duration="249.41" data-volume="0.2"></audio>
   <audio id="sx-mus-b" src="media/score-act3-urgent.mp3" data-bed="" data-start="266.51" data-duration="215.0" data-volume="0.18"></audio>
-  <audio id="sx-mus-c" src="media/score-act6-close.mp3" data-bed="" data-start="481.51" data-duration="103.47" data-volume="0.22"></audio>
+  <audio id="sx-mus-c" src="media/score-act6-close.mp3" data-bed="" data-start="481.51" data-duration="101.49" data-volume="0.22"></audio>
   <audio id="sx-rumble-hook" src="media/04_distant_storm_rumble.mp3" data-bed="" data-start="0" data-duration="69.5" data-volume="0.22"></audio>
-  <audio id="sx-rain-c3" src="media/rain-loop.mp3" data-bed="" data-start="185.51" data-duration="63.9" data-volume="0.14"></audio>
-  <audio id="sx-rain-c7" src="media/rain-loop.mp3" data-bed="" data-start="475.0" data-duration="25.0" data-volume="0.12"></audio>
+  <audio id="sx-rain-c3" src="media/rain-loop.mp3" data-bed="" data-start="185.51" data-duration="63.9" data-volume="0.32"></audio>
+  <audio id="sx-rain-c7" src="media/rain-loop.mp3" data-bed="" data-start="475.0" data-duration="25.0" data-volume="0.28"></audio>
 
   <!-- ============ CHAPTER CARDS (track-1 blackout under a track-2 card, 1.6 s each) ============ -->
   <section class="clip blackout" id="bo-c1" data-start="69.51" data-duration="1.75" data-track-index="1"></section>
-  <div id="host-chap1" data-composition-id="chap1" data-composition-src="compositions/g-chap1.html" data-start="69.51" data-duration="1.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-chap1" data-composition-id="chap1" data-composition-src="compositions/chap1.html" data-start="69.51" data-duration="1.6" data-track-index="2" data-width="1920" data-height="1080"></div>
   <section class="clip blackout" id="bo-c2" data-start="129.80" data-duration="1.75" data-track-index="1"></section>
-  <div id="host-chap2" data-composition-id="chap2" data-composition-src="compositions/g-chap2.html" data-start="129.80" data-duration="1.6" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <section class="clip blackout" id="bo-c3" data-start="183.76" data-duration="1.75" data-track-index="1"></section>
-  <div id="host-chap3" data-composition-id="chap3" data-composition-src="compositions/g-chap3.html" data-start="183.76" data-duration="1.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-chap2" data-composition-id="chap2" data-composition-src="compositions/chap2.html" data-start="129.80" data-duration="1.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <section class="clip blackout" id="bo-c3" data-start="183.3" data-duration="2.21" data-track-index="1"></section>
+  <div id="host-chap3" data-composition-id="chap3" data-composition-src="compositions/chap3.html" data-start="183.76" data-duration="1.6" data-track-index="2" data-width="1920" data-height="1080"></div>
   <section class="clip blackout" id="bo-c4" data-start="266.51" data-duration="1.75" data-track-index="1"></section>
-  <div id="host-chap4" data-composition-id="chap4" data-composition-src="compositions/g-chap4.html" data-start="266.51" data-duration="1.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-chap4" data-composition-id="chap4" data-composition-src="compositions/chap4.html" data-start="266.51" data-duration="1.6" data-track-index="2" data-width="1920" data-height="1080"></div>
   <section class="clip blackout" id="bo-c5" data-start="309.63" data-duration="1.75" data-track-index="1"></section>
-  <div id="host-chap5" data-composition-id="chap5" data-composition-src="compositions/g-chap5.html" data-start="309.63" data-duration="1.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-chap5" data-composition-id="chap5" data-composition-src="compositions/chap5.html" data-start="309.63" data-duration="1.6" data-track-index="2" data-width="1920" data-height="1080"></div>
   <section class="clip blackout" id="bo-c6" data-start="374.36" data-duration="1.75" data-track-index="1"></section>
-  <div id="host-chap6" data-composition-id="chap6" data-composition-src="compositions/g-chap6.html" data-start="374.36" data-duration="1.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-chap6" data-composition-id="chap6" data-composition-src="compositions/chap6.html" data-start="374.36" data-duration="1.6" data-track-index="2" data-width="1920" data-height="1080"></div>
   <section class="clip blackout" id="bo-c7" data-start="439.24" data-duration="1.75" data-track-index="1"></section>
-  <div id="host-chap7" data-composition-id="chap7" data-composition-src="compositions/g-chap7.html" data-start="439.24" data-duration="1.6" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <section class="clip blackout" id="bo-c8" data-start="500.08" data-duration="1.75" data-track-index="1"></section>
-  <div id="host-chap8" data-composition-id="chap8" data-composition-src="compositions/g-chap8.html" data-start="500.08" data-duration="1.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-chap7" data-composition-id="chap7" data-composition-src="compositions/chap7.html" data-start="439.24" data-duration="1.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <section class="clip blackout" id="bo-c8" data-start="499.78" data-duration="2.05" data-track-index="1"></section>
+  <div id="host-chap8" data-composition-id="chap8" data-composition-src="compositions/chap8.html" data-start="500.08" data-duration="1.6" data-track-index="2" data-width="1920" data-height="1080"></div>
 
   <!-- ============ BREAKING BUG (track 3, whole video except the CTA and the close) ============ -->
-  <div id="host-bug1" data-composition-id="bug1" data-composition-src="compositions/g-bug1.html" data-start="9.73" data-duration="239.68" data-track-index="3" data-width="1920" data-height="1080"></div>
-  <div id="host-bug2" data-composition-id="bug2" data-composition-src="compositions/g-bug2.html" data-start="268.26" data-duration="294.38" data-track-index="3" data-width="1920" data-height="1080"></div>
+  <section class="clip" id="bug-a" data-start="9.73" data-duration="239.68" data-track-index="3">
+    <div class="bugstrip" id="bugstrip-a"><div class="bk">WARNING</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-a"></div></div>
+  </section>
+  <section class="clip" id="bug-b" data-start="268.26" data-duration="294.38" data-track-index="3">
+    <div class="bugstrip" id="bugstrip-b"><div class="bk">WARNING</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-b"></div></div>
+  </section>
 
   <!-- ============ HOOK 0–9.28 — NOAA map, the number, California ============ -->
   <section class="clip still-wrap" id="c-hookmap" data-start="0" data-duration="4.6" data-track-index="1"><img id="kb-hookmap" src="media/stills/sst-anomaly-map.png" alt=""></section>
@@ -125,7 +135,7 @@
   <video id="vx-stock-dryres" src="media/stock/dry_reservoir_drought.mp4" data-start="44.91" data-duration="5.0" data-track-index="1" muted></video>
   <video id="vx-cbs15-wind" class="bc" src="media/bc/-yXw8HwIa8w-s12.mp4" data-start="49.91" data-duration="4.3" data-track-index="1" muted></video>
   <section class="clip still-wrap" id="c-shasta19" data-start="54.21" data-duration="4.9" data-track-index="1"><img id="kb-shasta19" src="media/stills/shasta-2019-low.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-map2" data-start="59.11" data-duration="4.9" data-track-index="1" data-callback="the question returns to the ocean map"><img id="kb-map2" src="media/stills/sst-anomaly-map.png" alt=""></section>
+  <video id="vx-cbs15-globes" class="bc" src="media/bc/-yXw8HwIa8w-s06.mp4" data-start="59.11" data-duration="4.9" data-track-index="1" muted></video>
   <video id="vx-stock-clouds" src="media/stock/storm_clouds.mp4" data-start="64.01" data-duration="5.5" data-track-index="1" muted></video>
   <section class="clip" id="p-pf-2016" data-start="42.5" data-duration="3.2" data-track-index="5"><div class="popfig popfig-amber" id="pf-2016"><span class="pf-big">2016</span><span class="pf-sub">THE ONE THAT NEVER CAME</span></div></section>
   <section class="clip" id="p-chip-which" data-start="59.3" data-duration="4.6" data-track-index="5"><div class="chip" id="chip-which">WHICH WINTER DOES CALIFORNIA GET?</div></section>
@@ -153,28 +163,28 @@
   <video id="vx-cbs15-snowstore" class="bc" src="media/bc/-yXw8HwIa8w-s02.mp4" data-start="137.05" data-duration="4.0" data-track-index="1" muted></video>
   <video id="vx-ar2017a" src="media/ar-loop-2017.mp4" data-start="141.05" data-duration="9.0" data-track-index="1" muted></video>
   <section class="clip" id="p-src-svs2" data-start="141.2" data-duration="8.6" data-track-index="4"><div class="srclab">NASA SVS · ATMOSPHERIC RIVER, CALIFORNIA 2017</div></section>
-  <section class="clip still-wrap contain-wrap" id="c-outlook-ond" data-start="150.05" data-duration="12.0" data-track-index="1"><img class="blurfill" src="media/stills/ond2026_precip_outlook.png" alt=""><img id="kb-outlook-ond" src="media/stills/ond2026_precip_outlook.png" alt=""></section>
+  <video id="vx-outlook-ond" src="media/ond2026_precip_outlook_hold.mp4" data-start="150.05" data-duration="12.0" data-track-index="1" muted></video>
   <section class="clip" id="p-src-outlook" data-start="150.2" data-duration="11.6" data-track-index="4"><div class="srclab">SOURCE: NOAA CPC · OCT–DEC 2026 PRECIPITATION OUTLOOK</div></section>
   <section class="clip" id="p-pf-south" data-start="154.6" data-duration="3.6" data-track-index="5"><div class="popfig" id="pf-south"><span class="pf-big">STORM TRACK</span><span class="pf-sub">SHIFTS SOUTH</span></div></section>
   <video id="vx-ktla-aerial" class="bc" src="media/bc/scKFW8Ik1OE-s05.mp4" data-start="162.05" data-duration="4.0" data-track-index="1" muted></video>
   <video id="vx-fox-road" class="bc" src="media/bc/x7_5n0Q9iMs-s04.mp4" data-start="166.05" data-duration="4.7" data-track-index="1" muted></video>
-  <video id="vx-cbs16-carflood" class="bc" src="media/bc/1ipFyV6rduE-s07.mp4" data-start="170.75" data-duration="4.0" data-track-index="1" muted></video>
+  <video id="vx-cbs16-carflood" class="bc" src="media/bc/1ipFyV6rduE-s07.mp4" data-start="170.75" data-duration="2.55" data-track-index="1" muted></video>
   <section class="clip" id="p-chip-seattle" data-start="173.3" data-duration="5.0" data-track-index="5"><div class="chip" id="chip-seattle">SEATTLE'S STORMS · LOS ANGELES' STREETS</div></section>
-  <video id="vx-cbs16-van" class="bc" src="media/bc/1ipFyV6rduE-s08.mp4" data-start="174.75" data-duration="4.0" data-track-index="1" muted></video>
-  <video id="vx-ap98-pacifica" class="bc" src="media/bc/CNnfVqBNTpY-s04.mp4" data-start="178.75" data-duration="5.01" data-track-index="1" muted></video>
+  <video id="vx-cbs16-van" class="bc" src="media/bc/1ipFyV6rduE-s08.mp4" data-start="173.3" data-duration="5.45" data-track-index="1" muted></video>
+  <video id="vx-ap98-pacifica" class="bc" src="media/bc/CNnfVqBNTpY-s04.mp4" data-start="178.75" data-duration="4.55" data-track-index="1" muted></video>
 
   <!-- ============ CH3 FEBRUARY 1998 185.51–248.96 ============ -->
   <section class="clip" id="p-pf-feb98" data-start="185.4" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-feb98"><span class="pf-big">FEB 1998</span></div></section>
   <video id="vx-cbs16-waves" class="bc" src="media/bc/1ipFyV6rduE-s02.mp4" data-start="185.51" data-duration="5.0" data-track-index="1" muted></video>
   <section class="clip still-wrap" id="c-fema1314" data-start="190.51" data-duration="4.5" data-track-index="1"><img id="kb-fema1314" src="media/stills/fema1314-1998.jpg" alt=""></section>
   <video id="vx-stock-waves2" src="media/stock/ocean_waves_road.mp4" data-start="195.01" data-duration="5.0" data-track-index="1" data-callback="the surge over the coastal road, second look" muted></video>
-  <video id="vx-cbs15-waves" class="bc" src="media/bc/-yXw8HwIa8w-s03.mp4" data-start="200.01" data-duration="4.5" data-track-index="1" muted></video>
-  <section class="clip still-wrap" id="c-fema1323" data-start="204.51" data-duration="4.5" data-track-index="1"><img id="kb-fema1323" src="media/stills/fema1323-1998.jpg" alt=""></section>
+  <video id="vx-cbs15-waves" class="bc" src="media/bc/-yXw8HwIa8w-s03.mp4" data-start="200.01" data-duration="3.62" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-fema1323" data-start="203.63" data-duration="5.38" data-track-index="1"><img id="kb-fema1323" src="media/stills/fema1323-1998.jpg" alt=""></section>
   <section class="clip" id="p-pf-6ft" data-start="206.4" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-6ft"><span class="pf-big">6 FT WAVES</span><span class="pf-sub">OVER THE EMBARCADERO</span></div></section>
-  <section class="clip still-wrap" id="c-yuba" data-start="209.01" data-duration="6.95" data-track-index="1"><img id="kb-yuba" src="media/stills/yuba-route49-flood.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-yuba" data-start="209.01" data-duration="6.0" data-track-index="1"><img id="kb-yuba" src="media/stills/yuba-route49-flood.jpg" alt=""></section>
   <section class="clip" id="p-pf-101" data-start="213.4" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-101"><span class="pf-big">US 101 · 4 FT</span><span class="pf-sub">UNDER WATER</span></div></section>
   <!-- c3-s2: the numbers -->
-  <video id="vx-stock-flood" src="media/stock/flooded_road.mp4" data-start="215.96" data-duration="5.0" data-track-index="1" muted></video>
+  <video id="vx-stock-flood" src="media/stock/flooded_road.mp4" data-start="215.01" data-duration="5.95" data-track-index="1" muted></video>
   <section class="clip" id="p-pf-17b" data-start="219.2" data-duration="2.4" data-track-index="5"><div class="popfig" id="pf-17b"><span class="pf-big">17 DEAD</span></div></section>
   <video id="vx-ktla-mudyard" class="bc" src="media/bc/scKFW8Ik1OE-s07.mp4" data-start="220.96" data-duration="5.0" data-track-index="1" muted></video>
   <section class="clip" id="p-pf-500m" data-start="221.7" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-500m"><span class="pf-big">$500M</span><span class="pf-sub">PROPERTY LOSS</span></div></section>
@@ -189,14 +199,14 @@
   <section class="clip still-wrap contain-wrap" id="c-noaa82" data-start="268.26" data-duration="5.7" data-track-index="1"><img class="blurfill" src="media/stills/noaa-1982-winter.jpg" alt=""><img id="kb-noaa82" src="media/stills/noaa-1982-winter.jpg" alt=""></section>
   <section class="clip" id="p-pf-8283" data-start="271.6" data-duration="3.2" data-track-index="5"><div class="popfig popfig-amber" id="pf-8283"><span class="pf-big">1982 – 83</span><span class="pf-sub">THE OTHER BENCHMARK</span></div></section>
   <section class="clip" id="p-src-noaa82" data-start="268.5" data-duration="5.3" data-track-index="4"><div class="srclab">SOURCE: NOAA · WINTER 1982–83 TEMPERATURE ANOMALY</div></section>
-  <video id="vx-cbs15-waves2" class="bc" src="media/bc/-yXw8HwIa8w-s03.mp4" data-start="273.96" data-duration="4.5" data-track-index="1" data-callback="the coast paid — same surf, the 1983 beat" muted></video>
-  <section class="clip still-wrap" id="c-fema1336b" data-start="278.46" data-duration="5.0" data-track-index="1" data-callback="beachfront homes off their foundations"><img id="kb-fema1336b" src="media/stills/fema1336-1998.jpg" alt=""></section>
+  <video id="vx-cbs15-waves2" class="bc" src="media/bc/-yXw8HwIa8w-s03.mp4" data-start="273.96" data-duration="3.62" data-track-index="1" data-callback="the coast paid — same surf, the 1983 beat" muted></video>
+  <section class="clip still-wrap" id="c-fema1336b" data-start="277.58" data-duration="5.88" data-track-index="1" data-callback="beachfront homes off their foundations"><img id="kb-fema1336b" src="media/stills/fema1336-1998.jpg" alt=""></section>
   <section class="clip" id="p-pf-piers" data-start="282.9" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-piers"><span class="pf-big">PIERS TORN APART</span></div></section>
   <video id="vx-ap98-waves2" class="bc" src="media/bc/CNnfVqBNTpY-s00.mp4" data-start="283.46" data-duration="4.3" data-track-index="1" data-callback="the surf that ate the shoreline" muted></video>
   <video id="vx-ktla-night" class="bc" src="media/bc/scKFW8Ik1OE-s04.mp4" data-start="287.76" data-duration="5.0" data-track-index="1" muted></video>
-  <section class="clip still-wrap" id="c-map3" data-start="292.76" data-duration="7.0" data-track-index="1" data-callback="an ocean that looked like this one"><img id="kb-map3" src="media/stills/sst-anomaly-map.png" alt=""></section>
+  <section class="clip still-wrap" id="c-map3" data-start="292.76" data-duration="6.0" data-track-index="1" data-callback="an ocean that looked like this one"><img id="kb-map3" src="media/stills/sst-anomaly-map.png" alt=""></section>
   <section class="clip" id="p-chip-15yrs" data-start="295.5" data-duration="4.0" data-track-index="5"><div class="chip" id="chip-15yrs">TWO WINTERS · 15 YEARS APART</div></section>
-  <section class="clip still-wrap" id="c-oro2016b" data-start="299.76" data-duration="4.5" data-track-index="1" data-callback="2015, the Pacific lit up again"><img id="kb-oro2016b" src="media/stills/oroville-2016-drought.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-oro2016b" data-start="298.76" data-duration="5.5" data-track-index="1" data-callback="2015, the Pacific lit up again"><img id="kb-oro2016b" src="media/stills/oroville-2016-drought.jpg" alt=""></section>
   <video id="vx-cbs16-globes" class="bc" src="media/bc/1ipFyV6rduE-s04.mp4" data-start="304.26" data-duration="5.37" data-track-index="1" muted></video>
 
   <!-- ============ CH5 THE ONE THAT NEVER CAME 311.38–373.91 ============ -->
@@ -211,8 +221,8 @@
   <section class="clip" id="p-pf-5th" data-start="336.1" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-5th"><span class="pf-big">5TH DRY YEAR</span><span class="pf-sub">SOUTHERN CALIFORNIA</span></div></section>
   <video id="vx-cbs16-precipmap" class="bc" src="media/bc/1ipFyV6rduE-s06.mp4" data-start="338.42" data-duration="3.97" data-track-index="1" muted></video>
   <!-- c5-s2: why -->
-  <video id="vx-cbs16-scientists" class="bc" src="media/bc/1ipFyV6rduE-s10.mp4" data-start="342.39" data-duration="5.0" data-track-index="1" muted></video>
-  <video id="vx-ar2017b" src="media/ar-loop-2017.mp4" data-start="347.39" data-duration="7.0" data-track-index="1" data-callback="the storms that should have landed here" muted></video>
+  <video id="vx-cbs16-scientists" class="bc" src="media/bc/1ipFyV6rduE-s10.mp4" data-start="342.39" data-duration="3.25" data-track-index="1" muted></video>
+  <video id="vx-ar2017b" src="media/ar-loop-2017.mp4" data-start="345.64" data-duration="8.75" data-track-index="1" data-callback="the storms that should have landed here" muted></video>
   <video id="vx-stock-rain2" src="media/stock/heavy_rain_street.mp4" data-start="354.39" data-duration="4.6" data-track-index="1" data-callback="record rain, the wrong state" muted></video>
   <section class="clip" id="p-chip-north" data-start="354.2" data-duration="4.6" data-track-index="5"><div class="chip" id="chip-north">STORMS PUSHED NORTH · RECORD RAIN IN THE NORTHWEST</div></section>
   <video id="vx-cbs15-scientist" class="bc" src="media/bc/-yXw8HwIa8w-s07.mp4" data-start="358.99" data-duration="5.5" data-track-index="1" muted></video>
@@ -227,29 +237,32 @@
   <section class="clip" id="p-pf-69c" data-start="386.2" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-69c"><span class="pf-big">69%</span><span class="pf-sub">TO BEAT THEM ALL</span></div></section>
   <video id="vx-ar2014b" src="media/ar-loop-2014.mp4" data-start="389.01" data-duration="8.0" data-track-index="1" data-callback="the jet stream forced south" muted></video>
   <section class="clip" id="p-chip-3deg" data-start="389.2" data-duration="6.0" data-track-index="5"><div class="chip" id="chip-3deg">A 3° ANOMALY FORCES THE JET STREAM SOUTH</div></section>
-  <section class="clip still-wrap contain-wrap" id="c-outlook-son" data-start="397.01" data-duration="13.0" data-track-index="1"><img class="blurfill" src="media/stills/son2026_precip_outlook.png" alt=""><img id="kb-outlook-son" src="media/stills/son2026_precip_outlook.png" alt=""></section>
+  <video id="vx-outlook-son" src="media/son2026_precip_outlook_hold.mp4" data-start="397.01" data-duration="13.0" data-track-index="1" muted></video>
   <section class="clip" id="p-src-outlook2" data-start="397.2" data-duration="12.6" data-track-index="4"><div class="srclab">SOURCE: NOAA CPC · SEP–NOV 2026 PRECIPITATION OUTLOOK</div></section>
   <section class="clip" id="p-pf-above" data-start="404.8" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-above"><span class="pf-big">ABOVE NORMAL</span><span class="pf-sub">NOAA WINTER OUTLOOK · CALIFORNIA</span></div></section>
   <section class="clip still-wrap contain-wrap" id="c-outlook-ond2" data-start="410.01" data-duration="6.0" data-track-index="1" data-callback="the outlook again, now for the south"><img class="blurfill" src="media/stills/ond2026_precip_outlook.png" alt=""><img id="kb-outlook-ond2" src="media/stills/ond2026_precip_outlook.png" alt=""></section>
-  <video id="vx-ktla-street" class="bc" src="media/bc/scKFW8Ik1OE-s10.mp4" data-start="416.01" data-duration="5.0" data-track-index="1" muted></video>
+  <video id="vx-ktla-street" class="bc" src="media/bc/scKFW8Ik1OE-s10.mp4" data-start="416.01" data-duration="3.02" data-track-index="1" muted></video>
   <section class="clip" id="p-pf-130" data-start="416.8" data-duration="3.6" data-track-index="5"><div class="popfig" id="pf-130"><span class="pf-big">130 – 200%</span><span class="pf-sub">SOUTHERN CALIFORNIA · NORMAL RAIN</span></div></section>
-  <video id="vx-fox-field" class="bc" src="media/bc/x7_5n0Q9iMs-s03.mp4" data-start="421.01" data-duration="5.0" data-track-index="1" muted></video>
+  <video id="vx-fox-field" class="bc" src="media/bc/x7_5n0Q9iMs-s03.mp4" data-start="419.03" data-duration="4.1" data-track-index="1" muted></video>
   <section class="clip" id="p-pf-110" data-start="423.8" data-duration="3.6" data-track-index="5"><div class="popfig" id="pf-110"><span class="pf-big">110 – 145%</span><span class="pf-sub">NORTHERN CALIFORNIA</span></div></section>
-  <section class="clip still-wrap" id="c-yuba2" data-start="426.01" data-duration="5.0" data-track-index="1" data-callback="the north's less certain half"><img id="kb-yuba2" src="media/stills/yuba-route49-flood.jpg" alt=""></section>
+  <video id="vx-ktla-creek2" class="bc" src="media/bc/scKFW8Ik1OE-s09.mp4" data-start="423.13" data-duration="4.37" data-track-index="1" data-callback="the north's creeks, less certain" muted></video>
+  <section class="clip still-wrap" id="c-yuba2" data-start="427.5" data-duration="3.51" data-track-index="1" data-callback="the north's less certain half"><img id="kb-yuba2" src="media/stills/yuba-route49-flood.jpg" alt=""></section>
   <video id="vx-fox-river" class="bc" src="media/bc/x7_5n0Q9iMs-s00.mp4" data-start="431.01" data-duration="4.7" data-track-index="1" muted></video>
   <section class="clip" id="p-chip-conception" data-start="431.5" data-duration="6.5" data-track-index="5"><div class="chip" id="chip-conception">SOUTH OF POINT CONCEPTION · BEST ODDS IN A GENERATION</div></section>
   <video id="vx-stock-flood2" src="media/stock/flooded_road.mp4" data-start="435.71" data-duration="3.53" data-track-index="1" data-callback="a very wet winter, the street view" muted></video>
 
   <!-- ============ CH7 RIVERS IN THE SKY 440.99–499.63 ============ -->
   <!-- DATA-FEED HOLD: NASA SVS atmospheric-river loop, 24 s -->
-  <video id="vx-ar2017c" src="media/ar-loop-2017.mp4" data-start="440.99" data-duration="24.0" data-track-index="1" data-callback="the river in the sky, full hold" muted></video>
-  <section class="clip" id="p-src-svs3" data-start="441.2" data-duration="23.6" data-track-index="4"><div class="srclab">SOURCE: NASA SVS · ATMOSPHERIC RIVER OVER CALIFORNIA</div></section>
+  <video id="vx-ar2017c" src="media/ar-loop-2017.mp4" data-start="440.99" data-duration="17.88" data-track-index="1" data-callback="the river in the sky, full hold" muted></video>
+  <section class="clip" id="p-src-svs3" data-start="441.2" data-duration="17.5" data-track-index="4"><div class="srclab">SOURCE: NASA SVS · ATMOSPHERIC RIVER OVER CALIFORNIA</div></section>
   <section class="clip" id="p-chip-mississippi" data-start="447.0" data-duration="6.0" data-track-index="5"><div class="chip" id="chip-mississippi">MORE WATER THAN THE MISSISSIPPI</div></section>
   <section class="clip" id="p-pf-twice" data-start="460.8" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-twice"><span class="pf-big">2× MORE LIKELY</span><span class="pf-sub">RIVER FAMILIES · EL NIÑO WINTERS</span></div></section>
-  <section class="clip still-wrap" id="c-cira25" data-start="464.99" data-duration="5.0" data-track-index="1"><img id="kb-cira25" src="media/stills/cira-ar-2025.png" alt=""></section>
-  <section class="clip still-wrap" id="c-cira24" data-start="469.99" data-duration="5.0" data-track-index="1"><img id="kb-cira24" src="media/stills/cira-ar-2024.png" alt=""></section>
-  <section class="clip" id="p-src-cira" data-start="465.2" data-duration="9.6" data-track-index="4"><div class="srclab">CSU/CIRA · NOAA SATELLITE · ATMOSPHERIC RIVERS 2024–25</div></section>
+  <section class="clip still-wrap" id="c-cira25" data-start="458.87" data-duration="5.0" data-track-index="1"><img id="kb-cira25" src="media/stills/cira-ar-2025.png" alt=""></section>
+  <section class="clip still-wrap" id="c-cira24" data-start="463.87" data-duration="5.0" data-track-index="1"><img id="kb-cira24" src="media/stills/cira-ar-2024.png" alt=""></section>
+  <section class="clip" id="p-src-cira" data-start="459.1" data-duration="9.6" data-track-index="4"><div class="srclab">CSU/CIRA · NOAA SATELLITE · ATMOSPHERIC RIVERS 2024–25</div></section>
   <section class="clip" id="p-pf-decmar" data-start="471.8" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-decmar"><span class="pf-big">DEC – MAR</span><span class="pf-sub">THE FLOOD WINDOW</span></div></section>
+  <video id="vx-cbs16-splash" class="bc" src="media/bc/1ipFyV6rduE-s00.mp4" data-start="468.87" data-duration="3.8" data-track-index="1" muted></video>
+  <video id="vx-cbs15-wind2" class="bc" src="media/bc/-yXw8HwIa8w-s12.mp4" data-start="472.67" data-duration="2.32" data-track-index="1" data-callback="the umbrella in the wind — the window opens" muted></video></video>
   <video id="vx-ktla-mudyard2" class="bc" src="media/bc/scKFW8Ik1OE-s07.mp4" data-start="474.99" data-duration="5.0" data-track-index="1" data-callback="burn scars fail first — the yard again" muted></video>
   <section class="clip" id="p-pf-burn" data-start="478.1" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-burn"><span class="pf-big">BURN SCARS</span><span class="pf-sub">FAIL FIRST</span></div></section>
   <video id="vx-stock-mud2" src="media/stock/mudslide_hillside_landslide.mp4" data-start="479.99" data-duration="5.0" data-track-index="1" data-callback="the slide-prone slopes" muted></video>
@@ -257,33 +270,33 @@
   <video id="vx-fox-bridge" class="bc" src="media/bc/x7_5n0Q9iMs-s01.mp4" data-start="484.99" data-duration="2.84" data-track-index="1" muted></video>
   <video id="vx-cbs16-waves2" class="bc" src="media/bc/1ipFyV6rduE-s02.mp4" data-start="487.83" data-duration="5.0" data-track-index="1" data-callback="Ocean Beach, the coastal road" muted></video>
   <section class="clip" id="p-chip-ocean" data-start="488.8" data-duration="4.0" data-track-index="5"><div class="chip" id="chip-ocean">OCEAN BEACH · HIGHWAY 1</div></section>
-  <video id="vx-ktla-night2" class="bc" src="media/bc/scKFW8Ik1OE-s04.mp4" data-start="492.83" data-duration="7.25" data-track-index="1" data-callback="the quiet creek, five dry years" muted></video>
+  <video id="vx-ktla-night2" class="bc" src="media/bc/scKFW8Ik1OE-s04.mp4" data-start="492.83" data-duration="6.95" data-track-index="1" data-callback="the quiet creek, five dry years" muted></video>
 
   <!-- ============ CH8 WHAT IS NOT HAPPENING 501.83–562.64 ============ -->
   <video id="vx-stock-snow3" src="media/stock/snow_sierra.mp4" data-start="501.83" data-duration="5.2" data-track-index="1" data-callback="what this is not — the calm before" muted></video>
   <section class="clip" id="p-chip-noweek" data-start="506.2" data-duration="5.0" data-track-index="5"><div class="chip" id="chip-noweek">NO ONE CAN NAME THE WEEK</div></section>
   <section class="clip still-wrap contain-wrap" id="c-outlook-son2" data-start="507.03" data-duration="5.5" data-track-index="1" data-callback="odds for a winter, not a forecast for a street"><img class="blurfill" src="media/stills/son2026_precip_outlook.png" alt=""><img id="kb-outlook-son2" src="media/stills/son2026_precip_outlook.png" alt=""></section>
   <section class="clip" id="p-pf-odds" data-start="511.7" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-odds"><span class="pf-big">ODDS, NOT A FORECAST</span></div></section>
-  <video id="vx-ktla-truck" class="bc" src="media/bc/scKFW8Ik1OE-s02.mp4" data-start="512.53" data-duration="4.5" data-track-index="1" muted></video>
+  <video id="vx-ktla-truck" class="bc" src="media/bc/scKFW8Ik1OE-s02.mp4" data-start="512.53" data-duration="2.65" data-track-index="1" muted></video>
   <section class="clip" id="p-pf-noquake" data-start="515.8" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-noquake"><span class="pf-big">NO QUAKE LINK</span><span class="pf-sub">NO TSUNAMI LINK</span></div></section>
-  <section class="clip still-wrap" id="c-shasta21" data-start="517.03" data-duration="4.5" data-track-index="1"><img id="kb-shasta21" src="media/stills/shasta-2021.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-oro21" data-start="521.53" data-duration="4.5" data-track-index="1"><img id="kb-oro21" src="media/stills/oroville-2021.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-shasta21" data-start="515.18" data-duration="5.0" data-track-index="1"><img id="kb-shasta21" src="media/stills/shasta-2021.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-oro21" data-start="520.18" data-duration="5.85" data-track-index="1"><img id="kb-oro21" src="media/stills/oroville-2021.jpg" alt=""></section>
   <section class="clip" id="p-pf-relief" data-start="523.8" data-duration="3.2" data-track-index="5"><div class="popfig popfig-amber" id="pf-relief"><span class="pf-big">DROUGHT RELIEF</span><span class="pf-sub">THE UPSIDE</span></div></section>
-  <video id="vx-cbs16-skilift" class="bc" src="media/bc/1ipFyV6rduE-s01.mp4" data-start="526.03" data-duration="4.81" data-track-index="1" muted></video>
+  <video id="vx-cbs16-skilift" class="bc" src="media/bc/1ipFyV6rduE-s01.mp4" data-start="526.03" data-duration="3.22" data-track-index="1" muted></video>
   <!-- c8-s2: the checklist card over footage -->
-  <video id="vx-stock-gutter2" src="media/stock/rain_gutter_drain.mp4" data-start="530.84" data-duration="10.66" data-track-index="1" data-callback="the four things: gutters and drains" muted></video>
+  <video id="vx-stock-gutter2" src="media/stock/rain_gutter_drain.mp4" data-start="529.25" data-duration="12.25" data-track-index="1" data-callback="the four things: gutters and drains" muted></video>
   <video id="vx-fox-road2" class="bc" src="media/bc/x7_5n0Q9iMs-s04.mp4" data-start="541.5" data-duration="4.7" data-track-index="1" data-callback="water with nowhere to go" muted></video>
   <video id="vx-ktla-truck2" class="bc" src="media/bc/scKFW8Ik1OE-s03.mp4" data-start="546.2" data-duration="4.1" data-track-index="1" muted></video>
-  <video id="vx-ktla-crew" class="bc" src="media/bc/scKFW8Ik1OE-s11.mp4" data-start="550.3" data-duration="7.5" data-track-index="1" muted></video>
-  <video id="vx-ktla-aerial2" class="bc" src="media/bc/scKFW8Ik1OE-s05.mp4" data-start="557.8" data-duration="5.29" data-track-index="1" data-callback="a way out — the neighborhood from above" muted></video>
-  <div id="host-checklist" data-composition-id="statcard" data-composition-src="compositions/g-checklist.html" data-start="531.0" data-duration="31.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <video id="vx-ktla-crew" class="bc" src="media/bc/scKFW8Ik1OE-s11.mp4" data-start="550.3" data-duration="6.95" data-track-index="1" muted></video>
+  <video id="vx-ktla-aerial2" class="bc" src="media/bc/scKFW8Ik1OE-s05.mp4" data-start="557.8" data-duration="3.95" data-track-index="1" data-callback="a way out — the neighborhood from above" muted></video>
+  <div id="host-checklist" data-composition-id="statcard" data-composition-src="compositions/statcard.html" data-start="531.0" data-duration="31.6" data-track-index="2" data-width="1920" data-height="1080"></div>
 
   <!-- ============ CLOSE 563.09–584.98 ============ -->
-  <video id="vx-stock-clouds3" src="media/stock/storm_clouds.mp4" data-start="563.09" data-duration="6.0" data-track-index="1" data-callback="the ocean has made its move — sky, last look" muted></video>
-  <video id="vx-ktla-man" class="bc" src="media/bc/scKFW8Ik1OE-s08.mp4" data-start="569.09" data-duration="5.7" data-track-index="1" muted></video>
+  <video id="vx-stock-clouds3" src="media/stock/storm_clouds.mp4" data-start="561.75" data-duration="7.34" data-track-index="1" data-callback="the ocean has made its move — sky, last look" muted></video>
+  <video id="vx-ktla-man" class="bc" src="media/bc/scKFW8Ik1OE-s08.mp4" data-start="569.09" data-duration="3.72" data-track-index="1" muted></video>
   <section class="clip" id="p-pf-9816" data-start="568.2" data-duration="3.4" data-track-index="5"><div class="popfig popfig-amber" id="pf-9816"><span class="pf-big">1998 OR 2016</span></div></section>
-  <section class="clip blackout" id="bo-close" data-start="574.79" data-duration="10.19" data-track-index="1"></section>
-  <div id="host-close" data-composition-id="g-close" data-composition-src="compositions/g-close.html" data-start="574.79" data-duration="10.19" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <section class="clip blackout" id="bo-close" data-start="572.81" data-duration="10.19" data-track-index="1"></section>
+  <div id="host-close" data-composition-id="g-close" data-composition-src="compositions/g-close.html" data-start="572.81" data-duration="10.19" data-track-index="2" data-width="1920" data-height="1080"></div>
 
   <div id="grade"></div>
   <div id="vignette"></div>
@@ -294,7 +307,7 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const DUR = 584.98;
+  const DUR = 583.0;
 
   /* ---- helpers (JS/WAAPI via GSAP only; CSS @keyframes disables fast-capture) ---- */
   function kb(sel, at, dur, s0, s1, x0, x1, y0, y1) {
@@ -322,33 +335,31 @@ window.__timelines = window.__timelines || {};
   kb("#kb-fema1467", 30.53, 5.81, 1.02, 1.1, 0, -16, 0, -8);
   kb("#kb-oro2016", 36.34, 4.7, 1.0, 1.08, 0, -12, 0, 6);
   kb("#kb-shasta19", 54.21, 4.9, 1.06, 1.0, 10, 0, 0, 0);
-  kb("#kb-map2", 59.11, 4.9, 1.1, 1.16, -20, -50, 8, 12);
+  drift("#vx-cbs15-globes", 59.11, 4.9, 1.05);
   kb("#kb-ensofig", 101.83, 5.2, 1.0, 1.06, 0, -10, 0, -6);
-  kb("#kb-outlook-ond", 150.05, 12.0, 1.0, 1.05, 0, 0, 0, 0);
   kb("#kb-fema1314", 190.51, 4.5, 1.0, 1.08, 0, -12, 0, -8);
-  kb("#kb-fema1323", 204.51, 4.5, 1.06, 1.0, 12, 0, -6, 0);
-  kb("#kb-yuba", 209.01, 6.95, 1.0, 1.09, 0, 14, 0, -8);
+  kb("#kb-fema1323", 203.63, 5.38, 1.06, 1.0, 12, 0, -6, 0);
+  kb("#kb-yuba", 209.01, 6.0, 1.0, 1.09, 0, 14, 0, -8);
   kb("#kb-usgsdiag", 231.96, 6.0, 1.0, 1.04, 0, 0, 0, 0);
   kb("#kb-noaa82", 268.26, 5.7, 1.0, 1.05, 0, 0, 0, 0);
-  kb("#kb-fema1336b", 278.46, 5.0, 1.07, 1.0, -10, 0, 6, 0);
-  kb("#kb-map3", 292.76, 7.0, 1.04, 1.12, 40, -30, 0, 10);
-  kb("#kb-oro2016b", 299.76, 4.5, 1.08, 1.0, 0, 10, 0, 0);
+  kb("#kb-fema1336b", 277.58, 5.88, 1.07, 1.0, -10, 0, 6, 0);
+  kb("#kb-map3", 292.76, 6.0, 1.04, 1.12, 40, -30, 0, 10);
+  kb("#kb-oro2016b", 298.76, 5.5, 1.08, 1.0, 0, 10, 0, 0);
   kb("#kb-shasta19b", 328.92, 4.5, 1.0, 1.07, 0, -10, 0, -6);
   kb("#kb-oro19", 333.42, 5.0, 1.06, 1.0, 10, 0, 6, 0);
   kb("#kb-ensofig2", 364.49, 5.0, 1.04, 1.0, 0, 0, 0, 0);
-  kb("#kb-outlook-son", 397.01, 13.0, 1.0, 1.05, 0, 0, 0, 0);
   kb("#kb-outlook-ond2", 410.01, 6.0, 1.05, 1.0, 0, 0, 0, 0);
-  kb("#kb-yuba2", 426.01, 5.0, 1.08, 1.0, 12, 0, -6, 0);
-  kb("#kb-cira25", 464.99, 5.0, 1.0, 1.06, 0, -12, 0, -8);
-  kb("#kb-cira24", 469.99, 5.0, 1.06, 1.0, 10, 0, 6, 0);
+  kb("#kb-yuba2", 427.5, 3.51, 1.08, 1.0, 12, 0, -6, 0);
+  kb("#kb-cira25", 458.87, 5.0, 1.0, 1.06, 0, -12, 0, -8);
+  kb("#kb-cira24", 463.87, 5.0, 1.06, 1.0, 10, 0, 6, 0);
   kb("#kb-outlook-son2", 507.03, 5.5, 1.0, 1.04, 0, 0, 0, 0);
-  kb("#kb-shasta21", 517.03, 4.5, 1.0, 1.07, 0, -10, 0, -6);
-  kb("#kb-oro21", 521.53, 4.5, 1.07, 1.0, 10, 0, 6, 0);
+  kb("#kb-shasta21", 515.18, 5.0, 1.0, 1.07, 0, -10, 0, -6);
+  kb("#kb-oro21", 520.18, 5.85, 1.07, 1.0, 10, 0, 6, 0);
 
   /* ---- slow drift on the long data-feed holds so nothing sits still ---- */
   drift("#vx-sstloop", 71.26, 30.57, 1.06);
   drift("#vx-ar2017a", 141.05, 9.0, 1.04);
-  drift("#vx-ar2017c", 440.99, 24.0, 1.06);
+  drift("#vx-ar2017c", 440.99, 17.88, 1.06);
   drift("#vx-ar2014b", 389.01, 8.0, 1.04);
   drift("#vx-stock-gutter2", 530.84, 10.66, 1.05);
 
@@ -381,17 +392,40 @@ window.__timelines = window.__timelines || {};
   lab("#p-src-cpc .srclab", 71.5, 30.0);    lab("#p-src-svs1 .srclab", 113.2, 6.6);
   lab("#p-src-svs2 .srclab", 141.2, 8.6);   lab("#p-src-outlook .srclab", 150.2, 11.6);
   lab("#p-src-usgs .srclab", 235.0, 2.9);   lab("#p-src-noaa82 .srclab", 268.5, 5.3);
-  lab("#p-src-outlook2 .srclab", 397.2, 12.6); lab("#p-src-svs3 .srclab", 441.2, 23.6);
-  lab("#p-src-cira .srclab", 465.2, 9.6);
+  lab("#p-src-outlook2 .srclab", 397.2, 12.6); lab("#p-src-svs3 .srclab", 441.2, 17.5);
+  lab("#p-src-cira .srclab", 459.1, 9.6);
 
   /* ---- GFDL quote card: in on "very unusual", out before the calendar pop ---- */
   tl.fromTo("#qc-gfdl", { autoAlpha: 0, y: 20, scale: 1.04 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 104.6);
   tl.to("#qc-gfdl", { autoAlpha: 0, y: -14, duration: 0.4, ease: "power2.in" }, 110.6);
 
   /* ---- broadcast pulls: slight push so SD-era wire footage never sits flat ---- */
-  ["#vx-ap98-waves", "#vx-ap98-sign", "#vx-ap98-pacifica", "#vx-ap98-waves2"].forEach(function (s) { drift(s, 0, 0.1, 1.0); });
   drift("#vx-ap98-waves", 9.73, 4.3, 1.06);   drift("#vx-ap98-sign", 26.53, 4.0, 1.06);
   drift("#vx-ap98-pacifica", 178.75, 5.01, 1.05); drift("#vx-ap98-waves2", 283.46, 4.3, 1.06);
+
+
+  /* ---- news bug: strip slides up, headline rotates every 12 s (deterministic tl.set) ---- */
+  function bug(strip, hl, at, dur, lines) {
+    tl.fromTo(strip, { y: 96 }, { y: 0, duration: 0.45, ease: "power3.out" }, at);
+    const n = Math.floor((dur - 0.6) / 12);
+    for (let i = 0; i < n; i++) {
+      const t = at + 0.3 + i * 12, text = lines[i % lines.length];
+      if (i > 0) tl.to(hl, { y: 40, autoAlpha: 0, duration: 0.25, ease: "power2.in" }, t - 0.25);
+      tl.set(hl, { textContent: text }, t);
+      tl.fromTo(hl, { y: -40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.3, ease: "power2.out" }, t);
+    }
+  }
+  bug("#bugstrip-a", "#bh-a", 9.73, 239.68, [
+    "NOAA: 69% CHANCE OF THE STRONGEST EL NIÑO ON RECORD",
+    "CALIFORNIA IN THE 'ABOVE NORMAL' PRECIPITATION CATEGORY",
+    "PEAK EXPECTED OCTOBER THROUGH JANUARY",
+    "FEBRUARY 1998: 17 DEAD, 2,000 HOMES, $500M IN LOSSES" ]);
+  bug("#bugstrip-b", "#bh-b", 268.26, 294.38, [
+    "1982–83 AND 1997–98: THE TWO BENCHMARK WINTERS",
+    "2015–16: THE SUPER EL NIÑO THAT MISSED SOUTHERN CALIFORNIA",
+    "STRONG EL NIÑO WINTERS: SOCAL 130–200% OF NORMAL RAIN",
+    "FLOOD WINDOW: DECEMBER THROUGH MARCH",
+    "FOUR THINGS TO DO BEFORE DECEMBER" ]);
 
   filmLayer(tl, DUR);
   window.__timelines["br-elnino-california"] = tl;

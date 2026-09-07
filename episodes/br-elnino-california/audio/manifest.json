@@ -1,0 +1,82 @@
+{
+ "h1-s1": {
+  "wav": "audio/h1-s1.wav",
+  "duration": 9.28,
+  "words": 23
+ },
+ "i1-s1": {
+  "wav": "audio/i1-s1.wav",
+  "duration": 26.16,
+  "words": 65
+ },
+ "i1-s2": {
+  "wav": "audio/i1-s2.wav",
+  "duration": 32.72,
+  "words": 87
+ },
+ "c1-s1": {
+  "wav": "audio/c1-s1.wav",
+  "duration": 30.12,
+  "words": 75
+ },
+ "c1-s2": {
+  "wav": "audio/c1-s2.wav",
+  "duration": 27.52,
+  "words": 72
+ },
+ "c2-s1": {
+  "wav": "audio/c2-s1.wav",
+  "duration": 51.76,
+  "words": 139
+ },
+ "c3-s1": {
+  "wav": "audio/c3-s1.wav",
+  "duration": 30.0,
+  "words": 84
+ },
+ "c3-s2": {
+  "wav": "audio/c3-s2.wav",
+  "duration": 33.0,
+  "words": 80
+ },
+ "c4-s1": {
+  "wav": "audio/c4-s1.wav",
+  "duration": 40.92,
+  "words": 109
+ },
+ "c5-s1": {
+  "wav": "audio/c5-s1.wav",
+  "duration": 30.56,
+  "words": 85
+ },
+ "c5-s2": {
+  "wav": "audio/c5-s2.wav",
+  "duration": 31.52,
+  "words": 82
+ },
+ "c6-s1": {
+  "wav": "audio/c6-s1.wav",
+  "duration": 62.68,
+  "words": 159
+ },
+ "c7-s1": {
+  "wav": "audio/c7-s1.wav",
+  "duration": 58.64,
+  "words": 156
+ },
+ "c8-s1": {
+  "wav": "audio/c8-s1.wav",
+  "duration": 28.56,
+  "words": 79
+ },
+ "c8-s2": {
+  "wav": "audio/c8-s2.wav",
+  "duration": 31.8,
+  "words": 89
+ },
+ "z1-s1": {
+  "wav": "audio/z1-s1.wav",
+  "duration": 15.44,
+  "words": 42
+ }
+}

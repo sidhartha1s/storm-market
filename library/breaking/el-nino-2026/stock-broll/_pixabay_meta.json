@@ -1,0 +1,74 @@
+[
+  {
+    "query": "heavy rain street",
+    "file": "C:/Users/Sidhartha/Automation Projects/storm-market/.worktrees/br-elnino-california/library/breaking/el-nino-2026/stock-broll\\heavy_rain_street.mp4",
+    "pixabay_id": 209759,
+    "user": "Afzaal0001",
+    "page_url": "https://pixabay.com/videos/id-209759/",
+    "duration": 16,
+    "size": "1280x720"
+  },
+  {
+    "query": "flooded road",
+    "file": "C:/Users/Sidhartha/Automation Projects/storm-market/.worktrees/br-elnino-california/library/breaking/el-nino-2026/stock-broll\\flooded_road.mp4",
+    "pixabay_id": 302862,
+    "user": "aerofotografialincoln",
+    "page_url": "https://pixabay.com/videos/id-302862/",
+    "duration": 17,
+    "size": "2560x1440"
+  },
+  {
+    "query": "mudslide hillside landslide",
+    "file": "C:/Users/Sidhartha/Automation Projects/storm-market/.worktrees/br-elnino-california/library/breaking/el-nino-2026/stock-broll\\mudslide_hillside_landslide.mp4",
+    "pixabay_id": 160477,
+    "user": "AttilaPergel",
+    "page_url": "https://pixabay.com/videos/id-160477/",
+    "duration": 16,
+    "size": "2560x1440"
+  },
+  {
+    "query": "ocean waves road",
+    "file": "C:/Users/Sidhartha/Automation Projects/storm-market/.worktrees/br-elnino-california/library/breaking/el-nino-2026/stock-broll\\ocean_waves_road.mp4",
+    "pixabay_id": 128113,
+    "user": "antonlukin",
+    "page_url": "https://pixabay.com/videos/id-128113/",
+    "duration": 13,
+    "size": "2560x1440"
+  },
+  {
+    "query": "dry reservoir drought",
+    "file": "C:/Users/Sidhartha/Automation Projects/storm-market/.worktrees/br-elnino-california/library/breaking/el-nino-2026/stock-broll\\dry_reservoir_drought.mp4",
+    "pixabay_id": 11053,
+    "user": "Aenigmatis-3D",
+    "page_url": "https://pixabay.com/videos/id-11053/",
+    "duration": 10,
+    "size": "1280x720"
+  },
+  {
+    "query": "snow mountains sierra",
+    "file": "C:/Users/Sidhartha/Automation Projects/storm-market/.worktrees/br-elnino-california/library/breaking/el-nino-2026/stock-broll\\snow_mountains_sierra.mp4",
+    "pixabay_id": 113165,
+    "user": "Leolo212",
+    "page_url": "https://pixabay.com/videos/id-113165/",
+    "duration": 17,
+    "size": "2732x1440"
+  },
+  {
+    "query": "rain gutter drain",
+    "file": "C:/Users/Sidhartha/Automation Projects/storm-market/.worktrees/br-elnino-california/library/breaking/el-nino-2026/stock-broll\\rain_gutter_drain.mp4",
+    "pixabay_id": 20283,
+    "user": "ElenLackner",
+    "page_url": "https://pixabay.com/videos/id-20283/",
+    "duration": 29,
+    "size": "1280x720"
+  },
+  {
+    "query": "storm clouds timelapse",
+    "file": "C:/Users/Sidhartha/Automation Projects/storm-market/.worktrees/br-elnino-california/library/breaking/el-nino-2026/stock-broll\\storm_clouds_timelapse.mp4",
+    "pixabay_id": 107336,
+    "user": "adege",
+    "page_url": "https://pixabay.com/videos/id-107336/",
+    "duration": 39,
+    "size": "2560x1440"
+  }
+]

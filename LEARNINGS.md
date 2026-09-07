@@ -48,6 +48,29 @@ quoted section header.
 - hyperframes 0.8.x opens visible console windows on this box — the pin stays 0.7.109 until an upstream version spawns ffmpeg/ffprobe hidden. → §"ep6 ship"
 - Search `library/catalog-index.json` / `npx hyperframes catalog --query` before hand-authoring any graphic — MG library-first. → §"ep6 ship"
 
+## 2026-09-08 — breaking lane v1 (br-elnino-california, /storm-breaking first run)
+
+- **Structure vocabulary (owner correction):** HOOK is 3–10 s, one sentence paying off the title.
+  Then INTRO to ~1:10 (stakes, open loops, promise). Then chapters. A 45 s "hook" was rejected.
+  Size every section in words at the delivered wpm before TTS (packaging.md table).
+- **Pharaoh pace on short news sentences = 158 wpm native** (1,426 words → 9:01). atempo 1.15
+  pushed it to 182 wpm / 7:50 and was reverted. Measure before applying any atempo.
+- **Static gates vs the fast format:** `graphics_qc.mjs` reports "0 elements · flat background"
+  on 1.6 s chapter cards — its sample grid never lands inside the window (false negative,
+  verified by `_shot_comps` screenshots at 0.05/0.3/1.2 s). `sweep_episode.py` counts only
+  track-2 hosts as "mounted", so a whole-video lower-third bug cannot be a sub-comp on track 3
+  (flagged unmounted) or on track 2 (same-track overlap with cards) → the bug is inline markup
+  in index.html. `_shot_comps` staging files (`compositions/_shot_*.html`) must be deleted
+  before sweep or they read as unmounted comps.
+- **Scene-cut broadcast pulls:** ffmpeg `select='gt(scene,0.35)'` on 6 news reels gave 51
+  usable 3–7 s cuts in one pass; windows must be clamped to the cut's real length (several
+  were 1–2 s short → sweep "frame extraction failed" is the symptom).
+- **Long map holds:** a 12 s NOAA outlook still fails the 6 s still rule; render it as a 13 s
+  zoompan mp4 (`ffmpeg -loop 1 ... zoompan`) — passes as video and still moves.
+- **Pexels API key in ~/.claude/.env returns 403 (dead); Pixabay key works.** Wikimedia Commons
+  API rate-limits after ~10 file fetches (429) — batch with a pause.
+- Reuse pool for the whole El Niño series: `library/breaking/el-nino-2026/` (+ provenance.csv).
+
 ## 2026-08-30 — the ebook CTA is a channel asset + a must-keep contract (owner order, ep4 rewire kickoff)
 
 1. **The CTA was never in the pipeline.** ep2's Paul CTA was spliced into the finished mp4 by the
