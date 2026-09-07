@@ -13,16 +13,16 @@ title-to-hook carryover note.
 
 | id | channel | subs | title | dur | views | upload | cuts total | median shot | hook median shot | wpm | stills vs video | 9:16 embeds | credits shown | CTA/ask timing |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| z_vo0DCEKAE | The Space Desk | not gathered | What Just Happened In Nepal Reveals A Terrifying Truth You Aren't Ready To Hear | 19:14 | 1,241,519 | 2026-08-29 | 238 | 4.2s | 8.0s | ~295 | ~60% real news/drone/CCTV clips, ~40% AI-generated "war room"/office stills+graphics | yes (portrait phone clips pillarboxed) | yes, "SOURCE: USGS" tag on maps | not visible in sampled frames |
-| n_41Jzj3KPU | S zone | not gathered | M7+ Earthquakes Are Striking South America — The Nazca Plate Is Under Pressure | 19:49 | 116,650 | 2026-08-27 | 21 | 44.6s | 13.8s | ~261 | ~90% AI-generated painterly stills (webcam presenter over static/slow-pan art) | no | none | not visible in sampled frames |
-| qLun3DQLu5s | Global Vlad | not gathered | 6 VOLCANOES ERUPT – 150,000 AFFECTED Across Indonesia (Latest Updates) | 13:09 | 79,684 | 2026-09-07 | 55 | 11.8s | 6.6s | ~89 | ~95% real user-submitted/CCTV phone footage, near-zero stills | yes, dominant format (portrait clips pillarboxed black) | fake "GNN Global Weather Network" bug only, no real handles | not visible in sampled frames |
-| 28UP8fh-sCU | Disaster Pulse | not gathered | ASIA'S DEADLIEST VOLCANO ERUPTS! Anak Krakatau Sends Ash 50,000 Feet High | 19:27 | 386,166 (1 day) | 2026-09-06 | 283 | 4.5s | 4.2s | ~248 | ~70% real licensed broadcaster/CCTV clips (VOA, AP, BBC One, PVMBG), ~30% stock cutaways | no | yes — VOA/AP/BBC/Newsflare/Mirror Now logos burned in | not visible in sampled frames |
-| iexrMZYDTNw | The Field Report | not gathered | Krakatoa Is Alive Again — And That's Not The Worst Part | 18:41 | 4,210 | 2026-09-07 | 228 | 3.7s | 3.5s | ~284 | ~50% credited real social/satellite clips, ~50% premium AI-generated cinematic stills+diagrams | yes (boat-deck vertical clips) | yes — small "©HANDLE" watermarks + "©CSU/CIRA & JMA/JAXA" satellite credit | not visible in sampled frames |
+| z_vo0DCEKAE | The Space Desk | not gathered | What Just Happened In Nepal Reveals A Terrifying Truth You Aren't Ready To Hear | 19:14 | 1,241,519 | 2026-08-29 | 238 | 4.2s | 8.0s | ~200 | ~60% real news/drone/CCTV clips, ~40% AI-generated "war room"/office stills+graphics | yes (portrait phone clips pillarboxed) | yes, "SOURCE: USGS" tag on maps | not visible in sampled frames |
+| n_41Jzj3KPU | S zone | not gathered | M7+ Earthquakes Are Striking South America — The Nazca Plate Is Under Pressure | 19:49 | 116,650 | 2026-08-27 | 21 | 44.6s | 13.8s | ~174 | ~90% AI-generated painterly stills (webcam presenter over static/slow-pan art) | no | none | not visible in sampled frames |
+| qLun3DQLu5s | Global Vlad | not gathered | 6 VOLCANOES ERUPT – 150,000 AFFECTED Across Indonesia (Latest Updates) | 13:09 | 79,684 | 2026-09-07 | 55 | 11.8s | 6.6s | ~66 | ~95% real user-submitted/CCTV phone footage, near-zero stills | yes, dominant format (portrait clips pillarboxed black) | fake "GNN Global Weather Network" bug only, no real handles | not visible in sampled frames |
+| 28UP8fh-sCU | Disaster Pulse | not gathered | ASIA'S DEADLIEST VOLCANO ERUPTS! Anak Krakatau Sends Ash 50,000 Feet High | 19:27 | 386,166 (1 day) | 2026-09-06 | 283 | 4.5s | 4.2s | ~166 | ~70% real licensed broadcaster/CCTV clips (VOA, AP, BBC One, PVMBG), ~30% stock cutaways | no | yes — VOA/AP/BBC/Newsflare/Mirror Now logos burned in | not visible in sampled frames |
+| iexrMZYDTNw | The Field Report | not gathered | Krakatoa Is Alive Again — And That's Not The Worst Part | 18:41 | 4,210 | 2026-09-07 | 228 | 3.7s | 3.5s | ~192 | ~50% credited real social/satellite clips, ~50% premium AI-generated cinematic stills+diagrams | yes (boat-deck vertical clips) | yes — small "©HANDLE" watermarks + "©CSU/CIRA & JMA/JAXA" satellite credit | not visible in sampled frames |
 | Reg_TypDDRQ | (source clip only, metadata not pulled per brief) | n/a | TikTok clip, "Geophysicist Stefan Burns" (@stefanbur) | first 90s only | — | — | — | — | — | 100% real talking-head TikTok clip (face-cam + inset lava footage) | this IS the vertical source | "TikTok @stefanbur" watermark + on-screen name card "Geophysicist Stefan Burns" | n/a |
-| 9ws0qN4hFtY | Stefan Burns | 798,000 | If the Sky Goes Dark and it's Suddenly Freezing, This is Why... | 8:27 | 564,046 | 2026-09-02 | 7 | 38.9s | 60.0s (0 cuts in first 60s) | ~239 | ~5% real satellite/data stills, ~95% talking-head-to-camera holds | no | full name card "Geophysicist Stefan Burns", real NASA/NOAA data citations | not visible in sampled frames |
-| hf7xCeEWeOE | Stefan Burns | 798,000 | Something Big Has Changed for the World's Largest Ocean... | 18:24 | 476,444 | 2026-09-04 | 33 | 20.1s | 60.0s (0 cuts in first 60s) | ~266 | ~10% real live NOAA/NASA dashboard captures, ~90% talking-head holds | no | full name card, real GOES-19/NOAA dashboard captures | not visible in sampled frames |
-| YHjdguvoksw | Stefan Burns | 798,000 | We're Not Ready For What's Coming Next... | 24:33 | 556,336 | 2026-09-07 | 18 | 60.2s | 60.0s (0 cuts in first 60s) | ~243 | ~15% real NASA solar/cosmic-ray data, ~85% talking-head holds | no | full name card, real solar-cycle/Oulu neutron monitor data | not visible in sampled frames |
-| 3r5HgsfWtRQ | Hidden Constructions | 1,150 | America's Deadliest Volcano Is Doing Something It Shouldn't | 10:05 | 148,278 | 2026-09-02 | 141 | 3.6s | 2.7s | ~264 | ~55% real archival/scientific footage, ~45% premium AI-generated cinematic B-roll | no | real archival (David Johnston photo, 1980 newsreel), no AI credit given | not visible in sampled frames |
+| 9ws0qN4hFtY | Stefan Burns | 798,000 | If the Sky Goes Dark and it's Suddenly Freezing, This is Why... | 8:27 | 564,046 | 2026-09-02 | 7 | 38.9s | 60.0s (0 cuts in first 60s) | ~159 | ~5% real satellite/data stills, ~95% talking-head-to-camera holds | no | full name card "Geophysicist Stefan Burns", real NASA/NOAA data citations | not visible in sampled frames |
+| hf7xCeEWeOE | Stefan Burns | 798,000 | Something Big Has Changed for the World's Largest Ocean... | 18:24 | 476,444 | 2026-09-04 | 33 | 20.1s | 60.0s (0 cuts in first 60s) | ~178 | ~10% real live NOAA/NASA dashboard captures, ~90% talking-head holds | no | full name card, real GOES-19/NOAA dashboard captures | not visible in sampled frames |
+| YHjdguvoksw | Stefan Burns | 798,000 | We're Not Ready For What's Coming Next... | 24:33 | 556,336 | 2026-09-07 | 18 | 60.2s | 60.0s (0 cuts in first 60s) | ~162 | ~15% real NASA solar/cosmic-ray data, ~85% talking-head holds | no | full name card, real solar-cycle/Oulu neutron monitor data | not visible in sampled frames |
+| 3r5HgsfWtRQ | Hidden Constructions | 1,150 | America's Deadliest Volcano Is Doing Something It Shouldn't | 10:05 | 148,278 | 2026-09-02 | 141 | 3.6s | 2.7s | ~176 | ~55% real archival/scientific footage, ~45% premium AI-generated cinematic B-roll | no | real archival (David Johnston photo, 1980 newsreel), no AI credit given | not visible in sampled frames |
 
 VPH (views-per-hour) note: only 28UP8fh-sCU has enough of a fresh-upload signal to compute — 386,166
 views in roughly 24h ≈ 16,000 VPH, by far the fastest of the ten. The others are 2-10 days old with
@@ -49,9 +49,14 @@ magnitude, the same pattern storm-market's own strategy is betting on.
   narrower, less time-sensitive niche than Stefan Burns' live-hazard beat, produced at documentary
   pacing (3.6s median shot) rather than talking-head pacing.
 
-wpm in the table is `total spoken words ÷ 2 ÷ duration` and OVERSTATES (~1.5x); corrected dedup values are in rule 13 of the Format rules section; qLun3DQLu5s's
-89 wpm is real — that video is carried by on-screen news-ticker text and raw ambient/phone audio, not
-continuous narration, unlike the other five.
+wpm in the table is verified: for each srt cue, the running transcript is stitched by matching the
+longest overlap between the previous cue's tail and the new cue's head (rolling-caption cues repeat
+most of the prior line and append 1-3 new words), counting only the non-overlapping new words —
+`scripts` note: see `wpm_check.py` in this folder. This replaced an earlier draft column that
+naively halved total raw word count (which overstated every value by ~1.4-1.6x; e.g. z_vo0DCEKAE
+read 295 wpm naive vs 200 wpm stitched — confirmed correct by eyeballing the stitched transcript
+against the audio's actual pace). qLun3DQLu5s's 66 wpm is real — that video is carried by on-screen
+news-ticker text and raw ambient/phone audio, not continuous narration, unlike the rest of the set.
 
 ## Per-video notes
 
