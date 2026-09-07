@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  BREAKING-LANE TEMPLATE: chapter-card.html
+  WHAT IT IS: 1.6 s caps chapter card on black — glitch-cut in (two 40 ms horizontal slices),
+  hold, hard cut out. FORMAT.md rule: "section break = 1–2 s glitch or hard cut into a bold
+  white-caps title card on black". Mount on track 2 over a blackout on track 1.
+
+  PARAMS (EDIT-ME): number, title (≤3 words), amber kicker line.
+  TIMING: whole card lives 1.6 s; retune only the hold if a chapter needs a breath.
+  COPY into episodes/<slug>/compositions/ and re-prefix ids per instance.
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; background:#000; font-family:Arial,sans-serif; overflow:hidden; }
+  .st { position:absolute; inset:0; display:grid; place-items:center; text-align:center; }
+  .num { font-family:'Arial Black',Arial,sans-serif; font-size:34px; letter-spacing:12px; color:#d0121f; }
+  .ttl { font-family:'Arial Black',Arial,sans-serif; font-size:118px; letter-spacing:6px; color:#f4f0e8; line-height:1; margin-top:14px;
+    text-shadow:0 0 30px rgba(0,0,0,0.9); }
+  .kick { font-family:Georgia,serif; font-style:italic; font-size:30px; color:#d8a13a; margin-top:22px; letter-spacing:1px; }
+  .slice { position:absolute; left:0; right:0; height:38px; background:rgba(208,18,31,0.55); mix-blend-mode:screen; }
+  #chap-s1 { top:36%; } #chap-s2 { top:58%; }
+</style>
+<div id="root" data-composition-id="chapcard" data-width="1920" data-height="1080">
+  <div class="slice" id="chap-s1"></div><div class="slice" id="chap-s2"></div>
+  <div class="st"><div>
+    <div class="num" id="chap-num">CHAPTER 3<!-- EDIT-ME --></div>
+    <div class="ttl" id="chap-ttl">FEBRUARY 1998<!-- EDIT-ME --></div>
+    <div class="kick" id="chap-kick">the winter California is measured against<!-- EDIT-ME --></div>
+  </div></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#chap-";
+  tl.set([P+"num",P+"ttl",P+"kick"], {autoAlpha:0}, 0);
+  tl.set([P+"s1",P+"s2"], {autoAlpha:0}, 0);
+  /* glitch in: two slices flash, title lands offset then snaps */
+  tl.fromTo(P+"s1", {autoAlpha:0, x:-60}, {autoAlpha:1, x:0, duration:0.04}, 0.0);
+  tl.to(P+"s1", {autoAlpha:0, duration:0.04}, 0.08);
+  tl.fromTo(P+"s2", {autoAlpha:0, x:60}, {autoAlpha:1, x:0, duration:0.04}, 0.05);
+  tl.to(P+"s2", {autoAlpha:0, duration:0.04}, 0.13);
+  tl.fromTo(P+"ttl", {autoAlpha:1, x:-24, skewX:12}, {x:0, skewX:0, duration:0.12, ease:"power4.out"}, 0.06);
+  tl.fromTo(P+"num", {autoAlpha:0, y:-10}, {autoAlpha:1, y:0, duration:0.2}, 0.18);
+  tl.fromTo(P+"kick", {autoAlpha:0, y:10}, {autoAlpha:1, y:0, duration:0.3}, 0.45);
+  /* hard cut out at host end: nothing to animate — the host unmount is the exit */
+  window.__timelines["chapcard"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
