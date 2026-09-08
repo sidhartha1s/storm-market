@@ -52,7 +52,7 @@ extra_css = ('<style>.rated{margin:18px 0 6px;font-size:18px;color:var(--soft)}.
              '.stats{list-style:none;margin:0 0 8px;padding:0;display:flex;flex-wrap:nowrap;gap:28px;overflow-x:auto;scrollbar-width:none}'
              '.stats li{flex:0 0 auto;text-align:left}.stats b{display:block;font-family:var(--display);font-weight:900;font-size:40px;line-height:1;color:var(--tab3);letter-spacing:-.02em}'
              '.stats span{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--faded);margin-top:4px;white-space:nowrap}'
-             '.row>*{min-width:0}@media (max-width:600px){.stats{gap:18px}.stats b{font-size:30px}}</style>')
+             '.row>*{min-width:0}@media (max-width:600px){.stats{display:block;font-size:18px;line-height:1.7;color:var(--soft)}.stats li{display:inline}.stats li:not(:last-child)::after{content:" · ";color:var(--faded)}.stats b{display:inline;font-size:22px;margin-right:4px;white-space:nowrap}.stats span{display:inline;font:inherit;letter-spacing:0;text-transform:none;margin:0}}</style>')
 
 page = chrome.render(title=title, description="", canonical="https://paulraymond.online/", tabs=tabs, sheets=body, depth=0,
                      head_extra=head_extra + "\n" + extra_css)

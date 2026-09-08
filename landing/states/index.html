@@ -230,11 +230,34 @@ footer a{color:#fff3df}
 @media (max-width:480px){.cover,.photo{transform:none}.sheet-wrap{padding:32px 18px 32px 52px}.pill{width:calc(100% - 20px);justify-content:space-between;padding-left:14px;font-size:15px}}
 @media (prefers-reduced-motion:reduce){.tabs a,.btn{transition:none}html{scroll-behavior:auto}}
 @media print{.tabs,.pill,.brand{display:none}.sheet{page-break-after:always}body{background:#fff}.sheet-wrap{box-shadow:none}}
+
+@media (max-width:900px){
+  .band{padding:6px 10px;gap:8px;font-size:14px;flex-wrap:nowrap;justify-content:space-between;min-height:48px}
+  .band .lbl,.band .sep{display:none}
+  .band>span{white-space:nowrap}
+  .band #live-n::after{content:" viewing"}
+  .band .go{min-height:44px;padding:0 12px;font-size:15px;white-space:nowrap}
+  .brand span{display:none}
+  .tabs{-webkit-mask-image:linear-gradient(90deg,#fff 88%,transparent);mask-image:linear-gradient(90deg,#fff 88%,transparent)}
+  .rings{left:6px;width:20px}.rings i{width:20px;height:20px;box-shadow:inset 0 0 0 6px var(--paper),0 1px 2px rgba(0,0,0,.5)}
+  .holes{left:10px;width:12px}.holes i{width:12px;height:12px}
+  .sheet-wrap{padding-left:40px}
+  .sheet p>a:not(.btn){display:inline-block;padding:8px 0}
+  .vs{grid-template-columns:minmax(0,1fr)}.col{min-width:0}
+  .col li{flex-wrap:wrap;gap:2px 12px}.col li b{flex-basis:100%;text-align:right}
+  .col-total{flex-wrap:wrap}.col-total b{flex-basis:100%;text-align:right}
+  .quote cite{font-size:15px}.quote .tag{font-size:13px}
+  .guar{flex-wrap:wrap}
+  .pill{gap:10px;padding:6px 6px 6px 14px;font-size:15px;line-height:1.25;max-width:calc(100% - 20px)}.pill .btn{min-height:44px;padding:0 16px;font-size:17px;white-space:nowrap}
+  .toast{font-size:15px;bottom:84px}.toast .x{top:0;right:0;min-width:44px;min-height:44px;display:grid;place-items:center}
+  footer{font-size:16px}.foot-links a{display:inline-block;padding:10px 0}
+}
+@media (max-width:400px){.band #live-n::after{content:""}}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="band" role="status"><span><span class="dot"></span><b id="live-n">96</b> viewing now</span><span class="sep">·</span><span>Launch price ends in <b id="countdown">--:--:--</b></span><a class="go" href="https://paulraymond.gumroad.com/l/ebook?wanted=true">Get my copy, $14.99</a></div>
+<div class="band" role="status"><span><span class="dot"></span><b id="live-n">96</b> <span class="lbl">viewing now</span></span><span class="sep">·</span><span><span class="lbl">Launch price ends in </span><b id="countdown">--:--:--</b></span><a class="go" href="https://paulraymond.gumroad.com/l/ebook?wanted=true">Get my copy, $14.99</a></div>
 <div class="stage">
   <div class="brand"><b><a href="../" style="color:inherit;text-decoration:none">The Storm-Ready Home</a></b><span>Paul Raymond · First edition</span></div>
 
