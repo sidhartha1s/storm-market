@@ -71,6 +71,33 @@ quoted section header.
   API rate-limits after ~10 file fetches (429) — batch with a pause.
 - Reuse pool for the whole El Niño series: `library/breaking/el-nino-2026/` (+ provenance.csv).
 
+## 2026-09-08 — breaking lane, first video (br-elnino-california): owner corrections + measured facts
+
+- **Hook is 3–10 s, then INTRO (open loops, stakes, promise) to ~1:10, then chapters.** Owner rejected a
+  plan that called the first 45 s "the hook". Size every section in words at delivered wpm before TTS.
+- **Pharaoh voice ran 158 wpm native on short news sentences** (1,426 words → 9.0 min). No atempo needed
+  in this lane; the 129 wpm figure is a documentary-sentence number. Measure, then decide.
+- **No chapter cards in the breaking lane** (owner, after the v1 preview): chapters butt-cut with a 0.45 s
+  narration gap; the script's connective sentences carry the transition. Removing 8 cards = one-shot
+  mechanical retime (events list: point, delta; starts shift for points ≤ start, ends for points < end).
+  Gotcha: a narration window whose end sits 0.01 s past a removed span gets shortened by the rule —
+  restore every nx-* duration from audio/manifest.json after any retime, then re-check gaps.
+- **CTA v5 (owner "newest paul CTA sep 6", 2560x1440 source) is transcoded to 1080p30 as the versioned
+  asset** `assets/cta/paul-storm-ready-v5-sep6.mp4` (md5 in config.yaml); media_budget refuses 1440p
+  sources. hyperframes validator wants `data-has-audio="true"` on the audible CTA video.
+- **Sweep's CTA gate skips `br-` slugs** (epN-only). Breaking episodes mount the CTA by hand; the
+  30–40 % window is a documentary rule — this one sits at 43 % (after chapter 3) by story logic.
+- **graphics_qc cannot sample a 1.6 s composition** (reports 0 elements / flat background); proved the
+  cards with `_shot_comps` screenshots instead. Moot now that cards are gone.
+- **Pixabay "mudslide" search returned an Amalfi-coast town clip.** Every stock pick gets a contact-sheet
+  eyeball before wiring; the owner spotted it in the preview. Pexels API keys (all 3) are dead (403).
+- **Instagram via `yt-dlp --cookies-from-browser chrome` fails while Chrome is open** (cookie DB locked).
+  Use a cookies.txt export or close Chrome first. No social clips in this cut.
+- **Render waiters get killed by the harness under memory pressure** (3 headless workers ≈ 3.8 GB);
+  use one `Monitor` until-loop on the done marker, never several polling shells.
+- Draft render of a 9:45 cut: 13 min wall-clock at 3 workers (frames ~9 fps at 15 fps draft).
+- Runtime log for the 3 h SLA lives in `episodes/br-elnino-california/runtime.md`.
+
 ## 2026-08-30 — the ebook CTA is a channel asset + a must-keep contract (owner order, ep4 rewire kickoff)
 
 1. **The CTA was never in the pipeline.** ep2's Paul CTA was spliced into the finished mp4 by the
