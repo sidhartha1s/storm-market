@@ -80,9 +80,9 @@ Total ≈ 3 h 05. If any step overruns 2×, ship what exists and list what was c
   `packaging.md`; 9:30 ≈ 1,410 words, 8:30 floor ≈ 1,260, 12:00 ceiling ≈ 1,780. A script that
   is short on words is short on runtime; check `words ÷ 2.47` per segment. CTA per `config.yaml channel.cta` unless the owner says
   otherwise for this format (decision pending — see Open items).
-- **Interaction beats** (FORMAT.md section): "where are you watching from" once per video + topic questions,
-  breadcrumbs in hard chapters, a chill 10 s comments line at the start of the last chapter. Placed by
-  judgment while writing, spaced by feel (never back to back), narrator tone untouched.
+- **CTAs and interaction beats (FORMAT.md ledger, owner 2026-09-09):** hard cap 3 per video incl. the fixed END CTA,
+  excl. Paul's; where-are-you-watching once (fresh wording); one mid-video question or think-it-yourself beat invented
+  per episode; optional name-drop; breadcrumbs uncounted. Placed by judgment, never back to back.
 - Every fact carries an inline `[src: …]` before TTS; zero open `[verify]` markers. Primary
   sources (USGS, NOAA, NHC, BNPB/BMKG, NWS, ReliefWeb) beat competitor videos.
 - Segment IDs `A1-S1…` with `> ` blockquote narration, exactly the storm-episode format.

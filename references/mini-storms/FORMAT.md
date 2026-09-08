@@ -63,21 +63,30 @@ atempo 1.15): 8:30 ≈ 1,260 words, 9:30 ≈ 1,410, 12:00 ≈ 1,780. Table goes 
 - Pool: `library/mini-storms/<event>/` + provenance.csv; second and later angles reorder and retrim
   the same pool, never the same sequence.
 
-## Interaction beats (owner 2026-09-09: "keep them, use actively"; placed by judgment while scripting, never by code)
-- **"Where are you watching from?"** is in every video, one form or another (spoken once, pinned as the first comment
-  on upload). Topic questions are fine too; each must be answerable in three words without finishing the video.
-- **Breadcrumbs inside hard chapters** (5–10 words, ≤2 per chapter): signpost ("Three things. Here is one."),
-  technical-then-plain ("the subtropical jet strengthens; in plain words, the storm highway moves south"),
-  guess-before-reveal (a beat of silence before the number), the one-number rule, and callbacks to an earlier chapter.
-- **Spacing is tailored, not scheduled:** never inside the first 60 s, never inside a number run, never two beats
-  within ~90 s, never back to back. The writer reasons about where the narration already breathes.
-- **Tone split:** narration stays the narrator. The interaction lines are the chill uncle — one warm sentence, no
-  lecture, no "wrong" twice, no principal energy. Comments CTA (~10 s) sits at the start of the last chapter, not the
-  outro; the close stays warm line + subscribe.
-- **After upload (owner):** two comments five minutes apart — "Where are you watching from?" (pinned) and a next-topic
-  vote; reply to the first ten comments within the hour.
-- Cost: ~60–80 words (~30 s) per video. Not filler: every beat either feeds the next video (county names, topic
-  votes) or lowers the thinking load on a hard chapter.
+## CTAs and interaction beats (owner ledger 2026-09-09; placed by judgment while scripting, never by code)
+- **Paul's ebook CTA** — every video, from `config.yaml channel.cta`, at the story break (~40 %), 1 s dips, film layer off.
+  Description line 1 = paulraymond.online. No "book mentioned at mm:ss" line.
+- **Hard cap: 3 CTA beats per mini-storm, including the END CTA, excluding Paul's.** Breadcrumbs do not count.
+- **B · Where are you watching from** — once per video, near the one-minute mark, worded fresh every episode; also the
+  owner's pinned comment on upload.
+- **C · One mid-video question** — a concept, not a line: something the viewer answers in a few words about their own
+  situation, OR a "think about it yourself" beat that asks for no comment. Invented from that episode's material;
+  never reuse a previous video's question or wording.
+- **D · Name-drop** — one line that references a real-sounding place from the thread (first: Lancaster County, an
+  actual comment). While threads are thin it may be invented, phrased as a place people ask about — never a quoted
+  commenter. Counts as a beat only if it asks for a comment.
+- **END CTA (fixed spine, owner's words):** "If you enjoyed this video, like and subscribe for more! I truly appreciate
+  it. Comment [ONE item: favourite moment / custom / next video idea] or any suggestions for improvements. I love reading
+  all your comments. Make sure to check out the ebook in the description, and stay tuned for the next video. Good day."
+  The bracket is chosen per video; never a favourite-moment ask on a tragedy-spined video.
+- **No separate mid-video "comments line"** — it duplicated the end CTA; too many asks and the viewer leaves.
+- **Breadcrumbs inside hard chapters** (≤2 per chapter, 5–10 words): signpost, technical-then-plain,
+  guess-before-reveal, one-number rule, callback.
+- **Spacing and tone:** never in the first 60 s, never inside a number run, never back to back, nothing near Paul's CTA;
+  the writer places them where the narration already breathes. Narrator voice for narration; the beats are the chill
+  uncle — one breath, no lecture, no repeated words.
+- **Upload routine (owner):** pin the where-are-you-watching comment, post the next-topic vote five minutes later,
+  answer the first ten comments within the hour, open the next video by naming the winner.
 
 ## Audio
 - Narration 150–160 wpm delivered. Pocket-TTS Pharaoh lands ~129 natively; use `atempo 1.15–1.2`

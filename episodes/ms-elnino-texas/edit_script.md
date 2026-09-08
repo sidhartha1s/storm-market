@@ -38,7 +38,7 @@ Visual: CPC SST map push; popfig "69%" / "STRONGEST EVER". [src: 1]
 Visual: NWS warning map / Houston flood 1998 stills; Garland aftermath; popfigs "300+ WARNINGS", "13 DEAD · DEC 26". [src: 3, 5]
 
 ### I1-S2 — narration
-> But here is what people get wrong about El Niño in Texas. They plan for a cold winter. The danger is not the cold. It is two things almost nobody plans for in December, and both of them come from the same shift in the sky. Stay with this, because by the end you will know which of the two your part of Texas gets, when the window opens, and the four things to do before it does.
+> But here is what people get wrong about El Niño in Texas. They plan for a cold winter. The danger is not the cold. It is two things almost nobody plans for in December, and both of them come from the same shift in the sky. Stay with this, because by the end you will know which of the two your part of Texas gets, when the window opens, and the four things to do before it does. And tell me where you are watching from. I read every one, and it decides which state I do next.
 
 Visual: jet-stream diagram teaser, DFW skyline storm; chip "TWO DANGERS · ONE SHIFT"; popfig "4 THINGS". [src: 1]
 
@@ -52,14 +52,14 @@ Visual: DATA-FEED HOLD, CPC weekly SST loop labelled; popfigs "+3.0°C", ">90%",
 ## CH2 — WHY TEXAS (2:00–2:55)
 
 ### C2-S1 — narration
-> The mechanism is simple, and it is the same one that soaks California. In a strong El Niño, the subtropical jet stream, the river of fast air that steers Pacific storms, strengthens and drops south. NOAA describes it as fast moving storm systems coming off the Pacific and crossing the southern tier of states. Texas is the widest part of that tier. And Texas has something California does not: the Gulf of Mexico on its doorstep. Every Pacific storm that crosses the state can pull warm, wet Gulf air up ahead of it. Pacific energy, Gulf moisture. That combination is the whole story of this winter, and it is why the danger is not the cold.
+> The mechanism is simple, and it is the same one that soaks California. In a strong El Niño, the subtropical jet stream, the river of fast air that steers Pacific storms, strengthens and drops south. In plain words, the storm highway moves south. NOAA describes it as fast moving storm systems coming off the Pacific and crossing the southern tier of states. Texas is the widest part of that tier. And Texas has something California does not: the Gulf of Mexico on its doorstep. Every Pacific storm that crosses the state can pull warm, wet Gulf air up ahead of it. Pacific energy, Gulf moisture. That combination is the whole story of this winter, and it is why the danger is not the cold.
 
 Visual: animated jet-stream diagram (normal vs El Niño), Gulf moisture arrows; popfig "STORM TRACK SOUTH"; chip "PACIFIC ENERGY + GULF MOISTURE". [src: 1, 4]
 
 ## CH3 — THE WINTER OF 97–98 (2:55–4:00)
 
 ### C3-S1 — narration
-> Take nineteen ninety seven. Houston Hobby airport measured seventy nine point nine seven inches of rain that year, the third wettest year in its history. Bush Intercontinental finished at one hundred thirty one percent of normal. Then, on January sixth of ninety eight, a cold front ran into tropical moisture and dropped ten to twelve inches in a day. Lake Houston crested at forty seven and a half feet, three feet over its spillway. Upstream, Lake Livingston peaked two feet above its normal pool and released sixty seven thousand cubic feet of water every second down the Trinity. The San Jacinto and the Navasota went over their banks in the same week. Subdivisions and roads went under across Harris, Montgomery and Liberty counties, and most rain gauges in the region finished the season at one hundred twenty to one hundred sixty percent of normal.
+> Take nineteen ninety seven. Take a guess how much rain Houston Hobby airport measured that year. Seventy nine point nine seven inches, the third wettest year in its history. Bush Intercontinental finished at one hundred thirty one percent of normal. Then, on January sixth of ninety eight, a cold front ran into tropical moisture and dropped ten to twelve inches in a day. Lake Houston crested at forty seven and a half feet, three feet over its spillway. Upstream, Lake Livingston peaked two feet above its normal pool and released sixty seven thousand cubic feet of water every second down the Trinity. The San Jacinto and the Navasota went over their banks in the same week. Subdivisions and roads went under across Harris, Montgomery and Liberty counties, and most rain gauges in the region finished the season at one hundred twenty to one hundred sixty percent of normal.
 
 Visual: Houston flood archive, Lake Houston spillway stills, FEMA 1998 photos; popfigs "79.97 IN", "131%", "JAN 6 · 12 IN", "3 FT OVER". [src: 3]
 
@@ -73,21 +73,21 @@ Visual: warning count graphic, NCEI report card still; popfigs "300+ WARNINGS", 
 ## CH4 — THE DECEMBER NOBODY EXPECTED (4:16–5:15)
 
 ### C4-S1 — narration
-> December twenty sixth, twenty fifteen. The day after Christmas, in the middle of the last super El Niño winter. Warm, humid Gulf air had been sitting over North Texas for days. A strong Pacific trough came in behind it, with a one hundred knot jet overhead. By nightfall, twelve tornadoes were on the ground across the Dallas area. One of them crossed Interstate thirty between Garland and Rowlett as an EF four, with winds near one hundred eighty miles an hour. Thirteen people died that night, ten of them along that one track, and four hundred sixty eight were hurt. Most of the victims were in cars, on the interstate, in the dark, in December, when nobody in North Texas is listening for a tornado siren. It was the first EF four ever recorded in Texas in the month of December. That is the first danger. In an El Niño winter, tornado season does not wait for spring.
+> December twenty sixth, twenty fifteen. The day after Christmas, in the middle of the last super El Niño winter. Warm, humid Gulf air had been sitting over North Texas for days. A strong Pacific trough came in behind it, with a one hundred knot jet overhead. By nightfall, twelve tornadoes were on the ground across the Dallas area. One of them crossed Interstate thirty between Garland and Rowlett as an EF four, with winds near one hundred eighty miles an hour. Thirteen people died that night, ten of them along that one track, and four hundred sixty eight were hurt. Most of the victims were in cars, on the interstate, in the dark, in December, when nobody in North Texas is listening for a tornado siren. It was the first EF four ever recorded in Texas in the month of December. A viewer in Lancaster County asked whether the sirens even run in December. They do. That is the first danger. In an El Niño winter, tornado season does not wait for spring.
 
 Visual: Garland/Rowlett aftermath (NWS survey photos PD, broadcast pulls credited), I-30 map, Dec 2015 radar still; popfigs "DEC 26, 2015", "12 TORNADOES", "EF4 · 180 MPH", "13 DEAD"; chip "FIRST DECEMBER EF4 IN TEXAS". [src: 5, 6, 7]
 
 ## CH5 — THE OTHER DANGER (5:15–6:10)
 
 ### C5-S1 — narration
-> The second danger is quieter and kills more people. Flash flooding. When storms arrive every few days, the ground never drains. Houston's bayous, the Hill Country creeks, the low water crossings on ranch roads: they fill from the bottom up. More than half of flood deaths in this country happen in vehicles, most of them at crossings that looked passable. In a winter that sends a Pacific storm across the state every few days, the crossing that was dry on Tuesday is the one that takes a car on Thursday. And unlike a tornado, a flood at a crossing gives no siren, no radar signature and no five minute warning. It gives a road that looks wet. Which is why the question is not whether it rains this winter. It is which of these two dangers lands on your county.
+> The second danger is quieter and kills more people. Flash flooding. When storms arrive every few days, the ground never drains. Houston's bayous, the Hill Country creeks, the low water crossings on ranch roads: they fill from the bottom up. More than half of flood deaths in this country happen in vehicles, most of them at crossings that looked passable. In a winter that sends a Pacific storm across the state every few days, the crossing that was dry on Tuesday is the one that takes a car on Thursday. And unlike a tornado, a flood at a crossing gives no siren, no radar signature and no five minute warning. It gives a road that looks wet. Which is why the question is not whether it rains this winter. It is which of these two dangers lands on your county. Think about your own drive home for a second. Is there a dip in the road that fills when it rains? Hold that thought, it comes back at the end.
 
 Visual: DATA-FEED HOLD satellite loop (NASA SVS AR or GOES Gulf moisture), then low-water crossing footage, bayou flood; popfigs "HALF OF FLOOD DEATHS", "IN VEHICLES"; chip "TURN AROUND · DON'T DROWN". [src: 8]
 
 ## CH6 — WHAT IS DIFFERENT NOW (6:10–7:05)
 
 ### C6-S1 — narration
-> Three things are different from twenty fifteen. First, the signal is stronger. That winter matched the old records. This one is forecast, at sixty nine percent, to beat them. Second, the odds are already on paper. NOAA's outlook has Texas in the above normal rain band for the end of the year, while the temperature map calls the state an even bet, not cold, not warm. Third, and this is the one to watch: wet plus near normal cold in North Texas is the ice storm recipe. The same storms that bring rain to Houston can arrive over Dallas as freezing rain when a shallow cold front is in place underneath. Ninety seven had it. Twenty sixteen had it. This winter has a bigger engine behind it.
+> Three things are different from twenty fifteen. First, the signal is stronger. That winter matched the old records. This one is forecast, at sixty nine percent, to beat them. Second, the odds are already on paper. NOAA's outlook has Texas in the above normal rain band for the end of the year, while the temperature map calls the state an even bet, not cold, not warm. Remember the storm highway from earlier? This is what it does to Dallas. Third, and this is the one to watch: wet plus near normal cold in North Texas is the ice storm recipe. The same storms that bring rain to Houston can arrive over Dallas as freezing rain when a shallow cold front is in place underneath. Ninety seven had it. Twenty sixteen had it. This winter has a bigger engine behind it.
 
 Visual: SST loop callback, OND precip + temp outlook maps labelled, DFW ice archive; popfigs "69%", "ABOVE NORMAL RAIN", "ICE RECIPE". [src: 1, 2, 4]
 
@@ -113,6 +113,6 @@ Visual: 4-row checklist card over footage; popfigs "1 YOUR CROSSING", "2 WARNING
 ## CLOSE (9:05–9:20)
 
 ### Z1-S1 — narration
-> The ocean has already made its move, and Texas is in the path. Two dangers, one shift in the sky, and the prepared house is the one still standing in March. Subscribe, and watch the California video next, because the same storms start there.
+> The ocean has already made its move, and Texas is in the path. Two dangers, one shift in the sky, and the prepared house is the one still standing in March. If you enjoyed this video, like and subscribe for more. I truly appreciate it. Comment the one thing you will do first before December, or any suggestions for improvements. I love reading all your comments. Make sure to check out the ebook in the description, and stay tuned for the next video. Good day.
 
 Visual: outro brand card; end screen pointer to the California video.
