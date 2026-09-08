@@ -4,6 +4,18 @@ Faceless YouTube channel: **narrated US weather/natural-disaster retrospectives*
 hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English, 13–23 min episodes (default band, not a cap — owner ordered 30 min for ep2; confirm per episode).
 **Separate from JP-market** — no shared code, only the same external tool pattern.
 
+## Two lanes, two skills (owner 2026-09-08)
+- **`/storm-episode`** — the weekly documentary (13–30 min, chapter blackouts, designed graphics, this file's
+  full pipeline). Skill: `skills/storm-episode/SKILL.md`.
+- **`/mini-storms`** — the fast lane: 8–12 min seasonal / breaking / outlier videos shipped in ≤3 h, stitched
+  news + PD + stock clips, red popfigs with a local scrim, news bug, NO chapter cards, one owner gate
+  (packaging). Skill: `skills/mini-storms/SKILL.md`; measured rulebook `references/mini-storms/FORMAT.md`;
+  templates `library/mini-storms/`; clip pools `library/mini-storms/<event>/` reused across angles.
+  Episode slugs `ms-<topic>` (the first two shipped as `br-elnino-california`, `br-elnino-texas`).
+  `sweep_episode.py`'s CTA gate is epN-only; mini-storms mount the CTA by hand at the story break (43 % on #1).
+  Narration always sits above every bed: score 0.13, ambience ≤0.20, checked with ebur128 per 15 s window.
+- Both skill folders are junctioned into `~/.claude/skills/` so a skill edit is a repo commit, and vice versa.
+
 ## Why this niche (validated 2026-07-21, references/)
 - Proven small-channel outliers: SkyWhisper 13 videos → 441K avg views in 9 months ($6.69 RPM);
   Dark Horizon 23 videos → 271K avg. Formula teardown in `references/script-teardown.md`.

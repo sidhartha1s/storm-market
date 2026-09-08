@@ -48,7 +48,7 @@ quoted section header.
 - hyperframes 0.8.x opens visible console windows on this box — the pin stays 0.7.109 until an upstream version spawns ffmpeg/ffprobe hidden. → §"ep6 ship"
 - Search `library/catalog-index.json` / `npx hyperframes catalog --query` before hand-authoring any graphic — MG library-first. → §"ep6 ship"
 
-## 2026-09-08 — breaking lane v1 (br-elnino-california, /storm-breaking first run)
+## 2026-09-08 — breaking lane v1 (br-elnino-california, /mini-storms first run)
 
 - **Structure vocabulary (owner correction):** HOOK is 3–10 s, one sentence paying off the title.
   Then INTRO to ~1:10 (stakes, open loops, promise). Then chapters. A 45 s "hook" was rejected.
@@ -69,7 +69,7 @@ quoted section header.
   zoompan mp4 (`ffmpeg -loop 1 ... zoompan`) — passes as video and still moves.
 - **Pexels API key in ~/.claude/.env returns 403 (dead); Pixabay key works.** Wikimedia Commons
   API rate-limits after ~10 file fetches (429) — batch with a pause.
-- Reuse pool for the whole El Niño series: `library/breaking/el-nino-2026/` (+ provenance.csv).
+- Reuse pool for the whole El Niño series: `library/mini-storms/el-nino-2026/` (+ provenance.csv).
 
 ## 2026-09-08 — breaking lane, first video (br-elnino-california): owner corrections + measured facts
 
