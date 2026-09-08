@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  BREAKING-LANE TEMPLATE: stat-card.html
+  WHAT IT IS: left-side glass list card (up to 4 numbered rows) that reveals one row per spoken cue
+  over track-1 footage. Used for checklists ("4 things to do") and NOT/YES splits. Lineage:
+  inhouse/stat-panel.html (glass recipe) — narrower, left-anchored so the popfig zone (top 38%)
+  and the bottom-left chip/bug stay clear.
+
+  PARAMS (EDIT-ME): eyebrow, rows (n, label, sub), the four `at` reveal times (word-synced).
+  EXIT: slide left (x:-900) + autoAlpha 0, 0.5 s, ~0.6 s before the host window ends.
+  COPY into episodes/<slug>/compositions/ and re-prefix ids per instance.
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; }
+  .card { position:absolute; left:110px; top:150px; width:860px; box-sizing:border-box; padding:34px 44px 30px;
+    background:rgba(10,16,24,0.58); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:6px; color:#d0121f; }
+  .row { display:flex; align-items:flex-start; gap:22px; margin-top:22px; }
+  .n { flex:0 0 64px; font-family:'AbrilFig',Georgia,serif; font-size:64px; line-height:1; color:#d0121f; text-shadow:0 3px 14px rgba(0,0,0,0.8); }
+  .lab { font-family:'Arial Black',Arial,sans-serif; font-size:36px; line-height:1.1; }
+  .sub { font-size:22px; color:#c8d3e0; margin-top:6px; line-height:1.3; }
+</style>
+<div id="root" data-composition-id="statcard" data-width="1920" data-height="1080">
+  <div class="card" id="statcard-card">
+    <div class="eye" id="statcard-eye">BEFORE DECEMBER</div>
+    <div class="row" id="statcard-r1"><div class="n">1</div><div><div class="lab">YOUR CROSSING</div><div class="sub">decide the other road now, not at night in the rain</div></div></div>
+    <div class="row" id="statcard-r2"><div class="n">2</div><div><div class="lab">WARNINGS ON</div><div class="sub">a weather radio or app, north of Waco especially</div></div></div>
+    <div class="row" id="statcard-r3"><div class="n">3</div><div><div class="lab">WARNINGS ON</div><div class="sub">the ditch and the drains on your street</div></div></div>
+    <div class="row" id="statcard-r4"><div class="n">4</div><div><div class="lab">INSURANCE</div><div class="sub">most standard policies do not cover flood</div></div></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#statcard-";
+  tl.set([P+"r1",P+"r2",P+"r3",P+"r4"], {autoAlpha:0}, 0);
+  tl.fromTo(P+"card", {x:-900, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 0);
+  /* EDIT-ME: re-anchor each `at` to words.json */
+  tl.fromTo(P+"r1", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 2.8);
+  tl.fromTo(P+"r2", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 14.32);
+  tl.fromTo(P+"r3", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 25.52);
+  tl.fromTo(P+"r4", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 28.52);
+  tl.to(P+"card", {x:-900, autoAlpha:0, duration:0.5, ease:"power3.in"}, 34.84); /* EDIT-ME: host end − 0.6 */
+  tl.fromTo(P+"card", {y:0}, {y:-6, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:21}, 0.6); /* breathing so the card never idles */
+  tl.to(P+"eye", {letterSpacing:"8px", duration:1.2, ease:"power3.out"}, 0.2);
+  window.__timelines["statcard"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
