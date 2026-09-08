@@ -98,6 +98,21 @@ quoted section header.
 - Draft render of a 9:45 cut: 13 min wall-clock at 3 workers (frames ~9 fps at 15 fps draft).
 - Runtime log for the 3 h SLA lives in `episodes/br-elnino-california/runtime.md`.
 
+- **Owner rules added after the v2/v3 previews (2026-09-08):** narration always above every bed (score 0.13,
+  ambience ≤0.20, rumble 0.16; ebur128 per-15 s momentary spread ≤3 LU across the narration span); eyebrow
+  under a red popfig = local radial scrim + 38 px Arial Black with a stroke (no glass); film layer (vignette,
+  grade, grain, dust) OFF during the CTA window so the QR reads. "Breaking" renamed **mini-storms**; both
+  channel skills now live in `skills/` and are junctioned into `~/.claude/skills/`.
+- **Video #2 (ms-elnino-texas) build recipe that worked:** cut lists hand-authored per narration segment as
+  (kind, src, dur, id, callback); a scratch helper (never committed) computes butt-cut starts from the
+  narration schedule and fills the last slot; overlays hand-authored as (kind, id, at, hold, big, sub).
+  Total authoring ~25 min. Media probes in `sweep_episode.py` report "frame extraction failed" while a full
+  render is running on the box — re-run the sweep on a quiet box before believing it.
+- **Full renders refuse (exit 2) while a TTS run or a sourcing agent's ffmpeg is alive** (heavy-process
+  limit 2). Sequence: TTS → sourcing → gates → render; never overlap them on this 16 GB box.
+- **Gemini (nanobanana) free tier is exhausted** → thumbnail candidates come from real render frames
+  (`thumbs/frame-cand-*.png`) until a paid key exists.
+
 ## 2026-08-30 — the ebook CTA is a channel asset + a must-keep contract (owner order, ep4 rewire kickoff)
 
 1. **The CTA was never in the pipeline.** ep2's Paul CTA was spliced into the finished mp4 by the
