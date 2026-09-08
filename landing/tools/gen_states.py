@@ -297,7 +297,7 @@ def build_state_page(row):
     faq3 = f"Insurance in {esc(state)} is regulated by {esc(doi_name)}."
 
     verified = row["verified_on"].strip()
-    verified_html = (f'<p style="font-family:var(--mono);font-size:12.5px;color:var(--faded);'
+    verified_html = (f'<p class="verified" style="font-family:var(--mono);font-size:12.5px;color:var(--faded);'
                       f'margin-top:22px">Data verified {esc(verified)}, sources linked inline.</p>'
                       if verified else "")
 
