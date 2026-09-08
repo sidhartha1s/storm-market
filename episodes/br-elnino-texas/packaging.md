@@ -22,8 +22,8 @@ El Niño video ≥5 min on YouTube; general "winter forecast" videos at 87k–45
 - NWS Fort Worth: the **December 26, 2015** outbreak (strong El Niño winter) — 12 tornadoes, 13 dead, the
   Garland–Rowlett **EF4**, the first EF4 ever recorded in Texas in December (Wikipedia/Tornado Talk; NWS ranks it
   #4 for December tornado counts in 24 h).
-- NOAA CPC Oct–Dec 2026 outlook: Texas sits in the **"Above" precipitation** band and the **"Below" temperature**
-  band for the southern tier (map, issued Aug 20, 2026).
+- NOAA CPC Oct–Dec 2026 outlook (issued Aug 20, 2026): Texas sits in the **"Above" precipitation** band; the
+  temperature map has Texas at **"Equal Chances"** (checked on the map itself, not assumed).
 
 ## Structure and word budget (158 wpm measured on the California script ⇒ 2.6 words/s; target 9:20)
 | Section | Time | Words | Job |
