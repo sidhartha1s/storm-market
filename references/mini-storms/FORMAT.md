@@ -63,6 +63,22 @@ atempo 1.15): 8:30 ≈ 1,260 words, 9:30 ≈ 1,410, 12:00 ≈ 1,780. Table goes 
 - Pool: `library/mini-storms/<event>/` + provenance.csv; second and later angles reorder and retrim
   the same pool, never the same sequence.
 
+## Interaction beats (owner 2026-09-09: "keep them, use actively"; placed by judgment while scripting, never by code)
+- **"Where are you watching from?"** is in every video, one form or another (spoken once, pinned as the first comment
+  on upload). Topic questions are fine too; each must be answerable in three words without finishing the video.
+- **Breadcrumbs inside hard chapters** (5–10 words, ≤2 per chapter): signpost ("Three things. Here is one."),
+  technical-then-plain ("the subtropical jet strengthens; in plain words, the storm highway moves south"),
+  guess-before-reveal (a beat of silence before the number), the one-number rule, and callbacks to an earlier chapter.
+- **Spacing is tailored, not scheduled:** never inside the first 60 s, never inside a number run, never two beats
+  within ~90 s, never back to back. The writer reasons about where the narration already breathes.
+- **Tone split:** narration stays the narrator. The interaction lines are the chill uncle — one warm sentence, no
+  lecture, no "wrong" twice, no principal energy. Comments CTA (~10 s) sits at the start of the last chapter, not the
+  outro; the close stays warm line + subscribe.
+- **After upload (owner):** two comments five minutes apart — "Where are you watching from?" (pinned) and a next-topic
+  vote; reply to the first ten comments within the hour.
+- Cost: ~60–80 words (~30 s) per video. Not filler: every beat either feeds the next video (county names, topic
+  votes) or lowers the thinking load on a hard chapter.
+
 ## Audio
 - Narration 150–160 wpm delivered. Pocket-TTS Pharaoh lands ~129 natively; use `atempo 1.15–1.2`
   in the breaking lane only (documentary lane stays native). Verify by ear on segment 1.
