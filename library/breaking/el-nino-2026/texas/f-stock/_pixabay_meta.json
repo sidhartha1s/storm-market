@@ -1,0 +1,56 @@
+[
+  {
+    "query": "highway rain traffic",
+    "file": "texas/f-stock/rain_texas_highway.mp4",
+    "pixabay_id": 30533,
+    "user": "tiburi",
+    "page_url": "https://pixabay.com/videos/id-30533/",
+    "duration": 15,
+    "size": "1920x1080"
+  },
+  {
+    "query": "flooded street car",
+    "file": "texas/f-stock/flooded_street_car.mp4",
+    "pixabay_id": 19627,
+    "user": "JoteF",
+    "page_url": "https://pixabay.com/videos/id-19627/",
+    "duration": 17,
+    "size": "1920x1080"
+  },
+  {
+    "query": "wall cloud tornado sky",
+    "file": "texas/f-stock/tornado_wall_cloud_sky.mp4",
+    "pixabay_id": 2142,
+    "user": "FindingFootage",
+    "page_url": "https://pixabay.com/videos/id-2142/",
+    "duration": 36,
+    "size": "1920x1080"
+  },
+  {
+    "query": "ice branches freezing rain",
+    "file": "texas/f-stock/freezing_rain_ice_branches.mp4",
+    "pixabay_id": 15245,
+    "user": "max_bbb",
+    "page_url": "https://pixabay.com/videos/id-15245/",
+    "duration": 23,
+    "size": "1920x1080"
+  },
+  {
+    "query": "dry lake bed drought",
+    "file": "texas/f-stock/dry_lakebed_reservoir.mp4",
+    "pixabay_id": 276144,
+    "user": "Ian5152",
+    "page_url": "https://pixabay.com/videos/id-276144/",
+    "duration": 29,
+    "size": "1920x1080"
+  },
+  {
+    "query": "gulf coast storm waves",
+    "file": "texas/f-stock/gulf_coast_storm_surf.mp4",
+    "pixabay_id": 213026,
+    "user": "McPix22",
+    "page_url": "https://pixabay.com/videos/id-213026/",
+    "duration": 25,
+    "size": "1920x1080"
+  }
+]
