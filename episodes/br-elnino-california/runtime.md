@@ -8,4 +8,5 @@
 | pool ready (PD maps/loops, 9 Commons stills, 6 drought stills, 8 Pixabay clips, 6 broadcast reels scene-split to 51 cuts), comps instantiated | 2026-09-08 03:08 | 0:38 |
 | static gates green (sweep/lint/blank/beat/overlap/audio/media_budget/preflight; graphics_qc false-negative on 1.6 s chapter cards, screenshots verified) — DRAFT RENDER launched | 2026-09-08 03:27 | 0:57 |
 | v1 draft preview shared (owner: new CTA, drop chapter cards) | 2026-09-08 03:52 | 1:22 |
-| v2: CTA v5 staged, cards removed + retimed, 2 clip swaps, gates green, v2 draft render launched | 2026-09-08 12:54 | 10:24 |
+| v2: CTA v5 staged, cards removed + retimed, 2 clip swaps, gates green, v2 draft render launched | 2026-09-08 12:54 | 1:22 + ~9 h owner review gap; v2 work itself 12:22→12:54 = 0:32 |
+| v2 draft rendered (13:11) + verified (blackdetect/silence/freeze, frame sweep, CTA audio) | 2026-09-08 13:13 | v2 work 12:22→13:16 = 0:54 |
