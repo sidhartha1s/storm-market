@@ -19,11 +19,15 @@
     .bc { filter: saturate(0.85) contrast(1.08) brightness(0.95); } /* unified broadcast grade */
     /* ---- Abril figure popup (channel device: red, text-shadow, ≤3 words, mid-screen) ---- */
     @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
-    .popfig { position: absolute; left: 0; right: 0; top: 36%; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; }
+    .popfig { position: absolute; left: 0; right: 0; top: 36%; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; isolation: isolate; }
     .popfig .pf-big { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 150px; color: #d0121f; letter-spacing: 0.04em;
       text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
-    .popfig .pf-sub { display: block; margin-top: 10px; font-family: Arial, sans-serif; font-weight: 700; font-size: 32px; color: #e8e3d8;
-      letter-spacing: 0.42em; text-shadow: 0 0 14px rgba(0,0,0,0.95), 0 3px 10px #000; }
+    .popfig .pf-sub { display: block; margin-top: 12px; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 38px; color: #f4f0e8;
+      letter-spacing: 0.3em; -webkit-text-stroke: 1px rgba(0,0,0,0.85); paint-order: stroke fill;
+      text-shadow: 0 0 18px rgba(0,0,0,1), 0 0 40px rgba(0,0,0,0.9), 0 3px 10px #000; }
+    /* soft local scrim behind the whole popfig so it reads over maps/bright footage — no box (owner 2026-09-08) */
+    .popfig::before { content: ''; position: absolute; left: 14%; right: 14%; top: -90px; bottom: -70px; z-index: -1;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.32) 40%, rgba(0,0,0,0) 72%); }
     .popfig-amber .pf-big { color: #d8a13a; text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(90,60,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
     /* ---- bottom-left running data chip (above the bug strip) ---- */
     .chip { position: absolute; left: 110px; bottom: 130px; z-index: 6; font-family: 'Arial Black', Arial, sans-serif; font-size: 34px; letter-spacing: 2px; color: #f4f0e8;
@@ -77,12 +81,12 @@
   <section class="clip blackout" id="bo-cta-out" data-start="260.299" data-duration="0.961" data-track-index="1"></section>
 
   <!-- ============ MUSIC + BEDS (one tense bed under narration, ducked out for the CTA) ============ -->
-  <audio id="sx-mus-a" src="media/score-act5-tension.mp3" data-bed="" data-start="0.0" data-duration="244.16" data-volume="0.2"></audio>
-  <audio id="sx-mus-b" src="media/score-act3-urgent.mp3" data-bed="" data-start="259.51" data-duration="209.75" data-volume="0.18"></audio>
-  <audio id="sx-mus-c" src="media/score-act6-close.mp3" data-bed="" data-start="469.26" data-duration="99.74" data-volume="0.22"></audio>
-  <audio id="sx-rumble-hook" src="media/04_distant_storm_rumble.mp3" data-bed="" data-start="0.0" data-duration="69.5" data-volume="0.22"></audio>
-  <audio id="sx-rain-c3" src="media/rain-loop.mp3" data-bed="" data-start="180.26" data-duration="63.9" data-volume="0.32"></audio>
-  <audio id="sx-rain-c7" src="media/rain-loop.mp3" data-bed="" data-start="462.75" data-duration="22.95" data-volume="0.28"></audio>
+  <audio id="sx-mus-a" src="media/score-act5-tension.mp3" data-bed="" data-start="0.0" data-duration="244.16" data-volume="0.13"></audio>
+  <audio id="sx-mus-b" src="media/score-act3-urgent.mp3" data-bed="" data-start="259.51" data-duration="209.75" data-volume="0.13"></audio>
+  <audio id="sx-mus-c" src="media/score-act6-close.mp3" data-bed="" data-start="469.26" data-duration="99.74" data-volume="0.16"></audio>
+  <audio id="sx-rumble-hook" src="media/04_distant_storm_rumble.mp3" data-bed="" data-start="0.0" data-duration="69.5" data-volume="0.16"></audio>
+  <audio id="sx-rain-c3" src="media/rain-loop.mp3" data-bed="" data-start="180.26" data-duration="63.9" data-volume="0.2"></audio>
+  <audio id="sx-rain-c7" src="media/rain-loop.mp3" data-bed="" data-start="462.75" data-duration="22.95" data-volume="0.18"></audio>
 
   <!-- chapter cards removed (owner 2026-09-08: no chapter screens; butt-cuts between chapters) -->
 
@@ -414,6 +418,11 @@ window.__timelines = window.__timelines || {};
     "FOUR THINGS TO DO BEFORE DECEMBER" ]);
 
   filmLayer(tl, DUR);
+  /* ---- CTA window: film layer off (owner 2026-09-08: edges grainy/dark, QR dim) ---- */
+  tl.to(["#vignette", "#grade", "#grain", ".dust"], { autoAlpha: 0, duration: 0.3 }, 245.16);
+  tl.to(["#vignette", "#grade", ".dust"], { autoAlpha: 1, duration: 0.3 }, 260.299);
+  tl.to("#grain", { autoAlpha: 0.10, duration: 0.3 }, 260.299);
+
   window.__timelines["br-elnino-california"] = tl;
 })();
 </script>
