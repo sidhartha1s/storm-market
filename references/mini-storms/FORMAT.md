@@ -60,7 +60,7 @@ atempo 1.15): 8:30 ≈ 1,260 words, 9:30 ≈ 1,410, 12:00 ≈ 1,780. Table goes 
   licence, so still no chaser / independent videographer footage without a licence).
 - Broadcaster logos stay burned in; pulls 3–5 s each, never the same cut twice.
 - Stills: 3–6 % pan / push over the hold, ≤4 s static ever.
-- Pool: `library/breaking/<event>/` + provenance.csv; second and later angles reorder and retrim
+- Pool: `library/mini-storms/<event>/` + provenance.csv; second and later angles reorder and retrim
   the same pool, never the same sequence.
 
 ## Audio
