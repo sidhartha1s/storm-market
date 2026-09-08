@@ -39,6 +39,10 @@ carol = [q for q in recent if "Carol" in q][0]
 body = body.replace(carol + "\n          ", "", 1) if (carol + "\n          ") in body else body.replace(carol, "", 1)
 assert len(re.findall(r'<blockquote class="quote recent">', body)) == 3
 
+# owner mobile QC: page shots are unreadable at phone width, so each opens full size in a new tab
+body = re.sub(r'(<figure><img src="(assets/inside-[a-z]+\.webp)"[^>]*>)', lambda m: '<figure><a href="' + m.group(2) + '" target="_blank" rel="noopener">' + m.group(1)[len("<figure>"):] + "</a>", body)
+assert body.count('target="_blank" rel="noopener"><img src="assets/inside-') == 4
+
 # inner pages link the order form as /#offer
 body = body.replace('<section class="sheet" id="sheet-get">', '<section class="sheet" id="sheet-get"><span id="offer"></span>', 1)
 
