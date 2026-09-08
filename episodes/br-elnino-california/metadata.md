@@ -19,17 +19,17 @@ Sources: NOAA news release (El Niño forms), NOAA Climate Prediction Center ENSO
 
 Chapters
 00:00 The number
-00:08 What 1998 did, and the question
-01:05 What NOAA declared
-02:05 Why California
-02:58 February 1998
+00:09 What 1998 did, and the question
+01:09 What NOAA declared
+02:08 Why California
+03:00 February 1998
 04:05 The Storm-Ready Home (Paul)
-04:20 The winter of 1983
-05:03 The one that never came
-06:06 What is different now
-07:10 Rivers in the sky
-08:10 What is not happening, and the four things
-09:05 Close
+04:21 The winter of 1983
+05:02 The one that never came
+06:05 What is different now
+07:08 Rivers in the sky
+08:07 What is not happening, and the four things
+09:09 Close
 
 Courtesy / credits
 NOAA / NWS / Climate Prediction Center · NASA Scientific Visualization Studio (atmospheric river loops 2014, 2017) · USGS · FEMA (Dave Gatley, February–March 1998) · CSU/CIRA and NOAA satellite (atmospheric rivers 2024–25) · NASA Earth Observatory (Oroville, Shasta) · Wikimedia Commons contributors (Old Route 49 flood) · Pixabay (stock b-roll: Afzaal0001 and others, see provenance.csv) · Broadcast excerpts courtesy AP Archive (1998), CBS Evening News and CBS Mornings (2015), FOX Weather and KTLA 5 (2023), used briefly under fair use with commentary.
