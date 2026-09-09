@@ -47,6 +47,9 @@
     .bugstrip .bk { display: flex; align-items: center; padding: 0 34px; background: #d0121f; color: #fff; font-family: 'Arial Black', Arial, sans-serif; font-size: 34px; letter-spacing: 5px; }
     .bugstrip .bw { display: flex; align-items: center; padding: 0 26px; color: #d8a13a; font-family: Georgia, serif; font-style: italic; font-size: 26px; border-right: 1px solid rgba(255,255,255,0.14); white-space: nowrap; }
     .bugstrip .bh { display: flex; align-items: center; padding: 0 30px; color: #f4f0e8; font-weight: 700; font-size: 34px; letter-spacing: 1px; white-space: nowrap; overflow: hidden; }
+    /* ---- presenter circle (Paul PiP, phase 2: talk/idle loops gated on narration spans; owner 2026-09-09) ---- */
+    .pip { position: absolute; left: 1640px; top: 708px; width: 240px; height: 240px; inset: auto; border-radius: 50%;
+      object-fit: cover; z-index: 8; box-shadow: 0 0 0 4px #d0121f, 0 10px 30px rgba(0,0,0,0.55); }
     /* ---- film layer ---- */
     #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90; background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
     #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.10; mix-blend-mode: overlay; }
@@ -55,41 +58,47 @@
   </style>
 </head>
 <body>
-<div id="root" data-composition-id="ms-elnino-texas" data-start="0" data-width="1920" data-height="1080" data-duration="625.0" data-fps="30">
+<div id="root" data-composition-id="ms-elnino-texas" data-start="0" data-width="1920" data-height="1080" data-duration="623.0" data-fps="30">
 
   <!-- ============ NARRATION (14) — audio/timeline.json ============ -->
   <audio id="nx-h1s1" src="audio/h1-s1.wav" data-start="0.0" data-duration="10.64" data-volume="1"></audio>
   <audio id="nx-i1s1" src="audio/i1-s1.wav" data-start="11.09" data-duration="28.28" data-volume="1"></audio>
-  <audio id="nx-i1s2" src="audio/i1-s2.wav" data-start="39.82" data-duration="33.52" data-volume="1"></audio>
-  <audio id="nx-c1s1" src="audio/c1-s1.wav" data-start="73.79" data-duration="35.96" data-volume="1"></audio>
-  <audio id="nx-c2s1" src="audio/c2-s1.wav" data-start="110.2" data-duration="51.96" data-volume="1"></audio>
-  <audio id="nx-c3s1" src="audio/c3-s1.wav" data-start="162.61" data-duration="58.4" data-volume="1"></audio>
-  <audio id="nx-c3s2" src="audio/c3-s2.wav" data-start="221.46" data-duration="32.48" data-volume="1"></audio>
-  <audio id="nx-c4s1" src="audio/c4-s1.wav" data-start="271.529" data-duration="66.8" data-volume="1"></audio>
-  <audio id="nx-c5s1" src="audio/c5-s1.wav" data-start="338.779" data-duration="62.0" data-volume="1"></audio>
-  <audio id="nx-c6s1" src="audio/c6-s1.wav" data-start="401.229" data-duration="55.12" data-volume="1"></audio>
-  <audio id="nx-c7s1" src="audio/c7-s1.wav" data-start="456.799" data-duration="59.12" data-volume="1"></audio>
-  <audio id="nx-c8s1" src="audio/c8-s1.wav" data-start="516.369" data-duration="27.28" data-volume="1"></audio>
-  <audio id="nx-c8s2" src="audio/c8-s2.wav" data-start="544.099" data-duration="35.84" data-volume="1"></audio>
-  <audio id="nx-z1s1" src="audio/z1-s1.wav" data-start="580.389" data-duration="33.52" data-volume="1"></audio>
+  <audio id="nx-i1s2" src="audio/i1-s2.wav" data-start="39.82" data-duration="31.44" data-volume="1"></audio>
+  <audio id="nx-c1s1" src="audio/c1-s1.wav" data-start="71.71" data-duration="35.96" data-volume="1"></audio>
+  <audio id="nx-c2s1" src="audio/c2-s1.wav" data-start="108.12" data-duration="51.96" data-volume="1"></audio>
+  <audio id="nx-c3s1" src="audio/c3-s1.wav" data-start="160.53" data-duration="58.4" data-volume="1"></audio>
+  <audio id="nx-c3s2" src="audio/c3-s2.wav" data-start="219.38" data-duration="32.48" data-volume="1"></audio>
+  <audio id="nx-c4s1" src="audio/c4-s1.wav" data-start="269.449" data-duration="66.8" data-volume="1"></audio>
+  <audio id="nx-c5s1" src="audio/c5-s1.wav" data-start="336.699" data-duration="62.0" data-volume="1"></audio>
+  <audio id="nx-c6s1" src="audio/c6-s1.wav" data-start="399.149" data-duration="55.12" data-volume="1"></audio>
+  <audio id="nx-c7s1" src="audio/c7-s1.wav" data-start="454.719" data-duration="59.12" data-volume="1"></audio>
+  <audio id="nx-c8s1" src="audio/c8-s1.wav" data-start="514.289" data-duration="27.28" data-volume="1"></audio>
+  <audio id="nx-c8s2" src="audio/c8-s2.wav" data-start="542.019" data-duration="35.84" data-volume="1"></audio>
+  <audio id="nx-z1s1" src="audio/z1-s1.wav" data-start="578.309" data-duration="33.52" data-volume="1"></audio>
 
-  <!-- ============ CTA (config channel.cta v5; 255.39 = 41% — after CH3, hook > CTA > payoff) ============ -->
-  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v5-sep6.mp4" data-start="255.39" data-duration="15.139" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
-  <section class="clip blackout" id="bo-cta-in" data-start="254.39" data-duration="1.0" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-cta-out" data-start="270.529" data-duration="1.0" data-track-index="1"></section>
+  <!-- ============ CTA (config channel.cta v5; 253.31 = 41% — after CH3, hook > CTA > payoff) ============ -->
+  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v5-sep6.mp4" data-start="253.31" data-duration="15.139" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
+  <section class="clip blackout" id="bo-cta-in" data-start="252.31" data-duration="1.0" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-cta-out" data-start="268.449" data-duration="1.0" data-track-index="1"></section>
 
   <!-- ============ MUSIC + BEDS (narration above every bed: score 0.13, ambience ≤0.20) ============ -->
-  <audio id="sx-mus-a" src="media/score-act5-tension.mp3" data-bed="" data-start="0" data-duration="254.39" data-volume="0.13"></audio>
-  <audio id="sx-mus-b" src="media/score-act3-urgent.mp3" data-bed="" data-start="271.529" data-duration="198.471" data-volume="0.13"></audio>
-  <audio id="sx-mus-c" src="media/score-act6-close.mp3" data-bed="" data-start="470.0" data-duration="155.0" data-volume="0.16"></audio>
+  <audio id="sx-mus-a" src="media/score-act5-tension.mp3" data-bed="" data-start="0" data-duration="252.31" data-volume="0.13"></audio>
+  <audio id="sx-mus-b" src="media/score-act3-urgent.mp3" data-bed="" data-start="269.449" data-duration="200.551" data-volume="0.13"></audio>
+  <audio id="sx-mus-c" src="media/score-act6-close.mp3" data-bed="" data-start="470.0" data-duration="153.0" data-volume="0.16"></audio>
   <audio id="sx-rumble-hook" src="media/04_distant_storm_rumble.mp3" data-bed="" data-start="0" data-duration="66.2" data-volume="0.16"></audio>
   <audio id="sx-rain-c3" src="media/rain-loop.mp3" data-bed="" data-start="150.49" data-duration="89.3" data-volume="0.2"></audio>
 
+
+  <!-- ============ PRESENTER CIRCLE (track 4; hidden in the hook, the Paul CTA window and the close) ============ -->
+  <video id="pip-idle-a" class="pip" src="media/pip/paul-idle-a.mp4" data-start="11.09" data-duration="241.22" data-track-index="6" muted></video>
+  <video id="pip-talk-a" class="pip" src="media/pip/paul-talk-a.mp4" data-start="11.09" data-duration="241.22" data-track-index="7" data-callback="presenter loop, talking" muted></video>
+  <video id="pip-idle-b" class="pip" src="media/pip/paul-idle-b.mp4" data-start="269.449" data-duration="342.38" data-track-index="6" data-callback="presenter loop, listening" muted></video>
+  <video id="pip-talk-b" class="pip" src="media/pip/paul-talk-b.mp4" data-start="269.449" data-duration="342.38" data-track-index="7" data-callback="presenter loop, talking" muted></video>
   <!-- ============ NEWS BUG (track 3, inline; off during the CTA and the close) ============ -->
-  <section class="clip" id="bug-a" data-start="11.09" data-duration="243.3" data-track-index="3">
+  <section class="clip" id="bug-a" data-start="11.09" data-duration="241.22" data-track-index="3">
     <div class="bugstrip" id="bugstrip-a"><div class="bk">WARNING</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-a"></div></div>
   </section>
-  <section class="clip" id="bug-b" data-start="271.529" data-duration="308.86" data-track-index="3">
+  <section class="clip" id="bug-b" data-start="269.449" data-duration="308.86" data-track-index="3">
     <div class="bugstrip" id="bugstrip-b"><div class="bk">WARNING</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-b"></div></div>
   </section>
 
@@ -110,113 +119,113 @@
   <video id="vx-tx-rain" src="media/stock-tx/rain_texas_highway.mp4" data-start="49.42" data-duration="5.0" data-track-index="1" muted></video>
   <video id="vx-ar2014a" src="media/ar-loop-2014.mp4" data-start="54.42" data-duration="5.6" data-track-index="1" muted></video>
   <video id="vx-wfaa-map" class="bc" src="media/bc-tx/uEMIziz-3Zw-s00.mp4" data-start="60.02" data-duration="4.0" data-track-index="1" muted></video>
-  <video id="vx-drylake" src="media/stock-tx/dry_lakebed_reservoir.mp4" data-start="64.02" data-duration="9.77" data-track-index="1" muted></video>
+  <video id="vx-drylake" src="media/stock-tx/dry_lakebed_reservoir.mp4" data-start="64.02" data-duration="7.69" data-track-index="1" muted></video>
 
-  <video id="vx-sstloop" src="media/sst-weekly-loop.mp4" data-start="73.79" data-duration="25.4" data-track-index="1" muted></video>
-  <video id="vx-outlook-ond" src="media/ond2026_precip_outlook_hold.mp4" data-start="99.19" data-duration="11.01" data-track-index="1" muted></video>
+  <video id="vx-sstloop" src="media/sst-weekly-loop.mp4" data-start="71.71" data-duration="25.4" data-track-index="1" muted></video>
+  <video id="vx-outlook-ond" src="media/ond2026_precip_outlook_hold.mp4" data-start="97.11" data-duration="11.01" data-track-index="1" muted></video>
 
-  <video id="vx-ar2017a" src="media/ar-loop-2017.mp4" data-start="110.2" data-duration="8.9" data-track-index="1" muted></video>
-  <video id="vx-clouds" src="media/stock/storm_clouds.mp4" data-start="119.1" data-duration="5.0" data-track-index="1" muted></video>
-  <video id="vx-outlook-son" src="media/son2026_precip_outlook_hold.mp4" data-start="124.1" data-duration="8.4" data-track-index="1" muted></video>
-  <video id="vx-gulf-surf2" src="media/stock-tx/gulf_coast_storm_surf.mp4" data-start="132.5" data-duration="5.0" data-track-index="1" data-callback="the Gulf on its doorstep" muted></video>
-  <video id="vx-tx-rain2" src="media/stock-tx/rain_texas_highway.mp4" data-start="137.5" data-duration="5.0" data-track-index="1" data-callback="Gulf air ahead of the storm" muted></video>
-  <video id="vx-ar2014b" src="media/ar-loop-2014.mp4" data-start="142.5" data-duration="7.0" data-track-index="1" data-callback="Pacific energy meets Gulf moisture" muted></video>
-  <video id="vx-wall2" src="media/stock-tx/tornado_wall_cloud_sky.mp4" data-start="149.5" data-duration="13.11" data-track-index="1" data-callback="why the danger is not the cold" muted></video>
+  <video id="vx-ar2017a" src="media/ar-loop-2017.mp4" data-start="108.12" data-duration="8.9" data-track-index="1" muted></video>
+  <video id="vx-clouds" src="media/stock/storm_clouds.mp4" data-start="117.02" data-duration="5.0" data-track-index="1" muted></video>
+  <video id="vx-outlook-son" src="media/son2026_precip_outlook_hold.mp4" data-start="122.02" data-duration="8.4" data-track-index="1" muted></video>
+  <video id="vx-gulf-surf2" src="media/stock-tx/gulf_coast_storm_surf.mp4" data-start="130.42" data-duration="5.0" data-track-index="1" data-callback="the Gulf on its doorstep" muted></video>
+  <video id="vx-tx-rain2" src="media/stock-tx/rain_texas_highway.mp4" data-start="135.42" data-duration="5.0" data-track-index="1" data-callback="Gulf air ahead of the storm" muted></video>
+  <video id="vx-ar2014b" src="media/ar-loop-2014.mp4" data-start="140.42" data-duration="7.0" data-track-index="1" data-callback="Pacific energy meets Gulf moisture" muted></video>
+  <video id="vx-wall2" src="media/stock-tx/tornado_wall_cloud_sky.mp4" data-start="147.42" data-duration="13.11" data-track-index="1" data-callback="why the danger is not the cold" muted></video>
 
-  <section class="clip still-wrap" id="c-ike08b" data-start="162.61" data-duration="5.0" data-track-index="1" data-callback="Houston under water, the rain total"><img id="kb-c-ike08b" src="media/stills-tx/fema_ike_flood_houston_2008.jpg" alt=""></section>
-  <video id="vx-heavyrain" src="media/stock/heavy_rain_street.mp4" data-start="167.61" data-duration="5.0" data-track-index="1" muted></video>
-  <video id="vx-ktla-truck0" class="bc" src="media/bc/scKFW8Ik1OE-s03.mp4" data-start="172.61" data-duration="5.5" data-track-index="1" data-callback="January sixth, ten to twelve inches" muted></video>
-  <section class="clip still-wrap" id="c-hou16b" data-start="178.11" data-duration="5.0" data-track-index="1" data-callback="Lake Houston over its spillway"><img id="kb-c-hou16b" src="media/stills-tx/houston_flood_may_2016.jpg" alt=""></section>
-  <video id="vx-floodroad2" src="media/stock/flooded_road.mp4" data-start="183.11" data-duration="5.1" data-track-index="1" data-callback="the crest" muted></video>
-  <video id="vx-khou" class="bc" src="media/bc-tx/ua5RWX2Tkw0-s00.mp4" data-start="188.21" data-duration="7.0" data-track-index="1" muted></video>
-  <video id="vx-gutter" src="media/stock/rain_gutter_drain.mp4" data-start="195.21" data-duration="6.0" data-track-index="1" muted></video>
-  <video id="vx-cbs-carflood" class="bc" src="media/bc/1ipFyV6rduE-s07.mp4" data-start="201.21" data-duration="2.55" data-track-index="1" muted></video>
-  <video id="vx-fox-river" class="bc" src="media/bc/x7_5n0Q9iMs-s00.mp4" data-start="203.76" data-duration="4.7" data-track-index="1" muted></video>
-  <video id="vx-ktla-street" class="bc" src="media/bc/scKFW8Ik1OE-s10.mp4" data-start="208.46" data-duration="3.0" data-track-index="1" muted></video>
-  <video id="vx-cbs-van0" class="bc" src="media/bc/1ipFyV6rduE-s08.mp4" data-start="211.46" data-duration="3.0" data-track-index="1" muted></video>
-  <video id="vx-ktla-creek0" class="bc" src="media/bc/scKFW8Ik1OE-s09.mp4" data-start="214.46" data-duration="7.0" data-track-index="1" data-callback="120 to 160 percent, the creeks" muted></video>
+  <section class="clip still-wrap" id="c-ike08b" data-start="160.53" data-duration="5.0" data-track-index="1" data-callback="Houston under water, the rain total"><img id="kb-c-ike08b" src="media/stills-tx/fema_ike_flood_houston_2008.jpg" alt=""></section>
+  <video id="vx-heavyrain" src="media/stock/heavy_rain_street.mp4" data-start="165.53" data-duration="5.0" data-track-index="1" muted></video>
+  <video id="vx-ktla-truck0" class="bc" src="media/bc/scKFW8Ik1OE-s03.mp4" data-start="170.53" data-duration="5.5" data-track-index="1" data-callback="January sixth, ten to twelve inches" muted></video>
+  <section class="clip still-wrap" id="c-hou16b" data-start="176.03" data-duration="5.0" data-track-index="1" data-callback="Lake Houston over its spillway"><img id="kb-c-hou16b" src="media/stills-tx/houston_flood_may_2016.jpg" alt=""></section>
+  <video id="vx-floodroad2" src="media/stock/flooded_road.mp4" data-start="181.03" data-duration="5.1" data-track-index="1" data-callback="the crest" muted></video>
+  <video id="vx-khou" class="bc" src="media/bc-tx/ua5RWX2Tkw0-s00.mp4" data-start="186.13" data-duration="7.0" data-track-index="1" muted></video>
+  <video id="vx-gutter" src="media/stock/rain_gutter_drain.mp4" data-start="193.13" data-duration="6.0" data-track-index="1" muted></video>
+  <video id="vx-cbs-carflood" class="bc" src="media/bc/1ipFyV6rduE-s07.mp4" data-start="199.13" data-duration="2.55" data-track-index="1" muted></video>
+  <video id="vx-fox-river" class="bc" src="media/bc/x7_5n0Q9iMs-s00.mp4" data-start="201.68" data-duration="4.7" data-track-index="1" muted></video>
+  <video id="vx-ktla-street" class="bc" src="media/bc/scKFW8Ik1OE-s10.mp4" data-start="206.38" data-duration="3.0" data-track-index="1" muted></video>
+  <video id="vx-cbs-van0" class="bc" src="media/bc/1ipFyV6rduE-s08.mp4" data-start="209.38" data-duration="3.0" data-track-index="1" muted></video>
+  <video id="vx-ktla-creek0" class="bc" src="media/bc/scKFW8Ik1OE-s09.mp4" data-start="212.38" data-duration="7.0" data-track-index="1" data-callback="120 to 160 percent, the creeks" muted></video>
 
-  <video id="vx-ktla-aerial" class="bc" src="media/bc/scKFW8Ik1OE-s05.mp4" data-start="221.46" data-duration="3.95" data-track-index="1" muted></video>
-  <video id="vx-fox-road" class="bc" src="media/bc/x7_5n0Q9iMs-s04.mp4" data-start="225.41" data-duration="4.7" data-track-index="1" data-callback="the flooded road, second look" muted></video>
-  <video id="vx-clouds2" src="media/stock/storm_clouds.mp4" data-start="230.11" data-duration="5.0" data-track-index="1" data-callback="the forecasters counted afterward" muted></video>
-  <video id="vx-cbs-umbrella" class="bc" src="media/bc/-yXw8HwIa8w-s01.mp4" data-start="235.11" data-duration="3.86" data-track-index="1" muted></video>
-  <video id="vx-cbs-wind" class="bc" src="media/bc/-yXw8HwIa8w-s12.mp4" data-start="238.97" data-duration="4.3" data-track-index="1" muted></video>
-  <video id="vx-heavyrain2" src="media/stock/heavy_rain_street.mp4" data-start="243.27" data-duration="4.7" data-track-index="1" data-callback="wet and warm" muted></video>
-  <video id="vx-snow" src="media/stock/snow_sierra.mp4" data-start="247.97" data-duration="6.42" data-track-index="1" data-callback="not wet and cold" muted></video>
+  <video id="vx-ktla-aerial" class="bc" src="media/bc/scKFW8Ik1OE-s05.mp4" data-start="219.38" data-duration="3.95" data-track-index="1" muted></video>
+  <video id="vx-fox-road" class="bc" src="media/bc/x7_5n0Q9iMs-s04.mp4" data-start="223.33" data-duration="4.7" data-track-index="1" data-callback="the flooded road, second look" muted></video>
+  <video id="vx-clouds2" src="media/stock/storm_clouds.mp4" data-start="228.03" data-duration="5.0" data-track-index="1" data-callback="the forecasters counted afterward" muted></video>
+  <video id="vx-cbs-umbrella" class="bc" src="media/bc/-yXw8HwIa8w-s01.mp4" data-start="233.03" data-duration="3.86" data-track-index="1" muted></video>
+  <video id="vx-cbs-wind" class="bc" src="media/bc/-yXw8HwIa8w-s12.mp4" data-start="236.89" data-duration="4.3" data-track-index="1" muted></video>
+  <video id="vx-heavyrain2" src="media/stock/heavy_rain_street.mp4" data-start="241.19" data-duration="4.7" data-track-index="1" data-callback="wet and warm" muted></video>
+  <video id="vx-snow" src="media/stock/snow_sierra.mp4" data-start="245.89" data-duration="6.42" data-track-index="1" data-callback="not wet and cold" muted></video>
 
-  <video id="vx-wfaa-map2" class="bc" src="media/bc-tx/uEMIziz-3Zw-s00.mp4" data-start="271.529" data-duration="5.0" data-track-index="1" data-callback="December 26, the map again" muted></video>
-  <video id="vx-oceanwaves" src="media/stock/ocean_waves_road.mp4" data-start="276.529" data-duration="5.0" data-track-index="1" muted></video>
-  <video id="vx-ar2017b" src="media/ar-loop-2017.mp4" data-start="281.529" data-duration="7.0" data-track-index="1" data-callback="the Pacific trough behind it" muted></video>
-  <video id="vx-nbc-debris0" class="bc" src="media/bc-tx/J23v8OeclKQ-s02.mp4" data-start="288.529" data-duration="3.9" data-track-index="1" data-callback="twelve tornadoes on the ground" muted></video>
-  <video id="vx-wfaa-debris" class="bc" src="media/bc-tx/uEMIziz-3Zw-s01.mp4" data-start="292.429" data-duration="3.36" data-track-index="1" muted></video>
-  <section class="clip still-wrap contain-wrap" id="c-trackmap" data-start="295.789" data-duration="6.0" data-track-index="1"><img class="blurfill" src="media/stills-tx/nws_sgr_tornado_track_map.png" alt=""><img id="kb-c-trackmap" src="media/stills-tx/nws_sgr_tornado_track_map.png" alt=""></section>
-  <video id="vx-nbc-aerial2" class="bc" src="media/bc-tx/J23v8OeclKQ-s08.mp4" data-start="301.789" data-duration="6.7" data-track-index="1" data-callback="the aerial again, the EF4 track" muted></video>
-  <video id="vx-nbc-debris" class="bc" src="media/bc-tx/J23v8OeclKQ-s11.mp4" data-start="308.489" data-duration="2.7" data-track-index="1" muted></video>
-  <section class="clip still-wrap" id="c-ef4" data-start="311.189" data-duration="5.0" data-track-index="1" data-callback="thirteen died, the EF4 track"><img id="kb-c-ef4" src="media/stills-tx/garland_rowlett_ef4_damage_2015.jpg" alt=""></section>
-  <video id="vx-wfaa-excav" class="bc" src="media/bc-tx/uEMIziz-3Zw-s05.mp4" data-start="316.189" data-duration="4.2" data-track-index="1" muted></video>
-  <video id="vx-wfaa-houses2" class="bc" src="media/bc-tx/uEMIziz-3Zw-s11.mp4" data-start="320.389" data-duration="6.0" data-track-index="1" data-callback="the first December EF4, houses" muted></video>
-  <video id="vx-nbc-aerial3" class="bc" src="media/bc-tx/J23v8OeclKQ-s07.mp4" data-start="326.389" data-duration="12.39" data-track-index="1" data-callback="tornado season does not wait" muted></video>
+  <video id="vx-wfaa-map2" class="bc" src="media/bc-tx/uEMIziz-3Zw-s00.mp4" data-start="269.449" data-duration="5.0" data-track-index="1" data-callback="December 26, the map again" muted></video>
+  <video id="vx-oceanwaves" src="media/stock/ocean_waves_road.mp4" data-start="274.449" data-duration="5.0" data-track-index="1" muted></video>
+  <video id="vx-ar2017b" src="media/ar-loop-2017.mp4" data-start="279.449" data-duration="7.0" data-track-index="1" data-callback="the Pacific trough behind it" muted></video>
+  <video id="vx-nbc-debris0" class="bc" src="media/bc-tx/J23v8OeclKQ-s02.mp4" data-start="286.449" data-duration="3.9" data-track-index="1" data-callback="twelve tornadoes on the ground" muted></video>
+  <video id="vx-wfaa-debris" class="bc" src="media/bc-tx/uEMIziz-3Zw-s01.mp4" data-start="290.349" data-duration="3.36" data-track-index="1" muted></video>
+  <section class="clip still-wrap contain-wrap" id="c-trackmap" data-start="293.709" data-duration="6.0" data-track-index="1"><img class="blurfill" src="media/stills-tx/nws_sgr_tornado_track_map.png" alt=""><img id="kb-c-trackmap" src="media/stills-tx/nws_sgr_tornado_track_map.png" alt=""></section>
+  <video id="vx-nbc-aerial2" class="bc" src="media/bc-tx/J23v8OeclKQ-s08.mp4" data-start="299.709" data-duration="6.7" data-track-index="1" data-callback="the aerial again, the EF4 track" muted></video>
+  <video id="vx-nbc-debris" class="bc" src="media/bc-tx/J23v8OeclKQ-s11.mp4" data-start="306.409" data-duration="2.7" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-ef4" data-start="309.109" data-duration="5.0" data-track-index="1" data-callback="thirteen died, the EF4 track"><img id="kb-c-ef4" src="media/stills-tx/garland_rowlett_ef4_damage_2015.jpg" alt=""></section>
+  <video id="vx-wfaa-excav" class="bc" src="media/bc-tx/uEMIziz-3Zw-s05.mp4" data-start="314.109" data-duration="4.2" data-track-index="1" muted></video>
+  <video id="vx-wfaa-houses2" class="bc" src="media/bc-tx/uEMIziz-3Zw-s11.mp4" data-start="318.309" data-duration="6.0" data-track-index="1" data-callback="the first December EF4, houses" muted></video>
+  <video id="vx-nbc-aerial3" class="bc" src="media/bc-tx/J23v8OeclKQ-s07.mp4" data-start="324.309" data-duration="12.39" data-track-index="1" data-callback="tornado season does not wait" muted></video>
 
-  <video id="vx-ktla-creek" class="bc" src="media/bc/scKFW8Ik1OE-s09.mp4" data-start="338.779" data-duration="6.2" data-track-index="1" muted></video>
-  <section class="clip still-wrap" id="c-sangabriel" data-start="344.979" data-duration="5.0" data-track-index="1"><img id="kb-c-sangabriel" src="media/stills-tx/san_gabriel_low_water_crossing_georgetown.jpg" alt=""></section>
-  <section class="clip still-wrap contain-wrap" id="c-spechts" data-start="349.979" data-duration="4.5" data-track-index="1"><img class="blurfill" src="media/stills-tx/spechts_crossing_spring_branch.jpg" alt=""><img id="kb-c-spechts" src="media/stills-tx/spechts_crossing_spring_branch.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-wimberley" data-start="354.479" data-duration="4.5" data-track-index="1"><img id="kb-c-wimberley" src="media/stills-tx/wimberley_fema_flood_aftermath_2015.jpg" alt=""></section>
-  <video id="vx-ktla-truck" class="bc" src="media/bc/scKFW8Ik1OE-s02.mp4" data-start="358.979" data-duration="2.65" data-track-index="1" muted></video>
-  <video id="vx-ktla-truck2" class="bc" src="media/bc/scKFW8Ik1OE-s03.mp4" data-start="361.629" data-duration="4.1" data-track-index="1" data-callback="the truck at the crossing" muted></video>
-  <video id="vx-gutter2" src="media/stock/rain_gutter_drain.mp4" data-start="365.729" data-duration="5.3" data-track-index="1" data-callback="the ground never drains" muted></video>
-  <video id="vx-fox-field" class="bc" src="media/bc/x7_5n0Q9iMs-s03.mp4" data-start="371.029" data-duration="4.15" data-track-index="1" muted></video>
-  <video id="vx-ktla-night" class="bc" src="media/bc/scKFW8Ik1OE-s04.mp4" data-start="375.179" data-duration="6.9" data-track-index="1" muted></video>
-  <video id="vx-cbs-van" class="bc" src="media/bc/1ipFyV6rduE-s08.mp4" data-start="382.079" data-duration="4.0" data-track-index="1" data-callback="the van through the water" muted></video>
-  <video id="vx-ktla-crew" class="bc" src="media/bc/scKFW8Ik1OE-s11.mp4" data-start="386.079" data-duration="15.15" data-track-index="1" muted></video>
+  <video id="vx-ktla-creek" class="bc" src="media/bc/scKFW8Ik1OE-s09.mp4" data-start="336.699" data-duration="6.2" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-sangabriel" data-start="342.899" data-duration="5.0" data-track-index="1"><img id="kb-c-sangabriel" src="media/stills-tx/san_gabriel_low_water_crossing_georgetown.jpg" alt=""></section>
+  <section class="clip still-wrap contain-wrap" id="c-spechts" data-start="347.899" data-duration="4.5" data-track-index="1"><img class="blurfill" src="media/stills-tx/spechts_crossing_spring_branch.jpg" alt=""><img id="kb-c-spechts" src="media/stills-tx/spechts_crossing_spring_branch.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-wimberley" data-start="352.399" data-duration="4.5" data-track-index="1"><img id="kb-c-wimberley" src="media/stills-tx/wimberley_fema_flood_aftermath_2015.jpg" alt=""></section>
+  <video id="vx-ktla-truck" class="bc" src="media/bc/scKFW8Ik1OE-s02.mp4" data-start="356.899" data-duration="2.65" data-track-index="1" muted></video>
+  <video id="vx-ktla-truck2" class="bc" src="media/bc/scKFW8Ik1OE-s03.mp4" data-start="359.549" data-duration="4.1" data-track-index="1" data-callback="the truck at the crossing" muted></video>
+  <video id="vx-gutter2" src="media/stock/rain_gutter_drain.mp4" data-start="363.649" data-duration="5.3" data-track-index="1" data-callback="the ground never drains" muted></video>
+  <video id="vx-fox-field" class="bc" src="media/bc/x7_5n0Q9iMs-s03.mp4" data-start="368.949" data-duration="4.15" data-track-index="1" muted></video>
+  <video id="vx-ktla-night" class="bc" src="media/bc/scKFW8Ik1OE-s04.mp4" data-start="373.099" data-duration="6.9" data-track-index="1" muted></video>
+  <video id="vx-cbs-van" class="bc" src="media/bc/1ipFyV6rduE-s08.mp4" data-start="379.999" data-duration="4.0" data-track-index="1" data-callback="the van through the water" muted></video>
+  <video id="vx-ktla-crew" class="bc" src="media/bc/scKFW8Ik1OE-s11.mp4" data-start="383.999" data-duration="15.15" data-track-index="1" muted></video>
 
-  <video id="vx-sstloop2" src="media/sst-weekly-loop.mp4" data-start="401.229" data-duration="7.4" data-track-index="1" data-callback="difference one, the signal" muted></video>
-  <video id="vx-cbs-globe" class="bc" src="media/bc/-yXw8HwIa8w-s05.mp4" data-start="408.629" data-duration="4.3" data-track-index="1" muted></video>
-  <video id="vx-outlook-son2" src="media/son2026_precip_outlook_hold.mp4" data-start="412.929" data-duration="8.7" data-track-index="1" data-callback="the odds on paper" muted></video>
-  <section class="clip still-wrap" id="c-tempmap" data-start="421.629" data-duration="5.5" data-track-index="1"><img id="kb-c-tempmap" src="media/stills/ond2026_temp_outlook.png" alt=""></section>
-  <video id="vx-ice-branches2" src="media/stock-tx/freezing_rain_ice_branches.mp4" data-start="427.129" data-duration="5.5" data-track-index="1" data-callback="the ice recipe" muted></video>
-  <video id="vx-wfaa-ice-street" class="bc" src="media/bc-tx/u06wBKXsgAM-s00.mp4" data-start="432.629" data-duration="4.5" data-track-index="1" muted></video>
-  <video id="vx-wfaa-ice-downtown" class="bc" src="media/bc-tx/u06wBKXsgAM-s02.mp4" data-start="437.129" data-duration="3.66" data-track-index="1" muted></video>
-  <video id="vx-wfaa-ice-tire" class="bc" src="media/bc-tx/u06wBKXsgAM-s01.mp4" data-start="440.789" data-duration="4.6" data-track-index="1" muted></video>
-  <video id="vx-wfaa-ice-salt" class="bc" src="media/bc-tx/u06wBKXsgAM-s03.mp4" data-start="445.389" data-duration="3.3" data-track-index="1" muted></video>
-  <section class="clip still-wrap" id="c-ice1979" data-start="448.689" data-duration="5.0" data-track-index="1"><img id="kb-c-ice1979" src="media/stills-tx/dallas_ice_storm_1979.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-ice2021" data-start="453.689" data-duration="3.11" data-track-index="1"><img id="kb-c-ice2021" src="media/stills-tx/mckinney_dfw_ice_2021.jpg" alt=""></section>
+  <video id="vx-sstloop2" src="media/sst-weekly-loop.mp4" data-start="399.149" data-duration="7.4" data-track-index="1" data-callback="difference one, the signal" muted></video>
+  <video id="vx-cbs-globe" class="bc" src="media/bc/-yXw8HwIa8w-s05.mp4" data-start="406.549" data-duration="4.3" data-track-index="1" muted></video>
+  <video id="vx-outlook-son2" src="media/son2026_precip_outlook_hold.mp4" data-start="410.849" data-duration="8.7" data-track-index="1" data-callback="the odds on paper" muted></video>
+  <section class="clip still-wrap" id="c-tempmap" data-start="419.549" data-duration="5.5" data-track-index="1"><img id="kb-c-tempmap" src="media/stills/ond2026_temp_outlook.png" alt=""></section>
+  <video id="vx-ice-branches2" src="media/stock-tx/freezing_rain_ice_branches.mp4" data-start="425.049" data-duration="5.5" data-track-index="1" data-callback="the ice recipe" muted></video>
+  <video id="vx-wfaa-ice-street" class="bc" src="media/bc-tx/u06wBKXsgAM-s00.mp4" data-start="430.549" data-duration="4.5" data-track-index="1" muted></video>
+  <video id="vx-wfaa-ice-downtown" class="bc" src="media/bc-tx/u06wBKXsgAM-s02.mp4" data-start="435.049" data-duration="3.66" data-track-index="1" muted></video>
+  <video id="vx-wfaa-ice-tire" class="bc" src="media/bc-tx/u06wBKXsgAM-s01.mp4" data-start="438.709" data-duration="4.6" data-track-index="1" muted></video>
+  <video id="vx-wfaa-ice-salt" class="bc" src="media/bc-tx/u06wBKXsgAM-s03.mp4" data-start="443.309" data-duration="3.3" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-ice1979" data-start="446.609" data-duration="5.0" data-track-index="1"><img id="kb-c-ice1979" src="media/stills-tx/dallas_ice_storm_1979.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-ice2021" data-start="451.609" data-duration="3.11" data-track-index="1"><img id="kb-c-ice2021" src="media/stills-tx/mckinney_dfw_ice_2021.jpg" alt=""></section>
 
-  <video id="vx-khou2" class="bc" src="media/bc-tx/ua5RWX2Tkw0-s00.mp4" data-start="456.799" data-duration="5.4" data-track-index="1" data-callback="Houston and the Gulf coast" muted></video>
-  <video id="vx-nbc-debris2" class="bc" src="media/bc-tx/J23v8OeclKQ-s01.mp4" data-start="462.199" data-duration="7.0" data-track-index="1" data-callback="Dallas, Fort Worth, the tornado risk" muted></video>
-  <video id="vx-wfaa-ice-res" class="bc" src="media/bc-tx/u06wBKXsgAM-s05.mp4" data-start="469.199" data-duration="3.56" data-track-index="1" muted></video>
-  <section class="clip still-wrap" id="c-sangabriel2" data-start="472.759" data-duration="4.4" data-track-index="1" data-callback="the Hill Country crossings"><img id="kb-c-sangabriel2" src="media/stills-tx/san_gabriel_low_water_crossing_georgetown.jpg" alt=""></section>
-  <section class="clip still-wrap contain-wrap" id="c-spechts2" data-start="477.159" data-duration="4.5" data-track-index="1" data-callback="Austin to San Antonio"><img class="blurfill" src="media/stills-tx/spechts_crossing_spring_branch.jpg" alt=""><img id="kb-c-spechts2" src="media/stills-tx/spechts_crossing_spring_branch.jpg" alt=""></section>
-  <video id="vx-snow2" src="media/stock/snow_sierra.mp4" data-start="481.659" data-duration="4.5" data-track-index="1" data-callback="the Panhandle" muted></video>
-  <video id="vx-drylake2" src="media/stock-tx/dry_lakebed_reservoir.mp4" data-start="486.159" data-duration="5.0" data-track-index="1" data-callback="the Valley's good news" muted></video>
-  <section class="clip still-wrap contain-wrap" id="c-txmap" data-start="491.159" data-duration="6.0" data-track-index="1"><img class="blurfill" src="media/stills-tx/outline_of_texas_detailed.png" alt=""><img id="kb-c-txmap" src="media/stills-tx/outline_of_texas_detailed.png" alt=""></section>
-  <section class="clip still-wrap" id="c-cira25" data-start="497.159" data-duration="5.0" data-track-index="1"><img id="kb-c-cira25" src="media/stills/cira-ar-2025.png" alt=""></section>
-  <section class="clip still-wrap" id="c-cira24" data-start="502.159" data-duration="5.0" data-track-index="1"><img id="kb-c-cira24" src="media/stills/cira-ar-2024.png" alt=""></section>
-  <video id="vx-ktla-man" class="bc" src="media/bc/scKFW8Ik1OE-s08.mp4" data-start="507.159" data-duration="3.7" data-track-index="1" muted></video>
-  <video id="vx-ktla-mudyard" class="bc" src="media/bc/scKFW8Ik1OE-s07.mp4" data-start="510.859" data-duration="5.51" data-track-index="1" muted></video>
+  <video id="vx-khou2" class="bc" src="media/bc-tx/ua5RWX2Tkw0-s00.mp4" data-start="454.719" data-duration="5.4" data-track-index="1" data-callback="Houston and the Gulf coast" muted></video>
+  <video id="vx-nbc-debris2" class="bc" src="media/bc-tx/J23v8OeclKQ-s01.mp4" data-start="460.119" data-duration="7.0" data-track-index="1" data-callback="Dallas, Fort Worth, the tornado risk" muted></video>
+  <video id="vx-wfaa-ice-res" class="bc" src="media/bc-tx/u06wBKXsgAM-s05.mp4" data-start="467.119" data-duration="3.56" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-sangabriel2" data-start="470.679" data-duration="4.4" data-track-index="1" data-callback="the Hill Country crossings"><img id="kb-c-sangabriel2" src="media/stills-tx/san_gabriel_low_water_crossing_georgetown.jpg" alt=""></section>
+  <section class="clip still-wrap contain-wrap" id="c-spechts2" data-start="475.079" data-duration="4.5" data-track-index="1" data-callback="Austin to San Antonio"><img class="blurfill" src="media/stills-tx/spechts_crossing_spring_branch.jpg" alt=""><img id="kb-c-spechts2" src="media/stills-tx/spechts_crossing_spring_branch.jpg" alt=""></section>
+  <video id="vx-snow2" src="media/stock/snow_sierra.mp4" data-start="479.579" data-duration="4.5" data-track-index="1" data-callback="the Panhandle" muted></video>
+  <video id="vx-drylake2" src="media/stock-tx/dry_lakebed_reservoir.mp4" data-start="484.079" data-duration="5.0" data-track-index="1" data-callback="the Valley's good news" muted></video>
+  <section class="clip still-wrap contain-wrap" id="c-txmap" data-start="489.079" data-duration="6.0" data-track-index="1"><img class="blurfill" src="media/stills-tx/outline_of_texas_detailed.png" alt=""><img id="kb-c-txmap" src="media/stills-tx/outline_of_texas_detailed.png" alt=""></section>
+  <section class="clip still-wrap" id="c-cira25" data-start="495.079" data-duration="5.0" data-track-index="1"><img id="kb-c-cira25" src="media/stills/cira-ar-2025.png" alt=""></section>
+  <section class="clip still-wrap" id="c-cira24" data-start="500.079" data-duration="5.0" data-track-index="1"><img id="kb-c-cira24" src="media/stills/cira-ar-2024.png" alt=""></section>
+  <video id="vx-ktla-man" class="bc" src="media/bc/scKFW8Ik1OE-s08.mp4" data-start="505.079" data-duration="3.7" data-track-index="1" muted></video>
+  <video id="vx-ktla-mudyard" class="bc" src="media/bc/scKFW8Ik1OE-s07.mp4" data-start="508.779" data-duration="5.51" data-track-index="1" muted></video>
 
-  <section class="clip still-wrap" id="c-tempmap2" data-start="516.369" data-duration="4.9" data-track-index="1" data-callback="odds, not a forecast"><img id="kb-c-tempmap2" src="media/stills/ond2026_temp_outlook.png" alt=""></section>
-  <video id="vx-fox-bridge" class="bc" src="media/bc/x7_5n0Q9iMs-s01.mp4" data-start="521.269" data-duration="2.86" data-track-index="1" muted></video>
-  <section class="clip still-wrap" id="c-ice2021b" data-start="524.129" data-duration="4.5" data-track-index="1" data-callback="not a repeat of 2021"><img id="kb-c-ice2021b" src="media/stills-tx/mckinney_dfw_ice_2021.jpg" alt=""></section>
-  <video id="vx-dryres" src="media/stock/dry_reservoir_drought.mp4" data-start="528.629" data-duration="5.6" data-track-index="1" data-callback="drought relief" muted></video>
-  <section class="clip still-wrap" id="c-oro21" data-start="534.229" data-duration="4.5" data-track-index="1"><img id="kb-c-oro21" src="media/stills/oroville-2021.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-shasta21" data-start="538.729" data-duration="5.37" data-track-index="1"><img id="kb-c-shasta21" src="media/stills/shasta-2021.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-tempmap2" data-start="514.289" data-duration="4.9" data-track-index="1" data-callback="odds, not a forecast"><img id="kb-c-tempmap2" src="media/stills/ond2026_temp_outlook.png" alt=""></section>
+  <video id="vx-fox-bridge" class="bc" src="media/bc/x7_5n0Q9iMs-s01.mp4" data-start="519.189" data-duration="2.86" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-ice2021b" data-start="522.049" data-duration="4.5" data-track-index="1" data-callback="not a repeat of 2021"><img id="kb-c-ice2021b" src="media/stills-tx/mckinney_dfw_ice_2021.jpg" alt=""></section>
+  <video id="vx-dryres" src="media/stock/dry_reservoir_drought.mp4" data-start="526.549" data-duration="5.6" data-track-index="1" data-callback="drought relief" muted></video>
+  <section class="clip still-wrap" id="c-oro21" data-start="532.149" data-duration="4.5" data-track-index="1"><img id="kb-c-oro21" src="media/stills/oroville-2021.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-shasta21" data-start="536.649" data-duration="5.37" data-track-index="1"><img id="kb-c-shasta21" src="media/stills/shasta-2021.jpg" alt=""></section>
 
-  <video id="vx-ktla-night2" class="bc" src="media/bc/scKFW8Ik1OE-s04.mp4" data-start="544.099" data-duration="7.0" data-track-index="1" data-callback="learn your crossing, the road at night" muted></video>
-  <video id="vx-wfaa-sandtruck" class="bc" src="media/bc-tx/u06wBKXsgAM-s07.mp4" data-start="551.099" data-duration="7.0" data-track-index="1" muted></video>
-  <video id="vx-floodroad3" src="media/stock/flooded_road.mp4" data-start="558.099" data-duration="6.0" data-track-index="1" data-callback="water with nowhere to go" muted></video>
-  <video id="vx-wfaa-ice-close" class="bc" src="media/bc-tx/u06wBKXsgAM-s06.mp4" data-start="564.099" data-duration="5.4" data-track-index="1" muted></video>
-  <video id="vx-fox-river2" class="bc" src="media/bc/x7_5n0Q9iMs-s00.mp4" data-start="569.499" data-duration="4.7" data-track-index="1" data-callback="the river, again" muted></video>
-  <video id="vx-ktla-crew2" class="bc" src="media/bc/scKFW8Ik1OE-s11.mp4" data-start="574.199" data-duration="6.19" data-track-index="1" data-callback="a way out, the crew" muted></video>
+  <video id="vx-ktla-night2" class="bc" src="media/bc/scKFW8Ik1OE-s04.mp4" data-start="542.019" data-duration="7.0" data-track-index="1" data-callback="learn your crossing, the road at night" muted></video>
+  <video id="vx-wfaa-sandtruck" class="bc" src="media/bc-tx/u06wBKXsgAM-s07.mp4" data-start="549.019" data-duration="7.0" data-track-index="1" muted></video>
+  <video id="vx-floodroad3" src="media/stock/flooded_road.mp4" data-start="556.019" data-duration="6.0" data-track-index="1" data-callback="water with nowhere to go" muted></video>
+  <video id="vx-wfaa-ice-close" class="bc" src="media/bc-tx/u06wBKXsgAM-s06.mp4" data-start="562.019" data-duration="5.4" data-track-index="1" muted></video>
+  <video id="vx-fox-river2" class="bc" src="media/bc/x7_5n0Q9iMs-s00.mp4" data-start="567.419" data-duration="4.7" data-track-index="1" data-callback="the river, again" muted></video>
+  <video id="vx-ktla-crew2" class="bc" src="media/bc/scKFW8Ik1OE-s11.mp4" data-start="572.119" data-duration="6.19" data-track-index="1" data-callback="a way out, the crew" muted></video>
 
-  <section class="clip still-wrap" id="c-map-close" data-start="580.389" data-duration="5.8" data-track-index="1" data-callback="the ocean has made its move"><img id="kb-c-map-close" src="media/stills/sst-anomaly-map.png" alt=""></section>
-  <video id="vx-nbc-tower" class="bc" src="media/bc-tx/J23v8OeclKQ-s07.mp4" data-start="586.189" data-duration="4.0" data-track-index="1" data-callback="the prepared house, Rowlett" muted></video>
-  <video id="vx-wfaa-sign" class="bc" src="media/bc-tx/uEMIziz-3Zw-s10.mp4" data-start="590.189" data-duration="3.4" data-track-index="1" muted></video>
-  <video id="vx-wfaa-icyfreeway" class="bc" src="media/bc-tx/TRyEZTCyOrQ-s00.mp4" data-start="593.589" data-duration="6.5" data-track-index="1" muted></video>
-  <video id="vx-wfaa-exhaust" class="bc" src="media/bc-tx/u06wBKXsgAM-s04.mp4" data-start="600.089" data-duration="4.0" data-track-index="1" muted></video>
-  <video id="vx-nbc-cloth" class="bc" src="media/bc-tx/J23v8OeclKQ-s05.mp4" data-start="604.089" data-duration="2.6" data-track-index="1" muted></video>
-  <video id="vx-cta-callback" src="media/cta/paul-storm-ready-v5-sep6.mp4" data-start="606.689" data-duration="4.5" data-track-index="1" data-callback="the ebook, once more, muted" muted></video>
-  <video id="vx-wfaa-woman" class="bc" src="media/bc-tx/uEMIziz-3Zw-s13.mp4" data-start="611.189" data-duration="2.8" data-track-index="1" muted></video>
-  <section class="clip still-wrap contain-wrap" id="c-txmap2" data-start="613.989" data-duration="0.821" data-track-index="1" data-callback="Texas is in the path"><img class="blurfill" src="media/stills-tx/outline_of_texas_detailed.png" alt=""><img id="kb-c-txmap2" src="media/stills-tx/outline_of_texas_detailed.png" alt=""></section>
+  <section class="clip still-wrap" id="c-map-close" data-start="578.309" data-duration="5.8" data-track-index="1" data-callback="the ocean has made its move"><img id="kb-c-map-close" src="media/stills/sst-anomaly-map.png" alt=""></section>
+  <video id="vx-nbc-tower" class="bc" src="media/bc-tx/J23v8OeclKQ-s07.mp4" data-start="584.109" data-duration="4.0" data-track-index="1" data-callback="the prepared house, Rowlett" muted></video>
+  <video id="vx-wfaa-sign" class="bc" src="media/bc-tx/uEMIziz-3Zw-s10.mp4" data-start="588.109" data-duration="3.4" data-track-index="1" muted></video>
+  <video id="vx-wfaa-icyfreeway" class="bc" src="media/bc-tx/TRyEZTCyOrQ-s00.mp4" data-start="591.509" data-duration="6.5" data-track-index="1" muted></video>
+  <video id="vx-wfaa-exhaust" class="bc" src="media/bc-tx/u06wBKXsgAM-s04.mp4" data-start="598.009" data-duration="4.0" data-track-index="1" muted></video>
+  <video id="vx-nbc-cloth" class="bc" src="media/bc-tx/J23v8OeclKQ-s05.mp4" data-start="602.009" data-duration="2.6" data-track-index="1" muted></video>
+  <video id="vx-cta-callback" src="media/cta/paul-storm-ready-v5-sep6.mp4" data-start="604.609" data-duration="4.5" data-track-index="1" data-callback="the ebook, once more, muted" muted></video>
+  <video id="vx-wfaa-woman" class="bc" src="media/bc-tx/uEMIziz-3Zw-s13.mp4" data-start="609.109" data-duration="2.8" data-track-index="1" muted></video>
+  <section class="clip still-wrap contain-wrap" id="c-txmap2" data-start="611.909" data-duration="0.901" data-track-index="1" data-callback="Texas is in the path"><img class="blurfill" src="media/stills-tx/outline_of_texas_detailed.png" alt=""><img id="kb-c-txmap2" src="media/stills-tx/outline_of_texas_detailed.png" alt=""></section>
 
   <!-- ============ OVERLAYS — popfigs (track 5), chips (track 5), source labels (track 4) ============ -->
   <section class="clip" id="p-pf-notnormal" data-start="1.2" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-notnormal"><span class="pf-big">NOT NORMAL</span><span class="pf-sub">THIS WINTER</span></div></section>
@@ -226,62 +235,62 @@
   <section class="clip" id="p-pf-13" data-start="36.0" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-13"><span class="pf-big">13 DEAD</span><span class="pf-sub">DEC 26, 2015 · NORTH TEXAS</span></div></section>
   <section class="clip" id="p-chip-two" data-start="49.3" data-duration="5.0" data-track-index="5"><div class="chip" id="chip-two">TWO DANGERS · ONE SHIFT IN THE SKY</div></section>
   <section class="clip" id="p-pf-four" data-start="63.8" data-duration="2.4" data-track-index="5"><div class="popfig" id="pf-four"><span class="pf-big">4 THINGS</span><span class="pf-sub">BEFORE DECEMBER</span></div></section>
-  <section class="clip" id="p-src-cpc" data-start="74.02" data-duration="25.0" data-track-index="4"><div class="srclab">SOURCE: NOAA CLIMATE PREDICTION CENTER · WEEKLY SST ANOMALY</div></section>
-  <section class="clip" id="p-pf-3c" data-start="79.62" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-3c"><span class="pf-big">+3.0°C</span><span class="pf-sub">EASTERN PACIFIC</span></div></section>
-  <section class="clip" id="p-pf-90" data-start="84.52" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-90"><span class="pf-big">&gt;90%</span><span class="pf-sub">VERY STRONG EVENT</span></div></section>
-  <section class="clip" id="p-pf-octjan" data-start="100.12" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-octjan"><span class="pf-big">OCT – JAN</span><span class="pf-sub">EXPECTED PEAK</span></div></section>
-  <section class="clip" id="p-src-ond" data-start="99.42" data-duration="10.2" data-track-index="4"><div class="srclab">SOURCE: NOAA CPC · OCT–DEC 2026 PRECIPITATION OUTLOOK</div></section>
-  <section class="clip" id="p-chip-above" data-start="106.42" data-duration="3.2" data-track-index="5"><div class="chip" id="chip-above">TEXAS · ABOVE NORMAL RAIN</div></section>
-  <section class="clip" id="p-src-svs1" data-start="110.42" data-duration="8.4" data-track-index="4"><div class="srclab">NASA SVS · ATMOSPHERIC RIVER, 2017</div></section>
-  <section class="clip" id="p-pf-south" data-start="124.72" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-south"><span class="pf-big">STORM TRACK</span><span class="pf-sub">DROPS SOUTH</span></div></section>
-  <section class="clip" id="p-src-son" data-start="124.32" data-duration="8.2" data-track-index="4"><div class="srclab">SOURCE: NOAA CPC · SEP–NOV 2026 PRECIPITATION OUTLOOK</div></section>
-  <section class="clip" id="p-chip-gulf" data-start="153.12" data-duration="6.0" data-track-index="5"><div class="chip" id="chip-gulf">PACIFIC ENERGY + GULF MOISTURE</div></section>
-  <section class="clip" id="p-src-fema1" data-start="164.86" data-duration="4.6" data-track-index="4"><div class="srclab">FEMA · HOUSTON</div></section>
-  <section class="clip" id="p-pf-7997" data-start="168.66" data-duration="3.6" data-track-index="5"><div class="popfig" id="pf-7997"><span class="pf-big">79.97 IN</span><span class="pf-sub">HOUSTON HOBBY · 1997</span></div></section>
-  <section class="clip" id="p-pf-131" data-start="173.66" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-131"><span class="pf-big">131%</span><span class="pf-sub">BUSH INTERCONTINENTAL</span></div></section>
-  <section class="clip" id="p-pf-jan6" data-start="181.06" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-jan6"><span class="pf-big">JAN 6 · 12 IN</span><span class="pf-sub">IN ONE DAY</span></div></section>
-  <section class="clip" id="p-pf-3ft" data-start="189.66" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-3ft"><span class="pf-big">3 FT OVER</span><span class="pf-sub">LAKE HOUSTON SPILLWAY</span></div></section>
-  <section class="clip" id="p-pf-cfs" data-start="200.16" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-cfs"><span class="pf-big">67,100 CFS</span><span class="pf-sub">LAKE LIVINGSTON</span></div></section>
-  <section class="clip" id="p-pf-120" data-start="217.16" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-120"><span class="pf-big">120 – 160%</span><span class="pf-sub">OF NORMAL RAIN</span></div></section>
-  <section class="clip" id="p-pf-540" data-start="229.66" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-540"><span class="pf-big">540 IN ALL OF 1997</span><span class="pf-sub">THE YEAR BEFORE</span></div></section>
-  <section class="clip" id="p-pf-3x" data-start="236.36" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-3x"><span class="pf-big">3× NORMAL</span><span class="pf-sub">THE WINTER LOAD</span></div></section>
-  <section class="clip" id="p-pf-7th" data-start="241.56" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-7th"><span class="pf-big">7TH WETTEST</span><span class="pf-sub">2ND WARMEST SINCE 1895</span></div></section>
-  <section class="clip" id="p-chip-warm" data-start="246.96" data-duration="5.0" data-track-index="5"><div class="chip" id="chip-warm">WET AND WARM, NOT WET AND COLD</div></section>
-  <section class="clip" id="p-pf-dec26" data-start="271.56" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-dec26"><span class="pf-big">DEC 26, 2015</span><span class="pf-sub">THE DAY AFTER CHRISTMAS</span></div></section>
-  <section class="clip" id="p-pf-12" data-start="295.16" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-12"><span class="pf-big">12 TORNADOES</span><span class="pf-sub">ONE NIGHT</span></div></section>
-  <section class="clip" id="p-src-nws" data-start="297.56" data-duration="5.6" data-track-index="4"><div class="srclab">SOURCE: NWS FORT WORTH · DAMAGE SURVEY</div></section>
-  <section class="clip" id="p-pf-ef4" data-start="306.16" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-ef4"><span class="pf-big">EF4 · 180 MPH</span><span class="pf-sub">GARLAND – ROWLETT · I-30</span></div></section>
-  <section class="clip" id="p-pf-468" data-start="314.66" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-468"><span class="pf-big">468 HURT</span><span class="pf-sub">MOST OF THEM IN CARS</span></div></section>
-  <section class="clip" id="p-chip-first" data-start="320.46" data-duration="5.0" data-track-index="5"><div class="chip" id="chip-first">FIRST DECEMBER EF4 IN TEXAS</div></section>
-  <section class="clip" id="p-chip-wait" data-start="333.58" data-duration="4.5" data-track-index="5"><div class="chip" id="chip-wait">TORNADO SEASON DOES NOT WAIT FOR SPRING</div></section>
-  <section class="clip" id="p-chip-lwc" data-start="345.58" data-duration="4.0" data-track-index="5"><div class="chip" id="chip-lwc">LOW-WATER CROSSING</div></section>
-  <section class="clip" id="p-pf-half" data-start="357.88" data-duration="3.6" data-track-index="5"><div class="popfig" id="pf-half"><span class="pf-big">HALF OF FLOOD DEATHS</span><span class="pf-sub">IN VEHICLES</span></div></section>
-  <section class="clip" id="p-chip-tadd" data-start="382.38" data-duration="5.0" data-track-index="5"><div class="chip" id="chip-tadd">TURN AROUND · DON'T DROWN</div></section>
-  <section class="clip" id="p-pf-three" data-start="401.24" data-duration="2.4" data-track-index="5"><div class="popfig" id="pf-three"><span class="pf-big">3 DIFFERENCES</span></div></section>
-  <section class="clip" id="p-pf-beats" data-start="407.64" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-beats"><span class="pf-big">BEATS THE RECORD</span><span class="pf-sub">2016 ONLY MATCHED IT</span></div></section>
-  <section class="clip" id="p-src-son2" data-start="413.14" data-duration="8.5" data-track-index="4"><div class="srclab">SOURCE: NOAA CPC · SEP–NOV 2026 PRECIPITATION OUTLOOK</div></section>
-  <section class="clip" id="p-pf-above" data-start="418.94" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-above"><span class="pf-big">ABOVE NORMAL RAIN</span><span class="pf-sub">NOAA OUTLOOK · TEXAS</span></div></section>
-  <section class="clip" id="p-chip-temp" data-start="422.54" data-duration="4.6" data-track-index="5"><div class="chip" id="chip-temp">TEMPERATURE · EQUAL CHANCES</div></section>
-  <section class="clip" id="p-pf-ice" data-start="439.44" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-ice"><span class="pf-big">ICE RECIPE</span><span class="pf-sub">WET + SHALLOW COLD</span></div></section>
-  <section class="clip" id="p-chip-1979" data-start="446.74" data-duration="4.5" data-track-index="5"><div class="chip" id="chip-1979">1979 · DALLAS ICE STORM</div></section>
-  <section class="clip" id="p-pf-hou" data-start="458.64" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-hou"><span class="pf-big">HOUSTON</span><span class="pf-sub">FLOODS</span></div></section>
-  <section class="clip" id="p-pf-dfw" data-start="467.14" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-dfw"><span class="pf-big">DALLAS – FORT WORTH</span><span class="pf-sub">TORNADO + ICE</span></div></section>
-  <section class="clip" id="p-pf-hill" data-start="475.64" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-hill"><span class="pf-big">HILL COUNTRY</span><span class="pf-sub">CROSSINGS</span></div></section>
-  <section class="clip" id="p-pf-pan" data-start="482.74" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-pan"><span class="pf-big">PANHANDLE</span><span class="pf-sub">SNOW + ICE</span></div></section>
-  <section class="clip" id="p-pf-valley" data-start="489.64" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-valley"><span class="pf-big">THE VALLEY</span><span class="pf-sub">RAIN, FINALLY</span></div></section>
-  <section class="clip" id="p-chip-five" data-start="494.74" data-duration="5.0" data-track-index="5"><div class="chip" id="chip-five">ONE STORM TRACK · FIVE WINTERS</div></section>
-  <section class="clip" id="p-src-cira" data-start="497.74" data-duration="9.5" data-track-index="4"><div class="srclab">CSU/CIRA · NOAA SATELLITE · ATMOSPHERIC RIVERS 2024–25</div></section>
-  <section class="clip" id="p-pf-spring" data-start="506.64" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-spring"><span class="pf-big">THROUGH SPRING 2027</span><span class="pf-sub">THE WHOLE COLD SEASON</span></div></section>
-  <section class="clip" id="p-chip-noweek" data-start="517.24" data-duration="4.5" data-track-index="5"><div class="chip" id="chip-noweek">NO ONE CAN NAME THE WEEK</div></section>
-  <section class="clip" id="p-pf-odds" data-start="522.74" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-odds"><span class="pf-big">ODDS, NOT A FORECAST</span></div></section>
-  <section class="clip" id="p-pf-not2021" data-start="528.64" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-not2021"><span class="pf-big">NOT 2021</span><span class="pf-sub">A DIFFERENT PATTERN</span></div></section>
-  <section class="clip" id="p-pf-relief" data-start="538.54" data-duration="3.2" data-track-index="5"><div class="popfig popfig-amber" id="pf-relief"><span class="pf-big">DROUGHT RELIEF</span><span class="pf-sub">THE UPSIDE</span></div></section>
-  <section class="clip" id="p-pf-twodangers" data-start="583.24" data-duration="3.0" data-track-index="5"><div class="popfig popfig-amber" id="pf-twodangers"><span class="pf-big">TWO DANGERS</span><span class="pf-sub">ONE SHIFT IN THE SKY</span></div></section>
+  <section class="clip" id="p-src-cpc" data-start="71.94" data-duration="25.0" data-track-index="4"><div class="srclab">SOURCE: NOAA CLIMATE PREDICTION CENTER · WEEKLY SST ANOMALY</div></section>
+  <section class="clip" id="p-pf-3c" data-start="77.54" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-3c"><span class="pf-big">+3.0°C</span><span class="pf-sub">EASTERN PACIFIC</span></div></section>
+  <section class="clip" id="p-pf-90" data-start="82.44" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-90"><span class="pf-big">&gt;90%</span><span class="pf-sub">VERY STRONG EVENT</span></div></section>
+  <section class="clip" id="p-pf-octjan" data-start="98.04" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-octjan"><span class="pf-big">OCT – JAN</span><span class="pf-sub">EXPECTED PEAK</span></div></section>
+  <section class="clip" id="p-src-ond" data-start="97.34" data-duration="10.2" data-track-index="4"><div class="srclab">SOURCE: NOAA CPC · OCT–DEC 2026 PRECIPITATION OUTLOOK</div></section>
+  <section class="clip" id="p-chip-above" data-start="104.34" data-duration="3.2" data-track-index="5"><div class="chip" id="chip-above">TEXAS · ABOVE NORMAL RAIN</div></section>
+  <section class="clip" id="p-src-svs1" data-start="108.34" data-duration="8.4" data-track-index="4"><div class="srclab">NASA SVS · ATMOSPHERIC RIVER, 2017</div></section>
+  <section class="clip" id="p-pf-south" data-start="122.64" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-south"><span class="pf-big">STORM TRACK</span><span class="pf-sub">DROPS SOUTH</span></div></section>
+  <section class="clip" id="p-src-son" data-start="122.24" data-duration="8.2" data-track-index="4"><div class="srclab">SOURCE: NOAA CPC · SEP–NOV 2026 PRECIPITATION OUTLOOK</div></section>
+  <section class="clip" id="p-chip-gulf" data-start="151.04" data-duration="6.0" data-track-index="5"><div class="chip" id="chip-gulf">PACIFIC ENERGY + GULF MOISTURE</div></section>
+  <section class="clip" id="p-src-fema1" data-start="162.78" data-duration="4.6" data-track-index="4"><div class="srclab">FEMA · HOUSTON</div></section>
+  <section class="clip" id="p-pf-7997" data-start="166.58" data-duration="3.6" data-track-index="5"><div class="popfig" id="pf-7997"><span class="pf-big">79.97 IN</span><span class="pf-sub">HOUSTON HOBBY · 1997</span></div></section>
+  <section class="clip" id="p-pf-131" data-start="171.58" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-131"><span class="pf-big">131%</span><span class="pf-sub">BUSH INTERCONTINENTAL</span></div></section>
+  <section class="clip" id="p-pf-jan6" data-start="178.98" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-jan6"><span class="pf-big">JAN 6 · 12 IN</span><span class="pf-sub">IN ONE DAY</span></div></section>
+  <section class="clip" id="p-pf-3ft" data-start="187.58" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-3ft"><span class="pf-big">3 FT OVER</span><span class="pf-sub">LAKE HOUSTON SPILLWAY</span></div></section>
+  <section class="clip" id="p-pf-cfs" data-start="198.08" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-cfs"><span class="pf-big">67,100 CFS</span><span class="pf-sub">LAKE LIVINGSTON</span></div></section>
+  <section class="clip" id="p-pf-120" data-start="215.08" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-120"><span class="pf-big">120 – 160%</span><span class="pf-sub">OF NORMAL RAIN</span></div></section>
+  <section class="clip" id="p-pf-540" data-start="227.58" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-540"><span class="pf-big">540 IN ALL OF 1997</span><span class="pf-sub">THE YEAR BEFORE</span></div></section>
+  <section class="clip" id="p-pf-3x" data-start="234.28" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-3x"><span class="pf-big">3× NORMAL</span><span class="pf-sub">THE WINTER LOAD</span></div></section>
+  <section class="clip" id="p-pf-7th" data-start="239.48" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-7th"><span class="pf-big">7TH WETTEST</span><span class="pf-sub">2ND WARMEST SINCE 1895</span></div></section>
+  <section class="clip" id="p-chip-warm" data-start="244.88" data-duration="5.0" data-track-index="5"><div class="chip" id="chip-warm">WET AND WARM, NOT WET AND COLD</div></section>
+  <section class="clip" id="p-pf-dec26" data-start="269.48" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-dec26"><span class="pf-big">DEC 26, 2015</span><span class="pf-sub">THE DAY AFTER CHRISTMAS</span></div></section>
+  <section class="clip" id="p-pf-12" data-start="293.08" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-12"><span class="pf-big">12 TORNADOES</span><span class="pf-sub">ONE NIGHT</span></div></section>
+  <section class="clip" id="p-src-nws" data-start="295.48" data-duration="5.6" data-track-index="4"><div class="srclab">SOURCE: NWS FORT WORTH · DAMAGE SURVEY</div></section>
+  <section class="clip" id="p-pf-ef4" data-start="304.08" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-ef4"><span class="pf-big">EF4 · 180 MPH</span><span class="pf-sub">GARLAND – ROWLETT · I-30</span></div></section>
+  <section class="clip" id="p-pf-468" data-start="312.58" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-468"><span class="pf-big">468 HURT</span><span class="pf-sub">MOST OF THEM IN CARS</span></div></section>
+  <section class="clip" id="p-chip-first" data-start="318.38" data-duration="5.0" data-track-index="5"><div class="chip" id="chip-first">FIRST DECEMBER EF4 IN TEXAS</div></section>
+  <section class="clip" id="p-chip-wait" data-start="331.5" data-duration="4.5" data-track-index="5"><div class="chip" id="chip-wait">TORNADO SEASON DOES NOT WAIT FOR SPRING</div></section>
+  <section class="clip" id="p-chip-lwc" data-start="343.5" data-duration="4.0" data-track-index="5"><div class="chip" id="chip-lwc">LOW-WATER CROSSING</div></section>
+  <section class="clip" id="p-pf-half" data-start="355.8" data-duration="3.6" data-track-index="5"><div class="popfig" id="pf-half"><span class="pf-big">HALF OF FLOOD DEATHS</span><span class="pf-sub">IN VEHICLES</span></div></section>
+  <section class="clip" id="p-chip-tadd" data-start="380.3" data-duration="5.0" data-track-index="5"><div class="chip" id="chip-tadd">TURN AROUND · DON'T DROWN</div></section>
+  <section class="clip" id="p-pf-three" data-start="399.16" data-duration="2.4" data-track-index="5"><div class="popfig" id="pf-three"><span class="pf-big">3 DIFFERENCES</span></div></section>
+  <section class="clip" id="p-pf-beats" data-start="405.56" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-beats"><span class="pf-big">BEATS THE RECORD</span><span class="pf-sub">2016 ONLY MATCHED IT</span></div></section>
+  <section class="clip" id="p-src-son2" data-start="411.06" data-duration="8.5" data-track-index="4"><div class="srclab">SOURCE: NOAA CPC · SEP–NOV 2026 PRECIPITATION OUTLOOK</div></section>
+  <section class="clip" id="p-pf-above" data-start="416.86" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-above"><span class="pf-big">ABOVE NORMAL RAIN</span><span class="pf-sub">NOAA OUTLOOK · TEXAS</span></div></section>
+  <section class="clip" id="p-chip-temp" data-start="420.46" data-duration="4.6" data-track-index="5"><div class="chip" id="chip-temp">TEMPERATURE · EQUAL CHANCES</div></section>
+  <section class="clip" id="p-pf-ice" data-start="437.36" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-ice"><span class="pf-big">ICE RECIPE</span><span class="pf-sub">WET + SHALLOW COLD</span></div></section>
+  <section class="clip" id="p-chip-1979" data-start="444.66" data-duration="4.5" data-track-index="5"><div class="chip" id="chip-1979">1979 · DALLAS ICE STORM</div></section>
+  <section class="clip" id="p-pf-hou" data-start="456.56" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-hou"><span class="pf-big">HOUSTON</span><span class="pf-sub">FLOODS</span></div></section>
+  <section class="clip" id="p-pf-dfw" data-start="465.06" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-dfw"><span class="pf-big">DALLAS – FORT WORTH</span><span class="pf-sub">TORNADO + ICE</span></div></section>
+  <section class="clip" id="p-pf-hill" data-start="473.56" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-hill"><span class="pf-big">HILL COUNTRY</span><span class="pf-sub">CROSSINGS</span></div></section>
+  <section class="clip" id="p-pf-pan" data-start="480.66" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-pan"><span class="pf-big">PANHANDLE</span><span class="pf-sub">SNOW + ICE</span></div></section>
+  <section class="clip" id="p-pf-valley" data-start="487.56" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-valley"><span class="pf-big">THE VALLEY</span><span class="pf-sub">RAIN, FINALLY</span></div></section>
+  <section class="clip" id="p-chip-five" data-start="492.66" data-duration="5.0" data-track-index="5"><div class="chip" id="chip-five">ONE STORM TRACK · FIVE WINTERS</div></section>
+  <section class="clip" id="p-src-cira" data-start="495.66" data-duration="9.5" data-track-index="4"><div class="srclab">CSU/CIRA · NOAA SATELLITE · ATMOSPHERIC RIVERS 2024–25</div></section>
+  <section class="clip" id="p-pf-spring" data-start="504.56" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-spring"><span class="pf-big">THROUGH SPRING 2027</span><span class="pf-sub">THE WHOLE COLD SEASON</span></div></section>
+  <section class="clip" id="p-chip-noweek" data-start="515.16" data-duration="4.5" data-track-index="5"><div class="chip" id="chip-noweek">NO ONE CAN NAME THE WEEK</div></section>
+  <section class="clip" id="p-pf-odds" data-start="520.66" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-odds"><span class="pf-big">ODDS, NOT A FORECAST</span></div></section>
+  <section class="clip" id="p-pf-not2021" data-start="526.56" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-not2021"><span class="pf-big">NOT 2021</span><span class="pf-sub">A DIFFERENT PATTERN</span></div></section>
+  <section class="clip" id="p-pf-relief" data-start="536.46" data-duration="3.2" data-track-index="5"><div class="popfig popfig-amber" id="pf-relief"><span class="pf-big">DROUGHT RELIEF</span><span class="pf-sub">THE UPSIDE</span></div></section>
+  <section class="clip" id="p-pf-twodangers" data-start="581.16" data-duration="3.0" data-track-index="5"><div class="popfig popfig-amber" id="pf-twodangers"><span class="pf-big">TWO DANGERS</span><span class="pf-sub">ONE SHIFT IN THE SKY</span></div></section>
 
   <!-- ============ CHECKLIST + CLOSE ============ -->
-  <div id="host-checklist" data-composition-id="statcard" data-composition-src="compositions/statcard.html" data-start="544.499" data-duration="35.44" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <section class="clip blackout" id="bo-close" data-start="614.81" data-duration="10.19" data-track-index="1"></section>
-  <div id="host-close" data-composition-id="g-close" data-composition-src="compositions/g-close.html" data-start="614.81" data-duration="10.19" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-checklist" data-composition-id="statcard" data-composition-src="compositions/statcard.html" data-start="542.419" data-duration="35.44" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <section class="clip blackout" id="bo-close" data-start="612.81" data-duration="10.19" data-track-index="1"></section>
+  <div id="host-close" data-composition-id="g-close" data-composition-src="compositions/g-close.html" data-start="612.81" data-duration="10.19" data-track-index="2" data-width="1920" data-height="1080"></div>
 
   <div id="grade"></div>
   <div id="vignette"></div>
@@ -292,7 +301,7 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const DUR = 625.0;
+  const DUR = 623.0;
   function kb(sel, at, dur, s0, s1, x0, x1, y0, y1) {
     tl.fromTo(sel, { scale: s0, x: x0, y: y0, transformOrigin: "center" }, { scale: s1, x: x1, y: y1, duration: dur, ease: "none" }, at);
   }
@@ -324,35 +333,35 @@ window.__timelines = window.__timelines || {};
   kb("#kb-c-hookmap", 0.0, 5.0, 1.0, 1.08, 0, -14, 0, -8);
   kb("#kb-c-hou16", 11.09, 4.4, 1.08, 1.0, 12, 0, 6, 0);
   kb("#kb-c-ike08", 15.49, 4.0, 1.0, 1.07, 0, 12, 0, -6);
-  kb("#kb-c-ike08b", 162.61, 5.0, 1.06, 1.0, -10, 0, 6, 0);
-  kb("#kb-c-hou16b", 178.11, 5.0, 1.0, 1.08, 0, -14, 0, -8);
-  kb("#kb-c-trackmap", 295.789, 6.0, 1.0, 1.04, 0, 0, 0, 0);
-  kb("#kb-c-ef4", 311.189, 5.0, 1.08, 1.0, 12, 0, 6, 0);
-  kb("#kb-c-sangabriel", 344.979, 5.0, 1.0, 1.07, 0, 12, 0, -6);
-  kb("#kb-c-spechts", 349.979, 4.5, 1.0, 1.04, 0, 0, 0, 0);
-  kb("#kb-c-wimberley", 354.479, 4.5, 1.06, 1.0, -10, 0, 6, 0);
-  kb("#kb-c-tempmap", 421.629, 5.5, 1.0, 1.08, 0, -14, 0, -8);
-  kb("#kb-c-ice1979", 448.689, 5.0, 1.08, 1.0, 12, 0, 6, 0);
-  kb("#kb-c-ice2021", 453.689, 3.11, 1.0, 1.07, 0, 12, 0, -6);
-  kb("#kb-c-sangabriel2", 472.759, 4.4, 1.06, 1.0, -10, 0, 6, 0);
-  kb("#kb-c-spechts2", 477.159, 4.5, 1.0, 1.04, 0, 0, 0, 0);
-  kb("#kb-c-txmap", 491.159, 6.0, 1.0, 1.04, 0, 0, 0, 0);
-  kb("#kb-c-cira25", 497.159, 5.0, 1.0, 1.08, 0, -14, 0, -8);
-  kb("#kb-c-cira24", 502.159, 5.0, 1.08, 1.0, 12, 0, 6, 0);
-  kb("#kb-c-tempmap2", 516.369, 4.9, 1.0, 1.07, 0, 12, 0, -6);
-  kb("#kb-c-ice2021b", 524.129, 4.5, 1.06, 1.0, -10, 0, 6, 0);
-  kb("#kb-c-oro21", 534.229, 4.5, 1.0, 1.08, 0, -14, 0, -8);
-  kb("#kb-c-shasta21", 538.729, 5.37, 1.08, 1.0, 12, 0, 6, 0);
-  kb("#kb-c-map-close", 580.389, 5.8, 1.0, 1.07, 0, 12, 0, -6);
-  kb("#kb-c-txmap2", 613.989, 0.821, 1.0, 1.04, 0, 0, 0, 0);
+  kb("#kb-c-ike08b", 160.53, 5.0, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-c-hou16b", 176.03, 5.0, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-c-trackmap", 293.709, 6.0, 1.0, 1.04, 0, 0, 0, 0);
+  kb("#kb-c-ef4", 309.109, 5.0, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-c-sangabriel", 342.899, 5.0, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-c-spechts", 347.899, 4.5, 1.0, 1.04, 0, 0, 0, 0);
+  kb("#kb-c-wimberley", 352.399, 4.5, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-c-tempmap", 419.549, 5.5, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-c-ice1979", 446.609, 5.0, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-c-ice2021", 451.609, 3.11, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-c-sangabriel2", 470.679, 4.4, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-c-spechts2", 475.079, 4.5, 1.0, 1.04, 0, 0, 0, 0);
+  kb("#kb-c-txmap", 489.079, 6.0, 1.0, 1.04, 0, 0, 0, 0);
+  kb("#kb-c-cira25", 495.079, 5.0, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-c-cira24", 500.079, 5.0, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-c-tempmap2", 514.289, 4.9, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-c-ice2021b", 522.049, 4.5, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-c-oro21", 532.149, 4.5, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-c-shasta21", 536.649, 5.37, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-c-map-close", 578.309, 5.8, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-c-txmap2", 611.909, 0.901, 1.0, 1.04, 0, 0, 0, 0);
   /* ---- slow drift on the data-feed holds ---- */
-  drift("#vx-sstloop", 73.79, 25.4, 1.05);
-  drift("#vx-outlook-ond", 99.19, 11.01, 1.05);
-  drift("#vx-ar2017a", 110.2, 8.9, 1.05);
-  drift("#vx-outlook-son", 124.1, 8.4, 1.05);
-  drift("#vx-ar2017b", 281.529, 7.0, 1.05);
-  drift("#vx-sstloop2", 401.229, 7.4, 1.05);
-  drift("#vx-outlook-son2", 412.929, 8.7, 1.05);
+  drift("#vx-sstloop", 71.71, 25.4, 1.05);
+  drift("#vx-outlook-ond", 97.11, 11.01, 1.05);
+  drift("#vx-ar2017a", 108.12, 8.9, 1.05);
+  drift("#vx-outlook-son", 122.02, 8.4, 1.05);
+  drift("#vx-ar2017b", 279.449, 7.0, 1.05);
+  drift("#vx-sstloop2", 399.149, 7.4, 1.05);
+  drift("#vx-outlook-son2", 410.849, 8.7, 1.05);
   /* ---- overlays ---- */
   pop("#pf-notnormal", 1.2, 3.2);
   pop("#pf-69", 6.4, 3.6);
@@ -361,64 +370,231 @@ window.__timelines = window.__timelines || {};
   pop("#pf-13", 36.0, 3.2);
   chip("#chip-two", 49.3, 5.0);
   pop("#pf-four", 63.8, 2.4);
-  lab("#p-src-cpc .srclab", 74.02, 25.0);
-  pop("#pf-3c", 79.62, 3.4);
-  pop("#pf-90", 84.52, 3.0);
-  pop("#pf-octjan", 100.12, 3.2);
-  lab("#p-src-ond .srclab", 99.42, 10.2);
-  chip("#chip-above", 106.42, 3.2);
-  lab("#p-src-svs1 .srclab", 110.42, 8.4);
-  pop("#pf-south", 124.72, 3.4);
-  lab("#p-src-son .srclab", 124.32, 8.2);
-  chip("#chip-gulf", 153.12, 6.0);
-  lab("#p-src-fema1 .srclab", 164.86, 4.6);
-  pop("#pf-7997", 168.66, 3.6);
-  pop("#pf-131", 173.66, 3.0);
-  pop("#pf-jan6", 181.06, 3.4);
-  pop("#pf-3ft", 189.66, 3.4);
-  pop("#pf-cfs", 200.16, 3.4);
-  pop("#pf-120", 217.16, 3.4);
-  pop("#pf-540", 229.66, 3.2);
-  pop("#pf-3x", 236.36, 3.2);
-  pop("#pf-7th", 241.56, 3.4);
-  chip("#chip-warm", 246.96, 5.0);
-  pop("#pf-dec26", 271.56, 3.2);
-  pop("#pf-12", 295.16, 3.0);
-  lab("#p-src-nws .srclab", 297.56, 5.6);
-  pop("#pf-ef4", 306.16, 3.4);
-  pop("#pf-468", 314.66, 3.0);
-  chip("#chip-first", 320.46, 5.0);
-  chip("#chip-wait", 333.58, 4.5);
-  chip("#chip-lwc", 345.58, 4.0);
-  pop("#pf-half", 357.88, 3.6);
-  chip("#chip-tadd", 382.38, 5.0);
-  pop("#pf-three", 401.24, 2.4);
-  pop("#pf-beats", 407.64, 3.0);
-  lab("#p-src-son2 .srclab", 413.14, 8.5);
-  pop("#pf-above", 418.94, 3.4);
-  chip("#chip-temp", 422.54, 4.6);
-  pop("#pf-ice", 439.44, 3.4);
-  chip("#chip-1979", 446.74, 4.5);
-  pop("#pf-hou", 458.64, 3.0);
-  pop("#pf-dfw", 467.14, 3.2);
-  pop("#pf-hill", 475.64, 3.0);
-  pop("#pf-pan", 482.74, 3.0);
-  pop("#pf-valley", 489.64, 3.0);
-  chip("#chip-five", 494.74, 5.0);
-  lab("#p-src-cira .srclab", 497.74, 9.5);
-  pop("#pf-spring", 506.64, 3.2);
-  chip("#chip-noweek", 517.24, 4.5);
-  pop("#pf-odds", 522.74, 3.2);
-  pop("#pf-not2021", 528.64, 3.2);
-  pop("#pf-relief", 538.54, 3.2);
-  pop("#pf-twodangers", 583.24, 3.0);
+  lab("#p-src-cpc .srclab", 71.94, 25.0);
+  pop("#pf-3c", 77.54, 3.4);
+  pop("#pf-90", 82.44, 3.0);
+  pop("#pf-octjan", 98.04, 3.2);
+  lab("#p-src-ond .srclab", 97.34, 10.2);
+  chip("#chip-above", 104.34, 3.2);
+  lab("#p-src-svs1 .srclab", 108.34, 8.4);
+  pop("#pf-south", 122.64, 3.4);
+  lab("#p-src-son .srclab", 122.24, 8.2);
+  chip("#chip-gulf", 151.04, 6.0);
+  lab("#p-src-fema1 .srclab", 162.78, 4.6);
+  pop("#pf-7997", 166.58, 3.6);
+  pop("#pf-131", 171.58, 3.0);
+  pop("#pf-jan6", 178.98, 3.4);
+  pop("#pf-3ft", 187.58, 3.4);
+  pop("#pf-cfs", 198.08, 3.4);
+  pop("#pf-120", 215.08, 3.4);
+  pop("#pf-540", 227.58, 3.2);
+  pop("#pf-3x", 234.28, 3.2);
+  pop("#pf-7th", 239.48, 3.4);
+  chip("#chip-warm", 244.88, 5.0);
+  pop("#pf-dec26", 269.48, 3.2);
+  pop("#pf-12", 293.08, 3.0);
+  lab("#p-src-nws .srclab", 295.48, 5.6);
+  pop("#pf-ef4", 304.08, 3.4);
+  pop("#pf-468", 312.58, 3.0);
+  chip("#chip-first", 318.38, 5.0);
+  chip("#chip-wait", 331.5, 4.5);
+  chip("#chip-lwc", 343.5, 4.0);
+  pop("#pf-half", 355.8, 3.6);
+  chip("#chip-tadd", 380.3, 5.0);
+  pop("#pf-three", 399.16, 2.4);
+  pop("#pf-beats", 405.56, 3.0);
+  lab("#p-src-son2 .srclab", 411.06, 8.5);
+  pop("#pf-above", 416.86, 3.4);
+  chip("#chip-temp", 420.46, 4.6);
+  pop("#pf-ice", 437.36, 3.4);
+  chip("#chip-1979", 444.66, 4.5);
+  pop("#pf-hou", 456.56, 3.0);
+  pop("#pf-dfw", 465.06, 3.2);
+  pop("#pf-hill", 473.56, 3.0);
+  pop("#pf-pan", 480.66, 3.0);
+  pop("#pf-valley", 487.56, 3.0);
+  chip("#chip-five", 492.66, 5.0);
+  lab("#p-src-cira .srclab", 495.66, 9.5);
+  pop("#pf-spring", 504.56, 3.2);
+  chip("#chip-noweek", 515.16, 4.5);
+  pop("#pf-odds", 520.66, 3.2);
+  pop("#pf-not2021", 526.56, 3.2);
+  pop("#pf-relief", 536.46, 3.2);
+  pop("#pf-twodangers", 581.16, 3.0);
+  /* ---- presenter talk-sync: talk loop shows only inside narration speech spans (audio/*.words.json) ---- */
+  tl.set(["#pip-talk-a", "#pip-talk-b"], { autoAlpha: 0 }, 0);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 0.0); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 0.54);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 1.3); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 3.04);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 3.68); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 10.18);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 11.09); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 13.33);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 13.91); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 17.69);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 18.37); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 19.73);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 20.35); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 22.77);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 23.37); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 25.53);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 26.17); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 28.77);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 29.47); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 33.75);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 34.57); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 38.97);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 39.82); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 70.72);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 71.71); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 73.77);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 74.37); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 76.95);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 77.75); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 83.31);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 84.19); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 99.43);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 100.01); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 103.09);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 103.81); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 107.07);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 108.12); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 109.74);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 110.2); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 112.62);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 113.32); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 114.72);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 115.3); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 116.86);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 117.48); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 120.54);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 121.04); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 122.94);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 123.56); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 124.52);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 124.94); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 127.02);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 127.98); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 134.08);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 134.7); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 140.44);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 141.08); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 143.38);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 144.0); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 147.6);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 148.12); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 150.18);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 150.82); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 151.54);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 152.5); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 153.0);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 153.98); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 159.58);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 160.53); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 162.25);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 163.35); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 167.15);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 167.93); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 170.17);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 170.89); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 172.95);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 173.67); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 177.47);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 178.33); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 178.67);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 179.17); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 181.07);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 181.71); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 186.73);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 187.25); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 190.11);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 190.79); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 192.41);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 192.91); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 193.51);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 194.11); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 201.51);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 202.17); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 206.23);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 206.87); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 209.57);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 210.13); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 210.45);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 210.93); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 218.45);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 219.38); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 224.6);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 225.46); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 233.34);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 234.02); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 236.4);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 236.94); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 237.56);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 237.98); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 243.34);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 244.46); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 245.3);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 245.84); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 247.26);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 247.94); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 251.38);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 269.449); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 272.009);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 272.729); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 273.769);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 274.269); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 276.849);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 277.409); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 277.869);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 278.329); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 281.489);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 282.269); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 287.049);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 287.609); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 288.369);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 289.329); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 292.529);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 293.129); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 300.049);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 300.869); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 302.629);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 303.129); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 304.809);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 305.189); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 307.149);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 307.829); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 313.029);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 313.489); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 317.009);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 317.649); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 322.889);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 323.329); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 327.449);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 328.289); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 328.749);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 329.609); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 331.069);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 331.769); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 332.889);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 333.769); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 335.789);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 336.699); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 340.119);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 340.819); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 341.499);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 342.299); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 344.499);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 344.979); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 346.579);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 347.339); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 348.139);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 348.799); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 350.139);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 350.499); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 352.799);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 353.339); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 354.739);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 355.339); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 358.639);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 359.239); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 370.939);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 371.839); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 372.819);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 373.519); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 375.539);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 376.139); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 377.139);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 377.679); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 379.039);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 379.619); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 381.439);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 382.059); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 385.179);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 385.819); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 388.739);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 389.279); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 391.419);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 392.179); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 394.979);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 395.819); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 398.279);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 399.149); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 401.269);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 402.289); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 402.489);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 402.909); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 403.889);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 404.729); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 406.629);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 407.389); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 408.529);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 409.089); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 411.409);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 411.849); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 412.229);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 412.849); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 414.509);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 415.229); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 419.389);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 419.829); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 422.609);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 423.129); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 423.869);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 424.389); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 424.929);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 425.709); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 430.089);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 430.869); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 431.049);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 431.669); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 432.789);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 433.629); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 437.949);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 438.829); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 446.609);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 447.389); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 448.549);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 449.189); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 450.989);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 451.569); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 453.849);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 454.719); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 455.799);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 456.539); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 459.759);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 460.459); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 461.459);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 462.199); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 464.019);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 465.019); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 465.019);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 465.539); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 466.959);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 467.799); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 470.039);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 470.459); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 472.639);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 473.319); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 474.259);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 474.799); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 476.219);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 476.779); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 481.459);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 482.179); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 485.959);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 486.699); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 488.039);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 488.639); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 490.559);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 491.119); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 493.699);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 494.519); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 495.579);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 496.079); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 497.219);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 497.659); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 498.879);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 499.519); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 501.939);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 502.599); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 508.279);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 508.819); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 510.759);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 511.479); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 513.339);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 514.289); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 516.009);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 516.849); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 519.869);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 520.769); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 523.169);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 523.569); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 525.329);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 526.029); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 528.789);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 529.529); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 530.969);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 531.709); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 534.529);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 535.149); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 538.589);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 539.129); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 540.969);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 542.019); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 544.439);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 545.219); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 545.359);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 546.099); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 546.979);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 547.859); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 550.139);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 550.859); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 553.179);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 553.799); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 556.259);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 556.739); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 557.059);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 557.559); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 558.899);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 559.599); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 563.539);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 564.239); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 567.359);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 567.939); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 568.339);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 568.759); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 571.939);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 572.659); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 577.459);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 578.309); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 594.029);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 594.389); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 610.069);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 610.789); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 611.249);
   /* ---- news bug ---- */
-  bug("#bugstrip-a", "#bh-a", 11.09, 243.3, [
+  bug("#bugstrip-a", "#bh-a", 11.09, 241.22, [
     "NOAA: 69% CHANCE OF THE STRONGEST EL NIÑO ON RECORD",
     "TEXAS IN THE 'ABOVE NORMAL' RAIN BAND, OCT–DEC OUTLOOK",
     "WINTER 1997–98: 300+ WARNINGS IN SOUTHEAST TEXAS, 3× NORMAL",
     "PEAK EXPECTED OCTOBER THROUGH JANUARY" ]);
-  bug("#bugstrip-b", "#bh-b", 271.529, 308.86, [
+  bug("#bugstrip-b", "#bh-b", 269.449, 308.86, [
     "DEC 26, 2015: 12 TORNADOES, 13 DEAD, FIRST DECEMBER EF4 IN TEXAS",
     "MORE THAN HALF OF FLOOD DEATHS HAPPEN IN VEHICLES",
     "TEMPERATURE OUTLOOK FOR TEXAS: EQUAL CHANCES",
@@ -427,9 +603,9 @@ window.__timelines = window.__timelines || {};
 
   filmLayer(tl, DUR);
   /* ---- CTA window: film layer off ---- */
-  tl.to(["#vignette", "#grade", "#grain", ".dust"], { autoAlpha: 0, duration: 0.3 }, 255.39);
-  tl.to(["#vignette", "#grade", ".dust"], { autoAlpha: 1, duration: 0.3 }, 270.529);
-  tl.to("#grain", { autoAlpha: 0.10, duration: 0.3 }, 270.529);
+  tl.to(["#vignette", "#grade", "#grain", ".dust"], { autoAlpha: 0, duration: 0.3 }, 253.31);
+  tl.to(["#vignette", "#grade", ".dust"], { autoAlpha: 1, duration: 0.3 }, 268.449);
+  tl.to("#grain", { autoAlpha: 0.10, duration: 0.3 }, 268.449);
   window.__timelines["ms-elnino-texas"] = tl;
 })();
 </script>
