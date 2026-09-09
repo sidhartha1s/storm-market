@@ -65,7 +65,7 @@ Visual: bystander plume clips credited, then black-night ocean; chip "THE ONE NO
 ## CH1 — THIS WEEK (1:05–1:55)
 
 ### C1-S1 — narration
-> The facts on the record first. At seven minutes past eleven on the night of September fourth, Anak Krakatau began an eruption that did not stop for twenty five hours. Indonesia's volcano agency, PVMBG, holds it at Level Three, the second highest alert, where it has sat since July. Nobody is allowed within three kilometres of the crater. Since the long eruption ended there have been more. Two on Monday. Another just after midnight on Wednesday, picked up only on the seismographs, twenty eight seconds long. Six eruptions in one week. The head of the agency put it plainly: volcanic activity remains high, and another eruption in the near future remains possible.
+> The facts on the record first. At seven minutes past eleven on the night of September fourth, Anak Krakatau began an eruption that did not stop for twenty five hours. Indonesia's volcano agency, PVMBG, holds it at Level Three, the second highest alert, where it has sat since July. Nobody is allowed within three kilometres of the crater. Since the long eruption ended there have been more. Two on Monday. Another just after midnight on Wednesday, picked up only on the seismographs, twenty eight seconds long. Six eruptions in one week, on a mountain that only came back to Level Three two months ago. The head of the agency put it plainly: volcanic activity remains high, and another eruption in the near future remains possible.
 
 Visual: DATA-FEED HOLD, BMKG/CIRA satellite ash loop labelled; timeline chip Sep 4 → Sep 9; popfigs "25 HOURS", "LEVEL III", "3 KM", "6 ERUPTIONS"; glass quote card for the PVMBG line. [src: 1, 2]
 
@@ -86,7 +86,7 @@ Visual: 1883 lithographs (Parker & Coward), Royal Society barograph trace push, 
 ## CH4 — THE CHILD (3:45–4:30)
 
 ### C4-S1 — narration
-> The mountain did not stay dead. In nineteen twenty seven, fishermen saw steam rising from the sea where the old island had been. By nineteen thirty a new cone stood above the waves. They called it Anak Krakatau, the child of Krakatoa. And the child grew fast, a few metres a year, until by twenty eighteen it stood three hundred and thirty eight metres tall. That number matters. Because on the twenty second of December twenty eighteen, most of it fell into the sea.
+> The mountain did not stay dead. In nineteen twenty seven, fishermen saw steam rising from the sea where the old island had been. By nineteen thirty a new cone stood above the waves. They called it Anak Krakatau, the child of Krakatoa. Sailors watched it grow from a deck. Geologists mapped it every decade. And the child grew fast, a few metres a year, until by twenty eighteen it stood three hundred and thirty eight metres tall. That number matters. Because on the twenty second of December twenty eighteen, most of it fell into the sea.
 
 Visual: NASA/USGS satellite time series of Anak growth, before/after 2018; popfigs "1927", "338 M", "DEC 22, 2018". Connective into the CTA dip. [src: 6, 8]
 
@@ -109,14 +109,14 @@ Visual: DATA-FEED HOLD, MAGMA Indonesia seismogram or tiltmeter plot labelled; c
 ## CH7 — WHO IS AT RISK (6:45–7:40)
 
 ### C7-S1 — narration
-> Who is actually at risk. The coasts of the Sunda Strait first: Banten on the Java side, Lampung on the Sumatra side. Those are the beaches twenty eighteen hit, and they are the only places where a Krakatau tsunami can reach. Jakarta and the cities of West Java get the ash, which is a breathing and a flight problem, not a tsunami problem. And then there are the travellers. Bali has been fine, but flights route through Jakarta, and eight airports have already had ash closures this week. If you are flying into Java in the next two weeks, your risk is a cancelled connection, not a wave.
+> Who is actually at risk. The coasts of the Sunda Strait first: Banten on the Java side, Lampung on the Sumatra side. Those are the beaches twenty eighteen hit, and they are the only places where a Krakatau tsunami can reach. Jakarta and the cities of West Java get the ash, which is a breathing and a flight problem, not a tsunami problem. And then there are the travellers. Bali has been fine, but flights route through Jakarta, and eight airports have already had ash closures this week. If you are flying into Java in the next two weeks, your risk is a cancelled connection, not a wave. And if you are on a beach in Banten or Lampung, the risk is the one thing this mountain has already done once, and did without warning.
 
 Visual: Sunda Strait map with the two coasts lit in narration order, then Jakarta ash shading, then a Java/Bali flight-route map; popfigs "BANTEN", "LAMPUNG", "JAKARTA · ASH", "BALI · FLIGHTS". [src: 3, 6]
 
 ## CH8 — WHAT IS NOT HAPPENING (7:40–8:50)
 
 ### C8-S1 — narration
-> Now the honest part. Nobody is forecasting an eighteen eighty three. That eruption came from a mountain twenty times the size of the child, and the child does not hold that much magma. The ash is not a health emergency for anyone outside Indonesia; it is not crossing an ocean. The tsunami risk is real but local, a few hundred kilometres of coast, and the weather agency has seen no sea-level anomaly this week. And the year without a summer that people keep quoting was Tambora in eighteen fifteen, a different volcano, a different island, thirty times bigger.
+> Now the honest part. Nobody is forecasting an eighteen eighty three. That eruption came from a mountain twenty times the size of the child, and the child does not hold that much magma. The ash is not a health emergency for anyone outside Indonesia; it is not crossing an ocean. The tsunami risk is real but local, a few hundred kilometres of coast, and the weather agency has seen no sea-level anomaly this week. And the year without a summer that people keep quoting was Tambora in eighteen fifteen, a different volcano, a different island, thirty times bigger. Anyone selling you a global winter from this eruption is selling you the wrong volcano.
 
 Visual: split NOT / YES card; Tambora vs Krakatoa size comparison graphic; popfigs "NOT 1883", "NOT A GLOBAL EVENT", "TSUNAMI RISK · LOCAL", "TAMBORA, NOT KRAKATOA". [src: 3, 4, 10]
 
@@ -128,6 +128,6 @@ Visual: 3-row checklist card over footage; popfigs "1 UPHILL, NO SIREN", "2 CHEC
 ## CLOSE (8:50–9:20)
 
 ### Z1-S1 — narration
-> The child of Krakatoa is awake, and the instruments are watching it more closely than any mountain on Earth. If you enjoyed this video, like and subscribe for more. I truly appreciate it. Comment the one thing you would want to know if you were on that coast tonight, and I will answer it in the next one.
+> The child of Krakatoa is awake, and the instruments are watching it more closely than any mountain on Earth. If you enjoyed this video, like and subscribe for more. I truly appreciate it. Comment the one thing you would want to know if you were on that coast tonight, or any suggestions for improvements. I love reeding all your comments. Make sure to check out the ebook in the description, and stay tuned for the next video. Good day.
 
 Visual: outro brand card; end screen pointer to the El Niño videos. Presenter circle hidden.
