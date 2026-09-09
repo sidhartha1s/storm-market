@@ -93,6 +93,20 @@ atempo 1.15): 8:30 ≈ 1,260 words, 9:30 ≈ 1,410, 12:00 ≈ 1,780. Table goes 
   close / present / record and respell the narration copy phonetically ("reed") while the script keeps the
   owner's exact wording. Listen to every interaction beat once after TTS; a wrong-tense homograph reads as AI
   slop to the audience. Owner's phrases are verbatim — never paraphrase a line he wrote.
+## Presenter circle — Paul PiP, phase 2 (owner 2026-09-09: standard on every mini-storm from Texas onward)
+- 240 px circle, bottom-right (left 1640, top 708 on 1080p), 4 px red ring, above the news-bug strip. Present from the
+  intro to the end of the last narration line; HIDDEN in the hook, in Paul's full-frame CTA window (the CTA has its
+  own higher-quality face and lip-sync) and under the close card.
+- Source = the CTA master, no generation: 410 px square crop centred on his face (he sits 205 px from the frame edge, so
+  the crop starts at x=0 and the left margin is his own background blurred and extended), face ≈ 70 % of the circle.
+- Two loops from HIS OWN speech spans (transcribe the CTA with word timestamps): `paul-talk` = his talking stretches
+  joined; `paul-idle` = his pauses joined forward+back. Cut per window to the exact `data-duration` (media_budget),
+  crf ~30 at 240 px (≈2 MB per window). Tracks 6 (idle) and 7 (talk); never share a track with anything else.
+- Talk-sync: merge narration words with gaps < 0.35 s into spans; the talk layer fades in (0.1 s) at each span start and
+  out at each span end, idle underneath. One-shot helper computes the lines; never committed.
+- Corner conflict: broadcaster bugs (NBC, WFAA, KTLA) also live bottom-right — accepted for now; revisit if it reads badly.
+- Recipe files: `episodes/ms-elnino-texas/_framesweep/pip/` (crop, ring, mask, loops) until it moves to `library/mini-storms/presenter/`.
+
 ## Audio
 - Narration 150–160 wpm delivered. Pocket-TTS Pharaoh lands ~129 natively; use `atempo 1.15–1.2`
   in the breaking lane only (documentary lane stays native). Verify by ear on segment 1.
