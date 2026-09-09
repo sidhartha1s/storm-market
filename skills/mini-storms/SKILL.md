@@ -125,8 +125,8 @@ affected count, plus a bottom-left running data chip and word-highlight captions
 
 ### 6b. Presenter circle (phase 2, standard from Texas on)
 Mount Paul's 240 px circle per FORMAT.md "Presenter circle": two loops cut from the CTA master, talk gated on the
-narration speech spans, hidden in the hook / CTA / close. Deliverables stay `master_deliverables.py --hevc` (1440p upload
-file + HEVC archive); no 4K step, the owner upscales himself (2026-09-09).
+narration speech spans, hidden in the hook / CTA / close. Deliverables: `master_deliverables.py` → the 1080p
+`-master.mp4` IS the upload file + SRT; no upscale step, the owner upscales by hand (2026-09-09).
 
 ### 7–9. QC, render, ship
 Same scripts and hidden-window rules as storm-episode. One draft render only if static QC

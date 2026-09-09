@@ -123,6 +123,16 @@ quoted section header.
   20–30 s slice of the REAL index.html (`T0` window, ~1 min) and read one contact strip → re-run the static gate
   suite on the final file → post a one-message plan and wait for "go" → ONE full render. "The previous render
   looked fine" is void once the file changed; never launch a second full render to find out what the first did.
+- **Check free disk before every full render, and delete a killed render's spool (2026-09-09, Texas):** the capture
+  spool lives in `%LOCALAPPDATA%\Temp\hf-render-*` and reaches ~9–10 GB for a 10-min 30 fps full. Render #1 captured
+  all 18690 frames and then died in the encode with ffmpeg exit 4294967268 (= -28, ENOSPC) at 98 % disk; hyperframes
+  deletes its own spool on failure, so the frames are gone too and the whole render reruns. Three stale spools from
+  killed renders (14.6 GB) plus the extract cache had eaten the headroom. Rule: `df` ≥ 30 GB free before a full;
+  killing a render includes deleting its `hf-render-*` dir the same minute; a failure report says what was LOST first.
+- **Capture rate on this box is 9–12 fps at 2 workers, content-independent (measured 2026-09-09 from the log
+  checkpoints):** a 623 s / 18690-frame timeline takes ~31 min capture + ~4 min encode. The presenter-circle layers
+  cost nothing measurable. ETAs come from the log checkpoint fps, never from a window that includes the 4-min extract
+  phase (that mistake produced a 58-min ETA for a 35-min render).
 
 ## 2026-08-30 — the ebook CTA is a channel asset + a must-keep contract (owner order, ep4 rewire kickoff)
 
