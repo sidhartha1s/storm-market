@@ -1,4 +1,4 @@
-# packaging.md — ms-krakatoa-1883 (breaking lane, PLAN — not yet built)
+# packaging.md — ms-krakatoa-1883 (mini-storms #3, owner go 2026-09-09 19:55)
 
 Planned 2026-09-08 while the El Niño series renders. Owner: "we will soon do krakatoa". This is a one-shot
 spike video: the event is peaking now (Disaster Pulse 386k in a day on 2026-09-06), supply is already
@@ -42,6 +42,42 @@ crowding (five 8–20 min videos this week), so it ships within 24 h of go or no
 
 ## Word budget
 9:20 target ≈ 1,420 words at 158 wpm. Hook 22, intro 150, chapters 8 × ~150, close 35.
+
+## Kickoff facts, re-checked 2026-09-09 (official sources only; the Sep 8 plan's flight totals are NOT confirmed)
+- Alert Level III (Siaga) since 2 July 2026 16:30 WIB; 3 km exclusion radius. [PVMBG via Databoks, nine145]
+- Continuous eruption 4 Sep 23:07 WIB → 6 Sep 00:04 WIB, 25 hours; PVMBG head Siti Sumilah Rita Susilawati:
+  "volcanic activity remains high, and the possibility of another eruption in the near future remains." [Antara]
+- Further eruptions: Strombolian 6 Sep 03:53 (30 s); 8 Sep morning + afternoon; 9 Sep 00:47 WIB (seismic only,
+  amplitude 51 mm, 28 s), the sixth in a week. [Databoks/MAGMA Indonesia]
+- Ash: SIGMET 7 Sep 06:30–09:30 WIB surface to 15,000 ft moving west 15 kt; 39 SIGMETs since the first eruption;
+  eight airports "temporarily affected" by 7 Sep morning; 209 flights cancelled at Soekarno-Hatta. [BMKG, Antara]
+  The "50,000 ft / 1,558 flights / 270,000 stranded" figures from the Sep 8 plan are aggregates nobody official
+  publishes; they stay OUT of the script.
+- Tsunami: BMKG "no sea-level anomaly indicating a tsunami" through 6 Sep 07:30; authorities told Banten and
+  Lampung coasts to reject unverified tsunami claims. [BMKG, Antara]
+- No confirmed deaths, injuries or displacement in official sources as of 8 Sep. [nine145 review]
+
+## Structure and word budget (158 wpm ⇒ 2.6 words/s; target 9:20)
+| Section | Time | Words | Job |
+|---|---|---|---|
+| HOOK | 0:00–0:08 | 22 | Title payoff: the mountain that killed 36,000 has erupted six times in a week |
+| INTRO | 0:08–1:05 | 150 | 1883 in three numbers; the loop: the danger nobody filmed in 2018; promise |
+| CH1 This week | 1:05–1:55 | 130 | Sep 4–9 timeline, Level III, 25 h, sixth eruption, 3 km |
+| CH2 Why flights stop | 1:55–2:45 | 130 | Ash vs jets (BA009 1982), SIGMETs, 8 airports, PVMBG levels II→III→IV |
+| CH3 1883 | 2:45–3:45 | 155 | Aug 26–27, 36,000 dead, heard 3,000 mi, pressure wave 7×, barometers, −0.4 °C |
+| CH4 The child | 3:45–4:30 | 120 | Anak emerged 1927, growth, 338 m → 110 m after 2018 |
+| CTA | 4:30–4:46 | 0 | Paul v5, 1 s dips (≈ 47 %) |
+| CH5 Dec 22, 2018 | 4:46–5:50 | 165 | Flank collapse, no eruption warning, night tsunami, 437 dead, 24 min, no sirens |
+| CH6 What they watch | 5:50–6:45 | 140 | Collapse geometry, tremor, tiltmeter rising since August, SO2, MAGMA feed |
+| CH7 Who is at risk | 6:45–7:40 | 140 | Sunda Strait coasts, Banten/Lampung, Jakarta ash, travellers to Java/Bali |
+| CH8 What is NOT happening | 7:40–8:50 | 175 | No 1883-scale forecast; ash ≠ US health issue; tsunami risk local; Tambora not Krakatoa; travel advice |
+| CLOSE | 8:50–9:20 | 40 | Warm line, END CTA spine, series pointer |
+| **Total** | **9:20** | **~1,370 + CTA** | |
+
+## Interaction beats (ledger cap 3 incl. END CTA)
+1. Intro: "Comment down where you are watching this from. I read all the comments." (TTS copy "reed")
+2. CH5 think-it-yourself: "Before I tell you why the sirens stayed silent, guess how many minutes the tide gauges gave."
+3. END CTA (owner's fixed spine).
 
 ## Open before go
 - Owner says "go krakatoa" ⇒ worktree `ms-krakatoa-1883` from the latest series branch, ≤3 h to private upload.
