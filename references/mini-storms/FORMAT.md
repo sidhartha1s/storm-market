@@ -101,9 +101,11 @@ atempo 1.15): 8:30 ≈ 1,260 words, 9:30 ≈ 1,410, 12:00 ≈ 1,780. Table goes 
   the crop starts at x=0 and the left margin is his own background blurred and extended), face ≈ 70 % of the circle.
 - Two loops from HIS OWN speech spans (transcribe the CTA with word timestamps): `paul-talk` = his talking stretches
   joined; `paul-idle` = his pauses joined forward+back. Cut per window to the exact `data-duration` (media_budget),
-  crf ~30 at 240 px (≈2 MB per window). Tracks 6 (idle) and 7 (talk); never share a track with anything else. **Mount as a timed `<section class="clip pipwrap">`
-  WRAPPING the `<video>` — a bare `<video class>` loses its left/top/box-shadow in the renderer's frame swap (measured
-  2026-09-09: the circle rendered at 0,0 without its ring; the wrapped version renders correctly).
+  crf ~30 at 240 px (≈2 MB per window). Tracks 6 (idle) and 7 (talk); never share a track with anything else. **Mount as a bare timed `<video class="pip">` whose
+  geometry is `!important` (the renderer's own `video{inset:0}` otherwise wins and the circle lands at 0,0), plus a separate
+  timed `<section>` carrying the red ring (box-shadow is not copied in the renderer's frame swap). A `<video>` nested
+  inside a timed section is treated as UNTIMED, always-on media and is drawn at 0,0 — never do that (measured 2026-09-09
+  on two 6 s test renders).
 - Talk-sync: merge narration words with gaps < 0.35 s into spans; the talk layer fades in (0.1 s) at each span start and
   out at each span end, idle underneath. One-shot helper computes the lines; never committed.
 - Corner conflict: broadcaster bugs (NBC, WFAA, KTLA) also live bottom-right — accepted for now; revisit if it reads badly.

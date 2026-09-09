@@ -48,9 +48,10 @@
     .bugstrip .bw { display: flex; align-items: center; padding: 0 26px; color: #d8a13a; font-family: Georgia, serif; font-style: italic; font-size: 26px; border-right: 1px solid rgba(255,255,255,0.14); white-space: nowrap; }
     .bugstrip .bh { display: flex; align-items: center; padding: 0 30px; color: #f4f0e8; font-weight: 700; font-size: 34px; letter-spacing: 1px; white-space: nowrap; overflow: hidden; }
     /* ---- presenter circle (Paul PiP, phase 2: talk/idle loops gated on narration spans; owner 2026-09-09) ---- */
-    .pipwrap { position: absolute; left: 1640px; top: 708px; width: 240px; height: 240px; inset: auto; border-radius: 50%;
-      overflow: hidden; z-index: 8; box-shadow: 0 0 0 4px #d0121f, 0 10px 30px rgba(0,0,0,0.55); }
-    .pipwrap video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .pip { position: absolute !important; inset: auto !important; left: 1640px !important; top: 708px !important;
+      width: 240px !important; height: 240px !important; border-radius: 50% !important; object-fit: cover !important; z-index: 8 !important; }
+    .pipring { position: absolute; left: 1632px; top: 700px; width: 256px; height: 256px; border-radius: 50%; border: 4px solid #d0121f;
+      box-sizing: border-box; z-index: 9; box-shadow: 0 10px 30px rgba(0,0,0,0.55); }
     /* ---- film layer ---- */
     #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90; background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
     #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.10; mix-blend-mode: overlay; }
@@ -91,10 +92,12 @@
 
 
   <!-- ============ PRESENTER CIRCLE (track 4; hidden in the hook, the Paul CTA window and the close) ============ -->
-  <section class="clip pipwrap" id="pip-idle-a" data-start="11.09" data-duration="241.22" data-track-index="6"><video src="media/pip/paul-idle-a.mp4" muted></video></section>
-  <section class="clip pipwrap" id="pip-talk-a" data-start="11.09" data-duration="241.22" data-track-index="7" data-callback="presenter loop, talking"><video src="media/pip/paul-talk-a.mp4" muted></video></section>
-  <section class="clip pipwrap" id="pip-idle-b" data-start="269.449" data-duration="342.38" data-track-index="6" data-callback="presenter loop, listening"><video src="media/pip/paul-idle-b.mp4" muted></video></section>
-  <section class="clip pipwrap" id="pip-talk-b" data-start="269.449" data-duration="342.38" data-track-index="7" data-callback="presenter loop, talking"><video src="media/pip/paul-talk-b.mp4" muted></video></section>
+  <video id="pip-idle-a" class="pip" src="media/pip/paul-idle-a.mp4" data-start="11.09" data-duration="241.22" data-track-index="6" muted></video>
+  <video id="pip-talk-a" class="pip" src="media/pip/paul-talk-a.mp4" data-start="11.09" data-duration="241.22" data-track-index="7" data-callback="presenter loop, talking" muted></video>
+  <video id="pip-idle-b" class="pip" src="media/pip/paul-idle-b.mp4" data-start="269.449" data-duration="342.38" data-track-index="6" data-callback="presenter loop, listening" muted></video>
+  <section class="clip" id="pip-ring-a" data-start="11.09" data-duration="241.22" data-track-index="8"><div class="pipring"></div></section>
+  <section class="clip" id="pip-ring-b" data-start="269.449" data-duration="342.38" data-track-index="8"><div class="pipring"></div></section>
+  <video id="pip-talk-b" class="pip" src="media/pip/paul-talk-b.mp4" data-start="269.449" data-duration="342.38" data-track-index="7" data-callback="presenter loop, talking" muted></video>
   <!-- ============ NEWS BUG (track 3, inline; off during the CTA and the close) ============ -->
   <section class="clip" id="bug-a" data-start="11.09" data-duration="241.22" data-track-index="3">
     <div class="bugstrip" id="bugstrip-a"><div class="bk">WARNING</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-a"></div></div>
