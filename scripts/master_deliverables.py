@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Post-render deliverables: -14 LUFS master + SRT, per repo CLAUDE.md step 7.
 
-Usage: python3 scripts/master_deliverables.py episodes/<slug> <render-basename> [--hevc] [--no-2k]
+Usage: python3 scripts/master_deliverables.py episodes/<slug> <render-basename> [--hevc]
 
 e.g.:  python3 scripts/master_deliverables.py episodes/ep2-2011-super-outbreak ep2-final
        python3 scripts/master_deliverables.py episodes/ep3-tristate ep3-final --hevc
@@ -10,14 +10,6 @@ Reads  episodes/<slug>/renders/<basename>.mp4 and writes:
   renders/<basename>-master.mp4        (video stream copied, single measured gain,
                                          aac 256k; verified -14 LUFS +/-0.5, TP <= -0.9)
   renders/<basename>.srt               (via scripts/build_srt.py)
-  renders/<basename>-master-1440p.mp4  (default, skip with --no-2k: GPU hevc_nvenc
-                                         p7 cq22 lanczos upscale to 2560x1440, audio
-                                         bit-copied from the master — THE YOUTUBE UPLOAD
-                                         FILE; a 1440p upload gets YouTube's higher VP9
-                                         bitrate tier, visibly cleaner playback than a
-                                         1080p upload of identical content. HEVC since
-                                         2026-08-29 (owner order): ~3.5 GB instead of the
-                                         ~5 GB h264 cq19/24M file)
   renders/<basename>-master-hevc.mp4   (--hevc only: GPU hevc_nvenc, audio bit-copied
                                          from the master; ~2.5x smaller, visually lossless)
 
@@ -76,36 +68,9 @@ def encode_hevc(master: Path, out: Path):
     mb = out.stat().st_size / 1e6
     print(f"      {out.name} — {mb:.0f} MB")
 
-def encode_2k(master: Path, out: Path):
-    """GPU HEVC lanczos upscale of the finished master to 2560x1440 — the YouTube upload
-    file (1440p uploads get the higher VP9 bitrate tier). Audio bit-copied so the verified
-    -14 LUFS mix is untouched. Fails loud if NVENC is unavailable (same ffmpeg-build caveat
-    as encode_hevc). hevc_nvenc p7 cq22 (the encode_hevc recipe) replaced h264 cq19/24M on
-    2026-08-29 (owner order): ep2 v2 measured 3.5 GB vs 4.8 GB, 8 min at 3.5x realtime."""
-    print(f"[2K ] GPU 1440p -> {out.name} (hevc_nvenc p7 cq22, lanczos, audio copied) ...")
-    r = subprocess.run(
-        ["ffmpeg", "-hide_banner", "-y", "-i", str(master),
-         "-vf", "scale=2560:1440:flags=lanczos",
-         "-c:v", "hevc_nvenc", "-preset", "p7", "-tune", "hq", "-rc", "vbr",
-         "-cq", "22", "-tag:v", "hvc1",
-         "-pix_fmt", "yuv420p", "-colorspace", "bt709",
-         "-color_primaries", "bt709", "-color_trc", "bt709",
-         "-c:a", "copy", "-movflags", "+faststart", str(out)],
-        capture_output=True, text=True)
-    if r.returncode != 0 or not out.exists() or out.stat().st_size == 0:
-        tail = r.stderr[-600:]
-        if "nvenc" in tail.lower():
-            sys.exit("2K FAILED: GPU NVENC unavailable (driver/ffmpeg mismatch). Use the "
-                     "PATH ffmpeg 8.1.1 build or update the Nvidia driver. Not falling "
-                     f"back to a software encode.\n{tail}")
-        sys.exit(f"2K encode failed:\n{tail}")
-    mb = out.stat().st_size / 1e6
-    print(f"      {out.name} — {mb:.0f} MB")
-
 def main():
-    argv = [a for a in sys.argv[1:] if a not in ("--hevc", "--no-2k")]
+    argv = [a for a in sys.argv[1:] if a != "--hevc"]
     want_hevc = "--hevc" in sys.argv[1:]
-    want_2k = "--no-2k" not in sys.argv[1:]
     if len(argv) != 2:
         sys.exit(__doc__)
     ep = Path(argv[0])
@@ -166,10 +131,6 @@ def main():
         sys.exit("build_srt.py failed")
 
     outs = f"{master} + {ep/'renders'/(base + '.srt')}"
-    if want_2k:
-        up = ep / "renders" / f"{base}-master-1440p.mp4"
-        encode_2k(master, up)
-        outs += f" + {up}"
     if want_hevc:
         hevc = ep / "renders" / f"{base}-master-hevc.mp4"
         encode_hevc(master, hevc)
