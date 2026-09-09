@@ -123,6 +123,11 @@ real data-feed hold (USGS/NOAA/NASA loop, 20–40 s) every 2–3 min as a credib
 JS/WAAPI only. Red popfig (Abril, text-shadow, ≤3 words) on every date / place / number /
 affected count, plus a bottom-left running data chip and word-highlight captions on the same words.
 
+### 6b. Presenter circle (phase 2, standard from Texas on)
+Mount Paul's 240 px circle per FORMAT.md "Presenter circle": two loops cut from the CTA master, talk gated on the
+narration speech spans, hidden in the hook / CTA / close. Deliverables: `master_deliverables.py --hevc` now produces
+the **4K HEVC upload file** by default (owner 2026-09-09).
+
 ### 7–9. QC, render, ship
 Same scripts and hidden-window rules as storm-episode. One draft render only if static QC
 flagged something; otherwise straight to full. Frame eyeball ≈ 1 per 20 s via a Sonnet subagent
