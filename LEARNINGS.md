@@ -118,6 +118,11 @@ quoted section header.
   close / present / record and respell the narration copy phonetically ("reed") while the script keeps the
   owner's exact wording. Listen to every interaction beat once after TTS; a wrong-tense homograph reads as AI
   slop to the audience. Owner's phrases are verbatim — never paraphrase a line he wrote.
+- **A full render is never a test (owner 2026-09-09, three wasted Texas full renders):** a mount/layout change is
+  verified in this order and no other: read the renderer's runtime path in the pinned package → draft-render a
+  20–30 s slice of the REAL index.html (`T0` window, ~1 min) and read one contact strip → re-run the static gate
+  suite on the final file → post a one-message plan and wait for "go" → ONE full render. "The previous render
+  looked fine" is void once the file changed; never launch a second full render to find out what the first did.
 
 ## 2026-08-30 — the ebook CTA is a channel asset + a must-keep contract (owner order, ep4 rewire kickoff)
 
