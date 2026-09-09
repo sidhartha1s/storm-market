@@ -113,6 +113,12 @@ quoted section header.
 - **Gemini (nanobanana) free tier is exhausted** → thumbnail candidates come from real render frames
   (`thumbs/frame-cand-*.png`) until a paid key exists.
 
+- **Homographs are a TTS trap (owner 2026-09-09, "AI-slop radar"):** pocket-TTS read "I read all the comments" as
+  "I red" (past tense). Before TTS, scan every interaction line for read / lead / live / wind / tear / bass /
+  close / present / record and respell the narration copy phonetically ("reed") while the script keeps the
+  owner's exact wording. Listen to every interaction beat once after TTS; a wrong-tense homograph reads as AI
+  slop to the audience. Owner's phrases are verbatim — never paraphrase a line he wrote.
+
 ## 2026-08-30 — the ebook CTA is a channel asset + a must-keep contract (owner order, ep4 rewire kickoff)
 
 1. **The CTA was never in the pipeline.** ep2's Paul CTA was spliced into the finished mp4 by the

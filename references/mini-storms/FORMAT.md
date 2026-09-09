@@ -88,6 +88,11 @@ atempo 1.15): 8:30 ≈ 1,260 words, 9:30 ≈ 1,410, 12:00 ≈ 1,780. Table goes 
 - **Upload routine (owner):** pin the where-are-you-watching comment, post the next-topic vote five minutes later,
   answer the first ten comments within the hour, open the next video by naming the winner.
 
+- **Homographs are a TTS trap (owner 2026-09-09, "AI-slop radar"):** pocket-TTS read "I read all the comments" as
+  "I red" (past tense). Before TTS, scan every interaction line for read / lead / live / wind / tear / bass /
+  close / present / record and respell the narration copy phonetically ("reed") while the script keeps the
+  owner's exact wording. Listen to every interaction beat once after TTS; a wrong-tense homograph reads as AI
+  slop to the audience. Owner's phrases are verbatim — never paraphrase a line he wrote.
 ## Audio
 - Narration 150–160 wpm delivered. Pocket-TTS Pharaoh lands ~129 natively; use `atempo 1.15–1.2`
   in the breaking lane only (documentary lane stays native). Verify by ear on segment 1.

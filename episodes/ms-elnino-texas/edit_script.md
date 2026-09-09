@@ -32,13 +32,15 @@ Visual: CPC SST map push; popfig "69%" / "STRONGEST EVER". [src: 1]
 
 ## INTRO (0:08–1:05)
 
+> TTS note: the owner's phrase is "Comment down where you are watching this from. I read all the comments." — spelled "reed" in the narration line only so pocket-TTS says the present tense (it read "I red everyone" in v3).
+
 ### I1-S1 — narration
 > The last time the Pacific did this, the National Weather Service office in Houston wrote down what happened. From November to February, it issued more than three hundred severe weather, tornado and flash flood warnings. That was nearly three times a normal winter. And the winter before that scale of ocean heat, in December of twenty fifteen, a tornado outbreak north of Dallas killed thirteen people in a single night.
 
 Visual: NWS warning map / Houston flood 1998 stills; Garland aftermath; popfigs "300+ WARNINGS", "13 DEAD · DEC 26". [src: 3, 5]
 
 ### I1-S2 — narration
-> But here is what people get wrong about El Niño in Texas. They plan for a cold winter. The danger is not the cold. It is two things almost nobody plans for in December, and both of them come from the same shift in the sky. Stay with this, because by the end you will know which of the two your part of Texas gets, when the window opens, and the four things to do before it does. And tell me where you are watching from. I read every one, and it decides which state I do next.
+> But here is what people get wrong about El Niño in Texas. They plan for a cold winter. The danger is not the cold. It is two things almost nobody plans for in December, and both of them come from the same shift in the sky. Stay with this, because by the end you will know which of the two your part of Texas gets, when the window opens, and the four things to do before it does. Comment down where you are watching this from. I reed all the comments.
 
 Visual: jet-stream diagram teaser, DFW skyline storm; chip "TWO DANGERS · ONE SHIFT"; popfig "4 THINGS". [src: 1]
 
