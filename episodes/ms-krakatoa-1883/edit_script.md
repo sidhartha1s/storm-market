@@ -72,7 +72,7 @@ Visual: DATA-FEED HOLD, BMKG/CIRA satellite ash loop labelled; timeline chip Sep
 ## CH2 — WHY FLIGHTS STOP (1:55–2:45)
 
 ### C2-S1 — narration
-> So why do airports close for a cloud? Because volcanic ash is not smoke. It is pulverised glass. In nineteen eighty two a British Airways jumbo flew into an ash cloud over Java at night, and all four engines flamed out. The crew glided for thirteen minutes before the engines relit. Aviation has never forgotten it. This week Indonesia's weather agency issued thirty nine ash warnings to pilots, with ash reported from the surface up to fifteen thousand feet drifting west. Eight airports were affected, and Jakarta's main airport alone cancelled more than two hundred flights. Which raises the question that actually matters: how bad can this get?
+> So why do airports close for a cloud? Because volcanic ash is not smoke. It is pulverised glass. In nineteen eighty two a British Airways jumbo flew into an ash cloud over Java at night, and all four engines flamed out. The crew glided for thirteen minutes before the engines relit. Aviation has never forgotten it. This week Indonesia's weather agency issued thirty nine ash warnings to pilots. Ash was reported from the surface up to fifteen thousand feet, drifting west. Eight airports were hit by it, and Jakarta's main airport alone cancelled more than two hundred flights. Which raises the question that actually matters: how bad can this get?
 
 Visual: departure board stock, jet engine cutaway still, BA009 route map; popfigs "PULVERISED GLASS", "4 ENGINES OUT", "39 WARNINGS", "8 AIRPORTS", "209 CANCELLED". [src: 3, 9, 1]
 
@@ -109,7 +109,7 @@ Visual: DATA-FEED HOLD, MAGMA Indonesia seismogram or tiltmeter plot labelled; c
 ## CH7 — WHO IS AT RISK (6:45–7:40)
 
 ### C7-S1 — narration
-> Who is actually at risk. The coasts of the Sunda Strait first: Banten on the Java side, Lampung on the Sumatra side. Those are the beaches twenty eighteen hit, and they are the only places where a Krakatau tsunami can reach. Jakarta and the cities of West Java get the ash, which is a breathing and a flight problem, not a tsunami problem. And then there are the travellers. Bali has been fine, but flights route through Jakarta, and eight airports have already had ash closures this week. If you are flying into Java in the next two weeks, your risk is a cancelled connection, not a wave. And if you are on a beach in Banten or Lampung, the risk is the one thing this mountain has already done once, and did without warning.
+> Who is actually at risk. The coasts of the Sunda Strait first: Banten on the Java side, Lampung on the Sumatra side. Those are the beaches twenty eighteen hit, and they are the only places where a Krakatau tsunami can reach. Jakarta and the cities of West Java get the ash, which is a breathing and a flight problem, not a tsunami problem. And then there are the travellers. Bali has been fine, but flights route through Jakarta, and eight airports have already had ash closures this week. If you are flying into Java in the next two weeks, your risk is a cancelled connection, and not a tsunami. And if you are on a beach in Banten or Lampung, the risk is the one thing this mountain has already done once, and did without warning.
 
 Visual: Sunda Strait map with the two coasts lit in narration order, then Jakarta ash shading, then a Java/Bali flight-route map; popfigs "BANTEN", "LAMPUNG", "JAKARTA · ASH", "BALI · FLIGHTS". [src: 3, 6]
 

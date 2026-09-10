@@ -118,6 +118,22 @@ quoted section header.
   close / present / record and respell the narration copy phonetically ("reed") while the script keeps the
   owner's exact wording. Listen to every interaction beat once after TTS; a wrong-tense homograph reads as AI
   slop to the audience. Owner's phrases are verbatim — never paraphrase a line he wrote.
+- **Overlay sync RCA (owner 2026-09-10, Krakatau v1 draft: "MGs not syncing, some early, some late"):** every
+  popfig/chip time in the scratch builder was an estimate at 2.6 words/s from the script; measured against words.json
+  they were 2–4 s off in both directions ("25 HOURS" 3.5 s early, "437 DEAD" 3 s early, "PULVERISED GLASS" 2.8 s early).
+  The card rows, which used `word_at()` cues, were right. Root fix: every overlay carries a cue phrase resolved from
+  `audio/<seg>.words.json`; unmatched cue = build failure. Also found while reading the transcripts: pocket-TTS split
+  two >24-word sentences and repeated/mangled fragments ("drifting west, drifting west", "affected"→"lifted", "not a
+  wave"→"not if if"); the owner did not hear them, the transcript showed them. Read every transcript before the timeline.
+- **CTA first syllable clipped + post-CTA black too long (owner 2026-09-10):** CTA start was off the 30 fps grid and
+  the blackout sat on the same track ending at the same instant. Fix: blackouts on their own track, CTA audio starts
+  0.1 s under the black, all starts ceil-aligned to 1/30 s, dip-out 0.5 s. z1 hiss/long pauses: TTS gaps > 0.55 s
+  replaced with 0.4 s digital silence via a words.json-driven ffmpeg concat, then re-transcribed.
+- **A sleeping laptop kills TTS and sourcing agents silently (2026-09-09→10):** pocket-TTS hung at 4/13 segments for
+  12 h with 6 orphan python processes; the sourcing agent's report never landed. After any overnight gap: check
+  `audio/*.wav` count and the pool's provenance.csv before trusting either. Also: a `> TTS note` blockquote placed
+  between a `##` heading and the next `###` is parsed as narration of the PREVIOUS segment by tts_episode.py — notes
+  are plain lines, never blockquotes.
 - **A full render is never a test (owner 2026-09-09, three wasted Texas full renders):** a mount/layout change is
   verified in this order and no other: read the renderer's runtime path in the pinned package → draft-render a
   20–30 s slice of the REAL index.html (`T0` window, ~1 min) and read one contact strip → re-run the static gate
