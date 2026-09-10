@@ -80,8 +80,6 @@
 
   <!-- ============ CTA (channel.cta v5; 257.4 = 47 % — after CH4, hook > CTA > payoff) ============ -->
   <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v5-sep6.mp4" data-start="257.4" data-duration="15.139" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
-  <section class="clip blackout" id="bo-cta-in" data-start="256.467" data-duration="1.0" data-track-index="9"></section>
-  <section class="clip blackout" id="bo-cta-out" data-start="272.539" data-duration="0.561" data-track-index="9"></section>
 
   <!-- ============ MUSIC + BEDS (narration above every bed: score 0.13, ambience ≤0.20) ============ -->
   <audio id="sx-mus-a" src="media/score-act5-tension.mp3" data-bed="" data-start="0" data-duration="256.467" data-volume="0.13"></audio>
@@ -276,6 +274,10 @@
   <div id="host-checklist" data-composition-id="statcard" data-composition-src="compositions/statcard.html" data-start="484.3" data-duration="30.24" data-track-index="2" data-width="1920" data-height="1080"></div>
   <section class="clip blackout" id="bo-close" data-start="535.8" data-duration="10.2" data-track-index="1"></section>
   <div id="host-close" data-composition-id="g-close" data-composition-src="compositions/g-close.html" data-start="535.8" data-duration="10.2" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- CTA dips: LAST in the DOM so they paint above every track-1 cut that runs under them (z-order follows DOM order) -->
+  <section class="clip blackout" id="bo-cta-in" data-start="256.467" data-duration="1.0" data-track-index="9"></section>
+  <section class="clip blackout" id="bo-cta-out" data-start="272.539" data-duration="0.561" data-track-index="9"></section>
 
   <div id="grade"></div>
   <div id="vignette"></div>
