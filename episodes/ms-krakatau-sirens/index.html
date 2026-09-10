@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Krakatoa 2026: Why the Sirens Will Not Save Anyone — The Warning Hour (mini-storms #4)</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070c; }
+    video, .still-wrap { position: absolute; inset: 0; }
+    video { width: 100%; height: 100%; object-fit: cover; }
+    .still-wrap { overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    .contain-wrap img { object-fit: contain; }
+    .contain-wrap img.blurfill { object-fit: cover; filter: blur(26px) brightness(0.45) saturate(0.8); transform: scale(1.12); }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    .bc { filter: saturate(0.85) contrast(1.08) brightness(0.95); } /* unified broadcast grade */
+    /* ---- Abril figure popup (channel device: red, text-shadow, ≤3 words, mid-screen) ---- */
+    @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+    .popfig { position: absolute; left: 0; right: 0; top: 36%; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; isolation: isolate; }
+    .popfig .pf-big { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 150px; color: #d0121f; letter-spacing: 0.04em;
+      text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+    .popfig .pf-sub { display: block; margin-top: 12px; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 38px; color: #f4f0e8;
+      letter-spacing: 0.3em; -webkit-text-stroke: 1px rgba(0,0,0,0.85); paint-order: stroke fill;
+      text-shadow: 0 0 18px rgba(0,0,0,1), 0 0 40px rgba(0,0,0,0.9), 0 3px 10px #000; }
+    /* soft local scrim behind the whole popfig so it reads over maps/bright footage — no box (owner 2026-09-08) */
+    .popfig::before { content: ''; position: absolute; left: 14%; right: 14%; top: -90px; bottom: -70px; z-index: -1;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.32) 40%, rgba(0,0,0,0) 72%); }
+    .popfig-amber .pf-big { color: #d8a13a; text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(90,60,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+    /* ---- bottom-left running data chip (above the bug strip) ---- */
+    .chip { position: absolute; left: 110px; bottom: 300px; z-index: 6; font-family: 'Arial Black', Arial, sans-serif; font-size: 34px; letter-spacing: 2px; color: #f4f0e8;
+      background: rgba(10,16,24,0.62); backdrop-filter: blur(14px) saturate(1.15); -webkit-backdrop-filter: blur(14px) saturate(1.15);
+      border: 1px solid rgba(255,255,255,0.14); border-left: 6px solid #d0121f; border-radius: 10px; padding: 12px 26px; }
+    /* ---- source label (credibility, top-right so it never meets the chip/bug) ---- */
+    .srclab { position: absolute; right: 40px; top: 34px; z-index: 7; font-family: Arial, sans-serif; font-size: 20px; letter-spacing: 1px; color: rgba(220,228,236,0.85); background: rgba(5,8,12,0.6); padding: 6px 14px; }
+    /* ---- quote card (glass, centered) ---- */
+    .quotecard { position: absolute; left: 260px; right: 260px; top: 300px; z-index: 6; text-align: center;
+      background: rgba(10,16,24,0.55); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+      border: 1px solid rgba(255,255,255,0.14); border-radius: 28px; padding: 44px 60px; box-sizing: border-box; }
+    .quotecard .q { font-family: Georgia, serif; font-style: italic; font-size: 50px; color: #f2f5f8; line-height: 1.3; }
+    .quotecard .attr { margin-top: 18px; font-family: Arial, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 4px; color: #d8a13a; }
+    /* ---- lower-third news bug (inline; real channel name only) ---- */
+    .bugstrip { position: absolute; left: 0; right: 0; bottom: 0; height: 92px; display: flex; align-items: stretch; z-index: 5;
+      background: linear-gradient(90deg, rgba(4,7,12,0.94) 0%, rgba(4,7,12,0.82) 70%, rgba(4,7,12,0.6) 100%); border-top: 2px solid #d0121f; }
+    .bugstrip .bk { display: flex; align-items: center; padding: 0 34px; background: #d0121f; color: #fff; font-family: 'Arial Black', Arial, sans-serif; font-size: 34px; letter-spacing: 5px; }
+    .bugstrip .bw { display: flex; align-items: center; padding: 0 26px; color: #d8a13a; font-family: Georgia, serif; font-style: italic; font-size: 26px; border-right: 1px solid rgba(255,255,255,0.14); white-space: nowrap; }
+    .bugstrip .bh { display: flex; align-items: center; padding: 0 30px; color: #f4f0e8; font-weight: 700; font-size: 34px; letter-spacing: 1px; white-space: nowrap; overflow: hidden; }
+    /* ---- presenter circle (Paul PiP, phase 2: talk/idle loops gated on narration spans; owner 2026-09-09) ---- */
+    .pip { position: absolute !important; inset: auto !important; left: 1640px !important; top: 708px !important;
+      width: 240px !important; height: 240px !important; border-radius: 50% !important; object-fit: cover !important; z-index: 8 !important; }
+    .pipring { position: absolute; left: 1632px; top: 700px; width: 256px; height: 256px; border-radius: 50%; border: 4px solid #d0121f;
+      box-sizing: border-box; z-index: 9; box-shadow: 0 10px 30px rgba(0,0,0,0.55); }
+    /* ---- film layer ---- */
+    #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90; background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
+    #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.10; mix-blend-mode: overlay; }
+    #grade { position: absolute; inset: 0; pointer-events: none; z-index: 89; mix-blend-mode: soft-light; background-color: rgba(96,138,178,0.18); }
+    .dust { position: absolute; z-index: 92; pointer-events: none; border-radius: 50%; background: rgba(255,255,255,0.32); filter: blur(1.2px); }
+  </style>
+</head>
+
+
+<body>
+<div id="root" data-composition-id="ms-krakatau-sirens" data-start="0" data-width="1920" data-height="1080" data-duration="843.0" data-fps="30">
+
+  <!-- ============ NARRATION ============ -->
+  <audio id="nx-h1s1" src="audio/h1-s1.wav" data-start="0.0" data-duration="13.16" data-volume="1"></audio>
+  <audio id="nx-i1s1" src="audio/i1-s1.wav" data-start="13.633" data-duration="43.28" data-volume="1"></audio>
+  <audio id="nx-i1s2" src="audio/i1-s2.wav" data-start="57.367" data-duration="44.72" data-volume="1"></audio>
+  <audio id="nx-c1s1" src="audio/c1-s1.wav" data-start="102.567" data-duration="46.6" data-volume="1"></audio>
+  <audio id="nx-c2s1" src="audio/c2-s1.wav" data-start="149.633" data-duration="55.2" data-volume="1"></audio>
+  <audio id="nx-c3s1" src="audio/c3-s1.wav" data-start="205.3" data-duration="75.72" data-volume="1"></audio>
+  <audio id="nx-c4s1" src="audio/c4-s1.wav" data-start="281.5" data-duration="40.4" data-volume="1"></audio>
+  <audio id="nx-c5s1" src="audio/c5-s1.wav" data-start="339.0" data-duration="72.04" data-volume="1"></audio>
+  <audio id="nx-c6s1" src="audio/c6-s1.wav" data-start="411.5" data-duration="72.72" data-volume="1"></audio>
+  <audio id="nx-c7s1" src="audio/c7-s1.wav" data-start="484.7" data-duration="78.08" data-volume="1"></audio>
+  <audio id="nx-c8s1" src="audio/c8-s1.wav" data-start="563.233" data-duration="54.04" data-volume="1"></audio>
+  <audio id="nx-c9s1" src="audio/c9-s1.wav" data-start="617.733" data-duration="52.12" data-volume="1"></audio>
+  <audio id="nx-c10s1" src="audio/c10-s1.wav" data-start="670.333" data-duration="40.16" data-volume="1"></audio>
+  <audio id="nx-c11s1" src="audio/c11-s1.wav" data-start="710.967" data-duration="41.4" data-volume="1"></audio>
+  <audio id="nx-c12s1" src="audio/c12-s1.wav" data-start="752.833" data-duration="51.84" data-volume="1"></audio>
+  <audio id="nx-z1s1" src="audio/z1-s1.wav" data-start="805.133" data-duration="34.4" data-volume="1"></audio>
+
+  <!-- ============ CTA (channel.cta v5; 323.3 = 38 % — after c4-s1) ============ -->
+  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v5-sep6.mp4" data-start="323.3" data-duration="15.139" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
+
+  <!-- ============ MUSIC + BEDS (narration above every bed) ============ -->
+  <audio id="sx-mus-a" src="media/score-act5-tension.mp3" data-bed="" data-start="0" data-duration="322.4" data-volume="0.13"></audio>
+  <audio id="sx-mus-b" src="media/score-act3-urgent.mp3" data-bed="" data-start="338.439" data-duration="279.294" data-volume="0.13"></audio>
+  <audio id="sx-mus-c" src="media/score-act5-tension.mp3" data-bed="" data-start="617.733" data-duration="135.1" data-volume="0.13" data-callback="second pass of the tension bed"></audio>
+  <audio id="sx-mus-d" src="media/score-act6-close.mp3" data-bed="" data-start="752.833" data-duration="90.167" data-volume="0.16"></audio>
+  <audio id="sx-rumble-hook" src="media/04_distant_storm_rumble.mp3" data-bed="" data-start="0" data-duration="102.567" data-volume="0.16"></audio>
+
+  <!-- ============ PRESENTER CIRCLE ============ -->
+  <video id="pip-idle-a" class="pip" src="media/pip/paul-idle-a.mp4" data-start="13.633" data-duration="308.767" data-track-index="6" muted></video>
+  <video id="pip-talk-a" class="pip" src="media/pip/paul-talk-a.mp4" data-start="13.633" data-duration="308.767" data-track-index="7" data-callback="presenter loop, talking" muted></video>
+  <video id="pip-idle-b" class="pip" src="media/pip/paul-idle-b.mp4" data-start="339.0" data-duration="493.8" data-track-index="6" data-callback="presenter loop, listening" muted></video>
+  <video id="pip-talk-b" class="pip" src="media/pip/paul-talk-b.mp4" data-start="339.0" data-duration="493.8" data-track-index="7" data-callback="presenter loop, talking" muted></video>
+  <section class="clip" id="pip-ring-a" data-start="13.633" data-duration="308.767" data-track-index="8"><div class="pipring"></div></section>
+  <section class="clip" id="pip-ring-b" data-start="339.0" data-duration="493.8" data-track-index="8"><div class="pipring"></div></section>
+
+  <!-- ============ NEWS BUG ============ -->
+  <section class="clip" id="bug-a" data-start="13.633" data-duration="308.767" data-track-index="3"><div class="bugstrip" id="bugstrip-a"><div class="bk">BREAKING</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-a"></div></div></section>
+  <section class="clip" id="bug-b" data-start="339.0" data-duration="493.8" data-track-index="3"><div class="bugstrip" id="bugstrip-b"><div class="bk">BREAKING</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-b"></div></div></section>
+
+  <!-- ============ TRACK 1 — hand-authored cut list ============ -->
+  <video id="vx-h1s1-0-bbc001" class="bc" src="media/bc/bbc_20181227-001.mp4" data-start="0.0" data-duration="4.28" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-h1s1-1-siren_dili" data-start="4.28" data-duration="3.0" data-track-index="1"><img id="kb-h1s1-1-siren_dili" src="media/stills/dili-timor-leste-siren.jpg" alt=""></section>
+  <video id="vx-h1s1-2-bbc003" class="bc" src="media/bc/bbc_20181227-003.mp4" data-start="7.28" data-duration="3.0" data-track-index="1" muted></video>
+  <video id="vx-h1s1-3-ajc002" class="bc" src="media/bc/aljazeera-concert_20181223-002.mp4" data-start="10.28" data-duration="3.353" data-track-index="1" muted></video>
+  <video id="vx-i1s1-0-cnac005" class="bc" src="media/bc/cna-concert_20181223-005.mp4" data-start="13.633" data-duration="6.0" data-track-index="1" muted></video>
+  <video id="vx-i1s1-1-ajc001" class="bc" src="media/bc/aljazeera-concert_20181223-001.mp4" data-start="19.633" data-duration="5.0" data-track-index="1" muted></video>
+  <video id="vx-i1s1-2-cnac003" class="bc" src="media/bc/cna-concert_20181223-003.mp4" data-start="24.633" data-duration="5.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-i1s1-3-ls18" data-start="29.633" data-duration="5.0" data-track-index="1"><img id="kb-i1s1-3-ls18" src="media/stills/usgs-landsat-post-collapse-20181220.jpg" alt=""></section>
+  <video id="vx-i1s1-4-cnac001" class="bc" src="media/bc/cna-concert_20181223-001.mp4" data-start="34.633" data-duration="4.8" data-track-index="1" muted></video>
+  <video id="vx-i1s1-5-ajc003" class="bc" src="media/bc/aljazeera-concert_20181223-003.mp4" data-start="39.433" data-duration="5.4" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-i1s1-6-concert" data-start="44.833" data-duration="5.0" data-track-index="1"><img id="kb-i1s1-6-concert" src="media/stills/seventeen-concert-site-aftermath.jpg" alt=""></section>
+  <video id="vx-i1s1-7-ajc006" class="bc" src="media/bc/aljazeera-concert_20181223-006.mp4" data-start="49.833" data-duration="3.4" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-i1s1-8-aft1" data-start="53.233" data-duration="4.134" data-track-index="1"><img id="kb-i1s1-8-aft1" src="media/stills/aftermath-sunda-strait-1.jpg" alt=""></section>
+  <video id="vx-i1s2-0-f24_002" class="bc" src="media/bc/france24_20260906-002.mp4" data-start="57.367" data-duration="5.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-i1s2-1-oli" data-start="62.367" data-duration="5.0" data-track-index="1"><img id="kb-i1s2-1-oli" src="media/stills/nasa-eo-oli-20260905.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-i1s2-2-lituya_trim" data-start="67.367" data-duration="5.0" data-track-index="1"><img id="kb-i1s2-2-lituya_trim" src="media/stills/lituya-bay-trimline-1958.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-i1s2-3-barry_annot" data-start="72.367" data-duration="5.0" data-track-index="1"><img id="kb-i1s2-3-barry_annot" src="media/stills/barry-arm-landslide-annotated.jpg" alt=""></section>
+  <video id="vx-i1s2-4-cna006" class="bc" src="media/bc/cna_20260906-006.mp4" data-start="77.367" data-duration="3.5" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-i1s2-5-viirs" data-start="80.867" data-duration="5.0" data-track-index="1"><img id="kb-i1s2-5-viirs" src="media/stills/nasa-eo-viirs-20260905.jpg" alt=""></section>
+  <video id="vx-i1s2-6-alj018" class="bc" src="media/bc/aljazeera_20260906-018.mp4" data-start="85.867" data-duration="3.72" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-i1s2-7-barry2" data-start="89.587" data-duration="5.0" data-track-index="1"><img id="kb-i1s2-7-barry2" src="media/stills/barry-glacier-harriman-fiord.jpg" alt=""></section>
+  <video id="vx-i1s2-8-cnac004" class="bc" src="media/bc/cna-concert_20181223-004.mp4" data-start="94.587" data-duration="7.98" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-c1s1-0-s3" data-start="102.567" data-duration="6.0" data-track-index="1"><img id="kb-c1s1-0-s3" src="media/stills/esa-sentinel3-eruption-20260908.jpg" alt=""></section>
+  <video id="vx-c1s1-1-f24_008" class="bc" src="media/bc/france24_20260906-008.mp4" data-start="108.567" data-duration="4.0" data-track-index="1" muted></video>
+  <video id="vx-c1s1-2-f24_009" class="bc" src="media/bc/france24_20260906-009.mp4" data-start="112.567" data-duration="3.6" data-track-index="1" muted></video>
+  <video id="vx-c1s1-3-cna019" class="bc" src="media/bc/cna_20260906-019.mp4" data-start="116.167" data-duration="4.87" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-c1s1-4-lava" data-start="121.037" data-duration="5.0" data-track-index="1"><img id="kb-c1s1-4-lava" src="media/stills/lampungprov-lava-fountain-20260905.jpg" alt=""></section>
+  <video id="vx-c1s1-5-f24_011" class="bc" src="media/bc/france24_20260906-011.mp4" data-start="126.037" data-duration="5.0" data-track-index="1" muted></video>
+  <video id="vx-c1s1-6-abc020" class="bc" src="media/bc/abcaus_20260906-020.mp4" data-start="131.037" data-duration="3.2" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-c1s1-7-cop0702" data-start="134.237" data-duration="5.0" data-track-index="1"><img id="kb-c1s1-7-cop0702" src="media/stills/copernicus-ash-plume-20260702.jpg" alt=""></section>
+  <video id="vx-c1s1-8-ap001" class="bc" src="media/bc/ap_20181224-001.mp4" data-start="139.237" data-duration="10.396" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-c2s1-0-sirens_semporna" data-start="149.633" data-duration="5.0" data-track-index="1"><img id="kb-c2s1-0-sirens_semporna" src="media/stills/mntews-semporna-sirens.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-c2s1-1-inatews_officer" data-start="154.633" data-duration="5.0" data-track-index="1"><img id="kb-c2s1-1-inatews_officer" src="media/stills/inatews-officer-monitoring-2011.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-c2s1-2-siren_phuket" data-start="159.633" data-duration="5.0" data-track-index="1"><img id="kb-c2s1-2-siren_phuket" src="media/stills/phuket-mai-khao-siren.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-c2s1-3-dart_diag" data-start="164.633" data-duration="5.0" data-track-index="1"><img id="kb-c2s1-3-dart_diag" src="media/stills/dart-ii-system-diagram.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-c2s1-4-station_semporna" data-start="169.633" data-duration="5.0" data-track-index="1"><img id="kb-c2s1-4-station_semporna" src="media/stills/mntews-semporna-station.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-c2s1-5-dart_stennis" data-start="174.633" data-duration="5.0" data-track-index="1"><img id="kb-c2s1-5-dart_stennis" src="media/stills/noaa-dart-buoys-stennis-2006.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-c2s1-6-dart_illus" data-start="179.633" data-duration="5.0" data-track-index="1"><img id="kb-c2s1-6-dart_illus" src="media/stills/noaa-dart-buoy-illustration.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-c2s1-7-dart_museum" data-start="184.633" data-duration="5.0" data-track-index="1"><img id="kb-c2s1-7-dart_museum" src="media/stills/noaa-dart-buoy-46410-museum.jpg" alt=""></section>
+  <video id="vx-c2s1-8-cna031" class="bc" src="media/bc/cna_20260906-031.mp4" data-start="189.633" data-duration="3.8" data-track-index="1" muted></video>
+  <video id="vx-c2s1-9-abc012" class="bc" src="media/bc/abcaus_20260906-012.mp4" data-start="193.433" data-duration="3.2" data-track-index="1" muted></video>
+  <video id="vx-c2s1-10-reu003" class="bc" src="media/bc/reuters_20260906-003.mp4" data-start="196.633" data-duration="3.2" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-c2s1-11-shelter" data-start="199.833" data-duration="5.467" data-track-index="1"><img id="kb-c2s1-11-shelter" src="media/stills/khao-lak-tsunami-shelter.jpg" alt=""></section>
+  <video id="vx-c3s1-0-ajc001" class="bc" src="media/bc/aljazeera-concert_20181223-001.mp4" data-start="205.3" data-duration="4.2" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <video id="vx-c3s1-1-alj014" class="bc" src="media/bc/aljazeera_20260906-014.mp4" data-start="209.5" data-duration="4.48" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-c3s1-2-ls18" data-start="213.98" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c3s1-2-ls18" src="media/stills/usgs-landsat-post-collapse-20181220.jpg" alt=""></section>
+  <video id="vx-c3s1-3-cnac002" class="bc" src="media/bc/cna-concert_20181223-002.mp4" data-start="218.98" data-duration="4.35" data-track-index="1" muted></video>
+  <video id="vx-c3s1-4-bbc003" class="bc" src="media/bc/bbc_20181227-003.mp4" data-start="223.33" data-duration="3.8" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <section class="clip still-wrap" id="c-c3s1-5-aft3" data-start="227.13" data-duration="5.0" data-track-index="1"><img id="kb-c3s1-5-aft3" src="media/stills/aftermath-sunda-strait-3.jpg" alt=""></section>
+  <video id="vx-c3s1-6-ajc008" class="bc" src="media/bc/aljazeera-concert_20181223-008.mp4" data-start="232.13" data-duration="5.2" data-track-index="1" muted></video>
+  <video id="vx-c3s1-7-bbc005" class="bc" src="media/bc/bbc_20181227-005.mp4" data-start="237.33" data-duration="4.3" data-track-index="1" muted></video>
+  <video id="vx-c3s1-8-ajc012" class="bc" src="media/bc/aljazeera-concert_20181223-012.mp4" data-start="241.63" data-duration="4.1" data-track-index="1" muted></video>
+  <video id="vx-c3s1-9-ajc013" class="bc" src="media/bc/aljazeera-concert_20181223-013.mp4" data-start="245.73" data-duration="3.9" data-track-index="1" muted></video>
+  <video id="vx-c3s1-10-ajc009" class="bc" src="media/bc/aljazeera-concert_20181223-009.mp4" data-start="249.63" data-duration="3.4" data-track-index="1" muted></video>
+  <video id="vx-c3s1-11-bbc012" class="bc" src="media/bc/bbc_20181227-012.mp4" data-start="253.03" data-duration="4.5" data-track-index="1" muted></video>
+  <video id="vx-c3s1-12-ajc010" class="bc" src="media/bc/aljazeera-concert_20181223-010.mp4" data-start="257.53" data-duration="3.2" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-c3s1-13-aft2" data-start="260.73" data-duration="5.0" data-track-index="1"><img id="kb-c3s1-13-aft2" src="media/stills/aftermath-sunda-strait-2.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-c3s1-14-rescue" data-start="265.73" data-duration="5.0" data-track-index="1"><img id="kb-c3s1-14-rescue" src="media/stills/lampung-search-rescue.jpg" alt=""></section>
+  <video id="vx-c3s1-15-ap002" class="bc" src="media/bc/ap_20181224-002.mp4" data-start="270.73" data-duration="5.47" data-track-index="1" muted></video>
+  <video id="vx-c3s1-16-bbc010" class="bc" src="media/bc/bbc_20181227-010.mp4" data-start="276.2" data-duration="5.3" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-c4s1-0-cop19" data-start="281.5" data-duration="5.0" data-track-index="1"><img id="kb-c4s1-0-cop19" src="media/stills/copernicus-markuse-20190331.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-c4s1-1-s2_22" data-start="286.5" data-duration="5.0" data-track-index="1"><img id="kb-c4s1-1-s2_22" src="media/stills/esa-sentinel2-20220503.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-c4s1-2-ls20" data-start="291.5" data-duration="5.0" data-track-index="1"><img id="kb-c4s1-2-ls20" src="media/stills/usgs-landsat-markuse-20200413.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-c4s1-3-aster10" data-start="296.5" data-duration="5.0" data-track-index="1"><img id="kb-c4s1-3-aster10" src="media/stills/nasa-aster-2010.jpg" alt=""></section>
+  <video id="vx-c4s1-4-alj015" class="bc" src="media/bc/aljazeera_20260906-015.mp4" data-start="301.5" data-duration="3.24" data-track-index="1" muted></video>
+  <section class="clip still-wrap contain-wrap" id="c-c4s1-5-outline" data-start="304.74" data-duration="5.0" data-track-index="1"><img class="blurfill" src="media/stills/sunda-strait-outline-map.png" alt=""><img id="kb-c4s1-5-outline" src="media/stills/sunda-strait-outline-map.png" alt=""></section>
+  <video id="vx-c4s1-6-bbc015" class="bc" src="media/bc/bbc_20181227-015.mp4" data-start="309.74" data-duration="3.3" data-track-index="1" muted></video>
+  <video id="vx-c4s1-7-ap005" class="bc" src="media/bc/ap_20181224-005.mp4" data-start="313.04" data-duration="4.77" data-track-index="1" muted></video>
+  <video id="vx-c4s1-8-reu001" class="bc" src="media/bc/reuters_20260906-001.mp4" data-start="317.81" data-duration="5.49" data-track-index="1" muted></video>
+  <section class="clip still-wrap contain-wrap" id="c-c5s1-0-parker" data-start="338.439" data-duration="5.5" data-track-index="1"><img class="blurfill" src="media/stills/parker-coward-plate1-1888.jpg" alt=""><img id="kb-c5s1-0-parker" src="media/stills/parker-coward-plate1-1888.jpg" alt=""></section>
+  <section class="clip still-wrap contain-wrap" id="c-c5s1-1-litho" data-start="343.939" data-duration="5.5" data-track-index="1"><img class="blurfill" src="media/stills/lithograph-eruption-1888.jpg" alt=""><img id="kb-c5s1-1-litho" src="media/stills/lithograph-eruption-1888.jpg" alt=""></section>
+  <section class="clip still-wrap contain-wrap" id="c-c5s1-2-sunset" data-start="349.439" data-duration="4.0" data-track-index="1"><img class="blurfill" src="media/stills/sunset-colours-diagram-1888.jpg" alt=""><img id="kb-c5s1-2-sunset" src="media/stills/sunset-colours-diagram-1888.jpg" alt=""></section>
+  <section class="clip still-wrap contain-wrap" id="c-c5s1-3-chart" data-start="353.439" data-duration="5.5" data-track-index="1"><img class="blurfill" src="media/stills/admiralty-chart-sunda-strait-1851.jpg" alt=""><img id="kb-c5s1-3-chart" src="media/stills/admiralty-chart-sunda-strait-1851.jpg" alt=""></section>
+  <section class="clip still-wrap contain-wrap" id="c-c5s1-4-baro" data-start="358.939" data-duration="6.0" data-track-index="1"><img class="blurfill" src="media/stills/royal-society-plate-vii-barograms-1888.png" alt=""><img id="kb-c5s1-4-baro" src="media/stills/royal-society-plate-vii-barograms-1888.png" alt=""></section>
+  <section class="clip still-wrap contain-wrap" id="c-c5s1-5-twilight" data-start="364.939" data-duration="5.5" data-track-index="1"><img class="blurfill" src="media/stills/royal-society-twilight-afterglow-1888.jpg" alt=""><img id="kb-c5s1-5-twilight" src="media/stills/royal-society-twilight-afterglow-1888.jpg" alt=""></section>
+  <section class="clip still-wrap contain-wrap" id="c-c5s1-6-reach" data-start="370.439" data-duration="6.0" data-track-index="1"><img class="blurfill" src="media/stills/tsunami-reach-map-1883.jpg" alt=""><img id="kb-c5s1-6-reach" src="media/stills/tsunami-reach-map-1883.jpg" alt=""></section>
+  <section class="clip still-wrap contain-wrap" id="c-c5s1-7-berouw" data-start="376.439" data-duration="5.5" data-track-index="1"><img class="blurfill" src="media/stills/tropenmuseum-barouw-boiler-inland-1883.jpg" alt=""><img id="kb-c5s1-7-berouw" src="media/stills/tropenmuseum-barouw-boiler-inland-1883.jpg" alt=""></section>
+  <section class="clip still-wrap contain-wrap" id="c-c5s1-8-berouw2" data-start="381.939" data-duration="5.5" data-track-index="1"><img class="blurfill" src="media/stills/tropenmuseum-uitbarsting-krakatau-repro.jpg" alt=""><img id="kb-c5s1-8-berouw2" src="media/stills/tropenmuseum-uitbarsting-krakatau-repro.jpg" alt=""></section>
+  <section class="clip still-wrap contain-wrap" id="c-c5s1-9-locprint" data-start="387.439" data-duration="5.5" data-track-index="1"><img class="blurfill" src="media/stills/loc-krakatoa-submerged-print.jpg" alt=""><img id="kb-c5s1-9-locprint" src="media/stills/loc-krakatoa-submerged-print.jpg" alt=""></section>
+  <section class="clip still-wrap contain-wrap" id="c-c5s1-10-ctx2000" data-start="392.939" data-duration="5.0" data-track-index="1"><img class="blurfill" src="media/stills/satellite-context-map-2000.jpg" alt=""><img id="kb-c5s1-10-ctx2000" src="media/stills/satellite-context-map-2000.jpg" alt=""></section>
+  <video id="vx-c5s1-11-alj018" class="bc" src="media/bc/aljazeera_20260906-018.mp4" data-start="397.939" data-duration="3.72" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <video id="vx-c5s1-12-cnac005" class="bc" src="media/bc/cna-concert_20181223-005.mp4" data-start="401.659" data-duration="9.841" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <section class="clip still-wrap" id="c-c6s1-0-lituya_trim" data-start="411.5" data-duration="6.0" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c6s1-0-lituya_trim" src="media/stills/lituya-bay-trimline-1958.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-c6s1-1-lituya2" data-start="417.5" data-duration="5.5" data-track-index="1"><img id="kb-c6s1-1-lituya2" src="media/stills/lituya-bay-overview-post1958.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-c6s1-2-lituya3" data-start="423.0" data-duration="5.5" data-track-index="1"><img id="kb-c6s1-2-lituya3" src="media/stills/lituya-bay-aerial-noaa.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-c6s1-3-lituya4" data-start="428.5" data-duration="5.5" data-track-index="1"><img id="kb-c6s1-3-lituya4" src="media/stills/lituya-gilbert-inlet-rockslide-scar.jpg" alt=""></section>
+  <video id="vx-c6s1-4-stock_fjord" src="media/bc/alaska-mountains-fjord-doktorkleinmusic.mp4" data-start="434.0" data-duration="6.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-c6s1-5-lituya5" data-start="440.0" data-duration="5.5" data-track-index="1"><img id="kb-c6s1-5-lituya5" src="media/stills/lituya-trimline-from-water-2010.jpg" alt=""></section>
+  <video id="vx-c6s1-6-stock_calving" src="media/bc/glacier-calving-flutie8211.mp4" data-start="445.5" data-duration="6.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap contain-wrap" id="c-c6s1-7-alaska_map" data-start="451.5" data-duration="5.0" data-track-index="1"><img class="blurfill" src="media/stills/alaska-map-outline.jpg" alt=""><img id="kb-c6s1-7-alaska_map" src="media/stills/alaska-map-outline.jpg" alt=""></section>
+  <video id="vx-c6s1-8-stock_ferry" src="media/bc/ferry-ship-sea-AndyFaeth.mp4" data-start="456.5" data-duration="6.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap contain-wrap" id="c-c6s1-9-pws_map" data-start="462.5" data-duration="5.5" data-track-index="1"><img class="blurfill" src="media/stills/pws-map-1798-chart.jpg" alt=""><img id="kb-c6s1-9-pws_map" src="media/stills/pws-map-1798-chart.jpg" alt=""></section>
+  <video id="vx-c6s1-10-stock_recede" src="media/bc/waves-receding-beach-conghuynh8.mp4" data-start="468.0" data-duration="6.0" data-track-index="1" muted></video>
+  <video id="vx-c6s1-11-stock_beachnight" src="media/bc/beach-night-ocean-IAmTheDrama.mp4" data-start="474.0" data-duration="10.7" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-c7s1-0-barry_annot" data-start="484.7" data-duration="6.0" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c7s1-0-barry_annot" src="media/stills/barry-arm-landslide-annotated.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-c7s1-1-barry2" data-start="490.7" data-duration="5.5" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c7s1-1-barry2" src="media/stills/barry-glacier-harriman-fiord.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-c7s1-2-whittier" data-start="496.2" data-duration="5.5" data-track-index="1"><img id="kb-c7s1-2-whittier" src="media/stills/whittier-harbor-from-water.jpg" alt=""></section>
+  <video id="vx-c7s1-3-stock_fjord" src="media/bc/alaska-mountains-fjord-doktorkleinmusic.mp4" data-start="501.7" data-duration="6.0" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <video id="vx-c7s1-4-f24_011" class="bc" src="media/bc/france24_20260906-011.mp4" data-start="507.7" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <video id="vx-c7s1-5-stock_calving" src="media/bc/glacier-calving-flutie8211.mp4" data-start="512.7" data-duration="6.0" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <section class="clip still-wrap" id="c-c7s1-6-lituya5" data-start="518.7" data-duration="5.5" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c7s1-6-lituya5" src="media/stills/lituya-trimline-from-water-2010.jpg" alt=""></section>
+  <section class="clip still-wrap contain-wrap" id="c-c7s1-7-alaska_map" data-start="524.2" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter"><img class="blurfill" src="media/stills/alaska-map-outline.jpg" alt=""><img id="kb-c7s1-7-alaska_map" src="media/stills/alaska-map-outline.jpg" alt=""></section>
+  <video id="vx-c7s1-8-stock_evac" src="media/bc/tsunami-evac-sign-harrisonmiller.mp4" data-start="529.2" data-duration="6.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-c7s1-9-lituya3" data-start="535.2" data-duration="5.5" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c7s1-9-lituya3" src="media/stills/lituya-bay-aerial-noaa.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-c7s1-10-lituya4" data-start="540.7" data-duration="5.5" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c7s1-10-lituya4" src="media/stills/lituya-gilbert-inlet-rockslide-scar.jpg" alt=""></section>
+  <section class="clip still-wrap contain-wrap" id="c-c7s1-11-pws_map" data-start="546.2" data-duration="5.5" data-track-index="1" data-callback="second use, different chapter"><img class="blurfill" src="media/stills/pws-map-1798-chart.jpg" alt=""><img id="kb-c7s1-11-pws_map" src="media/stills/pws-map-1798-chart.jpg" alt=""></section>
+  <video id="vx-c7s1-12-stock_beachnight" src="media/bc/beach-night-ocean-IAmTheDrama.mp4" data-start="551.7" data-duration="11.533" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <section class="clip still-wrap" id="c-c8s1-0-inatews_officer" data-start="563.233" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c8s1-0-inatews_officer" src="media/stills/inatews-officer-monitoring-2011.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-c8s1-1-station_semporna" data-start="568.233" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c8s1-1-station_semporna" src="media/stills/mntews-semporna-station.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-c8s1-2-dart_stennis" data-start="573.233" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c8s1-2-dart_stennis" src="media/stills/noaa-dart-buoys-stennis-2006.jpg" alt=""></section>
+  <video id="vx-c8s1-3-f24_009" class="bc" src="media/bc/france24_20260906-009.mp4" data-start="578.233" data-duration="3.6" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <section class="clip still-wrap" id="c-c8s1-4-sirens_semporna" data-start="581.833" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c8s1-4-sirens_semporna" src="media/stills/mntews-semporna-sirens.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-c8s1-5-dart_museum" data-start="586.833" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c8s1-5-dart_museum" src="media/stills/noaa-dart-buoy-46410-museum.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-c8s1-6-oli" data-start="591.833" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c8s1-6-oli" src="media/stills/nasa-eo-oli-20260905.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-c8s1-7-lava" data-start="596.833" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c8s1-7-lava" src="media/stills/lampungprov-lava-fountain-20260905.jpg" alt=""></section>
+  <video id="vx-c8s1-8-cna006" class="bc" src="media/bc/cna_20260906-006.mp4" data-start="601.833" data-duration="3.5" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <video id="vx-c8s1-9-abc020" class="bc" src="media/bc/abcaus_20260906-020.mp4" data-start="605.333" data-duration="3.2" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <section class="clip still-wrap" id="c-c8s1-10-cop0702" data-start="608.533" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c8s1-10-cop0702" src="media/stills/copernicus-ash-plume-20260702.jpg" alt=""></section>
+  <video id="vx-c8s1-11-reu001" class="bc" src="media/bc/reuters_20260906-001.mp4" data-start="613.533" data-duration="4.2" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <video id="vx-c9s1-0-ajc002" class="bc" src="media/bc/aljazeera-concert_20181223-002.mp4" data-start="617.733" data-duration="4.48" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <video id="vx-c9s1-1-bbc001" class="bc" src="media/bc/bbc_20181227-001.mp4" data-start="622.213" data-duration="4.28" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <video id="vx-c9s1-2-cnac001" class="bc" src="media/bc/cna-concert_20181223-001.mp4" data-start="626.493" data-duration="4.8" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <video id="vx-c9s1-3-cnac003" class="bc" src="media/bc/cna-concert_20181223-003.mp4" data-start="631.293" data-duration="7.05" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <video id="vx-c9s1-4-ajc003" class="bc" src="media/bc/aljazeera-concert_20181223-003.mp4" data-start="638.343" data-duration="5.36" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <video id="vx-c9s1-5-bbc005" class="bc" src="media/bc/bbc_20181227-005.mp4" data-start="643.703" data-duration="4.32" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <video id="vx-c9s1-6-alj014" class="bc" src="media/bc/aljazeera_20260906-014.mp4" data-start="648.023" data-duration="4.48" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <section class="clip still-wrap" id="c-c9s1-7-concert" data-start="652.503" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c9s1-7-concert" src="media/stills/seventeen-concert-site-aftermath.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-c9s1-8-aft3" data-start="657.503" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c9s1-8-aft3" src="media/stills/aftermath-sunda-strait-3.jpg" alt=""></section>
+  <video id="vx-c9s1-9-cnac004" class="bc" src="media/bc/cna-concert_20181223-004.mp4" data-start="662.503" data-duration="7.83" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <section class="clip still-wrap contain-wrap" id="c-c10s1-0-ctx2000" data-start="670.333" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter"><img class="blurfill" src="media/stills/satellite-context-map-2000.jpg" alt=""><img id="kb-c10s1-0-ctx2000" src="media/stills/satellite-context-map-2000.jpg" alt=""></section>
+  <section class="clip still-wrap contain-wrap" id="c-c10s1-1-reach" data-start="675.333" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter"><img class="blurfill" src="media/stills/tsunami-reach-map-1883.jpg" alt=""><img id="kb-c10s1-1-reach" src="media/stills/tsunami-reach-map-1883.jpg" alt=""></section>
+  <video id="vx-c10s1-2-ajc009" class="bc" src="media/bc/aljazeera-concert_20181223-009.mp4" data-start="680.333" data-duration="3.4" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <video id="vx-c10s1-3-stock_ferry" src="media/bc/ferry-ship-sea-AndyFaeth.mp4" data-start="683.733" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <section class="clip still-wrap" id="c-c10s1-4-haze" data-start="688.733" data-duration="5.0" data-track-index="1"><img id="kb-c10s1-4-haze" src="media/stills/ash-haze-kebumen-central-java-20260907.jpg" alt=""></section>
+  <video id="vx-c10s1-5-reu009" class="bc" src="media/bc/reuters_20260906-009.mp4" data-start="693.733" data-duration="3.67" data-track-index="1" muted></video>
+  <video id="vx-c10s1-6-alj004" class="bc" src="media/bc/aljazeera_20260906-004.mp4" data-start="697.403" data-duration="6.64" data-track-index="1" muted></video>
+  <video id="vx-c10s1-7-f24_003" class="bc" src="media/bc/france24_20260906-003.mp4" data-start="704.043" data-duration="4.5" data-track-index="1" muted></video>
+  <video id="vx-c10s1-8-f24_004" class="bc" src="media/bc/france24_20260906-004.mp4" data-start="708.543" data-duration="2.424" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-c11s1-0-aster10" data-start="710.967" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c11s1-0-aster10" src="media/stills/nasa-aster-2010.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-c11s1-1-viirs" data-start="715.967" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c11s1-1-viirs" src="media/stills/nasa-eo-viirs-20260905.jpg" alt=""></section>
+  <video id="vx-c11s1-2-f24_002" class="bc" src="media/bc/france24_20260906-002.mp4" data-start="720.967" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <section class="clip still-wrap" id="c-c11s1-3-s3" data-start="725.967" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c11s1-3-s3" src="media/stills/esa-sentinel3-eruption-20260908.jpg" alt=""></section>
+  <section class="clip still-wrap contain-wrap" id="c-c11s1-4-twilight" data-start="730.967" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter"><img class="blurfill" src="media/stills/royal-society-twilight-afterglow-1888.jpg" alt=""><img id="kb-c11s1-4-twilight" src="media/stills/royal-society-twilight-afterglow-1888.jpg" alt=""></section>
+  <video id="vx-c11s1-5-cna031" class="bc" src="media/bc/cna_20260906-031.mp4" data-start="735.967" data-duration="3.83" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <video id="vx-c11s1-6-abc016" class="bc" src="media/bc/abcaus_20260906-016.mp4" data-start="739.797" data-duration="3.6" data-track-index="1" muted></video>
+  <section class="clip still-wrap contain-wrap" id="c-c11s1-7-chart" data-start="743.397" data-duration="5.5" data-track-index="1" data-callback="second use, different chapter"><img class="blurfill" src="media/stills/admiralty-chart-sunda-strait-1851.jpg" alt=""><img id="kb-c11s1-7-chart" src="media/stills/admiralty-chart-sunda-strait-1851.jpg" alt=""></section>
+  <video id="vx-c11s1-8-f24_005" class="bc" src="media/bc/france24_20260906-005.mp4" data-start="748.897" data-duration="3.936" data-track-index="1" muted></video>
+  <video id="vx-c12s1-0-stock_recede" src="media/bc/waves-receding-beach-conghuynh8.mp4" data-start="752.833" data-duration="6.0" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <section class="clip still-wrap" id="c-c12s1-1-shelter" data-start="758.833" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c12s1-1-shelter" src="media/stills/khao-lak-tsunami-shelter.jpg" alt=""></section>
+  <video id="vx-c12s1-2-stock_evac" src="media/bc/tsunami-evac-sign-harrisonmiller.mp4" data-start="763.833" data-duration="6.0" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <section class="clip still-wrap" id="c-c12s1-3-whittier" data-start="769.833" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c12s1-3-whittier" src="media/stills/whittier-harbor-from-water.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-c12s1-4-siren_phuket" data-start="774.833" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c12s1-4-siren_phuket" src="media/stills/phuket-mai-khao-siren.jpg" alt=""></section>
+  <video id="vx-c12s1-5-alj015" class="bc" src="media/bc/aljazeera_20260906-015.mp4" data-start="779.833" data-duration="3.24" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <section class="clip still-wrap" id="c-c12s1-6-rescue" data-start="783.073" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c12s1-6-rescue" src="media/stills/lampung-search-rescue.jpg" alt=""></section>
+  <video id="vx-c12s1-7-cnac002" class="bc" src="media/bc/cna-concert_20181223-002.mp4" data-start="788.073" data-duration="4.35" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <video id="vx-c12s1-8-ajc006" class="bc" src="media/bc/aljazeera-concert_20181223-006.mp4" data-start="792.423" data-duration="3.4" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <section class="clip still-wrap" id="c-c12s1-9-aft2" data-start="795.823" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c12s1-9-aft2" src="media/stills/aftermath-sunda-strait-2.jpg" alt=""></section>
+  <video id="vx-c12s1-10-bbc010" class="bc" src="media/bc/bbc_20181227-010.mp4" data-start="800.823" data-duration="4.31" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <section class="clip still-wrap" id="c-z1s1-0-lituya2" data-start="805.133" data-duration="6.0" data-track-index="1" data-callback="second use, different chapter"><img id="kb-z1s1-0-lituya2" src="media/stills/lituya-bay-overview-post1958.jpg" alt=""></section>
+  <video id="vx-z1s1-1-ajc008" class="bc" src="media/bc/aljazeera-concert_20181223-008.mp4" data-start="811.133" data-duration="5.2" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <section class="clip still-wrap contain-wrap" id="c-z1s1-2-locprint" data-start="816.333" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter"><img class="blurfill" src="media/stills/loc-krakatoa-submerged-print.jpg" alt=""><img id="kb-z1s1-2-locprint" src="media/stills/loc-krakatoa-submerged-print.jpg" alt=""></section>
+  <video id="vx-z1s1-3-bbc012" class="bc" src="media/bc/bbc_20181227-012.mp4" data-start="821.333" data-duration="4.48" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <video id="vx-z1s1-4-ajc013" class="bc" src="media/bc/aljazeera-concert_20181223-013.mp4" data-start="825.813" data-duration="3.9" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <video id="vx-z1s1-5-bbc007" class="bc" src="media/bc/bbc_20181227-007.mp4" data-start="829.713" data-duration="3.087" data-track-index="1" muted></video>
+
+  <!-- ============ OVERLAYS ============ -->
+  <section class="clip" id="p-src-sat" data-start="102.767" data-duration="5.6" data-track-index="4"><div class="srclab">SOURCE: NASA EARTH OBSERVATORY · SEPT 5, 2026</div></section>
+  <section class="clip" id="p-src-usgs" data-start="450.32" data-duration="5.5" data-track-index="4"><div class="srclab">SOURCE: USGS · LITUYA BAY TRIMLINE, 1958</div></section>
+  <section class="clip" id="p-src-dggs" data-start="485.0" data-duration="6.0" data-track-index="4"><div class="srclab">SOURCE: ALASKA DGGS / USGS · BARRY ARM MONITORING</div></section>
+  <section class="clip" id="p-pf-426" data-start="7.84" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-426"><span class="pf-big">426 DEAD</span><span class="pf-sub">DECEMBER 22, 2018</span></div></section>
+  <section class="clip" id="p-pf-nosiren" data-start="11.64" data-duration="1.97" data-track-index="5"><div class="popfig" id="pf-nosiren"><span class="pf-big">NO SIREN</span><span class="pf-sub">NOT THEN, NOT NEXT TIME</span></div></section>
+  <section class="clip" id="p-chip-xmas" data-start="19.473" data-duration="5.0" data-track-index="5"><div class="chip" id="chip-xmas">SATURDAY · TWO DAYS BEFORE CHRISTMAS</div></section>
+  <section class="clip" id="p-pf-903" data-start="26.753" data-duration="2.08" data-track-index="5"><div class="popfig" id="pf-903"><span class="pf-big">9:03 PM</span><span class="pf-sub">THE FLANK SLIDES INTO THE SEA</span></div></section>
+  <section class="clip" id="p-pf-24min" data-start="28.933" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-24min"><span class="pf-big">24 MINUTES</span><span class="pf-sub">BEFORE THE INSTRUMENTS NOTICED</span></div></section>
+  <section class="clip" id="p-chip-band" data-start="37.853" data-duration="4.0" data-track-index="5"><div class="chip" id="chip-band">THE BAND WAS STILL PLAYING</div></section>
+  <section class="clip" id="p-q-bnpb" data-start="49.733" data-duration="7.63" data-track-index="5"><div class="quotecard" id="q-bnpb"><div class="q">“Indonesia did not yet have any early warning system for tsunamis caused by underwater landslides or volcanoes in the sea.”</div><div class="attr">SUTOPO PURWO NUGROHO · BNPB · DEC 23, 2018</div></div></section>
+  <section class="clip" id="p-chip-six" data-start="58.847" data-duration="4.5" data-track-index="5"><div class="chip" id="chip-six">SIX ERUPTIONS · ONE WEEK</div></section>
+  <section class="clip" id="p-pf-alaska" data-start="92.507" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-alaska"><span class="pf-big">ALASKA</span><span class="pf-sub">THE TALLEST WAVE EVER RECORDED</span></div></section>
+  <section class="clip" id="p-chip-where" data-start="96.907" data-duration="5.5" data-track-index="5"><div class="chip" id="chip-where">COMMENT: WHERE ARE YOU WATCHING FROM?</div></section>
+  <section class="clip" id="p-pf-25h" data-start="110.367" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-25h"><span class="pf-big">25 HOURS</span><span class="pf-sub">SEPT 4, 11:07 PM → SEPT 6</span></div></section>
+  <section class="clip" id="p-pf-lvl3" data-start="116.527" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-lvl3"><span class="pf-big">LEVEL III</span><span class="pf-sub">SIAGA · SINCE JULY</span></div></section>
+  <section class="clip" id="p-pf-3km" data-start="121.947" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-3km"><span class="pf-big">3 KM</span><span class="pf-sub">EXCLUSION ZONE</span></div></section>
+  <section class="clip" id="p-pf-28s" data-start="129.667" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-28s"><span class="pf-big">28 SECONDS</span><span class="pf-sub">WEDNESDAY, 00:47</span></div></section>
+  <section class="clip" id="p-pf-tilt" data-start="136.607" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-tilt"><span class="pf-big">TILT ↑</span><span class="pf-sub">RISING SINCE AUGUST</span></div></section>
+  <section class="clip" id="p-q-pvmbg" data-start="144.007" data-duration="5.61" data-track-index="5"><div class="quotecard" id="q-pvmbg"><div class="q">“Activity remains high, and another eruption in the near future remains possible.”</div><div class="attr">PVMBG · SEPTEMBER 2026</div></div></section>
+  <section class="clip" id="p-pf-shakes" data-start="155.433" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-shakes"><span class="pf-big">THE GROUND SHAKES</span><span class="pf-sub">STEP ONE OF EVERY SIREN</span></div></section>
+  <section class="clip" id="p-pf-55" data-start="172.173" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-55"><span class="pf-big">55 SIRENS</span><span class="pf-sub">AND TEXT MESSAGES</span></div></section>
+  <section class="clip" id="p-pf-5min" data-start="178.033" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-5min"><span class="pf-big">UNDER 5 MINUTES</span><span class="pf-sub">INDONESIA CAN DO IT</span></div></section>
+  <section class="clip" id="p-pf-22" data-start="188.653" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-22"><span class="pf-big">22 BUOYS</span><span class="pf-sub">ALL DEAD SINCE 2012</span></div></section>
+  <section class="clip" id="p-chip-stolen" data-start="196.653" data-duration="5.0" data-track-index="5"><div class="chip" id="chip-stolen">VANDALISED · MOORED TO · STOLEN</div></section>
+  <section class="clip" id="p-pf-trigger" data-start="203.133" data-duration="2.15" data-track-index="5"><div class="popfig" id="pf-trigger"><span class="pf-big">NO TRIGGER</span><span class="pf-sub">A FAST SIREN, NOTHING TO PULL IT</span></div></section>
+  <section class="clip" id="p-pf-423" data-start="209.8" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-423"><span class="pf-big">423 ERUPTIONS</span><span class="pf-sub">THAT DAY, SINCE NOON</span></div></section>
+  <section class="clip" id="p-pf-903b" data-start="218.06" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-903b"><span class="pf-big">9:03 PM</span><span class="pf-sub">THE FLANK GIVES WAY</span></div></section>
+  <section class="clip" id="p-pf-02" data-start="222.7" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-02"><span class="pf-big">0.2 KM³</span><span class="pf-sub">OF ROCK</span></div></section>
+  <section class="clip" id="p-pf-927" data-start="233.56" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-927"><span class="pf-big">9:27 PM</span><span class="pf-sub">A TIDE GAUGE FINALLY SEES IT</span></div></section>
+  <section class="clip" id="p-pf-5m" data-start="247.3" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-5m"><span class="pf-big">5 M</span><span class="pf-sub">TANJUNG LESUNG</span></div></section>
+  <section class="clip" id="p-pf-43" data-start="260.68" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-43"><span class="pf-big">43 OF 199</span><span class="pf-sub">ONE COMPANY PARTY</span></div></section>
+  <section class="clip" id="p-pf-tide" data-start="265.84" data-duration="2.44" data-track-index="5"><div class="popfig" id="pf-tide"><span class="pf-big">“HIGH TIDE”</span><span class="pf-sub">THE FIRST OFFICIAL STATEMENT</span></div></section>
+  <section class="clip" id="p-pf-426b" data-start="268.38" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-426b"><span class="pf-big">426 DEAD</span><span class="pf-sub">14,000 INJURED</span></div></section>
+  <section class="clip" id="p-pf-134" data-start="275.96" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-134"><span class="pf-big">13.4 M</span><span class="pf-sub">THE TALLEST RUN-UP</span></div></section>
+  <section class="clip" id="p-pf-338" data-start="288.18" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-338"><span class="pf-big">338 M</span><span class="pf-sub">TOO STEEP, TOO FAST</span></div></section>
+  <section class="clip" id="p-pf-noeq" data-start="297.62" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-noeq"><span class="pf-big">NOT AN EARTHQUAKE</span><span class="pf-sub">THE SIGNAL SEISMOGRAPHS IGNORE</span></div></section>
+  <section class="clip" id="p-chip-night" data-start="301.38" data-duration="5.0" data-track-index="5"><div class="chip" id="chip-night">NIGHT · HOLIDAY WEEKEND · FULL BEACHES</div></section>
+  <section class="clip" id="p-pf-30min" data-start="312.48" data-duration="2.38" data-track-index="5"><div class="popfig" id="pf-30min"><span class="pf-big">UNDER 30 MIN</span><span class="pf-sub">ACROSS THE STRAIT</span></div></section>
+  <section class="clip" id="p-pf-110" data-start="314.96" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-110"><span class="pf-big">338 → 110 M</span><span class="pf-sub">TWO THIRDS OF THE MOUNTAIN</span></div></section>
+  <section class="clip" id="p-pf-east" data-start="348.3" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-east"><span class="pf-big">EAST OF JAVA?</span><span class="pf-sub">IT IS WEST</span></div></section>
+  <section class="clip" id="p-pf-1002" data-start="363.2" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-1002"><span class="pf-big">10:02 AM</span><span class="pf-sub">AUGUST 27, 1883</span></div></section>
+  <section class="clip" id="p-pf-4800" data-start="369.52" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-4800"><span class="pf-big">HEARD 4,800 KM</span><span class="pf-sub">RODRIGUES ISLAND</span></div></section>
+  <section class="clip" id="p-pf-46" data-start="381.2" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-46"><span class="pf-big">46 M</span><span class="pf-sub">THE WAVE AT MERAK</span></div></section>
+  <section class="clip" id="p-pf-36417" data-start="389.58" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-36417"><span class="pf-big">36,417 DEAD</span><span class="pf-sub">THE OFFICIAL COUNT</span></div></section>
+  <section class="clip" id="p-chip-same" data-start="399.86" data-duration="5.5" data-track-index="5"><div class="chip" id="chip-same">SAME STRAIT · SAME COAST · SAME MECHANISM</div></section>
+  <section class="clip" id="p-chip-guess" data-start="416.88" data-duration="5.0" data-track-index="5"><div class="chip" id="chip-guess">GUESS: HOW TALL?</div></section>
+  <section class="clip" id="p-pf-1958" data-start="424.62" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-1958"><span class="pf-big">JULY 9, 1958</span><span class="pf-sub">LITUYA BAY, ALASKA</span></div></section>
+  <section class="clip" id="p-pf-30m" data-start="435.36" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-30m"><span class="pf-big">30 MILLION M³</span><span class="pf-sub">OF ROCK, FALLING 1,000 M</span></div></section>
+  <section class="clip" id="p-pf-524" data-start="444.98" data-duration="3.6" data-track-index="5"><div class="popfig" id="pf-524"><span class="pf-big">524 M</span><span class="pf-sub">1,720 FEET</span></div></section>
+  <section class="clip" id="p-chip-boats" data-start="456.86" data-duration="5.0" data-track-index="5"><div class="chip" id="chip-boats">EDRIE · BADGER · SUNMORE</div></section>
+  <section class="clip" id="p-q-ulrich" data-start="472.52" data-duration="6.0" data-track-index="5"><div class="quotecard" id="q-ulrich"><div class="q">“It was not a wave at first. It was like an explosion.”</div><div class="attr">HOWARD ULRICH · LITUYA BAY, 1958</div></div></section>
+  <section class="clip" id="p-pf-2min" data-start="478.68" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-2min"><span class="pf-big">2 MINUTES</span><span class="pf-sub">QUAKE TO WAVE</span></div></section>
+  <section class="clip" id="p-pf-500m" data-start="498.78" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-500m"><span class="pf-big">500 MILLION M³</span><span class="pf-sub">SIXTEEN LITUYAS</span></div></section>
+  <section class="clip" id="p-pf-48km" data-start="515.86" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-48km"><span class="pf-big">48 KM</span><span class="pf-sub">FROM WHITTIER, ALASKA</span></div></section>
+  <section class="clip" id="p-pf-2ft" data-start="523.88" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-2ft"><span class="pf-big">2 FT AT WHITTIER</span><span class="pf-sub">200 M IN THE FJORD</span></div></section>
+  <section class="clip" id="p-chip-instruments" data-start="530.92" data-duration="6.5" data-track-index="5"><div class="chip" id="chip-instruments">WATER LEVEL · SEISMIC · INFRASOUND · RADAR · CAMERA · INSAR</div></section>
+  <section class="clip" id="p-pf-sep4" data-start="544.78" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-sep4"><span class="pf-big">SEPT 4, 2026</span><span class="pf-sub">NO LARGE-SCALE DEFORMATION</span></div></section>
+  <section class="clip" id="p-pf-measure" data-start="557.84" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-measure"><span class="pf-big">A MEASUREMENT</span><span class="pf-sub">NOT A SIREN</span></div></section>
+  <section class="clip" id="p-pf-533" data-start="572.613" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-533"><span class="pf-big">533 SEISMOGRAPHS</span><span class="pf-sub">BY 2024</span></div></section>
+  <section class="clip" id="p-pf-227" data-start="578.413" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-227"><span class="pf-big">22 + 7</span><span class="pf-sub">INSTITUTIONS, THREE YEARS</span></div></section>
+  <section class="clip" id="p-chip-stations" data-start="585.573" data-duration="5.0" data-track-index="5"><div class="chip" id="chip-stations">NEW WATER-LEVEL STATIONS ALONG THE STRAIT</div></section>
+  <section class="clip" id="p-q-bmkg" data-start="604.853" data-duration="5.74" data-track-index="5"><div class="quotecard" id="q-bmkg"><div class="q">“Without sensors under the sea, the calculation can be slow and missed.”</div><div class="attr">BMKG · INDONESIA'S WEATHER AGENCY</div></div></section>
+  <section class="clip" id="p-pf-nobuoys" data-start="610.693" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-nobuoys"><span class="pf-big">STILL NO BUOYS</span><span class="pf-sub">THE TRIGGER IS THE PROBLEM</span></div></section>
+  <section class="clip" id="p-pf-27" data-start="627.573" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-27"><span class="pf-big">27 MINUTES</span><span class="pf-sub">COLLAPSE TO BEACH</span></div></section>
+  <section class="clip" id="p-pf-927b" data-start="635.773" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-927b"><span class="pf-big">9:27</span><span class="pf-sub">THE EARLIEST ANY INSTRUMENT KNEW</span></div></section>
+  <section class="clip" id="p-pf-plus" data-start="648.893" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-plus"><span class="pf-big">+5 TO 10 MIN</span><span class="pf-sub">CONFIRM · DECIDE · SOUND</span></div></section>
+  <section class="clip" id="p-pf-same" data-start="652.473" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-same"><span class="pf-big">THE SAME MOMENT</span><span class="pf-sub">SIREN AND WATER</span></div></section>
+  <section class="clip" id="p-chip-person" data-start="668.153" data-duration="2.15" data-track-index="5"><div class="chip" id="chip-person">THE ONLY THING FASTER: A PERSON LOOKING AT THE SEA</div></section>
+  <section class="clip" id="p-pf-banten" data-start="675.473" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-banten"><span class="pf-big">BANTEN</span><span class="pf-sub">ANYER · CARITA · TANJUNG LESUNG</span></div></section>
+  <section class="clip" id="p-pf-lampung" data-start="680.653" data-duration="2.76" data-track-index="5"><div class="popfig" id="pf-lampung"><span class="pf-big">LAMPUNG</span><span class="pf-sub">SUMATRA SIDE</span></div></section>
+  <section class="clip" id="p-pf-ferries" data-start="683.513" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-ferries"><span class="pf-big">MERAK – BAKAUHENI</span><span class="pf-sub">FERRIES IN SIGHT OF THE MOUNTAIN</span></div></section>
+  <section class="clip" id="p-pf-jakarta" data-start="690.013" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-jakarta"><span class="pf-big">JAKARTA · ASH</span><span class="pf-sub">BREATHING AND AIRPORTS</span></div></section>
+  <section class="clip" id="p-chip-cancel" data-start="700.833" data-duration="5.0" data-track-index="5"><div class="chip" id="chip-cancel">THEIR RISK: A CANCELLED CONNECTION</div></section>
+  <section class="clip" id="p-q-ulrich2" data-start="805.553" data-duration="5.5" data-track-index="5"><div class="quotecard" id="q-ulrich2"><div class="q">“It was not a wave at first. It was like an explosion.”</div><div class="attr">HOWARD ULRICH · 1958</div></div></section>
+
+  <!-- ============ CARDS + CLOSE ============ -->
+  <div id="host-chain" data-composition-id="chain" data-composition-src="compositions/chain.html" data-start="149.633" data-duration="31.26" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-timeline" data-composition-id="timeline" data-composition-src="compositions/timeline.html" data-start="617.733" data-duration="37.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-notyes" data-composition-id="notyes" data-composition-src="compositions/notyes.html" data-start="710.967" data-duration="41.4" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-statcard" data-composition-id="statcard" data-composition-src="compositions/statcard.html" data-start="752.833" data-duration="51.84" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <section class="clip blackout" id="bo-close" data-start="832.8" data-duration="10.2" data-track-index="1"></section>
+  <div id="host-close" data-composition-id="g-close" data-composition-src="compositions/g-close.html" data-start="832.8" data-duration="10.2" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- CTA dips: LAST in the DOM so they paint above every track-1 cut under them -->
+  <section class="clip blackout" id="bo-cta-in" data-start="322.4" data-duration="1.0" data-track-index="9"></section>
+  <section class="clip blackout" id="bo-cta-out" data-start="338.439" data-duration="0.561" data-track-index="9"></section>
+
+  <div id="grade"></div>
+  <div id="vignette"></div>
+  <canvas id="grain" width="480" height="270"></canvas>
+</div>
+<script src="grain.js"></script>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 843.0;
+  function kb(sel, at, dur, s0, s1, x0, x1, y0, y1) {
+    tl.fromTo(sel, { scale: s0, x: x0, y: y0, transformOrigin: "center" }, { scale: s1, x: x1, y: y1, duration: dur, ease: "none" }, at);
+  }
+  function pop(sel, at, hold) {
+    tl.fromTo(sel, { scale: 2.2, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.35, ease: "power4.in" }, at);
+    tl.to(sel, { autoAlpha: 0, y: -26, duration: 0.28, ease: "power2.in" }, at + hold - 0.28);
+  }
+  function chip(sel, at, hold) {
+    tl.fromTo(sel, { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, at);
+    tl.to(sel, { autoAlpha: 0, x: -30, duration: 0.3, ease: "power2.in" }, at + hold - 0.3);
+  }
+  function lab(sel, at, hold) {
+    tl.fromTo(sel, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, at);
+    tl.to(sel, { autoAlpha: 0, duration: 0.3 }, at + hold - 0.3);
+  }
+  function drift(sel, at, dur, s1) { tl.fromTo(sel, { scale: 1.0, transformOrigin: "center" }, { scale: s1 || 1.05, duration: dur, ease: "none" }, at); }
+  function bug(strip, hl, at, dur, lines) {
+    tl.fromTo(strip, { y: 96 }, { y: 0, duration: 0.45, ease: "power3.out" }, at);
+    const n = Math.floor((dur - 0.6) / 12);
+    for (let i = 0; i < n; i++) {
+      const t = at + 0.3 + i * 12, text = lines[i % lines.length];
+      if (i > 0) tl.to(hl, { y: 40, autoAlpha: 0, duration: 0.25, ease: "power2.in" }, t - 0.25);
+      tl.set(hl, { textContent: text }, t);
+      tl.fromTo(hl, { y: -40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.3, ease: "power2.out" }, t);
+    }
+  }
+
+
+
+  /* ---- stills ---- */
+  kb("#kb-h1s1-1-siren_dili", 4.28, 3.0, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-i1s1-3-ls18", 29.633, 5.0, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-i1s1-6-concert", 44.833, 5.0, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-i1s1-8-aft1", 53.233, 4.134, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-i1s2-1-oli", 62.367, 5.0, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-i1s2-2-lituya_trim", 67.367, 5.0, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-i1s2-3-barry_annot", 72.367, 5.0, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-i1s2-5-viirs", 80.867, 5.0, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-i1s2-7-barry2", 89.587, 5.0, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-c1s1-0-s3", 102.567, 6.0, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-c1s1-4-lava", 121.037, 5.0, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-c1s1-7-cop0702", 134.237, 5.0, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-c2s1-0-sirens_semporna", 149.633, 5.0, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-c2s1-1-inatews_officer", 154.633, 5.0, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-c2s1-2-siren_phuket", 159.633, 5.0, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-c2s1-3-dart_diag", 164.633, 5.0, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-c2s1-4-station_semporna", 169.633, 5.0, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-c2s1-5-dart_stennis", 174.633, 5.0, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-c2s1-6-dart_illus", 179.633, 5.0, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-c2s1-7-dart_museum", 184.633, 5.0, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-c2s1-11-shelter", 199.833, 5.467, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-c3s1-2-ls18", 213.98, 5.0, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-c3s1-5-aft3", 227.13, 5.0, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-c3s1-13-aft2", 260.73, 5.0, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-c3s1-14-rescue", 265.73, 5.0, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-c4s1-0-cop19", 281.5, 5.0, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-c4s1-1-s2_22", 286.5, 5.0, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-c4s1-2-ls20", 291.5, 5.0, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-c4s1-3-aster10", 296.5, 5.0, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-c4s1-5-outline", 304.74, 5.0, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-c5s1-0-parker", 338.439, 5.5, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-c5s1-1-litho", 343.939, 5.5, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-c5s1-2-sunset", 349.439, 4.0, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-c5s1-3-chart", 353.439, 5.5, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-c5s1-4-baro", 358.939, 6.0, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-c5s1-5-twilight", 364.939, 5.5, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-c5s1-6-reach", 370.439, 6.0, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-c5s1-7-berouw", 376.439, 5.5, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-c5s1-8-berouw2", 381.939, 5.5, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-c5s1-9-locprint", 387.439, 5.5, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-c5s1-10-ctx2000", 392.939, 5.0, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-c6s1-0-lituya_trim", 411.5, 6.0, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-c6s1-1-lituya2", 417.5, 5.5, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-c6s1-2-lituya3", 423.0, 5.5, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-c6s1-3-lituya4", 428.5, 5.5, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-c6s1-5-lituya5", 440.0, 5.5, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-c6s1-7-alaska_map", 451.5, 5.0, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-c6s1-9-pws_map", 462.5, 5.5, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-c7s1-0-barry_annot", 484.7, 6.0, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-c7s1-1-barry2", 490.7, 5.5, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-c7s1-2-whittier", 496.2, 5.5, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-c7s1-6-lituya5", 518.7, 5.5, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-c7s1-7-alaska_map", 524.2, 5.0, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-c7s1-9-lituya3", 535.2, 5.5, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-c7s1-10-lituya4", 540.7, 5.5, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-c7s1-11-pws_map", 546.2, 5.5, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-c8s1-0-inatews_officer", 563.233, 5.0, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-c8s1-1-station_semporna", 568.233, 5.0, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-c8s1-2-dart_stennis", 573.233, 5.0, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-c8s1-4-sirens_semporna", 581.833, 5.0, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-c8s1-5-dart_museum", 586.833, 5.0, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-c8s1-6-oli", 591.833, 5.0, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-c8s1-7-lava", 596.833, 5.0, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-c8s1-10-cop0702", 608.533, 5.0, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-c9s1-7-concert", 652.503, 5.0, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-c9s1-8-aft3", 657.503, 5.0, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-c10s1-0-ctx2000", 670.333, 5.0, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-c10s1-1-reach", 675.333, 5.0, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-c10s1-4-haze", 688.733, 5.0, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-c11s1-0-aster10", 710.967, 5.0, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-c11s1-1-viirs", 715.967, 5.0, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-c11s1-3-s3", 725.967, 5.0, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-c11s1-4-twilight", 730.967, 5.0, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-c11s1-7-chart", 743.397, 5.5, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-c12s1-1-shelter", 758.833, 5.0, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-c12s1-3-whittier", 769.833, 5.0, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-c12s1-4-siren_phuket", 774.833, 5.0, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-c12s1-6-rescue", 783.073, 5.0, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-c12s1-9-aft2", 795.823, 5.0, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-z1s1-0-lituya2", 805.133, 6.0, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-z1s1-2-locprint", 816.333, 5.0, 1.0, 1.08, 0, -14, 0, -8);
+  /* ---- overlays ---- */
+  lab("#p-src-sat .srclab", 102.767, 5.6);
+  lab("#p-src-usgs .srclab", 450.32, 5.5);
+  lab("#p-src-dggs .srclab", 485.0, 6.0);
+  pop("#pf-426", 7.84, 3.2);
+  pop("#pf-nosiren", 11.64, 1.97);
+  chip("#chip-xmas", 19.473, 5.0);
+  pop("#pf-903", 26.753, 2.08);
+  pop("#pf-24min", 28.933, 3.2);
+  chip("#chip-band", 37.853, 4.0);
+  tl.fromTo("#q-bnpb", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 49.733); tl.to("#q-bnpb", { autoAlpha: 0, y: -20, duration: 0.4 }, 56.963);
+  chip("#chip-six", 58.847, 4.5);
+  pop("#pf-alaska", 92.507, 3.4);
+  chip("#chip-where", 96.907, 5.5);
+  pop("#pf-25h", 110.367, 3.4);
+  pop("#pf-lvl3", 116.527, 3.2);
+  pop("#pf-3km", 121.947, 3.0);
+  pop("#pf-28s", 129.667, 3.2);
+  pop("#pf-tilt", 136.607, 3.4);
+  tl.fromTo("#q-pvmbg", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 144.007); tl.to("#q-pvmbg", { autoAlpha: 0, y: -20, duration: 0.4 }, 149.217);
+  pop("#pf-shakes", 155.433, 3.0);
+  pop("#pf-55", 172.173, 3.0);
+  pop("#pf-5min", 178.033, 3.0);
+  pop("#pf-22", 188.653, 3.4);
+  chip("#chip-stolen", 196.653, 5.0);
+  pop("#pf-trigger", 203.133, 2.15);
+  pop("#pf-423", 209.8, 3.2);
+  pop("#pf-903b", 218.06, 3.2);
+  pop("#pf-02", 222.7, 3.0);
+  pop("#pf-927", 233.56, 3.2);
+  pop("#pf-5m", 247.3, 3.0);
+  pop("#pf-43", 260.68, 3.2);
+  pop("#pf-tide", 265.84, 2.44);
+  pop("#pf-426b", 268.38, 3.4);
+  pop("#pf-134", 275.96, 3.2);
+  pop("#pf-338", 288.18, 3.2);
+  pop("#pf-noeq", 297.62, 3.4);
+  chip("#chip-night", 301.38, 5.0);
+  pop("#pf-30min", 312.48, 2.38);
+  pop("#pf-110", 314.96, 3.4);
+  pop("#pf-east", 348.3, 3.4);
+  pop("#pf-1002", 363.2, 3.2);
+  pop("#pf-4800", 369.52, 3.2);
+  pop("#pf-46", 381.2, 3.2);
+  pop("#pf-36417", 389.58, 3.4);
+  chip("#chip-same", 399.86, 5.5);
+  chip("#chip-guess", 416.88, 5.0);
+  pop("#pf-1958", 424.62, 3.4);
+  pop("#pf-30m", 435.36, 3.2);
+  pop("#pf-524", 444.98, 3.6);
+  chip("#chip-boats", 456.86, 5.0);
+  tl.fromTo("#q-ulrich", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 472.52); tl.to("#q-ulrich", { autoAlpha: 0, y: -20, duration: 0.4 }, 478.12);
+  pop("#pf-2min", 478.68, 3.2);
+  pop("#pf-500m", 498.78, 3.4);
+  pop("#pf-48km", 515.86, 3.2);
+  pop("#pf-2ft", 523.88, 3.4);
+  chip("#chip-instruments", 530.92, 6.5);
+  pop("#pf-sep4", 544.78, 3.4);
+  pop("#pf-measure", 557.84, 3.2);
+  pop("#pf-533", 572.613, 3.2);
+  pop("#pf-227", 578.413, 3.2);
+  chip("#chip-stations", 585.573, 5.0);
+  tl.fromTo("#q-bmkg", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 604.853); tl.to("#q-bmkg", { autoAlpha: 0, y: -20, duration: 0.4 }, 610.193);
+  pop("#pf-nobuoys", 610.693, 3.4);
+  pop("#pf-27", 627.573, 3.2);
+  pop("#pf-927b", 635.773, 3.0);
+  pop("#pf-plus", 648.893, 3.2);
+  pop("#pf-same", 652.473, 3.4);
+  chip("#chip-person", 668.153, 2.15);
+  pop("#pf-banten", 675.473, 3.2);
+  pop("#pf-lampung", 680.653, 2.76);
+  pop("#pf-ferries", 683.513, 3.4);
+  pop("#pf-jakarta", 690.013, 3.2);
+  chip("#chip-cancel", 700.833, 5.0);
+  tl.fromTo("#q-ulrich2", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 805.553); tl.to("#q-ulrich2", { autoAlpha: 0, y: -20, duration: 0.4 }, 810.653);
+  /* ---- presenter talk-sync ---- */
+  tl.set(["#pip-talk-a", "#pip-talk-b"], { autoAlpha: 0 }, 0);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 13.63); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 16.57);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 17.27); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 19.01);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 19.39); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 19.99);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 20.57); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 21.87);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 22.67); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 28.27);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 29.05); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 32.09);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 32.97); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 37.31);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 37.75); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 39.19);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 39.77); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 40.63);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 41.43); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 41.99);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 42.79); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 43.61);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 44.63); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 48.81);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 49.45); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 56.41);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 57.37); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 62.39);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 62.89); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 101.61);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 102.57); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 103.73);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 104.61); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 111.43);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 112.15); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 113.93);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 114.61); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 117.21);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 117.75); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 118.89);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 119.33); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 120.69);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 121.37); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 123.53);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 124.37); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 126.25);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 126.79); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 129.19);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 129.79); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 130.99);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 131.37); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 132.91);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 133.99); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 138.41);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 138.91); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 140.77);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 141.41); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 143.25);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 144.13); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 145.39);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 145.91); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 148.67);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 149.63); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 151.95);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 152.33); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 154.83);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 155.49); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 156.45);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 157.47); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 161.19);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 161.65); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 167.97);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 169.03); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 170.57);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 171.49); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 174.07);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 174.65); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 175.31);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 175.73); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 176.11);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 176.75); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 182.97);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 183.67); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 184.55);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 185.49); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 187.87);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 188.67); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 193.69);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 194.57); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 195.13);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 195.73); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 197.51);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 197.89); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 200.65);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 201.13); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 204.35);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 205.3); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 206.78);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 207.58); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 212.42);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 213.16); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 215.02);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 215.44); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 217.24);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 218.0); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 221.56);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 222.06); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 224.84);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 225.3); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 226.6);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 227.1); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 232.82);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 233.37); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 235.32);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 235.94); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 239.14);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 239.88); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 242.96);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 243.52); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 244.48);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 245.14); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 246.76);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 247.42); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 249.72);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 250.18); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 253.68);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 254.28); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 256.16);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 257.02); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 260.22);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 260.8); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 262.5);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 263.02); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 266.64);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 267.54); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 270.44);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 270.88); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 272.6);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 273.28); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 275.2);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 275.9); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 280.48);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 281.5); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 283.12);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 283.74); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 285.74);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 286.6); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 292.84);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 293.52); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 294.34);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 294.84); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 296.88);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 297.56); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 300.14);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 300.82); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 301.82);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 302.34); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 303.34);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 303.88); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 310.18);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 310.68); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 313.54);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 314.3); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 316.88);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 317.64); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 321.46);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 339.0); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 340.66);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 341.08); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 344.64);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 345.0); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 345.66);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 346.32); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 346.88);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 347.6); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 349.26);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 350.06); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 352.24);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 352.98); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 356.44);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 357.2); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 360.74);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 361.28); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 361.86);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 362.62); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 364.54);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 365.26); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 366.6);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 367.2); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 368.74);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 369.24); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 370.58);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 371.04); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 371.64);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 372.62); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 376.62);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 377.24); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 379.08);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 379.74); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 382.78);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 383.34); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 389.24);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 389.7); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 393.9);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 394.62); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 396.7);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 397.46); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 399.3);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 399.98); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 402.04);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 402.74); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 403.6);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 404.16); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 406.12);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 406.98); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 408.26);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 409.16); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 410.58);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 411.5); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 414.62);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 415.46); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 416.4);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 417.0); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 420.58);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 421.3); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 422.1);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 422.9); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 423.46);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 424.22); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 425.54);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 426.18); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 426.94);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 427.72); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 431.22);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 432.02); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 441.02);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 441.76); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 446.94);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 447.62); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 449.54);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 450.26); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 453.32);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 453.84); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 456.36);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 456.98); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 459.08);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 460.0); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 463.68);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 464.3); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 468.34);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 469.1); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 472.02);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 472.64); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 475.96);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 476.8); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 478.0);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 478.8); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 481.04);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 481.68); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 483.68);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 484.7); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 486.78);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 487.72); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 489.66);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 490.18); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 491.0);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 491.86); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 497.0);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 497.44); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 497.82);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 498.62); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 501.84);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 502.36); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 504.02);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 504.58); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 507.92);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 508.4); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 517.56);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 518.22); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 525.02);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 525.78); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 528.9);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 529.62); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 534.22);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 534.96); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 539.82);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 540.34); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 543.9);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 544.74); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 547.12);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 547.64); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 550.58);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 551.38); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 552.38);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 553.1); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 557.46);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 557.96); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 558.88);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 559.68); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 562.18);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 563.23); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 565.13);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 565.89); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 568.67);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 569.27); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 570.25);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 570.85); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 574.49);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 575.19); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 577.75);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 578.53); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 585.21);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 585.69); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 592.03);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 592.75); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 594.67);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 595.39); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 598.41);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 598.89); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 600.07);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 601.11); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 604.37);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 604.97); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 606.47);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 607.05); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 609.31);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 610.01); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 612.17);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 612.79); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 614.25);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 614.99); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 616.77);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 617.73); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 619.65);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 620.17); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 623.17);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 623.95); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 626.59);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 627.27); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 628.93);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 629.75); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 636.77);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 637.57); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 638.15);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 638.77); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 640.99);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 641.35); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 644.55);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 645.03); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 646.31);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 646.94); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 650.47);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 650.97); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 654.95);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 655.33); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 657.25);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 657.99); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 659.59);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 660.25); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 662.73);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 663.21); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 665.17);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 665.85); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 669.43);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 670.33); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 672.47);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 673.09); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 674.67);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 675.59); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 676.85);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 677.39); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 677.61);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 678.25); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 678.61);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 679.33); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 680.07);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 680.53); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 682.71);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 683.37); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 687.61);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 688.23); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 689.51);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 690.13); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 692.15);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 692.53); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 694.89);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 695.59); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 699.57);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 700.13); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 701.93);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 702.59); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 704.27);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 704.95); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 708.63);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 709.27); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 709.97);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 710.97); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 712.09);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 713.21); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 715.61);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 716.65); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 719.57);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 720.13); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 722.09);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 722.75); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 727.77);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 728.31); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 730.71);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 731.19); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 731.73);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 732.37); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 734.85);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 735.49); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 737.51);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 737.95); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 741.77);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 742.65); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 745.85);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 746.59); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 747.57);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 748.11); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 748.47);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 749.13); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 749.79);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 750.35); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 751.85);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 752.83); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 754.73);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 755.29); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 757.71);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 758.51); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 758.77);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 759.41); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 761.35);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 761.83); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 764.21);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 764.71); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 765.67);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 766.21); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 767.37);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 767.95); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 769.11);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 769.59); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 770.69);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 771.19); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 771.59);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 772.17); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 776.25);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 776.67); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 777.13);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 777.65); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 780.01);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 780.49); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 781.07);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 781.59); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 783.09);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 784.17); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 786.33);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 786.73); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 789.01);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 789.83); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 789.89);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 790.53); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 792.47);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 793.01); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 795.09);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 795.93); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 801.87);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 802.43); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 804.21);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 805.13); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 807.63);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 808.37); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 809.59);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 810.43); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 813.01);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 813.67); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 816.07);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 816.75); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 818.33);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 818.91); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 820.83);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 821.29); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 823.29);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 823.65); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 827.17);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 827.93); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 829.95);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 830.59); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 832.49);
+  /* ---- news bug ---- */
+  bug("#bugstrip-a", "#bh-a", 13.633, 308.767, ["THE SUNDA STRAIT SIRENS HAVE NEVER SOUNDED FOR KRAKATOA", "DEC 22, 2018: COLLAPSE 9:03 PM, DETECTED 9:27 PM, WAVES 9:30 PM", "ALL 22 TSUNAMI BUOYS DEAD SINCE 2012", "ANAK KRAKATAU: SIX ERUPTIONS IN ONE WEEK, LEVEL III, TILT RISING"]);
+  bug("#bugstrip-b", "#bh-b", 339.0, 493.8, ["1883: A 46 M WAVE AT MERAK, 36,417 DEAD", "LITUYA BAY, ALASKA, 1958: 524 M, THE TALLEST WAVE EVER RECORDED", "BARRY ARM, ALASKA: 500 MILLION M\u00b3 WATCHED BY RADAR, SEPT 4: NO LARGE-SCALE MOVEMENT", "SINCE 2018: 533 SEISMOGRAPHS, STILL NO BUOYS", "THE ONLY SIREN THAT WORKS IS THE SEA PULLING BACK"]);
+  filmLayer(tl, DUR);
+  tl.to(["#vignette", "#grade", "#grain", ".dust"], { autoAlpha: 0, duration: 0.3 }, 323.3);
+  tl.to(["#vignette", "#grade", ".dust"], { autoAlpha: 1, duration: 0.3 }, 338.439);
+  tl.to("#grain", { autoAlpha: 0.10, duration: 0.3 }, 338.439);
+  window.__timelines["ms-krakatau-sirens"] = tl;
+})();
+</script>
+</body>
+</html>

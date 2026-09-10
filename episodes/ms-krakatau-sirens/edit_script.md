@@ -62,7 +62,7 @@ TTS note (not narration): the owner's phrase is "Comment down where you are watc
 Visual: night ocean, then the concert-stage aftermath still, BNPB presser; chip "SATURDAY · TWO DAYS BEFORE CHRISTMAS"; popfigs "9:03 PM", "24 MINUTES"; glass quote card for the BNPB line. [src: 3, 5]
 
 ### I1-S2 — narration
-> That mountain has erupted six times in the last week, and it is taller again. So this is not a history video. In the next fourteen minutes you will see exactly how a tsunami siren works, and why a collapsing volcano defeats it. You will see what was fixed since twenty eighteen, and what was not. And then something most people watching this do not know: the tallest wave ever recorded on Earth was not in Asia. It was in Alaska, and America is watching a slope right now for the same reason. Comment down where you are watching this from. I reed all the comments.
+> That mountain has erupted six times in the last week, and it is taller again. Everyone online is watching one number, the height of the plume. It is the wrong number. So this is not a history video. In the next fourteen minutes you will see exactly how a tsunami siren works, and why a collapsing volcano defeats it. You will see what was fixed since twenty eighteen, and what was not. And then something most people watching this do not know: the tallest wave ever recorded on Earth was not in Asia. It was in Alaska, and America is watching a slope right now for the same reason. Comment down where you are watching this from. I reed all the comments.
 
 Visual: 2026 plume satellite, then a Lituya Bay teaser aerial (USGS) for 2 s, then Barry Arm radar still; chip "SIX ERUPTIONS · ONE WEEK"; popfig "ALASKA"; chip "COMMENT: WHERE ARE YOU WATCHING FROM?". [src: 1, 8, 9]
 

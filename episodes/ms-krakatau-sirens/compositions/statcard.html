@@ -41,11 +41,11 @@ window.__timelines = window.__timelines || {};
   tl.set([P+"r1",P+"r2",P+"r3"], {autoAlpha:0}, 0);
   tl.fromTo(P+"card", {x:-900, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 0);
   /* EDIT-ME: re-anchor each `at` to words.json */
-  tl.fromTo(P+"r1", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 2.0);
-  tl.fromTo(P+"r2", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 5.0);
-  tl.fromTo(P+"r3", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 8.0);
-  tl.to(P+"card", {x:-900, autoAlpha:0, duration:0.5, ease:"power3.in"}, 29.64); /* EDIT-ME: host end − 0.6 */
-  tl.fromTo(P+"card", {y:0}, {y:-6, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:20}, 0.6); /* breathing so the card never idles */
+  tl.fromTo(P+"r1", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 6.96);
+  tl.fromTo(P+"r2", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 19.7);
+  tl.fromTo(P+"r3", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 37.7);
+  tl.to(P+"card", {x:-900, autoAlpha:0, duration:0.5, ease:"power3.in"}, 51.24); /* EDIT-ME: host end − 0.6 */
+  tl.fromTo(P+"card", {y:0}, {y:-6, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:35}, 0.6); /* breathing so the card never idles */
   tl.to(P+"eye", {letterSpacing:"8px", duration:1.2, ease:"power3.out"}, 0.2);
   window.__timelines["statcard"] = tl;
 })();

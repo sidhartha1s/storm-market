@@ -126,6 +126,16 @@ quoted section header.
   close / present / record and respell the narration copy phonetically ("reed") while the script keeps the
   owner's exact wording. Listen to every interaction beat once after TTS; a wrong-tense homograph reads as AI
   slop to the audience. Owner's phrases are verbatim — never paraphrase a line he wrote.
+- **A worktree's clip pool dies with the worktree (2026-09-11, Krakatau #4):** `library/mini-storms/<event>/` media
+  is gitignored, so `git worktree remove` deleted the 72-asset Krakatau pool the moment #3 shipped; only the clips
+  already staged into `episodes/ms-krakatoa-1883/media/` (bc + _orig + stills) survived, and the #4 builder had to
+  fall back to them. Rule: before removing an episode worktree, copy `library/mini-storms/<event>/` into the main
+  checkout (`robocopy /E`), then remove. Pools are cross-angle assets; the worktree is not their home.
+- **Whisper writes digits, cue phrases must too (2026-09-11):** "twenty four minutes" never matches; the transcript
+  says "24 minutes", "36 ,417" (merged to "36417" by the cue tokenizer), "9th of july", "5 to 10". Run the cue check
+  (every overlay + card cue resolves) before the timeline build; 30 of 62 cues failed the first pass on Krakatau #4.
+- **The TTS driver skips a segment whose wav exists** (`tts_episode.py --only` reuses the old file silently): delete
+  the wav AND its words.json before any re-synthesis, or the "fix" never happens (Krakatau v2 c2/c7, 2026-09-10).
 - **Overlay sync RCA (owner 2026-09-10, Krakatau v1 draft: "MGs not syncing, some early, some late"):** every
   popfig/chip time in the scratch builder was an estimate at 2.6 words/s from the script; measured against words.json
   they were 2–4 s off in both directions ("25 HOURS" 3.5 s early, "437 DEAD" 3 s early, "PULVERISED GLASS" 2.8 s early).
