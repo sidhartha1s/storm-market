@@ -1,12 +1,12 @@
 # metadata.md — ms-krakatau-sirens (The Warning Hour · mini-storms #4)
 
-Upload file: `renders/ms-krakatau-sirens-final-master.mp4` (1080p30 H.264, −14 LUFS, ~13:45). Subtitles: `renders/ms-krakatau-sirens-final.srt`.
+Upload file: `renders/ms-krakatau-sirens-final-master.mp4` (1080p30 H.264, −14 LUFS, 14:03). Subtitles: `renders/ms-krakatau-sirens-final.srt`.
 Category **Education** · Learning type **Overview** · Language English (US) · Not made for kids · Location tag: Sunda Strait, Indonesia.
 Recording date: September 2026. Paid promotion: none. Altered content: no (real footage, PD data, no synthetic people).
 
 ## Owner note: pending after upload
 - Add this video to the Krakatau playlist and cross-link it into the description of Krakatau #3 (It Killed 36,000 First…).
-- End screen 13:2x–13:4x: subscribe + Krakatau #3 + the ebook card. Card at the CTA (≈05:1x): The Storm-Ready Home. Card at 06:30: Krakatau #3.
+- End screen 13:52–14:03: subscribe + Krakatau #3 + the ebook card. Card at 05:23: The Storm-Ready Home. Card at 05:39: Krakatau #3.
 - Thumbnail: `thumbs/` will hold frame candidates from the final render (Lituya trimline aerial, the 2018 concert stage, the Al Jazeera night wave). Text UNWARNED or NO WARNING, never SIREN.
 - After upload delete `renders/ms-krakatau-sirens-final.mp4` (raw) and the draft; keep the master and SRT.
 
@@ -35,7 +35,22 @@ Krakatau, part 1: [KRAKATAU #3 URL — fill after upload of ms-krakatoa-1883]
 The El Niño series: California https://www.youtube.com/watch?v=9tm8j0IJDCI · Texas https://www.youtube.com/watch?v=sJRBlIlU90A
 
 Chapters
-[filled from the final timeline at ship]
+00:00 The sirens have never sounded
+00:13 December 22, 2018, 9:03 pm
+01:42 This week, on the record
+02:29 How a siren actually works
+03:25 Minute by minute
+04:41 Why nobody saw it coming
+05:23 The Storm-Ready Home (Paul)
+05:39 1883, the same wave
+06:51 Alaska, 1958
+08:04 Barry Arm, watched today
+09:23 What was fixed since 2018
+10:17 The arithmetic of a warning
+11:10 Who is at risk this week
+11:50 What is not happening
+12:32 The only siren that works
+13:52 Close
 
 Questions this video answers
 Why was there no tsunami warning in the 2018 Sunda Strait tsunami? · How does a tsunami warning system work? · Why did Indonesia's tsunami buoys not work in 2018? · What happened at the Seventeen concert at Tanjung Lesung? · How fast did the 2018 Krakatau tsunami reach the coast? · Is Krakatoa erupting again in 2026? · What was the tallest wave ever recorded? · What happened at Lituya Bay in 1958? · What is the Barry Arm landslide and is Whittier, Alaska in danger? · What has Indonesia fixed since 2018? · What should you do if the sea pulls back from the beach?
