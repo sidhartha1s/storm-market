@@ -29,7 +29,9 @@ What this video covers, in order:
 • What is NOT happening: no 1883-scale eruption is forecast, the ash is not a global event, the tsunami risk is local, and the "year without a summer" was Tambora in 1815
 • Three things to do
 
-The El Niño series (California, Texas): [PLAYLIST URL — OWNER TO FILL]
+The El Niño series:
+California: https://www.youtube.com/watch?v=9tm8j0IJDCI
+Texas: https://www.youtube.com/watch?v=sJRBlIlU90A
 
 Chapters
 00:00 Six eruptions in a week
@@ -77,7 +79,7 @@ The child of Krakatoa has erupted six times this week. Everyone is filming the p
 ## End screen / cards
 - End screen (08:36–09:10): subscribe + the El Niño series + the ebook link card.
 - Card at 04:18: "The Storm-Ready Home" → https://paulraymond.online (Paul's CTA window).
-- Card at 04:35: "Not this again: California 2026" (El Niño Part 1).
+- Card at 04:35: El Niño Part 1, California → https://www.youtube.com/watch?v=9tm8j0IJDCI
 
 ## AEO / GEO block (answer-engine copy; description tail or second pinned reply)
 **Q: Is Krakatoa erupting in September 2026?** A: Yes. Anak Krakatau, the cone that grew inside the 1883 caldera, began a 25-hour continuous eruption at 23:07 local time on September 4, 2026 and has erupted repeatedly since, with a sixth event on September 9. PVMBG holds it at Level III (Siaga) with a 3 km exclusion zone.

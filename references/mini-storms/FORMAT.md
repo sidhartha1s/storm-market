@@ -45,6 +45,17 @@ atempo 1.15): 8:30 ≈ 1,260 words, 9:30 ≈ 1,410, 12:00 ≈ 1,780. Table goes 
 - Word budget at ~148 delivered wpm (2.47 w/s): 8:30 → 1,260 words; 9:30 → 1,410; 12:00 → 1,780.
 
 ## On-screen text layer
+- **Every overlay time is a word cue, never an estimate (owner 2026-09-10, Krakatau draft):** the popfig,
+  chip, quote and source-label starts are resolved from `audio/<seg>.words.json` (first occurrence of a cue
+  phrase, minus 0.12 s lead), and the build FAILS on an unmatched cue. Times guessed at words-per-second drift
+  2–4 s either way within a segment (measured on Krakatau v1: "25 HOURS" 3.5 s early, "437 DEAD" 3 s early).
+  Same for card rows. Pick cue words that whisper spells stably (avoid spelled-out numbers; whisper writes digits).
+- **CTA first frame:** the clip starts 0.1 s BEFORE the 1.0 s dip-in black lifts (blackouts on their own track above
+  the clip) and every audio/CTA start is frame-aligned (ceil to 1/30 s); otherwise the first syllable ("Mo…st people")
+  is clipped. Dip-out after the CTA is 0.5 s.
+- **TTS sentences over 24 words split and can repeat a fragment** ("drifting west, drifting west") or mangle a word
+  ("affected" → "lifted", "not a wave" → "not if if"): read every transcript for repeated bigrams and nonsense before
+  the timeline, re-synthesise the segment with the sentence split.
 - Numbers: red popfig (Abril, text-shadow, ≤3 words) synced to the spoken word, PLUS a bottom-left
   data chip for the running stat ("50,000 feet", "6 airports"). Never a colour-block card.
 - Burned-in word-highlight captions are near-universal (9/10 videos): white caps, bottom third,
