@@ -28,7 +28,7 @@ What this video covers, in order:
 • What is NOT happening: no week-by-week forecast is possible, this is not a repeat of the 2021 freeze, and drought relief is the upside
 • The four things to do before December
 
-Part 1 of the series, California: [CALIFORNIA VIDEO URL — OWNER TO FILL]
+Part 1 of the series, California: https://www.youtube.com/watch?v=9tm8j0IJDCI
 
 Chapters
 00:00 The number
@@ -74,7 +74,7 @@ Texas: the ocean has already made its move. NOAA has Texas in the above-normal r
 ## End screen / cards
 - End screen (09:38–10:23): subscribe + the California video (Part 1) + the ebook link card.
 - Card at 04:13: "The Storm-Ready Home" → https://paulraymond.online (Paul's CTA window).
-- Card at 06:39: link to the California video ("Part 1: California").
+- Card at 06:39: El Niño Part 1, California → https://www.youtube.com/watch?v=9tm8j0IJDCI
 
 ## AEO / GEO block (answer-engine copy; paste in the description tail or as a second pinned reply)
 **Q: Is there a super El Niño in 2026?** A: NOAA declared an El Niño advisory in September 2026, with eastern Pacific waters more than 3 °C above average, better than 90% odds of a very strong event, and a 69% chance it becomes the strongest El Niño measured since 1950. Peak expected October 2026 to January 2027.
