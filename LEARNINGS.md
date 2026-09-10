@@ -48,6 +48,14 @@ quoted section header.
 - hyperframes 0.8.x opens visible console windows on this box — the pin stays 0.7.109 until an upstream version spawns ffmpeg/ffprobe hidden. → §"ep6 ship"
 - Search `library/catalog-index.json` / `npx hyperframes catalog --query` before hand-authoring any graphic — MG library-first. → §"ep6 ship"
 
+## 2026-09-10 — Krakatau packaging pass: owner corrections on title length and thumbnail plates
+
+- **Titles aim under 60 characters.** Not a hard cap ("55 is not an upper limit"); low-value stretchers at the tail are fine, but an 87-char title was rejected on sight. Owner's own rewrite: "It Killed 36,000 First. Now It's Happening Again." (49).
+- **Thumbnail plates are bright and detailed.** A night plate (deep shadows, moonless) was rejected: too dark, details not visible at phone size. The owner supplied a sunset eruption plate (`thumbs/owner-plate-sunset.png`, ChatGPT) as the reference look: golden light, vivid colour, sharp everywhere.
+- **This episode's text: one red word, huge, at the top** (DEADLY / UNSURVIVABLE), no kicker. Instance decision for Krakatau, not a rewrite of the mini-storms ≤4-word + BREAKING kicker rule; propose generalising only if the owner repeats it.
+- **ChatGPT renders thumbnail text in-image, and better than Pillow.** Owner: "it does most of my thumbnails itself." On the same plate the model's DEADLY beat the Impact composite. Prompt recipe (word in caps, position and width in percent, font by reference + hex, outline + shadow, "keep the photograph exactly as it is", negatives) lives in the `yt-packaging` skill, `references/thumbnail-production.md`. Driver: `~/Automation Projects/webgen/genimg.mjs edit|gen chatgpt-simplotel`.
+- The `yt-packaging` skill (installed 2026-09-10 in `~/.claude/skills/`) now runs before any title/thumbnail work on this channel; its cover-one and redundancy tests are what caught the IT'S BACK / "Just Erupted" triple restatement.
+
 ## 2026-09-08 — breaking lane v1 (br-elnino-california, /mini-storms first run)
 
 - **Structure vocabulary (owner correction):** HOOK is 3–10 s, one sentence paying off the title.
