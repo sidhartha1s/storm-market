@@ -50,7 +50,7 @@ Visual: Sep 2026 plume (PVMBG/BNPB still, push in); popfig "36,000 DEAD" then "6
 
 ## INTRO (0:08–1:05)
 
-> TTS note: the owner's phrase is "Comment down where you are watching this from. I read all the comments." — spelled "reed" in the narration line only.
+TTS note (not narration): the owner's phrase is "Comment down where you are watching this from. I read all the comments." — spelled "reed" in the narration line only.
 
 ### I1-S1 — narration
 > Krakatoa. In August eighteen eighty three, this mountain blew twenty cubic kilometres of rock into the sky. The sound was heard three thousand miles away. The pressure wave went around the planet seven times. And the sea it threw at the coast of Java and Sumatra killed more than thirty six thousand people before breakfast.
