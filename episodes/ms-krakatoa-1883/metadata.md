@@ -1,6 +1,6 @@
 # metadata.md — ms-krakatoa-1883 (The Warning Hour · mini-storms #3)
 
-Upload file: `renders/ms-krakatoa-1883-final-master.mp4` (1080p30 H.264, −14 LUFS, 9:10). Subtitles: `renders/ms-krakatoa-1883-final.srt`.
+Upload file: `renders/ms-krakatoa-1883-final-master.mp4` (1080p30 H.264, −14 LUFS, 9:06). Subtitles: `renders/ms-krakatoa-1883-final.srt`.
 Category **Education** · Learning type **Overview** · Language English (US) · Not made for kids · Location tag: Sunda Strait, Indonesia.
 Recording date: September 2026. Paid promotion: none. Altered content: no (real footage, PD data, no synthetic people).
 
@@ -35,21 +35,21 @@ Texas: https://www.youtube.com/watch?v=sJRBlIlU90A
 
 Chapters
 00:00 Six eruptions in a week
-00:10 1883 in three numbers
+00:09 1883 in three numbers
 01:08 This week, on the record
 02:00 Why flights stop
-02:48 August 27, 1883
-03:38 The child
-04:18 The Storm-Ready Home (Paul)
-04:35 December 22, 2018
-05:37 What they watch now
-06:30 Who is at risk
-07:20 What is not happening
-08:05 Three things to do
-08:36 Close
+02:47 August 27, 1883
+03:37 The child
+04:17 The Storm-Ready Home (Paul)
+04:33 December 22, 2018
+05:35 What they watch now
+06:28 Who is at risk
+07:19 What is not happening
+08:04 Three things to do
+08:55 Close
 
 Questions this video answers
-Is Krakatoa erupting right now? (01:08) · What alert level is Anak Krakatau on? (01:08) · Why does volcanic ash ground flights? (02:00) · How many people died in the 1883 Krakatoa eruption? (02:48) · How loud was Krakatoa in 1883? (02:48) · When did Anak Krakatau form? (03:38) · What caused the 2018 Sunda Strait tsunami? (04:35) · Why was there no tsunami warning in 2018? (04:35) · What do volcanologists monitor at Anak Krakatau? (05:37) · Is Jakarta or Bali in danger from Krakatoa? (06:30) · Could Krakatoa cause a year without a summer? (07:20)
+Is Krakatoa erupting right now? (01:08) · What alert level is Anak Krakatau on? (01:08) · Why does volcanic ash ground flights? (02:00) · How many people died in the 1883 Krakatoa eruption? (02:47) · How loud was Krakatoa in 1883? (02:47) · When did Anak Krakatau form? (03:37) · What caused the 2018 Sunda Strait tsunami? (04:33) · Why was there no tsunami warning in 2018? (04:33) · What do volcanologists monitor at Anak Krakatau? (05:35) · Is Jakarta or Bali in danger from Krakatoa? (06:28) · Could Krakatoa cause a year without a summer? (07:19)
 
 Key facts and where they come from
 • Continuous eruption from 23:07 WIB on September 4 to 00:04 WIB on September 6, 2026 (25 hours); Level III (Siaga) since July 2, 2026; 3 km exclusion radius; PVMBG head Siti Sumilah Rita Susilawati: "volcanic activity remains high, and the possibility of another eruption in the near future remains." Source: PVMBG via Antara News.
@@ -71,15 +71,15 @@ krakatoa eruption, anak krakatau, krakatoa 2026, anak krakatau eruption, krakato
 
 ## Pinned comment (post at upload)
 Comment down where you are watching this from. I read all the comments.
-Short version: six eruptions in a week, Level III, 3 km exclusion zone, eight airports hit. The thing to watch is not the plume, it is the tilt on the flank, because the 2018 tsunami came from a collapse with no eruption warning and no siren. The three things to do start at 08:05.
+Short version: six eruptions in a week, Level III, 3 km exclusion zone, eight airports hit. The thing to watch is not the plume, it is the tilt on the flank, because the 2018 tsunami came from a collapse with no eruption warning and no siren. The three things to do start at 08:04.
 
 ## Community post (day of upload)
 The child of Krakatoa has erupted six times this week. Everyone is filming the plume. The danger is the one nobody filmed, on a December night in 2018. New video, 9 minutes: what the mountain is doing right now, what 2018 proved, and what to watch for. Where are you watching from?
 
 ## End screen / cards
-- End screen (08:36–09:10): subscribe + the El Niño series + the ebook link card.
-- Card at 04:18: "The Storm-Ready Home" → https://paulraymond.online (Paul's CTA window).
-- Card at 04:35: El Niño Part 1, California → https://www.youtube.com/watch?v=9tm8j0IJDCI
+- End screen (08:55–09:06): subscribe + the El Niño series + the ebook link card.
+- Card at 04:17: "The Storm-Ready Home" → https://paulraymond.online (Paul's CTA window).
+- Card at 04:33: El Niño Part 1, California → https://www.youtube.com/watch?v=9tm8j0IJDCI
 
 ## AEO / GEO block (answer-engine copy; description tail or second pinned reply)
 **Q: Is Krakatoa erupting in September 2026?** A: Yes. Anak Krakatau, the cone that grew inside the 1883 caldera, began a 25-hour continuous eruption at 23:07 local time on September 4, 2026 and has erupted repeatedly since, with a sixth event on September 9. PVMBG holds it at Level III (Siaga) with a 3 km exclusion zone.
