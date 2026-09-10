@@ -9,20 +9,22 @@ Recording date: September 2026. Paid promotion: none. Altered content: no (real 
 - Add the Krakatau video URL to the Texas and California descriptions (series cross-link) once it is live.
 - Pick the title (option 1 recommended) and paste the pinned comment within the first minutes; the community post the same day.
 - End screen at 08:55–09:06: subscribe + El Niño playlist + ebook card. Cards at 04:17 (ebook) and 04:33 (California).
-- Thumbnail: `thumbs/thumb-A-not-the-danger.jpg` (recommended) or `thumbs/thumb-B-nobody-filmed.jpg`, both 1920x1080 on the generated night wave + eruption plate `thumbs/gen-notdanger-a.png` (ChatGPT image gen, 2026-09-10). The five `frame-cand-*.png` render frames stay as fallbacks.
+- Thumbnail: pick A/B/C from the Thumbnail section below (`thumbs/gpt-*.png`); the `frame-cand-*.png` render frames stay as last-resort fallbacks.
 - After upload: delete `renders/ms-krakatoa-1883-final.mp4` (raw) and `renders/ms-krakatoa-1883-draft.mp4`; keep the master and SRT.
 
-## Title (pick one at upload)
-1. **Krakatoa Is Erupting Again. In 1883 It Killed 36,000 People, and Not the Way You Think.** (recommended, 87 chars; pairs with thumbnail A: the title carries the death toll and the open question, the thumbnail carries the wave, the hook line confirms both with the six eruptions and eight airports)
-2. Krakatoa Is Erupting Again, and the Danger Is Not the One Everyone Is Filming. (78 chars; pairs with thumbnail B)
-3. Krakatoa Just Erupted. In 1883 It Killed 36,000 People. Here Is What Is Different Now. (86 chars; the pre-packaging-pass pick, restates the hook's first line)
+## Title (pick one at upload; owner target: under ~60 chars)
+1. **It Killed 36,000 First. Now It's Happening Again.** (49 chars, owner's line; pairs with any DEADLY / UNSURVIVABLE thumbnail below)
+2. Krakatoa Killed 36,000 First. Now It's Happening Again. (55 chars, same line with the search keyword)
+3. The Volcano That Killed 36,000 Is Erupting Again. (49 chars)
+Retired 2026-09-10: "Krakatoa Is Erupting Again. In 1883 It Killed 36,000 People, and Not the Way You Think." (87, too long) and "Krakatoa Just Erupted. In 1883 It Killed 36,000 People. Here Is What Is Different Now." (86).
 
-## Thumbnail
-Plate: generated night scene, Anak Krakatau erupting on the right, a dark tsunami wave rising over a lit fishing village on the left (`thumbs/gen-notdanger-a.png`, no real people, no real footage). Red kicker **BREAKING** top-left, phrase in Abril Fatface in the top quarter.
-- **A (recommended):** phrase **NOT THE DANGER**, red arrow onto the plume. Said aloud at 0:43 ("the eruption everyone is filming is not the danger"). Paid off at 04:33 (December 22, 2018 chapter, about half the runtime).
-- **B:** phrase **THE ONE NOBODY FILMED**, no arrow. Said aloud at 0:46. Same payoff.
-- Why not IT'S BACK: every competing Krakatau upload this week is a plume plus "erupting again"; the title already says it is erupting, so the thumbnail text would repeat the title. The wave is the anomaly nobody else shows.
-Files: `thumbs/thumb-A-not-the-danger.jpg`, `thumbs/thumb-B-nobody-filmed.jpg` (1920x1080).
+## Thumbnail (pick one at upload)
+Plate: the owner's bright sunset eruption (`thumbs/owner-plate-sunset.png`, ChatGPT 2026-09-10; no real people or footage). One red word, top of frame, heavy condensed sans, white outline, black shadow. Text rendered in-image by ChatGPT (`genimg.mjs edit`), Pillow versions kept as fallbacks.
+- **A (recommended):** `thumbs/gpt-deadly-1.png`, word DEADLY on the sunset plate.
+- **B:** `thumbs/gpt-unsurvivable-2.png`, word UNSURVIVABLE on the sunset plate.
+- **C:** `thumbs/gpt-deadly-wave-3.png`, new bright dawn plate, eruption right + tsunami wave over a village left, word DEADLY. The wave is the 2018 danger nobody filmed (payoff at 04:33).
+- Fallbacks: `thumbs/pil-deadly.jpg`, `thumbs/pil-unsurvivable.jpg` (Impact composite); previous round `thumbs/thumb-A-not-the-danger.jpg`, `thumbs/thumb-B-nobody-filmed.jpg` (night plate, rejected as too dark).
+Side-by-side at thumb size: `thumbs/_preview-round2.jpg`.
 
 ## Description (paste as is; first URL must stay first)
 
