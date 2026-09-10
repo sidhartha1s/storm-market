@@ -4,6 +4,14 @@ Upload file: `renders/ms-krakatoa-1883-final-master.mp4` (1080p30 H.264, −14 L
 Category **Education** · Learning type **Overview** · Language English (US) · Not made for kids · Location tag: Sunda Strait, Indonesia.
 Recording date: September 2026. Paid promotion: none. Altered content: no (real footage, PD data, no synthetic people).
 
+## Owner note: pending after upload (2026-09-10)
+- Create two playlists on the channel (https://www.youtube.com/channel/UC1MKCIvtxImjo_-RFV10PBQ/): "El Niño 2026" (California https://www.youtube.com/watch?v=9tm8j0IJDCI, Texas https://www.youtube.com/watch?v=sJRBlIlU90A) and "Krakatau". Then replace the two El Niño links in the description above with the playlist URL, and add this video to the Krakatau playlist.
+- Add the Krakatau video URL to the Texas and California descriptions (series cross-link) once it is live.
+- Pick the title (option 1 recommended) and paste the pinned comment within the first minutes; the community post the same day.
+- End screen at 08:55–09:06: subscribe + El Niño playlist + ebook card. Cards at 04:17 (ebook) and 04:33 (California).
+- Thumbnail: `thumbs/` has five frame candidates; the NASA plume (frame-cand-plume-70s.png) or the lava fountain (frame-cand-lava-78s.png) carry IT'S BACK / BREAKING best.
+- After upload: delete `renders/ms-krakatoa-1883-final.mp4` (raw) and `renders/ms-krakatoa-1883-draft.mp4`; keep the master and SRT.
+
 ## Title (pick one at upload)
 1. **Krakatoa Just Erupted. In 1883 It Killed 36,000 People. Here Is What Is Different Now.** (recommended, 84 chars, trims to the first clause on mobile which still works)
 2. The Volcano That Killed 36,000 Is Erupting Again. Here Is Why 2018 Scares Scientists More.
