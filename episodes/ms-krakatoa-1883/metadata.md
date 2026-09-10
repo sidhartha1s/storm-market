@@ -13,11 +13,9 @@ Recording date: September 2026. Paid promotion: none. Altered content: no (real 
 - After upload: delete `renders/ms-krakatoa-1883-final.mp4` (raw) and `renders/ms-krakatoa-1883-draft.mp4`; keep the master and SRT.
 
 ## Title (pick one at upload; owner target: under ~60 chars)
-1. **Krakatoa 2026: Why the Sirens Will Not Save Anyone** (51 chars, owner pick 2026-09-10 23:30, newest decision; the promise pays at 04:33 and 08:04). Long form if CTR needs the "what is happening" hook after 48 h: Krakatoa 2026: What Is Happening and Why the Sirens Will Not Save Anyone.
-2. It Killed 36,000 First. Now It's Happening Again. (49 chars, owner's earlier line; pairs with any DEADLY / UNSURVIVABLE thumbnail below)
-3. Krakatoa Killed 36,000 First. Now It's Happening Again. (55 chars, same line with the search keyword)
-4. The Volcano That Killed 36,000 Is Erupting Again. (49 chars)
-Pairing note for #1: the title carries the siren question, so the thumbnail word should carry the eruption (DEADLY / IT'S BACK), never SIREN, or the two halves repeat each other.
+1. **It Killed 36,000 First. Now It's Happening Again.** (49 chars, owner's line; pairs with any DEADLY / UNSURVIVABLE thumbnail below)
+2. Krakatoa Killed 36,000 First. Now It's Happening Again. (55 chars, same line with the search keyword)
+3. The Volcano That Killed 36,000 Is Erupting Again. (49 chars)
 Retired 2026-09-10: "Krakatoa Is Erupting Again. In 1883 It Killed 36,000 People, and Not the Way You Think." (87, too long) and "Krakatoa Just Erupted. In 1883 It Killed 36,000 People. Here Is What Is Different Now." (86).
 
 ## Thumbnail (pick one at upload)
