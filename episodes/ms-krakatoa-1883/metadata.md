@@ -9,16 +9,20 @@ Recording date: September 2026. Paid promotion: none. Altered content: no (real 
 - Add the Krakatau video URL to the Texas and California descriptions (series cross-link) once it is live.
 - Pick the title (option 1 recommended) and paste the pinned comment within the first minutes; the community post the same day.
 - End screen at 08:55–09:06: subscribe + El Niño playlist + ebook card. Cards at 04:17 (ebook) and 04:33 (California).
-- Thumbnail: `thumbs/` has five frame candidates; the NASA plume (frame-cand-plume-70s.png) or the lava fountain (frame-cand-lava-78s.png) carry IT'S BACK / BREAKING best.
+- Thumbnail: `thumbs/thumb-A-not-the-danger.jpg` (recommended) or `thumbs/thumb-B-nobody-filmed.jpg`, both 1920x1080 on the generated night wave + eruption plate `thumbs/gen-notdanger-a.png` (ChatGPT image gen, 2026-09-10). The five `frame-cand-*.png` render frames stay as fallbacks.
 - After upload: delete `renders/ms-krakatoa-1883-final.mp4` (raw) and `renders/ms-krakatoa-1883-draft.mp4`; keep the master and SRT.
 
 ## Title (pick one at upload)
-1. **Krakatoa Just Erupted. In 1883 It Killed 36,000 People. Here Is What Is Different Now.** (recommended, 84 chars, trims to the first clause on mobile which still works)
-2. The Volcano That Killed 36,000 Is Erupting Again. Here Is Why 2018 Scares Scientists More.
-3. Krakatoa Is Erupting Again, and the Danger Is Not the One Everyone Is Filming.
+1. **Krakatoa Is Erupting Again. In 1883 It Killed 36,000 People, and Not the Way You Think.** (recommended, 87 chars; pairs with thumbnail A: the title carries the death toll and the open question, the thumbnail carries the wave, the hook line confirms both with the six eruptions and eight airports)
+2. Krakatoa Is Erupting Again, and the Danger Is Not the One Everyone Is Filming. (78 chars; pairs with thumbnail B)
+3. Krakatoa Just Erupted. In 1883 It Killed 36,000 People. Here Is What Is Different Now. (86 chars; the pre-packaging-pass pick, restates the hook's first line)
 
-## Thumbnail (owner authors)
-Top phrase **IT'S BACK**, red kicker **BREAKING**. Image: the NASA Landsat plume of September 5 or the 1888 Parker & Coward lithograph. Candidates in `thumbs/`.
+## Thumbnail
+Plate: generated night scene, Anak Krakatau erupting on the right, a dark tsunami wave rising over a lit fishing village on the left (`thumbs/gen-notdanger-a.png`, no real people, no real footage). Red kicker **BREAKING** top-left, phrase in Abril Fatface in the top quarter.
+- **A (recommended):** phrase **NOT THE DANGER**, red arrow onto the plume. Said aloud at 0:43 ("the eruption everyone is filming is not the danger"). Paid off at 04:33 (December 22, 2018 chapter, about half the runtime).
+- **B:** phrase **THE ONE NOBODY FILMED**, no arrow. Said aloud at 0:46. Same payoff.
+- Why not IT'S BACK: every competing Krakatau upload this week is a plume plus "erupting again"; the title already says it is erupting, so the thumbnail text would repeat the title. The wave is the anomaly nobody else shows.
+Files: `thumbs/thumb-A-not-the-danger.jpg`, `thumbs/thumb-B-nobody-filmed.jpg` (1920x1080).
 
 ## Description (paste as is; first URL must stay first)
 
