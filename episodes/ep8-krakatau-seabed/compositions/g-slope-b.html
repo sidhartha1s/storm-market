@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-slope (PATH B, pass 1 = SCAFFOLD: boxes + real text + real cue times; no styling, no motion polish yet)
+     Cues (A3-S1, ~30 s): "gentler" @0.4 · "twenty seven" @4.2 · "sixteen" @6.4 · "lower, wider ramp" @9.8 · "different ground" @15.5 · exit @29.4 -->
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family: Arial, sans-serif; color:#f2f5f8; overflow:hidden; }
+  .box { position:absolute; border:2px dashed #93a3b2; color:#93a3b2; font-size:22px; padding:6px; box-sizing:border-box; }
+  .txt { position:absolute; font-size:26px; }
+  .big { font-size:52px; font-family:'Arial Black', Arial, sans-serif; }
+  .huge { font-size:84px; font-family:'Arial Black', Arial, sans-serif; }
+  .small { font-size:22px; letter-spacing:4px; color:#93a3b2; }
+</style>
+<div id="root" data-composition-id="g-slope-b" data-width="1920" data-height="1080">
+  <!-- LEFT: diagram zone -->
+  <div class="box" style="left:0; top:0; width:1180px; height:1080px;">DIAGRAM 1180×1080</div>
+  <div class="box" style="left:0; top:420px; width:1180px; height:560px; border-color:#5a768f;">SEA (below y=420)</div>
+  <div class="txt small" style="left:40px; top:380px;">SEA LEVEL</div>
+  <div class="txt small" style="left:40px; top:990px;">CALDERA FLOOR</div>
+  <div class="box" id="slb-before" style="left:600px; top:260px; width:580px; height:720px; border-color:#7fb2e5; color:#7fb2e5;">BEFORE cone 338 m · steep 27° flank (600,980)→(700,560)</div>
+  <div class="box" id="slb-block" style="left:700px; top:260px; width:180px; height:380px; border-color:#e74c3c; color:#e74c3c; opacity:0;">BLOCK slides ↙ to floor</div>
+  <div class="box" id="slb-after" style="left:380px; top:340px; width:800px; height:640px; border-color:#e74c3c; color:#e74c3c; opacity:0;">AFTER cone 110 m · gentle 16° ramp (380,980)→(820,400)</div>
+  <div class="txt" id="slb-lab27" style="left:560px; top:760px; color:#7fb2e5; opacity:0;">27°</div>
+  <div class="txt" id="slb-lab16" style="left:520px; top:640px; color:#e74c3c; opacity:0;">16°</div>
+  <div class="txt small" id="slb-lab338" style="left:1030px; top:300px; color:#d8a13a; opacity:0;">338 M</div>
+  <div class="txt small" id="slb-lab110" style="left:1030px; top:350px; color:#d8a13a; opacity:0;">110 M</div>
+  <!-- RIGHT: panel zone -->
+  <div class="box" id="slb-panel" style="left:1180px; top:0; width:740px; height:1080px;">PANEL 740</div>
+  <div class="txt small" style="left:1300px; top:96px;">THE SLOPE IT FELL FROM</div>
+  <div class="txt big" id="slb-head" style="left:1300px; top:136px;">It was gentler.</div>
+  <div class="txt" style="left:1300px; top:210px; color:#d8a13a; font-style:italic; font-family:Georgia,serif;">the fall took the steep face and left a ramp</div>
+  <div class="txt huge" id="slb-r1" style="left:1300px; top:280px; color:#7fb2e5; opacity:0;">27° <span class="small">BEFORE · steep, overloaded</span></div>
+  <div class="txt huge" id="slb-r2" style="left:1300px; top:400px; color:#e74c3c; opacity:0;">16° <span class="small">AFTER · lower, wider ramp</span></div>
+  <div class="txt" id="slb-note" style="left:1300px; top:540px; width:540px; opacity:0;">The island growing back today is growing on different ground than the one that fell.</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#slb-";
+  tl.to(P+"lab338", { opacity: 1, duration: 0.2 }, 2.0);
+  tl.to([P+"lab27", P+"r1"], { opacity: 1, duration: 0.2 }, 4.2);                  /* "twenty seven" */
+  tl.to(P+"block", { opacity: 1, duration: 0.2 }, 5.2);
+  tl.to(P+"block", { x: -420, y: 400, duration: 1.2 }, 5.6);                        /* slide to the floor */
+  tl.to(P+"before", { opacity: 0, duration: 0.3 }, 6.2);
+  tl.to(P+"after", { opacity: 1, duration: 0.3 }, 6.2);
+  tl.to([P+"lab16", P+"r2", P+"lab110"], { opacity: 1, duration: 0.2 }, 6.4);       /* "sixteen" */
+  tl.to(P+"note", { opacity: 1, duration: 0.2 }, 15.5);                              /* "different ground" */
+  tl.to([P+"panel"], { x: 980, opacity: 0, duration: 0.6 }, 29.4);                   /* exit */
+  window.__timelines["g-slope-b"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
