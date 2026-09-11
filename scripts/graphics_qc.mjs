@@ -131,8 +131,10 @@ const MEASURE = `((t) => {
     if (!vis(el) || el.tagName === 'SCRIPT' || el.tagName === 'STYLE') continue;
     const r4 = el.getBoundingClientRect();
     if (r4.width >= 2 && r4.height >= 2) painted++;
-    const bi = getComputedStyle(el).backgroundImage;
-    if (/gradient/.test(bi)) grad = true;
+    const cs = getComputedStyle(el);
+    // a gradient OR a frosted-glass panel (backdrop-filter blur over footage) is a designed background —
+    // the glass cards were flagged 'undesigned' for two episodes on this line alone (2026-09-11)
+    if (/gradient/.test(cs.backgroundImage) || /blur/.test(cs.backdropFilter || cs.webkitBackdropFilter || '')) grad = true;
   }
   out.elements = painted; out.gradient = grad;
   out.textNodes = out.fonts.length;
