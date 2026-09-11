@@ -1,4 +1,4 @@
-"""Refuse to start heavy work while a hyperframes render is alive.
+"""Refuse to start heavy work while a hyperframes render is alive, or while RAM headroom is thin.
 
 Why: 2026-09-11 the Krakatau #4 draft (2 capture workers) ran while the static gate suite
 (two headless Chromiums + an ffmpeg batch) was launched on top of it and the owner's
@@ -6,19 +6,31 @@ browser — the box went to OOM. render_preflight.py guards the render's own sta
 guards everything that starts DURING a render: blank_scan / graphics_qc (via
 playwright_env.mjs), optimize_clips.py, and the slice/draft launchers.
 
-Exit 0 = clear. Exit 3 = a render is running (the command lines are printed).
+Owner rule (2026-09-11): keep ≥1 GB free for the whole render, no compromise. Two capture
+workers take ~3 GB, so a launch needs ≥4 GB free (RENDER_MIN_FREE_GB overrides).
+
+Exit 0 = clear. Exit 3 = a render is running or RAM is short (details printed).
 RENDER_BUSY_OK=1 overrides, for the case where the render itself is the thing being tested.
 """
 import os
 import subprocess
 import sys
 
+MIN_FREE_GB = float(os.environ.get("RENDER_MIN_FREE_GB", "4"))
+
+
+def ps(cmd):
+    return subprocess.run(["powershell", "-NoProfile", "-Command", cmd], capture_output=True, text=True).stdout.strip()
+
 
 def live_renders():
-    ps = ("Get-CimInstance Win32_Process | Where-Object { $_.Name -eq 'node.exe' -and "
-          "$_.CommandLine -like '*hyperframes*render*' } | ForEach-Object { $_.ProcessId.ToString() + ' ' + $_.CommandLine }")
-    out = subprocess.run(["powershell", "-NoProfile", "-Command", ps], capture_output=True, text=True).stdout
+    out = ps("Get-CimInstance Win32_Process | Where-Object { $_.Name -eq 'node.exe' -and "
+             "$_.CommandLine -like '*hyperframes*render*' } | ForEach-Object { $_.ProcessId.ToString() + ' ' + $_.CommandLine }")
     return [l.strip() for l in out.splitlines() if l.strip()]
+
+
+def free_gb():
+    return float(ps("(Get-CimInstance Win32_OperatingSystem).FreePhysicalMemory") or 0) / 1048576
 
 
 if __name__ == "__main__":
@@ -30,3 +42,8 @@ if __name__ == "__main__":
         for l in live:
             print("   ", l[:160])
         sys.exit(3)
+    free = free_gb()
+    if free < MIN_FREE_GB:
+        print(f"[render_busy] REFUSING — {free:.1f} GB free, need {MIN_FREE_GB:g} GB so the render keeps ≥1 GB headroom (owner 2026-09-11). Close a browser or wait.")
+        sys.exit(3)
+    print(f"[render_busy] OK — no render alive, {free:.1f} GB free")
