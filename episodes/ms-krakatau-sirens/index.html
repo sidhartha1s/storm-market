@@ -41,6 +41,14 @@
       border: 1px solid rgba(255,255,255,0.14); border-radius: 28px; padding: 44px 60px; box-sizing: border-box; }
     .quotecard .q { font-family: Georgia, serif; font-style: italic; font-size: 50px; color: #f2f5f8; line-height: 1.3; }
     .quotecard .attr { margin-top: 18px; font-family: Arial, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 4px; color: #d8a13a; }
+    /* right-half variants for overlays that co-occur with a card (card left, number/quote right) */
+    .popfig.rhs { left: 960px; right: 40px; }
+    .popfig.rhs::before { left: 4%; right: 4%; }
+    .popfig.rhs .pf-big { font-size: 120px; }
+    .popfig.rhs .pf-sub { font-size: 30px; }
+    .quotecard.rhs { left: 1010px; right: 50px; top: 240px; padding: 32px 40px; }
+    .quotecard.rhs .q { font-size: 36px; }
+    .quotecard.rhs .attr { font-size: 20px; letter-spacing: 3px; }
     /* ---- lower-third news bug (inline; real channel name only) ---- */
     .bugstrip { position: absolute; left: 0; right: 0; bottom: 0; height: 92px; display: flex; align-items: stretch; z-index: 5;
       background: linear-gradient(90deg, rgba(4,7,12,0.94) 0%, rgba(4,7,12,0.82) 70%, rgba(4,7,12,0.6) 100%); border-top: 2px solid #d0121f; }
@@ -233,9 +241,9 @@
   <video id="vx-c10s1-7-cnac002" class="bc" src="media/bc/cna-concert_20181223-002.mp4" data-start="653.407" data-duration="4.35" data-track-index="1" data-callback="second use, different chapter" muted></video>
   <video id="vx-c10s1-8-ajc006" class="bc" src="media/bc/aljazeera-concert_20181223-006.mp4" data-start="657.757" data-duration="3.4" data-track-index="1" data-callback="second use, different chapter" muted></video>
   <section class="clip still-wrap" id="c-c10s1-9-aft2" data-start="661.157" data-duration="3.276" data-track-index="1" data-callback="second use, different chapter"><img id="kb-c10s1-9-aft2" src="media/stills/aftermath-sunda-strait-2.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-z1s1-0-lituya2" data-start="664.433" data-duration="6.0" data-track-index="1" data-callback="second use, different chapter"><img id="kb-z1s1-0-lituya2" src="media/stills/lituya-bay-overview-post1958.jpg" alt=""></section>
-  <video id="vx-z1s1-1-ajc008" class="bc" src="media/bc/aljazeera-concert_20181223-008.mp4" data-start="670.433" data-duration="5.2" data-track-index="1" data-callback="second use, different chapter" muted></video>
-  <section class="clip still-wrap contain-wrap" id="c-z1s1-2-locprint" data-start="675.633" data-duration="5.0" data-track-index="1"><img class="blurfill" src="media/stills/loc-krakatoa-submerged-print.jpg" alt=""><img id="kb-z1s1-2-locprint" src="media/stills/loc-krakatoa-submerged-print.jpg" alt=""></section>
+  <video id="vx-z1s1-0-ajc008" class="bc" src="media/bc/aljazeera-concert_20181223-008.mp4" data-start="664.433" data-duration="5.2" data-track-index="1" data-callback="second use, different chapter" muted></video>
+  <section class="clip still-wrap contain-wrap" id="c-z1s1-1-locprint" data-start="669.633" data-duration="5.0" data-track-index="1"><img class="blurfill" src="media/stills/loc-krakatoa-submerged-print.jpg" alt=""><img id="kb-z1s1-1-locprint" src="media/stills/loc-krakatoa-submerged-print.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-z1s1-2-lituya2" data-start="674.633" data-duration="6.0" data-track-index="1" data-callback="second use, different chapter"><img id="kb-z1s1-2-lituya2" src="media/stills/lituya-bay-overview-post1958.jpg" alt=""></section>
   <video id="vx-z1s1-3-bbc012" class="bc" src="media/bc/bbc_20181227-012.mp4" data-start="680.633" data-duration="4.48" data-track-index="1" data-callback="second use, different chapter" muted></video>
   <video id="vx-z1s1-4-ajc013" class="bc" src="media/bc/aljazeera-concert_20181223-013.mp4" data-start="685.113" data-duration="3.9" data-track-index="1" data-callback="second use, different chapter" muted></video>
   <section class="clip still-wrap" id="c-z1s1-5-aft1" data-start="689.013" data-duration="5.0" data-track-index="1" data-callback="second use, different chapter"><img id="kb-z1s1-5-aft1" src="media/stills/aftermath-sunda-strait-1.jpg" alt=""></section>
@@ -257,8 +265,8 @@
   <section class="clip" id="p-pf-22" data-start="121.347" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-22"><span class="pf-big">22 BUOYS</span><span class="pf-sub">ALL DEAD SINCE 2012</span></div></section>
   <section class="clip" id="p-chip-stolen" data-start="126.767" data-duration="5.0" data-track-index="5"><div class="chip" id="chip-stolen">VANDALISED · MOORED TO · STOLEN</div></section>
   <section class="clip" id="p-pf-trigger" data-start="134.407" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-trigger"><span class="pf-big">NO TRIGGER</span><span class="pf-sub">A FAST SIREN, NOTHING TO PULL IT</span></div></section>
-  <section class="clip" id="p-pf-02" data-start="147.947" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-02"><span class="pf-big">0.2 KM³</span><span class="pf-sub">OF ROCK, NO EARTHQUAKE</span></div></section>
-  <section class="clip" id="p-pf-3min" data-start="177.187" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-3min"><span class="pf-big">3 MINUTES</span><span class="pf-sub">FIRST INSTRUMENT TO FIRST BEACH</span></div></section>
+  <section class="clip" id="p-pf-02" data-start="147.947" data-duration="3.0" data-track-index="5"><div class="popfig rhs" id="pf-02"><span class="pf-big">0.2 KM³</span><span class="pf-sub">OF ROCK, NO EARTHQUAKE</span></div></section>
+  <section class="clip" id="p-pf-3min" data-start="177.187" data-duration="3.4" data-track-index="5"><div class="popfig rhs" id="pf-3min"><span class="pf-big">3 MINUTES</span><span class="pf-sub">INSTRUMENT TO BEACH</span></div></section>
   <section class="clip" id="p-pf-43" data-start="183.947" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-43"><span class="pf-big">43 OF 199</span><span class="pf-sub">DID NOT GO HOME</span></div></section>
   <section class="clip" id="p-pf-13m" data-start="188.887" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-13m"><span class="pf-big">13 M</span><span class="pf-sub">THE TALLEST RUN-UP</span></div></section>
   <section class="clip" id="p-pf-110" data-start="192.067" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-110"><span class="pf-big">338 → 110 M</span><span class="pf-sub">TWO THIRDS OF THE MOUNTAIN</span></div></section>
@@ -286,11 +294,11 @@
   <section class="clip" id="p-pf-2ft" data-start="400.227" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-2ft"><span class="pf-big">2 FT AT WHITTIER</span><span class="pf-sub">200 M IN THE FJORD</span></div></section>
   <section class="clip" id="p-pf-sep4" data-start="420.667" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-sep4"><span class="pf-big">SEPT 4, 2026</span><span class="pf-sub">NO LARGE-SCALE MOVEMENT</span></div></section>
   <section class="clip" id="p-chip-tiltright" data-start="442.307" data-duration="2.51" data-track-index="5"><div class="chip" id="chip-tiltright">WRONG NUMBER: THE PLUME. RIGHT NUMBER: THE TILT</div></section>
-  <section class="clip" id="p-pf-533" data-start="452.253" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-533"><span class="pf-big">533 SEISMOGRAPHS</span><span class="pf-sub">BY 2024</span></div></section>
-  <section class="clip" id="p-q-bmkg" data-start="476.193" data-duration="6.0" data-track-index="5"><div class="quotecard" id="q-bmkg"><div class="q">“Without sensors under the sea, the calculation can be slow and missed.”</div><div class="attr">BMKG · INDONESIA'S WEATHER AGENCY</div></div></section>
+  <section class="clip" id="p-pf-533" data-start="452.253" data-duration="3.0" data-track-index="5"><div class="popfig rhs" id="pf-533"><span class="pf-big">533</span><span class="pf-sub">SEISMOGRAPHS BY 2024</span></div></section>
+  <section class="clip" id="p-q-bmkg" data-start="476.193" data-duration="6.0" data-track-index="5"><div class="quotecard rhs" id="q-bmkg"><div class="q">“Without sensors under the sea, the calculation can be slow and missed.”</div><div class="attr">BMKG · INDONESIA'S WEATHER AGENCY</div></div></section>
   <section class="clip" id="p-pf-nobuoys" data-start="482.413" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-nobuoys"><span class="pf-big">STILL NO BUOYS</span><span class="pf-sub">THE TRIGGER IS STILL THE PROBLEM</span></div></section>
   <section class="clip" id="p-chip-person" data-start="538.413" data-duration="2.23" data-track-index="5"><div class="chip" id="chip-person">THE ONLY THING FASTER: A PERSON LOOKING AT THE SEA</div></section>
-  <section class="clip" id="p-pf-110b" data-start="553.307" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-110b"><span class="pf-big">110 M</span><span class="pf-sub">AND CLIMBING · THE CONE HAS REGROWN</span></div></section>
+  <section class="clip" id="p-pf-110b" data-start="553.307" data-duration="3.2" data-track-index="5"><div class="popfig rhs" id="pf-110b"><span class="pf-big">110 M</span><span class="pf-sub">THE CONE HAS REGROWN</span></div></section>
   <section class="clip" id="p-pf-not1883" data-start="572.667" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-not1883"><span class="pf-big">NOT 1883</span><span class="pf-sub">A FRACTION OF THE MAGMA</span></div></section>
   <section class="clip" id="p-pf-tambora" data-start="580.187" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-tambora"><span class="pf-big">TAMBORA</span><span class="pf-sub">THE YEAR WITHOUT A SUMMER WAS 1815, NOT KRAKATOA</span></div></section>
   <section class="clip" id="p-pf-banton" data-start="597.527" data-duration="3.2" data-track-index="5"><div class="popfig" id="pf-banton"><span class="pf-big">BANTEN</span><span class="pf-sub">ANYER · CARITA · TANJUNG LESUNG</span></div></section>
@@ -416,8 +424,8 @@ window.__timelines = window.__timelines || {};
   kb("#kb-c10s1-4-siren_phuket", 640.167, 5.0, 1.0, 1.08, 0, -14, 0, -8);
   kb("#kb-c10s1-6-rescue", 648.407, 5.0, 1.08, 1.0, 12, 0, 6, 0);
   kb("#kb-c10s1-9-aft2", 661.157, 3.276, 1.0, 1.07, 0, 12, 0, -6);
-  kb("#kb-z1s1-0-lituya2", 664.433, 6.0, 1.06, 1.0, -10, 0, 6, 0);
-  kb("#kb-z1s1-2-locprint", 675.633, 5.0, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-z1s1-1-locprint", 669.633, 5.0, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-z1s1-2-lituya2", 674.633, 6.0, 1.0, 1.08, 0, -14, 0, -8);
   kb("#kb-z1s1-5-aft1", 689.013, 5.0, 1.08, 1.0, 12, 0, 6, 0);
   /* ---- overlays ---- */
   lab("#p-src-usgs .srclab", 338.08, 5.5);

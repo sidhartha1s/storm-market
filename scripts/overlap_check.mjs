@@ -22,6 +22,7 @@ const indexPath = path.join(epDir, 'index.html');
 const html = fs.readFileSync(indexPath, 'utf8');
 
 const els = [];
+const findings = new Set();
 const re = /<(section|div)\b[^>]*\bid="([^"]+)"[^>]*>/g;
 let m;
 while ((m = re.exec(html))) {
@@ -34,6 +35,7 @@ while ((m = re.exec(html))) {
 }
 const cards = els.filter(e => e.track === '3');
 const hosts = els.filter(e => e.compSrc);
+const overlays = els.filter(e => !e.compSrc && e.track !== '3' && /^p-/.test(e.id));   // index.html text overlays (popfig, chip, quote, srclab)
 const overlapT = (a, b) => Math.min(a.start + a.dur, b.start + b.dur) - Math.max(a.start, b.start);
 
 // fact normalization: uppercase alnum; only strings that read as a "fact" (has a digit, or >=6 chars)
@@ -81,6 +83,30 @@ const cardInfo = await page.evaluate(({ ids, leafSrc }) => {
   }
   return out;
 }, { ids: cards.map(c => c.id), leafSrc: LEAF_FN });
+const ovInfo = await page.evaluate(({ ids, leafSrc }) => {
+  const isLeaf = eval(leafSrc);
+  const out = {};
+  for (const id of ids) {
+    const el = document.getElementById(id);
+    if (!el) continue;
+    el.style.visibility = 'visible'; el.style.opacity = '1'; el.style.display = 'block';
+    for (const c of el.querySelectorAll('*')) { c.style.visibility = 'visible'; c.style.opacity = '1'; c.style.transform = 'none'; }
+    let u = null; const bad = [];
+    for (const c of el.querySelectorAll('div,span')) {
+      if (!c.textContent.trim() || !isLeaf(c)) continue;
+      const cr = c.getBoundingClientRect();
+      if (cr.width < 2 || cr.height < 2) continue;
+      if (cr.left < 0 || cr.right > 1920 || c.scrollWidth > c.clientWidth + 2)
+        bad.push(`"${c.textContent.trim().slice(0, 40)}" x${Math.round(cr.left)}..${Math.round(cr.right)} scroll ${c.scrollWidth}/${c.clientWidth}`);
+      u = u ? { left: Math.min(u.left, cr.left), top: Math.min(u.top, cr.top), right: Math.max(u.right, cr.right), bottom: Math.max(u.bottom, cr.bottom) }
+            : { left: cr.left, top: cr.top, right: cr.right, bottom: cr.bottom };
+    }
+    if (u) out[id] = { zone: u, bad };
+  }
+  return out;
+}, { ids: overlays.map(o => o.id), leafSrc: LEAF_FN });
+// Class F: overlay text off the frame or overflowing its nowrap box (the 25-char popfig / 84-char bug line, 2026-09-11)
+for (const o of overlays) for (const b of (ovInfo[o.id] || {}).bad || []) findings.add(`off-frame: #${o.id} ${b}`);
 // the bare index page holds ~80 <video> elements; keeping it open while comps are staged
 // crashed the renderer ("Target crashed") on a 16 GB box — release it before staging
 await page.close();
@@ -95,7 +121,6 @@ const interFrac = (a, b) => {
   return inter / Math.max(1, Math.min(areaA, areaB));
 };
 
-const findings = new Set();
 // pair findings keyed WITHOUT time so a persistent collision reports once with its time range
 const pairFinds = new Map();
 const addPair = (key, t) => {
@@ -172,6 +197,15 @@ for (const h of hosts) {
       if (interFrac(a.box, b.box) > AREA_FRAC)
         addPair(`comp-internal: ${h.comp} "${a.text.slice(0, 28)}" x "${b.text.slice(0, 28)}"`, tAbs);
     }
+    // E: index.html overlay (popfig/chip/quote) vs this comp's visible text — the popfig that sat on the siren-chain card (2026-09-11)
+    for (const o of overlays) {
+      if (o.ok || !ovInfo[o.id] || tAbs < o.start || tAbs > o.start + o.dur) continue;
+      for (const nd of nodes) {
+        if (nd.ok) continue;
+        if (interFrac(nd.box, ovInfo[o.id].zone) > AREA_FRAC)
+          addPair(`overlay-on-comp: #${o.id} over ${h.comp} text "${nd.text.slice(0, 32)}"`, tAbs);
+      }
+    }
     // B: comp text vs active card zone; D: duplicate facts comp-vs-card and comp-internal
     const act = activeCardsAt(tAbs);
     const factSeen = new Map();
@@ -206,4 +240,4 @@ if (out.length) {
   if (out.length > 40) console.log(`  ... +${out.length - 40} more`);
   process.exit(1);
 }
-console.log(`OVERLAP CHECK v2: PASS (${cards.length} cards, ${hosts.length} comp hosts, ${STEP}s step)`);
+console.log(`OVERLAP CHECK v2: PASS (${cards.length} cards, ${hosts.length} comp hosts, ${overlays.length} overlays, ${STEP}s step)`);
