@@ -73,6 +73,14 @@ Total ≈ 3 h 05. If any step overruns 2×, ship what exists and list what was c
   promise of the payoff/checklist) → **CHAPTERS** (8–12 × 45–75 s, one red-stat pop minimum each,
   a "but/and/however" connective into the next, each opening on a 1–2 s caps card on black) →
   PAYOFF (open loop closed) → WARM CLOSE (preparedness, never fearmongering) → subscribe line.
+- **Retention architecture is a hard rule from #4 on (FORMAT.md "Retention architecture", owner 2026-09-11):** the
+  voice never narrates what the MG shows (dates, clock times, counts go on screen, the voice says the human line);
+  stakes order not chronology; one open question at all times and every chapter ends by asking the next; no
+  roadmap or structure announcements; hook confirms the click with a specific present-tense image, never a
+  proper noun the audience does not know; one named person per tragedy; fact dumps become a clock / scorecard /
+  equation card; "and you" by minute two; "not happening" is one line in the payoff; the ending lands the thesis
+  before the END CTA spine; chain seams with but / because / which means. Score the draft script on stakes per
+  90 s (1–10 per window) and map every loop's open and close time BEFORE TTS; two dips in a row = rewrite.
 - **Size every section in words BEFORE TTS** at the delivered pace. Measure it: Pharaoh landed
   **158 wpm native** on br-elnino-california's short news sentences (2026-09-08), so no atempo;
   atempo 1.1–1.15 only if a script measures <140 wpm after TTS (long documentary sentences do).

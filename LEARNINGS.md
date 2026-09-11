@@ -126,6 +126,13 @@ quoted section header.
   close / present / record and respell the narration copy phonetically ("reed") while the script keeps the
   owner's exact wording. Listen to every interaction beat once after TTS; a wrong-tense homograph reads as AI
   slop to the audience. Owner's phrases are verbatim — never paraphrase a line he wrote.
+- **Script retention pass (owner 2026-09-11, Krakatau #4 v1 → v2):** the v1 draft scored 5.5/10 on stakes per
+  90 s: chronology order put the peaks (Lituya, the arithmetic) at 6:51 and 10:17 and the dips (1883, fix list, the
+  not-happening list) after the CTA and in the last third; three macro-loops opened in the first minute and none was
+  touched again for 6–10 min; the intro was a table of contents; the voice read out "December twenty second, twenty
+  eighteen, three minutes past nine" while the MG could carry it. Owner: "just say two days before Christmas, show
+  DEC 22, 2018 · 9:03 PM in MG; that's the engagement manipulation you are missing." Full rule set now in FORMAT.md
+  "Retention architecture" and the mini-storms skill; the v2 hook is the owner's line verbatim.
 - **A worktree's clip pool dies with the worktree (2026-09-11, Krakatau #4):** `library/mini-storms/<event>/` media
   is gitignored, so `git worktree remove` deleted the 72-asset Krakatau pool the moment #3 shipped; only the clips
   already staged into `episodes/ms-krakatoa-1883/media/` (bc + _orig + stills) survived, and the #4 builder had to
