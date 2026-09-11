@@ -8,6 +8,18 @@ import { readdirSync, existsSync } from 'node:fs';
 import { execSync } from 'node:child_process';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { execFileSync } from 'node:child_process';
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+// One heavy job at a time: refuse to open a headless Chromium while a hyperframes render is alive (owner 2026-09-11, OOM).
+try {
+  // bare python3 is the MS Store stub under cmd/node (exit 9009) — same full path render.cmd uses
+  const PY = 'C:/Users/Sidhartha/AppData/Local/Programs/Python/Python312/python.exe';
+  execFileSync(existsSync(PY) ? PY : 'python', [join(dirname(fileURLToPath(import.meta.url)), 'render_busy.py')], { stdio: 'inherit' });
+} catch (e) {
+  process.exit(e.status ?? 3);
+}
 
 function npmGlobalRoot() {
   try {

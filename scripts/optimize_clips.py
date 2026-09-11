@@ -28,6 +28,8 @@ from pathlib import Path
 
 ep = Path(sys.argv[1])
 apply = "--apply" in sys.argv
+if apply and subprocess.run([sys.executable, str(Path(__file__).with_name('render_busy.py'))]).returncode:
+    sys.exit(3)      # one heavy job at a time: no ffmpeg batch under a live render (owner 2026-09-11)
 MARGIN = 1.5          # headroom over the longest window, so vdur() never clips a window
 GOP = 15              # draft renders at 15fps; a keyframe per second keeps seeks cheap
 BUDGET_MB = 150       # must match media_budget.py; crf escalates until under this

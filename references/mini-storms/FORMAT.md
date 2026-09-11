@@ -89,6 +89,13 @@ Measured against a 14-minute cut that scored 5.5/10 on stakes-per-90-seconds bef
   the timeline, re-synthesise the segment with the sentence split.
 - Numbers: red popfig (Abril, text-shadow, ≤3 words) synced to the spoken word, PLUS a bottom-left
   data chip for the running stat ("50,000 feet", "6 airports"). Never a colour-block card.
+- **Text width caps (measured on the Krakatau #4 slices, 2026-09-11):** popfig big line ≤ 16 characters (150 px
+  Abril, nowrap: "IT LISTENS FOR THE GROUND" at 25 chars ran off both frame edges), chip ≤ 52 characters (34 px
+  Arial Black from x=110 must clear the presenter circle at x=1632), bug headline ≤ 60 characters (34 px bold,
+  overflow hidden after the BREAKING tag + channel name). A sentence-length thought is a chip, never a popfig;
+  the popfig is the number or the two-word verdict. The builder asserts all three before writing index.html.
+- **A popfig never sits inside a card window:** the card's row carries that beat (the "listens for the ground"
+  popfig collided with row 1 of the siren-chain card).
 - Burned-in word-highlight captions are near-universal (9/10 videos): white caps, bottom third,
   key word highlighted. Ours: yellow highlight on the same words that get a popfig.
 - BREAKING kicker: lower-third bug with the channel name + rotating headline every 10–15 s.

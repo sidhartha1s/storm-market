@@ -194,7 +194,9 @@ Per episode in `episodes/<slug>/`:
    timeout env vars, `--workers 3`, log + exit-code marker) is baked in; launch it DETACHED
    (Start-Process, see the script header — quote the space-containing path). E2E-tested
    2026-07-27. Don't hand-type npx render commands anymore; don't run other heavy sessions
-   during a final render. 20-min ≈ 30–60 min on this box (GTX 1650 + 16GB); ep2's 28-min full
+   during ANY render — `scripts/render_busy.py` (exit 3 while a hyperframes render is alive) is
+   called by blank_scan / graphics_qc (via playwright_env.mjs), optimize_clips --apply and the
+   render launchers; 2026-09-11 the gate suite on top of a 2-worker draft took the box to OOM. 20-min ≈ 30–60 min on this box (GTX 1650 + 16GB); ep2's 28-min full
    took ~75 min at 2 workers.
 6. QC gates, in order (all mandatory before render):
    a. **Graphics/pacing self-audit (AI judgment):** re-walk every
