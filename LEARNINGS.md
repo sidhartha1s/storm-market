@@ -1237,3 +1237,21 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
 - Snapshot pre-render QC caught both grade issues before paying for a render — keep snapshot
   sweep (≈13 frames) as the mandatory pre-render gate; post-render frame sweep stays too.
 
+## 2026-09-11 · Krakatau #4 slice QC: text that runs off the frame, and blind clip picks
+- Slice renders (5 windows, 10 fps, ~2 min each) caught what the static suite cannot see: a 25-char popfig
+  cut at both frame edges, three bug headlines (63–84 chars) truncated mid-word, and a popfig stacked on the
+  siren-chain card. Root cause: no width gate on nowrap text. Fix: character caps in FORMAT.md (popfig ≤16,
+  chip ≤52, bug ≤60) asserted by the builder; long thoughts become chips.
+- Picking broadcast cutters by file name ("f24_005 = 2026 plume") put an airport departure board under "same
+  mountain, same mechanism, then where?" and a terminal corridor under the siren explainer. Rule: every clip is
+  eyeballed (labelled contact grid, one subagent read) before it is wired; provenance.csv carries the source,
+  not the picture.
+- graphics_qc "undesigned" on glass cards is still the known false alarm; beat_density is the motion gate.
+
+## 2026-09-11 · OOM: the gate suite ran on top of a live draft render
+- Draft (2 capture workers ≈ 2 Chromiums + node) + blank_scan + graphics_qc (2 more headless Chromiums) +
+  optimize_clips (ffmpeg batch) + the owner's browser = 16 GB gone; the owner saw the OOM before I did.
+- render_preflight only guards the render's own start, and direct launches skip it. New guard
+  `scripts/render_busy.py` (exit 3 while any `hyperframes … render` node is alive; RENDER_BUSY_OK=1 override)
+  is called from playwright_env.mjs (covers both Chromium gates), optimize_clips --apply, and the slice/draft
+  launchers. Rule: one heavy job at a time; gates BEFORE the render, verify_render AFTER it, never beside it.
