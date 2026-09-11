@@ -25,6 +25,37 @@ HOOK **3–10 s** (one present-tense sentence paying off the title, spoken + red
 Size every section in words before TTS at the delivered pace (~148 wpm ≈ 2.47 words/s with
 atempo 1.15): 8:30 ≈ 1,260 words, 9:30 ≈ 1,410, 12:00 ≈ 1,780. Table goes in packaging.md.
 
+## Retention architecture (owner + GPT pass on Krakatau #4, 2026-09-11)
+Measured against a 14-minute cut that scored 5.5/10 on stakes-per-90-seconds before the rewrite.
+1. **The voice never narrates what the MG shows.** Dates, clock times, place names and counts go on screen; the
+   voice says the human version ("Two days before Christmas" while the card reads DEC 22, 2018 · 9:03 PM). Owner:
+   "that's the engagement manipulation you are missing." Exception: a countdown device where the voice reads the
+   clock on purpose (9:03 → 9:27 → 9:30).
+2. **Stakes order, not chronology.** Order chapters by rising stakes for the viewer at home; a strong chapter after
+   the CTA, a question before it. Time-order (this week → 2018 → 1883 → 1958) puts the peaks in the wrong places.
+3. **One open question at all times.** Every chapter ends by asking the next one ("Then where?", "So did they fix
+   it?", "And here is why faster is not enough"). Re-mention each macro-loop once mid-way; pay it explicitly
+   ("The wrong number was the plume. The right number is the tilt.").
+4. **No roadmap, no structure announcements.** Never "in the next fourteen minutes you will see…", "the record
+   first", "now the honest part". A reveal that was announced is not a reveal.
+5. **Hook = confirm the click with something more specific than the title**, in the present tense, with a person
+   or a place, then the question ("Is history going to repeat? Let's find out."). Not a restatement of the title,
+   not a proper noun the audience does not know (a US senior has never heard "Sunda Strait").
+6. **One named person per tragedy.** Numbers bank the scale; a name banks the emotion (the singer who lived and his
+   wife who did not; Ulrich and his son on the Edrie). The best-scoring chapter always had one.
+7. **Clock, scorecard, equation.** Turn fact dumps into devices: the 2018 timeline as a countdown card, "what was
+   fixed" as a FIXED / STILL MISSING scorecard, the warning maths as one equation on one card. Cut 25–35 % of the
+   technical detail from any chapter that carries more than six numbers.
+8. **"And you" by the second minute.** The US viewer's stake (Alaska, the same physics at home) is promised early and
+   paid at the mid-point, not discovered at minute seven.
+9. **"What is NOT happening" is one line inside the payoff, not a chapter.** Two consecutive de-escalations
+   (fix list, not-happening list) in the last third are an exit ramp.
+10. **The ending lands the thesis, then the END CTA spine.** "2018 happened. The system got better. The physics did
+    not change." One sentence of thesis, one quote callback, then the fixed spine. The mountain does not need to
+    repeat 1883; it only needs to repeat 2018.
+11. **Chain with conjunctions.** but / because / which means / and yet carry the viewer across every seam; full-stop
+    lists are places to leave.
+
 ## Hook + intro (0–1:10)
 1. The hook sentence says the title's headline number or claim (3–10 s), spoken and popped.
 2. Intro withholds the real angle one beat: surface story → "but that's not the real threat" → thesis + open loop.
