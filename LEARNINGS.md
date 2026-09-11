@@ -1255,3 +1255,18 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
   `scripts/render_busy.py` (exit 3 while any `hyperframes … render` node is alive; RENDER_BUSY_OK=1 override)
   is called from playwright_env.mjs (covers both Chromium gates), optimize_clips --apply, and the slice/draft
   launchers. Rule: one heavy job at a time; gates BEFORE the render, verify_render AFTER it, never beside it.
+
+## 2026-09-11 · Krakatau #4 mistake ledger: which gate should have caught what
+- Catchable and now gated: nowrap text off the frame (overlap_check `off-frame`, measures scrollWidth and the
+  viewport), an overlay stacked on a card (overlap_check `overlay-on-comp`; the builder now sends such overlays to
+  the right half), glass cards flagged "undesigned" (the detector only knew gradients; backdrop blur now counts).
+  That last one was a true positive I had filed as a known false alarm: a red gate is never noise until the current
+  artifact was opened, and real noise gets the detector fixed the same day.
+- Not catchable by code: what a clip shows. provenance.csv now carries a `shot` column (what is visible, including
+  burned-in chyrons) for every broadcast cutter, written from one labelled contact grid read by a subagent; the
+  builder refuses a cutter without one. Pick pictures from `shot`, never from a file name.
+- Quote cards: the attribution era must match the cut underneath (Ulrich 1958 sat on an 1883 print); `shot`
+  starts with an era/category token so the check is a glance.
+- Process: list every violation in one pass before iterating (three gate cycles burned on one bug line at a
+  time); write Windows-path scripts with the Write tool, never bash heredocs (the backslash-U escape trap, three
+  times this session, once while writing this very rule).
