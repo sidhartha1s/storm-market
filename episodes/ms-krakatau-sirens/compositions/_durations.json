@@ -1,7 +1,9 @@
 {
- "chain": 31.16,
+ "arithmetic": 35.72,
+ "chain": 25.08,
+ "clock": 39.38,
+ "conditions": 19.64,
  "g-close": 10.2,
- "notyes": 41.3,
- "statcard": 51.74,
- "timeline": 37.5
+ "scorecard": 34.42,
+ "statcard": 45.7
 }

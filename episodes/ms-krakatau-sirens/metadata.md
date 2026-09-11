@@ -1,12 +1,12 @@
 # metadata.md — ms-krakatau-sirens (The Warning Hour · mini-storms #4)
 
-Upload file: `renders/ms-krakatau-sirens-final-master.mp4` (1080p30 H.264, −14 LUFS, 14:03). Subtitles: `renders/ms-krakatau-sirens-final.srt`.
+Upload file: `renders/ms-krakatau-sirens-final-master.mp4` (1080p30 H.264, −14 LUFS, 11:52). Subtitles: `renders/ms-krakatau-sirens-final.srt`.
 Category **Education** · Learning type **Overview** · Language English (US) · Not made for kids · Location tag: Sunda Strait, Indonesia.
 Recording date: September 2026. Paid promotion: none. Altered content: no (real footage, PD data, no synthetic people).
 
 ## Owner note: pending after upload
-- Add this video to the Krakatau playlist and cross-link it into the description of Krakatau #3 (It Killed 36,000 First…).
-- End screen 13:52–14:03: subscribe + Krakatau #3 + the ebook card. Card at 05:23: The Storm-Ready Home. Card at 05:39: Krakatau #3.
+- Add this video to the Krakatau playlist and cross-link it into the description of Krakatau #3 (Will Krakatoa KILL Another 36,000 People? https://www.youtube.com/watch?v=GJsLuuPb-Qo).
+- End screen 11:32–11:52: subscribe + Krakatau #3 + the ebook card. Card at 04:52: The Storm-Ready Home. Card at 05:08: Krakatau #3.
 - Thumbnail: `thumbs/` will hold frame candidates from the final render (Lituya trimline aerial, the 2018 concert stage, the Al Jazeera night wave). Text UNWARNED or NO WARNING, never SIREN.
 - After upload delete `renders/ms-krakatau-sirens-final.mp4` (raw) and the draft; keep the master and SRT.
 
@@ -20,37 +20,35 @@ https://paulraymond.online
 On the night of December 22, 2018, a piece of Anak Krakatau slid into the Sunda Strait. Twenty-four minutes later the weather agency's instruments noticed. By then the wave was breaking over a beach concert at Tanjung Lesung. No earthquake, no alert, no siren: Indonesia's disaster agency said the next morning that the country had no early warning system for tsunamis caused by volcanoes or underwater landslides. This week that mountain has erupted six times. This video explains how a tsunami siren actually works, why a collapsing volcano defeats it, what was fixed since 2018 and what was not, and why the tallest wave ever recorded on Earth happened in Alaska, where a 500-million-cubic-metre slope is being watched today for the same reason.
 
 What this video covers, in order:
+• The night of December 22, 2018: a beach concert, no siren, 426 dead by morning
+• How a siren works: seismographs, the scenario computer, 55 siren towns and SMS in under five minutes, and the 22 buoys that had all been dead since 2012
+• The clock: collapse 9:03 pm, tide gauge 9:27, Carita 9:30, Tanjung Lesung 9:33, the 24 minutes nobody knew they had
 • This week on the record: the 25-hour eruption of September 4–6, Level III, the 3 km zone, a tiltmeter rising since August
-• How a siren works: seismographs, the scenario computer, 55 siren sites and SMS in under five minutes, and the 22 buoys that had all been dead since 2012
-• December 22, 2018, minute by minute: collapse 9:03 pm, tide gauge 9:27 pm, waves on the beaches 9:30–9:38 pm, 426 dead, 14,059 injured
-• Why nobody saw it coming: a collapse sends no earthquake signal
-• 1883, the same wave: 46 m at Merak, 36,417 dead, 21,565 of them on the same coast
+• 1883, the same coast: 46 m at Merak, 36,417 dead, 21,565 of them on the same beaches
 • Alaska, 1958: Lituya Bay, a 524 m run-up, the Ulrich family's survival, two minutes from quake to wave
 • Barry Arm, Alaska, watched today: 500 million m³, 48 km from Whittier, the instruments, the September 4, 2026 status
-• What Indonesia fixed since 2018: 533 seismographs, a German-Indonesian project, new water-level stations, and the missing buoys
+• Good news, bad news: 533 seismographs, a German-Indonesian project, new water-level stations, and the buoys still missing
 • The arithmetic of a warning: why the siren and the water arrive together
-• Who is at risk this week, what is not happening, and the three signs that are the only siren that works
+• What would have to happen for 2018 to repeat, who is at risk this week, and the three signs that are the only siren that works
 
-Krakatau, part 1: [KRAKATAU #3 URL — fill after upload of ms-krakatoa-1883]
+Krakatau, part 1: Will Krakatoa KILL Another 36,000 People? https://www.youtube.com/watch?v=GJsLuuPb-Qo
 The El Niño series: California https://www.youtube.com/watch?v=9tm8j0IJDCI · Texas https://www.youtube.com/watch?v=sJRBlIlU90A
 
 Chapters
-00:00 The sirens have never sounded
-00:13 December 22, 2018, 9:03 pm
-01:42 This week, on the record
-02:29 How a siren actually works
-03:25 Minute by minute
-04:41 Why nobody saw it coming
-05:23 The Storm-Ready Home (Paul)
-05:39 1883, the same wave
-06:51 Alaska, 1958
-08:04 Barry Arm, watched today
-09:23 What was fixed since 2018
-10:17 The arithmetic of a warning
-11:10 Who is at risk this week
-11:50 What is not happening
-12:32 The only siren that works
-13:52 Close
+00:00 The sirens never rang
+00:21 Two days before Christmas
+01:27 What a siren listens for
+02:21 The clock, 9:03 to 9:33
+03:24 Is it more dangerous now?
+04:13 1883, the same coast
+04:52 The Storm-Ready Home (Paul)
+05:07 Alaska, 1958
+06:15 Barry Arm, today
+07:24 Good news, bad news
+08:11 The arithmetic of a warning
+09:00 What would have to happen
+10:18 The only siren that works
+11:04 Close
 
 Questions this video answers
 Why was there no tsunami warning in the 2018 Sunda Strait tsunami? · How does a tsunami warning system work? · Why did Indonesia's tsunami buoys not work in 2018? · What happened at the Seventeen concert at Tanjung Lesung? · How fast did the 2018 Krakatau tsunami reach the coast? · Is Krakatoa erupting again in 2026? · What was the tallest wave ever recorded? · What happened at Lituya Bay in 1958? · What is the Barry Arm landslide and is Whittier, Alaska in danger? · What has Indonesia fixed since 2018? · What should you do if the sea pulls back from the beach?
@@ -78,7 +76,7 @@ Comment down where you are watching this from. I read all the comments.
 Short version: a collapsing volcano makes a tsunami with no earthquake, so an earthquake-based warning system stays silent. In 2018 the collapse was at 9:03 pm, the first instrument saw the wave at 9:27, the beaches were hit by 9:30. The only siren that works is the sea pulling back, the sound, and knowing the hill. The three signs are at the end of the video.
 
 ## Community post (day of upload)
-The sirens on the Sunda Strait have never sounded for Krakatoa, and they cannot. In 2018 the wave beat the instruments by three minutes. New video, 14 minutes: how a siren works, why a collapse defeats it, and why the tallest wave ever recorded was in Alaska. Where are you watching from?
+The sirens on the Sunda Strait have never sounded for Krakatoa, and they cannot. In 2018 the wave beat the instruments by three minutes. New video, 12 minutes: how a siren works, why a collapse defeats it, and why the tallest wave ever recorded was in Alaska. Where are you watching from?
 
 ## AEO / GEO block (answer-engine copy; description tail or second pinned reply)
 **Q: Why was there no warning for the 2018 Sunda Strait tsunami?** A: The tsunami was caused by a flank collapse of Anak Krakatau at about 21:03 local time on December 22, 2018, not by an earthquake. Indonesia's warning system was earthquake-triggered, its 22 detection buoys had been out of service since 2012, and the disaster agency stated the next day that the country had no early warning system for tsunamis caused by volcanoes or underwater landslides. Waves reached the coast at about 21:30, roughly three minutes after a tide gauge first registered them.
