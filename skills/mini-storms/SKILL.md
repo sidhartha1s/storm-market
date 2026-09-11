@@ -106,6 +106,9 @@ Priority order, per clip:
 2. Public domain / govt: USGS, NOAA, NASA, FEMA, Coast Guard, national agencies of the event
    country, Wikimedia Commons (check licence per file).
 3. Stock: Pexels / Pixabay (owner rule: ≤10 picks ⇒ thumbs on localhost, owner picks fast).
+4. **Eyeball every pool cutter before wiring it:** one labelled contact grid (mid-frame per clip, PIL tile) read by a
+   Sonnet subagent, classified ERUPTION / AIRPORT / OFFICIALS / OTHER. provenance.csv carries the source, not the
+   picture; five "2026 plume" picks by file name were departure boards (Krakatau #4, 2026-09-11).
 4. News broadcast: `yt-dlp` pulls, 3–5 s each narrated-over, courtesy credit in description,
    never twice the same cut, expect claims not strikes.
 5. Social (Instagram / TikTok / X): `yt-dlp --cookies-from-browser chrome <url>` (Instagram
@@ -137,8 +140,9 @@ narration speech spans, hidden in the hook / CTA / close. Deliverables: `master_
 `-master.mp4` IS the upload file + SRT; no upscale step, the owner upscales by hand (2026-09-09).
 
 ### 7–9. QC, render, ship
-Same scripts and hidden-window rules as storm-episode. One draft render only if static QC
-flagged something; otherwise straight to full. Frame eyeball ≈ 1 per 20 s via a Sonnet subagent
+Same scripts and hidden-window rules as storm-episode. Static gates → 3–5 slice renders (40 s windows at 10 fps
+around every new card, the CTA and the close; strip read by a subagent) → ONE draft → owner preview → full.
+**One heavy job at a time:** `scripts/render_busy.py` refuses gates and ffmpeg batches while a render is alive. Frame eyeball ≈ 1 per 20 s via a Sonnet subagent
 (never Read frames into main context). `metadata.md`: first URL = `channel.cta.first_link`,
 courtesy credits block listing every non-PD source with @handles, chapters at each idea block.
 
