@@ -1,21 +1,23 @@
 <template>
 <style>
-  #g-slope-sc { position: relative; width: 1920px; height: 1080px; background: transparent; overflow: hidden; font-family: Arial, sans-serif; }
-  #g-slope-sc .sc-diagram { position: absolute; left: 0; top: 0; width: 1180px; height: 1080px; }
-  #g-slope-sc .sc-scaffold-box { fill: none; stroke: #ffffff; stroke-width: 2; stroke-dasharray: 8 6; }
-  #g-slope-sc .sc-panel { position: absolute; left: 1180px; top: 0; width: 740px; height: 1080px; background: linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); padding: 96px 70px 0 120px; box-sizing: border-box; display: flex; flex-direction: column; }
-  #g-slope-sc .sc-eyebrow { font-weight: 700; font-size: 22px; letter-spacing: 6px; color: #ffffff; margin: 0; }
-  #g-slope-sc .sc-headline { font-weight: 900; font-size: 52px; color: #ffffff; margin: 14px 0 0 0; }
-  #g-slope-sc .sc-sub { font-style: italic; font-size: 26px; color: #ffffff; margin: 18px 0 0 0; font-family: Georgia, serif; }
-  #g-slope-sc .sc-row { margin-top: 40px; }
-  #g-slope-sc .sc-value { font-weight: 900; font-size: 84px; color: #ffffff; margin: 0; }
-  #g-slope-sc .sc-label { font-weight: 700; font-size: 19px; letter-spacing: 4px; color: #ffffff; margin: 6px 0 0 0; }
-  #g-slope-sc .sc-rowsub { font-weight: 700; font-size: 30px; color: #ffffff; margin: 6px 0 0 0; }
-  #g-slope-sc .sc-note { margin-top: 50px; font-size: 26px; color: #ffffff; max-width: 550px; }
-  #g-slope-sc .sc-caption { position: absolute; left: 60px; top: 1040px; font-size: 16px; color: #ffffff; }
-  #g-slope-sc .sc-svglabel { font-size: 22px; fill: #ffffff; font-family: Arial, sans-serif; }
+  #sc-root { position: relative; width: 1920px; height: 1080px; background: transparent; overflow: hidden; font-family: Arial, sans-serif; }
+  #sc-root .sc-diagram { position: absolute; left: 0; top: 0; width: 1180px; height: 1080px; }
+  #sc-root .sc-panel { position: absolute; left: 1180px; top: 0; width: 740px; height: 1080px; background: linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); padding: 96px 70px 0 120px; box-sizing: border-box; display: flex; flex-direction: column; }
+  #sc-root .sc-eyebrow { font-family: Arial, sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 6px; color: #93a3b2; margin: 0; }
+  #sc-root .sc-headline { font-family: Arial, sans-serif; font-weight: 900; font-size: 52px; color: #f2f5f8; margin: 14px 0 0 0; }
+  #sc-root .sc-sub { font-style: italic; font-size: 26px; color: #d8a13a; margin: 18px 0 0 0; font-family: Georgia, serif; }
+  #sc-root .sc-row { margin-top: 40px; }
+  #sc-root .sc-value { font-family: Arial, sans-serif; font-weight: 900; font-size: 84px; margin: 0; }
+  #sc-root .sc-value.sc-before { color: #7fb2e5; }
+  #sc-root .sc-value.sc-after { color: #e74c3c; }
+  #sc-root .sc-label { font-family: Arial, sans-serif; font-weight: 700; font-size: 19px; letter-spacing: 4px; color: #93a3b2; margin: 6px 0 0 0; }
+  #sc-root .sc-rowsub { font-family: Arial, sans-serif; font-weight: 700; font-size: 30px; color: #dfe7ee; margin: 6px 0 0 0; }
+  #sc-root .sc-note { margin-top: 50px; font-family: Arial, sans-serif; font-size: 26px; color: #dfe7ee; max-width: 550px; }
+  #sc-root .sc-caption { position: absolute; left: 60px; top: 1040px; font-size: 16px; color: #93a3b2; font-family: Arial, sans-serif; }
+  #sc-root .sc-svglabel { font-size: 22px; fill: #93a3b2; font-family: Arial, sans-serif; }
+  #sc-root .sc-tick { font-size: 26px; font-weight: 700; fill: #d8a13a; font-family: Arial, sans-serif; }
 </style>
-<div id="root" data-composition-id="g-slope-sc" data-width="1920" data-height="1080" data-duration="30">
+<div id="sc-root" data-composition-id="g-slope-sc" data-width="1920" data-height="1080" data-duration="30">
 
     <div class="sc-diagram" id="sc-diagram">
       <svg id="sc-svg" viewBox="0 0 1180 1080" width="1180" height="1080" style="position:absolute;left:0;top:0;">
