@@ -1270,3 +1270,21 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
 - Process: list every violation in one pass before iterating (three gate cycles burned on one bug line at a
   time); write Windows-path scripts with the Write tool, never bash heredocs (the backslash-U escape trap, three
   times this session, once while writing this very rule).
+
+## 2026-09-12 · MG eval: a tidy diagram with the island underwater scored 21/25
+- Three Sonnets and a blind reader built and ranked g-slope from a brief that described a LOOK (tall cone 338 m → shorter
+  cone 110 m, 27° → 16°) with no datum, no orientation, no source figure. Winner had the post-collapse island submerged;
+  the numbers themselves were wrong (27° is the pre-collapse slope ABOVE water, now ~7°; the underwater slope went
+  24° → 16°, Meredew 2026). Every check in the chain (scaffold read, blind reader, graphics_qc) measured layout.
+- Fix, durable: `references/mg-brief-template.md`. Brief = SOURCE figure + DATUM/SCALE/ORIENTATION + geometry in px +
+  MUST-BE-TRUE list with ratios, all numbers confirmed first. Review order: meaning → layout → motion → code gate.
+  For bespoke diagrams the orchestrator reads one final frame itself against the truths.
+- With the complete brief both Sonnets (polish-first and scaffold-first) produced physically correct diagrams in 2–3 loops,
+  ~11–15 min, ~310k tokens each; one caught a contradiction inside the brief and reported it. Scaffold-first still finds
+  layout defects cheaper; the brief is what makes the picture true.
+- GSAP gotcha: an un-positioned `tl.set()` lands at the END of the timeline as built so far; inserting positioned tweens
+  above it silently shifts it (panel vanished at 5.5 s). Add late fixes at the end of the timeline, always with positions.
+- The blind reader reported the NE label present when it was hidden under a rock fill; the orchestrator's own frame read
+  caught it. Vision-agent verdicts get one spot-check by the orchestrator, every time.
+- Auto-mode classifier refuses most new Agent spawns from command-heavy prompts ("Auto-Mode Bypass"); resuming an existing
+  agent via SendMessage passes. Owner adds `Agent` to permissions.allow; the session cannot (Self-Modification).

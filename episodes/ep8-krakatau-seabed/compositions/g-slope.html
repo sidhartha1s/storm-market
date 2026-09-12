@@ -22,7 +22,7 @@
   .sb2-row-sub { font-family:Arial,sans-serif; font-weight:700; font-size:30px; color:#dfe7ee; margin-top:4px; }
   #sb2-note { font-family:Arial,sans-serif; font-size:26px; color:#dfe7ee; margin-top:56px; max-width:560px; }
 </style>
-<div id="root" data-composition-id="g-slope-sb2" data-width="1920" data-height="1080">
+<div id="root" data-composition-id="g-slope" data-width="1920" data-height="1080">
   <svg id="sb2-svg" width="1180" height="1080" viewBox="0 0 1180 1080">
     <defs>
       <linearGradient id="sb2-rockgrad" x1="0" y1="0" x2="0" y2="1">
@@ -38,9 +38,6 @@
       <line id="sb2-sealine" x1="0" y1="520" x2="1180" y2="520" stroke="#7fb2e5" stroke-width="2"/>
       <text id="sb2-sealabel" class="sb2-diaglabel" x="30" y="490">SEA LEVEL</text>
       <line id="sb2-floorline" x1="0" y1="799" x2="1180" y2="799" stroke="#93a3b2" stroke-width="2" stroke-dasharray="14 10"/>
-      <text id="sb2-floorlabel" class="sb2-diaglabel" x="30" y="815">CALDERA FLOOR &minus;279 M</text>
-      <text id="sb2-swlabel" class="sb2-diaglabel" x="30" y="560">SW</text>
-      <text id="sb2-nelabel" class="sb2-diaglabel" x="1120" y="560">NE</text>
 
       <line id="sb2-scalebar" x1="40" y1="1000" x2="290" y2="1000" stroke="#93a3b2" stroke-width="3"/>
       <text id="sb2-scalebar-label" class="sb2-diaglabel-sm" x="40" y="985">500 M</text>
@@ -67,6 +64,9 @@
       <line id="sb2-height110-tick1" x1="1045" y1="410" x2="1075" y2="410" stroke="#d8a13a" stroke-width="2" opacity="0"/>
       <line id="sb2-height110-tick2" x1="1045" y1="520" x2="1075" y2="520" stroke="#d8a13a" stroke-width="2" opacity="0"/>
       <text id="sb2-height110-label" class="sb2-diaglabel-sm" x="1085" y="470" opacity="0">110 M</text>
+      <text id="sb2-floorlabel" class="sb2-diaglabel" x="30" y="838">CALDERA FLOOR &minus;279 M</text>
+      <text id="sb2-swlabel" class="sb2-diaglabel" x="30" y="560">SW</text>
+      <text id="sb2-nelabel" class="sb2-diaglabel" x="1120" y="560">NE</text>
       <text id="sb2-craterlabel" class="sb2-diaglabel-sm" x="770" y="548" opacity="0">CRATER LAKE</text>
 
       <path id="sb2-debris" d="M0,799 L0,760 Q55,729 110,745 Q160,729 200,799 Z" fill="#8e2020" stroke="#c23c3c" stroke-width="2" opacity="0"/>
@@ -97,7 +97,7 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const P = "#sb2-";
 
-  tl.set(P + "panel", { x: 660 });
+  tl.set(P + "panel", { x: 660 }, 0);   /* explicit position: an un-positioned set lands at the timeline end */
   tl.set([P + "row1", P + "row2", P + "note", P + "eyebrow", P + "headline", P + "sub"], { autoAlpha: 0 });
 
   tl.to(P + "panel", { x: 0, duration: 0.7, ease: "power3.out" }, 0);
@@ -149,8 +149,12 @@ window.__timelines = window.__timelines || {};
 
   // panel exit 29.4
   tl.to(P + "panel", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 29.4);
+  /* added last so no un-positioned set/to above shifts: block hidden until its detach cue */
+  tl.set("#sb2-block", { opacity: 0 }, 0);
+  tl.to("#sb2-block", { opacity: 1, duration: 0.3 }, 5.2);   /* block appears on the detach cue, never at t=0 */
 
-  window.__timelines["g-slope-sb2"] = tl;
+
+  window.__timelines["g-slope"] = tl;
 })();
 </script>
 </template>
