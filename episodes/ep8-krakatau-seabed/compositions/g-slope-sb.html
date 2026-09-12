@@ -5,51 +5,80 @@
 <template>
 <style>
   #root { position:absolute; inset:0; font-family: Arial, sans-serif; }
-  #sb-panel { position:absolute; left:1180px; top:0; width:740px; height:1080px;
-    background:#222; padding:96px 70px 0 120px; box-sizing:border-box; }
-  .sb-txt { color:#ddd; }
-  .sb-box { fill:none; stroke:#999; stroke-width:2; stroke-dasharray:10 8; }
+  #sb-svg { position:absolute; left:0; top:0; }
+  .sb-sea-label { font-family:Arial,sans-serif; font-weight:700; font-size:20px; letter-spacing:3px; fill:#7fb2e5; }
+  .sb-floor-label { font-family:Arial,sans-serif; font-weight:700; font-size:20px; letter-spacing:3px; fill:#93a3b2; }
+  .sb-angle-label { font-family:'Arial Black',Arial,sans-serif; font-size:30px; fill:#d8a13a; }
+  .sb-height-label { font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:2px; fill:#d8a13a; }
+  .sb-vscale { font-family:Arial,sans-serif; font-weight:700; font-size:15px; letter-spacing:1px; fill:#93a3b2; }
+
+  #sb-panel { position:absolute; left:1180px; top:0; width:740px; height:1080px; box-sizing:border-box;
+    background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); padding:96px 70px 0 120px; }
+  #sb-eyebrow { font-family:Arial,sans-serif; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; }
+  #sb-headline { font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; margin-top:16px; }
+  #sb-sub { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:16px; }
+  .sb-row { margin-top:56px; }
+  .sb-row-value { font-family:'Arial Black',Arial,sans-serif; font-size:84px; display:block; line-height:1; }
+  .sb-row-label { font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:4px; color:#93a3b2; display:block; margin-top:6px; }
+  .sb-row-sub { font-family:Arial,sans-serif; font-weight:700; font-size:30px; color:#dfe7ee; margin-top:4px; }
+  #sb-note { font-family:Arial,sans-serif; font-size:26px; color:#dfe7ee; margin-top:56px; max-width:560px; }
 </style>
 <div id="root" data-composition-id="g-slope-sb" data-width="1920" data-height="1080">
-  <svg id="sb-svg" width="1180" height="1080" viewBox="0 0 1180 1080" style="position:absolute;left:0;top:0;">
-    <line id="sb-sealine" x1="90" y1="340" x2="1130" y2="340" stroke="#777" stroke-width="2" stroke-dasharray="14 10"/>
-    <text id="sb-sealabel" class="sb-txt" x="100" y="326" font-size="20">SEA LEVEL</text>
-    <line id="sb-floorline" x1="90" y1="820" x2="1130" y2="820" stroke="#777" stroke-width="2"/>
-    <text id="sb-floorlabel" class="sb-txt" x="100" y="850" font-size="20">CALDERA FLOOR</text>
+  <svg id="sb-svg" width="1180" height="1080" viewBox="0 0 1180 1080">
+    <g id="sb-diagram">
+      <!-- water fill between sea level and floor -->
+      <path id="sb-water" d="M90,340 L1130,340 L1130,820 L90,820 Z" fill="#1d4a63" opacity="0.35"/>
 
-    <polygon id="sb-cone-before" class="sb-box" points="480,130 250,820 760,820"/>
-    <line id="sb-guide27" x1="480" y1="130" x2="760" y2="820" stroke="#7fb2e5" stroke-width="3" stroke-dasharray="12 8"/>
-    <text id="sb-guide27-label" class="sb-txt" x="640" y="440" font-size="24">27&deg;</text>
-    <line id="sb-height338" x1="190" y1="130" x2="190" y2="820" stroke="#aaa" stroke-width="2"/>
-    <text id="sb-height338-label" class="sb-txt" x="150" y="475" font-size="20" transform="rotate(-90 150 475)">338 M</text>
+      <line id="sb-sealine" x1="90" y1="340" x2="1130" y2="340" stroke="#7fb2e5" stroke-width="2.5" stroke-dasharray="16 12"/>
+      <text id="sb-sealabel" class="sb-sea-label" x="100" y="326">SEA LEVEL</text>
+      <line id="sb-floorline" x1="90" y1="820" x2="1130" y2="820" stroke="#93a3b2" stroke-width="2.5"/>
+      <text id="sb-floorlabel" class="sb-floor-label" x="100" y="852">CALDERA FLOOR</text>
 
-    <polygon id="sb-cone-after" class="sb-box" points="480,593 300,820 1000,820" opacity="0"/>
-    <line id="sb-guide16" x1="480" y1="593" x2="1000" y2="820" stroke="#7fb2e5" stroke-width="3" stroke-dasharray="12 8" opacity="0"/>
-    <text id="sb-guide16-label" class="sb-txt" x="760" y="740" font-size="24" opacity="0">16&deg;</text>
-    <line id="sb-height110" x1="225" y1="593" x2="225" y2="820" stroke="#aaa" stroke-width="2" opacity="0"/>
-    <text id="sb-height110-label" class="sb-txt" x="185" y="706" font-size="20" transform="rotate(-90 185 706)" opacity="0">110 M</text>
+      <!-- BEFORE cone: 338m, steep 27 flank on the right (SW) -->
+      <polygon id="sb-cone-before" points="480,130 250,820 760,820" fill="#333d48" stroke="#5c6a7a" stroke-width="3"/>
+      <line id="sb-guide27" x1="480" y1="130" x2="760" y2="820" stroke="#7fb2e5" stroke-width="3" stroke-dasharray="14 10"/>
+      <text id="sb-guide27-label" class="sb-angle-label" x="636" y="430">27&#176;</text>
+      <line id="sb-height338" x1="185" y1="130" x2="185" y2="820" stroke="#d8a13a" stroke-width="2"/>
+      <line x1="170" y1="130" x2="200" y2="130" stroke="#d8a13a" stroke-width="2"/>
+      <line x1="170" y1="820" x2="200" y2="820" stroke="#d8a13a" stroke-width="2"/>
+      <text id="sb-height338-label" class="sb-height-label" x="0" y="0" transform="translate(150,475) rotate(-90)" text-anchor="middle">338 M</text>
 
-    <rect id="sb-block" class="sb-box" x="552" y="356" width="90" height="90" stroke="#e08"/>
-    <path id="sb-debris" class="sb-box" d="M760,820 Q820,760 900,770 Q970,760 1000,820 Z" stroke="#e08" opacity="0"/>
+      <!-- detaching block, slides down the SW flank -->
+      <g id="sb-block" transform="translate(592,406)">
+        <polygon points="0,0 88,42 46,118 -46,66" fill="#8e2020" stroke="#c23c3c" stroke-width="2"/>
+      </g>
 
-    <text id="sb-vscale" class="sb-txt" x="90" y="1040" font-size="15">VERTICAL SCALE EXAGGERATED</text>
+      <!-- AFTER cone: 110m, gentler 16 ramp, wider -->
+      <polygon id="sb-cone-after" points="480,593 300,820 1000,820" fill="#333d48" stroke="#5c6a7a" stroke-width="3" opacity="0"/>
+      <line id="sb-guide16" x1="480" y1="593" x2="1000" y2="820" stroke="#7fb2e5" stroke-width="3" stroke-dasharray="14 10" opacity="0"/>
+      <text id="sb-guide16-label" class="sb-angle-label" x="742" y="770" opacity="0">16&#176;</text>
+      <line id="sb-height110" x1="245" y1="593" x2="245" y2="820" stroke="#d8a13a" stroke-width="2" opacity="0"/>
+      <line id="sb-height110-tick1" x1="230" y1="593" x2="260" y2="593" stroke="#d8a13a" stroke-width="2" opacity="0"/>
+      <line id="sb-height110-tick2" x1="230" y1="820" x2="260" y2="820" stroke="#d8a13a" stroke-width="2" opacity="0"/>
+      <text id="sb-height110-label" class="sb-height-label" x="0" y="0" transform="translate(210,706) rotate(-90)" text-anchor="middle" opacity="0">110 M</text>
+
+      <!-- debris pile at floor, right of the old toe -->
+      <path id="sb-debris" d="M755,820 Q800,742 875,748 Q950,742 1005,820 Z" fill="#8e2020" stroke="#c23c3c" stroke-width="2" opacity="0"/>
+
+      <text id="sb-vscale" class="sb-vscale" x="90" y="1040">VERTICAL SCALE EXAGGERATED</text>
+    </g>
   </svg>
 
   <div id="sb-panel">
-    <div id="sb-eyebrow" class="sb-txt" style="font-size:22px;">THE SLOPE IT FELL FROM</div>
-    <div id="sb-headline" class="sb-txt" style="font-size:52px;margin-top:14px;">It was gentler.</div>
-    <div id="sb-sub" class="sb-txt" style="font-size:26px;margin-top:14px;font-style:italic;">the fall took the steep face and left a ramp</div>
-    <div id="sb-row1" style="margin-top:60px;">
-      <span id="sb-row1-value" class="sb-txt" style="font-size:84px;display:block;">27&deg;</span>
-      <span id="sb-row1-label" class="sb-txt" style="font-size:19px;">BEFORE</span>
-      <div id="sb-row1-sub" class="sb-txt" style="font-size:30px;">steep, overloaded</div>
+    <div id="sb-eyebrow">THE SLOPE IT FELL FROM</div>
+    <div id="sb-headline">It was gentler.</div>
+    <div id="sb-sub">the fall took the steep face and left a ramp</div>
+    <div id="sb-row1" class="sb-row">
+      <span id="sb-row1-value" class="sb-row-value" style="color:#7fb2e5;">27&#176;</span>
+      <span id="sb-row1-label" class="sb-row-label">BEFORE</span>
+      <div id="sb-row1-sub" class="sb-row-sub">steep, overloaded</div>
     </div>
-    <div id="sb-row2" style="margin-top:40px;">
-      <span id="sb-row2-value" class="sb-txt" style="font-size:84px;display:block;">16&deg;</span>
-      <span id="sb-row2-label" class="sb-txt" style="font-size:19px;">AFTER</span>
-      <div id="sb-row2-sub" class="sb-txt" style="font-size:30px;">lower, wider ramp</div>
+    <div id="sb-row2" class="sb-row">
+      <span id="sb-row2-value" class="sb-row-value" style="color:#e74c3c;">16&#176;</span>
+      <span id="sb-row2-label" class="sb-row-label">AFTER</span>
+      <div id="sb-row2-sub" class="sb-row-sub">lower, wider ramp</div>
     </div>
-    <div id="sb-note" class="sb-txt" style="font-size:26px;margin-top:50px;">The island growing back today is growing on different ground than the one that fell.</div>
+    <div id="sb-note">The island growing back today is growing on different ground than the one that fell.</div>
   </div>
 </div>
 <script>
@@ -66,6 +95,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "sealabel", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 0.2);
   tl.fromTo(P + "floorline", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.6 }, 0.3);
   tl.fromTo(P + "floorlabel", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 0.4);
+  tl.fromTo(P + "water", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 0.3);
   tl.fromTo(P + "cone-before", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.7 }, 0.5);
   tl.fromTo(P + "guide27", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 0.9);
   tl.fromTo(P + "guide27-label", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 1.1);
@@ -81,26 +111,26 @@ window.__timelines = window.__timelines || {};
 
   // "twenty seven" 4.2 -> row1 + 27 emphasis
   tl.fromTo(P + "row1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 4.2);
-  tl.to(P + "guide27", { scale: 1.12, duration: 0.3, yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, 4.2);
+  tl.to(P + "guide27", { scale: 1.12, duration: 0.3, yoyo: true, repeat: 1, transformOrigin: "50% 50%", svgOrigin: "480 130" }, 4.2);
 
-  // collapse 5.6-6.8
-  tl.set(P + "block", { transformOrigin: "50% 50%" }, 5.6);
-  tl.to(P + "block", { x: 258, y: 384, rotation: 18, duration: 1.2, ease: "power2.in" }, 5.6);
+  // collapse 5.6-6.8: block slides down the 27 flank toward the debris pile
+  tl.to(P + "block", { x: 850, y: 786, rotation: 26, duration: 1.2, ease: "power2.in" }, 5.6);
   tl.to([P + "cone-before", P + "guide27", P + "guide27-label", P + "height338", P + "height338-label"],
     { autoAlpha: 0, duration: 0.3 }, 6.2);
 
-  // "sixteen" 6.4 -> row2 + 16 guide
+  // "sixteen" 6.4 -> row2 + 16 guide (new gentler profile revealed)
   tl.fromTo(P + "row2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 6.4);
   tl.fromTo([P + "guide16", P + "guide16-label"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 6.4);
   tl.fromTo(P + "cone-after", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 6.5);
-  tl.fromTo([P + "height110", P + "height110-label"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 6.6);
+  tl.fromTo([P + "height110", P + "height110-tick1", P + "height110-tick2", P + "height110-label"],
+    { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 6.6);
 
   // block lands -> debris, 6.8
   tl.to(P + "block", { autoAlpha: 0, duration: 0.25 }, 6.8);
-  tl.fromTo(P + "debris", { autoAlpha: 0, scale: 0.85, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.4 }, 6.8);
+  tl.fromTo(P + "debris", { autoAlpha: 0, scale: 0.85, transformOrigin: "50% 50%", svgOrigin: "880 780" }, { autoAlpha: 1, scale: 1, duration: 0.4 }, 6.8);
 
   // "lower, wider ramp" 9.8 -> ramp emphasis
-  tl.to(P + "guide16", { scale: 1.1, duration: 0.3, yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, 9.8);
+  tl.to(P + "guide16", { scale: 1.1, duration: 0.3, yoyo: true, repeat: 1, transformOrigin: "50% 50%", svgOrigin: "480 593" }, 9.8);
 
   // "different ground" 15.5 -> note
   tl.fromTo(P + "note", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 15.5);
