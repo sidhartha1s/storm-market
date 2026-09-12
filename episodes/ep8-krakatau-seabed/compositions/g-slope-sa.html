@@ -76,10 +76,8 @@
 (function(){
   var tl = gsap.timeline({paused:true});
 
-  // continuous element for the full 30s: slow scale push on the whole diagram
-  tl.to("#sa-diagram-group", {scale:1.02, transformOrigin:"50% 100%", duration:3, ease:"sine.inOut", yoyo:true, repeat:9}, 0);
-  // plus a drifting sea-surface line for extra texture
-  tl.to("#sa-sea-line", {x:"+=30", duration:3, ease:"sine.inOut", yoyo:true, repeat:9}, 0);
+  // continuous element for the full 30s: one slow, unbroken scale push on the whole diagram
+  tl.to("#sa-diagram-group", {scale:1.035, transformOrigin:"50% 100%", duration:29, ease:"none"}, 0.2);
 
   // opening reveals
   tl.fromTo("#sa-floor-line, #sa-floor-label", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.6, ease:"power2.out"}, 0);
