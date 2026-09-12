@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family: Arial, sans-serif; }
+  #sb2-panel { position:absolute; left:1180px; top:0; width:740px; height:1080px; background:#222; padding:96px 70px 0 120px; box-sizing:border-box; }
+  .sb2-txt { color:#ddd; }
+  .sb2-box { fill:none; stroke:#999; stroke-width:2; stroke-dasharray:10 8; }
+</style>
+<div id="root" data-composition-id="g-slope-sb2" data-width="1920" data-height="1080">
+  <svg id="sb2-svg" width="1180" height="1080" viewBox="0 0 1180 1080" style="position:absolute;left:0;top:0;">
+    <g id="sb2-diagram">
+      <line id="sb2-sealine" x1="0" y1="520" x2="1180" y2="520" stroke="#777" stroke-width="2"/>
+      <text id="sb2-sealabel" class="sb2-txt" x="30" y="490" font-size="20">SEA LEVEL</text>
+      <line id="sb2-floorline" x1="0" y1="799" x2="1180" y2="799" stroke="#777" stroke-width="2" stroke-dasharray="14 10"/>
+      <text id="sb2-floorlabel" class="sb2-txt" x="30" y="815" font-size="20">CALDERA FLOOR &minus;279 M</text>
+      <text id="sb2-swlabel" class="sb2-txt" x="30" y="560" font-size="20">SW</text>
+      <text id="sb2-nelabel" class="sb2-txt" x="1120" y="560" font-size="20">NE</text>
+
+      <line id="sb2-scalebar" x1="40" y1="1000" x2="290" y2="1000" stroke="#999" stroke-width="3"/>
+      <text id="sb2-scalebar-label" class="sb2-txt" x="40" y="985" font-size="16">500 M</text>
+      <text id="sb2-vscale" class="sb2-txt" x="40" y="1040" font-size="14">2&times; VERTICAL EXAGGERATION &middot; HEIGHTS ABOVE SEA LEVEL &middot; ANGLES ON THE UNDERWATER SLOPE</text>
+
+      <polygon id="sb2-rock-before" class="sb2-box" points="255,799 568,520 900,182 1180,520 1180,799"/>
+      <line id="sb2-guide24" x1="568" y1="520" x2="255" y2="799" stroke="#7fb2e5" stroke-width="3" stroke-dasharray="12 8"/>
+      <text id="sb2-guide24-label" class="sb2-txt" x="300" y="690" font-size="24">24&deg;</text>
+      <line id="sb2-height338" x1="960" y1="182" x2="960" y2="520" stroke="#aaa" stroke-width="2"/>
+      <text id="sb2-height338-label" class="sb2-txt" x="970" y="360" font-size="18">338 M</text>
+
+      <g id="sb2-block" transform="translate(0,0)">
+        <polygon class="sb2-box" stroke="#e08" points="900,182 568,520 760,520 930,330"/>
+      </g>
+
+      <polygon id="sb2-rock-after" class="sb2-box" points="274,799 760,520 800,533 860,533 900,520 1000,410 1180,520 1180,799" opacity="0"/>
+      <line id="sb2-guide16" x1="760" y1="520" x2="274" y2="799" stroke="#e74c3c" stroke-width="3" stroke-dasharray="12 8" opacity="0"/>
+      <text id="sb2-guide16-label" class="sb2-txt" x="330" y="740" font-size="24" opacity="0">16&deg;</text>
+      <line id="sb2-height110" x1="1060" y1="410" x2="1060" y2="520" stroke="#aaa" stroke-width="2" opacity="0"/>
+      <text id="sb2-height110-label" class="sb2-txt" x="1070" y="470" font-size="18" opacity="0">110 M</text>
+      <text id="sb2-craterlabel" class="sb2-txt" x="770" y="545" font-size="14" opacity="0">CRATER LAKE</text>
+
+      <path id="sb2-debris" class="sb2-box" stroke="#e08" d="M0,799 L0,760 Q60,729 130,745 Q190,729 250,799 Z" opacity="0"/>
+      <text id="sb2-debrislabel" class="sb2-txt" x="20" y="720" font-size="16" opacity="0">BLOCKS UP TO 70 M</text>
+    </g>
+  </svg>
+
+  <div id="sb2-panel">
+    <div id="sb2-eyebrow" class="sb2-txt" style="font-size:22px;">THE SLOPE IT FELL FROM</div>
+    <div id="sb2-headline" class="sb2-txt" style="font-size:52px;margin-top:14px;">It was gentler.</div>
+    <div id="sb2-sub" class="sb2-txt" style="font-size:26px;margin-top:14px;font-style:italic;">the fall took the steep face and left a ramp</div>
+    <div id="sb2-row1" style="margin-top:60px;">
+      <span id="sb2-row1-value" class="sb2-txt" style="font-size:84px;display:block;">24&deg;</span>
+      <span id="sb2-row1-label" class="sb2-txt" style="font-size:19px;">UNDER WATER, BEFORE</span>
+      <div id="sb2-row1-sub" class="sb2-txt" style="font-size:30px;">steep, overloaded</div>
+    </div>
+    <div id="sb2-row2" style="margin-top:40px;">
+      <span id="sb2-row2-value" class="sb2-txt" style="font-size:84px;display:block;">16&deg;</span>
+      <span id="sb2-row2-label" class="sb2-txt" style="font-size:19px;">UNDER WATER, AFTER</span>
+      <div id="sb2-row2-sub" class="sb2-txt" style="font-size:30px;">lower, wider ramp</div>
+    </div>
+    <div id="sb2-note" class="sb2-txt" style="font-size:26px;margin-top:50px;">The island growing back today is growing on different ground than the one that fell.</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#sb2-";
+
+  tl.set(P + "panel", { x: 660 });
+  tl.set([P + "row1", P + "row2", P + "note", P + "eyebrow", P + "headline", P + "sub"], { autoAlpha: 0 });
+
+  tl.to(P + "panel", { x: 0, duration: 0.7, ease: "power3.out" }, 0);
+  tl.fromTo(P + "eyebrow", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.1);
+  tl.fromTo(P + "headline", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 0.4);
+  tl.fromTo(P + "sub", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 0.9);
+
+  // diagram intro
+  tl.fromTo([P + "sealine", P + "sealabel", P + "floorline", P + "floorlabel", P + "swlabel", P + "nelabel",
+    P + "scalebar", P + "scalebar-label", P + "vscale"], { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.03 }, 0.1);
+  tl.fromTo([P + "rock-before", P + "guide24", P + "guide24-label"], { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.7 }, 0.6);
+
+  // "338 M" tick 2.0
+  tl.fromTo([P + "height338", P + "height338-label"], { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 2.0);
+
+  // row1 + 24 pulse 4.2
+  tl.fromTo(P + "row1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 4.2);
+  tl.to(P + "guide24", { scale: 1.12, duration: 0.3, yoyo: true, repeat: 1, svgOrigin: "568 520" }, 4.2);
+
+  // block detaches 5.2
+  tl.to(P + "block", { scale: 1.06, duration: 0.3, yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, 5.2);
+  // slides 5.6-6.8
+  tl.to(P + "block", { x: -520, y: 330, rotation: -18, duration: 1.2, ease: "power2.in" }, 5.6);
+
+  // before -> after crossfade 6.0-6.6
+  tl.to([P + "rock-before", P + "guide24", P + "guide24-label"], { autoAlpha: 0, duration: 0.6 }, 6.0);
+  tl.to(P + "height338", { opacity: 0.35, duration: 0.6 }, 6.0);
+  tl.to(P + "height338-label", { opacity: 0.35, duration: 0.6 }, 6.0);
+  tl.fromTo(P + "rock-after", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 6.0);
+
+  // row2 + 16 guide + 110M 6.6
+  tl.fromTo(P + "row2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 6.6);
+  tl.fromTo([P + "guide16", P + "guide16-label"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 6.6);
+  tl.fromTo([P + "height110", P + "height110-label"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 6.6);
+  tl.fromTo(P + "craterlabel", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 6.6);
+
+  // block lands -> debris ~6.7
+  tl.to(P + "block", { autoAlpha: 0, duration: 0.25 }, 6.7);
+  tl.fromTo([P + "debris", P + "debrislabel"], { autoAlpha: 0, scale: 0.85, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.4 }, 6.7);
+
+  // ramp emphasis 9.8
+  tl.to(P + "guide16", { scale: 1.1, duration: 0.3, yoyo: true, repeat: 1, svgOrigin: "760 520" }, 9.8);
+
+  // note 15.5
+  tl.fromTo(P + "note", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 15.5);
+
+  // continuous element: slow scale push on the whole diagram, 30s
+  tl.fromTo(P + "diagram", { scale: 1.0, transformOrigin: "50% 50%" }, { scale: 1.02, duration: 30, ease: "none" }, 0);
+
+  // panel exit 29.4
+  tl.to(P + "panel", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 29.4);
+
+  window.__timelines["g-slope-sb2"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
