@@ -21,42 +21,43 @@
 
     <div class="sc-diagram" id="sc-diagram">
       <svg id="sc-svg" viewBox="0 0 1180 1080" width="1180" height="1080" style="position:absolute;left:0;top:0;">
-        <!-- caldera bowl fill placeholder -->
-        <rect class="sc-scaffold-box" x="60" y="450" width="1080" height="500" />
-        <!-- sea level line (real dashed line, not a filled shape) -->
-        <line id="sc-sea-line" x1="60" y1="450" x2="1140" y2="450" stroke="#ffffff" stroke-width="2" stroke-dasharray="10 8" />
+        <!-- caldera water fill (below sea level, above floor) -->
+        <path d="M60,450 L1140,450 L1140,920 Q900,940 590,955 Q400,970 60,930 Z" fill="rgba(127,178,229,0.08)" />
+
+        <!-- sea level line -->
+        <line id="sc-sea-line" x1="60" y1="450" x2="1140" y2="450" stroke="#dfe7ee" stroke-width="2" stroke-dasharray="10 8" />
         <text class="sc-svglabel" x="70" y="435">SEA LEVEL</text>
         <!-- caldera floor -->
-        <path id="sc-floor" d="M60,930 Q400,970 590,955 Q900,940 1140,920" fill="none" stroke="#ffffff" stroke-width="3" stroke-dasharray="4 4" />
-        <text class="sc-svglabel" x="70" y="955">CALDERA FLOOR</text>
+        <path id="sc-floor" d="M60,930 Q400,970 590,955 Q900,940 1140,920" fill="none" stroke="#93a3b2" stroke-width="3" stroke-dasharray="4 4" />
+        <text class="sc-svglabel" x="70" y="905">CALDERA FLOOR</text>
 
-        <!-- BEFORE cone (scaffold box standing for the filled cone shape) -->
-        <rect id="sc-cone-before" class="sc-scaffold-box" x="280" y="140" width="620" height="800" />
-        <text class="sc-svglabel" x="545" y="135">338 M</text>
+        <!-- BEFORE cone (real polygon) -->
+        <polygon id="sc-cone-before" points="520,140 280,950 900,940" fill="#1b232c" stroke="#3a4552" stroke-width="2" />
+        <text class="sc-svglabel" id="sc-label-338" x="545" y="130">338 M</text>
 
-        <!-- 27deg guide (real dashed lines, these ARE the final guide look) -->
+        <!-- 27deg guide -->
         <g id="sc-guide-27">
           <line x1="520" y1="140" x2="520" y2="940" stroke="#7fb2e5" stroke-width="2" stroke-dasharray="6 6" />
           <line x1="520" y1="140" x2="900" y2="940" stroke="#d8a13a" stroke-width="2" stroke-dasharray="6 6" />
-          <text class="sc-svglabel" x="670" y="380">27&#176;</text>
+          <text class="sc-tick" x="660" y="375">27&#176;</text>
         </g>
 
-        <!-- AFTER cone (scaffold box) -->
-        <rect id="sc-cone-after" class="sc-scaffold-box" x="280" y="480" width="770" height="460" style="opacity:0" />
-        <text class="sc-svglabel" id="sc-label-110" x="545" y="475" style="opacity:0">110 M</text>
+        <!-- AFTER cone (real polygon) -->
+        <polygon id="sc-cone-after" points="520,480 280,950 1050,940" fill="#1b232c" stroke="#3a4552" stroke-width="2" style="opacity:0" />
+        <text class="sc-svglabel" id="sc-label-110" x="545" y="470" style="opacity:0">110 M</text>
 
         <!-- 16deg guide -->
         <g id="sc-guide-16" style="opacity:0">
           <line x1="520" y1="480" x2="520" y2="940" stroke="#7fb2e5" stroke-width="2" stroke-dasharray="6 6" />
           <line x1="520" y1="480" x2="1050" y2="940" stroke="#d8a13a" stroke-width="2" stroke-dasharray="6 6" />
-          <text class="sc-svglabel" x="700" y="618">16&#176;</text>
+          <text class="sc-tick" x="695" y="615">16&#176;</text>
         </g>
 
-        <!-- sliding block (scaffold box) -->
-        <rect id="sc-block" class="sc-scaffold-box" x="665" y="505" width="90" height="70" stroke="#8e2020" />
+        <!-- sliding block -->
+        <rect id="sc-block" x="665" y="505" width="90" height="70" fill="#8e2020" stroke="#e74c3c" stroke-width="2" />
 
-        <!-- debris pile (scaffold box) -->
-        <rect id="sc-debris" class="sc-scaffold-box" x="750" y="900" width="200" height="45" stroke="#8e2020" style="opacity:0" />
+        <!-- debris pile -->
+        <path id="sc-debris" d="M745,945 Q790,890 845,908 Q905,878 955,945 Z" fill="#8e2020" stroke="#e74c3c" stroke-width="1.5" style="opacity:0" />
 
         <!-- continuous element: drifting sea shimmer dashes -->
         <g id="sc-shimmer">
