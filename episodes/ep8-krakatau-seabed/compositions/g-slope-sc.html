@@ -126,8 +126,8 @@
   tl.fromTo("#sc-row2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 6.4);
   tl.fromTo("#sc-guide-16", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 6.4);
 
-  // collapse resolves at 6.8: before cone / 27 guide / 338M out, after cone / debris / 110M in
-  tl.to(["#sc-cone-before", "#sc-guide-27"], { autoAlpha: 0, duration: 0.4 }, 6.8);
+  // collapse resolves at 6.8: before cone / 27 guide / 338M / block out, after cone / debris / 110M in
+  tl.to(["#sc-cone-before", "#sc-guide-27", "#sc-label-338", "#sc-block"], { autoAlpha: 0, duration: 0.35 }, 6.8);
   tl.fromTo(["#sc-cone-after", "#sc-label-110", "#sc-debris"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 6.8);
 
   // "lower, wider ramp" 9.8 -> ramp emphasis
