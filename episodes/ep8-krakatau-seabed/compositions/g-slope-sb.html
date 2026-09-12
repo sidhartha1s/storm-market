@@ -114,7 +114,7 @@ window.__timelines = window.__timelines || {};
 
   // "twenty seven" 4.2 -> row1 + 27 emphasis
   tl.fromTo(P + "row1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 4.2);
-  tl.to(P + "guide27", { scale: 1.12, duration: 0.3, yoyo: true, repeat: 1, transformOrigin: "50% 50%", svgOrigin: "480 130" }, 4.2);
+  tl.to(P + "guide27", { scale: 1.15, duration: 0.35, ease: "power2.out", yoyo: true, repeat: 1, svgOrigin: "480 130" }, 4.2);
 
   // collapse 5.6-6.8: block slides down the 27 flank toward the debris pile
   tl.to(P + "block", { x: 850, y: 786, rotation: 26, duration: 1.2, ease: "power2.in" }, 5.6);
