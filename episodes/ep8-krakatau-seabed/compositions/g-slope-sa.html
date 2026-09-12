@@ -76,7 +76,9 @@
 (function(){
   var tl = gsap.timeline({paused:true});
 
-  // continuous element for the full 30s: drifting sea-surface line
+  // continuous element for the full 30s: slow scale push on the whole diagram
+  tl.to("#sa-diagram-group", {scale:1.02, transformOrigin:"50% 100%", duration:3, ease:"sine.inOut", yoyo:true, repeat:9}, 0);
+  // plus a drifting sea-surface line for extra texture
   tl.to("#sa-sea-line", {x:"+=30", duration:3, ease:"sine.inOut", yoyo:true, repeat:9}, 0);
 
   // opening reveals
