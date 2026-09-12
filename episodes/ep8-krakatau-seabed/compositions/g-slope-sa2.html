@@ -1,0 +1,174 @@
+<template>
+<style>
+  #root[data-composition-id="g-slope-sa2"]{
+    position:relative; width:1920px; height:1080px; overflow:hidden;
+    background:transparent; font-family:Arial, sans-serif;
+  }
+  #root[data-composition-id="g-slope-sa2"] svg{position:absolute; left:0; top:0;}
+  .sa2-dlabel{font-family:Arial,sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2;}
+  .sa2-dlabel-sm{font-family:Arial,sans-serif; font-weight:700; font-size:16px; letter-spacing:2px; fill:#93a3b2;}
+  #sa2-panel{
+    position:absolute; left:1180px; top:0; width:740px; height:1080px;
+    background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0));
+    padding:96px 70px 0 120px; box-sizing:border-box; color:#dfe7ee;
+  }
+  .sa2-eyebrow{font-family:Arial,sans-serif; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2;}
+  .sa2-headline{font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px; color:#f2f5f8; margin-top:16px; line-height:1.1;}
+  .sa2-sub{font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:18px;}
+  .sa2-row{display:flex; align-items:baseline; gap:26px; margin-top:44px;}
+  .sa2-row-value{font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:84px; line-height:1;}
+  .sa2-row-value.sa2-before{color:#7fb2e5;}
+  .sa2-row-value.sa2-after{color:#e74c3c;}
+  .sa2-row-text{display:flex; flex-direction:column; gap:8px;}
+  .sa2-row-label{font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:4px; color:#93a3b2;}
+  .sa2-row-sub{font-family:Arial,sans-serif; font-weight:700; font-size:30px; color:#dfe7ee;}
+  .sa2-note{font-family:Arial,sans-serif; font-size:26px; color:#dfe7ee; margin-top:46px; line-height:1.35; max-width:540px;}
+</style>
+<div id="root" data-composition-id="g-slope-sa2" data-width="1920" data-height="1080">
+  <svg id="sa2-diagram" width="1180" height="1080" viewBox="0 0 1180 1080">
+    <defs>
+      <linearGradient id="sa2-rockGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#5b4a3f"></stop>
+        <stop offset="100%" stop-color="#2a221d"></stop>
+      </linearGradient>
+      <linearGradient id="sa2-seaGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#1d3b57"></stop>
+        <stop offset="100%" stop-color="#07131f"></stop>
+      </linearGradient>
+    </defs>
+
+    <rect x="0" y="520" width="1180" height="560" fill="url(#sa2-seaGrad)"></rect>
+
+    <g id="sa2-diagram-group">
+      <line id="sa2-sea-line" x1="0" y1="520" x2="1180" y2="520" stroke="#7fb2e5" stroke-width="2" opacity="0.6"></line>
+      <text id="sa2-sea-label" class="sa2-dlabel" x="30" y="490">SEA LEVEL</text>
+
+      <line id="sa2-floor-line" x1="0" y1="799" x2="1180" y2="799" stroke="#93a3b2" stroke-width="2.5" stroke-dasharray="10,8"></line>
+      <text id="sa2-floor-label" class="sa2-dlabel" x="30" y="815">CALDERA FLOOR &#8722;279 M</text>
+
+      <text id="sa2-sw-label" class="sa2-dlabel" x="30" y="560">SW</text>
+      <text id="sa2-ne-label" class="sa2-dlabel" x="1120" y="560">NE</text>
+
+      <line id="sa2-scalebar" x1="40" y1="1000" x2="290" y2="1000" stroke="#93a3b2" stroke-width="4"></line>
+      <line x1="40" y1="992" x2="40" y2="1008" stroke="#93a3b2" stroke-width="4"></line>
+      <line x1="290" y1="992" x2="290" y2="1008" stroke="#93a3b2" stroke-width="4"></line>
+      <text id="sa2-scalebar-label" class="sa2-dlabel" x="165" y="985" text-anchor="middle">500 M</text>
+      <text id="sa2-exagg-caption" x="40" y="1040" fill="#93a3b2" font-family="Arial" font-weight="700" font-size="15" letter-spacing="1">2&#215; VERTICAL EXAGGERATION &#183; HEIGHTS ABOVE SEA LEVEL &#183; ANGLES ON THE UNDERWATER SLOPE</text>
+
+      <path id="sa2-cone-before" d="M 900,182 L 568,520 L 255,799 L 1180,799 L 1180,520 Z" fill="url(#sa2-rockGrad)"></path>
+      <path id="sa2-cone-after" d="M 760,520 L 900,535 L 1000,410 L 1180,520 L 1180,799 L 120,799 Z" fill="url(#sa2-rockGrad)" opacity="0"></path>
+
+      <line id="sa2-tick338" x1="960" y1="520" x2="960" y2="182" stroke="#d8a13a" stroke-width="2"></line>
+      <text id="sa2-label338" class="sa2-dlabel" fill="#d8a13a" x="960" y="172" text-anchor="middle" opacity="0">338 M</text>
+
+      <line id="sa2-tick110" x1="1060" y1="520" x2="1060" y2="410" stroke="#d8a13a" stroke-width="2" opacity="0"></line>
+      <text id="sa2-label110" class="sa2-dlabel" fill="#d8a13a" x="1060" y="400" text-anchor="middle" opacity="0">110 M</text>
+
+      <text id="sa2-crater-label" class="sa2-dlabel-sm" x="770" y="545" opacity="0">CRATER LAKE</text>
+
+      <path id="sa2-debris" d="M 0,799 L 20,760 L 45,799 L 70,732 L 95,799 L 110,799 Z" fill="#8e2020" opacity="0"></path>
+      <text id="sa2-debris-label" class="sa2-dlabel" x="20" y="700" opacity="0">BLOCKS UP TO 70 M</text>
+
+      <line id="sa2-guide24" x1="568" y1="520" x2="255" y2="799" stroke="#7fb2e5" stroke-width="2.5" stroke-dasharray="12,9" opacity="0"></line>
+      <text id="sa2-label24" class="sa2-dlabel" fill="#7fb2e5" x="300" y="690" opacity="0">24&#176;</text>
+
+      <line id="sa2-guide16" x1="760" y1="520" x2="120" y2="799" stroke="#e74c3c" stroke-width="2.5" stroke-dasharray="12,9" opacity="0"></line>
+      <text id="sa2-label16" class="sa2-dlabel" fill="#e74c3c" x="460" y="610" opacity="0">16&#176;</text>
+
+      <path id="sa2-block" d="M 900,182 L 568,520 L 760,520 L 930,330 Z" fill="#8e2020" opacity="0"></path>
+    </g>
+  </svg>
+
+  <div id="sa2-panel">
+    <div id="sa2-eyebrow" class="sa2-eyebrow">THE SLOPE IT FELL FROM</div>
+    <div id="sa2-headline" class="sa2-headline">It was gentler.</div>
+    <div id="sa2-sub" class="sa2-sub">the fall took the steep face and left a ramp</div>
+    <div id="sa2-row1" class="sa2-row">
+      <div id="sa2-row1-value" class="sa2-row-value sa2-before">24&#176;</div>
+      <div class="sa2-row-text">
+        <div class="sa2-row-label">UNDER WATER, BEFORE</div>
+        <div class="sa2-row-sub">steep, overloaded</div>
+      </div>
+    </div>
+    <div id="sa2-row2" class="sa2-row">
+      <div id="sa2-row2-value" class="sa2-row-value sa2-after">16&#176;</div>
+      <div class="sa2-row-text">
+        <div class="sa2-row-label">UNDER WATER, AFTER</div>
+        <div class="sa2-row-sub">lower, wider ramp</div>
+      </div>
+    </div>
+    <div id="sa2-note" class="sa2-note">The island growing back today is growing on different ground than the one that fell.</div>
+  </div>
+</div>
+<script>
+(function(){
+  var tl = gsap.timeline({paused:true});
+
+  // continuous element for the full 30s: one unbroken slow scale push (single tween, no repeat,
+  // so its own .duration() spans the window and registers as continuous motion)
+  tl.to("#sa2-diagram-group", {scale:1.035, transformOrigin:"50% 100%", duration:29, ease:"none"}, 0.2);
+
+  // panel entrance
+  tl.fromTo("#sa2-panel", {x:660}, {x:0, duration:0.7, ease:"power3.out"}, 0);
+
+  // opening reveals: datum, orientation, scale, before-island
+  tl.fromTo("#sa2-sea-line, #sa2-sea-label", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.6, ease:"power2.out"}, 0);
+  tl.fromTo("#sa2-floor-line, #sa2-floor-label", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.6, ease:"power2.out"}, 0.1);
+  tl.fromTo("#sa2-sw-label, #sa2-ne-label", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.6, ease:"power2.out"}, 0.2);
+  tl.fromTo("#sa2-scalebar, #sa2-scalebar-label, #sa2-exagg-caption", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.6, ease:"power2.out"}, 0.3);
+  tl.fromTo("#sa2-cone-before", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.8, ease:"power2.out"}, 0.25);
+  tl.fromTo("#sa2-eyebrow", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.6, ease:"power2.out"}, 0.1);
+
+  // "gentler" 0.4 -> headline
+  tl.fromTo("#sa2-headline", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.6, ease:"power2.out"}, 0.4);
+  tl.fromTo("#sa2-sub", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.6, ease:"power2.out"}, 1.2);
+
+  // "338 M" tick 2.0
+  tl.fromTo("#sa2-label338", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.6, ease:"power2.out"}, 2.0);
+
+  // row1 + 24deg pulse 4.2
+  tl.fromTo("#sa2-row1", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.6, ease:"power2.out"}, 4.2);
+  tl.fromTo("#sa2-guide24, #sa2-label24", {autoAlpha:0}, {autoAlpha:1, duration:0.5, ease:"power2.out"}, 4.2);
+  tl.fromTo("#sa2-row1-value", {scale:1.15}, {scale:1, duration:0.4, ease:"back.out(2)"}, 4.2);
+  tl.fromTo("#sa2-guide24", {opacity:0.6}, {opacity:1, duration:0.3, yoyo:true, repeat:1}, 4.2);
+
+  // block detaches 5.2
+  tl.fromTo("#sa2-block", {autoAlpha:0}, {autoAlpha:1, duration:0.3, ease:"power1.out"}, 5.2);
+
+  // block slides 5.6-6.8, fading out from 6.3 as debris fades in
+  tl.to("#sa2-block", {x:-520, y:330, rotation:-18, duration:1.2, ease:"power2.inOut"}, 5.6);
+  tl.to("#sa2-block", {autoAlpha:0, duration:0.5, ease:"power1.inOut"}, 6.3);
+
+  // 24deg guide gone before the 16deg guide appears
+  tl.to("#sa2-guide24, #sa2-label24", {autoAlpha:0, duration:0.6, ease:"power1.inOut"}, 5.6);
+
+  // before -> after crossfade 6.0-6.6
+  tl.to("#sa2-cone-before", {autoAlpha:0, duration:0.6, ease:"power1.inOut"}, 6.0);
+  tl.fromTo("#sa2-cone-after", {autoAlpha:0}, {autoAlpha:1, duration:0.6, ease:"power1.inOut"}, 6.0);
+  tl.to("#sa2-label338", {opacity:0.35, duration:0.6, ease:"power1.inOut"}, 6.0);
+
+  // debris fades in as the block fades out
+  tl.fromTo("#sa2-debris, #sa2-debris-label", {autoAlpha:0}, {autoAlpha:1, duration:0.6, ease:"power1.inOut"}, 6.3);
+
+  // row2 + 16deg guide + "110 M" 6.6
+  tl.fromTo("#sa2-row2", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.6, ease:"power2.out"}, 6.6);
+  tl.fromTo("#sa2-guide16, #sa2-label16", {autoAlpha:0}, {autoAlpha:1, duration:0.6, ease:"power2.out"}, 6.6);
+  tl.fromTo("#sa2-tick110, #sa2-label110", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.6, ease:"power2.out"}, 6.6);
+  tl.fromTo("#sa2-crater-label", {autoAlpha:0}, {autoAlpha:1, duration:0.6, ease:"power2.out"}, 6.6);
+  tl.fromTo("#sa2-row2-value", {scale:1.15}, {scale:1, duration:0.4, ease:"back.out(2)"}, 6.6);
+
+  // ramp emphasis (stroke pulse) 9.8
+  tl.fromTo("#sa2-guide16", {opacity:1}, {opacity:0.4, duration:0.35, yoyo:true, repeat:1, ease:"power1.inOut"}, 9.8);
+  tl.fromTo("#sa2-label16", {scale:1}, {scale:1.25, duration:0.35, yoyo:true, repeat:1, ease:"power1.inOut"}, 9.8);
+
+  // note 15.5
+  tl.fromTo("#sa2-note", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.6, ease:"power2.out"}, 15.5);
+
+  // panel exit 29.4
+  tl.to("#sa2-panel", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 29.4);
+
+  window.__timelines = window.__timelines || {};
+  window.__timelines["g-slope-sa2"] = tl;
+})();
+</script>
+</template>
