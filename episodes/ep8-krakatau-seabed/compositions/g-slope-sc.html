@@ -100,13 +100,12 @@
   gsap.set(["#sc-headline", "#sc-eyebrow", "#sc-sub", "#sc-row1", "#sc-row2", "#sc-note"], { autoAlpha: 0, y: 24 });
   gsap.set("#sc-cone-after, #sc-label-110, #sc-guide-16, #sc-debris", { autoAlpha: 0 });
   gsap.set("#sc-block", { x: 0, y: 0 });
-  gsap.set(["#sc-cone-before", "#sc-guide-27", "#sc-svglabel"], { autoAlpha: 1 });
 
   // panel entrance
   tl.fromTo("#sc-panel", { x: 660 }, { x: 0, duration: 0.7, ease: "power3.out" }, 0);
 
-  // base diagram reveal (bowl, before cone, sea/floor, 338M, 27 guide)
-  tl.fromTo(["#sc-cone-before", "#sc-guide-27", "#sc-sea-line", "#sc-floor"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 0);
+  // base diagram reveal (water/floor/sea labels, before cone, 338M, 27 guide)
+  tl.fromTo(["#sc-cone-before", "#sc-guide-27", "#sc-sea-line", "#sc-floor", "#sc-label-sea", "#sc-label-floor", "#sc-label-338"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 0);
 
   // eyebrow
   tl.fromTo("#sc-eyebrow", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 0.1);
