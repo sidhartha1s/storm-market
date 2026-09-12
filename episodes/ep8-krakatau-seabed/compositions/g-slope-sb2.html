@@ -124,8 +124,7 @@ window.__timelines = window.__timelines || {};
 
   // before -> after crossfade 6.0-6.6
   tl.to([P + "rock-before", P + "guide24", P + "guide24-label"], { autoAlpha: 0, duration: 0.6 }, 6.0);
-  tl.to(P + "height338", { opacity: 0.35, duration: 0.6 }, 6.0);
-  tl.to(P + "height338-label", { opacity: 0.35, duration: 0.6 }, 6.0);
+  tl.to([P + "height338", P + "height338-tick1", P + "height338-tick2", P + "height338-label"], { opacity: 0.35, duration: 0.6 }, 6.0);
   tl.fromTo(P + "rock-after", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 6.0);
   tl.fromTo(P + "craterlake", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 6.0);
 
