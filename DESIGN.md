@@ -344,6 +344,8 @@ Never a flat `#000`/`#0a1017` fill behind a graphic — always the textured radi
   spin column; `scale+rotation` over 12s on the supercell). A graphic longer than ~20s MUST carry
   a continuous element, not just discrete reveals.
 Fade-only graphics are a fail. Target ≥1 scale/slide tween per 2 reveals.
+- **Un-positioned `tl.set()`/`tl.to()` land at the END of the timeline as built so far** — a late tween inserted above them
+  silently shifts them (g-slope 2026-09-12: the panel vanished at 5.5 s). Every set/to carries an explicit position.
 - **Panel exit TIMING:** the slide-right exit above is REQUIRED —
   a panel slides out `x:980, autoAlpha:0`, it does not vanish. But time it to the END of the
   panel's window: anchor the exit to the comp's last ~0.6s AND keep the comp duration ≥ its host
@@ -360,6 +362,11 @@ word-synced beats. Author beats against `audio/<seg>.words.json` and leave the s
 in a code comment, ep2-style: `/* FUEL @4.74; 1,000 @16.6; 2,000 @20.8 */`.
 
 ## 7. Explain with a diagram, never a label on a shape
+**A diagram is a claim (owner 2026-09-12).** Every bespoke diagram is briefed on `references/mg-brief-template.md`
+BEFORE anyone draws: SOURCE figure it traces, DATUM / SCALE / ORIENTATION, geometry in px, and a MUST-BE-TRUE list with
+ratios, all numbers confirmed. Review order is fixed: meaning (the truths) → layout → motion → code gate; a truths failure
+ends the review. The orchestrator reads one final frame itself against the truths; vision-agent verdicts get that
+spot-check every time (g-slope: a reader passed a diagram with the island drawn under water).
 ep2 built real widgets: a CAPE gauge with gradient fill, a layered lid cross-section, staggered
 shear arrows + rotating column, a conic-gradient supercell. A cone captioned "tornado" or a line
 captioned "warm air" conveys nothing — build the mechanism, animate it, let the label name it.

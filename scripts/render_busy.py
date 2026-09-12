@@ -9,7 +9,7 @@ playwright_env.mjs), optimize_clips.py, and the slice/draft launchers.
 Owner rule (2026-09-11): keep ≥1 GB free for the whole render, no compromise. Two capture
 workers take ~3 GB, so a launch needs ≥4 GB free (RENDER_MIN_FREE_GB overrides).
 
-Exit 0 = clear. Exit 3 = a render is running or RAM is short (details printed).
+Exit 0 = clear. Exit 3 = a render is running, or (with --launch) RAM is under the floor.
 RENDER_BUSY_OK=1 overrides, for the case where the render itself is the thing being tested.
 """
 import os
@@ -42,8 +42,9 @@ if __name__ == "__main__":
         for l in live:
             print("   ", l[:160])
         sys.exit(3)
+    # the RAM floor protects a RENDER about to start (--launch); a gate's single headless Chromium (~300 MB) only needs 'no render alive'
     free = free_gb()
-    if free < MIN_FREE_GB:
+    if "--launch" in sys.argv and free < MIN_FREE_GB:
         print(f"[render_busy] REFUSING — {free:.1f} GB free, need {MIN_FREE_GB:g} GB so the render keeps ≥1 GB headroom (owner 2026-09-11). Close a browser or wait.")
         sys.exit(3)
     print(f"[render_busy] OK — no render alive, {free:.1f} GB free")
