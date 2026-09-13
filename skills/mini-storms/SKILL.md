@@ -139,6 +139,9 @@ Mount Paul's 240 px circle per FORMAT.md "Presenter circle": two loops cut from 
 narration speech spans, hidden in the hook / CTA / close. Deliverables: `master_deliverables.py` → the 1080p
 `-master.mp4` IS the upload file + SRT; no upscale step, the owner upscales by hand (2026-09-09).
 
+### 6b. Humanise pass (owner 2026-09-13)
+Before TTS, run `references/humanise-rules.md` rules 2–14 line by line on the whole script; keep the diff in the episode folder.
+
 ### 7–9. QC, render, ship
 Same scripts and hidden-window rules as storm-episode. Static gates → 3–5 slice renders (40 s windows at 10 fps
 around every new card, the CTA and the close; strip read by a subagent) → ONE draft → owner preview → full.
