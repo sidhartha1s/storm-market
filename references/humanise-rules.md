@@ -1,0 +1,54 @@
+# humanise-rules.md — narration rules that keep a script from reading as AI (owner-supplied doc, 2026-09-13)
+
+> Source: the owner's "YouTube Script Rules for Your LLM" (Google Doc 1xja9b4nQwis8AwEar8JMPkKVFNFJxLv2c6-Yq7GbBIs), applied
+> to every Warning Hour script from Krakatau #5 on. Read order: `script-os.md` → `script-framework.md` → THIS FILE →
+> `script-scaling.md` → DESIGN.md. When a rule and instinct disagree, the rule wins. Owner's hypothesis: distribution now
+> reads transcripts; a script that scans as AI gets fewer impressions however strong the packaging. The pre-TTS
+> "humanise pass" runs rules 2–14 line by line and returns only the clean script.
+
+1. **Facts carry the point.** Put the facts next to each other; never narrate the conclusion on top of them.
+2. **No painting the picture.** No "picture this / imagine", no second-person nostalgia, no hypothetical cinematic scenes,
+   no personified companies, buildings, mountains. Name the thing in one plain sentence and move on.
+3. **No borrowed metaphors.** No icebergs, dominoes, ticking clocks, perfect storms, house of cards, tapestries. If the
+   comparison could be pasted into another script, delete it and state what happened.
+4. **Do not announce the move.** Banned openers: here's the thing / here's why this matters / here's the kicker / get
+   this / let me walk you through / let me be honest / picture / imagine / notice / consider / do the math / run the
+   numbers / start with / which brings us to / buckle up / let's dive in / sit with that / let that sink in / make no
+   mistake / what you need to understand is / what makes this different is. Delete the opener, start with the fact.
+5. **Banned words:** delve, furthermore, moreover, additionally, comprehensive, crucial/critical/essential as filler,
+   robust, unprecedented, leverage, foster, seamless, elevate, navigate (figurative), game-changer, paradigm, tapestry,
+   landscape (figurative), realm, testament, underscore (verb), pivotal, groundbreaking, transformative, multifaceted,
+   intricate, nuanced, myriad, plethora, embark, journey (figurative), unlock, harness, empower, resonate, vibrant,
+   bustling, nestled, meticulous, utilize, facilitate, implement (when "do" works).
+6. **Banned phrases:** a testament to, the landscape of, in today's world, in the ever-evolving, on the other hand,
+   without further ado, it's worth noting, it's important to understand, in conclusion, to summarize, as we've
+   discussed, at the end of the day, when it comes to, plays a crucial role, stands as a, serves as a, is a reminder
+   that, the quiet [anything], what sounds like, what amounts to, in what can only be described as, some say, many
+   experts believe, it's been reported (name the source or cut the claim).
+7. **Banned sentence shapes:** the reveal-flip ("this isn't X, it's Y"; "not late, built for the wrong event"); the
+   drama stack of fragments (one deliberate fragment per script); the question-then-answer fragment ("The result?
+   Bankruptcy."); the anaphora run (3+ sentences opening on the same word); the balanced-contrast engine beyond one per
+   script; the "notice what he didn't do" scaffold; the characterized quote ("what sounded like mercy:"); the aphorism /
+   mirrored-callback ending; the thesis opener ("this is the story of…"); the summary tag ("That's the mechanism.").
+8. **No rhetorical questions in narration.** Write the statement.
+9. **No em dashes.** Period, comma, or parentheses.
+10. **No hedging or filler intensifiers:** arguably, perhaps, kind of, sort of, somewhat, very, really, truly,
+    incredibly, absolutely.
+11. **Specifics over abstractions.** A name, date, number, place or figure every few sentences; exact figures, never
+    rounded ("$2,948", not "about three grand").
+12. **Strong verbs, active voice.** Scan for is/are/was/were/has/have/be/get; every sentence answers "who did what".
+13. **Vary sentence length on purpose.** Short (5–12), medium (15–22), short. Never three of the same length in a row.
+14. **No summaries, recaps, soft exits.** No "so there you have it", no moral, no "in this video".
+15. **Write for the ear.** Read aloud in your head; spell numbers in narration except years and dollar figures;
+    pronunciation notes go after the script, never inside it.
+16. **No fabrication.** No invented quotes, statistics, events. Missing source = leave it out and say so.
+17. **"This sounds AI" = full check of rules 2–14, return only the clean script.**
+
+## House additions (Warning Hour, 2026-09-13)
+- Rule 7 kills two of our reflexes: the reveal-flip ("The warning was not late. It was built for the wrong kind of
+  event.") and the mirrored callback ending ("The physics did not change. The slope did."). Both sat in the #5 draft.
+  Rewrite each as one plain statement or a concrete detail.
+- Retention devices survive as facts, not as announcements: a chapter ends on a question the next chapter answers
+  (script-os rule 3) is allowed only when the question is a real open fact ("Then where did the rock go?"), never a
+  rhetorical one to the viewer.
+- The humanise pass is a gate before TTS, run on the whole script, with a line-by-line diff kept in the episode folder.
