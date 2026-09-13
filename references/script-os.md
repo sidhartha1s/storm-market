@@ -1,6 +1,7 @@
 # script-os.md — the retention engine + three narrative architectures (owner + GPT pass, 2026-09-11)
 
 > Read order for any script: this file → `script-framework.md` (hook doctrine, AV one-product rule) →
+> `humanise-rules.md` (the owner's 17 anti-AI narration rules + house additions; the pre-TTS humanise pass) →
 > `script-scaling.md` (cadence math, loop table, fact-QC) → DESIGN.md (binding AV contract) →
 > `mini-storms/FORMAT.md` "Retention architecture" (the 11 rules from Krakatau #4). This file is the layer above them:
 > ONE engine every video runs on, THREE architectures a video picks from. It exists because our hooks and chapter
@@ -45,6 +46,8 @@ contradiction, escalation, reveal, time shift, location shift, consequence, pres
 materially changes every 60–90 s (new evidence, place, number, person, mechanism, period, implication).
 
 ## Gates before TTS
+- **Humanise pass** (`humanise-rules.md`, rules 2–14 line by line; diff kept in the episode folder). Owner's read (2026-09-13):
+  distribution scans transcripts; strong packaging with an AI-scanning script gets few impressions.
 - **Retention scorecard**, per minute, 1–5 on: new information · curiosity · stakes · visual change · payoff · exit
   hook. Rule: no two consecutive low minutes.
 - **Cut filter**, per sentence: A story-critical · B curiosity-building · C context · D decoration. Cut D, compress C.
