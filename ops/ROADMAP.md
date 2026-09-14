@@ -22,6 +22,10 @@ packaging carried the proper noun. Texas/California El Niño minis: ~100 % US 65
 - Copy the proven shape (title formula, thumb grammar, structure). One more failure is acceptable, not a series.
 - Topic buckets each own a clip pool under `library/mini-storms/<bucket>/`: elnino, krakatau-indonesia, hawaii-lowell,
   japan, nepal, us-flood, us-tornado (evergreen).
+- **Serial recycling (owner 2026-09-14):** one live story = many videos from ONE pool. Each new video carries a new
+  official number, alert level or angle (what happened → who is at risk → what the agency said today → the mechanism
+  → the US stake), the clips re-ordered and re-trimmed, narration written fresh with analysis. That is GWN's Nepal
+  playbook and it stays inside the reused-content policy because the narration and analysis are original each time.
 - Renders run in the main chat and are announced to the owner first. One heavy job at a time.
 - Humanise rules stay strict (`references/humanise-rules.md`).
 

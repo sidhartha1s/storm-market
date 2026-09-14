@@ -19,6 +19,46 @@ Default for us: **A**, with B's data-feed holds (USGS / NOAA / NASA loops, label
 every 2–3 min as credibility anchors. Never AI-only: the AI-stills-only video (n_41Jzj3KPU) is the
 weakest of the set and audiences call out AI inserts by timestamp even at 1k subs.
 
+## Format C · Rolling update — DEFAULT for the news lane from 2026-09-15 (owner 2026-09-14)
+Measured from the four-channel teardown (`references/teardowns/2026-09-14-four-channel-working-topics/`): under a live-hazard
+keyword the videos that surface are present-tense "Latest Updates" on the event, not retention-engineered mini-docs. Our two
+Krakatau mini-docs got 55–60 impressions under the same keyword; the format mismatch was ranked the top controllable cause.
+- **One live story, many videos, one clip pool.** Each new video carries a new official number, alert level or angle
+  (what happened → who is at risk → what the agency said today → the mechanism → the US stake); clips re-ordered and
+  re-trimmed, narration written fresh with analysis (reused-content safe). GWN's Nepal serial: 11 videos, 682 → 3,000 dead.
+- **Order of information, every video:** what is happening right now → hard numbers with an as-of time → where and who →
+  the named agency, quoted verbatim on screen with title → cause or escalation → what is being done → what is still
+  unknown. Framing verbs: "here is where things stand", "as of Tuesday evening", "officials have not confirmed".
+- **Sourcing convention:** "Indonesia's Center for Volcanology and Geological Hazard Mitigation" on first mention, PVMBG
+  after; a named individual only when quoted, always with title. One spoken verbatim quote on screen per video, minimum.
+- **Close:** the unresolved tracking line ("what it left behind has not been counted yet"), then ONE soft line: tell me
+  in the comments where you are watching from, and subscribe for the next update. No resolved ending, no END CTA spine.
+- **Pace:** Paul's TTS at atempo 1.10 (test), timed after the speed-up per script-os.md. Measured fact to respect: GWN's
+  hits run 66–78 wpm over the whole runtime because footage with natural sound breathes between narration blocks; the
+  slowness comes from footage holds, not slow speech. Budget a footage-only hold (natural sound, popfig place label)
+  every 60–90 s.
+- **Skeleton, 12:00 at 165 wpm delivered (scale beats 3, 5, 7 for 10–14 min):**
+
+| # | Beat | Time | Words |
+|---|---|---|---|
+| 1 | Cold open, what is happening right now (title number spoken + popped) | 0:00–0:45 | 124 |
+| 2 | Numbers snapshot, as-of time | 0:45–2:00 | 206 |
+| 3 | Where: ground-level scene, place names on a map | 2:00–4:00 | 330 |
+| 4 | Named agency quote on screen, with title | 4:00–5:30 | 248 |
+| 5 | Cause: how it happened or is escalating (the mechanism the news skipped) | 5:30–8:00 | 413 |
+| 6 | What is being done: response, restrictions, the US stake | 8:00–9:30 | 248 |
+| 7 | What is still unknown: the tracking line | 9:30–11:45 | 371 |
+| 8 | Soft close: one comment + subscribe line | 11:45–12:00 | 41 |
+
+  Paul's ebook CTA stays at the story break (~40 %, between beats 4 and 5). Humanise rules apply in full.
+- **Packaging:** proper noun (volcano, storm, place) dominant in title and thumb, a number in the title, present tense,
+  thumb spell-checked at 300 px, e.g. "Anak Krakatau Erupts Again... And Now Three More" (EarthDesk shape, 175–225k).
+- **Publish window:** GWN's uploads land 00:00–07:00 UTC (US evening); target the same.
+- **Tests before the format is called done:** (1) beat table in packaging.md sums to the target runtime at 165 wpm;
+  (2) humanise pass green; (3) the quote line exists with a source URL in edit_script.md; (4) sweep/overlap/audio gates
+  green; (5) Studio impressions read at 48 h and logged in `ops/tracker.json` before the bucket's next video.
+Formats A and B below remain available for evergreen and explainer topics.
+
 ## Structure (owner rule 2026-09-08)
 HOOK **3–10 s** (one present-tense sentence paying off the title, spoken + red popfig) → INTRO to
 ~1:10 (stakes numbers, open loops, promise) → CHAPTERS → PAYOFF → WARM CLOSE → subscribe.

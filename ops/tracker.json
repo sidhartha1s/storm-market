@@ -9,15 +9,92 @@
     "Static gates green before any render; draft before full."
   ],
   "agents": [
-    {"name": "director (Fable, main chat)", "role": "roadmap, packaging lock, edit assembly, gates, renders, QC", "status": "active"},
-    {"name": "radar (Sonnet)", "role": "live-event scan: USGS, GDACS, GVP/VAAC, NHC, SPC, CPC, Google News; scores topics into the tracker", "status": "to hire"},
-    {"name": "scriptwriter A/B (Sonnet)", "role": "rolling-update script on the 8-beat skeleton, humanise pass, source list", "status": "to hire"},
-    {"name": "sourcer per bucket (Sonnet)", "role": "clip pool per topic bucket (PD spine, agency, licensed), provenance rows, shot descriptions", "status": "to hire"},
-    {"name": "packager (Sonnet)", "role": "3 titles + thumb brief per video, proofread, Studio check", "status": "to hire"}
+    {
+      "name": "director (Fable, main chat)",
+      "role": "roadmap, packaging lock, edit assembly, gates, renders, QC",
+      "status": "active"
+    },
+    {
+      "name": "radar (Sonnet)",
+      "role": "live-event scan: USGS, GDACS, GVP/VAAC, NHC, SPC, CPC, Google News; scores topics into the tracker",
+      "status": "to hire"
+    },
+    {
+      "name": "scriptwriter A/B (Sonnet)",
+      "role": "rolling-update script on the 8-beat skeleton, humanise pass, source list",
+      "status": "to hire"
+    },
+    {
+      "name": "sourcer per bucket (Sonnet)",
+      "role": "clip pool per topic bucket (PD spine, agency, licensed), provenance rows, shot descriptions",
+      "status": "to hire"
+    },
+    {
+      "name": "packager (Sonnet)",
+      "role": "3 titles + thumb brief per video, proofread, Studio check",
+      "status": "to hire"
+    }
   ],
   "videos": [
-    {"slug": "ms-indonesia-four-volcanoes", "lane": "news", "bucket": "krakatau", "title": "Anak Krakatau Erupts Again... And Now Three More", "owner": "director", "due": "2026-09-15", "phase": "packaging", "status": "todo", "note": "first rolling-update test; 1.10 pace; named PVMBG quote", "updated": "2026-09-14 18:40"},
-    {"slug": "ms-elnino-90pct", "lane": "news", "bucket": "elnino", "title": "El Niño Hits 90% Odds, Strongest Since 2015", "owner": "director", "due": "2026-09-15", "phase": "idea", "status": "todo", "note": "CPC advisory as the named source", "updated": "2026-09-14 18:40"},
-    {"slug": "ep-tristate-repackage", "lane": "doc", "bucket": "tornado", "title": "1925 Tri-State Tornado: repackage", "owner": "director", "due": "2026-09-20", "phase": "packaging", "status": "todo", "note": "new title + School A thumb, Studio Test & Compare", "updated": "2026-09-14 18:40"}
+    {
+      "slug": "ms-indonesia-four-volcanoes",
+      "lane": "news",
+      "bucket": "krakatau",
+      "title": "Anak Krakatau Erupts Again... And Now Three More",
+      "owner": "director",
+      "due": "2026-09-15",
+      "phase": "packaging",
+      "status": "todo",
+      "note": "slot A day 1; Format C; PVMBG quote on screen; 1.10 pace",
+      "updated": "2026-09-14 18:40"
+    },
+    {
+      "slug": "ep-tristate-repackage",
+      "lane": "doc",
+      "bucket": "tornado",
+      "title": "1925 Tri-State Tornado: repackage",
+      "owner": "director",
+      "due": "2026-09-20",
+      "phase": "packaging",
+      "status": "todo",
+      "note": "new title + School A thumb, Studio Test & Compare",
+      "updated": "2026-09-14 18:40"
+    },
+    {
+      "slug": "ms-hawaii-lowell-outages",
+      "lane": "news",
+      "bucket": "hawaii-lowell",
+      "title": "Hawaii Still Counting Lowell's Power Outages",
+      "owner": "director",
+      "due": "2026-09-15",
+      "phase": "idea",
+      "status": "todo",
+      "note": "slot B day 1; Hawaii EMA / Hawaiian Electric as named source; US stake",
+      "updated": "2026-09-14 22:30"
+    },
+    {
+      "slug": "ms-sakurajima-ash",
+      "lane": "news",
+      "bucket": "japan",
+      "title": "Sakurajima: JMA holds Level 3 (placeholder)",
+      "owner": "director",
+      "due": "2026-09-16",
+      "phase": "idea",
+      "status": "todo",
+      "note": "slot A day 2; number locked by radar",
+      "updated": "2026-09-14 22:30"
+    },
+    {
+      "slug": "ms-elnino-cpc-today",
+      "lane": "news",
+      "bucket": "elnino",
+      "title": "CPC: El Niño Odds Above 90% (what the agency said today)",
+      "owner": "director",
+      "due": "2026-09-18",
+      "phase": "idea",
+      "status": "todo",
+      "note": "forecast topic in agency-said-today framing, never a pure explainer",
+      "updated": "2026-09-14 22:30"
+    }
   ]
 }
