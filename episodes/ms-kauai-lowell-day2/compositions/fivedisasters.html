@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  B5-S2 card, drawn: the two damage figures that exist (state estimate $400M for Lowell, 9 Sep; the only federal-validated
+  figure, $67M, is Lala's) as two bars, then the delegation's five disasters in six months on one line. SOURCE: sheet
+  (Governor Green 9 Sep; Star-Advertiser 14 Sep; Maui Now 14 Sep). MUST-BE-TRUE: 400 vs 67 drawn to the same scale
+  (900 px : 151 px); five events MAR · MAY · AUG · AUG · SEP.
+  Host = b5-s2 start + 19.5 (292.43), 30.657 s. Cues rel host: governor's estimate 1.0 · $67M 12.3 · Lala 14.7 · gap 16.3 ·
+  five disasters 19.0 · March 22.1 · May 23.7 · August 25.7 · same month 27.2 · September 29.3.
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; background: radial-gradient(ellipse at 50% 30%, #0b1420 0%, #04070c 80%); font-family:Arial,sans-serif; color:#f2f5f8; }
+  .eye { position:absolute; left:110px; top:60px; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:6px; color:#d0121f; }
+  .note { position:absolute; left:110px; top:100px; font-size:22px; color:#93a3b2; letter-spacing:1px; }
+  .big { position:absolute; right:110px; top:56px; white-space:nowrap; font-family:'AbrilFig',Georgia,serif; font-size:56px; color:#f2f5f8; text-shadow:0 3px 14px rgba(0,0,0,0.8); }
+  .bars { position:absolute; left:110px; top:190px; width:1400px; }
+  .brow { position:relative; height:120px; margin-top:22px; }
+  .blab { position:absolute; left:0; top:0; font-family:'Arial Black',Arial,sans-serif; font-size:28px; letter-spacing:2px; }
+  .bsub { position:absolute; left:0; top:38px; font-size:21px; color:#c8d3e0; }
+  .bar { position:absolute; left:0; top:72px; height:40px; border-radius:6px; transform-origin:left; }
+  .b400 { width:900px; background:linear-gradient(90deg,#d0121f,#ff5a5a); }
+  .b67 { width:151px; background:linear-gradient(90deg,#6fb0e6,#a9d3f5); }
+  .bval { position:absolute; top:60px; font-family:'AbrilFig',Georgia,serif; font-size:64px; line-height:1; color:#f2f5f8; text-shadow:0 3px 14px rgba(0,0,0,0.8); }
+  .gap { position:absolute; left:1100px; top:120px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#ffd27a; width:400px; line-height:1.3; }
+  .tlwrap { position:absolute; left:110px; top:640px; width:1400px; height:220px; }
+  .axis { position:absolute; left:0; right:0; top:60px; height:4px; background:linear-gradient(90deg,#d0121f,#ffd27a); border-radius:2px; transform-origin:left; }
+  .ev { position:absolute; top:0; width:230px; margin-left:-115px; text-align:center; }
+  .ev .dot { width:22px; height:22px; margin:49px auto 0; border-radius:50%; background:#d0121f; box-shadow:0 0 0 5px rgba(208,18,31,0.3), 0 0 18px rgba(208,18,31,0.9); }
+  .ev .mo { font-family:'AbrilFig',Georgia,serif; font-size:52px; line-height:1; color:#f2f5f8; }
+  .ev .wh { margin-top:14px; font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:2px; color:#f4f0e8; }
+  .ev .wh2 { font-size:19px; color:#c8d3e0; margin-top:4px; }
+  .tlt { position:absolute; left:0; top:-46px; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:4px; color:#ffd27a; }
+</style>
+<div id="root" data-composition-id="fivedisasters" data-width="1920" data-height="1080">
+  <div class="eye" id="fd-eye">THE ONLY NUMBERS THAT EXIST</div>
+  <div class="note">Drawn to the same scale · the state's estimate for Lowell against the one federal-validated figure, which is Lala's</div>
+  <div class="big" id="fd-big">$400M vs $67M</div>
+  <div class="bars">
+    <div class="brow" id="fd-row1"><div class="blab">STATE ESTIMATE · LOWELL</div><div class="bsub">Governor Josh Green, 9 September · "more than $400 million" · not federally validated</div><div class="bar b400" id="fd-b400"></div><div class="bval" id="fd-v400" style="left:920px">$400M+</div></div>
+    <div class="brow" id="fd-row2"><div class="blab">FEDERAL, VALIDATED · LALA ONLY</div><div class="bsub">FEMA joint damage assessment, statewide public assistance · a different storm, another island</div><div class="bar b67" id="fd-b67"></div><div class="bval" id="fd-v67" style="left:170px">$67M</div></div>
+    <div class="gap" id="fd-gap">No federal team has validated a number for Lowell. That gap is why the delegation escalated.</div>
+  </div>
+  <div class="tlwrap" id="fd-tl">
+    <div class="tlt" id="fd-tlt">FIVE DISASTERS IN SIX MONTHS · THE DELEGATION'S LIST</div>
+    <div class="axis" id="fd-axis"></div>
+    <div class="ev" id="fd-e1" style="left:115px"><div class="mo">MAR</div><div class="dot"></div><div class="wh">KONA LOWS</div><div class="wh2">Flooding statewide</div></div>
+    <div class="ev" id="fd-e2" style="left:407px"><div class="mo">MAY</div><div class="dot"></div><div class="wh">KONA QUAKE</div><div class="wh2">Big Island</div></div>
+    <div class="ev" id="fd-e3" style="left:700px"><div class="mo">AUG</div><div class="dot"></div><div class="wh">HURRICANE LALA</div><div class="wh2">Big Island</div></div>
+    <div class="ev" id="fd-e4" style="left:992px"><div class="mo">AUG</div><div class="dot"></div><div class="wh">TS MOKE</div><div class="wh2">Same month</div></div>
+    <div class="ev" id="fd-e5" style="left:1285px"><div class="mo">SEP</div><div class="dot"></div><div class="wh">HURRICANE LOWELL</div><div class="wh2">Kauai · this one</div></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#fd-";
+  tl.set([P+"row1", P+"row2", P+"gap", P+"tl", P+"big", P+"e1", P+"e2", P+"e3", P+"e4", P+"e5"], { autoAlpha: 0 }, 0);
+  tl.fromTo("#root", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 0);
+  /* 1.0 "the governor's own estimate" */
+  tl.fromTo(P+"row1", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.0);
+  tl.fromTo(P+"b400", { scaleX: 0 }, { scaleX: 1, duration: 1.4, ease: "power3.out" }, 1.2);
+  tl.fromTo(P+"v400", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 2.2);
+  /* 12.3 "sixty seven million dollars" · 14.7 Lala */
+  tl.fromTo(P+"row2", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 12.3);
+  tl.fromTo(P+"b67", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power3.out" }, 12.5);
+  tl.fromTo(P+"v67", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 13.2);
+  tl.fromTo(P+"big", { autoAlpha: 0, scale: 1.12, transformOrigin: "right top" }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power4.in" }, 14.7);
+  /* 16.3 "that gap" */
+  tl.fromTo(P+"gap", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 16.3);
+  /* 19.0 "five disasters in six months": the line, then one event per spoken month */
+  tl.fromTo(P+"tl", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 19.0);
+  tl.fromTo(P+"axis", { scaleX: 0 }, { scaleX: 1, duration: 10.5, ease: "none" }, 19.2);
+  [[1, 22.1], [2, 23.7], [3, 25.7], [4, 27.2], [5, 29.3]].forEach(([i, at]) => {
+    tl.fromTo(P+"e"+i, { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, at);
+    tl.fromTo(P+"e"+i+" .dot", { scale: 3 }, { scale: 1, duration: 0.4, ease: "power3.out" }, at);
+  });
+  tl.to(P+"b400", { filter: "brightness(1.25)", duration: 0.9, yoyo: true, repeat: 31, ease: "sine.inOut" }, 2.6);
+  tl.fromTo("#root", { y: 0 }, { y: -8, duration: 30.657, ease: "none" }, 0);
+  tl.to("#root", { autoAlpha: 0, duration: 0.4 }, 30.25);
+  window.__timelines["fivedisasters"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
