@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  B5-S1 cross-section, drawn: the equatorial Pacific from the dateline (left) to the South American coast (right), surface on top,
+  the thermocline sloping up toward the east, a warm subsurface pool that feeds the surface first in the east. SOURCE: WMO 3 Sep 26
+  (subsurface up to +8 °C, s5) and the CPC advisory region values (s1); the inset is CPC's own upper-ocean heat-content chart
+  (cpc-upper-ocean-heat-content-weekly-anomaly.png, US-gov PD). MUST-BE-TRUE: schematic and labelled as such; warm water shallowest in
+  the east; Niño 4 (west) near normal, 1+2 (east) hottest. Host = b5-s1 start (252.997), 31.98 s.
+  Cues rel: below the surface 2.0 · +8 8.0 · reservoir 11.6 · feeds upward 13.7 · winter 19.0 · South America 21.6 · central basin 23.3 ·
+  far west/dateline 28.2 · close to normal 30.8.
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; background: radial-gradient(ellipse at 50% 30%, #0b1420 0%, #04070c 80%); font-family:Arial,sans-serif; color:#f2f5f8; overflow:hidden; }
+  svg { position:absolute; left:0; top:0; }
+  .eye { position:absolute; left:110px; top:60px; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:6px; color:#d0121f; }
+  .note { position:absolute; left:110px; top:100px; font-size:22px; color:#93a3b2; letter-spacing:1px; }
+  .big { position:absolute; right:110px; top:56px; white-space:nowrap; font-family:'AbrilFig',Georgia,serif; font-size:56px; text-shadow:0 3px 14px rgba(0,0,0,0.8); }
+  .lab { font-family:'Arial Black',Arial,sans-serif; font-size:26px; fill:#f2f5f8; letter-spacing:2px; }
+  .lab.small { font-size:21px; fill:#c8d3e0; font-family:Arial,sans-serif; letter-spacing:1px; }
+  .lab.hot { fill:#ff5a5a; }
+  .inset { position:absolute; left:1060px; top:600px; width:480px; height:336px; overflow:hidden; border-radius:10px; border:1px solid rgba(255,255,255,0.14); box-shadow:0 14px 40px rgba(0,0,0,0.6); }
+  .inset img { position:absolute; left:0; top:0; width:480px; height:336px; }
+  .inset .cap { position:absolute; left:0; right:0; bottom:0; padding:6px 10px; font-size:18px; letter-spacing:1px; color:#f4f0e8; background:rgba(10,16,24,0.82); }
+</style>
+<div id="root" data-composition-id="subsurface" data-width="1920" data-height="1080">
+  <div class="eye" id="ss-eye">WHY THE SURFACE NUMBERS HOLD</div>
+  <div class="note">Cross-section, schematic · dateline on the left, South America on the right · not to scale</div>
+  <div class="big" id="ss-big">+8 °C BELOW THE SURFACE</div>
+  <svg width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <linearGradient id="ss-warm" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d8a13a" stop-opacity="0.25"/><stop offset="0.55" stop-color="#e8641a" stop-opacity="0.75"/><stop offset="1" stop-color="#d0121f" stop-opacity="0.95"/></linearGradient>
+      <linearGradient id="ss-sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#173a5a"/><stop offset="1" stop-color="#061220"/></linearGradient>
+    </defs>
+    <rect x="140" y="300" width="1640" height="560" fill="url(#ss-sea)"/>
+    <polygon id="ss-pool" points="140,640 500,600 900,520 1300,440 1780,380 1780,300 1500,300 1200,330 900,360 500,400 140,440" fill="url(#ss-warm)"/>
+    <path id="ss-thermo" d="M 140 640 L 500 600 L 900 520 L 1300 440 L 1780 380" fill="none" stroke="#ffd27a" stroke-width="5" stroke-dasharray="18 12"/>
+    <line x1="140" y1="300" x2="1780" y2="300" stroke="#9ed3ff" stroke-width="4"/>
+    <rect x="1780" y="240" width="60" height="620" fill="#3a2a1a"/>
+    <g id="ss-arrows" stroke="#ff8a5a" stroke-width="6" fill="none" stroke-linecap="round">
+      <path d="M 1560 470 L 1560 340 M 1540 365 L 1560 340 L 1580 365"/><path d="M 1660 440 L 1660 340 M 1640 365 L 1660 340 L 1680 365"/><path d="M 1440 500 L 1440 350 M 1420 375 L 1440 350 L 1460 375"/>
+    </g>
+    <text class="lab small" x="150" y="290">SEA SURFACE</text>
+    <text class="lab small" id="ss-lthermo" x="160" y="680">THERMOCLINE · THE WARM LAYER'S FLOOR, TILTED UP TOWARD THE EAST</text>
+    <text class="lab small" x="1790" y="230">S. AMERICA</text>
+    <text class="lab" id="ss-l4" x="220" y="250">NIÑO 4 · <tspan class="small">+0.1</tspan></text>
+    <text class="lab" id="ss-l34" x="620" y="250">NIÑO 3.4 · <tspan class="small">+1.8</tspan></text>
+    <text class="lab" id="ss-l3" x="1020" y="250">NIÑO 3 · <tspan class="small">+2.5</tspan></text>
+    <text class="lab hot" id="ss-l12" x="1440" y="250">NIÑO 1+2 · <tspan class="small">+3.4</tspan></text>
+    <text class="lab" id="ss-lres" x="620" y="560">THE RESERVOIR · DEEP WATER UP TO +8 °C · WMO</text>
+    <text class="lab small" id="ss-lfeed" x="1330" y="530">FEEDS WARMTH UPWARD · SURFACES FIRST OFF SOUTH AMERICA</text>
+    <text class="lab small" id="ss-lwest" x="160" y="470">FAR WEST: NOT REACHED YET · CLOSE TO NORMAL</text>
+  </svg>
+  <div class="inset" id="ss-inset"><img src="../media/plates/cpc-upper-ocean-heat-content-weekly-anomaly.png" alt=""><div class="cap">CPC · UPPER-OCEAN HEAT CONTENT ANOMALY, OCT 2025 – SEP 2026</div></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#ss-";
+  tl.set([P+"pool", P+"thermo", P+"arrows", P+"lthermo", P+"lres", P+"lfeed", P+"lwest", P+"l4", P+"l34", P+"l3", P+"l12", P+"big", P+"inset"], { autoAlpha: 0 }, 0);
+  tl.fromTo("#root", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 0);
+  tl.fromTo([P+"l4", P+"l34", P+"l3", P+"l12"], { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.15, ease: "power3.out" }, 0.6);
+  tl.fromTo([P+"thermo", P+"lthermo"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.8 }, 2.0);              /* "below the surface" */
+  tl.fromTo(P+"pool", { autoAlpha: 0, scaleY: 0.2, transformOrigin: "50% 100%" }, { autoAlpha: 1, scaleY: 1, duration: 1.4, ease: "power3.out" }, 7.6);  /* +8 */
+  tl.fromTo(P+"big", { autoAlpha: 0, scale: 1.12, transformOrigin: "right top" }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power4.in" }, 8.0);
+  tl.fromTo(P+"inset", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 9.0);
+  tl.fromTo(P+"lres", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 11.6);         /* reservoir */
+  tl.fromTo(P+"arrows", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.7, ease: "power3.out" }, 13.7);        /* feeds upward */
+  tl.to(P+"arrows", { y: -14, duration: 0.8, yoyo: true, repeat: 21, ease: "sine.inOut" }, 14.4);
+  tl.fromTo(P+"lfeed", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 21.6);         /* South America */
+  tl.fromTo(P+"lwest", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 28.2);        /* far west */
+  tl.to(P+"thermo", { strokeDashoffset: -300, duration: 31.98, ease: "none" }, 0);  /* continuous flow along the floor */
+  tl.to("#root", { autoAlpha: 0, duration: 0.4 }, 31.5);
+  window.__timelines["subsurface"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
