@@ -1,0 +1,77 @@
+{
+ "as_of_utc": "2026-09-14T14:00:00Z",
+ "fresh_facts": [
+  {
+   "fact": "MAGMA Indonesia's official status report lists Anak Krakatau still at Alert Level III (Siaga); Semeru and Lewotobi Laki-laki also Level III (Siaga); Marapi and Ili Lewotolok at Level II (Waspada).",
+   "number": "Level III (Krakatau/Semeru/Lewotobi); Level II (Marapi/Ili Lewotolok)",
+   "source_name": "MAGMA Indonesia (magma.esdm.go.id/v1/gunung-api/laporan)",
+   "date": "2026-09-14",
+   "url": "https://magma.esdm.go.id/v1/gunung-api/laporan"
+  },
+  {
+   "fact": "Sinabung confirmed at Level III (Siaga) today; volcano obscured by fog, no crater smoke observed in the 00:00-06:00 WIB window, and no new eruption logged today.",
+   "number": "Level III",
+   "source_name": "Search aggregation of detik.com/BNPB reporting on Sinabung status",
+   "date": "2026-09-14",
+   "url": "https://news.detik.com/berita/d-8649362/gunung-sinabung-berstatus-siaga-warga-diimbau-mengungsi"
+  },
+  {
+   "fact": "MAGMA's live eruption log recorded NO new eruption entries today for Anak Krakatau, Sinabung, or Lewotobi Laki-laki (quiet in the log despite elevated alert levels). Mount Ibu erupted repeatedly, ash columns 400-700 m (largest 700 m at 13:40 WIT, drifting NE), 2026 running total 1,563 eruptions. Semeru had two events: 11:40 WIB reaching ~1,000 m (thick), and an 18:56 WIB seismic-only event with no visual observation; 2026 running total now 1,867 (up one from the 1,866 already in the existing sheet). Ili Lewotolok erupted twice (18:51 and 20:41 WITA), the first with a 200 m ash column drifting west.",
+   "number": "Ibu 1,563 / Semeru 1,867 (2026 YTD running totals)",
+   "source_name": "MAGMA Indonesia (magma.esdm.go.id/v1/gunung-api/informasi-letusan)",
+   "date": "2026-09-14",
+   "url": "https://magma.esdm.go.id/v1/gunung-api/informasi-letusan"
+  },
+  {
+   "fact": "As of day 7 (Monday, 14 September) of the search for the 8 people missing since the 7 September boat trip toward Anak Krakatau, all 8 remain missing. Basarnas deployed 18 vessels and 1 helicopter covering roughly 6,649 nautical square miles across sectors X, Z, V, W, U and Y; underwater searching stays suspended for safety; officials said day 7's results would decide whether to extend or end the operation. No survivors or bodies found.",
+   "number": "8 missing, 18 vessels, 1 helicopter, day 7",
+   "source_name": "detikNews (news.detik.com)",
+   "date": "2026-09-14",
+   "url": "https://news.detik.com/berita/d-8661686/hari-ke-7-pencarian-5-jurnalis-hilang-18-kapal-sisir-anak-krakatau"
+  },
+  {
+   "fact": "On day 6 (Sunday, 13 September) of the same search, SAR teams found two tarps, three orange life jackets, and one gallon container, but the Banten SAR head said these could not be confirmed as belonging to the missing vessel Arupadhatu I; all recovered items were handed to police for identification and the day produced 'no breakthrough.'",
+   "number": "2 tarps, 3 life jackets, 1 gallon (unconfirmed)",
+   "source_name": "detikNews (news.detik.com)",
+   "date": "2026-09-13",
+   "url": "https://news.detik.com/berita/d-8661384/cari-8-orang-hilang-di-anak-krakatau-tim-sar-temukan-terpal-hingga-galon"
+  }
+ ],
+ "quote_checks": [
+  {
+   "speaker": "Dr. Siti Sumilah Rita Susilawati (PVMBG head)",
+   "url": "https://news.detik.com/berita/d-8646125/6-gunung-api-erupsi-beruntun-akhir-agustus-pvmbg-tak-ada-bukti-saling-picu",
+   "verdict": "verified verbatim — matches sheet exactly: 'Kami tidak menemukan bukti adanya satu proses geologi yang memicu seluruh erupsi tersebut secara bersamaan di tanggal 31 Agustus.'"
+  },
+  {
+   "speaker": "Suharyanto (BNPB chief)",
+   "url": "https://www.aljazeera.com/news/2026/9/6/indonesias-main-airport-suspends-flights-due-to-anak-krakatoa-eruption",
+   "verdict": "verified verbatim — matches sheet's wording exactly on re-fetch."
+  },
+  {
+   "speaker": "Yudhistiawan (Soekarno-Hatta spokesman)",
+   "url": "https://www.aljazeera.com/news/2026/9/6/indonesias-main-airport-suspends-flights-due-to-anak-krakatoa-eruption",
+   "verdict": "verified verbatim — matches sheet's wording exactly on re-fetch."
+  },
+  {
+   "speaker": "Surono (volcano expert, former PVMBG head)",
+   "url": "http://www.thejakartapost.com/indonesia/2026/09/07/soekarno-hatta-airport-extends-closure-after-anak-krakatau-eruption",
+   "verdict": "NOT verified as Surono's own words on re-fetch — the fetch attributes 'the probability of further eruptions in the coming periods remains high' to the monitoring agency's official assessment, not to Surono directly; Surono's own quoted material was about ash-flight danger and calling the eruption 'unusual.' Sheet's attribution is likely wrong; re-check the byline before airing this as a Surono quote."
+  },
+  {
+   "speaker": "Lana Saria (Head of Geological Agency)",
+   "url": "https://www.nationthailand.com/news/world/40070676",
+   "verdict": "paraphrase, not a direct quote — the source sentence reads 'the part of Anak Krakatau that had rebuilt since the December 2018 disaster remained relatively small,' i.e. reported/paraphrased assessment; 'relatively small' is the only verbatim fragment. Matches the sheet's own warning flag; do not present as a full quoted sentence."
+  }
+ ],
+ "stale_or_wrong": [
+  "Flight/passenger toll: sheet's 2,300 flights / 270,337 passengers (dated 7 Sept) is superseded by Kemenhub's fuller final tally of 2,961 flights (2,339 domestic + 622 international) / ~341,000 passengers, dated 8 September 2026 (viva.co.id, liputan6.com) — use the larger complete figure, and flag that even this is now 6+ days old (well past the sheet's own 72-hour staleness warning) with no fresher national total found for 9-14 September.",
+  "Surono quote attribution is likely incorrect: on re-fetch, the Jakarta Post piece attributes 'the probability of further eruptions in the coming periods remains high' to the monitoring agency, not to Surono by name — the sheet should not present this as Surono's direct statement without re-verifying the byline.",
+  "The sheet's 'unknowns' item about no MAGMA/PVMBG update for Krakatau's 12-14 Sept status is now resolved: today's (14 Sept) MAGMA laporan page confirms Anak Krakatau remains Level III, and the informasi-letusan log shows no new eruption entries for Krakatau today (a quiet day, not an update gap) — update the sheet instead of carrying it as an open unknown.",
+  "The sheet's 'unknowns' item on the 8 missing persons is now partly resolved: still missing as of day 7 (14 Sept), search ongoing with a same-day decision pending on whether to extend or close the operation — update rather than leave as fully open.",
+  "Semeru's running 2026 eruption count has ticked up by one since the sheet was written: MAGMA shows 1,867 today vs the sheet's 1,866 — trivial but should be bumped if quoting an exact running total on air.",
+  "Ibu's 2026 cumulative eruption-count contradiction the sheet already flagged (1,501 vs 1,563 vs an anomalous 25,556) remains UNRESOLVED — no reconciled PVMBG/MAGMA figure was found today; keep the sheet's existing warning, don't manufacture a fix."
+ ],
+ "as_of_line": "As of Monday evening, September 14 (day 7 since the boat vanished), Jakarta time.",
+ "tracking_line": "Officials have not yet said: whether the day-7 search for the 8 missing people will be extended or formally closed; whether the tarps, life jackets, and gallon container found on day 6 belong to the missing vessel Arupadhatu I; a single reconciled national flight/passenger disruption total for the full event (last official figure is 6+ days old, 8 September); or a reconciled 2026 eruption count for Mount Ibu given the conflicting figures across sources."
+}
