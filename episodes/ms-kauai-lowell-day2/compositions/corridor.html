@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  B3 corridor map: the same Kauai OSM plate as video 1 (OpenStreetMap contributors via Wikimedia Commons "Location Map
+  Kauai.png", CC BY-SA 2.0; 1000×860 plate), zoomed 1.6× on the North Shore. SOURCE: the plate; DATUM: the plate's own
+  geography read in video 1 (Moloaa 747,132 → Haena 299,228 arc). MUST-BE-TRUE: the highway runs Princeville → Kee (west end
+  of the arc); the transmission line runs the whole coast; Kilauea and Hanalei elementary sit on that corridor; Kalihiwai
+  bridge is between Kilauea and Princeville; Wainiha double bridge is on the Haena side.
+  Host = b3-s1 start, 31.0 s. Cues rel: North Shore 0.4 · schools 5.2 · highway 15.9 · one bridge 23.8 · second bridge 26.3.
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; background: radial-gradient(ellipse at 60% 40%, #0e1a28 0%, #04070c 75%); overflow:hidden; font-family:Arial,sans-serif; }
+  .plate { position:absolute; left:700px; top:110px; width:1000px; height:860px; transform-origin:523px 180px; }
+  .plate img { position:absolute; left:0; top:0; width:1000px; height:860px; filter:saturate(0.7) brightness(0.8); }
+  .plate svg { position:absolute; left:0; top:0; width:1000px; height:860px; }
+  .pin { position:absolute; width:12px; height:12px; margin:-6px 0 0 -6px; border-radius:50%; background:#d0121f; box-shadow:0 0 0 3px rgba(208,18,31,0.35), 0 0 14px rgba(208,18,31,0.9); }
+  .pin.sch { background:#ffd27a; box-shadow:0 0 0 3px rgba(255,210,122,0.35), 0 0 14px rgba(255,210,122,0.9); }
+  .tag { position:absolute; white-space:nowrap; z-index:2; font-family:'Arial Black',Arial,sans-serif; font-size:16px; letter-spacing:1.5px; color:#f4f0e8;
+    background:rgba(10,16,24,0.78); border:1px solid rgba(255,255,255,0.14); border-left:4px solid #d0121f; padding:4px 10px; border-radius:6px; }
+  .tag.sch { border-left-color:#ffd27a; }
+  .tag.amb { border-left-color:#d8a13a; }
+  .panel { position:absolute; left:110px; top:120px; width:520px; box-sizing:border-box; padding:26px 32px 22px;
+    background:rgba(10,16,24,0.66); backdrop-filter:blur(16px) saturate(1.15); -webkit-backdrop-filter:blur(16px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:24px; color:#f2f5f8; }
+  .eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:5px; color:#d0121f; }
+  .big { margin-top:8px; line-height:1.05; font-family:'AbrilFig',Georgia,serif; font-size:56px; color:#f2f5f8; text-shadow:0 3px 14px rgba(0,0,0,0.85); }
+  .side { margin-top:10px; font-size:21px; color:#c8d3e0; line-height:1.35; }
+  .side b { display:block; font-family:'Arial Black',Arial,sans-serif; font-size:30px; color:#f2f5f8; margin-top:16px; }
+  .src { position:absolute; right:40px; top:34px; font-size:20px; letter-spacing:1px; color:rgba(220,228,236,0.85); background:rgba(5,8,12,0.6); padding:6px 14px; }
+</style>
+<div id="root" data-composition-id="corridor" data-width="1920" data-height="1080">
+  <div class="src">MAP: © OPENSTREETMAP · CC BY-SA 2.0</div>
+  <div class="plate" id="cr-plate">
+    <img src="../media/maps/Location_Map_Kauai.png" alt="">
+    <svg viewBox="0 0 1000 860">
+      <path id="cr-line" d="M 747 132 L 735 122 L 722 130 L 710 133 L 697 134 L 684 142 L 672 134 L 659 131 L 647 128 L 634 133 L 621 128 L 609 122 L 596 122 L 584 130 L 571 168 L 558 168 L 546 149 L 533 147 L 520 144 L 508 134 L 495 131 L 483 128 L 470 137 L 457 132 L 445 132 L 432 144 L 420 154 L 407 162 L 394 172 L 382 178 L 369 184 L 357 195 L 344 206 L 331 211 L 319 221 L 306 228 L 299 228" fill="none" stroke="#d0121f" stroke-width="4" stroke-linecap="round" stroke-dasharray="10 8" opacity="0.95"/>
+      <path id="cr-hwy" d="M 508 134 L 495 131 L 483 128 L 470 137 L 457 132 L 445 132 L 432 144 L 420 154 L 407 162 L 394 172 L 382 178 L 369 184 L 357 195 L 344 206 L 331 211 L 319 221 L 306 228 L 299 228" fill="none" stroke="#d8a13a" stroke-width="7" stroke-linecap="round" stroke-dasharray="600" stroke-dashoffset="600" opacity="0.95"/>
+    </svg>
+    <div class="tag" id="cr-tline" style="left:640px; top:56px">1 TRANSMISSION LINE · THE WHOLE COAST</div>
+    <div class="pin sch" id="cr-p1" style="left:609px; top:122px"></div><div class="tag sch" id="cr-t1" style="left:612px; top:86px">KILAUEA ELEM</div>
+    <div class="pin sch" id="cr-p2" style="left:420px; top:154px"></div><div class="tag sch" id="cr-t2" style="left:362px; top:100px">HANALEI ELEM</div>
+    <div class="pin" id="cr-p3" style="left:508px; top:134px"></div><div class="tag amb" id="cr-t3" style="left:470px; top:158px">PRINCEVILLE</div>
+    <div class="pin" id="cr-p4" style="left:565px; top:166px"></div><div class="tag" id="cr-t4" style="left:540px; top:190px">KALIHIWAI BRIDGE · REPAIR</div>
+    <div class="pin" id="cr-p5" style="left:325px; top:213px"></div><div class="tag" id="cr-t5" style="left:150px; top:240px">WAINIHA BRIDGE · 5-TON LIMIT</div>
+    <div class="pin" id="cr-p6" style="left:299px; top:228px"></div><div class="tag amb" id="cr-t6" style="left:190px; top:272px">KEE · END OF THE ROAD</div>
+  </div>
+  <div class="panel" id="cr-panel">
+    <div class="eye" id="cr-eye">THE NORTH SHORE · DAY 8 AFTER LOWELL</div>
+    <div class="big" id="cr-big">ONE LINE, ONE ROAD</div>
+    <div class="side"><div id="cr-s1"><b>~5,000 ACCOUNTS</b>Still dark, all on the one transmission line</div><div id="cr-s2"><b>2 SCHOOLS</b>Kilauea and Hanalei elementary, targeted to open today</div><div id="cr-s3"><b>2 BRIDGES</b>One under repair, one on a 5-ton limit</div></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#cr-";
+  const tags = [P+"p1",P+"t1",P+"p2",P+"t2",P+"p3",P+"t3",P+"p4",P+"t4",P+"p5",P+"t5",P+"p6",P+"t6",P+"tline",P+"s1",P+"s2",P+"s3",P+"big"];
+  tl.set(tags, { autoAlpha: 0 }, 0);
+  tl.set(P+"line", { strokeDasharray: "10 8", opacity: 0 }, 0);
+  tl.fromTo("#root", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 0);
+  tl.fromTo(P+"plate", { scale: 1.52 }, { scale: 1.62, duration: 31.0, ease: "none" }, 0); /* slow push on the North Shore, origin on the coast */
+  tl.fromTo(P+"big", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.4);
+  /* 0.4 "North Shore": the transmission line lights along the coast and keeps crawling */
+  tl.to(P+"line", { opacity: 0.95, duration: 0.8 }, 0.6);
+  tl.to(P+"line", { strokeDashoffset: -360, duration: 30.0, ease: "none" }, 0.6);
+  tl.fromTo(P+"tline", { autoAlpha: 0, y: -16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.4);
+  tl.fromTo(P+"s1", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1.0);
+  /* 5.2 "two elementary schools" */
+  [[1, 5.2], [2, 5.9]].forEach(([i, at]) => {
+    tl.fromTo(P+"p"+i, { scale: 3, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, at);
+    tl.fromTo(P+"t"+i, { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, at + 0.2);
+  });
+  tl.fromTo(P+"s2", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 5.4);
+  /* 15.9 "the coastal highway": draws Princeville → Kee */
+  tl.fromTo([P+"p3", P+"p6"], { scale: 3, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 15.9);
+  tl.fromTo(P+"t3", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 16.1);
+  tl.to(P+"hwy", { strokeDashoffset: 0, duration: 2.2, ease: "power2.inOut" }, 16.0);
+  tl.fromTo(P+"t6", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 18.0);
+  /* 23.8 "one bridge is under active repair" · 26.3 "a second bridge at the far end" */
+  [[4, 23.8], [5, 26.3]].forEach(([i, at]) => {
+    tl.fromTo(P+"p"+i, { scale: 3, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, at);
+    tl.fromTo(P+"t"+i, { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, at + 0.2);
+  });
+  tl.fromTo(P+"s3", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 24.0);
+  tl.to(".pin", { boxShadow: "0 0 0 6px rgba(208,18,31,0.15), 0 0 22px rgba(208,18,31,1)", duration: 1.0, yoyo: true, repeat: 29, ease: "sine.inOut" }, 0.6);
+  tl.to("#root", { autoAlpha: 0, duration: 0.4 }, 30.6);
+  window.__timelines["corridor"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
