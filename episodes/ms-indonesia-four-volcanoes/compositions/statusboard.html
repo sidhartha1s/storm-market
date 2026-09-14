@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  Format C status board (B2 "where things stand"): six volcano rows, each landing on its spoken cue.
+  Lineage: library/mini-storms/stat-card.html (glass recipe), left-anchored so the popfig zone (top 38 %) and the
+  bottom-left chip/bug stay clear; the presenter circle sits bottom-right (x 1632+).
+  Row = name · alert level pill · today's status. EDIT-ME: the six `at` cue times from audio/b2-s1.words.json.
+  EXIT: slide left + fade 0.6 s before the host window ends.
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; }
+  .card { position:absolute; left:110px; top:130px; width:900px; box-sizing:border-box; padding:30px 40px 26px;
+    background:rgba(10,16,24,0.60); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:6px; color:#d0121f; }
+  .sub0 { font-size:20px; color:#c8d3e0; margin-top:6px; letter-spacing:1px; }
+  .row { display:flex; align-items:center; gap:18px; margin-top:18px; overflow:hidden; }
+  .name { flex:0 0 330px; font-family:'Arial Black',Arial,sans-serif; font-size:34px; line-height:1.1; }
+  .lvl { flex:0 0 150px; text-align:center; font-family:'Arial Black',Arial,sans-serif; font-size:26px; letter-spacing:2px; padding:8px 0; border-radius:10px; }
+  .l3 { background:#d0121f; color:#fff; } .l2 { background:#d8a13a; color:#1a1408; }
+  .today { font-size:24px; color:#e6ecf2; line-height:1.2; }
+  .quiet { color:#93a3b2; }
+</style>
+<div id="root" data-composition-id="statusboard" data-width="1920" data-height="1080">
+  <div class="card" id="sb-card">
+    <div class="eye" id="sb-eye">AS OF MONDAY EVENING · 14 SEP 26</div>
+    <div class="sub0">Alert level · today's activity · MAGMA Indonesia daily report</div>
+    <div class="row" id="sb-r1"><div class="name">ANAK KRAKATAU</div><div class="lvl l3">LEVEL 3</div><div class="today quiet">quiet today</div></div>
+    <div class="row" id="sb-r2"><div class="name">SEMERU</div><div class="lvl l3">LEVEL 3</div><div class="today">ash column ~1,000 m</div></div>
+    <div class="row" id="sb-r3"><div class="name">LEWOTOBI LAKI-LAKI</div><div class="lvl l3">LEVEL 3</div><div class="today quiet">quiet today</div></div>
+    <div class="row" id="sb-r4"><div class="name">SINABUNG</div><div class="lvl l3">LEVEL 3</div><div class="today quiet">hidden in fog</div></div>
+    <div class="row" id="sb-r5"><div class="name">MARAPI</div><div class="lvl l2">LEVEL 2</div><div class="today quiet">no eruption logged</div></div>
+    <div class="row" id="sb-r6"><div class="name">ILI LEWOTOLOK</div><div class="lvl l2">LEVEL 2</div><div class="today">erupted twice this evening</div></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#sb-";
+  const rows = [P+"r1",P+"r2",P+"r3",P+"r4",P+"r5",P+"r6"];
+  tl.set(rows, {autoAlpha:0, height:0, marginTop:0}, 0);
+  tl.fromTo(P+"card", {x:-960, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 0);
+  /* EDIT-ME: cue times (relative to host start) from audio/b2-s1.words.json:
+     r1 "Anak Krakatau" (first list), r2 "Semeru", r3 "Lewotobi", r4 "Sinabung", r5 "Marapi", r6 "Ili Lewotolok" */
+  const AT = [2.0, 3.2, 4.2, 5.2, 7.0, 8.2];
+  rows.forEach((r, i) => tl.fromTo(r, {autoAlpha:0, y:24, height:0, marginTop:0}, {autoAlpha:1, y:0, height:"auto", marginTop:18, duration:0.4}, AT[i]));
+  tl.fromTo(P+"card", {y:0}, {y:-6, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:40}, 0.6); /* breathing, never idles */
+  tl.to(P+"eye", {letterSpacing:"8px", duration:1.2, ease:"power3.out"}, 0.2);
+  tl.to(P+"card", {x:-960, autoAlpha:0, duration:0.5, ease:"power3.in"}, 55.0); /* EDIT-ME: host duration − 0.6 */
+  window.__timelines["statusboard"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
