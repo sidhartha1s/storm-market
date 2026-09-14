@@ -44,10 +44,10 @@
       "title": "Anak Krakatau Erupts Again... And Now Three More",
       "owner": "director",
       "due": "15 Sep 26",
-      "phase": "tts",
+      "phase": "assemble",
       "status": "doing",
-      "note": "edit script locked 9.4 min; TTS running (10 segments)",
-      "updated": "14 Sep 26 23:21"
+      "note": "TTS done 9.1 min at 158 wpm; cut list + overlays being authored; Krakatau top-up clips still downloading",
+      "updated": "14 Sep 26 23:36"
     },
     {
       "slug": "ep-tristate-repackage",
@@ -69,9 +69,9 @@
       "owner": "director",
       "due": "15 Sep 26",
       "phase": "tts",
-      "status": "todo",
-      "note": "edit script locked 8.8 min; TTS after slot A (one heavy job at a time)",
-      "updated": "14 Sep 26 23:21"
+      "status": "doing",
+      "note": "TTS running (9 segments), then atempo + transcribe",
+      "updated": "14 Sep 26 23:36"
     },
     {
       "slug": "ms-sakurajima-ash",
@@ -81,9 +81,9 @@
       "owner": "director",
       "due": "16 Sep 26",
       "phase": "script",
-      "status": "doing",
-      "note": "fact desk + script running (Sonnet wave 2)",
-      "updated": "14 Sep 26 23:02"
+      "status": "done",
+      "note": "fact sheet + Sonnet draft in ops/wave2; director's pass pending",
+      "updated": "14 Sep 26 23:36"
     },
     {
       "slug": "ms-elnino-cpc-today",
@@ -93,9 +93,9 @@
       "owner": "director",
       "due": "18 Sep 26",
       "phase": "script",
-      "status": "doing",
-      "note": "fact desk + script running (Sonnet wave 2)",
-      "updated": "14 Sep 26 23:02"
+      "status": "done",
+      "note": "fact sheet + Sonnet draft in ops/wave2; director's pass pending",
+      "updated": "14 Sep 26 23:36"
     },
     {
       "slug": "ms-0916-usf-b",
@@ -106,8 +106,8 @@
       "due": "16 Sep 26",
       "phase": "script",
       "status": "doing",
-      "note": "fact desk + script running (Sonnet wave 2)",
-      "updated": "14 Sep 26 23:02"
+      "note": "fact sheet live (Missouri/Kansas City flash floods); script draft missing, re-run",
+      "updated": "14 Sep 26 23:36"
     },
     {
       "slug": "ms-0917-krak-a",
@@ -117,9 +117,9 @@
       "owner": "director",
       "due": "17 Sep 26",
       "phase": "script",
-      "status": "doing",
-      "note": "fact desk + script running (Sonnet wave 2)",
-      "updated": "14 Sep 26 23:02"
+      "status": "done",
+      "note": "fact sheet + Sonnet draft in ops/wave2; director's pass pending",
+      "updated": "14 Sep 26 23:36"
     },
     {
       "slug": "ms-0917-haw-b",
@@ -129,9 +129,9 @@
       "owner": "director",
       "due": "17 Sep 26",
       "phase": "script",
-      "status": "doing",
-      "note": "fact desk + script running (Sonnet wave 2)",
-      "updated": "14 Sep 26 23:02"
+      "status": "done",
+      "note": "fact sheet + Sonnet draft in ops/wave2; director's pass pending",
+      "updated": "14 Sep 26 23:36"
     },
     {
       "slug": "ms-0918-jpn-a",
@@ -141,9 +141,9 @@
       "owner": "director",
       "due": "18 Sep 26",
       "phase": "script",
-      "status": "doing",
-      "note": "fact desk + script running (Sonnet wave 2)",
-      "updated": "14 Sep 26 23:02"
+      "status": "done",
+      "note": "fact sheet + Sonnet draft in ops/wave2; director's pass pending",
+      "updated": "14 Sep 26 23:36"
     },
     {
       "slug": "ep-0919-doc-a",

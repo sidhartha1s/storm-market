@@ -1,0 +1,229 @@
+{
+ "as_of_line": "As of Sunday evening, Sept 14, 2026 (IST) / Sept 14 daytime Hawaii: Hurricane Lowell recovery on Kauai is in its second week — KIUC at 81% power restored (North Shore still worst-hit), Kuhio Highway open with restrictions through Wainiha, Gov. Green's Lowell major-disaster-declaration request is still pending before Trump/FEMA alongside a separate still-pending Lala request, and North Shore hotels remain closed to new arrivals through September.",
+ "story_is_live": true,
+ "replacement_story": "",
+ "facts": [
+  {
+   "fact": "KIUC restored power to 81% of members as of the Sept 13 update, up from 76% the day before (~1,850 additional customers restored in 24 hours).",
+   "number": "81%",
+   "source_name": "Kauai Island Utility Cooperative (KIUC) — Lowell Updates page",
+   "url": "https://kiuc.coop/lowell_updates",
+   "date": "2026-09-13"
+  },
+  {
+   "fact": "About 8,400 KIUC members remained without power as of Saturday afternoon (Sept 12), out of a peak of roughly 33,000 accounts (90%+ of the system) that lost power in the storm.",
+   "number": "8,400",
+   "source_name": "Honolulu Star-Advertiser",
+   "url": "https://www.staradvertiser.com/2026/09/13/hawaii-news/kauai-power-restoration-expands-as-outside-crews-join-lowell-recovery/",
+   "date": "2026-09-13"
+  },
+  {
+   "fact": "Of the outages still remaining, about 20% are on the North Shore between Moloaa and Haena, with another 5% in scattered pockets from Anahola to Kekaha and Kokee.",
+   "number": "20%",
+   "source_name": "Honolulu Star-Advertiser",
+   "url": "https://www.staradvertiser.com/2026/09/13/hawaii-news/kauai-power-restoration-expands-as-outside-crews-join-lowell-recovery/",
+   "date": "2026-09-13"
+  },
+  {
+   "fact": "13 of KIUC's 15 transmission lines are back in service; about 250 total personnel (KIUC plus mutual-aid crews) are deployed on restoration.",
+   "number": "13 of 15",
+   "source_name": "Honolulu Star-Advertiser",
+   "url": "https://www.staradvertiser.com/2026/09/13/hawaii-news/kauai-power-restoration-expands-as-outside-crews-join-lowell-recovery/",
+   "date": "2026-09-13"
+  },
+  {
+   "fact": "KIUC President and CEO David Bissell estimates transmission repairs could be complete by the end of next week (~Sept 18-19), with distribution repairs to follow.",
+   "source_name": "KIUC — Lowell Updates page",
+   "url": "https://kiuc.coop/lowell_updates",
+   "date": "2026-09-13"
+  },
+  {
+   "fact": "On Kuhio Highway, Routes 56 and 560 are open through Haena, but Wainiha Bridges No. 1 and 2 are restricted to local traffic only with a 5-ton weight limit; a temporary abutment repair is scheduled for next month.",
+   "source_name": "The Garden Island",
+   "url": "https://www.thegardenisland.com/2026/09/13/hawaii-news/county-issues-update-to-hurricane-lowell-recovery/",
+   "date": "2026-09-13"
+  },
+  {
+   "fact": "Debris clearing under the mauka Wailua River Bridge is set to resume Sept 20; Koke'e and Waimea Canyon roads are still being cleared.",
+   "number": "Sept 20",
+   "source_name": "The Garden Island",
+   "url": "https://www.thegardenisland.com/2026/09/13/hawaii-news/county-issues-update-to-hurricane-lowell-recovery/",
+   "date": "2026-09-13"
+  },
+  {
+   "fact": "Kauai County damage assessments: 301 county assessments completed, 464+ residential damage reports self-submitted by residents, 57 homes with major damage and 7 homes destroyed.",
+   "number": "7",
+   "source_name": "The Garden Island",
+   "url": "https://www.thegardenisland.com/2026/09/13/hawaii-news/county-issues-update-to-hurricane-lowell-recovery/",
+   "date": "2026-09-13"
+  },
+  {
+   "fact": "The Hawaii congressional delegation (Sens. Schatz, Hirono; Reps. Case, Tokuda) sent a letter to President Trump on Sept 14 urging approval of major disaster declarations for both Hurricane Lowell (Kauai and Maui counties) and Hurricane Lala/Tropical Storm Moke (statewide).",
+   "source_name": "Maui Now",
+   "url": "https://mauinow.com/2026/09/14/hawaii-congressional-delegation-urges-approval-of-presidential-disaster-declaration-requests-following-hurricanes-lowell-and-lala/",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "FEMA's validated Joint Preliminary Damage Assessment (tied to Lala) confirms over $67 million in statewide damage eligible under Public Assistance Categories A-G, and 267 damaged residences statewide eligible for Individual Assistance (217 of them in Hawaii County).",
+   "number": "$67 million",
+   "source_name": "Honolulu Star-Advertiser",
+   "url": "https://www.staradvertiser.com/2026/09/14/hawaii-news/delegation-urges-trump-to-ok-disaster-declarations/",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "As of Sept 14, no Presidential Major Disaster Declaration has yet been approved for Hurricane Lowell or for the still-pending Lala statewide request; both remain requests awaiting White House/FEMA action.",
+   "source_name": "Maui Now",
+   "url": "https://mauinow.com/2026/09/14/hawaii-congressional-delegation-urges-approval-of-presidential-disaster-declaration-requests-following-hurricanes-lowell-and-lala/",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "[Background, >72h] Gov. Josh Green requested an expedited Presidential Major Disaster Declaration for Kauai and Maui counties on Wednesday, Sept 9, and estimated Kauai's Lowell damage will exceed $400 million, surpassing Lala's toll.",
+   "number": "$400 million",
+   "source_name": "Hawaii News Now",
+   "url": "https://www.hawaiinewsnow.com/2026/09/09/gov-green-warns-hurricane-lowell-damage-kauai-will-exceed-400m/",
+   "date": "2026-09-09"
+  },
+  {
+   "fact": "[Background, >72h] At the time of the Governor's $400M estimate, roughly 84% of Kauai was still without power and isolated pockets were projected to be out for up to a month.",
+   "number": "84%",
+   "source_name": "Hawaii News Now",
+   "url": "https://www.hawaiinowsnow.com/2026/09/09/gov-green-warns-hurricane-lowell-damage-kauai-will-exceed-400m/",
+   "date": "2026-09-09"
+  },
+  {
+   "fact": "[Background, >72h] Cotality (catastrophe modeler) estimates insured losses from Hurricane Lowell at $0.5 billion to $1.0 billion, with most of the loss concentrated on Kauai.",
+   "number": "$0.5-1.0 billion",
+   "source_name": "Cotality Hazard HQ",
+   "url": "https://www.cotality.com/uk/hazard-hq/hurricane-lowell-skirts-kauai-with-damaging-wind-and-rain",
+   "date": "2026-09-08"
+  },
+  {
+   "fact": "[Background, >72h] Hurricane Lowell passed just west of Niihau as a Category 2 storm — the closest approach of a Category 2-or-stronger hurricane to Kauai since Hurricane Iniki in 1992.",
+   "source_name": "Insurance Journal / Cotality",
+   "url": "https://www.insurancejournal.com/news/west/2026/09/08/884353.htm",
+   "date": "2026-09-08"
+  },
+  {
+   "fact": "Hotels are not accepting new North Shore Kauai guest arrivals through Sept 30; North Shore arrivals are expected to resume no earlier than Oct 1, while South Shore arrivals resume no earlier than Sept 21.",
+   "number": "Oct 1",
+   "source_name": "Hawaii's Best Travel (citing Parrish Kauai advisory)",
+   "url": "https://hawaiisbesttravel.com/kauai-travel-conditions/",
+   "date": "2026-09-13"
+  },
+  {
+   "fact": "Hawaii Tourism Authority interim president/CEO Caroline Anderson and Parrish Kauai are urging visitors with upcoming Kauai trips to reschedule or visit another island rather than cancel outright.",
+   "source_name": "Honolulu Star-Advertiser",
+   "url": "https://www.staradvertiser.com/2026/09/12/hawaii-news/lowell-aftermath-hotel-damage-visitor-alerts-disrupting-kauai-tourism/",
+   "date": "2026-09-12"
+  },
+  {
+   "fact": "Kauai normally sees about 100,000 visitors a month (roughly a 24,000-person daily visitor census) against a resident population of about 73,000, underscoring the tourism-cancellation stakes.",
+   "number": "100,000",
+   "source_name": "Honolulu Star-Advertiser",
+   "url": "https://www.staradvertiser.com/2026/09/12/hawaii-news/lowell-aftermath-hotel-damage-visitor-alerts-disrupting-kauai-tourism/",
+   "date": "2026-09-12"
+  },
+  {
+   "fact": "[Background, >72h] Lower Limahuli, near Haena, recorded Lowell's heaviest rainfall on Kauai at just under 16 inches; North Shore and Westside highways were made impassable by flooding, debris, and roads buried in sand and boulders from broken seawalls.",
+   "number": "16 inches",
+   "source_name": "Honolulu Civil Beat",
+   "url": "https://www.civilbeat.org/2026/09/hurricane-lowell-hit-kauai-hard-but-worst-fears-averted/",
+   "date": "2026-09-10"
+  },
+  {
+   "fact": "Residents with residential or personal-property damage still need to file individual claims with their own insurers; Hawaii's Insurance Division (DCCA) directs affected residents to storm-claims guidance and a helpline, 1-844-808-3222.",
+   "number": "1-844-808-3222",
+   "source_name": "Maui Now",
+   "url": "https://mauinow.com/2026/09/08/flash-flooding-threat-remains-in-the-hawaiian-islands-due-to-lowell-kaua%CA%BBi-damage-assessments-underway/",
+   "date": "2026-09-08"
+  },
+  {
+   "fact": "[Background] Hurricane Lala's own documented statewide damage was previously put at $81.4 million, mostly on the Big Island, with some areas receiving nearly 40 inches of rain; Trump approved an emergency (not yet major-disaster) declaration for that storm in late August.",
+   "number": "$81.4 million",
+   "source_name": "West Hawaii Today",
+   "url": "https://www.westhawaiitoday.com/2026/08/26/hawaii-news/trump-signs-disaster-declaration-for-hawaii-county-after-lalas-destruction/",
+   "date": "2026-08-26"
+  },
+  {
+   "fact": "The delegation's letter cites five disasters in six months — March Kona Lows, May Kona earthquake, August Hurricane Lala, August Tropical Storm Moke, and September Hurricane Lowell — arguing the cumulative toll exceeds state and county capacity.",
+   "number": "five",
+   "source_name": "Maui Now",
+   "url": "https://mauinow.com/2026/09/14/hawaii-congressional-delegation-urges-approval-of-presidential-disaster-declaration-requests-following-hurricanes-lowell-and-lala/",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "[Background, >72h] Nearly 100 mutual-aid personnel from Hawaiian Electric, Southern California Edison, and HMS Construction arrived to reinforce KIUC's line crews and contractors.",
+   "number": "100",
+   "source_name": "Kauai Now / Hawaii News Now",
+   "url": "https://kauainownews.com/2026/09/09/91-of-kiuc-customers-without-power-as-lowell-moves-north-of-kauai-niihau/",
+   "date": "2026-09-11"
+  }
+ ],
+ "quotes": [
+  {
+   "speaker": "Josh Green",
+   "title": "Governor of Hawaii",
+   "quote": "Getting these machines to Hawaii for Lala is now also helping us to reduce suffering on Kauai. I simply decided that we had to do everything possible to shorten the time to recovery.",
+   "url": "https://www.staradvertiser.com/2026/09/13/hawaii-news/kauai-power-restoration-expands-as-outside-crews-join-lowell-recovery/",
+   "verbatim": true
+  },
+  {
+   "speaker": "Hawaii Congressional Delegation (Sens. Schatz, Hirono; Reps. Case, Tokuda)",
+   "title": "U.S. Senators and Representatives for Hawaii",
+   "quote": "The cumulative impact of these events exceeds the capacity of the State and our counties, warranting federal assistance.",
+   "url": "https://www.staradvertiser.com/2026/09/14/hawaii-news/delegation-urges-trump-to-ok-disaster-declarations/",
+   "verbatim": true
+  },
+  {
+   "speaker": "David Bissell",
+   "title": "President and CEO, Kauai Island Utility Cooperative (KIUC)",
+   "quote": "transmission repairs could be complete by the end of next week, with distribution repairs to follow",
+   "url": "https://kiuc.coop/lowell_updates",
+   "verbatim": true
+  },
+  {
+   "speaker": "David Bissell",
+   "title": "President and CEO, Kauai Island Utility Cooperative (KIUC)",
+   "quote": "Our first priority is making sure conditions are safe for our crews, emergency responders and the public.",
+   "url": "https://www.civilbeat.org/2026/09/hurricane-lowell-hit-kauai-hard-but-worst-fears-averted/",
+   "verbatim": true
+  },
+  {
+   "speaker": "Caroline Anderson",
+   "title": "Interim President/CEO, Hawaii Tourism Authority",
+   "quote": "Adjusting your itinerary allows you to continue your Hawaii vacation while supporting the state's broader visitor economy as Kauai recovers.",
+   "url": "https://www.staradvertiser.com/2026/09/12/hawaii-news/lowell-aftermath-hotel-damage-visitor-alerts-disrupting-kauai-tourism/",
+   "verbatim": true
+  },
+  {
+   "speaker": "Jerry Gibson",
+   "title": "President, Hawaii Hotel Alliance",
+   "quote": "If (a property) is open, they're obviously doing business and they want business if they're open.",
+   "url": "https://www.staradvertiser.com/2026/09/12/hawaii-news/lowell-aftermath-hotel-damage-visitor-alerts-disrupting-kauai-tourism/",
+   "verbatim": true
+  }
+ ],
+ "unknowns": [
+  "Whether/when Trump and FEMA will formally approve the Hurricane Lowell major disaster declaration for Kauai and Maui counties — still an open request as of Sept 14.",
+  "Whether/when the separate, still-pending Hurricane Lala statewide major disaster declaration will be approved.",
+  "An official FEMA-validated Preliminary Damage Assessment dollar total specific to Hurricane Lowell alone has not been published in these sources — only the Governor's own $400M+ estimate and Lala's separate $67M FEMA-validated PA figure exist so far.",
+  "No official combined/cumulative dollar figure spanning both Lowell and Lala requests has been stated by the state or FEMA.",
+  "No confirmed final restoration date for the last North Shore KIUC customers beyond KIUC's own 'transmission by end of next week' estimate.",
+  "No official count of insurance claims filed or paid out for Lowell damage has been released by Hawaii's Insurance Division (DCCA) or insurers.",
+  "No firm reopening date for South Shore or North Shore hotels beyond the 'no earlier than Sept 21' / 'no earlier than Oct 1' advisory windows, which are themselves tentative.",
+  "No detail yet on the permanent (non-temporary) repair timeline for the Wainiha bridges beyond a temporary abutment fix 'scheduled for next month.'"
+ ],
+ "titles": [
+  "Kauai North Shore Waits as KIUC Nears 90% Restored",
+  "Green Seeks $400M Disaster Aid for Kauai",
+  "FEMA Weighs 2 Storm Declarations for Kauai",
+  "Hanalei Bridge Repairs Cut Kuhio Highway to 1 Lane",
+  "Kauai Hotels Bar North Shore Guests Until Oct 1"
+ ],
+ "warnings": [
+  "Do not merge dollar figures across storms: Gov. Green's '$400 million+' estimate (Sept 9) is his own broad damage estimate for Kauai from Hurricane Lowell specifically; the '$67 million' FEMA-validated Public Assistance figure and the '267 damaged residences' count reported Sept 14 are tied to Hurricane Lala's Joint Preliminary Damage Assessment, not Lowell's. Sources sometimes list both in the same article about 'the disaster declarations,' which can read as one number for one storm — it is not.",
+  "Cotality's '$0.5-1.0 billion' figure is a private catastrophe-modeler's estimate of insured losses (a different methodology/scope than government damage assessments) and should not be equated with or added to the Governor's $400M state estimate.",
+  "KIUC restoration percentages climb quickly day to day across sources (66% Sept 11 per Hawaii News Now, ~72%/28%-remaining Sept 12 per one tourism piece, 76% Saturday afternoon Sept 12 per Star-Advertiser, 81% as of the Sept 13 KIUC own update) — these are a genuine fast-moving timeline, not conflicting reports; use 81% (Sept 13, KIUC's own site) as the current figure and treat the others strictly as dated history.",
+  "KIUC's own site was the freshest primary source found (updated 9.13.2026); Hawaii EMA's public situation-report page (dod.hawaii.gov/hiema) was last updated Sept 8 and is stale — do not cite it for current status."
+ ]
+}

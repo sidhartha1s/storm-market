@@ -1,0 +1,163 @@
+{
+ "as_of_line": "Fact desk current as of 2026-09-14 evening IST (≈2026-09-14 20:00 JST), keyed to JMA's 16:00 JST bulletin (covering 11-14 Sept), Tokyo VAAC advisory 2026/192 (05:39 UTC/14:39 JST), and same-day Japanese wire/local reporting.",
+ "story_is_live": true,
+ "titles": [
+  "Sakurajima ash plume rises 2,500 meters",
+  "Sakurajima stays at JMA alert Level 3",
+  "Sakurajima's 2 km zone stays shut in Kagoshima",
+  "Sakurajima erupts 6 times, ash keeps rising",
+  "Sakurajima's gas output tops 2,100 tons daily"
+ ],
+ "facts": [
+  {
+   "fact": "Sakurajima's Minami-dake summit crater erupted at 2:25pm JST on 14 Sept; JMA's ashfall forecast (issued 2:46pm) said the resulting plume rose 2,500 m above the crater rim.",
+   "number": "2,500 m",
+   "source_name": "Livedoor News (relaying JMA ashfall forecast)",
+   "url": "https://news.livedoor.com/topics/detail/32320993/",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "JMA's forecast for the 14 Sept eruption said ash drifted north and predicted 'moderately heavy' (やや多量) ashfall in Kagoshima city by 8:00pm that evening.",
+   "source_name": "Livedoor News (JMA forecast text)",
+   "url": "https://news.livedoor.com/topics/detail/32320993/",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "The same 14 Sept forecast said lighter ashfall was expected as far as Asagiri Town in neighboring Kumamoto Prefecture.",
+   "source_name": "Livedoor News (JMA forecast text)",
+   "url": "https://news.livedoor.com/topics/detail/32320993/",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "JMA's 14 Sept 16:00 activity bulletin, covering 11-14 Sept, recorded 6 eruptions at Sakurajima's Minami-dake summit crater in that span, with ash reaching a maximum 2,500 m above the crater rim.",
+   "number": "6 eruptions",
+   "source_name": "tenki.jp / Japan Meteorological Agency bulletin",
+   "url": "https://tenki.jp/bousai/volcano/506/information/2026-09-14-16-00-00.html",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "Ballistic volcanic rocks from those 11-14 Sept eruptions were thrown as far as roughly 600 m from the Minami-dake summit crater.",
+   "number": "600 m",
+   "source_name": "tenki.jp / Japan Meteorological Agency bulletin",
+   "url": "https://tenki.jp/bousai/volcano/506/information/2026-09-14-16-00-00.html",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "[Background, >72h old] On 11 Sept, JMA logged 9 volcanic earthquakes at Sakurajima with zero explosions that day.",
+   "number": "9 earthquakes",
+   "source_name": "tenki.jp / JMA bulletin",
+   "url": "https://tenki.jp/bousai/volcano/506/information/2026-09-14-16-00-00.html",
+   "date": "2026-09-11 (published 2026-09-14)"
+  },
+  {
+   "fact": "[Background, borderline >72h] On 12 Sept, JMA logged 7 volcanic earthquakes at Sakurajima with zero explosions.",
+   "number": "7 earthquakes",
+   "source_name": "tenki.jp / JMA bulletin",
+   "url": "https://tenki.jp/bousai/volcano/506/information/2026-09-14-16-00-00.html",
+   "date": "2026-09-12 (published 2026-09-14)"
+  },
+  {
+   "fact": "On 13 Sept, JMA logged 6 volcanic earthquakes at Sakurajima with zero explosions.",
+   "number": "6 earthquakes",
+   "source_name": "tenki.jp / JMA bulletin",
+   "url": "https://tenki.jp/bousai/volcano/506/information/2026-09-14-16-00-00.html",
+   "date": "2026-09-13"
+  },
+  {
+   "fact": "By 3:00pm on 14 Sept, JMA had logged 3 volcanic earthquakes that day, with zero explosions across the full 11-14 Sept window.",
+   "number": "3 earthquakes",
+   "source_name": "tenki.jp / JMA bulletin",
+   "url": "https://tenki.jp/bousai/volcano/506/information/2026-09-14-16-00-00.html",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "JMA's 14 Sept bulletin states sulfur dioxide (volcanic gas) discharge remains 'generally abundant' and that magma continues accumulating deep beneath the Aira Caldera, so eruptive activity is expected to continue.",
+   "source_name": "tenki.jp / Japan Meteorological Agency bulletin",
+   "url": "https://tenki.jp/bousai/volcano/506/information/2026-09-14-16-00-00.html",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "JMA's next scheduled Sakurajima activity bulletin is due 18 Sept at 16:00 JST.",
+   "source_name": "tenki.jp / Japan Meteorological Agency bulletin",
+   "url": "https://tenki.jp/bousai/volcano/506/information/2026-09-14-16-00-00.html",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "On 13 Sept, Sakurajima produced an ash plume of 2,400 m; JMA's forecast that day had ash drifting northwest toward Kagoshima city's Yoshino area, with 'moderately heavy' ashfall expected in Kagoshima city by 11:00pm and lighter fall reaching as far as Akune city.",
+   "number": "2,400 m",
+   "source_name": "MBC (Minami Nippon Broadcasting) via docomo topics",
+   "url": "https://topics.smt.docomo.ne.jp/article/mbc/region/mbc-2941395?page=2",
+   "date": "2026-09-13"
+  },
+  {
+   "fact": "Sakurajima remains at Japan's Volcanic Alert Level 3 (entry restriction/入山規制) — a status JMA and Kagoshima City documentation date to 27 July 2022 and which is still in force as of 14 Sept 2026.",
+   "number": "Level 3",
+   "source_name": "Kagoshima City official site / JMA",
+   "url": "https://www.city.kagoshima.lg.jp/kikikanri/kurashi/bosai/bosai/sakurajima/funka.html",
+   "date": "2026-09-14 (status set 2022-07-27)"
+  },
+  {
+   "fact": "A 2 km no-entry restricted zone around the Minami-dake and Showa craters remains in force under Article 63 of Japan's Disaster Countermeasures Basic Law, citing danger from large ballistic rocks and pyroclastic flows.",
+   "number": "2 km",
+   "source_name": "Kagoshima City official site",
+   "url": "https://www.city.kagoshima.lg.jp/kikikanri/kurashi/bosai/bosai/sakurajima/kinshi.html",
+   "date": "page current as of check 2026-09-14"
+  },
+  {
+   "fact": "The Tokyo VAAC's most recent Sakurajima ash advisory (No. 2026/192) was issued at 05:39 UTC (14:39 JST) on 14 Sept, part of a rapid run of advisories (2026/189 through 2026/192) issued 13-14 Sept.",
+   "number": "advisory 2026/192",
+   "source_name": "Japan Meteorological Agency, Tokyo VAAC",
+   "url": "https://www.data.jma.go.jp/vaac/data/vaac_list.html",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "[Background, >72h old] On 8 Sept, an eruption at Minami-dake produced an ash plume of 1,300 m above the crater rim.",
+   "number": "1,300 m",
+   "source_name": "JMA volcanic activity data (via web search summary)",
+   "url": "https://www.data.jma.go.jp/vois/data/report/activity_info/506.html",
+   "date": "2026-09-08"
+  },
+  {
+   "fact": "[Background, >72h old] A JMA field survey on 10 Sept measured Sakurajima's sulfur dioxide emission rate at 2,100 tonnes per day.",
+   "number": "2,100 t/day",
+   "source_name": "JMA volcanic activity data (via web search summary)",
+   "url": "https://www.data.jma.go.jp/vois/data/report/activity_info/506.html",
+   "date": "2026-09-10"
+  },
+  {
+   "fact": "[Background, >72h old] Smithsonian Global Volcanism Program / VolcanoDiscovery reporting on Aira (Sakurajima) covering 6-12 Aug 2026 recorded ongoing eruptive activity since early August, ash plumes up to 2.2 km, ballistics to 600 m, and Alert Level 3 maintained.",
+   "number": "2.2 km",
+   "source_name": "Smithsonian Global Volcanism Program (via VolcanoDiscovery)",
+   "url": "https://www.volcanodiscovery.com/sakurajima/news/325503/Aira-Sakurajima-Volcano-Japan--Activity-Report-612-Aug-2026-Continuing-Eruptive-Activity.html",
+   "date": "2026-08-06 to 2026-08-12"
+  },
+  {
+   "fact": "[Background, >72h old, different event — May 2026] Sakurajima produced a small pyroclastic flow (~600 m, southeast) confirmed 8 May 2026, its first in roughly eight years, alongside episodes of mountain-body (edifice) inflation feeding the same magma-accumulation pattern JMA cites for the current unrest.",
+   "number": "600 m",
+   "source_name": "373news.com (Minami-Nippon Shimbun)",
+   "url": "https://373news.com/news/local/detail/233426",
+   "date": "2026-05-11 (event 2026-05-08)"
+  },
+  {
+   "fact": "[Background, standing planning figure, undated] Kagoshima City's official hazard guidance says ash from a major Sakurajima eruption could reach depths of '1 m or more' within a 20 km radius, and pyroclastic flows can travel at over 100 km/h.",
+   "number": "100 km/h",
+   "source_name": "Kagoshima City official site",
+   "url": "https://www.city.kagoshima.lg.jp/soumu/shichoshitu/kokusai/ja/emergency/sakurajima.html",
+   "date": "undated standing guidance, checked 2026-09-14"
+  }
+ ],
+ "quotes": [],
+ "unknowns": [
+  "No on-record quote from a named individual official (a JMA spokesperson, the Fukuoka District Meteorological Observatory, Kagoshima's mayor, or the Kagoshima governor) was found in the sources checked for the 10-14 Sept 2026 window — only unattributed agency bulletin text ('JMA says...') was available, so no quotes are reported.",
+  "No verified flight-cancellation count for Kagoshima Airport specific to 10-14 Sept 2026 was found; all flight-cancellation figures located (30 flights, Nov 2025; ~34 flights across Kagoshima/Kumamoto/Miyazaki, Nov 2025; 4 flights, May 2025) are from unrelated, older eruptions and must not be read as this week's numbers.",
+  "JMA has not stated whether it is considering raising the Alert Level above 3, nor has it announced any change to the standing 2 km restricted zone during this window.",
+  "No quantified ashfall depth (mm) for Kagoshima city on 13-14 Sept was found — JMA's own language is qualitative ('yaya taryō'/moderately heavy), not a measured millimeter figure.",
+  "No official casualty, injury, or building-damage reports tied to the 10-14 Sept activity were found in the sources checked.",
+  "Kyodo News' and Japan Times' own sites were not directly reachable in this session (search only surfaced aggregator/mirror coverage); their original-URL reporting for this exact window could not be independently confirmed."
+ ],
+ "warnings": [
+  "Search-engine results repeatedly mixed in unrelated older Sakurajima eruptions (Nov 2025's 4,400 m/30-flights event, June 2026's 'grey rain' event, May 2026's pyroclastic-flow event, Aug 2026 GVP report) when queried for 'September 2026' — every fact above tied to a date outside 10-14 Sept 2026 is explicitly labeled [Background] and should not be presented as this week's news.",
+  "Direct WebFetch access to jma.go.jp's main activity-info page, Kyodo, NHK World, and volcano.si.edu (Smithsonian GVP) was blocked (403/404) in this session; JMA/GVP facts above were sourced via search-engine summaries of those pages rather than a direct page read, so re-verify against the live JMA bulletin page (https://www.data.jma.go.jp/vois/data/report/activity_info/506.html) before broadcast.",
+  "This session's WebSearch quota was exhausted mid-research, cutting off further attempts to find named-official quotes and a current flight-cancellation count — both remain open items (see unknowns)."
+ ]
+}

@@ -1,0 +1,197 @@
+{
+ "story_is_live": true,
+ "as_of_line": "Fact desk as of 2026-09-14 (evening IST) / daytime WIB-WITA-WIT. Same-day (Sept 14) and Sept 8-11 items are current; anything older is explicitly labeled background.",
+ "facts": [
+  {
+   "fact": "Semeru erupted three times Monday morning: 04:20 WIB (~500m ash), 05:53 WIB (~800m ash), and 06:28 WIB (~1,000m ash, to 4,676m above sea level). Remains Level III (Siaga); PVMBG bars all activity in the southeast sector along Besuk Kobokan up to 13km from the peak.",
+   "source_name": "Okezone News",
+   "url": "https://news.okezone.com/read/2026/09/14/340/3241876/gunung-semeru-erupsi-pagi-ini-kolom-abu-mencapai-1-000-meter",
+   "date": "2026-09-14",
+   "number": "1,000m ash column"
+  },
+  {
+   "fact": "Semeru recorded 29 eruptions in six hours (00:00-06:00 WIB); PGA Semeru observer Liswanto held the 5km summit exclusion radius plus the 13km southeast Besuk Kobokan warning.",
+   "source_name": "Detik News",
+   "url": "https://news.detik.com/berita/d-8654833/semeru-erupsi-29-kali-dalam-6-jam-warga-dilarang-beraktivitas-di-radius-5-km",
+   "date": "2026-09-09",
+   "number": "29 eruptions/6 hrs"
+  },
+  {
+   "fact": "Semeru has logged roughly 1,808-1,811 eruptions so far in 2026 (tally as of ~Sept 7), the most of any Indonesian volcano this year.",
+   "source_name": "Antara News",
+   "url": "https://www.antaranews.com/berita/5734176/11-gunung-api-di-indonesia-yang-erupsi-sepanjang-2026",
+   "date": "2026-09-08",
+   "number": "~1,808 eruptions YTD"
+  },
+  {
+   "fact": "Mount Ibu erupted Monday at 11:17 WIT, ash column 400m above the peak (1,725masl), gray, moderate intensity, drifting east — its third eruption in a week. Remains Level II (Waspada); PVMBG exclusion is a 2km radius plus a 3.5km sectoral extension north of the crater's open flank.",
+   "source_name": "Databoks (Katadata)",
+   "url": "https://databoks.katadata.co.id/demografi/statistik/4ea33d29e2478ce/gunung-ibu-kembali-erupsi-siang-ini-senin-14-september-2026",
+   "date": "2026-09-14",
+   "number": "400m ash column"
+  },
+  {
+   "fact": "Ibu's Sept 14 seismographs recorded 75 eruption earthquakes with amplitudes of 15-28mm and durations of 34-84 seconds.",
+   "source_name": "Databoks (Katadata)",
+   "url": "https://databoks.katadata.co.id/demografi/statistik/4ea33d29e2478ce/gunung-ibu-kembali-erupsi-siang-ini-senin-14-september-2026",
+   "date": "2026-09-14",
+   "number": "75 quakes"
+  },
+  {
+   "fact": "Ibu has recorded roughly 1,504 eruptions in 2026 to date (as of ~Sept 7), the second-most active volcano nationally this year after Semeru.",
+   "source_name": "CNBC Indonesia",
+   "url": "https://www.cnbcindonesia.com/news/20260907073855-4-765601/waspada-gunung-ibu-erupsi-ini-peringatan-badan-geologi-ri",
+   "date": "2026-09-07",
+   "number": "~1,504 eruptions YTD"
+  },
+  {
+   "fact": "Ili Lewotolok erupted Monday at 18:51 WITA, ash column 200m above the peak (1,623masl), white-to-gray, seismogram amplitude 40mm/duration 76 seconds — its third eruption in a week. Remains Level II (Waspada); PVMBG radius is 2km, extended to 3km toward the south/southeast sector.",
+   "source_name": "Databoks (Katadata)",
+   "url": "https://databoks.katadata.co.id/demografi/statistik/ff04e51c567069d/gunung-ili-lewotolok-kembali-erupsi-hari-ini-tinggi-abu-vulkanik-capai-200-meter",
+   "date": "2026-09-14",
+   "number": "200m ash column"
+  },
+  {
+   "fact": "Ili Lewotolok ashfall on Sept 8 blanketed 11 villages in Ile Ape district, Lembata Regency, NTT; camat Laurens Manu and Amakaka village head Ambrosius Boyang reported crop damage, eye irritation and skin itching among residents.",
+   "source_name": "Detik News",
+   "url": "https://news.detik.com/berita/d-8653443/gunung-ile-lewotolok-keluarkan-abu-vulkanik-warga-alami-gatal",
+   "date": "2026-09-08",
+   "number": "11 villages"
+  },
+  {
+   "fact": "[BACKGROUND, >72h] Sinabung was raised from Level II to Level III (Siaga) on Aug 31 at 12:30 WIB after an eruption at 10:17 WIB sent an ash column 3,500m above the peak (5,960masl). PVMBG's exclusion was 3km from the summit plus a 6km south-southeast sector.",
+   "source_name": "SudutPandang.id",
+   "url": "https://sudutpandang.id/badan-geologi-letusan-lebih-besar-potensial-terjadi-di-gunung-sinabung/",
+   "date": "2026-08-31",
+   "number": "3,500m ash column"
+  },
+  {
+   "fact": "[BACKGROUND, >72h] BNPB evacuated 615 people (211 families) from Desa Kuta Tengah to an emergency post in Desa Sukatepu, Naman Teran district, after Sinabung's Aug 31 eruption.",
+   "source_name": "Antara News",
+   "url": "https://www.antaranews.com/berita/5721805/bnpb-615-warga-desa-dievakuasi-hindari-paparan-erupsi-gunung-sinabung",
+   "date": "2026-09-01",
+   "number": "615 evacuated"
+  },
+  {
+   "fact": "Sinabung remained one of five volcanoes nationwide at Level III (Siaga) as of Sept 8-9, alongside Anak Krakatau, Semeru and Lewotobi Laki-laki.",
+   "source_name": "Detik News",
+   "url": "https://news.detik.com/berita/d-8651785/daftar-6-gunung-berstatus-siaga-saat-ini-termasuk-anak-krakatau",
+   "date": "2026-09-08",
+   "number": "5 volcanoes at Siaga"
+  },
+  {
+   "fact": "Lewotobi Laki-laki has been at Level III (Siaga) since May 12, 2026, with a standing 5km no-go radius from the crater.",
+   "source_name": "Detik News",
+   "url": "https://news.detik.com/berita/d-8651785/daftar-6-gunung-berstatus-siaga-saat-ini-termasuk-anak-krakatau",
+   "date": "2026-09-08",
+   "number": "5km radius"
+  },
+  {
+   "fact": "Lewotobi Laki-laki has recorded roughly 859 eruptions in 2026 to date (tally as of ~Sept 7-8).",
+   "source_name": "Antara News",
+   "url": "https://www.antaranews.com/berita/5734176/11-gunung-api-di-indonesia-yang-erupsi-sepanjang-2026",
+   "date": "2026-09-08",
+   "number": "~859 eruptions YTD"
+  },
+  {
+   "fact": "[BACKGROUND] Survivors of Lewotobi Laki-laki's Nov 3, 2024 eruption disaster are still receiving humanitarian aid in temporary housing (huntara) in Flores Timur as of Sept 11, 2026 — nearly two years into the recovery.",
+   "source_name": "FloresPos.net",
+   "url": "https://florespos.net/2026/09/11/bingkisan-kasih-julie-laiskodat-1-ton-beras-untuk-penyintas-lewotobi-laki-laki-seminari-san-dominggo/",
+   "date": "2026-09-11",
+   "number": "~2 years post-disaster"
+  },
+  {
+   "fact": "Marapi remained at Level II (Waspada) as of the Sept 8-9 nationwide roundup, one of six volcanoes at that tier; standing 3km exclusion radius from Kawah Verbeek.",
+   "source_name": "Detik News",
+   "url": "https://news.detik.com/berita/d-8651785/daftar-6-gunung-berstatus-siaga-saat-ini-termasuk-anak-krakatau",
+   "date": "2026-09-08",
+   "number": "3km radius"
+  },
+  {
+   "fact": "[BACKGROUND] Marapi has recorded about 51 eruptions in 2026 to date, far fewer than Semeru, Ibu or Lewotobi Laki-laki; no September-specific ash-column figures were found in sources reviewed.",
+   "source_name": "Antara News",
+   "url": "https://www.antaranews.com/berita/5734176/11-gunung-api-di-indonesia-yang-erupsi-sepanjang-2026",
+   "date": "2026-09-08",
+   "number": "~51 eruptions YTD"
+  },
+  {
+   "fact": "Indonesia has 127 active volcanoes (about 76-77 classified Type A, with recorded magmatic eruptions since 1600 CE); Mount Merapi has the most complete monitoring infrastructure nationally.",
+   "source_name": "CNN Indonesia",
+   "url": "https://www.cnnindonesia.com/nasional/20260909205344-20-1402120/ri-punya-127-gunung-api-aktif-pos-pantau-terlengkap-cuma-di-merapi",
+   "date": "2026-09-09",
+   "number": "127 active volcanoes"
+  },
+  {
+   "fact": "PVMBG (under Badan Geologi, Ministry of ESDM) continuously monitors 68 volcanoes through 75 volcano-observation posts nationwide; as of Sept 9, 2026, 5 volcanoes sat at Level III (Siaga) and 22 at Level II (Waspada).",
+   "source_name": "Dataloka.id",
+   "url": "https://dataloka.id/humaniora/7435/127-gunung-api-aktif-indonesia-provinsi-paling-banyak-2026/",
+   "date": "2026-09-09",
+   "number": "68 monitored / 75 posts"
+  },
+  {
+   "fact": "At least 11 Indonesian volcanoes have erupted at some point in 2026, split roughly 5 Siaga / 6 Waspada per the early-September nationwide tally.",
+   "source_name": "Antara News",
+   "url": "https://www.antaranews.com/berita/5734176/11-gunung-api-di-indonesia-yang-erupsi-sepanjang-2026",
+   "date": "2026-09-08",
+   "number": "11 volcanoes erupting in 2026"
+  }
+ ],
+ "quotes": [
+  {
+   "speaker": "Lana Saria",
+   "title": "Head of Badan Geologi (Kepala Badan Geologi), Ministry of ESDM",
+   "quote": "Erupsi ini merupakan sebagai erupsi awal dan tidak menutup kemungkinan terjadinya erupsi yang lebih besar (This eruption is an initial eruption and does not rule out the possibility of a larger eruption).",
+   "url": "https://sudutpandang.id/badan-geologi-letusan-lebih-besar-potensial-terjadi-di-gunung-sinabung/",
+   "verbatim": true
+  },
+  {
+   "speaker": "Liswanto",
+   "title": "Observer, Semeru Volcano Observation Post (PGA Semeru)",
+   "quote": "Gunung Semeru mengalami 29 kali letusan selama 6 jam. Status gunung Semeru masih siaga.",
+   "url": "https://news.detik.com/berita/d-8654833/semeru-erupsi-29-kali-dalam-6-jam-warga-dilarang-beraktivitas-di-radius-5-km",
+   "verbatim": true
+  },
+  {
+   "speaker": "Laurens Manu",
+   "title": "Camat (District Head), Ile Ape, Lembata Regency, NTT",
+   "quote": "Tanaman sudah mulai terganggu, masyarakat mata sakit, badan gatal.",
+   "url": "https://news.detik.com/berita/d-8653443/gunung-ile-lewotolok-keluarkan-abu-vulkanik-warga-alami-gatal",
+   "verbatim": true
+  },
+  {
+   "speaker": "Ambrosius Boyang",
+   "title": "Kepala Desa (Village Head), Amakaka, Lembata Regency, NTT",
+   "quote": "Hitam sekali. Pasir turun macam hujan.",
+   "url": "https://news.detik.com/berita/d-8653443/gunung-ile-lewotolok-keluarkan-abu-vulkanik-warga-alami-gatal",
+   "verbatim": true
+  },
+  {
+   "speaker": "Agung Harijoko",
+   "title": "Volcanology expert, Faculty of Geography, Universitas Gadjah Mada",
+   "quote": "The most complete monitoring is at Mount Merapi. It has the most thorough observations and best technology.",
+   "url": "https://www.cnnindonesia.com/nasional/20260909205344-20-1402120/ri-punya-127-gunung-api-aktif-pos-pantau-terlengkap-cuma-di-merapi",
+   "verbatim": false
+  }
+ ],
+ "unknowns": [
+  "PVMBG has not stated whether Sinabung's Aug 31 warning of a possible 'larger eruption' has since been realized, downgraded, or withdrawn as of Sept 14.",
+  "No official update was found on whether the 615 residents evacuated from Sinabung's Kuta Tengah village have returned home or remain at the Sukatepu emergency post.",
+  "No September-specific eruption/ash-column figures were found for Marapi this week; its only 2026 data point located dates to Feb-May.",
+  "No single PVMBG bulletin was found consolidating exclusion radii for all six volcanoes at once — each radius comes from a separate, volcano-specific advisory.",
+  "PVMBG/Badan Geologi has not publicly reconciled the conflicting alert-level reporting on Ibu and Ili Lewotolok (see warnings) with an explicit statement in the sources reviewed."
+ ],
+ "warnings": [
+  "Contradiction: Detik's Sept 8 roundup titled '6 Gunung Berstatus Siaga' lists Ibu among Level III volcanoes, but both CNBC Indonesia (Sept 7) and Databoks (Sept 14, fetched directly) report Ibu at Level II (Waspada). This desk treats Level II as correct based on the two volcano-specific, more recent advisories.",
+  "Contradiction: the same Detik roundup implies Ili Lewotolok is Siaga, while Databoks (Sept 14, fetched directly) and Bloombergtechnoz both report Level II (Waspada). Treated as Level II per the more specific, directly-verified sources.",
+  "A Media Indonesia article citing ashfall damage to houses/crops in '9 villages' from Ili Lewotolok could not be opened directly (HTTP 402 paywall) — its figures come only from search-engine synthesis, not first-hand verification, and were excluded in favor of the directly-confirmed 11-village Sept 8 Detik report.",
+  "The '68 volcanoes monitored via 75 posts' PVMBG statistic is a recurring figure that also appears in older (pre-2026) PVMBG communications; the 2026 article citing it (Dataloka.id) does not carry an unambiguous fresh restatement date, so treat the monitoring-post count as a standing capacity figure rather than a this-week announcement.",
+  "Cumulative 2026 eruption-count figures (Semeru ~1,808, Ibu ~1,504, Lewotobi Laki-laki ~859, Marapi ~51) are running tallies 'as of' early September, not single-day counts — do not read them as this week's activity alone."
+ ],
+ "titles": [
+  "Semeru Erupts Again, Ash Column Hits 1,000m",
+  "Mount Ibu Erupts 3rd Time This Week",
+  "Sinabung Holds Siaga After 3,500m Ash Blast",
+  "Indonesia Tracks 6 Volcanoes on Alert This Week",
+  "Ili Lewotolok Ashfall Hits 11 Lembata Villages"
+ ]
+}
