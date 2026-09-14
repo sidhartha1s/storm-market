@@ -93,10 +93,10 @@
    "title": "CPC: El Niño Odds Above 90% (what the agency said today)",
    "owner": "director",
    "due": "16 Sep 26",
-   "phase": "sourcing",
+   "phase": "assemble",
    "status": "doing",
-   "note": "slot A 16 Sep; TTS done (7.3 min voice); pool had lost all but the Sept top-up, Sonnet re-fetching 46 rows from source URLs; build after",
-   "updated": "15 Sep 26 04:33"
+   "note": "pool re-fetched 45/45 + 35-file Sept top-up; timeline + cards being authored",
+   "updated": "15 Sep 26 04:56"
   },
   {
    "slug": "ms-0916-usf-b",
@@ -381,10 +381,10 @@
    "title": "Kauai Holds at 81% Power as Schools Reopen",
    "owner": "director",
    "due": "16 Sep 26",
-   "phase": "checks",
-   "status": "doing",
-   "note": "slot B 16 Sep; TTS+atempo+transcribe done (6.7 min voice, 7:09 total); timeline + 6 cards built; static+browser gates green; frame read running; draft render next",
-   "updated": "15 Sep 26 04:33"
+   "phase": "preview",
+   "status": "done",
+   "note": "draft rendered 7:09, verify_render clean; parked for owner; full launcher staged",
+   "updated": "15 Sep 26 04:56"
   }
  ]
 }
