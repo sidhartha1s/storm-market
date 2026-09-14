@@ -13,7 +13,8 @@ refutation, showrunner synthesis). Read with `yt-packaging` before any title or 
 ## Thumbnail: three schools, one rule
 - **A · Name + Year documentary card** (archive photograph, heavy upright caps, place name in frame, one human-scale
   fact as text: "158 DEAD IN 32 MINUTES"). Use for historical documentaries (the banked four, Joplin, Tri-State).
-  No AI storms, no BREAKING bar.
+  A cinematic AI shot is allowed here when it carries the place name and the fact: ep2 shipped an AI tornado with
+  text and pulled 6.65 % CTR on 11k impressions (owner 2026-09-14). No BREAKING bar.
 - **B · Agency photograph + 2–4 bold words** (NOAA/CPC map or SST globe, white first line, red payoff word, region +
   verdict; map and arrow allowed). Use for forecast explainers (El Niño series).
 - **C · Live-wave news style** (map with 3–4 city labels, one red arrow, 2–4 word present-tense text, OUR bug "THE
@@ -21,6 +22,10 @@ refutation, showrunner synthesis). Read with `yt-packaging` before any title or 
 - Every thumb carries a place name; no thumb ships with a spelling error (Krakatau #3 shipped "ERRUPTIONS").
 - Series identity (10–15 El Niño videos): fixed type family, blue/amber palette, round "EL NIÑO 26-27" badge
   bottom-left; the variable is the state photograph + state name. Title spine `El Niño Winter 2026-27: <State>: <verdict>`.
+
+## What the Studio export says (2026-09-14)
+YouTube tested every US-topic upload with 2–11k impressions; CTR decided the rest: 6.65 % kept going (ep2), 3.5 %
+half-lived (Joplin), 1.8 % died (Tri-State). Krakatau never got a test (55–60 impressions). Packaging is the gate.
 
 ## Pre-publish checklist (the plumbing that was unshipped on ep2)
 Description first URL = channel first_link; no placeholder text ("OWNER TO FILL" is a publish blocker); playlist set;
