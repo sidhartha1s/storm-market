@@ -68,10 +68,10 @@
       "title": "Hawaii Still Counting Lowell's Power Outages",
       "owner": "director",
       "due": "15 Sep 26",
-      "phase": "preview",
-      "status": "done",
-      "note": "preview rendered 8:58; post-render check: only expected blacks; parked for owner eyeball",
-      "updated": "15 Sep 26 01:41"
+      "phase": "assemble",
+      "status": "doing",
+      "note": "owner review fixes: names out of voice (on screen), comps fixed, CTA dip 0.5; re-TTS + retime queued behind slot A's final render",
+      "updated": "15 Sep 26 02:30"
     },
     {
       "slug": "ms-sakurajima-ash",
