@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  B6 document card: the congressional delegation's letter to the President (Maui Now, 14 Sep 26; letter dated 9 Sep).
+  Verbatim line from the sheet: "The cumulative impact of these events exceeds the capacity of the State and our
+  counties, warranting federal assistance." Host = b6-s1 start + 10.9, 22.5 s.
+  Cues rel. host: senators 15.5−10.9=4.6 · letter public 21.7−10.9=10.8 · cumulative 25.22−10.9=14.32 · pending 32.32−10.9=21.42.
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; background: radial-gradient(ellipse at 50% 40%, #0e1a28 0%, #04070c 75%); font-family:Georgia,serif; color:#f2f5f8; }
+  .doc { position:absolute; left:360px; top:120px; width:1200px; box-sizing:border-box; padding:48px 64px; background:#f4f0e8; color:#1a1a1a; border-radius:6px; box-shadow:0 30px 80px rgba(0,0,0,0.6); }
+  .hd { font-family:Arial,sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; color:#555; }
+  .to { font-family:Arial,sans-serif; font-size:26px; margin-top:26px; color:#222; }
+  .q { font-size:40px; line-height:1.35; margin-top:30px; color:#111; }
+  .q mark { background:linear-gradient(transparent 55%, rgba(208,18,31,0.35) 55%); }
+  .sig { font-family:Arial,sans-serif; font-size:22px; margin-top:34px; color:#333; line-height:1.5; }
+  .stamp { position:absolute; right:60px; top:60px; padding:12px 22px; border:5px solid #d0121f; color:#d0121f; font-family:'Arial Black',Arial,sans-serif; font-size:40px; letter-spacing:4px; transform:rotate(-8deg); }
+  .eye { position:absolute; left:110px; top:60px; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:6px; color:#d0121f; }
+  .big { position:absolute; left:110px; bottom:80px; font-family:'AbrilFig',Georgia,serif; font-size:56px; color:#f2f5f8; text-shadow:0 3px 14px rgba(0,0,0,0.85); }
+</style>
+<div id="root" data-composition-id="lettercard" data-width="1920" data-height="1080">
+  <div class="eye" id="lc-eye">THE REQUEST TO WASHINGTON</div>
+  <div class="doc" id="lc-doc">
+    <div class="hd">LETTER TO THE PRESIDENT · SEPTEMBER 9, 2026</div>
+    <div class="to" id="lc-to">From Senators Brian Schatz and Mazie Hirono, Representatives Ed Case and Jill Tokuda</div>
+    <div class="q" id="lc-q">“The cumulative impact of these events <mark>exceeds the capacity of the State and our counties</mark>, warranting federal assistance.”</div>
+    <div class="sig" id="lc-sig">Major Disaster Declarations requested for Hurricane Lowell and Hurricane Lala · made public 14 September</div>
+    <div class="stamp" id="lc-stamp">PENDING</div>
+  </div>
+  <div class="big" id="lc-big">NO DECISION DATE</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#lc-";
+  tl.set([P+"to", P+"q", P+"sig", P+"stamp", P+"big"], { autoAlpha: 0 }, 0);
+  tl.fromTo("#root", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 0);
+  tl.fromTo(P+"doc", { y: 60, autoAlpha: 0, rotate: -1.5 }, { y: 0, autoAlpha: 1, rotate: 0, duration: 0.8, ease: "power3.out" }, 0.2);
+  tl.fromTo(P+"to", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 4.6);
+  tl.fromTo(P+"sig", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 10.8);
+  tl.fromTo(P+"q", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 14.3);
+  tl.fromTo(P+"stamp", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.in" }, 21.4);
+  tl.fromTo(P+"big", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 21.8);
+  tl.fromTo(P+"doc", { scale: 1.0, transformOrigin: "center" }, { scale: 1.03, duration: 22.5, ease: "none" }, 0);
+  tl.to("#root", { autoAlpha: 0, duration: 0.4 }, 22.1);
+  window.__timelines["lettercard"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
