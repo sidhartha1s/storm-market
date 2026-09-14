@@ -78,9 +78,9 @@ const MEASURE = `((t) => {
         /* no-go zones (owner 15 Sep 26): the news bug strip (bottom 92 px + 8 px breathing) and the presenter circle
            (x ≥ 1600, y ≥ 680). Comp text there is hidden or collides with the bug/circle in the master. */
         if (ir.bottom > 980) out.zone.push({ zone: 'bug strip (y>980)', text: node.textContent.trim().slice(0,42), y: Math.round(ir.bottom) });
-        if (ir.right > 1600 && ir.bottom > 680) out.zone.push({ zone: 'presenter circle (x>1600,y>680)', text: node.textContent.trim().slice(0,42), y: Math.round(ir.bottom) });
+        if (ir.right > 1600 && ir.bottom > 680 && !document.querySelector('[data-no-presenter]')) out.zone.push({ zone: 'presenter circle (x>1600,y>680)', text: node.textContent.trim().slice(0,42), y: Math.round(ir.bottom) });
         /* sentence case: a text node that starts with a lowercase letter reads as a typo (DESIGN.md text discipline) */
-        if (/^[a-z]/.test(node.textContent.trim()) && node === el.firstChild) out.lower.push(node.textContent.trim().slice(0,42));
+        if (/^[a-z]/.test(node.textContent.trim()) && node === el.firstChild && cs.display !== 'inline') out.lower.push(node.textContent.trim().slice(0,42));  /* inline runs (mark/span) are mid-sentence */
       }
       out.fonts.push(parseFloat(cs.fontSize));
     }
