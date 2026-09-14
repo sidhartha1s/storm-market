@@ -2,14 +2,16 @@
 
 Usage: python3 ops/build_tracker.py            # rebuild the page
        python3 ops/build_tracker.py set <slug> <phase> <status> ["note"]   # move a card, then rebuild
-Phases run left to right; a card sits in exactly one. Status: todo | doing | blocked | failed | done.
+Phases run left to right; a card sits in exactly one. Status: todo | doing | blocked | failed | done. Dates DD Mon YY.
 """
 import html, json, sys, datetime, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent
 DATA = ROOT / "tracker.json"
 OUT = ROOT / "tracker.html"
-PHASES = ["idea", "packaging", "script", "tts", "sourcing", "assemble", "gates", "draft", "owner-gate", "render", "master", "published"]
+# plain words (owner 2026-09-14): checks = static gate suite, preview = draft render the owner eyeballs,
+# render = the final full render, upload = -14 LUFS master + SRT + metadata delivered and published
+PHASES = ["idea", "packaging", "script", "tts", "sourcing", "assemble", "checks", "preview", "render", "upload"]
 STATUSES = {"todo", "doing", "blocked", "failed", "done"}
 COLOR = {"todo": "#e8eef5", "doing": "#cfe3ff", "blocked": "#ffe2b8", "failed": "#ffc9c9", "done": "#cfeedd"}
 
@@ -29,7 +31,7 @@ def set_card(slug, phase, status, note=None):
     card = next((c for c in d["videos"] if c["slug"] == slug), None)
     if card is None:
         sys.exit(f"no such slug: {slug}")
-    card.update(phase=phase, status=status, updated=datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
+    card.update(phase=phase, status=status, updated=datetime.datetime.now().strftime("%d %b %y %H:%M"))
     if note is not None:
         card["note"] = note
     save(d)
@@ -41,7 +43,7 @@ def render():
         if c["phase"] not in PHASES or c["status"] not in STATUSES:
             sys.exit(f'{c["slug"]}: phase {c["phase"]!r} / status {c["status"]!r} not in {PHASES} / {sorted(STATUSES)}')
     rows = []
-    for c in sorted(d["videos"], key=lambda c: (c.get("due", ""), c["slug"])):
+    for c in sorted(d["videos"], key=lambda c: (datetime.datetime.strptime(c["due"], "%d %b %y"), c["slug"])):
         cells = []
         for p in PHASES:
             if p == c["phase"]:
@@ -59,7 +61,7 @@ def render():
     agents = "".join(f'<li><b>{html.escape(a["name"])}</b> · {html.escape(a["role"])} · {html.escape(a.get("status",""))}</li>' for a in d.get("agents", []))
     blockers = [c for c in d["videos"] if c["status"] in ("blocked", "failed")]
     bl = "".join(f'<li><b>{html.escape(c["slug"])}</b> · {c["phase"]} {c["status"]} · {html.escape(c.get("note",""))}</li>' for c in blockers) or "<li>none</li>"
-    now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+    now = datetime.datetime.now().strftime("%d %b %y %H:%M")
     page = f"""<!doctype html><meta charset="utf-8"><title>Warning Hour · ops tracker</title>
 <style>
 body{{font:14px/1.4 system-ui,Segoe UI,sans-serif;background:#f3f8fd;color:#123;margin:24px}}
