@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  B3-S1 map plate: Indonesia relief map (Wikimedia Commons, Uwe Dedering, CC BY-SA 3.0; equirectangular, bounds
+  94.5E–141.5E, 6.5N–11.5S; image 1200×460 drawn at 1920×736, centred) with six volcano pins landing on the spoken cues.
+  Pin pixel positions computed from the bounds (director's pass 14 Sep 26): Krakatau 446,687 · Semeru 752,769 ·
+  Lewotobi 1155,787 · Ili Lewotolok 1185,776 · Ibu 1353,377 · Sinabung 159,308. Host = b3-s1 start (98.69).
+  Cues (rel): "Sunda Strait" 2.1 · "Ibu" 6.2 · "Semeru" 9.5 · "Lewotobi" 11.1 · "Ili Lewotolok" 12.5 · "Sinabung" 16.3.
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; background:#04070c; overflow:hidden; font-family:Arial,sans-serif; }
+  .plate { position:absolute; left:0; top:172px; width:1920px; height:736px; }
+  .plate img { position:absolute; left:0; top:0; width:1920px; height:736px; }
+  .pin { position:absolute; width:22px; height:22px; margin:-11px 0 0 -11px; border-radius:50%; background:#d0121f; box-shadow:0 0 0 4px rgba(208,18,31,0.35), 0 0 18px rgba(208,18,31,0.9); }
+  .pin.l2 { background:#d8a13a; box-shadow:0 0 0 4px rgba(216,161,58,0.35), 0 0 18px rgba(216,161,58,0.9); }
+  .tag { position:absolute; transform:translate(-50%, -150%); white-space:nowrap; font-family:'Arial Black',Arial,sans-serif; font-size:26px; letter-spacing:2px; color:#f4f0e8;
+    background:rgba(10,16,24,0.7); border:1px solid rgba(255,255,255,0.14); border-left:5px solid #d0121f; padding:6px 14px; border-radius:8px; }
+  .tag.l2 { border-left-color:#d8a13a; }
+  .eye { position:absolute; left:110px; top:60px; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:6px; color:#d0121f; }
+  .src { position:absolute; right:40px; top:34px; font-size:20px; letter-spacing:1px; color:rgba(220,228,236,0.85); background:rgba(5,8,12,0.6); padding:6px 14px; }
+</style>
+<div id="root" data-composition-id="mapsix" data-width="1920" data-height="1080">
+  <div class="eye" id="m6-eye">SIX MOUNTAINS · FOUR ISLANDS · ONE COUNTRY</div>
+  <div class="src">MAP: WIKIMEDIA COMMONS · CC BY-SA 3.0</div>
+  <div class="plate" id="m6-plate">
+    <img src="../media/maps/Indonesia_relief_location_map.jpg" alt="">
+    <div class="pin" id="m6-p1" style="left:446px; top:515px"></div><div class="tag" id="m6-t1" style="left:446px; top:515px">ANAK KRAKATAU · LEVEL 3</div>
+    <div class="pin" id="m6-p2" style="left:1353px; top:205px"></div><div class="tag" id="m6-t2" style="left:1353px; top:205px">IBU · ERUPTING TODAY</div>
+    <div class="pin" id="m6-p3" style="left:752px; top:597px"></div><div class="tag" id="m6-t3" style="left:752px; top:597px">SEMERU · LEVEL 3</div>
+    <div class="pin" id="m6-p4" style="left:1155px; top:615px"></div><div class="tag" id="m6-t4" style="left:1155px; top:615px">LEWOTOBI LAKI-LAKI · LEVEL 3</div>
+    <div class="pin l2" id="m6-p5" style="left:1185px; top:604px"></div><div class="tag l2" id="m6-t5" style="left:1185px; top:660px; transform:translate(-50%, 40%)">ILI LEWOTOLOK · LEVEL 2</div>
+    <div class="pin" id="m6-p6" style="left:159px; top:136px"></div><div class="tag" id="m6-t6" style="left:159px; top:136px; transform:translate(-20%, -150%)">SINABUNG · LEVEL 3</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#m6-";
+  const pins = [1,2,3,4,5,6].map(i => [P+"p"+i, P+"t"+i]);
+  tl.set(pins.flat(), { autoAlpha: 0 }, 0);
+  tl.set(P+"eye", { autoAlpha: 0 }, 0);
+  tl.fromTo("#root", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 0);
+  tl.fromTo(P+"plate", { scale: 1.0, transformOrigin: "50% 60%" }, { scale: 1.06, duration: 18.0, ease: "none" }, 0);
+  const AT = [2.1, 6.2, 9.5, 11.1, 12.5, 16.3];
+  pins.forEach(([p, t], i) => {
+    tl.fromTo(p, { scale: 3, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, AT[i]);
+    tl.fromTo(t, { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35 }, AT[i] + 0.2);
+    tl.fromTo(p, { boxShadow: "0 0 0 4px rgba(208,18,31,0.35)" }, { boxShadow: "0 0 0 14px rgba(208,18,31,0.0)", duration: 1.2, repeat: 2 }, AT[i]);
+  });
+  tl.to(P+"eye", { autoAlpha: 1, duration: 0.5 }, 17.3);
+  tl.to("#root", { autoAlpha: 0, duration: 0.4 }, 17.6);
+  window.__timelines["mapsix"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
