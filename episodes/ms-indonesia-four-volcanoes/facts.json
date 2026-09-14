@@ -1,0 +1,229 @@
+{
+ "as_of_utc": "2026-09-14T00:00:00Z",
+ "facts": [
+  {
+   "fact": "Anak Krakatau's major eruption phase began with continuous lava fountaining at 23:07 WIB (1620 UTC) on 4 September 2026 and lasted about 25 hours, subsiding around 00:04 WIB on 6 September 2026.",
+   "number": "25 hours",
+   "source_name": "Smithsonian Global Volcanism Program / VolcanoDiscovery (GVP data), corroborated by Jakarta Globe",
+   "date": "2026-09-04 to 2026-09-06",
+   "url": "https://www.volcanodiscovery.com/krakatau/news/343501/vaac-advisory-2026-195.html"
+  },
+  {
+   "fact": "Darwin VAAC reported Anak Krakatau ash reaching flight level 500 (approx. 15.2 km / 50,000 ft) as of 9:30am WIB on 5 September 2026, drifting west to FL500 and east to FL200.",
+   "number": "FL500 / 15.2 km",
+   "source_name": "Darwin VAAC advisory 2026/183, via VolcanoDiscovery/Nation Thailand",
+   "date": "2026-09-05",
+   "url": "https://www.nationthailand.com/news/world/40070676"
+  },
+  {
+   "fact": "Ash columns from Anak Krakatau measured 6,000 m over Java and up to 15,000 m over Sumatra/Banten province.",
+   "number": "6,000 m / 15,000 m",
+   "source_name": "Al Jazeera",
+   "date": "2026-09-06",
+   "url": "https://www.aljazeera.com/news/2026/9/6/indonesias-main-airport-suspends-flights-due-to-anak-krakatoa-eruption"
+  },
+  {
+   "fact": "Eight airports, including Soekarno-Hatta and Halim, halted operations over the weekend due to volcanic ash.",
+   "number": "8 airports",
+   "source_name": "Al Jazeera",
+   "date": "2026-09-06 to 2026-09-07",
+   "url": "https://www.aljazeera.com/news/2026/9/6/indonesias-main-airport-suspends-flights-due-to-anak-krakatoa-eruption"
+  },
+  {
+   "fact": "1,558 flights were delayed or cancelled across the 8 affected airports, with more than 900 of those from Soekarno-Hatta alone.",
+   "number": "1,558 flights",
+   "source_name": "Al Jazeera",
+   "date": "2026-09-06",
+   "url": "https://www.aljazeera.com/news/2026/9/6/indonesias-main-airport-suspends-flights-due-to-anak-krakatoa-eruption"
+  },
+  {
+   "fact": "Indonesia's Transport Ministry said roughly 2,300 flights and 270,337 passengers were affected (cancelled, delayed, or diverted) cumulatively since 5 September.",
+   "number": "2,300 flights / 270,337 passengers",
+   "source_name": "CNBC / Jakarta Post",
+   "date": "2026-09-07",
+   "url": "https://www.cnbc.com/2026/09/07/flights-canceled-jakarta-airport-anak-krakatau-eruption-disrupts-regional-travel-volcano.html"
+  },
+  {
+   "fact": "On Monday morning alone, more than 240 flights were cancelled or delayed, affecting nearly 30,000 passengers.",
+   "number": "240 flights / 30,000 passengers",
+   "source_name": "The Jakarta Post",
+   "date": "2026-09-07",
+   "url": "http://www.thejakartapost.com/indonesia/2026/09/07/soekarno-hatta-airport-extends-closure-after-anak-krakatau-eruption"
+  },
+  {
+   "fact": "Anak Krakatau has been at Alert Level III (Siaga), Indonesia's third-highest of four levels, since 2 July 2026 and remained there after eruptions recorded again on 8 September.",
+   "number": "Level III",
+   "source_name": "Jakarta Post / CNBC",
+   "date": "2026-07-02 to 2026-09-08",
+   "url": "http://www.thejakartapost.com/indonesia/2026/09/07/soekarno-hatta-airport-extends-closure-after-anak-krakatau-eruption"
+  },
+  {
+   "fact": "Authorities maintain a 3-kilometer exclusion zone around the Anak Krakatau crater, enforced via patrols; no formal evacuation order has been issued, but coastal assembly points and evacuation routes are being kept ready.",
+   "number": "3 km",
+   "source_name": "Al Jazeera / BNPB statement",
+   "date": "2026-09-06",
+   "url": "https://www.aljazeera.com/news/2026/9/6/indonesias-main-airport-suspends-flights-due-to-anak-krakatoa-eruption"
+  },
+  {
+   "fact": "Eight people, including five journalists, are reported missing after their boat headed toward Anak Krakatau to cover the eruption.",
+   "number": "8 people",
+   "source_name": "EarthSky",
+   "date": "2026-09-06",
+   "url": "https://earthsky.org/todays-image/anak-krakatau-erupts-indonesia-september-2026/"
+  },
+  {
+   "fact": "PVMBG head Dr. Siti Sumilah Rita Susilawati stated there is no evidence of a single geological process triggering the six volcanoes (Ibu, Semeru, Lewotobi Laki-laki, Ili Lewotolok, Anak Krakatau, Sinabung) that erupted simultaneously on 31 August 2026.",
+   "source_name": "Detik.com, official title confirmed on geologi.esdm.go.id",
+   "date": "2026-09-03",
+   "url": "https://news.detik.com/berita/d-8646125/6-gunung-api-erupsi-beruntun-akhir-agustus-pvmbg-tak-ada-bukti-saling-picu"
+  },
+  {
+   "fact": "As of 7 September, ten actively erupting Indonesian volcanoes had generated at least 4,682 eruption events combined in 2026: Semeru 1,811 (Level III), Ibu 1,501, Lewotobi Laki-laki 859 (Level III), Dukono 230, Anak Krakatau 124 (Level III), Ili Lewotolok 97 (Level II), Marapi 52 (Level II), Dempo 3, Karangetang 3, Sinabung 2 (Level III).",
+   "number": "4,682 eruptions",
+   "source_name": "Antara News",
+   "date": "2026-09-10",
+   "url": "https://www.antaranews.com/berita/5734176/11-gunung-api-di-indonesia-yang-erupsi-sepanjang-2026"
+  },
+  {
+   "fact": "MAGMA Indonesia's live eruption log shows Mount Ibu erupting repeatedly on 14-15 September with ash columns 400-700 m above the summit (latest 600 m at 00:46 WIT, 15 September), and a running 2026 total of 1,563 eruptions.",
+   "number": "1,563 eruptions",
+   "source_name": "MAGMA Indonesia (magma.esdm.go.id)",
+   "date": "2026-09-14 to 2026-09-15",
+   "url": "https://magma.esdm.go.id/v1/gunung-api/informasi-letusan"
+  },
+  {
+   "fact": "MAGMA Indonesia's live log shows Mount Semeru erupting repeatedly on 14 September with ash columns of 400-1,000 m (11:40 WIB eruption reached 1,000 m, described as thick/'tebal'), and a running 2026 total of 1,866 eruptions.",
+   "number": "1,866 eruptions",
+   "source_name": "MAGMA Indonesia (magma.esdm.go.id)",
+   "date": "2026-09-14",
+   "url": "https://magma.esdm.go.id/v1/gunung-api/informasi-letusan"
+  },
+  {
+   "fact": "MAGMA Indonesia's live log shows Mount Ili Lewotolok erupting on 14 September with an ash column of 200 m drifting west at 18:51 WITA, and a running 2026 total of 131 eruptions.",
+   "number": "131 eruptions",
+   "source_name": "MAGMA Indonesia (magma.esdm.go.id)",
+   "date": "2026-09-14",
+   "url": "https://magma.esdm.go.id/v1/gunung-api/informasi-letusan"
+  },
+  {
+   "fact": "Mount Sinabung's alert status was raised from Level II (Waspada) to Level III (Siaga) in late August 2026 after an increase in volcanic activity, and remained at Level III as of the 7 September tally.",
+   "number": "Level III",
+   "source_name": "Beautynesia / Antara",
+   "date": "2026-08-31 to 2026-09-07",
+   "url": "https://www.antaranews.com/berita/5734176/11-gunung-api-di-indonesia-yang-erupsi-sepanjang-2026"
+  },
+  {
+   "fact": "Mount Sinabung erupted on 2 September 2026 with an ash column reaching about 1,000 m above the summit.",
+   "number": "1,000 m",
+   "source_name": "Wartabelanegara.com",
+   "date": "2026-09-02",
+   "url": "https://wartabelanegara.com/gunung-sinabung-erupsi-lagi-kolom-abu-capai-1-000-meter/"
+  },
+  {
+   "fact": "Mount Lewotobi Laki-laki is at Alert Level III (Siaga); PVMBG advises avoiding all activity within a 5 km radius of the eruption center.",
+   "number": "5 km",
+   "source_name": "Databoks (Katadata)",
+   "date": "2026-09-early",
+   "url": "https://databoks.katadata.co.id/en/demographics/statistics/9e9e7239dee894a/mount-lewotobi-lakilaki-erupts-on-tuesday-afternoon-status-is-alert"
+  },
+  {
+   "fact": "Darwin VAAC issued a separate advisory for a Semeru ash plume rising to an estimated 5,000 ft (1,500 m).",
+   "number": "5,000 ft",
+   "source_name": "VolcanoDiscovery (citing Darwin VAAC)",
+   "date": "2026-09-10",
+   "url": "https://www.volcanodiscovery.com/volcano-activity/news/345629/Volcanic-activity-worldwide-10-Sep-2026-Etna-volcano-Santiaguito-Fuego-Krakatau-Semeru-Ibu-Du.html"
+  },
+  {
+   "fact": "The Japan Meteorological Agency completed an evaluation at 12:30pm Japan time on 5 September 2026 and concluded the Anak Krakatau eruption posed no tsunami threat to Japan, noting no significant sea-level changes at monitoring stations in Japan or overseas.",
+   "source_name": "Nation Thailand",
+   "date": "2026-09-05",
+   "url": "https://www.nationthailand.com/news/world/40070676"
+  },
+  {
+   "fact": "Indonesia's Geological Agency head Lana Saria said the rebuilt portion of Anak Krakatau remains 'relatively small' and was assessed as incapable of triggering a tsunami, though monitoring continues.",
+   "source_name": "Nation Thailand",
+   "date": "2026-09-05",
+   "url": "https://www.nationthailand.com/news/world/40070676"
+  },
+  {
+   "fact": "The catastrophic 1883 Krakatoa eruption killed roughly 36,000 people, with more than 34,000 of those deaths caused by tsunami waves recorded at over 30 m (100 ft) in the Sunda Strait, destroying about 165 coastal villages.",
+   "number": "36,000 deaths",
+   "source_name": "VolcanoDB / GeoNet",
+   "date": "1883-08-26 to 1883-08-27 (historical, cited in 2026 coverage)",
+   "url": "https://volcanodb.com/krakatoa-eruption"
+  },
+  {
+   "fact": "Anak Krakatau (\"Child of Krakatoa\") emerged from the caldera left by the 1883 eruption in the early 20th century and is the current active vent in the same volcanic system.",
+   "source_name": "The Jakarta Post",
+   "date": "2026-09-07",
+   "url": "http://www.thejakartapost.com/indonesia/2026/09/07/soekarno-hatta-airport-extends-closure-after-anak-krakatau-eruption"
+  },
+  {
+   "fact": "Every arc of the Pacific 'Ring of Fire' — including the Cascades, Aleutians, Kamchatka, Japan, Philippines and Indonesia — forms via the same water-fluxed melting process above a subducting tectonic plate, the mechanism shared by Krakatau and U.S. volcanoes like Mount St. Helens.",
+   "source_name": "Britannica (Ring of Fire background, cross-checked against USGS-sourced summaries)",
+   "date": "reference/background",
+   "url": "https://www.britannica.com/place/Ring-of-Fire"
+  },
+  {
+   "fact": "Volcano expert Surono, former head of Indonesia's Geological Agency/PVMBG, said the probability of further Anak Krakatau eruptions in the coming period remains high.",
+   "source_name": "The Jakarta Post",
+   "date": "2026-09-07",
+   "url": "http://www.thejakartapost.com/indonesia/2026/09/07/soekarno-hatta-airport-extends-closure-after-anak-krakatau-eruption"
+  }
+ ],
+ "quotes": [
+  {
+   "speaker": "Dr. Siti Sumilah Rita Susilawati",
+   "title": "Kepala Pusat Vulkanologi dan Mitigasi Bencana Geologi (Head of PVMBG), Badan Geologi, Ministry of Energy and Mineral Resources",
+   "quote": "Kami tidak menemukan bukti adanya satu proses geologi yang memicu seluruh erupsi tersebut secara bersamaan di tanggal 31 Agustus.",
+   "url": "https://news.detik.com/berita/d-8646125/6-gunung-api-erupsi-beruntun-akhir-agustus-pvmbg-tak-ada-bukti-saling-picu"
+  },
+  {
+   "speaker": "Suharyanto",
+   "title": "Chief, BNPB (National Disaster Management Agency)",
+   "quote": "If it rains heavily enough, the volcanic ash that has been disrupting our daily lives since yesterday and continuing today will be washed away quickly.",
+   "url": "https://www.aljazeera.com/news/2026/9/6/indonesias-main-airport-suspends-flights-due-to-anak-krakatoa-eruption"
+  },
+  {
+   "speaker": "Yudhistiawan",
+   "title": "Spokesman, Soekarno-Hatta International Airport",
+   "quote": "We understand that this situation affects passengers' travel plans. Therefore, from the start of the temporary closure, we have focused on ensuring that passengers' needs continue to be met.",
+   "url": "https://www.aljazeera.com/news/2026/9/6/indonesias-main-airport-suspends-flights-due-to-anak-krakatoa-eruption"
+  },
+  {
+   "speaker": "Surono",
+   "title": "Volcano expert, former head of PVMBG/Badan Geologi",
+   "quote": "the probability of further eruptions in the coming periods remains high",
+   "url": "http://www.thejakartapost.com/indonesia/2026/09/07/soekarno-hatta-airport-extends-closure-after-anak-krakatau-eruption"
+  },
+  {
+   "speaker": "Lana Saria",
+   "title": "Head of Indonesia's Geological Agency (Kepala Badan Geologi)",
+   "quote": "relatively small",
+   "url": "https://www.nationthailand.com/news/world/40070676"
+  }
+ ],
+ "titles": [
+  "Anak Krakatau Erupts, Ash Cloud Hits 15km",
+  "Six Volcanoes Erupt, PVMBG Rules Out Link",
+  "Jakarta Airports Close as 270,000 Stranded",
+  "PVMBG Keeps Krakatau on 3km Watch",
+  "Sinabung Alert Rises as Ash Tops 1km"
+ ],
+ "unknowns": [
+  "No official MAGMA Indonesia or PVMBG update was found confirming Anak Krakatau's exact alert level and eruption count specifically for 12-14 September 2026 (live MAGMA page showed no Krakatau entries for that window) — status shown is carried forward from 8 September.",
+  "Whether the 8 missing people (boat carrying journalists near Anak Krakatau) have since been found, rescued, or confirmed dead has not been reported past the initial 5-6 September coverage.",
+  "Total cumulative flights/passengers disrupted nationwide covering the full week through 14 September has not been published; the only official Transport Ministry tallies found are dated 7-8 September (2,300 flights / 270,337 passengers).",
+  "Exact current ash-column heights and alert levels for Sinabung, Lewotobi Laki-laki, and Marapi specifically on 14 September were not found in any source opened; MAGMA's live log for that date only showed entries for Ibu, Semeru, and Ili Lewotolok.",
+  "Mount Ibu's true cumulative 2026 eruption count is unresolved: sources within the same week give figures ranging from 1,501 (7 Sept) to 1,563 (14-15 Sept, MAGMA) to 25,556 (13 Sept headline, Harian Jogja) — the last figure looks anomalous/possibly miscounted and is not used in the facts above.",
+  "No named volcanologist quote directly comparing Anak Krakatau to a specific US volcano (e.g., Mount St. Helens, Cascades) could be verified verbatim on an opened page; only a paraphrase appeared in search summaries, so it was excluded from quotes."
+ ],
+ "warnings": [
+  "Mount Marapi's 1.6km ash-column figure from a Metro TV article was internally dated '9 March 2026' by the page content despite appearing in September search results — treat as likely mis-dated/stale and NOT used as a current fact; current Marapi status relied on the Antara 10 Sept roundup instead (Level II, 52 eruptions in 2026).",
+  "Ibu's 2026 eruption-count is contradictory across sources published within days of each other (1,501 vs 1,563 vs 25,556) — flag on screen or omit the running total until PVMBG/MAGMA publishes a single reconciled figure.",
+  "Several Indonesian aggregator sites (Hipwee, FBI News, Journalist Independent, MemoIndonesia, Pikiran Ummat) republish the same PVMBG figures without independent reporting; none were used as primary citations, only as corroboration.",
+  "bogor-today.com and id.usembassy.gov both returned HTTP 403 on direct fetch; the PVMBG quote and title were instead verified against news.detik.com (quote) and the official geologi.esdm.go.id leadership page (title), so confidence is high despite the failed fetch.",
+  "All flight/passenger disruption numbers (1,558 flights; 270,337 passengers; 240 flights/30,000 passengers on Monday) are dated 6-8 September 2026 — more than 72 hours old as of today (14 September); a fresh Transport Ministry figure should be pulled before air date if the video frames disruption as still ongoing at that scale.",
+  "The Lana Saria 'relatively small' quote is a short partial quotation as rendered by the source page (Nation Thailand), not a full sentence — verify against a second outlet before displaying it as a full on-screen quote."
+ ]
+}
