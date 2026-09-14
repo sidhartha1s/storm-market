@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  B5-S1 mechanism diagram, drawn: KIUC's grid as 15 transmission lines feeding smaller distribution lines. SOURCE: the
+  Kauai Now 11 Sep update (12 of 15 transmission lines back, 72 %); the layout is schematic, not a map. DATUM: none,
+  it is a network sketch and says so. MUST-BE-TRUE: 15 trunk lines; 12 lit, 3 dark; the dark three feed the far end
+  (the North Shore spur); distribution lines hang off trunks. Host = b5-s1 start, 43.25 s.
+  Cues rel: 15 lines 7.0 · everything else 9.24 · goes down 13.1 · only then 17.38 · 12 of 15 23.3 · 72% 28.52 · North Shore 31.08 · terrain 35.42 · helicopter 39.76.
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; background: radial-gradient(ellipse at 50% 30%, #0b1420 0%, #04070c 80%); font-family:Arial,sans-serif; color:#f2f5f8; }
+  svg { position:absolute; left:0; top:0; }
+  .eye { position:absolute; left:110px; top:60px; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:6px; color:#d0121f; }
+  .note { position:absolute; left:110px; top:100px; font-size:22px; color:#93a3b2; letter-spacing:1px; }
+  .big { position:absolute; right:110px; top:56px; white-space:nowrap; font-family:'AbrilFig',Georgia,serif; font-size:56px; color:#f2f5f8; text-shadow:0 3px 14px rgba(0,0,0,0.8); }
+  .lab { font-family:'Arial Black',Arial,sans-serif; font-size:28px; fill:#f2f5f8; letter-spacing:2px; }
+  .lab.small { font-size:22px; fill:#c8d3e0; font-family:Arial,sans-serif; letter-spacing:1px; }
+</style>
+<div id="root" data-composition-id="grid" data-width="1920" data-height="1080">
+  <div class="eye" id="gr-eye">WHY THE LAST 20 PERCENT TAKES LONGEST</div>
+  <div class="note">Network sketch, not a map · 15 transmission lines, the smaller lines hang off them</div>
+  <div class="big" id="gr-big">12 OF 15 BACK</div>
+  <svg width="1920" height="1080" viewBox="0 0 1920 1080">
+    <circle cx="360" cy="600" r="46" fill="#d8a13a"/><text class="lab small" x="300" y="690">POWER PLANTS</text>
+    <g id="gr-trunks" stroke-width="8" fill="none" stroke-linecap="round">
+      <path d="M 400 600 L 700 330" stroke="#2f8f5b"/><path d="M 400 600 L 700 380" stroke="#2f8f5b"/><path d="M 400 600 L 700 430" stroke="#2f8f5b"/><path d="M 400 600 L 700 480" stroke="#2f8f5b"/>
+      <path d="M 400 600 L 700 530" stroke="#2f8f5b"/><path d="M 400 600 L 700 580" stroke="#2f8f5b"/><path d="M 400 600 L 700 630" stroke="#2f8f5b"/><path d="M 400 600 L 700 680" stroke="#2f8f5b"/>
+      <path d="M 400 600 L 700 730" stroke="#2f8f5b"/><path d="M 400 600 L 700 780" stroke="#2f8f5b"/><path d="M 400 600 L 700 830" stroke="#2f8f5b"/><path d="M 400 600 L 700 880" stroke="#2f8f5b"/>
+      <path id="gr-d1" d="M 700 330 L 1100 250" stroke="#d0121f" stroke-dasharray="14 12"/><path id="gr-d2" d="M 1100 250 L 1450 220" stroke="#d0121f" stroke-dasharray="14 12"/><path id="gr-d3" d="M 1450 220 L 1760 240" stroke="#d0121f" stroke-dasharray="14 12"/>
+    </g>
+    <g id="gr-dist" stroke="#6fb0e6" stroke-width="3" fill="none" opacity="0.9">
+      <path d="M 700 380 l 60 -30 M 700 430 l 60 20 M 700 480 l 70 -10 M 700 530 l 60 30 M 700 580 l 70 -20 M 700 630 l 60 25 M 700 680 l 70 -15 M 700 730 l 60 20 M 700 780 l 70 -25 M 700 830 l 60 20 M 700 880 l 70 -10"/>
+      <path d="M 760 350 l 50 -20 M 760 450 l 50 15 M 770 470 l 50 -25 M 760 560 l 50 20 M 770 560 l 50 -30 M 760 655 l 50 15 M 770 665 l 50 -20 M 760 750 l 50 15 M 770 755 l 50 -30 M 760 850 l 50 10 M 770 870 l 50 -20"/>
+    </g>
+    <g id="gr-north" stroke="#6b7a8a" stroke-width="3" fill="none" opacity="0.9" stroke-dasharray="6 8">
+      <path d="M 1100 250 l 60 -40 M 1200 235 l 60 30 M 1300 228 l 50 -40 M 1450 220 l 60 40 M 1550 226 l 50 -40 M 1650 233 l 60 30 M 1760 240 l 50 -30 M 1760 240 l 40 40"/>
+    </g>
+    <text class="lab" id="gr-l-trunk" x="720" y="960">12 TRANSMISSION LINES BACK · 72%</text>
+    <text class="lab" id="gr-l-north" x="1150" y="160">NORTH SHORE SPUR · 3 LINES STILL DOWN</text>
+    <text class="lab small" id="gr-l-dist" x="820" y="1010">Distribution lines to streets come back only after their trunk does</text>
+    <text class="lab small" id="gr-l-terrain" x="1150" y="330">Reached on foot or by helicopter · ground soaked by more than a foot of rain</text>
+  </svg>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#gr-";
+  tl.set([P+"trunks", P+"dist", P+"north", P+"l-trunk", P+"l-north", P+"l-dist", P+"l-terrain", P+"big"], { autoAlpha: 0 }, 0);
+  tl.fromTo("#root", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 0);
+  tl.fromTo(P+"trunks", { autoAlpha: 0, scaleX: 0, transformOrigin: "400px 600px" }, { autoAlpha: 1, scaleX: 1, duration: 1.2, ease: "power3.out" }, 7.0);   /* 15 lines */
+  tl.fromTo(P+"dist", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.8, ease: "power2.out" }, 9.24);                                                          /* everything else hangs off them */
+  tl.fromTo(P+"l-dist", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 17.4);                                          /* only then… */
+  tl.to([P+"d1", P+"d2", P+"d3"], { strokeDashoffset: -260, duration: 26, ease: "none" }, 7.0);                                                             /* the dark spur pulses the whole hold */
+  tl.fromTo(P+"l-trunk", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 23.3);                                         /* 12 of 15 */
+  tl.fromTo(P+"big", { autoAlpha: 0, scale: 1.12, transformOrigin: "right top" }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power4.in" }, 28.5);        /* 72 % */
+  tl.fromTo([P+"north", P+"l-north"], { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 31.1);                             /* North Shore */
+  tl.fromTo(P+"l-terrain", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 35.4);                                        /* terrain */
+  tl.fromTo("#root", { scale: 1.0, transformOrigin: "center" }, { scale: 1.03, duration: 43.2, ease: "none" }, 0);
+  tl.to("#root", { autoAlpha: 0, duration: 0.4 }, 42.8);
+  window.__timelines["grid"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
