@@ -52,16 +52,16 @@ window.__timelines = window.__timelines || {};
   const P = "#gr-";
   tl.set([P+"trunks", P+"dist", P+"north", P+"l-trunk", P+"l-north", P+"l-dist", P+"l-terrain", P+"big"], { autoAlpha: 0 }, 0);
   tl.fromTo("#root", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 0);
-  tl.fromTo(P+"trunks", { autoAlpha: 0, scaleX: 0, transformOrigin: "400px 600px" }, { autoAlpha: 1, scaleX: 1, duration: 1.2, ease: "power3.out" }, 7.0);   /* 15 lines */
-  tl.fromTo(P+"dist", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.8, ease: "power2.out" }, 9.24);                                                          /* everything else hangs off them */
-  tl.fromTo(P+"l-dist", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 17.4);                                          /* only then… */
+  tl.fromTo(P+"trunks", { autoAlpha: 0, scaleX: 0, transformOrigin: "400px 600px" }, { autoAlpha: 1, scaleX: 1, duration: 1.2, ease: "power3.out" }, 7.36);   /* 15 lines */
+  tl.fromTo(P+"dist", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.8, ease: "power2.out" }, 9.84);                                                          /* everything else hangs off them */
+  tl.fromTo(P+"l-dist", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 17.94);                                          /* only then… */
   tl.to([P+"d1", P+"d2", P+"d3"], { strokeDashoffset: -260, duration: 26, ease: "none" }, 7.0);                                                             /* the dark spur pulses the whole hold */
-  tl.fromTo(P+"l-trunk", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 23.3);                                         /* 12 of 15 */
-  tl.fromTo(P+"big", { autoAlpha: 0, scale: 1.12, transformOrigin: "right top" }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power4.in" }, 28.5);        /* 72 % */
-  tl.fromTo([P+"north", P+"l-north"], { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 31.1);                             /* North Shore */
-  tl.fromTo(P+"l-terrain", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 35.4);                                        /* terrain */
-  tl.fromTo("#root", { y: 0 }, { y: -10, duration: 43.2, ease: "none" }, 0); /* drift, no zoom, so nothing crosses the frame edge */
-  tl.to("#root", { autoAlpha: 0, duration: 0.4 }, 42.8);
+  tl.fromTo(P+"l-trunk", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 24.0);                                         /* 12 of 15 */
+  tl.fromTo(P+"big", { autoAlpha: 0, scale: 1.12, transformOrigin: "right top" }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power4.in" }, 29.12);        /* 72 % */
+  tl.fromTo([P+"north", P+"l-north"], { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 31.66);                             /* North Shore */
+  tl.fromTo(P+"l-terrain", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 36.0);                                        /* terrain */
+  tl.fromTo("#root", { y: 0 }, { y: -10, duration: 43.8, ease: "none" }, 0); /* drift, no zoom, so nothing crosses the frame edge */
+  tl.to("#root", { autoAlpha: 0, duration: 0.4 }, 43.4);
   window.__timelines["grid"] = tl;
 })();
 </script>

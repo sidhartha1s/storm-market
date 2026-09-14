@@ -45,13 +45,13 @@ window.__timelines = window.__timelines || {};
   tl.set(rows, {autoAlpha:0, height:0, marginTop:0}, 0);
   tl.fromTo(P+"card", {x:-980, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 0);
   tl.fromTo(P+"big", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 0.5);
-  const AT = [11.84, 33.88, 43.68, 46.86, 52.2]; /* cues − 3.0: 33,000 14.84 · schools 36.88 · Red Cross 46.68 · federal 49.86 · Lanai 55.2 */
+  const AT = [9.22, 27.95, 35.69, 38.87, 44.37]; /* cues − 3.0: 33,000 14.84 · schools 36.88 · Red Cross 46.68 · federal 49.86 · Lanai 55.2 */
   rows.forEach((r, i) => tl.fromTo(r, {autoAlpha:0, y:24, height:0, marginTop:0}, {autoAlpha:1, y:0, height:"auto", marginTop:18, duration:0.45, ease:"power3.out"}, AT[i]));
-  tl.fromTo(P+"card", {y:0}, {y:-6, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:39}, 0.6);
-  tl.fromTo(P+"bar", {scaleX:0}, {scaleX:1, duration:55.8, ease:"none"}, 0.6);
-  tl.to(".pill", {boxShadow:"0 0 18px rgba(255,255,255,0.45)", duration:0.9, yoyo:true, repeat:61, ease:"sine.inOut"}, 0.6);
+  tl.fromTo(P+"card", {y:0}, {y:-6, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:33}, 0.6);
+  tl.fromTo(P+"bar", {scaleX:0}, {scaleX:1, duration:47.5, ease:"none"}, 0.6);
+  tl.to(".pill", {boxShadow:"0 0 18px rgba(255,255,255,0.45)", duration:0.9, yoyo:true, repeat:52, ease:"sine.inOut"}, 0.6);
   tl.to(P+"eye", {letterSpacing:"8px", duration:1.2, ease:"power3.out"}, 0.2);
-  tl.to(P+"card", {x:-980, autoAlpha:0, duration:0.5, ease:"power3.in"}, 56.7); /* host 57.3 − 0.6 */
+  tl.to(P+"card", {x:-980, autoAlpha:0, duration:0.5, ease:"power3.in"}, 48.35); /* host 48.95 − 0.6 */
   window.__timelines["recoveryboard"] = tl;
 })();
 </script>

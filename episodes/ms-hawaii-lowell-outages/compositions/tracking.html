@@ -45,15 +45,15 @@ window.__timelines = window.__timelines || {};
   tl.set(rows, {autoAlpha:0, height:0, marginTop:0}, 0);
   tl.fromTo(P+"card", {x:-960, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 0);
   /* EDIT-ME: cues from audio/b7-s1.words.json: "extended", "tarpaulins", "flights", "Ibu", "slope" */
-  const AT = [1.86, 7.9, 17.64, 31.42, 55.12, 58.92]; /* host = b7-s1 + 1.0: cues 2.86 / 8.9 / 18.64 / 32.42 / 56.12 / 59.92 */
+  const AT = [2.08, 7.9, 17.64, 31.42, 52.04, 55.88]; /* host = b7-s1 + 1.0: cues 2.86 / 8.9 / 18.64 / 32.42 / 56.12 / 59.92 */
   rows.forEach((r, i) => tl.fromTo(r, {autoAlpha:0, y:24, height:0, marginTop:0}, {autoAlpha:1, y:0, height:"auto", marginTop:20, duration:0.45, ease:"power3.out"}, AT[i]));
-  tl.fromTo(P+"bar", {scaleX:0}, {scaleX:1, duration:71.8, ease:"none"}, 0.6); /* fills across the hold: continuous motion */
+  tl.fromTo(P+"bar", {scaleX:0}, {scaleX:1, duration:68.5, ease:"none"}, 0.6); /* fills across the hold: continuous motion */
   tl.fromTo(P+"big", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 1.0);
-  tl.to(".n", {textShadow:"0 0 22px rgba(208,18,31,0.95)", duration:1.1, yoyo:true, repeat:64, ease:"sine.inOut"}, 0.8);
-  tl.fromTo(P+"card", {y:0}, {y:-6, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:51}, 0.6);
+  tl.to(".n", {textShadow:"0 0 22px rgba(208,18,31,0.95)", duration:1.1, yoyo:true, repeat:61, ease:"sine.inOut"}, 0.8);
+  tl.fromTo(P+"card", {y:0}, {y:-6, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:48}, 0.6);
   tl.to(P+"eye", {letterSpacing:"8px", duration:1.2, ease:"power3.out"}, 0.2);
-  tl.to(P+"r1 .lab", {textShadow:"0 0 24px rgba(255,210,122,0.9)", duration:1.2, yoyo:true, repeat:5, ease:"sine.inOut"}, 64.7); /* "the next figure that matters" */
-  tl.to(P+"card", {x:-960, autoAlpha:0, duration:0.5, ease:"power3.in"}, 72.4); /* host 73.0 − 0.6 */
+  tl.to(P+"r1 .lab", {textShadow:"0 0 24px rgba(255,210,122,0.9)", duration:1.2, yoyo:true, repeat:4, ease:"sine.inOut"}, 62.0);
+  tl.to(P+"card", {x:-960, autoAlpha:0, duration:0.5, ease:"power3.in"}, 69.14); /* host 69.74 − 0.6 */
   window.__timelines["tracking"] = tl;
 })();
 </script>
