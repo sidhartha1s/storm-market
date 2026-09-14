@@ -32,3 +32,12 @@
    (PIL on the snapshot or on the source map) before moving anything a second time.
 4. shot_comp.mjs leaves `_shot_*.html` staging copies in compositions/; delete them before graphics_qc or it grades them too.
 5. Draft render at 2 workers takes the box to 0.8 GB free with Firefox open; nothing else launches during a render.
+
+## 15 Sep 26, 23:50 IST — decision for the 16 Sep slots
+- **Sakurajima re-pull (done):** nothing dated 15 Sep on JMA, Tokyo VAAC, tenki.jp, Kagoshima City, 373news, KTS. Latest fact is the
+  14 Sep 16:00 bulletin; next routine bulletin 18 Sep. Kill rule ("same-story follow-up only when the number/level moved") says
+  Sakurajima does NOT ship 16 Sep unless it erupts overnight. v2 script saved (`script-ms-sakurajima-ash-v2.md`), usable in 20 min
+  if it does: strip the "as of this check / no update found" meta lines, the beat-1 self-narration, and read numbers only on screen.
+- **16 Sep slot A → El Niño (CPC advisory, "what the agency said this week")**: the owner's core series, CPC numbers move weekly,
+  100 % US audience on the two shipped minis. Slot B → Kauai day 2 IF KIUC's number moved (wave-3 desk reports story_moved).
+- Wave-3 workflow launched 23:52 IST with the day-1 rules baked in (names on screen, numerals on screen, no meta lines).
