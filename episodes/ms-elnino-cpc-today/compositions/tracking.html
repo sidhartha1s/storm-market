@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  Format C tracking card, El Niño (B7 "what nobody has said yet"): three open items land on their spoken cues; the first stays
+  highlighted as the unresolved line the video ends on (the 8 October number). Host = b7-s1 start + 1.0 (414.467), 36.25 s.
+  Cues rel. b7-s1: peak 5.9 · month it ends 13.9 · Atlantic 22.5 · 8 Oct 34.4. Rows land at cue − 1.0.
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; }
+  .card { position:absolute; left:110px; top:140px; width:900px; box-sizing:border-box; padding:30px 40px 26px;
+    background:rgba(10,16,24,0.60); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:6px; color:#d0121f; }
+  .row { display:flex; align-items:flex-start; gap:20px; margin-top:20px; overflow:hidden; }
+  .n { flex:0 0 56px; font-family:'AbrilFig',Georgia,serif; font-size:56px; line-height:1; color:#d0121f; text-shadow:0 3px 14px rgba(0,0,0,0.8); }
+  .lab { font-family:'Arial Black',Arial,sans-serif; font-size:30px; line-height:1.1; }
+  .sub { font-size:21px; color:#c8d3e0; margin-top:5px; line-height:1.3; }
+  .hot .lab { color:#ffd27a; }
+  .big { font-family:'AbrilFig',Georgia,serif; font-size:64px; line-height:1; color:#f2f5f8; margin-top:8px; text-shadow:0 3px 14px rgba(0,0,0,0.8); }
+  .bar { position:absolute; left:40px; right:40px; bottom:14px; height:4px; background:linear-gradient(90deg,#d0121f,#ffd27a); border-radius:2px; transform-origin:left; }
+</style>
+<div id="root" data-composition-id="tracking" data-width="1920" data-height="1080">
+  <div class="card" id="tr-card">
+    <div class="eye" id="tr-eye">STILL OPEN TONIGHT</div>
+    <div class="big" id="tr-big">3 UNANSWERED</div>
+    <div class="bar" id="tr-bar"></div>
+    <div class="row hot" id="tr-r1"><div class="n">1</div><div><div class="lab">THE PEAK VALUE</div><div class="sub">No number yet for how high Niño 3.4 peaks · a firmer figure waits on 8 October</div></div></div>
+    <div class="row" id="tr-r2"><div class="n">2</div><div><div class="lab">THE END DATE</div><div class="sub">No agency has named the month it ends, or whether a La Niña follows · WMO stops at February</div></div></div>
+    <div class="row" id="tr-r3"><div class="n">3</div><div><div class="lab">THE ATLANTIC</div><div class="sub">The quiet has no end date · Bermuda system is the first test · season runs to 30 November</div></div></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#tr-";
+  const rows = [P+"r1",P+"r2",P+"r3"];
+  tl.set(rows, {autoAlpha:0, height:0, marginTop:0}, 0);
+  tl.fromTo(P+"card", {x:-960, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 0);
+  const AT = [4.9, 12.9, 21.5]; /* host = b7-s1 + 1.0: cues 5.9 / 13.9 / 22.5 */
+  rows.forEach((r, i) => tl.fromTo(r, {autoAlpha:0, y:24, height:0, marginTop:0}, {autoAlpha:1, y:0, height:"auto", marginTop:20, duration:0.45, ease:"power3.out"}, AT[i]));
+  tl.fromTo(P+"bar", {scaleX:0}, {scaleX:1, duration:35.0, ease:"none"}, 0.6);
+  tl.fromTo(P+"big", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 1.0);
+  tl.to(".n", {textShadow:"0 0 22px rgba(208,18,31,0.95)", duration:1.1, yoyo:true, repeat:31, ease:"sine.inOut"}, 0.8);
+  tl.fromTo(P+"card", {y:0}, {y:-6, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:24}, 0.6);
+  tl.to(P+"eye", {letterSpacing:"8px", duration:1.2, ease:"power3.out"}, 0.2);
+  tl.to(P+"r1 .lab", {textShadow:"0 0 24px rgba(255,210,122,0.9)", duration:1.2, yoyo:true, repeat:3, ease:"sine.inOut"}, 33.4); /* "October eighth" */
+  tl.to(P+"card", {x:-960, autoAlpha:0, duration:0.5, ease:"power3.in"}, 35.65); /* host 36.25 − 0.6 */
+  window.__timelines["tracking"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
