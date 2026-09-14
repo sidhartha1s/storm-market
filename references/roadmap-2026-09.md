@@ -38,3 +38,21 @@ the docs are not the retention miracle; both leave viewers at the quarter mark. 
 ## Standing gates (every video)
 Retention scorecard + humanise pass + packaging-rules checklist before TTS; static gates + slices before render; the
 pre-publish checklist before the upload button.
+
+## Revision 2026-09-14 evening (owner + 50-video teardown, references/teardowns/2026-09-14-szone-spacedesk-50/)
+- Two lanes, restated by the owner: **daily news-desk minis** (8–20 min, no motion graphics, School C/B thumbs, El Niño
+  and any live hazard, published daily from 09-15) and **evergreen tornado documentaries** with motion graphics (the
+  banked four, one per weekend, repackaged first).
+- El Niño daily series, 12 episodes (titles ≤52 chars, checkable fact, US place): 09-15 "El Niño Hits 90% Odds,
+  Strongest Since 2015" · 09-16 "Atlantic Hurricane Season Just Had Its Quietest Peak" · 09-17 Texas ranchers · 09-18
+  California wettest setup since 2015 · 09-19 winter tornado risk shifting south · 09-20 Florida warm dry fire risk ·
+  09-21 Northeast mild winter by the numbers · 09-22 what changes the forecast (myth vs fact) · 09-23 reservoirs by
+  spring · 10-08 CPC October update · 10-16 NOAA winter outlook (flagship) · 11-12 CPC November check.
+- Per-day recipe (2.5–3 h): fact pull 15 → script on the 8-beat skeleton 60–90 (190 wpm target, humanise pass) → TTS 10 →
+  stock/PD clips + one named NOAA/CPC chart, popfig layer only 20 → assemble + render 30 → thumb 15 → publish checklist 10.
+- Skeleton (from the 50): number cold-open → direct-address promise inside 45 s → mechanism → a real year → reveal at
+  35–80 % → on-camera debunk of the viral claim → dated watch-for close, no spoken subscribe. No mid-video recap (both
+  seniors quit exactly there). One named region per episode; faceless.
+- Funnel: CTA rewritten to lead with the free state packet and name the hazard; hazard-matched landing variant; Paul
+  bio/credentials; kill the invented value stack; verify the free-packet claim flow (0 claims on ~54 views is a bug
+  until proven otherwise); UTM per video.
