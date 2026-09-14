@@ -1,0 +1,163 @@
+{
+ "as_of_line": "As of Mon Sept 14, 2026, ~8:30am CDT / ~7:00pm IST — live NWS (Pleasant Hill/EAX, Des Moines/DMX), SPC, and NHC products plus local wire-adjacent coverage (KQ2, WHO13, GovOneStop alert aggregator).",
+ "story_is_live": true,
+ "titles": [
+  "Missouri Flash Floods Drop 7 Inches Overnight",
+  "Kansas City Area Under Flood Watch to Sept 16",
+  "Iowa Flood Watch Expands as Rain Tops 7 Inches",
+  "NWS Flags 3 More Inches of Rain for Iowa",
+  "Atlantic Disturbance Near Bermuda Holds at 30%"
+ ],
+ "facts": [
+  {
+   "fact": "NWS Kansas City/Pleasant Hill issued a Flash Flood Warning for central Andrew County and southeastern Holt County, MO (Savannah, Oregon, Forest City, Fillmore, Rosendale), effective 6:16am-10:45am CDT, citing radar/gauge estimates of 4-7 inches of rain already fallen.",
+   "source_name": "NWS Kansas City/Pleasant Hill via KQ2",
+   "url": "https://www.kq2.com/weather/weather-alerts/2026/09/14/flash-flood-warning-issued-september-14-at-616am-cdt-until-september-14-at-1045am-cdt-by-nws-kansas-city-pleasant-hill-mo/",
+   "date": "2026-09-14",
+   "number": "4-7 inches"
+  },
+  {
+   "fact": "A personal weather station north of Savannah, MO reported over 5 inches of rain during the overnight/early-morning convection.",
+   "source_name": "NWS via GovOneStop alert aggregator",
+   "url": "https://www.govonestop.com/nws/missouri-severe-flash-flood-warning-effective-09142026-0419",
+   "date": "2026-09-14",
+   "number": "5+ inches"
+  },
+  {
+   "fact": "NWS upgraded to a Flood Warning (not flash) for central Andrew County and southeastern Holt County, MO, valid 10:37am-4:30pm CDT, stating flooding of creeks, streams, and low-lying/flood-prone locations was imminent or occurring, with 3-7 inches having fallen.",
+   "source_name": "NWS Kansas City/Pleasant Hill via KQ2",
+   "url": "https://www.kq2.com/weather/weather-alerts/2026/09/14/flood-warning-issued-september-14-at-1037am-cdt-until-september-14-at-430pm-cdt-by-nws-kansas-city-pleasant-hill-mo/",
+   "date": "2026-09-14",
+   "number": "3-7 inches"
+  },
+  {
+   "fact": "A Flood Watch covering northeast Kansas (Atchison, Doniphan) and 14 northwest Missouri counties (Andrew, Atchison, Buchanan, Caldwell, Clinton, Daviess, De Kalb, Gentry, Grundy, Harrison, Holt, Mercer, Nodaway, Worth) is in effect through 1:00pm CDT Sept 16, with 1-3 more inches of rain forecast on top of 5+ inches already fallen in spots.",
+   "source_name": "NWS via GovOneStop alert aggregator",
+   "url": "https://www.govonestop.com/nws/kansas-missouri-severe-flood-watch-effective-09142026-0937",
+   "date": "2026-09-14",
+   "number": "14 counties, through Sept 16"
+  },
+  {
+   "fact": "A separate string of Flash Flood Warnings hit northwestern Daviess, southwestern Harrison, northern DeKalb and southern Gentry counties, MO, with 1-3 inches of rain recorded by 7:27am CDT.",
+   "source_name": "NWS Kansas City/Pleasant Hill via KQ2",
+   "url": "https://www.kq2.com/weather/weather-alerts/2026/09/14/flash-flood-warning-issued-september-14-at-727am-cdt-until-september-14-at-130pm-cdt-by-nws-kansas-city-pleasant-hill-mo/",
+   "date": "2026-09-14",
+   "number": "1-3 inches"
+  },
+  {
+   "fact": "NWS Kansas City/Pleasant Hill's own hazards page lists a live Flood Warning, Flood Watch and Heat Advisory in effect for its forecast area, with the office statement: 'Heavy to excessive rainfall could bring flooding today through Thursday across parts of the central Plains into the Midwest and southern Arizona and New Mexico.'",
+   "source_name": "National Weather Service (weather.gov/eax)",
+   "url": "https://www.weather.gov/eax/",
+   "date": "2026-09-14",
+   "number": "through Thursday (Sept 17)"
+  },
+  {
+   "fact": "Heat Advisories remain in place across much of east Texas into the mid-Mississippi Valley today and Tuesday, per the same NWS Kansas City office statement.",
+   "source_name": "National Weather Service (weather.gov/eax)",
+   "url": "https://www.weather.gov/eax/",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "A Flood Watch is in effect for portions of southwestern, central and northeastern Iowa through 5:30am Tuesday (Sept 15), with pockets of heavier rain capable of flash flooding if storms repeatedly train over the same area.",
+   "source_name": "NWS via GovOneStop alert aggregator",
+   "url": "https://www.govonestop.com/nws/iowa-severe-flood-watch-effective-09142026-0344",
+   "date": "2026-09-14",
+   "number": "through 5:30am Sept 15"
+  },
+  {
+   "fact": "A separate Iowa/Nebraska Flood Watch runs until 1:00pm CDT Sept 15, warning of rainfall rates of 1-2 inches per hour with training thunderstorms.",
+   "source_name": "NWS via GovOneStop alert aggregator",
+   "url": "https://www.govonestop.com/nws/iowa-nebraska-severe-flood-watch-effective-09142026-0924",
+   "date": "2026-09-14",
+   "number": "1-2 in/hr"
+  },
+  {
+   "fact": "Des Moines, Iowa stood at 7.61 inches of rain for the month as of Monday morning, ranking 9th-wettest September on record with the month only half over.",
+   "source_name": "WHO13 Weather Blog",
+   "url": "https://who13.com/weather/weather-blog/soaking-in-september-rain-chances-stay-high-for-central-iowa/",
+   "date": "2026-09-14",
+   "number": "7.61 inches"
+  },
+  {
+   "fact": "Forecasters say an additional 2-5 inches of rain is possible across Iowa by the end of the week.",
+   "source_name": "WHO13 Weather Blog",
+   "url": "https://who13.com/weather/weather-blog/soaking-in-september-rain-chances-stay-high-for-central-iowa/",
+   "date": "2026-09-14",
+   "number": "2-5 inches"
+  },
+  {
+   "fact": "SPC's Day 1 Convective Outlook (issued 0600 UTC) placed a Slight Risk of severe thunderstorms across eastern Nebraska into western/central Iowa for Monday afternoon/evening, with large hail, damaging gusts and a few tornadoes possible.",
+   "source_name": "NOAA Storm Prediction Center",
+   "url": "https://www.spc.noaa.gov/products/outlook/day1otlk.html",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "A Flood Watch is also in effect for Grant and far western Sierra counties, New Mexico, from Tuesday morning through late Tuesday night.",
+   "source_name": "NWS via GovOneStop alert aggregator",
+   "url": "https://www.govonestop.com/nws/new-mexico-severe-flood-watch-effective-09142026-0914",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "A Minor Flood Advisory for the Kansas/Missouri border area was issued at 2:03am CDT ahead of the morning's heavier warnings, an early signal of the developing event.",
+   "source_name": "NWS via GovOneStop alert aggregator",
+   "url": "https://www.govonestop.com/nws/kansas-missouri-minor-flood-advisory-effective-09142026-0203",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "NHC's 8:00am EDT Atlantic Tropical Weather Outlook (forecaster Beven) tracks a trough of low pressure a little more than 1,000 miles east-southeast of Bermuda producing disorganized showers/thunderstorms; formation chance is near 0% through 48 hours and 30% through 7 days, with no advisories issued.",
+   "source_name": "National Hurricane Center (nhc.noaa.gov)",
+   "url": "https://www.nhc.noaa.gov/gtwo.php?basin=atlc&fdays=7",
+   "date": "2026-09-14",
+   "number": "30% (7-day)"
+  },
+  {
+   "fact": "NHC is also monitoring Tropical Storm Norbert well east of Hawaii and Tropical Depression Fifteen-E southwest of Baja California in the East/Central Pacific; neither poses a US mainland threat.",
+   "source_name": "National Hurricane Center advisories (via wire search synthesis)",
+   "url": "https://www.nhc.noaa.gov/gtwo.php",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "Background, different event (>72h old, ~130 miles south, unrelated to the active Sept 14-16 watch): a stalled remnant of Tropical Storm Edouard dumped up to roughly 2 feet of rain on rural southeast Texas Sept 2-3, with Hardin County recording 18-20 inches in two days, dozens rescued from cars/homes/an assisted-living facility, and schools/municipal offices closed near the Louisiana border.",
+   "source_name": "News Press Now (St. Joseph, MO)",
+   "url": "https://www.newspressnow.com/eedition/page-a5/page_7f72f65c-811c-580d-b0d8-13b2e83b7339.html",
+   "date": "2026-09-02",
+   "number": "18-20 inches (Hardin Co., TX)"
+  },
+  {
+   "fact": "Background, older/separate event (>72h old, ~2 months old, different Missouri region — do not conflate with the current NW Missouri watch): Gov. Mike Kehoe declared a Missouri state of emergency July 10-11 for a 1-in-1,000-year rain event (12+ inches in hours) in Crawford, Iron, Madison, Reynolds and Wayne counties that killed 1 person and triggered roughly 350 rescues, including 202 campers airlifted from Camp Taum Sauk.",
+   "source_name": "KY3 / OANN (Governor Kehoe press office)",
+   "url": "https://www.ky3.com/2026/07/11/missouri-flash-flooding-governor-praises-responders-after-hundreds-water-rescues/",
+   "date": "2026-07-11",
+   "number": "1 dead, ~350 rescued"
+  }
+ ],
+ "quotes": [
+  {
+   "speaker": "Forecaster Beven",
+   "title": "NHC Hurricane Specialist, National Hurricane Center",
+   "quote": "A trough of low pressure located a little more than 1000 miles east-southeast of Bermuda continues to produce disorganized showers and thunderstorms.",
+   "url": "https://www.nhc.noaa.gov/gtwo.php?basin=atlc&fdays=7",
+   "verbatim": true
+  },
+  {
+   "speaker": "NWS Kansas City/Pleasant Hill",
+   "title": "National Weather Service forecast office",
+   "quote": "Heavy to excessive rainfall could bring flooding today through Thursday across parts of the central Plains into the Midwest and southern Arizona and New Mexico.",
+   "url": "https://www.weather.gov/eax/",
+   "verbatim": true
+  }
+ ],
+ "unknowns": [
+  "No deaths, injuries, or completed water rescues have been officially reported for the active Sept 14-16 NW Missouri/NE Kansas/Iowa flood watch as of this check — only warnings and generic 'turn around, don't drown' safety language have been issued.",
+  "No county, city, or state official (mayor, county EMA director, Gov. Kehoe's office) has issued a named public statement specifically about the Sept 14-16 event; Missouri's governor has not declared an emergency for this event.",
+  "No river-crest or specific gauge readings (e.g., Missouri River at St. Joseph) were obtainable from official river forecast center pages during this check.",
+  "NHC has not assigned an invest number or upgraded the Atlantic trough near Bermuda to a tropical depression; its future track/intensity, if any, remains unstated.",
+  "Exact current status of road closures (which specific roads/highways) in Andrew, Holt, Buchanan or other affected counties was not confirmable — county road-closure pages returned access errors during this check."
+ ],
+ "warnings": [
+  "Two distinct Missouri flood events exist in the 2026 record and must not be conflated: the active, moderate Sept 14-16 flash-flood/flood-watch event in NE Kansas/NW Missouri (Savannah/St. Joseph area, no reported deaths/rescues) vs. the far larger July 10-11, 2026 south-central/southeastern Missouri flash-flood emergency (1 dead, ~350 rescued, Camp Taum Sauk evacuation) — different counties, ~2 months apart.",
+  "The Sept 2-3, 2026 Tropical-Storm-Edouard flooding in southeast Texas (Hardin County, dozens rescued) is background only — it is 12+ days old relative to Sept 14 and geographically distinct (Gulf Coast Texas, not the Midwest watch area) and should not be presented as part of the current story without clear labeling.",
+  "The current Midwest system is a flood watch/warning tied to slow-moving thunderstorms, not a tropical system; do not conflate it with the low-probability (30%, 7-day) Atlantic disturbance near Bermuda, which has no US impact forecast and has not been named or numbered.",
+  "Several sources (govonestop.com alert pages, county road pages, some NWS pages) returned 403/404 errors on direct fetch; facts drawn from them rely on search-engine summaries of those same official NWS/GovOneStop alert texts rather than a direct page open in every case — flagged per source above."
+ ]
+}

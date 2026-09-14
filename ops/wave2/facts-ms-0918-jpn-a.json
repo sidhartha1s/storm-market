@@ -1,0 +1,226 @@
+{
+ "story_is_live": true,
+ "as_of_line": "As of 2026-09-14, evening JST (~17:00 JST bulletin from Japan Weather Association/tenki.jp; Sept 12-13 for the Tokachidake volcanic alert; Sept 8-9 flood facts are background, 6 days old)",
+ "facts": [
+  {
+   "fact": "JMA raised Mount Tokachidake's volcanic alert level from Level 2 to Level 3",
+   "number": "Level 3",
+   "source_name": "Travel And Tour World (citing JMA)",
+   "url": "https://www.travelandtourworld.com/news/article/0b9js1eo7rx2/",
+   "date": "2026-09-12"
+  },
+  {
+   "fact": "Danger zone radius around Tokachidake's 62-2 crater where volcanic rocks could be thrown",
+   "number": "3 km",
+   "source_name": "Travel And Tour World (citing JMA)",
+   "url": "https://www.travelandtourworld.com/news/article/0b9js1eo7rx2/",
+   "date": "2026-09-12"
+  },
+  {
+   "fact": "Strongest volcanic earthquake recorded at Tokachidake ahead of the alert raise, at 8:20 a.m.",
+   "number": "8:20 a.m.",
+   "source_name": "Travel And Tour World (citing JMA)",
+   "url": "https://www.travelandtourworld.com/news/article/0b9js1eo7rx2/",
+   "date": "2026-09-12"
+  },
+  {
+   "fact": "Larger-amplitude volcanic earthquakes at Tokachidake have increased since August 17, 2026, ahead of the Level 3 raise",
+   "number": "since Aug 17",
+   "source_name": "Travel And Tour World (citing JMA)",
+   "url": "https://www.travelandtourworld.com/news/article/0b9js1eo7rx2/",
+   "date": "2026-09-12"
+  },
+  {
+   "fact": "Tokachidake Onsen and Fukiage trailheads closed, and the Tokachidake Skyline road partially closed between Biei Shirogane Onsen and Tokachidake Onsen",
+   "number": "2 trailheads closed",
+   "source_name": "Travel And Tour World (citing JMA/Hokkaido authorities)",
+   "url": "https://www.travelandtourworld.com/news/article/0b9js1eo7rx2/",
+   "date": "2026-09-13"
+  },
+  {
+   "fact": "This is the first time Tokachidake has reached Level 3 since Japan's volcanic alert-level system began",
+   "number": "first since 2008",
+   "source_name": "Japan Times (via search synthesis, article confirmed live)",
+   "url": "https://www.japantimes.co.jp/news/2026/09/13/japan/volcanic-alert-tokachidake-raised/",
+   "date": "2026-09-13"
+  },
+  {
+   "fact": "A tropical depression near the Truk (Chuuk) Islands was forecast by JMA to develop into a typhoon within 24 hours",
+   "number": "within 24h",
+   "source_name": "tenki.jp / Japan Weather Association (forecaster Yukiyo Domoto)",
+   "url": "https://tenki.jp/forecaster/domoto_yukiyo/2026/09/14/40602.html",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "Position of the pre-typhoon tropical depression as of 10:30 a.m., moving slowly west, central pressure 1004 hPa, max instantaneous wind 23 m/s",
+   "number": "1004 hPa",
+   "source_name": "tenki.jp / Japan Weather Association",
+   "url": "https://tenki.jp/forecaster/domoto_yukiyo/2026/09/14/40602.html",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "JMA forecast the system to intensify to a strong typhoon (about 970 hPa, max wind 35 m/s) near the Ogasawara Islands",
+   "number": "970 hPa",
+   "source_name": "tenki.jp / Japan Weather Association",
+   "url": "https://tenki.jp/forecaster/domoto_yukiyo/2026/09/14/40602.html",
+   "date": "2026-09-17 (forecast target date)"
+  },
+  {
+   "fact": "The system is forecast to reach the vicinity of Okinawa around Sept. 20-21, coinciding with the Silver Week holiday and Respect for the Aged Day",
+   "number": "Sept 20-21",
+   "source_name": "tenki.jp / Japan Weather Association",
+   "url": "https://tenki.jp/forecaster/domoto_yukiyo/2026/09/14/40602.html",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "An autumn rain front is forecast to bring warning-level heavy rain risk to Hokuriku as it becomes more active",
+   "number": "warning-level",
+   "source_name": "web search synthesis of Japanese weather sites (tenki.jp/sunny-spot.net)",
+   "url": "https://www.sunny-spot.net/english/topics.html?area=0",
+   "date": "2026-09-15 (forecast target date)"
+  },
+  {
+   "fact": "Nagoya recorded 104.5 mm of rain in one hour, the highest hourly total on record for the station since 1890 (a 136-year record)",
+   "number": "104.5 mm/hr",
+   "source_name": "The Watchers / Al Jazeera (AFP/AP)",
+   "url": "https://www.aljazeera.com/sports/2026/9/9/asian-games-athletes-forced-to-evacuate-amid-record-rainfall-in-japan",
+   "date": "2026-09-08 (background, 6 days old)"
+  },
+  {
+   "fact": "JMA issued a Level 5 flood special (emergency) warning for the Shonai River in Nagoya",
+   "number": "Level 5",
+   "source_name": "IBTimes Singapore",
+   "url": "https://www.ibtimes.sg/nagoya-flood-map-areas-hit-by-record-rain-evacuations-road-closures-latest-updates-93554",
+   "date": "2026-09-08 (background)"
+  },
+  {
+   "fact": "Nagoya City issued Level 5 Emergency Safety Measures covering roughly 607,879 households in 14 wards",
+   "number": "607,879 households",
+   "source_name": "The Watchers",
+   "url": "https://watchers.news/2026/09/08/record-rainfall-floods-roads-and-disrupts-rail-services-in-nagoya-japan/",
+   "date": "2026-09-08 (background)"
+  },
+  {
+   "fact": "About 2,700-3,500 people took shelter in evacuation centers at peak across Nagoya",
+   "number": "~3,500 people",
+   "source_name": "IBTimes Singapore / Sunday Guardian Live",
+   "url": "https://sundayguardianlive.com/world/nagoya-flooding-today-nagoya-city-sees-extensive-flooding-due-to-record-rain-ahead-of-asian-games-check-affected-areas-evacuation-casualties-more-280771/",
+   "date": "2026-09-08 (background)"
+  },
+  {
+   "fact": "At least 41 people were injured across Aichi and Gifu prefectures in the flooding",
+   "number": "41 injured",
+   "source_name": "IBTimes Singapore",
+   "url": "https://www.ibtimes.sg/nagoya-flood-map-areas-hit-by-record-rain-evacuations-road-closures-latest-updates-93554",
+   "date": "2026-09-08/09 (background)"
+  },
+  {
+   "fact": "About 305 meters of JR Chuo Line track were submerged between Chikusa and Ozone stations, and the Tokaido Shinkansen was suspended before resuming around 5:15 p.m.",
+   "number": "305 m",
+   "source_name": "ground.news / IBTimes Singapore",
+   "url": "https://www.ibtimes.sg/nagoya-flood-map-areas-hit-by-record-rain-evacuations-road-closures-latest-updates-93554",
+   "date": "2026-09-08 (background)"
+  },
+  {
+   "fact": "The Shonai River flood warning was downgraded from Level 5 to Level 2 by 00:40 local time",
+   "number": "00:40",
+   "source_name": "The Watchers / Manila Times",
+   "url": "https://www.manilatimes.net/2026/09/09/sports/asian-games-venues-and-athletes-unharmed-by-extensive-flooding-in-nagoya-japan/2421237",
+   "date": "2026-09-09 (background)"
+  },
+  {
+   "fact": "About 400 Asian Games athletes and officials in Garden Pier container housing were temporarily evacuated to higher ground for roughly two hours",
+   "number": "~400 people",
+   "source_name": "Al Jazeera (AFP/AP)",
+   "url": "https://www.aljazeera.com/sports/2026/9/9/asian-games-athletes-forced-to-evacuate-amid-record-rainfall-in-japan",
+   "date": "2026-09-09 (background)"
+  },
+  {
+   "fact": "The Japanese government designated Nagoya for emergency assistance under the Disaster Relief Act",
+   "number": "n/a",
+   "source_name": "ground.news",
+   "url": "https://ground.news/article/breaking-news-nagoya-in-central-japan-designated-for-disaster-relief-after-heavy-rain",
+   "date": "2026-09-08/09 (background)"
+  },
+  {
+   "fact": "One person, a woman in her 60s, died in Iwaki, Fukushima Prefecture, found unresponsive in a submerged car, in a separate Kanto rain event the same week",
+   "number": "1 death",
+   "source_name": "Japan Today",
+   "url": "https://japantoday.com/category/national/One-dead-as-heavy-rain-lashes-Japan-weather-agency-warns-of-landslides-rainbands",
+   "date": "2026-09-07/08 (background)"
+  },
+  {
+   "fact": "JMA issued a special landslide warning for Oshima after over 580mm of rain fell in 24 hours, the highest September figure on record there",
+   "number": "580 mm/24h",
+   "source_name": "Japan Today",
+   "url": "https://japantoday.com/category/national/One-dead-as-heavy-rain-lashes-Japan-weather-agency-warns-of-landslides-rainbands",
+   "date": "2026-09-07/08 (background)"
+  },
+  {
+   "fact": "Nagoya Asian Games venues sustained only water leaks with no structural damage; opening ceremony remains scheduled",
+   "number": "Sept 19 opening",
+   "source_name": "Al Jazeera (AFP/AP)",
+   "url": "https://www.aljazeera.com/sports/2026/9/9/asian-games-athletes-forced-to-evacuate-amid-record-rainfall-in-japan",
+   "date": "2026-09-09 (background)"
+  },
+  {
+   "fact": "Japan's 2026 typhoon season is forecast to produce about 28 storms overall, above the long-term average of 25.1, with roughly 14 expected to approach Japan",
+   "number": "~28 storms",
+   "source_name": "News On Japan (citing Weathernews)",
+   "url": "https://newsonjapan.com/article/149522.php",
+   "date": "June 2026 seasonal outlook (background)"
+  }
+ ],
+ "quotes": [
+  {
+   "speaker": "Ichiro Hirosawa",
+   "title": "Mayor of Nagoya",
+   "quote": "We are not worried about the conditions of the venues, and we believe there is no problem holding the Asian Games as planned.",
+   "url": "https://www.aljazeera.com/sports/2026/9/9/asian-games-athletes-forced-to-evacuate-amid-record-rainfall-in-japan",
+   "verbatim": true
+  },
+  {
+   "speaker": "Ichiro Hirosawa",
+   "title": "Mayor of Nagoya",
+   "quote": "There has been limited impact, like rainwater leaking from the roofs of some buildings, but the situation is not so serious that the opening on the 19th is in jeopardy for now.",
+   "url": "https://www.aljazeera.com/sports/2026/9/9/asian-games-athletes-forced-to-evacuate-amid-record-rainfall-in-japan",
+   "verbatim": true
+  },
+  {
+   "speaker": "Ichiro Hirosawa",
+   "title": "Mayor of Nagoya",
+   "quote": "Given the current circumstances, I believe there will be no obstacles to holding the Asian Games.",
+   "url": "https://japantoday.com/category/sports/record-rain-forces-asian-games-athletes-to-evacuate-accommodation",
+   "verbatim": true
+  },
+  {
+   "speaker": "Takuya Hosomi",
+   "title": "Chief Forecaster, Japan Meteorological Agency",
+   "quote": "It is necessary to ensure your safety by moving to higher ground that is less prone to flooding.",
+   "url": "https://www.ibtimes.sg/nagoya-flood-map-areas-hit-by-record-rain-evacuations-road-closures-latest-updates-93554",
+   "verbatim": true
+  }
+ ],
+ "unknowns": [
+  "JMA/tenki.jp had not yet formally designated the Truk-area tropical depression as 'Typhoon No. 25' as of the 17:00 JST Sept 14 bulletin — formation was forecast, not confirmed, and no English-language JMA/NHK World/Kyodo confirmation was found (Japanese-language JWA source only).",
+  "No stated timeline from JMA for when Tokachidake's Level 3 alert might be reviewed, extended, or downgraded.",
+  "No official 'Nankai Trough Earthquake Extra Information' bulletin was found issued this week (Sept 8-14); unclear whether the Nagoya-area rain and Tokachidake seismicity triggered any joint-panel review.",
+  "No total financial/economic damage estimate for the Nagoya flooding was found in any source reviewed.",
+  "No confirmed update on Asian Games venue repair completion since the Sept 9 'repairs underway' status, despite the Sept 19 opening approaching.",
+  "Officials have not stated whether the incoming typhoon system (post-Okinawa, around Sept 21+) will affect the Japanese mainland or the Nagoya Asian Games; model tracks diverge (Japan Sea path vs. re-curve east along the south coast) per tenki.jp."
+ ],
+ "titles": [
+  "JMA Raises Tokachidake Alert to Level 3",
+  "Typhoon 25 Forms Near Truk, Eyes Okinawa",
+  "Nagoya Flood Recovery Continues, 41 Hurt",
+  "Asian Games Open Sept. 19 as Nagoya Dries Out",
+  "JMA Monitors 3 Hazards From Tokachidake to Okinawa"
+ ],
+ "warnings": [
+  "Total one-day Nagoya rainfall on Sept 8 is reported inconsistently across outlets: 217.5mm (Techtimes) vs 219.5mm (Sunday Guardian Live) — same event, different figure, unresolved.",
+  "Evacuation/affected-population figures conflate two different scopes: ~607,879 households (~1.17-1.32 million people) specifically in Nagoya's 14 warned wards, vs. a separate reported ~2.65 million people under evacuation orders across all of Aichi, Mie, and Gifu prefectures combined (IBTimes) — do not merge these numbers in the video.",
+  "JMA Chief Forecaster Takuya Hosomi's warning quote is rendered two different ways in English across outlets (IBTimes Singapore vs. a paraphrase seen elsewhere), suggesting a translated/paraphrased rendering of a Japanese-language broadcast rather than one fixed verbatim transcript — treat as close-paraphrase, not court-transcript-exact.",
+  "The Sept 14 tropical-depression-to-typhoon story is sourced here to tenki.jp/Japan Weather Association (a licensed Japanese forecaster site), not directly to JMA's own bosai portal (which failed to load/403'd on fetch) or to NHK World/Kyodo in English — flagged per source-priority ladder; treat the Okinawa Sept 20-21 approach date as provisional until an English wire confirms.",
+  "This session's WebSearch quota was exhausted mid-task (200/200), so no further live searches were possible; all late-stage sourcing relied on direct WebFetch of already-identified URLs, which may have missed newer wire updates published after roughly 17:00 JST Sept 14."
+ ]
+}
