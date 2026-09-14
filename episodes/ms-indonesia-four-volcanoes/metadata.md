@@ -22,8 +22,8 @@ for the Cascades.
 ## Chapters (questions a senior would ask an AI; `mm:ss: problem discussed`; no close, no CTA chapter)
 00:00: Who is missing off Anak Krakatau and how long has the search been running?
 00:35: Which Indonesian volcanoes are at alert level 3 tonight and which ones erupted today?
-01:40: Where are these six volcanoes, and what happened to the boat Arupadhatu I?
-02:50: How badly did last week's eruption disrupt Jakarta's airports?
+01:39: Where are these six volcanoes, and what happened to the boat Arupadhatu I?
+02:49: How badly did last week's eruption disrupt Jakarta's airports?
 03:44: Did one volcano set off the others? What PVMBG's head said on the record
 04:53: Why does Indonesia get six eruptions at once?
 05:30: What did Anak Krakatau do in 1883 and 2018, and could a tsunami happen again?
