@@ -82,9 +82,9 @@
       "owner": "director",
       "due": "16 Sep 26",
       "phase": "script",
-      "status": "done",
-      "note": "fact sheet + Sonnet draft in ops/wave2; director's pass pending",
-      "updated": "14 Sep 26 23:36"
+      "status": "doing",
+      "note": "JMA refresh + director-rule script running (Sonnet); slot A for 16 Sep",
+      "updated": "15 Sep 26 03:06"
     },
     {
       "slug": "ms-elnino-cpc-today",
