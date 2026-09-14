@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  Format C tracking card, Kauai (B7 "what nobody has said yet"): five open items land on their spoken cues; the last one
+  stays highlighted as the unresolved line the video ends on. Same glass recipe as statusboard.html.
+  EDIT-ME: the five `at` cues from audio/b7-s1.words.json; exit at host duration − 0.6.
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; }
+  .card { position:absolute; left:110px; top:140px; width:900px; box-sizing:border-box; padding:30px 40px 26px;
+    background:rgba(10,16,24,0.60); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:6px; color:#d0121f; }
+  .row { display:flex; align-items:flex-start; gap:20px; margin-top:20px; overflow:hidden; }
+  .n { flex:0 0 56px; font-family:'AbrilFig',Georgia,serif; font-size:56px; line-height:1; color:#d0121f; text-shadow:0 3px 14px rgba(0,0,0,0.8); }
+  .lab { font-family:'Arial Black',Arial,sans-serif; font-size:30px; line-height:1.1; }
+  .sub { font-size:21px; color:#c8d3e0; margin-top:5px; line-height:1.3; }
+  .hot .lab { color:#ffd27a; }
+  #tr-r1 .lab { color:#ffd27a; }
+  .big { font-family:'AbrilFig',Georgia,serif; font-size:64px; line-height:1; color:#f2f5f8; margin-top:8px; text-shadow:0 3px 14px rgba(0,0,0,0.8); }
+  .bar { position:absolute; left:40px; right:40px; bottom:14px; height:4px; background:linear-gradient(90deg,#d0121f,#ffd27a); border-radius:2px; transform-origin:left; }
+</style>
+<div id="root" data-composition-id="tracking" data-width="1920" data-height="1080">
+  <div class="card" id="tr-card">
+    <div class="eye" id="tr-eye">STILL OPEN TONIGHT</div>
+    <div class="big" id="tr-big">6 UNANSWERED</div>
+    <div class="bar" id="tr-bar"></div>
+    <div class="row" id="tr-r1"><div class="n">1</div><div><div class="lab">RESTORATION DATE</div><div class="sub">KIUC: "the next couple of days will tell"</div></div></div>
+    <div class="row" id="tr-r2"><div class="n">2</div><div><div class="lab">DAMAGE TOTAL</div><div class="sub">Only 10 home and 4 business claims counted, last Tuesday</div></div></div>
+    <div class="row" id="tr-r3"><div class="n">3</div><div><div class="lab">INSURED LOSS</div><div class="sub">$0.5–1.0 billion, one private model, not an official figure</div></div></div>
+    <div class="row" id="tr-r4"><div class="n">4</div><div><div class="lab">INJURIES AND DEATHS</div><div class="sub">1 injury, no detail · 3 deaths on record</div></div></div>
+    <div class="row" id="tr-r5"><div class="n">5</div><div><div class="lab">FEDERAL DECLARATION</div><div class="sub">Requested, no decision date</div></div></div>
+    <div class="row hot" id="tr-r6"><div class="n">6</div><div><div class="lab">THE HARBORS</div><div class="sub">Port Allen and Kaumalapau: no date for full service</div></div></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#tr-";
+  const rows = [P+"r1",P+"r2",P+"r3",P+"r4",P+"r5",P+"r6"];
+  tl.set(rows, {autoAlpha:0, height:0, marginTop:0}, 0);
+  tl.fromTo(P+"card", {x:-960, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 0);
+  /* EDIT-ME: cues from audio/b7-s1.words.json: "extended", "tarpaulins", "flights", "Ibu", "slope" */
+  const AT = [1.86, 7.9, 17.64, 31.42, 55.12, 58.92]; /* host = b7-s1 + 1.0: cues 2.86 / 8.9 / 18.64 / 32.42 / 56.12 / 59.92 */
+  rows.forEach((r, i) => tl.fromTo(r, {autoAlpha:0, y:24, height:0, marginTop:0}, {autoAlpha:1, y:0, height:"auto", marginTop:20, duration:0.45, ease:"power3.out"}, AT[i]));
+  tl.fromTo(P+"bar", {scaleX:0}, {scaleX:1, duration:71.8, ease:"none"}, 0.6); /* fills across the hold: continuous motion */
+  tl.fromTo(P+"big", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 1.0);
+  tl.to(".n", {textShadow:"0 0 22px rgba(208,18,31,0.95)", duration:1.1, yoyo:true, repeat:64, ease:"sine.inOut"}, 0.8);
+  tl.fromTo(P+"card", {y:0}, {y:-6, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:51}, 0.6);
+  tl.to(P+"eye", {letterSpacing:"8px", duration:1.2, ease:"power3.out"}, 0.2);
+  tl.to(P+"r1 .lab", {textShadow:"0 0 24px rgba(255,210,122,0.9)", duration:1.2, yoyo:true, repeat:5, ease:"sine.inOut"}, 64.7); /* "the next figure that matters" */
+  tl.to(P+"card", {x:-960, autoAlpha:0, duration:0.5, ease:"power3.in"}, 72.4); /* host 73.0 − 0.6 */
+  window.__timelines["tracking"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
