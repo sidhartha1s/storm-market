@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  B5-S1 return to the corridor plate (same OSM plate and geography as corridor.html; second host of the same picture, so it
+  is its own composition id). The point this time is the wiring: the one transmission line along the coast, the short
+  distribution stubs that hang off it toward the houses, and the two schools sitting on that corridor.
+  Host = b5-s1 start, 30.0 s. Cues rel: one transmission line 3.9 · backbone 10.1 · distribution lines 13.2 · two schools 23.1.
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; background: radial-gradient(ellipse at 60% 40%, #0e1a28 0%, #04070c 75%); overflow:hidden; font-family:Arial,sans-serif; }
+  .plate { position:absolute; left:700px; top:110px; width:1000px; height:860px; transform-origin:523px 180px; }
+  .plate img { position:absolute; left:0; top:0; width:1000px; height:860px; filter:saturate(0.55) brightness(0.7); }
+  .plate svg { position:absolute; left:0; top:0; width:1000px; height:860px; }
+  .pin { position:absolute; width:12px; height:12px; margin:-6px 0 0 -6px; border-radius:50%; background:#ffd27a; box-shadow:0 0 0 3px rgba(255,210,122,0.35), 0 0 14px rgba(255,210,122,0.9); }
+  .tag { position:absolute; white-space:nowrap; z-index:2; font-family:'Arial Black',Arial,sans-serif; font-size:16px; letter-spacing:1.5px; color:#f4f0e8;
+    background:rgba(10,16,24,0.78); border:1px solid rgba(255,255,255,0.14); border-left:4px solid #d0121f; padding:4px 10px; border-radius:6px; }
+  .tag.sch { border-left-color:#ffd27a; }
+  .tag.dist { border-left-color:#6fb0e6; }
+  .panel { position:absolute; left:110px; top:120px; width:520px; box-sizing:border-box; padding:26px 32px 22px;
+    background:rgba(10,16,24,0.66); backdrop-filter:blur(16px) saturate(1.15); -webkit-backdrop-filter:blur(16px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:24px; color:#f2f5f8; }
+  .eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:5px; color:#d0121f; }
+  .big { margin-top:8px; line-height:1.05; font-family:'AbrilFig',Georgia,serif; font-size:56px; color:#f2f5f8; text-shadow:0 3px 14px rgba(0,0,0,0.85); }
+  .side { margin-top:10px; font-size:21px; color:#c8d3e0; line-height:1.35; }
+  .side b { display:block; font-family:'Arial Black',Arial,sans-serif; font-size:30px; color:#f2f5f8; margin-top:16px; }
+  .src { position:absolute; right:40px; top:34px; font-size:20px; letter-spacing:1px; color:rgba(220,228,236,0.85); background:rgba(5,8,12,0.6); padding:6px 14px; }
+</style>
+<div id="root" data-composition-id="corridor-b5" data-width="1920" data-height="1080">
+  <div class="src">MAP: © OPENSTREETMAP · CC BY-SA 2.0 · WIRING SCHEMATIC, NOT SURVEYED</div>
+  <div class="plate" id="cb-plate">
+    <img src="../media/maps/Location_Map_Kauai.png" alt="">
+    <svg viewBox="0 0 1000 860">
+      <path id="cb-line" d="M 747 132 L 735 122 L 722 130 L 710 133 L 697 134 L 684 142 L 672 134 L 659 131 L 647 128 L 634 133 L 621 128 L 609 122 L 596 122 L 584 130 L 571 168 L 558 168 L 546 149 L 533 147 L 520 144 L 508 134 L 495 131 L 483 128 L 470 137 L 457 132 L 445 132 L 432 144 L 420 154 L 407 162 L 394 172 L 382 178 L 369 184 L 357 195 L 344 206 L 331 211 L 319 221 L 306 228 L 299 228" fill="none" stroke="#d0121f" stroke-width="5" stroke-linecap="round" stroke-dasharray="1400" stroke-dashoffset="1400" opacity="0.95"/>
+      <g id="cb-dist" stroke="#6fb0e6" stroke-width="2.5" fill="none" opacity="0.95" stroke-linecap="round">
+        <path d="M 722 130 l 6 22 M 697 134 l 4 24 M 672 134 l 8 22 M 647 128 l 2 26 M 621 128 l 6 24 M 596 122 l 4 26 M 571 168 l 6 20 M 546 149 l 2 26 M 520 144 l 6 24 M 495 131 l 2 26 M 470 137 l 6 22 M 445 132 l 2 26 M 420 154 l 6 22 M 394 172 l 4 24 M 369 184 l 6 22 M 344 206 l 4 22 M 319 221 l 6 20"/>
+      </g>
+    </svg>
+    <div class="tag" id="cb-tline" style="left:640px; top:56px">1 TRANSMISSION LINE · THE BACKBONE</div>
+    <div class="tag dist" id="cb-tdist" style="left:430px; top:196px">DISTRIBUTION LINES TO THE HOUSES · AFTER</div>
+    <div class="pin" id="cb-p1" style="left:609px; top:122px"></div><div class="tag sch" id="cb-t1" style="left:612px; top:86px">KILAUEA ELEM</div>
+    <div class="pin" id="cb-p2" style="left:420px; top:154px"></div><div class="tag sch" id="cb-t2" style="left:362px; top:100px">HANALEI ELEM</div>
+  </div>
+  <div class="panel" id="cb-panel">
+    <div class="eye" id="cb-eye">WHY THE NORTH SHORE IS LAST</div>
+    <div class="big" id="cb-big">ONE LINE FEEDS IT ALL</div>
+    <div class="side"><div id="cb-s1"><b>1 TRANSMISSION LINE</b>Damaged along its length · rebuilt first</div><div id="cb-s2"><b>DISTRIBUTION AFTER</b>The smaller lines to homes come back only behind it</div><div id="cb-s3"><b>2 SCHOOLS</b>On the same corridor: roads and service, not staffing</div></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#cb-";
+  tl.set([P+"p1",P+"t1",P+"p2",P+"t2",P+"tline",P+"tdist",P+"dist",P+"s1",P+"s2",P+"s3",P+"big"], { autoAlpha: 0 }, 0);
+  tl.fromTo("#root", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 0);
+  tl.fromTo(P+"plate", { scale: 1.62 }, { scale: 1.52, duration: 30.0, ease: "none" }, 0); /* the slow pull back out, mirror of B3 */
+  tl.fromTo(P+"big", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.4);
+  /* 3.9 "one transmission line": draws along the whole coast */
+  tl.to(P+"line", { strokeDashoffset: 0, duration: 2.6, ease: "power2.inOut" }, 3.9);
+  tl.fromTo(P+"tline", { autoAlpha: 0, y: -16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 4.6);
+  tl.fromTo(P+"s1", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 4.2);
+  /* 10.1 "rebuild that backbone first": the line pulses */
+  tl.to(P+"line", { strokeWidth: 8, duration: 0.6, yoyo: true, repeat: 5, ease: "sine.inOut" }, 10.1);
+  /* 13.2 "the smaller distribution lines behind it" */
+  tl.fromTo(P+"dist", { autoAlpha: 0, scaleY: 0, transformOrigin: "50% 0%" }, { autoAlpha: 1, scaleY: 1, duration: 0.9, ease: "power3.out" }, 13.2);
+  tl.fromTo(P+"tdist", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 13.8);
+  tl.fromTo(P+"s2", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 13.5);
+  /* 23.1 "the two closed schools sit on the same corridor" */
+  [[1, 23.1], [2, 23.7]].forEach(([i, at]) => {
+    tl.fromTo(P+"p"+i, { scale: 3, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, at);
+    tl.fromTo(P+"t"+i, { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, at + 0.2);
+  });
+  tl.fromTo(P+"s3", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 23.4);
+  tl.to(P+"dist", { opacity: 0.55, duration: 0.8, yoyo: true, repeat: 19, ease: "sine.inOut" }, 14.2);
+  tl.to("#root", { autoAlpha: 0, duration: 0.4 }, 29.6);
+  window.__timelines["corridor-b5"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
