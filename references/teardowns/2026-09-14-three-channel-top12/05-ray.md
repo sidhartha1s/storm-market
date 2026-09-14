@@ -1,0 +1,20 @@
+I spent the day with these tapes at the kitchen table. Here's what I've got.
+
+**1. EarthDesk's pace — 143-148 wpm, 22-25 minutes.**
+That suits me fine, up to a point. I like a man who talks like he's got all night, not one who's trying to beat me out the door. "Anak Krakatau Is Still Erupting... And Now Three More Volcanoes Just Woke Up" (195,871 views) opens slow — "Lava still glows in the dark above Anac Krakatau" — and I'd stay for that. But I'd have quit around the 16-minute mark where it goes into Ring of Fire plate-tectonics classroom stuff after already telling me the scientists said the volcanoes aren't connected. Once you've answered my question, quit repeating the science-fair version of the answer. Twenty-five minutes only works if every one of them is doing a job.
+
+**2. Their two Krakatau videos versus ours, same days.**
+I'd click EarthDesk's "Anak Krakatoa Is About To Erupt Again... And This Time It Could Be Worse" (173,143 views) before either of ours. It opens "Right now, as you're watching this, a volcano in Indonesia is sitting at the second highest alert level" — that's a man telling me something is happening tonight. Our "Will Krakatoa KILL Another 36,000 People?" reads like a dare, and the all-caps KILL makes me trust it less, not more — sounds like you already know the answer's no and you're just trying to get me to open it. I'd click "How Krakatoa Made a Tsunami Without an Earthquake" over that one — it's a real question, the kind a curious man asks.
+Would I finish either of yours? Probably, once I'm in — "Do the arithmetic. From the collapse to the first beach, the water needed twenty-seven minutes" is good, plain, countable. But your thumbnail for that one says "6+ ERRUPTIONS IN A WEEK" — misspelled, right there on the card. I saw that before I read a word of the script and it already told me nobody proofread this. EarthDesk's has a typo too ("HGIH ALERT," both a winner and a flop of theirs), so it's not just you, but it still costs you the same way — a man who can't spell "high" isn't a man I trust to tell me when to leave.
+
+**3. Trust or distrust, all three channels.**
+What earns trust: naming the actual agency and quoting a real officer — "Rita Susilawati, head of PVMBG... each volcano has its own magma system, its own kitchen." That's how the National Weather Service talks to me, plain facts, no salesman voice.
+What loses it: sentences built to trick me into thinking there's a twist — "the obvious question is the wrong one," "here's what made it even more terrifying." I've heard enough radio hosts to know when someone's manufacturing suspense instead of reporting. And the comments don't lie: "A.i.: turning a 2 minute story into 25 minutes of filler" (57 likes) on the 173,143-view one. If your own audience is calling it filler while it's blowing up, that's a warning sign, not a compliment.
+
+**4. Tomorrow's video, from us.**
+Skip the volcano — you already ran two Krakatau pieces this month and I've had my fill. Give me the winter forecast instead — that El Niño call NOAA's put odds above 90% on. That's a cattle-and-water question for me, not a curiosity. Eight, nine minutes, no longer. Open it straight: "Forecasters say this winter has better than nine-in-ten odds of being the strongest El Niño since 1950 — and for half the country that means drought, not snow." No riddle, no "you won't believe." Just tell me if Abilene's getting a wet winter or a dry one and what that does to the tank water and the grass.
+
+**5. Three things I'd tell a friend to fix first.**
+One — the title on "Will Krakatoa KILL Another 36,000 People?" Drop the dare, drop the caps. Ask me a real question or tell me a real number, don't tease me.
+Two — fix "6+ ERRUPTIONS IN A WEEK" on the thumbnail. A man selling me on trusting his facts can't misspell the headline.
+Three — the ebook pitch dropped mid-disaster-story ("check out the ebook in the description... good day") feels like a salesman interrupting a weather report. Move it to the end or cut it. I don't like being sold to in the middle of somebody telling me people died.

@@ -91,3 +91,10 @@ above is read as: seams are stamps; the open fact is stated, not asked). Ep2's h
 ## The philosophical change
 Optimise for "what information does the viewer want right now, and when do we give it," not for "how do we make this
 more engaging." Narration and visual event are written together, never narration first.
+
+## News-lane pace: tempo BEFORE timing (owner order 2026-09-14)
+Daily news-desk videos run Paul's clone at **atempo 1.10** (pitch-preserving; 158 -> ~174 wpm delivered). Order of
+operations is fixed: (1) TTS the segment; (2) ffmpeg atempo=1.10 on the wav; (3) transcribe the SPED wav to words.json;
+(4) only then resolve cues, cards, popfigs and cuts against it. Never render at the slow pace and speed the video
+afterwards; never time graphics against the pre-tempo words.json. Documentaries keep the natural 150-158 wpm. Above
+1.13 the clone sounds rushed; write denser instead.
