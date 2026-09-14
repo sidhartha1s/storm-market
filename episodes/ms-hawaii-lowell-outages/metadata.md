@@ -1,4 +1,4 @@
-# metadata.md — ms-hawaii-lowell-outages (Format C · 14 Sep 26 · 8:58)
+# metadata.md — ms-hawaii-lowell-outages (Format C · 14 Sep 26 · 8:36)
 
 ## Title (pick one, ≤52 chars, proper noun first)
 1. Kauai Reaches 81% Power One Week After Lowell  (45)
@@ -20,12 +20,12 @@ President for Major Disaster Declarations for both Lowell and Lala, and the numb
 ## Chapters (questions a senior would ask an AI; `mm:ss: problem discussed`; no close, no CTA chapter)
 00:00: How much of Kauai has power back one week after Hurricane Lowell, and how many died?
 00:33: Where do things stand tonight: power, schools, shelters, federal aid, Lanai's harbor?
-01:35: Which parts of Kauai are still waiting, and what did the storm measure at each?
-03:23: What is KIUC's chief executive saying about a restoration date?
-04:28: Why does the last twenty percent of the grid take longest to restore?
-05:12: Who flew in to help, and what did Hurricane Lala have to do with it?
-06:17: What has Washington been asked for, and why does it matter on the mainland?
-07:29: What have officials still not said?
+01:25: Which parts of Kauai are still waiting, and what did the storm measure at each?
+03:07: What is KIUC's chief executive saying about a restoration date?
+04:10: Why does the last twenty percent of the grid take longest to restore?
+04:54: Who flew in to help, and what did Hurricane Lala have to do with it?
+05:59: What has Washington been asked for, and why does it matter on the mainland?
+07:11: What have officials still not said?
 
 ## Tags
 Hurricane Lowell, Kauai, Kauai power outage, KIUC, Hawaii hurricane 2026, Hawaii news, Hurricane Lala, North Shore Kauai, Hanalei,
