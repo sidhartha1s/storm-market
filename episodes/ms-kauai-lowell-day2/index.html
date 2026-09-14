@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Kauai Holds at 81 Percent Power as Schools Reopen — The Warning Hour (Format C, 16 Sep 26)</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070c; }
+    video, .still-wrap { position: absolute; inset: 0; }
+    video { width: 100%; height: 100%; object-fit: cover; }
+    .still-wrap { overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    .contain-wrap img { object-fit: contain; }
+    .contain-wrap img.blurfill { object-fit: cover; filter: blur(26px) brightness(0.45) saturate(0.8); transform: scale(1.12); }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    .bc { filter: saturate(0.85) contrast(1.08) brightness(0.95); }
+    @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+    .popfig { position: absolute; left: 0; right: 0; top: 36%; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; isolation: isolate; }
+    .popfig .pf-big { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 150px; color: #d0121f; letter-spacing: 0.04em;
+      text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+    .popfig .pf-sub { display: block; margin-top: 12px; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 38px; color: #f4f0e8;
+      letter-spacing: 0.3em; -webkit-text-stroke: 1px rgba(0,0,0,0.85); paint-order: stroke fill;
+      text-shadow: 0 0 18px rgba(0,0,0,1), 0 0 40px rgba(0,0,0,0.9), 0 3px 10px #000; }
+    .popfig::before { content: ''; position: absolute; left: 14%; right: 14%; top: -90px; bottom: -70px; z-index: -1;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.32) 40%, rgba(0,0,0,0) 72%); }
+    .popfig.rhs { left: 960px; right: 40px; }
+    .popfig.rhs::before { left: 4%; right: 4%; }
+    .popfig.rhs .pf-big { font-size: 120px; }
+    .popfig.rhs .pf-sub { font-size: 30px; }
+    .chip { position: absolute; left: 110px; bottom: 300px; z-index: 6; font-family: 'Arial Black', Arial, sans-serif; font-size: 34px; letter-spacing: 2px; color: #f4f0e8;
+      background: rgba(10,16,24,0.62); backdrop-filter: blur(14px) saturate(1.15); -webkit-backdrop-filter: blur(14px) saturate(1.15);
+      border: 1px solid rgba(255,255,255,0.14); border-left: 6px solid #d0121f; border-radius: 10px; padding: 12px 26px; }
+    .srclab { position: absolute; right: 40px; top: 34px; z-index: 7; font-family: Arial, sans-serif; font-size: 20px; letter-spacing: 1px; color: rgba(220,228,236,0.85); background: rgba(5,8,12,0.6); padding: 6px 14px; }
+    .quotecard { position: absolute; left: 260px; right: 260px; top: 280px; z-index: 6; text-align: center;
+      background: rgba(10,16,24,0.58); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+      border: 1px solid rgba(255,255,255,0.14); border-radius: 28px; padding: 44px 60px; box-sizing: border-box; }
+    .quotecard .q { font-family: Georgia, serif; font-style: italic; font-size: 48px; color: #f2f5f8; line-height: 1.3; }
+    .quotecard .attr { margin-top: 18px; font-family: Arial, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 4px; color: #d8a13a; }
+    .bugstrip { position: absolute; left: 0; right: 0; bottom: 0; height: 92px; display: flex; align-items: stretch; z-index: 5;
+      background: linear-gradient(90deg, rgba(4,7,12,0.94) 0%, rgba(4,7,12,0.82) 70%, rgba(4,7,12,0.6) 100%); border-top: 2px solid #d0121f; }
+    .bugstrip .bk { display: flex; align-items: center; padding: 0 34px; background: #d0121f; color: #fff; font-family: 'Arial Black', Arial, sans-serif; font-size: 34px; letter-spacing: 5px; }
+    .bugstrip .bw { display: flex; align-items: center; padding: 0 26px; color: #d8a13a; font-family: Georgia, serif; font-style: italic; font-size: 26px; border-right: 1px solid rgba(255,255,255,0.14); white-space: nowrap; }
+    .bugstrip .bh { display: flex; align-items: center; padding: 0 30px; color: #f4f0e8; font-weight: 700; font-size: 34px; letter-spacing: 1px; white-space: nowrap; overflow: hidden; }
+    .pip { position: absolute !important; inset: auto !important; left: 1640px !important; top: 708px !important;
+      width: 240px !important; height: 240px !important; border-radius: 50% !important; object-fit: cover !important; z-index: 8 !important; }
+    .pipring { position: absolute; left: 1632px; top: 700px; width: 256px; height: 256px; border-radius: 50%; border: 4px solid #d0121f;
+      box-sizing: border-box; z-index: 9; box-shadow: 0 10px 30px rgba(0,0,0,0.55); }
+    #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90; background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
+    #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.10; mix-blend-mode: overlay; }
+    #grade { position: absolute; inset: 0; pointer-events: none; z-index: 89; mix-blend-mode: soft-light; background-color: rgba(96,138,178,0.18); }
+    .dust { position: absolute; z-index: 92; pointer-events: none; border-radius: 50%; background: rgba(255,255,255,0.32); filter: blur(1.2px); }
+  </style>
+</head>
+<body>
+<!-- ms-kauai-lowell-day2 · Format C rolling update, 16 Sep 26. Serial follow-up to ms-hawaii-lowell-outages: same pool, new
+     order, new numbers. Narration windows = wav lengths. B-roll muted. CTA after B4 with 0.5 s dips. Paul hidden under the
+     letter card and the close card. Cues from audio/*.words.json (sped 1.10, re-transcribed). -->
+<div id="root" data-composition-id="ms-kauai-lowell-day2" data-start="0.0" data-width="1920" data-height="1080" data-duration="428.61" data-fps="30">
+
+  <!-- ============ NARRATION (wav lengths) ============ -->
+  <audio id="nx-b1s1" src="audio/b1-s1.wav" data-start="0.0" data-duration="28.85" data-volume="1"></audio>
+  <audio id="nx-b2s1" src="audio/b2-s1.wav" data-start="30.35" data-duration="64.38" data-volume="1"></audio>
+  <audio id="nx-b3s1" src="audio/b3-s1.wav" data-start="95.33" data-duration="57.07" data-volume="1"></audio>
+  <audio id="nx-b4s1" src="audio/b4-s1.wav" data-start="153.0" data-duration="47.47" data-volume="1"></audio>
+  <audio id="nx-b5s1" src="audio/b5-s1.wav" data-start="216.637" data-duration="55.69" data-volume="1"></audio>
+  <audio id="nx-b5s2" src="audio/b5-s2.wav" data-start="272.927" data-duration="50.16" data-volume="1"></audio>
+  <audio id="nx-b6s1" src="audio/b6-s1.wav" data-start="323.687" data-duration="51.4" data-volume="1"></audio>
+  <audio id="nx-b7s1" src="audio/b7-s1.wav" data-start="375.687" data-duration="38.67" data-volume="1"></audio>
+  <audio id="nx-b8s1" src="audio/b8-s1.wav" data-start="414.957" data-duration="7.33" data-volume="1"></audio>
+
+  <!-- ============ CTA (own audio; the only unmuted insert) ============ -->
+  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v5-sep6.mp4" data-start="200.97" data-duration="15.139" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
+
+  <!-- ============ BEDS ============ -->
+  <audio id="sx-rumble-hook" src="media/04_distant_storm_rumble.mp3" data-bed="" data-start="0.0" data-duration="28.85" data-volume="0.16"></audio>
+  <audio id="sx-mus-a" src="media/score-act5-tension.mp3" data-bed="" data-start="0.0" data-duration="200.47" data-volume="0.13"></audio>
+  <audio id="sx-mus-b" src="media/score-act3-urgent.mp3" data-bed="" data-start="216.637" data-duration="159.05" data-volume="0.13"></audio>
+  <audio id="sx-mus-c" src="media/score-act6-close.mp3" data-bed="" data-start="375.687" data-duration="52.923" data-volume="0.16"></audio>
+
+  <!-- ============ PRESENTER (corner circle; hidden under the letter card and the close) ============ -->
+  <video id="pip-idle-a" class="pip" src="media/pip/paul-idle-a-cut2.mp4" data-start="30.35" data-duration="137.15" data-track-index="6" muted></video>
+  <video id="pip-talk-a" class="pip" src="media/pip/paul-talk-a-cut2.mp4" data-start="30.35" data-duration="137.15" data-track-index="7" data-callback="presenter loop, talking" muted></video>
+  <video id="pip-idle-a2" class="pip" src="media/pip/paul-idle-a-cut2.mp4" data-start="185.0" data-duration="15.47" data-track-index="6" data-callback="presenter loop resumes after the letter card" muted></video>
+  <video id="pip-talk-a2" class="pip" src="media/pip/paul-talk-a-cut2.mp4" data-start="185.0" data-duration="15.47" data-track-index="7" data-callback="presenter loop, talking, after the letter card" muted></video>
+  <video id="pip-idle-b" class="pip" src="media/pip/paul-idle-b-cut2.mp4" data-start="216.637" data-duration="198.32" data-track-index="6" data-callback="presenter loop, listening" muted></video>
+  <video id="pip-talk-b" class="pip" src="media/pip/paul-talk-b-cut2.mp4" data-start="216.637" data-duration="198.32" data-track-index="7" data-callback="presenter loop, talking" muted></video>
+  <section class="clip" id="pip-ring-a" data-start="30.35" data-duration="137.15" data-track-index="8"><div class="pipring"></div></section>
+  <section class="clip" id="pip-ring-a2" data-start="185.0" data-duration="15.47" data-track-index="8"><div class="pipring"></div></section>
+  <section class="clip" id="pip-ring-b" data-start="216.637" data-duration="198.32" data-track-index="8"><div class="pipring"></div></section>
+
+  <!-- ============ NEWS BUG (track 3) ============ -->
+  <section class="clip" id="bug-a" data-start="30.35" data-duration="170.12" data-track-index="3"><div class="bugstrip" id="bugstrip-a"><div class="bk">LATEST UPDATE</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-a"></div></div></section>
+  <section class="clip" id="bug-b" data-start="216.637" data-duration="198.32" data-track-index="3"><div class="bugstrip" id="bugstrip-b"><div class="bk">LATEST UPDATE</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-b"></div></div></section>
+
+  <!-- ============ TRACK 1 · picture ============ -->
+  <!-- B1 · cold open 0–28.85 -->
+  <video id="vx-b1-0-chinook" src="media/video/dvids_hing_resupply_kauai_0907.mp4" data-start="0.0" data-duration="6.0" data-track-index="1" muted></video>
+  <video id="vx-b1-1-crews" src="media/video/pexels_electricians_repairing_power_lines.mp4" data-start="6.0" data-duration="4.5" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b1-2-brief3" data-start="10.5" data-duration="5.0" data-track-index="1"><img id="kb-b1-2-brief3" src="media/image/dvids_hing_hiema_briefing_3of5.jpg" alt=""></section>
+  <video id="vx-b1-3-rocky" src="media/video/pexels_coastal_waves_rocky_shore.mp4" data-start="15.5" data-duration="5.5" data-track-index="1" muted></video>
+  <video id="vx-b1-4-wake" class="bc" src="media/video/news_kauai_wake_up_damage.mp4" data-start="21.0" data-duration="4.0" data-track-index="1" muted></video>
+  <video id="vx-b1-5-greenem" class="bc" src="media/video/news_gov_green_emergency_proclamation.mp4" data-start="25.0" data-duration="3.85" data-track-index="1" muted></video>
+  <section class="clip blackout" id="bo-hook" data-start="28.85" data-duration="1.5" data-track-index="1"></section>
+
+  <!-- B2 · where things stand 30.35–94.73 (day-2 board on track 2 from 33.35) -->
+  <section class="clip still-wrap" id="c-b2-0-map" data-start="30.35" data-duration="6.0" data-track-index="1"><img id="kb-b2-0-map" src="media/maps/Location_Map_Kauai.png" alt=""></section>
+  <video id="vx-b2-1-pole" src="media/video/pexels_electrical_pole_sky.mp4" data-start="36.35" data-duration="5.1" data-track-index="1" muted></video>
+  <video id="vx-b2-2-lightning" src="media/video/pexels_lightning_power_lines.mp4" data-start="41.45" data-duration="3.3" data-track-index="1" muted></video>
+  <video id="vx-b2-3-timelapse" src="media/video/pexels_timelapse_storm_clouds_transmission.mp4" data-start="44.75" data-duration="7.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b2-4-ch9" data-start="51.75" data-duration="5.0" data-track-index="1"><img id="kb-b2-4-ch9" src="media/image/dvids_hing_resupply_chinook_9of11.jpg" alt=""></section>
+  <video id="vx-b2-5-hickam" src="media/video/dvids_hickam_airlift_kauai_0912.mp4" data-start="56.75" data-duration="9.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b2-6-prep2" data-start="65.75" data-duration="5.0" data-track-index="1"><img id="kb-b2-6-prep2" src="media/image/dvids_hing_prep_before_storm_2of4.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-b2-7-napali" data-start="70.75" data-duration="5.0" data-track-index="1"><img id="kb-b2-7-napali" src="media/image/wikimedia_napali_coast_jeffkubina.jpg" alt=""></section>
+  <video id="vx-b2-8-ktvu" class="bc" src="media/video/ktvu_widespread_destruction_kauai.mp4" data-start="75.75" data-duration="5.5" data-track-index="1" muted></video>
+  <video id="vx-b2-9-hits" class="bc" src="media/video/news_lowell_hits_hawaii.mp4" data-start="81.25" data-duration="6.0" data-track-index="1" muted></video>
+  <video id="vx-b2-10-calm" src="media/video/pexels_thunderstorm_calm_beach.mp4" data-start="87.25" data-duration="7.48" data-track-index="1" muted></video>
+  <section class="clip blackout" id="bo-b2" data-start="94.73" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B3 · the North Shore, the roads, the harbors 95.33–152.40 (corridor map on track 2 for 31 s) -->
+  <section class="clip blackout" id="bo-b3-map" data-start="95.33" data-duration="31.0" data-track-index="1"></section>
+  <video id="vx-b3-1-rocky" src="media/video/pexels_coastal_waves_rocky_shore.mp4" data-start="126.33" data-duration="5.5" data-track-index="1" data-callback="second use, the main harbor coast" muted></video>
+  <video id="vx-b3-2-aerial" src="media/video/pexels_stormy_ocean_waves_aerial.mp4" data-start="131.83" data-duration="5.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b3-3-ch6" data-start="136.83" data-duration="5.5" data-track-index="1"><img id="kb-b3-3-ch6" src="media/image/dvids_hing_resupply_chinook_6of11.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-b3-4-coast" data-start="142.33" data-duration="4.0" data-track-index="1"><img id="kb-b3-4-coast" src="media/image/wikimedia_coast_of_kauai_paulbica.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-b3-5-ch11" data-start="146.33" data-duration="3.0" data-track-index="1"><img id="kb-b3-5-ch11" src="media/image/dvids_hing_resupply_chinook_11of11.jpg" alt=""></section>
+  <video id="vx-b3-6-green400" class="bc" src="media/video/news_gov_green_400m_damage.mp4" data-start="149.33" data-duration="3.07" data-track-index="1" muted></video>
+  <section class="clip blackout" id="bo-b3" data-start="152.4" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B4 · on the record 153.00–200.47 (letter card 167.5–185.0 on track 2) -->
+  <video id="vx-b4-0-pole" src="media/video/pexels_electrical_pole_sky.mp4" data-start="153.0" data-duration="5.1" data-track-index="1" data-callback="second use, under Bissell's name" muted></video>
+  <video id="vx-b4-1-crews" src="media/video/pexels_electricians_repairing_power_lines.mp4" data-start="158.1" data-duration="5.4" data-track-index="1" data-callback="second use, the transmission repair line" muted></video>
+  <video id="vx-b4-2-timelapse" src="media/video/pexels_timelapse_storm_clouds_transmission.mp4" data-start="163.5" data-duration="4.0" data-track-index="1" data-callback="second use, distribution after" muted></video>
+  <section class="clip blackout" id="bo-b4-letter" data-start="167.5" data-duration="17.5" data-track-index="1"></section>
+  <video id="vx-b4-3-green400" class="bc" src="media/video/news_gov_green_400m_damage.mp4" data-start="185.0" data-duration="5.5" data-track-index="1" data-callback="second use, the Governor's figure under his words" muted></video>
+  <video id="vx-b4-4-wake" class="bc" src="media/video/news_kauai_wake_up_damage.mp4" data-start="190.5" data-duration="4.5" data-track-index="1" data-callback="second use, the damage the figure counts" muted></video>
+  <video id="vx-b4-5-ktvu" class="bc" src="media/video/ktvu_widespread_destruction_kauai.mp4" data-start="195.0" data-duration="5.47" data-track-index="1" data-callback="second use, the Iniki comparison" muted></video>
+
+  <!-- B5-S1 · why one line decides it 216.637–272.327 (corridor-b5 on track 2 for 30 s) -->
+  <section class="clip blackout" id="bo-b5a-map" data-start="216.637" data-duration="30.0" data-track-index="1"></section>
+  <video id="vx-b5a-1-lashes" class="bc" src="media/video/news_lowell_lashes_hawaii.mp4" data-start="246.637" data-duration="6.0" data-track-index="1" muted></video>
+  <video id="vx-b5a-2-sat" src="media/video/noaa_nasa_cira_lowell_satellite_1080p.mp4" data-start="252.637" data-duration="8.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b5a-3-brief1" data-start="260.637" data-duration="4.0" data-track-index="1"><img id="kb-b5a-3-brief1" src="media/image/dvids_hing_hiema_briefing_1of5.jpg" alt=""></section>
+  <video id="vx-b5a-4-monsoon" src="media/video/pexels_monsoon_thunderstorm_palms.mp4" data-start="264.637" data-duration="4.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b5a-5-prep4" data-start="268.637" data-duration="3.69" data-track-index="1"><img id="kb-b5a-5-prep4" src="media/image/dvids_hing_prep_before_storm_4of4.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-b5a" data-start="272.327" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B5-S2 · harbors, the federal track, five disasters 272.927–323.087 (fivedisasters on track 2 from 292.43) -->
+  <video id="vx-b5b-0-aerial" src="media/video/pexels_stormy_ocean_waves_aerial.mp4" data-start="272.927" data-duration="5.0" data-track-index="1" data-callback="second use, the harbors' different logic" muted></video>
+  <video id="vx-b5b-1-chinook" src="media/video/dvids_hing_resupply_kauai_0907.mp4" data-start="277.927" data-duration="6.0" data-track-index="1" data-callback="second use, cargo before passengers" muted></video>
+  <section class="clip still-wrap" id="c-b5b-2-prep3" data-start="283.927" data-duration="4.5" data-track-index="1"><img id="kb-b5b-2-prep3" src="media/image/dvids_hing_prep_before_storm_3of4.jpg" alt=""></section>
+  <video id="vx-b5b-3-cat2" class="bc" src="media/video/news_cat2_closest_approach.mp4" data-start="288.427" data-duration="4.003" data-track-index="1" muted></video>
+  <section class="clip blackout" id="bo-b5b-five" data-start="292.43" data-duration="30.657" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-b5b" data-start="323.087" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B6 · what is being done, and the mainland stake 323.687–375.087 -->
+  <section class="clip still-wrap" id="c-b6-0-ch2" data-start="323.687" data-duration="5.0" data-track-index="1"><img id="kb-b6-0-ch2" src="media/image/dvids_hing_resupply_chinook_2of11.jpg" alt=""></section>
+  <video id="vx-b6-1-hickam" src="media/video/dvids_hickam_airlift_kauai_0912.mp4" data-start="328.687" data-duration="9.0" data-track-index="1" data-callback="second use, the C-17 on the Air Force cue" muted></video>
+  <video id="vx-b6-2-sdpalms" src="media/video/pexels_sandiego_palms_storm_wind.mp4" data-start="337.687" data-duration="6.0" data-track-index="1" muted></video>
+  <video id="vx-b6-3-flood" src="media/video/pexels_flooded_road_aerial.mp4" data-start="343.687" data-duration="2.4" data-track-index="1" muted></video>
+  <video id="vx-b6-4-cat2" class="bc" src="media/video/news_cat2_closest_approach.mp4" data-start="346.087" data-duration="5.0" data-track-index="1" data-callback="second use, both harbors under relief cargo" muted></video>
+  <section class="clip still-wrap" id="c-b6-5-prep1" data-start="351.087" data-duration="5.0" data-track-index="1"><img id="kb-b6-5-prep1" src="media/image/dvids_hing_prep_before_storm_1of4.jpg" alt=""></section>
+  <video id="vx-b6-6-hits" class="bc" src="media/video/news_lowell_hits_hawaii.mp4" data-start="356.087" data-duration="6.0" data-track-index="1" data-callback="second use, a Gulf hurricane's surf" muted></video>
+  <video id="vx-b6-7-heavyrain" src="media/video/pexels_heavy_rain_tropical_beach.mp4" data-start="362.087" data-duration="6.0" data-track-index="1" muted></video>
+  <video id="vx-b6-8-calm" src="media/video/pexels_thunderstorm_calm_beach.mp4" data-start="368.087" data-duration="7.0" data-track-index="1" data-callback="second use, the damage keeps stacking" muted></video>
+  <section class="clip blackout" id="bo-b6" data-start="375.087" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B7 · what nobody has said yet 375.687–414.357 (tracking card on track 2 from 376.687) -->
+  <section class="clip still-wrap" id="c-b7-0-napali" data-start="375.687" data-duration="6.0" data-track-index="1" data-callback="second use, the North Shore at dusk"><img id="kb-b7-0-napali" src="media/image/wikimedia_napali_coast_jeffkubina.jpg" alt=""></section>
+  <video id="vx-b7-1-stormypalms" src="media/video/pexels_stormy_palms_strong_winds.mp4" data-start="381.687" data-duration="6.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b7-2-cone5" data-start="387.687" data-duration="5.0" data-track-index="1"><img id="kb-b7-2-cone5" src="media/image/nhc_5day_cone.png" alt=""></section>
+  <video id="vx-b7-3-rainpalms" src="media/video/pexels_tropical_rainstorm_palms.mp4" data-start="392.687" data-duration="6.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b7-4-ch6" data-start="398.687" data-duration="5.0" data-track-index="1" data-callback="second use, the cargo ramp under the validated total"><img id="kb-b7-4-ch6" src="media/image/dvids_hing_resupply_chinook_6of11.jpg" alt=""></section>
+  <video id="vx-b7-5-lashes" class="bc" src="media/video/news_lowell_lashes_hawaii.mp4" data-start="403.687" data-duration="6.0" data-track-index="1" data-callback="second use, the reporter in the wind under 'no one has said'" muted></video>
+  <section class="clip still-wrap" id="c-b7-6-map" data-start="409.687" data-duration="4.67" data-track-index="1" data-callback="second use, the island under 'the next update'"><img id="kb-b7-6-map" src="media/maps/Location_Map_Kauai.png" alt=""></section>
+  <section class="clip blackout" id="bo-b7" data-start="414.357" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B8 · close 414.957–422.287, then the close card -->
+  <section class="clip blackout" id="bo-end" data-start="414.957" data-duration="13.653" data-track-index="1"></section>
+
+  <!-- ============ OVERLAYS: popfigs (track 5), chips and source labels (track 4) ============ -->
+  <section class="clip" id="p-pf-81" data-start="3.300" data-duration="2.600" data-track-index="5"><div class="popfig" id="pf-81"><span class="pf-big">81%</span><span class="pf-sub">SAME AS YESTERDAY</span></div></section>
+  <section class="clip" id="p-pf-schools" data-start="10.300" data-duration="2.800" data-track-index="5"><div class="popfig" id="pf-schools"><span class="pf-big">SCHOOLS OPEN</span><span class="pf-sub">NEARLY ALL · LIMITED BUSES</span></div></section>
+  <section class="clip" id="p-pf-550" data-start="23.100" data-duration="2.800" data-track-index="5"><div class="popfig" id="pf-550"><span class="pf-big">550+</span><span class="pf-sub">DAMAGE REPORTS</span></div></section>
+  <section class="clip" id="p-src-kiuc" data-start="30.35" data-duration="6.000" data-track-index="4"><div class="srclab" id="src-kiuc">SOURCES: KIUC · KAUAI COUNTY · HAWAII NEWS NOW · 14–15 SEP 2026</div></section>
+  <section class="clip" id="p-pf-1850" data-start="39.850" data-duration="2.600" data-track-index="5"><div class="popfig rhs" id="pf-1850"><span class="pf-big">+1,850</span><span class="pf-sub">BACK ON SUNDAY</span></div></section>
+  <section class="clip" id="p-pf-5000" data-start="44.050" data-duration="3.000" data-track-index="5"><div class="popfig rhs" id="pf-5000"><span class="pf-big">5,000</span><span class="pf-sub">NORTH SHORE · ONE LINE</span></div></section>
+  <section class="clip" id="p-pf-trucks" data-start="59.850" data-duration="2.600" data-track-index="5"><div class="popfig rhs" id="pf-trucks"><span class="pf-big">6 TRUCKS</span><span class="pf-sub">FLOWN IN BY THE AIR FORCE</span></div></section>
+  <section class="clip" id="p-pf-3dead" data-start="78.950" data-duration="2.800" data-track-index="5"><div class="popfig rhs" id="pf-3dead"><span class="pf-big">3 DEAD</span><span class="pf-sub">UNCHANGED</span></div></section>
+  <section class="clip" id="p-chip-hwy" data-start="111.230" data-duration="5.000" data-track-index="4"><div class="chip" id="chip-hwy">KUHIO HWY · PRINCEVILLE TO KEE · LOCAL TRAFFIC ONLY</div></section>
+  <section class="clip" id="p-chip-bridge" data-start="121.630" data-duration="4.500" data-track-index="4"><div class="chip" id="chip-bridge">WAINIHA BRIDGE · 5-TON LIMIT · LOCAL TRAFFIC</div></section>
+  <section class="clip" id="p-chip-harbor" data-start="127.830" data-duration="4.500" data-track-index="4"><div class="chip" id="chip-harbor">NAWILIWILI: CARGO ONLY · NO CRUISE SHIPS</div></section>
+  <section class="clip" id="p-chip-airport" data-start="132.630" data-duration="5.000" data-track-index="4"><div class="chip" id="chip-airport">LIHUE AIRPORT OPEN SINCE 8 SEP · PORT ALLEN OPEN</div></section>
+  <section class="clip" id="p-chip-lanai" data-start="138.230" data-duration="4.500" data-track-index="4"><div class="chip" id="chip-lanai">KAUMALAPAU · LANAI · LIMITED CAPACITY</div></section>
+  <section class="clip" id="p-chip-wh" data-start="145.730" data-duration="5.000" data-track-index="4"><div class="chip" id="chip-wh">LETTER TO THE WHITE HOUSE · SUNDAY 14 SEP</div></section>
+  <section class="clip" id="p-chip-bissell" data-start="155.300" data-duration="5.000" data-track-index="4"><div class="chip" id="chip-bissell">DAVID BISSELL · KIUC · TRANSMISSION BY END OF NEXT WEEK</div></section>
+  <section class="clip" id="p-q-green" data-start="189.800" data-duration="4.600" data-track-index="5"><div class="quotecard" id="q-green"><div class="q">“Initial damage estimates indicate the storm will cost more than $400 million.”</div><div class="attr">GOVERNOR JOSH GREEN · 9 SEP 2026</div></div></section>
+  <section class="clip" id="p-pf-1992" data-start="196.100" data-duration="2.800" data-track-index="5"><div class="popfig" id="pf-1992"><span class="pf-big">INIKI · 1992</span><span class="pf-sub">THE COSTLIEST BEFORE LOWELL</span></div></section>
+  <section class="clip" id="p-pf-1line" data-start="220.540" data-duration="2.600" data-track-index="5"><div class="popfig rhs" id="pf-1line"><span class="pf-big">1 LINE</span><span class="pf-sub">FEEDS THE WHOLE NORTH SHORE</span></div></section>
+  <section class="clip" id="p-pf-91" data-start="251.040" data-duration="2.800" data-track-index="5"><div class="popfig" id="pf-91"><span class="pf-big">91%</span><span class="pf-sub">DARK AT THE PEAK</span></div></section>
+  <section class="clip" id="p-pf-21k" data-start="255.140" data-duration="2.800" data-track-index="5"><div class="popfig" id="pf-21k"><span class="pf-big">21,000</span><span class="pf-sub">OAHU · AT THE PEAK</span></div></section>
+  <section class="clip" id="p-pf-9181" data-start="262.140" data-duration="3.000" data-track-index="5"><div class="popfig" id="pf-9181"><span class="pf-big">91% → 81%</span><span class="pf-sub">IN ONE WEEK</span></div></section>
+  <section class="clip" id="p-chip-cargo" data-start="275.530" data-duration="5.000" data-track-index="4"><div class="chip" id="chip-cargo">CARGO AND FUEL FIRST · CRUISE CALLS ON HOLD</div></section>
+  <section class="clip" id="p-chip-mdd" data-start="285.330" data-duration="5.000" data-track-index="4"><div class="chip" id="chip-mdd">MAJOR DISASTER DECLARATION · PRESIDENT + FEMA SIGN-OFF</div></section>
+  <section class="clip" id="p-pf-c17" data-start="332.790" data-duration="2.800" data-track-index="5"><div class="popfig" id="pf-c17"><span class="pf-big">C-17</span><span class="pf-sub">HEAVY TRUCKS FLOWN IN</span></div></section>
+  <section class="clip" id="p-chip-kiuc" data-start="336.790" data-duration="5.000" data-track-index="4"><div class="chip" id="chip-kiuc">KIUC: COLLECTIONS PAUSED · GENERATOR FUMES WARNING</div></section>
+  <section class="clip" id="p-chip-scam" data-start="348.090" data-duration="4.500" data-track-index="4"><div class="chip" id="chip-scam">KAUAI POLICE · RECOVERY SCAM WARNING</div></section>
+  <section class="clip" id="p-chip-fund" data-start="360.790" data-duration="4.500" data-track-index="4"><div class="chip" id="chip-fund">FEDERAL DISASTER RELIEF FUND</div></section>
+  <section class="clip" id="p-pf-5req" data-start="368.090" data-duration="3.000" data-track-index="5"><div class="popfig" id="pf-5req"><span class="pf-big">5 REQUESTS</span><span class="pf-sub">ONE STATE · SIX MONTHS</span></div></section>
+  <section class="clip" id="p-pf-next" data-start="407.000" data-duration="3.000" data-track-index="5"><div class="popfig rhs" id="pf-next"><span class="pf-big">NEXT NUMBER</span><span class="pf-sub">FIRST NEIGHBORHOOD BACK</span></div></section>
+
+  <!-- ============ COMPOSITIONS (track 2) ============ -->
+  <div id="host-day2board" data-composition-id="day2board" data-composition-src="compositions/day2board.html" data-start="33.35" data-duration="61.38" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-corridor" data-composition-id="corridor" data-composition-src="compositions/corridor.html" data-start="95.33" data-duration="31.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-lettercard" data-composition-id="lettercard" data-composition-src="compositions/lettercard.html" data-start="167.5" data-duration="17.5" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-corridor-b5" data-composition-id="corridor-b5" data-composition-src="compositions/corridor-b5.html" data-start="216.637" data-duration="30.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-fivedisasters" data-composition-id="fivedisasters" data-composition-src="compositions/fivedisasters.html" data-start="292.43" data-duration="30.657" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-tracking" data-composition-id="tracking" data-composition-src="compositions/tracking.html" data-start="376.687" data-duration="37.67" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-close" data-composition-id="g-close" data-composition-src="compositions/g-close.html" data-start="414.957" data-duration="13.653" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- CTA dips: LAST in the DOM so they paint above every track-1 cut under them -->
+  <section class="clip blackout" id="bo-cta-in" data-start="200.47" data-duration="0.5" data-track-index="9"></section>
+  <section class="clip blackout" id="bo-cta-out" data-start="216.109" data-duration="0.528" data-track-index="9"></section>
+
+  <div id="grade"></div><div id="vignette"></div><canvas id="grain" width="480" height="270"></canvas>
+</div>
+
+<script src="grain.js"></script>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 428.61;
+  function kb(sel, at, dur, s0, s1, x0, x1, y0, y1) {
+    tl.fromTo(sel, { scale: s0, x: x0, y: y0, transformOrigin: "center" }, { scale: s1, x: x1, y: y1, duration: dur, ease: "none" }, at);
+  }
+  function pop(sel, at, hold) {
+    tl.fromTo(sel, { scale: 2.2, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.35, ease: "power4.in" }, at);
+    tl.to(sel, { autoAlpha: 0, y: -26, duration: 0.28, ease: "power2.in" }, at + hold - 0.28);
+  }
+  function chip(sel, at, hold) {
+    tl.fromTo(sel, { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, at);
+    tl.to(sel, { autoAlpha: 0, x: -30, duration: 0.3, ease: "power2.in" }, at + hold - 0.3);
+  }
+  function lab(sel, at, hold) {
+    tl.fromTo(sel, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, at);
+    tl.to(sel, { autoAlpha: 0, duration: 0.3 }, at + hold - 0.3);
+  }
+  function bug(strip, hl, at, dur, lines) {
+    tl.fromTo(strip, { y: 96 }, { y: 0, duration: 0.45, ease: "power3.out" }, at);
+    const n = Math.floor((dur - 0.6) / 12);
+    for (let i = 0; i < n; i++) {
+      const t = at + 0.3 + i * 12, text = lines[i % lines.length];
+      if (i > 0) tl.to(hl, { y: 40, autoAlpha: 0, duration: 0.25, ease: "power2.in" }, t - 0.25);
+      tl.set(hl, { textContent: text }, t);
+      tl.fromTo(hl, { y: -40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.3, ease: "power2.out" }, t);
+    }
+  }
+  tl.set([".popfig", ".chip", ".quotecard", ".srclab"], { autoAlpha: 0 }, 0);
+
+  /* ---- stills (Ken Burns, ≤6 s, always moving) ---- */
+  kb("#kb-b1-2-brief3", 10.5, 5.0, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-b2-0-map", 30.35, 6.0, 1.15, 1.22, -60, -120, 20, 40);
+  kb("#kb-b2-4-ch9", 51.75, 5.0, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-b2-6-prep2", 65.75, 5.0, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-b2-7-napali", 70.75, 5.0, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-b3-3-ch6", 136.83, 5.5, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-b3-4-coast", 142.33, 4.0, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-b3-5-ch11", 146.33, 3.0, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-b5a-3-brief1", 260.637, 4.0, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-b5a-5-prep4", 268.637, 3.69, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-b5b-2-prep3", 283.927, 4.5, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-b6-0-ch2", 323.687, 5.0, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-b6-5-prep1", 351.087, 5.0, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-b7-0-napali", 375.687, 6.0, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-b7-2-cone5", 387.687, 5.0, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-b7-4-ch6", 398.687, 5.0, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-b7-6-map", 409.687, 4.67, 1.15, 1.22, -60, -120, 20, 40);
+
+  /* ---- overlays (absolute = segment start + spoken cue from the sped words.json) ---- */
+  pop("#pf-81", 3.3, 2.6);
+  pop("#pf-schools", 10.3, 2.8);
+  pop("#pf-550", 23.1, 2.8);
+  lab("#src-kiuc", 30.35, 6.0);
+  pop("#pf-1850", 39.85, 2.6);
+  pop("#pf-5000", 44.05, 3.0);
+  pop("#pf-trucks", 59.85, 2.6);
+  pop("#pf-3dead", 78.95, 2.8);
+  chip("#chip-hwy", 111.23, 5.0);
+  chip("#chip-bridge", 121.63, 4.5);
+  chip("#chip-harbor", 127.83, 4.5);
+  chip("#chip-airport", 132.63, 5.0);
+  chip("#chip-lanai", 138.23, 4.5);
+  chip("#chip-wh", 145.73, 5.0);
+  chip("#chip-bissell", 155.3, 5.0);
+  tl.fromTo("#q-green", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 189.8); tl.to("#q-green", { autoAlpha: 0, y: -20, duration: 0.4 }, 194.0);
+  pop("#pf-1992", 196.1, 2.8);
+  pop("#pf-1line", 220.54, 2.6);
+  pop("#pf-91", 251.04, 2.8);
+  pop("#pf-21k", 255.14, 2.8);
+  pop("#pf-9181", 262.14, 3.0);
+  chip("#chip-cargo", 275.53, 5.0);
+  chip("#chip-mdd", 285.33, 5.0);
+  pop("#pf-c17", 332.79, 2.8);
+  chip("#chip-kiuc", 336.79, 5.0);
+  chip("#chip-scam", 348.09, 4.5);
+  chip("#chip-fund", 360.79, 4.5);
+  pop("#pf-5req", 368.09, 3.0);
+  pop("#pf-next", 407.0, 3.0);
+
+  /* ---- news bug ---- */
+  bug("#bugstrip-a", "#bh-a", 30.35, 170.12, ["KAUAI HOLDS AT 81% · ABOUT 5,000 STILL DARK ON THE NORTH SHORE", "NEARLY ALL PUBLIC SCHOOLS OPEN · 2 NORTH SHORE SCHOOLS TARGET TODAY", "NAWILIWILI TAKING CARGO · PORT ALLEN OPEN · NO CRUISE SHIPS YET", "DELEGATION LETTER ON THE PRESIDENT'S DESK · BOTH DECLARATIONS PENDING"]);
+  bug("#bugstrip-b", "#bh-b", 216.637, 198.32, ["ONE TRANSMISSION LINE FEEDS THE WHOLE NORTH SHORE", "BISSELL: TRANSMISSION BY END OF NEXT WEEK, DISTRIBUTION AFTER", "$400M STATE ESTIMATE · NO FEDERAL-VALIDATED TOTAL FOR LOWELL", "NEXT NUMBER THAT MATTERS: THE FIRST NORTH SHORE NEIGHBORHOOD BACK"]);
+
+  /* ---- presenter talk-sync (talk loop shows while words flow, idle in the gaps; derived from words.json) ---- */
+  tl.set(["#pip-talk-a", "#pip-talk-a2", "#pip-talk-b"], { autoAlpha: 0 }, 0);
+  /* TALKSYNC */
+
+  filmLayer(tl, DUR);
+  tl.to(["#vignette", "#grade", "#grain", ".dust"], { autoAlpha: 0, duration: 0.3 }, 200.97);
+  tl.to(["#vignette", "#grade", ".dust"], { autoAlpha: 1, duration: 0.3 }, 216.109);
+  tl.to("#grain", { autoAlpha: 0.10, duration: 0.3 }, 216.109);
+  window.__timelines["ms-kauai-lowell-day2"] = tl;
+})();
+</script>
+</body>
+</html>
