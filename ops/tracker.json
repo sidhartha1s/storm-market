@@ -70,9 +70,9 @@
       "owner": "director",
       "due": "15 Sep 26",
       "phase": "preview",
-      "status": "doing",
-      "note": "review fixes applied, all gates + frame reads green; preview #2 rendering",
-      "updated": "15 Sep 26 03:16"
+      "status": "done",
+      "note": "preview #2 rendered with all review fixes; parked for owner",
+      "updated": "15 Sep 26 03:31"
     },
     {
       "slug": "ms-sakurajima-ash",
