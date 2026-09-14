@@ -1288,3 +1288,17 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
   caught it. Vision-agent verdicts get one spot-check by the orchestrator, every time.
 - Auto-mode classifier refuses most new Agent spawns from command-heavy prompts ("Auto-Mode Bypass"); resuming an existing
   agent via SendMessage passes. Owner adds `Agent` to permissions.allow; the session cannot (Self-Modification).
+
+## 15 Sep 26 — first two Format C (rolling update) builds, ms-indonesia-four-volcanoes + ms-hawaii-lowell-outages
+- **Pronunciation gate before timing.** Read every proper noun back from the whisper words.json after TTS (Arupadhatu came out
+  "Aeropoda 2-1", KIUC as "Kaiyo Sea", Haena as "Hina"). Respell phonetically in the narration blockquote only, re-synthesise, then
+  time. Doing it after the timeline existed cost a full mechanical retime (~40 min). Probe-TTS the name list first next time.
+- **words.json must be younger than its wav.** transcribe ran on one native wav before atempo in a crashed chain; the tell is
+  words end > wav duration. Check before cueing anything.
+- **Frame reviewers misjudge edges and coastlines.** "Pin in the water" / "touches the right edge" were wrong twice; a PIL pixel check
+  on the snapshot (or the source map's land/sea mask) settles it in seconds. Use the mask to place pins in the first place.
+- **shot_comp.mjs staging copies** (`compositions/_shot_*.html`) get graded by graphics_qc; delete them right after snapshots.
+- **Two-worker draft render + Firefox = 0.8 GB free.** render_busy's floor is right; nothing else launches during a render.
+- **Overlap checker only sees overlays with a `p-` id and a timed wrapper**; bare popfig divs are invisible to it (0 overlays,
+  false PASS). Wrap every overlay in `<section class="clip" id="p-…" data-start data-duration data-track-index>`; chips and
+  source labels on track 4, popfigs and quote cards on track 5.
