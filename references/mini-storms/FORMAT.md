@@ -46,7 +46,7 @@ Measured against a 14-minute cut that scored 5.5/10 on stakes-per-90-seconds bef
 7. **Clock, scorecard, equation.** Turn fact dumps into devices: the 2018 timeline as a countdown card, "what was
    fixed" as a FIXED / STILL MISSING scorecard, the warning maths as one equation on one card. Cut 25–35 % of the
    technical detail from any chapter that carries more than six numbers.
-8. **"And you" by the second minute.** The US viewer's stake (Alaska, the same physics at home) is promised early and
+8. **"And you" inside the first 60 s (tightened 2026-09-14, audience audit; was "second minute").** The US viewer's stake (Alaska, the same physics at home) is promised early and
    paid at the mid-point, not discovered at minute seven.
 9. **"What is NOT happening" is one line inside the payoff, not a chapter.** Two consecutive de-escalations
    (fix list, not-happening list) in the last third are an exit ramp.
