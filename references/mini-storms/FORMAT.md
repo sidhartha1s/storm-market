@@ -35,8 +35,8 @@ Krakatau mini-docs got 55–60 impressions under the same keyword; the format mi
   in the comments where you are watching from, and subscribe for the next update. No resolved ending, no END CTA spine.
 - **Pace:** Paul's TTS at atempo 1.10 (test), timed after the speed-up per script-os.md. Measured fact to respect: GWN's
   hits run 66–78 wpm over the whole runtime because footage with natural sound breathes between narration blocks; the
-  slowness comes from footage holds, not slow speech. Budget a footage-only hold (natural sound, popfig place label)
-  every 60–90 s.
+  slowness comes from footage holds, not slow speech. A footage-only hold (natural sound, popfig place label) every
+  60–90 s is allowed, not required: narrated clips as shipped so far are equally fine; the editor picks per cut (owner 2026-09-14).
 - **Skeleton, 12:00 at 165 wpm delivered (scale beats 3, 5, 7 for 10–14 min):**
 
 | # | Beat | Time | Words |
