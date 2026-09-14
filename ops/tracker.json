@@ -7,7 +7,8 @@
     "Packaging copies the proven shape: place or volcano name dominant, number in the title, thumb spell-checked at 300 px.",
     "One heavy job at a time. Renders run in the main chat and the owner is told before launch.",
     "Checks green before any render; preview before render.",
-    "Pipeline stays full: pre-production (facts, script, packaging, clips) runs for every slate row in parallel; only assemble/render are one at a time."
+    "Pipeline stays full: pre-production (facts, script, packaging, clips) runs for every slate row in parallel; only assemble/render are one at a time.",
+    "Shipped finals live in the MAIN checkout episodes/<slug>/renders/ (master + SRT + metadata), never only in a worktree (owner 15 Sep 26)."
   ],
   "agents": [
     {
@@ -45,9 +46,9 @@
       "owner": "director",
       "due": "15 Sep 26",
       "phase": "upload",
-      "status": "todo",
-      "note": "final master -14.01 LUFS + SRT delivered; owner listen for names, then upload",
-      "updated": "15 Sep 26 02:58"
+      "status": "doing",
+      "note": "owner approved; master moved to main checkout; upload pending",
+      "updated": "15 Sep 26 03:06"
     },
     {
       "slug": "ep-tristate-repackage",
