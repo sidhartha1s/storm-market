@@ -62,8 +62,8 @@ Formats A and B below remain available for evergreen and explainer topics.
 ## Structure (owner rule 2026-09-08)
 HOOK **3–10 s** (one present-tense sentence paying off the title, spoken + red popfig) → INTRO to
 ~1:10 (stakes numbers, open loops, promise) → CHAPTERS → PAYOFF → WARM CLOSE → subscribe.
-Size every section in words before TTS at the delivered pace (~148 wpm ≈ 2.47 words/s with
-atempo 1.15): 8:30 ≈ 1,260 words, 9:30 ≈ 1,410, 12:00 ≈ 1,780. Table goes in packaging.md.
+Size every section in words before TTS at the delivered pace (Formats A/B ~148 wpm ≈ 2.47 words/s with
+atempo 1.15; Format C 165 wpm with atempo 1.10, measure on the sped wav): 8:30 ≈ 1,260 words, 9:30 ≈ 1,410, 12:00 ≈ 1,780. Table goes in packaging.md.
 
 ## Retention architecture (owner + GPT pass on Krakatau #4, 2026-09-11)
 Measured against a 14-minute cut that scored 5.5/10 on stakes-per-90-seconds before the rewrite.
@@ -153,6 +153,8 @@ Measured against a 14-minute cut that scored 5.5/10 on stakes-per-90-seconds bef
   the same pool, never the same sequence.
 
 ## CTAs and interaction beats (owner ledger 2026-09-09; placed by judgment while scripting, never by code)
+**Scope: Formats A and B. Format C keeps Paul's ebook CTA at the story break but replaces the END CTA spine and the
+mid-video beats with its own soft close (one comment + subscribe line after the tracking line).**
 - **Paul's ebook CTA** — every video, from `config.yaml channel.cta`, at the story break (~40 %), 1 s dips, film layer off.
   Description line 1 = paulraymond.online. No "book mentioned at mm:ss" line.
 - **Hard cap: 3 CTA beats per mini-storm, including the END CTA, excluding Paul's.** Breadcrumbs do not count.

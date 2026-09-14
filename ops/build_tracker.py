@@ -26,7 +26,9 @@ def set_card(slug, phase, status, note=None):
     assert phase in PHASES, f"phase must be one of {PHASES}"
     assert status in STATUSES, f"status must be one of {sorted(STATUSES)}"
     d = load()
-    card = next(c for c in d["videos"] if c["slug"] == slug)
+    card = next((c for c in d["videos"] if c["slug"] == slug), None)
+    if card is None:
+        sys.exit(f"no such slug: {slug}")
     card.update(phase=phase, status=status, updated=datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
     if note is not None:
         card["note"] = note
@@ -35,6 +37,9 @@ def set_card(slug, phase, status, note=None):
 
 def render():
     d = load()
+    for c in d["videos"]:
+        if c["phase"] not in PHASES or c["status"] not in STATUSES:
+            sys.exit(f'{c["slug"]}: phase {c["phase"]!r} / status {c["status"]!r} not in {PHASES} / {sorted(STATUSES)}')
     rows = []
     for c in sorted(d["videos"], key=lambda c: (c.get("due", ""), c["slug"])):
         cells = []
