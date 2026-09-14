@@ -44,10 +44,10 @@
       "title": "Anak Krakatau Erupts Again... And Now Three More",
       "owner": "director",
       "due": "15 Sep 26",
-      "phase": "assemble",
+      "phase": "checks",
       "status": "doing",
-      "note": "TTS done 9.1 min at 158 wpm; cut list + overlays being authored; Krakatau top-up clips still downloading",
-      "updated": "14 Sep 26 23:36"
+      "note": "sweep, lint, media budget, motion, audio, blank scan green; graphics QC + collision re-running; comp snapshots to review",
+      "updated": "15 Sep 26 00:04"
     },
     {
       "slug": "ep-tristate-repackage",
@@ -68,10 +68,10 @@
       "title": "Hawaii Still Counting Lowell's Power Outages",
       "owner": "director",
       "due": "15 Sep 26",
-      "phase": "tts",
-      "status": "doing",
-      "note": "TTS running (9 segments), then atempo + transcribe",
-      "updated": "14 Sep 26 23:36"
+      "phase": "assemble",
+      "status": "todo",
+      "note": "narration 8.3 min at 166 wpm ready; cut list after slot A checks",
+      "updated": "14 Sep 26 23:49"
     },
     {
       "slug": "ms-sakurajima-ash",
