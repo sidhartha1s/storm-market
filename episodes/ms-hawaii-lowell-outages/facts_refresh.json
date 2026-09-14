@@ -1,0 +1,109 @@
+{
+ "as_of_utc": "2026-09-14T20:00:00Z (search/fetch calls run late evening IST 2026-09-14; most-recent sources dated Mon Sept 14 HST, i.e. Sun evening/Mon pre-dawn HST)",
+ "fresh_facts": [
+  {
+   "fact": "KIUC has restored power to more than 80% of members (81% as of Sunday/reported Monday 12:04am); roughly 8,000+ members still out, concentrated on the North Shore between Moloaa and Haena with scattered pockets Anahola-Kekaha-Kokee",
+   "number": "81%",
+   "source_name": "The Garden Island",
+   "url": "https://www.thegardenisland.com/2026/09/14/hawaii-news/power-back-to-more-than-80-percent-of-kiuc-members/",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "KIUC CEO David Bissell's full quote (existing sheet truncated it): 'We will know much more in the next couple of days as we gauge the progress of our crews.'",
+   "number": "n/a",
+   "source_name": "The Garden Island",
+   "url": "https://www.thegardenisland.com/2026/09/14/hawaii-news/power-back-to-more-than-80-percent-of-kiuc-members/",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "A THIRD Hurricane Lowell-related death confirmed: a 59-year-old man found dead near Kuhio Highway/Wainiha Powerhouse Road in Wainiha, Kauai, in an area with significant Lowell-related flooding; police confirmed it as the 3rd Lowell-linked death",
+   "number": "3rd death",
+   "source_name": "Hawaii News Now",
+   "url": "https://www.hawaiinewsnow.com/2026/09/12/police-confirm-3rd-hurricane-lowell-related-death-after-man-found-wainiha/",
+   "date": "2026-09-12"
+  },
+  {
+   "fact": "Statewide Hurricane Lowell death toll is now 3: Steven Palama, 74, found near Nomilu Fishpond on Kauai's south shore (storm-surge related, found ~Sept 8-9); the Wainiha man, 59 (flood-related, found Sept 11, confirmed Sept 12); and one man in Waimanalo, Oahu, killed when a tree fell on his tent (~Sept 7-8)",
+   "number": "3 deaths (2 Kauai, 1 Oahu)",
+   "source_name": "weather.com / Hawaii News Now",
+   "url": "https://weather.com/2026/09/10/news/weather/hurricane-lowell-now-blamed-for-at-least-2-deaths-in-hawaii",
+   "date": "2026-09-10 (updated to 3 by 2026-09-12)"
+  },
+  {
+   "fact": "Hawaii's congressional delegation letter urging Trump to approve Major Disaster Declarations for both Lowell and Lala — as of this letter, declarations remained pending/not yet approved",
+   "number": "pending",
+   "source_name": "Honolulu Star-Advertiser",
+   "url": "https://www.staradvertiser.com/2026/09/14/hawaii-news/delegation-urges-trump-to-ok-disaster-declarations/",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "Most Kauai DOE public schools reopened Monday, Sept 14; Kilauea Elementary and Hanalei Elementary remained closed to students due to lack of utilities — Kilauea reopens to students/staff Tuesday Sept 15, Hanalei reopens to staff Tuesday and students Wednesday Sept 16; 12 of 15 school campuses had power back as of the prior Friday",
+   "number": "2 schools still closed",
+   "source_name": "Maui Now / Hawaii News Now (HIDOE)",
+   "url": "https://mauinow.com/2026/09/14/kilauea-hanalei-elementary-schools-set-to-reopen-following-hurricane-lowell/",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "Kaumalapau Harbor on Lanai resumed LIMITED operations (a Young Brothers interisland fuel barge landed after underwater hazards were cleared); landside repairs will continue for several more weeks before full reopening; next fuel shipment expected the following Wednesday",
+   "number": "limited ops resumed",
+   "source_name": "Hawaii News Now",
+   "url": "https://www.hawaiinewsnow.com/2026/09/14/kaumalapau-harbor-resumes-limited-operations-following-hurricane-lowell-damage-repairs/",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "Hawaiian Electric (Oahu) had already restored the vast majority of its Lowell-related outages by Sept 9 (down to ~440 customers, mostly Makaha Valley) and shifted crews to help KIUC on Kauai — this is now stable background, not a live figure",
+   "number": "440 remaining (historical)",
+   "source_name": "Honolulu Star-Advertiser",
+   "url": "https://www.staradvertiser.com/2026/09/09/breaking-news/hawaiian-electric-says-440-remain-without-power-after-lowell/",
+   "date": "2026-09-09"
+  },
+  {
+   "fact": "No official FEMA/state dollar damage total for Lowell has been published; only a private catastrophe-modeling estimate exists (Cotality: $0.5-1.0 billion in insured losses, mostly Kauai) and Gov. Green has said the damage cost will be in the hundreds of millions, with formal assessments still ongoing",
+   "number": "$0.5-1.0B (private estimate only)",
+   "source_name": "web search synthesis (Cotality / Star-Advertiser)",
+   "url": "https://www.cotality.com/uk/hazard-hq/hurricane-lowell-skirts-kauai-with-damaging-wind-and-rain",
+   "date": "2026-09-10 (approx)"
+  }
+ ],
+ "quote_checks": [
+  {
+   "speaker": "Josh Green",
+   "url": "https://www.staradvertiser.com/2026/09/13/hawaii-news/kauai-power-restoration-expands-as-outside-crews-join-lowell-recovery/",
+   "verdict": "verified verbatim — 'Getting these machines to Hawaii for Lala is now also helping us to reduce suffering on Kauai.'"
+  },
+  {
+   "speaker": "Josh Green",
+   "url": "https://www.staradvertiser.com/2026/09/13/hawaii-news/kauai-power-restoration-expands-as-outside-crews-join-lowell-recovery/",
+   "verdict": "verified verbatim — 'I simply decided that we had to do everything possible to shorten the time to recovery, and partnering with the military and utilizing our National Guard on the ground has been a major addition to our state and county efforts.'"
+  },
+  {
+   "speaker": "Josh Green",
+   "url": "https://kauainownews.com/2026/09/11/governor-provides-update-about-major-recovery-progress-following-hurricane-lowell/",
+   "verdict": "verified verbatim — 'Getting 72% of Kaua'i's power restored this quickly is a tremendous accomplishment given the extent of the damage.'"
+  },
+  {
+   "speaker": "David Bissell",
+   "url": "https://www.thegardenisland.com/2026/09/14/hawaii-news/power-back-to-more-than-80-percent-of-kiuc-members/",
+   "verdict": "paraphrase/truncated — sheet drops the trailing clause; actual quote is 'We will know much more in the next couple of days as we gauge the progress of our crews.'"
+  },
+  {
+   "speaker": "David Bissell",
+   "url": "https://www.civilbeat.org/2026/09/hurricane-lowell-hit-kauai-hard-but-worst-fears-averted/",
+   "verdict": "verified verbatim — 'We know our members want to know when their power will be restored.'"
+  },
+  {
+   "speaker": "Hawaii Congressional Delegation (Schatz, Hirono, Case, Tokuda)",
+   "url": "https://mauinow.com/2026/09/14/hawaii-congressional-delegation-urges-approval-of-presidential-disaster-declaration-requests-following-hurricanes-lowell-and-lala/",
+   "verdict": "verified verbatim — 'The cumulative impact of these events exceeds the capacity of the State and our counties, warranting federal assistance.'"
+  }
+ ],
+ "stale_or_wrong": [
+  "PUBLISH BLOCKER: the sheet's '0 deaths' fact (Kauai Now, 2026-09-08) and its own warning that the CNN 'at least 1 dead' headline likely belonged to Hurricane Lala are both now WRONG. Multiple credible sources (Hawaii News Now, Star-Advertiser, Kauai Now, Civil Beat, KHON2, KITV) confirm a THIRD Hurricane Lowell-related death on 2026-09-12 (59-year-old Wainiha man, flooding). The statewide Lowell toll is 3 deaths: a man in Waimanalo, Oahu (tree on tent, ~Sept 7-8, the death the CNN Sept 6 story was likely tracking as it developed), Steven Palama, 74, near Nomilu Fishpond on Kauai's south shore (storm surge, found ~Sept 8-9), and the Wainiha man (flooding, found Sept 11, confirmed Sept 12). Do NOT air a 'zero deaths' or 'one injury only, no deaths' line.",
+  "KIUC restoration percentage (76% Sept 12/13, 8,400 without power) is 1-2 days stale — freshest figure is 81% (>80%) as of Sunday, reported Monday Sept 14, ~8,000+ still without power.",
+  "Schools: sheet says 'closed through Friday, Sept. 11' with no reopening noted — schools actually reopened Monday Sept 14 for most campuses; only Kilauea Elementary (reopens Tue Sept 15) and Hanalei Elementary (staff Tue, students Wed Sept 16) remained closed, due to utilities, not the original closure order.",
+  "Kaumalapau Harbor: sheet's 'inoperable, ~2-week repair timeline' framing (dated Sept 9) is now outdated — the harbor resumed LIMITED operations (one fuel barge) around Sept 8/13; full landside reopening is still weeks out as of Sept 14, so 'inoperable' is no longer accurate, though 'not fully reopened' still is.",
+  "Injury count remains unverified beyond 'at least one' — no updated figure found as of Sept 14; do not imply a final number."
+ ],
+ "as_of_line": "As of Monday morning, September 14, 2026, Hawaii Standard Time — one week after Hurricane Lowell's closest approach to Kauai.",
+ "tracking_line": "Officials have NOT yet said: whether President Trump has approved the Major Disaster Declaration request for Lowell (still pending as of the Sept 14 congressional letter); a hard date for 100% KIUC power restoration (KIUC's Bissell says only \"in the next couple of days\" as of Sept 14); an official FEMA/state dollar damage total for Lowell specifically (only a private Cotality estimate of $0.5-1.0B in insured losses exists); a final injury count beyond \"at least one\"; a confirmed date for Kaumalapau Harbor's full landside reopening (still \"several more weeks\" as of Sept 14) or for Port Allen's return to full commercial operations; and whether any further storm-related deaths remain under investigation beyond the three confirmed."
+}
