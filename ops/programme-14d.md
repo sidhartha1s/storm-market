@@ -8,16 +8,18 @@ Slot titles below are placeholders for shape, not facts.
 Nepal-flood bucket is already dead by the kill rule: last toll update in the data is Sep 6 20:59 ("1,400+ dead & 5,500 missing"); zero fresh numbers since, 8 days silent as of program start. It is dropped from this slate entirely. Krakatau/Indonesia and Japan (Sakurajima) are the two live foreign buckets still moving (PVMBG/JMA issue alerts on a rolling basis), so they carry the "foreign live-event" slot most days, per the format's own performance data (foreign avg ~$3.9\times$ domestic per-video views). Exact tolls/place-names/numbers in each title get locked by the 06:00 radar scan same day — the slate below fixes bucket + angle + source, not the literal future number.
 
 ## Slate
+Slugs: the first cards match `ops/tracker.json`; later rows keep date-coded placeholders until the radar locks the story, at which
+point the card is created with a descriptive `ms-<story>` slug and the row here is updated.
 
 date | slug | bucket | working title | named source | why
-2026-09-15 | ms-0915-krak-a | krakatau | Anak Krakatau Erupts Again, PVMBG Holds Alert 3 | PVMBG | proper noun + live, EarthDesk pool best 225k
-2026-09-15 | ms-0915-haw-b | hawaii-lowell | Hawaii Still Counting Lowell's Power Outages | Hawaii EMA / Hawaiian Electric | number (outages) + US-stake, GWN 818k tail
-2026-09-16 | ms-0916-jpn-a | japan | Sakurajima Ash Cloud Grounds Kagoshima Flights | JMA / VAAC Tokyo | live + number, GWN 1.6M format
+2026-09-15 | ms-indonesia-four-volcanoes | krakatau | Anak Krakatau Erupts Again, PVMBG Holds Alert 3 | PVMBG | proper noun + live, EarthDesk pool best 225k
+2026-09-15 | ms-hawaii-lowell-outages | hawaii-lowell | Hawaii Still Counting Lowell's Power Outages | Hawaii EMA / Hawaiian Electric | number (outages) + US-stake, GWN 818k tail
+2026-09-16 | ms-sakurajima-ash | japan | Sakurajima Ash Cloud Grounds Kagoshima Flights | JMA / VAAC Tokyo | live + number, GWN 1.6M format
 2026-09-16 | ms-0916-usf-b | us-flood | Flash Flood Watch Issued for Gulf Coast Today | NWS | live + US-stake, us-flood pool
 2026-09-17 | ms-0917-krak-a | krakatau | Indonesia: Three More Volcanoes On Watch | PVMBG | proper noun + live, EarthDesk 175-225k
 2026-09-17 | ms-0917-haw-b | hawaii-lowell | Lowell Cleanup: Hawaii's Final Outage Count | Hawaii EMA | closing number; kill after today, no new figure
 2026-09-18 | ms-0918-jpn-a | japan | Sakurajima: JMA Says Alert Level Unchanged | JMA | live agency quote, GWN format
-2026-09-18 | ms-0918-eln-b | elnino | NOAA's Climate Center Updates El Niño Watch | NOAA / CPC | forecast = "what the agency said today"
+2026-09-18 | ms-elnino-cpc-today | elnino | NOAA's Climate Center Updates El Niño Watch | NOAA / CPC | forecast = "what the agency said today"
 2026-09-19 SAT | ep-0919-doc-a | documentary (bank) | 1925 Tri-State Tornado (repackaged, School A thumb) | NWS / Tri-State assessment | banked tornado doc, weekend slot
 2026-09-19 SAT | ms-0919-krak-b | krakatau | Krakatau's Lava Still Glows, PVMBG Update | PVMBG | live + number (ash height)
 2026-09-20 SUN | ep-0920-doc-a | documentary (bank) | banked tornado doc #2 (repackaged) | NWS service assessment | weekend slot
