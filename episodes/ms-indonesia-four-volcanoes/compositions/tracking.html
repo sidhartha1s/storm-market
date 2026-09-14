@@ -43,7 +43,7 @@ window.__timelines = window.__timelines || {};
   tl.set(rows, {autoAlpha:0, height:0, marginTop:0}, 0);
   tl.fromTo(P+"card", {x:-960, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 0);
   /* EDIT-ME: cues from audio/b7-s1.words.json: "extended", "tarpaulins", "flights", "Ibu", "slope" */
-  const AT = [4.16, 8.98, 16.9, 23.44, 35.54]; /* host starts 1.0 s after b7-s1: cues 5.2/9.9/16.8/23.4/35.4 − 1.0 */
+  const AT = [4.18, 9.0, 14.88, 21.4, 33.5]; /* host starts 1.0 s after b7-s1: cues 5.2/9.9/16.8/23.4/35.4 − 1.0 */
   rows.forEach((r, i) => tl.fromTo(r, {autoAlpha:0, y:24, height:0, marginTop:0}, {autoAlpha:1, y:0, height:"auto", marginTop:20, duration:0.45, ease:"power3.out"}, AT[i]));
   tl.fromTo(P+"bar", {scaleX:0}, {scaleX:1, duration:55.0, ease:"none"}, 0.6); /* fills across the hold: continuous motion */
   tl.fromTo(P+"big", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 1.0);

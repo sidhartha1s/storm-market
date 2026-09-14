@@ -50,7 +50,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"card", {x:-960, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 0);
   /* EDIT-ME: cue times (relative to host start) from audio/b2-s1.words.json:
      r1 "Anak Krakatau" (first list), r2 "Semeru", r3 "Lewotobi", r4 "Sinabung", r5 "Marapi", r6 "Ili Lewotolok" */
-  const AT = [5.76, 7.1, 8.2, 10.72, 12.5, 13.22]; /* host starts 3.0 s after b2-s1: cues 9.0/10.2/11.3/13.1/15.2/15.7 − 3.0 */
+  const AT = [5.64, 6.78, 7.8, 9.76, 11.6, 12.4]; /* host starts 3.0 s after b2-s1: cues 9.0/10.2/11.3/13.1/15.2/15.7 − 3.0 */
   rows.forEach((r, i) => tl.fromTo(r, {autoAlpha:0, y:24, height:0, marginTop:0}, {autoAlpha:1, y:0, height:"auto", marginTop:18, duration:0.4}, AT[i]));
   tl.fromTo(P+"card", {y:0}, {y:-6, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:33}, 0.6); /* breathing, never idles */
   tl.fromTo(P+"bar", {scaleX:0}, {scaleX:1, duration:47.5, ease:"none"}, 0.6); /* the as-of bar fills across the whole hold: continuous motion */
@@ -58,7 +58,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"big", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 5.2);
   tl.to(P+"eye", {letterSpacing:"8px", duration:1.2, ease:"power3.out"}, 0.2);
   /* second phase: the voice returns to each volcano; its row flashes (cues rel. host: Semeru 31.2, Ili Lewotolok 36.5, Semeru total 39.2; Ibu has no row, it is not on the alert list) */
-  [[P+"r2",31.38],[P+"r6",36.5],[P+"r2",39.36]].forEach(([r,at]) => tl.fromTo(r, {backgroundColor:"rgba(208,18,31,0.0)"}, {backgroundColor:"rgba(208,18,31,0.28)", duration:0.5, yoyo:true, repeat:1}, at));
+  [[P+"r2",30.86],[P+"r6",36.14],[P+"r2",39.12]].forEach(([r,at]) => tl.fromTo(r, {backgroundColor:"rgba(208,18,31,0.0)"}, {backgroundColor:"rgba(208,18,31,0.28)", duration:0.5, yoyo:true, repeat:1}, at));
   tl.to(P+"card", {x:-960, autoAlpha:0, duration:0.5, ease:"power3.in"}, 48.4); /* host 49.0 − 0.6; the national tally popfig follows on clean footage */
   window.__timelines["statusboard"] = tl;
 })();

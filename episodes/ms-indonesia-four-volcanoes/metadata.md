@@ -1,4 +1,4 @@
-# metadata.md — ms-indonesia-four-volcanoes (Format C · 14 Sep 26 · 9:41)
+# metadata.md — ms-indonesia-four-volcanoes (Format C · 14 Sep 26 · 9:34)
 
 ## Title (pick one, ≤52 chars, proper noun first)
 1. Eight Missing Off Anak Krakatau as Search Hits Day 7  (50)
@@ -21,14 +21,14 @@ for the Cascades.
 
 ## Chapters (questions a senior would ask an AI; `mm:ss: problem discussed`; no close, no CTA chapter)
 00:00: Who is missing off Anak Krakatau and how long has the search been running?
-00:35: Which Indonesian volcanoes are at alert level 3 tonight and which ones erupted today?
-01:39: Where are these six volcanoes, and what happened to the boat Arupadhatu I?
-02:49: How badly did last week's eruption disrupt Jakarta's airports?
-03:44: Did one volcano set off the others? What PVMBG's head said on the record
-04:53: Why does Indonesia get six eruptions at once?
-05:30: What did Anak Krakatau do in 1883 and 2018, and could a tsunami happen again?
-07:06: What is being done on the ground, and why it matters for Washington State
-08:28: What have officials still not said?
+00:34: Which Indonesian volcanoes are at alert level 3 tonight and which ones erupted today?
+01:38: Where are these six volcanoes, and what happened to the boat Arupadhatu I?
+02:47: How badly did last week's eruption disrupt Jakarta's airports?
+03:42: Did one volcano set off the others? What PVMBG's head said on the record
+04:49: Why does Indonesia get six eruptions at once?
+05:27: What did Anak Krakatau do in 1883 and 2018, and could a tsunami happen again?
+07:02: What is being done on the ground, and why it matters for Washington State
+08:23: What have officials still not said?
 
 ## Tags
 Anak Krakatau, Krakatoa, Krakatau eruption 2026, Indonesia volcano, Mount Ibu, Semeru eruption, Sinabung, Lewotobi, Ili Lewotolok,
