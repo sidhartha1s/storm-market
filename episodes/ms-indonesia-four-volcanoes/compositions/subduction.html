@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  B5-S1 mechanism diagram: a cross-section, drawn not photographed. Indo-Australian plate slides under the Eurasian
+  plate; water (blue dots) rides down; melt (orange) rises to six vents. SOURCE: standard subduction cross-section
+  (Britannica "Ring of Fire"); DATUM: sea level line; ORIENTATION: ocean left, arc right; EXAGGERATION: vertical 3x,
+  stated on the card; MUST-BE-TRUE: sinking plate dips away from the ocean under the islands, water goes down with
+  the plate, melt rises above the plate, vents sit above the melt. Labels land on the spoken cues (host = b5-s1).
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; background: radial-gradient(ellipse at 50% 30%, #0b1420 0%, #04070c 80%); font-family:Arial,sans-serif; color:#f2f5f8; }
+  svg { position:absolute; left:0; top:0; }
+  .lab { font-family:'Arial Black',Arial,sans-serif; font-size:30px; fill:#f2f5f8; letter-spacing:2px; }
+  .lab.small { font-size:22px; fill:#c8d3e0; font-family:Arial,sans-serif; letter-spacing:1px; }
+  .eye { position:absolute; left:110px; top:60px; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:6px; color:#d0121f; }
+  .note { position:absolute; left:110px; top:100px; font-size:22px; color:#93a3b2; letter-spacing:1px; }
+  .big { position:absolute; right:110px; top:60px; font-family:'AbrilFig',Georgia,serif; font-size:64px; color:#d0121f; text-shadow:0 3px 14px rgba(0,0,0,0.8); }
+</style>
+<div id="root" data-composition-id="subduction" data-width="1920" data-height="1080">
+  <div class="eye" id="sd-eye">HOW ONE COUNTRY GETS SIX ERUPTIONS</div>
+  <div class="note">Cross-section, not to scale · vertical exaggeration about 3×</div>
+  <div class="big" id="sd-big">6 SEPARATE CHAMBERS</div>
+  <svg width="1920" height="1080" viewBox="0 0 1920 1080">
+    <!-- sea -->
+    <rect x="0" y="420" width="1000" height="180" fill="#123a5c" opacity="0.9"/>
+    <line x1="0" y1="420" x2="1920" y2="420" stroke="#6fb0e6" stroke-width="3" stroke-dasharray="14 10"/>
+    <text class="lab small" x="30" y="405">SEA LEVEL</text>
+    <!-- overriding Eurasian plate (islands) -->
+    <path id="sd-euro" d="M 900 420 L 1920 420 L 1920 760 L 1100 760 Q 980 700 900 600 Z" fill="#4a3b2b"/>
+    <path d="M 1000 420 Q 1120 360 1230 420 Q 1330 380 1410 420 Q 1500 350 1590 420 Q 1680 380 1760 420 Q 1830 390 1900 420" fill="#3a5a2c" stroke="#3a5a2c"/>
+    <text class="lab" id="sd-l-euro" x="1250" y="560">EURASIAN PLATE</text>
+    <!-- sinking Indo-Australian plate -->
+    <path id="sd-indo" d="M 0 600 L 900 600 Q 1150 700 1320 1000 L 1120 1080 L 0 1080 Z" fill="#6b5a3f" opacity="0.95"/>
+    <text class="lab" id="sd-l-indo" x="180" y="720">INDO-AUSTRALIAN PLATE</text>
+    <path id="sd-arrow" d="M 380 650 L 700 650" stroke="#f4f0e8" stroke-width="10" marker-end="url(#ah)"/>
+    <defs><marker id="ah" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#f4f0e8"/></marker></defs>
+    <!-- water riding down -->
+    <g id="sd-water" fill="#6fb0e6">
+      <circle cx="960" cy="640" r="7"/><circle cx="1040" cy="700" r="7"/><circle cx="1110" cy="770" r="7"/><circle cx="1180" cy="850" r="7"/><circle cx="1240" cy="930" r="7"/>
+    </g>
+    <text class="lab small" id="sd-l-water" x="1000" y="990">OCEAN WATER GOES DOWN WITH THE PLATE</text>
+    <!-- melt -->
+    <g id="sd-melt" fill="#ff7a1a" opacity="0.95">
+      <ellipse cx="1180" cy="780" rx="70" ry="34"/><ellipse cx="1330" cy="740" rx="60" ry="30"/><ellipse cx="1480" cy="720" rx="66" ry="32"/><ellipse cx="1630" cy="740" rx="58" ry="28"/><ellipse cx="1760" cy="720" rx="60" ry="30"/><ellipse cx="1860" cy="750" rx="44" ry="24"/>
+    </g>
+    <text class="lab small" id="sd-l-melt" x="1180" y="840">ROCK MELTS · MAGMA RISES</text>
+    <!-- conduits + vents -->
+    <g id="sd-vents" stroke="#ff7a1a" stroke-width="8" fill="none">
+      <path d="M 1180 750 L 1150 420"/><path d="M 1330 712 L 1300 420"/><path d="M 1480 690 L 1470 420"/><path d="M 1630 714 L 1620 420"/><path d="M 1760 692 L 1740 420"/><path d="M 1860 728 L 1850 420"/>
+    </g>
+    <g id="sd-plumes" fill="#c9cfd6" opacity="0.9">
+      <circle cx="1150" cy="380" r="22"/><circle cx="1300" cy="376" r="20"/><circle cx="1470" cy="372" r="22"/><circle cx="1620" cy="378" r="18"/><circle cx="1740" cy="374" r="20"/><circle cx="1850" cy="380" r="16"/>
+    </g>
+    <text class="lab small" id="sd-l-vents" x="1120" y="330">SIX VENTS · SIX CHAMBERS · ONE PLATE BOUNDARY</text>
+  </svg>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#sd-";
+  tl.set([P+"l-indo", P+"l-euro", P+"arrow", P+"water", P+"l-water", P+"melt", P+"l-melt", P+"vents", P+"plumes", P+"l-vents", P+"big"], { autoAlpha: 0 }, 0);
+  /* cues rel. to b5-s1: "Indo-Australian" 7.5, "Eurasian" 9.7, "ocean water" 12.5, "melting point" 15.7, "vent" 22.3, "six in one day" 28.9, "six separate chambers" 33.3 */
+  tl.fromTo("#root", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 0);
+  tl.to(P+"l-indo", { autoAlpha: 1, duration: 0.4 }, 7.5);
+  tl.to(P+"arrow", { autoAlpha: 1, duration: 0.3 }, 7.9);
+  tl.fromTo(P+"arrow", { x: 0 }, { x: 60, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 17 }, 7.9);
+  tl.to(P+"l-euro", { autoAlpha: 1, duration: 0.4 }, 9.7);
+  tl.to([P+"water", P+"l-water"], { autoAlpha: 1, duration: 0.4 }, 12.5);
+  tl.fromTo(P+"water", { y: -30 }, { y: 30, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 9 }, 12.5);
+  tl.to([P+"melt", P+"l-melt"], { autoAlpha: 1, duration: 0.5 }, 15.7);
+  tl.fromTo(P+"melt", { scale: 0.9, transformOrigin: "center" }, { scale: 1.06, duration: 1.8, ease: "sine.inOut", yoyo: true, repeat: 11 }, 15.7);
+  tl.to(P+"vents", { autoAlpha: 1, duration: 0.6 }, 22.3);
+  tl.to([P+"plumes", P+"l-vents"], { autoAlpha: 1, duration: 0.5 }, 28.9);
+  tl.fromTo(P+"plumes", { y: 0 }, { y: -14, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 6 }, 28.9);
+  tl.to(P+"big", { autoAlpha: 1, duration: 0.4 }, 33.3);
+  tl.fromTo("#root", { scale: 1.0, transformOrigin: "center" }, { scale: 1.03, duration: 36.5, ease: "none" }, 0); /* continuous motion */
+  tl.to("#root", { autoAlpha: 0, duration: 0.4 }, 36.1); /* host 36.56 */
+  window.__timelines["subduction"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
