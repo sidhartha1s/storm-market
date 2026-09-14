@@ -6,7 +6,8 @@
     "Close on the unresolved tracking line, then one soft comment + subscribe line.",
     "Packaging copies the proven shape: place or volcano name dominant, number in the title, thumb spell-checked at 300 px.",
     "One heavy job at a time. Renders run in the main chat and the owner is told before launch.",
-    "Static gates green before any render; draft before full."
+    "Checks green before any render; preview before render.",
+    "Pipeline stays full: pre-production (facts, script, packaging, clips) runs for every slate row in parallel; only assemble/render are one at a time."
   ],
   "agents": [
     {
@@ -42,11 +43,11 @@
       "bucket": "krakatau",
       "title": "Anak Krakatau Erupts Again... And Now Three More",
       "owner": "director",
-      "due": "2026-09-15",
+      "due": "15 Sep 26",
       "phase": "sourcing",
       "status": "doing",
       "note": "fact refresh + pool sourcing running (Sonnet); script review + TTS next; pool consolidated in main (269 files)",
-      "updated": "2026-09-14 22:57"
+      "updated": "14 Sep 26 22:57"
     },
     {
       "slug": "ep-tristate-repackage",
@@ -54,11 +55,11 @@
       "bucket": "tornado",
       "title": "1925 Tri-State Tornado: repackage",
       "owner": "director",
-      "due": "2026-09-20",
+      "due": "20 Sep 26",
       "phase": "packaging",
       "status": "todo",
       "note": "new title + School A thumb, Studio Test & Compare",
-      "updated": "2026-09-14 18:40"
+      "updated": "14 Sep 26 18:40"
     },
     {
       "slug": "ms-hawaii-lowell-outages",
@@ -66,11 +67,11 @@
       "bucket": "hawaii-lowell",
       "title": "Hawaii Still Counting Lowell's Power Outages",
       "owner": "director",
-      "due": "2026-09-15",
+      "due": "15 Sep 26",
       "phase": "sourcing",
       "status": "doing",
       "note": "fact refresh + pool sourcing running (Sonnet); script review + TTS next; pool consolidated in main (269 files)",
-      "updated": "2026-09-14 22:57"
+      "updated": "14 Sep 26 22:57"
     },
     {
       "slug": "ms-sakurajima-ash",
@@ -78,11 +79,11 @@
       "bucket": "japan",
       "title": "Sakurajima: JMA holds Level 3 (placeholder)",
       "owner": "director",
-      "due": "2026-09-16",
+      "due": "16 Sep 26",
       "phase": "idea",
       "status": "todo",
       "note": "slot A day 2; number locked by radar",
-      "updated": "2026-09-14 22:30"
+      "updated": "14 Sep 26 22:30"
     },
     {
       "slug": "ms-elnino-cpc-today",
@@ -90,11 +91,299 @@
       "bucket": "elnino",
       "title": "CPC: El Niño Odds Above 90% (what the agency said today)",
       "owner": "director",
-      "due": "2026-09-18",
+      "due": "18 Sep 26",
       "phase": "idea",
       "status": "todo",
       "note": "forecast topic in agency-said-today framing, never a pure explainer",
-      "updated": "2026-09-14 22:30"
+      "updated": "14 Sep 26 22:30"
+    },
+    {
+      "slug": "ms-0916-usf-b",
+      "lane": "news",
+      "bucket": "us-flood",
+      "title": "Flash Flood Watch Issued for Gulf Coast Today",
+      "owner": "director",
+      "due": "16 Sep 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "source: NWS · live + US-stake, us-flood pool · title/number locked by radar on the day",
+      "updated": "14 Sep 26 22:59"
+    },
+    {
+      "slug": "ms-0917-krak-a",
+      "lane": "news",
+      "bucket": "krakatau",
+      "title": "Indonesia: Three More Volcanoes On Watch",
+      "owner": "director",
+      "due": "17 Sep 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "source: PVMBG · proper noun + live, EarthDesk 175-225k · title/number locked by radar on the day",
+      "updated": "14 Sep 26 22:59"
+    },
+    {
+      "slug": "ms-0917-haw-b",
+      "lane": "news",
+      "bucket": "hawaii-lowell",
+      "title": "Lowell Cleanup: Hawaii's Final Outage Count",
+      "owner": "director",
+      "due": "17 Sep 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "source: Hawaii EMA · closing number; kill after today, no new figure · title/number locked by radar on the day",
+      "updated": "14 Sep 26 22:59"
+    },
+    {
+      "slug": "ms-0918-jpn-a",
+      "lane": "news",
+      "bucket": "japan",
+      "title": "Sakurajima: JMA Says Alert Level Unchanged",
+      "owner": "director",
+      "due": "18 Sep 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "source: JMA · live agency quote, GWN format · title/number locked by radar on the day",
+      "updated": "14 Sep 26 22:59"
+    },
+    {
+      "slug": "ep-0919-doc-a",
+      "lane": "doc",
+      "bucket": "documentary (bank)",
+      "title": "1925 Tri-State Tornado (repackaged, School A thumb)",
+      "owner": "director",
+      "due": "19 Sep 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "source: NWS / Tri-State assessment · banked tornado doc, weekend slot · title/number locked by radar on the day",
+      "updated": "14 Sep 26 22:59"
+    },
+    {
+      "slug": "ms-0919-krak-b",
+      "lane": "news",
+      "bucket": "krakatau",
+      "title": "Krakatau's Lava Still Glows, PVMBG Update",
+      "owner": "director",
+      "due": "19 Sep 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "source: PVMBG · live + number (ash height) · title/number locked by radar on the day",
+      "updated": "14 Sep 26 22:59"
+    },
+    {
+      "slug": "ep-0920-doc-a",
+      "lane": "doc",
+      "bucket": "documentary (bank)",
+      "title": "banked tornado doc #2 (repackaged)",
+      "owner": "director",
+      "due": "20 Sep 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "source: NWS service assessment · weekend slot · title/number locked by radar on the day",
+      "updated": "14 Sep 26 22:59"
+    },
+    {
+      "slug": "ms-0920-jpn-b",
+      "lane": "news",
+      "bucket": "japan",
+      "title": "Japan: JMA's Latest Sakurajima Advisory",
+      "owner": "director",
+      "due": "20 Sep 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "source: JMA · live agency update · title/number locked by radar on the day",
+      "updated": "14 Sep 26 22:59"
+    },
+    {
+      "slug": "ms-0921-krak-a",
+      "lane": "news",
+      "bucket": "krakatau",
+      "title": "PVMBG: Anak Krakatau Ash Reaches New Height",
+      "owner": "director",
+      "due": "21 Sep 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "source: PVMBG · number + live · title/number locked by radar on the day",
+      "updated": "14 Sep 26 22:59"
+    },
+    {
+      "slug": "ms-0921-tor-b",
+      "lane": "news",
+      "bucket": "us-tornado-evergreen",
+      "title": "Tornado Alley Is Still Moving, NWS Confirms",
+      "owner": "director",
+      "due": "21 Sep 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "source: NWS · evergreen + US-stake, SpaceDesk 390k · title/number locked by radar on the day",
+      "updated": "14 Sep 26 22:59"
+    },
+    {
+      "slug": "ms-0922-jpn-a",
+      "lane": "news",
+      "bucket": "japan",
+      "title": "Sakurajima Ashfall Hits Kagoshima Streets",
+      "owner": "director",
+      "due": "22 Sep 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "source: JMA · live + place · title/number locked by radar on the day",
+      "updated": "14 Sep 26 22:59"
+    },
+    {
+      "slug": "ms-0922-usf-b",
+      "lane": "news",
+      "bucket": "us-flood",
+      "title": "Gulf Coast Flash Flood Sets NWS Record",
+      "owner": "director",
+      "due": "22 Sep 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "source: NWS · number + US-stake · title/number locked by radar on the day",
+      "updated": "14 Sep 26 22:59"
+    },
+    {
+      "slug": "ms-0923-krak-a",
+      "lane": "news",
+      "bucket": "krakatau",
+      "title": "Darwin VAAC Raises Krakatau Ash Warning",
+      "owner": "director",
+      "due": "23 Sep 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "source: Darwin VAAC · live + agency · title/number locked by radar on the day",
+      "updated": "14 Sep 26 22:59"
+    },
+    {
+      "slug": "ms-0923-eln-b",
+      "lane": "news",
+      "bucket": "elnino",
+      "title": "CPC's Newest El Niño Outlook, Explained",
+      "owner": "director",
+      "due": "23 Sep 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "source: NOAA / CPC · forecast framing · title/number locked by radar on the day",
+      "updated": "14 Sep 26 22:59"
+    },
+    {
+      "slug": "ms-0924-jpn-a",
+      "lane": "news",
+      "bucket": "japan",
+      "title": "Sakurajima: Japan's Volcano Won't Stand Down",
+      "owner": "director",
+      "due": "24 Sep 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "source: JMA · live, evergreen tension line · title/number locked by radar on the day",
+      "updated": "14 Sep 26 22:59"
+    },
+    {
+      "slug": "ms-0924-tor-b",
+      "lane": "news",
+      "bucket": "us-tornado-evergreen",
+      "title": "NWS: Tornado Alley's New Shape This Season",
+      "owner": "director",
+      "due": "24 Sep 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "source: NWS · evergreen + US-stake · title/number locked by radar on the day",
+      "updated": "14 Sep 26 22:59"
+    },
+    {
+      "slug": "ms-0925-krak-a",
+      "lane": "news",
+      "bucket": "krakatau",
+      "title": "PVMBG's Latest Count: Krakatau Eruptions Rise",
+      "owner": "director",
+      "due": "25 Sep 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "source: PVMBG · number + live · title/number locked by radar on the day",
+      "updated": "14 Sep 26 22:59"
+    },
+    {
+      "slug": "ms-0925-usf-b",
+      "lane": "news",
+      "bucket": "us-flood",
+      "title": "River Flood Stage Escalates, NWS Watch Up",
+      "owner": "director",
+      "due": "25 Sep 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "source: NWS · number + US-stake · title/number locked by radar on the day",
+      "updated": "14 Sep 26 22:59"
+    },
+    {
+      "slug": "ep-0926-doc-a",
+      "lane": "doc",
+      "bucket": "documentary (bank)",
+      "title": "banked tornado doc #3 (repackaged)",
+      "owner": "director",
+      "due": "26 Sep 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "source: NWS service assessment · weekend slot · title/number locked by radar on the day",
+      "updated": "14 Sep 26 22:59"
+    },
+    {
+      "slug": "ms-0926-jpn-b",
+      "lane": "news",
+      "bucket": "japan",
+      "title": "JMA Holds Sakurajima at Alert Level 3 Again",
+      "owner": "director",
+      "due": "26 Sep 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "source: JMA · live consistency · title/number locked by radar on the day",
+      "updated": "14 Sep 26 22:59"
+    },
+    {
+      "slug": "ep-0927-doc-a",
+      "lane": "doc",
+      "bucket": "documentary (bank)",
+      "title": "banked tornado doc #4 (repackaged)",
+      "owner": "director",
+      "due": "27 Sep 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "source: NWS service assessment · weekend slot · title/number locked by radar on the day",
+      "updated": "14 Sep 26 22:59"
+    },
+    {
+      "slug": "ms-0927-usf-b",
+      "lane": "news",
+      "bucket": "us-flood",
+      "title": "NWS Flash Flood Emergency Hits Gulf Coast",
+      "owner": "director",
+      "due": "27 Sep 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "source: NWS · live + US-stake · title/number locked by radar on the day",
+      "updated": "14 Sep 26 22:59"
+    },
+    {
+      "slug": "ms-0928-krak-a",
+      "lane": "news",
+      "bucket": "krakatau",
+      "title": "PVMBG: Krakatau Ash Column Grows Again",
+      "owner": "director",
+      "due": "28 Sep 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "source: PVMBG · number + live · title/number locked by radar on the day",
+      "updated": "14 Sep 26 22:59"
+    },
+    {
+      "slug": "ms-0928-eln-b",
+      "lane": "news",
+      "bucket": "elnino",
+      "title": "NOAA's CPC: What Today's El Niño Data Shows",
+      "owner": "director",
+      "due": "28 Sep 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "source: NOAA / CPC · forecast framing\n\n## Daily clock (1 person + Sonnet agents, IST)\n06:00 radar scan (agent 1): wire/agency feeds + GWN/EarthDesk/Szone/SpaceDesk new uploads + JMA/PVMBG/NOAA/NWS bulletins → locks real bucket, number, source for both slots.\n07:00 source lock: named agency + one wire/one local outlet per slot, live-blog URL if one exists.\n08:00-09:00 script draft, 8-beat skeleton, 165 wpm target, humanise gate (no rhetorical Qs, no em dashes, no reveal-flips).\n09:30 TTS, atempo 1.10, re-transcribe against script.\n10:00-12:00 sourcing/B-roll pulled in parallel (agent 2 = slot A, agent 3 = slot B) while assembly starts on slot A.\n12:00-14:00 assemble both, run gates (humanise, thumb spell-check, description-first-line-is-URL, Content ID check on raw clips).\n14:00 render, announce to owner.\nPublish: slot A (foreign live) into GWN's heaviest window, 8pm-2am ET; slot B (US-stake) into the secondary 2-7pm ET block — matches the upload-hour histogram, not the event clock.\n\n## Kill rule\nDrop a bucket the moment either holds: (1) two straight days with no new agency number/statement — nepal-flood already meets this (silent since Sep 6) and is excluded above; (2) a bucket with no proper noun beyond a US city/state tracks under the flop line (domestic wildfire/earthquake-swarm, <20k, per the 9-video/6-video flop data) — pull on the first flat day, redirect that agent to the next radar hit, don't wait for a third video to confirm.\n\n## 5 things a beginner misses\n1. A changed official number gets a new upload (new slug, new thumb), never an edit to the old video — Nepal's 11-video serial off one event is the proof.\n2. Thumbnail text and place-name spelling (Kagoshima, Sakurajima, Anak Krakatau) get checked before render, not just the script.\n3. Raw phone/interview clip audio (the `>>` cutaways that are the actual hit-amplifier) needs Content ID clearance before render, not after a claim lands.\n4. Description's first line is the source URL, not a hashtag block — GWN's own live-blog convention, and how both the crawler and viewers find sourcing.\n5. End screens cross-link the day's other slot (A→B, B→A), not a generic subscribe card — mirrors GWN's chapter-driven self-cross-promo since it never credits footage per-clip. · title/number locked by radar on the day",
+      "updated": "14 Sep 26 22:59"
     }
   ]
 }
