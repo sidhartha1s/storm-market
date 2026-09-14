@@ -55,6 +55,41 @@ materially changes every 60–90 s (new evidence, place, number, person, mechani
   spike, `[Q]` question, `[PAY]` payoff, `[HOOK]` exit hook, `[HUMAN]` human consequence.
 - **AVD pass**: at 0:30, 1:30 … 13:30 ask "why would a viewer here stay another 60 s?" Weak answer = rewrite.
 
+## Voice rules for the 45–75 US viewer (audience audit 2026-09-14; evidence in references/teardowns/2026-09-14-audience-audit/)
+1. **Pace 150 wpm delivered**, docs and minis alike. Slow only for numbers; pause after a death count, never before a reveal.
+2. **Rhythm.** Median sentence 12–18 words; 10–15 % of sentences run 25–35 words as fact-chains joined by and / then /
+   which; one kicker of ≤4 words per 150 words, never a flip. The 24-word cap is a TTS constraint, not a writing rule:
+   write the long sentence, let the TTS layer split it at commas without changing a word (pocket-TTS mangles long
+   single chunks, measured on Krakatau #4).
+3. **Opening.** Sentence one is a number or a date. Inside 45 s one direct-address fact promise ("Inside twenty minutes
+   you will know what a very strong El Niño did to your state the last two times"). No teaser, no "will history
+   repeat", no comment ask before the closing CTA.
+4. **Address.** "You" = promise or stake only, ≤3 per 1,000 words after minute one; "we" = Americans / the country 2–3×
+   per script; replace half of "people" with the named group (retirees in mobile homes, night-shift nurses); never "I".
+5. **Authority.** One named researcher + institution + venue per mechanism chapter ("X said, and this is a direct
+   quote"); agencies named on screen (CPC, NWS, USGS, EIA); "nobody knows" always in a source's mouth; fear only as a
+   sourced fact, never a narrator adjective (terrible, cruel, mercifully).
+6. **Certainty split.** Flat declaratives for record and mechanism; the future in three paths ("If A, X. If B, Y. If C,
+   Z. [Source] has not said which."). Hedge words only on numbers.
+7. **Time anchoring.** Live videos say "as of this morning", stamp the weekday, and close on a dated watch-for ("The
+   next CPC update lands Thursday; the number to look for is Niño-3.4"). "Still / already" ≤1.5 per 1,000 words.
+8. **Place anchoring.** A US state or region in the first 60 s of every script (supersedes FORMAT rule 8's "second
+   minute"); every foreign distance / height restated in a US landmark and in feet, miles, °F, dollars; ≤3 unfamiliar
+   foreign place names per script. Ray: "Lituya is the one time you gave me feet, and that's the one part I remember."
+9. **Transitions.** Seams are time-stamps or place-stamps ("At half past two that afternoon, in Mississippi"), never
+   "to understand X you have to understand Y". Chapter-exit questions only when the answer is an open fact, ≤3 per
+   documentary, ≤2 per mini; the engine's "question" is usually implied by a stamp or an unresolved fact.
+10. **Debunk block.** Live-hazard videos carry a 60–90 s sourced debunk at 60–75 % ("The problem with that story
+    is…", then the measurement).
+11. **Vocabulary.** Keep the term, define it in ≤12 words, reuse it 3+ times; one plain-terms translation per
+    number-dense minute; every superlative with comparator and unit ("1,720 feet, higher than the Empire State
+    Building with its antenna").
+12. **One object per segment**, never stacked; one named victim with age, job and a sourced quote per tragedy.
+13. **Close.** Fact + dated forward window, then the CTA spine once. No aphorism, no mirrored callback, no sign-off line.
+Awaiting owner decision (conflicts with humanise-rules.md): (a) allow "This is the story of…" once before 0:60 in
+documentaries (rule 7 bans it; the 1,529-view hit uses it); (b) the ≤3 chapter-exit questions above versus rule 8's
+"no rhetorical questions" (kept for mid-paragraph questions either way).
+
 ## The philosophical change
 Optimise for "what information does the viewer want right now, and when do we give it," not for "how do we make this
 more engaging." Narration and visual event are written together, never narration first.
