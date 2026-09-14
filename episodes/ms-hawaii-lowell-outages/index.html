@@ -51,7 +51,7 @@
   </style>
 </head>
 <body>
-<div id="root" data-composition-id="ms-hawaii-lowell-outages" data-start="0.0" data-width="1920" data-height="1080" data-duration="537.937" data-fps="30">
+<div id="root" data-composition-id="ms-hawaii-lowell-outages" data-start="0.0" data-width="1920" data-height="1080" data-duration="538.0" data-fps="30">
 
   <!-- ============ NARRATION (atempo 1.10 wavs; timed from the sped words.json) ============ -->
   <audio id="nx-b1s1" src="audio/b1-s1.wav" data-start="0.0" data-duration="31.69" data-volume="1"></audio>
@@ -193,7 +193,7 @@
   <section class="clip blackout" id="bo-b7" data-start="523.497" data-duration="0.6" data-track-index="1"></section>
 
   <!-- B8 · close 524.597–532.437 under the close card -->
-  <section class="clip blackout" id="bo-end" data-start="524.097" data-duration="13.84" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-end" data-start="524.097" data-duration="13.903" data-track-index="1"></section>
 
   <!-- ============ OVERLAYS (each wrapped in a timed section so overlap_check sees it) ============ -->
   <section class="clip" id="p-pf-81" data-start="4.96" data-duration="3.000" data-track-index="5"><div class="popfig" id="pf-81"><span class="pf-big">81%</span><span class="pf-sub">OF KAUAI HAS POWER BACK</span></div></section>
@@ -231,7 +231,7 @@
   <div id="host-grid" data-composition-id="grid" data-composition-src="compositions/grid.html" data-start="268.137" data-duration="43.25" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-lettercard" data-composition-id="lettercard" data-composition-src="compositions/lettercard.html" data-start="387.797" data-duration="22.5" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-tracking" data-composition-id="tracking" data-composition-src="compositions/tracking.html" data-start="449.897" data-duration="73.0" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-close" data-composition-id="g-close" data-composition-src="compositions/g-close.html" data-start="524.097" data-duration="13.84" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-close" data-composition-id="g-close" data-composition-src="compositions/g-close.html" data-start="524.097" data-duration="13.903" data-track-index="2" data-width="1920" data-height="1080"></div>
 
   <!-- CTA dips: LAST in the DOM so they paint above every track-1 cut under them -->
   <section class="clip blackout" id="bo-cta-in" data-start="251.97" data-duration="0.5" data-track-index="9"></section>
@@ -245,7 +245,7 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const DUR = 537.937;
+  const DUR = 538.0;
   function kb(sel, at, dur, s0, s1, x0, x1, y0, y1) {
     tl.fromTo(sel, { scale: s0, x: x0, y: y0, transformOrigin: "center" }, { scale: s1, x: x1, y: y1, duration: dur, ease: "none" }, at);
   }
