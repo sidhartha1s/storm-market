@@ -82,9 +82,9 @@
       "owner": "director",
       "due": "16 Sep 26",
       "phase": "script",
-      "status": "doing",
-      "note": "JMA refresh + director-rule script running (Sonnet); slot A for 16 Sep",
-      "updated": "15 Sep 26 03:06"
+      "status": "blocked",
+      "note": "no 15 Sep event; kill rule: ships only if it erupts overnight (v2 script ready)",
+      "updated": "15 Sep 26 03:23"
     },
     {
       "slug": "ms-elnino-cpc-today",
@@ -94,9 +94,9 @@
       "owner": "director",
       "due": "18 Sep 26",
       "phase": "script",
-      "status": "done",
-      "note": "fact sheet + Sonnet draft in ops/wave2; director's pass pending",
-      "updated": "14 Sep 26 23:36"
+      "status": "doing",
+      "note": "promoted to 16 Sep slot A; CPC refresh + script running",
+      "updated": "15 Sep 26 03:23"
     },
     {
       "slug": "ms-0916-usf-b",
@@ -130,9 +130,9 @@
       "owner": "director",
       "due": "17 Sep 26",
       "phase": "script",
-      "status": "done",
-      "note": "fact sheet + Sonnet draft in ops/wave2; director's pass pending",
-      "updated": "14 Sep 26 23:36"
+      "status": "doing",
+      "note": "16 Sep slot B candidate (Kauai day 2) if KIUC number moved; refresh running",
+      "updated": "15 Sep 26 03:23"
     },
     {
       "slug": "ms-0918-jpn-a",
