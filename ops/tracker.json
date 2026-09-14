@@ -92,11 +92,11 @@
       "bucket": "elnino",
       "title": "CPC: El Niño Odds Above 90% (what the agency said today)",
       "owner": "director",
-      "due": "18 Sep 26",
+      "due": "16 Sep 26",
       "phase": "script",
       "status": "doing",
-      "note": "promoted to 16 Sep slot A; CPC refresh + script running",
-      "updated": "15 Sep 26 03:23"
+      "note": "slot A 16 Sep; Sonnet draft in ops/wave2, director's pass in progress; pool top-up running; worktree .worktrees/ms-elnino-cpc-today",
+      "updated": "15 Sep 26 03:49"
     },
     {
       "slug": "ms-0916-usf-b",
@@ -121,18 +121,6 @@
       "status": "done",
       "note": "fact sheet + Sonnet draft in ops/wave2; director's pass pending",
       "updated": "14 Sep 26 23:36"
-    },
-    {
-      "slug": "ms-0917-haw-b",
-      "lane": "news",
-      "bucket": "hawaii-lowell",
-      "title": "Lowell Cleanup: Hawaii's Final Outage Count",
-      "owner": "director",
-      "due": "17 Sep 26",
-      "phase": "script",
-      "status": "doing",
-      "note": "16 Sep slot B candidate (Kauai day 2) if KIUC number moved; refresh running",
-      "updated": "15 Sep 26 03:23"
     },
     {
       "slug": "ms-0918-jpn-a",
@@ -385,6 +373,18 @@
       "status": "todo",
       "note": "source: NOAA / CPC · forecast framing\n\n## Daily clock (1 person + Sonnet agents, IST)\n06:00 radar scan (agent 1): wire/agency feeds + GWN/EarthDesk/Szone/SpaceDesk new uploads + JMA/PVMBG/NOAA/NWS bulletins → locks real bucket, number, source for both slots.\n07:00 source lock: named agency + one wire/one local outlet per slot, live-blog URL if one exists.\n08:00-09:00 script draft, 8-beat skeleton, 165 wpm target, humanise gate (no rhetorical Qs, no em dashes, no reveal-flips).\n09:30 TTS, atempo 1.10, re-transcribe against script.\n10:00-12:00 sourcing/B-roll pulled in parallel (agent 2 = slot A, agent 3 = slot B) while assembly starts on slot A.\n12:00-14:00 assemble both, run gates (humanise, thumb spell-check, description-first-line-is-URL, Content ID check on raw clips).\n14:00 render, announce to owner.\nPublish: slot A (foreign live) into GWN's heaviest window, 8pm-2am ET; slot B (US-stake) into the secondary 2-7pm ET block — matches the upload-hour histogram, not the event clock.\n\n## Kill rule\nDrop a bucket the moment either holds: (1) two straight days with no new agency number/statement — nepal-flood already meets this (silent since Sep 6) and is excluded above; (2) a bucket with no proper noun beyond a US city/state tracks under the flop line (domestic wildfire/earthquake-swarm, <20k, per the 9-video/6-video flop data) — pull on the first flat day, redirect that agent to the next radar hit, don't wait for a third video to confirm.\n\n## 5 things a beginner misses\n1. A changed official number gets a new upload (new slug, new thumb), never an edit to the old video — Nepal's 11-video serial off one event is the proof.\n2. Thumbnail text and place-name spelling (Kagoshima, Sakurajima, Anak Krakatau) get checked before render, not just the script.\n3. Raw phone/interview clip audio (the `>>` cutaways that are the actual hit-amplifier) needs Content ID clearance before render, not after a claim lands.\n4. Description's first line is the source URL, not a hashtag block — GWN's own live-blog convention, and how both the crawler and viewers find sourcing.\n5. End screens cross-link the day's other slot (A→B, B→A), not a generic subscribe card — mirrors GWN's chapter-driven self-cross-promo since it never credits footage per-clip. · title/number locked by radar on the day",
       "updated": "14 Sep 26 22:59"
+    },
+    {
+      "slug": "ms-kauai-lowell-day2",
+      "lane": "news",
+      "bucket": "hawaii-lowell",
+      "title": "Kauai Holds at 81% Power as Schools Reopen",
+      "owner": "director",
+      "due": "16 Sep 26",
+      "phase": "script",
+      "status": "doing",
+      "note": "slot B 16 Sep; Sonnet draft in ops/wave2, director's pass next; worktree .worktrees/ms-kauai-lowell-day2",
+      "updated": "15 Sep 26 03:49"
     }
   ]
 }
