@@ -23,17 +23,21 @@
   .l3 { background:#d0121f; color:#fff; } .l2 { background:#d8a13a; color:#1a1408; }
   .today { font-size:24px; color:#e6ecf2; line-height:1.2; }
   .quiet { color:#93a3b2; }
+  .big { font-family:'AbrilFig',Georgia,serif; font-size:64px; line-height:1; color:#f2f5f8; margin-top:8px; text-shadow:0 3px 14px rgba(0,0,0,0.8); }
+  .bar { position:absolute; left:40px; right:40px; bottom:14px; height:4px; background:linear-gradient(90deg,#d0121f,#d8a13a); border-radius:2px; transform-origin:left; }
 </style>
 <div id="root" data-composition-id="statusboard" data-width="1920" data-height="1080">
   <div class="card" id="sb-card">
     <div class="eye" id="sb-eye">AS OF MONDAY EVENING · 14 SEP 26</div>
-    <div class="sub0">Alert level · today's activity · MAGMA Indonesia daily report</div>
-    <div class="row" id="sb-r1"><div class="name">ANAK KRAKATAU</div><div class="lvl l3">LEVEL 3</div><div class="today quiet">quiet today</div></div>
-    <div class="row" id="sb-r2"><div class="name">SEMERU</div><div class="lvl l3">LEVEL 3</div><div class="today">ash column ~1,000 m</div></div>
-    <div class="row" id="sb-r3"><div class="name">LEWOTOBI LAKI-LAKI</div><div class="lvl l3">LEVEL 3</div><div class="today quiet">quiet today</div></div>
-    <div class="row" id="sb-r4"><div class="name">SINABUNG</div><div class="lvl l3">LEVEL 3</div><div class="today quiet">hidden in fog</div></div>
-    <div class="row" id="sb-r5"><div class="name">MARAPI</div><div class="lvl l2">LEVEL 2</div><div class="today quiet">no eruption logged</div></div>
-    <div class="row" id="sb-r6"><div class="name">ILI LEWOTOLOK</div><div class="lvl l2">LEVEL 2</div><div class="today">erupted twice this evening</div></div>
+    <div class="big" id="sb-big">4 AT LEVEL 3 · 2 AT LEVEL 2</div>
+    <div class="sub0">Alert level · Today's activity · MAGMA Indonesia daily report</div>
+    <div class="bar" id="sb-bar"></div>
+    <div class="row" id="sb-r1"><div class="name">ANAK KRAKATAU</div><div class="lvl l3">LEVEL 3</div><div class="today quiet">Quiet today</div></div>
+    <div class="row" id="sb-r2"><div class="name">SEMERU</div><div class="lvl l3">LEVEL 3</div><div class="today">Ash column ~1,000 m</div></div>
+    <div class="row" id="sb-r3"><div class="name">LEWOTOBI LAKI-LAKI</div><div class="lvl l3">LEVEL 3</div><div class="today quiet">Quiet today</div></div>
+    <div class="row" id="sb-r4"><div class="name">SINABUNG</div><div class="lvl l3">LEVEL 3</div><div class="today quiet">Hidden in fog</div></div>
+    <div class="row" id="sb-r5"><div class="name">MARAPI</div><div class="lvl l2">LEVEL 2</div><div class="today quiet">No eruption logged</div></div>
+    <div class="row" id="sb-r6"><div class="name">ILI LEWOTOLOK</div><div class="lvl l2">LEVEL 2</div><div class="today">Erupted twice this evening</div></div>
   </div>
 </div>
 <script>
@@ -46,11 +50,16 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"card", {x:-960, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 0);
   /* EDIT-ME: cue times (relative to host start) from audio/b2-s1.words.json:
      r1 "Anak Krakatau" (first list), r2 "Semeru", r3 "Lewotobi", r4 "Sinabung", r5 "Marapi", r6 "Ili Lewotolok" */
-  const AT = [6.0, 7.2, 8.3, 10.1, 12.2, 12.7]; /* host starts 3.0 s after b2-s1: cues 9.0/10.2/11.3/13.1/15.2/15.7 − 3.0 */
+  const AT = [6.66, 8.1, 9.2, 12.08, 14.04, 14.84]; /* host starts 3.0 s after b2-s1: cues 9.0/10.2/11.3/13.1/15.2/15.7 − 3.0 */
   rows.forEach((r, i) => tl.fromTo(r, {autoAlpha:0, y:24, height:0, marginTop:0}, {autoAlpha:1, y:0, height:"auto", marginTop:18, duration:0.4}, AT[i]));
-  tl.fromTo(P+"card", {y:0}, {y:-6, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:20}, 0.6); /* breathing, never idles */
+  tl.fromTo(P+"card", {y:0}, {y:-6, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:33}, 0.6); /* breathing, never idles */
+  tl.fromTo(P+"bar", {scaleX:0}, {scaleX:1, duration:47.5, ease:"none"}, 0.6); /* the as-of bar fills across the whole hold: continuous motion */
+  tl.to(".lvl", {boxShadow:"0 0 18px rgba(208,18,31,0.9)", duration:0.9, yoyo:true, repeat:51, ease:"sine.inOut"}, 0.6);
+  tl.fromTo(P+"big", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 5.2);
   tl.to(P+"eye", {letterSpacing:"8px", duration:1.2, ease:"power3.out"}, 0.2);
-  tl.to(P+"card", {x:-960, autoAlpha:0, duration:0.5, ease:"power3.in"}, 58.8); /* host 59.4 − 0.6 */
+  /* second phase: the voice returns to each volcano; its row flashes (cues rel. host: Semeru 31.2, Ili Lewotolok 36.5, Semeru total 39.2; Ibu has no row, it is not on the alert list) */
+  [[P+"r2",31.2],[P+"r6",36.5],[P+"r2",39.2]].forEach(([r,at]) => tl.fromTo(r, {backgroundColor:"rgba(208,18,31,0.0)"}, {backgroundColor:"rgba(208,18,31,0.28)", duration:0.5, yoyo:true, repeat:1}, at));
+  tl.to(P+"card", {x:-960, autoAlpha:0, duration:0.5, ease:"power3.in"}, 48.4); /* host 49.0 − 0.6; the national tally popfig follows on clean footage */
   window.__timelines["statusboard"] = tl;
 })();
 </script>

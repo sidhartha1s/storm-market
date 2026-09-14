@@ -19,15 +19,19 @@
   .lab { font-family:'Arial Black',Arial,sans-serif; font-size:30px; line-height:1.1; }
   .sub { font-size:21px; color:#c8d3e0; margin-top:5px; line-height:1.3; }
   .hot .lab { color:#ffd27a; }
+  .big { font-family:'AbrilFig',Georgia,serif; font-size:64px; line-height:1; color:#f2f5f8; margin-top:8px; text-shadow:0 3px 14px rgba(0,0,0,0.8); }
+  .bar { position:absolute; left:40px; right:40px; bottom:14px; height:4px; background:linear-gradient(90deg,#d0121f,#ffd27a); border-radius:2px; transform-origin:left; }
 </style>
 <div id="root" data-composition-id="tracking" data-width="1920" data-height="1080">
   <div class="card" id="tr-card">
     <div class="eye" id="tr-eye">STILL OPEN TONIGHT</div>
-    <div class="row" id="tr-r1"><div class="n">1</div><div><div class="lab">SEARCH: EXTEND OR CLOSE</div><div class="sub">day 7 decision not announced</div></div></div>
-    <div class="row" id="tr-r2"><div class="n">2</div><div><div class="lab">SUNDAY'S FINDS</div><div class="sub">tarpaulins, life jackets: not yet matched to Arupadhatu I</div></div></div>
-    <div class="row" id="tr-r3"><div class="n">3</div><div><div class="lab">FLIGHTS AND PASSENGERS</div><div class="sub">no national count newer than 8 Sep</div></div></div>
-    <div class="row" id="tr-r4"><div class="n">4</div><div><div class="lab">IBU'S RUNNING TOTAL</div><div class="sub">agency reports differ; tonight's figure used</div></div></div>
-    <div class="row hot" id="tr-r5"><div class="n">5</div><div><div class="lab">THE SOUTHWEST SLOPE</div><div class="sub">no fresh measurement; last survey data ends 2023</div></div></div>
+    <div class="big" id="tr-big">5 UNANSWERED</div>
+    <div class="bar" id="tr-bar"></div>
+    <div class="row" id="tr-r1"><div class="n">1</div><div><div class="lab">SEARCH: EXTEND OR CLOSE</div><div class="sub">Day 7 decision not announced</div></div></div>
+    <div class="row" id="tr-r2"><div class="n">2</div><div><div class="lab">SUNDAY'S FINDS</div><div class="sub">Tarpaulins, life jackets: not yet matched to Arupadhatu I</div></div></div>
+    <div class="row" id="tr-r3"><div class="n">3</div><div><div class="lab">FLIGHTS AND PASSENGERS</div><div class="sub">No national count newer than 8 Sep</div></div></div>
+    <div class="row" id="tr-r4"><div class="n">4</div><div><div class="lab">IBU'S RUNNING TOTAL</div><div class="sub">Agency reports differ; tonight's figure used</div></div></div>
+    <div class="row hot" id="tr-r5"><div class="n">5</div><div><div class="lab">THE SOUTHWEST SLOPE</div><div class="sub">No fresh measurement; last survey data ends 2023</div></div></div>
   </div>
 </div>
 <script>
@@ -39,11 +43,14 @@ window.__timelines = window.__timelines || {};
   tl.set(rows, {autoAlpha:0, height:0, marginTop:0}, 0);
   tl.fromTo(P+"card", {x:-960, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 0);
   /* EDIT-ME: cues from audio/b7-s1.words.json: "extended", "tarpaulins", "flights", "Ibu", "slope" */
-  const AT = [4.2, 8.9, 15.8, 22.4, 34.4]; /* host starts 1.0 s after b7-s1: cues 5.2/9.9/16.8/23.4/35.4 − 1.0 */
-  rows.forEach((r, i) => tl.fromTo(r, {autoAlpha:0, y:24, height:0, marginTop:0}, {autoAlpha:1, y:0, height:"auto", marginTop:20, duration:0.4}, AT[i]));
-  tl.fromTo(P+"card", {y:0}, {y:-6, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:19}, 0.6);
+  const AT = [4.16, 8.98, 16.9, 23.44, 35.54]; /* host starts 1.0 s after b7-s1: cues 5.2/9.9/16.8/23.4/35.4 − 1.0 */
+  rows.forEach((r, i) => tl.fromTo(r, {autoAlpha:0, y:24, height:0, marginTop:0}, {autoAlpha:1, y:0, height:"auto", marginTop:20, duration:0.45, ease:"power3.out"}, AT[i]));
+  tl.fromTo(P+"bar", {scaleX:0}, {scaleX:1, duration:55.0, ease:"none"}, 0.6); /* fills across the hold: continuous motion */
+  tl.fromTo(P+"big", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 1.0);
+  tl.to(".n", {textShadow:"0 0 22px rgba(208,18,31,0.95)", duration:1.1, yoyo:true, repeat:49, ease:"sine.inOut"}, 0.8);
+  tl.fromTo(P+"card", {y:0}, {y:-6, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:38}, 0.6);
   tl.to(P+"eye", {letterSpacing:"8px", duration:1.2, ease:"power3.out"}, 0.2);
-  tl.to(P+"r5 .lab", {textShadow:"0 0 24px rgba(255,210,122,0.9)", duration:1.2, yoyo:true, repeat:7, ease:"sine.inOut"}, 35.0);
+  tl.to(P+"r5 .lab", {textShadow:"0 0 24px rgba(255,210,122,0.9)", duration:1.2, yoyo:true, repeat:15, ease:"sine.inOut"}, 36.2);
   tl.to(P+"card", {x:-960, autoAlpha:0, duration:0.5, ease:"power3.in"}, 55.8); /* host 56.4 − 0.6 */
   window.__timelines["tracking"] = tl;
 })();

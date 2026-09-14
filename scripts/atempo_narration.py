@@ -21,6 +21,6 @@ for wav in sorted(audio.glob("*.wav")):
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(keep), "-filter:a", f"atempo={factor}", str(wav)], check=True)
     for stale in (audio / f"{wav.stem}.words.json", audio / "manifest.json"):
         if stale.exists():
-            stale.rename(stale.with_suffix(stale.suffix + ".native"))
+            stale.replace(stale.with_suffix(stale.suffix + ".native"))  # overwrite a leftover from an earlier pass
     done += 1
 print(f"[atempo_narration] {done} wav(s) sped x{factor}; natives in {native}; re-run transcribe_episode.py now")
