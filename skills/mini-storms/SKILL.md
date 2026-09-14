@@ -11,6 +11,9 @@ Different product: an **8–12 min information-passing video** on this week's di
 cut like news (stitched clips + stills with motion, red stat pops, vignette, music bed), built
 and shipped in **≤3 hours wall-clock including render**, with ONE owner gate.
 
+**From 2026-09-15 the news lane ships Format C (rolling present-tense update) by default; read that section of
+FORMAT.md first, then the ops slate in `ops/programme-14d.md` and the live cards in `ops/tracker.json`.**
+
 Repo: `C:\Users\Sidhartha\Automation Projects\storm-market`
 Format rulebook (measured from teardowns, lives in the repo): `references/mini-storms/FORMAT.md`
 Teardowns + NexLev data: `references/mini-storms/teardowns/README.md`, `references/mini-storms/nexlev-*.md`
