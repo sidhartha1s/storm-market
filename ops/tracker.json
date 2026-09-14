@@ -80,10 +80,10 @@
       "title": "Sakurajima: JMA holds Level 3 (placeholder)",
       "owner": "director",
       "due": "16 Sep 26",
-      "phase": "idea",
-      "status": "todo",
-      "note": "slot A day 2; number locked by radar",
-      "updated": "14 Sep 26 22:30"
+      "phase": "script",
+      "status": "doing",
+      "note": "fact desk + script running (Sonnet wave 2)",
+      "updated": "14 Sep 26 23:02"
     },
     {
       "slug": "ms-elnino-cpc-today",
@@ -92,10 +92,10 @@
       "title": "CPC: El Niño Odds Above 90% (what the agency said today)",
       "owner": "director",
       "due": "18 Sep 26",
-      "phase": "idea",
-      "status": "todo",
-      "note": "forecast topic in agency-said-today framing, never a pure explainer",
-      "updated": "14 Sep 26 22:30"
+      "phase": "script",
+      "status": "doing",
+      "note": "fact desk + script running (Sonnet wave 2)",
+      "updated": "14 Sep 26 23:02"
     },
     {
       "slug": "ms-0916-usf-b",
@@ -104,10 +104,10 @@
       "title": "Flash Flood Watch Issued for Gulf Coast Today",
       "owner": "director",
       "due": "16 Sep 26",
-      "phase": "idea",
-      "status": "todo",
-      "note": "source: NWS · live + US-stake, us-flood pool · title/number locked by radar on the day",
-      "updated": "14 Sep 26 22:59"
+      "phase": "script",
+      "status": "doing",
+      "note": "fact desk + script running (Sonnet wave 2)",
+      "updated": "14 Sep 26 23:02"
     },
     {
       "slug": "ms-0917-krak-a",
@@ -116,10 +116,10 @@
       "title": "Indonesia: Three More Volcanoes On Watch",
       "owner": "director",
       "due": "17 Sep 26",
-      "phase": "idea",
-      "status": "todo",
-      "note": "source: PVMBG · proper noun + live, EarthDesk 175-225k · title/number locked by radar on the day",
-      "updated": "14 Sep 26 22:59"
+      "phase": "script",
+      "status": "doing",
+      "note": "fact desk + script running (Sonnet wave 2)",
+      "updated": "14 Sep 26 23:02"
     },
     {
       "slug": "ms-0917-haw-b",
@@ -128,10 +128,10 @@
       "title": "Lowell Cleanup: Hawaii's Final Outage Count",
       "owner": "director",
       "due": "17 Sep 26",
-      "phase": "idea",
-      "status": "todo",
-      "note": "source: Hawaii EMA · closing number; kill after today, no new figure · title/number locked by radar on the day",
-      "updated": "14 Sep 26 22:59"
+      "phase": "script",
+      "status": "doing",
+      "note": "fact desk + script running (Sonnet wave 2)",
+      "updated": "14 Sep 26 23:02"
     },
     {
       "slug": "ms-0918-jpn-a",
@@ -140,10 +140,10 @@
       "title": "Sakurajima: JMA Says Alert Level Unchanged",
       "owner": "director",
       "due": "18 Sep 26",
-      "phase": "idea",
-      "status": "todo",
-      "note": "source: JMA · live agency quote, GWN format · title/number locked by radar on the day",
-      "updated": "14 Sep 26 22:59"
+      "phase": "script",
+      "status": "doing",
+      "note": "fact desk + script running (Sonnet wave 2)",
+      "updated": "14 Sep 26 23:02"
     },
     {
       "slug": "ep-0919-doc-a",
