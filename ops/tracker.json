@@ -69,9 +69,9 @@
       "owner": "director",
       "due": "15 Sep 26",
       "phase": "preview",
-      "status": "doing",
-      "note": "all checks green; preview render launched",
-      "updated": "15 Sep 26 01:26"
+      "status": "done",
+      "note": "preview rendered 8:58; post-render check: only expected blacks; parked for owner eyeball",
+      "updated": "15 Sep 26 01:41"
     },
     {
       "slug": "ms-sakurajima-ash",
