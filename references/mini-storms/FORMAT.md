@@ -51,6 +51,15 @@ Krakatau mini-docs got 55–60 impressions under the same keyword; the format mi
 | 8 | Soft close: one comment + subscribe line | 11:45–12:00 | 41 |
 
   Paul's ebook CTA stays at the story break (~40 %, between beats 4 and 5). Humanise rules apply in full.
+- **CTA dip (owner 15 Sep 26): 0.5 s black in, CTA starts 0.5 s after the last narration word ends, 0.5 s out.** A 1.0 s dip after
+  a 0.4 s narration tail read as a 1.4 s hole and "I would skip". The last clip of the beat runs under the dip.
+- **B-roll is muted by default.** A clip carries its own sound only when it earns it (sirens, presser sound, survivor voice); then
+  Paul does not narrate over the same words, one voice at a time. lint_timeline fails any track-1 video that is neither `muted`
+  nor `data-has-audio` (day-1 miss: a stranded-passenger interview played under Paul and a quote card, 15 Sep 26).
+- **Narration windows = wav lengths.** lint_timeline fails any `nx-*` audio whose data-duration is shorter than its wav (day-1
+  truncation: a retime moved starts and left the old lengths, cutting the last words of six segments).
+- **Pronunciation gate before timing.** After TTS, read every proper noun back from words.json; respell in plain lowercase
+  phonetics (no hyphens, no caps: the clone read "DAH" and "-" as words) and re-synthesise before the cut list exists.
 - **Packaging:** proper noun (volcano, storm, place) dominant in title and thumb, a number in the title, present tense,
   thumb spell-checked at 300 px, e.g. "Anak Krakatau Erupts Again... And Now Three More" (EarthDesk shape, 175–225k).
 - **Publish window:** GWN's uploads land 00:00–07:00 UTC (US evening); target the same.
