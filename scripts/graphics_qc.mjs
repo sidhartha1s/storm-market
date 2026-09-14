@@ -20,7 +20,7 @@ const SAFE = { w: 1920, h: 1080, pad: 24 };
 /* Hard errors block the render. Idle gaps are reported and only fail when a graphic is
  * frozen for most of its window — ep2 (the gold standard) idles in places and still reads
  * as designed, so idling is a budget, not a tripwire. */
-const HARD = new Set(['text-collision', 'out-of-frame', 'bad-crop', 'empty-container', 'fade-only',
+const HARD = new Set(['text-collision', 'out-of-frame', 'bad-crop', 'empty-container', 'fade-only', 'no-go-zone', 'lowercase-lead',
                       'flat-type', 'no-timeline', 'js-error', 'undesigned']);
 const DURS = {};
 const defects = [];
@@ -49,7 +49,7 @@ const PROBE = `(() => {
 const MEASURE = `((t) => {
   const key = Object.keys(window.__timelines)[0];
   window.__timelines[key].seek(t, false);
-  const out = { texts: [], oob: [], empty: [], crops: [], fonts: [] };
+  const out = { texts: [], oob: [], empty: [], crops: [], fonts: [], zone: [], lower: [] };
   const vis = (el) => {
     const s = getComputedStyle(el);
     if (s.display === 'none' || s.visibility === 'hidden') return false;
@@ -75,6 +75,12 @@ const MEASURE = `((t) => {
         if (ir.x < -SAFEPAD || ir.y < -SAFEPAD || ir.right > 1920 + SAFEPAD || ir.bottom > 1080 + SAFEPAD)
           out.oob.push({ id: el.id || el.className, text: node.textContent.trim().slice(0,42),
                          x: Math.round(ir.x), y: Math.round(ir.y), right: Math.round(ir.right), bottom: Math.round(ir.bottom) });
+        /* no-go zones (owner 15 Sep 26): the news bug strip (bottom 92 px + 8 px breathing) and the presenter circle
+           (x ≥ 1600, y ≥ 680). Comp text there is hidden or collides with the bug/circle in the master. */
+        if (ir.bottom > 980) out.zone.push({ zone: 'bug strip (y>980)', text: node.textContent.trim().slice(0,42), y: Math.round(ir.bottom) });
+        if (ir.right > 1600 && ir.bottom > 680) out.zone.push({ zone: 'presenter circle (x>1600,y>680)', text: node.textContent.trim().slice(0,42), y: Math.round(ir.bottom) });
+        /* sentence case: a text node that starts with a lowercase letter reads as a typo (DESIGN.md text discipline) */
+        if (/^[a-z]/.test(node.textContent.trim()) && node === el.firstChild) out.lower.push(node.textContent.trim().slice(0,42));
       }
       out.fonts.push(parseFloat(cs.fontSize));
     }
@@ -218,6 +224,8 @@ for (const f of files) {
     elemSamples.push(m.elements || 0); gradAny = gradAny || !!m.gradient;
     for (const o of m.texts) { const k = o.a + '|' + o.b; if (!seenOverlap.has(k)) { seenOverlap.add(k); add(name, 'text-collision', `"${o.a}" ⨯ "${o.b}" (${o.overlapPct}% at ${t.toFixed(1)}s)`); } }
     for (const o of m.oob) { const k = o.text; if (!seenOob.has(k)) { seenOob.add(k); add(name, 'out-of-frame', `"${o.text}" at x${o.x} y${o.y} → ${o.right}×${o.bottom} (${t.toFixed(1)}s)`); } }
+    for (const z of (m.zone || [])) { const k = z.zone + '|' + z.text; if (!seenOob.has(k)) { seenOob.add(k); add(name, 'no-go-zone', `"${z.text}" sits in the ${z.zone}, bottom y${z.y} (${t.toFixed(1)}s)`); } }
+    for (const l of (m.lower || [])) { const k = 'lower|' + l; if (!seenOob.has(k)) { seenOob.add(k); add(name, 'lowercase-lead', `"${l}" starts lowercase — sentence or title case (${t.toFixed(1)}s)`); } }
     for (const c of m.crops) { if (!seenCrop.has(c.src)) { seenCrop.add(c.src); add(name, 'bad-crop', `${c.src} loses ${c.lost}% (source ${c.srcAspect}:1 in ${c.boxAspect}:1 box)`); } }
     for (const e of m.empty) { if (!seenEmpty.has(e)) { seenEmpty.add(e); add(name, 'empty-container', `${e} visible but empty (first at ${t.toFixed(1)}s)`); } }
   }
