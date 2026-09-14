@@ -27,7 +27,7 @@
 <script>
 window.__timelines = window.__timelines || {};
 (function() {
-  /* host 414.957–428.61 (13.653 s) over b8-s1 (7.33 s) and the tail. */
+  /* host 414.957–429.0 (14.043 s) over b8-s1 (7.33 s) and the tail. */
   const tl = gsap.timeline({ paused: true });
   const P = "#g-close-";
   tl.set([P+"l2", P+"brand"], { autoAlpha: 0 }, 0);
@@ -35,7 +35,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"l2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.7, ease: "power2.out" }, 1.2);
   tl.fromTo(P+"brand", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.9, ease: "power3.out" }, 4.6);
   tl.fromTo(P+"b2", { letterSpacing: "16px" }, { letterSpacing: "8px", duration: 2.2, ease: "power3.out" }, 4.6);
-  tl.fromTo("#root", { scale: 1.0, transformOrigin: "center" }, { scale: 1.025, duration: 13.653, ease: "none" }, 0);
+  tl.fromTo("#root", { scale: 1.0, transformOrigin: "center" }, { scale: 1.025, duration: 14.043, ease: "none" }, 0);
   tl.to("#root", { autoAlpha: 0, duration: 1.2, ease: "power4.in" }, 12.4);
   window.__timelines["g-close"] = tl;
 })();
