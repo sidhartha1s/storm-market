@@ -1,1 +1,1 @@
-fix.py was a subagent scratch file (C:\tmp\script) not part of any deliverable; g-slope-sa2/sb2 are MG-eval scratch from merged PR #74; build_tracker.py verified again this run (unknown-slug exit 1, 5 cards render)
+build_tracker.py verified this run (29 cards, DD Mon YY dates parse, plain phase header); fix.py/check.py are subagent scratch, g-slope-* are merged PR #74 eval scratch
