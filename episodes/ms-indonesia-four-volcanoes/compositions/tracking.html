@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  Format C tracking card (B7 "what nobody has said yet"): five open items land on their spoken cues; the last one
+  stays highlighted as the unresolved line the video ends on. Same glass recipe as statusboard.html.
+  EDIT-ME: the five `at` cues from audio/b7-s1.words.json; exit at host duration − 0.6.
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; }
+  .card { position:absolute; left:110px; top:140px; width:900px; box-sizing:border-box; padding:30px 40px 26px;
+    background:rgba(10,16,24,0.60); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:6px; color:#d0121f; }
+  .row { display:flex; align-items:flex-start; gap:20px; margin-top:20px; overflow:hidden; }
+  .n { flex:0 0 56px; font-family:'AbrilFig',Georgia,serif; font-size:56px; line-height:1; color:#d0121f; text-shadow:0 3px 14px rgba(0,0,0,0.8); }
+  .lab { font-family:'Arial Black',Arial,sans-serif; font-size:30px; line-height:1.1; }
+  .sub { font-size:21px; color:#c8d3e0; margin-top:5px; line-height:1.3; }
+  .hot .lab { color:#ffd27a; }
+</style>
+<div id="root" data-composition-id="tracking" data-width="1920" data-height="1080">
+  <div class="card" id="tr-card">
+    <div class="eye" id="tr-eye">STILL OPEN TONIGHT</div>
+    <div class="row" id="tr-r1"><div class="n">1</div><div><div class="lab">SEARCH: EXTEND OR CLOSE</div><div class="sub">day 7 decision not announced</div></div></div>
+    <div class="row" id="tr-r2"><div class="n">2</div><div><div class="lab">SUNDAY'S FINDS</div><div class="sub">tarpaulins, life jackets: not yet matched to Arupadhatu I</div></div></div>
+    <div class="row" id="tr-r3"><div class="n">3</div><div><div class="lab">FLIGHTS AND PASSENGERS</div><div class="sub">no national count newer than 8 Sep</div></div></div>
+    <div class="row" id="tr-r4"><div class="n">4</div><div><div class="lab">IBU'S RUNNING TOTAL</div><div class="sub">agency reports differ; tonight's figure used</div></div></div>
+    <div class="row hot" id="tr-r5"><div class="n">5</div><div><div class="lab">THE SOUTHWEST SLOPE</div><div class="sub">no fresh measurement; last survey data ends 2023</div></div></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#tr-";
+  const rows = [P+"r1",P+"r2",P+"r3",P+"r4",P+"r5"];
+  tl.set(rows, {autoAlpha:0, height:0, marginTop:0}, 0);
+  tl.fromTo(P+"card", {x:-960, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 0);
+  /* EDIT-ME: cues from audio/b7-s1.words.json: "extended", "tarpaulins", "flights", "Ibu", "slope" */
+  const AT = [2.0, 8.0, 15.0, 22.0, 32.0];
+  rows.forEach((r, i) => tl.fromTo(r, {autoAlpha:0, y:24, height:0, marginTop:0}, {autoAlpha:1, y:0, height:"auto", marginTop:20, duration:0.4}, AT[i]));
+  tl.fromTo(P+"card", {y:0}, {y:-6, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:50}, 0.6);
+  tl.to(P+"eye", {letterSpacing:"8px", duration:1.2, ease:"power3.out"}, 0.2);
+  tl.to(P+"r5 .lab", {textShadow:"0 0 24px rgba(255,210,122,0.9)", duration:1.2, yoyo:true, repeat:9, ease:"sine.inOut"}, 33.0); /* EDIT-ME: after r5 lands */
+  tl.to(P+"card", {x:-960, autoAlpha:0, duration:0.5, ease:"power3.in"}, 60.0); /* EDIT-ME: host duration − 0.6 */
+  window.__timelines["tracking"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
