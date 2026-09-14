@@ -44,10 +44,10 @@
       "title": "Anak Krakatau Erupts Again... And Now Three More",
       "owner": "director",
       "due": "15 Sep 26",
-      "phase": "preview",
-      "status": "done",
-      "note": "preview rendered 9:41, post-render check clean; parked for owner eyeball; full render on his go",
-      "updated": "15 Sep 26 01:16"
+      "phase": "render",
+      "status": "doing",
+      "note": "owner review fixes done (windows, names, muted b-roll, CTA dip 0.5); all gates green; final render launched",
+      "updated": "15 Sep 26 02:17"
     },
     {
       "slug": "ep-tristate-repackage",
