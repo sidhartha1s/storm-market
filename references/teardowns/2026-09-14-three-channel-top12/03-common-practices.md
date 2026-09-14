@@ -1,0 +1,36 @@
+SHARED PRACTICES: ALL THREE CHANNELS DO, WE DON'T (evidence counts across cards)
+
+1. Cold open on scene/stat, zero host/channel preamble — 12/12 top12 cards + earthdesk structure note ("no chapters, no CTA, no host") + szone H2H stat-stack open. We open two ways (death-toll stat / rhetorical question) but always as scripted narration, never pure scene-image cold open.
+2. No end-of-video subscribe/CTA ask; at most one mid-roll line — explicit "No CTA found" on cards 4,6,9,10,11,12; mid-video-only ask on cards 1,2,3,7,8. 0/12 top12 close with a subscribe ask, 0/12 have any secondary-product pitch. We run a multi-part CTA (ebook + like + subscribe + comment) on both Krakatau scripts — the only videos in the whole 23-card set that do this.
+3. Open-loop, unresolved endings ("question is no longer whether... but when," "we will be tracking this as it develops") — explicit in cards 1,2,3,4,6,7,11,12 (8/12) plus both earthdesk winners' endings quoted verbatim. Ours ends with a CTA block instead of a further-open question.
+4. Named agency/scientist with a direct verbatim quote as sole authority voice — 10/12 top12 cards (USGS, NOAA, PVMBG, BNPB, INGV, WMO, NHC) + both earthdesk Krakatau videos. Our scripts carry `[src:N]` tags but no on-screen/spoken named-source quote — invisible to viewers per the H2H card.
+5. Real-time/present-tense framing ("right now," "as you're watching this," "still glows") — cards 2,3,4,9,10,11 (6/12) + both earthdesk Krakatau hooks. Our sirens hook opens past-tense ("were killed... on this beach").
+6. Subject name as word 1-2 of the title, no essay framing — every one of the 23 cards + explicit H2H note: "no competitor uses 'why' framing." Our sirens title leads with an abstract "Why" premise.
+7. Serial/follow-up coverage of the same live event across multiple uploads days apart — earthdesk ran 3 Krakatau-linked videos in 2 weeks, 2 Hawaii-hurricane videos 2 days apart (cards 5,6); spacedesk ran Nepal twice (cards 4,11). We shipped 2 Krakatau scripts but under different premises (siren mechanics vs 1883 history), not a same-premise serial follow-up.
+8. Numeric stat inside the first 15-45s (death toll, date, percentage, magnitude) — 22/23 cards. We do this too on 1883 but not consistently (sirens opens on a number then pivots to rhetorical question).
+
+WINNERS-ONLY PRACTICES (top12 / earthdesk's 3 breakouts) VS THE REST (earthdesk's 7 flops)
+
+9. Brand-recognizable proper noun carrying pre-existing cultural weight (Krakatoa/Naples-supervolcano) beats death toll or novelty topic — Sinabung (153 views) and 734-dead Nepal (103 views) flopped; zero-death Campi Flegrei got 47k. Topic name recognition, not stakes, is the lever per the earthdesk channel note.
+10. Tight pace band 143-148 wpm on the 3 earthdesk winners vs 150-164 wpm on 5 of 7 flops — soft correlate, not sole cause (one 25:22 flop still ran near-winner pace).
+11. High comment volume (22-60, real scientific debate + AI-slop callouts) is a symptom of reach, not craft — 4 of 7 flops have literally empty (0-byte) comment files despite同-style hooks/endings; this reads as an impressions/algorithm-surfacing gap upstream of content, not a quality gap (explicit ranked-cause #1 in the H2H doc).
+12. Ellipsis-escalation or concrete-stake title device on all 3 winners ("...And Now Three More Volcanoes," "beneath Half A Million Homes") vs flops' vague intensifiers ("Here's What's Coming," "Something TERRIFYING Happened") with no payoff.
+13. NOT a winner-only trait: length, structure, thumbnail template, publish latency — all controlled-for identical between earthdesk's winners and flops per its own channel note; ruling these out matters as much as the positive findings.
+
+15-LINE "DO TOMORROW" LIST (priority order)
+
+1. Put the disaster's proper noun ("Krakatoa," volcano/storm name) as the dominant word in both title and thumbnail text, drop abstract "Why" framing — evidence: 23/23 cards do this, H2H flags it as our #1 packaging gap. COMPATIBLE.
+2. Cold-open on a scene/stat image with zero rhetorical-question hook — evidence: 12/12 top12 + earthdesk structure note. COMPATIBLE (our sirens rhetorical-question hook must go regardless of this finding — it's already a rule violation).
+3. Run serial same-premise follow-ups on a still-developing story instead of one-and-done differing premises — evidence: earthdesk 3x Krakatau, spacedesk 2x Nepal, earthdesk 2x hurricane Lowell in 2 days. COMPATIBLE.
+4. Cut the end-of-video CTA stack to at most one mid-roll line, no ebook pitch inside the news narration — evidence: 0/12 top12 close with a subscribe ask; H2H ranks our CTA/length mismatch as a (lower-priority) cause of underperformance. COMPATIBLE with humanise rules; CONFLICT with monetization goal — flag as a business tradeoff, not a script-craft one.
+5. Name a real agency/scientist and give one verbatim quote spoken on-screen, not just cited in metadata — evidence: 10/12 top12 quote a named authority; our `[src:N]` tags are invisible to viewers per H2H. COMPATIBLE.
+6. Shift hook tense to present/real-time ("right now," "still erupting") over past-tense death-toll framing — evidence: 6/12 top12 + both earthdesk winners open this way. COMPATIBLE.
+7. Close on an open, unresolved question/tracking line instead of a CTA block — evidence: 8/12 top12 explicit + both earthdesk winners' endings quoted. COMPATIBLE.
+8. Tighten pace toward 143-148 wpm (we're at 152-158, already close) rather than push faster — evidence: earthdesk's 3 winners cluster 143-148 vs flops' 150-164. COMPATIBLE, minor adjustment only.
+9. Do NOT copy reveal-flip sentence construction ("but here's what made it worse," paradox-reveal) even though it appears in 8+/12 winning cards — CONFLICT, banned reveal-flip explicitly in our rules; skip this device.
+10. Do NOT adopt self-answered rhetorical-question transitions ("So the honest question is...") despite heavy use across winners — CONFLICT, banned rhetorical questions; use flat declarative transitions instead.
+11. Do NOT adopt drama-stack triads ("buried, soaked, or robbed of winter"; "not over, not there, not here") — CONFLICT, banned drama stacks even though 6+/12 winners use them.
+12. Avoid "here's"-led transitions ("here's what happens next," "here is why") — CONFLICT, our rules ban "here's the thing"-style filler; find non-"here's" transition phrasing instead.
+13. Keep em dash-free copy even where competitor transcripts use dash-like pauses — no conflict observed in our current scripts; just confirm on every new draft. COMPATIBLE.
+14. Test one Krakatoa-style ellipsis title format on the next event-tied episode ("X Is Still Happening... And Now Y") — evidence: both earthdesk winners use this exact two-beat pattern. COMPATIBLE.
+15. Track comments/impressions separately from CTR on the next launch before concluding title/thumbnail failed — evidence: H2H ranked-cause #1, 4/7 earthdesk flops show near-zero reach with identical style to winners, meaning craft can be blameless while surfacing is the real bottleneck. COMPATIBLE (a measurement discipline, not a script change).
