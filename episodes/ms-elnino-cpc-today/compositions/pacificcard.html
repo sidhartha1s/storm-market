@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  B2 four-region Pacific card. PLATE: CPC "Average Relative SST Anomalies 16 Aug–12 Sep 2026" (cpc-weekly-sst-anomaly-map, 2000×1400,
+  US-gov PD). DATUM read off the plate's own axes: 120E at x415, 150E 620, 180 826, 150W 1032, 120W 1238, 90W 1444 (6.87 px/°);
+  30N y630, EQ 868, 30S 1108 (7.97 px/°). Crop x330–1670 y480–1320 shown at 0.9. Region boxes are the CPC definitions:
+  Niño 1+2 90–80W 0–10S · Niño 3 150–90W 5N–5S · Niño 3.4 170–120W 5N–5S · Niño 4 160E–150W 5N–5S. Values: s1 (10 Sep advisory).
+  Host = b2-s1 start + 6.5 (39.18), 51.95 s. Cues rel host: 3.4-index 0.8 · +1.8 2.6 · South America 5.7 · +3.4 8.1 · region between 14.6 ·
+  +2.5 16.2 · dateline 18.2 · tenth 21.1 · stacked east 22.6 · since June 48.4 · 8 Oct 51.2.
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; background: radial-gradient(ellipse at 60% 40%, #0e1a28 0%, #04070c 75%); overflow:hidden; font-family:Arial,sans-serif; color:#f2f5f8; }
+  .plate { position:absolute; left:640px; top:170px; width:1206px; height:756px; overflow:hidden; border-radius:14px; box-shadow:0 20px 60px rgba(0,0,0,0.6); transform-origin:100% 50%; }
+  .plate img { position:absolute; left:-297px; top:-432px; width:1800px; height:1260px; }
+  .box { position:absolute; border:4px solid #fff; border-radius:4px; box-sizing:border-box; box-shadow:0 0 0 2px rgba(0,0,0,0.6), 0 0 18px rgba(255,255,255,0.5); }
+  .box.n34 { border-color:#ffd27a; border-style:dashed; }
+  .box.n4 { border-color:#6fb0e6; }
+  .box.n12 { border-color:#d0121f; }
+  .val { position:absolute; white-space:nowrap; font-family:'Arial Black',Arial,sans-serif; font-size:26px; letter-spacing:1px; color:#f4f0e8; background:rgba(10,16,24,0.82); border:1px solid rgba(255,255,255,0.14); border-left:5px solid #fff; padding:4px 12px; border-radius:6px; }
+  .val.n34 { border-left-color:#ffd27a; } .val.n4 { border-left-color:#6fb0e6; } .val.n12 { border-left-color:#d0121f; }
+  .panel { position:absolute; left:110px; top:120px; width:500px; box-sizing:border-box; padding:26px 30px 22px; background:rgba(10,16,24,0.66); backdrop-filter:blur(16px) saturate(1.15); -webkit-backdrop-filter:blur(16px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:24px; }
+  .eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:5px; color:#d0121f; }
+  .big { margin-top:8px; line-height:1.05; font-family:'AbrilFig',Georgia,serif; font-size:56px; text-shadow:0 3px 14px rgba(0,0,0,0.85); }
+  .row { display:flex; justify-content:space-between; align-items:baseline; margin-top:14px; border-bottom:1px solid rgba(255,255,255,0.12); padding-bottom:6px; }
+  .row .n { font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:2px; color:#c8d3e0; }
+  .row .v { font-family:'AbrilFig',Georgia,serif; font-size:44px; line-height:1; }
+  .row.hot .v { color:#ff5a5a; }
+  .foot { margin-top:16px; font-size:21px; color:#c8d3e0; line-height:1.4; }
+  .src { position:absolute; right:40px; top:34px; font-size:20px; letter-spacing:1px; color:rgba(220,228,236,0.85); background:rgba(5,8,12,0.6); padding:6px 14px; }
+</style>
+<div id="root" data-composition-id="pacificcard" data-width="1920" data-height="1080">
+  <div class="src">MAP: NOAA CLIMATE PREDICTION CENTER · 16 AUG–12 SEP 2026</div>
+  <div class="plate" id="pc-plate">
+    <img src="../media/plates/cpc-weekly-sst-anomaly-map-16aug-12sep2026.png" alt="">
+    <div class="box n34" id="pc-b34" style="left:509px; top:313px; width:309px; height:72px"></div>
+    <div class="box n12" id="pc-b12" style="left:1003px; top:349px; width:62px; height:71px"></div>
+    <div class="box" id="pc-b3" style="left:632px; top:313px; width:371px; height:72px"></div>
+    <div class="box n4" id="pc-b4" style="left:323px; top:313px; width:309px; height:72px"></div>
+    <div class="val n34" id="pc-v34" style="left:560px; top:262px">NIÑO 3.4 · +1.8 °C</div>
+    <div class="val n12" id="pc-v12" style="left:930px; top:432px">NIÑO 1+2 · +3.4 °C</div>
+    <div class="val" id="pc-v3" style="left:700px; top:396px">NIÑO 3 · +2.5 °C</div>
+    <div class="val n4" id="pc-v4" style="left:330px; top:396px">NIÑO 4 · +0.1 °C</div>
+  </div>
+  <div class="panel" id="pc-panel">
+    <div class="eye" id="pc-eye">THE FOUR REGIONS THE CENTER TRACKS</div>
+    <div class="big" id="pc-big">HEAT STACKED IN THE EAST</div>
+    <div class="row" id="pc-r34"><div class="n">NIÑO 3.4 · CENTRAL</div><div class="v">+1.8</div></div>
+    <div class="row hot" id="pc-r12"><div class="n">NIÑO 1+2 · OFF PERU</div><div class="v">+3.4</div></div>
+    <div class="row" id="pc-r3"><div class="n">NIÑO 3 · BETWEEN</div><div class="v">+2.5</div></div>
+    <div class="row" id="pc-r4"><div class="n">NIÑO 4 · DATELINE</div><div class="v">+0.1</div></div>
+    <div class="foot" id="pc-foot">Advisory in force since June · next update 8 October</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#pc-";
+  tl.set([P+"b34",P+"b12",P+"b3",P+"b4",P+"v34",P+"v12",P+"v3",P+"v4",P+"r34",P+"r12",P+"r3",P+"r4",P+"foot",P+"big"], { autoAlpha: 0 }, 0);
+  tl.fromTo("#root", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 0);
+  tl.fromTo(P+"plate", { scale: 1.0 }, { scale: 1.05, duration: 51.95, ease: "none" }, 0);
+  tl.fromTo(P+"big", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 22.6); /* "stacked in the east" */
+  const land = (box, val, row, at) => {
+    tl.fromTo(box, { autoAlpha: 0, scale: 1.6, transformOrigin: "center" }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power3.out" }, at);
+    tl.fromTo(val, { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, at + 0.3);
+    tl.fromTo(row, { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, at + 0.3);
+  };
+  land(P+"b34", P+"v34", P+"r34", 0.8);   /* the central Pacific index · +1.8 at 2.6 */
+  land(P+"b12", P+"v12", P+"r12", 5.7);   /* off the coast of South America · +3.4 at 8.1 */
+  land(P+"b3",  P+"v3",  P+"r3",  14.6);  /* the region between them · +2.5 at 16.2 */
+  land(P+"b4",  P+"v4",  P+"r4",  18.2);  /* out near the dateline · a tenth at 21.1 */
+  tl.to(P+"b12", { boxShadow: "0 0 0 2px rgba(0,0,0,0.6), 0 0 30px rgba(208,18,31,1)", duration: 0.9, yoyo: true, repeat: 47, ease: "sine.inOut" }, 8.1);
+  tl.fromTo(P+"foot", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 48.4);
+  tl.to("#root", { autoAlpha: 0, duration: 0.4 }, 51.5);
+  window.__timelines["pacificcard"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
