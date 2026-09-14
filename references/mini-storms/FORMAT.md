@@ -37,7 +37,7 @@ Krakatau mini-docs got 55–60 impressions under the same keyword; the format mi
   hits run 66–78 wpm over the whole runtime because footage with natural sound breathes between narration blocks; the
   slowness comes from footage holds, not slow speech. A footage-only hold (natural sound, popfig place label) every
   60–90 s is allowed, not required: narrated clips as shipped so far are equally fine; the editor picks per cut (owner 2026-09-14).
-- **Skeleton, 12:00 at 165 wpm delivered (scale beats 3, 5, 7 for 10–14 min):**
+- **Skeleton, 12:00 at 158 wpm delivered (measured 14 Sep 26: Pharaoh clone 143 wpm native, 158 at atempo 1.10 on a 77-word probe; ≈1,900 words per 12:00; scale beats 3, 5, 7 for 10–14 min):**
 
 | # | Beat | Time | Words |
 |---|---|---|---|
@@ -63,7 +63,7 @@ Formats A and B below remain available for evergreen and explainer topics.
 HOOK **3–10 s** (one present-tense sentence paying off the title, spoken + red popfig) → INTRO to
 ~1:10 (stakes numbers, open loops, promise) → CHAPTERS → PAYOFF → WARM CLOSE → subscribe.
 Size every section in words before TTS at the delivered pace (Formats A/B ~148 wpm ≈ 2.47 words/s with
-atempo 1.15; Format C 165 wpm with atempo 1.10, measure on the sped wav): 8:30 ≈ 1,260 words, 9:30 ≈ 1,410, 12:00 ≈ 1,780. Table goes in packaging.md.
+atempo 1.15; Format C 158 wpm with atempo 1.10 (measured), re-measure on the sped wav): 8:30 ≈ 1,260 words, 9:30 ≈ 1,410, 12:00 ≈ 1,780. Table goes in packaging.md.
 
 ## Retention architecture (owner + GPT pass on Krakatau #4, 2026-09-11)
 Measured against a 14-minute cut that scored 5.5/10 on stakes-per-90-seconds before the rewrite.
