@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  B3 quiet-Atlantic card. PLATE: NHC Two-Day Graphical Tropical Weather Outlook, 14 Sep 2026 1:52 PM EDT (900×679, US-gov PD),
+  shown at 1.3× (1170×883) at left 700, top 70. DATUM: the plate's own graticule (60W at x425, 50W 520; 25N y360, 35N 250). The one
+  marked area is the plate's own yellow X at (520,320) → screen (1376,486); Bermuda ≈ 64.7W 32.3N → plate (380,280) → screen (1194,434).
+  Host = b3-s1 start (91.73), 38.0 s. Cues rel: Atlantic 2.0 · NHC 5.8 · no active storm 8.6 · Caribbean 11.2 · Gulf 12.4 · one area 13.8 ·
+  Bermuda 17.8 · quiet is the story 24.8 · <10% 29.7 · 40% 35.0.
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; background: radial-gradient(ellipse at 60% 40%, #0e1a28 0%, #04070c 75%); overflow:hidden; font-family:Arial,sans-serif; color:#f2f5f8; }
+  .plate { position:absolute; left:700px; top:70px; width:1170px; height:883px; transform-origin:50% 50%; }
+  .plate img { position:absolute; left:0; top:0; width:1170px; height:883px; filter:saturate(0.9) brightness(0.92); border-radius:12px; }
+  .pill { position:absolute; white-space:nowrap; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:2px; color:#f4f0e8; background:rgba(10,16,24,0.82); border:1px solid rgba(255,255,255,0.14); border-left:5px solid #2f8f5b; padding:5px 12px; border-radius:6px; }
+  .pill b { color:#7fe0a5; margin-right:8px; }
+  .ring { position:absolute; width:120px; height:120px; margin:-60px 0 0 -60px; border-radius:50%; border:4px solid #ffd27a; box-shadow:0 0 24px rgba(255,210,122,0.8); }
+  .pin { position:absolute; width:14px; height:14px; margin:-7px 0 0 -7px; border-radius:50%; background:#d0121f; box-shadow:0 0 0 4px rgba(208,18,31,0.35), 0 0 16px rgba(208,18,31,0.9); }
+  .tag { position:absolute; white-space:nowrap; font-family:'Arial Black',Arial,sans-serif; font-size:20px; letter-spacing:1.5px; color:#f4f0e8; background:rgba(10,16,24,0.82); border:1px solid rgba(255,255,255,0.14); border-left:5px solid #ffd27a; padding:5px 12px; border-radius:6px; }
+  .panel { position:absolute; left:110px; top:120px; width:540px; box-sizing:border-box; padding:26px 30px 22px; background:rgba(10,16,24,0.66); backdrop-filter:blur(16px) saturate(1.15); -webkit-backdrop-filter:blur(16px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:24px; }
+  .eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:5px; color:#d0121f; }
+  .big { margin-top:8px; line-height:1.05; font-family:'AbrilFig',Georgia,serif; font-size:64px; text-shadow:0 3px 14px rgba(0,0,0,0.85); }
+  .side { margin-top:8px; font-size:21px; color:#c8d3e0; line-height:1.35; }
+  .side b { display:block; font-family:'Arial Black',Arial,sans-serif; font-size:30px; color:#f2f5f8; margin-top:16px; }
+  .src { position:absolute; left:110px; bottom:140px; font-size:20px; letter-spacing:1px; color:rgba(220,228,236,0.85); background:rgba(5,8,12,0.6); padding:6px 14px; }
+</style>
+<div id="root" data-composition-id="atlanticmap" data-width="1920" data-height="1080">
+  <div class="src">PLATE: NATIONAL HURRICANE CENTER · 14 SEP 2026, 1:52 PM EDT</div>
+  <div class="plate" id="am-plate">
+    <img src="../media/plates/nhc-atlantic-tropical-outlook-2day-14sep2026.png" alt="">
+    <div class="pill" id="am-atl" style="left:760px; top:300px"><b>0</b>ATLANTIC</div>
+    <div class="pill" id="am-car" style="left:300px; top:560px"><b>0</b>CARIBBEAN</div>
+    <div class="pill" id="am-gulf" style="left:110px; top:420px"><b>0</b>GULF OF MEXICO</div>
+    <div class="ring" id="am-ring" style="left:676px; top:416px"></div>
+    <div class="pin" id="am-berm" style="left:494px; top:364px"></div>
+    <div class="tag" id="am-tberm" style="left:330px; top:318px">BERMUDA</div>
+    <div class="tag" id="am-tarea" style="left:640px; top:500px">1 AREA · 1,000 MI ESE OF BERMUDA</div>
+  </div>
+  <div class="panel" id="am-panel">
+    <div class="eye" id="am-eye">PEAK OF HURRICANE SEASON · 14 SEP</div>
+    <div class="big" id="am-big">0 ACTIVE STORMS</div>
+    <div class="side"><div id="am-s1"><b>1 AREA</b>Disorganized, could turn more favorable by midweek</div><div id="am-s2"><b>&lt;10% OF NORMAL</b>Atlantic activity this season · NOAA ENSO blog</div><div id="am-s3"><b>40%</b>Chance of forming over the next week · NHC</div></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#am-";
+  tl.set([P+"atl",P+"car",P+"gulf",P+"ring",P+"berm",P+"tberm",P+"tarea",P+"s1",P+"s2",P+"s3",P+"big"], { autoAlpha: 0 }, 0);
+  tl.fromTo("#root", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 0);
+  tl.fromTo(P+"plate", { scale: 1.0, x: 0 }, { scale: 1.04, x: -20, duration: 38.0, ease: "none" }, 0);
+  tl.fromTo(P+"big", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 8.6);  /* "no active storm" */
+  [[P+"atl", 10.4], [P+"car", 11.2], [P+"gulf", 12.4]].forEach(([s, at]) => tl.fromTo(s, { autoAlpha: 0, scale: 1.4, transformOrigin: "left center" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power3.out" }, at));
+  tl.fromTo(P+"ring", { autoAlpha: 0, scale: 3 }, { autoAlpha: 1, scale: 1, duration: 0.6, ease: "power3.out" }, 13.8);   /* one disorganized area */
+  tl.fromTo(P+"tarea", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 14.4);
+  tl.fromTo(P+"s1", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 14.0);
+  tl.fromTo(P+"berm", { autoAlpha: 0, scale: 3 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 17.8);   /* Bermuda */
+  tl.fromTo(P+"tberm", { autoAlpha: 0, y: -12 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 18.0);
+  tl.fromTo(P+"s2", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 29.7);
+  tl.fromTo(P+"s3", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 35.0);
+  tl.to(P+"ring", { scale: 1.15, duration: 0.9, yoyo: true, repeat: 25, ease: "sine.inOut" }, 14.4);
+  tl.to("#root", { autoAlpha: 0, duration: 0.4 }, 37.6);
+  window.__timelines["atlanticmap"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
