@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  B3 tail: the first sight of the two CPC outlook maps (same plates as uswinter.html; this is the short first pass, so it is its own
+  composition id). Host = b3-s1 start + 62.0 (153.73), 11.25 s. Cues rel host: milder across the north 1.9 · wetter across the south 6.8.
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; background: radial-gradient(ellipse at 50% 30%, #0b1420 0%, #04070c 80%); font-family:Arial,sans-serif; color:#f2f5f8; overflow:hidden; }
+  .eye { position:absolute; left:110px; top:60px; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:6px; color:#d0121f; }
+  .note { position:absolute; left:110px; top:100px; font-size:22px; color:#93a3b2; letter-spacing:1px; }
+  .big { position:absolute; right:110px; top:56px; white-space:nowrap; font-family:'AbrilFig',Georgia,serif; font-size:56px; text-shadow:0 3px 14px rgba(0,0,0,0.8); }
+  .map { position:absolute; top:190px; width:720px; height:556px; overflow:hidden; border-radius:12px; border:1px solid rgba(255,255,255,0.14); box-shadow:0 16px 44px rgba(0,0,0,0.6); }
+  .map img { position:absolute; left:0; top:0; width:720px; height:556px; }
+  .map .cap { position:absolute; left:0; right:0; top:0; padding:8px 14px; font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:2px; background:rgba(10,16,24,0.84); }
+  .map .cap b { margin-right:10px; }
+  #ua-mt { left:110px; } #ua-mp { left:850px; }
+  #ua-mt .cap b { color:#ffb347; } #ua-mp .cap b { color:#7fd0ff; }
+  .lean { position:absolute; top:780px; font-family:'Arial Black',Arial,sans-serif; font-size:34px; letter-spacing:2px; padding:10px 20px; border-radius:8px; background:rgba(10,16,24,0.82); border:1px solid rgba(255,255,255,0.14); }
+  #ua-l1 { left:110px; border-left:6px solid #ffb347; } #ua-l2 { left:850px; border-left:6px solid #7fd0ff; }
+</style>
+<div id="root" data-composition-id="uswinter-a" data-width="1920" data-height="1080">
+  <div class="eye" id="ua-eye">FOR THE UNITED STATES · THE WINTER AHEAD</div>
+  <div class="note">CPC seasonal outlooks issued 20 Aug 2026</div>
+  <div class="big" id="ua-big">THE MAPS LEAN</div>
+  <div class="map" id="ua-mt"><img src="../media/plates/cpc-outlook-ond2026-temperature.gif" alt=""><div class="cap"><b>TEMPERATURE</b>OCT–NOV–DEC 2026</div></div>
+  <div class="map" id="ua-mp"><img src="../media/plates/cpc-outlook-ndj2026-27-precipitation.gif" alt=""><div class="cap"><b>PRECIPITATION</b>NOV–DEC–JAN 2026–27</div></div>
+  <div class="lean" id="ua-l1">MILDER · PACIFIC NORTHWEST TO THE NORTHEAST</div>
+  <div class="lean" id="ua-l2">WETTER · SOUTHERN CALIFORNIA TO FLORIDA</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#ua-";
+  tl.set([P+"mp", P+"l1", P+"l2"], { autoAlpha: 0 }, 0);
+  tl.fromTo("#root", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 0);
+  tl.fromTo(P+"big", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.4);
+  tl.fromTo(P+"mt", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.3);
+  tl.fromTo(P+"l1", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 1.9);
+  tl.fromTo(P+"mp", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 6.2);
+  tl.fromTo(P+"l2", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 6.8);
+  tl.fromTo([P+"mt img", P+"mp img"], { scale: 1.0, transformOrigin: "center" }, { scale: 1.04, duration: 11.25, ease: "none" }, 0);
+  tl.to("#root", { autoAlpha: 0, duration: 0.4 }, 10.85);
+  window.__timelines["uswinter-a"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
