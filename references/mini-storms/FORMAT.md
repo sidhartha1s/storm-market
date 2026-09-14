@@ -58,6 +58,16 @@ Krakatau mini-docs got 55–60 impressions under the same keyword; the format mi
   nor `data-has-audio` (day-1 miss: a stranded-passenger interview played under Paul and a quote card, 15 Sep 26).
 - **Narration windows = wav lengths.** lint_timeline fails any `nx-*` audio whose data-duration is shorter than its wav (day-1
   truncation: a retime moved starts and left the old lengths, cutting the last words of six segments).
+- **Hard foreign names leave the voice and live on screen (owner 15 Sep 26, Hawaii review).** Kilauea, Hanalei, Kaumalapau,
+  Moloaa, Haena, Wainiha, Nawiliwili, Puu Lua read as AI slop even respelled. Paul says "two elementary schools on the North
+  Shore", "Lanai's only cargo harbor", "the utility"; the map tags, chips and cards carry the real names. Keep only names an
+  American senior already says (Kauai, Lanai, Oahu, Krakatoa). Indonesian names: owner decides after hearing the phonetic pass.
+- **Screen text uses numerals, the voice uses words.** Close card "81% restored. 3 names." while Paul says "eighty one percent".
+- **Composition layout zones (map them before the first comp, not after 20 videos):** top-left eyebrow (110,60) + big title
+  below it; top-right big number (right 110, top 56); left glass cards x 110–1090; map/diagram plates x 700–1700; NO text in the
+  bottom 100 px (news bug) or in x ≥ 1600 / y ≥ 680 (presenter circle). graphics_qc fails `no-go-zone` and `lowercase-lead`.
+- **Grouped reveals.** A stat and its caption are one element and appear together (the Kauai map showed captions before their
+  numbers when only the numbers were hidden).
 - **Pronunciation gate before timing.** After TTS, read every proper noun back from words.json; respell in plain lowercase
   phonetics (no hyphens, no caps: the clone read "DAH" and "-" as words) and re-synthesise before the cut list exists.
 - **Packaging:** proper noun (volcano, storm, place) dominant in title and thumb, a number in the title, present tense,
