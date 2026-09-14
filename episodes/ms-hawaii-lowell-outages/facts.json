@@ -1,0 +1,222 @@
+{
+ "as_of_utc": "2026-09-14 (exact UTC time not captured by tools; session date confirmed as 2026-09-14)",
+ "facts": [
+  {
+   "fact": "KIUC had restored power to more than 80% of its members, the most recent figure available",
+   "number": "80%",
+   "source_name": "The Garden Island",
+   "url": "https://www.thegardenisland.com/2026/09/14/hawaii-news/power-back-to-more-than-80-percent-of-kiuc-members/",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "About 8,400 KIUC members remained without power, most on the North Shore between Moloaa and Haena, with scattered pockets from Anahola to Kekaha and Kokee",
+   "number": "8,400",
+   "source_name": "Honolulu Star-Advertiser",
+   "url": "https://www.staradvertiser.com/2026/09/13/hawaii-news/kauai-power-restoration-expands-as-outside-crews-join-lowell-recovery/",
+   "date": "2026-09-13"
+  },
+  {
+   "fact": "76% of KIUC members had power restored as of Saturday",
+   "number": "76%",
+   "source_name": "Honolulu Star-Advertiser",
+   "url": "https://www.staradvertiser.com/2026/09/13/hawaii-news/kauai-power-restoration-expands-as-outside-crews-join-lowell-recovery/",
+   "date": "2026-09-12"
+  },
+  {
+   "fact": "At the storm's peak, roughly 90% of KIUC accounts (33,000 of 36,000) lost power",
+   "number": "33,000 of 36,000",
+   "source_name": "Hawaii Emergency Management Agency",
+   "url": "https://dod.hawaii.gov/hiema/hurricane-lowell-updates/",
+   "date": "2026-09-08"
+  },
+  {
+   "fact": "Wind gusts reached 87 mph at Nawiliwili and 84 mph at Lihue",
+   "number": "87 mph / 84 mph",
+   "source_name": "Maui Now (citing Hawaii congressional delegation letter)",
+   "url": "https://mauinow.com/2026/09/14/hawaii-congressional-delegation-urges-approval-of-presidential-disaster-declaration-requests-following-hurricanes-lowell-and-lala/",
+   "date": "2026-09-09"
+  },
+  {
+   "fact": "A wind gust up to 92 mph was recorded at Puu Lua on Kauai",
+   "number": "92 mph",
+   "source_name": "Honolulu Civil Beat",
+   "url": "https://www.civilbeat.org/2026/09/hurricane-lowell-hit-kauai-hard-but-worst-fears-averted/",
+   "date": "2026-09-09"
+  },
+  {
+   "fact": "Rainfall in Kauai's higher elevations reached 17 inches",
+   "number": "17 inches",
+   "source_name": "Maui Now (citing congressional delegation letter)",
+   "url": "https://mauinow.com/2026/09/14/hawaii-congressional-delegation-urges-approval-of-presidential-disaster-declaration-requests-following-hurricanes-lowell-and-lala/",
+   "date": "2026-09-09"
+  },
+  {
+   "fact": "The highest measured rain total was just shy of 16 inches at Lower Limahuli, near Haena",
+   "number": "16 inches",
+   "source_name": "Honolulu Civil Beat",
+   "url": "https://www.civilbeat.org/2026/09/hurricane-lowell-hit-kauai-hard-but-worst-fears-averted/",
+   "date": "2026-09-09"
+  },
+  {
+   "fact": "Storm surge of 2-4 feet hit the south and west coasts of Kauai and Niihau",
+   "number": "2-4 feet",
+   "source_name": "Maui Now (citing congressional delegation letter)",
+   "url": "https://mauinow.com/2026/09/14/hawaii-congressional-delegation-urges-approval-of-presidential-disaster-declaration-requests-following-hurricanes-lowell-and-lala/",
+   "date": "2026-09-09"
+  },
+  {
+   "fact": "Kauai County officials reported no storm-related deaths on Kauai or Niihau; Fire Chief Mike Gibson said all people reported trapped or unaccounted for were located",
+   "number": "0 deaths",
+   "source_name": "Kauai Now",
+   "url": "https://kauainownews.com/2026/09/08/no-storm-related-deaths-reported-following-impacts-of-hurricane-lowell-in-kauai-county/",
+   "date": "2026-09-08"
+  },
+  {
+   "fact": "At least one storm-related injury was reported on Kauai",
+   "number": "1 injury",
+   "source_name": "Honolulu Civil Beat",
+   "url": "https://www.civilbeat.org/2026/09/hurricane-lowell-hit-kauai-hard-but-worst-fears-averted/",
+   "date": "2026-09-09"
+  },
+  {
+   "fact": "As of Tuesday evening, Kauai County had logged 10 residential and 4 business damage claims, a count county officials said would grow",
+   "number": "10 residential / 4 business",
+   "source_name": "Kauai Now",
+   "url": "https://kauainownews.com/2026/09/08/no-storm-related-deaths-reported-following-impacts-of-hurricane-lowell-in-kauai-county/",
+   "date": "2026-09-08"
+  },
+  {
+   "fact": "Red Cross opened five areas of refuge on Kauai, sheltering more than 300 people at the storm's peak; three overnight shelters remained open for residents who could not yet return home",
+   "number": "300 people / 3 shelters",
+   "source_name": "Kauai Now",
+   "url": "https://kauainownews.com/2026/09/13/red-cross-provides-assistance-sheltering-on-kauai-during-and-in-aftermath-of-hurricane-lowell/",
+   "date": "2026-09-13"
+  },
+  {
+   "fact": "Lihue Airport reopened at 11:15 a.m. Tuesday after closing ahead of the storm; it began operating on restored commercial power at 5 p.m. Thursday",
+   "number": "11:15 a.m. Tue / 5 p.m. Thu",
+   "source_name": "Hawaii News Now / Kauai Now",
+   "url": "https://kauainownews.com/2026/09/11/governor-provides-update-about-major-recovery-progress-following-hurricane-lowell/",
+   "date": "2026-09-11"
+  },
+  {
+   "fact": "Nawiliwili Harbor was reopened by the U.S. Coast Guard Captain of the Port before 5 p.m. Tuesday, but Port Allen remained closed to commercial operations as of Sept. 11 while divers restored navigational buoys",
+   "number": "5 p.m. Tuesday",
+   "source_name": "Kauai Now",
+   "url": "https://kauainownews.com/2026/09/11/governor-provides-update-about-major-recovery-progress-following-hurricane-lowell/",
+   "date": "2026-09-11"
+  },
+  {
+   "fact": "Lanai's only cargo harbor, Kaumalapau Harbor, was rendered inoperable, cutting off the main food and fuel supply route for the island's 3,300 residents, with an estimated two-week repair timeline",
+   "number": "3,300 residents / ~2 weeks",
+   "source_name": "NBC News",
+   "url": "https://www.nbcnews.com/news/us-news/hurricane-lowell-knocks-hawaii-port-kauai-islands-source-food-fuel-rcna597177",
+   "date": "2026-09-09"
+  },
+  {
+   "fact": "KIUC had restored 12 of its 15 transmission lines, with 72% of Kauai's power back on",
+   "number": "12 of 15 / 72%",
+   "source_name": "Kauai Now",
+   "url": "https://kauainownews.com/2026/09/11/governor-provides-update-about-major-recovery-progress-following-hurricane-lowell/",
+   "date": "2026-09-11"
+  },
+  {
+   "fact": "About 100 outside utility personnel from Hawaiian Electric, Southern California Edison and HMS Construction were flown in via an Air Force C-17 Globemaster III to help KIUC crews",
+   "number": "100 personnel",
+   "source_name": "Honolulu Star-Advertiser",
+   "url": "https://www.staradvertiser.com/2026/09/13/hawaii-news/kauai-power-restoration-expands-as-outside-crews-join-lowell-recovery/",
+   "date": "2026-09-13"
+  },
+  {
+   "fact": "CPHC's final advisory on Lowell listed it as a post-tropical cyclone with max sustained winds of 50 mph, located about 815 miles northwest of Lihue and moving away from Hawaii; this was Advisory Number 60, the last one issued",
+   "number": "50 mph / 815 miles",
+   "source_name": "NOAA/Central Pacific Hurricane Center",
+   "url": "https://www.nhc.noaa.gov/mobile/text/refresh/HFOTCPCP4+html/012321.shtml",
+   "date": "2026-09-10"
+  },
+  {
+   "fact": "Gov. Josh Green requested an expedited federal Major Disaster Declaration for Lowell; a presidential emergency declaration (a lesser, faster form of federal aid) had already been issued, covering emergency protective measures",
+   "number": "1 emergency declaration issued",
+   "source_name": "Kauai Now",
+   "url": "https://kauainownews.com/2026/09/11/governor-provides-update-about-major-recovery-progress-following-hurricane-lowell/",
+   "date": "2026-09-11"
+  },
+  {
+   "fact": "Hawaii's congressional delegation (Sens. Schatz and Hirono, Reps. Case and Tokuda) sent a letter to the President on Sept. 9 urging approval of major disaster declarations for both Lowell and the earlier Hurricane Lala",
+   "number": "4 delegation members",
+   "source_name": "Maui Now",
+   "url": "https://mauinow.com/2026/09/14/hawaii-congressional-delegation-urges-approval-of-presidential-disaster-declaration-requests-following-hurricanes-lowell-and-lala/",
+   "date": "2026-09-14"
+  },
+  {
+   "fact": "All Kauai county, state and Department of Education offices and schools were closed through Friday, Sept. 11, along with county parks, campgrounds and the Wailua Golf Course",
+   "number": "closed through Sept. 11",
+   "source_name": "The Garden Island",
+   "url": "https://www.thegardenisland.com/2026/09/10/hawaii-news/residents-assess-lowells-impact/",
+   "date": "2026-09-10"
+  }
+ ],
+ "quotes": [
+  {
+   "quote": "Getting these machines to Hawaii for Lala is now also helping us to reduce suffering on Kauai.",
+   "speaker": "Josh Green",
+   "title": "Governor of Hawaii",
+   "url": "https://www.staradvertiser.com/2026/09/13/hawaii-news/kauai-power-restoration-expands-as-outside-crews-join-lowell-recovery/"
+  },
+  {
+   "quote": "I simply decided that we had to do everything possible to shorten the time to recovery, and partnering with the military and utilizing our National Guard on the ground has been a major addition to our state and county efforts.",
+   "speaker": "Josh Green",
+   "title": "Governor of Hawaii",
+   "url": "https://www.staradvertiser.com/2026/09/13/hawaii-news/kauai-power-restoration-expands-as-outside-crews-join-lowell-recovery/"
+  },
+  {
+   "quote": "Getting 72% of Kauaʻi's power restored this quickly is a tremendous accomplishment given the extent of the damage.",
+   "speaker": "Josh Green",
+   "title": "Governor of Hawaii",
+   "url": "https://kauainownews.com/2026/09/11/governor-provides-update-about-major-recovery-progress-following-hurricane-lowell/"
+  },
+  {
+   "quote": "We will know much more in the next couple of days as we gauge the progress.",
+   "speaker": "David Bissell",
+   "title": "President and CEO, Kauai Island Utility Cooperative (KIUC)",
+   "url": "https://www.thegardenisland.com/2026/09/14/hawaii-news/power-back-to-more-than-80-percent-of-kiuc-members/"
+  },
+  {
+   "quote": "We know our members want to know when their power will be restored.",
+   "speaker": "David Bissell",
+   "title": "President and CEO, Kauai Island Utility Cooperative (KIUC)",
+   "url": "https://www.civilbeat.org/2026/09/hurricane-lowell-hit-kauai-hard-but-worst-fears-averted/"
+  },
+  {
+   "quote": "The cumulative impact of these events exceeds the capacity of the State and our counties, warranting federal assistance.",
+   "speaker": "Sens. Brian Schatz, Mazie Hirono; Reps. Ed Case, Jill Tokuda",
+   "title": "Hawaii Congressional Delegation",
+   "url": "https://mauinow.com/2026/09/14/hawaii-congressional-delegation-urges-approval-of-presidential-disaster-declaration-requests-following-hurricanes-lowell-and-lala/"
+  }
+ ],
+ "titles": [
+  "Kauai Reaches 80% Power Restored After Lowell",
+  "8,400 Kauai Homes Remain Without Power",
+  "Kauai Confirms 1 Injury, No Deaths From Lowell",
+  "Lanai Port Stays Shut 2 Weeks After Lowell",
+  "CPHC Issues Final Advisory 60 for Lowell"
+ ],
+ "unknowns": [
+  "No official total dollar damage estimate for Hurricane Lowell has been published yet (Hurricane Lala's $67M FEMA-eligible estimate took roughly a month to compile; Lowell's equivalent figure was not found in any source as of Sept 14).",
+  "No comprehensive, final count of damaged homes/structures on Kauai exists yet: county assessments and self-reported claims are still being compiled (early counts of 10 residential/4 business on Sept 8 do not reflect the fuller scope described later in coverage).",
+  "No breakdown of the injury total beyond 'at least one' — number injured, severity, and hospitalizations are not detailed in any source found.",
+  "No confirmed hard date for 100% power restoration; KIUC leadership (Bissell) says only that more clarity is expected 'in the next couple of days' as of Sept 14.",
+  "No exact headcount remains for how many people are still in the 3 open shelters as of Sept 13-14 (only the 300-person peak figure is given).",
+  "Whether President Trump has approved (vs. still reviewing) the Major Disaster Declaration request for Lowell is unconfirmed — as of the Sept 14 letter, the delegation was still 'urging approval,' meaning it had not yet been granted.",
+  "No confirmed reopening date for Port Allen commercial operations or Lanai's Kaumalapau Harbor beyond the initial ~2-week estimate given Sept 9.",
+  "No update found on whether Kauai's schools/county offices reopened after the initial Sept 11 closure date, or if closures were extended."
+ ],
+ "warnings": [
+  "CONTRADICTION - do not attribute a death to Hurricane Lowell: A CNN headline ('At least 1 dead in Hawaii after Hurricane Lowell...', published 2026-09-06) surfaced in search but the article itself returned HTTP 451 and could not be opened directly to verify. Kauai County officials explicitly stated on 2026-09-08 (Kauai Now, Fire Chief Mike Gibson) that there were NO storm-related deaths on Kauai or Niihau from Lowell. Separately, Hurricane Lala — a distinct, earlier storm that hit Hawaii's Big Island in mid-August 2026 — did cause 1 confirmed death (per CNN, AP/WRAL, NBC, Aug 16 2026 reporting). The 'at least 1 dead' framing almost certainly belongs to Lala, not Lowell; using it for Lowell would be a wrong-attribution publish blocker. Recommend one more direct-source check before air.",
+  "STORM CATEGORY DISCREPANCY: Kauai Now (2026-09-08) describes Lowell as a 'Category 3 storm' at its closest approach, while NBC News, Washington Post, and other wire-level coverage describe it as Category 2 with sustained winds near 110 mph. CPHC's own advisory language (110 mph sustained at approach) supports Category 2. Treat Category 2 as authoritative; flag Category 3 references as likely inaccurate.",
+  "AGE OF FACTS: The storm's closest approach and initial damage/casualty facts (deaths, injury count, first damage claims, port/airport closures) are dated 2026-09-06 through 2026-09-09 — 5 to 8 days old as of today (2026-09-14). Power-restoration percentages and shelter counts are fresher (Sept 11-14) and should be used as the current-state numbers; older figures should only be used for the timeline/trend, not as 'current status.'",
+  "Two separate, similarly-named storms are in play this month: Hurricane Lowell (Kauai/Niihau, landfall-adjacent Sept 7-8) and Hurricane Lala (Big Island, mid-August). Federal disaster-declaration requests and disaster-relief equipment (e.g., the Southern California Edison trucks airlifted to Kauai) are being shared/cross-referenced between the two storms in official statements — scripts must not merge their damage/casualty/dollar figures.",
+  "The Hawaii Emergency Management Agency's own storm-update page (dod.hawaii.gov) contains no specific outage numbers, injury counts, or death tolls — it is thinner on hard numbers than the news-wire and county sources used here; treat HIEMA as a status/timeline source, not the numeric source of record.",
+  "The 'no deaths' confirmation is itself now 6 days old (Sept 8) with no found reconfirmation as of Sept 14 — recommend a fresh county/HIEMA check immediately before the video ships, in case a delayed storm-related fatality has since been confirmed."
+ ]
+}
