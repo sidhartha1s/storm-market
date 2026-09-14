@@ -45,9 +45,9 @@
       "owner": "director",
       "due": "15 Sep 26",
       "phase": "preview",
-      "status": "doing",
-      "note": "all checks green (sweep, lint, media, motion, audio, blank, collisions, graphics QC, frame reads); preview render launching",
-      "updated": "15 Sep 26 00:31"
+      "status": "done",
+      "note": "preview rendered 9:41, post-render check clean; parked for owner eyeball; full render on his go",
+      "updated": "15 Sep 26 01:16"
     },
     {
       "slug": "ep-tristate-repackage",
@@ -68,10 +68,10 @@
       "title": "Hawaii Still Counting Lowell's Power Outages",
       "owner": "director",
       "due": "15 Sep 26",
-      "phase": "assemble",
+      "phase": "checks",
       "status": "doing",
-      "note": "narration final 8.3 min; media staged; compositions being written",
-      "updated": "15 Sep 26 00:31"
+      "note": "sweep, lint, media budget, motion, audio green; browser gates + frame reads running",
+      "updated": "15 Sep 26 01:16"
     },
     {
       "slug": "ms-sakurajima-ash",
