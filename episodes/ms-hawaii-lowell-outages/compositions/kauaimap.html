@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  B3 map plate: Kauai location map (OpenStreetMap contributors via Wikimedia Commons "Location Map Kauai.png",
+  CC BY-SA 2.0; image 1904×1637). Drawn contained at 1080 tall, centred. Pins are placed from the map's own geography
+  read on the plate: North Shore arc Moloaa (NE) → Hanalei → Haena (NW); Lihue (SE); Nawiliwili (SE coast); Port Allen (SW);
+  Waimea/Kekaha (W); Kokee (NW highlands). SOURCE: OSM plate; DATUM: the plate itself; ORIENTATION: north up.
+  Host = b3-s1 start, 24 s. Cues rel: North Shore 3.74 · Limahuli/Haena 12.32 · 16 in 15.9 · 17 in 18.58 · third death/Wainiha 20.34.
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; background: radial-gradient(ellipse at 50% 40%, #0e1a28 0%, #04070c 75%); overflow:hidden; font-family:Arial,sans-serif; }
+  .plate { position:absolute; left:332px; top:0; width:1256px; height:1080px; }
+  .plate img { position:absolute; left:0; top:0; width:1256px; height:1080px; filter:saturate(0.7) brightness(0.85); }
+  .arc { position:absolute; left:0; top:0; width:1256px; height:1080px; }
+  .pin { position:absolute; width:16px; height:16px; margin:-8px 0 0 -8px; border-radius:50%; background:#d0121f; box-shadow:0 0 0 4px rgba(208,18,31,0.35), 0 0 18px rgba(208,18,31,0.9); }
+  .tag { position:absolute; white-space:nowrap; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:2px; color:#f4f0e8;
+    background:rgba(10,16,24,0.7); border:1px solid rgba(255,255,255,0.14); border-left:5px solid #d0121f; padding:6px 14px; border-radius:8px; }
+  .eye { position:absolute; left:110px; top:60px; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:6px; color:#d0121f; }
+  .big { position:absolute; left:110px; top:92px; font-family:'AbrilFig',Georgia,serif; font-size:64px; color:#f2f5f8; text-shadow:0 3px 14px rgba(0,0,0,0.85); }
+  .side { position:absolute; left:110px; top:300px; width:300px; font-size:22px; color:#c8d3e0; line-height:1.4; }
+  .side b { display:block; font-family:'Arial Black',Arial,sans-serif; font-size:28px; color:#f2f5f8; margin-top:18px; }
+  .src { position:absolute; right:40px; top:34px; font-size:20px; letter-spacing:1px; color:rgba(220,228,236,0.85); background:rgba(5,8,12,0.6); padding:6px 14px; }
+</style>
+<div id="root" data-composition-id="kauaimap" data-width="1920" data-height="1080">
+  <div class="eye" id="km-eye">KAUAI · ONE WEEK AFTER LOWELL</div>
+  <div class="big" id="km-big">THE NORTH SHORE WAITS</div>
+  <div class="src">MAP: © OPENSTREETMAP CONTRIBUTORS · CC BY-SA 2.0</div>
+  <div class="plate" id="km-plate">
+    <img src="../media/maps/Location_Map_Kauai.png" alt="">
+    <svg class="arc" viewBox="0 0 1256 1080"><path id="km-arc" d="M 900 300 Q 720 150 520 200 Q 420 230 340 330" fill="none" stroke="#d0121f" stroke-width="10" stroke-linecap="round" stroke-dasharray="1200" stroke-dashoffset="1200" opacity="0.9"/></svg>
+    <div class="pin" id="km-p1" style="left:905px; top:300px"></div><div class="tag" id="km-t1" style="left:925px; top:270px">MOLOAA</div>
+    <div class="pin" id="km-p2" style="left:340px; top:330px"></div><div class="tag" id="km-t2" style="left:180px; top:290px">HAENA · WAINIHA</div>
+    <div class="pin" id="km-p3" style="left:820px; top:640px"></div><div class="tag" id="km-t3" style="left:840px; top:660px">LIHUE · NAWILIWILI</div>
+    <div class="pin" id="km-p4" style="left:560px; top:860px"></div><div class="tag" id="km-t4" style="left:420px; top:885px">PORT ALLEN</div>
+  </div>
+  <div class="side" id="km-side"><b id="km-s1">16 IN</b>rain at Lower Limahuli, near Haena<b id="km-s2">17 IN</b>on higher ground<b id="km-s3">92 MPH</b>gust at Puu Lua</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#km-";
+  tl.set([P+"p1",P+"t1",P+"p2",P+"t2",P+"p3",P+"t3",P+"p4",P+"t4",P+"side",P+"big"], { autoAlpha: 0 }, 0);
+  tl.fromTo("#root", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 0);
+  tl.fromTo(P+"big", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.4);
+  tl.fromTo(P+"plate", { scale: 1.0, transformOrigin: "50% 35%" }, { scale: 1.08, duration: 24.0, ease: "none" }, 0);
+  /* North Shore 3.74: arc draws from Moloaa to Haena */
+  tl.to(P+"arc", { strokeDashoffset: 0, duration: 2.0, ease: "power2.inOut" }, 3.74);
+  [[1, 3.74], [2, 5.7], [3, 11.0], [4, 15.0]].forEach(([i, at]) => {
+    tl.fromTo(P+"p"+i, { scale: 3, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, at);
+    tl.fromTo(P+"t"+i, { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, at + 0.2);
+  });
+  tl.fromTo(P+"side", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 12.3);
+  tl.fromTo(P+"s2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 18.5);
+  tl.fromTo(P+"s3", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 21.0);
+  tl.to("#root", { autoAlpha: 0, duration: 0.4 }, 23.6);
+  window.__timelines["kauaimap"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
