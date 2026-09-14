@@ -69,10 +69,10 @@
       "title": "Hawaii Still Counting Lowell's Power Outages",
       "owner": "director",
       "due": "15 Sep 26",
-      "phase": "tts",
+      "phase": "preview",
       "status": "doing",
-      "note": "re-synthesis running with names on screen",
-      "updated": "15 Sep 26 02:58"
+      "note": "review fixes applied, all gates + frame reads green; preview #2 rendering",
+      "updated": "15 Sep 26 03:16"
     },
     {
       "slug": "ms-sakurajima-ash",
