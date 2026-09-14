@@ -1,0 +1,235 @@
+{
+ "as_of_line": "As of 2026-09-15 (night IST / daytime ET, US). The governing primary source remains NOAA CPC's ENSO Diagnostic Discussion issued 2026-09-10 (re-confirmed via direct fetch tonight, unchanged), next scheduled CPC update 2026-10-08. Latest secondary/wire coverage is dated 2026-09-14. WMO's most recent dedicated El Niño statement is 2026-09-03; no newer WMO bulletin found. BoM's ENSO Outlook page returned HTTP 403 to direct fetch again tonight (confirms the prior brief's block, not new data).",
+ "story_moved": true,
+ "what_moved": "Top-line CPC advisory status is UNCHANGED since Sept 10 (still >90% very-strong / 75% historic, next update Oct 8) — no new CPC issuance this week. What's new tonight from primary-source re-fetches: (1) the full Niño-region breakdown now includes Niño-3 (+2.5°C) and Niño-4 (+0.1°C), not just 3.4/1+2, showing the warmth is concentrated in the eastern Pacific while the far-west Niño-4 region sits near neutral; (2) climate.us's Sept 10 post quantifies the quiet Atlantic explicitly as hurricane activity running \"less than 10% of normal\"; (3) NHC's Sept 14 Atlantic Tropical Weather Outlook confirms the quiet-basin framing directly — no active storms, one area of interest near Bermuda at 40% (7-day) / near-0% (48-hr) formation odds, taken during what is climatologically the peak of the season (Sept 10); (4) WMO's Sept 3 release adds two granular data points not previously logged: subsurface Pacific temperatures up to 8°C above average and a positive Indian Ocean Dipole forecast (SON 2026 mean +0.9°C) compounding the pattern; (5) CPC's own 90-day outlook page confirms official seasonal outlooks are re-issued monthly near mid-month, meaning a fresh DJF 2026-27 map is due around Sept 18-19 (not yet out as of tonight). BoM's page stayed blocked (403) on a second direct attempt tonight — still no independently-read BoM primary text.",
+ "facts": [
+  {
+   "fact": "CPC's ENSO Diagnostic Discussion (re-confirmed via direct fetch tonight) remains on El Niño Advisory status, issued 2026-09-10.",
+   "source_name": "NOAA Climate Prediction Center (CPC), ENSO Diagnostic Discussion",
+   "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+   "date": "2026-09-10",
+   "number": "Advisory"
+  },
+  {
+   "fact": "CPC: greater than 90% chance of a very strong El Niño event during Northern Hemisphere fall and winter 2026-27.",
+   "source_name": "NOAA Climate Prediction Center (CPC), ENSO Diagnostic Discussion",
+   "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+   "date": "2026-09-10",
+   "number": ">90%"
+  },
+  {
+   "fact": "CPC: 75% chance that Oct-Dec 2026 sees a 3-month RONI value of +2.5°C or higher, which would exceed every El Niño since 1950.",
+   "source_name": "NOAA Climate Prediction Center (CPC), ENSO Diagnostic Discussion",
+   "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+   "date": "2026-09-10",
+   "number": "75%"
+  },
+  {
+   "fact": "CPC's Sept 10 advisory: Niño-3.4 SST anomaly +1.8°C.",
+   "source_name": "NOAA Climate Prediction Center (CPC), ENSO Diagnostic Discussion",
+   "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+   "date": "2026-09-10",
+   "number": "+1.8°C"
+  },
+  {
+   "fact": "CPC's Sept 10 advisory: Niño-1+2 SST anomaly +3.4°C, the warmest of the four Niño regions.",
+   "source_name": "NOAA Climate Prediction Center (CPC), ENSO Diagnostic Discussion",
+   "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+   "date": "2026-09-10",
+   "number": "+3.4°C"
+  },
+  {
+   "fact": "CPC's Sept 10 advisory: Niño-3 SST anomaly +2.5°C (not previously logged in prior brief).",
+   "source_name": "NOAA Climate Prediction Center (CPC), ENSO Diagnostic Discussion",
+   "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+   "date": "2026-09-10",
+   "number": "+2.5°C"
+  },
+  {
+   "fact": "CPC's Sept 10 advisory: Niño-4 SST anomaly only +0.1°C, near-neutral — the warmth is concentrated in the east/central Pacific, not basin-wide (not previously logged in prior brief).",
+   "source_name": "NOAA Climate Prediction Center (CPC), ENSO Diagnostic Discussion",
+   "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+   "date": "2026-09-10",
+   "number": "+0.1°C"
+  },
+  {
+   "fact": "CPC's next scheduled ENSO advisory/update is 8 October 2026.",
+   "source_name": "NOAA Climate Prediction Center (CPC), ENSO Diagnostic Discussion",
+   "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+   "date": "2026-09-10",
+   "number": "2026-10-08"
+  },
+  {
+   "fact": "climate.us ENSO Blog (Sept 10 post): 100% chance El Niño continues through at least the December-February 2026-27 season.",
+   "source_name": "climate.us ENSO Blog (Rebecca Lindsey)",
+   "url": "https://www.climate.us/news-features/blogs/enso/illustrated-guide-100-percent-chance-el-nino",
+   "date": "2026-09-10",
+   "number": "100%"
+  },
+  {
+   "fact": "climate.us ENSO Blog (Sept 10 post): 75% likelihood El Niño becomes the strongest event on record (by 3-month RONI) in October-December 2026, matching CPC's own figure.",
+   "source_name": "climate.us ENSO Blog (Rebecca Lindsey)",
+   "url": "https://www.climate.us/news-features/blogs/enso/illustrated-guide-100-percent-chance-el-nino",
+   "date": "2026-09-10",
+   "number": "75%"
+  },
+  {
+   "fact": "climate.us ENSO Blog (Sept 10 post) quantifies the quiet Atlantic explicitly: Atlantic hurricane activity is running 'less than 10% of normal' this season, an El Niño-linked signal (new quantified figure not in the prior brief).",
+   "source_name": "climate.us ENSO Blog (Rebecca Lindsey)",
+   "url": "https://www.climate.us/news-features/blogs/enso/illustrated-guide-100-percent-chance-el-nino",
+   "date": "2026-09-10",
+   "number": "<10%"
+  },
+  {
+   "fact": "climate.us ENSO Blog (Sept 10 post) also links El Niño to Indonesian drought fueling wildfires, echoing the CNN reporting on the same theme.",
+   "source_name": "climate.us ENSO Blog (Rebecca Lindsey)",
+   "url": "https://www.climate.us/news-features/blogs/enso/illustrated-guide-100-percent-chance-el-nino",
+   "date": "2026-09-10",
+   "number": "Indonesia"
+  },
+  {
+   "fact": "NHC's Atlantic Tropical Weather Outlook issued Sept 14, 2026 shows the basin quiet at the climatological peak of the season: no active tropical storms/hurricanes in the Atlantic, Caribbean, or Gulf; one disorganized area ~1,000 miles east-southeast of Bermuda.",
+   "source_name": "NOAA National Hurricane Center (NHC), Atlantic Tropical Weather Outlook",
+   "url": "https://www.nhc.noaa.gov/text/MIATWOAT.shtml",
+   "date": "2026-09-14",
+   "number": "0 active"
+  },
+  {
+   "fact": "NHC puts that lone area of interest's formation odds at near-0% in 48 hours and 40% over 7 days, with conditions becoming 'more conducive for development by the middle of this week.'",
+   "source_name": "NOAA National Hurricane Center (NHC), Atlantic Tropical Weather Outlook",
+   "url": "https://www.nhc.noaa.gov/text/MIATWOAT.shtml",
+   "date": "2026-09-14",
+   "number": "40%"
+  },
+  {
+   "fact": "WMO's Sept 3, 2026 press release is headlined 'El Niño set to become very strong, raising risks of extreme weather into 2027.'",
+   "source_name": "World Meteorological Organization (WMO), news release",
+   "url": "https://wmo.int/news/media-centre/el-nino-set-become-very-strong-raising-risks-of-extreme-weather-2027",
+   "date": "2026-09-03",
+   "number": "2027"
+  },
+  {
+   "fact": "WMO's Sept 3 release puts the probability of El Niño persisting through February 2027 at roughly 100%.",
+   "source_name": "World Meteorological Organization (WMO), news release",
+   "url": "https://wmo.int/news/media-centre/el-nino-set-become-very-strong-raising-risks-of-extreme-weather-2027",
+   "date": "2026-09-03",
+   "number": "~100%"
+  },
+  {
+   "fact": "WMO's Sept 3 release cites subsurface Pacific ocean temperatures up to 8°C above average in some areas (July-early August 2026) as the reservoir sustaining the event — a detail not in the prior brief.",
+   "source_name": "World Meteorological Organization (WMO), news release",
+   "url": "https://wmo.int/news/media-centre/el-nino-set-become-very-strong-raising-risks-of-extreme-weather-2027",
+   "date": "2026-09-03",
+   "number": "8°C"
+  },
+  {
+   "fact": "WMO's Sept 3 release also forecasts a positive Indian Ocean Dipole for Sept-Nov 2026, seasonal mean value +0.9°C — a compounding factor not previously logged.",
+   "source_name": "World Meteorological Organization (WMO), news release",
+   "url": "https://wmo.int/news/media-centre/el-nino-set-become-very-strong-raising-risks-of-extreme-weather-2027",
+   "date": "2026-09-03",
+   "number": "+0.9°C"
+  },
+  {
+   "fact": "CNN Weather (Sept 14, 2026): the weekly RONI value has crossed the +2.0°C threshold forecasters use for the 'very strong' category, informally 'super El Niño.'",
+   "source_name": "CNN Weather (via KEYT syndication)",
+   "url": "https://keyt.com/news/weather-news/cnn-weather-environment/2026/09/14/super-el-nino-is-actually-here-now-and-its-only-going-to-get-stronger/",
+   "date": "2026-09-14",
+   "number": "+2.0°C"
+  },
+  {
+   "fact": "CNN (Sept 14, 2026) reports the event is 'stronger now than it's ever been on this date' since its June 2026 declaration, tying it to an active Pacific hurricane threat to Hawaii, a near-empty Atlantic season, and Indonesia's wildfires.",
+   "source_name": "CNN Weather (via KEYT syndication)",
+   "url": "https://keyt.com/news/weather-news/cnn-weather-environment/2026/09/14/super-el-nino-is-actually-here-now-and-its-only-going-to-get-stronger/",
+   "date": "2026-09-14",
+   "number": "June 2026"
+  },
+  {
+   "fact": "CPC's official 90-day (seasonal) outlooks, including the DJF 2026-27 winter map, are re-issued once each month near mid-month — meaning a fresh update is due roughly Sept 18-19, ahead of a standalone Winter Outlook release expected in October.",
+   "source_name": "NOAA Climate Prediction Center (CPC), 90-Day Outlooks page",
+   "url": "https://www.cpc.ncep.noaa.gov/products/predictions/90day/",
+   "date": "2026-09-15",
+   "number": "mid-month"
+  },
+  {
+   "fact": "[BACKGROUND] NOAA's formal 2026-27 Winter Outlook press release (the flagship seasonal product, distinct from the routine ENSO advisory) is still expected in October 2026; not yet issued as of tonight.",
+   "source_name": "Search-aggregated reporting on NOAA release calendar",
+   "url": "https://unofficialnetworks.com/2026/08/20/noaa-updated-winter-weather-prediction/",
+   "date": "2026-08-20",
+   "number": "October 2026"
+  },
+  {
+   "fact": "[BACKGROUND] CPC's August seasonal outlook map (secondary reporting) favors above-normal temperatures across the Pacific Northwest, northern Rockies, Plains, Midwest and Northeast (milder North), and wetter-than-normal conditions from Southern California/Southwest through the southern Plains, Gulf Coast, Florida and parts of the East Coast (wetter South) for winter 2026-27.",
+   "source_name": "NOAA CPC winter outlook (via secondary reporting)",
+   "url": "https://unofficialnetworks.com/2026/08/20/noaa-updated-winter-weather-prediction/",
+   "date": "2026-08-20",
+   "number": "2026-27"
+  },
+  {
+   "fact": "[BACKGROUND] Australia's BoM officially declared an El Niño event on 16 June 2026; its ENSO Outlook page again returned HTTP 403 to a direct automated fetch tonight, so BoM's current wording could not be independently re-verified this session.",
+   "source_name": "Australian Bureau of Meteorology (BoM)",
+   "url": "https://www.bom.gov.au/climate/enso/outlook/",
+   "date": "2026-06-16",
+   "number": "16 Jun 2026"
+  },
+  {
+   "fact": "[BACKGROUND] BoM's relative Niño3.4 index for the week ending 30 August 2026 was +2.45°C, well above its +0.80°C El Niño threshold (last independently-sourced BoM figure available; page itself unreachable tonight).",
+   "source_name": "Australian Bureau of Meteorology (BoM), via prior brief",
+   "url": "https://www.bom.gov.au/climate/enso/outlook/",
+   "date": "2026-08-30",
+   "number": "+2.45°C"
+  }
+ ],
+ "quotes": [
+  {
+   "speaker": "Celeste Saulo",
+   "title": "WMO Secretary-General",
+   "quote": "El Niño in Spanish means boy child – but it has the potential to deliver a massive blow to communities and economies across the world.",
+   "url": "https://wmo.int/news/media-centre/el-nino-set-become-very-strong-raising-risks-of-extreme-weather-2027",
+   "verbatim": true
+  },
+  {
+   "speaker": "Celeste Saulo",
+   "title": "WMO Secretary-General",
+   "quote": "This exceptional El Niño demands exceptional preparation and response. Never before in the 50-year history of the World Meteorological Organization have we launched such a major mobilization.",
+   "url": "https://wmo.int/news/media-centre/el-nino-set-become-very-strong-raising-risks-of-extreme-weather-2027",
+   "verbatim": true
+  },
+  {
+   "speaker": "António Guterres",
+   "title": "UN Secretary-General",
+   "quote": "El Niño is being supersized before our eyes. The science leaves no room for doubt: the planet is in uncharted waters, and those waters are heating up.",
+   "url": "https://wmo.int/news/media-centre/el-nino-set-become-very-strong-raising-risks-of-extreme-weather-2027",
+   "verbatim": true
+  },
+  {
+   "speaker": "Emily Becker",
+   "title": "ENSO Blog science lead, University of Miami/CIMAS (NOAA-affiliated)",
+   "quote": "There's a 100 percent chance that it will continue through at least the December–February season",
+   "url": "https://www.climate.us/news-features/blogs/enso/illustrated-guide-100-percent-chance-el-nino",
+   "verbatim": true
+  },
+  {
+   "speaker": "Emily Becker",
+   "title": "ENSO Blog science lead, University of Miami/CIMAS (NOAA-affiliated)",
+   "quote": "their joint momentum is virtually impossible to disrupt on the seasonal time scales",
+   "url": "https://www.climate.us/news-features/blogs/enso/illustrated-guide-100-percent-chance-el-nino",
+   "verbatim": false
+  }
+ ],
+ "unknowns": [
+  "CPC has not stated an exact projected peak Niño-3.4 value for winter — only probability bands (>90% very strong, 75% historic) pending the Oct 8 update.",
+  "BoM's ENSO Outlook page again returned HTTP 403 to direct automated fetch tonight (second consecutive session) — its current wording remains un-verified against a directly-read primary page.",
+  "No agency (CPC, WMO, BoM, NHC) has used the media nicknames 'super El Niño' or 'Godzilla El Niño' in its own text — those remain journalistic labels only.",
+  "NOAA has not yet issued its flagship 2026-27 Winter Outlook press release (expected October); the mid-September 90-day/DJF seasonal map update (due ~Sept 18-19 per CPC's own cadence) had also not posted with readable regional detail as of tonight's fetch (maps are image-based, not text-extractable via this session's tools).",
+  "No agency has stated a projected transition date to ENSO-neutral or La Niña after this event; WMO's persistence statement stops at 'through February 2027.'",
+  "CPC has not itself commented (in material reviewed this session) on the Pacific-hurricane-threat-to-Hawaii, Indonesia-wildfire, or Atlantic-quiet linkages that CNN and climate.us have drawn; those attributions come from the press/ENSO Blog, not a CPC statement.",
+  "No fresh WMO bulletin dated after Sept 3, 2026 was located this session (the WMO news portal's most recent El Niño-specific item is still the Sept 3 release); a Sept 14 'Pacific Meteorological Council' item exists but is about Pacific weather-readiness broadly, not a new ENSO statement."
+ ],
+ "titles": [
+  "CPC Holds El Niño Advisory Above 90 Percent",
+  "NOAA Puts Niño-3.4 Anomaly at 1.8°C",
+  "WMO Warns of Extreme Risk into 2027",
+  "NHC Puts Atlantic Storm Odds at 40 Percent",
+  "CPC Sets Next ENSO Update for October 8"
+ ]
+}
