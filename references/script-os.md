@@ -86,10 +86,8 @@ materially changes every 60–90 s (new evidence, place, number, person, mechani
     Building with its antenna").
 12. **One object per segment**, never stacked; one named victim with age, job and a sourced quote per tragedy.
 13. **Close.** Fact + dated forward window, then the CTA spine once. No aphorism, no mirrored callback, no sign-off line.
-Awaiting owner decision (conflicts with humanise-rules.md): (a) allow "This is the story of…" once before 0:60 in
-documentaries (rule 7 bans it; the 1,529-view hit uses it); (b) the ≤3 chapter-exit questions above versus rule 8's
-"no rhetorical questions" (kept for mid-paragraph questions either way).
-
+Owner decision 2026-09-14: humanise-rules.md stays as written. No thesis opener, no chapter-exit questions (rule 9
+above is read as: seams are stamps; the open fact is stated, not asked). Ep2's hook at 1.5k views is not evidence.
 ## The philosophical change
 Optimise for "what information does the viewer want right now, and when do we give it," not for "how do we make this
 more engaging." Narration and visual event are written together, never narration first.
