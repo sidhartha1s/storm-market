@@ -39,12 +39,12 @@ window.__timelines = window.__timelines || {};
   tl.set(rows, {autoAlpha:0, height:0, marginTop:0}, 0);
   tl.fromTo(P+"card", {x:-960, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 0);
   /* EDIT-ME: cues from audio/b7-s1.words.json: "extended", "tarpaulins", "flights", "Ibu", "slope" */
-  const AT = [2.0, 8.0, 15.0, 22.0, 32.0];
+  const AT = [4.2, 8.9, 15.8, 22.4, 34.4]; /* host starts 1.0 s after b7-s1: cues 5.2/9.9/16.8/23.4/35.4 − 1.0 */
   rows.forEach((r, i) => tl.fromTo(r, {autoAlpha:0, y:24, height:0, marginTop:0}, {autoAlpha:1, y:0, height:"auto", marginTop:20, duration:0.4}, AT[i]));
-  tl.fromTo(P+"card", {y:0}, {y:-6, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:50}, 0.6);
+  tl.fromTo(P+"card", {y:0}, {y:-6, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:19}, 0.6);
   tl.to(P+"eye", {letterSpacing:"8px", duration:1.2, ease:"power3.out"}, 0.2);
-  tl.to(P+"r5 .lab", {textShadow:"0 0 24px rgba(255,210,122,0.9)", duration:1.2, yoyo:true, repeat:9, ease:"sine.inOut"}, 33.0); /* EDIT-ME: after r5 lands */
-  tl.to(P+"card", {x:-960, autoAlpha:0, duration:0.5, ease:"power3.in"}, 60.0); /* EDIT-ME: host duration − 0.6 */
+  tl.to(P+"r5 .lab", {textShadow:"0 0 24px rgba(255,210,122,0.9)", duration:1.2, yoyo:true, repeat:7, ease:"sine.inOut"}, 35.0);
+  tl.to(P+"card", {x:-960, autoAlpha:0, duration:0.5, ease:"power3.in"}, 55.8); /* host 56.4 − 0.6 */
   window.__timelines["tracking"] = tl;
 })();
 </script>

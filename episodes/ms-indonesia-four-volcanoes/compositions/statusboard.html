@@ -46,11 +46,11 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"card", {x:-960, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 0);
   /* EDIT-ME: cue times (relative to host start) from audio/b2-s1.words.json:
      r1 "Anak Krakatau" (first list), r2 "Semeru", r3 "Lewotobi", r4 "Sinabung", r5 "Marapi", r6 "Ili Lewotolok" */
-  const AT = [2.0, 3.2, 4.2, 5.2, 7.0, 8.2];
+  const AT = [6.0, 7.2, 8.3, 10.1, 12.2, 12.7]; /* host starts 3.0 s after b2-s1: cues 9.0/10.2/11.3/13.1/15.2/15.7 − 3.0 */
   rows.forEach((r, i) => tl.fromTo(r, {autoAlpha:0, y:24, height:0, marginTop:0}, {autoAlpha:1, y:0, height:"auto", marginTop:18, duration:0.4}, AT[i]));
-  tl.fromTo(P+"card", {y:0}, {y:-6, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:40}, 0.6); /* breathing, never idles */
+  tl.fromTo(P+"card", {y:0}, {y:-6, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:20}, 0.6); /* breathing, never idles */
   tl.to(P+"eye", {letterSpacing:"8px", duration:1.2, ease:"power3.out"}, 0.2);
-  tl.to(P+"card", {x:-960, autoAlpha:0, duration:0.5, ease:"power3.in"}, 55.0); /* EDIT-ME: host duration − 0.6 */
+  tl.to(P+"card", {x:-960, autoAlpha:0, duration:0.5, ease:"power3.in"}, 58.8); /* host 59.4 − 0.6 */
   window.__timelines["statusboard"] = tl;
 })();
 </script>
