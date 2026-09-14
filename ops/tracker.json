@@ -43,10 +43,10 @@
       "title": "Anak Krakatau Erupts Again... And Now Three More",
       "owner": "director",
       "due": "2026-09-15",
-      "phase": "packaging",
-      "status": "todo",
-      "note": "slot A day 1; Format C; PVMBG quote on screen; 1.10 pace",
-      "updated": "2026-09-14 18:40"
+      "phase": "script",
+      "status": "doing",
+      "note": "draft + fact sheet in .worktrees/ms-indonesia-four-volcanoes; facts 6-8 days old, radar re-pull at 06:00 before review/TTS",
+      "updated": "2026-09-14 22:44"
     },
     {
       "slug": "ep-tristate-repackage",
@@ -67,10 +67,10 @@
       "title": "Hawaii Still Counting Lowell's Power Outages",
       "owner": "director",
       "due": "2026-09-15",
-      "phase": "idea",
-      "status": "todo",
-      "note": "slot B day 1; Hawaii EMA / Hawaiian Electric as named source; US stake",
-      "updated": "2026-09-14 22:30"
+      "phase": "script",
+      "status": "doing",
+      "note": "draft + fact sheet in .worktrees/ms-hawaii-lowell-outages; facts 6-8 days old, radar re-pull at 06:00 before review/TTS",
+      "updated": "2026-09-14 22:44"
     },
     {
       "slug": "ms-sakurajima-ash",
