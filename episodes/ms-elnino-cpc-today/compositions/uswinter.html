@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  B6 US winter card: the two CPC seasonal outlook maps that the narration reads (temperature OND 2026, precipitation NDJ 2026-27,
+  both issued 20 Aug 2026, US-gov PD; 3300×2550 shown at 720×556 each), with the spoken regions landing as chips under each map.
+  MUST-BE-TRUE: the maps are the real CPC products; MILDER list = north, WETTER list = south, in the narration's order.
+  Host = b6-s1 start + 18.8 (368.267), 30.7 s. Cues rel host: maps lean 3.3 · PNW 4.8 · N Rockies 6.3 · Plains 7.7 · Midwest 8.8 ·
+  Northeast 9.6 · milder 10.9 · SoCal 12.5 · Southwest 14.1 · S Plains 15.3 · Gulf Coast 16.7 · Florida 17.4 · wetter 19.2 · East Coast 20.7 ·
+  not a forecast for your street 23.5.
+-->
+<template>
+<style>
+  #root { position:absolute; inset:0; background: radial-gradient(ellipse at 50% 30%, #0b1420 0%, #04070c 80%); font-family:Arial,sans-serif; color:#f2f5f8; overflow:hidden; }
+  .eye { position:absolute; left:110px; top:60px; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:6px; color:#d0121f; }
+  .note { position:absolute; left:110px; top:100px; font-size:22px; color:#93a3b2; letter-spacing:1px; }
+  .big { position:absolute; right:110px; top:56px; white-space:nowrap; font-family:'AbrilFig',Georgia,serif; font-size:56px; text-shadow:0 3px 14px rgba(0,0,0,0.8); }
+  .map { position:absolute; top:150px; width:720px; height:556px; overflow:hidden; border-radius:12px; border:1px solid rgba(255,255,255,0.14); box-shadow:0 16px 44px rgba(0,0,0,0.6); }
+  .map img { position:absolute; left:0; top:0; width:720px; height:556px; }
+  .map .cap { position:absolute; left:0; right:0; top:0; padding:8px 14px; font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:2px; background:rgba(10,16,24,0.84); }
+  .map .cap b { margin-right:10px; }
+  #uw-mt { left:110px; } #uw-mp { left:850px; }
+  #uw-mt .cap b { color:#ffb347; } #uw-mp .cap b { color:#7fd0ff; }
+  .list { position:absolute; top:730px; width:720px; display:flex; flex-wrap:wrap; gap:10px; }
+  #uw-lt { left:110px; } #uw-lp { left:850px; }
+  .chip { font-family:'Arial Black',Arial,sans-serif; font-size:26px; letter-spacing:1px; padding:8px 16px; border-radius:8px; background:rgba(10,16,24,0.82); border:1px solid rgba(255,255,255,0.14); }
+  #uw-lt .chip { border-left:5px solid #ffb347; } #uw-lp .chip { border-left:5px solid #7fd0ff; }
+  .foot { position:absolute; left:110px; top:920px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#ffd27a; }
+</style>
+<div id="root" data-composition-id="uswinter" data-width="1920" data-height="1080">
+  <div class="eye" id="uw-eye">THE WINTER AHEAD · WHAT THE MAPS LEAN TOWARD</div>
+  <div class="note">CPC seasonal outlooks issued 20 Aug 2026 · a lean in the odds, not a forecast for your street</div>
+  <div class="big" id="uw-big">MILDER NORTH · WETTER SOUTH</div>
+  <div class="map" id="uw-mt"><img src="../media/plates/cpc-outlook-ond2026-temperature.gif" alt=""><div class="cap"><b>TEMPERATURE</b>OCT–NOV–DEC 2026</div></div>
+  <div class="map" id="uw-mp"><img src="../media/plates/cpc-outlook-ndj2026-27-precipitation.gif" alt=""><div class="cap"><b>PRECIPITATION</b>NOV–DEC–JAN 2026–27</div></div>
+  <div class="list" id="uw-lt"><div class="chip" id="uw-t1">PACIFIC NORTHWEST</div><div class="chip" id="uw-t2">NORTHERN ROCKIES</div><div class="chip" id="uw-t3">PLAINS</div><div class="chip" id="uw-t4">MIDWEST</div><div class="chip" id="uw-t5">NORTHEAST</div><div class="chip" id="uw-t6" style="border-left-color:#ffd27a">MILDER THAN USUAL</div></div>
+  <div class="list" id="uw-lp"><div class="chip" id="uw-p1">SOUTHERN CALIFORNIA</div><div class="chip" id="uw-p2">SOUTHWEST</div><div class="chip" id="uw-p3">SOUTHERN PLAINS</div><div class="chip" id="uw-p4">GULF COAST</div><div class="chip" id="uw-p5">FLORIDA</div><div class="chip" id="uw-p6" style="border-left-color:#ffd27a">WETTER · PARTS OF THE EAST COAST</div></div>
+  <div class="foot" id="uw-foot">A lean is not a forecast for your street. It is the direction the odds are tilted.</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#uw-";
+  const chips = ["t1","t2","t3","t4","t5","t6","p1","p2","p3","p4","p5","p6"].map(k => P + k);
+  const AT = [4.8, 6.3, 7.7, 8.8, 9.6, 10.9, 12.5, 14.1, 15.3, 16.7, 17.4, 19.2];
+  tl.set(chips.concat([P+"mp", P+"big", P+"foot"]), { autoAlpha: 0 }, 0);
+  tl.fromTo("#root", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 0);
+  tl.fromTo(P+"mt", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.4);
+  tl.fromTo(P+"mp", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 3.3);     /* "the maps lean toward" */
+  chips.forEach((c, i) => tl.fromTo(c, { autoAlpha: 0, y: 14, scale: 0.9 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.4, ease: "power3.out" }, AT[i]));
+  tl.fromTo(P+"big", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 19.2);
+  tl.fromTo(P+"foot", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 23.5);
+  tl.fromTo([P+"mt img", P+"mp img"], { scale: 1.0, transformOrigin: "center" }, { scale: 1.05, duration: 30.7, ease: "none" }, 0);
+  tl.to("#root", { autoAlpha: 0, duration: 0.4 }, 30.3);
+  window.__timelines["uswinter"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
