@@ -12,14 +12,14 @@
 <template>
 <style>
   #root { position:absolute; inset:0; background: radial-gradient(ellipse at 50% 40%, #0e1a28 0%, #04070c 75%); overflow:hidden; font-family:Arial,sans-serif; }
-  .plate { position:absolute; left:332px; top:0; width:1256px; height:1080px; }
-  .plate img { position:absolute; left:0; top:0; width:1256px; height:1080px; filter:saturate(0.7) brightness(0.85); }
-  .arc { position:absolute; left:0; top:0; width:1256px; height:1080px; }
+  .plate { position:absolute; left:700px; top:110px; width:1000px; height:860px; }
+  .plate img { position:absolute; left:0; top:0; width:1000px; height:860px; filter:saturate(0.7) brightness(0.85); }
+  .arc { position:absolute; left:0; top:0; width:1000px; height:860px; }
   .pin { position:absolute; width:16px; height:16px; margin:-8px 0 0 -8px; border-radius:50%; background:#d0121f; box-shadow:0 0 0 4px rgba(208,18,31,0.35), 0 0 18px rgba(208,18,31,0.9); }
-  .tag { position:absolute; white-space:nowrap; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:2px; color:#f4f0e8;
+  .tag { position:absolute; white-space:nowrap; z-index:2; font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:2px; color:#f4f0e8;
     background:rgba(10,16,24,0.7); border:1px solid rgba(255,255,255,0.14); border-left:5px solid #d0121f; padding:6px 14px; border-radius:8px; }
   .eye { position:absolute; left:110px; top:60px; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:6px; color:#d0121f; }
-  .big { position:absolute; left:110px; top:92px; font-family:'AbrilFig',Georgia,serif; font-size:64px; color:#f2f5f8; text-shadow:0 3px 14px rgba(0,0,0,0.85); }
+  .big { position:absolute; left:110px; top:92px; width:560px; line-height:1.05; font-family:'AbrilFig',Georgia,serif; font-size:56px; color:#f2f5f8; text-shadow:0 3px 14px rgba(0,0,0,0.85); }
   .side { position:absolute; left:110px; top:300px; width:300px; font-size:22px; color:#c8d3e0; line-height:1.4; }
   .side b { display:block; font-family:'Arial Black',Arial,sans-serif; font-size:28px; color:#f2f5f8; margin-top:18px; }
   .src { position:absolute; right:40px; top:34px; font-size:20px; letter-spacing:1px; color:rgba(220,228,236,0.85); background:rgba(5,8,12,0.6); padding:6px 14px; }
@@ -27,14 +27,14 @@
 <div id="root" data-composition-id="kauaimap" data-width="1920" data-height="1080">
   <div class="eye" id="km-eye">KAUAI · ONE WEEK AFTER LOWELL</div>
   <div class="big" id="km-big">THE NORTH SHORE WAITS</div>
-  <div class="src">MAP: © OPENSTREETMAP CONTRIBUTORS · CC BY-SA 2.0</div>
+  <div class="src">MAP: © OPENSTREETMAP · CC BY-SA 2.0</div>
   <div class="plate" id="km-plate">
     <img src="../media/maps/Location_Map_Kauai.png" alt="">
-    <svg class="arc" viewBox="0 0 1256 1080"><path id="km-arc" d="M 900 300 Q 720 150 520 200 Q 420 230 340 330" fill="none" stroke="#d0121f" stroke-width="10" stroke-linecap="round" stroke-dasharray="1200" stroke-dashoffset="1200" opacity="0.9"/></svg>
-    <div class="pin" id="km-p1" style="left:905px; top:300px"></div><div class="tag" id="km-t1" style="left:925px; top:270px">MOLOAA</div>
-    <div class="pin" id="km-p2" style="left:340px; top:330px"></div><div class="tag" id="km-t2" style="left:180px; top:290px">HAENA · WAINIHA</div>
-    <div class="pin" id="km-p3" style="left:820px; top:640px"></div><div class="tag" id="km-t3" style="left:840px; top:660px">LIHUE · NAWILIWILI</div>
-    <div class="pin" id="km-p4" style="left:560px; top:860px"></div><div class="tag" id="km-t4" style="left:420px; top:885px">PORT ALLEN</div>
+    <svg class="arc" viewBox="0 0 1000 860"><path id="km-arc" d="M 747 132 L 735 122 L 722 130 L 710 133 L 697 134 L 684 142 L 672 134 L 659 131 L 647 128 L 634 133 L 621 128 L 609 122 L 596 122 L 584 130 L 571 168 L 558 168 L 546 149 L 533 147 L 520 144 L 508 134 L 495 131 L 483 128 L 470 137 L 457 132 L 445 132 L 432 144 L 420 154 L 407 162 L 394 172 L 382 178 L 369 184 L 357 195 L 344 206 L 331 211 L 319 221 L 306 228 L 299 228" fill="none" stroke="#d0121f" stroke-width="10" stroke-linecap="round" stroke-dasharray="2000" stroke-dashoffset="2000" opacity="0.9"/></svg>
+    <div class="pin" id="km-p1" style="left:747px; top:140px"></div><div class="tag" id="km-t1" style="left:765px; top:80px">MOLOAA</div>
+    <div class="pin" id="km-p2" style="left:299px; top:236px"></div><div class="tag" id="km-t2" style="left:179px; top:166px">HAENA · WAINIHA</div>
+    <div class="pin" id="km-p3" style="left:845px; top:540px"></div><div class="tag" id="km-t3" style="left:515px; top:564px">LIHUE · NAWILIWILI</div>
+    <div class="pin" id="km-p4" style="left:395px; top:700px"></div><div class="tag" id="km-t4" style="left:305px; top:722px">PORT ALLEN</div>
   </div>
   <div class="side" id="km-side"><b id="km-s1">16 IN</b>rain at Lower Limahuli, near Haena<b id="km-s2">17 IN</b>on higher ground<b id="km-s3">92 MPH</b>gust at Puu Lua</div>
 </div>
