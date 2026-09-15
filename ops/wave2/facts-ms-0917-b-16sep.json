@@ -1,0 +1,96 @@
+{
+  "candidate": "El Nino (CPC weekly evolution update)",
+  "story_moved": true,
+  "as_of_line": "As of 2026-09-15, direct-fetched from NOAA CPC. The governing monthly ENSO Diagnostic Discussion (issued 2026-09-10, next due 2026-10-08) is UNCHANGED and matches the prior video's baseline exactly. What moved: CPC's companion 'ENSO: Recent Evolution, Current Status and Predictions' weekly PDF was reissued 2026-09-14 (a Monday-cadence weekly product, separate from the monthly discussion) and carries fresh weekly Nino-region SST departures that are higher than the Sept 10 monthly figures used in the prior video. NHC's Atlantic outlook (issued 800 PM EDT Mon Sep 14 2026, re-fetched 2026-09-15 with no newer issuance found) still shows only an unnamed disturbance near Bermuda at 40% (7-day) formation odds -- not yet a named system, so that piece has NOT crossed the 'named' threshold.",
+  "facts": [
+    {
+      "fact": "CPC weekly ENSO evolution update: latest weekly Nino-3.4 SST departure is +2.0C, up from the +1.8C figure in the Sept 10 monthly discussion.",
+      "number": "+2.0C",
+      "source_name": "NOAA Climate Prediction Center, 'ENSO: Recent Evolution, Current Status and Predictions' (weekly PDF)",
+      "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/lanina/enso_evolution-status-fcsts-web.pdf",
+      "date": "2026-09-14"
+    },
+    {
+      "fact": "CPC weekly ENSO evolution update: latest weekly Nino-1+2 SST departure is +3.7C, up from the +3.4C figure in the Sept 10 monthly discussion -- still the warmest of the four Nino regions.",
+      "number": "+3.7C",
+      "source_name": "NOAA Climate Prediction Center, 'ENSO: Recent Evolution, Current Status and Predictions' (weekly PDF)",
+      "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/lanina/enso_evolution-status-fcsts-web.pdf",
+      "date": "2026-09-14"
+    },
+    {
+      "fact": "CPC weekly ENSO evolution update: latest weekly Nino-3 SST departure is +2.8C, up from +2.5C in the Sept 10 monthly discussion.",
+      "number": "+2.8C",
+      "source_name": "NOAA Climate Prediction Center, 'ENSO: Recent Evolution, Current Status and Predictions' (weekly PDF)",
+      "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/lanina/enso_evolution-status-fcsts-web.pdf",
+      "date": "2026-09-14"
+    },
+    {
+      "fact": "CPC weekly ENSO evolution update: latest weekly Nino-4 SST departure is -0.1C, essentially unchanged/near-neutral (was +0.1C in the Sept 10 monthly discussion) -- confirms the warming is concentrated east of the Date Line, not basin-wide.",
+      "number": "-0.1C",
+      "source_name": "NOAA Climate Prediction Center, 'ENSO: Recent Evolution, Current Status and Predictions' (weekly PDF)",
+      "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/lanina/enso_evolution-status-fcsts-web.pdf",
+      "date": "2026-09-14"
+    },
+    {
+      "fact": "Most recent 3-month RONI (Relative Oceanic Nino Index) value, for June-August 2026, is +1.4C, per CPC's RONI page inside the same weekly update.",
+      "number": "+1.4C",
+      "source_name": "NOAA Climate Prediction Center, RONI table (in weekly ENSO evolution PDF)",
+      "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/lanina/enso_evolution-status-fcsts-web.pdf",
+      "date": "2026-09-14"
+    },
+    {
+      "fact": "CPC monthly ENSO Diagnostic Discussion (unchanged since Sept 10, re-confirmed live tonight): greater than 90% chance of a very strong El Nino during Northern Hemisphere fall/winter 2026-27.",
+      "number": ">90%",
+      "source_name": "NOAA Climate Prediction Center, ENSO Diagnostic Discussion",
+      "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+      "date": "2026-09-10"
+    },
+    {
+      "fact": "CPC monthly discussion (unchanged): 75% chance Oct-Dec 2026 produces a 3-month RONI of +2.5C or higher, which would be the strongest El Nino since 1950 records began.",
+      "number": "75%",
+      "source_name": "NOAA Climate Prediction Center, ENSO Diagnostic Discussion",
+      "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+      "date": "2026-09-10"
+    },
+    {
+      "fact": "CPC's next scheduled monthly ENSO Diagnostic Discussion is 8 October 2026 -- no update expected before then on the headline alert status.",
+      "number": "2026-10-08",
+      "source_name": "NOAA Climate Prediction Center, ENSO Diagnostic Discussion",
+      "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+      "date": "2026-09-10"
+    },
+    {
+      "fact": "NHC Atlantic Tropical Weather Outlook (still the most current issuance as of this fetch): a trough of low pressure about 900 miles east-southeast of Bermuda has a medium, 40% chance of tropical depression formation within 7 days, near 0% within 48 hours -- Atlantic remains a disturbance, not yet a named storm.",
+      "number": "40%",
+      "source_name": "NOAA National Hurricane Center, Atlantic Tropical Weather Outlook",
+      "url": "https://www.nhc.noaa.gov/text/MIATWOAT.shtml",
+      "date": "2026-09-14"
+    }
+  ],
+  "quotes": [
+    {
+      "speaker": "NOAA Climate Prediction Center",
+      "title": "ENSO Diagnostic Discussion, 10 September 2026",
+      "quote": "El Nino is strengthening, with a greater than 90% chance of a very strong event during the Northern Hemisphere fall and winter 2026-27.",
+      "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+      "verbatim": true
+    },
+    {
+      "speaker": "NOAA National Hurricane Center (Forecaster Pasch)",
+      "title": "Atlantic Tropical Weather Outlook, 800 PM EDT Mon Sep 14 2026",
+      "quote": "A trough of low pressure located about 900 miles east-southeast of Bermuda continues to produce disorganized showers and thunderstorms. Environmental conditions over the system are forecast to become more conducive for development by the middle of this week. A tropical depression could form late this week as the system moves slowly west-northwestward over the subtropical Atlantic.",
+      "url": "https://www.nhc.noaa.gov/text/MIATWOAT.shtml",
+      "verbatim": true
+    }
+  ],
+  "unknowns": [
+    "Whether the Bermuda-area disturbance gets a name before the slot B video publishes -- NHC had not updated the outlook past the Sept 14, 8 PM EDT issuance as of this fetch.",
+    "Exact end-date of the 'latest weekly' SST departure window inside the Sept 14 weekly PDF was not separately labeled per-index; the PDF's seasonal-outlook section is dated 'Issued: 14 September 2026' with an outlook 'End Date: 12 September 2026', used here as the best available dating for the weekly figures.",
+    "BoM's ENSO Outlook page and the climate.gov ENSO blog could not be independently verified live: BoM has previously returned HTTP 403 to direct fetch (not re-tested this pass beyond a blocked/empty response), and climate.gov's ENSO blog is an archived mirror frozen as of June 2025 with no current content."
+  ],
+  "titles": [
+    "El Nino Just Got Stronger: NOAA's New Numbers Are In",
+    "The El Nino Update NOAA Didn't Announce (But the Data Shows)",
+    "El Nino Update: Record Warmth Climbs Again This Week"
+  ]
+}
