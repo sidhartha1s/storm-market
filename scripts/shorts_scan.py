@@ -18,9 +18,9 @@ def search(q):
     out = ytdlp(f"https://www.youtube.com/results?search_query={q.replace(' ', '+')}&sp=EgIYAQ%253D%253D", "-j", "--playlist-end", "80")
     rows = []
     for line in out.splitlines():
-        try: r = json.loads(line)
+        try: r = json.loads(line) or {}
         except Exception: continue
-        if 0 < (r.get("duration") or 0) <= 75 and r.get("channel_id"):
+        if 0 < (r.get("duration") or 0) <= 75 and r.get("channel_id") and r.get("id"):
             rows.append(dict(q=q, id=r["id"], ch=r.get("channel") or r.get("uploader"), cid=r["channel_id"], views=r.get("view_count") or 0, title=r.get("title")))
     return rows
 def channel(item):
