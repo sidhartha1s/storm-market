@@ -1,0 +1,158 @@
+# Shorts lane · The Warning Hour · plan v1 (15 Sep 26)
+
+Owner brief 15 Sep 26: ship multiple 14–40 s vertical shorts a day on YouTube, Instagram, X (and the other
+platforms), two intents (widen the audience; funnel into the minis and documentaries), for US seniors 45+,
+never attention-max. Director's plan below; the measured basis is `competitors-2026-09-15.md` (same folder).
+
+## 1. What the shorts market in our niche actually looks like
+
+Scan: 20 disaster/weather queries, 655 shorts, 452 channels, full `/shorts` tab of every channel with a
+≥100k hit, ranked on hit rate (share ≥300k) not median. Small–mid channels (≤600k subs) with ≥2 shorts over
+300k fall into four kinds, and only two are usable by us:
+
+| kind | models (subs · age · hit rate ≥300k) | why it works | usable? |
+|---|---|---|---|
+| Raw-clip repost | Flood danger 01 (11.7k · 64 d · 19 %), Lovely Ocean 03 (71k · 153 d · 12 %), Disaster Zone, Umreeka | payoff in frame 1, no words, 11–21 s, international audience | **No.** Unlicensed clips, no narration = reused-content strike bait, zero funnel value, audience is not US 45+ (comments are Turkish/Korean/Uzbek). |
+| Chaser fan edits | flarrxx (48k · 57 d · 65 %), BaseVelocityWX (17k · 377 d · 35 %) | Reed Timmer / TIV footage + music | **No.** Storm-chaser footage without a licence is banned in this repo. |
+| Narrated explainer | 4Facts (3k · 43 s · 240 wpm), DiddyKnowThat (130k · 32 s · 178 wpm · 16 cuts), LumaHype (113k · 42 s · 203 wpm · 20 cuts), TheoTheChillOtter tsunami 15.2M | one mechanism or one "do this" rule, footage changes every 1–3 s, phrase captions with one highlight colour | **Yes**, slowed down (section 3). |
+| Story card | Global Buzz Tv (1.7k subs · **26 days old** · 200+ shorts · 2 over 1M), Past Vault (948 subs · 34 d · 1 over 1M), Case Trace bodycam rescue 427k | one named real person, one human moment, a designed headline card held static, calm voice; comments are "Thank you, Minnie Mae. We see you" | **Yes**, this is the 45+ format. |
+
+Two facts that shape everything below:
+- The story-card channel is 26 days old with 1,670 subscribers and already has two shorts over a million views.
+  A static high-contrast headline card with a sepia photograph and a calm voice is the most senior-friendly
+  format in the whole set, and it needs no footage licence at all.
+- Every narrated model runs 178–240 wpm with a cut every 1–3 s. That is the Gen-Z spec. Our audience data
+  (Texas/California minis ~100 % US 65+) says slow it to 150–165 wpm and 2–4 s per picture, keep the
+  structure (one idea, one number, one payoff), drop the arrows, circles and CGI people.
+
+Platform facts (checked 15 Sep 26): Shorts RPM is roughly $0.01–0.25, so shorts earn nothing directly; the
+money is the click into the 10–30 min video, and YouTube's **related-video link** on a Short is the funnel
+hook we set on every upload. YouTube is the only platform over 50 % of US 65+ (60 %); Facebook is second
+(58 %); TikTok and Instagram reach about a quarter of that group. So the platform order for this audience
+is YouTube Shorts → Facebook Reels → Instagram Reels → X → TikTok, not the Gen-Z order.
+
+## 2. The three formats (locked shapes; the words change per video)
+
+| | S1 · The Warning | S2 · Why It Happens | S3 · One Name |
+|---|---|---|---|
+| intent | funnel into today's mini | widen (search + feed) | widen + funnel into the docs |
+| length | 20–30 s | 30–40 s | 20–35 s |
+| words | 50–75 | 75–105 | 50–85 |
+| pace | 155–165 wpm (mini voice, atempo 1.10) | 150–160 wpm | 140–150 wpm |
+| open (0–3 s) | the number, spoken and on the card: "Hawaii is still counting. 41,000 homes dark." | the question the viewer already has: "Why does the sea pull back before a tsunami?" | the headline card: "SHE TIED 13 CHILDREN TOGETHER AND WALKED INTO THE BLIZZARD" |
+| body | who is at risk, what the agency said today (named agency, verbatim quote on screen) | one mechanism, one diagram from the MG library, one real clip | who, where, when; the moment; what happened to them |
+| close | the unresolved tracking line + "the full update is on the channel" | the US stake in one line | the name once more, the date, "the full story is in the documentary" |
+| picture | agency map / PD clip / NOAA loop, 2–4 s per picture, popfig number | real footage 40 %, one designed diagram 40 %, map 20 % | 1–2 archive photographs with slow Ken Burns, the card held static |
+| model | RB Today Weather (news template 1.39M), DiddyKnowThat structure | 4Facts, TheoTheChillOtter | Global Buzz Tv, Past Vault |
+| source per video | the mini's `edit_script.md` and its clip pool | the mini's mechanism beat, or an evergreen from the doc bank | the doc's named-person chapter (Joplin, Tri-State, Katrina) or a dated event with a person |
+
+What stays the same across all three (the senior spec):
+- **Captions burned in, phrase captions, not karaoke.** ≤5 words per line, 2 lines max, lower-third,
+  white on a dark scrim, text height 7–10 % of the frame (135–190 px at 1080×1920), one highlight colour
+  (red, the channel's popfig red). Sound-off viewing is the default on Facebook and Instagram.
+- **Frame 1 is the thumbnail.** The first frame carries the headline and the place name; no black-in, no logo
+  reveal. Shorts have no thumbnail slot the viewer sees in the feed.
+- **One picture change every 2–4 s**, never faster; a still may hold 4–6 s with motion. No arrows, circles,
+  emoji, memes, CGI people, trending audio.
+- **The channel voice.** Same cloned voice as the minis; a different voice breaks the funnel.
+- **Loop-safe close.** The last frame reads as a first frame (the headline again), because Shorts loop.
+- **No Paul CTA video** (15 s is half a short). The funnel is: spoken last line + related-video link + pinned
+  comment with the long video URL. The ebook link goes in the pinned comment, never on screen.
+- **Same footage doctrine as the channel:** PD/agency spine, licensed or stock fill, no chaser footage,
+  no AI witnesses, every clip in `provenance.csv`.
+- **Humanise rules apply** (`references/humanise-rules.md`): no rhetorical question chains, no "in this
+  video", no reveal announcements. S2 opens on a question because the viewer asked it, not as a device.
+
+## 3. Pipeline (reuse, not rebuild)
+
+The existing stack already does everything except the frame size. Composition size is a per-file attribute
+(`data-width="1080" data-height="1920"`), the TTS, words.json, lint, blank scan, audio-level gate and
+`render.cmd` are format-blind. Per short, in `episodes/sh-<parent-slug>-<n>/`:
+
+1. `edit_script.md` — S1/S2/S3 tag, the parent video, 3–6 narration segments, per-beat picture intent.
+   Written by the shorts-writer agent FROM the parent's `edit_script.md` (never from scratch when a parent
+   exists). Word budget from the table above; the homograph scan and the humanise gate run here.
+2. `python3 scripts/tts_episode.py episodes/sh-…` → per-segment wav + words.json (unchanged).
+3. Media: symlink or copy from the parent's `media/` and the bucket pool; vertical crop decided per clip
+   (`crop=ih*9/16:ih` centred unless the subject is off-centre, then a hand offset in the edit script);
+   `optimize_clips.py` caps to 1080×1920.
+4. `index.html` hand-authored from `library/shorts/` templates (to build with the pilot): `caption-bar.html`
+   (phrase captions from words.json cues), `headline-card.html` (S3 static card), `warning-bug.html`
+   (S1 top bug, our own "THE WARNING HOUR" mark, never a network chyron), `popfig` reused as is. Every overlay
+   start is a words.json cue (the mini rule).
+5. Gates: `lint_timeline.py` exit 0, `blank_scan.mjs`, `audio_levels.py`, `overlap_check.mjs`, then one
+   composition snapshot at 4 points read by a subagent. `sweep_episode.py`'s CTA gate does not apply
+   (`sh-` slugs carry no `epN` prefix, so it is already exempt).
+6. `scripts\render.cmd sh-… full` — a 30 s 1080×1920 comp renders in about a minute on this box (measure on
+   the pilot and record here). One heavy job at a time still holds: shorts render between mini renders.
+7. `master_deliverables.py` for the −14 LUFS master; no SRT needed (captions are burned in).
+   `metadata.md`: title ≤40 chars with the place name, description first URL = channel first_link, related
+   video = the parent, pinned comment text, and the per-platform caption lines (section 4).
+
+Cost per short after the pilot: ~25 min of agent time, ~2 min render, $0 media.
+
+## 4. Distribution (the part that is new)
+
+| platform | why | rules |
+|---|---|---|
+| YouTube Shorts | the home; 60 % of US 65+ | related-video link → parent; pinned comment with parent URL + ebook link; title ≤40 chars, place name first; hashtags none |
+| Facebook Reels | 58 % of US 65+, the second-largest senior platform, and the one Gen-Z playbooks skip | same file, caption rewritten as a sentence, link in the first comment |
+| Instagram Reels | reach, not seniors | same file, no watermark, caption rewritten, link in bio only |
+| X | news-adjacent, text-first audience | native upload (never a YouTube link), the headline as the post text, the parent link in a reply |
+| TikTok | last; lowest 45+ reach | native upload, only if the queue has spare time |
+
+Cross-post rules that are enforced now on every platform: upload the original export, never a file downloaded
+from another platform; no other platform's watermark; a different caption per platform; the original
+export carries no logo except our own bug.
+
+First week uploads are by hand (owner or director via the browser); a scheduler (Postiz / Buffer / the
+platform APIs) is a week-2 decision once the per-platform numbers exist. Not built now.
+
+## 5. Volume, cadence, kill rules
+
+- **Daily output target once the pilot passes: 4 shorts/day**, from the two minis of the day (each mini
+  yields one S1 and one S2) plus two S3 story cards from the doc bank; more only when a live number moves
+  and no mini exists yet (S1 as the speed play, 20 min from radar hit to upload).
+- Each short goes out on YouTube + Facebook the same hour; Instagram and X within the day.
+- **Success metric per format, not per short** (hit rate, never median): after 10 shorts of a format, the
+  share with ≥10k views in 7 days and the "viewers who then watched a long video" line in Studio. A format
+  with 0/10 over 10k is paused and its next 5 are re-hooked; a format with ≥3/10 gets the extra slots.
+- Publish window: same as the minis, US evening (00:00–04:00 UTC) for S1; S2/S3 are evergreen, mid-day US.
+- Tracker: every short is a card in `ops/tracker.json` with the same plain phases (idea → script → tts →
+  assemble → checks → render → upload) and a `parent` field; the tracker moves in the same turn as the work.
+
+## 6. Org (adds two seats to the roadmap org)
+
+| seat | who | owns |
+|---|---|---|
+| shorts-writer | Sonnet | from a parent `edit_script.md`, writes the S1 + S2 scripts inside the word budget, humanise pass, homograph respell; S3 from a doc chapter with the person's name and date verified against the doc's sources |
+| shorts-radar | Sonnet, weekly | `python3 scripts/shorts_scan.py` + the model channels' new uploads (Global Buzz Tv, Past Vault, 4Facts, DiddyKnowThat, RB Today Weather); reports hit-rate deltas and new formats, never adopts one |
+| director | Fable | template build, assembly, gates, renders, uploads, per-format kill calls |
+
+## 7. Pilot (the next thing that happens)
+
+Three shorts, one per format, from material already on disk, so the templates get built against real cuts:
+1. **S1** from `ms-hawaii-lowell-outages` (the outage number + Hawaiian Electric quote + tracking line).
+2. **S2** from the El Niño pool: "Why El Niño makes a Texas winter deadly" (the jet-stream MG from the ep8 brief).
+3. **S3** from the Children's Blizzard of 1888 (Minnie Freeman, the teacher who roped 13 children; the
+   Global Buzz Tv short on her did 175k on a 1.7k-sub channel) as the proof that a story card with a
+   public-domain photograph carries a US-senior audience; it funnels to the tornado docs via the pinned comment
+   until a blizzard doc exists.
+Sequence: templates → three drafts → owner eyeballs the three previews on the laptop (the one gate) →
+render → upload to YouTube + Facebook → 7-day read. Estimated director time: 3 h for the templates and the
+first three, then ~25 min per short.
+
+## 8. Owner decisions needed
+1. Pilot go on the three above (or swap topics).
+2. Facebook page: does The Warning Hour have one? If not, create it before the pilot uploads (biggest senior
+   reach after YouTube).
+3. Voice for S3: the channel voice at 140–150 wpm, or a second, warmer clone for story cards. Recommendation:
+   the channel voice, one voice per channel until the format proves itself.
+4. Instagram / X / TikTok handles for the channel (none recorded in the repo).
+
+## What this plan does NOT do (on purpose)
+- No new render engine, no vertical fork of the skills: the templates and the `sh-` slug convention are the
+  entire code footprint. A `/storm-shorts` skill gets written after ~10 shorts stabilise the pattern
+  (repo rule: skills are promoted, not pre-written).
+- No compilation shorts, no chaser footage, no raw-clip reposts, however well they score in the scan.
+- No scheduler until the hand-upload week gives per-platform numbers.
