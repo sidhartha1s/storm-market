@@ -31,7 +31,21 @@ hook we set on every upload. YouTube is the only platform over 50 % of US 65+ (6
 (58 %); TikTok and Instagram reach about a quarter of that group. So the platform order for this audience
 is YouTube Shorts → Facebook Reels → Instagram Reels → X → TikTok, not the Gen-Z order.
 
-## 2. The three formats (locked shapes; the words change per video)
+## 2. The formats (locked shapes; the words change per video)
+
+Owner's four types (16 Sep 26) map onto five shapes. S1–S3 below are the detailed ones; S0 and S4 were
+added on the owner's note:
+- **S0 · Chaos compilation** (owner type a, the GlobalWeather-Network shape): 30–60 s of the hardest clips
+  from ONE bucket pool, 2–4 s each, no narration or one framing line, big place+date caption per clip, our
+  bug. Evergreen, highest raw virality in the scan. Allowed here ONLY from clips already in a bucket pool
+  with a provenance row (PD / agency / licensed / stock), never re-ripped from GWN or another channel. One
+  per bucket per week; the pool is the limit, not the format.
+- **S4 · Mini bulletin** (owner type d): a story that deserves 30–90 s and not an 8-minute mini ("ship with
+  8 missing"). S1 structure, up to 90 s (Shorts allow 3 min), one named agency quote, ends on the tracking
+  line. Radar feeds these directly; no parent video needed.
+- Owner types b (topic funnels) = S1, c (weather info) = S2. S3 (story card) stays as the 45+ widening play.
+- **Pace: atempo 1.16 on every short** (owner 16 Sep 26; the long form moved to 1.10). Word budgets below are
+  at delivered pace after 1.16.
 
 | | S1 · The Warning | S2 · Why It Happens | S3 · One Name |
 |---|---|---|---|
