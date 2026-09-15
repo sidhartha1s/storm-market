@@ -15,6 +15,11 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   `sweep_episode.py`'s CTA gate is epN-only; mini-storms mount the CTA by hand at the story break (43 % on #1).
   Narration always sits above every bed: score 0.13, ambience ≤0.20, checked with ebur128 per 15 s window.
 - Both skill folders are junctioned into `~/.claude/skills/` so a skill edit is a repo commit, and vice versa.
+- **Shorts lane (planned 15 Sep 26, pilot pending owner go)** — 20–40 s vertical (1080×1920) S1 warning /
+  S2 explainer / S3 story-card shorts cut FROM a parent mini or doc, US-senior spec (phrase captions ≥7 % frame
+  height, 150–165 wpm, 2–4 s per picture, no Paul CTA, related-video link as the funnel). Plan + competitor scan:
+  `references/shorts/PLAN.md`, `references/shorts/competitors-2026-09-15.md`; weekly scan `scripts/shorts_scan.py`.
+  Slugs `sh-<parent>-<n>`; templates land in `library/shorts/` with the pilot. No skill until ~10 shorts stabilise.
 
 ## Why this niche (validated 2026-07-21, references/)
 - Proven small-channel outliers: SkyWhisper 13 videos → 441K avg views in 9 months ($6.69 RPM);
