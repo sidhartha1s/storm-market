@@ -26,6 +26,7 @@
 - s5 WMO release, 3 Sep 26: subsurface Pacific up to +8 °C; positive Indian Ocean Dipole; Celeste Saulo quotes (verbatim);
   UN Secretary-General Guterres quote (verbatim). https://wmo.int/news/media-centre/el-nino-set-become-very-strong-raising-risks-of-extreme-weather-2027
 - s6 CPC ENSO declaration, June 2026 (advisory start). s1.
+- s7 CPC weekly "ENSO: Recent Evolution, Current Status and Predictions", issued 14 Sep 26 (weekly Niño SST departures to 12 Sep: 3.4 +2.0, 1+2 +3.7, 3 +2.8, 4 −0.1; JJA RONI +1.4). https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/lanina/enso_evolution-status-fcsts-web.pdf
 - p1 Pool provenance: FEMA photographs, Dave Gatley, Feb–Mar 1998 California El Niño floods (PD); 2016 broadcast cutters (CBS, ABC) in library/mini-storms/el-nino-2026/.
 - Not used: CNN Weather via KEYT (secondary), BoM (unreachable), unofficialnetworks (secondary), climate.us Indonesia line (needs a
   primary; Copernicus/NASA Worldview stills in the pool carry it visually only if the sourcer finds a dated release).
@@ -40,9 +41,9 @@ Visual: open on the current CPC SST anomaly map with the eastern Pacific glowing
 ## B2 — WHERE THE NUMBERS STAND (0:42–1:55)
 
 ### B2-S1 — narration
-> As of Tuesday, September sixteenth, the numbers come from the center's September tenth advisory, and they have not moved. The central Pacific index runs about one point eight degrees Celsius above average. Off the coast of South America the water runs three point four degrees above average. That is the warmest reading of any region the center tracks. The region between them runs two point five above. Out near the dateline the ocean barely moves, a tenth of a degree above normal. The heat is stacked in the east. The center puts the chance of a very strong event above ninety percent. It puts the chance of a historic one at three in four. Historic means a three month average of two and a half degrees or more this fall. That would pass every El Niño measured since nineteen fifty. The two strongest before this one were the winters of nineteen ninety seven and twenty fifteen. The advisory has stood since June. The next update comes on the eighth of October. [s1, s6, s3]
+> As of Tuesday, September sixteenth, the center's weekly readings run higher than its September tenth advisory. The central Pacific index runs about two point zero degrees Celsius above average. Off the coast of South America the water runs three point seven degrees above average. That is the warmest reading of any region the center tracks. The region between them runs two point eight above. Out near the dateline the ocean barely moves, a tenth of a degree below normal. The heat is stacked in the east, and it is still climbing. The center puts the chance of a very strong event above ninety percent. It puts the chance of a historic one at three in four. Historic means a three month average of two and a half degrees or more this fall. That would pass every El Niño measured since nineteen fifty. The two strongest before this one were the winters of nineteen ninety seven and twenty fifteen. The advisory has stood since June. The next update comes on the eighth of October. [s7, s1, s6, s3]
 
-Visual: four-region Pacific card MG (regions land on cue with their numerals: NIÑO-1+2 +3.4 · NIÑO-3 +2.5 · NIÑO-3.4 +1.8 · NIÑO-4 +0.1), then the SST weekly loop; popfigs ">90% VERY STRONG" · "75% HISTORIC" · "NEXT UPDATE OCT 8".
+Visual: four-region Pacific card MG (regions land on cue with their numerals: NIÑO-1+2 +3.7 · NIÑO-3 +2.8 · NIÑO-3.4 +2.0 · NIÑO-4 −0.1, weekly to 12 Sep), then the SST weekly loop; popfigs ">90% VERY STRONG" · "75% HISTORIC" · "NEXT UPDATE OCT 8".
 
 ## B3 — WHERE IT SHOWS FIRST (1:55–3:35)
 
