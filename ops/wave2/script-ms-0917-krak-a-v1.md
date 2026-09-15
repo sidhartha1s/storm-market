@@ -97,7 +97,7 @@ Visual: quote card, Indonesian original small type: "Terjadi erupsi G. Ili Lewot
 
 ### B5-S1 — narration
 > None of tonight's numbers cross an official threshold. Ibu's jump to six hundred meters is a taller column than any this week. The volcano still stays at level two, the same level it held before. [s1]
-> Semeru's column near one thousand meters matches a peak it already hit the day before. It is not a new record for this volcano, only a second day at the same height. Two of Semeru's overnight eruptions produced no visible column at all, the kind of event the monitoring agency logs but does not escalate. [s1]
+> Semeru's column near one thousand meters matches a peak it already hit the day before. It is not a new record for this volcano, only a second day at the same height. Two of Semeru's overnight eruptions produced no visible column at all, the kind of event the monitoring agency logs but does not escalate. That second Semeru eruption also lasted between two and nearly three minutes on the seismograph. It was another routine reading for a volcano already at its highest tier. [s1]
 > The five volcanoes on the country's highest list have not changed in three days. No volcano has moved up. No volcano has moved down. [s3]
 > The volcano further east is the newest name added to any report tonight, and that one sits at level two, not level three. Its column, at about one hundred meters, is smaller than anything Ibu or Semeru produced overnight. [s1, s3]
 > Four eruptions in one night from one volcano sounds dramatic. The country's scale treats it as routine unless the column crosses into level three territory. [s3]
