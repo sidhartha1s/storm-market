@@ -160,13 +160,14 @@ Sequence: templates → three drafts → owner eyeballs the three previews on th
 render → upload to YouTube + Facebook → 7-day read. Estimated director time: 3 h for the templates and the
 first three, then ~25 min per short.
 
-## 8. Owner decisions needed
-1. Pilot go on the three above (or swap topics).
-2. Facebook page: does The Warning Hour have one? If not, create it before the pilot uploads (biggest senior
-   reach after YouTube).
-3. Voice for S3: the channel voice at 140–150 wpm, or a second, warmer clone for story cards. Recommendation:
-   the channel voice, one voice per channel until the format proves itself.
-4. Instagram / X / TikTok handles for the channel (none recorded in the repo).
+## 8. Owner decisions (16 Sep 26 answers folded in)
+1. Pilot go on the three above (or swap topics) — open. Add one S0 compilation from the El Niño / Hawaii pool
+   to the pilot so the compilation shape gets tested too (four shorts).
+2. Facebook page + Instagram account: none exist, owner will create; X exists. Record the handles in
+   `config.yaml channel.socials` once made.
+3. Voice: channel voice, atempo 1.16 — decided.
+4. TikTok: skipped for the pilot (India ban; see section 4).
+5. Scan of 20–30 more niche shorts channels for content bank + competitor list: `competitors-2026-09-16.md`.
 
 ## What this plan does NOT do (on purpose)
 - No new render engine, no vertical fork of the skills: the templates and the `sh-` slug convention are the
