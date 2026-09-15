@@ -9,12 +9,20 @@ playwright_env.mjs), optimize_clips.py, and the slice/draft launchers.
 Owner rule (2026-09-11): keep ≥1 GB free for the whole render, no compromise. Two capture
 workers take ~3 GB, so a launch needs ≥4 GB free (RENDER_MIN_FREE_GB overrides).
 
+--launch also pins every headless Chrome hyperframes can launch to the dedicated GPU
+(HKCU DirectX GpuPreference=2). Owner 2026-09-15: every render before that day captured on the
+Intel iGPU (GTX 1650 at 0 %, 100 % CPU, ~6 GB RAM); the registry pin alone moves capture to the
+1650 (probe line in render_full.log says NVIDIA). A new hyperframes/Playwright Chrome build is a
+new exe path, so the pin is re-asserted on every launch, never once by hand.
+
 Exit 0 = clear. Exit 3 = a render is running, or (with --launch) RAM is under the floor.
 RENDER_BUSY_OK=1 overrides, for the case where the render itself is the thing being tested.
 """
+import glob
 import os
 import subprocess
 import sys
+import winreg
 
 MIN_FREE_GB = float(os.environ.get("RENDER_MIN_FREE_GB", "4"))
 
@@ -27,6 +35,25 @@ def live_renders():
     out = ps("Get-CimInstance Win32_Process | Where-Object { $_.Name -eq 'node.exe' -and "
              "$_.CommandLine -like '*hyperframes*render*' } | ForEach-Object { $_.ProcessId.ToString() + ' ' + $_.CommandLine }")
     return [l.strip() for l in out.splitlines() if l.strip()]
+
+
+def pin_chrome_to_dedicated_gpu():
+    """Set GpuPreference=2 (high performance) for every headless Chrome hyperframes may launch."""
+    home = os.path.expanduser("~")
+    exes = glob.glob(os.path.join(home, ".cache", "hyperframes", "chrome", "**", "chrome-headless-shell.exe"), recursive=True)
+    exes += glob.glob(os.path.join(home, "AppData", "Local", "ms-playwright", "chromium*", "**", "chrome-headless-shell.exe"), recursive=True)
+    key = winreg.CreateKey(winreg.HKEY_CURRENT_USER, r"Software\Microsoft\DirectX\UserGpuPreferences")
+    for exe in exes:
+        exe = os.path.normpath(exe)
+        try:
+            cur = winreg.QueryValueEx(key, exe)[0]
+        except FileNotFoundError:
+            cur = ""
+        if cur != "GpuPreference=2;":
+            winreg.SetValueEx(key, exe, 0, winreg.REG_SZ, "GpuPreference=2;")
+            print(f"[gpu-pin] pinned to dedicated GPU: {exe}")
+    if not exes:
+        print("[gpu-pin] WARNING no chrome-headless-shell.exe found to pin")
 
 
 def free_gb():
@@ -47,4 +74,6 @@ if __name__ == "__main__":
     if "--launch" in sys.argv and free < MIN_FREE_GB:
         print(f"[render_busy] REFUSING — {free:.1f} GB free, need {MIN_FREE_GB:g} GB so the render keeps ≥1 GB headroom (owner 2026-09-11). Close a browser or wait.")
         sys.exit(3)
+    if "--launch" in sys.argv:
+        pin_chrome_to_dedicated_gpu()
     print(f"[render_busy] OK — no render alive, {free:.1f} GB free")

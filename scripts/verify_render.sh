@@ -7,6 +7,14 @@ EP="$1"; BASE="$2"
 MP4="$EP/renders/$BASE.mp4"
 [ -f "$MP4" ] || { echo "MISSING $MP4"; exit 1; }
 
+echo "=== gpu (owner 2026-09-15: capture must run on the dedicated GPU, never the Intel iGPU) ==="
+LOG="$EP/render_full.log"; [ "$BASE" != "${BASE%draft*}" ] && LOG="$EP/render_draft.log"
+PROBE=$(tr -d '
+' < "$LOG" 2>/dev/null | grep -o 'browserGpuMode probe.*' | tail -1 | cut -c1-160)
+echo "${PROBE:-no probe line in $LOG}"
+case "$PROBE" in *NVIDIA*) ;; *) echo "FAIL: render did not capture on the NVIDIA GPU (run scripts/render_busy.py --launch to pin, then re-render)"; exit 2;; esac
+
+echo
 echo "=== artifact ==="
 ffprobe -v error -show_entries format=duration,size,bit_rate \
         -show_entries stream=codec_name,width,height,r_frame_rate,nb_frames \

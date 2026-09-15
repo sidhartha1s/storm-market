@@ -1302,3 +1302,18 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
 - **Overlap checker only sees overlays with a `p-` id and a timed wrapper**; bare popfig divs are invisible to it (0 overlays,
   false PASS). Wrap every overlay in `<section class="clip" id="p-…" data-start data-duration data-track-index>`; chips and
   source labels on track 4, popfigs and quote cards on track 5.
+
+## 2026-09-15 — Renders were on the Intel iGPU; pin headless Chrome to the GTX 1650
+- **Every render up to 15 Sep captured on the Intel UHD iGPU.** `--browser-gpu` only asks Chrome for
+  hardware D3D11; Windows hands an unpinned headless exe the integrated adapter. Measured on
+  ms-elnino-cpc-today full (7:47, 2 workers): 26 min, CPU 100 %, render RSS peak 5.7 GB (the iGPU's
+  frame buffers live in system RAM), GTX 1650 at 0 %. The owner could not multitask.
+- **Fix is a per-user registry pin, no package patch:** `HKCU\Software\Microsoft\DirectX\UserGpuPreferences`,
+  value = full exe path, data `GpuPreference=2;`. Chromium reads it; `--force_high_performance_gpu` adds
+  nothing on top (probed both). Trap: hyperframes launches its OWN Chrome from
+  `~/.cache/hyperframes/chrome/chrome-headless-shell/<ver>/…`, not the Playwright one, and every new
+  build is a new exe path. `render_busy.py --launch` now pins every chrome-headless-shell.exe under
+  both trees on every launch; `verify_render.sh` fails (exit 2) unless the log's
+  `browserGpuMode probe →` line names NVIDIA.
+- Still CPU by design in 0.7.109: ffmpeg frame extraction (~70 s for 48 clips) and audio; no hw-decode switch exists.
+- RAM floor stays 4 GB: the GPU run's capture RSS is ~4 GB vs ~5–6 GB on the iGPU (k2 logs in the 15 Sep session).
