@@ -69,10 +69,10 @@
       "title": "Hawaii Still Counting Lowell's Power Outages",
       "owner": "director",
       "due": "15 Sep 26",
-      "phase": "render",
+      "phase": "upload",
       "status": "doing",
-      "note": "full render 8:36 finished on GTX 1650, verify clean; mastering now",
-      "updated": "15 Sep 26 14:13"
+      "note": "full render 8:36 on GTX 1650 (27 min), verify clean; -14.02 LUFS master + SRT + metadata in main checkout episodes/ms-hawaii-lowell-outages/renders; upload pending",
+      "updated": "15 Sep 26 14:16"
     },
     {
       "slug": "ms-sakurajima-ash",
