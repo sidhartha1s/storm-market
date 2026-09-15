@@ -3,8 +3,7 @@
 <head><meta charset="UTF-8"></head>
 <body>
 <!--
-  B5-S2 world card. PLATE: NOAA Coral Reef Watch daily 5 km SST anomalies, 13 Sep 2026 (1787×1085, US-gov PD) at 0.8 → 1430×868 at
-  left 380 top 70. DATUM: the plate's own graticule (30E at x115, 0° at x1630 → 4.21 px/°; equator y520, 30N 390). Indian Ocean
+  B5-S2 world card. PLATE: NOAA Coral Reef Watch daily 5 km SST anomalies, 13 Sep 2026 (1787×1085, US-gov PD) at 0.75 → 1340×814, cropped to 739 tall (colour bar out), at left 380 top 70. DATUM: the plate's own graticule (30E at x115, 0° at x1630 → 4.21 px/°; equator y520, 30N 390). Indian Ocean
   west (60E,0) ≈ plate (253,520); east (100E) ≈ (421,520); tropical Atlantic 50W–20W at 10N ≈ (1420–1546, 478); eastern Pacific
   100W ≈ (1210,520). Host = b5-s2 start + 3.1 (288.677), 24.7 s. Cues rel host: Indian Ocean 3.9 · warmer west 5.5 · paired 7.8 ·
   wind shear 17.5 · tears apart 20.1 · quiet Atlantic 23.7.
@@ -12,13 +11,13 @@
 <template>
 <style>
   #root { position:absolute; inset:0; background: radial-gradient(ellipse at 60% 40%, #0e1a28 0%, #04070c 75%); overflow:hidden; font-family:Arial,sans-serif; color:#f2f5f8; }
-  .plate { position:absolute; left:380px; top:70px; width:1430px; height:868px; transform-origin:50% 50%; }
-  .plate img { position:absolute; left:0; top:0; width:1430px; height:868px; filter:saturate(0.85) brightness(0.9); border-radius:12px; }
+  .plate { position:absolute; left:380px; top:70px; width:1340px; height:739px; overflow:hidden; border-radius:12px; transform-origin:50% 50%; }
+  .plate img { position:absolute; left:0; top:0; width:1340px; height:814px; filter:saturate(0.85) brightness(0.9); border-radius:12px; }
   .tag { position:absolute; white-space:nowrap; font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:1.5px; color:#f4f0e8; background:rgba(10,16,24,0.84); border:1px solid rgba(255,255,255,0.14); border-left:5px solid #ff5a5a; padding:5px 12px; border-radius:6px; }
   .tag.cool { border-left-color:#6fb0e6; } .tag.shear { border-left-color:#ffd27a; }
   .blob { position:absolute; border-radius:50%; border:4px solid #ff5a5a; box-shadow:0 0 22px rgba(255,90,90,0.8); }
   .blob.cool { border-color:#6fb0e6; box-shadow:0 0 22px rgba(111,176,230,0.8); }
-  .shear { position:absolute; left:1090px; top:370px; width:200px; height:60px; }
+  .shear { position:absolute; left:1022px; top:347px; width:200px; height:60px; }
   .shear div { position:absolute; left:0; right:0; height:6px; background:#ffd27a; border-radius:3px; }
   .panel { position:absolute; left:60px; top:120px; width:330px; box-sizing:border-box; padding:24px 26px 20px; background:rgba(10,16,24,0.7); backdrop-filter:blur(16px) saturate(1.15); -webkit-backdrop-filter:blur(16px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:24px; }
   .eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:4px; color:#d0121f; }
@@ -30,14 +29,14 @@
 <div id="root" data-composition-id="worldmap" data-width="1920" data-height="1080">
   <div class="src">PLATE: NOAA CORAL REEF WATCH · SST ANOMALY · 13 SEP 2026</div>
   <div class="plate" id="wm-plate">
-    <img src="../media/plates/noaa-coral-reef-watch-global-ssta-current.png" alt="">
-    <div class="blob" id="wm-bw" style="left:160px; top:330px; width:170px; height:170px"></div>
-    <div class="blob cool" id="wm-be" style="left:300px; top:380px; width:120px; height:120px"></div>
-    <div class="tag" id="wm-tw" style="left:120px; top:280px">INDIAN OCEAN · WARMER WEST</div>
-    <div class="tag cool" id="wm-te" style="left:330px; top:520px">COOLER EAST</div>
-    <div class="tag" id="wm-tp" style="left:760px; top:470px">EL NIÑO · EASTERN PACIFIC</div>
+    <img src="../media/stills/noaa-coral-reef-watch-global-ssta-current.png" alt="">
+    <div class="blob" id="wm-bw" style="left:150px; top:309px; width:159px; height:159px"></div>
+    <div class="blob cool" id="wm-be" style="left:281px; top:356px; width:112px; height:112px"></div>
+    <div class="tag" id="wm-tw" style="left:112px; top:262px">INDIAN OCEAN · WARMER WEST</div>
+    <div class="tag cool" id="wm-te" style="left:309px; top:487px">COOLER EAST</div>
+    <div class="tag" id="wm-tp" style="left:712px; top:441px">EL NIÑO · EASTERN PACIFIC</div>
     <div class="shear" id="wm-shear"><div style="top:10px"></div><div style="top:44px"></div></div>
-    <div class="tag shear" id="wm-ts" style="left:950px; top:290px">WIND SHEAR UP · STORMS TORN APART</div>
+    <div class="tag shear" id="wm-ts" style="left:860px; top:272px">WIND SHEAR UP · STORMS TORN APART</div>
   </div>
   <div class="panel" id="wm-panel">
     <div class="eye" id="wm-eye">A SECOND OCEAN</div>

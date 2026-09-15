@@ -12,7 +12,7 @@
 <template>
 <style>
   #root { position:absolute; inset:0; background: radial-gradient(ellipse at 60% 40%, #0e1a28 0%, #04070c 75%); overflow:hidden; font-family:Arial,sans-serif; color:#f2f5f8; }
-  .plate { position:absolute; left:700px; top:70px; width:1170px; height:883px; transform-origin:50% 50%; }
+  .plate { position:absolute; left:700px; top:70px; width:1170px; height:700px; overflow:hidden; border-radius:12px; transform-origin:50% 50%; }
   .plate img { position:absolute; left:0; top:0; width:1170px; height:883px; filter:saturate(0.9) brightness(0.92); border-radius:12px; }
   .pill { position:absolute; white-space:nowrap; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:2px; color:#f4f0e8; background:rgba(10,16,24,0.82); border:1px solid rgba(255,255,255,0.14); border-left:5px solid #2f8f5b; padding:5px 12px; border-radius:6px; }
   .pill b { color:#7fe0a5; margin-right:8px; }
@@ -24,10 +24,10 @@
   .big { margin-top:8px; line-height:1.05; font-family:'AbrilFig',Georgia,serif; font-size:64px; text-shadow:0 3px 14px rgba(0,0,0,0.85); }
   .side { margin-top:8px; font-size:21px; color:#c8d3e0; line-height:1.35; }
   .side b { display:block; font-family:'Arial Black',Arial,sans-serif; font-size:30px; color:#f2f5f8; margin-top:16px; }
-  .src { position:absolute; left:110px; bottom:140px; font-size:20px; letter-spacing:1px; color:rgba(220,228,236,0.85); background:rgba(5,8,12,0.6); padding:6px 14px; }
+  .src { position:absolute; left:110px; top:34px; font-size:20px; letter-spacing:1px; color:rgba(220,228,236,0.85); background:rgba(5,8,12,0.6); padding:6px 14px; }
 </style>
 <div id="root" data-composition-id="atlanticmap" data-width="1920" data-height="1080">
-  <div class="src">PLATE: NATIONAL HURRICANE CENTER · 14 SEP 2026, 1:52 PM EDT</div>
+  <div class="src">PLATE: NHC 2-DAY OUTLOOK · 14 SEP 2026, 1:52 PM EDT</div>
   <div class="plate" id="am-plate">
     <img src="../media/plates/nhc-atlantic-tropical-outlook-2day-14sep2026.png" alt="">
     <div class="pill" id="am-atl" style="left:760px; top:300px"><b>0</b>ATLANTIC</div>
