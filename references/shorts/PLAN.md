@@ -173,5 +173,6 @@ first three, then ~25 min per short.
 - No new render engine, no vertical fork of the skills: the templates and the `sh-` slug convention are the
   entire code footprint. A `/storm-shorts` skill gets written after ~10 shorts stabilise the pattern
   (repo rule: skills are promoted, not pre-written).
-- No compilation shorts, no chaser footage, no raw-clip reposts, however well they score in the scan.
+- No chaser footage, no raw-clip reposts ripped from other channels, however well they score in the scan.
+  Compilations (S0) come only from our own provenance-tracked pools.
 - No scheduler until the hand-upload week gives per-platform numbers.
