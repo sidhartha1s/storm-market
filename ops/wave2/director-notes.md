@@ -41,3 +41,10 @@
 - **16 Sep slot A → El Niño (CPC advisory, "what the agency said this week")**: the owner's core series, CPC numbers move weekly,
   100 % US audience on the two shipped minis. Slot B → Kauai day 2 IF KIUC's number moved (wave-3 desk reports story_moved).
 - Wave-3 workflow launched 23:52 IST with the day-1 rules baked in (names on screen, numerals on screen, no meta lines).
+
+
+## 16 Sep 26, late (director)
+- 16 Sep shipped to preview: A ms-elnino-cpc-today (draft #2 with CPC's 14 Sep weekly Niño values; the 10 Sep advisory numbers were stale by the time the first draft rendered; lesson: the weekly PDF is a Monday product and the radar must read it before every El Niño script), B ms-kauai-lowell-day2 (7:09, short because the script came in at 1,115 words; next Kauai update targets 1,350+).
+- El Niño pool rebuilt after the worktree loss: 45 rows re-fetched + 35 Sept files + 49 cutters. Mudslide stock clip is an Italian coastal town; do not use.
+- 17 Sep slot A (Indonesia) v1 script is on disk (1,371 words). Radar verdict: marginal (Ibu 400 -> 600 m, Semeru 1,000 m again, Lewotolok ongoing, search silent since day 6, Krakatau unchanged). KILL RULE: ships only if the 06:00 check adds a real mover (search extended/closed/found, Krakatau eruption, Ibu at or above 1,000 m, an airport). Otherwise 17 Sep A falls to the next mover.
+- 17 Sep slot B: Kauai/Sakurajima/El Niño all flat at 16 Sep late. Candidates for the morning: Kauai first North Shore neighborhood back (KIUC), the Bermuda system getting a name (NHC), Sakurajima >= 3,000 m (JMA).
