@@ -1,0 +1,114 @@
+{
+  "story_moved": true,
+  "story_moved_reason": "Marginal but real movement, not a big jump: Ibu's overnight ash column rose to 600m (from the 400m baseline in the Sept-14 draft) across three fresh eruptions into early Sept 15; Ili Lewotolok logged a new Sept 15 06:32 WITA eruption explicitly flagged 'still in progress' by PVMBG; Semeru posted a fresh 1,000m column again at 04:32 WIB Sept 15, extending its streak to a second consecutive day. Nothing has changed at the alert-level layer -- the same 5 volcanoes (Anak Krakatau, Semeru, Lewotobi Laki-laki, Sinabung, Merapi) remain at Level III (Siaga), so the 'three more volcanoes' framing in the working title is NOT a new development, it's a recap of the unchanged Sept-14 list. The missing-boat/Arupadhatu 1 search (5 journalists + 3 crew, Sunda Strait) has posted NO update since day 6 (Sept 13: 15 vessels + 1 helicopter, 300 personnel, 8 missing) in any outlet checked -- it appears to have dropped off Antara, Detik and Basarnas' own homepage entirely, displaced by the much larger, unrelated Virgo Transport 8 ferry disaster (140 missing in the Java Sea) that has dominated Indonesian SAR coverage since Sept 13.",
+  "as_of_line": "Fact desk as of 2026-09-15 (fetch time, WIB/WITA/WIT). Sept 14 evening through Sept 15 early-morning items are fresh; the Level III/Siaga volcano list, Sinabung's Aug 31 level change, and the missing-boat day-6 figures are unchanged holdovers and marked [background] or [stalled].",
+  "facts": [
+    {
+      "fact": "Mount Ibu erupted three more times overnight, each stronger than the Sept 14 midday baseline: 21:45 WIT (600m ash, 1,925masl), 22:08 WIT (400m), 23:44 WIT (400m), and 00:46 WIT Sept 15 (600m ash, 1,925masl) -- all gray ash drifting northeast. Remains Level II (Waspada).",
+      "source_name": "MAGMA Indonesia (PVMBG/Badan Geologi eruption bulletin)",
+      "url": "https://magma.esdm.go.id/v1/gunung-api/informasi-letusan",
+      "date": "2026-09-15",
+      "number": "600m ash column (up from 400m Sept 14 baseline)"
+    },
+    {
+      "fact": "Ibu's Sept 14 21:45-Sept 15 00:46 eruptions recorded seismograph amplitudes of 28mm with durations of 30-47 seconds, reported by observer Darsono Haji Muhammad Nur.",
+      "source_name": "MAGMA Indonesia (PVMBG/Badan Geologi eruption bulletin)",
+      "url": "https://magma.esdm.go.id/v1/gunung-api/informasi-letusan",
+      "date": "2026-09-15",
+      "number": "28mm amplitude / 30-47s duration"
+    },
+    {
+      "fact": "Semeru erupted again at 04:32 WIB Sept 15, ash column 1,000m above the peak (4,676masl) drifting southwest -- matching its Sept 14 peak -- then again at 05:27 WIB with an 800m column (4,476masl) drifting east/southeast, seismograph amplitude 23mm, duration 142-161 seconds. Two additional no-visual eruptions were recorded overnight at 00:10 and 01:23 WIB. Remains Level III (Siaga).",
+      "source_name": "MAGMA Indonesia (PVMBG/Badan Geologi eruption bulletin)",
+      "url": "https://magma.esdm.go.id/v1/gunung-api/informasi-letusan",
+      "date": "2026-09-15",
+      "number": "1,000m ash column (matches Sept 14 peak, one more day of continuous activity)"
+    },
+    {
+      "fact": "Darwin VAAC / MAGMA's own VONA aviation-color feed confirms Semeru held Orange aviation color code through at least 2026-09-14 22:27 UTC (05:27 WIB Sept 15 local), the same eruption as above -- ash-cloud top estimated 14,323ft (4,476m asl), gray, thick intensity, moving east-southeast.",
+      "source_name": "MAGMA Indonesia VONA feed",
+      "url": "https://magma.esdm.go.id/v1/vona",
+      "date": "2026-09-15",
+      "number": "Orange aviation color code, unchanged"
+    },
+    {
+      "fact": "Ili Lewotolok erupted at 06:32 WITA Sept 15, ash column approx. 100m above the peak (1,523masl), white-to-gray, moderate intensity drifting northwest. PVMBG's report explicitly states the eruption 'was still ongoing' ('erupsi masih berlangsung') at the time of filing -- the freshest live-eruption status of any of the three volcanoes checked. A prior no-visual eruption was also logged at 20:41 WITA Sept 14.",
+      "source_name": "MAGMA Indonesia (PVMBG/Badan Geologi eruption bulletin), reporter Syawaludin, A.Md.",
+      "url": "https://magma.esdm.go.id/v1/gunung-api/informasi-letusan",
+      "date": "2026-09-15",
+      "number": "100m ash column, eruption flagged still in progress"
+    },
+    {
+      "fact": "PVMBG's live activity-level table (fetched today) confirms Level III (Siaga) status for exactly 5 volcanoes nationwide: Anak Krakatau (Lampung), Lewotobi Laki-laki (NTT), Merapi (DI Yogyakarta/Jawa Tengah), Semeru (Jawa Timur) and Sinabung (Sumatera Utara). This is UNCHANGED from the Sept-14 draft's list -- no volcano has been added to or removed from Level III since then.",
+      "source_name": "MAGMA Indonesia activity-level page",
+      "url": "https://magma.esdm.go.id/v1/gunung-api/tingkat-aktivitas",
+      "date": "2026-09-15",
+      "number": "5 volcanoes at Level III (Siaga), unchanged"
+    },
+    {
+      "fact": "[BACKGROUND, unchanged] Level II (Waspada) count stands at 22 volcanoes nationwide (including Ibu and Ili Lewotolok); Level I (Normal) at 42; Level IV (Awas) at 0. No volcano nationwide is currently at the highest alert tier.",
+      "source_name": "MAGMA Indonesia activity-level page",
+      "url": "https://magma.esdm.go.id/v1/gunung-api/tingkat-aktivitas",
+      "date": "2026-09-15",
+      "number": "22 Waspada / 42 Normal / 0 Awas"
+    },
+    {
+      "fact": "[STALLED -- no update found] The last confirmed status on the missing speedboat Arupadhatu 1 (5 journalists + 3 crew, lost contact in the Sunda Strait en route to Anak Krakatau on Sept 7) is day 6 of the search (Sunday Sept 13): 15 vessels plus 1 helicopter, ~300 personnel, an 8-vessel sub-team sweeping Sector X (681 sq nautical miles) within a 6,024 sq nautical mile total search area. No Antara, Detik, or Basarnas item dated Sept 14-16 mentions the search at all.",
+      "source_name": "Antara News (English)",
+      "url": "https://en.antaranews.com/news/431163/search-for-journalists-focuses-on-waters-south-of-anak-krakatau",
+      "date": "2026-09-13",
+      "number": "Day 6, 15 vessels + 1 helicopter, 300 personnel (last known figure; no fresher number located)"
+    },
+    {
+      "fact": "[CONTEXT] Basarnas' and Antara's/Detik's SAR coverage since Sept 13 has been almost entirely displaced by an unrelated, much larger incident: the KM Virgo Transport 8 ferry accident in the Java Sea, which has left 6 dead and up to 140 missing as of Sept 13-15, with recovery/underwater operations ongoing through Sept 15. This is the likely reason no fresh Arupadhatu 1 coverage was found.",
+      "source_name": "Antara News (English) / Detik",
+      "url": "https://en.antaranews.com/news/431245/basarnas-expands-search-for-129-missing-after-virgo-transport-accident",
+      "date": "2026-09-14",
+      "number": "140 missing (unrelated incident, explains the coverage gap)"
+    },
+    {
+      "fact": "[BACKGROUND, unchanged since Aug 31] Sinabung remains at Level III (Siaga), raised from Level II on Aug 31 after a 3,500m ash column; no PVMBG statement found confirming or withdrawing the Aug 31 warning of a possible larger eruption.",
+      "source_name": "MAGMA Indonesia activity-level page (cross-checked against Sept-14 draft, SudutPandang.id)",
+      "url": "https://magma.esdm.go.id/v1/gunung-api/tingkat-aktivitas",
+      "date": "2026-09-15",
+      "number": "Level III since Aug 31, unchanged"
+    }
+  ],
+  "quotes": [
+    {
+      "speaker": "Rizky Dwianto",
+      "title": "Head of Operations and Readiness Sub-section, Basarnas Banten",
+      "quote": "the sixth day of efforts to find speedboat Arupadhatu 1 ... eight vessels were deployed to sweep Sector X, covering about 681 square nautical miles",
+      "url": "https://en.antaranews.com/news/431163/search-for-journalists-focuses-on-waters-south-of-anak-krakatau",
+      "verbatim": false
+    },
+    {
+      "speaker": "Sigit Rian Alfian",
+      "title": "Reporting observer, Semeru Volcano Observatory (PGA Semeru), via MAGMA Indonesia bulletin",
+      "quote": "Terjadi erupsi G. Semeru pada hari Selasa, 15 September 2026, pukul 05:27 WIB dengan tinggi kolom abu teramati ± 800 m di atas puncak (± 4476 m di atas permukaan laut).",
+      "url": "https://magma.esdm.go.id/v1/gunung-api/informasi-letusan",
+      "verbatim": true
+    },
+    {
+      "speaker": "Syawaludin, A.Md.",
+      "title": "Reporting observer, Ili Lewotolok Volcano Observatory, via MAGMA Indonesia bulletin",
+      "quote": "Terjadi erupsi G. Ili Lewotolok pada hari Selasa, 15 September 2026, pukul 06:32 WITA ... Saat laporan ini dibuat, erupsi masih berlangsung.",
+      "url": "https://magma.esdm.go.id/v1/gunung-api/informasi-letusan",
+      "verbatim": true
+    }
+  ],
+  "unknowns": [
+    "No day-7/day-8/day-9 update on the Arupadhatu 1 search was found in Antara, Detik, Jakarta Post, or Basarnas' own site as of the fetch -- cannot confirm whether the search was extended, scaled back, or produced any find since day 6 (Sept 13).",
+    "The team lead's brief cited 'day 7 of the search, 18 vessels' and '8 airports closed, ~3,000 flights, PVMBG's 3 Sept statement, tiltmeter rising since August' as already-shipped facts from a 15 Sept video, but no local file in ops/wave2 (or elsewhere searched in this worktree) contains those specific figures -- could not cross-check or extend them from source.",
+    "Jakarta Post's search page loads results via client-side Google Custom Search JS; curl could not retrieve any article list from it.",
+    "VolcanoDiscovery's krakatau/news.html is behind a JS wait-challenge (Akamai/Cloudflare-style) that curl cannot pass; no data retrieved from that source.",
+    "Darwin VAAC's bom.gov.au graphics page is also JS-rendered (Akamai bot mitigation); no text advisory content could be extracted via curl.",
+    "Could not verify whether Lewotobi Laki-laki or Merapi's Level III status changed in the last 48h (both appear as unchanged holdovers from the Sept-14 draft); no volcano-specific news article confirming a fresh status statement was found for either in this pass.",
+    "PVMBG has not, in any source checked, explicitly stated why Ibu's ash column rose from 400m (Sept 14) to 600m (Sept 15 overnight) -- no causal statement, just successive bulletins."
+  ],
+  "titles": [
+    "Indonesia's Volcanoes: Ibu's Ash Column Jumps Overnight, Search Goes Quiet",
+    "Semeru Erupts Again, Ili Lewotolok Still Ongoing as Missing-Boat Search Stalls",
+    "Five Volcanoes, One Missing Boat: Indonesia's Unmoved Alert List, Six Days Later"
+  ]
+}
