@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>CPC Holds El Niño Advisory Above 90 Percent — The Warning Hour (Format C, 16 Sep 26)</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070c; }
+    video, .still-wrap { position: absolute; inset: 0; }
+    video { width: 100%; height: 100%; object-fit: cover; }
+    .still-wrap { overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    .contain-wrap img { object-fit: contain; }
+    .contain-wrap img.blurfill { object-fit: cover; filter: blur(26px) brightness(0.45) saturate(0.8); transform: scale(1.12); }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    .bc { filter: saturate(0.85) contrast(1.08) brightness(0.95); }
+    @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+    .popfig { position: absolute; left: 0; right: 0; top: 36%; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; isolation: isolate; }
+    .popfig .pf-big { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 150px; color: #d0121f; letter-spacing: 0.04em;
+      text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+    .popfig .pf-sub { display: block; margin-top: 12px; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 38px; color: #f4f0e8;
+      letter-spacing: 0.3em; -webkit-text-stroke: 1px rgba(0,0,0,0.85); paint-order: stroke fill;
+      text-shadow: 0 0 18px rgba(0,0,0,1), 0 0 40px rgba(0,0,0,0.9), 0 3px 10px #000; }
+    .popfig::before { content: ''; position: absolute; left: 14%; right: 14%; top: -90px; bottom: -70px; z-index: -1;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.32) 40%, rgba(0,0,0,0) 72%); }
+    .popfig.rhs { left: 960px; right: 40px; }
+    .popfig.rhs::before { left: 4%; right: 4%; }
+    .popfig.rhs .pf-big { font-size: 120px; }
+    .popfig.rhs .pf-sub { font-size: 30px; }
+    .chip { position: absolute; left: 110px; bottom: 300px; z-index: 6; font-family: 'Arial Black', Arial, sans-serif; font-size: 34px; letter-spacing: 2px; color: #f4f0e8;
+      background: rgba(10,16,24,0.62); backdrop-filter: blur(14px) saturate(1.15); -webkit-backdrop-filter: blur(14px) saturate(1.15);
+      border: 1px solid rgba(255,255,255,0.14); border-left: 6px solid #d0121f; border-radius: 10px; padding: 12px 26px; }
+    .srclab { position: absolute; right: 40px; top: 34px; z-index: 7; font-family: Arial, sans-serif; font-size: 20px; letter-spacing: 1px; color: rgba(220,228,236,0.85); background: rgba(5,8,12,0.6); padding: 6px 14px; }
+    .quotecard { position: absolute; left: 260px; right: 260px; top: 280px; z-index: 6; text-align: center;
+      background: rgba(10,16,24,0.58); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+      border: 1px solid rgba(255,255,255,0.14); border-radius: 28px; padding: 44px 60px; box-sizing: border-box; }
+    .quotecard .q { font-family: Georgia, serif; font-style: italic; font-size: 48px; color: #f2f5f8; line-height: 1.3; }
+    .quotecard .attr { margin-top: 18px; font-family: Arial, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 4px; color: #d8a13a; }
+    .bugstrip { position: absolute; left: 0; right: 0; bottom: 0; height: 92px; display: flex; align-items: stretch; z-index: 5;
+      background: linear-gradient(90deg, rgba(4,7,12,0.94) 0%, rgba(4,7,12,0.82) 70%, rgba(4,7,12,0.6) 100%); border-top: 2px solid #d0121f; }
+    .bugstrip .bk { display: flex; align-items: center; padding: 0 34px; background: #d0121f; color: #fff; font-family: 'Arial Black', Arial, sans-serif; font-size: 34px; letter-spacing: 5px; }
+    .bugstrip .bw { display: flex; align-items: center; padding: 0 26px; color: #d8a13a; font-family: Georgia, serif; font-style: italic; font-size: 26px; border-right: 1px solid rgba(255,255,255,0.14); white-space: nowrap; }
+    .bugstrip .bh { display: flex; align-items: center; padding: 0 30px; color: #f4f0e8; font-weight: 700; font-size: 34px; letter-spacing: 1px; white-space: nowrap; overflow: hidden; }
+    .pip { position: absolute !important; inset: auto !important; left: 1640px !important; top: 708px !important;
+      width: 240px !important; height: 240px !important; border-radius: 50% !important; object-fit: cover !important; z-index: 8 !important; }
+    .pipring { position: absolute; left: 1632px; top: 700px; width: 256px; height: 256px; border-radius: 50%; border: 4px solid #d0121f;
+      box-sizing: border-box; z-index: 9; box-shadow: 0 10px 30px rgba(0,0,0,0.55); }
+    #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90; background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
+    #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.10; mix-blend-mode: overlay; }
+    #grade { position: absolute; inset: 0; pointer-events: none; z-index: 89; mix-blend-mode: soft-light; background-color: rgba(96,138,178,0.18); }
+    .dust { position: absolute; z-index: 92; pointer-events: none; border-radius: 50%; background: rgba(255,255,255,0.32); filter: blur(1.2px); }
+  </style>
+</head>
+<body>
+<!-- ms-elnino-cpc-today · Format C rolling update, 16 Sep 26, first of the daily El Niño series. Narration windows = wav lengths.
+     B-roll muted (the Saulo and Guterres pulls are picture only; their words are on the quote cards). CTA after B4 with 0.5 s dips.
+     Paul hidden under the close card only. Cues from audio/*.words.json (sped 1.10, re-transcribed). -->
+<div id="root" data-composition-id="ms-elnino-cpc-today" data-start="0.0" data-width="1920" data-height="1080" data-duration="465.317" data-fps="30">
+
+  <!-- ============ NARRATION (wav lengths) ============ -->
+  <audio id="nx-b1s1" src="audio/b1-s1.wav" data-start="0.0" data-duration="31.18" data-volume="1"></audio>
+  <audio id="nx-b2s1" src="audio/b2-s1.wav" data-start="32.68" data-duration="58.45" data-volume="1"></audio>
+  <audio id="nx-b3s1" src="audio/b3-s1.wav" data-start="91.73" data-duration="73.25" data-volume="1"></audio>
+  <audio id="nx-b4s1" src="audio/b4-s1.wav" data-start="165.58" data-duration="71.25" data-volume="1"></audio>
+  <audio id="nx-b5s1" src="audio/b5-s1.wav" data-start="252.997" data-duration="31.98" data-volume="1"></audio>
+  <audio id="nx-b5s2" src="audio/b5-s2.wav" data-start="285.577" data-duration="63.29" data-volume="1"></audio>
+  <audio id="nx-b6s1" src="audio/b6-s1.wav" data-start="349.467" data-duration="63.4" data-volume="1"></audio>
+  <audio id="nx-b7s1" src="audio/b7-s1.wav" data-start="413.467" data-duration="37.25" data-volume="1"></audio>
+  <audio id="nx-b8s1" src="audio/b8-s1.wav" data-start="451.317" data-duration="7.4" data-volume="1"></audio>
+
+  <!-- ============ CTA (own audio; the only unmuted insert) ============ -->
+  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v5-sep6.mp4" data-start="237.33" data-duration="15.139" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
+
+  <!-- ============ BEDS ============ -->
+  <audio id="sx-rumble-hook" src="media/04_distant_storm_rumble.mp3" data-bed="" data-start="0.0" data-duration="31.18" data-volume="0.16"></audio>
+  <audio id="sx-mus-a" src="media/score-act5-tension.mp3" data-bed="" data-start="0.0" data-duration="236.83" data-volume="0.13"></audio>
+  <audio id="sx-mus-b" src="media/score-act3-urgent.mp3" data-bed="" data-start="252.997" data-duration="160.47" data-volume="0.13"></audio>
+  <audio id="sx-mus-c" src="media/score-act6-close.mp3" data-bed="" data-start="413.467" data-duration="51.85" data-volume="0.16"></audio>
+
+  <!-- ============ PRESENTER (corner circle) ============ -->
+  <video id="pip-idle-a" class="pip" src="media/pip/paul-idle-a.mp4" data-start="32.68" data-duration="204.15" data-track-index="6" muted></video>
+  <video id="pip-talk-a" class="pip" src="media/pip/paul-talk-a.mp4" data-start="32.68" data-duration="204.15" data-track-index="7" data-callback="presenter loop, talking" muted></video>
+  <video id="pip-idle-b" class="pip" src="media/pip/paul-idle-b.mp4" data-start="252.997" data-duration="198.32" data-track-index="6" data-callback="presenter loop, listening" muted></video>
+  <video id="pip-talk-b" class="pip" src="media/pip/paul-talk-b.mp4" data-start="252.997" data-duration="198.32" data-track-index="7" data-callback="presenter loop, talking" muted></video>
+  <section class="clip" id="pip-ring-a" data-start="32.68" data-duration="204.15" data-track-index="8"><div class="pipring"></div></section>
+  <section class="clip" id="pip-ring-b" data-start="252.997" data-duration="198.32" data-track-index="8"><div class="pipring"></div></section>
+
+  <!-- ============ NEWS BUG (track 3) ============ -->
+  <section class="clip" id="bug-a" data-start="32.68" data-duration="204.15" data-track-index="3"><div class="bugstrip" id="bugstrip-a"><div class="bk">LATEST UPDATE</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-a"></div></div></section>
+  <section class="clip" id="bug-b" data-start="252.997" data-duration="198.32" data-track-index="3"><div class="bugstrip" id="bugstrip-b"><div class="bk">LATEST UPDATE</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-b"></div></div></section>
+
+  <!-- ============ TRACK 1 · picture ============ -->
+  <!-- B1 · cold open 0–31.18 -->
+  <video id="vx-b1-0-globe" src="media/cut/svs3d-03.mp4" data-start="0.0" data-duration="5.0" data-track-index="1" muted></video>
+  <video id="vx-b1-1-ocean" src="media/broll/pexels-pacific-ocean-surface-aerial.mp4" data-start="5.0" data-duration="5.5" data-track-index="1" muted></video>
+  <video id="vx-b1-2-sstanim" class="bc" src="media/cut/cbs1-02.mp4" data-start="10.5" data-duration="6.0" data-track-index="1" muted></video>
+  <video id="vx-b1-3-peru" src="media/broll/pexels-peru-coastal-landscape.mp4" data-start="16.5" data-duration="4.5" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b1-4-goes" data-start="21.0" data-duration="5.0" data-track-index="1"><img id="kb-b1-4-goes" src="media/stills/goes-east-full-disk-14sep2026.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-b1-5-wmo" data-start="26.0" data-duration="5.18" data-track-index="1"><img id="kb-b1-5-wmo" src="media/stills/wmo-el-nino-release-page-3sep2026.png" alt=""></section>
+  <section class="clip blackout" id="bo-hook" data-start="31.18" data-duration="1.5" data-track-index="1"></section>
+
+  <!-- B2 · where the numbers stand 32.68–91.13 (Pacific card on track 2 from 39.18) -->
+  <section class="clip still-wrap" id="c-b2-0-chart" data-start="32.68" data-duration="6.5" data-track-index="1"><img id="kb-b2-0-chart" src="media/stills/cpc-nino-region-sst-index-chart-14sep2026.png" alt=""></section>
+  <video id="vx-b2-1-globe1" src="media/cut/svs3d-01.mp4" data-start="39.18" data-duration="5.0" data-track-index="1" muted></video>
+  <video id="vx-b2-2-fishermen" src="media/broll/pexels-fishermen-sea-shore.mp4" data-start="44.18" data-duration="6.0" data-track-index="1" muted></video>
+  <video id="vx-b2-3-globe2" src="media/cut/svs3d-02.mp4" data-start="50.18" data-duration="5.0" data-track-index="1" muted></video>
+  <video id="vx-b2-4-coast" src="media/broll/pixabay-pacific-coast-aerial-waves.mp4" data-start="55.18" data-duration="6.0" data-track-index="1" muted></video>
+  <video id="vx-b2-5-globe4" src="media/cut/svs3d-04.mp4" data-start="61.18" data-duration="5.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b2-6-prob" data-start="66.18" data-duration="6.0" data-track-index="1"><img id="kb-b2-6-prob" src="media/plates/cpc-probabilistic-enso-outlook-10sep2026.png" alt=""></section>
+  <section class="clip still-wrap" id="c-b2-7-roni" data-start="72.18" data-duration="6.0" data-track-index="1"><img id="kb-b2-7-roni" src="media/stills/cpc-roni-evolution-since-1950.png" alt=""></section>
+  <video id="vx-b2-8-1997" class="bc" src="media/cut/cbs1-03.mp4" data-start="78.18" data-duration="5.54" data-track-index="1" muted></video>
+  <video id="vx-b2-9-2015" src="media/cut/svs2016-02.mp4" data-start="83.72" data-duration="4.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b2-10-fan" data-start="87.72" data-duration="3.41" data-track-index="1"><img id="kb-b2-10-fan" src="media/plates/cpc-official-enso-outlook-roni-forecast-10sep2026.png" alt=""></section>
+  <section class="clip blackout" id="bo-b2" data-start="91.13" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B3 · where it shows first 91.73–164.98 (Atlantic card 91.73–129.73, US maps 153.73–164.98 on track 2) -->
+  <section class="clip blackout" id="bo-b3-map" data-start="91.73" data-duration="38.0" data-track-index="1"></section>
+  <video id="vx-b3-1-globe5" src="media/cut/svs3d-05.mp4" data-start="129.73" data-duration="5.0" data-track-index="1" muted></video>
+  <video id="vx-b3-2-hawaii" src="media/broll/hawaii_line_crews.mp4" data-start="134.73" data-duration="5.5" data-track-index="1" muted></video>
+  <video id="vx-b3-3-peru" src="media/broll/pexels-peru-coastal-landscape.mp4" data-start="140.23" data-duration="4.5" data-track-index="1" data-callback="second use, the South American coast" muted></video>
+  <video id="vx-b3-4-fishermen" src="media/broll/pexels-fishermen-sea-shore.mp4" data-start="144.73" data-duration="4.6" data-track-index="1" data-callback="second use, the fishing grounds off Peru" muted></video>
+  <video id="vx-b3-5-coast" src="media/broll/pixabay-pacific-coast-aerial-waves.mp4" data-start="149.33" data-duration="4.4" data-track-index="1" data-callback="second use, the US stake" muted></video>
+  <section class="clip blackout" id="bo-b3-us" data-start="153.73" data-duration="11.25" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-b3" data-start="164.98" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B4 · the agencies on record 165.58–236.83 -->
+  <section class="clip still-wrap" id="c-b4-0-wmo" data-start="165.58" data-duration="4.0" data-track-index="1" data-callback="second use, the WMO release under 'not the only agency'"><img id="kb-b4-0-wmo" src="media/stills/wmo-el-nino-release-page-3sep2026.png" alt=""></section>
+  <video id="vx-b4-1-clouds" src="media/broll/pexels-storm-clouds-over-ocean.mp4" data-start="169.58" data-duration="3.7" data-track-index="1" muted></video>
+  <video id="vx-b4-2-saulo" class="bc" src="media/broll/wmo-saulo-world-meteorological-day-2026.mp4" data-start="173.28" data-duration="6.0" data-track-index="1" muted></video>
+  <video id="vx-b4-3-village" src="media/cut/svsdis-05.mp4" data-start="179.28" data-duration="5.0" data-track-index="1" muted></video>
+  <video id="vx-b4-4-bluff" class="bc" src="media/cut/ap1-02.mp4" data-start="184.28" data-duration="4.0" data-track-index="1" muted></video>
+  <video id="vx-b4-5-flood" class="bc" src="media/cut/fox-04.mp4" data-start="188.28" data-duration="2.7" data-track-index="1" muted></video>
+  <video id="vx-b4-6-guterres" class="bc" src="media/broll/wmo-un-secretary-general-elnino-statement-jun2026.mp4" data-start="190.98" data-duration="8.0" data-track-index="1" muted></video>
+  <video id="vx-b4-7-currents" src="media/cut/svs2016-04.mp4" data-start="198.98" data-duration="5.0" data-track-index="1" muted></video>
+  <video id="vx-b4-8-town" class="bc" src="media/cut/ap1-06.mp4" data-start="203.98" data-duration="5.0" data-track-index="1" muted></video>
+  <video id="vx-b4-9-globe" src="media/cut/svsdis-01.mp4" data-start="208.98" data-duration="5.0" data-track-index="1" muted></video>
+  <video id="vx-b4-10-park" class="bc" src="media/cut/fox-03.mp4" data-start="213.98" data-duration="4.2" data-track-index="1" muted></video>
+  <video id="vx-b4-11-waterfront" class="bc" src="media/cut/fox-01.mp4" data-start="218.18" data-duration="4.7" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b4-12-chart" data-start="222.88" data-duration="4.4" data-track-index="1" data-callback="second use, the CPC index charts under Becker's line"><img id="kb-b4-12-chart" src="media/stills/cpc-nino-region-sst-index-chart-14sep2026.png" alt=""></section>
+  <video id="vx-b4-13-2016" src="media/cut/svs2016-03.mp4" data-start="227.28" data-duration="5.0" data-track-index="1" muted></video>
+  <video id="vx-b4-14-globe1" src="media/cut/svs3d-01.mp4" data-start="232.28" data-duration="5.05" data-track-index="1" data-callback="second use, ocean and atmosphere locked together" muted></video>
+
+  <!-- B5-S1 · why it keeps building 252.469–284.977 (subsurface on track 2 from 252.997) -->
+  <section class="clip blackout" id="bo-b5a-plate" data-start="252.469" data-duration="32.508" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-b5a" data-start="284.977" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B5-S2 · a second ocean 285.577–348.867 (world card 288.677–313.377 on track 2) -->
+  <video id="vx-b5b-0-ocean" src="media/broll/pexels-pacific-ocean-surface-aerial.mp4" data-start="285.577" data-duration="3.1" data-track-index="1" data-callback="second use, a second ocean" muted></video>
+  <section class="clip blackout" id="bo-b5b-world" data-start="288.677" data-duration="24.7" data-track-index="1"></section>
+  <section class="clip still-wrap" id="c-b5b-2-indo" data-start="313.377" data-duration="4.5" data-track-index="1"><img id="kb-b5b-2-indo" src="media/stills/nasa-worldview-indonesia-fire-haze-13sep2026.jpg" alt=""></section>
+  <video id="vx-b5b-3-sstanim2" class="bc" src="media/cut/cbs2-04.mp4" data-start="317.877" data-duration="5.0" data-track-index="1" muted></video>
+  <video id="vx-b5b-4-globe5" src="media/cut/svs3d-05.mp4" data-start="322.877" data-duration="5.0" data-track-index="1" data-callback="second use, the heat still building" muted></video>
+  <section class="clip still-wrap" id="c-b5b-5-heat" data-start="327.877" data-duration="3.0" data-track-index="1"><img id="kb-b5b-5-heat" src="media/plates/cpc-upper-ocean-heat-content-weekly-anomaly.png" alt=""></section>
+  <video id="vx-b5b-6-1997" class="bc" src="media/cut/cbs1-03.mp4" data-start="330.877" data-duration="5.0" data-track-index="1" data-callback="second use, 1997 against now" muted></video>
+  <section class="clip still-wrap" id="c-b5b-7-fema1336" data-start="335.877" data-duration="4.0" data-track-index="1"><img id="kb-b5b-7-fema1336" src="media/stills/FEMA_-_1336_-_Photograph_by_Dave_Gatley_taken_on_03-03-1998_in_California.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-b5b-8-yuba" data-start="339.877" data-duration="4.6" data-track-index="1"><img id="kb-b5b-8-yuba" src="media/stills/Flood_under_the_Old_Route_49_bridge_crossing_over_the_South_Yuba_River_in_Nevada_City__California.jpg" alt=""></section>
+  <video id="vx-b5b-9-cbs2016" class="bc" src="media/broll/cbs_evening_news_ca_flooding_2016.mp4" data-start="344.477" data-duration="4.39" data-track-index="1" muted></video>
+  <section class="clip blackout" id="bo-b5b" data-start="348.867" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B6 · what is being done, and the winter at home 349.467–412.867 (US winter card 368.267–398.967 on track 2) -->
+  <section class="clip still-wrap" id="c-b6-0-fan" data-start="349.467" data-duration="5.0" data-track-index="1" data-callback="second use, the outlook fan under the reissue schedule"><img id="kb-b6-0-fan" src="media/plates/cpc-official-enso-outlook-roni-forecast-10sep2026.png" alt=""></section>
+  <section class="clip still-wrap" id="c-b6-1-weeks" data-start="354.467" data-duration="5.0" data-track-index="1"><img id="kb-b6-1-weeks" src="media/stills/cpc-weekly-sst-departures-change-last-4weeks.png" alt=""></section>
+  <video id="vx-b6-2-abc2016" class="bc" src="media/broll/abc_gma_ca_flooding_2016.mp4" data-start="359.467" data-duration="4.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b6-3-goes" data-start="363.467" data-duration="4.8" data-track-index="1" data-callback="second use, the Atlantic disk under NHC"><img id="kb-b6-3-goes" src="media/stills/goes-east-full-disk-14sep2026.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-b6-us" data-start="368.267" data-duration="30.7" data-track-index="1"></section>
+  <video id="vx-b6-5-gutter" src="media/broll/rain_gutter_drain.mp4" data-start="398.967" data-duration="6.0" data-track-index="1" muted></video>
+  <video id="vx-b6-6-rain" src="media/broll/heavy_rain_street.mp4" data-start="404.967" data-duration="3.5" data-track-index="1" muted></video>
+  <video id="vx-b6-7-snow" src="media/broll/snow_mountains_sierra.mp4" data-start="408.467" data-duration="4.4" data-track-index="1" muted></video>
+  <section class="clip blackout" id="bo-b6" data-start="412.867" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B7 · what nobody has said yet 413.467–450.717 (tracking card on track 2 from 414.467) -->
+  <section class="clip still-wrap" id="c-b7-0-roni" data-start="413.467" data-duration="5.0" data-track-index="1" data-callback="second use, the record under 'peak'"><img id="kb-b7-0-roni" src="media/stills/cpc-roni-evolution-since-1950.png" alt=""></section>
+  <video id="vx-b7-1-globe2" src="media/cut/svs3d-02.mp4" data-start="418.467" data-duration="5.0" data-track-index="1" data-callback="second use" muted></video>
+  <section class="clip still-wrap" id="c-b7-2-prob" data-start="423.467" data-duration="5.0" data-track-index="1" data-callback="second use, the probability bands"><img id="kb-b7-2-prob" src="media/plates/cpc-probabilistic-enso-outlook-10sep2026.png" alt=""></section>
+  <video id="vx-b7-3-2016" src="media/cut/svs2016-03.mp4" data-start="428.467" data-duration="5.0" data-track-index="1" data-callback="second use, the year after, under 'La Niña follows'" muted></video>
+  <video id="vx-b7-4-waves" class="bc" src="media/cut/cbs2-03.mp4" data-start="433.467" data-duration="3.64" data-track-index="1" muted></video>
+  <video id="vx-b7-5-surf" class="bc" src="media/cut/ap1-01.mp4" data-start="437.107" data-duration="7.0" data-track-index="1" muted></video>
+  <video id="vx-b7-6-winter" src="media/broll/pexels-snowless-winter-street-bare-trees.mp4" data-start="444.107" data-duration="6.61" data-track-index="1" muted></video>
+  <section class="clip blackout" id="bo-b7" data-start="450.717" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B8 · close 451.317–458.717, then the close card -->
+  <section class="clip blackout" id="bo-end" data-start="451.317" data-duration="14.0" data-track-index="1"></section>
+
+  <!-- ============ OVERLAYS: popfigs (track 5), chips, quotes and source labels (track 4/5) ============ -->
+  <section class="clip" id="p-pf-adv" data-start="8.000" data-duration="2.800" data-track-index="5"><div class="popfig" id="pf-adv"><span class="pf-big">EL NIÑO ADVISORY</span><span class="pf-sub">IN FORCE · CPC</span></div></section>
+  <section class="clip" id="p-pf-90" data-start="11.200" data-duration="3.000" data-track-index="5"><div class="popfig" id="pf-90"><span class="pf-big">&gt;90%</span><span class="pf-sub">ONE OF THE STRONGEST ON RECORD</span></div></section>
+  <section class="clip" id="p-pf-0storms" data-start="20.800" data-duration="3.000" data-track-index="5"><div class="popfig" id="pf-0storms"><span class="pf-big">0 STORMS</span><span class="pf-sub">ATLANTIC · PEAK OF THE SEASON</span></div></section>
+  <section class="clip" id="p-chip-wmo" data-start="24.800" data-duration="5.000" data-track-index="4"><div class="chip" id="chip-wmo">WMO: "EXCEPTIONAL" · 3 SEP 2026</div></section>
+  <section class="clip" id="p-src-cpc" data-start="32.68" data-duration="6.000" data-track-index="4"><div class="srclab" id="src-cpc">SOURCES: NOAA CPC ADVISORY 10 SEP 2026 · CLIMATE.GOV · NHC · WMO</div></section>
+  <section class="clip" id="p-chip-odds" data-start="67.180" data-duration="5.000" data-track-index="4"><div class="chip" id="chip-odds">&gt;90% VERY STRONG · 75% HISTORIC</div></section>
+  <section class="clip" id="p-chip-9715" data-start="83.280" data-duration="4.500" data-track-index="4"><div class="chip" id="chip-9715">1997 AND 2015 · THE TWO STRONGEST BEFORE</div></section>
+  <section class="clip" id="p-pf-2hur" data-start="132.030" data-duration="2.800" data-track-index="5"><div class="popfig" id="pf-2hur"><span class="pf-big">2 HURRICANES</span><span class="pf-sub">HAWAII · LALA AND LOWELL</span></div></section>
+  <section class="clip" id="p-chip-kauai" data-start="137.730" data-duration="4.000" data-track-index="4"><div class="chip" id="chip-kauai">KAUAI: 81% POWER RESTORED · 15 SEP</div></section>
+  <section class="clip" id="p-pf-peru" data-start="148.830" data-duration="2.800" data-track-index="5"><div class="popfig" id="pf-peru"><span class="pf-big">OFF PERU</span><span class="pf-sub">WHERE IT ARRIVES FIRST</span></div></section>
+  <section class="clip" id="p-chip-saulo" data-start="173.280" data-duration="3.400" data-track-index="4"><div class="chip" id="chip-saulo">CELESTE SAULO · SECRETARY-GENERAL, WMO · 3 SEP 2026</div></section>
+  <section class="clip" id="p-q-saulo" data-start="176.680" data-duration="6.800" data-track-index="5"><div class="quotecard" id="q-saulo"><div class="q">“Never before in the 50-year history of WMO have we launched such a major mobilization.”</div><div class="attr">CELESTE SAULO · SECRETARY-GENERAL, WMO · 3 SEP 2026</div></div></section>
+  <section class="clip" id="p-chip-guterres" data-start="190.980" data-duration="3.400" data-track-index="4"><div class="chip" id="chip-guterres">ANTÓNIO GUTERRES · UN SECRETARY-GENERAL</div></section>
+  <section class="clip" id="p-q-guterres" data-start="192.880" data-duration="5.000" data-track-index="5"><div class="quotecard" id="q-guterres"><div class="q">“El Niño is being supersized before our eyes.”</div><div class="attr">ANTÓNIO GUTERRES · UN SECRETARY-GENERAL</div></div></section>
+  <section class="clip" id="p-chip-becker" data-start="218.280" data-duration="4.500" data-track-index="4"><div class="chip" id="chip-becker">EMILY BECKER · NOAA ENSO BLOG · 10 SEP 2026</div></section>
+  <section class="clip" id="p-pf-100" data-start="222.080" data-duration="2.800" data-track-index="5"><div class="popfig" id="pf-100"><span class="pf-big">100%</span><span class="pf-sub">THROUGH DEC–FEB · BECKER</span></div></section>
+  <section class="clip" id="p-pf-3ag" data-start="234.280" data-duration="2.550" data-track-index="5"><div class="popfig" id="pf-3ag"><span class="pf-big">3 AGENCIES</span><span class="pf-sub">ONE CONCLUSION</span></div></section>
+  <section class="clip" id="p-pf-indo" data-start="317.180" data-duration="2.800" data-track-index="5"><div class="popfig" id="pf-indo"><span class="pf-big">INDONESIA</span><span class="pf-sub">DRY SEASON, DRIER</span></div></section>
+  <section class="clip" id="p-pf-1997" data-start="333.780" data-duration="2.800" data-track-index="5"><div class="popfig" id="pf-1997"><span class="pf-big">1997</span><span class="pf-sub">FLOODS AND MUDSLIDES</span></div></section>
+  <section class="clip" id="p-pf-2015" data-start="345.080" data-duration="2.600" data-track-index="5"><div class="popfig" id="pf-2015"><span class="pf-big">2015</span><span class="pf-sub">SAME PATTERN, SAME PICTURES</span></div></section>
+  <section class="clip" id="p-pf-oct8" data-start="354.470" data-duration="2.800" data-track-index="5"><div class="popfig" id="pf-oct8"><span class="pf-big">OCT 8</span><span class="pf-sub">NEXT ADVISORY</span></div></section>
+  <section class="clip" id="p-chip-winter" data-start="359.470" data-duration="4.500" data-track-index="4"><div class="chip" id="chip-winter">WINTER OUTLOOK · OCTOBER · CPC</div></section>
+  <section class="clip" id="p-chip-nhc" data-start="365.270" data-duration="3.000" data-track-index="4"><div class="chip" id="chip-nhc">NHC: SYSTEM NEAR BERMUDA · WATCHED THROUGH THE WEEK</div></section>
+  <section class="clip" id="p-chip-wet" data-start="402.870" data-duration="4.500" data-track-index="4"><div class="chip" id="chip-wet">WETTER BAND: CLEAR THE DRAINS, CHECK THE ROOF</div></section>
+  <section class="clip" id="p-chip-dry" data-start="408.670" data-duration="4.200" data-track-index="4"><div class="chip" id="chip-dry">MILDER BAND: DRY WINTER, THIN SNOWPACK</div></section>
+  <section class="clip" id="p-pf-oct8b" data-start="447.870" data-duration="2.850" data-track-index="5"><div class="popfig rhs" id="pf-oct8b"><span class="pf-big">OCT 8</span><span class="pf-sub">THE NEXT NUMBER</span></div></section>
+
+  <!-- ============ COMPOSITIONS (track 2) ============ -->
+  <div id="host-pacificcard" data-composition-id="pacificcard" data-composition-src="compositions/pacificcard.html" data-start="39.18" data-duration="51.95" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-atlanticmap" data-composition-id="atlanticmap" data-composition-src="compositions/atlanticmap.html" data-start="91.73" data-duration="38.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-uswinter-a" data-composition-id="uswinter-a" data-composition-src="compositions/uswinter-a.html" data-start="153.73" data-duration="11.25" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-subsurface" data-composition-id="subsurface" data-composition-src="compositions/subsurface.html" data-start="252.997" data-duration="31.98" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-worldmap" data-composition-id="worldmap" data-composition-src="compositions/worldmap.html" data-start="288.677" data-duration="24.7" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-uswinter" data-composition-id="uswinter" data-composition-src="compositions/uswinter.html" data-start="368.267" data-duration="30.7" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-tracking" data-composition-id="tracking" data-composition-src="compositions/tracking.html" data-start="414.467" data-duration="36.25" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-close" data-composition-id="g-close" data-composition-src="compositions/g-close.html" data-start="451.317" data-duration="14.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- CTA dips: LAST in the DOM so they paint above every track-1 cut under them -->
+  <section class="clip blackout" id="bo-cta-in" data-start="236.83" data-duration="0.5" data-track-index="9"></section>
+  <section class="clip blackout" id="bo-cta-out" data-start="252.469" data-duration="0.528" data-track-index="9"></section>
+
+  <div id="grade"></div><div id="vignette"></div><canvas id="grain" width="480" height="270"></canvas>
+</div>
+
+<script src="grain.js"></script>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 465.317;
+  function kb(sel, at, dur, s0, s1, x0, x1, y0, y1) {
+    tl.fromTo(sel, { scale: s0, x: x0, y: y0, transformOrigin: "center" }, { scale: s1, x: x1, y: y1, duration: dur, ease: "none" }, at);
+  }
+  function pop(sel, at, hold) {
+    tl.fromTo(sel, { scale: 2.2, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.35, ease: "power4.in" }, at);
+    tl.to(sel, { autoAlpha: 0, y: -26, duration: 0.28, ease: "power2.in" }, at + hold - 0.28);
+  }
+  function chip(sel, at, hold) {
+    tl.fromTo(sel, { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, at);
+    tl.to(sel, { autoAlpha: 0, x: -30, duration: 0.3, ease: "power2.in" }, at + hold - 0.3);
+  }
+  function lab(sel, at, hold) {
+    tl.fromTo(sel, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, at);
+    tl.to(sel, { autoAlpha: 0, duration: 0.3 }, at + hold - 0.3);
+  }
+  function quote(sel, at, hold) {
+    tl.fromTo(sel, { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, at);
+    tl.to(sel, { autoAlpha: 0, y: -20, duration: 0.4 }, at + hold - 0.4);
+  }
+  function bug(strip, hl, at, dur, lines) {
+    tl.fromTo(strip, { y: 96 }, { y: 0, duration: 0.45, ease: "power3.out" }, at);
+    const n = Math.floor((dur - 0.6) / 12);
+    for (let i = 0; i < n; i++) {
+      const t = at + 0.3 + i * 12, text = lines[i % lines.length];
+      if (i > 0) tl.to(hl, { y: 40, autoAlpha: 0, duration: 0.25, ease: "power2.in" }, t - 0.25);
+      tl.set(hl, { textContent: text }, t);
+      tl.fromTo(hl, { y: -40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.3, ease: "power2.out" }, t);
+    }
+  }
+  tl.set([".popfig", ".chip", ".quotecard", ".srclab"], { autoAlpha: 0 }, 0);
+
+  /* ---- stills (Ken Burns, ≤6.5 s, always moving) ---- */
+  kb("#kb-b1-4-goes", 21.0, 5.0, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-b1-5-wmo", 26.0, 5.18, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-b2-0-chart", 32.68, 6.5, 1.0, 1.08, 0, 12, 0, -6);
+  kb("#kb-b2-6-prob", 66.18, 6.0, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-b2-7-roni", 72.18, 6.0, 1.0, 1.07, 0, -12, 0, 6);
+  kb("#kb-b2-10-fan", 87.72, 3.41, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-b4-0-wmo", 165.58, 4.0, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-b4-12-chart", 222.88, 4.4, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-b5b-2-indo", 313.377, 4.5, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-b5b-5-heat", 327.877, 3.0, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-b5b-7-fema1336", 335.877, 4.0, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-b5b-8-yuba", 339.877, 4.6, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-b6-0-fan", 349.467, 5.0, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-b6-1-weeks", 354.467, 5.0, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-b6-3-goes", 363.467, 4.8, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-b7-0-roni", 413.467, 5.0, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-b7-2-prob", 423.467, 5.0, 1.0, 1.07, 0, 12, 0, -6);
+
+  /* ---- overlays (absolute = segment start + spoken cue from the sped words.json) ---- */
+  pop("#pf-adv", 8.0, 2.8);
+  pop("#pf-90", 11.2, 3.0);
+  pop("#pf-0storms", 20.8, 3.0);
+  chip("#chip-wmo", 24.8, 5.0);
+  lab("#src-cpc", 32.68, 6.0);
+  chip("#chip-odds", 67.18, 5.0);
+  chip("#chip-9715", 83.28, 4.5);
+  pop("#pf-2hur", 132.03, 2.8);
+  chip("#chip-kauai", 137.73, 4.0);
+  pop("#pf-peru", 148.83, 2.8);
+  chip("#chip-saulo", 173.28, 3.4);
+  quote("#q-saulo", 176.68, 6.8);
+  chip("#chip-guterres", 190.98, 3.4);
+  quote("#q-guterres", 192.88, 5.0);
+  chip("#chip-becker", 218.28, 4.5);
+  pop("#pf-100", 222.08, 2.8);
+  pop("#pf-3ag", 234.28, 2.55);
+  pop("#pf-indo", 317.18, 2.8);
+  pop("#pf-1997", 333.78, 2.8);
+  pop("#pf-2015", 345.08, 2.6);
+  pop("#pf-oct8", 354.47, 2.8);
+  chip("#chip-winter", 359.47, 4.5);
+  chip("#chip-nhc", 365.27, 3.0);
+  chip("#chip-wet", 402.87, 4.5);
+  chip("#chip-dry", 408.67, 4.2);
+  pop("#pf-oct8b", 447.87, 2.85);
+
+  /* ---- news bug ---- */
+  bug("#bugstrip-a", "#bh-a", 32.68, 204.15, ["EL NIÑO ADVISORY IN FORCE · >90% CHANCE OF A VERY STRONG EVENT", "WARMEST WATER OFF SOUTH AMERICA: NIÑO 1+2 AT +3.4 °C", "ATLANTIC: NO ACTIVE STORMS AT THE PEAK OF THE SEASON", "WMO: 'EXCEPTIONAL' · UN: 'SUPERSIZED BEFORE OUR EYES'"]);
+  bug("#bugstrip-b", "#bh-b", 252.997, 198.32, ["SUBSURFACE PACIFIC UP TO +8 °C · WMO", "POSITIVE INDIAN OCEAN DIPOLE REINFORCES THE SHIFT", "US WINTER LEAN: MILDER NORTH, WETTER SOUTH", "NEXT CPC UPDATE: 8 OCTOBER"]);
+
+  /* ---- presenter talk-sync (derived from words.json) ---- */
+  tl.set(["#pip-talk-a", "#pip-talk-b"], { autoAlpha: 0 }, 0);
+  /* TALKSYNC */
+
+  filmLayer(tl, DUR);
+  tl.to(["#vignette", "#grade", "#grain", ".dust"], { autoAlpha: 0, duration: 0.3 }, 237.33);
+  tl.to(["#vignette", "#grade", ".dust"], { autoAlpha: 1, duration: 0.3 }, 252.469);
+  tl.to("#grain", { autoAlpha: 0.10, duration: 0.3 }, 252.469);
+  window.__timelines["ms-elnino-cpc-today"] = tl;
+})();
+</script>
+</body>
+</html>
