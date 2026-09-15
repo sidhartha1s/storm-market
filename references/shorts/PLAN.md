@@ -110,10 +110,10 @@ Cost per short after the pilot: ~25 min of agent time, ~2 min render, $0 media.
 | platform | why | rules |
 |---|---|---|
 | YouTube Shorts | the home; 60 % of US 65+ | related-video link → parent; pinned comment with parent URL + ebook link; title ≤40 chars, place name first; hashtags none |
-| Facebook Reels | 58 % of US 65+, the second-largest senior platform, and the one Gen-Z playbooks skip | same file, caption rewritten as a sentence, link in the first comment |
-| Instagram Reels | reach, not seniors | same file, no watermark, caption rewritten, link in bio only |
-| X | news-adjacent, text-first audience | native upload (never a YouTube link), the headline as the post text, the parent link in a reply |
-| TikTok | last; lowest 45+ reach | native upload, only if the queue has spare time |
+| Facebook Reels | 58 % of US 65+, the second-largest senior platform, and the one Gen-Z playbooks skip | **page to be created** (owner 16 Sep 26); same file, caption rewritten as a sentence, link in the first comment |
+| Instagram Reels | reach, not seniors | **account to be created**; same file, no watermark, caption rewritten, link in bio only |
+| X | news-adjacent, text-first audience; account exists | native upload (never a YouTube link), the headline as the post text, the parent link in a reply |
+| TikTok | last; lowest 45+ reach; **banned in India since 2020, still in force 2026** | Two workarounds exist: (a) VPN + foreign number to create and post, which TikTok detects and can permanently ban; (b) an account created by someone outside India, connected to a scheduler that posts through TikTok's official API (no VPN; the scheduler's servers post). Recommendation: skip TikTok in the pilot; revisit with (b) when a scheduler is chosen in week 2. |
 
 Cross-post rules that are enforced now on every platform: upload the original export, never a file downloaded
 from another platform; no other platform's watermark; a different caption per platform; the original
