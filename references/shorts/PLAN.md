@@ -129,8 +129,12 @@ platform APIs) is a week-2 decision once the per-platform numbers exist. Not bui
   and no mini exists yet (S1 as the speed play, 20 min from radar hit to upload).
 - Each short goes out on YouTube + Facebook the same hour; Instagram and X within the day.
 - **Success metric per format, not per short** (hit rate, never median): after 10 shorts of a format, the
-  share with ≥10k views in 7 days and the "viewers who then watched a long video" line in Studio. A format
-  with 0/10 over 10k is paused and its next 5 are re-hooked; a format with ≥3/10 gets the extra slots.
+  share with ≥10k views in 7 days and the "viewers who then watched a long video" line in Studio.
+- **Kill rule = when to stop spending slots on a format.** Plain version: every format gets 10 shorts. If none
+  of the 10 passes 10k views in its first week, that format is paused and the next 5 get new hooks before it
+  is tried again. If 3 or more of the 10 pass 10k, that format takes the extra daily slots. Same idea as the
+  bucket kill rule on the minis: two flat videos park a bucket. It stops us making 40 of something that
+  does not travel.
 - Publish window: same as the minis, US evening (00:00–04:00 UTC) for S1; S2/S3 are evergreen, mid-day US.
 - Tracker: every short is a card in `ops/tracker.json` with the same plain phases (idea → script → tts →
   assemble → checks → render → upload) and a `parent` field; the tracker moves in the same turn as the work.
