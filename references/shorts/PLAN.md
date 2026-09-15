@@ -52,7 +52,7 @@ added on the owner's note:
 | intent | funnel into today's mini | widen (search + feed) | widen + funnel into the docs |
 | length | 20–30 s | 30–40 s | 20–35 s |
 | words | 50–75 | 75–105 | 50–85 |
-| pace | 155–165 wpm (mini voice, atempo 1.10) | 150–160 wpm | 140–150 wpm |
+| pace | channel voice, atempo 1.16 (~150 wpm delivered) | same | same |
 | open (0–3 s) | the number, spoken and on the card: "Hawaii is still counting. 41,000 homes dark." | the question the viewer already has: "Why does the sea pull back before a tsunami?" | the headline card: "SHE TIED 13 CHILDREN TOGETHER AND WALKED INTO THE BLIZZARD" |
 | body | who is at risk, what the agency said today (named agency, verbatim quote on screen) | one mechanism, one diagram from the MG library, one real clip | who, where, when; the moment; what happened to them |
 | close | the unresolved tracking line + "the full update is on the channel" | the US stake in one line | the name once more, the date, "the full story is in the documentary" |
