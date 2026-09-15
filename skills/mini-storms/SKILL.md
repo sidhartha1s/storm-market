@@ -45,6 +45,8 @@ Teardowns + NexLev data: `references/mini-storms/teardowns/README.md`, `referenc
 | 8. Render | 25 min | `scripts\render.cmd br-<slug> full` hidden via run_hidden.vbs; draft skipped unless QC flagged |
 | 9. Deliverables | 10 min | `master_deliverables.py --hevc`, metadata.md, thumbnail still candidates, private upload |
 
+**The tracker moves with the work.** Every phase change (script, TTS, checks, preview launched/done, full render launched/done, master in the main checkout, upload) runs `python3 ops/build_tracker.py set <slug> <phase> <status> "note"` in the same turn, then commit + push. A status reply naming a phase the tracker page does not show is wrong (owner 2026-09-15: three full renders and masters shipped while `ops/tracker.html` still showed 06:28 previews).
+
 Total ≈ 3 h 05. If any step overruns 2×, ship what exists and list what was cut; never widen scope.
 
 ## Step details
