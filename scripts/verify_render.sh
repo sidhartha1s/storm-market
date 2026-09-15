@@ -9,10 +9,13 @@ MP4="$EP/renders/$BASE.mp4"
 
 echo "=== gpu (owner 2026-09-15: capture must run on the dedicated GPU, never the Intel iGPU) ==="
 LOG="$EP/render_full.log"; [ "$BASE" != "${BASE%draft*}" ] && LOG="$EP/render_draft.log"
-PROBE=$(tr -d '
-' < "$LOG" 2>/dev/null | grep -o 'browserGpuMode probe.*' | tail -1 | cut -c1-160)
-echo "${PROBE:-no probe line in $LOG}"
-case "$PROBE" in *NVIDIA*) ;; *) echo "FAIL: render did not capture on the NVIDIA GPU (run scripts/render_busy.py --launch to pin, then re-render)"; exit 2;; esac
+PROBES=$(grep -ao 'browserGpuMode probe.*' "$LOG" 2>/dev/null | cut -c1-160)
+echo "${PROBES:-no probe line in $LOG}"
+# one probe line per capture worker; every one of them must name NVIDIA
+if [ -z "$PROBES" ] || printf '%s
+' "$PROBES" | grep -qv NVIDIA; then
+  echo "FAIL: a capture worker did not run on the NVIDIA GPU (run scripts/render_busy.py --launch to pin, then re-render)"; exit 2
+fi
 
 echo
 echo "=== artifact ==="
