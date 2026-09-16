@@ -12,7 +12,7 @@
 > Homograph scan run on the full script: every past-tense "read" (central pressure read...) rewritten to "stood
 > at" to avoid the read/read ("reed"/"red") TTS trap. `references/humanise-rules.md` applied line by line — no
 > banned openers, no metaphors, no rhetorical questions, no em dashes, no reveal-flip or anaphora-run sentence
-> shapes, varied sentence length, active voice. Target >=1,350 words; measured 1,353 words at this draft (see
+> shapes, varied sentence length, active voice. Target >=1,350 words; measured 1,358 words at this draft (see
 > report). Paul's CTA mounted at the end of B3, the natural pause right after the quote card, ~33% into the runtime.
 
 ## Spec
