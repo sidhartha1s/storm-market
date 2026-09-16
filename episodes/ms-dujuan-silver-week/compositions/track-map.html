@@ -174,12 +174,12 @@ window.__timelines = window.__timelines || {};
   for (let lon = LON0; lon <= LON1; lon += 10) {
     const x = proj(0, lon)[0];
     gratGroup.appendChild(el("line", { class: "grat-line", x1: x, y1: 0, x2: x, y2: H }));
-    gratGroup.appendChild(el("text", { class: "grat-lab", x: x + 8, y: 26 })).textContent = lon + "°E";
+    if (x + 8 <= 1900) gratGroup.appendChild(el("text", { class: "grat-lab", x: x + 8, y: 26 })).textContent = lon + "°E";
   }
   for (let lat = LAT0; lat <= LAT1; lat += 10) {
     const y = proj(lat, 0)[1];
     gratGroup.appendChild(el("line", { class: "grat-line", x1: 0, y1: y, x2: W, y2: y }));
-    gratGroup.appendChild(el("text", { class: "grat-lab", x: 10, y: y - 8 })).textContent = lat + "°N";
+    if (y - 8 >= 0) gratGroup.appendChild(el("text", { class: "grat-lab", x: 10, y: y - 8 })).textContent = lat + "°N";
   }
 
   /* ---------- Guam marker ---------- */
