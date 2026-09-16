@@ -453,10 +453,10 @@
       "title": "JMA vs. NHC: How Japan and America Rank the Same Storm",
       "owner": "director",
       "due": "16 Sep 26",
-      "phase": "script",
+      "phase": "tts",
       "status": "doing",
-      "note": "evergreen; script agent running; plan ops/wave3/dujuan/PLAN.md",
-      "updated": "16 Sep 26 16:52"
+      "note": "next: TTS + atempo 1.10",
+      "updated": "16 Sep 26 17:07"
     },
     {
       "slug": "ms-dujuan-holiday-typhoons",
