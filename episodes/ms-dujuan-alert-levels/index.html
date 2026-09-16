@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Japan's Five-Level Evacuation Alert System, Explained for Americans — The Warning Hour (mini-storms, evergreen, 17 Sep 26)</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070c; }
+    video, .still-wrap { position: absolute; inset: 0; }
+    video { width: 100%; height: 100%; object-fit: cover; }
+    .still-wrap { overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    .bc { filter: saturate(0.85) contrast(1.08) brightness(0.95); }
+    @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+    .popfig { position: absolute; left: 0; right: 0; top: 34%; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; isolation: isolate; }
+    .popfig .pf-big { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 130px; color: #d0121f; letter-spacing: 0.04em;
+      text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+    .popfig .pf-sub { display: block; margin-top: 12px; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 34px; color: #f4f0e8;
+      letter-spacing: 0.3em; -webkit-text-stroke: 1px rgba(0,0,0,0.85); paint-order: stroke fill;
+      text-shadow: 0 0 18px rgba(0,0,0,1), 0 0 40px rgba(0,0,0,0.9), 0 3px 10px #000; }
+    .popfig::before { content: ''; position: absolute; left: 14%; right: 14%; top: -80px; bottom: -60px; z-index: -1;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.32) 40%, rgba(0,0,0,0) 72%); }
+    .srclab { position: absolute; right: 40px; top: 34px; z-index: 7; font-family: Arial, sans-serif; font-size: 20px; letter-spacing: 1px; color: rgba(220,228,236,0.85); background: rgba(5,8,12,0.6); padding: 6px 14px; }
+    .bugstrip { position: absolute; left: 0; right: 0; bottom: 0; height: 92px; display: flex; align-items: stretch; z-index: 5;
+      background: linear-gradient(90deg, rgba(4,7,12,0.94) 0%, rgba(4,7,12,0.82) 70%, rgba(4,7,12,0.6) 100%); border-top: 2px solid #d0121f; }
+    .bugstrip .bk { display: flex; align-items: center; padding: 0 34px; background: #d0121f; color: #fff; font-family: 'Arial Black', Arial, sans-serif; font-size: 34px; letter-spacing: 5px; }
+    .bugstrip .bw { display: flex; align-items: center; padding: 0 26px; color: #d8a13a; font-family: Georgia, serif; font-style: italic; font-size: 26px; border-right: 1px solid rgba(255,255,255,0.14); white-space: nowrap; }
+    .bugstrip .bh { display: flex; align-items: center; padding: 0 30px; color: #f4f0e8; font-weight: 700; font-size: 32px; letter-spacing: 1px; white-space: nowrap; overflow: hidden; }
+    .pip { position: absolute !important; inset: auto !important; left: 1640px !important; top: 708px !important;
+      width: 240px !important; height: 240px !important; border-radius: 50% !important; object-fit: cover !important; z-index: 8 !important; }
+    .pipring { position: absolute; left: 1632px; top: 700px; width: 256px; height: 256px; border-radius: 50%; border: 4px solid #d0121f;
+      box-sizing: border-box; z-index: 9; box-shadow: 0 10px 30px rgba(0,0,0,0.55); }
+    #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90; background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
+    #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.10; mix-blend-mode: overlay; }
+    #grade { position: absolute; inset: 0; pointer-events: none; z-index: 89; mix-blend-mode: soft-light; background-color: rgba(96,138,178,0.18); }
+    .dust { position: absolute; z-index: 92; pointer-events: none; border-radius: 50%; background: rgba(255,255,255,0.32); filter: blur(1.2px); }
+  </style>
+</head>
+<body>
+<!-- ms-dujuan-alert-levels · mini-storms evergreen explainer, 17 Sep 26. "Japan's Five-Level Evacuation
+     Alert System, Explained for Americans." No storm name spoken (still unnamed in JMA's feed this
+     session). B-roll muted. CTA after B3 (~33% in, the story break between "the old system" and the
+     level-by-level breakdown), 0.5 s dips each side. Paul's presenter circle shown over b-roll leads,
+     ladder-intro (B3) and ladder-l3 (B4); hidden under split-panel (B2), quote-l4 (B5), ladder-l5 (B6),
+     compare-stack (B7), ladder-tonight (B8) and tracking-close/g-close (B9-B10). Cues resolved from
+     audio/*.words.json (sped 1.10, re-transcribed) — never estimated. Talk-loop is mounted for the whole
+     duration of every Paul-visible span (narration runs continuously under all of them) rather than
+     word-by-word idle/talk blinking — a simplification from the jma-vs-nhc sibling's finer sync, noted in
+     the build report. -->
+<div id="root" data-composition-id="ms-dujuan-alert-levels" data-start="0.0" data-width="1920" data-height="1080" data-duration="529.776" data-fps="30">
+
+  <!-- ============ NARRATION (wav lengths, manifest.json ground truth) ============ -->
+  <audio id="nx-b1s1" src="audio/b1-s1.wav" data-start="0.0" data-duration="54.982" data-volume="1"></audio>
+  <audio id="nx-b2s1" src="audio/b2-s1.wav" data-start="55.582" data-duration="57.491" data-volume="1"></audio>
+  <audio id="nx-b3s1" src="audio/b3-s1.wav" data-start="113.673" data-duration="60.0" data-volume="1"></audio>
+  <audio id="nx-b4s1" src="audio/b4-s1.wav" data-start="189.812" data-duration="47.091" data-volume="1"></audio>
+  <audio id="nx-b5s1" src="audio/b5-s1.wav" data-start="237.503" data-duration="63.091" data-volume="1"></audio>
+  <audio id="nx-b6s1" src="audio/b6-s1.wav" data-start="301.194" data-duration="54.618" data-volume="1"></audio>
+  <audio id="nx-b7s1" src="audio/b7-s1.wav" data-start="356.412" data-duration="59.782" data-volume="1"></audio>
+  <audio id="nx-b8s1" src="audio/b8-s1.wav" data-start="416.794" data-duration="48.836" data-volume="1"></audio>
+  <audio id="nx-b9s1" src="audio/b9-s1.wav" data-start="466.23" data-duration="46.582" data-volume="1"></audio>
+  <audio id="nx-b10s1" src="audio/b10-s1.wav" data-start="513.412" data-duration="12.364" data-volume="1"></audio>
+
+  <!-- ============ CTA (own audio; the only unmuted insert; end of B3, ~33% in) ============ -->
+  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v5-sep6.mp4" data-start="174.173" data-duration="15.139" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
+
+  <!-- ============ BEDS ============ -->
+  <audio id="sx-rumble-hook" src="media/sfx/04_distant_storm_rumble.mp3" data-bed="" data-start="0.0" data-duration="54.982" data-volume="0.16"></audio>
+  <audio id="sx-mus-a" src="media/sfx/score-act5-tension.mp3" data-bed="" data-start="0.0" data-duration="173.673" data-volume="0.13"></audio>
+  <audio id="sx-mus-b" src="media/sfx/score-act3-urgent.mp3" data-bed="" data-start="189.812" data-duration="166.0" data-volume="0.13"></audio>
+  <audio id="sx-mus-c" src="media/sfx/score-act6-close.mp3" data-bed="" data-start="356.412" data-duration="173.364" data-volume="0.16"></audio>
+
+  <!-- ============ PRESENTER (corner circle; talk-loop mounted per Paul-visible span) ============ -->
+  <video id="pip-a" class="pip" src="media/pip/paul-talk.mp4" data-start="0.0" data-duration="54.982" data-track-index="6" muted></video>
+  <section class="clip" id="pip-ring-a" data-start="0.0" data-duration="54.982" data-track-index="8"><div class="pipring"></div></section>
+
+  <video id="pip-b" class="pip" src="media/pip/paul-talk.mp4" data-start="55.582" data-duration="6.0" data-track-index="6" data-callback="b-roll lead into split-panel, presenter hidden for the comp itself" muted></video>
+  <section class="clip" id="pip-ring-b" data-start="55.582" data-duration="6.0" data-track-index="8"><div class="pipring"></div></section>
+
+  <video id="pip-c" class="pip" src="media/pip/paul-talk.mp4" data-start="113.673" data-duration="60.0" data-track-index="6" data-callback="TBS lead-in + ladder-intro, kept visible through the ladder card" muted></video>
+  <section class="clip" id="pip-ring-c" data-start="113.673" data-duration="60.0" data-track-index="8"></section>
+
+  <video id="pip-d" class="pip" src="media/pip/paul-talk.mp4" data-start="189.812" data-duration="47.091" data-track-index="6" data-callback="ladder-l3 full window, presenter kept visible" muted></video>
+  <section class="clip" id="pip-ring-d" data-start="189.812" data-duration="47.091" data-track-index="8"></section>
+
+  <video id="pip-e" class="pip" src="media/pip/paul-talk.mp4" data-start="356.412" data-duration="6.0" data-track-index="6" data-callback="B7 lead-in only, hidden for compare-stack" muted></video>
+  <section class="clip" id="pip-ring-e" data-start="356.412" data-duration="6.0" data-track-index="8"></section>
+
+  <video id="pip-f" class="pip" src="media/pip/paul-talk.mp4" data-start="416.794" data-duration="6.0" data-track-index="6" data-callback="B8 lead-in only, hidden for ladder-tonight" muted></video>
+  <section class="clip" id="pip-ring-f" data-start="416.794" data-duration="6.0" data-track-index="8"></section>
+
+  <video id="pip-g" class="pip" src="media/pip/paul-talk.mp4" data-start="459.63" data-duration="6.0" data-track-index="6" data-callback="B8 Himawari-return clip, presenter back on" muted></video>
+  <section class="clip" id="pip-ring-g" data-start="459.63" data-duration="6.0" data-track-index="8"></section>
+
+  <video id="pip-h" class="pip" src="media/pip/paul-talk.mp4" data-start="466.23" data-duration="6.0" data-track-index="6" data-callback="B9 lead-in only, hidden for tracking-close" muted></video>
+  <section class="clip" id="pip-ring-h" data-start="466.23" data-duration="6.0" data-track-index="8"></section>
+
+  <!-- ============ NEWS BUG (track 3) ============ -->
+  <section class="clip" id="bug-a" data-start="0.0" data-duration="173.673" data-track-index="3"><div class="bugstrip" id="bugstrip-a"><div class="bk">STORM WATCH</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-a"></div></div></section>
+  <section class="clip" id="bug-b" data-start="189.812" data-duration="226.382" data-track-index="3"><div class="bugstrip" id="bugstrip-b"><div class="bk">STORM WATCH</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-b"></div></div></section>
+  <section class="clip" id="bug-c" data-start="416.794" data-duration="96.018" data-track-index="3"><div class="bugstrip" id="bugstrip-c"><div class="bk">STORM WATCH</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-c"></div></div></section>
+
+  <!-- ============ TRACK 1 · picture ============ -->
+  <!-- B1 · cold open 0-54.982 -->
+  <section class="clip still-wrap" id="c-b1-0-himawari" data-start="0.0" data-duration="8.0" data-track-index="1"><img id="kb-b1-0-himawari" src="media/image/himawari_fulldisk.jpg" alt=""></section>
+  <video id="vx-b1-1-waves" src="media/video/b1_waves.mp4" data-start="8.0" data-duration="8.0" data-track-index="1" muted></video>
+  <video id="vx-b1-2-seawall" src="media/video/b1_seawall.mp4" data-start="16.0" data-duration="8.0" data-track-index="1" muted></video>
+  <video id="vx-b1-3-trees" src="media/video/b1_trees.mp4" data-start="24.0" data-duration="8.0" data-track-index="1" muted></video>
+  <video id="vx-b1-4-tokyobay" src="media/video/b1_tokyobay.mp4" data-start="32.0" data-duration="8.0" data-track-index="1" muted></video>
+  <video id="vx-b1-5-stormclouds" src="media/video/b1_stormclouds.mp4" data-start="40.0" data-duration="8.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b1-6-worldview16" data-start="48.0" data-duration="6.982" data-track-index="1"><img id="kb-b1-6-worldview16" src="media/image/worldview_0916.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-hook" data-start="54.982" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B2 · where the storm stands right now 55.582-113.073 (split-panel comp on track 2 from 61.582) -->
+  <video id="vx-b2-0-odaiba" src="media/video/b2_odaiba.mp4" data-start="55.582" data-duration="6.0" data-track-index="1" muted></video>
+  <section class="clip blackout" id="bo-b2-panel" data-start="61.582" data-duration="51.491" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-b2" data-start="113.073" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B3 · the system Japan built 113.673-173.673 (ladder-intro comp on track 2 from 119.673) -->
+  <video id="vx-b3-0-tbs" src="media/video/b3_tbs_shinjuku.mp4" data-start="113.673" data-duration="6.0" data-track-index="1" muted></video>
+  <section class="clip blackout" id="bo-b3-ladder" data-start="119.673" data-duration="54.0" data-track-index="1"></section>
+
+  <!-- CTA dips: on track 1 itself, filling the exact gap between B3's ladder comp and the CTA, and
+       between the CTA and B4's ladder comp (both windows are otherwise empty on track 1) -->
+  <section class="clip blackout" id="bo-cta-in" data-start="173.673" data-duration="0.5" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-cta-out" data-start="189.312" data-duration="0.5" data-track-index="1"></section>
+
+  <!-- B4 · level three 189.812-236.903 (ladder-l3 comp on track 2, full window) -->
+  <section class="clip blackout" id="bo-b4-ladder" data-start="189.812" data-duration="47.091" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-b4" data-start="236.903" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B5 · level four 237.503-300.594 (quote-l4 comp on track 2, full window) -->
+  <section class="clip blackout" id="bo-b5-quote" data-start="237.503" data-duration="63.091" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-b5" data-start="300.594" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B6 · level five 301.194-355.812 (ladder-l5 comp on track 2, full window) -->
+  <section class="clip blackout" id="bo-b6-ladder" data-start="301.194" data-duration="54.618" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-b6" data-start="355.812" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B7 · the bigger difference 356.412-416.194 (compare-stack comp on track 2 from 362.412) -->
+  <section class="clip still-wrap" id="c-b7-0-worldview15" data-start="356.412" data-duration="6.0" data-track-index="1"><img id="kb-b7-0-worldview15" src="media/image/worldview_0915.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-b7-stack" data-start="362.412" data-duration="53.782" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-b7" data-start="416.194" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B8 · where this storm sits tonight 416.794-465.63 (ladder-tonight comp on track 2 from 422.794,
+       then return to the Himawari loop from B1 for the last 6.0s) -->
+  <section class="clip still-wrap" id="c-b8-0-worldview14" data-start="416.794" data-duration="6.0" data-track-index="1"><img id="kb-b8-0-worldview14" src="media/image/worldview_0914.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-b8-tonight" data-start="422.794" data-duration="36.836" data-track-index="1"></section>
+  <section class="clip still-wrap" id="c-b8-1-himawari-return" data-start="459.63" data-duration="6.0" data-track-index="1" data-callback="return to the Himawari loop from B1"><img id="kb-b8-1-himawari-return" src="media/image/himawari_fulldisk.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-b8" data-start="465.63" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B9 · what's still open tonight 466.23-512.812 (tracking-close comp on track 2 from 472.23) -->
+  <section class="clip still-wrap" id="c-b9-0-worldview13" data-start="466.23" data-duration="6.0" data-track-index="1"><img id="kb-b9-0-worldview13" src="media/image/worldview_0913.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-b9-tracking" data-start="472.23" data-duration="40.582" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-b9" data-start="512.812" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B10 · close 513.412-529.776 (g-close comp on track 2, full window) -->
+  <section class="clip blackout" id="bo-close" data-start="513.412" data-duration="16.364" data-track-index="1"></section>
+
+  <!-- ============ OVERLAYS: popfigs (track 5), source labels (track 4) — B1 only; B2-B9's numbers are
+       carried inside their own compositions ============ -->
+  <section class="clip" id="p-src-open" data-start="0.0" data-duration="8.0" data-track-index="4"><div class="srclab" id="src-open">SOURCES: JMA &middot; JTWC &middot; CABINET OFFICE &middot; NWS &middot; FACTS-16SEP.MD</div></section>
+  <section class="clip" id="p-pf-998" data-start="9.60" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-998"><span class="pf-big">998 hPa</span><span class="pf-sub">CENTRAL PRESSURE</span></div></section>
+  <section class="clip" id="p-pf-wind" data-start="13.28" data-duration="2.9" data-track-index="5"><div class="popfig" id="pf-wind"><span class="pf-big">34 MPH</span><span class="pf-sub">GUSTS TO 51</span></div></section>
+  <section class="clip" id="p-pf-5levels" data-start="27.48" data-duration="2.8" data-track-index="5"><div class="popfig" id="pf-5levels"><span class="pf-big">5 LEVELS</span><span class="pf-sub">JAPAN'S OWN ALERT SYSTEM</span></div></section>
+
+  <!-- ============ COMPOSITIONS (track 2) ============ -->
+  <div id="host-splitpanel" data-composition-id="split-panel" data-composition-src="compositions/split-panel.html" data-start="61.582" data-duration="51.491" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-ladderintro" data-composition-id="ladder-intro" data-composition-src="compositions/ladder-intro.html" data-start="119.673" data-duration="54.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-ladderl3" data-composition-id="ladder-l3" data-composition-src="compositions/ladder-l3.html" data-start="189.812" data-duration="47.091" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-quotel4" data-composition-id="quote-l4" data-composition-src="compositions/quote-l4.html" data-start="237.503" data-duration="63.091" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-ladderl5" data-composition-id="ladder-l5" data-composition-src="compositions/ladder-l5.html" data-start="301.194" data-duration="54.618" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-comparestack" data-composition-id="compare-stack" data-composition-src="compositions/compare-stack.html" data-start="362.412" data-duration="53.782" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-laddertonight" data-composition-id="ladder-tonight" data-composition-src="compositions/ladder-tonight.html" data-start="422.794" data-duration="36.836" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-trackingclose" data-composition-id="tracking-close" data-composition-src="compositions/tracking-close.html" data-start="472.23" data-duration="40.582" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-gclose" data-composition-id="g-close" data-composition-src="compositions/g-close.html" data-start="513.412" data-duration="16.364" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <div id="grade"></div><div id="vignette"></div><canvas id="grain" width="480" height="270"></canvas>
+</div>
+
+<script src="grain.js"></script>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 529.776;
+  function kb(sel, at, dur, s0, s1, x0, x1, y0, y1) {
+    tl.fromTo(sel, { scale: s0, x: x0, y: y0, transformOrigin: "center" }, { scale: s1, x: x1, y: y1, duration: dur, ease: "none" }, at);
+  }
+  function pop(sel, at, hold) {
+    tl.fromTo(sel, { scale: 2.2, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.35, ease: "power4.in" }, at);
+    tl.to(sel, { autoAlpha: 0, y: -26, duration: 0.28, ease: "power2.in" }, at + hold - 0.28);
+  }
+  function lab(sel, at, hold) {
+    tl.fromTo(sel, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, at);
+    tl.to(sel, { autoAlpha: 0, duration: 0.3 }, at + hold - 0.3);
+  }
+  function bug(strip, hl, at, dur, lines) {
+    tl.fromTo(strip, { y: 96 }, { y: 0, duration: 0.45, ease: "power3.out" }, at);
+    const n = Math.floor((dur - 0.6) / 14);
+    for (let i = 0; i < n; i++) {
+      const t = at + 0.3 + i * 14, text = lines[i % lines.length];
+      if (i > 0) tl.to(hl, { y: 40, autoAlpha: 0, duration: 0.25, ease: "power2.in" }, t - 0.25);
+      tl.set(hl, { textContent: text }, t);
+      tl.fromTo(hl, { y: -40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.3, ease: "power2.out" }, t);
+    }
+  }
+  tl.set([".popfig", ".srclab"], { autoAlpha: 0 }, 0);
+
+  /* ---- stills (Ken Burns, always moving) ---- */
+  kb("#kb-b1-0-himawari", 0.0, 8.0, 1.08, 1.16, -20, -60, -10, -30);
+  kb("#kb-b1-6-worldview16", 48.0, 6.982, 1.0, 1.08, 0, -12, 0, -8);
+  kb("#kb-b7-0-worldview15", 356.412, 6.0, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-b8-0-worldview14", 416.794, 6.0, 1.0, 1.07, -10, 0, 6, 0);
+  kb("#kb-b8-1-himawari-return", 459.63, 6.0, 1.16, 1.24, -60, -110, -30, -60);
+  kb("#kb-b9-0-worldview13", 466.23, 6.0, 1.06, 1.0, -10, 0, 6, 0);
+
+  /* ---- overlays (absolute = word-synced cue from audio/*.words.json) ---- */
+  lab("#src-open", 0.0, 8.0);
+  pop("#pf-998", 9.60, 3.4);
+  pop("#pf-wind", 13.28, 2.9);
+  pop("#pf-5levels", 27.48, 2.8);
+
+  /* ---- news bug ---- */
+  bug("#bugstrip-a", "#bh-a", 0.0, 173.673, ["JAPAN'S ALERT LEVELS · EXPLAINED FOR AMERICANS", "TROPICAL DEPRESSION NEAR THE MARIANA ISLANDS", "5-LEVEL SYSTEM REPLACED THE OLD ONE IN 2021"]);
+  bug("#bugstrip-b", "#bh-b", 189.812, 226.382, ["LEVEL 3: THE ELDERLY EVACUATE FIRST", "LEVEL 4: EVACUATE BEFORE IT'S ISSUED", "LEVEL 5: LEAVING MAY NO LONGER BE SAFE", "ONE LADDER VS. THREE US SYSTEMS"]);
+  bug("#bugstrip-c", "#bh-c", 416.794, 96.018, ["TONIGHT: STORM STILL BELOW THE LADDER", "TRACK AND STRENGTH: BOTH STILL OPEN", "NEXT UPDATE: JMA'S NEXT ADVISORY"]);
+
+  filmLayer(tl, DUR);
+  tl.to(["#vignette", "#grade", "#grain", ".dust"], { autoAlpha: 0, duration: 0.3 }, 173.673);
+  tl.to(["#vignette", "#grade", ".dust"], { autoAlpha: 1, duration: 0.3 }, 189.312);
+  tl.to("#grain", { autoAlpha: 0.10, duration: 0.3 }, 189.312);
+  window.__timelines["ms-dujuan-alert-levels"] = tl;
+})();
+</script>
+</body>
+</html>
