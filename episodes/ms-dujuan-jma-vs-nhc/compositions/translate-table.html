@@ -50,8 +50,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#tt-b1", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 5.22);
   tl.fromTo("#tt-b2", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 10.7);
   tl.fromTo("#tt-b3", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 15.72);
-  /* continuous ambient motion bridging the basin reveal and the table reveal */
-  tl.to(".basinrow", { y: -6, duration: 2.4, ease: "sine.inOut", repeat: 3, yoyo: true }, 16.3);
+  /* continuous ambient motion from mount through the table reveal */
+  tl.to(".basinrow", { y: -6, duration: 2.4, ease: "sine.inOut", repeat: 8, yoyo: true }, 0.3);
   tl.fromTo("#tt-table", { autoAlpha:0, y:30 }, { autoAlpha:1, y:0, duration:0.6 }, 22.0);
   /* continuous ambient motion across the whole window so the table never sits frozen between reveals */
   tl.to("#tt-table", { y: -5, duration: 3.0, ease: "sine.inOut", repeat: 13, yoyo: true }, 22.8);
