@@ -455,8 +455,8 @@
       "due": "16 Sep 26",
       "phase": "checks",
       "status": "doing",
-      "note": "browser gates running",
-      "updated": "16 Sep 26 18:29"
+      "note": "overlap+blank PASS; graphics_qc 11 errors in 5 comps, fixing",
+      "updated": "16 Sep 26 18:30"
     },
     {
       "slug": "ms-dujuan-holiday-typhoons",
