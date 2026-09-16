@@ -54,8 +54,9 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   tl.set(["#jq-r1","#jq-r2","#jq-thresh","#jq-r3","#jq-r4","#jq-r5","#jq-chip","#jq-quote"], { autoAlpha: 0 }, 0);
   tl.fromTo("#jq-card", { x:-900, autoAlpha:0 }, { x:0, autoAlpha:1, duration:0.6, ease:"power3.out" }, 0);
-  /* continuous ambient motion across the whole window so the ladder card never sits frozen between reveals */
-  tl.to("#jq-card", { y: -5, duration: 2.8, ease: "sine.inOut", repeat: 17, yoyo: true }, 0.7);
+  /* continuous ambient motion so the ladder card never sits frozen between reveals — standalone gsap call
+     (NOT on tl) so it never extends tl.duration() past the exit/host window */
+  gsap.to("#jq-card", { y: -5, duration: 2.8, ease: "sine.inOut", repeat: 17, yoyo: true, delay: 0.7 });
   tl.fromTo("#jq-chip", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 0.4);
   tl.fromTo("#jq-r1", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 5.62);
   tl.fromTo("#jq-r2", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 9.18);
