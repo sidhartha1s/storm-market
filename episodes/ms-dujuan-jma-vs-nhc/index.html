@@ -187,9 +187,10 @@
   <div id="host-tracking" data-composition-id="tracking" data-composition-src="compositions/tracking.html" data-start="509.175" data-duration="17.2" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-close" data-composition-id="gclose" data-composition-src="compositions/g-close.html" data-start="526.975" data-duration="15.636" data-track-index="2" data-width="1920" data-height="1080"></div>
 
-  <!-- CTA dips: LAST in the DOM so they paint above every track-1 cut under them -->
-  <section class="clip blackout" id="bo-cta-in" data-start="170.727" data-duration="0.5" data-track-index="9"></section>
-  <section class="clip blackout" id="bo-cta-out" data-start="186.366" data-duration="0.5" data-track-index="9"></section>
+  <!-- CTA dips: on track 1 itself, filling the exact gap between B3's last shot and the CTA, and between
+       the CTA and B4's ladder comp (both windows are otherwise empty on track 1) -->
+  <section class="clip blackout" id="bo-cta-in" data-start="170.727" data-duration="0.5" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-cta-out" data-start="186.366" data-duration="0.5" data-track-index="1"></section>
 
   <div id="grade"></div><div id="vignette"></div><canvas id="grain" width="480" height="270"></canvas>
 </div>
