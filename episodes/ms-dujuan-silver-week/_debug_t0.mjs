@@ -30,4 +30,6 @@ const dump = await page.evaluate(() => {
   }));
 });
 console.log('DUMP', JSON.stringify(dump, null, 2));
+await page.screenshot({ path: join(ep, '_debug_shot2.png') });
+console.log('shot2 taken same-state');
 await browser.close();
