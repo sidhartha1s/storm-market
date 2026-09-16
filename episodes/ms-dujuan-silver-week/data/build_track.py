@@ -29,6 +29,20 @@ issue_jst = title["issue"]["JST"]
 CAT_LABEL = {"TD": "Tropical Depression", "TS": "Tropical Storm", "STS": "Severe Tropical Storm",
              "TY": "Typhoon", "STY": "Strong Typhoon", "VSTY": "Very Strong Typhoon"}
 
+COURSE_EN = {
+    "北": "N", "北北東": "NNE", "北東": "NE", "東北東": "ENE", "東": "E", "東南東": "ESE",
+    "南東": "SE", "南南東": "SSE", "南": "S", "南南西": "SSW", "南西": "SW", "西南西": "WSW",
+    "西": "W", "西北西": "WNW", "北西": "NW", "北北西": "NNW", "ほとんど停滞": "nearly stationary",
+}
+LOCATION_EN = {
+    "マリアナ諸島": "Mariana Islands", "南鳥島近海": "Near Minami-Tori-shima",
+    "小笠原近海": "Near the Ogasawara Islands", "日本の南": "South of Japan",
+    "日本の東": "East of Japan",
+}
+
+def kmh_to_mph(kmh):
+    return round(float(kmh) * 0.6213712, 1)
+
 points = []
 
 # --- JMA past track (preTyphoon polyline, from fc analysis record) ---
