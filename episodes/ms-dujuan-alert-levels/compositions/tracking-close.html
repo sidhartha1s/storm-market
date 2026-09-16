@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- tracking-close.html — B9 "what's still open tonight". Two open-thread rows (track, strength) plus a
+     travel-season chip and the highlight on JMA's next advisory. Mount: track 2, host start =
+     episode-abs 472.23, duration 40.582 (B9 window is 46.582s; a 6.0s Himawari-return lead-in still plays
+     before this comp mounts). Cues word-synced from audio/b9-s1.words.json (segment-abs minus this comp's
+     mount; the track-row cue lands during the lead-in, so it reveals at mount instead). -->
+<template>
+<style>
+  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
+  .card { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:1100px; box-sizing:border-box;
+    padding:44px 60px; text-align:center; background:rgba(10,16,24,0.6); backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:6px; color:#c8d3e0; }
+  .rows { display:flex; gap:30px; margin-top:26px; }
+  .orow { flex:1; padding:22px 20px; border-radius:16px; background:rgba(208,18,31,0.14); border:1px solid rgba(208,18,31,0.4); }
+  .orow .t { font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:1px; }
+  .orow .s { margin-top:10px; font-family:'AbrilFig',Georgia,serif; font-size:34px; color:#f4b8bc; }
+  .chip2 { margin-top:26px; display:inline-block; font-family:'Arial Black',Arial,sans-serif; font-size:24px;
+    letter-spacing:1px; color:#f4f0e8; background:rgba(10,16,24,0.62); border:1px solid rgba(255,255,255,0.14);
+    border-left:6px solid #d8a13a; border-radius:10px; padding:12px 24px; }
+  .hl { margin-top:26px; padding:20px 26px; background:rgba(216,161,58,0.14); border:2px solid #d8a13a; border-radius:16px; }
+  .hl .lab { font-family:'Arial Black',Arial,sans-serif; font-size:26px; color:#f4f0e8; }
+</style>
+<div id="root" data-composition-id="tracking-close" data-width="1920" data-height="1080">
+  <div class="card" id="tc-card">
+    <div class="eye">TONIGHT'S OPEN THREADS</div>
+    <div class="rows">
+      <div class="orow" id="tc-r1"><div class="t">TRACK</div><div class="s">STILL OPEN</div></div>
+      <div class="orow" id="tc-r2" style="visibility:hidden"><div class="t">STRENGTH</div><div class="s">STILL OPEN</div></div>
+    </div>
+    <div class="chip2" id="tc-chip" style="visibility:hidden">MILLIONS TRAVELING JAPAN THIS WEEK</div>
+    <div class="hl" id="tc-hl"><div class="lab">NEXT: JMA'S NEXT ADVISORY, WITHIN HOURS</div></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const HOST_WINDOW = 40.582; // this episode's tracking-close mount: 472.23-512.812
+  function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
+  tl.set(["#tc-r2","#tc-chip"], { visibility: "hidden", autoAlpha: 0 }, 0);
+  tl.fromTo("#tc-card", { autoAlpha:0, scale:0.94 }, { autoAlpha:1, scale:1, duration:0.6, ease:"power3.out" }, 0);
+  tl.fromTo("#tc-r1", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.4 }, 0.3);
+  /* continuous ambient motion so the card never sits frozen through the hold */
+  tl.to("#tc-card", { y: -6, duration: 2.7, ease: "sine.inOut", repeat: repeatsToFit(0.8, 2.7), yoyo: true }, 0.8);
+  tl.set("#tc-r2", { visibility: "visible" }, 5.56);
+  tl.fromTo("#tc-r2", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.4 }, 5.56);
+  tl.set("#tc-chip", { visibility: "visible" }, 10.98);
+  tl.fromTo("#tc-chip", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.4 }, 10.98);
+  tl.to("#tc-hl", { boxShadow: "0 0 34px rgba(216,161,58,0.5)", duration: 1.3, ease: "sine.inOut", repeat: repeatsToFit(15.0, 1.3), yoyo: true }, 15.0);
+  tl.to("#tc-hl", { scale: 1.03, duration: 0.6, ease: "power2.out" }, 38.58);
+  tl.to("#tc-card", { autoAlpha:0, duration:0.5 }, 39.98);
+  window.__timelines["tracking-close"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
