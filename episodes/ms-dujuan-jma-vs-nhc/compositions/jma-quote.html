@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- jma-quote.html — B3 "how Japan measures". Ladder of JMA grade thresholds reveals row-by-row on the
+     spoken cue (word-synced), then the exact quote card + "10-MINUTE SUSTAINED WIND" chip lands underneath
+     once all six grades are on screen. Hand-authored per mini-storms SKILL.md (never generator-built).
+     Mount: track 2, host start = episode-abs 119.309, duration 51.418 (rows already run rel-to-segment
+     minus the 8.0 s lead-in b-roll). -->
+<template>
+<style>
+  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; }
+  .card { position:absolute; left:110px; top:120px; width:840px; box-sizing:border-box; padding:30px 40px 26px;
+    background:rgba(10,16,24,0.58); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:26px; }
+  .eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:6px; color:#d0121f; }
+  .row { display:flex; align-items:baseline; justify-content:space-between; gap:18px; margin-top:24px;
+    padding-top:20px; border-top:1px solid rgba(255,255,255,0.12); }
+  .row:first-of-type { border-top:none; padding-top:0; }
+  .lab { font-family:'Arial Black',Arial,sans-serif; font-size:30px; line-height:1.1; }
+  .rng { font-family:'AbrilFig',Georgia,serif; font-size:34px; color:#d0121f; white-space:nowrap; }
+  .thresh { margin-top:18px; padding:10px 18px; background:rgba(208,18,31,0.18); border-left:4px solid #d0121f;
+    font-family:'Arial Black',Arial,sans-serif; font-size:20px; letter-spacing:1px; color:#f4b8bc; }
+  .chip2 { position:absolute; right:80px; top:60px; font-family:'Arial Black',Arial,sans-serif; font-size:26px;
+    letter-spacing:2px; color:#f4f0e8; background:rgba(10,16,24,0.62); border:1px solid rgba(255,255,255,0.14);
+    border-left:6px solid #d0121f; border-radius:10px; padding:12px 24px; }
+  .qstrip { position:absolute; left:110px; right:110px; bottom:70px; text-align:center; box-sizing:border-box;
+    padding:30px 50px; background:rgba(10,16,24,0.6); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:24px; }
+  .qstrip .q { font-family:Georgia,serif; font-style:italic; font-size:30px; color:#f2f5f8; line-height:1.35; }
+  .qstrip .attr { margin-top:14px; font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:3px; color:#d8a13a; }
+</style>
+<div id="root" data-composition-id="jmaquote" data-width="1920" data-height="1080">
+  <div class="card" id="jq-card">
+    <div class="eye">JMA'S TEN-MINUTE SCALE</div>
+    <div class="row" id="jq-r1"><div class="lab">TROPICAL STORM</div><div class="rng">38&ndash;55 MPH</div></div>
+    <div class="row" id="jq-r2"><div class="lab">SEVERE TROPICAL STORM</div><div class="rng">55&ndash;73 MPH</div></div>
+    <div class="thresh" id="jq-thresh">73 MPH = TYPHOON THRESHOLD</div>
+    <div class="row" id="jq-r3"><div class="lab">STRONG TYPHOON</div><div class="rng">74&ndash;96 MPH</div></div>
+    <div class="row" id="jq-r4"><div class="lab">VERY STRONG TYPHOON</div><div class="rng">98&ndash;119 MPH</div></div>
+    <div class="row" id="jq-r5"><div class="lab">VIOLENT TYPHOON</div><div class="rng">121+ MPH &middot; NO CEILING</div></div>
+  </div>
+  <div class="chip2" id="jq-chip">10-MINUTE SUSTAINED WIND</div>
+  <div class="qstrip" id="jq-quote">
+    <div class="q">&ldquo;Strong Typhoon: 33&ndash;&lt;44 m/s &middot; Very Strong Typhoon: 44&ndash;&lt;54 m/s &middot; Violent Typhoon: &ge;54 m/s&rdquo;</div>
+    <div class="attr">JAPAN METEOROLOGICAL AGENCY &middot; TROPICAL CYCLONE INTENSITY SCALE</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#jq-r1","#jq-r2","#jq-thresh","#jq-r3","#jq-r4","#jq-r5","#jq-chip","#jq-quote"], { autoAlpha: 0 }, 0);
+  tl.fromTo("#jq-card", { x:-900, autoAlpha:0 }, { x:0, autoAlpha:1, duration:0.6, ease:"power3.out" }, 0);
+  tl.fromTo("#jq-chip", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 0.4);
+  tl.fromTo("#jq-r1", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 5.62);
+  tl.fromTo("#jq-r2", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 9.18);
+  tl.fromTo("#jq-thresh", { autoAlpha:0, scale:0.9 }, { autoAlpha:1, scale:1, duration:0.35 }, 18.14);
+  tl.fromTo("#jq-r3", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 25.42);
+  tl.fromTo("#jq-r4", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 30.46);
+  tl.fromTo("#jq-r5", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 35.76);
+  tl.fromTo("#jq-quote", { autoAlpha:0, y:30 }, { autoAlpha:1, y:0, duration:0.6, ease:"power3.out" }, 42.9);
+  tl.to(["#jq-card","#jq-chip","#jq-quote"], { autoAlpha:0, duration:0.5, ease:"power3.in" }, 50.8);
+  window.__timelines["jmaquote"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
