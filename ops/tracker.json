@@ -407,8 +407,8 @@
       "due": "16 Sep 26",
       "phase": "checks",
       "status": "doing",
-      "note": "browser gates running",
-      "updated": "16 Sep 26 18:31"
+      "note": "blank PASS; overlap 40 popfig-on-map hits + graphics_qc 4 errors, fixing",
+      "updated": "16 Sep 26 18:32"
     },
     {
       "slug": "ms-dujuan-two-tracks",
