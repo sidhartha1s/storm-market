@@ -321,7 +321,7 @@ window.__timelines = window.__timelines || {};
   tl.addLabel("cue-track-start", DRAW_START);
   segEls.forEach((seg, i) => {
     const dur = Math.max(0.18, (segLens[i] / totalLen) * DRAW_TOTAL);
-    tl.to(seg.__maskPath, { strokeDashoffset: 0, duration: dur, ease: "none" }, cursor);
+    tl.to(seg, { opacity: 1, duration: dur * 0.6, ease: "power1.out" }, cursor);
     tl.to(nodeEls[i + 1], { attr: { r: 7 }, opacity: 1, duration: 0.25, ease: "power4.out" }, cursor + dur - 0.1);
     tl.fromTo(pcEls[i], { attr: { r: 0 }, opacity: 0 }, { attr: { r: pcEls[i].dataset.finalR }, opacity: 1, duration: 0.5, ease: "power2.out" }, cursor + dur - 0.15);
     const lab = fcGroup.querySelectorAll('[data-role="fn-label"]')[i];
