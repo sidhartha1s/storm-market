@@ -407,8 +407,8 @@
       "due": "16 Sep 26",
       "phase": "checks",
       "status": "doing",
-      "note": "pass 3: graphics_qc + blank PASS, 1 chip overlap left; snapshot QC running",
-      "updated": "16 Sep 26 19:02"
+      "note": "all 3 browser gates PASS (pass 4); polish on scale-ladder/tracking-open/close-card/calendar, then draft",
+      "updated": "16 Sep 26 19:16"
     },
     {
       "slug": "ms-dujuan-two-tracks",
