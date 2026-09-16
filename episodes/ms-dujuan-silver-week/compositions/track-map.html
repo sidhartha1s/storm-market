@@ -350,10 +350,11 @@ window.__timelines = window.__timelines || {};
      Re-anchored by the host to "United" in "The United States Navy's Joint Typhoon Warning Center
      tracks the same storm independently" (audio/b2-s1.words.json, absolute 73.30s -> comp-relative 66.30s). */
   const JTWC_START = 66.30;
-  tl.addLabel("cue-jtwc-start", JTWC_START);
-  tl.fromTo("#tm-chip-jtwc", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, JTWC_START);
-  tl.to("#tm-jtwc-group", { opacity: 1, duration: 0.2 }, JTWC_START);
-  tl.to(jtVisible, { opacity: 1, duration: 1.8, ease: "power1.inOut" }, JTWC_START);
+  /* literal (not JTWC_START) for the same static-scanner reason as cue-track-start above. */
+  tl.addLabel("cue-jtwc-start", 66.30);
+  tl.fromTo("#tm-chip-jtwc", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 66.30);
+  tl.to("#tm-jtwc-group", { opacity: 1, duration: 0.2 }, 66.30);
+  tl.to(jtVisible, { opacity: 1, duration: 1.8, ease: "power1.inOut" }, 66.30);
   jtProj.forEach((_, i) => tl.to(jtNodesGroup.children[i], { opacity: 1, duration: 0.25 }, JTWC_START + 1.5 + i * 0.05));
 
   /* blinking LIVE dots (continuous) */
