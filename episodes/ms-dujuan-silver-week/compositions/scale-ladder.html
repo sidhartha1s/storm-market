@@ -17,13 +17,12 @@
   #root { position:absolute; inset:0; overflow:hidden; font-family:Arial,sans-serif; color:#f2f5f8;
     background:radial-gradient(ellipse at 30% 70%, #142235 0%, #04070c 70%); }
   #sl-drift { position:absolute; inset:-8%; background:radial-gradient(ellipse at 70% 20%, rgba(208,18,31,0.08) 0%, rgba(0,0,0,0) 55%); }
-  /* height is EXPLICIT and overflow:hidden -- not auto/content-derived -- so the card's bottom
-     edge is a fixed, known number (210 top + 580 height = 790), not an estimate: two rounds of
-     hand-measuring the auto-height missed. 580 = 40 pad-top + 50 eyebrow (24 line-height:1 + 26
-     margin) + 256 (4 bands x 64) + 107 readout (26 margin + 22 pad-top + 1 border + 58 content,
-     line-height:1) + 54 caption (30 margin + 24 line-height:1, nowrap so it can never wrap to a
-     2nd line) + 40 pad-bottom = 547, +33px buffer for descenders/text-shadow bleed. */
-  .card { position:absolute; left:260px; top:210px; width:1400px; height:580px; padding:40px 56px; box-sizing:border-box;
+  /* height is EXPLICIT and overflow:hidden -- not auto/content-derived. 580px (my hand-computed
+     line-item sum) clipped the real content: browser measurement at t=47s put the readout bottom
+     at 800 and the caption at 830-854, both past a 790 card bottom. Set from that MEASUREMENT,
+     not another estimate: 854 (measured caption bottom) + 40 (padding-bottom) - 210 (card top)
+     = 684, rounded to 690. Card bottom = 210+690 = 900. */
+  .card { position:absolute; left:260px; top:210px; width:1400px; height:690px; padding:40px 56px; box-sizing:border-box;
     overflow:hidden; z-index:6; background:rgba(10,16,24,0.6); backdrop-filter:blur(18px) saturate(1.15);
     -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:24px; }
   .eyebrow { font-family:'Arial Black',Arial,sans-serif; font-size:24px; line-height:1; letter-spacing:6px; color:#d0121f; margin-bottom:26px; }
