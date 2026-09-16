@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- compare-card.html — B6 second half: "same storm, two rulers" — today's actual forecast numbers on each
+     scale, counting up from zero on the spoken cue. LEFT = JMA (67 mph, severe tropical storm). RIGHT = JTWC
+     (75 mph, crosses into category-1 range). A thin ladder echo (tick marks, no shared DOM with ladder.html)
+     sits behind each card so the B4 ladder is visually referenced without re-mounting it. Mount: track 2,
+     host start = episode-abs 326.157, duration 42.273 (comp-local 0 = that point in B6; word cues below are
+     B6-segment-relative minus 21.0). -->
+<template>
+<style>
+  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; }
+  .eye { position:absolute; left:0; right:0; top:100px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
+    font-size:24px; letter-spacing:5px; color:#d8a13a; }
+  .card { position:absolute; top:200px; width:760px; box-sizing:border-box; padding:36px 40px; text-align:center;
+    background:rgba(10,16,24,0.58); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .card-l { left:150px; border-bottom:5px solid #8fb4d8; }
+  .card-r { right:150px; border-bottom:5px solid #d0121f; }
+  .tag { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:4px; }
+  .card-l .tag { color:#8fb4d8; }
+  .card-r .tag { color:#d0121f; }
+  .num { font-family:'AbrilFig',Georgia,serif; font-size:170px; line-height:1; margin-top:18px; }
+  .card-l .num { color:#8fb4d8; }
+  .card-r .num { color:#d0121f; }
+  .unit { font-family:'Arial Black',Arial,sans-serif; font-size:26px; letter-spacing:2px; margin-top:6px; }
+  .sub { margin-top:16px; font-family:Georgia,serif; font-style:italic; font-size:22px; color:#c8d3e0; }
+  .grade { margin-top:14px; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:1px; }
+  .midpop { position:absolute; left:0; right:0; top:420px; text-align:center; }
+  .midpop .pf { font-family:'AbrilFig',Georgia,serif; font-size:100px; color:#d8a13a;
+    text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 50px rgba(0,0,0,0.6); }
+  .foot { position:absolute; left:0; right:0; bottom:70px; text-align:center; font-family:Arial,sans-serif;
+    font-size:20px; color:#c8d3e0; }
+</style>
+<div id="root" data-composition-id="comparecard" data-width="1920" data-height="1080">
+  <div class="eye" id="cc-eye">TODAY'S FORECAST, TWO ANSWERS</div>
+  <div class="card card-l" id="cc-l">
+    <div class="tag">JMA FORECAST</div>
+    <div class="num" id="cc-l-num">0</div>
+    <div class="unit">MPH &middot; 30 M/S &middot; 108 KM/H</div>
+    <div class="grade">SEVERE TROPICAL STORM</div>
+    <div class="sub">10-minute peak forecast</div>
+  </div>
+  <div class="card card-r" id="cc-r">
+    <div class="tag">JTWC FORECAST</div>
+    <div class="num" id="cc-r-num">0</div>
+    <div class="unit">MPH &middot; 65 KT</div>
+    <div class="grade" id="cc-r-grade">&nbsp;</div>
+    <div class="sub">1-minute peak forecast</div>
+  </div>
+  <div class="midpop" id="cc-midpop" style="visibility:hidden"><span class="pf">12%</span></div>
+  <div class="foot" id="cc-foot">A STATISTICAL RULE OF THUMB &middot; NOT AN EXACT FORMULA</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const L = { n: 0 }, R = { n: 0 };
+  const lEl = document.getElementById("cc-l-num"), rEl = document.getElementById("cc-r-num");
+  tl.set(["#cc-midpop","#cc-foot"], { autoAlpha: 0 }, 0);
+  tl.set("#cc-r-grade", { autoAlpha: 0 }, 0);
+  tl.fromTo("#cc-eye", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.5 }, 0);
+  tl.fromTo("#cc-l", { autoAlpha:0, x:-40 }, { autoAlpha:1, x:0, duration:0.5 }, 0.2);
+  tl.fromTo("#cc-r", { autoAlpha:0, x:40 }, { autoAlpha:1, x:0, duration:0.5 }, 0.2);
+  /* JMA 67 counts up on its cue (comp-local 2.32 = B6-rel 23.32) */
+  tl.to(L, { n: 67, duration: 1.0, ease: "power1.out", onUpdate: () => lEl.textContent = Math.round(L.n) }, 2.32);
+  /* JTWC 75 counts up on its cue (comp-local 20.22 = B6-rel 41.22) */
+  tl.to(R, { n: 75, duration: 1.0, ease: "power1.out", onUpdate: () => rEl.textContent = Math.round(R.n) }, 20.22);
+  /* "75 mph crosses the Saffir-Simpson line into category 1" (comp-local 22.44 = B6-rel 43.44) */
+  tl.to("#cc-r-grade", { autoAlpha: 1, duration: 0.4, onStart: () => { document.getElementById("cc-r-grade").textContent = "CATEGORY 1 RANGE"; } }, 22.44);
+  tl.fromTo("#cc-midpop", { autoAlpha:0, scale:1.6, visibility:"visible" }, { autoAlpha:1, scale:1, duration:0.4 }, 24.0);
+  tl.to("#cc-midpop", { autoAlpha:0, duration:0.4 }, 27.5);
+  /* the "12% conversion is a rule of thumb, not exact" caveat (comp-local 33.66 = B6-rel 54.66) */
+  tl.fromTo("#cc-foot", { autoAlpha:0 }, { autoAlpha:1, duration:0.5 }, 33.66);
+  tl.to(["#cc-eye","#cc-l","#cc-r","#cc-foot"], { autoAlpha:0, duration:0.5 }, 41.3);
+  window.__timelines["comparecard"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
