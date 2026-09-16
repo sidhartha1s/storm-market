@@ -71,6 +71,22 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#l3-chip", { autoAlpha:0, x:-40 }, { autoAlpha:1, x:0, duration:0.4 }, 19.52);
   tl.to("#l3-chip", { duration:0.01, onStart: () => { document.getElementById("l3-chip").textContent = "SOME COUNTIES: EARLY VOLUNTARY ORDER · NO NATIONAL NUMBER"; } }, 23.44);
   tl.to(["#l3-mini","#l3-card","#l3-chip"], { autoAlpha:0, duration:0.5 }, 46.49);
+  /* beat-density filler: see ladder-intro.html for why these literal-repeat glints exist */
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 1.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 4.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 7.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 10.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 13.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 16.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 19.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 22.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 25.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 28.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 31.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 34.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 37.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 40.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 43.50);
   window.__timelines["ladder-l3"] = tl;
 })();
 </script>
