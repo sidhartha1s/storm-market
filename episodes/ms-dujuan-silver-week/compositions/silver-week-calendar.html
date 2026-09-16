@@ -83,9 +83,11 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#sw-card-nozomi", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 33.86);
   tl.fromTo("#sw-card-games", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 58.48);
 
-  /* continuous ambient motion so no window reads as a frozen hold */
-  tl.to("#sw-drift", { rotation: 360, duration: 40, ease: "none", repeat: 3, transformOrigin: "50% 50%" }, 0);
-  tl.to(".card", { y: "-=6", duration: 3.2, ease: "sine.inOut", yoyo: true, repeat: 20 }, 0.4);
+  /* continuous ambient motion so no window reads as a frozen hold. Single-pass, explicit long
+     duration + ease:"none" (not gsap repeat, which sweep_episode's static regex-based
+     timeline-length check cannot see through) so the composition's own perceived duration
+     covers the full 84.727s host window. */
+  tl.to("#sw-drift", { rotation: 1080, duration: 84.7, ease: "none", transformOrigin: "50% 50%" }, 0);
 
   window.__timelines["silver-week-calendar"] = tl;
 })();
