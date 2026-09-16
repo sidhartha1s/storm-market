@@ -5,7 +5,7 @@
 > depression near the Mariana Islands (facts-16sep.md §6 / fact-pack-16sep.md), which was still the governing
 > forecast as of this write. The core subject — Japan's five-level Alert Level system (Cabinet Office, revised 20
 > May 2021) and JMA's matching Warning/Advisory tiers — is fetched fresh this session directly from bousai.go.jp
-# and jma.go.jp (see Sources). Numbers spelled out for TTS except years and dollar figures; sentences under 24
+> and jma.go.jp (see Sources). Numbers spelled out for TTS except years and dollar figures; sentences under 24
 > words; wind spoken in mph, km/h added on screen only; humanise-rules.md pass applied line by line (no banned
 > openers/words/phrases, no metaphors, no rhetorical questions, no em dashes, no reveal-flip or mirrored-callback
 > endings). No hard-to-pronounce untransliterated Japanese names required this episode. Target >=1,350 words.
