@@ -213,7 +213,7 @@ window.__timelines = window.__timelines || {};
        is invisible to GSAP's "from" lookup on the later .to(), so the segment rendered fully
        drawn at t=0 (found via elementsFromPoint debug probe). gsap.set writes it the same way
        the later tween reads it. */
-    gsap.set(p, { strokeDasharray: len, strokeDashoffset: len });
+    gsap.set(p, { strokeDasharray: len, strokeDashoffset: len + 2 }); /* +2px margin: exact-length offset still left a 1px sub-pixel cap remnant even with butt caps */
     segEls.push(p); segLens.push(len); totalLen += len;
   }
   fcChain.forEach((pt, i) => {
