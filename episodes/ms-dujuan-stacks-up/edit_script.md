@@ -155,7 +155,7 @@ Visual: Silver Week calendar MG, "SAT 19 – WED 23 SEP · FIRST FULL 5-DAY IN 1
 ## B7 — WHAT'S STILL OPEN TONIGHT (6:41–7:23)
 
 ### B7-S1 — narration
-> Two things remain genuinely open tonight. The first is the track. Japan's own forecast ends offshore, east of Japan. A turn back toward the mainland is still possible beyond where that forecast currently reaches. The second is the storm's own strength. Every number tonight comes from a system that is not yet a typhoon. Japan's own scale carries three grades above typhoon that this forecast does not yet reach. Japan's weather agency updates this forecast again within hours. [f1, f3]
+> Two things remain genuinely open tonight. The first is the track. Japan's own forecast ends offshore, east of Japan. A turn back toward the mainland is still possible beyond where that forecast currently reaches. The second is the storm's own strength. Every number tonight comes from a system that is not yet a typhoon. Japan's own scale carries three grades above typhoon that this forecast does not yet reach. If this storm intensifies past what tonight's forecast shows, it leaves the weakest spot on this list within a day. Japan's weather agency updates this forecast again within hours. [f1, f3]
 
 Visual: tracking card MG, two rows: "TRACK — STILL OPEN" / "STRENGTH — STILL OPEN." Benchmark table reappears in miniature, Typhoon No. 25's amber row still unresolved at the bottom. Return to the live Himawari loop of the depression near Guam.
 
