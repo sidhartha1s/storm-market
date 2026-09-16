@@ -92,8 +92,8 @@ window.__timelines = window.__timelines || {};
      call -- GSAP multiplies the WHOLE stagger span by (repeat+1), not per-tile, which blew the
      real tl.duration() out to 103.4s (62 + 2*(4*5.0 + 0.7)) for a single repeat cycle. With no
      repeat: last tile's down-tween ends at 62.35 + 4*5.0 + 0.35 = 82.7s, inside the 84.727s window. */
-  tl.to(".cal .d", { scale: 1.08, duration: 0.35, ease: "sine.out", stagger: 5.0 }, 62.0);
-  tl.to(".cal .d", { scale: 1.0, duration: 0.35, ease: "sine.in", stagger: 5.0 }, 62.35);
+  tl.to(".cal .d", { scale: 1.16, boxShadow: "0 0 0 3px rgba(255,90,99,0.9), 0 0 26px rgba(255,90,99,0.65)", duration: 0.35, ease: "sine.out", stagger: 5.0 }, 62.0);
+  tl.to(".cal .d", { scale: 1.0, boxShadow: "none", duration: 0.35, ease: "sine.in", stagger: 5.0 }, 62.35);
 
   /* continuous ambient motion so no window reads as a frozen hold. Single-pass, explicit long
      duration + ease:"none" (not gsap repeat, which sweep_episode's static regex-based
