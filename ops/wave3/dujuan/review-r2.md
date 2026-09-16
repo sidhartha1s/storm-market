@@ -79,6 +79,105 @@ Reviewed 16 Sep 26. Read ideas-r2.md fully against review-r1.md. Ran 7 more `yt-
 **Remaining fatal flaw:** same meteorological risk as idea 12 — the fact pack's "strong" ceiling forecast makes a large superlative ("strongest in 25 years" territory) unlikely; a true answer of "strongest in 2 years" is a much weaker hook. Also clusters on 21-22 Sep with ideas 5, 6, and 12.
 **FIX:** write the script to work at either outcome from day one (the honest ranking is very likely to be modest, not dramatic) and merge with idea 12 into a single landfall-day comparison video rather than shipping two separate history-comparison pieces the same day.
 
+## ADDENDUM — verified fact desk (facts-16sep.md), scores revised
+
+The fact desk landed `facts-16sep.md` after the ranked list above was written. The single most
+important line changes the risk calculus for half the round: **JMA's own longest published
+forecast (their 117-hour maximum lead time, valid 21 Sep 15:00 JST) keeps Dujuan an unnamed
+depression today and puts its farthest-out position at 37.0N 143.1E — east of Japan, offshore of
+Fukushima/Ibaraki — classified only as STS (Severe Tropical Storm, 30 m/s / 975 hPa), one full
+category below "strong" (33-44 m/s).** This is NOT a confirmed Kanto/Tokyo direct hit, and it does
+not reach the "strong" typhoon threshold that several ideas' titles assume. The Japanese press
+"direct hit on Kanto / 970 hPa / 50 m/s gusts" line the earlier ideas cite comes from private-forecaster
+simulations (Weathernews) and earlier runs, not JMA's own current official track — a real gap between
+press hype and the primary source.
+
+Also verified this round, useful for scripting regardless of how the storm evolves: Silver Week is
+confirmed 19-23 Sep, the first full 5-day Silver Week in 11 years, with the Nozomi Shinkansen fully
+reserved-seat only 18-23 Sep (real, sourced disruption-mechanism even without a direct typhoon hit);
+Asian Games opens 19 Sep; Hagibis killed 139 (violent, direct Kanto-area landfall — the historic
+benchmark); Faxai left 934,000 households without power; and **Ampil (2024)** — the most recent
+Kanto-area near-miss/brush, Aug 2024 Obon holiday — caused only minimal Tokyo damage, 4 injured
+region-wide, ~250 households without power per prefecture. Ampil, not Hagibis, is the closer
+meteorological analog to a track that stays offshore at STS intensity.
+
+**Re-scored against "does the idea survive a near-miss / does the storm survive at STS instead of
+'strong'":**
+
+- **Idea 2 (Track shift east / "Tokyo in the Hit Zone Now?"): 6 → 3, MAYBE → DIES-leaning.**
+  The premise is directly undercut by JMA's own longest official forecast, which shows an offshore
+  track, not a confirmed Tokyo hit zone. Shipping this framing now risks asserting something the
+  primary source doesn't support. **FIX or SCRAP:** hold until a genuine westward/landward shift
+  appears in a real JMA bulletin; if shipped now, retitle to the honest state ("Closer to Japan, Still
+  Offshore — For Now") rather than "Hit Zone."
+
+- **Idea 3 (Silver Week Collision): 8 → 8, unchanged, still BLOWS UP.** The kill number is about
+  timing (closest approach inside 19-23 Sep), not landfall or intensity — it survives a near-miss.
+  **FIX:** tighten the hook wording — "closing in on Tokyo" or "aimed at" overstates the offshore
+  track; reframe around holiday-travel disruption (Nozomi fully reserved, rain/transport impact),
+  which is real and sourced regardless of where the storm's center ends up.
+
+- **Idea 4 (520km blind spot explainer): 5 → 7, upgraded, MAYBE-BLOWS UP.** This idea gets
+  materially stronger, not weaker — it's now the honest-broker video that explains exactly why
+  press simulations said "direct hit, 970 hPa, 50 m/s" while JMA's own official longest forecast
+  says "offshore, STS, 975 hPa, 30 m/s." That gap is a genuine net-info-gain fact per the channel's
+  own editorial rule. **FIX:** lead with the discrepancy itself as the hook, not just cone
+  methodology.
+
+- **Idea 5 (Landfall Watch: closest approach): 8 → 5, downgraded to MAYBE.** "Landfall" language in
+  the title/thumbnail may not be earnable — the current official track is offshore. The Hagibis-scale
+  ceiling comparisons (2.06M/1.67M/497K/107K) assumed a real violent landfall; Ampil 2024 (minimal
+  Tokyo damage) is the closer analog if the track holds offshore at STS. **FIX:** drop "Landfall
+  Watch," keep "closest approach," and set the packaging to work honestly at an offshore-pass
+  outcome, not just a rare downside case.
+
+- **Idea 6 (Tokyo Bay Storm Surge): 7 → 4, downgraded to MAYBE.** A JMA storm-surge warning for a
+  named coastal area is less likely from an offshore STS system below the "strong" threshold.
+  **FIX:** the idea's own fallback (measured coastal wave height instead of a surge warning) becomes
+  the likely path, not a backup — script for that from day one.
+
+- **Idea 7 (Damage Reports): 7 → 5, downgraded to MAYBE.** Ampil 2024's precedent (minimal Tokyo
+  damage, 4 injured region-wide) is now the more likely comparable outcome than Hagibis-scale damage.
+  **FIX:** none needed structurally; recalibrate expectations in scripting, the kill number still
+  works at a small number, it's just a smaller video.
+
+- **Idea 8 (Flights Grounded): 6 → 5, minor downgrade.** Already self-gated by size in the r1 fix;
+  the offshore/STS scenario just makes the size gate more likely to trigger the fold-into-#7 path.
+
+- **Idea 9 (American Travelers): 6 → 6, unaffected.** Doesn't depend on landfall or intensity.
+
+- **Idea 10 ([EVERGREEN] JMA "Strong" = Category 2): 7 → 5, downgraded to MAYBE.** This is a real
+  exposure: the whole premise is the word "strong," and JMA's own longest published forecast tops
+  out at STS — one category below "strong." The kill number ("no real measured value, no video")
+  may simply not fire on Dujuan at all. **FIX:** keep as a reusable evergreen asset, but do not
+  script it against Dujuan specifically until a real JMA bulletin actually crosses the 33 m/s
+  threshold; treat "may not run this cycle" as the likely outcome, not a rare miss.
+
+- **Idea 11 ([EVERGREEN] Holiday Typhoon Pattern): 5 → 6, upgraded.** The safest idea in the set
+  against this addendum — it's a historical-pattern piece, entirely immune to how Dujuan itself
+  turns out.
+
+- **Idea 12 (First Direct Hit Since Hagibis?): 6 → 3, downgraded to DIES-leaning.** Hagibis was a
+  violent, direct, deadly landfall (139 dead). JMA's own official forecast for Dujuan is a materially
+  weaker offshore STS system — much closer to Ampil's minimal-damage 2024 precedent than to Hagibis.
+  The honest answer to the title's question is very likely "no, and not close," which undercuts the
+  drama the whole packaging is built on. **FIX or SCRAP:** if kept, retitle from the start as "How
+  Dujuan Compares to Hagibis" (already the writer's own hedge) and set the expected answer to
+  "much weaker, more like Ampil" rather than treating that as a rare fallback.
+
+- **Idea 13 (JP News Already Panicking): 4 → 3, further downgraded.** The press lines this idea
+  would amplify ("direct hit on Kanto," "970 hPa," "50 m/s gusts") are now confirmed by the fact
+  desk to be simulation/earlier-forecast figures, not JMA's current official read — amplifying them
+  risks amplifying stale numbers on top of the format's own unproven-precedent problem from the
+  main review. Still SCRAP.
+
+- **Idea 14 (Strongest Typhoon to Hit Tokyo in How Many Years?): 7 → 4, downgraded to MAYBE.** Same
+  core exposure as idea 10 and 12 — STS is weaker than "strong," and Ampil 2024 (unremarkable) is
+  the more likely comparable outcome than a historic superlative. **FIX:** same as idea 12 — script
+  the honest, modest ranking as the expected outcome, and consider merging with idea 12 into one
+  "how Dujuan compares to Kanto's last several systems (Hagibis, Faxai, Ampil)" video rather than
+  running two separate superlative bets on the same day.
+
 ## Cannibalization / clustering calls
 - **Idea 1 vs idea 3:** real overlap — same Silver Week hook, same absorbed cold open, one day apart. Merge into one flagship, or strip the shared cold open from idea 1.
 - **Ideas 5, 6, 12, 14 all scheduled 21-22 Sep:** four videos the same day/window is a real fatigue risk that didn't exist in r1. Keep idea 5 (the anchor) fixed on 21-22 Sep; move idea 6 to 22-23 Sep; merge idea 12 and idea 14 into one "how Dujuan compares to Hagibis / ranks historically" video rather than shipping both.
