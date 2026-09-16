@@ -40,6 +40,7 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   tl.set("#to-card", { autoAlpha: 0 }, 0);
   tl.fromTo("#to-card", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.2);
+  tl.fromTo("#to-rule", { width: "0%" }, { width: "100%", duration: 10.6, ease: "none" }, 0.4);
   tl.to("#to-card", { autoAlpha: 0, x: -30, duration: 0.4 }, 11.2);
   tl.to("#to-drift", { rotation: 1080, duration: 12.2, ease: "none", transformOrigin: "50% 50%" }, 0);
   window.__timelines["tracking-open"] = tl;
