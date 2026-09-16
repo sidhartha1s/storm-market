@@ -35,7 +35,7 @@
   .foot { position:absolute; left:0; right:0; bottom:115px; text-align:center; font-family:Arial,sans-serif;
     font-size:20px; color:#c8d3e0; }
 </style>
-<div id="root" data-composition-id="comparecard" data-width="1920" data-height="1080">
+<div id="root" data-composition-id="compare-card" data-width="1920" data-height="1080">
   <div class="eye" id="cc-eye">TODAY'S FORECAST, TWO ANSWERS</div>
   <div class="card card-l" id="cc-l">
     <div class="tag">JMA FORECAST</div>
@@ -65,6 +65,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#cc-eye", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.5 }, 0);
   tl.fromTo("#cc-l", { autoAlpha:0, x:-40 }, { autoAlpha:1, x:0, duration:0.5 }, 0.2);
   tl.fromTo("#cc-r", { autoAlpha:0, x:40 }, { autoAlpha:1, x:0, duration:0.5 }, 0.2);
+  /* continuous ambient motion across the whole window so both cards never sit frozen between reveals */
+  tl.to("#cc-l", { y: -6, duration: 2.6, ease: "sine.inOut", repeat: 14, yoyo: true }, 0.8);
+  tl.to("#cc-r", { y: -6, duration: 2.6, ease: "sine.inOut", repeat: 14, yoyo: true }, 1.1);
   /* JMA 67 counts up on its cue (comp-local 2.32 = B6-rel 23.32) */
   tl.to(L, { n: 67, duration: 1.0, ease: "power1.out", onUpdate: () => lEl.textContent = Math.round(L.n) }, 2.32);
   /* JTWC 75 counts up on its cue (comp-local 20.22 = B6-rel 41.22) */
@@ -76,7 +79,7 @@ window.__timelines = window.__timelines || {};
   /* the "12% conversion is a rule of thumb, not exact" caveat (comp-local 33.66 = B6-rel 54.66) */
   tl.fromTo("#cc-foot", { autoAlpha:0 }, { autoAlpha:1, duration:0.5 }, 33.66);
   tl.to(["#cc-eye","#cc-l","#cc-r","#cc-foot"], { autoAlpha:0, duration:0.5 }, 41.3);
-  window.__timelines["comparecard"] = tl;
+  window.__timelines["compare-card"] = tl;
 })();
 </script>
 </template>
