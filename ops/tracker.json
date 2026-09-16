@@ -455,8 +455,8 @@
       "due": "16 Sep 26",
       "phase": "checks",
       "status": "done",
-      "note": "blank/overlap/graphics_qc all PASS (pass 5); snapshot re-read running",
-      "updated": "16 Sep 26 19:30"
+      "note": "gates pass 6 all PASS; draft render queued behind U1",
+      "updated": "16 Sep 26 20:28"
     },
     {
       "slug": "ms-dujuan-holiday-typhoons",
