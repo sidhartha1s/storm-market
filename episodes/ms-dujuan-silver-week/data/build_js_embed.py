@@ -31,7 +31,7 @@ data = {
               "jtwc_issue_z": track["jtwc_issue_z"]},
     "jma": {
         "past": jma_past,
-        "current": strip(jma_current, ["time", "lat", "lon", "pressure_hPa", "wind_mph", "gust_mph",
+        "current": strip(jma_current, ["time", "lat", "lon", "pressure_hPa", "wind_mph", "wind_kmh", "gust_mph",
                                         "category", "location_label", "course_en", "speed_mph"]),
         "forecast": [strip(p, CK) for p in jma_forecast],
     },
