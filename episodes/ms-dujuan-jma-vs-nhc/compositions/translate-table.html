@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- translate-table.html — B7 "same animal, different name". Top: three-basin naming chip row (Pacific =
+     typhoon, Atlantic = hurricane, Indian Ocean = cyclone), reveal on cue. Bottom: JMA-grade-to-US-read
+     translation table (Strong -> Cat 1 start, Very Strong -> near Cat 2 top, Violent -> into Cat 3), reveal
+     on cue. Mount: track 2, host start = episode-abs 377.030, duration 61.127 (comp-local 0 = that point in
+     B7; cues below are B7-segment-relative minus 8.0). -->
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; }
+  .basinrow { position:absolute; left:0; right:0; top:130px; display:flex; justify-content:center; gap:28px; }
+  .bchip { padding:18px 34px; border-radius:14px; text-align:center; box-sizing:border-box;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.14); }
+  .bchip .ocean { font-family:'Arial Black',Arial,sans-serif; font-size:20px; letter-spacing:2px; color:#c8d3e0; }
+  .bchip .term { font-family:'AbrilFig',Georgia,serif; font-size:40px; color:#d0121f; margin-top:6px; }
+  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
+  .table { position:absolute; left:280px; right:280px; top:320px; box-sizing:border-box; padding:36px 50px;
+    background:rgba(10,16,24,0.58); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .thead { display:flex; justify-content:space-between; font-family:'Arial Black',Arial,sans-serif; font-size:20px;
+    letter-spacing:3px; color:#d8a13a; padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.16); }
+  .trow { display:flex; justify-content:space-between; align-items:center; padding:20px 0; border-bottom:1px solid rgba(255,255,255,0.1); }
+  .trow:last-child { border-bottom:none; }
+  .trow .jma { font-family:'Arial Black',Arial,sans-serif; font-size:28px; width:38%; }
+  .trow .arrow { color:#d0121f; font-size:26px; width:8%; text-align:center; }
+  .trow .us { font-family:Georgia,serif; font-style:italic; font-size:24px; color:#f2f5f8; width:54%; }
+</style>
+<div id="root" data-composition-id="translatetable" data-width="1920" data-height="1080">
+  <div class="basinrow">
+    <div class="bchip" id="tt-b1"><div class="ocean">WESTERN PACIFIC</div><div class="term">TYPHOON</div></div>
+    <div class="bchip" id="tt-b2"><div class="ocean">ATLANTIC &amp; E. PACIFIC</div><div class="term">HURRICANE</div></div>
+    <div class="bchip" id="tt-b3"><div class="ocean">INDIAN OCEAN</div><div class="term">CYCLONE</div></div>
+  </div>
+  <div class="table" id="tt-table">
+    <div class="thead"><span>JAPAN'S GRADE</span><span>&nbsp;</span><span>AMERICAN READ</span></div>
+    <div class="trow" id="tt-r1"><div class="jma">STRONG TYPHOON</div><div class="arrow">&rarr;</div><div class="us">Category 1 start</div></div>
+    <div class="trow" id="tt-r2"><div class="jma">VERY STRONG TYPHOON</div><div class="arrow">&rarr;</div><div class="us">Near the top of Category 2</div></div>
+    <div class="trow" id="tt-r3"><div class="jma">VIOLENT TYPHOON</div><div class="arrow">&rarr;</div><div class="us">Well into Category 3, and climbing</div></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#tt-b1","#tt-b2","#tt-b3","#tt-r1","#tt-r2","#tt-r3"], { autoAlpha: 0 }, 0);
+  tl.fromTo("#tt-b1", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 3.22);
+  tl.fromTo("#tt-b2", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 8.7);
+  tl.fromTo("#tt-b3", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 13.72);
+  tl.fromTo("#tt-table", { autoAlpha:0, y:30 }, { autoAlpha:1, y:0, duration:0.6 }, 20.0);
+  tl.fromTo("#tt-r1", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 27.64);
+  tl.fromTo("#tt-r2", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 37.12);
+  tl.fromTo("#tt-r3", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 43.1);
+  tl.to(["#tt-b1","#tt-b2","#tt-b3","#tt-table"], { autoAlpha:0, duration:0.5 }, 60.1);
+  window.__timelines["translatetable"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
