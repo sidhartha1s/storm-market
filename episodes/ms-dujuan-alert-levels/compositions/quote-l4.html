@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- quote-l4.html — B5 "level four: everyone evacuates". Level 4 label + the one named official quote
+     (JMA's Urgent Warning guidance) + the US hurricane-warning timeline chip. Full-window mount, no
+     b-roll. Cues word-synced from audio/b5-s1.words.json. Mount: track 2, host start = episode-abs
+     237.503, duration 63.091. -->
+<template>
+<style>
+  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
+  .eye { position:absolute; left:0; right:0; top:100px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
+    font-size:24px; letter-spacing:6px; color:#d0121f; }
+  .lvl { position:absolute; left:0; right:0; top:150px; text-align:center; font-family:'AbrilFig',Georgia,serif;
+    font-size:60px; color:#f4f0e8; }
+  .qstrip { position:absolute; left:260px; right:260px; top:290px; box-sizing:border-box; padding:44px 60px;
+    text-align:center; background:rgba(10,16,24,0.6); backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:26px; }
+  .qstrip .q { font-family:Georgia,serif; font-style:italic; font-size:38px; color:#f2f5f8; line-height:1.4; }
+  .qstrip .attr { margin-top:20px; font-family:Arial,sans-serif; font-weight:700; font-size:20px; letter-spacing:2px; color:#d8a13a; }
+  .timeline { position:absolute; left:260px; right:260px; bottom:150px; box-sizing:border-box; font-family:'Arial Black',Arial,sans-serif;
+    font-size:24px; letter-spacing:1px; color:#f4f0e8; background:rgba(10,16,24,0.62); border:1px solid rgba(255,255,255,0.14);
+    border-left:6px solid #8fb4d8; border-radius:10px; padding:16px 30px; line-height:1.5; text-align:center; }
+</style>
+<div id="root" data-composition-id="quote-l4" data-width="1920" data-height="1080">
+  <div class="eye" id="ql-eye">ALERT LEVEL 4</div>
+  <div class="lvl" id="ql-lvl">Evacuation Instruction</div>
+  <div class="qstrip" id="ql-quote" style="visibility:hidden">
+    <div class="q">&ldquo;All residents should evacuate from dangerous areas.&rdquo;</div>
+    <div class="attr">JAPAN METEOROLOGICAL AGENCY &middot; EMERGENCY WARNING SYSTEM, LEVEL 4 GUIDANCE</div>
+  </div>
+  <div class="timeline" id="ql-tl">US HURRICANE WARNING: 36H BEFORE TS-FORCE WINDS</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const HOST_WINDOW = 63.091; // this episode's quote-l4 mount: 237.503-300.594
+  function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
+  tl.set(["#ql-quote","#ql-tl"], { autoAlpha: 0 }, 0);
+  tl.fromTo("#ql-eye", { autoAlpha:0, y:-16 }, { autoAlpha:1, y:0, duration:0.5 }, 0);
+  tl.fromTo("#ql-lvl", { autoAlpha:0, scale:0.9 }, { autoAlpha:1, scale:1, duration:0.5 }, 1.04);
+  /* continuous ambient motion on the headline so it never sits frozen through the long lead-up */
+  tl.to("#ql-lvl", { letterSpacing: "2px", duration: 3.0, ease: "sine.inOut", repeat: repeatsToFit(2.0, 3.0), yoyo: true }, 2.0);
+  tl.set("#ql-quote", { visibility: "visible" }, 21.28);
+  tl.fromTo("#ql-quote", { autoAlpha:0, y:30, scale:0.96 }, { autoAlpha:1, y:0, scale:1, duration:0.6, ease:"power3.out" }, 21.28);
+  tl.to("#ql-quote", { boxShadow: "0 0 34px rgba(216,161,58,0.35)", duration: 1.4, ease: "sine.inOut", repeat: repeatsToFit(26.0, 1.4), yoyo: true }, 26.0);
+  tl.fromTo("#ql-tl", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 49.34);
+  tl.to("#ql-tl", { duration:0.01, onStart: () => { document.getElementById("ql-tl").textContent = "EVACUATION ORDER: SEPARATE, LOCAL DECISION · NOT LINKED TO THE WARNING"; } }, 55.26);
+  tl.to(["#ql-eye","#ql-lvl","#ql-quote","#ql-tl"], { autoAlpha:0, duration:0.5 }, 62.49);
+  window.__timelines["quote-l4"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
