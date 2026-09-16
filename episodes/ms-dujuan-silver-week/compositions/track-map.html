@@ -260,7 +260,7 @@ window.__timelines = window.__timelines || {};
   jtVisible.setAttribute("d", jtD);
   jtMask.setAttribute("d", jtD);
   const jtLen = jtMask.getTotalLength();
-  gsap.set(jtMask, { strokeDasharray: jtLen, strokeDashoffset: jtLen });
+  gsap.set(jtMask, { strokeDasharray: jtLen, strokeDashoffset: jtLen + 2 }); /* same +2px margin as the JMA segments */
   const jtNodesGroup = document.getElementById("tm-jtwc-nodes");
   jtProj.forEach(([x, y]) => jtNodesGroup.appendChild(el("circle", { class: "jtwc-node", cx: x, cy: y, r: 6 })));
 
