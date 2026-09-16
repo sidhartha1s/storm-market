@@ -51,20 +51,23 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
+  /* Ambient tweens use a BOUNDED repeat, never repeat:-1: an infinite tween runs on GSAP's real-time
+     ticker past this paused/seeked timeline's frame-by-frame playhead and desyncs headless capture
+     (blank_scan.mjs). repeatsToFit() sizes each repeat count so its tween ends at/under HOST_WINDOW. */
+  const HOST_WINDOW = 63.127; // this episode's translate-table mount: 375.030-438.157
+  function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
   tl.set(["#tt-b1","#tt-b2","#tt-b3","#tt-r1","#tt-r2","#tt-r3"], { autoAlpha: 0 }, 0);
-  /* two soft glow blobs drift for the full window — always-on kinetic motion, never a flat frame.
-     Standalone gsap calls (NOT on tl) so they never extend tl.duration() past the exit/host window */
-  gsap.to("#tt-glow-a", { x: 130, y: 80, duration: 9.0, ease: "sine.inOut", repeat: 6, yoyo: true, delay: 0 });
-  gsap.to("#tt-glow-b", { x: -140, y: -70, duration: 10.44, ease: "sine.inOut", repeat: 5, yoyo: true, delay: 0.5 });
+  /* two soft glow blobs drift for the full window — always-on kinetic motion, never a flat frame */
+  tl.to("#tt-glow-a", { x: 130, y: 80, duration: 9.0, ease: "sine.inOut", repeat: repeatsToFit(0, 9.0), yoyo: true }, 0);
+  tl.to("#tt-glow-b", { x: -140, y: -70, duration: 10.5, ease: "sine.inOut", repeat: repeatsToFit(0.5, 10.5), yoyo: true }, 0.5);
   tl.fromTo("#tt-b1", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 5.22);
   tl.fromTo("#tt-b2", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 10.7);
   tl.fromTo("#tt-b3", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 15.72);
-  /* continuous ambient motion from mount through the table reveal — standalone (NOT on tl) */
-  gsap.to(".basinrow", { y: -12, duration: 2.4, ease: "sine.inOut", repeat: 8, yoyo: true, delay: 0.3 });
+  /* continuous ambient motion from mount through the table reveal */
+  tl.to(".basinrow", { y: -12, duration: 2.4, ease: "sine.inOut", repeat: repeatsToFit(0.3, 2.4), yoyo: true }, 0.3);
   tl.fromTo("#tt-table", { autoAlpha:0, y:30 }, { autoAlpha:1, y:0, duration:0.6 }, 22.0);
-  /* continuous ambient motion so the table never sits frozen between reveals — standalone (NOT on tl) so
-     it never extends tl.duration() past the exit/host window */
-  gsap.to("#tt-table", { y: -10, duration: 2.89, ease: "sine.inOut", repeat: 13, yoyo: true, delay: 22.8 });
+  /* continuous ambient motion so the table never sits frozen between reveals */
+  tl.to("#tt-table", { y: -10, duration: 3.0, ease: "sine.inOut", repeat: repeatsToFit(22.8, 3.0), yoyo: true }, 22.8);
   tl.fromTo("#tt-r1", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 29.64);
   tl.fromTo("#tt-r2", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 39.12);
   tl.fromTo("#tt-r3", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 45.1);
