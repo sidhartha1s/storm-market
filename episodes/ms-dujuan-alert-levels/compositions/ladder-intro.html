@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- ladder-intro.html — B3 "the system Japan built". Old two-tier system (Recommendation / Instruction)
+     fades out, replaced by the new 5-level ladder (built once here; levels 1-2 land highlighted, 3-5 sit
+     dimmed as a teaser for B4-B8). Cues word-synced from audio/b3-s1.words.json (segment-abs minus this
+     comp's mount at episode-abs 119.673). Mount: track 2, host start = episode-abs 119.673, duration 54.0
+     (B3 window is 60.0s; a 6.0s TBS lead-in b-roll plays before this comp mounts). -->
+<template>
+<style>
+  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
+  .eyebrow { position:absolute; left:0; right:0; top:96px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
+    font-size:22px; letter-spacing:6px; color:#d8a13a; }
+  .old { position:absolute; left:50%; top:220px; transform:translateX(-50%); width:760px; box-sizing:border-box;
+    padding:30px 40px; text-align:center; background:rgba(10,16,24,0.55); border:1px solid rgba(255,255,255,0.14);
+    border-radius:24px; }
+  .old .tag { font-family:'Arial Black',Arial,sans-serif; font-size:20px; letter-spacing:4px; color:#8fb4d8; }
+  .old .r { margin-top:16px; font-family:'AbrilFig',Georgia,serif; font-size:40px; color:#c8d3e0; }
+  .arrow { position:absolute; left:50%; top:520px; transform:translateX(-50%); font-family:'AbrilFig',Georgia,serif;
+    font-size:64px; color:#d8a13a; }
+  .new { position:absolute; left:50%; top:150px; transform:translateX(-50%); width:1080px; box-sizing:border-box; }
+  .newhead { text-align:center; font-family:'AbrilFig',Georgia,serif; font-size:58px; color:#f4f0e8; }
+  .newsub { text-align:center; margin-top:8px; font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:3px; color:#d0121f; }
+  .rows { margin-top:36px; }
+  .row { display:flex; align-items:center; gap:24px; margin-top:14px; padding:16px 30px; border-radius:14px;
+    background:rgba(10,16,24,0.5); border:1px solid rgba(255,255,255,0.12); }
+  .row.dim { opacity:0.32; }
+  .row .n { font-family:'AbrilFig',Georgia,serif; font-size:54px; color:#d0121f; flex:0 0 60px; }
+  .row .t { font-family:'Arial Black',Arial,sans-serif; font-size:28px; }
+  .teaser { position:absolute; left:50%; bottom:150px; transform:translateX(-50%); font-family:'Arial Black',Arial,sans-serif;
+    font-size:24px; letter-spacing:2px; color:#f4b8bc; background:rgba(208,18,31,0.18); border-left:4px solid #d0121f;
+    padding:12px 26px; border-radius:10px; }
+  .srccred { position:absolute; left:0; right:0; bottom:80px; text-align:center; font-size:19px; color:rgba(220,228,236,0.7); }
+</style>
+<div id="root" data-composition-id="ladder-intro" data-width="1920" data-height="1080">
+  <div class="eyebrow" id="li-eye">JAPAN'S EVACUATION SYSTEM</div>
+  <div class="old" id="li-old">
+    <div class="tag">RETIRED, MAY 2021</div>
+    <div class="r" id="li-old-r1">Recommendation</div>
+    <div class="r" id="li-old-r2">Instruction (Emergency)</div>
+  </div>
+  <div class="arrow" id="li-arrow" style="visibility:hidden">&darr;</div>
+  <div class="new" id="li-new" style="visibility:hidden">
+    <div class="newhead">5-LEVEL ALERT LADDER</div>
+    <div class="newsub">EFFECTIVE 20 MAY 2021</div>
+    <div class="rows">
+      <div class="row" id="li-r1"><div class="n">1</div><div class="t">RISING RISK</div></div>
+      <div class="row" id="li-r2"><div class="n">2</div><div class="t">ADVISORY ISSUED (JMA)</div></div>
+      <div class="row dim" id="li-r3"><div class="n">3</div><div class="t">EVACUATION OF THE ELDERLY, ETC.</div></div>
+      <div class="row dim" id="li-r4"><div class="n">4</div><div class="t">EVACUATION INSTRUCTION</div></div>
+      <div class="row dim" id="li-r5"><div class="n">5</div><div class="t">EMERGENCY SAFETY MEASURES</div></div>
+    </div>
+  </div>
+  <div class="teaser" id="li-teaser" style="visibility:hidden">LEVELS 3-5: NEXT</div>
+  <div class="srccred" id="li-cred">SOURCE: CABINET OFFICE, GOVERNMENT OF JAPAN &middot; 2021</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const HOST_WINDOW = 54.0; // this episode's ladder-intro mount: 119.673-173.673
+  function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
+  tl.set(["#li-old-r1","#li-old-r2","#li-r1","#li-r2","#li-r3","#li-r4","#li-r5","#li-teaser"], { autoAlpha: 0 }, 0);
+  tl.set(["#li-arrow","#li-new","#li-teaser"], { visibility: "hidden", autoAlpha: 0 }, 0);
+  tl.fromTo("#li-eye", { autoAlpha:0, y:-16 }, { autoAlpha:1, y:0, duration:0.5 }, 0);
+  tl.fromTo("#li-old", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.5 }, 0.3);
+  tl.fromTo("#li-old-r1", { autoAlpha:0 }, { autoAlpha:1, duration:0.35 }, 3.46);
+  tl.fromTo("#li-old-r2", { autoAlpha:0 }, { autoAlpha:1, duration:0.35 }, 5.34);
+  /* continuous ambient motion so the old card never sits frozen while it holds */
+  tl.to("#li-old", { y: -6, duration: 2.6, ease: "sine.inOut", repeat: repeatsToFit(0.3, 2.6), yoyo: true }, 0.3);
+  /* retire the old system, reveal the new ladder */
+  tl.to("#li-old", { autoAlpha:0, y:-30, duration:0.5, ease:"power2.in" }, 13.98);
+  tl.set("#li-arrow", { visibility: "visible" }, 14.3);
+  tl.fromTo("#li-arrow", { autoAlpha:0, y:-10 }, { autoAlpha:1, y:10, duration:0.9, ease:"sine.inOut", repeat: 1, yoyo: true }, 14.3);
+  tl.to("#li-arrow", { autoAlpha:0, duration:0.3 }, 16.4);
+  tl.set("#li-new", { visibility: "visible" }, 16.6);
+  tl.fromTo("#li-new", { autoAlpha:0, scale:0.95 }, { autoAlpha:1, scale:1, duration:0.6, ease:"power3.out" }, 16.6);
+  tl.fromTo("#li-r1", { autoAlpha:0, x:-30 }, { autoAlpha:1, x:0, duration:0.4 }, 28.14);
+  tl.fromTo("#li-r2", { autoAlpha:0, x:-30 }, { autoAlpha:1, x:0, duration:0.4 }, 32.12);
+  tl.to(["#li-r3","#li-r4","#li-r5"], { autoAlpha:0.32, duration:0.4 }, 32.6);
+  tl.set("#li-teaser", { visibility: "visible" }, 49.2);
+  tl.fromTo("#li-teaser", { autoAlpha:0, y:14 }, { autoAlpha:1, y:0, duration:0.4 }, 49.52);
+  /* continuous ambient motion on the new ladder so it never sits frozen for its long hold */
+  tl.to("#li-new", { y: -6, duration: 2.9, ease: "sine.inOut", repeat: repeatsToFit(18.0, 2.9), yoyo: true }, 18.0);
+  tl.to(["#li-new","#li-teaser","#li-cred"], { autoAlpha:0, duration:0.5 }, 53.4);
+  window.__timelines["ladder-intro"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
