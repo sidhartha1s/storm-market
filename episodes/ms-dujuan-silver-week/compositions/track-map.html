@@ -374,7 +374,7 @@ window.__timelines = window.__timelines || {};
   jtProj.forEach((_, i) => tl.to(jtNodesGroup.children[i], { opacity: 1, duration: 0.25 }, JTWC_START + 1.5 + i * 0.05));
 
   /* blinking LIVE dots (continuous) */
-  tl.to(["#tm-dot-jma", "#tm-dot-jtwc"], { opacity: 0.35, duration: 1.0, yoyo: true, repeat: 300, ease: "sine.inOut" }, 0.9);
+  tl.to(["#tm-dot-jma", "#tm-dot-jtwc"], { opacity: 0.35, duration: 1.0, yoyo: true, repeat: repeatsToFit(0.9, 1.0), ease: "sine.inOut" }, 0.9);
 
   /* Ambient atmosphere drift, real and visible (not a no-op), single literal-duration pass
      covering this host's full mount (7.0-145.0, 138.0s) rather than a repeat count -- the
