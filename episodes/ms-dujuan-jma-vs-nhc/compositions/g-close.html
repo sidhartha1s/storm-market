@@ -16,7 +16,7 @@
   .soft { margin-top:30px; font-family:Georgia,serif; font-style:italic; font-size:30px; color:#c8d3e0; }
   .brand { margin-top:60px; font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:8px; color:#d8a13a; }
 </style>
-<div id="root" data-composition-id="gclose" data-width="1920" data-height="1080">
+<div id="root" data-composition-id="g-close" data-width="1920" data-height="1080">
   <div class="wrap">
     <div class="head" id="gc-head"><span class="red">Two scales.</span> One storm.</div>
     <div class="soft" id="gc-soft">Same wind. Different clock.</div>
@@ -31,7 +31,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#gc-head", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.7, ease:"power3.out" }, 0.2);
   tl.fromTo("#gc-soft", { autoAlpha:0 }, { autoAlpha:1, duration:0.6 }, 1.2);
   tl.fromTo("#gc-brand", { autoAlpha:0 }, { autoAlpha:1, duration:0.6 }, 2.2);
-  window.__timelines["gclose"] = tl;
+  /* slow ambient letter-spacing breathe on the brand wordmark carries the hold to the end of the window */
+  tl.to("#gc-brand", { letterSpacing: "11px", duration: 12.8, ease: "sine.inOut" }, 2.8);
+  window.__timelines["g-close"] = tl;
 })();
 </script>
 </template>
