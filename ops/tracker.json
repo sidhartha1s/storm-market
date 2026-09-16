@@ -429,10 +429,10 @@
       "title": "Japan's Five-Level Evacuation Alert System, Explained for Americans",
       "owner": "director",
       "due": "16 Sep 26",
-      "phase": "assemble",
-      "status": "doing",
-      "note": "index.html being composed",
-      "updated": "17 Sep 26 03:22"
+      "phase": "checks",
+      "status": "todo",
+      "note": "held: CTA at 33% and class-leak gate fix pending owner go on the U1 review",
+      "updated": "17 Sep 26 03:53"
     },
     {
       "slug": "ms-dujuan-us-travelers",
@@ -478,9 +478,9 @@
       "owner": "director",
       "due": "18 Sep 26",
       "phase": "script",
-      "status": "doing",
-      "note": "1,358 words drafted; peak-vs-landfall wording fix in progress (17 Sep)",
-      "updated": "17 Sep 26 03:19"
+      "status": "done",
+      "note": "1,411 words, verified 17 Sep 26",
+      "updated": "17 Sep 26 03:53"
     },
     {
       "slug": "ms-dujuan-closest-pass",
