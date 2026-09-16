@@ -17,8 +17,8 @@
     .head { position: absolute; left: 60px; right: 60px; top: 150px; z-index: 7; text-align: left; }
     .head .eye { display: inline-block; font-family: 'Arial Black', Arial, sans-serif; font-size: 30px; letter-spacing: 6px; color: #fff;
       background: #d0121f; padding: 10px 22px; }
-    .head .wm { display: inline-block; margin-left: 14px; font-family: Georgia, serif; font-style: italic; font-size: 30px; color: #d8a13a;
-      text-shadow: 0 2px 8px #000; }
+    .head .wm { display: inline-block; margin-left: 16px; font-family: 'Arial Black', Arial, sans-serif; font-size: 34px; letter-spacing: 2px; color: #ffd27a;
+      -webkit-text-stroke: 1px rgba(0,0,0,0.7); paint-order: stroke fill; text-shadow: 0 0 16px rgba(0,0,0,1), 0 3px 10px #000; }
     .head .hl { margin-top: 16px; font-family: 'Arial Black', Arial, sans-serif; font-size: 78px; line-height: 1.02; color: #f4f0e8;
       -webkit-text-stroke: 1px rgba(0,0,0,0.6); paint-order: stroke fill; text-shadow: 0 0 22px rgba(0,0,0,1), 0 4px 14px #000; }
 
@@ -39,7 +39,7 @@
     .cap b { color: #ff4a58; font-weight: 900; }
 
     /* chip: one short verdict, bottom-left of the mid zone */
-    .chip { position: absolute; left: 70px; top: 1080px; z-index: 6; font-family: 'Arial Black', Arial, sans-serif; font-size: 38px; letter-spacing: 3px; color: #f4f0e8;
+    .chip { position: absolute; left: 70px; top: 960px; z-index: 6; font-family: 'Arial Black', Arial, sans-serif; font-size: 38px; letter-spacing: 3px; color: #f4f0e8;
       background: rgba(10,16,24,0.66); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
       border: 1px solid rgba(255,255,255,0.14); border-left: 8px solid #d0121f; border-radius: 12px; padding: 16px 28px; }
 
@@ -75,7 +75,7 @@
 
   <!-- ============ TRACK 1 — hand-authored cut list (all clips pre-cropped 1080x1920) ============ -->
   <video id="vx-1-crews" src="media/video/pexels_electricians_repairing_power_lines.mp4" data-start="0.0" data-duration="4.5" data-track-index="1" muted></video>
-  <video id="vx-2-wake" class="bc" src="media/video/news_kauai_wake_up_damage.mp4" data-start="4.5" data-duration="5.1" data-track-index="1" muted></video>
+  <video id="vx-2-surf" class="bc" src="media/video/news_lowell_hits_hawaii.mp4" data-start="4.5" data-duration="5.1" data-track-index="1" muted></video>
   <video id="vx-3-c17" src="media/video/dvids_hickam_airlift_kauai_0912.mp4" data-start="9.6" data-duration="4.7" data-track-index="1" muted></video>
   <video id="vx-4-lightning" src="media/video/pexels_lightning_power_lines.mp4" data-start="14.3" data-duration="3.4" data-track-index="1" muted></video>
   <video id="vx-5-crews2" src="media/video/pexels_electricians_repairing_power_lines.mp4" data-start="17.7" data-duration="4.2" data-track-index="1" data-callback="second use, the crews under the utility's promise" muted></video>
