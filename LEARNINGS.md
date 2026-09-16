@@ -1317,3 +1317,31 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
   `browserGpuMode probe →` line names NVIDIA.
 - Still CPU by design in 0.7.109: ffmpeg frame extraction (~70 s for 48 clips) and audio; no hw-decode switch exists.
 - RAM floor stays 4 GB: the GPU run's capture RSS is ~4 GB vs ~5–6 GB on the iGPU (k2 logs in the 15 Sep session).
+
+## 16 Sep 26 — shorts demo v3: tracked pin on the wrong object, text outside the 9:16 safe zone (owner RCA order)
+Owner on sh-hawaii-lowell-1 v3: "the circle is off … an overcook", "texts mangled/overlapping/out of viewport",
+"you missed on both cases today". Both pins and their labels were removed for v4; the video never ships a pin.
+The RCA is training for the next pin.
+- **Pin 1 (lineman): the ring tracked foliage because the seed box was a guess.** The tracker (OpenCV MIL, then
+  5-frame smoothing, keyframes every 3rd frame baked into gsap) did exactly its job on the box it was given.
+  The box came from a subagent reading a gridded frame and *estimating* pixel coordinates (380,470,230,380); the
+  lineman was at about (782,718). No step compared the box to the picture before 30 s of keyframes were baked.
+  Rule: **a tracking seed is verified visually before tracking** — crop the ROI out of frame 0, and draw the
+  ring on frame 0 AND the last tracked frame of the source, then a subagent answers one yes/no question per
+  image: "is the ring on the <named object>?" Only a yes on both starts the bake. For people and vehicles,
+  seed from a detector (YOLO/HOG person box), not from a coordinate estimate.
+- **Pin 2 (truck): MIL lags on real motion.** On the moving vehicle the ring trailed the object by roughly a third
+  of its width. MIL is a template tracker; it is fine for a slow pan, not a moving subject. For anything that
+  moves, use per-frame detection or a stronger tracker (CSRT/KCF at least), and still run the two-image check.
+- **The labels went off-frame because `overlap_check.mjs` reads static layout.** The label was placed with a
+  gsap `x` tween that carried it past 1080 px at runtime; the static rect was inside. Captions and the close
+  card also sat in the Shorts UI zone (title, buttons, right rail), which no gate modelled.
+  Fix shipped: `scripts/shorts_lint.mjs` (see references/shorts/PLAN.md step 5) measures every visible text
+  element at runtime, 0.25 s steps, against the frame, the safe zone and each other. Proof: on the v3 index.html
+  it reports 18 findings (the off-frame label, 7 captions, the head, the close card); on v4 it passes.
+- **Layout that passed for 9:16:** head at y 250, captions at y 1220, close card at y 1190, quote card at y 560,
+  chips at y 960 sliding in from x −60 (was −500, which the lint flagged as off-frame mid-tween), all with
+  right 180 px so the right rail stays clear.
+- **Preflight trap:** the ffprobe spawn probe measured 0.94 s (gate 0.4 s) on the first launch right after a
+  Chromium-heavy lint run; the same shared binary spawns at 0.14 s warm. Re-measure once on the idle box
+  before touching anything.

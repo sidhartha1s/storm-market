@@ -94,8 +94,14 @@ The existing stack already does everything except the frame size. Composition si
    (phrase captions from words.json cues), `headline-card.html` (S3 static card), `warning-bug.html`
    (S1 top bug, our own "THE WARNING HOUR" mark, never a network chyron), `popfig` reused as is. Every overlay
    start is a words.json cue (the mini rule).
-5. Gates: `lint_timeline.py` exit 0, `blank_scan.mjs`, `audio_levels.py`, `overlap_check.mjs`, then one
-   composition snapshot at 4 points read by a subagent. `sweep_episode.py`'s CTA gate does not apply
+5. Gates: `lint_timeline.py` exit 0, `blank_scan.mjs`, `audio_levels.py`, `overlap_check.mjs`, then
+   **`node scripts/shorts_lint.mjs episodes/<slug>` exit 0 (hard gate, 9:16 only)**: loads the comp in headless
+   Chromium, seeks the timeline every 0.25 s with the section windows emulated, and measures the rendered rect of
+   every visible text element (gsap transforms included) against the frame, the Shorts/Reels UI safe zone (top
+   220 px, bottom 420 px, right rail 150 px below y 900) and every other visible text. It exists because
+   `overlap_check.mjs` reads static layout and passed the v3 Hawaii demo whose tracked label ran off-frame and
+   whose captions sat under the Shorts title/buttons (owner 16 Sep 26). Then one composition snapshot at 4
+   points read by a subagent. `sweep_episode.py`'s CTA gate does not apply
    (`sh-` slugs carry no `epN` prefix, so it is already exempt).
 6. `scripts\render.cmd sh-… full` — a 30 s 1080×1920 comp renders in about a minute on this box (measure on
    the pilot and record here). One heavy job at a time still holds: shorts render between mini renders.

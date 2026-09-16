@@ -18,7 +18,8 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
 - **Shorts lane (planned 15 Sep 26, pilot pending owner go)** — 20–40 s vertical (1080×1920) S1 warning /
   S2 explainer / S3 story-card shorts cut FROM a parent mini or doc, US-senior spec (phrase captions ≥7 % frame
   height, 150–165 wpm, 2–4 s per picture, no Paul CTA, related-video link as the funnel). Plan + competitor scan:
-  `references/shorts/PLAN.md`, `references/shorts/competitors-2026-09-15.md`; weekly scan `scripts/shorts_scan.py`.
+  `references/shorts/PLAN.md`, `references/shorts/competitors-2026-09-15.md`; weekly scan `scripts/shorts_scan.py`;
+  9:16 text gate `node scripts/shorts_lint.mjs episodes/<slug>` (runtime rects vs frame + Shorts UI safe zone, hard gate).
   Slugs `sh-<parent>-<n>`; templates land in `library/shorts/` with the pilot. No skill until ~10 shorts stabilise.
 
 ## Why this niche (validated 2026-07-21, references/)
