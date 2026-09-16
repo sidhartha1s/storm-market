@@ -363,18 +363,29 @@ window.__timelines = window.__timelines || {};
   /* stat card rows land one by one on cue, re-anchored by the host to this episode's own audio/b2-s1.words.json
      word cues (mount start 7.0s subtracted): movement on "north" (59.28s abs), pressure on "998" (65.42s abs),
      wind on "34" (69.44s abs), gusts on "51." (71.94s abs), checkpoint on "12 hours" / TS-threshold (110.92s abs). */
-  const CUES = [
-    ["cue-pressure", "#tm-r-pressure", 58.42, () => tl.to(CV, { pressure: cur.pressure_hPa, duration: 0.9, ease: "power2.out" }, 58.42)],
-    ["cue-wind", "#tm-r-wind", 62.44, () => { tl.to(CV, { wind: cur.wind_mph, duration: 0.9, ease: "power2.out" }, 62.44); tl.to(CV, { windkmh: cur.wind_kmh, duration: 0.9, ease: "power2.out" }, 62.44); }],
-    ["cue-gusts", "#tm-r-gusts", 64.94, () => tl.to(CV, { gusts: cur.gust_mph, duration: 0.9, ease: "power2.out" }, 64.94)],
-    ["cue-movement", "#tm-r-movement", 52.28, () => tl.to(CV, { move: cur.speed_mph, duration: 0.9, ease: "power2.out" }, 52.28)],
-    ["cue-checkpoint", "#tm-r-checkpoint", 103.92, null],
-  ];
-  CUES.forEach(([label, sel, at, extra]) => {
-    tl.addLabel(label, at);
-    tl.fromTo(sel, { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, at);
-    if (extra) extra();
-  });
+  /* Unrolled (not a CUES.forEach over an array) so the static "graphic window fits its timeline"
+     scanner -- a regex over tl.\w+(...) calls that only reads a LITERAL final-argument number --
+     can see every real offset. A loop variable (`at`) is invisible to it; a bare literal isn't.
+     Same 5 word-anchored times as before, re-anchored to audio/b2-s1.words.json cues. */
+  tl.addLabel("cue-pressure", 58.42);
+  tl.fromTo("#tm-r-pressure", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 58.42);
+  tl.to(CV, { pressure: cur.pressure_hPa, duration: 0.9, ease: "power2.out" }, 58.42);
+
+  tl.addLabel("cue-wind", 62.44);
+  tl.fromTo("#tm-r-wind", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 62.44);
+  tl.to(CV, { wind: cur.wind_mph, duration: 0.9, ease: "power2.out" }, 62.44);
+  tl.to(CV, { windkmh: cur.wind_kmh, duration: 0.9, ease: "power2.out" }, 62.44);
+
+  tl.addLabel("cue-gusts", 64.94);
+  tl.fromTo("#tm-r-gusts", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 64.94);
+  tl.to(CV, { gusts: cur.gust_mph, duration: 0.9, ease: "power2.out" }, 64.94);
+
+  tl.addLabel("cue-movement", 52.28);
+  tl.fromTo("#tm-r-movement", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 52.28);
+  tl.to(CV, { move: cur.speed_mph, duration: 0.9, ease: "power2.out" }, 52.28);
+
+  tl.addLabel("cue-checkpoint", 103.92);
+  tl.fromTo("#tm-r-checkpoint", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 103.92);
 
   window.__timelines["track-map"] = tl;
 })();
