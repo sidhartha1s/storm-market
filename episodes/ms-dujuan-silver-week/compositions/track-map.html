@@ -314,18 +314,31 @@ window.__timelines = window.__timelines || {};
   /* ---------- timeline ---------- */
   const tl = gsap.timeline({ paused: true, onUpdate: upd });
 
+  /* Ambient/idle tweens below use a BOUNDED repeat count, not repeat:300. repeat:300 on the
+     6s sweep-rotation tween alone produced a real GSAP tl.duration() of 1806.8s (301 laps),
+     more than 13x any host's mount window, flagged by blank_scan.mjs. repeatsToFit() sizes
+     each repeat count so its own tween ends at or just under HOST_WINDOW, so the comp's real
+     tl.duration() reads ~HOST_WINDOW (the #tm-ambient drift added below is the one tween
+     sized to land exactly on it). RE-POINTING: a future host mounting this file for a
+     different window length only needs to change HOST_WINDOW here -- same category of edit
+     as DRAW_START / JTWC_START / the cue times below. Never repeat:-1 (see file header: an
+     infinite tween runs on GSAP's real-time ticker, not this paused/seeked timeline's
+     frame-by-frame playhead, so it would not stay in sync with headless frame capture). */
+  const HOST_WINDOW = 138.0; // this episode's track-map mount: 7.0-145.0
+  function repeatsToFit(start, dur) { return Math.max(0, Math.floor((HOST_WINDOW - start) / dur) - 1); }
+
   tl.to(["#tm-graticule", "#tm-land", "#tm-guam", "#tm-past"], { opacity: 1, duration: 0.5, ease: "power2.out" }, 0);
   tl.fromTo("#tm-badge", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.1);
   tl.fromTo("#tm-chip-jma", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.2);
   tl.fromTo("#tm-footer", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 0.6);
   tl.fromTo("#tm-card", { autoAlpha: 0, x: -760 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.5);
 
-  /* current-position eye pops in, then pulses forever (continuous motion) */
+  /* current-position eye pops in, then pulses for the rest of the mount */
   tl.fromTo("#tm-eye-core", { attr: { r: 0 }, opacity: 0 }, { attr: { r: 11 }, opacity: 1, duration: 0.4, ease: "power4.out" }, 0.3);
   tl.to("#tm-eye-ring", { attr: { r: 14 }, opacity: 0.95, duration: 0.01 }, 0.3);
-  tl.to("#tm-eye-ring", { attr: { r: 46 }, opacity: 0, duration: 1.3, ease: "power2.out", repeat: 300 }, 0.75);
+  tl.to("#tm-eye-ring", { attr: { r: 46 }, opacity: 0, duration: 1.3, ease: "power2.out", repeat: repeatsToFit(0.75, 1.3) }, 0.75);
   tl.to("#tm-sweep", { opacity: 1, duration: 0.4 }, 0.8);
-  tl.to("#tm-sweep", { rotation: 360, duration: 6, ease: "none", repeat: 300, transformOrigin: `${cx}px ${cy}px` }, 0.8);
+  tl.to("#tm-sweep", { rotation: 360, duration: 6, ease: "none", repeat: repeatsToFit(0.8, 6), transformOrigin: `${cx}px ${cy}px` }, 0.8);
 
   /* JMA forecast: segments draw back-to-back over ~2.5s total (length-proportional), nodes + probability circles land as each segment finishes.
      DRAW_START re-anchored by the host (ms-dujuan-silver-week, mounted at 7.0s) to the word "forecast" in
