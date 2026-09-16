@@ -32,7 +32,7 @@
   .qstrip .q { font-family:Georgia,serif; font-style:italic; font-size:30px; color:#f2f5f8; line-height:1.35; }
   .qstrip .attr { margin-top:14px; font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:3px; color:#d8a13a; }
 </style>
-<div id="root" data-composition-id="jmaquote" data-width="1920" data-height="1080">
+<div id="root" data-composition-id="jma-quote" data-width="1920" data-height="1080">
   <div class="card" id="jq-card">
     <div class="eye">JMA'S TEN-MINUTE SCALE</div>
     <div class="row" id="jq-r1"><div class="lab">TROPICAL STORM</div><div class="rng">38&ndash;55 MPH</div></div>
@@ -54,6 +54,8 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   tl.set(["#jq-r1","#jq-r2","#jq-thresh","#jq-r3","#jq-r4","#jq-r5","#jq-chip","#jq-quote"], { autoAlpha: 0 }, 0);
   tl.fromTo("#jq-card", { x:-900, autoAlpha:0 }, { x:0, autoAlpha:1, duration:0.6, ease:"power3.out" }, 0);
+  /* continuous ambient motion across the whole window so the ladder card never sits frozen between reveals */
+  tl.to("#jq-card", { y: -5, duration: 2.8, ease: "sine.inOut", repeat: 17, yoyo: true }, 0.7);
   tl.fromTo("#jq-chip", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 0.4);
   tl.fromTo("#jq-r1", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 5.62);
   tl.fromTo("#jq-r2", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 9.18);
@@ -63,7 +65,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#jq-r5", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 35.76);
   tl.fromTo("#jq-quote", { autoAlpha:0, y:30 }, { autoAlpha:1, y:0, duration:0.6, ease:"power3.out" }, 42.9);
   tl.to(["#jq-card","#jq-chip","#jq-quote"], { autoAlpha:0, duration:0.5, ease:"power3.in" }, 50.8);
-  window.__timelines["jmaquote"] = tl;
+  window.__timelines["jma-quote"] = tl;
 })();
 </script>
 </template>
