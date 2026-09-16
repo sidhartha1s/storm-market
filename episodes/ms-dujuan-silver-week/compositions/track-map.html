@@ -239,7 +239,7 @@ window.__timelines = window.__timelines || {};
   const curGroup = document.getElementById("tm-current");
   const eyeCore = curGroup.appendChild(el("circle", { id: "tm-eye-core", cx, cy, r: 0, fill: "#f4f0e8", filter: "url(#tm-glow)" }));
   const eyeRing = curGroup.appendChild(el("circle", { id: "tm-eye-ring", cx, cy, r: 14, fill: "none", stroke: "#ffd27a", "stroke-width": 3, opacity: 0 }));
-  gsap.set(eyeCore, { attr: { r: 0 } });
+  gsap.set(eyeCore, { attr: { r: 0 }, opacity: 0 });
   gsap.set(eyeRing, { attr: { r: 14 }, opacity: 0 });
 
   /* slow radar-sweep line, continuous motion so the frame is never static */
