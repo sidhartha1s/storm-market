@@ -1345,3 +1345,12 @@ The RCA is training for the next pin.
 - **Preflight trap:** the ffprobe spawn probe measured 0.94 s (gate 0.4 s) on the first launch right after a
   Chromium-heavy lint run; the same shared binary spawns at 0.14 s warm. Re-measure once on the idle box
   before touching anything.
+
+## 16 Sep 26 — hyperframes 0.8.41 full render on this box: no visible windows, clean
+Owner asked for the latest hyperframes on the shorts final instead of the 0.7.109 pin. Same flags as
+render.cmd, `npx hyperframes@0.8.41`, sh-hawaii-lowell-1 (29.4 s, 1080×1920, 5 clips, 3 workers): rendered in
+1m 18.7s, GPU probe NVIDIA, 0 black / 0 silent stretches, 4-frame subagent read identical to the 0.7.109 draft,
+master -14.01 LUFS. Owner watched it: "didnt start opening 200 CMD windows … its smooth", so the 0.8.x
+visible-terminal-tab problem that froze the pin is gone on this box at 0.8.41. Not a pin bump by itself: run
+`scripts/pin_ritual.py` against 0.8.41 (the demo A/B on a 48-clip comp is the test that matters, a 5-clip
+short is not) and bump on identical metrics.
