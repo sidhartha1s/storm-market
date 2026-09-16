@@ -394,9 +394,9 @@
       "owner": "director",
       "due": "16 Sep 26",
       "phase": "preview",
-      "status": "doing",
-      "note": "preview v3 rendered (tracked pins + SFX hooks), owner eyeball pending",
-      "updated": "16 Sep 26 11:04"
+      "status": "done",
+      "note": "preview v4 rendered 16 Sep 26: pins removed, text moved into the 9:16 safe zone, shorts_lint gate PASS; owner eyeball pending",
+      "updated": "16 Sep 26 14:56"
     }
   ]
 }
