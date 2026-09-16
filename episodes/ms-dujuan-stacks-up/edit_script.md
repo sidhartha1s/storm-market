@@ -12,8 +12,8 @@
 > Homograph scan run on the full script: every past-tense "read" (central pressure read...) rewritten to "stood
 > at" to avoid the read/read ("reed"/"red") TTS trap. `references/humanise-rules.md` applied line by line — no
 > banned openers, no metaphors, no rhetorical questions, no em dashes, no reveal-flip or anaphora-run sentence
-> shapes, varied sentence length, active voice. Target >=1,350 words; measured 1,358 words at this draft (see
-> report). Paul's CTA mounted at the end of B3, the natural pause right after the quote card, ~33% into the runtime.
+> shapes, varied sentence length, active voice. Target >=1,350 words; measured 1,411 words at this draft (see
+> report). Paul's CTA mounted at the end of B3, the natural pause right after the quote card, ~31% into the runtime.
 
 ## Spec
 - Slug `ms-dujuan-stacks-up`. Voice: pocket-TTS Pharaoh -> atempo 1.10 -> transcribe the sped wav -> cues from that
@@ -28,8 +28,9 @@
   Pixabay Tokyo/Osaka/Shinkansen b-roll. No storm-chaser footage.
 - MG: opening glassmorphic stat-card push (B1); split JMA/JTWC data panel (B2); four-checkpoint forecast track
   map + quote card (B3); **the benchmark table (B4) — the episode's core graphic**, nine rows building in
-  narration order, columns STORM · YEAR · MIN PRESSURE · PEAK WIND (MPH) · WHAT IT BROKE, Typhoon No. 25's own
-  row appended last in an unresolved amber state (forecast, not realized); Ampil/Nanmadol two-card contrast (B5);
+  narration order, columns STORM · YEAR · PEAK · JMA 10-MIN (min pressure hPa / peak wind mph, measured over
+  open water, NOT at landfall) · WHAT IT BROKE, Typhoon No. 25's own row appended last in an unresolved amber
+  state (forecast, not realized); Ampil/Nanmadol two-card contrast (B5);
   Silver Week + Asian Games calendar chips (B6); tracking/benchmark recap card (B7).
 - Close: B7 ends on both open threads (track, strength) still unresolved; B8 is the single soft comment +
   subscribe line, tied to the real trigger event (Japan naming the storm).
@@ -120,9 +121,9 @@ Visual: split data panel, JMA card (998 hPa · 34 MPH · GUSTS 51 MPH) beside JT
 
 Visual: four-checkpoint track map MG, pins land on cue: "+12H — 40 MPH" · "FRI — 985 hPa / 56 MPH" (on-screen label "OGASAWARA ISLANDS," not spoken) · "SUN — 975 hPa / 67 MPH" ("SOUTH OF JAPAN") · "MON — 975 hPa / 67–89 MPH GUST" ("EAST OF JAPAN"). Quote card mounts on the last line: **"East of Japan"** — Japan Meteorological Agency, forecast valid 21 September, issued 16 September, 19:10 JST. Paul circle hidden during the card.
 
-*(Paul's ebook CTA mounted here: 0.5 s dip in, 0.5 s out, film layer off. Story break, approx 2:48, ~33% in, right after the quote card, ahead of the benchmark table.)*
+*(Paul's ebook CTA mounted here: 0.5 s dip in, 0.5 s out, film layer off. Story break, approx 2:48, ~31% in, right after the quote card, ahead of the benchmark table.)*
 
-## B4 — TEN YEARS, EIGHT STORMS: THE BENCHMARK (2:48–5:49)
+## B4 — TEN YEARS, EIGHT STORMS: THE BENCHMARK (2:48–6:11)
 
 ### B4-S1 — narration
 > Line up every typhoon that has actually hurt Japan since 2016, and a pattern appears. These are peak numbers, measured over open water before landfall, not the weaker numbers each storm carried when it actually came ashore. Typhoon Lionrock made landfall on Japan's northern Pacific coast in 2016. It was the first typhoon on record to hit that stretch of coastline since Japan started keeping typhoon records in 1951. At its peak, central pressure fell to nine hundred forty hectopascals, sustained winds one hundred five miles per hour. Nine people drowned inside a single nursing home in one coastal town. Twenty two people died across Japan. Typhoon Lan came ashore on the central Japan coast in 2017, far weaker than its peak. At its strongest, over open water, it reached nine hundred fifteen hectopascals, sustained winds one hundred fifteen miles per hour. Three hundred eighty one thousand people evacuated. Seventeen died. Two typhoons hit Japan within a month of each other in 2018. Each one peaked at nine hundred fifteen hectopascals, sustained winds one hundred twenty miles per hour, before weakening toward landfall. Jebi made landfall near Kobe on September fourth, the strongest typhoon to hit Japan since 1993. It broke wind records at one hundred weather stations, flooded a major Osaka airport, and set a new storm surge record in Osaka. Fourteen people died. Trami followed on September thirtieth, cancelling more than a thousand flights and evacuating over three hundred eighty thousand people. Four died. Faxai hit the Tokyo region about a month before Hagibis that same year. At its peak, central pressure fell to nine hundred fifty five hectopascals, sustained winds one hundred miles per hour. It left nine hundred thirty four thousand households without power. Three people died. Hagibis followed, peaking at the deepest pressure of that pair, nine hundred fifteen hectopascals, one hundred twenty miles per hour. It killed one hundred thirty nine people and caused seventeen point three billion dollars in damage, the costliest typhoon in Japanese history. Four of those eight storms peaked at the exact same central pressure, nine hundred fifteen hectopascals, across three separate years. Nanmadol struck southern Japan's Kyushu island in 2022. At its peak, central pressure fell to nine hundred ten hectopascals, sustained winds one hundred twenty miles per hour. That is the deepest peak pressure on this entire list, tied with three other storms for the strongest peak wind. Four people died there, far fewer than Hagibis or Lionrock, because it crossed a less crowded stretch of coastline. Ampil never made landfall at all in 2024. Its own peak, offshore, reached nine hundred fifty hectopascals, one hundred miles per hour, and its closest approach to Tokyo stayed offshore. Four people were injured across the entire Tokyo region. Typhoon No. 25's own longest forecast right now has its peak at nine hundred seventy five hectopascals, sixty seven miles per hour. Every one of those eight storms peaked harder than that, at a lower pressure and a higher wind speed. Even so, the damage each one caused varied wildly. Combined, those eight storms are responsible for more than two hundred deaths and over fifty billion dollars in damage. [f1, f6, f7, f8, f9, f10, f11, f12, f13]
@@ -138,28 +139,28 @@ Visual: **the benchmark table, the episode's core graphic** — nine rows build 
 8. AMPIL · 2024 · 950 hPa · 100 MPH · "NEVER MADE LANDFALL · 404,000 EVACUATED ANYWAY"
 9. **TYPHOON No. 25 · 2026 · 975 hPa FORECAST · 67 MPH FORECAST · "STILL FORECAST, NOT YET REAL"** — row renders in amber/unresolved styling, sitting visibly below (weaker than) every row above it on both the pressure and wind columns.
 
-## B5 — WHAT PRESSURE AND WIND DON'T MEASURE (5:49–6:35)
+## B5 — WHAT PRESSURE AND WIND DON'T MEASURE (6:11–6:57)
 
 ### B5-S1 — narration
 > Nanmadol was the deepest storm on that list and killed the fewest people. Ampil never touched land and still triggered evacuation orders for more than four hundred thousand people and grounded around six hundred flights. Central pressure and wind speed measure the storm itself, not what stands underneath its track. Timing, angle, and the ground underneath the track decide how much damage a storm causes. American hurricane seasons show the same pattern. A category number describes wind, not who evacuates or what floods. Typhoon No. 25's forecast track currently runs offshore, east of Japan, the same shape as Ampil's track. Its forecast pressure is even milder than Ampil's was. The difference this time sits in the calendar underneath it. [f12, f13]
 
 Visual: two-card contrast MG. Left card: "NANMADOL — 910 hPa, DEEPEST ON THE LIST — 4 DEAD." Right card: "AMPIL — NEVER MADE LANDFALL — 404,000 EVACUATED ANYWAY." Center caption card: "PRESSURE + WIND ≠ DAMAGE. TIMING + ANGLE + WHAT'S UNDERNEATH DO." Track map returns, showing Typhoon No. 25's offshore forecast line traced directly over Ampil's old track for comparison.
 
-## B6 — THE CALENDAR THIS TRACK RUNS THROUGH (6:35–7:43)
+## B6 — THE CALENDAR THIS TRACK RUNS THROUGH (6:57–8:05)
 
 ### B6-S1 — narration
 > Saturday opens Japan's first full five day Silver Week in eleven years, running through next Wednesday. The last one like it was 2015. The next isn't until 2032. Japan Railways already made every seat on its flagship bullet train reserved, from Friday through next Wednesday. That retires the normal unreserved cars for the whole week. That decision was made before this storm existed. The closest comparison for an American viewer is a storm approaching over Thanksgiving week. Every seat is already sold, and every plan is already made. On the same Saturday, an international multi sport event opens in Nagoya. Athletes from more than forty six nations are already competing there this week. Part of the host city's athletes' village floats on a cruise ship in the harbor. None of Japan's published tracks for this storm currently reach Nagoya. Millions of people are already committed to trains, flights, and hotel bookings for this holiday. They are now watching a forecast that updates by the hour, for a storm that is currently the mildest one on this list. [f4, f5]
 
 Visual: Silver Week calendar MG, "SAT 19 – WED 23 SEP · FIRST FULL 5-DAY IN 11 YEARS"; chips "LAST: 2015 — NEXT: 2032" · "NOZOMI SHINKANSEN — FULLY RESERVED 18–23 SEP." Asian Games chip: "ASIAN GAMES — NAGOYA — OPENS 19 SEP — 46+ NATIONS" (on-screen only: Costa Serena). Return shot: the benchmark table's amber Typhoon No. 25 row overlaid on the Silver Week calendar strip, visually pairing "weakest on the list" against "busiest week in 11 years."
 
-## B7 — WHAT'S STILL OPEN TONIGHT (7:43–8:21)
+## B7 — WHAT'S STILL OPEN TONIGHT (8:05–8:43)
 
 ### B7-S1 — narration
 > Two things remain genuinely open tonight. The first is the track. Japan's own forecast ends offshore, east of Japan. A turn back toward the mainland is still possible beyond where that forecast currently reaches. The second is the storm's own strength. Every number tonight comes from a system that is not yet a typhoon. Japan's own scale carries three grades above typhoon that this forecast does not yet reach. If this storm intensifies past what tonight's forecast shows, it leaves the weakest spot on this list within a day. Japan's weather agency updates this forecast again within hours. [f1, f3]
 
 Visual: tracking card MG, two rows: "TRACK — STILL OPEN" / "STRENGTH — STILL OPEN." Benchmark table reappears in miniature, Typhoon No. 25's amber row still unresolved at the bottom. Return to the live Himawari loop of the depression near Guam.
 
-## B8 — CLOSE (8:21–8:33)
+## B8 — CLOSE (8:43–8:55)
 
 ### B8-S1 — narration
 > Tell me in the comments which of these eight storms you remember living through, or watching from here. Subscribe, and the next update lands the moment Japan gives this storm its name.
