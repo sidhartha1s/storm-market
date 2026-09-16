@@ -115,6 +115,7 @@ cur = re.search(r"WARNING POSITION:\s*\n\s*(\d{6})Z --- NEAR ([\d.]+)N ([\d.]+)E
 cur_time, cur_lat, cur_lon = cur.group(1), float(cur.group(2)), float(cur.group(3))
 cur_wind = re.search(r"PRESENT WIND DISTRIBUTION:\s*\n\s*MAX SUSTAINED WINDS - (\d+) KT, GUSTS (\d+) KT", txt)
 mcp = re.search(r"MINIMUM CENTRAL PRESSURE AT \d+Z IS (\d+) MB", txt)
+mv = re.search(r"MOVEMENT PAST SIX HOURS - (\d+) DEGREES AT (\d+) KTS", txt)
 
 points.append({
     "agency": "JTWC", "kind": "current",
