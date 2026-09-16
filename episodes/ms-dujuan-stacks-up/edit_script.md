@@ -134,7 +134,7 @@ Visual: **the benchmark table, the episode's core graphic** — nine rows build 
 4. TRAMI · 2018 · 915 hPa · 120 MPH · "1,000+ FLIGHTS CANCELLED · 4 DEAD" (on-screen only: Tanabe, Wakayama)
 5. FAXAI · 2019 · 955 hPa · 100 MPH · "934,000 HOUSEHOLDS WITHOUT POWER · 3 DEAD"
 6. HAGIBIS · 2019 · 915 hPa · 120 MPH · "$17.3B — COSTLIEST TYPHOON IN JAPANESE HISTORY · 139 DEAD"
-7. NANMADOL · 2022 · 910 hPa · 120 MPH · "DEEPEST + STRONGEST ON THIS LIST · 4 DEAD" (on-screen only: Kagoshima, Kyushu; Miyazaki rain)
+7. NANMADOL · 2022 · 910 hPa · 120 MPH · "DEEPEST ON THE LIST, TIED FOR STRONGEST WIND · 4 DEAD" (on-screen only: Kagoshima, Kyushu; Miyazaki rain)
 8. AMPIL · 2024 · 950 hPa · 100 MPH · "NEVER MADE LANDFALL · 404,000 EVACUATED ANYWAY"
 9. **TYPHOON No. 25 · 2026 · 975 hPa FORECAST · 67 MPH FORECAST · "STILL FORECAST, NOT YET REAL"** — row renders in amber/unresolved styling, sitting visibly below (weaker than) every row above it on both the pressure and wind columns.
 
