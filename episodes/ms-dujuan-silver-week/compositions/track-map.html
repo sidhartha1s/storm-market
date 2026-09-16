@@ -218,11 +218,14 @@ window.__timelines = window.__timelines || {};
       const rad = pt.probability_circle_radius_km ? pt.probability_circle_radius_km * PX_PER_KM : 0;
       const pc = fcGroup.appendChild(el("circle", { cx: x, cy: y, r: 0, fill: CAT_COLOR[pt.category], "fill-opacity": 0.08, stroke: CAT_COLOR[pt.category], "stroke-opacity": 0.4, "stroke-dasharray": "4 4" }));
       pc.dataset.finalR = rad;
-      gsap.set(pc, { attr: { r: 0 } }); /* same from-value gotcha as strokeDashoffset above -- pin it via GSAP's own writer */
+      /* Chromium renders a stroked r=0 circle as a visible sub-pixel dot even though DOM/
+         computedStyle both correctly report r:0 (confirmed via elementsFromPoint + pixel probe
+         at t=0) -- gate real visibility with opacity, r is just the "pop" motion on top. */
+      gsap.set(pc, { attr: { r: 0 }, opacity: 0 });
       pcEls.push(pc);
     }
     const node = fcGroup.appendChild(el("circle", { cx: x, cy: y, r: 0, fill: i === 0 ? "#f4f0e8" : (CAT_COLOR[pt.category] || "#8a94a0"), stroke: "#050b12", "stroke-width": 2 }));
-    gsap.set(node, { attr: { r: 0 } });
+    gsap.set(node, { attr: { r: 0 }, opacity: 0 });
     nodeEls.push(node);
     if (i > 0) {
       const lab = fcGroup.appendChild(el("text", { class: "fn-lab", x: x + 12, y: y - 10, fill: CAT_COLOR[pt.category] || "#f2f5f8", opacity: 0 }));
