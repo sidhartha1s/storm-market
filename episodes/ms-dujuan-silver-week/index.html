@@ -134,7 +134,9 @@
   <video id="vx-b3-6-uhb" class="bc" src="media/video/bc-uhb-hokkaido.mp4" data-start="185.591" data-duration="5.5" data-track-index="1" muted></video>
   <section class="clip still-wrap" id="c-b3-7-wv13" data-start="191.091" data-duration="5.264" data-track-index="1"><img id="kb-b3-7-wv13" src="media/image/img-worldview-13.jpg" alt=""></section>
 
-  <!-- CTA dips (own track so they paint above everything under them) -->
+  <!-- CTA dips: track-1 blackout fills the actual gap; track-9 copy paints above the CTA video for the dip -->
+  <section class="clip blackout" id="bo-cta-in-t1" data-start="196.355" data-duration="0.5" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-cta-out-t1" data-start="211.994" data-duration="0.5" data-track-index="1"></section>
   <section class="clip blackout" id="bo-cta-in" data-start="196.355" data-duration="0.5" data-track-index="9"></section>
   <section class="clip blackout" id="bo-cta-out" data-start="211.994" data-duration="0.5" data-track-index="9"></section>
 
@@ -339,8 +341,142 @@ window.__timelines = window.__timelines || {};
 
   /* ---- presenter talk-sync (loop-a: B2+B3, loop-b: B4-B8; spans merged from this episode's own words.json, gap<0.35s) ---- */
   tl.set(["#pip-talk-a", "#pip-talk-b"], { autoAlpha: 0 }, 0);
-  __TALKSYNC_A__
-  __TALKSYNC_B__
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 52.52); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 54.34);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 54.88); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 55.60);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 55.98); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 57.96);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 58.72); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 61.00);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 61.56); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 63.72);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 64.18); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 67.98);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 68.50); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 72.24);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 73.06); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 79.96);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 80.44); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 84.18);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 84.56); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 85.70);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 86.32); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 88.78);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 89.38); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 91.96);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 92.84); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 95.56);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 95.94); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 97.26);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 98.06); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 102.62);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 103.14); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 104.98);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 105.70); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 111.72);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 112.38); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 113.02);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 113.42); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 116.28);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 116.74); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 120.22);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 120.92); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 122.78);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 123.32); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 125.34);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 125.80); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 127.98);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 128.54); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 131.50);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 132.50); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 134.64);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 135.02); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 139.32);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 140.20); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 142.86);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 143.50); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 144.58);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 145.59); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 150.37);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 151.23); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 152.19);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 152.61); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 157.19);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 157.85); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 158.89);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 159.39); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 162.63);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 163.25); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 165.81);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 166.57); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 170.11);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 170.69); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 171.79);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 172.15); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 178.19);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 178.59); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 180.95);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 181.71); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 183.85);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 184.57); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 185.47);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 186.01); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 187.39);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 188.01); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 190.41);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 190.97); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 191.89);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 192.75); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 194.50);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 212.49); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 214.23);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 214.77); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 216.15);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 216.63); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 217.87);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 219.07); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 223.55);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 224.15); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 228.31);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 228.85); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 234.63);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 235.31); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 238.31);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 238.77); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 245.17);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 245.57); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 248.09);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 248.81); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 252.15);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 252.61); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 253.75);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 254.11); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 254.53);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 255.11); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 256.45);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 256.89); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 257.09);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 257.69); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 258.27);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 259.31); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 263.69);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 264.47); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 268.09);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 268.45); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 269.57);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 270.15); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 271.99);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 272.87); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 274.83);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 275.47); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 280.57);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 281.07); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 291.53);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 292.33); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 297.81);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 298.45); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 301.13);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 301.79); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 305.81);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 306.23); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 308.37);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 309.03); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 313.17);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 313.67); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 314.51);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 315.07); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 316.69);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 317.15); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 320.01);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 320.71); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 324.39);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 324.85); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 326.77);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 327.37); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 328.81);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 329.27); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 330.79);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 331.39); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 335.59);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 336.21); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 343.63);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 344.64); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 345.52);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 346.22); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 348.08);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 348.58); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 349.72);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 350.30); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 353.80);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 354.46); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 354.96);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 355.32); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 357.96);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 358.64); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 359.74);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 360.44); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 365.58);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 366.26); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 375.12);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 375.48); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 376.74);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 377.24); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 380.20);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 380.62); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 384.10);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 384.60); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 388.44);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 389.02); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 399.94);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 400.58); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 403.98);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 404.88); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 405.44);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 406.06); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 411.78);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 412.48); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 419.82);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 420.30); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 421.96);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 422.98); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 426.18);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 426.74); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 428.06);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 428.84); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 431.36);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 431.86); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 434.50);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 434.94); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 437.72);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 438.20); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 441.32);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 441.94); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 444.96);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 445.50); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 448.38);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 449.20); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 450.62);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 451.24); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 455.76);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 456.22); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 458.04);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 458.56); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 460.00);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 460.46); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 462.06);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 462.66); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 468.12);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 468.74); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 470.92);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 471.50); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 475.40);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 476.14); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 477.26);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 477.80); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 481.50);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 481.92); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 483.72);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 484.78); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 487.36);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 488.00); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 489.14);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 489.90); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 491.92);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 492.68); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 493.36);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 493.96); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 498.58);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 499.22); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 501.22);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 501.70); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 505.10);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 505.64); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 510.60);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 511.40); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 514.14);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 514.84); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 518.32);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 518.92); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 521.92);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 522.52); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 523.38);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 523.86); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 527.98);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 528.60); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 533.06);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 533.56); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 534.40);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 535.28); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 541.98);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 542.60); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 545.10);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 545.46); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 548.82);
 
   filmLayer(tl, DUR);
   tl.to(["#vignette", "#grade", "#grain", ".dust"], { autoAlpha: 0, duration: 0.3 }, 196.355);
