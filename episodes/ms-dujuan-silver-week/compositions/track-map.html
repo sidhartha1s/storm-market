@@ -326,7 +326,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#tm-chip-jtwc", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, JTWC_START);
   tl.to("#tm-jtwc-group", { opacity: 1, duration: 0.2 }, JTWC_START);
   tl.to(jtMask, { strokeDashoffset: 0, duration: 1.8, ease: "power1.inOut" }, JTWC_START);
-  jtProj.forEach((_, i) => tl.fromTo(jtNodesGroup.children[i], { attr: { r: 0 } }, { attr: { r: 6, duration: 0.25 } }, JTWC_START + 1.5 + i * 0.05));
+  jtProj.forEach((_, i) => tl.fromTo(jtNodesGroup.children[i], { attr: { r: 0 } }, { attr: { r: 6 }, duration: 0.25 }, JTWC_START + 1.5 + i * 0.05));
 
   /* blinking LIVE dots (continuous) */
   tl.to(["#tm-dot-jma", "#tm-dot-jtwc"], { opacity: 0.35, duration: 1.0, yoyo: true, repeat: 300, ease: "sine.inOut" }, 0.9);
