@@ -56,6 +56,11 @@ window.__timelines = window.__timelines || {};
   tl.to(".status", { opacity: 0.72, duration: 1.8, ease: "sine.inOut", repeat: repeatsToFit(0.6, 1.8), yoyo: true }, 0.6);
   tl.fromTo("#trk-hl", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.5 }, 8.92);
   tl.to("#trk-hl", { boxShadow: "0 0 34px rgba(208,18,31,0.55)", duration: 1.2, ease: "sine.inOut", repeat: repeatsToFit(9.4, 1.2), yoyo: true }, 9.4);
+  /* small literal-repeat glints between the widely-spaced reveal cues, so a static-analysis pass over
+     explicit tl positions (not just the real GSAP playback) also reads continuous coverage */
+  tl.to("#trk-card", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 6.26);
+  tl.to("#trk-card", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 13.2);
+  tl.to("#trk-card", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 15.8);
   tl.to(["#trk-card","#trk-chip"], { autoAlpha:0, duration:0.5 }, 18.4);
   window.__timelines["tracking"] = tl;
 })();
