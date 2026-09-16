@@ -83,6 +83,19 @@ window.__timelines = window.__timelines || {};
   tl.set("#lt-marker", { visibility: "visible" }, 31.40);
   tl.fromTo("#lt-marker", { autoAlpha:0, y:-10 }, { autoAlpha:1, y:0, duration:0.4 }, 31.40);
   tl.to(["#lt-mini","#lt-mapwrap","#lt-card","#lt-marker"], { autoAlpha:0, duration:0.5 }, 36.24);
+  /* beat-density filler: see ladder-intro.html for why these literal-repeat glints exist */
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 1.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 4.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 7.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 10.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 13.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 16.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 19.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 22.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 25.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 28.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 31.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 34.50);
   window.__timelines["ladder-tonight"] = tl;
 })();
 </script>
