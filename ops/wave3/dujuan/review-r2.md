@@ -184,20 +184,30 @@ meteorological analog to a track that stays offshore at STS intensity.
 - **Idea 13:** unproven content type (zero search precedent) plus real Content-ID exposure holding foreign broadcast material for its own sake — scrap as standalone, fold into ideas 1/2 as sourcing.
 - **Idea 9's kill number:** weak as planned (embassy advisories aren't covered news); re-anchor to a JMA/MLIT bulletin.
 
-## Ranked list (blow-up score, 1-10)
+## Ranked list — FINAL, post-addendum (blow-up score, 1-10)
 1. Idea 3 — Silver Week Collision — 8 — BLOWS UP
-2. Idea 5 — Landfall Watch: Closest Approach to Kanto — 8 — BLOWS UP (conditional)
-3. Idea 14 — Strongest Typhoon to Hit Tokyo in How Many Years? — 7 — MAYBE-BLOWS UP
-4. Idea 10 — [EVERGREEN] JMA "Strong" = Category 2 — 7 — BLOWS UP (recurring asset)
-5. Idea 6 — Tokyo Bay Storm Surge — 7 — MAYBE-BLOWS UP
-6. Idea 7 — After Dujuan: First Damage Reports — 7 — MAYBE-BLOWS UP
-7. Idea 1 — Named + Aimed at Silver Week — 6 — MAYBE
-8. Idea 2 — Track Jumped East: Hit Zone Now? — 6 — MAYBE
-9. Idea 9 — What American Travelers Should Do — 6 — MAYBE
-10. Idea 12 — First Direct Hit Since Hagibis? — 6 — MAYBE
-11. Idea 8 — Silver Week Wrecked: Flights Grounded — 6 — MAYBE
-12. Idea 4 — Storm Map's 520km Blind Spot — 5 — MAYBE
-13. Idea 11 — [EVERGREEN] Holiday Typhoon Pattern — 5 — MAYBE
-14. Idea 13 — What Japan's Own News Is Panicking About — 4 — DIES
+2. Idea 4 — Storm Map's 520km Blind Spot (press-vs-JMA gap) — 7 — MAYBE-BLOWS UP
+3. Idea 11 — [EVERGREEN] Holiday Typhoon Pattern — 6 — MAYBE
+4. Idea 1 — Named + Aimed at Silver Week — 6 — MAYBE
+5. Idea 9 — What American Travelers Should Do — 6 — MAYBE
+6. Idea 5 — Closest Approach to Kanto (drop "Landfall") — 5 — MAYBE
+7. Idea 7 — After Dujuan: First Damage Reports — 5 — MAYBE
+8. Idea 8 — Silver Week Wrecked: Flights Grounded — 5 — MAYBE
+9. Idea 10 — [EVERGREEN] JMA "Strong" = Category 2 — 5 — MAYBE (may not fire this cycle)
+10. Idea 6 — Tokyo Bay Storm Surge — 4 — MAYBE
+11. Idea 14 — Strongest Typhoon to Hit Tokyo in How Many Years? — 4 — MAYBE
+12. Idea 13 — What Japan's Own News Is Panicking About — 3 — DIES
+13. Idea 2 — Track Jumped East: "Hit Zone Now?" — 3 — DIES-leaning
+14. Idea 12 — First Direct Hit Since Hagibis? — 3 — DIES-leaning
 
-No new angles added this round — the strongest new signal found (Korean outlets already at 438K/189K on Dujuan vs. Chuseok) is off-audience for a US/JP channel and doesn't clear the bar for a proposed angle.
+**What moved and why:** the fact desk's verified JMA data (facts-16sep.md) shows the storm's own
+longest official forecast (117h) tops out at STS, 30 m/s, 975 hPa, offshore east of Japan — one
+category below "strong," and not a confirmed Kanto/Tokyo hit. That single fact demotes every idea
+built on landfall, "strong"/Category-2 intensity, or a historic-superlative comparison (5, 6, 10,
+12, 14), promotes idea 4 (now the honest explainer of the press-vs-JMA gap — a real net-info-gain
+fact), and leaves idea 3 and the two evergreens (9, 11) untouched since none of them depend on the
+storm's actual track or intensity.
+
+No new angles added this round — the strongest new signal found (Korean outlets already at 438K/189K
+on Dujuan vs. Chuseok) is off-audience for a US/JP channel and doesn't clear the bar for a proposed
+angle.
