@@ -104,10 +104,10 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   popups (red, ≤3 words, mid-screen), never colour-block date cards.
 - **No visible windows, ever:** every scheduled/background command runs via
   `scripts/run_hidden.vbs`; a render or ritual that opens a visible Chrome/cmd window is killed
-  on sight and reported, not retried. hyperframes 0.8.x opens a Windows Terminal tab per
-  ffprobe/ffmpeg spawn on this box (see LEARNINGS.md) — pin stays
-  0.7.109 until an upstream version spawns them hidden; full renders on the stale pin use the
-  owner's logged override `RENDER_PIN_STALE_OK=1` (`scripts/ep6_full_task.cmd` is the pattern).
+  on sight and reported, not retried. hyperframes 0.8.6–0.8.10 opened a Windows Terminal tab per
+  ffprobe/ffmpeg spawn on this box (LEARNINGS "ep6 ship"), which froze the pin at 0.7.109 for three
+  weeks; 0.8.41 spawns hidden (owner watched the 16 Sep 26 render) and is the pin. If a stale pin ever
+  has to ship again, the owner's logged override is `RENDER_PIN_STALE_OK=1` (`scripts/ep6_full_task.cmd`).
 - **Panels slide out, never vanish.** RHS fact panels exit `x:980,
   autoAlpha:0` timed to the hard cut (comp duration ≥ host window). ep3 v5 removed the exit as a
   one-off; ep4+ restore the timed slide-right exit. See DESIGN.md §5 "Panel exit TIMING".

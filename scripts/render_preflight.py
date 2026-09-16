@@ -124,9 +124,9 @@ def version_check(repo, mode):
               "— proceeding, an offline box must not kill a render.")
         return 0
     if semver(latest) > semver(pinned):
-        # Owner per-render override (ep6, 2026-08-23): hyperframes 0.8.x opens a visible
-        # Windows Terminal tab per ffprobe/ffmpeg spawn on this box (LEARNINGS), so the
-        # ritual cannot bump. Never silent — the override names itself in the render log.
+        # Owner per-render override (ep6, 2026-08-23, when 0.8.6–0.8.10 opened a visible
+        # Windows Terminal tab per ffprobe/ffmpeg spawn and the ritual could not bump).
+        # Kept for the next such block. Never silent — it names itself in the render log.
         if os.environ.get("RENDER_PIN_STALE_OK") == "1":
             print(f"[version] [OVERRIDE] PIN STALE (npm latest {latest}, pin {pinned}) — "
                   "rendering anyway: RENDER_PIN_STALE_OK=1 set by the owner for this run.")
