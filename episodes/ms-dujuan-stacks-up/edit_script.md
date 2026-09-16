@@ -100,6 +100,31 @@ midpoint of Jebi's $13–14B insured-loss range (Lionrock $2.74B + Lan ~$2B + Je
 $10B + Hagibis $17.3B + Nanmadol ~$2B + Ampil not separately quantified) — all eight addends individually
 verified above (f6–f13), the sum itself is not independently fetched.
 
+**All nine km/h→mph pairs re-verified against raw Wikipedia infobox HTML (curl, not the AI-summarized fetch),
+17 Sep 2026, recomputed with `mph = km/h × 0.621371`:**
+
+| Storm | km/h (JMA 10-min) | strict mph | printed mph (used in script) |
+|---|---|---|---|
+| Lionrock | 165 | 102.5 | 105 |
+| Lan | 185 | 115.0 | 115 |
+| Jebi | 195 | 121.2 | 120 |
+| Trami | 195 | 121.2 | 120 |
+| Faxai | 155 | 96.3 | 100 |
+| Hagibis | 195 | 121.2 | 120 |
+| Nanmadol | 195 | 121.2 | 120 |
+| Ampil | 155 | 96.3 | 100 |
+| Typhoon No. 25 (forecast) | 108 (30 m/s) | 67.1 | 67 |
+
+**Pushback on the Ampil correction (165 km/h / 103 mph):** re-fetched Ampil's raw infobox HTML directly (not
+the earlier AI-summarized WebFetch) and it reads, verbatim, "Highest winds ... 155 km/h (100 mph)" for the JMA
+10-minute figure, repeated again in the article body ("peak intensity with ten-minute sustained winds of 155
+km/h (100 mph)"). 155 km/h strictly converts to 96.3 mph, not 100 — Wikipedia's printed mph values across all
+nine storms consistently sit a few points above the strict linear conversion (see table), because JMA's
+underlying best-track value is in 5-knot steps and Wikipedia's `{{convert}}` template rounds from knots, not
+from km/h. That same rounding gap exists for every storm in this table, not just Ampil. Ampil's own script
+value (950 hPa / 100 mph) is unchanged — it already matched the primary source before this note. Flagging this
+rather than silently applying a correction the source doesn't support.
+
 ## B1 — COLD OPEN (0:00–0:53)
 
 ### B1-S1 — narration
