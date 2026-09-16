@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-close.html — B10 close card. "Two scales. One storm." + the soft comment/subscribe line + brand.
+     Paul's presenter circle is hidden for this whole window (handled in index.html, not here). Mount:
+     track 2 over a full-window blackout, host start = episode-abs 526.975, duration 15.636 (11.636 s of
+     narration + a ~4 s tail hold). -->
+<template>
+<style>
+  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; background:#04070c; }
+  .wrap { position:absolute; left:0; right:0; top:0; bottom:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .head { font-family:'AbrilFig',Georgia,serif; font-size:96px; color:#f4f0e8; text-align:center; line-height:1.15; }
+  .head .red { color:#d0121f; }
+  .soft { margin-top:30px; font-family:Georgia,serif; font-style:italic; font-size:30px; color:#c8d3e0; }
+  .brand { margin-top:60px; font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:8px; color:#d8a13a; }
+</style>
+<div id="root" data-composition-id="gclose" data-width="1920" data-height="1080">
+  <div class="wrap">
+    <div class="head" id="gc-head"><span class="red">Two scales.</span> One storm.</div>
+    <div class="soft" id="gc-soft">Same wind. Different clock.</div>
+    <div class="brand" id="gc-brand">THE WARNING HOUR</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#gc-soft","#gc-brand"], { autoAlpha: 0 }, 0);
+  tl.fromTo("#gc-head", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.7, ease:"power3.out" }, 0.2);
+  tl.fromTo("#gc-soft", { autoAlpha:0 }, { autoAlpha:1, duration:0.6 }, 1.2);
+  tl.fromTo("#gc-brand", { autoAlpha:0 }, { autoAlpha:1, duration:0.6 }, 2.2);
+  window.__timelines["gclose"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
