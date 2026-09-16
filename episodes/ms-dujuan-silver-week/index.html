@@ -328,18 +328,11 @@ window.__timelines = window.__timelines || {};
   pop("#pf-55k", 407.44, 3.2);
   chip("#chip-noalert", 421.4, 3.5);
 
-  /* ---- B7 scale ladder (inline card, own reveal + marker slide) ---- */
-  tl.fromTo("#ladder-card", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 440.0);
-  tl.fromTo("#ladder-marker", { left: "2%" }, { left: "2%", duration: 0.1 }, 440.0);
-  tl.to("#ladder-marker", { left: "18%", duration: 0.8, ease: "power2.out" }, 462.56); /* "severe tropical storm" band position, ~1 band under Strong */
-  tl.to("#ladder-marker-lab", { textContent: "DUJUAN FORECAST: SEVERE TROPICAL STORM" }, 440.0);
+  /* ---- B7 scale ladder (band/marker reveal now self-contained in compositions/scale-ladder.html) ---- */
   pop("#pf-conv", 466.74, 4.0);
   chip("#chip-cat1", 474.54, 4.0);
-  tl.to("#ladder-card", { autoAlpha: 0, y: -20, duration: 0.5 }, 482.6);
 
-  /* ---- B8 tracking card + benchmarks ---- */
-  tl.fromTo("#tracking-card", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 484.784);
-  tl.to("#tracking-card", { autoAlpha: 0, x: -30, duration: 0.4 }, 496.0);
+  /* ---- B8 tracking card (self-contained in compositions/tracking-open.html) + benchmarks ---- */
   pop("#pf-hagibis", 515.60, 5.5);
   pop("#pf-faxai", 524.16, 7.0);
   pop("#pf-ampil", 536.00, 4.0);
