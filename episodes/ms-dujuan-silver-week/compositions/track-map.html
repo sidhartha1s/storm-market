@@ -252,18 +252,18 @@ window.__timelines = window.__timelines || {};
   sweepGroup.appendChild(el("line", { id: "tm-sweep-line", x1: cx, y1: cy, x2: cx, y2: cy - 260, stroke: "rgba(255,255,255,0.22)", "stroke-width": 2 }));
   sweepGroup.style.transformOrigin = `${cx}px ${cy}px`;
 
-  /* ---------- JTWC dashed track (mask-revealed) + nodes ---------- */
+  /* ---------- JTWC dashed track (opacity-revealed, see the JMA note above) + nodes ---------- */
   const jtChain = [TRACK.jtwc.current, ...TRACK.jtwc.forecast];
   const jtProj = jtChain.map(p => proj(p.lat, p.lon));
   const jtD = "M " + jtProj.map(p => p.join(" ")).join(" L ");
   const jtVisible = document.getElementById("tm-jtwc-line");
-  const jtMask = document.getElementById("tm-jtwc-maskpath");
   jtVisible.setAttribute("d", jtD);
-  jtMask.setAttribute("d", jtD);
-  const jtLen = jtMask.getTotalLength();
-  gsap.set(jtMask, { strokeDasharray: jtLen, strokeDashoffset: jtLen + 2 }); /* same +2px margin as the JMA segments */
+  gsap.set(jtVisible, { opacity: 0 });
   const jtNodesGroup = document.getElementById("tm-jtwc-nodes");
-  jtProj.forEach(([x, y]) => jtNodesGroup.appendChild(el("circle", { class: "jtwc-node", cx: x, cy: y, r: 6 })));
+  jtProj.forEach(([x, y]) => {
+    const n = jtNodesGroup.appendChild(el("circle", { class: "jtwc-node", cx: x, cy: y, r: 6 }));
+    gsap.set(n, { opacity: 0 });
+  });
 
   /* ---------- chip + card text (code-computed, no hand conversions) ---------- */
   const MON = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
