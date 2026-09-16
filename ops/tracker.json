@@ -406,9 +406,9 @@
       "owner": "director",
       "due": "16 Sep 26",
       "phase": "checks",
-      "status": "doing",
-      "note": "all 3 browser gates PASS (pass 4); polish on scale-ladder/tracking-open/close-card/calendar, then draft",
-      "updated": "16 Sep 26 19:16"
+      "status": "done",
+      "note": "gates pass 8: blank/overlap/graphics_qc all PASS; reader re-measure running",
+      "updated": "16 Sep 26 20:26"
     },
     {
       "slug": "ms-dujuan-two-tracks",
