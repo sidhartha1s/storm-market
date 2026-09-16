@@ -59,6 +59,11 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
+  /* Ambient tweens use a BOUNDED repeat, never repeat:-1: an infinite tween runs on GSAP's real-time
+     ticker past this paused/seeked timeline's frame-by-frame playhead and desyncs headless capture
+     (blank_scan.mjs). repeatsToFit() sizes each repeat count so its tween ends at/under HOST_WINDOW. */
+  const HOST_WINDOW = 42.273; // this episode's compare-card mount: 326.157-368.430
+  function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
   const L = { n: 0 }, R = { n: 0 };
   const lEl = document.getElementById("cc-l-num"), rEl = document.getElementById("cc-r-num");
   tl.set(["#cc-midpop","#cc-foot"], { autoAlpha: 0 }, 0);
