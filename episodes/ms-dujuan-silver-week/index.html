@@ -41,10 +41,13 @@
     .chip.tm-zone { position: absolute; left: 900px; right: auto; top: 910px; bottom: auto; }
     /* scale-ladder empty zone: below the JMA/NHC ladder card (card spans x260-1660, ends well
        above y780), full card width, centred */
-    /* scale-ladder .card now has an EXPLICIT height:580px + overflow:hidden (not auto/content-
-       derived), so its bottom edge is a fixed, known number: top 210 + height 580 = 790px.
-       Zone starts at 790 + 24px clearance = 814, rounded up to 820 for a clean margin. */
-    .popfig.sl-zone, .chip.sl-zone { position: absolute; left: 260px; right: auto; top: 820px; bottom: auto; width: 1400px; text-align: center; }
+    /* scale-ladder .card real bottom per browser measurement at t=47s: card 210->790 clipped the
+       readout/caption (readout bottom 800, caption 830-854, both past 790). Card height set to
+       690px (measured content bottom 854 + 40 pad - 210 = 684, rounded to 690) -> card bottom =
+       210+690 = 900. Zone at 900 + 30px clearance = 930. Both sl-zone occupants are now `.chip`
+       (not `.popfig`, whose small-variant height was itself never measured/verified) so the
+       zone's own vertical footprint is small and proven, comfortably clear of the 1080 edge. */
+    .popfig.sl-zone, .chip.sl-zone { position: absolute; left: 260px; right: auto; top: 930px; bottom: auto; width: 1400px; text-align: center; }
     .srclab { position: absolute; right: 40px; top: 34px; z-index: 7; font-family: Arial, sans-serif; font-size: 20px; letter-spacing: 1px; color: rgba(220,228,236,0.85); background: rgba(5,8,12,0.6); padding: 6px 14px; }
     .quotecard { position: absolute; left: 260px; right: 260px; top: 280px; z-index: 6; text-align: center;
       background: rgba(10,16,24,0.58); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
