@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- ladder-l5.html — B6 "level five: when leaving may no longer be safe". Black/red treatment, "RARELY
+     ISSUED" popfig, then the US extreme-wind-warning chip build-up. Full-window mount, no b-roll. Cues
+     word-synced from audio/b6-s1.words.json. Mount: track 2, host start = episode-abs 301.194,
+     duration 54.618. -->
+<template>
+<style>
+  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 35%, #1a0508 0%, #030202 78%); }
+  .eye { position:absolute; left:0; right:0; top:100px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
+    font-size:24px; letter-spacing:6px; color:#d0121f; }
+  .lvl { position:absolute; left:0; right:0; top:150px; text-align:center; font-family:'AbrilFig',Georgia,serif;
+    font-size:64px; color:#f4f0e8; text-shadow:0 0 40px rgba(208,18,31,0.6); }
+  .pf { position:absolute; left:0; right:0; top:340px; text-align:center; }
+  .pf span { font-family:'AbrilFig',Georgia,serif; font-size:96px; color:#d0121f;
+    text-shadow:0 0 24px rgba(0,0,0,0.9), 0 0 60px rgba(208,18,31,0.5); }
+  .card { position:absolute; left:50%; top:520px; transform:translateX(-50%); width:1180px; box-sizing:border-box;
+    padding:36px 50px; text-align:center; background:rgba(10,4,4,0.62); backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,0.12); border-radius:26px; }
+  .card .eyeb { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:4px; color:#8fb4d8; }
+  .card .row { display:flex; justify-content:center; gap:60px; margin-top:22px; }
+  .card .stat { text-align:center; }
+  .card .stat .num { font-family:'AbrilFig',Georgia,serif; font-size:56px; color:#f4f0e8; min-width:3ch;
+    font-variant-numeric:tabular-nums; }
+  .card .stat .u { margin-top:8px; font-family:'Arial Black',Arial,sans-serif; font-size:19px; letter-spacing:1px; color:#c8d3e0; }
+  .card .action { margin-top:26px; font-family:'Arial Black',Arial,sans-serif; font-size:26px; letter-spacing:1px; color:#d0121f; }
+</style>
+<div id="root" data-composition-id="ladder-l5" data-width="1920" data-height="1080">
+  <div class="eye" id="l5-eye">ALERT LEVEL 5</div>
+  <div class="lvl" id="l5-lvl">Emergency Safety Measures</div>
+  <div class="pf" id="l5-pf" style="visibility:hidden"><span>RARELY ISSUED</span></div>
+  <div class="card" id="l5-card" style="visibility:hidden">
+    <div class="eyeb">US CLOSEST MATCH: EXTREME WIND WARNING</div>
+    <div class="row">
+      <div class="stat"><div class="num" id="l5-n1">115</div><div class="u">MPH &middot; 185 KM/H</div></div>
+      <div class="stat"><div class="num">&lt;1</div><div class="u">HOUR TO ARRIVAL</div></div>
+    </div>
+    <div class="action" id="l5-action">SHELTER IMMEDIATELY. DON'T DRIVE.</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const HOST_WINDOW = 54.618; // this episode's ladder-l5 mount: 301.194-355.812
+  function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
+  const N1 = { n: 0 }; const n1El = document.getElementById("l5-n1");
+  tl.set(["#l5-pf","#l5-card"], { visibility: "hidden", autoAlpha: 0 }, 0);
+  tl.set("#l5-n1", { textContent: "0" }, 0);
+  tl.fromTo("#l5-eye", { autoAlpha:0, y:-16 }, { autoAlpha:1, y:0, duration:0.5 }, 0);
+  tl.fromTo("#l5-lvl", { autoAlpha:0, scale:0.9 }, { autoAlpha:1, scale:1, duration:0.5 }, 1.36);
+  tl.to("#l5-lvl", { opacity: 0.85, duration: 2.2, ease: "sine.inOut", repeat: repeatsToFit(2.0, 2.2), yoyo: true }, 2.0);
+  tl.set("#l5-pf", { visibility: "visible" }, 10.0);
+  tl.fromTo("#l5-pf", { autoAlpha:0, scale:2.0 }, { autoAlpha:1, scale:1, duration:0.35, ease:"power4.in" }, 10.0);
+  tl.to("#l5-pf", { autoAlpha:0, y:-24, duration:0.35 }, 13.6);
+  tl.set("#l5-card", { visibility: "visible" }, 29.44);
+  tl.fromTo("#l5-card", { autoAlpha:0, y:30 }, { autoAlpha:1, y:0, duration:0.5, ease:"power3.out" }, 29.44);
+  tl.to(N1, { n: 115, duration: 1.0, ease: "power1.out", onUpdate: () => n1El.textContent = Math.round(N1.n) }, 34.70);
+  tl.fromTo("#l5-action", { autoAlpha:0 }, { autoAlpha:1, duration:0.4 }, 39.80);
+  tl.to("#l5-card", { boxShadow: "0 0 30px rgba(208,18,31,0.4)", duration: 1.2, ease: "sine.inOut", repeat: repeatsToFit(40.5, 1.2), yoyo: true }, 40.5);
+  tl.to(["#l5-eye","#l5-lvl","#l5-card"], { autoAlpha:0, duration:0.5 }, 54.02);
+  window.__timelines["ladder-l5"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
