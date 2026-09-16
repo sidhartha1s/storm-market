@@ -42,15 +42,20 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
+  /* Ambient tweens use a BOUNDED repeat, never repeat:-1: an infinite tween runs on GSAP's real-time
+     ticker past this paused/seeked timeline's frame-by-frame playhead and desyncs headless capture
+     (blank_scan.mjs). repeatsToFit() sizes each repeat count so its tween ends at/under HOST_WINDOW. */
+  const HOST_WINDOW = 19.2; // this episode's tracking mount: 507.175-526.375
+  function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
   tl.set(["#trk-hl","#trk-chip"], { autoAlpha: 0 }, 0);
   tl.fromTo("#trk-card", { autoAlpha:0, scale:0.94 }, { autoAlpha:1, scale:1, duration:0.6, ease:"power3.out" }, 0);
   tl.fromTo("#trk-chip", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 0.5);
   /* continuous ambient motion so the card never sits frozen for the whole hold: a traveling shimmer on the
      accent bar (real position movement, not just opacity) plus the existing status pulse and hl glow */
-  gsap.to("#trk-accent", { backgroundPosition: "100% 0%", duration: 3.0, ease: "sine.inOut", repeat: 5, yoyo: true, delay: 0.6 });
-  gsap.to(".status", { opacity: 0.72, duration: 1.8, ease: "sine.inOut", repeat: 8, yoyo: true, delay: 0.6 });
+  tl.to("#trk-accent", { backgroundPosition: "100% 0%", duration: 3.0, ease: "sine.inOut", repeat: repeatsToFit(0.6, 3.0), yoyo: true }, 0.6);
+  tl.to(".status", { opacity: 0.72, duration: 1.8, ease: "sine.inOut", repeat: repeatsToFit(0.6, 1.8), yoyo: true }, 0.6);
   tl.fromTo("#trk-hl", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.5 }, 8.92);
-  gsap.to("#trk-hl", { boxShadow: "0 0 34px rgba(208,18,31,0.55)", duration: 1.2, ease: "sine.inOut", repeat: 7, yoyo: true, delay: 9.4 });
+  tl.to("#trk-hl", { boxShadow: "0 0 34px rgba(208,18,31,0.55)", duration: 1.2, ease: "sine.inOut", repeat: repeatsToFit(9.4, 1.2), yoyo: true }, 9.4);
   tl.to(["#trk-card","#trk-chip"], { autoAlpha:0, duration:0.5 }, 18.4);
   window.__timelines["tracking"] = tl;
 })();
