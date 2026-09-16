@@ -189,10 +189,13 @@ window.__timelines = window.__timelines || {};
   const guamLab = guamGroup.appendChild(el("text", { class: "guam-lab", x: gx + 14, y: gy + 5 }));
   guamLab.textContent = "GUAM";
 
-  /* ---------- Tokyo marker (35.68N 139.69E) -- same style as Guam, so "toward Kanto" reads on the map ---------- */
+  /* ---------- Tokyo marker (35.68N 139.69E) -- same style as Guam, so "toward Kanto" reads on the map.
+     Label sits LEFT of the dot (text-anchor:end), not right like Guam's: right of the dot runs
+     straight into the +93H/+117H track line and the +117H probability circle; left lands in
+     clear water off the Honshu coast (checked against a t8 screenshot). */
   const [tkx, tky] = proj(35.68, 139.69);
   guamGroup.appendChild(el("circle", { class: "guam-dot", cx: tkx, cy: tky, r: 7 }));
-  const tokyoLab = guamGroup.appendChild(el("text", { class: "guam-lab", x: tkx + 14, y: tky + 5 }));
+  const tokyoLab = guamGroup.appendChild(el("text", { class: "guam-lab", x: tkx - 16, y: tky + 5, "text-anchor": "end" }));
   tokyoLab.textContent = "TOKYO";
 
   /* ---------- JMA past track (thin dashed polyline) ---------- */
