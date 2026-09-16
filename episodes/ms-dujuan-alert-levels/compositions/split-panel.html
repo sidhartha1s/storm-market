@@ -81,6 +81,24 @@ window.__timelines = window.__timelines || {};
   tl.set("#sp-chip-status", { visibility: "visible" }, 50.82);
   tl.fromTo("#sp-chip-status", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.35 }, 50.82);
   tl.to(["#sp-eye","#sp-l","#sp-r","#sp-arrow","#sp-chip-ts","#sp-chip-sst"], { autoAlpha:0, duration:0.4 }, 50.89);
+  /* beat-density filler: see ladder-intro.html for why these literal-repeat glints exist */
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 1.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 4.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 7.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 10.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 13.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 16.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 19.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 22.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 25.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 28.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 31.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 34.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 37.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 40.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 43.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 46.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 49.50);
   window.__timelines["split-panel"] = tl;
 })();
 </script>
