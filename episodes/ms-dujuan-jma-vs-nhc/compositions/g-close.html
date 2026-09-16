@@ -39,8 +39,8 @@ window.__timelines = window.__timelines || {};
   tl.set(["#gc-soft","#gc-brand","#gc-rule"], { autoAlpha: 0 }, 0);
   tl.set("#gc-rule", { scaleX: 0 }, 0);
   /* two soft glow blobs drift slowly for the full window — >=40px travel each leg, never a flat static background */
-  tl.to("#gc-glow-a", { x: 170, y: 110, duration: 6.0, ease: "sine.inOut", repeat: 3, yoyo: true }, 0);
-  tl.to("#gc-glow-b", { x: -160, y: -100, duration: 7.0, ease: "sine.inOut", repeat: 3, yoyo: true }, 0.5);
+  tl.to("#gc-glow-a", { x: 170, y: 110, duration: 4.0, ease: "sine.inOut", repeat: 3, yoyo: true }, 0);
+  tl.to("#gc-glow-b", { x: -160, y: -100, duration: 3.88, ease: "sine.inOut", repeat: 3, yoyo: true }, 0.5);
   tl.fromTo("#gc-head", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.7, ease:"power3.out" }, 0.2);
   tl.fromTo("#gc-soft", { autoAlpha:0 }, { autoAlpha:1, duration:0.6 }, 1.2);
   /* subtitle drift bumped to >=8px so it reads as motion, not a subpixel jitter */
