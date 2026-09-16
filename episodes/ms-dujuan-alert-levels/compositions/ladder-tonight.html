@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- ladder-tonight.html — B8 "where this storm sits on that ladder tonight". Mini-ladder with a marker
+     pinned BELOW level 1 ("still a TD"), a real map plate (Natural Earth basemap crop, Japan mainland to
+     the Izu-Ogasawara chain) with a schematic pin for JMA's +117h forecast point, and the wind stat
+     count-up. Mount: track 2, host start = episode-abs 422.794, duration 36.836 (B8 window is 48.836s: a
+     6.0s lead-in still plays before mount, a 6.0s Himawari return clip plays after). Cues word-synced from
+     audio/b8-s1.words.json (segment-abs minus this comp's mount). Map pin is schematic (interpolated
+     between the basemap's own Tokyo/Ogasawara/Guam reference pixels), not a to-scale plot. -->
+<template>
+<style>
+  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
+  .mini { position:absolute; left:80px; top:120px; width:300px; }
+  .mini .r { display:flex; align-items:center; gap:10px; padding:8px 14px; margin-top:7px; border-radius:8px;
+    background:rgba(10,16,24,0.5); border:1px solid rgba(255,255,255,0.1); opacity:0.35; font-size:16px; font-family:'Arial Black',Arial,sans-serif; }
+  .mini .r .n { font-family:'AbrilFig',Georgia,serif; font-size:22px; color:#8fb4d8; }
+  .marker { position:absolute; left:80px; top:96px; width:300px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
+    font-size:15px; letter-spacing:1px; color:#f4b8bc; background:rgba(208,18,31,0.18); border-left:3px solid #d0121f;
+    padding:8px 10px; border-radius:8px; }
+  .mapwrap { position:absolute; left:430px; top:70px; width:420px; height:900px; border-radius:20px; overflow:hidden;
+    border:1px solid rgba(255,255,255,0.16); box-shadow:0 20px 60px rgba(0,0,0,0.6); }
+  .mapwrap img { position:absolute; left:-90px; top:-260px; width:600px; height:1254px; }
+  .pin { position:absolute; width:20px; height:20px; border-radius:50%; background:#d0121f; box-shadow:0 0 0 6px rgba(208,18,31,0.3), 0 0 18px rgba(208,18,31,0.9); }
+  .pinlab { position:absolute; font-family:'Arial Black',Arial,sans-serif; font-size:17px; letter-spacing:1px; color:#f4f0e8;
+    background:rgba(5,8,12,0.75); padding:6px 12px; border-radius:8px; white-space:nowrap; }
+  .card { position:absolute; left:920px; top:180px; width:820px; box-sizing:border-box; padding:34px 44px;
+    background:rgba(10,16,24,0.58); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:26px; }
+  .card .eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:5px; color:#d8a13a; }
+  .card .row { display:flex; gap:60px; margin-top:26px; }
+  .card .stat .num { font-family:'AbrilFig',Georgia,serif; font-size:72px; color:#f4f0e8; min-width:2.5ch;
+    font-variant-numeric:tabular-nums; }
+  .card .stat .u { margin-top:8px; font-family:'Arial Black',Arial,sans-serif; font-size:19px; letter-spacing:1px; color:#c8d3e0; }
+  .card .foot { margin-top:26px; font-size:22px; color:#c8d3e0; font-family:Georgia,serif; font-style:italic; }
+</style>
+<div id="root" data-composition-id="ladder-tonight" data-width="1920" data-height="1080">
+  <div class="mini" id="lt-mini">
+    <div class="r"><div class="n">1</div>RISING RISK</div>
+    <div class="r"><div class="n">2</div>ADVISORY ISSUED</div>
+    <div class="r"><div class="n">3</div>ELDERLY EVACUATE</div>
+    <div class="r"><div class="n">4</div>EVACUATION INSTRUCTION</div>
+    <div class="r"><div class="n">5</div>EMERGENCY SAFETY</div>
+  </div>
+  <div class="marker" id="lt-marker" style="visibility:hidden">TONIGHT: BELOW THE LADDER &middot; STILL A TD</div>
+  <div class="mapwrap" id="lt-mapwrap">
+    <img src="../media/maps/westpac_corridor.png" alt="">
+    <div class="pin" id="lt-pin" style="left:250px; top:170px; visibility:hidden"></div>
+    <div class="pinlab" id="lt-pinlab" style="left:270px; top:150px; visibility:hidden">EAST OF JAPAN</div>
+  </div>
+  <div class="card" id="lt-card">
+    <div class="eye">5-DAY FORECAST POINT</div>
+    <div class="row">
+      <div class="stat"><div class="num" id="lt-n1">0</div><div class="u">MPH &middot; 108 KM/H SUSTAINED</div></div>
+      <div class="stat"><div class="num" id="lt-n2">0</div><div class="u">MPH &middot; 144 KM/H GUST</div></div>
+    </div>
+    <div class="foot">Natural Earth basemap &middot; pin position is schematic, not a to-scale plot</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const HOST_WINDOW = 36.836; // this episode's ladder-tonight mount: 422.794-459.63
+  function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
+  const N1 = { n: 0 }, N2 = { n: 0 };
+  const n1El = document.getElementById("lt-n1"), n2El = document.getElementById("lt-n2");
+  tl.set(["#lt-marker","#lt-pin","#lt-pinlab"], { visibility: "hidden", autoAlpha: 0 }, 0);
+  tl.fromTo("#lt-mini", { autoAlpha:0, x:-40 }, { autoAlpha:1, x:0, duration:0.5 }, 0);
+  tl.fromTo("#lt-mapwrap", { autoAlpha:0, scale:0.96 }, { autoAlpha:1, scale:1, duration:0.5 }, 0.3);
+  tl.fromTo("#lt-card", { autoAlpha:0, x:40 }, { autoAlpha:1, x:0, duration:0.5 }, 0.5);
+  /* continuous ambient motion: slow map pan so the plate never sits frozen through the long hold */
+  tl.to("#lt-mapwrap img", { y: "-=40", duration: 6.0, ease: "sine.inOut", repeat: repeatsToFit(0.8, 6.0), yoyo: true }, 0.8);
+  tl.set(["#lt-pin","#lt-pinlab"], { visibility: "visible" }, 9.16);
+  tl.fromTo("#lt-pin", { scale:2.2, autoAlpha:0 }, { scale:1, autoAlpha:1, duration:0.35, ease:"power4.in" }, 9.16);
+  tl.to("#lt-pin", { scale: 1.35, duration: 0.9, ease: "sine.inOut", repeat: repeatsToFit(9.6, 0.9), yoyo: true }, 9.6);
+  tl.fromTo("#lt-pinlab", { autoAlpha:0, y:-10 }, { autoAlpha:1, y:0, duration:0.4 }, 9.4);
+  tl.to(N1, { n: 67, duration: 1.0, ease: "power1.out", onUpdate: () => n1El.textContent = Math.round(N1.n) }, 12.90);
+  tl.to(N2, { n: 89, duration: 1.0, ease: "power1.out", onUpdate: () => n2El.textContent = Math.round(N2.n) }, 14.92);
+  tl.set("#lt-marker", { visibility: "visible" }, 31.40);
+  tl.fromTo("#lt-marker", { autoAlpha:0, y:-10 }, { autoAlpha:1, y:0, duration:0.4 }, 31.40);
+  tl.to(["#lt-mini","#lt-mapwrap","#lt-card","#lt-marker"], { autoAlpha:0, duration:0.5 }, 36.24);
+  window.__timelines["ladder-tonight"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
