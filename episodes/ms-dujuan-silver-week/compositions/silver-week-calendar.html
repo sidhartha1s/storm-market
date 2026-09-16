@@ -85,6 +85,11 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#sw-card-nozomi", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 33.86);
   tl.fromTo("#sw-card-games", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 58.48);
 
+  /* foreground motion for the second half (nothing new happened after ~40s of the 84.7s window
+     -- the background drift alone read as frozen): the five day-tiles pulse one at a time,
+     19->23 SEP, on a slow cadence spanning to near the end of the hold */
+  tl.to(".cal .d", { scale: 1.08, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 1, stagger: 5.0 }, 62.0);
+
   /* continuous ambient motion so no window reads as a frozen hold. Single-pass, explicit long
      duration + ease:"none" (not gsap repeat, which sweep_episode's static regex-based
      timeline-length check cannot see through) so the composition's own perceived duration
