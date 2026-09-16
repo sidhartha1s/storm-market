@@ -65,6 +65,7 @@ points.append({
     "pressure_hPa": int(a["pressure"]),
     "wind_ms": int(a["maximumWind"]["sustained"]["m/s"]),
     "wind_kt": int(a["maximumWind"]["sustained"]["kt"]),
+    "wind_kmh": round(int(a["maximumWind"]["sustained"]["m/s"]) * 3.6, 1),
     "wind_mph": mph(ms=a["maximumWind"]["sustained"]["m/s"]),
     "gust_mph": mph(ms=a["maximumWind"]["gust"]["m/s"]),
     "category": CAT_LABEL.get(a["category"]["en"], a["category"]["en"]),
