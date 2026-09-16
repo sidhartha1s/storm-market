@@ -395,8 +395,8 @@
       "due": "16 Sep 26",
       "phase": "preview",
       "status": "doing",
-      "note": "preview v2 rendered, static gates green, owner eyeball pending",
-      "updated": "16 Sep 26 09:38"
+      "note": "preview v3 rendered (tracked pins + SFX hooks), owner eyeball pending",
+      "updated": "16 Sep 26 11:04"
     }
   ]
 }
