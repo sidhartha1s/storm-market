@@ -407,8 +407,8 @@
       "due": "16 Sep 26",
       "phase": "checks",
       "status": "doing",
-      "note": "round 2: blank PASS; overlap 9 hits + 1 collision in scale-ladder/calendar, fixing",
-      "updated": "16 Sep 26 18:53"
+      "note": "pass 3: graphics_qc + blank PASS, 1 chip overlap left; snapshot QC running",
+      "updated": "16 Sep 26 19:02"
     },
     {
       "slug": "ms-dujuan-two-tracks",
@@ -455,8 +455,8 @@
       "due": "16 Sep 26",
       "phase": "checks",
       "status": "doing",
-      "note": "browser gates all PASS; snapshot QC of 7 comps running",
-      "updated": "16 Sep 26 18:37"
+      "note": "graphics_qc + overlap PASS; comp timeline lengths being capped for blank_scan",
+      "updated": "16 Sep 26 19:02"
     },
     {
       "slug": "ms-dujuan-holiday-typhoons",
