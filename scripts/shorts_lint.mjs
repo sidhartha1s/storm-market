@@ -16,13 +16,16 @@ const ep = resolve(process.argv[2]);
 const html = readFileSync(join(ep, 'index.html'), 'utf-8');
 const W = +(html.match(/data-width="(\d+)"/)?.[1] ?? 0), H = +(html.match(/data-height="(\d+)"/)?.[1] ?? 0);
 if (!(W && H && H > W)) { console.log(`[shorts_lint] not a portrait composition (${W}x${H}) — nothing to do`); process.exit(0); }
-const DUR = +html.match(/data-duration="([\d.]+)"/)[1];
+const DUR = +(html.match(/data-duration="([\d.]+)"/)?.[1] ?? 0);
+if (!DUR) { console.log('[shorts_lint] no data-duration on the root — cannot sample'); process.exit(2); }
 const TEXT = '.cap, .chip, .popfig, .quotecard, .closecard, .head, .lab, .quote, .q';
 const SAFE = { top: 220, bottom: H - 420, railX: W - 150, railY: 900, tol: 24 };
 
 const browser = await chromium.launch({ executablePath: chromiumExecutable() });
 const page = await browser.newPage({ viewport: { width: W, height: H } });
 await page.goto(pathToFileURL(join(ep, 'index.html')).href, { waitUntil: 'load' });
+await page.waitForTimeout(600); // hyperframes registers __timelines after load (same wait as overlap_check.mjs)
+if (!await page.evaluate(() => Object.keys(window.__timelines || {}).length)) { console.log('[shorts_lint] no timeline registered in window.__timelines'); await browser.close(); process.exit(2); }
 const findings = [];
 for (let t = 0; t <= DUR; t += 0.25) {
   const rows = await page.evaluate(({ t, TEXT }) => {
