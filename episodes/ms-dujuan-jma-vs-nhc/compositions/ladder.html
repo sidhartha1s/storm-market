@@ -64,9 +64,10 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#lad-l", { x:-60, autoAlpha:0 }, { x:0, autoAlpha:1, duration:0.6 }, 0);
   tl.fromTo("#lad-r", { x:60, autoAlpha:0 }, { x:0, autoAlpha:1, duration:0.6 }, 0);
   tl.fromTo("#lad-chip", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 0.4);
-  /* continuous ambient motion across the whole window so the card never sits frozen between reveals */
-  tl.to(".colhead", { letterSpacing: "5px", duration: 4.91, ease: "sine.inOut", repeat: 9, yoyo: true }, 0.6);
-  tl.fromTo("#lad-l .rung", { y: 0 }, { y: -6, duration: 3.27, ease: "sine.inOut", repeat: 14, yoyo: true, stagger: 0.4 }, 0.6);
+  /* continuous ambient motion across the whole window so the card never sits frozen between reveals —
+     standalone gsap calls (NOT on tl) so they never extend tl.duration() past the exit/host window */
+  gsap.to(".colhead", { letterSpacing: "5px", duration: 4.91, ease: "sine.inOut", repeat: 9, yoyo: true, delay: 0.6 });
+  gsap.fromTo("#lad-l .rung", { y: 0 }, { y: -6, duration: 3.27, ease: "sine.inOut", repeat: 14, yoyo: true, stagger: 0.4, delay: 0.6 });
   tl.fromTo("#lr-1", { autoAlpha:0, x:30 }, { autoAlpha:1, x:0, duration:0.4 }, 14.96);
   tl.fromTo("#lr-2", { autoAlpha:0, x:30 }, { autoAlpha:1, x:0, duration:0.4 }, 20.7);
   tl.fromTo("#lr-3", { autoAlpha:0, x:30 }, { autoAlpha:1, x:0, duration:0.4 }, 23.8);
