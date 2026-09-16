@@ -205,8 +205,11 @@ window.__timelines = window.__timelines || {};
     const p = el("path", { d: `M ${fcProj[i - 1].join(" ")} L ${fcProj[i].join(" ")}`, fill: "none", stroke: CAT_COLOR[fcChain[i].category] || "#8a94a0", "stroke-width": 5, "stroke-linecap": "round" });
     fcGroup.appendChild(p);
     const len = p.getTotalLength();
-    p.setAttribute("stroke-dasharray", len);
-    p.setAttribute("stroke-dashoffset", len);
+    /* strokeDashoffset is CSS-channeled in GSAP (unlike attr:{r}) -- a raw setAttribute here
+       is invisible to GSAP's "from" lookup on the later .to(), so the segment rendered fully
+       drawn at t=0 (found via elementsFromPoint debug probe). gsap.set writes it the same way
+       the later tween reads it. */
+    gsap.set(p, { strokeDasharray: len, strokeDashoffset: len });
     segEls.push(p); segLens.push(len); totalLen += len;
   }
   fcChain.forEach((pt, i) => {
