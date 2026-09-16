@@ -68,7 +68,10 @@ points.append({
     "wind_mph": mph(ms=a["maximumWind"]["sustained"]["m/s"]),
     "gust_mph": mph(ms=a["maximumWind"]["gust"]["m/s"]),
     "category": CAT_LABEL.get(a["category"]["en"], a["category"]["en"]),
-    "location_label": a["location"],
+    "location_label": LOCATION_EN.get(a["location"], a["location"]),
+    "course_en": COURSE_EN.get(a["course"], a["course"]),
+    "speed_kmh": int(a["speed"]["km/h"]), "speed_kt": int(a["speed"]["kt"]),
+    "speed_mph": kmh_to_mph(a["speed"]["km/h"]),
 })
 
 # --- JMA forecast checkpoints (spec[2:]) matched with fc[2:] for probability circle radius ---
