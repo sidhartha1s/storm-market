@@ -73,8 +73,9 @@
   (US$17.3B) damage, the costliest typhoon in Japanese history at the time. Wikipedia "Typhoon Hagibis", fetched
   17 Sep 2026 (cross-checked against facts-16sep.md §5). `en.wikipedia.org/wiki/Typhoon_Hagibis`
 - f11 — Typhoon Faxai (2019): JMA peak 955 hPa / 155 km/h (100 mph); landfall over the Kanto Plain (Chiba), 8 Sep
-  2019; 934,000 households without power; 3 dead, 147 injured. Wikipedia "Typhoon Faxai", fetched 17 Sep 2026
-  (cross-checked against facts-16sep.md §5). `en.wikipedia.org/wiki/Typhoon_Faxai`
+  2019; 934,000 households without power; 3 dead, 147 injured; damage US$10B (2019 USD, per facts-16sep.md §5,
+  Wikipedia "Typhoon Faxai" fetched 16 Sep 2026 for this figure). Re-fetched 17 Sep 2026 for the wind/pressure
+  figures. `en.wikipedia.org/wiki/Typhoon_Faxai`
 - f12 — Typhoon Nanmadol (2022): JMA peak 910 hPa / 195 km/h (120 mph) — the deepest pressure and strongest wind
   of the whole benchmark set; landfall Kagoshima, Kyushu, 18 Sep 2022; 4 dead, 114+ injured, approx. US$2B
   damage, approx. 190,000 without power, Miyazaki rainfall over 15 inches, 100 dams pre-discharged. Wikipedia
