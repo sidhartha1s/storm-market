@@ -50,7 +50,7 @@ for (const name of list) {
   await page.waitForTimeout(150);
   const key = await page.evaluate(() => Object.keys(window.__timelines || {})[0]);
   if (!key) { console.error(`[${name}] NO TIMELINE FOUND`); continue; }
-  const points = [0.5, dur * 0.25, dur * 0.5, dur * 0.75, Math.max(0, dur - 0.5)];
+  const points = [0.5, dur * 0.25, dur * 0.5, dur * 0.75, Math.max(0, dur - 0.3)];
   let n = 1;
   for (const t of points) {
     await page.evaluate(([k, tt]) => { window.__timelines[k].seek(tt, false); }, [key, t]);
