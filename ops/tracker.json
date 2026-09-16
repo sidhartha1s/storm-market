@@ -405,10 +405,10 @@
       "title": "Silver Week Collision: A Storm Joins Japan's Biggest Holiday in Years",
       "owner": "director",
       "due": "16 Sep 26",
-      "phase": "script",
+      "phase": "tts",
       "status": "doing",
-      "note": "U1 spine; script + pool agents running; plan ops/wave3/dujuan/PLAN.md",
-      "updated": "16 Sep 26 16:52"
+      "note": "waiting for RAM >= 4.5 GB (owner at work)",
+      "updated": "16 Sep 26 17:13"
     },
     {
       "slug": "ms-dujuan-two-tracks",
