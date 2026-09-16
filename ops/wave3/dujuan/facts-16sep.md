@@ -102,7 +102,7 @@ Source: `https://www.jma.go.jp/bosai/typhoon/data/targetTc.json` → `https://ww
   - +45h (18 Sep 15:00): STS (Severe Tropical Storm), 25 m/s, 985 hPa
   - +69h (19 Sep 15:00): STS, 30 m/s, 980 hPa — first entry with a storm-warning circle (350 km radius)
   - +93h (20 Sep 15:00): STS, 30 m/s, 975 hPa, position 31.1°N 139.2°E ("south of Japan")
-  - **+117h — longest forecast, valid 21 Sep 15:00 JST**: category **STS (Severe Tropical Storm)**, max sustained wind **30 m/s (55 kt)**, gust **40 m/s (80 kt)**, central pressure **975 hPa**, position **37.0°N, 139.2°E** — wait, actual position **37.0°N, 143.1°E**, described by JMA as **"日本の東" (East of Japan)**, moving NNE at 30 km/h.
+  - **+117h — longest forecast, valid 21 Sep 15:00 JST**: category **STS (Severe Tropical Storm)**, max sustained wind **30 m/s (55 kt)**, gust **40 m/s (80 kt)**, central pressure **975 hPa**, position **37.0°N, 143.1°E**, described by JMA as **"日本の東" (East of Japan)**, moving NNE at 30 km/h.
 
 **Important nuance for scripting**: JMA's own 117-hour forecast (their longest published lead time) puts Dujuan
 **east of Japan, offshore of Fukushima/Ibaraki**, not making a direct Kanto/Tokyo landfall — and classifies it
