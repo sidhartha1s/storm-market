@@ -59,6 +59,13 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
+  /* Ambient tweens use a BOUNDED repeat, never repeat:-1/300: an infinite/huge repeat runs past this
+     paused/seeked timeline's frame-by-frame playhead and desyncs headless capture (see blank_scan.mjs).
+     repeatsToFit() sizes each repeat count so its own tween ends at or just under HOST_WINDOW. For a
+     stagger()'d multi-target tween, GSAP repeats the WHOLE staggered block per cycle, so cycle must
+     include the stagger span: stagger * (targetCount - 1) + duration. */
+  const HOST_WINDOW = 49.782; // this episode's ladder mount: 186.866-236.648
+  function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
   tl.set(["#lr-1","#lr-2","#lr-3","#lr-4","#lr-5","#lad-conn","#lad-connlab","#lad-chip"], { autoAlpha: 0 }, 0);
   tl.set("#lad-conn", { scaleX: 0 }, 0);
   tl.fromTo("#lad-l", { x:-60, autoAlpha:0 }, { x:0, autoAlpha:1, duration:0.6 }, 0);
