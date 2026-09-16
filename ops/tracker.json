@@ -406,9 +406,9 @@
       "owner": "director",
       "due": "16 Sep 26",
       "phase": "preview",
-      "status": "doing",
-      "note": "draft render running (owner override at 3.1 GB free)",
-      "updated": "17 Sep 26 02:42"
+      "status": "done",
+      "note": "draft rendered 17 Sep, 9:22, NVIDIA probe OK, 12.8 min render; awaiting owner review",
+      "updated": "17 Sep 26 03:02"
     },
     {
       "slug": "ms-dujuan-two-tracks",
@@ -455,8 +455,8 @@
       "due": "16 Sep 26",
       "phase": "preview",
       "status": "doing",
-      "note": "draft queued behind U1",
-      "updated": "17 Sep 26 02:42"
+      "note": "draft rendering",
+      "updated": "17 Sep 26 03:02"
     },
     {
       "slug": "ms-dujuan-holiday-typhoons",
