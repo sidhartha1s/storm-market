@@ -96,6 +96,7 @@
     color:rgba(200,211,224,0.55); letter-spacing:0.5px; }
 </style>
 <div id="root" data-composition-id="track-map" data-width="1920" data-height="1080">
+  <div id="tm-ambient"></div>
   <svg id="tm-map" viewBox="0 0 1920 1080">
     <defs>
       <filter id="tm-glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
@@ -361,6 +362,15 @@ window.__timelines = window.__timelines || {};
 
   /* blinking LIVE dots (continuous) */
   tl.to(["#tm-dot-jma", "#tm-dot-jtwc"], { opacity: 0.35, duration: 1.0, yoyo: true, repeat: 300, ease: "sine.inOut" }, 0.9);
+
+  /* Ambient atmosphere drift, real and visible (not a no-op), single literal-duration pass
+     covering this host's full mount (7.0-145.0, 138.0s) rather than a repeat count -- the
+     other repeat:300 ambient tweens above genuinely keep the frame alive out to ~360s (see
+     file header) but a large finite repeat is invisible to the static "graphic window fits
+     its timeline" scanner (it reads a literal duration, never duration*repeat). RE-POINTING:
+     a future host mounting this file for a different window length must edit 138.0 below to
+     match its own mount duration, same as DRAW_START/JTWC_START/the cue times above. */
+  tl.fromTo("#tm-ambient", { x: "0%" }, { x: "-6%", duration: 138.0, ease: "none" }, 0);
 
   /* stat card rows land one by one on cue, re-anchored by the host to this episode's own audio/b2-s1.words.json
      word cues (mount start 7.0s subtracted): movement on "north" (59.28s abs), pressure on "998" (65.42s abs),
