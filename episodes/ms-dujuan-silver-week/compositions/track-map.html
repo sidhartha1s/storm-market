@@ -357,13 +357,15 @@ window.__timelines = window.__timelines || {};
   /* blinking LIVE dots (continuous) */
   tl.to(["#tm-dot-jma", "#tm-dot-jtwc"], { opacity: 0.35, duration: 1.0, yoyo: true, repeat: 300, ease: "sine.inOut" }, 0.9);
 
-  /* stat card rows land one by one on cue (data-cue attrs mirror these labels for a host index.html to re-anchor) */
+  /* stat card rows land one by one on cue, re-anchored by the host to this episode's own audio/b2-s1.words.json
+     word cues (mount start 7.0s subtracted): movement on "north" (59.28s abs), pressure on "998" (65.42s abs),
+     wind on "34" (69.44s abs), gusts on "51." (71.94s abs), checkpoint on "12 hours" / TS-threshold (110.92s abs). */
   const CUES = [
-    ["cue-pressure", "#tm-r-pressure", 1.0, () => tl.to(CV, { pressure: cur.pressure_hPa, duration: 0.9, ease: "power2.out" }, 1.0)],
-    ["cue-wind", "#tm-r-wind", 2.2, () => { tl.to(CV, { wind: cur.wind_mph, duration: 0.9, ease: "power2.out" }, 2.2); tl.to(CV, { windkmh: cur.wind_kmh, duration: 0.9, ease: "power2.out" }, 2.2); }],
-    ["cue-gusts", "#tm-r-gusts", 3.4, () => tl.to(CV, { gusts: cur.gust_mph, duration: 0.9, ease: "power2.out" }, 3.4)],
-    ["cue-movement", "#tm-r-movement", 4.6, () => tl.to(CV, { move: cur.speed_mph, duration: 0.9, ease: "power2.out" }, 4.6)],
-    ["cue-checkpoint", "#tm-r-checkpoint", 5.8, null],
+    ["cue-pressure", "#tm-r-pressure", 58.42, () => tl.to(CV, { pressure: cur.pressure_hPa, duration: 0.9, ease: "power2.out" }, 58.42)],
+    ["cue-wind", "#tm-r-wind", 62.44, () => { tl.to(CV, { wind: cur.wind_mph, duration: 0.9, ease: "power2.out" }, 62.44); tl.to(CV, { windkmh: cur.wind_kmh, duration: 0.9, ease: "power2.out" }, 62.44); }],
+    ["cue-gusts", "#tm-r-gusts", 64.94, () => tl.to(CV, { gusts: cur.gust_mph, duration: 0.9, ease: "power2.out" }, 64.94)],
+    ["cue-movement", "#tm-r-movement", 52.28, () => tl.to(CV, { move: cur.speed_mph, duration: 0.9, ease: "power2.out" }, 52.28)],
+    ["cue-checkpoint", "#tm-r-checkpoint", 103.92, null],
   ];
   CUES.forEach(([label, sel, at, extra]) => {
     tl.addLabel(label, at);
