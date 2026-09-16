@@ -385,6 +385,18 @@
       "status": "doing",
       "note": "full render 7:09, first render on GTX 1650 (23 min); -14.01 LUFS master + SRT + metadata in main checkout episodes/ms-kauai-lowell-day2/renders; upload pending",
       "updated": "15 Sep 26 14:13"
+    },
+    {
+      "slug": "sh-hawaii-lowell-1",
+      "lane": "shorts",
+      "bucket": "hawaii-lowell",
+      "title": "Kauai Is Still Counting: 8,000 Homes Dark (S1 demo short)",
+      "owner": "director",
+      "due": "16 Sep 26",
+      "phase": "preview",
+      "status": "doing",
+      "note": "preview v2 rendered, static gates green, owner eyeball pending",
+      "updated": "16 Sep 26 09:38"
     }
   ]
 }
