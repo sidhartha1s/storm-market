@@ -127,6 +127,9 @@ points.append({
     "gust_mph": mph(kt=cur_wind.group(2)),
     "category": "Tropical Depression",
     "warning_no": warning_no,
+    "movement_deg": int(mv.group(1)) if mv else None,
+    "movement_kt": int(mv.group(2)) if mv else None,
+    "movement_mph": mph(kt=mv.group(2)) if mv else None,
 })
 
 # JTWC forecast checkpoints
