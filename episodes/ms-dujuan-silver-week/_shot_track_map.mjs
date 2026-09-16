@@ -27,6 +27,7 @@ page.on('console', msg => { if (msg.type() === 'error') errors.push('console: ' 
 
 await page.goto('file:///' + outFile.replace(/\\/g, '/'), { waitUntil: 'load' });
 await page.waitForTimeout(150);
+console.log('ERRORS-EARLY', JSON.stringify(errors));
 
 const probe = await page.evaluate(() => {
   const k = Object.keys(window.__timelines || {})[0];
