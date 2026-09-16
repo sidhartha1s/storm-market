@@ -43,16 +43,19 @@ window.__timelines = window.__timelines || {};
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
   tl.set(["#gc-soft","#gc-brand","#gc-rule"], { autoAlpha: 0 }, 0);
   tl.set("#gc-rule", { scaleX: 0 }, 0);
-  /* two soft glow blobs drift slowly for the full window — >=40px travel each leg, never a flat static background */
-  tl.to("#gc-glow-a", { x: 170, y: 110, duration: 4.0, ease: "sine.inOut", repeat: repeatsToFit(0, 4.0), yoyo: true }, 0);
-  tl.to("#gc-glow-b", { x: -160, y: -100, duration: 3.88, ease: "sine.inOut", repeat: repeatsToFit(0.5, 3.88), yoyo: true }, 0.5);
+  /* two soft glow blobs drift for the full window — >=200px travel each 3s leg at opacity 0.6, unmistakable
+     even at coarse (3s) sampling, never a flat static background */
+  tl.to("#gc-glow-a", { x: 180, y: 150, duration: 3.0, ease: "sine.inOut", repeat: repeatsToFit(0, 3.0), yoyo: true }, 0);
+  tl.to("#gc-glow-b", { x: -180, y: -140, duration: 3.0, ease: "sine.inOut", repeat: repeatsToFit(0.5, 3.0), yoyo: true }, 0.5);
   tl.fromTo("#gc-head", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.7, ease:"power3.out" }, 0.2);
   tl.fromTo("#gc-soft", { autoAlpha:0 }, { autoAlpha:1, duration:0.6 }, 1.2);
   /* subtitle drift bumped to >=8px so it reads as motion, not a subpixel jitter */
   tl.to("#gc-soft", { y: -9, duration: 2.86, ease: "sine.inOut", repeat: repeatsToFit(1.8, 2.86), yoyo: true }, 1.8);
-  tl.fromTo("#gc-rule", { autoAlpha:0, scaleX:0 }, { autoAlpha:1, scaleX:1, duration:0.5, ease:"power2.out" }, 1.9);
-  /* rule line keeps growing/pulsing through the hold instead of freezing right after its reveal */
-  tl.to("#gc-rule", { scaleX: 1.6, duration: 3.2, ease: "sine.inOut", repeat: repeatsToFit(2.5, 3.2), yoyo: true }, 2.5);
+  /* rule line: quick alpha-in, then an unmistakable scaleX sweep 0->1 over a full 4s, then a 1<->1.4 pulse
+     on 1.2s cycles for the rest of the hold */
+  tl.fromTo("#gc-rule", { autoAlpha:0 }, { autoAlpha:1, duration:0.3 }, 1.9);
+  tl.fromTo("#gc-rule", { scaleX:0 }, { scaleX:1, duration:4.0, ease:"power2.out" }, 1.9);
+  tl.to("#gc-rule", { scaleX: 1.4, duration: 1.2, ease: "sine.inOut", repeat: repeatsToFit(5.9, 1.2), yoyo: true }, 5.9);
   tl.fromTo("#gc-brand", { autoAlpha:0 }, { autoAlpha:1, duration:0.6 }, 2.2);
   /* slow ambient letter-spacing breathe on the brand wordmark carries the hold to the end of the window */
   tl.to("#gc-brand", { letterSpacing: "11px", duration: 12.8, ease: "sine.inOut" }, 2.8);
