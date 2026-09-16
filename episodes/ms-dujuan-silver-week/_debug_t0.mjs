@@ -30,4 +30,6 @@ const dump = await page.evaluate(() => {
   }));
 });
 console.log('CIRCLES', JSON.stringify(dump, null, 2));
+await page.screenshot({ path: join(ep, '_debug_shot.png') });
+console.log('screenshot taken in same context');
 await browser.close();
