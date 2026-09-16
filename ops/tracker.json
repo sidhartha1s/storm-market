@@ -393,10 +393,10 @@
       "title": "Kauai Is Still Counting: 8,000 Homes Dark (S1 demo short)",
       "owner": "director",
       "due": "16 Sep 26",
-      "phase": "render",
+      "phase": "upload",
       "status": "done",
-      "note": "final rendered 16 Sep 26 on hyperframes 0.8.41 (owner request); master + SRT built; upload next",
-      "updated": "16 Sep 26 15:18"
+      "note": "uploaded to YouTube as draft 16 Sep 26 (0.8.41 master); previews cleaned",
+      "updated": "16 Sep 26 16:51"
     },
     {
       "slug": "ms-dujuan-silver-week",
