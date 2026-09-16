@@ -45,7 +45,7 @@ quoted section header.
 - `scripts/audio_levels.py` is the gate for insert/narration/bed levels — run it before every mixdown build. → §"Audio levels + media budget hardening"
 - No visible windows, ever — every scheduled/background command runs through `scripts/run_hidden.vbs`. → §"No visible windows, ever"
 - The on-screen text rules (zone occupancy, one fact one instance, no decorative eyebrows, glass under text over footage) live in DESIGN.md — `overlap_check.mjs` v2 enforces them. → §"ep6 draft v2 review — text collisions were a CHECKER false negative"
-- hyperframes 0.8.x opens visible console windows on this box — the pin stays 0.7.109 until an upstream version spawns ffmpeg/ffprobe hidden. → §"ep6 ship"
+- hyperframes 0.8.6–0.8.10 opened visible console windows on this box; 0.8.41 does not and is the pin since 16 Sep 26 (its mixer is a flat ~1.5 dB quieter, corrected by the master step). → §"ep6 ship", §"16 Sep 26 — pin bumped to 0.8.41"
 - Search `library/catalog-index.json` / `npx hyperframes catalog --query` before hand-authoring any graphic — MG library-first. → §"ep6 ship"
 
 ## 2026-09-10 — Krakatau packaging pass: owner corrections on title length and thumbnail plates
@@ -1354,3 +1354,20 @@ master -14.01 LUFS. Owner watched it: "didnt start opening 200 CMD windows … i
 visible-terminal-tab problem that froze the pin is gone on this box at 0.8.41. Not a pin bump by itself: run
 `scripts/pin_ritual.py` against 0.8.41 (the demo A/B on a 48-clip comp is the test that matters, a 5-clip
 short is not) and bump on identical metrics.
+
+## 16 Sep 26 — pin bumped to 0.8.41 on owner order; the ritual's RMS drift is a flat mixer offset
+- `pin_ritual.py` against 0.8.41: duration 84.000/84.000 s, black map 2/2 identical, RMS −16.91 → −18.04 dB,
+  exit 3 (no bump, human decides). Evidence for the decision came from the shorts final, which exists on disk
+  at both versions: 0.7.109 draft −12.9 LUFS, 0.8.41 final −14.5 LUFS. Windowed volumedetect on the same cut:
+  narration windows −1.3 / −1.7 / −1.8 dB, the bed-only window −1.6 dB; narration-to-bed spacing 30.8 vs
+  31.1 dB. Every stem moved together, the balance did not: a flat output-gain change in the 0.8 mixer, and
+  `master_deliverables.py` measures and corrects the master to −14 LUFS regardless. Owner: "bump the pin".
+- Bumped with the ritual's own `bump_pins()` (config.yaml + render.cmd) and the baseline record rewritten
+  from the 0.8.41 demo render (`scripts/pin_baseline.json`: rms −18.04, peak −1.56); the next ritual run
+  compares against 0.8.41, not 0.7.109. The demo mp4 is cached at
+  `episodes/demo-joplin-90/renders/pin-baseline-0.8.41.mp4` for SSIM.
+- New in 0.8.41 and worth reading in every render log: `audio_volume_tween_overrides_gain` (a gsap `volume`
+  tween now REPLACES `data-volume`, it does not scale it; demo-joplin-90's bgm trips it) and
+  `audio_src_not_found` blocks the render instead of shipping a silent track.
+- Ritual gotcha: it prechecked only `media/`, but `audio/` is gitignored too; two launches were wasted in a
+  fresh worktree before the narration wavs were copied. The precheck now covers both.

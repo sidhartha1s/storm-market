@@ -36,8 +36,8 @@ Repo: `C:\Users\Sidhartha\Automation Projects\storm-market`
    (exit 6) — the unblock is the ritual, run at kickoff, never mid-render. Stale-pin full
    renders need the owner's explicit `RENDER_PIN_STALE_OK=1` override (logged by preflight).
    Read the changelog on multi-version bumps regardless. Repo CLAUDE.md "HARD RULE — the pin
-   stays current" + LEARNINGS "ep6 ship" (why 0.8.x is blocked on this box: a visible Windows
-   Terminal tab per ffprobe/ffmpeg spawn) are the source of truth.
+   stays current" + LEARNINGS "ep6 ship" / "16 Sep 26 — pin bumped to 0.8.41" (the 0.8.6–0.8.10
+   visible-terminal-tab block and how it cleared) are the source of truth.
 5. **Rule-change sweep:** `gh pr list --state merged --limit 5` — any PR merged since the
    last episode may have changed the rulebook; skim its description before planning.
 6. **Generator tripwire:**
