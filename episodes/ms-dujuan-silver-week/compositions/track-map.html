@@ -97,7 +97,6 @@
   <svg id="tm-map" viewBox="0 0 1920 1080">
     <defs>
       <filter id="tm-glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-      <mask id="tm-jtwc-mask"><path id="tm-jtwc-maskpath" fill="none" stroke="#fff" stroke-width="40" stroke-linecap="butt" stroke-linejoin="round"/></mask>
     </defs>
     <g id="tm-graticule" opacity="0"></g>
     <g id="tm-land" opacity="0"></g>
@@ -105,7 +104,7 @@
     <g id="tm-past" opacity="0"></g>
     <g id="tm-jma-forecast" data-cue="track-start"></g>
     <g id="tm-jtwc-group" data-cue="jtwc-start" opacity="0">
-      <path id="tm-jtwc-line" fill="none" stroke="#5ec8ff" stroke-width="4" stroke-dasharray="12 9" stroke-linecap="round" mask="url(#tm-jtwc-mask)"/>
+      <path id="tm-jtwc-line" fill="none" stroke="#5ec8ff" stroke-width="4" stroke-dasharray="12 9" stroke-linecap="round"/>
       <g id="tm-jtwc-nodes"></g>
     </g>
     <g id="tm-current" opacity="0"></g>
