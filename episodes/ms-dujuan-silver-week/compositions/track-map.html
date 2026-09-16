@@ -360,7 +360,7 @@ window.__timelines = window.__timelines || {};
   /* first node (the current position's own dot) pops with the eye */
   tl.to(nodeEls[0], { attr: { r: 7 }, opacity: 1, duration: 0.3 }, 0.3);
   /* probability circles breathe once landed */
-  pcEls.forEach((pc, i) => tl.to(pc, { "fill-opacity": 0.16, "stroke-opacity": 0.65, duration: 2.2, yoyo: true, repeat: 300, ease: "sine.inOut" }, cursor + i * 0.15));
+  pcEls.forEach((pc, i) => tl.to(pc, { "fill-opacity": 0.16, "stroke-opacity": 0.65, duration: 2.2, yoyo: true, repeat: repeatsToFit(cursor + i * 0.15, 2.2), ease: "sine.inOut" }, cursor + i * 0.15));
 
   /* JTWC: chip + dashed track reveal where the script first names the American forecasters.
      Re-anchored by the host to "United" in "The United States Navy's Joint Typhoon Warning Center
