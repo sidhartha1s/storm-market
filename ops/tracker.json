@@ -407,8 +407,8 @@
       "due": "16 Sep 26",
       "phase": "tts",
       "status": "doing",
-      "note": "waiting for RAM >= 4.5 GB (owner at work)",
-      "updated": "16 Sep 26 17:13"
+      "note": "TTS running 16 Sep",
+      "updated": "16 Sep 26 17:26"
     },
     {
       "slug": "ms-dujuan-two-tracks",
@@ -455,8 +455,8 @@
       "due": "16 Sep 26",
       "phase": "tts",
       "status": "doing",
-      "note": "next: TTS + atempo 1.10",
-      "updated": "16 Sep 26 17:07"
+      "note": "TTS queued behind U1, 16 Sep",
+      "updated": "16 Sep 26 17:26"
     },
     {
       "slug": "ms-dujuan-holiday-typhoons",
