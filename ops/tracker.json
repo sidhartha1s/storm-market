@@ -393,10 +393,10 @@
       "title": "Kauai Is Still Counting: 8,000 Homes Dark (S1 demo short)",
       "owner": "director",
       "due": "16 Sep 26",
-      "phase": "preview",
+      "phase": "render",
       "status": "done",
-      "note": "preview v4 rendered 16 Sep 26: pins removed, text moved into the 9:16 safe zone, shorts_lint gate PASS; owner eyeball pending",
-      "updated": "16 Sep 26 14:56"
+      "note": "final rendered 16 Sep 26 on hyperframes 0.8.41 (owner request); master + SRT built; upload next",
+      "updated": "16 Sep 26 15:18"
     }
   ]
 }
