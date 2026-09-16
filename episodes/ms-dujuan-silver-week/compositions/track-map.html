@@ -344,8 +344,10 @@ window.__timelines = window.__timelines || {};
   /* probability circles breathe once landed */
   pcEls.forEach((pc, i) => tl.to(pc, { "fill-opacity": 0.16, "stroke-opacity": 0.65, duration: 2.2, yoyo: true, repeat: 300, ease: "sine.inOut" }, cursor + i * 0.15));
 
-  /* JTWC: chip + dashed track reveal after JMA lands */
-  const JTWC_START = cursor + 0.2;
+  /* JTWC: chip + dashed track reveal where the script first names the American forecasters.
+     Re-anchored by the host to "United" in "The United States Navy's Joint Typhoon Warning Center
+     tracks the same storm independently" (audio/b2-s1.words.json, absolute 73.30s -> comp-relative 66.30s). */
+  const JTWC_START = 66.30;
   tl.addLabel("cue-jtwc-start", JTWC_START);
   tl.fromTo("#tm-chip-jtwc", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, JTWC_START);
   tl.to("#tm-jtwc-group", { opacity: 1, duration: 0.2 }, JTWC_START);
