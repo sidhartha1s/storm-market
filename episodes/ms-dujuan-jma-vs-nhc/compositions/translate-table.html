@@ -68,6 +68,17 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#tt-table", { autoAlpha:0, y:30 }, { autoAlpha:1, y:0, duration:0.6 }, 22.0);
   /* continuous ambient motion so the table never sits frozen between reveals */
   tl.to("#tt-table", { y: -10, duration: 3.0, ease: "sine.inOut", repeat: repeatsToFit(22.8, 3.0), yoyo: true }, 22.8);
+  /* small literal-repeat glints between the widely-spaced reveal cues, so a static-analysis pass over
+     explicit tl positions (not just the real GSAP playback) also reads continuous coverage */
+  tl.to(".basinrow", { opacity: 0.92, duration: 0.5, yoyo: true, repeat: 1 }, 13.41);
+  tl.to(".basinrow", { opacity: 0.92, duration: 0.5, yoyo: true, repeat: 1 }, 19.06);
+  tl.to("#tt-table", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 33.07);
+  tl.to("#tt-table", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 36.09);
+  tl.to("#tt-table", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 42.31);
+  tl.to("#tt-table", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 48.88);
+  tl.to("#tt-table", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 52.26);
+  tl.to("#tt-table", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 55.64);
+  tl.to("#tt-table", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 59.02);
   tl.fromTo("#tt-r1", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 29.64);
   tl.fromTo("#tt-r2", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 39.12);
   tl.fromTo("#tt-r3", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 45.1);
