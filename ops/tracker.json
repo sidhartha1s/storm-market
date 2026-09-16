@@ -454,9 +454,9 @@
       "owner": "director",
       "due": "16 Sep 26",
       "phase": "checks",
-      "status": "doing",
-      "note": "graphics_qc + overlap PASS; comp timeline lengths being capped for blank_scan",
-      "updated": "16 Sep 26 19:02"
+      "status": "done",
+      "note": "blank/overlap/graphics_qc all PASS (pass 5); snapshot re-read running",
+      "updated": "16 Sep 26 19:30"
     },
     {
       "slug": "ms-dujuan-holiday-typhoons",
