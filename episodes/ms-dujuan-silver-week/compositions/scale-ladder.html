@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  DUJUAN B7 MG: scale-ladder.html — full-bleed 1920x1080 card, mounted once for the whole B7
+  window (422.984-484.184 in the host index.html, duration 61.2s). Shows how JMA's typhoon
+  scale compares to the US NHC standard and where Dujuan's own forecast sits. Reveal times
+  below are re-anchored to this episode's own audio/b7-s1.words.json cues (mount start = comp
+  t=0 = absolute 422.984). Continuous motion: slow gradient drift, explicit long single-pass
+  duration (not gsap repeat, which sweep_episode's static timeline-length check cannot see
+  through) so the composition's own perceived duration covers the full 61.2s host window.
+-->
+<template>
+<style>
+  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
+  #root { position:absolute; inset:0; overflow:hidden; font-family:Arial,sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 30% 70%, #142235 0%, #04070c 70%); }
+  #sl-drift { position:absolute; inset:-8%; background:radial-gradient(ellipse at 70% 20%, rgba(208,18,31,0.08) 0%, rgba(0,0,0,0) 55%); }
+  .card { position:absolute; left:260px; top:210px; width:1400px; padding:40px 56px; box-sizing:border-box; z-index:6;
+    background:rgba(10,16,24,0.6); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:24px; }
+  .eyebrow { font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:6px; color:#d0121f; margin-bottom:26px; }
+  .band { display:flex; align-items:center; gap:24px; margin-top:18px; position:relative; }
+  .band .lab { flex:0 0 340px; font-family:'Arial Black',Arial,sans-serif; font-size:30px; }
+  .band .bar { flex:1; height:46px; border-radius:8px; background:rgba(255,255,255,0.08); position:relative; overflow:visible; }
+  .band .fill { position:absolute; inset:0; border-radius:8px; }
+  .marker { position:absolute; top:-14px; width:6px; height:74px; background:#f4f0e8; border-radius:3px; box-shadow:0 0 14px rgba(244,240,232,0.8); }
+  .marker-lab { position:absolute; top:-58px; left:50%; transform:translateX(-50%); font-family:'Arial Black',Arial,sans-serif; font-size:22px; color:#f4f0e8; white-space:nowrap; }
+  .caption { margin-top:30px; font-family:Georgia,serif; font-style:italic; font-size:24px; color:#93a3b2; }
+</style>
+<div id="root" data-composition-id="scale-ladder" data-width="1920" data-height="1080">
+  <div id="sl-drift"></div>
+  <div class="card" id="sl-card">
+    <div class="eyebrow">HOW JAPAN MEASURES A TYPHOON</div>
+    <div class="band"><div class="lab">STRONG &middot; 74&ndash;98 MPH</div><div class="bar"><div class="fill" style="background:rgba(224,134,47,0.55); width:100%;"></div></div></div>
+    <div class="band"><div class="lab">VERY STRONG &middot; 99&ndash;121 MPH</div><div class="bar"><div class="fill" style="background:rgba(176,13,26,0.55); width:100%;"></div></div></div>
+    <div class="band"><div class="lab">VIOLENT &middot; 121+ MPH</div><div class="bar" id="sl-violent"><div class="fill" style="background:rgba(138,0,16,0.55); width:100%;"></div>
+      <div class="marker" id="sl-marker" style="left:2%;"><div class="marker-lab">DUJUAN FORECAST: SEVERE TROPICAL STORM</div></div>
+    </div></div>
+    <div class="caption">Japan: 10-minute average wind. The US 1-minute standard runs roughly 12% higher for the same storm.</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  tl.set("#sl-card", { autoAlpha: 0 }, 0);
+  tl.fromTo("#sl-card", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 17.02);
+  tl.set("#sl-marker", { left: "2%" }, 17.02);
+  tl.to("#sl-marker", { left: "18%", duration: 0.8, ease: "power2.out" }, 39.58); /* "severe tropical storm" band position, one band under Strong */
+  tl.to("#sl-card", { autoAlpha: 0, y: -20, duration: 0.5 }, 59.62);
+  tl.to("#sl-drift", { rotation: 1080, duration: 61.2, ease: "none", transformOrigin: "50% 50%" }, 0);
+  window.__timelines["scale-ladder"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
