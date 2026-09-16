@@ -405,10 +405,10 @@
       "title": "Silver Week Collision: A Storm Joins Japan's Biggest Holiday in Years",
       "owner": "director",
       "due": "16 Sep 26",
-      "phase": "checks",
-      "status": "done",
-      "note": "gates pass 8: blank/overlap/graphics_qc all PASS; reader re-measure running",
-      "updated": "16 Sep 26 20:26"
+      "phase": "preview",
+      "status": "doing",
+      "note": "draft render running (owner override at 3.1 GB free)",
+      "updated": "17 Sep 26 02:42"
     },
     {
       "slug": "ms-dujuan-two-tracks",
@@ -453,10 +453,10 @@
       "title": "JMA vs. NHC: How Japan and America Rank the Same Storm",
       "owner": "director",
       "due": "16 Sep 26",
-      "phase": "checks",
-      "status": "done",
-      "note": "gates pass 6 all PASS; draft render queued behind U1",
-      "updated": "16 Sep 26 20:28"
+      "phase": "preview",
+      "status": "doing",
+      "note": "draft queued behind U1",
+      "updated": "17 Sep 26 02:42"
     },
     {
       "slug": "ms-dujuan-holiday-typhoons",
