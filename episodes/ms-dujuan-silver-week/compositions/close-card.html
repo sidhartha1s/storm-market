@@ -44,6 +44,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#cc-title", { autoAlpha: 0, scale: 1.08 }, { autoAlpha: 1, scale: 1, duration: 0.7, ease: "power3.out" }, 0.3);
   tl.fromTo("#cc-sub", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 1.1);
   tl.fromTo("#cc-brand", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 2.0);
+  /* foreground motion after the reveal (background #cc-texture alone read as frozen at 3s
+     sampling): slow drift of the sub-line for the rest of the hold */
+  tl.fromTo("#cc-sub", { x: 0 }, { x: 12, duration: 10.371, ease: "none" }, 1.7);
   /* continuous single-pass drift across the whole 12.071s mount — literal duration equals the
      window so the static "graphic window fits its timeline" scanner reads it correctly */
   tl.fromTo("#cc-texture", { x: "0%" }, { x: "-38%", duration: 12.071, ease: "none" }, 0);
