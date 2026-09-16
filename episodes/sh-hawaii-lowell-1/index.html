@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Kauai Is Still Counting — The Warning Hour short S1 (sh-hawaii-lowell-1, 16 Sep 26)</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #04070c; }
+    video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .clip { position: absolute; inset: 0; }
+    .bc { filter: saturate(0.85) contrast(1.08) brightness(0.95); }
+    @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+
+    /* headline card: top, persistent, our own bug (never a network chyron) */
+    .head { position: absolute; left: 60px; right: 60px; top: 150px; z-index: 7; text-align: left; }
+    .head .eye { display: inline-block; font-family: 'Arial Black', Arial, sans-serif; font-size: 30px; letter-spacing: 6px; color: #fff;
+      background: #d0121f; padding: 10px 22px; }
+    .head .wm { display: inline-block; margin-left: 14px; font-family: Georgia, serif; font-style: italic; font-size: 30px; color: #d8a13a;
+      text-shadow: 0 2px 8px #000; }
+    .head .hl { margin-top: 16px; font-family: 'Arial Black', Arial, sans-serif; font-size: 78px; line-height: 1.02; color: #f4f0e8;
+      -webkit-text-stroke: 1px rgba(0,0,0,0.6); paint-order: stroke fill; text-shadow: 0 0 22px rgba(0,0,0,1), 0 4px 14px #000; }
+
+    /* popfig: red Abril number, mid frame */
+    .popfig { position: absolute; left: 0; right: 0; top: 640px; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; isolation: isolate; }
+    .popfig .pf-big { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 190px; line-height: 1; color: #d0121f; letter-spacing: 0.03em;
+      text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+    .popfig .pf-sub { display: block; margin-top: 14px; font-family: 'Arial Black', Arial, sans-serif; font-size: 40px; color: #f4f0e8; letter-spacing: 0.22em;
+      -webkit-text-stroke: 1px rgba(0,0,0,0.85); paint-order: stroke fill; text-shadow: 0 0 18px rgba(0,0,0,1), 0 3px 10px #000; }
+    .popfig::before { content: ''; position: absolute; left: 6%; right: 6%; top: -110px; bottom: -80px; z-index: -1;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.34) 45%, rgba(0,0,0,0) 74%); }
+
+    /* phrase captions: lower third, above the Shorts UI band, 2 lines of 70 px */
+    .cap { position: absolute; left: 70px; right: 70px; top: 1300px; z-index: 8; text-align: center; font-family: 'Arial Black', Arial, sans-serif;
+      font-size: 70px; line-height: 1.16; color: #fff; -webkit-text-stroke: 1px rgba(0,0,0,0.5); paint-order: stroke fill;
+      background: rgba(6,10,16,0.62); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 22px; padding: 22px 30px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+    .cap b { color: #ff4a58; font-weight: 900; }
+
+    /* chip: one short verdict, bottom-left of the mid zone */
+    .chip { position: absolute; left: 70px; top: 1080px; z-index: 6; font-family: 'Arial Black', Arial, sans-serif; font-size: 38px; letter-spacing: 3px; color: #f4f0e8;
+      background: rgba(10,16,24,0.66); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.14); border-left: 8px solid #d0121f; border-radius: 12px; padding: 16px 28px; }
+
+    /* quote card: verbatim, attributed */
+    .quotecard { position: absolute; left: 70px; right: 70px; top: 560px; z-index: 6; text-align: center;
+      background: rgba(10,16,24,0.66); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+      border: 1px solid rgba(255,255,255,0.16); border-radius: 30px; padding: 56px 54px; box-sizing: border-box; }
+    .quotecard .q { font-family: Georgia, serif; font-style: italic; font-size: 66px; color: #f2f5f8; line-height: 1.25; }
+    .quotecard .attr { margin-top: 34px; font-family: 'Arial Black', Arial, sans-serif; font-size: 34px; letter-spacing: 3px; color: #d8a13a; }
+    .quotecard .role { margin-top: 10px; font-family: Arial, sans-serif; font-size: 28px; letter-spacing: 2px; color: #c8d3e0; }
+
+    /* close card: the funnel line */
+    .closecard { position: absolute; left: 70px; right: 70px; top: 1240px; z-index: 8; text-align: center;
+      background: rgba(208,18,31,0.92); border-radius: 26px; padding: 40px 36px; box-sizing: border-box; box-shadow: 0 14px 50px rgba(0,0,0,0.6); }
+    .closecard .c1 { font-family: 'Arial Black', Arial, sans-serif; font-size: 62px; line-height: 1.1; color: #fff; }
+    .closecard .c2 { margin-top: 16px; font-family: Georgia, serif; font-style: italic; font-size: 34px; color: #ffe2b0; letter-spacing: 1px; }
+
+    #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90; background: radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(0,0,0,0.55) 100%); }
+    #grade { position: absolute; inset: 0; pointer-events: none; z-index: 89; mix-blend-mode: soft-light; background-color: rgba(96,138,178,0.16); }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="sh-hawaii-lowell-1" data-start="0.0" data-width="1080" data-height="1920" data-duration="29.4" data-fps="30">
+
+  <!-- ============ NARRATION (atempo 1.16 wavs; cues from the sped words.json) ============ -->
+  <audio id="nx-s1s1" src="audio/s1-s1.wav" data-start="0.0" data-duration="3.98" data-volume="1"></audio>
+  <audio id="nx-s1s2" src="audio/s1-s2.wav" data-start="4.5" data-duration="9.29" data-volume="1"></audio>
+  <audio id="nx-s1s3" src="audio/s1-s3.wav" data-start="14.3" data-duration="7.09" data-volume="1"></audio>
+  <audio id="nx-s1s4" src="audio/s1-s4.wav" data-start="21.9" data-duration="6.29" data-volume="1"></audio>
+
+  <!-- ============ BED (parent's tension score, 0.13 under narration) ============ -->
+  <audio id="sx-bed" src="media/score-act5-tension.mp3" data-bed="" data-start="0.0" data-duration="29.4" data-volume="0.13"></audio>
+
+  <!-- ============ TRACK 1 — hand-authored cut list (all clips pre-cropped 1080x1920) ============ -->
+  <video id="vx-1-crews" src="media/video/pexels_electricians_repairing_power_lines.mp4" data-start="0.0" data-duration="4.5" data-track-index="1" muted></video>
+  <video id="vx-2-wake" class="bc" src="media/video/news_kauai_wake_up_damage.mp4" data-start="4.5" data-duration="5.1" data-track-index="1" muted></video>
+  <video id="vx-3-c17" src="media/video/dvids_hickam_airlift_kauai_0912.mp4" data-start="9.6" data-duration="4.7" data-track-index="1" muted></video>
+  <video id="vx-4-lightning" src="media/video/pexels_lightning_power_lines.mp4" data-start="14.3" data-duration="3.4" data-track-index="1" muted></video>
+  <video id="vx-5-crews2" src="media/video/pexels_electricians_repairing_power_lines.mp4" data-start="17.7" data-duration="4.2" data-track-index="1" data-callback="second use, the crews under the utility's promise" muted></video>
+  <video id="vx-6-chinook" src="media/video/dvids_hing_resupply_kauai_0907.mp4" data-start="21.9" data-duration="7.5" data-track-index="1" muted></video>
+
+  <!-- ============ HEADLINE (persistent; frame 1 is the thumbnail, last frame loops into it) ============ -->
+  <section class="clip" id="p-head" data-start="0.0" data-duration="29.4" data-track-index="3">
+    <div class="head" id="head"><span class="eye">LATEST UPDATE</span><span class="wm">The Warning Hour</span><div class="hl">KAUAI ·<br>ONE WEEK LATER</div></div>
+  </section>
+
+  <!-- ============ POPFIGS (track 5; each start = the spoken word) ============ -->
+  <section class="clip" id="p-pf-8000" data-start="1.90" data-duration="2.5" data-track-index="5"><div class="popfig" id="pf-8000"><span class="pf-big">8,000</span><span class="pf-sub">HOMES STILL DARK</span></div></section>
+  <section class="clip" id="p-pf-81" data-start="6.66" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-81"><span class="pf-big">81%</span><span class="pf-sub">OF KAUAI HAS POWER</span></div></section>
+  <section class="clip" id="p-pf-3dead" data-start="21.90" data-duration="2.5" data-track-index="5"><div class="popfig" id="pf-3dead"><span class="pf-big">3 DEAD</span><span class="pf-sub">2 KAUAI · 1 OAHU</span></div></section>
+
+  <!-- ============ CHIPS (track 4) ============ -->
+  <section class="clip" id="p-chip-ns" data-start="10.54" data-duration="3.26" data-track-index="4"><div class="chip" id="chip-ns">NORTH SHORE · NO DATE</div></section>
+  <section class="clip" id="p-chip-none" data-start="25.68" data-duration="0.9" data-track-index="4"><div class="chip" id="chip-none">A WEEK AGO: NONE</div></section>
+
+  <!-- ============ QUOTE CARD (track 5, lands on "We know", holds to the end of the line) ============ -->
+  <section class="clip" id="p-quote" data-start="18.28" data-duration="3.62" data-track-index="5">
+    <div class="quotecard" id="quote"><div class="q">“We know our members want to know when their power will be restored.”</div><div class="attr">DAVID BISSELL</div><div class="role">PRESIDENT AND CEO · KIUC</div></div>
+  </section>
+
+  <!-- ============ CAPTIONS (track 8; phrase captions, the spoken words, red on the number) ============ -->
+  <section class="clip" id="p-cap-1" data-start="0.0" data-duration="1.85" data-track-index="8"><div class="cap" id="cap-1">Kauai is still counting.</div></section>
+  <section class="clip" id="p-cap-2" data-start="1.90" data-duration="2.5" data-track-index="8"><div class="cap" id="cap-2"><b>8,000 homes</b><br>are dark tonight.</div></section>
+  <section class="clip" id="p-cap-3" data-start="4.5" data-duration="2.1" data-track-index="8"><div class="cap" id="cap-3">One week after<br>Hurricane Lowell,</div></section>
+  <section class="clip" id="p-cap-4" data-start="6.66" data-duration="2.7" data-track-index="8"><div class="cap" id="cap-4"><b>81%</b> of the island<br>has its power back.</div></section>
+  <section class="clip" id="p-cap-5" data-start="9.42" data-duration="2.2" data-track-index="8"><div class="cap" id="cap-5">The rest is<br>the North Shore,</div></section>
+  <section class="clip" id="p-cap-6" data-start="11.70" data-duration="2.5" data-track-index="8"><div class="cap" id="cap-6">and the utility<br>will not give a date.</div></section>
+  <section class="clip" id="p-cap-7" data-start="14.3" data-duration="2.5" data-track-index="8"><div class="cap" id="cap-7">Its chief executive,<br>David Bissell,</div></section>
+  <section class="clip" id="p-cap-8" data-start="16.88" data-duration="1.3" data-track-index="8"><div class="cap" id="cap-8">says only this.</div></section>
+  <section class="clip" id="p-cap-9" data-start="21.9" data-duration="2.5" data-track-index="8"><div class="cap" id="cap-9"><b>Three people</b><br>are confirmed dead.</div></section>
+  <section class="clip" id="p-cap-10" data-start="24.5" data-duration="1.9" data-track-index="8"><div class="cap" id="cap-10">A week ago<br>the county said none.</div></section>
+
+  <!-- ============ CLOSE CARD (the funnel line, on "full update"; holds to the end) ============ -->
+  <section class="clip" id="p-close" data-start="26.58" data-duration="2.82" data-track-index="8">
+    <div class="closecard" id="close"><div class="c1">THE FULL UPDATE<br>IS ON THE CHANNEL</div><div class="c2">The Warning Hour · related video below</div></div>
+  </section>
+
+  <div id="grade"></div>
+  <div id="vignette"></div>
+</div>
+
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const DUR = 29.4;
+  const tl = gsap.timeline({ paused: true });
+
+  // headline: eyebrow slides in, headline rises; slow drift for the whole window (never a frozen hold)
+  tl.fromTo("#head .eye", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 0);
+  tl.fromTo("#head .wm", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.2);
+  tl.fromTo("#head .hl", { y: 30, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, ease: "power3.out" }, 0.25);
+  tl.to("#head", { y: -6, duration: DUR - 0.6, ease: "none" }, 0.6);
+
+  // popfigs: pop in on the spoken word, drift up, fade out at the window end
+  const pops = [["#pf-8000", 1.90, 2.5], ["#pf-81", 6.66, 3.0], ["#pf-3dead", 21.90, 2.5]];
+  for (const [id, at, dur] of pops) {
+    tl.fromTo(id, { scale: 0.6, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.32, ease: "back.out(2.2)" }, at);
+    tl.to(id, { y: -18, duration: dur - 0.32, ease: "none" }, at + 0.32);
+    tl.to(id, { autoAlpha: 0, duration: 0.2 }, at + dur - 0.2);
+  }
+
+  // chips: slide in from the left, out to the left
+  const chips = [["#chip-ns", 10.54, 3.26], ["#chip-none", 25.68, 0.9]];
+  for (const [id, at, dur] of chips) {
+    tl.fromTo(id, { x: -500, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, at);
+    tl.to(id, { x: -500, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, at + dur - 0.3);
+  }
+
+  // quote card: rises on "We know", holds, slides out at the segment end
+  tl.fromTo("#quote", { y: 60, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 18.28);
+  tl.to("#quote", { y: -8, duration: 2.8, ease: "none" }, 18.73);
+  tl.to("#quote", { y: -80, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, 21.6);
+
+  // captions: rise in on their cue, drop out at their window end
+  const caps = [["#cap-1", 0.0, 1.85], ["#cap-2", 1.90, 2.5], ["#cap-3", 4.5, 2.1], ["#cap-4", 6.66, 2.7], ["#cap-5", 9.42, 2.2],
+                ["#cap-6", 11.70, 2.5], ["#cap-7", 14.3, 2.5], ["#cap-8", 16.88, 1.3], ["#cap-9", 21.9, 2.5], ["#cap-10", 24.5, 1.9]];
+  for (const [id, at, dur] of caps) {
+    tl.fromTo(id, { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.22, ease: "power2.out" }, at);
+    tl.to(id, { y: -10, autoAlpha: 0, duration: 0.18 }, at + dur - 0.18);
+  }
+
+  // close card: slides up on "full update" and holds to the last frame
+  tl.fromTo("#close", { y: 120, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 26.58);
+  tl.to("#close", { scale: 1.02, duration: 2.3, ease: "none" }, 27.03);
+
+  window.__timelines["sh-hawaii-lowell-1"] = tl;
+})();
+</script>
+</body>
+</html>
