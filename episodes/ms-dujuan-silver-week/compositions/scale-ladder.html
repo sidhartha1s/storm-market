@@ -26,8 +26,12 @@
   .band .bar { flex:1; height:46px; border-radius:8px; background:rgba(255,255,255,0.08); position:relative; overflow:visible; }
   .band .fill { position:absolute; inset:0; border-radius:8px; }
   .marker { position:absolute; top:-14px; width:6px; height:74px; background:#f4f0e8; border-radius:3px; box-shadow:0 0 14px rgba(244,240,232,0.8); }
-  .marker-lab { position:absolute; top:-58px; left:50%; transform:translateX(-50%); font-family:'Arial Black',Arial,sans-serif; font-size:22px; color:#f4f0e8; white-space:nowrap; }
-  .marker-num { position:absolute; top:-122px; left:50%; transform:translateX(-50%); font-family:'AbrilFig',Georgia,serif; font-size:58px; color:#f4f0e8; white-space:nowrap; text-shadow:0 2px 12px rgba(0,0,0,0.7); }
+  /* readout: a dedicated row below all three bands (not floating text pinned above the marker,
+     which crossed the rung above it in a stacked card this compact) -- big(58px)/mid(22px)
+     tiers, own bounding box, nothing else shares it */
+  .readout { display:flex; align-items:baseline; gap:22px; margin-top:26px; padding-top:22px; border-top:1px solid rgba(255,255,255,0.12); }
+  .readout-num { font-family:'AbrilFig',Georgia,serif; font-size:58px; line-height:1; color:#f4f0e8; text-shadow:0 2px 12px rgba(0,0,0,0.7); }
+  .readout-lab { font-family:'Arial Black',Arial,sans-serif; font-size:22px; color:#f4f0e8; letter-spacing:1px; }
   .caption { margin-top:30px; font-family:Georgia,serif; font-style:italic; font-size:24px; color:#93a3b2; }
 </style>
 <div id="root" data-composition-id="scale-ladder" data-width="1920" data-height="1080">
