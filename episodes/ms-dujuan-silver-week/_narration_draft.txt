@@ -9,14 +9,16 @@ Two outcomes are still open tonight.
 One track curves the storm into Kanto, the region that holds Tokyo.
 The other slides it by, offshore, weakened but still felt.
 Both possibilities remain in tonight's forecast.
-At seven ten Wednesday evening, Japan time, the storm sits near the Mariana Islands, drifting north toward Japan.
+At seven ten Wednesday evening, Japan time, the storm sits near the Mariana Islands.
+It is moving north at nine miles per hour, a slow crawl for a system this size.
 Central pressure reads nine hundred ninety eight hectopascals.
 Sustained winds run thirty four miles per hour, with gusts to fifty one.
 The United States Navy's Joint Typhoon Warning Center tracks the same storm independently, southeast of Guam.
 Its own reading calls sustained winds thirty five miles per hour, gusting near forty six.
 Neither agency has given the storm a name yet.
 Its forecast has the storm strengthening fast.
-Winds reach forty six miles per hour within twelve hours, fifty eight within a day, and hold near fifty eight for a day after that.
+Winds reach forty six miles per hour within twelve hours, then fifty eight within a day.
+They hold near fifty eight for a day after that.
 Japan expects a slower climb. Sustained winds cross the tropical storm threshold within twelve hours.
 At that point, the system becomes this year's twenty fifth typhoon.
 No populated coastline sits inside the storm's strongest wind field yet.
@@ -40,11 +42,13 @@ The other has it doing exactly what both agencies show right now, sliding past, 
 This storm's arrival collides with Japan's calendar in an unusual way.
 Saturday opens Japan's first full five-day Silver Week in eleven years, running through next Wednesday.
 The last one like it was 2015. The next one isn't until 2032.
+In the United States, the closest comparison is a storm approaching over a Fourth of July or Labor Day weekend, when the roads and airports already sit at capacity.
 Japan Railways already reserved every seat on its flagship bullet train between Friday and next Wednesday, retiring the normal unreserved cars for the week.
 Rail operators expect the worst outbound crowding Friday evening and Saturday morning, and the worst return crowding next Wednesday.
 That decision was made before this storm existed, for the holiday crowd alone.
 On Saturday, the same day Silver Week begins, an international multi-sport event opens in Nagoya.
-Part of its athletes' village, at least four thousand people, floats on a cruise ship in the harbor.
+Athletes from more than forty six nations are already competing there this week.
+Part of the host city's athletes' village, at least four thousand people, floats on a cruise ship in the harbor.
 Nagoya sits outside every track Japan's weather agency has published for this storm.
 Millions of people, already committed to trains, flights, and hotel bookings for this holiday, now watch a forecast that updates by the hour.
 For Americans, these numbers matter beyond the weather map.
@@ -52,8 +56,9 @@ Every hurricane season, Americans navigate this same kind of shifting forecast a
 This week, the same uncertainty sits over a different ocean, aimed at a different coast.
 Anyone flying into or out of Japan for Silver Week is booking travel for the same five days.
 Those are the same five days this storm is forecast to be nearest the country.
+Japan drew forty two point seven million international visitors last year, more than any year on record.
 Americans already traveling in Japan for the holiday face the same rail and flight uncertainty Japanese travelers do.
-They read a foreign-language forecast on top of it.
+The forecast they're checking is written in a language most of them don't speak.
 This storm's possible path runs through the Kanto region, home to two of the largest American military installations overseas.
 Fleet Activities Yokosuka is home port to the Seventh Fleet.
 Yokota Air Base is headquarters for United States Forces Japan.
@@ -62,8 +67,11 @@ The storm has not been named yet.
 Japan and the United States measure typhoon winds differently, and that difference matters here.
 Japan's agency reports a ten-minute average wind.
 American forecasters report a one-minute average, which runs roughly twelve percent higher for the same storm.
-Japan's own scale reserves the label Strong Typhoon for systems whose ten-minute winds run between seventy four and ninety eight miles per hour.
-Right now, Japan's own longest forecast keeps Dujuan one full band below that, in the Severe Tropical Storm range.
+Japan's scale has three bands above typhoon strength.
+Strong Typhoon runs seventy four to ninety eight miles per hour.
+Very Strong runs ninety nine to one hundred twenty one.
+Violent starts above that.
+Right now, Japan's own longest forecast keeps Dujuan below all three, in the Severe Tropical Storm range, one full band under Strong.
 Using that twelve percent conversion, the forecast's sixty seven miles per hour sustained becomes roughly seventy five miles per hour.
 That is the American one-minute standard.
 That number sits right at the entry threshold for a category one hurricane.
