@@ -406,9 +406,9 @@
       "owner": "director",
       "due": "16 Sep 26",
       "phase": "tts",
-      "status": "doing",
-      "note": "TTS running 16 Sep",
-      "updated": "16 Sep 26 17:26"
+      "status": "done",
+      "note": "9 segs, 8.99 min at atempo 1.10 (16 Sep)",
+      "updated": "16 Sep 26 17:38"
     },
     {
       "slug": "ms-dujuan-two-tracks",
@@ -454,9 +454,9 @@
       "owner": "director",
       "due": "16 Sep 26",
       "phase": "tts",
-      "status": "doing",
-      "note": "TTS queued behind U1, 16 Sep",
-      "updated": "16 Sep 26 17:26"
+      "status": "done",
+      "note": "10 segs, 8.62 min at atempo 1.10 (16 Sep)",
+      "updated": "16 Sep 26 17:38"
     },
     {
       "slug": "ms-dujuan-holiday-typhoons",
