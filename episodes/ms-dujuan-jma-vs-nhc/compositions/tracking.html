@@ -38,9 +38,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#trk-card", { autoAlpha:0, scale:0.94 }, { autoAlpha:1, scale:1, duration:0.6, ease:"power3.out" }, 0);
   /* continuous ambient motion (slow status-line pulse) so the card never sits frozen for the whole hold */
   tl.to(".status", { opacity: 0.72, duration: 1.8, ease: "sine.inOut", repeat: 8, yoyo: true }, 0.6);
-  tl.fromTo("#trk-hl", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.5 }, 6.92);
-  tl.to("#trk-hl", { boxShadow: "0 0 34px rgba(208,18,31,0.55)", duration: 1.2, ease: "sine.inOut", repeat: 7, yoyo: true }, 7.4);
-  tl.to("#trk-card", { autoAlpha:0, duration:0.5 }, 16.4);
+  tl.fromTo("#trk-hl", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.5 }, 8.92);
+  tl.to("#trk-hl", { boxShadow: "0 0 34px rgba(208,18,31,0.55)", duration: 1.2, ease: "sine.inOut", repeat: 7, yoyo: true }, 9.4);
+  tl.to("#trk-card", { autoAlpha:0, duration:0.5 }, 18.4);
   window.__timelines["tracking"] = tl;
 })();
 </script>
