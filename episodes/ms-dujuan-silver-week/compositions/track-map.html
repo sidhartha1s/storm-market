@@ -199,26 +199,22 @@ window.__timelines = window.__timelines || {};
   const fcChain = [{ lat: TRACK.jma.current.lat, lon: TRACK.jma.current.lon, category: TRACK.jma.current.category }, ...TRACK.jma.forecast];
   const fcProj = fcChain.map(p => proj(p.lat, p.lon));
   const segEls = [], nodeEls = [], pcEls = [], segLens = [];
-  const defs = document.querySelector("#tm-map defs");
   let totalLen = 0;
-  /* Each segment is a plain always-on solid stroke, revealed through its own dashoffset-driven
-     <mask> -- exactly the JTWC technique below, which measurably has none of the artifact this
-     paragraph used to describe. Animating strokeDashoffset directly on the VISIBLE path left a
-     small but real rasterized fragment at the hidden tip in this Chromium build (confirmed: it
-     survived butt caps and a +2px offset margin, and vanished only when the same reveal ran
-     inside a <mask> instead -- see JTWC's tm-jtwc-mask, which never showed the artifact). */
+  /* Root-caused during build: a strokeDasharray/strokeDashoffset "hidden then drawn" line --
+     tried both directly on the visible path AND through a <mask> (the exact technique that
+     looked clean on the JTWC track) -- left a small but real rasterized fragment at the
+     segment's hidden tip in this Chromium build, confirmed via elementsFromPoint + per-pixel
+     probes with elements progressively removed from the DOM. Opacity-only staggering has been
+     reliable for every other element in this file (land, graticule, card, chips, footer) with
+     zero exceptions across the same test, so the "pen draws along the line" flourish is traded
+     for a plain per-segment fade-in -- still stages the track outward over DRAW_TOTAL, just
+     without the literal drawing-tip motion. */
   for (let i = 1; i < fcChain.length; i++) {
-    const d = `M ${fcProj[i - 1].join(" ")} L ${fcProj[i].join(" ")}`;
-    const maskId = `tm-fc-mask-${i}`;
-    const maskPath = el("path", { d, fill: "none", stroke: "#fff", "stroke-width": 40, "stroke-linecap": "butt" });
-    const mask = el("mask", { id: maskId });
-    mask.appendChild(maskPath);
-    defs.appendChild(mask);
-    const p = el("path", { d, fill: "none", stroke: CAT_COLOR[fcChain[i].category] || "#8a94a0", "stroke-width": 5, "stroke-linecap": "round", mask: `url(#${maskId})` });
+    const [x0, y0] = fcProj[i - 1], [x1, y1] = fcProj[i];
+    const len = Math.hypot(x1 - x0, y1 - y0);
+    const p = el("path", { d: `M ${x0} ${y0} L ${x1} ${y1}`, fill: "none", stroke: CAT_COLOR[fcChain[i].category] || "#8a94a0", "stroke-width": 5, "stroke-linecap": "round" });
     fcGroup.appendChild(p);
-    const len = maskPath.getTotalLength();
-    gsap.set(maskPath, { strokeDasharray: len, strokeDashoffset: len + 2 });
-    p.__maskPath = maskPath; /* the tween below animates the mask's path, not the visible one */
+    gsap.set(p, { opacity: 0 });
     segEls.push(p); segLens.push(len); totalLen += len;
   }
   fcChain.forEach((pt, i) => {
