@@ -14,7 +14,7 @@
     @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
 
     /* headline card: top, persistent, our own bug (never a network chyron) */
-    .head { position: absolute; left: 60px; right: 60px; top: 150px; z-index: 7; text-align: left; }
+    .head { position: absolute; left: 60px; right: 180px; top: 250px; z-index: 7; text-align: left; }
     .head .eye { display: inline-block; font-family: 'Arial Black', Arial, sans-serif; font-size: 30px; letter-spacing: 6px; color: #fff;
       background: #d0121f; padding: 10px 22px; }
     .head .wm { display: inline-block; margin-left: 16px; font-family: 'Arial Black', Arial, sans-serif; font-size: 34px; letter-spacing: 2px; color: #ffd27a;
@@ -32,7 +32,7 @@
       background: radial-gradient(ellipse at center, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.34) 45%, rgba(0,0,0,0) 74%); }
 
     /* phrase captions: lower third, above the Shorts UI band, 2 lines of 70 px */
-    .cap { position: absolute; left: 70px; right: 70px; top: 1300px; z-index: 8; text-align: center; font-family: 'Arial Black', Arial, sans-serif;
+    .cap { position: absolute; left: 60px; right: 180px; top: 1220px; z-index: 8; text-align: center; font-family: 'Arial Black', Arial, sans-serif;
       font-size: 70px; line-height: 1.16; color: #fff; -webkit-text-stroke: 1px rgba(0,0,0,0.5); paint-order: stroke fill;
       background: rgba(6,10,16,0.62); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 22px; padding: 22px 30px;
       box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
@@ -44,29 +44,19 @@
       border: 1px solid rgba(255,255,255,0.14); border-left: 8px solid #d0121f; border-radius: 12px; padding: 16px 28px; }
 
     /* quote card: verbatim, attributed */
-    .quotecard { position: absolute; left: 70px; right: 70px; top: 560px; z-index: 6; text-align: center;
+    .quotecard { position: absolute; left: 60px; right: 180px; top: 560px; z-index: 6; text-align: center;
       background: rgba(10,16,24,0.66); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
       border: 1px solid rgba(255,255,255,0.16); border-radius: 30px; padding: 56px 54px; box-sizing: border-box; }
-    .quotecard .q { font-family: Georgia, serif; font-style: italic; font-size: 66px; color: #f2f5f8; line-height: 1.25; }
+    .quotecard .q { font-family: Georgia, serif; font-style: italic; font-size: 60px; color: #f2f5f8; line-height: 1.25; }
     .quotecard .attr { margin-top: 34px; font-family: 'Arial Black', Arial, sans-serif; font-size: 34px; letter-spacing: 3px; color: #d8a13a; }
     .quotecard .role { margin-top: 10px; font-family: Arial, sans-serif; font-size: 28px; letter-spacing: 2px; color: #c8d3e0; }
 
     /* close card: the funnel line */
-    .closecard { position: absolute; left: 70px; right: 70px; top: 1240px; z-index: 8; text-align: center;
+    .closecard { position: absolute; left: 60px; right: 180px; top: 1190px; z-index: 8; text-align: center;
       background: rgba(208,18,31,0.92); border-radius: 26px; padding: 40px 36px; box-sizing: border-box; box-shadow: 0 14px 50px rgba(0,0,0,0.6); }
     .closecard .c1 { font-family: 'Arial Black', Arial, sans-serif; font-size: 62px; line-height: 1.1; color: #fff; }
     .closecard .c2 { margin-top: 16px; font-family: Georgia, serif; font-style: italic; font-size: 34px; color: #ffe2b0; letter-spacing: 1px; }
 
-    /* tracked pin: ring on the object + a leader line + a label; x/y keyframes baked from an offline track */
-    .pin { position: absolute; left: 0; top: 0; z-index: 6; width: 0; height: 0; }
-    .pin .ring { position: absolute; left: -46px; top: -46px; width: 92px; height: 92px; border: 6px solid #ff2a3a; border-radius: 50%;
-      box-shadow: 0 0 0 4px rgba(0,0,0,0.45), 0 0 24px rgba(255,42,58,0.7); }
-    .pin .lead { position: absolute; left: 40px; top: 40px; width: 150px; height: 6px; background: #ff2a3a; transform-origin: 0 50%; transform: rotate(35deg);
-      box-shadow: 0 0 0 2px rgba(0,0,0,0.4); }
-    .pin .lab { position: absolute; left: 150px; top: 110px; white-space: nowrap; font-family: 'Arial Black', Arial, sans-serif; font-size: 34px; letter-spacing: 2px; color: #f4f0e8;
-      background: rgba(10,16,24,0.7); border-left: 8px solid #ff2a3a; border-radius: 10px; padding: 12px 22px; }
-    .pin.up .lead { transform: rotate(-35deg); top: -40px; }
-    .pin.up .lab { top: -190px; }
     #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90; background: radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(0,0,0,0.55) 100%); }
     #grade { position: absolute; inset: 0; pointer-events: none; z-index: 89; mix-blend-mode: soft-light; background-color: rgba(96,138,178,0.16); }
   </style>
@@ -84,8 +74,6 @@
   <audio id="sx-bed" src="media/score-act5-tension.mp3" data-bed="" data-start="0.0" data-duration="29.4" data-volume="0.13"></audio>
 
   <!-- ============ SFX HOOKS (short, under speech at ~0.45; riser ends WITH the line, hit lands ON the cut) ============ -->
-  <audio id="sx-pop-pin1" src="media/sfx/pop.wav" data-bed="" data-start="0.40" data-duration="0.12" data-volume="0.40"></audio>
-  <audio id="sx-pop-pin2" src="media/sfx/pop.wav" data-bed="" data-start="9.90" data-duration="0.12" data-volume="0.40"></audio>
   <audio id="sx-pop-8000" src="media/sfx/pop.wav" data-bed="" data-start="1.90" data-duration="0.12" data-volume="0.45"></audio>
   <audio id="sx-riser-hook" src="media/sfx/riser-1s2.wav" data-bed="" data-start="2.78" data-duration="1.2" data-volume="0.40"></audio>
   <audio id="sx-hit-cut" src="media/sfx/hit.wav" data-bed="" data-start="4.50" data-duration="0.6" data-volume="0.50"></audio>
@@ -102,10 +90,6 @@
   <video id="vx-4-lightning" src="media/video/pexels_lightning_power_lines.mp4" data-start="14.3" data-duration="3.4" data-track-index="1" muted></video>
   <video id="vx-5-crews2" src="media/video/pexels_electricians_repairing_power_lines.mp4" data-start="17.7" data-duration="4.2" data-track-index="1" data-callback="second use, the crews under the utility's promise" muted></video>
   <video id="vx-6-chinook" src="media/video/dvids_hing_resupply_kauai_0907.mp4" data-start="21.9" data-duration="7.5" data-track-index="1" muted></video>
-
-  <!-- ============ TRACKED PINS (track 6; ring follows the object via baked keyframes from track_*.json) ============ -->
-  <section class="clip" id="p-pin-crew" data-start="0.40" data-duration="1.45" data-track-index="6"><div class="pin up" id="pin-crew"><div class="ring"></div><div class="lead"></div><div class="lab">LINE CREW · KAUAI</div></div></section>
-  <section class="clip" id="p-pin-truck" data-start="9.90" data-duration="3.70" data-track-index="6"><div class="pin" id="pin-truck"><div class="ring"></div><div class="lead"></div><div class="lab">FLOWN IN FROM THE MAINLAND</div></div></section>
 
   <!-- ============ HEADLINE (persistent; frame 1 is the thumbnail, last frame loops into it) ============ -->
   <section class="clip" id="p-head" data-start="0.0" data-duration="29.4" data-track-index="3">
@@ -170,8 +154,8 @@ window.__timelines = window.__timelines || {};
   // chips: slide in from the left, out to the left
   const chips = [["#chip-ns", 10.54, 3.26], ["#chip-none", 25.68, 0.9]];
   for (const [id, at, dur] of chips) {
-    tl.fromTo(id, { x: -500, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, at);
-    tl.to(id, { x: -500, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, at + dur - 0.3);
+    tl.fromTo(id, { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, at);
+    tl.to(id, { x: -60, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, at + dur - 0.3);
   }
 
   // quote card: rises on "We know", holds, slides out at the segment end
@@ -192,17 +176,6 @@ window.__timelines = window.__timelines || {};
   tl.to("#close", { scale: 1.02, duration: 2.3, ease: "none" }, 27.03);
 
 
-  // tracked pins: measured object centres (OpenCV MIL, 5-frame smoothed), keyframed at 10/s, linear between
-  const TRACK = { "#pin-crew": [[0.4,507.0,664.6], [0.5,510.0,666.2], [0.6,511.6,666.8], [0.7,512.6,667.4], [0.8,513.4,667.8], [0.9,514.2,668.0], [1.0,515.0,668.0], [1.1,515.8,668.0], [1.2,516.6,668.0], [1.3,517.4,668.4], [1.4,518.2,669.0], [1.5,518.2,668.4], [1.6,517.6,668.0], [1.7,517.2,667.4], [1.8,516.2,666.8]], "#pin-truck": [[9.9,446.6,1125.0], [10.0,444.6,1125.0], [10.1,442.2,1125.0], [10.2,439.8,1125.0], [10.3,437.4,1125.0], [10.4,435.4,1125.0], [10.5,433.6,1125.0], [10.6,431.0,1125.0], [10.7,427.6,1125.0], [10.8,423.2,1125.0], [10.9,418.8,1124.4], [11.0,414.4,1124.0], [11.1,410.6,1124.0], [11.2,408.0,1124.0], [11.3,406.0,1124.0], [11.4,403.8,1123.8], [11.5,401.8,1124.0], [11.6,399.8,1124.2], [11.7,397.4,1124.8], [11.8,395.4,1125.0], [11.9,393.6,1125.0], [12.0,392.0,1125.0], [12.1,390.2,1125.0], [12.2,388.8,1125.0], [12.3,387.2,1125.0], [12.4,385.8,1125.0], [12.5,384.4,1125.0], [12.6,383.4,1125.0], [12.7,382.2,1125.0], [12.8,380.8,1125.0], [12.9,379.0,1125.0], [13.0,376.8,1125.0], [13.1,374.0,1125.0], [13.2,371.0,1125.4], [13.3,368.0,1126.0], [13.4,365.2,1126.0], [13.5,362.2,1126.0], [13.6,359.8,1126.0]] };
-  for (const [id, pts] of Object.entries(TRACK)) {
-    tl.set(id, { x: pts[0][1], y: pts[0][2] }, pts[0][0]);
-    tl.fromTo(id + " .ring", { scale: 2.2, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.3, ease: "power3.out" }, pts[0][0]);
-    tl.fromTo(id + " .lead", { scaleX: 0 }, { scaleX: 1, duration: 0.25, ease: "power2.out" }, pts[0][0] + 0.2);
-    tl.fromTo(id + " .lab", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.25 }, pts[0][0] + 0.35);
-    for (let i = 1; i < pts.length; i++) tl.to(id, { x: pts[i][1], y: pts[i][2], duration: pts[i][0] - pts[i-1][0], ease: "none" }, pts[i-1][0]);
-    const last = pts[pts.length - 1][0];
-    tl.to(id, { autoAlpha: 0, duration: 0.2 }, last - 0.05);
-  }
   window.__timelines["sh-hawaii-lowell-1"] = tl;
 })();
 </script>

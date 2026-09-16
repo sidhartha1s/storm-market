@@ -59,7 +59,8 @@ for (let t = 0; t <= DUR; t += 0.25) {
   }
 }
 await browser.close();
-const uniq = [...new Set(findings.map(f => f.replace(/^[\d.]+s /, '')))];
+const seen = new Map(); for (const f of findings) { const k = f.replace(/^[\d.]+s /, '').replace(/ x-?\d+\.\.-?\d+ y-?\d+\.\.-?\d+$/, ''); if (!seen.has(k)) seen.set(k, f); }
+const uniq = [...seen.values()];
 if (uniq.length) {
   console.log(`[shorts_lint] ${uniq.length} finding(s) over ${findings.length} samples:`);
   for (const f of uniq) console.log('  FAIL ' + f);
