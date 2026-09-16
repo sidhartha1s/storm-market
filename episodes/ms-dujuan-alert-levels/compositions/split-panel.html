@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- split-panel.html — B2 "where the storm stands right now". JMA card (left, static reference: the B1
+     numbers) beside a JTWC card (right, its own independent reading counts up on cue), a motion arrow for
+     heading, a TS-threshold countdown chip, an SST chip, and a closing status chip. Mount: track 2, host
+     start = episode-abs 61.582, duration 51.491 (B2 window is 57.491s; a 6.0s Odaiba lead-in plays before
+     this comp mounts). Cues word-synced from audio/b2-s1.words.json (segment-abs minus this comp's mount;
+     the heading cue lands just before mount, so it reveals at mount instead). -->
+<template>
+<style>
+  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
+  .eye { position:absolute; left:0; right:0; top:90px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
+    font-size:24px; letter-spacing:5px; color:#d8a13a; }
+  .card { position:absolute; top:190px; width:760px; box-sizing:border-box; padding:36px 40px; text-align:center;
+    background:rgba(10,16,24,0.58); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .card-l { left:150px; border-bottom:5px solid #8fb4d8; }
+  .card-r { right:150px; border-bottom:5px solid #d0121f; }
+  .tag { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:4px; }
+  .card-l .tag { color:#8fb4d8; } .card-r .tag { color:#d0121f; }
+  .num { font-family:'AbrilFig',Georgia,serif; font-size:110px; line-height:1.2; margin-top:14px;
+    min-width:3ch; font-variant-numeric:tabular-nums; }
+  .card-l .num { color:#8fb4d8; } .card-r .num { color:#d0121f; }
+  .unit { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:1px; margin-top:14px; }
+  .sub { margin-top:12px; font-family:Georgia,serif; font-style:italic; font-size:19px; color:#c8d3e0; }
+  .arrow { position:absolute; left:50%; top:150px; transform:translateX(-50%); font-family:'Arial Black',Arial,sans-serif;
+    font-size:20px; letter-spacing:1px; color:#d8a13a; text-align:center; }
+  .arrow .glyph { font-size:44px; display:block; }
+  .chiprow { position:absolute; left:0; right:0; bottom:150px; display:flex; justify-content:center; gap:24px; }
+  .chip { font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:1px; color:#f4f0e8;
+    background:rgba(10,16,24,0.62); border:1px solid rgba(255,255,255,0.14); border-left:6px solid #d0121f;
+    border-radius:10px; padding:12px 24px; }
+</style>
+<div id="root" data-composition-id="split-panel" data-width="1920" data-height="1080">
+  <div class="eye" id="sp-eye">TWO AGENCIES, SAME STORM</div>
+  <div class="arrow" id="sp-arrow" style="visibility:hidden"><span class="glyph">&#8599;</span>9 MPH &middot; 15 KM/H &middot; NNE</div>
+  <div class="card card-l" id="sp-l">
+    <div class="tag">JMA</div>
+    <div class="num">998</div>
+    <div class="unit">HPA CENTRAL PRESSURE</div>
+    <div class="sub">34 MPH &middot; 55 KM/H sustained</div>
+  </div>
+  <div class="card card-r" id="sp-r">
+    <div class="tag">JTWC (US NAVY)</div>
+    <div class="num" id="sp-r-num">0</div>
+    <div class="unit">MPH SUSTAINED</div>
+    <div class="sub" id="sp-r-sub">&nbsp;</div>
+  </div>
+  <div class="chiprow">
+    <div class="chip" id="sp-chip-ts" style="visibility:hidden">TS THRESHOLD: 12H</div>
+    <div class="chip" id="sp-chip-sst" style="visibility:hidden">SST 85&deg;F</div>
+    <div class="chip" id="sp-chip-status" style="visibility:hidden">NO ALERT LEVEL ISSUED YET</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const HOST_WINDOW = 51.491; // this episode's split-panel mount: 61.582-113.073
+  function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
+  const R = { n: 0 }; const rEl = document.getElementById("sp-r-num");
+  tl.set(["#sp-arrow","#sp-chip-ts","#sp-chip-sst","#sp-chip-status"], { visibility: "hidden", autoAlpha: 0 }, 0);
+  tl.fromTo("#sp-eye", { autoAlpha:0, y:-16 }, { autoAlpha:1, y:0, duration:0.5 }, 0);
+  tl.fromTo("#sp-l", { autoAlpha:0, x:-40 }, { autoAlpha:1, x:0, duration:0.5 }, 0.2);
+  tl.fromTo("#sp-r", { autoAlpha:0, x:40 }, { autoAlpha:1, x:0, duration:0.5 }, 0.2);
+  tl.set("#sp-arrow", { visibility: "visible" }, 0.4);
+  tl.fromTo("#sp-arrow", { autoAlpha:0 }, { autoAlpha:1, duration:0.4 }, 0.4);
+  /* continuous ambient motion so both cards never sit frozen through the long hold */
+  tl.to("#sp-l", { y: -6, duration: 2.6, ease: "sine.inOut", repeat: repeatsToFit(0.8, 2.6), yoyo: true }, 0.8);
+  tl.to("#sp-r", { y: -6, duration: 2.6, ease: "sine.inOut", repeat: repeatsToFit(1.1, 2.6), yoyo: true }, 1.1);
+  tl.to(R, { n: 35, duration: 1.0, ease: "power1.out", onUpdate: () => rEl.textContent = Math.round(R.n) }, 8.72);
+  tl.to("#sp-r-sub", { duration:0.01, onStart: () => { document.getElementById("sp-r-sub").textContent = "gusting near 46 mph · 74 km/h"; } }, 11.10);
+  tl.set("#sp-chip-ts", { visibility: "visible" }, 24.46);
+  tl.fromTo("#sp-chip-ts", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.35 }, 24.46);
+  tl.set("#sp-chip-sst", { visibility: "visible" }, 31.82);
+  tl.fromTo("#sp-chip-sst", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.35 }, 31.82);
+  tl.set("#sp-chip-status", { visibility: "visible" }, 50.82);
+  tl.fromTo("#sp-chip-status", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.35 }, 50.82);
+  tl.to(["#sp-eye","#sp-l","#sp-r","#sp-arrow","#sp-chip-ts","#sp-chip-sst"], { autoAlpha:0, duration:0.4 }, 50.89);
+  window.__timelines["split-panel"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
