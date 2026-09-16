@@ -32,11 +32,12 @@ const dump = await page.evaluate(() => {
 console.log('DUMP', JSON.stringify(dump, null, 2));
 // nuclear test: remove EVERY circle in the whole document, screenshot, check if dots persist
 const removed = await page.evaluate(() => {
-  const all = Array.from(document.querySelectorAll('circle'));
+  const all = Array.from(document.querySelectorAll('circle, text, path, line, g'));
+  const n = all.length;
   all.forEach(c => c.remove());
-  return all.length;
+  return n;
 });
-console.log('removed circle count', removed);
+console.log('removed element count', removed);
 await page.screenshot({ path: join(ep, '_debug_shot2.png') });
 console.log('shot2 taken same-state');
 await browser.close();
