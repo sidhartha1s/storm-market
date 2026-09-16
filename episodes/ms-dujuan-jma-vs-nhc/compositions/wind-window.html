@@ -60,8 +60,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#ww-chart", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.6 }, 0);
   tl.fromTo("#ww-readout", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.6 }, 0.3);
   tl.fromTo("#ww-chip", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 0.4);
-  /* continuous ambient motion across the whole window so the readout never sits frozen after the pop fades */
-  tl.to("#ww-readout", { y: -6, duration: 2.4, ease: "sine.inOut", repeat: 7, yoyo: true }, 1.0);
+  /* continuous ambient motion so the readout never sits frozen after the pop fades — standalone gsap call
+     (NOT on tl) so it never extends tl.duration() past the exit/host window */
+  gsap.to("#ww-readout", { y: -6, duration: 2.4, ease: "sine.inOut", repeat: 7, yoyo: true, delay: 1.0 });
   /* the 1-minute window slides across the trace over the first ~11s, landing on the tallest peak (x=1200) */
   tl.to("#ww-window", { attr: { x: 1100 }, duration: 11.0, ease: "power1.inOut" }, 1.0);
   tl.to("#ww-peakdot", { opacity: 1, duration: 0.4 }, 11.5);
