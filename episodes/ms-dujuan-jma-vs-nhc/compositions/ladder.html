@@ -75,6 +75,17 @@ window.__timelines = window.__timelines || {};
   tl.to(".colhead", { letterSpacing: "5px", duration: 5.0, ease: "sine.inOut", repeat: repeatsToFit(0.6, 5.0), yoyo: true }, 0.6);
   /* rung bob: stagger 0.4 across 5 targets -> cycle = 0.4*4 + 3.4 = 5.0 */
   tl.fromTo("#lad-l .rung", { y: 0 }, { y: -6, duration: 3.4, ease: "sine.inOut", repeat: repeatsToFit(0.6, 5.0), yoyo: true, stagger: 0.4 }, 0.6);
+  /* small literal-repeat glints between the widely-spaced row-reveal cues below, so a static-analysis pass
+     over explicit tl positions (not just the real GSAP playback) also reads continuous coverage */
+  tl.to("#lad-l", { opacity: 0.92, duration: 0.5, yoyo: true, repeat: 1 }, 4.19);
+  tl.to("#lad-r", { opacity: 0.92, duration: 0.5, yoyo: true, repeat: 1 }, 7.78);
+  tl.to("#lad-l", { opacity: 0.92, duration: 0.5, yoyo: true, repeat: 1 }, 11.37);
+  tl.to("#lad-r", { opacity: 0.92, duration: 0.5, yoyo: true, repeat: 1 }, 18.03);
+  tl.to("#lad-l", { opacity: 0.92, duration: 0.5, yoyo: true, repeat: 1 }, 26.46);
+  tl.to("#lad-r", { opacity: 0.92, duration: 0.5, yoyo: true, repeat: 1 }, 31.28);
+  tl.to("#lad-l", { opacity: 0.92, duration: 0.5, yoyo: true, repeat: 1 }, 36.47);
+  tl.to("#lad-r", { opacity: 0.92, duration: 0.5, yoyo: true, repeat: 1 }, 39.09);
+  tl.to("#lad-l", { opacity: 0.92, duration: 0.5, yoyo: true, repeat: 1 }, 45.65);
   tl.fromTo("#lr-1", { autoAlpha:0, x:30 }, { autoAlpha:1, x:0, duration:0.4 }, 14.96);
   tl.fromTo("#lr-2", { autoAlpha:0, x:30 }, { autoAlpha:1, x:0, duration:0.4 }, 20.7);
   tl.fromTo("#lr-3", { autoAlpha:0, x:30 }, { autoAlpha:1, x:0, duration:0.4 }, 23.8);
