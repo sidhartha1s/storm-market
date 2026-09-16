@@ -114,7 +114,7 @@ TROPICAL STORM: BELOW TYPHOON, STILL DISRUPTIVE" / "US CATEGORY 1: OFFICIALLY A 
 ## B9 — WHAT'S STILL OPEN TONIGHT (7:15–7:45)
 
 ### B9-S1 — narration
-> This particular storm remains a tropical depression tonight. Japan's own agency has not yet assigned it a name. Its next scheduled advisory will say whether it strengthens on pace, slows down, or curves away from Japan entirely. That next advisory decides what happens, not tonight's forecast numbers. [f2]
+> This particular storm remains a tropical depression tonight. Japan's own agency has not yet assigned it a name. Its next scheduled advisory will say whether it strengthens on pace, slows down, or curves away from Japan entirely. That next advisory decides what happens, not tonight's forecast numbers. For anyone with travel plans in Japan this month, that next advisory is the number worth checking. [f2]
 
 Visual: tracking card MG, single row highlighted: "NEXT: JMA'S NEXT ADVISORY"; return to the Himawari loop from B1.
 
