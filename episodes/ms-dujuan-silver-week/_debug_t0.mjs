@@ -20,12 +20,14 @@ await page.waitForTimeout(100);
 await page.evaluate(() => { window.__timelines['track-map'].seek(0, false); });
 await page.waitForTimeout(50);
 
-// isolation test: hide top-level groups one at a time, screenshot each state
-const groups = ['tm-graticule','tm-land','tm-guam','tm-past','tm-jma-forecast','tm-jtwc-group','tm-current','tm-sweep'];
-for (const g of groups) {
-  await page.evaluate((id) => { const e = document.getElementById(id); if (e) e.style.display = 'none'; }, g);
-}
-await page.screenshot({ path: join(ep, '_debug_allhidden.png') });
-// now re-show one at a time is expensive; instead just check: with ALL groups hidden, are dots gone?
-console.log('all groups hidden shot taken');
+const dump = await page.evaluate(() => {
+  const fc = document.getElementById('tm-jma-forecast');
+  return Array.from(fc.querySelectorAll('circle')).map(c => ({
+    cx: c.getAttribute('cx'), cy: c.getAttribute('cy'),
+    r_attr: c.getAttribute('r'), opacity_attr: c.getAttribute('opacity'),
+    style_opacity: c.style.opacity, computed_opacity: getComputedStyle(c).opacity,
+    computed_display: getComputedStyle(c).display, computed_visibility: getComputedStyle(c).visibility,
+  }));
+});
+console.log('DUMP', JSON.stringify(dump, null, 2));
 await browser.close();
