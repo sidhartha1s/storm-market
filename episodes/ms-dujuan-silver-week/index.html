@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Typhoon No. 25 Dujuan Is Forming, Aimed at Japan's Biggest Holiday in 11 Years — The Warning Hour (Format C, 16 Sep 26)</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070c; }
+    video, .still-wrap { position: absolute; inset: 0; }
+    video { width: 100%; height: 100%; object-fit: cover; }
+    .still-wrap { overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    .bc { filter: saturate(0.85) contrast(1.08) brightness(0.95); }
+    @font-face { family-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+    @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+    .popfig { position: absolute; left: 0; right: 0; top: 36%; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; isolation: isolate; }
+    .popfig .pf-big { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 150px; color: #d0121f; letter-spacing: 0.04em;
+      text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+    .popfig .pf-sub { display: block; margin-top: 12px; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 38px; color: #f4f0e8;
+      letter-spacing: 0.3em; -webkit-text-stroke: 1px rgba(0,0,0,0.85); paint-order: stroke fill;
+      text-shadow: 0 0 18px rgba(0,0,0,1), 0 0 40px rgba(0,0,0,0.9), 0 3px 10px #000; }
+    .popfig::before { content: ''; position: absolute; left: 14%; right: 14%; top: -90px; bottom: -70px; z-index: -1;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.32) 40%, rgba(0,0,0,0) 72%); }
+    .popfig.rhs { left: 960px; right: 40px; }
+    .popfig.rhs::before { left: 4%; right: 4%; }
+    .popfig.rhs .pf-big { font-size: 108px; }
+    .popfig.rhs .pf-sub { font-size: 28px; }
+    .popfig.small .pf-big { font-size: 96px; }
+    .popfig.small .pf-sub { font-size: 30px; }
+    .chip { position: absolute; left: 110px; bottom: 300px; z-index: 6; font-family: 'Arial Black', Arial, sans-serif; font-size: 32px; letter-spacing: 1.5px; color: #f4f0e8;
+      background: rgba(10,16,24,0.62); backdrop-filter: blur(14px) saturate(1.15); -webkit-backdrop-filter: blur(14px) saturate(1.15);
+      border: 1px solid rgba(255,255,255,0.14); border-left: 6px solid #d0121f; border-radius: 10px; padding: 12px 26px; max-width: 1100px; }
+    .chip.rhs { left: auto; right: 110px; }
+    .srclab { position: absolute; right: 40px; top: 34px; z-index: 7; font-family: Arial, sans-serif; font-size: 20px; letter-spacing: 1px; color: rgba(220,228,236,0.85); background: rgba(5,8,12,0.6); padding: 6px 14px; }
+    .quotecard { position: absolute; left: 260px; right: 260px; top: 280px; z-index: 6; text-align: center;
+      background: rgba(10,16,24,0.58); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+      border: 1px solid rgba(255,255,255,0.14); border-radius: 28px; padding: 44px 60px; box-sizing: border-box; }
+    .quotecard .q { font-family: Georgia, serif; font-style: italic; font-size: 48px; color: #f2f5f8; line-height: 1.3; }
+    .quotecard .attr { margin-top: 18px; font-family: Arial, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 4px; color: #d8a13a; }
+    .glasscard { position: absolute; background: rgba(10,16,24,0.6); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+      border: 1px solid rgba(255,255,255,0.14); border-radius: 24px; box-sizing: border-box; }
+    .ladder { left: 260px; top: 210px; width: 1400px; padding: 40px 56px; z-index: 6; }
+    .ladder .eyebrow { font-family: 'Arial Black', Arial, sans-serif; font-size: 24px; letter-spacing: 6px; color: #d0121f; margin-bottom: 26px; }
+    .ladder .band { display: flex; align-items: center; gap: 24px; margin-top: 18px; position: relative; }
+    .ladder .band .lab { flex: 0 0 340px; font-family: 'Arial Black', Arial, sans-serif; font-size: 30px; }
+    .ladder .band .bar { flex: 1; height: 46px; border-radius: 8px; background: rgba(255,255,255,0.08); position: relative; overflow: visible; }
+    .ladder .band .fill { position: absolute; inset: 0; border-radius: 8px; }
+    .ladder .marker { position: absolute; top: -14px; width: 6px; height: 74px; background: #f4f0e8; border-radius: 3px; box-shadow: 0 0 14px rgba(244,240,232,0.8); }
+    .ladder .marker-lab { position: absolute; top: -58px; left: 50%; transform: translateX(-50%); font-family: 'Arial Black', Arial, sans-serif; font-size: 22px; color: #f4f0e8; white-space: nowrap; }
+    .ladder .caption { margin-top: 30px; font-family: Georgia, serif; font-style: italic; font-size: 24px; color: #93a3b2; }
+    .kanto-pin { position: absolute; z-index: 6; }
+    .kanto-pin .dot { width: 18px; height: 18px; border-radius: 50%; background: #d0121f; border: 3px solid #050b12; box-shadow: 0 0 14px rgba(208,18,31,0.7); }
+    .kanto-pin .lab { position: absolute; left: 26px; top: -10px; font-family: 'Arial Black', Arial, sans-serif; font-size: 22px; color: #f4f0e8; white-space: nowrap;
+      text-shadow: 0 0 10px rgba(0,0,0,0.95), 0 2px 6px #000; background: rgba(10,16,24,0.6); padding: 6px 12px; border-radius: 6px; border-left: 4px solid #d0121f; }
+    .track-card { position: absolute; left: 110px; top: 200px; width: 900px; padding: 34px 44px; z-index: 6; }
+    .track-card .eye { font-family: 'Arial Black', Arial, sans-serif; font-size: 22px; letter-spacing: 6px; color: #d0121f; }
+    .track-card .row { display: flex; align-items: center; gap: 22px; margin-top: 22px; }
+    .track-card .n { flex: 0 0 44px; font-family: 'AbrilFig', Georgia, serif; font-size: 44px; color: #d0121f; }
+    .track-card .lab { font-family: 'Arial Black', Arial, sans-serif; font-size: 34px; }
+    .bugstrip { position: absolute; left: 0; right: 0; bottom: 0; height: 92px; display: flex; align-items: stretch; z-index: 5;
+      background: linear-gradient(90deg, rgba(4,7,12,0.94) 0%, rgba(4,7,12,0.82) 70%, rgba(4,7,12,0.6) 100%); border-top: 2px solid #d0121f; }
+    .bugstrip .bk { display: flex; align-items: center; padding: 0 34px; background: #d0121f; color: #fff; font-family: 'Arial Black', Arial, sans-serif; font-size: 34px; letter-spacing: 5px; }
+    .bugstrip .bw { display: flex; align-items: center; padding: 0 26px; color: #d8a13a; font-family: Georgia, serif; font-style: italic; font-size: 26px; border-right: 1px solid rgba(255,255,255,0.14); white-space: nowrap; }
+    .bugstrip .bh { display: flex; align-items: center; padding: 0 30px; color: #f4f0e8; font-weight: 700; font-size: 34px; letter-spacing: 1px; white-space: nowrap; overflow: hidden; }
+    .pip { position: absolute !important; inset: auto !important; left: 1640px !important; top: 708px !important;
+      width: 240px !important; height: 240px !important; border-radius: 50% !important; object-fit: cover !important; z-index: 8 !important; }
+    .pipring { position: absolute; left: 1632px; top: 700px; width: 256px; height: 256px; border-radius: 50%; border: 4px solid #d0121f;
+      box-sizing: border-box; z-index: 9; box-shadow: 0 10px 30px rgba(0,0,0,0.55); }
+    #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90; background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
+    #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.10; mix-blend-mode: overlay; }
+    #grade { position: absolute; inset: 0; pointer-events: none; z-index: 89; mix-blend-mode: soft-light; background-color: rgba(96,138,178,0.18); }
+    .dust { position: absolute; z-index: 92; pointer-events: none; border-radius: 50%; background: rgba(255,255,255,0.32); filter: blur(1.2px); }
+  </style>
+</head>
+<body>
+<!-- ms-dujuan-silver-week · Format C rolling update, U1 of the daily Dujuan series (16 Sep 26).
+     B-roll muted. CTA after B3 with 0.5 s dips. Paul hidden under hook / quote card / CTA / close.
+     Cues from audio/*.words.json (Pharaoh -> atempo 1.10 -> re-transcribed). track-map.html built
+     by mg-trackmap, mounted verbatim (unedited, series-wide reusable template) 7.0-145.0 covering
+     B1's track reveal + all of B2; every SPOKEN number still gets its own dedicated popfig/chip so
+     the map's own (unsynced-to-this-script) card reveal never carries compliance on its own. -->
+<div id="root" data-composition-id="ms-dujuan-silver-week" data-start="0.0" data-width="1920" data-height="1080" data-duration="561.5" data-fps="30">
+
+  <!-- ============ NARRATION (wav lengths) ============ -->
+  <audio id="nx-b1s1" src="audio/b1-s1.wav" data-start="0.0" data-duration="51.018" data-volume="1"></audio>
+  <audio id="nx-b2s1" src="audio/b2-s1.wav" data-start="52.518" data-duration="92.473" data-volume="1"></audio>
+  <audio id="nx-b3s1" src="audio/b3-s1.wav" data-start="145.591" data-duration="50.764" data-volume="1"></audio>
+  <audio id="nx-b4s1" src="audio/b4-s1.wav" data-start="212.494" data-duration="46.218" data-volume="1"></audio>
+  <audio id="nx-b5s1" src="audio/b5-s1.wav" data-start="259.312" data-duration="84.727" data-volume="1"></audio>
+  <audio id="nx-b6s1" src="audio/b6-s1.wav" data-start="344.639" data-duration="77.745" data-volume="1"></audio>
+  <audio id="nx-b7s1" src="audio/b7-s1.wav" data-start="422.984" data-duration="61.2" data-volume="1"></audio>
+  <audio id="nx-b8s1" src="audio/b8-s1.wav" data-start="484.784" data-duration="64.545" data-volume="1"></audio>
+  <audio id="nx-b9s1" src="audio/b9-s1.wav" data-start="549.929" data-duration="10.909" data-volume="1"></audio>
+
+  <!-- ============ CTA (own audio; the only unmuted insert) ============ -->
+  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v5-sep6.mp4" data-start="196.855" data-duration="15.139" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
+
+  <!-- ============ BEDS ============ -->
+  <audio id="sx-rumble-hook" src="assets-sfx/04_distant_storm_rumble.mp3" data-bed="" data-start="0.0" data-duration="7.0" data-volume="0.16"></audio>
+  <audio id="sx-mus-a" src="assets-sfx/score-act5-tension.mp3" data-bed="" data-start="0.0" data-duration="196.355" data-volume="0.13"></audio>
+  <audio id="sx-mus-b" src="assets-sfx/score-act3-urgent.mp3" data-bed="" data-start="212.494" data-duration="209.89" data-volume="0.13"></audio>
+  <audio id="sx-mus-c" src="assets-sfx/score-act6-close.mp3" data-bed="" data-start="422.984" data-duration="138.454" data-volume="0.16"></audio>
+
+  <!-- ============ PRESENTER (corner circle; hidden hook / quote-card+CTA / close) ============ -->
+  <video id="pip-idle-a" class="pip" src="media/pip/paul-idle-a.mp4" data-start="52.518" data-duration="141.982" data-track-index="6" muted></video>
+  <video id="pip-talk-a" class="pip" src="media/pip/paul-talk-a.mp4" data-start="52.518" data-duration="141.982" data-track-index="7" data-callback="presenter loop, talking" muted></video>
+  <video id="pip-idle-b" class="pip" src="media/pip/paul-idle-b.mp4" data-start="212.494" data-duration="336.835" data-track-index="6" data-callback="presenter loop resumes after the CTA" muted></video>
+  <video id="pip-talk-b" class="pip" src="media/pip/paul-talk-b.mp4" data-start="212.494" data-duration="336.835" data-track-index="7" data-callback="presenter loop, talking" muted></video>
+  <section class="clip" id="pip-ring-a" data-start="52.518" data-duration="141.982" data-track-index="8"><div class="pipring"></div></section>
+  <section class="clip" id="pip-ring-b" data-start="212.494" data-duration="336.835" data-track-index="8"><div class="pipring"></div></section>
+
+  <!-- ============ NEWS BUG (track 3) ============ -->
+  <section class="clip" id="bug-a" data-start="52.518" data-duration="143.837" data-track-index="3"><div class="bugstrip" id="bugstrip-a"><div class="bk">BREAKING</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-a"></div></div></section>
+  <section class="clip" id="bug-b" data-start="212.494" data-duration="336.835" data-track-index="3"><div class="bugstrip" id="bugstrip-b"><div class="bk">BREAKING</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-b"></div></div></section>
+
+  <!-- ============ TRACK 1 · picture ============ -->
+  <!-- B1 · cold open 0-51.018 -->
+  <section class="clip still-wrap" id="c-b1-0-himawari" data-start="0.0" data-duration="7.0" data-track-index="1"><img id="kb-b1-0-himawari" src="media/image/img-himawari-open.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-hook" data-start="51.018" data-duration="1.5" data-track-index="1"></section>
+
+  <!-- B2 · where things stand 52.518-145.0 (track-map.html on track 2, verbatim, 7.0-145.0) -->
+  <section class="clip blackout" id="bo-b2" data-start="144.4" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B3 · the forecast track 145.591-196.355 -->
+  <section class="clip still-wrap" id="c-b3-0-jtwc" data-start="145.591" data-duration="9.0" data-track-index="1"><img id="kb-b3-0-jtwc" src="media/image/img-jtwc-warning.jpg" alt=""></section>
+  <video id="vx-b3-1-tbs" class="bc" src="media/video/bc-tbs-shinjuku.mp4" data-start="154.591" data-duration="5.5" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b3-2-wv16" data-start="160.091" data-duration="7.5" data-track-index="1"><img id="kb-b3-2-wv16" src="media/image/img-worldview-16.jpg" alt=""></section>
+  <video id="vx-b3-3-fnn" class="bc" src="media/video/bc-fnn-radar.mp4" data-start="167.591" data-duration="5.5" data-track-index="1" muted></video>
+  <video id="vx-b3-4-trees" src="media/video/v-trees-wind.mp4" data-start="173.091" data-duration="6.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b3-5-wv15" data-start="179.091" data-duration="6.5" data-track-index="1"><img id="kb-b3-5-wv15" src="media/image/img-worldview-15.jpg" alt=""></section>
+  <video id="vx-b3-6-uhb" class="bc" src="media/video/bc-uhb-hokkaido.mp4" data-start="185.591" data-duration="5.5" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b3-7-wv13" data-start="191.091" data-duration="5.264" data-track-index="1"><img id="kb-b3-7-wv13" src="media/image/img-worldview-13.jpg" alt=""></section>
+
+  <!-- CTA dips (own track so they paint above everything under them) -->
+  <section class="clip blackout" id="bo-cta-in" data-start="196.355" data-duration="0.5" data-track-index="9"></section>
+  <section class="clip blackout" id="bo-cta-out" data-start="211.994" data-duration="0.5" data-track-index="9"></section>
+
+  <!-- B4 · two ways to read the same storm 212.494-258.712 -->
+  <video id="vx-b4-0-ann" class="bc" src="media/video/bc-ann-splitscreen.mp4" data-start="212.494" data-duration="6.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b4-1-jtwc" data-start="218.494" data-duration="10.0" data-track-index="1" data-callback="second use, JTWC peak/branch re-emphasis"><img id="kb-b4-1-jtwc" src="media/image/img-jtwc-warning.jpg" alt=""></section>
+  <video id="vx-b4-2-clouds" src="media/video/v-clouds-rolling-b4.mp4" data-start="228.494" data-duration="6.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b4-3-wv14" data-start="234.494" data-duration="7.0" data-track-index="1"><img id="kb-b4-3-wv14" src="media/image/img-worldview-14.jpg" alt=""></section>
+  <video id="vx-b4-4-waves" src="media/video/v-waves-typhoon-b4.mp4" data-start="241.494" data-duration="8.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b4-5-fulldisk" data-start="249.494" data-duration="9.218" data-track-index="1"><img id="kb-b4-5-fulldisk" src="media/image/img-fulldisk-true.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-b4" data-start="258.112" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B5 · silver week collision 259.312-344.039 (silver-week-calendar.html on track 2, full segment) -->
+
+  <!-- B6 · what it means for americans 344.639-422.384 -->
+  <video id="vx-b6-0-clouds" src="media/video/v-clouds-rolling-b6.mp4" data-start="344.639" data-duration="8.0" data-track-index="1" data-callback="second use, US hurricane-season parallel" muted></video>
+  <video id="vx-b6-1-bay" src="media/video/v-tokyobay-aerial.mp4" data-start="352.639" data-duration="10.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b6-2-basemap" data-start="362.639" data-duration="30.0" data-track-index="1"><img id="kb-b6-2-basemap" src="media/maps/basemap-kanto.png" alt=""></section>
+  <video id="vx-b6-3-train" src="media/video/v-train-commuter.mp4" data-start="392.639" data-duration="10.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b6-4-basemap2" data-start="402.639" data-duration="19.745" data-track-index="1" data-callback="second use, holding on the Kanto pins for the base count"><img id="kb-b6-4-basemap2" src="media/maps/basemap-kanto.png" alt=""></section>
+  <section class="clip blackout" id="bo-b6" data-start="422.384" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B7 · how to read Japan's numbers 422.984-484.184 (inline scale-ladder card, own gradient bg) -->
+  <section class="clip" id="c-b7-bg" data-start="422.984" data-duration="61.2" data-track-index="1"><div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 70%, #142235 0%, #04070c 70%);"></div></section>
+  <section class="clip blackout" id="bo-b7" data-start="484.184" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B8 · what's still open 484.784-549.329 -->
+  <video id="vx-b8-0-waves" src="media/video/v-waves-typhoon-b8.mp4" data-start="497.0" data-duration="8.0" data-track-index="1" data-callback="second use, storm at sea for the benchmark section" muted></video>
+  <video id="vx-b8-1-seawall" src="media/video/v-seawall-crash.mp4" data-start="505.0" data-duration="10.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b8-2-himawari" data-start="515.0" data-duration="34.329" data-track-index="1" data-callback="second use, return to the live Himawari loop of Dujuan"><img id="kb-b8-2-himawari" src="media/image/img-himawari-open.jpg" alt=""></section>
+
+  <!-- B9 · close 549.929-561.438 (close-card.html on track 2) -->
+  <section class="clip blackout" id="bo-end" data-start="549.929" data-duration="11.571" data-track-index="1"></section>
+
+  <!-- ============ OVERLAYS: popfigs (track 5), chips/source labels (track 4) ============ -->
+  <!-- B1 -->
+  <section class="clip" id="p-pf-3days" data-start="6.50" data-duration="2.600" data-track-index="5"><div class="popfig small" id="pf-3days"><span class="pf-big">3 DAYS</span><span class="pf-sub">TO SILVER WEEK</span></div></section>
+  <section class="clip" id="p-pf-dujuan" data-start="13.92" data-duration="2.800" data-track-index="5"><div class="popfig" id="pf-dujuan"><span class="pf-big">DUJUAN</span><span class="pf-sub">TYPHOON No. 25</span></div></section>
+  <section class="clip" id="p-pf-998a" data-start="17.84" data-duration="2.500" data-track-index="5"><div class="popfig rhs" id="pf-998a"><span class="pf-big">998 hPa</span><span class="pf-sub">CENTRAL PRESSURE</span></div></section>
+  <section class="clip" id="p-pf-34a" data-start="21.30" data-duration="2.500" data-track-index="5"><div class="popfig rhs" id="pf-34a"><span class="pf-big">34 MPH</span><span class="pf-sub">GUSTS TO 51</span></div></section>
+
+  <!-- B2 -->
+  <section class="clip" id="p-src-jma" data-start="52.518" data-duration="6.000" data-track-index="4"><div class="srclab" id="src-jma">SOURCES: JMA · JTWC · 16 SEP 2026, 19:10 JST</div></section>
+  <section class="clip" id="p-pf-9mph" data-start="59.28" data-duration="2.400" data-track-index="5"><div class="popfig small" id="pf-9mph"><span class="pf-big">9 MPH · NNE</span><span class="pf-sub">SLOW CRAWL</span></div></section>
+  <section class="clip" id="p-pf-jtwc35" data-start="73.54" data-duration="4.200" data-track-index="5"><div class="popfig rhs small" id="pf-jtwc35"><span class="pf-big">JTWC: 35 MPH</span><span class="pf-sub">GUSTS 46 · SE OF GUAM</span></div></section>
+  <section class="clip" id="p-pf-25th" data-start="110.92" data-duration="2.800" data-track-index="5"><div class="popfig" id="pf-25th"><span class="pf-big">TYPHOON No. 25</span><span class="pf-sub">WITHIN 12 HOURS</span></div></section>
+  <section class="clip" id="p-chip-sst" data-start="118.74" data-duration="4.500" data-track-index="4"><div class="chip" id="chip-sst">SST 85&deg;F</div></section>
+  <section class="clip" id="p-chip-shear" data-start="123.64" data-duration="4.000" data-track-index="4"><div class="chip" id="chip-shear">LOW WIND SHEAR</div></section>
+  <section class="clip" id="p-chip-dryair" data-start="129.84" data-duration="4.500" data-track-index="4"><div class="chip" id="chip-dryair">DRY AIR (NW) = BRAKE</div></section>
+  <section class="clip" id="p-chip-seas" data-start="133.82" data-duration="4.500" data-track-index="4"><div class="chip rhs" id="chip-seas">SEAS 14 FT</div></section>
+  <section class="clip" id="p-chip-gdacs" data-start="141.68" data-duration="3.300" data-track-index="4"><div class="chip rhs" id="chip-gdacs">GDACS: GREEN · LOWEST ALERT</div></section>
+
+  <!-- B3 -->
+  <section class="clip" id="p-src-b3" data-start="145.591" data-duration="6.000" data-track-index="4"><div class="srclab" id="src-b3">SOURCE: JMA FORECAST, ISSUED 16 SEP 19:10 JST</div></section>
+  <section class="clip" id="p-pf-12h40" data-start="153.53" data-duration="3.400" data-track-index="5"><div class="popfig small" id="pf-12h40"><span class="pf-big">+12H · 40 MPH</span><span class="pf-sub">EARNS TYPHOON STATUS</span></div></section>
+  <section class="clip" id="p-pf-fri" data-start="160.57" data-duration="4.500" data-track-index="5"><div class="popfig small" id="pf-fri"><span class="pf-big">FRI · 985 hPa</span><span class="pf-sub">56 MPH · OGASAWARA ISLANDS</span></div></section>
+  <section class="clip" id="p-pf-sun" data-start="176.07" data-duration="4.500" data-track-index="5"><div class="popfig small" id="pf-sun"><span class="pf-big">SUN · 975 hPa</span><span class="pf-sub">67 MPH · SOUTH OF JAPAN</span></div></section>
+  <section class="clip" id="p-pf-mon" data-start="189.13" data-duration="3.900" data-track-index="5"><div class="popfig small" id="pf-mon"><span class="pf-big">MON · 67-89 MPH</span><span class="pf-sub">SUSTAINED / GUST · EAST OF JAPAN</span></div></section>
+  <section class="clip" id="p-q-eastofjapan" data-start="194.50" data-duration="1.800" data-track-index="5"><div class="quotecard" id="q-eastofjapan"><div class="q">&ldquo;East of Japan.&rdquo;</div><div class="attr">JAPAN METEOROLOGICAL AGENCY · FORECAST VALID 21 SEP · ISSUED 16 SEP, 19:10 JST</div></div></section>
+
+  <!-- B4 -->
+  <section class="clip" id="p-pf-75jtwc" data-start="224.15" data-duration="3.200" data-track-index="5"><div class="popfig small" id="pf-75jtwc"><span class="pf-big">75 MPH</span><span class="pf-sub">JTWC PEAK · 19-21 SEP</span></div></section>
+  <section class="clip" id="p-pf-168mi" data-start="231.23" data-duration="3.200" data-track-index="5"><div class="popfig rhs small" id="pf-168mi"><span class="pf-big">168 MI</span><span class="pf-sub">EAST OF TOKYO · MONDAY</span></div></section>
+  <section class="clip" id="p-chip-brancha" data-start="244.77" data-duration="4.000" data-track-index="4"><div class="chip" id="chip-brancha">BRANCH A &middot; TOWARD KANTO</div></section>
+  <section class="clip" id="p-chip-branchb" data-start="254.11" data-duration="4.000" data-track-index="4"><div class="chip rhs" id="chip-branchb">BRANCH B &middot; OFFSHORE PASS</div></section>
+
+  <!-- B6 -->
+  <section class="clip" id="p-pf-427m" data-start="373.00" data-duration="3.000" data-track-index="5"><div class="popfig small" id="pf-427m"><span class="pf-big">42.7M</span><span class="pf-sub">VISITORS · 2025 · RECORD HIGH</span></div></section>
+  <div class="kanto-pin" id="pin-yokosuka" style="left:920px;top:555px;"><div class="dot"></div><div class="lab">FLEET ACTIVITIES YOKOSUKA &middot; 7TH FLEET HQ</div></div>
+  <div class="kanto-pin" id="pin-yokota" style="left:890px;top:530px;"><div class="dot"></div><div class="lab">YOKOTA AB &middot; USFJ HQ</div></div>
+  <div class="kanto-pin" id="pin-tokyo" style="left:960px;top:540px;"><div class="dot" style="background:#f4f0e8;"></div><div class="lab" style="border-left-color:#93a3b2;">TOKYO</div></div>
+  <section class="clip" id="p-pf-55k" data-start="407.44" data-duration="3.200" data-track-index="5"><div class="popfig small" id="pf-55k"><span class="pf-big">~55,000</span><span class="pf-sub">ACTIVE-DUTY · 15 BASES · JAPAN-WIDE</span></div></section>
+  <section class="clip" id="p-chip-noalert" data-start="421.40" data-duration="3.500" data-track-index="4"><div class="chip">NO STORM-SPECIFIC ALERT ISSUED YET</div></section>
+
+  <!-- B7 -->
+  <div class="glasscard ladder" id="ladder-card">
+    <div class="eyebrow">HOW JAPAN MEASURES A TYPHOON</div>
+    <div class="band"><div class="lab">STRONG · 74&ndash;98 MPH</div><div class="bar"><div class="fill" style="background:rgba(224,134,47,0.55); width:100%;"></div></div></div>
+    <div class="band"><div class="lab">VERY STRONG · 99&ndash;121 MPH</div><div class="bar"><div class="fill" style="background:rgba(176,13,26,0.55); width:100%;"></div></div></div>
+    <div class="band"><div class="lab">VIOLENT · 121+ MPH</div><div class="bar" id="ladder-violent"><div class="fill" style="background:rgba(138,0,16,0.55); width:100%;"></div>
+      <div class="marker" id="ladder-marker" style="left:2%;"><div class="marker-lab" id="ladder-marker-lab">DUJUAN FORECAST: SEVERE TROPICAL STORM</div></div>
+    </div></div>
+    <div class="caption" id="ladder-caption">Japan: 10-minute average wind. The US 1-minute standard runs roughly 12% higher for the same storm.</div>
+  </div>
+  <section class="clip" id="p-pf-conv" data-start="466.74" data-duration="4.000" data-track-index="5"><div class="popfig small" id="pf-conv"><span class="pf-big">~75 MPH</span><span class="pf-sub">1-MIN EQUIVALENT · APPROXIMATION</span></div></section>
+  <section class="clip" id="p-chip-cat1" data-start="474.54" data-duration="4.000" data-track-index="4"><div class="chip">CATEGORY 1 HURRICANE THRESHOLD</div></section>
+
+  <!-- B8 -->
+  <div class="glasscard track-card" id="tracking-card">
+    <div class="eye">WHAT'S STILL OPEN TONIGHT</div>
+    <div class="row"><div class="n">1</div><div class="lab">TRACK &middot; STILL OPEN</div></div>
+    <div class="row"><div class="n">2</div><div class="lab">STRENGTH &middot; STILL OPEN</div></div>
+  </div>
+  <section class="clip" id="p-pf-hagibis" data-start="515.60" data-duration="5.500" data-track-index="5"><div class="popfig small" id="pf-hagibis"><span class="pf-big">HAGIBIS 2019</span><span class="pf-sub">139 DEAD &middot; $17.3B DAMAGE</span></div></section>
+  <section class="clip" id="p-pf-faxai" data-start="524.16" data-duration="7.000" data-track-index="5"><div class="popfig small" id="pf-faxai"><span class="pf-big">FAXAI 2019</span><span class="pf-sub">934,000 OUT &middot; 390,000+ EVACUATED</span></div></section>
+  <section class="clip" id="p-pf-ampil" data-start="536.00" data-duration="4.000" data-track-index="5"><div class="popfig small" id="pf-ampil"><span class="pf-big">AMPIL 2024</span><span class="pf-sub">4 INJURED</span></div></section>
+
+  <!-- ============ COMPOSITIONS (track 2) ============ -->
+  <div id="host-trackmap" data-composition-id="track-map" data-composition-src="compositions/track-map.html" data-start="7.0" data-duration="138.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-silverweek" data-composition-id="silver-week-calendar" data-composition-src="compositions/silver-week-calendar.html" data-start="259.312" data-duration="84.727" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-close" data-composition-id="close-card" data-composition-src="compositions/close-card.html" data-start="549.929" data-duration="11.571" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <div id="grade"></div><div id="vignette"></div><canvas id="grain" width="480" height="270"></canvas>
+</div>
+
+<script src="grain.js"></script>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 561.5;
+  function kb(sel, at, dur, s0, s1, x0, x1, y0, y1) {
+    tl.fromTo(sel, { scale: s0, x: x0, y: y0, transformOrigin: "center" }, { scale: s1, x: x1, y: y1, duration: dur, ease: "none" }, at);
+  }
+  function pop(sel, at, hold) {
+    tl.fromTo(sel, { scale: 2.2, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.35, ease: "power4.in" }, at);
+    tl.to(sel, { autoAlpha: 0, y: -26, duration: 0.28, ease: "power2.in" }, at + hold - 0.28);
+  }
+  function chip(sel, at, hold) {
+    tl.fromTo(sel, { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, at);
+    tl.to(sel, { autoAlpha: 0, x: -30, duration: 0.3, ease: "power2.in" }, at + hold - 0.3);
+  }
+  function lab(sel, at, hold) {
+    tl.fromTo(sel, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, at);
+    tl.to(sel, { autoAlpha: 0, duration: 0.3 }, at + hold - 0.3);
+  }
+  function bug(strip, hl, at, dur, lines) {
+    tl.fromTo(strip, { y: 96 }, { y: 0, duration: 0.45, ease: "power3.out" }, at);
+    const n = Math.floor((dur - 0.6) / 12);
+    for (let i = 0; i < n; i++) {
+      const t = at + 0.3 + i * 12, text = lines[i % lines.length];
+      if (i > 0) tl.to(hl, { y: 40, autoAlpha: 0, duration: 0.25, ease: "power2.in" }, t - 0.25);
+      tl.set(hl, { textContent: text }, t);
+      tl.fromTo(hl, { y: -40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.3, ease: "power2.out" }, t);
+    }
+  }
+  tl.set([".popfig", ".chip", ".quotecard", ".srclab", ".kanto-pin", "#ladder-card", "#tracking-card"], { autoAlpha: 0 }, 0);
+
+  /* ---- stills (Ken Burns, always moving) ---- */
+  kb("#kb-b1-0-himawari", 0.0, 7.0, 1.05, 1.18, 20, -30, 10, -20);
+  kb("#kb-b3-0-jtwc", 145.591, 9.0, 1.0, 1.06, 0, -10, 0, -6);
+  kb("#kb-b3-2-wv16", 160.091, 7.5, 1.08, 1.0, -12, 0, 6, 0);
+  kb("#kb-b3-5-wv15", 179.091, 6.5, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-b3-7-wv13", 191.091, 5.264, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-b4-1-jtwc", 218.494, 10.0, 1.0, 1.1, 0, -16, 0, -10);
+  kb("#kb-b4-3-wv14", 234.494, 7.0, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-b4-5-fulldisk", 249.494, 9.218, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-b6-2-basemap", 362.639, 30.0, 1.0, 1.14, 0, -20, 0, -10);
+  kb("#kb-b6-4-basemap2", 402.639, 19.745, 1.14, 1.24, -20, -40, -10, -18);
+  kb("#kb-b8-2-himawari", 515.0, 34.329, 1.0, 1.1, 0, -14, 0, -8);
+
+  /* ---- overlays (absolute times = actual word cues from words.json) ---- */
+  pop("#pf-3days", 6.50, 2.6);
+  pop("#pf-dujuan", 13.92, 2.8);
+  pop("#pf-998a", 17.84, 2.5);
+  pop("#pf-34a", 21.30, 2.5);
+  lab("#src-jma", 52.518, 6.0);
+  pop("#pf-9mph", 59.28, 2.4);
+  pop("#pf-jtwc35", 73.54, 4.2);
+  pop("#pf-25th", 110.92, 2.8);
+  chip("#chip-sst", 118.74, 4.5);
+  chip("#chip-shear", 123.64, 4.0);
+  chip("#chip-dryair", 129.84, 4.5);
+  chip("#chip-seas", 133.82, 4.5);
+  chip("#chip-gdacs", 141.68, 3.3);
+  lab("#src-b3", 145.591, 6.0);
+  pop("#pf-12h40", 153.53, 3.4);
+  pop("#pf-fri", 160.57, 4.5);
+  pop("#pf-sun", 176.07, 4.5);
+  pop("#pf-mon", 189.13, 3.9);
+  tl.fromTo("#q-eastofjapan", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 194.5); tl.to("#q-eastofjapan", { autoAlpha: 0, y: -20, duration: 0.4 }, 195.9);
+  pop("#pf-75jtwc", 224.15, 3.2);
+  pop("#pf-168mi", 231.23, 3.2);
+  chip("#chip-brancha", 244.77, 4.0);
+  chip("#chip-branchb", 254.11, 4.0);
+  pop("#pf-427m", 373.0, 3.0);
+  tl.fromTo(["#pin-yokosuka", "#pin-yokota", "#pin-tokyo"], { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, stagger: 0.15, ease: "power3.out" }, 399.0);
+  tl.to(["#pin-yokosuka", "#pin-yokota", "#pin-tokyo"], { autoAlpha: 0, duration: 0.4 }, 421.9);
+  pop("#pf-55k", 407.44, 3.2);
+  chip("#chip-noalert", 421.4, 3.5);
+
+  /* ---- B7 scale ladder (inline card, own reveal + marker slide) ---- */
+  tl.fromTo("#ladder-card", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 440.0);
+  tl.fromTo("#ladder-marker", { left: "2%" }, { left: "2%", duration: 0.1 }, 440.0);
+  tl.to("#ladder-marker", { left: "18%", duration: 0.8, ease: "power2.out" }, 462.56); /* "severe tropical storm" band position, ~1 band under Strong */
+  tl.to("#ladder-marker-lab", { textContent: "DUJUAN FORECAST: SEVERE TROPICAL STORM" }, 440.0);
+  pop("#pf-conv", 466.74, 4.0);
+  chip("#chip-cat1", 474.54, 4.0);
+  tl.to("#ladder-card", { autoAlpha: 0, y: -20, duration: 0.5 }, 482.6);
+
+  /* ---- B8 tracking card + benchmarks ---- */
+  tl.fromTo("#tracking-card", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 484.784);
+  tl.to("#tracking-card", { autoAlpha: 0, x: -30, duration: 0.4 }, 496.0);
+  pop("#pf-hagibis", 515.60, 5.5);
+  pop("#pf-faxai", 524.16, 7.0);
+  pop("#pf-ampil", 536.00, 4.0);
+
+  /* ---- news bug ---- */
+  bug("#bugstrip-a", "#bh-a", 52.518, 143.837, ["TYPHOON No. 25 DUJUAN FORMING NEAR GUAM · TARGETS JAPAN WITHIN DAYS", "JMA: TYPHOON STATUS WITHIN 12 HOURS · JTWC FORECASTS A 75 MPH PEAK", "FOUR-POINT FORECAST ENDS EAST OF JAPAN, 21 SEPTEMBER", "SILVER WEEK BEGINS SATURDAY · FIRST FULL 5-DAY HOLIDAY IN 11 YEARS"]);
+  bug("#bugstrip-b", "#bh-b", 212.494, 336.835, ["TRACK STILL OPEN: OFFSHORE PASS OR A LATE TURN TOWARD KANTO", "42.7 MILLION VISITORS IN 2025 · JAPAN'S RECORD YEAR", "NO STORM-SPECIFIC ALERT AT YOKOSUKA OR YOKOTA YET", "STRENGTH STILL OPEN · STORM IS NOT YET A TYPHOON"]);
+
+  /* ---- presenter talk-sync (loop-a: B2+B3, loop-b: B4-B8; spans merged from this episode's own words.json, gap<0.35s) ---- */
+  tl.set(["#pip-talk-a", "#pip-talk-b"], { autoAlpha: 0 }, 0);
+  __TALKSYNC_A__
+  __TALKSYNC_B__
+
+  filmLayer(tl, DUR);
+  tl.to(["#vignette", "#grade", "#grain", ".dust"], { autoAlpha: 0, duration: 0.3 }, 196.355);
+  tl.to(["#vignette", "#grade", ".dust"], { autoAlpha: 1, duration: 0.3 }, 211.994);
+  tl.to("#grain", { autoAlpha: 0.10, duration: 0.3 }, 211.994);
+  window.__timelines["ms-dujuan-silver-week"] = tl;
+})();
+</script>
+</body>
+</html>
