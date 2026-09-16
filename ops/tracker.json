@@ -405,10 +405,10 @@
       "title": "Silver Week Collision: A Storm Joins Japan's Biggest Holiday in Years",
       "owner": "director",
       "due": "16 Sep 26",
-      "phase": "assemble",
+      "phase": "checks",
       "status": "doing",
-      "note": "index.html being composed; whisper heard Dujuan OK; 147 wpm delivered",
-      "updated": "16 Sep 26 17:46"
+      "note": "browser gates running",
+      "updated": "16 Sep 26 18:31"
     },
     {
       "slug": "ms-dujuan-two-tracks",
