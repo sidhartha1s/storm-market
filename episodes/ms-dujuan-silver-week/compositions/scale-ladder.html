@@ -25,13 +25,17 @@
   .band .lab { flex:0 0 340px; font-family:'Arial Black',Arial,sans-serif; font-size:30px; }
   .band .bar { flex:1; height:46px; border-radius:8px; background:rgba(255,255,255,0.08); position:relative; overflow:visible; }
   .band .fill { position:absolute; inset:0; border-radius:8px; }
+  /* dim: a 4th rung below the official JMA "Strong+" scale, added so the forecast (Severe
+     Tropical Storm, 67 mph) has an honest home instead of sharing a band it will not reach */
+  .band.dim { opacity: 0.7; }
+  .band.dim .lab { color: #c8d3e0; }
   .marker { position:absolute; top:-14px; width:6px; height:74px; background:#f4f0e8; border-radius:3px; box-shadow:0 0 14px rgba(244,240,232,0.8); }
-  /* readout: a dedicated row below all three bands (not floating text pinned above the marker,
-     which crossed the rung above it in a stacked card this compact) -- big(58px)/mid(22px)
+  /* readout: a dedicated row below all four bands (not floating text pinned above the marker,
+     which crossed the rung above it in a stacked card this compact) -- big(58px)/mid(30px)
      tiers, own bounding box, nothing else shares it */
   .readout { display:flex; align-items:baseline; gap:22px; margin-top:26px; padding-top:22px; border-top:1px solid rgba(255,255,255,0.12); }
   .readout-num { font-family:'AbrilFig',Georgia,serif; font-size:58px; line-height:1; color:#f4f0e8; text-shadow:0 2px 12px rgba(0,0,0,0.7); }
-  .readout-lab { font-family:'Arial Black',Arial,sans-serif; font-size:22px; color:#f4f0e8; letter-spacing:1px; }
+  .readout-unit { font-family:'Arial Black',Arial,sans-serif; font-size:30px; color:#f4f0e8; letter-spacing:1px; }
   .caption { margin-top:30px; font-family:Georgia,serif; font-style:italic; font-size:24px; color:#93a3b2; }
 </style>
 <div id="root" data-composition-id="scale-ladder" data-width="1920" data-height="1080">
