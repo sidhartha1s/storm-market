@@ -93,6 +93,12 @@ this session given the time budget. This matches the sourcing standard the sibli
 (`ms-dujuan-silver-week`) already used for its own Hagibis/Faxai/Ampil benchmark, so it is consistent with
 shipped practice, but it is short of "fetch JMA/Cabinet Office/FDMA directly" as an ideal. Flagged, not hidden.
 
+**B4's closing line ("more than two hundred deaths and over fifty billion dollars in damage") is arithmetic, not
+a fetched figure:** deaths sum to 203 (22+17+14+4+3+139+4+0) and damage sums to approx. US$50.2B using the
+midpoint of Jebi's $13–14B insured-loss range (Lionrock $2.74B + Lan ~$2B + Jebi $13.5B + Trami $2.69B + Faxai
+$10B + Hagibis $17.3B + Nanmadol ~$2B + Ampil not separately quantified) — all eight addends individually
+verified above (f6–f13), the sum itself is not independently fetched.
+
 ## B1 — COLD OPEN (0:00–0:33)
 
 ### B1-S1 — narration
