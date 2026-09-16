@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>JMA vs. NHC: How Japan and America Rank the Same Storm — The Warning Hour (mini-storms, evergreen, 16 Sep 26)</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070c; }
+    video, .still-wrap { position: absolute; inset: 0; }
+    video { width: 100%; height: 100%; object-fit: cover; }
+    .still-wrap { overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    .bc { filter: saturate(0.85) contrast(1.08) brightness(0.95); }
+    @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+    .popfig { position: absolute; left: 0; right: 0; top: 34%; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; isolation: isolate; }
+    .popfig .pf-big { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 130px; color: #d0121f; letter-spacing: 0.04em;
+      text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+    .popfig .pf-sub { display: block; margin-top: 12px; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 34px; color: #f4f0e8;
+      letter-spacing: 0.3em; -webkit-text-stroke: 1px rgba(0,0,0,0.85); paint-order: stroke fill;
+      text-shadow: 0 0 18px rgba(0,0,0,1), 0 0 40px rgba(0,0,0,0.9), 0 3px 10px #000; }
+    .popfig::before { content: ''; position: absolute; left: 14%; right: 14%; top: -80px; bottom: -60px; z-index: -1;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.32) 40%, rgba(0,0,0,0) 72%); }
+    .chip { position: absolute; left: 110px; bottom: 300px; z-index: 6; font-family: 'Arial Black', Arial, sans-serif; font-size: 32px; letter-spacing: 2px; color: #f4f0e8;
+      background: rgba(10,16,24,0.62); backdrop-filter: blur(14px) saturate(1.15); -webkit-backdrop-filter: blur(14px) saturate(1.15);
+      border: 1px solid rgba(255,255,255,0.14); border-left: 6px solid #d0121f; border-radius: 10px; padding: 12px 26px; max-width: 1100px; }
+    .srclab { position: absolute; right: 40px; top: 34px; z-index: 7; font-family: Arial, sans-serif; font-size: 20px; letter-spacing: 1px; color: rgba(220,228,236,0.85); background: rgba(5,8,12,0.6); padding: 6px 14px; }
+    .bugstrip { position: absolute; left: 0; right: 0; bottom: 0; height: 92px; display: flex; align-items: stretch; z-index: 5;
+      background: linear-gradient(90deg, rgba(4,7,12,0.94) 0%, rgba(4,7,12,0.82) 70%, rgba(4,7,12,0.6) 100%); border-top: 2px solid #d0121f; }
+    .bugstrip .bk { display: flex; align-items: center; padding: 0 34px; background: #d0121f; color: #fff; font-family: 'Arial Black', Arial, sans-serif; font-size: 34px; letter-spacing: 5px; }
+    .bugstrip .bw { display: flex; align-items: center; padding: 0 26px; color: #d8a13a; font-family: Georgia, serif; font-style: italic; font-size: 26px; border-right: 1px solid rgba(255,255,255,0.14); white-space: nowrap; }
+    .bugstrip .bh { display: flex; align-items: center; padding: 0 30px; color: #f4f0e8; font-weight: 700; font-size: 32px; letter-spacing: 1px; white-space: nowrap; overflow: hidden; }
+    .pip { position: absolute !important; inset: auto !important; left: 1640px !important; top: 708px !important;
+      width: 240px !important; height: 240px !important; border-radius: 50% !important; object-fit: cover !important; z-index: 8 !important; }
+    .pipring { position: absolute; left: 1632px; top: 700px; width: 256px; height: 256px; border-radius: 50%; border: 4px solid #d0121f;
+      box-sizing: border-box; z-index: 9; box-shadow: 0 10px 30px rgba(0,0,0,0.55); }
+    #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90; background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
+    #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.10; mix-blend-mode: overlay; }
+    #grade { position: absolute; inset: 0; pointer-events: none; z-index: 89; mix-blend-mode: soft-light; background-color: rgba(96,138,178,0.18); }
+    .dust { position: absolute; z-index: 92; pointer-events: none; border-radius: 50%; background: rgba(255,255,255,0.32); filter: blur(1.2px); }
+  </style>
+</head>
+<body>
+<!-- ms-dujuan-jma-vs-nhc · mini-storms evergreen explainer, 16 Sep 26. "JMA vs. NHC: How Japan and America Rank
+     the Same Storm." No storm name spoken or shown (JMA has not assigned one). B-roll muted. CTA after B3
+     (~34% in, the story break between "how Japan measures" and "how America measures"), 0.5 s dips each side.
+     Paul hidden under the JMA quote card, the wind-window/compare-card/translate-table run, and the close.
+     Cues resolved from audio/*.words.json (sped 1.10, re-transcribed) — never estimated. -->
+<div id="root" data-composition-id="ms-dujuan-jma-vs-nhc" data-start="0.0" data-width="1920" data-height="1080" data-duration="542.611" data-fps="30">
+
+  <!-- ============ NARRATION (wav lengths, manifest.json ground truth) ============ -->
+  <audio id="nx-b1s1" src="audio/b1-s1.wav" data-start="0.0" data-duration="49.818" data-volume="1"></audio>
+  <audio id="nx-b2s1" src="audio/b2-s1.wav" data-start="50.418" data-duration="60.291" data-volume="1"></audio>
+  <audio id="nx-b3s1" src="audio/b3-s1.wav" data-start="111.309" data-duration="59.418" data-volume="1"></audio>
+  <audio id="nx-b4s1" src="audio/b4-s1.wav" data-start="186.866" data-duration="49.782" data-volume="1"></audio>
+  <audio id="nx-b5s1" src="audio/b5-s1.wav" data-start="237.248" data-duration="67.309" data-volume="1"></audio>
+  <audio id="nx-b6s1" src="audio/b6-s1.wav" data-start="305.157" data-duration="63.273" data-volume="1"></audio>
+  <audio id="nx-b7s1" src="audio/b7-s1.wav" data-start="369.030" data-duration="69.127" data-volume="1"></audio>
+  <audio id="nx-b8s1" src="audio/b8-s1.wav" data-start="438.757" data-duration="61.818" data-volume="1"></audio>
+  <audio id="nx-b9s1" src="audio/b9-s1.wav" data-start="501.175" data-duration="25.2" data-volume="1"></audio>
+  <audio id="nx-b10s1" src="audio/b10-s1.wav" data-start="526.975" data-duration="11.636" data-volume="1"></audio>
+
+  <!-- ============ CTA (own audio; the only unmuted insert; end of B3, ~34% in) ============ -->
+  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v5-sep6.mp4" data-start="171.227" data-duration="15.139" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
+
+  <!-- ============ BEDS ============ -->
+  <audio id="sx-rumble-hook" src="media/04_distant_storm_rumble.mp3" data-bed="" data-start="0.0" data-duration="49.818" data-volume="0.16"></audio>
+  <audio id="sx-mus-a" src="media/score-act5-tension.mp3" data-bed="" data-start="0.0" data-duration="170.727" data-volume="0.13"></audio>
+  <audio id="sx-mus-b" src="media/score-act3-urgent.mp3" data-bed="" data-start="186.866" data-duration="181.564" data-volume="0.13"></audio>
+  <audio id="sx-mus-c" src="media/score-act6-close.mp3" data-bed="" data-start="369.030" data-duration="173.581" data-volume="0.16"></audio>
+
+  <!-- ============ PRESENTER (corner circle; hidden under the JMA quote card, the B6/B7 graphics run, and the close) ============ -->
+  <video id="pip-idle-a" class="pip" src="media/pip/paul-idle-a.mp4" data-start="0.0" data-duration="119.309" data-track-index="6" muted></video>
+  <video id="pip-talk-a" class="pip" src="media/pip/paul-talk-a.mp4" data-start="0.0" data-duration="119.309" data-track-index="7" data-callback="presenter loop, talking" muted></video>
+  <section class="clip" id="pip-ring-a" data-start="0.0" data-duration="119.309" data-track-index="8"><div class="pipring"></div></section>
+
+  <video id="pip-idle-b1" class="pip" src="media/pip/paul-idle-b.mp4" data-start="186.866" data-duration="118.291" data-track-index="6" data-callback="presenter loop resumes after the CTA" muted></video>
+  <video id="pip-talk-b1" class="pip" src="media/pip/paul-talk-b.mp4" data-start="186.866" data-duration="118.291" data-track-index="7" data-callback="presenter loop, talking, B4-B5" muted></video>
+  <section class="clip" id="pip-ring-b1" data-start="186.866" data-duration="118.291" data-track-index="8"><div class="pipring"></div></section>
+
+  <video id="pip-idle-b2" class="pip" src="media/pip/paul-idle-b.mp4" data-start="438.757" data-duration="88.218" data-track-index="6" data-callback="presenter loop resumes for B8-B9" muted></video>
+  <video id="pip-talk-b2" class="pip" src="media/pip/paul-talk-b.mp4" data-start="438.757" data-duration="88.218" data-track-index="7" data-callback="presenter loop, talking, B8-B9" muted></video>
+  <section class="clip" id="pip-ring-b2" data-start="438.757" data-duration="88.218" data-track-index="8"><div class="pipring"></div></section>
+
+  <!-- ============ NEWS BUG (track 3) ============ -->
+  <section class="clip" id="bug-a" data-start="0.0" data-duration="170.727" data-track-index="3"><div class="bugstrip" id="bugstrip-a"><div class="bk">STORM WATCH</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-a"></div></div></section>
+  <section class="clip" id="bug-b" data-start="186.866" data-duration="251.291" data-track-index="3"><div class="bugstrip" id="bugstrip-b"><div class="bk">STORM WATCH</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-b"></div></div></section>
+  <section class="clip" id="bug-c" data-start="438.757" data-duration="87.618" data-track-index="3"><div class="bugstrip" id="bugstrip-c"><div class="bk">STORM WATCH</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-c"></div></div></section>
+
+  <!-- ============ TRACK 1 · picture ============ -->
+  <!-- B1 · cold open 0-49.818 -->
+  <section class="clip still-wrap" id="c-b1-0-himawari" data-start="0.0" data-duration="7.0" data-track-index="1"><img id="kb-b1-0-himawari" src="media/image/himawari_fulldisk.jpg" alt=""></section>
+  <video id="vx-b1-1-waves" src="media/video/b1_waves.mp4" data-start="7.0" data-duration="6.5" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b1-2-worldview16" data-start="13.5" data-duration="8.0" data-track-index="1"><img id="kb-b1-2-worldview16" src="media/image/worldview_0916.jpg" alt=""></section>
+  <video id="vx-b1-3-stormclouds" src="media/video/b1_stormclouds.mp4" data-start="21.5" data-duration="7.0" data-track-index="1" muted></video>
+  <video id="vx-b1-4-tokyobay" src="media/video/b1_tokyobay.mp4" data-start="28.5" data-duration="10.0" data-track-index="1" muted></video>
+  <video id="vx-b1-5-seawall" src="media/video/b1_seawall.mp4" data-start="38.5" data-duration="11.318" data-track-index="1" muted></video>
+  <section class="clip blackout" id="bo-hook" data-start="49.818" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B2 · two agencies, three rulebooks 50.418-110.709 -->
+  <section class="clip still-wrap" id="c-b2-0-worldview14" data-start="50.418" data-duration="7.0" data-track-index="1"><img id="kb-b2-0-worldview14" src="media/image/worldview_0914.jpg" alt=""></section>
+  <video id="vx-b2-1-odaiba" src="media/video/b2_odaiba.mp4" data-start="57.418" data-duration="8.0" data-track-index="1" muted></video>
+  <video id="vx-b2-2-trees" src="media/video/b2_trees.mp4" data-start="65.418" data-duration="8.0" data-track-index="1" muted></video>
+  <video id="vx-b2-3-umbrella" src="media/video/b2_umbrella.mp4" data-start="73.418" data-duration="7.9" data-track-index="1" muted></video>
+  <video id="vx-b2-4-trainstation" src="media/video/b2_trainstation.mp4" data-start="81.318" data-duration="9.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b2-5-jtwcmap" data-start="90.318" data-duration="8.0" data-track-index="1"><img id="kb-b2-5-jtwcmap" src="media/maps/jtwc_track.png" alt=""></section>
+  <video id="vx-b2-6-incomingstorm" src="media/video/b2_incomingstorm.mp4" data-start="98.318" data-duration="8.0" data-track-index="1" muted></video>
+  <video id="vx-b2-7-waves-cont" src="media/video/b2_waves_cont.mp4" data-start="106.318" data-duration="4.391" data-track-index="1" data-callback="second cut of the B1 typhoon-waves clip" muted></video>
+  <section class="clip blackout" id="bo-b2" data-start="110.709" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B3 · how Japan measures 111.309-170.727 (jma-quote comp on track 2 from 119.309) -->
+  <video id="vx-b3-0-fnn" src="media/video/b3_fnn.mp4" data-start="111.309" data-duration="4.0" data-track-index="1" muted></video>
+  <video id="vx-b3-1-ann" src="media/video/b3_ann.mp4" data-start="115.309" data-duration="4.0" data-track-index="1" muted></video>
+  <section class="clip blackout" id="bo-b3-quote" data-start="119.309" data-duration="51.418" data-track-index="1"></section>
+
+  <!-- B4 · how America measures 186.866-236.648 (ladder comp on track 2, full window) -->
+  <section class="clip blackout" id="bo-b4-ladder" data-start="186.866" data-duration="49.782" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-b4" data-start="236.648" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B5 · why a third scale exists 237.248-304.557 -->
+  <video id="vx-b5-0-trees2" src="media/video/b5_trees2.mp4" data-start="237.248" data-duration="8.0" data-track-index="1" data-callback="second cut of the B2 wind-trees clip" muted></video>
+  <video id="vx-b5-1-campbutler-trash" src="media/video/b5_campbutler_trash.mp4" data-start="245.248" data-duration="5.0" data-track-index="1" muted></video>
+  <video id="vx-b5-2-campbutler-broll" src="media/video/b5_campbutler_broll.mp4" data-start="250.248" data-duration="5.0" data-track-index="1" muted></video>
+  <video id="vx-b5-3-yokota" src="media/video/b5_yokota_interview.mp4" data-start="255.248" data-duration="5.0" data-track-index="1" muted></video>
+  <video id="vx-b5-4-prepcard" src="media/video/b5_japan_prepcard.mp4" data-start="260.248" data-duration="6.0" data-track-index="1" muted></video>
+  <video id="vx-b5-5-uhb" src="media/video/b5_uhb.mp4" data-start="266.248" data-duration="5.0" data-track-index="1" muted></video>
+  <video id="vx-b5-6-tbs" src="media/video/b5_tbs.mp4" data-start="271.248" data-duration="5.0" data-track-index="1" muted></video>
+  <video id="vx-b5-7-news23" src="media/video/b5_news23.mp4" data-start="276.248" data-duration="5.0" data-track-index="1" muted></video>
+  <video id="vx-b5-8-baggage" src="media/video/b5_baggage.mp4" data-start="281.248" data-duration="6.0" data-track-index="1" muted></video>
+  <video id="vx-b5-9-airportfamilies" src="media/video/b5_airportfamilies.mp4" data-start="287.248" data-duration="8.0" data-track-index="1" muted></video>
+  <video id="vx-b5-10-incomingstorm2" src="media/video/b5_incomingstorm2.mp4" data-start="295.248" data-duration="9.309" data-track-index="1" data-callback="second cut of the B2 incoming-storm clip" muted></video>
+  <section class="clip blackout" id="bo-b5" data-start="304.557" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B6 · the math behind the gap 305.157-368.430 (wind-window then compare-card on track 2, full window) -->
+  <section class="clip blackout" id="bo-b6-graphics" data-start="305.157" data-duration="63.273" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-b6" data-start="368.430" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B7 · same animal, different name 369.030-438.157 (translate-table on track 2 from 377.030) -->
+  <section class="clip still-wrap" id="c-b7-0-worldview15" data-start="369.030" data-duration="8.0" data-track-index="1"><img id="kb-b7-0-worldview15" src="media/image/worldview_0915.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-b7-table" data-start="377.030" data-duration="61.127" data-track-index="1"></section>
+
+  <!-- B8 · why it matters: the benchmark 438.757-500.575 -->
+  <video id="vx-b8-0-seawall2" src="media/video/b8_seawall2.mp4" data-start="438.757" data-duration="7.682" data-track-index="1" data-callback="third cut of the seawall clip" muted></video>
+  <video id="vx-b8-1-stormclouds2" src="media/video/b8_stormclouds2.mp4" data-start="446.439" data-duration="5.0" data-track-index="1" data-callback="second cut of the B1 storm-clouds clip" muted></video>
+  <video id="vx-b8-2-uhb2" src="media/video/b8_uhb2.mp4" data-start="451.439" data-duration="5.0" data-track-index="1" data-callback="second cut of the B5 Hokkaido broadcast" muted></video>
+  <video id="vx-b8-3-iwakuni" src="media/video/b8_iwakuni.mp4" data-start="456.439" data-duration="6.0" data-track-index="1" muted></video>
+  <video id="vx-b8-4-campbutler-broll2" src="media/video/b8_campbutler_broll2.mp4" data-start="462.439" data-duration="6.0" data-track-index="1" data-callback="second cut of the B5 Camp Butler b-roll reel" muted></video>
+  <video id="vx-b8-5-tbs2" src="media/video/b8_tbs2.mp4" data-start="468.439" data-duration="6.0" data-track-index="1" data-callback="second cut of the B5 TBS broadcast" muted></video>
+  <video id="vx-b8-6-trees3" src="media/video/b8_trees3.mp4" data-start="474.439" data-duration="8.236" data-track-index="1" data-callback="third cut of the wind-trees clip" muted></video>
+  <video id="vx-b8-7-baggage2" src="media/video/b8_baggage2.mp4" data-start="482.675" data-duration="7.0" data-track-index="1" data-callback="second cut of the B5 baggage-carousel clip" muted></video>
+  <video id="vx-b8-8-news23-2" src="media/video/b8_news23_2.mp4" data-start="489.675" data-duration="5.0" data-track-index="1" data-callback="second cut of the B5 news23 broadcast" muted></video>
+  <video id="vx-b8-9-flightinfo" src="media/video/b8_flightinfo.mp4" data-start="494.675" data-duration="5.9" data-track-index="1" muted></video>
+  <section class="clip blackout" id="bo-b8" data-start="500.575" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B9 · what's still open tonight 501.175-526.375 (return to the Himawari loop, then tracking comp from 509.175) -->
+  <section class="clip still-wrap" id="c-b9-0-himawari2" data-start="501.175" data-duration="8.0" data-track-index="1" data-callback="return to the Himawari loop from B1"><img id="kb-b9-0-himawari2" src="media/image/himawari_fulldisk.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-b9-tracking" data-start="509.175" data-duration="17.2" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-b9" data-start="526.375" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B10 · close 526.975-542.611 -->
+  <section class="clip blackout" id="bo-close" data-start="526.975" data-duration="15.636" data-track-index="1"></section>
+
+  <!-- ============ OVERLAYS: popfigs (track 5), chips and source labels (track 4) ============ -->
+  <section class="clip" id="p-src-open" data-start="0.0" data-duration="6.0" data-track-index="4"><div class="srclab" id="src-open">SOURCES: JMA &middot; JTWC &middot; NHC &middot; FACTS-16SEP.MD</div></section>
+  <section class="clip" id="p-pf-998" data-start="15.0" data-duration="2.6" data-track-index="5"><div class="popfig" id="pf-998"><span class="pf-big">998 hPa</span><span class="pf-sub">CENTRAL PRESSURE</span></div></section>
+  <section class="clip" id="p-pf-wind" data-start="18.34" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-wind"><span class="pf-big">33 MPH</span><span class="pf-sub">GUSTS TO 52</span></div></section>
+  <section class="clip" id="p-pf-unnamed" data-start="24.08" data-duration="2.8" data-track-index="5"><div class="popfig" id="pf-unnamed"><span class="pf-big">NOT YET NAMED</span><span class="pf-sub">STILL A TROPICAL DEPRESSION</span></div></section>
+
+  <section class="clip" id="p-chip-jtwc" data-start="246.708" data-duration="5.0" data-track-index="4"><div class="chip" id="chip-jtwc">U.S. NAVY / AIR FORCE &middot; HONOLULU, HAWAII</div></section>
+
+  <section class="clip" id="p-pf-hagibis" data-start="447.457" data-duration="2.8" data-track-index="5"><div class="popfig" id="pf-hagibis"><span class="pf-big">139 DEAD</span><span class="pf-sub">3 MISSING</span></div></section>
+  <section class="clip" id="p-src-hagibis" data-start="447.457" data-duration="4.0" data-track-index="4"><div class="srclab" id="src-hagibis">JMA, 2019</div></section>
+  <section class="clip" id="p-pf-cost" data-start="451.457" data-duration="2.8" data-track-index="5"><div class="popfig" id="pf-cost"><span class="pf-big">$17.3B</span><span class="pf-sub">COSTLIEST ON RECORD</span></div></section>
+  <section class="clip" id="p-chip-jp" data-start="466.697" data-duration="5.0" data-track-index="4"><div class="chip" id="chip-jp">JP SEVERE TROPICAL STORM: BELOW TYPHOON, STILL DISRUPTIVE</div></section>
+  <section class="clip" id="p-chip-us" data-start="476.877" data-duration="5.0" data-track-index="4"><div class="chip" id="chip-us">US CATEGORY 1: OFFICIALLY A HURRICANE</div></section>
+
+  <!-- ============ COMPOSITIONS (track 2) ============ -->
+  <div id="host-jmaquote" data-composition-id="jmaquote" data-composition-src="compositions/jma-quote.html" data-start="119.309" data-duration="51.418" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-ladder" data-composition-id="ladder" data-composition-src="compositions/ladder.html" data-start="186.866" data-duration="49.782" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-windwindow" data-composition-id="windwindow" data-composition-src="compositions/wind-window.html" data-start="305.157" data-duration="21.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-comparecard" data-composition-id="comparecard" data-composition-src="compositions/compare-card.html" data-start="326.157" data-duration="42.273" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-translatetable" data-composition-id="translatetable" data-composition-src="compositions/translate-table.html" data-start="377.030" data-duration="61.127" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-tracking" data-composition-id="tracking" data-composition-src="compositions/tracking.html" data-start="509.175" data-duration="17.2" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-close" data-composition-id="gclose" data-composition-src="compositions/g-close.html" data-start="526.975" data-duration="15.636" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- CTA dips: LAST in the DOM so they paint above every track-1 cut under them -->
+  <section class="clip blackout" id="bo-cta-in" data-start="170.727" data-duration="0.5" data-track-index="9"></section>
+  <section class="clip blackout" id="bo-cta-out" data-start="186.366" data-duration="0.5" data-track-index="9"></section>
+
+  <div id="grade"></div><div id="vignette"></div><canvas id="grain" width="480" height="270"></canvas>
+</div>
+
+<script src="grain.js"></script>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 542.611;
+  function kb(sel, at, dur, s0, s1, x0, x1, y0, y1) {
+    tl.fromTo(sel, { scale: s0, x: x0, y: y0, transformOrigin: "center" }, { scale: s1, x: x1, y: y1, duration: dur, ease: "none" }, at);
+  }
+  function pop(sel, at, hold) {
+    tl.fromTo(sel, { scale: 2.2, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.35, ease: "power4.in" }, at);
+    tl.to(sel, { autoAlpha: 0, y: -26, duration: 0.28, ease: "power2.in" }, at + hold - 0.28);
+  }
+  function chip(sel, at, hold) {
+    tl.fromTo(sel, { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, at);
+    tl.to(sel, { autoAlpha: 0, x: -30, duration: 0.3, ease: "power2.in" }, at + hold - 0.3);
+  }
+  function lab(sel, at, hold) {
+    tl.fromTo(sel, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, at);
+    tl.to(sel, { autoAlpha: 0, duration: 0.3 }, at + hold - 0.3);
+  }
+  function bug(strip, hl, at, dur, lines) {
+    tl.fromTo(strip, { y: 96 }, { y: 0, duration: 0.45, ease: "power3.out" }, at);
+    const n = Math.floor((dur - 0.6) / 14);
+    for (let i = 0; i < n; i++) {
+      const t = at + 0.3 + i * 14, text = lines[i % lines.length];
+      if (i > 0) tl.to(hl, { y: 40, autoAlpha: 0, duration: 0.25, ease: "power2.in" }, t - 0.25);
+      tl.set(hl, { textContent: text }, t);
+      tl.fromTo(hl, { y: -40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.3, ease: "power2.out" }, t);
+    }
+  }
+  tl.set([".popfig", ".chip", ".srclab"], { autoAlpha: 0 }, 0);
+
+  /* ---- stills (Ken Burns, always moving) ---- */
+  kb("#kb-b1-0-himawari", 0.0, 7.0, 1.08, 1.16, -20, -60, -10, -30);
+  kb("#kb-b1-2-worldview16", 13.5, 8.0, 1.0, 1.08, 0, -14, 0, -8);
+  kb("#kb-b2-0-worldview14", 50.418, 7.0, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-b2-5-jtwcmap", 90.318, 8.0, 1.0, 1.07, 0, 12, 0, -6);
+  kb("#kb-b7-0-worldview15", 369.030, 8.0, 1.08, 1.0, 12, 0, 6, 0);
+  kb("#kb-b9-0-himawari2", 501.175, 8.0, 1.16, 1.24, -60, -110, -30, -60);
+
+  /* ---- overlays (absolute = segment start + spoken cue from the sped words.json) ---- */
+  lab("#src-open", 0.0, 6.0);
+  pop("#pf-998", 15.0, 2.6);
+  pop("#pf-wind", 18.34, 3.4);
+  pop("#pf-unnamed", 24.08, 2.8);
+  chip("#chip-jtwc", 246.708, 5.0);
+  pop("#pf-hagibis", 447.457, 2.8);
+  lab("#src-hagibis", 447.457, 4.0);
+  pop("#pf-cost", 451.457, 2.8);
+  chip("#chip-jp", 466.697, 5.0);
+  chip("#chip-us", 476.877, 5.0);
+
+  /* ---- news bug ---- */
+  bug("#bugstrip-a", "#bh-a", 0.0, 170.727, ["WESTERN PACIFIC · TRACKING A NEW SYSTEM", "JMA · NHC · JTWC: THREE AGENCIES, THREE NUMBERS", "JAPAN'S SCALE: A 10-MINUTE WIND AVERAGE"]);
+  bug("#bugstrip-b", "#bh-b", 186.866, 251.291, ["AMERICA'S SCALE: A 1-MINUTE WIND PEAK", "TODAY'S GAP: JMA 67 MPH VS. JTWC 75 MPH", "TYPHOON = HURRICANE = CYCLONE, DIFFERENT OCEAN"]);
+  bug("#bugstrip-c", "#bh-c", 438.757, 87.618, ["HAGIBIS 2019: 139 DEAD, $17.3B IN DAMAGE", "NEXT UPDATE: JMA'S NEXT ADVISORY"]);
+
+  /* ---- presenter talk-sync (talk loop shows while words flow, idle in the gaps; derived from words.json) ---- */
+  tl.set(["#pip-talk-a", "#pip-talk-b1", "#pip-talk-b2"], { autoAlpha: 0 }, 0);
+  /* b1-s1 (11 spans) */
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 0.0); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 6.84);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 7.44); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 13.1);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 13.88); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 16.78);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 17.38); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 19.84);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 20.3); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 21.6);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 22.26); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 25.18);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 25.68); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 28.64);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 28.64); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 33.58);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 33.92); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 40.94);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 41.42); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 42.78);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 43.36); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 49.32);
+  /* b2-s1 (6 spans, offset +50.418) */
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 50.418); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 63.258);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 66.818); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 79.098);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 79.548); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 92.938);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 93.548); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 96.678);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 97.268); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 100.198);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 100.658); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 110.238);
+  /* b3-s1 (talk-sync inert past 119.309, the pip-idle-a/talk-a unmount for the jma-quote card; offset +111.309) */
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 111.309); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 114.509);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 115.209); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 117.549);
+  /* b4-s1 (offset +186.866, pip-talk-b1) */
+  tl.to("#pip-talk-b1", { autoAlpha: 1, duration: 0.1 }, 186.866); tl.to("#pip-talk-b1", { autoAlpha: 0, duration: 0.1 }, 199.906);
+  tl.to("#pip-talk-b1", { autoAlpha: 1, duration: 0.1 }, 200.786); tl.to("#pip-talk-b1", { autoAlpha: 0, duration: 0.1 }, 220.086);
+  tl.to("#pip-talk-b1", { autoAlpha: 1, duration: 0.1 }, 220.646); tl.to("#pip-talk-b1", { autoAlpha: 0, duration: 0.1 }, 225.006);
+  tl.to("#pip-talk-b1", { autoAlpha: 1, duration: 0.1 }, 225.446); tl.to("#pip-talk-b1", { autoAlpha: 0, duration: 0.1 }, 231.486);
+  tl.to("#pip-talk-b1", { autoAlpha: 1, duration: 0.1 }, 231.826); tl.to("#pip-talk-b1", { autoAlpha: 0, duration: 0.1 }, 236.086);
+  /* b5-s1 (offset +237.248) */
+  tl.to("#pip-talk-b1", { autoAlpha: 1, duration: 0.1 }, 237.248); tl.to("#pip-talk-b1", { autoAlpha: 0, duration: 0.1 }, 250.428);
+  tl.to("#pip-talk-b1", { autoAlpha: 1, duration: 0.1 }, 251.088); tl.to("#pip-talk-b1", { autoAlpha: 0, duration: 0.1 }, 269.568);
+  tl.to("#pip-talk-b1", { autoAlpha: 1, duration: 0.1 }, 269.988); tl.to("#pip-talk-b1", { autoAlpha: 0, duration: 0.1 }, 290.488);
+  tl.to("#pip-talk-b1", { autoAlpha: 1, duration: 0.1 }, 291.308); tl.to("#pip-talk-b1", { autoAlpha: 0, duration: 0.1 }, 293.888);
+  tl.to("#pip-talk-b1", { autoAlpha: 1, duration: 0.1 }, 294.308); tl.to("#pip-talk-b1", { autoAlpha: 0, duration: 0.1 }, 304.088);
+  /* b6-s1 / b7-s1 talk-sync omitted: pip-talk-b1 unmounts at 305.157 for the B6/B7 graphics run (see index above) */
+
+  /* b8-s1 (offset +438.757, pip-talk-b2) */
+  tl.to("#pip-talk-b2", { autoAlpha: 1, duration: 0.1 }, 438.757); tl.to("#pip-talk-b2", { autoAlpha: 0, duration: 0.1 }, 441.917);
+  tl.to("#pip-talk-b2", { autoAlpha: 1, duration: 0.1 }, 442.757); tl.to("#pip-talk-b2", { autoAlpha: 0, duration: 0.1 }, 452.257);
+  tl.to("#pip-talk-b2", { autoAlpha: 1, duration: 0.1 }, 452.717); tl.to("#pip-talk-b2", { autoAlpha: 0, duration: 0.1 }, 468.917);
+  tl.to("#pip-talk-b2", { autoAlpha: 1, duration: 0.1 }, 469.677); tl.to("#pip-talk-b2", { autoAlpha: 0, duration: 0.1 }, 484.917);
+  tl.to("#pip-talk-b2", { autoAlpha: 1, duration: 0.1 }, 485.577); tl.to("#pip-talk-b2", { autoAlpha: 0, duration: 0.1 }, 495.877);
+  tl.to("#pip-talk-b2", { autoAlpha: 1, duration: 0.1 }, 496.577); tl.to("#pip-talk-b2", { autoAlpha: 0, duration: 0.1 }, 500.117);
+  /* b9-s1 (offset +501.175) */
+  tl.to("#pip-talk-b2", { autoAlpha: 1, duration: 0.1 }, 501.175); tl.to("#pip-talk-b2", { autoAlpha: 0, duration: 0.1 }, 504.715);
+  tl.to("#pip-talk-b2", { autoAlpha: 1, duration: 0.1 }, 505.575); tl.to("#pip-talk-b2", { autoAlpha: 0, duration: 0.1 }, 508.335);
+  tl.to("#pip-talk-b2", { autoAlpha: 1, duration: 0.1 }, 508.57); tl.to("#pip-talk-b2", { autoAlpha: 0, duration: 0.1 }, 511.78);
+  tl.to("#pip-talk-b2", { autoAlpha: 1, duration: 0.1 }, 512.27); tl.to("#pip-talk-b2", { autoAlpha: 0, duration: 0.1 }, 512.84);
+  tl.to("#pip-talk-b2", { autoAlpha: 1, duration: 0.1 }, 513.39); tl.to("#pip-talk-b2", { autoAlpha: 0, duration: 0.1 }, 515.15);
+  tl.to("#pip-talk-b2", { autoAlpha: 1, duration: 0.1 }, 515.98); tl.to("#pip-talk-b2", { autoAlpha: 0, duration: 0.1 }, 518.08);
+  tl.to("#pip-talk-b2", { autoAlpha: 1, duration: 0.1 }, 518.58); tl.to("#pip-talk-b2", { autoAlpha: 0, duration: 0.1 }, 520.12);
+  tl.to("#pip-talk-b2", { autoAlpha: 1, duration: 0.1 }, 520.74); tl.to("#pip-talk-b2", { autoAlpha: 0, duration: 0.1 }, 525.94);
+
+  filmLayer(tl, DUR);
+  tl.to(["#vignette", "#grade", "#grain", ".dust"], { autoAlpha: 0, duration: 0.3 }, 171.227);
+  tl.to(["#vignette", "#grade", ".dust"], { autoAlpha: 1, duration: 0.3 }, 186.366);
+  tl.to("#grain", { autoAlpha: 0.10, duration: 0.3 }, 186.366);
+  window.__timelines["ms-dujuan-jma-vs-nhc"] = tl;
+})();
+</script>
+</body>
+</html>
