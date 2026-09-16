@@ -17,10 +17,16 @@
   #root { position:absolute; inset:0; overflow:hidden; font-family:Arial,sans-serif; color:#f2f5f8;
     background:radial-gradient(ellipse at 30% 70%, #142235 0%, #04070c 70%); }
   #sl-drift { position:absolute; inset:-8%; background:radial-gradient(ellipse at 70% 20%, rgba(208,18,31,0.08) 0%, rgba(0,0,0,0) 55%); }
-  .card { position:absolute; left:260px; top:210px; width:1400px; padding:40px 56px; box-sizing:border-box; z-index:6;
-    background:rgba(10,16,24,0.6); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
-    border:1px solid rgba(255,255,255,0.14); border-radius:24px; }
-  .eyebrow { font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:6px; color:#d0121f; margin-bottom:26px; }
+  /* height is EXPLICIT and overflow:hidden -- not auto/content-derived -- so the card's bottom
+     edge is a fixed, known number (210 top + 580 height = 790), not an estimate: two rounds of
+     hand-measuring the auto-height missed. 580 = 40 pad-top + 50 eyebrow (24 line-height:1 + 26
+     margin) + 256 (4 bands x 64) + 107 readout (26 margin + 22 pad-top + 1 border + 58 content,
+     line-height:1) + 54 caption (30 margin + 24 line-height:1, nowrap so it can never wrap to a
+     2nd line) + 40 pad-bottom = 547, +33px buffer for descenders/text-shadow bleed. */
+  .card { position:absolute; left:260px; top:210px; width:1400px; height:580px; padding:40px 56px; box-sizing:border-box;
+    overflow:hidden; z-index:6; background:rgba(10,16,24,0.6); backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:24px; }
+  .eyebrow { font-family:'Arial Black',Arial,sans-serif; font-size:24px; line-height:1; letter-spacing:6px; color:#d0121f; margin-bottom:26px; }
   .band { display:flex; align-items:center; gap:24px; margin-top:18px; position:relative; }
   .band .lab { flex:0 0 340px; font-family:'Arial Black',Arial,sans-serif; font-size:30px; }
   .band .bar { flex:1; height:46px; border-radius:8px; background:rgba(255,255,255,0.08); position:relative; overflow:visible; }
