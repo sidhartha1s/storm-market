@@ -89,7 +89,10 @@ for s_rec, f_rec in zip(spec[2:], fc[2:]):
         "wind_mph": mph(ms=s_rec["maximumWind"]["sustained"]["m/s"]),
         "gust_mph": mph(ms=s_rec["maximumWind"]["gust"]["m/s"]),
         "category": CAT_LABEL.get(s_rec["category"]["en"], s_rec["category"]["en"]),
-        "location_label": s_rec["location"],
+        "location_label": LOCATION_EN.get(s_rec["location"], s_rec["location"]),
+        "course_en": COURSE_EN.get(s_rec.get("course", ""), s_rec.get("course")),
+        "speed_kmh": int(s_rec["speed"]["km/h"]) if "speed" in s_rec else None,
+        "speed_mph": kmh_to_mph(s_rec["speed"]["km/h"]) if "speed" in s_rec else None,
         "probability_circle_radius_km": radius_km,
     })
 
