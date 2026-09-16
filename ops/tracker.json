@@ -404,11 +404,11 @@
       "bucket": "japan-typhoon",
       "title": "Silver Week Collision: A Storm Joins Japan's Biggest Holiday in Years",
       "owner": "director",
-      "due": "17 Sep 26",
-      "phase": "idea",
-      "status": "done",
-      "note": "skeptic 8/9 BLOWS UP; flagship; awaiting owner pick (ops/wave3/dujuan/review-r3.md)",
-      "updated": "16 Sep 26 16:15"
+      "due": "16 Sep 26",
+      "phase": "script",
+      "status": "doing",
+      "note": "U1 spine; script + pool agents running; plan ops/wave3/dujuan/PLAN.md",
+      "updated": "16 Sep 26 16:52"
     },
     {
       "slug": "ms-dujuan-two-tracks",
@@ -416,11 +416,11 @@
       "bucket": "japan-typhoon",
       "title": "Two Tracks, One Storm: Does Tokyo Get Hit, or Does Dujuan Slide By?",
       "owner": "director",
-      "due": "18 Sep 26",
+      "due": "17 Sep 26",
       "phase": "idea",
-      "status": "done",
-      "note": "skeptic 7/6; awaiting owner pick (ops/wave3/dujuan/review-r3.md)",
-      "updated": "16 Sep 26 16:15"
+      "status": "todo",
+      "note": "U2 spine; plan ops/wave3/dujuan/PLAN.md",
+      "updated": "16 Sep 26 16:52"
     },
     {
       "slug": "ms-dujuan-alert-levels",
@@ -428,11 +428,11 @@
       "bucket": "japan-typhoon",
       "title": "Japan's Five-Level Evacuation Alert System, Explained for Americans",
       "owner": "director",
-      "due": "18 Sep 26",
+      "due": "16 Sep 26",
       "phase": "idea",
-      "status": "done",
-      "note": "skeptic 6/6, evergreen; awaiting owner pick (ops/wave3/dujuan/review-r3.md)",
-      "updated": "16 Sep 26 16:15"
+      "status": "todo",
+      "note": "evergreen; third slot today; plan ops/wave3/dujuan/PLAN.md",
+      "updated": "16 Sep 26 16:52"
     },
     {
       "slug": "ms-dujuan-us-travelers",
@@ -440,11 +440,11 @@
       "bucket": "japan-typhoon",
       "title": "What American Travelers in Japan Should Actually Do Right Now",
       "owner": "director",
-      "due": "19 Sep 26",
+      "due": "17 Sep 26",
       "phase": "idea",
-      "status": "done",
-      "note": "skeptic 6/6; awaiting owner pick (ops/wave3/dujuan/review-r3.md)",
-      "updated": "16 Sep 26 16:15"
+      "status": "todo",
+      "note": "plan ops/wave3/dujuan/PLAN.md",
+      "updated": "16 Sep 26 16:52"
     },
     {
       "slug": "ms-dujuan-jma-vs-nhc",
@@ -452,11 +452,11 @@
       "bucket": "japan-typhoon",
       "title": "JMA vs. NHC: How Japan and America Rank the Same Storm",
       "owner": "director",
-      "due": "19 Sep 26",
-      "phase": "idea",
-      "status": "done",
-      "note": "skeptic 7/7, evergreen; awaiting owner pick (ops/wave3/dujuan/review-r3.md)",
-      "updated": "16 Sep 26 16:15"
+      "due": "16 Sep 26",
+      "phase": "script",
+      "status": "doing",
+      "note": "evergreen; script agent running; plan ops/wave3/dujuan/PLAN.md",
+      "updated": "16 Sep 26 16:52"
     },
     {
       "slug": "ms-dujuan-holiday-typhoons",
@@ -464,11 +464,11 @@
       "bucket": "japan-typhoon",
       "title": "Why Japan's Worst Typhoons Keep Landing on Its Holiday Weeks",
       "owner": "director",
-      "due": "20 Sep 26",
+      "due": "17 Sep 26",
       "phase": "idea",
-      "status": "done",
-      "note": "skeptic 6/6, evergreen; awaiting owner pick (ops/wave3/dujuan/review-r3.md)",
-      "updated": "16 Sep 26 16:15"
+      "status": "todo",
+      "note": "evergreen; plan ops/wave3/dujuan/PLAN.md",
+      "updated": "16 Sep 26 16:52"
     },
     {
       "slug": "ms-dujuan-stacks-up",
@@ -476,11 +476,11 @@
       "bucket": "japan-typhoon",
       "title": "How Dujuan Stacks Up Against Japan's Last Decade of Typhoons",
       "owner": "director",
-      "due": "20 Sep 26",
+      "due": "18 Sep 26",
       "phase": "idea",
-      "status": "done",
-      "note": "skeptic 6/8; awaiting owner pick (ops/wave3/dujuan/review-r3.md)",
-      "updated": "16 Sep 26 16:15"
+      "status": "todo",
+      "note": "plan ops/wave3/dujuan/PLAN.md",
+      "updated": "16 Sep 26 16:52"
     },
     {
       "slug": "ms-dujuan-closest-pass",
@@ -490,9 +490,9 @@
       "owner": "director",
       "due": "21 Sep 26",
       "phase": "idea",
-      "status": "done",
-      "note": "skeptic 6/9, anchor day; awaiting owner pick (ops/wave3/dujuan/review-r3.md)",
-      "updated": "16 Sep 26 16:15"
+      "status": "todo",
+      "note": "U6 anchor day; plan ops/wave3/dujuan/PLAN.md",
+      "updated": "16 Sep 26 16:52"
     },
     {
       "slug": "ms-dujuan-first-numbers",
@@ -502,9 +502,9 @@
       "owner": "director",
       "due": "22 Sep 26",
       "phase": "idea",
-      "status": "done",
-      "note": "skeptic 6/8; awaiting owner pick (ops/wave3/dujuan/review-r3.md)",
-      "updated": "16 Sep 26 16:15"
+      "status": "todo",
+      "note": "U7; plan ops/wave3/dujuan/PLAN.md",
+      "updated": "16 Sep 26 16:52"
     },
     {
       "slug": "ms-dujuan-near-miss",
@@ -512,11 +512,11 @@
       "bucket": "japan-typhoon",
       "title": "The Near-Miss That Still Shuts Down Tokyo",
       "owner": "director",
-      "due": "22 Sep 26",
+      "due": "21 Sep 26",
       "phase": "idea",
-      "status": "done",
-      "note": "skeptic 8 (offshore branch only), ship if triggered; awaiting owner pick (ops/wave3/dujuan/review-r3.md)",
-      "updated": "16 Sep 26 16:15"
+      "status": "todo",
+      "note": "branch B only; plan ops/wave3/dujuan/PLAN.md",
+      "updated": "16 Sep 26 16:52"
     }
   ]
 }
