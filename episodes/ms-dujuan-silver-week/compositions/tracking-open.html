@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  DUJUAN B8 MG: tracking-open.html — the two-row "what's still open" card that opens B8, mounted
+  372.639 - wait: mounted at the B8 intro window (484.784-497.0, duration 12.216s) before the
+  b-roll benchmark section starts. Own gradient background so this reads as a designed card, not
+  a >6s raw still.
+-->
+<template>
+<style>
+  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
+  #root { position:absolute; inset:0; overflow:hidden; font-family:Arial,sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 30% 70%, #142235 0%, #04070c 70%); }
+  #to-drift { position:absolute; inset:-8%; background:radial-gradient(ellipse at 70% 30%, rgba(208,18,31,0.08) 0%, rgba(0,0,0,0) 55%); }
+  .card { position:absolute; left:110px; top:200px; width:900px; padding:34px 44px; box-sizing:border-box; z-index:6;
+    background:rgba(10,16,24,0.6); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:24px; }
+  .eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:6px; color:#d0121f; }
+  .row { display:flex; align-items:center; gap:22px; margin-top:22px; }
+  .n { flex:0 0 44px; font-family:'AbrilFig',Georgia,serif; font-size:44px; color:#d0121f; }
+  .lab { font-family:'Arial Black',Arial,sans-serif; font-size:34px; }
+</style>
+<div id="root" data-composition-id="tracking-open" data-width="1920" data-height="1080">
+  <div id="to-drift"></div>
+  <div class="card" id="to-card">
+    <div class="eye">WHAT'S STILL OPEN TONIGHT</div>
+    <div class="row"><div class="n">1</div><div class="lab">TRACK &middot; STILL OPEN</div></div>
+    <div class="row"><div class="n">2</div><div class="lab">STRENGTH &middot; STILL OPEN</div></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  tl.set("#to-card", { autoAlpha: 0 }, 0);
+  tl.fromTo("#to-card", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.2);
+  tl.to("#to-card", { autoAlpha: 0, x: -30, duration: 0.4 }, 11.2);
+  tl.to("#to-drift", { rotation: 1080, duration: 12.2, ease: "none", transformOrigin: "50% 50%" }, 0);
+  window.__timelines["tracking-open"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
