@@ -44,7 +44,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#gc-head", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.7, ease:"power3.out" }, 0.2);
   tl.fromTo("#gc-soft", { autoAlpha:0 }, { autoAlpha:1, duration:0.6 }, 1.2);
   /* subtitle drift bumped to >=8px so it reads as motion, not a subpixel jitter */
-  tl.to("#gc-soft", { y: -9, duration: 3.0, ease: "sine.inOut", repeat: 4, yoyo: true }, 1.8);
+  tl.to("#gc-soft", { y: -9, duration: 2.86, ease: "sine.inOut", repeat: 4, yoyo: true }, 1.8);
   tl.fromTo("#gc-rule", { autoAlpha:0, scaleX:0 }, { autoAlpha:1, scaleX:1, duration:0.5, ease:"power2.out" }, 1.9);
   /* rule line keeps growing/pulsing through the hold instead of freezing right after its reveal */
   tl.to("#gc-rule", { scaleX: 1.6, duration: 3.2, ease: "sine.inOut", repeat: 3, yoyo: true }, 2.5);
