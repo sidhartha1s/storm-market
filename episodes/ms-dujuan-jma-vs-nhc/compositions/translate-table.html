@@ -29,7 +29,7 @@
   .trow .arrow { color:#d0121f; font-size:26px; width:8%; text-align:center; }
   .trow .us { font-family:Georgia,serif; font-style:italic; font-size:24px; color:#f2f5f8; width:54%; }
 </style>
-<div id="root" data-composition-id="translatetable" data-width="1920" data-height="1080">
+<div id="root" data-composition-id="translate-table" data-width="1920" data-height="1080">
   <div class="basinrow">
     <div class="bchip" id="tt-b1"><div class="ocean">WESTERN PACIFIC</div><div class="term">TYPHOON</div></div>
     <div class="bchip" id="tt-b2"><div class="ocean">ATLANTIC &amp; E. PACIFIC</div><div class="term">HURRICANE</div></div>
@@ -47,15 +47,15 @@ window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
   tl.set(["#tt-b1","#tt-b2","#tt-b3","#tt-r1","#tt-r2","#tt-r3"], { autoAlpha: 0 }, 0);
-  tl.fromTo("#tt-b1", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 3.22);
-  tl.fromTo("#tt-b2", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 8.7);
-  tl.fromTo("#tt-b3", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 13.72);
-  tl.fromTo("#tt-table", { autoAlpha:0, y:30 }, { autoAlpha:1, y:0, duration:0.6 }, 20.0);
-  tl.fromTo("#tt-r1", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 27.64);
-  tl.fromTo("#tt-r2", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 37.12);
-  tl.fromTo("#tt-r3", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 43.1);
-  tl.to(["#tt-b1","#tt-b2","#tt-b3","#tt-table"], { autoAlpha:0, duration:0.5 }, 60.1);
-  window.__timelines["translatetable"] = tl;
+  tl.fromTo("#tt-b1", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 5.22);
+  tl.fromTo("#tt-b2", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 10.7);
+  tl.fromTo("#tt-b3", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 15.72);
+  tl.fromTo("#tt-table", { autoAlpha:0, y:30 }, { autoAlpha:1, y:0, duration:0.6 }, 22.0);
+  tl.fromTo("#tt-r1", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 29.64);
+  tl.fromTo("#tt-r2", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 39.12);
+  tl.fromTo("#tt-r3", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 45.1);
+  tl.to(["#tt-b1","#tt-b2","#tt-b3","#tt-table"], { autoAlpha:0, duration:0.5 }, 62.1);
+  window.__timelines["translate-table"] = tl;
 })();
 </script>
 </template>
