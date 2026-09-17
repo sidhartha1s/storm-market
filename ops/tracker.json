@@ -527,8 +527,8 @@
       "due": "17 Sep 26",
       "phase": "render",
       "status": "done",
-      "note": "final + -14 LUFS master + SRT 17 Sep 26 (smooth satellite zoom)",
-      "updated": "17 Sep 26 16:41"
+      "note": "final master + SRT 17 Sep 26 (NOAA-20 smooth zoom), ready to upload",
+      "updated": "17 Sep 26 17:51"
     },
     {
       "slug": "sh-dujuan-alert-levels-1",
@@ -539,8 +539,8 @@
       "due": "17 Sep 26",
       "phase": "render",
       "status": "done",
-      "note": "final + -14 LUFS master + SRT 17 Sep 26 (smooth satellite zoom)",
-      "updated": "17 Sep 26 16:41"
+      "note": "final master + SRT 17 Sep 26 (NOAA-20 smooth zoom), ready to upload",
+      "updated": "17 Sep 26 17:51"
     }
   ]
 }
