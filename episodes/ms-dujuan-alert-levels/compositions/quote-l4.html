@@ -62,7 +62,9 @@ window.__timelines = window.__timelines || {};
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
   const CONTENT_BEATS = [];
   function note(text, at, hold) {
-    tl.set("#q4-note", { visibility: "visible", textContent: text }, at);
+    // textContent on the parent wipes the .q4-rule child span — text goes on its own child span (round 3c fix)
+    tl.set("#q4-note", { visibility: "visible" }, at);
+    tl.set("#q4-notetext", { textContent: text }, at);
     tl.set("#q4-rule", { xPercent: -150 }, at);
     tl.fromTo("#q4-note", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35 }, at);
     // continuous sweeping rule keeps real pixels moving for the whole hold (round-3 fix, matches ladder-l5)
