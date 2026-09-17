@@ -122,9 +122,13 @@ window.__timelines = window.__timelines || {};
   note("ISSUED BY THE LOCAL MUNICIPALITY", 21.14, 2.86);
   /* "...rather than the weather agency alone." — 24.00s */
   note("NOT THE WEATHER AGENCY ALONE", 24.00, 2.64);
-  tl.fromTo("#li-r1", { autoAlpha:0, x:-30 }, { autoAlpha:1, x:0, duration:0.4 }, 28.14); CONTENT_BEATS.push(28.14);
-  tl.fromTo("#li-r2", { autoAlpha:0, x:-30 }, { autoAlpha:1, x:0, duration:0.4 }, 32.12); CONTENT_BEATS.push(32.12);
-  tl.to(["#li-r3","#li-r4","#li-r5"], { autoAlpha:0.32, duration:0.4 }, 32.6);
+  /* round 5 (owner 17 Sep 26): "5-level list is header-only for 12s before RISING RISK" - the list
+     card used to mount at 16.6 with an empty body until row 1 at 28.14. A reference table isn't tied to
+     individual narration words the way a quote or stat is, so the rows now build immediately after the
+     card itself, satisfying "mounts WITH its first fact." */
+  tl.fromTo("#li-r1", { autoAlpha:0, x:-30 }, { autoAlpha:1, x:0, duration:0.35 }, 16.9); CONTENT_BEATS.push(16.9);
+  tl.fromTo("#li-r2", { autoAlpha:0, x:-30 }, { autoAlpha:1, x:0, duration:0.35 }, 17.3); CONTENT_BEATS.push(17.3);
+  tl.to(["#li-r3","#li-r4","#li-r5"], { autoAlpha:0.32, duration:0.35 }, 17.7); CONTENT_BEATS.push(17.7);
   /* "An American forecaster would simply call that same tier an advisory, not a watch." — 38.8s */
   note("US EQUIVALENT: “ADVISORY,” NOT A WATCH", 38.8, 5.5);
   /* "Neither level tells anyone to leave home." — 44.3s */
