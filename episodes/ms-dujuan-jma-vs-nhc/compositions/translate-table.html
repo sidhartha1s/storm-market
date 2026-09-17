@@ -97,6 +97,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#tt-table", { autoAlpha:0, y:30 }, { autoAlpha:1, y:0, duration:0.6 }, 22.0);
   /* continuous ambient motion so the table never sits frozen between reveals */
   tl.to("#tt-table", { y: -10, duration: 3.0, ease: "sine.inOut", repeat: repeatsToFit(22.8, 3.0), yoyo: true }, 22.8);
+  /* bridges the table-mount->row1 gap (22.6->29.64, 7.04s, still read as dead) with a bold flash on the
+     table header itself, not a new fact */
+  tl.to("#tt-thead-jp", { color: "#ffffff", duration: 0.4, yoyo: true, repeat: 1 }, 26.0);
   /* row 1: grade name lands on "Strong typhoon" (35.64), the US translation and its highlight sweep land on
      "That is the same starting line" (41.72) — two beats, not one block */
   tl.fromTo("#tt-r1-jma", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 29.64);
