@@ -94,19 +94,13 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#km-pin-yokota", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 27.94);
   tl.fromTo(["#km-lab-yokota", "#km-leader-yokota"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 27.94);
   tl.to(["#km-pin-tokyo", "#km-pin-yokosuka", "#km-pin-yokota", "#km-lab-tokyo", "#km-lab-yokosuka", "#km-lab-yokota", "#km-leader-tokyo", "#km-leader-yokosuka", "#km-leader-yokota"], { autoAlpha: 0, duration: 0.4 }, 49.261);
-  /* 8s max-gap rule (team-lead direction, 17 Sep 26): this comp's own eyebrow was the only
-     content tween (index.html's own pf-427m/chip-noalert popfigs + the pin/label overlays carry
-     most of B6's facts on tracks 4/5/6, but that left this FILE with a single reveal in a 49.7s
-     window). Word-anchored pulses on the eyebrow itself, all re-based to this comp's mount (host
-     abs 356.2 = b6-s1.words.json t=28.0): "Americans already traveling" (4.6), "forecast they're
-     checking" (11.96), "Kanto region" (18.78), "Fleet Activities Yokosuka" (23.26), "Yokota Air
-     Base" (27.94), "standard readiness system" (39.84), "storm specific alert" (45.26). The
-     34.8 "55,000...bases" beat is now the real #km-stat-55k reveal above, not a pulse. */
+  /* 8s max-gap rule (team-lead direction, 17 Sep 26): word-anchored pulses on the eyebrow itself,
+     all re-based to this comp's mount (host abs 356.2 = b6-s1.words.json t=28.0): "Americans
+     already traveling" (4.6), "forecast they're checking" (11.96), "standard readiness system"
+     (39.84), "storm specific alert" (45.26). The 18.78/23.26/27.94 beats are now the real pin
+     reveals above, not eyebrow pulses; 34.8 is the real #km-stat-55k reveal. */
   tl.fromTo("#km-eyebrow", { scale: 1 }, { scale: 1.05, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 4.6);
   tl.fromTo("#km-eyebrow", { scale: 1 }, { scale: 1.05, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 11.96);
-  tl.fromTo("#km-eyebrow", { scale: 1 }, { scale: 1.05, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 18.78);
-  tl.fromTo("#km-eyebrow", { scale: 1 }, { scale: 1.05, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 23.26);
-  tl.fromTo("#km-eyebrow", { scale: 1 }, { scale: 1.05, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 27.94);
   tl.fromTo("#km-eyebrow", { scale: 1 }, { scale: 1.05, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 39.84);
   tl.fromTo("#km-eyebrow", { scale: 1 }, { scale: 1.05, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 45.26);
   window.__timelines["kanto-map"] = tl;
