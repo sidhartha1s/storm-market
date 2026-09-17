@@ -8,35 +8,34 @@
      are B9-segment-relative minus 8.0). -->
 <template>
 <style>
-  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
   #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
     background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
-  .card { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:1000px; box-sizing:border-box;
+  .tr-card { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:1000px; box-sizing:border-box;
     padding:44px 60px; text-align:center; background:rgba(10,16,24,0.6); backdrop-filter:blur(18px) saturate(1.15);
     -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
-  .eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:6px; color:#c8d3e0; }
-  .status { margin-top:22px; font-family:'AbrilFig',Georgia,serif; font-size:52px; color:#8fb4d8; }
-  .hl { margin-top:30px; padding:24px 30px; background:rgba(208,18,31,0.2); border:2px solid #d0121f; border-radius:16px; }
-  .hl .lab { font-family:'Arial Black',Arial,sans-serif; font-size:30px; letter-spacing:1px; color:#f4f0e8; }
-  .hl .sub { margin-top:8px; font-family:Georgia,serif; font-style:italic; font-size:20px; color:#f4b8bc; }
-  .accent { position:absolute; left:80px; right:80px; bottom:26px; height:3px;
+  .tr-eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:6px; color:#c8d3e0; }
+  .tr-status { margin-top:22px; font-family:'AbrilFig',Georgia,serif; font-size:52px; color:#8fb4d8; }
+  .tr-hl { margin-top:30px; padding:24px 30px; background:rgba(208,18,31,0.2); border:2px solid #d0121f; border-radius:16px; }
+  .tr-hl .tr-lab { font-family:'Arial Black',Arial,sans-serif; font-size:30px; letter-spacing:1px; color:#f4f0e8; }
+  .tr-hl .tr-sub { margin-top:8px; font-family:Georgia,serif; font-style:italic; font-size:20px; color:#f4b8bc; }
+  .tr-accent { position:absolute; left:80px; right:80px; bottom:26px; height:3px;
     background:linear-gradient(90deg, rgba(216,161,58,0) 0%, #d8a13a 50%, rgba(216,161,58,0) 100%);
     background-size:250% 100%; background-position:0% 0%; }
-  .chip2 { position:absolute; left:50%; transform:translateX(-50%); bottom:115px; font-family:'Arial Black',Arial,sans-serif; font-size:26px;
+  .tr-chip2 { position:absolute; left:50%; transform:translateX(-50%); bottom:115px; font-family:'Arial Black',Arial,sans-serif; font-size:26px;
     letter-spacing:2px; color:#f4f0e8; background:rgba(10,16,24,0.62); border:1px solid rgba(255,255,255,0.14);
     border-left:6px solid #d0121f; border-radius:10px; padding:12px 24px; }
 </style>
 <div id="root" data-composition-id="tracking" data-width="1920" data-height="1080">
-  <div class="card" id="trk-card">
-    <div class="eye">TONIGHT'S STATUS</div>
-    <div class="status">STILL A TROPICAL DEPRESSION &middot; UNNAMED</div>
-    <div class="hl" id="trk-hl">
-      <div class="lab">NEXT: JMA'S NEXT ADVISORY</div>
-      <div class="sub">strengthens on pace &middot; slows down &middot; curves away</div>
+  <div class="tr-card" id="trk-card">
+    <div class="tr-eye">TONIGHT'S STATUS</div>
+    <div class="tr-status">STILL A TROPICAL DEPRESSION &middot; UNNAMED</div>
+    <div class="tr-hl" id="trk-hl">
+      <div class="tr-lab">NEXT: JMA'S NEXT ADVISORY</div>
+      <div class="tr-sub">strengthens on pace &middot; slows down &middot; curves away</div>
     </div>
-    <div class="accent" id="trk-accent"></div>
+    <div class="tr-accent" id="trk-accent"></div>
   </div>
-  <div class="chip2" id="trk-chip">JMA &middot; NEXT ADVISORY</div>
+  <div class="tr-chip2" id="trk-chip">JMA &middot; NEXT ADVISORY</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
