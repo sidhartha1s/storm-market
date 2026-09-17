@@ -118,7 +118,9 @@ window.__timelines = window.__timelines || {};
   tl.to("#sp-l", { y: -6, duration: 2.6, ease: "sine.inOut", repeat: repeatsToFit(0.8, 2.6), yoyo: true }, 0.8);
   tl.to("#sp-r", { y: -6, duration: 2.6, ease: "sine.inOut", repeat: repeatsToFit(1.1, 2.6), yoyo: true }, 1.1);
   tl.to(R, { n: 35, duration: 1.0, ease: "power1.out", onUpdate: () => rEl.textContent = Math.round(R.n) }, 8.72); CONTENT_BEATS.push(8.72);
-  tl.to("#sp-r-sub", { duration:0.01, onStart: () => { document.getElementById("sp-r-sub").textContent = "gusting near 46 mph · 74 km/h"; } }, 11.10); CONTENT_BEATS.push(11.10);
+  /* comp_lint R2 fix (owner 17 Sep 26): text pre-authored in the markup (hidden via opacity:0), revealed
+     on the timeline instead of set inside an onStart the seek-based QC never fires. */
+  tl.fromTo("#sp-r-sub", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 11.10); CONTENT_BEATS.push(11.10);
   // "Neither agency calls this a typhoon yet." (audio 17.42s)
   note("NEITHER AGENCY CALLS IT A TYPHOON — YET", 17.42);
   tl.set("#sp-chip-ts", { visibility: "visible" }, 24.46);
