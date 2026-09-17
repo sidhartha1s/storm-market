@@ -74,6 +74,10 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#q4-lvl", { autoAlpha:0, scale:0.9 }, { autoAlpha:1, scale:1, duration:0.5 }, 1.98); CONTENT_BEATS.push(1.98);
   /* continuous ambient motion on the headline so it never sits frozen through the long lead-up */
   tl.to("#q4-lvl", { letterSpacing: "2px", duration: 3.0, ease: "sine.inOut", repeat: repeatsToFit(2.0, 3.0), yoyo: true }, 2.0);
+  /* round 3 (owner: "title-only for 9s at the open", 17 Sep 26) — nothing landed between the headline
+     (1.98) and the first note (6.10); "and it fully replaced the old recommendation" was spoken in that
+     gap (audio 3.1-5.2) and was never captioned. */
+  note("FULLY REPLACED THE OLD RECOMMENDATION", 3.10, 2.9);
   /* "Japan's Cabinet Office states it in one line." — 6.10s */
   note("CABINET OFFICE: STATED IN ONE LINE", 6.10, 3.28);
   /* "Evacuate before Level 4 is even issued, not after." — 9.38s */
