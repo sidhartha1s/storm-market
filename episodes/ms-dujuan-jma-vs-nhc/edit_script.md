@@ -66,8 +66,8 @@ Visual: **quote card (the one named official quote on screen):** "Strong Typhoon
 Typhoon: 44–<54 m/s (85–104 kt) · Violent Typhoon: ≥54 m/s (≥105 kt)" — attributed "Japan Meteorological Agency,
 tropical cyclone intensity scale." Chip below: "10-MINUTE SUSTAINED WIND." Glasscard under the quote.
 
-*(Paul's ebook CTA mounted here: 0.5 s dip in, 0.5 s out, film layer off. ~34% in, the story break between "how Japan
-measures" and "how America measures.")*
+*(Paul's ebook CTA no longer mounts here — moved 17 Sep 26 to 85–95% of runtime, on the new B8-S2 bridge line,
+immediately before the tracking/close run. See B8-S2.)*
 
 ## B4 — HOW AMERICA MEASURES (2:20–3:10)
 
