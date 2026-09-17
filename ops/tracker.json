@@ -405,10 +405,10 @@
       "title": "Silver Week Collision: A Storm Joins Japan's Biggest Holiday in Years",
       "owner": "director",
       "due": "16 Sep 26",
-      "phase": "assemble",
+      "phase": "checks",
       "status": "doing",
-      "note": "rework after owner review 17 Sep 26: class scoping, popfig revert, CTA to 90% + bridge, seams, 7:02 hole",
-      "updated": "17 Sep 26 09:19"
+      "note": "B8 split done, CTA 90.27%; 7 static gates green; browser gates running",
+      "updated": "17 Sep 26 14:35"
     },
     {
       "slug": "ms-dujuan-two-tracks",
@@ -431,8 +431,8 @@
       "due": "16 Sep 26",
       "phase": "preview",
       "status": "doing",
-      "note": "draft 2 rendered 13:34: 8/9 comps freeze-clean, ladder-l5 still holds 6-12 s; reader + round 3 on that comp",
-      "updated": "17 Sep 26 13:36"
+      "note": "round 3 green; draft 3 rendering from 14:34",
+      "updated": "17 Sep 26 14:35"
     },
     {
       "slug": "ms-dujuan-us-travelers",
@@ -455,8 +455,8 @@
       "due": "16 Sep 26",
       "phase": "preview",
       "status": "doing",
-      "note": "round 3 green (max content gap 7.6 s); real draft 2 rendering from 14:19",
-      "updated": "17 Sep 26 14:19"
+      "note": "draft 2 rendered 14:32: 3 freeze holds unchanged (quote open, translate-table open); frame check + round 4",
+      "updated": "17 Sep 26 14:35"
     },
     {
       "slug": "ms-dujuan-holiday-typhoons",
