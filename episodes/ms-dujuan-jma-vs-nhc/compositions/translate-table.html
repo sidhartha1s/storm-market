@@ -76,6 +76,7 @@ window.__timelines = window.__timelines || {};
   const HOST_WINDOW = 63.127; // this episode's translate-table mount: 375.030-438.157
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
   tl.set(["#tt-b1","#tt-b2","#tt-b3","#tt-r1-jma","#tt-r1-us","#tt-r2-jma","#tt-r2-us","#tt-r3-jma","#tt-r3-us","#tt-caption"], { autoAlpha: 0 }, 0);
+  tl.set("#tt-eye", { autoAlpha: 0 }, 0);
   tl.set(["#tt-r1","#tt-r2","#tt-r3"], { autoAlpha: 1 }, 0); // row shells mount with the table; jma/us cells reveal individually below
   /* background plate: continuous slow scale across the whole window (round 2, 17 Sep 26 freeze fix) */
   tl.fromTo("#tt-bgplate", { scale: 1.0 }, { scale: 1.06, duration: HOST_WINDOW, ease: "none" }, 0);
