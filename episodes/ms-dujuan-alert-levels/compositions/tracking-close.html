@@ -6,35 +6,37 @@
      travel-season chip and the highlight on JMA's next advisory. Mount: track 2, host start =
      episode-abs 472.23, duration 40.582 (B9 window is 46.582s; a 6.0s Himawari-return lead-in still plays
      before this comp mounts). Cues word-synced from audio/b9-s1.words.json (segment-abs minus this comp's
-     mount; the track-row cue lands during the lead-in, so it reveals at mount instead). -->
+     mount; the track-row cue lands during the lead-in, so it reveals at mount instead). Font: 'AbrilFig'
+     relies on index.html's single @font-face (a per-comp duplicate false-triggers css_collision.py on the
+     shared ".ttf" url() token). All classes carry the tc- comp tag so no class name is shared with
+     index.html or a sibling composition. -->
 <template>
 <style>
-  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
   #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
     background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
-  .card { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:1100px; box-sizing:border-box;
+  .tc-card { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:1100px; box-sizing:border-box;
     padding:44px 60px; text-align:center; background:rgba(10,16,24,0.6); backdrop-filter:blur(18px) saturate(1.15);
     -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
-  .eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:6px; color:#c8d3e0; }
-  .rows { display:flex; gap:30px; margin-top:26px; }
-  .orow { flex:1; padding:22px 20px; border-radius:16px; background:rgba(208,18,31,0.14); border:1px solid rgba(208,18,31,0.4); }
-  .orow .t { font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:1px; }
-  .orow .s { margin-top:10px; font-family:'AbrilFig',Georgia,serif; font-size:34px; color:#f4b8bc; }
-  .chip2 { margin-top:26px; display:inline-block; font-family:'Arial Black',Arial,sans-serif; font-size:24px;
+  .tc-eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:6px; color:#c8d3e0; }
+  .tc-rows { display:flex; gap:30px; margin-top:26px; }
+  .tc-orow { flex:1; padding:22px 20px; border-radius:16px; background:rgba(208,18,31,0.14); border:1px solid rgba(208,18,31,0.4); }
+  .tc-orow .tc-t { font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:1px; }
+  .tc-orow .tc-s { margin-top:10px; font-family:'AbrilFig',Georgia,serif; font-size:34px; color:#f4b8bc; }
+  .tc-chip2 { margin-top:26px; display:inline-block; font-family:'Arial Black',Arial,sans-serif; font-size:24px;
     letter-spacing:1px; color:#f4f0e8; background:rgba(10,16,24,0.62); border:1px solid rgba(255,255,255,0.14);
     border-left:6px solid #d8a13a; border-radius:10px; padding:12px 24px; }
-  .hl { margin-top:26px; padding:20px 26px; background:rgba(216,161,58,0.14); border:2px solid #d8a13a; border-radius:16px; }
-  .hl .lab { font-family:'Arial Black',Arial,sans-serif; font-size:26px; color:#f4f0e8; }
+  .tc-hl { margin-top:26px; padding:20px 26px; background:rgba(216,161,58,0.14); border:2px solid #d8a13a; border-radius:16px; }
+  .tc-hl .tc-lab { font-family:'Arial Black',Arial,sans-serif; font-size:26px; color:#f4f0e8; }
 </style>
 <div id="root" data-composition-id="tracking-close" data-width="1920" data-height="1080">
-  <div class="card" id="tc-card">
-    <div class="eye">TONIGHT'S OPEN THREADS</div>
-    <div class="rows">
-      <div class="orow" id="tc-r1"><div class="t">TRACK</div><div class="s">STILL OPEN</div></div>
-      <div class="orow" id="tc-r2" style="visibility:hidden"><div class="t">STRENGTH</div><div class="s">STILL OPEN</div></div>
+  <div class="tc-card" id="tc-card">
+    <div class="tc-eye">TONIGHT'S OPEN THREADS</div>
+    <div class="tc-rows">
+      <div class="tc-orow" id="tc-r1"><div class="tc-t">TRACK</div><div class="tc-s">STILL OPEN</div></div>
+      <div class="tc-orow" id="tc-r2" style="visibility:hidden"><div class="tc-t">STRENGTH</div><div class="tc-s">STILL OPEN</div></div>
     </div>
-    <div class="chip2" id="tc-chip" style="visibility:hidden">MILLIONS TRAVELING JAPAN THIS WEEK</div>
-    <div class="hl" id="tc-hl"><div class="lab">NEXT: JMA'S NEXT ADVISORY, WITHIN HOURS</div></div>
+    <div class="tc-chip2" id="tc-chip" style="visibility:hidden">MILLIONS TRAVELING JAPAN THIS WEEK</div>
+    <div class="tc-hl" id="tc-hl"><div class="tc-lab">NEXT: JMA'S NEXT ADVISORY, WITHIN HOURS</div></div>
   </div>
 </div>
 <script>
