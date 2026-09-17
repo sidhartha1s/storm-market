@@ -62,21 +62,25 @@ window.__timelines = window.__timelines || {};
      (blank_scan.mjs). repeatsToFit() sizes each repeat count so its tween ends at/under HOST_WINDOW. */
   const HOST_WINDOW = 19.2; // this episode's tracking mount: 507.175-526.375
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
-  tl.set(["#trk-hl","#trk-chip"], { autoAlpha: 0 }, 0);
+  tl.set(["#trk-hl","#trk-chip","#tr-out1","#tr-out2","#tr-out3","#tr-caption"], { autoAlpha: 0 }, 0);
   tl.fromTo("#trk-card", { autoAlpha:0, scale:0.94 }, { autoAlpha:1, scale:1, duration:0.6, ease:"power3.out" }, 0);
+  /* background plate: continuous slow scale across the whole window (round 2, 17 Sep 26 freeze fix) */
+  tl.fromTo("#tr-bgplate", { scale: 1.0 }, { scale: 1.06, duration: HOST_WINDOW, ease: "none" }, 0);
   tl.fromTo("#trk-chip", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 0.5);
   /* continuous ambient motion so the card never sits frozen for the whole hold: a traveling shimmer on the
      accent bar (real position movement, not just opacity) plus the existing status pulse and hl glow */
   tl.to("#trk-accent", { backgroundPosition: "100% 0%", duration: 3.0, ease: "sine.inOut", repeat: repeatsToFit(0.6, 3.0), yoyo: true }, 0.6);
   tl.to(".tr-status", { opacity: 0.72, duration: 1.8, ease: "sine.inOut", repeat: repeatsToFit(0.6, 1.8), yoyo: true }, 0.6);
-  tl.fromTo("#trk-hl", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.5 }, 8.92);
+  /* the three open outcomes land one by one on their own words (round 2 hard rule): closes the old
+     mount->trk-hl 8.42s gap with three real beats instead of one static line */
+  tl.fromTo("#tr-out1", { autoAlpha:0, y:14 }, { autoAlpha:1, y:0, duration:0.35 }, 3.64);  // "strengthens" 9.64
+  tl.fromTo("#tr-out2", { autoAlpha:0, y:14 }, { autoAlpha:1, y:0, duration:0.35 }, 5.1);   // "slows" 11.1
+  tl.fromTo("#tr-out3", { autoAlpha:0, y:14 }, { autoAlpha:1, y:0, duration:0.35 }, 6.26);  // "curves" 12.26
+  tl.fromTo("#trk-hl", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.5 }, 8.92);    // "That next advisory" 14.8
   tl.to("#trk-hl", { boxShadow: "0 0 34px rgba(208,18,31,0.55)", duration: 1.2, ease: "sine.inOut", repeat: repeatsToFit(9.4, 1.2), yoyo: true }, 9.4);
-  /* small literal-repeat glints between the widely-spaced reveal cues, so a static-analysis pass over
-     explicit tl positions (not just the real GSAP playback) also reads continuous coverage */
-  tl.to("#trk-card", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 6.26);
-  tl.to("#trk-card", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 13.2);
-  tl.to("#trk-card", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 15.8);
-  tl.to(["#trk-card","#trk-chip"], { autoAlpha:0, duration:0.5 }, 18.65);
+  /* running caption closes the old trk-hl->exit 9.73s gap on "For anyone with travel plans..." (19.56) */
+  tl.fromTo("#tr-caption", { autoAlpha:0, y:14 }, { autoAlpha:1, y:0, duration:0.4 }, 13.56);
+  tl.to(["#trk-card","#trk-chip","#tr-caption"], { autoAlpha:0, duration:0.5 }, 18.65);
   window.__timelines["tracking"] = tl;
 })();
 </script>
