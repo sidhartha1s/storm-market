@@ -91,108 +91,112 @@
 <!-- ms-dujuan-silver-week · Format C rolling update, U1 of the daily Dujuan series (16 Sep 26).
      B-roll muted. CTA after B3 with 0.5 s dips. Paul hidden under hook / quote card / CTA / close.
      Cues from audio/*.words.json (Pharaoh -> atempo 1.10 -> re-transcribed). track-map.html built
-     by mg-trackmap, mounted verbatim (unedited, series-wide reusable template) 7.0-145.0 covering
-     B1's track reveal + all of B2; every SPOKEN number still gets its own dedicated popfig/chip so
-     the map's own (unsynced-to-this-script) card reveal never carries compliance on its own. -->
-<div id="root" data-composition-id="ms-dujuan-silver-week" data-start="0.0" data-width="1920" data-height="1080" data-duration="562.0" data-fps="30">
+     by mg-trackmap, mounted 7.0-144.1 (retimed 17 Sep 26, B1->B2 gap fix) covering B1's track
+     reveal + all of B2; every SPOKEN number still gets its own dedicated popfig/chip so the
+     map's own card reveal never carries compliance on its own. Root-cause fixes applied 17 Sep 26
+     across all 6 comps: class/id scoping (css_collision.py), track-map readout-card + forecast
+     timing, kanto-map pin labels, calendar chip, scale-ladder mount hole -- see each comp's own
+     header comment and LEARNINGS.md for detail; the file is no longer touched verbatim per video,
+     future ms-dujuan-* episodes inherit these fixes. -->
+<div id="root" data-composition-id="ms-dujuan-silver-week" data-start="0.0" data-width="1920" data-height="1080" data-duration="561.1" data-fps="30">
 
   <!-- ============ NARRATION (wav lengths) ============ -->
   <audio id="nx-b1s1" src="audio/b1-s1.wav" data-start="0.0" data-duration="51.018" data-volume="1"></audio>
-  <audio id="nx-b2s1" src="audio/b2-s1.wav" data-start="52.518" data-duration="92.473" data-volume="1"></audio>
-  <audio id="nx-b3s1" src="audio/b3-s1.wav" data-start="145.591" data-duration="50.764" data-volume="1"></audio>
-  <audio id="nx-b4s1" src="audio/b4-s1.wav" data-start="212.494" data-duration="46.218" data-volume="1"></audio>
-  <audio id="nx-b5s1" src="audio/b5-s1.wav" data-start="259.312" data-duration="84.727" data-volume="1"></audio>
-  <audio id="nx-b6s1" src="audio/b6-s1.wav" data-start="344.639" data-duration="77.745" data-volume="1"></audio>
-  <audio id="nx-b7s1" src="audio/b7-s1.wav" data-start="422.984" data-duration="61.2" data-volume="1"></audio>
-  <audio id="nx-b8s1" src="audio/b8-s1.wav" data-start="484.784" data-duration="64.545" data-volume="1"></audio>
-  <audio id="nx-b9s1" src="audio/b9-s1.wav" data-start="549.929" data-duration="10.909" data-volume="1"></audio>
+  <audio id="nx-b2s1" src="audio/b2-s1.wav" data-start="51.618" data-duration="92.473" data-volume="1"></audio>
+  <audio id="nx-b3s1" src="audio/b3-s1.wav" data-start="144.691" data-duration="50.764" data-volume="1"></audio>
+  <audio id="nx-b4s1" src="audio/b4-s1.wav" data-start="211.594" data-duration="46.218" data-volume="1"></audio>
+  <audio id="nx-b5s1" src="audio/b5-s1.wav" data-start="258.412" data-duration="84.727" data-volume="1"></audio>
+  <audio id="nx-b6s1" src="audio/b6-s1.wav" data-start="343.739" data-duration="77.745" data-volume="1"></audio>
+  <audio id="nx-b7s1" src="audio/b7-s1.wav" data-start="422.084" data-duration="61.2" data-volume="1"></audio>
+  <audio id="nx-b8s1" src="audio/b8-s1.wav" data-start="483.884" data-duration="64.545" data-volume="1"></audio>
+  <audio id="nx-b9s1" src="audio/b9-s1.wav" data-start="549.029" data-duration="10.909" data-volume="1"></audio>
 
   <!-- ============ CTA (own audio; the only unmuted insert) ============ -->
-  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v5-sep6.mp4" data-start="196.855" data-duration="15.139" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
+  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v5-sep6.mp4" data-start="195.955" data-duration="15.139" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
 
   <!-- ============ BEDS ============ -->
   <audio id="sx-rumble-hook" src="media/04_distant_storm_rumble.mp3" data-bed="" data-start="0.0" data-duration="7.0" data-volume="0.16"></audio>
-  <audio id="sx-mus-a" src="media/score-act5-tension.mp3" data-bed="" data-start="0.0" data-duration="196.355" data-volume="0.13"></audio>
-  <audio id="sx-mus-b" src="media/score-act3-urgent.mp3" data-bed="" data-start="212.494" data-duration="209.89" data-volume="0.13"></audio>
-  <audio id="sx-mus-c" src="media/score-act6-close.mp3" data-bed="" data-start="422.984" data-duration="138.454" data-volume="0.16"></audio>
+  <audio id="sx-mus-a" src="media/score-act5-tension.mp3" data-bed="" data-start="0.0" data-duration="195.455" data-volume="0.13"></audio>
+  <audio id="sx-mus-b" src="media/score-act3-urgent.mp3" data-bed="" data-start="211.594" data-duration="209.89" data-volume="0.13"></audio>
+  <audio id="sx-mus-c" src="media/score-act6-close.mp3" data-bed="" data-start="422.084" data-duration="138.454" data-volume="0.16"></audio>
 
   <!-- ============ PRESENTER (corner circle; hidden hook / quote-card+CTA / close) ============ -->
-  <video id="pip-idle-a" class="pip" src="media/pip/paul-idle-a.mp4" data-start="52.518" data-duration="141.982" data-track-index="6" muted></video>
-  <video id="pip-talk-a" class="pip" src="media/pip/paul-talk-a.mp4" data-start="52.518" data-duration="141.982" data-track-index="7" data-callback="presenter loop, talking" muted></video>
-  <video id="pip-idle-b" class="pip" src="media/pip/paul-idle-b.mp4" data-start="212.494" data-duration="336.835" data-track-index="6" data-callback="presenter loop resumes after the CTA" muted></video>
-  <video id="pip-talk-b" class="pip" src="media/pip/paul-talk-b.mp4" data-start="212.494" data-duration="336.835" data-track-index="7" data-callback="presenter loop, talking" muted></video>
-  <section class="clip" id="pip-ring-a" data-start="52.518" data-duration="141.982" data-track-index="8"><div class="pipring"></div></section>
-  <section class="clip" id="pip-ring-b" data-start="212.494" data-duration="336.835" data-track-index="8"><div class="pipring"></div></section>
+  <video id="pip-idle-a" class="pip" src="media/pip/paul-idle-a.mp4" data-start="51.618" data-duration="141.982" data-track-index="6" muted></video>
+  <video id="pip-talk-a" class="pip" src="media/pip/paul-talk-a.mp4" data-start="51.618" data-duration="141.982" data-track-index="7" data-callback="presenter loop, talking" muted></video>
+  <video id="pip-idle-b" class="pip" src="media/pip/paul-idle-b.mp4" data-start="211.594" data-duration="336.835" data-track-index="6" data-callback="presenter loop resumes after the CTA" muted></video>
+  <video id="pip-talk-b" class="pip" src="media/pip/paul-talk-b.mp4" data-start="211.594" data-duration="336.835" data-track-index="7" data-callback="presenter loop, talking" muted></video>
+  <section class="clip" id="pip-ring-a" data-start="51.618" data-duration="141.982" data-track-index="8"><div class="pipring"></div></section>
+  <section class="clip" id="pip-ring-b" data-start="211.594" data-duration="336.835" data-track-index="8"><div class="pipring"></div></section>
 
   <!-- ============ NEWS BUG (track 3) ============ -->
-  <section class="clip" id="bug-a" data-start="52.518" data-duration="143.837" data-track-index="3"><div class="bugstrip" id="bugstrip-a"><div class="bk">BREAKING</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-a"></div></div></section>
-  <section class="clip" id="bug-b" data-start="212.494" data-duration="336.835" data-track-index="3"><div class="bugstrip" id="bugstrip-b"><div class="bk">BREAKING</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-b"></div></div></section>
+  <section class="clip" id="bug-a" data-start="51.618" data-duration="143.837" data-track-index="3"><div class="bugstrip" id="bugstrip-a"><div class="bk">BREAKING</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-a"></div></div></section>
+  <section class="clip" id="bug-b" data-start="211.594" data-duration="336.835" data-track-index="3"><div class="bugstrip" id="bugstrip-b"><div class="bk">BREAKING</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-b"></div></div></section>
 
   <!-- ============ TRACK 1 · picture ============ -->
   <!-- B1 · cold open 0-51.018 (himawari still split into two <=6s KB pans, contiguous = one sequence) -->
   <section class="clip still-wrap" id="c-b1-0a-himawari" data-start="0.0" data-duration="4.0" data-track-index="1"><img id="kb-b1-0a-himawari" src="media/image/img-himawari-open.jpg" alt=""></section>
   <section class="clip still-wrap" id="c-b1-0b-himawari" data-start="4.0" data-duration="3.0" data-track-index="1" data-callback="continuation, same source, different pan"><img id="kb-b1-0b-himawari" src="media/image/img-himawari-open-2.jpg" alt=""></section>
-  <section class="clip blackout" id="bo-hook" data-start="51.018" data-duration="1.5" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-hook" data-start="51.018" data-duration="0.6" data-track-index="1"></section>
 
-  <!-- B2 · where things stand 52.518-145.0 (track-map.html on track 2, verbatim, 7.0-145.0) -->
-  <section class="clip blackout" id="bo-b2" data-start="144.991" data-duration="0.6" data-track-index="1"></section>
+  <!-- B2 · where things stand 51.618-144.691 (track-map.html on track 2, verbatim, 7.0-144.1) -->
+  <section class="clip blackout" id="bo-b2" data-start="144.091" data-duration="0.6" data-track-index="1"></section>
 
-  <!-- B3 · the forecast track 145.591-196.355 -->
-  <section class="clip still-wrap" id="c-b3-0a-jtwc" data-start="145.591" data-duration="4.5" data-track-index="1"><img id="kb-b3-0a-jtwc" src="media/image/img-jtwc-warning.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-b3-0b-jtwc" data-start="150.091" data-duration="4.5" data-track-index="1" data-callback="continuation, same source frame, different pan"><img id="kb-b3-0b-jtwc" src="media/image/img-jtwc-warning-2.jpg" alt=""></section>
-  <video id="vx-b3-1-tbs" class="bc" src="media/video/bc-tbs-shinjuku.mp4" data-start="154.591" data-duration="5.5" data-track-index="1" muted></video>
-  <section class="clip still-wrap" id="c-b3-2a-wv16" data-start="160.091" data-duration="4.0" data-track-index="1"><img id="kb-b3-2a-wv16" src="media/image/img-worldview-16.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-b3-2b-wv16" data-start="164.091" data-duration="3.5" data-track-index="1" data-callback="continuation, same source frame, different pan"><img id="kb-b3-2b-wv16" src="media/image/img-worldview-16-2.jpg" alt=""></section>
-  <video id="vx-b3-3-fnn" class="bc" src="media/video/bc-fnn-radar.mp4" data-start="167.591" data-duration="5.5" data-track-index="1" muted></video>
-  <video id="vx-b3-4-trees" src="media/video/v-trees-wind.mp4" data-start="173.091" data-duration="6.0" data-track-index="1" muted></video>
-  <section class="clip still-wrap" id="c-b3-5a-wv15" data-start="179.091" data-duration="3.5" data-track-index="1"><img id="kb-b3-5a-wv15" src="media/image/img-worldview-15.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-b3-5b-wv15" data-start="182.591" data-duration="3.0" data-track-index="1" data-callback="continuation, same source frame, different pan"><img id="kb-b3-5b-wv15" src="media/image/img-worldview-15-2.jpg" alt=""></section>
-  <video id="vx-b3-6-uhb" class="bc" src="media/video/bc-uhb-hokkaido.mp4" data-start="185.591" data-duration="5.5" data-track-index="1" muted></video>
-  <section class="clip still-wrap" id="c-b3-7-wv13" data-start="191.091" data-duration="5.264" data-track-index="1"><img id="kb-b3-7-wv13" src="media/image/img-worldview-13.jpg" alt=""></section>
+  <!-- B3 · the forecast track 144.691-195.455 -->
+  <section class="clip still-wrap" id="c-b3-0a-jtwc" data-start="144.691" data-duration="4.5" data-track-index="1"><img id="kb-b3-0a-jtwc" src="media/image/img-jtwc-warning.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-b3-0b-jtwc" data-start="149.191" data-duration="4.5" data-track-index="1" data-callback="continuation, same source frame, different pan"><img id="kb-b3-0b-jtwc" src="media/image/img-jtwc-warning-2.jpg" alt=""></section>
+  <video id="vx-b3-1-tbs" class="bc" src="media/video/bc-tbs-shinjuku.mp4" data-start="153.691" data-duration="5.5" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b3-2a-wv16" data-start="159.191" data-duration="4.0" data-track-index="1"><img id="kb-b3-2a-wv16" src="media/image/img-worldview-16.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-b3-2b-wv16" data-start="163.191" data-duration="3.5" data-track-index="1" data-callback="continuation, same source frame, different pan"><img id="kb-b3-2b-wv16" src="media/image/img-worldview-16-2.jpg" alt=""></section>
+  <video id="vx-b3-3-fnn" class="bc" src="media/video/bc-fnn-radar.mp4" data-start="166.691" data-duration="5.5" data-track-index="1" muted></video>
+  <video id="vx-b3-4-trees" src="media/video/v-trees-wind.mp4" data-start="172.191" data-duration="6.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b3-5a-wv15" data-start="178.191" data-duration="3.5" data-track-index="1"><img id="kb-b3-5a-wv15" src="media/image/img-worldview-15.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-b3-5b-wv15" data-start="181.691" data-duration="3.0" data-track-index="1" data-callback="continuation, same source frame, different pan"><img id="kb-b3-5b-wv15" src="media/image/img-worldview-15-2.jpg" alt=""></section>
+  <video id="vx-b3-6-uhb" class="bc" src="media/video/bc-uhb-hokkaido.mp4" data-start="184.691" data-duration="5.5" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b3-7-wv13" data-start="190.191" data-duration="5.264" data-track-index="1"><img id="kb-b3-7-wv13" src="media/image/img-worldview-13.jpg" alt=""></section>
 
   <!-- CTA dips: track-1 blackout fills the actual gap; track-9 copy paints above the CTA video for the dip -->
-  <section class="clip blackout" id="bo-cta-in-t1" data-start="196.355" data-duration="0.5" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-cta-out-t1" data-start="211.994" data-duration="0.5" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-cta-in" data-start="196.355" data-duration="0.5" data-track-index="9"></section>
-  <section class="clip blackout" id="bo-cta-out" data-start="211.994" data-duration="0.5" data-track-index="9"></section>
+  <section class="clip blackout" id="bo-cta-in-t1" data-start="195.455" data-duration="0.5" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-cta-out-t1" data-start="211.094" data-duration="0.5" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-cta-in" data-start="195.455" data-duration="0.5" data-track-index="9"></section>
+  <section class="clip blackout" id="bo-cta-out" data-start="211.094" data-duration="0.5" data-track-index="9"></section>
 
-  <!-- B4 · two ways to read the same storm 212.494-258.712 -->
-  <video id="vx-b4-0-ann" class="bc" src="media/video/bc-ann-splitscreen.mp4" data-start="212.494" data-duration="6.0" data-track-index="1" muted></video>
-  <section class="clip still-wrap" id="c-b4-1a-jtwc" data-start="218.494" data-duration="5.0" data-track-index="1" data-callback="second use of the JTWC source frame, peak/branch re-emphasis"><img id="kb-b4-1a-jtwc" src="media/image/img-jtwc-warning.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-b4-1b-jtwc" data-start="223.494" data-duration="5.0" data-track-index="1" data-callback="continuation, same source frame, different pan"><img id="kb-b4-1b-jtwc" src="media/image/img-jtwc-warning-2.jpg" alt=""></section>
-  <video id="vx-b4-2-clouds" src="media/video/v-clouds-rolling-b4.mp4" data-start="228.494" data-duration="6.0" data-track-index="1" muted></video>
-  <section class="clip still-wrap" id="c-b4-3a-wv14" data-start="234.494" data-duration="3.5" data-track-index="1"><img id="kb-b4-3a-wv14" src="media/image/img-worldview-14.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-b4-3b-wv14" data-start="237.994" data-duration="3.5" data-track-index="1" data-callback="continuation, same source frame, different pan"><img id="kb-b4-3b-wv14" src="media/image/img-worldview-14-2.jpg" alt=""></section>
-  <video id="vx-b4-4-waves" src="media/video/v-waves-typhoon-b4.mp4" data-start="241.494" data-duration="8.0" data-track-index="1" muted></video>
-  <section class="clip still-wrap" id="c-b4-5a-fulldisk" data-start="249.494" data-duration="4.609" data-track-index="1"><img id="kb-b4-5a-fulldisk" src="media/image/img-fulldisk-true.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-b4-5b-fulldisk" data-start="254.103" data-duration="4.609" data-track-index="1" data-callback="continuation, same source frame, different pan"><img id="kb-b4-5b-fulldisk" src="media/image/img-fulldisk-true-2.jpg" alt=""></section>
-  <section class="clip blackout" id="bo-b4" data-start="258.712" data-duration="0.6" data-track-index="1"></section>
+  <!-- B4 · two ways to read the same storm 211.594-257.812 -->
+  <video id="vx-b4-0-ann" class="bc" src="media/video/bc-ann-splitscreen.mp4" data-start="211.594" data-duration="6.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b4-1a-jtwc" data-start="217.594" data-duration="5.0" data-track-index="1" data-callback="second use of the JTWC source frame, peak/branch re-emphasis"><img id="kb-b4-1a-jtwc" src="media/image/img-jtwc-warning.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-b4-1b-jtwc" data-start="222.594" data-duration="5.0" data-track-index="1" data-callback="continuation, same source frame, different pan"><img id="kb-b4-1b-jtwc" src="media/image/img-jtwc-warning-2.jpg" alt=""></section>
+  <video id="vx-b4-2-clouds" src="media/video/v-clouds-rolling-b4.mp4" data-start="227.594" data-duration="6.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b4-3a-wv14" data-start="233.594" data-duration="3.5" data-track-index="1"><img id="kb-b4-3a-wv14" src="media/image/img-worldview-14.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-b4-3b-wv14" data-start="237.094" data-duration="3.5" data-track-index="1" data-callback="continuation, same source frame, different pan"><img id="kb-b4-3b-wv14" src="media/image/img-worldview-14-2.jpg" alt=""></section>
+  <video id="vx-b4-4-waves" src="media/video/v-waves-typhoon-b4.mp4" data-start="240.594" data-duration="8.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b4-5a-fulldisk" data-start="248.594" data-duration="4.609" data-track-index="1"><img id="kb-b4-5a-fulldisk" src="media/image/img-fulldisk-true.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-b4-5b-fulldisk" data-start="253.203" data-duration="4.609" data-track-index="1" data-callback="continuation, same source frame, different pan"><img id="kb-b4-5b-fulldisk" src="media/image/img-fulldisk-true-2.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-b4" data-start="257.812" data-duration="0.6" data-track-index="1"></section>
 
-  <!-- B5 · silver week collision 259.312-344.039 (silver-week-calendar.html on track 2, full segment) -->
-  <section class="clip blackout" id="bo-b5" data-start="344.039" data-duration="0.6" data-track-index="1"></section>
+  <!-- B5 · silver week collision 258.412-343.139 (silver-week-calendar.html on track 2, full segment) -->
+  <section class="clip blackout" id="bo-b5" data-start="343.139" data-duration="0.6" data-track-index="1"></section>
 
-  <!-- B6 · what it means for americans 344.639-422.384 (kanto-map.html on track 2 for the pin-map hold) -->
-  <video id="vx-b6-0-clouds" src="media/video/v-clouds-rolling-b6.mp4" data-start="344.639" data-duration="8.0" data-track-index="1" data-callback="second use, US hurricane-season parallel" muted></video>
-  <video id="vx-b6-1-bay" src="media/video/v-tokyobay-aerial.mp4" data-start="352.639" data-duration="10.0" data-track-index="1" muted></video>
-  <video id="vx-b6-2-train" src="media/video/v-train-commuter.mp4" data-start="362.639" data-duration="10.0" data-track-index="1" muted></video>
-  <section class="clip blackout" id="bo-b6" data-start="422.384" data-duration="0.6" data-track-index="1"></section>
+  <!-- B6 · what it means for americans 343.739-421.484 (kanto-map.html on track 2 for the pin-map hold) -->
+  <video id="vx-b6-0-clouds" src="media/video/v-clouds-rolling-b6.mp4" data-start="343.739" data-duration="8.0" data-track-index="1" data-callback="second use, US hurricane-season parallel" muted></video>
+  <video id="vx-b6-1-bay" src="media/video/v-tokyobay-aerial.mp4" data-start="351.739" data-duration="10.0" data-track-index="1" muted></video>
+  <video id="vx-b6-2-train" src="media/video/v-train-commuter.mp4" data-start="361.739" data-duration="10.0" data-track-index="1" muted></video>
+  <section class="clip blackout" id="bo-b6" data-start="421.484" data-duration="0.6" data-track-index="1"></section>
 
-  <!-- B7 · how to read Japan's numbers 422.984-484.184 (scale-ladder.html on track 2, full segment) -->
-  <section class="clip blackout" id="bo-b7" data-start="484.184" data-duration="0.6" data-track-index="1"></section>
+  <!-- B7 · how to read Japan's numbers 422.084-483.284 (scale-ladder.html on track 2, full segment) -->
+  <section class="clip blackout" id="bo-b7" data-start="483.284" data-duration="0.6" data-track-index="1"></section>
 
-  <!-- B8 · what's still open 484.784-549.329 (tracking-open.html on track 2 for the intro card) -->
-  <video id="vx-b8-0-waves" src="media/video/v-waves-typhoon-b8.mp4" data-start="497.0" data-duration="8.0" data-track-index="1" data-callback="second use, storm at sea for the benchmark section" muted></video>
-  <video id="vx-b8-1-seawall" src="media/video/v-seawall-crash.mp4" data-start="505.0" data-duration="10.0" data-track-index="1" muted></video>
-  <section class="clip still-wrap" id="c-b8-2a-himawari" data-start="515.0" data-duration="6.0" data-track-index="1" data-callback="return to the live Himawari loop of Dujuan, distinct crop"><img id="kb-b8-2a-himawari" src="media/image/img-himawari-b8-1.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-b8-2b-himawari" data-start="521.0" data-duration="6.0" data-track-index="1" data-callback="distinct crop of the same Himawari frame"><img id="kb-b8-2b-himawari" src="media/image/img-himawari-b8-2.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-b8-2c-himawari" data-start="527.0" data-duration="6.0" data-track-index="1" data-callback="distinct crop of the same Himawari frame"><img id="kb-b8-2c-himawari" src="media/image/img-himawari-b8-3.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-b8-2d-himawari" data-start="533.0" data-duration="6.0" data-track-index="1" data-callback="distinct crop of the same Himawari frame"><img id="kb-b8-2d-himawari" src="media/image/img-himawari-b8-4.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-b8-2e-himawari" data-start="539.0" data-duration="6.0" data-track-index="1" data-callback="distinct crop of the same Himawari frame"><img id="kb-b8-2e-himawari" src="media/image/img-himawari-b8-5.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-b8-2f-himawari" data-start="545.0" data-duration="4.329" data-track-index="1" data-callback="distinct crop of the same Himawari frame"><img id="kb-b8-2f-himawari" src="media/image/img-himawari-b8-6.jpg" alt=""></section>
+  <!-- B8 · what's still open 483.884-548.429 (tracking-open.html on track 2 for the intro card) -->
+  <video id="vx-b8-0-waves" src="media/video/v-waves-typhoon-b8.mp4" data-start="496.1" data-duration="8.0" data-track-index="1" data-callback="second use, storm at sea for the benchmark section" muted></video>
+  <video id="vx-b8-1-seawall" src="media/video/v-seawall-crash.mp4" data-start="504.1" data-duration="10.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b8-2a-himawari" data-start="514.1" data-duration="6.0" data-track-index="1" data-callback="return to the live Himawari loop of Dujuan, distinct crop"><img id="kb-b8-2a-himawari" src="media/image/img-himawari-b8-1.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-b8-2b-himawari" data-start="520.1" data-duration="6.0" data-track-index="1" data-callback="distinct crop of the same Himawari frame"><img id="kb-b8-2b-himawari" src="media/image/img-himawari-b8-2.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-b8-2c-himawari" data-start="526.1" data-duration="6.0" data-track-index="1" data-callback="distinct crop of the same Himawari frame"><img id="kb-b8-2c-himawari" src="media/image/img-himawari-b8-3.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-b8-2d-himawari" data-start="532.1" data-duration="6.0" data-track-index="1" data-callback="distinct crop of the same Himawari frame"><img id="kb-b8-2d-himawari" src="media/image/img-himawari-b8-4.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-b8-2e-himawari" data-start="538.1" data-duration="6.0" data-track-index="1" data-callback="distinct crop of the same Himawari frame"><img id="kb-b8-2e-himawari" src="media/image/img-himawari-b8-5.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-b8-2f-himawari" data-start="544.1" data-duration="4.329" data-track-index="1" data-callback="distinct crop of the same Himawari frame"><img id="kb-b8-2f-himawari" src="media/image/img-himawari-b8-6.jpg" alt=""></section>
 
-  <!-- B9 · close 549.929-561.438 (close-card.html on track 2) -->
-  <section class="clip blackout" id="bo-b8" data-start="549.329" data-duration="0.6" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-end" data-start="549.929" data-duration="12.071" data-track-index="1"></section>
+  <!-- B9 · close 549.029-560.538 (close-card.html on track 2) -->
+  <section class="clip blackout" id="bo-b8" data-start="548.429" data-duration="0.6" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-end" data-start="549.029" data-duration="12.071" data-track-index="1"></section>
 
   <!-- ============ OVERLAYS: popfigs (track 5), chips/source labels (track 4) ============ -->
   <!-- B1 -->
@@ -200,30 +204,30 @@
   <section class="clip" id="p-pf-dujuan" data-start="13.92" data-duration="2.800" data-track-index="5"><div class="popfig small" id="pf-dujuan"><span class="pf-big">DUJUAN</span><span class="pf-sub">TYPHOON No. 25</span></div></section>
 
   <!-- B2 -->
-  <section class="clip" id="p-src-jma" data-start="52.518" data-duration="6.000" data-track-index="4"><div class="srclab" id="src-jma">SOURCES: JMA · JTWC · 16 SEP 2026, 19:10 JST</div></section>
-  <section class="clip" id="p-pf-25th" data-start="110.92" data-duration="2.800" data-track-index="5"><div class="popfig small rhs" id="pf-25th"><span class="pf-big">No. 25</span><span class="pf-sub">WITHIN 12 HOURS</span></div></section>
-  <section class="clip" id="p-chip-sst" data-start="118.74" data-duration="4.500" data-track-index="4"><div class="chip" id="chip-sst">SST 85&deg;F</div></section>
-  <section class="clip" id="p-chip-shear" data-start="123.64" data-duration="4.000" data-track-index="4"><div class="chip" id="chip-shear">LOW WIND SHEAR</div></section>
-  <section class="clip" id="p-chip-dryair" data-start="129.84" data-duration="4.500" data-track-index="4"><div class="chip" id="chip-dryair">DRY AIR (NW) = BRAKE</div></section>
-  <section class="clip" id="p-chip-seas" data-start="134.40" data-duration="4.000" data-track-index="4"><div class="chip" id="chip-seas">SEAS 14 FT</div></section>
-  <section class="clip" id="p-chip-gdacs" data-start="141.68" data-duration="3.300" data-track-index="4"><div class="chip" id="chip-gdacs">GDACS: GREEN · LOWEST ALERT</div></section>
+  <section class="clip" id="p-src-jma" data-start="51.618" data-duration="6.000" data-track-index="4"><div class="srclab" id="src-jma">SOURCES: JMA · JTWC · 16 SEP 2026, 19:10 JST</div></section>
+  <section class="clip" id="p-pf-25th" data-start="110.02" data-duration="2.800" data-track-index="5"><div class="popfig small rhs" id="pf-25th"><span class="pf-big">No. 25</span><span class="pf-sub">WITHIN 12 HOURS</span></div></section>
+  <section class="clip" id="p-chip-sst" data-start="117.84" data-duration="4.500" data-track-index="4"><div class="chip" id="chip-sst">SST 85&deg;F</div></section>
+  <section class="clip" id="p-chip-shear" data-start="122.74" data-duration="4.000" data-track-index="4"><div class="chip" id="chip-shear">LOW WIND SHEAR</div></section>
+  <section class="clip" id="p-chip-dryair" data-start="128.94" data-duration="4.500" data-track-index="4"><div class="chip" id="chip-dryair">DRY AIR (NW) = BRAKE</div></section>
+  <section class="clip" id="p-chip-seas" data-start="133.5" data-duration="4.000" data-track-index="4"><div class="chip" id="chip-seas">SEAS 14 FT</div></section>
+  <section class="clip" id="p-chip-gdacs" data-start="140.78" data-duration="3.300" data-track-index="4"><div class="chip" id="chip-gdacs">GDACS: GREEN · LOWEST ALERT</div></section>
 
   <!-- B3 -->
-  <section class="clip" id="p-src-b3" data-start="145.591" data-duration="6.000" data-track-index="4"><div class="srclab" id="src-b3">SOURCE: JMA FORECAST, ISSUED 16 SEP 19:10 JST</div></section>
-  <section class="clip" id="p-pf-12h40" data-start="153.53" data-duration="3.400" data-track-index="5"><div class="popfig small" id="pf-12h40"><span class="pf-big">+12H · 40 MPH</span><span class="pf-sub">EARNS TYPHOON STATUS</span></div></section>
-  <section class="clip" id="p-pf-fri" data-start="160.57" data-duration="4.500" data-track-index="5"><div class="popfig small" id="pf-fri"><span class="pf-big">FRI · 985 hPa</span><span class="pf-sub">56 MPH · OGASAWARA ISLANDS</span></div></section>
-  <section class="clip" id="p-pf-sun" data-start="176.07" data-duration="4.500" data-track-index="5"><div class="popfig small" id="pf-sun"><span class="pf-big">SUN · 975 hPa</span><span class="pf-sub">67 MPH · SOUTH OF JAPAN</span></div></section>
-  <section class="clip" id="p-pf-mon" data-start="189.13" data-duration="3.900" data-track-index="5"><div class="popfig small" id="pf-mon"><span class="pf-big">MON · 67-89 MPH</span><span class="pf-sub">SUSTAINED / GUST · EAST OF JAPAN</span></div></section>
-  <section class="clip" id="p-q-eastofjapan" data-start="194.50" data-duration="1.800" data-track-index="5"><div class="quotecard" id="q-eastofjapan"><div class="q">&ldquo;East of Japan.&rdquo;</div><div class="attr">JAPAN METEOROLOGICAL AGENCY · FORECAST VALID 21 SEP · ISSUED 16 SEP, 19:10 JST</div></div></section>
+  <section class="clip" id="p-src-b3" data-start="144.691" data-duration="6.000" data-track-index="4"><div class="srclab" id="src-b3">SOURCE: JMA FORECAST, ISSUED 16 SEP 19:10 JST</div></section>
+  <section class="clip" id="p-pf-12h40" data-start="152.63" data-duration="3.400" data-track-index="5"><div class="popfig small" id="pf-12h40"><span class="pf-big">+12H · 40 MPH</span><span class="pf-sub">EARNS TYPHOON STATUS</span></div></section>
+  <section class="clip" id="p-pf-fri" data-start="159.67" data-duration="4.500" data-track-index="5"><div class="popfig small" id="pf-fri"><span class="pf-big">FRI · 985 hPa</span><span class="pf-sub">56 MPH · OGASAWARA ISLANDS</span></div></section>
+  <section class="clip" id="p-pf-sun" data-start="175.17" data-duration="4.500" data-track-index="5"><div class="popfig small" id="pf-sun"><span class="pf-big">SUN · 975 hPa</span><span class="pf-sub">67 MPH · SOUTH OF JAPAN</span></div></section>
+  <section class="clip" id="p-pf-mon" data-start="188.23" data-duration="3.900" data-track-index="5"><div class="popfig small" id="pf-mon"><span class="pf-big">MON · 67-89 MPH</span><span class="pf-sub">SUSTAINED / GUST · EAST OF JAPAN</span></div></section>
+  <section class="clip" id="p-q-eastofjapan" data-start="193.6" data-duration="1.800" data-track-index="5"><div class="quotecard" id="q-eastofjapan"><div class="q">&ldquo;East of Japan.&rdquo;</div><div class="attr">JAPAN METEOROLOGICAL AGENCY · FORECAST VALID 21 SEP · ISSUED 16 SEP, 19:10 JST</div></div></section>
 
   <!-- B4 -->
-  <section class="clip" id="p-pf-75jtwc" data-start="224.15" data-duration="3.200" data-track-index="5"><div class="popfig small" id="pf-75jtwc"><span class="pf-big">75 MPH</span><span class="pf-sub">JTWC PEAK · 19-21 SEP</span></div></section>
-  <section class="clip" id="p-pf-168mi" data-start="231.23" data-duration="3.200" data-track-index="5"><div class="popfig rhs small" id="pf-168mi"><span class="pf-big">168 MI</span><span class="pf-sub">EAST OF TOKYO · MONDAY</span></div></section>
-  <section class="clip" id="p-chip-brancha" data-start="244.77" data-duration="4.000" data-track-index="4"><div class="chip" id="chip-brancha">BRANCH A &middot; TOWARD KANTO</div></section>
-  <section class="clip" id="p-chip-branchb" data-start="254.11" data-duration="4.000" data-track-index="4"><div class="chip rhs" id="chip-branchb">BRANCH B &middot; OFFSHORE PASS</div></section>
+  <section class="clip" id="p-pf-75jtwc" data-start="223.25" data-duration="3.200" data-track-index="5"><div class="popfig small" id="pf-75jtwc"><span class="pf-big">75 MPH</span><span class="pf-sub">JTWC PEAK · 19-21 SEP</span></div></section>
+  <section class="clip" id="p-pf-168mi" data-start="230.33" data-duration="3.200" data-track-index="5"><div class="popfig rhs small" id="pf-168mi"><span class="pf-big">168 MI</span><span class="pf-sub">EAST OF TOKYO · MONDAY</span></div></section>
+  <section class="clip" id="p-chip-brancha" data-start="243.87" data-duration="4.000" data-track-index="4"><div class="chip" id="chip-brancha">BRANCH A &middot; TOWARD KANTO</div></section>
+  <section class="clip" id="p-chip-branchb" data-start="253.21" data-duration="4.000" data-track-index="4"><div class="chip rhs" id="chip-branchb">BRANCH B &middot; OFFSHORE PASS</div></section>
 
   <!-- B6 -->
-  <section class="clip" id="p-pf-427m" data-start="373.00" data-duration="3.000" data-track-index="5"><div class="popfig small" id="pf-427m"><span class="pf-big">42.7M</span><span class="pf-sub">VISITORS · 2025 · RECORD HIGH</span></div></section>
+  <section class="clip" id="p-pf-427m" data-start="372.1" data-duration="3.000" data-track-index="5"><div class="popfig small" id="pf-427m"><span class="pf-big">42.7M</span><span class="pf-sub">VISITORS · 2025 · RECORD HIGH</span></div></section>
   <div class="kanto-pin" id="pin-yokosuka" style="left:920px;top:555px;"><div class="dot"></div></div>
   <div class="kanto-pin" id="pin-yokota" style="left:890px;top:530px;"><div class="dot"></div></div>
   <div class="kanto-pin" id="pin-tokyo" style="left:960px;top:540px;"><div class="dot" style="background:#f4f0e8;"></div></div>
@@ -235,8 +239,8 @@
   <div class="kanto-lab" id="lab-yokosuka" style="left:520px;top:230px;">FLEET ACTIVITIES YOKOSUKA &middot; 7TH FLEET HQ</div>
   <div class="kanto-lab" id="lab-yokota" style="left:1300px;top:250px;">YOKOTA AB &middot; USFJ HQ</div>
   <div class="kanto-lab" id="lab-tokyo" style="left:1200px;top:780px;border-left-color:#93a3b2;">TOKYO</div>
-  <section class="clip" id="p-pf-55k" data-start="407.44" data-duration="3.200" data-track-index="5"><div class="popfig small" id="pf-55k"><span class="pf-big">~55,000</span><span class="pf-sub">ACTIVE-DUTY · 15 BASES · JAPAN-WIDE</span></div></section>
-  <section class="clip" id="p-chip-noalert" data-start="421.40" data-duration="3.500" data-track-index="4"><div class="chip">NO STORM-SPECIFIC ALERT ISSUED YET</div></section>
+  <section class="clip" id="p-pf-55k" data-start="406.54" data-duration="3.200" data-track-index="5"><div class="popfig small" id="pf-55k"><span class="pf-big">~55,000</span><span class="pf-sub">ACTIVE-DUTY · 15 BASES · JAPAN-WIDE</span></div></section>
+  <section class="clip" id="p-chip-noalert" data-start="420.5" data-duration="3.500" data-track-index="4"><div class="chip">NO STORM-SPECIFIC ALERT ISSUED YET</div></section>
 
   <!-- B7 (band/marker card now lives in compositions/scale-ladder.html). The "~75 MPH · 1-MIN
        EQUIVALENT" and "CATEGORY 1 HURRICANE THRESHOLD" chips were removed here 17 Sep 26: the
@@ -248,17 +252,17 @@
        full in audio/b7-s1.words.json, just without a duplicate on-screen chip. -->
 
   <!-- B8 (tracking card now lives in compositions/tracking-open.html) -->
-  <section class="clip" id="p-pf-hagibis" data-start="515.60" data-duration="5.500" data-track-index="5"><div class="popfig small" id="pf-hagibis"><span class="pf-big">HAGIBIS 2019</span><span class="pf-sub">139 DEAD &middot; $17.3B DAMAGE</span></div></section>
-  <section class="clip" id="p-pf-faxai" data-start="524.16" data-duration="7.000" data-track-index="5"><div class="popfig small" id="pf-faxai"><span class="pf-big">FAXAI 2019</span><span class="pf-sub">934,000 OUT &middot; 390,000+ EVACUATED</span></div></section>
-  <section class="clip" id="p-pf-ampil" data-start="536.00" data-duration="4.000" data-track-index="5"><div class="popfig small" id="pf-ampil"><span class="pf-big">AMPIL 2024</span><span class="pf-sub">4 INJURED</span></div></section>
+  <section class="clip" id="p-pf-hagibis" data-start="514.7" data-duration="5.500" data-track-index="5"><div class="popfig small" id="pf-hagibis"><span class="pf-big">HAGIBIS 2019</span><span class="pf-sub">139 DEAD &middot; $17.3B DAMAGE</span></div></section>
+  <section class="clip" id="p-pf-faxai" data-start="523.26" data-duration="7.000" data-track-index="5"><div class="popfig small" id="pf-faxai"><span class="pf-big">FAXAI 2019</span><span class="pf-sub">934,000 OUT &middot; 390,000+ EVACUATED</span></div></section>
+  <section class="clip" id="p-pf-ampil" data-start="535.1" data-duration="4.000" data-track-index="5"><div class="popfig small" id="pf-ampil"><span class="pf-big">AMPIL 2024</span><span class="pf-sub">4 INJURED</span></div></section>
 
   <!-- ============ COMPOSITIONS (track 2) ============ -->
-  <div id="host-trackmap" data-composition-id="track-map" data-composition-src="compositions/track-map.html" data-start="7.0" data-duration="138.0" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-silverweek" data-composition-id="silver-week-calendar" data-composition-src="compositions/silver-week-calendar.html" data-start="259.312" data-duration="84.727" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-kantomap" data-composition-id="kanto-map" data-composition-src="compositions/kanto-map.html" data-start="372.639" data-duration="49.745" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-scaleladder" data-composition-id="scale-ladder" data-composition-src="compositions/scale-ladder.html" data-start="422.984" data-duration="61.2" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-trackingopen" data-composition-id="tracking-open" data-composition-src="compositions/tracking-open.html" data-start="484.784" data-duration="12.216" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-close" data-composition-id="close-card" data-composition-src="compositions/close-card.html" data-start="549.929" data-duration="12.071" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-trackmap" data-composition-id="track-map" data-composition-src="compositions/track-map.html" data-start="7.0" data-duration="137.1" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-silverweek" data-composition-id="silver-week-calendar" data-composition-src="compositions/silver-week-calendar.html" data-start="258.412" data-duration="84.727" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-kantomap" data-composition-id="kanto-map" data-composition-src="compositions/kanto-map.html" data-start="371.739" data-duration="49.745" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-scaleladder" data-composition-id="scale-ladder" data-composition-src="compositions/scale-ladder.html" data-start="422.084" data-duration="61.2" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-trackingopen" data-composition-id="tracking-open" data-composition-src="compositions/tracking-open.html" data-start="483.884" data-duration="12.216" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-close" data-composition-id="close-card" data-composition-src="compositions/close-card.html" data-start="549.029" data-duration="12.071" data-track-index="2" data-width="1920" data-height="1080"></div>
 
   <div id="grade"></div><div id="vignette"></div><canvas id="grain" width="480" height="270"></canvas>
 </div>
@@ -268,7 +272,7 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const DUR = 562.0;
+  const DUR = 561.1;
   function kb(sel, at, dur, s0, s1, x0, x1, y0, y1) {
     tl.fromTo(sel, { scale: s0, x: x0, y: y0, transformOrigin: "center" }, { scale: s1, x: x1, y: y1, duration: dur, ease: "none" }, at);
   }
@@ -299,209 +303,209 @@ window.__timelines = window.__timelines || {};
   /* ---- stills (Ken Burns, always moving; each still-wrap <=6s per CLAUDE.md, chained for longer holds) ---- */
   kb("#kb-b1-0a-himawari", 0.0, 4.0, 1.05, 1.14, 20, -10, 10, -6);
   kb("#kb-b1-0b-himawari", 4.0, 3.0, 1.14, 1.20, -10, -26, -6, -16);
-  kb("#kb-b3-0a-jtwc", 145.591, 4.5, 1.0, 1.04, 0, -6, 0, -4);
-  kb("#kb-b3-0b-jtwc", 150.091, 4.5, 1.04, 1.08, -6, -12, -4, -8);
-  kb("#kb-b3-2a-wv16", 160.091, 4.0, 1.08, 1.03, -12, -4, 6, 2);
-  kb("#kb-b3-2b-wv16", 164.091, 3.5, 1.03, 1.0, -4, 0, 2, 0);
-  kb("#kb-b3-5a-wv15", 179.091, 3.5, 1.0, 1.04, 0, 6, 0, -4);
-  kb("#kb-b3-5b-wv15", 182.591, 3.0, 1.04, 1.08, 6, 12, -4, -8);
-  kb("#kb-b3-7-wv13", 191.091, 5.264, 1.06, 1.0, -10, 0, 6, 0);
-  kb("#kb-b4-1a-jtwc", 218.494, 5.0, 1.0, 1.05, 0, -8, 0, -6);
-  kb("#kb-b4-1b-jtwc", 223.494, 5.0, 1.05, 1.1, -8, -16, -6, -10);
-  kb("#kb-b4-3a-wv14", 234.494, 3.5, 1.08, 1.04, 12, 6, 6, 3);
-  kb("#kb-b4-3b-wv14", 237.994, 3.5, 1.04, 1.0, 6, 0, 3, 0);
-  kb("#kb-b4-5a-fulldisk", 249.494, 4.609, 1.0, 1.05, 0, -8, 0, -5);
-  kb("#kb-b4-5b-fulldisk", 254.103, 4.609, 1.05, 1.08, -8, -14, -5, -8);
-  kb("#kb-b8-2a-himawari", 515.0, 6.0, 1.0, 1.05, 0, -10, 0, -6);
-  kb("#kb-b8-2b-himawari", 521.0, 6.0, 1.05, 1.1, -10, -18, -6, -12);
-  kb("#kb-b8-2c-himawari", 527.0, 6.0, 1.0, 1.05, 10, 4, 6, 2);
-  kb("#kb-b8-2d-himawari", 533.0, 6.0, 1.05, 1.1, 4, -4, 2, -4);
-  kb("#kb-b8-2e-himawari", 539.0, 6.0, 1.0, 1.05, -6, 0, -4, 0);
-  kb("#kb-b8-2f-himawari", 545.0, 4.329, 1.05, 1.08, 0, 4, 0, 3);
+  kb("#kb-b3-0a-jtwc", 144.691, 4.5, 1.0, 1.04, 0, -6, 0, -4);
+  kb("#kb-b3-0b-jtwc", 149.191, 4.5, 1.04, 1.08, -6, -12, -4, -8);
+  kb("#kb-b3-2a-wv16", 159.191, 4.0, 1.08, 1.03, -12, -4, 6, 2);
+  kb("#kb-b3-2b-wv16", 163.191, 3.5, 1.03, 1.0, -4, 0, 2, 0);
+  kb("#kb-b3-5a-wv15", 178.191, 3.5, 1.0, 1.04, 0, 6, 0, -4);
+  kb("#kb-b3-5b-wv15", 181.691, 3.0, 1.04, 1.08, 6, 12, -4, -8);
+  kb("#kb-b3-7-wv13", 190.191, 5.264, 1.06, 1.0, -10, 0, 6, 0);
+  kb("#kb-b4-1a-jtwc", 217.594, 5.0, 1.0, 1.05, 0, -8, 0, -6);
+  kb("#kb-b4-1b-jtwc", 222.594, 5.0, 1.05, 1.1, -8, -16, -6, -10);
+  kb("#kb-b4-3a-wv14", 233.594, 3.5, 1.08, 1.04, 12, 6, 6, 3);
+  kb("#kb-b4-3b-wv14", 237.094, 3.5, 1.04, 1.0, 6, 0, 3, 0);
+  kb("#kb-b4-5a-fulldisk", 248.594, 4.609, 1.0, 1.05, 0, -8, 0, -5);
+  kb("#kb-b4-5b-fulldisk", 253.203, 4.609, 1.05, 1.08, -8, -14, -5, -8);
+  kb("#kb-b8-2a-himawari", 514.1, 6.0, 1.0, 1.05, 0, -10, 0, -6);
+  kb("#kb-b8-2b-himawari", 520.1, 6.0, 1.05, 1.1, -10, -18, -6, -12);
+  kb("#kb-b8-2c-himawari", 526.1, 6.0, 1.0, 1.05, 10, 4, 6, 2);
+  kb("#kb-b8-2d-himawari", 532.1, 6.0, 1.05, 1.1, 4, -4, 2, -4);
+  kb("#kb-b8-2e-himawari", 538.1, 6.0, 1.0, 1.05, -6, 0, -4, 0);
+  kb("#kb-b8-2f-himawari", 544.1, 4.329, 1.05, 1.08, 0, 4, 0, 3);
 
   /* ---- overlays (absolute times = actual word cues from words.json) ---- */
   pop("#pf-3days", 6.50, 2.6);
   pop("#pf-dujuan", 13.92, 2.8);
-  lab("#src-jma", 52.518, 6.0);
-  pop("#pf-25th", 110.92, 2.8);
-  chip("#chip-sst", 118.74, 4.5);
-  chip("#chip-shear", 123.64, 4.0);
-  chip("#chip-dryair", 129.84, 4.5);
-  chip("#chip-seas", 134.40, 4.0);
-  chip("#chip-gdacs", 141.68, 3.3);
-  lab("#src-b3", 145.591, 6.0);
-  pop("#pf-12h40", 153.53, 3.4);
-  pop("#pf-fri", 160.57, 4.5);
-  pop("#pf-sun", 176.07, 4.5);
-  pop("#pf-mon", 189.13, 3.9);
-  tl.fromTo("#q-eastofjapan", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 194.5); tl.to("#q-eastofjapan", { autoAlpha: 0, y: -20, duration: 0.4 }, 195.9);
-  pop("#pf-75jtwc", 224.15, 3.2);
-  pop("#pf-168mi", 231.23, 3.2);
-  chip("#chip-brancha", 244.77, 4.0);
-  chip("#chip-branchb", 254.11, 4.0);
-  pop("#pf-427m", 373.0, 3.0);
-  tl.fromTo(["#pin-yokosuka", "#pin-yokota", "#pin-tokyo"], { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, stagger: 0.15, ease: "power3.out" }, 399.0);
-  tl.fromTo(["#lab-yokosuka", "#lab-yokota", "#lab-tokyo", "#leader-yokosuka", "#leader-yokota", "#leader-tokyo"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, stagger: 0.15, ease: "power3.out" }, 399.0);
-  tl.to(["#pin-yokosuka", "#pin-yokota", "#pin-tokyo", "#lab-yokosuka", "#lab-yokota", "#lab-tokyo", "#leader-yokosuka", "#leader-yokota", "#leader-tokyo"], { autoAlpha: 0, duration: 0.4 }, 421.9);
-  pop("#pf-55k", 407.44, 3.2);
-  chip("#chip-noalert", 421.4, 3.5);
+  lab("#src-jma", 51.618, 6.0);
+  pop("#pf-25th", 110.02, 2.8);
+  chip("#chip-sst", 117.84, 4.5);
+  chip("#chip-shear", 122.74, 4.0);
+  chip("#chip-dryair", 128.94, 4.5);
+  chip("#chip-seas", 133.5, 4.0);
+  chip("#chip-gdacs", 140.78, 3.3);
+  lab("#src-b3", 144.691, 6.0);
+  pop("#pf-12h40", 152.63, 3.4);
+  pop("#pf-fri", 159.67, 4.5);
+  pop("#pf-sun", 175.17, 4.5);
+  pop("#pf-mon", 188.23, 3.9);
+  tl.fromTo("#q-eastofjapan", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 193.6); tl.to("#q-eastofjapan", { autoAlpha: 0, y: -20, duration: 0.4 }, 195.0);
+  pop("#pf-75jtwc", 223.25, 3.2);
+  pop("#pf-168mi", 230.33, 3.2);
+  chip("#chip-brancha", 243.87, 4.0);
+  chip("#chip-branchb", 253.21, 4.0);
+  pop("#pf-427m", 372.1, 3.0);
+  tl.fromTo(["#pin-yokosuka", "#pin-yokota", "#pin-tokyo"], { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, stagger: 0.15, ease: "power3.out" }, 398.1);
+  tl.fromTo(["#lab-yokosuka", "#lab-yokota", "#lab-tokyo", "#leader-yokosuka", "#leader-yokota", "#leader-tokyo"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, stagger: 0.15, ease: "power3.out" }, 398.1);
+  tl.to(["#pin-yokosuka", "#pin-yokota", "#pin-tokyo", "#lab-yokosuka", "#lab-yokota", "#lab-tokyo", "#leader-yokosuka", "#leader-yokota", "#leader-tokyo"], { autoAlpha: 0, duration: 0.4 }, 421.0);
+  pop("#pf-55k", 406.54, 3.2);
+  chip("#chip-noalert", 420.5, 3.5);
 
   /* ---- B7 scale ladder (band/marker reveal now self-contained in compositions/scale-ladder.html);
      the two extra chips that used to fire here were removed -- see the B7 comment above the
      removed <section>s for why. ---- */
 
   /* ---- B8 tracking card (self-contained in compositions/tracking-open.html) + benchmarks ---- */
-  pop("#pf-hagibis", 515.60, 5.5);
-  pop("#pf-faxai", 524.16, 7.0);
-  pop("#pf-ampil", 536.00, 4.0);
+  pop("#pf-hagibis", 514.7, 5.5);
+  pop("#pf-faxai", 523.26, 7.0);
+  pop("#pf-ampil", 535.1, 4.0);
 
   /* ---- news bug ---- */
-  bug("#bugstrip-a", "#bh-a", 52.518, 143.837, ["TYPHOON No. 25 DUJUAN FORMING NEAR GUAM · TARGETS JAPAN WITHIN DAYS", "JMA: TYPHOON STATUS WITHIN 12 HOURS · JTWC FORECASTS A 75 MPH PEAK", "FOUR-POINT FORECAST ENDS EAST OF JAPAN, 21 SEPTEMBER", "SILVER WEEK BEGINS SATURDAY · FIRST FULL 5-DAY HOLIDAY IN 11 YEARS"]);
-  bug("#bugstrip-b", "#bh-b", 212.494, 336.835, ["TRACK STILL OPEN: OFFSHORE PASS OR A LATE TURN TOWARD KANTO", "42.7 MILLION VISITORS IN 2025 · JAPAN'S RECORD YEAR", "NO STORM-SPECIFIC ALERT AT YOKOSUKA OR YOKOTA YET", "STRENGTH STILL OPEN · STORM IS NOT YET A TYPHOON"]);
+  bug("#bugstrip-a", "#bh-a", 51.618, 143.837, ["TYPHOON No. 25 DUJUAN FORMING NEAR GUAM · TARGETS JAPAN WITHIN DAYS", "JMA: TYPHOON STATUS WITHIN 12 HOURS · JTWC FORECASTS A 75 MPH PEAK", "FOUR-POINT FORECAST ENDS EAST OF JAPAN, 21 SEPTEMBER", "SILVER WEEK BEGINS SATURDAY · FIRST FULL 5-DAY HOLIDAY IN 11 YEARS"]);
+  bug("#bugstrip-b", "#bh-b", 211.594, 336.835, ["TRACK STILL OPEN: OFFSHORE PASS OR A LATE TURN TOWARD KANTO", "42.7 MILLION VISITORS IN 2025 · JAPAN'S RECORD YEAR", "NO STORM-SPECIFIC ALERT AT YOKOSUKA OR YOKOTA YET", "STRENGTH STILL OPEN · STORM IS NOT YET A TYPHOON"]);
 
   /* ---- presenter talk-sync (loop-a: B2+B3, loop-b: B4-B8; spans merged from this episode's own words.json, gap<0.35s) ---- */
   tl.set(["#pip-talk-a", "#pip-talk-b"], { autoAlpha: 0 }, 0);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 52.52); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 54.34);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 54.88); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 55.60);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 55.98); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 57.96);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 58.72); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 61.00);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 61.56); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 63.72);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 64.18); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 67.98);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 68.50); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 72.24);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 73.06); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 79.96);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 80.44); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 84.18);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 84.56); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 85.70);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 86.32); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 88.78);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 89.38); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 91.96);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 92.84); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 95.56);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 95.94); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 97.26);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 98.06); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 102.62);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 103.14); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 104.98);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 105.70); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 111.72);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 112.38); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 113.02);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 113.42); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 116.28);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 116.74); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 120.22);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 120.92); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 122.78);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 123.32); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 125.34);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 125.80); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 127.98);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 128.54); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 131.50);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 132.50); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 134.64);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 135.02); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 139.32);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 140.20); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 142.86);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 143.50); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 144.58);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 145.59); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 150.37);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 151.23); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 152.19);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 152.61); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 157.19);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 157.85); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 158.89);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 159.39); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 162.63);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 163.25); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 165.81);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 166.57); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 170.11);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 170.69); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 171.79);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 172.15); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 178.19);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 178.59); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 180.95);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 181.71); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 183.85);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 184.57); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 185.47);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 186.01); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 187.39);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 188.01); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 190.41);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 190.97); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 191.89);
-  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 192.75); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 194.50);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 212.49); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 214.23);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 214.77); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 216.15);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 216.63); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 217.87);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 219.07); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 223.55);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 224.15); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 228.31);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 228.85); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 234.63);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 235.31); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 238.31);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 238.77); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 245.17);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 245.57); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 248.09);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 248.81); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 252.15);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 252.61); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 253.75);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 254.11); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 254.53);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 255.11); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 256.45);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 256.89); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 257.09);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 257.69); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 258.27);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 259.31); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 263.69);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 264.47); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 268.09);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 268.45); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 269.57);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 270.15); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 271.99);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 272.87); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 274.83);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 275.47); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 280.57);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 281.07); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 291.53);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 292.33); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 297.81);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 298.45); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 301.13);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 301.79); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 305.81);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 306.23); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 308.37);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 309.03); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 313.17);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 313.67); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 314.51);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 315.07); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 316.69);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 317.15); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 320.01);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 320.71); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 324.39);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 324.85); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 326.77);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 327.37); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 328.81);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 329.27); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 330.79);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 331.39); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 335.59);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 336.21); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 343.63);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 344.64); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 345.52);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 346.22); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 348.08);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 348.58); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 349.72);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 350.30); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 353.80);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 354.46); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 354.96);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 355.32); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 357.96);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 358.64); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 359.74);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 360.44); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 365.58);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 366.26); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 375.12);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 375.48); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 376.74);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 377.24); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 380.20);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 380.62); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 384.10);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 384.60); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 388.44);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 389.02); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 399.94);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 400.58); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 403.98);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 404.88); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 405.44);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 406.06); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 411.78);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 412.48); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 419.82);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 420.30); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 421.96);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 422.98); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 426.18);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 426.74); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 428.06);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 428.84); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 431.36);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 431.86); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 434.50);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 434.94); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 437.72);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 438.20); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 441.32);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 441.94); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 444.96);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 445.50); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 448.38);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 449.20); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 450.62);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 451.24); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 455.76);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 456.22); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 458.04);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 458.56); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 460.00);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 460.46); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 462.06);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 462.66); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 468.12);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 468.74); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 470.92);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 471.50); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 475.40);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 476.14); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 477.26);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 477.80); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 481.50);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 481.92); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 483.72);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 484.78); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 487.36);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 488.00); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 489.14);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 489.90); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 491.92);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 492.68); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 493.36);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 493.96); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 498.58);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 499.22); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 501.22);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 501.70); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 505.10);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 505.64); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 510.60);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 511.40); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 514.14);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 514.84); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 518.32);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 518.92); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 521.92);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 522.52); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 523.38);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 523.86); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 527.98);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 528.60); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 533.06);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 533.56); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 534.40);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 535.28); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 541.98);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 542.60); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 545.10);
-  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 545.46); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 548.82);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 51.62); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 53.44);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 53.98); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 54.7);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 55.08); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 57.06);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 57.82); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 60.1);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 60.66); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 62.82);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 63.28); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 67.08);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 67.6); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 71.34);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 72.16); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 79.06);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 79.54); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 83.28);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 83.66); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 84.8);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 85.42); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 87.88);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 88.48); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 91.06);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 91.94); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 94.66);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 95.04); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 96.36);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 97.16); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 101.72);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 102.24); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 104.08);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 104.8); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 110.82);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 111.48); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 112.12);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 112.52); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 115.38);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 115.84); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 119.32);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 120.02); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 121.88);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 122.42); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 124.44);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 124.9); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 127.08);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 127.64); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 130.6);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 131.6); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 133.74);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 134.12); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 138.42);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 139.3); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 141.96);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 142.6); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 143.68);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 144.69); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 149.47);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 150.33); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 151.29);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 151.71); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 156.29);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 156.95); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 157.99);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 158.49); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 161.73);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 162.35); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 164.91);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 165.67); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 169.21);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 169.79); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 170.89);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 171.25); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 177.29);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 177.69); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 180.05);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 180.81); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 182.95);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 183.67); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 184.57);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 185.11); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 186.49);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 187.11); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 189.51);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 190.07); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 190.99);
+  tl.to("#pip-talk-a", { autoAlpha: 1, duration: 0.1 }, 191.85); tl.to("#pip-talk-a", { autoAlpha: 0, duration: 0.1 }, 193.6);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 211.59); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 213.33);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 213.87); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 215.25);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 215.73); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 216.97);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 218.17); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 222.65);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 223.25); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 227.41);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 227.95); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 233.73);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 234.41); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 237.41);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 237.87); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 244.27);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 244.67); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 247.19);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 247.91); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 251.25);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 251.71); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 252.85);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 253.21); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 253.63);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 254.21); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 255.55);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 255.99); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 256.19);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 256.79); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 257.37);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 258.41); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 262.79);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 263.57); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 267.19);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 267.55); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 268.67);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 269.25); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 271.09);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 271.97); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 273.93);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 274.57); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 279.67);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 280.17); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 290.63);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 291.43); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 296.91);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 297.55); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 300.23);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 300.89); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 304.91);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 305.33); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 307.47);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 308.13); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 312.27);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 312.77); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 313.61);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 314.17); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 315.79);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 316.25); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 319.11);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 319.81); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 323.49);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 323.95); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 325.87);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 326.47); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 327.91);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 328.37); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 329.89);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 330.49); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 334.69);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 335.31); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 342.73);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 343.74); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 344.62);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 345.32); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 347.18);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 347.68); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 348.82);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 349.4); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 352.9);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 353.56); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 354.06);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 354.42); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 357.06);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 357.74); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 358.84);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 359.54); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 364.68);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 365.36); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 374.22);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 374.58); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 375.84);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 376.34); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 379.3);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 379.72); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 383.2);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 383.7); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 387.54);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 388.12); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 399.04);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 399.68); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 403.08);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 403.98); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 404.54);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 405.16); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 410.88);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 411.58); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 418.92);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 419.4); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 421.06);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 422.08); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 425.28);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 425.84); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 427.16);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 427.94); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 430.46);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 430.96); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 433.6);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 434.04); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 436.82);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 437.3); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 440.42);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 441.04); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 444.06);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 444.6); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 447.48);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 448.3); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 449.72);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 450.34); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 454.86);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 455.32); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 457.14);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 457.66); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 459.1);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 459.56); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 461.16);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 461.76); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 467.22);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 467.84); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 470.02);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 470.6); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 474.5);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 475.24); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 476.36);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 476.9); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 480.6);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 481.02); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 482.82);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 483.88); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 486.46);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 487.1); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 488.24);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 489.0); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 491.02);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 491.78); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 492.46);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 493.06); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 497.68);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 498.32); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 500.32);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 500.8); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 504.2);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 504.74); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 509.7);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 510.5); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 513.24);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 513.94); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 517.42);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 518.02); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 521.02);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 521.62); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 522.48);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 522.96); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 527.08);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 527.7); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 532.16);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 532.66); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 533.5);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 534.38); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 541.08);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 541.7); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 544.2);
+  tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 544.56); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 547.92);
 
   filmLayer(tl, DUR);
-  tl.to(["#vignette", "#grade", "#grain", ".dust"], { autoAlpha: 0, duration: 0.3 }, 196.355);
-  tl.to(["#vignette", "#grade", ".dust"], { autoAlpha: 1, duration: 0.3 }, 211.994);
-  tl.to("#grain", { autoAlpha: 0.10, duration: 0.3 }, 211.994);
+  tl.to(["#vignette", "#grade", "#grain", ".dust"], { autoAlpha: 0, duration: 0.3 }, 195.455);
+  tl.to(["#vignette", "#grade", ".dust"], { autoAlpha: 1, duration: 0.3 }, 211.094);
+  tl.to("#grain", { autoAlpha: 0.10, duration: 0.3 }, 211.094);
   window.__timelines["ms-dujuan-silver-week"] = tl;
 })();
 </script>
