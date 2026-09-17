@@ -6,8 +6,9 @@
 > own feed as of this advisory (facts-16sep.md §6), and per the hard-foreign-names rule below, it is never named in
 > voice or on screen anyway — narration refers to it as "this storm" / "the storm" throughout. Numbers spelled out for
 > TTS; `[fN]` per sentence group; sentences under 24 words; humanise-rules.md pass applied (no banned openers, no
-> metaphors, no rhetorical questions, no em dashes). Target ≥1,350 words. Paul's CTA after B3 (~34% in, story break
-> between "how Japan measures" and "how America measures").
+> metaphors, no rhetorical questions, no em dashes). Target ≥1,350 words. **Paul's CTA re-sited 17 Sep 26** to
+> 85–95% of runtime, immediately before the tracking/close run (B9/B10), on a new B8-S2 bridge line — moved off
+> the B3/B4 story break per owner brief (fixing JMA-vs-NHC comps, CTA).
 
 ## Spec
 - Slug `ms-dujuan-jma-vs-nhc`. Voice: pocket-TTS Pharaoh → atempo 1.10–1.15 → transcribe the sped wav → cues from that
