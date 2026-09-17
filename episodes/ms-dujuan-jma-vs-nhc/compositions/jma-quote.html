@@ -91,6 +91,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#jq-q3", { autoAlpha:0, y:14 }, { autoAlpha:1, y:0, duration:0.35 }, 35.76);
   /* attribution lands on "the agency's own published wind classification" (narration 52.54, comp-local 44.54) */
   tl.fromTo("#jq-attr", { autoAlpha:0 }, { autoAlpha:1, duration:0.4 }, 42.9);
+  /* frame-reader finding (draft 1 contact sheet): the 42.9->50.8 span read as static because the attribution
+     fade alone is too small to register; a second beat closes it on "the same table" (46.66) */
+  tl.to("#jq-attr", { color:"#ffffff", duration:0.4, yoyo:true, repeat:1 }, 46.3);
   tl.to(["#jq-card","#jq-chip","#jq-quote"], { autoAlpha:0, duration:0.5, ease:"power3.in" }, 50.8);
   window.__timelines["jma-quote"] = tl;
 })();
