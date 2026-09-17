@@ -79,7 +79,10 @@ window.__timelines = window.__timelines || {};
 
   tl.to("#q4-bgplate", { scale: 1.06, duration: 63.091, ease: "none" }, 0);
 
-  tl.set(["#q4-quote","#q4-tl","#q4-note"], { autoAlpha: 0 }, 0);
+  /* round 5 (owner: "mounts empty, 9s before first caption", 17 Sep 26) - #q4-lvl was missing from this
+     hide, so the headline was fully visible at default opacity from t=0, then GSAP's fromTo() (start 1.98)
+     SNAPPED it to autoAlpha:0 before fading back in - same pop-glitch bug fixed elsewhere this round. */
+  tl.set(["#q4-lvl","#q4-quote","#q4-tl","#q4-note"], { autoAlpha: 0 }, 0);
   tl.set("#q4-note", { visibility: "hidden" }, 0);
   tl.fromTo("#q4-eye", { autoAlpha:0, y:-16 }, { autoAlpha:1, y:0, duration:0.5 }, 0); CONTENT_BEATS.push(0);
   /* headline used to land at 1.04, before "instruction" (1.98-2.62) was spoken — retimed */
