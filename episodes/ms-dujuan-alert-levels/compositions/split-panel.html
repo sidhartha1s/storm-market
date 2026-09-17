@@ -85,7 +85,6 @@ window.__timelines = window.__timelines || {};
   const HOST_WINDOW = 51.491; // this episode's split-panel mount: 61.582-113.073
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
   const CONTENT_BEATS = []; // owner round-2 gap check: real content changes only, never ambient drift
-  const R = { n: 0 }; const rEl = document.getElementById("sp-r-num");
   const noteEl = document.getElementById("sp-note");
   function note(text, at) {
     // textContent on the parent wipes the .sp-rule child span — text goes on its own child span (round 3c fix)
