@@ -116,6 +116,13 @@ Visual: JMA-vs-NHC scale comparison graphic, 10-MIN bar vs 1-MIN bar. Scale ladd
 
 Visual: tracking card MG, two rows: "TRACK - STILL OPEN" / "STRENGTH - STILL OPEN". Benchmark comparison chips: "HAGIBIS 2019 - 139 DEAD - $17.3B" - "FAXAI 2019 - 934,000 OUT - 390,000+ EVACUATED" - "AMPIL 2024 - 4 INJURED". Return to the live Himawari loop of Dujuan.
 
+### B8-S2 -- bridge
+> Just a second before the last numbers. Most people who watch these stories already have someone in the path, and Paul has one thing for them.
+
+Visual: continuation of the live Himawari loop from B8 (no new graphic, no blackout, no dip); Paul circle hidden. Bridge added 17 Sep 26 so the CTA below has a spoken lead-in instead of cutting in cold. Music bed continuous underneath.
+
+*(Paul's ebook CTA mounts here: no blackout, no dip in -- CTA video's first frame starts within 0.2 s of this line's last word. Existing 0.5 s dip stays on the CTA's OUT side, into B9. ~90% in.)*
+
 ## B9 -- CLOSE (8:29-8:41)
 
 ### B9-S1 -- narration
