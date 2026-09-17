@@ -329,7 +329,18 @@ window.__timelines = window.__timelines || {};
   document.getElementById("tm-v-move-dir").textContent = cur.course_en;
 
   /* ---------- counters (DESIGN.md pattern: tween a plain object, write textContent onUpdate) ---------- */
-  const CV = { pressure: 0, wind: 0, windkmh: 0, gusts: 0, move: 0 };
+  /* Reader QC on U1 draft 2 (team-lead, 17 Sep 26): the pressure counter used to start its object
+     at 0 and count UP to 998 hPa with power2.out easing -- visibly passing through nonsense
+     intermediate values (e.g. "147 hPa") mid-tween, a real factual/narrative defect (no real
+     storm reads anywhere near that). Wind/gusts/move counting up from 0 don't have this problem
+     (any small in-between number still reads as "counting up," never as a bad reading) but
+     pressure only ever lives in the 900-1050 hPa band, so a low mid-tween value looks like broken
+     data, not an animation convention. Fixed per team-lead's own two options -- count DOWN from
+     1013 hPa (ICAO standard sea-level reference, a defensible generic "normal" anchor, not a
+     fabricated storm-specific figure) to the real 998 hPa reading -- every value the counter ever
+     shows during the 0.9s tween stays inside the real range, and the row still gets real, visible
+     motion (not a hard cut) when it reveals at cue-pressure (58.42s). */
+  const CV = { pressure: 1013, wind: 0, windkmh: 0, gusts: 0, move: 0 };
   const idPressure = document.getElementById("tm-v-pressure");
   const idWind = document.getElementById("tm-v-wind");
   const idWindKmh = document.getElementById("tm-v-wind-kmh");
