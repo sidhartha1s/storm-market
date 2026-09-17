@@ -19,6 +19,6 @@ for cid, s, d in hosts:
     dst = out / f'{cid}_{int(s)}s.jpg'
     cols = 6; rows = -(-n // cols)
     subprocess.run(['ffmpeg', '-y', '-v', 'error', '-ss', str(s), '-t', str(d), '-i', str(mp4),
-                    '-vf', f'fps=1/{step},scale=480:-1,tile={cols}x{rows}',
+                    '-vf', f'fps=1/{step},scale=480:-1,tile={cols}x{rows}:color=0x505050',
                     '-frames:v', '1', '-q:v', '4', str(dst)], check=True)
     print(f'{dst}  {cid} {s:.1f}-{s + d:.1f}s  {n} frames')
