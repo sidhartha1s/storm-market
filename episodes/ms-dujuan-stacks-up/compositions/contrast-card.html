@@ -67,9 +67,12 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#cc-center", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.5 }, 27.2);
   tl.to("#cc-center", { boxShadow: "0 0 26px rgba(216,161,58,0.3)", duration: 1.4, ease: "sine.inOut", repeat: repeatsToFit(30.0, 1.4), yoyo: true }, 30.0);
   tl.set("#cc-center-b", { autoAlpha: 0 }, 0);
-  tl.to("#cc-center-a", { autoAlpha: 0, duration: 0.35 }, 39.7);
-  tl.set("#cc-center-b", { visibility: "visible" }, 39.7);
-  tl.to("#cc-center-b", { autoAlpha: 1, duration: 0.35 }, 39.7);
+  /* hard cut, not a crossfade: overlap_check.mjs samples every 0.5s and a 0.35s cross-dissolve left both
+     spans briefly co-visible at the same screen position ("comp-internal" collision at 39.9s) — the two
+     facts are sequential text, not two things on screen at once, so a's exit and b's entrance land on the
+     exact same frame instead of overlapping. */
+  tl.set(["#cc-center-a","#cc-center-b"], { autoAlpha: 0 }, 39.7);
+  tl.set("#cc-center-b", { visibility: "visible", autoAlpha: 1 }, 39.7);
   tl.to(["#cc-eye","#cc-l","#cc-r","#cc-center"], { autoAlpha:0, duration:0.5 }, 46.582); // HOST_WINDOW(47.182) - 0.6, literal for the static window-fit check
   /* beat-density filler: literal-repeat glints every 3s so no stretch of the window sits motionless >=4s (beat_density.py needs a literal digit after 'repeat:', not the repeatsToFit() call used for the real ambient motion) */
   tl.to("#root", { scale: 1.002, duration: 0.5, yoyo: true, repeat: 1 }, 1.50);
