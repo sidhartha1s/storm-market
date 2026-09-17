@@ -32,9 +32,8 @@
   STORM SITS TONIGHT" card (B8); tracking card (B9).
 - Close: B9 ends on both open threads (track, strength) still unresolved, plus the live travel-season stake;
   B10 is the single soft comment + subscribe line.
-- CTA: Paul's ebook CTA mounts at the end of B3 (approx 3:10 of an estimated 9:40 runtime, 33% in), the natural
-  pause right after the "old system retired" card and before the level-by-level breakdown begins. 0.5 s dip
-  in/out, film layer off.
+- CTA: Paul's ebook CTA mounts immediately after the B8-S2 bridge line, right before B9's tracking-close card
+  (85-95% in). 0 s gap in (no blackout, no dip, bed continuous under the bridge), 0.5 s dip out, film layer off.
 
 ## Sources
 - f1 — facts-16sep.md §6 / live JMA feed, TC2630 (`targetTc.json` -> `TC2630/specifications.json`), fetched 16
