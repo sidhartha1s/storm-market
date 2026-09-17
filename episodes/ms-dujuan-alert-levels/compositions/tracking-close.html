@@ -79,7 +79,7 @@ window.__timelines = window.__timelines || {};
 
   tl.to("#tc-bgplate", { scale: 1.06, duration: 40.582, ease: "none" }, 0);
 
-  tl.set(["#tc-r2","#tc-chip","#tc-note"], { visibility: "hidden", autoAlpha: 0 }, 0);
+  tl.set(["#tc-r1","#tc-r2","#tc-chip","#tc-note"], { visibility: "hidden", autoAlpha: 0 }, 0);
   tl.fromTo("#tc-card", { autoAlpha:0, scale:0.94 }, { autoAlpha:1, scale:1, duration:0.6, ease:"power3.out" }, 0); CONTENT_BEATS.push(0);
   tl.fromTo("#tc-r1", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.4 }, 0.3); CONTENT_BEATS.push(0.3);
   /* continuous ambient motion so the card never sits frozen through the hold */
