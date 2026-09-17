@@ -7,53 +7,55 @@
      heading, a TS-threshold countdown chip, an SST chip, and a closing status chip. Mount: track 2, host
      start = episode-abs 61.582, duration 51.491 (B2 window is 57.491s; a 6.0s Odaiba lead-in plays before
      this comp mounts). Cues word-synced from audio/b2-s1.words.json (segment-abs minus this comp's mount;
-     the heading cue lands just before mount, so it reveals at mount instead). -->
+     the heading cue lands just before mount, so it reveals at mount instead). Font: 'AbrilFig' relies on
+     index.html's single @font-face (hyperframes mounts every comp inside index.html's DOM; a per-comp
+     @font-face duplicate also false-triggers css_collision.py on the shared ".ttf" url() token). All
+     classes carry the sp- comp tag so no class name is shared with index.html or a sibling composition. -->
 <template>
 <style>
-  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
   #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
     background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
-  .eye { position:absolute; left:0; right:0; top:90px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
+  .sp-eye { position:absolute; left:0; right:0; top:90px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
     font-size:24px; letter-spacing:5px; color:#d8a13a; }
-  .card { position:absolute; top:190px; width:760px; box-sizing:border-box; padding:36px 40px; text-align:center;
+  .sp-card { position:absolute; top:190px; width:760px; box-sizing:border-box; padding:36px 40px; text-align:center;
     background:rgba(10,16,24,0.58); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
-  .card-l { left:150px; border-bottom:5px solid #8fb4d8; }
-  .card-r { right:150px; border-bottom:5px solid #d0121f; }
-  .tag { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:4px; }
-  .card-l .tag { color:#8fb4d8; } .card-r .tag { color:#d0121f; }
-  .num { font-family:'AbrilFig',Georgia,serif; font-size:110px; line-height:1.2; margin-top:14px;
+  .sp-card-l { left:150px; border-bottom:5px solid #8fb4d8; }
+  .sp-card-r { right:150px; border-bottom:5px solid #d0121f; }
+  .sp-tag { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:4px; }
+  .sp-card-l .sp-tag { color:#8fb4d8; } .sp-card-r .sp-tag { color:#d0121f; }
+  .sp-num { font-family:'AbrilFig',Georgia,serif; font-size:110px; line-height:1.2; margin-top:14px;
     min-width:3ch; font-variant-numeric:tabular-nums; }
-  .card-l .num { color:#8fb4d8; } .card-r .num { color:#d0121f; }
-  .unit { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:1px; margin-top:14px; }
-  .sub { margin-top:12px; font-family:Georgia,serif; font-style:italic; font-size:19px; color:#c8d3e0; }
-  .arrow { position:absolute; left:50%; top:150px; transform:translateX(-50%); font-family:'Arial Black',Arial,sans-serif;
+  .sp-card-l .sp-num { color:#8fb4d8; } .sp-card-r .sp-num { color:#d0121f; }
+  .sp-unit { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:1px; margin-top:14px; }
+  .sp-sub { margin-top:12px; font-family:Georgia,serif; font-style:italic; font-size:19px; color:#c8d3e0; }
+  .sp-arrow { position:absolute; left:50%; top:150px; transform:translateX(-50%); font-family:'Arial Black',Arial,sans-serif;
     font-size:20px; letter-spacing:1px; color:#d8a13a; text-align:center; }
-  .arrow .glyph { font-size:44px; display:block; }
-  .chiprow { position:absolute; left:0; right:0; bottom:150px; display:flex; justify-content:center; gap:24px; }
-  .chip { font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:1px; color:#f4f0e8;
+  .sp-arrow .sp-glyph { font-size:44px; display:block; }
+  .sp-chiprow { position:absolute; left:0; right:0; bottom:150px; display:flex; justify-content:center; gap:24px; }
+  .sp-chip { font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:1px; color:#f4f0e8;
     background:rgba(10,16,24,0.62); border:1px solid rgba(255,255,255,0.14); border-left:6px solid #d0121f;
     border-radius:10px; padding:12px 24px; }
 </style>
 <div id="root" data-composition-id="split-panel" data-width="1920" data-height="1080">
-  <div class="eye" id="sp-eye">TWO AGENCIES, SAME STORM</div>
-  <div class="arrow" id="sp-arrow" style="visibility:hidden"><span class="glyph">&#8599;</span>9 MPH &middot; 15 KM/H &middot; NNE</div>
-  <div class="card card-l" id="sp-l">
-    <div class="tag">JMA</div>
-    <div class="num">998</div>
-    <div class="unit">HPA CENTRAL PRESSURE</div>
-    <div class="sub">34 MPH &middot; 55 KM/H sustained</div>
+  <div class="sp-eye" id="sp-eye">TWO AGENCIES, SAME STORM</div>
+  <div class="sp-arrow" id="sp-arrow" style="visibility:hidden"><span class="sp-glyph">&#8599;</span>9 MPH &middot; 15 KM/H &middot; NNE</div>
+  <div class="sp-card sp-card-l" id="sp-l">
+    <div class="sp-tag">JMA</div>
+    <div class="sp-num">998</div>
+    <div class="sp-unit">HPA CENTRAL PRESSURE</div>
+    <div class="sp-sub">34 MPH &middot; 55 KM/H sustained</div>
   </div>
-  <div class="card card-r" id="sp-r">
-    <div class="tag">JTWC (US NAVY)</div>
-    <div class="num" id="sp-r-num">0</div>
-    <div class="unit">MPH SUSTAINED</div>
-    <div class="sub" id="sp-r-sub">&nbsp;</div>
+  <div class="sp-card sp-card-r" id="sp-r">
+    <div class="sp-tag">JTWC (US NAVY)</div>
+    <div class="sp-num" id="sp-r-num">0</div>
+    <div class="sp-unit">MPH SUSTAINED</div>
+    <div class="sp-sub" id="sp-r-sub">&nbsp;</div>
   </div>
-  <div class="chiprow">
-    <div class="chip" id="sp-chip-ts" style="visibility:hidden">TS THRESHOLD: 12H</div>
-    <div class="chip" id="sp-chip-sst" style="visibility:hidden">SST 85&deg;F</div>
-    <div class="chip" id="sp-chip-status" style="visibility:hidden">NO ALERT LEVEL ISSUED YET</div>
+  <div class="sp-chiprow">
+    <div class="sp-chip" id="sp-chip-ts" style="visibility:hidden">TS THRESHOLD: 12H</div>
+    <div class="sp-chip" id="sp-chip-sst" style="visibility:hidden">SST 85&deg;F</div>
+    <div class="sp-chip" id="sp-chip-status" style="visibility:hidden">NO ALERT LEVEL ISSUED YET</div>
   </div>
 </div>
 <script>
