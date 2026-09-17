@@ -5,9 +5,11 @@
 <!-- opening-card.html — B1 cold open, glassmorphic stat-card push. Mounts OVER the still-playing b-roll
      (transparent #root, right-aligned card) so the video underneath keeps showing per CLAUDE.md "put the
      thing across the whole RHS" — this is the one comp in the episode that does NOT own a black background,
-     it is an overlay on track 2 above the track-1 video. Mount: track 2, host start = episode-abs 36.0,
-     duration 17.582 (B1 window ends 53.582; card pushes in once "eight separate typhoons" has landed at
-     33.92s so the card's own number isn't the first time the audience hears it). Cues word-synced from
+     it is an overlay on track 2 above the track-1 video. Mount: track 2, host start = episode-abs 47.1,
+     duration 6.482 (B1 window ends 53.582; card pushes in only after BOTH the "8 STORMS" and "1 CROWDED
+     WEEK" index-level popfigs have fully cleared at 46.8s, since those popfigs span the full frame width at
+     top:34% and would otherwise sit on top of this card's own right-aligned text — moved 17 Sep 26 after
+     overlap_check.mjs caught the collision at the original 36.0 mount). Cues word-synced from
      audio/b1-s1.words.json. Font: 'AbrilFig' relies on index.html's single @font-face (a per-comp duplicate
      false-triggers css_collision.py on the shared ".ttf" url() token). All classes carry the oc- comp tag. -->
 <template>
