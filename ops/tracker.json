@@ -405,10 +405,10 @@
       "title": "Silver Week Collision: A Storm Joins Japan's Biggest Holiday in Years",
       "owner": "director",
       "due": "16 Sep 26",
-      "phase": "preview",
-      "status": "done",
-      "note": "draft rendered 17 Sep, 9:22, NVIDIA probe OK, 12.8 min render; awaiting owner review",
-      "updated": "17 Sep 26 03:02"
+      "phase": "assemble",
+      "status": "doing",
+      "note": "rework after owner review 17 Sep 26: class scoping, popfig revert, CTA to 90% + bridge, seams, 7:02 hole",
+      "updated": "17 Sep 26 09:19"
     },
     {
       "slug": "ms-dujuan-two-tracks",
@@ -429,10 +429,10 @@
       "title": "Japan's Five-Level Evacuation Alert System, Explained for Americans",
       "owner": "director",
       "due": "16 Sep 26",
-      "phase": "checks",
-      "status": "todo",
-      "note": "held: CTA at 33% and class-leak gate fix pending owner go on the U1 review",
-      "updated": "17 Sep 26 03:53"
+      "phase": "assemble",
+      "status": "doing",
+      "note": "rework: class scoping, CTA to 90% + bridge, then browser gates",
+      "updated": "17 Sep 26 09:19"
     },
     {
       "slug": "ms-dujuan-us-travelers",
@@ -453,10 +453,10 @@
       "title": "JMA vs. NHC: How Japan and America Rank the Same Storm",
       "owner": "director",
       "due": "16 Sep 26",
-      "phase": "preview",
-      "status": "done",
-      "note": "draft rendered 17 Sep, 9:03, NVIDIA probe OK, 16 min render; awaiting owner review",
-      "updated": "17 Sep 26 03:12"
+      "phase": "assemble",
+      "status": "doing",
+      "note": "rework after owner review 17 Sep 26: class scoping, popfig revert, CTA to 90% + bridge, static holds",
+      "updated": "17 Sep 26 09:19"
     },
     {
       "slug": "ms-dujuan-holiday-typhoons",
