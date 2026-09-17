@@ -37,6 +37,10 @@
   .bt-row.bt-amber { background:rgba(216,161,58,0.14); border:1px solid rgba(216,161,58,0.55); }
   .bt-row.bt-amber .bt-storm, .bt-row.bt-amber .bt-hpa, .bt-row.bt-amber .bt-mph { color:#d8a13a; }
   .bt-row.bt-amber .bt-broke { color:#f0dcac; font-family:'Arial Black',Arial,sans-serif; font-size:18px; letter-spacing:0.5px; }
+  .bt-progress { position:absolute; left:150px; right:150px; top:76px; height:6px; border-radius:3px; background:rgba(255,255,255,0.08); }
+  .bt-progress-fill { position:absolute; left:0; top:0; bottom:0; width:0%; border-radius:3px; background:linear-gradient(90deg,#8fb4d8,#d8a13a); }
+  .bt-tick { position:absolute; top:-4px; width:14px; height:14px; border-radius:50%; background:#0a1018; border:2px solid rgba(255,255,255,0.25); transform:translateX(-50%); }
+  .bt-tick.bt-tick-on { border-color:#d8a13a; background:#d8a13a; box-shadow:0 0 10px rgba(216,161,58,0.7); }
 </style>
 <div id="root" data-composition-id="benchmark-table" data-width="1920" data-height="1080">
   <div class="bt-eye" id="bt-eye">TEN YEARS, EIGHT STORMS THAT HURT JAPAN &middot; PEAK MEASURED OVER OPEN WATER</div>
