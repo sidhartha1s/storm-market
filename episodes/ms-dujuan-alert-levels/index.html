@@ -251,7 +251,18 @@ window.__timelines = window.__timelines || {};
 
   /* ---- news bug ---- */
   bug("#bugstrip-a", "#bh-a", 0.0, 173.673, ["JAPAN'S ALERT LEVELS · EXPLAINED FOR AMERICANS", "TROPICAL DEPRESSION NEAR THE MARIANA ISLANDS", "5-LEVEL SYSTEM REPLACED THE OLD ONE IN 2021"]);
-  bug("#bugstrip-b", "#bh-b", 174.273, 226.382, ["LEVEL 3: THE ELDERLY EVACUATE FIRST", "LEVEL 4: EVACUATE BEFORE IT'S ISSUED", "LEVEL 5: LEAVING MAY NO LONGER BE SAFE", "ONE LADDER VS. THREE US SYSTEMS"]);
+  /* was one bug() rotating all 4 lines every 14s across 174.273-400.655 — L5's and the comparison's
+     lines kept surfacing during the L3/L4 chapters (owner round 3, 17 Sep 26). Each chapter now gets
+     only its own line, swapped exactly on that chapter's comp mount, not a fixed cadence. */
+  tl.fromTo("#bugstrip-b", { y: 96 }, { y: 0, duration: 0.45, ease: "power3.out" }, 174.273);
+  [[174.573, "LEVEL 3: THE ELDERLY EVACUATE FIRST"],
+   [221.964, "LEVEL 4: EVACUATE BEFORE IT'S ISSUED"],
+   [285.655, "LEVEL 5: LEAVING MAY NO LONGER BE SAFE"],
+   [346.873, "ONE LADDER VS. THREE US SYSTEMS"]].forEach(([t, text], i) => {
+    if (i > 0) tl.to("#bh-b", { y: 40, autoAlpha: 0, duration: 0.25, ease: "power2.in" }, t - 0.25);
+    tl.set("#bh-b", { textContent: text }, t);
+    tl.fromTo("#bh-b", { y: -40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.3, ease: "power2.out" }, t);
+  });
   bug("#bugstrip-c", "#bh-c", 401.255, 57.562, ["TONIGHT: STORM STILL BELOW THE LADDER"]);
   bug("#bugstrip-d", "#bh-d", 474.456, 46.582, ["TRACK AND STRENGTH: BOTH STILL OPEN", "NEXT UPDATE: JMA'S NEXT ADVISORY"]);
 
