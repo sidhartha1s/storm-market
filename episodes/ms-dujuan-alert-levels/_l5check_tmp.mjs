@@ -1,4 +1,5 @@
-import { chromium } from '../../scripts/playwright_env.mjs';
+import { chromium, chromiumExecutable } from '../../scripts/playwright_env.mjs';
+const EXECUTABLE = chromiumExecutable();
 import fs from 'fs';
 import path from 'path';
 
