@@ -452,6 +452,40 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#tm-r-gusts", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 64.94);
   tl.to(CV, { gusts: cur.gust_mph, duration: 0.9, ease: "power2.out" }, 64.94);
 
+  /* 8s max-gap rule (team-lead direction, 17 Sep 26): three real holes in this comp's own
+     timeline -- 26.02-52.28 (~26.3s, nothing after the forecast draw finishes until the card's
+     first row), 68.15-103.92 (~35.8s, after the JTWC reveal until the checkpoint row), and
+     103.92-137.1 (~33.2s, checkpoint to the end of the mount). Every pulse below lands on a real
+     word cue re-based to this comp's own mount (host abs 7.0): zone 1 anchors are b1-s1.words.json
+     minus 7.0, zone 2/3 anchors are b2-s1.words.json plus 44.618 (b2's own mount, host abs
+     51.618, minus this comp's 7.0). Each pulses an already-visible element (badge / JTWC chip /
+     footer) rather than inventing new text, to avoid a fresh layout/overflow risk with no render
+     to verify it against (house rule: never claim a fix without checking it, and this comp
+     cannot be checked by render right now). */
+  tl.fromTo("#tm-badge", { scale: 1 }, { scale: 1.04, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 26.9);  /* "first full Silver Week in 11 years" */
+  tl.fromTo("#tm-badge", { scale: 1 }, { scale: 1.04, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 29.66); /* "Two outcomes still open tonight" */
+  tl.fromTo("#tm-badge", { scale: 1 }, { scale: 1.04, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 31.94); /* "curves the storm into Kanto...Tokyo" */
+  tl.fromTo("#tm-badge", { scale: 1 }, { scale: 1.04, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 36.82); /* "slides it by, offshore" */
+  tl.fromTo("#tm-badge", { scale: 1 }, { scale: 1.04, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 39.28); /* "weakened but still felt" */
+  tl.fromTo("#tm-badge", { scale: 1 }, { scale: 1.04, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 41.06); /* "Both possibilities remain in tonight's forecast" */
+  tl.fromTo("#tm-badge", { scale: 1 }, { scale: 1.04, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 44.618); /* B2 opens: "At 7:10 Wednesday evening" */
+  tl.fromTo("#tm-badge", { scale: 1 }, { scale: 1.04, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 48.078); /* "storm sits near the Mariana Islands" */
+
+  tl.fromTo("#tm-chip-jtwc", { scale: 1 }, { scale: 1.05, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 70.618); /* "tracks the storm independently...southeast of Guam" */
+  tl.fromTo("#tm-chip-jtwc", { scale: 1 }, { scale: 1.05, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 78.418); /* "neither agency has given the storm a name yet" */
+  tl.fromTo("#tm-chip-jtwc", { scale: 1 }, { scale: 1.05, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 84.938); /* "winds reach 46 within 12 hours" */
+  tl.fromTo("#tm-chip-jtwc", { scale: 1 }, { scale: 1.05, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 90.158); /* "then 58...hold near 58 for a day" */
+  tl.fromTo("#tm-chip-jtwc", { scale: 1 }, { scale: 1.05, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 95.238); /* "model turns the storm north...toward Japan's main islands" */
+  tl.fromTo("#tm-chip-jtwc", { scale: 1 }, { scale: 1.05, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 99.538); /* "Japan expects a slower climb...within 12 hours" */
+
+  tl.fromTo("#tm-footer", { scale: 1 }, { scale: 1.03, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 107.158); /* "this year's 25th typhoon" */
+  tl.fromTo("#tm-footer", { scale: 1 }, { scale: 1.03, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 110.838); /* "85 degrees Fahrenheit" */
+  tl.fromTo("#tm-footer", { scale: 1 }, { scale: 1.03, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 115.418); /* "wind shear...is low" */
+  tl.fromTo("#tm-footer", { scale: 1 }, { scale: 1.03, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 120.638); /* "dry air moving in from the northwest" */
+  tl.fromTo("#tm-footer", { scale: 1 }, { scale: 1.03, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 124.598); /* "waves...14 feet" */
+  tl.fromTo("#tm-footer", { scale: 1 }, { scale: 1.03, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 127.118); /* "no populated coastline sits inside the storm's strongest wind field" */
+  tl.fromTo("#tm-footer", { scale: 1 }, { scale: 1.03, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 132.298); /* "global disaster trackers still rate this system green" */
+
   tl.addLabel("cue-movement", 52.28);
   tl.fromTo("#tm-r-movement", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 52.28);
   tl.to(CV, { move: cur.speed_mph, duration: 0.9, ease: "power2.out" }, 52.28);
