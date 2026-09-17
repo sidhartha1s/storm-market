@@ -114,8 +114,11 @@ window.__timelines = window.__timelines || {};
   tl.to(N2, { n: 89, duration: 1.0, ease: "power1.out", onUpdate: () => n2El.textContent = Math.round(N2.n) }, 14.92); CONTENT_BEATS.push(14.92);
   /* "That position sits offshore, past any coastline." — 16.02s */
   note("SITS OFFSHORE, PAST ANY COASTLINE", 16.02, 2.54);
-  /* "...it also falls one full grade below the point where Japan even calls a system a typhoon." — 18.56s */
-  note("ONE GRADE BELOW TYPHOON STRENGTH", 18.56, 7.1);
+  /* round 3 (owner: "static 425.7-431.7s / 9s", 17 Sep 26) — this used to be one 7.1s static hold;
+     split on the clause boundary into two beats ("it also falls one full grade below the point" / "where
+     Japan even calls a system a typhoon", audio 26.04/29.18). */
+  note("IT ALSO FALLS ONE FULL GRADE", 18.56, 3.6);
+  note("BELOW WHERE JAPAN CALLS IT A TYPHOON", 22.16, 3.5);
   /* "If the track holds exactly where that forecast shows it tonight, coastal Japan may never reach level 3..." — 25.66s */
   note("IF THE TRACK HOLDS: BELOW LEVEL 3", 25.66, 3.72);
   /* "...if the track shifts west toward Kanto instead. That math changes..." — 29.38s */
