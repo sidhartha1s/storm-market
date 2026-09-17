@@ -38,7 +38,7 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const HOST_WINDOW = 14.527; // this episode's close-card mount: 557.221-571.748
+  const HOST_WINDOW = 14.779; // this episode's close-card mount: 557.221-572.0
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
   tl.set(["#gc-soft","#gc-brand","#gc-rule"], { autoAlpha: 0 }, 0);
   tl.set(["#gc-soft","#gc-brand"], { visibility: "hidden" }, 0);
