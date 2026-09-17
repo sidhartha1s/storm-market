@@ -29,8 +29,8 @@ page.on('console', m => console.log('CONSOLE', m.type(), m.text()));
 // --- ladder-intro clearance check ---
 {
   const p = await stage('ladder-intro');
-  await page.goto('file:///' + p.split(path.sep).join('/'));
-  await page.waitForFunction(() => window.__timelines && window.__timelines['ladder-intro']);
+  await page.goto('file:///' + p.split(path.sep).join('/'), { waitUntil: 'load' });
+  await page.waitForTimeout(200);
   const data = await page.evaluate(() => {
     const tl = window.__timelines['ladder-intro'];
     tl.seek(50.0); // teaser fully visible, row5 dim state settled
