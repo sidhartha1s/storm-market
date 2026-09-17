@@ -77,7 +77,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#dp-chip-shear", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.35 }, 49.46);
   tl.set("#dp-chip-dry", { visibility: "visible" }, 51.76);
   tl.fromTo("#dp-chip-dry", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.35 }, 51.76);
-  tl.to(["#dp-eye","#dp-l","#dp-r","#dp-chip-ts","#dp-chip-sst","#dp-chip-shear","#dp-chip-dry"], { autoAlpha:0, duration:0.4 }, HOST_WINDOW - 0.6);
+  tl.to(["#dp-eye","#dp-l","#dp-r","#dp-chip-ts","#dp-chip-sst","#dp-chip-shear","#dp-chip-dry"], { autoAlpha:0, duration:0.4 }, 61.746); // HOST_WINDOW(62.346) - 0.6, literal for the static window-fit check
   /* beat-density filler: literal-repeat glints every 3s so no stretch of the long hold sits motionless >4s */
   for (let t = 1.5; t < HOST_WINDOW - 1.0; t += 3.0) {
     tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, t);
