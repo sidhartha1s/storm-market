@@ -404,22 +404,12 @@ window.__timelines = window.__timelines || {};
   chip("#chip-brancha", 228.331, 4.0);
   chip("#chip-branchb", 237.671, 4.0);
   pop("#pf-427m", 356.561, 3.0);
-  /* Reader QC on U1 draft 2 (team-lead, 17 Sep 26): "the map is empty ~365-380s (18s) before
-     pins; first pin on its word inside 2s" -- confirmed on pulled frames at host 365/375s, just
-     the eyebrow label + drifting basemap, no pins yet (all three used to land together at
-     382.561, well after the map's own mount at 356.2). Split into three separate word-synced
-     beats, each landing on the audio/b6-s1.words.json cue that actually names it (comp mount
-     356.2 = words.json t=28.0): Tokyo (the map's own anchor, no base-specific name needed) lands
-     on "Kanto region" (46.78 -> host abs 374.98, the first moment this map's own region is named);
-     Yokosuka lands on "Fleet" (51.26 -> host abs 379.46); Yokota lands on its own name (55.94 ->
-     host abs 384.14). All three still exit together at 405.461 (unchanged). */
-  tl.fromTo("#pin-tokyo", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 374.98);
-  tl.fromTo(["#lab-tokyo", "#leader-tokyo"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 374.98);
-  tl.fromTo("#pin-yokosuka", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 379.46);
-  tl.fromTo(["#lab-yokosuka", "#leader-yokosuka"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 379.46);
-  tl.fromTo("#pin-yokota", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 384.14);
-  tl.fromTo(["#lab-yokota", "#leader-yokota"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 384.14);
-  tl.to(["#pin-yokosuka", "#pin-yokota", "#pin-tokyo", "#lab-yokosuka", "#lab-yokota", "#lab-tokyo", "#leader-yokosuka", "#leader-yokota", "#leader-tokyo"], { autoAlpha: 0, duration: 0.4 }, 405.461);
+  /* pins/leaders/labels (word-synced Tokyo/Yokosuka/Yokota reveals) migrated into
+     compositions/kanto-map.html 17 Sep 26 -- host-level elements do not inherit a comp-level
+     CSS transform, so under kanto-map.html's basemap scale/drift they would have drifted off
+     their real points over the 49.7s hold (reasoned through, see that file's header). Same
+     word cues, now inside the comp: Tokyo on "Kanto region" (comp-rel 18.78), Yokosuka on
+     "Fleet" (23.26), Yokota on its own name (27.94), all exit at comp-rel 49.261. */
   chip("#chip-noalert", 404.961, 3.5);
 
   /* ---- B7 scale ladder (band/marker reveal now self-contained in compositions/scale-ladder.html);
