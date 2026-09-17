@@ -5,19 +5,35 @@
 <!--
   DUJUAN B6 MG: kanto-map.html — full-bleed regional basemap card (media/maps/basemap-kanto.png
   as a CSS background, not a raster <img> beat, so this long B6 hold reads as a designed graphic
-  rather than a static photo). Mounted once for 372.639-422.384 (49.745s). Pin labels for
-  Yokosuka/Yokota/Tokyo are index.html-level overlays on track 5 (same coordinate space, full-bleed
-  cover) so this file stays a plain background plate. Continuous slow push (explicit long duration,
-  ease none, single pass -- NOT gsap repeat, which sweep_episode's static timeline-length check
-  cannot see through) keeps the hold from reading frozen.
+  rather than a static photo). Mounted once for 372.639-422.384 (49.745s). Continuous slow push
+  (explicit long duration, ease none, single pass -- NOT gsap repeat, which sweep_episode's static
+  timeline-length check cannot see through) keeps the hold from reading frozen.
+
+  PIN/LEADER/LABEL MIGRATION (team-lead direction, 17 Sep 26): the Yokosuka/Yokota/Tokyo pins used
+  to be index.html-level overlays, absolutely positioned in frame coordinates while #km-img (this
+  file's basemap) scaled 1.0->1.1 and drifted -30/-14px underneath them -- reasoned through (no
+  render needed): a host-level element does not inherit a comp-level element's CSS transform, so
+  over the full 49.7s hold the pins would visibly drift off their real Yokosuka/Yokota/Tokyo
+  points by tens of pixels. Fixed by moving the pins/leaders/labels INTO this file, nested inside
+  #km-mapwrap alongside #km-img, with the scale/drift transform now applied to the WRAPPER so the
+  basemap and every pin move together as one rigid unit -- positions and look are unchanged (same
+  literal pixel coordinates, same visual style, now under km- prefixed classes instead of the
+  host's .kanto-pin/.kanto-lab to keep this comp's classes disjoint from index.html, css_collision's
+  own gate).
 -->
 <template>
 <style>
   #kn-root { position:absolute; inset:0; overflow:hidden; background:#04070c; }
+  #km-mapwrap { position:absolute; inset:0; width:100%; height:100%; }
   #km-img { position:absolute; inset:-6%; width:112%; height:112%; background-image:url('../media/maps/basemap-kanto.png');
     background-size:cover; background-position:center; filter:saturate(0.9) brightness(0.85); }
   #km-scrim { position:absolute; inset:0; background:linear-gradient(180deg, rgba(4,7,12,0.55) 0%, rgba(4,7,12,0.1) 30%, rgba(4,7,12,0.1) 70%, rgba(4,7,12,0.65) 100%); }
   .kn-eyebrow { position:absolute; left:110px; top:96px; font-family:'Arial Black',Arial,sans-serif; font-size:26px; letter-spacing:7px; color:#d0121f; }
+  /* ported from index.html's removed .kanto-pin/.kanto-lab (identical look), km- prefixed */
+  .km-pin { position:absolute; z-index:6; }
+  .km-pin-dot { width:18px; height:18px; border-radius:50%; background:#d0121f; border:3px solid #050b12; box-shadow:0 0 14px rgba(208,18,31,0.7); }
+  .km-lab { position:absolute; z-index:6; font-family:'Arial Black',Arial,sans-serif; font-size:22px; color:#f4f0e8; white-space:nowrap;
+    text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 6px #000; background:rgba(10,16,24,0.6); padding:6px 12px; border-radius:6px; border-left:4px solid #d0121f; }
   /* Reader QC on U1 draft 2 (team-lead, 17 Sep 26): index.html's host-level "~55,000/ACTIVE-DUTY
      15 BASES" popfig (p-pf-55k, track 5, was 391.001-394.201) landed directly on top of the
      Yokosuka/Yokota pin dots and leader lines -- confirmed on a pulled frame at host 392s, text
