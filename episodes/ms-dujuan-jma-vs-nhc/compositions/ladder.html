@@ -9,51 +9,50 @@
      duration 49.782. -->
 <template>
 <style>
-  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
   #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
     background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
-  .colhead { position:absolute; top:110px; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:4px; text-align:center; }
-  .col-l { left:170px; width:640px; color:#8fb4d8; }
-  .col-r { right:170px; width:640px; color:#d0121f; }
-  .ladder { position:absolute; top:170px; width:640px; box-sizing:border-box; }
-  .ladder-l { left:170px; }
-  .ladder-r { right:170px; }
-  .rung { margin-top:18px; padding:16px 26px; border-radius:14px; box-sizing:border-box;
+  .ld-colhead { position:absolute; top:110px; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:4px; text-align:center; }
+  .ld-col-l { left:170px; width:640px; color:#8fb4d8; }
+  .ld-col-r { right:170px; width:640px; color:#d0121f; }
+  .ld-ladder { position:absolute; top:170px; width:640px; box-sizing:border-box; }
+  .ld-ladder-l { left:170px; }
+  .ld-ladder-r { right:170px; }
+  .ld-rung { margin-top:18px; padding:16px 26px; border-radius:14px; box-sizing:border-box;
     background:rgba(10,16,24,0.5); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
     border:1px solid rgba(255,255,255,0.12); display:flex; justify-content:space-between; align-items:baseline; }
-  .rung .lab { font-family:'Arial Black',Arial,sans-serif; font-size:30px; }
-  .rung .rng { font-family:'AbrilFig',Georgia,serif; font-size:54px; line-height:1.2; }
-  .ladder-l .rng { color:#8fb4d8; }
-  .ladder-r .rng { color:#d0121f; }
-  .ladder-r .rung { border-color:rgba(208,18,31,0.3); }
-  .connector { position:absolute; left:820px; top:398px; width:280px; height:4px; background:#d8a13a;
+  .ld-rung .ld-lab { font-family:'Arial Black',Arial,sans-serif; font-size:30px; }
+  .ld-rung .ld-rng { font-family:'AbrilFig',Georgia,serif; font-size:54px; line-height:1.2; }
+  .ld-ladder-l .ld-rng { color:#8fb4d8; }
+  .ld-ladder-r .ld-rng { color:#d0121f; }
+  .ld-ladder-r .ld-rung { border-color:rgba(208,18,31,0.3); }
+  .ld-connector { position:absolute; left:820px; top:398px; width:280px; height:4px; background:#d8a13a;
     box-shadow:0 0 16px rgba(216,161,58,0.8); transform-origin:left center; }
-  .connlab { position:absolute; left:830px; top:360px; width:260px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
+  .ld-connlab { position:absolute; left:830px; top:360px; width:260px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
     font-size:20px; letter-spacing:2px; color:#d8a13a; }
-  .chip2 { position:absolute; left:50%; transform:translateX(-50%); bottom:115px; font-family:'Arial Black',Arial,sans-serif; font-size:26px;
+  .ld-chip2 { position:absolute; left:50%; transform:translateX(-50%); bottom:115px; font-family:'Arial Black',Arial,sans-serif; font-size:26px;
     letter-spacing:2px; color:#f4f0e8; background:rgba(10,16,24,0.62); border:1px solid rgba(255,255,255,0.14);
     border-left:6px solid #d0121f; border-radius:10px; padding:12px 24px; }
 </style>
 <div id="root" data-composition-id="ladder" data-width="1920" data-height="1080">
-  <div class="colhead col-l">JAPAN (10-MIN AVG)</div>
-  <div class="colhead col-r">SAFFIR-SIMPSON (1-MIN PEAK)</div>
-  <div class="ladder ladder-l" id="lad-l">
-    <div class="rung"><div class="lab">TROPICAL STORM</div><div class="rng">38&ndash;55</div></div>
-    <div class="rung"><div class="lab">SEVERE TROPICAL STORM</div><div class="rng">55&ndash;73</div></div>
-    <div class="rung"><div class="lab">STRONG TYPHOON</div><div class="rng">74&ndash;96</div></div>
-    <div class="rung"><div class="lab">VERY STRONG TYPHOON</div><div class="rng">98&ndash;119</div></div>
-    <div class="rung"><div class="lab">VIOLENT TYPHOON</div><div class="rng">121+</div></div>
+  <div class="ld-colhead ld-col-l">JAPAN (10-MIN AVG)</div>
+  <div class="ld-colhead ld-col-r">SAFFIR-SIMPSON (1-MIN PEAK)</div>
+  <div class="ld-ladder ld-ladder-l" id="lad-l">
+    <div class="ld-rung"><div class="ld-lab">TROPICAL STORM</div><div class="ld-rng">38&ndash;55</div></div>
+    <div class="ld-rung"><div class="ld-lab">SEVERE TROPICAL STORM</div><div class="ld-rng">55&ndash;73</div></div>
+    <div class="ld-rung"><div class="ld-lab">STRONG TYPHOON</div><div class="ld-rng">74&ndash;96</div></div>
+    <div class="ld-rung"><div class="ld-lab">VERY STRONG TYPHOON</div><div class="ld-rng">98&ndash;119</div></div>
+    <div class="ld-rung"><div class="ld-lab">VIOLENT TYPHOON</div><div class="ld-rng">121+</div></div>
   </div>
-  <div class="ladder ladder-r" id="lad-r">
-    <div class="rung" id="lr-1"><div class="lab">CATEGORY 1</div><div class="rng">74&ndash;95</div></div>
-    <div class="rung" id="lr-2"><div class="lab">CATEGORY 2</div><div class="rng">96&ndash;110</div></div>
-    <div class="rung" id="lr-3"><div class="lab">CATEGORY 3</div><div class="rng">111&ndash;129</div></div>
-    <div class="rung" id="lr-4"><div class="lab">CATEGORY 4</div><div class="rng">130&ndash;156</div></div>
-    <div class="rung" id="lr-5"><div class="lab">CATEGORY 5</div><div class="rng">157+</div></div>
+  <div class="ld-ladder ld-ladder-r" id="lad-r">
+    <div class="ld-rung" id="lr-1"><div class="ld-lab">CATEGORY 1</div><div class="ld-rng">74&ndash;95</div></div>
+    <div class="ld-rung" id="lr-2"><div class="ld-lab">CATEGORY 2</div><div class="ld-rng">96&ndash;110</div></div>
+    <div class="ld-rung" id="lr-3"><div class="ld-lab">CATEGORY 3</div><div class="ld-rng">111&ndash;129</div></div>
+    <div class="ld-rung" id="lr-4"><div class="ld-lab">CATEGORY 4</div><div class="ld-rng">130&ndash;156</div></div>
+    <div class="ld-rung" id="lr-5"><div class="ld-lab">CATEGORY 5</div><div class="ld-rng">157+</div></div>
   </div>
-  <div class="connector" id="lad-conn"></div>
-  <div class="connlab" id="lad-connlab">BOTH SCALES START AT 74</div>
-  <div class="chip2" id="lad-chip">1-MINUTE SUSTAINED WIND</div>
+  <div class="ld-connector" id="lad-conn"></div>
+  <div class="ld-connlab" id="lad-connlab">BOTH SCALES START AT 74</div>
+  <div class="ld-chip2" id="lad-chip">1-MINUTE SUSTAINED WIND</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
