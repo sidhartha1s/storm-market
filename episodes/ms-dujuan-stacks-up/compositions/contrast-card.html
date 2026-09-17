@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- contrast-card.html — B5 "what pressure and wind don't measure". Two-card contrast: Nanmadol (deepest on
+     the list, fewest deaths) vs Ampil (never made landfall, biggest evacuation) plus a center caption card
+     and a track-map callback showing Typhoon No. 25's offshore line traced over Ampil's old track. Full-
+     window mount, no b-roll (pure graphic; matches quote-l4 sibling pattern). Mount: track 2, host start =
+     episode-abs 381.202, duration 47.182 (full B5 window). Cues word-synced from audio/b5-s1.words.json.
+     Font: 'AbrilFig' relies on index.html's single @font-face (a per-comp duplicate false-triggers
+     css_collision.py on the shared ".ttf" url() token). All classes carry the cc- comp tag. -->
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
+  .cc-eye { position:absolute; left:0; right:0; top:90px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
+    font-size:24px; letter-spacing:5px; color:#d8a13a; }
+  .cc-card { position:absolute; top:200px; width:700px; box-sizing:border-box; padding:36px 40px; text-align:center;
+    background:rgba(10,16,24,0.58); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:26px; }
+  .cc-card-l { left:130px; border-bottom:5px solid #8fb4d8; }
+  .cc-card-r { right:130px; border-bottom:5px solid #d0121f; }
+  .cc-tag { font-family:'Arial Black',Arial,sans-serif; font-size:26px; letter-spacing:2px; color:#f4f0e8; }
+  .cc-big { font-family:'AbrilFig',Georgia,serif; font-size:44px; margin-top:16px; line-height:1.2; }
+  .cc-card-l .cc-big { color:#8fb4d8; } .cc-card-r .cc-big { color:#d0121f; }
+  .cc-sub { margin-top:14px; font-family:Arial,sans-serif; font-size:20px; color:#c8d3e0; }
+  .cc-center { position:absolute; left:50%; bottom:130px; transform:translateX(-50%); width:1000px; box-sizing:border-box;
+    text-align:center; font-family:'Arial Black',Arial,sans-serif; font-size:25px; letter-spacing:1px; color:#f4f0e8;
+    background:rgba(10,16,24,0.62); border:1px solid rgba(255,255,255,0.14); border-radius:14px; padding:20px 30px;
+    visibility:hidden; }
+</style>
+<div id="root" data-composition-id="contrast-card" data-width="1920" data-height="1080">
+  <div class="cc-eye" id="cc-eye">NUMBERS MEASURE THE STORM, NOT WHAT'S UNDERNEATH</div>
+  <div class="cc-card cc-card-l" id="cc-l">
+    <div class="cc-tag">NANMADOL</div>
+    <div class="cc-big">910 hPa &mdash; DEEPEST ON THE LIST</div>
+    <div class="cc-sub">4 dead</div>
+  </div>
+  <div class="cc-card cc-card-r" id="cc-r">
+    <div class="cc-tag">AMPIL</div>
+    <div class="cc-big">NEVER MADE LANDFALL</div>
+    <div class="cc-sub">404,000 evacuated anyway</div>
+  </div>
+  <div class="cc-center" id="cc-center">PRESSURE + WIND &ne; DAMAGE &middot; TIMING + ANGLE + WHAT'S UNDERNEATH DO</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const HOST_WINDOW = 47.182; // this episode's contrast-card mount: 381.202-428.384
+  function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
+  tl.set("#cc-center", { visibility: "hidden", autoAlpha: 0 }, 0);
+  tl.fromTo("#cc-eye", { autoAlpha:0, y:-16 }, { autoAlpha:1, y:0, duration:0.5 }, 0);
+  tl.fromTo("#cc-l", { autoAlpha:0, x:-50 }, { autoAlpha:1, x:0, duration:0.6, ease:"power3.out" }, 0);
+  /* continuous ambient motion on the left card while the narration is still on Nanmadol before Ampil lands */
+  tl.to("#cc-l", { y: -6, duration: 2.7, ease: "sine.inOut", repeat: repeatsToFit(0.8, 2.7), yoyo: true }, 0.8);
+  tl.fromTo("#cc-r", { autoAlpha:0, x:50 }, { autoAlpha:1, x:0, duration:0.6, ease:"power3.out" }, 4.66);
+  tl.to("#cc-r", { y: -6, duration: 2.6, ease: "sine.inOut", repeat: repeatsToFit(5.4, 2.6), yoyo: true }, 5.4);
+  tl.set("#cc-center", { visibility: "visible" }, 27.2);
+  tl.fromTo("#cc-center", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.5 }, 27.2);
+  tl.to("#cc-center", { boxShadow: "0 0 26px rgba(216,161,58,0.3)", duration: 1.4, ease: "sine.inOut", repeat: repeatsToFit(30.0, 1.4), yoyo: true }, 30.0);
+  tl.to("#cc-center", { duration:0.01, onStart: () => { document.getElementById("cc-center").textContent = "TYPHOON No. 25's TRACK RUNS THE SAME OFFSHORE LINE AS AMPIL'S"; } }, 39.7);
+  tl.to(["#cc-eye","#cc-l","#cc-r","#cc-center"], { autoAlpha:0, duration:0.5 }, HOST_WINDOW - 0.6);
+  window.__timelines["contrast-card"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
