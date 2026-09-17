@@ -155,6 +155,7 @@ Before TTS, run `references/humanise-rules.md` rules 2–14 line by line on the 
 - **CTA at 85–95 %** (`config.yaml channel.cta.window_ms`), immediately before the closing tracking segment, entered by a spoken bridge half-line ("Just a second before the last numbers…") with no blackout, dip or gap; keep the dip out.
 - **A visible content change every <=8 s in every comp** (a tween on a content element's opacity/position/text/colour, not ambient drift), each element landing on its narration word; the draft must show zero `freezedetect=n=0.003:d=6` holds outside the CTA and the close. Green beat_density with a 21 s static card is what draft 1 of alert-levels shipped (17 Sep 26).
 - **No edits under an episode while its render is alive** (a worker reloading mid-render captures a mixed state; JMA draft 2 thrown away 17 Sep 26). Composers wait for the lead's "render done".
+- **Never write `textContent` on an element that has children** (it deletes them at runtime; the sweeping rule span vanished after the first caption in 7 alert-levels comps while every gate passed, 17 Sep 26). Swap text on a dedicated text span.
 - **Every draft gets a per-comp-window frame read** (Sonnet reader, contact sheets) before the owner sees it; green gates alone never clear a draft.
 
 ### 7–9. QC, render, ship
