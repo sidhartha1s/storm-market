@@ -119,6 +119,20 @@
   .tm-footer { position:absolute; left:110px; bottom:48px; font-family:Georgia,serif; font-style:italic; font-size:21px;
     color:rgba(200,211,224,0.55); letter-spacing:0.5px; }
 
+  /* Reader QC (team-lead, 17 Sep 26): comp-local 24-36s, 48-60s and 72-137s all read as dead --
+     the JMA/JTWC travel markers and background scale-drift are real motion but too small an area
+     of a 1920x1080 frame to register on freezedetect, same lesson as the badge/chip pulses.
+     One shared right-side slot, clear of the card (x110-870), badge (x~1628-1850,y64-114) and
+     footer (y~1032) -- every item below sits at the exact same box and only one is visible at a
+     time (sequential autoAlpha swap), so there is no layout/overlap risk to verify without a
+     render. Text is fixed at authoring time, never touched by textContent at tween time. */
+  .tm-note { position:absolute; right:70px; top:440px; width:460px; }
+  .tm-note-item { position:absolute; top:0; right:0; width:100%; box-sizing:border-box; text-align:right;
+    font-family:'Arial Black',Arial,sans-serif; font-size:22px; line-height:1.3; letter-spacing:0.5px;
+    color:#f2f5f8; text-shadow:0 3px 14px rgba(0,0,0,0.85); background:rgba(10,16,24,0.62);
+    backdrop-filter:blur(14px) saturate(1.1); -webkit-backdrop-filter:blur(14px) saturate(1.1);
+    border:1px solid rgba(255,255,255,0.14); border-right:4px solid #d0121f; border-radius:8px; padding:14px 22px; }
+
   /* traveling markers (added 17 Sep 26, freeze-hold fix): a small lit dot that visibly moves
      node-to-node along each already-drawn track, real substantial pixel motion across the frame
      -- not a decorative sweep, a literal "where the storm is heading" read. */
