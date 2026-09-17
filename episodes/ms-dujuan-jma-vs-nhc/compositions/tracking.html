@@ -5,11 +5,15 @@
 <!-- tracking.html — B9 "what's still open tonight". Single highlighted tracking row: the storm is still a
      tropical depression, unnamed, and the next JMA advisory is the number that decides everything. Mount:
      track 2, host start = episode-abs 509.175, duration 17.2 (comp-local 0 = that point in B9; cues below
-     are B9-segment-relative minus 8.0). -->
+     are B9-segment-relative minus 8.0). Round 2 (17 Sep 26 freeze fix): the three open outcomes
+     (strengthens/slows/curves) land one by one on their own words instead of as one static line, and a
+     running caption on the "check that advisory" close-out line plus a tr-bgplate continuous scale close the
+     8.42s and 9.73s gaps freezedetect caught either side of the old single trk-hl reveal. -->
 <template>
 <style>
-  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
-    background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; background:#04070c; overflow:hidden; }
+  .tr-bgplate { position:absolute; left:-60px; right:-60px; top:-60px; bottom:-60px;
+    background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); transform-origin:center; will-change:transform; }
   .tr-card { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:1000px; box-sizing:border-box;
     padding:44px 60px; text-align:center; background:rgba(10,16,24,0.6); backdrop-filter:blur(18px) saturate(1.15);
     -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
