@@ -249,8 +249,14 @@
   <section class="clip blackout" id="bo-cta-out-t1" data-start="528.855" data-duration="0.5" data-track-index="1"></section>
   <section class="clip blackout" id="bo-cta-out" data-start="528.855" data-duration="0.5" data-track-index="9"></section>
 
-  <!-- B8 part 2 · resumes 529.355-556.421 (b8-s1b, the Faxai/Ampil/closing lines) -->
-  <video id="vx-b8-3-waves" src="media/video/v-waves-typhoon-b8.mp4" data-start="529.355" data-duration="2.706" data-track-index="1" data-callback="third use, resumes the benchmark section right after the CTA" muted></video>
+  <!-- B8 part 2 · resumes 529.355-556.421 (b8-s1b, the Faxai/Ampil/closing lines).
+       vx-b8-3-train fills the 4.755s that c-b8-2b-himawari's tail used to cover before it was
+       truncated for the bridge (above): reusing v-waves-typhoon-b8.mp4 or v-seawall-crash.mp4
+       here would breach the <60s source-family-repeat rule (both were on screen ~31-49s earlier,
+       in the CTA's own picture-track shadow). v-train-commuter.mp4 is otherwise unused this
+       episode (freed up when radar_zoom_2 took its old B6 slot) -- a real first use, correctly
+       spaced, generic enough Japan b-roll not to contradict the Faxai/Ampil narration. -->
+  <video id="vx-b8-3-train" src="media/video/v-train-commuter.mp4" data-start="529.355" data-duration="4.755" data-track-index="1" muted></video>
   <section class="clip still-wrap" id="c-b8-2c-himawari" data-start="534.11" data-duration="6.0" data-track-index="1" data-callback="distinct crop of the same Himawari frame"><img id="kb-b8-2c-himawari" src="media/image/img-himawari-b8-3.jpg" alt=""></section>
   <section class="clip still-wrap" id="c-b8-2d-himawari" data-start="540.11" data-duration="6.0" data-track-index="1" data-callback="distinct crop of the same Himawari frame"><img id="kb-b8-2d-himawari" src="media/image/img-himawari-b8-4.jpg" alt=""></section>
   <section class="clip still-wrap" id="c-b8-2e-himawari" data-start="546.11" data-duration="6.0" data-track-index="1" data-callback="distinct crop of the same Himawari frame"><img id="kb-b8-2e-himawari" src="media/image/img-himawari-b8-5.jpg" alt=""></section>
