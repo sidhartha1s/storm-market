@@ -83,6 +83,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#ld-note-r", { autoAlpha:0, y:10 }, { autoAlpha:1, y:0, duration:0.35, onStart:() => { document.getElementById("ld-note-r").textContent = "A SHORTER CLOCK"; } }, 3.56); // "clock." 3.16
   tl.to("#ld-note-r", { autoAlpha:0, duration:0.3 }, 7.6);
   tl.fromTo("#ld-note-r", { autoAlpha:0, y:10 }, { autoAlpha:1, y:0, duration:0.35, onStart:() => { document.getElementById("ld-note-r").textContent = "NOT TEN MINUTES"; } }, 8.42); // "minutes." 8.08
+  tl.to("#ld-note-r", { autoAlpha:0, duration:0.3 }, 12.5);
   /* continuous ambient motion across the whole window so the card never sits frozen between reveals */
   tl.to(".ld-colhead", { letterSpacing: "5px", duration: 5.0, ease: "sine.inOut", repeat: repeatsToFit(0.6, 5.0), yoyo: true }, 0.6);
   /* rung bob: stagger 0.4 across 5 targets -> cycle = 0.4*4 + 3.4 = 5.0 */
