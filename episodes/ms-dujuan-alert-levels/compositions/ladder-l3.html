@@ -113,7 +113,8 @@ window.__timelines = window.__timelines || {};
   /* round 3 (owner 17 Sep 26): this chip used to hold that same line static from 23.44 clear through to the
      46.49 exit (23s+), reading as a repeat of the l3-note beats nearby. Third swap on an unused narration
      fact ("The instruction tells that group to evacuate immediately" — 13.08s, never captioned elsewhere). */
-  tl.to("#l3-chip", { duration:0.01, onStart: () => { document.getElementById("l3-chip").textContent = "THE INSTRUCTION: EVACUATE IMMEDIATELY"; } }, 33.60); CONTENT_BEATS.push(33.60);
+  tl.to("#l3-chip2", { autoAlpha: 0, duration: 0.3 }, 33.30);
+  tl.fromTo("#l3-chip3", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 33.60); CONTENT_BEATS.push(33.60);
   /* "...aimed at roughly the same population." — 29.46s */
   note("AIMED AT THE SAME POPULATION", 29.46, 2.5);
   /* "No federal system assigns that order a number the way Japan does." — 31.96s */
