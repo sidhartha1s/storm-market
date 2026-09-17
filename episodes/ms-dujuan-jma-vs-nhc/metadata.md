@@ -33,16 +33,16 @@ Footage: NASA Worldview Snapshots (MODIS Terra, public domain), RAMMB/CIRA RAMSD
 news pulls courtesy of ANN News (TV Asahi), FNN Prime Online, TBS NEWS DIG, and Hokkaido News UHB, stock b-roll
 via Pexels.
 
-## Chapters (question form, no marker at the CTA)
+## Chapters (question form, no marker at the CTA; re-timed 17 Sep 26 — CTA moved to 8:14, see B8-S2 bridge)
 0:00 What's spinning near Japan right now, and why don't the two countries agree on it?
 0:50 How many agencies are actually tracking this storm?
 1:51 How does Japan measure the wind?
-3:07 How does America measure the wind?
-3:57 Why does a third agency exist at all?
-5:05 What does today's actual forecast gap look like?
-6:09 Typhoon, hurricane, cyclone — same storm?
-7:19 Why does any of this matter?
-8:21 What's still unresolved tonight?
+2:51 How does America measure the wind?
+3:42 Why does a third agency exist at all?
+4:50 What does today's actual forecast gap look like?
+5:53 Typhoon, hurricane, cyclone — same storm?
+7:03 Why does any of this matter?
+8:30 What's still unresolved tonight?
 
 ## Tags
 JMA, Japan Meteorological Agency, National Hurricane Center, NHC, Joint Typhoon Warning Center, JTWC, typhoon vs
