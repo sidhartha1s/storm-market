@@ -81,7 +81,7 @@ window.__timelines = window.__timelines || {};
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
   const L = { n: 0 }, R = { n: 0 };
   const lEl = document.getElementById("cc-l-num"), rEl = document.getElementById("cc-r-num");
-  tl.set(["#cc-midpop","#cc-foot","#cc-l-note","#cc-r-note"], { autoAlpha: 0 }, 0);
+  tl.set(["#cc-midpop","#cc-foot","#cc-l-note","#cc-r-note","#cc-deltabar"], { autoAlpha: 0 }, 0);
   tl.set("#cc-r-grade", { autoAlpha: 0 }, 0);
   /* background plate: continuous slow scale across the whole window (round 2, 17 Sep 26 freeze fix) */
   tl.fromTo("#cp-bgplate", { scale: 1.0 }, { scale: 1.06, duration: HOST_WINDOW, ease: "none" }, 0);
