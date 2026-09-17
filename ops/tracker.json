@@ -429,10 +429,10 @@
       "title": "Japan's Five-Level Evacuation Alert System, Explained for Americans",
       "owner": "director",
       "due": "16 Sep 26",
-      "phase": "assemble",
-      "status": "doing",
-      "note": "rework: class scoping, CTA to 90% + bridge, then browser gates",
-      "updated": "17 Sep 26 09:19"
+      "phase": "preview",
+      "status": "todo",
+      "note": "draft render held: 3.0 GB free < 4 GB floor while two composers run",
+      "updated": "17 Sep 26 10:48"
     },
     {
       "slug": "ms-dujuan-us-travelers",
