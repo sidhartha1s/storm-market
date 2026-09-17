@@ -7,7 +7,7 @@
 
 ## Description
 https://paulraymond.online
-📘 The book mentioned at 2:51 — The Storm-Ready Home
+📘 The book mentioned at 8:14 — The Storm-Ready Home
 
 Right now forecasters in Tokyo and Miami are tracking the same tropical system near the Mariana Islands, and they
 do not agree on its strength. Neither one is wrong. Japan's weather agency measures wind as a ten-minute average.
