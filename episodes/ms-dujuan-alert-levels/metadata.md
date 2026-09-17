@@ -38,12 +38,16 @@ Natural Earth (public domain, no attribution required).
 0:00 What is this storm doing right now, and what alert system will decide what happens next?
 0:56 How many agencies are tracking it, and what do they agree on?
 1:54 What system did Japan retire, and what replaced it?
-3:10 Level 3: who evacuates first?
-3:58 Level 4: what does "evacuate now" actually sound like in Japan?
-5:03 Level 5: when does leaving itself stop being safe?
-5:56 Why does America run three systems where Japan runs one?
-6:56 Where does tonight's storm actually sit on that ladder?
-7:46 What's still unresolved tonight?
+2:54 Level 3: who evacuates first?
+3:42 Level 4: what does "evacuate now" actually sound like in Japan?
+4:46 Level 5: when does leaving itself stop being safe?
+5:41 Why does America run three systems where Japan runs one?
+6:41 Where does tonight's storm actually sit on that ladder?
+7:54 What's still unresolved tonight?
+
+<!-- CTA moved 17 Sep 26 from ~2:54 (33% in) to 7:39 (85.3% in), immediately before the closing
+     tracking-close chapter above; chapter timestamps recomputed from the new absolute starts in
+     index.html, no marker at the CTA itself per the CTA contract. -->
 
 ## Tags
 Japan typhoon alert levels, evacuation levels Japan, JMA, Cabinet Office Japan, hurricane watch vs
