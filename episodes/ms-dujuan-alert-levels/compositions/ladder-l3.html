@@ -5,7 +5,8 @@
 <!-- ladder-l3.html — B4 "level three: the elderly evacuate first". Full mini-ladder (all 5 rows, muted)
      with level 3 pulled out and highlighted; silhouette icon row for the named group; US-equivalent chip.
      Full-window mount, no b-roll (pure graphic, matches sibling's B4 pattern). Cues word-synced from
-     audio/b4-s1.words.json. Mount: track 2, host start = episode-abs 189.812, duration 47.091. Font:
+     audio/b4-s1.words.json. Mount: track 2, host start = episode-abs 174.273, duration 47.091 (shifted
+     15.539s earlier 17 Sep 26 when the CTA moved out of the old B3/B4 seam). Font:
      'AbrilFig' relies on index.html's single @font-face (a per-comp duplicate false-triggers
      css_collision.py on the shared ".ttf" url() token). All classes carry the l3- comp tag; this file's
      bare ".srclab" was the real host collision (index.html defines its own ".srclab" source-label style
@@ -59,7 +60,7 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const HOST_WINDOW = 47.091; // this episode's ladder-l3 mount: 189.812-236.903
+  const HOST_WINDOW = 47.091; // this episode's ladder-l3 mount: 174.273-221.364
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
   tl.set(["#l3-i1","#l3-i2","#l3-i3","#l3-chip","#l3-src"], { autoAlpha: 0 }, 0);
   tl.fromTo("#l3-mini", { x:-60, autoAlpha:0 }, { x:0, autoAlpha:1, duration:0.5 }, 0);
