@@ -79,35 +79,55 @@ window.__timelines = window.__timelines || {};
   /* background plate: continuous slow scale across the whole window so no full-frame stretch ever reads as
      frozen to freezedetect, independent of how sparse the card reveals are (round 2, 17 Sep 26) */
   tl.fromTo("#jq-bgplate", { scale: 1.0 }, { scale: 1.06, duration: HOST_WINDOW, ease: "none" }, 0);
-  /* solid full-width scan sweep, bounded repeat, covers the entire window including the 5.6->9.6 and
-     9.6->14.8 gaps between card reveals that freezedetect still read as frozen in draft 2 */
-  tl.fromTo("#jq-sweep", { top: -6 }, { top: 1086, duration: 3.4, ease: "none", repeat: repeatsToFit(0, 3.4) }, 0);
   /* continuous ambient motion so the card never sits frozen between reveals */
   tl.to("#jq-card", { y: -5, duration: 2.8, ease: "sine.inOut", repeat: repeatsToFit(0.7, 2.8), yoyo: true }, 0.7);
   tl.fromTo("#jq-chip", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 0.4);
-  /* round-3 (reader: card reads blank 0->5.6s before row 1): a real chrome beat lands mid lead-in so the
-     open isn't 6s of near-identical frames. Not a fact reveal (word for "tropical storm" isn't said until
-     5.28s), so this is scene-setting motion on the eyebrow itself, not an early fact. */
+  /* round-4 (owner: content, not a detector fix): the eyebrow lights on its own timing so the open isn't a
+     blank card before row 1's word (word for "tropical storm" isn't said until 5.28s, so row 1 can't move). */
   tl.to("#jq-eye", { letterSpacing: "9px", color: "#ff3b47", duration: 0.6, yoyo: true, repeat: 1 }, 2.4);
-  tl.fromTo("#jq-r1", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 5.62);      // "tropical storm" 13.62
-  tl.fromTo("#jq-r2", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 9.18);      // "severe tropical" 17.18
-  /* bridges the r2->thresh gap (9.58->14.82, reader still read this as dead) with a bold flash on the just-
-     landed row's own number, not a new fact */
-  tl.to("#jq-r2 .jq-rng", { color: "#ffffff", duration: 0.4, yoyo: true, repeat: 1 }, 12.0);
+  /* Each row's label lights and its mph range counts up from 0 over ~1s starting exactly on its own word —
+     replaces the flat opacity fade with real numeric content motion. Count trackers use plain objects with
+     onUpdate, duration is a numeric literal at every call site. */
+  const CU1 = { lo: 0, hi: 0 }, CU2 = { lo: 0, hi: 0 }, CU3 = { lo: 0, hi: 0 }, CU4 = { lo: 0, hi: 0 }, CU5 = { v: 0 };
+  const r1rng = document.getElementById("jq-r1-rng"), r2rng = document.getElementById("jq-r2-rng"),
+        r3rng = document.getElementById("jq-r3-rng"), r4rng = document.getElementById("jq-r4-rng"),
+        r5rng = document.getElementById("jq-r5-rng");
+  tl.fromTo("#jq-r1", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.9 }, 5.62);      // "tropical storm" 13.62
+  tl.to("#jq-r1-lab", { color:"#ffffff", duration:0.45, yoyo:true, repeat:1 }, 5.62);
+  tl.to(CU1, { lo:38, hi:55, duration:0.9, ease:"power1.out",
+    onUpdate: () => { r1rng.textContent = Math.round(CU1.lo) + "–" + Math.round(CU1.hi) + " MPH"; } }, 5.62);
+  tl.fromTo("#jq-indicator", { visibility:"visible", autoAlpha:0, top:213 }, { autoAlpha:1, duration:0.3 }, 5.62); // slides to r1
+  tl.fromTo("#jq-r2", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.9 }, 9.18);      // "severe tropical" 17.18
+  tl.to("#jq-r2-lab", { color:"#ffffff", duration:0.45, yoyo:true, repeat:1 }, 9.18);
+  tl.to(CU2, { lo:55, hi:73, duration:0.9, ease:"power1.out",
+    onUpdate: () => { r2rng.textContent = Math.round(CU2.lo) + "–" + Math.round(CU2.hi) + " MPH"; } }, 9.18);
+  tl.to("#jq-indicator", { top:323, duration:0.5, ease:"power2.out" }, 9.18); // slides to r2
   /* two-stage threshold reveal closes the r2->thresh gap on its own words: a peek when "73" is spoken again
      (22.82), completing when "typhoon" lands (26.14) — was a single 8.96s gap, now two beats under 8s each.
      Round 3: the peek's 0.55 alpha read as invisible to both freezedetect and the frame reader; raised to a
      clearly-visible 0.85 so it actually registers as a beat, not just the completion at 18.14. */
   tl.fromTo("#jq-thresh", { autoAlpha:0, scale:0.85 }, { autoAlpha:0.85, scale:0.95, duration:0.35 }, 14.82); // "73" 22.82
+  tl.to("#jq-indicator", { top:408, duration:0.5, ease:"power2.out" }, 14.82); // slides to the threshold line
   tl.to("#jq-thresh", { autoAlpha:1, scale:1, backgroundColor:"rgba(208,18,31,0.32)", duration:0.4, ease:"power2.out" }, 18.14); // "typhoon." 26.14
   tl.to("#jq-thresh", { backgroundColor:"rgba(208,18,31,0.18)", duration:0.6 }, 18.54);
-  /* bridges the thresh-settle->r3 gap (19.14->25.42, 6.28s) with a bold pulse on the card itself */
-  tl.to("#jq-card", { boxShadow: "0 0 34px rgba(208,18,31,0.35)", duration: 0.5, yoyo: true, repeat: 1 }, 21.6);
-  tl.fromTo("#jq-r3", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 25.42);     // "strong typhoon" 33.42
-  tl.fromTo("#jq-r4", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 30.46);     // "very strong typhoon" 38.46
-  tl.fromTo("#jq-r5", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 35.76);     // "violent typhoon," 43.76
-  /* bridges the r5->attr gap (36.16->42.9, 6.74s) with a bold flash on the just-landed row's own number */
-  tl.to("#jq-r5 .jq-rng", { color: "#ffffff", duration: 0.4, yoyo: true, repeat: 1 }, 39.0);
+  tl.fromTo("#jq-r3", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.9 }, 25.42);     // "strong typhoon" 33.42
+  tl.to("#jq-r3-lab", { color:"#ffffff", duration:0.45, yoyo:true, repeat:1 }, 25.42);
+  tl.to(CU3, { lo:74, hi:96, duration:0.9, ease:"power1.out",
+    onUpdate: () => { r3rng.textContent = Math.round(CU3.lo) + "–" + Math.round(CU3.hi) + " MPH"; } }, 25.42);
+  tl.to("#jq-indicator", { top:499, duration:0.5, ease:"power2.out" }, 25.42); // slides to r3
+  tl.fromTo("#jq-r4", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.9 }, 30.46);     // "very strong typhoon" 38.46
+  tl.to("#jq-r4-lab", { color:"#ffffff", duration:0.45, yoyo:true, repeat:1 }, 30.46);
+  tl.to(CU4, { lo:98, hi:119, duration:0.9, ease:"power1.out",
+    onUpdate: () => { r4rng.textContent = Math.round(CU4.lo) + "–" + Math.round(CU4.hi) + " MPH"; } }, 30.46);
+  tl.to("#jq-indicator", { top:608, duration:0.5, ease:"power2.out" }, 30.46); // slides to r4
+  tl.fromTo("#jq-r5", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.9 }, 35.76);     // "violent typhoon," 43.76
+  tl.to("#jq-r5-lab", { color:"#ffffff", duration:0.45, yoyo:true, repeat:1 }, 35.76);
+  tl.to(CU5, { v:121, duration:0.9, ease:"power1.out",
+    onUpdate: () => { r5rng.textContent = Math.round(CU5.v) + " MPH"; },
+    onComplete: () => { r5rng.textContent = "121+ MPH · NO CEILING"; } }, 35.76);
+  tl.to("#jq-indicator", { top:731, duration:0.5, ease:"power2.out" }, 35.76); // slides to r5, the last rung
+  /* bridges the r5->attr gap (36.66->42.9) with the indicator settling out rather than a decorative flash */
+  tl.to("#jq-indicator", { autoAlpha:0, duration:0.4 }, 41.0);
   /* the quote clauses land WITH their matching row, not as one block at the end (round 2 hard rule) */
   tl.fromTo("#jq-q1", { autoAlpha:0, y:14 }, { autoAlpha:1, y:0, duration:0.35 }, 25.42);
   tl.fromTo("#jq-q2", { autoAlpha:0, y:14 }, { autoAlpha:1, y:0, duration:0.35 }, 30.46);
