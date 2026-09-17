@@ -111,27 +111,26 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#bt-progress", { autoAlpha:0 }, { autoAlpha:1, duration:0.4 }, 0.3);
   tl.fromTo("#bt-progress-fill", { width: "0%" }, { width: "100%", duration: 208.146, ease: "none" }, 0);
 
+  /* news-accuracy hard rule (team-lead 17 Sep 26): a number is never on screen at a non-final value - no
+     count-ups anywhere. hPa/mph land directly at their final reading the instant the row lands (tl.call,
+     not an animated ramp). This is also what fixes the Trami "901/118 vs 915/120" report: that was never
+     two disagreeing sources (both edit_script.md f9 and this table already say 915 hPa/120 mph, sourced to
+     Wikipedia "Typhoon Trami (2018)") - it was a mid-count-up frame of the OLD 0->915 ramp caught mid-flight. */
   function landRow(id, at, hpa, mph, tickN) {
     tl.to(id, { autoAlpha:1, y:0, duration:0.5, ease:"power3.out" }, at);
-    const hpaEl = document.querySelector(`${id} .bt-hpa`), mphEl = document.querySelector(`${id} .bt-mph`);
-    const H = { n: 0 }, M = { n: 0 };
-    tl.to(H, { n: hpa, duration: 0.9, ease: "power1.out", onUpdate: () => hpaEl.textContent = Math.round(H.n) }, at + 0.15);
-    tl.to(M, { n: mph, duration: 0.9, ease: "power1.out", onUpdate: () => mphEl.textContent = Math.round(M.n) }, at + 0.15);
-    tl.call(() => document.getElementById(`bt-tick-${tickN}`).classList.add("bt-tick-on"), null, at);
+    tl.call(() => {
+      document.querySelector(`${id} .bt-hpa`).textContent = hpa;
+      document.querySelector(`${id} .bt-mph`).textContent = mph;
+      document.getElementById(`bt-tick-${tickN}`).classList.add("bt-tick-on");
+    }, null, at);
     /* continuous ambient motion on the row once it lands, so no row sits perfectly frozen through the rest of the hold */
     tl.to(id, { y: -3, duration: 2.6, ease: "sine.inOut", repeat: repeatsToFit(at + 1.1, 2.6), yoyo: true }, at + 1.1);
   }
-  /* row 1 mounts WITH the table (1.2s) instead of waiting for "Typhoon Lion Rock" at 14.36s: team-lead's
-     freeze_scan (real ffmpeg freezedetect, --hold 6) read the header-stagger + progress-rail fix as still
-     static 0.5-15.0s because those are tiny-area elements (a few thousand px against a 1920x1080 frame) —
-     freezedetect's whole-frame diff barely moves for them. A landed row is a ~1600x70px block with its own
-     ambient wobble (below), which is exactly what already keeps the 14.36-40.94s gap (row1->row2, 26.6s)
-     freeze-clean without any dedicated fix. Landing it early extends that same real cover back to t=0. The
-     intro narration during 0-13.64s ("line up every typhoon... these are peak numbers, measured over open
-     water") is the methodology setup for the whole table, so row 1 previewing the table's shape while that
-     plays (then Lionrock is actually named at 14.36, matching the row already on screen) reads as intentional
-     pacing, not a desync. */
-  landRow("#bt-r1", 1.2, 940, 105, 1);
+  /* row 1 mounts WITH the table (0.3s, same beat as the header) instead of waiting for "Typhoon Lion Rock"
+     at 14.36s - the table cannot sit on header-only for 15s. Intro narration (0-13.64s, "line up every
+     typhoon... these are peak numbers, measured over open water") is the methodology setup for the whole
+     table, so row 1 previewing the table's shape while that plays is intentional pacing, not a desync. */
+  landRow("#bt-r1", 0.3, 940, 105, 1);
   landRow("#bt-r2", 40.94, 915, 115, 2);
   landRow("#bt-r3", 72.34, 915, 120, 3);
   landRow("#bt-r4", 89.06, 915, 120, 4);
