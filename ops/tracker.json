@@ -431,8 +431,8 @@
       "due": "16 Sep 26",
       "phase": "preview",
       "status": "doing",
-      "note": "Draft 4 verified: black and silence clean, 3 freeze holds left in ladder-l5. Composer now iterates on the 50 s pre-render freeze scan; draft 5 only after scan PASS",
-      "updated": "17 Sep 26 16:20"
+      "note": "Draft 5 rendering (started 17 Sep ~17:30). Pre-render freeze scan passed; verify + frame read + overlap check follow",
+      "updated": "17 Sep 26 17:24"
     },
     {
       "slug": "ms-dujuan-us-travelers",
