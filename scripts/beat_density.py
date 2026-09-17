@@ -43,8 +43,16 @@ for f in sorted((ep / "compositions").glob("*.html")):
         if not pos:
             continue
         at = float(pos.group(1))
-        dur = re.findall(r'duration:\s*([\d.]+)', body)
-        d = max(float(x) for x in dur) if dur else 0.0
+        # duration may be a numeric literal or a const defined in the comp (duration: HOST_WINDOW);
+        # an unknown identifier is a hard error, never a silent 0 (alert-levels 17 Sep 26: 8/9 comps
+        # read DEAD because every long tween used a variable).
+        consts = {k: float(v) for k, v in re.findall(r'const\s+([A-Z_][A-Z0-9_]*)\s*=\s*([\d.]+)', src)}
+        dur = []
+        for tok in re.findall(r'duration:\s*([A-Za-z_][\w]*|[\d.]+)', body):
+            if re.fullmatch(r'[\d.]+', tok): dur.append(float(tok))
+            elif tok in consts: dur.append(consts[tok])
+            else: sys.exit(f"[beat_density] FAIL {gid}: duration '{tok}' is not a literal or a numeric const in the comp")
+        d = max(dur) if dur else 0.0
         # a repeating tween keeps moving for repeat+1 cycles (yoyo reverses but does not
         # change the total). Counting only the first cycle reported blinking markers and
         # pulsing dots as dead frames.

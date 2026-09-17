@@ -12,7 +12,8 @@ hurricane, blizzard; expand MoE-style later — Dark Horizon model). US-English,
   (packaging). Skill: `skills/mini-storms/SKILL.md`; measured rulebook `references/mini-storms/FORMAT.md`;
   templates `library/mini-storms/`; clip pools `library/mini-storms/<event>/` reused across angles.
   Episode slugs `ms-<topic>` (the first two shipped as `br-elnino-california`, `br-elnino-texas`).
-  `sweep_episode.py`'s CTA gate is epN-only; mini-storms mount the CTA by hand at the story break (43 % on #1).
+  `sweep_episode.py`'s CTA gate covers both lanes: epN at `channel.cta.window` (30-40 %), `ms-*` at
+  `channel.cta.window_ms` (85-95 %, owner 17 Sep 26: a spoken bridge line runs straight into the CTA, no dip in).
   Narration always sits above every bed: score 0.13, ambience ≤0.20, checked with ebur128 per 15 s window.
 - Both skill folders are junctioned into `~/.claude/skills/` so a skill edit is a repo commit, and vice versa.
 - **Shorts lane (planned 15 Sep 26, pilot pending owner go)** — 20–40 s vertical (1080×1920) S1 warning /
