@@ -118,6 +118,11 @@
 
   .tm-footer { position:absolute; left:110px; bottom:48px; font-family:Georgia,serif; font-style:italic; font-size:21px;
     color:rgba(200,211,224,0.55); letter-spacing:0.5px; }
+
+  /* traveling markers (added 17 Sep 26, freeze-hold fix): a small lit dot that visibly moves
+     node-to-node along each already-drawn track, real substantial pixel motion across the frame
+     -- not a decorative sweep, a literal "where the storm is heading" read. */
+  .tm-travel { fill:#f4f0e8; stroke:#050b12; stroke-width:2; filter:url(#tm-glow); }
 </style>
 <div id="tm-root" data-composition-id="track-map" data-width="1920" data-height="1080">
   <div id="tm-mapbg"></div>
