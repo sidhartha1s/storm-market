@@ -69,15 +69,36 @@ window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
   tl.set(["#sl-card", "#sl-readout"], { autoAlpha: 0 }, 0);
+  tl.set(["#sl-band-severe", "#sl-band-strong", "#sl-band-verystrong", "#sl-band-violent"], { autoAlpha: 0, x: -20 }, 0);
   /* Card used to fade in at +17.02s -- 17 seconds of nothing but the background gradient right
      after B7's narration starts (owner-flagged 17 Sep 26: no window may show only its
      background for more than 2s). B7's very first line is Japan-vs-US measurement, exactly
-     what this card is titled, so it now mounts with its first rung (the SEVERE TROPICAL STORM
-     band + eyebrow) at the comp's own mount instead of holding on an empty gradient. */
+     what this card is titled, so it now mounts with its frame + eyebrow at the comp's own mount
+     instead of holding on an empty gradient. */
   tl.fromTo("#sl-card", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.3);
-  tl.set("#sl-marker", { left: "8%" }, 0.3);
-  tl.to("#sl-marker", { left: "66.7%", duration: 0.8, ease: "power2.out" }, 39.58); /* 67 mph within the 55-73 mph Severe Tropical Storm band: (67-55)/(73-55) */
-  tl.fromTo("#sl-readout", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 39.58); /* lands with the marker, own row, clear of every rung */
+  /* 8s max-gap rule (team-lead direction, 17 Sep 26): the card used to reveal all 4 bands as one
+     block at 0.3s, then sit still until the marker moved at 39.58s -- a real 39s hole, and a
+     "block at once" reveal on top of it. Each band now lands one at a time on the word that
+     actually names it (audio/b7-s1.words.json): "Strong typhoon runs 74 to 98" (18.96), "Very
+     strong runs 99 to 121" (22.52), "Violence[sic, ASR] starts above that" (26.22), "the severe
+     tropical storm range" (33.5, same row the marker lives in). Two eyebrow pulses cover the
+     0.3-18.96 lead-in, landing on "10-minute" (7.08) and "12 % higher" (13.12) -- the JP-vs-US
+     measurement basis the eyebrow itself names. */
+  tl.fromTo("#sl-eyebrow", { scale: 1 }, { scale: 1.04, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 7.08);
+  tl.fromTo("#sl-eyebrow", { scale: 1 }, { scale: 1.04, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 13.12);
+  tl.fromTo("#sl-band-strong", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 18.96);
+  tl.fromTo("#sl-band-verystrong", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 22.52);
+  tl.fromTo("#sl-band-violent", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 26.22);
+  tl.fromTo("#sl-band-severe", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 33.5);
+  tl.set("#sl-marker", { left: "8%" }, 33.5);
+  tl.to("#sl-marker", { left: "66.7%", duration: 0.8, ease: "power2.out" }, 40.68); /* "67" (mph) -- 67 mph within the 55-73 mph Severe Tropical Storm band: (67-55)/(73-55) */
+  tl.fromTo("#sl-readout", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 40.68); /* lands with the marker, own row, clear of every rung */
+  /* the readout's own 67 pulses again when the narration reinterprets that same number: "75 mph"
+     US-equivalent (43.76) and "Category 1 hurricane" threshold (51.4) -- closes the tail gap to
+     the 59.62s exit without inventing a new fact/element (layout risk: this card's height was
+     hand-measured from a real overflow bug, see file header). */
+  tl.fromTo("#sl-readout", { scale: 1 }, { scale: 1.05, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 43.76);
+  tl.fromTo("#sl-readout", { scale: 1 }, { scale: 1.05, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 51.4);
   tl.to("#sl-card", { autoAlpha: 0, y: -20, duration: 0.5 }, 59.62);
   tl.to("#sl-drift", { rotation: 1080, duration: 61.2, ease: "none", transformOrigin: "50% 50%" }, 0);
   window.__timelines["scale-ladder"] = tl;
