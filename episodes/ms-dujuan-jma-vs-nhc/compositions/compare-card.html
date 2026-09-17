@@ -33,6 +33,12 @@
   .cp-unit { font-family:'Arial Black',Arial,sans-serif; font-size:26px; letter-spacing:2px; margin-top:38px; }
   .cp-sub { margin-top:16px; font-family:Georgia,serif; font-style:italic; font-size:22px; color:#c8d3e0; }
   .cp-grade { margin-top:14px; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:1px; }
+  /* round-3 (reader: 313-331s and 337-349s read static — the italic notes/boxShadow pulse are too subtle to
+     register as motion, same pattern as jma-quote/translate-table). A real growing bar between the two cards
+     gives continuous, unambiguous motion across both stretches instead of relying on small-area badge fades. */
+  .cp-deltabar { position:absolute; left:50%; top:396px; height:6px; width:420px; border-radius:3px;
+    transform:translateX(-50%) scaleX(0); transform-origin:center; background:linear-gradient(90deg,#8fb4d8,#d0121f);
+    box-shadow:0 0 20px rgba(216,161,58,0.5); }
   .cp-midpop { position:absolute; left:0; right:0; top:420px; text-align:center; }
   .cp-midpop .cp-pf { font-family:'AbrilFig',Georgia,serif; font-size:100px; color:#d8a13a;
     text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 50px rgba(0,0,0,0.6); }
