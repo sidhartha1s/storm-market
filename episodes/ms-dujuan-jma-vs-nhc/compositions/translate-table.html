@@ -92,6 +92,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#tt-r3-jma", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 45.1);
   tl.fromTo("#tt-r3", { backgroundPosition:"-120% 0" }, { backgroundPosition:"220% 0", duration:0.8, ease:"power1.inOut" }, 49.14);
   tl.fromTo("#tt-r3-us", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 49.14); // "Category" 55.14
+  /* bridges the r3->caption gap on "The word typhoon alone tells...almost nothing about size" (57.89) */
+  tl.to("#tt-thead-jp", { color:"#f4b8bc", duration:0.4, yoyo:true, repeat:1 }, 52.44);
   /* closing caption lands on "Neither word...is a measurement on its own." (64.7) */
   tl.fromTo("#tt-caption", { autoAlpha:0, y:14 }, { autoAlpha:1, y:0, duration:0.4 }, 58.7);
   tl.to(["#tt-b1","#tt-b2","#tt-b3","#tt-table","#tt-caption"], { autoAlpha:0, duration:0.5 }, 62.4);
