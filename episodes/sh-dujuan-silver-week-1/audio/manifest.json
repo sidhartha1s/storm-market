@@ -1,0 +1,22 @@
+{
+ "s1-s1": {
+  "wav": "audio/s1-s1.wav",
+  "duration": 8.36,
+  "words": 19
+ },
+ "s1-s2": {
+  "wav": "audio/s1-s2.wav",
+  "duration": 13.44,
+  "words": 30
+ },
+ "s1-s3": {
+  "wav": "audio/s1-s3.wav",
+  "duration": 10.68,
+  "words": 24
+ },
+ "s1-s4": {
+  "wav": "audio/s1-s4.wav",
+  "duration": 12.92,
+  "words": 31
+ }
+}

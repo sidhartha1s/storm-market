@@ -18,28 +18,28 @@
       background: #d0121f; padding: 10px 22px; }
     .head .wm { display: inline-block; margin-left: 16px; font-family: 'Arial Black', Arial, sans-serif; font-size: 34px; letter-spacing: 2px; color: #ffd27a;
       -webkit-text-stroke: 1px rgba(0,0,0,0.7); paint-order: stroke fill; text-shadow: 0 0 16px rgba(0,0,0,1), 0 3px 10px #000; }
-    .head .hl { margin-top: 16px; font-family: 'Arial Black', Arial, sans-serif; font-size: 72px; line-height: 1.02; color: #f4f0e8;
+    .head .hl { margin-top: 16px; font-family: 'Arial Black', Arial, sans-serif; font-size: 66px; line-height: 1.02; color: #f4f0e8;
       -webkit-text-stroke: 1px rgba(0,0,0,0.6); paint-order: stroke fill; text-shadow: 0 0 22px rgba(0,0,0,1), 0 4px 14px #000; }
 
     /* the ladder: our own redraw of the Cabinet Office five-level card */
     .scrim { position: absolute; inset: 0; background: rgba(4,7,12,0.62); z-index: 2; }
-    .ladder { position: absolute; left: 70px; width: 940px; top: 520px; z-index: 5; box-sizing: border-box; padding: 26px 30px 22px;
+    .ladder { position: absolute; left: 60px; width: 860px; top: 520px; z-index: 5; box-sizing: border-box; padding: 26px 30px 22px;
       background: rgba(10,16,24,0.72); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.14); border-radius: 26px; }
     .ladder .lh { font-family: 'Arial Black', Arial, sans-serif; font-size: 28px; letter-spacing: 5px; color: #d8a13a; margin-bottom: 14px; }
-    .lrow { display: flex; align-items: center; gap: 22px; height: 92px; padding: 0 18px; margin-bottom: 8px; border-radius: 14px; background: rgba(255,255,255,0.05); transform-origin: left center; }
-    .lrow .ln { font-family: 'AbrilFig', Georgia, serif; font-size: 66px; color: #ffb347; width: 64px; flex: 0 0 64px; text-align: center; line-height: 1; }
-    .lrow .lt { font-family: 'Arial Black', Arial, sans-serif; font-size: 34px; letter-spacing: 2px; color: #f4f0e8; line-height: 1.05; }
+    .lrow { display: flex; align-items: center; gap: 18px; height: 80px; padding: 0 16px; margin-bottom: 6px; border-radius: 14px; background: rgba(255,255,255,0.05); transform-origin: left center; }
+    .lrow .ln { font-family: 'AbrilFig', Georgia, serif; font-size: 58px; color: #ffb347; width: 64px; flex: 0 0 64px; text-align: center; line-height: 1; }
+    .lrow .lt { font-family: 'Arial Black', Arial, sans-serif; font-size: 30px; letter-spacing: 2px; color: #f4f0e8; line-height: 1.05; }
     .lrow.on { background: rgba(208,18,31,0.9); }
     .lrow.on .ln { color: #fff; }
     .lrow.l5.on { background: #7a0a12; }
     .ladder .lc { margin-top: 10px; font-family: Arial, sans-serif; font-size: 22px; letter-spacing: 2px; color: #8fa6bd; }
-    .below { position: absolute; left: 70px; width: 940px; top: 520px; z-index: 5; box-sizing: border-box; padding: 26px 30px;
+    .below { position: absolute; left: 60px; width: 860px; top: 560px; z-index: 5; box-sizing: border-box; padding: 26px 30px;
       background: rgba(10,16,24,0.72); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.14); border-left: 10px solid #ffb347; border-radius: 26px; }
     .below .b1 { font-family: 'Arial Black', Arial, sans-serif; font-size: 44px; color: #f4f0e8; letter-spacing: 2px; line-height: 1.1; }
     .below .b2 { margin-top: 10px; font-family: Arial, sans-serif; font-size: 28px; color: #ffd27a; letter-spacing: 2px; }
 
     /* popfig: red Abril number, mid frame (box narrower than the frame so the pop-in overshoot stays inside) */
-    .popfig { position: absolute; left: 60px; right: 60px; top: 640px; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; isolation: isolate; }
+    .popfig { position: absolute; left: 60px; right: 60px; top: 590px; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; isolation: isolate; }
     .popfig .pf-big { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 190px; line-height: 1; color: #d0121f; letter-spacing: 0.03em;
       text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
     .popfig .pf-sub { display: block; margin-top: 14px; font-family: 'Arial Black', Arial, sans-serif; font-size: 40px; color: #f4f0e8; letter-spacing: 0.22em;
@@ -105,7 +105,8 @@
   <!-- ============ TRACK 1 — hand-authored cut list (all clips pre-cropped 1080x1920) ============ -->
   <video id="vx-1-storm" src="media/video/storm_timelapse.mp4" data-start="0.0" data-duration="12.4" data-track-index="1" muted></video>
   <video id="vx-2-puddle" src="media/video/umbrella_puddle.mp4" data-start="12.4" data-duration="6.4" data-track-index="1" muted></video>
-  <video id="vx-3-pavement" src="media/video/umbrella_pavement.mp4" data-start="18.8" data-duration="8.8" data-track-index="1" muted></video>
+  <video id="vx-3-pavement" src="media/video/umbrella_pavement.mp4" data-start="18.8" data-duration="5.6" data-track-index="1" muted></video>
+  <video id="vx-3b-trees" src="media/video/trees_wind.mp4" data-start="24.4" data-duration="3.2" data-track-index="1" muted></video>
   <video id="vx-4-clouds" src="media/video/storm_clouds.mp4" data-start="27.6" data-duration="7.5" data-track-index="1" muted></video>
   <video id="vx-5-radar" src="media/video/radar_dujuan.mp4" data-start="35.1" data-duration="5.9" data-track-index="1" muted></video>
 
@@ -136,7 +137,7 @@
 
   <!-- ============ HEADLINE (persistent; frame 1 is the thumbnail, last frame loops into it) ============ -->
   <section class="clip" id="p-head" data-start="0.0" data-duration="41.0" data-track-index="3">
-    <div class="head" id="head"><span class="eye">EXPLAINER</span><span class="wm">The Warning Hour</span><div class="hl">JAPAN'S ALERT LEVELS ·<br>FOR AMERICANS</div></div>
+    <div class="head" id="head"><span class="eye">EXPLAINER</span><span class="wm">The Warning Hour</span><div class="hl">JAPAN'S 5 LEVELS ·<br>FOR AMERICANS</div></div>
   </section>
 
   <!-- ============ POPFIG (track 5) ============ -->

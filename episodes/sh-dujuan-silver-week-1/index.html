@@ -40,9 +40,10 @@
     .mapcredit { position: absolute; left: 30px; bottom: 26px; font-family: Arial, sans-serif; font-size: 22px; letter-spacing: 2px; color: #8fa6bd; }
 
     /* popfig: red Abril number, mid frame */
-    .popfig { position: absolute; left: 0; right: 0; top: 640px; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; isolation: isolate; }
+    .popfig { position: absolute; left: 60px; right: 60px; top: 640px; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; isolation: isolate; }
     .popfig .pf-big { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 190px; line-height: 1; color: #d0121f; letter-spacing: 0.03em;
       text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+    .popfig.wide .pf-big { font-size: 150px; }
     .popfig .pf-sub { display: block; margin-top: 14px; font-family: 'Arial Black', Arial, sans-serif; font-size: 40px; color: #f4f0e8; letter-spacing: 0.22em;
       -webkit-text-stroke: 1px rgba(0,0,0,0.85); paint-order: stroke fill; text-shadow: 0 0 18px rgba(0,0,0,1), 0 3px 10px #000; }
     .popfig::before { content: ''; position: absolute; left: 6%; right: 6%; top: -110px; bottom: -80px; z-index: -1;
@@ -50,7 +51,7 @@
 
     /* phrase captions: lower third, inside the Shorts safe zone */
     .cap { position: absolute; left: 60px; right: 180px; top: 1220px; z-index: 8; text-align: center; font-family: 'Arial Black', Arial, sans-serif;
-      font-size: 70px; line-height: 1.16; color: #fff; -webkit-text-stroke: 1px rgba(0,0,0,0.5); paint-order: stroke fill;
+      font-size: 62px; line-height: 1.16; color: #fff; -webkit-text-stroke: 1px rgba(0,0,0,0.5); paint-order: stroke fill;
       background: rgba(6,10,16,0.62); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 22px; padding: 22px 30px;
       box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
     .cap b { color: #ff4a58; font-weight: 900; }
@@ -83,24 +84,26 @@
   <audio id="sx-bed" src="media/score-act5-tension.mp3" data-bed="" data-start="0.0" data-duration="40.4" data-volume="0.13"></audio>
 
   <!-- ============ SFX HOOKS (short, under speech; riser ends WITH the line, hit lands ON the cut) ============ -->
-  <audio id="sx-pop-25" src="../../assets/sfx/shorts/pop.wav" data-bed="" data-start="1.92" data-duration="0.12" data-volume="0.45"></audio>
-  <audio id="sx-riser-hook" src="../../assets/sfx/shorts/riser-1s2.wav" data-bed="" data-start="5.99" data-duration="1.2" data-volume="0.40"></audio>
-  <audio id="sx-hit-cut" src="../../assets/sfx/shorts/hit.wav" data-bed="" data-start="7.5" data-duration="0.6" data-volume="0.50"></audio>
-  <audio id="sx-pop-58" src="../../assets/sfx/shorts/pop.wav" data-bed="" data-start="9.58" data-duration="0.12" data-volume="0.45"></audio>
-  <audio id="sx-pop-5d" src="../../assets/sfx/shorts/pop.wav" data-bed="" data-start="21.64" data-duration="0.12" data-volume="0.45"></audio>
-  <audio id="sx-riser-close" src="../../assets/sfx/shorts/riser-1s2.wav" data-bed="" data-start="37.18" data-duration="1.2" data-volume="0.40"></audio>
-  <audio id="sx-ding-close" src="../../assets/sfx/shorts/ding.wav" data-bed="" data-start="38.38" data-duration="0.7" data-volume="0.35"></audio>
+  <audio id="sx-pop-25" src="media/sfx/pop.wav" data-bed="" data-start="1.92" data-duration="0.12" data-volume="0.45"></audio>
+  <audio id="sx-riser-hook" src="media/sfx/riser-1s2.wav" data-bed="" data-start="5.99" data-duration="1.2" data-volume="0.40"></audio>
+  <audio id="sx-hit-cut" src="media/sfx/hit.wav" data-bed="" data-start="7.5" data-duration="0.6" data-volume="0.50"></audio>
+  <audio id="sx-pop-58" src="media/sfx/pop.wav" data-bed="" data-start="9.58" data-duration="0.12" data-volume="0.45"></audio>
+  <audio id="sx-pop-5d" src="media/sfx/pop.wav" data-bed="" data-start="21.64" data-duration="0.12" data-volume="0.45"></audio>
+  <audio id="sx-riser-close" src="media/sfx/riser-1s2.wav" data-bed="" data-start="37.18" data-duration="1.2" data-volume="0.40"></audio>
+  <audio id="sx-ding-close" src="media/sfx/ding.wav" data-bed="" data-start="38.38" data-duration="0.7" data-volume="0.35"></audio>
 
   <!-- ============ TRACK 1 — hand-authored cut list (all clips pre-cropped 1080x1920) ============ -->
   <video id="vx-1-radar" src="media/video/radar_dujuan.mp4" data-start="0.0" data-duration="7.5" data-track-index="1" muted></video>
   <video id="vx-2-waves" src="media/video/waves_typhoon.mp4" data-start="7.5" data-duration="5.22" data-track-index="1" muted></video>
+  <video id="vx-2b-clouds" src="media/video/clouds_rolling.mp4" data-start="12.72" data-duration="6.68" data-track-index="1" muted></video>
   <video id="vx-3-train" src="media/video/bullet_train.mp4" data-start="19.4" data-duration="5.9" data-track-index="1" muted></video>
   <video id="vx-4-station" src="media/video/station_boarding.mp4" data-start="25.3" data-duration="3.6" data-track-index="1" muted></video>
+  <video id="vx-4b-seawall" src="media/video/seawall_crash.mp4" data-start="28.9" data-duration="7.1" data-track-index="1" muted></video>
   <video id="vx-5-tokyobay" src="media/video/tokyo_bay_aerial.mp4" data-start="36.0" data-duration="4.4" data-track-index="1" muted></video>
 
-  <!-- ============ TRACK 2 — the JMA track map, twice (Sunday point, then Monday point) ============ -->
-  <section class="clip" id="p-map1" data-start="12.72" data-duration="6.68" data-track-index="2"><div class="mappanel" id="map1"></div></section>
-  <section class="clip" id="p-map2" data-start="28.9" data-duration="7.1" data-track-index="2"><div class="mappanel" id="map2"></div></section>
+  <!-- ============ TRACK 6 — the JMA track map, twice (Sunday point, then Monday point) ============ -->
+  <section class="clip" id="p-map1" data-start="12.72" data-duration="6.68" data-track-index="6"><div class="mappanel" id="map1"></div></section>
+  <section class="clip" id="p-map2" data-start="28.9" data-duration="7.1" data-track-index="6"><div class="mappanel" id="map2"></div></section>
 
   <!-- ============ HEADLINE (persistent; frame 1 is the thumbnail, last frame loops into it) ============ -->
   <section class="clip" id="p-head" data-start="0.0" data-duration="40.4" data-track-index="3">
@@ -109,8 +112,8 @@
 
   <!-- ============ POPFIGS (track 5; each start = the spoken word) ============ -->
   <section class="clip" id="p-pf-25" data-start="1.92" data-duration="2.4" data-track-index="5"><div class="popfig" id="pf-25"><span class="pf-big">No. 25</span><span class="pf-sub">NAMED TODAY</span></div></section>
-  <section class="clip" id="p-pf-58" data-start="9.58" data-duration="2.9" data-track-index="5"><div class="popfig" id="pf-58"><span class="pf-big">58 MPH</span><span class="pf-sub">GUSTS TO 81</span></div></section>
-  <section class="clip" id="p-pf-5d" data-start="21.64" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-5d"><span class="pf-big">5 DAYS</span><span class="pf-sub">FIRST SINCE 2015</span></div></section>
+  <section class="clip" id="p-pf-58" data-start="9.58" data-duration="2.9" data-track-index="5"><div class="popfig wide" id="pf-58"><span class="pf-big">58 MPH</span><span class="pf-sub">GUSTS TO 81</span></div></section>
+  <section class="clip" id="p-pf-5d" data-start="21.64" data-duration="3.0" data-track-index="5"><div class="popfig wide" id="pf-5d"><span class="pf-big">5 DAYS</span><span class="pf-sub">FIRST SINCE 2015</span></div></section>
 
   <!-- ============ CHIPS (track 4) ============ -->
   <section class="clip" id="p-chip-sun" data-start="15.68" data-duration="3.6" data-track-index="4"><div class="chip" id="chip-sun">SUNDAY · SOUTH OF JAPAN</div></section>
@@ -120,16 +123,16 @@
   <!-- ============ CAPTIONS (track 8; phrase captions, the spoken words, red on the number) ============ -->
   <section class="clip" id="p-cap-1" data-start="0.0" data-duration="2.6" data-track-index="8"><div class="cap" id="cap-1">Typhoon Number 25<br>has a name.</div></section>
   <section class="clip" id="p-cap-2" data-start="2.66" data-duration="0.8" data-track-index="8"><div class="cap" id="cap-2"><b>Dujuan.</b></div></section>
-  <section class="clip" id="p-cap-3" data-start="3.48" data-duration="3.7" data-track-index="8"><div class="cap" id="cap-3">Aimed at Japan's biggest<br>holiday in 11 years.</div></section>
+  <section class="clip" id="p-cap-3" data-start="3.48" data-duration="3.7" data-track-index="8"><div class="cap" id="cap-3">Japan's biggest<br>holiday in 11 years.</div></section>
   <section class="clip" id="p-cap-4" data-start="7.5" data-duration="2.0" data-track-index="8"><div class="cap" id="cap-4">Right now,<br>sustained winds run</div></section>
   <section class="clip" id="p-cap-5" data-start="9.58" data-duration="3.1" data-track-index="8"><div class="cap" id="cap-5"><b>58 mph</b>,<br>gusting to <b>81</b>.</div></section>
   <section class="clip" id="p-cap-6" data-start="12.72" data-duration="2.9" data-track-index="8"><div class="cap" id="cap-6">By Sunday morning,<br>Japan's forecast</div></section>
   <section class="clip" id="p-cap-7" data-start="15.68" data-duration="3.4" data-track-index="8"><div class="cap" id="cap-7">puts it south of the<br>country at <b>980 hPa</b>.</div></section>
   <section class="clip" id="p-cap-8" data-start="19.4" data-duration="2.2" data-track-index="8"><div class="cap" id="cap-8">Silver Week<br>starts Saturday.</div></section>
-  <section class="clip" id="p-cap-9" data-start="21.64" data-duration="3.6" data-track-index="8"><div class="cap" id="cap-9"><b>Five days</b> off, the first<br>full one since 2015.</div></section>
-  <section class="clip" id="p-cap-10" data-start="25.34" data-duration="3.4" data-track-index="8"><div class="cap" id="cap-10">Every seat on the Tokyo<br>bullet train is reserved.</div></section>
+  <section class="clip" id="p-cap-9" data-start="21.64" data-duration="3.6" data-track-index="8"><div class="cap" id="cap-9"><b>Five days</b> off, the<br>first since 2015.</div></section>
+  <section class="clip" id="p-cap-10" data-start="25.34" data-duration="3.4" data-track-index="8"><div class="cap" id="cap-10">Tokyo bullet train,<br>every seat reserved.</div></section>
   <section class="clip" id="p-cap-11" data-start="28.9" data-duration="2.6" data-track-index="8"><div class="cap" id="cap-11">By Monday morning,<br>Japan puts the storm</div></section>
-  <section class="clip" id="p-cap-12" data-start="31.54" data-duration="3.5" data-track-index="8"><div class="cap" id="cap-12"><b>southeast of Kanto</b>,<br>the region that holds Tokyo.</div></section>
+  <section class="clip" id="p-cap-12" data-start="31.54" data-duration="3.5" data-track-index="8"><div class="cap" id="cap-12"><b>southeast of Kanto</b>,<br>the Tokyo region.</div></section>
   <section class="clip" id="p-cap-13" data-start="35.06" data-duration="3.2" data-track-index="8"><div class="cap" id="cap-13">Into it, or past it,<br>nobody can say yet.</div></section>
 
   <!-- ============ CLOSE CARD (the funnel line, on "full update"; holds to the end) ============ -->
@@ -167,7 +170,7 @@ window.__timelines = window.__timelines || {};
       svg.appendChild(el("circle", { class: "pt", id: `${k}-p${i}`, cx: f.xy[0], cy: f.xy[1], r: 6, style: "transform-box: fill-box; transform-origin: center;" }));
     });
     svg.appendChild(el("circle", { class: "now", id: k + "-now", cx: NOW[0], cy: NOW[1], r: 9, style: "transform-box: fill-box; transform-origin: center;" }));
-    svg.appendChild(el("text", { class: "lab red", id: k + "-lnow", x: NOW[0] - 16, y: NOW[1] + 8, "text-anchor": "end" }, "NOW · 985 hPa"));
+    svg.appendChild(el("text", { class: "lab red", id: k + "-lnow", x: NOW[0] - 84, y: NOW[1] - 28, "text-anchor": "end" }, "NOW · 985 hPa"));
     svg.appendChild(el("circle", { class: "tk", id: k + "-tk", cx: TOKYO[0], cy: TOKYO[1], r: 6, style: "transform-box: fill-box; transform-origin: center;" }));
     svg.appendChild(el("text", { class: "lab", id: k + "-ltk", x: TOKYO[0] + 14, y: TOKYO[1] - 10 }, "TOKYO"));
     svg.appendChild(el("text", { class: "lab amber", id: k + "-lsun", x: FC[3].xy[0] + 22, y: FC[3].xy[1] + 40 }, "SUN 09:00 · 980 hPa"));

@@ -45,4 +45,6 @@ Visual: track map returns, Monday point lands "MON 09:00 · SE OF KANTO" with To
 | track map (composition) | JMA data f1, Natural Earth 110m coastline | PD | S2b, S4a |
 | pexels_37738769 bullet train | Pexels | Pexels License | S3a |
 | pexels_30423319 busy train station | Pexels | Pexels License | S3b |
+| v-clouds-rolling-b6 | Pexels 35225359 | Pexels License | S2b backdrop under the map |
 | v-tokyobay-aerial | Pexels 33009755 | Pexels License | S4b |
+| v-seawall-crash | Pexels 10971133 | Pexels License | S4a backdrop under the map |

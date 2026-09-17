@@ -1,0 +1,1 @@
+# shorts SFX hooks, ffmpeg lavfi synth (16 Sep 26, recipe in the shorts PLAN): pop 1.4 kHz 0.12 s, ding 1.76 kHz+octave 0.7 s, riser pink-noise 1.2 s exp fade-in, hit 55 Hz+brown 0.6 s. Mount at 0.35-0.5 under speech.
