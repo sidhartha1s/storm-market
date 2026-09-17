@@ -49,6 +49,17 @@
   — keeps tl.duration() finite so a host index.html can safely read/trim it). No exit tween:
   this MG is meant to sit under further B1/B2 graphics or end on a hard cut per storm-market
   convention, not slide itself off.
+
+  OPENING SATELLITE CUT (added 17 Sep 26, team-lead direction): #tm-root has NO background of
+  its own -- #tm-mapbg carries the navy gradient as a separate layer, opacity 0 until the
+  literal 18.02s DRAW_START cue. For 0-18.02s the host's own video track underneath this comp
+  (index.html, radar_zoom_1.mp4, real NASA VIIRS satellite imagery, data-track-index below this
+  comp's 2) shows through; the badge/chips/eye/footer still draw over it (small overlay
+  elements, not full-bleed) but the hand-drawn land/graticule/basemap only cuts in at 18.02s,
+  the same word-anchored beat the forecast track starts drawing on. RE-POINTING: a future host
+  that does NOT want a satellite lead-in just needs its own video track empty for that window --
+  #tm-mapbg/#tm-ambient/land-group still fade in on-cue either way, so this file works with or
+  without a clip underneath it.
 -->
 <template>
 <style>
