@@ -93,7 +93,9 @@ window.__timelines = window.__timelines || {};
     tl.to(`#tq-pin-${n}`, { scale: 1, duration: 0.35, ease: "back.out(2)" }, at);
     tl.fromTo(`#tq-lab-${n}`, { autoAlpha:0, y:8 }, { autoAlpha:1, y:0, duration:0.35 }, at + 0.1);
     tl.to(`#tq-chk-${n}`, { opacity: 1, boxShadow: "0 0 22px rgba(208,18,31,0.3)", borderColor: "#d0121f", duration: 0.3 }, at);
-    tl.call(() => document.getElementById(`tq-chk-${n}`).classList.add("tq-active"), null, at);
+    /* tl.set on className, not tl.call: a callback is the same bug class comp_lint bans for onStart - a
+       seek-driven render/gate can suppress GSAP's own events and never fire it (team-lead 17 Sep 26). */
+    tl.set(`#tq-chk-${n}`, { className: "+=tq-active" }, at);
   }
   landPin(1, 1.5);
   landPin(2, 8.66);
