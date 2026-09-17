@@ -6,11 +6,16 @@
      spoken cue (word-synced), then the exact quote card + "10-MINUTE SUSTAINED WIND" chip lands underneath
      once all six grades are on screen. Hand-authored per mini-storms SKILL.md (never generator-built).
      Mount: track 2, host start = episode-abs 119.309, duration 51.418 (rows already run rel-to-segment
-     minus the 8.0 s lead-in b-roll). -->
+     minus the 8.0 s lead-in b-roll). Round 2 (17 Sep 26, "JMA draft rendered" freeze fix): quote splits
+     clause-by-clause on the B3-S1 grade words (jq-q-strong/vstrong/violent land with jq-r3/r4/r5), the 73-mph
+     threshold gets a two-stage peek+complete reveal on "73"/"typhoon" to close the r2->thresh gap, and a
+     dedicated jq-bgplate layer gives the whole frame a continuous slow scale so freezedetect never reads a
+     static full-frame stretch. -->
 <template>
 <style>
-  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
-    background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; background:#04070c; overflow:hidden; }
+  .jq-bgplate { position:absolute; left:-60px; right:-60px; top:-60px; bottom:-60px;
+    background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); transform-origin:center; will-change:transform; }
   .jq-card { position:absolute; left:110px; top:110px; width:920px; box-sizing:border-box; padding:30px 40px 26px;
     background:rgba(10,16,24,0.58); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); border-radius:26px; }
