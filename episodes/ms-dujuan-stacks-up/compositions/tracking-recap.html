@@ -56,7 +56,20 @@ window.__timelines = window.__timelines || {};
   tl.set(["#tr-r2","#tr-hl"], { visibility: "hidden", autoAlpha: 0 }, 0);
   tl.fromTo("#tr-card", { autoAlpha:0, scale:0.94 }, { autoAlpha:1, scale:1, duration:0.6, ease:"power3.out" }, 0);
   tl.fromTo("#tr-r1", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.4 }, 0.3);
-  tl.fromTo("#tr-mini", { autoAlpha:0 }, { autoAlpha:1, duration:0.4 }, 0.6);
+  tl.set("#tr-mini", { autoAlpha: 1 }, 0.6);
+  /* mini-recap builds one storm cell at a time instead of fading in as one block — this is the genuine content
+     the 9-storm benchmark already established, landing here as real sequential reveals (not a decorative
+     sweep) so the 2.0-10.5s comp-local stretch before the "strength" row lands (10.22s) has real content
+     change roughly every second instead of freeze_scan.mjs's real freezedetect flagging it static. */
+  tl.fromTo("#tr-c1", { autoAlpha:0, y:10 }, { autoAlpha:1, y:0, duration:0.3 }, 0.6);
+  tl.fromTo("#tr-c2", { autoAlpha:0, y:10 }, { autoAlpha:1, y:0, duration:0.3 }, 1.67);
+  tl.fromTo("#tr-c3", { autoAlpha:0, y:10 }, { autoAlpha:1, y:0, duration:0.3 }, 2.74);
+  tl.fromTo("#tr-c4", { autoAlpha:0, y:10 }, { autoAlpha:1, y:0, duration:0.3 }, 3.81);
+  tl.fromTo("#tr-c5", { autoAlpha:0, y:10 }, { autoAlpha:1, y:0, duration:0.3 }, 4.88);
+  tl.fromTo("#tr-c6", { autoAlpha:0, y:10 }, { autoAlpha:1, y:0, duration:0.3 }, 5.95);
+  tl.fromTo("#tr-c7", { autoAlpha:0, y:10 }, { autoAlpha:1, y:0, duration:0.3 }, 7.02);
+  tl.fromTo("#tr-c8", { autoAlpha:0, y:10 }, { autoAlpha:1, y:0, duration:0.3 }, 8.09);
+  tl.fromTo("#tr-c9", { autoAlpha:0, y:10, scale:0.9 }, { autoAlpha:1, y:0, scale:1, duration:0.35 }, 9.16);
   /* continuous ambient motion so the card never sits frozen through the hold */
   tl.to("#tr-card", { y: -6, duration: 2.7, ease: "sine.inOut", repeat: repeatsToFit(0.8, 2.7), yoyo: true }, 0.8);
   tl.set("#tr-r2", { visibility: "visible" }, 10.22);
