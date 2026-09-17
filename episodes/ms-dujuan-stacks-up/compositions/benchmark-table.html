@@ -95,6 +95,7 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const HOST_WINDOW = 208.746; // this episode's benchmark-table mount: 171.856-380.602, full B4 window
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
+  tl.set(["#bt-h1","#bt-h2","#bt-h3","#bt-h4","#bt-h5","#bt-progress"], { autoAlpha: 0 }, 0);
   tl.fromTo("#bt-eye", { autoAlpha:0, y:-16 }, { autoAlpha:1, y:0, duration:0.5 }, 0);
   /* header columns reveal one at a time (genuine sequential facts, not a single block fade) so the long
      stretch before row 1 lands (14.36s) still has real content landing every couple of seconds —

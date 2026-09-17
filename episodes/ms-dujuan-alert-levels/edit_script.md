@@ -85,7 +85,7 @@ Visual: split data panel, JMA card ("998 hPa · 34 MPH · 55 KM/H") beside JTWC 
 
 Visual: "OLD SYSTEM → NEW SYSTEM" two-column card: old = "Recommendation / Instruction (Emergency)," new = "5-Level Alert Ladder, 20 May 2021." Five-level ladder MG builds for the first time, levels 1-2 highlighted, 3-5 dimmed: "1 · RISING RISK" / "2 · ADVISORY ISSUED (JMA)." Credit line, small: "Source: Cabinet Office, Government of Japan."
 
-## B4 — LEVEL THREE: THE ELDERLY EVACUATE FIRST (3:10–4:08)
+## B4 — LEVEL THREE: THE ELDERLY EVACUATE FIRST (2:54–3:41)
 
 ### B4-S1 — narration
 
@@ -93,7 +93,7 @@ Visual: "OLD SYSTEM → NEW SYSTEM" two-column card: old = "Recommendation / Ins
 
 Visual: ladder MG returns, level 3 highlighted, others dimmed: "3 · EVACUATION OF THE ELDERLY, ETC." Chip: "US EQUIVALENT: NO FEDERAL MATCH · SOME COUNTIES: EARLY VOLUNTARY ORDER." Silhouette icon row (elderly, wheelchair user, cane) per the source poster's own iconography, redrawn.
 
-## B5 — LEVEL FOUR: EVERYONE EVACUATES (4:08–5:22)
+## B5 — LEVEL FOUR: EVERYONE EVACUATES (3:42–4:45)
 
 ### B5-S1 — narration
 
@@ -101,7 +101,7 @@ Visual: ladder MG returns, level 3 highlighted, others dimmed: "3 · EVACUATION 
 
 Visual: **quote card (the one named official quote on screen):** "All residents should evacuate from dangerous areas." — Japan Meteorological Agency, "Emergency Warning System," Alert Level 4 guidance. Glasscard under the quote. Ladder MG, level 4 highlighted: "4 · EVACUATION INSTRUCTION." Timeline chip: "US HURRICANE WARNING: 36H BEFORE TS-FORCE WINDS · EVACUATION ORDER: SEPARATE, LOCAL DECISION."
 
-## B6 — LEVEL FIVE: WHEN LEAVING MAY NO LONGER BE SAFE (5:22–6:32)
+## B6 — LEVEL FIVE: WHEN LEAVING MAY NO LONGER BE SAFE (4:46–5:40)
 
 ### B6-S1 — narration
 
@@ -109,7 +109,7 @@ Visual: **quote card (the one named official quote on screen):** "All residents 
 
 Visual: ladder MG, level 5 highlighted, black/red treatment: "5 · EMERGENCY SAFETY MEASURES." Popfig: "RARELY ISSUED." US-side chip: "EXTREME WIND WARNING · 115 MPH · 185 KM/H · WITHIN THE HOUR · SHELTER, DON'T DRIVE."
 
-## B7 — THE BIGGER DIFFERENCE: ONE LADDER VS. SEVERAL SYSTEMS (6:32–7:50)
+## B7 — THE BIGGER DIFFERENCE: ONE LADDER VS. SEVERAL SYSTEMS (5:41–6:41)
 
 ### B7-S1 — narration
 
@@ -117,7 +117,7 @@ Visual: ladder MG, level 5 highlighted, black/red treatment: "5 · EMERGENCY SAF
 
 Visual: full five-level ladder MG, complete, alongside a parallel US-side stack: "HURRICANE WATCH (48H)" / "HURRICANE WARNING (36H)" / "LOCAL EVACUATION ORDER (SEPARATE TIMELINE)," connecting lines drawn showing the US stack as three uncoordinated pieces against Japan's single coordinated ladder.
 
-## B8 — WHERE THIS STORM SITS ON THAT LADDER TONIGHT (7:50–8:52)
+## B8 — WHERE THIS STORM SITS ON THAT LADDER TONIGHT (6:41–7:30)
 
 ### B8-S1 — narration
 
@@ -131,7 +131,7 @@ Visual: ladder MG with a marker pinned below level 1, labeled "TONIGHT: BELOW TH
 
 Visual: continues straight over the returning Himawari loop from B8 (second reuse of `himawari_fulldisk.jpg`, `data-callback`'d — recurring "we return to the storm" motif, now carrying into the CTA). No blackout, no dip, no cut on the way in. *(Paul's ebook CTA mounts immediately after this line ends: 0 s gap in, 0.5 s dip out, film layer off. Moved here from the old B3 story-break position so it lands at 85-95% of runtime, immediately before the closing tracking segment — B9/B10.)*
 
-## B9 — WHAT'S STILL OPEN TONIGHT
+## B9 — WHAT'S STILL OPEN TONIGHT (7:54–8:41)
 
 ### B9-S1 — narration
 
@@ -139,7 +139,7 @@ Visual: continues straight over the returning Himawari loop from B8 (second reus
 
 Visual: tracking card MG, two rows: "TRACK — STILL OPEN" / "STRENGTH — STILL OPEN." Small travel chip, on screen only: "MILLIONS TRAVELING THIS WEEK." Return to the live Himawari loop from B1.
 
-## B10 — CLOSE (9:40–9:57)
+## B10 — CLOSE (8:42–8:58)
 
 ### B10-S1 — narration
 
