@@ -18,7 +18,8 @@ const W = +(html.match(/data-width="(\d+)"/)?.[1] ?? 0), H = +(html.match(/data-
 if (!(W && H && H > W)) { console.log(`[shorts_lint] not a portrait composition (${W}x${H}) — nothing to do`); process.exit(0); }
 const DUR = +(html.match(/data-duration="([\d.]+)"/)?.[1] ?? 0);
 if (!DUR) { console.log('[shorts_lint] no data-duration on the root — cannot sample'); process.exit(2); }
-const TEXT = '.cap, .chip, .popfig, .quotecard, .closecard, .head, .lab, .quote, .q';
+// every leaf element that carries text is measured; a class list missed .mapcredit on the Dujuan short (17 Sep 26)
+const TEXT = 'body *:not(script):not(style)';
 const SAFE = { top: 220, bottom: H - 420, railX: W - 150, railY: 900, tol: 24 };
 
 const browser = await chromium.launch({ executablePath: chromiumExecutable() });
@@ -38,7 +39,7 @@ for (let t = 0; t <= DUR; t += 0.25) {
     const k = Object.keys(window.__timelines)[0]; window.__timelines[k].seek(t, false);
     const out = [];
     for (const el of document.querySelectorAll(TEXT)) {
-      if (!el.textContent.trim() || el.querySelector(TEXT)) continue; // leaf text elements only
+      if (!el.textContent.trim() || [...el.children].some(c => c.textContent.trim())) continue; // leaf text elements only
       const cs = getComputedStyle(el); let node = el, alpha = 1;
       while (node && node !== document.body) { const c = getComputedStyle(node); if (c.display === 'none') { alpha = 0; break; } alpha *= +c.opacity; if (c.visibility === 'hidden') alpha = 0; node = node.parentElement; }
       if (alpha < 0.05) continue;
