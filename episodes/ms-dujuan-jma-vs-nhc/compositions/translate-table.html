@@ -104,6 +104,8 @@ window.__timelines = window.__timelines || {};
   tl.to("#tt-table", { y: -10, duration: 3.0, ease: "sine.inOut", repeat: repeatsToFit(22.8, 3.0), yoyo: true }, 22.8);
   /* breathing pulse so the row indicator keeps moving through the table-mount->row1 span (22.3->29.64) */
   tl.to("#tt-rindicator", { scaleY: 1.3, duration: 0.8, ease: "sine.inOut", repeat: repeatsToFit(23.5, 0.8), yoyo: true }, 23.5);
+  /* closes the same gap (22->29.64, 7.64s content-only) with one more real beat on the table header */
+  tl.to("#tt-thead-jp", { scale: 1.06, duration: 0.5, yoyo: true, repeat: 1 }, 25.8);
   /* row 1: grade name lands on "Strong typhoon" (35.64), the US translation and its highlight sweep land on
      "That is the same starting line" (41.72) — two beats, not one block */
   tl.fromTo("#tt-r1-jma", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 29.64);
