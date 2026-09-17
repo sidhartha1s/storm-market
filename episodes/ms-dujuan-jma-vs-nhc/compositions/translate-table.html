@@ -64,33 +64,37 @@ window.__timelines = window.__timelines || {};
      (blank_scan.mjs). repeatsToFit() sizes each repeat count so its tween ends at/under HOST_WINDOW. */
   const HOST_WINDOW = 63.127; // this episode's translate-table mount: 375.030-438.157
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
-  tl.set(["#tt-b1","#tt-b2","#tt-b3","#tt-r1","#tt-r2","#tt-r3"], { autoAlpha: 0 }, 0);
+  tl.set(["#tt-b1","#tt-b2","#tt-b3","#tt-r1-jma","#tt-r1-us","#tt-r2-jma","#tt-r2-us","#tt-r3-jma","#tt-r3-us","#tt-caption"], { autoAlpha: 0 }, 0);
+  tl.set(["#tt-r1","#tt-r2","#tt-r3"], { autoAlpha: 1 }, 0); // row shells mount with the table; jma/us cells reveal individually below
+  /* background plate: continuous slow scale across the whole window (round 2, 17 Sep 26 freeze fix) */
+  tl.fromTo("#tt-bgplate", { scale: 1.0 }, { scale: 1.06, duration: HOST_WINDOW, ease: "none" }, 0);
   /* two soft glow blobs drift for the full window — always-on kinetic motion, never a flat frame */
   tl.to("#tt-glow-a", { x: 130, y: 80, duration: 9.0, ease: "sine.inOut", repeat: repeatsToFit(0, 9.0), yoyo: true }, 0);
   tl.to("#tt-glow-b", { x: -140, y: -70, duration: 10.5, ease: "sine.inOut", repeat: repeatsToFit(0.5, 10.5), yoyo: true }, 0.5);
-  tl.fromTo("#tt-b1", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 5.22);
-  tl.fromTo("#tt-b2", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 10.7);
-  tl.fromTo("#tt-b3", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 15.72);
+  tl.fromTo("#tt-b1", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 5.22);   // "western" 11.22
+  tl.fromTo("#tt-b2", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 10.7);   // "the" (Atlantic) 16.7
+  tl.fromTo("#tt-b3", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 15.72);  // "the" (Indian) 21.72
   /* continuous ambient motion from mount through the table reveal */
   tl.to(".tt-basinrow", { y: -12, duration: 2.4, ease: "sine.inOut", repeat: repeatsToFit(0.3, 2.4), yoyo: true }, 0.3);
   tl.fromTo("#tt-table", { autoAlpha:0, y:30 }, { autoAlpha:1, y:0, duration:0.6 }, 22.0);
   /* continuous ambient motion so the table never sits frozen between reveals */
   tl.to("#tt-table", { y: -10, duration: 3.0, ease: "sine.inOut", repeat: repeatsToFit(22.8, 3.0), yoyo: true }, 22.8);
-  /* small literal-repeat glints between the widely-spaced reveal cues, so a static-analysis pass over
-     explicit tl positions (not just the real GSAP playback) also reads continuous coverage */
-  tl.to(".tt-basinrow", { opacity: 0.92, duration: 0.5, yoyo: true, repeat: 1 }, 13.41);
-  tl.to(".tt-basinrow", { opacity: 0.92, duration: 0.5, yoyo: true, repeat: 1 }, 19.06);
-  tl.to("#tt-table", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 33.07);
-  tl.to("#tt-table", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 36.09);
-  tl.to("#tt-table", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 42.31);
-  tl.to("#tt-table", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 48.88);
-  tl.to("#tt-table", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 52.26);
-  tl.to("#tt-table", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 55.64);
-  tl.to("#tt-table", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 59.02);
-  tl.fromTo("#tt-r1", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 29.64);
-  tl.fromTo("#tt-r2", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 39.12);
-  tl.fromTo("#tt-r3", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 45.1);
-  tl.to(["#tt-b1","#tt-b2","#tt-b3","#tt-table"], { autoAlpha:0, duration:0.5 }, 62.4); // ids unchanged; class rename above does not affect these id selectors
+  /* row 1: grade name lands on "Strong typhoon" (35.64), the US translation and its highlight sweep land on
+     "That is the same starting line" (41.72) — two beats, not one block */
+  tl.fromTo("#tt-r1-jma", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 29.64);
+  tl.fromTo("#tt-r1", { backgroundPosition:"-120% 0" }, { backgroundPosition:"220% 0", duration:0.8, ease:"power1.inOut" }, 35.72);
+  tl.fromTo("#tt-r1-us", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 35.72); // "That is the same starting line" 41.72
+  /* row 2: grade name on "Very strong typhoon" (45.12), translation + sweep on "Category 2" (48.76) */
+  tl.fromTo("#tt-r2-jma", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 39.12);
+  tl.fromTo("#tt-r2", { backgroundPosition:"-120% 0" }, { backgroundPosition:"220% 0", duration:0.8, ease:"power1.inOut" }, 42.76);
+  tl.fromTo("#tt-r2-us", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 42.76); // "Category" 48.76
+  /* row 3: grade name on "Violent typhoon," (51.1), translation + sweep on "Category 3" (55.14) */
+  tl.fromTo("#tt-r3-jma", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 45.1);
+  tl.fromTo("#tt-r3", { backgroundPosition:"-120% 0" }, { backgroundPosition:"220% 0", duration:0.8, ease:"power1.inOut" }, 49.14);
+  tl.fromTo("#tt-r3-us", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 49.14); // "Category" 55.14
+  /* closing caption lands on "Neither word...is a measurement on its own." (64.7) */
+  tl.fromTo("#tt-caption", { autoAlpha:0, y:14 }, { autoAlpha:1, y:0, duration:0.4 }, 58.7);
+  tl.to(["#tt-b1","#tt-b2","#tt-b3","#tt-table","#tt-caption"], { autoAlpha:0, duration:0.5 }, 62.4);
   window.__timelines["translate-table"] = tl;
 })();
 </script>
