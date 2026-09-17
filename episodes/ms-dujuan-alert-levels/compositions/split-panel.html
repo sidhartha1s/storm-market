@@ -88,7 +88,9 @@ window.__timelines = window.__timelines || {};
   const R = { n: 0 }; const rEl = document.getElementById("sp-r-num");
   const noteEl = document.getElementById("sp-note");
   function note(text, at) {
-    tl.set("#sp-note", { visibility: "visible", textContent: text }, at);
+    // textContent on the parent wipes the .sp-rule child span — text goes on its own child span (round 3c fix)
+    tl.set("#sp-note", { visibility: "visible" }, at);
+    tl.set("#sp-notetext", { textContent: text }, at);
     tl.fromTo("#sp-note", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35 }, at);
     CONTENT_BEATS.push(at);
   }
