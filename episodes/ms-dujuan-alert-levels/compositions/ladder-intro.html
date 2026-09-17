@@ -97,7 +97,10 @@ window.__timelines = window.__timelines || {};
 
   tl.to("#li-bgplate", { scale: 1.06, duration: 54.0, ease: "none" }, 0);
 
-  tl.set(["#li-old-r1","#li-old-r2","#li-r1","#li-r2","#li-r3","#li-r4","#li-r5","#li-teaser","#li-note"], { autoAlpha: 0 }, 0);
+  /* round 5: #li-old was missing from this hide - visible at default opacity for 0.3s, then its own
+     fromTo() (start 0.3) snapped it invisible before fading back in. Same pop-glitch bug fixed in
+     compare-stack/split-panel/ladder-tonight. */
+  tl.set(["#li-old","#li-old-r1","#li-old-r2","#li-r1","#li-r2","#li-r3","#li-r4","#li-r5","#li-teaser","#li-note"], { autoAlpha: 0 }, 0);
   tl.set(["#li-arrow","#li-new","#li-teaser","#li-note"], { visibility: "hidden", autoAlpha: 0 }, 0);
   tl.fromTo("#li-eye", { autoAlpha:0, y:-16 }, { autoAlpha:1, y:0, duration:0.5 }, 0); CONTENT_BEATS.push(0);
   tl.fromTo("#li-old", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.5 }, 0.3);
