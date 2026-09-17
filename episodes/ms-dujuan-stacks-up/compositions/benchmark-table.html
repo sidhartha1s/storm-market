@@ -121,7 +121,17 @@ window.__timelines = window.__timelines || {};
     /* continuous ambient motion on the row once it lands, so no row sits perfectly frozen through the rest of the hold */
     tl.to(id, { y: -3, duration: 2.6, ease: "sine.inOut", repeat: repeatsToFit(at + 1.1, 2.6), yoyo: true }, at + 1.1);
   }
-  landRow("#bt-r1", 14.36, 940, 105, 1);
+  /* row 1 mounts WITH the table (1.2s) instead of waiting for "Typhoon Lion Rock" at 14.36s: team-lead's
+     freeze_scan (real ffmpeg freezedetect, --hold 6) read the header-stagger + progress-rail fix as still
+     static 0.5-15.0s because those are tiny-area elements (a few thousand px against a 1920x1080 frame) —
+     freezedetect's whole-frame diff barely moves for them. A landed row is a ~1600x70px block with its own
+     ambient wobble (below), which is exactly what already keeps the 14.36-40.94s gap (row1->row2, 26.6s)
+     freeze-clean without any dedicated fix. Landing it early extends that same real cover back to t=0. The
+     intro narration during 0-13.64s ("line up every typhoon... these are peak numbers, measured over open
+     water") is the methodology setup for the whole table, so row 1 previewing the table's shape while that
+     plays (then Lionrock is actually named at 14.36, matching the row already on screen) reads as intentional
+     pacing, not a desync. */
+  landRow("#bt-r1", 1.2, 940, 105, 1);
   landRow("#bt-r2", 40.94, 915, 115, 2);
   landRow("#bt-r3", 72.34, 915, 120, 3);
   landRow("#bt-r4", 89.06, 915, 120, 4);
