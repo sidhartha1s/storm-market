@@ -62,6 +62,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#gc-brand", { autoAlpha:0 }, { autoAlpha:1, duration:0.6 }, 2.2);
   /* slow ambient letter-spacing breathe on the brand wordmark carries the hold to the end of the window */
   tl.to("#gc-brand", { letterSpacing: "11px", duration: 13.2, ease: "sine.inOut" }, 2.8);
+  /* round-3 remeasure: the 2.8->16.02 tail (13.22s) only had the continuous letter-spacing drift above,
+     which a discrete-beat scan can't see mid-tween; one more explicit content beat during the tail hold. */
+  tl.to("#gc-rule", { backgroundColor: "#f4f0e8", duration: 0.4, yoyo: true, repeat: 1 }, 9.0);
   window.__timelines["g-close"] = tl;
 })();
 </script>
