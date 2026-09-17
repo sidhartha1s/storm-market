@@ -28,11 +28,15 @@
     border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
   .tt-thead { display:flex; justify-content:space-between; font-family:'Arial Black',Arial,sans-serif; font-size:20px;
     letter-spacing:3px; color:#d8a13a; padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.16); }
-  .tt-trow { display:flex; justify-content:space-between; align-items:center; padding:20px 0; border-bottom:1px solid rgba(255,255,255,0.1); }
+  .tt-trow { display:flex; justify-content:space-between; align-items:center; padding:20px 0; border-bottom:1px solid rgba(255,255,255,0.1);
+    background-image:linear-gradient(90deg, transparent 0%, rgba(216,161,58,0.35) 50%, transparent 100%);
+    background-size:220% 100%; background-position:-120% 0; background-repeat:no-repeat; }
   .tt-trow:last-child { border-bottom:none; }
   .tt-trow .tt-jma { font-family:'Arial Black',Arial,sans-serif; font-size:28px; width:38%; }
   .tt-trow .tt-us { font-family:Georgia,serif; font-style:italic; font-size:24px; color:#f2f5f8; width:62%; }
   .tt-trow .tt-us .tt-arrow { color:#d0121f; font-style:normal; margin-right:8px; }
+  .tt-caption { position:absolute; left:0; right:0; bottom:170px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
+    font-size:22px; letter-spacing:2px; color:#d8a13a; }
 </style>
 <div id="root" data-composition-id="translate-table" data-width="1920" data-height="1080">
   <div class="tt-glow" id="tt-glow-a"></div>
