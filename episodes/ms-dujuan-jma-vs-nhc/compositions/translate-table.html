@@ -63,7 +63,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#tt-b2", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 10.7);
   tl.fromTo("#tt-b3", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 15.72);
   /* continuous ambient motion from mount through the table reveal */
-  tl.to(".basinrow", { y: -12, duration: 2.4, ease: "sine.inOut", repeat: repeatsToFit(0.3, 2.4), yoyo: true }, 0.3);
+  tl.to(".tt-basinrow", { y: -12, duration: 2.4, ease: "sine.inOut", repeat: repeatsToFit(0.3, 2.4), yoyo: true }, 0.3);
   tl.fromTo("#tt-table", { autoAlpha:0, y:30 }, { autoAlpha:1, y:0, duration:0.6 }, 22.0);
   /* continuous ambient motion so the table never sits frozen between reveals */
   tl.to("#tt-table", { y: -10, duration: 3.0, ease: "sine.inOut", repeat: repeatsToFit(22.8, 3.0), yoyo: true }, 22.8);
