@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- opening-card.html — B1 cold open, glassmorphic stat-card push. Mounts OVER the still-playing b-roll
+     (transparent #root, right-aligned card) so the video underneath keeps showing per CLAUDE.md "put the
+     thing across the whole RHS" — this is the one comp in the episode that does NOT own a black background,
+     it is an overlay on track 2 above the track-1 video. Mount: track 2, host start = episode-abs 36.0,
+     duration 17.582 (B1 window ends 53.582; card pushes in once "eight separate typhoons" has landed at
+     33.92s so the card's own number isn't the first time the audience hears it). Cues word-synced from
+     audio/b1-s1.words.json. Font: 'AbrilFig' relies on index.html's single @font-face (a per-comp duplicate
+     false-triggers css_collision.py on the shared ".ttf" url() token). All classes carry the oc- comp tag. -->
+<template>
+<style>
+  #root { position:absolute; inset:0; background:transparent; pointer-events:none; font-family:Arial,sans-serif; }
+  .oc-card { position:absolute; right:90px; top:50%; transform:translateY(-50%); width:760px; box-sizing:border-box;
+    padding:40px 46px; background:rgba(10,16,24,0.62); backdrop-filter:blur(20px) saturate(1.2);
+    -webkit-backdrop-filter:blur(20px) saturate(1.2); border:1px solid rgba(255,255,255,0.16); border-radius:26px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.5); }
+  .oc-eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:5px; color:#d8a13a; }
+  .oc-title { margin-top:12px; font-family:'AbrilFig',Georgia,serif; font-size:46px; color:#f4f0e8; line-height:1.15; }
+  .oc-row { margin-top:22px; display:flex; align-items:baseline; gap:16px; }
+  .oc-num { font-family:'AbrilFig',Georgia,serif; font-size:64px; color:#d0121f; min-width:3ch; font-variant-numeric:tabular-nums; }
+  .oc-unit { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:1px; color:#c8d3e0; }
+  .oc-foot { margin-top:22px; padding-top:18px; border-top:1px solid rgba(255,255,255,0.16); font-family:'Arial Black',Arial,sans-serif;
+    font-size:22px; letter-spacing:1px; color:#f4f0e8; line-height:1.5; }
+  .oc-foot .oc-red { color:#d0121f; }
+</style>
+<div id="root" data-composition-id="opening-card" data-width="1920" data-height="1080">
+  <div class="oc-card" id="oc-card">
+    <div class="oc-eye">TYPHOON No. 25 — FORECAST PEAK</div>
+    <div class="oc-title" id="oc-title">Weakest of the last 8 Kanto-area typhoons</div>
+    <div class="oc-row"><div class="oc-num" id="oc-hpa">975</div><div class="oc-unit">hPa CENTRAL PRESSURE</div></div>
+    <div class="oc-row"><div class="oc-num" id="oc-mph">67</div><div class="oc-unit">MPH SUSTAINED</div></div>
+    <div class="oc-foot"><span class="oc-red">8 STORMS</span> HURT JAPAN SINCE 2016 — EVERY ONE PEAKED HARDER</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const HOST_WINDOW = 17.582; // this episode's opening-card mount: 36.0-53.582
+  function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
+  tl.fromTo("#oc-card", { autoAlpha:0, x:80, scale:0.96 }, { autoAlpha:1, x:0, scale:1, duration:0.7, ease:"power3.out" }, 0);
+  /* continuous ambient motion so the card never sits frozen through its hold */
+  tl.to("#oc-card", { y: "-=8", duration: 2.6, ease: "sine.inOut", repeat: repeatsToFit(1.0, 2.6), yoyo: true }, 1.0);
+  tl.to("#oc-hpa", { textShadow: "0 0 22px rgba(208,18,31,0.6)", duration: 1.4, ease: "sine.inOut", repeat: repeatsToFit(2.0, 1.4), yoyo: true }, 2.0);
+  tl.to("#oc-mph", { textShadow: "0 0 22px rgba(208,18,31,0.6)", duration: 1.4, ease: "sine.inOut", repeat: repeatsToFit(2.6, 1.4), yoyo: true }, 2.6);
+  tl.to("#oc-card", { autoAlpha:0, x:60, duration:0.5 }, HOST_WINDOW - 0.55);
+  window.__timelines["opening-card"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
