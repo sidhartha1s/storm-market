@@ -94,9 +94,13 @@ window.__timelines = window.__timelines || {};
   /* continuous ambient motion so the card never sits frozen between reveals */
   tl.to("#jq-card", { y: -5, duration: 2.8, ease: "sine.inOut", repeat: repeatsToFit(0.7, 2.8), yoyo: true }, 0.7);
   tl.fromTo("#jq-chip", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 0.4);
-  /* round-4 (owner: content, not a detector fix): the eyebrow lights on its own timing so the open isn't a
-     blank card before row 1's word (word for "tropical storm" isn't said until 5.28s, so row 1 can't move). */
-  tl.to("#jq-eye", { letterSpacing: "9px", color: "#ff3b47", duration: 0.6, yoyo: true, repeat: 1 }, 2.4);
+  /* round-5 (freeze_scan: 2.0-8.5s comp-local still one hold): the first fact (the eyebrow naming the scale)
+     lands right at the mount instead of appearing instantly with the card, a rule draws in under it, then a
+     bold pulse on the already-landed chip covers the mid-span, before row 1 lands on its own word (word for
+     "tropical storm" isn't said until 5.28s, so row 1 itself still can't move). */
+  tl.fromTo("#jq-eye", { autoAlpha:0, y:-10 }, { autoAlpha:1, y:0, duration:0.5 }, 0.15);
+  tl.fromTo("#jq-rule0", { scaleX:0 }, { scaleX:1, autoAlpha:1, duration:1.2, ease:"power2.out" }, 1.0);
+  tl.to("#jq-chip", { scale: 1.06, boxShadow: "0 0 30px rgba(208,18,31,0.5)", duration: 0.6, yoyo: true, repeat: 1 }, 3.3);
   /* Each row's label lights and its mph range counts up from 0 over ~1s starting exactly on its own word —
      replaces the flat opacity fade with real numeric content motion. Count trackers use plain objects with
      onUpdate, duration is a numeric literal at every call site. */
