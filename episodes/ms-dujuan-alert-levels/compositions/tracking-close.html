@@ -44,7 +44,7 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const HOST_WINDOW = 40.582; // this episode's tracking-close mount: 472.23-512.812
+  const HOST_WINDOW = 40.582; // this episode's tracking-close mount: 480.456-521.038
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
   tl.set(["#tc-r2","#tc-chip"], { visibility: "hidden", autoAlpha: 0 }, 0);
   tl.fromTo("#tc-card", { autoAlpha:0, scale:0.94 }, { autoAlpha:1, scale:1, duration:0.6, ease:"power3.out" }, 0);
