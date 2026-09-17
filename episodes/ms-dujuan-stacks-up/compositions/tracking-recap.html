@@ -54,6 +54,7 @@ window.__timelines = window.__timelines || {};
   const HOST_WINDOW = 31.908; // this episode's tracking-recap mount: 524.713-556.621
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
   tl.set(["#tr-r2","#tr-hl"], { visibility: "hidden", autoAlpha: 0 }, 0);
+  tl.set(["#tr-c1","#tr-c2","#tr-c3","#tr-c4","#tr-c5","#tr-c6","#tr-c7","#tr-c8","#tr-c9"], { autoAlpha: 0 }, 0);
   tl.fromTo("#tr-card", { autoAlpha:0, scale:0.94 }, { autoAlpha:1, scale:1, duration:0.6, ease:"power3.out" }, 0);
   tl.fromTo("#tr-r1", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.4 }, 0.3);
   tl.set("#tr-mini", { autoAlpha: 1 }, 0.6);
