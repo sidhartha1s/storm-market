@@ -114,9 +114,17 @@ window.__timelines = window.__timelines || {};
   tl.to("#cc-r", { boxShadow: "0 0 40px rgba(208,18,31,0.5)", duration: 0.6, yoyo:true, repeat:1 }, 16.14); // "forecasts...near 75 mph" 37.14
   /* JTWC 75 counts up on its cue (comp-local 20.22 = B6-rel 41.22) */
   tl.to(R, { n: 75, duration: 1.0, ease: "power1.out", onUpdate: () => rEl.textContent = Math.round(R.n) }, 20.22);
-  /* "75 mph crosses the Saffir-Simpson line into category 1" (comp-local 22.44 = B6-rel 43.44) */
-  tl.to("#cc-r-grade", { autoAlpha: 1, duration: 0.4, onStart: () => { document.getElementById("cc-r-grade").textContent = "CATEGORY 1 RANGE"; } }, 22.44);
-  tl.fromTo("#cc-midpop", { autoAlpha:0, scale:1.6, visibility:"visible" }, { autoAlpha:1, scale:1, duration:0.4 }, 24.0);
+  /* "75 mph crosses the Saffir-Simpson line into category 1" (comp-local 22.44 = B6-rel 43.44). Text is
+     pre-authored in the markup and only toggled via autoAlpha now — an onStart textContent swap here would be
+     invisible to any QC pass that seeks the timeline with suppressEvents (the same class of bug found and
+     fixed in ladder.html's round-3 note-cycling). */
+  tl.to("#cc-r-grade", { autoAlpha: 1, duration: 0.4 }, 22.44);
+  /* the 12% delta counts up on its own beat instead of just popping in */
+  const PCT = { v: 0 };
+  const pctEl = document.querySelector("#cc-midpop .cp-pf");
+  tl.set("#cc-midpop", { visibility: "visible" }, 24.0);
+  tl.fromTo("#cc-midpop", { autoAlpha:0, scale:1.3 }, { autoAlpha:1, scale:1, duration:1.0 }, 24.0);
+  tl.to(PCT, { v: 12, duration: 1.0, ease: "power1.out", onUpdate: () => { pctEl.textContent = Math.round(PCT.v) + "%"; } }, 24.0);
   tl.to("#cc-midpop", { autoAlpha:0, duration:0.4 }, 27.5);
   /* the "12% conversion is a rule of thumb, not exact" caveat (comp-local 33.66 = B6-rel 54.66) */
   tl.fromTo("#cc-foot", { autoAlpha:0 }, { autoAlpha:1, duration:0.5 }, 33.66);
