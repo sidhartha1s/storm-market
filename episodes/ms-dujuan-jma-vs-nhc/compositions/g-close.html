@@ -59,6 +59,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#gc-rule", { autoAlpha:0 }, { autoAlpha:1, duration:0.3 }, 1.9);
   tl.fromTo("#gc-rule", { scaleX:0 }, { scaleX:1, duration:4.0, ease:"power2.out" }, 1.9);
   tl.to("#gc-rule", { scaleX: 1.4, duration: 1.2, ease: "sine.inOut", repeat: repeatsToFit(5.9, 1.2), yoyo: true }, 5.9);
+  /* closes the gc-brand-land->color-pulse gap (2.8->9.0, 6.2s content-only) with one more real beat */
+  tl.to("#gc-soft", { color: "#ffffff", duration: 0.5, yoyo: true, repeat: 1 }, 5.6);
   tl.fromTo("#gc-brand", { autoAlpha:0 }, { autoAlpha:1, duration:0.6 }, 2.2);
   /* slow ambient letter-spacing breathe on the brand wordmark carries the hold to the end of the window */
   tl.to("#gc-brand", { letterSpacing: "11px", duration: 13.2, ease: "sine.inOut" }, 2.8);
