@@ -59,22 +59,28 @@
   <audio id="nx-b1s1" src="audio/b1-s1.wav" data-start="0.0" data-duration="54.982" data-volume="1"></audio>
   <audio id="nx-b2s1" src="audio/b2-s1.wav" data-start="55.582" data-duration="57.491" data-volume="1"></audio>
   <audio id="nx-b3s1" src="audio/b3-s1.wav" data-start="113.673" data-duration="60.0" data-volume="1"></audio>
-  <audio id="nx-b4s1" src="audio/b4-s1.wav" data-start="189.812" data-duration="47.091" data-volume="1"></audio>
-  <audio id="nx-b5s1" src="audio/b5-s1.wav" data-start="237.503" data-duration="63.091" data-volume="1"></audio>
-  <audio id="nx-b6s1" src="audio/b6-s1.wav" data-start="301.194" data-duration="54.618" data-volume="1"></audio>
-  <audio id="nx-b7s1" src="audio/b7-s1.wav" data-start="356.412" data-duration="59.782" data-volume="1"></audio>
-  <audio id="nx-b8s1" src="audio/b8-s1.wav" data-start="416.794" data-duration="48.836" data-volume="1"></audio>
-  <audio id="nx-b9s1" src="audio/b9-s1.wav" data-start="466.23" data-duration="46.582" data-volume="1"></audio>
-  <audio id="nx-b10s1" src="audio/b10-s1.wav" data-start="513.412" data-duration="12.364" data-volume="1"></audio>
+  <audio id="nx-b4s1" src="audio/b4-s1.wav" data-start="174.273" data-duration="47.091" data-volume="1"></audio>
+  <audio id="nx-b5s1" src="audio/b5-s1.wav" data-start="221.964" data-duration="63.091" data-volume="1"></audio>
+  <audio id="nx-b6s1" src="audio/b6-s1.wav" data-start="285.655" data-duration="54.618" data-volume="1"></audio>
+  <audio id="nx-b7s1" src="audio/b7-s1.wav" data-start="340.873" data-duration="59.782" data-volume="1"></audio>
+  <audio id="nx-b8s1" src="audio/b8-s1.wav" data-start="401.255" data-duration="48.836" data-volume="1"></audio>
+  <audio id="nx-b8s2" src="audio/b8-s2.wav" data-start="450.691" data-duration="8.126" data-volume="1"></audio>
+  <audio id="nx-b9s1" src="audio/b9-s1.wav" data-start="474.456" data-duration="46.582" data-volume="1"></audio>
+  <audio id="nx-b10s1" src="audio/b10-s1.wav" data-start="521.638" data-duration="12.364" data-volume="1"></audio>
 
-  <!-- ============ CTA (own audio; the only unmuted insert; end of B3, ~33% in) ============ -->
-  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v5-sep6.mp4" data-start="174.173" data-duration="15.139" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
+  <!-- ============ CTA (own audio; the only unmuted insert; moved 17 Sep 26 to 85-95% in, right
+       before the closing tracking-close card — 458.817 / 538.0 = 85.3%) ============ -->
+  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v5-sep6.mp4" data-start="458.817" data-duration="15.139" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
 
   <!-- ============ BEDS ============ -->
   <audio id="sx-rumble-hook" src="media/sfx/04_distant_storm_rumble.mp3" data-bed="" data-start="0.0" data-duration="54.982" data-volume="0.16"></audio>
   <audio id="sx-mus-a" src="media/sfx/score-act5-tension.mp3" data-bed="" data-start="0.0" data-duration="173.673" data-volume="0.13"></audio>
-  <audio id="sx-mus-b" src="media/sfx/score-act3-urgent.mp3" data-bed="" data-start="189.812" data-duration="166.0" data-volume="0.13"></audio>
-  <audio id="sx-mus-c" src="media/sfx/score-act6-close.mp3" data-bed="" data-start="356.412" data-duration="173.364" data-volume="0.16"></audio>
+  <audio id="sx-mus-b" src="media/sfx/score-act3-urgent.mp3" data-bed="" data-start="174.273" data-duration="166.0" data-volume="0.13"></audio>
+  <audio id="sx-mus-c" src="media/sfx/score-act6-close.mp3" data-bed="" data-start="340.873" data-duration="117.944" data-volume="0.16"></audio>
+  <!-- sx-mus-c ends exactly at CTA start (458.817) — no bed under the CTA (matches the old CTA
+       convention: the CTA is the only unmuted insert). sx-mus-d resumes the same bed after the
+       0.5 s post-CTA dip, covering B9-B10. -->
+  <audio id="sx-mus-d" src="media/sfx/score-act6-close.mp3" data-bed="" data-start="474.456" data-duration="63.544" data-volume="0.16"></audio>
 
   <!-- ============ PRESENTER (corner circle; talk-loop mounted per Paul-visible span) ============ -->
   <video id="pip-a" class="pip" src="media/pip/paul-talk-1.mp4" data-start="0.0" data-duration="54.982" data-track-index="6" muted></video>
