@@ -12,8 +12,9 @@ async function stage(compName) {
   const tpl = comp.match(/<template>([\s\S]*?)<\/template>/)[1];
   const stageHtml = `<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;width:1920px;height:1080px;overflow:hidden;background:#000}
   .pip{left:1640px !important;top:708px !important;width:240px !important;height:240px !important;border-radius:50%;position:absolute;background:rgba(0,255,0,0.3);}
-  ${hostCss}</style></head><body><div style="position:relative;width:1920px;height:1080px;">${tpl}<div class="pip"></div></div>
-  <script>${gsapSrc}</script></body></html>`;
+  ${hostCss}</style>
+  <script>${gsapSrc}</script></head><body><div style="position:relative;width:1920px;height:1080px;">${tpl}<div class="pip"></div></div>
+  </body></html>`;
   const p = path.join(ep, `_verify_stage_${compName}.html`);
   fs.writeFileSync(p, stageHtml);
   return p;
