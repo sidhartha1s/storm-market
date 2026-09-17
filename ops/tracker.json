@@ -405,10 +405,10 @@
       "title": "Silver Week Collision: A Storm Joins Japan's Biggest Holiday in Years",
       "owner": "director",
       "due": "16 Sep 26",
-      "phase": "preview",
+      "phase": "render",
       "status": "doing",
-      "note": "Round 2 fixes in progress (track-map dead stretches, 147 hPa, Kanto); freeze scan must PASS before draft 3",
-      "updated": "17 Sep 26 16:20"
+      "note": "FULL render launched 17 Sep 18:00 after lint, freeze scan, overlap check and pre-render frame read passed",
+      "updated": "17 Sep 26 18:01"
     },
     {
       "slug": "ms-dujuan-two-tracks",
