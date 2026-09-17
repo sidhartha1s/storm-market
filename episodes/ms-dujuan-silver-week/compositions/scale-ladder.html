@@ -13,8 +13,12 @@
 -->
 <template>
 <style>
-  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
-  #root { position:absolute; inset:0; overflow:hidden; font-family:Arial,sans-serif; color:#f2f5f8;
+  /* AbrilFig @font-face is declared once in index.html; hyperframes mounts this template
+     into that same document so the family is already registered -- a per-comp duplicate here
+     is what css_collision.py's class-name regex was matching on the .ttf url extension
+     (a false positive, not a real leak; ../fonts/AbrilFatface-Regular.ttf still used standalone
+     via the host doc). */
+  #sl-root { position:absolute; inset:0; overflow:hidden; font-family:Arial,sans-serif; color:#f2f5f8;
     background:radial-gradient(ellipse at 30% 70%, #142235 0%, #04070c 70%); }
   #sl-drift { position:absolute; inset:-8%; background:radial-gradient(ellipse at 70% 20%, rgba(208,18,31,0.08) 0%, rgba(0,0,0,0) 55%); }
   /* height is EXPLICIT and overflow:hidden -- not auto/content-derived. 580px (my hand-computed
@@ -22,42 +26,42 @@
      at 800 and the caption at 830-854, both past a 790 card bottom. Set from that MEASUREMENT,
      not another estimate: 854 (measured caption bottom) + 40 (padding-bottom) - 210 (card top)
      = 684, rounded to 690. Card bottom = 210+690 = 900. */
-  .card { position:absolute; left:260px; top:210px; width:1400px; height:690px; padding:40px 56px; box-sizing:border-box;
+  .sl-card { position:absolute; left:260px; top:210px; width:1400px; height:690px; padding:40px 56px; box-sizing:border-box;
     overflow:hidden; z-index:6; background:rgba(10,16,24,0.6); backdrop-filter:blur(18px) saturate(1.15);
     -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:24px; }
-  .eyebrow { font-family:'Arial Black',Arial,sans-serif; font-size:24px; line-height:1; letter-spacing:6px; color:#d0121f; margin-bottom:26px; }
-  .band { display:flex; align-items:center; gap:24px; margin-top:18px; position:relative; }
-  .band .lab { flex:0 0 340px; font-family:'Arial Black',Arial,sans-serif; font-size:30px; }
-  .band .bar { flex:1; height:46px; border-radius:8px; background:rgba(255,255,255,0.08); position:relative; overflow:visible; }
-  .band .fill { position:absolute; inset:0; border-radius:8px; }
+  .sl-eyebrow { font-family:'Arial Black',Arial,sans-serif; font-size:24px; line-height:1; letter-spacing:6px; color:#d0121f; margin-bottom:26px; }
+  .sl-band { display:flex; align-items:center; gap:24px; margin-top:18px; position:relative; }
+  .sl-band .sl-lab { flex:0 0 340px; font-family:'Arial Black',Arial,sans-serif; font-size:30px; }
+  .sl-band .sl-bar { flex:1; height:46px; border-radius:8px; background:rgba(255,255,255,0.08); position:relative; overflow:visible; }
+  .sl-band .sl-fill { position:absolute; inset:0; border-radius:8px; }
   /* dim: a 4th rung below the official JMA "Strong+" scale, added so the forecast (Severe
      Tropical Storm, 67 mph) has an honest home instead of sharing a band it will not reach */
-  .band.dim { opacity: 0.7; }
-  .band.dim .lab { color: #c8d3e0; }
-  .marker { position:absolute; top:-14px; width:6px; height:74px; background:#f4f0e8; border-radius:3px; box-shadow:0 0 14px rgba(244,240,232,0.8); }
+  .sl-band.sl-dim { opacity: 0.7; }
+  .sl-band.sl-dim .sl-lab { color: #c8d3e0; }
+  .sl-marker { position:absolute; top:-14px; width:6px; height:74px; background:#f4f0e8; border-radius:3px; box-shadow:0 0 14px rgba(244,240,232,0.8); }
   /* readout: a dedicated row below all four bands (not floating text pinned above the marker,
      which crossed the rung above it in a stacked card this compact) -- big(58px)/mid(30px)
      tiers, own bounding box, nothing else shares it */
-  .readout { display:flex; align-items:baseline; gap:22px; margin-top:26px; padding-top:22px; border-top:1px solid rgba(255,255,255,0.12); }
-  .readout-num { font-family:'AbrilFig',Georgia,serif; font-size:58px; line-height:1; color:#f4f0e8; text-shadow:0 2px 12px rgba(0,0,0,0.7); }
-  .readout-unit { font-family:'Arial Black',Arial,sans-serif; font-size:30px; color:#f4f0e8; letter-spacing:1px; }
-  .caption { margin-top:30px; font-family:Georgia,serif; font-style:italic; font-size:24px; line-height:1; color:#93a3b2; white-space:nowrap; }
+  .sl-readout { display:flex; align-items:baseline; gap:22px; margin-top:26px; padding-top:22px; border-top:1px solid rgba(255,255,255,0.12); }
+  .sl-readout-num { font-family:'AbrilFig',Georgia,serif; font-size:58px; line-height:1; color:#f4f0e8; text-shadow:0 2px 12px rgba(0,0,0,0.7); }
+  .sl-readout-unit { font-family:'Arial Black',Arial,sans-serif; font-size:30px; color:#f4f0e8; letter-spacing:1px; }
+  .sl-caption { margin-top:30px; font-family:Georgia,serif; font-style:italic; font-size:24px; line-height:1; color:#93a3b2; white-space:nowrap; }
 </style>
-<div id="root" data-composition-id="scale-ladder" data-width="1920" data-height="1080">
+<div id="sl-root" data-composition-id="scale-ladder" data-width="1920" data-height="1080">
   <div id="sl-drift"></div>
-  <div class="card" id="sl-card">
-    <div class="eyebrow">HOW JAPAN MEASURES A TYPHOON</div>
-    <div class="band dim"><div class="lab">SEVERE TROPICAL STORM &middot; 55&ndash;73 MPH</div><div class="bar"><div class="fill" style="background:rgba(224,134,47,0.28); width:100%;"></div>
-      <div class="marker" id="sl-marker" style="left:8%;"></div>
+  <div class="sl-card" id="sl-card">
+    <div class="sl-eyebrow">HOW JAPAN MEASURES A TYPHOON</div>
+    <div class="sl-band sl-dim"><div class="sl-lab">SEVERE TROPICAL STORM &middot; 55&ndash;73 MPH</div><div class="sl-bar"><div class="sl-fill" style="background:rgba(224,134,47,0.28); width:100%;"></div>
+      <div class="sl-marker" id="sl-marker" style="left:8%;"></div>
     </div></div>
-    <div class="band"><div class="lab">STRONG &middot; 74&ndash;98 MPH</div><div class="bar"><div class="fill" style="background:rgba(224,134,47,0.55); width:100%;"></div></div></div>
-    <div class="band"><div class="lab">VERY STRONG &middot; 99&ndash;121 MPH</div><div class="bar"><div class="fill" style="background:rgba(176,13,26,0.55); width:100%;"></div></div></div>
-    <div class="band"><div class="lab">VIOLENT &middot; 121+ MPH</div><div class="bar"><div class="fill" style="background:rgba(138,0,16,0.55); width:100%;"></div></div></div>
-    <div class="readout" id="sl-readout">
-      <div class="readout-num">67</div>
-      <div class="readout-unit">MPH &middot; JMA 10-MIN</div>
+    <div class="sl-band"><div class="sl-lab">STRONG &middot; 74&ndash;98 MPH</div><div class="sl-bar"><div class="sl-fill" style="background:rgba(224,134,47,0.55); width:100%;"></div></div></div>
+    <div class="sl-band"><div class="sl-lab">VERY STRONG &middot; 99&ndash;121 MPH</div><div class="sl-bar"><div class="sl-fill" style="background:rgba(176,13,26,0.55); width:100%;"></div></div></div>
+    <div class="sl-band"><div class="sl-lab">VIOLENT &middot; 121+ MPH</div><div class="sl-bar"><div class="sl-fill" style="background:rgba(138,0,16,0.55); width:100%;"></div></div></div>
+    <div class="sl-readout" id="sl-readout">
+      <div class="sl-readout-num">67</div>
+      <div class="sl-readout-unit">MPH &middot; JMA 10-MIN</div>
     </div>
-    <div class="caption">Japan reports a 10-minute average wind; the U.S. reports a 1-minute peak.</div>
+    <div class="sl-caption">Japan reports a 10-minute average wind; the U.S. reports a 1-minute peak.</div>
   </div>
 </div>
 <script>
@@ -65,8 +69,13 @@ window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
   tl.set(["#sl-card", "#sl-readout"], { autoAlpha: 0 }, 0);
-  tl.fromTo("#sl-card", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 17.02);
-  tl.set("#sl-marker", { left: "8%" }, 17.02);
+  /* Card used to fade in at +17.02s -- 17 seconds of nothing but the background gradient right
+     after B7's narration starts (owner-flagged 17 Sep 26: no window may show only its
+     background for more than 2s). B7's very first line is Japan-vs-US measurement, exactly
+     what this card is titled, so it now mounts with its first rung (the SEVERE TROPICAL STORM
+     band + eyebrow) at the comp's own mount instead of holding on an empty gradient. */
+  tl.fromTo("#sl-card", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.3);
+  tl.set("#sl-marker", { left: "8%" }, 0.3);
   tl.to("#sl-marker", { left: "66.7%", duration: 0.8, ease: "power2.out" }, 39.58); /* 67 mph within the 55-73 mph Severe Tropical Storm band: (67-55)/(73-55) */
   tl.fromTo("#sl-readout", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 39.58); /* lands with the marker, own row, clear of every rung */
   tl.to("#sl-card", { autoAlpha: 0, y: -20, duration: 0.5 }, 59.62);
