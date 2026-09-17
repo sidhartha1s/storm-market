@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- tracking-recap.html — B7 "what's still open tonight". Two open-thread rows (track, strength), a mini
+     benchmark-table recap with Typhoon No. 25's amber row still unresolved at the bottom, and the next-
+     advisory highlight. This is the segment the owner's 17 Sep 26 CTA rule calls "the closing tracking
+     segment" — Paul's CTA (mounted in index.html, right before this comp's host window) leads straight into
+     it. Mount: track 2, host start = episode-abs 524.713, duration 31.908 (B7 window is 37.908s; a 6.0s
+     satellite-still lead-in plays before this comp mounts). Cues word-synced from audio/b7-s1.words.json
+     (segment-abs minus 6.0 lead-in; the "track" open-thread line lands during the lead-in itself, so the
+     first row reveals at mount instead). Font: 'AbrilFig' relies on index.html's single @font-face (a
+     per-comp duplicate false-triggers css_collision.py on the shared ".ttf" url() token). All classes carry
+     the tr- comp tag. -->
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
+  .tr-card { position:absolute; left:50%; top:44%; transform:translate(-50%,-50%); width:1100px; box-sizing:border-box;
+    padding:40px 56px; text-align:center; background:rgba(10,16,24,0.6); backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .tr-eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:6px; color:#c8d3e0; }
+  .tr-rows { display:flex; gap:30px; margin-top:24px; }
+  .tr-orow { flex:1; padding:20px 20px; border-radius:16px; background:rgba(208,18,31,0.14); border:1px solid rgba(208,18,31,0.4); }
+  .tr-orow .tr-t { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:1px; }
+  .tr-orow .tr-s { margin-top:8px; font-family:'AbrilFig',Georgia,serif; font-size:48px; color:#f4b8bc; }
+  .tr-mini { display:flex; justify-content:center; gap:8px; margin-top:24px; }
+  .tr-cell { width:96px; padding:8px 4px; border-radius:8px; background:rgba(255,255,255,0.04); font-size:14px;
+    color:#8fa0b4; font-family:Arial,sans-serif; }
+  .tr-cell.tr-amber { background:rgba(216,161,58,0.18); border:1px solid rgba(216,161,58,0.5); color:#d8a13a; font-weight:700; }
+  .tr-hl { margin-top:22px; padding:18px 24px; background:rgba(216,161,58,0.14); border:2px solid #d8a13a; border-radius:16px; visibility:hidden; }
+  .tr-hl .tr-lab { font-family:'Arial Black',Arial,sans-serif; font-size:23px; color:#f4f0e8; }
+</style>
+<div id="root" data-composition-id="tracking-recap" data-width="1920" data-height="1080">
+  <div class="tr-card" id="tr-card">
+    <div class="tr-eye">TONIGHT'S OPEN THREADS</div>
+    <div class="tr-rows">
+      <div class="tr-orow" id="tr-r1"><div class="tr-t">TRACK</div><div class="tr-s">STILL OPEN</div></div>
+      <div class="tr-orow" id="tr-r2" style="visibility:hidden"><div class="tr-t">STRENGTH</div><div class="tr-s">STILL OPEN</div></div>
+    </div>
+    <div class="tr-mini" id="tr-mini">
+      <div class="tr-cell">LIONROCK</div><div class="tr-cell">LAN</div><div class="tr-cell">JEBI</div>
+      <div class="tr-cell">TRAMI</div><div class="tr-cell">FAXAI</div><div class="tr-cell">HAGIBIS</div>
+      <div class="tr-cell">NANMADOL</div><div class="tr-cell">AMPIL</div>
+      <div class="tr-cell tr-amber">No. 25</div>
+    </div>
+    <div class="tr-hl" id="tr-hl"><div class="tr-lab">NEXT: JMA'S NEXT ADVISORY, WITHIN HOURS</div></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const HOST_WINDOW = 31.908; // this episode's tracking-recap mount: 524.713-556.621
+  function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
+  tl.set(["#tr-r2","#tr-hl"], { visibility: "hidden", autoAlpha: 0 }, 0);
+  tl.fromTo("#tr-card", { autoAlpha:0, scale:0.94 }, { autoAlpha:1, scale:1, duration:0.6, ease:"power3.out" }, 0);
+  tl.fromTo("#tr-r1", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.4 }, 0.3);
+  tl.fromTo("#tr-mini", { autoAlpha:0 }, { autoAlpha:1, duration:0.4 }, 0.6);
+  /* continuous ambient motion so the card never sits frozen through the hold */
+  tl.to("#tr-card", { y: -6, duration: 2.7, ease: "sine.inOut", repeat: repeatsToFit(0.8, 2.7), yoyo: true }, 0.8);
+  tl.set("#tr-r2", { visibility: "visible" }, 10.22);
+  tl.fromTo("#tr-r2", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.4 }, 10.22);
+  tl.to(".tr-cell.tr-amber", { boxShadow: "0 0 22px rgba(216,161,58,0.6)", duration: 1.2, ease: "sine.inOut", repeat: repeatsToFit(25.7, 1.2), yoyo: true }, 25.7);
+  tl.set("#tr-hl", { visibility: "visible" }, 28.58);
+  tl.fromTo("#tr-hl", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.4 }, 28.58);
+  tl.to("#tr-card", { autoAlpha:0, duration:0.5 }, HOST_WINDOW - 0.6);
+  window.__timelines["tracking-recap"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
