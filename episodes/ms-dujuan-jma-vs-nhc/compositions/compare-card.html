@@ -7,11 +7,15 @@
      (75 mph, crosses into category-1 range). A thin ladder echo (tick marks, no shared DOM with ladder.html)
      sits behind each card so the B4 ladder is visually referenced without re-mounting it. Mount: track 2,
      host start = episode-abs 326.157, duration 42.273 (comp-local 0 = that point in B6; word cues below are
-     B6-segment-relative minus 21.0). -->
+     B6-segment-relative minus 21.0). Round 2 (17 Sep 26 freeze fix): the L-count-up (2.32) to R-count-up
+     (20.22) span was a bare 17.9s gap with only ambient motion; three real content beats now land on "one
+     step below Typhoon" (4.08), "Navy's JTWC uses the 1-minute clock" (11.94) and "forecasts...near 75 mph"
+     (16.14), plus a cp-bgplate continuous scale. -->
 <template>
 <style>
-  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
-    background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; background:#04070c; overflow:hidden; }
+  .cp-bgplate { position:absolute; left:-60px; right:-60px; top:-60px; bottom:-60px;
+    background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); transform-origin:center; will-change:transform; }
   .cp-eye { position:absolute; left:0; right:0; top:100px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
     font-size:24px; letter-spacing:5px; color:#d8a13a; }
   .cp-card { position:absolute; top:200px; width:760px; box-sizing:border-box; padding:36px 40px; text-align:center;
