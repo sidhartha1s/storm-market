@@ -428,9 +428,12 @@ window.__timelines = window.__timelines || {};
      on "Kanto region" (46.78 -> host abs 374.98, the first moment this map's own region is named);
      Yokosuka lands on "Fleet" (51.26 -> host abs 379.46); Yokota lands on its own name (55.94 ->
      host abs 384.14). All three still exit together at 405.461 (unchanged). */
-  tl.fromTo(["#pin-tokyo", "#lab-tokyo", "#leader-tokyo"], { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 374.98);
-  tl.fromTo(["#pin-yokosuka", "#lab-yokosuka", "#leader-yokosuka"], { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 379.46);
-  tl.fromTo(["#pin-yokota", "#lab-yokota", "#leader-yokota"], { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 384.14);
+  tl.fromTo("#pin-tokyo", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 374.98);
+  tl.fromTo(["#lab-tokyo", "#leader-tokyo"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 374.98);
+  tl.fromTo("#pin-yokosuka", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 379.46);
+  tl.fromTo(["#lab-yokosuka", "#leader-yokosuka"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 379.46);
+  tl.fromTo("#pin-yokota", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 384.14);
+  tl.fromTo(["#lab-yokota", "#leader-yokota"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 384.14);
   tl.to(["#pin-yokosuka", "#pin-yokota", "#pin-tokyo", "#lab-yokosuka", "#lab-yokota", "#lab-tokyo", "#leader-yokosuka", "#leader-yokota", "#leader-tokyo"], { autoAlpha: 0, duration: 0.4 }, 405.461);
   chip("#chip-noalert", 404.961, 3.5);
 
