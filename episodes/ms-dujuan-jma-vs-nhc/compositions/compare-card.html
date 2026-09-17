@@ -106,7 +106,7 @@ window.__timelines = window.__timelines || {};
   /* one continuous growing bar spans the whole L-count->R-count static stretch (3.32->21.22, 17.9s), replacing
      reliance on small-area badge fades that the frame reader still read as static in both "313-331" and
      "337-349" windows */
-  tl.fromTo("#cc-deltabar", { scaleX: 0, autoAlpha: 0 }, { scaleX: 1, autoAlpha: 1, duration: 17.9, ease: "none" }, 3.32);
+  tl.fromTo("#cc-deltabar", { height: 0, autoAlpha: 0 }, { height: 560, autoAlpha: 1, duration: 17.9, ease: "none" }, 3.32);
   tl.to("#cc-deltabar", { autoAlpha: 0, duration: 0.4 }, 21.8);
   /* three real beats close the old 2.32->20.22 (17.9s) gap, each on its own narration clause */
   tl.fromTo("#cc-l-note", { autoAlpha:0, y:10 }, { autoAlpha:1, y:0, duration:0.35 }, 4.08); // "one step below Typhoon" 25.08
