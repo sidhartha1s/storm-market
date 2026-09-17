@@ -63,7 +63,6 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const HOST_WINDOW = 62.346; // this episode's data-panel mount: 60.182-122.528
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
-  const rEl = document.getElementById("dp-r-num");
   tl.set(["#dp-chip-ts","#dp-chip-sst","#dp-chip-shear","#dp-chip-dry"], { visibility: "hidden", autoAlpha: 0 }, 0);
   /* card mounts with its first fact within 0.5s (team-lead 17 Sep 26): both cards now start their entrance
      at t=0 instead of 0.2s so nothing sits on an empty panel even briefly. */
