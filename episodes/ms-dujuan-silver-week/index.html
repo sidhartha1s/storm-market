@@ -210,12 +210,12 @@
 
   <!-- B2 -->
   <section class="clip" id="p-src-jma" data-start="52.518" data-duration="6.000" data-track-index="4"><div class="srclab" id="src-jma">SOURCES: JMA · JTWC · 16 SEP 2026, 19:10 JST</div></section>
-  <section class="clip" id="p-pf-25th" data-start="110.92" data-duration="2.800" data-track-index="5"><div class="popfig small tm-zone" id="pf-25th"><span class="pf-big">No. 25</span><span class="pf-sub">WITHIN 12 HOURS</span></div></section>
+  <section class="clip" id="p-pf-25th" data-start="110.92" data-duration="2.800" data-track-index="5"><div class="popfig small rhs" id="pf-25th"><span class="pf-big">No. 25</span><span class="pf-sub">WITHIN 12 HOURS</span></div></section>
   <section class="clip" id="p-chip-sst" data-start="118.74" data-duration="4.500" data-track-index="4"><div class="chip" id="chip-sst">SST 85&deg;F</div></section>
-  <section class="clip" id="p-chip-shear" data-start="123.64" data-duration="4.000" data-track-index="4"><div class="chip tm-zone" id="chip-shear">LOW WIND SHEAR</div></section>
-  <section class="clip" id="p-chip-dryair" data-start="129.84" data-duration="4.500" data-track-index="4"><div class="chip tm-zone" id="chip-dryair">DRY AIR (NW) = BRAKE</div></section>
-  <section class="clip" id="p-chip-seas" data-start="134.40" data-duration="4.000" data-track-index="4"><div class="chip tm-zone" id="chip-seas">SEAS 14 FT</div></section>
-  <section class="clip" id="p-chip-gdacs" data-start="141.68" data-duration="3.300" data-track-index="4"><div class="chip tm-zone" id="chip-gdacs">GDACS: GREEN · LOWEST ALERT</div></section>
+  <section class="clip" id="p-chip-shear" data-start="123.64" data-duration="4.000" data-track-index="4"><div class="chip" id="chip-shear">LOW WIND SHEAR</div></section>
+  <section class="clip" id="p-chip-dryair" data-start="129.84" data-duration="4.500" data-track-index="4"><div class="chip" id="chip-dryair">DRY AIR (NW) = BRAKE</div></section>
+  <section class="clip" id="p-chip-seas" data-start="134.40" data-duration="4.000" data-track-index="4"><div class="chip" id="chip-seas">SEAS 14 FT</div></section>
+  <section class="clip" id="p-chip-gdacs" data-start="141.68" data-duration="3.300" data-track-index="4"><div class="chip" id="chip-gdacs">GDACS: GREEN · LOWEST ALERT</div></section>
 
   <!-- B3 -->
   <section class="clip" id="p-src-b3" data-start="145.591" data-duration="6.000" data-track-index="4"><div class="srclab" id="src-b3">SOURCE: JMA FORECAST, ISSUED 16 SEP 19:10 JST</div></section>
@@ -247,9 +247,14 @@
   <section class="clip" id="p-pf-55k" data-start="407.44" data-duration="3.200" data-track-index="5"><div class="popfig small" id="pf-55k"><span class="pf-big">~55,000</span><span class="pf-sub">ACTIVE-DUTY · 15 BASES · JAPAN-WIDE</span></div></section>
   <section class="clip" id="p-chip-noalert" data-start="421.40" data-duration="3.500" data-track-index="4"><div class="chip">NO STORM-SPECIFIC ALERT ISSUED YET</div></section>
 
-  <!-- B7 (band/marker card now lives in compositions/scale-ladder.html) -->
-  <section class="clip" id="p-pf-conv" data-start="466.74" data-duration="4.000" data-track-index="4"><div class="chip sl-zone" id="pf-conv">~75 MPH &middot; 1-MIN EQUIVALENT</div></section>
-  <section class="clip" id="p-chip-cat1" data-start="474.54" data-duration="4.000" data-track-index="4"><div class="chip sl-zone" id="chip-cat1">CATEGORY 1 HURRICANE THRESHOLD</div></section>
+  <!-- B7 (band/marker card now lives in compositions/scale-ladder.html). The "~75 MPH · 1-MIN
+       EQUIVALENT" and "CATEGORY 1 HURRICANE THRESHOLD" chips were removed here 17 Sep 26: the
+       approved default .chip position (left:110, bottom:300 -> renders y718-780) sits inside
+       the scale-ladder card's real footprint (measured card bottom y900, spanning x260-1660 --
+       compositions/scale-ladder.html), and the owner never approved the .sl-zone placement that
+       had been invented to dodge it. The card is the driver for the whole B7 window; both facts
+       (the ~75 mph 1-min-equivalent conversion and the Category 1 threshold) are still spoken in
+       full in audio/b7-s1.words.json, just without a duplicate on-screen chip. -->
 
   <!-- B8 (tracking card now lives in compositions/tracking-open.html) -->
   <section class="clip" id="p-pf-hagibis" data-start="515.60" data-duration="5.500" data-track-index="5"><div class="popfig small" id="pf-hagibis"><span class="pf-big">HAGIBIS 2019</span><span class="pf-sub">139 DEAD &middot; $17.3B DAMAGE</span></div></section>
