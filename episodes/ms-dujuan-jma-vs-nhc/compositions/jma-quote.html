@@ -84,6 +84,8 @@ window.__timelines = window.__timelines || {};
   const HOST_WINDOW = 51.418; // this episode's jma-quote mount: 119.309-170.727
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
   tl.set(["#jq-r1","#jq-r2","#jq-thresh","#jq-r3","#jq-r4","#jq-r5","#jq-chip","#jq-quote","#jq-q1","#jq-q2","#jq-q3","#jq-attr"], { autoAlpha: 0 }, 0);
+  tl.set(["#jq-eye","#jq-rule0"], { autoAlpha: 0 }, 0);
+  tl.set("#jq-rule0", { scaleX: 0 }, 0);
   tl.set("#jq-quote", { autoAlpha: 1 }, 0); // the qstrip box itself mounts with the card; its clauses reveal individually below
   tl.fromTo("#jq-card", { x:-900, autoAlpha:0 }, { x:0, autoAlpha:1, duration:0.6, ease:"power3.out" }, 0);
   /* background plate: continuous slow scale across the whole window so no full-frame stretch ever reads as
