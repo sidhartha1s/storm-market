@@ -11,40 +11,39 @@
 <style>
   #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
     background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); overflow:hidden; }
-  .glow { position:absolute; width:760px; height:760px; border-radius:50%; filter:blur(110px); opacity:0.3; pointer-events:none; }
+  .tt-glow { position:absolute; width:760px; height:760px; border-radius:50%; filter:blur(110px); opacity:0.3; pointer-events:none; }
   #tt-glow-a { left:-180px; top:-200px; background:radial-gradient(circle, rgba(208,18,31,0.5) 0%, rgba(208,18,31,0) 70%); }
   #tt-glow-b { right:-220px; bottom:-220px; background:radial-gradient(circle, rgba(143,180,216,0.4) 0%, rgba(143,180,216,0) 70%); }
-  .basinrow { position:absolute; left:0; right:0; top:130px; display:flex; justify-content:center; gap:28px; }
-  .bchip { padding:18px 34px; border-radius:14px; text-align:center; box-sizing:border-box;
+  .tt-basinrow { position:absolute; left:0; right:0; top:130px; display:flex; justify-content:center; gap:28px; }
+  .tt-bchip { padding:18px 34px; border-radius:14px; text-align:center; box-sizing:border-box;
     background:rgba(10,16,24,0.55); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
     border:1px solid rgba(255,255,255,0.14); }
-  .bchip .ocean { font-family:'Arial Black',Arial,sans-serif; font-size:20px; letter-spacing:2px; color:#c8d3e0; }
-  .bchip .term { font-family:'AbrilFig',Georgia,serif; font-size:56px; color:#d0121f; margin-top:10px; line-height:1.2; }
-  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
-  .table { position:absolute; left:280px; right:280px; top:320px; box-sizing:border-box; padding:36px 50px;
+  .tt-bchip .tt-ocean { font-family:'Arial Black',Arial,sans-serif; font-size:20px; letter-spacing:2px; color:#c8d3e0; }
+  .tt-bchip .tt-term { font-family:'AbrilFig',Georgia,serif; font-size:56px; color:#d0121f; margin-top:10px; line-height:1.2; }
+  .tt-table { position:absolute; left:280px; right:280px; top:320px; box-sizing:border-box; padding:36px 50px;
     background:rgba(10,16,24,0.58); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
-  .thead { display:flex; justify-content:space-between; font-family:'Arial Black',Arial,sans-serif; font-size:20px;
+  .tt-thead { display:flex; justify-content:space-between; font-family:'Arial Black',Arial,sans-serif; font-size:20px;
     letter-spacing:3px; color:#d8a13a; padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.16); }
-  .trow { display:flex; justify-content:space-between; align-items:center; padding:20px 0; border-bottom:1px solid rgba(255,255,255,0.1); }
-  .trow:last-child { border-bottom:none; }
-  .trow .jma { font-family:'Arial Black',Arial,sans-serif; font-size:28px; width:38%; }
-  .trow .us { font-family:Georgia,serif; font-style:italic; font-size:24px; color:#f2f5f8; width:62%; }
-  .trow .us .arrow { color:#d0121f; font-style:normal; margin-right:8px; }
+  .tt-trow { display:flex; justify-content:space-between; align-items:center; padding:20px 0; border-bottom:1px solid rgba(255,255,255,0.1); }
+  .tt-trow:last-child { border-bottom:none; }
+  .tt-trow .tt-jma { font-family:'Arial Black',Arial,sans-serif; font-size:28px; width:38%; }
+  .tt-trow .tt-us { font-family:Georgia,serif; font-style:italic; font-size:24px; color:#f2f5f8; width:62%; }
+  .tt-trow .tt-us .tt-arrow { color:#d0121f; font-style:normal; margin-right:8px; }
 </style>
 <div id="root" data-composition-id="translate-table" data-width="1920" data-height="1080">
-  <div class="glow" id="tt-glow-a"></div>
-  <div class="glow" id="tt-glow-b"></div>
-  <div class="basinrow">
-    <div class="bchip" id="tt-b1"><div class="ocean">WESTERN PACIFIC</div><div class="term">TYPHOON</div></div>
-    <div class="bchip" id="tt-b2"><div class="ocean">ATLANTIC &amp; E. PACIFIC</div><div class="term">HURRICANE</div></div>
-    <div class="bchip" id="tt-b3"><div class="ocean">INDIAN OCEAN</div><div class="term">CYCLONE</div></div>
+  <div class="tt-glow" id="tt-glow-a"></div>
+  <div class="tt-glow" id="tt-glow-b"></div>
+  <div class="tt-basinrow">
+    <div class="tt-bchip" id="tt-b1"><div class="tt-ocean">WESTERN PACIFIC</div><div class="tt-term">TYPHOON</div></div>
+    <div class="tt-bchip" id="tt-b2"><div class="tt-ocean">ATLANTIC &amp; E. PACIFIC</div><div class="tt-term">HURRICANE</div></div>
+    <div class="tt-bchip" id="tt-b3"><div class="tt-ocean">INDIAN OCEAN</div><div class="tt-term">CYCLONE</div></div>
   </div>
-  <div class="table" id="tt-table">
-    <div class="thead"><span>JAPAN'S GRADE</span><span>&nbsp;</span><span>AMERICAN READ</span></div>
-    <div class="trow" id="tt-r1"><div class="jma">STRONG TYPHOON</div><div class="us"><span class="arrow">&rarr;</span>Category 1 start</div></div>
-    <div class="trow" id="tt-r2"><div class="jma">VERY STRONG TYPHOON</div><div class="us"><span class="arrow">&rarr;</span>Near the top of Category 2</div></div>
-    <div class="trow" id="tt-r3"><div class="jma">VIOLENT TYPHOON</div><div class="us"><span class="arrow">&rarr;</span>Well into Category 3, and climbing</div></div>
+  <div class="tt-table" id="tt-table">
+    <div class="tt-thead"><span>JAPAN'S GRADE</span><span>&nbsp;</span><span>AMERICAN READ</span></div>
+    <div class="tt-trow" id="tt-r1"><div class="tt-jma">STRONG TYPHOON</div><div class="tt-us"><span class="tt-arrow">&rarr;</span>Category 1 start</div></div>
+    <div class="tt-trow" id="tt-r2"><div class="tt-jma">VERY STRONG TYPHOON</div><div class="tt-us"><span class="tt-arrow">&rarr;</span>Near the top of Category 2</div></div>
+    <div class="tt-trow" id="tt-r3"><div class="tt-jma">VIOLENT TYPHOON</div><div class="tt-us"><span class="tt-arrow">&rarr;</span>Well into Category 3, and climbing</div></div>
   </div>
 </div>
 <script>
