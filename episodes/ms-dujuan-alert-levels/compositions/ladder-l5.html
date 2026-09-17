@@ -5,41 +5,42 @@
 <!-- ladder-l5.html — B6 "level five: when leaving may no longer be safe". Black/red treatment, "RARELY
      ISSUED" popfig, then the US extreme-wind-warning chip build-up. Full-window mount, no b-roll. Cues
      word-synced from audio/b6-s1.words.json. Mount: track 2, host start = episode-abs 301.194,
-     duration 54.618. -->
+     duration 54.618. Font: 'AbrilFig' relies on index.html's single @font-face (a per-comp duplicate
+     false-triggers css_collision.py on the shared ".ttf" url() token). All classes carry the l5- comp
+     tag so no class name is shared with index.html or a sibling composition. -->
 <template>
 <style>
-  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
   #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
     background:radial-gradient(ellipse at 50% 35%, #1a0508 0%, #030202 78%); }
-  .eye { position:absolute; left:0; right:0; top:100px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
+  .l5-eye { position:absolute; left:0; right:0; top:100px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
     font-size:24px; letter-spacing:6px; color:#d0121f; }
-  .lvl { position:absolute; left:0; right:0; top:150px; text-align:center; font-family:'AbrilFig',Georgia,serif;
+  .l5-lvl { position:absolute; left:0; right:0; top:150px; text-align:center; font-family:'AbrilFig',Georgia,serif;
     font-size:64px; color:#f4f0e8; text-shadow:0 0 40px rgba(208,18,31,0.6); }
-  .pf { position:absolute; left:0; right:0; top:340px; text-align:center; }
-  .pf span { font-family:'AbrilFig',Georgia,serif; font-size:96px; color:#d0121f;
+  .l5-pf { position:absolute; left:0; right:0; top:340px; text-align:center; }
+  .l5-pf span { font-family:'AbrilFig',Georgia,serif; font-size:96px; color:#d0121f;
     text-shadow:0 0 24px rgba(0,0,0,0.9), 0 0 60px rgba(208,18,31,0.5); }
-  .card { position:absolute; left:50%; top:520px; transform:translateX(-50%); width:1180px; box-sizing:border-box;
+  .l5-card { position:absolute; left:50%; top:520px; transform:translateX(-50%); width:1180px; box-sizing:border-box;
     padding:36px 50px; text-align:center; background:rgba(10,4,4,0.62); backdrop-filter:blur(18px);
     -webkit-backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,0.12); border-radius:26px; }
-  .card .eyeb { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:4px; color:#8fb4d8; }
-  .card .row { display:flex; justify-content:center; gap:60px; margin-top:22px; }
-  .card .stat { text-align:center; }
-  .card .stat .num { font-family:'AbrilFig',Georgia,serif; font-size:56px; color:#f4f0e8; min-width:3ch;
+  .l5-card .l5-eyeb { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:4px; color:#8fb4d8; }
+  .l5-card .l5-row { display:flex; justify-content:center; gap:60px; margin-top:22px; }
+  .l5-card .l5-stat { text-align:center; }
+  .l5-card .l5-stat .l5-num { font-family:'AbrilFig',Georgia,serif; font-size:56px; color:#f4f0e8; min-width:3ch;
     font-variant-numeric:tabular-nums; }
-  .card .stat .u { margin-top:8px; font-family:'Arial Black',Arial,sans-serif; font-size:19px; letter-spacing:1px; color:#c8d3e0; }
-  .card .action { margin-top:26px; font-family:'Arial Black',Arial,sans-serif; font-size:26px; letter-spacing:1px; color:#d0121f; }
+  .l5-card .l5-stat .l5-u { margin-top:8px; font-family:'Arial Black',Arial,sans-serif; font-size:19px; letter-spacing:1px; color:#c8d3e0; }
+  .l5-card .l5-action { margin-top:26px; font-family:'Arial Black',Arial,sans-serif; font-size:26px; letter-spacing:1px; color:#d0121f; }
 </style>
 <div id="root" data-composition-id="ladder-l5" data-width="1920" data-height="1080">
-  <div class="eye" id="l5-eye">ALERT LEVEL 5</div>
-  <div class="lvl" id="l5-lvl">Emergency Safety Measures</div>
-  <div class="pf" id="l5-pf" style="visibility:hidden"><span>RARELY ISSUED</span></div>
-  <div class="card" id="l5-card" style="visibility:hidden">
-    <div class="eyeb">US CLOSEST MATCH: EXTREME WIND WARNING</div>
-    <div class="row">
-      <div class="stat"><div class="num" id="l5-n1">115</div><div class="u">MPH &middot; 185 KM/H</div></div>
-      <div class="stat"><div class="num">&lt;1</div><div class="u">HOUR TO ARRIVAL</div></div>
+  <div class="l5-eye" id="l5-eye">ALERT LEVEL 5</div>
+  <div class="l5-lvl" id="l5-lvl">Emergency Safety Measures</div>
+  <div class="l5-pf" id="l5-pf" style="visibility:hidden"><span>RARELY ISSUED</span></div>
+  <div class="l5-card" id="l5-card" style="visibility:hidden">
+    <div class="l5-eyeb">US CLOSEST MATCH: EXTREME WIND WARNING</div>
+    <div class="l5-row">
+      <div class="l5-stat"><div class="l5-num" id="l5-n1">115</div><div class="l5-u">MPH &middot; 185 KM/H</div></div>
+      <div class="l5-stat"><div class="l5-num">&lt;1</div><div class="l5-u">HOUR TO ARRIVAL</div></div>
     </div>
-    <div class="action" id="l5-action">SHELTER IMMEDIATELY. DON'T DRIVE.</div>
+    <div class="l5-action" id="l5-action">SHELTER IMMEDIATELY. DON'T DRIVE.</div>
   </div>
 </div>
 <script>
