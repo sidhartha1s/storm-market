@@ -103,7 +103,11 @@ window.__timelines = window.__timelines || {};
   /* continuous scale drift directly on the map plate (owner round-2: "background plate looks static") */
   tl.fromTo("#lt-mapwrap", { scale: 1.0 }, { scale: 1.06, duration: 36.836, ease: "none" }, 0);
 
-  tl.set(["#lt-marker","#lt-pin","#lt-pinlab","#lt-note"], { visibility: "hidden", autoAlpha: 0 }, 0);
+  /* round 5 (owner: "fully empty mount" pattern, 17 Sep 26) - #lt-mapwrap/#lt-card were missing from
+     this initial hide, so they were briefly visible at default opacity before their own fromTo() (start
+     0.3/0.5) snapped them invisible then faded back in - the same pop-glitch bug found in compare-stack
+     and split-panel. */
+  tl.set(["#lt-mapwrap","#lt-card","#lt-marker","#lt-pin","#lt-pinlab","#lt-note"], { visibility: "hidden", autoAlpha: 0 }, 0);
   tl.fromTo("#lt-mini", { autoAlpha:0, x:-40 }, { autoAlpha:1, x:0, duration:0.5 }, 0); CONTENT_BEATS.push(0);
   tl.fromTo("#lt-mapwrap", { autoAlpha:0 }, { autoAlpha:1, duration:0.5 }, 0.3);
   tl.fromTo("#lt-card", { autoAlpha:0, x:40 }, { autoAlpha:1, x:0, duration:0.5 }, 0.5); CONTENT_BEATS.push(0.5);
