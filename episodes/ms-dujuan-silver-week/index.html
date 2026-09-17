@@ -56,17 +56,11 @@
     .ladder .marker { position: absolute; top: -14px; width: 6px; height: 74px; background: #f4f0e8; border-radius: 3px; box-shadow: 0 0 14px rgba(244,240,232,0.8); }
     .ladder .marker-lab { position: absolute; top: -58px; left: 50%; transform: translateX(-50%); font-family: 'Arial Black', Arial, sans-serif; font-size: 22px; color: #f4f0e8; white-space: nowrap; }
     .ladder .caption { margin-top: 30px; font-family: Georgia, serif; font-style: italic; font-size: 24px; color: #93a3b2; }
-    .kanto-pin { position: absolute; z-index: 6; }
-    .kanto-pin .dot { width: 18px; height: 18px; border-radius: 50%; background: #d0121f; border: 3px solid #050b12; box-shadow: 0 0 14px rgba(208,18,31,0.7); }
-    /* Labels used to sit at a fixed left:26px/top:-10px offset from each dot -- with three dots
-       within ~70px of each other (owner-flagged 17 Sep 26: the three Kanto pin labels overlap)
-       every label boxed the same small patch of frame. Labels are now standalone top-level
-       elements at frame-absolute coordinates (fanned up-left / right / down-right, one per pin,
-       measured clear of each other and of the popfig danger band via Playwright
-       getBoundingClientRect -- see LEARNINGS), each joined to its dot by a thin leader line
-       (#kanto-leaders svg below). */
-    .kanto-lab { position: absolute; z-index: 6; font-family: 'Arial Black', Arial, sans-serif; font-size: 22px; color: #f4f0e8; white-space: nowrap;
-      text-shadow: 0 0 10px rgba(0,0,0,0.95), 0 2px 6px #000; background: rgba(10,16,24,0.6); padding: 6px 12px; border-radius: 6px; border-left: 4px solid #d0121f; }
+    /* .kanto-pin/.kanto-lab/#kanto-leaders removed 17 Sep 26 (team-lead direction): migrated into
+       compositions/kanto-map.html as #km-pin-*/#km-lab-*/#km-leaders so the pins move rigidly
+       with that comp's own basemap scale/drift instead of drifting off Yokosuka/Yokota/Tokyo as
+       host-level elements under a comp-level transform (reasoned through, see that file's header
+       for the geometry). */
     .track-card { position: absolute; left: 110px; top: 200px; width: 900px; padding: 34px 44px; z-index: 6; }
     .track-card .eye { font-family: 'Arial Black', Arial, sans-serif; font-size: 22px; letter-spacing: 6px; color: #d0121f; }
     .track-card .row { display: flex; align-items: center; gap: 22px; margin-top: 22px; }
