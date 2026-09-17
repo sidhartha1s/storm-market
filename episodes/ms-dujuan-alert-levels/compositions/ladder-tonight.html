@@ -8,56 +8,58 @@
      count-up. Mount: track 2, host start = episode-abs 422.794, duration 36.836 (B8 window is 48.836s: a
      6.0s lead-in still plays before mount, a 6.0s Himawari return clip plays after). Cues word-synced from
      audio/b8-s1.words.json (segment-abs minus this comp's mount). Map pin is schematic (interpolated
-     between the basemap's own Tokyo/Ogasawara/Guam reference pixels), not a to-scale plot. -->
+     between the basemap's own Tokyo/Ogasawara/Guam reference pixels), not a to-scale plot. Font:
+     'AbrilFig' relies on index.html's single @font-face (a per-comp duplicate false-triggers
+     css_collision.py on the shared ".ttf" url() token). All classes carry the lt- comp tag so no class
+     name is shared with index.html or a sibling composition. -->
 <template>
 <style>
-  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
   #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
     background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
-  .mini { position:absolute; left:80px; top:120px; width:300px; }
-  .mini .r { display:flex; align-items:center; gap:10px; padding:8px 14px; margin-top:7px; border-radius:8px;
+  .lt-mini { position:absolute; left:80px; top:120px; width:300px; }
+  .lt-mini .lt-r { display:flex; align-items:center; gap:10px; padding:8px 14px; margin-top:7px; border-radius:8px;
     background:rgba(10,16,24,0.5); border:1px solid rgba(255,255,255,0.1); opacity:0.35; font-size:16px; font-family:'Arial Black',Arial,sans-serif; }
-  .mini .r .n { font-family:'AbrilFig',Georgia,serif; font-size:22px; color:#8fb4d8; }
-  .marker { position:absolute; left:80px; top:96px; width:300px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
+  .lt-mini .lt-r .lt-n { font-family:'AbrilFig',Georgia,serif; font-size:22px; color:#8fb4d8; }
+  .lt-marker { position:absolute; left:80px; top:96px; width:300px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
     font-size:15px; letter-spacing:1px; color:#f4b8bc; background:rgba(208,18,31,0.18); border-left:3px solid #d0121f;
     padding:8px 10px; border-radius:8px; }
-  .mapwrap { position:absolute; left:430px; top:70px; width:420px; height:900px; border-radius:20px; overflow:hidden;
+  .lt-mapwrap { position:absolute; left:430px; top:70px; width:420px; height:900px; border-radius:20px; overflow:hidden;
     border:1px solid rgba(255,255,255,0.16); box-shadow:0 20px 60px rgba(0,0,0,0.6); }
-  .mapwrap img { position:absolute; left:-90px; top:-260px; width:600px; height:1254px; }
-  .pin { position:absolute; width:20px; height:20px; border-radius:50%; background:#d0121f; box-shadow:0 0 0 6px rgba(208,18,31,0.3), 0 0 18px rgba(208,18,31,0.9); }
-  .pinlab { position:absolute; font-family:'Arial Black',Arial,sans-serif; font-size:17px; letter-spacing:1px; color:#f4f0e8;
+  .lt-mapwrap img { position:absolute; left:-90px; top:-260px; width:600px; height:1254px; }
+  .lt-pin { position:absolute; width:20px; height:20px; border-radius:50%; background:#d0121f; box-shadow:0 0 0 6px rgba(208,18,31,0.3), 0 0 18px rgba(208,18,31,0.9); }
+  .lt-pinlab { position:absolute; font-family:'Arial Black',Arial,sans-serif; font-size:17px; letter-spacing:1px; color:#f4f0e8;
     background:rgba(5,8,12,0.75); padding:6px 12px; border-radius:8px; white-space:nowrap; }
-  .card { position:absolute; left:920px; top:180px; width:820px; box-sizing:border-box; padding:34px 44px;
+  .lt-card { position:absolute; left:920px; top:180px; width:820px; box-sizing:border-box; padding:34px 44px;
     background:rgba(10,16,24,0.58); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); border-radius:26px; }
-  .card .eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:5px; color:#d8a13a; }
-  .card .row { display:flex; gap:60px; margin-top:26px; }
-  .card .stat .num { font-family:'AbrilFig',Georgia,serif; font-size:72px; color:#f4f0e8; min-width:2.5ch;
+  .lt-card .lt-eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:5px; color:#d8a13a; }
+  .lt-card .lt-row { display:flex; gap:60px; margin-top:26px; }
+  .lt-card .lt-stat .lt-num { font-family:'AbrilFig',Georgia,serif; font-size:72px; color:#f4f0e8; min-width:2.5ch;
     font-variant-numeric:tabular-nums; }
-  .card .stat .u { margin-top:8px; font-family:'Arial Black',Arial,sans-serif; font-size:19px; letter-spacing:1px; color:#c8d3e0; }
-  .card .foot { margin-top:26px; font-size:22px; color:#c8d3e0; font-family:Georgia,serif; font-style:italic; }
+  .lt-card .lt-stat .lt-u { margin-top:8px; font-family:'Arial Black',Arial,sans-serif; font-size:19px; letter-spacing:1px; color:#c8d3e0; }
+  .lt-card .lt-foot { margin-top:26px; font-size:22px; color:#c8d3e0; font-family:Georgia,serif; font-style:italic; }
 </style>
 <div id="root" data-composition-id="ladder-tonight" data-width="1920" data-height="1080">
-  <div class="mini" id="lt-mini">
-    <div class="r"><div class="n">1</div>RISING RISK</div>
-    <div class="r"><div class="n">2</div>ADVISORY ISSUED</div>
-    <div class="r"><div class="n">3</div>ELDERLY EVACUATE</div>
-    <div class="r"><div class="n">4</div>EVACUATION INSTRUCTION</div>
-    <div class="r"><div class="n">5</div>EMERGENCY SAFETY</div>
+  <div class="lt-mini" id="lt-mini">
+    <div class="lt-r"><div class="lt-n">1</div>RISING RISK</div>
+    <div class="lt-r"><div class="lt-n">2</div>ADVISORY ISSUED</div>
+    <div class="lt-r"><div class="lt-n">3</div>ELDERLY EVACUATE</div>
+    <div class="lt-r"><div class="lt-n">4</div>EVACUATION INSTRUCTION</div>
+    <div class="lt-r"><div class="lt-n">5</div>EMERGENCY SAFETY</div>
   </div>
-  <div class="marker" id="lt-marker" style="visibility:hidden">TONIGHT: BELOW THE LADDER &middot; STILL A TD</div>
-  <div class="mapwrap" id="lt-mapwrap">
+  <div class="lt-marker" id="lt-marker" style="visibility:hidden">TONIGHT: BELOW THE LADDER &middot; STILL A TD</div>
+  <div class="lt-mapwrap" id="lt-mapwrap">
     <img src="../media/maps/westpac_corridor.png" alt="">
-    <div class="pin" id="lt-pin" style="left:250px; top:170px; visibility:hidden"></div>
-    <div class="pinlab" id="lt-pinlab" style="left:270px; top:150px; visibility:hidden">EAST OF JAPAN</div>
+    <div class="lt-pin" id="lt-pin" style="left:250px; top:170px; visibility:hidden"></div>
+    <div class="lt-pinlab" id="lt-pinlab" style="left:270px; top:150px; visibility:hidden">EAST OF JAPAN</div>
   </div>
-  <div class="card" id="lt-card">
-    <div class="eye">5-DAY FORECAST POINT</div>
-    <div class="row">
-      <div class="stat"><div class="num" id="lt-n1">0</div><div class="u">MPH &middot; 108 KM/H SUSTAINED</div></div>
-      <div class="stat"><div class="num" id="lt-n2">0</div><div class="u">MPH &middot; 144 KM/H GUST</div></div>
+  <div class="lt-card" id="lt-card">
+    <div class="lt-eye">5-DAY FORECAST POINT</div>
+    <div class="lt-row">
+      <div class="lt-stat"><div class="lt-num" id="lt-n1">0</div><div class="lt-u">MPH &middot; 108 KM/H SUSTAINED</div></div>
+      <div class="lt-stat"><div class="lt-num" id="lt-n2">0</div><div class="lt-u">MPH &middot; 144 KM/H GUST</div></div>
     </div>
-    <div class="foot">Natural Earth basemap &middot; pin position is schematic, not a to-scale plot</div>
+    <div class="lt-foot">Natural Earth basemap &middot; pin position is schematic, not a to-scale plot</div>
   </div>
 </div>
 <script>
