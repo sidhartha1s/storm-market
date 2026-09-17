@@ -405,10 +405,10 @@
       "title": "Silver Week Collision: A Storm Joins Japan's Biggest Holiday in Years",
       "owner": "director",
       "due": "16 Sep 26",
-      "phase": "checks",
+      "phase": "preview",
       "status": "doing",
-      "note": "B8 split done, CTA 90.27%; 7 static gates green; browser gates running",
-      "updated": "17 Sep 26 14:35"
+      "note": "draft 2 rendering from 15:10 (rework: B8 split CTA 90.27%, satellite zoom open, 8 s beats)",
+      "updated": "17 Sep 26 15:10"
     },
     {
       "slug": "ms-dujuan-two-tracks",
