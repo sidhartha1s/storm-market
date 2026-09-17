@@ -538,9 +538,9 @@
       "owner": "director",
       "due": "17 Sep 26",
       "phase": "preview",
-      "status": "done",
-      "note": "draft v1 rendered 17 Sep 26, 41.0 s, awaiting owner eyeball",
-      "updated": "17 Sep 26 12:49"
+      "status": "doing",
+      "note": "v1 ready (quote credit wraps a lone 4); v2 retry queued behind the parent mini draft render",
+      "updated": "17 Sep 26 13:29"
     }
   ]
 }
