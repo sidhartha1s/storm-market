@@ -407,8 +407,8 @@
       "due": "16 Sep 26",
       "phase": "preview",
       "status": "doing",
-      "note": "draft 2 rendered 15:28 (9:29): 6 freeze holds in the track map; frame check + round 2",
-      "updated": "17 Sep 26 15:33"
+      "note": "Round 2 fixes in progress (track-map dead stretches, 147 hPa, Kanto); freeze scan must PASS before draft 3",
+      "updated": "17 Sep 26 16:20"
     },
     {
       "slug": "ms-dujuan-two-tracks",
@@ -431,8 +431,8 @@
       "due": "16 Sep 26",
       "phase": "preview",
       "status": "doing",
-      "note": "draft 4 rendering from 15:28 (rule-span fix, Level 5 captions)",
-      "updated": "17 Sep 26 15:33"
+      "note": "Draft 4 verified: black and silence clean, 3 freeze holds left in ladder-l5. Composer now iterates on the 50 s pre-render freeze scan; draft 5 only after scan PASS",
+      "updated": "17 Sep 26 16:20"
     },
     {
       "slug": "ms-dujuan-us-travelers",
@@ -455,8 +455,8 @@
       "due": "16 Sep 26",
       "phase": "preview",
       "status": "doing",
-      "note": "draft 2 rendered 14:32: 3 freeze holds unchanged (quote open, translate-table open); frame check + round 4",
-      "updated": "17 Sep 26 14:35"
+      "note": "Round 4 content cadence applied; composer clearing comp_lint + freeze scan before draft 3",
+      "updated": "17 Sep 26 16:20"
     },
     {
       "slug": "ms-dujuan-holiday-typhoons",
@@ -479,8 +479,8 @@
       "due": "18 Sep 26",
       "phase": "checks",
       "status": "doing",
-      "note": "7 static gates green; browser gates wait for the render lock",
-      "updated": "17 Sep 26 13:20"
+      "note": "Composed; clearing comp_lint (2) + freeze scan + browser gates before draft 1",
+      "updated": "17 Sep 26 16:20"
     },
     {
       "slug": "ms-dujuan-closest-pass",
