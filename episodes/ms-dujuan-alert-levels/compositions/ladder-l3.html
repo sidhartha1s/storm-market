@@ -4,23 +4,30 @@
 <body>
 <!-- ladder-l3.html — B4 "level three: the elderly evacuate first". Full mini-ladder (all 5 rows, muted)
      with level 3 pulled out and highlighted; silhouette icon row for the named group; US-equivalent chip.
-     Full-window mount, no b-roll (pure graphic, matches sibling's B4 pattern). Cues word-synced from
-     audio/b4-s1.words.json. Mount: track 2, host start = episode-abs 174.273, duration 47.091 (shifted
-     15.539s earlier 17 Sep 26 when the CTA moved out of the old B3/B4 seam). Font:
-     'AbrilFig' relies on index.html's single @font-face (a per-comp duplicate false-triggers
-     css_collision.py on the shared ".ttf" url() token). All classes carry the l3- comp tag; this file's
-     bare ".srclab" was the real host collision (index.html defines its own ".srclab" source-label style
-     at a different position/size — it would have leaked into this card's source line). -->
+     Full-window mount, no b-roll. Cues word-synced from audio/b4-s1.words.json (mount = audio start
+     exactly, so comp-relative = audio-relative). Mount: track 2, host start = episode-abs 174.273,
+     duration 47.091. All classes carry the l3- comp tag.
+
+     ROUND 2 (owner: "sitting still", 2/10, 17 Sep 26) — the card was reported unchanged for the full
+     47s window past the icon row. Added .l3-note (a small chip in the mini-ladder's own column, left of
+     the card, so it never collides with the card/icons/chip) that lands five more word-cued beats from
+     b4-s1.words.json: "everyone else only prepares" (16.26), the US-population aside (29.46), "no
+     federal system assigns that number" (31.96), the Tokyo example (35.90), and the payoff line "leave
+     now if hard, get ready if not" (42.94). Plus .l3-bgplate for continuous background drift. -->
 <template>
 <style>
-  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
-    background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; background:#04070c; overflow:hidden; }
+  .l3-bgplate { position:absolute; inset:-60px; background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); transform-origin:center; }
   .l3-mini { position:absolute; left:90px; top:110px; width:360px; }
   .l3-mini .l3-r { display:flex; align-items:center; gap:12px; padding:10px 16px; margin-top:8px; border-radius:10px;
     background:rgba(10,16,24,0.5); border:1px solid rgba(255,255,255,0.1); opacity:0.35; font-size:18px; font-family:'Arial Black',Arial,sans-serif; }
   .l3-mini .l3-r .l3-n { font-family:'AbrilFig',Georgia,serif; font-size:26px; color:#8fb4d8; }
   .l3-mini .l3-r.l3-active { opacity:1; border-color:#d0121f; box-shadow:0 0 24px rgba(208,18,31,0.35); }
   .l3-mini .l3-r.l3-active .l3-n { color:#d0121f; }
+  .l3-note { position:absolute; left:90px; top:470px; width:360px; box-sizing:border-box; text-align:center;
+    font-family:'Arial Black',Arial,sans-serif; font-size:20px; letter-spacing:0.5px; line-height:1.3; color:#f4f0e8;
+    background:rgba(10,16,24,0.62); border:1px solid rgba(255,255,255,0.14); border-left:6px solid #8fb4d8;
+    border-radius:10px; padding:14px 18px; }
   .l3-card { position:absolute; left:520px; top:150px; width:900px; box-sizing:border-box; padding:36px 46px;
     background:rgba(10,16,24,0.58); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); border-radius:26px; }
@@ -37,6 +44,7 @@
   .l3-srclab { position:absolute; right:60px; top:60px; font-size:19px; color:rgba(220,228,236,0.75); }
 </style>
 <div id="root" data-composition-id="ladder-l3" data-width="1920" data-height="1080">
+  <div class="l3-bgplate" id="l3-bgplate"></div>
   <div class="l3-mini" id="l3-mini">
     <div class="l3-r" id="l3-m1"><div class="l3-n">1</div>RISING RISK</div>
     <div class="l3-r" id="l3-m2"><div class="l3-n">2</div>ADVISORY ISSUED</div>
@@ -44,6 +52,7 @@
     <div class="l3-r" id="l3-m4"><div class="l3-n">4</div>EVACUATION INSTRUCTION</div>
     <div class="l3-r" id="l3-m5"><div class="l3-n">5</div>EMERGENCY SAFETY</div>
   </div>
+  <div class="l3-note" id="l3-note" style="visibility:hidden"></div>
   <div class="l3-card" id="l3-card">
     <div class="l3-eye">ALERT LEVEL 3</div>
     <div class="l3-big" id="l3-big">Evacuation of the Elderly, Etc.</div>
@@ -62,35 +71,44 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const HOST_WINDOW = 47.091; // this episode's ladder-l3 mount: 174.273-221.364
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
-  tl.set(["#l3-i1","#l3-i2","#l3-i3","#l3-chip","#l3-src"], { autoAlpha: 0 }, 0);
-  tl.fromTo("#l3-mini", { x:-60, autoAlpha:0 }, { x:0, autoAlpha:1, duration:0.5 }, 0);
+  const CONTENT_BEATS = [];
+  function note(text, at, hold) {
+    tl.set("#l3-note", { visibility: "visible", textContent: text }, at);
+    tl.fromTo("#l3-note", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35 }, at);
+    tl.to("#l3-note", { autoAlpha: 0, duration: 0.3 }, at + hold - 0.3);
+    CONTENT_BEATS.push(at);
+  }
+
+  tl.to("#l3-bgplate", { scale: 1.06, duration: HOST_WINDOW, ease: "none" }, 0);
+
+  tl.set(["#l3-i1","#l3-i2","#l3-i3","#l3-chip","#l3-src","#l3-note"], { autoAlpha: 0 }, 0);
+  tl.set("#l3-note", { visibility: "hidden" }, 0);
+  tl.fromTo("#l3-mini", { x:-60, autoAlpha:0 }, { x:0, autoAlpha:1, duration:0.5 }, 0); CONTENT_BEATS.push(0);
   tl.fromTo("#l3-card", { x:40, autoAlpha:0 }, { x:0, autoAlpha:1, duration:0.5 }, 1.0);
-  tl.fromTo("#l3-src", { autoAlpha:0 }, { autoAlpha:1, duration:0.4 }, 1.0);
+  tl.fromTo("#l3-src", { autoAlpha:0 }, { autoAlpha:1, duration:0.4 }, 1.0); CONTENT_BEATS.push(1.0);
   /* continuous ambient motion so the card never sits frozen for the long hold */
   tl.to("#l3-card", { y: -6, duration: 2.7, ease: "sine.inOut", repeat: repeatsToFit(1.5, 2.7), yoyo: true }, 1.5);
   tl.to("#l3-m3", { boxShadow: "0 0 34px rgba(208,18,31,0.6)", duration: 1.3, ease: "sine.inOut", repeat: repeatsToFit(1.0, 1.3), yoyo: true }, 1.0);
-  tl.fromTo("#l3-i1", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.35 }, 7.20);
-  tl.fromTo("#l3-i2", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.35 }, 8.18);
-  tl.fromTo("#l3-i3", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.35 }, 9.92);
-  tl.fromTo("#l3-chip", { autoAlpha:0, x:-40 }, { autoAlpha:1, x:0, duration:0.4 }, 19.52);
-  tl.to("#l3-chip", { duration:0.01, onStart: () => { document.getElementById("l3-chip").textContent = "SOME COUNTIES: EARLY VOLUNTARY ORDER · NO NATIONAL NUMBER"; } }, 23.44);
-  tl.to(["#l3-mini","#l3-card","#l3-chip"], { autoAlpha:0, duration:0.5 }, 46.49);
-  /* beat-density filler: see ladder-intro.html for why these literal-repeat glints exist */
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 1.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 4.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 7.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 10.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 13.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 16.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 19.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 22.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 25.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 28.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 31.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 34.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 37.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 40.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 43.50);
+  tl.fromTo("#l3-i1", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.35 }, 7.20); CONTENT_BEATS.push(7.20);
+  tl.fromTo("#l3-i2", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.35 }, 8.18); CONTENT_BEATS.push(8.18);
+  tl.fromTo("#l3-i3", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.35 }, 9.92); CONTENT_BEATS.push(9.92);
+  /* "...while everyone else in the area only prepares to leave." — 16.26s */
+  note("EVERYONE ELSE ONLY PREPARES TO LEAVE", 16.26, 3.0);
+  tl.fromTo("#l3-chip", { autoAlpha:0, x:-40 }, { autoAlpha:1, x:0, duration:0.4 }, 19.52); CONTENT_BEATS.push(19.52);
+  tl.to("#l3-chip", { duration:0.01, onStart: () => { document.getElementById("l3-chip").textContent = "SOME COUNTIES: EARLY VOLUNTARY ORDER · NO NATIONAL NUMBER"; } }, 23.44); CONTENT_BEATS.push(23.44);
+  /* "...aimed at roughly the same population." — 29.46s */
+  note("AIMED AT THE SAME POPULATION", 29.46, 2.5);
+  /* "No federal system assigns that order a number the way Japan does." — 31.96s */
+  note("NO FEDERAL NUMBER EXISTS", 31.96, 3.9);
+  /* "A Japanese level 3 during this storm would tell an American resident in Tokyo..." — 35.90s */
+  note("TOKYO EXAMPLE: LEVEL 3", 35.90, 7.0);
+  /* "Leave now if leaving quickly is hard for you. Get ready if it is not." — 42.94s */
+  note("LEAVE NOW IF HARD. READY IF NOT.", 42.94, 3.5);
+  tl.to(["#l3-mini","#l3-card","#l3-chip"], { autoAlpha:0, duration:0.5 }, 46.49); CONTENT_BEATS.push(46.49);
+
+  const sorted = CONTENT_BEATS.slice().sort((a,b)=>a-b);
+  let maxGap = 0; for (let i=1;i<sorted.length;i++) maxGap = Math.max(maxGap, sorted[i]-sorted[i-1]);
+  console.log("[gap-check] ladder-l3 content beats:", sorted.map(n=>n.toFixed(2)), "max gap:", maxGap.toFixed(2), "s");
   window.__timelines["ladder-l3"] = tl;
 })();
 </script>
