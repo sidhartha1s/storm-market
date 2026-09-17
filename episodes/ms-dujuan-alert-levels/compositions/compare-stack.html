@@ -85,7 +85,11 @@ window.__timelines = window.__timelines || {};
 
   tl.to("#cs-bgplate", { scale: 1.06, duration: 53.782, ease: "none" }, 0);
 
-  tl.set(["#cs-r1","#cs-r2","#cs-r3","#cs-connlab","#cs-note"], { autoAlpha: 0 }, 0);
+  /* round 5 (owner: "no JAPAN box" at mount, 17 Sep 26) - #cs-l/#cs-r were missing from this initial
+     hide, so they were fully visible (default opacity 1) for the first 0.2s, then GSAP's fromTo() SNAPPED
+     them to autoAlpha:0 the instant its tween started at 0.2, before fading back in over 0.6s - a
+     pop-out-then-back-in glitch, not a design choice. */
+  tl.set(["#cs-l","#cs-r","#cs-r1","#cs-r2","#cs-r3","#cs-connlab","#cs-note"], { autoAlpha: 0 }, 0);
   tl.set("#cs-note", { visibility: "hidden" }, 0);
   tl.fromTo("#cs-eye", { autoAlpha:0, y:-16 }, { autoAlpha:1, y:0, duration:0.5 }, 0); CONTENT_BEATS.push(0);
   tl.fromTo("#cs-l", { x:-60, autoAlpha:0 }, { x:0, autoAlpha:1, duration:0.6, ease:"power3.out" }, 0.2);
