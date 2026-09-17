@@ -549,6 +549,10 @@ times. Three earlier shorts renders only succeeded because the wrapper happened 
 Even a 3-minute render launches through `scripts/run_hidden.vbs` (`wscript run_hidden.vbs
 cmd /c <wrapper.cmd>`), never harness background Bash. Watch the mp4 + the process by
 command line.
+Measured the same day: `wscript run_hidden.vbs cmd /c <x.cmd>` from the session's Bash sandbox
+returns 0 and runs NOTHING (a probe cmd that writes a file never fires; cscript same). Only a
+schtasks one-shot (the ep5 recipe above) or `powershell Start-Process -WindowStyle Hidden`
+actually start the child from inside the sandbox; the vbs works from schtasks, not from here.
 
 ## optimize_clips.py strips audio and ignores bitrate (measured ep5, 2026-08-06)
 
