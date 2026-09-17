@@ -75,10 +75,25 @@ window.__timelines = window.__timelines || {};
   tl.set("#km-eyebrow", { autoAlpha: 0 }, 0);
   tl.set("#km-stat-55k", { autoAlpha: 0, x: 24 }, 0);
   tl.fromTo("#km-eyebrow", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.6 }, 0.3);
-  tl.fromTo("#km-img", { scale: 1.0, x: 0, y: 0 }, { scale: 1.1, x: -30, y: -14, duration: 49.7, ease: "none" }, 0);
+  /* scale/drift now targets the WRAPPER (see file header pin-migration note), not #km-img alone,
+     so the pins move rigidly with the basemap instead of drifting off Yokosuka/Yokota/Tokyo. */
+  tl.fromTo("#km-mapwrap", { scale: 1.0, x: 0, y: 0 }, { scale: 1.1, x: -30, y: -14, duration: 49.7, ease: "none" }, 0);
   /* the ~55,000 stat lands here, replacing the old host-level popfig (see file header) -- on its
      own word, same 34.8 comp-relative cue the eyebrow used to only pulse for. */
   tl.fromTo("#km-stat-55k", { autoAlpha: 0, x: 24 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 34.8);
+
+  /* Pins/leaders/labels (migrated from index.html, see file header): same word-synced beats as
+     before the migration -- Tokyo on "Kanto region" (18.78, the map's own anchor, no base-specific
+     name needed), Yokosuka on "Fleet" (23.26), Yokota on its own name (27.94) -- and the same
+     405.461 host exit (comp-relative 49.261 = 405.461-356.2). */
+  tl.set(["#km-pin-tokyo", "#km-pin-yokosuka", "#km-pin-yokota", "#km-lab-tokyo", "#km-lab-yokosuka", "#km-lab-yokota", "#km-leader-tokyo", "#km-leader-yokosuka", "#km-leader-yokota"], { autoAlpha: 0 }, 0);
+  tl.fromTo("#km-pin-tokyo", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 18.78);
+  tl.fromTo(["#km-lab-tokyo", "#km-leader-tokyo"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 18.78);
+  tl.fromTo("#km-pin-yokosuka", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 23.26);
+  tl.fromTo(["#km-lab-yokosuka", "#km-leader-yokosuka"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 23.26);
+  tl.fromTo("#km-pin-yokota", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 27.94);
+  tl.fromTo(["#km-lab-yokota", "#km-leader-yokota"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 27.94);
+  tl.to(["#km-pin-tokyo", "#km-pin-yokosuka", "#km-pin-yokota", "#km-lab-tokyo", "#km-lab-yokosuka", "#km-lab-yokota", "#km-leader-tokyo", "#km-leader-yokosuka", "#km-leader-yokota"], { autoAlpha: 0, duration: 0.4 }, 49.261);
   /* 8s max-gap rule (team-lead direction, 17 Sep 26): this comp's own eyebrow was the only
      content tween (index.html's own pf-427m/chip-noalert popfigs + the pin/label overlays carry
      most of B6's facts on tracks 4/5/6, but that left this FILE with a single reveal in a 49.7s
