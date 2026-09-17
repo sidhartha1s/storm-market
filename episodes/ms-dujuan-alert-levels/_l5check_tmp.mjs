@@ -19,7 +19,7 @@ ${hostCss}</style></head><body>
 const stagePath = path.join(ep, '_l5check_stage.html');
 fs.writeFileSync(stagePath, stage);
 
-const browser = await chromium.launch();
+const browser = await chromium.launch({ executablePath: EXECUTABLE, args: ['--allow-file-access-from-files'] });
 const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
 page.on('pageerror', e => console.log('PAGEERROR', e.message));
 await page.goto('file:///' + stagePath.split(path.sep).join('/'));
