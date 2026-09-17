@@ -5,31 +5,32 @@
 <!-- g-close.html — B10 close card. "Five levels. One ladder." + the soft comment/subscribe line + brand.
      Paul's presenter circle is hidden for this whole window (handled in index.html). Mount: track 2 over
      a full-window blackout, host start = episode-abs 513.412, duration 16.364 (12.364 s of narration + a
-     4.0 s tail hold). -->
+     4.0 s tail hold). Font: 'AbrilFig' relies on index.html's single @font-face (a per-comp duplicate
+     false-triggers css_collision.py on the shared ".ttf" url() token). All classes carry the gc- comp tag
+     so no class name is shared with index.html or a sibling composition. -->
 <template>
 <style>
-  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
   #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
     background:radial-gradient(ellipse at 50% 45%, #131b26 0%, #050a10 70%); overflow:hidden; }
-  .glow { position:absolute; width:900px; height:900px; border-radius:50%; filter:blur(90px); opacity:0.6;
+  .gc-glow { position:absolute; width:900px; height:900px; border-radius:50%; filter:blur(90px); opacity:0.6;
     background:radial-gradient(circle, rgba(208,18,31,0.55) 0%, rgba(208,18,31,0) 70%); }
   #gc-glow-a { left:-200px; top:-260px; }
   #gc-glow-b { right:-260px; bottom:-260px; background:radial-gradient(circle, rgba(143,180,216,0.4) 0%, rgba(143,180,216,0) 70%); }
-  .wrap { position:absolute; left:0; right:0; top:0; bottom:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
-  .head { font-family:'AbrilFig',Georgia,serif; font-size:92px; color:#f4f0e8; text-align:center; line-height:1.25; }
-  .head .red { color:#d0121f; }
-  .soft { margin-top:30px; font-family:Georgia,serif; font-style:italic; font-size:30px; color:#c8d3e0; }
-  .brand { margin-top:60px; font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:8px; color:#d8a13a; }
-  .rule { margin-top:26px; width:120px; height:3px; background:#d0121f; }
+  .gc-wrap { position:absolute; left:0; right:0; top:0; bottom:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .gc-head { font-family:'AbrilFig',Georgia,serif; font-size:92px; color:#f4f0e8; text-align:center; line-height:1.25; }
+  .gc-head .gc-red { color:#d0121f; }
+  .gc-soft { margin-top:30px; font-family:Georgia,serif; font-style:italic; font-size:30px; color:#c8d3e0; }
+  .gc-brand { margin-top:60px; font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:8px; color:#d8a13a; }
+  .gc-rule { margin-top:26px; width:120px; height:3px; background:#d0121f; }
 </style>
 <div id="root" data-composition-id="g-close" data-width="1920" data-height="1080">
-  <div class="glow" id="gc-glow-a"></div>
-  <div class="glow" id="gc-glow-b"></div>
-  <div class="wrap">
-    <div class="head" id="gc-head"><span class="red">Five levels.</span> One ladder.</div>
-    <div class="soft" id="gc-soft">Explained for Americans.</div>
-    <div class="rule" id="gc-rule"></div>
-    <div class="brand" id="gc-brand">THE WARNING HOUR</div>
+  <div class="gc-glow" id="gc-glow-a"></div>
+  <div class="gc-glow" id="gc-glow-b"></div>
+  <div class="gc-wrap">
+    <div class="gc-head" id="gc-head"><span class="gc-red">Five levels.</span> One ladder.</div>
+    <div class="gc-soft" id="gc-soft">Explained for Americans.</div>
+    <div class="gc-rule" id="gc-rule"></div>
+    <div class="gc-brand" id="gc-brand">THE WARNING HOUR</div>
   </div>
 </div>
 <script>
