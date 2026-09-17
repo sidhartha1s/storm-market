@@ -92,12 +92,9 @@ window.__timelines = window.__timelines || {};
     CONTENT_BEATS.push(at);
   }
 
-  const N1 = { n: 0 }; const n1El = document.getElementById("l5-n1");
-
   tl.to("#l5-bgplate", { scale: 1.06, duration: 54.618, ease: "none" }, 0);
 
   tl.set(["#l5-pf","#l5-card","#l5-note"], { visibility: "hidden", autoAlpha: 0 }, 0);
-  tl.set("#l5-n1", { textContent: "0" }, 0);
   tl.fromTo("#l5-eye", { autoAlpha:0, y:-16 }, { autoAlpha:1, y:0, duration:0.5 }, 0); CONTENT_BEATS.push(0);
   tl.fromTo("#l5-lvl", { autoAlpha:0, scale:0.9 }, { autoAlpha:1, scale:1, duration:0.5 }, 1.36); CONTENT_BEATS.push(1.36);
   tl.to("#l5-lvl", { opacity: 0.85, duration: 2.2, ease: "sine.inOut", repeat: repeatsToFit(2.0, 2.2), yoyo: true }, 2.0);
