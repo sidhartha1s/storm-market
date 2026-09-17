@@ -71,9 +71,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#lad-r", { x:60, autoAlpha:0 }, { x:0, autoAlpha:1, duration:0.6 }, 0);
   tl.fromTo("#lad-chip", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 0.4);
   /* continuous ambient motion across the whole window so the card never sits frozen between reveals */
-  tl.to(".colhead", { letterSpacing: "5px", duration: 5.0, ease: "sine.inOut", repeat: repeatsToFit(0.6, 5.0), yoyo: true }, 0.6);
+  tl.to(".ld-colhead", { letterSpacing: "5px", duration: 5.0, ease: "sine.inOut", repeat: repeatsToFit(0.6, 5.0), yoyo: true }, 0.6);
   /* rung bob: stagger 0.4 across 5 targets -> cycle = 0.4*4 + 3.4 = 5.0 */
-  tl.fromTo("#lad-l .rung", { y: 0 }, { y: -6, duration: 3.4, ease: "sine.inOut", repeat: repeatsToFit(0.6, 5.0), yoyo: true, stagger: 0.4 }, 0.6);
+  tl.fromTo("#lad-l .ld-rung", { y: 0 }, { y: -6, duration: 3.4, ease: "sine.inOut", repeat: repeatsToFit(0.6, 5.0), yoyo: true, stagger: 0.4 }, 0.6);
   /* small literal-repeat glints between the widely-spaced row-reveal cues below, so a static-analysis pass
      over explicit tl positions (not just the real GSAP playback) also reads continuous coverage */
   tl.to("#lad-l", { opacity: 0.92, duration: 0.5, yoyo: true, repeat: 1 }, 4.19);
