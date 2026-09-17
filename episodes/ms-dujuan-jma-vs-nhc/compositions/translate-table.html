@@ -39,6 +39,7 @@
     font-size:22px; letter-spacing:2px; color:#d8a13a; }
 </style>
 <div id="root" data-composition-id="translate-table" data-width="1920" data-height="1080">
+  <div class="tt-bgplate" id="tt-bgplate"></div>
   <div class="tt-glow" id="tt-glow-a"></div>
   <div class="tt-glow" id="tt-glow-b"></div>
   <div class="tt-basinrow">
@@ -48,10 +49,11 @@
   </div>
   <div class="tt-table" id="tt-table">
     <div class="tt-thead"><span>JAPAN'S GRADE</span><span>&nbsp;</span><span>AMERICAN READ</span></div>
-    <div class="tt-trow" id="tt-r1"><div class="tt-jma">STRONG TYPHOON</div><div class="tt-us"><span class="tt-arrow">&rarr;</span>Category 1 start</div></div>
-    <div class="tt-trow" id="tt-r2"><div class="tt-jma">VERY STRONG TYPHOON</div><div class="tt-us"><span class="tt-arrow">&rarr;</span>Near the top of Category 2</div></div>
-    <div class="tt-trow" id="tt-r3"><div class="tt-jma">VIOLENT TYPHOON</div><div class="tt-us"><span class="tt-arrow">&rarr;</span>Well into Category 3, and climbing</div></div>
+    <div class="tt-trow" id="tt-r1"><div class="tt-jma" id="tt-r1-jma">STRONG TYPHOON</div><div class="tt-us" id="tt-r1-us"><span class="tt-arrow">&rarr;</span>Category 1 start</div></div>
+    <div class="tt-trow" id="tt-r2"><div class="tt-jma" id="tt-r2-jma">VERY STRONG TYPHOON</div><div class="tt-us" id="tt-r2-us"><span class="tt-arrow">&rarr;</span>Near the top of Category 2</div></div>
+    <div class="tt-trow" id="tt-r3"><div class="tt-jma" id="tt-r3-jma">VIOLENT TYPHOON</div><div class="tt-us" id="tt-r3-us"><span class="tt-arrow">&rarr;</span>Well into Category 3, and climbing</div></div>
   </div>
+  <div class="tt-caption" id="tt-caption">THE GRADE IS THE MEASUREMENT &middot; NOT THE WORD</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
