@@ -95,6 +95,10 @@ window.__timelines = window.__timelines || {};
   tl.to("#cc-l", { opacity: 0.9, duration: 0.5, yoyo: true, repeat: 1 }, 39.12);
   /* JMA 67 counts up on its cue (comp-local 2.32 = B6-rel 23.32) */
   tl.to(L, { n: 67, duration: 1.0, ease: "power1.out", onUpdate: () => lEl.textContent = Math.round(L.n) }, 2.32);
+  /* three real beats close the old 2.32->20.22 (17.9s) gap, each on its own narration clause */
+  tl.fromTo("#cc-l-note", { autoAlpha:0, y:10 }, { autoAlpha:1, y:0, duration:0.35 }, 4.08); // "one step below Typhoon" 25.08
+  tl.fromTo("#cc-r-note", { autoAlpha:0, y:10 }, { autoAlpha:1, y:0, duration:0.35 }, 11.94); // "Navy's Joint Typhoon Warning Center" 32.94
+  tl.to("#cc-r", { boxShadow: "0 0 40px rgba(208,18,31,0.5)", duration: 0.6, yoyo:true, repeat:1 }, 16.14); // "forecasts...near 75 mph" 37.14
   /* JTWC 75 counts up on its cue (comp-local 20.22 = B6-rel 41.22) */
   tl.to(R, { n: 75, duration: 1.0, ease: "power1.out", onUpdate: () => rEl.textContent = Math.round(R.n) }, 20.22);
   /* "75 mph crosses the Saffir-Simpson line into category 1" (comp-local 22.44 = B6-rel 43.44) */
