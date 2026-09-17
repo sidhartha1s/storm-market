@@ -116,7 +116,10 @@ window.__timelines = window.__timelines || {};
   /* "In the United States, the National Hurricane Center issues a hurricane warning as a wind forecast." — 41.96s */
   note("US: NHC ISSUES A WIND-FORECAST WARNING", 41.96, 7.38);
   tl.fromTo("#q4-tl", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 49.34); CONTENT_BEATS.push(49.34);
-  tl.to("#q4-tl", { duration:0.01, onStart: () => { document.getElementById("q4-tl").textContent = "EVACUATION ORDER: SEPARATE, LOCAL DECISION · NOT LINKED TO THE WARNING"; } }, 55.26); CONTENT_BEATS.push(55.26);
+  /* comp_lint R2 fix (owner 17 Sep 26): pre-authored as two stacked leaf lines, cross-faded on the
+     timeline, instead of an onStart text mutation the seek-based QC never fires. */
+  tl.to("#q4-tl1", { autoAlpha: 0, duration: 0.3 }, 54.96);
+  tl.fromTo("#q4-tl2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 55.26); CONTENT_BEATS.push(55.26);
   tl.to(["#q4-eye","#q4-lvl","#q4-quote","#q4-tl"], { autoAlpha:0, duration:0.5 }, 62.49); CONTENT_BEATS.push(62.49);
 
   const sorted = CONTENT_BEATS.slice().sort((a,b)=>a-b);
