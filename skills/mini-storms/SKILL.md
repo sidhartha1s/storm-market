@@ -147,6 +147,14 @@ narration speech spans, hidden in the hook / CTA / close. Deliverables: `master_
 ### 6b. Humanise pass (owner 2026-09-13)
 Before TTS, run `references/humanise-rules.md` rules 2–14 line by line on the whole script; keep the diff in the episode folder.
 
+### Dujuan U1 review rules (owner 17 Sep 26, hard)
+- **Comps are mounted inside index.html's DOM.** Every class in a composition carries the comp's prefix (`tm-`, `sw-`, …); `scripts/css_collision.py` (inside sweep) fails any shared name. The browser gates stage comps WITH the host `<style>` blocks; a comp that passes standalone proves nothing.
+- **Approved index-level layouts never move for a comp.** Popfigs and chips keep the approved classes and positions; where a card comp is the driver of the beat and the approved spot is not clear of its text, skip that popfig (list the skips in the handback). No custom zones.
+- **Cards mount with their first fact**, rows land on the beat, tracks draw progressively; no comp window shows only background for >2 s (`blank_scan` counts text/media only, ids are not content).
+- **Seams ≤0.8 s** between voice segments (`lint_timeline` fails otherwise); the only hole is the CTA.
+- **CTA at 85–95 %** (`config.yaml channel.cta.window_ms`), immediately before the closing tracking segment, entered by a spoken bridge half-line ("Just a second before the last numbers…") with no blackout, dip or gap; keep the dip out.
+- **Every draft gets a per-comp-window frame read** (Sonnet reader, contact sheets) before the owner sees it; green gates alone never clear a draft.
+
 ### 7–9. QC, render, ship
 Same scripts and hidden-window rules as storm-episode. Static gates → 3–5 slice renders (40 s windows at 10 fps
 around every new card, the CTA and the close; strip read by a subagent) → ONE draft → owner preview → full.

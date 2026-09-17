@@ -10,6 +10,10 @@ const ep = process.argv[2];
 const STEP = 0.25;
 const gsap = readFileSync(join(ep, 'gsap.min.js'), 'utf8');
 const tmp = join(ep, '_blank_tmp.html');
+// Host-style injection: hyperframes mounts comps INSIDE index.html's DOM, so the page stylesheet
+// applies to comp elements (17 Sep 26: host `.chip{bottom:300px}` stretched a comp chip into a 720 px
+// panel; every standalone gate passed). Staging must carry the host <style> blocks.
+const HOST_CSS = [...readFileSync(join(ep, 'index.html'), 'utf8').matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].map(x => x[1]).join('\n');
 
 const browser = await chromium.launch({ executablePath: EXECUTABLE, args: ['--allow-file-access-from-files'] });
 const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
@@ -20,6 +24,7 @@ for (const f of readdirSync(join(ep, 'compositions')).filter(f => f.endsWith('.h
   const raw = readFileSync(join(ep, 'compositions', f), 'utf8');
   const inner = raw.slice(raw.indexOf('<template>') + 10, raw.lastIndexOf('</template>'));
   writeFileSync(tmp, `<!doctype html><html><head><meta charset="utf-8">
+<style>${HOST_CSS}</style>
 <style>html,body{margin:0;background:#000;width:1920px;height:1080px;overflow:hidden}</style>
 <script>${gsap}</script></head><body>${inner}</body></html>`, 'utf8');
   await page.goto('file:///' + tmp.replace(/\\/g, '/'), { waitUntil: 'load' });
@@ -39,8 +44,11 @@ for (const f of readdirSync(join(ep, 'compositions')).filter(f => f.endsWith('.h
        would have reported PASS even if the map and every marker failed to appear.
        The rule that separates them: real content carries an id or text. */
     const nodes = [...document.querySelectorAll('#root *')].filter(
-      e => !e.classList.contains('drift') && e.id !== 'root'
-           && (e.id || e.textContent.trim()));
+      /* content = readable text or media. An id alone is not content: #sl-drift (a rotating
+         background) carried the scale-ladder comp through a 17 s window with no card on
+         screen and this gate said PASS (Dujuan U1, 7:02-7:20, 17 Sep 26). */
+      e => e.id !== 'root' && !/drift/.test(e.id + ' ' + e.className)
+           && (e.textContent.trim() || /^(IMG|VIDEO|CANVAS|svg)$/.test(e.tagName) || e.closest('svg')));
     const out = [];
     for (let t = 0; t <= dur; t += step) {
       tl.seek(t, false);

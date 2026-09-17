@@ -144,11 +144,16 @@ const MEASURE = `((t) => {
   return out;
 })`;
 
+// Host-style injection: hyperframes mounts comps INSIDE index.html's DOM, so the page stylesheet
+// applies to comp elements (17 Sep 26: host `.chip{bottom:300px}` stretched a comp chip into a 720 px
+// panel; every standalone gate passed). Staging must carry the host <style> blocks.
+const HOST_CSS = [...readFileSync(join(ep, 'index.html'), 'utf8').matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].map(x => x[1]).join('\n');
 function standalone(file) {
   const raw = readFileSync(file, 'utf8');
   const m = raw.match(/<template>([\s\S]*?)<\/template>/);
   const body = m ? m[1] : raw;
   const html = `<!doctype html><html><head><meta charset="utf-8">
+<style>${HOST_CSS}</style>
 <style>html,body{margin:0;width:1920px;height:1080px;background:#111;overflow:hidden}</style>
 <script src="../gsap.min.js"></script></head><body>${body}</body></html>`;
   const out = join(TMP, basename(file));

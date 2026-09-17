@@ -88,6 +88,12 @@ report("media files exist", sorted(set(miss)))
 ids = Counter(re.findall(r' id="([^"]+)"', h))
 report("element ids unique", sorted(n for n, c in ids.items() if c > 1))
 
+# 5c2. host/comp class collision (17 Sep 26): hyperframes mounts comps inside index.html, so a shared
+# class name lets the page stylesheet restyle the comp. Deterministic; scripts/css_collision.py.
+_cc = subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "css_collision.py"), str(ep)],
+                     capture_output=True, text=True)
+report("comp classes disjoint from index.html", [l for l in _cc.stdout.splitlines() if l.startswith("FAIL")])
+
 # 5d. CTA present + placed (owner order 2026-08-30, DESIGN.md "CTA contract"): the ebook CTA is a
 # must-keep element of every episode. Deterministic part only — file/duration/window/labels from
 # config.yaml channel.cta; the hinge (tease -> CTA -> payoff) stays editorial.
@@ -99,11 +105,12 @@ if not cta:
 cta_name = Path(cta["file"]).name
 cta_bad = []
 _slug = ep.resolve().name
-_cta_applies = bool(re.match(r"ep\d+", _slug)) and _slug not in (cta.get("exempt") or [])
+_cta_applies = bool(re.match(r"(ep\d+|ms-)", _slug)) and _slug not in (cta.get("exempt") or [])
+_cta_window = cta["window_ms"] if _slug.startswith("ms-") else cta["window"]   # news lane sits at ~90 % (owner 17 Sep 26)
 cm = re.search(r'<video\b[^>]*src="([^"]*' + re.escape(cta_name) + r')"[^>]*>', h)
 if not _cta_applies:
     # episodes shipped before the contract (config channel.cta.exempt) and demo-* dirs are not re-wired
-    print(f"SKIP CTA present + placed — {_slug} is exempt (shipped pre-contract) or not an epN episode")
+    print(f"SKIP CTA present + placed — {_slug} is exempt (shipped pre-contract) or not an epN / ms- episode")
 elif not cm:
     cta_bad.append(f"no <video> whose src ends in {cta_name} (config channel.cta.file)")
 else:
@@ -116,7 +123,7 @@ else:
         s, d = float(st.group(1)), float(du.group(1))
         if abs(d - float(cta["duration"])) > 0.05:
             cta_bad.append(f"data-duration {d} != config {cta['duration']}")
-        lo, hi = cta["window"]
+        lo, hi = _cta_window
         if not (lo <= s / total <= hi):
             cta_bad.append(f"starts at {s}s = {s / total:.0%} of {total}s — outside {lo:.0%}-{hi:.0%}")
         for n in re.finditer(r'<audio\b[^>]*id="(nx-(?!ins)[^"]*)"[^>]*>', h):
