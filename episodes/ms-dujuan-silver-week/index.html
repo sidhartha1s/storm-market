@@ -262,6 +262,11 @@
   <section class="clip still-wrap" id="c-b8-2e-himawari" data-start="546.11" data-duration="6.0" data-track-index="1" data-callback="distinct crop of the same Himawari frame"><img id="kb-b8-2e-himawari" src="media/image/img-himawari-b8-5.jpg" alt=""></section>
   <section class="clip still-wrap" id="c-b8-2f-himawari" data-start="552.11" data-duration="4.311" data-track-index="1" data-callback="distinct crop of the same Himawari frame"><img id="kb-b8-2f-himawari" src="media/image/img-himawari-b8-6.jpg" alt=""></section>
 
+  <!-- chapter break between b8-s1b and B9, same 0.6s pattern as every other B-to-B transition
+       (bo-hook/bo-b2../bo-b7) -- missed when b8-s1b was first split in; caught by lint_timeline's
+       picture-gap check. -->
+  <section class="clip blackout" id="bo-b8" data-start="556.421" data-duration="0.6" data-track-index="1"></section>
+
   <!-- B9 · close 557.021-569.072 (close-card.html on track 2) -->
   <section class="clip blackout" id="bo-end" data-start="557.021" data-duration="12.051" data-track-index="1"></section>
 
