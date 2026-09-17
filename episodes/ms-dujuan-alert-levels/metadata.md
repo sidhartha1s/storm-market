@@ -7,7 +7,7 @@
 
 ## Description
 https://paulraymond.online
-📘 The book mentioned at 2:53 — The Storm-Ready Home
+📘 The book mentioned at 7:39 — The Storm-Ready Home
 
 Right now a tropical depression sits near Guam, and Japan's weather agency has already mapped its
 path for the next five days. When Japanese officials decide what to tell residents, they will not
