@@ -35,11 +35,6 @@
   .jq-row:first-of-type { border-top:none; padding-top:0; }
   .jq-lab { font-family:'Arial Black',Arial,sans-serif; font-size:30px; line-height:1.1; }
   .jq-rng { font-family:'AbrilFig',Georgia,serif; font-size:54px; color:#d0121f; white-space:nowrap; line-height:1.2; }
-  /* jq-r5-rng/jq-r5-final are stacked absolutely inside their own positioned wrapper so only one occupies
-     visible layout at a time, instead of mutating textContent in onComplete (comp_lint: seek-based QC never
-     fires an onComplete callback) */
-  #jq-r5-rngwrap { position:relative; min-height:65px; }
-  #jq-r5-rng, #jq-r5-final { position:absolute; left:0; top:0; white-space:nowrap; }
   .jq-thresh { margin-top:18px; padding:10px 18px; background:rgba(208,18,31,0.18); border-left:4px solid #d0121f;
     font-family:'Arial Black',Arial,sans-serif; font-size:20px; letter-spacing:1px; color:#f4b8bc; }
   .jq-chip2 { position:absolute; right:80px; top:60px; font-family:'Arial Black',Arial,sans-serif; font-size:26px;
