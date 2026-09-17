@@ -599,6 +599,40 @@ window.__timelines = window.__timelines || {};
   tl.addLabel("cue-checkpoint", 103.92);
   tl.fromTo("#tm-r-checkpoint", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 103.92);
 
+  /* Reader QC (team-lead, 17 Sep 26): "24-36s, 48-60s and 72-137s [comp-local] is one long
+     freeze"; the travel markers and background scale-drift are real motion but too small an
+     area of the frame to register. Real fix: every number/place/time/comparison the narration
+     actually speaks in this stretch lands as its own note in the shared rail above, each on its
+     own word (audio/b1-s1.words.json for the pre-card zone, audio/b2-s1.words.json -- +51.618s
+     offset -- for the rest; comp-local = host - 7.0 throughout). Tokyo's own reveal (35.72s) sits
+     in this same sequence, between note-1 and note-2. */
+  tl.set(".tm-note-item", { autoAlpha: 0 }, 0);
+  const NOTES = [
+    [1, 30.24, 35.72],   // "Two outcomes are still open tonight"
+    [2, 38.16, 41.82],   // "The other slides it by, offshore, weakened but still felt"
+    [3, 41.82, 45.60],   // "Both possibilities remain in tonight's forecast"
+    [4, 45.60, 49.50],   // "At 7:10 Wednesday evening, Japan time"
+    [5, 49.50, 52.28],   // "...sits near the Mariana Islands"
+    [6, 74.70, 80.30],   // "Its own reading calls sustained winds 35...gusting near 46"
+    [7, 80.30, 85.22],   // "Neither agency has given the storm a name yet"
+    [8, 85.22, 88.68],   // "Winds reach 46 miles per hour within 12 hours"
+    [9, 88.68, 94.10],   // "...then 58 within a day. They hold near 58 for a day after that"
+    [10, 94.10, 98.18],  // "...the model turns the storm north...toward Japan's main islands"
+    [11, 98.18, 103.92], // "Japan expects a slower climb"
+    [12, 107.16, 111.42],// "...the system becomes this year's 25th typhoon"
+    [13, 111.42, 116.94],// "Ocean water...sits near 85 degrees Fahrenheit"
+    [14, 116.94, 122.90],// "Wind shear across the storm is low"
+    [15, 122.90, 125.92],// "...dry air moving in from the northwest"
+    [16, 125.92, 128.30],// "Waves near the center already reach 14 feet"
+    [17, 128.30, 133.78],// "No populated coastline sits inside the storm's strongest wind field"
+    [18, 133.78, 137.00],// "Global disaster trackers still rate this system green"
+  ];
+  NOTES.forEach(([n, on, off]) => {
+    tl.fromTo(`#tm-note-${n}`, { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, on);
+    tl.to(`#tm-note-${n}`, { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, off);
+  });
+  tl.to([tokyoDot, tokyoLab], { opacity: 1, duration: 0.4, ease: "power4.out" }, 35.72);
+
   window.__timelines["track-map"] = tl;
 })();
 </script>
