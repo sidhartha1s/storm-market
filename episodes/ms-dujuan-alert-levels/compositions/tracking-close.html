@@ -60,32 +60,42 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const HOST_WINDOW = 40.582; // this episode's tracking-close mount: 480.456-521.038
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
-  tl.set(["#tc-r2","#tc-chip"], { visibility: "hidden", autoAlpha: 0 }, 0);
-  tl.fromTo("#tc-card", { autoAlpha:0, scale:0.94 }, { autoAlpha:1, scale:1, duration:0.6, ease:"power3.out" }, 0);
-  tl.fromTo("#tc-r1", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.4 }, 0.3);
+  const CONTENT_BEATS = [];
+  function note(text, at, hold) {
+    tl.set("#tc-note", { visibility: "visible", textContent: text }, at);
+    tl.fromTo("#tc-note", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35 }, at);
+    tl.to("#tc-note", { autoAlpha: 0, duration: 0.3 }, at + hold - 0.3);
+    CONTENT_BEATS.push(at);
+  }
+
+  tl.to("#tc-bgplate", { scale: 1.06, duration: HOST_WINDOW, ease: "none" }, 0);
+
+  tl.set(["#tc-r2","#tc-chip","#tc-note"], { visibility: "hidden", autoAlpha: 0 }, 0);
+  tl.fromTo("#tc-card", { autoAlpha:0, scale:0.94 }, { autoAlpha:1, scale:1, duration:0.6, ease:"power3.out" }, 0); CONTENT_BEATS.push(0);
+  tl.fromTo("#tc-r1", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.4 }, 0.3); CONTENT_BEATS.push(0.3);
   /* continuous ambient motion so the card never sits frozen through the hold */
   tl.to("#tc-card", { y: -6, duration: 2.7, ease: "sine.inOut", repeat: repeatsToFit(0.8, 2.7), yoyo: true }, 0.8);
   tl.set("#tc-r2", { visibility: "visible" }, 5.56);
-  tl.fromTo("#tc-r2", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.4 }, 5.56);
+  tl.fromTo("#tc-r2", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.4 }, 5.56); CONTENT_BEATS.push(5.56);
   tl.set("#tc-chip", { visibility: "visible" }, 10.98);
-  tl.fromTo("#tc-chip", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.4 }, 10.98);
+  tl.fromTo("#tc-chip", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.4 }, 10.98); CONTENT_BEATS.push(10.98);
+  /* "They are checking a forecast that updates by the hour." — 16.98s */
+  note("CHECKING A FORECAST THAT UPDATES HOURLY", 16.98, 3.5);
+  /* "Anyone traveling through Japan this week should check that advisory directly..." — 20.48s */
+  note("CHECK THE ADVISORY DIRECTLY", 20.48, 6.22);
+  /* "Whichever alert level this storm eventually triggers... that number will tell them more." — 26.70s */
+  note("WHICHEVER LEVEL IT TRIGGERS, IT WILL TELL YOU MORE", 26.70, 6.24);
+  /* "It says more than any single wind speed reading ever could." — 32.94s */
+  note("MORE THAN ANY WIND SPEED READING", 32.94, 3.86);
+  /* "Japan's weather agency issues its next advisory within hours." — 36.80s */
+  note("JMA'S NEXT ADVISORY: WITHIN HOURS", 36.80, 3.18);
   tl.to("#tc-hl", { boxShadow: "0 0 34px rgba(216,161,58,0.5)", duration: 1.3, ease: "sine.inOut", repeat: repeatsToFit(15.0, 1.3), yoyo: true }, 15.0);
-  tl.to("#tc-hl", { scale: 1.03, duration: 0.6, ease: "power2.out" }, 38.58);
-  tl.to("#tc-card", { autoAlpha:0, duration:0.5 }, 39.98);
-  /* beat-density filler: see ladder-intro.html for why these literal-repeat glints exist */
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 1.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 4.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 7.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 10.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 13.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 16.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 19.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 22.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 25.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 28.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 31.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 34.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 37.50);
+  tl.to("#tc-hl", { scale: 1.03, duration: 0.6, ease: "power2.out" }, 38.58); CONTENT_BEATS.push(38.58);
+  tl.to("#tc-card", { autoAlpha:0, duration:0.5 }, 39.98); CONTENT_BEATS.push(39.98);
+
+  const sorted = CONTENT_BEATS.slice().sort((a,b)=>a-b);
+  let maxGap = 0; for (let i=1;i<sorted.length;i++) maxGap = Math.max(maxGap, sorted[i]-sorted[i-1]);
+  console.log("[gap-check] tracking-close content beats:", sorted.map(n=>n.toFixed(2)), "max gap:", maxGap.toFixed(2), "s");
   window.__timelines["tracking-close"] = tl;
 })();
 </script>
