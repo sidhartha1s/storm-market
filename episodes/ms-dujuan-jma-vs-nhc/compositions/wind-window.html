@@ -9,8 +9,9 @@
      episode-abs 305.157, duration 21.0 (comp-local time = B6 segment time, 0 = narration start). -->
 <template>
 <style>
-  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
-    background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; background:#04070c; overflow:hidden; }
+  .ww-bgplate { position:absolute; left:-60px; right:-60px; top:-60px; bottom:-60px;
+    background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); transform-origin:center; will-change:transform; }
   .ww-eye { position:absolute; left:110px; top:110px; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:5px; color:#d0121f; }
   .ww-chartwrap { position:absolute; left:110px; top:190px; width:1700px; height:560px; box-sizing:border-box; padding:30px;
     background:rgba(10,16,24,0.5); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
