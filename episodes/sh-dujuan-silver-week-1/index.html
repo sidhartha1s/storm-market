@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Typhoon Dujuan Is Aimed at Silver Week — The Warning Hour short S1 (sh-dujuan-silver-week-1, 17 Sep 26)</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #04070c; }
+    video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .clip { position: absolute; inset: 0; }
+    @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+
+    /* headline card: top, persistent, our own bug */
+    .head { position: absolute; left: 60px; right: 180px; top: 250px; z-index: 7; text-align: left; }
+    .head .eye { display: inline-block; font-family: 'Arial Black', Arial, sans-serif; font-size: 30px; letter-spacing: 6px; color: #fff;
+      background: #d0121f; padding: 10px 22px; }
+    .head .wm { display: inline-block; margin-left: 16px; font-family: 'Arial Black', Arial, sans-serif; font-size: 34px; letter-spacing: 2px; color: #ffd27a;
+      -webkit-text-stroke: 1px rgba(0,0,0,0.7); paint-order: stroke fill; text-shadow: 0 0 16px rgba(0,0,0,1), 0 3px 10px #000; }
+    .head .hl { margin-top: 16px; font-family: 'Arial Black', Arial, sans-serif; font-size: 78px; line-height: 1.02; color: #f4f0e8;
+      -webkit-text-stroke: 1px rgba(0,0,0,0.6); paint-order: stroke fill; text-shadow: 0 0 22px rgba(0,0,0,1), 0 4px 14px #000; }
+
+    /* track map panel: our own composition from JMA points (issue 17 Sep 26 12:45 JST) */
+    .mappanel { position: absolute; left: 0; top: 330px; width: 1080px; height: 1282px; z-index: 2; overflow: hidden;
+      background: radial-gradient(ellipse at 45% 40%, #0d1b2b 0%, #04070c 80%); }
+    .mappanel svg { position: absolute; left: 0; top: 0; width: 1080px; height: 1282px; }
+    .coast { fill: #17293a; stroke: #6d90ad; stroke-width: 1.2; }
+    .grid { stroke: rgba(120,150,180,0.18); stroke-width: 0.8; }
+    .past { fill: none; stroke: #f4f0e8; stroke-width: 3; stroke-dasharray: 6 5; }
+    .fcline { fill: none; stroke: #ffb347; stroke-width: 3; stroke-dasharray: 9 6; }
+    .circ { fill: rgba(255,179,71,0.08); stroke: #ffb347; stroke-width: 1.6; stroke-dasharray: 5 4; }
+    .pt { fill: #ffb347; }
+    .now { fill: #d0121f; stroke: #fff; stroke-width: 2; }
+    .tk { fill: #fff; }
+    .lab { font-family: 'Arial Black', Arial, sans-serif; font-size: 22px; fill: #f4f0e8; letter-spacing: 1px; paint-order: stroke fill; stroke: #04070c; stroke-width: 5px; }
+    .lab.amber { fill: #ffd27a; }
+    .lab.red { fill: #ff4a58; }
+    .branch { fill: none; stroke: #ff4a58; stroke-width: 3; stroke-dasharray: 8 6; }
+    .mapcredit { position: absolute; left: 30px; bottom: 26px; font-family: Arial, sans-serif; font-size: 22px; letter-spacing: 2px; color: #8fa6bd; }
+
+    /* popfig: red Abril number, mid frame */
+    .popfig { position: absolute; left: 0; right: 0; top: 640px; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; isolation: isolate; }
+    .popfig .pf-big { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 190px; line-height: 1; color: #d0121f; letter-spacing: 0.03em;
+      text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+    .popfig .pf-sub { display: block; margin-top: 14px; font-family: 'Arial Black', Arial, sans-serif; font-size: 40px; color: #f4f0e8; letter-spacing: 0.22em;
+      -webkit-text-stroke: 1px rgba(0,0,0,0.85); paint-order: stroke fill; text-shadow: 0 0 18px rgba(0,0,0,1), 0 3px 10px #000; }
+    .popfig::before { content: ''; position: absolute; left: 6%; right: 6%; top: -110px; bottom: -80px; z-index: -1;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.34) 45%, rgba(0,0,0,0) 74%); }
+
+    /* phrase captions: lower third, inside the Shorts safe zone */
+    .cap { position: absolute; left: 60px; right: 180px; top: 1220px; z-index: 8; text-align: center; font-family: 'Arial Black', Arial, sans-serif;
+      font-size: 70px; line-height: 1.16; color: #fff; -webkit-text-stroke: 1px rgba(0,0,0,0.5); paint-order: stroke fill;
+      background: rgba(6,10,16,0.62); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 22px; padding: 22px 30px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+    .cap b { color: #ff4a58; font-weight: 900; }
+
+    /* chip: one short verdict */
+    .chip { position: absolute; left: 70px; top: 960px; z-index: 6; font-family: 'Arial Black', Arial, sans-serif; font-size: 38px; letter-spacing: 3px; color: #f4f0e8;
+      background: rgba(10,16,24,0.66); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.14); border-left: 8px solid #d0121f; border-radius: 12px; padding: 16px 28px; }
+
+    /* close card: the funnel line */
+    .closecard { position: absolute; left: 60px; right: 180px; top: 1190px; z-index: 8; text-align: center;
+      background: rgba(208,18,31,0.92); border-radius: 26px; padding: 40px 36px; box-sizing: border-box; box-shadow: 0 14px 50px rgba(0,0,0,0.6); }
+    .closecard .c1 { font-family: 'Arial Black', Arial, sans-serif; font-size: 62px; line-height: 1.1; color: #fff; }
+    .closecard .c2 { margin-top: 16px; font-family: Georgia, serif; font-style: italic; font-size: 34px; color: #ffe2b0; letter-spacing: 1px; }
+
+    #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90; background: radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(0,0,0,0.55) 100%); }
+    #grade { position: absolute; inset: 0; pointer-events: none; z-index: 89; mix-blend-mode: soft-light; background-color: rgba(96,138,178,0.16); }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="sh-dujuan-silver-week-1" data-start="0.0" data-width="1080" data-height="1920" data-duration="40.4" data-fps="30">
+
+  <!-- ============ NARRATION (atempo 1.16 wavs; cues from the sped words.json) ============ -->
+  <audio id="nx-s1s1" src="audio/s1-s1.wav" data-start="0.0" data-duration="7.19" data-volume="1"></audio>
+  <audio id="nx-s1s2" src="audio/s1-s2.wav" data-start="7.5" data-duration="11.57" data-volume="1"></audio>
+  <audio id="nx-s1s3" src="audio/s1-s3.wav" data-start="19.4" data-duration="9.19" data-volume="1"></audio>
+  <audio id="nx-s1s4" src="audio/s1-s4.wav" data-start="28.9" data-duration="11.12" data-volume="1"></audio>
+
+  <!-- ============ BED ============ -->
+  <audio id="sx-bed" src="media/score-act5-tension.mp3" data-bed="" data-start="0.0" data-duration="40.4" data-volume="0.13"></audio>
+
+  <!-- ============ SFX HOOKS (short, under speech; riser ends WITH the line, hit lands ON the cut) ============ -->
+  <audio id="sx-pop-25" src="../../assets/sfx/shorts/pop.wav" data-bed="" data-start="1.92" data-duration="0.12" data-volume="0.45"></audio>
+  <audio id="sx-riser-hook" src="../../assets/sfx/shorts/riser-1s2.wav" data-bed="" data-start="5.99" data-duration="1.2" data-volume="0.40"></audio>
+  <audio id="sx-hit-cut" src="../../assets/sfx/shorts/hit.wav" data-bed="" data-start="7.5" data-duration="0.6" data-volume="0.50"></audio>
+  <audio id="sx-pop-58" src="../../assets/sfx/shorts/pop.wav" data-bed="" data-start="9.58" data-duration="0.12" data-volume="0.45"></audio>
+  <audio id="sx-pop-5d" src="../../assets/sfx/shorts/pop.wav" data-bed="" data-start="21.64" data-duration="0.12" data-volume="0.45"></audio>
+  <audio id="sx-riser-close" src="../../assets/sfx/shorts/riser-1s2.wav" data-bed="" data-start="37.18" data-duration="1.2" data-volume="0.40"></audio>
+  <audio id="sx-ding-close" src="../../assets/sfx/shorts/ding.wav" data-bed="" data-start="38.38" data-duration="0.7" data-volume="0.35"></audio>
+
+  <!-- ============ TRACK 1 — hand-authored cut list (all clips pre-cropped 1080x1920) ============ -->
+  <video id="vx-1-radar" src="media/video/radar_dujuan.mp4" data-start="0.0" data-duration="7.5" data-track-index="1" muted></video>
+  <video id="vx-2-waves" src="media/video/waves_typhoon.mp4" data-start="7.5" data-duration="5.22" data-track-index="1" muted></video>
+  <video id="vx-3-train" src="media/video/bullet_train.mp4" data-start="19.4" data-duration="5.9" data-track-index="1" muted></video>
+  <video id="vx-4-station" src="media/video/station_boarding.mp4" data-start="25.3" data-duration="3.6" data-track-index="1" muted></video>
+  <video id="vx-5-tokyobay" src="media/video/tokyo_bay_aerial.mp4" data-start="36.0" data-duration="4.4" data-track-index="1" muted></video>
+
+  <!-- ============ TRACK 2 — the JMA track map, twice (Sunday point, then Monday point) ============ -->
+  <section class="clip" id="p-map1" data-start="12.72" data-duration="6.68" data-track-index="2"><div class="mappanel" id="map1"></div></section>
+  <section class="clip" id="p-map2" data-start="28.9" data-duration="7.1" data-track-index="2"><div class="mappanel" id="map2"></div></section>
+
+  <!-- ============ HEADLINE (persistent; frame 1 is the thumbnail, last frame loops into it) ============ -->
+  <section class="clip" id="p-head" data-start="0.0" data-duration="40.4" data-track-index="3">
+    <div class="head" id="head"><span class="eye">TYPHOON WATCH</span><span class="wm">The Warning Hour</span><div class="hl">DUJUAN ·<br>TYPHOON No. 25</div></div>
+  </section>
+
+  <!-- ============ POPFIGS (track 5; each start = the spoken word) ============ -->
+  <section class="clip" id="p-pf-25" data-start="1.92" data-duration="2.4" data-track-index="5"><div class="popfig" id="pf-25"><span class="pf-big">No. 25</span><span class="pf-sub">NAMED TODAY</span></div></section>
+  <section class="clip" id="p-pf-58" data-start="9.58" data-duration="2.9" data-track-index="5"><div class="popfig" id="pf-58"><span class="pf-big">58 MPH</span><span class="pf-sub">GUSTS TO 81</span></div></section>
+  <section class="clip" id="p-pf-5d" data-start="21.64" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-5d"><span class="pf-big">5 DAYS</span><span class="pf-sub">FIRST SINCE 2015</span></div></section>
+
+  <!-- ============ CHIPS (track 4) ============ -->
+  <section class="clip" id="p-chip-sun" data-start="15.68" data-duration="3.6" data-track-index="4"><div class="chip" id="chip-sun">SUNDAY · SOUTH OF JAPAN</div></section>
+  <section class="clip" id="p-chip-nozomi" data-start="25.34" data-duration="3.5" data-track-index="4"><div class="chip" id="chip-nozomi">NOZOMI · FULLY RESERVED</div></section>
+  <section class="clip" id="p-chip-into" data-start="35.06" data-duration="3.2" data-track-index="4"><div class="chip" id="chip-into">INTO KANTO · OR PAST IT</div></section>
+
+  <!-- ============ CAPTIONS (track 8; phrase captions, the spoken words, red on the number) ============ -->
+  <section class="clip" id="p-cap-1" data-start="0.0" data-duration="2.6" data-track-index="8"><div class="cap" id="cap-1">Typhoon Number 25<br>has a name.</div></section>
+  <section class="clip" id="p-cap-2" data-start="2.66" data-duration="0.8" data-track-index="8"><div class="cap" id="cap-2"><b>Dujuan.</b></div></section>
+  <section class="clip" id="p-cap-3" data-start="3.48" data-duration="3.7" data-track-index="8"><div class="cap" id="cap-3">Aimed at Japan's biggest<br>holiday in 11 years.</div></section>
+  <section class="clip" id="p-cap-4" data-start="7.5" data-duration="2.0" data-track-index="8"><div class="cap" id="cap-4">Right now,<br>sustained winds run</div></section>
+  <section class="clip" id="p-cap-5" data-start="9.58" data-duration="3.1" data-track-index="8"><div class="cap" id="cap-5"><b>58 mph</b>,<br>gusting to <b>81</b>.</div></section>
+  <section class="clip" id="p-cap-6" data-start="12.72" data-duration="2.9" data-track-index="8"><div class="cap" id="cap-6">By Sunday morning,<br>Japan's forecast</div></section>
+  <section class="clip" id="p-cap-7" data-start="15.68" data-duration="3.4" data-track-index="8"><div class="cap" id="cap-7">puts it south of the<br>country at <b>980 hPa</b>.</div></section>
+  <section class="clip" id="p-cap-8" data-start="19.4" data-duration="2.2" data-track-index="8"><div class="cap" id="cap-8">Silver Week<br>starts Saturday.</div></section>
+  <section class="clip" id="p-cap-9" data-start="21.64" data-duration="3.6" data-track-index="8"><div class="cap" id="cap-9"><b>Five days</b> off, the first<br>full one since 2015.</div></section>
+  <section class="clip" id="p-cap-10" data-start="25.34" data-duration="3.4" data-track-index="8"><div class="cap" id="cap-10">Every seat on the Tokyo<br>bullet train is reserved.</div></section>
+  <section class="clip" id="p-cap-11" data-start="28.9" data-duration="2.6" data-track-index="8"><div class="cap" id="cap-11">By Monday morning,<br>Japan puts the storm</div></section>
+  <section class="clip" id="p-cap-12" data-start="31.54" data-duration="3.5" data-track-index="8"><div class="cap" id="cap-12"><b>southeast of Kanto</b>,<br>the region that holds Tokyo.</div></section>
+  <section class="clip" id="p-cap-13" data-start="35.06" data-duration="3.2" data-track-index="8"><div class="cap" id="cap-13">Into it, or past it,<br>nobody can say yet.</div></section>
+
+  <!-- ============ CLOSE CARD (the funnel line, on "full update"; holds to the end) ============ -->
+  <section class="clip" id="p-close" data-start="38.38" data-duration="2.02" data-track-index="8">
+    <div class="closecard" id="close"><div class="c1">THE FULL UPDATE<br>IS ON THE CHANNEL</div><div class="c2">The Warning Hour · related video below</div></div>
+  </section>
+
+  <div id="grade"></div>
+  <div id="vignette"></div>
+</div>
+
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  /* ---------- MAP DATA: JMA TC2630 issue 17 Sep 26 12:45 JST, projected into the parent track-map's pixel space
+     (lon 110-160 -> x 0-1920, lat 5-50 -> y 0-1080, equirectangular); coastline = Natural Earth 110m (PD).
+     Portrait view: lon 132-152, lat 8-46 -> viewBox 844.8 96 768 912, scaled 1.406x to 1080x1282. ---------- */
+  const COAST={"North Korea": "M798.0 186.7 L798.0 186.7 L798.0 186.7 L798.0 186.7 Z M792.6 182.5 L792.6 182.5 L798.0 186.7 L783.4 185.3 L766.7 193.4 L755.2 201.6 L756.7 218.8 L736.8 224.1 L730.0 228.3 L715.5 235.4 L689.9 239.4 L673.3 245.8 L672.1 256.2 L667.6 258.9 L682.9 262.8 L704.6 273.3 L699.1 279.1 L682.8 280.7 L655.6 281.9 L640.7 292.7 L623.5 291.8 L621.1 294.0 L602.5 289.4 L597.8 293.9 L586.6 295.9 L585.2 291.4 L575.3 289.2 L564.9 285.4 L575.5 274.8 L584.5 272.0 L581.1 267.6 L590.8 254.7 L588.3 250.8 L565.9 248.2 L547.8 241.7 L579.1 226.3 L621.4 213.4 L647.8 196.4 L666.0 203.9 L699.2 204.8 L693.2 192.1 L752.5 181.8 L767.8 168.4 L792.6 182.5 Z", "South Korea": "M621.1 294.0 L623.5 291.8 L640.7 292.7 L655.6 281.9 L682.8 280.7 L699.1 279.1 L704.6 273.3 L737.8 301.6 L747.3 317.2 L747.6 344.8 L733.1 358.0 L698.3 362.6 L667.6 372.6 L633.1 374.6 L628.8 361.6 L635.9 343.6 L618.9 318.6 L647.4 314.5 L621.1 294.0 Z", "Japan": "M1224.4 259.7 L1188.8 283.8 L1189.5 308.6 L1175.0 327.7 L1181.7 339.8 L1161.7 356.7 L1112.7 368.0 L1045.2 369.4 L990.5 396.8 L964.6 387.6 L963.1 369.7 L896.3 375.0 L850.8 386.3 L805.9 386.7 L844.8 404.4 L819.2 445.2 L794.4 455.3 L775.8 446.0 L785.2 424.3 L760.9 417.4 L745.3 400.9 L781.6 393.5 L801.7 378.4 L840.4 366.0 L868.5 349.6 L945.0 342.4 L986.0 347.3 L1026.2 304.7 L1051.8 316.1 L1108.1 292.1 L1130.0 282.8 L1154.1 253.5 L1147.5 226.5 L1163.7 211.3 L1204.6 206.9 L1225.5 240.2 L1224.4 259.7 Z M1329.2 144.9 L1356.3 134.8 L1364.9 161.7 L1307.9 168.3 L1274.3 192.1 L1213.9 175.7 L1193.0 202.0 L1150.3 202.3 L1145.0 178.5 L1164.0 160.0 L1205.0 158.7 L1216.2 125.5 L1227.6 106.8 L1272.7 131.8 L1302.2 139.8 L1329.2 144.9 Z M859.1 396.9 L880.3 382.6 L902.1 385.3 L917.9 375.2 L946.1 380.4 L951.0 388.6 L929.4 403.2 L913.6 395.5 L894.0 401.1 L883.8 415.1 L858.7 408.3 L859.1 396.9 Z"};
+  const PAST=[[1720.3, 909.6], [1685.8, 907.2], [1643.5, 907.2], [1643.5, 900.0], [1655.0, 880.8], [1647.4, 880.8], [1612.8, 880.8], [1601.3, 880.8], [1555.2, 871.2], [1547.5, 859.2], [1543.7, 844.8], [1513.0, 842.4], [1536.0, 828.0], [1520.6, 830.4], [1489.9, 828.0], [1489.9, 825.6], [1489.9, 825.6], [1489.9, 825.6], [1493.8, 825.6], [1501.4, 818.4], [1513.0, 806.4], [1513.0, 806.4], [1513.0, 796.8], [1520.6, 784.8], [1524.5, 765.6], [1551.4, 746.4], [1559.0, 720.0]];
+  const NOW=[1559.0, 720.0];
+  const FC=[{"h": 12, "xy": [1447.7, 626.4], "r": 14.0, "hpa": "985"}, {"h": 24, "xy": [1305.6, 597.6], "r": 20.5, "hpa": "985"}, {"h": 45, "xy": [1175.0, 573.6], "r": 33.4, "hpa": "985"}, {"h": 69, "xy": [1098.2, 489.6], "r": 47.4, "hpa": "980"}, {"h": 93, "xy": [1194.2, 376.8], "r": 69.0, "hpa": "980"}, {"h": 117, "xy": [1589.8, 235.2], "r": 99.2, "hpa": "980"}];
+  const TOKYO=[1140.1, 343.7];
+  const NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, text) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (text) e.textContent = text; return e; }
+  function pts(a) { return a.map(p => p.join(",")).join(" "); }
+  function buildMap(host, k) {
+    const svg = el("svg", { viewBox: "844.8 96 768 912" });
+    for (let x = 844.8; x <= 1612.8; x += 192) svg.appendChild(el("line", { class: "grid", x1: x, y1: 96, x2: x, y2: 1008 }));
+    for (let y = 96; y <= 1008; y += 240) svg.appendChild(el("line", { class: "grid", x1: 844.8, y1: y, x2: 1612.8, y2: y }));
+    for (const c in COAST) svg.appendChild(el("path", { class: "coast", d: COAST[c] }));
+    const past = el("polyline", { class: "past", id: k + "-past", points: pts(PAST) }); svg.appendChild(past);
+    const fc = el("polyline", { class: "fcline", id: k + "-fc", points: pts([NOW].concat(FC.map(f => f.xy))) }); svg.appendChild(fc);
+    FC.forEach((f, i) => {
+      svg.appendChild(el("circle", { class: "circ", id: `${k}-c${i}`, cx: f.xy[0], cy: f.xy[1], r: f.r, style: "transform-box: fill-box; transform-origin: center;" }));
+      svg.appendChild(el("circle", { class: "pt", id: `${k}-p${i}`, cx: f.xy[0], cy: f.xy[1], r: 6, style: "transform-box: fill-box; transform-origin: center;" }));
+    });
+    svg.appendChild(el("circle", { class: "now", id: k + "-now", cx: NOW[0], cy: NOW[1], r: 9, style: "transform-box: fill-box; transform-origin: center;" }));
+    svg.appendChild(el("text", { class: "lab red", id: k + "-lnow", x: NOW[0] - 16, y: NOW[1] + 8, "text-anchor": "end" }, "NOW · 985 hPa"));
+    svg.appendChild(el("circle", { class: "tk", id: k + "-tk", cx: TOKYO[0], cy: TOKYO[1], r: 6, style: "transform-box: fill-box; transform-origin: center;" }));
+    svg.appendChild(el("text", { class: "lab", id: k + "-ltk", x: TOKYO[0] + 14, y: TOKYO[1] - 10 }, "TOKYO"));
+    svg.appendChild(el("text", { class: "lab amber", id: k + "-lsun", x: FC[3].xy[0] + 22, y: FC[3].xy[1] + 40 }, "SUN 09:00 · 980 hPa"));
+    svg.appendChild(el("text", { class: "lab amber", id: k + "-lmon", x: FC[4].xy[0] + 24, y: FC[4].xy[1] + 8 }, "MON 09:00 · SE OF KANTO"));
+    // two open branches from the Monday point: into Kanto (toward Tokyo) or past it (northeast, offshore)
+    svg.appendChild(el("polyline", { class: "branch", id: k + "-bA", points: pts([FC[4].xy, [TOKYO[0] + 22, TOKYO[1] + 26]]) }));
+    svg.appendChild(el("polyline", { class: "branch", id: k + "-bB", points: pts([FC[4].xy, [FC[4].xy[0] + 150, FC[4].xy[1] - 120]]) }));
+    host.appendChild(svg);
+    const credit = document.createElement("div"); credit.className = "mapcredit"; credit.textContent = "JMA FORECAST · 17 SEP 12:45 JST · CIRCLES = 70% PROBABILITY"; host.appendChild(credit);
+  }
+  buildMap(document.getElementById("map1"), "m1");
+  buildMap(document.getElementById("map2"), "m2");
+  function dash(sel) { const p = document.querySelector(sel); const L = p.getTotalLength(); p.style.strokeDasharray = L; p.style.strokeDashoffset = L; return L; }
+
+  const DUR = 40.4;
+  const tl = gsap.timeline({ paused: true });
+
+  // headline: eyebrow slides in, headline rises; slow drift for the whole window
+  tl.fromTo("#head .eye", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 0);
+  tl.fromTo("#head .wm", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.2);
+  tl.fromTo("#head .hl", { y: 30, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, ease: "power3.out" }, 0.25);
+  tl.to("#head", { y: -6, duration: DUR - 0.6, ease: "none" }, 0.6);
+
+  // MAP 1 (12.72-19.40): fade up, past track draws, forecast line draws, circles bloom, Sunday label on "south"
+  tl.fromTo("#map1", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35 }, 12.72);
+  tl.to("#map1 svg", { scale: 1.05, duration: 6.4, ease: "none", transformOrigin: "45% 45%" }, 12.9);
+  tl.fromTo("#m1-past", { strokeDashoffset: dash("#m1-past") }, { strokeDashoffset: 0, duration: 1.2, ease: "power1.inOut" }, 12.9);
+  tl.fromTo("#m1-now", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(2)" }, 13.9);
+  tl.fromTo("#m1-lnow", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 14.0);
+  tl.fromTo("#m1-fc", { strokeDashoffset: dash("#m1-fc") }, { strokeDashoffset: 0, duration: 1.6, ease: "power1.inOut" }, 14.1);
+  for (let i = 0; i < 6; i++) {
+    tl.fromTo(`#m1-c${i}`, { scale: 0 }, { scale: 1, duration: 0.35, ease: "power2.out" }, 14.3 + i * 0.22);
+    tl.fromTo(`#m1-p${i}`, { scale: 0 }, { scale: 1, duration: 0.25, ease: "back.out(2)" }, 14.3 + i * 0.22);
+  }
+  tl.set(["#m1-lsun", "#m1-lmon", "#m1-bA", "#m1-bB", "#m1-ltk"], { autoAlpha: 0 }, 12.72);
+  tl.fromTo("#m1-tk", { scale: 0 }, { scale: 1, duration: 0.3 }, 14.4);
+  tl.to("#m1-ltk", { autoAlpha: 1, duration: 0.3 }, 14.5);
+  tl.fromTo("#m1-lsun", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35 }, 15.68);
+  tl.to("#m1-p3", { scale: 2.2, duration: 0.5, ease: "power2.out" }, 15.68);
+  tl.to("#map1", { autoAlpha: 0, duration: 0.25 }, 19.15);
+
+  // MAP 2 (28.90-36.00): everything drawn; Monday point lands on "southeast", Tokyo on "Tokyo", branches on "Into it"
+  tl.set(["#m2-lsun", "#m2-lmon", "#m2-bA", "#m2-bB"], { autoAlpha: 0 }, 28.9);
+  tl.fromTo("#map2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35 }, 28.9);
+  tl.fromTo("#map2 svg", { scale: 1.06 }, { scale: 1.0, duration: 7.0, ease: "none", transformOrigin: "40% 30%" }, 28.9);
+  tl.fromTo("#m2-p4", { scale: 1 }, { scale: 2.4, duration: 0.45, ease: "back.out(2)" }, 31.54);
+  tl.fromTo("#m2-lmon", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35 }, 31.6);
+  tl.to("#m2-tk", { scale: 2.6, duration: 0.4, ease: "back.out(2)" }, 34.22);
+  tl.fromTo("#m2-ltk", { scale: 1 }, { scale: 1.3, duration: 0.4, transformOrigin: "left center" }, 34.22);
+  tl.fromTo("#m2-bA", { strokeDashoffset: dash("#m2-bA"), autoAlpha: 1 }, { strokeDashoffset: 0, duration: 0.6, ease: "power1.out" }, 35.06);
+  tl.fromTo("#m2-bB", { strokeDashoffset: dash("#m2-bB"), autoAlpha: 1 }, { strokeDashoffset: 0, duration: 0.6, ease: "power1.out" }, 35.5);
+  tl.to("#map2", { autoAlpha: 0, duration: 0.3 }, 35.7);
+
+  // popfigs: pop in on the spoken word, drift up, fade out at the window end
+  const pops = [["#pf-25", 1.92, 2.4], ["#pf-58", 9.58, 2.9], ["#pf-5d", 21.64, 3.0]];
+  for (const [id, at, dur] of pops) {
+    tl.fromTo(id, { scale: 0.6, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.32, ease: "back.out(2.2)" }, at);
+    tl.to(id, { y: -18, duration: dur - 0.32, ease: "none" }, at + 0.32);
+    tl.to(id, { autoAlpha: 0, duration: 0.2 }, at + dur - 0.2);
+  }
+
+  // chips: slide in from the left, out to the left
+  const chips = [["#chip-sun", 15.68, 3.6], ["#chip-nozomi", 25.34, 3.5], ["#chip-into", 35.06, 3.2]];
+  for (const [id, at, dur] of chips) {
+    tl.fromTo(id, { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, at);
+    tl.to(id, { x: -60, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, at + dur - 0.3);
+  }
+
+  // captions: rise in on their cue, drop out at their window end
+  const caps = [["#cap-1", 0.0, 2.6], ["#cap-2", 2.66, 0.8], ["#cap-3", 3.48, 3.7], ["#cap-4", 7.5, 2.0], ["#cap-5", 9.58, 3.1], ["#cap-6", 12.72, 2.9],
+                ["#cap-7", 15.68, 3.4], ["#cap-8", 19.4, 2.2], ["#cap-9", 21.64, 3.6], ["#cap-10", 25.34, 3.4], ["#cap-11", 28.9, 2.6], ["#cap-12", 31.54, 3.5], ["#cap-13", 35.06, 3.2]];
+  for (const [id, at, dur] of caps) {
+    tl.fromTo(id, { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.22, ease: "power2.out" }, at);
+    tl.to(id, { y: -10, autoAlpha: 0, duration: 0.18 }, at + dur - 0.18);
+  }
+
+  // close card: slides up on "full update" and holds to the last frame
+  tl.fromTo("#close", { y: 120, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 38.38);
+  tl.to("#close", { scale: 1.02, duration: 1.5, ease: "none" }, 38.83);
+
+  window.__timelines["sh-dujuan-silver-week-1"] = tl;
+})();
+</script>
+</body>
+</html>
