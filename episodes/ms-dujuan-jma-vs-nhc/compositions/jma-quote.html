@@ -37,6 +37,7 @@
   .jq-qstrip .jq-attr { margin-top:14px; font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:3px; color:#d8a13a; }
 </style>
 <div id="root" data-composition-id="jma-quote" data-width="1920" data-height="1080">
+  <div class="jq-bgplate" id="jq-bgplate"></div>
   <div class="jq-card" id="jq-card">
     <div class="jq-eye">JMA'S TEN-MINUTE SCALE</div>
     <div class="jq-row" id="jq-r1"><div class="jq-lab">TROPICAL STORM</div><div class="jq-rng">38&ndash;55 MPH</div></div>
@@ -48,8 +49,12 @@
   </div>
   <div class="jq-chip2" id="jq-chip">10-MINUTE SUSTAINED WIND</div>
   <div class="jq-qstrip" id="jq-quote">
-    <div class="jq-q">&ldquo;Strong Typhoon: 33&ndash;&lt;44 m/s &middot; Very Strong Typhoon: 44&ndash;&lt;54 m/s &middot; Violent Typhoon: &ge;54 m/s&rdquo;</div>
-    <div class="jq-attr">JAPAN METEOROLOGICAL AGENCY &middot; TROPICAL CYCLONE INTENSITY SCALE</div>
+    <div class="jq-q">
+      <span id="jq-q1">&ldquo;Strong Typhoon: 33&ndash;&lt;44 m/s</span>
+      <span id="jq-q2">&middot; Very Strong Typhoon: 44&ndash;&lt;54 m/s</span>
+      <span id="jq-q3">&middot; Violent Typhoon: &ge;54 m/s&rdquo;</span>
+    </div>
+    <div class="jq-attr" id="jq-attr">JAPAN METEOROLOGICAL AGENCY &middot; TROPICAL CYCLONE INTENSITY SCALE</div>
   </div>
 </div>
 <script>
