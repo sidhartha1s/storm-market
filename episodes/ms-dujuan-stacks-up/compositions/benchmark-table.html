@@ -112,17 +112,18 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#bt-progress-fill", { width: "0%" }, { width: "100%", duration: 208.146, ease: "none" }, 0);
 
   /* news-accuracy hard rule (team-lead 17 Sep 26): a number is never on screen at a non-final value - no
-     count-ups anywhere. hPa/mph land directly at their final reading the instant the row lands (tl.call,
-     not an animated ramp). This is also what fixes the Trami "901/118 vs 915/120" report: that was never
-     two disagreeing sources (both edit_script.md f9 and this table already say 915 hPa/120 mph, sourced to
-     Wikipedia "Typhoon Trami (2018)") - it was a mid-count-up frame of the OLD 0->915 ramp caught mid-flight. */
+     count-ups anywhere. hPa/mph land directly at their final reading the instant the row lands. This is
+     also what fixes the Trami "901/118 vs 915/120" report: that was never two disagreeing sources (both
+     edit_script.md f9 and this table already say 915 hPa/120 mph, sourced to Wikipedia "Typhoon Trami
+     (2018)") - it was a mid-count-up frame of the OLD 0->915 ramp caught mid-flight.
+     tl.set(...) on a leaf, not tl.call(...): a callback is the same bug class comp_lint bans for onStart -
+     a seek-driven render/gate can suppress GSAP's own events and never fire it, leaving the field blank
+     (team-lead 17 Sep 26). tl.set writes deterministic timeline state that a seek always evaluates. */
   function landRow(id, at, hpa, mph, tickN) {
     tl.to(id, { autoAlpha:1, y:0, duration:0.5, ease:"power3.out" }, at);
-    tl.call(() => {
-      document.querySelector(`${id} .bt-hpa`).textContent = hpa;
-      document.querySelector(`${id} .bt-mph`).textContent = mph;
-      document.getElementById(`bt-tick-${tickN}`).classList.add("bt-tick-on");
-    }, null, at);
+    tl.set(`${id} .bt-hpa`, { textContent: hpa }, at);
+    tl.set(`${id} .bt-mph`, { textContent: mph }, at);
+    tl.set(`#bt-tick-${tickN}`, { className: "+=bt-tick-on" }, at);
     /* continuous ambient motion on the row once it lands, so no row sits perfectly frozen through the rest of the hold */
     tl.to(id, { y: -3, duration: 2.6, ease: "sine.inOut", repeat: repeatsToFit(at + 1.1, 2.6), yoyo: true }, at + 1.1);
   }
