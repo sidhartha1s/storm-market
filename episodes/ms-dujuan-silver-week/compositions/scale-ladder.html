@@ -39,6 +39,15 @@
   .sl-band.sl-dim { opacity: 0.7; }
   .sl-band.sl-dim .sl-lab { color: #c8d3e0; }
   .sl-marker { position:absolute; top:-14px; width:6px; height:74px; background:#f4f0e8; border-radius:3px; box-shadow:0 0 14px rgba(244,240,232,0.8); }
+  /* Owner review (team-lead, 17 Sep 26): "no footage 7:02-7:18" -- the faint-outline fix (below)
+     still read as a header + empty ladder to a real viewer. Real fix: every number/agency name/
+     scale name/comparison b7-s1.words.json actually speaks in 0-19s lands as its own short label,
+     inside the SEVERE bar's own already-approved box (position:relative on .sl-bar, so this is an
+     overlay, not a new row -- nothing else on the card moves). Right-aligned so it never crosses
+     the marker at left:8%. */
+  .sl-bar-note { position:absolute; inset:0; display:flex; align-items:center; justify-content:flex-end;
+    padding-right:24px; box-sizing:border-box; font-family:'Arial Black',Arial,sans-serif; font-size:19px;
+    letter-spacing:0.5px; color:#f4f0e8; text-shadow:0 2px 8px rgba(0,0,0,0.85); }
   /* readout: a dedicated row below all four bands (not floating text pinned above the marker,
      which crossed the rung above it in a stacked card this compact) -- big(58px)/mid(30px)
      tiers, own bounding box, nothing else shares it */
