@@ -99,6 +99,11 @@ window.__timelines = window.__timelines || {};
   /* continuous ambient motion so the card never sits frozen for the long hold */
   tl.to("#l3-card", { y: -6, duration: 2.7, ease: "sine.inOut", repeat: repeatsToFit(1.5, 2.7), yoyo: true }, 1.5);
   tl.to("#l3-m3", { boxShadow: "0 0 34px rgba(208,18,31,0.6)", duration: 1.3, ease: "sine.inOut", repeat: repeatsToFit(1.0, 1.3), yoyo: true }, 1.0);
+  /* round 4 (owner freeze_scan tool: static 3.0-9.0s comp-local, 17 Sep 26) — the card/src reveal (1.0)
+     to the first icon landing (7.20) was covered only by ambient y-bob/boxShadow, which the scan
+     correctly doesn't count as content. "Japan's own guidance names the group directly" (3.78-6.36) was
+     spoken in that gap and never captioned. */
+  note("JAPAN'S OWN GUIDANCE NAMES THE GROUP", 3.78, 3.00);
   tl.fromTo("#l3-i1", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.35 }, 7.20); CONTENT_BEATS.push(7.20);
   tl.fromTo("#l3-i2", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.35 }, 8.18); CONTENT_BEATS.push(8.18);
   tl.fromTo("#l3-i3", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.35 }, 9.92); CONTENT_BEATS.push(9.92);
