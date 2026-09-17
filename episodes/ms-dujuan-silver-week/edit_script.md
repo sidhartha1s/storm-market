@@ -7,7 +7,7 @@
 > Numbers spelled out for TTS except years and dollar figures (humanise-rules.md); sentences under 24 words;
 > wind spoken in mph, shown in km/h on screen; `[src]` per fact group. Target >=1,350 words at 1.10 tempo (8-min
 > floor); measured at 1,374 words / approx 8:41 at the ms-kauai-lowell-day2 blended rate (158 wpm). Paul's CTA
-> mounted at the end of B3, approx 3:07 (36% in), the natural pause right after the quote card.
+> moved 17 Sep 26 (owner U1 comp fixes) to just before the close card, ~90% in, behind a new B8-S2 bridge line.
 
 ## Spec
 - Slug `ms-dujuan-silver-week`. Voice: pocket-TTS Pharaoh -> atempo 1.10 -> transcribe the sped wav -> cues from
