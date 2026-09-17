@@ -86,8 +86,6 @@ Visual: split data panel, JMA card ("998 hPa · 34 MPH · 55 KM/H") beside JTWC 
 
 Visual: "OLD SYSTEM → NEW SYSTEM" two-column card: old = "Recommendation / Instruction (Emergency)," new = "5-Level Alert Ladder, 20 May 2021." Five-level ladder MG builds for the first time, levels 1-2 highlighted, 3-5 dimmed: "1 · RISING RISK" / "2 · ADVISORY ISSUED (JMA)." Credit line, small: "Source: Cabinet Office, Government of Japan."
 
-*(Paul's ebook CTA mounted here: 0.5 s dip in, 0.5 s out, film layer off. Story break, approx 3:10, 33% in.)*
-
 ## B4 — LEVEL THREE: THE ELDERLY EVACUATE FIRST (3:10–4:08)
 
 ### B4-S1 — narration
