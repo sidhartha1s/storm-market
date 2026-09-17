@@ -80,7 +80,7 @@ window.__timelines = window.__timelines || {};
      include the stagger span: stagger * (targetCount - 1) + duration. */
   const HOST_WINDOW = 49.782; // this episode's ladder mount: 186.866-236.648
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
-  tl.set(["#lr-1","#lr-2","#lr-3","#lr-4","#lr-5","#lad-conn","#lad-connlab","#lad-chip","#ld-note-1","#ld-note-2","#ld-note-3"], { autoAlpha: 0 }, 0);
+  tl.set(["#lr-1","#lr-2","#lr-3","#lr-4","#lr-5","#lad-conn","#lad-connlab","#lad-chip","#ld-note-1","#ld-note-2","#ld-note-3","#ld-opencap"], { autoAlpha: 0 }, 0);
   tl.set("#lad-conn", { scaleX: 0 }, 0);
   /* background plate: continuous slow scale across the whole window (round 2, 17 Sep 26 freeze fix) */
   tl.fromTo("#ld-bgplate", { scale: 1.0 }, { scale: 1.06, duration: HOST_WINDOW, ease: "none" }, 0);
