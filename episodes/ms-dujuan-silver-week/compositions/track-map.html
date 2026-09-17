@@ -600,7 +600,9 @@ window.__timelines = window.__timelines || {};
 
   tl.addLabel("cue-movement", 52.28);
   tl.fromTo("#tm-r-movement", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 52.28);
-  tl.to(CV, { move: cur.speed_mph, duration: 0.9, ease: "power2.out" }, 52.28);
+  /* Same count-up-false-value fix as wind/gusts above (team-lead, 17 Sep 26): lands directly, no
+     animated count from 0. */
+  tl.set(CV, { move: cur.speed_mph }, 52.28);
 
   tl.addLabel("cue-checkpoint", 103.92);
   tl.fromTo("#tm-r-checkpoint", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 103.92);
