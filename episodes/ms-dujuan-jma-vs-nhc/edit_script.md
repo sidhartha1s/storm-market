@@ -111,6 +111,14 @@ table card mapping JMA grade to US read (Strong→Cat 1 start, Very Strong→nea
 Visual: Hagibis archival popfig "139 DEAD · $17.3B" with source label "JMA, 2019"; two-line safety chip: "JP SEVERE
 TROPICAL STORM: BELOW TYPHOON, STILL DISRUPTIVE" / "US CATEGORY 1: OFFICIALLY A HURRICANE."
 
+### B8-S2 — bridge
+
+> Just a second before the last numbers. Most people who watch these stories already have someone in the path, and Paul has one thing for them.
+
+Visual: B8's last cut runs out, a single 0.6 s chapter cut to black, then Paul's ebook CTA opens directly on the end
+of this line — no dip, no gap, music bed continuous underneath. (Re-sited here 17 Sep 26: CTA moved from the
+B3/B4 story break to 85–95% of runtime, immediately before the tracking/close run, per owner brief.)
+
 ## B9 — WHAT'S STILL OPEN TONIGHT (7:15–7:45)
 
 ### B9-S1 — narration
