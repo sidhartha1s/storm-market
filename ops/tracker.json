@@ -431,8 +431,8 @@
       "due": "16 Sep 26",
       "phase": "preview",
       "status": "doing",
-      "note": "draft 8:58 rendered 11:26 (GPU); 5 freeze holds 7-15 s in ladder-intro/ladder-l5; reader pass running",
-      "updated": "17 Sep 26 11:31"
+      "note": "draft 2 rendering from 13:17 (round 2: word-synced beats, <=7.5 s gaps)",
+      "updated": "17 Sep 26 13:20"
     },
     {
       "slug": "ms-dujuan-us-travelers",
@@ -455,8 +455,8 @@
       "due": "16 Sep 26",
       "phase": "preview",
       "status": "doing",
-      "note": "draft render launched 11:28 17 Sep 26",
-      "updated": "17 Sep 26 11:31"
+      "note": "draft 1 rendered 9:11; 5 freeze holds 7-9 s; round 2 + reader running",
+      "updated": "17 Sep 26 13:20"
     },
     {
       "slug": "ms-dujuan-holiday-typhoons",
@@ -477,10 +477,10 @@
       "title": "How Dujuan Stacks Up Against Japan's Last Decade of Typhoons",
       "owner": "director",
       "due": "18 Sep 26",
-      "phase": "assemble",
+      "phase": "checks",
       "status": "doing",
-      "note": "composer spawned 17 Sep 26; B4-S1 re-voiced for Jebi pronunciation",
-      "updated": "17 Sep 26 11:36"
+      "note": "7 static gates green; browser gates wait for the render lock",
+      "updated": "17 Sep 26 13:20"
     },
     {
       "slug": "ms-dujuan-closest-pass",
