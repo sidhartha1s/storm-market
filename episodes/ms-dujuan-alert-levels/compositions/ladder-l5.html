@@ -120,13 +120,20 @@ window.__timelines = window.__timelines || {};
   /* "Municipal officials often cannot confirm a disaster's exact severity in time, right when it matters most." — 11.37s */
   note("OFFICIALS CAN'T CONFIRM SEVERITY IN TIME", 11.37, 6.73);
   /* "Residents are told to leave before level five ever arrives, never to wait for it." — 18.10s */
-  note("LEAVE BEFORE IT ARRIVES. NEVER WAIT.", 18.10, 5.16);
+  /* trimmed from 5.16 to keep every hold under the 5s cadence target (owner round 4) */
+  note("LEAVE BEFORE IT ARRIVES. NEVER WAIT.", 18.10, 4.86);
   /* round 4 (owner: freeze_scan static 23.5-29.5s comp-local, 17 Sep 26) — same bug: this caption held
      its text past its own words while the narration moved on to "It is the National Weather Service's
      extreme wind warning" (28.26-31.76), the exact fact the card reveals a beat later. Split so the
      second clause gets its own caption and bridges straight into the card. */
-  /* "America's closest match is not a hurricane watch or a hurricane warning at all." — 23.26s */
-  note("NOT A HURRICANE WATCH OR WARNING", 23.26, 5.00);
+  /* round 4b (owner: freeze_scan static 23.5-28.5s comp-local at hold=5, 17 Sep 26) — the split above
+     landed the whole clause on one caption, exactly at the 5s cadence limit with nothing else moving.
+     Split again on the clause's own sub-boundary ("America's closest match" / "is not a hurricane
+     watch or warning") so no single caption ever holds a full 5s by itself. */
+  /* "America's closest match..." — 23.26s */
+  note("AMERICA'S CLOSEST MATCH", 23.26, 2.04);
+  /* "...is not a hurricane watch or a hurricane warning at all." — 25.30s */
+  note("NOT A HURRICANE WATCH OR WARNING", 25.30, 2.96);
   /* "It is the National Weather Service's extreme wind warning." — 28.26s */
   note("IT'S THE EXTREME WIND WARNING", 28.26, 1.18);
   tl.set("#l5-card", { visibility: "visible" }, 29.44);
