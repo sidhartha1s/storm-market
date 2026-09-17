@@ -39,6 +39,8 @@ window.__timelines = window.__timelines || {};
   const HOST_WINDOW = 8.273; // this episode's bridge-card mount: 485.636-493.909
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
   tl.set(["#br-line1", "#br-line2"], { autoAlpha: 0 }, 0);
+  /* background plate: continuous slow scale across the whole window (round 2, 17 Sep 26 freeze fix) */
+  tl.fromTo("#br-bgplate", { scale: 1.0 }, { scale: 1.06, duration: HOST_WINDOW, ease: "none" }, 0);
   /* glow drift runs the whole window so the card is never a flat frame between the two reveals */
   tl.to("#br-glow", { x: 150, y: 110, duration: 2.4, ease: "sine.inOut", repeat: repeatsToFit(0, 2.4), yoyo: true }, 0);
   tl.fromTo("#br-eye", { autoAlpha: 0, y: -16 }, { autoAlpha: 1, y: 0, duration: 0.35 }, 0);
