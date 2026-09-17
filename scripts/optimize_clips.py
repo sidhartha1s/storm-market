@@ -45,6 +45,15 @@ for m in re.finditer(r'<video\b([^>]*)>', h):
         continue
     used[src.group(1)] = max(used.get(src.group(1), 0.0), float(dur.group(1)))
 
+# The CTA insert is a provenance contract (config.yaml channel.cta, md5-checked by sweep_episode):
+# re-encoding it broke the md5 silently (jma-vs-nhc, 17 Sep 26). Never touch it.
+import yaml
+_cta = ((yaml.safe_load((Path(__file__).resolve().parent.parent / "config.yaml").read_text(encoding="utf-8"))
+         .get("channel") or {}).get("cta") or {}).get("file", "")
+for _k in [k for k in used if _cta and Path(k).name == Path(_cta).name]:
+    print(f"skip {_k}: CTA insert, md5 contract (config channel.cta.file)")
+    del used[_k]
+
 orig_dir = ep / "media" / "_orig"
 plan, total_before = [], 0
 for src, want in sorted(used.items()):

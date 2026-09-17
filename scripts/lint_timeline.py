@@ -57,6 +57,16 @@ def main():
         if s2 < e1 - 0.05:
             findings.append(f"audio overlap: {f1} ({s1}-{e1:.1f}) vs {f2} ({s2}-{e2:.1f})")
 
+    # NARRATION SEAMS (owner 17 Sep 26, Dujuan U1 review: "awkward gaps ... not intentional"). Voice
+    # segments may be apart by at most the blackout length; the only sanctioned hole is the CTA.
+    cta_starts = [float(x) for x in re.findall(r'<video\b[^>]*src="[^"]*cta/[^"]*"[^>]*data-start="([\d.]+)"', html)]
+    voice = sorted((s, s + d) for s, d in ((float(a), float(b)) for a, b in
+                   re.findall(r'<audio\b[^>]*id="nx-(?!ins)[^"]*"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"', html)))
+    for (s1, e1), (s2, e2) in zip(voice, voice[1:]):
+        gap = s2 - e1
+        if gap > 0.8 and not any(e1 - 0.5 <= c <= s2 for c in cta_starts):
+            findings.append(f"narration gap {gap:.1f}s at {e1:.1f}-{s2:.1f}s (max 0.8s outside the CTA)")
+
     for src in re.findall(r'<script[^>]*src="([^"]+)"', html):
         if not src.startswith("http") and not (ep / src).exists():
             findings.append(f"missing script: {src}")

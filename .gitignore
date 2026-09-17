@@ -55,3 +55,6 @@ episodes/*/frames_check/
 # session QC debris (never commit)
 /dryjoplin_*.png
 /qc*.png
+
+episodes/*/sheets/
+episodes/*/sheets-pre/

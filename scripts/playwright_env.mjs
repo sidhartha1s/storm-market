@@ -16,7 +16,7 @@ import { fileURLToPath } from 'node:url';
 try {
   // bare python3 is the MS Store stub under cmd/node (exit 9009) — same full path render.cmd uses
   const PY = 'C:/Users/Sidhartha/AppData/Local/Programs/Python/Python312/python.exe';
-  execFileSync(existsSync(PY) ? PY : 'python', [join(dirname(fileURLToPath(import.meta.url)), 'render_busy.py')], { stdio: 'inherit' });
+  execFileSync(existsSync(PY) ? PY : 'python', [join(dirname(fileURLToPath(import.meta.url)), 'render_busy.py'), ...(process.env.QC_LIGHT === '1' ? ['--light'] : [])], { stdio: 'inherit' });
 } catch (e) {
   process.exit(e.status ?? 3);
 }

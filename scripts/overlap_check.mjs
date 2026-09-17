@@ -35,7 +35,7 @@ while ((m = re.exec(html))) {
 }
 const cards = els.filter(e => e.track === '3');
 const hosts = els.filter(e => e.compSrc);
-const overlays = els.filter(e => !e.compSrc && e.track !== '3' && /^p-/.test(e.id));   // index.html text overlays (popfig, chip, quote, srclab)
+const overlays = els.filter(e => !e.compSrc && e.track !== '3' && !/^(bo-|nx-|sx-|clip-|v-)/.test(e.id));   // every index.html overlay that is not a card/comp/blackout/audio/video (kanto-pin labels were excluded by the old ^p- filter, 17 Sep 26)
 const overlapT = (a, b) => Math.min(a.start + a.dur, b.start + b.dur) - Math.max(a.start, b.start);
 
 // fact normalization: uppercase alnum; only strings that read as a "fact" (has a digit, or >=6 chars)
@@ -143,12 +143,17 @@ for (let i = 0; i < cards.length; i++) for (let j = i + 1; j < cards.length; j++
 // graphics_qc.standalone().
 const TMP = path.join(epDir, '.qc-tmp');
 if (!fs.existsSync(TMP)) fs.mkdirSync(TMP, { recursive: true });
+// Host-style injection: hyperframes mounts comps INSIDE index.html's DOM, so the page stylesheet
+// applies to comp elements (17 Sep 26: host `.chip{bottom:300px}` stretched a comp chip into a 720 px
+// panel; every standalone gate passed). Staging must carry the host <style> blocks.
+const HOST_CSS = [...html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].map(x => x[1]).join('\n');
 const stage = (file) => {
   const raw = fs.readFileSync(file, 'utf8');
   const t = raw.match(/<template>([\s\S]*?)<\/template>/);
   const body = t ? t[1] : raw;
   const out = path.join(TMP, 'ov-' + path.basename(file));
   fs.writeFileSync(out, `<!doctype html><html><head><meta charset="utf-8">
+<style>${HOST_CSS}</style>
 <style>html,body{margin:0;width:1920px;height:1080px;background:#111;overflow:hidden}</style>
 <script src="../gsap.min.js"></script></head><body>${body}</body></html>`, 'utf8');
   return out;
