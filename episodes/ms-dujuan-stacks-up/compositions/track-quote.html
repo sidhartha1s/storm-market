@@ -69,10 +69,21 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const HOST_WINDOW = 42.128; // this episode's track-quote mount: 129.128-171.256
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
-  tl.set(["#tq-lab-1","#tq-lab-2","#tq-lab-3","#tq-lab-4","#tq-quote"], { autoAlpha: 0 }, 0);
-  tl.set("#tq-quote", { visibility: "hidden" }, 0);
+  tl.set(["#tq-lab-1","#tq-lab-2","#tq-lab-3","#tq-lab-4","#tq-quote","#tq-badge-1"], { autoAlpha: 0 }, 0);
+  tl.set(["#tq-quote","#tq-badge-1"], { visibility: "hidden" }, 0);
   tl.fromTo("#tq-eye", { autoAlpha:0, y:-16 }, { autoAlpha:1, y:0, duration:0.5 }, 0);
   tl.fromTo(".tq-mapwrap", { autoAlpha:0 }, { autoAlpha:1, duration:0.6 }, 0.2);
+  /* real narration-synced content in the 2.0-9.0s comp-local gap: b3-s1.words.json (segment-abs minus 6.0
+     lead-in) has "...and the storm earns typhoon status" landing at comp-rel 2.38-4.9s, a real milestone
+     with no visual beat of its own before this fix. Badge fades out before pin 2 lands (8.66s) so it
+     doesn't linger into the next checkpoint's reveal. */
+  tl.set("#tq-badge-1", { visibility: "visible" }, 2.38);
+  tl.fromTo("#tq-badge-1", { autoAlpha:0, y:10, scale:0.9 }, { autoAlpha:1, y:0, scale:1, duration:0.4, ease:"back.out(2)" }, 2.38);
+  tl.to("#tq-badge-1", { autoAlpha:0, duration:0.4 }, 8.1);
+  /* ambient wobble on the whole checkpoint panel (real content block, ~760x400px) so the panel itself is
+     never a frozen full-frame hold beside the pin/label reveals — same repeatsToFit pattern used on every
+     other comp's landed content blocks. */
+  tl.to("#tq-panel", { y: -6, duration: 2.7, ease: "sine.inOut", repeat: repeatsToFit(0.9, 2.7), yoyo: true }, 0.9);
   /* continuous pan across the map plate so the plate itself is never a frozen full-frame hold — freeze_scan.mjs's
      real freezedetect flagged 2.0-9.0s comp-local (the gap between pin 1 landing at 1.5s and pin 2 landing at
      8.66s) as static: a 70/50px pan over 41.128s (~1.7px/s) was too slow for freezedetect's frame-diff threshold
