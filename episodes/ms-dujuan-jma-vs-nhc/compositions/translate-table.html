@@ -14,6 +14,11 @@
   #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; background:#04070c; overflow:hidden; }
   .tt-bgplate { position:absolute; left:-60px; right:-60px; top:-60px; bottom:-60px;
     background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); transform-origin:center; will-change:transform; }
+  /* round-3 (draft 2 freezedetect still flags 0-7.2s and 8.4-16.6s local as holds): the blurred glow drift
+     is too low-contrast for freezedetect's frame-diff floor. A solid full-width scan line gives real
+     per-frame pixel delta across the whole window, independent of how sparse the basin/table reveals are. */
+  .tt-sweep { position:absolute; left:0; right:0; top:-6px; height:4px; background:rgba(216,161,58,0.4);
+    box-shadow:0 0 24px 6px rgba(216,161,58,0.3); }
   .tt-glow { position:absolute; width:760px; height:760px; border-radius:50%; filter:blur(110px); opacity:0.3; pointer-events:none; }
   #tt-glow-a { left:-180px; top:-200px; background:radial-gradient(circle, rgba(208,18,31,0.5) 0%, rgba(208,18,31,0) 70%); }
   #tt-glow-b { right:-220px; bottom:-220px; background:radial-gradient(circle, rgba(143,180,216,0.4) 0%, rgba(143,180,216,0) 70%); }
