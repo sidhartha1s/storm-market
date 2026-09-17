@@ -549,14 +549,20 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#tm-r-pressure", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 58.42);
   tl.to(CV, { pressure: cur.pressure_hPa, duration: 0.9, ease: "power2.out" }, 58.42);
 
+  /* Reader QC (team-lead, 17 Sep 26): "SUSTAINED WIND: 32 MPH shows at about 45s before settling
+     on 34 MPH" -- same class of bug as the 147 hPa pressure glitch (checked EVERY count-up in this
+     comp, per instruction). Wind counted up from 0 over 0.9s with power2.out, so any frame sampled
+     mid-tween showed a real but WRONG number, not the true reading. Unlike pressure, wind/gusts/
+     movement have no natural "normal reference" to count down from, so per team-lead's other
+     option these land DIRECTLY on cue (tl.set, no animated count) -- the row's own autoAlpha/y
+     reveal is still real, visible motion; the number itself is never wrong at any sampled frame. */
   tl.addLabel("cue-wind", 62.44);
   tl.fromTo("#tm-r-wind", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 62.44);
-  tl.to(CV, { wind: cur.wind_mph, duration: 0.9, ease: "power2.out" }, 62.44);
-  tl.to(CV, { windkmh: cur.wind_kmh, duration: 0.9, ease: "power2.out" }, 62.44);
+  tl.set(CV, { wind: cur.wind_mph, windkmh: cur.wind_kmh }, 62.44);
 
   tl.addLabel("cue-gusts", 64.94);
   tl.fromTo("#tm-r-gusts", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 64.94);
-  tl.to(CV, { gusts: cur.gust_mph, duration: 0.9, ease: "power2.out" }, 64.94);
+  tl.set(CV, { gusts: cur.gust_mph }, 64.94);
 
   /* 8s max-gap rule (team-lead direction, 17 Sep 26): three real holes in this comp's own
      timeline -- 26.02-52.28 (~26.3s, nothing after the forecast draw finishes until the card's
