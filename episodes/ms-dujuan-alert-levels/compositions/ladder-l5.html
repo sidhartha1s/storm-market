@@ -98,9 +98,13 @@ window.__timelines = window.__timelines || {};
   note("NOT A HURRICANE WATCH OR WARNING", 23.26, 6.18);
   tl.set("#l5-card", { visibility: "visible" }, 29.44);
   tl.fromTo("#l5-card", { autoAlpha:0, y:30 }, { autoAlpha:1, y:0, duration:0.5, ease:"power3.out" }, 29.44); CONTENT_BEATS.push(29.44);
-  tl.to(N1, { n: 115, duration: 1.0, ease: "power1.out", onUpdate: () => n1El.textContent = Math.round(N1.n) }, 34.70); CONTENT_BEATS.push(34.70);
+  // card ambient (glow pulse + y-bob) runs from reveal straight through to exit so the 29.44-54.02 span
+  // never freezes between the count-up/action beats — this is the stretch freezedetect flagged.
+  tl.fromTo("#l5-cardglow", { opacity: 0.15 }, { opacity: 0.85, duration: 1.4, ease: "sine.inOut", repeat: repeatsToFit(29.94, 1.4), yoyo: true }, 29.94);
+  tl.to("#l5-card", { y: -6, duration: 1.8, ease: "sine.inOut", repeat: repeatsToFit(29.94, 1.8), yoyo: true }, 29.94);
+  tl.to(N1, { n: 115, duration: 1.3, ease: "none", onUpdate: () => n1El.textContent = Math.round(N1.n) }, 34.70); CONTENT_BEATS.push(34.70);
+  tl.fromTo("#l5-n1", { color: "#d0121f" }, { color: "#f4f0e8", duration: 1.3, ease: "none" }, 34.70);
   tl.fromTo("#l5-action", { autoAlpha:0 }, { autoAlpha:1, duration:0.4 }, 39.80); CONTENT_BEATS.push(39.80);
-  tl.to("#l5-card", { boxShadow: "0 0 30px rgba(208,18,31,0.4)", duration: 1.2, ease: "sine.inOut", repeat: repeatsToFit(40.5, 1.2), yoyo: true }, 40.5);
   /* "Both countries land on the same conclusion from opposite directions." — 44.16s */
   note("BOTH LAND ON THE SAME CONCLUSION", 44.16, 3.8);
   /* "Once conditions turn this severe, moving becomes more dangerous than staying exactly where you are." — 47.96s */
