@@ -10,28 +10,32 @@
 -->
 <template>
 <style>
-  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
-  #root { position:absolute; inset:0; overflow:hidden; font-family:Arial,sans-serif; color:#f2f5f8;
+  /* AbrilFig @font-face is declared once in index.html; hyperframes mounts this template
+     into that same document so the family is already registered -- a per-comp duplicate here
+     is what css_collision.py's class-name regex was matching on the .ttf url extension
+     (a false positive, not a real leak; ../fonts/AbrilFatface-Regular.ttf still used standalone
+     via the host doc). */
+  #to-root { position:absolute; inset:0; overflow:hidden; font-family:Arial,sans-serif; color:#f2f5f8;
     background:radial-gradient(ellipse at 30% 70%, #142235 0%, #04070c 70%); }
   #to-drift { position:absolute; inset:-8%; background:radial-gradient(ellipse at 70% 30%, rgba(208,18,31,0.08) 0%, rgba(0,0,0,0) 55%); }
-  .card { position:absolute; left:110px; top:200px; width:900px; padding:34px 44px; box-sizing:border-box; z-index:6;
+  .to-card { position:absolute; left:110px; top:200px; width:900px; padding:34px 44px; box-sizing:border-box; z-index:6;
     background:rgba(10,16,24,0.6); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); border-radius:24px; }
-  .eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:6px; color:#d0121f; }
+  .to-eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:6px; color:#d0121f; }
   /* foreground motion (background #to-drift alone read as frozen at 3s sampling): a thin rule
      that fills under the eyebrow across nearly the whole hold */
-  .rule { margin-top:14px; height:3px; width:0%; border-radius:2px; background:linear-gradient(90deg,#d0121f,#ff5a63); }
-  .row { display:flex; align-items:center; gap:22px; margin-top:22px; }
-  .n { flex:0 0 60px; font-family:'AbrilFig',Georgia,serif; font-size:58px; color:#d0121f; }
-  .lab { font-family:'Arial Black',Arial,sans-serif; font-size:34px; }
+  .to-rule { margin-top:14px; height:3px; width:0%; border-radius:2px; background:linear-gradient(90deg,#d0121f,#ff5a63); }
+  .to-row { display:flex; align-items:center; gap:22px; margin-top:22px; }
+  .to-n { flex:0 0 60px; font-family:'AbrilFig',Georgia,serif; font-size:58px; color:#d0121f; }
+  .to-lab { font-family:'Arial Black',Arial,sans-serif; font-size:34px; }
 </style>
-<div id="root" data-composition-id="tracking-open" data-width="1920" data-height="1080">
+<div id="to-root" data-composition-id="tracking-open" data-width="1920" data-height="1080">
   <div id="to-drift"></div>
-  <div class="card" id="to-card">
-    <div class="eye">WHAT'S STILL OPEN TONIGHT</div>
-    <div class="rule" id="to-rule"></div>
-    <div class="row"><div class="n">1</div><div class="lab">TRACK &middot; STILL OPEN</div></div>
-    <div class="row"><div class="n">2</div><div class="lab">STRENGTH &middot; STILL OPEN</div></div>
+  <div class="to-card" id="to-card">
+    <div class="to-eye">WHAT'S STILL OPEN TONIGHT</div>
+    <div class="to-rule" id="to-rule"></div>
+    <div class="to-row" id="to-row-1"><div class="to-n">1</div><div class="to-lab">TRACK &middot; STILL OPEN</div></div>
+    <div class="to-row" id="to-row-2"><div class="to-n">2</div><div class="to-lab">STRENGTH &middot; STILL OPEN</div></div>
   </div>
 </div>
 <script>
