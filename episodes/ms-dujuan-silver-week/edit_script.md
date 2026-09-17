@@ -25,9 +25,10 @@
   (B7); tracking/benchmark card (B8).
 - Close: B8 ends on both open threads (track, strength) still unresolved; B9 is the single soft comment +
   subscribe line, tied to the real trigger event (Japan naming the storm), not an invented clock time.
-- CTA: Paul's ebook CTA mounts at the end of B3 (approx 3:07, 36% in), right after the "East of Japan" quote card
-  lands, the first natural pause in the meteorology block, ahead of the Silver Week pivot. 0.5 s dip in/out, film
-  layer off, Paul circle hidden during the quote card per the presenter-circle spec.
+- CTA: moved 17 Sep 26 from the end of B3 to ~90% in, immediately after B8 and immediately before the B9 close
+  card, behind a new one-line B8-S2 bridge segment ("Just a second before the last numbers..."). No blackout or
+  dip between the bridge's last word and the CTA's first frame; music bed continuous under the bridge; the
+  existing 0.5 s dip after the CTA into B9 is unchanged. See B8-S2 below for the exact wording and placement.
 
 ## Sources
 - f1 JMA live feed, TC2630 (targetTc.json -> specifications.json), fetched 16 Sep 2026, issue time 16 Sep 19:10
