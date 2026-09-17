@@ -134,8 +134,11 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#jq-r5", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.9 }, 35.76);     // "violent typhoon," 43.76
   tl.to("#jq-r5-lab", { color:"#ffffff", duration:0.45, yoyo:true, repeat:1 }, 35.76);
   tl.to(CU5, { v:121, duration:0.9, ease:"power1.out",
-    onUpdate: () => { r5rng.textContent = Math.round(CU5.v) + " MPH"; },
-    onComplete: () => { r5rng.textContent = "121+ MPH · NO CEILING"; } }, 35.76);
+    onUpdate: () => { r5rng.textContent = Math.round(CU5.v) + " MPH"; } }, 35.76);
+  /* cross-fade to the pre-authored final label instead of mutating textContent in onComplete (comp_lint:
+     seek-based QC never fires an onComplete callback, so the "no ceiling" wording never showed up to it) */
+  tl.to("#jq-r5-rng", { autoAlpha: 0, duration: 0.2 }, 36.66);
+  tl.fromTo("#jq-r5-final", { autoAlpha: 0, visibility: "visible" }, { autoAlpha: 1, duration: 0.2 }, 36.66);
   tl.to("#jq-indicator", { top:731, duration:0.5, ease:"power2.out" }, 35.76); // slides to r5, the last rung
   /* bridges the r5->attr gap (36.66->42.9) with the indicator settling out rather than a decorative flash */
   tl.to("#jq-indicator", { autoAlpha:0, duration:0.4 }, 41.0);
