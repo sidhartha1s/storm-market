@@ -66,28 +66,31 @@ window.__timelines = window.__timelines || {};
      (blank_scan.mjs). repeatsToFit() sizes each repeat count so its tween ends at/under HOST_WINDOW. */
   const HOST_WINDOW = 51.418; // this episode's jma-quote mount: 119.309-170.727
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
-  tl.set(["#jq-r1","#jq-r2","#jq-thresh","#jq-r3","#jq-r4","#jq-r5","#jq-chip","#jq-quote"], { autoAlpha: 0 }, 0);
+  tl.set(["#jq-r1","#jq-r2","#jq-thresh","#jq-r3","#jq-r4","#jq-r5","#jq-chip","#jq-quote","#jq-q1","#jq-q2","#jq-q3","#jq-attr"], { autoAlpha: 0 }, 0);
+  tl.set("#jq-quote", { autoAlpha: 1 }, 0); // the qstrip box itself mounts with the card; its clauses reveal individually below
   tl.fromTo("#jq-card", { x:-900, autoAlpha:0 }, { x:0, autoAlpha:1, duration:0.6, ease:"power3.out" }, 0);
-  /* continuous ambient motion so the ladder card never sits frozen between reveals */
+  /* background plate: continuous slow scale across the whole window so no full-frame stretch ever reads as
+     frozen to freezedetect, independent of how sparse the card reveals are (round 2, 17 Sep 26) */
+  tl.fromTo("#jq-bgplate", { scale: 1.0 }, { scale: 1.06, duration: HOST_WINDOW, ease: "none" }, 0);
+  /* continuous ambient motion so the card never sits frozen between reveals */
   tl.to("#jq-card", { y: -5, duration: 2.8, ease: "sine.inOut", repeat: repeatsToFit(0.7, 2.8), yoyo: true }, 0.7);
-  /* small literal-repeat glints between the widely-spaced row-reveal cues below, so a static-analysis pass
-     over explicit tl positions (not just the real GSAP playback) also reads continuous coverage */
-  tl.to("#jq-card", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 12.43);
-  tl.to("#jq-card", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 15.29);
-  tl.to("#jq-card", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 21.95);
-  tl.to("#jq-card", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 28.14);
-  tl.to("#jq-card", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 33.31);
-  tl.to("#jq-card", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 39.53);
-  tl.to("#jq-card", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 45.93);
-  tl.to("#jq-card", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 48.37);
   tl.fromTo("#jq-chip", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 0.4);
-  tl.fromTo("#jq-r1", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 5.62);
-  tl.fromTo("#jq-r2", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 9.18);
-  tl.fromTo("#jq-thresh", { autoAlpha:0, scale:0.9 }, { autoAlpha:1, scale:1, duration:0.35 }, 18.14);
-  tl.fromTo("#jq-r3", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 25.42);
-  tl.fromTo("#jq-r4", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 30.46);
-  tl.fromTo("#jq-r5", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 35.76);
-  tl.fromTo("#jq-quote", { autoAlpha:0, y:30 }, { autoAlpha:1, y:0, duration:0.6, ease:"power3.out" }, 42.9);
+  tl.fromTo("#jq-r1", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 5.62);      // "tropical storm" 13.62
+  tl.fromTo("#jq-r2", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 9.18);      // "severe tropical" 17.18
+  /* two-stage threshold reveal closes the r2->thresh gap on its own words: a peek when "73" is spoken again
+     (22.82), completing when "typhoon" lands (26.14) — was a single 8.96s gap, now two beats under 8s each */
+  tl.fromTo("#jq-thresh", { autoAlpha:0, scale:0.85 }, { autoAlpha:0.55, scale:0.92, duration:0.35 }, 14.82); // "73" 22.82
+  tl.to("#jq-thresh", { autoAlpha:1, scale:1, backgroundColor:"rgba(208,18,31,0.32)", duration:0.4, ease:"power2.out" }, 18.14); // "typhoon." 26.14
+  tl.to("#jq-thresh", { backgroundColor:"rgba(208,18,31,0.18)", duration:0.6 }, 18.54);
+  tl.fromTo("#jq-r3", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 25.42);     // "strong typhoon" 33.42
+  tl.fromTo("#jq-r4", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 30.46);     // "very strong typhoon" 38.46
+  tl.fromTo("#jq-r5", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 35.76);     // "violent typhoon," 43.76
+  /* the quote clauses land WITH their matching row, not as one block at the end (round 2 hard rule) */
+  tl.fromTo("#jq-q1", { autoAlpha:0, y:14 }, { autoAlpha:1, y:0, duration:0.35 }, 25.42);
+  tl.fromTo("#jq-q2", { autoAlpha:0, y:14 }, { autoAlpha:1, y:0, duration:0.35 }, 30.46);
+  tl.fromTo("#jq-q3", { autoAlpha:0, y:14 }, { autoAlpha:1, y:0, duration:0.35 }, 35.76);
+  /* attribution lands on "the agency's own published wind classification" (narration 52.54, comp-local 44.54) */
+  tl.fromTo("#jq-attr", { autoAlpha:0 }, { autoAlpha:1, duration:0.4 }, 42.9);
   tl.to(["#jq-card","#jq-chip","#jq-quote"], { autoAlpha:0, duration:0.5, ease:"power3.in" }, 50.8);
   window.__timelines["jma-quote"] = tl;
 })();
