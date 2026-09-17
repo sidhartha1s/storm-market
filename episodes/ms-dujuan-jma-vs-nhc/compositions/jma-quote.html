@@ -84,16 +84,29 @@ window.__timelines = window.__timelines || {};
   /* continuous ambient motion so the card never sits frozen between reveals */
   tl.to("#jq-card", { y: -5, duration: 2.8, ease: "sine.inOut", repeat: repeatsToFit(0.7, 2.8), yoyo: true }, 0.7);
   tl.fromTo("#jq-chip", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 0.4);
+  /* round-3 (reader: card reads blank 0->5.6s before row 1): a real chrome beat lands mid lead-in so the
+     open isn't 6s of near-identical frames. Not a fact reveal (word for "tropical storm" isn't said until
+     5.28s), so this is scene-setting motion on the eyebrow itself, not an early fact. */
+  tl.to("#jq-eye", { letterSpacing: "9px", color: "#ff3b47", duration: 0.6, yoyo: true, repeat: 1 }, 2.4);
   tl.fromTo("#jq-r1", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 5.62);      // "tropical storm" 13.62
   tl.fromTo("#jq-r2", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 9.18);      // "severe tropical" 17.18
+  /* bridges the r2->thresh gap (9.58->14.82, reader still read this as dead) with a bold flash on the just-
+     landed row's own number, not a new fact */
+  tl.to("#jq-r2 .jq-rng", { color: "#ffffff", duration: 0.4, yoyo: true, repeat: 1 }, 12.0);
   /* two-stage threshold reveal closes the r2->thresh gap on its own words: a peek when "73" is spoken again
-     (22.82), completing when "typhoon" lands (26.14) — was a single 8.96s gap, now two beats under 8s each */
-  tl.fromTo("#jq-thresh", { autoAlpha:0, scale:0.85 }, { autoAlpha:0.55, scale:0.92, duration:0.35 }, 14.82); // "73" 22.82
+     (22.82), completing when "typhoon" lands (26.14) — was a single 8.96s gap, now two beats under 8s each.
+     Round 3: the peek's 0.55 alpha read as invisible to both freezedetect and the frame reader; raised to a
+     clearly-visible 0.85 so it actually registers as a beat, not just the completion at 18.14. */
+  tl.fromTo("#jq-thresh", { autoAlpha:0, scale:0.85 }, { autoAlpha:0.85, scale:0.95, duration:0.35 }, 14.82); // "73" 22.82
   tl.to("#jq-thresh", { autoAlpha:1, scale:1, backgroundColor:"rgba(208,18,31,0.32)", duration:0.4, ease:"power2.out" }, 18.14); // "typhoon." 26.14
   tl.to("#jq-thresh", { backgroundColor:"rgba(208,18,31,0.18)", duration:0.6 }, 18.54);
+  /* bridges the thresh-settle->r3 gap (19.14->25.42, 6.28s) with a bold pulse on the card itself */
+  tl.to("#jq-card", { boxShadow: "0 0 34px rgba(208,18,31,0.35)", duration: 0.5, yoyo: true, repeat: 1 }, 21.6);
   tl.fromTo("#jq-r3", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 25.42);     // "strong typhoon" 33.42
   tl.fromTo("#jq-r4", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 30.46);     // "very strong typhoon" 38.46
   tl.fromTo("#jq-r5", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 35.76);     // "violent typhoon," 43.76
+  /* bridges the r5->attr gap (36.16->42.9, 6.74s) with a bold flash on the just-landed row's own number */
+  tl.to("#jq-r5 .jq-rng", { color: "#ffffff", duration: 0.4, yoyo: true, repeat: 1 }, 39.0);
   /* the quote clauses land WITH their matching row, not as one block at the end (round 2 hard rule) */
   tl.fromTo("#jq-q1", { autoAlpha:0, y:14 }, { autoAlpha:1, y:0, duration:0.35 }, 25.42);
   tl.fromTo("#jq-q2", { autoAlpha:0, y:14 }, { autoAlpha:1, y:0, duration:0.35 }, 30.46);
