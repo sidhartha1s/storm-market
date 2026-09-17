@@ -79,7 +79,7 @@ Visual: split data panel, JMA card (998 hPa - 34 MPH - GUSTS 51 MPH) beside JTWC
 
 Visual: four-checkpoint track map MG, JMA data, pins land on cue: "+12H - 40 MPH" - "FRI - 985 hPa / 56 MPH" (map label "OGASAWARA ISLANDS," not spoken) - "SUN - 975 hPa / 67 MPH" (map label "SOUTH OF JAPAN") - "MON - 975 hPa / 67-89 MPH GUST" (map label "EAST OF JAPAN"). Quote card mounts on the last line: "East of Japan" -- Japan Meteorological Agency, forecast valid 21 September, issued 16 September, 19:10 JST. Paul circle hidden during the card.
 
-*(Paul's ebook CTA mounted here: 0.5 s dip in, 0.5 s out, film layer off. Story break, approx 3:07, 36% in.)*
+*(CTA moved 17 Sep 26 -- see B8-S2 below; B4 now follows this quote card on a plain 0.6 s chapter blackout.)*
 
 ## B4 -- TWO WAYS TO READ THE SAME STORM (3:07-3:49)
 
