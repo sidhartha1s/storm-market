@@ -59,7 +59,7 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const HOST_WINDOW = 53.782; // this episode's compare-stack mount: 362.412-416.194
+  const HOST_WINDOW = 53.782; // this episode's compare-stack mount: 346.873-400.655
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
   tl.set(["#cs-r1","#cs-r2","#cs-r3","#cs-connlab"], { autoAlpha: 0 }, 0);
   tl.fromTo("#cs-eye", { autoAlpha:0, y:-16 }, { autoAlpha:1, y:0, duration:0.5 }, 0);
