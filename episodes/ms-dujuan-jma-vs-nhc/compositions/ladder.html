@@ -6,11 +6,14 @@
      B3, shown static as a reference) vs. Saffir-Simpson categories (right, reveal row-by-row on the spoken
      cue). A connecting line lands at the 74-mph mark where both scales nearly align. Re-echoed (numbers only,
      not this DOM) inside compare-card.html for B6. Mount: track 2, host start = episode-abs 186.866,
-     duration 49.782. -->
+     duration 49.782. Round 2 (17 Sep 26 freeze fix): the 0.4->14.96 mount gap (14.56s) was a bare hold with only
+  ambient motion; two real beats now land on "shorter clock." (3.56) and "not ten minutes." (8.42), the
+  33.44->41.72 connector gap gets a Category-1 pulse on "opening number," (38.64), plus a ld-bgplate scale. -->
 <template>
 <style>
-  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
-    background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; background:#04070c; overflow:hidden; }
+  .ld-bgplate { position:absolute; left:-60px; right:-60px; top:-60px; bottom:-60px;
+    background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); transform-origin:center; will-change:transform; }
   .ld-colhead { position:absolute; top:110px; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:4px; text-align:center; }
   .ld-col-l { left:170px; width:640px; color:#8fb4d8; }
   .ld-col-r { right:170px; width:640px; color:#d0121f; }
