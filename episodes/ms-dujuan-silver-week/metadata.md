@@ -7,7 +7,7 @@
 
 ## Description
 https://paulraymond.online
-📘 The book mentioned at 3:17 — The Storm-Ready Home
+📘 The book mentioned at 9:01 — The Storm-Ready Home
 
 Right now, a tropical depression is spinning up near Guam, and Japan's biggest holiday in eleven years starts in three
 days. Japan's Meteorological Agency expects the system to earn a name, Dujuan, within twelve hours. Its own longest
