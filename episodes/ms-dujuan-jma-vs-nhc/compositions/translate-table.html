@@ -110,6 +110,8 @@ window.__timelines = window.__timelines || {};
      "That is the same starting line" (41.72) — two beats, not one block */
   tl.fromTo("#tt-r1-jma", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 29.64);
   tl.to("#tt-rindicator", { top: 405, duration: 0.5, ease: "power2.out" }, 29.64); // travels to row 1 on its own word
+  /* closes the r1-jma->r1-us gap (29.64->35.72, 6.08s content-only) with one more real beat on the just-landed label */
+  tl.to("#tt-r1-jma", { scale: 1.05, duration: 0.5, yoyo: true, repeat: 1 }, 32.5);
   tl.fromTo("#tt-r1", { backgroundPosition:"-120% 0" }, { backgroundPosition:"220% 0", duration:0.8, ease:"power1.inOut" }, 35.72);
   tl.fromTo("#tt-r1-us", { autoAlpha:0, x:20 }, { autoAlpha:1, x:0, duration:0.4 }, 35.72); // "That is the same starting line" 41.72
   /* row 2: grade name on "Very strong typhoon" (45.12), translation + sweep on "Category 2" (48.76) */
