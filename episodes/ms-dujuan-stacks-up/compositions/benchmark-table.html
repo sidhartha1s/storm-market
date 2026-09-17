@@ -115,7 +115,7 @@ window.__timelines = window.__timelines || {};
      also what fixes the Trami "901/118 vs 915/120" report: that was never two disagreeing sources (both
      edit_script.md f9 and this table already say 915 hPa/120 mph, sourced to Wikipedia "Typhoon Trami
      (2018)") - it was a mid-count-up frame of the OLD 0->915 ramp caught mid-flight.
-     tl.set(...) on a leaf, not tl.call(...): a callback is the same bug class comp_lint bans for onStart -
+     A tl.set on a leaf, not a tl.call callback: a callback is the same bug class comp_lint bans for onStart -
      a seek-driven render/gate can suppress GSAP's own events and never fire it, leaving the field blank
      (team-lead 17 Sep 26). tl.set writes deterministic timeline state that a seek always evaluates. */
   function landRow(id, at, hpa, mph, tickN) {
