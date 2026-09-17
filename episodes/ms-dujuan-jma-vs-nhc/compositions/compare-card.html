@@ -121,12 +121,9 @@ window.__timelines = window.__timelines || {};
      invisible to any QC pass that seeks the timeline with suppressEvents (the same class of bug found and
      fixed in ladder.html's round-3 note-cycling). */
   tl.to("#cc-r-grade", { autoAlpha: 1, duration: 0.4 }, 22.44);
-  /* the 12% delta counts up on its own beat instead of just popping in */
-  const PCT = { v: 0 };
-  const pctEl = document.querySelector("#cc-midpop .cp-pf");
+  /* round-6: the 12% delta is pre-authored in the markup and pops in directly, no count-up */
   tl.set("#cc-midpop", { visibility: "visible" }, 24.0);
-  tl.fromTo("#cc-midpop", { autoAlpha:0, scale:1.3 }, { autoAlpha:1, scale:1, duration:1.0 }, 24.0);
-  tl.to(PCT, { v: 12, duration: 1.0, ease: "power1.out", onUpdate: () => { pctEl.textContent = Math.round(PCT.v) + "%"; } }, 24.0);
+  tl.fromTo("#cc-midpop", { autoAlpha:0, scale:1.3 }, { autoAlpha:1, scale:1, duration:0.4, ease:"back.out(2)" }, 24.0);
   tl.to("#cc-midpop", { autoAlpha:0, duration:0.4 }, 27.5);
   /* the "12% conversion is a rule of thumb, not exact" caveat (comp-local 33.66 = B6-rel 54.66) */
   tl.fromTo("#cc-foot", { autoAlpha:0 }, { autoAlpha:1, duration:0.5 }, 33.66);
