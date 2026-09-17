@@ -36,9 +36,10 @@
   /* round-3 (reader: 313-331s and 337-349s read static — the italic notes/boxShadow pulse are too subtle to
      register as motion, same pattern as jma-quote/translate-table). A real growing bar between the two cards
      gives continuous, unambiguous motion across both stretches instead of relying on small-area badge fades. */
-  .cp-deltabar { position:absolute; left:50%; top:396px; height:6px; width:420px; border-radius:3px;
-    transform:translateX(-50%) scaleX(0); transform-origin:center; background:linear-gradient(90deg,#8fb4d8,#d0121f);
-    box-shadow:0 0 20px rgba(216,161,58,0.5); }
+  /* cards occupy x:150-910 (left) and x:1010-1770 (right); the 100px gutter between them (910-1010) is the
+     only safe strip that can't overlap either card's text, so the bar is narrow and vertical, not horizontal */
+  .cp-deltabar { position:absolute; left:940px; top:230px; width:8px; height:0; border-radius:4px;
+    background:linear-gradient(180deg,#8fb4d8,#d0121f); box-shadow:0 0 20px rgba(216,161,58,0.5); }
   .cp-midpop { position:absolute; left:0; right:0; top:420px; text-align:center; }
   .cp-midpop .cp-pf { font-family:'AbrilFig',Georgia,serif; font-size:100px; color:#d8a13a;
     text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 50px rgba(0,0,0,0.6); }
