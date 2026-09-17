@@ -439,6 +439,44 @@ window.__timelines = window.__timelines || {};
   /* blinking LIVE dots (continuous) */
   tl.to(["#tm-dot-jma", "#tm-dot-jtwc"], { opacity: 0.35, duration: 1.0, yoyo: true, repeat: repeatsToFit(0.9, 1.0), ease: "sine.inOut" }, 0.9);
 
+  /* Freeze-hold fix (team-lead direction, 17 Sep 26, from real freezedetect on the U1 draft
+     render): the draft flagged 6 frozen stretches inside this comp -- 26-52s, 53-59s, 92-111s,
+     137-144s (host time; comp-relative = host-7.0). A badge/chip/footer SCALE PULSE (first
+     attempt) passed this file's own tween-gap checker but was too small a pixel delta for
+     ffmpeg's frame-diff threshold to register as motion -- proven wrong by the actual render,
+     not assumed. Real fix per the team's own list: "a marker travelling along the drawn track."
+     A lit dot travels node-to-node along the ALREADY-DRAWN JMA path from the draw's own end
+     (26.02s, cursor after the draw-on loop above) to the card's first row (52.28s) -- real,
+     substantial, continuous pixel movement across hundreds of px of map, not a corner blip. */
+  tl.set("#tm-travel-jma", { attr: { cx: fcProj[0][0], cy: fcProj[0][1] }, opacity: 1 }, 26.02);
+  tl.to("#tm-travel-jma", { attr: { cx: fcProj[1][0], cy: fcProj[1][1] }, duration: 4.377, ease: "sine.inOut" }, 26.02);
+  tl.to("#tm-travel-jma", { attr: { cx: fcProj[2][0], cy: fcProj[2][1] }, duration: 4.377, ease: "sine.inOut" }, 30.397);
+  tl.to("#tm-travel-jma", { attr: { cx: fcProj[3][0], cy: fcProj[3][1] }, duration: 4.377, ease: "sine.inOut" }, 34.773);
+  tl.to("#tm-travel-jma", { attr: { cx: fcProj[4][0], cy: fcProj[4][1] }, duration: 4.377, ease: "sine.inOut" }, 39.15);
+  tl.to("#tm-travel-jma", { attr: { cx: fcProj[5][0], cy: fcProj[5][1] }, duration: 4.377, ease: "sine.inOut" }, 43.527);
+  tl.to("#tm-travel-jma", { attr: { cx: fcProj[6][0], cy: fcProj[6][1] }, duration: 4.377, ease: "sine.inOut" }, 47.903);
+  tl.to("#tm-travel-jma", { opacity: 0, duration: 0.3 }, 52.28);
+
+  /* Same technique on the JTWC dashed line, covering the second frozen stretch (92-111s host =
+     85.2-104.1s comp-relative): travels from right after the last JTWC node lands (68.4s) to the
+     checkpoint row (103.92s). */
+  tl.set("#tm-travel-jtwc", { attr: { cx: jtProj[0][0], cy: jtProj[0][1] }, opacity: 1 }, 68.4);
+  tl.to("#tm-travel-jtwc", { attr: { cx: jtProj[1][0], cy: jtProj[1][1] }, duration: 5.074, ease: "sine.inOut" }, 68.4);
+  tl.to("#tm-travel-jtwc", { attr: { cx: jtProj[2][0], cy: jtProj[2][1] }, duration: 5.074, ease: "sine.inOut" }, 73.474);
+  tl.to("#tm-travel-jtwc", { attr: { cx: jtProj[3][0], cy: jtProj[3][1] }, duration: 5.074, ease: "sine.inOut" }, 78.549);
+  tl.to("#tm-travel-jtwc", { attr: { cx: jtProj[4][0], cy: jtProj[4][1] }, duration: 5.074, ease: "sine.inOut" }, 83.623);
+  tl.to("#tm-travel-jtwc", { attr: { cx: jtProj[5][0], cy: jtProj[5][1] }, duration: 5.074, ease: "sine.inOut" }, 88.697);
+  tl.to("#tm-travel-jtwc", { attr: { cx: jtProj[6][0], cy: jtProj[6][1] }, duration: 5.074, ease: "sine.inOut" }, 93.771);
+  tl.to("#tm-travel-jtwc", { attr: { cx: jtProj[7][0], cy: jtProj[7][1] }, duration: 5.074, ease: "sine.inOut" }, 98.846);
+  tl.to("#tm-travel-jtwc", { opacity: 0, duration: 0.3 }, 103.92);
+
+  /* Background plate real slow push (team-lead direction, "the satellite plate's slow push" --
+     the whole basemap, not just the satellite clip underneath it): covers ALL SIX freeze windows
+     at once with one continuous, substantial, whole-frame scale move from the map's own cut-in
+     (18.02s) to the end of the mount (137.1s), matching the "background plate gets scale
+     1.00->1.06" rule applied to kanto-map's basemap. */
+  tl.fromTo("#tm-map", { scale: 1.0 }, { scale: 1.06, duration: 119.08, ease: "none", transformOrigin: "50% 50%" }, 18.02);
+
   /* Ambient atmosphere drift, real and visible (not a no-op), single literal-duration pass
      covering this host's full mount (7.0-144.1, 137.1s) rather than a repeat count -- the
      other repeat:300 ambient tweens above genuinely keep the frame alive out to ~360s (see
