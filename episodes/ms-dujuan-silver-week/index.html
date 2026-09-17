@@ -194,7 +194,14 @@
   <!-- B6 · what it means for americans 343.739-421.484 (kanto-map.html on track 2 for the pin-map hold) -->
   <video id="vx-b6-0-clouds" src="media/video/v-clouds-rolling-b6.mp4" data-start="328.2" data-duration="8.0" data-track-index="1" data-callback="second use, US hurricane-season parallel" muted></video>
   <video id="vx-b6-1-bay" src="media/video/v-tokyobay-aerial.mp4" data-start="336.2" data-duration="10.0" data-track-index="1" muted></video>
-  <video id="vx-b6-2-train" src="media/video/v-train-commuter.mp4" data-start="346.2" data-duration="10.0" data-track-index="1" muted></video>
+  <!-- v-train-commuter.mp4 swapped 17 Sep 26 for radar_zoom_2 (team-lead direction): the narration
+       right here is "those are the same 5 days this storm is forecast to be nearest the country"
+       (audio/b6-s1.words.json, comp-relative 18.0-25.4s) -- real satellite footage of the storm
+       panning toward Japan is a direct match and leads straight into the Kanto map mount at
+       356.2 better than a generic commuter-train cutter. Trimmed from 24.0s to the existing
+       10.0s window (media_budget: window < clip native length). Provenance: library/mini-storms/
+       dujuan-2026/provenance.csv row 44. -->
+  <video id="vx-b6-2-radarzoom" src="media/video/radar_zoom_2.mp4" data-start="346.2" data-duration="10.0" data-track-index="1" muted></video>
   <section class="clip blackout" id="bo-b6" data-start="405.945" data-duration="0.6" data-track-index="1"></section>
 
   <!-- B7 · how to read Japan's numbers 422.084-483.284 (scale-ladder.html on track 2, full segment) -->
