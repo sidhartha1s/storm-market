@@ -52,5 +52,5 @@ Visual: satellite camera move on Dujuan (parent's radar_zoom_2) · ladder marker
 | pexels_35209563 black umbrella wet pavement | Pexels | Pexels License | S4a |
 | pexels_3864101 trees swaying in wind | Pexels | Pexels License | S4b (under the quote card) |
 | pexels_35225359 storm clouds rolling | Pexels | Pexels License | S5 |
-| radar_zoom_2 | NASA Worldview VIIRS + parent's zoompan | PD-US-gov | S6 |
+| radar_dujuan (6.5 s) | NASA Worldview VIIRS SNPP snapshot 16 Sep 26, own eased centre zoom from a 2× oversampled still (same source as sh-dujuan-silver-week-1; the parent's zoompan clip stepped) | PD-US-gov | S6 |
 | ladder graphic (composition) | Cabinet Office ladder, redrawn | own MG, credited | S2–S6 |

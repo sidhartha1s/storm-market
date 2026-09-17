@@ -530,6 +530,18 @@ minutes. A green suite on an unwatchable artifact is a failed QC.
 - **PySceneDetect** (scenedetect.com) approved for splitting long sources into scene cuts —
   validate on this box before first use; cheaper than agent OCR passes.
 
+## zoompan on a 1080p still steps, not glides (owner 17 Sep 26, Dujuan shorts)
+
+The parent's satellite "camera move" (`ffmpeg -loop 1 … zoompan` on a 1920×1080 Worldview
+still, then cropped 9:16 and upscaled) had 76 unique frames out of 240: zoompan rounds its
+crop window to whole source pixels, so a slow zoom on a small source advances only every
+2–3 frames (signalstats YDIF ≈ 0 on 134 of 239 frame pairs). The owner saw it as a jerky
+zoom at 0 s of short A and at the end of short B. Fix, measured 237/240 unique frames,
+YDIF sd 1.77 vs 3.74: fetch the still at the output aspect and ≥2× the output size
+(Worldview snapshot API, `WIDTH=2160&HEIGHT=3840`, bbox centred on the subject), then
+`scale=4320:7680:flags=lanczos,zoompan=z='1+0.35*(1-cos(PI*on/(N-1)))/2':d=N:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s=1080x1920:fps=30`.
+Eased zoom (cosine), never linear; never crop-and-upscale a landscape zoom clip into 9:16.
+
 ## Harness background tasks get reaped — long renders need schtasks (measured ep5, 2026-08-06)
 
 Two draft renders launched via the harness's background Bash died mid-capture (41% and 33%)
