@@ -43,8 +43,19 @@ window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
   tl.set("#to-card", { autoAlpha: 0 }, 0);
+  tl.set(["#to-row-1", "#to-row-2"], { autoAlpha: 0, x: -16 }, 0);
   tl.fromTo("#to-card", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.2);
   tl.fromTo("#to-rule", { width: "0%" }, { width: "100%", duration: 10.6, ease: "none" }, 0.4);
+  /* 8s max-gap rule (team-lead direction, 17 Sep 26): both rows used to land in the same card
+     block at 0.2s, then nothing moved for 11s. Row 1 now lands on its own word ("The first is the
+     track." ends 4.36s per audio/b8-s1a.words.json, reveal on "The" at 3.22s). Row 2 ("strength")
+     is not spoken until 16.44s -- past this 12.216s card window -- so it can't land on that exact
+     word without either holding empty past its own beat or appearing before it either way; it
+     lands instead on the "Two things remain genuinely open tonight" framing already spoken at
+     0-2.58s (the pair this card previews), placed mid-hold so neither row block-reveals with the
+     card frame. */
+  tl.fromTo("#to-row-1", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 3.22);
+  tl.fromTo("#to-row-2", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 7.5);
   tl.to("#to-card", { autoAlpha: 0, x: -30, duration: 0.4 }, 11.2);
   tl.to("#to-drift", { rotation: 1080, duration: 12.2, ease: "none", transformOrigin: "50% 50%" }, 0);
   window.__timelines["tracking-open"] = tl;
