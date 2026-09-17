@@ -126,7 +126,13 @@ Visual: full five-level ladder MG, complete, alongside a parallel US-side stack:
 
 Visual: ladder MG with a marker pinned below level 1, labeled "TONIGHT: BELOW THE LADDER (STILL A TD)." Track map, JMA's +117h forecast point held: "975 hPa · 67 MPH · 108 KM/H · GUST 89 MPH · 144 KM/H" at map label "EAST OF JAPAN." Return to the live Himawari loop.
 
-## B9 — WHAT'S STILL OPEN TONIGHT (8:52–9:40)
+### B8-S2 — bridge
+
+> Just a second before the last numbers. Most people who watch these stories already have someone in the path, and Paul has one thing for them.
+
+Visual: continues straight over the returning Himawari loop from B8 (second reuse of `himawari_fulldisk.jpg`, `data-callback`'d — recurring "we return to the storm" motif, now carrying into the CTA). No blackout, no dip, no cut on the way in. *(Paul's ebook CTA mounts immediately after this line ends: 0 s gap in, 0.5 s dip out, film layer off. Moved here from the old B3 story-break position so it lands at 85-95% of runtime, immediately before the closing tracking segment — B9/B10.)*
+
+## B9 — WHAT'S STILL OPEN TONIGHT
 
 ### B9-S1 — narration
 
