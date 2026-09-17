@@ -94,15 +94,21 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#sw-us-line", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 26.46);
 
   tl.fromTo("#sw-card-nozomi", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 33.86);
-  /* 8s max-gap rule (team-lead direction, 17 Sep 26): 33.86->58.48 was a 24.6s hole with nothing
-     new on screen. Three word-anchored emphasis pulses on the already-visible Nozomi card, each
-     landing on the real word.json cue that names that exact fact (audio/b5-s1.words.json):
-     "Friday and next Wednesday" (36.84), "worst outbound crowding" (44.02), "this storm existed"
-     (51.34) -- a real content change (scale), not a new fact, but it lands on the beat that
-     states the already-shown text, same discipline as a new reveal. */
-  tl.fromTo("#sw-card-nozomi", { scale: 1 }, { scale: 1.035, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 36.84);
-  tl.fromTo("#sw-card-nozomi", { scale: 1 }, { scale: 1.035, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 44.02);
-  tl.fromTo("#sw-card-nozomi", { scale: 1 }, { scale: 1.035, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 51.34);
+  /* Reader QC on U1 draft 2 (team-lead, 17 Sep 26): "the Nozomi card sits static ~279-294s (host
+     abs; comp-relative 36.1-51.1) before the Asian Games line -- split its lines into beats on
+     the words," not just a scale-pulse on the whole card (confirmed on pulled frames at host
+     279/290s, card pixel-identical across the 11s span). The card's own sub-line is really TWO
+     clauses from the same sentence pair the narration speaks separately (audio/b5-s1.words.json,
+     no offset -- comp t=0 = host abs 242.873): "Rail operators expect the worst outbound crowding
+     Friday evening and Saturday morning" (43.8) and "...the worst return crowding next Wednesday"
+     (47.44). Split into #sw-sub-nozomi-out/#sw-sub-nozomi-ret above so each half lands separately
+     on its own word instead of both halves appearing at once with the card. One pulse remains at
+     39.14 ("that retires the normal unreserved cars for the week") and one at 51.34 ("this storm
+     existed") to close the two remaining sub-8s gaps around the two new line-reveals. */
+  tl.fromTo("#sw-card-nozomi", { scale: 1 }, { scale: 1.03, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 39.14);
+  tl.fromTo("#sw-sub-nozomi-out", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 43.8);
+  tl.fromTo("#sw-sub-nozomi-ret", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 47.44);
+  tl.fromTo("#sw-card-nozomi", { scale: 1 }, { scale: 1.03, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 51.34);
   tl.fromTo("#sw-card-games", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 58.48);
 
   /* foreground motion for the second half (nothing new happened after ~40s of the 84.7s window
