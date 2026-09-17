@@ -48,7 +48,7 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const HOST_WINDOW = 54.618; // this episode's ladder-l5 mount: 301.194-355.812
+  const HOST_WINDOW = 54.618; // this episode's ladder-l5 mount: 285.655-340.273
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
   const N1 = { n: 0 }; const n1El = document.getElementById("l5-n1");
   tl.set(["#l5-pf","#l5-card"], { visibility: "hidden", autoAlpha: 0 }, 0);
