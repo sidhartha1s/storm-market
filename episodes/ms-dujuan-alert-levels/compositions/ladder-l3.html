@@ -5,52 +5,55 @@
 <!-- ladder-l3.html — B4 "level three: the elderly evacuate first". Full mini-ladder (all 5 rows, muted)
      with level 3 pulled out and highlighted; silhouette icon row for the named group; US-equivalent chip.
      Full-window mount, no b-roll (pure graphic, matches sibling's B4 pattern). Cues word-synced from
-     audio/b4-s1.words.json. Mount: track 2, host start = episode-abs 189.812, duration 47.091. -->
+     audio/b4-s1.words.json. Mount: track 2, host start = episode-abs 189.812, duration 47.091. Font:
+     'AbrilFig' relies on index.html's single @font-face (a per-comp duplicate false-triggers
+     css_collision.py on the shared ".ttf" url() token). All classes carry the l3- comp tag; this file's
+     bare ".srclab" was the real host collision (index.html defines its own ".srclab" source-label style
+     at a different position/size — it would have leaked into this card's source line). -->
 <template>
 <style>
-  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
   #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
     background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
-  .mini { position:absolute; left:90px; top:110px; width:360px; }
-  .mini .r { display:flex; align-items:center; gap:12px; padding:10px 16px; margin-top:8px; border-radius:10px;
+  .l3-mini { position:absolute; left:90px; top:110px; width:360px; }
+  .l3-mini .l3-r { display:flex; align-items:center; gap:12px; padding:10px 16px; margin-top:8px; border-radius:10px;
     background:rgba(10,16,24,0.5); border:1px solid rgba(255,255,255,0.1); opacity:0.35; font-size:18px; font-family:'Arial Black',Arial,sans-serif; }
-  .mini .r .n { font-family:'AbrilFig',Georgia,serif; font-size:26px; color:#8fb4d8; }
-  .mini .r.active { opacity:1; border-color:#d0121f; box-shadow:0 0 24px rgba(208,18,31,0.35); }
-  .mini .r.active .n { color:#d0121f; }
-  .card { position:absolute; left:520px; top:150px; width:900px; box-sizing:border-box; padding:36px 46px;
+  .l3-mini .l3-r .l3-n { font-family:'AbrilFig',Georgia,serif; font-size:26px; color:#8fb4d8; }
+  .l3-mini .l3-r.l3-active { opacity:1; border-color:#d0121f; box-shadow:0 0 24px rgba(208,18,31,0.35); }
+  .l3-mini .l3-r.l3-active .l3-n { color:#d0121f; }
+  .l3-card { position:absolute; left:520px; top:150px; width:900px; box-sizing:border-box; padding:36px 46px;
     background:rgba(10,16,24,0.58); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); border-radius:26px; }
-  .eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:6px; color:#d0121f; }
-  .big { margin-top:14px; font-family:'AbrilFig',Georgia,serif; font-size:64px; line-height:1.15; color:#f4f0e8; }
-  .icons { display:flex; gap:34px; margin-top:30px; }
-  .icon { text-align:center; opacity:0; }
-  .icon .glyph { width:78px; height:78px; border-radius:50%; background:rgba(208,18,31,0.18); border:2px solid #d0121f;
+  .l3-eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:6px; color:#d0121f; }
+  .l3-big { margin-top:14px; font-family:'AbrilFig',Georgia,serif; font-size:64px; line-height:1.15; color:#f4f0e8; }
+  .l3-icons { display:flex; gap:34px; margin-top:30px; }
+  .l3-icon { text-align:center; opacity:0; }
+  .l3-icon .l3-glyph { width:78px; height:78px; border-radius:50%; background:rgba(208,18,31,0.18); border:2px solid #d0121f;
     display:flex; align-items:center; justify-content:center; font-size:34px; margin:0 auto; }
-  .icon .cap { margin-top:10px; font-size:19px; color:#c8d3e0; max-width:130px; }
-  .chip { position:absolute; left:520px; bottom:150px; width:900px; box-sizing:border-box; font-family:'Arial Black',Arial,sans-serif;
+  .l3-icon .l3-cap { margin-top:10px; font-size:19px; color:#c8d3e0; max-width:130px; }
+  .l3-chip { position:absolute; left:520px; bottom:150px; width:900px; box-sizing:border-box; font-family:'Arial Black',Arial,sans-serif;
     font-size:24px; letter-spacing:1px; color:#f4f0e8; background:rgba(10,16,24,0.62); border:1px solid rgba(255,255,255,0.14);
     border-left:6px solid #8fb4d8; border-radius:10px; padding:16px 26px; line-height:1.5; }
-  .srclab { position:absolute; right:60px; top:60px; font-size:19px; color:rgba(220,228,236,0.75); }
+  .l3-srclab { position:absolute; right:60px; top:60px; font-size:19px; color:rgba(220,228,236,0.75); }
 </style>
 <div id="root" data-composition-id="ladder-l3" data-width="1920" data-height="1080">
-  <div class="mini" id="l3-mini">
-    <div class="r" id="l3-m1"><div class="n">1</div>RISING RISK</div>
-    <div class="r" id="l3-m2"><div class="n">2</div>ADVISORY ISSUED</div>
-    <div class="r active" id="l3-m3"><div class="n">3</div>ELDERLY EVACUATE</div>
-    <div class="r" id="l3-m4"><div class="n">4</div>EVACUATION INSTRUCTION</div>
-    <div class="r" id="l3-m5"><div class="n">5</div>EMERGENCY SAFETY</div>
+  <div class="l3-mini" id="l3-mini">
+    <div class="l3-r" id="l3-m1"><div class="l3-n">1</div>RISING RISK</div>
+    <div class="l3-r" id="l3-m2"><div class="l3-n">2</div>ADVISORY ISSUED</div>
+    <div class="l3-r l3-active" id="l3-m3"><div class="l3-n">3</div>ELDERLY EVACUATE</div>
+    <div class="l3-r" id="l3-m4"><div class="l3-n">4</div>EVACUATION INSTRUCTION</div>
+    <div class="l3-r" id="l3-m5"><div class="l3-n">5</div>EMERGENCY SAFETY</div>
   </div>
-  <div class="card" id="l3-card">
-    <div class="eye">ALERT LEVEL 3</div>
-    <div class="big" id="l3-big">Evacuation of the Elderly, Etc.</div>
-    <div class="icons" id="l3-icons">
-      <div class="icon" id="l3-i1"><div class="glyph">&#128116;</div><div class="cap">Elderly residents</div></div>
-      <div class="icon" id="l3-i2"><div class="glyph">&#9855;</div><div class="cap">People with disabilities</div></div>
-      <div class="icon" id="l3-i3"><div class="glyph">&#128100;</div><div class="cap">Anyone needing extra time</div></div>
+  <div class="l3-card" id="l3-card">
+    <div class="l3-eye">ALERT LEVEL 3</div>
+    <div class="l3-big" id="l3-big">Evacuation of the Elderly, Etc.</div>
+    <div class="l3-icons" id="l3-icons">
+      <div class="l3-icon" id="l3-i1"><div class="l3-glyph">&#128116;</div><div class="l3-cap">Elderly residents</div></div>
+      <div class="l3-icon" id="l3-i2"><div class="l3-glyph">&#9855;</div><div class="l3-cap">People with disabilities</div></div>
+      <div class="l3-icon" id="l3-i3"><div class="l3-glyph">&#128100;</div><div class="l3-cap">Anyone needing extra time</div></div>
     </div>
   </div>
-  <div class="chip" id="l3-chip">US EQUIVALENT: NO FEDERAL MATCH</div>
-  <div class="srclab" id="l3-src">SOURCE: CABINET OFFICE, JMA</div>
+  <div class="l3-chip" id="l3-chip">US EQUIVALENT: NO FEDERAL MATCH</div>
+  <div class="l3-srclab" id="l3-src">SOURCE: CABINET OFFICE, JMA</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
