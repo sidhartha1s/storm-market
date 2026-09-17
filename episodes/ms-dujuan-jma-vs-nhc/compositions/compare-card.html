@@ -10,50 +10,49 @@
      B6-segment-relative minus 21.0). -->
 <template>
 <style>
-  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
   #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
     background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
-  .eye { position:absolute; left:0; right:0; top:100px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
+  .cp-eye { position:absolute; left:0; right:0; top:100px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
     font-size:24px; letter-spacing:5px; color:#d8a13a; }
-  .card { position:absolute; top:200px; width:760px; box-sizing:border-box; padding:36px 40px; text-align:center;
+  .cp-card { position:absolute; top:200px; width:760px; box-sizing:border-box; padding:36px 40px; text-align:center;
     background:rgba(10,16,24,0.58); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
-  .card-l { left:150px; border-bottom:5px solid #8fb4d8; }
-  .card-r { right:150px; border-bottom:5px solid #d0121f; }
-  .tag { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:4px; }
-  .card-l .tag { color:#8fb4d8; }
-  .card-r .tag { color:#d0121f; }
-  .num { font-family:'AbrilFig',Georgia,serif; font-size:150px; line-height:1.25; margin-top:18px;
+  .cp-card-l { left:150px; border-bottom:5px solid #8fb4d8; }
+  .cp-card-r { right:150px; border-bottom:5px solid #d0121f; }
+  .cp-tag { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:4px; }
+  .cp-card-l .cp-tag { color:#8fb4d8; }
+  .cp-card-r .cp-tag { color:#d0121f; }
+  .cp-num { font-family:'AbrilFig',Georgia,serif; font-size:150px; line-height:1.25; margin-top:18px;
     min-width:3ch; font-variant-numeric:tabular-nums; font-feature-settings:"tnum"; }
-  .card-l .num { color:#8fb4d8; }
-  .card-r .num { color:#d0121f; }
-  .unit { font-family:'Arial Black',Arial,sans-serif; font-size:26px; letter-spacing:2px; margin-top:38px; }
-  .sub { margin-top:16px; font-family:Georgia,serif; font-style:italic; font-size:22px; color:#c8d3e0; }
-  .grade { margin-top:14px; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:1px; }
-  .midpop { position:absolute; left:0; right:0; top:420px; text-align:center; }
-  .midpop .pf { font-family:'AbrilFig',Georgia,serif; font-size:100px; color:#d8a13a;
+  .cp-card-l .cp-num { color:#8fb4d8; }
+  .cp-card-r .cp-num { color:#d0121f; }
+  .cp-unit { font-family:'Arial Black',Arial,sans-serif; font-size:26px; letter-spacing:2px; margin-top:38px; }
+  .cp-sub { margin-top:16px; font-family:Georgia,serif; font-style:italic; font-size:22px; color:#c8d3e0; }
+  .cp-grade { margin-top:14px; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:1px; }
+  .cp-midpop { position:absolute; left:0; right:0; top:420px; text-align:center; }
+  .cp-midpop .cp-pf { font-family:'AbrilFig',Georgia,serif; font-size:100px; color:#d8a13a;
     text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 50px rgba(0,0,0,0.6); }
-  .foot { position:absolute; left:0; right:0; bottom:115px; text-align:center; font-family:Arial,sans-serif;
+  .cp-foot { position:absolute; left:0; right:0; bottom:115px; text-align:center; font-family:Arial,sans-serif;
     font-size:20px; color:#c8d3e0; }
 </style>
 <div id="root" data-composition-id="compare-card" data-width="1920" data-height="1080">
-  <div class="eye" id="cc-eye">TODAY'S FORECAST, TWO ANSWERS</div>
-  <div class="card card-l" id="cc-l">
-    <div class="tag">JMA FORECAST</div>
-    <div class="num" id="cc-l-num">0</div>
-    <div class="unit">MPH &middot; 30 M/S &middot; 108 KM/H</div>
-    <div class="grade">SEVERE TROPICAL STORM</div>
-    <div class="sub">10-minute peak forecast</div>
+  <div class="cp-eye" id="cc-eye">TODAY'S FORECAST, TWO ANSWERS</div>
+  <div class="cp-card cp-card-l" id="cc-l">
+    <div class="cp-tag">JMA FORECAST</div>
+    <div class="cp-num" id="cc-l-num">0</div>
+    <div class="cp-unit">MPH &middot; 30 M/S &middot; 108 KM/H</div>
+    <div class="cp-grade">SEVERE TROPICAL STORM</div>
+    <div class="cp-sub">10-minute peak forecast</div>
   </div>
-  <div class="card card-r" id="cc-r">
-    <div class="tag">JTWC FORECAST</div>
-    <div class="num" id="cc-r-num">0</div>
-    <div class="unit">MPH &middot; 65 KT</div>
-    <div class="grade" id="cc-r-grade">&nbsp;</div>
-    <div class="sub">1-minute peak forecast</div>
+  <div class="cp-card cp-card-r" id="cc-r">
+    <div class="cp-tag">JTWC FORECAST</div>
+    <div class="cp-num" id="cc-r-num">0</div>
+    <div class="cp-unit">MPH &middot; 65 KT</div>
+    <div class="cp-grade" id="cc-r-grade">&nbsp;</div>
+    <div class="cp-sub">1-minute peak forecast</div>
   </div>
-  <div class="midpop" id="cc-midpop" style="visibility:hidden"><span class="pf">12%</span></div>
-  <div class="foot" id="cc-foot">A STATISTICAL RULE OF THUMB &middot; NOT AN EXACT FORMULA</div>
+  <div class="cp-midpop" id="cc-midpop" style="visibility:hidden"><span class="cp-pf">12%</span></div>
+  <div class="cp-foot" id="cc-foot">A STATISTICAL RULE OF THUMB &middot; NOT AN EXACT FORMULA</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
