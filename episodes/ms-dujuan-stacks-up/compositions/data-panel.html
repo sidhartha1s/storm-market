@@ -73,9 +73,11 @@ window.__timelines = window.__timelines || {};
   tl.to("#dp-r", { y: -6, duration: 2.7, ease: "sine.inOut", repeat: repeatsToFit(1.2, 2.7), yoyo: true }, 1.2);
   tl.to(R, { n: 35, duration: 1.0, ease: "power1.out", onUpdate: () => rEl.textContent = Math.round(R.n) }, 17.6);
   tl.set("#dp-r-sub-b", { autoAlpha: 0 }, 0);
-  tl.to("#dp-r-sub-a", { autoAlpha: 0, duration: 0.3 }, 20.0);
-  tl.set("#dp-r-sub-b", { visibility: "visible" }, 20.0);
-  tl.to("#dp-r-sub-b", { autoAlpha: 1, duration: 0.3 }, 20.0);
+  /* hard cut, not a crossfade: same fix as contrast-card's cc-center swap — a 0.3s cross-dissolve leaves
+     both spans briefly co-visible at the same position, which overlap_check.mjs's 0.5s sampler can catch
+     as a comp-internal collision; the two facts are sequential text, so the swap lands on one frame. */
+  tl.set(["#dp-r-sub-a","#dp-r-sub-b"], { autoAlpha: 0 }, 20.0);
+  tl.set("#dp-r-sub-b", { visibility: "visible", autoAlpha: 1 }, 20.0);
   tl.set("#dp-chip-ts", { visibility: "visible" }, 25.1);
   tl.fromTo("#dp-chip-ts", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.35 }, 25.1);
   tl.set("#dp-chip-sst", { visibility: "visible" }, 43.82);
