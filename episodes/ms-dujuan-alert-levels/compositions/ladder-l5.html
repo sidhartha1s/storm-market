@@ -101,6 +101,10 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#l5-eye", { autoAlpha:0, y:-16 }, { autoAlpha:1, y:0, duration:0.5 }, 0); CONTENT_BEATS.push(0);
   tl.fromTo("#l5-lvl", { autoAlpha:0, scale:0.9 }, { autoAlpha:1, scale:1, duration:0.5 }, 1.36); CONTENT_BEATS.push(1.36);
   tl.to("#l5-lvl", { opacity: 0.85, duration: 2.2, ease: "sine.inOut", repeat: repeatsToFit(2.0, 2.2), yoyo: true }, 2.0);
+  /* round 3c (owner: "288.7-291.7 header only, no caption", 17 Sep 26) — "safety measures" is spoken
+     1.36-2.92, right after the headline itself lands; caption it so the note zone isn't dark for the
+     first ~3.5s while the headline holds. */
+  note("CALLED EMERGENCY SAFETY MEASURES", 1.90, 1.68);
   /* "...it means evacuation itself may no longer be safe." — 3.58s */
   note("EVACUATION ITSELF MAY NO LONGER BE SAFE", 3.58, 6.42);
   tl.set("#l5-pf", { visibility: "visible" }, 10.0);
