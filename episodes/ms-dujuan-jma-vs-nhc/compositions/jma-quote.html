@@ -97,6 +97,9 @@ window.__timelines = window.__timelines || {};
   tl.to(CU1, { lo:38, hi:55, duration:0.9, ease:"power1.out",
     onUpdate: () => { r1rng.textContent = Math.round(CU1.lo) + "–" + Math.round(CU1.hi) + " MPH"; } }, 5.62);
   tl.fromTo("#jq-indicator", { visibility:"visible", autoAlpha:0, top:213 }, { autoAlpha:1, duration:0.3 }, 5.62); // slides to r1
+  /* breathing pulse so the indicator itself keeps moving through the idle stretches between rung slides
+     (e.g. the 15.1->25.4 span parked at the threshold line) */
+  tl.to("#jq-indicator", { scaleY: 1.3, duration: 0.8, ease: "sine.inOut", repeat: repeatsToFit(6.4, 0.8), yoyo: true }, 6.4);
   tl.fromTo("#jq-r2", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.9 }, 9.18);      // "severe tropical" 17.18
   tl.to("#jq-r2-lab", { color:"#ffffff", duration:0.45, yoyo:true, repeat:1 }, 9.18);
   tl.to(CU2, { lo:55, hi:73, duration:0.9, ease:"power1.out",
