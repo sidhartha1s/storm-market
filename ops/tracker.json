@@ -525,10 +525,10 @@
       "title": "Short: Typhoon Dujuan Is Aimed at Silver Week",
       "owner": "director",
       "due": "17 Sep 26",
-      "phase": "tts",
-      "status": "doing",
-      "note": "TTS + 1.16 tempo running 17 Sep 26",
-      "updated": "17 Sep 26 11:36"
+      "phase": "preview",
+      "status": "done",
+      "note": "draft v1 rendered 17 Sep 26, 40.4 s, awaiting owner eyeball",
+      "updated": "17 Sep 26 12:49"
     },
     {
       "slug": "sh-dujuan-alert-levels-1",
@@ -537,10 +537,10 @@
       "title": "Short: Japan's 5 Typhoon Alert Levels, Explained",
       "owner": "director",
       "due": "17 Sep 26",
-      "phase": "script",
+      "phase": "preview",
       "status": "done",
-      "note": "script + TTS 17 Sep 26; funnel to ms-dujuan-alert-levels",
-      "updated": "17 Sep 26 12:10"
+      "note": "draft v1 rendered 17 Sep 26, 41.0 s, awaiting owner eyeball",
+      "updated": "17 Sep 26 12:49"
     }
   ]
 }
