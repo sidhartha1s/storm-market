@@ -112,8 +112,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#lad-connlab", { autoAlpha:0, y:-10 }, { autoAlpha:1, y:0, duration:0.4 }, 41.9);
   /* frame-reader finding (draft 1 contact sheet): the post-build 41.9->49.25 span read as static with only a
      brief connector blip; a third real beat lands on "The starting point is close." (45.4) */
-  tl.fromTo("#ld-note-r", { autoAlpha:0, y:10 }, { autoAlpha:1, y:0, duration:0.35, onStart:() => { const el = document.getElementById("ld-note-r"); el.textContent = "THE STARTING POINT IS CLOSE"; el.style.top = "870px"; } }, 45.4);
-  tl.to([".ld-colhead","#lad-l","#lad-r","#lad-conn","#lad-connlab","#lad-chip","#ld-note-r"], { autoAlpha:0, duration:0.5 }, 49.25);
+  tl.fromTo("#ld-note-3", { autoAlpha:0, y:10 }, { autoAlpha:1, y:0, duration:0.35 }, 45.4);
+  tl.to([".ld-colhead","#lad-l","#lad-r","#lad-conn","#lad-connlab","#lad-chip","#ld-note-3"], { autoAlpha:0, duration:0.5 }, 49.25);
   window.__timelines["ladder"] = tl;
 })();
 </script>
