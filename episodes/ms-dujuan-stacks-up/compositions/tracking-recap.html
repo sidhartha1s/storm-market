@@ -57,6 +57,14 @@ window.__timelines = window.__timelines || {};
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
   tl.set(["#tr-r2","#tr-hl"], { visibility: "hidden", autoAlpha: 0 }, 0);
   tl.set(["#tr-c1","#tr-c2","#tr-c3","#tr-c4","#tr-c5","#tr-c6","#tr-c7","#tr-c8","#tr-c9"], { autoAlpha: 0 }, 0);
+  tl.set("#tr-note-1", { visibility: "hidden", autoAlpha: 0 }, 0);
+  /* real narration-synced content in the 2.0-10.5s comp-local gap freeze_scan.mjs flagged (real ffmpeg
+     freezedetect, --hold 6): b7-s1.words.json (segment-abs minus 6.0 lead-in) has "A turn back toward the
+     mainland is still possible beyond where that forecast currently reaches" landing comp-rel 2.88-7.92s —
+     a real nuance on the TRACK thread with no visual beat before this fix. Space for the line is reserved
+     from t=0 (visibility:hidden, not display:none) so revealing it doesn't reflow the card. */
+  tl.set("#tr-note-1", { visibility: "visible" }, 2.9);
+  tl.fromTo("#tr-note-1", { autoAlpha:0, y:8 }, { autoAlpha:1, y:0, duration:0.4 }, 2.9);
   tl.fromTo("#tr-card", { autoAlpha:0, scale:0.94 }, { autoAlpha:1, scale:1, duration:0.6, ease:"power3.out" }, 0);
   tl.fromTo("#tr-r1", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.4 }, 0.3);
   tl.set("#tr-mini", { autoAlpha: 1 }, 0.6);
