@@ -159,19 +159,20 @@
   <section class="clip blackout" id="bo-b7" data-start="400.655" data-duration="0.6" data-track-index="1"></section>
 
   <!-- B8 · where this storm sits tonight 401.255-450.091 (ladder-tonight comp on track 2 from 407.255,
-       then return to the Himawari loop from B1 for the tail). The tail-return still is EXTENDED past
-       B8's own audio end (450.091) straight through the 0.6 s seam and the B8-S2 bridge narration, so
-       the picture never cuts or blacks out on the way into the CTA — the same continuous Ken Burns pan
-       just keeps running. Presenter (pip-g) stays capped at the original 6.0s of it (paul-talk-3.mp4 is
-       only 7.5s of source); the trailing ~8.7s under the bridge plays with no presenter, matching the
-       "hidden under a full-screen beat" convention. -->
+       then return to the Himawari loop from B1 for the tail, unchanged 6.0s). -->
   <section class="clip still-wrap" id="c-b8-0-worldview14" data-start="401.255" data-duration="6.0" data-track-index="1"><img id="kb-b8-0-worldview14" src="media/image/worldview_0914.jpg" alt=""></section>
   <section class="clip blackout" id="bo-b8-tonight" data-start="407.255" data-duration="36.836" data-track-index="1"></section>
-  <section class="clip still-wrap" id="c-b8-1-himawari-return" data-start="444.091" data-duration="14.726" data-track-index="1" data-callback="return to the Himawari loop from B1, extended through the B8-S2 bridge into the CTA"><img id="kb-b8-1-himawari-return" src="media/image/himawari_fulldisk.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-b8-1-himawari-return" data-start="444.091" data-duration="6.0" data-track-index="1" data-callback="return to the Himawari loop from B1"><img id="kb-b8-1-himawari-return" src="media/image/himawari_fulldisk.jpg" alt=""></section>
+
+  <!-- B8-S2 bridge 450.691-458.817 (8.126s): a still can't cover this (sweep_episode caps stills at
+       6.0s, "not a PowerPoint"), so it reuses b1_stormclouds.mp4 (2nd use, data-callback'd, 8.58s of
+       source covers the 8.126s window) muted under the bridge line — a second look at the storm before
+       Paul's CTA. Zero gap into the CTA below (no blackout, no dip); the 0.5 s dip after the CTA. -->
+  <video id="vx-b8s2-stormclouds" src="media/video/b1_stormclouds.mp4" data-start="450.691" data-duration="8.126" data-track-index="1" data-callback="second look at the storm clouds from the open, right before Paul's CTA" muted></video>
 
   <!-- CTA moved 17 Sep 26 to 85-95% in (458.817/538.0 = 85.3%), immediately before the closing
-       tracking-close card. Zero gap in (the Himawari still above runs straight to 458.817, no blackout,
-       no dip); 0.5 s dip out below, per the "keep the 0.5 s dip after the CTA" rule. -->
+       tracking-close card. Zero gap in (the video above runs straight to 458.817, no blackout, no dip);
+       0.5 s dip out below, per the "keep the 0.5 s dip after the CTA" rule. -->
   <section class="clip blackout" id="bo-cta-out" data-start="473.956" data-duration="0.5" data-track-index="1"></section>
 
   <!-- B9 · what's still open tonight 474.456-521.038 (tracking-close comp on track 2 from 480.456) -->
