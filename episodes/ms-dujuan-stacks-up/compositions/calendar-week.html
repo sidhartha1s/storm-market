@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- calendar-week.html — B6 "the calendar this track runs through". Silver Week calendar strip (SAT 19 -
+     WED 23 SEP), last/next chips, Nozomi Shinkansen reserved-seat chip, Asian Games Nagoya chip, closing
+     return shot pairing the benchmark table's amber Typhoon No. 25 row against the Silver Week strip. Mount:
+     track 2, host start = episode-abs 434.984, duration 58.782 (B6 window is 64.782s; a 6.0s train-platform
+     lead-in plays before this comp mounts). Cues word-synced from audio/b6-s1.words.json (segment-abs minus
+     6.0 lead-in; the "11 years" and "2015" facts land during the lead-in itself, so the card intro reveals at
+     mount instead of re-triggering on those words). Font: 'AbrilFig' relies on index.html's single @font-face
+     (a per-comp duplicate false-triggers css_collision.py on the shared ".ttf" url() token). All classes carry
+     the cw- comp tag. -->
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 25%, #10161f 0%, #04070c 76%); }
+  .cw-eye { position:absolute; left:0; right:0; top:80px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
+    font-size:24px; letter-spacing:5px; color:#d8a13a; }
+  .cw-strip { position:absolute; left:50%; top:170px; transform:translateX(-50%); width:1300px; box-sizing:border-box;
+    padding:34px 50px; text-align:center; background:rgba(10,16,24,0.58); backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:26px; }
+  .cw-strip .cw-big { font-family:'AbrilFig',Georgia,serif; font-size:56px; color:#f4f0e8; }
+  .cw-strip .cw-sub { margin-top:10px; font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:2px; color:#d8a13a; }
+  .cw-chiprow { position:absolute; left:0; right:0; top:400px; display:flex; justify-content:center; gap:22px; }
+  .cw-chip { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:1px; color:#f4f0e8;
+    background:rgba(10,16,24,0.62); border:1px solid rgba(255,255,255,0.14); border-left:6px solid #8fb4d8;
+    border-radius:10px; padding:14px 26px; visibility:hidden; }
+  .cw-games { position:absolute; left:50%; top:520px; transform:translateX(-50%); width:1100px; box-sizing:border-box;
+    text-align:center; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:1px; color:#f4f0e8;
+    background:rgba(208,18,31,0.12); border:1px solid rgba(208,18,31,0.4); border-radius:14px; padding:20px 30px;
+    visibility:hidden; }
+  .cw-return { position:absolute; left:50%; bottom:110px; transform:translateX(-50%); width:1200px; box-sizing:border-box;
+    text-align:center; font-family:'Arial Black',Arial,sans-serif; font-size:26px; letter-spacing:1px; color:#d8a13a;
+    background:rgba(216,161,58,0.14); border:2px solid #d8a13a; border-radius:16px; padding:22px 30px; visibility:hidden; }
+</style>
+<div id="root" data-composition-id="calendar-week" data-width="1920" data-height="1080">
+  <div class="cw-eye" id="cw-eye">THE CALENDAR THIS TRACK RUNS THROUGH</div>
+  <div class="cw-strip" id="cw-strip">
+    <div class="cw-big">SAT 19 &ndash; WED 23 SEP</div>
+    <div class="cw-sub">FIRST FULL 5-DAY SILVER WEEK IN 11 YEARS</div>
+  </div>
+  <div class="cw-chiprow">
+    <div class="cw-chip" id="cw-chip-years">LAST: 2015 &mdash; NEXT: 2032</div>
+    <div class="cw-chip" id="cw-chip-train">NOZOMI SHINKANSEN &mdash; FULLY RESERVED 18&ndash;23 SEP</div>
+  </div>
+  <div class="cw-games" id="cw-games">ASIAN GAMES &middot; NAGOYA &middot; OPENS 19 SEP &middot; 46+ NATIONS</div>
+  <div class="cw-return" id="cw-return">TYPHOON No. 25: WEAKEST ON THE LIST, OVER THE BUSIEST WEEK IN 11 YEARS</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const HOST_WINDOW = 58.782; // this episode's calendar-week mount: 434.984-493.766
+  function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
+  tl.set(["#cw-chip-years","#cw-chip-train","#cw-games","#cw-return"], { visibility: "hidden", autoAlpha: 0 }, 0);
+  tl.fromTo("#cw-eye", { autoAlpha:0, y:-16 }, { autoAlpha:1, y:0, duration:0.5 }, 0);
+  tl.fromTo("#cw-strip", { autoAlpha:0, scale:0.94 }, { autoAlpha:1, scale:1, duration:0.6, ease:"power3.out" }, 0.2);
+  /* continuous ambient motion so the strip never sits frozen through the long hold */
+  tl.to("#cw-strip", { y: -6, duration: 2.8, ease: "sine.inOut", repeat: repeatsToFit(1.0, 2.8), yoyo: true }, 1.0);
+  tl.set("#cw-chip-years", { visibility: "visible" }, 9.28);
+  tl.fromTo("#cw-chip-years", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.4 }, 9.28);
+  tl.set("#cw-chip-train", { visibility: "visible" }, 10.36);
+  tl.fromTo("#cw-chip-train", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.4 }, 10.36);
+  tl.set("#cw-games", { visibility: "visible" }, 32.94);
+  tl.fromTo("#cw-games", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.5 }, 32.94);
+  tl.to("#cw-games", { boxShadow: "0 0 26px rgba(208,18,31,0.35)", duration: 1.3, ease: "sine.inOut", repeat: repeatsToFit(41.4, 1.3), yoyo: true }, 41.4);
+  tl.set("#cw-return", { visibility: "visible" }, 56.94);
+  tl.fromTo("#cw-return", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.5 }, 56.94);
+  tl.to(["#cw-eye","#cw-strip","#cw-chip-years","#cw-chip-train","#cw-games"], { autoAlpha:0, duration:0.4 }, HOST_WINDOW - 0.6);
+  window.__timelines["calendar-week"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
