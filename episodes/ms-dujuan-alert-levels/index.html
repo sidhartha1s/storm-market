@@ -138,45 +138,51 @@
   <!-- B3 · the system Japan built 113.673-173.673 (ladder-intro comp on track 2 from 119.673) -->
   <video id="vx-b3-0-tbs" src="media/video/b3_tbs_shinjuku.mp4" data-start="113.673" data-duration="6.0" data-track-index="1" muted></video>
   <section class="clip blackout" id="bo-b3-ladder" data-start="119.673" data-duration="54.0" data-track-index="1"></section>
+  <!-- ordinary 0.6 s seam into B4 (the CTA used to sit in this gap; moved to 85-95% in, see below) -->
+  <section class="clip blackout" id="bo-b3" data-start="173.673" data-duration="0.6" data-track-index="1"></section>
 
-  <!-- CTA dips: on track 1 itself, filling the exact gap between B3's ladder comp and the CTA, and
-       between the CTA and B4's ladder comp (both windows are otherwise empty on track 1) -->
-  <section class="clip blackout" id="bo-cta-in" data-start="173.673" data-duration="0.5" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-cta-out" data-start="189.312" data-duration="0.5" data-track-index="1"></section>
+  <!-- B4 · level three 174.273-221.364 (ladder-l3 comp on track 2, full window) -->
+  <section class="clip blackout" id="bo-b4-ladder" data-start="174.273" data-duration="47.091" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-b4" data-start="221.364" data-duration="0.6" data-track-index="1"></section>
 
-  <!-- B4 · level three 189.812-236.903 (ladder-l3 comp on track 2, full window) -->
-  <section class="clip blackout" id="bo-b4-ladder" data-start="189.812" data-duration="47.091" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-b4" data-start="236.903" data-duration="0.6" data-track-index="1"></section>
+  <!-- B5 · level four 221.964-285.055 (quote-l4 comp on track 2, full window) -->
+  <section class="clip blackout" id="bo-b5-quote" data-start="221.964" data-duration="63.091" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-b5" data-start="285.055" data-duration="0.6" data-track-index="1"></section>
 
-  <!-- B5 · level four 237.503-300.594 (quote-l4 comp on track 2, full window) -->
-  <section class="clip blackout" id="bo-b5-quote" data-start="237.503" data-duration="63.091" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-b5" data-start="300.594" data-duration="0.6" data-track-index="1"></section>
+  <!-- B6 · level five 285.655-340.273 (ladder-l5 comp on track 2, full window) -->
+  <section class="clip blackout" id="bo-b6-ladder" data-start="285.655" data-duration="54.618" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-b6" data-start="340.273" data-duration="0.6" data-track-index="1"></section>
 
-  <!-- B6 · level five 301.194-355.812 (ladder-l5 comp on track 2, full window) -->
-  <section class="clip blackout" id="bo-b6-ladder" data-start="301.194" data-duration="54.618" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-b6" data-start="355.812" data-duration="0.6" data-track-index="1"></section>
+  <!-- B7 · the bigger difference 340.873-400.655 (compare-stack comp on track 2 from 346.873) -->
+  <section class="clip still-wrap" id="c-b7-0-worldview15" data-start="340.873" data-duration="6.0" data-track-index="1"><img id="kb-b7-0-worldview15" src="media/image/worldview_0915.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-b7-stack" data-start="346.873" data-duration="53.782" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-b7" data-start="400.655" data-duration="0.6" data-track-index="1"></section>
 
-  <!-- B7 · the bigger difference 356.412-416.194 (compare-stack comp on track 2 from 362.412) -->
-  <section class="clip still-wrap" id="c-b7-0-worldview15" data-start="356.412" data-duration="6.0" data-track-index="1"><img id="kb-b7-0-worldview15" src="media/image/worldview_0915.jpg" alt=""></section>
-  <section class="clip blackout" id="bo-b7-stack" data-start="362.412" data-duration="53.782" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-b7" data-start="416.194" data-duration="0.6" data-track-index="1"></section>
+  <!-- B8 · where this storm sits tonight 401.255-450.091 (ladder-tonight comp on track 2 from 407.255,
+       then return to the Himawari loop from B1 for the tail). The tail-return still is EXTENDED past
+       B8's own audio end (450.091) straight through the 0.6 s seam and the B8-S2 bridge narration, so
+       the picture never cuts or blacks out on the way into the CTA — the same continuous Ken Burns pan
+       just keeps running. Presenter (pip-g) stays capped at the original 6.0s of it (paul-talk-3.mp4 is
+       only 7.5s of source); the trailing ~8.7s under the bridge plays with no presenter, matching the
+       "hidden under a full-screen beat" convention. -->
+  <section class="clip still-wrap" id="c-b8-0-worldview14" data-start="401.255" data-duration="6.0" data-track-index="1"><img id="kb-b8-0-worldview14" src="media/image/worldview_0914.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-b8-tonight" data-start="407.255" data-duration="36.836" data-track-index="1"></section>
+  <section class="clip still-wrap" id="c-b8-1-himawari-return" data-start="444.091" data-duration="14.726" data-track-index="1" data-callback="return to the Himawari loop from B1, extended through the B8-S2 bridge into the CTA"><img id="kb-b8-1-himawari-return" src="media/image/himawari_fulldisk.jpg" alt=""></section>
 
-  <!-- B8 · where this storm sits tonight 416.794-465.63 (ladder-tonight comp on track 2 from 422.794,
-       then return to the Himawari loop from B1 for the last 6.0s) -->
-  <section class="clip still-wrap" id="c-b8-0-worldview14" data-start="416.794" data-duration="6.0" data-track-index="1"><img id="kb-b8-0-worldview14" src="media/image/worldview_0914.jpg" alt=""></section>
-  <section class="clip blackout" id="bo-b8-tonight" data-start="422.794" data-duration="36.836" data-track-index="1"></section>
-  <section class="clip still-wrap" id="c-b8-1-himawari-return" data-start="459.63" data-duration="6.0" data-track-index="1" data-callback="return to the Himawari loop from B1"><img id="kb-b8-1-himawari-return" src="media/image/himawari_fulldisk.jpg" alt=""></section>
-  <section class="clip blackout" id="bo-b8" data-start="465.63" data-duration="0.6" data-track-index="1"></section>
+  <!-- CTA moved 17 Sep 26 to 85-95% in (458.817/538.0 = 85.3%), immediately before the closing
+       tracking-close card. Zero gap in (the Himawari still above runs straight to 458.817, no blackout,
+       no dip); 0.5 s dip out below, per the "keep the 0.5 s dip after the CTA" rule. -->
+  <section class="clip blackout" id="bo-cta-out" data-start="473.956" data-duration="0.5" data-track-index="1"></section>
 
-  <!-- B9 · what's still open tonight 466.23-512.812 (tracking-close comp on track 2 from 472.23) -->
-  <section class="clip still-wrap" id="c-b9-0-worldview13" data-start="466.23" data-duration="6.0" data-track-index="1"><img id="kb-b9-0-worldview13" src="media/image/worldview_0913.jpg" alt=""></section>
-  <section class="clip blackout" id="bo-b9-tracking" data-start="472.23" data-duration="40.582" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-b9" data-start="512.812" data-duration="0.6" data-track-index="1"></section>
+  <!-- B9 · what's still open tonight 474.456-521.038 (tracking-close comp on track 2 from 480.456) -->
+  <section class="clip still-wrap" id="c-b9-0-worldview13" data-start="474.456" data-duration="6.0" data-track-index="1"><img id="kb-b9-0-worldview13" src="media/image/worldview_0913.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-b9-tracking" data-start="480.456" data-duration="40.582" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-b9" data-start="521.038" data-duration="0.6" data-track-index="1"></section>
 
-  <!-- B10 · close 513.412-530.0 (g-close comp on track 2, full window; 12.364s of narration + a 4.224s
-       tail hold, extended 0.224s over the sibling's g-close pattern so the episode total lands on a whole
-       second, per sweep_episode's picture-coverage rounding) -->
-  <section class="clip blackout" id="bo-close" data-start="513.412" data-duration="16.588" data-track-index="1"></section>
+  <!-- B10 · close 521.638-538.0 (g-close comp on track 2, full window; 12.364s of narration + a 3.998s
+       tail hold, trimmed 0.002s off the sibling's 4.0s g-close pattern so the episode total lands on a
+       whole second, per sweep_episode's picture-coverage rounding) -->
+  <section class="clip blackout" id="bo-close" data-start="521.638" data-duration="16.362" data-track-index="1"></section>
 
   <!-- ============ OVERLAYS: popfigs (track 5), source labels (track 4) — B1 only; B2-B9's numbers are
        carried inside their own compositions ============ -->
