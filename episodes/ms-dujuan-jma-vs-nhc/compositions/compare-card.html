@@ -102,8 +102,9 @@ window.__timelines = window.__timelines || {};
   tl.to("#cc-l", { opacity: 0.9, duration: 0.5, yoyo: true, repeat: 1 }, 30.78);
   tl.to("#cc-r", { opacity: 0.9, duration: 0.5, yoyo: true, repeat: 1 }, 36.64);
   tl.to("#cc-l", { opacity: 0.9, duration: 0.5, yoyo: true, repeat: 1 }, 39.12);
-  /* JMA 67 counts up on its cue (comp-local 2.32 = B6-rel 23.32) */
-  tl.to(L, { n: 67, duration: 1.0, ease: "power1.out", onUpdate: () => lEl.textContent = Math.round(L.n) }, 2.32);
+  /* round-6 (owner hard rule: a number is never on screen at a non-final value — count-up removed). JMA 67
+     lands directly on its cue (comp-local 2.32 = B6-rel 23.32) with a pop, not a count. */
+  tl.fromTo("#cc-l-num", { autoAlpha:0, scale:0.7 }, { autoAlpha:1, scale:1, duration:0.4, ease:"back.out(2)" }, 2.32);
   /* one continuous growing bar spans the whole L-count->R-count static stretch (3.32->21.22, 17.9s), replacing
      reliance on small-area badge fades that the frame reader still read as static in both "313-331" and
      "337-349" windows */
