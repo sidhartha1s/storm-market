@@ -101,6 +101,10 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#sp-r", { autoAlpha:0, x:40 }, { autoAlpha:1, x:0, duration:0.5 }, 0.2); CONTENT_BEATS.push(0.2);
   tl.set("#sp-arrow", { visibility: "visible" }, 0.4);
   tl.fromTo("#sp-arrow", { autoAlpha:0 }, { autoAlpha:1, duration:0.4 }, 0.4); CONTENT_BEATS.push(0.4);
+  // round 3 (owner: "no caption for the first 6s / 61.7-64.7s", 17 Sep 26) — the .sp-note chip sat empty
+  // from mount to 1.58s; "...moving north-northeast at nine miles per hour" (audio 4.82-6.96) lands its
+  // last word right at mount, so the first caption now lands there instead of waiting for the JTWC line.
+  note("MOVING NNE AT 9 MPH", 0.1);
   // "The United States Navy's Joint Typhoon Warning Center tracks the same system independently" (audio 1.58s)
   note("JTWC: A SECOND, INDEPENDENT READING", 1.58);
   /* continuous ambient motion so both cards never sit frozen through the long hold */
