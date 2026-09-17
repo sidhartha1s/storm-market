@@ -22,6 +22,8 @@ async function stage(compName) {
 const EXECUTABLE = chromiumExecutable();
 const browser = await chromium.launch({ executablePath: EXECUTABLE, args: ['--allow-file-access-from-files'] });
 const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
+page.on('pageerror', e => console.log('PAGEERROR', e.message));
+page.on('console', m => console.log('CONSOLE', m.type(), m.text()));
 
 // --- ladder-intro clearance check ---
 {
