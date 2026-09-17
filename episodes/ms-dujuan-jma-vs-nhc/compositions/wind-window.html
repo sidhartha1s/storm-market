@@ -66,7 +66,7 @@ window.__timelines = window.__timelines || {};
      (blank_scan.mjs). repeatsToFit() sizes each repeat count so its tween ends at/under HOST_WINDOW. */
   const HOST_WINDOW = 21.0; // this episode's wind-window mount: 305.157-326.157
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
-  tl.set(["#ww-pop","#ww-chip"], { autoAlpha: 0 }, 0);
+  tl.set(["#ww-pop","#ww-chip","#ww-annot"], { autoAlpha: 0 }, 0);
   /* background plate: continuous slow scale across the whole window (round 2, 17 Sep 26 freeze fix) */
   tl.fromTo("#ww-bgplate", { scale: 1.0 }, { scale: 1.06, duration: HOST_WINDOW, ease: "none" }, 0);
   tl.fromTo("#ww-chart", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.6 }, 0);
