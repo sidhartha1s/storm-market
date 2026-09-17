@@ -37,13 +37,13 @@ Next Dujuan update: [link once live]
 
 ## Chapters (question form, no marker at the CTA)
 0:00 What is forming near Guam, three days before Japan's biggest holiday?
-0:53 Where do JMA and JTWC's numbers agree, and where do they differ?
-2:26 What does Japan's four-point forecast show through Monday?
-3:32 Two ways to read the same storm: JMA's track vs. JTWC's peak
-4:19 Why does this storm collide with Silver Week?
-5:45 What does it mean for Americans in Japan, and at US bases in Kanto?
-7:03 How does Japan measure a typhoon, and how does that translate?
-8:05 What's still open tonight?
+0:52 Where do JMA and JTWC's numbers agree, and where do they differ?
+2:25 What does Japan's four-point forecast show through Monday?
+3:16 Two ways to read the same storm: JMA's track vs. JTWC's peak
+4:03 Why does this storm collide with Silver Week?
+5:28 What does it mean for Americans in Japan, and at US bases in Kanto?
+6:47 How does Japan measure a typhoon, and how does that translate?
+7:48 What's still open tonight?
 
 ## Tags
 Typhoon Dujuan, Typhoon No. 25, JMA, JTWC, Japan typhoon, Silver Week, Kanto, Tokyo typhoon, Yokosuka, Yokota Air Base,
