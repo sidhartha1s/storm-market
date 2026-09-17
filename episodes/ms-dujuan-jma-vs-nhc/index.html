@@ -80,13 +80,20 @@
   <video id="pip-talk-a" class="pip" src="media/pip/paul-talk-a1.mp4" data-start="0.0" data-duration="119.309" data-track-index="7" data-callback="presenter loop, talking" muted></video>
   <section class="clip" id="pip-ring-a" data-start="0.0" data-duration="119.309" data-track-index="8"><div class="pipring"></div></section>
 
-  <video id="pip-idle-b1" class="pip" src="media/pip/paul-idle-b1.mp4" data-start="186.866" data-duration="118.291" data-track-index="6" data-callback="presenter loop resumes after the CTA" muted></video>
-  <video id="pip-talk-b1" class="pip" src="media/pip/paul-talk-b1.mp4" data-start="186.866" data-duration="118.291" data-track-index="7" data-callback="presenter loop, talking, B4-B5" muted></video>
-  <section class="clip" id="pip-ring-b1" data-start="186.866" data-duration="118.291" data-track-index="8"><div class="pipring"></div></section>
+  <video id="pip-idle-b1" class="pip" src="media/pip/paul-idle-b1.mp4" data-start="171.327" data-duration="118.291" data-track-index="6" data-callback="presenter loop resumes after the B3/B4 chapter cut" muted></video>
+  <video id="pip-talk-b1" class="pip" src="media/pip/paul-talk-b1.mp4" data-start="171.327" data-duration="118.291" data-track-index="7" data-callback="presenter loop, talking, B4-B5" muted></video>
+  <section class="clip" id="pip-ring-b1" data-start="171.327" data-duration="118.291" data-track-index="8"><div class="pipring"></div></section>
 
-  <video id="pip-idle-b2" class="pip" src="media/pip/paul-idle-b2.mp4" data-start="438.757" data-duration="88.218" data-track-index="6" data-callback="presenter loop resumes for B8-B9" muted></video>
-  <video id="pip-talk-b2" class="pip" src="media/pip/paul-talk-b2.mp4" data-start="438.757" data-duration="88.218" data-track-index="7" data-callback="presenter loop, talking, B8-B9" muted></video>
-  <section class="clip" id="pip-ring-b2" data-start="438.757" data-duration="88.218" data-track-index="8"><div class="pipring"></div></section>
+  <!-- pip-b2 now covers B8 ONLY: unmounts before the B8-S2 bridge/CTA (Paul is already on screen in his own CTA) -->
+  <video id="pip-idle-b2" class="pip" src="media/pip/paul-idle-b2.mp4" data-start="423.218" data-duration="61.818" data-track-index="6" data-callback="presenter loop resumes for B8" muted></video>
+  <video id="pip-talk-b2" class="pip" src="media/pip/paul-talk-b2.mp4" data-start="423.218" data-duration="61.818" data-track-index="7" data-callback="presenter loop, talking, B8" muted></video>
+  <section class="clip" id="pip-ring-b2" data-start="423.218" data-duration="61.818" data-track-index="8"><div class="pipring"></div></section>
+
+  <!-- pip-b3 resumes after the CTA for B9 only (hidden again for the B10 close, per g-close.html); second use of
+       the same idle/talk loop clips (data-callback documents the reuse, lint_timeline's <=2-uses rule) -->
+  <video id="pip-idle-b3" class="pip" src="media/pip/paul-idle-b2.mp4" data-start="509.548" data-duration="25.2" data-track-index="6" data-callback="second use of the B8 idle loop, presenter resumes for B9" muted></video>
+  <video id="pip-talk-b3" class="pip" src="media/pip/paul-talk-b2.mp4" data-start="509.548" data-duration="25.2" data-track-index="7" data-callback="second use of the B8 talk loop, presenter resumes for B9" muted></video>
+  <section class="clip" id="pip-ring-b3" data-start="509.548" data-duration="25.2" data-track-index="8"><div class="pipring"></div></section>
 
   <!-- ============ NEWS BUG (track 3) ============ -->
   <section class="clip" id="bug-a" data-start="0.0" data-duration="170.727" data-track-index="3"><div class="bugstrip" id="bugstrip-a"><div class="bk">STORM WATCH</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-a"></div></div></section>
