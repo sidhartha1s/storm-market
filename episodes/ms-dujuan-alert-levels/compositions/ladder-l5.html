@@ -139,11 +139,9 @@ window.__timelines = window.__timelines || {};
   // never freezes between the count-up/action beats — this is the stretch freezedetect flagged.
   tl.fromTo("#l5-cardglow", { opacity: 0.15 }, { opacity: 0.85, duration: 1.4, ease: "sine.inOut", repeat: repeatsToFit(29.94, 1.4), yoyo: true }, 29.94);
   tl.to("#l5-card", { y: -6, duration: 1.8, ease: "sine.inOut", repeat: repeatsToFit(29.94, 1.8), yoyo: true }, 29.94);
-  /* round 3b (owner: "snapping at 321.7s", 17 Sep 26) — 1.3s read as a snap; start the count a beat
-     earlier (word "of" 34.5-34.7) and stretch it across the whole spoken "115 miles per hour" phrase so
-     it visibly ticks up rather than landing near-instantly. */
-  tl.to(N1, { n: 115, duration: 2.0, ease: "none", onUpdate: () => n1El.textContent = Math.round(N1.n) }, 34.0); CONTENT_BEATS.push(34.0);
-  tl.fromTo("#l5-n1", { color: "#d0121f" }, { color: "#f4f0e8", duration: 2.0, ease: "none" }, 34.0);
+  /* round 5 (owner: "0 <1 before 115 <1", hard rule: no count-ups, land final value on its word) - final
+     value "115" pre-authored in HTML at opacity:0, revealed instantly on-word instead of counting up. */
+  tl.fromTo("#l5-n1", { opacity: 0 }, { opacity: 1, duration: 0.15 }, 34.0); CONTENT_BEATS.push(34.0);
   /* round 3c (owner: "321.7-330.7 flat for 9s", 17 Sep 26) — the narration keeps going after the count
      ends ("...or higher are expected to begin within the hour," 36.18-39.04) with nothing captioning it
      before the action line reveals. */
