@@ -78,6 +78,9 @@ window.__timelines = window.__timelines || {};
   /* background plate: continuous slow scale across the whole window so no full-frame stretch ever reads as
      frozen to freezedetect, independent of how sparse the card reveals are (round 2, 17 Sep 26) */
   tl.fromTo("#jq-bgplate", { scale: 1.0 }, { scale: 1.06, duration: HOST_WINDOW, ease: "none" }, 0);
+  /* solid full-width scan sweep, bounded repeat, covers the entire window including the 5.6->9.6 and
+     9.6->14.8 gaps between card reveals that freezedetect still read as frozen in draft 2 */
+  tl.fromTo("#jq-sweep", { top: -6 }, { top: 1086, duration: 3.4, ease: "none", repeat: repeatsToFit(0, 3.4) }, 0);
   /* continuous ambient motion so the card never sits frozen between reveals */
   tl.to("#jq-card", { y: -5, duration: 2.8, ease: "sine.inOut", repeat: repeatsToFit(0.7, 2.8), yoyo: true }, 0.7);
   tl.fromTo("#jq-chip", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 0.4);
