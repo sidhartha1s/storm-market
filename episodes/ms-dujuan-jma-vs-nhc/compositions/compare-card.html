@@ -38,8 +38,11 @@
     text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 50px rgba(0,0,0,0.6); }
   .cp-foot { position:absolute; left:0; right:0; bottom:115px; text-align:center; font-family:Arial,sans-serif;
     font-size:20px; color:#c8d3e0; }
+  .cp-lnote { margin-top:12px; font-family:'Arial Black',Arial,sans-serif; font-size:17px; letter-spacing:1px; color:#f4b8bc; }
+  .cp-rnote { margin-top:12px; font-family:'Arial Black',Arial,sans-serif; font-size:17px; letter-spacing:1px; color:#f4b8bc; }
 </style>
 <div id="root" data-composition-id="compare-card" data-width="1920" data-height="1080">
+  <div class="cp-bgplate" id="cp-bgplate"></div>
   <div class="cp-eye" id="cc-eye">TODAY'S FORECAST, TWO ANSWERS</div>
   <div class="cp-card cp-card-l" id="cc-l">
     <div class="cp-tag">JMA FORECAST</div>
@@ -47,6 +50,7 @@
     <div class="cp-unit">MPH &middot; 30 M/S &middot; 108 KM/H</div>
     <div class="cp-grade">SEVERE TROPICAL STORM</div>
     <div class="cp-sub">10-minute peak forecast</div>
+    <div class="cp-lnote" id="cc-l-note">ONE STEP BELOW TYPHOON</div>
   </div>
   <div class="cp-card cp-card-r" id="cc-r">
     <div class="cp-tag">JTWC FORECAST</div>
@@ -54,6 +58,7 @@
     <div class="cp-unit">MPH &middot; 65 KT</div>
     <div class="cp-grade" id="cc-r-grade">&nbsp;</div>
     <div class="cp-sub">1-minute peak forecast</div>
+    <div class="cp-rnote" id="cc-r-note">U.S. NAVY &middot; JTWC &middot; 1-MINUTE CLOCK</div>
   </div>
   <div class="cp-midpop" id="cc-midpop" style="visibility:hidden"><span class="cp-pf">12%</span></div>
   <div class="cp-foot" id="cc-foot">A STATISTICAL RULE OF THUMB &middot; NOT AN EXACT FORMULA</div>
