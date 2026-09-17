@@ -76,8 +76,11 @@ window.__timelines = window.__timelines || {};
   /* news-accuracy hard rule (team-lead 17 Sep 26): a number is never on screen at a non-final value - no
      count-ups anywhere. JTWC's 35 mph lands directly (no 0->35 ramp) exactly on its word ("...reports
      sustained winds of 35..." at b2-s1.words.json segment-abs 23.6 = comp-rel 17.6 with the 6.0s lead-in
-     subtracted); the field starts blank in the HTML (not "0") so no placeholder number is ever visible. */
-  tl.call(() => { rEl.textContent = "35"; }, null, 17.6);
+     subtracted); the field starts blank in the HTML (not "0") so no placeholder number is ever visible.
+     tl.set on the leaf, not tl.call: a callback can be skipped by a seek-driven render/gate that suppresses
+     GSAP's own events, leaving the field blank (team-lead 17 Sep 26) - tl.set is deterministic timeline
+     state, always evaluated on seek. */
+  tl.set("#dp-r-num", { textContent: "35" }, 17.6);
   tl.set("#dp-r-sub-b", { autoAlpha: 0 }, 0);
   /* hard cut, not a crossfade: same fix as contrast-card's cc-center swap — a 0.3s cross-dissolve leaves
      both spans briefly co-visible at the same position, which overlap_check.mjs's 0.5s sampler can catch
