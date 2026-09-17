@@ -63,15 +63,21 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const HOST_WINDOW = 62.346; // this episode's data-panel mount: 60.182-122.528
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
-  const R = { n: 0 }; const rEl = document.getElementById("dp-r-num");
+  const rEl = document.getElementById("dp-r-num");
   tl.set(["#dp-chip-ts","#dp-chip-sst","#dp-chip-shear","#dp-chip-dry"], { visibility: "hidden", autoAlpha: 0 }, 0);
+  /* card mounts with its first fact within 0.5s (team-lead 17 Sep 26): both cards now start their entrance
+     at t=0 instead of 0.2s so nothing sits on an empty panel even briefly. */
   tl.fromTo("#dp-eye", { autoAlpha:0, y:-16 }, { autoAlpha:1, y:0, duration:0.5 }, 0);
-  tl.fromTo("#dp-l", { autoAlpha:0, x:-40 }, { autoAlpha:1, x:0, duration:0.5 }, 0.2);
-  tl.fromTo("#dp-r", { autoAlpha:0, x:40 }, { autoAlpha:1, x:0, duration:0.5 }, 0.2);
+  tl.fromTo("#dp-l", { autoAlpha:0, x:-40 }, { autoAlpha:1, x:0, duration:0.5 }, 0);
+  tl.fromTo("#dp-r", { autoAlpha:0, x:40 }, { autoAlpha:1, x:0, duration:0.5 }, 0);
   /* continuous ambient motion so neither card sits frozen through the long hold */
   tl.to("#dp-l", { y: -6, duration: 2.7, ease: "sine.inOut", repeat: repeatsToFit(0.9, 2.7), yoyo: true }, 0.9);
   tl.to("#dp-r", { y: -6, duration: 2.7, ease: "sine.inOut", repeat: repeatsToFit(1.2, 2.7), yoyo: true }, 1.2);
-  tl.to(R, { n: 35, duration: 1.0, ease: "power1.out", onUpdate: () => rEl.textContent = Math.round(R.n) }, 17.6);
+  /* news-accuracy hard rule (team-lead 17 Sep 26): a number is never on screen at a non-final value - no
+     count-ups anywhere. JTWC's 35 mph lands directly (no 0->35 ramp) exactly on its word ("...reports
+     sustained winds of 35..." at b2-s1.words.json segment-abs 23.6 = comp-rel 17.6 with the 6.0s lead-in
+     subtracted); the field starts blank in the HTML (not "0") so no placeholder number is ever visible. */
+  tl.call(() => { rEl.textContent = "35"; }, null, 17.6);
   tl.set("#dp-r-sub-b", { autoAlpha: 0 }, 0);
   /* hard cut, not a crossfade: same fix as contrast-card's cc-center swap — a 0.3s cross-dissolve leaves
      both spans briefly co-visible at the same position, which overlap_check.mjs's 0.5s sampler can catch
