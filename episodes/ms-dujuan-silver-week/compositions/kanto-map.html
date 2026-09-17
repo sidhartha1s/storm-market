@@ -44,8 +44,12 @@ window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
   tl.set("#km-eyebrow", { autoAlpha: 0 }, 0);
+  tl.set("#km-stat-55k", { autoAlpha: 0, x: 24 }, 0);
   tl.fromTo("#km-eyebrow", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.6 }, 0.3);
   tl.fromTo("#km-img", { scale: 1.0, x: 0, y: 0 }, { scale: 1.1, x: -30, y: -14, duration: 49.7, ease: "none" }, 0);
+  /* the ~55,000 stat lands here, replacing the old host-level popfig (see file header) -- on its
+     own word, same 34.8 comp-relative cue the eyebrow used to only pulse for. */
+  tl.fromTo("#km-stat-55k", { autoAlpha: 0, x: 24 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 34.8);
   /* 8s max-gap rule (team-lead direction, 17 Sep 26): this comp's own eyebrow was the only
      content tween (index.html's own pf-427m/pf-55k/chip-noalert popfigs carry most of B6's
      facts on track 5, but that left this FILE with a single reveal in a 49.7s window). Eight
