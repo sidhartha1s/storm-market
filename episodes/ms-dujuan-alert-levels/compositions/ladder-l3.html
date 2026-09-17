@@ -96,6 +96,10 @@ window.__timelines = window.__timelines || {};
   note("EVERYONE ELSE ONLY PREPARES TO LEAVE", 16.26, 3.0);
   tl.fromTo("#l3-chip", { autoAlpha:0, x:-40 }, { autoAlpha:1, x:0, duration:0.4 }, 19.52); CONTENT_BEATS.push(19.52);
   tl.to("#l3-chip", { duration:0.01, onStart: () => { document.getElementById("l3-chip").textContent = "SOME COUNTIES: EARLY VOLUNTARY ORDER · NO NATIONAL NUMBER"; } }, 23.44); CONTENT_BEATS.push(23.44);
+  /* round 3 (owner 17 Sep 26): this chip used to hold that same line static from 23.44 clear through to the
+     46.49 exit (23s+), reading as a repeat of the l3-note beats nearby. Third swap on an unused narration
+     fact ("The instruction tells that group to evacuate immediately" — 13.08s, never captioned elsewhere). */
+  tl.to("#l3-chip", { duration:0.01, onStart: () => { document.getElementById("l3-chip").textContent = "THE INSTRUCTION: EVACUATE IMMEDIATELY"; } }, 33.60); CONTENT_BEATS.push(33.60);
   /* "...aimed at roughly the same population." — 29.46s */
   note("AIMED AT THE SAME POPULATION", 29.46, 2.5);
   /* "No federal system assigns that order a number the way Japan does." — 31.96s */
