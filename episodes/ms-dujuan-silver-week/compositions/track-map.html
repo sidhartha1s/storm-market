@@ -618,40 +618,46 @@ window.__timelines = window.__timelines || {};
      above: the static "graphic window fits its timeline" scanner only reads a LITERAL final-
      argument number off tl.\w+(...) calls; a loop variable is invisible to it. */
   tl.set(".tm-note-item", { autoAlpha: 0 }, 0);
+  /* overlap_check FAIL x6 (team-lead, 17 Sep 26): outgoing and incoming notes both started their
+     tween AT the same swap cue, so both were mid-fade and partially visible at once -- two lines
+     sitting on top of each other. Fixed on EVERY swap boundary in this rail (not just the ones the
+     check happened to catch): the outgoing note now finishes fading to 0 BEFORE the incoming note
+     starts -- out is 0.2s ending at cue-0.05, in starts at the cue, unchanged. Boundaries where the
+     "off" hands to something else entirely (not the next note) keep their original 0.35s fade. */
   tl.fromTo("#tm-note-1", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 30.24);  /* "Two outcomes are still open tonight" */
   tl.to("#tm-note-1", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 35.72);
   tl.fromTo("#tm-note-2", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 38.16);  /* "The other slides it by, offshore, weakened but still felt" */
-  tl.to("#tm-note-2", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 41.82);
+  tl.to("#tm-note-2", { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 41.57);
   tl.fromTo("#tm-note-3", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 41.82);  /* "Both possibilities remain in tonight's forecast" */
-  tl.to("#tm-note-3", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 45.60);
+  tl.to("#tm-note-3", { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 45.35);
   tl.fromTo("#tm-note-4", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 45.60);  /* "At 7:10 Wednesday evening, Japan time" */
-  tl.to("#tm-note-4", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 49.50);
+  tl.to("#tm-note-4", { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 49.25);
   tl.fromTo("#tm-note-5", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 49.50);  /* "...sits near the Mariana Islands" */
   tl.to("#tm-note-5", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 52.28);
   tl.fromTo("#tm-note-6", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 74.70);  /* "Its own reading calls sustained winds 35...gusting near 46" */
-  tl.to("#tm-note-6", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 80.30);
+  tl.to("#tm-note-6", { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 80.05);
   tl.fromTo("#tm-note-7", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 80.30);  /* "Neither agency has given the storm a name yet" */
-  tl.to("#tm-note-7", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 85.22);
+  tl.to("#tm-note-7", { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 84.97);
   tl.fromTo("#tm-note-8", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 85.22);  /* "Winds reach 46 miles per hour within 12 hours" */
-  tl.to("#tm-note-8", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 88.68);
+  tl.to("#tm-note-8", { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 88.43);
   tl.fromTo("#tm-note-9", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 88.68);  /* "...then 58 within a day. They hold near 58 for a day after that" */
-  tl.to("#tm-note-9", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 94.10);
+  tl.to("#tm-note-9", { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 93.85);
   tl.fromTo("#tm-note-10", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 94.10); /* "...the model turns the storm north...toward Japan's main islands" */
-  tl.to("#tm-note-10", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 98.18);
+  tl.to("#tm-note-10", { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 97.93);
   tl.fromTo("#tm-note-11", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 98.18); /* "Japan expects a slower climb" */
   tl.to("#tm-note-11", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 103.92);
   tl.fromTo("#tm-note-12", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 107.16); /* "...the system becomes this year's 25th typhoon" */
-  tl.to("#tm-note-12", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 111.42);
+  tl.to("#tm-note-12", { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 111.17);
   tl.fromTo("#tm-note-13", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 111.42); /* "Ocean water...sits near 85 degrees Fahrenheit" */
-  tl.to("#tm-note-13", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 116.94);
+  tl.to("#tm-note-13", { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 116.69);
   tl.fromTo("#tm-note-14", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 116.94); /* "Wind shear across the storm is low" */
-  tl.to("#tm-note-14", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 122.90);
+  tl.to("#tm-note-14", { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 122.65);
   tl.fromTo("#tm-note-15", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 122.90); /* "...dry air moving in from the northwest" */
-  tl.to("#tm-note-15", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 125.92);
+  tl.to("#tm-note-15", { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 125.67);
   tl.fromTo("#tm-note-16", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 125.92); /* "Waves near the center already reach 14 feet" */
-  tl.to("#tm-note-16", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 128.30);
+  tl.to("#tm-note-16", { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 128.05);
   tl.fromTo("#tm-note-17", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 128.30); /* "No populated coastline sits inside the storm's strongest wind field" */
-  tl.to("#tm-note-17", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 133.78);
+  tl.to("#tm-note-17", { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 133.53);
   tl.fromTo("#tm-note-18", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 133.78); /* "Global disaster trackers still rate this system green" */
   tl.to("#tm-note-18", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 137.00);
 
