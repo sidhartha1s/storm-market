@@ -1,7 +1,7 @@
 /* One-shot scratch verifier (not committed, deleted after use): loads each composition the same
    way blank_scan.mjs does and captures the console.log("[gap-check] ...") line each comp's own
    timeline script prints, so the round-2 max-gap numbers are read from the real page, not hand math. */
-import { chromium, chromiumExecutable } from '../../../scripts/playwright_env.mjs';
+import { chromium, chromiumExecutable } from '../../scripts/playwright_env.mjs';
 import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
