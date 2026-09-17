@@ -199,8 +199,17 @@
   <section class="clip still-wrap" id="c-b8-2e-himawari" data-start="522.561" data-duration="6.0" data-track-index="1" data-callback="distinct crop of the same Himawari frame"><img id="kb-b8-2e-himawari" src="media/image/img-himawari-b8-5.jpg" alt=""></section>
   <section class="clip still-wrap" id="c-b8-2f-himawari" data-start="528.561" data-duration="4.329" data-track-index="1" data-callback="distinct crop of the same Himawari frame"><img id="kb-b8-2f-himawari" src="media/image/img-himawari-b8-6.jpg" alt=""></section>
 
-  <!-- B9 · close 549.029-560.538 (close-card.html on track 2) -->
-  <section class="clip blackout" id="bo-b8" data-start="532.89" data-duration="0.6" data-track-index="1"></section>
+  <!-- B8-S2 bridge 532.89-540.8 (added 17 Sep 26): no blackout, continues the Himawari loop --
+       second use of the b8-1 crop (already used once at c-b8-2a-himawari), justified the same way
+       every other B8 still is (distinct crop/pan), well inside the no-repeat rule's max-2. -->
+  <section class="clip still-wrap" id="c-bridge-himawari" data-start="532.89" data-duration="7.91" data-track-index="1" data-callback="second use of the b8-1 Himawari crop, bridge line has no fresh footage of its own"><img id="kb-bridge-himawari" src="media/image/img-himawari-b8-1.jpg" alt=""></section>
+
+  <!-- CTA 540.8-555.939 (moved 17 Sep 26): dip-out only, matching the old CTA's exit dip; no
+       dip-in (bridge -> CTA is a hard audio cut with zero gap, per the owner's wire spec). -->
+  <section class="clip blackout" id="bo-cta-out-t1" data-start="555.939" data-duration="0.5" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-cta-out" data-start="555.939" data-duration="0.5" data-track-index="9"></section>
+
+  <!-- B9 · close 556.439-568.51 (close-card.html on track 2) -->
   <section class="clip blackout" id="bo-end" data-start="556.439" data-duration="12.071" data-track-index="1"></section>
 
   <!-- ============ OVERLAYS: popfigs (track 5), chips/source labels (track 4) ============ -->
