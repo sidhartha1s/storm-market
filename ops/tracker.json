@@ -517,6 +517,30 @@
       "status": "todo",
       "note": "branch B only; plan ops/wave3/dujuan/PLAN.md",
       "updated": "16 Sep 26 16:52"
+    },
+    {
+      "slug": "sh-dujuan-silver-week-1",
+      "lane": "shorts",
+      "bucket": "hawaii-lowell",
+      "title": "Short: Typhoon Dujuan Is Aimed at Silver Week",
+      "owner": "director",
+      "due": "17 Sep 26",
+      "phase": "tts",
+      "status": "doing",
+      "note": "TTS + 1.16 tempo running 17 Sep 26",
+      "updated": "17 Sep 26 11:36"
+    },
+    {
+      "slug": "sh-dujuan-alert-levels-1",
+      "lane": "shorts",
+      "bucket": "hawaii-lowell",
+      "title": "Short: Japan's 5 Typhoon Alert Levels, Explained",
+      "owner": "director",
+      "due": "17 Sep 26",
+      "phase": "script",
+      "status": "done",
+      "note": "script + TTS 17 Sep 26; funnel to ms-dujuan-alert-levels",
+      "updated": "17 Sep 26 12:10"
     }
   ]
 }
