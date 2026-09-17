@@ -15,6 +15,10 @@ Intel iGPU (GTX 1650 at 0 %, 100 % CPU, ~6 GB RAM); the registry pin alone moves
 1650 (probe line in render_full.log says NVIDIA). A new hyperframes/Playwright Chrome build is a
 new exe path, so the pin is re-asserted on every launch, never once by hand.
 
+--light (freeze_scan.mjs via QC_LIGHT=1): ONE half-resolution Chromium page may run beside a live
+render when at least LIGHT_MIN_FREE_GB (default 2) is free, so composers can test a fix without
+queueing behind a 15-minute draft (owner 17 Sep 26). The full browser gates stay exclusive.
+
 Exit 0 = clear. Exit 3 = a render is running, or (with --launch) RAM is under the floor.
 RENDER_BUSY_OK=1 overrides, for the case where the render itself is the thing being tested.
 """
@@ -64,6 +68,13 @@ if __name__ == "__main__":
     if os.environ.get("RENDER_BUSY_OK") == "1":
         sys.exit(0)
     live = live_renders()
+    if live and "--light" in sys.argv:
+        free, floor = free_gb(), float(os.environ.get("LIGHT_MIN_FREE_GB", "2"))
+        if free >= floor:
+            print(f"[render_busy] OK (light) — render alive, {free:.1f} GB free >= {floor:g} GB: one half-resolution page may run beside it")
+            sys.exit(0)
+        print(f"[render_busy] REFUSING (light) — render alive and only {free:.1f} GB free, need {floor:g} GB")
+        sys.exit(3)
     if live:
         print(f"[render_busy] REFUSING — {len(live)} hyperframes render(s) alive; one heavy job at a time (owner 2026-09-11):")
         for l in live:

@@ -94,6 +94,12 @@ _cc = subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "css
                      capture_output=True, text=True)
 report("comp classes disjoint from index.html", [l for l in _cc.stdout.splitlines() if l.startswith("FAIL")])
 
+# 5c3. runtime text-write bug classes (17 Sep 26): textContent on a parent deletes its children; text set in
+# onStart/onComplete is invisible to the seek-based gates. Deterministic; scripts/comp_lint.py.
+_cl = subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "comp_lint.py"), str(ep)],
+                     capture_output=True, text=True)
+report("comp text writes safe (leaf targets, no callback text)", [l for l in _cl.stdout.splitlines() if l.startswith("FAIL")])
+
 # 5d. CTA present + placed (owner order 2026-08-30, DESIGN.md "CTA contract"): the ebook CTA is a
 # must-keep element of every episode. Deterministic part only — file/duration/window/labels from
 # config.yaml channel.cta; the hinge (tease -> CTA -> payoff) stays editorial.

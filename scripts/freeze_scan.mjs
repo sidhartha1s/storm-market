@@ -55,6 +55,13 @@ for (const m of indexHtml.matchAll(/<div\b[^>]*data-composition-src="composition
   if (s && !(m[1] in hostStart)) hostStart[m[1]] = parseFloat(s[1]);
 }
 
+/* full-frame footage windows: a comp that is deliberately transparent over moving footage is not a hold */
+const footage = [...indexHtml.matchAll(/<video[^>]*>/g)].map(m => m[0])
+  .filter(v => !/\/(pip|cta)\//.test(v) && !/class="[^"]*pip/.test(v))
+  .map(v => [parseFloat((/data-start="([\d.]+)"/.exec(v) || [])[1]), parseFloat((/data-duration="([\d.]+)"/.exec(v) || [])[1])])
+  .filter(([s, d]) => !isNaN(s) && !isNaN(d));
+const overFootage = (a, b) => footage.some(([s, d]) => s <= a + 0.6 && s + d >= b - 0.6);
+
 const TMP = join(ep, '.qc-tmp', 'freeze');
 const SHEETS = join(ep, 'sheets-pre');
 mkdirSync(TMP, { recursive: true });
@@ -95,6 +102,7 @@ for (const f of files) {
   if (dur === null) { findings.push([name, 'no timeline registered']); continue; }
 
   let n = 0;
+  const hasContent = [];
   for (let t = 0; t <= dur + 1e-6; t += STEP) {
     /* forward seek WITH events (suppressEvents=false): the render plays callbacks too */
     await page.evaluate((tt) => new Promise(res => {
@@ -102,6 +110,15 @@ for (const f of files) {
       requestAnimationFrame(() => requestAnimationFrame(res));
     }), t);
     await page.screenshot({ path: join(dir, `f_${String(n).padStart(5, '0')}.jpg`), type: 'jpeg', quality: 72 });
+    hasContent.push(await page.evaluate(() => [...document.querySelectorAll('body *')].some(e => {
+      if (/^(SCRIPT|STYLE|TEMPLATE)$/.test(e.tagName) || /drift|bgplate/.test(e.id + ' ' + e.className)) return false;
+      if (!(e.children.length === 0 && e.textContent.trim()) && !/^(IMG|VIDEO|CANVAS)$/.test(e.tagName) && !e.closest('svg')) return false;
+      const cs = getComputedStyle(e);
+      if (cs.visibility === 'hidden' || cs.display === 'none') return false;
+      let o = 1; for (let p = e; p; p = p.parentElement) o *= parseFloat(getComputedStyle(p).opacity);
+      const r = e.getBoundingClientRect();
+      return o > 0.06 && r.width > 1 && r.height > 1 && r.bottom > 0 && r.top < 1080 && r.right > 0 && r.left < 1920;
+    })));
     n += 1;
   }
 
@@ -113,8 +130,15 @@ for (const f of files) {
   const ends = [...log.matchAll(/freeze_end: ([\d.]+)/g)].map(m => parseFloat(m[1]));
   const holds = starts.map((s, i) => [s, ends[i] ?? dur]);
   const abs = hostStart[name] ?? 0;
-  for (const [s, e] of holds)
-    findings.push([name, `static ${s.toFixed(1)}-${e.toFixed(1)}s comp-local (${(e - s).toFixed(1)}s) = ${fmt(abs + s)}-${fmt(abs + e)} in the episode`]);
+  for (const [s, e] of holds) {
+    const i0 = Math.round(s / STEP), i1 = Math.min(n - 1, Math.round(e / STEP));
+    const empty = hasContent.slice(i0, i1 + 1).every(v => !v);
+    if (empty && overFootage(abs + s, abs + e)) {
+      console.log(`   (exempt) ${name} ${s.toFixed(1)}-${e.toFixed(1)}s: comp is transparent over index.html footage`);
+      continue;
+    }
+    findings.push([name, `static ${s.toFixed(1)}-${e.toFixed(1)}s comp-local (${(e - s).toFixed(1)}s) = ${fmt(abs + s)}-${fmt(abs + e)} in the episode${empty ? ' - NOTHING on screen and no footage under it' : ''}`]);
+  }
 
   const every = Math.max(1, Math.round(3 / STEP));
   const tiles = Math.ceil(n / every);

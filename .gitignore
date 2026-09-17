@@ -57,3 +57,4 @@ episodes/*/frames_check/
 /qc*.png
 
 episodes/*/sheets/
+episodes/*/sheets-pre/
