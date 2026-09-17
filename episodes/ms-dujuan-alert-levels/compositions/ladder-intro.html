@@ -115,8 +115,13 @@ window.__timelines = window.__timelines || {};
   tl.to("#li-arrow", { autoAlpha:0, duration:0.3 }, 16.4);
   tl.set("#li-new", { visibility: "visible" }, 16.6);
   tl.fromTo("#li-new", { autoAlpha:0, scale:0.95 }, { autoAlpha:1, scale:1, duration:0.6, ease:"power3.out" }, 16.6); CONTENT_BEATS.push(16.6);
+  /* round 4 (owner freeze_scan tool: static 22.0-27.0s comp-local, 17 Sep 26) — one caption held the
+     whole 5.5s clause; split on its own clause boundary ("issued by the local municipality" / "rather
+     than the weather agency alone", audio 25.82/28.56) so nothing sits still that long by itself. */
   /* "Five levels, numbered one through five, issued by the local municipality..." — 21.14s */
-  note("ISSUED BY THE LOCAL MUNICIPALITY", 21.14, 5.5);
+  note("ISSUED BY THE LOCAL MUNICIPALITY", 21.14, 2.86);
+  /* "...rather than the weather agency alone." — 24.00s */
+  note("NOT THE WEATHER AGENCY ALONE", 24.00, 2.64);
   tl.fromTo("#li-r1", { autoAlpha:0, x:-30 }, { autoAlpha:1, x:0, duration:0.4 }, 28.14); CONTENT_BEATS.push(28.14);
   tl.fromTo("#li-r2", { autoAlpha:0, x:-30 }, { autoAlpha:1, x:0, duration:0.4 }, 32.12); CONTENT_BEATS.push(32.12);
   tl.to(["#li-r3","#li-r4","#li-r5"], { autoAlpha:0.32, duration:0.4 }, 32.6);
