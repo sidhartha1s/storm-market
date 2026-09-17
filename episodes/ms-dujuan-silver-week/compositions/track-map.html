@@ -351,14 +351,22 @@ window.__timelines = window.__timelines || {};
   tl.to("#tm-sweep", { opacity: 1, duration: 0.4 }, 0.8);
   tl.to("#tm-sweep", { rotation: 360, duration: 6, ease: "none", repeat: repeatsToFit(0.8, 6), transformOrigin: `${cx}px ${cy}px` }, 0.8);
 
-  /* JMA forecast: segments draw back-to-back over ~2.5s total (length-proportional), nodes + probability circles land as each segment finishes.
-     DRAW_START re-anchored by the host (ms-dujuan-silver-week, mounted at 7.0s) to the word "forecast" in
-     audio/b1-s1.words.json ("The agency's own longest forecast keeps this storm...", absolute 25.02s -> comp-relative 18.02s). */
-  const DRAW_START = 18.02, DRAW_TOTAL = 2.5;
+  /* JMA forecast: segments draw progressively, one per narration beat, instead of the whole
+     4-checkpoint chain flashing up in one 2.5s block during B1's single generic mention of
+     "forecast" -- 130s before B3 ever names a checkpoint (owner-flagged 17 Sep 26: the map
+     answered a question before the narration asked it). Re-anchored to the ONE stretch of
+     narration inside this comp's own 7.0-145.0 mount that actually walks the storm's future
+     path: b2-s1.words.json's "Its forecast has the storm strengthening fast" (word
+     "strengthening", absolute 90.918s -> comp-relative 83.918) through "...before the model
+     turns the storm north" (word "turns", absolute 101.458s -> comp-relative 94.458). Spread
+     across that ~10.5s window (not the earlier 2.5s flourish) so each of the 4 forecast
+     points/cones lands progressively as the narration keeps describing the storm strengthening
+     and turning, landing well clear of the checkpoint-card cue at 103.92. */
+  const DRAW_START = 83.918, DRAW_TOTAL = 10.5;
   let cursor = DRAW_START;
   /* literal (not DRAW_START) so the static "graphic window fits its timeline" scanner, which
      only reads a literal final-argument number off tl.\w+(...) calls, sees this offset. */
-  tl.addLabel("cue-track-start", 18.02);
+  tl.addLabel("cue-track-start", 83.918);
   segEls.forEach((seg, i) => {
     const dur = Math.max(0.18, (segLens[i] / totalLen) * DRAW_TOTAL);
     tl.to(seg, { opacity: 1, duration: dur * 0.6, ease: "power1.out" }, cursor);
