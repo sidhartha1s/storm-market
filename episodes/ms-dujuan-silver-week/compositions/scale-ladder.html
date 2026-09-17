@@ -127,7 +127,7 @@ window.__timelines = window.__timelines || {};
   tl.to("#sl-band-strong", { autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 18.96);
   tl.to("#sl-band-verystrong", { autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 22.52);
   tl.to("#sl-band-violent", { autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 26.22);
-  tl.to("#sl-band-severe", { autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 33.5);
+  tl.fromTo("#sl-band-severe", { scale: 1 }, { scale: 1.03, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 33.5); /* "the severe tropical storm range" -- row already on screen since 0.3s */
   tl.set("#sl-marker", { left: "8%" }, 33.5);
   tl.to("#sl-marker", { left: "66.7%", duration: 0.8, ease: "power2.out" }, 40.68); /* "67" (mph) -- 67 mph within the 55-73 mph Severe Tropical Storm band: (67-55)/(73-55) */
   tl.fromTo("#sl-readout", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 40.68); /* lands with the marker, own row, clear of every rung */
