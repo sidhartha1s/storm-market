@@ -90,8 +90,12 @@ window.__timelines = window.__timelines || {};
      not a fact reveal (the word "western" isn't said until 5.22s), just scene-setting like jma-quote's eyebrow */
   tl.fromTo("#tt-eye", { autoAlpha:0, y:-14 }, { autoAlpha:1, y:0, duration:0.4 }, 0.6);
   tl.fromTo("#tt-b1", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 5.22);   // "western" 11.22
+  tl.fromTo("#tt-bindicator", { visibility:"visible", autoAlpha:0, left:530 }, { autoAlpha:1, duration:0.3 }, 5.22); // travels to chip 1
   tl.fromTo("#tt-b2", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 10.7);   // "the" (Atlantic) 16.7
+  tl.to("#tt-bindicator", { left: 930, duration: 0.5, ease: "power2.out" }, 10.7); // travels to chip 2 on its own word
   tl.fromTo("#tt-b3", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 15.72);  // "the" (Indian) 21.72
+  tl.to("#tt-bindicator", { left: 1319, duration: 0.5, ease: "power2.out" }, 15.72); // travels to chip 3 on its own word
+  tl.to("#tt-bindicator", { autoAlpha: 0, duration: 0.4 }, 20.5);
   /* continuous ambient motion from mount through the table reveal */
   tl.to(".tt-basinrow", { y: -12, duration: 2.4, ease: "sine.inOut", repeat: repeatsToFit(0.3, 2.4), yoyo: true }, 0.3);
   tl.fromTo("#tt-table", { autoAlpha:0, y:30 }, { autoAlpha:1, y:0, duration:0.6 }, 22.0);
