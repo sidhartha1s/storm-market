@@ -43,7 +43,8 @@ for (const f of readdirSync(join(ep, 'compositions')).filter(f => f.endsWith('.h
        contributing a full 1920x1080 box (~250x the blank floor) on every single frame and
        would have reported PASS even if the map and every marker failed to appear.
        The rule that separates them: real content carries an id or text. */
-    const nodes = [...document.querySelectorAll('#root *')].filter(
+    /* comps no longer carry id="root" (class/id scoping, 17 Sep 26): walk the whole body. */
+    const nodes = [...document.querySelectorAll('body *')].filter(e => !/^(SCRIPT|STYLE|TEMPLATE)$/.test(e.tagName)).filter(
       /* content = readable text or media. An id alone is not content: #sl-drift (a rotating
          background) carried the scale-ladder comp through a 17 s window with no card on
          screen and this gate said PASS (Dujuan U1, 7:02-7:20, 17 Sep 26). */
