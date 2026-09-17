@@ -16,11 +16,13 @@
   #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; background:#04070c; overflow:hidden; }
   .tt-bgplate { position:absolute; left:-60px; right:-60px; top:-60px; bottom:-60px;
     background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); transform-origin:center; will-change:transform; }
-  /* round-3 (draft 2 freezedetect still flags 0-7.2s and 8.4-16.6s local as holds): the blurred glow drift
-     is too low-contrast for freezedetect's frame-diff floor. A solid full-width scan line gives real
-     per-frame pixel delta across the whole window, independent of how sparse the basin/table reveals are. */
-  .tt-sweep { position:absolute; left:0; right:0; top:-6px; height:4px; background:rgba(216,161,58,0.4);
-    box-shadow:0 0 24px 6px rgba(216,161,58,0.3); }
+  /* round-4 (owner: content, not a detector fix — decorative scan line removed). A highlight that travels
+     under the currently-named basin chip, and a second one beside the currently-named table row, replace it.
+     Positions below are measured pixel rects of this file's own layout (tt_rects.mjs), not estimates. */
+  .tt-bindicator { position:absolute; top:282px; left:530px; width:80px; height:4px; border-radius:2px;
+    background:#d8a13a; box-shadow:0 0 14px 4px rgba(216,161,58,0.5); }
+  .tt-rindicator { position:absolute; left:300px; top:405px; width:6px; height:52px; border-radius:3px;
+    background:#d8a13a; box-shadow:0 0 18px 4px rgba(216,161,58,0.55); }
   .tt-glow { position:absolute; width:760px; height:760px; border-radius:50%; filter:blur(110px); opacity:0.3; pointer-events:none; }
   #tt-glow-a { left:-180px; top:-200px; background:radial-gradient(circle, rgba(208,18,31,0.5) 0%, rgba(208,18,31,0) 70%); }
   #tt-glow-b { right:-220px; bottom:-220px; background:radial-gradient(circle, rgba(143,180,216,0.4) 0%, rgba(143,180,216,0) 70%); }
