@@ -21,8 +21,12 @@
      the GSAP selectors carry the cs- comp tag so no name is shared with index.html or a sibling comp. -->
 <template>
 <style>
-  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
-    background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; background:#04070c; overflow:hidden; }
+  .cs-bgplate { position:absolute; inset:-60px; background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); transform-origin:center; }
+  .cs-note { position:absolute; left:50%; top:850px; transform:translateX(-50%); max-width:1100px; box-sizing:border-box;
+    text-align:center; font-family:'Arial Black',Arial,sans-serif; font-size:25px; letter-spacing:1px; color:#f4f0e8;
+    background:rgba(10,16,24,0.62); border:1px solid rgba(255,255,255,0.14); border-left:6px solid #d8a13a;
+    border-radius:10px; padding:14px 30px; white-space:nowrap; }
   .cs-eye { position:absolute; left:0; right:0; top:90px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
     font-size:24px; letter-spacing:5px; color:#d8a13a; }
   .cs-colhead { position:absolute; top:150px; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:3px; text-align:center; }
