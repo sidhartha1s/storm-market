@@ -13,7 +13,15 @@
      word-cued beats from b6-s1.words.json: the "may no longer be safe" line, officials can't confirm
      severity in time, leave before it arrives, not a hurricane watch/warning, both countries reach the
      same conclusion, and moving becomes more dangerous than staying. Plus .l5-bgplate for continuous
-     background drift. -->
+     background drift.
+
+     ROUND 3 (freezedetect n=0.003 d=6, 17 Sep 26) — declared beat gaps were <8s but real pixel motion
+     during each note's hold and the 29.44-54.02 card stretch was still under ffmpeg's freeze tolerance.
+     Fixed: .l5-note bumped 25px->28px (mid tier), added .l5-rule (continuous sweeping bar, runs for the
+     full hold of every note, not just the 0.35s fade edges), added .l5-cardglow (continuous opacity pulse)
+     + a y-bob on .l5-card, both running 29.94 through exit so the count-up/action gap never sits still,
+     and the 115 count-up switched from power1.out to a linear "none" ease with a paired colour tween so
+     it visibly counts instead of front-loading in the first few frames. -->
 <template>
 <style>
   #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; background:#030202; overflow:hidden; }
