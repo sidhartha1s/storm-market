@@ -84,6 +84,7 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   tl.set(["#sl-card", "#sl-readout"], { autoAlpha: 0 }, 0);
   tl.set(["#sl-band-severe", "#sl-band-strong", "#sl-band-verystrong", "#sl-band-violent"], { autoAlpha: 0, x: -20 }, 0);
+  tl.set(".sl-bar-note", { autoAlpha: 0 }, 0);
   /* Card used to fade in at +17.02s -- 17 seconds of nothing but the background gradient right
      after B7's narration starts (owner-flagged 17 Sep 26: no window may show only its
      background for more than 2s). B7's very first line is Japan-vs-US measurement, exactly
