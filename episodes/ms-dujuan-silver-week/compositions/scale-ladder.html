@@ -101,11 +101,22 @@ window.__timelines = window.__timelines || {};
      Each band then brightens to full strength on its OWN word, same cues as before, animating FROM
      the faint state (plain .to(), not .fromTo(), so it doesn't reset to invisible first). */
   tl.to(["#sl-band-severe", "#sl-band-strong", "#sl-band-verystrong", "#sl-band-violent"], { autoAlpha: 0.3, x: 0, duration: 0.5, ease: "power2.out" }, 1.2);
-  /* 8s max-gap rule (team-lead direction, 17 Sep 26): two eyebrow pulses cover the 1.2-18.96
-     tail, landing on "10-minute" (7.08) and "12 % higher" (13.12) -- the JP-vs-US measurement
-     basis the eyebrow itself names. */
-  tl.fromTo("#sl-eyebrow", { scale: 1 }, { scale: 1.04, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 7.08);
-  tl.fromTo("#sl-eyebrow", { scale: 1 }, { scale: 1.04, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 13.12);
+  /* Owner review (team-lead, 17 Sep 26): the faint-outline fade-up above still read as empty for
+     19s. Card now mounts WITH a real fact (bar-note-1 lands at the same 0.3s as the card itself)
+     and every number/agency name/comparison b7-s1.words.json speaks before "Strong" (18.96, the
+     first band's own word, unchanged) lands on ITS word, max ~6s apart, inside the severe bar's
+     own approved box (see file header) -- one note visible at a time, sequential swap. Replaces
+     the two eyebrow pulses this round (same facts, now real text instead of a scale pulse). */
+  tl.fromTo("#sl-bar-note-1", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35, ease: "power3.out" }, 0.3);   /* "Japan and the United States measure typhoon winds differently" */
+  tl.to("#sl-bar-note-1", { autoAlpha: 0, duration: 0.3 }, 6.3);
+  tl.fromTo("#sl-bar-note-2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35, ease: "power3.out" }, 6.3);   /* "Japan's agency reports a 10-minute average wind" */
+  tl.to("#sl-bar-note-2", { autoAlpha: 0, duration: 0.3 }, 10.62);
+  tl.fromTo("#sl-bar-note-3", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35, ease: "power3.out" }, 10.62); /* "American forecasters report a 1-minute average" */
+  tl.to("#sl-bar-note-3", { autoAlpha: 0, duration: 0.3 }, 12.86);
+  tl.fromTo("#sl-bar-note-4", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35, ease: "power3.out" }, 12.86); /* "which runs roughly 12% higher for the same storm" */
+  tl.to("#sl-bar-note-4", { autoAlpha: 0, duration: 0.3 }, 16.3);
+  tl.fromTo("#sl-bar-note-5", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35, ease: "power3.out" }, 16.3);  /* "Japan's scale has three bands above typhoon strength" */
+  tl.to("#sl-bar-note-5", { autoAlpha: 0, duration: 0.3 }, 18.96);
   tl.to("#sl-band-strong", { autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 18.96);
   tl.to("#sl-band-verystrong", { autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 22.52);
   tl.to("#sl-band-violent", { autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 26.22);
