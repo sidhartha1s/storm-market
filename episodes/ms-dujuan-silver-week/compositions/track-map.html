@@ -341,7 +341,14 @@ window.__timelines = window.__timelines || {};
   const HOST_WINDOW = 137.1; // this episode's track-map mount: 7.0-144.1 (retimed 17 Sep 26, B1->B2 gap fix)
   function repeatsToFit(start, dur) { return Math.max(0, Math.floor((HOST_WINDOW - start) / dur) - 1); }
 
-  tl.to(["#tm-graticule", "#tm-land", "#tm-guam", "#tm-past"], { opacity: 1, duration: 0.5, ease: "power2.out" }, 0);
+  /* Cut-to-map: was `, 0)` (hand-drawn map visible from the first frame). Now fires at the
+     literal 18.02s DRAW_START word-cue (same "forecast" anchor as the track draw-on below) so
+     the satellite clip underneath (radar_zoom_1.mp4) is what's on screen for the opening beat,
+     and the map "cuts in" on the word that actually names the forecast -- team-lead direction
+     17 Sep 26. #tm-mapbg/#tm-ambient fade in with it so the navy gradient doesn't matte over
+     the video before the cut. */
+  tl.to(["#tm-mapbg", "#tm-ambient"], { opacity: 1, duration: 0.6, ease: "power2.out" }, 18.02);
+  tl.to(["#tm-graticule", "#tm-land", "#tm-guam", "#tm-past"], { opacity: 1, duration: 0.5, ease: "power2.out" }, 18.02);
   tl.fromTo("#tm-badge", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.1);
   tl.fromTo("#tm-chip-jma", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.2);
   tl.fromTo("#tm-footer", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 0.6);
