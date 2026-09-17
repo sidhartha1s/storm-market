@@ -98,7 +98,7 @@
      timing, kanto-map pin labels, calendar chip, scale-ladder mount hole -- see each comp's own
      header comment and LEARNINGS.md for detail; the file is no longer touched verbatim per video,
      future ms-dujuan-* episodes inherit these fixes. -->
-<div id="root" data-composition-id="ms-dujuan-silver-week" data-start="0.0" data-width="1920" data-height="1080" data-duration="561.1" data-fps="30">
+<div id="root" data-composition-id="ms-dujuan-silver-week" data-start="0.0" data-width="1920" data-height="1080" data-duration="568.51" data-fps="30">
 
   <!-- ============ NARRATION (wav lengths) ============ -->
   <audio id="nx-b1s1" src="audio/b1-s1.wav" data-start="0.0" data-duration="51.018" data-volume="1"></audio>
@@ -125,7 +125,9 @@
   <audio id="sx-rumble-hook" src="media/04_distant_storm_rumble.mp3" data-bed="" data-start="0.0" data-duration="7.0" data-volume="0.16"></audio>
   <audio id="sx-mus-a" src="media/score-act5-tension.mp3" data-bed="" data-start="0.0" data-duration="195.455" data-volume="0.13"></audio>
   <audio id="sx-mus-b" src="media/score-act3-urgent.mp3" data-bed="" data-start="196.055" data-duration="209.89" data-volume="0.13"></audio>
-  <audio id="sx-mus-c" src="media/score-act6-close.mp3" data-bed="" data-start="406.545" data-duration="138.454" data-volume="0.16"></audio>
+  <!-- sx-mus-c truncated 17 Sep 26: end anchored to the new CTA start (540.8), matching the house pattern of no bed under the CTA itself (Paul carries his own audio alone, same as the old B3/B4 CTA gap). sx-mus-c2 resumes the bed at B9 start, same file, covering through the close card. -->
+  <audio id="sx-mus-c" src="media/score-act6-close.mp3" data-bed="" data-start="406.545" data-duration="134.255" data-volume="0.16"></audio>
+  <audio id="sx-mus-c2" src="media/score-act6-close.mp3" data-bed="" data-start="556.439" data-duration="12.071" data-volume="0.16"></audio>
 
   <!-- ============ PRESENTER (corner circle; hidden hook / quote-card+CTA / close) ============ -->
   <video id="pip-idle-a" class="pip" src="media/pip/paul-idle-a.mp4" data-start="51.618" data-duration="141.982" data-track-index="6" muted></video>
@@ -149,8 +151,9 @@
   <section class="clip blackout" id="bo-b2" data-start="144.091" data-duration="0.6" data-track-index="1"></section>
 
   <!-- B3 · the forecast track 144.691-195.455 -->
-  <section class="clip still-wrap" id="c-b3-0a-jtwc" data-start="144.691" data-duration="4.5" data-track-index="1"><img id="kb-b3-0a-jtwc" src="media/image/img-jtwc-warning.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-b3-0b-jtwc" data-start="149.191" data-duration="4.5" data-track-index="1" data-callback="continuation, same source frame, different pan"><img id="kb-b3-0b-jtwc" src="media/image/img-jtwc-warning-2.jpg" alt=""></section>
+  <!-- swapped off img-jtwc-warning.jpg 17 Sep 26: the CTA-move retime pulled B4's own reuse of that image to 57s after this one (source-family repeats gate, <60s); freed by using the previously-unused img-himawari-open-4.jpg (this episode's B1 cold open used only -open/-open-2) instead. -->
+  <section class="clip still-wrap" id="c-b3-0a-jtwc" data-start="144.691" data-duration="4.5" data-track-index="1"><img id="kb-b3-0a-jtwc" src="media/image/img-himawari-open-4.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-b3-0b-jtwc" data-start="149.191" data-duration="4.5" data-track-index="1" data-callback="continuation, same source frame, different pan"><img id="kb-b3-0b-jtwc" src="media/image/img-himawari-open-4.jpg" alt=""></section>
   <video id="vx-b3-1-tbs" class="bc" src="media/video/bc-tbs-shinjuku.mp4" data-start="153.691" data-duration="5.5" data-track-index="1" muted></video>
   <section class="clip still-wrap" id="c-b3-2a-wv16" data-start="159.191" data-duration="4.0" data-track-index="1"><img id="kb-b3-2a-wv16" src="media/image/img-worldview-16.jpg" alt=""></section>
   <section class="clip still-wrap" id="c-b3-2b-wv16" data-start="163.191" data-duration="3.5" data-track-index="1" data-callback="continuation, same source frame, different pan"><img id="kb-b3-2b-wv16" src="media/image/img-worldview-16-2.jpg" alt=""></section>
@@ -202,7 +205,8 @@
   <!-- B8-S2 bridge 532.89-540.8 (added 17 Sep 26): no blackout, continues the Himawari loop --
        second use of the b8-1 crop (already used once at c-b8-2a-himawari), justified the same way
        every other B8 still is (distinct crop/pan), well inside the no-repeat rule's max-2. -->
-  <section class="clip still-wrap" id="c-bridge-himawari" data-start="532.89" data-duration="7.91" data-track-index="1" data-callback="second use of the b8-1 Himawari crop, bridge line has no fresh footage of its own"><img id="kb-bridge-himawari" src="media/image/img-himawari-b8-1.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-bridge-0a-himawari" data-start="532.89" data-duration="4.0" data-track-index="1" data-callback="previously-unused Himawari cold-open crop, kept off source-family repeat range"><img id="kb-bridge-0a-himawari" src="media/image/img-himawari-open-3.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-bridge-0b-himawari" data-start="536.89" data-duration="3.91" data-track-index="1" data-callback="continuation, same source frame, different pan"><img id="kb-bridge-0b-himawari" src="media/image/img-himawari-open-3.jpg" alt=""></section>
 
   <!-- CTA 540.8-555.939 (moved 17 Sep 26): dip-out only, matching the old CTA's exit dip; no
        dip-in (bridge -> CTA is a hard audio cut with zero gap, per the owner's wire spec). -->
@@ -286,7 +290,7 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const DUR = 561.1;
+  const DUR = 568.51;
   function kb(sel, at, dur, s0, s1, x0, x1, y0, y1) {
     tl.fromTo(sel, { scale: s0, x: x0, y: y0, transformOrigin: "center" }, { scale: s1, x: x1, y: y1, duration: dur, ease: "none" }, at);
   }
@@ -336,7 +340,8 @@ window.__timelines = window.__timelines || {};
   kb("#kb-b8-2d-himawari", 516.561, 6.0, 1.05, 1.1, 4, -4, 2, -4);
   kb("#kb-b8-2e-himawari", 522.561, 6.0, 1.0, 1.05, -6, 0, -4, 0);
   kb("#kb-b8-2f-himawari", 528.561, 4.329, 1.05, 1.08, 0, 4, 0, 3);
-  kb("#kb-bridge-himawari", 532.89, 7.91, 1.0, 1.06, 0, -8, 0, -5);
+  kb("#kb-bridge-0a-himawari", 532.89, 4.0, 1.0, 1.04, 0, -6, 0, -4);
+  kb("#kb-bridge-0b-himawari", 536.89, 3.91, 1.04, 1.08, -6, -12, -4, -8);
 
   /* ---- overlays (absolute times = actual word cues from words.json) ---- */
   pop("#pf-3days", 6.50, 2.6);
@@ -518,9 +523,9 @@ window.__timelines = window.__timelines || {};
   tl.to("#pip-talk-b", { autoAlpha: 1, duration: 0.1 }, 529.021); tl.to("#pip-talk-b", { autoAlpha: 0, duration: 0.1 }, 532.381);
 
   filmLayer(tl, DUR);
-  tl.to(["#vignette", "#grade", "#grain", ".dust"], { autoAlpha: 0, duration: 0.3 }, 195.455);
-  tl.to(["#vignette", "#grade", ".dust"], { autoAlpha: 1, duration: 0.3 }, 211.094);
-  tl.to("#grain", { autoAlpha: 0.10, duration: 0.3 }, 211.094);
+  tl.to(["#vignette", "#grade", "#grain", ".dust"], { autoAlpha: 0, duration: 0.3 }, 540.8);
+  tl.to(["#vignette", "#grade", ".dust"], { autoAlpha: 1, duration: 0.3 }, 555.939);
+  tl.to("#grain", { autoAlpha: 0.10, duration: 0.3 }, 555.939);
   window.__timelines["ms-dujuan-silver-week"] = tl;
 })();
 </script>
