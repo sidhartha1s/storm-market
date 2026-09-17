@@ -4,15 +4,20 @@
 <body>
 <!-- ladder-l5.html — B6 "level five: when leaving may no longer be safe". Black/red treatment, "RARELY
      ISSUED" popfig, then the US extreme-wind-warning chip build-up. Full-window mount, no b-roll. Cues
-     word-synced from audio/b6-s1.words.json. Mount: track 2, host start = episode-abs 285.655,
-     duration 54.618 (shifted 15.539s earlier 17 Sep 26 when the CTA moved out of the old B3/B4 seam).
-     Font: 'AbrilFig' relies on index.html's single @font-face (a per-comp duplicate
-     false-triggers css_collision.py on the shared ".ttf" url() token). All classes carry the l5- comp
-     tag so no class name is shared with index.html or a sibling composition. -->
+     word-synced from audio/b6-s1.words.json (mount = audio start exactly, comp-relative = audio-relative).
+     Mount: track 2, host start = episode-abs 285.655, duration 54.618. All classes carry the l5- comp tag.
+
+     ROUND 2 (owner: "sitting still", 2/10, 17 Sep 26) — three dead stretches were flagged: ~3-9s (header
+     only), ~18-27s (header only), ~36-57s (115/<1 card frozen). Added .l5-note (parked at top:800, clear
+     of both the popfig at top:340 and the card at top:520-765 whichever is on screen) carrying six more
+     word-cued beats from b6-s1.words.json: the "may no longer be safe" line, officials can't confirm
+     severity in time, leave before it arrives, not a hurricane watch/warning, both countries reach the
+     same conclusion, and moving becomes more dangerous than staying. Plus .l5-bgplate for continuous
+     background drift. -->
 <template>
 <style>
-  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
-    background:radial-gradient(ellipse at 50% 35%, #1a0508 0%, #030202 78%); }
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; background:#030202; overflow:hidden; }
+  .l5-bgplate { position:absolute; inset:-60px; background:radial-gradient(ellipse at 50% 35%, #1a0508 0%, #030202 78%); transform-origin:center; }
   .l5-eye { position:absolute; left:0; right:0; top:100px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
     font-size:24px; letter-spacing:6px; color:#d0121f; }
   .l5-lvl { position:absolute; left:0; right:0; top:150px; text-align:center; font-family:'AbrilFig',Georgia,serif;
@@ -20,6 +25,10 @@
   .l5-pf { position:absolute; left:0; right:0; top:340px; text-align:center; }
   .l5-pf span { font-family:'AbrilFig',Georgia,serif; font-size:96px; color:#d0121f;
     text-shadow:0 0 24px rgba(0,0,0,0.9), 0 0 60px rgba(208,18,31,0.5); }
+  .l5-note { position:absolute; left:50%; top:800px; transform:translateX(-50%); max-width:1100px; box-sizing:border-box;
+    text-align:center; font-family:'Arial Black',Arial,sans-serif; font-size:25px; letter-spacing:1px; color:#f4f0e8;
+    background:rgba(10,4,4,0.62); border:1px solid rgba(255,255,255,0.14); border-left:6px solid #d0121f;
+    border-radius:10px; padding:14px 30px; white-space:nowrap; }
   .l5-card { position:absolute; left:50%; top:520px; transform:translateX(-50%); width:1180px; box-sizing:border-box;
     padding:36px 50px; text-align:center; background:rgba(10,4,4,0.62); backdrop-filter:blur(18px);
     -webkit-backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,0.12); border-radius:26px; }
@@ -32,9 +41,11 @@
   .l5-card .l5-action { margin-top:26px; font-family:'Arial Black',Arial,sans-serif; font-size:26px; letter-spacing:1px; color:#d0121f; }
 </style>
 <div id="root" data-composition-id="ladder-l5" data-width="1920" data-height="1080">
+  <div class="l5-bgplate" id="l5-bgplate"></div>
   <div class="l5-eye" id="l5-eye">ALERT LEVEL 5</div>
   <div class="l5-lvl" id="l5-lvl">Emergency Safety Measures</div>
   <div class="l5-pf" id="l5-pf" style="visibility:hidden"><span>RARELY ISSUED</span></div>
+  <div class="l5-note" id="l5-note" style="visibility:hidden"></div>
   <div class="l5-card" id="l5-card" style="visibility:hidden">
     <div class="l5-eyeb">US CLOSEST MATCH: EXTREME WIND WARNING</div>
     <div class="l5-row">
@@ -50,40 +61,47 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const HOST_WINDOW = 54.618; // this episode's ladder-l5 mount: 285.655-340.273
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
+  const CONTENT_BEATS = [];
+  function note(text, at, hold) {
+    tl.set("#l5-note", { visibility: "visible", textContent: text }, at);
+    tl.fromTo("#l5-note", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35 }, at);
+    tl.to("#l5-note", { autoAlpha: 0, duration: 0.3 }, at + hold - 0.3);
+    CONTENT_BEATS.push(at);
+  }
   const N1 = { n: 0 }; const n1El = document.getElementById("l5-n1");
-  tl.set(["#l5-pf","#l5-card"], { visibility: "hidden", autoAlpha: 0 }, 0);
+
+  tl.to("#l5-bgplate", { scale: 1.06, duration: HOST_WINDOW, ease: "none" }, 0);
+
+  tl.set(["#l5-pf","#l5-card","#l5-note"], { visibility: "hidden", autoAlpha: 0 }, 0);
   tl.set("#l5-n1", { textContent: "0" }, 0);
-  tl.fromTo("#l5-eye", { autoAlpha:0, y:-16 }, { autoAlpha:1, y:0, duration:0.5 }, 0);
-  tl.fromTo("#l5-lvl", { autoAlpha:0, scale:0.9 }, { autoAlpha:1, scale:1, duration:0.5 }, 1.36);
+  tl.fromTo("#l5-eye", { autoAlpha:0, y:-16 }, { autoAlpha:1, y:0, duration:0.5 }, 0); CONTENT_BEATS.push(0);
+  tl.fromTo("#l5-lvl", { autoAlpha:0, scale:0.9 }, { autoAlpha:1, scale:1, duration:0.5 }, 1.36); CONTENT_BEATS.push(1.36);
   tl.to("#l5-lvl", { opacity: 0.85, duration: 2.2, ease: "sine.inOut", repeat: repeatsToFit(2.0, 2.2), yoyo: true }, 2.0);
+  /* "...it means evacuation itself may no longer be safe." — 3.58s */
+  note("EVACUATION ITSELF MAY NO LONGER BE SAFE", 3.58, 6.42);
   tl.set("#l5-pf", { visibility: "visible" }, 10.0);
-  tl.fromTo("#l5-pf", { autoAlpha:0, scale:2.0 }, { autoAlpha:1, scale:1, duration:0.35, ease:"power4.in" }, 10.0);
-  tl.to("#l5-pf", { autoAlpha:0, y:-24, duration:0.35 }, 13.6);
+  tl.fromTo("#l5-pf", { autoAlpha:0, scale:2.0 }, { autoAlpha:1, scale:1, duration:0.35, ease:"power4.in" }, 10.0); CONTENT_BEATS.push(10.0);
+  tl.to("#l5-pf", { autoAlpha:0, y:-24, duration:0.35 }, 13.6); CONTENT_BEATS.push(13.6);
+  /* "Municipal officials often cannot confirm a disaster's exact severity in time, right when it matters most." — 11.37s */
+  note("OFFICIALS CAN'T CONFIRM SEVERITY IN TIME", 11.37, 6.73);
+  /* "Residents are told to leave before level five ever arrives, never to wait for it." — 18.10s */
+  note("LEAVE BEFORE IT ARRIVES. NEVER WAIT.", 18.10, 5.16);
+  /* "America's closest match is not a hurricane watch or a hurricane warning at all." — 23.26s */
+  note("NOT A HURRICANE WATCH OR WARNING", 23.26, 6.18);
   tl.set("#l5-card", { visibility: "visible" }, 29.44);
-  tl.fromTo("#l5-card", { autoAlpha:0, y:30 }, { autoAlpha:1, y:0, duration:0.5, ease:"power3.out" }, 29.44);
-  tl.to(N1, { n: 115, duration: 1.0, ease: "power1.out", onUpdate: () => n1El.textContent = Math.round(N1.n) }, 34.70);
-  tl.fromTo("#l5-action", { autoAlpha:0 }, { autoAlpha:1, duration:0.4 }, 39.80);
+  tl.fromTo("#l5-card", { autoAlpha:0, y:30 }, { autoAlpha:1, y:0, duration:0.5, ease:"power3.out" }, 29.44); CONTENT_BEATS.push(29.44);
+  tl.to(N1, { n: 115, duration: 1.0, ease: "power1.out", onUpdate: () => n1El.textContent = Math.round(N1.n) }, 34.70); CONTENT_BEATS.push(34.70);
+  tl.fromTo("#l5-action", { autoAlpha:0 }, { autoAlpha:1, duration:0.4 }, 39.80); CONTENT_BEATS.push(39.80);
   tl.to("#l5-card", { boxShadow: "0 0 30px rgba(208,18,31,0.4)", duration: 1.2, ease: "sine.inOut", repeat: repeatsToFit(40.5, 1.2), yoyo: true }, 40.5);
-  tl.to(["#l5-eye","#l5-lvl","#l5-card"], { autoAlpha:0, duration:0.5 }, 54.02);
-  /* beat-density filler: see ladder-intro.html for why these literal-repeat glints exist */
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 1.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 4.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 7.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 10.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 13.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 16.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 19.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 22.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 25.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 28.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 31.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 34.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 37.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 40.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 43.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 46.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 49.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 52.50);
+  /* "Both countries land on the same conclusion from opposite directions." — 44.16s */
+  note("BOTH LAND ON THE SAME CONCLUSION", 44.16, 3.8);
+  /* "Once conditions turn this severe, moving becomes more dangerous than staying exactly where you are." — 47.96s */
+  note("MOVING BECOMES MORE DANGEROUS THAN STAYING", 47.96, 6.06);
+  tl.to(["#l5-eye","#l5-lvl","#l5-card"], { autoAlpha:0, duration:0.5 }, 54.02); CONTENT_BEATS.push(54.02);
+
+  const sorted = CONTENT_BEATS.slice().sort((a,b)=>a-b);
+  let maxGap = 0; for (let i=1;i<sorted.length;i++) maxGap = Math.max(maxGap, sorted[i]-sorted[i-1]);
+  console.log("[gap-check] ladder-l5 content beats:", sorted.map(n=>n.toFixed(2)), "max gap:", maxGap.toFixed(2), "s");
   window.__timelines["ladder-l5"] = tl;
 })();
 </script>
