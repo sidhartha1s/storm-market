@@ -94,9 +94,9 @@ window.__timelines = window.__timelines || {};
     CONTENT_BEATS.push(at);
   }
 
-  tl.to("#lt-bgplate", { scale: 1.06, duration: HOST_WINDOW, ease: "none" }, 0);
+  tl.to("#lt-bgplate", { scale: 1.06, duration: 36.836, ease: "none" }, 0);
   /* continuous scale drift directly on the map plate (owner round-2: "background plate looks static") */
-  tl.fromTo("#lt-mapwrap", { scale: 1.0 }, { scale: 1.06, duration: HOST_WINDOW, ease: "none" }, 0);
+  tl.fromTo("#lt-mapwrap", { scale: 1.0 }, { scale: 1.06, duration: 36.836, ease: "none" }, 0);
 
   tl.set(["#lt-marker","#lt-pin","#lt-pinlab","#lt-note"], { visibility: "hidden", autoAlpha: 0 }, 0);
   tl.fromTo("#lt-mini", { autoAlpha:0, x:-40 }, { autoAlpha:1, x:0, duration:0.5 }, 0); CONTENT_BEATS.push(0);
