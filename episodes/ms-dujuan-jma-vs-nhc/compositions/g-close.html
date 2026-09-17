@@ -65,6 +65,9 @@ window.__timelines = window.__timelines || {};
   /* round-3 remeasure: the 2.8->16.02 tail (13.22s) only had the continuous letter-spacing drift above,
      which a discrete-beat scan can't see mid-tween; one more explicit content beat during the tail hold. */
   tl.to("#gc-rule", { backgroundColor: "#f4f0e8", duration: 0.4, yoyo: true, repeat: 1 }, 9.0);
+  /* round-4 (owner's <6s cadence target applied consistently): closes the 9.0->16.02 tail (7.02s content-only)
+     with one more real beat on the brand line */
+  tl.to("#gc-head", { scale: 1.02, duration: 0.5, yoyo: true, repeat: 1 }, 13.0);
   window.__timelines["g-close"] = tl;
 })();
 </script>
