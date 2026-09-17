@@ -16,11 +16,12 @@
   #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; background:#04070c; overflow:hidden; }
   .jq-bgplate { position:absolute; left:-60px; right:-60px; top:-60px; bottom:-60px;
     background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); transform-origin:center; will-change:transform; }
-  /* round-3 (draft 2 freezedetect still flags 7.4-14.0s local as a hold): the bgplate scale and card y-bob are
-     too subtle in area/contrast for freezedetect's frame-diff floor. A solid full-width scan line sweeping
-     top-to-bottom behind the card gives real per-frame pixel delta across the whole window, not just at reveals. */
-  .jq-sweep { position:absolute; left:0; right:0; top:-6px; height:4px; background:rgba(208,18,31,0.4);
-    box-shadow:0 0 24px 6px rgba(208,18,31,0.3); }
+  /* round-4 (owner: a decorative scan line fixes the detector, not the content — removed). Real fix: a red
+     rule that slides to the currently-named rung, real slide motion on every row change, plus a count-up on
+     each row's mph range over ~1s on its own word. Positions below are measured pixel rects of the rows
+     (jq_rects.mjs against this file's own layout), not estimates. */
+  .jq-indicator { position:absolute; left:122px; top:213px; width:6px; height:52px; border-radius:3px;
+    background:#d0121f; box-shadow:0 0 18px 4px rgba(208,18,31,0.6); }
   .jq-card { position:absolute; left:110px; top:110px; width:920px; box-sizing:border-box; padding:30px 40px 26px;
     background:rgba(10,16,24,0.58); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); border-radius:26px; }
