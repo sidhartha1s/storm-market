@@ -72,37 +72,29 @@ window.__timelines = window.__timelines || {};
      "600" at 10.4s and "flights" at 10.74s, a real fact not shown anywhere before this fix. */
   tl.set("#cc-r-sub2", { visibility: "visible" }, 10.74);
   tl.fromTo("#cc-r-sub2", { autoAlpha:0, y:8 }, { autoAlpha:1, y:0, duration:0.35 }, 10.74);
-  /* cc-center's caption is word-matched to "Central pressure and wind speed measure the storm itself, not what
-     stands underneath its track. Timing, angle, and the ground underneath the track decide how much damage a
-     storm causes." (12.52-22.84) - it previously landed at 27.2, after that thought had already finished, which
-     both mistimed it and left the 4.66-27.2 stretch short a fact. */
+  /* team-lead 17 Sep 26: 27s (12.52-39.7) with no new fact was flagged - the #root scale pulses were
+     detector-satisfiers, not content, and are deleted below. Fix is five sequential facts, each pre-authored
+     as its own leaf span (hard-cut via tl.set, no callbacks, outgoing reaches autoAlpha 0 on the exact same
+     frame incoming starts - same pattern as the a/b swap this replaces), word-matched to b5-s1.words.json,
+     no gap over 6s:
+       12.52 "Central pressure and wind speed measure the storm itself, not what stands underneath its track."
+       18.14 "Timing, angle, and the ground underneath the track decide how much damage a storm causes."
+       23.90 "American hurricane seasons show the same pattern."
+       26.48 "A category number describes wind, not who evacuates or what floods."
+       32.04 "Typhoon No. 25's forecast track currently runs offshore, east of Japan, the same shape as Ampil's." */
+  tl.set(["#cc-center-a2","#cc-center-a3","#cc-center-a4","#cc-center-b"], { autoAlpha: 0 }, 0);
   tl.set("#cc-center", { visibility: "visible" }, 12.52);
   tl.fromTo("#cc-center", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.5 }, 12.52);
   tl.to("#cc-center", { boxShadow: "0 0 26px rgba(216,161,58,0.3)", duration: 1.4, ease: "sine.inOut", repeat: repeatsToFit(15.0, 1.4), yoyo: true }, 15.0);
-  tl.set("#cc-center-b", { autoAlpha: 0 }, 0);
-  /* hard cut, not a crossfade: overlap_check.mjs samples every 0.5s and a 0.35s cross-dissolve left both
-     spans briefly co-visible at the same screen position ("comp-internal" collision at 39.9s) — the two
-     facts are sequential text, not two things on screen at once, so a's exit and b's entrance land on the
-     exact same frame instead of overlapping. */
-  tl.set(["#cc-center-a","#cc-center-b"], { autoAlpha: 0 }, 39.7);
-  tl.set("#cc-center-b", { visibility: "visible", autoAlpha: 1 }, 39.7);
+  tl.set(["#cc-center-a","#cc-center-a2"], { autoAlpha: 0 }, 18.14);
+  tl.set("#cc-center-a2", { visibility: "visible", autoAlpha: 1 }, 18.14);
+  tl.set(["#cc-center-a2","#cc-center-a3"], { autoAlpha: 0 }, 23.9);
+  tl.set("#cc-center-a3", { visibility: "visible", autoAlpha: 1 }, 23.9);
+  tl.set(["#cc-center-a3","#cc-center-a4"], { autoAlpha: 0 }, 26.48);
+  tl.set("#cc-center-a4", { visibility: "visible", autoAlpha: 1 }, 26.48);
+  tl.set(["#cc-center-a4","#cc-center-b"], { autoAlpha: 0 }, 32.04);
+  tl.set("#cc-center-b", { visibility: "visible", autoAlpha: 1 }, 32.04);
   tl.to(["#cc-eye","#cc-l","#cc-r","#cc-center"], { autoAlpha:0, duration:0.5 }, 46.582); // HOST_WINDOW(47.182) - 0.6, literal for the static window-fit check
-  /* beat-density filler: literal-repeat glints every 3s so no stretch of the window sits motionless >=4s (beat_density.py needs a literal digit after 'repeat:', not the repeatsToFit() call used for the real ambient motion) */
-  tl.to("#root", { scale: 1.002, duration: 0.5, yoyo: true, repeat: 1 }, 1.50);
-  tl.to("#root", { scale: 1.002, duration: 0.5, yoyo: true, repeat: 1 }, 4.50);
-  tl.to("#root", { scale: 1.002, duration: 0.5, yoyo: true, repeat: 1 }, 7.50);
-  tl.to("#root", { scale: 1.002, duration: 0.5, yoyo: true, repeat: 1 }, 10.50);
-  tl.to("#root", { scale: 1.002, duration: 0.5, yoyo: true, repeat: 1 }, 13.50);
-  tl.to("#root", { scale: 1.002, duration: 0.5, yoyo: true, repeat: 1 }, 16.50);
-  tl.to("#root", { scale: 1.002, duration: 0.5, yoyo: true, repeat: 1 }, 19.50);
-  tl.to("#root", { scale: 1.002, duration: 0.5, yoyo: true, repeat: 1 }, 22.50);
-  tl.to("#root", { scale: 1.002, duration: 0.5, yoyo: true, repeat: 1 }, 25.50);
-  tl.to("#root", { scale: 1.002, duration: 0.5, yoyo: true, repeat: 1 }, 28.50);
-  tl.to("#root", { scale: 1.002, duration: 0.5, yoyo: true, repeat: 1 }, 31.50);
-  tl.to("#root", { scale: 1.002, duration: 0.5, yoyo: true, repeat: 1 }, 34.50);
-  tl.to("#root", { scale: 1.002, duration: 0.5, yoyo: true, repeat: 1 }, 37.50);
-  tl.to("#root", { scale: 1.002, duration: 0.5, yoyo: true, repeat: 1 }, 40.50);
-  tl.to("#root", { scale: 1.002, duration: 0.5, yoyo: true, repeat: 1 }, 43.50);
   window.__timelines["contrast-card"] = tl;
 })();
 </script>
