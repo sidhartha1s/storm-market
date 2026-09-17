@@ -13,16 +13,16 @@
 -->
 <template>
 <style>
-  #root { position:absolute; inset:0; overflow:hidden; background:#04070c; }
+  #kn-root { position:absolute; inset:0; overflow:hidden; background:#04070c; }
   #km-img { position:absolute; inset:-6%; width:112%; height:112%; background-image:url('../media/maps/basemap-kanto.png');
     background-size:cover; background-position:center; filter:saturate(0.9) brightness(0.85); }
   #km-scrim { position:absolute; inset:0; background:linear-gradient(180deg, rgba(4,7,12,0.55) 0%, rgba(4,7,12,0.1) 30%, rgba(4,7,12,0.1) 70%, rgba(4,7,12,0.65) 100%); }
-  .eyebrow { position:absolute; left:110px; top:96px; font-family:'Arial Black',Arial,sans-serif; font-size:26px; letter-spacing:7px; color:#d0121f; }
+  .kn-eyebrow { position:absolute; left:110px; top:96px; font-family:'Arial Black',Arial,sans-serif; font-size:26px; letter-spacing:7px; color:#d0121f; }
 </style>
-<div id="root" data-composition-id="kanto-map" data-width="1920" data-height="1080">
+<div id="kn-root" data-composition-id="kanto-map" data-width="1920" data-height="1080">
   <div id="km-img"></div>
   <div id="km-scrim"></div>
-  <div class="eyebrow" id="km-eyebrow">KANTO REGION</div>
+  <div class="kn-eyebrow" id="km-eyebrow">KANTO REGION</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
@@ -31,6 +31,22 @@ window.__timelines = window.__timelines || {};
   tl.set("#km-eyebrow", { autoAlpha: 0 }, 0);
   tl.fromTo("#km-eyebrow", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.6 }, 0.3);
   tl.fromTo("#km-img", { scale: 1.0, x: 0, y: 0 }, { scale: 1.1, x: -30, y: -14, duration: 49.7, ease: "none" }, 0);
+  /* 8s max-gap rule (team-lead direction, 17 Sep 26): this comp's own eyebrow was the only
+     content tween (index.html's own pf-427m/pf-55k/chip-noalert popfigs carry most of B6's
+     facts on track 5, but that left this FILE with a single reveal in a 49.7s window). Eight
+     word-anchored pulses on the eyebrow itself, all re-based to this comp's mount (host abs
+     356.2 = b6-s1.words.json t=28.0): "Americans already traveling" (4.6), "forecast they're
+     checking" (11.96), "Kanto region" (18.78), "Fleet Activities Yokosuka" (23.26), "Yokota Air
+     Base" (27.94), "55,000...bases" (34.8, same beat as the host's pf-55k), "standard readiness
+     system" (39.84), "storm specific alert" (45.26). */
+  tl.fromTo("#km-eyebrow", { scale: 1 }, { scale: 1.05, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 4.6);
+  tl.fromTo("#km-eyebrow", { scale: 1 }, { scale: 1.05, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 11.96);
+  tl.fromTo("#km-eyebrow", { scale: 1 }, { scale: 1.05, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 18.78);
+  tl.fromTo("#km-eyebrow", { scale: 1 }, { scale: 1.05, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 23.26);
+  tl.fromTo("#km-eyebrow", { scale: 1 }, { scale: 1.05, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 27.94);
+  tl.fromTo("#km-eyebrow", { scale: 1 }, { scale: 1.05, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 34.8);
+  tl.fromTo("#km-eyebrow", { scale: 1 }, { scale: 1.05, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 39.84);
+  tl.fromTo("#km-eyebrow", { scale: 1 }, { scale: 1.05, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 45.26);
   window.__timelines["kanto-map"] = tl;
 })();
 </script>
