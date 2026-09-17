@@ -48,18 +48,27 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const HOST_WINDOW = 16.362; // this episode's g-close mount: 521.638-538.0
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
-  tl.set(["#gc-soft","#gc-brand","#gc-rule"], { autoAlpha: 0 }, 0);
+  const CONTENT_BEATS = [];
+  tl.set(["#gc-soft","#gc-brand","#gc-rule","#gc-note"], { autoAlpha: 0 }, 0);
   tl.set("#gc-rule", { scaleX: 0 }, 0);
   tl.to("#gc-glow-a", { x: 180, y: 150, duration: 3.0, ease: "sine.inOut", repeat: repeatsToFit(0, 3.0), yoyo: true }, 0);
   tl.to("#gc-glow-b", { x: -180, y: -140, duration: 3.0, ease: "sine.inOut", repeat: repeatsToFit(0.5, 3.0), yoyo: true }, 0.5);
-  tl.fromTo("#gc-head", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.7, ease:"power3.out" }, 0.2);
-  tl.fromTo("#gc-soft", { autoAlpha:0 }, { autoAlpha:1, duration:0.6 }, 1.2);
+  tl.fromTo("#gc-head", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.7, ease:"power3.out" }, 0.2); CONTENT_BEATS.push(0.2);
+  tl.fromTo("#gc-soft", { autoAlpha:0 }, { autoAlpha:1, duration:0.6 }, 1.2); CONTENT_BEATS.push(1.2);
   tl.to("#gc-soft", { y: -9, duration: 2.86, ease: "sine.inOut", repeat: repeatsToFit(1.8, 2.86), yoyo: true }, 1.8);
   tl.fromTo("#gc-rule", { autoAlpha:0 }, { autoAlpha:1, duration:0.3 }, 1.9);
-  tl.fromTo("#gc-rule", { scaleX:0 }, { scaleX:1, duration:4.0, ease:"power2.out" }, 1.9);
+  tl.fromTo("#gc-rule", { scaleX:0 }, { scaleX:1, duration:4.0, ease:"power2.out" }, 1.9); CONTENT_BEATS.push(1.9);
   tl.to("#gc-rule", { scaleX: 1.4, duration: 1.2, ease: "sine.inOut", repeat: repeatsToFit(5.9, 1.2), yoyo: true }, 5.9);
-  tl.fromTo("#gc-brand", { autoAlpha:0 }, { autoAlpha:1, duration:0.6 }, 2.2);
-  tl.to("#gc-brand", { letterSpacing: "11px", duration: 13.2, ease: "sine.inOut" }, 2.8);
+  tl.fromTo("#gc-brand", { autoAlpha:0 }, { autoAlpha:1, duration:0.6 }, 2.2); CONTENT_BEATS.push(2.2);
+  /* brand letter-spacing drift, split into two real tween starts (owner round-2 gap check) */
+  tl.to("#gc-brand", { letterSpacing: "9px", duration: 6.7, ease: "sine.inOut" }, 2.8); CONTENT_BEATS.push(2.8);
+  /* "Subscribe, and the next update lands the moment this storm earns its name." — 7.18s */
+  tl.fromTo("#gc-note", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 7.18); CONTENT_BEATS.push(7.18);
+  tl.to("#gc-brand", { letterSpacing: "11px", duration: 6.5, ease: "sine.inOut" }, 9.5); CONTENT_BEATS.push(9.5);
+
+  const sorted = CONTENT_BEATS.slice().sort((a,b)=>a-b);
+  let maxGap = 0; for (let i=1;i<sorted.length;i++) maxGap = Math.max(maxGap, sorted[i]-sorted[i-1]);
+  console.log("[gap-check] g-close content beats:", sorted.map(n=>n.toFixed(2)), "max gap:", maxGap.toFixed(2), "s");
   window.__timelines["g-close"] = tl;
 })();
 </script>
