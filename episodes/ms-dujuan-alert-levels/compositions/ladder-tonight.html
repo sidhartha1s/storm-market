@@ -90,7 +90,9 @@ window.__timelines = window.__timelines || {};
   const CONTENT_BEATS = [];
   function note(text, at, hold) {
     tl.set("#lt-note", { visibility: "visible", textContent: text }, at);
+    tl.set("#lt-rule", { xPercent: -150 }, at);
     tl.fromTo("#lt-note", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35 }, at);
+    tl.to("#lt-rule", { xPercent: 250, duration: Math.max(hold - 0.3, 0.6), ease: "none" }, at + 0.05);
     tl.to("#lt-note", { autoAlpha: 0, duration: 0.3 }, at + hold - 0.3);
     CONTENT_BEATS.push(at);
   }
