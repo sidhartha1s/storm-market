@@ -80,15 +80,16 @@ window.__timelines = window.__timelines || {};
      (blank_scan.mjs). repeatsToFit() sizes each repeat count so its tween ends at/under HOST_WINDOW. */
   const HOST_WINDOW = 42.273; // this episode's compare-card mount: 326.157-368.430
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
-  const L = { n: 0 }, R = { n: 0 };
-  const lEl = document.getElementById("cc-l-num"), rEl = document.getElementById("cc-r-num");
   tl.set(["#cc-midpop","#cc-foot","#cc-l-note","#cc-r-note","#cc-deltabar"], { autoAlpha: 0 }, 0);
+  tl.set(["#cc-l-num","#cc-r-num"], { autoAlpha: 0, visibility: "visible" }, 0);
   tl.set("#cc-r-grade", { autoAlpha: 0 }, 0);
   /* background plate: continuous slow scale across the whole window (round 2, 17 Sep 26 freeze fix) */
   tl.fromTo("#cp-bgplate", { scale: 1.0 }, { scale: 1.06, duration: HOST_WINDOW, ease: "none" }, 0);
+  /* round-6 (frame read: "mounts title-only, first cards at 313" — cards must land WITH the mount, not
+     after the eyebrow) */
   tl.fromTo("#cc-eye", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.5 }, 0);
-  tl.fromTo("#cc-l", { autoAlpha:0, x:-40 }, { autoAlpha:1, x:0, duration:0.5 }, 0.2);
-  tl.fromTo("#cc-r", { autoAlpha:0, x:40 }, { autoAlpha:1, x:0, duration:0.5 }, 0.2);
+  tl.fromTo("#cc-l", { autoAlpha:0, x:-40 }, { autoAlpha:1, x:0, duration:0.5 }, 0);
+  tl.fromTo("#cc-r", { autoAlpha:0, x:40 }, { autoAlpha:1, x:0, duration:0.5 }, 0);
   /* continuous ambient motion so both cards never sit frozen between reveals */
   tl.to("#cc-l", { y: -6, duration: 2.6, ease: "sine.inOut", repeat: repeatsToFit(0.8, 2.6), yoyo: true }, 0.8);
   tl.to("#cc-r", { y: -6, duration: 2.6, ease: "sine.inOut", repeat: repeatsToFit(1.1, 2.6), yoyo: true }, 1.1);
