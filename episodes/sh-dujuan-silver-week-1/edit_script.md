@@ -40,7 +40,7 @@ Visual: track map returns, Monday point lands "MON 09:00 · SE OF KANTO" with To
 ## Media (from library/mini-storms/dujuan-2026 and the parent's media/video, cropped to 1080×1920 in media/video/)
 | file | source | licence | window |
 |---|---|---|---|
-| radar_dujuan (8 s) | NASA Worldview VIIRS SNPP true-color snapshot 16 Sep 26 (2160×3840, lon 142.5–154.5 E, lat 4.6–26.6 N), own eased centre zoom 1.0→1.35 from a 2× oversampled still (the parent's zoompan clip stepped at ~9.5 fps; owner 17 Sep 26) | PD-US-gov | S1 |
+| radar_dujuan (8 s) | NASA Worldview VIIRS NOAA-20 true-color snapshot 16 Sep 26 (2160×3840, lon 142.5–154.5 E, lat 4.6–26.6 N), own eased centre zoom 1.0→1.35 from a 2× oversampled still (the parent's zoompan clip stepped at ~9.5 fps; owner 17 Sep 26) | PD-US-gov | S1 |
 | v-waves-typhoon-b4 | Pexels 1690323 | Pexels License | S2a |
 | track map (composition) | JMA data f1, Natural Earth 110m coastline | PD | S2b, S4a |
 | pexels_37738769 bullet train | Pexels | Pexels License | S3a |

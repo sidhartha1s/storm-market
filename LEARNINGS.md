@@ -541,6 +541,10 @@ YDIF sd 1.77 vs 3.74: fetch the still at the output aspect and ≥2× the output
 (Worldview snapshot API, `WIDTH=2160&HEIGHT=3840`, bbox centred on the subject), then
 `scale=4320:7680:flags=lanczos,zoompan=z='1+0.35*(1-cos(PI*on/(N-1)))/2':d=N:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s=1080x1920:fps=30`.
 Eased zoom (cosine), never linear; never crop-and-upscale a landscape zoom clip into 9:16.
+Pick the layer by eye before cutting: the SNPP VIIRS snapshot carried a pale diagonal swath seam
+in the lower left that a frame read caught in the final; the same box on VIIRS NOAA-20 was seam-free
+(NOAA-21 had a tile edge through the storm, MODIS had a black no-data wedge). Fetch all four layers
+at 540×960, have a reader pick, then fetch the winner at 2160×3840.
 
 ## Harness background tasks get reaped — long renders need schtasks (measured ep5, 2026-08-06)
 
