@@ -101,8 +101,11 @@ window.__timelines = window.__timelines || {};
   tl.set(["#li-arrow","#li-new","#li-teaser","#li-note"], { visibility: "hidden", autoAlpha: 0 }, 0);
   tl.fromTo("#li-eye", { autoAlpha:0, y:-16 }, { autoAlpha:1, y:0, duration:0.5 }, 0); CONTENT_BEATS.push(0);
   tl.fromTo("#li-old", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.5 }, 0.3);
-  tl.fromTo("#li-old-r1", { autoAlpha:0 }, { autoAlpha:1, duration:0.35 }, 3.46); CONTENT_BEATS.push(3.46);
-  tl.fromTo("#li-old-r2", { autoAlpha:0 }, { autoAlpha:1, duration:0.35 }, 5.34); CONTENT_BEATS.push(5.34);
+  /* round 5 (owner 17 Sep 26): "mounts empty" - the old-system card appeared at 0.3 but its two rows
+     (its only actual facts, "Recommendation" / "Instruction (Emergency)") used to wait until 3.46/5.34,
+     reading as an empty box for the first few seconds. Rows now land with the card. */
+  tl.fromTo("#li-old-r1", { autoAlpha:0 }, { autoAlpha:1, duration:0.3 }, 0.6); CONTENT_BEATS.push(0.6);
+  tl.fromTo("#li-old-r2", { autoAlpha:0 }, { autoAlpha:1, duration:0.3 }, 0.9); CONTENT_BEATS.push(0.9);
   /* "Officials found that people often waited past the first advisory because the words sounded
      optional, not urgent." — 11.2s */
   note("WORDS SOUNDED OPTIONAL, NOT URGENT", 11.2, 2.4);
