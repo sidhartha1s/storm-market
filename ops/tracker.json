@@ -405,10 +405,10 @@
       "title": "Silver Week Collision: A Storm Joins Japan's Biggest Holiday in Years",
       "owner": "director",
       "due": "16 Sep 26",
-      "phase": "render",
+      "phase": "upload",
       "status": "doing",
-      "note": "FULL render launched 17 Sep 18:00 after lint, freeze scan, overlap check and pre-render frame read passed",
-      "updated": "17 Sep 26 18:01"
+      "note": "Owner approved 17 Sep 18:40: ship it. Master -14.01 LUFS, 9:29, SRT 202 cues in main episodes/ms-dujuan-silver-week/renders. Open: thumbnails x2, Japanese SRT",
+      "updated": "17 Sep 26 18:41"
     },
     {
       "slug": "ms-dujuan-two-tracks",
@@ -429,10 +429,10 @@
       "title": "Japan's Five-Level Evacuation Alert System, Explained for Americans",
       "owner": "director",
       "due": "16 Sep 26",
-      "phase": "preview",
+      "phase": "render",
       "status": "doing",
-      "note": "Draft 5 rendering (started 17 Sep ~17:30). Pre-render freeze scan passed; verify + frame read + overlap check follow",
-      "updated": "17 Sep 26 17:24"
+      "note": "FULL render launched 17 Sep 18:33 after lint, freeze scan, overlap check, frame read",
+      "updated": "17 Sep 26 18:41"
     },
     {
       "slug": "ms-dujuan-us-travelers",
