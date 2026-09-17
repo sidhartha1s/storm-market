@@ -60,7 +60,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#cc-center", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.5 }, 27.2);
   tl.to("#cc-center", { boxShadow: "0 0 26px rgba(216,161,58,0.3)", duration: 1.4, ease: "sine.inOut", repeat: repeatsToFit(30.0, 1.4), yoyo: true }, 30.0);
   tl.to("#cc-center", { duration:0.01, onStart: () => { document.getElementById("cc-center").textContent = "TYPHOON No. 25's TRACK RUNS THE SAME OFFSHORE LINE AS AMPIL'S"; } }, 39.7);
-  tl.to(["#cc-eye","#cc-l","#cc-r","#cc-center"], { autoAlpha:0, duration:0.5 }, HOST_WINDOW - 0.6);
+  tl.to(["#cc-eye","#cc-l","#cc-r","#cc-center"], { autoAlpha:0, duration:0.5 }, 46.582); // HOST_WINDOW(47.182) - 0.6, literal for the static window-fit check
   window.__timelines["contrast-card"] = tl;
 })();
 </script>
