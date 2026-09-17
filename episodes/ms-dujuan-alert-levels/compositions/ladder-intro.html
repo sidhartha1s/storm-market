@@ -4,16 +4,22 @@
 <body>
 <!-- ladder-intro.html — B3 "the system Japan built". Old two-tier system (Recommendation / Instruction)
      fades out, replaced by the new 5-level ladder (built once here; levels 1-2 land highlighted, 3-5 sit
-     dimmed as a teaser for B4-B8). Cues word-synced from audio/b3-s1.words.json (segment-abs minus this
-     comp's mount at episode-abs 119.673). Mount: track 2, host start = episode-abs 119.673, duration 54.0
-     (B3 window is 60.0s; a 6.0s TBS lead-in b-roll plays before this comp mounts). Font: 'AbrilFig' relies
-     on index.html's single @font-face (a per-comp duplicate false-triggers css_collision.py on the shared
-     ".ttf" url() token). All classes carry the li- comp tag so no class name is shared with index.html or
-     a sibling composition. -->
+     dimmed as a teaser for B4-B8). Cues word-synced from audio/b3-s1.words.json (comp-relative =
+     audio-relative - 6.0, this comp's mount at episode-abs 119.673 sits 6.0s into the audio). Mount:
+     track 2, host start = episode-abs 119.673, duration 54.0 (B3 window is 60.0s; a 6.0s TBS lead-in
+     b-roll plays before this comp mounts). All classes carry the li- comp tag.
+
+     ROUND 2 (owner: "sitting still", 2/10, 17 Sep 26) — two dead stretches: 16.6-28.14 (~11.5s, only the
+     new-ladder title on screen) and 32.6-49.2 (~16.6s, the full 5-row list frozen). Fixed with three new
+     word-cued captions (.li-note) pulled from b3-s1.words.json: "issued by the municipality" (21.14),
+     "US equivalent: advisory, not a watch" (38.8), "neither level orders anyone to leave" (44.3). Also:
+     .li-bgplate adds continuous background drift; the teaser chip was reported sitting on/near the
+     bottom list line — rows tightened (36->24 / 14->10 margins) and the teaser moved from bottom:150 to
+     bottom:230 for real clearance from both the row list and the source-credit line below it. -->
 <template>
 <style>
-  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
-    background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; background:#04070c; overflow:hidden; }
+  .li-bgplate { position:absolute; inset:-60px; background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); transform-origin:center; }
   .li-eyebrow { position:absolute; left:0; right:0; top:96px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
     font-size:22px; letter-spacing:6px; color:#d8a13a; }
   .li-old { position:absolute; left:50%; top:220px; transform:translateX(-50%); width:760px; box-sizing:border-box;
@@ -26,18 +32,23 @@
   .li-new { position:absolute; left:50%; top:150px; transform:translateX(-50%); width:1080px; box-sizing:border-box; }
   .li-newhead { text-align:center; font-family:'AbrilFig',Georgia,serif; font-size:58px; color:#f4f0e8; }
   .li-newsub { text-align:center; margin-top:8px; font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:3px; color:#d0121f; }
-  .li-rows { margin-top:36px; }
-  .li-row { display:flex; align-items:center; gap:24px; margin-top:14px; padding:16px 30px; border-radius:14px;
+  .li-rows { margin-top:24px; }
+  .li-row { display:flex; align-items:center; gap:24px; margin-top:10px; padding:14px 30px; border-radius:14px;
     background:rgba(10,16,24,0.5); border:1px solid rgba(255,255,255,0.12); }
   .li-row.li-dim { opacity:0.32; }
-  .li-row .li-n { font-family:'AbrilFig',Georgia,serif; font-size:54px; color:#d0121f; flex:0 0 60px; }
-  .li-row .li-t { font-family:'Arial Black',Arial,sans-serif; font-size:28px; }
-  .li-teaser { position:absolute; left:50%; bottom:150px; transform:translateX(-50%); font-family:'Arial Black',Arial,sans-serif;
+  .li-row .li-n { font-family:'AbrilFig',Georgia,serif; font-size:46px; color:#d0121f; flex:0 0 54px; }
+  .li-row .li-t { font-family:'Arial Black',Arial,sans-serif; font-size:26px; }
+  .li-note { position:absolute; left:50%; bottom:340px; transform:translateX(-50%); max-width:920px; box-sizing:border-box;
+    text-align:center; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:1px; color:#f4f0e8;
+    background:rgba(10,16,24,0.62); border:1px solid rgba(255,255,255,0.14); border-left:6px solid #8fb4d8;
+    border-radius:10px; padding:14px 30px; white-space:nowrap; }
+  .li-teaser { position:absolute; left:50%; bottom:230px; transform:translateX(-50%); font-family:'Arial Black',Arial,sans-serif;
     font-size:24px; letter-spacing:2px; color:#f4b8bc; background:rgba(208,18,31,0.18); border-left:4px solid #d0121f;
     padding:12px 26px; border-radius:10px; }
   .li-srccred { position:absolute; left:0; right:0; bottom:80px; text-align:center; font-size:19px; color:rgba(220,228,236,0.7); }
 </style>
 <div id="root" data-composition-id="ladder-intro" data-width="1920" data-height="1080">
+  <div class="li-bgplate" id="li-bgplate"></div>
   <div class="li-eyebrow" id="li-eye">JAPAN'S EVACUATION SYSTEM</div>
   <div class="li-old" id="li-old">
     <div class="li-tag">RETIRED, MAY 2021</div>
@@ -56,6 +67,7 @@
       <div class="li-row li-dim" id="li-r5"><div class="li-n">5</div><div class="li-t">EMERGENCY SAFETY MEASURES</div></div>
     </div>
   </div>
+  <div class="li-note" id="li-note" style="visibility:hidden"></div>
   <div class="li-teaser" id="li-teaser" style="visibility:hidden">LEVELS 3-5: NEXT</div>
   <div class="li-srccred" id="li-cred">SOURCE: CABINET OFFICE, GOVERNMENT OF JAPAN &middot; 2021</div>
 </div>
@@ -65,50 +77,52 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const HOST_WINDOW = 54.0; // this episode's ladder-intro mount: 119.673-173.673
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
-  tl.set(["#li-old-r1","#li-old-r2","#li-r1","#li-r2","#li-r3","#li-r4","#li-r5","#li-teaser"], { autoAlpha: 0 }, 0);
-  tl.set(["#li-arrow","#li-new","#li-teaser"], { visibility: "hidden", autoAlpha: 0 }, 0);
-  tl.fromTo("#li-eye", { autoAlpha:0, y:-16 }, { autoAlpha:1, y:0, duration:0.5 }, 0);
+  const CONTENT_BEATS = [];
+  function note(text, at, hold) {
+    tl.set("#li-note", { visibility: "visible", textContent: text }, at);
+    tl.fromTo("#li-note", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35 }, at);
+    tl.to("#li-note", { autoAlpha: 0, duration: 0.3 }, at + hold - 0.3);
+    CONTENT_BEATS.push(at);
+  }
+
+  tl.to("#li-bgplate", { scale: 1.06, duration: HOST_WINDOW, ease: "none" }, 0);
+
+  tl.set(["#li-old-r1","#li-old-r2","#li-r1","#li-r2","#li-r3","#li-r4","#li-r5","#li-teaser","#li-note"], { autoAlpha: 0 }, 0);
+  tl.set(["#li-arrow","#li-new","#li-teaser","#li-note"], { visibility: "hidden", autoAlpha: 0 }, 0);
+  tl.fromTo("#li-eye", { autoAlpha:0, y:-16 }, { autoAlpha:1, y:0, duration:0.5 }, 0); CONTENT_BEATS.push(0);
   tl.fromTo("#li-old", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.5 }, 0.3);
-  tl.fromTo("#li-old-r1", { autoAlpha:0 }, { autoAlpha:1, duration:0.35 }, 3.46);
-  tl.fromTo("#li-old-r2", { autoAlpha:0 }, { autoAlpha:1, duration:0.35 }, 5.34);
+  tl.fromTo("#li-old-r1", { autoAlpha:0 }, { autoAlpha:1, duration:0.35 }, 3.46); CONTENT_BEATS.push(3.46);
+  tl.fromTo("#li-old-r2", { autoAlpha:0 }, { autoAlpha:1, duration:0.35 }, 5.34); CONTENT_BEATS.push(5.34);
+  /* "Officials found that people often waited past the first advisory because the words sounded
+     optional, not urgent." — 11.2s */
+  note("WORDS SOUNDED OPTIONAL, NOT URGENT", 11.2, 2.4);
   /* continuous ambient motion so the old card never sits frozen while it holds */
   tl.to("#li-old", { y: -6, duration: 2.6, ease: "sine.inOut", repeat: repeatsToFit(0.3, 2.6), yoyo: true }, 0.3);
   /* retire the old system, reveal the new ladder */
-  tl.to("#li-old", { autoAlpha:0, y:-30, duration:0.5, ease:"power2.in" }, 13.98);
+  tl.to("#li-old", { autoAlpha:0, y:-30, duration:0.5, ease:"power2.in" }, 13.98); CONTENT_BEATS.push(13.98);
   tl.set("#li-arrow", { visibility: "visible" }, 14.3);
-  tl.fromTo("#li-arrow", { autoAlpha:0, y:-10 }, { autoAlpha:1, y:10, duration:0.9, ease:"sine.inOut", repeat: 1, yoyo: true }, 14.3);
+  tl.fromTo("#li-arrow", { autoAlpha:0, y:-10 }, { autoAlpha:1, y:10, duration:0.9, ease:"sine.inOut", repeat: 1, yoyo: true }, 14.3); CONTENT_BEATS.push(14.3);
   tl.to("#li-arrow", { autoAlpha:0, duration:0.3 }, 16.4);
   tl.set("#li-new", { visibility: "visible" }, 16.6);
-  tl.fromTo("#li-new", { autoAlpha:0, scale:0.95 }, { autoAlpha:1, scale:1, duration:0.6, ease:"power3.out" }, 16.6);
-  tl.fromTo("#li-r1", { autoAlpha:0, x:-30 }, { autoAlpha:1, x:0, duration:0.4 }, 28.14);
-  tl.fromTo("#li-r2", { autoAlpha:0, x:-30 }, { autoAlpha:1, x:0, duration:0.4 }, 32.12);
+  tl.fromTo("#li-new", { autoAlpha:0, scale:0.95 }, { autoAlpha:1, scale:1, duration:0.6, ease:"power3.out" }, 16.6); CONTENT_BEATS.push(16.6);
+  /* "Five levels, numbered one through five, issued by the local municipality..." — 21.14s */
+  note("ISSUED BY THE LOCAL MUNICIPALITY", 21.14, 5.5);
+  tl.fromTo("#li-r1", { autoAlpha:0, x:-30 }, { autoAlpha:1, x:0, duration:0.4 }, 28.14); CONTENT_BEATS.push(28.14);
+  tl.fromTo("#li-r2", { autoAlpha:0, x:-30 }, { autoAlpha:1, x:0, duration:0.4 }, 32.12); CONTENT_BEATS.push(32.12);
   tl.to(["#li-r3","#li-r4","#li-r5"], { autoAlpha:0.32, duration:0.4 }, 32.6);
+  /* "An American forecaster would simply call that same tier an advisory, not a watch." — 38.8s */
+  note("US EQUIVALENT: “ADVISORY,” NOT A WATCH", 38.8, 5.5);
+  /* "Neither level tells anyone to leave home." — 44.3s */
+  note("NEITHER LEVEL ORDERS ANYONE TO LEAVE", 44.3, 4.6);
   tl.set("#li-teaser", { visibility: "visible" }, 49.2);
-  tl.fromTo("#li-teaser", { autoAlpha:0, y:14 }, { autoAlpha:1, y:0, duration:0.4 }, 49.52);
+  tl.fromTo("#li-teaser", { autoAlpha:0, y:14 }, { autoAlpha:1, y:0, duration:0.4 }, 49.52); CONTENT_BEATS.push(49.52);
   /* continuous ambient motion on the new ladder so it never sits frozen for its long hold */
   tl.to("#li-new", { y: -6, duration: 2.9, ease: "sine.inOut", repeat: repeatsToFit(18.0, 2.9), yoyo: true }, 18.0);
-  tl.to(["#li-new","#li-teaser","#li-cred"], { autoAlpha:0, duration:0.5 }, 53.4);
-  /* beat-density filler: literal-repeat glints on #root (imperceptible ±1.5% opacity) so a
-     static-analysis pass over explicit tl positions also reads continuous coverage, matching the
-     repeatsToFit() ambient tweens above whose repeat count is a function call the scanner can't resolve */
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 1.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 4.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 7.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 10.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 13.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 16.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 19.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 22.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 25.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 28.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 31.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 34.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 37.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 40.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 43.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 46.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 49.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 52.50);
+  tl.to(["#li-new","#li-teaser","#li-cred"], { autoAlpha:0, duration:0.5 }, 53.4); CONTENT_BEATS.push(53.4);
+
+  const sorted = CONTENT_BEATS.slice().sort((a,b)=>a-b);
+  let maxGap = 0; for (let i=1;i<sorted.length;i++) maxGap = Math.max(maxGap, sorted[i]-sorted[i-1]);
+  console.log("[gap-check] ladder-intro content beats:", sorted.map(n=>n.toFixed(2)), "max gap:", maxGap.toFixed(2), "s");
   window.__timelines["ladder-intro"] = tl;
 })();
 </script>
