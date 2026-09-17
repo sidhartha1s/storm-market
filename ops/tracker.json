@@ -430,9 +430,9 @@
       "owner": "director",
       "due": "16 Sep 26",
       "phase": "preview",
-      "status": "todo",
-      "note": "draft render held: 3.0 GB free < 4 GB floor while two composers run",
-      "updated": "17 Sep 26 10:48"
+      "status": "doing",
+      "note": "draft render launched 11:04 17 Sep 26 (owner override at 3.0 GB)",
+      "updated": "17 Sep 26 11:05"
     },
     {
       "slug": "ms-dujuan-us-travelers",
