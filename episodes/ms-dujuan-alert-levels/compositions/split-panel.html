@@ -108,6 +108,10 @@ window.__timelines = window.__timelines || {};
   note("MOVING NNE AT 9 MPH", 0.1);
   // "The United States Navy's Joint Typhoon Warning Center tracks the same system independently" (audio 1.58s)
   note("JTWC: A SECOND, INDEPENDENT READING", 1.58);
+  // continuous sweeping rule under sp-note (round 3, owner: "moving element through every hold") — this
+  // chip has no per-beat fade like the other comps' notes, so one repeating sweep covers every text swap.
+  tl.set("#sp-rule", { xPercent: -150 }, 0.1);
+  tl.to("#sp-rule", { xPercent: 250, duration: 2.2, ease: "none", repeat: repeatsToFit(0.1, 2.2), yoyo: false }, 0.1);
   /* continuous ambient motion so both cards never sit frozen through the long hold */
   tl.to("#sp-l", { y: -6, duration: 2.6, ease: "sine.inOut", repeat: repeatsToFit(0.8, 2.6), yoyo: true }, 0.8);
   tl.to("#sp-r", { y: -6, duration: 2.6, ease: "sine.inOut", repeat: repeatsToFit(1.1, 2.6), yoyo: true }, 1.1);
