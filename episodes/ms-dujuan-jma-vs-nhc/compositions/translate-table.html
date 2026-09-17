@@ -95,9 +95,8 @@ window.__timelines = window.__timelines || {};
   /* bridges the r3->caption gap on "The word typhoon alone tells...almost nothing about size" (57.89) */
   tl.to("#tt-thead-jp", { color:"#f4b8bc", duration:0.4, yoyo:true, repeat:1 }, 52.44);
   /* frame-reader finding (draft 1 contact sheet): 53.51-59.51 read as static with the table locked; a real
-     beat closes it on "reader almost nothing about size." (60.54) with a full-table sweep highlighting the
-     point the caption is about to make */
-  tl.fromTo("#tt-table", { backgroundPosition:"-120% 0" }, { backgroundPosition:"0% 0", duration:0.7, ease:"power1.inOut" }, 54.5);
+     beat closes it on "reader almost nothing about size" (59.86) with a full-table border-glow flash */
+  tl.to("#tt-table", { boxShadow: "0 0 40px rgba(216,161,58,0.55)", duration: 0.6, yoyo: true, repeat: 1 }, 54.5);
   /* closing caption lands on "Neither word...is a measurement on its own." (64.7) */
   tl.fromTo("#tt-caption", { autoAlpha:0, y:14 }, { autoAlpha:1, y:0, duration:0.4 }, 58.7);
   tl.to(["#tt-b1","#tt-b2","#tt-b3","#tt-table","#tt-caption"], { autoAlpha:0, duration:0.5 }, 62.4);
