@@ -34,4 +34,12 @@ code, out = run('css_collision.py', BAD)
 assert code != 0 and 'chip' in out, out
 code, out = run('css_collision.py', GOOD)
 assert code == 0, out
+# a crashed sub-gate must read as a failure inside sweep, never as a pass (PR #81 review)
+import re, types
+src = (S / 'sweep_episode.py').read_text(encoding='utf-8')
+ns = {}
+exec(re.search(r'def _gate_lines.*?return fails', src, flags=re.S).group(0), ns)
+crash = types.SimpleNamespace(stdout='', stderr='FileNotFoundError: index.html', returncode=1)
+assert ns['_gate_lines'](crash, 'css_collision.py'), 'crash read as pass'
+assert not ns['_gate_lines'](types.SimpleNamespace(stdout='[x] PASS', stderr='', returncode=0), 'x')
 print('comp gates self-check PASS (comp_lint R1+R2, css_collision)')
