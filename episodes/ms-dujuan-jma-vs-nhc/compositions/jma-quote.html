@@ -9,43 +9,42 @@
      minus the 8.0 s lead-in b-roll). -->
 <template>
 <style>
-  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
   #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
     background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
-  .card { position:absolute; left:110px; top:110px; width:920px; box-sizing:border-box; padding:30px 40px 26px;
+  .jq-card { position:absolute; left:110px; top:110px; width:920px; box-sizing:border-box; padding:30px 40px 26px;
     background:rgba(10,16,24,0.58); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); border-radius:26px; }
-  .eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:6px; color:#d0121f; }
-  .row { display:flex; align-items:baseline; justify-content:space-between; gap:18px; margin-top:24px;
+  .jq-eye { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:6px; color:#d0121f; }
+  .jq-row { display:flex; align-items:baseline; justify-content:space-between; gap:18px; margin-top:24px;
     padding-top:20px; border-top:1px solid rgba(255,255,255,0.12); }
-  .row:first-of-type { border-top:none; padding-top:0; }
-  .lab { font-family:'Arial Black',Arial,sans-serif; font-size:30px; line-height:1.1; }
-  .rng { font-family:'AbrilFig',Georgia,serif; font-size:54px; color:#d0121f; white-space:nowrap; line-height:1.2; }
-  .thresh { margin-top:18px; padding:10px 18px; background:rgba(208,18,31,0.18); border-left:4px solid #d0121f;
+  .jq-row:first-of-type { border-top:none; padding-top:0; }
+  .jq-lab { font-family:'Arial Black',Arial,sans-serif; font-size:30px; line-height:1.1; }
+  .jq-rng { font-family:'AbrilFig',Georgia,serif; font-size:54px; color:#d0121f; white-space:nowrap; line-height:1.2; }
+  .jq-thresh { margin-top:18px; padding:10px 18px; background:rgba(208,18,31,0.18); border-left:4px solid #d0121f;
     font-family:'Arial Black',Arial,sans-serif; font-size:20px; letter-spacing:1px; color:#f4b8bc; }
-  .chip2 { position:absolute; right:80px; top:60px; font-family:'Arial Black',Arial,sans-serif; font-size:26px;
+  .jq-chip2 { position:absolute; right:80px; top:60px; font-family:'Arial Black',Arial,sans-serif; font-size:26px;
     letter-spacing:2px; color:#f4f0e8; background:rgba(10,16,24,0.62); border:1px solid rgba(255,255,255,0.14);
     border-left:6px solid #d0121f; border-radius:10px; padding:12px 24px; }
-  .qstrip { position:absolute; left:110px; right:110px; bottom:115px; text-align:center; box-sizing:border-box;
+  .jq-qstrip { position:absolute; left:110px; right:110px; bottom:115px; text-align:center; box-sizing:border-box;
     padding:30px 50px; background:rgba(10,16,24,0.6); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); border-radius:24px; }
-  .qstrip .q { font-family:Georgia,serif; font-style:italic; font-size:30px; color:#f2f5f8; line-height:1.35; }
-  .qstrip .attr { margin-top:14px; font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:3px; color:#d8a13a; }
+  .jq-qstrip .jq-q { font-family:Georgia,serif; font-style:italic; font-size:30px; color:#f2f5f8; line-height:1.35; }
+  .jq-qstrip .jq-attr { margin-top:14px; font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:3px; color:#d8a13a; }
 </style>
 <div id="root" data-composition-id="jma-quote" data-width="1920" data-height="1080">
-  <div class="card" id="jq-card">
-    <div class="eye">JMA'S TEN-MINUTE SCALE</div>
-    <div class="row" id="jq-r1"><div class="lab">TROPICAL STORM</div><div class="rng">38&ndash;55 MPH</div></div>
-    <div class="row" id="jq-r2"><div class="lab">SEVERE TROPICAL STORM</div><div class="rng">55&ndash;73 MPH</div></div>
-    <div class="thresh" id="jq-thresh">73 MPH = TYPHOON THRESHOLD</div>
-    <div class="row" id="jq-r3"><div class="lab">STRONG TYPHOON</div><div class="rng">74&ndash;96 MPH</div></div>
-    <div class="row" id="jq-r4"><div class="lab">VERY STRONG TYPHOON</div><div class="rng">98&ndash;119 MPH</div></div>
-    <div class="row" id="jq-r5"><div class="lab">VIOLENT TYPHOON</div><div class="rng">121+ MPH &middot; NO CEILING</div></div>
+  <div class="jq-card" id="jq-card">
+    <div class="jq-eye">JMA'S TEN-MINUTE SCALE</div>
+    <div class="jq-row" id="jq-r1"><div class="jq-lab">TROPICAL STORM</div><div class="jq-rng">38&ndash;55 MPH</div></div>
+    <div class="jq-row" id="jq-r2"><div class="jq-lab">SEVERE TROPICAL STORM</div><div class="jq-rng">55&ndash;73 MPH</div></div>
+    <div class="jq-thresh" id="jq-thresh">73 MPH = TYPHOON THRESHOLD</div>
+    <div class="jq-row" id="jq-r3"><div class="jq-lab">STRONG TYPHOON</div><div class="jq-rng">74&ndash;96 MPH</div></div>
+    <div class="jq-row" id="jq-r4"><div class="jq-lab">VERY STRONG TYPHOON</div><div class="jq-rng">98&ndash;119 MPH</div></div>
+    <div class="jq-row" id="jq-r5"><div class="jq-lab">VIOLENT TYPHOON</div><div class="jq-rng">121+ MPH &middot; NO CEILING</div></div>
   </div>
-  <div class="chip2" id="jq-chip">10-MINUTE SUSTAINED WIND</div>
-  <div class="qstrip" id="jq-quote">
-    <div class="q">&ldquo;Strong Typhoon: 33&ndash;&lt;44 m/s &middot; Very Strong Typhoon: 44&ndash;&lt;54 m/s &middot; Violent Typhoon: &ge;54 m/s&rdquo;</div>
-    <div class="attr">JAPAN METEOROLOGICAL AGENCY &middot; TROPICAL CYCLONE INTENSITY SCALE</div>
+  <div class="jq-chip2" id="jq-chip">10-MINUTE SUSTAINED WIND</div>
+  <div class="jq-qstrip" id="jq-quote">
+    <div class="jq-q">&ldquo;Strong Typhoon: 33&ndash;&lt;44 m/s &middot; Very Strong Typhoon: 44&ndash;&lt;54 m/s &middot; Violent Typhoon: &ge;54 m/s&rdquo;</div>
+    <div class="jq-attr">JAPAN METEOROLOGICAL AGENCY &middot; TROPICAL CYCLONE INTENSITY SCALE</div>
   </div>
 </div>
 <script>
