@@ -607,7 +607,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#tm-footer", { scale: 1 }, { scale: 1.03, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 132.298); /* "global disaster trackers still rate this system green" */
 
   tl.addLabel("cue-movement", 52.28);
-  tl.fromTo("#tm-r-movement", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 52.28);
+  tl.fromTo("#tm-r-movement", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 52.28); /* duration tightened to match #tm-card's -- see the CARD_START comment above */
   /* Same count-up-false-value fix as wind/gusts above (team-lead, 17 Sep 26): lands directly, no
      animated count from 0. */
   tl.set(CV, { move: cur.speed_mph }, 52.28);
