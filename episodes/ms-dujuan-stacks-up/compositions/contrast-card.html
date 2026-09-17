@@ -28,6 +28,8 @@
     text-align:center; font-family:'Arial Black',Arial,sans-serif; font-size:25px; letter-spacing:1px; color:#f4f0e8;
     background:rgba(10,16,24,0.62); border:1px solid rgba(255,255,255,0.14); border-radius:14px; padding:20px 30px;
     visibility:hidden; }
+  .cc-center-inner { position:relative; }
+  .cc-center-b { position:absolute; left:0; right:0; top:0; }
 </style>
 <div id="root" data-composition-id="contrast-card" data-width="1920" data-height="1080">
   <div class="cc-eye" id="cc-eye">NUMBERS MEASURE THE STORM, NOT WHAT'S UNDERNEATH</div>
@@ -41,7 +43,12 @@
     <div class="cc-big">NEVER MADE LANDFALL</div>
     <div class="cc-sub">404,000 evacuated anyway</div>
   </div>
-  <div class="cc-center" id="cc-center">PRESSURE + WIND &ne; DAMAGE &middot; TIMING + ANGLE + WHAT'S UNDERNEATH DO</div>
+  <div class="cc-center" id="cc-center">
+    <div class="cc-center-inner">
+      <span id="cc-center-a">PRESSURE + WIND &ne; DAMAGE &middot; TIMING + ANGLE + WHAT'S UNDERNEATH DO</span>
+      <span class="cc-center-b" id="cc-center-b" style="visibility:hidden">TYPHOON No. 25's TRACK RUNS THE SAME OFFSHORE LINE AS AMPIL'S</span>
+    </div>
+  </div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
