@@ -15,7 +15,12 @@
      "US equivalent: advisory, not a watch" (38.8), "neither level orders anyone to leave" (44.3). Also:
      .li-bgplate adds continuous background drift; the teaser chip was reported sitting on/near the
      bottom list line — rows tightened (36->24 / 14->10 margins) and the teaser moved from bottom:150 to
-     bottom:230 for real clearance from both the row list and the source-credit line below it. -->
+     bottom:230 for real clearance from both the row list and the source-credit line below it.
+
+     ROUND 3 (draft-2 frame read, 17 Sep 26) — a fixed bottom: offset still measured too close to row 5.
+     Root-caused: moved .li-teaser in-flow as the last child of .li-new, right after .li-rows, with
+     margin-top:32px instead of guessing a pixel offset against an absolutely-positioned sibling — this
+     guarantees real clearance regardless of the row list's actual rendered height. -->
 <template>
 <style>
   #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; background:#04070c; overflow:hidden; }
