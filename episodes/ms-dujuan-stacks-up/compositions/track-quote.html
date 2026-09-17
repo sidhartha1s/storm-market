@@ -70,7 +70,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#tq-eye", { autoAlpha:0, y:-16 }, { autoAlpha:1, y:0, duration:0.5 }, 0);
   tl.fromTo(".tq-mapwrap", { autoAlpha:0 }, { autoAlpha:1, duration:0.6 }, 0.2);
   /* continuous slow pan across the map plate so the plate itself is never a frozen full-frame hold */
-  tl.to(".tq-mapwrap img", { x: "-=70", y: "-=50", duration: HOST_WINDOW - 1.0, ease: "none" }, 0.5);
+  tl.to(".tq-mapwrap img", { x: "-=70", y: "-=50", duration: 41.128, ease: "none" }, 0.5); // duration literal = HOST_WINDOW(42.128) - 1.0
   function landPin(n, at) {
     tl.to(`#tq-pin-${n}`, { scale: 1, duration: 0.35, ease: "back.out(2)" }, at);
     tl.fromTo(`#tq-lab-${n}`, { autoAlpha:0, y:8 }, { autoAlpha:1, y:0, duration:0.35 }, at + 0.1);
