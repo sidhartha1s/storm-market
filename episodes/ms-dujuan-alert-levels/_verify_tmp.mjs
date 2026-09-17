@@ -44,8 +44,8 @@ page.on('console', m => console.log('CONSOLE', m.type(), m.text()));
 // --- ladder-l5 screenshot-diff freeze check (every 2s, flag 6s+ of identical frames) ---
 {
   const p = await stage('ladder-l5');
-  await page.goto('file:///' + p.split(path.sep).join('/'));
-  await page.waitForFunction(() => window.__timelines && window.__timelines['ladder-l5']);
+  await page.goto('file:///' + p.split(path.sep).join('/'), { waitUntil: 'load' });
+  await page.waitForTimeout(200);
   const hashes = [];
   for (let t = 0; t <= 54.6; t += 2) {
     await page.evaluate((tt) => window.__timelines['ladder-l5'].seek(tt), t);
