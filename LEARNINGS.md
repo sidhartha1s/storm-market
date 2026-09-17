@@ -541,6 +541,15 @@ scripts\render.cmd <slug> draft" /sc once /st 23:59 /f && schtasks /run /tn ep5d
 fully detached, survives the session. Watch it with a log-mtime stall monitor (>10 min
 silent = dead), never with a process-name count (MCP daemons match loose filters).
 
+**Shorts variant (17 Sep 26):** the same rule bit the 40 s shorts. The harness's low-memory
+watchdog killed the wrapper shell twice on a box with <3 GB free (owner's Firefox + Chrome +
+four sessions); the hyperframes child kept capturing to 90 % and then died in "Assembling
+final video" with `audioPadTrim: failed to probe video: ffprobe exit:` (empty code), both
+times. Three earlier shorts renders only succeeded because the wrapper happened to survive.
+Even a 3-minute render launches through `scripts/run_hidden.vbs` (`wscript run_hidden.vbs
+cmd /c <wrapper.cmd>`), never harness background Bash. Watch the mp4 + the process by
+command line.
+
 ## optimize_clips.py strips audio and ignores bitrate (measured ep5, 2026-08-06)
 
 Two silent failure modes in one script, both hit on ep5:
