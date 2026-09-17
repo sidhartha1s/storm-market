@@ -6,56 +6,58 @@
      fades out, replaced by the new 5-level ladder (built once here; levels 1-2 land highlighted, 3-5 sit
      dimmed as a teaser for B4-B8). Cues word-synced from audio/b3-s1.words.json (segment-abs minus this
      comp's mount at episode-abs 119.673). Mount: track 2, host start = episode-abs 119.673, duration 54.0
-     (B3 window is 60.0s; a 6.0s TBS lead-in b-roll plays before this comp mounts). -->
+     (B3 window is 60.0s; a 6.0s TBS lead-in b-roll plays before this comp mounts). Font: 'AbrilFig' relies
+     on index.html's single @font-face (a per-comp duplicate false-triggers css_collision.py on the shared
+     ".ttf" url() token). All classes carry the li- comp tag so no class name is shared with index.html or
+     a sibling composition. -->
 <template>
 <style>
-  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
   #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
     background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
-  .eyebrow { position:absolute; left:0; right:0; top:96px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
+  .li-eyebrow { position:absolute; left:0; right:0; top:96px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
     font-size:22px; letter-spacing:6px; color:#d8a13a; }
-  .old { position:absolute; left:50%; top:220px; transform:translateX(-50%); width:760px; box-sizing:border-box;
+  .li-old { position:absolute; left:50%; top:220px; transform:translateX(-50%); width:760px; box-sizing:border-box;
     padding:30px 40px; text-align:center; background:rgba(10,16,24,0.55); border:1px solid rgba(255,255,255,0.14);
     border-radius:24px; }
-  .old .tag { font-family:'Arial Black',Arial,sans-serif; font-size:20px; letter-spacing:4px; color:#8fb4d8; }
-  .old .r { margin-top:16px; font-family:'AbrilFig',Georgia,serif; font-size:40px; color:#c8d3e0; }
-  .arrow { position:absolute; left:50%; top:520px; transform:translateX(-50%); font-family:'AbrilFig',Georgia,serif;
+  .li-old .li-tag { font-family:'Arial Black',Arial,sans-serif; font-size:20px; letter-spacing:4px; color:#8fb4d8; }
+  .li-old .li-r { margin-top:16px; font-family:'AbrilFig',Georgia,serif; font-size:40px; color:#c8d3e0; }
+  .li-arrow { position:absolute; left:50%; top:520px; transform:translateX(-50%); font-family:'AbrilFig',Georgia,serif;
     font-size:64px; color:#d8a13a; }
-  .new { position:absolute; left:50%; top:150px; transform:translateX(-50%); width:1080px; box-sizing:border-box; }
-  .newhead { text-align:center; font-family:'AbrilFig',Georgia,serif; font-size:58px; color:#f4f0e8; }
-  .newsub { text-align:center; margin-top:8px; font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:3px; color:#d0121f; }
-  .rows { margin-top:36px; }
-  .row { display:flex; align-items:center; gap:24px; margin-top:14px; padding:16px 30px; border-radius:14px;
+  .li-new { position:absolute; left:50%; top:150px; transform:translateX(-50%); width:1080px; box-sizing:border-box; }
+  .li-newhead { text-align:center; font-family:'AbrilFig',Georgia,serif; font-size:58px; color:#f4f0e8; }
+  .li-newsub { text-align:center; margin-top:8px; font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:3px; color:#d0121f; }
+  .li-rows { margin-top:36px; }
+  .li-row { display:flex; align-items:center; gap:24px; margin-top:14px; padding:16px 30px; border-radius:14px;
     background:rgba(10,16,24,0.5); border:1px solid rgba(255,255,255,0.12); }
-  .row.dim { opacity:0.32; }
-  .row .n { font-family:'AbrilFig',Georgia,serif; font-size:54px; color:#d0121f; flex:0 0 60px; }
-  .row .t { font-family:'Arial Black',Arial,sans-serif; font-size:28px; }
-  .teaser { position:absolute; left:50%; bottom:150px; transform:translateX(-50%); font-family:'Arial Black',Arial,sans-serif;
+  .li-row.li-dim { opacity:0.32; }
+  .li-row .li-n { font-family:'AbrilFig',Georgia,serif; font-size:54px; color:#d0121f; flex:0 0 60px; }
+  .li-row .li-t { font-family:'Arial Black',Arial,sans-serif; font-size:28px; }
+  .li-teaser { position:absolute; left:50%; bottom:150px; transform:translateX(-50%); font-family:'Arial Black',Arial,sans-serif;
     font-size:24px; letter-spacing:2px; color:#f4b8bc; background:rgba(208,18,31,0.18); border-left:4px solid #d0121f;
     padding:12px 26px; border-radius:10px; }
-  .srccred { position:absolute; left:0; right:0; bottom:80px; text-align:center; font-size:19px; color:rgba(220,228,236,0.7); }
+  .li-srccred { position:absolute; left:0; right:0; bottom:80px; text-align:center; font-size:19px; color:rgba(220,228,236,0.7); }
 </style>
 <div id="root" data-composition-id="ladder-intro" data-width="1920" data-height="1080">
-  <div class="eyebrow" id="li-eye">JAPAN'S EVACUATION SYSTEM</div>
-  <div class="old" id="li-old">
-    <div class="tag">RETIRED, MAY 2021</div>
-    <div class="r" id="li-old-r1">Recommendation</div>
-    <div class="r" id="li-old-r2">Instruction (Emergency)</div>
+  <div class="li-eyebrow" id="li-eye">JAPAN'S EVACUATION SYSTEM</div>
+  <div class="li-old" id="li-old">
+    <div class="li-tag">RETIRED, MAY 2021</div>
+    <div class="li-r" id="li-old-r1">Recommendation</div>
+    <div class="li-r" id="li-old-r2">Instruction (Emergency)</div>
   </div>
-  <div class="arrow" id="li-arrow" style="visibility:hidden">&darr;</div>
-  <div class="new" id="li-new" style="visibility:hidden">
-    <div class="newhead">5-LEVEL ALERT LADDER</div>
-    <div class="newsub">EFFECTIVE 20 MAY 2021</div>
-    <div class="rows">
-      <div class="row" id="li-r1"><div class="n">1</div><div class="t">RISING RISK</div></div>
-      <div class="row" id="li-r2"><div class="n">2</div><div class="t">ADVISORY ISSUED (JMA)</div></div>
-      <div class="row dim" id="li-r3"><div class="n">3</div><div class="t">EVACUATION OF THE ELDERLY, ETC.</div></div>
-      <div class="row dim" id="li-r4"><div class="n">4</div><div class="t">EVACUATION INSTRUCTION</div></div>
-      <div class="row dim" id="li-r5"><div class="n">5</div><div class="t">EMERGENCY SAFETY MEASURES</div></div>
+  <div class="li-arrow" id="li-arrow" style="visibility:hidden">&darr;</div>
+  <div class="li-new" id="li-new" style="visibility:hidden">
+    <div class="li-newhead">5-LEVEL ALERT LADDER</div>
+    <div class="li-newsub">EFFECTIVE 20 MAY 2021</div>
+    <div class="li-rows">
+      <div class="li-row" id="li-r1"><div class="li-n">1</div><div class="li-t">RISING RISK</div></div>
+      <div class="li-row" id="li-r2"><div class="li-n">2</div><div class="li-t">ADVISORY ISSUED (JMA)</div></div>
+      <div class="li-row li-dim" id="li-r3"><div class="li-n">3</div><div class="li-t">EVACUATION OF THE ELDERLY, ETC.</div></div>
+      <div class="li-row li-dim" id="li-r4"><div class="li-n">4</div><div class="li-t">EVACUATION INSTRUCTION</div></div>
+      <div class="li-row li-dim" id="li-r5"><div class="li-n">5</div><div class="li-t">EMERGENCY SAFETY MEASURES</div></div>
     </div>
   </div>
-  <div class="teaser" id="li-teaser" style="visibility:hidden">LEVELS 3-5: NEXT</div>
-  <div class="srccred" id="li-cred">SOURCE: CABINET OFFICE, GOVERNMENT OF JAPAN &middot; 2021</div>
+  <div class="li-teaser" id="li-teaser" style="visibility:hidden">LEVELS 3-5: NEXT</div>
+  <div class="li-srccred" id="li-cred">SOURCE: CABINET OFFICE, GOVERNMENT OF JAPAN &middot; 2021</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
