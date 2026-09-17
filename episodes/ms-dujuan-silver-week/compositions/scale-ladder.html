@@ -101,11 +101,12 @@ window.__timelines = window.__timelines || {};
      scale has three bands above typhoon strength", 15.22-18.34) now has something to point at.
      Each band then brightens to full strength on its OWN word, same cues as before, animating FROM
      the faint state (plain .to(), not .fromTo(), so it doesn't reset to invisible first). */
-  /* #sl-band-severe pulled out of the shared 1.2s faint-reveal and moved to 0.3s -- same instant
-     as the card itself -- because it now hosts the bar-notes below; a note cannot be visible while
-     its parent's own autoAlpha is still 0. Same faint 0.3 alpha, just 0.9s earlier for this one
-     row; still brightens to full strength at its real word (33.5s, unchanged). */
-  tl.to("#sl-band-severe", { autoAlpha: 0.3, x: 0, duration: 0.4, ease: "power2.out" }, 0.3);
+  /* #sl-band-severe pulled out of the shared 1.2s faint-reveal and moved to FULL alpha at 0.3s --
+     same instant as the card itself -- because it now hosts the bar-notes below: CSS opacity
+     compounds through a subtree, so a note at its own autoAlpha:1 would still render at only 30%
+     visible inside a 0.3-alpha parent. Its real word at 33.5s (below) is now a scale pulse instead
+     of a reveal, since the row is already on screen by then. */
+  tl.to("#sl-band-severe", { autoAlpha: 1, x: 0, duration: 0.4, ease: "power2.out" }, 0.3);
   tl.to(["#sl-band-strong", "#sl-band-verystrong", "#sl-band-violent"], { autoAlpha: 0.3, x: 0, duration: 0.5, ease: "power2.out" }, 1.2);
   /* Owner review (team-lead, 17 Sep 26): the faint-outline fade-up above still read as empty for
      19s. Card now mounts WITH a real fact (bar-note-1 lands at the same 0.3s as the card itself)
