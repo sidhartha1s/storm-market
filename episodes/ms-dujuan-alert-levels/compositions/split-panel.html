@@ -97,7 +97,11 @@ window.__timelines = window.__timelines || {};
   // continuous background drift so the frame is never a flat static gradient (owner round-2)
   tl.to("#sp-bgplate", { scale: 1.06, duration: 51.491, ease: "none" }, 0);
 
-  tl.set(["#sp-arrow","#sp-chip-ts","#sp-chip-sst","#sp-chip-status"], { visibility: "hidden", autoAlpha: 0 }, 0);
+  /* round 5 (owner: "mounts fully empty" pattern, 17 Sep 26) - #sp-l/#sp-r were missing from this
+     initial hide, so they were briefly visible at their default opacity before their own fromTo() (start
+     0.2) snapped them invisible then faded back in - a pop glitch right at mount, same bug class found
+     in compare-stack's #cs-l/#cs-r. */
+  tl.set(["#sp-l","#sp-r","#sp-arrow","#sp-chip-ts","#sp-chip-sst","#sp-chip-status"], { visibility: "hidden", autoAlpha: 0 }, 0);
   tl.fromTo("#sp-eye", { autoAlpha:0, y:-16 }, { autoAlpha:1, y:0, duration:0.5 }, 0); CONTENT_BEATS.push(0);
   tl.fromTo("#sp-l", { autoAlpha:0, x:-40 }, { autoAlpha:1, x:0, duration:0.5 }, 0.2);
   tl.fromTo("#sp-r", { autoAlpha:0, x:40 }, { autoAlpha:1, x:0, duration:0.5 }, 0.2); CONTENT_BEATS.push(0.2);
