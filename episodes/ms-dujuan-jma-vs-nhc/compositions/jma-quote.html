@@ -113,6 +113,9 @@ window.__timelines = window.__timelines || {};
   tl.to("#jq-indicator", { top:408, duration:0.5, ease:"power2.out" }, 14.82); // slides to the threshold line
   tl.to("#jq-thresh", { autoAlpha:1, scale:1, backgroundColor:"rgba(208,18,31,0.32)", duration:0.4, ease:"power2.out" }, 18.14); // "typhoon." 26.14
   tl.to("#jq-thresh", { backgroundColor:"rgba(208,18,31,0.18)", duration:0.6 }, 18.54);
+  /* closes the thresh-settle->r3 gap (18.54->25.42, 6.88s content-only) with one more real beat on the
+     threshold chip itself */
+  tl.to("#jq-thresh", { scale: 1.04, duration: 0.5, yoyo: true, repeat: 1 }, 21.7);
   tl.fromTo("#jq-r3", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.9 }, 25.42);     // "strong typhoon" 33.42
   tl.to("#jq-r3-lab", { color:"#ffffff", duration:0.45, yoyo:true, repeat:1 }, 25.42);
   tl.to(CU3, { lo:74, hi:96, duration:0.9, ease:"power1.out",
