@@ -28,18 +28,30 @@
   .tr-chip2 { position:absolute; left:50%; transform:translateX(-50%); bottom:115px; font-family:'Arial Black',Arial,sans-serif; font-size:26px;
     letter-spacing:2px; color:#f4f0e8; background:rgba(10,16,24,0.62); border:1px solid rgba(255,255,255,0.14);
     border-left:6px solid #d0121f; border-radius:10px; padding:12px 24px; }
+  .tr-outcomes { margin-top:22px; display:flex; justify-content:center; gap:14px; }
+  .tr-outcome { padding:10px 18px; border-radius:10px; background:rgba(143,180,216,0.16); border:1px solid rgba(143,180,216,0.3);
+    font-family:'Arial Black',Arial,sans-serif; font-size:18px; letter-spacing:1px; color:#c8d3e0; }
+  .tr-caption { position:absolute; left:0; right:0; bottom:210px; text-align:center; font-family:Georgia,serif;
+    font-style:italic; font-size:22px; color:#f4b8bc; }
 </style>
 <div id="root" data-composition-id="tracking" data-width="1920" data-height="1080">
+  <div class="tr-bgplate" id="tr-bgplate"></div>
   <div class="tr-card" id="trk-card">
     <div class="tr-eye">TONIGHT'S STATUS</div>
     <div class="tr-status">STILL A TROPICAL DEPRESSION &middot; UNNAMED</div>
+    <div class="tr-outcomes">
+      <div class="tr-outcome" id="tr-out1">STRENGTHENS ON PACE</div>
+      <div class="tr-outcome" id="tr-out2">SLOWS DOWN</div>
+      <div class="tr-outcome" id="tr-out3">CURVES AWAY</div>
+    </div>
     <div class="tr-hl" id="trk-hl">
       <div class="tr-lab">NEXT: JMA'S NEXT ADVISORY</div>
-      <div class="tr-sub">strengthens on pace &middot; slows down &middot; curves away</div>
+      <div class="tr-sub">decides what happens, not tonight's numbers</div>
     </div>
     <div class="tr-accent" id="trk-accent"></div>
   </div>
   <div class="tr-chip2" id="trk-chip">JMA &middot; NEXT ADVISORY</div>
+  <div class="tr-caption" id="tr-caption">TRAVELING IN JAPAN THIS MONTH? THAT ADVISORY IS THE NUMBER TO WATCH</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
