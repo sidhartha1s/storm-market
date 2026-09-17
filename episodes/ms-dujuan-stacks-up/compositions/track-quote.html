@@ -94,7 +94,7 @@ window.__timelines = window.__timelines || {};
     /* this tl.to already applies exactly what the (now-removed) .tq-chk.tq-active CSS rule set (opacity,
        boxShadow, borderColor) as explicit style properties on the timeline - no className toggle needed.
        GSAP 3.14.2 (what this episode ships) has no className tweening/relative-class support at all
-       ("+=class" was GSAP 2 only); a tl.set(..., {className:"+=tq-active"}) call here would have written
+       ("+=class" was GSAP 2 only); a relative className set here would have written
        garbage into the class attribute and stripped tq-chk's base class (team-lead 17 Sep 26). */
     tl.to(`#tq-chk-${n}`, { opacity: 1, boxShadow: "0 0 22px rgba(208,18,31,0.3)", borderColor: "#d0121f", duration: 0.3 }, at);
   }
