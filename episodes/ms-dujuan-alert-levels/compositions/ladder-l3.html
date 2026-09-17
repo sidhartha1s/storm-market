@@ -105,7 +105,11 @@ window.__timelines = window.__timelines || {};
   /* "...while everyone else in the area only prepares to leave." — 16.26s */
   note("EVERYONE ELSE ONLY PREPARES TO LEAVE", 16.26, 3.0);
   tl.fromTo("#l3-chip", { autoAlpha:0, x:-40 }, { autoAlpha:1, x:0, duration:0.4 }, 19.52); CONTENT_BEATS.push(19.52);
-  tl.to("#l3-chip", { duration:0.01, onStart: () => { document.getElementById("l3-chip").textContent = "SOME COUNTIES: EARLY VOLUNTARY ORDER · NO NATIONAL NUMBER"; } }, 23.44); CONTENT_BEATS.push(23.44);
+  /* comp_lint R2 fix (owner 17 Sep 26): text used to be mutated inside an onStart callback, which the
+     seek-based QC (suppressEvents) never fires — pre-authored as three stacked leaf lines instead,
+     cross-faded on the timeline so every seek sees the real text for that instant. */
+  tl.to("#l3-chip1", { autoAlpha: 0, duration: 0.3 }, 23.14);
+  tl.fromTo("#l3-chip2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 23.44); CONTENT_BEATS.push(23.44);
   /* round 3 (owner 17 Sep 26): this chip used to hold that same line static from 23.44 clear through to the
      46.49 exit (23s+), reading as a repeat of the l3-note beats nearby. Third swap on an unused narration
      fact ("The instruction tells that group to evacuate immediately" — 13.08s, never captioned elsewhere). */
