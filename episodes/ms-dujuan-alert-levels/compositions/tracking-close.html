@@ -79,6 +79,10 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#tc-r2", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.4 }, 5.56); CONTENT_BEATS.push(5.56);
   tl.set("#tc-chip", { visibility: "visible" }, 10.98);
   tl.fromTo("#tc-chip", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.4 }, 10.98); CONTENT_BEATS.push(10.98);
+  /* round 3 (owner: "static 492.7-501.7s / 12s", 17 Sep 26) — this chip used to set its text once and
+     never change again; split on the clause boundary ("for one of its biggest holidays in more than a
+     decade," audio 19.98-22.3, comp-rel 13.98-16.3) into a second beat. */
+  tl.to("#tc-chip", { duration:0.01, onStart: () => { document.getElementById("tc-chip").textContent = "ONE OF ITS BIGGEST HOLIDAYS IN A DECADE"; } }, 13.98); CONTENT_BEATS.push(13.98);
   /* "They are checking a forecast that updates by the hour." — 16.98s */
   note("CHECKING A FORECAST THAT UPDATES HOURLY", 16.98, 3.5);
   /* "Anyone traveling through Japan this week should check that advisory directly..." — 20.48s */
