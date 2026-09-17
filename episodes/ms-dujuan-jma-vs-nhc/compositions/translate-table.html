@@ -6,11 +6,14 @@
      typhoon, Atlantic = hurricane, Indian Ocean = cyclone), reveal on cue. Bottom: JMA-grade-to-US-read
      translation table (Strong -> Cat 1 start, Very Strong -> near Cat 2 top, Violent -> into Cat 3), reveal
      on cue. Mount: track 2, host start = episode-abs 377.030, duration 61.127 (comp-local 0 = that point in
-     B7; cues below are B7-segment-relative minus 8.0). -->
+     B7; cues below are B7-segment-relative minus 8.0). Round 2 (17 Sep 26 freeze fix): each row's grade name
+     and its US translation now land as two separate word-synced beats with a moving highlight sweep between
+     them, plus a closing caption on the B7-S1 close-out line and a tt-bgplate continuous scale. -->
 <template>
 <style>
-  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
-    background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); overflow:hidden; }
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; background:#04070c; overflow:hidden; }
+  .tt-bgplate { position:absolute; left:-60px; right:-60px; top:-60px; bottom:-60px;
+    background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); transform-origin:center; will-change:transform; }
   .tt-glow { position:absolute; width:760px; height:760px; border-radius:50%; filter:blur(110px); opacity:0.3; pointer-events:none; }
   #tt-glow-a { left:-180px; top:-200px; background:radial-gradient(circle, rgba(208,18,31,0.5) 0%, rgba(208,18,31,0) 70%); }
   #tt-glow-b { right:-220px; bottom:-220px; background:radial-gradient(circle, rgba(143,180,216,0.4) 0%, rgba(143,180,216,0) 70%); }
