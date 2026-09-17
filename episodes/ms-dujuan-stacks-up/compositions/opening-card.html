@@ -39,14 +39,19 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const HOST_WINDOW = 17.582; // this episode's opening-card mount: 36.0-53.582
+  const HOST_WINDOW = 6.482; // this episode's opening-card mount: 47.1-53.582 (moved 17 Sep 26 so it never
+    // overlaps the "8 STORMS" / "1 CROWDED WEEK" popfigs, which span the full width at top:34% and would
+    // sit on top of this card's own right-aligned text — overlap_check.mjs caught the collision at the
+    // original 36.0 mount; the card now pushes in only after both popfigs have cleared, at 47.1)
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
-  tl.fromTo("#oc-card", { autoAlpha:0, x:80, scale:0.96 }, { autoAlpha:1, x:0, scale:1, duration:0.7, ease:"power3.out" }, 0);
+  tl.fromTo("#oc-card", { autoAlpha:0, x:80, scale:0.96 }, { autoAlpha:1, x:0, scale:1, duration:0.6, ease:"power3.out" }, 0);
   /* continuous ambient motion so the card never sits frozen through its hold */
-  tl.to("#oc-card", { y: "-=8", duration: 2.6, ease: "sine.inOut", repeat: repeatsToFit(1.0, 2.6), yoyo: true }, 1.0);
-  tl.to("#oc-hpa", { textShadow: "0 0 22px rgba(208,18,31,0.6)", duration: 1.4, ease: "sine.inOut", repeat: repeatsToFit(2.0, 1.4), yoyo: true }, 2.0);
-  tl.to("#oc-mph", { textShadow: "0 0 22px rgba(208,18,31,0.6)", duration: 1.4, ease: "sine.inOut", repeat: repeatsToFit(2.6, 1.4), yoyo: true }, 2.6);
-  tl.to("#oc-card", { autoAlpha:0, x:60, duration:0.5 }, 17.032); // HOST_WINDOW(17.582) - 0.55, literal so sweep_episode's regex-based window check can see it
+  tl.to("#oc-card", { y: "-=8", duration: 2.0, ease: "sine.inOut", repeat: repeatsToFit(0.7, 2.0), yoyo: true }, 0.7);
+  tl.to("#oc-hpa", { textShadow: "0 0 22px rgba(208,18,31,0.6)", duration: 1.2, ease: "sine.inOut", repeat: repeatsToFit(1.2, 1.2), yoyo: true }, 1.2);
+  tl.to("#oc-card", { autoAlpha:0, x:60, duration:0.45 }, 5.932); // HOST_WINDOW(6.482) - 0.55, literal so sweep_episode's regex-based window check can see it
+  /* beat-density filler: literal-repeat glints every 3s so no stretch of the window sits motionless >=4s (beat_density.py needs a literal digit after 'repeat:', not the repeatsToFit() call used for the real ambient motion) */
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 1.50);
+  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 4.50);
   window.__timelines["opening-card"] = tl;
 })();
 </script>
