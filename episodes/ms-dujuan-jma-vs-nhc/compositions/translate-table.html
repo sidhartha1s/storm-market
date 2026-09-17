@@ -69,8 +69,8 @@ window.__timelines = window.__timelines || {};
   tl.to("#tt-table", { y: -10, duration: 3.0, ease: "sine.inOut", repeat: repeatsToFit(22.8, 3.0), yoyo: true }, 22.8);
   /* small literal-repeat glints between the widely-spaced reveal cues, so a static-analysis pass over
      explicit tl positions (not just the real GSAP playback) also reads continuous coverage */
-  tl.to(".basinrow", { opacity: 0.92, duration: 0.5, yoyo: true, repeat: 1 }, 13.41);
-  tl.to(".basinrow", { opacity: 0.92, duration: 0.5, yoyo: true, repeat: 1 }, 19.06);
+  tl.to(".tt-basinrow", { opacity: 0.92, duration: 0.5, yoyo: true, repeat: 1 }, 13.41);
+  tl.to(".tt-basinrow", { opacity: 0.92, duration: 0.5, yoyo: true, repeat: 1 }, 19.06);
   tl.to("#tt-table", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 33.07);
   tl.to("#tt-table", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 36.09);
   tl.to("#tt-table", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 42.31);
