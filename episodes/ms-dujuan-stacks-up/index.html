@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>How Dujuan Stacks Up Against Japan's Last Decade of Typhoons — The Warning Hour (mini-storms, Format C, 17 Sep 26)</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070c; }
+    video, .still-wrap { position: absolute; inset: 0; }
+    video { width: 100%; height: 100%; object-fit: cover; }
+    .still-wrap { overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    .bc { filter: saturate(0.85) contrast(1.08) brightness(0.95); }
+    @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+    .popfig { position: absolute; left: 0; right: 0; top: 34%; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; isolation: isolate; }
+    .popfig .pf-big { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 130px; color: #d0121f; letter-spacing: 0.04em;
+      text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+    .popfig .pf-sub { display: block; margin-top: 12px; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 34px; color: #f4f0e8;
+      letter-spacing: 0.3em; -webkit-text-stroke: 1px rgba(0,0,0,0.85); paint-order: stroke fill;
+      text-shadow: 0 0 18px rgba(0,0,0,1), 0 0 40px rgba(0,0,0,0.9), 0 3px 10px #000; }
+    .popfig::before { content: ''; position: absolute; left: 14%; right: 14%; top: -80px; bottom: -60px; z-index: -1;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.32) 40%, rgba(0,0,0,0) 72%); }
+    .srclab { position: absolute; right: 40px; top: 34px; z-index: 7; font-family: Arial, sans-serif; font-size: 20px; letter-spacing: 1px; color: rgba(220,228,236,0.85); background: rgba(5,8,12,0.6); padding: 6px 14px; }
+    .bugstrip { position: absolute; left: 0; right: 0; bottom: 0; height: 92px; display: flex; align-items: stretch; z-index: 5;
+      background: linear-gradient(90deg, rgba(4,7,12,0.94) 0%, rgba(4,7,12,0.82) 70%, rgba(4,7,12,0.6) 100%); border-top: 2px solid #d0121f; }
+    .bugstrip .bk { display: flex; align-items: center; padding: 0 34px; background: #d0121f; color: #fff; font-family: 'Arial Black', Arial, sans-serif; font-size: 34px; letter-spacing: 5px; }
+    .bugstrip .bw { display: flex; align-items: center; padding: 0 26px; color: #d8a13a; font-family: Georgia, serif; font-style: italic; font-size: 26px; border-right: 1px solid rgba(255,255,255,0.14); white-space: nowrap; }
+    .bugstrip .bh { display: flex; align-items: center; padding: 0 30px; color: #f4f0e8; font-weight: 700; font-size: 32px; letter-spacing: 1px; white-space: nowrap; overflow: hidden; }
+    .pip { position: absolute !important; inset: auto !important; left: 1640px !important; top: 708px !important;
+      width: 240px !important; height: 240px !important; border-radius: 50% !important; object-fit: cover !important; z-index: 8 !important; }
+    .pipring { position: absolute; left: 1632px; top: 700px; width: 256px; height: 256px; border-radius: 50%; border: 4px solid #d0121f;
+      box-sizing: border-box; z-index: 9; box-shadow: 0 10px 30px rgba(0,0,0,0.55); }
+    #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90; background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
+    #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.10; mix-blend-mode: overlay; }
+    #grade { position: absolute; inset: 0; pointer-events: none; z-index: 89; mix-blend-mode: soft-light; background-color: rgba(96,138,178,0.18); }
+    .dust { position: absolute; z-index: 92; pointer-events: none; border-radius: 50%; background: rgba(255,255,255,0.32); filter: blur(1.2px); }
+  </style>
+</head>
+<body>
+<!-- ms-dujuan-stacks-up · mini-storms news-lane Format C, 17 Sep 26. "How Dujuan Stacks Up Against Japan's
+     Last Decade of Typhoons" — present-tense rolling update as of JMA 16 Sep 19:10 JST. Core graphic:
+     compositions/benchmark-table.html, nine rows (eight real typhoons since 2016 + Typhoon No. 25's own
+     forecast in amber/unresolved) building one per narration beat. CTA position SUPERSEDES edit_script.md's
+     "end of B3" note per the owner's 17 Sep 26 hard rule: a new bridge segment (B6-S2, see edit_script.md)
+     plays after B6 with zero gap into Paul's CTA, landing the CTA at 88.0-90.7% of runtime, immediately
+     before B7's own tracking-recap card (the "closing tracking segment" the rule names) — no dip in, 0.5s
+     dip out. Popfigs are index-level ONLY in B1 (three: 975 hPa, 8 storms, 1 crowded week); every other beat
+     (B2-B8) is driven by its own full-window composition, so no index popfig would clear the card's own text
+     — skipped per the "where a card is the driver, skip the popfig" rule (listed in the build report).
+     Paul's presenter circle is shown only during the four 6.0s b-roll lead-ins (B2, B3, B6, B7) and hidden
+     for the hook (B1), every full-window composition, the bridge, the CTA, and the close card — mirroring
+     the sibling's "hidden under the comp that is the driver" convention. B-roll muted throughout. Cues
+     resolved from audio/*.words.json (sped 1.10, re-transcribed) — never estimated. Pip clips
+     (paul-talk-1/2/3.mp4) are reused verbatim from the ms-dujuan-alert-levels sibling episode: both cut
+     from the same CTA master (paul-storm-ready-v5-sep6.mp4, md5 541db438ad6e948e41286ee9fb6245fb) per
+     FORMAT.md's presenter-circle recipe, muted ambient loops, not per-episode narration-specific. -->
+<div id="root" data-composition-id="ms-dujuan-stacks-up" data-start="0.0" data-width="1920" data-height="1080" data-duration="571.748" data-fps="30">
+
+  <!-- ============ NARRATION (wav lengths, manifest.json ground truth; bridge = manifest's b6-s2) ============ -->
+  <audio id="nx-b1s1" src="audio/b1-s1.wav" data-start="0.0" data-duration="53.582" data-volume="1"></audio>
+  <audio id="nx-b2s1" src="audio/b2-s1.wav" data-start="54.182" data-duration="68.346" data-volume="1"></audio>
+  <audio id="nx-b3s1" src="audio/b3-s1.wav" data-start="123.128" data-duration="48.128" data-volume="1"></audio>
+  <audio id="nx-b4s1" src="audio/b4-s1.wav" data-start="171.856" data-duration="208.746" data-volume="1"></audio>
+  <audio id="nx-b5s1" src="audio/b5-s1.wav" data-start="381.202" data-duration="47.182" data-volume="1"></audio>
+  <audio id="nx-b6s1" src="audio/b6-s1.wav" data-start="428.984" data-duration="64.782" data-volume="1"></audio>
+  <audio id="nx-b6s2" src="audio/b6-s2.wav" data-start="494.366" data-duration="8.708" data-volume="1"></audio>
+  <audio id="nx-b7s1" src="audio/b7-s1.wav" data-start="518.713" data-duration="37.908" data-volume="1"></audio>
+  <audio id="nx-b8s1" src="audio/b8-s1.wav" data-start="557.221" data-duration="10.527" data-volume="1"></audio>
+
+  <!-- ============ CTA (own audio; the only unmuted insert; 503.074/571.748 = 88.0% start, 518.213/571.748 =
+       90.7% end — inside the owner's 85-95% window, entered by the B6-S2 bridge with zero gap, no dip in) -->
+  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v5-sep6.mp4" data-start="503.074" data-duration="15.139" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
+
+  <!-- ============ BEDS ============ -->
+  <audio id="sx-rumble-hook" src="media/sfx/04_distant_storm_rumble.mp3" data-bed="" data-start="0.0" data-duration="53.582" data-volume="0.16"></audio>
+  <audio id="sx-mus-a" src="media/sfx/score-act5-tension.mp3" data-bed="" data-start="0.0" data-duration="171.856" data-volume="0.13"></audio>
+  <audio id="sx-mus-b" src="media/sfx/score-act3-urgent.mp3" data-bed="" data-start="171.856" data-duration="208.746" data-volume="0.13"></audio>
+  <!-- sx-mus-c ends exactly at CTA start (503.074) — no bed under the CTA, matching the CTA convention. -->
+  <audio id="sx-mus-c" src="media/sfx/score-act6-close.mp3" data-bed="" data-start="380.602" data-duration="122.472" data-volume="0.16"></audio>
+  <!-- sx-mus-d resumes the same bed at B7 start, after the 0.5s post-CTA dip. -->
+  <audio id="sx-mus-d" src="media/sfx/score-act6-close.mp3" data-bed="" data-start="518.713" data-duration="53.035" data-volume="0.16"></audio>
+
+  <!-- ============ PRESENTER (corner circle; shown only during the four b-roll lead-ins, hidden under every
+       full-window composition, the hook, the bridge, the CTA, and the close card) ============ -->
+  <video id="pip-b2" class="pip" src="media/pip/paul-talk-1.mp4" data-start="54.182" data-duration="6.0" data-track-index="6" data-callback="B2 lead-in only, hidden for data-panel" muted></video>
+  <section class="clip" id="pip-ring-b2" data-start="54.182" data-duration="6.0" data-track-index="8"><div class="pipring"></div></section>
+
+  <video id="pip-b3" class="pip" src="media/pip/paul-talk-2.mp4" data-start="123.128" data-duration="6.0" data-track-index="6" data-callback="B3 lead-in only, hidden for track-quote" muted></video>
+  <section class="clip" id="pip-ring-b3" data-start="123.128" data-duration="6.0" data-track-index="8"></section>
+
+  <video id="pip-b6" class="pip" src="media/pip/paul-talk-3.mp4" data-start="428.984" data-duration="6.0" data-track-index="6" data-callback="B6 lead-in only, hidden for calendar-week" muted></video>
+  <section class="clip" id="pip-ring-b6" data-start="428.984" data-duration="6.0" data-track-index="8"></section>
+
+  <video id="pip-b7" class="pip" src="media/pip/paul-talk-1.mp4" data-start="518.713" data-duration="6.0" data-track-index="6" data-callback="B7 lead-in only, hidden for tracking-recap, second use" muted></video>
+  <section class="clip" id="pip-ring-b7" data-start="518.713" data-duration="6.0" data-track-index="8"></section>
+
+  <!-- ============ NEWS BUG (track 3); bug-c covers the bridge only, ending exactly at CTA start (no bug
+       over Paul's own CTA video); bug-d resumes for B7-B8 ============ -->
+  <section class="clip" id="bug-a" data-start="0.0" data-duration="171.856" data-track-index="3"><div class="bugstrip" id="bugstrip-a"><div class="bk">STORM WATCH</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-a"></div></div></section>
+  <section class="clip" id="bug-b" data-start="171.856" data-duration="321.91" data-track-index="3"><div class="bugstrip" id="bugstrip-b"><div class="bk">STORM WATCH</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-b"></div></div></section>
+  <section class="clip" id="bug-c" data-start="494.366" data-duration="8.708" data-track-index="3"><div class="bugstrip" id="bugstrip-c"><div class="bk">STORM WATCH</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-c"></div></div></section>
+  <section class="clip" id="bug-d" data-start="518.713" data-duration="38.508" data-track-index="3"><div class="bugstrip" id="bugstrip-d"><div class="bk">STORM WATCH</div><div class="bw">The Warning Hour</div><div class="bh" id="bh-d"></div></div></section>
+
+  <!-- ============ TRACK 1 · picture ============ -->
+  <!-- B1 · cold open 0-53.582 -->
+  <section class="clip still-wrap" id="c-b1-0-satellite" data-start="0.0" data-duration="6.0" data-track-index="1"><img id="kb-b1-0-satellite" src="media/image/rammb_fulldisk_natural_color.jpg" alt=""></section>
+  <video id="vx-b1-1-waves" src="media/video/b1_waves.mp4" data-start="6.0" data-duration="8.0" data-track-index="1" muted></video>
+  <video id="vx-b1-2-seawall" src="media/video/b1_seawall.mp4" data-start="14.0" data-duration="8.0" data-track-index="1" muted></video>
+  <video id="vx-b1-3-trees" src="media/video/b1_trees.mp4" data-start="22.0" data-duration="8.0" data-track-index="1" muted></video>
+  <video id="vx-b1-4-tokyobay" src="media/video/b1_tokyobay.mp4" data-start="30.0" data-duration="8.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b1-5-worldview16" data-start="38.0" data-duration="6.0" data-track-index="1"><img id="kb-b1-5-worldview16" src="media/image/worldview_2026-09-16.jpg" alt=""></section>
+  <video id="vx-b1-6-stormtimelapse" src="media/video/b1_stormtimelapse.mp4" data-start="44.0" data-duration="3.582" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-b1-7-satellite-return" data-start="47.582" data-duration="6.0" data-track-index="1" data-callback="return to the full-disk view ahead of the 8-storms/crowded-week popfigs"><img id="kb-b1-7-satellite-return" src="media/image/rammb_fulldisk_natural_color.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-hook" data-start="53.582" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B2 · where things stand now 54.182-122.528 (data-panel comp on track 2 from 60.182) -->
+  <video id="vx-b2-0-odaiba" src="media/video/b2_odaiba.mp4" data-start="54.182" data-duration="6.0" data-track-index="1" muted></video>
+  <section class="clip blackout" id="bo-b2-panel" data-start="60.182" data-duration="62.346" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-b2" data-start="122.528" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B3 · the forecast track 123.128-171.256 (track-quote comp on track 2 from 129.128) -->
+  <video id="vx-b3-0-stormclouds" src="media/video/b3_stormclouds.mp4" data-start="123.128" data-duration="6.0" data-track-index="1" muted></video>
+  <section class="clip blackout" id="bo-b3-track" data-start="129.128" data-duration="42.128" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-b3" data-start="171.256" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B4 · the benchmark 171.856-380.602 (benchmark-table comp on track 2, full window, pure graphic) -->
+  <section class="clip blackout" id="bo-b4-table" data-start="171.856" data-duration="208.746" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-b4" data-start="380.602" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B5 · what pressure and wind don't measure 381.202-428.384 (contrast-card comp on track 2, full window) -->
+  <section class="clip blackout" id="bo-b5-contrast" data-start="381.202" data-duration="47.182" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-b5" data-start="428.384" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B6 · the calendar this track runs through 428.984-493.766 (calendar-week comp on track 2 from 434.984) -->
+  <video id="vx-b6-0-trainplatform" src="media/video/b6_trainplatform.mp4" data-start="428.984" data-duration="6.0" data-track-index="1" muted></video>
+  <section class="clip blackout" id="bo-b6-calendar" data-start="434.984" data-duration="58.782" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-b6" data-start="493.766" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B6-S2 bridge 494.366-503.074 (8.708s): return to the storm-waves plate from the open (2nd use, in the
+       last-90s recap zone so the reuse rule's 2-use cap doesn't apply anyway), muted under the bridge line.
+       Zero gap into the CTA below (no blackout, no dip). -->
+  <video id="vx-b6s2-waves-return" src="media/video/b1_waves.mp4" data-start="494.366" data-duration="8.708" data-track-index="1" data-callback="second look at the storm waves from the open, right before Paul's CTA" muted></video>
+
+  <!-- CTA at 88.0-90.7% in (503.074-518.213 of 571.748), immediately before B7's tracking-recap card. Zero
+       gap in (the video above runs straight to 503.074, no blackout, no dip); 0.5s dip out below. -->
+  <section class="clip blackout" id="bo-cta-out" data-start="518.213" data-duration="0.5" data-track-index="1"></section>
+
+  <!-- B7 · what's still open tonight 518.713-556.621 (tracking-recap comp on track 2 from 524.713) -->
+  <section class="clip still-wrap" id="c-b7-0-worldview15" data-start="518.713" data-duration="6.0" data-track-index="1"><img id="kb-b7-0-worldview15" src="media/image/worldview_2026-09-15.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-b7-tracking" data-start="524.713" data-duration="31.908" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-b7" data-start="556.621" data-duration="0.6" data-track-index="1"></section>
+
+  <!-- B8 · close 557.221-571.748 (close-card comp on track 2, full window; 10.527s narration + 4.0s tail) -->
+  <section class="clip blackout" id="bo-close" data-start="557.221" data-duration="14.527" data-track-index="1"></section>
+
+  <!-- ============ OVERLAYS: popfigs (track 5), source labels (track 4) — B1 only; B2-B8's numbers are
+       carried inside their own compositions (card is the driver, popfig would collide with its own text) ==== -->
+  <section class="clip" id="p-src-open" data-start="0.0" data-duration="8.0" data-track-index="4"><div class="srclab" id="src-open">SOURCES: JMA &middot; JTWC &middot; NHK &middot; WIKIPEDIA (JMA BEST-TRACK) &middot; FACT-PACK-16SEP.MD</div></section>
+  <section class="clip" id="p-pf-975" data-start="26.24" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-975"><span class="pf-big">975 hPa</span><span class="pf-sub">TYPHOON No. 25'S OWN FORECAST PEAK</span></div></section>
+  <section class="clip" id="p-pf-8storms" data-start="33.92" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-8storms"><span class="pf-big">8 STORMS</span><span class="pf-sub">HURT JAPAN SINCE 2016</span></div></section>
+  <section class="clip" id="p-pf-crowdedweek" data-start="43.8" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-crowdedweek"><span class="pf-big">1 CROWDED WEEK</span><span class="pf-sub">JAPAN'S CALENDAR, 11 YEARS</span></div></section>
+
+  <!-- ============ COMPOSITIONS (track 2) ============ -->
+  <div id="host-openingcard" data-composition-id="opening-card" data-composition-src="compositions/opening-card.html" data-start="36.0" data-duration="17.582" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-datapanel" data-composition-id="data-panel" data-composition-src="compositions/data-panel.html" data-start="60.182" data-duration="62.346" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-trackquote" data-composition-id="track-quote" data-composition-src="compositions/track-quote.html" data-start="129.128" data-duration="42.128" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-benchmarktable" data-composition-id="benchmark-table" data-composition-src="compositions/benchmark-table.html" data-start="171.856" data-duration="208.746" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-contrastcard" data-composition-id="contrast-card" data-composition-src="compositions/contrast-card.html" data-start="381.202" data-duration="47.182" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-calendarweek" data-composition-id="calendar-week" data-composition-src="compositions/calendar-week.html" data-start="434.984" data-duration="58.782" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-trackingrecap" data-composition-id="tracking-recap" data-composition-src="compositions/tracking-recap.html" data-start="524.713" data-duration="31.908" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-closecard" data-composition-id="close-card" data-composition-src="compositions/close-card.html" data-start="557.221" data-duration="14.527" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <div id="grade"></div><div id="vignette"></div><canvas id="grain" width="480" height="270"></canvas>
+</div>
+
+<script src="grain.js"></script>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 571.748;
+  function kb(sel, at, dur, s0, s1, x0, x1, y0, y1) {
+    tl.fromTo(sel, { scale: s0, x: x0, y: y0, transformOrigin: "center" }, { scale: s1, x: x1, y: y1, duration: dur, ease: "none" }, at);
+  }
+  function pop(sel, at, hold) {
+    tl.fromTo(sel, { scale: 2.2, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.35, ease: "power4.in" }, at);
+    tl.to(sel, { autoAlpha: 0, y: -26, duration: 0.28, ease: "power2.in" }, at + hold - 0.28);
+  }
+  function lab(sel, at, hold) {
+    tl.fromTo(sel, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, at);
+    tl.to(sel, { autoAlpha: 0, duration: 0.3 }, at + hold - 0.3);
+  }
+  function bug(strip, hl, at, dur, lines) {
+    tl.fromTo(strip, { y: 96 }, { y: 0, duration: 0.45, ease: "power3.out" }, at);
+    const n = Math.floor((dur - 0.6) / 14);
+    for (let i = 0; i < n; i++) {
+      const t = at + 0.3 + i * 14, text = lines[i % lines.length];
+      if (i > 0) tl.to(hl, { y: 40, autoAlpha: 0, duration: 0.25, ease: "power2.in" }, t - 0.25);
+      tl.set(hl, { textContent: text }, t);
+      tl.fromTo(hl, { y: -40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.3, ease: "power2.out" }, t);
+    }
+  }
+  tl.set([".popfig", ".srclab"], { autoAlpha: 0 }, 0);
+
+  /* ---- stills (Ken Burns, always moving) ---- */
+  kb("#kb-b1-0-satellite", 0.0, 6.0, 1.1, 1.2, -30, -70, -20, -40);
+  kb("#kb-b1-5-worldview16", 38.0, 6.0, 1.0, 1.08, 0, -14, 0, -10);
+  kb("#kb-b1-7-satellite-return", 47.582, 6.0, 1.18, 1.28, -70, -120, -40, -70);
+  kb("#kb-b7-0-worldview15", 518.713, 6.0, 1.06, 1.0, -10, 0, 6, 0);
+
+  /* ---- overlays (absolute = word-synced cue from audio/*.words.json) ---- */
+  lab("#src-open", 0.0, 8.0);
+  pop("#pf-975", 26.24, 3.0);
+  pop("#pf-8storms", 33.92, 3.0);
+  pop("#pf-crowdedweek", 43.8, 3.0);
+
+  /* ---- news bug ---- */
+  bug("#bugstrip-a", "#bh-a", 0.0, 171.856, ["DUJUAN: HOW TONIGHT'S NUMBERS STACK UP", "TROPICAL DEPRESSION NEAR THE MARIANA ISLANDS", "FORECAST PEAK: 975 hPa / 67 MPH"]);
+  bug("#bugstrip-b", "#bh-b", 171.856, 321.91, ["8 STORMS SINCE 2016 ALL PEAKED HARDER", "TYPHOON No. 25: WEAKEST ON THE BENCHMARK LIST", "SILVER WEEK: FIRST FULL 5-DAY IN 11 YEARS"]);
+  bug("#bugstrip-c", "#bh-c", 494.366, 8.708, ["ONE MORE THING BEFORE THE LAST NUMBERS"]);
+  bug("#bugstrip-d", "#bh-d", 518.713, 38.508, ["TRACK AND STRENGTH: BOTH STILL OPEN", "NEXT UPDATE: JMA'S NEXT ADVISORY"]);
+
+  filmLayer(tl, DUR);
+  /* film layer off for the CTA only; on again after the 0.5s post-CTA dip, at B7 */
+  tl.to(["#vignette", "#grade", "#grain", ".dust"], { autoAlpha: 0, duration: 0.3 }, 503.074);
+  tl.to(["#vignette", "#grade", ".dust"], { autoAlpha: 1, duration: 0.3 }, 518.713);
+  tl.to("#grain", { autoAlpha: 0.10, duration: 0.3 }, 518.713);
+  window.__timelines["ms-dujuan-stacks-up"] = tl;
+})();
+</script>
+</body>
+</html>
