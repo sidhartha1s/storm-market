@@ -72,11 +72,17 @@ window.__timelines = window.__timelines || {};
      include the stagger span: stagger * (targetCount - 1) + duration. */
   const HOST_WINDOW = 49.782; // this episode's ladder mount: 186.866-236.648
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
-  tl.set(["#lr-1","#lr-2","#lr-3","#lr-4","#lr-5","#lad-conn","#lad-connlab","#lad-chip"], { autoAlpha: 0 }, 0);
+  tl.set(["#lr-1","#lr-2","#lr-3","#lr-4","#lr-5","#lad-conn","#lad-connlab","#lad-chip","#ld-note-r"], { autoAlpha: 0 }, 0);
   tl.set("#lad-conn", { scaleX: 0 }, 0);
+  /* background plate: continuous slow scale across the whole window (round 2, 17 Sep 26 freeze fix) */
+  tl.fromTo("#ld-bgplate", { scale: 1.0 }, { scale: 1.06, duration: HOST_WINDOW, ease: "none" }, 0);
   tl.fromTo("#lad-l", { x:-60, autoAlpha:0 }, { x:0, autoAlpha:1, duration:0.6 }, 0);
   tl.fromTo("#lad-r", { x:60, autoAlpha:0 }, { x:0, autoAlpha:1, duration:0.6 }, 0);
   tl.fromTo("#lad-chip", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 0.4);
+  /* two real beats close the old 0.4->14.96 (14.56s) mount gap, each on its own narration clause */
+  tl.fromTo("#ld-note-r", { autoAlpha:0, y:10 }, { autoAlpha:1, y:0, duration:0.35, onStart:() => { document.getElementById("ld-note-r").textContent = "A SHORTER CLOCK"; } }, 3.56); // "clock." 3.16
+  tl.to("#ld-note-r", { autoAlpha:0, duration:0.3 }, 7.6);
+  tl.fromTo("#ld-note-r", { autoAlpha:0, y:10 }, { autoAlpha:1, y:0, duration:0.35, onStart:() => { document.getElementById("ld-note-r").textContent = "NOT TEN MINUTES"; } }, 8.42); // "minutes." 8.08
   /* continuous ambient motion across the whole window so the card never sits frozen between reveals */
   tl.to(".ld-colhead", { letterSpacing: "5px", duration: 5.0, ease: "sine.inOut", repeat: repeatsToFit(0.6, 5.0), yoyo: true }, 0.6);
   /* rung bob: stagger 0.4 across 5 targets -> cycle = 0.4*4 + 3.4 = 5.0 */
