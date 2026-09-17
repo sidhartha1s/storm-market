@@ -345,7 +345,8 @@ window.__timelines = window.__timelines || {};
   chip("#chip-branchb", 254.11, 4.0);
   pop("#pf-427m", 373.0, 3.0);
   tl.fromTo(["#pin-yokosuka", "#pin-yokota", "#pin-tokyo"], { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, stagger: 0.15, ease: "power3.out" }, 399.0);
-  tl.to(["#pin-yokosuka", "#pin-yokota", "#pin-tokyo"], { autoAlpha: 0, duration: 0.4 }, 421.9);
+  tl.fromTo(["#lab-yokosuka", "#lab-yokota", "#lab-tokyo", "#leader-yokosuka", "#leader-yokota", "#leader-tokyo"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, stagger: 0.15, ease: "power3.out" }, 399.0);
+  tl.to(["#pin-yokosuka", "#pin-yokota", "#pin-tokyo", "#lab-yokosuka", "#lab-yokota", "#lab-tokyo", "#leader-yokosuka", "#leader-yokota", "#leader-tokyo"], { autoAlpha: 0, duration: 0.4 }, 421.9);
   pop("#pf-55k", 407.44, 3.2);
   chip("#chip-noalert", 421.4, 3.5);
 
