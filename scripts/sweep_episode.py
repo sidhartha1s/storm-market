@@ -88,17 +88,26 @@ report("media files exist", sorted(set(miss)))
 ids = Counter(re.findall(r' id="([^"]+)"', h))
 report("element ids unique", sorted(n for n, c in ids.items() if c > 1))
 
+def _gate_lines(proc, name):
+    """FAIL lines of a sub-gate; a crash (any exit other than 0/1, or exit 1 with no FAIL line) is a failure, never a pass."""
+    fails = [l for l in proc.stdout.splitlines() if l.startswith("FAIL")]
+    if proc.returncode not in (0, 1) or (proc.returncode == 1 and not fails):
+        last = ((proc.stderr or "").strip().splitlines() or ["no stderr"])[-1]
+        fails.append(f"FAIL {name} crashed (exit {proc.returncode}): {last}")
+    return fails
+
+
 # 5c2. host/comp class collision (17 Sep 26): hyperframes mounts comps inside index.html, so a shared
 # class name lets the page stylesheet restyle the comp. Deterministic; scripts/css_collision.py.
 _cc = subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "css_collision.py"), str(ep)],
                      capture_output=True, text=True)
-report("comp classes disjoint from index.html", [l for l in _cc.stdout.splitlines() if l.startswith("FAIL")])
+report("comp classes disjoint from index.html", _gate_lines(_cc, "css_collision.py"))
 
 # 5c3. runtime text-write bug classes (17 Sep 26): textContent on a parent deletes its children; text set in
 # onStart/onComplete is invisible to the seek-based gates. Deterministic; scripts/comp_lint.py.
 _cl = subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "comp_lint.py"), str(ep)],
                      capture_output=True, text=True)
-report("comp text writes safe (leaf targets, no callback text)", [l for l in _cl.stdout.splitlines() if l.startswith("FAIL")])
+report("comp text writes safe (leaf targets, no callback text)", _gate_lines(_cl, "comp_lint.py"))
 
 # 5d. CTA present + placed (owner order 2026-08-30, DESIGN.md "CTA contract"): the ebook CTA is a
 # must-keep element of every episode. Deterministic part only — file/duration/window/labels from
