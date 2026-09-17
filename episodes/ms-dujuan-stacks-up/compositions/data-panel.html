@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- data-panel.html — B2 "where things stand now". JMA card (left, static reference numbers) beside a JTWC
+     card (right, its own independent reading counts up on cue), plus a 4-chip meteorology row (TS threshold
+     countdown, SST, shear, dry-air brake). Mount: track 2, host start = episode-abs 60.182, duration 62.346
+     (B2 window is 68.346s; a 6.0s Odaiba lead-in plays before this comp mounts). Cues word-synced from
+     audio/b2-s1.words.json (segment-abs minus 6.0 lead-in). Font: 'AbrilFig' relies on index.html's single
+     @font-face (a per-comp duplicate false-triggers css_collision.py on the shared ".ttf" url() token). All
+     classes carry the dp- comp tag so no name is shared with index.html or a sibling composition. -->
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
+  .dp-eye { position:absolute; left:0; right:0; top:80px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
+    font-size:24px; letter-spacing:5px; color:#d8a13a; }
+  .dp-card { position:absolute; top:170px; width:740px; box-sizing:border-box; padding:34px 38px; text-align:center;
+    background:rgba(10,16,24,0.58); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .dp-card-l { left:170px; border-bottom:5px solid #8fb4d8; }
+  .dp-card-r { right:170px; border-bottom:5px solid #d0121f; }
+  .dp-tag { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:4px; }
+  .dp-card-l .dp-tag { color:#8fb4d8; } .dp-card-r .dp-tag { color:#d0121f; }
+  .dp-num { font-family:'AbrilFig',Georgia,serif; font-size:104px; line-height:1.2; margin-top:12px;
+    min-width:3ch; font-variant-numeric:tabular-nums; }
+  .dp-card-l .dp-num { color:#8fb4d8; } .dp-card-r .dp-num { color:#d0121f; }
+  .dp-unit { font-family:'Arial Black',Arial,sans-serif; font-size:22px; letter-spacing:1px; margin-top:12px; }
+  .dp-sub { margin-top:10px; font-family:Georgia,serif; font-style:italic; font-size:19px; color:#c8d3e0; }
+  .dp-chiprow { position:absolute; left:0; right:0; bottom:120px; display:flex; justify-content:center; gap:18px; flex-wrap:wrap; padding:0 100px; }
+  .dp-chip { font-family:'Arial Black',Arial,sans-serif; font-size:21px; letter-spacing:1px; color:#f4f0e8;
+    background:rgba(10,16,24,0.62); border:1px solid rgba(255,255,255,0.14); border-left:6px solid #d0121f;
+    border-radius:10px; padding:12px 20px; }
+</style>
+<div id="root" data-composition-id="data-panel" data-width="1920" data-height="1080">
+  <div class="dp-eye" id="dp-eye">TWO AGENCIES, SAME STORM</div>
+  <div class="dp-card dp-card-l" id="dp-l">
+    <div class="dp-tag">JMA</div>
+    <div class="dp-num">998</div>
+    <div class="dp-unit">HPA CENTRAL PRESSURE</div>
+    <div class="dp-sub">34 MPH &middot; GUSTS TO 51</div>
+  </div>
+  <div class="dp-card dp-card-r" id="dp-r">
+    <div class="dp-tag">JTWC (US NAVY)</div>
+    <div class="dp-num" id="dp-r-num">0</div>
+    <div class="dp-unit">MPH SUSTAINED</div>
+    <div class="dp-sub" id="dp-r-sub">&nbsp;</div>
+  </div>
+  <div class="dp-chiprow">
+    <div class="dp-chip" id="dp-chip-ts" style="visibility:hidden">TS THRESHOLD: 12H</div>
+    <div class="dp-chip" id="dp-chip-sst" style="visibility:hidden">SST 85&deg;F</div>
+    <div class="dp-chip" id="dp-chip-shear" style="visibility:hidden">LOW SHEAR</div>
+    <div class="dp-chip" id="dp-chip-dry" style="visibility:hidden">DRY AIR (NW) = BRAKE</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const HOST_WINDOW = 62.346; // this episode's data-panel mount: 60.182-122.528
+  function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
+  const R = { n: 0 }; const rEl = document.getElementById("dp-r-num");
+  tl.set(["#dp-chip-ts","#dp-chip-sst","#dp-chip-shear","#dp-chip-dry"], { visibility: "hidden", autoAlpha: 0 }, 0);
+  tl.fromTo("#dp-eye", { autoAlpha:0, y:-16 }, { autoAlpha:1, y:0, duration:0.5 }, 0);
+  tl.fromTo("#dp-l", { autoAlpha:0, x:-40 }, { autoAlpha:1, x:0, duration:0.5 }, 0.2);
+  tl.fromTo("#dp-r", { autoAlpha:0, x:40 }, { autoAlpha:1, x:0, duration:0.5 }, 0.2);
+  /* continuous ambient motion so neither card sits frozen through the long hold */
+  tl.to("#dp-l", { y: -6, duration: 2.7, ease: "sine.inOut", repeat: repeatsToFit(0.9, 2.7), yoyo: true }, 0.9);
+  tl.to("#dp-r", { y: -6, duration: 2.7, ease: "sine.inOut", repeat: repeatsToFit(1.2, 2.7), yoyo: true }, 1.2);
+  tl.to(R, { n: 35, duration: 1.0, ease: "power1.out", onUpdate: () => rEl.textContent = Math.round(R.n) }, 17.6);
+  tl.to("#dp-r-sub", { duration:0.01, onStart: () => { document.getElementById("dp-r-sub").textContent = "gusting near 46 mph"; } }, 20.0);
+  tl.set("#dp-chip-ts", { visibility: "visible" }, 25.1);
+  tl.fromTo("#dp-chip-ts", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.35 }, 25.1);
+  tl.set("#dp-chip-sst", { visibility: "visible" }, 43.82);
+  tl.fromTo("#dp-chip-sst", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.35 }, 43.82);
+  tl.set("#dp-chip-shear", { visibility: "visible" }, 49.46);
+  tl.fromTo("#dp-chip-shear", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.35 }, 49.46);
+  tl.set("#dp-chip-dry", { visibility: "visible" }, 51.76);
+  tl.fromTo("#dp-chip-dry", { autoAlpha:0, y:16 }, { autoAlpha:1, y:0, duration:0.35 }, 51.76);
+  tl.to(["#dp-eye","#dp-l","#dp-r","#dp-chip-ts","#dp-chip-sst","#dp-chip-shear","#dp-chip-dry"], { autoAlpha:0, duration:0.4 }, HOST_WINDOW - 0.6);
+  /* beat-density filler: literal-repeat glints every 3s so no stretch of the long hold sits motionless >4s */
+  for (let t = 1.5; t < HOST_WINDOW - 1.0; t += 3.0) {
+    tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, t);
+  }
+  window.__timelines["data-panel"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
