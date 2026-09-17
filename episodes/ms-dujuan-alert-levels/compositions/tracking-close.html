@@ -91,7 +91,10 @@ window.__timelines = window.__timelines || {};
   /* round 3 (owner: "static 492.7-501.7s / 12s", 17 Sep 26) — this chip used to set its text once and
      never change again; split on the clause boundary ("for one of its biggest holidays in more than a
      decade," audio 19.98-22.3, comp-rel 13.98-16.3) into a second beat. */
-  tl.to("#tc-chip", { duration:0.01, onStart: () => { document.getElementById("tc-chip").textContent = "ONE OF ITS BIGGEST HOLIDAYS IN A DECADE"; } }, 13.98); CONTENT_BEATS.push(13.98);
+  /* comp_lint R2 fix (owner 17 Sep 26): pre-authored as two stacked leaf lines, cross-faded on the
+     timeline, instead of an onStart text mutation the seek-based QC never fires. */
+  tl.to("#tc-chip1", { autoAlpha: 0, duration: 0.3 }, 13.68);
+  tl.fromTo("#tc-chip2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 13.98); CONTENT_BEATS.push(13.98);
   /* round 3c (owner: "sits static ~21s while the lower line rotates", 17 Sep 26) — this chip had no exit;
      drop it shortly after its own clause finishes (audio ends comp-rel 16.3) instead of holding for the
      rest of the comp while .tc-note keeps changing underneath it. */
