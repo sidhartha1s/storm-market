@@ -34,20 +34,11 @@
       background: rgba(10,16,24,0.62); backdrop-filter: blur(14px) saturate(1.15); -webkit-backdrop-filter: blur(14px) saturate(1.15);
       border: 1px solid rgba(255,255,255,0.14); border-left: 6px solid #d0121f; border-radius: 10px; padding: 12px 26px; max-width: 1100px; }
     .chip.rhs { left: auto; right: 110px; }
-    /* track-map empty zone: bottom-centre, x 900-1350, y 850-1000 in the 1920x1080 frame,
-       below the Philippines outline / left of Guam, clear of the stat card and forecast labels */
-    .popfig.tm-zone { position: absolute; left: 900px; right: auto; top: 860px; bottom: auto; width: 460px; text-align: left; overflow: visible; white-space: normal; }
-    .popfig.tm-zone::before { left: -6%; right: -6%; top: -30px; bottom: -24px; }
-    .chip.tm-zone { position: absolute; left: 900px; right: auto; top: 910px; bottom: auto; }
-    /* scale-ladder empty zone: below the JMA/NHC ladder card (card spans x260-1660, ends well
-       above y780), full card width, centred */
-    /* scale-ladder .card real bottom per browser measurement at t=47s: card 210->790 clipped the
-       readout/caption (readout bottom 800, caption 830-854, both past 790). Card height set to
-       690px (measured content bottom 854 + 40 pad - 210 = 684, rounded to 690) -> card bottom =
-       210+690 = 900. Zone at 900 + 30px clearance = 930. Both sl-zone occupants are now `.chip`
-       (not `.popfig`, whose small-variant height was itself never measured/verified) so the
-       zone's own vertical footprint is small and proven, comfortably clear of the 1080 edge. */
-    .popfig.sl-zone, .chip.sl-zone { position: absolute; left: 260px; right: auto; top: 930px; bottom: auto; width: 1400px; text-align: center; }
+    /* .popfig.tm-zone / .chip.sl-zone (and the matching sl-zone rule) were an unapproved
+       repositioning hack, removed 17 Sep 26 -- see the B2/B7 comments below on the popfigs/
+       chips themselves for the revert to the approved classes (popfig, popfig small, popfig
+       rhs, chip, chip rhs) and, for the two B7 chips a default-position .chip collides with
+       the scale-ladder card, removal instead of a forced position. */
     .srclab { position: absolute; right: 40px; top: 34px; z-index: 7; font-family: Arial, sans-serif; font-size: 20px; letter-spacing: 1px; color: rgba(220,228,236,0.85); background: rgba(5,8,12,0.6); padding: 6px 14px; }
     .quotecard { position: absolute; left: 260px; right: 260px; top: 280px; z-index: 6; text-align: center;
       background: rgba(10,16,24,0.58); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
