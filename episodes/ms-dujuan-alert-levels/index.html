@@ -250,13 +250,15 @@ window.__timelines = window.__timelines || {};
 
   /* ---- news bug ---- */
   bug("#bugstrip-a", "#bh-a", 0.0, 173.673, ["JAPAN'S ALERT LEVELS · EXPLAINED FOR AMERICANS", "TROPICAL DEPRESSION NEAR THE MARIANA ISLANDS", "5-LEVEL SYSTEM REPLACED THE OLD ONE IN 2021"]);
-  bug("#bugstrip-b", "#bh-b", 189.812, 226.382, ["LEVEL 3: THE ELDERLY EVACUATE FIRST", "LEVEL 4: EVACUATE BEFORE IT'S ISSUED", "LEVEL 5: LEAVING MAY NO LONGER BE SAFE", "ONE LADDER VS. THREE US SYSTEMS"]);
-  bug("#bugstrip-c", "#bh-c", 416.794, 96.018, ["TONIGHT: STORM STILL BELOW THE LADDER", "TRACK AND STRENGTH: BOTH STILL OPEN", "NEXT UPDATE: JMA'S NEXT ADVISORY"]);
+  bug("#bugstrip-b", "#bh-b", 174.273, 226.382, ["LEVEL 3: THE ELDERLY EVACUATE FIRST", "LEVEL 4: EVACUATE BEFORE IT'S ISSUED", "LEVEL 5: LEAVING MAY NO LONGER BE SAFE", "ONE LADDER VS. THREE US SYSTEMS"]);
+  bug("#bugstrip-c", "#bh-c", 401.255, 57.562, ["TONIGHT: STORM STILL BELOW THE LADDER"]);
+  bug("#bugstrip-d", "#bh-d", 474.456, 46.582, ["TRACK AND STRENGTH: BOTH STILL OPEN", "NEXT UPDATE: JMA'S NEXT ADVISORY"]);
 
   filmLayer(tl, DUR);
-  tl.to(["#vignette", "#grade", "#grain", ".dust"], { autoAlpha: 0, duration: 0.3 }, 173.673);
-  tl.to(["#vignette", "#grade", ".dust"], { autoAlpha: 1, duration: 0.3 }, 189.312);
-  tl.to("#grain", { autoAlpha: 0.10, duration: 0.3 }, 189.312);
+  /* film layer off for the CTA only (moved 17 Sep 26); on again after the 0.5s post-CTA dip, at B9 */
+  tl.to(["#vignette", "#grade", "#grain", ".dust"], { autoAlpha: 0, duration: 0.3 }, 458.817);
+  tl.to(["#vignette", "#grade", ".dust"], { autoAlpha: 1, duration: 0.3 }, 474.456);
+  tl.to("#grain", { autoAlpha: 0.10, duration: 0.3 }, 474.456);
   window.__timelines["ms-dujuan-alert-levels"] = tl;
 })();
 </script>
