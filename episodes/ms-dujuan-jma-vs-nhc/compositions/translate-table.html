@@ -86,6 +86,9 @@ window.__timelines = window.__timelines || {};
   /* two soft glow blobs drift for the full window — always-on kinetic motion, never a flat frame */
   tl.to("#tt-glow-a", { x: 130, y: 80, duration: 9.0, ease: "sine.inOut", repeat: repeatsToFit(0, 9.0), yoyo: true }, 0);
   tl.to("#tt-glow-b", { x: -140, y: -70, duration: 10.5, ease: "sine.inOut", repeat: repeatsToFit(0.5, 10.5), yoyo: true }, 0.5);
+  /* round-3 (reader: card reads blank 0->5.2s before column 1): an immediate chrome eyebrow fills the open,
+     not a fact reveal (the word "western" isn't said until 5.22s), just scene-setting like jma-quote's eyebrow */
+  tl.fromTo("#tt-eye", { autoAlpha:0, y:-14 }, { autoAlpha:1, y:0, duration:0.4 }, 0.6);
   tl.fromTo("#tt-b1", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 5.22);   // "western" 11.22
   tl.fromTo("#tt-b2", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 10.7);   // "the" (Atlantic) 16.7
   tl.fromTo("#tt-b3", { autoAlpha:0, y:-20 }, { autoAlpha:1, y:0, duration:0.4 }, 15.72);  // "the" (Indian) 21.72
