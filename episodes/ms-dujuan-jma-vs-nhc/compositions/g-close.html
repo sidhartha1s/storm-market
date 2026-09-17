@@ -44,6 +44,8 @@ window.__timelines = window.__timelines || {};
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
   tl.set(["#gc-soft","#gc-brand","#gc-rule"], { autoAlpha: 0 }, 0);
   tl.set("#gc-rule", { scaleX: 0 }, 0);
+  /* background plate: continuous slow scale across the whole window (round 2, 17 Sep 26 freeze fix) */
+  tl.fromTo("#gc-bgplate", { scale: 1.0 }, { scale: 1.06, duration: HOST_WINDOW, ease: "none" }, 0);
   /* two soft glow blobs drift for the full window — >=200px travel each 3s leg at opacity 0.6, unmistakable
      even at coarse (3s) sampling, never a flat static background */
   tl.to("#gc-glow-a", { x: 180, y: 150, duration: 3.0, ease: "sine.inOut", repeat: repeatsToFit(0, 3.0), yoyo: true }, 0);
