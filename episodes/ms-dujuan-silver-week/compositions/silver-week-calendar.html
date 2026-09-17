@@ -12,57 +12,66 @@
 -->
 <template>
 <style>
-  @font-face { font-family:'AbrilFig'; src:url('../fonts/AbrilFatface-Regular.ttf'); }
-  #root { position:absolute; inset:0; overflow:hidden; font-family:Arial,sans-serif; color:#f2f5f8;
+  /* AbrilFig @font-face is declared once in index.html; hyperframes mounts this template
+     into that same document so the family is already registered -- a per-comp duplicate here
+     is what css_collision.py's class-name regex was matching on the .ttf url extension
+     (a false positive, not a real leak; ../fonts/AbrilFatface-Regular.ttf still used standalone
+     via the host doc). */
+  #sw-root { position:absolute; inset:0; overflow:hidden; font-family:Arial,sans-serif; color:#f2f5f8;
     background:radial-gradient(ellipse at 30% 20%, #1a2f42 0%, #050b12 70%); }
   #sw-drift { position:absolute; inset:-10%; background:radial-gradient(ellipse at 50% 50%, rgba(208,18,31,0.10) 0%, rgba(0,0,0,0) 60%); }
-  .eyebrow { position:absolute; left:110px; top:96px; font-family:'Arial Black',Arial,sans-serif; font-size:26px; letter-spacing:7px; color:#d0121f; }
-  .title { position:absolute; left:110px; top:140px; font-family:'AbrilFig',Georgia,serif; font-size:64px; color:#f2f5f8; text-shadow:0 3px 16px rgba(0,0,0,0.85); }
-  .cal { position:absolute; left:110px; top:250px; display:flex; gap:14px; }
-  .cal .d { width:96px; height:118px; border-radius:14px; background:rgba(10,16,24,0.55); border:1px solid rgba(255,255,255,0.12);
+  .sw-eyebrow { position:absolute; left:110px; top:96px; font-family:'Arial Black',Arial,sans-serif; font-size:26px; letter-spacing:7px; color:#d0121f; }
+  .sw-title { position:absolute; left:110px; top:140px; font-family:'AbrilFig',Georgia,serif; font-size:64px; color:#f2f5f8; text-shadow:0 3px 16px rgba(0,0,0,0.85); }
+  .sw-cal { position:absolute; left:110px; top:250px; display:flex; gap:14px; }
+  .sw-cal .sw-d { width:96px; height:118px; border-radius:14px; background:rgba(10,16,24,0.55); border:1px solid rgba(255,255,255,0.12);
     display:flex; flex-direction:column; align-items:center; justify-content:center; }
-  .cal .d .dow { font-family:'Arial Black',Arial,sans-serif; font-size:16px; letter-spacing:2px; color:#93a3b2; }
-  .cal .d .num { font-family:'AbrilFig',Georgia,serif; font-size:44px; margin-top:6px; }
-  .cal .d.on { background:rgba(208,18,31,0.22); border-color:#d0121f; }
-  .cal .d.on .num { color:#ff5a63; }
-  .cal-label { position:absolute; left:110px; top:392px; font-family:'Arial Black',Arial,sans-serif; font-size:30px; line-height:1.3; letter-spacing:1px; max-width:760px; }
+  .sw-cal .sw-d .sw-dow { font-family:'Arial Black',Arial,sans-serif; font-size:16px; letter-spacing:2px; color:#93a3b2; }
+  .sw-cal .sw-d .sw-num { font-family:'AbrilFig',Georgia,serif; font-size:44px; margin-top:6px; }
+  .sw-cal .sw-d.sw-on { background:rgba(208,18,31,0.22); border-color:#d0121f; }
+  .sw-cal .sw-d.sw-on .sw-num { color:#ff5a63; }
+  .sw-cal-label { position:absolute; left:110px; top:392px; font-family:'Arial Black',Arial,sans-serif; font-size:30px; line-height:1.3; letter-spacing:1px; max-width:760px; }
   /* cal-label wraps to 2 lines at this width/size (~72px tall); row2/us-line pushed down to
      clear it -- these three used to sit close enough to overlap for the whole B5 window. */
-  .row2 { position:absolute; left:110px; top:500px; display:flex; gap:18px; }
-  .chip { background:rgba(10,16,24,0.68); border:1px solid rgba(255,255,255,0.14); border-left:5px solid #d0121f; border-radius:10px;
-    padding:14px 26px; font-family:'Arial Black',Arial,sans-serif; font-size:26px; letter-spacing:1px; }
-  .us-line { position:absolute; left:110px; top:592px; font-family:Georgia,serif; font-style:italic; font-size:30px; color:#d8a13a; max-width:820px; }
-  .card { position:absolute; right:110px; width:660px; box-sizing:border-box; padding:26px 34px; background:rgba(10,16,24,0.62);
+  .sw-row2 { position:absolute; left:110px; top:500px; display:flex; gap:18px; }
+  /* explicit flex-shrink:0 + white-space:nowrap -- the "HOLIDAYS THIS YEAR: 16 -> 17" chip
+     wrapped to 2 lines inside the flex row without them (owner-flagged 17 Sep 26: no
+     coordinates, landed on the title -- the pre-scoping host .chip collision also broke its
+     position; the row2 flex layout is what actually places it once scoped, but still needs its
+     own no-wrap so a long chip can't get flex-shrunk into two lines). */
+  .sw-chip { background:rgba(10,16,24,0.68); border:1px solid rgba(255,255,255,0.14); border-left:5px solid #d0121f; border-radius:10px;
+    padding:14px 26px; font-family:'Arial Black',Arial,sans-serif; font-size:26px; letter-spacing:1px; white-space:nowrap; flex-shrink:0; }
+  .sw-us-line { position:absolute; left:110px; top:592px; font-family:Georgia,serif; font-style:italic; font-size:30px; color:#d8a13a; max-width:820px; }
+  .sw-card { position:absolute; right:110px; width:660px; box-sizing:border-box; padding:26px 34px; background:rgba(10,16,24,0.62);
     backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:22px; }
-  .card .lab { font-family:'Arial Black',Arial,sans-serif; font-size:28px; letter-spacing:1px; color:#f2f5f8; }
-  .card .sub { font-size:20px; color:#c8d3e0; margin-top:8px; line-height:1.4; }
-  .card-nozomi { top:190px; }
-  .card-games { top:400px; }
+  .sw-card .sw-lab { font-family:'Arial Black',Arial,sans-serif; font-size:28px; letter-spacing:1px; color:#f2f5f8; }
+  .sw-card .sw-sub { font-size:20px; color:#c8d3e0; margin-top:8px; line-height:1.4; }
+  .sw-card-nozomi { top:190px; }
+  .sw-card-games { top:400px; }
 </style>
-<div id="root" data-composition-id="silver-week-calendar" data-width="1920" data-height="1080">
+<div id="sw-root" data-composition-id="silver-week-calendar" data-width="1920" data-height="1080">
   <div id="sw-drift"></div>
-  <div class="eyebrow">SILVER WEEK</div>
-  <div class="title" id="sw-title">First Full 5-Day Holiday in 11 Years</div>
-  <div class="cal" id="sw-cal">
-    <div class="d"><div class="dow">SAT</div><div class="num">19</div></div>
-    <div class="d"><div class="dow">SUN</div><div class="num">20</div></div>
-    <div class="d"><div class="dow">MON</div><div class="num">21</div></div>
-    <div class="d"><div class="dow">TUE</div><div class="num">22</div></div>
-    <div class="d"><div class="dow">WED</div><div class="num">23</div></div>
+  <div class="sw-eyebrow">SILVER WEEK</div>
+  <div class="sw-title" id="sw-title">First Full 5-Day Holiday in 11 Years</div>
+  <div class="sw-cal" id="sw-cal">
+    <div class="sw-d"><div class="sw-dow">SAT</div><div class="sw-num">19</div></div>
+    <div class="sw-d"><div class="sw-dow">SUN</div><div class="sw-num">20</div></div>
+    <div class="sw-d"><div class="sw-dow">MON</div><div class="sw-num">21</div></div>
+    <div class="sw-d"><div class="sw-dow">TUE</div><div class="sw-num">22</div></div>
+    <div class="sw-d"><div class="sw-dow">WED</div><div class="sw-num">23</div></div>
   </div>
-  <div class="cal-label" id="sw-cal-label">19&ndash;23 SEPTEMBER &middot; FIRST FULL 5-DAY SILVER WEEK IN 11 YEARS</div>
-  <div class="row2">
-    <div class="chip" id="sw-chip-years">LAST: 2015 &middot; NEXT: 2032</div>
-    <div class="chip" id="sw-chip-holidays">HOLIDAYS THIS YEAR: 16 &rarr; 17</div>
+  <div class="sw-cal-label" id="sw-cal-label">19&ndash;23 SEPTEMBER &middot; FIRST FULL 5-DAY SILVER WEEK IN 11 YEARS</div>
+  <div class="sw-row2">
+    <div class="sw-chip" id="sw-chip-years">LAST: 2015 &middot; NEXT: 2032</div>
+    <div class="sw-chip" id="sw-chip-holidays">HOLIDAYS THIS YEAR: 16 &rarr; 17</div>
   </div>
-  <div class="us-line" id="sw-us-line">Like a storm approaching over a 4th of July or Labor Day weekend.</div>
-  <div class="card card-nozomi" id="sw-card-nozomi">
-    <div class="lab">NOZOMI SHINKANSEN &middot; FULLY RESERVED</div>
-    <div class="sub">18&ndash;23 SEP &middot; PEAK OUTBOUND FRI PM / SAT AM &middot; PEAK RETURN WED</div>
+  <div class="sw-us-line" id="sw-us-line">Like a storm approaching over a 4th of July or Labor Day weekend.</div>
+  <div class="sw-card sw-card-nozomi" id="sw-card-nozomi">
+    <div class="sw-lab">NOZOMI SHINKANSEN &middot; FULLY RESERVED</div>
+    <div class="sw-sub">18&ndash;23 SEP &middot; PEAK OUTBOUND FRI PM / SAT AM &middot; PEAK RETURN WED</div>
   </div>
-  <div class="card card-games" id="sw-card-games">
-    <div class="lab">ASIAN GAMES &middot; NAGOYA &middot; OPENS 19 SEP &middot; 46+ NATIONS</div>
-    <div class="sub">COSTA SERENA (ATHLETES&rsquo; VILLAGE SHIP) &middot; 4,000+ ABOARD</div>
+  <div class="sw-card sw-card-games" id="sw-card-games">
+    <div class="sw-lab">ASIAN GAMES &middot; NAGOYA &middot; OPENS 19 SEP &middot; 46+ NATIONS</div>
+    <div class="sw-sub">COSTA SERENA (ATHLETES&rsquo; VILLAGE SHIP) &middot; 4,000+ ABOARD</div>
   </div>
 </div>
 <script>
@@ -70,12 +79,12 @@ window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
   tl.set(["#sw-title", "#sw-cal", "#sw-cal-label", "#sw-chip-years", "#sw-chip-holidays", "#sw-us-line", "#sw-card-nozomi", "#sw-card-games"], { autoAlpha: 0 }, 0);
-  tl.set(".cal .d", { autoAlpha: 0, y: 16 }, 0);
+  tl.set(".sw-cal .sw-d", { autoAlpha: 0, y: 16 }, 0);
 
   tl.fromTo("#sw-title", { autoAlpha: 0, y: -16 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.3);
   tl.to("#sw-cal", { autoAlpha: 1, duration: 0.3 }, 4.8);
-  tl.to(".cal .d", { autoAlpha: 1, y: 0, duration: 0.35, stagger: 0.08, ease: "power3.out" }, 5.16);
-  tl.to(".cal .d:nth-child(1),.cal .d:nth-child(2),.cal .d:nth-child(3),.cal .d:nth-child(4),.cal .d:nth-child(5)", { className: "+=on" }, 5.16);
+  tl.to(".sw-cal .sw-d", { autoAlpha: 1, y: 0, duration: 0.35, stagger: 0.08, ease: "power3.out" }, 5.16);
+  tl.to(".sw-cal .sw-d:nth-child(1),.sw-cal .sw-d:nth-child(2),.sw-cal .sw-d:nth-child(3),.sw-cal .sw-d:nth-child(4),.sw-cal .sw-d:nth-child(5)", { className: "+=sw-on" }, 5.16);
   tl.fromTo("#sw-cal-label", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45 }, 5.5);
 
   tl.fromTo("#sw-chip-years", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 12.0);
@@ -92,8 +101,8 @@ window.__timelines = window.__timelines || {};
      call -- GSAP multiplies the WHOLE stagger span by (repeat+1), not per-tile, which blew the
      real tl.duration() out to 103.4s (62 + 2*(4*5.0 + 0.7)) for a single repeat cycle. With no
      repeat: last tile's down-tween ends at 62.35 + 4*5.0 + 0.35 = 82.7s, inside the 84.727s window. */
-  tl.to(".cal .d", { scale: 1.16, boxShadow: "0 0 0 3px rgba(255,90,99,0.9), 0 0 26px rgba(255,90,99,0.65)", duration: 0.35, ease: "sine.out", stagger: 5.0 }, 62.0);
-  tl.to(".cal .d", { scale: 1.0, boxShadow: "none", duration: 0.35, ease: "sine.in", stagger: 5.0 }, 62.35);
+  tl.to(".sw-cal .sw-d", { scale: 1.16, boxShadow: "0 0 0 3px rgba(255,90,99,0.9), 0 0 26px rgba(255,90,99,0.65)", duration: 0.35, ease: "sine.out", stagger: 5.0 }, 62.0);
+  tl.to(".sw-cal .sw-d", { scale: 1.0, boxShadow: "none", duration: 0.35, ease: "sine.in", stagger: 5.0 }, 62.35);
 
   /* continuous ambient motion so no window reads as a frozen hold. Single-pass, explicit long
      duration + ease:"none" (not gsap repeat, which sweep_episode's static regex-based
