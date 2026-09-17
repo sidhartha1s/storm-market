@@ -117,7 +117,11 @@ window.__timelines = window.__timelines || {};
   /* continuous ambient motion so both cards never sit frozen through the long hold */
   tl.to("#sp-l", { y: -6, duration: 2.6, ease: "sine.inOut", repeat: repeatsToFit(0.8, 2.6), yoyo: true }, 0.8);
   tl.to("#sp-r", { y: -6, duration: 2.6, ease: "sine.inOut", repeat: repeatsToFit(1.1, 2.6), yoyo: true }, 1.1);
-  tl.to(R, { n: 35, duration: 1.0, ease: "power1.out", onUpdate: () => rEl.textContent = Math.round(R.n) }, 8.72); CONTENT_BEATS.push(8.72);
+  /* round 5 (owner 17 Sep 26): hard rule - no number ever shown at a non-final value. Was a count-up
+     from 0 that read "17" mid-tween on the frame pull; now the real value lands directly on its word
+     ("35" spoken 8.72-9.16) with no intermediate state, and the card no longer shows a placeholder "0"
+     from mount - the number stays hidden until this reveal. */
+  tl.fromTo("#sp-r-num", { opacity: 0 }, { opacity: 1, duration: 0.15 }, 8.72); CONTENT_BEATS.push(8.72);
   /* comp_lint R2 fix (owner 17 Sep 26): text pre-authored in the markup (hidden via opacity:0), revealed
      on the timeline instead of set inside an onStart the seek-based QC never fires. */
   tl.fromTo("#sp-r-sub", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 11.10); CONTENT_BEATS.push(11.10);
