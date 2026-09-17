@@ -88,6 +88,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#lad-r", { x:60, autoAlpha:0 }, { x:0, autoAlpha:1, duration:0.6 }, 0);
   tl.fromTo("#lad-chip", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 0.4);
   tl.fromTo("#ld-opencap", { autoAlpha:0, y:-14 }, { autoAlpha:1, y:0, duration:0.4 }, 0.9);
+  tl.to("#ld-opencap", { autoAlpha:0, duration:0.4 }, 5.0);
   /* two real beats close the old 0.4->14.96 (14.56s) mount gap, each on its own narration clause */
   tl.fromTo("#ld-note-1", { autoAlpha:0, y:10 }, { autoAlpha:1, y:0, duration:0.35 }, 3.56); // "clock." 3.16
   tl.to("#ld-note-1", { autoAlpha:0, duration:0.3 }, 7.6);
