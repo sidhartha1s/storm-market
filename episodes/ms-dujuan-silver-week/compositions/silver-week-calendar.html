@@ -81,6 +81,7 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   tl.set(["#sw-title", "#sw-cal", "#sw-cal-label", "#sw-chip-years", "#sw-chip-holidays", "#sw-us-line", "#sw-card-nozomi", "#sw-card-games"], { autoAlpha: 0 }, 0);
   tl.set(".sw-cal .sw-d", { autoAlpha: 0, y: 16 }, 0);
+  tl.set(["#sw-sub-nozomi-out", "#sw-sub-nozomi-ret"], { autoAlpha: 0, y: 10 }, 0);
 
   tl.fromTo("#sw-title", { autoAlpha: 0, y: -16 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.3);
   tl.to("#sw-cal", { autoAlpha: 1, duration: 0.3 }, 4.8);
