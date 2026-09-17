@@ -37,9 +37,9 @@ domain, no attribution required).
 0:54 Where does the storm actually stand right now, by both agencies tracking it?
 2:03 What does Japan's own four-point forecast say happens between now and Monday?
 2:52 Ten years, eight storms: how does tonight's forecast stack up against all of them?
-6:22 What do pressure and wind actually fail to measure?
+6:21 What do pressure and wind actually fail to measure?
 7:09 What calendar is this track running through?
-8:23 What's still open tonight?
+8:39 What's still open tonight?
 
 <!-- CTA supersedes edit_script.md's "end of B3" note per the owner's 17 Sep 26 hard rule: it now
      mounts at 8:23 (88.0% in), entered by a spoken bridge with zero gap, immediately before the
