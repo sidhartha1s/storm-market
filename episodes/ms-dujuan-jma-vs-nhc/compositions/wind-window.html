@@ -11,46 +11,46 @@
 <style>
   #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
     background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
-  .eye { position:absolute; left:110px; top:110px; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:5px; color:#d0121f; }
-  .chartwrap { position:absolute; left:110px; top:190px; width:1700px; height:560px; box-sizing:border-box; padding:30px;
+  .ww-eye { position:absolute; left:110px; top:110px; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:5px; color:#d0121f; }
+  .ww-chartwrap { position:absolute; left:110px; top:190px; width:1700px; height:560px; box-sizing:border-box; padding:30px;
     background:rgba(10,16,24,0.5); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
     border:1px solid rgba(255,255,255,0.12); border-radius:24px; }
   svg { width:100%; height:100%; overflow:visible; }
-  .trace { fill:none; stroke:#8fb4d8; stroke-width:4; }
-  .avgline { fill:none; stroke:#8fb4d8; stroke-width:2; stroke-dasharray:10 8; opacity:0.7; }
-  .window { fill:rgba(208,18,31,0.22); stroke:#d0121f; stroke-width:3; }
-  .peakdot { fill:#d0121f; }
-  .readout { position:absolute; right:150px; top:250px; text-align:right; }
-  .readout .r10 { font-family:'AbrilFig',Georgia,serif; font-size:52px; color:#8fb4d8; }
-  .readout .r1 { font-family:'AbrilFig',Georgia,serif; font-size:52px; color:#d0121f; margin-top:14px; }
-  .readout .rl { font-family:'Arial Black',Arial,sans-serif; font-size:18px; letter-spacing:2px; color:#c8d3e0; }
-  .popfig { position:absolute; left:0; right:0; top:60%; text-align:center; }
-  .popfig .pf-big { font-family:'AbrilFig',Georgia,serif; font-size:130px; color:#d0121f; letter-spacing:0.03em;
+  .ww-trace { fill:none; stroke:#8fb4d8; stroke-width:4; }
+  .ww-avgline { fill:none; stroke:#8fb4d8; stroke-width:2; stroke-dasharray:10 8; opacity:0.7; }
+  .ww-window { fill:rgba(208,18,31,0.22); stroke:#d0121f; stroke-width:3; }
+  .ww-peakdot { fill:#d0121f; }
+  .ww-readout { position:absolute; right:150px; top:250px; text-align:right; }
+  .ww-readout .ww-r10 { font-family:'AbrilFig',Georgia,serif; font-size:52px; color:#8fb4d8; }
+  .ww-readout .ww-r1 { font-family:'AbrilFig',Georgia,serif; font-size:52px; color:#d0121f; margin-top:14px; }
+  .ww-readout .ww-rl { font-family:'Arial Black',Arial,sans-serif; font-size:18px; letter-spacing:2px; color:#c8d3e0; }
+  .ww-popfig { position:absolute; left:0; right:0; top:60%; text-align:center; }
+  .ww-popfig .ww-pf-big { font-family:'AbrilFig',Georgia,serif; font-size:130px; color:#d0121f; letter-spacing:0.03em;
     text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55); }
-  .popfig .pf-sub { display:block; margin-top:10px; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:32px; color:#f4f0e8;
+  .ww-popfig .ww-pf-sub { display:block; margin-top:10px; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:32px; color:#f4f0e8;
     letter-spacing:0.25em; }
-  .chip2 { position:absolute; left:50%; transform:translateX(-50%); bottom:115px; font-family:'Arial Black',Arial,sans-serif; font-size:26px;
+  .ww-chip2 { position:absolute; left:50%; transform:translateX(-50%); bottom:115px; font-family:'Arial Black',Arial,sans-serif; font-size:26px;
     letter-spacing:2px; color:#f4f0e8; background:rgba(10,16,24,0.62); border:1px solid rgba(255,255,255,0.14);
     border-left:6px solid #d0121f; border-radius:10px; padding:12px 24px; }
 </style>
 <div id="root" data-composition-id="wind-window" data-width="1920" data-height="1080">
-  <div class="eye" id="ww-eye">WHY THE ONE-MINUTE NUMBER READS HIGHER</div>
-  <div class="chip2" id="ww-chip">JMA &middot; 10-MIN AVG &middot; NHC/JTWC &middot; 1-MIN AVG</div>
-  <div class="chartwrap" id="ww-chart">
+  <div class="ww-eye" id="ww-eye">WHY THE ONE-MINUTE NUMBER READS HIGHER</div>
+  <div class="ww-chip2" id="ww-chip">JMA &middot; 10-MIN AVG &middot; NHC/JTWC &middot; 1-MIN AVG</div>
+  <div class="ww-chartwrap" id="ww-chart">
     <svg viewBox="0 0 1640 500" preserveAspectRatio="none">
-      <line class="avgline" x1="0" y1="330" x2="1640" y2="330"/>
-      <polyline class="trace" points="0,380 60,300 120,360 180,220 240,340 300,260 360,150 420,300 480,240 540,380 600,200 660,320 720,120 780,280 840,360 900,200 960,300 1020,180 1080,340 1140,260 1200,90 1260,300 1320,220 1380,360 1440,180 1500,280 1560,220 1620,340"/>
-      <rect class="window" id="ww-window" x="0" y="60" width="200" height="420" rx="10"/>
-      <circle class="peakdot" id="ww-peakdot" cx="1200" cy="90" r="10" style="opacity:0"/>
+      <line class="ww-avgline" x1="0" y1="330" x2="1640" y2="330"/>
+      <polyline class="ww-trace" points="0,380 60,300 120,360 180,220 240,340 300,260 360,150 420,300 480,240 540,380 600,200 660,320 720,120 780,280 840,360 900,200 960,300 1020,180 1080,340 1140,260 1200,90 1260,300 1320,220 1380,360 1440,180 1500,280 1560,220 1620,340"/>
+      <rect class="ww-window" id="ww-window" x="0" y="60" width="200" height="420" rx="10"/>
+      <circle class="ww-peakdot" id="ww-peakdot" cx="1200" cy="90" r="10" style="opacity:0"/>
     </svg>
   </div>
-  <div class="readout" id="ww-readout">
-    <div class="r10" id="ww-r10">10-MIN AVG</div>
-    <div class="rl">SMOOTHED OVER THE WHOLE WINDOW</div>
-    <div class="r1" id="ww-r1">1-MIN PEAK</div>
-    <div class="rl">CATCHES THE GUSTY CREST</div>
+  <div class="ww-readout" id="ww-readout">
+    <div class="ww-r10" id="ww-r10">10-MIN AVG</div>
+    <div class="ww-rl">SMOOTHED OVER THE WHOLE WINDOW</div>
+    <div class="ww-r1" id="ww-r1">1-MIN PEAK</div>
+    <div class="ww-rl">CATCHES THE GUSTY CREST</div>
   </div>
-  <div class="popfig" id="ww-pop" style="visibility:hidden"><span class="pf-big">12% HIGHER</span><span class="pf-sub">GENERAL RULE OF THUMB</span></div>
+  <div class="ww-popfig" id="ww-pop" style="visibility:hidden"><span class="ww-pf-big">12% HIGHER</span><span class="ww-pf-sub">GENERAL RULE OF THUMB</span></div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
