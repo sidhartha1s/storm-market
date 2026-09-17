@@ -77,6 +77,9 @@ window.__timelines = window.__timelines || {};
   /* small literal-repeat glint between the pop fade-out and the exit, so a static-analysis pass over
      explicit tl positions (not just the real GSAP playback) also reads continuous coverage */
   tl.to("#ww-chart", { opacity: 0.94, duration: 0.5, yoyo: true, repeat: 1 }, 17.75);
+  /* closes the mid-slide gap on "A short window catches gusty peaks" (5.6) */
+  tl.fromTo("#ww-annot", { autoAlpha:0, y:10 }, { autoAlpha:1, y:0, duration:0.35 }, 5.6);
+  tl.to("#ww-annot", { autoAlpha:0, duration:0.3 }, 9.6);
   /* the 1-minute window slides across the trace over the first ~11s, landing on the tallest peak (x=1200) */
   tl.to("#ww-window", { attr: { x: 1100 }, duration: 11.0, ease: "power1.inOut" }, 1.0);
   tl.to("#ww-peakdot", { opacity: 1, duration: 0.4 }, 11.5);
