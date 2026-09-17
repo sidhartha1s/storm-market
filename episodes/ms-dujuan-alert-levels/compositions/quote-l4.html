@@ -4,15 +4,21 @@
 <body>
 <!-- quote-l4.html — B5 "level four: everyone evacuates". Level 4 label + the one named official quote
      (JMA's Urgent Warning guidance) + the US hurricane-warning timeline chip. Full-window mount, no
-     b-roll. Cues word-synced from audio/b5-s1.words.json. Mount: track 2, host start = episode-abs
-     221.964, duration 63.091 (shifted 15.539s earlier 17 Sep 26 when the CTA moved out of the old
-     B3/B4 seam). Font: 'AbrilFig' relies on index.html's single @font-face (a per-comp
-     duplicate false-triggers css_collision.py on the shared ".ttf" url() token). All classes AND ids
-     carry the q4- comp tag so no name is shared with index.html or a sibling composition. -->
+     b-roll. Cues word-synced from audio/b5-s1.words.json (mount = audio start exactly, comp-relative =
+     audio-relative). Mount: track 2, host start = episode-abs 221.964, duration 63.091. All classes AND
+     ids carry the q4- comp tag.
+
+     ROUND 2 (owner: "sitting still", 2/10, 17 Sep 26) — the headline used to reveal at 1.04s, before the
+     word "instruction" (1.98-2.62) is even spoken; retimed to 1.98. The quote box then sat pixel-identical
+     for ~28s (21.28-49.34): the quote now reveals clause by clause on its own words ("All residents
+     should evacuate" at 21.88, "from dangerous areas." at 23.38, attribution at 25.48), and .q4-note (a
+     chip well clear of both the quote box and the timeline chip) carries six more word-cued captions
+     spanning the whole window, pulled from b5-s1.words.json. Plus .q4-bgplate for continuous background
+     drift. -->
 <template>
 <style>
-  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
-    background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); }
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; background:#04070c; overflow:hidden; }
+  .q4-bgplate { position:absolute; inset:-60px; background:radial-gradient(ellipse at 50% 30%, #10161f 0%, #04070c 75%); transform-origin:center; }
   .q4-eye { position:absolute; left:0; right:0; top:100px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
     font-size:24px; letter-spacing:6px; color:#d0121f; }
   .q4-lvl { position:absolute; left:0; right:0; top:150px; text-align:center; font-family:'AbrilFig',Georgia,serif;
@@ -22,17 +28,23 @@
     -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:26px; }
   .q4-qstrip .q4-q { font-family:Georgia,serif; font-style:italic; font-size:38px; color:#f2f5f8; line-height:1.4; }
   .q4-qstrip .q4-attr { margin-top:20px; font-family:Arial,sans-serif; font-weight:700; font-size:20px; letter-spacing:2px; color:#d8a13a; }
+  .q4-note { position:absolute; left:50%; top:560px; transform:translateX(-50%); max-width:920px; box-sizing:border-box;
+    text-align:center; font-family:'Arial Black',Arial,sans-serif; font-size:24px; letter-spacing:1px; color:#f4f0e8;
+    background:rgba(10,16,24,0.62); border:1px solid rgba(255,255,255,0.14); border-left:6px solid #8fb4d8;
+    border-radius:10px; padding:14px 30px; white-space:nowrap; }
   .q4-timeline { position:absolute; left:260px; right:260px; bottom:150px; box-sizing:border-box; font-family:'Arial Black',Arial,sans-serif;
     font-size:24px; letter-spacing:1px; color:#f4f0e8; background:rgba(10,16,24,0.62); border:1px solid rgba(255,255,255,0.14);
     border-left:6px solid #8fb4d8; border-radius:10px; padding:16px 30px; line-height:1.5; text-align:center; }
 </style>
 <div id="root" data-composition-id="quote-l4" data-width="1920" data-height="1080">
+  <div class="q4-bgplate" id="q4-bgplate"></div>
   <div class="q4-eye" id="q4-eye">ALERT LEVEL 4</div>
   <div class="q4-lvl" id="q4-lvl">Evacuation Instruction</div>
   <div class="q4-qstrip" id="q4-quote" style="visibility:hidden">
-    <div class="q4-q">&ldquo;All residents should evacuate from dangerous areas.&rdquo;</div>
-    <div class="q4-attr">JAPAN METEOROLOGICAL AGENCY &middot; EMERGENCY WARNING SYSTEM, LEVEL 4 GUIDANCE</div>
+    <div class="q4-q">&ldquo;<span id="q4-q1">All residents should evacuate</span> <span id="q4-q2" style="opacity:0">from dangerous areas.</span>&rdquo;</div>
+    <div class="q4-attr" id="q4-attr" style="opacity:0">JAPAN METEOROLOGICAL AGENCY &middot; EMERGENCY WARNING SYSTEM, LEVEL 4 GUIDANCE</div>
   </div>
+  <div class="q4-note" id="q4-note" style="visibility:hidden"></div>
   <div class="q4-timeline" id="q4-tl">US HURRICANE WARNING: 36H BEFORE TS-FORCE WINDS</div>
 </div>
 <script>
@@ -41,39 +53,52 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const HOST_WINDOW = 63.091; // this episode's quote-l4 mount: 221.964-285.055
   function repeatsToFit(start, cycle) { return Math.max(0, Math.floor((HOST_WINDOW - start) / cycle) - 1); }
-  tl.set(["#q4-quote","#q4-tl"], { autoAlpha: 0 }, 0);
-  tl.fromTo("#q4-eye", { autoAlpha:0, y:-16 }, { autoAlpha:1, y:0, duration:0.5 }, 0);
-  tl.fromTo("#q4-lvl", { autoAlpha:0, scale:0.9 }, { autoAlpha:1, scale:1, duration:0.5 }, 1.04);
+  const CONTENT_BEATS = [];
+  function note(text, at, hold) {
+    tl.set("#q4-note", { visibility: "visible", textContent: text }, at);
+    tl.fromTo("#q4-note", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35 }, at);
+    tl.to("#q4-note", { autoAlpha: 0, duration: 0.3 }, at + hold - 0.3);
+    CONTENT_BEATS.push(at);
+  }
+
+  tl.to("#q4-bgplate", { scale: 1.06, duration: HOST_WINDOW, ease: "none" }, 0);
+
+  tl.set(["#q4-quote","#q4-tl","#q4-note"], { autoAlpha: 0 }, 0);
+  tl.set("#q4-note", { visibility: "hidden" }, 0);
+  tl.fromTo("#q4-eye", { autoAlpha:0, y:-16 }, { autoAlpha:1, y:0, duration:0.5 }, 0); CONTENT_BEATS.push(0);
+  /* headline used to land at 1.04, before "instruction" (1.98-2.62) was spoken — retimed */
+  tl.fromTo("#q4-lvl", { autoAlpha:0, scale:0.9 }, { autoAlpha:1, scale:1, duration:0.5 }, 1.98); CONTENT_BEATS.push(1.98);
   /* continuous ambient motion on the headline so it never sits frozen through the long lead-up */
   tl.to("#q4-lvl", { letterSpacing: "2px", duration: 3.0, ease: "sine.inOut", repeat: repeatsToFit(2.0, 3.0), yoyo: true }, 2.0);
+  /* "Japan's Cabinet Office states it in one line." — 6.10s */
+  note("CABINET OFFICE: STATED IN ONE LINE", 6.10, 3.28);
+  /* "Evacuate before Level 4 is even issued, not after." — 9.38s */
+  note("EVACUATE BEFORE LEVEL 4 IS ISSUED", 9.38, 3.38);
+  /* "Japan's weather agency backs that instruction with its own urgent warning." — 12.76s */
+  note("BACKED BY JMA'S OWN URGENT WARNING", 12.76, 4.52);
+  /* "Its guidance for that warning states, in the agency's own words, quote," — 17.28s */
+  note("JMA'S OWN WORDS, NEXT", 17.28, 4.0);
   tl.set("#q4-quote", { visibility: "visible" }, 21.28);
-  tl.fromTo("#q4-quote", { autoAlpha:0, y:30, scale:0.96 }, { autoAlpha:1, y:0, scale:1, duration:0.6, ease:"power3.out" }, 21.28);
+  tl.fromTo("#q4-quote", { autoAlpha:0, y:30, scale:0.96 }, { autoAlpha:1, y:0, scale:1, duration:0.6, ease:"power3.out" }, 21.28); CONTENT_BEATS.push(21.28);
+  /* quote reveals clause by clause on its own words, not as one static block */
+  tl.fromTo("#q4-q2", { opacity: 0 }, { opacity: 1, duration: 0.35 }, 23.38); CONTENT_BEATS.push(23.38);
+  tl.fromTo("#q4-attr", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 25.48); CONTENT_BEATS.push(25.48);
   tl.to("#q4-quote", { boxShadow: "0 0 34px rgba(216,161,58,0.35)", duration: 1.4, ease: "sine.inOut", repeat: repeatsToFit(26.0, 1.4), yoyo: true }, 26.0);
-  tl.fromTo("#q4-tl", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 49.34);
-  tl.to("#q4-tl", { duration:0.01, onStart: () => { document.getElementById("q4-tl").textContent = "EVACUATION ORDER: SEPARATE, LOCAL DECISION · NOT LINKED TO THE WARNING"; } }, 55.26);
-  tl.to(["#q4-eye","#q4-lvl","#q4-quote","#q4-tl"], { autoAlpha:0, duration:0.5 }, 62.49);
-  /* beat-density filler: see ladder-intro.html for why these literal-repeat glints exist */
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 1.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 4.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 7.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 10.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 13.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 16.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 19.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 22.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 25.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 28.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 31.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 34.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 37.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 40.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 43.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 46.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 49.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 52.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 55.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 58.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 61.50);
+  /* "That line is the closest match anywhere in this system to an American mandatory evacuation order." — 27.06s */
+  note("CLOSEST MATCH: MANDATORY EVACUATION", 27.06, 5.1);
+  /* "The difference sits underneath the label." — 32.16s */
+  note("THE DIFFERENCE: WHAT'S UNDERNEATH", 32.16, 2.28);
+  /* "In Japan, the municipality's evacuation order and the weather agency's warning are built to trigger together, by policy." — 34.44s */
+  note("JAPAN: ORDER + WARNING TRIGGER TOGETHER", 34.44, 7.52);
+  /* "In the United States, the National Hurricane Center issues a hurricane warning as a wind forecast." — 41.96s */
+  note("US: NHC ISSUES A WIND-FORECAST WARNING", 41.96, 7.38);
+  tl.fromTo("#q4-tl", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4 }, 49.34); CONTENT_BEATS.push(49.34);
+  tl.to("#q4-tl", { duration:0.01, onStart: () => { document.getElementById("q4-tl").textContent = "EVACUATION ORDER: SEPARATE, LOCAL DECISION · NOT LINKED TO THE WARNING"; } }, 55.26); CONTENT_BEATS.push(55.26);
+  tl.to(["#q4-eye","#q4-lvl","#q4-quote","#q4-tl"], { autoAlpha:0, duration:0.5 }, 62.49); CONTENT_BEATS.push(62.49);
+
+  const sorted = CONTENT_BEATS.slice().sort((a,b)=>a-b);
+  let maxGap = 0; for (let i=1;i<sorted.length;i++) maxGap = Math.max(maxGap, sorted[i]-sorted[i-1]);
+  console.log("[gap-check] quote-l4 content beats:", sorted.map(n=>n.toFixed(2)), "max gap:", maxGap.toFixed(2), "s");
   window.__timelines["quote-l4"] = tl;
 })();
 </script>
