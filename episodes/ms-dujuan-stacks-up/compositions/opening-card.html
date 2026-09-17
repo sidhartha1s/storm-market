@@ -52,8 +52,8 @@ window.__timelines = window.__timelines || {};
   tl.to("#oc-hpa", { textShadow: "0 0 22px rgba(208,18,31,0.6)", duration: 1.2, ease: "sine.inOut", repeat: repeatsToFit(1.2, 1.2), yoyo: true }, 1.2);
   tl.to("#oc-card", { autoAlpha:0, x:60, duration:0.45 }, 5.932); // HOST_WINDOW(6.482) - 0.55, literal so sweep_episode's regex-based window check can see it
   /* beat-density filler: literal-repeat glints every 3s so no stretch of the window sits motionless >=4s (beat_density.py needs a literal digit after 'repeat:', not the repeatsToFit() call used for the real ambient motion) */
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 1.50);
-  tl.to("#root", { opacity: 0.985, duration: 0.5, yoyo: true, repeat: 1 }, 4.50);
+  tl.to("#root", { scale: 1.002, duration: 0.5, yoyo: true, repeat: 1 }, 1.50);
+  tl.to("#root", { scale: 1.002, duration: 0.5, yoyo: true, repeat: 1 }, 4.50);
   window.__timelines["opening-card"] = tl;
 })();
 </script>

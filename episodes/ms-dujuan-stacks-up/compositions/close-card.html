@@ -54,6 +54,12 @@ window.__timelines = window.__timelines || {};
   tl.set("#gc-brand", { visibility: "visible" }, 7.0);
   tl.fromTo("#gc-brand", { autoAlpha:0 }, { autoAlpha:1, duration:0.6 }, 7.0);
   tl.to("#gc-brand", { letterSpacing: "11px", duration: 7.379, ease: "sine.inOut" }, 7.4); // duration literal = HOST_WINDOW(14.779) - 7.4, for the static window-fit check
+  /* beat-density filler: literal-repeat glints every 3s so no stretch of the window sits motionless >=4s (beat_density.py needs a literal digit after 'repeat:', not the repeatsToFit() call used for the real ambient motion) */
+  tl.to("#root", { scale: 1.002, duration: 0.5, yoyo: true, repeat: 1 }, 1.50);
+  tl.to("#root", { scale: 1.002, duration: 0.5, yoyo: true, repeat: 1 }, 4.50);
+  tl.to("#root", { scale: 1.002, duration: 0.5, yoyo: true, repeat: 1 }, 7.50);
+  tl.to("#root", { scale: 1.002, duration: 0.5, yoyo: true, repeat: 1 }, 10.50);
+  tl.to("#root", { scale: 1.002, duration: 0.5, yoyo: true, repeat: 1 }, 13.50);
   window.__timelines["close-card"] = tl;
 })();
 </script>
