@@ -105,8 +105,15 @@ window.__timelines = window.__timelines || {};
      1.36-2.92, right after the headline itself lands; caption it so the note zone isn't dark for the
      first ~3.5s while the headline holds. */
   note("CALLED EMERGENCY SAFETY MEASURES", 1.90, 1.68);
+  /* round 4 (owner: freeze_scan static 4.0-10.0s comp-local, 17 Sep 26) — this single caption used to
+     hold its ORIGINAL text (already fully spoken by 6.42s) all the way to 10.0s, sitting stale through
+     "Japan's own cabinet office admits this level is rarely issued" (6.42-10.84) without ever
+     captioning it. Split on the clause boundary into two real facts instead of stretching one caption
+     past its own words. */
   /* "...it means evacuation itself may no longer be safe." — 3.58s */
-  note("EVACUATION ITSELF MAY NO LONGER BE SAFE", 3.58, 6.42);
+  note("EVACUATION ITSELF MAY NO LONGER BE SAFE", 3.58, 2.84);
+  /* "Japan's own cabinet office admits this level is rarely issued." — 6.42s */
+  note("CABINET OFFICE ADMITS: RARELY ISSUED", 6.42, 3.58);
   tl.set("#l5-pf", { visibility: "visible" }, 10.0);
   tl.fromTo("#l5-pf", { autoAlpha:0, scale:2.0 }, { autoAlpha:1, scale:1, duration:0.35, ease:"power4.in" }, 10.0); CONTENT_BEATS.push(10.0);
   tl.to("#l5-pf", { autoAlpha:0, y:-24, duration:0.35 }, 13.6); CONTENT_BEATS.push(13.6);
@@ -114,8 +121,14 @@ window.__timelines = window.__timelines || {};
   note("OFFICIALS CAN'T CONFIRM SEVERITY IN TIME", 11.37, 6.73);
   /* "Residents are told to leave before level five ever arrives, never to wait for it." — 18.10s */
   note("LEAVE BEFORE IT ARRIVES. NEVER WAIT.", 18.10, 5.16);
+  /* round 4 (owner: freeze_scan static 23.5-29.5s comp-local, 17 Sep 26) — same bug: this caption held
+     its text past its own words while the narration moved on to "It is the National Weather Service's
+     extreme wind warning" (28.26-31.76), the exact fact the card reveals a beat later. Split so the
+     second clause gets its own caption and bridges straight into the card. */
   /* "America's closest match is not a hurricane watch or a hurricane warning at all." — 23.26s */
-  note("NOT A HURRICANE WATCH OR WARNING", 23.26, 6.18);
+  note("NOT A HURRICANE WATCH OR WARNING", 23.26, 5.00);
+  /* "It is the National Weather Service's extreme wind warning." — 28.26s */
+  note("IT'S THE EXTREME WIND WARNING", 28.26, 1.18);
   tl.set("#l5-card", { visibility: "visible" }, 29.44);
   tl.fromTo("#l5-card", { autoAlpha:0, y:30 }, { autoAlpha:1, y:0, duration:0.5, ease:"power3.out" }, 29.44); CONTENT_BEATS.push(29.44);
   // card ambient (glow pulse + y-bob) runs from reveal straight through to exit so the 29.44-54.02 span
