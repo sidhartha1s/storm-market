@@ -8,8 +8,9 @@
      narration + a ~4 s tail hold). -->
 <template>
 <style>
-  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8;
-    background:radial-gradient(ellipse at 50% 45%, #131b26 0%, #050a10 70%); overflow:hidden; }
+  #root { position:absolute; inset:0; font-family:Arial,sans-serif; color:#f2f5f8; background:#050a10; overflow:hidden; }
+  .gc-bgplate { position:absolute; left:-60px; right:-60px; top:-60px; bottom:-60px;
+    background:radial-gradient(ellipse at 50% 45%, #131b26 0%, #050a10 70%); transform-origin:center; will-change:transform; }
   .gc-glow { position:absolute; width:900px; height:900px; border-radius:50%; filter:blur(90px); opacity:0.6;
     background:radial-gradient(circle, rgba(208,18,31,0.55) 0%, rgba(208,18,31,0) 70%); }
   #gc-glow-a { left:-200px; top:-260px; }
