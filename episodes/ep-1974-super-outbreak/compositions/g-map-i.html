@@ -313,7 +313,7 @@ const DOTS=[["g-map-i-td0",0,4],["g-map-i-td1",0.02,4],["g-map-i-td2",0.04,4],["
   tl.fromTo(P+"t1ring", { attr: { r: 8 }, opacity: 0.9 }, { attr: { r: 26 }, opacity: 0, duration: 0.9, ease: "power2.out" }, CUES.first + 0.15);
 
   // exit: rail slides out on the hard cut
-  tl.to([P+"eb2", P+"r1", P+"r2", P+"cap"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  tl.to([P+"eb2", P+"r0", P+"r1", P+"r2", P+"r3", P+"r4", P+"cap"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
 
   window.__timelines["g-map-i"] = tl;
 })();
