@@ -126,7 +126,8 @@ window.__timelines = window.__timelines || {};
 
   /* cues from audio/a5-s4.txt @183.24wpm est., PROVISIONAL (no words.json yet):
      combed@5.89 cant("can't")@8.51 microburst@17.68 — window 0 to microburst+4 (~21.7s) */
-  tl.to(P+"comb", {x:1020, duration:1.2, ease:"power2.inOut"}, 5.89);
+  // comb starts hidden at the RIGHT panel's own left edge (x:0) and slides to its right edge — never touches the left panel
+  tl.fromTo(P+"comb", {autoAlpha:0, x:0}, {autoAlpha:1, x:580, duration:1.2, ease:"power2.inOut"}, 5.89);
 
   tl.fromTo(P+"redx", {autoAlpha:0}, {autoAlpha:1, duration:0.2}, 8.51);
   tl.to(P+"redx", {autoAlpha:0, duration:0.3}, 9.51);
