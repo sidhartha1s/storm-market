@@ -1,10 +1,11 @@
 # ep-1974-super-outbreak · "The Day America Had 7 F5 Tornadoes - 1974 Super Outbreak"
 
-Lane: documentary (`/storm-episode`). Target 22:00 ± 1:00. Title locked by the owner 20 Sep 26. Script v6
+Lane: documentary (`/storm-episode`). Target 22:00 ± 1:00. Title locked by the owner 20 Sep 26. Script v7
 (v1 graded 7/10 hook, 6/10 overall in `research/script_review_v1.md`; v2 applied the fixes; v3 added the
 researched beats; v4 applied the second grade; v5 is the spoken-sentence pass on the palette in
 `references/humanise-rules.md`; v6 applies the v5 grade, `research/script_review_v5.md`, 7/10: six fact
-errors, opener cap, comma splices; owner length decision: natural 19 to 20 min).
+errors, opener cap, comma splices; v7 applies the v6 grade, `research/script_review_v6.md`, 7/10, hook 8: Tanner
+timeline, rhetorical questions, anaphora, balanced-contrast reflex; owner length decision: natural 19 to 20 min).
 Doctrine: `references/script-os.md`, `references/script-scaling.md`, DESIGN.md (hook contract, CTA contract,
 on-screen text rules). Facts: `research/fact_sheet.md` + `fact_sheet_addendum.md`; every number is `[verify]`
 until the fact-QC pass clears it; zero open markers before TTS. Delivery: pocket-TTS then atempo 1.10.
@@ -131,9 +132,9 @@ down at 2:16 PM over farm country, and for the next eight hours every one that f
 **A1-S1 (100 w) · g-clock "2:16 PM CDT" · g-master-map track 1.** The first F5 of the day came down south of
 Huffman, Indiana, at 2:16 PM, Central time, [VE track drawn] and for sixty two miles it stayed over farmland,
 through six counties and never a town. Six people died, in farmhouses that happened to be in the way. An hour and
-a quarter later a town with a warning, with fifteen minutes to get ready, would lose thirty one people. [Q Q-A1]
-The warning worked there, but the warning wasn't the thing that saved anybody, and the reason why starts on a
-hill above the Ohio River.
+a quarter later a town with a warning, with fifteen minutes to get ready, would lose twenty eight people, and thirty one along the whole path. [Q Q-A1]
+The warning reached that town in time, and it still lost twenty eight people, and the reason is what was under
+the houses.
 
 **A1-S1b (110 w) · g-clock "3:51 PM EDT" · Hanover College stills, Ken Burns · track 2a.** At 3:51 PM, Eastern
 time, a tornado hit Hanover College near Madison, Indiana, with nearly a thousand students on campus and some
@@ -179,8 +180,7 @@ else in Xenia it went the other way.
 people died along that path, thirty two of them inside the city, and about twelve hundred were
 hurt. Fourteen hundred buildings were damaged or gone, and five schools were destroyed: Xenia
 High, Central Junior High, McKinley, Simon Kenton and Arrowood. [VE the names, one by one, over the aerial
-scar] [PAY Q-A2] Thirty minutes was enough time, but it
-wasn't enough shelter. [HUMAN g-person Gilligan] That same evening Governor John Gilligan sent two hundred
+scar] [PAY Q-A2] Xenia got its thirty minutes and still had nowhere to put the people. [HUMAN g-person Gilligan] That same evening Governor John Gilligan sent two hundred
 and fifty National Guardsmen into Xenia, and by midnight fourteen hundred and forty five were on duty across
 Ohio, more than half of them in this one town. [RS] [VE popfig "1,445 GUARDSMEN"] They spent the night
 pulling people out of the houses on Windsor Park and Arrowhead, street by street, with the power out and the
@@ -205,7 +205,7 @@ then crossed out] then decided a six was a rating nobody could believe and took 
 **A3-S2 (130 w) · g-radar Cincinnati WSR-57 · citation card: the 4:05 PM warning, verbatim.** The radar at the
 Cincinnati weather office was built in 1960, and it could see rain but it couldn't see wind.
 [VE the scope, one sweep at a time] So a tornado showed up only as a hook on the edge of a storm, if it showed
-up at all. [Q Q-A3] How do you warn a city when your radar can't see the thing you're warning about? At 4:05 PM
+up at all. [Q Q-A3] So the office had to warn a city off a shape on the edge of a storm. At 4:05 PM
 the office put out a tornado warning for Hamilton County, and the reason it gave was hook echoes on the radar. [VE citation
 card: the 4:05 PM warning, full clause] [RS] Twenty seven minutes later the hook it was looking at
 came through Sayler Park on the west side of Cincinnati, and four people died in that county. [verify] By then
@@ -226,25 +226,24 @@ In Louisville, Kentucky, an F4 came across the river into a city of three hundre
 helicopter. Dick Gilbert reported traffic for WHAS radio, he grew up on Pennsylvania Avenue in Crescent Hill,
 and the tornado was on his street. He stayed. He stayed in the air, followed it, and told the whole city block
 by block where it was and where it was going. [VE the track advancing with his words; insert audio] It tore the
-roof off Freedom Hall at the fairgrounds and wrecked the Crescent Hill water station while he talked. One man, one
-helicopter and one radio station, and that was the warning. [PAY Q-A3] Two people died in Louisville, and the
+roof off Freedom Hall at the fairgrounds and wrecked the Crescent Hill water station while he talked. [PAY Q-A3] Two people died in Louisville, and the
 President sent him a special commendation for it. [RS] [VE g-person Gilbert card, "COMMENDED BY THE PRESIDENT"]
 
-**A3-S4 (140 w) · g-clock "5:17 PM EDT" · Monticello, Indiana · g-person Rod Poole · track: the 121-mile line.**
+**A3-S4 (140 w) · g-clock "5:17 PM" · Monticello, Indiana · g-person Rod Poole · track: the 121-mile line.**
 In that same hour, up north, one tornado came down near Otterbein, Indiana, and didn't lift for a hundred and
-twenty one miles. [VE map] [RS] At 5:17 PM it went through the middle of Monticello, where the county
+twenty one miles. [VE map] [RS] At 5:17 PM, local time, [verify: Indiana on EST in 1974] it went through the middle of Monticello, where the county
 courthouse came apart and a safe on the third floor fell straight through to the first. [VE popfig "121
 MILES"] A railroad bridge over the Tippecanoe River was lifted off its footings and twisted. [HUMAN] Rod
 Poole, who later ran the town's water department, said the sky was a greenish brown, and that everybody says a
 tornado sounds like a train, and they're right. Eighteen people died along those hundred and twenty one miles.
 
 **A3-S5 (40 w) · g-master-map: Georgia.** And more than four hundred miles south, in Georgia, an F4 went through Sugar
-Valley and Resaca, with ten dead and two hundred hurt. [VE Georgia lights up] That was four states between five
-o'clock and seven, all off one storm system, and the sun was still up. [Q L3] *(blackout 0.8 s)*
+Valley and Resaca, with ten dead and two hundred hurt. [VE Georgia lights up] Four states inside two hours, all off one
+storm system, and the sun was still up. [Q L3] *(blackout 0.8 s)*
 
 ### A4 · Alabama after dark (11:30–15:00, 440 w)
 **A4-S1 (150 w) · g-clock "6:20 PM CDT" → "7:30" · southern arm · track 5, then 6.** At 6:20 PM, Central time,
-a tornado formed near Moulton, Alabama, and stayed on the ground for ninety minutes and fifty two miles.
+a tornado formed near Moulton, Alabama, and stayed on the ground for about an hour and fifty two miles.
 [VE track] Twenty eight people died along its fifty two miles, from Lawrence County through Limestone, and by
 7:30 PM the neighbors were out in the wreckage pulling people out. That's when the second one came.
 [RS] [VE second track, one mile west, drawn over the first] It formed about an hour after the first, ran a
@@ -270,8 +269,8 @@ were destroyed in Guin that night, and twenty eight people died. [verify: 28 off
 **A4-S3 (120 w) · g-scale all seven bars lit · aerial of Guin · g-person Mildred McGuire.** [HUMAN] Mildred
 McGuire, who ran McGuire Drugs, survived with a broken pelvis and later wrote a poem about what Guin did next,
 which was rebuild on the same ground. That was the seventh F5, [VE bar 7 lit, the set complete] seven between two in
-the afternoon and eleven at night, from Indiana to Alabama. By midnight there was nothing left to count but the dead, three hundred and
-thirty of them by the government's number, and five thousand four hundred and eighty four hurt. [RS] [VE
+the afternoon and eleven at night, from Indiana to Alabama. Three hundred and thirty people were dead by NOAA's count, and five thousand four
+hundred and eighty four were hurt. [RS] [VE
 popfigs "330 DEAD" then "5,484 HURT"] And one man in Chicago was already planning to count everything else.
 [Q L5] *(blackout 0.9 s)*
 
@@ -297,8 +296,7 @@ which is how one day makes seven of them. [VE the card: warm wet air below, dry 
 top, a cold front as the trigger] You take warm, wet air off the Gulf of Mexico, put a layer of dry air over
 the top of it, run a jet stream above that to turn the whole column, and send a cold front through to set it
 off. That ran from Indiana to Alabama, all afternoon and all night. [verify synoptic summary] Every storm that formed
-in that column had the same engine. One machine made all of them, and it ran for the better part of a day.
-That's an outbreak. [RS] [VE the engine card cycles once, one storm after
+in that column had the same engine. One machine made all of them, and it ran for the better part of a day. [RS] [VE the engine card cycles once, one storm after
 another off the same column]
 
 **A5-S4 (130 w) · g-mechanism: combed trees vs rotated trees · g-then-now v1.** [PAY Q-A5] In the survey photos
@@ -320,21 +318,21 @@ deadliest single tornado in the state's history. [RS] [VE popfig "132 MILES · 7
 tornadoes had destroyed thirty seven years earlier, and that people had rebuilt on the same ground. [VE the two
 paths lining up] A weather service meteorologist and a geography professor had been comparing the tracks for
 three years before it happened, and afterward the local paper quoted them saying the paths matched almost exactly. [HUMAN citation
-card] So what happened the second time?
+card] The second time, the numbers went the other way.
 
 **A6-S1b (110 w) · g-then-now: 1974 vs 2011, two rows · popfig "16 → 4".** [PAY Q-A6] In 1974 the two Tanner
 tornadoes killed sixteen people in Limestone County, [verify] and in 2011, with two and a half times as many
 people living there, the EF5 killed four. [RS] [VE the two numbers] More houses in the path and fewer dead,
-and the researchers, they said why in two words, most likely: better warnings. [PAY L4] Madison County next door, where the first Tanner
+and the researchers said the reason was most likely better warnings. [PAY L4] Madison County next door, where the first Tanner
 tornado ended, has four hundred and thirty three thousand people today, and Huntsville is the biggest city in
 Alabama. [Q Q-A6b] So the real question isn't whether it happens again, it's whether the warning reaches you.
 
-**A6-S2 (130 w) · g-then-now v2: 1974 vs today, radar, warning, phone.** Could April third happen again? Yes, it
-could, because the ingredients were ordinary spring weather for that part of the country arriving on the same
+**A6-S2 (130 w) · g-then-now v2: 1974 vs today, radar, warning, phone.** April third can happen again, because
+the ingredients were ordinary spring weather for that part of the country arriving on the same
 day, and every few decades they do. [verify] What changed is the warning. [VE two columns] In 1974 the radar
-saw rain, and today it sees the wind turning inside the storm before the funnel exists. In 1974 the warning was
+saw rain, and today it sees the wind turning inside the storm before the funnel exists. Back then the warning was
 a radio you had to have switched on, and today it's the phone in your pocket, and it will wake you up. [verify
-WEA] In 1974 a good warning was fifteen minutes and most places got less, and today a warning gives you
+WEA] A good warning in 1974 was fifteen minutes and most places got less, and today a warning gives you
 eight to fifteen. [verify: national average lead time] [PAY Q-A6b] [RS] [VE the two columns fill, 1974 left, today right] Allen Pearson's
 forecast was right a day early, and three hundred and thirty people still died, because a warning is only as good as the
 radio it plays on and the basement you can reach. Today the warning reaches you, and the houses moved into
@@ -342,12 +340,11 @@ the path instead.
 
 **A6-S3 (130 w) · g-person Gus Allen returns · Brandenburg today, muted · g-then-now v3: the fifteen minute card.**
 [HUMAN] Gus Allen still lives near Brandenburg, and his sister, his brother and his small cousin are on the
-memorial there. It was just a bad day, he said, and days like it come back every few decades. [PAY EPISODE] So if he knew, why did so many people die? Because in 1974 knowing a day early
-bought you nothing without a radio and a basement, and today the warning buys you minutes. [VE card,
-three rows] A storm shelter or an inside room on the lowest floor is close enough to reach in that time. A car
-trying to outrun a mile-wide tornado is not. [RS] [VE third row: the car, struck through] A few minutes is
-enough to get below ground and not enough to get out of town, so know which one your house is before the day
-comes.
+memorial there. It was just a bad day, he said, and days like it come back every few decades. [PAY EPISODE] Pearson knew a day early, and it bought nobody anything without a radio and a
+basement, and today the warning buys you minutes. [VE card,
+three rows] A storm shelter or an inside room on the lowest floor you can reach in that time, and a car
+trying to outrun a mile-wide tornado is the one thing you can't. [RS] [VE third row: the car, struck through]
+Know before the day comes which room in your house is the one you run to.
 
 ### Z · close (22:00–22:30, 50 w) · g-outro
 Where are you watching this from, and do you have a place below ground? Tell me in the comments, I read all of
