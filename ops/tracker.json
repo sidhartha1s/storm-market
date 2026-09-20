@@ -8,7 +8,8 @@
     "One heavy job at a time. Renders run in the main chat and the owner is told before launch.",
     "Checks green before any render; preview before render.",
     "Pipeline stays full: pre-production (facts, script, packaging, clips) runs for every slate row in parallel; only assemble/render are one at a time.",
-    "Shipped finals live in the MAIN checkout episodes/<slug>/renders/ (master + SRT + metadata), never only in a worktree (owner 15 Sep 26)."
+    "Shipped finals live in the MAIN checkout episodes/<slug>/renders/ (master + SRT + metadata), never only in a worktree (owner 15 Sep 26).",
+    "Documentary lane leads from 20 Sep 26: two US tornado docs a week (Wed, Sat), 20 to 25 min, script-os engine; news lane only for US live hazards; foreign buckets parked (ops/slate-tornado-docs.md)."
   ],
   "agents": [
     {
@@ -541,6 +542,114 @@
       "status": "done",
       "note": "final master + SRT 17 Sep 26 (NOAA-20 smooth zoom), ready to upload",
       "updated": "17 Sep 26 17:51"
+    },
+    {
+      "slug": "ep4-el-reno",
+      "lane": "doc",
+      "bucket": "tornado",
+      "title": "El Reno 2013: the widest tornado ever measured",
+      "owner": "director",
+      "due": "24 Sep 26",
+      "phase": "preview",
+      "status": "doing",
+      "note": "v3 draft 26:08 + hook v2 preview parked since 31 Aug; retention pass then owner review; plan ops/slate-tornado-docs.md",
+      "updated": "20 Sep 26 16:48"
+    },
+    {
+      "slug": "ep-1974-super-outbreak",
+      "lane": "doc",
+      "bucket": "tornado",
+      "title": "The Day America Had 7 F5 Tornadoes (1974 Super Outbreak)",
+      "owner": "director",
+      "due": "27 Sep 26",
+      "phase": "packaging",
+      "status": "doing",
+      "note": "E1 of the tornado slate; fact sheet + 3 titles first; plan ops/slate-tornado-docs.md",
+      "updated": "20 Sep 26 16:48"
+    },
+    {
+      "slug": "ep-enderlin-2025",
+      "lane": "doc",
+      "bucket": "tornado",
+      "title": "The First EF5 in 12 Years (Enderlin, ND 2025)",
+      "owner": "director",
+      "due": "01 Oct 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "E2; plan ops/slate-tornado-docs.md",
+      "updated": "20 Sep 26 16:48"
+    },
+    {
+      "slug": "ep-woodward-1947",
+      "lane": "doc",
+      "bucket": "tornado",
+      "title": "The Tornado Nobody Was Allowed to Forecast (Woodward 1947)",
+      "owner": "director",
+      "due": "04 Oct 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "E3; plan ops/slate-tornado-docs.md",
+      "updated": "20 Sep 26 16:48"
+    },
+    {
+      "slug": "ep-lubbock-1970",
+      "lane": "doc",
+      "bucket": "tornado",
+      "title": "The Tornado That Invented the F Scale (Lubbock 1970)",
+      "owner": "director",
+      "due": "08 Oct 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "E4; plan ops/slate-tornado-docs.md",
+      "updated": "20 Sep 26 16:48"
+    },
+    {
+      "slug": "ep-palm-sunday-1965",
+      "lane": "doc",
+      "bucket": "tornado",
+      "title": "The Day Two Tornadoes Walked Side by Side (Palm Sunday 1965)",
+      "owner": "director",
+      "due": "11 Oct 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "E5; plan ops/slate-tornado-docs.md",
+      "updated": "20 Sep 26 16:48"
+    },
+    {
+      "slug": "ep-fargo-ruskin-1957",
+      "lane": "doc",
+      "bucket": "tornado",
+      "title": "1957: The Year the Suburbs Met the F5 (Fargo + Ruskin Heights)",
+      "owner": "director",
+      "due": "15 Oct 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "E6; plan ops/slate-tornado-docs.md",
+      "updated": "20 Sep 26 16:48"
+    },
+    {
+      "slug": "ep-palm-sunday-1994",
+      "lane": "doc",
+      "bucket": "tornado",
+      "title": "The Warning Was Issued. The Church Never Heard It. (Palm Sunday 1994)",
+      "owner": "director",
+      "due": "18 Oct 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "E7; plan ops/slate-tornado-docs.md",
+      "updated": "20 Sep 26 16:48"
+    },
+    {
+      "slug": "ep-palm-sunday-1920",
+      "lane": "doc",
+      "bucket": "tornado",
+      "title": "The Forgotten Palm Sunday: 380 Dead in 1920",
+      "owner": "director",
+      "due": "22 Oct 26",
+      "phase": "idea",
+      "status": "todo",
+      "note": "E8; plan ops/slate-tornado-docs.md",
+      "updated": "20 Sep 26 16:48"
     }
   ]
 }
