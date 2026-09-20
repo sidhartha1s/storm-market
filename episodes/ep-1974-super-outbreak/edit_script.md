@@ -185,8 +185,16 @@ traffic for WHAS radio, and when the F4 came across the river at twenty to five 
 it, and told the city street by street where it was and which way it was going. [VE the track advancing with
 his words; insert audio] Two people died in Louisville. A tornado that size through a city of that size and
 two people died, and the President wrote to him afterward to say why. [RS] That was the best a warning could
-do in 1974, one man, one helicopter, one radio station. And the sun was still up. The worst of the night had
-not started. [Q L3] *(blackout 0.8 s)*
+do in 1974, one man, one helicopter, one radio station.
+
+**A3-S4 (150 w) · g-master-map: the 121-mile Indiana track and the Georgia arm · g-clock 4:47 → 6:47.** The
+same hour, the map grew in two directions at once. [VE] Across northern Indiana a single tornado stayed on
+the ground for a hundred and twenty one miles, [RS] from Otterbein to Wolcottville, two hours of it, eighteen
+dead, a track so long the survey crews later had trouble believing it was one storm. And six hundred miles
+south, in Georgia, an F4 came through Sugar Valley and Resaca, ten dead, two hundred hurt, in a state that
+does not think of itself as tornado country. [VE Georgia lights up on the map] Indiana, Kentucky, Ohio,
+Tennessee, Georgia, all inside one hour, all from the same engine. And the sun was still up. The worst of the
+night had not started. [Q L3] *(blackout 0.8 s)*
 
 ### A4 · Alabama after dark (10:35–14:10, 510 w)
 **A4-S1 (150 w) · g-clock 6:20 PM CDT → 7:30 · g-master-map southern arm · track 5, then 6 one mile west.** The
