@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-person-pearson — I-1 ("the call"). Floats over footage: root transparent, text on .glasscard.
+     Photo: media/act-h-a2/allen-pearson-portrait.png (provenance.csv row confirms Allen Pearson,
+     usable for beat H and I) — owner note: film/camera-frame treatment on this photo only. */
+  #root { position:absolute; inset:0; background:transparent; font-family:Arial,sans-serif; }
+  .glasscard { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14);
+    border-radius:28px; box-sizing:border-box; box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
+  .g-person-pearson-card { position:absolute; left:96px; top:700px; width:1180px; height:280px;
+    display:flex; align-items:center; gap:40px; padding:0 48px; overflow:hidden; }
+  .g-person-pearson-filmframe { flex:0 0 220px; width:220px; height:260px; background:#1a1a1a;
+    padding:10px 10px 10px 20px; box-sizing:border-box; position:relative; }
+  .g-person-pearson-sprockets { position:absolute; left:0; top:0; bottom:0; width:10px;
+    background-image: repeating-linear-gradient(180deg, #3d3d3d 0 7px, #1a1a1a 7px 14px); }
+  .g-person-pearson-photowrap { width:100%; height:100%; background:#000; display:flex;
+    align-items:center; justify-content:center; overflow:hidden; }
+  .g-person-pearson-photowrap img { max-width:100%; max-height:100%; object-fit:contain; display:block; }
+  .g-person-pearson-text { flex:1; min-width:0; }
+  .g-person-pearson-name { font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; line-height:1.05; }
+  .g-person-pearson-role { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:10px; }
+  .g-person-pearson-line3 { font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:4px; color:#93a3b2; margin-top:16px; }
+  .g-person-pearson-underline { position:absolute; left:48px; right:48px; bottom:22px; height:1px; background:#e8c56a; transform-origin:left center; }
+</style>
+<div id="root" data-composition-id="g-person-pearson" data-width="1920" data-height="1080">
+  <div class="g-person-pearson-card glasscard" id="g-person-pearson-card">
+    <div class="g-person-pearson-filmframe">
+      <div class="g-person-pearson-sprockets"></div>
+      <div class="g-person-pearson-photowrap">
+        <img id="g-person-pearson-photo" src="media/act-h-a2/allen-pearson-portrait.png" alt="" />
+      </div>
+    </div>
+    <div class="g-person-pearson-text">
+      <div class="g-person-pearson-name" id="g-person-pearson-name">ALLEN PEARSON</div>
+      <div class="g-person-pearson-role" id="g-person-pearson-role">Severe Storms Forecast Center, Kansas City</div>
+      <div class="g-person-pearson-line3" id="g-person-pearson-line3">CALLED EVERY OFFICE THE DAY BEFORE</div>
+    </div>
+    <div class="g-person-pearson-underline" id="g-person-pearson-underline"></div>
+  </div>
+</div>
+<script>
+(function() {
+  /* I-1 span, audio/i-1.words.json (exact, current on disk). No word-tied cue needed here —
+     standard lower-third: enters together, holds, slides out. Duration = segment span. */
+  const DUR = 45.946; // audio/manifest.json i-1.duration
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-person-pearson-";
+  tl.set(P+"underline", { scaleX: 0 }, 0);
+  tl.fromTo(P+"card", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0.2);
+  /* continuous element: underline grows the full duration */
+  tl.to(P+"underline", { scaleX: 1, duration: DUR, ease: "none" }, 0.2);
+  tl.to(P+"card", { x: -120, autoAlpha: 0, duration: 0.5, ease: "power2.in" }, DUR - 0.6);
+  window.__timelines["g-person-pearson"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
