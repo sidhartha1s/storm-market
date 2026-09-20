@@ -107,21 +107,14 @@ All other broadcast pulls muted, narrated over, ≤ 8 s, `.bc` grade class, neve
 
 ### H · hook (0:00–0:25, 55 w) · frame one mid-action: the scope, hooks blooming; popfig "APRIL 3, 1974 · CINCINNATI" inside the first second
 *(ins-hook-whas under the first two seconds, ducked as the narrator enters)*
-Seven F5 tornadoes in one day, and it has never happened again. [verify] [VE g-scale seven bars slam in]
-It killed three hundred and thirty people. [RS] [VE g-radar: five hooks on one scope, popfig "5 HOOKS · ONE SCREEN"] Five
-tornado hooks on one radar screen at once, and the worst of the night hadn't even formed yet. And the man who ran the
-national forecast office knew it was coming a full day early. He knew, and three hundred and thirty people died anyway. [Q]
-*(probes: `audio/probe/hook_plain_110.wav`, `demo_mixed_110.wav`; the shipped hook uses no device beyond the
-contraction, per the palette)* *(1.5 s void)*
+The only day in history to record Seven F5 tornadoes in a single day. [verify] [VE g-scale seven bars slam in]
+And it killed three hundred and thirty people. [RS] [VE g-radar: five hooks on one scope, popfig "5 HOOKS · ONE SCREEN"] Five
+tornado pops up on a radar screen at once, and the worst of the night hadn't even formed yet. And the man who ran the
+national forecast knew it was coming a whole day before. [Show the picture of the man here. no description] He knew, and he let three hundred and thirty people die anyway. [Q]*(probes: `audio/probe/hook_plain_110.wav`, `demo_mixed_110.wav`; the shipped hook uses no device beyond the contraction, per the palette)* *(1.5 s void)*
 
 ### I · the call (0:25–1:55, 200 w) · g-master-map v1, thirteen states outlined and empty; popfig "APRIL 2, 1974 · KANSAS CITY"
-The day before, a man named Allen Pearson picked up a telephone. [HUMAN g-person Pearson] He ran the Severe
-Storms Forecast Center, and the charts for the third of April scared him. He called every weather office in the
-eastern half of the country and told them to fix their radar that night and bring in extra people the
-next day. [VE map: the offices light up one by one] He was right about the day and he was right
-about the place. The watches went out, the warnings went out, and people still died, because in 1974 a
-warning was a voice on the radio, and a radio has to be switched on. [RS] After it was over, the Weather Bureau found that most people didn't know
-it could forecast a tornado at all, or what a tornado watch was. [verify wording]
+The day before, a man named Allen Pearson picked up a telephone. [AI: HUMAN g-person Pearson; owner: can show his picture in a small framed/film camera style setting alongside your motion graphics if it fits.] He ran the Severe Storms Forecast Center, and the charts for the third of April scared him. He called every weather office in the eastern half of the country and told them to fix their radar that night and bring in extra people the next day. [VE map: the offices light up one by one] He was right about the day and he was right
+about the place. The watches went out, the warnings went out, and people still died, because in 1974 a warning was a voice on the radio, and a radio has to be switched on. [RS] After it was over, the Weather Bureau found that most people didn't know it could forecast a tornado at all, or what a tornado watch was. [verify wording]
 
 A hundred and forty eight tornadoes in less than a day, [VE popfig "148"] across thirteen states and a piece
 of Canada, and two thousand six hundred miles of ground ripped up end to end. [VE popfig "2,600 MILES"] Seven
