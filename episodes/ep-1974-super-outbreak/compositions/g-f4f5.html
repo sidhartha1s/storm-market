@@ -116,33 +116,37 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"lab-f5", {autoAlpha:0, y:-20}, {autoAlpha:1, y:0, duration:0.5}, 0.9);
   tl.fromTo(P+"footer", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 1.4);
 
-  // continuous debris drift for the full 20s
+  // continuous debris drift for the whole 21.0s window (finite, no repeat)
   specks.forEach((s, i) => {
-    tl.to(s, {x: "+=1780", duration: 20, ease: "none"}, 0.3 + i * 0.15);
+    tl.to(s, {x: "+=1780", duration: 21, ease: "none"}, 0.3 + i * 0.15);
   });
 
-  // CUES.walls @4.26 — F4: roof lifts off, wall segments break and scatter
-  tl.to(P+"f4-roof", {x:-140, y:-40, rotation:-22, autoAlpha:0, duration:0.7, ease:"power2.in"}, 4.26);
-  tl.to(P+"f4-ws1", {x:-90, y:-60, autoAlpha:0.4, duration:0.6}, 4.26);
-  tl.to(P+"f4-ws2", {x:-110, y:20, autoAlpha:0.4, duration:0.6}, 4.36);
-  tl.to(P+"f4-ws3", {x:120, y:-30, autoAlpha:0.4, duration:0.6}, 4.46);
-  tl.to(P+"f4-ws4", {x:60, y:80, autoAlpha:0.4, duration:0.6}, 4.56);
+  /* FINAL cues from audio/a5-s2.words.json, mount = A5-S2 start, DUR 21.0 (orchestrator 2026-09-21):
+     walls 3.69 · swept 6.79 · cars 9.09 · bark 11.99 · slab/"F5" 13.09 */
+  // CUES.walls @3.69 — F4: roof lifts off, wall segments break and scatter
+  tl.to(P+"f4-roof", {x:-140, y:-40, rotation:-22, autoAlpha:0, duration:0.7, ease:"power2.in"}, 3.69);
+  tl.to(P+"f4-ws1", {x:-90, y:-60, autoAlpha:0.4, duration:0.6}, 3.69);
+  tl.to(P+"f4-ws2", {x:-110, y:20, autoAlpha:0.4, duration:0.6}, 3.79);
+  tl.to(P+"f4-ws3", {x:120, y:-30, autoAlpha:0.4, duration:0.6}, 3.89);
+  tl.to(P+"f4-ws4", {x:60, y:80, autoAlpha:0.4, duration:0.6}, 3.99);
 
-  // CUES.swept @7.2 — F5: walls AND roof fly, slab remains alone
-  tl.to([P+"f5-walls", P+"f5-roof"], {autoAlpha:0, y:-60, duration:0.5, ease:"power2.in"}, 7.2);
-  tl.fromTo(P+"swept", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 7.7);
+  // CUES.swept @6.79 — F5: walls AND roof fly, slab remains alone
+  tl.to([P+"f5-walls", P+"f5-roof"], {autoAlpha:0, y:-60, duration:0.5, ease:"power2.in"}, 6.79);
 
-  // CUES.cars @9.5 — F5: car slides ~100yd and tips (kept clear of the canvas right edge)
-  tl.to(P+"f5-car", {x:200, rotation:35, duration:1.0, ease:"power2.out"}, 9.5);
-  tl.fromTo(P+"dimline", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 10.4);
+  // CUES.cars @9.09 — F5: car slides ~100yd and tips (kept clear of the canvas right edge)
+  tl.to(P+"f5-car", {x:200, rotation:35, duration:1.0, ease:"power2.out"}, 9.09);
+  tl.fromTo(P+"dimline", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 9.99);
 
-  // CUES.bark @12.12 — F5: tree canopies vanish, trunks strip
-  tl.to([P+"f5-canopy-l", P+"f5-canopy-r"], {autoAlpha:0, duration:0.4}, 12.12);
-  tl.to([P+"f5-trunk-l", P+"f5-trunk-r"], {backgroundColor:"#cbbfa4", duration:0.4}, 12.12);
-  tl.fromTo(P+"bark", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 12.5);
+  // CUES.bark @11.99 — F5: tree canopies vanish, trunks strip
+  tl.to([P+"f5-canopy-l", P+"f5-canopy-r"], {autoAlpha:0, duration:0.4}, 11.99);
+  tl.to([P+"f5-trunk-l", P+"f5-trunk-r"], {backgroundColor:"#cbbfa4", duration:0.4}, 11.99);
+  tl.fromTo(P+"bark", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 12.37);
 
-  // hold to end of the 20s window
-  tl.to({}, {duration:0.1}, 19.9);
+  // CUES.slab/"F5" @13.09 — "SWEPT CLEAN" label lands once the F5 rating is confirmed in narration
+  tl.fromTo(P+"swept", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 13.09);
+
+  // pin exact duration at 21.0, soft fade to black-safe hold in the last 0.5s
+  tl.to({}, {duration:0.01}, 20.99);
 
   window.__timelines["g-f4f5"] = tl;
 })();
