@@ -261,6 +261,13 @@ const DOTS=[["g-map-i-td0",0,4],["g-map-i-td1",0.02,4],["g-map-i-td2",0.04,4],["
   }
 
   stackBelow("#g-map-i-hl1", "#g-map-i-sb1", 16);
+  // Orchestrator addendum 2026-09-21: overlap_check bans a popfig over a map comp, so every number the
+  // voice speaks while this map is on screen lands in the rail instead. Chained top-to-bottom in spoken order.
+  stackBelow("#g-map-i-eb2", "#g-map-i-r0", 44);
+  stackBelow("#g-map-i-r0", "#g-map-i-r1", 14);
+  stackBelow("#g-map-i-r1", "#g-map-i-r2", 14);
+  stackBelow("#g-map-i-r2", "#g-map-i-r3", 14);
+  stackBelow("#g-map-i-r3", "#g-map-i-r4", 14);
   const CUES = { office: 10.90, hundred: 46.85, thirteen: 49.61, canada: 51.59, first: 74.93 };
   const DUR = 83.492;
 
