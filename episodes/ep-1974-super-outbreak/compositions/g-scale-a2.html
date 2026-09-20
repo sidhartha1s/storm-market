@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; overflow:hidden; }
+  .eyebrow { position:absolute; left:96px; top:76px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .bars { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .bar { position:absolute; top:340px; width:150px; height:520px; }
+  .unlit { position:absolute; inset:0; background:#1a222b; border:1px solid #2a3644; }
+  .lit { position:absolute; inset:0; background:#8e2020; }
+  .cap { position:absolute; top:0; left:0; right:0; height:8px; background:#e74c3c; }
+  .f5 { position:absolute; top:14px; left:0; right:0; text-align:center; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; }
+  .town { position:absolute; top:550px; left:-14px; right:-14px; text-align:center; font-family:Arial,sans-serif; font-weight:700; font-size:22px; color:#dfe7ee; letter-spacing:0.5px; }
+  .time { position:absolute; top:582px; left:-14px; right:-14px; text-align:center; font-family:'Courier New',monospace; font-size:24px; color:#93a3b2; }
+  .sweepline { position:absolute; left:315px; width:1290px; height:2px; top:340px; background:#e8c56a; box-shadow:0 0 14px 2px #e8c56a; opacity:0.55; }
+</style>
+<div id="root" data-composition-id="g-scale-a2" data-width="1920" data-height="1080">
+  <div class="eyebrow" id="g-scale-a2-eyebrow">SEVEN F5 TORNADOES &middot; APRIL 3, 1974</div>
+  <div class="bars" id="g-scale-a2-bars"></div>
+  <div class="sweepline" id="g-scale-a2-sweep"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const ID = 'g-scale-a2';
+  const TOWNS = ["DEPAUW &middot; IN","BRANDENBURG &middot; KY","XENIA &middot; OH","SAYLER PARK &middot; OH","TANNER &middot; AL","TANNER &middot; AL","GUIN &middot; AL"];
+  const TIMES = ["2:16 PM CDT","3:30 PM CDT","4:32 PM EDT","5:28 PM EDT","6:20 PM CDT","7:30 PM CDT","8:25 PM CDT"];
+  const wrap = document.getElementById(ID + '-bars');
+  for (let i = 0; i < 7; i++) {
+    const x = 315 + i * 190;
+    const d = document.createElement('div');
+    d.className = 'bar';
+    d.id = ID + '-bar' + i;
+    d.style.left = x + 'px';
+    d.innerHTML =
+      '<div class="unlit"></div>' +
+      '<div class="lit" id="' + ID + '-lit' + i + '"><div class="cap"></div><div class="f5">F5</div></div>' +
+      '<div class="town">' + TOWNS[i] + '</div>' +
+      '<div class="time">' + TIMES[i] + '</div>';
+    wrap.appendChild(d);
+  }
+
+  /* No spoken-word cue needed: A2-S3 tag is descriptive VE placement only.
+     "Bar 3 lights at 0.3s" is a literal window-local time in the brief. Bars 1-2 are already
+     lit for this variant's whole window (progression carried over from g-scale-a1). */
+  const LIGHTS_AT = 0.30;
+
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 6.0;
+  tl.set('#' + ID + '-eyebrow', { autoAlpha: 1 }, 0);
+  for (let i = 0; i < 7; i++) {
+    tl.set('#' + ID + '-bar' + i, { scaleY: 1 }, 0);
+    tl.set('#' + ID + '-lit' + i, { autoAlpha: 0 }, 0);
+  }
+  tl.set(['#' + ID + '-lit0', '#' + ID + '-lit1'], { autoAlpha: 1 }, 0); // bars 1-2 already lit
+  tl.fromTo('#' + ID + '-sweep', { top: 340 }, { top: 860, duration: DUR, ease: 'none' }, 0);
+  tl.fromTo('#' + ID + '-lit2', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: 'power2.out' }, LIGHTS_AT);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
