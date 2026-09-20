@@ -34,7 +34,7 @@ pairs = [
     # A2-S3: four minutes + fluff; add the Guard beat
     ("thirty two of them inside the city, in about four minutes, and about twelve\nhundred were hurt.",
      "thirty two of them inside the city, and about twelve hundred were\nhurt."),
-    ("[PAY Q-A2] Thirty minutes was enough time, but it\nwasn't enough shelter, and Xenia is still the tornado people mean when they talk about that day.",
+    ("[PAY Q-A2] Thirty minutes was enough time, but it wasn't enough shelter, and Xenia is still the tornado\npeople mean when they talk about that day.",
      "[PAY Q-A2] Thirty minutes was enough time, but it\nwasn't enough shelter. [HUMAN g-person Gilligan] That same evening Governor John Gilligan sent two hundred\nand fifty National Guardsmen into Xenia, and by midnight fourteen hundred and forty five were on duty across\nOhio, more than half of them in this one town. [RS] [VE popfig \"1,445 GUARDSMEN\"] They spent the night\npulling people out of the houses on Windsor Park and Arrowhead, street by street, with the power out and the\nrain still coming down. [verify rescue detail]"),
     ("**A2-S3 (100 w)", "**A2-S3 (170 w)"),
     # A2-S4: fifty miles
