@@ -29,8 +29,10 @@ in full BEFORE cut selection; cut at the transcript's action/emotion peak).
 
 ## Audio rules (hard)
 
-- Every sourced clip is **muted by default**. Exactly one exception: `insert` segments, where the
-  clip's audio IS the content.
+- Every sourced clip is **muted by default**, and "muted" means the `muted` attribute on the `<video>`:
+  hyperframes plays any video's track unless the element says otherwise, and `sweep_episode.py` fails a
+  `<video>` with neither `muted` nor `data-volume` (El Reno v3 shipped audible stock footage that way).
+  Exactly one exception: `insert` segments, where the clip's audio IS the content.
 - **Every `insert` goes to the owner before it enters any render**: frames + ~10-word transcript
   + source link, one message, wait for yes/no. No exceptions, no batching-through.
 - Narration is TTS'd **per segment** (separate wavs). Per-segment atempo is allowed (0.93–1.08)

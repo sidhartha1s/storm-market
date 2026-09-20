@@ -166,6 +166,13 @@ if cm and _cta_applies:
 if _cta_applies:
     report("CTA present + placed (config channel.cta)", cta_bad)
 
+# 5e. every <video> declares its audio (El Reno v3 post-mortem, 20 Sep 26): hyperframes plays a video's
+# track unless the element is `muted`, and audio_levels.py used to skip videos with no data-volume as
+# "muted by convention" — so stock footage mounted with neither was audible in the mix and no gate saw it.
+_undeclared = [v[:100] for v in re.findall(r"<video\b[^>]*>", h)
+               if not re.search(r"\bmuted\b", v) and "data-volume" not in v]
+report("video audio declared (`muted` or data-volume on every <video>)", _undeclared)
+
 # 5c. visual-identity repeats — the viewer sees SOURCES, not filenames. Cuts a/b/c of one
 # homogeneous source read as the same clip (ep5 v1: burnaer02 family 16x, fire02 4x in
 # the first five minutes). Flag any source family appearing twice within 60s, or >6/episode.
