@@ -84,37 +84,38 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"eyebrow", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.6}, 0.4);
   tl.fromTo(P+"headline", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.6}, 1.0);
 
-  // continuous jet sweep, full duration
-  jets.forEach((j, i) => { tl.to(j, {x: 1440, duration: 34, ease: "none"}, 0.5 + i * 1.2); });
-  // continuous moisture drift, full duration
-  moist.forEach((m, i) => { tl.to(m, {x: -1300, duration: 34, ease: "none"}, i * 0.4); });
+  // continuous jet sweep, capped inside the 27.59s window (finite, no repeat)
+  jets.forEach((j, i) => { tl.to(j, {x: 1440, duration: 27.2, ease: "none"}, 0.3); });
+  // continuous moisture drift, capped inside the 27.59s window (finite, no repeat)
+  moist.forEach((m, i) => { tl.to(m, {x: -1300, duration: 27.2, ease: "none"}, 0.2); });
 
-  /* cues from audio/a5-s3.txt @183.24wpm est., PROVISIONAL (no words.json yet):
-     gulf@7.53 dry@9.82 jet@12.77 front@16.70 night@22.59 every("storms came up")@24.23 engine("same engine")@29.47 */
-  tl.fromTo(P+"lab1", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4}, 7.53);
-  tl.fromTo(P+"lab2", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4}, 9.82);
-  tl.fromTo(P+"lab3", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4}, 12.77);
+  /* FINAL cues from audio/a5-s3.words.json, mount = A5-S3 start, DUR 27.59 (orchestrator 2026-09-21):
+     gulf 7.02 · dry 9.22 · jet 11.52 · front 14.62 · night 21.22 · every 25.12 · machine("engine") 26.52 */
+  tl.fromTo(P+"lab1", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4}, 7.02);
+  tl.fromTo(P+"lab2", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4}, 9.22);
+  tl.fromTo(P+"lab3", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4}, 11.52);
 
-  // CUES.front @16.70 — cold front slides across all bands over 3s, linear so the crossing math below holds
-  tl.to(P+"front", {autoAlpha:1, duration:0.01}, 16.70);
-  tl.to(P+"front", {x: 1180, duration: 3, ease: "none"}, 16.70);
-  // storms rise only AFTER the front's linear sweep (x = 96 + 1180*(t-16.70)/3) has visually crossed each column's x-slot
-  tl.to(P+"col1", {autoAlpha:1, scale:1, duration:0.6, ease:"power2.out"}, 17.88);
-  tl.to(P+"col1", {rotation:180, duration:16, ease:"none"}, 17.88);
-  tl.to(P+"col2", {autoAlpha:1, scale:1, duration:0.6, ease:"power2.out"}, 18.49);
-  tl.to(P+"col2", {rotation:180, duration:15, ease:"none"}, 18.49);
-  tl.to(P+"col3", {autoAlpha:1, scale:1, duration:0.6, ease:"power2.out"}, 19.10);
-  tl.to(P+"col3", {rotation:180, duration:14, ease:"none"}, 19.10);
+  // CUES.front @14.62 — cold front slides across all bands over 3s, linear so the crossing math below holds
+  tl.to(P+"front", {autoAlpha:1, duration:0.01}, 14.62);
+  tl.to(P+"front", {x: 1180, duration: 3, ease: "none"}, 14.62);
+  // storms rise only AFTER the front's linear sweep (x = 96 + 1180*(t-14.62)/3) has visually crossed each column's x-slot
+  tl.to(P+"col1", {autoAlpha:1, scale:1, duration:0.6, ease:"power2.out"}, 15.80);
+  tl.to(P+"col1", {rotation:180, duration:11.8, ease:"none"}, 15.80);
+  tl.to(P+"col2", {autoAlpha:1, scale:1, duration:0.6, ease:"power2.out"}, 16.41);
+  tl.to(P+"col2", {rotation:180, duration:11.2, ease:"none"}, 16.41);
+  tl.to(P+"col3", {autoAlpha:1, scale:1, duration:0.6, ease:"power2.out"}, 17.02);
+  tl.to(P+"col3", {rotation:180, duration:10.6, ease:"none"}, 17.02);
 
-  tl.fromTo(P+"footer", {autoAlpha:0}, {autoAlpha:1, duration:0.7}, 22.59);
+  tl.fromTo(P+"footer", {autoAlpha:0}, {autoAlpha:1, duration:0.7}, 21.22);
 
-  // CUES.every @24.23 — reinforcing pulse across all three columns as "the storms came up"
-  tl.to([P+"col1", P+"col2", P+"col3"], {scale:1.06, duration:0.35, yoyo:true, repeat:1}, 24.23);
+  // CUES.every @25.12 — reinforcing pulse across all three columns as "the storms came up"
+  tl.to([P+"col1", P+"col2", P+"col3"], {scale:1.06, duration:0.35, yoyo:true, repeat:1}, 25.12);
 
-  // CUES.engine @29.47 — label reads "the same engine"; columns stay independent (no single "machine" claim)
-  tl.fromTo(P+"enginelabel", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.6}, 29.47);
+  // CUES.machine("engine") @26.52 — label reads "the same engine"; columns stay independent (no single "machine" claim)
+  tl.fromTo(P+"enginelabel", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.6}, 26.52);
 
-  tl.to({}, {duration:0.1}, 33.9);
+  // pin exact duration at 27.59
+  tl.to({}, {duration:0.01}, 27.58);
 
   window.__timelines["g-engine"] = tl;
 })();
