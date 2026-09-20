@@ -213,8 +213,8 @@ helicopter. Dick Gilbert reported traffic for WHAS radio. He grew up on Pennsylv
 and the tornado was on his street. He stayed in the air, followed it, and told the whole city, block by block,
 where it was and where it was going. [VE the track advancing with his words; insert audio] It tore the roof
 off Freedom Hall at the fairgrounds and wrecked the Crescent Hill water station. One man, one helicopter, one
-radio station. [PAY Q-A3] That was the warning. Two people died in Louisville. President Nixon wrote to him
-afterward. [RS]
+radio station. [PAY Q-A3] That was the warning. Two people died in Louisville. The President sent him a
+special commendation for it. [RS] [VE g-person Gilbert card, "COMMENDED BY THE PRESIDENT"]
 
 **A3-S4 (140 w) · g-clock "5:17 PM EDT" · Monticello, Indiana · g-person Rod Poole · track: the 121-mile line.**
 Same hour, north. [VE map] One tornado came down near Otterbein, Indiana, and did not lift for a hundred and
