@@ -92,13 +92,16 @@ All other broadcast pulls muted, narrated over, ≤ 8 s, `.bc` grade class, neve
 
 ### H · hook (0:00–0:32, 80 w) · frame one mid-action: the scope, hooks already blooming; popfig "APRIL 3, 1974 · CINCINNATI · 4:45 PM" inside the first second
 *(ins-hook-whas under the first two seconds, ducked as the narrator enters)*
-Seven F5 tornadoes in one afternoon. [VE g-scale seven bars slam in] Three hundred and thirty dead. [RS] And the
-man in charge of the forecast knew a full day early. [VE g-radar: five hooks on one Cincinnati scope] This is the
-radar at a quarter to five, five tornadoes on one screen, and the day is only half over. So why did knowing not
-save them? [Q] *(1.5 s void)*
+Seven F5 tornadoes in one afternoon. [VE g-scale seven bars slam in] Three hundred and thirty people dead. [RS]
+And the man in charge of the forecast knew it was coming a full day early. [VE g-radar: five hooks on one
+Cincinnati scope, popfig "4:45 PM"] This is the radar at 4:45 PM. Five tornadoes on one screen at the same time,
+and the worst ones had not even formed yet. So if they knew, why did so many people die? [Q] *(1.5 s void)*
 
-*(Hook rule, owner 20 Sep 26: the first sentence is the payoff the title promised, numbers first, no scene-setting
-before it. 60 words, about 24 s with the insert.)*
+*(Hook rules, owner 20 Sep 26: sentence one is the payoff the title promised, numbers first. Plain American, a
+third grader follows it: clock times as "4:45 PM", never "quarter to five"; no "the day is only half over"
+style riddles. F5 is correct here, not a typo: 1974 ratings are on the original Fujita scale; EF5 exists only
+from 2007, so Enderlin is EF5 and 1974 is F5. Narration delivered at atempo 1.10, same as the news lane; probe
+the hook first.)*
 
 ### I · the call (0:32–2:05, 230 w) · g-master-map v1, thirteen states outlined and empty; popfig "APRIL 2, 1974 · KANSAS CITY"
 The day before, a man named Allen Pearson picked up a telephone. [HUMAN g-person Pearson] He ran the Severe
