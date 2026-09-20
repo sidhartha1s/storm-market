@@ -550,10 +550,10 @@
       "title": "El Reno 2013: the widest tornado ever measured",
       "owner": "director",
       "due": "24 Sep 26",
-      "phase": "idea",
-      "status": "doing",
-      "note": "owner 20 Sep 26: v3 rejected (stock footage audio bleeding, messed up); full replan from scratch in ep4-el-reno-v4 after a written v3 post-mortem; footage may be reused, edit may not",
-      "updated": "20 Sep 26 17:14"
+      "phase": "script",
+      "status": "todo",
+      "note": "v3 scrapped; post-mortem + audio gate fix in PR #82; v4 script from scratch next",
+      "updated": "20 Sep 26 21:17"
     },
     {
       "slug": "ep-1974-super-outbreak",
