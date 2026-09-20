@@ -127,9 +127,9 @@ window.__timelines = window.__timelines || {};
 
   tl.fromTo(P+"drift", { y: -100 }, { y: 100, duration: DUR, ease: "none" }, 0);
 
-  // zoom 2.2x toward Tanner over 2s from 0
+  // zoom 2.2x toward Tanner over 2s from 0 (y raised 120px vs the raw camAt value -- QC 2026-09-21, bottom-edge crop)
   tl.fromTo(P+"mapgroup", { scale: 1, x: 0, y: 0 },
-    { scale: 2.2, x: -353.88, y: -991.00, duration: 2, ease: "power2.out" }, 0);
+    { scale: 2.2, x: -353.88, y: -1111.00, duration: 2, ease: "power2.out" }, 0);
 
   tl.fromTo(P+"eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.2);
 
