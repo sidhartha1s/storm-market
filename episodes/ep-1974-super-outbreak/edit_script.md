@@ -1,11 +1,13 @@
 # ep-1974-super-outbreak · "The Day America Had 7 F5 Tornadoes - 1974 Super Outbreak"
 
-Lane: documentary (`/storm-episode`). Target 22:00 ± 1:00. Title locked by the owner 20 Sep 26. Script v7
+Lane: documentary (`/storm-episode`). Target 22:00 ± 1:00. Title locked by the owner 20 Sep 26. Script v8
 (v1 graded 7/10 hook, 6/10 overall in `research/script_review_v1.md`; v2 applied the fixes; v3 added the
 researched beats; v4 applied the second grade; v5 is the spoken-sentence pass on the palette in
 `references/humanise-rules.md`; v6 applies the v5 grade, `research/script_review_v5.md`, 7/10: six fact
 errors, opener cap, comma splices; v7 applies the v6 grade, `research/script_review_v6.md`, 7/10, hook 8: Tanner
-timeline, rhetorical questions, anaphora, balanced-contrast reflex; owner length decision: natural 19 to 20 min).
+timeline, rhetorical questions, anaphora, balanced-contrast reflex; v8 applies the v7 grade, `research/script_review_v7.md`, 7/10, hook 8: lead-time
+line inverted, Tanner duration left to fact-QC, misattributed quotes, act seam chronology, opener cap; owner
+length decision: natural 19 to 20 min).
 Doctrine: `references/script-os.md`, `references/script-scaling.md`, DESIGN.md (hook contract, CTA contract,
 on-screen text rules). Facts: `research/fact_sheet.md` + `fact_sheet_addendum.md`; every number is `[verify]`
 until the fact-QC pass clears it; zero open markers before TTS. Delivery: pocket-TTS then atempo 1.10.
@@ -107,14 +109,14 @@ All other broadcast pulls muted, narrated over, ≤ 8 s, `.bc` grade class, neve
 *(ins-hook-whas under the first two seconds, ducked as the narrator enters)*
 Seven F5 tornadoes in one day, and it has never happened again. [verify] [VE g-scale seven bars slam in]
 Three hundred and thirty people dead. [RS] [VE g-radar: five hooks on one scope, popfig "5 HOOKS · ONE SCREEN"] Five
-tornadoes on one radar screen at once, and the worst of the night hadn't even formed yet. And the man who ran the
-national forecast office knew it was coming a full day early. So if he knew, why did so many people die? [Q]
+tornado hooks on one radar screen at once, and the worst of the night hadn't even formed yet. And the man who ran the
+national forecast office knew it was coming a full day early. He knew, and three hundred and thirty people died anyway. [Q]
 *(probes: `audio/probe/hook_plain_110.wav`, `demo_mixed_110.wav`; the shipped hook uses no device beyond the
 contraction, per the palette)* *(1.5 s void)*
 
 ### I · the call (0:25–1:55, 200 w) · g-master-map v1, thirteen states outlined and empty; popfig "APRIL 2, 1974 · KANSAS CITY"
 The day before, a man named Allen Pearson picked up a telephone. [HUMAN g-person Pearson] He ran the Severe
-Storms Forecast Center, and the charts for the third of April scared him. So he called every weather office in the
+Storms Forecast Center, and the charts for the third of April scared him. He called every weather office in the
 eastern half of the country and told them to fix their radar that night and bring in extra people the
 next day. [VE map: the offices light up one by one] He was right about the day and he was right
 about the place. The watches went out, the warnings went out, and people still died, because in 1974 a
@@ -126,7 +128,7 @@ of Canada, and two thousand six hundred miles of ground ripped up end to end. [V
 of those tornadoes sat at the top of a scale that was only three years old. And the man who invented that
 scale was about to fly over every one of those miles and doubt his own numbers. And the corridor that took the
 worst of it, in north Alabama, is the fastest growing city in the state today. [Q L4] The first F5 touched
-down at 2:16 PM over farm country, and for the next eight hours every one that followed found a town. [Q] *(blackout 0.7 s)*
+down at 2:16 PM over farm country, and for the next eight hours most of the ones that followed found a town. [Q] *(blackout 0.7 s)*
 
 ### A1 · first blood (1:55–4:50, 400 w)
 **A1-S1 (100 w) · g-clock "2:16 PM CDT" · g-master-map track 1.** The first F5 of the day came down south of
@@ -138,27 +140,27 @@ the houses.
 
 **A1-S1b (110 w) · g-clock "3:51 PM EDT" · Hanover College stills, Ken Burns · track 2a.** At 3:51 PM, Eastern
 time, a tornado hit Hanover College near Madison, Indiana, with nearly a thousand students on campus and some
-of them still in class. [VE track] Thirty of the thirty three buildings were damaged and two were destroyed,
+of them still in class. [VE track] More than thirty of its thirty three buildings were damaged and two were destroyed,
 [RS] [VE campus plan, buildings going dark one by one] and on that campus nobody died. The college still calls
 it a miracle. Down the hill in the town of Madison seven people died from the same line of storms, in the
 same minutes.
 
-**A1-S2 (130 w) · g-clock "3:30 PM CDT" · track 2 · g-person Tim Haley.** At 3:30 PM, Central time, in
-Brandenburg, Kentucky, they had fifteen minutes. [VE clock] The tornado came up
+**A1-S2 (130 w) · g-clock "3:30 PM CDT" · track 2 · g-person Tim Haley.** The tornado that hit Brandenburg,
+Kentucky, formed at 3:30 PM, Central time, and the town had fifteen minutes of warning. [VE clock] The tornado came up
 the Ohio River toward the town so low and so wide that people said it looked like a wall, [VE bc pull, muted]
 and it was half a mile across. A hundred and twenty eight homes and thirty businesses were gone from a town
 of seventeen hundred, [verify population] and thirty one people were dead along its path. [RS] [PAY Q-A1] Fifteen minutes is
 enough to get below ground, but few homes in Brandenburg had a below ground to get to. [verify] [HUMAN] A boy
 named Tim Haley, he was fifteen. He spent that night carrying people out of the wreckage, a hundred and sixty
 nine of them by his own count. [RS] [VE popfig counter ticking to 169 over a Brandenburg still] One of them
-was a baby he had to take from a mother's arms so he could get her to safety. He became a soldier later, and he said
-that was still the hardest thing he ever did.
+was a baby he had to take from a mother's arms so he could get her to safety. He became a soldier later, and fifty years
+on he called that night pretty, pretty traumatic.
 
 **A1-S3 (80 w) · g-person Gus Allen · g-scale bar 2 lit.** [HUMAN] Gus Allen lost his sister, his brother and a
 two year old cousin in the same minutes, and his mother was carried about a mile by the wind and lived. Fifty
 years later he described that day in one sentence. It was just a bad day. *(hold 3.0 s: Brandenburg memorial,
-slow push, wind bed only, no voice)* [VE g-scale two bars lit, five dark] It wasn't yet four o'clock, and about
-a hundred and seventy miles to the northeast, in Xenia, Ohio, a drama teacher was walking his students onto
+slow push, wind bed only, no voice)* [VE g-scale two bars lit, five dark] While that tornado was still on the ground,
+about a hundred and seventy miles to the northeast, in Xenia, Ohio, a drama teacher was walking his students onto
 a stage. [Q L2] *(blackout 0.8 s)*
 
 ### A2 · Xenia, 4:40 PM (4:50–7:40, 450 w)
@@ -180,7 +182,8 @@ else in Xenia it went the other way.
 people died along that path, thirty two of them inside the city, and about twelve hundred were
 hurt. Fourteen hundred buildings were damaged or gone, and five schools were destroyed: Xenia
 High, Central Junior High, McKinley, Simon Kenton and Arrowood. [VE the names, one by one, over the aerial
-scar] [PAY Q-A2] Xenia got its thirty minutes and still had nowhere to put the people. [HUMAN g-person Gilligan] That same evening Governor John Gilligan sent two hundred
+scar] [PAY Q-A2] Xenia got its thirty minutes, and the tornado still took five schools, fourteen hundred buildings
+and thirty four people, because thirty minutes moves you across a room, not out of a city. [HUMAN g-person Gilligan] That same evening Governor John Gilligan sent two hundred
 and fifty National Guardsmen into Xenia, and by midnight fourteen hundred and forty five were on duty across
 Ohio, more than half of them in this one town. [RS] [VE popfig "1,445 GUARDSMEN"] They spent the night
 pulling people out of the houses on Windsor Park and Arrowhead, street by street, with the power out and the
@@ -189,11 +192,10 @@ rain still coming down. [verify rescue detail]
 **A2-S4 (45 w) · Nixon Library material, muted, 6 s · popfig "APRIL 9, 1974".** Six days later President Nixon
 walked the streets of Xenia, [HUMAN] [VE Nixon footage] and those pictures are the reason most people who
 remember 1974 remember one word, and that word is Xenia. But Xenia was one tornado out of a hundred and forty
-eight, and fifty miles away in Cincinnati the afternoon was about to get worse than any radar operator alive
-had seen.
+eight, and fifty miles away in Cincinnati the afternoon was about to get worse.
 
 **A2-S5 (25 w) · cta-hinge tease.** Weeks later the man who invented the tornado scale flew over these streets,
-and decided his own scale was too small. [Q cta-hinge] *(1.0 s dip)*
+and wrote down a number his own scale did not have. [Q cta-hinge] *(1.0 s dip)*
 
 ### CTA (≈7:40, 15.139 s, v5) *(1.0 s dip)*
 
@@ -204,12 +206,12 @@ then crossed out] then decided a six was a rating nobody could believe and took 
 
 **A3-S2 (130 w) · g-radar Cincinnati WSR-57 · citation card: the 4:05 PM warning, verbatim.** The radar at the
 Cincinnati weather office was built in 1960, and it could see rain but it couldn't see wind.
-[VE the scope, one sweep at a time] So a tornado showed up only as a hook on the edge of a storm, if it showed
-up at all. [Q Q-A3] So the office had to warn a city off a shape on the edge of a storm. At 4:05 PM
+[VE the scope, one sweep at a time] A tornado showed up only as a hook on the edge of a storm, if it showed up
+at all, so the office was warning a city off a shape. [Q Q-A3] At 4:05 PM
 the office put out a tornado warning for Hamilton County, and the reason it gave was hook echoes on the radar. [VE citation
 card: the 4:05 PM warning, full clause] [RS] Twenty seven minutes later the hook it was looking at
 came through Sayler Park on the west side of Cincinnati, and four people died in that county. [verify] By then
-the man on duty was looking at five hooks at once, [RS] [VE five bloom] [Q Q-A3b] and then, at 5:40 PM, his
+the office was looking at five hooks at once, [RS] [VE five bloom] [Q Q-A3b] and then, at 5:40 PM, his
 office went dark.
 
 **A3-S2b (90 w) · citation card: the CVG report · popfig "5:40 PM · POWER OUT".** [PAY Q-A3b] The Cincinnati
@@ -221,7 +223,7 @@ had saved many lives, and it also recorded seven dead in its area. Somewhere in 
 tornadoes were on the ground at the same time. [verify: Wikipedia only, no clock time in any source] [VE map surge: tracks 4 to 40]
 
 **A3-S3 (140 w) · g-person Dick Gilbert · ins-hook-whas full line (owner YES) · Louisville track · popfig "361,000".**
-In Louisville, Kentucky, an F4 came across the river into a city of three hundred and sixty thousand people at
+In Louisville, Kentucky, an F4 touched down inside a city of three hundred and sixty thousand people at
 5:37 PM, Eastern time, [verify: fact_sheet table converts 21:37 UTC to 4:37, the addendum says 5:37; 21:37 UTC is 5:37 PM EDT] and the radar couldn't see it. [VE track] [HUMAN] What could see it was a
 helicopter. Dick Gilbert reported traffic for WHAS radio, he grew up on Pennsylvania Avenue in Crescent Hill,
 and the tornado was on his street. He stayed. He stayed in the air, followed it, and told the whole city block
@@ -230,7 +232,7 @@ roof off Freedom Hall at the fairgrounds and wrecked the Crescent Hill water sta
 President sent him a special commendation for it. [RS] [VE g-person Gilbert card, "COMMENDED BY THE PRESIDENT"]
 
 **A3-S4 (140 w) · g-clock "5:17 PM" · Monticello, Indiana · g-person Rod Poole · track: the 121-mile line.**
-In that same hour, up north, one tornado came down near Otterbein, Indiana, and didn't lift for a hundred and
+That same evening, up north, one tornado came down near Otterbein, Indiana, and didn't lift for a hundred and
 twenty one miles. [VE map] [RS] At 5:17 PM, local time, [verify: Indiana on EST in 1974] it went through the middle of Monticello, where the county
 courthouse came apart and a safe on the third floor fell straight through to the first. [VE popfig "121
 MILES"] A railroad bridge over the Tippecanoe River was lifted off its footings and twisted. [HUMAN] Rod
@@ -243,9 +245,9 @@ storm system, and the sun was still up. [Q L3] *(blackout 0.8 s)*
 
 ### A4 · Alabama after dark (11:30–15:00, 440 w)
 **A4-S1 (150 w) · g-clock "6:20 PM CDT" → "7:30" · southern arm · track 5, then 6.** At 6:20 PM, Central time,
-a tornado formed near Moulton, Alabama, and stayed on the ground for about an hour and fifty two miles.
-[VE track] Twenty eight people died along its fifty two miles, from Lawrence County through Limestone, and by
-7:30 PM the neighbors were out in the wreckage pulling people out. That's when the second one came.
+a tornado formed near Moulton, Alabama, and stayed on the ground for fifty two miles. [verify duration: table 6:20 to 7:21 PM, prose about
+90 min] [VE track] Twenty eight people died along those miles, from Lawrence County through Limestone, and the
+neighbors were out in the wreckage behind it pulling people out when the second one came.
 [RS] [VE second track, one mile west, drawn over the first] It formed about an hour after the first, ran a
 mile to the west of it for ninety eight miles, and honestly it went straight through the people doing the
 rescuing. [RS] *(hold 3.5 s: the second track pulsing over the first on the map, wind bed, no voice; no
@@ -262,7 +264,8 @@ about two hours after sunset. [verify strike time] [HUMAN] A
 young man named Allen Lindley put a tape recorder in an open window, [Q Q-A4b] and he got a minute of it
 coming and eighteen seconds of it going over the house. [VE waveform card; insert audio if cleared] I have the
 thing on tape, he said, and it's a rare recording of an F5 passing directly over a house. [RS] [PAY Q-A4b]
-[HUMAN] Becky Todd's family were in their car when it rolled, and she told them to hold on to the seats. Her
+[HUMAN] Becky Todd was in the car with her family when it rolled, and she said George told them to grab the seats
+and hold on. Her
 sons Mark and Paul didn't survive. [RS] [VE g-person card: two names] Seven hundred and thirty seven houses
 were destroyed in Guin that night, and twenty eight people died. [verify: 28 official / 32 revised]
 
@@ -277,7 +280,7 @@ popfigs "330 DEAD" then "5,484 HURT"] And one man in Chicago was already plannin
 ### A5 · ten months in the air (15:00–18:30, 470 w)
 **A5-S1 (110 w) · g-survey: a small plane over the map, tracks appearing, date ticker April 1974 → February 1975.**
 Ted Fujita had invented his scale in 1971, [HUMAN] and it graded a tornado from zero to five by the damage it
-left, because nobody could measure the wind inside one. Now he had a hundred and forty eight tornadoes to
+left, because nobody could measure the wind inside one. He had a hundred and forty eight tornadoes to
 grade at once, so he flew. Ten months, more than ten thousand miles, low and slow, with every track drawn
 by hand onto one map. [VE plane, tracks] [RS] [Q Q-A5] And somewhere in those ten thousand miles he
 found a kind of damage that no tornado could have made.
@@ -325,23 +328,23 @@ tornadoes killed sixteen people in Limestone County, [verify] and in 2011, with 
 people living there, the EF5 killed four. [RS] [VE the two numbers] More houses in the path and fewer dead,
 and the researchers said the reason was most likely better warnings. [PAY L4] Madison County next door, where the first Tanner
 tornado ended, has four hundred and thirty three thousand people today, and Huntsville is the biggest city in
-Alabama. [Q Q-A6b] So the real question isn't whether it happens again, it's whether the warning reaches you.
+Alabama. [Q Q-A6b] It will happen again, and what decides the count is whether the warning reaches you.
 
 **A6-S2 (130 w) · g-then-now v2: 1974 vs today, radar, warning, phone.** April third can happen again, because
 the ingredients were ordinary spring weather for that part of the country arriving on the same
 day, and every few decades they do. [verify] What changed is the warning. [VE two columns] In 1974 the radar
 saw rain, and today it sees the wind turning inside the storm before the funnel exists. Back then the warning was
 a radio you had to have switched on, and today it's the phone in your pocket, and it will wake you up. [verify
-WEA] A good warning in 1974 was fifteen minutes and most places got less, and today a warning gives you
-eight to fifteen. [verify: national average lead time] [PAY Q-A6b] [RS] [VE the two columns fill, 1974 left, today right] Allen Pearson's
+WEA] Brandenburg got fifteen minutes that day and most towns got nothing at all, and today the average warning
+runs eight to fifteen minutes everywhere. [verify: national average lead time] [PAY Q-A6b] [RS] [VE the two columns fill, 1974 left, today right] Allen Pearson's
 forecast was right a day early, and three hundred and thirty people still died, because a warning is only as good as the
 radio it plays on and the basement you can reach. Today the warning reaches you, and the houses moved into
 the path instead.
 
 **A6-S3 (130 w) · g-person Gus Allen returns · Brandenburg today, muted · g-then-now v3: the fifteen minute card.**
 [HUMAN] Gus Allen still lives near Brandenburg, and his sister, his brother and his small cousin are on the
-memorial there. It was just a bad day, he said, and days like it come back every few decades. [PAY EPISODE] Pearson knew a day early, and it bought nobody anything without a radio and a
-basement, and today the warning buys you minutes. [VE card,
+memorial there. It was just a bad day, he said, and days like it come back every few decades. [PAY EPISODE] Pearson knew a day early, and the warnings he set up saved the people who heard them, and
+in 1974 hearing one meant a radio that happened to be switched on. Today the warning buys you minutes. [VE card,
 three rows] A storm shelter or an inside room on the lowest floor you can reach in that time, and a car
 trying to outrun a mile-wide tornado is the one thing you can't. [RS] [VE third row: the car, struck through]
 Know before the day comes which room in your house is the one you run to.
