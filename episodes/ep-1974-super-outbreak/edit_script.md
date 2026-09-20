@@ -92,11 +92,13 @@ All other broadcast pulls muted, narrated over, ≤ 8 s, `.bc` grade class, neve
 
 ### H · hook (0:00–0:32, 80 w) · frame one mid-action: the scope, hooks already blooming; popfig "APRIL 3, 1974 · CINCINNATI · 4:45 PM" inside the first second
 *(ins-hook-whas under the first two seconds, ducked as the narrator enters)*
-On one radar screen in Cincinnati, five tornado signatures are turning at the same time. [VE g-radar five hooks]
-Not five storms. Five hook echoes on one scope, and the man reading it has never seen two. Before midnight this
-day will put seven F5 tornadoes on the ground, [RS] the most ever, [VE g-scale seven empty bars] and the
-forecaster in Kansas City knew it was coming a full day early. So why did three hundred and thirty people still
-die? [Q] *(1.5 s void)*
+Seven F5 tornadoes in one afternoon. [VE g-scale seven bars slam in] Three hundred and thirty dead. [RS] And the
+man in charge of the forecast knew a full day early. [VE g-radar: five hooks on one Cincinnati scope] This is the
+radar at a quarter to five, five tornadoes on one screen, and the day is only half over. So why did knowing not
+save them? [Q] *(1.5 s void)*
+
+*(Hook rule, owner 20 Sep 26: the first sentence is the payoff the title promised, numbers first, no scene-setting
+before it. 60 words, about 24 s with the insert.)*
 
 ### I · the call (0:32–2:05, 230 w) · g-master-map v1, thirteen states outlined and empty; popfig "APRIL 2, 1974 · KANSAS CITY"
 The day before, a man named Allen Pearson picked up a telephone. [HUMAN g-person Pearson] He ran the Severe
