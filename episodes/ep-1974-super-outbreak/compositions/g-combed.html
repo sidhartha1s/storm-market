@@ -121,20 +121,23 @@ window.__timelines = window.__timelines || {};
   tl.to(rightTrees, {autoAlpha:1, duration:0.02, stagger:0.02}, 0.9);
   tl.fromTo(P+"swirl", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 1.6);
 
-  // continuous 1.02 scale breathing on both panels, the whole duration
-  tl.to(["#g-combed-panel-l", "#g-combed-panel-r"], {scale:1.02, duration:4, ease:"sine.inOut", yoyo:true, repeat:-1, transformOrigin:"center center"}, 0.4);
+  // continuous 1.02 scale breathing on both panels — FINITE repeat (was repeat:-1, which made
+  // tl.duration() infinite and broke hyperframes seeking): 6 legs of 3.9s = 23.4s, ends at 23.8,
+  // safely inside the 24.1s window.
+  tl.to(["#g-combed-panel-l", "#g-combed-panel-r"], {scale:1.02, duration:3.9, ease:"sine.inOut", yoyo:true, repeat:5, transformOrigin:"center center"}, 0.4);
 
-  /* cues from audio/a5-s4.txt @183.24wpm est., PROVISIONAL (no words.json yet):
-     combed@5.89 cant("can't")@8.51 microburst@17.68 — window 0 to microburst+4 (~21.7s) */
+  /* FINAL cues from audio/a5-s4.words.json, mount = A5-S4 start, DUR 24.1 (orchestrator 2026-09-21):
+     combed 7.59 · cant 9.09 · microburst 17.89 */
   // comb starts hidden at the RIGHT panel's own left edge (x:0) and slides to its right edge — never touches the left panel
-  tl.fromTo(P+"comb", {autoAlpha:0, x:0}, {autoAlpha:1, x:580, duration:1.2, ease:"power2.inOut"}, 5.89);
+  tl.fromTo(P+"comb", {autoAlpha:0, x:0}, {autoAlpha:1, x:580, duration:1.2, ease:"power2.inOut"}, 7.59);
 
-  tl.fromTo(P+"redx", {autoAlpha:0}, {autoAlpha:1, duration:0.2}, 8.51);
-  tl.to(P+"redx", {autoAlpha:0, duration:0.3}, 9.51);
+  tl.fromTo(P+"redx", {autoAlpha:0}, {autoAlpha:1, duration:0.2}, 9.09);
+  tl.to(P+"redx", {autoAlpha:0, duration:0.3}, 10.09);
 
-  tl.fromTo(P+"inset", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.5}, 17.68);
+  tl.fromTo(P+"inset", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.5}, 17.89);
 
-  tl.to({}, {duration:0.1}, 21.5);
+  // pin exact duration at 24.1
+  tl.to({}, {duration:0.01}, 24.09);
 
   window.__timelines["g-combed"] = tl;
 })();
