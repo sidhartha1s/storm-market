@@ -144,7 +144,7 @@ a mile across. A hundred and twenty eight homes and thirty businesses gone, in a
 thirty one people dead along its path. [RS] [PAY Q-A1] Fifteen minutes is enough to get below ground. Few
 homes in Brandenburg had a below ground to get to. [verify] [HUMAN] A boy named Tim Haley was fifteen. He
 spent that night carrying people out of the wreckage, a hundred and sixty nine of them by his own count, [RS]
-including a baby he had to take from a mother's arms so he could get her to safety. He became a soldier. He
+[VE popfig counter ticking to 169 over a Brandenburg still] including a baby he had to take from a mother's arms so he could get her to safety. He became a soldier. He
 said that was the hardest thing he ever did.
 
 **A1-S3 (80 w) · g-person Gus Allen · g-scale bar 2 lit.** [HUMAN] Gus Allen lost his sister, his brother and a
