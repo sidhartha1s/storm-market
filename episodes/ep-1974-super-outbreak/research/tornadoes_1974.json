@@ -1,0 +1,1662 @@
+[
+ {
+  "f": 2,
+  "lat": 40.03,
+  "lon": -86.3,
+  "path": "NE of Whitestown",
+  "states": [
+   "IN"
+  ],
+  "utc_start": null,
+  "utc_end": null,
+  "miles": 0.12,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 34.68,
+  "lon": -84.5,
+  "path": "Ellijay to Blue Ridge",
+  "states": [
+   "GA"
+  ],
+  "utc_start": "18:50",
+  "utc_end": "19:20",
+  "miles": 19.0,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 35.33,
+  "lon": -84.57,
+  "path": "Etowah",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "19:00",
+  "utc_end": "19:05",
+  "miles": 3.3,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 40.12,
+  "lon": -89.33,
+  "path": "S of Lincoln to McLean",
+  "states": [
+   "IL"
+  ],
+  "utc_start": "19:03",
+  "utc_end": "19:19",
+  "miles": 15.0,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 38.62,
+  "lon": -86.58,
+  "path": "N of West Baden Springs to E of Mitchell",
+  "states": [
+   "IN"
+  ],
+  "utc_start": "19:03",
+  "utc_end": "19:20",
+  "miles": 13.0,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 35.1,
+  "lon": -84.92,
+  "path": "SW of Cleveland to N of Benton",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "19:03",
+  "utc_end": "19:26",
+  "miles": 13.0,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 38.77,
+  "lon": -86.3,
+  "path": "E of Mitchell to ENE of Azalia",
+  "states": [
+   "IN"
+  ],
+  "utc_start": "19:15",
+  "utc_end": "20:05",
+  "miles": 38.0,
+  "deaths": 0
+ },
+ {
+  "f": 5,
+  "lat": 38.07,
+  "lon": -86.75,
+  "path": "S of Huffman to Depauw to Martinsburg to NE of Underwood",
+  "states": [
+   "IN"
+  ],
+  "utc_start": "19:16",
+  "utc_end": "20:25",
+  "miles": 62.0,
+  "deaths": 6
+ },
+ {
+  "f": 3,
+  "lat": 39.72,
+  "lon": -89.13,
+  "path": "WSW of Decatur to W of Oreana",
+  "states": [
+   "IL"
+  ],
+  "utc_start": "19:30",
+  "utc_end": "19:50",
+  "miles": 19.0,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 40.52,
+  "lon": -88.62,
+  "path": "SSW of Colfax to E of Anchor",
+  "states": [
+   "IL"
+  ],
+  "utc_start": "19:48",
+  "utc_end": "19:57",
+  "miles": 8.0,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 39.58,
+  "lon": -85.87,
+  "path": "NW of Shelbyville to NE of Greenfield",
+  "states": [
+   "IN"
+  ],
+  "utc_start": "19:50",
+  "utc_end": "20:10",
+  "miles": 17.0,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 39.47,
+  "lon": -89.2,
+  "path": "Owaneco",
+  "states": [
+   "IL"
+  ],
+  "utc_start": "19:47",
+  "utc_end": "19:56",
+  "miles": 8.0,
+  "deaths": 0
+ },
+ {
+  "f": 4,
+  "lat": 39.13,
+  "lon": -85.72,
+  "path": "SE of Grammer to Hamburg to S of Laurel",
+  "states": [
+   "IN"
+  ],
+  "utc_start": "20:00",
+  "utc_end": "20:42",
+  "miles": 37.0,
+  "deaths": 4
+ },
+ {
+  "f": 4,
+  "lat": 39.58,
+  "lon": -85.87,
+  "path": "E of Westland to Grant City to Kennard to N of Cadiz",
+  "states": [
+   "IN"
+  ],
+  "utc_start": "20:02",
+  "utc_end": "20:25",
+  "miles": 20.0,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 35.78,
+  "lon": -83.92,
+  "path": "NE of Maryville",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "20:09",
+  "utc_end": "20:10",
+  "miles": 1.0,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 40.22,
+  "lon": -88.6,
+  "path": "SE of Farmer City to W of Fisher",
+  "states": [
+   "IL"
+  ],
+  "utc_start": "20:14",
+  "utc_end": "20:27",
+  "miles": 13.0,
+  "deaths": 0
+ },
+ {
+  "f": 4,
+  "lat": 38.55,
+  "lon": -85.75,
+  "path": "NE of Henryville to Hanover to Madison to W of Cross Plains",
+  "states": [
+   "IN"
+  ],
+  "utc_start": "20:19",
+  "utc_end": "21:06",
+  "miles": 38.0,
+  "deaths": 11
+ },
+ {
+  "f": 1,
+  "lat": 36.38,
+  "lon": -87.37,
+  "path": "style=\"background-color:#ccdfdc;\"|SE of Cunningham",
+  "states": [
+   "TN"
+  ],
+  "utc_start": null,
+  "utc_end": null,
+  "miles": 0.25,
+  "deaths": 0
+ },
+ {
+  "f": 5,
+  "lat": 37.73,
+  "lon": -86.53,
+  "path": "SW of Hardinsburg, KY, to Brandenburg, KY, to NNW of Laconia, IN",
+  "states": [
+   "KY",
+   "IN"
+  ],
+  "utc_start": "20:30",
+  "utc_end": "21:22",
+  "miles": 34.0,
+  "deaths": 31
+ },
+ {
+  "f": 5,
+  "lat": 39.63,
+  "lon": -84.05,
+  "path": "SW of Xenia to Downtown Xenia to N of South Charleston",
+  "states": [
+   "OH"
+  ],
+  "utc_start": "20:32",
+  "utc_end": "21:09",
+  "miles": 32.0,
+  "deaths": 34
+ },
+ {
+  "f": 1,
+  "lat": 35.25,
+  "lon": -85.02,
+  "path": "NW of Cleveland",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "20:33",
+  "utc_end": "20:40",
+  "miles": 5.9,
+  "deaths": 0
+ },
+ {
+  "f": 4,
+  "lat": 40.05,
+  "lon": -85.27,
+  "path": "SW of Blountsville to N of Ridgeville",
+  "states": [
+   "IN"
+  ],
+  "utc_start": "20:35",
+  "utc_end": "20:58",
+  "miles": 22.0,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 39.98,
+  "lon": -88.23,
+  "path": "E of Tolono to N of Philo",
+  "states": [
+   "IL"
+  ],
+  "utc_start": "20:44",
+  "utc_end": "20:52",
+  "miles": 8.0,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 35.18,
+  "lon": -84.87,
+  "path": "ENE of Cleveland to southern Etowah",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "20:55",
+  "utc_end": "21:26",
+  "miles": 24.0,
+  "deaths": 3
+ },
+ {
+  "f": 3,
+  "lat": 39.95,
+  "lon": -88.07,
+  "path": "S of Sydney to E of Ogden",
+  "states": [
+   "IL"
+  ],
+  "utc_start": "20:58",
+  "utc_end": "21:14",
+  "miles": 17.0,
+  "deaths": 0
+ },
+ {
+  "f": 4,
+  "lat": 37.42,
+  "lon": -86.57,
+  "path": "W of Caneyville to Big Clifty",
+  "states": [
+   "KY"
+  ],
+  "utc_start": "21:00",
+  "utc_end": "21:34",
+  "miles": 28.0,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 39.78,
+  "lon": -83.72,
+  "path": "SW of Florence to London to SW of West Jefferson",
+  "states": [
+   "OH"
+  ],
+  "utc_start": "21:01",
+  "utc_end": "21:20",
+  "miles": 15.0,
+  "deaths": 0
+ },
+ {
+  "f": 4,
+  "lat": 38.77,
+  "lon": -85.27,
+  "path": "S of Manville to Aurora",
+  "states": [
+   "IN"
+  ],
+  "utc_start": "21:04",
+  "utc_end": "21:29",
+  "miles": 28.0,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 36.48,
+  "lon": -86.98,
+  "path": "W of Springfield",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "21:05",
+  "utc_end": "21:11",
+  "miles": 6.0,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 33.45,
+  "lon": -87.05,
+  "path": "Concord",
+  "states": [
+   "AL"
+  ],
+  "utc_start": "21:15",
+  "utc_end": "21:21",
+  "miles": 1.0,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 40.25,
+  "lon": -87.63,
+  "path": "Bismarck",
+  "states": [
+   "IL"
+  ],
+  "utc_start": "21:18",
+  "utc_end": "21:25",
+  "miles": 7.0,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 33.45,
+  "lon": -87.05,
+  "path": "S of Mattoon to NE of Charleston",
+  "states": [
+   "IL"
+  ],
+  "utc_start": "21:22",
+  "utc_end": "21:33",
+  "miles": 14.8,
+  "deaths": 0
+ },
+ {
+  "f": 5,
+  "lat": 38.97,
+  "lon": -84.88,
+  "path": "N of Rising Sun, IN, to Belleview, KY, to Sayler Park",
+  "states": [
+   "IN",
+   "KY",
+   "OH"
+  ],
+  "utc_start": "21:28",
+  "utc_end": "21:51",
+  "miles": 21.0,
+  "deaths": 3
+ },
+ {
+  "f": 3,
+  "lat": 36.72,
+  "lon": -86.53,
+  "path": "W of Gold City to E of Smiths Grove",
+  "states": [
+   "KY"
+  ],
+  "utc_start": "21:34",
+  "utc_end": "22:05",
+  "miles": 25.0,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 40.28,
+  "lon": -87.48,
+  "path": "W of Attica to Rainsville to S of Judy",
+  "states": [
+   "IN"
+  ],
+  "utc_start": "21:37",
+  "utc_end": "22:02",
+  "miles": 26.0,
+  "deaths": 0
+ },
+ {
+  "f": 4,
+  "lat": 38.2,
+  "lon": -85.75,
+  "path": "Louisville to W of Buckner",
+  "states": [
+   "KY"
+  ],
+  "utc_start": "21:37",
+  "utc_end": "21:59",
+  "miles": 21.0,
+  "deaths": 2
+ },
+ {
+  "f": 2,
+  "lat": 35.52,
+  "lon": -84.35,
+  "path": "Ballplay",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "21:37",
+  "utc_end": "21:50",
+  "miles": 9.0,
+  "deaths": 0
+ },
+ {
+  "f": 4,
+  "lat": 37.72,
+  "lon": -85.9,
+  "path": "NW of Elizabethtown to N of Farfield",
+  "states": [
+   "KY"
+  ],
+  "utc_start": "21:43",
+  "utc_end": "22:33",
+  "miles": 42.0,
+  "deaths": 0
+ },
+ {
+  "f": 4,
+  "lat": 40.5,
+  "lon": -87.13,
+  "path": "W of Otterbein to Monticello to Ligonier to NW of Wolcottville",
+  "states": [
+   "IN"
+  ],
+  "utc_start": "21:47",
+  "utc_end": "23:47",
+  "miles": 121.0,
+  "deaths": 18
+ },
+ {
+  "f": 4,
+  "lat": 39.18,
+  "lon": -84.48,
+  "path": "Northeastern Cincinnati to N of Mason",
+  "states": [
+   "OH"
+  ],
+  "utc_start": "21:52",
+  "utc_end": "23:14",
+  "miles": 20.0,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 31.55,
+  "lon": -89.18,
+  "path": "SE of Ellisville to ENE of Laurel",
+  "states": [
+   "MS"
+  ],
+  "utc_start": "22:00",
+  "utc_end": "22:19",
+  "miles": 12.0,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 38.38,
+  "lon": -85.33,
+  "path": "SE of La Grange to SW of Jonesville",
+  "states": [
+   "KY"
+  ],
+  "utc_start": "22:04",
+  "utc_end": "22:27",
+  "miles": 21.3,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 35.99,
+  "lon": -86.69,
+  "path": "Southeastern Nashville",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "22:07",
+  "utc_end": "22:20",
+  "miles": 12.0,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 35.67,
+  "lon": -84.17,
+  "path": "Greenback",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "22:09",
+  "utc_end": "22:11",
+  "miles": 2.0,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 39.38,
+  "lon": -84.23,
+  "path": "S of Lebanon to NE of Pekin",
+  "states": [
+   "OH"
+  ],
+  "utc_start": "22:12",
+  "utc_end": "22:22",
+  "miles": 10.0,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 40.08,
+  "lon": -82.85,
+  "path": "W of New Albany",
+  "states": [
+   "OH"
+  ],
+  "utc_start": "22:13",
+  "utc_end": "22:18",
+  "miles": 5.0,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 33.87,
+  "lon": -85.83,
+  "path": "NW of Jacksonville",
+  "states": [
+   "AL"
+  ],
+  "utc_start": "22:21",
+  "utc_end": "22:22",
+  "miles": 1.0,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 35.59,
+  "lon": -86.94,
+  "path": "style=\"background-color:#ccdfdc;\"|SE of Columbia to NW of Chapel Hill\u00a7",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "22:25",
+  "utc_end": "22:37",
+  "miles": 10.0,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 33.55,
+  "lon": -85.47,
+  "path": "SE of Heflin, AL, to S of Pine Log Mountain",
+  "states": [
+   "AL",
+   "GA"
+  ],
+  "utc_start": "22:29",
+  "utc_end": "00:00",
+  "miles": 65.0,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 34.05,
+  "lon": -85.82,
+  "path": "SW of Centre to Alexis",
+  "states": [
+   "AL"
+  ],
+  "utc_start": "22:35",
+  "utc_end": "22:48",
+  "miles": 14.0,
+  "deaths": 0
+ },
+ {
+  "f": 4,
+  "lat": 37.22,
+  "lon": -85.47,
+  "path": "S of Greensburg to Mannsville",
+  "states": [
+   "KY"
+  ],
+  "utc_start": "22:40",
+  "utc_end": "23:08",
+  "miles": 29.0,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 36.23,
+  "lon": -86.24,
+  "path": "NE of Lebanon to Dickson Springs",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "22:50",
+  "utc_end": "23:13",
+  "miles": 18.0,
+  "deaths": 0
+ },
+ {
+  "f": 4,
+  "lat": 38.05,
+  "lon": -85.07,
+  "path": "Alton to Frankfort to Stamping Ground",
+  "states": [
+   "KY"
+  ],
+  "utc_start": "22:50",
+  "utc_end": "23:28",
+  "miles": 36.0,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 34.33,
+  "lon": -87.73,
+  "path": "NW of Phil Campbell to Oak Grove",
+  "states": [
+   "AL"
+  ],
+  "utc_start": "23:01",
+  "utc_end": "23:15",
+  "miles": 12.0,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 35.87,
+  "lon": -86.42,
+  "path": "NW of Downtown Murfreesboro to Statesville",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "23:03",
+  "utc_end": "23:26",
+  "miles": 19.0,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 37.43,
+  "lon": -84.92,
+  "path": "SW of Hustonville to Junction City to Herrington Lake",
+  "states": [
+   "KY"
+  ],
+  "utc_start": "23:10",
+  "utc_end": "23:55",
+  "miles": 18.0,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 35.46,
+  "lon": -86.84,
+  "path": "NW of Lewisburg to N of Unionville",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "23:14",
+  "utc_end": "23:34",
+  "miles": 20.0,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 35.5,
+  "lon": -86.74,
+  "path": "N of Farmington to SE of Unionville",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "23:14",
+  "utc_end": "23:45",
+  "miles": 15.0,
+  "deaths": 0
+ },
+ {
+  "f": 5,
+  "lat": 34.33,
+  "lon": -87.73,
+  "path": "Mount Hope to Moulton to ESE of Harvest",
+  "states": [
+   "AL"
+  ],
+  "utc_start": "23:20",
+  "utc_end": "00:21",
+  "miles": 51.0,
+  "deaths": 28
+ },
+ {
+  "f": 4,
+  "lat": 34.5,
+  "lon": -85.05,
+  "path": "SW of Sugar Valley to NW of Resaca",
+  "states": [
+   "GA"
+  ],
+  "utc_start": "23:30",
+  "utc_end": "00:00",
+  "miles": 26.0,
+  "deaths": 9
+ },
+ {
+  "f": 3,
+  "lat": 41.03,
+  "lon": -84.4,
+  "path": "S of Oakwood to NW of Continental",
+  "states": [
+   "OH"
+  ],
+  "utc_start": "23:33",
+  "utc_end": "23:43",
+  "miles": 10.0,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 40.97,
+  "lon": -85.73,
+  "path": "SE of North Manchester",
+  "states": [
+   "IN"
+  ],
+  "utc_start": "23:35",
+  "utc_end": "23:45",
+  "miles": 7.1,
+  "deaths": 0
+ },
+ {
+  "f": 4,
+  "lat": 36.65,
+  "lon": -85.37,
+  "path": "S of Kettle to Ida to Piney Woods to Mill Springs",
+  "states": [
+   "KY"
+  ],
+  "utc_start": "23:35",
+  "utc_end": "00:04",
+  "miles": 30.0,
+  "deaths": 0
+ },
+ {
+  "f": 4,
+  "lat": 33.27,
+  "lon": -88.2,
+  "path": "NNW of Aliceville to Jasper to Cullman to Fairview",
+  "states": [
+   "AL"
+  ],
+  "utc_start": "23:44",
+  "utc_end": "01:48",
+  "miles": 103.0,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 40.38,
+  "lon": -85.97,
+  "path": "Windfall to Swayzee to E of Sweetser",
+  "states": [
+   "IN"
+  ],
+  "utc_start": "23:45",
+  "utc_end": "00:08",
+  "miles": 19.0,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 41.58,
+  "lon": -85.38,
+  "path": "SE of Lagrange",
+  "states": [
+   "IN"
+  ],
+  "utc_start": "23:51",
+  "utc_end": "23:59",
+  "miles": 8.8,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 41.42,
+  "lon": -85.47,
+  "path": "SW of Brimfield to S of South Milford to NNW of Freemont",
+  "states": [
+   "IN"
+  ],
+  "utc_start": "23:53",
+  "utc_end": "00:29",
+  "miles": 36.0,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 38.33,
+  "lon": -84.43,
+  "path": "Lees Lick to Poindexter to Claysville",
+  "states": [
+   "KY"
+  ],
+  "utc_start": "23:55",
+  "utc_end": "00:21",
+  "miles": 25.0,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 36.85,
+  "lon": -84.97,
+  "path": "WNW of Monticello to W of Burnside",
+  "states": [
+   "KY"
+  ],
+  "utc_start": "23:56",
+  "utc_end": "00:24",
+  "miles": 24.0,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 38.67,
+  "lon": -83.75,
+  "path": "Aberdeen, OH",
+  "states": [
+   "KY",
+   "OH"
+  ],
+  "utc_start": "00:10",
+  "utc_end": "00:20",
+  "miles": 9.1,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 35.33,
+  "lon": -83.82,
+  "path": "Robbinsville to Stecoah",
+  "states": [
+   "NC"
+  ],
+  "utc_start": "00:10",
+  "utc_end": "00:25",
+  "miles": 12.0,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 37.68,
+  "lon": -84.93,
+  "path": "W of Danville to eastern Pleasant Hill to NE of Harrodsburg",
+  "states": [
+   "KY"
+  ],
+  "utc_start": "00:15",
+  "utc_end": "00:35",
+  "miles": 18.0,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 40.73,
+  "lon": -85.25,
+  "path": "SW of Bluffton to W of Peterson",
+  "states": [
+   "IN"
+  ],
+  "utc_start": "00:15",
+  "utc_end": "00:27",
+  "miles": 12.0,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 35.81,
+  "lon": -86.16,
+  "path": "SE of Readyville to Dowelltown",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "00:17",
+  "utc_end": "00:35",
+  "miles": 20.0,
+  "deaths": 0
+ },
+ {
+  "f": 4,
+  "lat": 37.72,
+  "lon": -84.5,
+  "path": "Cottonburg to N of Richmond to E of Mount Sterling",
+  "states": [
+   "KY"
+  ],
+  "utc_start": "00:18",
+  "utc_end": "00:57",
+  "miles": 35.0,
+  "deaths": 7
+ },
+ {
+  "f": 3,
+  "lat": 38.67,
+  "lon": -83.75,
+  "path": "WNW of West Union to E of Peebles",
+  "states": [
+   "KY"
+  ],
+  "utc_start": "00:20",
+  "utc_end": "00:37",
+  "miles": 16.0,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 40.67,
+  "lon": -85.5,
+  "path": "SW of Warren to S of Markle",
+  "states": [
+   "IN"
+  ],
+  "utc_start": "00:20",
+  "utc_end": "00:30",
+  "miles": 11.0,
+  "deaths": 0
+ },
+ {
+  "f": 4,
+  "lat": 34.37,
+  "lon": -84.33,
+  "path": "Ball Ground to Juno to W of Dahlonega",
+  "states": [
+   "GA"
+  ],
+  "utc_start": "00:22",
+  "utc_end": "00:53",
+  "miles": 24.0,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 40.77,
+  "lon": -85.15,
+  "path": "NNE of Bluffton to NW of Decatur",
+  "states": [
+   "IN"
+  ],
+  "utc_start": "00:25",
+  "utc_end": "00:40",
+  "miles": 10.9,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 41.08,
+  "lon": -84.47,
+  "path": "SW of Melrose to N of Oakwood",
+  "states": [
+   "OH"
+  ],
+  "utc_start": "00:26",
+  "utc_end": "00:34",
+  "miles": 8.0,
+  "deaths": 0
+ },
+ {
+  "f": 5,
+  "lat": 34.7,
+  "lon": -87.05,
+  "path": "SSW of Athens, AL, to Tanner, AL, to Capshaw, AL, to Harvest, AL, to Flintville, TN\u2020",
+  "states": [
+   "AL",
+   "TN"
+  ],
+  "utc_start": "00:30",
+  "utc_end": "01:25",
+  "miles": 50.0,
+  "deaths": 22
+ },
+ {
+  "f": 1,
+  "lat": 42.03,
+  "lon": -83.25,
+  "path": "Berlin Township",
+  "states": [
+   "MI"
+  ],
+  "utc_start": "00:30",
+  "utc_end": "00:31",
+  "miles": 2.0,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 42.03,
+  "lon": -83.25,
+  "path": "W of Hillsdale to W of Clark Lake",
+  "states": [
+   "MI"
+  ],
+  "utc_start": "00:44",
+  "utc_end": "00:59",
+  "miles": 21.0,
+  "deaths": 2
+ },
+ {
+  "f": 2,
+  "lat": 37.83,
+  "lon": -84.43,
+  "path": "SE of Lexington",
+  "states": [
+   "KY"
+  ],
+  "utc_start": "00:45",
+  "utc_end": "00:55",
+  "miles": 9.0,
+  "deaths": 0
+ },
+ {
+  "f": 4,
+  "lat": 34.99,
+  "lon": -86.48,
+  "path": "style=\"background-color:#ccdfdc;\"|SW of Flintville to AEDC",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "00:45",
+  "utc_end": "01:25",
+  "miles": 40.0,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 36.25,
+  "lon": -85.61,
+  "path": "style=\"background-color:#B7A3C3;\"|W of Cummins Falls State Park to WNW of Rickman\u00b6",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "00:55",
+  "utc_end": "01:07",
+  "miles": 8.0,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 37.02,
+  "lon": -84.87,
+  "path": "N of Ano to Elgin",
+  "states": [
+   "KY"
+  ],
+  "utc_start": "00:55",
+  "utc_end": "01:30",
+  "miles": 30.0,
+  "deaths": 0
+ },
+ {
+  "f": 4,
+  "lat": 36.63,
+  "lon": -84.78,
+  "path": "Boone National Forest",
+  "states": [
+   "KY"
+  ],
+  "utc_start": "01:04",
+  "utc_end": "01:32",
+  "miles": 26.0,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 37.98,
+  "lon": -83.88,
+  "path": "SE of Mount Sterling",
+  "states": [
+   "KY"
+  ],
+  "utc_start": "01:05",
+  "utc_end": "01:13",
+  "miles": 4.9,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 41.75,
+  "lon": -84.42,
+  "path": "Waldron to SE of Hudson",
+  "states": [
+   "MI"
+  ],
+  "utc_start": "01:05",
+  "utc_end": "01:10",
+  "miles": 10.0,
+  "deaths": 0
+ },
+ {
+  "f": 4,
+  "lat": 36.03,
+  "lon": -85.59,
+  "path": "style=\"background-color:#B7A3C3;\"|Macedonia to SE of Cookeville to SE of Crawford\u00b6",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "01:05",
+  "utc_end": "01:39",
+  "miles": 30.0,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 38.23,
+  "lon": -84.65,
+  "path": "SE of Stamping Ground to Muddy Ford",
+  "states": [
+   "KY"
+  ],
+  "utc_start": "01:13",
+  "utc_end": "01:28",
+  "miles": 14.0,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 36.51,
+  "lon": -84.82,
+  "path": "Big South Fork National River and Recreation Area",
+  "states": [
+   "TN",
+   "KY"
+  ],
+  "utc_start": "01:15",
+  "utc_end": "01:35",
+  "miles": 20.0,
+  "deaths": 0
+ },
+ {
+  "f": 4,
+  "lat": 34.95,
+  "lon": -84.3,
+  "path": "SE of McCaysville, GA, to Murphy, NC to SW of Marble, NC",
+  "states": [
+   "GA",
+   "NC"
+  ],
+  "utc_start": "01:15",
+  "utc_end": "01:45",
+  "miles": 22.0,
+  "deaths": 3
+ },
+ {
+  "f": 2,
+  "lat": 41.08,
+  "lon": -84.7,
+  "path": "NE of Payne to SW of Paulding",
+  "states": [
+   "OH"
+  ],
+  "utc_start": "01:16",
+  "utc_end": "01:23",
+  "miles": 7.0,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 36.43,
+  "lon": -85.21,
+  "path": "Livingston",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "01:20",
+  "utc_end": "01:25",
+  "miles": 4.0,
+  "deaths": 0
+ },
+ {
+  "f": 4,
+  "lat": 36.5,
+  "lon": -85.13,
+  "path": "Faix, TN, to Moodyville, TN, to W of Mount Pisgah",
+  "states": [
+   "TN",
+   "KY"
+  ],
+  "utc_start": "01:25",
+  "utc_end": "01:50",
+  "miles": 19.0,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 36.8,
+  "lon": -84.43,
+  "path": "N of Whitley City to Laurel River Lake",
+  "states": [
+   "KY"
+  ],
+  "utc_start": "01:30",
+  "utc_end": "01:45",
+  "miles": 13.0,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 35.26,
+  "lon": -86.04,
+  "path": "ESE of Estill Springs NW of Altamont\u00a7",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "01:40",
+  "utc_end": "02:02",
+  "miles": 20.0,
+  "deaths": 0
+ },
+ {
+  "f": 4,
+  "lat": 36.28,
+  "lon": -85.09,
+  "path": "style=\"background-color:#ccdfdc;\"|NE of Wilder to SE of Jamestown to SSW of Sharp Place\u00a7",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "01:41",
+  "utc_end": "01:57",
+  "miles": 20.0,
+  "deaths": 0
+ },
+ {
+  "f": 5,
+  "lat": 33.83,
+  "lon": -88.13,
+  "path": "N of Vernon to Guin, to Delmar, to ESE of Decatur",
+  "states": [
+   "AL"
+  ],
+  "utc_start": "01:50",
+  "utc_end": "03:57",
+  "miles": 79.5,
+  "deaths": 28
+ },
+ {
+  "f": 3,
+  "lat": 36.97,
+  "lon": -84.12,
+  "path": "Corbin to W of Fogertown",
+  "states": [
+   "KY"
+  ],
+  "utc_start": "01:55",
+  "utc_end": "02:20",
+  "miles": 21.0,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 41.8,
+  "lon": -83.52,
+  "path": "NW of Erie",
+  "states": [
+   "MI"
+  ],
+  "utc_start": "01:56",
+  "utc_end": "01:57",
+  "miles": 0.5,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 36.78,
+  "lon": -84.7,
+  "path": "Kidds Crossing to Ula",
+  "states": [
+   "KY"
+  ],
+  "utc_start": "02:00",
+  "utc_end": "02:35",
+  "miles": 29.0,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 35.26,
+  "lon": -86.04,
+  "path": "style=\"background-color:#ccdfdc;\"|SSW of Irving College SSW of Spencer\u00a7",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "02:04",
+  "utc_end": "02:22",
+  "miles": 16.0,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 34.53,
+  "lon": -86.9,
+  "path": "SE of Decatur to southern Huntsville to E of Princeton",
+  "states": [
+   "AL"
+  ],
+  "utc_start": "03:29",
+  "utc_end": "04:27",
+  "miles": 41.0,
+  "deaths": 2
+ },
+ {
+  "f": 3,
+  "lat": 37.03,
+  "lon": -84.4,
+  "path": "Fawbush to Walnut Grove",
+  "states": [
+   "KY"
+  ],
+  "utc_start": "03:35",
+  "utc_end": "04:05",
+  "miles": 24.0,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 35.27,
+  "lon": -86.93,
+  "path": "NE of Pulaski to SW of Shelbyville",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "04:00",
+  "utc_end": "04:30",
+  "miles": 28.0,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 36.36,
+  "lon": -85.36,
+  "path": "Livingston to Monroe",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "04:30",
+  "utc_end": "04:45",
+  "miles": 13.0,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 35.76,
+  "lon": -85.82,
+  "path": "NW of Jessie to SE of Doyle",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "04:33",
+  "utc_end": "04:46",
+  "miles": 20.0,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 36.48,
+  "lon": -84.6,
+  "path": "SE of Black Oak to Oneida to Norma",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "04:48",
+  "utc_end": "05:01",
+  "miles": 12.0,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 36.1,
+  "lon": -83.77,
+  "path": "NE of Knoxville",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "05:30",
+  "utc_end": "05:35",
+  "miles": 4.0,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 35.94,
+  "lon": -85.33,
+  "path": "E of Sparta to Woody",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "05:30",
+  "utc_end": "06:00",
+  "miles": 20.0,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 36.05,
+  "lon": -85.36,
+  "path": "style=\"background-color:#B7A3C3;\"|Board Valley",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "05:30",
+  "utc_end": "06:00",
+  "miles": 4.0,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 36.25,
+  "lon": -84.67,
+  "path": "NE of Sunbright to Huntsville",
+  "states": [
+   "TN"
+  ],
+  "utc_start": "05:50",
+  "utc_end": "06:05",
+  "miles": 12.0,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 37.25,
+  "lon": -82.42,
+  "path": "Breaks Interstate Park",
+  "states": [
+   "VA"
+  ],
+  "utc_start": "07:00",
+  "utc_end": "07:05",
+  "miles": 7.3,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 37.57,
+  "lon": -81.45,
+  "path": "W of Mullensville",
+  "states": [
+   "WV"
+  ],
+  "utc_start": "08:00",
+  "utc_end": "08:10",
+  "miles": 4.9,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 37.38,
+  "lon": -81.55,
+  "path": "Gary",
+  "states": [
+   "WV"
+  ],
+  "utc_start": "08:00",
+  "utc_end": "08:01",
+  "miles": null,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 37.67,
+  "lon": -81.27,
+  "path": "W of Coal City to Shady Spring",
+  "states": [
+   "WV"
+  ],
+  "utc_start": "08:14",
+  "utc_end": "08:28",
+  "miles": 12.0,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 36.85,
+  "lon": -81.92,
+  "path": "Channels State Forest to Saltville",
+  "states": [
+   "VA"
+  ],
+  "utc_start": "08:15",
+  "utc_end": "08:26",
+  "miles": 9.0,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 37.77,
+  "lon": -81.17,
+  "path": "Beckley",
+  "states": [
+   "WV"
+  ],
+  "utc_start": "08:26",
+  "utc_end": "08:28",
+  "miles": null,
+  "deaths": 0
+ },
+ {
+  "f": 3,
+  "lat": 37.8,
+  "lon": -81.02,
+  "path": "ENE of Beckley to Meadow Bridge to Friars Hill",
+  "states": [
+   "WV"
+  ],
+  "utc_start": "08:30",
+  "utc_end": "09:10",
+  "miles": 35.0,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 37.67,
+  "lon": -80.92,
+  "path": "Hinton",
+  "states": [
+   "WV"
+  ],
+  "utc_start": "08:40",
+  "utc_end": "08:41",
+  "miles": null,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 37.3,
+  "lon": -80.03,
+  "path": "Roanoke",
+  "states": [
+   "VA"
+  ],
+  "utc_start": "09:42",
+  "utc_end": "10:03",
+  "miles": 9.0,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 38.15,
+  "lon": -79.17,
+  "path": "E of Swoop to Staunton to S of Weyers Cave",
+  "states": [
+   "VA"
+  ],
+  "utc_start": "11:07",
+  "utc_end": "11:27",
+  "miles": 15.2,
+  "deaths": 0
+ },
+ {
+  "f": 1,
+  "lat": 35.75,
+  "lon": -81.7,
+  "path": "Morganton to NE of Drexel",
+  "states": [
+   "NC"
+  ],
+  "utc_start": "13:30",
+  "utc_end": "13:35",
+  "miles": 6.9,
+  "deaths": 0
+ },
+ {
+  "f": 2,
+  "lat": 35.82,
+  "lon": -81.53,
+  "path": "Hudson",
+  "states": [
+   "NC"
+  ],
+  "utc_start": "13:45",
+  "utc_end": "13:50",
+  "miles": 5.0,
+  "deaths": 0
+ }
+]
