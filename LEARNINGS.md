@@ -1419,3 +1419,22 @@ Rules:
 5. Tension system, not taste: the loop table carries plant and pay TIMES; at any timestamp at least one loop must be
    open and unpaid; no 90-second window without a retention spike; stakes score per chapter never drops more than one
    point and ends higher than it started. Checked by the grader, and by `scripts/script_scorecard.py` once it exists.
+
+## 2026-09-20 (later) — write sentences people say; one score; a hold replaces the blackout; fillers on probe
+Owner on v4 Tanner passage ("Same town. One mile to the west. One hour later. Ninety eight miles long."): "your average
+sentence is three to four words long, nobody speaks like this"; "in the dark" is filler; scores with a percentage
+beside them are confusing; a 3.5 s hold followed by a blackout is 5 to 7 s of nothing.
+1. **Fragments are banned.** The CLAUDE.md voice rule already says "flowing connective sentences, not chopped
+   fragments"; the writer over-corrected the third-grader rule into trailer-speak. Sentences run 10 to 22 words,
+   joined with and / but / because / so; one idea each, but a whole sentence. A fragment is allowed only as a spoken
+   quote from a real person.
+2. **Decoration words are cut** ("in the dark" when the clock already said 7:30 PM; "head on"; "by the way" unless it
+   is a deliberate filler). Delete test per phrase, not just per sentence.
+3. **One score per script, out of 10, from the independent grader, with one line on what would move it.** No
+   confidence percentage in the owner-facing report (it lives in the grader file only).
+4. **A hold replaces the blackout at that seam, never both.** Hold 3 to 4 s after a payoff over a moving picture
+   with a bed; the act blackout stays only where there is no hold.
+5. **Spoken fillers are an experiment, not a rule:** uh / um / you know / look / I mean / so / well / right? / by the
+   way / actually, plus spoken grammar (repeat the subject: "the man who ran the office, he knew"; contractions;
+   a trailing "right?"). One or two per 30 s at most. Probe both versions through pocket-TTS before deciding;
+   probes for ep-1974 live in `episodes/ep-1974-super-outbreak/audio/probe/`.
