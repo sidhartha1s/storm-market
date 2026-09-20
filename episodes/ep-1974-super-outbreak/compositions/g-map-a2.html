@@ -125,6 +125,11 @@ window.__timelines = window.__timelines || {};
     { scale: 1.6, x: -404.48, y: -39.84, duration: 2, ease: "power2.out" }, 0);
   tl.to(P+"mapgroup", { scale: 1.66, duration: DUR - 2, ease: "none" }, 2);
 
+  // QC fix (2026-09-21): graphics_qc measured AL/GA/TN/MS/NC/SC pushed outside the 1920x1080 frame once
+  // zoomed on Xenia, and this zoom never eases back to 1.0x for the rest of the comp -- hide the whole label
+  // group for the duration rather than chase which subset clears the frame at which moment.
+  tl.to(P+"stlabels", { opacity: 0, duration: 0.3, ease: "power1.out" }, 0);
+
   // Orchestrator addendum 2026-09-21: retimed to the FIRST "30 minutes" (a2-s1 "gave the town 30 minutes"),
   // matching the exact cue the orchestrator gave (6.9 + 0.2); text simplified to "30 MINUTES" per that ask.
   tl.fromTo(P+"r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 7.1);
