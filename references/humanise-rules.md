@@ -63,7 +63,7 @@ device with its timestamp, and anything that breaks the cadence is fixed in that
 - **Always on, invisible:** contractions where a person would use them; sentences of 10 to 22 words joined with
   and / but / because / so; ordinary intensifiers ("really", "just", "actually") used the way people use them.
 - **Rationed devices (each at most three times in a 20-minute script, never twice inside three minutes, never the
-  same one in neighbouring acts):** an opener ("Okay, so", "Now look", "Here's the thing", "Now,"); an aside
+  same one in neighbouring acts):** an opener ("Okay, so", "Now look", "Now,"; never the rule-4 banned phrases such as "here's the thing"); an aside
   ("honestly", "I mean", "well"); a check-in ("right?"); repeating the subject ("the man who ran the office, he
   knew"); repeating the verb for weight ("he knew. He knew it was coming"). Aim for one noticeable device every two
   to three minutes, and vary which one.
