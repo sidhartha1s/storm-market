@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-person-mcguire — A4-S3. No provenance.csv row names Mildred McGuire — typographic monogram. */
+  #root { position:absolute; inset:0; background:transparent; font-family:Arial,sans-serif; }
+  .glasscard { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14);
+    border-radius:28px; box-sizing:border-box; box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
+  .g-person-mcguire-card { position:absolute; left:96px; top:700px; width:1180px; height:280px;
+    display:flex; align-items:center; gap:40px; padding:0 48px; overflow:hidden; }
+  .g-person-mcguire-mono { flex:0 0 220px; width:220px; height:260px; border-left:6px solid #8e2020;
+    background:rgba(20,26,34,0.5); display:flex; align-items:center; justify-content:center; }
+  .g-person-mcguire-mono span { font-family:Georgia,serif; font-weight:700; font-size:120px; color:#2a3644; }
+  .g-person-mcguire-text { flex:1; min-width:0; }
+  .g-person-mcguire-name { font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; line-height:1.05; }
+  .g-person-mcguire-role { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:10px; }
+  .g-person-mcguire-line3 { font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:4px; color:#93a3b2; margin-top:16px; }
+  .g-person-mcguire-underline { position:absolute; left:48px; right:48px; bottom:22px; height:1px; background:#e8c56a; transform-origin:left center; }
+</style>
+<div id="root" data-composition-id="g-person-mcguire" data-width="1920" data-height="1080">
+  <div class="g-person-mcguire-card glasscard" id="g-person-mcguire-card">
+    <div class="g-person-mcguire-mono"><span>MM</span></div>
+    <div class="g-person-mcguire-text">
+      <div class="g-person-mcguire-name" id="g-person-mcguire-name">MILDRED McGUIRE</div>
+      <div class="g-person-mcguire-role" id="g-person-mcguire-role">ran McGuire Drugs, Guin</div>
+      <div class="g-person-mcguire-line3" id="g-person-mcguire-line3">REBUILT ON THE SAME GROUND</div>
+    </div>
+    <div class="g-person-mcguire-underline" id="g-person-mcguire-underline"></div>
+  </div>
+</div>
+<script>
+(function() {
+  /* A4-S3 span, audio/a4-s3.words.json exact (current on disk). */
+  const DUR = 27.946; // audio/manifest.json a4-s3.duration
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-person-mcguire-";
+  tl.set(P+"underline", { scaleX: 0 }, 0);
+  tl.fromTo(P+"card", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0.2);
+  tl.to(P+"underline", { scaleX: 1, duration: DUR, ease: "none" }, 0.2);
+  tl.to(P+"card", { x: -120, autoAlpha: 0, duration: 0.5, ease: "power2.in" }, DUR - 0.6);
+  window.__timelines["g-person-mcguire"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
