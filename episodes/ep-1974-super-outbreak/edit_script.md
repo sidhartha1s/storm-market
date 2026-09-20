@@ -289,8 +289,15 @@ still lives near Brandenburg. His sister, his brother, his small cousin are on t
 eight other names. It was just a bad day, he said, and he is right, and the point of this whole story is that
 the day was not rare. The air mass was ordinary. The front was ordinary. Seven F5 tornadoes came out of one
 afternoon because the ingredients lined up, and the ingredients still line up. What the country built after
-1974 buys you fifteen minutes you did not have then. [PAY] Fifteen minutes is enough to get below ground and
-not enough to get out of town. Know which one your house is before the day comes. That is the whole answer.
+1974 buys you fifteen minutes you did not have then. [PAY]
+
+**A6-S4 (120 w) · g-then-now v3: the fifteen minute card, three rows.** So do the arithmetic on fifteen minutes.
+[VE card] A basement or a storm shelter is thirty seconds away. An interior room on the lowest floor, no
+windows, is a minute. A car on a highway trying to outrun a mile-wide tornado is the one thing every survivor
+on this map would tell you not to do, and it takes longer than fifteen minutes to fail. [RS] Brandenburg had
+fifteen minutes and lost thirty one people, because in 1974 most of them were still finding out. Today the
+minutes are there. Fifteen minutes is enough to get below ground and not enough to get out of town. Know
+which one your house is before the day comes. That is the whole answer.
 
 ### Z · close (20:50–21:35, 70 w) · g-outro
 Where are you watching this from, and do you have a place below ground? Tell me in the comments, I read all
