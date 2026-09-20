@@ -123,7 +123,9 @@ window.__timelines = window.__timelines || {};
     { scale: 1.6, x: -404.48, y: -39.84, duration: 2, ease: "power2.out" }, 0);
   tl.to(P+"mapgroup", { scale: 1.66, duration: DUR - 2, ease: "none" }, 2);
 
-  tl.fromTo(P+"r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 10.58);
+  // Orchestrator addendum 2026-09-21: retimed to the FIRST "30 minutes" (a2-s1 "gave the town 30 minutes"),
+  // matching the exact cue the orchestrator gave (6.9 + 0.2); text simplified to "30 MINUTES" per that ask.
+  tl.fromTo(P+"r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 7.1);
 
   // T3 draws at CUES.fourthirtythree
   tl.fromTo(P+"t3dot", { attr: { r: 0 } }, { attr: { r: 9 }, duration: 0.3, ease: "back.out(2)" }, CUES.fourthirtythree);
