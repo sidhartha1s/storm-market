@@ -156,8 +156,7 @@ was walking his students onto a stage. [Q L2] *(blackout 0.8 s)*
 ### A2 · Xenia, 4:40 PM (4:50–7:40, 460 w)
 **A2-S1 (100 w) · g-clock "4:10 PM EDT" → "4:33" → "4:40" · track 3.** Dayton's weather office put a tornado
 warning on Xenia at 4:10 PM, Eastern time. [VE clock] Thirty minutes. In 1974 that was a gift. And Xenia still
-became the worst-hit town of the whole day. [Q Q-A2] Why? Because school was out, but the buildings were not
-empty. Because the roads were full of people driving home. At 4:33 a funnel came down near Lower Bellbrook
+became the worst-hit town of the whole day. [Q Q-A2] Why? At 4:33 a funnel came down near Lower Bellbrook
 Road, [VE track] and at 4:40 it was in the middle of the city, half a mile to a mile wide, going through Windsor
 Park and Arrowhead, streets full of the houses people had bought after the war.
 
