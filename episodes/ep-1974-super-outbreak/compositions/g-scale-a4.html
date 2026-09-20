@@ -70,6 +70,7 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const DUR = 8.0;
   tl.set('#' + ID + '-eyebrow', { autoAlpha: 1 }, 0);
+  tl.set('#' + ID + '-sub', { autoAlpha: 1 }, 0);
   tl.set('#' + ID + '-bracket', { autoAlpha: 0 }, 0);
   tl.set('#' + ID + '-bracketline', { scaleX: 0 }, 0);
   for (let i = 0; i < 7; i++) {
