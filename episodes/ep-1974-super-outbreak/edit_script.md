@@ -247,7 +247,7 @@ for Guin, Alabama, a town of about two thousand five hundred, and it got there a
 coming and eighteen seconds of it going over the house. [VE waveform card; insert audio if cleared] I have the
 thing on tape, he said. It is a rare recording of an F5 passing directly over a house. [RS] [PAY Q-A4b]
 [HUMAN] Becky Todd's family were in their car when it rolled. She told them to hold on to the seats. Her sons
-Mark and Paul did not survive. [RS] Seven hundred and thirty seven houses were destroyed in Guin that night,
+Mark and Paul did not survive. [RS] [VE g-person card: two names] Seven hundred and thirty seven houses were destroyed in Guin that night,
 and twenty eight people died. [verify: 28 official / 32 revised]
 
 **A4-S3 (120 w) · g-scale all seven bars lit · aerial of Guin · g-person Mildred McGuire.** [HUMAN] The town's
