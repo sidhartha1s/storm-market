@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<!--
+  g-outro — copied from library/inhouse/outro-brand.html and retuned per mg_briefs.md BATCH 3:
+  episode line, CTA line, and a second "NEXT:" line added below the original two. Wordmark kept.
+  Must be true: title reads "7 F5", never "EF5" (kept literal).
+  Duration = Z span (audio/manifest.json z-1.duration 18.418) + 3s = 21.418, rounded to 21.4s.
+-->
+<style>
+  #root { position:absolute; inset:0; background:#030507; font-family:Arial,sans-serif; color:#f2f5f8; }
+  .stage { position:absolute; inset:0; display:grid; place-items:center; }
+  .wrap { text-align:center; }
+  .g-outro-twh { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:120px; color:#f2f5f8; letter-spacing:6px; }
+  .g-outro-twh .amber { color:#d8a13a; }
+  .g-outro-ep { font-family:Georgia,serif; font-style:italic; font-size:30px; color:#d8a13a; margin-top:26px; }
+  .g-outro-cta { font-family:Arial,sans-serif; font-weight:700; font-size:26px; letter-spacing:2px; color:#f2f5f8; margin-top:22px; }
+  .g-outro-next { font-family:Georgia,serif; font-style:italic; font-size:24px; color:#93a3b2; margin-top:16px; }
+</style>
+<div id="root" data-composition-id="g-outro" data-width="1920" data-height="1080">
+  <div class="stage">
+    <div class="wrap" id="g-outro-wrap">
+      <div class="g-outro-twh" id="g-outro-twh">THE <span class="amber">WARNING</span> HOUR</div>
+      <div class="g-outro-ep" id="g-outro-ep">THE 1974 SUPER OUTBREAK &middot; THE DAY AMERICA HAD 7 F5 TORNADOES</div>
+      <div class="g-outro-cta" id="g-outro-cta">THE STORM-READY HOME &middot; FIRST LINK IN THE DESCRIPTION</div>
+      <div class="g-outro-next" id="g-outro-next">NEXT: THE 2011 SUPER OUTBREAK &middot; LINKED BELOW</div>
+    </div>
+  </div>
+</div>
+<script>
+(function() {
+  const DUR = 21.4; // audio/manifest.json z-1.duration (18.418) + 3s, per brief
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#g-outro-twh", "#g-outro-ep", "#g-outro-cta", "#g-outro-next"], { autoAlpha: 0 }, 0);
+  /* snap the wordmark to land on the spoken brand cadence, same offsets as the source template */
+  tl.fromTo("#g-outro-twh", { autoAlpha: 0, scale: 1.14 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power3.out" }, 0.55);
+  tl.fromTo("#g-outro-ep", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.7 }, 1.8);
+  tl.fromTo("#g-outro-cta", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.7 }, 3.2);
+  tl.fromTo("#g-outro-next", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.7 }, 4.6);
+  /* continuous element: a very slow scale breathing on the whole lockup across the hold */
+  tl.to("#g-outro-wrap", { scale: 1.015, duration: DUR - 6.0, ease: "sine.inOut" }, 5.5);
+  tl.to("#g-outro-wrap", { autoAlpha: 0, duration: 1.0 }, DUR - 1.0);
+  window.__timelines["g-outro"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
