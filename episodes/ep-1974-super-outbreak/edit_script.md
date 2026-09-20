@@ -123,6 +123,14 @@ missed. Perry County, Crawford, Harrison, Washington, Clark, Scott. Six counties
 died, most of them in farmhouses that happened to be in the way. The weather office had a warning out. There
 was simply nobody underneath it to hear it. That would not be true again for the rest of the day.
 
+**A1-S1b (120 w) · g-clock 3:19 PM EST · Hanover College footage or stills, Ken Burns · g-master-map track 2a.**
+An hour later, near Madison, Indiana, an F4 found something to hit. [VE track] Hanover College, on a bluff
+above the Ohio River, had thirty three buildings. When the tornado had passed, thirty two of them were damaged
+or gone. [RS] [VE the campus plan, buildings going dark one by one] Nobody on the campus died; the students
+had been sent to the basements. Seven people died in the town of Madison below it, eleven along the track.
+That is the shape of the whole day in one hill. The same wind, the same minutes, and the difference between
+a basement and a living room is the difference between a story and a name on a wall.
+
 **A1-S2 (170 w) · g-clock 3:30 · track 2 · g-person Tim Haley.** An hour and fourteen minutes later, in
 Brandenburg, Kentucky, they had fifteen minutes. [VE clock] Fifteen minutes was good for 1974. The tornado
 that came up the Ohio River toward the town was described afterward as a wall, a cloud base so low it looked
