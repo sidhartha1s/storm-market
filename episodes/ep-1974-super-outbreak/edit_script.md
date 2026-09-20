@@ -109,15 +109,12 @@ one as he calls] He was right about the day. He was right about the region. The 
 warnings went out, and it was not enough, because in 1974 a warning was a voice on a radio, and a radio has to
 be switched on. [RS]
 
-Here is what that day would become. A hundred and forty eight tornadoes in sixteen hours. [VE map counter]
-Thirteen states and a piece of Canada. Two thousand six hundred miles of ground torn open end to end. And
-seven of those tornadoes at the top of a scale that had only existed for three years, a scale whose inventor
-was about to fly over every mile of it and doubt his own numbers.
-
-One more thing before the clock starts. The corridor that took the worst of this, in north Alabama, is not
-farmland any more. It is the fastest growing city in the state, and the same sky sits over it. [Q L4] But the
-clock starts at sixteen minutes past two in the afternoon, in a forest, where there was nobody to warn.
-[Q L1] *(blackout 0.7 s)*
+A hundred and forty eight tornadoes in sixteen hours. [VE map counter] Thirteen states and a piece of Canada.
+Two thousand six hundred miles of ground torn open, and seven tornadoes at the top of a scale that had existed
+for three years, whose inventor was about to fly over every mile of it and doubt his own numbers. The corridor
+that took the worst of it, in north Alabama, is the fastest growing city in the state today, under the same
+sky. [Q L4] The clock started at sixteen minutes past two, in a forest, where there was nobody to warn. [Q L1]
+*(blackout 0.7 s)*
 
 ### A1 · first blood (2:05–4:50, 410 w)
 **A1-S1 (110 w) · g-clock 2:16 PM CDT · g-master-map track 1.** The first F5 of the day touched down south of a
