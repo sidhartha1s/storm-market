@@ -256,9 +256,15 @@ window.__timelines = window.__timelines || {};
     b.style.top = (ar.bottom - rr.top + gap) + "px";
   }
 
+  // QC fix (2026-09-21): the eyebrow "DAMAGE SURVEY - APRIL 1974 -> FEBRUARY 1975" wraps to two lines at
+  // 520px width + 6px letter-spacing, pushing into the headline's fixed top (154px); the cascade also pushed
+  // "148 TRACKS DRAWN BY HAND" (r2) into the italic footer's own fixed top (430px), since r2/r1/hl/ft all
+  // overlap on screen together from CUES.damage to the exit. Chain everything off the eyebrow's real height.
+  stackBelow("#g-plane-eb", "#g-plane-hl", 10);
   stackBelow("#g-plane-hl", "#g-plane-ticker", 16);
   stackBelow("#g-plane-ticker", "#g-plane-r1", 14);
   stackBelow("#g-plane-r1", "#g-plane-r2", 14);
+  stackBelow("#g-plane-r2", "#g-plane-ft", 24);
   const CUES = { ten: 14.92, miles: 17.12, hand: 20.72, damage: 25.82 };
   const DUR = 28.163;
   const WPS = [
