@@ -170,7 +170,7 @@ if _cta_applies:
 # track unless the element is `muted`, and audio_levels.py used to skip videos with no data-volume as
 # "muted by convention" — so stock footage mounted with neither was audible in the mix and no gate saw it.
 _undeclared = [v[:100] for v in re.findall(r"<video\b[^>]*>", h)
-               if not re.search(r"\bmuted\b", v) and "data-volume" not in v]
+               if not re.search(r"\smuted(?=[\s>/=])", v) and not re.search(r'\sdata-volume="', v)]
 report("video audio declared (`muted` or data-volume on every <video>)", _undeclared)
 
 # 5c. visual-identity repeats — the viewer sees SOURCES, not filenames. Cuts a/b/c of one
