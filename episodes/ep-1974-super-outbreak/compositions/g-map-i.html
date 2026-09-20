@@ -299,8 +299,11 @@ const DOTS=[["g-map-i-td0",0,4],["g-map-i-td1",0.02,4],["g-map-i-td2",0.04,4],["
   tl.to(P+"sb1", { autoAlpha: 0, y: -16, duration: 0.4 }, CUES.hundred - 0.1);
   tl.fromTo(P+"eb2", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.hundred + 0.4);
   tl.fromTo(P+"cap", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.6 }, CUES.hundred + 0.5);
+  tl.fromTo(P+"r0", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, CUES.hundred + 0.2);
   tl.fromTo(P+"r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, CUES.thirteen);
   tl.fromTo(P+"r2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, CUES.canada);
+  tl.fromTo(P+"r3", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 53.4);
+  tl.fromTo(P+"r4", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, CUES.first + 0.2);
 
   // CUES.first: every dot dims to 30% (group opacity); T1's own dot sits OUTSIDE that group
   // (g-map-i-t1dot, drawn on top, same coords as td8) so its highlight isn't attenuated by the dim.
