@@ -305,8 +305,29 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"garing", { attr: { "stroke-width": 0 }, opacity: 0.9 },
     { attr: { "stroke-width": 6 }, opacity: 0, duration: 1.2, ease: "power2.out" }, CUES.georgia);
 
+  // Orchestrator addendum 2026-09-21: overlap_check bans a popfig over a map comp, so every number the
+  // voice speaks while this map is on screen lands here instead -- one shared "fact" row (top:420px, clear
+  // of any headline/sub/121-MI-row combination at any point in this comp) that crossfades sequentially, so
+  // no two numbers are ever on screen at once and none repeats.
+  function setFact(txt) { const el = document.querySelector(P+"fact-txt"); if (el) el.textContent = txt; }
+  const FACTS = [
+    [1.88, "5:40 PM · POWER OUT"],
+    [10.2, "3 HOURS · WARNINGS VIA CLEVELAND"],
+    [31.04, "15 ON THE GROUND AT ONCE"],
+    [37.7, "361,000 PEOPLE"],
+    [83.9, "5:17 PM · MONTICELLO"],
+    [109.6, "18 DEAD"],
+    [114.4, "400 MILES SOUTH"],
+    [122.5, "4 STATES · 3 HOURS"],
+  ];
+  FACTS.forEach(([t, text], i) => {
+    if (i > 0) tl.to(P+"fact", { autoAlpha: 0, y: -16, duration: 0.3 }, t - 0.5);
+    tl.call(() => setFact(text), null, t - 0.15);
+    tl.fromTo(P+"fact", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, t);
+  });
+
   // exit
-  tl.to([P+"hl3", P+"sb3"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  tl.to([P+"hl3", P+"sb3", P+"fact"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
 
   window.__timelines["g-map-a3"] = tl;
 })();
