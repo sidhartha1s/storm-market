@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; overflow:hidden; }
+  .eyebrow { position:absolute; left:96px; top:70px; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; }
+  .yr { position:absolute; left:96px; width:280px; font-family:'Arial Black',Arial,sans-serif; font-size:84px; }
+  #g-tn164-yr1 { top:300px; color:#d8a13a; }
+  #g-tn164-yr2 { top:620px; color:#7fb2e5; }
+  .barwrap { position:absolute; left:480px; width:640px; height:70px; overflow:hidden; background:rgba(255,255,255,0.04); border-radius:4px; }
+  #g-tn164-barwrap1 { top:320px; }
+  #g-tn164-barwrap2 { top:640px; }
+  .bar { position:absolute; left:0; top:0; height:70px; width:640px; background:#e74c3c; transform:scaleX(0); transform-origin:left center; }
+  .shimmer { position:absolute; top:0; left:-200px; width:120px; height:70px; background:linear-gradient(100deg, transparent, rgba(255,255,255,0.18), transparent); }
+  .cnt { position:absolute; left:1300px; width:400px; font-family:'Courier New',monospace; font-weight:700; font-size:84px; color:#dfe7ee; }
+  #g-tn164-cnt1 { top:300px; } #g-tn164-cnt2 { top:620px; }
+  .sub2 { position:absolute; left:480px; top:730px; font-size:22px; color:#93a3b2; font-weight:700; letter-spacing:1px; }
+  .footer { position:absolute; left:0; right:0; top:900px; text-align:center; }
+  .mostlikely { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  .betterwarn { font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; margin-top:6px; }
+</style>
+<div id="root" data-composition-id="g-thennow-16-4" data-width="1920" data-height="1080">
+  <div class="eyebrow" id="g-tn164-eyebrow">LIMESTONE COUNTY, ALABAMA &middot; SAME CORRIDOR</div>
+
+  <div class="yr" id="g-tn164-yr1">1974</div>
+  <div class="barwrap" id="g-tn164-barwrap1"><div class="bar" id="g-tn164-bar1"></div><div class="shimmer" id="g-tn164-shim1"></div></div>
+  <div class="cnt" id="g-tn164-cnt1">0</div>
+
+  <div class="yr" id="g-tn164-yr2">2011</div>
+  <div class="barwrap" id="g-tn164-barwrap2"><div class="bar" id="g-tn164-bar2" style="background:#7fb2e5;"></div><div class="shimmer" id="g-tn164-shim2"></div></div>
+  <div class="cnt" id="g-tn164-cnt2">0</div>
+  <div class="sub2" id="g-tn164-sub2">2.5&times; THE PEOPLE IN THE PATH</div>
+
+  <div class="footer" id="g-tn164-footer">
+    <div class="mostlikely" id="g-tn164-mostlikely">MOST LIKELY</div>
+    <div class="betterwarn" id="g-tn164-betterwarn">BETTER WARNINGS</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-tn164-";
+
+  tl.set([P+"eyebrow", P+"yr1", P+"cnt1", P+"yr2", P+"cnt2", P+"sub2", P+"mostlikely", P+"betterwarn"], {autoAlpha:0}, 0);
+  tl.set(P+"footer", {autoAlpha:1}, 0); // container itself visible; children carry their own alpha
+
+  tl.fromTo(P+"eyebrow", {autoAlpha:0, y:-14}, {autoAlpha:1, y:0, duration:0.5}, 0.2);
+
+  // continuous shimmer sweeps on both bars for the whole comp duration
+  tl.to(P+"shim1", {x:840, duration:15, ease:"none"}, 0);
+  tl.to(P+"shim2", {x:840, duration:15, ease:"none"}, 0.6);
+
+  /* cues from audio/a6-s1b.txt @183.24wpm est., PROVISIONAL (no words.json yet); local zero = CUES.sixteen (global 2.62):
+     sixteen@0 twoandahalf@3.6 four@7.86 better("most likely better warnings")@13.42 */
+  tl.fromTo(P+"yr1", {autoAlpha:0, x:-20}, {autoAlpha:1, x:0, duration:0.5}, 0);
+  tl.to(P+"bar1", {scaleX:1, duration:0.9, ease:"power2.out"}, 0.2);
+  tl.fromTo(P+"cnt1", {autoAlpha:1}, {autoAlpha:1, duration:0.01}, 0.2);
+  const c1 = {v:0};
+  tl.to(c1, {v:16, duration:0.8, ease:"power3.out", onUpdate:function(){
+    const e=document.getElementById("g-tn164-cnt1"); if(e) e.textContent=Math.round(c1.v);
+  }}, 0.2);
+
+  tl.fromTo(P+"yr2", {autoAlpha:0, x:-20}, {autoAlpha:1, x:0, duration:0.5}, 3.6);
+  tl.fromTo(P+"sub2", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 3.9);
+
+  tl.to(P+"bar2", {scaleX:1, duration:0.8, ease:"power2.out"}, 7.86);
+  const c2 = {v:0};
+  tl.to(c2, {v:4, duration:0.8, ease:"power3.out", onUpdate:function(){
+    const e=document.getElementById("g-tn164-cnt2"); if(e) e.textContent=Math.round(c2.v);
+  }}, 7.86);
+  tl.to(P+"cnt2", {autoAlpha:1, duration:0.01}, 7.86);
+
+  tl.fromTo(P+"mostlikely", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4}, 13.42);
+  tl.fromTo(P+"betterwarn", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.5}, 13.85);
+
+  tl.to({}, {duration:0.1}, 14.9);
+
+  window.__timelines["g-thennow-16-4"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
