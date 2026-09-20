@@ -149,8 +149,8 @@ said that was the hardest thing he ever did.
 
 **A1-S3 (80 w) · g-person Gus Allen · g-scale bar 2 lit.** [HUMAN] Gus Allen lost his sister, his brother and a
 two year old cousin in the same minutes. His mother was carried about a mile by the wind, and lived. Fifty years
-later he described that day in one sentence. It was just a bad day. [VE g-scale two bars lit, five dark] It was
-not yet four o'clock. And about a hundred and seventy miles to the north-east, in Xenia, Ohio, a drama teacher
+later he described that day in one sentence. It was just a bad day. *(hold 3.0 s: Brandenburg memorial, slow
+push, wind bed only, no voice)* [VE g-scale two bars lit, five dark] It was not yet four o'clock. And about a hundred and seventy miles to the north-east, in Xenia, Ohio, a drama teacher
 was walking his students onto a stage. [Q L2] *(blackout 0.8 s)*
 
 ### A2 · Xenia, 4:40 PM (4:50–7:40, 460 w)
