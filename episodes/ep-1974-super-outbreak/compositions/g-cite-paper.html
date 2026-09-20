@@ -27,10 +27,13 @@
     <div class="g-cite-paper-sweep" id="g-cite-paper-sweep"></div>
     <div class="g-cite-paper-eyebrow" id="g-cite-paper-eyebrow">THE NEWS COURIER, ATHENS AL &middot; 2011</div>
     <div class="g-cite-paper-claim" id="g-cite-paper-claim">the 2011 path matched the 1974 Tanner tracks almost exactly</div>
-    <!-- attribution + marker combined into one footer line to hold three text tiers total
-         (eyebrow / claim / footer) — a fourth standalone node risked the flat-type gate at
-         this card's sizes (22 / 40 / 19px, no >=52px element, matching the citation-card genre). -->
-    <div class="g-cite-paper-marker" id="g-cite-paper-marker">AS REPORTED &middot; A WEATHER SERVICE METEOROLOGIST AND A GEOGRAPHY PROFESSOR, COMPARING THE TRACKS SINCE 2008</div>
+    <!-- Team-lead 21 Sep 26: split back into a single-word marker tag (matching the other three
+         cite cards) plus its own smaller attribution line, sized/letter-spaced + white-space:nowrap
+         so the 93-char sentence holds one line at 1272px interior width. Note for whoever runs
+         graphics_qc.mjs: this makes 4 text nodes at 22/40/19/16px (2 tiers) — same node-count
+         shape as the original combined version's flat-type concern, now split per instruction. -->
+    <div class="g-cite-paper-marker" id="g-cite-paper-marker">AS REPORTED</div>
+    <div class="g-cite-paper-attribution" id="g-cite-paper-attribution">A WEATHER SERVICE METEOROLOGIST AND A GEOGRAPHY PROFESSOR, COMPARING THE TRACKS SINCE 2008</div>
   </div>
 </div>
 <script>
