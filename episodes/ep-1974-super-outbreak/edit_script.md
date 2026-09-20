@@ -265,12 +265,13 @@ once. So he flew. [VE plane, tracks] Ten months. More than ten thousand miles, l
 by hand onto one map. [RS] [Q Q-A5] And somewhere in those ten thousand miles he found a kind of damage that
 no tornado could have made.
 
-**A5-S2 (110 w) · g-mechanism: how a rating is read from a house, four frames in the scale's own words.** Here is
-how you grade a tornado from the air after the wind is gone. [VE card: a house in four states] Roof torn off
-the house, that is an F2. Roof and some walls gone, F3. A well-built house levelled flat, F4. And a strong house
-swept clean off its foundation and carried away, cars flying a hundred yards, trees stripped of their bark, that
-is F5. [RS] Fujita read ten thousand miles of foundations that way. Seven times he found strong houses swept
-clean away, and seven times he wrote the top of his scale. [verify against the DePauw damage]
+**A5-S2 (120 w) · g-mechanism: two frames, F4 and F5, in the scale's own words · g-person Robert Pennington.**
+Here is what he was reading. [VE card: a house in two states] A well-built house with its walls gone is an F4.
+The same house swept clean off its foundation, with the cars a hundred yards away and the trees stripped of
+their bark, is an F5. [RS] [HUMAN] In Guin, a man named Robert Pennington came home from his shift at the
+electric company to that. No house. No foundation. No framing. Nothing. His wife Juanita was sixty four. She
+was found dead. [RS] [VE g-person card] That is what F5 looks like from the ground. Fujita read ten thousand
+miles of it from the air, and seven times he wrote the top of his scale. [verify against the DePauw damage]
 
 **A5-S3 (120 w) · g-mechanism: the one-air-mass engine, one diagram.** And the map answered the first question.
 How does one day make seven of them? [VE the card: warm wet air below, dry air above, the jet stream on top,
