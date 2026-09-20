@@ -102,10 +102,10 @@ All other broadcast pulls muted, narrated over, ≤ 8 s, `.bc` grade class, neve
 
 ### H · hook (0:00–0:25, 55 w) · frame one mid-action: the scope, hooks blooming; popfig "APRIL 3, 1974 · CINCINNATI" inside the first second
 *(ins-hook-whas under the first two seconds, ducked as the narrator enters)*
-Seven F5 tornadoes in one day. It has never happened again. [verify] [VE g-scale seven bars slam in] Three
-hundred and thirty people dead. [RS] [VE g-radar: five hooks on one scope, popfig "4:45 PM"] Five tornadoes on
-one radar screen at the same time, and the worst ones had not even formed yet. And the man who ran the
-national forecast office knew it was coming a full day early. So if he knew, why did so many people die? [Q]
+Seven F5 tornadoes in one day. Never matched since. [verify] [VE g-scale seven bars slam in] Three hundred and
+thirty people dead. [RS] [VE g-radar: five hooks on one scope, popfig "4:45 PM"] Five tornadoes on one radar
+screen at once, and the worst ones had not even formed yet. And the man who ran the national forecast office
+knew it was coming a full day early. So if he knew, why did so many people die? [Q]
 *(1.5 s void)*
 
 ### I · the call (0:25–1:55, 200 w) · g-master-map v1, thirteen states outlined and empty; popfig "APRIL 2, 1974 · KANSAS CITY"
