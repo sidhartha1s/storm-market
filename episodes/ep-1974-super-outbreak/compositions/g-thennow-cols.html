@@ -69,23 +69,26 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"hdr-l", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.6}, 0.3);
   tl.fromTo(P+"hdr-r", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.6}, 0.5);
 
-  // continuous radar sweep on both row-1 dish icons, whole 51s duration
-  tl.to(["#g-tncols-sweepL", "#g-tncols-sweepR"], {rotation:360, duration:51, ease:"none", transformOrigin:"15px 70px"}, 0);
+  // continuous radar sweep on both row-1 dish icons, capped inside the 51.07s window (finite, no repeat)
+  tl.to(["#g-tncols-sweepL", "#g-tncols-sweepR"], {rotation:360, duration:50.9, ease:"none", transformOrigin:"15px 70px"}, 0);
 
-  /* cues from audio/a6-s2.txt (CORRECTED wording, matches research/fact_qc.md #21/#22) @183.24wpm est.,
-     PROVISIONAL (no words.json yet): radar@9.17 sees@10.81 radio@16.37 phone@20.63 fifteen@27.83 thirteen@34.38 houses@48.79 */
-  tl.fromTo(P+"l1", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5}, 9.17);
-  tl.fromTo(P+"r1", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5}, 10.81);
+  /* FINAL cues from audio/a6-s2.words.json, mount = A6-S2 start, DUR 51.07 (orchestrator 2026-09-21):
+     radar 9.5 (l1) · radio 17.0 (l2) · "fifteen" slot 34.8 = the corrected "13 minutes" line (r3) · houses 48.9 (footer).
+     r1, r2, l3 were not given explicit new times — interpolated from the two exact anchor pairs
+     (l1 9.17->9.5, l2 16.37->17.0 gives scale 1.0417, offset -0.052) applied to their old times. */
+  tl.fromTo(P+"l1", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5}, 9.5);
+  tl.fromTo(P+"r1", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5}, 11.21);
 
-  tl.fromTo(P+"l2", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5}, 16.37);
-  tl.fromTo(P+"r2", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5}, 20.63);
+  tl.fromTo(P+"l2", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5}, 17.0);
+  tl.fromTo(P+"r2", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5}, 21.44);
 
-  tl.fromTo(P+"l3", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5}, 27.83);
-  tl.fromTo(P+"r3", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5}, 34.38);
+  tl.fromTo(P+"l3", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5}, 28.94);
+  tl.fromTo(P+"r3", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.5}, 34.8);
 
-  tl.fromTo(P+"footer", {autoAlpha:0}, {autoAlpha:1, duration:0.8}, 48.79);
+  tl.fromTo(P+"footer", {autoAlpha:0}, {autoAlpha:1, duration:0.8}, 48.9);
 
-  tl.to({}, {duration:0.1}, 50.8);
+  // pin exact duration at 51.07
+  tl.to({}, {duration:0.01}, 51.06);
 
   window.__timelines["g-thennow-cols"] = tl;
 })();
