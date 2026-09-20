@@ -112,6 +112,12 @@ window.__timelines = window.__timelines || {};
   tl.set(P+"mapgroup", { scale: 2.2, x: -353.88, y: -1111.00 }, 0);
   tl.to(P+"mapgroup", { scale: 2.26, duration: DUR, ease: "none" }, 0); // continuous element: slow creep-in
 
+  // QC fix (2026-09-21): this comp is zoomed 2.2x on Tanner for its ENTIRE run (measured via
+  // getBoundingClientRect: WV/VA land inside the eyebrow/headline rail box, AL/GA/MS/OH/MI push out of the
+  // 1920x1080 frame). The headline already names Alabama, so the abbreviations are redundant -- hide them
+  // for the whole comp instead of chasing a moving target.
+  tl.set(P+"stlabels", { opacity: 0 }, 0);
+
   tl.fromTo(P+"eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.2);
   tl.fromTo(P+"hl", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.4);
 
