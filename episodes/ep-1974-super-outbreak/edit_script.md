@@ -278,7 +278,8 @@ How does one day make seven of them? [VE the card: warm wet air below, dry air a
 a cold front as the trigger] Warm, wet air off the Gulf of Mexico. Dry air sliding over the top of it. A jet
 stream above that, turning the whole column. And a cold front to set it off, from Illinois to Alabama, all
 afternoon and all night. [verify synoptic summary] Every storm that formed in that column had the same engine.
-That is what an outbreak is. Not a lot of tornadoes. One machine, making them, for sixteen hours. [RS] But the
+That is what an outbreak is. Not a lot of tornadoes. One machine, making them, for the better part of a day.
+[RS] But the
 map's biggest finding was not the engine.
 
 **A5-S4 (130 w) · g-mechanism: combed trees vs rotated trees · g-then-now v1.** [PAY Q-A5] In the survey photos
