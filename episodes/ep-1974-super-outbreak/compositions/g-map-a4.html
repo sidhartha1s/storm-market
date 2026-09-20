@@ -138,6 +138,14 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"mapgroup", { scale: 1, x: 0, y: 0 },
     { scale: 2.2, x: -353.88, y: -1111.00, duration: 2, ease: "power2.out" }, 0);
 
+  // QC fix (2026-09-21): measured via getBoundingClientRect at multiple seek points -- while zoomed 2.2x on
+  // Tanner, WV/VA drift into the eyebrow/headline rail box and AL/GA/MS/OH/MI push out of the 1920x1080 frame
+  // (graphics_qc + overlap_check both flagged this). The state abbreviations are redundant with the on-screen
+  // headline/eyebrow (which already names Alabama), so hide the whole label group for the zoomed window and
+  // restore it once the view eases back to 1.0x.
+  tl.to(P+"stlabels", { opacity: 0, duration: 0.3, ease: "power1.out" }, 0);
+  tl.to(P+"stlabels", { opacity: 1, duration: 0.5, ease: "power1.in" }, EASE_BACK_START + 1.5);
+
   tl.fromTo(P+"eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.2);
 
   // T5 draws at CUES.moulton over 5s
