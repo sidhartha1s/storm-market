@@ -201,7 +201,7 @@ duty was looking at five hooks at once. [RS] [VE five bloom] [Q Q-A3b] Then, at 
 **A3-S2b (90 w) · citation card: the CVG report · popfig "5:40 PM · POWER OUT".** [PAY Q-A3b] The Cincinnati
 weather office lost power at 5:40 PM, in the middle of the outbreak. [VE the scope goes black] No radar. No
 teletype. No incoming phone lines. For three hours the office that had been warning half of Ohio had to call
-Cleveland on whatever phone still worked and ask Cleveland to send its warnings out. [RS] Its own report, six
+Cleveland on whatever phone still worked and ask Cleveland to send its warnings out. [RS] [VE map: the Cincinnati office goes dark, Cleveland lights up] Its own report, six
 days later, said the warnings had saved many lives. It also recorded seven dead in its area. Both were true.
 Across the map at that hour, fifteen tornadoes were on the ground at the same time. [verify] [VE map surge:
 tracks 4 to 40]
@@ -255,7 +255,7 @@ and twenty eight people died. [verify: 28 official / 32 revised]
 pharmacist, Mildred McGuire, survived with a broken pelvis and later wrote a poem about what Guin did next,
 which was rebuild on the same ground. That was the seventh F5. [VE bar 7 lit, the set complete] Seven, in nine
 hours, from Indiana to Alabama. By midnight there was nothing left to count but the dead. Three hundred and
-thirty of them, by the government's number. Five thousand four hundred and eighty four hurt. [RS] And one man
+thirty of them, by the government's number. Five thousand four hundred and eighty four hurt. [RS] [VE popfigs "330 DEAD" then "5,484 HURT"] And one man
 in Chicago was already planning to count everything else. [Q L5] *(blackout 0.9 s)*
 
 ### A5 · ten months in the air (15:00–18:30, 470 w)
@@ -280,7 +280,7 @@ a cold front as the trigger] Warm, wet air off the Gulf of Mexico. Dry air slidi
 stream above that, turning the whole column. And a cold front to set it off, from Illinois to Alabama, all
 afternoon and all night. [verify synoptic summary] Every storm that formed in that column had the same engine.
 That is what an outbreak is. Not a lot of tornadoes. One machine, making them, for the better part of a day.
-[RS] But the
+[RS] [VE the engine card cycles once, one storm after another off the same column] But the
 map's biggest finding was not the engine.
 
 **A5-S4 (130 w) · g-mechanism: combed trees vs rotated trees · g-then-now v1.** [PAY Q-A5] In the survey photos
@@ -317,7 +317,7 @@ The ingredients were ordinary spring weather for that part of the country, arriv
 few decades they do. [verify] What changed is the warning. [VE two columns] In 1974 the radar saw rain. Today it
 sees the wind turning inside the storm before the funnel exists. In 1974 the warning was a radio you had to
 have switched on. Today it is the phone in your pocket, and it will wake you up. [verify WEA] In 1974 a good
-warning was fifteen minutes, and most places got less. Today fifteen minutes is about the average. [verify] [PAY Q-A6b] [RS] Allen Pearson's
+warning was fifteen minutes, and most places got less. Today fifteen minutes is about the average. [verify] [PAY Q-A6b] [RS] [VE the two columns fill, 1974 left, today right] Allen Pearson's
 forecast was right a day early, and three hundred and thirty people died because a correct warning could not
 travel. Today the warning travels. The houses moved into the path instead.
 
@@ -327,7 +327,7 @@ there. It was just a bad day, he said, and that is the part that should worry yo
 rare. [PAY EPISODE] So if he knew, why did so many people die? Because in 1974 knowing a day early bought you
 nothing without a radio and a basement. Today the warning buys you fifteen minutes. [VE card, three rows] A
 storm shelter is thirty seconds away. An inside room on the lowest floor is a minute. A car trying to outrun a
-mile-wide tornado is the one thing every survivor on this map would tell you not to do. [RS] Fifteen minutes
+mile-wide tornado is the one thing every survivor on this map would tell you not to do. [RS] [VE third row: the car, struck through] Fifteen minutes
 is enough to get below ground and not enough to get out of town. Know which one your house is before the day
 comes.
 
