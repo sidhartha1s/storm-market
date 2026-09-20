@@ -237,6 +237,15 @@ one map, [RS] with its rating, its width, its length, in his own pen. When he wa
 thirty tornadoes rated F4 or F5, more violent tornadoes in one day than any outbreak before or since. [VE
 g-master-map becomes Fujita's hand map]
 
+**A5-S1b (130 w) · g-mechanism: how a rating is read from a house, one card, four frames.** Here is how you grade
+a tornado from the air when the wind is long gone. [VE card: a house in four states] A house with its roof off
+is an F2. A house with its walls down is an F3. A house swept clean off its slab, the slab still there, the
+house somewhere in the next county, is an F4 or F5, and the difference between the two is how well the house
+was built and how far it went. [RS] Fujita flew low over ten thousand miles of slabs and read them like a
+doctor reading x-rays. Seven times he found whole streets swept to the foundations, and seven times he wrote
+the top of his scale. That is where the number in the title comes from. It was counted from the air, house by
+house.
+
 **A5-S2 (170 w) · g-mechanism: one card, the ingredients; g-scale.** Here is what the map proved. Seven F5s did
 not come from seven freak storms. They came from one air mass. [VE the card: warm Gulf air below, dry air
 above, a jet stream on top, a cold front as the trigger, one diagram, labelled in plain words] Warm wet air
