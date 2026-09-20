@@ -68,28 +68,30 @@ window.__timelines = window.__timelines || {};
   tl.set([P+"row1", P+"row2", P+"row3"], {autoAlpha:0, x:40}, 0);
   tl.set(P+"footer", {autoAlpha:0}, 0);
 
-  tl.fromTo(P+"eyebrow", {autoAlpha:0, y:-14}, {autoAlpha:1, y:0, duration:0.5}, 0.1);
+  tl.fromTo(P+"eyebrow", {autoAlpha:0, y:-14}, {autoAlpha:1, y:0, duration:0.5}, 0.05);
 
-  // continuous faint funnel silhouette drifting slowly behind row 3, whole 14s duration
-  tl.to(P+"funnelbg", {y:24, x:-16, duration:14, ease:"sine.inOut", yoyo:true, repeat:-1}, 0);
+  // continuous faint funnel silhouette drift, capped inside the 10.56s window — single finite
+  // drift instead of an infinite yoyo (repeat:-1 made tl.duration() infinite and broke seeking).
+  tl.to(P+"funnelbg", {y:20, x:-14, duration:10.4, ease:"sine.inOut"}, 0);
 
-  /* cues from audio/a6-s3.txt @183.24wpm est., PROVISIONAL (no words.json yet); local zero = CUES.card (global 24.89):
-     shelter@0.32 room@1.31 cant@4.25 car@5.23 know@7.53 */
-  tl.fromTo(P+"row1", {autoAlpha:0, x:40}, {autoAlpha:1, x:0, duration:0.5}, 0.32);
-  tl.to(P+"row1", {borderColor:"#e8c56a", duration:0.4}, 0.62);
+  /* FINAL cues from audio/a6-s3.words.json, mount 0.2s before "storm shelter", DUR 10.56 (orchestrator 2026-09-21):
+     shelter 0.2 · room 1.7 · car 4.5 · cant("past") 4.7 · know 6.3 */
+  tl.fromTo(P+"row1", {autoAlpha:0, x:40}, {autoAlpha:1, x:0, duration:0.5}, 0.2);
+  tl.to(P+"row1", {borderColor:"#e8c56a", duration:0.4}, 0.5);
 
-  tl.fromTo(P+"row2", {autoAlpha:0, x:40}, {autoAlpha:1, x:0, duration:0.5}, 1.31);
-  tl.to(P+"row2", {borderColor:"#e8c56a", duration:0.4}, 1.61);
+  tl.fromTo(P+"row2", {autoAlpha:0, x:40}, {autoAlpha:1, x:0, duration:0.5}, 1.7);
+  tl.to(P+"row2", {borderColor:"#e8c56a", duration:0.4}, 2.0);
 
-  tl.fromTo(P+"row3", {autoAlpha:0, x:40}, {autoAlpha:1, x:0, duration:0.5}, 5.23);
+  tl.fromTo(P+"row3", {autoAlpha:0, x:40}, {autoAlpha:1, x:0, duration:0.3}, 4.5);
 
-  // CUES.cant @4.25 (word "not" in "do not get") — the strike lands right after the row is fully in view
-  tl.fromTo(P+"strike", {scaleX:0}, {scaleX:1, duration:0.3, ease:"power2.out"}, 5.73);
-  tl.to(P+"row3", {autoAlpha:0.6, duration:0.4}, 6.03);
+  // CUES.cant @4.7 (word "past" in "...does not get a car past a mile-wide tornado")
+  tl.fromTo(P+"strike", {scaleX:0}, {scaleX:1, duration:0.3, ease:"power2.out"}, 4.7);
+  tl.to(P+"row3", {autoAlpha:0.6, duration:0.4}, 5.0);
 
-  tl.fromTo(P+"footer", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.5}, 7.53);
+  tl.fromTo(P+"footer", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.5}, 6.3);
 
-  tl.to({}, {duration:0.1}, 13.7);
+  // pin exact duration at 10.56
+  tl.to({}, {duration:0.01}, 10.55);
 
   window.__timelines["g-thennow-rooms"] = tl;
 })();
