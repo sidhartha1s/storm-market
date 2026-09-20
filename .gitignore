@@ -58,3 +58,5 @@ episodes/*/frames_check/
 
 episodes/*/sheets/
 episodes/*/sheets-pre/
+episodes/*/audio/**/*.wav
+episodes/*/audio/**/_segments/

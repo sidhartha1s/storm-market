@@ -1,7 +1,0 @@
-file 'segment_01_e44ae5b5.wav'
-file 'segment_02_86306443.wav'
-file 'segment_03_bea1c346.wav'
-file 'segment_04_5990acc6.wav'
-file 'segment_05_2d2abfc6.wav'
-file 'segment_06_fce9c865.wav'
-file 'segment_07_8ef71a2a.wav'
