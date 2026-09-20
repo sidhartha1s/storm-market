@@ -220,8 +220,7 @@ special commendation for it. [RS] [VE g-person Gilbert card, "COMMENDED BY THE P
 Same hour, north. [VE map] One tornado came down near Otterbein, Indiana, and did not lift for a hundred and
 twenty one miles. [RS] At 5:17 PM it went through the middle of Monticello. The county courthouse came apart;
 a safe on the third floor fell straight through to the first. [VE popfig "121 MILES"] A railroad bridge over
-the Tippecanoe River was lifted and twisted. On the Washington Street bridge a church van with six girls in it
-was pushed fifty feet off the bridge and into the river. [verify what happened to them] [HUMAN] Rod Poole, who
+the Tippecanoe River was lifted and twisted. [HUMAN] Rod Poole, who
 later ran the town's water department, said the sky was a greenish brown, and that everybody says a tornado
 sounds like a train, and they are right. Eighteen people died along those hundred and twenty one miles.
 
