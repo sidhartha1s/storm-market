@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-cite-paper — A6-S1, mounts at CUES.paper, 8s window (local time 0 = mount point).
+     Source: research/fact_sheet_addendum.md §1 (Athens News Courier / Troutman & Gaston study). */
+  #root { position:absolute; inset:0; background:transparent; font-family:Arial,sans-serif; }
+  .glasscard { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14);
+    border-radius:28px; box-sizing:border-box; box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
+  .g-cite-paper-card { position:absolute; left:260px; top:330px; width:1400px; height:360px;
+    padding:48px 64px; box-sizing:border-box; text-align:center; overflow:hidden; }
+  .g-cite-paper-eyebrow { font-size:22px; letter-spacing:5px; color:#93a3b2; font-weight:700; }
+  .g-cite-paper-claim { font-family:Georgia,serif; font-style:italic; font-size:40px; color:#f2f5f8;
+    line-height:1.35; margin-top:26px; }
+  .g-cite-paper-marker { font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:2px;
+    color:#d8a13a; margin-top:22px; line-height:1.5; }
+  .g-cite-paper-sweep { position:absolute; left:0; top:0; width:220px; height:1px;
+    background:linear-gradient(90deg, transparent, #e8c56a, transparent); }
+</style>
+<div id="root" data-composition-id="g-cite-paper" data-width="1920" data-height="1080">
+  <div class="g-cite-paper-card glasscard" id="g-cite-paper-card">
+    <div class="g-cite-paper-sweep" id="g-cite-paper-sweep"></div>
+    <div class="g-cite-paper-eyebrow" id="g-cite-paper-eyebrow">THE NEWS COURIER, ATHENS AL &middot; 2011</div>
+    <div class="g-cite-paper-claim" id="g-cite-paper-claim">the 2011 path matched the 1974 Tanner tracks almost exactly</div>
+    <!-- attribution + marker combined into one footer line to hold three text tiers total
+         (eyebrow / claim / footer) — a fourth standalone node risked the flat-type gate at
+         this card's sizes (22 / 40 / 19px, no >=52px element, matching the citation-card genre). -->
+    <div class="g-cite-paper-marker" id="g-cite-paper-marker">AS REPORTED &middot; A WEATHER SERVICE METEOROLOGIST AND A GEOGRAPHY PROFESSOR, COMPARING THE TRACKS SINCE 2008</div>
+  </div>
+</div>
+<script>
+(function() {
+  /* CUES.paper: audio/a6-s1.words.json exact (current on disk): "paper" start 41.78, end 42.04.
+     This comp mounts starting there, so local time 0 = CUES.paper (41.78 in the a6-s1 segment). */
+  const DUR = 8.0;
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-cite-paper-";
+  tl.fromTo(P+"card", { autoAlpha: 0, scale: 1.06 }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power3.out" }, 0);
+  tl.fromTo(P+"sweep", { left: -220 }, { left: 1400, duration: DUR, ease: "none" }, 0);
+  tl.to(P+"card", { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, DUR - 0.5);
+  window.__timelines["g-cite-paper"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
