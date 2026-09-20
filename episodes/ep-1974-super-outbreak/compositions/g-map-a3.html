@@ -257,6 +257,13 @@ window.__timelines = window.__timelines || {};
     b.style.top = (ar.bottom - rr.top + gap) + "px";
   }
 
+  // QC fix (2026-09-21): the shared eyebrow "APRIL 3, 1974 - THE PEAK HOURS" wraps to two lines at 520px
+  // width + 6px letter-spacing, pushing into every headline's fixed top (154px) -- overlap_check caught it on
+  // Louisville/Otterbein/Sugar Valley. Measure the eyebrow's real height once (its text never changes) and
+  // place each headline under it instead of guessing a fixed offset.
+  stackBelow("#g-map-a3-eb", "#g-map-a3-hl1", 10);
+  stackBelow("#g-map-a3-eb", "#g-map-a3-hl2", 10);
+  stackBelow("#g-map-a3-eb", "#g-map-a3-hl3", 10);
   stackBelow("#g-map-a3-hl1", "#g-map-a3-sb1", 16);
   stackBelow("#g-map-a3-hl2", "#g-map-a3-sb2", 16);
   stackBelow("#g-map-a3-sb2", "#g-map-a3-r2", 14);
