@@ -127,8 +127,8 @@ ground, where there was nobody to warn. That was the last time that would be tru
 **A1-S1 (100 w) · g-clock "2:16 PM CDT" · g-master-map track 1.** The first F5 of the day came down south of
 Huffman, Indiana, at 2:16 PM, Central time. [VE track drawn] For sixty two miles it stayed over farmland. Six
 counties, and never a town. Six people died, in farmhouses that happened to be in the way. Ninety minutes later
-a town with a warning, with fifteen minutes to get ready, would lose thirty one people. [Q Q-A1] Why does a
-warned town still lose thirty one? The answer starts on a hill above the Ohio River.
+a town with a warning, with fifteen minutes to get ready, would lose thirty one people. [Q Q-A1] The warning worked. It was not the thing that saved anybody. The
+reason starts on a hill above the Ohio River.
 
 **A1-S1b (110 w) · g-clock "3:51 PM EDT" · Hanover College stills, Ken Burns · track 2a.** At 3:51 PM, Eastern
 time, a tornado hit Hanover College, near Madison, Indiana. [VE track] Nearly a thousand students were on
