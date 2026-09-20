@@ -103,7 +103,7 @@ window.__timelines = window.__timelines || {};
     tl.fromTo('#' + ID + '-' + b, { opacity: 0.15, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.25, ease: 'back.out(2)' }, CUES.fivehooks + i * 0.2);
   });
 
-  tl.to(['#' + ID + '-scope', '#' + ID + '-rail'], { autoAlpha: 0, duration: 0.15 }, CUES.dark);
+  tl.to(['#' + ID + '-scope', '#' + ID + '-rail', '#' + ID + '-sub'], { autoAlpha: 0, duration: 0.15 }, CUES.dark);
 
   window.__timelines[ID] = tl;
 })();
