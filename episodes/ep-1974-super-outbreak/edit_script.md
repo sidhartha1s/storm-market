@@ -160,9 +160,8 @@ hundred buildings, seven of them schools, damaged or gone. [VE the aerial track,
 quarter of a billion dollars of damage from one tornado, in 1974 money. It is still the deadliest single
 tornado of the day, and the reason the day has a name.
 
-**A2-S4 (70 w) · cta-hinge tease.** When the air survey planes flew over Xenia weeks later, the man in the right
-hand seat had invented the scale everyone now uses to grade a tornado. He looked down at these streets, and
-for the first and only time in his life, he decided his scale was too small. [Q cta-hinge] *(1.0 s dip)*
+**A2-S4 (25 w) · cta-hinge tease.** Weeks later the man who invented the tornado scale flew over these streets,
+and decided his own scale was too small. [Q cta-hinge] *(1.0 s dip)*
 
 ### CTA (≈7:40, 15.139 s, v5) *(1.0 s dip)*
 
