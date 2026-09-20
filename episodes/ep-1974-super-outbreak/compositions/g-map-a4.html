@@ -151,10 +151,10 @@ window.__timelines = window.__timelines || {};
   // the 3.5s hold: T6 pulses, nothing else moves
   tl.to(P+"t6", { strokeWidth: 10, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 3 }, HOLD_START);
 
-  // CUES.guin: view eases back to 1.0x, T7 draws over 5s
-  tl.to(P+"offlab", { opacity: 0, duration: 0.4 }, CUES.guin - 0.2);
-  tl.to([P+"hl1", P+"sb2"], { autoAlpha: 0, y: -16, duration: 0.4 }, CUES.guin - 0.2);
-  tl.to(P+"mapgroup", { scale: 1, x: 0, y: 0, duration: 1.5, ease: "power2.inOut" }, CUES.guin);
+  // CUES.guin: view eases back to 1.0x from EASE_BACK_START, T7 draws over 5s from CUES.guin
+  tl.to(P+"offlab", { opacity: 0, duration: 0.4 }, EASE_BACK_START - 0.2);
+  tl.to([P+"hl1", P+"sb2"], { autoAlpha: 0, y: -16, duration: 0.4 }, EASE_BACK_START - 0.2);
+  tl.to(P+"mapgroup", { scale: 1, x: 0, y: 0, duration: 1.5, ease: "power2.inOut" }, EASE_BACK_START);
   tl.fromTo(P+"hl2", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.guin + 0.4);
   tl.fromTo(P+"sb3", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.guin + 0.55);
   tl.fromTo(P+"t7dot", { attr: { r: 0 } }, { attr: { r: 9 }, duration: 0.3, ease: "back.out(2)" }, CUES.guin);
