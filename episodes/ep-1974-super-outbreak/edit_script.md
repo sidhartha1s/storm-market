@@ -306,7 +306,7 @@ second time?
 **A6-S1b (110 w) · g-then-now: 1974 vs 2011, two rows · popfig "16 → 4".** [PAY Q-A6] In 1974 the two Tanner
 tornadoes killed sixteen people in Limestone County. [verify] In 2011, with two and a half times as many
 people living there, the EF5 killed four. [RS] [VE the two numbers] More houses in the path, fewer dead, and
-the researchers said why in three words. Better warnings. That is the whole story of this channel in one
+the researchers said why in two words. Better warnings. That is the whole story of this channel in one
 county, and it is why the 1974 map still matters. [PAY L4] Madison County, next door, where the second Tanner
 tornado ended, has four hundred and thirty three thousand people today, and Huntsville is the biggest city in
 Alabama. [Q Q-A6b] So the real question is not whether it happens again. It is whether the warning reaches you.
