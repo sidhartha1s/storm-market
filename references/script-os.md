@@ -96,5 +96,5 @@ more engaging." Narration and visual event are written together, never narration
 Daily news-desk videos run Paul's clone at **atempo 1.10** (pitch-preserving; 158 -> ~174 wpm delivered). Order of
 operations is fixed: (1) TTS the segment; (2) ffmpeg atempo=1.10 on the wav; (3) transcribe the SPED wav to words.json;
 (4) only then resolve cues, cards, popfigs and cuts against it. Never render at the slow pace and speed the video
-afterwards; never time graphics against the pre-tempo words.json. Documentaries keep the natural 150-158 wpm. Above
+afterwards; never time graphics against the pre-tempo words.json. Documentaries run atempo 1.10 too (owner 20 Sep 26, on the ep-1974 hook probe). Above
 1.13 the clone sounds rushed; write denser instead.
