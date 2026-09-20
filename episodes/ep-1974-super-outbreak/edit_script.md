@@ -163,8 +163,8 @@ Park and Arrowhead, streets full of the houses people had bought after the war.
 **A2-S2 (90 w) · g-person David Heath · Xenia High School footage, muted.** [HUMAN] At Xenia High School a
 teacher named David Heath was rehearsing a musical with his students. They were on the stage. Something made
 them move. They went out into the main hallway, and seconds later the wind picked up a school bus and dropped
-it on the stage, [RS] right where they had been standing. [VE hold on the bus photo, slow push, 5 s] Not one of
-them was hurt. Everywhere else in Xenia, it went the other way.
+it on the stage, [RS] right where they had been standing. *(hold 4.0 s: the bus-on-stage photo, slow push,
+rain bed only, no voice)* Not one of them was hurt. Everywhere else in Xenia, it went the other way.
 
 **A2-S3 (100 w) · g-scale bar 3 lit · Wright-Patterson aerials, Ken Burns · popfig "5 SCHOOLS".** Thirty four
 people died along that path, thirty two of them inside the city, in about four minutes. About twelve hundred
