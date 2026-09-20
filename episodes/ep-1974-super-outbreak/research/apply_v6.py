@@ -50,8 +50,8 @@ pairs = [
     ("and it also recorded seven dead in its area, and both of those were true. Across the\nmap at that hour, fifteen tornadoes were on the ground at the same time. [verify]",
      "and it also recorded seven dead in its area. Somewhere in that evening, fifteen\ntornadoes were on the ground at the same time. [verify: Wikipedia only, no clock time in any source]"),
     # A3-S3: comma splice
-    ("where it was and where it was going,\n[VE the track advancing with his words; insert audio] It tore the",
-     "where it was and where it was going.\n[VE the track advancing with his words; insert audio] It tore the"),
+    ("where it was and where it was going, [VE the track advancing with his words; insert audio] It tore the",
+     "where it was and where it was going. [VE the track advancing with his words; insert audio] It tore the"),
     ("5:37 PM, Eastern time, [verify] and the radar", "5:37 PM, Eastern time, [verify: fact_sheet table converts 21:37 UTC to 4:37, the addendum says 5:37; 21:37 UTC is 5:37 PM EDT] and the radar"),
     # A3-S4: comma splice
     ("fell straight through to the first, [VE popfig \"121\nMILES\"] A railroad bridge",
