@@ -230,14 +230,14 @@ system. And the sun was still up. [Q L3] *(blackout 0.8 s)*
 ### A4 · Alabama after dark (11:30–15:00, 440 w)
 **A4-S1 (150 w) · g-clock "6:20 PM CDT" → "7:30" · southern arm · track 5, then 6.** At 6:20 PM, Central time,
 a tornado formed near Moulton, Alabama, and stayed on the ground for ninety minutes. [VE track] Fifty two miles.
-Twenty eight dead. The town of Tanner took it head on, and by 7:30 PM neighbours were in the wreckage with
-flashlights, pulling people out. Then the second one came. [RS] [VE second track, one mile west, drawn over
-the first] Same town. One mile to the west. One hour later. Ninety eight miles long. It went through the
-rescuers. [RS] *(hold 3.5 s: Tanner aerial at night or the second track pulsing on the map, wind bed, no
-voice)* [Q Q-A4] Two F5 tornadoes hit one small town an hour apart, in the dark, and nobody has ever
-been able to say for certain which one killed whom. Fifty years later the count is still argued. Sixteen
-people died in Limestone County alone that night, [verify] and about fifty in that one stretch of north
-Alabama. [verify]
+Twenty eight people died, most of them in and around the town of Tanner, and by 7:30 PM the neighbours
+were out in the wreckage with flashlights pulling people out. That is when the second one came. [RS] [VE second
+track, one mile west, drawn over the first] It formed about an hour after the first, ran a mile to the west of
+it for ninety eight miles, and it went straight through the people doing the rescuing. [RS] *(hold 3.5 s: the
+second track pulsing over the first on the map, wind bed, no voice; no blackout after a hold)* [Q Q-A4] So
+two F5 tornadoes hit one small town an hour apart, and to this day nobody can say for certain which one killed
+whom, because the people who could have told you were the ones under the second one. Sixteen people died in
+Limestone County that night, [verify] and about fifty in that one stretch of north Alabama. [verify]
 
 **A4-S2 (170 w) · g-clock "8:25 PM" → "10:57 PM" · track 7 Guin · g-person Lindley · ins-guin-tape (owner YES).**
 At 8:25 PM a tornado touched down in Mississippi and did not lift for over two hours. [VE clock ticking through
