@@ -125,10 +125,14 @@ window.__timelines = window.__timelines || {};
 
   stackBelow("#g-map-a1-hl1", "#g-map-a1-sb1", 16);
   stackBelow("#g-map-a1-sb1", "#g-map-a1-r1", 14);
+  // Orchestrator addendum 2026-09-21: overlap_check bans a popfig over a map comp, so every spoken
+  // number lands in the rail instead. Chained below the fact already shown for that town's card.
+  stackBelow("#g-map-a1-r1", "#g-map-a1-f1", 14);
   stackBelow("#g-map-a1-hl2", "#g-map-a1-sb2", 16);
   stackBelow("#g-map-a1-sb2", "#g-map-a1-r2", 14);
   stackBelow("#g-map-a1-hl3", "#g-map-a1-sb3", 16);
-  stackBelow("#g-map-a1-sb3", "#g-map-a1-r3", 14);
+  stackBelow("#g-map-a1-sb3", "#g-map-a1-f2", 14);
+  stackBelow("#g-map-a1-f2", "#g-map-a1-r3", 14);
   const CUES = { huffman: 2.76, hanover: 36.80, brandenburg: 61.27 };
   const DUR = 137.273;
 
