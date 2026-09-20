@@ -147,6 +147,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"t1dot", { attr: { r: 0 } }, { attr: { r: 9 }, duration: 0.3, ease: "back.out(2)" }, CUES.huffman);
   tl.to(P+"t1", { strokeDashoffset: 0, duration: 4, ease: "none" }, CUES.huffman);
   tl.fromTo(P+"r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 13.6);
+  tl.fromTo(P+"f1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 20.2);
 
   // town label swap 1 -> 2 at CUES.hanover
   tl.to([P+"hl1", P+"sb1", P+"r1"], { autoAlpha: 0, y: -16, duration: 0.4 }, CUES.hanover - 0.3);
