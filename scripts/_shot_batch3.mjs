@@ -28,12 +28,13 @@ const browser = await chromium.launch({ executablePath: chromiumExecutable() });
 const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
 for (const [comp, times] of Object.entries(plan)) {
   const raw = readFileSync(join(ep, 'compositions', comp + '.html'), 'utf-8');
-  const body = raw.match(/<template>([\s\S]*?)<\/template>/)[1];
-  // tmp file lives at the EPISODE ROOT (not inside compositions/) so this batch's
-  // media="media/..." paths (person photos, the tape waveform) resolve without rewriting.
+  let body = raw.match(/<template>([\s\S]*?)<\/template>/)[1];
+  // tmp file stays inside compositions/ (scope rule) — rewrite this batch's episode-root-relative
+  // media="media/..." references (person photos, tape waveform) to ../media/... so they resolve.
+  body = body.replace(/src="media\//g, 'src="../media/');
   const html = `<!doctype html><html><head><meta charset="UTF-8">
-<script src="gsap.min.js"></script></head><body style="margin:0;background:#000">${body}</body></html>`;
-  const tmp = join(ep, '_shot_' + comp + '.html');
+<script src="../gsap.min.js"></script></head><body style="margin:0;background:#000">${body}</body></html>`;
+  const tmp = join(ep, 'compositions', '_shot_' + comp + '.html');
   writeFileSync(tmp, html);
   await page.goto('file:///' + tmp.split('\\').join('/'), { waitUntil: 'load' });
   for (const t of times) {
