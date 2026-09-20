@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-person-pennington — A5-S2. No provenance.csv row names Robert Pennington — typographic monogram. */
+  #root { position:absolute; inset:0; background:transparent; font-family:Arial,sans-serif; }
+  .glasscard { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14);
+    border-radius:28px; box-sizing:border-box; box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
+  .g-person-pennington-card { position:absolute; left:96px; top:700px; width:1180px; height:280px;
+    display:flex; align-items:center; gap:40px; padding:0 48px; overflow:hidden; }
+  .g-person-pennington-mono { flex:0 0 220px; width:220px; height:260px; border-left:6px solid #8e2020;
+    background:rgba(20,26,34,0.5); display:flex; align-items:center; justify-content:center; }
+  .g-person-pennington-mono span { font-family:Georgia,serif; font-weight:700; font-size:120px; color:#2a3644; }
+  .g-person-pennington-text { flex:1; min-width:0; }
+  .g-person-pennington-name { font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; line-height:1.05; }
+  .g-person-pennington-role { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:10px; }
+  .g-person-pennington-line3 { font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:4px; color:#93a3b2; margin-top:16px; }
+  .g-person-pennington-underline { position:absolute; left:48px; right:48px; bottom:22px; height:1px; background:#e8c56a; transform-origin:left center; }
+</style>
+<div id="root" data-composition-id="g-person-pennington" data-width="1920" data-height="1080">
+  <div class="g-person-pennington-card glasscard" id="g-person-pennington-card">
+    <div class="g-person-pennington-mono"><span>RP</span></div>
+    <div class="g-person-pennington-text">
+      <div class="g-person-pennington-name" id="g-person-pennington-name">ROBERT PENNINGTON</div>
+      <div class="g-person-pennington-role" id="g-person-pennington-role">Guin, Alabama</div>
+      <!-- fact_sheet_addendum §7 / a5-s2 narration: his own words, per the brief's instruction to
+           use the fact sheet's wording if it differs from the script -->
+      <div class="g-person-pennington-line3" id="g-person-pennington-line3">NO SIGN OF THE HOUSE, THE FOUNDATION, OR ANYTHING</div>
+    </div>
+    <div class="g-person-pennington-underline" id="g-person-pennington-underline"></div>
+  </div>
+</div>
+<script>
+(function() {
+  /* A5-S2 span, audio/a5-s2.words.json exact (current on disk). */
+  const DUR = 36.127; // audio/manifest.json a5-s2.duration
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-person-pennington-";
+  tl.set(P+"underline", { scaleX: 0 }, 0);
+  tl.fromTo(P+"card", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0.2);
+  tl.to(P+"underline", { scaleX: 1, duration: DUR, ease: "none" }, 0.2);
+  tl.to(P+"card", { x: -120, autoAlpha: 0, duration: 0.5, ease: "power2.in" }, DUR - 0.6);
+  window.__timelines["g-person-pennington"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
