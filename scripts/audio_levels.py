@@ -47,7 +47,7 @@ for m in re.finditer(r"<(audio|video)\b([^>]*)>", html):
     # A video is silent only when it says so: the `muted` attribute (repo convention) or
     # data-volume 0. hyperframes plays every other video's track at data-volume, default 1.0;
     # the old "no data-volume = muted" assumption let El Reno v3 ship audible stock footage.
-    if m.group(1) == "video" and re.search(r"\bmuted\b", attrs):
+    if m.group(1) == "video" and re.search(r"\smuted(?=[\s>/=]|$)", attrs):
         continue
     v = float(vol.group(1)) if vol else 1.0
     if v <= 0:
