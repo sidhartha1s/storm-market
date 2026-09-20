@@ -136,8 +136,8 @@ window.__timelines = window.__timelines || {};
   tl.to([P+"f5-walls", P+"f5-roof"], {autoAlpha:0, y:-60, duration:0.5, ease:"power2.in"}, 7.2);
   tl.fromTo(P+"swept", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 7.7);
 
-  // CUES.cars @9.5 — F5: car slides ~100yd and tips
-  tl.to(P+"f5-car", {x:300, rotation:35, duration:1.0, ease:"power2.out"}, 9.5);
+  // CUES.cars @9.5 — F5: car slides ~100yd and tips (kept clear of the canvas right edge)
+  tl.to(P+"f5-car", {x:200, rotation:35, duration:1.0, ease:"power2.out"}, 9.5);
   tl.fromTo(P+"dimline", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 10.4);
 
   // CUES.bark @12.12 — F5: tree canopies vanish, trunks strip
