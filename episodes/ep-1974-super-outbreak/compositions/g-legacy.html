@@ -57,25 +57,26 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"eyebrow", {autoAlpha:0, y:-14}, {autoAlpha:1, y:0, duration:0.5}, 0.3);
   tl.fromTo(P+"headline", {autoAlpha:0, y:-14}, {autoAlpha:1, y:0, duration:0.5}, 0.6);
 
-  // continuous light sweep across the rows, whole 14s duration
-  tl.to(P+"sweep", {x:1300, duration:14, ease:"none"}, 0);
+  // continuous light sweep across the rows, capped inside the 18.3s window (finite, no repeat)
+  tl.to(P+"sweep", {x:1300, duration:18, ease:"none"}, 0);
 
-  /* cues local to CUES.country=0 (audio/a5-s4.txt @183.24wpm est., PROVISIONAL — no words.json yet):
-     backup@4.25 radar@5.89 doppler@9.82 */
+  /* FINAL cues local to CUES.country=0 (audio/a5-s4.words.json), DUR 18.3 (orchestrator 2026-09-21):
+     backup 3.3 · radar 5.3 · doppler 8.8 · contributed 11.2 */
   tl.fromTo(P+"row1", {autoAlpha:0, x:40}, {autoAlpha:1, x:0, duration:0.5}, 0.6);
-  tl.to(P+"row1", {borderColor:"#e8c56a", duration:0.5}, 4.25);
-  tl.to(P+"icon1 path, "+P+"icon1 rect, "+P+"icon1 line, "+P+"icon1 polygon", {stroke:"#e8c56a", fill:"#e8c56a", duration:0.5}, 4.25);
+  tl.to(P+"row1", {borderColor:"#e8c56a", duration:0.5}, 3.3);
+  tl.to(P+"icon1 path, "+P+"icon1 rect, "+P+"icon1 line, "+P+"icon1 polygon", {stroke:"#e8c56a", fill:"#e8c56a", duration:0.5}, 3.3);
 
   tl.fromTo(P+"row2", {autoAlpha:0, x:40}, {autoAlpha:1, x:0, duration:0.5}, 1.6);
-  tl.to(P+"row2", {borderColor:"#e8c56a", duration:0.5}, 5.89);
-  tl.to(P+"icon2 path, "+P+"icon2 line, "+P+"icon2 circle", {stroke:"#e8c56a", fill:"#e8c56a", duration:0.5}, 5.89);
+  tl.to(P+"row2", {borderColor:"#e8c56a", duration:0.5}, 5.3);
+  tl.to(P+"icon2 path, "+P+"icon2 line, "+P+"icon2 circle", {stroke:"#e8c56a", fill:"#e8c56a", duration:0.5}, 5.3);
 
   tl.fromTo(P+"row3", {autoAlpha:0, x:40}, {autoAlpha:1, x:0, duration:0.5}, 2.6);
-  tl.to(P+"row3", {borderColor:"#e8c56a", duration:0.5}, 9.82);
-  tl.to(P+"icon3 path, "+P+"icon3 line, "+P+"icon3 circle", {stroke:"#e8c56a", duration:0.5}, 9.82);
-  tl.fromTo(P+"tag", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 10.2);
+  tl.to(P+"row3", {borderColor:"#e8c56a", duration:0.5}, 8.8);
+  tl.to(P+"icon3 path, "+P+"icon3 line, "+P+"icon3 circle", {stroke:"#e8c56a", duration:0.5}, 8.8);
+  tl.fromTo(P+"tag", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 11.2);
 
-  tl.to({}, {duration:0.1}, 13.7);
+  // pin exact duration at 18.3
+  tl.to({}, {duration:0.01}, 18.29);
 
   window.__timelines["g-legacy"] = tl;
 })();
