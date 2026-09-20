@@ -162,8 +162,7 @@ Park and Arrowhead, streets full of the houses people had bought after the war.
 
 **A2-S2 (90 w) · g-person David Heath · Xenia High School footage, muted.** [HUMAN] At Xenia High School a
 teacher named David Heath was rehearsing a musical with his students. They were on the stage. Something made
-them move. They went out into the main hallway, and seconds later the wind picked up a school bus and dropped
-it on the stage, [RS] right where they had been standing. *(hold 4.0 s: the bus-on-stage photo, slow push,
+them move. They went out into the main hallway, and seconds later the wind picked up a school bus and dropped it on the stage, [RS] [VE popfig "A SCHOOL BUS"] right where they had been standing. *(hold 4.0 s: the bus-on-stage photo, slow push,
 rain bed only, no voice)* Not one of them was hurt. Everywhere else in Xenia, it went the other way.
 
 **A2-S3 (100 w) · g-scale bar 3 lit · Wright-Patterson aerials, Ken Burns · popfig "5 SCHOOLS".** Thirty four
@@ -268,8 +267,7 @@ no tornado could have made.
 
 **A5-S2 (120 w) · g-mechanism: two frames, F4 and F5, in the scale's own words · g-person Robert Pennington.**
 Here is what he was reading. [VE card: a house in two states] A well-built house with its walls gone is an F4.
-The same house swept clean off its foundation, with the cars a hundred yards away and the trees stripped of
-their bark, is an F5. [RS] [HUMAN] In Guin, a man named Robert Pennington came home from his shift at the
+The same house swept clean off its foundation, with the cars a hundred yards away and the trees stripped of their bark, is an F5. [RS] [VE the second frame: the slab, the bark] [HUMAN] In Guin, a man named Robert Pennington came home from his shift at the
 electric company to that. No house. No foundation. No framing. Nothing. His wife Juanita was sixty four. She
 was found dead. [RS] [VE g-person card] That is what F5 looks like from the ground. Fujita read ten thousand
 miles of it from the air, and seven times he wrote the top of his scale. [verify against the DePauw damage]
@@ -296,8 +294,7 @@ this one. [VE "contributed"] And the corridor the map drew across north Alabama 
 ### A6 · the same corridor (18:30–22:00, 520 w)
 **A6-S1 (150 w) · g-master-map: the 2011 path drawn over the 1974 Tanner tracks · popfig "APRIL 27, 2011".** Put
 another map on top of the 1974 tracks. [VE] On April 27th, 2011, an EF5 tornado came out of Mississippi,
-crossed Alabama for a hundred and thirty two miles, and killed seventy two people, the deadliest single tornado
-in the state's history. [RS] And in Limestone County it ran straight down the 1974 Tanner corridor. [Q Q-A6]
+crossed Alabama for a hundred and thirty two miles, and killed seventy two people, the deadliest single tornado in the state's history. [RS] [VE popfig "132 MILES · 72 DEAD"] And in Limestone County it ran straight down the 1974 Tanner corridor. [Q Q-A6]
 It destroyed homes, a mobile home park and a church that the first two Tanner tornadoes had destroyed thirty
 seven years earlier, and that people had rebuilt on the same ground. [VE the two paths lining up] A weather
 service meteorologist and a geography professor had been comparing the tracks for three years before it
