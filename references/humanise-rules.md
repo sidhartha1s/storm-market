@@ -52,3 +52,21 @@
   (script-os rule 3) is allowed only when the question is a real open fact ("Then where did the rock go?"), never a
   rhetorical one to the viewer.
 - The humanise pass is a gate before TTS, run on the whole script, with a line-by-line diff kept in the episode folder.
+
+## Spoken voice palette (owner 2026-09-20, from the ep-1974 TTS probes)
+The narration is a person telling a story, and pocket-TTS voices every device below. No code enforces this
+section: the writer writes with it open, the independent grader sweeps the finished script once and lists every
+device with its timestamp, and anything that breaks the cadence is fixed in that one pass.
+- **Banned, every script:** "uh" and "um" (they read as retching in this voice); self-corrections ("about an hour,
+  maybe a little less"); doubled negatives for rhythm ("not before, not since"); any device used in two sentences
+  in a row; trailer fragments (see LEARNINGS 2026-09-20).
+- **Always on, invisible:** contractions where a person would use them; sentences of 10 to 22 words joined with
+  and / but / because / so; ordinary intensifiers ("really", "just", "actually") used the way people use them.
+- **Rationed devices (each at most three times in a 20-minute script, never twice inside three minutes, never the
+  same one in neighbouring acts):** an opener ("Okay, so", "Now look", "Here's the thing", "Now,"); an aside
+  ("honestly", "I mean", "well"); a check-in ("right?"); repeating the subject ("the man who ran the office, he
+  knew"); repeating the verb for weight ("he knew. He knew it was coming"). Aim for one noticeable device every two
+  to three minutes, and vary which one.
+- **Variance is the rule, not the exception:** if the grader's census shows the same device at 4:10 and 6:30, one of
+  them goes. A device that appears in every act is a pattern, and a pattern is what the audience calls AI.
+- **Probe before deciding:** any new device gets a 30-second TTS probe first (recipe: `episodes/<slug>/audio/probe/`).
