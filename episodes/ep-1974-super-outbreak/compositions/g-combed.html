@@ -111,7 +111,7 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const P = "#g-combed-";
 
-  tl.set([P+"lab-l", P+"lab-r", P+"swirl", P+"redx", P+"footer"], {autoAlpha:0}, 0);
+  tl.set([P+"lab-l", P+"lab-r", P+"swirl", P+"redx", P+"footer", P+"comb"], {autoAlpha:0}, 0);
   tl.set(P+"inset", {autoAlpha:0}, 0);
 
   tl.fromTo(P+"lab-l", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.5}, 0.3);
