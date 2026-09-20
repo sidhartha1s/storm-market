@@ -1,0 +1,62 @@
+<!doctype html><html><head><meta charset="UTF-8">
+<script src="../gsap.min.js"></script></head><body style="margin:0;background:#000">
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; overflow:hidden; }
+  .card { position:absolute; left:340px; top:180px; width:1240px; height:720px; background:#e9e2cf;
+    background-image:repeating-linear-gradient(0deg, rgba(203,191,164,0.55) 0 1px, transparent 1px 48px);
+    box-shadow:0 40px 90px rgba(0,0,0,0.55); }
+  .vignette { position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(ellipse at 50% 50%, rgba(233,226,207,0) 55%, rgba(120,90,40,0.28) 100%); }
+  .label { position:absolute; left:200px; top:220px; font-family:'Courier New',monospace; font-weight:700; font-size:30px; color:#3b3226; letter-spacing:1px; }
+  .f6wrap { position:absolute; left:0; right:0; top:220px; text-align:center; }
+  .f6 { display:inline-block; font-family:Georgia,serif; font-weight:700; font-size:260px; color:#1c1a17; line-height:1; }
+  .f5wrap { position:absolute; left:1040px; top:620px; }
+  .f5 { font-family:Georgia,serif; font-weight:700; font-size:150px; color:#a81e1e; line-height:1; }
+  .footer { position:absolute; left:96px; top:980px; font-size:22px; letter-spacing:5px; color:#93a3b2; font-weight:700; }
+</style>
+<div id="root" data-composition-id="g-f6" data-width="1920" data-height="1080">
+  <div class="card" id="g-f6-card">
+    <div class="vignette"></div>
+    <div class="label" id="g-f6-label">XENIA, OHIO &middot; APRIL 3, 1974</div>
+    <div class="f6wrap"><span class="f6" id="g-f6-f6">F6</span></div>
+    <svg id="g-f6-svg" width="1240" height="720" viewBox="0 0 1240 720" style="position:absolute;left:0;top:0;pointer-events:none">
+      <path id="g-f6-strike" d="M700,560 L1220,500" stroke="#a81e1e" stroke-width="14" stroke-linecap="round" fill="none"/>
+    </svg>
+    <div class="f5wrap"><span class="f5" id="g-f6-f5">F5</span></div>
+  </div>
+  <div class="footer" id="g-f6-footer">TED FUJITA &middot; UNIVERSITY OF CHICAGO &middot; DAMAGE SURVEY NOTES</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const ID = 'g-f6';
+  const DUR = 14.454; // audio/manifest.json a3-s1 exact duration
+
+  /* a3-s1.words.json exists — CONFIRMED exact word timestamps, not provisional. */
+  const CUES = {
+    six: 6.84,      // "F6."
+    tookback: 11.48 // "took" (of "took it back")
+  };
+
+  const strike = document.getElementById(ID + '-strike');
+  const len = strike.getTotalLength();
+  strike.style.strokeDasharray = len;
+  strike.style.strokeDashoffset = len;
+
+  const tl = gsap.timeline({ paused: true });
+  tl.set('#' + ID + '-label', { autoAlpha: 1 }, 0);
+  tl.set('#' + ID + '-f6', { clipPath: 'inset(0px 100% 0px 0px)' }, 0);
+  tl.set('#' + ID + '-f5', { autoAlpha: 0 }, 0);
+  tl.set('#' + ID + '-footer', { autoAlpha: 1 }, 0);
+
+  /* continuous element: the whole card slowly pushes in for the full duration */
+  tl.fromTo('#' + ID + '-card', { scale: 1.0 }, { scale: 1.06, duration: DUR, ease: 'none', transformOrigin: '50% 50%' }, 0);
+
+  tl.fromTo('#' + ID + '-f6', { clipPath: 'inset(0px 100% 0px 0px)' }, { clipPath: 'inset(0px 0% 0px 0px)', duration: 0.5, ease: 'power2.out' }, CUES.six);
+  tl.to('#' + ID + '-strike', { strokeDashoffset: 0, duration: 0.35, ease: 'power2.out' }, CUES.tookback);
+  tl.fromTo('#' + ID + '-f5', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, CUES.tookback + 0.35 + 0.5);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</body></html>

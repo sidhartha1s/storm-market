@@ -1,0 +1,105 @@
+<!doctype html><html><head><meta charset="UTF-8">
+<script src="../gsap.min.js"></script></head><body style="margin:0;background:#000">
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; overflow:hidden; }
+  .grid { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .tile { position:absolute; width:120px; height:88px; }
+  .base { position:absolute; inset:0; background:#1c2733; border:2px solid #2a3644; }
+  .roof { position:absolute; top:0; left:0; right:0; height:14px; background:#324458; }
+  .dark { position:absolute; inset:0; background:#3a1f1f; border:2px solid #8e2020; opacity:0; }
+  .caption { position:absolute; left:96px; top:900px; width:1000px; font-weight:700; font-size:19px; letter-spacing:3px; color:#93a3b2; }
+  .streak { position:absolute; top:250px; width:2400px; height:1px; background:linear-gradient(90deg, transparent 0%, rgba(200,220,235,0.35) 50%, transparent 100%); transform:rotate(-8deg); }
+  .rail { position:absolute; left:1300px; top:230px; width:540px; }
+  .rail .eyebrow { font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .rail .hl { font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; margin-top:14px; }
+  .rail .row { margin-top:46px; }
+  .rail .row .val { font-family:Arial,sans-serif; font-weight:700; font-size:30px; color:#dfe7ee; }
+  .counter-wrap { margin-top:60px; }
+  .counter-lab { font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:3px; color:#93a3b2; }
+  .counter { font-family:'Courier New',monospace; font-weight:700; font-size:84px; color:#e74c3c; margin-top:8px; }
+  .counter-underline { height:4px; width:0; background:#e8c56a; margin-top:6px; }
+</style>
+<div id="root" data-composition-id="g-campus" data-width="1920" data-height="1080">
+  <div class="streak" id="g-campus-streak0" style="left:-600px"></div>
+  <div class="streak" id="g-campus-streak1" style="left:-1400px; top:520px"></div>
+  <div class="streak" id="g-campus-streak2" style="left:-2200px; top:760px"></div>
+  <div class="grid" id="g-campus-grid"></div>
+  <div class="caption" id="g-campus-caption">33 CAMPUS BUILDINGS &middot; SCHEMATIC, NOT A SITE PLAN</div>
+  <div class="rail" id="g-campus-rail">
+    <div class="eyebrow">HANOVER COLLEGE &middot; 3:51 PM</div>
+    <div class="hl">Nobody died.</div>
+    <div class="row" id="g-campus-row1"><div class="val">31 DAMAGED</div></div>
+    <div class="row" id="g-campus-row2"><div class="val">2 DESTROYED</div></div>
+    <div class="counter-wrap">
+      <div class="counter-lab">DEATHS ON CAMPUS</div>
+      <div class="counter">0</div>
+      <div class="counter-underline" id="g-campus-underline"></div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const ID = 'g-campus';
+  const DUR = 27.435; // audio/manifest.json a1-s1b exact duration
+
+  /* a1-s1b.words.json exists — CONFIRMED exact word timestamps, not provisional. */
+  const CUES = {
+    thirty: 12.20, // "30" ("More than 30 of its 33 buildings...")
+    two: 14.88,    // "two" ("...and two were destroyed")
+    nobody: 17.26  // "nobody" ("...nobody died")
+  };
+
+  const grid = document.getElementById(ID + '-grid');
+  const tileIds = [];
+  let n = 0;
+  for (let r = 0; r < 6; r++) {
+    for (let c = 0; c < 6; c++) {
+      const flat = r * 6 + c;
+      if (flat >= 33) continue; // 6x6 minus 3 cells (bottom-right of last row) = 33 tiles
+      const x = 140 + c * 134;
+      const y = 260 + r * 102;
+      const d = document.createElement('div');
+      d.className = 'tile';
+      d.id = ID + '-tile' + n;
+      d.style.left = x + 'px';
+      d.style.top = y + 'px';
+      d.innerHTML = '<div class="base"></div><div class="dark" id="' + ID + '-dark' + n + '"></div><div class="roof"></div>';
+      grid.appendChild(d);
+      tileIds.push(n);
+      n++;
+    }
+  }
+  // n === 33
+
+  const tl = gsap.timeline({ paused: true });
+  tl.set('#' + ID + '-rail', { autoAlpha: 1 }, 0);
+  tl.set('#' + ID + '-caption', { autoAlpha: 1 }, 0);
+  tl.set(['#' + ID + '-row1', '#' + ID + '-row2'], { autoAlpha: 0, y: 20 }, 0);
+
+  /* continuous element: three faint wind streaks drift left to right for the whole duration */
+  tl.fromTo(['#' + ID + '-streak0', '#' + ID + '-streak1', '#' + ID + '-streak2'], { x: 0 }, { x: 2600, duration: DUR, ease: 'none' }, 0);
+
+  /* 31 of 33 tiles go dark one by one, starting at "30"; tiles 31 and 32 (indices 31,32
+     of the 33) are the two never damaged, per "more than thirty of its thirty three". */
+  const DAMAGED_COUNT = 31;
+  for (let i = 0; i < DAMAGED_COUNT; i++) {
+    tl.fromTo('#' + ID + '-dark' + i, { opacity: 0 }, { opacity: 1, duration: 0.22 }, CUES.thirty + i * 0.11);
+  }
+  tl.fromTo('#' + ID + '-row1', { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4 }, CUES.thirty);
+
+  /* the two destroyed buildings are among the 31 already darkened (the two darkened last) */
+  const collapseIdx = [DAMAGED_COUNT - 2, DAMAGED_COUNT - 1];
+  collapseIdx.forEach((idx) => {
+    tl.set('#' + ID + '-tile' + idx, { transformOrigin: 'center bottom' }, CUES.two);
+    tl.to('#' + ID + '-tile' + idx, { scaleY: 0.15, duration: 0.3, ease: 'power2.in' }, CUES.two);
+    tl.set('#' + ID + '-dark' + idx, { backgroundColor: '#8e2020' }, CUES.two);
+  });
+  tl.fromTo('#' + ID + '-row2', { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4 }, CUES.two);
+
+  tl.to('#' + ID + '-underline', { width: 210, duration: 0.5, ease: 'power2.out' }, CUES.nobody);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</body></html>

@@ -16,7 +16,7 @@ order = ["h", "i-1", "i-2", "a1-s1", "a1-s1b", "a1-s2", "a1-s3a", "a1-s3b", "a2-
 after = {"h": ("void", 1.5), "i-2": ("blackout", 0.7), "a1-s3a": ("hold", 3.0), "a1-s3b": ("blackout", 0.8),
          "a2-s2a": ("hold", 4.0), "a2-s5": ("cta", None), "a3-s5": ("blackout", 0.8), "a4-s1a": ("hold", 3.5),
          "a4-s3": ("blackout", 0.9), "a5-s4": ("blackout", 0.8)}
-t = 2.4             # hook narration enters after the anchor audio has had ~2.4 s (DESIGN: anchor line by 2.5 s)
+t = 5.2             # hook narration enters after the WHAS anchor line (0-4.9 s: "we have a hook echo on the radar")
 rows, markers = [], []
 for sid in order:
     d = man[sid]["duration"]

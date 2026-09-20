@@ -1,0 +1,2027 @@
+{{Short description|none}}
+{{Use mdy dates|date=February 2025}}
+[[File:1974 Super Outbreak tornado fatality map.png|thumb|upright=1.5|Tracks of the [[1974 Super Outbreak]]'s 147 known tornadoes in the United States and fatalities by county.]]
+
+[[File:Guin, Alabama, 1974 tornado damage path ERTS-1 satellite image (cropped).jpg|thumb|A satellite view of the track of the [[1974 Guin tornado|Guin tornado]], one of the seven F5 tornadoes of the outbreak.]]
+On April 3–4, 1974, a violent [[tornado outbreak]] described as '''the outbreak of the century''' caused widespread devastation across 13 states in the United States and 1 Canadian province.<ref>{{cite conference|first1=Stephen F.|last1=Corfidi|first2=Jason J.|last2=Levit|first3=Steven J.|last3=Weiss|publisher=Storm Prediction Center|conference=22nd Conference on Severe Local Storms|date=October 5, 2004|accessdate=April 9, 2023|title=The Super Outbreak: Outbreak of the Century|url=https://www.spc.noaa.gov/publications/corfidi/3apr74.pdf}}</ref> Dubbed the '''1974 Super Outbreak''' and the '''Jumbo Outbreak''', at least 149 tornadoes touched down in a 24-hour period. It is the second-largest continuous outbreak only behind the [[2011 Super Outbreak]] which produced 358 tornadoes over a three-day period.{{sfn|Corfidi et al.|2010|p=465}}<ref name="NOAA_assessment"/> However, the 1974 outbreak remains the most violent on record with 30 F4/5 tornadoes.<ref>{{cite web|first=Tony|last=Lyza|publisher=United States Tornadoes|date=April 27, 2012|accessdate=April 30, 2023|title=A Numerical Comparison of the 1974 and 2011 Super Outbreaks|url=https://www.ustornadoes.com/2012/04/27/a-numerical-comparison-of-the-1974-and-2011-super-outbreaks/}}</ref> At times, up to 15 tornadoes were on the ground simultaneously.<ref name="RMS">{{cite report|publisher=Risk Management Solutions|date=April 2, 2004|accessdate=April 30, 2023|title=Analysis and Reconstruction of the 1974 Tornado Super Outbreak|url=https://support.rms.com/publications/1974SuperTornadoReport.pdf|archivedate=October 23, 2013|archiveurl=https://web.archive.org/web/20131023111435/https://support.rms.com/publications/1974SuperTornadoReport.pdf}}</ref> A team of meteorologists led by [[Ted Fujita|Tetsuya Theodore Fujita]] studied the outbreak, compiling aerial surveys, ground surveys, photographs, and videos to construct a complete picture of the events.<ref>{{cite conference|first1=T. Theodore|last1=Fujita|first2=Gregory S.|last2=Forbes|publisher=American Meteorological Society|via=Texas Tech University Southwest Collection/Special Collections Library|conference=6th Conference on: Aerospace & Aeronautical Meteorology|date=November 12–15, 1974|accessdate=April 30, 2023|title=Superoutbreak Tornadoes of April 3, 1974 As Seen In Pictures|url=https://swco-ir.tdl.org/bitstream/handle/10605/261924/ttu_fujita_000188.pdf}}</ref> A total of 310–335 fatalities and 5,454 to 6,142 injuries are attributed to the outbreak.{{sfn|Corfidi et al.|2010|p=465}}<ref name="NOAA_assessment">{{cite report|publisher=National Oceanic and Atmospheric Administration|date=December 1974|accessdate=April 10, 2023|title=The Widespread Tornado Outbreak of April 3–4, 1974: A Report to the Administrator|series=National Disaster Survey Report|url=https://www.weather.gov/media/iln/events/19740403/Assessment.pdf}}</ref><ref name="NCEI_event"/> Destruction of property was widespread and ruinous: 7,512 homes, 2,091 mobile homes, and 3,996 farm buildings were destroyed; 14,336 homes, 909 mobile homes, and 2,871 farm buildings suffered damage; 1,497 small businesses were damaged or destroyed.<ref name="NOAA_assessment"/> Total damage exceeded $600&nbsp;million (1974&nbsp;USD).<ref name="NCEI_event"/><ref name="NOAA_1">{{cite web|first=Dan|last=Valle|publisher=National Oceanic and Atmospheric Administration|date=April 2, 2020|accessdate=April 9, 2023|title=The April 1974 Super Outbreak of Tornadoes|url=https://vlab.noaa.gov/web/nws-heritage/-/the-april-1974-super-outbreak-of-tornadoes}}</ref>
+
+Activity occurred across three rounds throughout the 24-hour event, with the second and third being the most prolific.{{sfn|Corfidi et al.|2010|p=466}}
+
+The scale of destruction prompted sweeping changes in how public awareness of severe weather was handled and a reorganization of the [[National Weather Service]] itself. News broadcasters began running storm coverage beyond normal hours and local governments utilized the [[Emergency Broadcast System]] more frequently.<ref name="NOAA_1"/>
+
+Prior to 1990, there is a likely undercount of tornadoes, particularly E/F0–1, with reports of weaker tornadoes becoming more common as population increased. A sharp increase in the annual average E/F0–1 count by approximately 200 tornadoes was noted upon the [[System deployment|deployment]] of the [[NEXRAD]] [[Weather radar|Doppler weather radar]] network in 1990–1991.{{sfn|Agee and Childs|2014|p=1496}} 1974 marked the first year where significant tornado (E/F2+) counts became homogenous with contemporary values, attributed to the consistent implementation of [[Fujita Scale]] assessments.{{sfn|Agee and Childs|2014|pp=1497, 1503}} Numerous discrepancies on the details of tornadoes in this outbreak exist between sources. The total count of tornadoes and ratings differs from various agencies accordingly. The list below documents information from the most contemporary official sources alongside assessments from tornado historian [[Thomas Grazulis]]. All times are listed as described in Abbey and Fujita 1981 unless noted otherwise for consistency.
+
+==Confirmed tornadoes==
+{| class="wikitable sortable" style="margin: 1em auto 1em auto;"
+|+ Daily statistics of tornadoes during the Super Outbreak of April&nbsp;3–4, 1974{{refn|group=nb|name=Date/Time|All dates are based [[Central Standard Time]] as listed by the National Centers for Environmental Information; however, all times are in [[Coordinated Universal Time]] for consistency.}}<ref name="NCEI_event">{{cite web|author=Various National Weather Service Forecast Offices|publisher=National Centers for Environmental Information|accessdate=April 9, 2023|title=[United States Tornado Events for April 3–4, 1974]|url=https://www.ncdc.noaa.gov/stormevents/listevents.jsp?eventType=%28C%29+Tornado&beginDate_mm=04&beginDate_dd=03&beginDate_yyyy=1974&endDate_mm=04&endDate_dd=04&endDate_yyyy=1974&hailfilter=0.00&tornfilter=0&windfilter=000&sort=DT&submitbutton=Search&statefips=-999%2CALL}}</ref>
+|-
+! scope="col" rowspan="2" | Date
+! scope="col" rowspan="2" align="center"|Total
+! scope="col" colspan="6" align="center"|[[Fujita scale]] rating{{refn|group=nb|name=Fujita|The [[Fujita Scale]] (F-scale) was used to rate tornado damage from its introduction in the late-1970s through February 1, 2007, when it was succeeded by the [[Enhanced Fujita Scale]] (EF-scale). Tornado ratings were retroactively applied to events prior to the formal adoption of the F-scale by the [[National Weather Service]].{{sfn|Edwards et al.|2013|pp=641–642}}}}
+! scope="col" rowspan="2" align="center"|Deaths
+! scope="col" rowspan="2" align="center"|Injuries
+! scope="col" rowspan="2" align="center"|Damage{{refn|group=nb|name=NCEI|The National Oceanic and Atmospheric Administration's Storm Data publication does not list exact damage totals for every event, instead giving damage categories. As such, damage for individual tornadoes is not comprehensive.}}
+|-
+! scope="col" align="center"|&nbsp;F0&nbsp;
+! scope="col" align="center"|&nbsp;F1&nbsp;
+! scope="col" align="center"|&nbsp;F2&nbsp;
+! scope="col" align="center"|&nbsp;F3&nbsp;
+! scope="col" align="center"|&nbsp;F4&nbsp;
+! scope="col" align="center"|&nbsp;F5&nbsp;
+|-
+!scope="row"| April&nbsp;3
+|align="right"|130
+|align="right"| 12
+|align="right"| 24
+|align="right"| 33
+|align="right"| 31
+|align="right"| 23
+|align="right"|  7
+|align="right"| 10–11
+|align="right"|211–254
+| align="right"|>{{nts|9301000|prefix=$}}
+|-
+!scope="row"| April&nbsp;4
+|align="right"|19
+|align="right"| 6
+|align="right"| 8
+|align="right"| 2
+|align="right"| 3
+|align="right"| 0
+|align="right"| 0
+|align="right"|
+|align="right"|
+|{{N/A}}
+|-
+|-class="sortbottom"
+!scope="row"| Total
+| align="right" bgcolor=#{{storm colour|unk}}    |149
+| align="right" bgcolor=#{{storm colour|storm}}  | 18
+| align="right" bgcolor=#{{storm colour|cat1}}   | 32
+| align="right" bgcolor=#{{storm colour|cat2}}   | 35
+| align="right" bgcolor=#{{storm colour|cat3}}   | 34
+| align="right" bgcolor=#{{storm colour|cat4}}   | 23
+| align="right" bgcolor=#{{storm colour|cat5}}   |  7
+| align="right"|310–335
+| align="right"|5,454–6,142
+| align="right"|~{{nts|600000000|prefix=$}}
+|}
+{{clear}}
+
+{| class="wikitable"
+|+ Color/symbol key
+|-
+! scope="col" | Color / symbol
+! scope="col" | Description
+|-
+! scope="row" style="background-color:#ccdfdc;"| §
+| Data from Shamburger 2015, 2021/2022
+|-
+! scope="row" style="background-color:#9FCADF;"| †
+| Data from Grazulis 1990/1993
+|-
+! scope="row" style="background-color:#D4F2CE;"| ♭
+| Data from Abbey and Fujita 1981
+|-
+! scope="row" style="background-color:#B7A3C3;"| ¶
+| Data from a local National Weather Service office
+|-
+! scope="row" style="background-color:#E89483;"| ※
+| Data from the 1974 Storm Data publication
+|-
+! scope="row" style="background-color:#F7D9D3;"| ‡
+| Data from the NCEI database
+|-
+! scope="row" | ♯
+| Maximum width of tornado
+|-
+|}
+{{clear}}
+{| class="wikitable sortable" style="width:100%;"
+|+ Confirmed tornadoes during the Super Outbreak of April&nbsp;3&ndash;4, 1974{{#tag:ref||name=Date/Time|group=nb}}
+|-
+! scope="col" width="3%" align="center"|[[Fujita scale|F#]]
+! scope="col" width="7%" align="center" class="unsortable"|Location
+! scope="col" width="6%" align="center" class="unsortable"|County / Parish
+! scope="col" width="5%" align="center"|State
+! scope="col" width="6%" align="center"|Coord.{{refn|group=nb|name=Coord|All starting coordinates are based on the NCEI database and may not reflect contemporary analyses}}
+! scope="col" width="4%" align="center"|Date
+! scope="col" width="6%" align="center"|Time ([[Coordinated Universal Time|UTC]]){{refn|group=nb|name=Time|Durations are based on Abbey and Fujita (1981) unless noted otherwise. Letters indicate confidence intervals in the time: A is ±3 minutes; B is ±7 minutes; C is ±15 minutes; D is ±30 minutes; E is ±60 minutes; R is derived from radar.{{sfn|Abbey and Fujita|1981|pp=50–53}}}}
+! scope="col" width="6%" align="center"|Path length
+! scope="col" width="6%" align="center"|Width{{refn|group=nb|name=Width|The listed width values are primarily the average/mean width of the tornadoes, with those having known maximum widths denoted by ♯. From 1952 to 1994, reports largely list mean width whereas contemporary years list maximum width.{{sfn|Agee and Childs|2014|p=1494}}}}
+! scope="col" width="48%" class="unsortable" align="center"|Summary
+! scope="col" width="5%" align="center"|{{tooltip|Fujita Tor#|Tornado number assigned by Fujita on his outbreak assessment map}}<ref name="FujitaMap">{{cite web|first=Ted|last=Fujita|agency=The University of Chicago|publisher=National Weather Service|date=April 1975|accessdate=April 17, 2023|title=Superoutbreak Tornadoes of April 3–4, 1974|url=https://www.weather.gov/images/iln/events/19740403/fujita_bigmap.jpg|format=JPG}}</ref>
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2
+|NE of [[Whitestown, Indiana|Whitestown]]
+|[[Boone County, Indiana|Boone]]
+|[[Indiana|IN]]
+|{{Coord|40.03|-86.30|name=Whitestown (April 3, F2)}}
+|{{Sort|001|April&nbsp;3}}
+|style="background-color:#F7D9D3;"|13:30‡
+|style="background-color:#E89483;"|{{convert|0.12|mi|km|abbr=on|sortable=on}}※
+|style="background-color:#E89483;"|{{convert|50|yd|m|abbr=on|sortable=on}}※
+|A tornado touched down over an open field.<ref name="StormData">{{cite report|publisher=National Centers for Environmental Information|year=1974|title=Storm Data|url=https://www.ncei.noaa.gov/pub/orders/IPS/IPS-39815419-4ED4-4D48-B20C-AF02AE8BD508.pdf|archive-date=April 9, 2023|archive-url=https://web.archive.org/web/20230409193755/https://www.ncei.noaa.gov/pub/orders/IPS/IPS-39815419-4ED4-4D48-B20C-AF02AE8BD508.pdf|volume=16|number=4}}</ref>{{rp|5}} It is listed as a F2 tornado in the [[National Centers for Environmental Information]] (NCEI) database;<ref name="IND">{{cite web|publisher=National Weather Service Forecast Office in Indianapolis, Indiana|via=Mississippi State University|accessdate=May 7, 2023|title=NWS Indianapolis Tornado Database|url=https://www.midsouthtornadoes.msstate.edu/index.php?cw=ind}}</ref> however, Grazulis did not include it in his ''Significant Tornadoes'' book and it is not depicted in [[Ted Fujita]]'s outbreak map.{{sfn|Grazulis|1990|pp=543–557}}{{sfn|Corfidi et al.|2010|p=500}} This tornado was produced by a [[mesoscale convective system]] that developed ahead of the two main rounds of tornadic activity.{{sfn|Corfidi et al.|2010|p=500}}
+|{{N/A}}
+|-
+|bgcolor=#{{Storm colour|storm}}| F0
+|[[Morris, Illinois|Morris]]
+|[[Grundy County, Illinois|Grundy]]
+|[[Illinois|IL]]
+|{{Coord|41.37|-88.42|name=Morris (April 3, F0)}}
+|{{Sort|002|April&nbsp;3}}
+|18:10–18:11<sup>B</sup>
+|style="background-color:#D4F2CE;"|{{convert|0.5|mi|km|abbr=on|sortable=on}}♭
+|style="background-color:#F7D9D3;"| {{convert|10|yd|m|abbr=on|sortable=on}}‡
+|This was the first tornado associated with the outbreak listed by Fujita.{{sfn|Corfidi et al.|2010|p=466}} The Storm Data publication lists this event as a [[funnel cloud]] that did not reach the ground; accompanying winds caused $1,000 in damage.<ref name="StormData"/>{{rp|4}}<ref name="LOT">{{cite web|publisher=National Weather Service Forecast Office in Chicago, Illinois|via=Mississippi State University|accessdate=May 7, 2023|title=NWS Chicago Tornado Database|url=https://www.midsouthtornadoes.msstate.edu/index.php?cw=iln}}</ref>
+|align="center"|{{ntsh|001}}{{tooltip|1|"Morris Tornado IL"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2
+|[[Ellijay, Georgia|Ellijay]] to [[Blue Ridge, Georgia|Blue Ridge]]
+|[[Gilmer County, Georgia|Gilmer]], [[Fannin County, Georgia|Fannin]]
+|[[Georgia (U.S. state)|GA]]
+|{{Coord|34.68|-84.50|name=Whitestown (April 3, F2)}}
+|{{Sort|003|April&nbsp;3}}
+|18:50–19:20<sup>B</sup>
+|bgcolor="#9FCADF"|{{convert|19|mi|km|abbr=on|sortable=on}}†
+|bgcolor="#9FCADF"|{{convert|200|yd|m|abbr=on|sortable=on}}†
+|5 injuries &mdash; This strong tornado caused extensive damage to homes&mdash;some of which had their roof torn off or were otherwise destroyed&mdash;trees, and power lines. Five people were injured and losses reached $800,000.<ref name="StormData"/>{{rp|3}}{{sfn|Grazulis|1990|p=547}} The tornado moved close to [[Cherry Log, Georgia|Cherry Log]], damaging several homes in the area. The community of [[Aska, Georgia|Aska]] was impacted before the tornado crossed [[Blue Ridge Lake]], damaging homes in the area. Newspaper reports indicate the tornado lifted near Blue Ridge and touched back down near [[Hemp, Georgia|Hemp]] where one home and several farm buildings were destroyed.<ref name="AtlantaConstitution_0405">{{cite news|newspaper=The Atlanta Constitution|date=April 4, 1974|title=12 Die in North Georgia|via=Newspapers.com}} {{free access}}
+*[https://www.newspapers.com/article/the-atlanta-constitution/124287529/ 1-A], [https://www.newspapers.com/article/the-atlanta-constitution/124287548/ 14-A]</ref> Sources differ significantly on the timing of this tornado: the NCEI database lists the tornado as occurring at 18:00&nbsp;UTC,<ref name="FFC">{{cite web|publisher=National Weather Service Forecast Office in Peachtree City, Georgia|via=Mississippi State University|accessdate=May 7, 2023|title=NWS Atlanta Tornado Database|url=https://www.midsouthtornadoes.msstate.edu/index.php?cw=ffc}}</ref> Grazulis lists 19:15&nbsp;UTC,{{sfn|Grazulis|1990|p=547}} and the Storm Data publication lists 23:30&nbsp;UTC.<ref name="StormData"/>{{rp|3}}
+|align="center"|{{ntsh|123}}{{tooltip|123|"Cherrylog Tornado GA"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1
+|[[Etowah, Tennessee|Etowah]]
+|[[McMinn County, Tennessee|McMinn]]
+|[[Tennessee|TN]]
+|{{Coord|35.33|-84.57|name=Etowah (April 3, F1)}}
+|{{Sort|004|April&nbsp;3}}
+|19:00–19:05<sup>D</sup>
+|style="background-color:#B7A3C3;"|{{convert|3.3|mi|km|abbr=on|sortable=on}}¶
+|style="background-color:#B7A3C3;"|{{convert|80|yd|m|abbr=on|sortable=on}}¶♯
+|This was the first of two tornadoes to impact Etowah. Damage from this tornado is unspecified; the combined effects are listed under the second Etowah tornado.<ref name="StormData"/>{{rp|17}}<ref name="MRX_2"/><ref name="MRX"/>
+|align="center"|{{ntsh|112}}{{tooltip|112|"First Etowah Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1
+|S of [[Lincoln, Illinois|Lincoln]] to [[McLean, Illinois|McLean]]
+|[[Logan County, Illinois|Logan]], [[McLean County, Illinois|McLean]]
+|[[Illinois|IL]]
+|{{Coord|40.12|-89.33|name=Lincoln (April 3, F1)}}
+|{{Sort|005|April&nbsp;3}}
+|19:03–19:19<sup>A</sup>
+|style="background-color:#D4F2CE;"|{{convert|15|mi|km|abbr=on|sortable=on}}♭
+|style="background-color:#F7D9D3;"|{{convert|177|yd|m|abbr=on|sortable=on}}‡
+|This tornado moved northeast at a fast pace, roughly {{convert|70|mph|km/h|abbr=on}}.<ref name="ILX_2">{{cite web|publisher=National Weather Service Forecast Office in Lincoln, Illinois|accessdate=May 8, 2023|title=The April 3-4, 1974 Super Outbreak of Tornadoes -- Impacts on Illinois|url=https://www.weather.gov/ilx/3apr74}}</ref> It caused $600,000 in property damage in McLean.<ref name="StormData"/>{{rp|4}}<ref name="ILX">{{cite web|publisher=National Weather Service Forecast Office in Lincoln, Illinois|via=Mississippi State University|accessdate=May 7, 2023|title=NWS Lincoln Tornado Database|url=https://www.midsouthtornadoes.msstate.edu/index.php?cw=iln}}</ref>
+|align="center"|{{ntsh|003}}{{tooltip|3|"Lincoln Tornado IL"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1
+|N of [[West Baden Springs, Indiana|West Baden Springs]] to E of [[Mitchell, Indiana|Mitchell]]
+|[[Orange County, Indiana|Orange]], [[Lawrence County, Indiana|Lawrence]]
+|[[Indiana|IN]]
+|{{Coord|38.62|-86.58|name=West Baden Springs (April 3, F1)}}
+|{{Sort|006|April&nbsp;3}}
+|19:03–19:20<sup>B</sup>
+|style="background-color:#D4F2CE;"|{{convert|13|mi|km|abbr=on|sortable=on}}♭
+|style="background-color:#F7D9D3;"|{{convert|177|yd|m|abbr=on|sortable=on}}‡
+|1&nbsp;death, 4&nbsp;injuries &mdash; This tornado moved along an intermittent path.<ref name="StormData"/>{{rp|5}} South of [[Orleans, Indiana|Orleans]], a mobile home and an unoccupied home were destroyed; two people were injured in the former. Another home east of [[Spring Mill State Park]] in the [[Stonington, Indiana|Stonington]] area was destroyed with both occupants injured. A metal shed on the property was blown away and could not be found. Two other homes suffered minor damage. Several trees and power lines were snapped or uprooted.<ref>{{cite news|newspaper=Mitchell Tribune|date=April 4, 1974|accessdate=April 30, 2023|title=Little Tornado Damage Here|url=https://www.newspapers.com/clip/58890030/|page=1|via=Newspapers.com}} {{free access}}</ref> The Storm Data publication lists one fatality and four injuries while the NCEI database lists none.<ref name="StormData"/>{{rp|5}}<ref name="IND"/><ref name="LMK">{{cite web|publisher=National Weather Service Forecast Office in Louisville, Kentucky|via=Mississippi State University|accessdate=May 7, 2023|title=NWS Louisville Tornado Database|url=https://www.midsouthtornadoes.msstate.edu/index.php?cw=iln}}</ref>
+|align="center"|{{ntsh|034}}{{tooltip|34|"Orleans Tornado IN"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|SW of [[Cleveland, Tennessee|Cleveland]] to N of [[Benton, Tennessee|Benton]]
+|[[Bradley County, Tennessee|Bradley]], [[Polk County, Tennessee|Polk]]
+|[[Tennessee|TN]]
+|{{Coord|35.10|-84.92|name=Cleveland (April 3, F3)}}
+|{{Sort|007|April&nbsp;3}}
+|19:03–19:26<sup>B</sup>
+|bgcolor="#9FCADF"|{{convert|13|mi|km|abbr=on|sortable=on}}†
+|bgcolor="#B7A3C3"|{{convert|1050|yd|m|abbr=on|sortable=on}}¶#
+|1&nbsp;death. 100&nbsp;injuries &mdash; This was one of two tornadoes to impact areas around Cleveland. Extensive damage to occurred to many homes. A trailer park east of Cleveland was almost completely destroyed, with only 1 of 20 remaining; one person died here.<ref name="StormData"/>{{rp|16}}{{sfn|Grazulis|1990|p=547}} At least 120 homes were damaged, of which 73 were destroyed, in Cleveland.<ref>{{cite news|newspaper=Knoxville News-Sentinel|date=April 4, 1974|title=2 in Knox Among 52 Known Dead Across Tennessee in Tornado Wake|via=Newspapers.com}} {{free access}}
+*[https://www.newspapers.com/clip/122591892/ A-1], [https://www.newspapers.com/clip/122592008/ A-12]</ref> A total of 100 people were injured and damage reached $4.5&nbsp;million.{{sfn|Grazulis|1990|p=547}}<ref name="MRX_2">{{cite web|publisher=National Weather Service Forecast Office in Morristown, Tennessee|via=Mississippi State University|accessdate=May 7, 2023|title=NWS Morristown Tornado Database|url=https://www.midsouthtornadoes.msstate.edu/index.php?cw=mrx}}</ref><ref name="MRX">{{cite web|publisher=National Weather Service Forecast Office in Morristown, Tennessee|year=1997|first1=David|last1=Hotz|first2=Joanne|last2=Labounty|title=NWSO Morristown, Tennessee Severe Weather Climatology|url=https://www.weather.gov/mrx/severeclimo}}</ref>
+|align="center"|{{ntsh|113}}{{tooltip|113|"First Cleveland Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|storm}}| F0
+|E of [[Carlock, Illinois|Carlock]]
+|[[McLean County, Illinois|McLean]]
+|[[Illinois|IL]]
+|{{Coord|40.58|-89.03|name=Carlock (April 3, F0)}}
+|{{Sort|008|April&nbsp;3}}
+|19:07–19:08<sup>A</sup>
+|style="background-color:#D4F2CE;"|{{convert|0.5|mi|km|abbr=on|sortable=on}}♭
+|style="background-color:#F7D9D3;"| {{convert|33|yd|m|abbr=on|sortable=on}}‡
+|A tornado was reported without causing damage.<ref name="StormData"/>{{rp|4}}<ref name="ILX"/>
+|align="center"|{{ntsh|002}}{{tooltip|2|"Carlock Tornado IL"}}
+|-
+|bgcolor=#{{Storm colour|storm}}| F0
+|[[Mountain City, Georgia|Mountain City]]
+|[[Rabun County, Georgia|Rabun]]
+|[[Georgia (U.S. state)|GA]]
+|{{N/A}}
+|{{Sort|009|April&nbsp;3}}
+|19:09–19:10<sup>D</sup>
+|style="background-color:#D4F2CE;"|{{convert|0.5|mi|km|abbr=on|sortable=on}}♭
+|{{N/A}}
+|Details on this tornado are unspecified.{{sfn|Abbey and Fujita|1981|pp=47–84}} This tornado was omitted from the NCEI database.<ref name="NCEI_event"/>
+|align="center"|{{ntsh|130}}{{tooltip|130|"Mountain City Tornado GA"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|E of [[Mitchell, Indiana|Mitchell]] to ENE of [[Azalia, Indiana|Azalia]]
+|[[Lawrence County, Indiana|Lawrence]], [[Jackson County, Indiana|Jackson]], [[Bartholomew County, Indiana|Bartholomew]], [[Jennings County, Indiana|Jennings]]
+|[[Indiana|IN]]
+|{{Coord|38.77|-86.30|name=Mitchell (April 3, F3)}}
+|{{Sort|010|April&nbsp;3}}
+|19:15–20:05<sup>B</sup>
+|bgcolor="#9FCADF"|{{convert|38|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#F7D9D3;"|{{convert|300|yd|m|abbr=on|sortable=on}}‡
+|1&nbsp;death, 23&nbsp;injuries &mdash; This tornado moved along an intermittent path,<ref name="StormData"/>{{rp|6}} causing extensive damage to farms.{{sfn|Grazulis|1990|p=548}} A block foundation poultry building, egg farm, and barn were destroyed north of [[Medora, Indiana|Medora]].<ref>{{cite news|newspaper=Seymour Daily Tribune|date=April 4, 1974|accessdate=May 16, 2023|title=Tornado Damage|url=https://www.newspapers.com/article/the-tribune/124822297/|page=24|via=Newspapers.com}} {{free access}}</ref> A well-anchored mobile home was torn from its frame and obliterated, killing the occupant.{{sfn|Grazulis|1990|p=548}}<ref>{{cite news|newspaper=Daily Times Mail|date=April 4, 1974|accessdate=May 16, 2023|title=The aftermath of a tornado|url=https://www.newspapers.com/article/the-times-mail/124822900/|page=17|via=Newspapers.com}} {{free access}}</ref> Continuing toward [[Jonesville, Indiana|Jonesville]], the tornado caused extensive damage to homes, mobile homes, and farm buildings. A high tension power line collapsed along [[Interstate 65|I-65]]. "Extreme damage" took place in areas near [[Acme, Indiana|Acme]] and [[Freetown, Indiana|Freetown]].<ref>{{cite news|newspaper=Seymour Daily Tribune|date=April 4, 1974|title=Tornado Takes Toll In County|via=Newspapers.com}} {{free access}}
+*[https://www.newspapers.com/article/the-tribune/124822510/ 1], [https://www.newspapers.com/article/the-tribune/124822565/ 22]</ref>
+|align="center"|{{ntsh|035}}{{tooltip|35|"Medora Tornado IN"}}
+|-
+|bgcolor=#{{Storm colour|cat5}}| F5
+|S of [[Huffman, Indiana|Huffman]] to [[Depauw, Indiana|Depauw]] to [[Martinsburg, Indiana|Martinsburg]] to NE of [[Underwood, Indiana|Underwood]]
+|[[Perry County, Indiana|Perry]], [[Crawford County, Indiana|Crawford]],  [[Harrison County, Indiana|Harrison]], [[Washington County, Indiana|Washington]], [[Clark County, Indiana|Clark]], [[Scott County, Indiana|Scott]]
+|[[Indiana|IN]]
+|{{Coord|38.07|-86.75|name=Depauw (April 3, F5)}}
+|{{Sort|011|April&nbsp;3}}
+|19:16–20:25<sup>B</sup>
+|bgcolor="#9FCADF"|{{convert|62|mi|km|abbr=on|sortable=on}}†
+|bgcolor="#9FCADF"|{{ntsh|1760}}>{{convert|1760|yd|m|abbr=on}}†♯<!--Average width was 1,000yd, text summary states over a mile wide maximum-->
+|6–7&nbsp;deaths, 76–95&nbsp;injuries &ndash; ''[[1974 Super Outbreak#Depauw/Daisy Hill, Indiana|See section on this tornado]]'' &ndash; This was the first of seven F5 tornadoes to touch down during the outbreak. It caused extensive damage to small communities, with the worst occurring in Depauw and Martinsburg. In the latter, 38 of the town's 48 homes were destroyed. Six or seven people were killed and 76–95 people were injured by this tornado.<ref name="StormData"/>{{rp|6}}{{sfn|Grazulis|1990|p=547}}<ref name="LMK"/>
+|align="center"|{{ntsh|040}}{{tooltip|40|"Depauw Tornado IN"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|WSW of [[Decatur, Illinois|Decatur]] to W of [[Oreana, Illinois|Oreana]]
+|[[Christian County, Illinois|Christian]], [[Macon County, Illinois|Macon]]
+|[[Illinois|IL]]
+|{{Coord|39.72|-89.13|name=Decatur (April 3, F3)}}
+|{{Sort|012|April&nbsp;3}}
+|19:30–19:50<sup>B</sup>
+|bgcolor="#9FCADF"|{{convert|19|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#F7D9D3;"|{{convert|350|yd|m|abbr=on|sortable=on}}‡<!--Grazulis did not provide a maximum width-->
+|1&nbsp;death, ≥26&nbsp;injuries &mdash; ''[[#Decatur, Illinois|See section on this tornado]]''
+|align="center"|{{ntsh|005}}{{tooltip|5|"Decatur Tornado IL"}}
+|-
+|bgcolor=#{{Storm colour|storm}}| F0±
+|SE of [[Murphy, North Carolina|Murphy]]
+|[[Jones County, North Carolina|Cherokee]]
+|[[North Carolina|NC]]
+|{{Coord|35.05|-83.95|name=Murphy (April 3, F0)}}
+|{{Sort|013|April&nbsp;3}}
+|19:40–19:41<sup>C</sup>
+|style="background-color:#D4F2CE;"|{{convert|0.5|mi|km|abbr=on|sortable=on}}♭
+|{{N/A}}
+|Fujita rated this tornado F0;<ref name="FujitaMap"/> however, the NCEI database lists is as a F1 tornado.<ref name="MRX_2"/>
+|align="center"|{{ntsh|124}}{{tooltip|124|"First Brasstown Tornado NC"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|SSW of [[Colfax, Illinois|Colfax]] to E of [[Anchor, Illinois|Anchor]]
+|[[McLean County, Illinois|McLean]]
+|[[Illinois|IL]]
+|{{Coord|40.52|-88.62|name=Colfax (April 3, F3)}}
+|{{Sort|014|April&nbsp;3}}
+|19:48–19:57<sup>A</sup>
+|bgcolor="#9FCADF"|{{convert|8|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#F7D9D3;"|{{convert|350|yd|m|abbr=on|sortable=on}}‡<!--Grazulis did not provide a maximum width-->
+|
+A [[multiple vortex tornado]] destroyed two homes and damaged eight farms. Another home was lifted off its foundation. Debris was lofted up to {{convert|10|mi|km|abbr=on}} away.{{sfn|Grazulis|1990|p=547}} Chicken coops were destroyed, killing many. Farm equipment was mangled beyond recognition.<ref name="Anchor_1"/> The multiple vortex nature of the tornado was most evident near Anchor where corn stubble was destroyed in spiraling patterns.<ref name="StormData"/>{{rp|4}}{{sfn|Grazulis|1990|p=547}}<ref name="ILX"/> Damage was estimated at $700,000.<ref>{{cite news|first=David|last=Hett|newspaper=The Daily Leader|date=April 4, 1974|accessdate=April 30, 2023|title=Livingston had little storm damage|url=https://www.newspapers.com/clip/123825114/|page=4|via=Newspapers.com}} {{free access}}</ref> Hundreds of local residents assisted farmers with the clean up.<ref name="Anchor_1">{{cite news|first=Scott|last=Hergold|newspaper=The Pantagraph|date=April 5, 1974|accessdate=April 30, 2023|title=Sense of loss hits tornado victims|url=https://www.newspapers.com/clip/123825799/|page=A-5|via=Newspapers.com}} {{free access}}</ref>
+|align="center"|{{ntsh|004}}{{tooltip|4|"Anchor Tornado IL"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|NW of [[Shelbyville, Indiana|Shelbyville]] to NE of [[Greenfield, Indiana|Greenfield]]
+|[[Shelby County, Indiana|Shelby]], [[Hancock County, Indiana|Hancock]]
+|[[Indiana|IN]]
+|{{Coord|39.58|-85.87|name=Shelbyville (April 3, F3)}}
+|{{Sort|015|April&nbsp;3}}
+|19:50–20:10<sup>A</sup>
+|bgcolor="#9FCADF"|{{convert|17|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#E89483;"|{{convert|1760|yd|m|abbr=on|sortable=on}}※
+|25&nbsp;injuries &mdash; ''[[#Parker tornado family|See section on this tornado family]]''
+|align="center"|{{ntsh|031}}{{tooltip|31|"Fountaintown Tornado IN"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1
+|[[Owaneco, Illinois|Owaneco]]
+|[[Christian County, Illinois|Christian]]
+|[[Illinois|IL]]
+|{{Coord|39.47|-89.20|name=Owaneco (April 3, F1)}}
+|{{Sort|016|April&nbsp;3}}
+|19:47–19:56<sup>A</sup>
+|style="background-color:#D4F2CE;"|{{convert|8|mi|km|abbr=on|sortable=on}}♭
+|style="background-color:#F7D9D3;"|{{convert|70|yd|m|abbr=on|sortable=on}}‡
+|Several homes suffered roof damage in Owaneco.<ref name="StormData"/>{{rp|4}} Two-hundred farmers assisted with debris clean up.<ref name="DDR_0404_1">{{cite news|first=Glen R.|last=Cooper|newspaper=The Decatur Daily Review|date=April 4, 1974|accessdate=April 30, 2023|title=1 Dead, 26 Injured In Tornado's Wake|url=https://www.newspapers.com/clip/123810412/1-dead-26-injured-in-tornados-wake/|page=46|via=Newspapers.com}} {{free access}}</ref><ref name="ILX"/>
+|align="center"|{{ntsh|007}}{{tooltip|7|"Owaneco Tornado IL"}}
+|-
+|bgcolor=#{{Storm colour|cat4}}| F4+
+|SE of [[Grammer, Indiana|Grammer]] to [[Hamburg, Franklin County, Indiana|Hamburg]] to S of [[Laurel, Indiana|Laurel]]
+|[[Bartholomew County, Indiana|Bartholomew]], [[Decatur County, Indiana|Decatur]], [[Franklin County, Indiana|Franklin]]
+|[[Indiana|IN]]
+|{{Coord|39.13|-85.72|name=Grammer (April 3, F4)}}
+|{{Sort|017|April&nbsp;3}}
+|20:00–20:42<sup>B</sup>
+|bgcolor="#9FCADF"|{{convert|37|mi|km|abbr=on|sortable=on}}†
+|bgcolor="#B7A3C3"|{{convert|1200|yd|m|abbr=on|sortable=on}}¶#
+|4&nbsp;deaths, 17&nbsp;injuries &mdash;<ref name="StormData"/>{{rp|6}} About {{convert|3|mi|km|abbr=on}} southwest of [[New Point, Indiana|New Point]], a farmstead was completely leveled. Grazulis assessed damage here to be near-F5 intensity.{{sfn|Grazulis|1990|p=548}} An April&nbsp;19, 1974, states damage was "definitely...at [F5] level in Hamburg."<ref name="ILN_eyewitness">{{cite report|publisher=National Weather Service Forecast Office in Wilmington, Ohio|date=April 19, 1974|accessdate=May 9, 2023|title=Summary of Tornado activity in the WSO CVG area of responsibility|url=https://www.weather.gov/media/iln/events/19740403/CVG_Summary.pdf}}</ref> Two people were killed southeast of [[Greensburg, Indiana|Greensburg]] when their home was destroyed.{{sfn|Grazulis|1990|p=548}} Seven planes were destroyed at the Puttman Airport near the town, one of which was thrown {{convert|500|ft|m|abbr=on}}. Damage to the airport exceeded $100,000.<ref>{{cite news|newspaper=The Indianapolis Star|date=April 6, 1974|accessdate=May 8, 2023|title=Tornadoes Scar Villages, Rural Areas|url=https://www.newspapers.com/article/the-indianapolis-star/124276200/|page=56|via=Newspapers.com}} {{free access}}</ref> Tremendous damage occurred in Hamburg where 90&nbsp;percent of the town was damaged or destroyed.{{sfn|Grazulis|1990|p=548}} Only six of the town's homes were left standing.<ref>{{cite news|first=Monte I.|last=Trammer|newspaper=The Indianapolis Star|date=April 6, 1974|accessdate=May 8, 2023|title=Hamburg's Residents Do Little Looking Back, Begin Rebuilding|url=https://www.newspapers.com/article/the-indianapolis-star/124275805/|page=4|via=Newspapers.com}} {{free access}}</ref> A mother and daughter died when their mobile home was hurled into a tree.{{sfn|Grazulis|1990|p=548}}<ref name="IND"/><ref name="ILN">{{cite web|publisher=National Weather Service Forecast Office in Wilmington, Ohio|via=Mississippi State University|accessdate=May 7, 2023|title=NWS Wilmington, OH Tornado Database|url=https://www.midsouthtornadoes.msstate.edu/index.php?cw=iln}}</ref>
+|align="center"|{{ntsh|036}}{{tooltip|36|"Hamburg Tornado IN"}}
+|-
+|bgcolor=#{{Storm colour|cat4}}| F4
+|E of [[Westland, Indiana|Westland]] to [[Grant City, Indiana|Grant City]] to [[Kennard, Indiana|Kennard]] to N of [[Cadiz, Indiana|Cadiz]]
+|[[Hancock County, Indiana|Hancock]], [[Rush County, Indiana|Rush]], [[Henry County, Indiana|Henry]]
+|[[Indiana|IN]]
+|{{Coord|39.58|-85.87|name=Grant City (April 3, F4)}}
+|{{Sort|018|April&nbsp;3}}
+|20:02–20:25<sup>A</sup>
+|bgcolor="#9FCADF"|{{convert|20|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#E89483;"|{{convert|1000|yd|m|abbr=on|sortable=on}}※
+|1&nbsp;death, 17&nbsp;injuries &mdash; ''[[#Parker tornado family|See section on this tornado family]]''
+|align="center"|{{ntsh|032}}{{tooltip|32|"Kennard Tornado IN"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1±
+|NE of [[Maryville, Tennessee|Maryville]]
+|[[Blount County, Tennessee|Blount]]
+|[[Tennessee|TN]]
+|{{Coord|35.78|-83.92|name=Maryville (April 3, F1)}}
+|{{Sort|019|April&nbsp;3}}
+|20:09–20:10<sup>C</sup>
+|style="background-color:#D4F2CE;"|{{convert|1|mi|km|abbr=on|sortable=on}}♭
+|bgcolor="#B7A3C3"|{{convert|150|yd|m|abbr=on|sortable=on}}¶#
+|1–2&nbsp;injuries &mdash; A brief tornado touched down near Maryville; one or two people were reportedly injured.<ref name="StormData"/>{{rp|17}}<ref name="MRX"/> Seven mobile homes were destroyed and a few homes sustained roof damage.<ref name="Tennessean_0404"/> The NCEI database and National Weather Service Office in Morristown, Tennessee, list this as a F2 tornado;<ref name="MRX"/><ref name="MRX_2"/> however, Fujita rated as F1 and Grazulis does not list this event in his ''Significant Tornadoes'' book.<ref name="FujitaMap"/>{{sfn|Grazulis|1990|pp=543–557}}
+|align="center"|{{ntsh|111}}{{tooltip|111|"Prospect Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1
+|SE of [[Farmer City, Illinois|Farmer City]] to W of [[Fisher, Illinois|Fisher]]
+|[[Piatt County, Illinois|Piatt]], [[Champaign County, Illinois|Champaign]]
+|[[Illinois|IL]]
+|{{Coord|40.22|-88.60|name=Farmer City (April 3, F1)}}
+|{{Sort|020|April&nbsp;3}}
+|20:14–20:27<sup>B</sup>
+|style="background-color:#D4F2CE;"|{{convert|13|mi|km|abbr=on|sortable=on}}♭
+|style="background-color:#F7D9D3;"|{{convert|20|yd|m|abbr=on|sortable=on}}‡
+|A large barn and [[corn crib]] were destroyed.<ref name="DDR_0404_5">{{cite news|first=Dave|last=Petrina|newspaper=The Decatur Daily Review|date=April 4, 1974|accessdate=April 30, 2023|title=Twisters Batter Central Illinois|url=https://www.newspapers.com/clip/123815732/|page=34|via=Newspapers.com}} {{free access}}</ref><ref name="ILX"/>
+|align="center"|{{ntsh|006}}{{tooltip|6|"Farmer City Tornado IL"}}
+|-
+|bgcolor=#{{Storm colour|cat4}}| F4
+|NE of [[Henryville, Indiana|Henryville]] to [[Hanover, Indiana|Hanover]] to [[Madison, Indiana|Madison]] to W of [[Cross Plains, Indiana|Cross Plains]]
+|[[Clark County, Indiana|Clark]], [[Scott County, Indiana|Scott]], [[Jefferson County, Indiana|Jefferson]], [[Ripley County, Indiana|Ripley]]
+|[[Indiana|IN]]
+|{{Coord|38.55|-85.75|name=Hanover (April 3, F4)}}
+|{{Sort|021|April&nbsp;3}}
+|20:19–21:06<sup>B</sup>
+|bgcolor="#9FCADF"|{{convert|38|mi|km|abbr=on|sortable=on}}†
+|{{convert|1760|yd|m|abbr=on|sortable=on}}
+|11&nbsp;deaths, 190&nbsp;injuries &mdash;<ref name="StormData"/>{{rp|6}} ''[[#Hanover–Madison, Indiana|See section on this tornado]]''
+|align="center"|{{ntsh|041}}{{tooltip|41|"Madison Tornado IN"}}
+|-
+|bgcolor=#{{Storm colour|storm}}| F0
+|NE of [[Hammond, Illinois|Hammond]]
+|[[Piatt County, Illinois|Piatt]]
+|[[Illinois|IL]]
+|{{Coord|39.80|-88.57|name=Hammond (April 3, F0)}}
+|{{Sort|022|April&nbsp;3}}
+|20:20–20:25<sup>B</sup>
+|style="background-color:#D4F2CE;"|{{convert|4|mi|km|abbr=on|sortable=on}}♭
+|style="background-color:#F7D9D3;"|{{convert|20|yd|m|abbr=on|sortable=on}}‡
+|A tree was knocked over onto a car in [[Pierson, Illinois|Pierson]].<ref name="DDR_0404_5"/><ref name="ILX"/>
+|align="center"|{{ntsh|008}}{{tooltip|8|"Pierson Tornado IL"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1§
+|style="background-color:#ccdfdc;"|SE of [[Cunningham, Montgomery County, Tennessee|Cunningham]]
+|style="background-color:#ccdfdc;"|[[Montgomery County, Tennessee|Montgomery]]
+|style="background-color:#ccdfdc;"|[[Tennessee|TN]]
+|style="background-color:#ccdfdc;"|{{Coord|36.38|-87.37|name=Cunningham (April 3, F1)}}
+|style="background-color:#ccdfdc;"|{{Sort|024|April&nbsp;3}}
+|style="background-color:#ccdfdc;"|20:30
+|style="background-color:#ccdfdc;"|{{convert|0.25|mi|km|abbr=on|sortable=on}}
+|style="background-color:#ccdfdc;"|{{convert|25|yd|m|abbr=on|sortable=on}}♯
+|style="background-color:#ccdfdc;"|This brief tornado was unreported prior to Shamburger's 2021 reanalysis of Middle Tennessee tornadoes. One mobile home was destroyed, with debris scattered hundreds of yards away.<ref name="OHX">{{cite web|publisher=National Weather Service Forecast Office in Nashville, Tennessee|via=Mississippi State University|year=2022|accessdate=April 10, 2023|title=NWS Nashville Tornado Database|url=https://www.midsouthtornadoes.msstate.edu/index.php?cw=ohx}}</ref>
+|{{N/A}}
+|-
+|bgcolor=#{{Storm colour|cat5}}| F5
+|SW of [[Hardinsburg, Kentucky|Hardinsburg, KY]], to [[Brandenburg, Kentucky|Brandenburg, KY]], to NNW of [[Laconia, Indiana|Laconia, IN]]
+|[[Breckinridge County, Kentucky|Breckinridge (KY)]], [[Meade County, Kentucky|Meade (KY)]], [[Harrison County, Indiana|Harrison (IN)]]
+|[[Kentucky|KY]], [[Indiana|IN]]
+|{{Coord|37.73|-86.53|name=Brandenburg (April 3, F5)}}
+|{{Sort|023|April&nbsp;3}}
+|20:30–21:22<sup>A</sup>
+|bgcolor="#9FCADF"|{{convert|34|mi|km|abbr=on|sortable=on}}†
+|bgcolor="#9FCADF"|{{convert|800|yd|m|abbr=on|sortable=on}}†
+|31&nbsp;deaths, 270&nbsp;injuries &mdash; ''[[1974 Brandenburg tornado|See article on this tornado]]''
+|align="center"|{{ntsh|047}}{{tooltip|47|"Brandenburg Tornado KY-IN"}}
+|-
+|bgcolor=#{{Storm colour|cat5}}| F5
+|SW of [[Xenia, Ohio|Xenia]] to Downtown Xenia to N of [[South Charleston, Ohio|South Charleston]]
+|[[Greene County, Ohio|Greene]], [[Clark County, Ohio|Clark]]
+|[[Ohio|OH]]
+|{{Coord|39.63|-84.05|name=Xenia (April 3, F5)}}
+|{{Sort|025|April&nbsp;3}}
+|20:32–21:09<sup>A</sup>
+|bgcolor="#9FCADF"|{{convert|32|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#F7D9D3;"|{{convert|1300|yd|m|abbr=on|sortable=on}}‡♯<!--Grazulis did not provide a maximum width-->
+|34–36&nbsp;deaths, 1,150&nbsp;injuries &mdash; ''[[1974 Xenia tornado|See article on this tornado]]'' 
+|align="center"|{{ntsh|037}}{{tooltip|37|"Xenia Tornado OH"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1
+|NW of [[Cleveland, Tennessee|Cleveland]]
+|[[Hamilton County, Tennessee|Hamilton]]
+|[[Tennessee|TN]]
+|{{Coord|35.25|-85.02|name=Cleveland (April 3, F1)}}
+|{{Sort|026|April&nbsp;3}}
+|20:33–20:40<sup>C</sup>
+|style="background-color:#B7A3C3;"|{{convert|5.9|mi|km|abbr=on|sortable=on}}¶
+|style="background-color:#B7A3C3;"|{{convert|80|yd|m|abbr=on|sortable=on}}¶#
+|Details on this tornado are unspecified.<ref name="MRX_2"/><ref name="MRX"/>
+|align="center"|{{ntsh|109}}{{tooltip|109|"Meadow View Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat4}}| F4
+|SW of [[Blountsville, Indiana|Blountsville]] to N of [[Ridgeville, Indiana|Ridgeville]]
+|[[Henry County, Indiana|Henry]], [[Delaware County, Indiana|Delaware]], [[Randolph County, Indiana|Randolph]], [[Jay County, Indiana|Jay]]
+|[[Indiana|IN]]
+|{{Coord|40.05|-85.27|name=Blountsville (April 3, F4)}}
+|{{Sort|027|April&nbsp;3}}
+|20:35–20:58<sup>A</sup>
+|style="background-color:#9FCADF;"|{{convert|22|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{ntsh|1760}}≥{{convert|1760|yd|m|abbr=on|sortable=on}}†#
+|1&nbsp;death, 12&nbsp;injuries &mdash; ''[[#Parker tornado family|See section on this tornado family]]''
+|align="center"|{{ntsh|033}}{{tooltip|33|"Parker Tornado IN"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|E of [[Tolono, Illinois|Tolono]] to N of [[Philo, Illinois|Philo]]
+|[[Champaign County, Illinois|Champaign]]
+|[[Illinois|IL]]
+|{{Coord|39.98|-88.23|name=Tolono (April 3, F3)}}
+|{{Sort|028|April&nbsp;3}}
+|20:44–20:52<sup>A</sup>
+|style="background-color:#9FCADF;"|{{convert|8|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|70|yd|m|abbr=on|sortable=on}}†
+|1&nbsp;death &mdash; One person was killed near where the tornado touched down when their mobile home was lofted and obliterated.<ref name="DDR_0404_5"/> Northeast of Tolono, a barn and three toolsheds were destroyed and five cows were killed on the property. The most severe damage occurred on four farmsteads west of Philo where many buildings were destroyed.{{sfn|Grazulis|1990|p=548}}<ref name="StormData"/>{{rp|4}} The Storm Data publication lists this tornado as continuing into Vermillion County;<ref name="StormData"/>{{rp|4}} however, contemporary analyses indicate that two separate tornadoes occurred with another F3 forming to the southeast.{{sfn|Grazulis|1990|p=548}}<ref name="ILX"/> Damage from the three tornadoes in Champaign reached $800,000.<ref name="DDR_0404_5"/>
+|align="center"|{{ntsh|009}}{{tooltip|9|"Tolono Tornado IL"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|ENE of [[Cleveland, Tennessee|Cleveland]] to southern [[Etowah, Tennessee|Etowah]]
+|[[Bradley County, Tennessee|Bradley]], [[Polk County, Tennessee|Polk]], [[McMinn County, Tennessee|McMinn]]
+|[[Tennessee|TN]]
+|{{Coord|35.18|-84.87|name=Cleveland (April 3, F3)}}
+|{{Sort|029|April&nbsp;3}}
+|20:55–21:26<sup>A</sup>
+|style="background-color:#9FCADF;"|{{convert|24|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#B7A3C3;"|{{ntsh|1500}}≥{{convert|1500|yd|m|abbr=on|sortable=on}}¶#
+|3&nbsp;deaths, 50&nbsp;injuries &mdash; This was the second tornado to strike Etowah.<ref name="FujitaMap"/> The two tornadoes severely damaged 100 homes and a large shopping plaza across Bradley County. One person was killed in Cleveland and two in Etowah.<ref name="Tennessean_0404"/><ref name="StormData"/>{{rp|17}}{{sfn|Grazulis|1990|p=550}} Thirty-seven homes were damaged or destroyed in McMinn County.{{sfn|Grazulis|1990|p=550}}<ref name="MRX_2"/><ref name="MRX"/>
+|align="center"|{{ntsh|114}}{{tooltip|114|"Cleveland-Etowah Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|S of [[Sydney, Illinois|Sydney]] to E of [[Ogden, Illinois|Ogden]]
+|[[Champaign County, Illinois|Champaign]], [[Vermillion County, Illinois|Vermillion]]
+|[[Illinois|IL]]
+|{{Coord|39.95|-88.07|name=Homer Lake (April 3, F3)}}
+|{{Sort|030|April&nbsp;3}}
+|20:58–21:14<sup>A</sup>
+|style="background-color:#9FCADF;"|{{convert|17|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#F7D9D3;"|{{convert|350|yd|m|abbr=on|sortable=on}}‡
+|Shortly after the 20:44&nbsp;UTC F3 Tolono tornado dissipated, the same supercell produced another tornado near Sydney.<ref name="StormData"/>{{rp|4}}{{sfn|Abbey and Fujita|1981|p=50}} Moving on a brisk northeast trajectory, the tornado struck the Homer Lake Park Preserve. The park headquarters and several homes were destroyed.{{sfn|Grazulis|1990|p=548}} Aerial surveys by Fujita revealed a large area of ground scouring from two suction vortices near Homer Lake.{{sfn|Abbey and Fujita|1981|p=77}} Three [[Semi-trailer truck|semi trucks]] and three cars were blown off of [[Interstate 74|I-74]] just east of Ogden. No one was injured in those vehicles but one person was injured in a subsequent accident related to them.<ref name="DDR_0404_5"/><ref name="ILX"/>
+|align="center"|{{ntsh|010}}{{tooltip|10|"Homer Lake Tornado IL"}}
+|-
+|bgcolor=#{{Storm colour|cat4}}| F4
+|W of [[Caneyville, Kentucky|Caneyville]] to [[Big Clifty, Kentucky|Big Clifty]]
+|[[Grayson County, Kentucky|Grayson]], [[Hardin County, Kentucky|Hardin]]
+|[[Kentucky|KY]]
+|{{Coord|37.42|-86.57|name=Caneyville (April 3, F4)}}
+|{{Sort|031|April&nbsp;3}}
+|21:00–21:34<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|28|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|150|yd|m|abbr=on|sortable=on}}†
+|2&nbsp;injuries &mdash; One home was leveled near Caneyville.{{sfn|Grazulis|1990|p=549}}<ref name="LMK"/>
+|align="center"|{{ntsh|052}}{{tooltip|52|"Caneyville Tornado KY"}}
+|-
+|bgcolor=#{{Storm colour|storm}}| F0±
+|SSW of [[Rosman, North Carolina|Rosman]]
+|[[Transylvania County, North Carolina|Transylvania]]
+|[[North Carolina|NC]]
+|{{Coord|35.12|-82.83|name=Rosman (April 3, F1)}}
+|{{Sort|032|April&nbsp;3}}
+|21:00–21:01<sup>D</sup>
+|style="background-color:#F7D9D3;"|{{convert|1|mi|km|abbr=on|sortable=on}}‡
+|style="background-color:#F7D9D3;"|{{convert|30|yd|m|abbr=on|sortable=on}}‡
+|Details on this tornado are unspecified. Fujita rated this as a F0 tornado;<ref name="FujitaMap"/> however, the NCEI database lists this as a F1 tornado.<ref name="GSP"/>
+|align="center"|{{ntsh|132}}{{tooltip|132|"East Fork Tornado NC"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2
+|SW of [[Florence, Madison County, Ohio|Florence]] to [[London, Ohio|London]] to SW of [[West Jefferson, Ohio|West Jefferson]]
+|[[Clark County, Ohio|Clark]], [[Madison County, Ohio|Madison]]
+|[[Ohio|OH]]
+|{{Coord|39.78|-83.72|name=Florence (April 3, F2)}}
+|{{Sort|033|April&nbsp;3}}
+|21:01–21:20<sup>A</sup>
+|style="background-color:#9FCADF;"|{{convert|15|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|180|yd|m|abbr=on|sortable=on}}†
+|As the Xenia tornado weakened, a second tornado formed to the east near Florence.{{sfn|Abbey and Fujita|1981|p=50}} It produced F2 damage along its path, destroying trailers, grain bins, and a warehouse.{{sfn|Grazulis|1990|p=549}} A few structures were damaged in the center of London. This tornado was initially believed to have just been thunderstorm winds based on public reports of no funnel cloud.<ref name="StormData"/>{{rp|14}}
+|align="center"|{{ntsh|038}}{{tooltip|38|"London Tornado OH"}}
+|-
+|bgcolor=#{{Storm colour|cat4}}| F4
+|S of [[Manville, Indiana|Manville]] to [[Aurora, Indiana|Aurora]]
+|[[Jefferson County, Indiana|Jefferson]], [[Switzerland County, Indiana|Switzerland]], [[Ohio County, Indiana|Ohio]], [[Dearborn County, Indiana|Dearborn]]
+|[[Indiana|IN]]
+|{{Coord|38.77|-85.27|name=Manville (April 3, F4)}}
+|{{Sort|034|April&nbsp;3}}
+|21:04–21:29<sup>A</sup>
+|style="background-color:#9FCADF;"|{{convert|28|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#F7D9D3;"|{{convert|1133|yd|m|abbr=on|sortable=on}}‡
+|This tornado formed as the 20:19&nbsp;UTC Henryville–Cross Plains, Indiana, F4 tornado was dissipating.{{sfn|Grazulis|1990|p=549}} The two tornadoes were on the ground simultaneously near [[Madison, Indiana|Madison]].<ref name="ILN"/><ref name="LMK"/> A third funnel was reported but it did not touch down.<ref name="StormData"/>{{rp|6}} Homes and forests were totally destroyed west of [[Fairview, Switzerland County, Indiana|Fairview]] and a church was demolished north of [[Bear Branch, Indiana|Bear Branch]].{{sfn|Grazulis|1990|p=549}} As this tornado weakened and turned north, another tornado formed to its southeast.{{sfn|Abbey and Fujita|1981|pp=50–52}}
+|align="center"|{{ntsh|042}}{{tooltip|42|"Bear Branch Tornado IN"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1
+|W of [[Springfield, Tennessee|Springfield]]
+|[[Robertson County, Tennessee|Robertson]]
+|[[Tennessee|TN]]
+|{{Coord|36.48|-86.98|name=Coopertown (April 3, F1)}}
+|{{Sort|035|April&nbsp;3}}
+|21:05–21:11<sup>B</sup>
+|style="background-color:#ccdfdc;"|{{convert|6|mi|km|abbr=on|sortable=on}}§
+|style="background-color:#ccdfdc;"|{{convert|50|yd|m|abbr=on|sortable=on}}§#
+|Shamburger 2021 and the NCEI database list this as a F1 tornado.<ref name="OHX"/> Fujita rated this as a F0 tornado.<ref name="FujitaMap"/>
+|align="center"|{{ntsh|060}}{{tooltip|60|"Springfield Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2
+|[[Concord, Alabama|Concord]]
+|[[Jefferson County, Alabama|Jefferson]]
+|[[Alabama|AL]]
+|{{Coord|33.45|-87.05|name=Concord (April 3, F2)}}
+|{{Sort|036|April&nbsp;3}}
+|21:15–21:21:16<sup>C</sup>
+|style="background-color:#9FCADF;"|{{convert|1|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|800|yd|m|abbr=on|sortable=on}}†#
+|A brief tornado destroyed an outbuilding and trailer and damaged one home.<ref name="StormData"/>{{rp|22}}{{sfn|Grazulis|1990|p=549}}<ref name="BMX">{{cite web|publisher=National Weather Service Forecast Office in Birmingham, Alabama|via=Mississippi State University|accessdate=May 7, 2023|title=NWS Birmingham Tornado Database|url=https://www.midsouthtornadoes.msstate.edu/index.php?cw=bmx}}</ref>
+|align="center"|{{ntsh|104}}{{tooltip|104|"Concord Tornado AL"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2
+|[[Bismarck, Illinois|Bismarck]]
+|[[Vermillion County, Illinois|Vermillion]]
+|[[Illinois|IL]]
+|{{Coord|40.25|-87.63|name=Bismarck (April 3, F2)}}
+|{{Sort|037|April&nbsp;3}}
+|21:18–21:25<sup>A</sup>
+|style="background-color:#9FCADF;"|{{convert|7|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|175|yd|m|abbr=on|sortable=on}}†
+|12&nbsp;injuries &mdash; The local high school was damaged and several homes were destroyed. Monetary losses reached $1&nbsp;million. Twelve people sustained injuries.<ref name="StormData"/>{{rp|4}}{{sfn|Grazulis|1990|p=548}}<ref name="ILN"/>
+|align="center"|{{ntsh|011}}{{tooltip|11|"Bismarck Tornado IL"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1
+|S of [[Mattoon, Illinois|Mattoon]] to NE of [[Charleston, Illinois|Charleston]]
+|[[Coles County, Illinois|Coles]]
+|[[Illinois|IL]]
+|{{Coord|33.45|-87.05|name=Concord (April 3, F1)}}
+|{{Sort|038|April&nbsp;3}}
+|21:22–21:33<sup>B</sup>
+|style="background-color:#F7D9D3;"|{{convert|14.8|mi|km|abbr=on|sortable=on}}‡
+|style="background-color:#F7D9D3;"|{{convert|70|yd|m|abbr=on|sortable=on}}‡
+|A home and barns were damaged on a farmstead and several homes were damaged around Charleston.<ref name="DDR_0404_5"/><ref name="ILX"/> A {{convert|100|ft|m|abbr=on}} antenna was folded in half. The 1974 Storm Data publication states that six funnel clouds were observed around Charleston with no confirmed tornado;<ref name="StormData"/>{{rp|4}} however, this event was later classified as a tornado by Fujita.{{sfn|Abbey and Fujita|1981|p=50}}
+|align="center"|{{ntsh|017}}{{tooltip|17|"Charleston Tornado IL"}}
+|-
+|bgcolor=#{{Storm colour|cat5}}| F5
+|N of [[Rising Sun, Indiana|Rising Sun, IN]], to [[Belleview, Kentucky|Belleview, KY]], to [[Sayler Park, Cincinnati|Sayler Park]]
+|[[Ohio County, Indiana|Ohio (IN)]], [[Boone County, Kentucky|Boone (KY)]], [[Hamilton County, Ohio|Hamilton (OH)]]
+|[[Indiana|IN]], [[Kentucky|KY]], [[Ohio|OH]]
+|{{Coord|38.97|-84.88|name=Saylor Park (April 3, F5)}}
+|{{Sort|039|April&nbsp;3}}
+|21:28–21:51<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|21|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#E89483;"|{{convert|1320|yd|m|abbr=on|sortable=on}}※#
+|3&nbsp;deaths, 210&nbsp;injuries &mdash; ''[[1974 Cincinnati tornado|See article on this tornado]]''
+|align="center"|{{ntsh|043}}{{tooltip|43|"Sayler Park Tornado IN-KY-OH"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|W of [[Gold City, Kentucky|Gold City]] to E of [[Smiths Grove, Kentucky|Smiths Grove]]
+|[[Simpson County, Kentucky|Simpson]], [[Warren County, Kentucky|Warren]], [[Barren County, Kentucky|Barren]]
+|[[Kentucky|KY]]
+|{{Coord|36.72|-86.53|name=Gold City (April 3, F3)}}
+|{{Sort|040|April&nbsp;3}}
+|21:34–22:05<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|25|mi|km|abbr=on|sortable=on}}†
+|{{N/A}}
+|40 barns and seven homes were wrecked at [[Temperance, Kentucky|Temperance]].<ref name="StormData"/>{{rp|8}}{{sfn|Grazulis|1990|p=553}}<ref name="LMK"/>
+|align="center"|{{ntsh|061}}{{tooltip|61|"Franklin Tornado KY"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|W of [[Attica, Indiana|Attica]] to [[Rainsville, Indiana|Rainsville]] to S of [[Judy, Indiana|Judy]]
+|[[Warren County, Indiana|Warren]], [[Benton County, Indiana|Benton]]
+|[[Indiana|IN]]
+|{{Coord|40.28|-87.48|name=Attica (April 3, F3)}}
+|{{Sort|041|April&nbsp;3}}
+|21:37–22:02<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|26|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|700|yd|m|abbr=on|sortable=on}}†
+|The entire community of Rainsville, 20 homes in all, was damaged.<ref name="StormData"/>{{rp|6}}{{sfn|Grazulis|1990|p=550}}<ref name="LOT"/><ref name="IND"/>
+|align="center"|{{ntsh|012}}{{tooltip|12|"Rainsville Tornado IN"}}
+|-
+|bgcolor=#{{Storm colour|cat4}}| F4
+|[[Louisville, Kentucky|Louisville]] to W of [[Buckner, Kentucky|Buckner]]
+|[[Jefferson County, Kentucky|Jefferson]], [[Oldham County, Kentucky|Oldham]]
+|[[Kentucky|KY]]
+|{{Coord|38.20|-85.75|name=Louisville (April 3, F4)}}
+|{{Sort|042|April&nbsp;3}}
+|21:37–21:59<sup>A</sup>
+|style="background-color:#9FCADF;"|{{convert|21|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|200|yd|m|abbr=on|sortable=on}}†
+|2&nbsp;deaths, 228&nbsp;injuries &mdash; ''[[#Louisville, Kentucky|See section on this tornado]]''<ref name="StormData"/>{{rp|8}}{{sfn|Grazulis|1990|p=553}}<ref name="LMK"/>
+|align="center"|{{ntsh|048}}{{tooltip|48|"Louisville Tornado KY"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2±
+|[[Ballplay, Monroe County, Tennessee|Ballplay]]
+|[[Monroe County, Tennessee|Monroe]]
+|[[Tennessee|TN]]
+|{{Coord|35.52|-84.35|name=Ballplay (April 3, F1)}}
+|{{Sort|043|April&nbsp;3}}
+|21:37–21:50<sup>C</sup>
+|style="background-color:#D4F2CE;"|{{convert|9|mi|km|abbr=on|sortable=on}}♭
+|style="background-color:#B7A3C3;"|{{convert|600|yd|m|abbr=on|sortable=on}}¶#
+|Seven homes and several barns were destroyed or severely damaged.<ref name="StormData"/>{{rp|17}}<ref name="MRX_2"/> The NWS Office in Morristown, Tennessee, lists this as a F2 tornado.<ref name="MRX_2"/><ref name="MRX"/> Fujita rated this as a F1 tornado and Grazulis does not list this event in his ''Significant Tornadoes'' book.<ref name="FujitaMap"/>{{sfn|Grazulis|1990|pp=543–557}}
+|align="center"|{{ntsh|115}}{{tooltip|115|"Ballplay Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat4}}| F4
+|NW of [[Elizabethtown, Kentucky|Elizabethtown]] to N of [[Fairfield, Kentucky|Farfield]]
+|[[Hardin County, Kentucky|Hardin]], [[Bullitt County, Kentucky|Bullitt]], [[Nelson County, Kentucky|Nelson]], [[Spencer County, Kentucky|Spencer]]
+|[[Kentucky|KY]]
+|{{Coord|37.72|-85.90|name=Elizabethtown (April 3, F4)}}
+|{{Sort|044|April&nbsp;3}}
+|21:43–22:33<sup>A</sup>
+|style="background-color:#9FCADF;"|{{convert|42|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|400|yd|m|abbr=on|sortable=on}}†
+|"Several" homes in Nelson County sustained F4-level damage, being described as "leveled".<ref name="StormData"/>{{rp|7}}{{sfn|Grazulis|1984|p=A-86}}{{sfn|Grazulis|1990|p=553}}<ref name="LMK"/>
+|align="center"|{{ntsh|053}}{{tooltip|53|"Elizabethtown Tornado KY"}}
+|-
+|bgcolor=#{{Storm colour|cat4}}| F4
+|W of [[Otterbein, Indiana|Otterbein]] to [[Monticello, Indiana|Monticello]] to [[Ligonier, Indiana|Ligonier]] to NW of [[Wolcottville, Indiana|Wolcottville]]
+|[[Benton County, Indiana|Benton]], [[Tippecanoe County, Indiana|Tippecanoe]], [[White County, Indiana|White]], [[Cass County, Indiana|Cass]], [[Pulaski County, Indiana|Pulaski]], [[Fulton County, Indiana|Fulton]], [[Marshall County, Indiana|Marshall]], [[Kosciusko County, Indiana|Kosciusko]], [[Elkhart County, Indiana|Elkhart]], [[Noble County, Indiana|Noble]], [[Lagrange County, Indiana|Lagrange]]
+|[[Indiana|IN]]
+|{{Coord|40.50|-87.13|name=Otterbein (April 3, F4)}}
+|{{Sort|045|April&nbsp;3}}
+|21:47–23:47<sup>A</sup>
+|style="background-color:#9FCADF;"|{{convert|121|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#F7D9D3;"|{{convert|1760|yd|m|abbr=on|sortable=on}}‡
+|18&nbsp;deaths, 362&nbsp;injuries &mdash; ''[[#Monticello–Rochester, Indiana|See section on this tornado]]''<ref name="StormData"/>{{rp|6}} According to Grazulis, this was likely a [[Tornado family|family]] of three distinct tornadoes rather than a single, continuous event.{{sfn|Grazulis|1990|p=553}}<ref name="LOT"/><ref name="IND"/>
+|align="center"|{{ntsh|013}}{{tooltip|13|"Monticello Tornado IN"}}
+|-
+|bgcolor=#{{Storm colour|cat4}}| F4
+|Northeastern [[Cincinnati, Ohio|Cincinnati]] to N of [[Mason, Ohio|Mason]]
+|[[Hamilton County, Ohio|Hamilton]], [[Butler County, Ohio|Butler]], [[Warren County, Ohio|Warren]]
+|[[Ohio|OH]]
+|{{Coord|39.18|-84.48|name=Cincinnati (April 3, F4)}}
+|{{Sort|046|April&nbsp;3}}
+|21:52–23:14<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|20|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#F7D9D3;"|{{convert|350|yd|m|abbr=on|sortable=on}}‡
+|2 deaths, 39 injuries &mdash; This violent tornado damaged 100 homes in and around [[Mason, Ohio]], completely destroying "a few" of these. Both fatalities were in a mobile home south of Mason.<ref name="StormData"/>{{rp|14}}{{sfn|Grazulis|1990|p=550}}<ref name="ILN"/><ref name="LMK"/>
+|align="center"|{{ntsh|044}}{{tooltip|44|"Mason Tornado OH"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2†
+|style="background-color:#9FCADF;"|[[Paris, Illinois|Paris]]
+|style="background-color:#9FCADF;"|[[Edgar County, Illinois|Edgar]]
+|style="background-color:#9FCADF;"|[[Illinois|IL]]
+|{{N/A}}
+|style="background-color:#9FCADF;"|{{Sort|047|April&nbsp;3}}
+|22:00–22:02<sup>C</sup>
+|style="background-color:#9FCADF;"|{{convert|2|mi|km|abbr=on|sortable=on}}†
+|{{N/A}}
+|This brief tornado destroyed a barn and mobile home and shifted two frame homes off their foundation.{{sfn|Grazulis|1990|p=549}} This tornado was omitted from the NCEI database.<ref name="NCEI_event"/>
+|align="center"|{{ntsh|018}}{{tooltip|18|"Paris Tornado IL"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|SE of [[Ellisville, Mississippi|Ellisville]] to ENE of [[Laurel, Mississippi|Laurel]]
+|[[Jones County, Mississippi|Jones]]
+|[[Mississippi|MS]]
+|{{Coord|31.55|-89.18|name=Ellisville (April 3, F3)}}
+|{{Sort|048|April&nbsp;3}}
+|22:00–22:19<sup>C</sup>
+|style="background-color:#9FCADF;"|{{convert|12|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|150|yd|m|abbr=on|sortable=on}}†
+|1&nbsp;injury &mdash; This tornado moved along an intermittent path from [[Mississippi Highway 29|MS 29]] to [[Mississippi Highway 15|MS 15]] to east-northeast of Laruel.<ref name="StormData"/>{{rp|10}}<ref name="JAN">{{cite web|publisher=National Weather Service Forecast Office in Jackson, Mississippi|via=Mississippi State University|accessdate=May 7, 2023|title=NWS Jackson Tornado Database|url=https://www.midsouthtornadoes.msstate.edu/index.php?cw=jan}}</ref> A pecan grove was damaged near MS 29.<ref name="ClarionLedger_0404">{{cite news|newspaper=The Clarion-Ledger|date=April 4, 1974|title=One Hurt In Jones|via=Newspapers.com}} {{free access}}
+*[https://www.newspapers.com/article/clarion-ledger/58089014/ 1A], [https://www.newspapers.com/article/clarion-ledger/125075660/ 16A]</ref> It destroyed 1 home, damaged 35 others, and damaged or destroyed 30 farm buildings. A chicken house was destroyed, killing 15,000 chickens inside. Damage was estimated at $150,000.<ref name="StormData"/>{{rp|10}}{{sfn|Grazulis|1990|p=550}} One person was injured by flying debris.<ref name="ClarionLedger_0404"/>
+|align="center"|{{ntsh|105}}{{tooltip|105|"Laurel Tornado MS"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1
+|SE of [[La Grange, Kentucky|La Grange]] to SW of [[Jonesville, Grant County, Kentucky|Jonesville]]
+|[[Oldham County, Kentucky|Oldham]], [[Henry County, Kentucky|Henry]], [[Owen County, Kentucky|Owen]]
+|[[Kentucky|KY]]
+|{{Coord|38.38|-85.33|name=La Grange (April 3, F1)}}
+|{{Sort|049|April&nbsp;3}}
+|22:04–22:27<sup>B</sup>
+|style="background-color:#F7D9D3;"|{{convert|21.3|mi|km|abbr=on|sortable=on}}‡
+|{{N/A}}
+|<ref name="StormData"/>{{rp|8}}<ref name="ILN"/><ref name="LMK"/>
+|align="center"|{{ntsh|049}}{{tooltip|49|"New Castle Tornado KY"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2+
+|Southeastern [[Nashville, Tennessee|Nashville]]
+|[[Williamson County, Tennessee|Williamson]], [[Davidson County, Tennessee|Davidson]]
+|[[Tennessee|TN]]
+|style="background-color:#ccdfdc;"|{{Coord|35.99|-86.69|name=Nashville (April 3, F2)}}§
+|{{Sort|050|April&nbsp;3}}
+|22:07–22:20<sup>A</sup>
+|style="background-color:#ccdfdc;"|{{convert|12|mi|km|abbr=on|sortable=on}}§
+|style="background-color:#ccdfdc;"|{{convert|400|yd|m|abbr=on|sortable=on}}§#
+|1&nbsp;death &mdash; One person died from a heart attack as the tornado approached [[Percy Priest Lake]].<ref name="Tennessean_0404">{{cite news|newspaper=The Tennessean|date=April 4, 1974|title=State Twisters Kill 39|via=Newspapers.com}} {{free access}}
+*[https://www.newspapers.com/clip/111280241/4-apr-1974-tornado-headlines/ 1], [https://www.newspapers.com/clip/123838210/ 9], [https://www.newspapers.com/clip/123838270/ 49]</ref>
+
+<ref name="StormData"/>{{rp|17}} Grazulis and Shamburger assert this tornado was likely of F3 intensity.<ref name="OHX"/>{{sfn|Grazulis|1990|p=550}}
+|align="center"|{{ntsh|067}}{{tooltip|67|"Nashville Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2
+|[[Greenback, Tennessee|Greenback]]
+|[[Loudon County, Tennessee|Loudon]]
+|[[Tennessee|TN]]
+|{{Coord|35.67|-84.17|name=Greenback (April 3, F2)}}
+|{{Sort|051|April&nbsp;3}}
+|22:09–22:11<sup>A</sup>
+|style="background-color:#9FCADF;"|{{convert|2|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#B7A3C3;"|{{convert|300|yd|m|abbr=on|sortable=on}}¶#
+|Seven homes were damaged in Greenback, one of which had its roof removed.<ref name="StormData"/>{{rp|17}}<ref name="MRX_2"/><ref name="MRX"/>{{sfn|Grazulis|1990|p=553}}
+|align="center"|{{ntsh|110}}{{tooltip|110|"Greenback Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2
+|S of [[Lebanon, Ohio|Lebanon]] to NE of [[Pekin, Warren County, Ohio|Pekin]]
+|[[Warren County, Ohio|Warren]]
+|[[Ohio|OH]]
+|{{Coord|39.38|-84.23|name=Lebanon (April 3, F2)}}
+|{{Sort|052|April&nbsp;3}}
+|22:12–22:22<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|10|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|175|yd|m|abbr=on|sortable=on}}†
+|<ref name="StormData"/>{{rp|14}}{{sfn|Grazulis|1990|p=553}}<ref name="ILN"/>
+|align="center"|{{ntsh|045}}{{tooltip|45|"Lebanon Tornado OH"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2
+|W of [[New Albany, Ohio|New Albany]]
+|[[Franklin County, Ohio|Franklin]]
+|[[Ohio|OH]]
+|{{Coord|40.08|-82.85|name=New Albany (April 3, F2)}}
+|{{Sort|053|April&nbsp;3}}
+|22:13–22:18<sup>C</sup>
+|style="background-color:#9FCADF;"|{{convert|5|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|90|yd|m|abbr=on|sortable=on}}†
+|Nearly an hour after the 21:01&nbsp;UTC F2 London tornado dissipated, a third tornado from the Xenia supercell formed near New Albany.{{sfn|Abbey and Fujita|1981|p=50}} It destroyed 3 barns and 1 home and damaged 20 other homes.{{sfn|Grazulis|1990|p=553}} A 345,000 volt transmission line was torn from its tower.<ref name="StormData"/>{{rp|14}}
+|align="center"|{{ntsh|039}}{{tooltip|39|"New Albany Tornado OH"}}
+|-
+|bgcolor=#{{Storm colour|storm}}| F0±
+|W of [[Circleville, Ohio|Circleville]]
+|[[Pickaway County, Ohio|Pickaway]]
+|[[Ohio|OH]]
+|{{Coord|39.60|-83.00|name=Circleville (April 3, F0)}}
+|{{Sort|054|April&nbsp;3}}
+|22:18–22:19<sup>A</sup>
+|style="background-color:#F7D9D3;"|{{convert|1|mi|km|abbr=on|sortable=on}}‡
+|style="background-color:#F7D9D3;"|{{convert|10|yd|m|abbr=on|sortable=on}}‡
+|Fujita lists this as a F0 tornado;<ref name="FujitaMap"/> however, the NCEI database lists it as a F1. Seven people were injured.<ref name="ILN"/>
+|align="center"|{{ntsh|050}}{{tooltip|50|"Circleville Tornado OH"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1
+|NW of [[Jacksonville, Alabama|Jacksonville]]
+|[[Calhoun County, Alabama|Calhoun]]
+|[[Alabama|AL]]
+|{{Coord|33.87|-85.83|name=Jacksonville (April 3, F1)}}
+|{{Sort|055|April&nbsp;3}}
+|22:21–22:22<sup>B</sup>
+|style="background-color:#F7D9D3;"|{{convert|1|mi|km|abbr=on|sortable=on}}‡
+|style="background-color:#F7D9D3;"|{{convert|800|yd|m|abbr=on|sortable=on}}‡
+|<ref name="StormData"/>{{rp|22}}<ref name="BMX"/>
+|align="center"|{{ntsh|126}}{{tooltip|126|"Duke Tornado AL"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1
+|style="background-color:#ccdfdc;"|SE of [[Columbia, Tennessee|Columbia]] to NW of [[Chapel Hill, Tennessee|Chapel Hill]]§
+|style="background-color:#ccdfdc;"|[[Maury County, Tennessee|Maury]], [[Marshall County, Tennessee|Marshall]]§
+|[[Tennessee|TN]]
+|style="background-color:#ccdfdc;"|{{Coord|35.59|-86.94|name=Columbia (April 3, F1)}}§
+|{{Sort|056|April&nbsp;3}}
+|22:25–22:37<sup>C</sup>
+|style="background-color:#ccdfdc;"|{{convert|10|mi|km|abbr=on|sortable=on}}§
+|style="background-color:#ccdfdc;"|{{convert|100|yd|m|abbr=on|sortable=on}}§#
+|<ref name="StormData"/>{{rp|17}}<ref name="OHX"/>
+|align="center"|{{ntsh|071}}{{tooltip|71|"Rally Hill Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2
+|SE of [[Heflin, Alabama|Heflin, AL]], to S of [[Pine Log Mountain]]
+|[[Cleburne County, Alabama|Cleburne (AL)]], [[Haralson County, Georgia|Haralson (GA)]], [[Paulding County, Georgia|Paulding (GA)]], [[Cobb County, Georgia|Cobb (GA)]], [[Bartow County, Georgia|Bartow (GA)]], [[Cherokee County, Georgia|Cherokee (GA)]]
+|[[Alabama|AL]], [[Georgia (U.S. state)|GA]]
+|{{Coord|33.55|-85.47|name=Heflin (April 3, F2)}}
+|{{Sort|057|April&nbsp;3}}
+|22:29–00:00<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|65|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|200|yd|m|abbr=on|sortable=on}}†
+|1&nbsp;death, 20&nbsp;injuries &mdash; This long-lived tornado touched down southeast of Heflin near the Alabama-Georgia border. Only minor tree damage occurred before it moved into Georgia.{{sfn|Grazulis|1990|p=553}} Newspaper reports indicated this was originally considered to be several tornadoes. Seven members of one family were injured in [[Buchanan, Georgia|Buchanan]], one of whom was a pregnant mother who was in critical condition.<ref name="AtlantaConstitution_0405"/> Her child was stillborn in the hospital and listed as the sole fatality from this tornado.{{sfn|Grazulis|1990|p=553}}<ref>{{cite news|newspaper=The Atlanta Constitution|date=April 5, 1974|accessdate=May 8, 2023|title=Sixteen Persons Killed By Twisters in Georgia|url=https://www.newspapers.com/article/the-atlanta-constitution/124288449/|page=10A|via=Newspapers.com}} {{free access}}</ref> Eight people were injured in [[Yorkville, Georgia|Yorkville]] in Paulding County. Power outages accompanied the tornado as it moved through northern Cobb County.<ref name="AtlantaConstitution_0405"/> A mobile home park was damaged near [[Cartersville, Georgia|Cartersville]] in Bartow County, resulting in several injuries.<ref name="ColumbusEnquirer_0405">{{cite news|newspaper=The Columbus Enquirer|date=April 5, 1974|title=Killer Tornadoes Rip Eight States, Leaving At Least 170 Dead In Wake|via=Newspapers.com}} {{free access}}
+*[https://www.newspapers.com/article/ledger-enquirer/124289326/ A1], [https://www.newspapers.com/article/ledger-enquirer/124289345/ A6]</ref> In Cherokee County, damage was reported to homes along [[Georgia State Route 92|SR 92]].<ref name="AtlantaConstitution_0405"/> Damage was estimated at $2&nbsp;million.<ref name="StormData"/>{{rp|3}}<ref name="BMX"/><ref name="FFC"/>
+|align="center"|{{ntsh|127}}{{tooltip|127|"Acworth Tornado AL-GA"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|SW of [[Centre, Alabama|Centre]] to [[Alexis, Alabama|Alexis]]
+|[[Cherokee County, Alabama|Cherokee]]
+|[[Alabama|AL]]
+|{{Coord|34.05|-85.82|name=Centre (April 3, F3)}}
+|{{Sort|058|April&nbsp;3}}
+|22:35–22:48<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|14|mi|km|abbr=on|sortable=on}}†
+|{{convert|800|yd|m|abbr=on|sortable=on}}
+|<ref name="StormData"/>{{rp|22}}{{sfn|Grazulis|1990|p=553}} The NCEI database lists this tornado as occurring at 00:00&nbsp;UTC and has a path length of {{convert|20.9|mi|km|abbr=on}}.<ref name="BMX"/>
+|align="center"|{{ntsh|118}}{{tooltip|118|"Weiss Lake Tornado AL"}}
+|-
+|bgcolor=#{{Storm colour|cat4}}| F4
+|S of [[Greensburg, Kentucky|Greensburg]] to [[Mannsville, Kentucky|Mannsville]]
+|[[Green County, Kentucky|Green]], [[Taylor County, Kentucky|Taylor]]
+|[[Kentucky|KY]]
+|{{Coord|37.22|-85.47|name=Mannsville (April 3, F4)}}
+|{{Sort|059|April&nbsp;3}}
+|22:40–23:08<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|29|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|800|yd|m|abbr=on|sortable=on}}†
+|<ref name="StormData"/>{{rp|8}}{{sfn|Grazulis|1990|p=554}}<ref name="LMK"/>
+|align="center"|{{ntsh|062}}{{tooltip|62|"Mannsville Tornado KY"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3†§
+|NE of [[Lebanon, Tennessee|Lebanon]] to [[Dickson Springs, Tennessee|Dickson Springs]]
+|[[Wilson County, Tennessee|Wilson]], [[Trousdale County, Tennessee|Trousdale]], [[Smith County, Tennessee|Smith]]
+|[[Tennessee|TN]]
+|style="background-color:#ccdfdc;"|{{Coord|36.23|-86.24|name=Lebanon (April 3, F3)}}§
+|{{Sort|060|April&nbsp;3}}
+|22:50–23:13<sup>A</sup>
+|style="background-color:#ccdfdc;"|{{convert|18|mi|km|abbr=on|sortable=on}}§
+|style="background-color:#ccdfdc;"|{{convert|300|yd|m|abbr=on|sortable=on}}§
+|A trailer was destroyed east of Lebanon.<ref name="Tennessean_0404"/><ref name="StormData"/>{{rp|17}} This event was listed as a F2 tornado in the NCEI database; however, Fujita, Grazulis, and Shamburger assessed it as a F3.<ref name="OHX"/> Grazulis further indicated that it was near-F4 levels in Dickson Springs.{{sfn|Grazulis|1990|p=553}}
+|align="center"|{{ntsh|068}}{{tooltip|68|"Taylorsville Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat4}}| F4
+|[[Alton, Kentucky|Alton]] to [[Frankfort, Kentucky|Frankfort]] to [[Stamping Ground, Kentucky|Stamping Ground]]
+|[[Anderson County, Kentucky|Anderson]], [[Franklin County, Kentucky|Franklin]], [[Scott County, Kentucky|Scott]]
+|[[Kentucky|KY]]
+|{{Coord|38.05|-85.07|name=Alton (April 3, F4)}}
+|{{Sort|061|April&nbsp;3}}
+|22:50–23:28<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|36|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|800|yd|m|abbr=on|sortable=on}}†
+|<ref name="StormData"/>{{rp|7}}{{sfn|Grazulis|1990|p=554}}<ref name="LMK"/>
+|align="center"|{{ntsh|054}}{{tooltip|54|"Frankfort Tornado KY"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2
+|NW of [[Phil Campbell, Alabama|Phil Campbell]] to [[Oak Grove, Alabama|Oak Grove]]
+|[[Franklin County, Alabama|Franklin]]
+|[[Alabama|AL]]
+|{{Coord|34.33|-87.73|name=Phil Campbell (April 3, F2)}}
+|{{Sort|062|April&nbsp;3}}
+|23:01–23:15<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|12|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|350|yd|m|abbr=on|sortable=on}}†
+|This tornado was originally considered to be part of the 23:50&nbsp;UTC F5 Mount Hope–Harvest event.<ref name="StormData"/>{{rp|22}}{{sfn|Grazulis|1990|p=554}}<ref name="HUN">{{cite web|publisher=National Weather Service Forecast Office in Huntsville, Alabama|via=Mississippi State University|accessdate=May 7, 2023|title=NWS Huntsville Tornado Database|url=https://www.midsouthtornadoes.msstate.edu/index.php?cw=hun}}</ref>
+|align="center"|{{ntsh|095}}{{tooltip|95|"Phil Campbell Tornado AL"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|NW of Downtown [[Murfreesboro, Tennessee|Murfreesboro]] to [[Statesville, Tennessee|Statesville]]
+|[[Rutherford County, Tennessee|Rutherford]], [[Wilson County, Tennessee|Wilson]]
+|[[Tennessee|TN]]
+|style="background-color:#ccdfdc;"|{{Coord|35.87|-86.42|name=Murfreesboro (April 3, F3)}}§
+|{{Sort|063|April&nbsp;3}}
+|23:03–23:26<sup>C</sup>
+|style="background-color:#ccdfdc;"|{{convert|19|mi|km|abbr=on|sortable=on}}§
+|style="background-color:#ccdfdc;"|{{convert|100|yd|m|abbr=on|sortable=on}}§
+|This tornado formed at the end of a damaging rear-flank downdraft within the Murfreesboro city limits. After touching down, the tornado downed trees and caused minor damage to homes around the Stones River Golf Course. Continuing northeast across northern areas of Murfreesboro, the tornado caused minor damage to many structures.<ref name="OHX"/> Five homes were destroyed in the Valley View community north of Murfreesboro.<ref name="Tennessean_0404"/> Three homes sustained severe damage near [[Lancassas, Tennessee|Lancassas]]. Beyond this point, the tornado's track is uncertain but it is believed to have continued into Wilson County and dissipated near Statesville.<ref name="OHX"/> Newspaper reports from ''The Tennessean'' state 20 injuries occurred in the Murfreesboro area;<ref name="Tennessean_0404"/> however, these were not attributed to the tornado by Shamburger 2021 or Fujita.<ref name="StormData"/>{{rp|17}}<ref name="OHX"/>{{sfn|Grazulis|1990|p=553}}
+|align="center"|{{ntsh|072}}{{tooltip|72|"Lascassas Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|SW of [[Hustonville, Kentucky|Hustonville]] to [[Junction City, Kentucky|Junction City]] to [[Herrington Lake]]
+|[[Casey County, Kentucky|Casey]], [[Lincoln County, Kentucky|Lincoln]], [[Boyle County, Kentucky|Boyle]]
+|[[Kentucky|KY]]
+|{{Coord|37.43|-84.92|name=Alton (April 3, F3)}}
+|{{Sort|064|April&nbsp;3}}
+|23:10–23:55<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|18|mi|km|abbr=on|sortable=on}}†
+|{{N/A}}
+|<ref name="StormData"/>{{rp|7}}{{sfn|Grazulis|1990|p=554}}<ref name="LMK"/>
+|align="center"|{{ntsh|063}}{{tooltip|63|"Danville Tornado KY"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2§
+|NW of [[Lewisburg, Tennessee|Lewisburg]] to N of [[Unionville, Tennessee|Unionville]]
+|[[Marshall County, Tennessee|Marshall]], [[Bedford County, Tennessee|Bedford]]
+|[[Tennessee|TN]]
+|style="background-color:#ccdfdc;"|{{Coord|35.46|-86.84|name=Nashville (April 3, F2)}}§
+|{{Sort|065|April&nbsp;3}}
+|23:14–23:34<sup>C</sup>
+|style="background-color:#ccdfdc;"|{{convert|20|mi|km|abbr=on|sortable=on}}§
+|style="background-color:#ccdfdc;"|{{convert|200|yd|m|abbr=on|sortable=on}}§#
+|Originally rated F1 by Fujita and later reassessed as a F2 by Shamburger 2022.<ref name="StormData"/>{{rp|17}}<ref name="OHX"/> However, Grazulis did not list this event in his ''Significant Tornadoes'' book.{{sfn|Grazulis|1990|pp=543–557}}
+|align="center"|{{ntsh|078}}{{tooltip|78|"Cedar Grove Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1
+|N of [[Farmington, Tennessee|Farmington]] to SE of [[Unionville, Tennessee|Unionville]]
+|[[Marshall County, Tennessee|Marshall]], [[Bedford County, Tennessee|Bedford]]
+|[[Tennessee|TN]]
+|style="background-color:#ccdfdc;"|{{Coord|35.50|-86.74|name=Farmington (April 3, F1)}}§
+|{{Sort|066|April&nbsp;3}}
+|23:14–23:45<sup>B</sup>
+|style="background-color:#ccdfdc;"|{{convert|15|mi|km|abbr=on|sortable=on}}§
+|{{N/A}}
+|<ref name="StormData"/>{{rp|17}}<ref name="OHX"/>
+|align="center"|{{ntsh|079}}{{tooltip|79|"Farmington Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat5}}| F5
+|[[Mount Hope, Lawrence County, Alabama|Mount Hope]] to [[Moulton, Alabama|Moulton]] to ESE of [[Harvest, Alabama|Harvest]]
+|[[Lawrence County, Alabama|Lawrence]], [[Morgan County, Alabama|Morgan]], [[Limestone County, Alabama|Limestone]], [[Madison County, Alabama|Madison]]
+|[[Alabama|AL]]
+|{{Coord|34.33|-87.73|name=Moulton (April 3, F5)}}
+|{{Sort|067|April&nbsp;3}}
+|23:20–00:21<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|51|mi|km|abbr=on|sortable=on}}†
+|bgcolor="#9FCADF"|{{ntsh|1320}}>{{convert|1320|yd|m|abbr=on}}†♯<!--text summary states over 3/4 mile wide maximum-->
+|28&nbsp;deaths, 267–280&nbsp;injuries &mdash; ''[[1974 Tanner tornadoes#Moulton-Trinity-Tanner, Alabama (First tornado)|See section on this tornado]]''
+
+<ref name="StormData"/>{{rp|22}}<ref name="HUN"/><ref name="BMX"/>
+|align="center"|{{ntsh|096}}{{tooltip|96|"First Tanner Tornado AL"}}
+|-
+|bgcolor=#{{Storm colour|cat4}}| F4
+|SW of [[Sugar Valley, Georgia|Sugar Valley]] to NW of [[Resaca, Georgia|Resaca]]
+|[[Gordon County, Georgia|Gordon]], [[Whitfield County, Georgia|Whitfield]], [[Murray County, Georgia|Murray]]
+|[[Georgia (U.S. state)|GA]]
+|{{Coord|34.50|-85.05|name=Sugar Valley (April 3, F4)}}
+|{{Sort|068|April&nbsp;3}}
+|23:30–00:00<sup>C</sup>
+|style="background-color:#9FCADF;"|{{convert|26|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#B7A3C3;"|{{convert|880|yd|m|abbr=on|sortable=on}}¶#
+|9–10&nbsp;deaths &ndash; This violent tornado touched down near Sugar Valley and leveled homes along the from east side of town northeast toward Raseca. More than 50,000 chickens were killed in Gordon County.{{sfn|Grazulis|1990|p=554}} Seven people, four from one family and three from another,<ref name="AtlantaConstitution_1"/><ref name="AtlantaConstitution_2">{{cite news|first=Rex|last=Granum|newspaper=The Atlanta Constitution|date=April 5, 1974|accessdate=April 25, 2023|title=One Family Survives, 4 in Another are Dead|url=https://www.newspapers.com/clip/90018185/|page=11A|via=Newspapers.com}} {{free access}}</ref> were killed in the Sugar Hill area.{{sfn|Grazulis|1990|p=554}}<ref name="AtlantaConstitution_1">{{cite news|first=Frank|last=Wells|newspaper=The Atlanta Constitution|date=April 5, 1974|accessdate=April 25, 2023|title=Wind Roared Over the Hill And Death Came to Dawson|url=https://www.newspapers.com/clip/35299849/|page=11A|via=Newspapers.com}} {{free access}}</ref> Two people were killed in a mobile home park near [[Dalton, Georgia|Dalton]].{{sfn|Grazulis|1990|p=554}}<ref name="MaconNews_0405"/> In [[Chatsworth, Georgia|Chatsworth]], the wall of a rug mill collapsed, trapping 60 people for several hours;<ref name="MaconTelegraph_0405"/> one person died here and the mill suffered $5&nbsp;million in losses.{{sfn|Grazulis|1990|p=554}}<ref name="MaconNews_0405">{{cite news|agency=Associated Press|newspaper=The Macon News|date=April 5, 1974|title=North Georgia Hit Hard By Tornadoes|via=Newspapers.com}} {{free access}}
+*[https://www.newspapers.com/clip/123543586/ 1A], [https://www.newspapers.com/clip/123543611/ 2A]</ref> Local NWS surveys indicated a maximum width around {{convert|0.5|mi|km|abbr=on}}.<ref name="MaconTelegraph_0405">{{cite news|agency=United Press International|newspaper=The Macon Telegraph|date=April 5, 1974|title=State Damage Near $16 Million; Carter Asks U.S. Disaster Aid|via=Newspapers.com}} {{free access}}
+*[https://www.newspapers.com/clip/123530935/ 1A], [https://www.newspapers.com/clip/123531034/ 2A]</ref> At least 200 people were injured.{{sfn|Grazulis|1990|p=554}}
+
+The NCEI database erroneously lists this tornado as occurring an hour earlier.<ref name="StormData"/>{{rp|3}}{{sfn|Grazulis|1990|p=554}}<ref name="FFC"/>
+|align="center"|{{ntsh|119}}{{tooltip|119|"Resaca Tornado GA"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3<!--NCEI has an erroneous duplicate F2 event at 22:30 UTC-->
+|S of [[Oakwood, Paulding County, Ohio|Oakwood]] to NW of [[Continental, Ohio|Continental]]
+|[[Paulding County, Ohio|Paulding]], [[Putnam County, Ohio|Putnam]]
+|[[Ohio|OH]]
+|{{Coord|41.03|-84.40|name=Oakwood (April 3, F3)}}
+|{{Sort|069|April&nbsp;3}}
+|23:33–23:43<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|10|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#F7D9D3;"|{{convert|350|yd|m|abbr=on|sortable=on}}‡
+|<ref name="StormData"/>{{rp|14}}{{sfn|Grazulis|1990|p=554}} Storm Data lists the event time at approximately 22:30&nbsp;UTC;<ref name="StormData"/>{{rp|14}} the NCEI database lists this tornado as occurring at 00:45&nbsp;UTC.<ref name="IWX">{{cite web|publisher=National Weather Service Forecast Office in Northern Indiana|via=Mississippi State University|accessdate=May 7, 2023|title=NWS Northern Indiana Tornado Database|url=https://www.midsouthtornadoes.msstate.edu/index.php?cw=iwx}}</ref>
+|align="center"|{{ntsh|027}}{{tooltip|27|"Continental Tornado OH"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1
+|SE of [[North Manchester, Indiana|North Manchester]]
+|[[Wabash County, Indiana|Wabash]], [[Whitley County, Indiana|Whitley]]
+|[[Indiana|IN]]
+|{{Coord|40.97|-85.73|name=North Manchester (April 3, F1)}}
+|{{Sort|070|April&nbsp;3}}
+|23:35–23:45<sup>D</sup>
+|style="background-color:#F7D9D3;"|{{convert|7.1|mi|km|abbr=on|sortable=on}}‡
+|style="background-color:#F7D9D3;"|{{convert|90|yd|m|abbr=on|sortable=on}}‡
+|Details on this tornado are unspecified.<ref name="IWX"/>
+|align="center"|{{ntsh|019}}{{tooltip|19|"N. Manchester Tornado IN"}}
+|-
+|bgcolor=#{{Storm colour|cat4}}| F4
+|S of [[Kettle, Kentucky|Kettle]] to [[Ida, Kentucky|Ida]] to [[Piney Woods, Kentucky|Piney Woods]] to [[Mill Springs, Kentucky|Mill Springs]]
+|[[Cumberland County, Kentucky|Cumberland]], [[Clinton County, Kentucky|Clinton]], [[Wayne County, Kentucky|Wayne]]
+|[[Kentucky|KY]]
+|{{Coord|36.65|-85.37|name=Kettle (April 3, F4)}}
+|{{Sort|071|April&nbsp;3}}
+|23:35–00:04<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|30|mi|km|abbr=on|sortable=on}}†
+|{{convert|1760|yd|m|abbr=on|sortable=on}}#
+|<ref name="StormData"/>{{rp|7}}{{sfn|Grazulis|1990|p=554}}<ref name="LMK"/><ref name="JKL"/>
+|align="center"|{{ntsh|069}}{{tooltip|69|"Ida Tornado KY"}}
+|-
+|bgcolor=#{{Storm colour|cat4}}| F4
+|NNW of [[Aliceville, Alabama|Aliceville]] to [[Jasper, Alabama|Jasper]] to [[Cullman, Alabama|Cullman]] to [[Fairview, Alabama|Fairview]]
+|[[Pickens County, Alabama|Pickens]], [[Tuscaloosa County, Alabama|Tuscaloosa]], [[Fayette County, Alabama|Fayette]], [[Walker County, Alabama|Walker]], [[Cullman County, Alabama|Cullman]]
+|[[Alabama|AL]]
+|{{Coord|33.27|-88.20|name=Cullman (April 3, F4)}}
+|{{Sort|072|April&nbsp;3}}
+|23:44–01:48<sup>A</sup>
+|style="background-color:#9FCADF;"|{{convert|103|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#F7D9D3;"|{{convert|800|yd|m|abbr=on|sortable=on}}‡
+|<ref name="StormData"/>{{rp|22}}{{sfn|Grazulis|1990|p=554}}<ref name="HUN"/><ref name="BMX"/>
+|align="center"|{{ntsh|103}}{{tooltip|103|"Jasper Tornado AL"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2
+|[[Windfall, Indiana|Windfall]] to [[Swayzee, Indiana|Swayzee]] to E of [[Sweetser, Indiana|Sweetser]]
+|[[Tipton County, Indiana|Tipton]], [[Howard County, Indiana|Howard]], [[Grant County, Indiana|Grant]]
+|[[Indiana|IN]]
+|{{Coord|40.38|-85.97|name=Windfall (April 3, F2)}}
+|{{Sort|073|April&nbsp;3}}
+|23:45–00:08<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|19|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|350|yd|m|abbr=on|sortable=on}}†
+|12&nbsp;injuries &mdash;<ref name="StormData"/>{{rp|6}}<ref name="IND"/><ref name="IWX"/> Twelve people were injured.{{sfn|Grazulis|1990|p=554}} A trailer park in the southeastern corner of Swayzee was largely destroyed; eight people were injured here. Natural gas lines were damaged across town, sparking several fires.<ref>{{cite news|newspaper=The Muncie Star|date=April 4, 1974|accessdate=May 14, 2023|title=Swayzee Trailer Court Slammed by Twister|url=https://www.newspapers.com/article/the-star-press/124674023/|page=9|via=Newspapers.com}} {{free access}}</ref>
+|align="center"|{{ntsh|021}}{{tooltip|21|"Swayzee Tornado IN"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1
+|SE of [[Lagrange, Indiana|Lagrange]]
+|[[Lagrange County, Indiana|Lagrange]]
+|[[Indiana|IN]]
+|{{Coord|41.58|-85.38|name=Lagrange (April 3, F1)}}
+|{{Sort|074|April&nbsp;3}}
+|23:51–23:59<sup>B</sup>
+|style="background-color:#F7D9D3;"|{{convert|8.8|mi|km|abbr=on|sortable=on}}‡
+|style="background-color:#F7D9D3;"|{{convert|350|yd|m|abbr=on|sortable=on}}‡
+|Details on this tornado are unspecified.<ref name="IWX"/>
+|align="center"|{{ntsh|014}}{{tooltip|14|"Plato Tornado IN"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|SW of [[Brimfield, Indiana|Brimfield]] to S of [[South Milford, Indiana|South Milford]] to NNW of [[Freemont, Indiana|Freemont]]
+|[[Noble County, Indiana|Noble]], [[Lagrange County, Indiana|Lagrange]], [[Steuben County, Indiana|Steuben]]
+|[[Indiana|IN]]
+|{{Coord|41.42|-85.47|name=Brimfield (April 3, F3)}}
+|{{Sort|075|April&nbsp;3}}
+|23:53–00:29<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|36|mi|km|abbr=on|sortable=on}}†
+|{{convert|700|yd|m|abbr=on|sortable=on}}
+|The Storm Data publication indicates this tornado continued for an additional {{convert|34|mi|km|abbr=on}} into Michigan; however, this is not supported by contemporary analyses.<ref name="StormData"/>{{rp|6, 9}}{{sfn|Grazulis|1990|p=554}}<ref name="IWX"/>
+|align="center"|{{ntsh|015}}{{tooltip|15|"Angola Tornado IN"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|[[Lees Lick, Kentucky|Lees Lick]] to [[Poindexter, Kentucky|Poindexter]] to [[Claysville, Harrison County, Kentucky|Claysville]]
+|[[Harrison County, Kentucky|Harrison]], [[Robertson County, Kentucky|Robertson]]
+|[[Kentucky|KY]]
+|{{Coord|38.33|-84.43|name=Lees Lick (April 3, F4)}}
+|{{Sort|076|April&nbsp;3}}
+|23:55–00:21<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|25|mi|km|abbr=on|sortable=on}}†
+|{{N/A}}
+|<ref name="StormData"/>{{rp|7}}{{sfn|Grazulis|1990|p=554}}<ref name="ILN"/>
+|align="center"|{{ntsh|055}}{{tooltip|55|"Cynthiana Tornado KY"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|WNW of [[Monticello, Kentucky|Monticello]] to W of [[Burnside, Kentucky|Burnside]]
+|[[Wayne County, Kentucky|Wayne]], [[Pulaski County, Kentucky|Pulaski]]
+|[[Kentucky|KY]]
+|{{Coord|36.85|-84.97|name=Monticello (April 3, F3)}}
+|{{Sort|077|April&nbsp;3}}
+|23:56–00:24<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|24|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|150|yd|m|abbr=on|sortable=on}}†
+|This tornado was on the ground simultaneously in Wayne County with the 23:40&nbsp;UTC Kettle–Mill Springs F4 tornado.<ref name="StormData"/>{{rp|7}}{{sfn|Grazulis|1990|p=555}}<ref name="JKL"/>
+|align="center"|{{ntsh|070}}{{tooltip|70|"Parnell Tornado KY"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1
+|[[Aberdeen, Ohio|Aberdeen, OH]]
+|[[Butler County, Kentucky|Butler (KY)]], [[Brown County, Ohio|Brown (OH)]], [[Adams County, Ohio|Adams (OH)]]
+|[[Kentucky|KY]], [[Ohio|OH]]
+|{{Coord|38.67|-83.75|name=Aberdeen (April 3, F1)}}
+|{{Sort|078|April&nbsp;3}}
+|00:10–00:20<sup>E</sup>
+|style="background-color:#F7D9D3;"|{{convert|9.1|mi|km|abbr=on|sortable=on}}‡
+|style="background-color:#F7D9D3;"|{{convert|180|yd|m|abbr=on|sortable=on}}‡
+|Fujita's analysis indicates this tornado began aloft near Maysville and touched down along the [[Licking River (Kentucky)|North Fork Licking River]] by the Kentucky–Ohio border.<ref name="FujitaMap"/> Details on the impacts of this tornado are unspecified. The exact timing of this tornado is very uncertain;{{sfn|Abbey and Fujita|1981|p=51}} The NCEI database lists a duplicate event for Maysville at 01:25&nbsp;UTC.<ref name="ILN"/>
+|align="center"|{{ntsh|056}}{{tooltip|56|"Aberdeen Tornado KY-OH"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2
+|[[Robbinsville, North Carolina|Robbinsville]] to [[Stecoah, North Carolina|Stecoah]]
+|[[Graham County, North Carolina|Graham]], [[Swain County, North Carolina|Swain]]
+|[[North Carolina|NC]]
+|style="background-color:#9FCADF;"|{{Coord|35.33|-83.82|name=Robbinsville (April 3, F2)}}†<!--Grazulis path starts where the NCEI one ends, matches with Fujita-->
+|{{Sort|079|April&nbsp;3}}
+|00:10–00:25<sup>C</sup>
+|style="background-color:#9FCADF;"|{{convert|12|mi|km|abbr=on|sortable=on}}†
+|{{N/A}}
+|Storm Data lists this as part of a long-lived tornado originating in Cherokee County.<ref name="StormData"/>{{rp|13}}{{sfn|Grazulis|1990|p=556}}<ref name="MRX_2"/> Significant discrepancies exist for this tornado. Storm Data lists this part of a long-lived, intermittent tornado that tracked across Cherokee, Graham, and Swain counties. However, the publication indicates it touched down three hours later.<ref name="StormData"/>{{rp|13}}<ref name="MRX_2"/><ref name="GSP"/>{{sfn|Grazulis|1990|p=546}}
+|align="center"|{{ntsh|117}}{{tooltip|117|"Stecoah Tornado NC"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2
+|W of [[Danville, Kentucky|Danville]] to eastern [[Pleasant Hill, Kentucky|Pleasant Hill]] to NE of [[Harrodsburg, Kentucky|Harrodsburg]]
+|[[Boyle County, Kentucky|Boyle]], [[Mercer County, Kentucky|Mercer]]
+|[[Kentucky|KY]]
+|{{Coord|37.68|-84.93|name=Danville (April 3, F2)}}
+|{{Sort|080|April&nbsp;3}}
+|00:15–00:35<sup>A</sup>
+|style="background-color:#9FCADF;"|{{convert|18|mi|km|abbr=on|sortable=on}}†
+|{{N/A}}
+|<ref name="StormData"/>{{rp|7}}{{sfn|Grazulis|1990|p=554}}<ref name="LMK"/>
+|align="center"|{{ntsh|058}}{{tooltip|58|"Harrodsburg Tornado KY"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2
+|SW of [[Bluffton, Indiana|Bluffton]] to W of [[Peterson, Indiana|Peterson]]
+|[[Wells County, Indiana|Wells]], [[Adams County, Indiana|Adams]]
+|[[Indiana|IN]]
+|{{Coord|40.73|-85.25|name=Bluffton (April 3, F2)}}
+|{{Sort|081|April&nbsp;3}}
+|00:15–00:27<sup>C</sup>
+|style="background-color:#9FCADF;"|{{convert|12|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|175|yd|m|abbr=on|sortable=on}}†
+|{{sfn|Grazulis|1990|p=555}}<ref name="IWX"/>
+|align="center"|{{ntsh|024}}{{tooltip|24|"Bluffton Tornado IN"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|SE of [[Readyville, Tennessee|Readyville]] to [[Dowelltown, Tennessee|Dowelltown]]
+|[[Cannon County, Tennessee|Cannon]], [[DeKalb County, Tennessee|DeKalb]]
+|[[Tennessee|TN]]
+|style="background-color:#B7A3C3;"|{{Coord|35.81|-86.16|name=Dowelltown (April 3, F3)}}¶
+|{{Sort|082|April&nbsp;3}}
+|00:17–00:35<sup>C</sup>
+|style="background-color:#B7A3C3;"|{{convert|20|mi|km|abbr=on|sortable=on}}¶
+|style="background-color:#B7A3C3;"|{{convert|100|yd|m|abbr=on|sortable=on}}¶
+|<ref name="StormData"/>{{rp|17}}<ref name="OHX"/>{{sfn|Grazulis|1990|p=554}} The Dowelltown Manufacturing Co. was destroyed, leaving 200 people unemployed.<ref name="DailyPress_0406">{{cite news|first=Nick|last=Tatro|agency=Associated Press|newspaper=Daily Press|date=April 6, 1974|accessdate=May 3, 2023|title=Relief Efforts Flowing To Tornado Refugees|url=https://www.newspapers.com/article/daily-press/124024722/|page=8|via=Newspapers.com}} {{free access}}</ref>
+|align="center"|{{ntsh|080}}{{tooltip|80|"Dowelltown Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat4}}| F4
+|[[Cottonburg, Kentucky|Cottonburg]] to N of [[Richmond, Kentucky|Richmond]] to E of [[Mount Sterling, Kentucky|Mount Sterling]]
+|[[Garrard County, Kentucky|Garrard]], [[Madison County, Kentucky|Madison]], [[Clark County, Kentucky|Clark]]
+|[[Kentucky|KY]]
+|{{Coord|37.72|-84.50|name=Cottonburg (April 3, F4)}}
+|{{Sort|083|April&nbsp;3}}
+|00:18–00:57<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|35|mi|km|abbr=on|sortable=on}}†
+|{{convert|400|yd|m|abbr=on|sortable=on}}
+|
+7&nbsp;deaths, 28&nbsp;injuries &mdash; This tornado predominantly tracked through rural areas.<ref name="LMK_2">{{cite web|publisher=National Weather Service Office in Louisville, Kentucky|accessdate=May 8, 2023|title=April 3, 1974: In the Path|url=https://www.weather.gov/lmk/april31974_in_the_path}}</ref> The majority of damage occurred near Richmond, with thirty homes destroyed.<ref name="StormData"/>{{rp|8}}{{sfn|Grazulis|1990|p=555}}<ref name="LMK"/>
+|align="center"|{{ntsh|064}}{{tooltip|64|"Richmond Tornado KY"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|WNW of [[West Union, Ohio|West Union]] to E of [[Peebles, Ohio|Peebles]]
+|[[Adams County, Ohio|Adams]]
+|[[Kentucky|KY]]
+|{{Coord|38.67|-83.75|name=West Union (April 3, F1)}}
+|{{Sort|084|April&nbsp;3}}
+|00:20–00:37<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|16|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|150|yd|m|abbr=on|sortable=on}}†
+|<ref name="StormData"/>{{rp|14}}{{sfn|Grazulis|1990|p=555}}<ref name="ILN"/>
+|align="center"|{{ntsh|051}}{{tooltip|51|"Peebles Tornado OH"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2
+|SW of [[Warren, Indiana|Warren]] to S of [[Markle, Indiana|Markle]]
+|[[Huntington County, Indiana|Huntington]]
+|[[Indiana|IN]]
+|{{Coord|40.67|-85.50|name=Warren (April 3, F2)}}
+|{{Sort|085|April&nbsp;3}}
+|00:20–00:30<sup>C</sup>
+|style="background-color:#9FCADF;"|{{convert|11|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|350|yd|m|abbr=on|sortable=on}}†
+|{{sfn|Grazulis|1990|p=555}}<ref name="IWX"/>
+|align="center"|{{ntsh|022}}{{tooltip|22|"Plum Tree Tornado IN"}}
+|-
+|bgcolor=#{{Storm colour|cat4}}| F4
+|[[Ball Ground, Georgia|Ball Ground]] to [[Juno, Georgia|Juno]] to W of [[Dahlonega, Georgia|Dahlonega]]
+|[[Cherokee County, Georgia|Cherokee]], [[Pickens County, Georgia|Pickens]], [[Dawson County, Georgia|Dawson]], [[Lumpkin County, Georgia|Lumpkin]]
+|[[Georgia (U.S. state)|GA]]
+|{{Coord|34.37|-84.33|name=Ball Ground (April 3, F4)}}
+|{{Sort|086|April&nbsp;3}}
+|00:22–00:53<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|24|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|200|yd|m|abbr=on|sortable=on}}†
+|<ref name="StormData"/>{{rp|9}}{{sfn|Grazulis|1990|p=555}}<ref name="FFC"/> One person was killed and three others were injured near [[Marble Hill, Georgia|Marble Hill]] in Pickens County.<ref name="ColumbusEnquirer_0405"/>
+|align="center"|{{ntsh|128}}{{tooltip|128|"Juno Tornado GA"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1
+|NNE of [[Bluffton, Indiana|Bluffton]] to NW of [[Decatur, Indiana|Decatur]]
+|[[Wells County, Indiana|Wells]], [[Adams County, Indiana|Adams]]
+|[[Indiana|IN]]
+|{{Coord|40.77|-85.15|name=Bluffton (April 3, F2)}}
+|{{Sort|087|April&nbsp;3}}
+|00:25–00:40<sup>C</sup>
+|style="background-color:#F7D9D3;"|{{convert|10.9|mi|km|abbr=on|sortable=on}}‡
+|style="background-color:#F7D9D3;"|{{convert|350|yd|m|abbr=on|sortable=on}}‡
+|Details on this tornado are unspecified.<ref name="IWX"/>
+|align="center"|{{ntsh|026}}{{tooltip|26|"Decatur Tornado IN"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2±
+|SW of [[Melrose, Ohio|Melrose]] to N of [[Oakwood, Paulding County, Ohio|Oakwood]]
+|[[Paulding County, Ohio|Paulding]]
+|[[Ohio|OH]]
+|{{Coord|41.08|-84.47|name=Melrose (April 3, F2)}}
+|{{Sort|088|April&nbsp;3}}
+|00:26–00:34<sup>A</sup>
+|style="background-color:#9FCADF;"|{{convert|8|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|175|yd|m|abbr=on|sortable=on}}†
+|Fujita and Grazulis list this as a F2 tornado.<ref name="FujitaMap"/>{{sfn|Grazulis|1990|p=555}} The NCEI database lists this as a F1 tornado.<ref name="IND"/>
+|align="center"|{{ntsh|025}}{{tooltip|25|"Melrose Tornado OH"}}
+|-
+|bgcolor=#{{Storm colour|cat5}}| F5
+|SSW of [[Athens, Alabama|Athens, AL]], to [[Tanner, Alabama|Tanner, AL]], to [[Capshaw, Alabama|Capshaw, AL]], to [[Harvest, Alabama|Harvest, AL]], to [[Flintville, Tennessee|Flintville, TN]]†
+|[[Limestone County, Alabama|Limestone (AL)]], [[Madison County, Alabama|Madison (AL)]], [[Lincoln County, Tennessee|Lincoln (TN)]], [[Franklin County, Tennessee|Franklin (TN)]]
+|[[Alabama|AL]], [[Tennessee|TN]]
+|{{Coord|34.70|-87.05|name=Second Tanner (April 3, F5)}}
+|{{Sort|089|April&nbsp;3}}
+|00:30–01:25<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|50|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#ccdfdc;"|{{convert|800|yd|m|abbr=on|sortable=on}}§
+|22–27&nbsp;deaths, 250–270&nbsp;injuries &mdash; ''[[1974 Tanner tornadoes#Tanner-Harvest-Hazel Green, Alabama/Flintville, Tennessee (Second tornado)|See section on this tornado]]''
+|align="center"|{{ntsh|098}}{{tooltip|98|"Second Tanner Tornado AL-TN"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1±
+|[[Berlin Charter Township, Michigan|Berlin Township]]
+|[[Monroe County, Michigan|Monroe]]
+|[[Michigan|MI]]
+|{{Coord|42.03|-83.25|name=Berlin Township (April 3, F1)}}
+|{{Sort|090|April&nbsp;3}}
+|00:30–00:31<sup>C</sup>
+|style="background-color:#9FCADF;"|{{convert|2|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|30|yd|m|abbr=on|sortable=on}}†
+|A barn and shed were destroyed and other buildings were damaged near [[Estral Beach, Michigan|Estral Beach]].<ref name="StormData"/>{{rp|9}} Fujita analyzed this as a F1 tornado and Grazulis does not list it in his ''Significant Tornadoes'' book.{{sfn|Grazulis|1990|pp=543–557}}<ref name="FujitaMap"/> The NCEI database lists this as a F2 tornado.<ref name="DTX"/> This may have been the same tornado that struck [[Windsor, Ontario]].<ref name="StormData"/>{{rp|9}}
+|align="center"|{{ntsh|029}}{{tooltip|29|"Estral Beach Tornado MI"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|Northeastern Gilmer County to NW of [[Blue Ridge, Georgia|Blue Ridge]]
+|[[Gilmer County, Georgia|Gilmer]], [[Fannin County, Georgia|Fannin]]
+|[[Georgia (U.S. state)|GA]]
+|{{N/A}}
+|{{Sort|091|April&nbsp;3}}
+|00:40–01:06<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|17|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|200|yd|m|abbr=on|sortable=on}}†
+|Fujita and Grazulis list a F3 tornado.<ref name="FujitaMap"/>{{sfn|Grazulis|1990|p=556}} This tornado is omitted from the NCEI database.<ref name="NCEI_event"/>
+|align="center"|{{ntsh|120}}{{tooltip|120|"Blue Ridge Tornado GA"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2
+|W of [[Hillsdale, Michigan|Hillsdale]] to W of [[Clark Lake (Jackson County, Michigan)|Clark Lake]]
+|[[Hillsdale County, Michigan|Hillsdale]], [[Jackson County, Michigan|Jackson]]
+|[[Michigan|MI]]
+|{{Coord|42.03|-83.25|name=Hillsdale (April 3, F2)}}
+|{{Sort|092|April&nbsp;3}}
+|00:44–00:59<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|21|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#F7D9D3;"|{{convert|440|yd|m|abbr=on|sortable=on}}‡
+|2–3&nbsp;deaths, 31&nbsp;injuries &mdash; A total of 160 homes and businesses were damaged or destroyed. Thirty-one people were injured, mostly in mobile homes.{{sfn|Grazulis|1990|p=555}} Twenty trailers were destroyed and others were flipped over in a mobile home park north of Hillsdale;<ref name="TimesHerald_0404"/> only five people were injured here as most sought refuge in a concrete building.<ref name="HollandEvening_0404"/> Fifty homes were damaged or destroyed along Goose Lake and four people were injured. Forty homes and cottages were damaged or destroyed around [[Lake LeAnn, Michigan|Lake LeAnn]],<ref name="TimesHerald_0404">{{cite news|agency=Associated Press|newspaper=The Times Herald|date=April 4, 1974|accessdate=April 30, 2023|title=8 killed in Windsor; lower state hard hit|url=https://www.newspapers.com/clip/123841157/|page=1|via=Newspapers.com}} {{free access}}</ref> two of which "simply disappeared."<ref name="HollandEvening_0404">{{cite news|agency=United Press International|newspaper=The Holland Evening Sentinel|date=April 4, 1974|title=Three Dead As Tornado Strikes Hillsdale County|via=Newspapers.com}} {{free access}}
+*[https://www.newspapers.com/clip/123840365/ 1], [https://www.newspapers.com/clip/123840504/ 21]</ref> Two people were killed in [[North Adams, Michigan|North Adams]] when a tree fell on their trailer.<ref name="TimesHerald_0404"/> A third person died in [[Jerome, Michigan|Jerome]];<ref name="HollandEvening_0404"/> however, this fatality is not listed by Fujita or Grazulis. The Storm Data publication states that this tornado originated in Indiana and tracked through [[Branch County, Michigan|Branch County]], with the total path length reaching {{convert|34|mi|km|abbr=on}}.<ref name="StormData"/>{{rp|9}}{{sfn|Grazulis|1990|p=555}}<ref name="IWX"/> Newspaper reports indicate the tornado aloft was sighted in five other counties.<ref name="HollandEvening_0404"/>
+|align="center"|{{ntsh|016}}{{tooltip|16|"Hillsdale Tornado MI"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2
+|SE of [[Lexington, Kentucky|Lexington]]
+|[[Madison County, Kentucky|Madison]], [[Fayette County, Kentucky|Fayette]]
+|[[Kentucky|KY]]
+|{{Coord|37.83|-84.43|name=Lexington (April 3, F2)}}
+|{{Sort|093|April&nbsp;3}}
+|00:45–00:55<sup>C</sup>
+|style="background-color:#9FCADF;"|{{convert|9|mi|km|abbr=on|sortable=on}}†
+|{{N/A}}
+|<ref name="StormData"/>{{rp|8}}{{sfn|Grazulis|1990|p=555}}<ref name="LMK"/>
+|align="center"|{{ntsh|059}}{{tooltip|59|"Valley View Tornado KY"}}
+|-
+|bgcolor=#{{Storm colour|cat4}}| F4
+|style="background-color:#ccdfdc;"|SW of [[Flintville, Tennessee|Flintville]] to [[Arnold Engineering Development Complex|AEDC]]
+|style="background-color:#ccdfdc;"|[[Lincoln County, Tennessee|Lincoln]], [[Franklin County, Tennessee|Franklin]], [[Coffee County, Tennessee|Coffee]]§
+|[[Tennessee|TN]]
+|style="background-color:#ccdfdc;"|{{Coord|34.99|-86.48|name=Flintville (April 3, F4)}}§
+|{{Sort|094|April&nbsp;3}}
+|00:45–01:25<sup>B</sup>
+|style="background-color:#ccdfdc;"|{{convert|40|mi|km|abbr=on|sortable=on}}§
+|style="background-color:#ccdfdc;"|{{convert|800|yd|m|abbr=on|sortable=on}}§
+|<ref name="StormData"/>{{rp|17}}{{sfn|Grazulis|1990|p=554}}<ref name="HUN"/><ref name="HUN_2">{{cite web|publisher=National Weather Service Forecast Office in Huntsville, Alabama|accessdate=May 21, 2023|title=April 3-4, 1974 Tornado Tracks|url=https://www.weather.gov/hun/track_stat_1974_aniv_b}}</ref>
+|align="center"|{{ntsh|097}}{{tooltip|97|"Harmony Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|storm}}| F0
+|[[Apalachia Dam]]
+|[[Cherokee County, North Carolina|Cherokee]]
+|[[North Carolina|NC]]
+|{{N/A}}
+|{{Sort|095|April&nbsp;3}}
+|00:55–00:59<sup>B</sup>
+|{{convert|3|mi|km|abbr=on|sortable=on}}
+|{{N/A}}
+|Significant discrepancies exist for this tornado. Storm Data lists this as the beginning of a long-lived, intermittent tornado that tracked across Cherokee, Graham, and Swain counties.<ref name="StormData"/>{{rp|13}}<ref name="MRX_2"/> However, the latter half of the track was a tornado that occurred 40 minutes earlier.{{sfn|Abbey and Fujita|1981|p=52}}
+|align="center"|{{ntsh|116}}{{tooltip|116|"Appalachia Dam Tornado NC"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2¶
+|style="background-color:#B7A3C3;"|W of [[Cummins Falls State Park]] to WNW of [[Rickman, Tennessee|Rickman]]¶
+|style="background-color:#B7A3C3;"|[[Jackson County, Tennessee|Jackson]], [[Putnam County, Tennessee|Putnam]]¶
+|[[Tennessee|TN]]
+|style="background-color:#B7A3C3;"|{{Coord|36.25|-85.61|name=Cummins Falls State Park (April 3, F2)}}¶
+|{{Sort|096|April&nbsp;3}}
+|00:55–01:07<sup>C</sup>
+|style="background-color:#B7A3C3;"|{{convert|8|mi|km|abbr=on|sortable=on}}¶
+|style="background-color:#B7A3C3;"|{{convert|200|yd|m|abbr=on|sortable=on}}¶
+|<ref name="StormData"/>{{rp|17}}<ref name="OHX"/> Original assessments indicated the tornado tracked from Jackson County into Overton; however, later analysis showed a track farther south from Jackson into Putnam. The analysis also revealed it to be stronger, with a rating of F2.<ref name="OHX"/> Fujita rated this as a F1 tornado and Grazulis did not list this event in his ''Significant Tornadoes'' book, indicating a rating below F2.<ref name="FujitaMap"/>{{sfn|Grazulis|1990|pp=543–557}}
+|align="center"|{{ntsh|081}}{{tooltip|81|"Dodson Branch Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|N of [[Ano, Kentucky|Ano]] to [[Elgin, Kentucky|Elgin]]
+|[[Pulaski County, Kentucky|Pulaski]], [[Rockcastle County, Kentucky|Rockcastle]], [[Jackson County, Kentucky|Jackson]]
+|[[Kentucky|KY]]
+|{{Coord|37.02|-84.87|name=Ano (April 3, F3)}}
+|{{Sort|097|April&nbsp;3}}
+|00:55–01:30<sup>C</sup>
+|style="background-color:#9FCADF;"|{{convert|30|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|600|yd|m|abbr=on|sortable=on}}†
+|{{sfn|Grazulis|1990|p=556}} The NCEI database lists this tornado as occurring at 04:30&nbsp;UTC<ref name="JKL"/>
+|align="center"|{{ntsh|084}}{{tooltip|84|"Daniel Boone Tornado KY"}}
+|-
+|bgcolor=#{{Storm colour|cat4}}| F4
+|[[Boone National Forest]]
+|[[Wayne County, Kentucky|Wayne]], [[McCreary County, Kentucky|McCreary]]
+|[[Kentucky|KY]]
+|{{Coord|36.63|-84.78|name=Boone National Forest (April 3, F4)}}
+|{{Sort|098|April&nbsp;3}}
+|01:04–01:32<sup>R</sup>
+|style="background-color:#9FCADF;"|{{convert|26|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|500|yd|m|abbr=on|sortable=on}}†
+|<ref name="StormData"/>{{rp|8}}{{sfn|Grazulis|1990|p=556}} The NCEI database lists this tornado as occurring at 03:00&nbsp;UTC.<ref name="JKL"/>
+|align="center"|{{ntsh|074}}{{tooltip|74|"Cumberland Tornado KY"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1±†
+|SE of [[Mount Sterling, Kentucky|Mount Sterling]]
+|[[Montgomery County, Kentucky|Montgomery]]
+|[[Kentucky|KY]]
+|{{Coord|37.98|-83.88|name=Mount Sterling (April 3, F1)}}
+|{{Sort|099|April&nbsp;3}}
+|01:05–01:13<sup>B</sup>
+|style="background-color:#F7D9D3;"|{{convert|4.9|mi|km|abbr=on|sortable=on}}‡
+|{{N/A}}
+|This tornado is listed as a F3 in the NCEI database;<ref name="JKL"/> Fujita rated this tornado as a F1 and Grazulis does not list it in his ''Significant Tornadoes'' book.<ref name="FujitaMap"/>{{sfn|Grazulis|1990|pp=543–557}}
+|align="center"|{{ntsh|065}}{{tooltip|65|"Camargo Tornado KY"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2
+|[[Waldron, Michigan|Waldron]] to SE of [[Hudson, Michigan|Hudson]]
+|[[Hillsdale County, Michigan|Hillsdale]], [[Lenawee County, Michigan|Lenawee]]
+|[[Michigan|MI]]
+|{{Coord|41.75|-84.42|name=Hillsdale (April 3, F2)}}
+|{{Sort|100|April&nbsp;3}}
+|01:05–01:10<sup>C</sup>
+|style="background-color:#9FCADF;"|{{convert|10|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|440|yd|m|abbr=on|sortable=on}}†
+|3&nbsp;injuries &mdash; It is uncertain whether this was a single tornado or two distinct events.<ref name="FujitaMap"/><ref name="IWX"/><ref name="DTX">{{cite web|publisher=National Weather Service Forecast Office in Detroit, Michigan|via=Mississippi State University|accessdate=May 7, 2023|title=NWS Detroit Tornado Database|url=https://www.midsouthtornadoes.msstate.edu/index.php?cw=dtx}}</ref> A barn was destroyed and a home had its roof torn off near [[Prattville, Michigan|Prattville]]. One person was injured near Waldron when debris from a barn was thrown into a nearby home. Two people were injured near Hudson when their mobile home was destroyed.{{sfn|Grazulis|1990|p=556}}
+|align="center"|{{ntsh|020}}{{tooltip|20|"Hudson Tornado MI"}}
+|-
+|bgcolor=#{{Storm colour|cat4}}| F4
+|style="background-color:#B7A3C3;"|[[Macedonia, Tennessee|Macedonia]] to SE of [[Cookeville, Tennessee|Cookeville]] to SE of [[Crawford, Tennessee|Crawford]]¶
+|style="background-color:#B7A3C3;"|[[White County, Tennessee|White]], [[Putnam County, Tennessee|Putnam]], [[Overton County, Tennessee|Overton]]¶
+|[[Tennessee|TN]]
+|style="background-color:#B7A3C3;"|{{Coord|36.03|-85.59|name=Macedonia (April 3, F4)}}¶
+|{{Sort|101|April&nbsp;3}}
+|01:05–01:39<sup>C</sup>
+|style="background-color:#B7A3C3;"|{{convert|30|mi|km|abbr=on|sortable=on}}¶
+|style="background-color:#B7A3C3;"|{{convert|700|yd|m|abbr=on|sortable=on}}¶
+|This tornado was originally believed to have continued into Fentress County;<ref name="StormData"/>{{rp|17}} however, contemporary analysis indicates it was two separate tornadoes, with the first lifting before reaching the Overton–Fentress County line.<ref name="OHX"/>{{sfn|Grazulis|1990|p=555}}
+|align="center"|{{ntsh|086}}{{tooltip|86|"Cookeville Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2±
+|[[Windsor, Ontario|Windsor, ON]], to [[Grosse Pointe, Michigan|Grosse Pointe, MI]]
+|[[Essex County, Ontario|Essex (ON)]], [[Monroe County, Michigan|Monroe (MI)]]
+|[[Ontario, Canada|ON (Canada)]], [[Michigan|MI]]
+|{{N/A}}
+|{{Sort|102|April&nbsp;3}}
+|01:09–01:16<sup>B</sup>
+|{{convert|6|–|14|mi|abbr=on|sortable=on}}
+|{{convert|200|–|300|m|yd|abbr=on|sortable=on}}
+|9&nbsp;deaths, 10–25&nbsp;injuries &mdash; ''[[#Windsor, Ontario|See section on this tornado]]''
+|align="center"|{{ntsh|030}}{{tooltip|30|"Windsor Tornado ONT-MI"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2
+|SE of [[Stamping Ground, Kentucky|Stamping Ground]] to [[Muddy Ford, Kentucky|Muddy Ford]]
+|[[Scott County, Kentucky|Scott]]
+|[[Kentucky|KY]]
+|{{Coord|38.23|-84.65|name=Stamping Ground (April 3, F2)}}
+|{{Sort|103|April&nbsp;3}}
+|01:13–01:28<sup>B</sup>
+|style="background-color:#F7D9D3;"|{{convert|14|mi|km|abbr=on|sortable=on}}‡
+|{{N/A}}
+|<ref name="StormData"/>{{rp|8}}{{sfn|Grazulis|1990|p=556}}<ref name="LMK"/>
+|align="center"|{{ntsh|057}}{{tooltip|57|"Georgetown Tornado KY"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2+
+|[[Big South Fork National River and Recreation Area]]
+|[[Fentress County, Tennessee|Fentress (TN)]], [[Pickett County, Tennessee|Pickett (TN)]], [[Scott County, Tennessee|Scott (TN)]], [[McCreary County, Kentucky|McCreary (KY)]]
+|[[Tennessee|TN]], [[Kentucky|KY]]
+|style="background-color:#ccdfdc;"|{{Coord|36.51|-84.82|name=Big South Fork National River and Recreation Area (April 3, F2)}}§
+|{{Sort|104|April&nbsp;3}}
+|01:15–01:35<sup>C</sup>
+|style="background-color:#ccdfdc;"|{{convert|20|mi|km|abbr=on|sortable=on}}†§
+|style="background-color:#ccdfdc;"|{{convert|800|yd|m|abbr=on|sortable=on}}§#
+|{{sfn|Grazulis|1990|p=555}} Based on satellite imagery depicting the damage path nearly 50 years after the tornado, Shamburger 2022 suggests the tornado may have been of F3 or F4 intensity.<ref name="OHX"/><ref name="JKL"/>
+|align="center"|{{ntsh|075}}{{tooltip|75|"Laurel Ridge Tornado KY-TN"}}
+|-
+|bgcolor=#{{Storm colour|cat4}}| F4
+|SE of [[McCaysville, Georgia|McCaysville, GA]], to [[Murphy, North Carolina|Murphy, NC]] to SW of [[Marble, North Carolina|Marble, NC]]
+|[[Fannin County, Georgia|Fannin (GA)]], [[Cherokee County, North Carolina|Cherokee (NC)]]
+|[[Georgia (U.S. state)|GA]], [[North Carolina|NC]]
+|{{Coord|34.95|-84.30|name=McCaysville (April 3, F4)}}
+|{{Sort|105|April&nbsp;3}}
+|01:15–01:45<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|22|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#B7A3C3;"|{{convert|1050|yd|m|abbr=on|sortable=on}}¶#
+|3&nbsp;deaths, 40&nbsp;injuries &mdash;<ref name="FFC"/> The tornado struck southeastern Murpy, damaging or destroying 45 homes and 17 mobile homes. Three fatalities occurred in the city. Forty people were injured overall.<ref name="StormData"/>{{rp|13}} It reached a width of nearly three-quarters of a mile.<ref name="MRX_2"/><ref name="MRX"/> The NCEI database erroneously duplicates this event.{{sfn|Grazulis|1990|pp=543, 556}}<ref name="MRX_2"/>
+|align="center"|{{ntsh|121}}{{tooltip|121|"Murphy Tornado GA-NC"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2†
+|NE of [[Payne, Ohio|Payne]] to SW of [[Paulding, Ohio|Paulding]]
+|[[Paulding County, Ohio|Paulding]]
+|[[Ohio|OH]]
+|{{Coord|41.08|-84.70|name=Payne (April 3, F2)}}
+|{{Sort|106|April&nbsp;3}}
+|01:16–01:23<sup>A</sup>
+|style="background-color:#9FCADF;"|{{convert|7|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|90|yd|m|abbr=on|sortable=on}}†
+|{{sfn|Grazulis|1990|p=556}}<ref name="IWX"/>
+|align="center"|{{ntsh|023}}{{tooltip|23|"Paulding Tornado OH"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1
+|[[Livingston, Tennessee|Livingston]]
+|[[Overton County, Tennessee|Overton]]
+|[[Tennessee|TN]]
+|style="background-color:#B7A3C3;"|{{Coord|36.43|-85.21|name=Livingston (April 3, F1)}}¶
+|{{Sort|107|April&nbsp;3}}
+|01:20–01:25<sup>C</sup>
+|style="background-color:#B7A3C3;"|{{convert|4|mi|km|abbr=on|sortable=on}}¶
+|style="background-color:#B7A3C3;"|{{convert|200|yd|m|abbr=on|sortable=on}}¶#
+|<ref name="OHX"/>
+|align="center"|{{ntsh|073}}{{tooltip|73|"First Livingston Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat4}}| F4
+|[[Faix, Tennessee|Faix, TN]], to [[Moodyville, Tennessee|Moodyville, TN]], to W of [[Mount Pisgah (mountain in Kentucky)|Mount Pisgah]]
+|[[Pickett County, Tennessee|Pickett (TN)]], [[Wayne County, Kentucky|Wayne (KY)]]
+|[[Tennessee|TN]], [[Kentucky|KY]]
+|style="background-color:#ccdfdc;"|{{Coord|36.50|-85.13|name=Faix (April 3, F4)}}§
+|{{Sort|108|April&nbsp;3}}
+|01:25–01:50<sup>B</sup>
+|style="background-color:#ccdfdc;"|{{convert|19|mi|km|abbr=on|sortable=on}}§
+|style="background-color:#ccdfdc;"|{{convert|300|yd|m|abbr=on|sortable=on}}§
+|<ref name="StormData"/>{{rp|17}}<ref name="OHX"/><ref name="JKL"/>{{sfn|Grazulis|1990|p=555}}
+|align="center"|{{ntsh|082}}{{tooltip|82|"Moodyville Tornado TN-KY"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2
+|N of [[Whitley City, Kentucky|Whitley City]] to [[Laurel River Lake]]
+|[[McCreary County, Kentucky|McCreary]], [[Whitley County, Kentucky|Whitley]]
+|[[Kentucky|KY]]
+|{{Coord|36.80|-84.43|name=Whitley City (April 3, F2)}}
+|{{Sort|109|April&nbsp;3}}
+|01:30–01:45<sup>R</sup>
+|style="background-color:#9FCADF;"|{{convert|13|mi|km|abbr=on|sortable=on}}†
+|{{N/A}}
+|<ref name="StormData"/>{{rp|8}}{{sfn|Grazulis|1990|p=556}}<ref name="JKL"/>
+|align="center"|{{ntsh|076}}{{tooltip|76|"Honeybee Tornado KY"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2§
+|ESE of [[Estill Springs, Tennessee|Estill Springs]] NW of [[Altamont, Tennessee|Altamont]]§
+|[[Pickett County, Tennessee|Franklin]], [[Coffee County, Tennessee|Coffee]], [[Grundy County, Tennessee|Grundy]]
+|[[Tennessee|TN]]
+|style="background-color:#ccdfdc;"|{{Coord|35.26|-86.04|name=Estill Springs (April 3, F2)}}§
+|{{Sort|110|April&nbsp;3}}
+|01:40–02:02<sup>B</sup>
+|style="background-color:#ccdfdc;"|{{convert|20|mi|km|abbr=on|sortable=on}}§
+|style="background-color:#ccdfdc;"|{{convert|100|yd|m|abbr=on|sortable=on}}§
+|<ref name="StormData"/>{{rp|17}}<ref name="HUN"/> Shamburger 2015 rated this as a F2 tornado.<ref name="OHX"/>{{sfn|Grazulis|1990|p=556}} This tornado may have continued into Warren County as part of the 02:15&nbsp;UTC Irving College–Spencer F3 tornado.<ref name="OHX"/>
+|align="center"|{{ntsh|099}}{{tooltip|99|"Rutledge Hill Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat4}}| F4
+|style="background-color:#ccdfdc;"|NE of [[Wilder, Tennessee|Wilder]] to SE of [[Jamestown, Tennessee|Jamestown]] to SSW of [[Sharp Place, Tennessee|Sharp Place]]§
+|[[Fentress County, Tennessee|Fentress]]
+|[[Tennessee|TN]]
+|style="background-color:#ccdfdc;"|{{Coord|36.28|-85.09|name=Wilder (April 3, F4)}}§
+|{{Sort|111|April&nbsp;3}}
+|01:41–01:57<sup>C</sup>
+|style="background-color:#ccdfdc;"|{{convert|20|mi|km|abbr=on|sortable=on}}§
+|style="background-color:#ccdfdc;"|{{convert|200|yd|m|abbr=on|sortable=on}}§
+|At least six people were killed in Jamestown as the tornado destroyed portions of a mobile home park and neighboring residential neighborhood. Thirty-five homes were destroyed here.<ref name="Tennessean_0404"/> This was originally considered to be part of the 01:15&nbsp;UTC Macedonia–Crawford F4 tornado.<ref name="StormData"/>{{rp|17}}<ref name="OHX"/>{{sfn|Grazulis|1990|p=555}}
+|align="center"|{{ntsh|087}}{{tooltip|87|"Obey River Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat5}}| F5
+|N of [[Vernon, Alabama|Vernon]] to [[Guin, Alabama|Guin]], to [[Delmar, Alabama|Delmar]], to ESE of [[Decatur, Alabama|Decatur]]
+|[[Lamar County, Alabama|Lamar]], [[Marion County, Alabama|Marion]], [[Winston County, Alabama|Winston]], [[Lawrence County, Alabama|Lawrence]], [[Morgan County, Alabama|Morgan]]
+|[[Alabama|AL]]
+|{{Coord|33.83|-88.13|name=Guin (April 3, F5)}}
+|{{Sort|112|April&nbsp;3}}
+|style="background-color:#B7A3C3;"|01:50–03:57¶<sup>B</sup>
+|style="background-color:#B7A3C3;"|{{ntsh|79.5}}≥{{convert|79.5|mi|km|abbr=on|sortable=on}}¶
+|style="background-color:#9FCADF;"|{{ntsh|1760}}≥{{convert|1760|yd|m|abbr=on|sortable=on}}†
+|28–30&nbsp;deaths, 272–280&nbsp;injuries &mdash; ''[[1974 Guin tornado|See article on this tornado]]'' &ndash; The Storm Data publication describes this event as "probably the most powerful tornado ever observed in Alabama."<ref name="StormData"/>{{rp|22}}
+|align="center"|{{ntsh|101}}{{tooltip|101|"Guin Tornado MS-AL"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3†
+|[[Corbin, Kentucky|Corbin]] to W of [[Fogertown, Kentucky|Fogertown]]
+|[[Laurel County, Kentucky|Laurel]], [[Clay County, Kentucky|Clay]]
+|[[Kentucky|KY]]
+|{{Coord|36.97|-84.12|name=Corbin (April 3, F3)}}
+|{{Sort|113|April&nbsp;3}}
+|01:55–02:20<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|21|mi|km|abbr=on|sortable=on}}†
+|{{N/A}}
+|<ref name="StormData"/>{{rp|8}}{{sfn|Grazulis|1990|p=556}} The NCEI database lists this as a F2 tornado.<ref name="JKL">{{cite web|publisher=National Weather Service Forecast Office in Jackson, Kentucky|via=Mississippi State University|accessdate=May 7, 2023|title=NWS Jackson Tornado Database|url=https://www.midsouthtornadoes.msstate.edu/index.php?cw=jkl}}</ref>
+|align="center"|{{ntsh|088}}{{tooltip|88|"Corbin Tornado KY"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2†
+|NW of [[Erie, Michigan|Erie]]
+|[[Monroe County, Michigan|Monroe]]
+|[[Michigan|MI]]
+|{{Coord|41.80|-83.52|name=Erie (April 3, F2)}}
+|{{Sort|114|April&nbsp;3}}
+|01:56–01:57<sup>A</sup>
+|style="background-color:#9FCADF;"|{{convert|0.5|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|30|yd|m|abbr=on|sortable=on}}†
+|3&nbsp;injuries &mdash; A brief tornado destroyed one home and damaged another.{{sfn|Grazulis|1990|p=556}} Three people were injured, one seriously.<ref name="StormData"/>{{rp|9}}<ref name="HollandEvening_0404"/> The NCEI database lists this as a F3 tornado.<ref name="DTX"/> 
+|align="center"|{{ntsh|028}}{{tooltip|28|"Erie Tornado MI"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|[[Kidds Crossing, Kentucky|Kidds Crossing]] to [[Ula, Kentucky|Ula]]
+|[[Wayne County, Kentucky|Wayne]], [[Pulaski County, Kentucky|Pulaski]]
+|[[Kentucky|KY]]
+|{{Coord|36.78|-84.70|name=Kidds Crossing (April 3, F3)}}
+|{{Sort|115|April&nbsp;3}}
+|02:00–02:35<sup>C</sup>
+|style="background-color:#9FCADF;"|{{convert|29|mi|km|abbr=on|sortable=on}}†
+|{{N/A}}
+|{{sfn|Grazulis|1990|p=556}}<ref name="JKL"/>
+|align="center"|{{ntsh|083}}{{tooltip|83|"Alpine Tornado KY"}}
+|-
+|bgcolor=#{{Storm colour|storm}}| F0+
+|[[Dillard, Georgia|Dillard]]
+|[[Rabun County, Georgia|Rabun]]
+|[[Georgia (U.S. state)|GA]]
+|{{Coord|34.97|-83.38|name=Dillard (April 3, F0)}}
+|{{Sort|116|April&nbsp;3}}
+|02:00–02:01<sup>C</sup>
+|style="background-color:#D4F2CE;"|{{convert|0.5|mi|km|abbr=on|sortable=on}}♭
+|style="background-color:#F7D9D3;"|{{convert|20|yd|m|abbr=on|sortable=on}}‡
+|A brief tornado damaged homes, businesses, trees, and utilities in Dillard. Losses reached $90,000.<ref name="StormData"/>{{rp|3}} The NCEI database lists it as a F2 tornado.<ref name="GSP"/> Fujita rated this tornado as a F0 and Grazulis did not list it in his ''Significant Tornadoes'' book.{{sfn|Grazulis|1990|pp=543–557}}<ref name="FujitaMap"/>
+|align="center"|{{ntsh|131}}{{tooltip|131|"Dillard Tornado GA"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|style="background-color:#ccdfdc;"|SSW of [[Irving College, Tennessee|Irving College]] SSW of [[Spencer, Tennessee|Spencer]]§
+|style="background-color:#ccdfdc;"|[[Warren County, Tennessee|Warren]], [[Van Buren County, Tennessee|Van Buren]]§
+|[[Tennessee|TN]]
+|style="background-color:#ccdfdc;"|{{Coord|35.26|-86.04|name=Irving College (April 3, F3)}}§
+|{{Sort|117|April&nbsp;3}}
+|02:04–02:22<sup>B</sup>
+|style="background-color:#ccdfdc;"|{{convert|16|mi|km|abbr=on|sortable=on}}§
+|style="background-color:#ccdfdc;"|{{convert|200|yd|m|abbr=on|sortable=on}}§
+|<ref name="StormData"/>{{rp|17}}<ref name="OHX"/>{{sfn|Grazulis|1990|p=556}} This tornado may have been a continuation of the 02:00&nbsp;UTC Estill Springs–Altamont F2 tornado.<ref name="OHX"/>
+|align="center"|{{ntsh|100}}{{tooltip|100|"Shiloh Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|storm}}| F0
+|[[London, Kentucky|London]]
+|[[Laurel County, Kentucky|Laurel]]
+|[[Kentucky|KY]]
+|{{N/A}}
+|{{Sort|118|April&nbsp;3}}
+|02:05–02:09<sup>R</sup>
+|{{convert|3|mi|km|abbr=on|sortable=on}}
+|{{N/A}}
+|No information beyond the tornado's existence was found by the NWS Office in Jackson, Kentucky.<ref name="JKL"/> This tornado was omitted from the NCEI database.<ref name="NCEI_event"/>
+|align="center"|{{ntsh|077}}{{tooltip|77|"London Tornado KY"}}
+|-
+|bgcolor=#{{Storm colour|storm}}| F0±
+|[[Frewsburg, New York|Frewsburg]]
+|[[Chatauqua County, New York|Chatauqua]]
+|[[New York (state)|NY]]
+|{{Coord|42.05|-79.17|name=Frewsburg (April 3, F0)}}
+|{{Sort|119|April&nbsp;3}}
+|02:57–02:58<sup>A</sup>
+|{{convert|0.25|mi|km|abbr=on|sortable=on}}
+|{{convert|50|yd|m|abbr=on|sortable=on}}
+|A brief tornado damaged the roofs of several buildings in a business district of Frewsburg. Trees were downed and a few windows were shattered.<ref name="StormData"/>{{rp|13}} Fujita listed this as a F0 tornado while the NCEI database lists it as a F1.<ref name="FujitaMap"/><ref name="BUF">{{cite web|publisher=National Weather Service Forecast Office in Buffalo, New York|via=Mississippi State University|accessdate=May 7, 2023|title=NWS Buffalo Tornado Database|url=https://www.midsouthtornadoes.msstate.edu/index.php?cw=buf}}</ref>
+|align="center"|{{ntsh|046}}{{tooltip|46|"Frewsburg Tornado NY"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|SE of [[Decatur, Alabama|Decatur]] to southern [[Huntsville, Alabama|Huntsville]] to E of [[Princeton, Alabama|Princeton]]
+|[[Morgan County, Alabama|Morgan]], [[Limestone County, Alabama|Limestone]], [[Madison County, Alabama|Madison]], [[Jackson County, Alabama|Jackson]]
+|[[Alabama|AL]]
+|{{Coord|34.53|-86.90|name=Huntsville (April 3, F3)}}
+|{{Sort|120|April&nbsp;3}}
+|03:29–04:27<sup>A</sup>
+|style="background-color:#9FCADF;"|{{convert|41|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|500|yd|m|abbr=on|sortable=on}}†
+|2&nbsp;deaths, 7–50&nbsp;injuries &mdash; ''[[#Huntsville, Alabama|See section on this tornado]]''
+|align="center"|{{ntsh|102}}{{tooltip|102|"Huntsville Tornado AL"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|[[Fawbush, Kentucky|Fawbush]] to [[Walnut Grove, Kentucky|Walnut Grove]]
+|[[Pulaski County, Kentucky|Pulaski]], [[Laurel County, Kentucky|Laurel]], [[Rockcastle County, Kentucky|Rockcastle]]
+|[[Kentucky|KY]]
+|{{Coord|37.03|-84.40|name=Fawbush (April 3, F3)}}
+|{{Sort|121|April&nbsp;3}}
+|03:35–04:05<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|24|mi|km|abbr=on|sortable=on}}†
+|{{N/A}}
+|<ref name="StormData"/>{{rp|7}}{{sfn|Grazulis|1990|p=555}}<ref name="LMK"/><ref name="JKL"/>
+|align="center"|{{ntsh|066}}{{tooltip|66|"Somerset Tornado KY"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1
+|NE of [[Pulaski, Tennessee|Pulaski]] to SW of [[Shelbyville, Tennessee|Shelbyville]]
+|[[Giles County, Tennessee|Giles]], [[Marshall County, Tennessee|Marshall]], [[Bedford County, Tennessee|Bedford]]
+|[[Tennessee|TN]]
+|style="background-color:#ccdfdc;"|{{Coord|35.27|-86.93|name=Farmington (April 3, F1)}}§
+|{{Sort|122|April&nbsp;3}}
+|04:00–04:30<sup>D</sup>
+|style="background-color:#ccdfdc;"|{{convert|28|mi|km|abbr=on|sortable=on}}§
+|style="background-color:#ccdfdc;"|{{convert|100|yd|m|abbr=on|sortable=on}}§
+|<ref name="StormData"/>{{rp|17}}<ref name="OHX"/>
+|align="center"|{{ntsh|091}}{{tooltip|91|"Ostella Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|[[Livingston, Tennessee|Livingston]] to [[Monroe, Tennessee|Monroe]]
+|[[Overton County, Tennessee|Overton]]
+|[[Tennessee|TN]]
+|style="background-color:#ccdfdc;"|{{Coord|36.36|-85.36|name=Livingston (April 3, F3)}}§
+|{{Sort|123|April&nbsp;3}}
+|04:30–04:45<sup>C</sup>
+|style="background-color:#ccdfdc;"|{{convert|13|mi|km|abbr=on|sortable=on}}§
+|style="background-color:#ccdfdc;"|{{convert|400|yd|m|abbr=on|sortable=on}}§
+|<ref name="StormData"/>{{rp|17}}<ref name="OHX"/>
+|align="center"|{{ntsh|085}}{{tooltip|85|"Second Livingston Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1
+|NW of [[Jessie, Tennessee|Jessie]] to SE of [[Doyle, Tennessee|Doyle]]
+|[[Warren County, Tennessee|Warren]], [[White County, Tennessee|White]]
+|[[Tennessee|TN]]
+|style="background-color:#B7A3C3;"|{{Coord|35.76|-85.82|name=Jessie (April 3, F1)}}
+|{{Sort|124|April&nbsp;3}}
+|04:33–04:46<sup>B</sup>
+|style="background-color:#B7A3C3;"|{{convert|20|mi|km|abbr=on|sortable=on}}¶
+|style="background-color:#B7A3C3;"|{{convert|100|yd|m|abbr=on|sortable=on}}¶
+|<ref name="StormData"/>{{rp|17}}<ref name="OHX"/>
+|align="center"|{{ntsh|092}}{{tooltip|92|"Midway Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2†
+|SE of [[Black Oak, Tennessee|Black Oak]] to [[Oneida, Tennessee|Oneida]] to [[Norma, Tennessee|Norma]]
+|[[Scott County, Tennessee|Scott]]
+|[[Tennessee|TN]]
+|{{Coord|36.48|-84.60|name=Black Oak (April 3, F2)}}
+|{{Sort|125|April&nbsp;3}}
+|04:48–05:01<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|12|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#B7A3C3;"|{{convert|1200|yd|m|abbr=on|sortable=on}}¶#
+|<ref name="StormData"/>{{rp|17}}{{sfn|Grazulis|1990|p=556}} The NCEI database lists this as a F3 tornado.<ref name="MRX_2"/>
+|align="center"|{{ntsh|089}}{{tooltip|89|"Black Oak Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2†
+|NE of [[Knoxville, Tennessee|Knoxville]]
+|[[Scott County, Tennessee|Knox]]
+|[[Tennessee|TN]]
+|{{Coord|36.10|-83.77|name=Knoxville (April 3, F2)}}
+|{{Sort|126|April&nbsp;3}}
+|05:30–05:35<sup>C</sup>
+|style="background-color:#9FCADF;"|{{convert|4|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#B7A3C3;"|{{convert|450|yd|m|abbr=on|sortable=on}}¶#
+|<ref name="StormData"/>{{rp|17}}<ref name="MRX"/>{{sfn|Grazulis|1990|p=556}} The NCEI database lists this as a F1 tornado.<ref name="MRX_2"/>
+|align="center"|{{ntsh|107}}{{tooltip|107|"Sunrise Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3†
+|E of [[Sparta, Tennessee|Sparta]] to [[Woody, Tennessee|Woody]]
+|[[White County, Tennessee|White]], [[Cumberland County, Tennessee|Cumberland]]
+|[[Tennessee|TN]]
+|style="background-color:#ccdfdc;"|{{Coord|35.94|-85.33|name=Sparta (April 3, F3)}}§
+|{{Sort|127|April&nbsp;3}}
+|05:30–06:00<sup>C</sup>
+|style="background-color:#ccdfdc;"|{{convert|20|mi|km|abbr=on|sortable=on}}§
+|style="background-color:#B7A3C3;"|{{convert|900|yd|m|abbr=on|sortable=on}}¶#
+|<ref name="StormData"/>{{rp|17}}<ref name="MRX"/><ref name="OHX"/>{{sfn|Grazulis|1990|p=556}} The NCEI database lists this as a F2 tornado.<ref name="NCEI_event"/>
+|align="center"|{{ntsh|093}}{{tooltip|93|"Crossville Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1¶
+|style="background-color:#B7A3C3;"|[[Board Valley, Tennessee|Board Valley]]
+|style="background-color:#B7A3C3;"|[[White County, Tennessee|White]]
+|style="background-color:#B7A3C3;"|[[Tennessee|TN]]
+|style="background-color:#B7A3C3;"|{{Coord|36.05|-85.36|name=Board Valley (April 3, F1)}}
+|style="background-color:#B7A3C3;"|{{Sort|128|April&nbsp;3}}
+|05:30–06:00<sup>D</sup>
+|style="background-color:#B7A3C3;"|{{convert|4|mi|km|abbr=on|sortable=on}}
+|style="background-color:#B7A3C3;"|{{convert|100|yd|m|abbr=on|sortable=on}}
+|<ref name="OHX"/> This tornado was omitted from the NCEI database.<ref name="NCEI_event"/>
+|align="center"|{{ntsh|090}}{{tooltip|90|"Board Valley Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|NE of [[Sunbright, Tennessee|Sunbright]] to [[Huntsville, Tennessee|Huntsville]]
+|[[Morgan County, Tennessee|Morgan]], [[Scott County, Tennessee|Scott]]
+|[[Tennessee|TN]]
+|{{Coord|36.25|-84.67|name=Sunbright (April 3, F3)}}
+|{{Sort|129|April&nbsp;3}}
+|05:50–06:05<sup>C</sup>
+|style="background-color:#9FCADF;"|{{convert|12|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#B7A3C3;"|{{convert|1050|yd|m|abbr=on|sortable=on}}¶#
+|<ref name="MRX_2"/><ref name="MRX"/>{{sfn|Grazulis|1990|p=556}}
+|align="center"|{{ntsh|094}}{{tooltip|94|"Coal Hill Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|storm}}| F0
+|W of [[Jefferson City, Tennessee|Jefferson City]]
+|[[Jefferson County, Tennessee|Jefferson]]
+|[[Tennessee|TN]]
+|{{Coord|36.13|-83.62|name=Jefferson City (April 4, F0)}}
+|{{Sort|130|April&nbsp;4}}
+|06:55–07:00<sup>C</sup>
+|style="background-color:#B7A3C3;"|{{convert|4.5|mi|km|abbr=on|sortable=on}}¶
+|style="background-color:#B7A3C3;"|{{convert|80|yd|m|abbr=on|sortable=on}}¶#
+|<ref name="MRX_2"/><ref name="MRX"/>
+|align="center"|{{ntsh|108}}{{tooltip|108|"Mill Springs Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1
+|[[Breaks Interstate Park]]
+|[[Dickenson County, Virginia|Dickenson]]
+|[[Virginia|VA]]
+|{{Coord|37.25|-82.42|name=Breaks Interstate Park (April 4, F1)}}
+|{{Sort|131|April&nbsp;4}}
+|07:00–07:05<sup>D</sup>
+|style="background-color:#F7D9D3;"|{{convert|7.3|mi|km|abbr=on|sortable=on}}‡
+|style="background-color:#F7D9D3;"|{{convert|17|yd|m|abbr=on|sortable=on}}‡
+|<ref name="RLX">{{cite web|publisher=National Weather Service Forecast Office in Charleston, West Virginia|via=Mississippi State University|accessdate=May 7, 2023|title=NWS Charleston, WV Tornado Database|url=https://www.midsouthtornadoes.msstate.edu/index.php?cw=rlx}}</ref>
+|align="center"|{{ntsh|138}}{{tooltip|138|"Breaks Tornado VA"}}
+|-
+|bgcolor=#{{Storm colour|storm}}| F0
+|[[Andersonville, Tennessee|Andersonville]]
+|[[Anderson County, Tennessee|Anderson]], [[Union County, Tennessee|Union]]
+|[[Tennessee|TN]]
+|{{Coord|36.20|-84.07|name=Andersonville (April 4, F0)}}
+|{{Sort|132|April&nbsp;4}}
+|07:20–07:30<sup>C</sup>
+|style="background-color:#B7A3C3;"|{{convert|8.7|mi|km|abbr=on|sortable=on}}¶
+|style="background-color:#B7A3C3;"|{{convert|600|yd|m|abbr=on|sortable=on}}¶#
+|<ref name="MRX_2"/><ref name="MRX"/>
+|align="center"|{{ntsh|106}}{{tooltip|106|"Big Ridge Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|storm}}| F0
+|E of [[Jonesville, Virginia|Jonesville]]
+|[[Lee County, Virginia|Lee]]
+|[[Virginia|VA]]
+|{{Coord|36.68|-83.07|name=Jonesville (April 4, F0)}}
+|{{Sort|133|April&nbsp;4}}
+|style="background-color:#F7D9D3;"|07:21‡
+|style="background-color:#B7A3C3;"|{{convert|8.6|mi|km|abbr=on|sortable=on}}¶
+|style="background-color:#B7A3C3;"|{{convert|50|yd|m|abbr=on|sortable=on}}¶♯
+|<ref name="MRX_2"/><ref name="MRX"/>
+|align="center"|{{ntsh|143}}{{tooltip|143|"Jonesville Tornado VA"}}
+|-
+|bgcolor=#{{Storm colour|storm}}| F0
+|[[Rogersville, Tennessee|Rogersville]]
+|[[Hawkins County, Tennessee|Hawkins]]
+|[[Tennessee|TN]]
+|{{Coord|36.40|-83.03|name=Rogersville (April 4, F0)}}
+|{{Sort|134|April&nbsp;4}}
+|07:50–07:51<sup>D</sup>
+|style="background-color:#B7A3C3;"|{{convert|0.5|mi|km|abbr=on|sortable=on}}¶
+|style="background-color:#B7A3C3;"|{{convert|80|yd|m|abbr=on|sortable=on}}¶#
+|<ref name="MRX_2"/><ref name="MRX"/>
+|align="center"|{{ntsh|134}}{{tooltip|134|"Rogersville Tornado TN"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1
+|W of [[Mullensville, West Virginia|Mullensville]]
+|[[Wyoming County, West Virginia|Wyoming]]
+|[[West Virginia|WV]]
+|{{Coord|37.57|-81.45|name=Mullensville (April 4, F1)}}
+|{{Sort|135|April&nbsp;4}}
+|08:00–08:10<sup>C</sup>
+|style="background-color:#F7D9D3;"|{{convert|4.9|mi|km|abbr=on|sortable=on}}‡
+|{{N/A}}
+|<ref name="FujitaMap"/><ref name="StormData"/>{{rp|21}}<ref name="RLX"/> In Mullinsville, 15 homes were destroyed and 50 others suffered major damage; a mobilehome thrown into the [[Guyandotte River]].<ref name="RaleighRegister_0405">{{cite news|newspaper=The Raleigh Register|date=April 5, 1974|accessdate=April 24, 2023|title=Area Residents Begin Clearing Up Tornado Wreckage|url=https://www.newspapers.com/clip/123491682/|page=6|via=Newspapers.com}} {{free access}}</ref> Many trees were uprooted along the hillsides surrounding the town. Five to eight people were injured.<ref name="RaleighRegister_0405"/><ref name="BeckleyPostHerald_0411"/>
+|align="center"|{{ntsh|139}}{{tooltip|139|"Mullensville Tornado WV"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1
+|[[Gary, West Virginia|Gary]]
+|[[McDowell County, West Virginia|McDowell]]
+|[[West Virginia|WV]]
+|{{Coord|37.38|-81.55|name=Gary (April 4, F1)}}
+|{{Sort|136|April&nbsp;4}}
+|08:00–08:01<sup>D</sup>
+|{{N/A}}
+|{{N/A}}
+|<ref name="FujitaMap"/><ref name="StormData"/>{{rp|21}} Details on its impacts are unspecified.<ref name="RLX"/>
+|align="center"|{{ntsh|141}}{{tooltip|141|"Welch Tornado WV"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|W of [[Coal City, West Virginia|Coal City]] to [[Shady Spring, West Virginia|Shady Spring]]
+|[[Raleigh County, West Virginia|Raleigh]]
+|[[West Virginia|WV]]
+|{{Coord|37.67|-81.27|name=Coal City (April 4, F3)}}
+|{{Sort|137|April&nbsp;4}}
+|08:14–08:28<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|12|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#9FCADF;"|{{convert|150|yd|m|abbr=on|sortable=on}}†
+|<ref name="FujitaMap"/><ref name="StormData"/>{{rp|21}}{{sfn|Grazulis|1990|p=556}}<ref name="RLX"/> Homes were destroyed south of Beckley; nine people were injured. Near the tornado's origin point,{{sfn|Grazulis|1990|p=556}} one trailer was destroyed in each of Coal City and [[Epperly, West Virginia|Epperly]]. In Shady Spring, four homes and four trailers were destroyed and ten homes and three trailers were damaged.<ref name="BeckleyPostHerald_0411"/> Damage in the county exceeded $1&nbsp;million.<ref>{{cite news|newspaper=Beckley Post-Herald|date=April 10, 1974|accessdate=April 24, 2023|title=Six Shady Springs Families Need Homes|url=https://www.newspapers.com/clip/123493236/|page=15|via=Newspapers.com}} {{free access}}</ref>
+|align="center"|{{ntsh|140}}{{tooltip|140|"Shady Spring Tornado WV"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|[[Channels State Forest]] to [[Saltville, Virginia|Saltville]]
+|[[Washington County, Virginia|Washington]], [[Smyth County, Virginia|Smyth]]
+|[[Virginia|VA]]
+|{{Coord|36.85|-81.92|name=Channels State Forest (April 4, F3)}}
+|{{Sort|138|April&nbsp;4}}
+|08:15–08:26<sup>B</sup>
+|style="background-color:#9FCADF;"|{{convert|9|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#B7A3C3;"|{{ntsh|530}}≥{{convert|530|yd|m|abbr=on|sortable=on}}¶
+|<ref name="StormData"/>{{rp|20}}{{sfn|Grazulis|1990|p=557}} Width reached {{convert|530|yd|m|abbr=on}} in Washington County but is unspecified in Smyth.<ref name="MRX_2"/><ref name="RNK"/> One person was killed near Saltville when their mobile home was hurled over {{convert|100|yd|m|abbr=on}}; his wife was injured.<ref name="RoanokeTimes_0405"/>
+|align="center"|{{ntsh|144}}{{tooltip|144|"Saltville Tornado VA"}}
+|-
+|bgcolor=#{{Storm colour|storm}}| F0
+|[[Leonardtown, Tennessee|Leonardtown, TN]], to [[Bristol, Virginia|Bristol, VA]]
+|[[Sullivan County, Tennessee|Sullivan (TN)]], [[Bristol, Virginia|Bristol (City of, VA)]]
+|[[Tennessee|TN]], [[Virginia|VA]]
+|{{Coord|36.52|-82.50|name=Leonardtown (April 4, F0)}}
+|{{Sort|139|April&nbsp;4}}
+|08:20–08:50<sup>C</sup>
+|style="background-color:#F7D9D3;"|{{convert|18.2|mi|km|abbr=on|sortable=on}}‡
+|style="background-color:#F7D9D3;"|{{convert|2500|yd|m|abbr=on|sortable=on}}‡
+|7&nbsp;injuries &mdash; Four people were hospitalized in Sullivan County after their mobile homes were destroyed. In northern Bristol, an under-construction home had its entire second story destroyed. Several other homes lost their roof. The {{convert|280|ft|m|abbr=on}} tall radio antenna of [[WZAP]] collapsed during the storm.<ref name="DailyPress_0405"/><ref name="StormData"/>{{rp|20}}<ref name="MRX_2"/><ref name="MRX"/> Seven people were injured overall.<ref name="FujitaMap"/> Radar operators at the [[Tri-Cities Regional Airport]] did not report a tornadic signature.<ref name="DailyPress_0405"/>
+|align="center"|{{ntsh|135}}{{tooltip|135|"Leonard Town Tornado TN-VA"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1
+|[[Beckley, West Virginia|Beckley]]
+|[[Raleigh County, West Virginia|Raleigh]]
+|[[West Virginia|WV]]
+|{{Coord|37.77|-81.17|name=Backley (April 4, F1)}}
+|{{Sort|140|April&nbsp;4}}
+|08:26–08:28<sup>B</sup>
+|{{N/A}}
+|{{N/A}}
+|<ref name="StormData"/>{{rp|21}} The NCEI database erroneously lists the tornado as occurring in [[Barbour County, West Virginia|Barbour County]].<ref name="RLX"/>
+|align="center"|{{ntsh|136}}{{tooltip|136|"Beckley Tornado WV"}}
+|-
+|bgcolor=#{{Storm colour|cat3}}| F3
+|ENE of [[Beckley, West Virginia|Beckley]] to [[Meadow Bridge, West Virginia|Meadow Bridge]] to [[Friars Hill, West Virginia|Friars Hill]]
+|[[Raleigh County, West Virginia|Raleigh]], [[Fayette County, West Virginia|Fayette]], [[Greenbrier County, West Virginia|Greenbrier]]
+|[[West Virginia|WV]]
+|{{Coord|37.80|-81.02|name=Beckley (April 4, F3)}}
+|{{Sort|141|April&nbsp;4}}
+|08:30–09:10<sup>C</sup>
+|style="background-color:#9FCADF;"|{{convert|35|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#D4F2CE;"|{{ntsh|1760}}≥{{convert|1760|yd|m|abbr=on|sortable=on}}♭#
+|1&nbsp;death, 21&nbsp;injuries &mdash;<ref name="FujitaMap"/><ref name="StormData"/>{{rp|21}}{{sfn|Grazulis|1990|p=556}}<ref name="RLX"/><ref name="RNK">{{cite web|publisher=National Weather Service Forecast Office in Blacksburg, Virginia|via=Mississippi State University|accessdate=May 7, 2023|title=NWS Blacksburg Tornado Database|url=https://www.midsouthtornadoes.msstate.edu/index.php?cw=rnk}}</ref> The tornado moved through the [[New River Gorge National Park and Preserve]] where it traversed mountains up to {{convert|3000|ft|m|abbr=on}} and down {{convert|1800|ft|m|abbr=on}} into the valley gorges;  This was the first clearly documented instance of a tornado traversing such mountainous terrain.<ref>{{cite news|newspaper=Beckley Post-Herald|date=April 26, 1974|accessdate=April 24, 2023|title=Tornado That Hit Area Was 'Spectacular'|url=https://www.newspapers.com/clip/123489768/|page=21|via=Newspapers.com}} {{free access}}</ref> The tornado's width fluctuated between {{convert|60|and|300|yd|m|abbr=on}} in this area.<ref name="BeckleyPostHerald_0405"/> Hardest-hit was Meadows Bridge where 10 homes were destroyed, 42 sustained major damage, and 38 had minor damage; 25 mobile homes were damaged.<ref name="BeckleyPostHerald_0411">{{cite news|newspaper=Beckley Post-Herald|date=April 11, 1974|accessdate=April 24, 2023|title=Red Cross Completes Tornado Damage List|url=https://www.newspapers.com/clip/123490036/|page=15|via=Newspapers.com}} {{free access}}</ref> Multiple frame homes were demolished at near-F4 intensity;{{sfn|Grazulis|1990|p=556}} monetary reached $750,000.<ref>{{cite news|agency=United Press International|newspaper=The Weirtion Daily Times|date=April 9, 1974|accessdate=April 24, 2023|title=Funds Sought By W.Va. Town|url=https://www.newspapers.com/clip/123493115/|page=11|via=Newspapers.com}} {{free access}}</ref> Many trees were snapped in half around Meadows Bridge.<ref name="BeckleyPostHerald_0405">{{cite news|newspaper=Beckley Post-Herald|date=April 5, 1974|accessdate=April 24, 2023|title=2 Tornadoes Reported In County|url=https://www.newspapers.com/clip/123490910/|page=17|via=Newspapers.com}} {{free access}}</ref> Aerial surveys showed two distinct damage paths that converged on Meadow Bridge;<ref name="RaleighRegister_0405"/> however, this was assessed as a single tornado with a maximum width in excess of {{convert|1|mi|km|abbr=on}}.<ref name="FujitaMap"/> One person was killed when their mobile home was tossed {{convert|75|yd|m|abbr=on}}.{{sfn|Grazulis|1990|p=556}} Four trailers were destroyed and one home had major damage in [[Rupert, West Virginia|Rupert]].<ref name="BeckleyPostHerald_0411"/> Twenty-one people were injured.{{sfn|Grazulis|1990|p=556}}
+|align="center"|{{ntsh|137}}{{tooltip|137|"Meadow Bridge Tornado WV"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1±
+|[[Hinton, West Virginia|Hinton]]
+|[[Summers County, West Virginia|Summers]]
+|[[West Virginia|WV]]
+|{{Coord|37.67|-80.92|name=Hinton (April 4, F1)}}
+|{{Sort|142|April&nbsp;4}}
+|08:40–08:41<sup>B</sup>
+|{{N/A}}
+|{{N/A}}
+|A six-story brick building had its roof torn off, rendering the top two floors a total loss; debris damaged a nearby bank.<ref name="RaleighRegister_0405"/><ref name="CharlestonDailyMail_0405">{{cite news|first1=Lynn|last1=Withrow|first2=Bob|last2=Adams|newspaper=The Charleston Daily Mail|date=April 5, 1974|title=Tornado-Torn Town Begins Digging Out|via=Newspapers.com}} {{free access}}
+*[https://www.newspapers.com/clip/123492645/ 1A], [https://www.newspapers.com/clip/19790934/ 6A]</ref> Windows were shattered at many businesses and trees were downed.<ref name="RaleighRegister_0405"/> Fujita rated this as a F1 tornado;<ref name="FujitaMap"/><ref name="StormData"/>{{rp|21}} however, the NCEI database lists it as a F0.<ref name="RNK"/>
+|align="center"|{{ntsh|142}}{{tooltip|142|"Hinton Tornado WV"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2
+|[[Roanoke, Virginia|Roanoke]]
+|[[Roanoke County, Virginia|Roanoke]], [[Roanoke, Virginia|Roanoke (City of)]]
+|[[Virginia|VA]]
+|{{Coord|37.30|-80.03|name=Roanoke (April 4, F2)}}
+|{{Sort|143|April&nbsp;4}}
+|09:42–10:03<sup>A</sup>
+|style="background-color:#9FCADF;"|{{convert|9|mi|km|abbr=on|sortable=on}}†
+|style="background-color:#E89483;"|{{convert|1760|yd|m|abbr=on|sortable=on}}※#
+|The tornado touched down near [[Virginia State Route 419|VA 419]] and the Lynchburg Turnpike where a trailer or pickup truck were blown across a road.<ref name="RoanokeTimes_0405"/> It was initially very large, estimated at {{convert|1|mi|km|abbr=on}} in width, and narrowed until its dissipation.<ref name="StormData"/>{{rp|20}}{{sfn|Grazulis|1990|p=557}} A new building at an elementary school had its roof collapse. Approximately 120 homes, 2 apartment complexes, and 2 schools were damaged. All 18 structures at one of the complexes were damaged, some of which lost their roof. Homes under-construction in northeastern Roanoke County were knocked off their foundations. Many outbuildings and utility poles were destroyed.<ref name="RoanokeTimes_0405">{{cite news|first=Ray|last=Reed|newspaper=The Roanoke Times|date=April 5, 1974|title=Abingdon Man Dies As Trailer Smashed|via=Newspapers.com}} {{free access}}
+*[https://www.newspapers.com/article/the-roanoke-times/124020119/ 1], [https://www.newspapers.com/article/the-roanoke-times/124020133/ 2]</ref><ref name="RNK"/> Total damage reached $400,000–500,000.<ref name="WorldNews_0405">{{cite news|first=Frank|last=Hancock|newspaper=The World-News|date=April 5, 1974|title=Pictures first in storm|via=Newspapers.com}} {{free access}}
+*[https://www.newspapers.com/article/the-world-news/124263440/ 1], [https://www.newspapers.com/article/the-world-news/124263510/ 4]</ref>
+
+The Red Cross prepared to open shelters and provide meals to displaced residents;<ref name="DailyPress_0405"/> they aided 125 people displaced from one of the apartment complexes.<ref>{{cite news|newspaper=Richmond Times-Dispatch|date=April 7, 1974|accessdate=May 3, 2023|title=Red Cross Asks Aid in Relief|url=https://www.newspapers.com/article/richmond-times-dispatch/124023920/|page=B-9|via=Newspapers.com}} {{free access}}</ref>
+|align="center"|{{ntsh|146}}{{tooltip|146|"Roanoke Tornado VA"}}
+|-
+|bgcolor=#{{Storm colour|storm}}| F0
+|SE of [[Blue Ridge, Georgia|Blue Ridge]]
+|[[Fannin County, Georgia|Fannin]]
+|[[Georgia (U.S. state)|GA]]
+|{{N/A}}
+|{{Sort|144|April&nbsp;4}}
+|10:00–10:01<sup>E</sup>
+|{{convert|0.5|mi|km|abbr=on|sortable=on}}
+|{{N/A}}
+|This tornado was omitted from the NCEI database.<ref name="NCEI_event"/>
+|align="center"|{{ntsh|125}}{{tooltip|125|"Stanley Creek Tornado GA"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1
+|E of [[Swoop, Virginia|Swoop]] to [[Staunton, Virginia|Staunton]] to S of [[Weyers Cave, Virginia|Weyers Cave]]
+|[[Augusta County, Virginia|Augusta]], [[Staunton, Virginia|Staunton (City of)]]
+|[[Virginia|VA]]
+|{{Coord|38.15|-79.17|name=Staunton (April 4, F1)}}
+|{{Sort|145|April&nbsp;4}}
+|11:07–11:27<sup>C</sup>
+|style="background-color:#F7D9D3;"|{{convert|15.2|mi|km|abbr=on|sortable=on}}‡
+|{{N/A}}
+|This tornado occurred within a broader area of wind damage.<ref name="StormData"/>{{rp|20}}<ref name="LWX">{{cite web|publisher=National Weather Service Forecast Office in Baltimore/Washington|via=Mississippi State University|accessdate=May 7, 2023|title=NWS Baltimore Tornado Database|url=https://www.midsouthtornadoes.msstate.edu/index.php?cw=lwx}}</ref> Several barns were knocked over and highway signs were bent. A state trooper observing the tornado stated it was up to {{convert|0.5|mi|km|abbr=on}} wide.<ref name="TheBee_0404">{{cite news|agency=Associated Press|newspaper=The Bee|date=April 4, 1974|accessdate=May 3, 2023|title=Winds Hit Roanoke, Radford, Other Areas|url=https://www.newspapers.com/article/the-bee-april-1974-augusta-co-tornado/15508805/|page=B1|via=Newspapers.com}} {{free access}}</ref> [[Churchville, Virginia|Churchville]] suffered $15–20,000 in property damage. A {{convert|20|to|25|ft|m|abbr=on}} section of roof was torn off of the [[Fort Defiance, Virginia|Fort Defiance]] high school, leaving eight classrooms with water damage. Three homes suffered wall collapses in Staunton and the Augusta County Courthouse lost part of its roof.<ref name="DailyPress_0405">{{cite news|agency=Associated Press|newspaper=Daily Press|date=April 5, 1974|accessdate=May 3, 2023|title=Tornadic Winds Cause Havoc In State|url=https://www.newspapers.com/article/daily-press/124023171/|page=8|via=Newspapers.com}} {{free access}}</ref>
+|align="center"|{{ntsh|145}}{{tooltip|145|"Staunton Tornado VA"}}
+|-
+|bgcolor=#{{Storm colour|storm}}| F0
+|[[Brasstown, North Carolina|Brasstown]] 
+|[[Cherokee County, North Carolina|Cherokee]]
+|[[North Carolina|NC]]
+|{{Coord|35.03|-83.97|name=Brasstown (April 4, F0)}}
+|{{Sort|146|April&nbsp;4}}
+|13:00–13:01<sup>D</sup>
+|style="background-color:#D4F2CE;"|{{convert|0.5|mi|km|abbr=on|sortable=on}}♭
+|{{N/A}}
+|<ref name="StormData"/>{{rp|13}} The NCEI database includes the funnel cloud aloft portion of this tornado as part of its track.<ref name="FujitaMap"/><ref name="MRX_2"/>
+|align="center"|{{ntsh|129}}{{tooltip|129|"Second Brasstown Tornado NC"}}
+|-
+|bgcolor=#{{Storm colour|cat1}}| F1
+|[[Morganton, North Carolina|Morganton]] to NE of [[Drexel, North Carolina|Drexel]]
+|[[Burke County, North Carolina|Burke]]
+|[[North Carolina|NC]]
+|{{Coord|35.75|-81.70|name=Morganton (April 4, F1)}}
+|{{Sort|147|April&nbsp;4}}
+|13:30–13:35<sup>E</sup>
+|style="background-color:#F7D9D3;"|{{convert|6.9|mi|km|abbr=on|sortable=on}}‡
+|{{N/A}}
+|A tornado touched down in Morganton and damaged several structures. The NCEI database erroneously lists this tornado as occurring on April 3.<ref name="StormData"/>{{rp|13}}<ref name="GSP">{{cite web|publisher=National Weather Service Forecast Office in Greenville-Spartanburg, South Carolina|via=Mississippi State University|accessdate=May 7, 2023|title=NWS Greenville/Spartanburg Tornado Database|url=https://www.midsouthtornadoes.msstate.edu/index.php?cw=gsp}}</ref>
+|align="center"|{{ntsh|147}}{{tooltip|147|"Morganton Tornado NC"}}
+|-
+|bgcolor=#{{Storm colour|cat2}}| F2
+|[[Hudson, North Carolina|Hudson]]
+|[[Caldwell County, North Carolina|Caldwell]]
+|[[North Carolina|NC]]
+|{{Coord|35.82|-81.53|name=Hudson (April 4, F2)}}
+|{{Sort|148|April&nbsp;4}}
+|13:45–13:50<sup>E</sup>
+|style="background-color:#9FCADF;"|{{convert|5|mi|km|abbr=on|sortable=on}}†
+|{{N/A}}
+|<ref name="StormData"/>{{rp|13}}{{sfn|Grazulis|1990|p=557}}<ref name="GSP"/>
+|align="center"|{{ntsh|148}}{{tooltip|148|"Baton Tornado NC"}}
+|-
+|bgcolor=#{{Storm colour|storm}}| F0
+|[[Del Rio, Tennessee|Del Rio]]
+|[[Cocke County, Tennessee|Cocke]]
+|[[Tennessee|TN]]
+|{{Coord|35.92|-83.03|name=Del Rio (April 3, F0)}}
+|{{Sort|149|April&nbsp;4}}
+|14:45–14:46<sup>D</sup>
+|style="background-color:#B7A3C3;"|{{convert|0.5|mi|km|abbr=on|sortable=on}}¶
+|style="background-color:#B7A3C3;"|{{convert|80|yd|m|abbr=on|sortable=on}}¶
+|<ref name="MRX_2"/><ref name="MRX"/>
+|align="center"|{{ntsh|133}}{{tooltip|133|"Del Rio Tornado TN"}}
+|-
+|}
+
+===Other events===
+Multiple funnels were reported with the F5 Sayler Park tornado, two of which may have been distinct tornadoes.<ref name="ILN_eyewitness"/> There is conflicting information on whether the damage from Waldron to Hudson, Michigan, was caused by one or two tornadoes. The Storm Data publication and NCEI database indicate two, nearly simultaneous F2 tornadoes originating near Waldron.<ref name="StormData"/>{{rp|9}}<ref name="IWX"/> However, Fujita and Grazulis list a single F2 tornado.<ref name="FujitaMap"/>{{sfn|Grazulis|1990|p=556}} The Storm Data publication lists a tornado that caused no damage north of [[Gibson City, Illinois|Gibson City]] in [[Ford County, Illinois|Ford County]], Illinois.<ref name="StormData"/>{{rp|4}} This was not classified as a tornado by Fujita.{{sfn|Abbey and Fujita|1981|pp=50–53}} Fujita initially analyzed a F0 tornado to the southwest of [[Cherry Log, Georgia|Cherry Log]] in [[Gilmer County, Georgia|Gilmer County]], Georgia (Fujita tornado #122). This was later reclassified as a "tornado cyclone" rather than a true tornado.{{sfn|Abbey and Fujita|1981|pp=47, 52}} During the afternoon of April&nbsp;4, two tornadoes touched down in southern Alabama.<ref name="NCEI_event"/> ''The Macon News'' listed that additional tornadoes were reported in [[Powder Springs, Georgia|Powder Springs]], [[Douglasville, Georgia|Douglasville]], [[Austell, Georgia|Austell]], and [[Marietta, Georgia|Marietta]].<ref>{{cite news|agency=Associated Press|newspaper=The Macon News|date=April 5, 1974|title=13 Counties Are Disaster Areas--Carter|url=https://www.newspapers.com/article/the-macon-news/124288766/|page=1|via=Newspapers.com}} {{free access}}</ref> Although temporally close, they are not considered part of the Super Outbreak by Abbey and Fujita 1981 and Corfidi et al. 2010.{{sfn|Corfidi et al.|2010|p=506}}{{sfn|Abbey and Fujita|1981|pp=50–53}} The ''Richmond Times-Dispatch'' reported that a tornado caused damage to a horse farm and lumber yard in [[Kenbridge, Virginia|Kenbridge]], [[Lunenburg County, Virginia]], with a resident reporting a cone-shaped funnel. The two properties suffered $18,000 in damage.<ref>{{cite news|newspaper=Richmond Times-Dispatch|date=April 5, 1974|title=One Death Reported From Storm in State|via=Newspapers.com}} {{free access}}
+*[https://www.newspapers.com/article/richmond-times-dispatch/124020740/ A-1], [https://www.newspapers.com/article/richmond-times-dispatch/124020757/ A-2]</ref>
+
+== See also ==
+*[[1974 Super Outbreak]]
+*[[2011 Super Outbreak]]
+*[[List of tornadoes in the 2011 Super Outbreak]]
+*[[Tornadoes]]
+*[[List of F5 and EF5 tornadoes]]
+*[[List of tornadoes and tornado outbreaks]]
+
+==Notes==
+{{reflist|group=nb}}
+
+==References==
+{{Reflist}}
+
+===Sources===
+*{{cite book|last2=Fujita|first2=T. Theodore|last1=Abbey, Jr.|first1=Robert F.|editor1-last=Kessler|editor1-first=Edwin|year=1983|orig-year=1981|title=The Thunderstorm in Human Affairs|edition=2nd|location=Norman, Oklahoma|publisher=University of Oklahoma Press|pages=47–84|chapter=Chapter 3: Tornadoes: The Tornado Outbreak of 3–4 April 1974|isbn=0-8061-1857-1|ref={{sfnRef|Abbey and Fujita|1981}}}}
+*{{cite journal |first1=Ernest M.|last1=Agee|first2=John T.|last2=Snow|first3=P.R.|last3=Clare|title=Multiple Vortex Features in the Tornado Cyclone and the Occurrence of Tornado Families|journal=Monthly Weather Review|date=May 1, 1976|volume=105|issue=5|pages=552–563|doi=10.1175/1520-0493(1976)104<0552:MVFITT>2.0.CO;2|publisher=American Meteorological Society|bibcode=1976MWRv..104..552A |ref={{sfnRef|Agee et al.|1976}}|doi-access=free}}
+*{{cite journal |first1=Ernest M.|last1=Agee|first2=Samuel|last2=Childs|title=Adjustments in Tornado Counts, F-Scale Intensity, and Path Width for Assessing Significant Tornado Destruction|journal=Journal of Applied Meteorology and Climatology|date=June 1, 2014|volume=53|issue=6|pages=1494–1505|doi=10.1175/JAMC-D-13-0235.1|publisher=American Meteorological Society|bibcode=2014JApMC..53.1494A |url=https://journals.ametsoc.org/view/journals/apme/53/6/jamc-d-13-0235.1.xml|ref={{sfnRef|Agee and Childs|2014}}}}
+*{{cite journal |doi=10.1126/science.249.4964.48 | title=Television Image of a Large Upward Electrical Discharge Above a Thunderstorm System | date=1990 | first1=R.C.|last1=Franz | first2=R.J.|last2=Nemzek | first3=J.R.|last3=Winckler | journal=Science|volume=249|issue=4964|pages=48–51| pmid=17787625 | bibcode=1990Sci...249...48F | s2cid=9343018|ref={{sfnRef|Franz et al.|1990}}}}
+*{{cite journal |first1=Harold E.|last1=Brooks|first2=Charles A. III|last2=Doswell|title=Normalized Damage from Major Tornadoes in the United States: 1890–1999|journal=Weather and Forecasting|date=February 1, 2001|volume=16|issue=1|pages=168–176|doi=10.1175/1520-0434(2001)016<0168:NDFMTI>2.0.CO;2|publisher=American Meteorological Society|bibcode=2001WtFor..16..168B |url=https://journals.ametsoc.org/view/journals/wefo/16/1/1520-0434_2001_016_0168_ndfmti_2_0_co_2.xml|ref={{sfnRef|Brooks and Doswell|2001}}}}
+*{{cite journal |first1=Stephen F.|last1=Corfidi|first2=Steven J.|last2=Weiss|first3=John S.|last3=Kain|first4=Sarah J.|last4=Corfidi|first5=Robert M.|last5=Rabin|first6=Jason J.|last6=Levit|title=Revisiting the 3–4 April 1974 Super Outbreak of Tornadoes|journal=Weather and Forecasting|date=April 1, 2010|volume=25|issue=2|pages=465–510|doi=10.1175/2009WAF2222297.1|publisher=American Meteorological Society|bibcode=2010WtFor..25..465C |url=https://journals.ametsoc.org/view/journals/wefo/25/2/2009waf2222297_1.xml|ref={{sfnRef|Corfidi et al.|2010}}}}
+*{{cite journal |first1=Roger|last1=Edwards|first2=James G.|last2=LaDue|first3=John T.|last3=Ferree|first4=Kevin|last4=Scharfenberg|first5=Chris|last5=Maier|first6=William L.|last6=Coulbourne|title=Tornado Intensity Estimation: Past, Present, and Future|journal=Bulletin of the American Meteorological Society|date=May 1, 2013|volume=94|issue=5|pages=641–653|doi=10.1175/BAMS-D-11-00006.1|publisher=American Meteorological Society|bibcode=2013BAMS...94..641E |url=https://journals.ametsoc.org/view/journals/bams/94/5/bams-d-11-00006.1.xml|ref={{sfnRef|Edwards et al.|2013}}}}
+*{{cite magazine|first1=T. Theodore|last1=Fujita|title=Jumbo Tornado Outbreak of 3 April 1974|magazine=Weatherwise|publisher=Taylor & Francis Group|date=June 1, 1974|volume=27|issue=3|pages=116–126|url=https://www.tandfonline.com/doi/abs/10.1080/00431672.1974.9931693|doi=10.1080/00431672.1974.9931693|ref={{sfnRef|Fujita|1974}}}}
+*{{cite tech report|last=Grazulis|first=Thomas P.|author-link=Thomas P. Grazulis|date=May 1984|title=Violent Tornado Climatography, 1880–1982|series=NUREG|number=CR-3670|website=[[Office of Scientific and Technical Information|OSTI]]|institution=[[Nuclear Regulatory Commission]]|location=[[Washington, D.C.]]|osti=7099491 |osti-access=free}}
+**{{cite book|last1=Grazulis|first1=Thomas P.|title=Significant Tornadoes 1880–1989: A Chronology of Events|date=November 1990|publisher=The Tornado Project of Environmental Films|volume=2|isbn=1-879362-02-3|ref={{sfnRef|Grazulis|1990}}|author-mask=1}}
+**{{cite book |last1=Grazulis |first1=Thomas P. |title=Significant Tornadoes 1680–1991: A Chronology and Analysis of Events |date=July 1993 |publisher=The Tornado Project of Environmental Films |location=[[St. Johnsbury, Vermont]] |isbn=1-879362-03-1 |author-mask=1}}
+*{{cite journal |first1=Otha H.|last1=Vaughan, Jr.|first2=Bernard|last2=Vonnegut|title=Luminous electrical phenomena associated with nocturnal tornadoes in Huntsville, Ala., 3 April 1974|journal=Bulletin of the American Meteorological Society|date=October 1, 1976|volume=57|issue=10|pages=1220–1224|doi=10.1175/JAMC-D-13-0235.1|publisher=American Meteorological Society|bibcode=2014JApMC..53.1494A |url=https://journals.ametsoc.org/view/journals/bams/57/10/1520-0477_1976_057_1220_lepawn_2_0_co_2.xml|ref={{sfnRef|Vaughan and Vonnegut|1976}}}}
+
+==Further reading==
+*{{cite book
+ | editor-first = Robert E.
+ | editor-last = Deitz
+ | display-editors = et al.
+ | year = 1974
+ | title = April 3, 1974: Tornado!
+ | publisher = The Courier-Journal and The Louisville Times
+ | lccn=74-80806
+}}
+
+*{{cite book
+ | first1 = Ray J.
+ | last1 = Hartsfield
+ | first2 = Robin
+ | last2 = Garr
+ | first3 = Phyllis
+ | last3 = Morrisette
+ | first4 = Jay
+ | last4 = Harris
+ | first5 = Dave
+ | last5 = Knapp
+ | first6 = Tom
+ | last6 = Scott
+ | first7 = Terry
+ | last7 = Cowan
+ | first8 = Mary Ann
+ | last8 = Woosley
+ | first9 = Allen
+ | last9 = Hammer
+ | year = 1974
+ | title = April 3, 1974: The Kentucky Tornadoes
+ | publisher = C. F. Boone
+ | id = 
+}}
+
+*{{cite book
+ | editor-first = William S.
+ | editor-last = Butler
+ | year = 2004
+ | title = Tornado: A look back at Louisville's dark day, April 3, 1974. A 30th Anniversary Publication
+ | publisher = Butler Books
+ | isbn = 1-884532-58-6
+}}
+
+==External links==
+*[http://www.april31974.com  Super Outbreak page with tornadoes path length, location, fatalities and Fujita scale rating] {{Webarchive|url=https://web.archive.org/web/20120610215522/http://www.april31974.com/ |date=2012-06-10 }}
+*[http://worlddmc.ohiolink.edu/OMP/Previews?oid=3735833&count=1&results=12&fieldname=xml&sort=creator&searchstatus=1&hits=1&searchmark=0&searchstring=&format=yourscrap&searchtype=kw&scrapid=3619 Path of destruction of Xenia tornado]{{dead link|date=January 2018 |bot=InternetArchiveBot |fix-attempted=yes }}
+*{{usurped|1=[https://web.archive.org/web/20040423020803/http://www.xeniatornado.com/ Xenia tornado website with stories, photos and audio clip of tornado]}}
+*[http://www.srh.noaa.gov/bmx/tornadoes/1974.php 1974 Tornado Table for Alabama]
+
+{{1974 tornado outbreaks}}
+
+{{DEFAULTSORT:1974 Super Outbreak, List}}
+[[Category:Lists of tornadoes in Alabama|1974-04-03]]
+[[Category:History of Cincinnati]]
+[[Category:History of Louisville, Kentucky]]
+[[Category:History of Windsor, Ontario]]
+[[Category:Tornadoes in Kentucky|1974-04-03, List]]
+[[Category:Tornadoes in Illinois|1974-04-03, List]]
+[[Category:Tornadoes in Indiana|1974-04-03, List]]
+[[Category:Tornadoes in Ohio|1974-04-03, List]]
+[[Category:Tornadoes in North Carolina|1974-04-03, List]]
+[[Category:Tornadoes in Tennessee|1974-04-03, List]]
+[[Category:Tornadoes in Ontario|1974-04-03, List]]
+[[Category:Tornadoes of 1974|04-03, List]]
+[[Category:1974 natural disasters in the United States|Super Outbreak, List]]
+[[Category:April 1974 in North America|Super Outbreak, List]]
+[[Category:Lists of tornadoes by outbreak]]

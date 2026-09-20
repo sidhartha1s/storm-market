@@ -32,9 +32,10 @@
   </div>
 </div>
 <script>
+window.__timelines = window.__timelines || {};
 (function() {
   /* A4-S3 span, audio/a4-s3.words.json exact (current on disk). */
-  const DUR = 27.946; // audio/manifest.json a4-s3.duration
+  const DUR = 12.0; // host window set by the orchestrator (index.html)
   const tl = gsap.timeline({ paused: true });
   const P = "#g-person-mcguire-";
   tl.set(P+"underline", { scaleX: 0 }, 0);

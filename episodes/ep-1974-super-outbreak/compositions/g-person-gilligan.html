@@ -32,11 +32,12 @@
   </div>
 </div>
 <script>
+window.__timelines = window.__timelines || {};
 (function() {
   /* A2-S3 span. audio/a2-s3.words.json not present on disk right now (segment mid-regeneration);
      current a2-s3.txt already carries the fact-QC-corrected "stayed for weeks..." line.
      audio/manifest.json still carries the last-measured duration. PROVISIONAL duration. */
-  const DUR = 49.726; // audio/manifest.json a2-s3.duration — PROVISIONAL
+  const DUR = 12.0; // host window set by the orchestrator (index.html)
   const tl = gsap.timeline({ paused: true });
   const P = "#g-person-gilligan-";
   tl.set(P+"underline", { scaleX: 0 }, 0);

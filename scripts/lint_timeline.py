@@ -58,13 +58,17 @@ def main():
             findings.append(f"audio overlap: {f1} ({s1}-{e1:.1f}) vs {f2} ({s2}-{e2:.1f})")
 
     # NARRATION SEAMS (owner 17 Sep 26, Dujuan U1 review: "awkward gaps ... not intentional"). Voice
-    # segments may be apart by at most the blackout length; the only sanctioned hole is the CTA.
+    # segments may be apart by at most the blackout length; the sanctioned holes are the CTA, a chapter
+    # blackout, and a declared hold (<section class="clip hold" data-start data-duration>, DESIGN.md).
     cta_starts = [float(x) for x in re.findall(r'<video\b[^>]*src="[^"]*cta/[^"]*"[^>]*data-start="([\d.]+)"', html)]
     voice = sorted((s, s + d) for s, d in ((float(a), float(b)) for a, b in
                    re.findall(r'<audio\b[^>]*id="nx-(?!ins)[^"]*"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"', html)))
+    structure = [(float(a), float(a) + float(b)) for a, b in re.findall(
+        r'<section\b[^>]*class="[^"]*\b(?:blackout|hold)\b[^"]*"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"', html)]
     for (s1, e1), (s2, e2) in zip(voice, voice[1:]):
         gap = s2 - e1
-        if gap > 0.8 and not any(e1 - 0.5 <= c <= s2 for c in cta_starts):
+        if gap > 0.8 and not any(e1 - 0.5 <= c <= s2 for c in cta_starts) \
+                and not any(bs < s2 and be > e1 for bs, be in structure):
             findings.append(f"narration gap {gap:.1f}s at {e1:.1f}-{s2:.1f}s (max 0.8s outside the CTA)")
 
     for src in re.findall(r'<script[^>]*src="([^"]+)"', html):

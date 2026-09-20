@@ -268,7 +268,9 @@ floors/ceilings; taste stays with the model.
 ## Editing grammar (seed — grows via LEARNINGS.md)
 
 - Hook: cold-open insert (911 audio / broadcast) or present-tense stat over motion. ≤15s to thesis.
-- After an emotional payoff: hold 2-4s, ambience up, then cut hard to the next act.
+- After an emotional payoff: hold 2-4s, ambience up, then cut hard to the next act. Declare each hold with an
+  empty marker `<section class="clip hold" id="hold-N" data-start="X" data-duration="3.0" data-track-index="8"></section>`;
+  `lint_timeline.py` sanctions a narration gap only inside a blackout, a declared hold, or the CTA (ep-1974, 21 Sep 26).
 - **Chapter blackout (documentary breath — ep1/ep2 device, MANDATORY ep4+):** between acts,
   and on a key beat, cut to a full BLACK. It resets the eye and is what makes ep1/ep2 read like
   a documentary. **Duration table: 0.6–0.9s = chapter break · 1.0–1.3s = dramatic punctuation ·

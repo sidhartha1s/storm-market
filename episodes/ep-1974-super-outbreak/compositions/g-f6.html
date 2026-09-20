@@ -10,7 +10,7 @@
     box-shadow:0 40px 90px rgba(0,0,0,0.55); }
   .vignette { position:absolute; inset:0; pointer-events:none;
     background:radial-gradient(ellipse at 50% 50%, rgba(233,226,207,0) 55%, rgba(120,90,40,0.28) 100%); }
-  .label { position:absolute; left:200px; top:220px; font-family:'Courier New',monospace; font-weight:700; font-size:30px; color:#3b3226; letter-spacing:1px; }
+  .label { position:absolute; left:200px; top:48px; font-family:'Courier New',monospace; font-weight:700; font-size:30px; color:#3b3226; letter-spacing:1px; }
   .f6wrap { position:absolute; left:0; right:0; top:220px; text-align:center; }
   .f6 { display:inline-block; font-family:Georgia,serif; font-weight:700; font-size:260px; color:#1c1a17; line-height:1; }
   .f5wrap { position:absolute; left:1040px; top:620px; }
@@ -33,12 +33,12 @@
 window.__timelines = window.__timelines || {};
 (function() {
   const ID = 'g-f6';
-  const DUR = 14.454; // audio/manifest.json a3-s1 exact duration
+  const DUR = 12.56; // mounted 2.44 s into A3-S1 after the real-footage payoff cut
 
   /* a3-s1.words.json exists — CONFIRMED exact word timestamps, not provisional. */
   const CUES = {
-    six: 6.84,      // "F6."
-    tookback: 11.48 // "took" (of "took it back")
+    six: 4.40,      // "F6."
+    tookback: 9.04 // "took" (of "took it back")
   };
 
   const strike = document.getElementById(ID + '-strike');

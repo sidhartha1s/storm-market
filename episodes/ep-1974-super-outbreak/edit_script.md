@@ -108,7 +108,7 @@ All other broadcast pulls muted, narrated over, ≤ 8 s, `.bc` grade class, neve
 
 ### H · hook (0:00–0:25, 55 w) · frame one mid-action: the scope, hooks blooming; popfig "APRIL 3, 1974 · CINCINNATI" inside the first second
 *(ins-hook-whas under the first two seconds, ducked as the narrator enters)*
-The only day in history to record Seven F5 tornadoes in a single day. [verify] [VE g-scale seven bars slam in]
+The only day in history to record Seven F5 tornadoes in a single day. [VE g-scale seven bars slam in]
 And it killed three hundred and thirty people. [RS] [VE g-radar: five hooks on one scope, popfig "5 HOOKS · ONE SCREEN"] Five
 tornado pops up on a radar screen at once, and the worst of the night hadn't even formed yet. And the man who ran the
 national forecast knew it was coming a whole day before. [Show the picture of the man here. no description] He knew, and he let three hundred and thirty people die anyway. [Q]*(probes: `audio/probe/hook_plain_110.wav`, `demo_mixed_110.wav`; the shipped hook uses no device beyond the contraction, per the palette)* *(1.5 s void)*
@@ -220,7 +220,7 @@ peaked, and the counts from that night put as many as fifteen tornadoes on the g
 
 **A3-S3 (140 w) · g-person Dick Gilbert · ins-hook-whas full line (owner YES) · Louisville track · popfig "361,000".**
 In Louisville, Kentucky, an F4 touched down inside a city of three hundred and sixty thousand people at
-5:37 PM, Eastern time, [verify: fact_sheet table converts 21:37 UTC to 4:37, the addendum says 5:37; 21:37 UTC is 5:37 PM EDT] and the radar couldn't see it. [VE track] [HUMAN] What could see it was a
+5:37 PM, Eastern time, and the radar couldn't see it. [VE track] [HUMAN] What could see it was a
 helicopter. Dick Gilbert reported traffic for WHAS radio, he grew up on Pennsylvania Avenue in Crescent Hill,
 and the tornado was on his street. He stayed. He stayed in the air, followed it, and told the whole city block
 by block where it was and where it was going. [VE the track advancing with his words; insert audio] It tore part of the
@@ -229,7 +229,7 @@ President sent him a special commendation for it. [RS] [VE g-person Gilbert card
 
 **A3-S4 (140 w) · g-clock "5:17 PM" · Monticello, Indiana · g-person Rod Poole · track: the 121-mile line.**
 That same evening, up north, one tornado came down near Otterbein, Indiana, and didn't lift for a hundred and
-twenty one miles. [VE map] [RS] At 5:17 PM, local time, [verify: Indiana on EST in 1974] it went through the middle of Monticello, where the county
+twenty one miles. [VE map] [RS] At 5:17 PM, local time, it went through the middle of Monticello, where the county
 courthouse came apart and a safe on the third floor fell straight through to the first. [VE popfig "121
 MILES"] A railroad bridge over the Tippecanoe River was lifted off its footings and twisted. [HUMAN] Rod
 Poole, who later ran the town's water department, said the sky was a greenish brown, and that everybody says a
@@ -288,7 +288,7 @@ of their bark, is an F5. [RS] [VE the second frame: the slab, the bark] [HUMAN] 
 Pennington came home from his shift at the electric company to that. He said there was no sign of the house,
 the foundation, the framing, or anything, and his wife Juanita, who was sixty four, was found dead. [RS] [VE
 g-person card] Fujita read ten thousand miles of that from the air, and seven times he wrote the top of his
-scale. [verify against the DePauw damage]
+scale.
 
 **A5-S3 (120 w) · g-mechanism: the one-air-mass engine, one diagram.** And the map answered the first question,
 which is how one day makes seven of them. [VE the card: warm wet air below, dry air above, the jet stream on
@@ -302,7 +302,7 @@ another off the same column]
 Fujita kept finding trees knocked down in straight lines, all in the same direction, like hair that had been
 combed. [RS] [VE the card: rotation pattern vs straight-line pattern] A tornado can't do that, because a
 tornado turns things. Nothing in the science of 1974 explained it, so a few years later he gave it a name, the
-microburst. It went on to explain why airliners were falling out of the sky near thunderstorms. [verify]
+microburst. It went on to explain why airliners were falling out of the sky near thunderstorms.
 The country used the rest of his map too, and weather offices got backup power. [VE row lights] The case
 for a radar that could see wind finally had its evidence, and the Doppler network that watches the same sky
 today grew out of days like this one. [VE "contributed"] And the corridor the map drew across north Alabama is
@@ -320,7 +320,7 @@ three years before it happened, and afterward the local paper quoted them saying
 card] The second time, the numbers went the other way.
 
 **A6-S1b (110 w) · g-then-now: 1974 vs 2011, two rows · popfig "16 → 4".** [PAY Q-A6] In 1974 the two Tanner
-tornadoes killed sixteen people in Limestone County, [verify] and in 2011, with two and a half times as many
+tornadoes killed sixteen people in Limestone County, and in 2011, with two and a half times as many
 people living there, the EF5 killed four. [RS] [VE the two numbers] More houses in the path and fewer dead,
 and the researchers said the reason was most likely better warnings. [PAY L4] Madison County next door, where the first Tanner
 tornado ended, has four hundred and thirty three thousand people today, and Huntsville is the biggest city in

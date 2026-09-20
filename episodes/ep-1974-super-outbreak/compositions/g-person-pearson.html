@@ -55,7 +55,7 @@ window.__timelines = window.__timelines || {};
 (function() {
   /* I-1 span, audio/i-1.words.json (exact, current on disk). No word-tied cue needed here —
      standard lower-third: enters together, holds, slides out. Duration = segment span. */
-  const DUR = 45.946; // audio/manifest.json i-1.duration
+  const DUR = 10.5; // host window set by the orchestrator (index.html)
   const tl = gsap.timeline({ paused: true });
   const P = "#g-person-pearson-";
   tl.set(P+"underline", { scaleX: 0 }, 0);

@@ -33,11 +33,12 @@
   </div>
 </div>
 <script>
+window.__timelines = window.__timelines || {};
 (function() {
   /* A3-S3 span, audio/a3-s3.words.json exact (current on disk, unchanged this session).
      CUES.commendation: {"text":"commendation","start":39.08,"end":39.8} */
-  const CUES = { commendation: 39.08 /* "commendation" */ };
-  const DUR = 40.599; // audio/manifest.json a3-s3.duration
+  const CUES = { commendation: 26.8 /* "commendation" */ };
+  const DUR = 28.3; // host window set by the orchestrator (index.html)
   const tl = gsap.timeline({ paused: true });
   const P = "#g-person-gilbert-";
   tl.set(P+"underline", { scaleX: 0 }, 0);

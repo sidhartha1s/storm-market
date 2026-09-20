@@ -10,6 +10,7 @@ import sys
 import tempfile
 from collections import Counter
 from pathlib import Path
+from comp_consts import fold
 
 ep = Path(sys.argv[1])
 h = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
@@ -120,7 +121,7 @@ if not cta:
 cta_name = Path(cta["file"]).name
 cta_bad = []
 _slug = ep.resolve().name
-_cta_applies = bool(re.match(r"(ep\d+|ms-)", _slug)) and _slug not in (cta.get("exempt") or [])
+_cta_applies = bool(re.match(r"(ep\d*-|ms-)", _slug)) and _slug not in (cta.get("exempt") or [])
 _cta_window = cta["window_ms"] if _slug.startswith("ms-") else cta["window"]   # news lane sits at ~90 % (owner 17 Sep 26)
 cm = re.search(r'<video\b[^>]*src="([^"]*' + re.escape(cta_name) + r')"[^>]*>', h)
 if not _cta_applies:
@@ -204,14 +205,14 @@ report("source-family repeats (viewer identity)", fam_bad, lambda x: f"{x[0]}: {
 
 # 6. authored but unmounted compositions
 authored = {p.stem for p in (ep / "compositions").glob("*.html")}
-mounted = {w["name"] for w in pic if w["tr"] == 2}
+mounted = {w["name"] for w in wins if w["name"] in authored}   # overlay comps ride tracks 3-4
 report("no unmounted compositions", sorted(authored - mounted))
 report("no missing compositions", sorted(mounted - authored))
 
 # 7. graphic window vs its own timeline length
 overrun = []
 for gid in sorted(mounted):
-    src = (ep / "compositions" / f"{gid}.html").read_text(encoding="utf-8", errors="replace")
+    src = fold((ep / "compositions" / f"{gid}.html").read_text(encoding="utf-8", errors="replace"))
     ends = [float(m.group(1)) + max([float(d) for d in re.findall(
         r'duration:\s*([\d.]+)', m.group(0))] or [0])
         for m in re.finditer(r'tl\.\w+\([^;]*?,\s*([\d.]+)\s*\);', src)]
@@ -232,7 +233,7 @@ for gid in sorted(mounted):
             continue                      # continuous, not a beat
         beats.append(float(m.group(1)) + d)
     last_beat = max(beats) if beats else 0.0
-    for w in pic:
+    for w in wins:
         if w["name"] != gid:
             continue
         if w["dur"] - tl_end > 4.0:

@@ -10,6 +10,7 @@ read as dead.
 import re
 import sys
 from pathlib import Path
+from comp_consts import fold
 
 ep = Path(sys.argv[1])
 idx = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
@@ -24,7 +25,7 @@ for f in sorted((ep / "compositions").glob("*.html")):
     gid = f.stem
     if gid not in hosts:
         continue
-    src = f.read_text(encoding="utf-8", errors="replace")
+    src = fold(f.read_text(encoding="utf-8", errors="replace"))
     spans = []
     for m in CALL.finditer(src):
         # walk to the matching close paren, then read the trailing position arg

@@ -1,0 +1,147 @@
+<!doctype html><html><head><meta charset="UTF-8">
+<script src="../gsap.min.js"></script></head><body style="margin:0;background:#000">
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; overflow:hidden; }
+  .eyebrow { position:absolute; left:96px; top:64px; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; }
+  .flabel { position:absolute; top:150px; width:800px; text-align:center; font-family:'Arial Black',Arial,sans-serif; font-size:84px; }
+  #g-f4f5-lab-f4 { left:110px; color:#d8a13a; }
+  #g-f4f5-lab-f5 { left:1010px; color:#e74c3c; }
+  .panel { position:absolute; top:260px; width:800px; height:620px; }
+  #g-f4f5-panel-f4 { left:110px; }
+  #g-f4f5-panel-f5 { left:1010px; }
+  .ground { position:absolute; left:0; top:520px; width:800px; height:3px; background:#5a768f; }
+  .slab { position:absolute; left:190px; top:502px; width:420px; height:18px; background:#93a3b2; }
+  .walls { position:absolute; left:250px; top:282px; width:300px; height:220px; }
+  .wallseg { position:absolute; background:none; border:2px solid #dfe7ee; }
+  .ws-top { left:0px; top:0px; width:300px; height:2px; border:none; background:#dfe7ee; }
+  .ws-left { left:0px; top:0px; width:2px; height:220px; background:#dfe7ee; border:none; }
+  .ws-right { left:298px; top:0px; width:2px; height:220px; background:#dfe7ee; border:none; }
+  .ws-bottom { left:0px; top:218px; width:300px; height:2px; background:#dfe7ee; border:none; }
+  .door { position:absolute; left:125px; top:130px; width:50px; height:90px; border:2px solid #dfe7ee; }
+  .win { position:absolute; width:38px; height:38px; border:2px solid #dfe7ee; top:36px; }
+  .win-l { left:30px; } .win-r { left:232px; }
+  .roof { position:absolute; left:220px; top:182px; width:360px; height:100px; }
+  .roof svg { display:block; width:360px; height:100px; }
+  .car { position:absolute; left:560px; top:456px; width:120px; height:46px; transform-origin:60px 46px; }
+  .car svg { width:120px; height:60px; overflow:visible; }
+  .tree { position:absolute; top:460px; width:8px; height:60px; }
+  .tree.t-l { left:90px; } .tree.t-r { left:710px; }
+  .trunk { position:absolute; left:0; top:0; width:8px; height:60px; background:#5a3a20; }
+  .canopy { position:absolute; left:-32px; top:-80px; width:80px; height:80px; border-radius:50%; background:#3f7d44; }
+  .dimline { position:absolute; top:560px; left:590px; font-size:19px; color:#93a3b2; font-weight:700; letter-spacing:1px; white-space:nowrap; }
+  .swept { position:absolute; left:120px; top:440px; width:280px; text-align:center; font-family:Arial,sans-serif; font-weight:700; font-size:30px; color:#dfe7ee; }
+  .bark { position:absolute; left:560px; top:340px; width:220px; text-align:center; font-weight:700; font-size:26px; color:#e74c3c; }
+  .footer { position:absolute; left:96px; right:96px; bottom:60px; text-align:center; font-size:22px; color:#93a3b2; letter-spacing:1px; }
+  .speck { position:absolute; width:4px; height:4px; border-radius:50%; background:#e8c56a; opacity:0.5; }
+</style>
+<div id="root" data-composition-id="g-f4f5" data-width="1920" data-height="1080">
+  <div class="eyebrow" id="g-f4f5-eyebrow">THE FUJITA SCALE · F4 VS F5 · SCHEMATIC</div>
+  <div class="flabel" id="g-f4f5-lab-f4">F4</div>
+  <div class="flabel" id="g-f4f5-lab-f5">F5</div>
+
+  <div class="panel" id="g-f4f5-panel-f4">
+    <div class="ground"></div>
+    <div class="slab"></div>
+    <div class="walls" id="g-f4f5-f4-walls">
+      <div class="wallseg ws-top" id="g-f4f5-f4-ws1"></div>
+      <div class="wallseg ws-left" id="g-f4f5-f4-ws2"></div>
+      <div class="wallseg ws-right" id="g-f4f5-f4-ws3"></div>
+      <div class="wallseg ws-bottom" id="g-f4f5-f4-ws4"></div>
+      <div class="door"></div>
+      <div class="win win-l"></div>
+      <div class="win win-r"></div>
+    </div>
+    <div class="roof" id="g-f4f5-f4-roof">
+      <svg viewBox="0 0 360 100"><polyline points="0,100 180,0 360,100" fill="none" stroke="#dfe7ee" stroke-width="4"/></svg>
+    </div>
+    <div class="car"><svg viewBox="0 0 120 60"><rect x="6" y="18" width="108" height="24" rx="6" fill="#7fb2e5"/><rect x="26" y="4" width="60" height="22" rx="6" fill="#7fb2e5"/><circle cx="30" cy="46" r="10" fill="#1a222b" stroke="#93a3b2" stroke-width="2"/><circle cx="90" cy="46" r="10" fill="#1a222b" stroke="#93a3b2" stroke-width="2"/></svg></div>
+    <div class="tree t-l"><div class="canopy"></div><div class="trunk"></div></div>
+    <div class="tree t-r"><div class="canopy"></div><div class="trunk"></div></div>
+  </div>
+
+  <div class="panel" id="g-f4f5-panel-f5">
+    <div class="ground"></div>
+    <div class="slab" id="g-f4f5-f5-slab"></div>
+    <div class="walls" id="g-f4f5-f5-walls">
+      <div class="wallseg ws-top"></div>
+      <div class="wallseg ws-left"></div>
+      <div class="wallseg ws-right"></div>
+      <div class="wallseg ws-bottom"></div>
+      <div class="door"></div>
+      <div class="win win-l"></div>
+      <div class="win win-r"></div>
+    </div>
+    <div class="roof" id="g-f4f5-f5-roof">
+      <svg viewBox="0 0 360 100"><polyline points="0,100 180,0 360,100" fill="none" stroke="#dfe7ee" stroke-width="4"/></svg>
+    </div>
+    <div class="swept" id="g-f4f5-swept">SWEPT CLEAN</div>
+    <div class="car" id="g-f4f5-f5-car"><svg viewBox="0 0 120 60"><rect x="6" y="18" width="108" height="24" rx="6" fill="#7fb2e5"/><rect x="26" y="4" width="60" height="22" rx="6" fill="#7fb2e5"/><circle cx="30" cy="46" r="10" fill="#1a222b" stroke="#93a3b2" stroke-width="2"/><circle cx="90" cy="46" r="10" fill="#1a222b" stroke="#93a3b2" stroke-width="2"/></svg></div>
+    <div class="dimline" id="g-f4f5-dimline">&#8776; 100 YD</div>
+    <div class="tree t-l" id="g-f4f5-f5-tree-l"><div class="canopy" id="g-f4f5-f5-canopy-l"></div><div class="trunk" id="g-f4f5-f5-trunk-l"></div></div>
+    <div class="tree t-r" id="g-f4f5-f5-tree-r"><div class="canopy" id="g-f4f5-f5-canopy-r"></div><div class="trunk" id="g-f4f5-f5-trunk-r"></div></div>
+    <div class="bark" id="g-f4f5-bark">BARK STRIPPED</div>
+  </div>
+
+  <div class="footer" id="g-f4f5-footer">THE F-SCALE READS DAMAGE, NOT WIND &middot; SCHEMATIC</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const root = document.getElementById("root");
+  // continuous debris: six specks drifting right across both panels for the whole 20s
+  const specks = [];
+  const speckTops = [340, 420, 500, 600, 680, 760];
+  for (let i = 0; i < 6; i++) {
+    const s = document.createElement("div");
+    s.className = "speck";
+    s.style.left = (60 + i * 40) + "px";
+    s.style.top = speckTops[i] + "px";
+    root.appendChild(s);
+    specks.push(s);
+  }
+
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-f4f5-";
+
+  tl.set([P+"eyebrow", P+"footer", P+"swept", P+"bark", P+"dimline"], {autoAlpha:0}, 0);
+  tl.set([P+"lab-f4", P+"lab-f5"], {autoAlpha:0, y:-20}, 0);
+
+  /* cues from audio/a5-s2.txt @183.24wpm est., PROVISIONAL (no words.json yet):
+     grading@0.65 walls@4.26 f4word@4.91 swept@7.2 cars@9.5 bark@12.12 f5word@13.43 */
+  tl.fromTo(P+"eyebrow", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.6}, 0.3);
+  tl.fromTo(P+"lab-f4", {autoAlpha:0, y:-20}, {autoAlpha:1, y:0, duration:0.5}, 0.6);
+  tl.fromTo(P+"lab-f5", {autoAlpha:0, y:-20}, {autoAlpha:1, y:0, duration:0.5}, 0.9);
+  tl.fromTo(P+"footer", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 1.4);
+
+  // continuous debris drift for the full 20s
+  specks.forEach((s, i) => {
+    tl.to(s, {x: "+=1780", duration: 20, ease: "none"}, 0.3 + i * 0.15);
+  });
+
+  // CUES.walls @4.26 — F4: roof lifts off, wall segments break and scatter
+  tl.to(P+"f4-roof", {x:-140, y:-40, rotation:-22, autoAlpha:0, duration:0.7, ease:"power2.in"}, 4.26);
+  tl.to(P+"f4-ws1", {x:-90, y:-60, autoAlpha:0.4, duration:0.6}, 4.26);
+  tl.to(P+"f4-ws2", {x:-110, y:20, autoAlpha:0.4, duration:0.6}, 4.36);
+  tl.to(P+"f4-ws3", {x:120, y:-30, autoAlpha:0.4, duration:0.6}, 4.46);
+  tl.to(P+"f4-ws4", {x:60, y:80, autoAlpha:0.4, duration:0.6}, 4.56);
+
+  // CUES.swept @7.2 — F5: walls AND roof fly, slab remains alone
+  tl.to([P+"f5-walls", P+"f5-roof"], {autoAlpha:0, y:-60, duration:0.5, ease:"power2.in"}, 7.2);
+  tl.fromTo(P+"swept", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 7.7);
+
+  // CUES.cars @9.5 — F5: car slides ~100yd and tips (kept clear of the canvas right edge)
+  tl.to(P+"f5-car", {x:200, rotation:35, duration:1.0, ease:"power2.out"}, 9.5);
+  tl.fromTo(P+"dimline", {autoAlpha:0}, {autoAlpha:1, duration:0.4}, 10.4);
+
+  // CUES.bark @12.12 — F5: tree canopies vanish, trunks strip
+  tl.to([P+"f5-canopy-l", P+"f5-canopy-r"], {autoAlpha:0, duration:0.4}, 12.12);
+  tl.to([P+"f5-trunk-l", P+"f5-trunk-r"], {backgroundColor:"#cbbfa4", duration:0.4}, 12.12);
+  tl.fromTo(P+"bark", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 12.5);
+
+  // hold to end of the 20s window
+  tl.to({}, {duration:0.1}, 19.9);
+
+  window.__timelines["g-f4f5"] = tl;
+})();
+</script>
+</body></html>

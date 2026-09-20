@@ -1,0 +1,108 @@
+<!doctype html><html><head><meta charset="UTF-8">
+<script src="../gsap.min.js"></script></head><body style="margin:0;background:#000">
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; overflow:hidden; }
+  .eyebrow { position:absolute; left:96px; top:76px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; }
+  .rangebox { position:absolute; left:96px; top:120px; }
+  .rangenum { font-family:'Courier New',monospace; font-weight:700; font-size:76px; color:#5a768f; line-height:1; }
+  .rangelab { font-size:19px; letter-spacing:4px; color:#93a3b2; font-weight:700; margin-top:4px; }
+  .northlab { font-family:Arial,sans-serif; font-weight:700; font-size:26px; letter-spacing:3px; fill:#3a7a52; }
+  .blob { fill:#2fd66b; opacity:0.85; }
+  .hook { stroke:#7dffb0; stroke-width:4; fill:none; stroke-linecap:round; }
+  .rail { position:absolute; left:1440px; top:300px; width:400px; }
+  .row { margin-bottom:60px; }
+  .row .val { font-family:Arial,sans-serif; font-weight:700; font-size:30px; color:#dfe7ee; }
+  .row .val.danger { color:#e74c3c; }
+  .row .lab { font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:3px; color:#93a3b2; }
+  .flash { position:absolute; inset:0; background:#e74c3c; opacity:0; pointer-events:none; }
+  .chip { position:absolute; left:96px; bottom:96px; padding:22px 32px; background:rgba(10,16,24,.55); backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,.14); border-radius:28px; font-family:Arial,sans-serif; font-weight:700; font-size:26px; color:#f2f5f8; }
+</style>
+<div id="root" data-composition-id="g-radar-a3" data-width="1920" data-height="1080">
+  <div class="eyebrow" id="g-radar-a3-eyebrow">CINCINNATI &middot; WSR-57 &middot; BUILT 1960</div>
+  <div class="rangebox" id="g-radar-a3-sub"><div class="rangenum">125</div><div class="rangelab">MILE RANGE</div></div>
+  <div class="flash" id="g-radar-a3-flash"></div>
+  <svg viewBox="0 0 1920 1080" style="position:absolute;inset:0" id="g-radar-a3-svg">
+    <defs>
+      <linearGradient id="g-radar-a3-grad" gradientUnits="userSpaceOnUse" x1="960" y1="560" x2="960" y2="150">
+        <stop offset="0%" stop-color="#37f07a" stop-opacity="0.85"/>
+        <stop offset="100%" stop-color="#37f07a" stop-opacity="0"/>
+      </linearGradient>
+      <filter id="g-radar-a3-blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+    </defs>
+    <g id="g-radar-a3-scope">
+      <circle cx="960" cy="560" r="410" fill="#04110a" stroke="#1e5a33" stroke-width="2"/>
+      <circle cx="960" cy="560" r="360" fill="none" stroke="#1e5a33" stroke-width="1"/>
+      <circle cx="960" cy="560" r="270" fill="none" stroke="#1e5a33" stroke-width="1"/>
+      <circle cx="960" cy="560" r="180" fill="none" stroke="#1e5a33" stroke-width="1"/>
+      <circle cx="960" cy="560" r="90" fill="none" stroke="#1e5a33" stroke-width="1"/>
+      <text x="960" y="164" text-anchor="middle" class="northlab">NORTH</text>
+      <g id="g-radar-a3-sweepgrp">
+        <path d="M960,560 L819.7,174.7 A410,410 0 0,1 1100.3,174.7 Z" fill="url(#g-radar-a3-grad)"/>
+      </g>
+      <g id="g-radar-a3-blobs">
+        <g id="g-radar-a3-b0" transform="translate(1150,420)"><ellipse class="blob" rx="36" ry="30" filter="url(#g-radar-a3-blur)"/><g transform="translate(-27,22) rotate(135)"><path class="hook" id="g-radar-a3-hook0" d="M0,0 C -14,-6 -22,4 -18,16 C -14,26 2,24 8,14" stroke-dasharray="60" stroke-dashoffset="60"/></g></g>
+        <g id="g-radar-a3-b1" transform="translate(840,360)"><ellipse class="blob" rx="32" ry="27" filter="url(#g-radar-a3-blur)"/><g transform="translate(-24,20) rotate(135)"><path class="hook" d="M0,0 C -14,-6 -22,4 -18,16 C -14,26 2,24 8,14"/></g></g>
+        <g id="g-radar-a3-b2" transform="translate(1180,650)"><ellipse class="blob" rx="30" ry="25" filter="url(#g-radar-a3-blur)"/><g transform="translate(-22,18) rotate(135)"><path class="hook" d="M0,0 C -14,-6 -22,4 -18,16 C -14,26 2,24 8,14"/></g></g>
+        <g id="g-radar-a3-b3" transform="translate(760,700)"><ellipse class="blob" rx="34" ry="28" filter="url(#g-radar-a3-blur)"/><g transform="translate(-25,21) rotate(135)"><path class="hook" d="M0,0 C -14,-6 -22,4 -18,16 C -14,26 2,24 8,14"/></g></g>
+        <g id="g-radar-a3-b4" transform="translate(980,730)"><ellipse class="blob" rx="28" ry="24" filter="url(#g-radar-a3-blur)"/><g transform="translate(-21,17) rotate(135)"><path class="hook" d="M0,0 C -14,-6 -22,4 -18,16 C -14,26 2,24 8,14"/></g></g>
+      </g>
+    </g>
+  </svg>
+  <div class="rail" id="g-radar-a3-rail">
+    <div class="row" id="g-radar-a3-row1"><div class="val">SEES RAIN</div></div>
+    <div class="row" id="g-radar-a3-row2"><div class="val danger">DOES NOT SEE WIND</div></div>
+    <div class="row" id="g-radar-a3-row3"><div class="lab">A TORNADO IS A HOOK ON THE EDGE</div></div>
+  </div>
+  <div class="chip" id="g-radar-a3-chip">TORNADO WARNING &middot; HAMILTON COUNTY</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const ID = 'g-radar-a3';
+  /* a3-s2.words.json exists (rendered wav, 38.017s). All cues below are exact word
+     timestamps read from that file — CONFIRMED, not provisional. Comp duration extends
+     0.4s past the wav's own duration to give the blackout its stated 1.5s eyebrow-only hold
+     (a3-s2.txt: "...and then, at 5:40pm, the office went dark." "dark." ends 37.64s). */
+  const CUES = {
+    rain: 4.68,      // "rain,"
+    wind: 6.22,      // "wind."
+    hook: 8.94,      // "hook" (first instance: "...as a hook on the edge...")
+    fourofive: 15.06, // "4" of "4.05 pm"
+    fivehooks: 32.56, // "five" of "looking at five hooks at once"
+    dark: 37.34       // "dark."
+  };
+  const DUR = 39.2; // dark. ends 37.64 + ~1.5s eyebrow-only hold, rounded
+
+  const tl = gsap.timeline({ paused: true });
+  tl.set('#' + ID + '-eyebrow', { autoAlpha: 1 }, 0);
+  tl.set('#' + ID + '-sub', { autoAlpha: 1 }, 0);
+  tl.set(['#' + ID + '-row1', '#' + ID + '-row2', '#' + ID + '-row3'], { autoAlpha: 0, y: 24 }, 0);
+  tl.set('#' + ID + '-chip', { autoAlpha: 0 }, 0);
+  const others = ['b1', 'b2', 'b3', 'b4'];
+  tl.set('#' + ID + '-b0', { opacity: 0 }, 0);
+  others.forEach((b) => tl.set('#' + ID + '-' + b, { opacity: 0.15, scale: 0.85, transformOrigin: 'center' }, 0));
+
+  /* continuous element: the sweep rotates the whole window, stopping only at the blackout */
+  tl.fromTo('#' + ID + '-sweepgrp', { rotation: 0 }, { rotation: 360 * (CUES.dark / 4), duration: CUES.dark, ease: 'none', svgOrigin: '960 560' }, 0);
+
+  tl.fromTo('#' + ID + '-row1', { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, CUES.rain);
+  tl.fromTo('#' + ID + '-row2', { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, CUES.wind);
+  tl.fromTo('#' + ID + '-flash', { opacity: 0 }, { opacity: 0.18, duration: 0.12, yoyo: true, repeat: 1 }, CUES.wind);
+
+  tl.fromTo('#' + ID + '-b0', { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(2)' }, CUES.hook);
+  tl.to('#' + ID + '-hook0', { strokeDashoffset: 0, duration: 0.4, ease: 'power2.out' }, CUES.hook);
+  tl.fromTo('#' + ID + '-row3', { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, CUES.hook + 0.1);
+
+  tl.fromTo('#' + ID + '-chip', { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.35 }, CUES.fourofive);
+  tl.to('#' + ID + '-chip', { autoAlpha: 0, duration: 0.35 }, CUES.fourofive + 6);
+
+  others.forEach((b, i) => {
+    tl.fromTo('#' + ID + '-' + b, { opacity: 0.15, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.25, ease: 'back.out(2)' }, CUES.fivehooks + i * 0.2);
+  });
+
+  tl.to(['#' + ID + '-scope', '#' + ID + '-rail'], { autoAlpha: 0, duration: 0.15 }, CUES.dark);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</body></html>

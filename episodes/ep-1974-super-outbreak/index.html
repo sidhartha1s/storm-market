@@ -18,7 +18,7 @@
     .hold { position: absolute; inset: 0; pointer-events: none; } /* declared hold: no voice, picture keeps moving (DESIGN.md) */
     /* ---- Abril figure popup (channel device: red, text-shadow, <=3 words, mid-screen; box kept clear of comp rails) ---- */
     @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
-    .popfig { position: absolute; left: 400px; right: 500px; top: 36%; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; isolation: isolate; }
+    .popfig { position: absolute; left: 200px; right: 300px; top: 36%; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; isolation: isolate; }
     .popfig .pf-big { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 150px; color: #d0121f; letter-spacing: 0.04em;
       text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
     .popfig .pf-sub { display: block; margin-top: 12px; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 38px; color: #f4f0e8;
@@ -27,6 +27,8 @@
     .popfig::before { content: ''; position: absolute; left: 14%; right: 14%; top: -90px; bottom: -70px; z-index: -1;
       background: radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.32) 40%, rgba(0,0,0,0) 72%); }
     .popfig.high { top: 9%; }
+    .popfig.narrow { left: 400px; right: 500px; } /* beside a right-hand rail */
+    .popfig.wide .pf-big { font-size: 118px; }
     .popfig.high .pf-big { font-size: 120px; }
     /* ---- glass card: the five schools, named in narration order ---- */
     .ixcard { position: absolute; z-index: 6; background: rgba(10,16,24,0.58); backdrop-filter: blur(16px) saturate(1.15); -webkit-backdrop-filter: blur(16px) saturate(1.15);
@@ -42,7 +44,7 @@
   </style>
 </head>
 <body>
-<div id="root" data-composition-id="ep-1974-super-outbreak" data-start="0" data-width="1920" data-height="1080" data-duration="1058.88" data-fps="30">
+<div id="root" data-composition-id="ep-1974-super-outbreak" data-start="0" data-width="1920" data-height="1080" data-duration="1059.0" data-fps="30">
 
   <!-- ============ NARRATION (research/schedule.json) ============ -->
   <audio id="nx-h" src="audio/h.wav" data-start="5.200" data-duration="22.126" data-volume="1"></audio>
@@ -147,9 +149,9 @@
   <section class="clip still-wrap" id="c-a1-6" data-start="200.7" data-duration="5.5" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a1-6" src="media/act-h-a2/brandenburg-bus-garage-1974.png" alt=""></section>
   <section class="clip still-wrap" id="c-a1-7" data-start="206.2" data-duration="5.8" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a1-7" src="media/act-h-a2/brandenburg-nws-20.jpg" alt=""></section>
   <section class="clip still-wrap" id="c-a1-8" data-start="212.0" data-duration="6.0" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a1-8" src="media/act-h-a2/brandenburg-nws-25.jpg" alt=""></section>
-  <section class="clip" id="p-pf-128" data-start="192.6" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-128"><span class="pf-big">128 HOMES</span><span class="pf-sub">30 BUSINESSES · GONE</span></div></section>
+  <section class="clip" id="p-pf-128" data-start="192.6" data-duration="3.0" data-track-index="5" data-overlap-ok="sits over a cutaway still; the map is covered"><div class="popfig" id="pf-128"><span class="pf-big">128 HOMES</span><span class="pf-sub">30 BUSINESSES · GONE</span></div></section>
   <div id="host-haley" data-composition-id="g-person-haley" data-composition-src="compositions/g-person-haley.html" data-start="208.3" data-duration="14.0" data-track-index="4" data-width="1920" data-height="1080"></div>
-  <section class="clip" id="p-pf-169" data-start="214.7" data-duration="3.4" data-track-index="5"><div class="popfig" id="pf-169"><span class="pf-big" id="pf-169-n">0</span><span class="pf-sub">PEOPLE CARRIED OUT · BY HIS OWN COUNT</span></div></section>
+  <section class="clip" id="p-pf-169" data-start="214.7" data-duration="3.4" data-track-index="5" data-overlap-ok="sits over a cutaway still; the map is covered"><div class="popfig" id="pf-169"><span class="pf-big" id="pf-169-n">0</span><span class="pf-sub">CARRIED OUT · BY HIS OWN COUNT</span></div></section>
   <div id="host-allen" data-composition-id="g-person-allen" data-composition-src="compositions/g-person-allen.html" data-start="228.054" data-duration="12.0" data-track-index="4" data-width="1920" data-height="1080"></div>
   <section class="clip still-wrap" id="c-a1-10" data-start="228.05" data-duration="5.95" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a1-10" src="media/act-h-a2/brandenburg-nws-2.jpg" alt=""></section>
   <section class="clip still-wrap" id="c-a1-11" data-start="234.0" data-duration="5.5" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a1-11" src="media/act-h-a2/brandenburg-nws-5.jpg" alt=""></section>
@@ -167,7 +169,7 @@
   <!-- hold-2 303.36–307.36: the bus on the stage · slow push, wind bed, no voice (no bus-on-stage photo sourced yet: aerial + popfig carry it) -->
   <section class="clip still-wrap" id="c-a2-3b" data-start="303.36" data-duration="4.198" data-track-index="1"><img id="kb-a2-3b" src="media/act-h-a2/xenia-aerial-kilinc-030.jpg" alt=""></section>
   <div id="host-heath" data-composition-id="g-person-heath" data-composition-src="compositions/g-person-heath.html" data-start="288.5" data-duration="12.0" data-track-index="4" data-width="1920" data-height="1080"></div>
-  <section class="clip" id="p-pf-bus" data-start="298.9" data-duration="4.0" data-track-index="5"><div class="popfig" id="pf-bus"><span class="pf-big">A SCHOOL BUS</span><span class="pf-sub">ON THE STAGE THEY HAD JUST LEFT</span></div></section>
+  <section class="clip" id="p-pf-bus" data-start="298.9" data-duration="4.0" data-track-index="5"><div class="popfig wide" id="pf-bus"><span class="pf-big">A SCHOOL BUS</span><span class="pf-sub">ON THE STAGE THEY HAD JUST LEFT</span></div></section>
   <section class="clip still-wrap" id="c-a2-4" data-start="307.558" data-duration="5.414" data-track-index="1"><img id="kb-a2-4" src="media/act-h-a2/xenia-aerial-natlguard-dvids-1.jpg" alt=""></section>
   <div id="host-scale-a2" data-composition-id="g-scale-a2" data-composition-src="compositions/g-scale-a2.html" data-start="312.972" data-duration="6.0" data-track-index="2" data-width="1920" data-height="1080"></div>
   <section class="clip still-wrap" id="c-a2-5" data-start="318.972" data-duration="5.528" data-track-index="1"><img id="kb-a2-5" src="media/act-h-a2/wpafb-aerial-01569.jpg" alt=""></section>
@@ -182,15 +184,15 @@
   <section class="clip still-wrap" id="c-a2-9" data-start="342.0" data-duration="5.5" data-track-index="1"><img id="kb-a2-9" src="media/act-h-a2/xenia-natlguard-dvids-2.jpg" alt=""></section>
   <section class="clip still-wrap" id="c-a2-10" data-start="347.5" data-duration="6.0" data-track-index="1"><img id="kb-a2-10" src="media/act-h-a2/xenia-natlguard-dvids-4.jpg" alt=""></section>
   <div id="host-gilligan" data-composition-id="g-person-gilligan" data-composition-src="compositions/g-person-gilligan.html" data-start="343.0" data-duration="12.0" data-track-index="4" data-width="1920" data-height="1080"></div>
-  <section class="clip" id="p-pf-1445" data-start="348.0" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-1445"><span class="pf-big">1,445 GUARDSMEN</span><span class="pf-sub">ON DUTY BY MIDNIGHT</span></div></section>
+  <section class="clip" id="p-pf-1445" data-start="348.0" data-duration="3.0" data-track-index="5"><div class="popfig wide" id="pf-1445"><span class="pf-big">1,445 GUARDSMEN</span><span class="pf-sub">ON DUTY BY MIDNIGHT</span></div></section>
   <section class="clip still-wrap" id="c-a2-11" data-start="353.5" data-duration="4.5" data-track-index="1"><img id="kb-a2-11" src="media/act-h-a2/wpafb-aerial-01585.jpg" alt=""></section>
   <section class="clip still-wrap" id="c-a2-12" data-start="358.0" data-duration="4.2" data-track-index="1"><img id="kb-a2-12" src="media/act-h-a2/wpafb-aerial-01590.jpg" alt=""></section>
-  <section class="clip" id="p-pf-apr9" data-start="362.5" data-duration="3.5" data-track-index="5"><div class="popfig" id="pf-apr9"><span class="pf-big">APRIL 9, 1974</span><span class="pf-sub">PRESIDENT NIXON WALKS XENIA</span></div></section>
+  <section class="clip" id="p-pf-apr9" data-start="362.5" data-duration="3.5" data-track-index="5"><div class="popfig wide" id="pf-apr9"><span class="pf-big">APRIL 9, 1974</span><span class="pf-sub">PRESIDENT NIXON WALKS XENIA</span></div></section>
   <section class="clip still-wrap" id="c-a2-13" data-start="362.2" data-duration="5.8" data-track-index="1"><img id="kb-a2-13" src="media/act-h-a2/wpafb-aerial-01596.jpg" alt=""></section>
   <section class="clip still-wrap" id="c-a2-14" data-start="368.0" data-duration="5.8" data-track-index="1"><img id="kb-a2-14" src="media/act-a3-a4/commons_sayler_park_tornado.jpg" alt=""></section>
   <section class="clip still-wrap" id="c-a2-15" data-start="373.8" data-duration="4.7" data-track-index="1"><img id="kb-a2-15" src="media/act-a3-a4/commons_sayler_park_f5.jpg" alt=""></section>
   <section class="clip still-wrap" id="c-a2-16" data-start="378.5" data-duration="5.15" data-track-index="1"><img id="kb-a2-16" src="media/act-a3-a4/commons_xenia_radar.png" alt=""></section>
-  <section class="clip" id="p-pf-50mi" data-start="376.7" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-50mi"><span class="pf-big">50 MILES WEST</span><span class="pf-sub">CINCINNATI · 8 MINUTES EARLIER</span></div></section>
+  <section class="clip" id="p-pf-50mi" data-start="376.7" data-duration="3.0" data-track-index="5"><div class="popfig wide" id="pf-50mi"><span class="pf-big">50 MILES WEST</span><span class="pf-sub">CINCINNATI · 8 MINUTES BEFORE</span></div></section>
   <!-- cta-hinge tease: Fujita's own hand-drawn survey maps, slow push into the dip -->
   <section class="clip still-wrap" id="c-a2-17" data-start="383.65" data-duration="3.95" data-track-index="1"><img id="kb-a2-17" src="media/act-a3-a4/hun_fujita_forbes_handdrawn.jpg" alt=""></section>
   <section class="clip still-wrap" id="c-a2-18" data-start="387.6" data-duration="3.72" data-track-index="1"><img id="kb-a2-18" src="media/act-a5-z/hun-fujita-forbes-track-madison-1974.png" alt=""></section>
@@ -201,7 +203,7 @@
   <div id="host-f6" data-composition-id="g-f6" data-composition-src="compositions/g-f6.html" data-start="410.9" data-duration="12.56" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-radar-a3" data-composition-id="g-radar-a3" data-composition-src="compositions/g-radar-a3.html" data-start="423.46" data-duration="44.03" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-cite-warning" data-composition-id="g-cite-warning" data-composition-src="compositions/g-cite-warning.html" data-start="438.5" data-duration="8.0" data-track-index="4" data-width="1920" data-height="1080"></div>
-  <section class="clip" id="p-pf-445" data-start="450.0" data-duration="2.6" data-track-index="5"><div class="popfig" id="pf-445"><span class="pf-big">4:45 PM</span><span class="pf-sub">WARNING RENEWED</span></div></section>
+  <section class="clip" id="p-pf-445" data-start="450.0" data-duration="2.6" data-track-index="5"><div class="popfig narrow" id="pf-445"><span class="pf-big">4:45 PM</span><span class="pf-sub">WARNING RENEWED</span></div></section>
   <section class="clip still-wrap" id="c-a3-1" data-start="454.5" data-duration="5.5" data-track-index="3" data-overlap-ok="cutaway over the scope"><img id="kb-a3-1" src="media/act-a3-a4/iln_CVG3.png" alt=""></section>
   <div id="host-map-a3" data-composition-id="g-map-a3" data-composition-src="compositions/g-map-a3.html" data-start="467.49" data-duration="127.94" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-cite-cvg" data-composition-id="g-cite-cvg" data-composition-src="compositions/g-cite-cvg.html" data-start="486.8" data-duration="9.0" data-track-index="4" data-width="1920" data-height="1080"></div>
@@ -274,7 +276,7 @@
   <div id="host-rooms" data-composition-id="g-thennow-rooms" data-composition-src="compositions/g-thennow-rooms.html" data-start="1025.0" data-duration="11.01" data-track-index="2" data-width="1920" data-height="1080"></div>
 
   <!-- ============ Z · CLOSE (1036.01–1058.88) ============ -->
-  <div id="host-outro" data-composition-id="g-outro" data-composition-src="compositions/g-outro.html" data-start="1036.01" data-duration="22.87" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-outro" data-composition-id="g-outro" data-composition-src="compositions/g-outro.html" data-start="1036.01" data-duration="22.99" data-track-index="2" data-width="1920" data-height="1080"></div>
 
   <div id="vignette"></div>
   <canvas id="grain" width="480" height="270"></canvas>
@@ -284,7 +286,7 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const DUR = 1058.88;
+  const DUR = 1059.0;
   function kb(sel, at, dur, s0, s1, x0, x1, y0, y1) {
     tl.fromTo(sel, { scale: s0, x: x0, y: y0, transformOrigin: "center" }, { scale: s1, x: x1, y: y1, duration: dur, ease: "none" }, at);
   }

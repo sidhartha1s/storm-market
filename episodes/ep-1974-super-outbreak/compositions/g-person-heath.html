@@ -32,9 +32,10 @@
   </div>
 </div>
 <script>
+window.__timelines = window.__timelines || {};
 (function() {
   /* A2-S2 span, audio/a2-s2.words.json exact (21.035s, audio/manifest.json). */
-  const DUR = 21.035;
+  const DUR = 12.0; // host window set by the orchestrator (index.html)
   const tl = gsap.timeline({ paused: true });
   const P = "#g-person-heath-";
   tl.set(P+"underline", { scaleX: 0 }, 0);

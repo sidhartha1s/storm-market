@@ -18,7 +18,12 @@ def fold(src: str) -> str:
     for k in sorted(consts, key=len, reverse=True):          # longest first: CUES.six before CUES
         src = re.sub(r'(?<![\w.])' + re.escape(k) + r'(?![\w.(])', repr(consts[k]), src)
     num = r'(-?\d+(?:\.\d+)?)'
+    ops = {"+": lambda a, b: a + b, "-": lambda a, b: a - b, "*": lambda a, b: a * b}
+    def calc(m):                                              # dates like 2026-09 stay text
+        a, b = m.group(1), m.group(3)
+        if (len(a) > 1 and a.lstrip("-").startswith("0") and "." not in a) or (len(b) > 1 and b.startswith("0") and "." not in b):
+            return m.group(0)
+        return repr(round(ops[m.group(2)](float(a), float(b)), 4))
     for _ in range(3):                                        # a + b - c
-        src = re.sub(num + r'\s*([-+*])\s*' + num,
-                     lambda m: repr(eval(f"{m.group(1)}{m.group(2)}{m.group(3)}")), src)
+        src = re.sub(num + r'\s*([-+*])\s*' + num, calc, src)
     return src

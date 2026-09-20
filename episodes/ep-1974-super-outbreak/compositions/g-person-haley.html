@@ -34,11 +34,12 @@
   </div>
 </div>
 <script>
+window.__timelines = window.__timelines || {};
 (function() {
   /* A1-S2 span. audio/a1-s2.words.json not present on disk right now (segment mid-regeneration by
      another agent); audio/manifest.json still carries the last-measured duration for this id.
      PROVISIONAL duration — re-check against manifest before mounting in index.html. */
-  const DUR = 50.601; // audio/manifest.json a1-s2.duration — PROVISIONAL (no live wav/words.json at build time)
+  const DUR = 14.0; // host window set by the orchestrator (index.html)
   const tl = gsap.timeline({ paused: true });
   const P = "#g-person-haley-";
   tl.set(P+"underline", { scaleX: 0 }, 0);

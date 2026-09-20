@@ -1,0 +1,200 @@
+{
+ "a1-s1": {
+  "wav": "audio/a1-s1.wav",
+  "duration": 32.637,
+  "words": 100,
+  "wpm": 183.8
+ },
+ "a1-s1b": {
+  "wav": "audio/a1-s1b.wav",
+  "duration": 27.435,
+  "words": 78,
+  "wpm": 170.6
+ },
+ "a1-s2": {
+  "wav": "audio/a1-s2.wav",
+  "duration": 52.564,
+  "words": 168,
+  "wpm": 191.8
+ },
+ "a2-s1": {
+  "wav": "audio/a2-s1.wav",
+  "duration": 29.946,
+  "words": 89,
+  "wpm": 178.3
+ },
+ "a2-s3": {
+  "wav": "audio/a2-s3.wav",
+  "duration": 48.782,
+  "words": 138,
+  "wpm": 169.7
+ },
+ "a2-s4": {
+  "wav": "audio/a2-s4.wav",
+  "duration": 20.999,
+  "words": 62,
+  "wpm": 177.1
+ },
+ "a2-s5": {
+  "wav": "audio/a2-s5.wav",
+  "duration": 7.363,
+  "words": 24,
+  "wpm": 195.6
+ },
+ "a3-s1": {
+  "wav": "audio/a3-s1.wav",
+  "duration": 14.454,
+  "words": 43,
+  "wpm": 178.5
+ },
+ "a3-s2": {
+  "wav": "audio/a3-s2.wav",
+  "duration": 43.582,
+  "words": 148,
+  "wpm": 203.8
+ },
+ "a3-s2b": {
+  "wav": "audio/a3-s2b.wav",
+  "duration": 33.146,
+  "words": 104,
+  "wpm": 188.3
+ },
+ "a3-s3": {
+  "wav": "audio/a3-s3.wav",
+  "duration": 40.599,
+  "words": 127,
+  "wpm": 187.7
+ },
+ "a3-s4": {
+  "wav": "audio/a3-s4.wav",
+  "duration": 38.419,
+  "words": 108,
+  "wpm": 168.7
+ },
+ "a3-s5": {
+  "wav": "audio/a3-s5.wav",
+  "duration": 14.126,
+  "words": 41,
+  "wpm": 174.1
+ },
+ "a4-s2": {
+  "wav": "audio/a4-s2.wav",
+  "duration": 54.818,
+  "words": 171,
+  "wpm": 187.2
+ },
+ "a4-s3": {
+  "wav": "audio/a4-s3.wav",
+  "duration": 27.946,
+  "words": 80,
+  "wpm": 171.8
+ },
+ "a5-s1": {
+  "wav": "audio/a5-s1.wav",
+  "duration": 28.163,
+  "words": 85,
+  "wpm": 181.1
+ },
+ "a5-s2": {
+  "wav": "audio/a5-s2.wav",
+  "duration": 36.127,
+  "words": 109,
+  "wpm": 181.0
+ },
+ "a5-s3": {
+  "wav": "audio/a5-s3.wav",
+  "duration": 27.582,
+  "words": 92,
+  "wpm": 200.1
+ },
+ "a5-s4": {
+  "wav": "audio/a5-s4.wav",
+  "duration": 42.382,
+  "words": 130,
+  "wpm": 184.0
+ },
+ "a6-s1": {
+  "wav": "audio/a6-s1.wav",
+  "duration": 49.072,
+  "words": 136,
+  "wpm": 166.3
+ },
+ "a6-s1b": {
+  "wav": "audio/a6-s1b.wav",
+  "duration": 27.727,
+  "words": 80,
+  "wpm": 173.1
+ },
+ "a6-s2": {
+  "wav": "audio/a6-s2.wav",
+  "duration": 51.071,
+  "words": 156,
+  "wpm": 183.3
+ },
+ "a6-s3": {
+  "wav": "audio/a6-s3.wav",
+  "duration": 33.545,
+  "words": 115,
+  "wpm": 205.7
+ },
+ "h": {
+  "wav": "audio/h.wav",
+  "duration": 22.126,
+  "words": 71,
+  "wpm": 192.5
+ },
+ "i-1": {
+  "wav": "audio/i-1.wav",
+  "duration": 45.946,
+  "words": 146,
+  "wpm": 190.7
+ },
+ "i-2": {
+  "wav": "audio/i-2.wav",
+  "duration": 37.546,
+  "words": 121,
+  "wpm": 193.4
+ },
+ "z-1": {
+  "wav": "audio/z-1.wav",
+  "duration": 18.418,
+  "words": 56,
+  "wpm": 182.4
+ },
+ "a1-s3a": {
+  "wav": "audio/a1-s3a.wav",
+  "duration": 14.236,
+  "words": 46,
+  "wpm": 193.9
+ },
+ "a1-s3b": {
+  "wav": "audio/a1-s3b.wav",
+  "duration": 9.654,
+  "words": 30,
+  "wpm": 186.4
+ },
+ "a2-s2a": {
+  "wav": "audio/a2-s2a.wav",
+  "duration": 16.418,
+  "words": 57,
+  "wpm": 208.3
+ },
+ "a2-s2b": {
+  "wav": "audio/a2-s2b.wav",
+  "duration": 4.964,
+  "words": 16,
+  "wpm": 193.4
+ },
+ "a4-s1a": {
+  "wav": "audio/a4-s1a.wav",
+  "duration": 28.417,
+  "words": 89,
+  "wpm": 187.9
+ },
+ "a4-s1b": {
+  "wav": "audio/a4-s1b.wav",
+  "duration": 21.981,
+  "words": 68,
+  "wpm": 185.6
+ }
+}

@@ -1,0 +1,94 @@
+<!doctype html><html><head><meta charset="UTF-8">
+<script src="../gsap.min.js"></script></head><body style="margin:0;background:#000">
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; overflow:hidden; }
+  .eyebrow { position:absolute; left:0; right:0; top:130px; text-align:center; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; }
+  .funnelbg { position:absolute; left:1500px; top:340px; width:340px; height:520px; opacity:0.08; }
+  .row { position:absolute; left:310px; width:1300px; height:110px; margin-top:-55px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px); border:1px solid rgba(42,54,68,0.8); border-radius:26px;
+    display:flex; align-items:center; padding:0 40px; box-sizing:border-box; overflow:visible; position:absolute; }
+  #g-tnrm-row1 { top:300px; } #g-tnrm-row2 { top:520px; } #g-tnrm-row3 { top:740px; }
+  .icon { width:90px; height:90px; flex:0 0 90px; }
+  .rtext { font-weight:700; font-size:30px; color:#dfe7ee; letter-spacing:0.5px; margin-left:34px; }
+  .strike { position:absolute; left:0; top:50%; width:100%; height:6px; background:#e74c3c;
+    transform:scaleX(0); transform-origin:left center; }
+  .footer { position:absolute; left:0; right:0; top:940px; text-align:center; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; }
+</style>
+<div id="root" data-composition-id="g-thennow-rooms" data-width="1920" data-height="1080">
+  <div class="eyebrow" id="g-tnrm-eyebrow">WHAT THE MINUTES BUY YOU</div>
+
+  <svg class="funnelbg" id="g-tnrm-funnelbg" viewBox="0 0 340 520">
+    <polygon points="60,0 280,0 220,420 120,420" fill="#5a768f"/>
+    <ellipse cx="170" cy="470" rx="90" ry="24" fill="#5a768f"/>
+  </svg>
+
+  <div class="row" id="g-tnrm-row1">
+    <svg class="icon" viewBox="0 0 90 90">
+      <line x1="8" y1="55" x2="82" y2="55" stroke="#93a3b2" stroke-width="4"/>
+      <rect x="20" y="55" width="50" height="26" fill="none" stroke="#93a3b2" stroke-width="4"/>
+      <path d="M 20 55 L 45 34 L 70 55" fill="none" stroke="#93a3b2" stroke-width="4"/>
+      <rect x="38" y="40" width="14" height="10" fill="#93a3b2"/>
+    </svg>
+    <div class="rtext">STORM SHELTER</div>
+  </div>
+
+  <div class="row" id="g-tnrm-row2">
+    <svg class="icon" viewBox="0 0 90 90">
+      <rect x="12" y="20" width="66" height="56" fill="none" stroke="#93a3b2" stroke-width="4"/>
+      <line x1="12" y1="48" x2="78" y2="48" stroke="#93a3b2" stroke-width="2"/>
+      <line x1="45" y1="20" x2="45" y2="76" stroke="#93a3b2" stroke-width="2"/>
+      <rect x="30" y="34" width="30" height="28" fill="#e8c56a" opacity="0.7"/>
+    </svg>
+    <div class="rtext">INSIDE ROOM &middot; LOWEST FLOOR</div>
+  </div>
+
+  <div class="row" id="g-tnrm-row3">
+    <svg class="icon" viewBox="0 0 90 90">
+      <polygon points="55,10 85,10 72,50 60,50" fill="#5a768f" opacity="0.7"/>
+      <rect x="4" y="58" width="54" height="20" rx="5" fill="none" stroke="#93a3b2" stroke-width="4"/>
+      <rect x="16" y="46" width="30" height="14" rx="4" fill="none" stroke="#93a3b2" stroke-width="4"/>
+      <circle cx="14" cy="78" r="6" fill="#93a3b2"/><circle cx="46" cy="78" r="6" fill="#93a3b2"/>
+    </svg>
+    <div class="rtext">A CAR OUTRUNNING A MILE&#8209;WIDE TORNADO</div>
+    <div class="strike" id="g-tnrm-strike"></div>
+  </div>
+
+  <div class="footer" id="g-tnrm-footer">KNOW WHICH ROOM YOU RUN TO</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-tnrm-";
+
+  tl.set(P+"eyebrow", {autoAlpha:0}, 0);
+  tl.set([P+"row1", P+"row2", P+"row3"], {autoAlpha:0, x:40}, 0);
+  tl.set(P+"footer", {autoAlpha:0}, 0);
+
+  tl.fromTo(P+"eyebrow", {autoAlpha:0, y:-14}, {autoAlpha:1, y:0, duration:0.5}, 0.1);
+
+  // continuous faint funnel silhouette drifting slowly behind row 3, whole 14s duration
+  tl.to(P+"funnelbg", {y:24, x:-16, duration:14, ease:"sine.inOut", yoyo:true, repeat:-1}, 0);
+
+  /* cues from audio/a6-s3.txt @183.24wpm est., PROVISIONAL (no words.json yet); local zero = CUES.card (global 24.89):
+     shelter@0.32 room@1.31 cant@4.25 car@5.23 know@7.53 */
+  tl.fromTo(P+"row1", {autoAlpha:0, x:40}, {autoAlpha:1, x:0, duration:0.5}, 0.32);
+  tl.to(P+"row1", {borderColor:"#e8c56a", duration:0.4}, 0.62);
+
+  tl.fromTo(P+"row2", {autoAlpha:0, x:40}, {autoAlpha:1, x:0, duration:0.5}, 1.31);
+  tl.to(P+"row2", {borderColor:"#e8c56a", duration:0.4}, 1.61);
+
+  tl.fromTo(P+"row3", {autoAlpha:0, x:40}, {autoAlpha:1, x:0, duration:0.5}, 5.23);
+
+  // CUES.cant @4.25 (word "not" in "do not get") — the strike lands right after the row is fully in view
+  tl.fromTo(P+"strike", {scaleX:0}, {scaleX:1, duration:0.3, ease:"power2.out"}, 5.73);
+  tl.to(P+"row3", {autoAlpha:0.6, duration:0.4}, 6.03);
+
+  tl.fromTo(P+"footer", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.5}, 7.53);
+
+  tl.to({}, {duration:0.1}, 13.7);
+
+  window.__timelines["g-thennow-rooms"] = tl;
+})();
+</script>
+</body></html>
