@@ -121,9 +121,11 @@ window.__timelines = window.__timelines || {};
   stackBelow("#g-map-a4-hl1", "#g-map-a4-sb1", 16);
   stackBelow("#g-map-a4-hl1", "#g-map-a4-sb2", 16);
   stackBelow("#g-map-a4-hl2", "#g-map-a4-sb3", 16);
-  const CUES = { moulton: 8.63, second: 16.95, guin: 58.99 };
-  const HOLD_START = CUES.second + 4, HOLD_END = HOLD_START + 3.5; // T6 pulses through the scripted hold
-  const DUR = 98.74;
+  // Retimed 2026-09-21 (orchestrator): A4-S1 was split around a 3.5s hold, moving every cue after "second".
+  const CUES = { moulton: 8.63, second: 16.95, guin: 66.77 };
+  const HOLD_START = 28.42, HOLD_END = 31.92; // T6 pulses through the scripted hold
+  const EASE_BACK_START = 66.0; // view eases back to 1.0x from here, 0.77s before T7's dot/draw at CUES.guin
+  const DUR = 78.5;
 
   tl.fromTo(P+"drift", { y: -100 }, { y: 100, duration: DUR, ease: "none" }, 0);
 
