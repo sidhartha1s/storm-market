@@ -79,7 +79,7 @@ window.__timelines = window.__timelines || {};
 
   tl.set([P+"eyebrow", P+"headline", P+"footer", P+"lab1", P+"lab2", P+"lab3", P+"enginelabel"], {autoAlpha:0}, 0);
   tl.set([P+"col1", P+"col2", P+"col3"], {autoAlpha:0, scale:0.6}, 0);
-  tl.set(P+"front", {x:-40}, 0);
+  tl.set(P+"front", {x:-40, autoAlpha:0}, 0);
 
   tl.fromTo(P+"eyebrow", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.6}, 0.4);
   tl.fromTo(P+"headline", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.6}, 1.0);
@@ -95,15 +95,16 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"lab2", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4}, 9.82);
   tl.fromTo(P+"lab3", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4}, 12.77);
 
-  // CUES.front @16.70 — cold front slides across all bands over 3s
-  tl.to(P+"front", {x: 1180, duration: 3, ease: "power1.inOut"}, 16.70);
-  // storms rise only where the front has passed — triggered as the front sweep crosses each column's x
-  tl.to(P+"col1", {autoAlpha:1, scale:1, duration:0.6, ease:"power2.out"}, 17.0);
-  tl.to(P+"col1", {rotation:180, duration:16, ease:"none"}, 17.0);
-  tl.to(P+"col2", {autoAlpha:1, scale:1, duration:0.6, ease:"power2.out"}, 17.98);
-  tl.to(P+"col2", {rotation:180, duration:15, ease:"none"}, 17.98);
-  tl.to(P+"col3", {autoAlpha:1, scale:1, duration:0.6, ease:"power2.out"}, 18.99);
-  tl.to(P+"col3", {rotation:180, duration:14, ease:"none"}, 18.99);
+  // CUES.front @16.70 — cold front slides across all bands over 3s, linear so the crossing math below holds
+  tl.to(P+"front", {autoAlpha:1, duration:0.01}, 16.70);
+  tl.to(P+"front", {x: 1180, duration: 3, ease: "none"}, 16.70);
+  // storms rise only AFTER the front's linear sweep (x = 96 + 1180*(t-16.70)/3) has visually crossed each column's x-slot
+  tl.to(P+"col1", {autoAlpha:1, scale:1, duration:0.6, ease:"power2.out"}, 17.88);
+  tl.to(P+"col1", {rotation:180, duration:16, ease:"none"}, 17.88);
+  tl.to(P+"col2", {autoAlpha:1, scale:1, duration:0.6, ease:"power2.out"}, 18.49);
+  tl.to(P+"col2", {rotation:180, duration:15, ease:"none"}, 18.49);
+  tl.to(P+"col3", {autoAlpha:1, scale:1, duration:0.6, ease:"power2.out"}, 19.10);
+  tl.to(P+"col3", {rotation:180, duration:14, ease:"none"}, 19.10);
 
   tl.fromTo(P+"footer", {autoAlpha:0}, {autoAlpha:1, duration:0.7}, 22.59);
 
