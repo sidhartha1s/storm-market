@@ -1382,3 +1382,20 @@ short is not) and bump on identical metrics.
   that declares neither. Verified: ep6 trips on `kb-radarloop` (silence-muxed, harmless, but undeclared);
   ms-krakatau-sirens passes both gates with the same 19 audible elements as before.
 - Rule: every `<video>` says what its audio is. `muted` for b-roll, `data-volume` for inserts and the CTA.
+## 2026-09-20 — hooks and CTAs carry fluff; the owner is cutting 30 to 40 s out of shipped videos by hand
+Owner, 20 Sep 26: "your hook, maybe the very first sentence, maybe the second or third, it's just fluff. It doesn't get
+to the point. At least give them the ROI." He trimmed Joplin and Tri-State on YouTube himself. Studio data: Tri-State
+21 % watched, Joplin 25 %, Carr Fire 5.8 % after day one; the losses sit in the first 10 to 15 s.
+Rules, every script from ep-1974 on:
+1. **Sentence one is the payoff the title promised.** Numbers first ("Seven F5 tornadoes in one afternoon. Three
+   hundred and thirty dead."), the specific image second, the question third. No scene-setting before the ROI.
+2. **The hook is 45 to 60 words, 20 to 25 s including the insert.** Anything the viewer does not need to decide
+   to stay is cut. Test: delete the first sentence; if the hook still works, the sentence was fluff.
+3. **No roadmap phrases anywhere** ("one more thing before", "here is what that day would become", "in the next
+   twenty minutes"). They read as delay. Fold the numbers into a sentence that already carries stakes.
+4. **The CTA hinge is one tease sentence, not a paragraph.** The segment before the CTA ends on the loop in ≤ 25
+   words; the segment after opens with the payoff in its first three words ("He wrote a six.").
+5. **Owner-cut SRT diff is the retention gate for the next script:** before writing a new hook, diff the shipped
+   SRT of the last video against what is live on YouTube and list what the owner removed; do not write those
+   shapes again. (20 Sep 26: the live durations of Joplin, Tri-State and Super Outbreak still match the shipped
+   SRTs to within seconds, so the trims may still be processing; re-check before the next script.)
