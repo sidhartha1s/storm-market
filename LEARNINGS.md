@@ -1371,3 +1371,14 @@ short is not) and bump on identical metrics.
   `audio_src_not_found` blocks the render instead of shipping a silent track.
 - Ritual gotcha: it prechecked only `media/`, but `audio/` is gitignored too; two launches were wasted in a
   fresh worktree before the narration wavs were copied. The precheck now covers both.
+
+## 20 Sep 26 — El Reno v3 post-mortem: stock footage was audible and no gate saw it
+- Owner rejected v3 partly for "a lot of audio for the stock footages". Root cause: `<video>` elements
+  mounted with neither `muted` nor `data-volume`. hyperframes plays such a track at 1.0, but
+  `audio_levels.py` treated "no data-volume" as muted by convention and skipped them, so the levels gate
+  passed a mix with unlevelled clip audio under narration.
+- Fix (this PR): `audio_levels.py` now skips a video only when it carries `muted` (or data-volume 0) and
+  levels every other video at its data-volume, default 1.0; `sweep_episode.py` check 5e fails any `<video>`
+  that declares neither. Verified: ep6 trips on `kb-radarloop` (silence-muxed, harmless, but undeclared);
+  ms-krakatau-sirens passes both gates with the same 19 audible elements as before.
+- Rule: every `<video>` says what its audio is. `muted` for b-roll, `data-volume` for inserts and the CTA.

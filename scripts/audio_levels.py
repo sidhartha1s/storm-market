@@ -13,8 +13,8 @@ Checks (effective dB = file mean_volume + 20*log10(data-volume)):
   3. Beds/SFX/music (sx-*): effective level must sit BELOW narration ref
      (never competes) and ABOVE ref-30 dB (audible at all). WARN outside,
      FAIL only if a music bed (sx-mus-*) is inaudible (<ref-30).
-  4. Audible video clips (data-volume>0): WARN if above narration ref
-     (clip audio shouting over voice).
+  4. Audible video clips (any <video> not `muted`, data-volume default 1.0):
+     WARN if above narration ref (clip audio shouting over voice).
 
 Usage: python3 scripts/audio_levels.py episodes/<slug>
 Exit 0 = pass. Exit 1 = level defects, do not build the mixdown yet.
@@ -44,10 +44,12 @@ for m in re.finditer(r"<(audio|video)\b([^>]*)>", html):
     vol = re.search(r'data-volume="([\d.]+)"', attrs)
     if not (src and eid):
         continue
-    # Videos without data-volume are muted BY CONVENTION (DESIGN.md "muted-clips
-    # default") — hyperframes mounts them silent, so skipping them is correct.
-    # An audible video always carries an explicit data-volume in this repo.
-    v = float(vol.group(1)) if vol else (1.0 if m.group(1) == "audio" else 0.0)
+    # A video is silent only when it says so: the `muted` attribute (repo convention) or
+    # data-volume 0. hyperframes plays every other video's track at data-volume, default 1.0;
+    # the old "no data-volume = muted" assumption let El Reno v3 ship audible stock footage.
+    if m.group(1) == "video" and re.search(r"\bmuted\b", attrs):
+        continue
+    v = float(vol.group(1)) if vol else 1.0
     if v <= 0:
         continue
     els.append((eid.group(1), src.group(1), v))
