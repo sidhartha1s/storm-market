@@ -114,9 +114,9 @@ Storms Forecast Center, and the charts for the third of April scared him. So he 
 the eastern half of the country. Fix your radar tonight. Bring in extra people tomorrow. [VE map: the offices
 light up one by one] He was right about the day. He was right about the place. The watches went out. The
 warnings went out. And people still died, because in 1974 a warning was a voice on the radio, and a radio has
-to be switched on. [RS] Most people that year did not even know what a tornado watch was. [verify]
+to be switched on. [RS] Many people that year did not even know what a tornado watch was. [verify]
 
-A hundred and forty eight tornadoes in sixteen hours. [VE popfig "148"] Thirteen states and a piece of
+A hundred and forty eight tornadoes in less than a day. [VE popfig "148"] Thirteen states and a piece of
 Canada. Two thousand six hundred miles of ground ripped up, [VE popfig "2,600 MILES"] and seven tornadoes at
 the top of a scale that was only three years old. The man who invented that scale was about to fly over every
 one of those miles and doubt his own numbers. And the corridor that took the worst of it, in north Alabama, is
