@@ -315,8 +315,8 @@ Alabama. [Q Q-A6b] So the real question is not whether it happens again. It is w
 The ingredients were ordinary spring weather for that part of the country, arriving on the same day, and every
 few decades they do. [verify] What changed is the warning. [VE two columns] In 1974 the radar saw rain. Today it
 sees the wind turning inside the storm before the funnel exists. In 1974 the warning was a radio you had to
-have switched on. Today it is the phone in your pocket, and it will wake you up. [verify WEA] In 1974 fifteen
-minutes was the best any town got. Today it is about the average. [verify] [PAY Q-A6b] [RS] Allen Pearson's
+have switched on. Today it is the phone in your pocket, and it will wake you up. [verify WEA] In 1974 a good
+warning was fifteen minutes, and most places got less. Today fifteen minutes is about the average. [verify] [PAY Q-A6b] [RS] Allen Pearson's
 forecast was right a day early, and three hundred and thirty people died because a correct warning could not
 travel. Today the warning travels. The houses moved into the path instead.
 
