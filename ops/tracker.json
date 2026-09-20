@@ -564,8 +564,8 @@
       "due": "27 Sep 26",
       "phase": "script",
       "status": "doing",
-      "note": "v5 spoken-sentence pass on the voice palette (20 Sep 26); independent grade running; next: owner design approval, fact-QC, TTS at 1.10",
-      "updated": "20 Sep 26 21:18"
+      "note": "v9 after four independent grades (7,7,7,7; hook 8); 22 [verify] tags open; awaiting owner design approval, then fact-QC, TTS at 1.10",
+      "updated": "20 Sep 26 22:04"
     },
     {
       "slug": "ep-enderlin-2025",
