@@ -234,7 +234,8 @@ a tornado formed near Moulton, Alabama, and stayed on the ground for ninety minu
 Twenty eight dead. The town of Tanner took it head on, and by 7:30 PM neighbours were in the wreckage with
 flashlights, pulling people out. Then the second one came. [RS] [VE second track, one mile west, drawn over
 the first] Same town. One mile to the west. One hour later. Ninety eight miles long. It went through the
-rescuers. [RS] [Q Q-A4] Two F5 tornadoes hit one small town an hour apart, in the dark, and nobody has ever
+rescuers. [RS] *(hold 3.5 s: Tanner aerial at night or the second track pulsing on the map, wind bed, no
+voice)* [Q Q-A4] Two F5 tornadoes hit one small town an hour apart, in the dark, and nobody has ever
 been able to say for certain which one killed whom. Fifty years later the count is still argued. Sixteen
 people died in Limestone County alone that night, [verify] and about fifty in that one stretch of north
 Alabama. [verify]
