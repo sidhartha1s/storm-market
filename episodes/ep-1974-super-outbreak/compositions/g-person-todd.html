@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-person-todd — A4-S2, second person card in this segment (after g-person-lindley) — sub-window
+     scoped to Becky/Mark/Paul Todd's mention. No provenance.csv row names any Todd — monogram. */
+  #root { position:absolute; inset:0; background:transparent; font-family:Arial,sans-serif; }
+  .glasscard { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14);
+    border-radius:28px; box-sizing:border-box; box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
+  .g-person-todd-card { position:absolute; left:96px; top:700px; width:1180px; height:280px;
+    display:flex; align-items:center; gap:40px; padding:0 48px; overflow:hidden; }
+  .g-person-todd-mono { flex:0 0 220px; width:220px; height:260px; border-left:6px solid #8e2020;
+    background:rgba(20,26,34,0.5); display:flex; align-items:center; justify-content:center; }
+  .g-person-todd-mono span { font-family:Georgia,serif; font-weight:700; font-size:120px; color:#2a3644; }
+  .g-person-todd-text { flex:1; min-width:0; }
+  .g-person-todd-name { font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; line-height:1.05; }
+  .g-person-todd-role { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:10px; }
+  .g-person-todd-line3 { font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:4px; color:#93a3b2; margin-top:16px; }
+  .g-person-todd-underline { position:absolute; left:48px; right:48px; bottom:22px; height:1px; background:#e8c56a; transform-origin:left center; }
+</style>
+<div id="root" data-composition-id="g-person-todd" data-width="1920" data-height="1080">
+  <div class="g-person-todd-card glasscard" id="g-person-todd-card">
+    <div class="g-person-todd-mono"><span>MP</span></div>
+    <div class="g-person-todd-text">
+      <div class="g-person-todd-name" id="g-person-todd-name">MARK AND PAUL TODD</div>
+      <div class="g-person-todd-role" id="g-person-todd-role">Becky Todd's sons</div>
+      <div class="g-person-todd-line3" id="g-person-todd-line3">GUIN, ALABAMA</div>
+    </div>
+    <div class="g-person-todd-underline" id="g-person-todd-underline"></div>
+  </div>
+</div>
+<script>
+(function() {
+  /* audio/a4-s2.words.json not present on disk yet (segment mid-regeneration). PROVISIONAL: word
+     position of "Becky Todd" (word ~114 of ~171 in the current a4-s2.txt) at manifest wpm 191.9
+     puts the mention ~33-34s into the ~50.3s segment, after g-person-lindley's window closes.
+     Mounted as a standalone ~12s sub-window; local time 0 = window start. */
+  const DUR = 12.0; // PROVISIONAL sub-window length
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-person-todd-";
+  tl.set(P+"underline", { scaleX: 0 }, 0);
+  tl.fromTo(P+"card", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0.2);
+  tl.to(P+"underline", { scaleX: 1, duration: DUR, ease: "none" }, 0.2);
+  tl.to(P+"card", { x: -120, autoAlpha: 0, duration: 0.5, ease: "power2.in" }, DUR - 0.6);
+  window.__timelines["g-person-todd"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
