@@ -163,6 +163,23 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"t7dot", { attr: { r: 0 } }, { attr: { r: 9 }, duration: 0.3, ease: "back.out(2)" }, CUES.guin);
   tl.to(P+"t7", { strokeDashoffset: 0, duration: 5, ease: "none" }, CUES.guin);
 
+  // Orchestrator addendum 2026-09-21: overlap_check bans a popfig over a map comp, so every number the
+  // voice speaks while this map is on screen lands here instead -- one shared "fact" row (top:420px, clear
+  // of any headline/sub combination) that crossfades sequentially, so no two numbers overlap and none repeats.
+  function setFact(txt) { const el = document.querySelector(P+"fact-txt"); if (el) el.textContent = txt; }
+  const FACTS = [
+    [1.2, "6:30 PM CENTRAL"],
+    [11.7, "28 DEAD · FIRST PATH"],
+    [55.4, "8:25 PM · MISSISSIPPI"],
+    [60.2, "101 MILES · 2 HOURS"],
+  ];
+  FACTS.forEach(([t, text], i) => {
+    if (i > 0) tl.to(P+"fact", { autoAlpha: 0, y: -16, duration: 0.3 }, t - 0.5);
+    tl.call(() => setFact(text), null, t - 0.15);
+    tl.fromTo(P+"fact", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, t);
+  });
+  tl.to(P+"fact", { autoAlpha: 0, y: -16, duration: 0.3 }, EASE_BACK_START - 0.5);
+
   // exit
   tl.to([P+"hl2", P+"sb3"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
 
