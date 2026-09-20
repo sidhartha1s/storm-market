@@ -104,6 +104,9 @@ window.__timelines = window.__timelines || {};
     b.style.top = (ar.bottom - rr.top + gap) + "px";
   }
 
+  // QC fix (2026-09-21): the eyebrow "APRIL 27, 2011 - THE SAME GROUND" wraps to two lines at 520px width +
+  // 6px letter-spacing, pushing into the headline's fixed top (154px) -- overlap_check caught it directly.
+  stackBelow("#g-map-a6-eb", "#g-map-a6-hl", 10);
   stackBelow("#g-map-a6-hl", "#g-map-a6-sb", 16);
   const CUES = { april: 3.72, limestone: 19.44, matched: 43.86 };
   const DUR = 49.072;
