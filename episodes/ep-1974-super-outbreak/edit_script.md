@@ -134,8 +134,8 @@ reason starts on a hill above the Ohio River.
 time, a tornado hit Hanover College, near Madison, Indiana. [VE track] Nearly a thousand students were on
 campus. Some were in class. Thirty of the thirty three buildings were damaged, two of them destroyed. [RS] [VE
 campus plan, buildings going dark one by one] And on that campus, nobody died. Not one. The college still
-calls it a miracle. Down the hill in the town of Madison, seven people died, eleven along that one track. Same
-wind. Same minutes. The college had a thousand people who moved when they were told. [verify shelter detail]
+calls it a miracle, and nobody has ever fully explained it. Down the hill in the town of Madison, seven people
+died, eleven along that one track. Same wind. Same minutes.
 
 **A1-S2 (130 w) · g-clock "3:30 PM CDT" · track 2 · g-person Tim Haley.** At 3:30 PM, Central time, in
 Brandenburg, Kentucky, they had fifteen minutes. [VE clock] That was good for 1974. The tornado came up the
