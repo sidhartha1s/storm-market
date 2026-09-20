@@ -1399,3 +1399,23 @@ Rules, every script from ep-1974 on:
    SRT of the last video against what is live on YouTube and list what the owner removed; do not write those
    shapes again. (20 Sep 26: the live durations of Joplin, Tri-State and Super Outbreak still match the shipped
    SRTs to within seconds, so the trims may still be processing; re-check before the next script.)
+
+## 2026-09-20 — plain American, literal clock times, atempo 1.10 on docs, and an independent grade on every script
+Owner on the 1974 hook: "quarter to five" is confusing, say "4:45 PM"; "the day is only half over" is a riddle; "why did
+knowing not save them" is Oxford English; "talk in a way a third grader can make sense of, talk like a human, you are
+overstressing the documentary persona". Also: docs get atempo 1.10 like the minis (probe the hook first).
+Rules:
+1. Clock times are literal digits with AM/PM in the on-screen popfig and spoken as "four forty five PM". No "quarter
+   to", "half past", "the day is only half over".
+2. Register test per sentence: would a third grader follow it aloud? Short words, one idea, no inversion, no riddle
+   phrasing. The documentary voice is a person telling a story, not a narrator performing one.
+3. F5 vs EF5: 1974 and every tornado before 2007 is F-scale (F5); 2007 on is EF5. The owner read "F5" as a typo; the
+   script now carries a one-line note so nobody "fixes" it.
+4. **Every hook and every script (shorts, minis, docs) gets an independent grade before the owner sees it**: a
+   separate skeptic-reviewer agent that has not seen the writer's reasoning rates the hook 0 to 10 with a confidence
+   percentage, every chapter on the six script-os axes, draws the stakes curve, lists open-loop gaps, register
+   violations and fluff sentences, and ranks the fixes. The writer fixes, re-grades, and reports both grades to the
+   owner. A script ships to TTS only when the grader's hook score is at least 8 and no chapter axis is under 3.
+5. Tension system, not taste: the loop table carries plant and pay TIMES; at any timestamp at least one loop must be
+   open and unpaid; no 90-second window without a retention spike; stakes score per chapter never drops more than one
+   point and ends higher than it started. Checked by the grader, and by `scripts/script_scorecard.py` once it exists.
