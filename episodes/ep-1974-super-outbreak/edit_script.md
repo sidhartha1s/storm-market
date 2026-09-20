@@ -173,13 +173,10 @@ High, McKinley, Simon Kenton, Arrowood. [VE the names, one by one, over the aeri
 minutes was enough time. It was not enough shelter. Xenia is still the tornado people mean when they talk about
 that day.
 
-**A2-S4 (120 w) · Nixon Library material · popfig "1,445 GUARDSMEN" · citation card.** By midnight the governor
-had fourteen hundred and forty five National Guard troops on duty across Ohio, more than half of them in Xenia.
-[VE popfig] Six days later, on April 9th, President Nixon flew into Wright-Patterson, looked at the town from a
-helicopter, then drove in and walked the streets. [HUMAN] [VE Nixon footage, muted, 6 s] The pictures from that
-walk went around the world, and they are the reason most people who remember 1974 remember one word. Xenia.
-But Xenia was one tornado out of a hundred and forty eight, and on the radar in Cincinnati, forty miles away,
-the afternoon was about to get worse than any radar operator alive had seen.
+**A2-S4 (45 w) · Nixon Library material, muted, 6 s · popfig "APRIL 9, 1974".** Six days later President Nixon
+walked the streets of Xenia. [HUMAN] [VE Nixon footage] Those pictures are the reason most people who remember
+1974 remember one word. Xenia. But Xenia was one tornado out of a hundred and forty eight, and forty miles
+away, in Cincinnati, the afternoon was about to get worse than any radar operator alive had seen.
 
 **A2-S5 (25 w) · cta-hinge tease.** Weeks later the man who invented the tornado scale flew over these streets,
 and decided his own scale was too small. [Q cta-hinge] *(1.0 s dip)*
