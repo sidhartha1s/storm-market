@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #root { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; overflow:hidden; }
+  .eyebrow { position:absolute; left:1330px; top:150px; width:510px; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; }
+  .headline { position:absolute; left:1330px; top:190px; width:510px; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; }
+  .footer { position:absolute; left:1330px; top:700px; width:510px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#b8c6d4; line-height:1.4; }
+  .band { position:absolute; left:96px; width:1180px; overflow:hidden; }
+  #g-engine-band1 { top:700px; height:200px; background:linear-gradient(180deg,#a86b28,#8e5a20); }
+  #g-engine-band2 { top:520px; height:180px; background:repeating-linear-gradient(135deg,#3f5164,#3f5164 10px,#4c6478 10px,#4c6478 20px); }
+  #g-engine-band3 { top:340px; height:180px; background:#111a24; }
+  .bandlabel { position:absolute; left:40px; top:14px; font-weight:700; font-size:26px; color:#f2f5f8; letter-spacing:1px; }
+  .moist { position:absolute; width:10px; height:10px; border-radius:50%; background:#e8c56a; opacity:0.55; }
+  .jetarrow { position:absolute; height:6px; background:#7fb2e5; box-shadow:0 0 10px #7fb2eaa0; }
+  .jetarrow:after { content:""; position:absolute; right:-14px; top:-7px; border-top:10px solid transparent; border-bottom:10px solid transparent; border-left:16px solid #7fb2e5; }
+  .front { position:absolute; top:200px; width:6px; height:700px; background:#3a7abf; box-shadow:0 0 14px #3a7abfa0; }
+  .fpip { position:absolute; left:-8px; width:0; height:0; border-top:9px solid transparent; border-bottom:9px solid transparent; border-right:14px solid #3a7abf; }
+  .column { position:absolute; top:260px; width:110px; height:640px; border-radius:50% / 12%; opacity:0;
+    background:conic-gradient(#0b1016 0deg, #2a3644 90deg, #5a768f 170deg, #c0392b 230deg, #0b1016 360deg);
+    box-shadow:0 0 60px #c0392b33; }
+  .enginelabel { position:absolute; left:96px; top:1000px; width:1180px; text-align:center;
+    font-family:'Arial Black',Arial,sans-serif; font-size:60px; color:#f2f5f8; opacity:0; }
+</style>
+<div id="root" data-composition-id="g-engine" data-width="1920" data-height="1080">
+  <div class="eyebrow" id="g-engine-eyebrow">WHY ONE DAY MADE SEVEN</div>
+  <div class="headline" id="g-engine-headline">One air mass.</div>
+
+  <div class="band" id="g-engine-band1"><div class="bandlabel" id="g-engine-lab1">WARM, WET AIR OFF THE GULF</div></div>
+  <div class="band" id="g-engine-band2"><div class="bandlabel" id="g-engine-lab2">A LID OF DRY AIR</div></div>
+  <div class="band" id="g-engine-band3"><div class="bandlabel" id="g-engine-lab3">JET STREAM &middot; TURNS THE COLUMN</div></div>
+
+  <div class="front" id="g-engine-front">
+    <div class="fpip" style="top:40px;"></div>
+    <div class="fpip" style="top:220px;"></div>
+    <div class="fpip" style="top:400px;"></div>
+    <div class="fpip" style="top:580px;"></div>
+  </div>
+
+  <div class="column" id="g-engine-col1" style="left:326px;"></div>
+  <div class="column" id="g-engine-col2" style="left:626px;"></div>
+  <div class="column" id="g-engine-col3" style="left:926px;"></div>
+
+  <div class="enginelabel" id="g-engine-enginelabel">THE SAME ENGINE</div>
+
+  <div class="footer" id="g-engine-footer">AFTERNOON INTO NIGHT &middot; INDIANA TO ALABAMA</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const root = document.getElementById("root");
+  // continuous moisture dots drifting left across band 1, for the whole duration
+  const moist = [];
+  for (let i = 0; i < 8; i++) {
+    const m = document.createElement("div");
+    m.className = "moist";
+    m.style.left = (1200 - i * 150) + "px";
+    m.style.top = (720 + (i % 3) * 40) + "px";
+    document.getElementById("g-engine-band1").appendChild(m);
+    moist.push(m);
+  }
+  // jet arrows, continuous sweep left to right for the whole duration
+  const jetdefs = [{top:30,w:260},{top:80,w:340},{top:130,w:220}];
+  const jets = [];
+  jetdefs.forEach((d,i) => {
+    const j = document.createElement("div");
+    j.className = "jetarrow";
+    j.style.top = d.top + "px";
+    j.style.left = "-260px";
+    j.style.width = d.w + "px";
+    document.getElementById("g-engine-band3").appendChild(j);
+    jets.push(j);
+  });
+
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-engine-";
+
+  tl.set([P+"eyebrow", P+"headline", P+"footer", P+"lab1", P+"lab2", P+"lab3", P+"enginelabel"], {autoAlpha:0}, 0);
+  tl.set([P+"col1", P+"col2", P+"col3"], {autoAlpha:0, scale:0.6}, 0);
+  tl.set(P+"front", {x:-40}, 0);
+
+  tl.fromTo(P+"eyebrow", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.6}, 0.4);
+  tl.fromTo(P+"headline", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.6}, 1.0);
+
+  // continuous jet sweep, full duration
+  jets.forEach((j, i) => { tl.to(j, {x: 1440, duration: 34, ease: "none"}, 0.5 + i * 1.2); });
+  // continuous moisture drift, full duration
+  moist.forEach((m, i) => { tl.to(m, {x: -1300, duration: 34, ease: "none"}, i * 0.4); });
+
+  /* cues from audio/a5-s3.txt @183.24wpm est., PROVISIONAL (no words.json yet):
+     gulf@7.53 dry@9.82 jet@12.77 front@16.70 night@22.59 every("storms came up")@24.23 engine("same engine")@29.47 */
+  tl.fromTo(P+"lab1", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4}, 7.53);
+  tl.fromTo(P+"lab2", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4}, 9.82);
+  tl.fromTo(P+"lab3", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4}, 12.77);
+
+  // CUES.front @16.70 — cold front slides across all bands over 3s
+  tl.to(P+"front", {x: 1180, duration: 3, ease: "power1.inOut"}, 16.70);
+  // storms rise only where the front has passed — triggered as the front sweep crosses each column's x
+  tl.to(P+"col1", {autoAlpha:1, scale:1, duration:0.6, ease:"power2.out"}, 17.0);
+  tl.to(P+"col1", {rotation:180, duration:16, ease:"none"}, 17.0);
+  tl.to(P+"col2", {autoAlpha:1, scale:1, duration:0.6, ease:"power2.out"}, 17.98);
+  tl.to(P+"col2", {rotation:180, duration:15, ease:"none"}, 17.98);
+  tl.to(P+"col3", {autoAlpha:1, scale:1, duration:0.6, ease:"power2.out"}, 18.99);
+  tl.to(P+"col3", {rotation:180, duration:14, ease:"none"}, 18.99);
+
+  tl.fromTo(P+"footer", {autoAlpha:0}, {autoAlpha:1, duration:0.7}, 22.59);
+
+  // CUES.every @24.23 — reinforcing pulse across all three columns as "the storms came up"
+  tl.to([P+"col1", P+"col2", P+"col3"], {scale:1.06, duration:0.35, yoyo:true, repeat:1}, 24.23);
+
+  // CUES.engine @29.47 — label reads "the same engine"; columns stay independent (no single "machine" claim)
+  tl.fromTo(P+"enginelabel", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.6}, 29.47);
+
+  tl.to({}, {duration:0.1}, 33.9);
+
+  window.__timelines["g-engine"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
