@@ -49,36 +49,37 @@ window.__timelines = window.__timelines || {};
   tl.set([P+"eyebrow", P+"yr1", P+"cnt1", P+"yr2", P+"cnt2", P+"sub2", P+"mostlikely", P+"betterwarn"], {autoAlpha:0}, 0);
   tl.set(P+"footer", {autoAlpha:1}, 0); // container itself visible; children carry their own alpha
 
-  tl.fromTo(P+"eyebrow", {autoAlpha:0, y:-14}, {autoAlpha:1, y:0, duration:0.5}, 0.2);
+  tl.fromTo(P+"eyebrow", {autoAlpha:0, y:-14}, {autoAlpha:1, y:0, duration:0.5}, 0.05);
 
-  // continuous shimmer sweeps on both bars for the whole comp duration
-  tl.to(P+"shim1", {x:840, duration:15, ease:"none"}, 0);
-  tl.to(P+"shim2", {x:840, duration:15, ease:"none"}, 0.6);
+  // continuous shimmer sweeps on both bars, capped inside the 16.0s window (finite, no repeat)
+  tl.to(P+"shim1", {x:840, duration:15.5, ease:"none"}, 0);
+  tl.to(P+"shim2", {x:840, duration:15.3, ease:"none"}, 0.6);
 
-  /* cues from audio/a6-s1b.txt @183.24wpm est., PROVISIONAL (no words.json yet); local zero = CUES.sixteen (global 2.62):
-     sixteen@0 twoandahalf@3.6 four@7.86 better("most likely better warnings")@13.42 */
-  tl.fromTo(P+"yr1", {autoAlpha:0, x:-20}, {autoAlpha:1, x:0, duration:0.5}, 0);
-  tl.to(P+"bar1", {scaleX:1, duration:0.9, ease:"power2.out"}, 0.2);
-  tl.to(P+"cnt1", {autoAlpha:1, duration:0.01}, 0.2);
+  /* FINAL cues from audio/a6-s1b.words.json, mount 0.3s before "sixteen", DUR 16.0 (orchestrator 2026-09-21):
+     sixteen 0.3 · twoandahalf 4.3 · four 8.2 · better 14.1 */
+  tl.fromTo(P+"yr1", {autoAlpha:0, x:-20}, {autoAlpha:1, x:0, duration:0.5}, 0.3);
+  tl.to(P+"bar1", {scaleX:1, duration:0.9, ease:"power2.out"}, 0.3);
+  tl.to(P+"cnt1", {autoAlpha:1, duration:0.01}, 0.3);
   const c1 = {v:0};
   tl.to(c1, {v:16, duration:0.8, ease:"power3.out", onUpdate:function(){
     const e=document.getElementById("g-tn164-cnt1"); if(e) e.textContent=Math.round(c1.v);
-  }}, 0.2);
+  }}, 0.3);
 
-  tl.fromTo(P+"yr2", {autoAlpha:0, x:-20}, {autoAlpha:1, x:0, duration:0.5}, 3.6);
-  tl.fromTo(P+"sub2", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 3.9);
+  tl.fromTo(P+"yr2", {autoAlpha:0, x:-20}, {autoAlpha:1, x:0, duration:0.5}, 4.3);
+  tl.fromTo(P+"sub2", {autoAlpha:0}, {autoAlpha:1, duration:0.5}, 4.6);
 
-  tl.to(P+"bar2", {scaleX:1, duration:0.8, ease:"power2.out"}, 7.86);
+  tl.to(P+"bar2", {scaleX:1, duration:0.8, ease:"power2.out"}, 8.2);
   const c2 = {v:0};
   tl.to(c2, {v:4, duration:0.8, ease:"power3.out", onUpdate:function(){
     const e=document.getElementById("g-tn164-cnt2"); if(e) e.textContent=Math.round(c2.v);
-  }}, 7.86);
-  tl.to(P+"cnt2", {autoAlpha:1, duration:0.01}, 7.86);
+  }}, 8.2);
+  tl.to(P+"cnt2", {autoAlpha:1, duration:0.01}, 8.2);
 
-  tl.fromTo(P+"mostlikely", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4}, 13.42);
-  tl.fromTo(P+"betterwarn", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.5}, 13.85);
+  tl.fromTo(P+"mostlikely", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4}, 14.1);
+  tl.fromTo(P+"betterwarn", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.5}, 14.53);
 
-  tl.to({}, {duration:0.1}, 14.9);
+  // pin exact duration at 16.0
+  tl.to({}, {duration:0.01}, 15.99);
 
   window.__timelines["g-thennow-16-4"] = tl;
 })();
