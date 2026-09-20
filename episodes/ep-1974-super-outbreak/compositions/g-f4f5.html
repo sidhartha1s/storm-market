@@ -116,9 +116,11 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"lab-f5", {autoAlpha:0, y:-20}, {autoAlpha:1, y:0, duration:0.5}, 0.9);
   tl.fromTo(P+"footer", {autoAlpha:0}, {autoAlpha:1, duration:0.6}, 1.4);
 
-  // continuous debris drift for the whole 21.0s window (finite, no repeat)
+  // continuous debris drift for the whole 21.0s window (finite, no repeat; same start/duration
+  // for all specks so none overruns the pinned 21.0 duration — visual variety comes from their
+  // different top positions, not staggered timing)
   specks.forEach((s, i) => {
-    tl.to(s, {x: "+=1780", duration: 21, ease: "none"}, 0.3 + i * 0.15);
+    tl.to(s, {x: "+=1780", duration: 20.6, ease: "none"}, 0.3);
   });
 
   /* FINAL cues from audio/a5-s2.words.json, mount = A5-S2 start, DUR 21.0 (orchestrator 2026-09-21):
