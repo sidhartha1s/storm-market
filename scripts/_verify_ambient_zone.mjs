@@ -82,9 +82,7 @@ for (const [name, { dur, cues }] of Object.entries(FILES)) {
   const points = [0.25, 0.5, 0.85].map(f => pickTime(dur * f, cues, dur));
   const pairShots = [];
   for (const t of points) {
-    tl_seek: {
-      await page.evaluate(([name, t]) => window.__timelines[name].seek(t, false), [name, t]);
-    }
+    await page.evaluate(([name, t]) => window.__timelines[name].seek(t, false), [name, t]);
     const fA = path.join(SCRATCH, `${name}__${t.toFixed(2)}_a.png`);
     await page.screenshot({ path: fA });
     await page.evaluate(([name, t]) => window.__timelines[name].seek(t + 2, false), [name, t]);
