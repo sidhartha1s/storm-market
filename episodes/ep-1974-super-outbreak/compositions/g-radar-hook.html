@@ -68,6 +68,18 @@ window.__timelines = window.__timelines || {};
     tl.fromTo('#' + ID + '-' + b, { opacity: 0.15, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.25, ease: 'back.out(2)' }, CUES.five + i * 0.18);
   });
 
+  /* AMBIENT MOTION (owner 21 Sep 26: "graphics go static after a while") — additive only,
+     no DUR/cue change. Each blob's ellipse breathes (rx/ry, not opacity/scale — those are
+     already used by the punch-in reveal above, so this uses a different property to avoid
+     fighting it) for the whole window, finite, sized to land at/before DUR. */
+  const baseRxRy = { ell0: [36, 30], ell1: [32, 27], ell2: [30, 25], ell3: [34, 28], ell4: [28, 24] };
+  const MAX_STAGGER = 4 * 0.06;
+  const N_BREATHE = Math.floor((DUR - MAX_STAGGER) / 0.5) - 1; // (N+1)*0.5 + stagger <= DUR
+  Object.keys(baseRxRy).forEach((key, i) => {
+    const [rx, ry] = baseRxRy[key];
+    tl.fromTo('#' + ID + '-' + key, { attr: { rx, ry } }, { attr: { rx: rx + 3, ry: ry + 3 }, duration: 0.5, ease: 'sine.inOut', yoyo: true, repeat: N_BREATHE }, i * 0.06);
+  });
+
   window.__timelines[ID] = tl;
 })();
 </script>
