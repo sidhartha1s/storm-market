@@ -30,20 +30,13 @@ function pickTime(base, cues, dur) {
 }
 
 function pngDiff(pathA, pathB) {
-  const a = PNG.sync.read(readFileSync(pathA));
-  const b = PNG.sync.read(readFileSync(pathB));
-  let diffCount = 0, sumAbs = 0;
-  const n = Math.min(a.data.length, b.data.length);
-  for (let i = 0; i < n; i += 4) {
-    const dr = Math.abs(a.data[i] - b.data[i]);
-    const dg = Math.abs(a.data[i + 1] - b.data[i + 1]);
-    const db = Math.abs(a.data[i + 2] - b.data[i + 2]);
-    const d = dr + dg + db;
-    if (d > 10) diffCount++;
-    sumAbs += d;
-  }
-  const pixels = n / 4;
-  return { diffPixels: diffCount, meanAbsDiff: sumAbs / pixels };
+  // ffmpeg psnr filter: identical frames -> psnr average "inf" (no motion); any visible change lowers it.
+  const out = execFileSync('ffmpeg', ['-i', pathA, '-i', pathB, '-lavfi', 'psnr', '-f', 'null', '-'], { encoding: 'utf-8', stdio: ['ignore', 'pipe', 'pipe'] }).toString();
+  return out;
+}
+function parsePsnr(stderrText) {
+  const m = stderrText.match(/average:([\d.]+|inf)/);
+  return m ? m[1] : 'unknown';
 }
 
 const browser = await chromium.launch({ executablePath: chromiumExecutable() });
