@@ -67,7 +67,7 @@ window.__timelines = window.__timelines || {};
       d.id = ID + '-tile' + n;
       d.style.left = x + 'px';
       d.style.top = y + 'px';
-      d.innerHTML = '<div class="base"></div><div class="dark" id="' + ID + '-dark' + n + '"></div><div class="roof"></div>';
+      d.innerHTML = '<div class="base"></div><div class="dark" id="' + ID + '-dark' + n + '"></div><div class="roof" id="' + ID + '-roof' + n + '"></div>';
       grid.appendChild(d);
       tileIds.push(n);
       n++;
@@ -101,6 +101,18 @@ window.__timelines = window.__timelines || {};
   tl.fromTo('#' + ID + '-row2', { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4 }, CUES.two);
 
   tl.to('#' + ID + '-underline', { width: 210, duration: 0.5, ease: 'power2.out' }, CUES.nobody);
+
+  /* AMBIENT MOTION (owner 21 Sep 26: "graphics go static after a while") — additive only,
+     no DUR/cue change. A slow staggered shimmer across all 33 roof strips (a non-text,
+     always-visible layer that sits above .dark on every tile) runs the whole window,
+     finite, sized to land inside DUR. */
+  {
+    const roofSel = [];
+    for (let i = 0; i < 33; i++) roofSel.push('#' + ID + '-roof' + i);
+    const STAGGER = 0.04, MAX_STAGGER = 32 * STAGGER;
+    const N_SHIMMER = Math.floor((DUR - MAX_STAGGER) / 0.6) - 1; // (N+1)*0.6 + maxStagger <= DUR
+    tl.fromTo(roofSel, { opacity: 0.55 }, { opacity: 1, duration: 0.6, ease: 'sine.inOut', yoyo: true, repeat: N_SHIMMER, stagger: STAGGER }, 0);
+  }
 
   window.__timelines[ID] = tl;
 })();
