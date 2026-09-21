@@ -279,10 +279,17 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"hl", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.4);
 
   // the plane's loop: sequential leg-by-leg translate, ease none (the continuous element for the whole comp)
+  // QC fix (2026-09-21, owner draft review): the plane <g> carried a static SVG transform="translate(...)"
+  // attribute for its WP0 position, but GSAP's x/y tweening replaces the whole transform attribute from a
+  // (0,0) baseline rather than adding to it -- measured via getPointAtLength on the trail vs the plane's
+  // bounding-box centre, the plane was landing ~340-613px away from the trail's drawn head. Fix: put the
+  // plane under GSAP's control from frame 0 with an explicit absolute set, then tween to each waypoint's
+  // absolute coordinate (matching the trail path's own coordinate system) instead of a WP0-relative delta.
+  tl.set(P+"plane", { x: WPS[0][0], y: WPS[0][1] }, 0);
   let t = 0;
   for (let i = 0; i < LEGDUR.length; i++) {
     const [x, y] = WPS[i + 1];
-    tl.to(P+"plane", { x: x - WPS[0][0], y: y - WPS[0][1], duration: LEGDUR[i], ease: "none" }, t);
+    tl.to(P+"plane", { x: x, y: y, duration: LEGDUR[i], ease: "none" }, t);
     t += LEGDUR[i];
   }
   tl.to(P+"trail", { strokeDashoffset: 0, duration: DUR, ease: "none" }, 0);
