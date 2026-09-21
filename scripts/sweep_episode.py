@@ -122,7 +122,7 @@ cta_name = Path(cta["file"]).name
 cta_bad = []
 _slug = ep.resolve().name
 _cta_applies = bool(re.match(r"(ep\d*-|ms-)", _slug)) and _slug not in (cta.get("exempt") or [])
-_cta_window = cta["window_ms"] if _slug.startswith("ms-") else cta["window"]   # news lane sits at ~90 % (owner 17 Sep 26)
+_cta_window = (cta.get("window_by_slug") or {}).get(_slug) or (cta["window_ms"] if _slug.startswith("ms-") else cta["window"])   # news lane ~90 % (owner 17 Sep 26); per-episode owner placements in window_by_slug
 cm = re.search(r'<video\b[^>]*src="([^"]*' + re.escape(cta_name) + r')"[^>]*>', h)
 if not _cta_applies:
     # episodes shipped before the contract (config channel.cta.exempt) and demo-* dirs are not re-wired

@@ -1487,3 +1487,29 @@ Findings from the first hand-authored 39-comp timeline (17.6 min, hook anchored 
 4. **A render preflight refusal for `ffprobe spawns in 0.40s` is a load reading, not a binary problem**, when
    the env already names the shared build: three whisper transcribers and two ffmpeg cutters from sourcing
    agents pushed a 0.17 s spawn to 0.40 s. Quiet the box (agents' jobs killed by their owners), re-measure.
+
+## 21 Sep 26 — owner review of the ep-1974 draft: "shippable after these small iterations"
+
+Owner watched the whole 17:39 draft ("overall really well put video", the motion graphics "a significant better look
+this time", 14:05 the combed-trees card "interesting bit"). Corrections, each persisted here:
+1. **Motion graphics go static after the story beat lands.** `beat_density.py` said 0/39 because a 100 px grid drift
+   over 78 s counts as a tween; to the eye 1.3 px/s is a freeze, and blackdetect read four dark cards as black for
+   6 to 11 s. Rule: every comp carries a VISIBLE ambient element for its whole window (a scan line at 6 px/s or more,
+   staggered dot blips at least every 1.5 s, a sweep rotating), finite repeats, never `repeat:-1`. Verify by pixel
+   diff of two frames 2 s apart at three points in the window, not by tween coverage.
+2. **Paul's presenter circle belongs on docs too** (bottom-right 240 px, FORMAT.md "Presenter circle"): from the end
+   of the hook to the CTA dip and from the CTA out-dip to the close card, hidden in the hook, the CTA and the close.
+   Every RHS rail, cite card and person card stays out of x >= 1600, y >= 680.
+3. **CTA at 85 to 90 % on this doc**, not 30 to 40 %: owner 21 Sep 26 "keep around 85-90 % timeline in a fitting
+   manner", fallback "reduce the end ask, then the video, one more sentence, close". ep-1974 sits at 88 % after the
+   16-dead-then/4-now payoff. `config.yaml channel.cta.window_by_slug` carries per-episode placements; the deep-lane
+   window stays until the owner moves it for the lane (one-orange rule). The 30-40 % rule dates from 30 Aug 26.
+4. **Glass cards over a dark map read better beige** (owner frames at 08:08 and 15:15): cite cards go to
+   rgba(232,222,200,0.90) with dark text; other glass panels over dark gradients are the builder's call, reported.
+5. **A person card without a real photo does not keep the photo slot** (owner: "don't leave the card with photo's
+   space in"); monograms are out, text-only layout for the nine people with no PD photo (a sourcer checks first).
+6. **Red popfigs**: owner is fine with the light use here ("its good. i mean it"); no retrofit, weigh them per episode.
+7. **The g-plane icon rode a different coordinate space than its trail** (owner: "a moving house fly on the top
+   left"): position markers must be verified by measuring the icon against the path head, never by eye.
+8. **The F6 card's strike missed the glyph and the F5 hung outside the card**: a strike goes through the glyph body,
+   every child stays inside the card box; screenshot the card at the last cue before shipping.

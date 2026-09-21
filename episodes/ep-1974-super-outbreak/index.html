@@ -41,10 +41,14 @@
     #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90; background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
     #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.10; mix-blend-mode: overlay; }
     .dust { position: absolute; z-index: 92; pointer-events: none; border-radius: 50%; background: rgba(255,255,255,0.32); filter: blur(1.2px); }
+    .pip { position: absolute !important; inset: auto !important; left: 1640px !important; top: 708px !important;
+      width: 240px !important; height: 240px !important; border-radius: 50% !important; object-fit: cover !important; z-index: 8 !important; }
+    .pipring { position: absolute; left: 1632px; top: 700px; width: 256px; height: 256px; border-radius: 50%; border: 4px solid #d0121f;
+      box-sizing: border-box; z-index: 9; box-shadow: 0 10px 30px rgba(0,0,0,0.55); }
   </style>
 </head>
 <body>
-<div id="root" data-composition-id="ep-1974-super-outbreak" data-start="0" data-width="1920" data-height="1080" data-duration="1059.0" data-fps="30">
+<div id="root" data-composition-id="ep-1974-super-outbreak" data-start="0" data-width="1920" data-height="1080" data-duration="1060.0" data-fps="30">
 
   <!-- ============ NARRATION (research/schedule.json) ============ -->
   <audio id="nx-h" src="audio/h.wav" data-start="5.200" data-duration="22.126" data-volume="1"></audio>
@@ -61,60 +65,69 @@
   <audio id="nx-a2-s3" src="audio/a2-s3.wav" data-start="312.972" data-duration="48.782" data-volume="1"></audio>
   <audio id="nx-a2-s4" src="audio/a2-s4.wav" data-start="362.204" data-duration="20.999" data-volume="1"></audio>
   <audio id="nx-a2-s5" src="audio/a2-s5.wav" data-start="383.653" data-duration="7.363" data-volume="1"></audio>
-  <audio id="nx-a3-s1" src="audio/a3-s1.wav" data-start="408.555" data-duration="14.454" data-volume="1"></audio>
-  <audio id="nx-a3-s2" src="audio/a3-s2.wav" data-start="423.459" data-duration="43.582" data-volume="1"></audio>
-  <audio id="nx-a3-s2b" src="audio/a3-s2b.wav" data-start="467.491" data-duration="33.146" data-volume="1"></audio>
-  <audio id="nx-a3-s3" src="audio/a3-s3.wav" data-start="501.087" data-duration="40.599" data-volume="1"></audio>
-  <audio id="nx-a3-s4" src="audio/a3-s4.wav" data-start="542.136" data-duration="38.419" data-volume="1"></audio>
-  <audio id="nx-a3-s5" src="audio/a3-s5.wav" data-start="581.005" data-duration="14.126" data-volume="1"></audio>
-  <audio id="nx-a4-s1a" src="audio/a4-s1a.wav" data-start="596.531" data-duration="28.417" data-volume="1"></audio>
-  <audio id="nx-a4-s1b" src="audio/a4-s1b.wav" data-start="628.648" data-duration="21.981" data-volume="1"></audio>
-  <audio id="nx-a4-s2" src="audio/a4-s2.wav" data-start="651.079" data-duration="54.818" data-volume="1"></audio>
-  <audio id="nx-a4-s3" src="audio/a4-s3.wav" data-start="706.347" data-duration="27.946" data-volume="1"></audio>
-  <audio id="nx-a5-s1" src="audio/a5-s1.wav" data-start="735.793" data-duration="28.163" data-volume="1"></audio>
-  <audio id="nx-a5-s2" src="audio/a5-s2.wav" data-start="764.406" data-duration="36.127" data-volume="1"></audio>
-  <audio id="nx-a5-s3" src="audio/a5-s3.wav" data-start="800.983" data-duration="27.582" data-volume="1"></audio>
-  <audio id="nx-a5-s4" src="audio/a5-s4.wav" data-start="829.015" data-duration="42.382" data-volume="1"></audio>
-  <audio id="nx-a6-s1" src="audio/a6-s1.wav" data-start="872.797" data-duration="49.072" data-volume="1"></audio>
-  <audio id="nx-a6-s1b" src="audio/a6-s1b.wav" data-start="922.319" data-duration="27.727" data-volume="1"></audio>
-  <audio id="nx-a6-s2" src="audio/a6-s2.wav" data-start="950.496" data-duration="51.071" data-volume="1"></audio>
-  <audio id="nx-a6-s3" src="audio/a6-s3.wav" data-start="1002.017" data-duration="33.545" data-volume="1"></audio>
-  <audio id="nx-z-1" src="audio/z-1.wav" data-start="1036.012" data-duration="18.418" data-volume="1"></audio>
+  <audio id="nx-a3-s1" src="audio/a3-s1.wav" data-start="392.415" data-duration="14.454" data-volume="1"></audio>
+  <audio id="nx-a3-s2" src="audio/a3-s2.wav" data-start="407.319" data-duration="43.582" data-volume="1"></audio>
+  <audio id="nx-a3-s2b" src="audio/a3-s2b.wav" data-start="451.351" data-duration="33.146" data-volume="1"></audio>
+  <audio id="nx-a3-s3" src="audio/a3-s3.wav" data-start="484.947" data-duration="40.599" data-volume="1"></audio>
+  <audio id="nx-a3-s4" src="audio/a3-s4.wav" data-start="525.996" data-duration="38.419" data-volume="1"></audio>
+  <audio id="nx-a3-s5" src="audio/a3-s5.wav" data-start="564.865" data-duration="14.126" data-volume="1"></audio>
+  <audio id="nx-a4-s1a" src="audio/a4-s1a.wav" data-start="580.391" data-duration="28.417" data-volume="1"></audio>
+  <audio id="nx-a4-s1b" src="audio/a4-s1b.wav" data-start="612.508" data-duration="21.981" data-volume="1"></audio>
+  <audio id="nx-a4-s2" src="audio/a4-s2.wav" data-start="634.939" data-duration="54.818" data-volume="1"></audio>
+  <audio id="nx-a4-s3" src="audio/a4-s3.wav" data-start="690.207" data-duration="27.946" data-volume="1"></audio>
+  <audio id="nx-a5-s1" src="audio/a5-s1.wav" data-start="719.653" data-duration="28.163" data-volume="1"></audio>
+  <audio id="nx-a5-s2" src="audio/a5-s2.wav" data-start="748.266" data-duration="36.127" data-volume="1"></audio>
+  <audio id="nx-a5-s3" src="audio/a5-s3.wav" data-start="784.843" data-duration="27.582" data-volume="1"></audio>
+  <audio id="nx-a5-s4" src="audio/a5-s4.wav" data-start="812.875" data-duration="42.382" data-volume="1"></audio>
+  <audio id="nx-a6-s1" src="audio/a6-s1.wav" data-start="856.657" data-duration="49.072" data-volume="1"></audio>
+  <audio id="nx-a6-s1b" src="audio/a6-s1b.wav" data-start="906.179" data-duration="27.727" data-volume="1"></audio>
+  <audio id="nx-a6-s2" src="audio/a6-s2.wav" data-start="951.445" data-duration="51.071" data-volume="1"></audio>
+  <audio id="nx-a6-s3" src="audio/a6-s3.wav" data-start="1002.966" data-duration="33.545" data-volume="1"></audio>
+  <audio id="nx-z-1" src="audio/z-1.wav" data-start="1036.961" data-duration="18.418" data-volume="1"></audio>
 
   <!-- ============ INSERTS (owner YES at the preview) ============ -->
   <!-- hook anchor: WHAS AM 840, 4:18 PM, chief meteorologist John Burke: "we have a hook echo on the radar" -->
   <audio id="ins-hook-whas" src="media/inserts/ins-hook-whas.wav" data-start="0" data-duration="4.95" data-volume="1" data-has-audio="true" data-srt-label="[WHAS RADIO, LOUISVILLE · 4:18 PM · &quot;we have a hook echo on the radar&quot;]"></audio>
   <!-- Lindley's Guin tape, the roar, as a bed under the waveform card (Tornado Talk copy; rights flagged in provenance) -->
-  <audio id="sx-guin-tape" src="media/inserts/ins-guin-tape-bed.wav" data-bed="" data-start="677.0" data-duration="14.0" data-volume="0.35"></audio>
+  <audio id="sx-guin-tape" src="media/inserts/ins-guin-tape-bed.wav" data-bed="" data-start="660.86" data-duration="14.0" data-volume="0.35"></audio>
 
-  <!-- ============ CTA (config channel.cta v5; 392.32 s = 37 %; after a2-s5, before a3-s1's payoff) ============ -->
-  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v5-sep6.mp4" data-start="392.320" data-duration="15.139" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
+  <!-- ============ CTA (config channel.cta v5; 935.21 s = 88 % (owner 21 Sep 26); after a6-s1b (16 dead then, 4 now), before a6-s2 (what changed)) ============ -->
+  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v5-sep6.mp4" data-start="935.210" data-duration="15.139" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
 
   <!-- ============ BEDS (narration above every bed: score 0.13, ambience <= 0.20) ============ -->
   <audio id="sx-mus-h" src="media/beds/score-act1-darkambient.mp3" data-bed="" data-start="0" data-duration="113.07" data-volume="0.13"></audio>
   <audio id="sx-rumble-hook" src="media/beds/04_distant_storm_rumble.mp3" data-bed="" data-start="0" data-duration="28.83" data-volume="0.30"></audio>
   <audio id="sx-mus-a1" src="media/beds/score-act2-unease.mp3" data-bed="" data-start="113.77" data-duration="141.67" data-volume="0.13"></audio>
   <audio id="sx-mus-a2" src="media/beds/score-act5-tension.mp3" data-bed="" data-start="256.24" data-duration="135.08" data-volume="0.13"></audio>
-  <audio id="sx-mus-a3" src="media/beds/score-act3-urgent.mp3" data-bed="" data-start="408.46" data-duration="186.97" data-volume="0.13"></audio>
-  <audio id="sx-mus-a4" src="media/beds/score-act4-stormhybrid.mp3" data-bed="" data-start="596.23" data-duration="138.36" data-volume="0.13"></audio>
-  <audio id="sx-mus-a5" src="media/beds/score-act5-tension.mp3" data-bed="" data-start="735.49" data-duration="136.21" data-volume="0.13" data-callback="second pass of the tension bed (the detective act)"></audio>
-  <audio id="sx-mus-a6" src="media/beds/score-act6-close.mp3" data-bed="" data-start="872.50" data-duration="186.38" data-volume="0.16"></audio>
+  <audio id="sx-mus-a3" src="media/beds/score-act3-urgent.mp3" data-bed="" data-start="392.32" data-duration="186.97" data-volume="0.13"></audio>
+  <audio id="sx-mus-a4" src="media/beds/score-act4-stormhybrid.mp3" data-bed="" data-start="580.09" data-duration="138.36" data-volume="0.13"></audio>
+  <audio id="sx-mus-a5" src="media/beds/score-act5-tension.mp3" data-bed="" data-start="719.35" data-duration="136.21" data-volume="0.13" data-callback="second pass of the tension bed (the detective act)"></audio>
+  <audio id="sx-mus-a6" src="media/beds/score-act6-close.mp3" data-bed="" data-start="856.36" data-duration="77.85" data-volume="0.16"></audio>
+  <audio id="sx-mus-a6b" src="media/beds/score-act6-close.mp3" data-bed="" data-start="951.449" data-duration="108.38" data-volume="0.16" data-callback="act-6 bed resumes after the CTA"></audio>
   <audio id="sx-wind-1" src="media/beds/02_wind_ominous_steady.mp3" data-bed="" data-start="240.30" data-duration="5.19" data-volume="0.20"></audio>
   <audio id="sx-wind-2" src="media/beds/02_wind_ominous_steady.mp3" data-bed="" data-start="298.40" data-duration="9.16" data-volume="0.20" data-callback="wind under the second hold"></audio>
-  <audio id="sx-wind-3" src="media/beds/02_wind_ominous_steady.mp3" data-bed="" data-start="622.30" data-duration="6.35" data-volume="0.20" data-callback="wind under the third hold"></audio>
+  <audio id="sx-wind-3" src="media/beds/02_wind_ominous_steady.mp3" data-bed="" data-start="606.16" data-duration="6.35" data-volume="0.20" data-callback="wind under the third hold"></audio>
 
   <!-- ============ STRUCTURE: hook void, chapter blackouts, CTA dips (picture track), declared holds (track 8) ============ -->
   <section class="clip blackout" id="bo-void" data-start="27.33" data-duration="1.5" data-track-index="1"></section>
   <section class="clip blackout" id="bo-1" data-start="113.07" data-duration="0.7" data-track-index="1"></section>
   <section class="clip blackout" id="bo-2" data-start="255.44" data-duration="0.8" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-cta-in" data-start="391.32" data-duration="1.0" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-cta-out" data-start="407.459" data-duration="1.0" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-3" data-start="595.43" data-duration="0.8" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-4" data-start="734.59" data-duration="0.9" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-5" data-start="871.70" data-duration="0.8" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-2b" data-start="391.32" data-duration="1.0" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-3" data-start="579.29" data-duration="0.8" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-4" data-start="718.45" data-duration="0.9" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-5" data-start="855.56" data-duration="0.8" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-cta-in" data-start="934.21" data-duration="1.0" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-cta-out" data-start="950.349" data-duration="1.1" data-track-index="1"></section>
+  <!-- presenter circle (FORMAT.md): idle track 6, talk track 7, ring track 9; hidden in the hook, under the CTA and the close card -->
+  <video id="pip-idle-w1" class="pip" src="media/pip/paul-idle-w1.mp4" data-start="28.83" data-duration="905.38" data-track-index="6" muted></video>
+  <video id="pip-talk-w1" class="pip" src="media/pip/paul-talk-w1.mp4" data-start="28.83" data-duration="905.38" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w1" data-start="28.83" data-duration="905.38" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-idle-w2" class="pip" src="media/pip/paul-idle-w2.mp4" data-start="951.449" data-duration="85.51" data-track-index="6" muted></video>
+  <video id="pip-talk-w2" class="pip" src="media/pip/paul-talk-w2.mp4" data-start="951.449" data-duration="85.51" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w2" data-start="951.449" data-duration="85.51" data-track-index="9"><div class="pipring"></div></section>
   <section class="clip hold" id="hold-1" data-start="242.29" data-duration="3.0" data-track-index="8"></section>
   <section class="clip hold" id="hold-2" data-start="303.36" data-duration="4.0" data-track-index="8"></section>
-  <section class="clip hold" id="hold-3" data-start="624.95" data-duration="3.5" data-track-index="8"></section>
+  <section class="clip hold" id="hold-3" data-start="608.81" data-duration="3.5" data-track-index="8"></section>
 
   <!-- ============ H · HOOK (0–27.33) ============ -->
   <section class="clip still-wrap" id="c-h-0" data-start="0" data-duration="3.6" data-track-index="1"><img id="kb-h-0" src="media/act-a3-a4/iln_CVG4.png" alt=""></section>
@@ -199,84 +212,84 @@
 
   <!-- ============ A3 · FIVE ON ONE SCREEN (408.46–595.43) ============ -->
   <!-- payoff cut after the out-dip is real footage (DESIGN CTA contract), then the F6 notebook -->
-  <section class="clip still-wrap" id="c-a3-0" data-start="408.459" data-duration="2.441" data-track-index="1"><img id="kb-a3-0" src="media/act-a3-a4/commons_xenia_funnel.jpg" alt=""></section>
-  <div id="host-f6" data-composition-id="g-f6" data-composition-src="compositions/g-f6.html" data-start="410.9" data-duration="12.56" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-radar-a3" data-composition-id="g-radar-a3" data-composition-src="compositions/g-radar-a3.html" data-start="423.46" data-duration="44.03" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-cite-warning" data-composition-id="g-cite-warning" data-composition-src="compositions/g-cite-warning.html" data-start="438.5" data-duration="8.0" data-track-index="4" data-width="1920" data-height="1080"></div>
-  <section class="clip" id="p-pf-445" data-start="450.0" data-duration="2.6" data-track-index="5"><div class="popfig narrow" id="pf-445"><span class="pf-big">4:45 PM</span><span class="pf-sub">WARNING RENEWED</span></div></section>
-  <section class="clip still-wrap" id="c-a3-1" data-start="454.5" data-duration="5.5" data-track-index="3" data-overlap-ok="cutaway over the scope"><img id="kb-a3-1" src="media/act-a3-a4/iln_CVG3.png" alt=""></section>
-  <div id="host-map-a3" data-composition-id="g-map-a3" data-composition-src="compositions/g-map-a3.html" data-start="467.49" data-duration="127.94" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-cite-cvg" data-composition-id="g-cite-cvg" data-composition-src="compositions/g-cite-cvg.html" data-start="486.8" data-duration="9.0" data-track-index="4" data-width="1920" data-height="1080"></div>
-  <div id="host-gilbert" data-composition-id="g-person-gilbert" data-composition-src="compositions/g-person-gilbert.html" data-start="513.4" data-duration="28.3" data-track-index="4" data-width="1920" data-height="1080"></div>
-  <section class="clip still-wrap" id="c-a3-2" data-start="516.0" data-duration="5.5" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a3-2" src="media/act-a3-a4/lmk_track_map.png" alt=""></section>
-  <section class="clip still-wrap" id="c-a3-3" data-start="530.8" data-duration="5.7" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a3-3" src="media/act-a3-a4/commons_louisville_april74.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a3-4" data-start="555.0" data-duration="6.0" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a3-4" src="media/act-a3-a4/commons_monticello_damage.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a3-5" data-start="561.5" data-duration="5.0" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a3-5" src="media/act-a3-a4/commons_monticello_fujita_crop.jpg" alt=""></section>
-  <div id="host-poole" data-composition-id="g-person-poole" data-composition-src="compositions/g-person-poole.html" data-start="566.2" data-duration="12.0" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="c-a3-0" data-start="392.319" data-duration="2.441" data-track-index="1"><img id="kb-a3-0" src="media/act-a3-a4/commons_xenia_funnel.jpg" alt=""></section>
+  <div id="host-f6" data-composition-id="g-f6" data-composition-src="compositions/g-f6.html" data-start="394.76" data-duration="12.56" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-radar-a3" data-composition-id="g-radar-a3" data-composition-src="compositions/g-radar-a3.html" data-start="407.32" data-duration="44.03" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-cite-warning" data-composition-id="g-cite-warning" data-composition-src="compositions/g-cite-warning.html" data-start="422.36" data-duration="8.0" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <section class="clip" id="p-pf-445" data-start="433.86" data-duration="2.6" data-track-index="5"><div class="popfig narrow" id="pf-445"><span class="pf-big">4:45 PM</span><span class="pf-sub">WARNING RENEWED</span></div></section>
+  <section class="clip still-wrap" id="c-a3-1" data-start="438.36" data-duration="5.5" data-track-index="3" data-overlap-ok="cutaway over the scope"><img id="kb-a3-1" src="media/act-a3-a4/iln_CVG3.png" alt=""></section>
+  <div id="host-map-a3" data-composition-id="g-map-a3" data-composition-src="compositions/g-map-a3.html" data-start="451.35" data-duration="127.94" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-cite-cvg" data-composition-id="g-cite-cvg" data-composition-src="compositions/g-cite-cvg.html" data-start="470.66" data-duration="9.0" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-gilbert" data-composition-id="g-person-gilbert" data-composition-src="compositions/g-person-gilbert.html" data-start="497.26" data-duration="28.3" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="c-a3-2" data-start="499.86" data-duration="5.5" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a3-2" src="media/act-a3-a4/lmk_track_map.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a3-3" data-start="514.66" data-duration="5.7" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a3-3" src="media/act-a3-a4/commons_louisville_april74.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a3-4" data-start="538.86" data-duration="6.0" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a3-4" src="media/act-a3-a4/commons_monticello_damage.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a3-5" data-start="545.36" data-duration="5.0" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a3-5" src="media/act-a3-a4/commons_monticello_fujita_crop.jpg" alt=""></section>
+  <div id="host-poole" data-composition-id="g-person-poole" data-composition-src="compositions/g-person-poole.html" data-start="550.06" data-duration="12.0" data-track-index="4" data-width="1920" data-height="1080"></div>
 
   <!-- ============ A4 · ALABAMA AFTER DARK (596.23–734.59) ============ -->
-  <div id="host-map-a4" data-composition-id="g-map-a4" data-composition-src="compositions/g-map-a4.html" data-start="596.23" data-duration="78.5" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <section class="clip still-wrap" id="c-a4-0" data-start="607.5" data-duration="5.5" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a4-0" src="media/act-a3-a4/hun_tanner_aerial_5-10.jpg" alt=""></section>
+  <div id="host-map-a4" data-composition-id="g-map-a4" data-composition-src="compositions/g-map-a4.html" data-start="580.09" data-duration="78.5" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="c-a4-0" data-start="591.36" data-duration="5.5" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a4-0" src="media/act-a3-a4/hun_tanner_aerial_5-10.jpg" alt=""></section>
   <!-- hold-3 624.95–628.45: the second track pulsing over the first on the map, wind bed, no voice -->
-  <video id="v-a4-1" src="media/act-a3-a4/hun_radarloop_tanner2.mp4" data-start="628.648" data-duration="12.0" data-track-index="3" data-overlap-ok="cutaway over the map" muted></video>
-  <section class="clip" id="p-pf-16" data-start="641.7" data-duration="2.6" data-track-index="5"><div class="popfig" id="pf-16"><span class="pf-big">16 DEAD</span><span class="pf-sub">LIMESTONE COUNTY</span></div></section>
-  <section class="clip" id="p-pf-55" data-start="645.0" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-55"><span class="pf-big">55 DEAD</span><span class="pf-sub">OVER HALF OF ALABAMA'S TOLL</span></div></section>
-  <section class="clip still-wrap" id="c-a4-2" data-start="641.0" data-duration="5.5" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a4-2" src="media/act-a3-a4/hun_tanner_aerial_4-10.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a4-3" data-start="646.5" data-duration="5.0" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a4-3" src="media/act-a3-a4/hun_tanner_aerial_5-14.jpg" alt=""></section>
-  <div id="host-lindley" data-composition-id="g-person-lindley" data-composition-src="compositions/g-person-lindley.html" data-start="672.7" data-duration="14.0" data-track-index="4" data-width="1920" data-height="1080"></div>
-  <section class="clip still-wrap" id="c-a4-4" data-start="674.73" data-duration="5.97" data-track-index="1"><img id="kb-a4-4" src="media/act-a3-a4/commons_guin_damage.jpg" alt=""></section>
-  <div id="host-cite-tape" data-composition-id="g-cite-tape" data-composition-src="compositions/g-cite-tape.html" data-start="677.0" data-duration="13.0" data-track-index="3" data-width="1920" data-height="1080"></div>
-  <section class="clip still-wrap" id="c-a4-5" data-start="680.7" data-duration="5.8" data-track-index="1"><img id="kb-a4-5" src="media/act-a3-a4/commons_guin_erts1_satellite.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a4-6" data-start="686.5" data-duration="5.9" data-track-index="1"><img id="kb-a4-6" src="media/act-a3-a4/bmx_satellite.jpg" alt=""></section>
-  <div id="host-todd" data-composition-id="g-person-todd" data-composition-src="compositions/g-person-todd.html" data-start="687.1" data-duration="12.0" data-track-index="4" data-width="1920" data-height="1080"></div>
-  <section class="clip still-wrap" id="c-a4-7" data-start="692.4" data-duration="6.0" data-track-index="1"><img id="kb-a4-7" src="media/act-a3-a4/hun_tanner_ground_ema.png" alt=""></section>
-  <section class="clip" id="p-pf-23" data-start="696.3" data-duration="2.6" data-track-index="5"><div class="popfig" id="pf-23"><span class="pf-big">23 DEAD</span><span class="pf-sub">IN GUIN THAT NIGHT</span></div></section>
-  <section class="clip still-wrap" id="c-a4-8" data-start="698.4" data-duration="4.0" data-track-index="1"><img id="kb-a4-8" src="media/act-a3-a4/commons_fatality_map.png" alt=""></section>
-  <section class="clip still-wrap" id="c-a4-8b" data-start="702.4" data-duration="3.947" data-track-index="1"><img id="kb-a4-8b" src="media/act-a5-z/hun-fujita-forbes-track-lawrence-madison-1974.png" alt=""></section>
-  <section class="clip" id="p-pf-737" data-start="702.3" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-737"><span class="pf-big">737 HOUSES</span><span class="pf-sub">DESTROYED ON ONE TRACK</span></div></section>
-  <section class="clip still-wrap" id="c-a4-9" data-start="706.347" data-duration="5.653" data-track-index="1"><img id="kb-a4-9" src="media/act-a5-z/tanner-limestone-ema-severe-damage-1974.png" alt=""></section>
-  <section class="clip still-wrap" id="c-a4-10" data-start="712.0" data-duration="5.0" data-track-index="1"><img id="kb-a4-10" src="media/act-a5-z/tannercrossroad-f5-leveled-houses-1974.jpg" alt=""></section>
-  <div id="host-mcguire" data-composition-id="g-person-mcguire" data-composition-src="compositions/g-person-mcguire.html" data-start="706.347" data-duration="12.0" data-track-index="4" data-width="1920" data-height="1080"></div>
-  <div id="host-scale-a4" data-composition-id="g-scale-a4" data-composition-src="compositions/g-scale-a4.html" data-start="717.0" data-duration="8.0" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <section class="clip still-wrap" id="c-a4-11" data-start="725.0" data-duration="5.5" data-track-index="1"><img id="kb-a4-11" src="media/act-a3-a4/bmx_track_map.jpg" alt=""></section>
-  <section class="clip" id="p-pf-330d" data-start="725.0" data-duration="2.4" data-track-index="5"><div class="popfig" id="pf-330d"><span class="pf-big">330 DEAD</span><span class="pf-sub">BY NOAA'S COUNT</span></div></section>
-  <section class="clip" id="p-pf-5484" data-start="727.6" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-5484"><span class="pf-big">5,484 HURT</span><span class="pf-sub">INDIANA TO ALABAMA</span></div></section>
-  <section class="clip still-wrap" id="c-a4-12" data-start="730.5" data-duration="4.09" data-track-index="1"><img id="kb-a4-12" src="media/act-a5-z/hun-overall-track-1974.png" alt=""></section>
+  <video id="v-a4-1" src="media/act-a3-a4/hun_radarloop_tanner2.mp4" data-start="612.508" data-duration="12.0" data-track-index="3" data-overlap-ok="cutaway over the map" muted></video>
+  <section class="clip" id="p-pf-16" data-start="625.56" data-duration="2.6" data-track-index="5"><div class="popfig" id="pf-16"><span class="pf-big">16 DEAD</span><span class="pf-sub">LIMESTONE COUNTY</span></div></section>
+  <section class="clip" id="p-pf-55" data-start="628.86" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-55"><span class="pf-big">55 DEAD</span><span class="pf-sub">OVER HALF OF ALABAMA'S TOLL</span></div></section>
+  <section class="clip still-wrap" id="c-a4-2" data-start="624.86" data-duration="5.5" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a4-2" src="media/act-a3-a4/hun_tanner_aerial_4-10.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-3" data-start="630.36" data-duration="5.0" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a4-3" src="media/act-a3-a4/hun_tanner_aerial_5-14.jpg" alt=""></section>
+  <div id="host-lindley" data-composition-id="g-person-lindley" data-composition-src="compositions/g-person-lindley.html" data-start="656.56" data-duration="14.0" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="c-a4-4" data-start="658.59" data-duration="5.97" data-track-index="1"><img id="kb-a4-4" src="media/act-a3-a4/commons_guin_damage.jpg" alt=""></section>
+  <div id="host-cite-tape" data-composition-id="g-cite-tape" data-composition-src="compositions/g-cite-tape.html" data-start="660.86" data-duration="13.0" data-track-index="3" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="c-a4-5" data-start="664.56" data-duration="5.8" data-track-index="1"><img id="kb-a4-5" src="media/act-a3-a4/commons_guin_erts1_satellite.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-6" data-start="670.36" data-duration="5.9" data-track-index="1"><img id="kb-a4-6" src="media/act-a3-a4/bmx_satellite.jpg" alt=""></section>
+  <div id="host-todd" data-composition-id="g-person-todd" data-composition-src="compositions/g-person-todd.html" data-start="670.96" data-duration="12.0" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="c-a4-7" data-start="676.26" data-duration="6.0" data-track-index="1"><img id="kb-a4-7" src="media/act-a3-a4/hun_tanner_ground_ema.png" alt=""></section>
+  <section class="clip" id="p-pf-23" data-start="680.16" data-duration="2.6" data-track-index="5"><div class="popfig" id="pf-23"><span class="pf-big">23 DEAD</span><span class="pf-sub">IN GUIN THAT NIGHT</span></div></section>
+  <section class="clip still-wrap" id="c-a4-8" data-start="682.26" data-duration="4.0" data-track-index="1"><img id="kb-a4-8" src="media/act-a3-a4/commons_fatality_map.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-8b" data-start="686.26" data-duration="3.947" data-track-index="1"><img id="kb-a4-8b" src="media/act-a5-z/hun-fujita-forbes-track-lawrence-madison-1974.png" alt=""></section>
+  <section class="clip" id="p-pf-737" data-start="686.16" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-737"><span class="pf-big">737 HOUSES</span><span class="pf-sub">DESTROYED ON ONE TRACK</span></div></section>
+  <section class="clip still-wrap" id="c-a4-9" data-start="690.207" data-duration="5.653" data-track-index="1"><img id="kb-a4-9" src="media/act-a5-z/tanner-limestone-ema-severe-damage-1974.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-10" data-start="695.86" data-duration="5.0" data-track-index="1"><img id="kb-a4-10" src="media/act-a5-z/tannercrossroad-f5-leveled-houses-1974.jpg" alt=""></section>
+  <div id="host-mcguire" data-composition-id="g-person-mcguire" data-composition-src="compositions/g-person-mcguire.html" data-start="690.207" data-duration="12.0" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-scale-a4" data-composition-id="g-scale-a4" data-composition-src="compositions/g-scale-a4.html" data-start="700.86" data-duration="8.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="c-a4-11" data-start="708.86" data-duration="5.5" data-track-index="1"><img id="kb-a4-11" src="media/act-a3-a4/bmx_track_map.jpg" alt=""></section>
+  <section class="clip" id="p-pf-330d" data-start="708.86" data-duration="2.4" data-track-index="5"><div class="popfig" id="pf-330d"><span class="pf-big">330 DEAD</span><span class="pf-sub">BY NOAA'S COUNT</span></div></section>
+  <section class="clip" id="p-pf-5484" data-start="711.46" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-5484"><span class="pf-big">5,484 HURT</span><span class="pf-sub">INDIANA TO ALABAMA</span></div></section>
+  <section class="clip still-wrap" id="c-a4-12" data-start="714.36" data-duration="4.09" data-track-index="1"><img id="kb-a4-12" src="media/act-a5-z/hun-overall-track-1974.png" alt=""></section>
 
   <!-- ============ A5 · TEN MONTHS IN THE AIR (735.49–871.70) ============ -->
-  <div id="host-plane" data-composition-id="g-plane" data-composition-src="compositions/g-plane.html" data-start="735.49" data-duration="28.92" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-f4f5" data-composition-id="g-f4f5" data-composition-src="compositions/g-f4f5.html" data-start="764.41" data-duration="21.0" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-pennington" data-composition-id="g-person-pennington" data-composition-src="compositions/g-person-pennington.html" data-start="780.3" data-duration="14.0" data-track-index="4" data-width="1920" data-height="1080"></div>
-  <section class="clip still-wrap" id="c-a5-0" data-start="785.41" data-duration="5.09" data-track-index="1" data-callback="second use: the swept slab the voice describes"><img id="kb-a5-0" src="media/act-a3-a4/hun_tanner_aerial_4-1.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a5-0b" data-start="790.5" data-duration="4.5" data-track-index="1"><img id="kb-a5-0b" src="media/act-a3-a4/commons_xenia_ncdc_storm_data.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a5-1" data-start="795.0" data-duration="5.98" data-track-index="1" data-callback="second use: Fujita's map, now as the thing he read from the air"><img id="kb-a5-1" src="media/act-a5-z/fujita-color-map-1975.jpg" alt=""></section>
-  <div id="host-engine" data-composition-id="g-engine" data-composition-src="compositions/g-engine.html" data-start="800.98" data-duration="28.03" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-combed" data-composition-id="g-combed" data-composition-src="compositions/g-combed.html" data-start="829.01" data-duration="24.09" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-legacy" data-composition-id="g-legacy" data-composition-src="compositions/g-legacy.html" data-start="853.1" data-duration="18.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-plane" data-composition-id="g-plane" data-composition-src="compositions/g-plane.html" data-start="719.35" data-duration="28.92" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-f4f5" data-composition-id="g-f4f5" data-composition-src="compositions/g-f4f5.html" data-start="748.27" data-duration="21.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-pennington" data-composition-id="g-person-pennington" data-composition-src="compositions/g-person-pennington.html" data-start="764.16" data-duration="14.0" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="c-a5-0" data-start="769.27" data-duration="5.09" data-track-index="1" data-callback="second use: the swept slab the voice describes"><img id="kb-a5-0" src="media/act-a3-a4/hun_tanner_aerial_4-1.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-0b" data-start="774.36" data-duration="4.5" data-track-index="1"><img id="kb-a5-0b" src="media/act-a3-a4/commons_xenia_ncdc_storm_data.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-1" data-start="778.86" data-duration="5.98" data-track-index="1" data-callback="second use: Fujita's map, now as the thing he read from the air"><img id="kb-a5-1" src="media/act-a5-z/fujita-color-map-1975.jpg" alt=""></section>
+  <div id="host-engine" data-composition-id="g-engine" data-composition-src="compositions/g-engine.html" data-start="784.84" data-duration="28.03" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-combed" data-composition-id="g-combed" data-composition-src="compositions/g-combed.html" data-start="812.87" data-duration="24.09" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-legacy" data-composition-id="g-legacy" data-composition-src="compositions/g-legacy.html" data-start="836.96" data-duration="18.6" data-track-index="2" data-width="1920" data-height="1080"></div>
 
   <!-- ============ A6 · THE SAME CORRIDOR (872.50–1036.01) ============ -->
-  <div id="host-map-a6" data-composition-id="g-map-a6" data-composition-src="compositions/g-map-a6.html" data-start="872.50" data-duration="49.072" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <section class="clip still-wrap" id="c-a6-0" data-start="886.8" data-duration="5.2" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a6-0" src="media/act-a5-z/hackleburg-high-school-2011.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a6-1" data-start="896.8" data-duration="5.5" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a6-1" src="media/act-a5-z/hackleburg-brick-home-slab-2011.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a6-2" data-start="902.3" data-duration="5.0" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a6-2" src="media/act-a5-z/hackleburg-piggly-family-dollar-2011.jpg" alt=""></section>
-  <div id="host-cite-paper" data-composition-id="g-cite-paper" data-composition-src="compositions/g-cite-paper.html" data-start="914.8" data-duration="8.0" data-track-index="4" data-width="1920" data-height="1080"></div>
-  <section class="clip still-wrap" id="c-a6-3" data-start="921.572" data-duration="3.428" data-track-index="1"><img id="kb-a6-3" src="media/act-a5-z/nasa-tornado-tracks-ms-al-2011.jpg" alt=""></section>
-  <div id="host-16-4" data-composition-id="g-thennow-16-4" data-composition-src="compositions/g-thennow-16-4.html" data-start="925.0" data-duration="16.0" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <section class="clip still-wrap" id="c-a6-4" data-start="941.0" data-duration="3.5" data-track-index="1"><img id="kb-a6-4" src="media/act-a5-z/hackleburg-vehicle-toss-2011.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a6-5" data-start="944.5" data-duration="6.0" data-track-index="1" data-callback="second use: the corridor today, paid off"><img id="kb-a6-5" src="media/act-a5-z/huntsville-alabama-skyline-today.jpg" alt=""></section>
-  <section class="clip" id="p-pf-433k" data-start="944.5" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-433k"><span class="pf-big">433,000</span><span class="pf-sub">MADISON COUNTY TODAY</span></div></section>
-  <div id="host-cols" data-composition-id="g-thennow-cols" data-composition-src="compositions/g-thennow-cols.html" data-start="950.5" data-duration="51.07" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <section class="clip still-wrap" id="c-a6-6" data-start="962.0" data-duration="5.5" data-track-index="3" data-overlap-ok="cutaway over the columns"><img id="kb-a6-6" src="media/act-a5-z/nexrad-marion-county-ef4-2020.png" alt=""></section>
-  <section class="clip still-wrap" id="c-a6-7" data-start="970.6" data-duration="5.9" data-track-index="3" data-overlap-ok="cutaway over the columns"><img id="kb-a6-7" src="media/act-a5-z/smartphone-notification-alert.jpg" alt=""></section>
+  <div id="host-map-a6" data-composition-id="g-map-a6" data-composition-src="compositions/g-map-a6.html" data-start="856.36" data-duration="49.072" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="c-a6-0" data-start="870.66" data-duration="5.2" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a6-0" src="media/act-a5-z/hackleburg-high-school-2011.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a6-1" data-start="880.66" data-duration="5.5" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a6-1" src="media/act-a5-z/hackleburg-brick-home-slab-2011.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a6-2" data-start="886.16" data-duration="5.0" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a6-2" src="media/act-a5-z/hackleburg-piggly-family-dollar-2011.jpg" alt=""></section>
+  <div id="host-cite-paper" data-composition-id="g-cite-paper" data-composition-src="compositions/g-cite-paper.html" data-start="898.66" data-duration="8.0" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="c-a6-3" data-start="905.432" data-duration="3.428" data-track-index="1"><img id="kb-a6-3" src="media/act-a5-z/nasa-tornado-tracks-ms-al-2011.jpg" alt=""></section>
+  <div id="host-16-4" data-composition-id="g-thennow-16-4" data-composition-src="compositions/g-thennow-16-4.html" data-start="908.86" data-duration="16.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="c-a6-4" data-start="924.86" data-duration="3.5" data-track-index="1"><img id="kb-a6-4" src="media/act-a5-z/hackleburg-vehicle-toss-2011.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a6-5" data-start="928.36" data-duration="5.85" data-track-index="1" data-callback="second use: the corridor today, paid off"><img id="kb-a6-5" src="media/act-a5-z/huntsville-alabama-skyline-today.jpg" alt=""></section>
+  <section class="clip" id="p-pf-433k" data-start="928.36" data-duration="3.0" data-track-index="5"><div class="popfig" id="pf-433k"><span class="pf-big">433,000</span><span class="pf-sub">MADISON COUNTY TODAY</span></div></section>
+  <div id="host-cols" data-composition-id="g-thennow-cols" data-composition-src="compositions/g-thennow-cols.html" data-start="951.449" data-duration="51.07" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="c-a6-6" data-start="962.949" data-duration="5.5" data-track-index="3" data-overlap-ok="cutaway over the columns"><img id="kb-a6-6" src="media/act-a5-z/nexrad-marion-county-ef4-2020.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a6-7" data-start="971.549" data-duration="5.9" data-track-index="3" data-overlap-ok="cutaway over the columns"><img id="kb-a6-7" src="media/act-a5-z/smartphone-notification-alert.jpg" alt=""></section>
   <!-- last 90 s: recap zone, reuse allowed (lint) -->
-  <section class="clip still-wrap" id="c-a6-8" data-start="1001.57" data-duration="5.93" data-track-index="1" data-callback="recap: Gus Allen returns to Brandenburg"><img id="kb-a6-8" src="media/act-h-a2/brandenburg-nws-2.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a6-9" data-start="1007.5" data-duration="6.0" data-track-index="1" data-callback="recap: the same ground"><img id="kb-a6-9" src="media/act-h-a2/brandenburg-aerial-1974.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a6-10" data-start="1013.5" data-duration="6.0" data-track-index="1" data-callback="recap: Pearson's chart"><img id="kb-a6-10" src="media/act-a5-z/surface-map-zoomed12z-1974.png" alt=""></section>
-  <section class="clip still-wrap" id="c-a6-11" data-start="1019.5" data-duration="5.5" data-track-index="1"><img id="kb-a6-11" src="media/act-a5-z/wsr57-amarillo-radar-lubbock-1970.png" alt=""></section>
-  <div id="host-rooms" data-composition-id="g-thennow-rooms" data-composition-src="compositions/g-thennow-rooms.html" data-start="1025.0" data-duration="11.01" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="c-a6-8" data-start="1002.519" data-duration="5.93" data-track-index="1" data-callback="recap: Gus Allen returns to Brandenburg"><img id="kb-a6-8" src="media/act-h-a2/brandenburg-nws-2.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a6-9" data-start="1008.449" data-duration="6.0" data-track-index="1" data-callback="recap: the same ground"><img id="kb-a6-9" src="media/act-h-a2/brandenburg-aerial-1974.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a6-10" data-start="1014.449" data-duration="6.0" data-track-index="1" data-callback="recap: Pearson's chart"><img id="kb-a6-10" src="media/act-a5-z/surface-map-zoomed12z-1974.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a6-11" data-start="1020.449" data-duration="5.5" data-track-index="1"><img id="kb-a6-11" src="media/act-a5-z/wsr57-amarillo-radar-lubbock-1970.png" alt=""></section>
+  <div id="host-rooms" data-composition-id="g-thennow-rooms" data-composition-src="compositions/g-thennow-rooms.html" data-start="1025.949" data-duration="11.01" data-track-index="2" data-width="1920" data-height="1080"></div>
 
   <!-- ============ Z · CLOSE (1036.01–1058.88) ============ -->
-  <div id="host-outro" data-composition-id="g-outro" data-composition-src="compositions/g-outro.html" data-start="1036.01" data-duration="22.99" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-outro" data-composition-id="g-outro" data-composition-src="compositions/g-outro.html" data-start="1036.959" data-duration="23.041" data-track-index="2" data-width="1920" data-height="1080"></div>
 
   <div id="vignette"></div>
   <canvas id="grain" width="480" height="270"></canvas>
@@ -286,7 +299,7 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const DUR = 1059.0;
+  const DUR = 1060.0;
   function kb(sel, at, dur, s0, s1, x0, x1, y0, y1) {
     tl.fromTo(sel, { scale: s0, x: x0, y: y0, transformOrigin: "center" }, { scale: s1, x: x1, y: y1, duration: dur, ease: "none" }, at);
   }
@@ -306,14 +319,14 @@ window.__timelines = window.__timelines || {};
     ["#kb-a2-5", 318.972, 5.528], ["#kb-a2-6", 324.5, 6.0], ["#kb-a2-7", 330.5, 6.0], ["#kb-a2-8", 336.5, 5.5], ["#kb-a2-9", 342.0, 5.5],
     ["#kb-a2-10", 347.5, 6.0], ["#kb-a2-11", 353.5, 4.5], ["#kb-a2-12", 358.0, 4.2], ["#kb-a2-13", 362.2, 5.8], ["#kb-a2-14", 368.0, 5.8],
     ["#kb-a2-15", 373.8, 4.7], ["#kb-a2-16", 378.5, 5.15], ["#kb-a2-17", 383.65, 3.95], ["#kb-a2-18", 387.6, 3.72],
-    ["#kb-a3-0", 408.459, 2.441], ["#kb-a3-1", 454.5, 5.5], ["#kb-a3-2", 516.0, 5.5], ["#kb-a3-3", 530.8, 5.7], ["#kb-a3-4", 555.0, 6.0], ["#kb-a3-5", 561.5, 5.0],
-    ["#kb-a4-0", 607.5, 5.5], ["#kb-a4-2", 641.0, 5.5], ["#kb-a4-3", 646.5, 5.0], ["#kb-a4-4", 674.73, 5.97], ["#kb-a4-5", 680.7, 5.8],
-    ["#kb-a4-6", 686.5, 5.9], ["#kb-a4-7", 692.4, 6.0], ["#kb-a4-8", 698.4, 4.0], ["#kb-a4-8b", 702.4, 3.947], ["#kb-a4-9", 706.347, 5.653], ["#kb-a4-10", 712.0, 5.0],
-    ["#kb-a4-11", 725.0, 5.5], ["#kb-a4-12", 730.5, 4.09],
-    ["#kb-a5-0", 785.41, 5.09], ["#kb-a5-0b", 790.5, 4.5], ["#kb-a5-1", 795.0, 5.98],
-    ["#kb-a6-0", 886.8, 5.2], ["#kb-a6-1", 896.8, 5.5], ["#kb-a6-2", 902.3, 5.0], ["#kb-a6-3", 921.572, 3.428], ["#kb-a6-4", 941.0, 3.5],
-    ["#kb-a6-5", 944.5, 6.0], ["#kb-a6-6", 962.0, 5.5], ["#kb-a6-7", 970.6, 5.9], ["#kb-a6-8", 1001.57, 5.93], ["#kb-a6-9", 1007.5, 6.0],
-    ["#kb-a6-10", 1013.5, 6.0], ["#kb-a6-11", 1019.5, 5.5]
+    ["#kb-a3-0", 392.319, 2.441], ["#kb-a3-1", 438.36, 5.5], ["#kb-a3-2", 499.86, 5.5], ["#kb-a3-3", 514.66, 5.7], ["#kb-a3-4", 538.86, 6.0], ["#kb-a3-5", 545.36, 5.0],
+    ["#kb-a4-0", 591.36, 5.5], ["#kb-a4-2", 624.86, 5.5], ["#kb-a4-3", 630.36, 5.0], ["#kb-a4-4", 658.59, 5.97], ["#kb-a4-5", 664.56, 5.8],
+    ["#kb-a4-6", 670.36, 5.9], ["#kb-a4-7", 676.26, 6.0], ["#kb-a4-8", 682.26, 4.0], ["#kb-a4-8b", 686.26, 3.947], ["#kb-a4-9", 690.207, 5.653], ["#kb-a4-10", 695.86, 5.0],
+    ["#kb-a4-11", 708.86, 5.5], ["#kb-a4-12", 714.36, 4.09],
+    ["#kb-a5-0", 769.27, 5.09], ["#kb-a5-0b", 774.36, 4.5], ["#kb-a5-1", 778.86, 5.98],
+    ["#kb-a6-0", 870.66, 5.2], ["#kb-a6-1", 880.66, 5.5], ["#kb-a6-2", 886.16, 5.0], ["#kb-a6-3", 905.432, 3.428], ["#kb-a6-4", 924.86, 3.5],
+    ["#kb-a6-5", 928.36, 5.85], ["#kb-a6-6", 962.949, 5.5], ["#kb-a6-7", 971.549, 5.9], ["#kb-a6-8", 1002.519, 5.93], ["#kb-a6-9", 1008.449, 6.0],
+    ["#kb-a6-10", 1014.449, 6.0], ["#kb-a6-11", 1020.449, 5.5]
   ];
   stills.forEach(([sel, at, dur], i) => { const m = KB[i % 4]; kb(sel, at, dur, m[0], m[1], m[2], m[3], m[4], m[5]); });
   // the two still-carried holds get a slower, longer push
@@ -325,10 +338,10 @@ window.__timelines = window.__timelines || {};
   pop("#pf-128", 192.6, 3.0);
   pop("#pf-bus", 298.9, 4.0); pop("#pf-5schools", 322.9, 2.3); pop("#pf-1445", 348.0, 3.0);
   pop("#pf-apr9", 362.5, 3.5); pop("#pf-50mi", 376.7, 3.0);
-  pop("#pf-445", 450.0, 2.6);
-  pop("#pf-16", 641.7, 2.6); pop("#pf-55", 645.0, 3.0);
-  pop("#pf-23", 696.3, 2.6); pop("#pf-737", 702.3, 3.0); pop("#pf-330d", 725.0, 2.4); pop("#pf-5484", 727.6, 3.0);
-  pop("#pf-433k", 944.5, 3.0);
+  pop("#pf-445", 433.86, 2.6);
+  pop("#pf-16", 625.56, 2.6); pop("#pf-55", 628.86, 3.0);
+  pop("#pf-23", 680.16, 2.6); pop("#pf-737", 686.16, 3.0); pop("#pf-330d", 708.86, 2.4); pop("#pf-5484", 711.46, 3.0);
+  pop("#pf-433k", 928.36, 3.0);
   // Tim Haley's count ticks up as the voice says "a hundred and sixty nine"
   pop("#pf-169", 214.7, 3.4);
   const haley = { n: 0 };
@@ -341,6 +354,282 @@ window.__timelines = window.__timelines || {};
   });
   tl.to("#schools", { autoAlpha: 0, x: 40, duration: 0.4, ease: "power2.in" }, 333.6);
 
+  // pip-sync begin (generated from words.json; talk layer over idle)
+  tl.set(["#pip-talk-w1", "#pip-talk-w2"], { autoAlpha: 0 }, 0);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 28.83); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 29.91);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 30.33); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 32.61);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 33.25); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 35.71);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 36.07); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 38.23);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 38.73); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 41.65);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 42.25); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 45.11);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 45.51); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 46.97);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 47.55); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 50.25);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 50.79); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 51.75);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 52.15); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 54.71);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 55.33); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 56.89);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 57.41); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 59.05);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 59.53); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 61.31);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 61.95); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 66.89);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 67.75); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 69.99);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 70.77); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 72.39);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 72.89); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 74.41);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 76.12); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 81.24);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 81.98); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 85.80);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 86.26); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 90.18);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 90.80); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 96.68);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 97.16); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 103.40);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 103.92); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 108.34);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 109.14); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 112.42);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 114.07); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 126.31);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 126.77); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 130.29);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 130.85); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 139.47);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 139.99); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 146.21);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 147.16); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 150.13);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 150.52); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 152.74);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 153.88); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 158.16);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 158.84); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 165.53);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 166.18); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 167.90);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 168.57); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 174.13);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 175.04); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 177.50);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 178.00); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 182.90);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 183.66); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 189.82);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 190.26); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 191.68);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 192.70); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 200.10);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 200.64); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 203.04);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 203.42); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 207.50);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 208.28); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 209.62);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 210.04); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 210.90);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 211.42); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 213.80);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 214.84); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 216.60);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 217.20); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 221.44);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 222.14); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 223.36);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 223.74); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 225.96);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 226.52); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 227.22);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 228.05); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 229.63);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 230.13); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 230.51);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 230.91); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 232.77);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 233.43); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 236.15);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 236.97); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 239.63);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 240.37); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 241.87);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 245.49); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 251.43);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 252.11); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 254.63);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 256.54); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 260.98);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 261.42); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 263.92);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 264.56); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 265.68);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 266.24); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 267.34);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 268.10); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 270.88);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 271.50); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 276.42);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 277.08); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 278.24);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 278.78); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 280.38);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 280.90); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 283.00);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 283.54); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 286.12);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 286.94); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 294.74);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 295.32); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 302.92);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 307.56); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 312.14);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 312.97); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 315.31);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 315.97); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 317.41);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 317.85); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 319.43);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 319.93); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 322.25);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 322.77); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 324.33);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 325.35); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 325.91);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 326.51); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 327.17);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 327.85); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 328.11);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 328.49); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 330.23);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 330.69); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 331.97);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 332.43); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 334.37);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 334.93); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 335.95);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 336.33); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 337.23);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 337.69); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 340.05);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 340.53); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 341.35);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 341.89); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 346.93);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 347.29); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 351.23);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 351.79); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 353.53);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 354.13); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 356.97);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 357.49); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 361.45);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 362.20); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 365.60);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 366.34); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 371.12);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 371.70); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 372.90);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 373.48); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 378.64);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 379.46); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 382.84);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 383.65); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 390.67);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 392.42); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 393.72);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 394.42); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 396.70);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 397.08); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 399.78);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 400.58); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 403.24);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 403.70); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 404.48);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 405.08); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 406.42);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 407.32); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 410.76);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 411.44); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 412.38);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 412.78); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 413.92);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 414.56); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 417.32);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 417.74); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 418.74);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 419.24); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 421.48);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 422.12); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 426.72);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 427.32); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 429.96);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 430.58); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 432.26);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 432.68); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 438.06);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 438.58); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 441.30);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 441.84); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 443.64);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 444.40); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 450.58);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 451.35); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 454.75);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 455.13); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 457.49);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 458.01); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 467.71);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 468.15); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 484.11);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 484.95); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 486.23);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 486.73); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 493.59);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 494.11); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 497.77);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 498.45); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 501.25);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 501.87); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 504.51);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 505.17); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 506.73);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 507.29); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 507.77);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 508.47); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 509.49);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 509.89); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 514.11);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 514.65); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 520.11);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 520.63); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 521.99);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 522.59); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 525.21);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 526.00); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 528.00);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 528.60); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 531.62);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 532.02); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 534.46);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 535.04); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 539.38);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 539.84); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 544.84);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 545.52); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 553.90);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 554.32); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 556.04);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 556.66); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 559.06);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 559.58); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 560.16);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 560.76); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 563.90);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 564.87); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 566.79);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 567.33); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 567.81);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 568.25); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 570.49);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 571.07); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 573.19);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 573.63); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 577.15);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 577.51); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 578.71);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 580.39); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 582.31);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 582.87); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 588.35);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 588.97); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 590.89);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 591.55); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 594.55);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 594.93); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 599.01);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 599.57); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 601.71);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 602.13); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 604.81);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 605.31); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 608.37);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 612.51); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 616.25);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 616.89); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 623.65);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 624.23); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 625.27);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 625.63); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 628.13);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 628.65); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 629.99);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 630.73); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 634.15);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 634.94); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 640.44);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 640.92); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 642.30);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 642.70); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 645.84);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 646.38); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 648.18);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 648.90); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 651.24);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 651.68); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 653.30);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 653.72); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 655.72);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 656.56); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 660.16);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 660.64); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 664.04);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 664.58); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 670.38);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 671.00); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 673.50);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 674.06); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 677.00);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 677.60); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 679.60);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 680.12); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 682.48);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 683.02); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 684.78);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 685.32); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 689.42);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 690.21); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 694.93);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 695.33); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 697.73);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 698.33); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 700.19);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 700.73); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 702.23);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 702.87); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 705.45);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 705.85); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 707.33);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 708.13); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 710.49);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 710.89); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 713.63);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 714.25); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 717.69);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 719.65); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 722.73);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 723.53); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 729.53);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 730.05); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 734.07);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 734.57); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 735.13);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 735.67); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 737.23);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 737.75); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 738.57);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 739.03); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 741.67);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 742.27); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 747.43);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 748.27); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 750.11);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 750.81); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 753.55);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 754.23); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 760.55);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 760.91); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 761.93);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 762.61); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 763.15);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 763.67); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 767.87);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 768.45); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 770.23);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 770.69); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 771.31);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 771.89); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 772.31);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 772.83); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 773.31);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 773.85); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 775.73);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 776.53); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 777.85);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 778.51); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 781.29);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 781.65); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 783.99);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 784.84); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 786.82);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 787.22); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 789.20);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 789.80); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 792.62);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 793.28); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 798.56);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 798.92); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 800.90);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 801.60); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 803.90);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 804.48); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 806.36);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 807.10); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 809.40);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 809.80); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 812.08);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 812.88); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 817.34);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 817.70); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 818.98);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 819.40); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 822.96);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 823.36); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 824.92);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 825.50); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 831.28);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 832.04); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 835.94);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 836.68); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 838.72);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 839.18); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 844.56);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 845.50); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 849.64);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 850.14); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 854.70);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 856.66); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 859.64);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 860.28); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 861.40);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 861.96); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 862.54);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 863.24); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 872.10);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 872.68); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 875.32);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 875.84); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 880.10);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 880.68); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 881.86);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 882.28); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 883.32);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 883.68); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 887.80);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 888.34); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 890.52);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 891.26); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 896.74);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 897.20); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 897.86);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 898.30); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 902.00);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 902.72); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 903.56);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 904.10); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 905.34);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 906.18); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 907.34);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 907.84); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 912.30);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 912.98); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 915.56);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 915.98); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 917.48);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 917.92); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 920.06);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 920.68); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 923.60);
+  tl.to("#pip-talk-w1", { autoAlpha: 1, duration: 0.1 }, 924.22); tl.to("#pip-talk-w1", { autoAlpha: 0, duration: 0.1 }, 933.44);
+  tl.to("#pip-talk-w2", { autoAlpha: 1, duration: 0.1 }, 951.45); tl.to("#pip-talk-w2", { autoAlpha: 0, duration: 0.1 }, 953.17);
+  tl.to("#pip-talk-w2", { autoAlpha: 1, duration: 0.1 }, 953.59); tl.to("#pip-talk-w2", { autoAlpha: 0, duration: 0.1 }, 958.51);
+  tl.to("#pip-talk-w2", { autoAlpha: 1, duration: 0.1 }, 959.21); tl.to("#pip-talk-w2", { autoAlpha: 0, duration: 0.1 }, 960.15);
+  tl.to("#pip-talk-w2", { autoAlpha: 1, duration: 0.1 }, 960.89); tl.to("#pip-talk-w2", { autoAlpha: 0, duration: 0.1 }, 962.05);
+  tl.to("#pip-talk-w2", { autoAlpha: 1, duration: 0.1 }, 962.61); tl.to("#pip-talk-w2", { autoAlpha: 0, duration: 0.1 }, 966.31);
+  tl.to("#pip-talk-w2", { autoAlpha: 1, duration: 0.1 }, 967.17); tl.to("#pip-talk-w2", { autoAlpha: 0, duration: 0.1 }, 970.05);
+  tl.to("#pip-talk-w2", { autoAlpha: 1, duration: 0.1 }, 970.69); tl.to("#pip-talk-w2", { autoAlpha: 0, duration: 0.1 }, 971.23);
+  tl.to("#pip-talk-w2", { autoAlpha: 1, duration: 0.1 }, 971.59); tl.to("#pip-talk-w2", { autoAlpha: 0, duration: 0.1 }, 978.05);
+  tl.to("#pip-talk-w2", { autoAlpha: 1, duration: 0.1 }, 978.57); tl.to("#pip-talk-w2", { autoAlpha: 0, duration: 0.1 }, 987.15);
+  tl.to("#pip-talk-w2", { autoAlpha: 1, duration: 0.1 }, 987.83); tl.to("#pip-talk-w2", { autoAlpha: 0, duration: 0.1 }, 990.21);
+  tl.to("#pip-talk-w2", { autoAlpha: 1, duration: 0.1 }, 990.67); tl.to("#pip-talk-w2", { autoAlpha: 0, duration: 0.1 }, 992.91);
+  tl.to("#pip-talk-w2", { autoAlpha: 1, duration: 0.1 }, 993.53); tl.to("#pip-talk-w2", { autoAlpha: 0, duration: 0.1 }, 997.75);
+  tl.to("#pip-talk-w2", { autoAlpha: 1, duration: 0.1 }, 998.35); tl.to("#pip-talk-w2", { autoAlpha: 0, duration: 0.1 }, 999.67);
+  tl.to("#pip-talk-w2", { autoAlpha: 1, duration: 0.1 }, 1000.03); tl.to("#pip-talk-w2", { autoAlpha: 0, duration: 0.1 }, 1002.11);
+  tl.to("#pip-talk-w2", { autoAlpha: 1, duration: 0.1 }, 1002.97); tl.to("#pip-talk-w2", { autoAlpha: 0, duration: 0.1 }, 1004.99);
+  tl.to("#pip-talk-w2", { autoAlpha: 1, duration: 0.1 }, 1005.47); tl.to("#pip-talk-w2", { autoAlpha: 0, duration: 0.1 }, 1006.19);
+  tl.to("#pip-talk-w2", { autoAlpha: 1, duration: 0.1 }, 1006.65); tl.to("#pip-talk-w2", { autoAlpha: 0, duration: 0.1 }, 1009.27);
+  tl.to("#pip-talk-w2", { autoAlpha: 1, duration: 0.1 }, 1009.81); tl.to("#pip-talk-w2", { autoAlpha: 0, duration: 0.1 }, 1014.33);
+  tl.to("#pip-talk-w2", { autoAlpha: 1, duration: 0.1 }, 1014.91); tl.to("#pip-talk-w2", { autoAlpha: 0, duration: 0.1 }, 1016.15);
+  tl.to("#pip-talk-w2", { autoAlpha: 1, duration: 0.1 }, 1016.63); tl.to("#pip-talk-w2", { autoAlpha: 0, duration: 0.1 }, 1019.39);
+  tl.to("#pip-talk-w2", { autoAlpha: 1, duration: 0.1 }, 1019.83); tl.to("#pip-talk-w2", { autoAlpha: 0, duration: 0.1 }, 1020.95);
+  tl.to("#pip-talk-w2", { autoAlpha: 1, duration: 0.1 }, 1021.41); tl.to("#pip-talk-w2", { autoAlpha: 0, duration: 0.1 }, 1023.89);
+  tl.to("#pip-talk-w2", { autoAlpha: 1, duration: 0.1 }, 1024.55); tl.to("#pip-talk-w2", { autoAlpha: 0, duration: 0.1 }, 1028.87);
+  tl.to("#pip-talk-w2", { autoAlpha: 1, duration: 0.1 }, 1029.39); tl.to("#pip-talk-w2", { autoAlpha: 0, duration: 0.1 }, 1036.13);
+  // pip-sync end
   filmLayer(tl, DUR);
   window.__timelines["ep-1974-super-outbreak"] = tl;
 })();

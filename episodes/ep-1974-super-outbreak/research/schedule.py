@@ -14,8 +14,9 @@ order = ["h", "i-1", "i-2", "a1-s1", "a1-s1b", "a1-s2", "a1-s3a", "a1-s3b", "a2-
          "a5-s1", "a5-s2", "a5-s3", "a5-s4", "a6-s1", "a6-s1b", "a6-s2", "a6-s3", "z-1"]
 # what happens AFTER a segment ends (before the next starts)
 after = {"h": ("void", 1.5), "i-2": ("blackout", 0.7), "a1-s3a": ("hold", 3.0), "a1-s3b": ("blackout", 0.8),
-         "a2-s2a": ("hold", 4.0), "a2-s5": ("cta", None), "a3-s5": ("blackout", 0.8), "a4-s1a": ("hold", 3.5),
-         "a4-s3": ("blackout", 0.9), "a5-s4": ("blackout", 0.8)}
+         "a2-s2a": ("hold", 4.0), "a2-s5": ("blackout", 0.8), "a3-s5": ("blackout", 0.8), "a4-s1a": ("hold", 3.5),
+         "a4-s3": ("blackout", 0.9), "a5-s4": ("blackout", 0.8),
+         "a6-s1b": ("cta", None)}   # owner 21 Sep 26 after the draft: CTA at ~88 %, hinge = the 16-vs-4 payoff, then "here is what changed"
 t = 5.2             # hook narration enters after the WHAS anchor line (0-4.9 s: "we have a hook echo on the radar")
 rows, markers = [], []
 for sid in order:
@@ -46,4 +47,4 @@ for r in rows:
     print(f"{r['id']:8s} {r['start']:8.2f} -> {r['end']:8.2f}  ({r['dur']:5.1f}s, {r['wpm']} wpm)")
 for m in markers:
     print(f"   {m['kind']:9s} {m['start']:8.2f} +{m['dur']}")
-print(f"TOTAL {total}s = {total/60:.2f} min | CTA at {cta['start']:.2f}s = {out['cta_fraction']:.0%} (window 30-40 %)")
+print(f"TOTAL {total}s = {total/60:.2f} min | CTA at {cta['start']:.2f}s = {out['cta_fraction']:.0%} (owner window for this episode 85-92 %)")
