@@ -66,11 +66,12 @@ sparingly/short/narrated-over (claims budgeted, segments must survive being clai
 The first 25-30s decide the video. Owner rated ep2's first hook 0.6/10 and the rebuilt one
 shipped; these are the standing requirements for every episode's cold open:
 - **NO black start: frame one is MID-ACTION** — the episode's
-  defining shot already moving, anchor audio already mid-transmission. High curiosity, high
-  impact from the first frame. The VOID below survives only as the hook's END punctuation.
-- **An intelligible, high-stakes ANCHOR line starts by ~2.5s** — a real broadcast/dispatch
-  voice saying something a viewer cannot skip (ep2: Spann's live "tornado emergency"). Not
-  ambience, not music, not a fragment.
+  defining shot already moving. High curiosity, high impact from the first frame. The VOID
+  below survives only as the hook's END punctuation.
+- **The NARRATOR's first line starts at 0:00. No broadcast, radio or archive audio anywhere in
+  the hook** (owner 22 Sep 26, replaces the old "anchor line by 2.5 s" rule): archive audio is
+  low quality, and a 10/10 narrated hook is worthless if viewers leave before it starts.
+  Archive audio belongs inside the acts, as `insert` segments.
 - **Date/place title card inside the first second** (viewer must know where/when instantly).
 - **Every cut lands ON an audio event** (a line ends, a roar starts, a siren swells) — never
   cut mid-sentence, never let commentary "just start" and get cut off.
