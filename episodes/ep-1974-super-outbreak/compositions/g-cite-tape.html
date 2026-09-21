@@ -9,20 +9,27 @@
      session via ffmpeg showwavespic (1400x220, #7dffb0 on transparent) from
      media/act-a3-a4/lindley_guin_tape_tornadotalk.mp3 — not a random/fake pattern (brief §"Must
      be true" 3). */
+  /* Owner 21 Sep 26 (08:08/15:15 review): beige glassmorph for all four g-cite-* cards to
+     contrast against the dark maps — rgba(232,222,200,0.90) card, rgba(90,74,46,0.35) border,
+     #1c1a17 body/claim (caption plays that role here), #5a4a2e eyebrow, #8a5a10 marker/highlight
+     (playhead moved to this color too — the original off-white was near-invisible on beige),
+     sweep a darker gold #6b4a10. Waveform stays #7dffb0 (real audio data, not a text color). */
   #root { position:absolute; inset:0; background:transparent; font-family:Arial,sans-serif; }
-  .glasscard { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
-    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14);
+  .glasscard { background:rgba(232,222,200,0.90); backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(90,74,46,0.35);
     border-radius:28px; box-sizing:border-box; box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
   .g-cite-tape-card { position:absolute; left:260px; top:330px; width:1400px; height:360px;
     padding:44px 65px; box-sizing:border-box; text-align:center; overflow:hidden; }
-  .g-cite-tape-eyebrow { font-size:22px; letter-spacing:5px; color:#93a3b2; font-weight:700; }
+  .g-cite-tape-eyebrow { font-size:22px; letter-spacing:5px; color:#5a4a2e; font-weight:700; }
   .g-cite-tape-wave { position:relative; margin:28px auto 0; width:1270px; height:200px; }
   .g-cite-tape-wave img { width:100%; height:100%; display:block; }
-  .g-cite-tape-playhead { position:absolute; top:0; bottom:0; left:0; width:2px; background:#f2f5f8;
-    box-shadow:0 0 10px 2px rgba(242,245,248,0.7); }
-  .g-cite-tape-caption { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:22px; }
+  .g-cite-tape-playhead { position:absolute; top:0; bottom:0; left:0; width:2px; background:#8a5a10;
+    box-shadow:0 0 10px 2px rgba(138,90,16,0.7); }
+  .g-cite-tape-caption { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#1c1a17; margin-top:22px; }
   .g-cite-tape-sweep { position:absolute; left:0; top:0; width:220px; height:1px;
-    background:linear-gradient(90deg, transparent, #e8c56a, transparent); }
+    background:linear-gradient(90deg, transparent, #6b4a10, transparent); }
+  .g-cite-tape-sweepdot { position:absolute; right:0; top:-4px; width:9px; height:9px; border-radius:50%;
+    background:#6b4a10; box-shadow:0 0 8px 2px rgba(107,74,16,0.65); }
 </style>
 <div id="root" data-composition-id="g-cite-tape" data-width="1920" data-height="1080">
   <div class="g-cite-tape-card glasscard" id="g-cite-tape-card">
