@@ -2,7 +2,7 @@ import { chromium, chromiumExecutable } from './playwright_env.mjs';
 import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 import os from 'os';
 import path from 'path';
-import { PNG } from '../node_modules/pngjs/lib/png.js';
+import { execFileSync } from 'child_process';
 
 const E = 'C:/Users/Sidhartha/Automation Projects/storm-market/.worktrees/ep-1974-super-outbreak/episodes/ep-1974-super-outbreak';
 const SCRATCH = path.join(os.tmpdir(), 'mg2', 'ambient_zone');
