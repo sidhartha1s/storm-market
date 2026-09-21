@@ -31,6 +31,10 @@
   .g-person-pearson-role { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:10px; }
   .g-person-pearson-line3 { font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:4px; color:#93a3b2; margin-top:16px; }
   .g-person-pearson-underline { position:absolute; left:48px; right:48px; bottom:22px; height:1px; background:#e8c56a; transform-origin:left center; }
+  /* ambient motion (owner 21 Sep 26): soft pulsing dot on the underline, finite repeat sized to
+     DUR below (never repeat:-1) — sits below all text, touches nothing. */
+  .g-person-pearson-dot { position:absolute; left:48px; bottom:18.5px; width:8px; height:8px; border-radius:50%;
+    background:#e8c56a; box-shadow:0 0 8px 2px rgba(232,197,106,0.6); }
 </style>
 <div id="root" data-composition-id="g-person-pearson" data-width="1920" data-height="1080">
   <div class="g-person-pearson-card glasscard" id="g-person-pearson-card">
@@ -48,6 +52,7 @@
       <div class="g-person-pearson-line3" id="g-person-pearson-line3">CALLED EVERY OFFICE THE DAY BEFORE</div>
     </div>
     <div class="g-person-pearson-underline" id="g-person-pearson-underline"></div>
+    <div class="g-person-pearson-dot" id="g-person-pearson-dot"></div>
   </div>
 </div>
 <script>
@@ -62,6 +67,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"card", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0.2);
   /* continuous element: underline grows the full duration */
   tl.to(P+"underline", { scaleX: 1, duration: DUR, ease: "none" }, 0.2);
+  tl.fromTo(P+"dot", { scale: 1, autoAlpha: 0.6 }, { scale: 1.6, autoAlpha: 1, duration: 0.4,
+    ease: "sine.inOut", yoyo: true, repeat: Math.ceil(DUR / 0.4) + 2 }, 0.3);
   tl.to(P+"card", { x: -120, autoAlpha: 0, duration: 0.5, ease: "power2.in" }, DUR - 0.6);
   window.__timelines["g-person-pearson"] = tl;
 })();
