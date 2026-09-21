@@ -126,6 +126,10 @@ window.__timelines = window.__timelines || {};
     tl.to(s, {x: "+=1780", duration: 20.6, ease: "none"}, 0.3);
   });
 
+  // full-frame light sweep, single L->R pass at constant speed across almost the entire 21.0s
+  // window (finite, no repeat) -- the specks alone read too small at full-frame scale.
+  tl.fromTo(P+"sweep", {x:0}, {x:2400, duration:20.5, ease:"none"}, 0.3);
+
   /* FINAL cues from audio/a5-s2.words.json, mount = A5-S2 start, DUR 21.0 (orchestrator 2026-09-21):
      walls 3.69 · swept 6.79 · cars 9.09 · bark 11.99 · slab/"F5" 13.09 */
   // CUES.walls @3.69 — F4: roof lifts off, wall segments break and scatter
