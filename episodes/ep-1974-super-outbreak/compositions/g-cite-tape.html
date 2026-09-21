@@ -18,14 +18,14 @@
   .glasscard { background:rgba(232,222,200,0.90); backdrop-filter:blur(18px) saturate(1.15);
     -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(90,74,46,0.35);
     border-radius:28px; box-sizing:border-box; box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
-  /* Owner 21 Sep 26 (presenter zone): the Paul circle occupies x 1632-1888 / y 700-956 (ring),
-     no card may enter x>=1600 with y>=680 — shifted up 10px and narrowed 60px to clear it
-     (right edge now exactly 1600, bottom exactly 680); wave width shrinks the same 60px to stay
-     inside the unchanged 65px padding. */
-  .g-cite-tape-card { position:absolute; left:260px; top:320px; width:1340px; height:360px;
+  /* Owner 21 Sep 26 (rendered-frame regression): cite cards collided with host text columns.
+     New hard bounds: right<=1240, top>=350, bottom<=790. left 160, width 1080 -> right 1240
+     exactly; top 350, height unchanged -> bottom 710. Wave width shrinks the same 260px total
+     (1210->950) to stay inside the unchanged 65px padding. */
+  .g-cite-tape-card { position:absolute; left:160px; top:350px; width:1080px; height:360px;
     padding:44px 65px; box-sizing:border-box; text-align:center; overflow:hidden; }
   .g-cite-tape-eyebrow { font-size:22px; letter-spacing:5px; color:#5a4a2e; font-weight:700; }
-  .g-cite-tape-wave { position:relative; margin:28px auto 0; width:1210px; height:200px; }
+  .g-cite-tape-wave { position:relative; margin:28px auto 0; width:950px; height:200px; }
   .g-cite-tape-wave img { width:100%; height:100%; display:block; }
   .g-cite-tape-playhead { position:absolute; top:0; bottom:0; left:0; width:2px; background:#8a5a10;
     box-shadow:0 0 10px 2px rgba(138,90,16,0.7); }
