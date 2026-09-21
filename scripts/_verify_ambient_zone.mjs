@@ -48,7 +48,8 @@ const ambientReport = {};
 for (const [name, { dur, cues }] of Object.entries(FILES)) {
   const raw = readFileSync(`${E}/compositions/${name}.html`, 'utf-8');
   const body = raw.match(/<template>([\s\S]*?)<\/template>/)[1];
-  const html = `<!doctype html><html><head><meta charset="UTF-8"><script src="../gsap.min.js"></script></head><body style="margin:0;background:#000">${body}</body></html>`;
+  const gsapSrc = 'file:///' + `${E}/gsap.min.js`.split('\\').join('/');
+  const html = `<!doctype html><html><head><meta charset="UTF-8"><script src="${gsapSrc}"></script></head><body style="margin:0;background:#000">${body}</body></html>`;
   const tmp = path.join(SCRATCH, `${name}.html`);
   writeFileSync(tmp, html);
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
