@@ -53,10 +53,7 @@ for (const [name, { dur, cues }] of Object.entries(FILES)) {
   const tmp = path.join(SCRATCH, `${name}.html`);
   writeFileSync(tmp, html);
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
-  page.on('pageerror', e => console.error('PAGEERROR', name, e.message));
   await page.goto('file:///' + tmp.split('\\').join('/'), { waitUntil: 'load' });
-  const dbgKeys = await page.evaluate(() => Object.keys(window.__timelines || {}));
-  console.error('DEBUG keys for', name, dbgKeys);
 
   // --- presenter zone check across the whole DUR, fine steps ---
   const zoneHits = await page.evaluate(([name, dur]) => {
