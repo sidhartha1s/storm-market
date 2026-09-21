@@ -93,8 +93,8 @@ window.__timelines = window.__timelines || {};
   const root = document.getElementById("root");
   // continuous debris: six specks drifting right across both panels for the whole 20s
   const specks = [];
-  const speckTops = [340, 420, 500, 600, 680, 760];
-  for (let i = 0; i < 6; i++) {
+  const speckTops = [340, 420, 500, 600, 680, 760, 440, 720];
+  for (let i = 0; i < 8; i++) {
     const s = document.createElement("div");
     s.className = "speck";
     s.style.left = (60 + i * 40) + "px";
