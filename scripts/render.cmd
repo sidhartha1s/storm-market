@@ -45,6 +45,13 @@ REM ffprobe on PATH and the deadline failure comes straight back. See LEARNINGS.
 REM hyperframes >=0.8 telemetry spawns DETACHED `node -e fetch(...)` children with no windowsHide
 REM = a visible console window per flush (owner 2026-08-23). Opt out unconditionally.
 set HYPERFRAMES_NO_TELEMETRY=1
+REM 0.8.41 streams captured frames straight into ffmpeg only for comps <= 240 s; longer comps fall back to
+REM disk capture (~8 MB per frame: 131 GB for a 17.6-min draft, C: had 22 GB; ep-1974 21 Sep 26). Raise the cap
+REM so every episode streams. Streaming is the path the 0.8.41 shorts final and the pin-ritual demo used.
+set PRODUCER_STREAMING_ENCODE_MAX_DURATION_SECONDS=7200
+REM With --workers > 1 streaming also needs the parallel-capture router (cli.js shouldStreamParallelCapture),
+REM else the gate logs enabled:false and the render dies at 'Disk capture may need ~131 GB'.
+set HF_CAPTURE_PARALLEL_STREAM=true
 set DO_NOT_TRACK=1
 set HYPERFRAMES_FFPROBE_PATH=C:\Users\Sidhartha\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Shared_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.2-full_build-shared\bin\ffprobe.exe
 set HYPERFRAMES_FFMPEG_PATH=C:\Users\Sidhartha\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Shared_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.2-full_build-shared\bin\ffmpeg.exe

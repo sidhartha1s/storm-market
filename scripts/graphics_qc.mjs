@@ -111,7 +111,9 @@ const MEASURE = `((t) => {
     const cs2 = getComputedStyle(el);
     const painted = cs2.backgroundImage !== 'none' || parseFloat(cs2.borderTopWidth) > 0 ||
                     cs2.backgroundColor !== 'rgba(0, 0, 0, 0)' || cs2.boxShadow !== 'none';
-    if (r.width > 300 && r.height > 200 && !el.textContent.trim() && !el.querySelector('svg,img,canvas') && !painted)
+    if (r.width > 300 && r.height > 200 && !el.textContent.trim() && !el.querySelector('svg,img,canvas') && !painted &&
+        ![...el.querySelectorAll('*')].some(c => { const s = getComputedStyle(c); return s.backgroundImage !== 'none' ||
+          s.backgroundColor !== 'rgba(0, 0, 0, 0)' || parseFloat(s.borderTopWidth) > 0; }))   // painted children ARE content (ep-1974 tile grid, red X)
       out.empty.push(el.id || el.className);
   }
   /* opaque coverage: a panel overlay lets the moving photo underneath carry the motion;

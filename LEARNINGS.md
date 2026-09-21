@@ -1438,3 +1438,52 @@ beside them are confusing; a 3.5 s hold followed by a blackout is 5 to 7 s of no
    way / actually, plus spoken grammar (repeat the subject: "the man who ran the office, he knew"; contractions;
    a trailing "right?"). One or two per 30 s at most. Probe both versions through pocket-TTS before deciding;
    probes for ep-1974 live in `episodes/ep-1974-super-outbreak/audio/probe/`.
+
+## 21 Sep 26 — ep-1974 assembly: the static gates could not read cue-positioned comps, and four rules got a home
+
+Findings from the first hand-authored 39-comp timeline (17.6 min, hook anchored on the WHAS air-check):
+
+1. **Comps place tweens at `CUES.six`, `DUR - 0.6`, `CUES.dark + 1.5`; the gates only parsed numeric literals.**
+   `sweep_episode.py` check 7 reported 14 false "holds" and `beat_density.py` hard-exited on every batch built from
+   words.json cues. Fix: `scripts/comp_consts.py` `fold(src)` replaces `const NAME = num`, `const NAME = {k: v}`
+   members and `num op num` arithmetic with literals before the regexes run (dates like `2026-09` stay text via the
+   leading-zero guard). Both gates import it. Unknown identifiers stay as they were, so a real hole still reports.
+2. **A declared hold is an empty `<section class="clip hold">` on its own track** (DESIGN.md "hold-marker line").
+   `lint_timeline.py` sanctions narration gaps only inside a blackout, a hold or the CTA dips; every other gap over
+   0.8 s still fails. Holds and blackouts never stack at one seam (owner 20 Sep 26).
+3. **Overlay hosts on tracks 3 and 4 are mounted comps.** `sweep_episode.py` read them as unmounted because it only
+   looked at tracks 1 and 2; "mounted" is now any host on any track. Coverage still counts tracks 1 and 2 only, so
+   blackouts must sit on track 1.
+4. **The CTA gate slug regex is `(ep\d*-|ms-)`.** `ep-1974-…` (no digit after `ep`) silently SKIPPED the CTA gate;
+   a skipped gate reads as green in the summary line. Check the SKIPPED lines, not the exit code.
+5. **A cutaway still over a map comp is a "sandwich" to `overlap_check.mjs`** (index element covering comp text).
+   Escape per element with `data-overlap-ok="cutaway over the map"` only when the still is full-frame and meant to
+   cover the map; popfigs never sit over a map comp (state labels collide), the map's own rail carries the number.
+6. **`repeat:-1` on a comp's main timeline makes `tl.duration()` infinite (1e10).** Two batch-4 comps did it for
+   ambient drift. Measure every comp with a bare page + `window.__timelines[id].duration()` before mounting; the
+   staging pages a measurer writes into `compositions/_dur_*.html` count as unmounted comps in sweep until deleted.
+7. **Builders leave `_shot_*.html` staging pages in `compositions/`.** sweep and graphics_qc both scan them
+   (23 "unmounted" comps, phantom collisions). Delete every `_shot_*`, `_dur_*`, `_debug_*` page before the gate
+   run, and the one-shot scripts under `scripts/_*` that this branch added before the PR.
+
+## 21 Sep 26 — first long render on 0.8.41: streaming needs two env vars, and the harness reaps renders
+
+1. **0.8.41 streams captured frames into ffmpeg only for comps up to 240 s.** Anything longer takes the disk
+   capture path and asks for ~8.3 MB per frame of temp space: 131 GB for a 17.6-min draft at 15 fps on a C: with
+   22 GB free, so the render dies at "Starting frame capture" with `Disk capture may need ~131756 MB`. The shorts
+   final and the pin-ritual demo (29 s, 84 s) never met this. `render.cmd` now sets
+   `PRODUCER_STREAMING_ENCODE_MAX_DURATION_SECONDS=7200` and `HF_CAPTURE_PARALLEL_STREAM=true`; the second one
+   is required with `--workers` above 1 (`shouldStreamParallelCapture` in cli.js), without it the log still says
+   `streaming-encode gate enabled:false`. Read that gate line in every render log: `enabled:true` or the render
+   will not finish on this disk.
+2. **Harness background Bash is not a render launcher** (already in this file's index line, ignored under
+   deadline pressure). The harness kills background tasks when free RAM drops near 2 GB, and the kill takes the
+   whole cmd/npx/chrome tree: the 05:28 attempt died 35 min in with the log frozen at 25 % and nine orphan
+   chromes. `schtasks /create ... /tr "wscript.exe <abs>\scripts\run_hidden.vbs cmd.exe /c <abs>\scripts\<task>.cmd"`
+   plus `/run` (with `MSYS2_ARG_CONV_EXCL='*'` under Git Bash) is the only launcher; the `/tr` string has a
+   261-char cap, so the per-episode wrapper `.cmd` (workers, overrides) keeps it short. Delete the task after.
+3. **Draft timing on this box at 0.8.41, streaming, 2 workers:** 15 885 frames in about 13 min (frame 600 at
+   06:08, complete 06:21), 186 MB at crf 32 / 15 fps. Two workers, not three, when free RAM is under 5 GB.
+4. **A render preflight refusal for `ffprobe spawns in 0.40s` is a load reading, not a binary problem**, when
+   the env already names the shared build: three whisper transcribers and two ffmpeg cutters from sourcing
+   agents pushed a 0.17 s spawn to 0.40 s. Quiet the box (agents' jobs killed by their owners), re-measure.
