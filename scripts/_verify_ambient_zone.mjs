@@ -29,16 +29,23 @@ function pickTime(base, cues, dur) {
   return base; // fallback
 }
 
-function pngDiff(pathA, pathB) {
-  // ffmpeg psnr filter: identical frames -> psnr average "inf" (no motion); any visible change lowers it.
-  let out = '';
+function run(cmd) {
   try {
-    out = execSync(`ffmpeg -i "${pathA}" -i "${pathB}" -lavfi psnr -f null - 2>&1`, { encoding: 'utf-8' });
+    return execSync(cmd, { encoding: 'utf-8' });
   } catch (e) {
-    out = (e.stdout || '') + (e.stderr || '');
+    return (e.stdout || '') + (e.stderr || '');
   }
-  const m = out.match(/average:([\d.]+|inf)/);
-  return m ? m[1] : 'unknown';
+}
+function pngDiff(pathA, pathB) {
+  // psnr: identical frames -> "inf" (no motion); any visible change lowers it (dB, lower = more different).
+  const psnrOut = run(`ffmpeg -i "${pathA}" -i "${pathB}" -lavfi psnr -f null - 2>&1`);
+  const psnrM = psnrOut.match(/average:([\d.]+|inf)/);
+  const psnrAvg = psnrM ? psnrM[1] : 'unknown';
+  // mean absolute pixel difference (0-255 luma scale, 0 = identical, higher = more different)
+  const madOut = run(`ffmpeg -i "${pathA}" -i "${pathB}" -filter_complex "blend=all_mode=difference,signalstats" -f null - 2>&1`);
+  const madM = madOut.match(/YAVG:([\d.]+)/);
+  const meanAbsDiff = madM ? madM[1] : 'unknown';
+  return { psnrAvg, meanAbsDiff };
 }
 
 const browser = await chromium.launch({ executablePath: chromiumExecutable() });
