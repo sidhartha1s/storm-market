@@ -49,6 +49,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"frame", { autoAlpha: 0, scale: 1.1 }, { autoAlpha: 1, scale: 1.02, duration: 0.35, ease: "power4.in" }, 0.05);
   /* continuous element for the whole 3s window: a slow settle/drift on the frame */
   tl.to(P+"frame", { scale: 1.06, duration: DUR - 0.6, ease: "sine.inOut" }, 0.4);
+  /* ambient blip: a glint travels down the sprocket strip the whole window, finite repeat sized to DUR */
+  tl.fromTo(P+"glint", { top: -40 }, { top: 480, duration: 0.9, ease: "sine.inOut",
+    repeat: Math.ceil(DUR / 0.9) + 1 }, 0);
   tl.to(P+"frame", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, DUR - 0.35);
   window.__timelines["g-person-pearson-hook"] = tl;
 })();
