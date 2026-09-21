@@ -68,7 +68,7 @@ for (const [name, { dur, cues }] of Object.entries(FILES)) {
     const root = document.querySelector('#root').getBoundingClientRect();
     const sel = '.row, .caption, .foot, .ticker, .hl, .eyebrow, .sub, .val, .maplab, .lab';
     const hits = [];
-    const steps = Math.min(400, Math.ceil(dur / 0.25));
+    const steps = Math.min(200, Math.ceil(dur / 0.5));
     for (let i = 0; i <= steps; i++) {
       const t = Math.min(dur, i * (dur / steps));
       tl.seek(t, false);
