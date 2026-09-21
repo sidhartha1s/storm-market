@@ -96,8 +96,8 @@ for (const [name, { dur, cues }] of Object.entries(FILES)) {
     await page.evaluate(([name, t]) => window.__timelines[name].seek(t + 2, false), [name, t]);
     const fB = path.join(SCRATCH, `${name}__${t.toFixed(2)}_b.png`);
     await page.screenshot({ path: fB });
-    const psnrAvg = pngDiff(fA, fB);
-    pairShots.push({ t, tPlus2: t + 2, psnrAvg });
+    const diff = pngDiff(fA, fB);
+    pairShots.push({ t, tPlus2: t + 2, ...diff });
   }
   ambientReport[name] = pairShots;
   await page.close();
