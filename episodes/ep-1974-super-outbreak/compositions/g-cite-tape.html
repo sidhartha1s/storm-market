@@ -58,7 +58,7 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const P = "#g-cite-tape-";
   tl.fromTo(P+"card", { autoAlpha: 0, scale: 1.06 }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power3.out" }, 0);
-  tl.fromTo(P+"sweep", { left: -220 }, { left: 1400, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P+"sweep", { left: -220 }, { left: 1340, duration: DUR, ease: "none" }, 0);
   /* ambient blip: finite pulse on the sweep's leading dot, sized to DUR (never repeat:-1) */
   tl.fromTo(P+"sweepdot", { scale: 1, autoAlpha: 0.6 }, { scale: 1.6, autoAlpha: 1, duration: 0.4,
     ease: "sine.inOut", yoyo: true, repeat: Math.ceil(DUR / 0.4) + 2 }, 0.1);
