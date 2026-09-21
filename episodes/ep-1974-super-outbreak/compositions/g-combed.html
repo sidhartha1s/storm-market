@@ -134,6 +134,11 @@ window.__timelines = window.__timelines || {};
   // safely inside the 24.1s window.
   tl.to(["#g-combed-panel-l", "#g-combed-panel-r"], {scale:1.02, duration:3.9, ease:"sine.inOut", yoyo:true, repeat:5, transformOrigin:"center center"}, 0.4);
 
+  // bright travelling sweep across both panels: lifts mean frame luminance through the whole
+  // window (owner/blackdetect flagged 6-11s near-black) and is a clear moving element even where
+  // cue reveals have finished. 4 legs of 5.7s (yoyo) = 22.8s, start 0.3, ends 23.1 -- safely under 24.1.
+  tl.fromTo(P+"sweep", {x:0}, {x:2500, duration:5.7, ease:"none", yoyo:true, repeat:3}, 0.3);
+
   /* FINAL cues from audio/a5-s4.words.json, mount = A5-S4 start, DUR 24.1 (orchestrator 2026-09-21):
      combed 7.59 · cant 9.09 · microburst 17.89 */
   // comb starts hidden at the RIGHT panel's own left edge (x:0) and slides to its right edge — never touches the left panel
