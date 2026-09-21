@@ -32,6 +32,11 @@
      well clear of all text. */
   .g-cite-warning-sweepdot { position:absolute; right:0; top:-4px; width:9px; height:9px; border-radius:50%;
     background:#6b4a10; box-shadow:0 0 8px 2px rgba(107,74,16,0.65); }
+  /* Owner 21 Sep 26 (motion too faint): a wide light streak sweeps the full card, full height,
+     back and forth for the whole window — behind the text (first child in the DOM), never
+     touching it, but large enough to register as real motion (target >=15k differing px/pair). */
+  .g-cite-warning-beam { position:absolute; top:0; bottom:0; width:220px;
+    background:linear-gradient(90deg, transparent, rgba(138,90,16,0.16), transparent); pointer-events:none; }
 </style>
 <div id="root" data-composition-id="g-cite-warning" data-width="1920" data-height="1080">
   <div class="g-cite-warning-card glasscard" id="g-cite-warning-card">
