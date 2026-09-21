@@ -48,6 +48,8 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"underline", { scaleX: 1, duration: DUR, ease: "none" }, 0.2);
   tl.fromTo(P+"dot", { scale: 1, autoAlpha: 0.6 }, { scale: 1.6, autoAlpha: 1, duration: 0.4,
     ease: "sine.inOut", yoyo: true, repeat: Math.ceil(DUR / 0.4) + 2 }, 0.3);
+  tl.fromTo(P+"beam", { left: -150 }, { left: 660, duration: 1.7, ease: "sine.inOut",
+    yoyo: true, repeat: Math.ceil(DUR / 1.7) + 1 }, 0);
   tl.to(P+"card", { x: -120, autoAlpha: 0, duration: 0.5, ease: "power2.in" }, DUR - 0.6);
   window.__timelines["g-person-mcguire"] = tl;
 })();
