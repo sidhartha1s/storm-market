@@ -21,6 +21,10 @@
      DUR below (never repeat:-1) — sits below all text, touches nothing. */
   .g-person-gilbert-dot { position:absolute; left:48px; bottom:10.5px; width:8px; height:8px; border-radius:50%;
     background:#e8c56a; box-shadow:0 0 8px 2px rgba(232,197,106,0.6); }
+  /* Owner 21 Sep 26 (motion too faint): a soft light band drifts the full card width and back,
+     behind the text (first child in the DOM), never touching it. */
+  .g-person-gilbert-beam { position:absolute; top:0; bottom:0; width:140px;
+    background:linear-gradient(90deg, transparent, rgba(232,197,106,0.14), transparent); pointer-events:none; }
 </style>
 <div id="root" data-composition-id="g-person-gilbert" data-width="1920" data-height="1080">
   <div class="g-person-gilbert-card glasscard" id="g-person-gilbert-card">
