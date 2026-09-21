@@ -52,11 +52,13 @@ window.__timelines = window.__timelines || {};
   const P = "#g-person-lindley-";
   tl.set(P+"underline", { scaleX: 0 }, 0);
   tl.fromTo(P+"card", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0.2);
-  tl.to(P+"underline", { scaleX: 1, duration: DUR, ease: "none" }, 0.2);
+  /* repeat/duration values sized to end at or before DUR (owner 21 Sep 26: blank_scan caught the
+     timeline running past the host window). Underline now ends exactly at DUR (was DUR+0.2). */
+  tl.to(P+"underline", { scaleX: 1, duration: DUR - 0.2, ease: "none" }, 0.2);
   tl.fromTo(P+"dot", { scale: 1, autoAlpha: 0.6 }, { scale: 1.6, autoAlpha: 1, duration: 0.4,
-    ease: "sine.inOut", yoyo: true, repeat: Math.ceil(DUR / 0.4) + 2 }, 0.3);
+    ease: "sine.inOut", yoyo: true, repeat: Math.floor((DUR - 0.3) / 0.4) - 1 }, 0.3);
   tl.fromTo(P+"beam", { left: -140 }, { left: 570, duration: 1.6, ease: "none",
-    repeat: Math.ceil(DUR / 1.6) + 1 }, 0);
+    repeat: Math.floor(DUR / 1.6) - 1 }, 0);
   tl.to(P+"card", { x: -120, autoAlpha: 0, duration: 0.5, ease: "power2.in" }, DUR - 0.6);
   window.__timelines["g-person-lindley"] = tl;
 })();
