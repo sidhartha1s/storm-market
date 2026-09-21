@@ -64,7 +64,7 @@ window.__timelines = window.__timelines || {};
     ease: "sine.inOut", yoyo: true, repeat: Math.ceil(DUR / 0.4) + 2 }, 0.1);
   /* continuous element: the playhead moves across the waveform for the whole duration, and
      pulses (blips) on top of that travel */
-  tl.fromTo(P+"playhead", { left: 0 }, { left: 1268, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P+"playhead", { left: 0 }, { left: 1208, duration: DUR, ease: "none" }, 0);
   tl.fromTo(P+"playhead", { scaleY: 1 }, { scaleY: 1.25, duration: 0.4, ease: "sine.inOut",
     yoyo: true, repeat: Math.ceil(DUR / 0.4) + 2 }, 0.1);
   tl.to(P+"card", { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, DUR - 0.5);
