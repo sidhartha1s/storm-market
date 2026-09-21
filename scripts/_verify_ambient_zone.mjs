@@ -31,11 +31,13 @@ function pickTime(base, cues, dur) {
 
 function pngDiff(pathA, pathB) {
   // ffmpeg psnr filter: identical frames -> psnr average "inf" (no motion); any visible change lowers it.
-  const out = execFileSync('ffmpeg', ['-i', pathA, '-i', pathB, '-lavfi', 'psnr', '-f', 'null', '-'], { encoding: 'utf-8', stdio: ['ignore', 'pipe', 'pipe'] }).toString();
-  return out;
-}
-function parsePsnr(stderrText) {
-  const m = stderrText.match(/average:([\d.]+|inf)/);
+  let out = '';
+  try {
+    out = execSync(`ffmpeg -i "${pathA}" -i "${pathB}" -lavfi psnr -f null - 2>&1`, { encoding: 'utf-8' });
+  } catch (e) {
+    out = (e.stdout || '') + (e.stderr || '');
+  }
+  const m = out.match(/average:([\d.]+|inf)/);
   return m ? m[1] : 'unknown';
 }
 
