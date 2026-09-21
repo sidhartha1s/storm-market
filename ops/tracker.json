@@ -562,10 +562,10 @@
       "title": "The Day America Had 7 F5 Tornadoes (1974 Super Outbreak)",
       "owner": "director",
       "due": "27 Sep 26",
-      "phase": "assemble",
-      "status": "doing",
-      "note": "4 MG builders on 33 comps from research/mg_briefs.md",
-      "updated": "21 Sep 26 01:24"
+      "phase": "preview",
+      "status": "waiting owner",
+      "note": "draft preview rendered 21 Sep 06:21 (renders/ep-1974-super-outbreak-draft.mp4, 17:39, 186 MB); owner review + insert YES/NO pending; film clips (231 cut) + transcript go into cut 2",
+      "updated": "21 Sep 26 06:48"
     },
     {
       "slug": "ep-enderlin-2025",
