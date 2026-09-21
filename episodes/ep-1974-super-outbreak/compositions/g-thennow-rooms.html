@@ -72,7 +72,9 @@ window.__timelines = window.__timelines || {};
 
   // continuous faint funnel silhouette drift, capped inside the 10.56s window — single finite
   // drift instead of an infinite yoyo (repeat:-1 made tl.duration() infinite and broke seeking).
-  tl.to(P+"funnelbg", {y:20, x:-14, duration:10.4, ease:"sine.inOut"}, 0);
+  // ease:"none" (not sine.inOut) so velocity stays constant to the very end of the window --
+  // sine.inOut decelerates to near-zero speed at both endpoints, which read as frozen after ~8s.
+  tl.to(P+"funnelbg", {y:36, x:-26, duration:10.4, ease:"none"}, 0);
 
   /* FINAL cues from audio/a6-s3.words.json, mount 0.2s before "storm shelter", DUR 10.56 (orchestrator 2026-09-21):
      shelter 0.2 · room 1.7 · car 4.5 · cant("past") 4.7 · know 6.3 */
