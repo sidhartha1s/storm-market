@@ -7,19 +7,26 @@
   /* g-cite-cvg — A3-S2b, mounts at CUES.report, 9s window (local time 0 = mount point).
      Paraphrase of research/fact_sheet_addendum.md §6 (WSO Cincinnati event report). No
      quotation marks — marked SUMMARY, not VERBATIM. */
+  /* Owner 21 Sep 26 (08:08/15:15 review): beige glassmorph for all four g-cite-* cards to
+     contrast against the dark maps — rgba(232,222,200,0.90) card, rgba(90,74,46,0.35) border,
+     #1c1a17 body/claim, #5a4a2e eyebrow, #8a5a10 marker/highlight, sweep a darker gold #6b4a10. */
   #root { position:absolute; inset:0; background:transparent; font-family:Arial,sans-serif; }
-  .glasscard { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
-    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14);
+  .glasscard { background:rgba(232,222,200,0.90); backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(90,74,46,0.35);
     border-radius:28px; box-sizing:border-box; box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
   .g-cite-cvg-card { position:absolute; left:260px; top:330px; width:1400px; height:360px;
     padding:48px 64px; box-sizing:border-box; text-align:center; overflow:hidden; }
-  .g-cite-cvg-eyebrow { font-size:22px; letter-spacing:5px; color:#93a3b2; font-weight:700; }
-  .g-cite-cvg-claim { font-family:Georgia,serif; font-style:italic; font-size:40px; color:#f2f5f8;
+  .g-cite-cvg-eyebrow { font-size:22px; letter-spacing:5px; color:#5a4a2e; font-weight:700; }
+  .g-cite-cvg-claim { font-family:Georgia,serif; font-style:italic; font-size:40px; color:#1c1a17;
     line-height:1.35; margin-top:30px; }
   .g-cite-cvg-marker { font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:4px;
-    color:#d8a13a; margin-top:26px; }
+    color:#8a5a10; margin-top:26px; }
   .g-cite-cvg-sweep { position:absolute; left:0; top:0; width:220px; height:1px;
-    background:linear-gradient(90deg, transparent, #e8c56a, transparent); }
+    background:linear-gradient(90deg, transparent, #6b4a10, transparent); }
+  /* ambient motion: dot rides the sweep's leading edge (child of .sweep) and pulses in place;
+     finite repeat sized to DUR below, never repeat:-1. Top edge of the card, clear of all text. */
+  .g-cite-cvg-sweepdot { position:absolute; right:0; top:-4px; width:9px; height:9px; border-radius:50%;
+    background:#6b4a10; box-shadow:0 0 8px 2px rgba(107,74,16,0.65); }
 </style>
 <div id="root" data-composition-id="g-cite-cvg" data-width="1920" data-height="1080">
   <div class="g-cite-cvg-card glasscard" id="g-cite-cvg-card">
