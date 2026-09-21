@@ -76,10 +76,10 @@ shipped; these are the standing requirements for every episode's cold open:
 - **Every cut lands ON an audio event** (a line ends, a roar starts, a siren swells) — never
   cut mid-sentence, never let commentary "just start" and get cut off.
 - **A sonic spine runs the whole hook** (ep2: siren — fade in from black, duck under the
-  anchor voice, swell at impact, die into the void). No silent clips, no dead air.
+  narrator, swell at impact, die into the void). No silent clips, no dead air.
 - **Inserts end on their complete emotional statement** — trim orphan tails ruthlessly
   ("we knew something was coming." — stop. Nothing after).
-- **End the hook with a 1.5s VOID (black + fading spine) before the narrator enters** — the
+- **End the hook with a 1.5s VOID (black + fading spine) before the intro** — the
   contrast is the hook's punctuation (was 2-3s; 1.5s+ anywhere else reads as dead air).
 - **Date/place popup (popfig) inside the first second**, sized to clear before the first
   designed graphic arrives.

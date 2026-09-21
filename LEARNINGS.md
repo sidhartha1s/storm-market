@@ -1513,3 +1513,28 @@ this time", 14:05 the combed-trees card "interesting bit"). Corrections, each pe
    left"): position markers must be verified by measuring the icon against the path head, never by eye.
 8. **The F6 card's strike missed the glyph and the F5 hung outside the card**: a strike goes through the glyph body,
    every child stays inside the card box; screenshot the card at the last cue before shipping.
+
+## 2026-09-22 - ep-1974 draft 2 review: narrator opens the video, banned audio is gated by hash, holds need a reason
+
+- **No broadcast, radio or archive audio in the hook.** Owner: "these broadcast stuff at the hook is a nono. because of bad
+  audio quality. no point if the narrators hook being 10/10 if only 40% people wait till it starts at 10secs." The narrator's
+  first line is 0:00. DESIGN.md "Cold-open hook contract" is rewritten; the old "anchor line by 2.5 s" rule is gone. The date
+  popfig sits inside the first second and clears before the first designed graphic (here 0.15 to 1.65 s).
+- **A banned sound came back under its other filename.** `wind-loop.mp3` was marked banned in `assets/sfx/provenance.md` on
+  16 Aug 26; the builder mounted its source file `02_wind_ominous_steady.mp3` three times (4:00, 4:58, 10:06). A ban written
+  as prose on one filename is a suggestion. Fix: `assets/sfx/BANNED.md5` lists banned audio by content hash and
+  `lint_timeline.py` fails on a match, so a rename or a copy cannot dodge it. Proven: the old timeline fails with three
+  findings, the new one passes. A future ban is one line in that file.
+- **A `hold` whose only content is a bed reads as a mute stretch.** Owner at 5:03 to 5:08: "its mute, with only bgm. why?"
+  It was an authored 4 s hold on a lone still with the banned wind under it. A hold earns its place only with diegetic sound
+  that belongs to the picture (a siren over the siren, the tape over the tape). Otherwise close it to a 0.3 s breath.
+  Two more holds remain (3.0 s at 237.09 s and 3.5 s at 599.71 s in the new cut); both sit under a moving map and were not named.
+- **Why the plane graphic failed in draft 1 and passed in draft 2.** An SVG element carried a static `transform="translate()"`
+  attribute AND a GSAP x/y tween. GSAP takes over the transform and discards the attribute, so the icon flew from 0,0 while
+  its trail drew in the right place. Same family: `transformOrigin` in CSS px on a nested SVG line pushed it outside the
+  viewBox (use `svgOrigin` in user units). No gate checks that a mover follows its path, and a still frame looks plausible
+  unless you know where the icon should be. Rule for every "A follows B" animation: position the mover with GSAP only, and
+  assert in the DOM that the mover sits on the path head at three times before calling it done.
+- **The draft rendered before ten graphics were finished.** I found text behind the presenter circle by looking at the draft,
+  then fixed it. The builders never had the circle's box in their brief. The box (x 1632 to 1888, y 700 to 956) now goes in
+  every builder brief, and no render starts while a builder is still editing (CLAUDE.md "the render is the LAST step").

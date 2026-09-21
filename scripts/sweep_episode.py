@@ -51,7 +51,7 @@ for m in re.finditer(r'<(section|video|div)\b([^>]*)>', h):
 pic = sorted([w for w in wins if w["tr"] in (1, 2)], key=lambda w: w["at"])
 
 # 1. picture coverage
-total = round(float(re.search(r'data-duration="([\d.]+)"', h).group(1)))
+total = float(re.search(r'data-duration="([\d.]+)"', h).group(1))   # not rounded: 1050.9 rounded to 1051 invented a 0.1 s hole past the end
 cur, holes = 0.0, []
 for w in sorted(pic, key=lambda w: w["at"]):
     if w["at"] > cur + 0.05:

@@ -6,6 +6,7 @@ Checks episodes/<slug>/index.html:
   1. every media src (video/img/audio/script) resolves to an existing file
   2. every data-start / data-start+data-duration window sits inside the composition duration
   3. audio elements: narration wavs must not overlap each other or any insert audio
+     and no audio src may match a hash in assets/sfx/BANNED.md5 (owner-banned sounds)
   4. NO-REPEAT (owner, ep1 v2 RCA): a visual file may appear in ONE timed window only.
      Reuse requires data-callback="<reason>" on the element — max 3 total uses (owner 2026-07-28).
      Elements inside the last 90s (summary/outro zone) are exempt (owner: recap reuse is fine).
@@ -16,9 +17,14 @@ Checks episodes/<slug>/index.html:
 Usage: python3 scripts/lint_timeline.py episodes/<slug>
 Exit 0 clean, 1 findings (loud).
 """
+import hashlib
 import re
 import sys
 from pathlib import Path
+
+# owner-banned audio by content hash (a rename cannot dodge it): "<md5>  <name>  <why>" per line
+_banned = Path(__file__).resolve().parent.parent / "assets/sfx/BANNED.md5"
+BANNED = {l.split()[0]: l.split()[1] for l in _banned.read_text(encoding="utf-8").splitlines() if l.strip() and not l.startswith("#")}
 
 
 def main():
@@ -40,6 +46,8 @@ def main():
         if src and not src.group(1).startswith(("http", "data:")):
             if not (ep / src.group(1)).exists():
                 findings.append(f"missing file: {src.group(1)}")
+            elif kind == "audio" and hashlib.md5((ep / src.group(1)).read_bytes()).hexdigest() in BANNED:
+                findings.append(f"BANNED audio (assets/sfx/BANNED.md5): {src.group(1)} = {BANNED[hashlib.md5((ep / src.group(1)).read_bytes()).hexdigest()]}")
         start = re.search(r'data-start="([\d.]+)"', attrs)
         dur = re.search(r'data-duration="([\d.]+)"', attrs)
         s = float(start.group(1)) if start else 0.0

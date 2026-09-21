@@ -1,0 +1,4 @@
+# Audio the owner has banned, by content hash so a rename or a copy cannot dodge it. lint_timeline.py fails on a match.
+# md5                              file                          why
+e104503b2f70f6900d46880e65f25a2c  02_wind_ominous_steady.mp3    owner 16 Aug 26 (ep6 10:05) and 22 Sep 26 (ep-1974 5:01): reads as unexplained "steady wind" under narration
+855f7d551fa475944552c2fa022d3099  wind-loop.mp3                 self-concat of the file above, same sound

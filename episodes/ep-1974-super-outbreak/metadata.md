@@ -1,7 +1,7 @@
 # ep-1974-super-outbreak · publish metadata
 
-Runtime 17:40 (1060.0 s). CTA (Paul, v5) at 935.21 s = 15:35 — no chapter marker there (DESIGN.md CTA contract).
-Every timestamp below comes from `research/schedule.json` after the 21 Sep 26 CTA move.
+Runtime 17:30 (1050.9 s). CTA (Paul, v5) at 926.11 s = 15:26 — no chapter marker there (DESIGN.md CTA contract).
+Every timestamp below comes from `research/schedule.json` after the 21 Sep 26 CTA move and the 22 Sep 26 cuts (broadcast cold open and one voiceless hold removed).
 
 ## Title (locked by the owner 20 Sep 26)
 The Day America Had 7 F5 Tornadoes - 1974 Super Outbreak
@@ -20,21 +20,21 @@ tornadoes crossed thirteen states in eighteen hours, and three hundred and thirt
 the national warning office had seen it coming the day before. This is what a day's warning was worth in 1974,
 and what the same ground looks like now.
 
-📘 The book mentioned at 15:35: https://paulraymond.online
+📘 The book mentioned at 15:26: https://paulraymond.online
 
 Sources and further reading are listed at the end of this description. Every photograph, film frame and radar
 plate in this video is a United States government record or a public-domain archive scan.
 
 Chapters
 0:00 Seven F5s in one day
-0:28 The man who saw it coming
-1:54 First blood: DePauw, Hanover, Brandenburg
-4:16 Xenia: thirty minutes, thirty four dead
-6:32 Five hooks on one screen
-9:40 Alabama after dark
-11:59 Ten months in the air
-14:16 The same corridor, 2011
-17:16 Close
+0:23 The man who saw it coming
+1:48 First blood: DePauw, Hanover, Brandenburg
+4:11 Xenia: thirty minutes, thirty four dead
+6:23 Five hooks on one screen
+9:31 Alabama after dark
+11:50 Ten months in the air
+14:07 The same corridor, 2011
+17:07 Close
 
 Credits and sources
 National Weather Service offices at Louisville, Wilmington OH, Huntsville and Birmingham (storm survey photographs
