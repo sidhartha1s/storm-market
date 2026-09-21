@@ -6,21 +6,26 @@
 <style>
   /* g-cite-paper — A6-S1, mounts at CUES.paper, 8s window (local time 0 = mount point).
      Source: research/fact_sheet_addendum.md §1 (Athens News Courier / Troutman & Gaston study). */
+  /* Owner 21 Sep 26 (08:08/15:15 review): beige glassmorph for all four g-cite-* cards to
+     contrast against the dark maps — rgba(232,222,200,0.90) card, rgba(90,74,46,0.35) border,
+     #1c1a17 body/claim, #5a4a2e eyebrow/label, #8a5a10 marker/highlight, sweep #6b4a10. */
   #root { position:absolute; inset:0; background:transparent; font-family:Arial,sans-serif; }
-  .glasscard { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
-    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14);
+  .glasscard { background:rgba(232,222,200,0.90); backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(90,74,46,0.35);
     border-radius:28px; box-sizing:border-box; box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
   .g-cite-paper-card { position:absolute; left:260px; top:300px; width:1400px; height:420px;
     padding:48px 64px; box-sizing:border-box; text-align:center; overflow:hidden; }
-  .g-cite-paper-eyebrow { font-size:28px; letter-spacing:5px; color:#93a3b2; font-weight:700; }
-  .g-cite-paper-claim { font-family:Georgia,serif; font-style:italic; font-size:52px; color:#f2f5f8;
+  .g-cite-paper-eyebrow { font-size:28px; letter-spacing:5px; color:#5a4a2e; font-weight:700; }
+  .g-cite-paper-claim { font-family:Georgia,serif; font-style:italic; font-size:52px; color:#1c1a17;
     line-height:1.35; margin-top:26px; }
   .g-cite-paper-marker { font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:2px;
-    color:#d8a13a; margin-top:22px; }
+    color:#8a5a10; margin-top:22px; }
   .g-cite-paper-attribution { font-family:Arial,sans-serif; font-weight:700; font-size:16px; letter-spacing:0.5px;
-    color:#93a3b2; margin-top:10px; white-space:nowrap; }
+    color:#5a4a2e; margin-top:10px; white-space:nowrap; }
   .g-cite-paper-sweep { position:absolute; left:0; top:0; width:220px; height:1px;
-    background:linear-gradient(90deg, transparent, #e8c56a, transparent); }
+    background:linear-gradient(90deg, transparent, #6b4a10, transparent); }
+  .g-cite-paper-sweepdot { position:absolute; right:0; top:-4px; width:9px; height:9px; border-radius:50%;
+    background:#6b4a10; box-shadow:0 0 8px 2px rgba(107,74,16,0.65); }
 </style>
 <div id="root" data-composition-id="g-cite-paper" data-width="1920" data-height="1080">
   <div class="g-cite-paper-card glasscard" id="g-cite-paper-card">
