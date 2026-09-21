@@ -13,14 +13,15 @@
   .glasscard { background:rgba(232,222,200,0.90); backdrop-filter:blur(18px) saturate(1.15);
     -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(90,74,46,0.35);
     border-radius:28px; box-sizing:border-box; box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
-  /* Owner 21 Sep 26 (presenter zone): the Paul circle occupies x 1632-1888 / y 700-956 (ring),
-     no card may enter x>=1600 with y>=680 — team-lead's exact numbers: top 260 (bottom 680),
-     width 1340 (right 1600). */
-  .g-cite-paper-card { position:absolute; left:260px; top:260px; width:1340px; height:420px;
+  /* Owner 21 Sep 26 (rendered-frame regression): at 15:02 this card's top edge sliced through
+     g-map-a6's "Limestone County, Alabama" headline. New hard bounds: right<=1240, top>=350,
+     bottom<=790. left 160, width 1080 -> right 1240 exactly; top 350, height unchanged -> bottom
+     770. Claim font dropped 52->46px per team-lead so the (now 2-line) wrap still fits. */
+  .g-cite-paper-card { position:absolute; left:160px; top:350px; width:1080px; height:420px;
     padding:48px 64px; box-sizing:border-box; text-align:center; overflow:hidden; }
   .g-cite-paper-eyebrow { font-size:28px; letter-spacing:5px; color:#5a4a2e; font-weight:700; }
-  .g-cite-paper-claim { font-family:Georgia,serif; font-style:italic; font-size:52px; color:#1c1a17;
-    line-height:1.35; margin-top:26px; }
+  .g-cite-paper-claim { font-family:Georgia,serif; font-style:italic; font-size:46px; color:#1c1a17;
+    line-height:1.3; margin-top:26px; }
   .g-cite-paper-marker { font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:2px;
     color:#8a5a10; margin-top:22px; }
   .g-cite-paper-attribution { font-family:Arial,sans-serif; font-weight:700; font-size:16px; letter-spacing:0.5px;
