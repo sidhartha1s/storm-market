@@ -7,7 +7,9 @@
   g-outro — copied from library/inhouse/outro-brand.html and retuned per mg_briefs.md BATCH 3:
   episode line, CTA line, and a second "NEXT:" line added below the original two. Wordmark kept.
   Must be true: title reads "7 F5", never "EF5" (kept literal).
-  Duration = Z span (audio/manifest.json z-1.duration 18.418) + 3s = 21.418, rounded to 21.4s.
+  Duration: host window in index.html measures 23.041s (1036.959 -> 1060.0); DUR set to 23.05
+  per team-lead 21 Sep 26 (was 21.4, based on a stale Z-span estimate — the live index.html
+  window is the source of truth).
 -->
 <style>
   #root { position:absolute; inset:0; background:#030507; font-family:Arial,sans-serif; color:#f2f5f8; }
@@ -42,7 +44,7 @@
 <script>
 window.__timelines = window.__timelines || {};
 (function() {
-  const DUR = 21.4; // audio/manifest.json z-1.duration (18.418) + 3s, per brief
+  const DUR = 23.05; // host window in index.html (1036.959 -> 1060.0); the lockup holds to the end, fade in the last second
   const tl = gsap.timeline({ paused: true });
   tl.set(["#g-outro-twh", "#g-outro-ep", "#g-outro-cta", "#g-outro-next"], { autoAlpha: 0 }, 0);
   tl.set("#g-outro-dot", { autoAlpha: 0 }, 0);
