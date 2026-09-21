@@ -77,7 +77,7 @@ window.__timelines = window.__timelines || {};
      pulses (blips) on top of that travel */
   tl.fromTo(P+"playhead", { left: 0 }, { left: 1208, duration: DUR, ease: "none" }, 0);
   tl.fromTo(P+"playhead", { scaleY: 1 }, { scaleY: 1.25, duration: 0.4, ease: "sine.inOut",
-    yoyo: true, repeat: Math.ceil(DUR / 0.4) + 2 }, 0.1);
+    yoyo: true, repeat: Math.floor((DUR - 0.1) / 0.4) - 1 }, 0.1);
   tl.to(P+"card", { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, DUR - 0.5);
   window.__timelines["g-cite-tape"] = tl;
 })();
