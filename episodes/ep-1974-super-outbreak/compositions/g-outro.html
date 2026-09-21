@@ -22,6 +22,10 @@
      DUR below (never repeat:-1) — sits in normal flow, clear of all text. */
   .g-outro-dot { width:8px; height:8px; border-radius:50%; background:#d8a13a; margin:20px auto 0;
     box-shadow:0 0 8px 2px rgba(216,161,58,0.6); }
+  /* Owner 21 Sep 26 (motion too faint): a wide light streak sweeps the full stage width and back,
+     behind the lockup (first child of .stage, painted under .wrap), never touching text. */
+  .g-outro-beam { position:absolute; top:0; bottom:0; width:320px;
+    background:linear-gradient(90deg, transparent, rgba(216,161,58,0.12), transparent); pointer-events:none; }
 </style>
 <div id="root" data-composition-id="g-outro" data-width="1920" data-height="1080">
   <div class="stage">
