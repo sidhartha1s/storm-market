@@ -46,6 +46,9 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   tl.set(["#g-outro-twh", "#g-outro-ep", "#g-outro-cta", "#g-outro-next"], { autoAlpha: 0 }, 0);
   tl.set("#g-outro-dot", { autoAlpha: 0 }, 0);
+  /* wide light beam, full stage width and back, continuously for the whole window */
+  tl.fromTo("#g-outro-beam", { left: -320 }, { left: 1920, duration: 3.0, ease: "sine.inOut",
+    yoyo: true, repeat: Math.ceil(DUR / 3.0) + 1 }, 0);
   /* snap the wordmark to land on the spoken brand cadence, same offsets as the source template */
   tl.fromTo("#g-outro-twh", { autoAlpha: 0, scale: 1.14 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power3.out" }, 0.55);
   tl.fromTo("#g-outro-ep", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.7 }, 1.8);
