@@ -64,6 +64,23 @@ window.__timelines = window.__timelines || {};
   tl.set(['#' + ID + '-lit0', '#' + ID + '-lit1'], { autoAlpha: 1 }, 0); // bars 1-2 already lit
   tl.fromTo('#' + ID + '-sweep', { top: 340 }, { top: 860, duration: DUR, ease: 'none' }, 0);
   tl.fromTo('#' + ID + '-lit2', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: 'power2.out' }, LIGHTS_AT);
+
+  /* AMBIENT MOTION (owner 21 Sep 26: "graphics go static after a while") — additive only,
+     no DUR/cue change. (1) sweep-line brightness shimmer runs the whole window, sized to
+     land exactly on DUR: (N+1)*0.4 = DUR with N = DUR/0.4 - 1. (2) three small blip dots
+     pulse in rotation every 1.5s, finite, computed to stay inside DUR. */
+  tl.fromTo('#' + ID + '-sweep', { opacity: 0.35 }, { opacity: 0.8, duration: 0.4, ease: 'sine.inOut', yoyo: true, repeat: DUR / 0.4 - 1 }, 0);
+  {
+    const blipIds = [ID + '-blip0', ID + '-blip1', ID + '-blip2'];
+    let bt = 0.4, bi = 0;
+    while (bt + 0.36 <= DUR - 0.05) {
+      const el = '#' + blipIds[bi % 3];
+      tl.fromTo(el, { opacity: 0.25, scale: 0.7 }, { opacity: 1, scale: 1.3, duration: 0.18, ease: 'sine.out' }, bt);
+      tl.to(el, { opacity: 0.25, scale: 0.7, duration: 0.18, ease: 'sine.in' }, bt + 0.18);
+      bt += 1.5; bi++;
+    }
+  }
+
   window.__timelines[ID] = tl;
 })();
 </script>
