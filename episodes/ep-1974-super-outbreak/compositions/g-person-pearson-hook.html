@@ -22,6 +22,11 @@
      aspect-ratio 166/300 + max-height crop out that strip; cover+top keeps the head/shoulders. */
   .g-person-pearson-hook-photocrop { width:100%; aspect-ratio: 166 / 300; max-height:490px; overflow:hidden; position:relative; }
   .g-person-pearson-hook-photocrop img { width:100%; height:100%; object-fit:cover; object-position:top; display:block; }
+  /* ambient motion (owner 21 Sep 26): this card has zero text and no underline (cold-open flash,
+     "no description"), so the moving element is a soft glint that travels down the sprocket
+     strip, finite repeat sized to DUR below (never repeat:-1) — touches nothing but the sprockets. */
+  .g-person-pearson-hook-glint { position:absolute; left:0; top:0; width:14px; height:40px;
+    background:linear-gradient(180deg, transparent, rgba(232,197,106,0.85), transparent); }
 </style>
 <div id="root" data-composition-id="g-person-pearson-hook" data-width="1920" data-height="1080">
   <div class="g-person-pearson-hook-frame" id="g-person-pearson-hook-frame">
