@@ -40,11 +40,16 @@ window.__timelines = window.__timelines || {};
   const DUR = 21.4; // audio/manifest.json z-1.duration (18.418) + 3s, per brief
   const tl = gsap.timeline({ paused: true });
   tl.set(["#g-outro-twh", "#g-outro-ep", "#g-outro-cta", "#g-outro-next"], { autoAlpha: 0 }, 0);
+  tl.set("#g-outro-dot", { autoAlpha: 0 }, 0);
   /* snap the wordmark to land on the spoken brand cadence, same offsets as the source template */
   tl.fromTo("#g-outro-twh", { autoAlpha: 0, scale: 1.14 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power3.out" }, 0.55);
   tl.fromTo("#g-outro-ep", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.7 }, 1.8);
   tl.fromTo("#g-outro-cta", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.7 }, 3.2);
   tl.fromTo("#g-outro-next", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.7 }, 4.6);
+  tl.to("#g-outro-dot", { autoAlpha: 0.7, duration: 0.4 }, 5.3);
+  /* ambient blip: finite pulse on the dot, sized to DUR (never repeat:-1), covers the hold to the fade-out */
+  tl.fromTo("#g-outro-dot", { scale: 1, autoAlpha: 0.6 }, { scale: 1.7, autoAlpha: 1, duration: 0.4,
+    ease: "sine.inOut", yoyo: true, repeat: Math.ceil((DUR - 5.3) / 0.4) + 2 }, 5.4);
   /* continuous element: a very slow scale breathing on the whole lockup across the hold */
   tl.to("#g-outro-wrap", { scale: 1.015, duration: DUR - 6.0, ease: "sine.inOut" }, 5.5);
   tl.to("#g-outro-wrap", { autoAlpha: 0, duration: 1.0 }, DUR - 1.0);
