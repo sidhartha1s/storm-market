@@ -73,7 +73,12 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"hdr-r", {autoAlpha:0, y:-16}, {autoAlpha:1, y:0, duration:0.6}, 0.5);
 
   // continuous radar sweep on both row-1 dish icons, capped inside the 51.07s window (finite, no repeat)
-  tl.to(["#g-tncols-sweepL", "#g-tncols-sweepR"], {rotation:360, duration:50.9, ease:"none", transformOrigin:"15px 70px"}, 0);
+  // svgOrigin (raw SVG user-space units), not transformOrigin (css px) -- transformOrigin mis-resolved the
+  // pivot on this nested flex-layout SVG (data-svg-origin computed "30 100" instead of "15 70"), translating
+  // the rotated line ~150 units outside the 90x90 viewBox where it was silently clipped every frame.
+  tl.to(["#g-tncols-sweepL", "#g-tncols-sweepR"], {rotation:360, duration:50.9, ease:"none", svgOrigin:"15 70"}, 0);
+  // full-window travelling light sweep (owner ask: "motion some lines"), one L->R pass at ~43px/s, finite
+  tl.to(P+"sweep", {x:2200, duration:50.8, ease:"none"}, 0.2);
 
   /* FINAL cues from audio/a6-s2.words.json, mount = A6-S2 start, DUR 51.07 (orchestrator 2026-09-21):
      radar 9.5 (l1) · radio 17.0 (l2) · "fifteen" slot 34.8 = the corrected "13 minutes" line (r3) · houses 48.9 (footer).
