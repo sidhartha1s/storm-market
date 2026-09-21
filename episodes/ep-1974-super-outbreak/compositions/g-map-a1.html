@@ -69,6 +69,14 @@
 </g>
 </svg>
 <div class="railfade"></div>
+<!-- QC fix (2026-09-21, owner draft review): ambient motion so the graphic never goes fully static -->
+<div id="g-map-a1-bd0" style="position:absolute; left:120px; top:200px; width:6px; height:6px; border-radius:50%; background:#93a3b2; opacity:0.25; pointer-events:none;"></div>
+<div id="g-map-a1-bd1" style="position:absolute; left:900px; top:160px; width:6px; height:6px; border-radius:50%; background:#93a3b2; opacity:0.25; pointer-events:none;"></div>
+<div id="g-map-a1-bd2" style="position:absolute; left:200px; top:900px; width:6px; height:6px; border-radius:50%; background:#93a3b2; opacity:0.25; pointer-events:none;"></div>
+<div id="g-map-a1-bd3" style="position:absolute; left:1050px; top:850px; width:6px; height:6px; border-radius:50%; background:#93a3b2; opacity:0.25; pointer-events:none;"></div>
+<div id="g-map-a1-bd4" style="position:absolute; left:500px; top:950px; width:6px; height:6px; border-radius:50%; background:#93a3b2; opacity:0.25; pointer-events:none;"></div>
+<div id="g-map-a1-bd5" style="position:absolute; left:760px; top:480px; width:6px; height:6px; border-radius:50%; background:#93a3b2; opacity:0.25; pointer-events:none;"></div>
+<div id="g-map-a1-scan" style="position:absolute; left:60px; top:40px; width:1100px; height:2px; background:linear-gradient(90deg, transparent, rgba(147,163,178,0.4), transparent); opacity:0.5; pointer-events:none;"></div>
 <div class="eyebrow" id="g-map-a1-eb">APRIL 3, 1974 &middot; THE FIRST HOURS</div>
 <div class="hl" id="g-map-a1-hl1">DePauw, Indiana</div>
 <div class="hl" id="g-map-a1-hl2" style="opacity:0">Hanover, Indiana</div>
@@ -142,6 +150,21 @@ window.__timelines = window.__timelines || {};
   stackBelow("#g-map-a1-f2", "#g-map-a1-r3", 14);
   const CUES = { huffman: 2.76, hanover: 36.80, brandenburg: 61.27 };
   const DUR = 137.273;
+  // QC fix (2026-09-21, owner draft review): "motion graphics need some motion, after some
+  // time it is static" -- add a staggered dot blip (a new blip starts at least every 1.2s,
+  // well inside the 1.5s bar) plus a slow scanline sweep (well over the 6px/s floor), both
+  // for the FULL comp window, independent of any cue. Finite counts sized to DUR (never repeat:-1).
+  const AMBIENT_BD_INTERVAL = 1.2;
+  const AMBIENT_BD_TICKS = 115; // Math.ceil(DUR / 1.2)
+  for (let i = 0; i < AMBIENT_BD_TICKS; i++) {
+    const id = "bd" + (i % 6);
+    const at = i * AMBIENT_BD_INTERVAL;
+    tl.to(P+id, { opacity: 0.85, scale: 1.8, duration: 0.4, ease: "sine.inOut" }, at);
+    tl.to(P+id, { opacity: 0.25, scale: 1, duration: 0.4, ease: "sine.inOut" }, at + 0.4);
+  }
+  const AMBIENT_SCAN_PASS = 25; // 25s to cross 1000px = 40px/s, well over the 6px/s floor
+  const AMBIENT_SCAN_REPEAT = 5; // Math.max(0, Math.ceil(DUR / 25) - 1), sized to DUR
+  tl.fromTo(P+"scan", { y: 0 }, { y: 1000, duration: AMBIENT_SCAN_PASS, ease: "none", repeat: AMBIENT_SCAN_REPEAT, yoyo: true }, 0);
 
   tl.fromTo(P+"drift", { y: -100 }, { y: 100, duration: DUR, ease: "none" }, 0);
   tl.fromTo(P+"mapgroup", { scale: 1.0 }, { scale: 1.025, duration: DUR, ease: "none", transformOrigin: "40% 45%" }, 0);

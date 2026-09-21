@@ -207,6 +207,14 @@
 </g>
 </svg>
 <div class="railfade"></div>
+<!-- QC fix (2026-09-21, owner draft review): ambient motion so the graphic never goes fully static -->
+<div id="g-plane-bd0" style="position:absolute; left:120px; top:200px; width:6px; height:6px; border-radius:50%; background:#93a3b2; opacity:0.25; pointer-events:none;"></div>
+<div id="g-plane-bd1" style="position:absolute; left:900px; top:160px; width:6px; height:6px; border-radius:50%; background:#93a3b2; opacity:0.25; pointer-events:none;"></div>
+<div id="g-plane-bd2" style="position:absolute; left:200px; top:900px; width:6px; height:6px; border-radius:50%; background:#93a3b2; opacity:0.25; pointer-events:none;"></div>
+<div id="g-plane-bd3" style="position:absolute; left:1050px; top:850px; width:6px; height:6px; border-radius:50%; background:#93a3b2; opacity:0.25; pointer-events:none;"></div>
+<div id="g-plane-bd4" style="position:absolute; left:500px; top:950px; width:6px; height:6px; border-radius:50%; background:#93a3b2; opacity:0.25; pointer-events:none;"></div>
+<div id="g-plane-bd5" style="position:absolute; left:760px; top:480px; width:6px; height:6px; border-radius:50%; background:#93a3b2; opacity:0.25; pointer-events:none;"></div>
+<div id="g-plane-scan" style="position:absolute; left:60px; top:40px; width:1100px; height:2px; background:linear-gradient(90deg, transparent, rgba(147,163,178,0.4), transparent); opacity:0.5; pointer-events:none;"></div>
 <div class="eyebrow" id="g-plane-eb">DAMAGE SURVEY &middot; APRIL 1974 &rarr; FEBRUARY 1975</div>
 <div class="hl" id="g-plane-hl">Ten months in the air.</div>
 <div class="ticker" id="g-plane-ticker" style="opacity:0">APR 1974</div>
@@ -267,6 +275,21 @@ window.__timelines = window.__timelines || {};
   stackBelow("#g-plane-r2", "#g-plane-ft", 24);
   const CUES = { ten: 14.92, miles: 17.12, hand: 20.72, damage: 25.82 };
   const DUR = 28.163;
+  // QC fix (2026-09-21, owner draft review): "motion graphics need some motion, after some
+  // time it is static" -- add a staggered dot blip (a new blip starts at least every 1.2s,
+  // well inside the 1.5s bar) plus a slow scanline sweep (well over the 6px/s floor), both
+  // for the FULL comp window, independent of any cue. Finite counts sized to DUR (never repeat:-1).
+  const AMBIENT_BD_INTERVAL = 1.2;
+  const AMBIENT_BD_TICKS = 24; // Math.ceil(DUR / 1.2)
+  for (let i = 0; i < AMBIENT_BD_TICKS; i++) {
+    const id = "bd" + (i % 6);
+    const at = i * AMBIENT_BD_INTERVAL;
+    tl.to(P+id, { opacity: 0.85, scale: 1.8, duration: 0.4, ease: "sine.inOut" }, at);
+    tl.to(P+id, { opacity: 0.25, scale: 1, duration: 0.4, ease: "sine.inOut" }, at + 0.4);
+  }
+  const AMBIENT_SCAN_PASS = 25; // 25s to cross 1000px = 40px/s, well over the 6px/s floor
+  const AMBIENT_SCAN_REPEAT = 1; // Math.max(0, Math.ceil(DUR / 25) - 1), sized to DUR
+  tl.fromTo(P+"scan", { y: 0 }, { y: 1000, duration: AMBIENT_SCAN_PASS, ease: "none", repeat: AMBIENT_SCAN_REPEAT, yoyo: true }, 0);
   const WPS = [
     [429.6,437.4],[602.8,312.4],[538.7,723.5],[415.4,705.0],[341.0,777.2],
     [414.2,717.6],[443.7,464.7],[493.7,427.0],[405.2,242.7],[429.6,437.4]
