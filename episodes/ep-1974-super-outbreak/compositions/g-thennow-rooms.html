@@ -79,6 +79,10 @@ window.__timelines = window.__timelines || {};
   // sine.inOut decelerates to near-zero speed at both endpoints, which read as frozen after ~8s.
   tl.to(P+"funnelbg", {y:36, x:-26, duration:10.4, ease:"none"}, 0);
 
+  // full-frame light sweep, single L->R pass at constant speed across almost the entire 10.56s
+  // window (finite, no repeat) -- the funnel drift alone reads too faint at full-frame scale.
+  tl.fromTo(P+"sweep", {x:0}, {x:2400, duration:10.2, ease:"none"}, 0.1);
+
   /* FINAL cues from audio/a6-s3.words.json, mount 0.2s before "storm shelter", DUR 10.56 (orchestrator 2026-09-21):
      shelter 0.2 · room 1.7 · car 4.5 · cant("past") 4.7 · know 6.3 */
   tl.fromTo(P+"row1", {autoAlpha:0, x:40}, {autoAlpha:1, x:0, duration:0.5}, 0.2);
