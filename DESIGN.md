@@ -267,7 +267,7 @@ floors/ceilings; taste stays with the model.
 
 ## Editing grammar (seed — grows via LEARNINGS.md)
 
-- Hook: cold-open insert (911 audio / broadcast) or present-tense stat over motion. ≤15s to thesis.
+- Hook: the narrator's payoff line over motion from 0:00; no archive audio in the hook (see "Cold-open hook contract").
 - After an emotional payoff: hold 2-4s, ambience up, then cut hard to the next act. Declare each hold with an
   empty marker `<section class="clip hold" id="hold-N" data-start="X" data-duration="3.0" data-track-index="8"></section>`;
   `lint_timeline.py` sanctions a narration gap only inside a blackout, a declared hold, or the CTA (ep-1974, 21 Sep 26).
