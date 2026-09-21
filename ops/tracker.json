@@ -563,7 +563,7 @@
       "owner": "director",
       "due": "27 Sep 26",
       "phase": "preview",
-      "status": "waiting owner",
+      "status": "blocked",
       "note": "draft preview rendered 21 Sep 06:21 (renders/ep-1974-super-outbreak-draft.mp4, 17:39, 186 MB); owner review + insert YES/NO pending; film clips (231 cut) + transcript go into cut 2",
       "updated": "21 Sep 26 06:48"
     },
