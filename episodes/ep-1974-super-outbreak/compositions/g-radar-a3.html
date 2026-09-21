@@ -105,6 +105,19 @@ window.__timelines = window.__timelines || {};
 
   tl.to(['#' + ID + '-scope', '#' + ID + '-rail', '#' + ID + '-sub'], { autoAlpha: 0, duration: 0.15 }, CUES.dark);
 
+  /* AMBIENT MOTION (owner 21 Sep 26: "graphics go static after a while") — additive only,
+     no DUR/cue change. Each blob's ellipse breathes (rx/ry, a property untouched by the
+     opacity/scale reveal tweens above, so no fight) for the whole window up to a safe
+     margin before the blackout — sized to CUES.dark, never repeat:-1. */
+  const baseRxRy = { ell0: [36, 30], ell1: [32, 27], ell2: [30, 25], ell3: [34, 28], ell4: [28, 24] };
+  const MAX_STAGGER = 4 * 0.06;
+  const SAFE_END = CUES.dark - 0.4;
+  const N_BREATHE = Math.floor((SAFE_END - MAX_STAGGER) / 0.5) - 1; // (N+1)*0.5 + stagger <= SAFE_END
+  Object.keys(baseRxRy).forEach((key, i) => {
+    const [rx, ry] = baseRxRy[key];
+    tl.fromTo('#' + ID + '-' + key, { attr: { rx, ry } }, { attr: { rx: rx + 3, ry: ry + 3 }, duration: 0.5, ease: 'sine.inOut', yoyo: true, repeat: N_BREATHE }, i * 0.06);
+  });
+
   window.__timelines[ID] = tl;
 })();
 </script>
