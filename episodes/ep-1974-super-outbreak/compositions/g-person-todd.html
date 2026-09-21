@@ -20,6 +20,10 @@
   .g-person-todd-role { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:10px; }
   .g-person-todd-line3 { font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:4px; color:#93a3b2; margin-top:16px; }
   .g-person-todd-underline { position:absolute; left:48px; right:48px; bottom:22px; height:1px; background:#e8c56a; transform-origin:left center; }
+  /* ambient motion (owner 21 Sep 26): soft pulsing dot on the underline, finite repeat sized to
+     DUR below (never repeat:-1) — sits below all text, touches nothing. */
+  .g-person-todd-dot { position:absolute; left:48px; bottom:18.5px; width:8px; height:8px; border-radius:50%;
+    background:#e8c56a; box-shadow:0 0 8px 2px rgba(232,197,106,0.6); }
 </style>
 <div id="root" data-composition-id="g-person-todd" data-width="1920" data-height="1080">
   <div class="g-person-todd-card glasscard" id="g-person-todd-card">
