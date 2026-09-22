@@ -60,3 +60,6 @@ episodes/*/sheets/
 episodes/*/sheets-pre/
 episodes/*/audio/**/*.wav
 episodes/*/audio/**/_segments/
+
+# builder scratch (one-shot probes, patches); never pipeline
+scripts/_*

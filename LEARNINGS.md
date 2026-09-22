@@ -1538,3 +1538,18 @@ this time", 14:05 the combed-trees card "interesting bit"). Corrections, each pe
 - **The draft rendered before ten graphics were finished.** I found text behind the presenter circle by looking at the draft,
   then fixed it. The builders never had the circle's box in their brief. The box (x 1632 to 1888, y 700 to 956) now goes in
   every builder brief, and no render starts while a builder is still editing (CLAUDE.md "the render is the LAST step").
+
+## 2026-09-22 - ep-1974 shipped 17:30 against a 22:00 target: three guesses stacked
+
+- **Measured:** script 3,027 words; raw TTS 18.4 min (165 wpm native, not the 152 assumed); atempo 1.10 made it
+  16.7 min of voice (181 wpm delivered); non-voice time 48 s, not the 2.2 min constant. 22:00 became 17:40, then
+  17:30 after the owner's cuts. Owner: "you under delivered the minutes of last video."
+- **Why:** the budget line in edit_script.md multiplied a guessed pace by a guessed overhead, and the probes the
+  plan asked for were made but never fed back into the count. wordcount.py's own footer printed 20.3 min and the
+  script was locked anyway.
+- **Fix:** `scripts/word_budget.py` measures pace from probe wavs at the shipping tempo and takes the real
+  non-voice seconds; it FAILS outside target +/- 1 min. Nothing goes to full TTS while it fails. Checked against
+  ep-1974's own audio: it predicts 16:53 for the shipped script (actual 17:30; the two probes ran 4 % faster than
+  the episode average, so probe with two segments of different sentence length).
+- **Rule of thumb at this voice and tempo:** about 180 words per delivered minute; a 25:00 documentary needs
+  about 4,400 narration words.

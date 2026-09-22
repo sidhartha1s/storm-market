@@ -81,8 +81,9 @@ Script method and hook wording live in `references/script-os.md` and `script-fra
 ## Voice
 - Kyutai pocket-TTS cloned from `assets/voice/pharaoh_wisdom_bearer.mp3` (md5 2d8ea8f14763932f3f76da67d7fd1612).
   Run it through the external venv: `<external.pocket_venv_python> <external.tts_clone_py> --text-file ... --out ... --voice <external.voice_ref>`.
-- Pace is measured, never assumed. Probe-TTS two segments, read the words per minute, then size the script:
-  narration words = target minutes x 0.9 x measured wpm. Punchy prose runs slower than flowing prose.
+- Pace is measured, never assumed. Probe-TTS two segments AT THE SHIPPING TEMPO, then
+  `python3 scripts/word_budget.py episodes/<slug> --target <min> --probe <wav> <wav>` sizes the script from that
+  pace and the real non-voice seconds. It fails outside target +/- 1 min; a script is not locked while it fails.
 - Documentaries and minis take atempo 1.10. Order: TTS, tempo, re-transcribe, THEN time graphics. words.json must be younger than its wav.
 - TTS-safe text: spell out ALL dates, times and numbers, no paired dashes, sentences under 24 words, flowing connective sentences.
 - Homographs (read, lead, live, wind, tear, bass, close, present, record): respell the TTS copy phonetically ("reed"),
