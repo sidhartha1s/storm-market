@@ -24,6 +24,8 @@ from pathlib import Path
 
 # owner-banned audio by content hash (a rename cannot dodge it): "<md5>  <name>  <why>" per line
 _banned = Path(__file__).resolve().parent.parent / "assets/sfx/BANNED.md5"
+if not _banned.exists():
+    sys.exit(f"[lint_timeline] FAIL: {_banned} is missing; the banned-audio check cannot run (restore it from git, never skip it)")
 BANNED = {l.split()[0]: l.split()[1] for l in _banned.read_text(encoding="utf-8").splitlines() if l.strip() and not l.startswith("#")}
 
 

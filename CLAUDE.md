@@ -164,6 +164,7 @@ python3 scripts/media_budget.py   episodes/<slug>
 python3 scripts/audio_levels.py   episodes/<slug>
 node    scripts/blank_scan.mjs    <abs episode dir>
 node    scripts/overlap_check.mjs <abs episode dir>
+node    scripts/occlusion_check.mjs <abs episode dir>   # a card on a higher track over another comp's text
 node    scripts/graphics_qc.mjs   .                   # from the episode dir
 ```
 - Before any render: listen to the full audio mixdown and watch the hook. A layer known to be below spec means stop and report.

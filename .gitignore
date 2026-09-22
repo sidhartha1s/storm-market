@@ -63,3 +63,4 @@ episodes/*/audio/**/_segments/
 
 # builder scratch (one-shot probes, patches); never pipeline
 scripts/_*
+episodes/*/compositions/_occ_*
