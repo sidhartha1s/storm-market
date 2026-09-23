@@ -37,7 +37,7 @@ channel:
     exempt:                       # shipped BEFORE the contract (2026-08-30) — never extended; demo-* dirs skip by having no epN prefix
       [ep1-joplin, ep2-2011-super-outbreak, ep3-tristate, ep5-california-2018, ep6-katrina-2005,
        ms-elnino-texas, ms-krakatau-sirens, ms-krakatoa-1883]   # ms-*: shipped before the news-lane window_ms (17 Sep 26), CTA at the story break
-    window: [0.30, 0.40]          # CTA data-start as a fraction of total runtime: hook > CTA > payoff (deep epN lane)
+    window: [0.85, 0.95]          # CTA data-start as a fraction of total runtime (deep epN lane). Owner 23 Sep 26: late by default, the 30-40 % CTA was not converting and annoyed viewers
     window_ms: [0.85, 0.95]       # news lane ms-* (owner 17 Sep 26): AVD dropped with the 35 % CTA; a spoken bridge line runs straight into the CTA at ~90 %, no dip in
     window_by_slug:               # per-episode owner placements (one-orange rule: the lane window stays until the owner moves it)
       ep-1974-super-outbreak: [0.85, 0.92]   # owner 21 Sep 26 after the draft: "keep around 85-90 % timeline in a fitting manner"

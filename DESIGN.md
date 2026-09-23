@@ -89,14 +89,14 @@ shipped; these are the standing requirements for every episode's cold open:
 The ebook CTA (Paul on camera, 15.1s, QR + "first link in the description") is a fixed element of
 every episode from ep4 on. File, duration, window and labels live in `config.yaml channel.cta`
 (current: `assets/cta/paul-storm-ready-v4c.mp4`, README + transcript beside it) — never a
-per-episode copy of the rule, never a hand-edited path. Shape: **hook > CTA > payoff**.
-- **Window: the CTA starts inside 30–40% of total runtime** — after the episode has earned it,
-  before the first big payoff lands. `sweep_episode.py` fails outside the window (episodes shipped
+per-episode copy of the rule, never a hand-edited path. Shape: **hook > story > CTA > close**.
+- **Window: the CTA starts inside 85–95% of total runtime** (owner 23 Sep 26: the 30–40% placement
+  was not converting and annoyed viewers). Place it late, at a seam where it does not interrupt a reveal. `sweep_episode.py` fails outside the window (episodes shipped
   before the contract are listed in `channel.cta.exempt` — never extended; `demo-*` dirs print SKIP).
 - **Hinge is scripted, not spliced:** the narration segment BEFORE it ends on a tease (an open
   loop planted in the words — "...that gap was about to close, on the most experienced observers
   alive"), the segment AFTER opens with the payoff in its first sentence. The script's loop table
-  carries the pair as `cta-hinge` (references/script-scaling.md). No natural tease at 30–40% =
+  carries the pair as `cta-hinge` (references/script-scaling.md). No natural tease inside the window =
   rewrite the script, not move the CTA.
 - **Dips:** 1.0s black in, 1.0s black out (dramatic-punctuation tier). Hard cut into the payoff
   clip after the out-dip; the payoff clip is REAL footage, never a graphic.

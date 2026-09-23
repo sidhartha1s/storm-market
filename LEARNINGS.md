@@ -8,7 +8,7 @@ Standing rules still governing episode quality, compacted from the journal below
 line is a pointer, not a copy — find the full context by searching the journal for the
 quoted section header.
 
-- The ebook CTA is a must-keep contract: hook > CTA > payoff, positioned by the `config.yaml channel.cta` window. → §"the ebook CTA is a channel asset + a must-keep contract"
+- The ebook CTA is a must-keep contract, positioned by the `config.yaml channel.cta` window: late, 85-95 % since 23 Sep 26. → §"the ebook CTA is a channel asset + a must-keep contract"
 - (superseded 2026-09-09: the upload file is the 1080p master, no upscale step; the owner upscales by hand.) The 1440p HEVC file was the YouTube upload artifact; re-run the master gain/limiter step on any owner-supplied cut before the 2K upscale, never bit-copy its audio. → §"1440p upload file is HEVC now"
 - mp4 surgery on a finished render uses h264_nvenc first, never libx264 — the quality gap doesn't survive YouTube's transcode at consumer-master bitrates. → §"1440p upload tier + NVENC-first for mp4 surgery"
 - Convert GIFs before mounting (single-frame → PNG, animated → mp4); every mounted video needs an audio stream — mux silence into mute clips. → §"ep6 render-failure ledger"
@@ -47,6 +47,18 @@ quoted section header.
 - The on-screen text rules (zone occupancy, one fact one instance, no decorative eyebrows, glass under text over footage) live in DESIGN.md — `overlap_check.mjs` v2 enforces them. → §"ep6 draft v2 review — text collisions were a CHECKER false negative"
 - hyperframes 0.8.6–0.8.10 opened visible console windows on this box; 0.8.41 does not and is the pin since 16 Sep 26 (its mixer is a flat ~1.5 dB quieter, corrected by the master step). → §"ep6 ship", §"16 Sep 26 — pin bumped to 0.8.41"
 - Search `library/catalog-index.json` / `npx hyperframes catalog --query` before hand-authoring any graphic — MG library-first. → §"ep6 ship"
+
+## 2026-09-23 - CTA moves late by default; hooks carry zero fluff; the owner edits scripts in a review loop
+- CTA: the owner judged the 30-40 % placement was not converting and only annoyed viewers. The documentary default is
+  now 85-95 % (`config.yaml channel.cta.window`), placed where it does not interrupt a reveal. He may move it again.
+- Hooks: straight to the point, no fluff, and matched to the title and thumbnail more than to anything else. He was
+  editing fluff out of shipped hooks by hand.
+- Numbers that are a feat, not the point (a rail car's weight, the distance it flew), are said roughly ("about seventy
+  thousand pounds", "nearly five hundred feet"). Do not build the hook on a spectacle the viewer cannot relate to; the
+  hook needs a stake or a contradiction the viewer feels.
+- Script loop: angle is agreed in a short brainstorm first, then the script is shared as a file. The owner edits it in
+  place over a couple of sessions. Each round, `git diff` his edits against the committed draft, name the pattern
+  behind each edit, and add it to `references/script-framework.md` so the next script starts with it.
 
 ## 2026-09-22 - ep-1974 shipped 17:30 against a 22:00 target: three guesses stacked
 
