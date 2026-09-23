@@ -321,6 +321,17 @@ semeru = next(w for w in aligned if w["text"] == "Semeru")
 check("build_srt: align_captions keeps whisper's timing for the corrected word",
       semeru["start"] == 0.5 and semeru["end"] == 1.1, semeru)
 
+# 9b. a leading 'insert' (script has a word before whisper's first token, e.g. whisper missed
+# it) spans 0.0 -> the first whisper word's start, not a single point AT that start (which
+# collapsed the inserted word to zero duration).
+whisper_words_lead = [{"text": "Ibu", "start": 0.5, "end": 0.8}]
+aligned_lead = build_srt.align_captions(whisper_words_lead, "Well Ibu")
+well = next(w for w in aligned_lead if w["text"] == "Well")
+check("build_srt: a leading insert spans 0.0 to the first whisper word's start",
+      well["start"] == 0.0 and well["end"] == 0.5, well)
+check("build_srt: a leading insert is not zero-duration",
+      well["end"] - well["start"] > 0, well)
+
 # ---------------------------------------------------------------------------
 # 10. word_budget: BOTH real script formats present on main, counted correctly, read-only
 #     (no writes under episodes/). ep3-tristate is the blockquote format (real probe wavs
