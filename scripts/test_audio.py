@@ -133,7 +133,9 @@ def make_episode(tmp, script_text, voice_ref, name="ep"):
     return ep
 
 
-SCRIPT_ONE_SEG = """### A1-S1 -- narration
+SCRIPT_ONE_SEG = """# edit_script.md
+
+### A1-S1 -- narration
 > Hello world this is a test line.
 
 Visual: something.
