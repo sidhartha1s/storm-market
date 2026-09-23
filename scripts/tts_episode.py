@@ -167,7 +167,7 @@ def main():
         only = set(s.strip().lower() for s in sys.argv[sys.argv.index("--only") + 1].split(","))
     cfg = load_cfg()
     ext = cfg["external"]
-    tempo = cfg.get("channel", {}).get("tempo")
+    tempo = resolve_tempo(cfg, ep.name)
     if not tempo:
         sys.exit("[tts_episode] config.yaml channel.tempo is not set "
                   "(CLAUDE.md Voice: documentaries and minis both run atempo 1.10)")
