@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """TTS driver: extract narration segments from an episode's edit_script.md, then for each
-segment run pocket-TTS (native pace) -> ffmpeg atempo (config.yaml channel.tempo; CLAUDE.md
-Voice: documentaries and minis both run 1.10, tempo BEFORE timing) -> faster-whisper word
-timestamps on the SPED wav. One driver, one pass per segment.
+segment run pocket-TTS (native pace) -> ffmpeg atempo (config.yaml channel.tempo, per-lane
+override in channel.tempo_by_prefix matched against the episode slug — e.g. shorts 'sh-' run
+1.16, everything else 1.10; CLAUDE.md Voice + references/shorts/PLAN.md; tempo BEFORE timing)
+-> faster-whisper word timestamps on the SPED wav. One driver, one pass per segment.
 
 Segment = a heading ('### <ID> — narration', any '#' depth) followed by exactly one
 blockquote paragraph. ID like 'A3-S5'. Splitting on EVERY heading (not just '### ') means a
