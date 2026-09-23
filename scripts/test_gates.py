@@ -65,6 +65,7 @@ GSAP = (Path(__file__).resolve().parent.parent / "library/gallery/gsap.min.js").
 def make_ep(d, comp_html=None, cta=False, nx_dur=1.0, nx_wav_secs=1.0, words_last_end=None,
             words_mtime_before_wav=False, unparsed_tween=False):
     ep = Path(d)
+    ep.mkdir(parents=True, exist_ok=True)
     (ep / "compositions").mkdir()
     (ep / "audio").mkdir()
     (ep / "media").mkdir()
