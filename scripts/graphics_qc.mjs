@@ -249,7 +249,7 @@ for (const f of files) {
     /* entry/exit slides intentionally park elements off-frame; don't audit geometry mid-slide */
     .filter(t => !probe.tweens.some(tw => tw.props.includes('x') && tw.dur <= 1.2 &&
                  tw.start - 0.15 <= t && t <= tw.start + tw.dur + 0.35));
-  const seenOverlap = new Set(), seenCrop = new Set(), seenOob = new Set(), seenEmpty = new Set();
+  const seenOverlap = new Set(), seenCrop = new Set(), seenOob = new Set(), seenEmpty = new Set(), seenBroken = new Set();
   let tierMax = 0, maxCoverage = 0, maxTextNodes = 0; const elemSamples = []; let gradAny = false;
   for (const t of samples) {
     const m = await page.evaluate(`${MEASURE.replace(/SAFEPAD/g, SAFE.pad).replace(/CROPFAIL/g, CROP_LOSS_FAIL)}(${t})`);
