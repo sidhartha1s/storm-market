@@ -36,11 +36,21 @@ const defects = [];
 function settleFrames(tweens, windowEnd) {
   const short = tweens.filter(t => t.dur < 4 && t.start < windowEnd);
   const moving = t => short.some(tw => tw.start <= t && t < tw.start + tw.dur);
-  const settleFrom = (t, step, lo, hi) => { while (moving(t) && t + step >= lo && t + step <= hi) t += step; return t; };
+  /* nearest moment in [lo, hi] with nothing moving, searching `step` direction first, then the other */
+  const settleFrom = (t, step, lo, hi) => {
+    t = Math.min(Math.max(t, lo), hi);
+    for (const s of [step, -step]) {
+      let c = t;
+      while (moving(c) && c + s >= lo && c + s <= hi) c += s;
+      if (!moving(c)) return c;
+    }
+    return t;
+  };
   const clamp = t => +Math.min(Math.max(t, 0), windowEnd - 0.05).toFixed(2);
   const opening = short.filter(t => t.start < 1.5);
-  const exits = short.filter(t => t.start >= windowEnd * 0.7 &&
-    t.props.some(p => ['autoAlpha', 'opacity', 'x', 'xPercent', 'y', 'yPercent'].includes(p)));
+  const openEnd = opening.length ? Math.max(...opening.map(t => t.start + t.dur)) : 0;
+  /* an exit is a tween that hides (to opacity 0 / autoAlpha 0) or slides an element off-frame, after the opening */
+  const exits = short.filter(t => t.hide && t.start >= openEnd);
   const exitStart = exits.length ? Math.min(...exits.map(t => t.start)) : windowEnd;
   const first = clamp(settleFrom(opening.length ? Math.max(...opening.map(t => t.start + t.dur)) + 0.1 : 0.5, 0.1, 0, exitStart));
   const pre = clamp(Math.max(first, settleFrom(exitStart - 0.25, -0.1, first, exitStart)));
