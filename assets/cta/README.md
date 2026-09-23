@@ -6,20 +6,15 @@ Deterministic gate: `scripts/sweep_episode.py` ("CTA present + placed"). SRT cue
 ## Current file
 | Field | Value |
 |---|---|
-| File | `paul-storm-ready-v4c.mp4` (1920×1080, h264/aac, **15.104 s**, 24 MB) |
-| md5 | `34b6b40bdf772d75d4c7ebf11a0e2a80` |
-| Transcript | `paul-storm-ready-v4c.txt` (4 sentences; whisper-verified against the audio) |
-| Source | `C:\Users\Sidhartha\Videos\storm-insert-work\render\renders\insert-v4c-final.mp4`, rendered 2026-08-28 14:51 from `comp/v4c.html` ("HeyGen Paul, QR on chest") |
-| Talking head | HeyGen v2 clip (`heygen/paul-full-v2.mp4`, 9:16) of the Paul Raymond portrait (`paul-portrait-v2.png`) |
-| Voice | Cloned Pharaoh pocket-TTS VO (`vo/insert.wav`), decoupled from the video track |
-| On-screen | QR + `paulraymond.online`, book cover, site card |
-| First shipped | ep2 v2 (owner re-cut, spliced at 8:26–8:42 outside the pipeline); ep4 = first in-timeline use |
+| File | `paul-storm-ready-v5-sep6.mp4` (1920x1080 30 fps, h264/aac, **15.139 s**, 13.3 MB) |
+| md5 | `541db438ad6e948e41286ee9fb6245fb` |
+| Transcript | `paul-storm-ready-v5-sep6.txt` |
+| Source | `C:\Users\Sidhartha\Automation Projects\newest paul CTA sep 6.mp4` (owner 2026-09-08 "newest paul CTA sep 6", 2560x1440, transcoded to 1080p30) |
 
 ## Version history
-- **v4c** (2026-08-28) — HeyGen talking head, QR on chest. CURRENT.
-- v4b (2026-08-23) — DeAPI/LTX lipsync (clips A seed 7 + B seed 11 bridged), same composite; `archive/insert-v4b-final_deapi-paul.mp4`. Superseded.
-- earlier (2026-08-16) — `Videos\storm-ready-insert.mp4`, 14.8 s, first cut.
-- experiment (2026-08-29) — local Wav2Lip re-sync (`local-lipsync/paul60_wav2lip.mp4`, 60 s, 540×960). Not shipped, not a CTA.
+- **v5-sep6** (2026-09-06): CURRENT.
+- v4c (2026-08-28): HeyGen talking head, QR on chest. Retired; removed from the tree 2026-09-24 (owner). Restore with `git show <sha>:assets/cta/paul-storm-ready-v4c.mp4`.
+- v4b (2026-08-23): DeAPI/LTX lipsync. Superseded.
 
 ## Swapping the clip
-Never overwrite. Add `paul-storm-ready-v4d.mp4` (+ `.txt`, + row above with md5), bump `config.yaml channel.cta.file/duration/transcript`. The old file stays so shipped episodes reproduce from their tags.
+Never overwrite. Add the new versioned file (e.g. `paul-storm-ready-v6-<date>.mp4`) (+ `.txt`, + row above with md5), bump `config.yaml channel.cta.file/duration/transcript`. Remove the old file in the same PR; shipped episodes keep their own `media/cta/` copy, and git history keeps the old version.
