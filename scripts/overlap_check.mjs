@@ -230,17 +230,7 @@ for (const h of hosts) {
         addPair(`dup-fact: "${f}" shown twice (${factSeen.get(f)} + ${who})`, tAbs);
       else factSeen.set(f, who);
     };
-    // group comp-internal leaves by their immediate DOM parent: a bar/row's town label and its
-    // own time/number are ONE visible fact unit — Tanner AL hit twice by two different F5s at
-    // two different times is not a duplicate fact, it's two distinct bars sharing a place name
-    // (PR #88 review). A lone leaf is its own group of one, unchanged from before.
-    const factGroups = new Map();
-    for (const nd of uniqNodes) {
-      if (nd.ok) continue;
-      if (!factGroups.has(nd.group)) factGroups.set(nd.group, []);
-      factGroups.get(nd.group).push(nd.text);
-    }
-    for (const texts of factGroups.values()) addFact(texts.join(' '), h.comp);
+    for (const nd of uniqNodes) addFact(nd.text, h.comp);
     for (const o of overlays) {
       if (!ovInfo[o.id] || tAbs < o.start || tAbs > o.start + o.dur) continue;
       for (const t of ovInfo[o.id].texts || []) addFact(t, '#' + o.id);
