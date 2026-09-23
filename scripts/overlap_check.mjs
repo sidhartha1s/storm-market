@@ -173,7 +173,7 @@ for (const h of hosts) {
     const nodes = await p2.evaluate(({ compId, rel, leafSrc }) => {
       const isLeaf = eval(leafSrc);
       const tl = (window.__timelines || {})[compId];
-      if (tl && tl.seek) { tl.pause && tl.pause(); tl.seek(rel); }
+      if (tl && tl.seek) { tl.pause && tl.pause(); tl.seek(rel, false); }
       const out = [];
       for (const el of document.querySelectorAll('div,span,text,tspan')) {
         if (!el.textContent || !el.textContent.trim()) continue;
