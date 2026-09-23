@@ -61,7 +61,7 @@ for arg in sys.argv[1:]:
         except Exception as e:  # a SegmentParseError is a real script defect worth surfacing here
             print(f"parse_segments raised {type(e).__name__}: {e}")
             bad.append(f"{ep.name}: parse_segments {type(e).__name__}")
-    code, out = run([sys.executable, str(SCRIPTS / "run_gates.py"), str(ep)])
+    code, out = run([sys.executable, str(SCRIPTS / "run_gates.py"), str(ep)], timeout=1800)
     verdict = next((l for l in out.splitlines() if l.startswith("RUN_GATES")), None)
     print(verdict or "(no RUN_GATES verdict line)")
     if "Traceback (most recent call last)" in out or verdict is None or code not in (0, 1):
