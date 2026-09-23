@@ -195,38 +195,50 @@ for (const h of hosts) {
       }
       return out;
     }, { compId: h.comp, rel, leafSrc: LEAF_FN });
+    // a <text> and its own <tspan> (or any other nested leaf match) read as two DOM nodes for one
+    // visible instance — collapse those before either collision or dup-fact counts them
+    const uniqNodes = [];
+    for (const nd of nodes) {
+      if (uniqNodes.some(u => u.text === nd.text && interFrac(u.box, nd.box) > 0.9)) continue;
+      uniqNodes.push(nd);
+    }
     // C: comp-internal pair collisions
-    for (let i = 0; i < nodes.length; i++) for (let j = i + 1; j < nodes.length; j++) {
-      const a = nodes[i], b = nodes[j];
+    for (let i = 0; i < uniqNodes.length; i++) for (let j = i + 1; j < uniqNodes.length; j++) {
+      const a = uniqNodes[i], b = uniqNodes[j];
       if (a.ok || b.ok) continue;
-      if (a.text === b.text && interFrac(a.box, b.box) > 0.9) continue; // same node seen twice
       if (interFrac(a.box, b.box) > AREA_FRAC)
         addPair(`comp-internal: ${h.comp} "${a.text.slice(0, 28)}" x "${b.text.slice(0, 28)}"`, tAbs);
     }
     // E: index.html overlay (popfig/chip/quote) vs this comp's visible text — the popfig that sat on the siren-chain card (2026-09-11)
     for (const o of overlays) {
       if (o.ok || !ovInfo[o.id] || tAbs < o.start || tAbs > o.start + o.dur) continue;
-      for (const nd of nodes) {
+      for (const nd of uniqNodes) {
         if (nd.ok) continue;
         if (interFrac(nd.box, ovInfo[o.id].zone) > AREA_FRAC)
           addPair(`overlay-on-comp: #${o.id} over ${h.comp} text "${nd.text.slice(0, 32)}"`, tAbs);
       }
     }
-    // B: comp text vs active card zone; D: duplicate facts comp-vs-card and comp-internal
+    // B: comp text vs active card zone; D: duplicate facts — ANY two distinct visible instances
+    // of the same normalized fact at this instant, comp-internal included (the ep6 v2 class:
+    // "80%" in a headline and again in its own sub-label passed because both read as one "who").
     const act = activeCardsAt(tAbs);
     const factSeen = new Map();
     const addFact = (text, who) => {
       const f = normFact(text);
       if (!f) return;
-      if (factSeen.has(f) && factSeen.get(f) !== who)
+      if (factSeen.has(f))
         addPair(`dup-fact: "${f}" shown twice (${factSeen.get(f)} + ${who})`, tAbs);
       else factSeen.set(f, who);
     };
-    for (const nd of nodes) addFact(nd.text, h.comp);
+    for (const nd of uniqNodes) addFact(nd.text, h.comp);
+    for (const o of overlays) {
+      if (!ovInfo[o.id] || tAbs < o.start || tAbs > o.start + o.dur) continue;
+      for (const t of ovInfo[o.id].texts || []) addFact(t, '#' + o.id);
+    }
     for (const c of act) {
       for (const t of cardInfo[c.id].texts) addFact(t, '#' + c.id);
       if (c.ok) continue;
-      for (const nd of nodes) {
+      for (const nd of uniqNodes) {
         if (nd.ok) continue;
         if (interFrac(nd.box, cardInfo[c.id].zone) > AREA_FRAC)
           addPair(`sandwich: #${c.id} over ${h.comp} text "${nd.text.slice(0, 32)}"`, tAbs);
