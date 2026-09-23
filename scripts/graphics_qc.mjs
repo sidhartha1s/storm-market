@@ -162,15 +162,29 @@ const MEASURE = `((t) => {
 // Host-style injection: hyperframes mounts comps INSIDE index.html's DOM, so the page stylesheet
 // applies to comp elements (17 Sep 26: host `.chip{bottom:300px}` stretched a comp chip into a 720 px
 // panel; every standalone gate passed). Staging must carry the host <style> blocks.
-const HOST_CSS = [...readFileSync(join(ep, 'index.html'), 'utf8').matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].map(x => x[1]).join('\n');
+const INDEX_HTML = readFileSync(join(ep, 'index.html'), 'utf8');
+const HOST_CSS = [...INDEX_HTML.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].map(x => x[1]).join('\n');
+// per-composition host window: the duration the master timeline mounts it for (assets-comps-05)
+const HOSTS = {};
+for (const m of INDEX_HTML.matchAll(/<[a-z]+\b[^>]*\bdata-composition-src="compositions\/([^"]+)\.html"[^>]*>/g)) {
+  const dur = parseFloat((/\bdata-duration="([\d.]+)"/.exec(m[0]) || [])[1]);
+  if (!isNaN(dur)) HOSTS[m[1]] = Math.max(HOSTS[m[1]] || 0, dur);
+}
 function standalone(file) {
   const raw = readFileSync(file, 'utf8');
   const m = raw.match(/<template>([\s\S]*?)<\/template>/);
-  const body = m ? m[1] : raw;
-  const html = `<!doctype html><html><head><meta charset="utf-8">
+  let body = m ? m[1] : raw;
+  // Comps use two asset-path conventions: `media/x` (authored assuming a mount at episode root,
+  // like hyperframes shows it) and `../media/x` (authored assuming the file sits one level down,
+  // like compositions/ does). .qc-tmp/ sits at that same one-level depth, so <base href="../">
+  // points every relative url at the episode root; the `../` prefix is then stripped the same
+  // way freeze_scan.mjs does it, so BOTH conventions land on episode-root urls instead of one
+  // of them 404ing depending on which convention the composer used (qc-gates-08).
+  body = body.replace(/(url\(\s*['"]?|\b(?:src|href)=["'])\.\.\//g, '$1');
+  const html = `<!doctype html><html><head><meta charset="utf-8"><base href="../">
 <style>${HOST_CSS}</style>
 <style>html,body{margin:0;width:1920px;height:1080px;background:#111;overflow:hidden}</style>
-<script src="../gsap.min.js"></script></head><body>${body}</body></html>`;
+<script src="gsap.min.js"></script></head><body>${body}</body></html>`;
   const out = join(TMP, basename(file));
   writeFileSync(out, html, 'utf8');
   return out;
