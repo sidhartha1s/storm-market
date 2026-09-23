@@ -64,16 +64,18 @@ def parse_segments(md: str):
         if not m:
             continue
         sid = m.group(1).lower()
+        # Scan the WHOLE block (already heading-delimited, so this can never cross into a
+        # later segment or section) for blockquote paragraphs — 'Visual:' notes sit BEFORE
+        # the quote in some episodes (ep3-tristate, ep1-joplin) and AFTER it in others
+        # (ms-*/br-*), so position relative to other prose can't be the paragraph boundary;
+        # only a non-quote line breaks one paragraph from the next.
         paragraphs, cur = [], []
         for line in rest.splitlines():
             if line.startswith(">"):
                 cur.append(line[2:] if line.startswith("> ") else line[1:])
-            elif line.strip() == "":
-                if cur:
-                    paragraphs.append(cur)
-                    cur = []
-            else:
-                break  # first non-blank, non-quote line ends this segment's own content
+            elif cur:
+                paragraphs.append(cur)
+                cur = []
         if cur:
             paragraphs.append(cur)
         if not paragraphs:
