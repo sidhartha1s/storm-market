@@ -160,4 +160,7 @@ if era_findings:
     for nx, t, d in era_findings:
         print(f"  {ts(t)}  {nx:10} {d}")
     sys.exit(1)
-print("NARRATION/PICTURE PASS - no modern year spoken over archival footage")
+if not ASSET_YEARS:
+    print("NARRATION/PICTURE PASS - no archival assets tagged in this episode's provenance.csv files; nothing to compare against (a mini-storms/PD-stock episode, most likely)")
+else:
+    print(f"NARRATION/PICTURE PASS - no modern year spoken over {len(ASSET_YEARS)} tagged archival asset(s)")
