@@ -321,11 +321,18 @@ report("luma gate (no near-black sources, YAVG>=25)", dark,
 # (cut from a 911-audio reel's photo-slideshow sections). A mounted video whose first and
 # last shown frames differ by YAVG < 0.6 is a still pretending to be a clip. Same cache file.
 def _frame(p, t, out):
-    # -ss BEFORE -i: keyframe seek, not a linear decode of the whole source
-    Path(out).unlink(missing_ok=True)  # stale frame from the previous clip must never be diffed
-    subprocess.run(["ffmpeg", "-y", "-v", "error", "-ss", str(t), "-i", str(p),
-                    "-frames:v", "1", out], capture_output=True, timeout=60)
-    return Path(out).exists()
+    # -ss BEFORE -i: keyframe seek, not a linear decode of the whole source. out is PID-scoped
+    # (see _tmpa/_tmpb below) so two concurrent sweeps never share this path; unlink/ffmpeg can
+    # still legitimately fail (locked file, timeout) — that must read as a failed probe, never
+    # an uncaught crash that skips every check after it.
+    try:
+        Path(out).unlink(missing_ok=True)  # stale frame from the previous clip must never be diffed
+        subprocess.run(["ffmpeg", "-y", "-v", "error", "-ss", str(t), "-i", str(p),
+                        "-frames:v", "1", out], capture_output=True, timeout=60)
+        return Path(out).exists()
+    except Exception as e:
+        probe_failed.append((f"{p.name}@{t}", f"frame extract raised {e!r}"))
+        return False
 
 # pid-scoped: two sweep_episode.py runs against two different episodes share the OS temp
 # dir. A bare filename here meant one process's ffmpeg frame extract could overwrite the
