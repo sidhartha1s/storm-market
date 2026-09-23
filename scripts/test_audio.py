@@ -171,7 +171,7 @@ with tempfile.TemporaryDirectory() as d:
     # 6. 0 parsed segments exits non-zero and leaves manifest.json untouched.
     before = (ep / "audio" / "manifest.json").read_text(encoding="utf-8")
     ep_empty = make_episode(tmp, "## SCRIPT\n**A1-S1 (10 w)** inline prose, no blockquotes.\n",
-                            voice_ref)
+                            voice_ref, name="ep_empty")
     (ep_empty / "audio").mkdir()
     (ep_empty / "audio" / "manifest.json").write_text(before, encoding="utf-8")
     install_mocks()
