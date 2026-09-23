@@ -59,7 +59,11 @@ def align_captions(whisper_words, script_text):
         elif out:
             start = end = out[-1]["end"]
         else:
-            start = end = whisper_words[0]["start"] if whisper_words else 0.0
+            # a leading insert (script has words before whisper's first word) spans the
+            # segment's own lead-in, 0.0 to the first whisper word — not a single point AT
+            # that word's start, which collapsed every such word to zero duration.
+            start = 0.0
+            end = whisper_words[0]["start"] if whisper_words else 0.0
         step = max(end - start, 0.01) / len(s_block)
         for k, t in enumerate(s_block):
             out.append({"text": t, "start": round(start + k * step, 3),
