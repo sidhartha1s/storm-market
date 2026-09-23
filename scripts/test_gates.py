@@ -105,7 +105,7 @@ def make_ep(d, comp_html=None, nx_dur=1.0, nx_wav_secs=1.0, words_last_end=None,
 <audio id="nx-a1s1" src="audio/a1-s1.wav" data-start="0" data-duration="{nx_dur}"></audio>
 </section>'''
     (ep / "index.html").write_text(html, encoding="utf-8")
-    (ep / "media" / "bg.mp4").write_bytes(b"0")
+    (ep / "media" / "bg.mp4").write_bytes(BG_MP4_BYTES)
     return ep
 
 
