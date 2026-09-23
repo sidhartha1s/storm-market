@@ -231,15 +231,20 @@ def main():
 
     renders = DEMO / "renders"
     renders.mkdir(exist_ok=True)
+    BASELINE_DIR.mkdir(parents=True, exist_ok=True)
 
-    # Baseline: reuse the committed record when it belongs to the current pin.
-    base_mp4 = renders / f"pin-baseline-{pin}.mp4"
+    # Baseline mp4 lives at the stable BASELINE_DIR (outside any worktree) so it survives
+    # worktree teardown between runs. Reuse the committed metrics record only when it BOTH
+    # belongs to the current pin AND the mp4 is actually still on disk (assets-comps-02: the
+    # record==pin shortcut used to skip re-rendering even when the mp4 was long gone, which
+    # skipped SSIM silently forever after the first bump).
+    base_mp4 = BASELINE_DIR / f"pin-baseline-{pin}.mp4"
     record = None
     if BASELINE_JSON.exists():
         record = json.loads(BASELINE_JSON.read_text(encoding="utf-8"))
         if record.get("version") != pin:
             record = None
-    if record is None:
+    if record is None or not base_mp4.exists():
         render(pin, base_mp4)
         record = {"version": pin, **measure(base_mp4)}
         # persist NOW — a crash in the candidate render must not cost this ~13 min again
