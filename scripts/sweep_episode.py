@@ -233,7 +233,7 @@ for gid in sorted(mounted):
     # zone rotation), while a beat lands with an entrance ease. A duration-fraction rule
     # got this wrong, which is how this check first cried wolf on g-metmap.
     beats = []
-    for m in re.finditer(r'tl\.\w+\([^;]*?,\s*([\d.]+)\s*\);', src):
+    for m in pos_matches:
         body = m.group(0)
         d = max([float(x) for x in re.findall(r'duration:\s*([\d.]+)', body)] or [0])
         if d > 4.0 and re.search(r'ease:\s*"none"', body):
