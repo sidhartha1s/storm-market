@@ -63,8 +63,8 @@ Total ≈ 3 h 05. If any step overruns 2×, ship what exists and list what was c
 - **Title → hook carry (owner rule):** the hook (3–10 s, one sentence) pays off the title;
   the thumbnail phrase is said aloud inside the intro. Slightly dramatic, never false: every
   claim in title/hook must be in the script with a source.
-- **Thumbnail:** owner makes it. You deliver 3 AI still candidates (`scripts/gen_ai_stills.py`
-  or nanobanana) + the ≤4-word top-of-frame phrase + a red kicker word ("BREAKING NEWS",
+- **Thumbnail:** owner makes it. You deliver 3 AI still candidates (nanobanana;
+  `scripts/gen_ai_stills.py` is hardcoded to ep2) + the ≤4-word top-of-frame phrase + a red kicker word ("BREAKING NEWS",
   "WARNING", "IT'S HAPPENING"). Text lives in the TOP 25 % of the frame (TV impressions).
 - **Instant ROI:** the 8–12 ideas are each a viewer-actionable or viewer-relevant fact
   ("if you live in…", "by Thursday…", "this number changed"). Open loops: name the biggest one in
