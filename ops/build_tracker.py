@@ -38,6 +38,16 @@ def set_card(slug, phase, status, note=None):
     save(d)
 
 
+def add_card(slug, lane, due, title):
+    datetime.datetime.strptime(due, "%d %b %y")  # render() sorts on this; fail now, not later
+    d = load()
+    if any(c["slug"] == slug for c in d["videos"]):
+        sys.exit(f"slug already exists: {slug}")
+    d["videos"].append(dict(slug=slug, lane=lane, due=due, title=title, phase="idea", status="todo",
+                            updated=datetime.datetime.now().strftime("%d %b %y %H:%M")))
+    save(d)
+
+
 def render():
     d = load()
     for c in d["videos"]:
