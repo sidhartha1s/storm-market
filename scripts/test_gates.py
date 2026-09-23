@@ -66,7 +66,7 @@ GSAP = (Path(__file__).resolve().parent.parent / "library/gallery/gsap.min.js").
 # fake fixture file was tripping that gate for reasons unrelated to what these tests check.
 _BG_MP4 = Path(tempfile.gettempdir()) / "_test_gates_bg.mp4"
 if not _BG_MP4.exists():
-    subprocess.run(["ffmpeg", "-y", "-v", "error", "-f", "lavfi", "-i", "testsrc=size=64x64:duration=3:rate=10",
+    subprocess.run(["ffmpeg", "-y", "-v", "error", "-f", "lavfi", "-i", "testsrc=size=64x64:duration=12:rate=10",
                     "-pix_fmt", "yuv420p", str(_BG_MP4)], check=True)
 BG_MP4_BYTES = _BG_MP4.read_bytes()
 
