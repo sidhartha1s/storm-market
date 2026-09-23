@@ -2,6 +2,7 @@
 
 Usage: python3 ops/build_tracker.py            # rebuild the page
        python3 ops/build_tracker.py set <slug> <phase> <status> ["note"]   # move a card, then rebuild
+       python3 ops/build_tracker.py add <slug> <lane> <due DD Mon YY> "<title>"   # new card at idea/todo, then rebuild
 Phases run left to right; a card sits in exactly one. Status: todo | doing | blocked | failed | done. Dates DD Mon YY.
 """
 import html, json, sys, datetime, pathlib
