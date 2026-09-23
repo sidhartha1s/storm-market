@@ -101,10 +101,14 @@ def main():
         wj = ep / f"{m.group(1)}.words.json"
         if not wj.exists():
             sys.exit(f"missing words.json: {wj}")
+        txt_path = ep / f"{m.group(1)}.txt"
+        if not txt_path.exists():
+            sys.exit(f"missing script text for caption alignment: {txt_path}")
         off = float(m.group(2))
         words = json.loads(wj.read_text(encoding="utf-8"))
         if isinstance(words, dict):
             words = words.get("words", [])
+        words = align_captions(words, txt_path.read_text(encoding="utf-8"))
         line, start = [], None
         for w in words:
             txt = w["word" if "word" in w else "text"].strip()
