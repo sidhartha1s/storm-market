@@ -326,8 +326,13 @@ def _frame(p, t, out):
                     "-frames:v", "1", out], capture_output=True, timeout=60)
     return Path(out).exists()
 
-_tmpa = str(Path(tempfile.gettempdir()) / "_sweep_ma.png")
-_tmpb = str(Path(tempfile.gettempdir()) / "_sweep_mb.png")
+# pid-scoped: two sweep_episode.py runs against two different episodes share the OS temp
+# dir. A bare filename here meant one process's ffmpeg frame extract could overwrite the
+# other's file mid-diff — no exception, just a silently wrong motion-gate result on
+# whichever process read the swapped frame. PID makes collision impossible instead of just
+# unlikely (23 Sep 26 review: root-caused while chasing a reported concurrent-run false pass).
+_tmpa = str(Path(tempfile.gettempdir()) / f"_sweep_ma_{__import__('os').getpid()}.png")
+_tmpb = str(Path(tempfile.gettempdir()) / f"_sweep_mb_{__import__('os').getpid()}.png")
 frozen = []
 for name, sdur in sorted(shortest.items()):
     p = ep / name
