@@ -61,6 +61,15 @@ check("fold: still folds a known const's arithmetic (CUES.six + 1.5 -> 8.34)",
 # ===================================================================================
 GSAP = (Path(__file__).resolve().parent.parent / "library/gallery/gsap.min.js").read_text(encoding="utf-8")
 
+# a real tiny clip (moving test pattern, not a 1-byte stub) — the luma/motion probes in
+# sweep_episode.py's "media probes succeeded" check correctly FAIL an undecodable file, and a
+# fake fixture file was tripping that gate for reasons unrelated to what these tests check.
+_BG_MP4 = Path(tempfile.gettempdir()) / "_test_gates_bg.mp4"
+if not _BG_MP4.exists():
+    subprocess.run(["ffmpeg", "-y", "-v", "error", "-f", "lavfi", "-i", "testsrc=size=64x64:duration=3:rate=10",
+                    "-pix_fmt", "yuv420p", str(_BG_MP4)], check=True)
+BG_MP4_BYTES = _BG_MP4.read_bytes()
+
 
 def make_ep(d, comp_html=None, nx_dur=1.0, nx_wav_secs=1.0, words_last_end=None,
             words_mtime_before_wav=False, unparsed_tween=False, comp_window=2.0):
