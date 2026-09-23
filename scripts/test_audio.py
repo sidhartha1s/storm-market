@@ -210,13 +210,31 @@ with tempfile.TemporaryDirectory() as d:
     check("tts_episode: legacy manifest with matching .txt is adopted, not re-synthesized",
           calls["synth"] == [] and calls["transcribe"] == [])
     legacy_manifest = json.loads((ep_legacy / "audio" / "manifest.json").read_text(encoding="utf-8"))
-    check("tts_episode: adopted entry gets a stamped text_hash",
-          "text_hash" in legacy_manifest["a1-s1"])
+    check("tts_episode: adopted entry is honestly marked tempo='legacy' (tempo is UNKNOWN, "
+          "never claim it matches the current config tempo)",
+          legacy_manifest["a1-s1"]["tempo"] == "legacy", legacy_manifest["a1-s1"])
+    check("tts_episode: adopted entry's text_hash is over the TEXT ONLY (sha1 of the parsed "
+          "text), not text+tempo+voice — tempo isn't known, so it can't be in the hash",
+          legacy_manifest["a1-s1"]["text_hash"] ==
+          hashlib.sha1("Hello world this is a test line.".encode("utf-8")).hexdigest())
     check("tts_episode: adopted entry keeps the OLD wav bytes (never touched)",
           (ep_legacy / "audio" / "a1-s1.wav").read_bytes() == b"OLD-RAW-WAV")
 
-    # 5c. legacy manifest whose .txt DIFFERS from the current parsed text is NOT adopted —
-    #     the text really changed since the last hash-less run, so it must re-synthesize.
+    # 5c. re-running over an ALREADY-adopted legacy entry (tempo="legacy", a stored text-only
+    #     hash) with unchanged text stays adopted — the text-only hash path, not just the
+    #     one-time old-.txt-comparison path, must also recognize "nothing changed".
+    install_mocks()
+    sys.argv = ["tts_episode.py", str(ep_legacy)]
+    tts_episode.main()
+    check("tts_episode: re-running an already-adopted legacy entry stays adopted (no synth)",
+          calls["synth"] == [])
+    legacy_manifest2 = json.loads((ep_legacy / "audio" / "manifest.json").read_text(encoding="utf-8"))
+    check("tts_episode: still marked tempo='legacy' after a second unchanged run",
+          legacy_manifest2["a1-s1"]["tempo"] == "legacy")
+
+    # 5d. legacy manifest whose .txt DIFFERS from the current parsed text is NOT adopted — the
+    #     text really changed since the last hash-less run, so it re-synthesizes AT THE LANE
+    #     TEMPO, and the manifest entry stops being "legacy" (a real, known tempo now applies).
     ep_legacy_diff = make_episode(tmp, SCRIPT_ONE_SEG, voice_ref, name="ep_legacy_diff")
     (ep_legacy_diff / "audio").mkdir()
     (ep_legacy_diff / "audio" / "a1-s1.txt").write_text("An old, since-edited sentence.",
@@ -231,6 +249,10 @@ with tempfile.TemporaryDirectory() as d:
     tts_episode.main()
     check("tts_episode: legacy manifest with a DIFFERING .txt re-synthesizes",
           calls["synth"] == ["a1-s1"])
+    legacy_diff_manifest = json.loads(
+        (ep_legacy_diff / "audio" / "manifest.json").read_text(encoding="utf-8"))
+    check("tts_episode: re-synthesized entry gets a real numeric tempo, not 'legacy'",
+          legacy_diff_manifest["a1-s1"]["tempo"] == 1.10, legacy_diff_manifest["a1-s1"])
 
     # 6. 0 parsed segments exits non-zero and leaves manifest.json untouched.
     before = (ep / "audio" / "manifest.json").read_text(encoding="utf-8")
