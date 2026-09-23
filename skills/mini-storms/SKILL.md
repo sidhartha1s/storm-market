@@ -86,13 +86,9 @@ Total ≈ 3 h 05. If any step overruns 2×, ship what exists and list what was c
   equation card; "and you" by minute two; "not happening" is one line in the payoff; the ending lands the thesis
   before the END CTA spine; chain seams with but / because / which means. Score the draft script on stakes per
   90 s (1–10 per window) and map every loop's open and close time BEFORE TTS; two dips in a row = rewrite.
-- **Size every section in words BEFORE TTS** at the delivered pace. Measure it: Pharaoh landed
-  **158 wpm native** on br-elnino-california's short news sentences (2026-09-08), so no atempo;
-  atempo 1.1–1.15 only if a script measures <140 wpm after TTS (long documentary sentences do).
-  Plan at ~150 wpm ≈ 2.5 words/s. Write the table (section, start–end, words, job) in
-  `packaging.md`; 9:30 ≈ 1,410 words, 8:30 floor ≈ 1,260, 12:00 ceiling ≈ 1,780. A script that
-  is short on words is short on runtime; check `words ÷ 2.47` per segment. CTA per `config.yaml channel.cta` unless the owner says
-  otherwise for this format (decision pending — see Open items).
+- **Size every section in words BEFORE TTS** with `scripts/word_budget.py` (probe two segments at the
+  shipping tempo). Write the table (section, start–end, words, job) in `packaging.md`. A script that
+  is short on words is short on runtime. CTA position per `config.yaml channel.cta`.
 - **CTAs and interaction beats (FORMAT.md ledger, owner 2026-09-09):** hard cap 3 per video incl. the fixed END CTA,
   excl. Paul's; where-are-you-watching once (fresh wording); one mid-video question or think-it-yourself beat invented
   per episode; optional name-drop; breadcrumbs uncounted. Placed by judgment, never back to back.
