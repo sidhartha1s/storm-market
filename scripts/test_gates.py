@@ -162,8 +162,11 @@ with tempfile.TemporaryDirectory() as d:
 </section>'''
     (ep / "index.html").write_text(html, encoding="utf-8")
     code, out = run("audio_levels.py", ep)
+    # a still-buggy id read would find "hf-onw2" as the narration's id (doesn't start with
+    # nx-), so narr would be empty and the script would exit early with "no nx-* narration
+    # elements found" instead of computing a reference from the one real nx- element.
     check("audio_levels: reads the real id past a data-hf-id attribute (no more hf- misread)",
-          "nx-a1s1" in out and "hf-onw2" not in out, out)
+          "median of 1 nx-*" in out and "hf-onw2" not in out, out)
     check("audio_levels: a data-bed element at narration level FAILs (was warn-only)",
           "sfx-bed" in out and code == 1, out)
     check("audio_levels: an audio id that is neither nx-/ins- nor data-bed FAILs as unclassified",
