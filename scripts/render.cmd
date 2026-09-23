@@ -15,7 +15,15 @@ set MODE=%~2
 set OUTBASE=%~3
 if "%SLUG%"=="" goto :usage
 set EP=%~dp0..\episodes\%SLUG%
-if not exist "%EP%\index.html" echo ERROR: no index.html in %EP% & exit /b 1
+if not exist "%EP%\index.html" (
+  echo ERROR: no index.html in %EP%
+  echo 1 no-index-html %SLUG% %MODE%> "%~dp0render_last_error.marker"
+  exit /b 1
+)
+REM Delete BEFORE any gate runs (LEARNINGS.md:449) — a poller must never read the previous
+REM run's marker as this run's result. Every error path below (including :usage) writes a
+REM fresh one, so "done" is never silently stale.
+del /q "%EP%\render_%MODE%_done.marker" 2>nul
 
 REM CRF/FPS are tunable per render. Defaults reproduce the tested recipe (full crf16/30fps,
 REM draft crf32/15fps). For a smaller single-pass full render, author at 24fps and set
