@@ -4,7 +4,9 @@ REM Usage:   scripts\render.cmd <episode-slug> <draft|full> [out-basename]
 REM Example: scripts\render.cmd ep2-2011-super-outbreak full ep2-final
 REM Launch DETACHED (harness bg tasks get killed):
 REM   powershell Start-Process cmd.exe -ArgumentList '/c','"<ABS path>\scripts\render.cmd" <slug> <mode>' -WindowStyle Hidden
-REM Writes episodes\<slug>\render_<mode>.log and render_<mode>_done.marker (contains npx exit code).
+REM Writes episodes\<slug>\render_<mode>.log, render_<mode>_preflight.log (gate output, so a
+REM hidden/schtasks launch still leaves a refusal reason on disk) and render_<mode>_done.marker
+REM (contains the exit code; deleted at the start of every run so a poller never reads a stale one).
 REM Version pin must match config.yaml hyperframes_version — pin_ritual.py bumps both together.
 REM Stale-pin full renders need RENDER_PIN_STALE_OK=1 (owner override, printed by preflight).
 setlocal
