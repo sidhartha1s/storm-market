@@ -211,6 +211,28 @@ check("render.cmd dry-run: no args -> :usage exits 1", r2.returncode == 1)
 check("render.cmd dry-run: :usage writes render_last_error.marker", last_err.exists())
 last_err.unlink(missing_ok=True)
 
+# Review finding (23 Sep 26): a STALE marker from a previous successful run must not survive
+# a later run that fails immediately on a missing index.html — a poller must not read the old
+# "0" as this run's result. Uses a real slug dir under episodes/ (render.cmd needs one to exist
+# there to compute %EP%, even though index.html itself stays absent) so the marker path matches
+# exactly what render.cmd deletes; removed after the check either way.
+stale_ep = S.parent / "episodes" / "_test-stale-marker-xyz"
+stale_ep.mkdir(parents=True, exist_ok=True)
+stale_marker = stale_ep / "render_draft_done.marker"
+stale_marker.write_text("0", encoding="utf-8")  # "0" = a prior SUCCESSFUL run
+try:
+    r3 = subprocess.run(["cmd", "/c", str(S / "render.cmd"), "_test-stale-marker-xyz", "draft"],
+                        capture_output=True, text=True, cwd=str(S))
+    check("render.cmd dry-run: missing index.html still exits 1", r3.returncode == 1)
+    check("render.cmd dry-run: a stale success marker is deleted even on the missing-index path",
+          not stale_marker.exists(), f"marker still reads: {stale_marker.read_text() if stale_marker.exists() else ''!r}")
+finally:
+    last_err.unlink(missing_ok=True)
+    if stale_ep.exists():
+        for f in stale_ep.iterdir():
+            f.unlink()
+        stale_ep.rmdir()
+
 # ---------------------------------------------------------------------------
 # render-07: verify_render.sh only gated on the GPU probe; black/silence/freeze/duration/
 # fps/resolution/audio were printed but never failed the run.
