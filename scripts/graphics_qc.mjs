@@ -238,7 +238,9 @@ for (const f of files) {
   if (hostDur != null && probe.duration < hostDur - 0.05)
     add(name, 'short-duration', `timeline ${probe.duration.toFixed(2)}s ends before its host window ${hostDur.toFixed(2)}s — ${(hostDur - probe.duration).toFixed(2)}s frozen tail before the cut (DESIGN.md §5)`);
   const windowEnd = Math.max(probe.duration, hostDur || 0);
-  FRAMES[name] = settleFrames(probe.tweens, windowEnd);
+  /* frames come from what is ON SCREEN: a comp cut by a shorter host (g-plane: 50 s timeline in a
+     28.9 s host) must never be sampled after its host window ends, or the reader judges another graphic */
+  FRAMES[name] = settleFrames(probe.tweens, hostDur ?? probe.duration);
 
   /* --- motion vocabulary --- */
   const kinetic = probe.tweens.filter(t => t.props.some(p => ['scale','scaleX','scaleY','x','y','rotation','width','strokeDashoffset','attr'].includes(p)));
