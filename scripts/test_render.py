@@ -61,8 +61,12 @@ CHROME_TABS_CSV = "\r\n".join(
 
 
 def old_busy_refuses(tasklist_csv):
-    ns = {"subprocess": types.SimpleNamespace(run=lambda *a, **k: types.SimpleNamespace(stdout=tasklist_csv))}
+    ns = {}
     exec(compile(OLD_HEAVY_SRC, "<old-render_preflight>", "exec"), ns)
+    # patched AFTER exec: the snapshot's own "import subprocess" would otherwise clobber a
+    # fake handed in up front (heavy_processes() resolves the name from ns at CALL time, so
+    # patching here, not before exec, is what actually takes effect)
+    ns["subprocess"] = types.SimpleNamespace(run=lambda *a, **k: types.SimpleNamespace(stdout=tasklist_csv))
     busy = ns["heavy_processes"]()
     return len(busy) > ns["MAX_HEAVY"]
 
