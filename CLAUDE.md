@@ -84,7 +84,7 @@ Script method and hook wording live in `references/script-os.md` and `script-fra
 - Pace is measured, never assumed. Probe-TTS two segments AT THE SHIPPING TEMPO, then
   `python3 scripts/word_budget.py episodes/<slug> --target <min> --probe <wav> <wav>` sizes the script from that
   pace and the real non-voice seconds. It fails outside target +/- 1 min; a script is not locked while it fails.
-- Tempo per lane lives in `config.yaml channel.tempo`; `tts_episode.py` applies it. Order: TTS, tempo, re-transcribe, THEN time graphics. words.json must be younger than its wav.
+- Tempo per lane lives in `config.yaml channel.tempo`; `tts_episode.py` applies it. Order: TTS, tempo, re-transcribe, THEN time graphics. `sweep_episode.py` fails a words.json or `data-duration` that runs past its wav.
 - TTS-safe text: spell out ALL dates, times and numbers, no paired dashes, sentences under 24 words, flowing connective sentences.
 - Homographs (read, lead, live, wind, tear, bass, close, present, record): respell the TTS copy phonetically ("reed"),
   keep the script's wording, and listen to every such line once after TTS.
@@ -157,16 +157,9 @@ read the changelog on a multi-version bump.
 ## HARD RULE: the render is the LAST step
 Never use a render as a diagnostic. All green before ANY render, from the worktree:
 ```
-python3 scripts/sweep_episode.py  episodes/<slug>     # structure + CTA gate
-python3 scripts/lint_timeline.py  episodes/<slug>     # exit 0, hard gate
-python3 scripts/beat_density.py   episodes/<slug>
-python3 scripts/media_budget.py   episodes/<slug>
-python3 scripts/audio_levels.py   episodes/<slug>
-node    scripts/blank_scan.mjs    <abs episode dir>
-node    scripts/overlap_check.mjs <abs episode dir>
-node    scripts/occlusion_check.mjs <abs episode dir>   # a card on a higher track over another comp's text
-node    scripts/graphics_qc.mjs   .                   # from the episode dir
+python3 scripts/run_gates.py episodes/<slug>   # the whole pre-render suite in order; stops on the first failure
 ```
+The gate list and its order live in `scripts/run_gates.py`. Minis also run `node scripts/freeze_scan.mjs episodes/<slug>` (mini-storms skill).
 - Before any render: listen to the full audio mixdown and watch the hook. A layer known to be below spec means stop and report.
 - Every rule a builder needs (safe zones, the presenter circle box, type tiers) goes in the builder's brief BEFORE the
   build, so the draft is never the first place a collision shows up.
