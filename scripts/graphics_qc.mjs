@@ -30,21 +30,25 @@ const FRAMES = {};
 const defects = [];
 
 /* The three moments the vision pass reads (CLAUDE.md "Verifying graphics"), chosen from the tween
- * schedule so a frame never lands mid-reveal or mid-exit: the reveal has finished, the hold, and
- * the last settled frame before the exit starts. Loops (>= 4 s) are ambient motion, not reveals. */
+ * schedule so no frame lands mid-animation: the opening reveal has settled, a settled moment
+ * halfway through the hold, and the last settled moment before the exit starts. Loops (>= 4 s) are
+ * ambient motion, not reveals; "settled" means no shorter tween is running at that instant. */
 function settleFrames(tweens, windowEnd) {
   const short = tweens.filter(t => t.dur < 4);
-  const reveals = short.filter(t => t.start < windowEnd * 0.5);
+  const moving = t => short.some(tw => tw.start <= t && t < tw.start + tw.dur);
+  const settleFrom = (t, step, lo, hi) => { while (moving(t) && t + step >= lo && t + step <= hi) t += step; return t; };
+  const clamp = t => +Math.min(Math.max(t, 0), windowEnd - 0.05).toFixed(2);
+  const opening = short.filter(t => t.start < 1.5);
   const exits = short.filter(t => t.start >= windowEnd * 0.7 &&
     t.props.some(p => ['autoAlpha', 'opacity', 'x', 'xPercent', 'y', 'yPercent'].includes(p)));
-  const clamp = t => +Math.min(Math.max(t, 0), windowEnd - 0.05).toFixed(2);
-  const settle = clamp(reveals.length ? Math.max(...reveals.map(t => t.start + t.dur)) + 0.1 : 0.5);
   const exitStart = exits.length ? Math.min(...exits.map(t => t.start)) : windowEnd;
-  const pre = clamp(Math.max(settle, exitStart - 0.25));
+  const first = clamp(settleFrom(opening.length ? Math.max(...opening.map(t => t.start + t.dur)) + 0.1 : 0.5, 0.1, 0, exitStart));
+  const pre = clamp(Math.max(first, settleFrom(exitStart - 0.25, -0.1, first, exitStart)));
+  const mid = clamp(settleFrom((first + pre) / 2, 0.1, first, pre));
   return [
-    { t: settle, why: reveals.length ? `reveal done: last entrance tween of the first half ends at ${(settle - 0.1).toFixed(2)}s` : 'no entrance tweens: 0.5s in' },
-    { t: clamp((settle + pre) / 2), why: 'mid-hold: halfway between reveal done and pre-exit' },
-    { t: pre, why: exits.length ? `pre-exit: 0.25s before the first exit tween at ${exitStart.toFixed(2)}s` : `pre-exit: no exit tween, last frame of the ${windowEnd.toFixed(2)}s window` },
+    { t: first, why: opening.length ? `opening settled: the tweens that start in the first 1.5s have finished` : 'no opening tweens: 0.5s in' },
+    { t: mid, why: 'mid-hold: first settled moment from halfway between frames 1 and 3' },
+    { t: pre, why: exits.length ? `pre-exit: last settled moment before the exit tween at ${exitStart.toFixed(2)}s` : `pre-exit: no exit tween, last settled moment of the ${windowEnd.toFixed(2)}s window` },
   ];
 }
 const add = (comp, kind, msg) => defects.push({ comp, kind, msg, hard: HARD.has(kind) });
