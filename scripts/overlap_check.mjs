@@ -190,8 +190,7 @@ for (const h of hosts) {
         if (r.right < 0 || r.bottom < 0 || r.left > 1920 || r.top > 1080) continue;
         let ok = null, p = el;
         while (p && p !== document.body) { if (p.dataset && p.dataset.overlapOk) { ok = p.dataset.overlapOk; break; } p = p.parentElement; }
-        if (!groupOf.has(el.parentElement)) groupOf.set(el.parentElement, groupOf.size);
-        out.push({ text: el.textContent.trim().slice(0, 60), ok, group: groupOf.get(el.parentElement),
+        out.push({ text: el.textContent.trim().slice(0, 60), ok,
                    box: { left: r.left, top: r.top, right: r.right, bottom: r.bottom } });
       }
       return out;
