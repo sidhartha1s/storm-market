@@ -25,7 +25,6 @@ channel:
   name: The Warning Hour   # owner-locked 2026-07-22
   niche: US weather/disaster documentaries
   target_minutes: [13, 23]
-  ship_wpm_target: 136            # delivered; pocket-TTS + Pharaoh ref lands ~129 natively
   tempo: 1.10                     # ffmpeg atempo, applied to every segment by tts_episode.py — CLAUDE.md
                                    # Voice + references/script-os.md:96-99: docs and minis both run 1.10,
                                    # applied BEFORE transcription (tempo, then re-transcribe the sped wav)
