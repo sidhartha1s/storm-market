@@ -57,7 +57,13 @@ for (const f of readdirSync(join(ep, 'compositions')).filter(f => f.endsWith('.h
       for (const e of nodes) {
         const cs = getComputedStyle(e);
         if (cs.visibility === 'hidden' || cs.display === 'none') continue;
-        if (parseFloat(cs.opacity) < 0.06) continue;
+        /* opacity is not inherited in computed style: a `{opacity:0}` tween on an ancestor
+           (plain opacity, not autoAlpha) still reports the element's OWN opacity as 1, so its
+           text children counted as ink while the card was invisible (qc-gates-09). Multiply up
+           the chain like graphics_qc.mjs vis() does. */
+        let op = 1;
+        for (let n = e; n && n.nodeType === 1; n = n.parentElement) op *= parseFloat(getComputedStyle(n).opacity || '1');
+        if (op < 0.06) continue;
         const r = e.getBoundingClientRect();
         if (r.width < 1 || r.height < 1) continue;
         if (r.bottom < 0 || r.top > 1080 || r.right < 0 || r.left > 1920) continue;
