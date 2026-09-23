@@ -44,8 +44,6 @@ ERA_FILES = {
 }
 code, out = npc(ERA_FILES)
 assert code == 1 and 'says "2025"' in out, out
-code, out = subprocess.run(
-    [sys.executable, '-c', f"import subprocess,sys,tempfile; sys.exit(0)"]).returncode, None  # placeholder no-op
 
 MISSING_SEG_FILES = {
     'index.html': '<audio id="nx-a1-s1" data-start="0" data-duration="2"></audio>\n'
