@@ -185,4 +185,5 @@ node    scripts/graphics_qc.mjs   .                   # from the episode dir
 
 ## Git
 All git and gh as `sidhartha1s`. Small PRs, code-reviewer, rebase-merge, docs sweep in the same PR. `python3`, never
-`python`. Node 22 or newer.
+`python`. Node 22 or newer. Before opening and before merging any PR that touches `scripts/`, run
+`python3 scripts/e2e.py episodes/<slug>` on a live episode: every self-check green and no tool crash.
