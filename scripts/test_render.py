@@ -300,8 +300,10 @@ if HAVE_FFMPEG:
         # window (DESIGN.md "hold 2-4s in silence or low ambience"), not fail every real
         # episode's intentional emotional holds and chapter blackouts.
         mp4d = ep / "renders" / "held-final.mp4"
+        # testsrc, not a static color: a still frame for the full 8s trips freezedetect on its
+        # own (unrelated to the silence gate under test here) since nothing in the picture moves.
         subprocess.run(["ffmpeg", "-y", "-v", "error",
-                        "-f", "lavfi", "-i", "color=c=gray:s=320x240:r=25:d=8",
+                        "-f", "lavfi", "-i", "testsrc=size=320x240:rate=25:duration=8",
                         "-f", "lavfi", "-i", "sine=frequency=440:duration=8",
                         "-filter_complex", "[1:a]volume=enable='between(t,2,5)':volume=0[aout]",
                         "-map", "0:v", "-map", "[aout]",
