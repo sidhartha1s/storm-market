@@ -100,3 +100,4 @@ else {
   console.log(`BLANK SCAN FAIL - ${findings.length} finding(s)`);
   for (const [n, d] of findings) console.log('   ', n, '-', d);
 }
+process.exit(findings.length ? 1 : 0);
