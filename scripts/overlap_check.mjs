@@ -10,11 +10,11 @@
 //   3) Duplicate-fact: two visible nodes rendering the same normalized fact string (dates,
 //      percentages, numbers) at the same instant = FAIL — one fact, one on-screen instance.
 // READ-ONLY checker. Usage: node scripts/overlap_check.mjs <episode-dir>
-import { chromium } from 'file:///C:/Users/Sidhartha/AppData/Roaming/npm/node_modules/@playwright/cli/node_modules/playwright/index.mjs';
+import { chromium, chromiumExecutable } from './playwright_env.mjs';
 import fs from 'fs';
 import path from 'path';
 
-const EXE = 'C:/Users/Sidhartha/AppData/Local/ms-playwright/chromium-1228/chrome-win64/chrome.exe';
+const EXE = chromiumExecutable();
 const STEP = 0.5;
 const AREA_FRAC = 0.25;   // heavy overlap = garble; line-box touches of stacked title/subtitle are fine
 const epDir = path.resolve(process.argv[2] || '.');
