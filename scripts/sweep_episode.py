@@ -332,8 +332,8 @@ def _frame(p, t, out):
 # other's file mid-diff — no exception, just a silently wrong motion-gate result on
 # whichever process read the swapped frame. PID makes collision impossible instead of just
 # unlikely (23 Sep 26 review: root-caused while chasing a reported concurrent-run false pass).
-_tmpa = str(Path(tempfile.gettempdir()) / f"_sweep_ma_{__import__('os').getpid()}.png")
-_tmpb = str(Path(tempfile.gettempdir()) / f"_sweep_mb_{__import__('os').getpid()}.png")
+_tmpa = str(Path(tempfile.gettempdir()) / f"_sweep_ma_{os.getpid()}.png")
+_tmpb = str(Path(tempfile.gettempdir()) / f"_sweep_mb_{os.getpid()}.png")
 frozen = []
 for name, sdur in sorted(shortest.items()):
     p = ep / name
