@@ -180,6 +180,18 @@ with tempfile.TemporaryDirectory() as d:
     check("tts_episode: edited line re-synthesizes", calls["synth"] == ["a1-s1"])
     check("tts_episode: edited line re-transcribes", calls["transcribe"] == ["a1-s1"])
 
+    # 4b. end-to-end: an episode dir named sh-* is synthesized at the shorts tempo (1.16),
+    #     recorded in its manifest; a non-sh- episode (ep/, above) stays at the default (1.10).
+    ep_short = make_episode(tmp, SCRIPT_ONE_SEG, voice_ref, name="sh-test-1")
+    install_mocks()
+    sys.argv = ["tts_episode.py", str(ep_short)]
+    tts_episode.main()
+    short_manifest = json.loads((ep_short / "audio" / "manifest.json").read_text(encoding="utf-8"))
+    check("tts_episode: sh- episode manifest records tempo 1.16",
+          short_manifest["a1-s1"]["tempo"] == 1.16, short_manifest["a1-s1"])
+    check("tts_episode: non-sh- episode manifest records the default tempo 1.10",
+          manifest["a1-s1"]["tempo"] == 1.10, manifest["a1-s1"])
+
     # 5b. legacy manifest (no text_hash) whose wav's .txt matches the current parsed text is
     #     ADOPTED, not re-synthesized — a fresh run over every already-shipped episode must
     #     not blow away every duration under already-timed graphics.
