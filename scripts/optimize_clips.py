@@ -109,8 +109,15 @@ def encode(src_file, out_file, keep, crf, audio):
     else:
         base += ["-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo"]
         maps = ["-map", "0:v", "-map", "1:a", "-c:a", "aac", "-b:a", "32k", "-shortest"]
+    # Fit inside the REAL composition box, not a hardcoded 1080-tall cap (render-06: that cap
+    # halved every clip in a 1080x1920 short — media_budget.py already reads data-width/height
+    # off the root and passed those same clips at full resolution). min(iw,W)/min(ih,H) never
+    # upscales a source smaller than the box; force_original_aspect_ratio=decrease then picks
+    # whichever axis is tighter so the aspect ratio holds; force_divisible_by=2 keeps yuv420p happy.
+    scale = (f"scale=w='min(iw,{COMP_W})':h='min(ih,{COMP_H})':"
+             "force_original_aspect_ratio=decrease:force_divisible_by=2")
     cmd = base + ["-t", f"{keep:.2f}", *maps,
-                  "-vf", "scale=-2:'min(1080,ih)'", "-c:v", "libx264",
+                  "-vf", scale, "-c:v", "libx264",
                   "-preset", "veryfast", "-crf", str(crf), "-g", str(GOP),
                   "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(out_file)]
     return subprocess.run(cmd, capture_output=True, text=True)
