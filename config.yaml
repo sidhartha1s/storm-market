@@ -26,6 +26,9 @@ channel:
   niche: US weather/disaster documentaries
   target_minutes: [13, 23]
   ship_wpm_target: 136            # delivered; pocket-TTS + Pharaoh ref lands ~129 natively
+  tempo: 1.10                     # ffmpeg atempo, applied to every segment by tts_episode.py — CLAUDE.md
+                                   # Voice + references/script-os.md:96-99: docs and minis both run 1.10,
+                                   # applied BEFORE transcription (tempo, then re-transcribe the sped wav)
   cta:                            # MUST-KEEP in every episode (owner order 2026-08-30) — DESIGN.md "CTA contract"
     file: assets/cta/paul-storm-ready-v5-sep6.mp4     # md5 541db438ad6e948e41286ee9fb6245fb (owner 2026-09-08 "newest paul CTA sep 6", 1440p source transcoded to 1080p30); v4c md5 34b6b40bdf772d75d4c7ebf11a0e2a80 retired — swap = NEW versioned file + bump here, never overwrite
     duration: 15.139
