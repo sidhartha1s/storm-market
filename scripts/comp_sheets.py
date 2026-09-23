@@ -44,15 +44,16 @@ for tag in re.findall(r'<[a-z]+\b[^>]*\bdata-composition-src="compositions/[^"]+
     track_of[(re.search(r'compositions/([^"]+)\.html', tag).group(1), float(re.search(r'data-start="([\d.]+)"', tag).group(1)))] = int(tr.group(1)) if tr else 0
 
 
-def covered(at, track):
-    return any(t > track and s <= at < e for t, s, e in layers)
+def covered(at, track, start, dur):
+    # a layer spanning the whole mount is a persistent overlay (the presenter circle), not a cutaway
+    return any(t > track and s <= at < e and not (s <= start and e >= start + dur) for t, s, e in layers)
 
 
 def visible_time(t, start, dur, track):
     """Nearest comp-local time to t (backward first, then forward) that no higher layer covers."""
     for k in range(int(dur * 10) + 1):
         for c in (t - k / 10, t + k / 10):
-            if 0 <= c <= dur - 0.05 and not covered(start + c, track):
+            if 0 <= c <= dur - 0.05 and not covered(start + c, track, start, dur):
                 return c
     return None
 
