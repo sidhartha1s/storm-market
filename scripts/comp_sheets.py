@@ -24,8 +24,9 @@ hosts = {}
 for tag in re.findall(r'<[a-z]+\b[^>]*\bdata-composition-src="compositions/[^"]+\.html"[^>]*>', index):
     name = re.search(r'data-composition-src="compositions/([^"]+)\.html"', tag).group(1)
     start = re.search(r'\bdata-start="([\d.]+)"', tag)
-    if start:
-        hosts.setdefault(name, []).append(float(start.group(1)))
+    dur = re.search(r'\bdata-duration="([\d.]+)"', tag)
+    if start and dur:
+        hosts.setdefault(name, []).append((float(start.group(1)), float(dur.group(1))))
 
 out = ep / 'sheets' / 'frame-qc'; out.mkdir(parents=True, exist_ok=True)
 cards, missing = [], [c for c in want if c not in times or c not in hosts]
