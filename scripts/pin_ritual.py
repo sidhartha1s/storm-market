@@ -43,11 +43,36 @@ REPO = Path(__file__).resolve().parent.parent
 DEMO = REPO / "episodes" / "demo-joplin-90"
 BASELINE_JSON = Path(__file__).resolve().parent / "pin_baseline.json"
 RENDER_CMD = Path(__file__).resolve().parent / "render.cmd"
+# The baseline mp4 lives OUTSIDE any worktree (assets-comps-02): episodes/*/renders/ is
+# gitignored and every ritual run happens in a fresh worktree per CLAUDE.md worktree
+# isolation, so a path under DEMO never survives to the next run and SSIM silently never ran.
+BASELINE_DIR = Path(os.environ.get("LOCALAPPDATA", str(Path.home() / "AppData" / "Local"))) / "storm-market" / "pin-baseline"
 
 # Mirrors render.cmd full-quality flags — the ritual must exercise the production
-# recipe, not a lighter one. Bump both together.
+# recipe, not a lighter one. Bump both together. --workers 2 matches every production
+# full-render wrapper (scripts/*_full_task.cmd all set RENDER_WORKERS=2); render.cmd's own
+# bare default of 3 is the draft-tuned value, not what full renders actually use.
 RENDER_FLAGS = ["--gpu", "--browser-gpu", "--experimental-fast-capture=true",
-                "--quality", "standard", "--crf", "16", "--fps", "30", "--workers", "3"]
+                "--quality", "standard", "--crf", "16", "--fps", "30", "--workers", "2"]
+
+
+def render_cmd_env():
+    """The extra env vars render.cmd sets that gate the production capture path.
+
+    With --workers > 1, streaming capture also needs HF_CAPTURE_PARALLEL_STREAM (render.cmd's
+    own comment: without it 'the gate logs enabled:false and the render dies at Disk capture
+    may need ~131 GB'). Pulled from render.cmd's `set` lines, not hand-copied, so a future edit
+    to render.cmd can't silently re-diverge the ritual from the recipe it is meant to verify.
+    Only these two names are pulled — render.cmd's batch-local vars (SLUG, EP, QUAL, _CRF...)
+    are not real env vars and would corrupt the child env if copied blindly."""
+    txt = RENDER_CMD.read_text(encoding="utf-8", errors="replace")
+    names = ("PRODUCER_STREAMING_ENCODE_MAX_DURATION_SECONDS", "HF_CAPTURE_PARALLEL_STREAM")
+    found = dict(re.findall(r"^set (" + "|".join(names) + r")=(.+)$", txt, re.MULTILINE))
+    missing = [n for n in names if n not in found]
+    if missing:
+        sys.exit(f"[ritual] render.cmd no longer sets {missing} — update render_cmd_env(), "
+                  "the ritual's production-recipe env is now stale")
+    return found
 
 
 def ff_paths():
