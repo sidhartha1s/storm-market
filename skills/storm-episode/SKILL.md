@@ -26,8 +26,8 @@ Repo: `C:\Users\Sidhartha\Automation Projects\storm-market`
 3. **Read the rulebook FROM THE WORKTREE** (fresh main, in this order):
    - `CLAUDE.md` — pipeline steps, QC gates, render + deliverables recipes
    - `DESIGN.md` — editing architecture, hook contract, chapter blackouts, GRAPHICS CONTRACT
-   - `LEARNINGS.md` — gotchas ledger; newest-first, read at least every section newer than
-     the last episode you know about
+   - `LEARNINGS.md` — gotchas ledger; newest-first (new entries go at the top, under the
+     Promoted rules index), read at least every section newer than the last episode you know about
    - `config.yaml` — pins and paths
 4. **Hyperframes pin — machine-enforced ritual:** `config.yaml` carries a PINNED `hyperframes_version`, managed
    ONLY by `scripts/pin_ritual.py` (A/B demo render vs committed baseline; bumps config +
