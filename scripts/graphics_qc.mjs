@@ -26,7 +26,27 @@ const HARD = new Set(['text-collision', 'out-of-frame', 'bad-crop', 'empty-conta
                       'flat-type', 'no-timeline', 'js-error', 'undesigned', 'idle-budget', 'short-duration',
                       'broken-image']);
 const DURS = {};
+const FRAMES = {};
 const defects = [];
+
+/* The three moments the vision pass reads (CLAUDE.md "Verifying graphics"), chosen from the tween
+ * schedule so a frame never lands mid-reveal or mid-exit: the reveal has finished, the hold, and
+ * the last settled frame before the exit starts. Loops (>= 4 s) are ambient motion, not reveals. */
+function settleFrames(tweens, windowEnd) {
+  const short = tweens.filter(t => t.dur < 4);
+  const reveals = short.filter(t => t.start < windowEnd * 0.5);
+  const exits = short.filter(t => t.start >= windowEnd * 0.7 &&
+    t.props.some(p => ['autoAlpha', 'opacity', 'x', 'xPercent', 'y', 'yPercent'].includes(p)));
+  const clamp = t => +Math.min(Math.max(t, 0), windowEnd - 0.05).toFixed(2);
+  const settle = clamp(reveals.length ? Math.max(...reveals.map(t => t.start + t.dur)) + 0.1 : 0.5);
+  const exitStart = exits.length ? Math.min(...exits.map(t => t.start)) : windowEnd;
+  const pre = clamp(Math.max(settle, exitStart - 0.25));
+  return [
+    { t: settle, why: reveals.length ? `reveal done: last entrance tween of the first half ends at ${(settle - 0.1).toFixed(2)}s` : 'no entrance tweens: 0.5s in' },
+    { t: clamp((settle + pre) / 2), why: 'mid-hold: halfway between reveal done and pre-exit' },
+    { t: pre, why: exits.length ? `pre-exit: 0.25s before the first exit tween at ${exitStart.toFixed(2)}s` : `pre-exit: no exit tween, last frame of the ${windowEnd.toFixed(2)}s window` },
+  ];
+}
 const add = (comp, kind, msg) => defects.push({ comp, kind, msg, hard: HARD.has(kind) });
 
 /* ---------- in-page probe: runs inside the composition ---------- */
