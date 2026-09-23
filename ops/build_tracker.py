@@ -99,4 +99,6 @@ td.on{{font-weight:700;text-align:center}} td.past{{color:#7a9;text-align:center
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "set":
         set_card(*sys.argv[2:6])
+    elif len(sys.argv) > 1 and sys.argv[1] == "add":
+        add_card(*sys.argv[2:6])
     render()
