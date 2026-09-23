@@ -68,6 +68,13 @@ for comp in want:
             # sampled after it leaves the screen
             if f['t'] > dur - 0.05:
                 f = {'t': dur - 0.05, 'why': f['why'] + f' (clamped to this {dur:.2f}s mount)'}
+            track = track_of.get((comp, start), 0)
+            if covered(start + f['t'], track):
+                v = visible_time(f['t'], start, dur, track)
+                if v is None:
+                    print(f'{comp} @ {start:.2f}s: covered by higher layers for its whole window, no frame taken')
+                    break
+                f = {'t': v, 'why': f['why'] + f' (moved from {f["t"]:.2f}s: a higher-track clip covers the comp there)'}
             at = start + f['t']
             dst = out / f'{comp}_{int(start)}s_{n}.jpg'
             subprocess.run(['ffmpeg', '-y', '-v', 'error', '-ss', f'{at:.3f}', '-i', str(mp4),
