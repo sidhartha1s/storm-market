@@ -307,6 +307,8 @@ await browser.close();
 /* publish measured composition durations so the episode builder can cut away from a
    graphic the moment it finishes instead of parking on a dead frame */
 writeFileSync(join(compDir, '_durations.json'), JSON.stringify(DURS, null, 1), 'utf8');
+/* settle-frame times per composition, comp-local seconds; scripts/comp_sheets.py extracts them */
+writeFileSync(join(TMP, 'frame_times.json'), JSON.stringify(FRAMES, null, 1), 'utf8');
 
 /* ---------- report ---------- */
 const hard = defects.filter(d => d.hard), soft = defects.filter(d => !d.hard);
