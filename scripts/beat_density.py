@@ -86,3 +86,4 @@ for gid, win, n, gap, when in rows:
     print(f"{gid:22} {win:6.1f}s {n:6} {gap:9.2f}s  {when}{flag}")
 worst = [r for r in rows if r[3] >= 4.0]
 print(f"\ncompositions with a >=4s motionless stretch: {len(worst)}/{len(rows)}")
+sys.exit(1 if worst else 0)
