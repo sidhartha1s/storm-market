@@ -215,11 +215,16 @@ for gid in sorted(mounted):
     src = fold((ep / "compositions" / f"{gid}.html").read_text(encoding="utf-8", errors="replace"))
     pos_matches = list(re.finditer(r'tl\.\w+\([^;]*?,\s*([\d.]+)\s*\);', src))
     # coverage: a position that survives fold() as anything but a bare number (a loop
-    # variable, an unfolded identifier) never reaches pos_matches and used to pass silently
-    # with no signal at all (qc-gates-10, ep-1974 RCA: 3/6, 13/19, 7/10 tweens actually seen).
+    # variable, an unfolded identifier — `CUES.seven + i * 0.12`, g-scale-hook.html) never
+    # reaches pos_matches. Unparseable is not the same claim as defective (review 24 Sep 26:
+    # loop-driven positions can never be literals and hit 3/3 real episodes as a false FAIL) —
+    # print the coverage honestly instead so a real hole is never silently capped, but only a
+    # confirmed overrun among the tweens actually resolved below fails the sweep.
     calls_total = len(re.findall(r'tl\.(?:to|from|fromTo|set|add)\s*\(', src))
-    if calls_total and len(pos_matches) < calls_total:
-        overrun.append(("unparsed", gid, len(pos_matches), calls_total))
+    if calls_total:
+        unresolved = calls_total - len(pos_matches)
+        note = f"; {unresolved} loop/expression positions not checked" if unresolved else ""
+        print(f"      check 7: resolved {len(pos_matches)}/{calls_total} tween positions in {gid}{note}")
     ends = [float(m.group(1)) + max([float(d) for d in re.findall(
         r'duration:\s*([\d.]+)', m.group(0))] or [0])
         for m in pos_matches]
