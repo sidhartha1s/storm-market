@@ -58,26 +58,6 @@ def semver(v):
     return tuple(int(x) for x in v.split("."))
 
 
-def heavy_processes():
-    out = subprocess.run(["tasklist", "/FO", "CSV", "/NH"],
-                         capture_output=True, text=True).stdout
-    found = []
-    for line in out.splitlines():
-        parts = [p.strip('"') for p in line.split('","')]
-        if len(parts) < 5:
-            continue
-        name, pid, mem = parts[0], parts[1], parts[4]
-        if name.lower() not in WATCH:
-            continue
-        try:
-            mb = int(mem.replace(",", "").replace(" K", "")) / 1024
-        except ValueError:
-            continue
-        if mb >= HEAVY_MB:
-            found.append((name, pid, round(mb)))
-    return found
-
-
 def version_check(repo, mode):
     """Pin drift (offline) + pin currency (registry).
 
