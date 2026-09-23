@@ -140,9 +140,6 @@ Mount Paul's 240 px circle per FORMAT.md "Presenter circle": two loops cut from 
 narration speech spans, hidden in the hook / CTA / close. Deliverables: `master_deliverables.py` → the 1080p
 `-master.mp4` IS the upload file + SRT; no upscale step, the owner upscales by hand (2026-09-09).
 
-### 6b. Humanise pass (owner 2026-09-13)
-Before TTS, run `references/humanise-rules.md` rules 2–14 line by line on the whole script; keep the diff in the episode folder.
-
 ### Dujuan U1 review rules (owner 17 Sep 26, hard)
 - **Comps are mounted inside index.html's DOM.** Every class in a composition carries the comp's prefix (`tm-`, `sw-`, …); `scripts/css_collision.py` (inside sweep) fails any shared name. The browser gates stage comps WITH the host `<style>` blocks; a comp that passes standalone proves nothing.
 - **Approved index-level layouts never move for a comp.** Popfigs and chips keep the approved classes and positions; where a card comp is the driver of the beat and the approved spot is not clear of its text, skip that popfig (list the skips in the handback). No custom zones.
