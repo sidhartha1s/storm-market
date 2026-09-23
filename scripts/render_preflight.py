@@ -26,8 +26,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-import render_busy  # noqa: E402 — the busy check below reuses this, not a second process list
+import render_busy  # the busy check below reuses this, not a second process/name list
 
 
 # --- version helpers (shared: pin_ritual.py imports these) ---------------------
