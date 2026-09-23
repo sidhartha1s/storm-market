@@ -292,6 +292,34 @@ if HAVE_FFMPEG:
         r3 = run_verify(ep, "no-audio-final")
         check("render-07 NEW: a muted render fails the gate", r3.returncode != 0 and "FAIL: no audio stream" in r3.stdout,
               f"rc={r3.returncode}\n{r3.stdout[-800:]}")
+
+        # Review finding (23 Sep 26): silencedetect must exempt a declared hold/blackout/CTA
+        # window (DESIGN.md "hold 2-4s in silence or low ambience"), not fail every real
+        # episode's intentional emotional holds and chapter blackouts.
+        mp4d = ep / "renders" / "held-final.mp4"
+        subprocess.run(["ffmpeg", "-y", "-v", "error",
+                        "-f", "lavfi", "-i", "color=c=gray:s=320x240:r=25:d=8",
+                        "-f", "lavfi", "-i", "sine=frequency=440:duration=8",
+                        "-filter_complex", "[1:a]volume=enable='between(t,2,5)':volume=0[aout]",
+                        "-map", "0:v", "-map", "[aout]",
+                        "-c:v", "libx264", "-pix_fmt", "yuv420p", "-c:a", "aac", str(mp4d)],
+                       capture_output=True)
+        held_index = (
+            '<div id="root" data-composition-id="x" data-start="0" data-width="320" '
+            'data-height="240" data-duration="8.00" data-fps="25">'
+            '<section class="clip hold" id="hold-1" data-start="2" data-duration="3" data-track-index="8"></section>'
+            '</div>')
+        (ep / "index.html").write_text(held_index, encoding="utf-8")
+        r4 = run_verify(ep, "held-final")
+        check("render-07 NEW: a 3s silent span INSIDE a declared hold passes",
+              r4.returncode == 0, f"rc={r4.returncode}\n{r4.stdout[-800:]}")
+
+        (ep / "index.html").write_text(held_index.replace('class="clip hold"', 'class="clip hold-DISABLED"'),
+                                       encoding="utf-8")
+        r5 = run_verify(ep, "held-final")
+        check("render-07 NEW: the SAME 3s silent span with no declared hold fails",
+              r5.returncode != 0 and "FAIL:" in r5.stdout and "silence span" in r5.stdout,
+              f"rc={r5.returncode}\n{r5.stdout[-800:]}")
 else:
     print("SKIP render-07 synthetic-clip checks: ffmpeg not on PATH")
 
