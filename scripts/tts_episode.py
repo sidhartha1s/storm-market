@@ -204,14 +204,29 @@ def main():
         txt.write_text(text, encoding="utf-8")
 
         h = sha1_text(text, tempo, voice_md5)
-        prior_hash = manifest.get(sid, {}).get("text_hash")
-        # A legacy manifest entry (pre-dates the text_hash field) whose wav already matches
-        # the CURRENT parsed text (proven by the old .txt this run is about to overwrite) is
-        # adopted as-is: stamp the hash, keep the wav/words.json, never resynthesize. Without
-        # this, the first full run after this fix would re-synthesize every existing episode's
+        h_text = hashlib.sha1(text.encode("utf-8")).hexdigest()
+        prior = manifest.get(sid, {})
+        prior_tempo = prior.get("tempo")
+        # A legacy manifest entry (tempo missing, or already marked "legacy" by an earlier
+        # adoption) was made by SOME wav we can't identify the tempo of: the old native-pace
+        # driver, a hand-sped wav (ms-indonesia), or ep-1974's separate tts_run.py. Its tempo
+        # is UNKNOWN — never claim it matches the current config tempo by stamping a numeric
+        # tempo + a tempo-dependent hash; that would freeze a possibly-wrong pace forever.
+        # Adopt it honestly instead: keep the wav/words.json untouched, hash the TEXT only,
+        # and only invalidate it when the text itself changes (then re-synth at the current
+        # lane tempo, which replaces the "legacy" marker with a real one). Without adoption at
+        # all, the first full run after this fix would re-synthesize every existing episode's
         # segments and shift every duration under already-timed graphics.
-        adopted = prior_hash is None and wav.exists() and old_txt == text
-        stale = (not adopted) and (prior_hash != h or not wav.exists())
+        is_legacy = prior_tempo in (None, "legacy") and wav.exists()
+        if is_legacy:
+            prior_text_hash = prior.get("text_hash")
+            text_changed = (prior_text_hash != h_text) if prior_text_hash is not None \
+                else (old_txt != text)
+            adopted = not text_changed
+            stale = text_changed
+        else:
+            adopted = False
+            stale = prior.get("text_hash") != h or not wav.exists()
         if stale:
             synth_native(txt, raw_wav, ext)
             apply_tempo(raw_wav, wav, tempo)
