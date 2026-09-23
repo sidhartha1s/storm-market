@@ -49,12 +49,14 @@ def covered(at, track, start, dur):
     return any(t > track and s <= at < e and not (s <= start and e >= start + dur) for t, s, e in layers)
 
 
-def visible_time(t, start, dur, track):
-    """Nearest comp-local time to t (backward first, then forward) that no higher layer covers."""
-    for k in range(int(dur * 10) + 1):
-        for c in (t - k / 10, t + k / 10):
-            if 0 <= c <= dur - 0.05 and not covered(start + c, track, start, dur):
-                return c
+def visible_time(t, start, dur, track, forward):
+    """Nearest uncovered comp-local time. The opening frame only moves later (earlier is mid-reveal);
+    the hold and pre-exit frames move earlier first (later runs into the exit), then later."""
+    steps = [k / 10 for k in range(int(dur * 10) + 1)]
+    order = [t + k for k in steps] if forward else [t - k for k in steps] + [t + k for k in steps]
+    for c in order:
+        if 0 <= c <= dur - 0.05 and not covered(start + c, track, start, dur):
+            return c
     return None
 
 
