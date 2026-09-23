@@ -6,12 +6,65 @@ loads audio/X.words.json (faster-whisper word timestamps, segment-relative), off
 timeline time, groups words into caption cues (<=42 chars per line, break on punctuation
 or 3.5s), writes renders/<out>.srt.
 
+Caption TEXT comes from audio/X.txt (the script text that was actually voiced), aligned to
+the whisper words via difflib on normalized tokens; only the TIMING comes from words.json.
+This fixes captions built straight from whisper's guesses at proper nouns (measured on
+ms-indonesia-four-volcanoes: 'Ibu and Samaru'/'Samiru' for Semeru, 'Luutobi Lakilaki'/'Eli
+Luatolak' for Lewotobi/Lewotolok, 'Besarnas' for Basarnas). KNOWN GAP: audio/X.txt itself
+sometimes holds a phonetic TTS respelling ('Bassarnass', 'Lewotobi Lakee Lakee') rather than
+the proper display spelling — there is no separate display-text/respell-map source in this
+repo today, so those specific words still ship imperfect. This still removes pure ASR
+mis-hears, which are the majority of the mismatch.
+
 Usage: python3 scripts/build_srt.py episodes/<slug> <out-basename>
 """
+import difflib
 import json
 import re
 import sys
 from pathlib import Path
+
+_PUNCT = re.compile(r"[^\w']+")
+
+
+def _norm(tok):
+    return _PUNCT.sub("", tok).lower()
+
+
+def align_captions(whisper_words, script_text):
+    """Re-spell whisper's per-word timings with the script text that was actually voiced.
+    Keeps whisper's timing boundaries; swaps in the script's word forms via a difflib
+    alignment on normalized (lowercased, punctuation-stripped) tokens. Words whisper heard
+    that aren't in the script are dropped; script words whisper missed are time-interpolated
+    across the whisper span they replace."""
+    script_tokens = script_text.split()
+    if not whisper_words or not script_tokens:
+        return whisper_words
+    w_norm = [_norm(w.get("word", w.get("text", ""))) for w in whisper_words]
+    s_norm = [_norm(t) for t in script_tokens]
+    sm = difflib.SequenceMatcher(a=w_norm, b=s_norm, autojunk=False)
+    out = []
+    for tag, i1, i2, j1, j2 in sm.get_opcodes():
+        if tag == "delete":
+            continue  # whisper heard extra words the script doesn't have — drop them
+        w_block = whisper_words[i1:i2]
+        s_block = script_tokens[j1:j2]
+        if tag == "equal":
+            for w, t in zip(w_block, s_block):
+                out.append({"text": t, "start": w["start"], "end": w["end"]})
+            continue
+        # 'replace' or 'insert': re-spell s_block, timed across the whisper span it replaces
+        if w_block:
+            start, end = w_block[0]["start"], w_block[-1]["end"]
+        elif out:
+            start = end = out[-1]["end"]
+        else:
+            start = end = whisper_words[0]["start"] if whisper_words else 0.0
+        step = max(end - start, 0.01) / len(s_block)
+        for k, t in enumerate(s_block):
+            out.append({"text": t, "start": round(start + k * step, 3),
+                       "end": round(start + (k + 1) * step, 3)})
+    return out
 
 
 def ts(t):
