@@ -250,7 +250,8 @@ for gid in sorted(mounted):
         elif last_beat - w["dur"] > 0.30:
             overrun.append(("cuts a beat", gid, round(w["dur"], 1), round(last_beat, 1)))
 report("graphic window fits its timeline", overrun,
-       lambda x: f"{x[0]:9} {x[1]} window {x[2]}s vs timeline {x[3]}s")
+       lambda x: (f"{x[0]:9} {x[1]} parsed {x[2]}/{x[3]} tweens — unparsed positions can't be verified"
+                  if x[0] == "unparsed" else f"{x[0]:9} {x[1]} window {x[2]}s vs timeline {x[3]}s"))
 
 # NOTE: there is deliberately no "cue alignment" check here. One used to sit at this
 # spot; it initialised an empty findings list, never appended to it, and printed PASS on
