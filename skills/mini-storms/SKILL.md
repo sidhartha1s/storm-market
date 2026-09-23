@@ -181,7 +181,4 @@ courtesy credits block listing every non-PD source with @handles, chapters at ea
 - LEARNINGS.md updated the same session as any owner correction, under a `## breaking` heading.
 
 ## Open items (ask in the ship summary, not before)
-- CTA in the breaking lane: keep the 15 s Paul ebook CTA at 30–40 %, or a 5 s end-card version?
-  Default until answered: keep the contract (sweep_episode enforces it on `ep*` slugs only; the
-  `ms-`/`br-` prefixes are exempt, so mount it by hand).
 - Instagram cookie login on this box has not been tested yet; first run verifies with one reel.
