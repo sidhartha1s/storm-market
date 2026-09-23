@@ -62,8 +62,12 @@ check("fold: still folds a known const's arithmetic (CUES.six + 1.5 -> 8.34)",
 GSAP = (Path(__file__).resolve().parent.parent / "library/gallery/gsap.min.js").read_text(encoding="utf-8")
 
 
-def make_ep(d, comp_html=None, cta=False, nx_dur=1.0, nx_wav_secs=1.0, words_last_end=None,
-            words_mtime_before_wav=False, unparsed_tween=False):
+def make_ep(d, comp_html=None, nx_dur=1.0, nx_wav_secs=1.0, words_last_end=None,
+            words_mtime_before_wav=False, unparsed_tween=False, comp_window=2.0):
+    # Track 1 carries a plain background video spanning the WHOLE episode (picture coverage);
+    # the composition mounts on track 3, same as real episodes ("overlay comps ride tracks
+    # 3-4") — mounting a graphic directly on track 1 makes an unrelated check (5, "media files
+    # exist") look for a file literally named after the composition id and fail on it.
     ep = Path(d)
     ep.mkdir(parents=True, exist_ok=True)
     (ep / "compositions").mkdir()
@@ -74,20 +78,22 @@ def make_ep(d, comp_html=None, cta=False, nx_dur=1.0, nx_wav_secs=1.0, words_las
     words = [{"text": "hi", "start": 0.0, "end": nx_wav_secs if words_last_end is None else words_last_end}]
     (ep / "audio" / "a1-s1.words.json").write_text(json.dumps(words), encoding="utf-8")
     if words_mtime_before_wav:
-        import os, time
+        import os
         wj = ep / "audio" / "a1-s1.words.json"
         st = (ep / "audio" / "a1-s1.wav").stat()
         os.utime(wj, (st.st_atime - 10, st.st_mtime - 10))
     tween_extra = 'tl.to("#x", {duration: 0.2}, i * 0.2);' if unparsed_tween else ''
     comp = comp_html or (
-        '<template><div id="g"><span id="t">hi</span></div>'
-        f'<script>const DUR=2; tl.to("#t", {{duration:1}}, 0.1); {tween_extra}</script></template>'
+        f'<template><div id="g"><span id="t">hi</span></div>'
+        f'<script>const DUR={comp_window}; tl.to("#t", {{duration:1}}, 0.1); {tween_extra}</script></template>'
     )
     (ep / "compositions" / "g1.html").write_text(comp, encoding="utf-8")
-    html = f'''<section data-duration="{2 + nx_wav_secs}">
+    total = max(comp_window, nx_dur) + 0.5
+    html = f'''<section data-duration="{total}">
 <div id="root" data-width="1920" data-height="1080"></div>
-<video data-composition-id="g1" data-start="0" data-duration="2" data-track-index="1" src="media/bg.mp4" muted></video>
-<audio id="nx-a1s1" src="audio/a1-s1.wav" data-start="2" data-duration="{nx_dur}"></audio>
+<video data-start="0" data-duration="{total}" data-track-index="1" src="media/bg.mp4" muted></video>
+<div data-composition-id="g1" data-start="0" data-duration="{comp_window}" data-track-index="3"></div>
+<audio id="nx-a1s1" src="audio/a1-s1.wav" data-start="0" data-duration="{nx_dur}"></audio>
 </section>'''
     (ep / "index.html").write_text(html, encoding="utf-8")
     (ep / "media" / "bg.mp4").write_bytes(b"0")
