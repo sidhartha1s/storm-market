@@ -70,9 +70,22 @@ REM said "the render script calls this file" — as of 2026-08-14 it actually do
 REM path: under schtasks/cmd, bare python3 resolves to the MS Store stub (exit 9009).
 REM MUST run AFTER the FF*_PATH lines above: media_budget.py measures the ffprobe the env names,
 REM and with no env it measures the slow PATH build and refuses (ep6 full attempt 1, 2026-08-23).
-"C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0render_preflight.py" "%EP%" %MODE%
+REM Output goes to a log next to render_%MODE%.log: a hidden/schtasks launch has no console, so
+REM a refusal reason with nowhere to land was invisible until the operator reran by hand.
+set PREFLIGHT_LOG=render_%MODE%_preflight.log
+"C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0render_preflight.py" "%EP%" %MODE% > "%PREFLIGHT_LOG%" 2>&1
 if errorlevel 1 (
-  echo PREFLIGHT REFUSED exit %ERRORLEVEL% — see output above
+  echo PREFLIGHT REFUSED exit %ERRORLEVEL% — see %CD%\%PREFLIGHT_LOG%
+  type "%PREFLIGHT_LOG%"
+  echo %ERRORLEVEL% > "render_%MODE%_done.marker"
+  exit /b %ERRORLEVEL%
+)
+REM GPU pin (dedicated GPU, not the Intel iGPU — owner 2026-09-15) + the 4 GB RAM floor. Both
+REM existed only as a "run this by hand first" instruction until now; nothing called --launch.
+"C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0render_busy.py" --launch >> "%PREFLIGHT_LOG%" 2>&1
+if errorlevel 1 (
+  echo RENDER_BUSY REFUSED exit %ERRORLEVEL% — see %CD%\%PREFLIGHT_LOG%
+  type "%PREFLIGHT_LOG%"
   echo %ERRORLEVEL% > "render_%MODE%_done.marker"
   exit /b %ERRORLEVEL%
 )
