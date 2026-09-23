@@ -207,6 +207,13 @@ for (const f of files) {
   if (probe.error) { add(name, 'no-timeline', probe.error); continue; }
   DURS[name] = +probe.duration.toFixed(2);
 
+  /* --- host window: DESIGN.md §5 requires the comp to outlast the window it's mounted for,
+     or the panel freezes/vanishes before the cut instead of sliding out on it. --- */
+  const hostDur = HOSTS[name];
+  if (hostDur != null && probe.duration < hostDur - 0.05)
+    add(name, 'short-duration', `timeline ${probe.duration.toFixed(2)}s ends before its host window ${hostDur.toFixed(2)}s — ${(hostDur - probe.duration).toFixed(2)}s frozen tail before the cut (DESIGN.md §5)`);
+  const windowEnd = Math.max(probe.duration, hostDur || 0);
+
   /* --- motion vocabulary --- */
   const kinetic = probe.tweens.filter(t => t.props.some(p => ['scale','scaleX','scaleY','x','y','rotation','width','strokeDashoffset','attr'].includes(p)));
   const reveals = probe.tweens.filter(t => t.props.some(p => ['autoAlpha','opacity'].includes(p)));
