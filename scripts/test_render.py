@@ -319,8 +319,11 @@ if HAVE_FFMPEG:
         check("render-07 NEW: a 3s silent span INSIDE a declared hold passes",
               r4.returncode == 0, f"rc={r4.returncode}\n{r4.stdout[-800:]}")
 
-        (ep / "index.html").write_text(held_index.replace('class="clip hold"', 'class="clip hold-DISABLED"'),
-                                       encoding="utf-8")
+        # Drop the <section> entirely (not just rename its class) — "hold-DISABLED" still
+        # word-boundary-matches "hold" inside \b(?:blackout|hold)\b, so renaming alone would
+        # not actually remove the sanctioned window.
+        unheld_index = re.sub(r'<section class="clip hold".*?</section>', "", held_index)
+        (ep / "index.html").write_text(unheld_index, encoding="utf-8")
         r5 = run_verify(ep, "held-final")
         check("render-07 NEW: the SAME 3s silent span with no declared hold fails",
               r5.returncode != 0 and "FAIL:" in r5.stdout and "silence span" in r5.stdout,
