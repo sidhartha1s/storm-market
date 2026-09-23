@@ -26,8 +26,9 @@ Teardowns + NexLev data: `references/mini-storms/teardowns/README.md`, `referenc
    rules), then repo `CLAUDE.md` "Footage rules" + "Voice" + HARD RULEs, `config.yaml`. Skip
    DESIGN.md's documentary editing architecture except: on-screen text rules, popfig, CTA contract,
    Content ID protocol.
-4. Pin check: `python3 scripts/render_preflight.py` must pass; stale pin ⇒ `scripts/pin_ritual.py`
-   at kickoff, never mid-render.
+4. Pin check: `npm view hyperframes version` against `config.yaml render.hyperframes_version`; newer on npm ⇒
+   `scripts/pin_ritual.py` at kickoff, never mid-render. (`render_preflight.py` needs a composed episode;
+   `render.cmd` runs it.)
 5. Generator tripwire still applies: no script may WRITE episode HTML. The breaking template
    compositions in `library/mini-storms/` are copied and hand-retuned per cut.
 
