@@ -229,4 +229,48 @@ subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=Tru
 frames = json.loads((ep / '.qc-tmp' / 'frame_times.json').read_text(encoding='utf-8'))['z']
 assert max(f['t'] for f in frames) <= 5.95, f'frames past the 6 s host window: {frames}'
 shutil.rmtree(ep, ignore_errors=True)
+
+
+def _one_tween_comp(body):
+    return {'index.html': SETTLE_FILES['index.html'],
+            'compositions/z.html': SETTLE_FILES['compositions/z.html'].split("const tl = gsap.timeline({ paused: true });\n")[0]
+            + "const tl = gsap.timeline({ paused: true });\n" + body
+            + "tl.to({}, { duration: 0.5 }, 9.5);\nwindow.__timelines['z'] = tl;\n</script>\n</template></body></html>\n"}
+
+
+def _frames(files):
+    ep = _stage_ep(files)
+    subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
+    fr = json.loads((ep / '.qc-tmp' / 'frame_times.json').read_text(encoding='utf-8'))['z']
+    shutil.rmtree(ep, ignore_errors=True)
+    return [f['t'] for f in fr]
+
+# an exit that fades out at 50 % of the window: pre-exit must sit before it, not at the window end
+got = _frames(_one_tween_comp(
+    "tl.fromTo('#z-card', { autoAlpha: 0 }, { autoAlpha: 1, duration: 1.0 }, 0);\n"
+    "tl.to('#z-card', { opacity: 0, duration: 0.6 }, 5.0);\n"))
+assert got[2] == 4.75, f'early exit: pre-exit should be 4.75, got {got}'
+# an opening reveal that is still running when the exit starts: frames stay in range, off any tween
+got = _frames(_one_tween_comp(
+    "tl.fromTo('#z-card', { autoAlpha: 0 }, { autoAlpha: 1, duration: 3.0 }, 0);\n"
+    "tl.to('#z-card', { x: 2200, duration: 1.0 }, 2.0);\n"))
+assert all(0 <= t <= 9.95 for t in got) and got[0] >= 3.0, f'overlapping opening/exit: frames {got}'
+
+# comp_sheets.py: a cutaway clip on a higher track hides the comp, so the frame moves earlier; the
+# presenter ring spanning the whole mount is an overlay and must not move anything
+ep = Path(tempfile.mkdtemp(prefix='cs_'))
+(ep / '.qc-tmp').mkdir()
+(ep / '.qc-tmp' / 'frame_times.json').write_text(json.dumps({'z': [
+    {'t': 1.3, 'why': 'a'}, {'t': 4.78, 'why': 'b'}, {'t': 8.25, 'why': 'c'}]}), encoding='utf-8')
+(ep / 'index.html').write_text(
+    '<div id="host-z" data-composition-src="compositions/z.html" data-start="0" data-duration="10" data-track-index="2"></div>\n'
+    '<section class="clip still-wrap" id="c-1" data-start="7.0" data-duration="2.5" data-track-index="3"></section>\n'
+    '<section class="clip" id="pip-ring" data-start="0" data-duration="12" data-track-index="9"></section>\n', encoding='utf-8')
+subprocess.run(['ffmpeg', '-y', '-v', 'error', '-f', 'lavfi', '-i', 'color=c=gray:s=320x180:d=12', str(ep / 'cut.mp4')], check=True)
+r = subprocess.run([sys.executable, str(S / 'comp_sheets.py'), str(ep), 'cut.mp4', 'z'], capture_output=True, text=True)
+assert r.returncode == 0, r.stdout + r.stderr
+lines = [l for l in r.stdout.splitlines() if ' z @ ' in l]
+assert 'moved from 8.25s' in lines[2] and '(comp 6.95s)' in lines[2], lines
+assert 'moved' not in lines[0] and 'moved' not in lines[1], lines
+shutil.rmtree(ep, ignore_errors=True)
 print('graphics_qc self-check PASS (settle frames from the tween schedule, not a fixed 3 s grid)')
