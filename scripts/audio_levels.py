@@ -41,32 +41,38 @@ def file_mean_db(p):
 
 els = []
 for m in re.finditer(r"<(audio|video)\b([^>]*)>", html):
-    attrs = m.group(2)
+    kind, attrs = m.group(1), m.group(2)
     src = re.search(r'src="([^"]+)"', attrs)
-    eid = re.search(r'id="([^"]+)"', attrs)
+    # `\s` before id= — hyperframes stamps `data-hf-id="hf-xxxx"` on most elements, and an
+    # unanchored `id="..."` search matches INSIDE that attribute name ("...hf-id=") before it
+    # ever reaches the real `id="nx-..."` attribute, misreading every classified element as an
+    # unclassified "hf-xxxx" one. Root cause of the reported "hf- (164), bgm-, sfx- all take
+    # the warn-only path" — those elements were never actually being read by their real id.
+    eid = re.search(r'\sid="([^"]+)"', attrs)
     vol = re.search(r'data-volume="([\d.]+)"', attrs)
     if not (src and eid):
         continue
     # A video is silent only when it says so: the `muted` attribute (repo convention) or
     # data-volume 0. hyperframes plays every other video's track at data-volume, default 1.0;
     # the old "no data-volume = muted" assumption let El Reno v3 ship audible stock footage.
-    if m.group(1) == "video" and re.search(r"\smuted(?=[\s>/=]|$)", attrs):
+    if kind == "video" and re.search(r"\smuted(?=[\s>/=]|$)", attrs):
         continue
     v = float(vol.group(1)) if vol else 1.0
     if v <= 0:
         continue
-    els.append((eid.group(1), src.group(1), v))
+    is_bed = bool(re.search(r'\sdata-bed(?=[\s>/=]|$)', attrs))
+    els.append((kind, eid.group(1), src.group(1), v, is_bed))
 
 cache, rows = {}, []
-for eid, src, v in els:
+for kind, eid, src, v, is_bed in els:
     p = ep / src
     if src not in cache:
         cache[src] = file_mean_db(p) if p.exists() else None
     mean = cache[src]
     if mean is None:
-        rows.append((eid, src, v, None, None))
+        rows.append((kind, eid, src, v, is_bed, None, None))
         continue
-    rows.append((eid, src, v, mean, mean + 20 * math.log10(v)))
+    rows.append((kind, eid, src, v, is_bed, mean, mean + 20 * math.log10(v)))
 
 narr = [eff for eid, _, _, _, eff in rows if eid.startswith("nx-") and eff is not None]
 if not narr:
