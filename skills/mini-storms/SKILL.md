@@ -43,7 +43,7 @@ Teardowns + NexLev data: `references/mini-storms/teardowns/README.md`, `referenc
 | 5. Sourcing | 35 min | `media/` + `provenance.csv`; pool reused from `library/mini-storms/<topic>/` first |
 | 6. Compose | 40 min | `index.html` from the breaking template set; red popfigs on every number/place/date, every overlay start resolved from `audio/*.words.json` cues (never estimated seconds; build fails on an unmatched cue) |
 | 7. Static QC | 15 min | sweep_episode, blank_scan, overlap_check, audio_levels, media_budget, 1 frame / 20 s eyeball via subagent |
-| 8. Render | 25 min | `scripts\render.cmd br-<slug> full` hidden via run_hidden.vbs; draft skipped unless QC flagged |
+| 8. Render | 25 min | `scripts\render.cmd ms-<slug> draft` hidden via run_hidden.vbs → owner preview → `full` |
 | 9. Deliverables | 10 min | `master_deliverables.py --hevc`, metadata.md, thumbnail still candidates, private upload |
 
 **The tracker moves with the work.** Every phase change (script, TTS, checks, preview launched/done, full render launched/done, master in the main checkout, upload) runs `python3 ops/build_tracker.py set <slug> <phase> <status> "note"` in the same turn, then commit + push. A status reply naming a phase the tracker page does not show is wrong (owner 2026-09-15: three full renders and masters shipped while `ops/tracker.html` still showed 06:28 previews).
