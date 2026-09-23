@@ -106,11 +106,60 @@ if [ -n "$LONGEST_BLACK" ] && python3 -c "import sys; sys.exit(0 if float('$LONG
 fi
 
 echo
-echo "=== silent spans (audio dropout, -50dB for 2s+) ==="
-ffmpeg -hide_banner -i "$MP4" -af "silencedetect=n=-50dB:d=2" -f null - 2>&1 \
-  | grep -a "silence_start" | tee /tmp/_silence.txt | tail -20
-if [ -s /tmp/_silence.txt ]; then
-  echo "FAIL: $(wc -l < /tmp/_silence.txt) silence span(s) of 2s+ at -50dB or below — a dropped narration segment or dead audio"
+echo "=== silent spans (audio dropout, -50dB for 2s+ — exempt inside a declared hold/blackout ==="
+echo "=== section or the CTA window: DESIGN.md 'hold 2-4s in silence or low ambience' / CTA dip) ==="
+SILENCE_RAW=$(ffmpeg -hide_banner -i "$MP4" -af "silencedetect=n=-50dB:d=2" -f null - 2>&1)
+echo "$SILENCE_RAW" | grep -a "silence_start\|silence_end"
+if ! python3 - "$EP" "$SILENCE_RAW" <<'PYEOF'
+import re, sys
+from pathlib import Path
+
+ep, raw = sys.argv[1], sys.argv[2].replace("\r\n", "\n")
+html = (Path(ep) / "index.html").read_text(encoding="utf-8", errors="replace")
+
+# Sanctioned quiet windows — the SAME structural markers lint_timeline.py already sanctions a
+# narration gap against (DESIGN.md "Editing grammar": declared hold, chapter blackout) plus the
+# CTA window (data-start/data-duration on the CTA insert itself, padded by config.yaml's
+# dip_in/dip_out). A silence span outside every one of these is a dropped narration segment or
+# dead audio, never a style.
+windows = [(float(a), float(a) + float(b)) for a, b in re.findall(
+    r'<section\b[^>]*class="[^"]*\b(?:blackout|hold)\b[^"]*"[^>]*data-start="([\d.]+)"'
+    r'[^>]*data-duration="([\d.]+)"', html)]
+
+cta = re.search(r'<video\b[^>]*src="[^"]*cta/[^"]*"[^>]*>', html)
+if cta:
+    tag = cta.group(0)
+    def attr(name):
+        m = re.search(name + r'="([^"]+)"', tag)
+        return float(m.group(1)) if m else None
+    cs, cd = attr("data-start"), attr("data-duration")
+    if cs is not None and cd is not None:
+        dip_in = dip_out = 1.0
+        cfg = Path(ep).resolve().parent.parent / "config.yaml"
+        if cfg.exists():
+            ctxt = cfg.read_text(encoding="utf-8", errors="replace")
+            m_in, m_out = re.search(r'dip_in:\s*([\d.]+)', ctxt), re.search(r'dip_out:\s*([\d.]+)', ctxt)
+            if m_in: dip_in = float(m_in.group(1))
+            if m_out: dip_out = float(m_out.group(1))
+        windows.append((cs - dip_in, cs + cd + dip_out))
+
+starts, ends = re.findall(r'silence_start:\s*([\d.]+)', raw), re.findall(r'silence_end:\s*([\d.]+)', raw)
+if len(starts) != len(ends):
+    print(f"FAIL: {len(starts)} silence_start vs {len(ends)} silence_end lines — could not pair every span")
+    sys.exit(1)
+
+TOL = 0.5  # silencedetect's own reported edges can land a touch inside the declared window
+bad = [(float(ss), float(se)) for ss, se in zip(starts, ends)
+       if not any(ws - TOL <= float(ss) and float(se) <= we + TOL for ws, we in windows)]
+if bad:
+    print(f"FAIL: {len(bad)} silence span(s) of 2s+ outside any declared hold/blackout/CTA window:")
+    for ss, se in bad:
+        print(f"    {ss:.2f}s - {se:.2f}s")
+    sys.exit(1)
+print(f"OK: {len(starts)} silence span(s), all inside a declared hold/blackout/CTA window"
+      if starts else "OK: no silence spans")
+PYEOF
+then
   FAIL=1
 fi
 
