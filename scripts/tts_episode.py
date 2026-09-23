@@ -94,6 +94,17 @@ def parse_segments(md: str):
     return segs
 
 
+def resolve_tempo(cfg, slug):
+    """Per-lane tempo, matched against the episode slug's prefix. config.yaml
+    channel.tempo_by_prefix (e.g. {'sh-': 1.16} for shorts, PLAN.md:47,55,174) overrides
+    channel.tempo (docs + minis, CLAUDE.md Voice) for any slug starting with that prefix."""
+    channel = cfg.get("channel", {})
+    for prefix, t in (channel.get("tempo_by_prefix") or {}).items():
+        if slug.startswith(prefix):
+            return t
+    return channel.get("tempo")
+
+
 def sha1_text(text, tempo, voice_md5):
     return hashlib.sha1(f"{text}\x1f{tempo}\x1f{voice_md5}".encode("utf-8")).hexdigest()
 
