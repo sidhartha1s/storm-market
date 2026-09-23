@@ -41,6 +41,12 @@ code, out = run('comp_lint.py', BAD)
 assert code == 1 and ' R1 ' in out and ' R2 ' in out, out
 code, out = run('comp_lint.py', GOOD)
 assert code == 0, out
+# qc-gates-03: concatenated selector (R1) + text write inside tl.call, direct and via a named
+# function one level down (R2b)
+code, out = run('comp_lint.py', BAD_CALL)
+assert code == 1 and ' R1 ' in out and 'tl.call' in out, out
+code, out = run('comp_lint.py', GOOD_CALL)
+assert code == 0, out
 code, out = run('css_collision.py', BAD)
 assert code != 0 and 'chip' in out, out
 code, out = run('css_collision.py', GOOD)
