@@ -188,10 +188,18 @@ def main():
         raw_wav = ep / "audio" / "_raw" / f"{sid}.wav"
         wav = ep / "audio" / f"{sid}.wav"
         words_json = ep / "audio" / f"{sid}.words.json"
+        old_txt = txt.read_text(encoding="utf-8") if txt.exists() else None
         txt.write_text(text, encoding="utf-8")
 
         h = sha1_text(text, tempo, voice_md5)
-        stale = manifest.get(sid, {}).get("text_hash") != h or not wav.exists()
+        prior_hash = manifest.get(sid, {}).get("text_hash")
+        # A legacy manifest entry (pre-dates the text_hash field) whose wav already matches
+        # the CURRENT parsed text (proven by the old .txt this run is about to overwrite) is
+        # adopted as-is: stamp the hash, keep the wav/words.json, never resynthesize. Without
+        # this, the first full run after this fix would re-synthesize every existing episode's
+        # segments and shift every duration under already-timed graphics.
+        adopted = prior_hash is None and wav.exists() and old_txt == text
+        stale = (not adopted) and (prior_hash != h or not wav.exists())
         if stale:
             synth_native(txt, raw_wav, ext)
             apply_tempo(raw_wav, wav, tempo)
