@@ -34,7 +34,7 @@ const defects = [];
  * halfway through the hold, and the last settled moment before the exit starts. Loops (>= 4 s) are
  * ambient motion, not reveals; "settled" means no shorter tween is running at that instant. */
 function settleFrames(tweens, windowEnd) {
-  const short = tweens.filter(t => t.dur < 4);
+  const short = tweens.filter(t => t.dur < 4 && t.start < windowEnd);
   const moving = t => short.some(tw => tw.start <= t && t < tw.start + tw.dur);
   const settleFrom = (t, step, lo, hi) => { while (moving(t) && t + step >= lo && t + step <= hi) t += step; return t; };
   const clamp = t => +Math.min(Math.max(t, 0), windowEnd - 0.05).toFixed(2);
