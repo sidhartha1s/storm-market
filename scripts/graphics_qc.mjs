@@ -52,7 +52,7 @@ function settleFrames(tweens, windowEnd) {
   /* an exit is a tween that hides (to opacity 0 / autoAlpha 0) or slides an element off-frame, after the opening */
   const exits = short.filter(t => t.hide && t.start >= openEnd);
   const exitStart = exits.length ? Math.min(...exits.map(t => t.start)) : windowEnd;
-  const first = clamp(settleFrom(opening.length ? Math.max(...opening.map(t => t.start + t.dur)) + 0.1 : 0.5, 0.1, 0, exitStart));
+  const first = clamp(settleFrom(opening.length ? openEnd + 0.1 : 0.5, 0.1, 0, exitStart));
   const pre = clamp(Math.max(first, settleFrom(exitStart - 0.25, -0.1, first, exitStart)));
   const mid = clamp(settleFrom((first + pre) / 2, 0.1, first, pre));
   return [
