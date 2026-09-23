@@ -31,7 +31,7 @@ channel:
   tempo_by_prefix:                 # per-lane override, matched against the episode slug's prefix
     sh-: 1.16                     # shorts — references/shorts/PLAN.md:47,55,174 (owner 16 Sep 26)
   cta:                            # MUST-KEEP in every episode (owner order 2026-08-30) — DESIGN.md "CTA contract"
-    file: assets/cta/paul-storm-ready-v5-sep6.mp4     # md5 541db438ad6e948e41286ee9fb6245fb (owner 2026-09-08 "newest paul CTA sep 6", 1440p source transcoded to 1080p30); v4c md5 34b6b40bdf772d75d4c7ebf11a0e2a80 retired — swap = NEW versioned file + bump here, never overwrite
+    file: assets/cta/paul-storm-ready-v5-sep6.mp4     # md5 541db438ad6e948e41286ee9fb6245fb (owner 2026-09-08 "newest paul CTA sep 6", 1440p source transcoded to 1080p30); swap = NEW versioned file + bump here, never overwrite; the old file leaves assets/cta/
     duration: 15.139
     transcript: assets/cta/paul-storm-ready-v5-sep6.txt
     exempt:                       # shipped BEFORE the contract (2026-08-30) — never extended; demo-* dirs skip by having no epN prefix

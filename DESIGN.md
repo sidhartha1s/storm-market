@@ -88,7 +88,7 @@ shipped; these are the standing requirements for every episode's cold open:
 ### CTA contract (must-keep, every episode from ep4 on)
 The ebook CTA (Paul on camera, 15.1s, QR + "first link in the description") is a fixed element of
 every episode from ep4 on. File, duration, window and labels live in `config.yaml channel.cta`
-(current: `assets/cta/paul-storm-ready-v4c.mp4`, README + transcript beside it) — never a
+(current file and README in `assets/cta/`) — never a
 per-episode copy of the rule, never a hand-edited path. Shape: **hook > story > CTA > close**.
 - **Window: the CTA starts inside 85–95% of total runtime** (owner 23 Sep 26: the 30–40% placement
   was not converting and annoyed viewers). Place it late, at a seam where it does not interrupt a reveal. `sweep_episode.py` fails outside the window (episodes shipped
@@ -109,11 +109,11 @@ per-episode copy of the rule, never a hand-edited path. Shape: **hook > story > 
   `channel.cta.first_link` as the FIRST URL (above socials) and carries the ep2-style line
   "📘 The book mentioned at mm:ss — Storm-Ready Home ... https://paulraymond.online".
 - **Never** skipped, shortened, moved to the outro, muted, or replaced by a text card. A re-cut of
-  the clip is a NEW versioned file + config bump (old file stays: shipped episodes reproduce).
+  the clip is a NEW versioned file + config bump; the old file leaves the tree in the same PR.
 - Wiring (staged episode-relative — `render.cmd` cds into the episode dir, no `../` srcs):
   copy the asset to `media/cta/<file>` (gitignored; sweep md5-checks it against `assets/cta/`), then
-  `<video id="ins-cta-paul" src="media/cta/paul-storm-ready-v4c.mp4" data-start="<T>"
-  data-duration="15.104" data-track-index="1" data-volume="1" data-srt-label="<channel.cta.srt_label>">`
+  `<video id="ins-cta-paul" src="media/cta/<channel.cta.file name>" data-start="<T>"
+  data-duration="<channel.cta.duration>" data-track-index="1" data-volume="1" data-srt-label="<channel.cta.srt_label>">`
   with a 1.0s blackout element before and after on the picture track.
 
 ### Broadcast-clip rehook cadence
