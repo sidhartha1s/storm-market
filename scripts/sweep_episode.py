@@ -352,5 +352,53 @@ long_still = [(w["at"], w["name"], w["dur"]) for w in t1
               if w["dur"] > 6.0 and not w["name"].endswith(".mp4")]
 report("no still over 6s", long_still, lambda x: f"{x[0]}s {Path(x[1]).name} {x[2]}s")
 
+# 10. narration freshness (CLAUDE.md: "words.json must be younger than its wav") — ep3-tristate
+# shipped 3 segments where a stale words.json (made from a longer take) ran past the real wav,
+# and the data-duration copied straight from it also outran the audio: a3-s7 48.6s vs a
+# 41.72s wav. mtime alone is not enough (a words.json made from a re-tempo'd wav that is STILL
+# too long stays newer than the wav and would pass an mtime-only gate) — the duration compare
+# below is the part that actually catches it.
+def _wav_duration(p):
+    try:
+        r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                            "-of", "csv=p=0", str(p)], capture_output=True, text=True, timeout=30)
+        return float((r.stdout or "").strip() or "nan")
+    except Exception:
+        return None
+
+stale = []
+for m in re.finditer(r'<audio\b[^>]*id="(nx-(?!ins)[^"]*)"[^>]*>', h):
+    a, eid = m.group(0), m.group(1)
+    src = re.search(r'src="([^"]+)"', a)
+    du = re.search(r'data-duration="([\d.]+)"', a)
+    if not (src and du):
+        continue
+    wav = ep / src.group(1)
+    if not wav.exists():
+        continue  # "media files exist" already flags this
+    words_p = wav.with_name(wav.stem + ".words.json")
+    wav_dur = _wav_duration(wav)
+    if wav_dur is None or wav_dur != wav_dur:  # nan = ffprobe failed
+        stale.append((eid, "wav duration unreadable (ffprobe failed)"))
+        continue
+    html_dur = float(du.group(1))
+    if abs(html_dur - wav_dur) > 0.1:
+        stale.append((eid, f"data-duration {html_dur}s vs wav {wav_dur:.2f}s (diff {html_dur - wav_dur:+.2f}s)"))
+    if words_p.exists():
+        if words_p.stat().st_mtime < wav.stat().st_mtime - 0.001:
+            stale.append((eid, f"{words_p.name} is older than its wav"))
+        try:
+            words = json.loads(words_p.read_text(encoding="utf-8"))
+            last_end = max((float(wd.get("end", 0.0)) for wd in words), default=0.0)
+            if last_end > wav_dur + 0.05:
+                stale.append((eid, f"last word ends at {last_end:.2f}s, wav is only {wav_dur:.2f}s ({words_p.name} is stale)"))
+        except Exception as e:
+            stale.append((eid, f"{words_p.name} unreadable: {e!r}"))
+    else:
+        stale.append((eid, f"{words_p.name} missing"))
+report("narration freshness (words.json + data-duration match the real wav)", stale,
+       lambda x: f"{x[0]}: {x[1]}")
+
 print()
 print("SWEEP", "FAIL" if fails else "PASS", "-", len(fails), "failing checks")
+sys.exit(1 if fails else 0)
