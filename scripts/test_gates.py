@@ -133,7 +133,7 @@ with tempfile.TemporaryDirectory() as d:
 with tempfile.TemporaryDirectory() as d:
     dead_comp = ('<template><div id="g"></div>'
                 '<script>tl.to("#g", {duration: 0.1}, 0.1);</script></template>')
-    ep_dead = make_ep(Path(d) / "dead", comp_html=dead_comp)
+    ep_dead = make_ep(Path(d) / "dead", comp_html=dead_comp, comp_window=6.0)
     code, out = run("beat_density.py", ep_dead)
     check("beat_density: exits 1 on a composition with a >=4s motionless stretch (was always 0)",
           code == 1, f"(exit {code})\n{out[-400:]}")
