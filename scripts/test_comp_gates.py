@@ -14,6 +14,17 @@ GOOD = '''<template><div class="x-chip" id="x-note"><span id="x-rule"></span><sp
 <script>tl.set("#x-text", { textContent: "hello" }, 1);
 tl.to("#x-text", { duration: 1, onUpdate: () => { document.getElementById("x-text").textContent = "1"; } }, 2);</script></template>'''
 HOST = '<html><head><style>.chip{left:110px;bottom:300px}</style></head><body></body></html>'
+# qc-gates-03: R1 selector built as `P+"x"`/`'#'+ID+...` (the house id-prefix idiom), and R2 text
+# written inside tl.call — directly and via a named function one level down (g-map-a3's pattern).
+BAD_CALL = '''<template><div class="chip" id="x-note"><span id="x-rule"></span></div><div id="x-sub">a</div>
+<script>const P = "#x-";
+tl.set(P+"note", { textContent: "hello" }, 1);
+function setFact(txt) { document.querySelector(P+"sub").textContent = txt; }
+tl.call(() => setFact("b"), null, 2);</script></template>'''
+GOOD_CALL = '''<template><div class="x-chip" id="x-note"><span id="x-rule"></span><span id="x-text"></span></div>
+<script>const P = "#x-";
+tl.set(P+"text", { textContent: "hello" }, 1);
+tl.to(P+"text", { duration: 1, onUpdate: () => { document.querySelector(P+"text").textContent = "1"; } }, 2);</script></template>'''
 
 
 def run(script, comp):
