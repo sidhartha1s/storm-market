@@ -38,8 +38,8 @@ Teardowns + NexLev data: `references/mini-storms/teardowns/README.md`, `referenc
 |---|---|---|
 | 1. Topic + packaging | 25 min | `packaging.md`: 3 titles, thumbnail text (top-of-frame, ≤4 words, BREAKING-style kicker), the 3–10 s hook sentence, intro outline, chapter list with the per-section word/time table |
 | 2. OWNER GATE | — | Owner picks title/hook in chat. The ONLY gate. Never infer approval. |
-| 3. Script | 25 min | `edit_script.md` (storm-episode segment format so `tts_episode.py` works unchanged) |
-| 4. TTS + words | 10 min | `python3 scripts/tts_episode.py episodes/ms-<slug>` |
+| 3. Script | 25 min | `edit_script.md` (storm-episode segment format so `tts_episode.py` works unchanged), then the humanise pass (3b) |
+| 4. TTS + words | 10 min | `python3 scripts/tts_episode.py episodes/ms-<slug>`: TTS, lane tempo, words.json in one pass |
 | 5. Sourcing | 35 min | `media/` + `provenance.csv`; pool reused from `library/mini-storms/<topic>/` first |
 | 6. Compose | 40 min | `index.html` from the breaking template set; red popfigs on every number/place/date, every overlay start resolved from `audio/*.words.json` cues (never estimated seconds; build fails on an unmatched cue) |
 | 7. Static QC | 15 min | sweep_episode, blank_scan, overlap_check, audio_levels, media_budget, 1 frame / 20 s eyeball via subagent |
