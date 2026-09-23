@@ -23,7 +23,8 @@ const SAFE = { w: 1920, h: 1080, pad: 24 };
  * header's own claim above was false in code until this line: measured at idleFrac > 0.45
  * or a single gap > 8s, below). */
 const HARD = new Set(['text-collision', 'out-of-frame', 'bad-crop', 'empty-container', 'fade-only',
-                      'flat-type', 'no-timeline', 'js-error', 'undesigned', 'idle-budget', 'short-duration']);
+                      'flat-type', 'no-timeline', 'js-error', 'undesigned', 'idle-budget', 'short-duration',
+                      'broken-image']);
 const DURS = {};
 const defects = [];
 const add = (comp, kind, msg) => defects.push({ comp, kind, msg, hard: HARD.has(kind) });
