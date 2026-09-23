@@ -87,16 +87,39 @@ def main():
     # NARRATION SEAMS (owner 17 Sep 26, Dujuan U1 review: "awkward gaps ... not intentional"). Voice
     # segments may be apart by at most the blackout length; the sanctioned holes are the CTA, a chapter
     # blackout, and a declared hold (<section class="clip hold" data-start data-duration>, DESIGN.md).
-    cta_starts = [float(x) for x in re.findall(r'<video\b[^>]*src="[^"]*cta/[^"]*"[^>]*data-start="([\d.]+)"', html)]
+    cta_wins = []
+    for cm in re.finditer(r'<video\b[^>]*src="[^"]*cta/[^"]*"[^>]*>', html):
+        a = cm.group(0)
+        cs, cd = re.search(r'data-start="([\d.]+)"', a), re.search(r'data-duration="([\d.]+)"', a)
+        if cs and cd:
+            cta_wins.append((float(cs.group(1)), float(cs.group(1)) + float(cd.group(1))))
+    cta_starts = [s for s, _ in cta_wins]
+    # sanctioned CTA gap is bounded by config.yaml channel.cta.dip_in/dip_out (config.yaml:40-41,
+    # DESIGN.md "CTA contract"), not open-ended — a 4s black-plus-silence stretch used to pass
+    # every gate as long as SOME CTA start fell in the window (docs-drift-cta-gap-unbounded).
+    _cfg = yaml.safe_load((Path(__file__).resolve().parent.parent / "config.yaml").read_text(encoding="utf-8"))
+    _cta_cfg = ((_cfg.get("channel") or {}).get("cta")) or {}
+    dip_in = float(_cta_cfg.get("dip_in", 0.8))
+    dip_out = float(_cta_cfg.get("dip_out", 0.8))
     voice = sorted((s, s + d) for s, d in ((float(a), float(b)) for a, b in
                    re.findall(r'<audio\b[^>]*id="nx-(?!ins)[^"]*"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"', html)))
     structure = [(float(a), float(a) + float(b)) for a, b in re.findall(
         r'<section\b[^>]*class="[^"]*\b(?:blackout|hold)\b[^"]*"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"', html)]
     for (s1, e1), (s2, e2) in zip(voice, voice[1:]):
         gap = s2 - e1
-        if gap > 0.8 and not any(e1 - 0.5 <= c <= s2 for c in cta_starts) \
-                and not any(bs < s2 and be > e1 for bs, be in structure):
-            findings.append(f"narration gap {gap:.1f}s at {e1:.1f}-{s2:.1f}s (max 0.8s outside the CTA)")
+        if gap <= 0.8:
+            continue
+        cta = next((w for w in cta_wins if e1 - 0.5 <= w[0] <= s2), None)
+        if cta:
+            cs2, ce2 = cta
+            if cs2 - e1 > dip_in + 0.1:
+                findings.append(f"CTA dip-in {cs2 - e1:.1f}s at {e1:.1f}-{cs2:.1f}s exceeds config dip_in {dip_in}s")
+            if s2 - ce2 > dip_out + 0.1:
+                findings.append(f"CTA dip-out {s2 - ce2:.1f}s at {ce2:.1f}-{s2:.1f}s exceeds config dip_out {dip_out}s")
+            continue
+        if any(bs < s2 and be > e1 for bs, be in structure):
+            continue
+        findings.append(f"narration gap {gap:.1f}s at {e1:.1f}-{s2:.1f}s (max 0.8s outside the CTA)")
 
     for src in re.findall(r'<script[^>]*src="([^"]+)"', html):
         if not src.startswith("http") and not (ep / src).exists():
