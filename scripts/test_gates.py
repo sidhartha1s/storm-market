@@ -309,6 +309,32 @@ with tempfile.TemporaryDirectory() as d:
     check("run_gates: exits non-zero when a gate fails", r.returncode == 1, f"(exit {r.returncode})")
     check("run_gates: names the failing gate", "lint_timeline.py" in r.stdout, r.stdout[-300:])
 
+# ===================================================================================
+# 9. sweep_episode.py's motion-gate _frame() helper: PID-scoped temp paths (no cross-process
+# collision) + any raised exception (locked file, timeout) reports loudly via probe_failed
+# instead of crashing the whole sweep silently mid-run. Isolated the same way
+# test_comp_gates.py isolates _gate_lines: exec the function body out of the real source so
+# the test can't drift from what actually ships.
+# ===================================================================================
+import re as _re
+_src = (S / "sweep_episode.py").read_text(encoding="utf-8")
+check("sweep_episode: _tmpa/_tmpb are PID-scoped (no shared filename across concurrent runs)",
+      "os.getpid()" in _src and '_sweep_ma_{os.getpid()}' in _src, "grep for os.getpid() in _tmpa/_tmpb")
+
+_frame_src = _re.search(r"def _frame\(p, t, out\):.*?\n\n", _src, flags=_re.S).group(0)
+_ns = {"subprocess": subprocess, "Path": Path, "probe_failed": []}
+exec(_frame_src, _ns)
+# a directory where a file path is expected makes Path(out).unlink() raise deterministically
+# (confirmed PermissionError on this box) -- simulates the locked-file-under-load scenario
+# without needing a real second process racing the same temp path.
+with tempfile.TemporaryDirectory() as d:
+    bogus_out_dir = Path(d) / "not_a_file"
+    bogus_out_dir.mkdir()
+    result = _ns["_frame"](Path(d) / "nonexistent-source.mp4", 0.4, str(bogus_out_dir))
+    check("sweep_episode: _frame() reports a raised exception via probe_failed instead of crashing",
+          result is False and len(_ns["probe_failed"]) == 1 and "frame extract raised" in _ns["probe_failed"][0][1],
+          f"result={result} probe_failed={_ns['probe_failed']}")
+
 print()
 if FAILS:
     print(f"test_gates: {len(FAILS)} FAILED: {FAILS}")
