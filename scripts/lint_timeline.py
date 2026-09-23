@@ -19,8 +19,11 @@ Exit 0 clean, 1 findings (loud).
 """
 import hashlib
 import re
+import subprocess
 import sys
 from pathlib import Path
+
+import yaml
 
 # owner-banned audio by content hash (a rename cannot dodge it): "<md5>  <name>  <why>" per line
 _banned = Path(__file__).resolve().parent.parent / "assets/sfx/BANNED.md5"
