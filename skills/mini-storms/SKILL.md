@@ -71,9 +71,8 @@ Total ≈ 3 h 05. If any step overruns 2×, ship what exists and list what was c
   the hook, pay it off in the last third.
 
 ### 3. Script (`edit_script.md`)
-- 8–12 min ⇒ **1,300–1,850 delivered words** at 150–160 wpm (measured niche pace is 160–200;
-  pocket-TTS Pharaoh lands ~129, so this lane applies `atempo 1.15–1.2`, documentary lane stays
-  native). TTS-safe text rules from repo CLAUDE.md "Voice". Mid-roll needs ≥8:00; author for 8:30+.
+- 8–12 min, sized with `scripts/word_budget.py` at the shipping tempo (repo CLAUDE.md "Voice"; the lane
+  tempo lives in `config.yaml channel.tempo`). TTS-safe text rules from the same section. Mid-roll needs ≥8:00; author for 8:30+.
 - Structure (owner 2026-09-08): **HOOK is 3–10 s**, one present-tense sentence that pays off the
   title (spoken + red popfig) → **INTRO to ~1:10** (base the point: stakes numbers, open loops,
   promise of the payoff/checklist) → **CHAPTERS** (8–12 × 45–75 s, one red-stat pop minimum each,
