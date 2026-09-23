@@ -38,7 +38,7 @@ tests = sorted(SCRIPTS.glob("test_*.py"))
 if not tests:
     bad.append("no scripts/test_*.py found")
 for t in tests:
-    code, out = run([sys.executable, str(t)])
+    code, out = run([sys.executable, str(t)], timeout=600)
     print(f"{'PASS' if code == 0 else 'FAIL'} {t.name} (exit {code})")
     if code != 0:
         bad.append(t.name)
