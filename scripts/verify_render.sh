@@ -57,9 +57,10 @@ HAS_AUDIO=$(ffprobe -v error -select_streams a -show_entries stream=codec_type -
 if ! python3 - "$COMP_W" "$COMP_H" "$COMP_DUR" "$COMP_FPS" "$HAS_AUDIO" "$PROBE" <<'PYEOF'
 import re, sys
 comp_w, comp_h, comp_dur, comp_fps, has_audio, probe = sys.argv[1:7]
+probe = probe.replace("\r\n", "\n")  # ffprobe is a native console app; bash keeps its \r
 def field(name):
     m = re.search(rf'^{name}=(.+)$', probe, re.MULTILINE)
-    return m.group(1) if m else None
+    return m.group(1).strip() if m else None
 dur, w, h, rfr = field("duration"), field("width"), field("height"), field("r_frame_rate")
 if comp_w == "0":
     print("SKIP: no composition truth to check dimensions/duration/fps against")
