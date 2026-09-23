@@ -74,7 +74,7 @@ for kind, eid, src, v, is_bed in els:
         continue
     rows.append((kind, eid, src, v, is_bed, mean, mean + 20 * math.log10(v)))
 
-narr = [eff for eid, _, _, _, eff in rows if eid.startswith("nx-") and eff is not None]
+narr = [eff for kind, eid, _, _, _, _, eff in rows if eid.startswith("nx-") and eff is not None]
 if not narr:
     print("[audio_levels] FAIL — no nx-* narration elements found")
     raise SystemExit(1)
@@ -82,7 +82,7 @@ ref = statistics.median(narr)
 print(f"[audio_levels] narration reference (median of {len(narr)} nx-*): {ref:.1f} dB")
 
 fails, warns = [], []
-for eid, src, v, mean, eff in rows:
+for kind, eid, src, v, is_bed, mean, eff in rows:
     if eff is None:
         fails.append(f"{eid}: no audio stream / unreadable ({src})")
         continue
@@ -93,16 +93,18 @@ for eid, src, v, mean, eff in rows:
     elif eid.startswith("ins-"):
         if abs(d) > 2.5:
             fails.append(f"{eid}: insert {d:+.1f} dB vs narration (fix the FILE gain, attr vol is {v})")
-    elif eid.startswith("sx-"):
-        if eid.startswith("sx-mus") and d < -30:
+    elif is_bed:
+        if d > -6.0:
+            fails.append(f"{eid}: bed {d:+.1f} dB vs narration — within 6 dB, competes with voice (DESIGN.md ducking)")
+        elif eid.startswith("sx-mus") and d < -30:
             fails.append(f"{eid}: music bed inaudible ({d:+.1f} dB vs narration)")
-        elif d > -3:
-            warns.append(f"{eid}: bed only {d:+.1f} dB under narration — competes with voice")
         elif d < -30:
             warns.append(f"{eid}: bed {d:+.1f} dB vs narration — near-inaudible, intended?")
-    else:  # audible video clip
+    elif kind == "video":  # audible video clip
         if d > 0:
             warns.append(f"{eid}: clip audio {d:+.1f} dB ABOVE narration")
+    else:
+        fails.append(f"{eid}: unclassified audio ({src}) — not nx-/ins- and no data-bed attribute")
 
 for w in warns:
     print(f"  warn  {w}")
