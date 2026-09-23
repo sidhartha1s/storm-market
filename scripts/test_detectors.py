@@ -222,4 +222,11 @@ frames = json.loads((ep / '.qc-tmp' / 'frame_times.json').read_text(encoding='ut
 got = [f['t'] for f in frames]
 assert got == [1.3, 4.78, 8.25], f'settle frames should be reveal-done 1.3, mid 4.78, pre-exit 8.25; got {frames}'
 shutil.rmtree(ep, ignore_errors=True)
+# same comp mounted in a 6 s host: the frames must stay inside what is on screen (ep-1974 g-plane:
+# 50 s timeline in a 28.9 s host put frame 3 on the NEXT graphic)
+ep = _stage_ep({**SETTLE_FILES, 'index.html': SETTLE_FILES['index.html'].replace('data-duration="10"', 'data-duration="6"')})
+subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
+frames = json.loads((ep / '.qc-tmp' / 'frame_times.json').read_text(encoding='utf-8'))['z']
+assert max(f['t'] for f in frames) <= 5.95, f'frames past the 6 s host window: {frames}'
+shutil.rmtree(ep, ignore_errors=True)
 print('graphics_qc self-check PASS (settle frames from the tween schedule, not a fixed 3 s grid)')
