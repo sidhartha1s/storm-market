@@ -175,7 +175,6 @@ for (const h of hosts) {
       const tl = (window.__timelines || {})[compId];
       if (tl && tl.seek) { tl.pause && tl.pause(); tl.seek(rel, false); }
       const out = [];
-      const groupOf = new Map();   // parentElement -> stable small int, for the dup-fact row grouping below
       for (const el of document.querySelectorAll('div,span,text,tspan')) {
         if (!el.textContent || !el.textContent.trim()) continue;
         if (!isLeaf(el) && el.tagName.toLowerCase() !== 'text') continue;
