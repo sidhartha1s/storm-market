@@ -101,6 +101,9 @@ Total ≈ 3 h 05. If any step overruns 2×, ship what exists and list what was c
   sources (USGS, NOAA, NHC, BNPB/BMKG, NWS, ReliefWeb) beat competitor videos.
 - Segment IDs `A1-S1…` with `> ` blockquote narration, exactly the storm-episode format.
 
+### 3b. Humanise pass (owner 2026-09-13)
+Before TTS, run `references/humanise-rules.md` rules 2–14 line by line on the whole script; keep the diff in the episode folder.
+
 ### 5. Sourcing (generous, multi-source, credited)
 Priority order, per clip:
 1. Pool reuse: `library/mini-storms/<topic>/` (provenance.csv rows travel with the file).
