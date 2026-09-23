@@ -91,17 +91,18 @@ const ovInfo = await page.evaluate(({ ids, leafSrc }) => {
     if (!el) continue;
     el.style.visibility = 'visible'; el.style.opacity = '1'; el.style.display = 'block';
     for (const c of el.querySelectorAll('*')) { c.style.visibility = 'visible'; c.style.opacity = '1'; c.style.transform = 'none'; }
-    let u = null; const bad = [];
+    let u = null; const bad = []; const texts = [];
     for (const c of el.querySelectorAll('div,span')) {
       if (!c.textContent.trim() || !isLeaf(c)) continue;
       const cr = c.getBoundingClientRect();
       if (cr.width < 2 || cr.height < 2) continue;
+      texts.push(c.textContent.trim());
       if (cr.left < 0 || cr.right > 1920 || c.scrollWidth > c.clientWidth + 2)
         bad.push(`"${c.textContent.trim().slice(0, 40)}" x${Math.round(cr.left)}..${Math.round(cr.right)} scroll ${c.scrollWidth}/${c.clientWidth}`);
       u = u ? { left: Math.min(u.left, cr.left), top: Math.min(u.top, cr.top), right: Math.max(u.right, cr.right), bottom: Math.max(u.bottom, cr.bottom) }
             : { left: cr.left, top: cr.top, right: cr.right, bottom: cr.bottom };
     }
-    if (u) out[id] = { zone: u, bad };
+    if (u) out[id] = { zone: u, bad, texts };
   }
   return out;
 }, { ids: overlays.map(o => o.id), leafSrc: LEAF_FN });
