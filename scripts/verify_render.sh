@@ -46,14 +46,17 @@ fi
 echo
 echo "=== artifact vs composition (duration/fps/resolution/audio must match — a truncated, ==="
 echo "=== downgraded or muted render used to exit 0 here) ==="
-ffprobe -v error -show_entries format=duration,size,bit_rate \
+PROBE=$(ffprobe -v error -show_entries format=duration,size,bit_rate \
         -show_entries stream=codec_name,codec_type,width,height,r_frame_rate,nb_frames \
-        -of default=noprint_wrappers=1 "$MP4" | tee /tmp/_probe.txt
+        -of default=noprint_wrappers=1 "$MP4")
+echo "$PROBE"
 HAS_AUDIO=$(ffprobe -v error -select_streams a -show_entries stream=codec_type -of csv=p=0 "$MP4")
-if ! python3 - "$COMP_W" "$COMP_H" "$COMP_DUR" "$COMP_FPS" "$HAS_AUDIO" <<'PYEOF'
+# Passed as an argv string, never a /tmp file: this python runs as a native Windows exe (no
+# MSYS path translation for text read from a heredoc), so a bash-side /tmp/... path that
+# ffmpeg/grep resolve fine is simply not there when a plain open() asks for it.
+if ! python3 - "$COMP_W" "$COMP_H" "$COMP_DUR" "$COMP_FPS" "$HAS_AUDIO" "$PROBE" <<'PYEOF'
 import re, sys
-comp_w, comp_h, comp_dur, comp_fps, has_audio = sys.argv[1:6]
-probe = open("/tmp/_probe.txt", encoding="utf-8", errors="replace").read()
+comp_w, comp_h, comp_dur, comp_fps, has_audio, probe = sys.argv[1:7]
 def field(name):
     m = re.search(rf'^{name}=(.+)$', probe, re.MULTILINE)
     return m.group(1) if m else None
