@@ -2,22 +2,59 @@
 """Per-segment word timestamps via faster-whisper (offline, small.en cached).
 Run with JP-market .venv python. Usage: python transcribe_episode.py episodes/<slug>
 Outputs audio/<id>.words.json: [{"text","start","end"}, ...] per segment.
+
+tts_episode.py now does this transcription step itself as part of its TTS -> atempo ->
+transcribe pipeline, so a fresh run never needs this script. It stays for existing callers
+that invoke it standalone (e.g. after a hand-replaced wav). A words.json is regenerated
+whenever it looks stale for that wav: missing, older by mtime, OR — the case mtime alone
+misses, measured on ep3-tristate where words.json was NEWER than the wav it no longer
+matched — its last word ends past the wav's actual duration.
 """
 import json
 import sys
 from pathlib import Path
 
-ep = Path(sys.argv[1])
-from faster_whisper import WhisperModel  # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from tts_episode import ffprobe_duration, load_whisper_model, transcribe_wav  # noqa: E402
 
-model = WhisperModel("small.en", device="cpu", compute_type="int8")
-for wav in sorted((ep / "audio").glob("*.wav")):
-    out = wav.with_suffix(".words.json")
-    if out.exists():
-        continue
-    segments, _ = model.transcribe(str(wav), word_timestamps=True, language="en")
-    words = [{"text": w.word.strip(), "start": round(w.start, 3), "end": round(w.end, 3)}
-             for s in segments for w in (s.words or [])]
-    out.write_text(json.dumps(words), encoding="utf-8")
-    print(f"{wav.stem}: {len(words)} words, last end {words[-1]['end'] if words else 0}s", flush=True)
-print("DONE")
+
+def words_are_stale(wav: Path, words_json: Path) -> bool:
+    if not words_json.exists():
+        return True
+    if words_json.stat().st_mtime < wav.stat().st_mtime:
+        return True
+    try:
+        words = json.loads(words_json.read_text(encoding="utf-8"))
+        if isinstance(words, dict):
+            words = words.get("words", [])
+        last_end = words[-1]["end"] if words else 0.0
+    except (json.JSONDecodeError, KeyError, IndexError):
+        return True
+    dur = ffprobe_duration(wav)
+    if dur is not None and last_end > dur + 0.5:
+        return True
+    return False
+
+
+def main():
+    ep = Path(sys.argv[1])
+    model = None
+    any_wav = False
+    for wav in sorted((ep / "audio").glob("*.wav")):
+        any_wav = True
+        out = wav.with_suffix(".words.json")
+        if not words_are_stale(wav, out):
+            continue
+        if model is None:
+            model = load_whisper_model()
+        words = transcribe_wav(model, wav)
+        out.write_text(json.dumps(words), encoding="utf-8")
+        print(f"{wav.stem}: {len(words)} words, last end {words[-1]['end'] if words else 0}s",
+              flush=True)
+    if not any_wav:
+        sys.exit(f"[transcribe_episode] no wavs found under {ep}/audio")
+    print("DONE")
+
+
+if __name__ == "__main__":
+    main()
