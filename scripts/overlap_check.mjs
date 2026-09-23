@@ -38,11 +38,13 @@ const hosts = els.filter(e => e.compSrc);
 const overlays = els.filter(e => !e.compSrc && e.track !== '3' && !/^(bo-|nx-|sx-|clip-|v-)/.test(e.id));   // every index.html overlay that is not a card/comp/blackout/audio/video (kanto-pin labels were excluded by the old ^p- filter, 17 Sep 26)
 const overlapT = (a, b) => Math.min(a.start + a.dur, b.start + b.dur) - Math.max(a.start, b.start);
 
-// fact normalization: uppercase alnum; only strings that read as a "fact" (has a digit, or >=6 chars)
+// fact normalization: uppercase alnum; only strings that read as a "fact" per the header above
+// (dates, percentages, numbers) count — a digit is required. A bare place-name label ("TANNER ·
+// AL") is not itself a fact and legitimately repeats when the same town is hit twice; requiring
+// a digit means an identical REPEATED row still fails on its own time/number (PR #88 review).
 const normFact = (s) => {
   const n = s.toUpperCase().replace(/[^A-Z0-9%]/g, ' ').replace(/\s+/g, ' ').trim();
-  if (n.length < 3) return null;
-  if (!/\d/.test(n) && n.length < 6) return null;
+  if (n.length < 3 || !/\d/.test(n)) return null;
   return n;
 };
 
