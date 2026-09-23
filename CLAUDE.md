@@ -128,8 +128,15 @@ Per episode in `episodes/<slug>/`. The skill's phase map points at these step nu
 ## Verifying graphics: read the code, do not photograph it
 - Anything the code states is verified by reading the code: duration, tween presence and coverage, position, size,
   colour, type tiers, text. The gates assert these in the DOM. HTML cannot have garbled text.
-- A frame confirms, it never discovers. Take frames only for what code cannot state: how a NEW composition looks as a
-  whole, and real footage. 4 to 6 frames, once, read by a subagent, never into the main context, never an episode-wide sweep.
+- A frame confirms, it never discovers. Take frames only for what code cannot state: how a NEW or changed composition
+  looks as a whole, and real footage. One vision pass per composition, three settle frames picked from its tween
+  schedule (reveal done, mid-hold, pre-exit), never a fixed-interval sweep:
+  `node scripts/graphics_qc.mjs episodes/<slug>` then `python3 scripts/comp_sheets.py episodes/<slug> renders/<cut>.mp4 <comp>[,<comp>]`
+  (writes `sheets/frame-qc/index.html` with each frame's timestamp and why it was picked). One subagent reads them, never the main context.
+- The reader FAILS a frame only for: garbled or cut-off text, an element out of frame or hidden behind another, a
+  picture that contradicts the narration, or nothing moving where motion is due. It ignores position shifts under
+  8 px, timing under 0.2 s and taste calls; those are notes for the owner, not fixes.
+- At most two fix rounds per composition. After the second, ship and list what is left for the owner.
 - Never build a measuring rig for a property the code or an existing gate already answers.
 - A hole in a gate gets fixed in the gate, not worked around with a render.
 
