@@ -214,6 +214,7 @@ for (const f of files) {
   if (hostDur != null && probe.duration < hostDur - 0.05)
     add(name, 'short-duration', `timeline ${probe.duration.toFixed(2)}s ends before its host window ${hostDur.toFixed(2)}s — ${(hostDur - probe.duration).toFixed(2)}s frozen tail before the cut (DESIGN.md §5)`);
   const windowEnd = Math.max(probe.duration, hostDur || 0);
+  FRAMES[name] = settleFrames(probe.tweens, windowEnd);
 
   /* --- motion vocabulary --- */
   const kinetic = probe.tweens.filter(t => t.props.some(p => ['scale','scaleX','scaleY','x','y','rotation','width','strokeDashoffset','attr'].includes(p)));
