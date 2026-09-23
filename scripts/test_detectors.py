@@ -127,6 +127,46 @@ assert r_old.returncode == 0 and 'dup-fact' not in r_old.stdout, \
 shutil.rmtree(ep, ignore_errors=True)
 print('overlap_check self-check PASS (suppressEvents seek, same-comp + overlay dup-fact)')
 
+# PR #88 review: g-scale-hook's TOWNS[] lists "TANNER · AL" twice (Tanner was hit by two
+# separate F5s, distinct times) — a bare repeated place-name label is not a duplicate FACT.
+# Same town + different time must PASS; an identical row (same town AND same time) must FAIL,
+# because its own time — a digit-bearing string — then collides with itself.
+def _bar_comp(comp_id, town_a, time_a, town_b, time_b):
+    return (
+        '<!doctype html><html><head><meta charset="UTF-8"></head><body><template>\n'
+        f'<div id="root" style="position:absolute;inset:0">\n'
+        f'  <div class="bar" style="position:absolute;left:100px;top:100px">\n'
+        f'    <div class="town" style="font-size:20px;color:#fff">{town_a}</div>\n'
+        f'    <div class="time" style="font-size:20px;color:#9ab">{time_a}</div>\n'
+        f'  </div>\n'
+        f'  <div class="bar" style="position:absolute;left:1400px;top:900px">\n'
+        f'    <div class="town" style="font-size:20px;color:#fff">{town_b}</div>\n'
+        f'    <div class="time" style="font-size:20px;color:#9ab">{time_b}</div>\n'
+        f'  </div>\n'
+        '</div>\n<script>\nwindow.__timelines = window.__timelines || {};\n'
+        'const tl = gsap.timeline({ paused: true });\n'
+        f"tl.to('#root', {{ duration: 3, opacity: 1 }}, 0);\nwindow.__timelines['{comp_id}'] = tl;\n</script>\n"
+        '</template></body></html>\n'
+    )
+
+
+ROWS_FILES = {
+    'index.html':
+        '<div id="host-rows-ok" data-composition-id="rows-ok" data-composition-src="compositions/rows-ok.html" '
+        'data-start="0" data-duration="3" data-track-index="2" data-width="1920" data-height="1080"></div>\n'
+        '<div id="host-rows-bad" data-composition-id="rows-bad" data-composition-src="compositions/rows-bad.html" '
+        'data-start="10" data-duration="3" data-track-index="2" data-width="1920" data-height="1080"></div>\n',
+    'compositions/rows-ok.html': _bar_comp('rows-ok', 'TANNER · AL', '6:20 PM CDT', 'TANNER · AL', '7:30 PM CDT'),
+    'compositions/rows-bad.html': _bar_comp('rows-bad', 'TANNER · AL', '6:20 PM CDT', 'TANNER · AL', '6:20 PM CDT'),
+}
+ep = _stage_ep(ROWS_FILES)
+r = subprocess.run(['node', str(S / 'overlap_check.mjs'), str(ep)], capture_output=True, text=True)
+assert 'rows-ok' not in r.stdout or 'TANNER' not in r.stdout.split('rows-bad')[0], \
+    f'same town, different time must not dup-fact: {r.stdout}'
+assert 'dup-fact' in r.stdout and '6:20 PM' in r.stdout.upper().replace('CDT', 'CDT'), r.stdout
+shutil.rmtree(ep, ignore_errors=True)
+print('overlap_check self-check PASS (repeated place label vs. genuinely repeated row)')
+
 # ---------------------------------------------------------------- graphics_qc.mjs
 # qc-gates-07 (idle-budget HARD) + assets-comps-05 (host duration vs tl duration): a 3s timeline
 # mounted in a 6s host window — frozen tail undetected and idle-budget only a warning before.
