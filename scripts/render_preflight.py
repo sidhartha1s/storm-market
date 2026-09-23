@@ -26,11 +26,8 @@ import subprocess
 import sys
 from pathlib import Path
 
-# a render itself needs: 3 workers + a capture Chromium + ffmpeg. Anything beyond a
-# couple of idle helper processes is competition.
-MAX_HEAVY = 2
-HEAVY_MB = 120
-WATCH = ("chrome.exe", "msedge.exe", "ffmpeg.exe", "ffprobe.exe")
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import render_busy  # noqa: E402 — the busy check below reuses this, not a second process list
 
 
 # --- version helpers (shared: pin_ritual.py imports these) ---------------------
