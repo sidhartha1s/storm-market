@@ -28,6 +28,35 @@ for tag in re.findall(r'<[a-z]+\b[^>]*\bdata-composition-src="compositions/[^"]+
     if start and dur:
         hosts.setdefault(name, []).append((float(start.group(1)), float(dur.group(1))))
 
+# Picture layers that hide a mounted comp: clips, stills, blackouts and other comps on a higher track
+# (ep-1974 g-map-a4: a 5 s aerial-photo cutaway on track 3 over the track-2 map). Holds are empty markers.
+layers = []
+for tag in re.findall(r'<[a-z]+\b[^>]*\bdata-track-index="\d+"[^>]*>', index):
+    cls = (re.search(r'\bclass="([^"]*)"', tag) or [None, ''])[1]
+    if not ('clip' in cls.split() and 'hold' not in cls.split()) and 'data-composition-src' not in tag:
+        continue
+    s, d = re.search(r'\bdata-start="([\d.]+)"', tag), re.search(r'\bdata-duration="([\d.]+)"', tag)
+    if s and d:
+        layers.append((int(re.search(r'data-track-index="(\d+)"', tag).group(1)), float(s.group(1)), float(s.group(1)) + float(d.group(1))))
+track_of = {}
+for tag in re.findall(r'<[a-z]+\b[^>]*\bdata-composition-src="compositions/[^"]+\.html"[^>]*>', index):
+    tr = re.search(r'data-track-index="(\d+)"', tag)
+    track_of[(re.search(r'compositions/([^"]+)\.html', tag).group(1), float(re.search(r'data-start="([\d.]+)"', tag).group(1)))] = int(tr.group(1)) if tr else 0
+
+
+def covered(at, track):
+    return any(t > track and s <= at < e for t, s, e in layers)
+
+
+def visible_time(t, start, dur, track):
+    """Nearest comp-local time to t (backward first, then forward) that no higher layer covers."""
+    for k in range(int(dur * 10) + 1):
+        for c in (t - k / 10, t + k / 10):
+            if 0 <= c <= dur - 0.05 and not covered(start + c, track):
+                return c
+    return None
+
+
 out = ep / 'sheets' / 'frame-qc'; out.mkdir(parents=True, exist_ok=True)
 cards, missing = [], [c for c in want if c not in times or c not in hosts]
 if missing:
