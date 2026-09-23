@@ -46,21 +46,33 @@ if a.overhead_s is None:
     else:
         a.overhead_s = 60.0
 
-# 3. script count — the SAME text that gets voiced, via tts_episode.parse_segments (the
-#    '## SCRIPT' file-slice heuristic counted sources/visual notes/tables on every
-#    non-ep-1974 script, inflating the count 1.5x-4.7x; measured: br-elnino-california 2408
-#    vs 1441 spoken words, ep6-katrina 12048 vs 4074, ms-krakatoa-1883 2284 vs 1340).
+# 3. script count — the SAME text that gets voiced. Two supported formats: the blockquote
+#    layout (ms-*/br-*/sh-*/ep1-ep8/demo-joplin-90), counted via tts_episode.parse_segments
+#    (the '## SCRIPT' file-slice heuristic counted sources/visual notes/tables on every one
+#    of these, inflating the count 1.5x-4.7x; measured: br-elnino-california 2408 vs 1441
+#    spoken words, ep6-katrina 12048 vs 4074, ms-krakatoa-1883 2284 vs 1340); and
+#    ep-1974-super-outbreak's inline-bold '## SCRIPT' prose layout (no blockquotes at all —
+#    parse_segments always returns 0 for it), counted with the original tag-stripping rules,
+#    scoped to just the '## SCRIPT' section. Anything that is neither hard-fails.
 s = (ep / a.script).read_text(encoding="utf-8")
 try:
     segs = parse_segments(s)
 except SegmentParseError as e:
     sys.exit(f"[word_budget] FAIL parsing {a.script}: {e}")
-if not segs:
-    sys.exit(f"[word_budget] FAIL — 0 narration segments parsed from {a.script}. Either the "
-             f"script has no narration yet, or it's in a format this gate can't count (e.g. "
-             f"ep-1974-super-outbreak's inline-bold '## SCRIPT' prose layout has no "
-             f"blockquotes at all — not supported here).")
-count = sum(len(re.findall(r"[A-Za-z0-9']+", text)) for _, text in segs)
+if segs:
+    count = sum(len(re.findall(r"[A-Za-z0-9']+", text)) for _, text in segs)
+elif "## SCRIPT" in s:
+    body = s.split("## SCRIPT", 1)[1]
+    body = body.split("## Fact register", 1)[0]
+    body = re.sub(r"\*\*[A-Z]\d?-S\d[^*]*\*\*", "", body)
+    body = re.sub(r"\*\([^)]*\)\*", "", body)
+    body = re.sub(r"\[[^\]]*\]", "", body)
+    body = re.sub(r"^#+ .*$", "", body, flags=re.M)
+    count = len(re.findall(r"[A-Za-z0-9']+", body))
+else:
+    sys.exit(f"[word_budget] FAIL — 0 narration segments parsed from {a.script}, and no "
+             f"'## SCRIPT' section to fall back to (script has no narration yet, or is in a "
+             f"format this gate can't count).")
 
 budget = (a.target * 60 - a.overhead_s) * pace / 60
 runtime = count / pace + a.overhead_s / 60
