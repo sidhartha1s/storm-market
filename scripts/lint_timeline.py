@@ -64,6 +64,20 @@ def main():
         if kind == "audio" and "data-bed" not in attrs:  # music bed may span everything
             audio_windows.append((s, s + (d if d is not None else comp_dur - s),
                                   src.group(1) if src else "?"))
+        # narration window must be at least as long as its wav (FORMAT.md:59, day-1 bug 15 Sep
+        # 26: a retime moved narration starts and kept the old data-duration, cutting the last
+        # words of six segments — the render shipped clean-looking and silently truncated).
+        if kind == "audio" and src and re.search(r'\sid="nx-', attrs) and d is not None and (ep / src.group(1)).exists():
+            wav_d = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                                          "-of", "csv=p=0", str(ep / src.group(1))],
+                                         capture_output=True, text=True).stdout.strip() or 0)
+            if wav_d > d + 0.05:
+                findings.append(f"narration window shorter than its wav: {src.group(1)} window {d}s, wav {wav_d:.2f}s (last words cut)")
+        # b-roll is muted by default; a clip with its own sound declares data-has-audio
+        # (FORMAT.md:57, owner 15 Sep 26: a stranded-passenger interview played under Paul and
+        # a quote card with neither muted nor data-has-audio set).
+        if kind == "video" and 'data-track-index="1"' in attrs and "muted" not in attrs and "data-has-audio" not in attrs:
+            findings.append(f"unmuted b-roll without data-has-audio: {src.group(1) if src else '?'}")
 
     audio_windows.sort()
     for (s1, e1, f1), (s2, e2, f2) in zip(audio_windows, audio_windows[1:]):
