@@ -31,18 +31,17 @@ Written this round: **H, I, A1.** The rest follows your edits.
 ## H · Hook (0:00)
 **Picture:** night wedge lit by lightning, then a stamp: "EF3", struck through, "EF5" lands in red.
 
-For twelve years, not one tornado in America was rated EF5, the top of the scale. Then, on a Friday night in June
-2025, a tornado crossed the farms outside Enderlin, North Dakota, and killed three people. The weather service rated
-it EF3. Four months later, they changed it to EF5. What changed their minds says the twelve years before it may
-have been rated wrong too.
+For twelve years, no American tornado was rated EF5, the top of the scale. Then, on a June night in 2025, one
+crossed the farms outside Enderlin, North Dakota, and killed three people. The weather service called it EF3.
+Four months later, they changed it to EF5. What changed their minds says the last twelve years may be wrong too.
 
 *(1.5 s void)*
 
 ## I · The night (0:25)
 **Picture:** master map, track draws east from four miles south of town · popfig "JUNE 20, 2025 · 11:02 PM".
 
-It came down a little after eleven at night, about four miles south of Enderlin, a town of a few hundred people in
-the southeast corner of the state. For nineteen minutes it moved east across open farmland, and at its widest it
+It came down a little after eleven at night, about four miles south of Enderlin, a small town in the southeast
+corner of the state. For nineteen minutes it moved east across open farmland, and at its widest it
 was more than a mile across.
 
 One mile east of town, on Highway 46, it hit the home of Michael and Katherine Dehn. They were both seventy three,
@@ -77,19 +76,19 @@ but only if it was built to hold. If a house is swept off its foundation, survey
 Bolted to the concrete, a clean slab can mean EF5. Held on by a few nails, the same empty slab only proves a
 strong EF3 or low EF4. `[verify: EF scale FR12 degree-of-damage adjustment for poor anchoring]`
 
-Now look at what the Enderlin tornado had to work with. Farmsteads, many of them older, spread far apart. Shelter
-belts of trees. Grain bins, power towers, a river bank. No town in its path, no school, no neighborhood of modern
+Now look at what the Enderlin tornado had to work with. Farmsteads spread far apart. Shelter belts of
+trees. Power towers, a river bank. No town in its path, no school, no neighborhood of modern
 homes. It stripped the trees along the Maple River down to bare wood, and the survey could only count them as trees.
 It swept farmhouses clean, and the survey had to ask how they had been fastened down.
 
 So the surveyors wrote down what the damage could prove, and the damage could prove about a hundred and sixty miles
 an hour. EF3. That was an honest number, and it was also a ceiling rather than a measurement.
 
-But one piece of the damage did not fit the list. South of town, the tornado had crossed a rail line, and a freight
-train was sitting on it. Carl Jones, a meteorologist at the Grand Forks office, said later: "This particular set of
+But one piece of the damage did not fit the list. South of town, the tornado had crossed a rail line, and a line of
+freight cars was standing on it. `[verify: cars parked, not a moving train]` Carl Jones, a meteorologist at the Grand Forks office, said later: "This particular set of
 damage that we saw kind of stood out as unique. We wanted to investigate further."
 
-The scale had no entry for a train. And that same ceiling, the one that capped Enderlin at EF3, is the reason
-America had gone twelve years without an EF5 at all.
+The scale had no entry for a train. And that same ceiling, the one that capped Enderlin at EF3, is, according to a
+federal study, the likely reason America had gone twelve years without an EF5 at all.
 
 *(blackout 0.8 s)*
