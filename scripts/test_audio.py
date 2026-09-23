@@ -120,8 +120,8 @@ def install_mocks():
     calls["transcribe"].clear()
 
 
-def make_episode(tmp, script_text, voice_ref):
-    ep = tmp / "ep"
+def make_episode(tmp, script_text, voice_ref, name="ep"):
+    ep = tmp / name
     ep.mkdir()
     (ep / "edit_script.md").write_text(script_text, encoding="utf-8")
 
