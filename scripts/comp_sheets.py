@@ -70,7 +70,7 @@ for comp in want:
             if f['t'] > dur - 0.05:
                 f = {'t': dur - 0.05, 'why': f['why'] + f' (clamped to this {dur:.2f}s mount)'}
             track = track_of.get((comp, start), 0)
-            if covered(start + f['t'], track):
+            if covered(start + f['t'], track, start, dur):
                 v = visible_time(f['t'], start, dur, track)
                 if v is None:
                     print(f'{comp} @ {start:.2f}s: covered by higher layers for its whole window, no frame taken')
