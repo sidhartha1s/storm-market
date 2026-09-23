@@ -150,21 +150,23 @@ def _bar_comp(comp_id, town_a, time_a, town_b, time_b):
     )
 
 
-ROWS_FILES = {
-    'index.html':
-        '<div id="host-rows-ok" data-composition-id="rows-ok" data-composition-src="compositions/rows-ok.html" '
-        'data-start="0" data-duration="3" data-track-index="2" data-width="1920" data-height="1080"></div>\n'
-        '<div id="host-rows-bad" data-composition-id="rows-bad" data-composition-src="compositions/rows-bad.html" '
-        'data-start="10" data-duration="3" data-track-index="2" data-width="1920" data-height="1080"></div>\n',
-    'compositions/rows-ok.html': _bar_comp('rows-ok', 'TANNER · AL', '6:20 PM CDT', 'TANNER · AL', '7:30 PM CDT'),
-    'compositions/rows-bad.html': _bar_comp('rows-bad', 'TANNER · AL', '6:20 PM CDT', 'TANNER · AL', '6:20 PM CDT'),
-}
-ep = _stage_ep(ROWS_FILES)
-r = subprocess.run(['node', str(S / 'overlap_check.mjs'), str(ep)], capture_output=True, text=True)
-assert 'rows-ok' not in r.stdout or 'TANNER' not in r.stdout.split('rows-bad')[0], \
-    f'same town, different time must not dup-fact: {r.stdout}'
-assert 'dup-fact' in r.stdout and '6:20 PM' in r.stdout.upper().replace('CDT', 'CDT'), r.stdout
-shutil.rmtree(ep, ignore_errors=True)
+def _rows_check(town_a, time_a, town_b, time_b):
+    files = {
+        'index.html':
+            '<div id="host-rows" data-composition-id="rows" data-composition-src="compositions/rows.html" '
+            'data-start="0" data-duration="3" data-track-index="2" data-width="1920" data-height="1080"></div>\n',
+        'compositions/rows.html': _bar_comp('rows', town_a, time_a, town_b, time_b),
+    }
+    d = _stage_ep(files)
+    r = subprocess.run(['node', str(S / 'overlap_check.mjs'), str(d)], capture_output=True, text=True)
+    shutil.rmtree(d, ignore_errors=True)
+    return r.returncode, r.stdout
+
+
+code, out = _rows_check('TANNER · AL', '6:20 PM CDT', 'TANNER · AL', '7:30 PM CDT')
+assert code == 0 and 'dup-fact' not in out, f'same town, different time must not dup-fact: {out}'
+code, out = _rows_check('TANNER · AL', '6:20 PM CDT', 'TANNER · AL', '6:20 PM CDT')
+assert code == 1 and 'dup-fact' in out, f'an identical repeated row must still dup-fact: {out}'
 print('overlap_check self-check PASS (repeated place label vs. genuinely repeated row)')
 
 # ---------------------------------------------------------------- graphics_qc.mjs
