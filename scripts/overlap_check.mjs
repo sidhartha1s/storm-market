@@ -175,6 +175,7 @@ for (const h of hosts) {
       const tl = (window.__timelines || {})[compId];
       if (tl && tl.seek) { tl.pause && tl.pause(); tl.seek(rel, false); }
       const out = [];
+      const groupOf = new Map();   // parentElement -> stable small int, for the dup-fact row grouping below
       for (const el of document.querySelectorAll('div,span,text,tspan')) {
         if (!el.textContent || !el.textContent.trim()) continue;
         if (!isLeaf(el) && el.tagName.toLowerCase() !== 'text') continue;
@@ -190,7 +191,8 @@ for (const h of hosts) {
         if (r.right < 0 || r.bottom < 0 || r.left > 1920 || r.top > 1080) continue;
         let ok = null, p = el;
         while (p && p !== document.body) { if (p.dataset && p.dataset.overlapOk) { ok = p.dataset.overlapOk; break; } p = p.parentElement; }
-        out.push({ text: el.textContent.trim().slice(0, 60), ok,
+        if (!groupOf.has(el.parentElement)) groupOf.set(el.parentElement, groupOf.size);
+        out.push({ text: el.textContent.trim().slice(0, 60), ok, group: groupOf.get(el.parentElement),
                    box: { left: r.left, top: r.top, right: r.right, bottom: r.bottom } });
       }
       return out;
