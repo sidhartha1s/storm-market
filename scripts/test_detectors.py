@@ -65,3 +65,91 @@ with tempfile.TemporaryDirectory() as d:
         f'old code should have missed this (dashed id + non-standard archival dir) but got: {r.stdout}'
 OLD_NPC.unlink()
 print('narration_picture_check self-check PASS (dashed ids, provenance-era archival, missed-segment gate)')
+
+GSAP = (S / '..' / 'library' / 'gallery' / 'gsap.min.js').resolve()
+
+
+def _stage_ep(files):
+    d = tempfile.mkdtemp()
+    ep = Path(d)
+    _mk(ep, files)
+    shutil.copy(GSAP, ep / 'gsap.min.js')
+    return ep
+
+
+def old_rev(rel_path, tmp_name):
+    out = S / tmp_name
+    out.write_text(subprocess.run(['git', 'show', f'ad3c9871:scripts/{rel_path}'],
+                                   cwd=S.parent, capture_output=True, text=True).stdout, encoding='utf-8')
+    return out
+
+
+# ---------------------------------------------------------------- overlap_check.mjs
+# qc-gates-04 (seek suppressEvents) + qc-gates-05 (dup-fact: same-comp AND overlay texts):
+# a tl.call sets '#x-fact' text; old seek(rel) with no suppressEvents=false arg never fires it,
+# so it reads empty and never collides with the overlay's identical text. A second comp shows
+# the same fact twice on two distinct static spans — old addFact only compared cross-source 'who'.
+OV_FILES = {
+    'index.html':
+        '<div id="host-x-fact" data-composition-id="x-fact" data-composition-src="compositions/x-fact.html" '
+        'data-start="0" data-duration="3" data-track-index="2" data-width="1920" data-height="1080"></div>\n'
+        '<div id="host-x-dup" data-composition-id="x-dup" data-composition-src="compositions/x-dup.html" '
+        'data-start="10" data-duration="3" data-track-index="2" data-width="1920" data-height="1080"></div>\n'
+        '<div id="ov-fact" data-start="0" data-duration="3" data-track-index="0" '
+        'style="position:absolute;left:900px;top:100px;font-size:30px;color:red"><span>80 PERCENT</span></div>\n',
+    'compositions/x-fact.html':
+        '<!doctype html><html><head><meta charset="UTF-8"></head><body><template>\n'
+        '<div id="root" style="position:absolute;inset:0">\n'
+        '  <span id="x-fact" style="position:absolute;left:100px;top:100px;font-size:40px;color:#fff"></span>\n'
+        '</div>\n<script>\nwindow.__timelines = window.__timelines || {};\n'
+        'const tl = gsap.timeline({ paused: true });\n'
+        "tl.call(() => { document.getElementById('x-fact').textContent = '80 PERCENT'; }, null, 0.2);\n"
+        "tl.to('#root', { duration: 3, opacity: 1 }, 0);\nwindow.__timelines['x-fact'] = tl;\n</script>\n"
+        '</template></body></html>\n',
+    'compositions/x-dup.html':
+        '<!doctype html><html><head><meta charset="UTF-8"></head><body><template>\n'
+        '<div id="root" style="position:absolute;inset:0">\n'
+        '  <span id="x-dup-a" style="position:absolute;left:100px;top:100px;font-size:40px;color:#fff">42 MILES</span>\n'
+        '  <span id="x-dup-b" style="position:absolute;left:1400px;top:900px;font-size:40px;color:#fff">42 MILES</span>\n'
+        '</div>\n<script>\nwindow.__timelines = window.__timelines || {};\n'
+        'const tl = gsap.timeline({ paused: true });\n'
+        "tl.to('#root', { duration: 3, opacity: 1 }, 0);\nwindow.__timelines['x-dup'] = tl;\n</script>\n"
+        '</template></body></html>\n',
+}
+ep = _stage_ep(OV_FILES)
+r = subprocess.run(['node', str(S / 'overlap_check.mjs'), str(ep)], capture_output=True, text=True)
+assert r.returncode == 1 and 'dup-fact: "80 PERCENT"' in r.stdout and 'dup-fact: "42 MILES"' in r.stdout, r.stdout + r.stderr
+old_ov = old_rev('overlap_check.mjs', '_old_overlap_check_tmp.mjs')
+r_old = subprocess.run(['node', str(old_ov), str(ep)], capture_output=True, text=True)
+old_ov.unlink()
+assert r_old.returncode == 0 and 'dup-fact' not in r_old.stdout, \
+    f'old code should have missed both (suppressEvents seek + same-comp dup) but got: {r_old.stdout}'
+shutil.rmtree(ep, ignore_errors=True)
+print('overlap_check self-check PASS (suppressEvents seek, same-comp + overlay dup-fact)')
+
+# ---------------------------------------------------------------- graphics_qc.mjs
+# qc-gates-07 (idle-budget HARD) + assets-comps-05 (host duration vs tl duration): a 3s timeline
+# mounted in a 6s host window — frozen tail undetected and idle-budget only a warning before.
+GQC_FILES = {
+    'index.html':
+        '<div id="host-y-short" data-composition-id="y-short" data-composition-src="compositions/y-short.html" '
+        'data-start="0" data-duration="6" data-track-index="2" data-width="1920" data-height="1080"></div>\n',
+    'compositions/y-short.html':
+        '<!doctype html><html><head><meta charset="UTF-8"></head><body><template>\n'
+        '<div id="root" style="position:absolute;inset:0;background:#000">\n'
+        '  <div id="y-box" style="position:absolute;left:200px;top:200px;width:300px;height:100px;background:#c33"></div>\n'
+        '</div>\n<script>\nwindow.__timelines = window.__timelines || {};\n'
+        'const tl = gsap.timeline({ paused: true });\n'
+        "tl.fromTo('#y-box', { x: 0 }, { x: 400, duration: 3, ease: 'power2.out' }, 0);\n"
+        "window.__timelines['y-short'] = tl;\n</script>\n</template></body></html>\n",
+}
+ep = _stage_ep(GQC_FILES)
+r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
+assert r.returncode == 1 and 'ERROR [short-duration]' in r.stdout and 'ERROR [idle-budget]' in r.stdout, r.stdout + r.stderr
+old_gqc = old_rev('graphics_qc.mjs', '_old_graphics_qc_tmp.mjs')
+r_old = subprocess.run(['node', str(old_gqc), str(ep)], capture_output=True, text=True)
+old_gqc.unlink()
+assert 'short-duration' not in r_old.stdout and 'ERROR [idle-budget]' not in r_old.stdout, \
+    f'old code should have missed the frozen tail and only warned on idle-budget but got: {r_old.stdout}'
+shutil.rmtree(ep, ignore_errors=True)
+print('graphics_qc self-check PASS (short-duration vs host window, idle-budget promoted to hard)')
