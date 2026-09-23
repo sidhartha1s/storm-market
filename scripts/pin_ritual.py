@@ -120,7 +120,8 @@ def render(version, out_mp4):
                HYPERFRAMES_FFPROBE_PATH=str(FFPROBE),
                HYPERFRAMES_FFMPEG_PATH=str(FFMPEG),
                PRODUCER_PAGE_NAVIGATION_TIMEOUT_MS="120000",
-               PRODUCER_PUPPETEER_PROTOCOL_TIMEOUT_MS="900000")
+               PRODUCER_PUPPETEER_PROTOCOL_TIMEOUT_MS="900000",
+               **render_cmd_env())
     with open(log, "w", encoding="utf-8") as lf:
         # -y: an uncached version makes npx prompt "Ok to proceed?" and a detached run
         # hangs on it until the timeout (measured: 40 min lost on 0.7.109's first run).
@@ -130,6 +131,13 @@ def render(version, out_mp4):
                            stdin=subprocess.DEVNULL, timeout=2400, cwd=DEMO)
     if r.returncode != 0 or not out_mp4.exists():
         sys.exit(f"[ritual] render at {version} FAILED (exit {r.returncode}) — see {log}")
+    # --workers 2 (>1) only streams if the parallel-capture router picked it up (render.cmd's
+    # own comment: otherwise "the gate logs enabled:false"). A silent fallback to disk capture
+    # here means the ritual verified the WRONG capture path (assets-comps-03) — never a pass.
+    log_txt = log.read_text(encoding="utf-8", errors="replace")
+    if not re.search(r"streaming-encode gate.*enabled:true", log_txt):
+        sys.exit(f"[ritual] {version}: no 'streaming-encode gate ... enabled:true' in {log.name} "
+                  "— this render did not exercise the production streaming-capture path")
 
 
 def measure(mp4):
