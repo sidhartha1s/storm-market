@@ -33,8 +33,12 @@ cards, missing = [], [c for c in want if c not in times or c not in hosts]
 if missing:
     sys.exit(f'no frame times or no host mount for: {", ".join(missing)}')
 for comp in want:
-    for start in hosts[comp]:
+    for start, dur in hosts[comp]:
         for n, f in enumerate(times[comp], 1):
+            # graphics_qc sizes frames to the longest mount; a shorter second mount must not be
+            # sampled after it leaves the screen
+            if f['t'] > dur - 0.05:
+                f = {'t': dur - 0.05, 'why': f['why'] + f' (clamped to this {dur:.2f}s mount)'}
             at = start + f['t']
             dst = out / f'{comp}_{int(start)}s_{n}.jpg'
             subprocess.run(['ffmpeg', '-y', '-v', 'error', '-ss', f'{at:.3f}', '-i', str(mp4),
