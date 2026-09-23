@@ -39,9 +39,7 @@ def words_are_stale(wav: Path, words_json: Path) -> bool:
 def main():
     ep = Path(sys.argv[1])
     model = None
-    any_wav = False
     for wav in sorted((ep / "audio").glob("*.wav")):
-        any_wav = True
         out = wav.with_suffix(".words.json")
         if not words_are_stale(wav, out):
             continue
@@ -51,8 +49,6 @@ def main():
         out.write_text(json.dumps(words), encoding="utf-8")
         print(f"{wav.stem}: {len(words)} words, last end {words[-1]['end'] if words else 0}s",
               flush=True)
-    if not any_wav:
-        sys.exit(f"[transcribe_episode] no wavs found under {ep}/audio")
     print("DONE")
 
 
