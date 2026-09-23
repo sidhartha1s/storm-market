@@ -116,21 +116,39 @@ def version_check(repo, mode):
     return 0
 
 
+def busy_refusal():
+    """None if clear to render, else the exit code preflight should use.
+
+    Reuses render_busy's own live-render detection and free-RAM floor instead of a second,
+    narrower process-name list: render_busy.live_renders() matches on command line (catches
+    chrome-headless-shell.exe capture workers and any other hyperframes process), not on a
+    fixed WATCH tuple that never saw chrome-headless-shell.exe or firefox.exe and refused on
+    process COUNT instead of free RAM (an owner's own idle chrome.exe tabs could false-refuse
+    while a live render beside them passed)."""
+    live = render_busy.live_renders()
+    if live:
+        print(f"[preflight] REFUSING TO RENDER — {len(live)} hyperframes render(s) already "
+              "alive; one heavy job at a time (owner 2026-09-11):", file=sys.stderr)
+        for l in live:
+            print("   ", l[:160], file=sys.stderr)
+        return 2
+    free = render_busy.free_gb()
+    if free < render_busy.MIN_FREE_GB:
+        print(f"[preflight] REFUSING TO RENDER — {free:.1f} GB free, need "
+              f"{render_busy.MIN_FREE_GB:g} GB so the render keeps headroom (owner "
+              "2026-09-11). Close a browser or wait.", file=sys.stderr)
+        return 2
+    print(f"[preflight] OK — no render alive, {free:.1f} GB free.")
+    return None
+
+
 def main():
-    busy = heavy_processes()
-    if len(busy) > MAX_HEAVY:
-        print(f"[preflight] REFUSING TO RENDER — {len(busy)} heavy processes are competing "
-              f"for the CPU (limit {MAX_HEAVY}):", file=sys.stderr)
-        for name, pid, mb in sorted(busy, key=lambda p: -p[2]):
-            print(f"    {name:14} pid {pid:>7}  {mb:>6} MB", file=sys.stderr)
-        print("[preflight] Close the QC browsers / stop background agents, then re-launch.",
-              file=sys.stderr)
+    rc = busy_refusal()
+    if rc:
         print("[preflight] A render that starts here fails at video_extract with "
               "'ffprobe deadline with code 0', which reads like a bad asset and is not.",
               file=sys.stderr)
-        sys.exit(2)
-
-    print(f"[preflight] OK — {len(busy)} heavy process(es), under the limit of {MAX_HEAVY}.")
+        sys.exit(rc)
 
     # An idle box is not enough. Eleven of the twelve failed renders were started with the
     # machine quiet and died anyway, because the media itself was too expensive to extract.
