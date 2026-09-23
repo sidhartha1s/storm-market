@@ -18,6 +18,9 @@ Exit 0 inside the band, 1 outside. Prints the numbers either way.
 """
 import argparse, pathlib, re, sys, wave
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from tts_episode import parse_segments, SegmentParseError  # noqa: E402
+
 ap = argparse.ArgumentParser()
 ap.add_argument("episode"); ap.add_argument("--target", type=float, required=True, help="minutes")
 ap.add_argument("--probe", nargs="+", required=True, help="wav files at the shipping tempo, each with a .txt beside it")
