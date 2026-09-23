@@ -53,10 +53,13 @@ def parse_segments(md: str):
     note, is a hard error — never silently voiced.
 
     Only understands the '### <ID> — narration' + '> quote' layout used across
-    ep1/ep2/.../ep6/ep8, ms-*/br-*/sh-* and demo-joplin-90. ep-1974-super-outbreak's
-    '## SCRIPT' inline-bold-marker prose layout ('**A1-S1 (100 w)** text [VE ...] ...') is a
-    different format with no blockquotes at all; this parser correctly returns 0 segments for
-    it rather than guessing — callers must hard-fail on 0, not skip loud.
+    ep1/ep2/.../ep6/ep8 and ms-*/br-*/sh-*, where <ID> is a letter+number pair like 'A3-S5'.
+    NOT supported: ep-1974-super-outbreak's '## SCRIPT' inline-bold-marker prose layout
+    ('**A1-S1 (100 w)** text [VE ...] ...'), which has no blockquotes at all; and
+    demo-joplin-90, whose bare 'S2 — narration' headings (no letter prefix) don't match the ID
+    regex either — same 0-segment result under the OLD parser too, so this is a pre-existing
+    gap, not a regression. Both correctly return 0 segments rather than guessing — callers
+    must hard-fail on 0, not skip loud.
     """
     segs = []
     blocks = re.split(r"\n#{1,6} ", "\n" + md.replace("\r\n", "\n"))
