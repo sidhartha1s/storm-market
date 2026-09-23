@@ -17,13 +17,21 @@ def fold(src: str) -> str:
             consts[f"{name}.{k}"] = float(v)
     for k in sorted(consts, key=len, reverse=True):          # longest first: CUES.six before CUES
         src = re.sub(r'(?<![\w.])' + re.escape(k) + r'(?![\w.(])', repr(consts[k]), src)
-    num = r'(-?\d+(?:\.\d+)?)'
+    # num must stand alone: a word char right before/after it means it is part of an
+    # identifier (t0, x1), not a literal. Without the lookaround, "t0 + 0.25" matched the "0"
+    # inside "t0" as the left operand and folded to "t0.25" (qc-gates-10 RCA, 23 Sep 26) —
+    # silently eating the identifier's digit and handing the gates a wrong number instead of
+    # an honest "can't parse this".
+    num = r'(?<![\w.])(-?\d+(?:\.\d+)?)(?![\w.])'
     ops = {"+": lambda a, b: a + b, "-": lambda a, b: a - b, "*": lambda a, b: a * b}
-    def calc(m):                                              # dates like 2026-09 stay text
-        a, b = m.group(1), m.group(3)
-        if (len(a) > 1 and a.lstrip("-").startswith("0") and "." not in a) or (len(b) > 1 and b.startswith("0") and "." not in b):
-            return m.group(0)
-        return repr(round(ops[m.group(2)](float(a), float(b)), 4))
-    for _ in range(3):                                        # a + b - c
-        src = re.sub(num + r'\s*([-+*])\s*' + num, calc, src)
+    def calc(op):
+        def _calc(m):                                          # dates like 2026-09 stay text
+            a, b = m.group(1), m.group(2)
+            if (len(a) > 1 and a.lstrip("-").startswith("0") and "." not in a) or (len(b) > 1 and b.startswith("0") and "." not in b):
+                return m.group(0)
+            return repr(round(ops[op](float(a), float(b)), 4))
+        return _calc
+    for _ in range(3):                                        # a + b - c, chained
+        for op in ("*", "+", "-"):                            # multiply before add/subtract:
+            src = re.sub(num + r'\s*' + re.escape(op) + r'\s*' + num, calc(op), src)  # "DUR - 2*0.5" folded 4.0 instead of 9.0 with one combined pass
     return src
