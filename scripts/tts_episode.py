@@ -245,9 +245,14 @@ def main():
             print(f"[tts_episode] {sid}: transcribed, {len(words)} words, last end "
                  f"{words[-1]['end'] if words else 0}s", flush=True)
 
-        manifest[sid] = {"wav": f"audio/{sid}.wav", "duration": round(d, 3),
-                         "words": len(text.split()), "text_hash": h, "tempo": tempo}
-        tag = " [re-synth]" if stale else (" [adopted]" if adopted else "")
+        if is_legacy and adopted:
+            manifest[sid] = {"wav": f"audio/{sid}.wav", "duration": round(d, 3),
+                             "words": len(text.split()), "text_hash": h_text, "tempo": "legacy"}
+            tag = " [adopted: legacy tempo unknown]"
+        else:
+            manifest[sid] = {"wav": f"audio/{sid}.wav", "duration": round(d, 3),
+                             "words": len(text.split()), "text_hash": h, "tempo": tempo}
+            tag = " [re-synth]" if stale else ""
         print(f"[tts_episode] {sid}: {d:.1f}s ({len(text.split())} words){tag}", flush=True)
 
     mpath.write_text(json.dumps(manifest, indent=1), encoding="utf-8")
