@@ -1,20 +1,40 @@
 #!/usr/bin/env python3
-"""TTS driver: extract narration segments from an episode's edit_script.md and synthesize
-each as its own wav via pocket-TTS (external tool, paths in config.yaml), then transcribe
-each for word timestamps (faster-whisper, offline).
+"""TTS driver: extract narration segments from an episode's edit_script.md, then for each
+segment run pocket-TTS (native pace) -> ffmpeg atempo (config.yaml channel.tempo; CLAUDE.md
+Voice: documentaries and minis both run 1.10, tempo BEFORE timing) -> faster-whisper word
+timestamps on the SPED wav. One driver, one pass per segment.
 
-Segment = a '### <ID> — narration' heading followed by one blockquote. ID like 'A3-S5'.
-Outputs per segment: audio/<id>.txt, audio/<id>.wav, audio/<id>.words.json + audio/manifest.json.
+Segment = a heading ('### <ID> — narration', any '#' depth) followed by exactly one
+blockquote paragraph. ID like 'A3-S5'. Splitting on EVERY heading (not just '### ') means a
+later '## SECTION' and anything under it — including a stray production note — can never glue
+onto an earlier segment's blockquote (the ms-elnino-texas h1-s1/TTS-note bug).
+
+Outputs per segment: audio/<id>.txt (voiced text), audio/_raw/<id>.wav (native pace),
+audio/<id>.wav (post-atempo, what ships), audio/<id>.words.json (timestamps on the sped wav),
+audio/manifest.json (duration/words/text_hash/tempo per id, merged — a run never shrinks it).
+
+Re-synthesis: a segment is only re-run (new _raw + sped wav, words.json deleted and
+retranscribed) when sha1(text + tempo + voice md5) changes from the manifest's stored hash for
+that id. Editing one script line invalidates only that line's stale audio, nothing else.
 
 Usage: python3 scripts/tts_episode.py episodes/<slug> [--only A3-S5,...]
+Exits non-zero, and leaves manifest.json untouched, when the script parses to 0 segments (an
+unsupported format — see parse_segments docstring) or an --only id isn't in the script.
 """
+import hashlib
 import json
+import os
 import re
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
+
+
+class SegmentParseError(Exception):
+    """A segment's markdown doesn't parse unambiguously into narration text."""
 
 
 def load_cfg():
@@ -23,21 +43,107 @@ def load_cfg():
 
 
 def parse_segments(md: str):
+    """Split on ANY markdown heading, not just '### ' — a '## SECTION' boundary (and any note
+    under it) can never leak into the previous segment. Only headings whose text starts with an
+    ID like 'A3-S5' are segments; everything else (act headings, notes sections) is skipped.
+    A segment keeps only its own FIRST contiguous blockquote paragraph. A second blockquote
+    paragraph under the same heading, or a paragraph that reads like a production note, is a
+    hard error — never silently voiced.
+
+    Only understands the '### <ID> — narration' + '> quote' layout used across
+    ep1/ep2/.../ep6/ep8, ms-*/br-*/sh-* and demo-joplin-90. ep-1974-super-outbreak's
+    '## SCRIPT' inline-bold-marker prose layout ('**A1-S1 (100 w)** text [VE ...] ...') is a
+    different format with no blockquotes at all; this parser correctly returns 0 segments for
+    it rather than guessing — callers must hard-fail on 0, not skip loud.
+    """
     segs = []
-    blocks = re.split(r"\n### ", md)
+    blocks = re.split(r"\n#{1,6} ", "\n" + md.replace("\r\n", "\n"))
     for b in blocks[1:]:
-        header = b.split("\n", 1)[0]
-        # any segment heading with an ID counts if it carries a narration blockquote
-        # (graphic/hold segments may have VO too — the quote is the source of truth)
+        header, _, rest = b.partition("\n")
         m = re.match(r"([A-Z]\d+-S\d+[a-z]?)\b", header)
         if not m:
             continue
         sid = m.group(1).lower()
-        quote = "\n".join(l[2:] for l in b.splitlines() if l.startswith("> "))
-        text = re.sub(r"\s+", " ", quote).strip()
+        paragraphs, cur = [], []
+        for line in rest.splitlines():
+            if line.startswith(">"):
+                cur.append(line[2:] if line.startswith("> ") else line[1:])
+            elif line.strip() == "":
+                if cur:
+                    paragraphs.append(cur)
+                    cur = []
+            else:
+                break  # first non-blank, non-quote line ends this segment's own content
+        if cur:
+            paragraphs.append(cur)
+        if not paragraphs:
+            continue
+        if len(paragraphs) > 1:
+            raise SegmentParseError(
+                f"{sid}: {len(paragraphs)} blockquote paragraphs under one heading — "
+                f"ambiguous which is narration")
+        text = re.sub(r"\s+", " ", " ".join(paragraphs[0])).strip()
+        if re.match(r"(?i)^(TTS note|NOTE)\b", text):
+            raise SegmentParseError(
+                f"{sid}: blockquote reads like a production note, not narration: {text[:80]!r}")
         if text:
             segs.append((sid, text))
     return segs
+
+
+def sha1_text(text, tempo, voice_md5):
+    return hashlib.sha1(f"{text}\x1f{tempo}\x1f{voice_md5}".encode("utf-8")).hexdigest()
+
+
+def ffprobe_duration(path, attempts=4, sleep_s=3):
+    # ffprobe immediately after write can return empty on this box (Defender scan lock);
+    # retry briefly before failing loud.
+    d = None
+    for _ in range(attempts):
+        out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                              "-of", "default=nw=1:nk=1", str(path)],
+                             capture_output=True, text=True).stdout.strip()
+        if out:
+            d = float(out)
+            break
+        time.sleep(sleep_s)
+    return d
+
+
+def synth_native(txt_path, wav_path, ext):
+    # tts_clone.py intermittently dies at CUDA init/clone with a native crash (no traceback,
+    # non-zero exit; ep6 measured ~1 in 8 segments, same input passes on rerun). One loud
+    # retry per segment; a second consecutive failure is real.
+    r = None
+    for attempt in (1, 2):
+        r = subprocess.run([ext["pocket_venv_python"], ext["tts_clone_py"],
+                            "--text-file", str(txt_path), "--out", str(wav_path),
+                            "--voice", ext["voice_ref"]],
+                           env={**os.environ, "PYTHONUTF8": "1", "PYTHONUNBUFFERED": "1"})
+        if r.returncode == 0:
+            return
+        print(f"[tts_episode] [FALLBACK] {txt_path.stem} attempt {attempt} exited "
+              f"{r.returncode} (0x{r.returncode & 0xFFFFFFFF:08X})", flush=True)
+    sys.exit(f"[tts_episode] FAIL on {txt_path.stem} after retry, exit {r.returncode}")
+
+
+def apply_tempo(raw_wav, sped_wav, tempo):
+    r = subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(raw_wav),
+                        "-filter:a", f"atempo={tempo}", "-ar", "48000", str(sped_wav)],
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        sys.exit(f"[tts_episode] ffmpeg atempo failed on {sped_wav.stem}: {r.stderr[-300:]}")
+
+
+def load_whisper_model():
+    from faster_whisper import WhisperModel
+    return WhisperModel("small.en", device="cpu", compute_type="int8")
+
+
+def transcribe_wav(model, wav_path):
+    segments, _ = model.transcribe(str(wav_path), word_timestamps=True, language="en")
+    return [{"text": w.word.strip(), "start": round(w.start, 3), "end": round(w.end, 3)}
+            for s in segments for w in (s.words or [])]
 
 
 def main():
@@ -47,52 +153,65 @@ def main():
         only = set(s.strip().lower() for s in sys.argv[sys.argv.index("--only") + 1].split(","))
     cfg = load_cfg()
     ext = cfg["external"]
+    tempo = cfg.get("channel", {}).get("tempo")
+    if not tempo:
+        sys.exit("[tts_episode] config.yaml channel.tempo is not set "
+                  "(CLAUDE.md Voice: documentaries and minis both run atempo 1.10)")
+    voice_md5 = hashlib.md5(Path(ext["voice_ref"]).read_bytes()).hexdigest()
     (ep / "audio").mkdir(exist_ok=True)
-    segs = parse_segments((ep / "edit_script.md").read_text(encoding="utf-8"))
+    (ep / "audio" / "_raw").mkdir(exist_ok=True)
+    try:
+        segs = parse_segments((ep / "edit_script.md").read_text(encoding="utf-8"))
+    except SegmentParseError as e:
+        sys.exit(f"[tts_episode] FAIL parsing edit_script.md: {e}")
+    if not segs:
+        sys.exit(f"[tts_episode] FAIL — 0 narration segments parsed from {ep}/edit_script.md "
+                 f"(unsupported script format — see parse_segments docstring); "
+                 f"manifest.json left untouched")
+    seg_ids = {sid for sid, _ in segs}
+    if only:
+        missing = only - seg_ids
+        if missing:
+            sys.exit(f"[tts_episode] FAIL — --only id(s) not in edit_script.md: {sorted(missing)}")
     print(f"[tts_episode] {len(segs)} narration segments found")
-    manifest = {}
+
+    mpath = ep / "audio" / "manifest.json"
+    manifest = json.loads(mpath.read_text(encoding="utf-8")) if mpath.exists() else {}
+    model = None
     for sid, text in segs:
         if only and sid not in only:
             continue
-        txt, wav = ep / "audio" / f"{sid}.txt", ep / "audio" / f"{sid}.wav"
+        txt = ep / "audio" / f"{sid}.txt"
+        raw_wav = ep / "audio" / "_raw" / f"{sid}.wav"
+        wav = ep / "audio" / f"{sid}.wav"
+        words_json = ep / "audio" / f"{sid}.words.json"
         txt.write_text(text, encoding="utf-8")
-        if not wav.exists():
-            # tts_clone.py intermittently dies at CUDA init/clone with a native crash (no
-            # traceback, non-zero exit; ep6 measured ~1 in 8 segments, same input passes on
-            # rerun). One loud retry per segment; a second consecutive failure is real.
-            for attempt in (1, 2):
-                r = subprocess.run([ext["pocket_venv_python"], ext["tts_clone_py"],
-                                    "--text-file", str(txt), "--out", str(wav),
-                                    "--voice", ext["voice_ref"]],
-                                   env={**__import__("os").environ, "PYTHONUTF8": "1", "PYTHONUNBUFFERED": "1"})
-                if r.returncode == 0:
-                    break
-                print(f"[tts_episode] [FALLBACK] {sid} attempt {attempt} exited "
-                      f"{r.returncode} (0x{r.returncode & 0xFFFFFFFF:08X})", flush=True)
-            if r.returncode != 0:
-                sys.exit(f"[tts_episode] FAIL on {sid} after retry, exit {r.returncode}")
-        # ffprobe immediately after write can return empty on this box (Defender scan lock);
-        # retry briefly before failing loud.
-        d = None
-        for attempt in range(4):
-            out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
-                                  "-of", "default=nw=1:nk=1", str(wav)],
-                                 capture_output=True, text=True).stdout.strip()
-            if out:
-                d = float(out)
-                break
-            __import__("time").sleep(3)
+
+        h = sha1_text(text, tempo, voice_md5)
+        stale = manifest.get(sid, {}).get("text_hash") != h or not wav.exists()
+        if stale:
+            synth_native(txt, raw_wav, ext)
+            apply_tempo(raw_wav, wav, tempo)
+            if words_json.exists():
+                words_json.unlink()
+
+        d = ffprobe_duration(wav)
         if d is None:
             sys.exit(f"[tts_episode] ffprobe returned empty for {wav} after 4 attempts")
+
+        if stale or not words_json.exists():
+            if model is None:
+                model = load_whisper_model()
+            words = transcribe_wav(model, wav)
+            words_json.write_text(json.dumps(words), encoding="utf-8")
+            print(f"[tts_episode] {sid}: transcribed, {len(words)} words, last end "
+                 f"{words[-1]['end'] if words else 0}s", flush=True)
+
         manifest[sid] = {"wav": f"audio/{sid}.wav", "duration": round(d, 3),
-                         "words": len(text.split())}
-        print(f"[tts_episode] {sid}: {d:.1f}s ({len(text.split())} words)", flush=True)
-    # --only must not amputate the manifest: merge into whatever is already there
-    mpath = ep / "audio" / "manifest.json"
-    if only and mpath.exists():
-        prior = json.loads(mpath.read_text(encoding="utf-8"))
-        prior.update(manifest)
-        manifest = prior
+                         "words": len(text.split()), "text_hash": h, "tempo": tempo}
+        print(f"[tts_episode] {sid}: {d:.1f}s ({len(text.split())} words)"
+             f"{' [re-synth]' if stale else ''}", flush=True)
+
     mpath.write_text(json.dumps(manifest, indent=1), encoding="utf-8")
     total = sum(v["duration"] for v in manifest.values())
     print(f"[tts_episode] DONE — {len(manifest)} segments, {total/60:.1f} min narration")
