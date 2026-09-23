@@ -278,6 +278,43 @@ check("build_srt: align_captions keeps whisper's timing for the corrected word",
       semeru["start"] == 0.5 and semeru["end"] == 1.1, semeru)
 
 # ---------------------------------------------------------------------------
+# 10. word_budget: BOTH real script formats present on main, counted correctly, read-only
+#     (no writes under episodes/). ep3-tristate is the blockquote format (real probe wavs
+#     already on disk); ep-1974-super-outbreak is the inline-bold '## SCRIPT' format (no
+#     blockquotes, no real probe wavs on disk here — a synthetic probe wav/txt pair, built
+#     in a temp dir from the REAL probe text, stands in just for the pace measurement; the
+#     narration COUNT itself still comes from the real, unmodified edit_script.md on disk).
+import subprocess
+MAIN = Path(r"C:\Users\Sidhartha\Automation Projects\storm-market\episodes")
+
+r = subprocess.run([sys.executable, str(S / "word_budget.py"), str(MAIN / "ep3-tristate"),
+                    "--target", "26", "--probe", "audio/probe1.wav", "audio/probe2.wav"],
+                   capture_output=True, text=True)
+print("[test_audio] word_budget on real ep3-tristate (blockquote format):")
+print(r.stdout)
+check("word_budget: ep3-tristate (blockquote format) uses the parse_segments path",
+      "counted via blockquote parser" in r.stdout, r.stdout)
+
+ep1974 = MAIN / "ep-1974-super-outbreak"
+real_probe_txt = (ep1974 / "audio" / "probe" / "hook_plain.txt").read_text(encoding="utf-8")
+with tempfile.TemporaryDirectory() as d:
+    tmp = Path(d)
+    probe_wav = tmp / "hook_plain.wav"
+    probe_wav.write_bytes(b"synthetic-probe-standin")
+    (tmp / "hook_plain.txt").write_text(real_probe_txt, encoding="utf-8")
+    import wave as _wave
+    with _wave.open(str(probe_wav), "wb") as wf:
+        wf.setnchannels(1); wf.setsampwidth(2); wf.setframerate(24000)
+        wf.writeframes(b"\x00\x00" * (24000 * 10))  # 10 s of silence, real word count above
+    r = subprocess.run([sys.executable, str(S / "word_budget.py"), str(ep1974),
+                        "--target", "20", "--probe", str(probe_wav)],
+                       capture_output=True, text=True)
+    print("[test_audio] word_budget on real ep-1974-super-outbreak ('## SCRIPT' format):")
+    print(r.stdout)
+    check("word_budget: ep-1974 (inline-bold format) falls back to the '## SCRIPT' counter",
+          "counted via '## SCRIPT' fallback" in r.stdout, r.stdout)
+
+# ---------------------------------------------------------------------------
 if fails:
     print(f"[test_audio] {len(fails)} FAILED: {fails}")
     sys.exit(1)
