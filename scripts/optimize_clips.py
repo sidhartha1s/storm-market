@@ -80,9 +80,10 @@ for src, want in sorted(used.items()):
     keep = min(dur, want + MARGIN)
     plan.append((src, mb, w, hgt, dur, keep))
 
+print(f"composition {COMP_W}x{COMP_H}")
 print(f"{'clip':44} {'MB':>7} {'source':>12} {'len':>7} {'keep':>7}")
 for src, mb, w, hgt, dur, keep in plan:
-    flag = "  <- over 1080" if hgt > 1080 else ""
+    flag = "  <- over comp" if (w > COMP_W or hgt > COMP_H) else ""
     print(f"{Path(src).name:44} {mb:7.1f} {w:5}x{hgt:<6} {dur:6.1f}s {keep:6.1f}s{flag}")
 print(f"\n{len(plan)} clips, {total_before:.0f} MB before")
 if not apply:
