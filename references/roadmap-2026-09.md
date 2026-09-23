@@ -48,7 +48,7 @@ pre-publish checklist before the upload button.
   California wettest setup since 2015 · 09-19 winter tornado risk shifting south · 09-20 Florida warm dry fire risk ·
   09-21 Northeast mild winter by the numbers · 09-22 what changes the forecast (myth vs fact) · 09-23 reservoirs by
   spring · 10-08 CPC October update · 10-16 NOAA winter outlook (flagship) · 11-12 CPC November check.
-- Per-day recipe (2.5–3 h): fact pull 15 → script on the 8-beat skeleton 60–90 (190 wpm target, humanise pass) → TTS 10 →
+- Per-day recipe (2.5–3 h): fact pull 15 → script on the 8-beat skeleton 60–90 (humanise pass) → TTS 10 →
   stock/PD clips + one named NOAA/CPC chart, popfig layer only 20 → assemble + render 30 → thumb 15 → publish checklist 10.
 - Skeleton (from the 50): number cold-open → direct-address promise inside 45 s → mechanism → a real year → reveal at
   35–80 % → on-camera debunk of the viral claim → dated watch-for close, no spoken subscribe. No mid-video recap (both

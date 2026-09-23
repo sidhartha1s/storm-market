@@ -33,11 +33,11 @@ Krakatau mini-docs got 55–60 impressions under the same keyword; the format mi
   after; a named individual only when quoted, always with title. One spoken verbatim quote on screen per video, minimum.
 - **Close:** the unresolved tracking line ("what it left behind has not been counted yet"), then ONE soft line: tell me
   in the comments where you are watching from, and subscribe for the next update. No resolved ending, no END CTA spine.
-- **Pace:** Paul's TTS at atempo 1.10 (test), timed after the speed-up per script-os.md. Measured fact to respect: GWN's
+- **Pace:** Paul's TTS at the lane tempo (`config.yaml channel.tempo`, applied by `scripts/tts_episode.py`), timed after the speed-up. Measured fact to respect: GWN's
   hits run 66–78 wpm over the whole runtime because footage with natural sound breathes between narration blocks; the
   slowness comes from footage holds, not slow speech. A footage-only hold (natural sound, popfig place label) every
   60–90 s is allowed, not required: narrated clips as shipped so far are equally fine; the editor picks per cut (owner 2026-09-14).
-- **Skeleton, 12:00 at 158 wpm delivered (measured 14 Sep 26: Pharaoh clone 143 wpm native, 158 at atempo 1.10 on a 77-word probe; ≈1,900 words per 12:00; scale beats 3, 5, 7 for 10–14 min):**
+- **Skeleton, 12:00 (the Words column is a planning shape; size the real script with `scripts/word_budget.py`, CLAUDE.md Voice; scale beats 3, 5, 7 for 10–14 min):**
 
 | # | Beat | Time | Words |
 |---|---|---|---|
@@ -50,9 +50,7 @@ Krakatau mini-docs got 55–60 impressions under the same keyword; the format mi
 | 7 | What is still unknown: the tracking line | 9:30–11:45 | 371 |
 | 8 | Soft close: one comment + subscribe line | 11:45–12:00 | 41 |
 
-  Paul's ebook CTA stays at the story break (~40 %, between beats 4 and 5). Humanise rules apply in full.
-- **CTA dip (owner 15 Sep 26): 0.5 s black in, CTA starts 0.5 s after the last narration word ends, 0.5 s out.** A 1.0 s dip after
-  a 0.4 s narration tail read as a 1.4 s hole and "I would skip". The last clip of the beat runs under the dip.
+  Paul's ebook CTA position and entry: `config.yaml channel.cta` (news lane `window_ms`) and the mini-storms skill's Dujuan rules. Humanise rules apply in full.
 - **B-roll is muted by default.** A clip carries its own sound only when it earns it (sirens, presser sound, survivor voice); then
   Paul does not narrate over the same words, one voice at a time. lint_timeline fails any track-1 video that is neither `muted`
   nor `data-has-audio` (day-1 miss: a stranded-passenger interview played under Paul and a quote card, 15 Sep 26).
@@ -73,7 +71,7 @@ Krakatau mini-docs got 55–60 impressions under the same keyword; the format mi
 - **Packaging:** proper noun (volcano, storm, place) dominant in title and thumb, a number in the title, present tense,
   thumb spell-checked at 300 px, e.g. "Anak Krakatau Erupts Again... And Now Three More" (EarthDesk shape, 175–225k).
 - **Publish window:** GWN's uploads land 00:00–07:00 UTC (US evening); target the same.
-- **Tests before the format is called done:** (1) beat table in packaging.md sums to the target runtime at 165 wpm;
+- **Tests before the format is called done:** (1) beat table in packaging.md sums to the target runtime (`scripts/word_budget.py`);
   (2) humanise pass green; (3) the quote line exists with a source URL in edit_script.md; (4) sweep/overlap/audio gates
   green; (5) Studio impressions read at 48 h and logged in `ops/tracker.json` before the bucket's next video.
 Formats A and B below remain available for evergreen and explainer topics.
@@ -81,8 +79,7 @@ Formats A and B below remain available for evergreen and explainer topics.
 ## Structure (owner rule 2026-09-08)
 HOOK **3–10 s** (one present-tense sentence paying off the title, spoken + red popfig) → INTRO to
 ~1:10 (stakes numbers, open loops, promise) → CHAPTERS → PAYOFF → WARM CLOSE → subscribe.
-Size every section in words before TTS at the delivered pace (Formats A/B ~148 wpm ≈ 2.47 words/s with
-atempo 1.15; Format C 158 wpm with atempo 1.10 (measured), re-measure on the sped wav): 8:30 ≈ 1,260 words, 9:30 ≈ 1,410, 12:00 ≈ 1,780. Table goes in packaging.md.
+Size every section in words before TTS with `scripts/word_budget.py` at the shipping tempo (CLAUDE.md Voice). Table goes in packaging.md.
 
 ## Retention architecture (owner + GPT pass on Krakatau #4, 2026-09-11)
 Measured against a 14-minute cut that scored 5.5/10 on stakes-per-90-seconds before the rewrite.
@@ -132,7 +129,6 @@ Measured against a 14-minute cut that scored 5.5/10 on stakes-per-90-seconds bef
 - Real-clip rehook every 45–60 s (channel rule); stock / stills only fill between real clips.
 - Content-gap layer from comments: the whole niche's top comments ask "is this exaggerated?" and
   nobody answers on-screen. One explicit "what is NOT happening" beat per video.
-- Word budget at ~148 delivered wpm (2.47 w/s): 8:30 → 1,260 words; 9:30 → 1,410; 12:00 → 1,780.
 
 ## On-screen text layer
 - **Every overlay time is a word cue, never an estimate (owner 2026-09-10, Krakatau draft):** the popfig,
@@ -174,7 +170,7 @@ Measured against a 14-minute cut that scored 5.5/10 on stakes-per-90-seconds bef
 ## CTAs and interaction beats (owner ledger 2026-09-09; placed by judgment while scripting, never by code)
 **Scope: Formats A and B. Format C keeps Paul's ebook CTA at the story break but replaces the END CTA spine and the
 mid-video beats with its own soft close (one comment + subscribe line after the tracking line).**
-- **Paul's ebook CTA** — every video, from `config.yaml channel.cta`, at the story break (~40 %), 1 s dips, film layer off.
+- **Paul's ebook CTA** — every video, from `config.yaml channel.cta`, position and dips from `config.yaml channel.cta`, film layer off.
   Description line 1 = paulraymond.online. No "book mentioned at mm:ss" line.
 - **Hard cap: 3 CTA beats per mini-storm, including the END CTA, excluding Paul's.** Breadcrumbs do not count.
 - **B · Where are you watching from** — once per video, near the one-minute mark, worded fresh every episode; also the
@@ -222,8 +218,7 @@ mid-video beats with its own soft close (one comment + subscribe line after the 
 - Recipe files: `episodes/ms-elnino-texas/_framesweep/pip/` (crop, ring, mask, loops) until it moves to `library/mini-storms/presenter/`.
 
 ## Audio
-- Narration 150–160 wpm delivered. Pocket-TTS Pharaoh lands ~129 natively; use `atempo 1.15–1.2`
-  in the breaking lane only (documentary lane stays native). Verify by ear on segment 1.
+- Narration pace: CLAUDE.md Voice (tempo per lane in `config.yaml channel.tempo`). Verify by ear on segment 1.
 - One tense music bed at −24 LUFS under narration, ducked 6 dB under popfigs; master −14 LUFS.
 
 ## Topic selection (Stefan Burns / Hidden Constructions lesson)

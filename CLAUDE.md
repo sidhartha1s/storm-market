@@ -84,14 +84,14 @@ Script method and hook wording live in `references/script-os.md` and `script-fra
 - Pace is measured, never assumed. Probe-TTS two segments AT THE SHIPPING TEMPO, then
   `python3 scripts/word_budget.py episodes/<slug> --target <min> --probe <wav> <wav>` sizes the script from that
   pace and the real non-voice seconds. It fails outside target +/- 1 min; a script is not locked while it fails.
-- Documentaries and minis take atempo 1.10. Order: TTS, tempo, re-transcribe, THEN time graphics. words.json must be younger than its wav.
+- Tempo per lane lives in `config.yaml channel.tempo`; `tts_episode.py` applies it. Order: TTS, tempo, re-transcribe, THEN time graphics. words.json must be younger than its wav.
 - TTS-safe text: spell out ALL dates, times and numbers, no paired dashes, sentences under 24 words, flowing connective sentences.
 - Homographs (read, lead, live, wind, tear, bass, close, present, record): respell the TTS copy phonetically ("reed"),
   keep the script's wording, and listen to every such line once after TTS.
 
 ## Footage rules (claim-proof stack, never violate)
 - Spine: US government public domain (NOAA, NWS, NHC, FEMA, USGS, Coast Guard), Pexels and Pixabay, self-made radar and
-  map graphics, AI b-roll (`scripts/gen_ai_stills.py`). Courtesy credits in the description.
+  map graphics, AI b-roll (nanobanana; `scripts/gen_ai_stills.py` is hardcoded to ep2). Courtesy credits in the description.
 - 911 audio, FEMA survivor interviews and government hearings are the emotional layer: public domain, claim-free.
 - News footage: transcribe first, cut at the best moment. Keep pulls short and meaningful; anything held past 12 to
   15 s needs narration over it. Clips WITH their commentary audio are allowed, and the mix (voice alone, clip alone,
@@ -107,7 +107,7 @@ Script method and hook wording live in `references/script-os.md` and `script-fra
 Per episode in `episodes/<slug>/`. The skill's phase map points at these step numbers.
 1. `edit_script.md`: typed segment list plus per-beat visual intent, written on `references/script-scaling.md`. Zero open
    `[verify]` markers before TTS. The CTA hinge is named (segment before, segment after, estimated time). Owner signs off.
-2. TTS per narration segment: wavs plus per-segment words.json (faster-whisper).
+2. TTS: `python3 scripts/tts_episode.py episodes/<slug>` makes per-segment wavs at the lane tempo plus words.json (faster-whisper) in one pass.
 3. Sourcing: the agent downloads everything itself, 2 to 3 frame-checked candidates per key beat. The owner confirms only `insert` clips.
 4. Compose `index.html` by hand as a hyperframes composition, one sub-composition per act. JS or WAAPI animation only:
    CSS @keyframes disables fast-capture. Assets in `media/`, CTA staged into `media/cta/`.

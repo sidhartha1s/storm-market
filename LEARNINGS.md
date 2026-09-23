@@ -1,6 +1,6 @@
 # LEARNINGS.md — storm-market
 
-Every owner correction / measured surprise lands here same session. Newest first.
+Every owner correction / measured surprise lands here same session. Newest first: add new entries directly under the Promoted rules index, never at the bottom.
 
 ## Promoted rules index
 
@@ -8,7 +8,7 @@ Standing rules still governing episode quality, compacted from the journal below
 line is a pointer, not a copy — find the full context by searching the journal for the
 quoted section header.
 
-- The ebook CTA is a must-keep contract: hook > CTA > payoff, landing 30–40% into runtime, from `config.yaml channel.cta`. → §"the ebook CTA is a channel asset + a must-keep contract"
+- The ebook CTA is a must-keep contract: hook > CTA > payoff, positioned by the `config.yaml channel.cta` window. → §"the ebook CTA is a channel asset + a must-keep contract"
 - (superseded 2026-09-09: the upload file is the 1080p master, no upscale step; the owner upscales by hand.) The 1440p HEVC file was the YouTube upload artifact; re-run the master gain/limiter step on any owner-supplied cut before the 2K upscale, never bit-copy its audio. → §"1440p upload file is HEVC now"
 - mp4 surgery on a finished render uses h264_nvenc first, never libx264 — the quality gap doesn't survive YouTube's transcode at consumer-master bitrates. → §"1440p upload tier + NVENC-first for mp4 surgery"
 - Convert GIFs before mounting (single-frame → PNG, animated → mp4); every mounted video needs an audio stream — mux silence into mute clips. → §"ep6 render-failure ledger"

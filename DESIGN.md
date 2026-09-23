@@ -35,9 +35,8 @@ in full BEFORE cut selection; cut at the transcript's action/emotion peak).
   Exactly one exception: `insert` segments, where the clip's audio IS the content.
 - **Every `insert` goes to the owner before it enters any render**: frames + ~10-word transcript
   + source link, one message, wait for yes/no. No exceptions, no batching-through.
-- Narration is TTS'd **per segment** (separate wavs). Per-segment atempo is allowed (0.93–1.08)
-  as an editorial choice — segments are independent files, so this is NOT the banned whole-track
-  stretch. Owner ear-check before ship covers it.
+- Narration is TTS'd **per segment** (separate wavs). Tempo is per lane (`config.yaml channel.tempo`,
+  applied by `scripts/tts_episode.py`); a per-segment deviation is the owner's call. Owner ear-check before ship covers it.
 - Ambience/music beds: PD/licensed only, ducked under narration, audible in holds.
 
 ## Placement — LLM judgment, native hyperframes timing, no engine

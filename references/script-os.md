@@ -56,7 +56,7 @@ materially changes every 60–90 s (new evidence, place, number, person, mechani
 - **AVD pass**: at 0:30, 1:30 … 13:30 ask "why would a viewer here stay another 60 s?" Weak answer = rewrite.
 
 ## Voice rules for the 45–75 US viewer (audience audit 2026-09-14; evidence in references/teardowns/2026-09-14-audience-audit/)
-1. **Pace 150 wpm delivered**, docs and minis alike. Slow only for numbers; pause after a death count, never before a reveal.
+1. **Pace is measured, never assumed** (CLAUDE.md Voice, `scripts/word_budget.py`). Slow only for numbers; pause after a death count, never before a reveal.
 2. **Rhythm.** Median sentence 12–18 words; 10–15 % of sentences run 25–35 words as fact-chains joined by and / then /
    which; one kicker of ≤4 words per 150 words, never a flip. The 24-word cap is a TTS constraint, not a writing rule:
    write the long sentence, let the TTS layer split it at commas without changing a word (pocket-TTS mangles long
@@ -93,8 +93,8 @@ Optimise for "what information does the viewer want right now, and when do we gi
 more engaging." Narration and visual event are written together, never narration first.
 
 ## News-lane pace: tempo BEFORE timing (owner order 2026-09-14)
-Daily news-desk videos run Paul's clone at **atempo 1.10** (pitch-preserving; 158 -> ~174 wpm delivered). Order of
-operations is fixed: (1) TTS the segment; (2) ffmpeg atempo=1.10 on the wav; (3) transcribe the SPED wav to words.json;
+Every lane runs Paul's clone at its tempo from `config.yaml channel.tempo` (pitch-preserving atempo). Order of
+operations is fixed: (1) TTS the segment; (2) ffmpeg atempo on the wav; (3) transcribe the SPED wav to words.json;
 (4) only then resolve cues, cards, popfigs and cuts against it. Never render at the slow pace and speed the video
-afterwards; never time graphics against the pre-tempo words.json. Documentaries run atempo 1.10 too (owner 20 Sep 26, on the ep-1974 hook probe). Above
+afterwards; never time graphics against the pre-tempo words.json. `scripts/tts_episode.py` runs steps 1-3 in one pass. Above
 1.13 the clone sounds rushed; write denser instead.
