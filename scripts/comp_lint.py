@@ -7,11 +7,18 @@ R1  textContent / innerHTML / innerText written on an element that HAS CHILD ELE
     caption div; the first caption's `tl.set("#l5-note", {textContent: ...})` removed it, so the
     rule existed for 1.9 s of a 55 s comp while the DOM-at-parse-time gates all passed.
     Fix: write the text on a dedicated leaf span.
+    Selectors built as `P+"x"` or `'#'+ID+'-rail'` (the house style for per-comp id prefixes)
+    are folded to their literal string first, the same way comp_consts.py folds numeric cues,
+    so R1 sees the real target id instead of missing it because it was never a plain quoted string.
 
-R2  text mutated inside onStart / onComplete / onRepeat.
+R2  text mutated inside onStart / onComplete / onRepeat / tl.call.
     The browser gates seek the timeline with suppressEvents, so the callback never fires and they
-    measure stale markup (ladder.html's three notes, compare-card's grade label). Fix: pre-author
-    each text in its own element and toggle autoAlpha. onUpdate count-ups on a leaf are fine.
+    measure stale markup (ladder.html's three notes, compare-card's grade label). A `tl.call(...)`
+    body has the exact same problem whether it writes text inline or hands off to a named function
+    (g-map-a3.html's `tl.call(() => setFact(text), ...)` calling `function setFact(txt){ ...
+    el.textContent = txt }`) — this resolves one level of named-function indirection.
+    Fix: pre-author each text in its own element and toggle autoAlpha. onUpdate count-ups on a
+    leaf are fine.
 
 Usage: python3 scripts/comp_lint.py episodes/<slug>      exit 1 on any finding
 """
@@ -39,19 +46,62 @@ def element_inner(html, el_id):
     return None
 
 
+def fold_selector_consts(script):
+    """Fold `const P = "#g-x-";` / `const ID = 'g-x';` string consts into `P+"fact-txt"` and
+    `'#'+ID+'-rail'` concatenations, so a selector built from house-style id-prefix consts reads
+    as a plain quoted string to the regexes below. Unknown identifiers are left alone."""
+    consts = {}
+    for m in re.finditer(r'(?:const|let|var)\s+([A-Za-z_]\w*)\s*=\s*(["\'])((?:(?!\2).)*)\2\s*;', script):
+        consts[m.group(1)] = m.group(3)
+    if not consts:
+        return script
+    term = r'(?:[A-Za-z_]\w*|"(?:[^"\\]|\\.)*"|\'(?:[^\'\\]|\\.)*\')'
+
+    def literal(tok):
+        return tok[1:-1] if tok[0] in '"\'' else consts.get(tok)
+
+    concat = re.compile(term + r'\s*\+\s*' + term)
+
+    def repl(m):
+        a, b = re.split(r'\s*\+\s*', m.group(0), maxsplit=1)
+        la, lb = literal(a), literal(b)
+        return m.group(0) if la is None or lb is None else '"' + la + lb + '"'
+
+    for _ in range(3):                 # A+B+C folds pairwise, left to right, over a few passes
+        new = concat.sub(repl, script)
+        if new == script:
+            break
+        script = new
+    return script
+
+
+def balanced(src, open_at, opener='(', closer=')'):
+    """src[open_at] is `opener` — return the substring up to (not including) its match."""
+    depth = 0
+    for i in range(open_at, len(src)):
+        if src[i] == opener:
+            depth += 1
+        elif src[i] == closer:
+            depth -= 1
+            if depth == 0:
+                return src[open_at + 1:i]
+    return src[open_at + 1:]
+
+
 for comp in sorted((ep / 'compositions').glob('*.html')):
     src = comp.read_text(encoding='utf-8')
     markup = re.sub(r'<script\b.*?</script>', '', src, flags=re.S)
     script = '\n'.join(re.findall(r'<script\b[^>]*>(.*?)</script>', src, flags=re.S))
+    folded = fold_selector_consts(script)
 
     # R1: every id that receives a text write, via gsap vars or a direct DOM assignment
     targets = set()
-    for m in re.finditer(r'\(\s*["\']#([\w-]+)["\']\s*,\s*\{[^{}]*\b' + TEXT_PROPS + r'\s*:', script):
+    for m in re.finditer(r'\(\s*["\']#([\w-]+)["\']\s*,\s*\{[^{}]*\b' + TEXT_PROPS + r'\s*:', folded):
         targets.add(m.group(1))
-    for m in re.finditer(r'(?:getElementById\(\s*["\']([\w-]+)["\']\s*\)|querySelector\(\s*["\']#([\w-]+)["\']\s*\))\s*\.\s*' + TEXT_PROPS + r'\s*=', script):
+    for m in re.finditer(r'(?:getElementById\(\s*["\']([\w-]+)["\']\s*\)|querySelector\(\s*["\']#([\w-]+)["\']\s*\))\s*\.\s*' + TEXT_PROPS + r'\s*=', folded):
         targets.add(m.group(1) or m.group(2))
-    for var, el_id in re.findall(r'(?:const|let|var)\s+(\w+)\s*=\s*document\.(?:getElementById\(\s*["\']([\w-]+)["\']\s*\))', script):
-        if re.search(r'\b' + re.escape(var) + r'\s*\.\s*' + TEXT_PROPS + r'\s*=', script):
+    for var, el_id in re.findall(r'(?:const|let|var)\s+(\w+)\s*=\s*document\.(?:getElementById\(\s*["\']([\w-]+)["\']\s*\))', folded):
+        if re.search(r'\b' + re.escape(var) + r'\s*\.\s*' + TEXT_PROPS + r'\s*=', folded):
             targets.add(el_id)
     for el_id in sorted(targets):
         inner = element_inner(markup, el_id)
@@ -66,6 +116,18 @@ for comp in sorted((ep / 'compositions').glob('*.html')):
         if re.search(TEXT_PROPS, body):
             line = script[:m.start()].count('\n') + 1
             findings.append(f'{comp.name}: R2 text mutated in {m.group(1)} (script line ~{line}); seek-based QC never fires it - pre-author the text, toggle autoAlpha')
+
+    # R2b: text mutation inside tl.call(...), inline or handed off to a named function one level down
+    for m in re.finditer(r'\btl\.call\s*\(', script):
+        args = balanced(script, m.end() - 1)
+        bodies = [args]
+        for fn in set(re.findall(r'\b([A-Za-z_]\w*)\s*\(', args)):
+            fm = re.search(r'\bfunction\s+' + re.escape(fn) + r'\s*\([^)]*\)\s*\{', script)
+            if fm:
+                bodies.append(balanced(script, fm.end() - 1, '{', '}'))
+        if re.search(TEXT_PROPS, '\n'.join(bodies)):
+            line = script[:m.start()].count('\n') + 1
+            findings.append(f'{comp.name}: R2 text mutated in tl.call (script line ~{line}); seek-based QC never fires it - pre-author the text, toggle autoAlpha')
 
 for f in findings:
     print('FAIL', f)
