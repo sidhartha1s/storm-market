@@ -69,7 +69,10 @@ const PROBE = `(() => {
     const td = (t.totalDuration ? t.totalDuration() : t.duration()) || 0;
     const props = t.vars ? Object.keys(t.vars).filter(k => !['duration','ease','onUpdate','onComplete','delay','stagger'].includes(k)) : [];
     const tgt = (t.targets && t.targets()[0]) ? (t.targets()[0].id || t.targets()[0].tagName || 'obj') : 'obj';
-    R.tweens.push({ start: +st.toFixed(2), dur: +td.toFixed(2), props, ease: String(t.vars && t.vars.ease || 'none'), target: tgt });
+    const v = t.vars || {};
+    const off = (x) => typeof x === 'number' && Math.abs(x) >= 1000 || /^[-+]?(1\\d\\d|[2-9]\\d\\d)%$/.test(String(x));
+    const hide = v.opacity === 0 || v.autoAlpha === 0 || off(v.x) || off(v.y) || Math.abs(v.xPercent || 0) >= 100 || Math.abs(v.yPercent || 0) >= 100;
+    R.tweens.push({ start: +st.toFixed(2), dur: +td.toFixed(2), props, ease: String(t.vars && t.vars.ease || 'none'), target: tgt, hide });
     R.beats.push(+st.toFixed(2));
     if (td > 4) R.beats.push(+(st + td).toFixed(2)); // long tweens = continuous motion
   }
