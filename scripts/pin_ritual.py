@@ -282,7 +282,12 @@ def main():
                              encoding="utf-8")
     if base_has_mp4:
         base_mp4.unlink()
-    print(f"[ritual] PASS — pin bumped {pin} -> {latest}; baseline refreshed. "
+    # Rename the candidate INTO the stable baseline slot for the new pin — it is already the
+    # verified-current render, so the next stale-pin run finds it on disk and actually runs
+    # SSIM instead of printing "no baseline mp4 on disk" forever (assets-comps-02).
+    new_base = BASELINE_DIR / f"pin-baseline-{latest}.mp4"
+    cand_mp4.replace(new_base)
+    print(f"[ritual] PASS — pin bumped {pin} -> {latest}; baseline refreshed at {new_base}. "
           f"Commit + PR the bump (config.yaml, scripts/*.cmd, pin_baseline.json).")
     return 0
 
