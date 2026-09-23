@@ -170,6 +170,46 @@ with tempfile.TemporaryDirectory() as d:
     check("tts_episode: edited line re-synthesizes", calls["synth"] == ["a1-s1"])
     check("tts_episode: edited line re-transcribes", calls["transcribe"] == ["a1-s1"])
 
+    # 5b. legacy manifest (no text_hash) whose wav's .txt matches the current parsed text is
+    #     ADOPTED, not re-synthesized — a fresh run over every already-shipped episode must
+    #     not blow away every duration under already-timed graphics.
+    ep_legacy = make_episode(tmp, SCRIPT_ONE_SEG, voice_ref, name="ep_legacy")
+    (ep_legacy / "audio").mkdir()
+    (ep_legacy / "audio" / "a1-s1.txt").write_text("Hello world this is a test line.",
+                                                    encoding="utf-8")
+    (ep_legacy / "audio" / "a1-s1.wav").write_bytes(b"OLD-RAW-WAV")
+    (ep_legacy / "audio" / "a1-s1.words.json").write_text(
+        json.dumps([{"text": "old", "start": 0.0, "end": 1.0}]), encoding="utf-8")
+    (ep_legacy / "audio" / "manifest.json").write_text(json.dumps(
+        {"a1-s1": {"wav": "audio/a1-s1.wav", "duration": 5.0, "words": 7}}), encoding="utf-8")
+    install_mocks()
+    sys.argv = ["tts_episode.py", str(ep_legacy)]
+    tts_episode.main()
+    check("tts_episode: legacy manifest with matching .txt is adopted, not re-synthesized",
+          calls["synth"] == [] and calls["transcribe"] == [])
+    legacy_manifest = json.loads((ep_legacy / "audio" / "manifest.json").read_text(encoding="utf-8"))
+    check("tts_episode: adopted entry gets a stamped text_hash",
+          "text_hash" in legacy_manifest["a1-s1"])
+    check("tts_episode: adopted entry keeps the OLD wav bytes (never touched)",
+          (ep_legacy / "audio" / "a1-s1.wav").read_bytes() == b"OLD-RAW-WAV")
+
+    # 5c. legacy manifest whose .txt DIFFERS from the current parsed text is NOT adopted —
+    #     the text really changed since the last hash-less run, so it must re-synthesize.
+    ep_legacy_diff = make_episode(tmp, SCRIPT_ONE_SEG, voice_ref, name="ep_legacy_diff")
+    (ep_legacy_diff / "audio").mkdir()
+    (ep_legacy_diff / "audio" / "a1-s1.txt").write_text("An old, since-edited sentence.",
+                                                         encoding="utf-8")
+    (ep_legacy_diff / "audio" / "a1-s1.wav").write_bytes(b"OLD-RAW-WAV")
+    (ep_legacy_diff / "audio" / "a1-s1.words.json").write_text(
+        json.dumps([{"text": "old", "start": 0.0, "end": 1.0}]), encoding="utf-8")
+    (ep_legacy_diff / "audio" / "manifest.json").write_text(json.dumps(
+        {"a1-s1": {"wav": "audio/a1-s1.wav", "duration": 5.0, "words": 7}}), encoding="utf-8")
+    install_mocks()
+    sys.argv = ["tts_episode.py", str(ep_legacy_diff)]
+    tts_episode.main()
+    check("tts_episode: legacy manifest with a DIFFERING .txt re-synthesizes",
+          calls["synth"] == ["a1-s1"])
+
     # 6. 0 parsed segments exits non-zero and leaves manifest.json untouched.
     before = (ep / "audio" / "manifest.json").read_text(encoding="utf-8")
     ep_empty = make_episode(tmp, "## SCRIPT\n**A1-S1 (10 w)** inline prose, no blockquotes.\n",
