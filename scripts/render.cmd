@@ -17,7 +17,7 @@ if "%SLUG%"=="" goto :usage
 set EP=%~dp0..\episodes\%SLUG%
 if not exist "%EP%\index.html" (
   echo ERROR: no index.html in %EP%
-  echo 1 no-index-html %SLUG% %MODE%> "%~dp0render_last_error.marker"
+  echo 1 no-index-html %SLUG% %MODE% > "%~dp0render_last_error.marker"
   exit /b 1
 )
 REM Delete BEFORE any gate runs (LEARNINGS.md:449) — a poller must never read the previous
@@ -105,5 +105,5 @@ exit /b %RC%
 
 :usage
 echo usage: render.cmd ^<episode-slug^> ^<draft^|full^> [out-basename]
-echo 1 usage %SLUG% %MODE%> "%~dp0render_last_error.marker"
+echo 1 usage %SLUG% %MODE% > "%~dp0render_last_error.marker"
 exit /b 1
