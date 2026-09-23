@@ -128,9 +128,19 @@ def make_episode(tmp, script_text, voice_ref, name="ep"):
     def fake_cfg():
         return {"external": {"pocket_venv_python": "python3", "tts_clone_py": "noop.py",
                              "voice_ref": str(voice_ref)},
-               "channel": {"tempo": 1.10}}
+               "channel": {"tempo": 1.10, "tempo_by_prefix": {"sh-": 1.16}}}
     tts_episode.load_cfg = fake_cfg
     return ep
+
+
+# 3b. resolve_tempo: shorts (sh-) get the per-lane override, everything else the default.
+_CFG = {"channel": {"tempo": 1.10, "tempo_by_prefix": {"sh-": 1.16}}}
+check("resolve_tempo: sh- slug resolves to the shorts override (1.16)",
+      tts_episode.resolve_tempo(_CFG, "sh-hawaii-lowell-1") == 1.16)
+check("resolve_tempo: ms- slug resolves to the default (1.10)",
+      tts_episode.resolve_tempo(_CFG, "ms-elnino-texas") == 1.10)
+check("resolve_tempo: ep- slug resolves to the default (1.10)",
+      tts_episode.resolve_tempo(_CFG, "ep3-tristate") == 1.10)
 
 
 SCRIPT_ONE_SEG = """# edit_script.md
