@@ -30,7 +30,7 @@ files disagree, fix it in the same PR and say which one won.
 - Studio preview cannot play 15 min media-heavy compositions in real time. Do not offer it for review.
 - When he calls the remaining defects minor, the open work is the items he named. Anything else is a note in the summary.
 - When his named items are done, hand over the file and stop.
-- The ebook CTA is must-keep in every episode, hook then CTA then payoff, mounted from `config.yaml channel.cta`. Its
+- The ebook CTA is must-keep in every episode, placed late (85 to 95 %), mounted from `config.yaml channel.cta`. Its
   position is the config window (`window`, `window_ms`, `window_by_slug`). Only the owner moves it. `sweep_episode.py` fails a missing or misplaced CTA.
 - His phrases are verbatim. Never paraphrase a line he wrote.
 - The defects he names are a sample of that KIND of defect. Find the rest of that kind. This is not licence to invent new kinds.

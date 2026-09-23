@@ -35,6 +35,12 @@ Any first beat outside the title's frame reads as "not the video I clicked" → 
 - Narrator-from-zero MAY be the hook (ep7 deviation, owner-ordered) — the broadcast-anchor-by-
   2.5s contract stays the default for episodes that don't explicitly override it.
 
+- **Zero fluff, matched to the packaging (owner 23 Sep 26).** Sentence one pays the title and the thumbnail. Every
+  hook sentence either states a fact the title promised or opens the question it raises; anything else is cut. Feats
+  the viewer cannot relate to (weights, distances) are rounded and never the hook's spine.
+- **Script review loop.** Brainstorm the angle first, then share the script file. The owner edits it in place; diff
+  his edits, name the pattern, and add it here before the next script.
+
 ## 3. ROI drip — how the promise is paced across the runtime (AVD is the target)
 The payoff is never dumped early and never hoarded to the end. Structure:
 
@@ -51,9 +57,8 @@ The payoff is never dumped early and never hoarded to the end. Structure:
   13 minutes are unwatched — re-order until the strongest material is load-bearing at the end.
 - **Continuity devices:** but / therefore / however chain every seam — never "and then". Micro-
   loops every 30-45s per the lattice.
-- **CTA anchor (editorial):** after the FIRST title-payoff seam, never before — the viewer must
-  have received proof the video delivers before being sold to. Mechanically this lands inside
-  the config 30-40% window (ep7: ~28-35%, first villain-reveal seam; config window is the gate).
+- **CTA anchor (editorial):** late, after the main payoff and before the close, at a seam that does
+  not interrupt a reveal. The config window (85-95%, owner 23 Sep 26) is the gate.
 
 ## 3b. MG composition doctrine (owner, ep7 draft-v1 review 2026-09-06 — supersedes any "exit everything" reading)
 - **Story elements STAY while relevant.** If the apple landed at :02 and the orange lands at :15,
