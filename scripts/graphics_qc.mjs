@@ -55,7 +55,7 @@ const PROBE = `(() => {
 const MEASURE = `((t) => {
   const key = Object.keys(window.__timelines)[0];
   window.__timelines[key].seek(t, false);
-  const out = { texts: [], oob: [], empty: [], crops: [], fonts: [] };
+  const out = { texts: [], oob: [], empty: [], crops: [], fonts: [], broken: [] };
   const vis = (el) => {
     const s = getComputedStyle(el);
     if (s.display === 'none' || s.visibility === 'hidden') return false;
