@@ -131,10 +131,22 @@ with tempfile.TemporaryDirectory() as d:
           code == 1 and "last word ends" in out, out[-600:])
 
 with tempfile.TemporaryDirectory() as d:
+    # a loop-driven position (i * 0.2) can never fold to a literal — unparseable is not the
+    # same claim as defective (review 24 Sep 26: this hit 3/3 real episodes as a false FAIL,
+    # g-scale-hook.html:69,82-83). Coverage must be visible but must NOT fail the sweep alone.
     ep_unparsed = make_ep(Path(d) / "unparsed", unparsed_tween=True)
     code, out = run("sweep_episode.py", ep_unparsed)
-    check("sweep_episode: check 7 reports unparsed tween coverage instead of a silent pass",
-          "parsed" in out and "tweens" in out, out[-600:])
+    check("sweep_episode: check 7 reports tween coverage honestly, unparsed alone does not FAIL",
+          code == 0 and "resolved" in out and "not checked" in out, f"(exit {code})\n{out[-600:]}")
+
+with tempfile.TemporaryDirectory() as d:
+    # a loop-driven position PLUS a genuine window overrun among the tweens it could resolve
+    # (comp_window=6 vs a 1.1s resolvable timeline -> "holds") must still FAIL, on the real
+    # defect, not on the unparsed position.
+    ep_real = make_ep(Path(d) / "realoverrun", unparsed_tween=True, comp_window=6.0)
+    code, out = run("sweep_episode.py", ep_real)
+    check("sweep_episode: a genuine overrun among resolved tweens still FAILs (unparsed doesn't mask it)",
+          code == 1 and "holds" in out and "resolved" in out, f"(exit {code})\n{out[-600:]}")
 
 # ===================================================================================
 # 3. beat_density.py — exit code on a DEAD (>=4s motionless) composition
