@@ -228,9 +228,9 @@ for (const f of files) {
      tween spanning the gap (ep2's 26s rotation) keeps the frame alive. --- */
   const spans = probe.tweens.filter(t => t.dur >= 4).map(t => [t.start, t.start + t.dur]);
   const covered = (a, b) => spans.some(([s, e]) => s <= a + 0.25 && e >= b - 0.25);
-  const beats = probe.beats.filter(b => b <= probe.duration + 0.01);
+  const beats = probe.beats.filter(b => b <= windowEnd + 0.01);
   let prev = 0, frozen = 0, worst = 0;
-  for (const b of [...beats, probe.duration]) {
+  for (const b of [...beats, windowEnd]) {
     const gap = b - prev;
     const limit = prev < 10 ? MAX_IDLE_OPENING : MAX_IDLE;
     if (gap > limit && !covered(prev, b)) {
@@ -239,9 +239,9 @@ for (const f of files) {
     }
     prev = b;
   }
-  const idleFrac = frozen / probe.duration;
+  const idleFrac = frozen / windowEnd;
   if (idleFrac > 0.45 || worst > 8)
-    add(name, 'idle-budget', `${(idleFrac*100).toFixed(0)}% of its ${probe.duration.toFixed(0)}s window is frozen (worst single gap ${worst.toFixed(1)}s) — §6`);
+    add(name, 'idle-budget', `${(idleFrac*100).toFixed(0)}% of its ${windowEnd.toFixed(0)}s window is frozen (worst single gap ${worst.toFixed(1)}s) — §6`);
 
   /* --- geometry + typography at every beat and each midpoint --- */
   const samples = [...new Set(beats.flatMap((b, i) => [b + 0.35, i < beats.length - 1 ? (b + beats[i+1]) / 2 : b + 0.9]))]
