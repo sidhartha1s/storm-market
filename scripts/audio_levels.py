@@ -10,11 +10,14 @@ Checks (effective dB = file mean_volume + 20*log10(data-volume)):
   1. Narration (nx-*): reference = median; any segment >3 dB off median = FAIL.
   2. Inserts (ins-*): effective level within +/-2.5 dB of narration ref = FAIL
      otherwise ("dispatch must be as audible as narration" — owner 2026-08-17).
-  3. Beds/SFX/music (sx-*): effective level must sit BELOW narration ref
-     (never competes) and ABOVE ref-30 dB (audible at all). WARN outside,
-     FAIL only if a music bed (sx-mus-*) is inaudible (<ref-30).
+  3. Beds (any <audio data-bed>, regardless of id prefix — bgm-/sfx-/sx-/hf- all carry
+     it): FAIL if within 6 dB of the narration ref (a bed that close competes with voice,
+     never a WARN-only defect — DESIGN.md "ducked under narration"). FAIL if a music bed
+     (id sx-mus-*) is inaudible (<ref-30 dB). WARN if near-inaudible otherwise.
   4. Audible video clips (any <video> not `muted`, data-volume default 1.0):
      WARN if above narration ref (clip audio shouting over voice).
+  5. Any other audible <audio> (no nx-/ins- id and no data-bed attribute) is an
+     unclassified element = FAIL — tag it data-bed or use the nx-/ins- convention.
 
 Usage: python3 scripts/audio_levels.py episodes/<slug>
 Exit 0 = pass. Exit 1 = level defects, do not build the mixdown yet.
