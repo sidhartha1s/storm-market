@@ -54,10 +54,17 @@ def probe(path):
 
 windows = {}
 for m in re.finditer(r'<video\b([^>]*)>', h):
-    src = re.search(r'src="([^"]+)"', m.group(1))
-    dur = re.search(r'data-duration="([\d.]+)"', m.group(1))
-    if src and dur:
-        windows[src.group(1)] = max(windows.get(src.group(1), 0.0), float(dur.group(1)))
+    attrs = m.group(1)
+    src = re.search(r'src="([^"]+)"', attrs)
+    dur = re.search(r'data-duration="([\d.]+)"', attrs)
+    if not (src and dur):
+        continue
+    # data-media-start is the clip's in-point: the source must supply media_start + duration
+    # seconds, not just duration, or a trim to the window alone cuts off before the in-point
+    # (render-05: ep1/ep6 vx-warmend needs 8s + 13.1s = 21.1s, not 13.1s).
+    start = re.search(r'data-media-start="([\d.]+)"', attrs)
+    need = (float(start.group(1)) if start else 0.0) + float(dur.group(1))
+    windows[src.group(1)] = max(windows.get(src.group(1), 0.0), need)
 
 oversize, overlong, missing = [], [], []
 total_mb = 0.0
