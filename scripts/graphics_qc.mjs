@@ -19,9 +19,11 @@ const SAFE = { w: 1920, h: 1080, pad: 24 };
 
 /* Hard errors block the render. Idle gaps are reported and only fail when a graphic is
  * frozen for most of its window — ep2 (the gold standard) idles in places and still reads
- * as designed, so idling is a budget, not a tripwire. */
+ * as designed, so idling is a budget, not a tripwire; 'idle-budget' IS that tripwire (the
+ * header's own claim above was false in code until this line: measured at idleFrac > 0.45
+ * or a single gap > 8s, below). */
 const HARD = new Set(['text-collision', 'out-of-frame', 'bad-crop', 'empty-container', 'fade-only',
-                      'flat-type', 'no-timeline', 'js-error', 'undesigned']);
+                      'flat-type', 'no-timeline', 'js-error', 'undesigned', 'idle-budget', 'short-duration']);
 const DURS = {};
 const defects = [];
 const add = (comp, kind, msg) => defects.push({ comp, kind, msg, hard: HARD.has(kind) });
@@ -36,11 +38,15 @@ const PROBE = `(() => {
   R.duration = tl.duration();
   for (const t of tl.getChildren(true, true, false)) {
     const st = t.startTime();
+    /* totalDuration(), not duration(): a repeating tween (ambient loops) reports its ONE-cycle
+       duration from duration(), which reads as a short tween that stops covering the idle gap
+       it's actually animating through for the rest of the comp's window. */
+    const td = (t.totalDuration ? t.totalDuration() : t.duration()) || 0;
     const props = t.vars ? Object.keys(t.vars).filter(k => !['duration','ease','onUpdate','onComplete','delay','stagger'].includes(k)) : [];
     const tgt = (t.targets && t.targets()[0]) ? (t.targets()[0].id || t.targets()[0].tagName || 'obj') : 'obj';
-    R.tweens.push({ start: +st.toFixed(2), dur: +(t.duration()||0).toFixed(2), props, ease: String(t.vars && t.vars.ease || 'none'), target: tgt });
+    R.tweens.push({ start: +st.toFixed(2), dur: +td.toFixed(2), props, ease: String(t.vars && t.vars.ease || 'none'), target: tgt });
     R.beats.push(+st.toFixed(2));
-    if (t.duration() > 4) R.beats.push(+(st + t.duration()).toFixed(2)); // long tweens = continuous motion
+    if (td > 4) R.beats.push(+(st + td).toFixed(2)); // long tweens = continuous motion
   }
   R.beats = [...new Set(R.beats)].sort((a,b)=>a-b);
   return R;
