@@ -195,3 +195,31 @@ assert 'short-duration' not in r_old.stdout and 'ERROR [idle-budget]' not in r_o
     f'old code should have missed the frozen tail and only warned on idle-budget but got: {r_old.stdout}'
 shutil.rmtree(ep, ignore_errors=True)
 print('graphics_qc self-check PASS (short-duration vs host window, idle-budget promoted to hard)')
+
+# ---------------------------------------------------------------- settle frames for the vision pass
+# The old reader sampled every 3 s from the comp start, so frame 1 was always mid-reveal. The frames
+# must come from the tween schedule: reveal ends 1.2 s (+0.1), exit slide starts 8.5 s (-0.25), and
+# the 8 s ambient loop must not count as a reveal.
+SETTLE_FILES = {
+    'index.html':
+        '<div id="host-z" data-composition-id="z" data-composition-src="compositions/z.html" '
+        'data-start="0" data-duration="10" data-track-index="2" data-width="1920" data-height="1080"></div>\n',
+    'compositions/z.html':
+        '<!doctype html><html><head><meta charset="UTF-8"></head><body><template>\n'
+        '<div id="root" style="position:absolute;inset:0;background:#000">\n'
+        '  <div id="z-card" style="position:absolute;left:200px;top:200px;width:600px;height:200px;background:#c33">Card</div>\n'
+        '  <div id="z-glow" style="position:absolute;left:900px;top:600px;width:80px;height:80px;background:#39c"></div>\n'
+        '</div>\n<script>\nwindow.__timelines = window.__timelines || {};\n'
+        'const tl = gsap.timeline({ paused: true });\n'
+        "tl.fromTo('#z-card', { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 1.2, ease: 'power3.out' }, 0);\n"
+        "tl.to('#z-glow', { rotation: 360, duration: 8, ease: 'none' }, 0.5);\n"
+        "tl.to('#z-card', { x: 2200, duration: 1.0, ease: 'power3.in' }, 8.5);\n"
+        "tl.to({}, { duration: 0.5 }, 9.5);\nwindow.__timelines['z'] = tl;\n</script>\n</template></body></html>\n",
+}
+ep = _stage_ep(SETTLE_FILES)
+subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
+frames = json.loads((ep / '.qc-tmp' / 'frame_times.json').read_text(encoding='utf-8'))['z']
+got = [f['t'] for f in frames]
+assert got == [1.3, 4.78, 8.25], f'settle frames should be reveal-done 1.3, mid 4.78, pre-exit 8.25; got {frames}'
+shutil.rmtree(ep, ignore_errors=True)
+print('graphics_qc self-check PASS (settle frames from the tween schedule, not a fixed 3 s grid)')
