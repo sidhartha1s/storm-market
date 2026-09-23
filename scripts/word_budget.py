@@ -61,6 +61,7 @@ except SegmentParseError as e:
     sys.exit(f"[word_budget] FAIL parsing {a.script}: {e}")
 if segs:
     count = sum(len(re.findall(r"[A-Za-z0-9']+", text)) for _, text in segs)
+    print(f"[word_budget] counted via blockquote parser ({len(segs)} segments)")
 elif "## SCRIPT" in s:
     body = s.split("## SCRIPT", 1)[1]
     body = body.split("## Fact register", 1)[0]
@@ -69,6 +70,7 @@ elif "## SCRIPT" in s:
     body = re.sub(r"\[[^\]]*\]", "", body)
     body = re.sub(r"^#+ .*$", "", body, flags=re.M)
     count = len(re.findall(r"[A-Za-z0-9']+", body))
+    print("[word_budget] counted via '## SCRIPT' fallback (no blockquotes in this format)")
 else:
     sys.exit(f"[word_budget] FAIL — 0 narration segments parsed from {a.script}, and no "
              f"'## SCRIPT' section to fall back to (script has no narration yet, or is in a "
