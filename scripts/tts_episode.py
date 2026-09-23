@@ -46,9 +46,10 @@ def parse_segments(md: str):
     """Split on ANY markdown heading, not just '### ' — a '## SECTION' boundary (and any note
     under it) can never leak into the previous segment. Only headings whose text starts with an
     ID like 'A3-S5' are segments; everything else (act headings, notes sections) is skipped.
-    A segment keeps only its own FIRST contiguous blockquote paragraph. A second blockquote
-    paragraph under the same heading, or a paragraph that reads like a production note, is a
-    hard error — never silently voiced.
+    A segment keeps its own blockquote paragraph, wherever it sits relative to a 'Visual:'
+    note (before the quote in ep3-tristate/ep1-joplin, after it in ms-*/br-*). A SECOND
+    blockquote paragraph under the same heading, or a paragraph that reads like a production
+    note, is a hard error — never silently voiced.
 
     Only understands the '### <ID> — narration' + '> quote' layout used across
     ep1/ep2/.../ep6/ep8, ms-*/br-*/sh-* and demo-joplin-90. ep-1974-super-outbreak's
