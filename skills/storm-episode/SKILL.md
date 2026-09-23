@@ -67,8 +67,8 @@ Only after 1–6: plan the episode.
 - Timeline is master; the model is the editor; scripts = deterministic checks only.
 - Chaser/streamer footage NEVER without license; non-PD pulls 3–4s narrated-over; no
   provenance disguise. Repeats allowed only well-spaced (≥3–4 min, never obvious).
-- The ebook CTA is must-keep (owner 2026-08-30): every episode, in-timeline, 30–40 % in, hook > CTA >
-  payoff; `sweep_episode.py` fails without it. Never skipped, shortened, or moved to the outro.
+- The ebook CTA is must-keep (owner 2026-08-30): every episode, in-timeline, inside the `config.yaml channel.cta`
+  window, hook > CTA > payoff; `sweep_episode.py` fails without it. Never skipped, shortened, or moved to the outro.
 - LEARNINGS.md updated same session as any owner correction. Docs sweep in the same PR.
 - Every review cut = draft render; owner previews park the pipeline until chat approval.
 - Render monitoring: poll with `/loop` every 2–3 min, never a detached background watcher and
