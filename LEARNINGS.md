@@ -48,6 +48,324 @@ quoted section header.
 - hyperframes 0.8.6–0.8.10 opened visible console windows on this box; 0.8.41 does not and is the pin since 16 Sep 26 (its mixer is a flat ~1.5 dB quieter, corrected by the master step). → §"ep6 ship", §"16 Sep 26 — pin bumped to 0.8.41"
 - Search `library/catalog-index.json` / `npx hyperframes catalog --query` before hand-authoring any graphic — MG library-first. → §"ep6 ship"
 
+## 2026-09-22 - ep-1974 shipped 17:30 against a 22:00 target: three guesses stacked
+
+- **Measured:** script 3,027 words; raw TTS 18.4 min (165 wpm native, not the 152 assumed); atempo 1.10 made it
+  16.7 min of voice (181 wpm delivered); non-voice time 48 s, not the 2.2 min constant. 22:00 became 17:40, then
+  17:30 after the owner's cuts. Owner: "you under delivered the minutes of last video."
+- **Why:** the budget line in edit_script.md multiplied a guessed pace by a guessed overhead, and the probes the
+  plan asked for were made but never fed back into the count. wordcount.py's own footer printed 20.3 min and the
+  script was locked anyway.
+- **Fix:** `scripts/word_budget.py` measures pace from probe wavs at the shipping tempo and takes the real
+  non-voice seconds; it FAILS outside target +/- 1 min. Nothing goes to full TTS while it fails. Checked against
+  ep-1974's own audio: it predicts 16:53 for the shipped script (actual 17:30; the two probes ran 4 % faster than
+  the episode average, so probe with two segments of different sentence length).
+- **Rule of thumb at this voice and tempo:** about 180 words per delivered minute; a 25:00 documentary needs
+  about 4,400 narration words.
+
+## 2026-09-22 - ep-1974 draft 2 review: narrator opens the video, banned audio is gated by hash, holds need a reason
+
+- **No broadcast, radio or archive audio in the hook.** Owner: "these broadcast stuff at the hook is a nono. because of bad
+  audio quality. no point if the narrators hook being 10/10 if only 40% people wait till it starts at 10secs." The narrator's
+  first line is 0:00. DESIGN.md "Cold-open hook contract" is rewritten; the old "anchor line by 2.5 s" rule is gone. The date
+  popfig sits inside the first second and clears before the first designed graphic (here 0.15 to 1.65 s).
+- **A banned sound came back under its other filename.** `wind-loop.mp3` was marked banned in `assets/sfx/provenance.md` on
+  16 Aug 26; the builder mounted its source file `02_wind_ominous_steady.mp3` three times (4:00, 4:58, 10:06). A ban written
+  as prose on one filename is a suggestion. Fix: `assets/sfx/BANNED.md5` lists banned audio by content hash and
+  `lint_timeline.py` fails on a match, so a rename or a copy cannot dodge it. Proven: the old timeline fails with three
+  findings, the new one passes. A future ban is one line in that file.
+- **A `hold` whose only content is a bed reads as a mute stretch.** Owner at 5:03 to 5:08: "its mute, with only bgm. why?"
+  It was an authored 4 s hold on a lone still with the banned wind under it. A hold earns its place only with diegetic sound
+  that belongs to the picture (a siren over the siren, the tape over the tape). Otherwise close it to a 0.3 s breath.
+  Two more holds remain (3.0 s at 237.09 s and 3.5 s at 599.71 s in the new cut); both sit under a moving map and were not named.
+- **Why the plane graphic failed in draft 1 and passed in draft 2.** An SVG element carried a static `transform="translate()"`
+  attribute AND a GSAP x/y tween. GSAP takes over the transform and discards the attribute, so the icon flew from 0,0 while
+  its trail drew in the right place. Same family: `transformOrigin` in CSS px on a nested SVG line pushed it outside the
+  viewBox (use `svgOrigin` in user units). No gate checks that a mover follows its path, and a still frame looks plausible
+  unless you know where the icon should be. Rule for every "A follows B" animation: position the mover with GSAP only, and
+  assert in the DOM that the mover sits on the path head at three times before calling it done.
+- **The draft rendered before ten graphics were finished.** I found text behind the presenter circle by looking at the draft,
+  then fixed it. The builders never had the circle's box in their brief. The box (x 1632 to 1888, y 700 to 956) now goes in
+  every builder brief, and no render starts while a builder is still editing (CLAUDE.md "the render is the LAST step").
+
+## 21 Sep 26 — owner review of the ep-1974 draft: "shippable after these small iterations"
+
+Owner watched the whole 17:39 draft ("overall really well put video", the motion graphics "a significant better look
+this time", 14:05 the combed-trees card "interesting bit"). Corrections, each persisted here:
+1. **Motion graphics go static after the story beat lands.** `beat_density.py` said 0/39 because a 100 px grid drift
+   over 78 s counts as a tween; to the eye 1.3 px/s is a freeze, and blackdetect read four dark cards as black for
+   6 to 11 s. Rule: every comp carries a VISIBLE ambient element for its whole window (a scan line at 6 px/s or more,
+   staggered dot blips at least every 1.5 s, a sweep rotating), finite repeats, never `repeat:-1`. Verify by pixel
+   diff of two frames 2 s apart at three points in the window, not by tween coverage.
+2. **Paul's presenter circle belongs on docs too** (bottom-right 240 px, FORMAT.md "Presenter circle"): from the end
+   of the hook to the CTA dip and from the CTA out-dip to the close card, hidden in the hook, the CTA and the close.
+   Every RHS rail, cite card and person card stays out of x >= 1600, y >= 680.
+3. **CTA at 85 to 90 % on this doc**, not 30 to 40 %: owner 21 Sep 26 "keep around 85-90 % timeline in a fitting
+   manner", fallback "reduce the end ask, then the video, one more sentence, close". ep-1974 sits at 88 % after the
+   16-dead-then/4-now payoff. `config.yaml channel.cta.window_by_slug` carries per-episode placements; the deep-lane
+   window stays until the owner moves it for the lane (one-orange rule). The 30-40 % rule dates from 30 Aug 26.
+4. **Glass cards over a dark map read better beige** (owner frames at 08:08 and 15:15): cite cards go to
+   rgba(232,222,200,0.90) with dark text; other glass panels over dark gradients are the builder's call, reported.
+5. **A person card without a real photo does not keep the photo slot** (owner: "don't leave the card with photo's
+   space in"); monograms are out, text-only layout for the nine people with no PD photo (a sourcer checks first).
+6. **Red popfigs**: owner is fine with the light use here ("its good. i mean it"); no retrofit, weigh them per episode.
+7. **The g-plane icon rode a different coordinate space than its trail** (owner: "a moving house fly on the top
+   left"): position markers must be verified by measuring the icon against the path head, never by eye.
+8. **The F6 card's strike missed the glyph and the F5 hung outside the card**: a strike goes through the glyph body,
+   every child stays inside the card box; screenshot the card at the last cue before shipping.
+
+## 21 Sep 26 — first long render on 0.8.41: streaming needs two env vars, and the harness reaps renders
+
+1. **0.8.41 streams captured frames into ffmpeg only for comps up to 240 s.** Anything longer takes the disk
+   capture path and asks for ~8.3 MB per frame of temp space: 131 GB for a 17.6-min draft at 15 fps on a C: with
+   22 GB free, so the render dies at "Starting frame capture" with `Disk capture may need ~131756 MB`. The shorts
+   final and the pin-ritual demo (29 s, 84 s) never met this. `render.cmd` now sets
+   `PRODUCER_STREAMING_ENCODE_MAX_DURATION_SECONDS=7200` and `HF_CAPTURE_PARALLEL_STREAM=true`; the second one
+   is required with `--workers` above 1 (`shouldStreamParallelCapture` in cli.js), without it the log still says
+   `streaming-encode gate enabled:false`. Read that gate line in every render log: `enabled:true` or the render
+   will not finish on this disk.
+2. **Harness background Bash is not a render launcher** (already in this file's index line, ignored under
+   deadline pressure). The harness kills background tasks when free RAM drops near 2 GB, and the kill takes the
+   whole cmd/npx/chrome tree: the 05:28 attempt died 35 min in with the log frozen at 25 % and nine orphan
+   chromes. `schtasks /create ... /tr "wscript.exe <abs>\scripts\run_hidden.vbs cmd.exe /c <abs>\scripts\<task>.cmd"`
+   plus `/run` (with `MSYS2_ARG_CONV_EXCL='*'` under Git Bash) is the only launcher; the `/tr` string has a
+   261-char cap, so the per-episode wrapper `.cmd` (workers, overrides) keeps it short. Delete the task after.
+3. **Draft timing on this box at 0.8.41, streaming, 2 workers:** 15 885 frames in about 13 min (frame 600 at
+   06:08, complete 06:21), 186 MB at crf 32 / 15 fps. Two workers, not three, when free RAM is under 5 GB.
+4. **A render preflight refusal for `ffprobe spawns in 0.40s` is a load reading, not a binary problem**, when
+   the env already names the shared build: three whisper transcribers and two ffmpeg cutters from sourcing
+   agents pushed a 0.17 s spawn to 0.40 s. Quiet the box (agents' jobs killed by their owners), re-measure.
+
+## 21 Sep 26 — ep-1974 assembly: the static gates could not read cue-positioned comps, and four rules got a home
+
+Findings from the first hand-authored 39-comp timeline (17.6 min, hook anchored on the WHAS air-check):
+
+1. **Comps place tweens at `CUES.six`, `DUR - 0.6`, `CUES.dark + 1.5`; the gates only parsed numeric literals.**
+   `sweep_episode.py` check 7 reported 14 false "holds" and `beat_density.py` hard-exited on every batch built from
+   words.json cues. Fix: `scripts/comp_consts.py` `fold(src)` replaces `const NAME = num`, `const NAME = {k: v}`
+   members and `num op num` arithmetic with literals before the regexes run (dates like `2026-09` stay text via the
+   leading-zero guard). Both gates import it. Unknown identifiers stay as they were, so a real hole still reports.
+2. **A declared hold is an empty `<section class="clip hold">` on its own track** (DESIGN.md "hold-marker line").
+   `lint_timeline.py` sanctions narration gaps only inside a blackout, a hold or the CTA dips; every other gap over
+   0.8 s still fails. Holds and blackouts never stack at one seam (owner 20 Sep 26).
+3. **Overlay hosts on tracks 3 and 4 are mounted comps.** `sweep_episode.py` read them as unmounted because it only
+   looked at tracks 1 and 2; "mounted" is now any host on any track. Coverage still counts tracks 1 and 2 only, so
+   blackouts must sit on track 1.
+4. **The CTA gate slug regex is `(ep\d*-|ms-)`.** `ep-1974-…` (no digit after `ep`) silently SKIPPED the CTA gate;
+   a skipped gate reads as green in the summary line. Check the SKIPPED lines, not the exit code.
+5. **A cutaway still over a map comp is a "sandwich" to `overlap_check.mjs`** (index element covering comp text).
+   Escape per element with `data-overlap-ok="cutaway over the map"` only when the still is full-frame and meant to
+   cover the map; popfigs never sit over a map comp (state labels collide), the map's own rail carries the number.
+6. **`repeat:-1` on a comp's main timeline makes `tl.duration()` infinite (1e10).** Two batch-4 comps did it for
+   ambient drift. Measure every comp with a bare page + `window.__timelines[id].duration()` before mounting; the
+   staging pages a measurer writes into `compositions/_dur_*.html` count as unmounted comps in sweep until deleted.
+7. **Builders leave `_shot_*.html` staging pages in `compositions/`.** sweep and graphics_qc both scan them
+   (23 "unmounted" comps, phantom collisions). Delete every `_shot_*`, `_dur_*`, `_debug_*` page before the gate
+   run, and the one-shot scripts under `scripts/_*` that this branch added before the PR.
+
+## 2026-09-20 (later) — write sentences people say; one score; a hold replaces the blackout; fillers on probe
+Owner on v4 Tanner passage ("Same town. One mile to the west. One hour later. Ninety eight miles long."): "your average
+sentence is three to four words long, nobody speaks like this"; "in the dark" is filler; scores with a percentage
+beside them are confusing; a 3.5 s hold followed by a blackout is 5 to 7 s of nothing.
+1. **Fragments are banned.** The CLAUDE.md voice rule already says "flowing connective sentences, not chopped
+   fragments"; the writer over-corrected the third-grader rule into trailer-speak. Sentences run 10 to 22 words,
+   joined with and / but / because / so; one idea each, but a whole sentence. A fragment is allowed only as a spoken
+   quote from a real person.
+2. **Decoration words are cut** ("in the dark" when the clock already said 7:30 PM; "head on"; "by the way" unless it
+   is a deliberate filler). Delete test per phrase, not just per sentence.
+3. **One score per script, out of 10, from the independent grader, with one line on what would move it.** No
+   confidence percentage in the owner-facing report (it lives in the grader file only).
+4. **A hold replaces the blackout at that seam, never both.** Hold 3 to 4 s after a payoff over a moving picture
+   with a bed; the act blackout stays only where there is no hold.
+5. **Spoken fillers are an experiment, not a rule:** uh / um / you know / look / I mean / so / well / right? / by the
+   way / actually, plus spoken grammar (repeat the subject: "the man who ran the office, he knew"; contractions;
+   a trailing "right?"). One or two per 30 s at most. Probe both versions through pocket-TTS before deciding;
+   probes for ep-1974 live in `episodes/ep-1974-super-outbreak/audio/probe/`.
+
+## 2026-09-20 — plain American, literal clock times, atempo 1.10 on docs, and an independent grade on every script
+Owner on the 1974 hook: "quarter to five" is confusing, say "4:45 PM"; "the day is only half over" is a riddle; "why did
+knowing not save them" is Oxford English; "talk in a way a third grader can make sense of, talk like a human, you are
+overstressing the documentary persona". Also: docs get atempo 1.10 like the minis (probe the hook first).
+Rules:
+1. Clock times are literal digits with AM/PM in the on-screen popfig and spoken as "four forty five PM". No "quarter
+   to", "half past", "the day is only half over".
+2. Register test per sentence: would a third grader follow it aloud? Short words, one idea, no inversion, no riddle
+   phrasing. The documentary voice is a person telling a story, not a narrator performing one.
+3. F5 vs EF5: 1974 and every tornado before 2007 is F-scale (F5); 2007 on is EF5. The owner read "F5" as a typo; the
+   script now carries a one-line note so nobody "fixes" it.
+4. **Every hook and every script (shorts, minis, docs) gets an independent grade before the owner sees it**: a
+   separate skeptic-reviewer agent that has not seen the writer's reasoning rates the hook 0 to 10 with a confidence
+   percentage, every chapter on the six script-os axes, draws the stakes curve, lists open-loop gaps, register
+   violations and fluff sentences, and ranks the fixes. The writer fixes, re-grades, and reports both grades to the
+   owner. A script ships to TTS only when the grader's hook score is at least 8 and no chapter axis is under 3.
+5. Tension system, not taste: the loop table carries plant and pay TIMES; at any timestamp at least one loop must be
+   open and unpaid; no 90-second window without a retention spike; stakes score per chapter never drops more than one
+   point and ends higher than it started. Checked by the grader, and by `scripts/script_scorecard.py` once it exists.
+
+## 2026-09-20 — hooks and CTAs carry fluff; the owner is cutting 30 to 40 s out of shipped videos by hand
+Owner, 20 Sep 26: "your hook, maybe the very first sentence, maybe the second or third, it's just fluff. It doesn't get
+to the point. At least give them the ROI." He trimmed Joplin and Tri-State on YouTube himself. Studio data: Tri-State
+21 % watched, Joplin 25 %, Carr Fire 5.8 % after day one; the losses sit in the first 10 to 15 s.
+Rules, every script from ep-1974 on:
+1. **Sentence one is the payoff the title promised.** Numbers first ("Seven F5 tornadoes in one afternoon. Three
+   hundred and thirty dead."), the specific image second, the question third. No scene-setting before the ROI.
+2. **The hook is 45 to 60 words, 20 to 25 s including the insert.** Anything the viewer does not need to decide
+   to stay is cut. Test: delete the first sentence; if the hook still works, the sentence was fluff.
+3. **No roadmap phrases anywhere** ("one more thing before", "here is what that day would become", "in the next
+   twenty minutes"). They read as delay. Fold the numbers into a sentence that already carries stakes.
+4. **The CTA hinge is one tease sentence, not a paragraph.** The segment before the CTA ends on the loop in ≤ 25
+   words; the segment after opens with the payoff in its first three words ("He wrote a six.").
+5. **Owner-cut SRT diff is the retention gate for the next script:** before writing a new hook, diff the shipped
+   SRT of the last video against what is live on YouTube and list what the owner removed; do not write those
+   shapes again. (20 Sep 26: the live durations of Joplin, Tri-State and Super Outbreak still match the shipped
+   SRTs to within seconds, so the trims may still be processing; re-check before the next script.)
+
+## 20 Sep 26 — El Reno v3 post-mortem: stock footage was audible and no gate saw it
+- Owner rejected v3 partly for "a lot of audio for the stock footages". Root cause: `<video>` elements
+  mounted with neither `muted` nor `data-volume`. hyperframes plays such a track at 1.0, but
+  `audio_levels.py` treated "no data-volume" as muted by convention and skipped them, so the levels gate
+  passed a mix with unlevelled clip audio under narration.
+- Fix (this PR): `audio_levels.py` now skips a video only when it carries `muted` (or data-volume 0) and
+  levels every other video at its data-volume, default 1.0; `sweep_episode.py` check 5e fails any `<video>`
+  that declares neither. Verified: ep6 trips on `kb-radarloop` (silence-muxed, harmless, but undeclared);
+  ms-krakatau-sirens passes both gates with the same 19 audible elements as before.
+- Rule: every `<video>` says what its audio is. `muted` for b-roll, `data-volume` for inserts and the CTA.
+
+## 16 Sep 26 — pin bumped to 0.8.41 on owner order; the ritual's RMS drift is a flat mixer offset
+- `pin_ritual.py` against 0.8.41: duration 84.000/84.000 s, black map 2/2 identical, RMS −16.91 → −18.04 dB,
+  exit 3 (no bump, human decides). Evidence for the decision came from the shorts final, which exists on disk
+  at both versions: 0.7.109 draft −12.9 LUFS, 0.8.41 final −14.5 LUFS. Windowed volumedetect on the same cut:
+  narration windows −1.3 / −1.7 / −1.8 dB, the bed-only window −1.6 dB; narration-to-bed spacing 30.8 vs
+  31.1 dB. Every stem moved together, the balance did not: a flat output-gain change in the 0.8 mixer, and
+  `master_deliverables.py` measures and corrects the master to −14 LUFS regardless. Owner: "bump the pin".
+- Bumped with the ritual's own `bump_pins()` (config.yaml + render.cmd) and the baseline record rewritten
+  from the 0.8.41 demo render (`scripts/pin_baseline.json`: rms −18.04, peak −1.56); the next ritual run
+  compares against 0.8.41, not 0.7.109. The demo mp4 is cached at
+  `episodes/demo-joplin-90/renders/pin-baseline-0.8.41.mp4` for SSIM.
+- New in 0.8.41 and worth reading in every render log: `audio_volume_tween_overrides_gain` (a gsap `volume`
+  tween now REPLACES `data-volume`, it does not scale it; demo-joplin-90's bgm trips it) and
+  `audio_src_not_found` blocks the render instead of shipping a silent track.
+- Ritual gotcha: it prechecked only `media/`, but `audio/` is gitignored too; two launches were wasted in a
+  fresh worktree before the narration wavs were copied. The precheck now covers both.
+
+## 16 Sep 26 — hyperframes 0.8.41 full render on this box: no visible windows, clean
+Owner asked for the latest hyperframes on the shorts final instead of the 0.7.109 pin. Same flags as
+render.cmd, `npx hyperframes@0.8.41`, sh-hawaii-lowell-1 (29.4 s, 1080×1920, 5 clips, 3 workers): rendered in
+1m 18.7s, GPU probe NVIDIA, 0 black / 0 silent stretches, 4-frame subagent read identical to the 0.7.109 draft,
+master -14.01 LUFS. Owner watched it: "didnt start opening 200 CMD windows … its smooth", so the 0.8.x
+visible-terminal-tab problem that froze the pin is gone on this box at 0.8.41. Not a pin bump by itself: run
+`scripts/pin_ritual.py` against 0.8.41 (the demo A/B on a 48-clip comp is the test that matters, a 5-clip
+short is not) and bump on identical metrics.
+
+## 16 Sep 26 — shorts demo v3: tracked pin on the wrong object, text outside the 9:16 safe zone (owner RCA order)
+Owner on sh-hawaii-lowell-1 v3: "the circle is off … an overcook", "texts mangled/overlapping/out of viewport",
+"you missed on both cases today". Both pins and their labels were removed for v4; the video never ships a pin.
+The RCA is training for the next pin.
+- **Pin 1 (lineman): the ring tracked foliage because the seed box was a guess.** The tracker (OpenCV MIL, then
+  5-frame smoothing, keyframes every 3rd frame baked into gsap) did exactly its job on the box it was given.
+  The box came from a subagent reading a gridded frame and *estimating* pixel coordinates (380,470,230,380); the
+  lineman was at about (782,718). No step compared the box to the picture before 30 s of keyframes were baked.
+  Rule: **a tracking seed is verified visually before tracking** — crop the ROI out of frame 0, and draw the
+  ring on frame 0 AND the last tracked frame of the source, then a subagent answers one yes/no question per
+  image: "is the ring on the <named object>?" Only a yes on both starts the bake. For people and vehicles,
+  seed from a detector (YOLO/HOG person box), not from a coordinate estimate.
+- **Pin 2 (truck): MIL lags on real motion.** On the moving vehicle the ring trailed the object by roughly a third
+  of its width. MIL is a template tracker; it is fine for a slow pan, not a moving subject. For anything that
+  moves, use per-frame detection or a stronger tracker (CSRT/KCF at least), and still run the two-image check.
+- **The labels went off-frame because `overlap_check.mjs` reads static layout.** The label was placed with a
+  gsap `x` tween that carried it past 1080 px at runtime; the static rect was inside. Captions and the close
+  card also sat in the Shorts UI zone (title, buttons, right rail), which no gate modelled.
+  Fix shipped: `scripts/shorts_lint.mjs` (see references/shorts/PLAN.md step 5) measures every visible text
+  element at runtime, 0.25 s steps, against the frame, the safe zone and each other. Proof: on the v3 index.html
+  it reports 18 findings (the off-frame label, 7 captions, the head, the close card); on v4 it passes.
+- **Layout that passed for 9:16:** head at y 250, captions at y 1220, close card at y 1190, quote card at y 560,
+  chips at y 960 sliding in from x −60 (was −500, which the lint flagged as off-frame mid-tween), all with
+  right 180 px so the right rail stays clear.
+- **Preflight trap:** the ffprobe spawn probe measured 0.94 s (gate 0.4 s) on the first launch right after a
+  Chromium-heavy lint run; the same shared binary spawns at 0.14 s warm. Re-measure once on the idle box
+  before touching anything.
+
+## 2026-09-15 — Renders were on the Intel iGPU; pin headless Chrome to the GTX 1650
+- **Every render up to 15 Sep captured on the Intel UHD iGPU.** `--browser-gpu` only asks Chrome for
+  hardware D3D11; Windows hands an unpinned headless exe the integrated adapter. Measured on
+  ms-elnino-cpc-today full (7:47, 2 workers): 26 min, CPU 100 %, render RSS peak 5.7 GB (the iGPU's
+  frame buffers live in system RAM), GTX 1650 at 0 %. The owner could not multitask.
+- **Fix is a per-user registry pin, no package patch:** `HKCU\Software\Microsoft\DirectX\UserGpuPreferences`,
+  value = full exe path, data `GpuPreference=2;`. Chromium reads it; `--force_high_performance_gpu` adds
+  nothing on top (probed both). Trap: hyperframes launches its OWN Chrome from
+  `~/.cache/hyperframes/chrome/chrome-headless-shell/<ver>/…`, not the Playwright one, and every new
+  build is a new exe path. `render_busy.py --launch` now pins every chrome-headless-shell.exe under
+  both trees on every launch; `verify_render.sh` fails (exit 2) unless the log's
+  `browserGpuMode probe →` line names NVIDIA.
+- Still CPU by design in 0.7.109: ffmpeg frame extraction (~70 s for 48 clips) and audio; no hw-decode switch exists.
+- RAM floor stays 4 GB: the GPU run's capture RSS is ~4 GB vs ~5–6 GB on the iGPU (k2 logs in the 15 Sep session).
+
+## 15 Sep 26 — first two Format C (rolling update) builds, ms-indonesia-four-volcanoes + ms-hawaii-lowell-outages
+- **Pronunciation gate before timing.** Read every proper noun back from the whisper words.json after TTS (Arupadhatu came out
+  "Aeropoda 2-1", KIUC as "Kaiyo Sea", Haena as "Hina"). Respell phonetically in the narration blockquote only, re-synthesise, then
+  time. Doing it after the timeline existed cost a full mechanical retime (~40 min). Probe-TTS the name list first next time.
+- **words.json must be younger than its wav.** transcribe ran on one native wav before atempo in a crashed chain; the tell is
+  words end > wav duration. Check before cueing anything.
+- **Frame reviewers misjudge edges and coastlines.** "Pin in the water" / "touches the right edge" were wrong twice; a PIL pixel check
+  on the snapshot (or the source map's land/sea mask) settles it in seconds. Use the mask to place pins in the first place.
+- **shot_comp.mjs staging copies** (`compositions/_shot_*.html`) get graded by graphics_qc; delete them right after snapshots.
+- **Two-worker draft render + Firefox = 0.8 GB free.** render_busy's floor is right; nothing else launches during a render.
+- **Overlap checker only sees overlays with a `p-` id and a timed wrapper**; bare popfig divs are invisible to it (0 overlays,
+  false PASS). Wrap every overlay in `<section class="clip" id="p-…" data-start data-duration data-track-index>`; chips and
+  source labels on track 4, popfigs and quote cards on track 5.
+
+## 2026-09-12 · MG eval: a tidy diagram with the island underwater scored 21/25
+- Three Sonnets and a blind reader built and ranked g-slope from a brief that described a LOOK (tall cone 338 m → shorter
+  cone 110 m, 27° → 16°) with no datum, no orientation, no source figure. Winner had the post-collapse island submerged;
+  the numbers themselves were wrong (27° is the pre-collapse slope ABOVE water, now ~7°; the underwater slope went
+  24° → 16°, Meredew 2026). Every check in the chain (scaffold read, blind reader, graphics_qc) measured layout.
+- Fix, durable: `references/mg-brief-template.md`. Brief = SOURCE figure + DATUM/SCALE/ORIENTATION + geometry in px +
+  MUST-BE-TRUE list with ratios, all numbers confirmed first. Review order: meaning → layout → motion → code gate.
+  For bespoke diagrams the orchestrator reads one final frame itself against the truths.
+- With the complete brief both Sonnets (polish-first and scaffold-first) produced physically correct diagrams in 2–3 loops,
+  ~11–15 min, ~310k tokens each; one caught a contradiction inside the brief and reported it. Scaffold-first still finds
+  layout defects cheaper; the brief is what makes the picture true.
+- GSAP gotcha: an un-positioned `tl.set()` lands at the END of the timeline as built so far; inserting positioned tweens
+  above it silently shifts it (panel vanished at 5.5 s). Add late fixes at the end of the timeline, always with positions.
+- The blind reader reported the NE label present when it was hidden under a rock fill; the orchestrator's own frame read
+  caught it. Vision-agent verdicts get one spot-check by the orchestrator, every time.
+- Auto-mode classifier refuses most new Agent spawns from command-heavy prompts ("Auto-Mode Bypass"); resuming an existing
+  agent via SendMessage passes. Owner adds `Agent` to permissions.allow; the session cannot (Self-Modification).
+
+## 2026-09-11 · Krakatau #4 mistake ledger: which gate should have caught what
+- Catchable and now gated: nowrap text off the frame (overlap_check `off-frame`, measures scrollWidth and the
+  viewport), an overlay stacked on a card (overlap_check `overlay-on-comp`; the builder now sends such overlays to
+  the right half), glass cards flagged "undesigned" (the detector only knew gradients; backdrop blur now counts).
+  That last one was a true positive I had filed as a known false alarm: a red gate is never noise until the current
+  artifact was opened, and real noise gets the detector fixed the same day.
+- Not catchable by code: what a clip shows. provenance.csv now carries a `shot` column (what is visible, including
+  burned-in chyrons) for every broadcast cutter, written from one labelled contact grid read by a subagent; the
+  builder refuses a cutter without one. Pick pictures from `shot`, never from a file name.
+- Quote cards: the attribution era must match the cut underneath (Ulrich 1958 sat on an 1883 print); `shot`
+  starts with an era/category token so the check is a glance.
+- Process: list every violation in one pass before iterating (three gate cycles burned on one bug line at a
+  time); write Windows-path scripts with the Write tool, never bash heredocs (the backslash-U escape trap, three
+  times this session, once while writing this very rule).
+
+## 2026-09-11 · OOM: the gate suite ran on top of a live draft render
+- Draft (2 capture workers ≈ 2 Chromiums + node) + blank_scan + graphics_qc (2 more headless Chromiums) +
+  optimize_clips (ffmpeg batch) + the owner's browser = 16 GB gone; the owner saw the OOM before I did.
+- render_preflight only guards the render's own start, and direct launches skip it. New guard
+  `scripts/render_busy.py` (exit 3 while any `hyperframes … render` node is alive; RENDER_BUSY_OK=1 override)
+  is called from playwright_env.mjs (covers both Chromium gates), optimize_clips --apply, and the slice/draft
+  launchers. Rule: one heavy job at a time; gates BEFORE the render, verify_render AFTER it, never beside it.
+
+## 2026-09-11 · Krakatau #4 slice QC: text that runs off the frame, and blind clip picks
+- Slice renders (5 windows, 10 fps, ~2 min each) caught what the static suite cannot see: a 25-char popfig
+  cut at both frame edges, three bug headlines (63–84 chars) truncated mid-word, and a popfig stacked on the
+  siren-chain card. Root cause: no width gate on nowrap text. Fix: character caps in FORMAT.md (popfig ≤16,
+  chip ≤52, bug ≤60) asserted by the builder; long thoughts become chips.
+- Picking broadcast cutters by file name ("f24_005 = 2026 plume") put an airport departure board under "same
+  mountain, same mechanism, then where?" and a terminal corridor under the siren explainer. Rule: every clip is
+  eyeballed (labelled contact grid, one subagent read) before it is wired; provenance.csv carries the source,
+  not the picture.
+- graphics_qc "undesigned" on glass cards is still the known false alarm; beat_density is the motion gate.
+
 ## 2026-09-10 — Krakatau packaging pass: owner corrections on title length and thumbnail plates
 
 - **Titles aim under 60 characters.** Not a hard cap ("55 is not an upper limit"); low-value stretchers at the tail are fine, but an 87-char title was rejected on sight. Owner's own rewrite: "It Killed 36,000 First. Now It's Happening Again." (49).
@@ -1236,320 +1554,3 @@ variety encouraged; goal = learnings compound so video N needs fewer revisions t
 - xstack contact sheets pad undefined regions GREEN — padding, not video content; don't panic.
 - Snapshot pre-render QC caught both grade issues before paying for a render — keep snapshot
   sweep (≈13 frames) as the mandatory pre-render gate; post-render frame sweep stays too.
-
-## 2026-09-11 · Krakatau #4 slice QC: text that runs off the frame, and blind clip picks
-- Slice renders (5 windows, 10 fps, ~2 min each) caught what the static suite cannot see: a 25-char popfig
-  cut at both frame edges, three bug headlines (63–84 chars) truncated mid-word, and a popfig stacked on the
-  siren-chain card. Root cause: no width gate on nowrap text. Fix: character caps in FORMAT.md (popfig ≤16,
-  chip ≤52, bug ≤60) asserted by the builder; long thoughts become chips.
-- Picking broadcast cutters by file name ("f24_005 = 2026 plume") put an airport departure board under "same
-  mountain, same mechanism, then where?" and a terminal corridor under the siren explainer. Rule: every clip is
-  eyeballed (labelled contact grid, one subagent read) before it is wired; provenance.csv carries the source,
-  not the picture.
-- graphics_qc "undesigned" on glass cards is still the known false alarm; beat_density is the motion gate.
-
-## 2026-09-11 · OOM: the gate suite ran on top of a live draft render
-- Draft (2 capture workers ≈ 2 Chromiums + node) + blank_scan + graphics_qc (2 more headless Chromiums) +
-  optimize_clips (ffmpeg batch) + the owner's browser = 16 GB gone; the owner saw the OOM before I did.
-- render_preflight only guards the render's own start, and direct launches skip it. New guard
-  `scripts/render_busy.py` (exit 3 while any `hyperframes … render` node is alive; RENDER_BUSY_OK=1 override)
-  is called from playwright_env.mjs (covers both Chromium gates), optimize_clips --apply, and the slice/draft
-  launchers. Rule: one heavy job at a time; gates BEFORE the render, verify_render AFTER it, never beside it.
-
-## 2026-09-11 · Krakatau #4 mistake ledger: which gate should have caught what
-- Catchable and now gated: nowrap text off the frame (overlap_check `off-frame`, measures scrollWidth and the
-  viewport), an overlay stacked on a card (overlap_check `overlay-on-comp`; the builder now sends such overlays to
-  the right half), glass cards flagged "undesigned" (the detector only knew gradients; backdrop blur now counts).
-  That last one was a true positive I had filed as a known false alarm: a red gate is never noise until the current
-  artifact was opened, and real noise gets the detector fixed the same day.
-- Not catchable by code: what a clip shows. provenance.csv now carries a `shot` column (what is visible, including
-  burned-in chyrons) for every broadcast cutter, written from one labelled contact grid read by a subagent; the
-  builder refuses a cutter without one. Pick pictures from `shot`, never from a file name.
-- Quote cards: the attribution era must match the cut underneath (Ulrich 1958 sat on an 1883 print); `shot`
-  starts with an era/category token so the check is a glance.
-- Process: list every violation in one pass before iterating (three gate cycles burned on one bug line at a
-  time); write Windows-path scripts with the Write tool, never bash heredocs (the backslash-U escape trap, three
-  times this session, once while writing this very rule).
-
-## 2026-09-12 · MG eval: a tidy diagram with the island underwater scored 21/25
-- Three Sonnets and a blind reader built and ranked g-slope from a brief that described a LOOK (tall cone 338 m → shorter
-  cone 110 m, 27° → 16°) with no datum, no orientation, no source figure. Winner had the post-collapse island submerged;
-  the numbers themselves were wrong (27° is the pre-collapse slope ABOVE water, now ~7°; the underwater slope went
-  24° → 16°, Meredew 2026). Every check in the chain (scaffold read, blind reader, graphics_qc) measured layout.
-- Fix, durable: `references/mg-brief-template.md`. Brief = SOURCE figure + DATUM/SCALE/ORIENTATION + geometry in px +
-  MUST-BE-TRUE list with ratios, all numbers confirmed first. Review order: meaning → layout → motion → code gate.
-  For bespoke diagrams the orchestrator reads one final frame itself against the truths.
-- With the complete brief both Sonnets (polish-first and scaffold-first) produced physically correct diagrams in 2–3 loops,
-  ~11–15 min, ~310k tokens each; one caught a contradiction inside the brief and reported it. Scaffold-first still finds
-  layout defects cheaper; the brief is what makes the picture true.
-- GSAP gotcha: an un-positioned `tl.set()` lands at the END of the timeline as built so far; inserting positioned tweens
-  above it silently shifts it (panel vanished at 5.5 s). Add late fixes at the end of the timeline, always with positions.
-- The blind reader reported the NE label present when it was hidden under a rock fill; the orchestrator's own frame read
-  caught it. Vision-agent verdicts get one spot-check by the orchestrator, every time.
-- Auto-mode classifier refuses most new Agent spawns from command-heavy prompts ("Auto-Mode Bypass"); resuming an existing
-  agent via SendMessage passes. Owner adds `Agent` to permissions.allow; the session cannot (Self-Modification).
-
-## 15 Sep 26 — first two Format C (rolling update) builds, ms-indonesia-four-volcanoes + ms-hawaii-lowell-outages
-- **Pronunciation gate before timing.** Read every proper noun back from the whisper words.json after TTS (Arupadhatu came out
-  "Aeropoda 2-1", KIUC as "Kaiyo Sea", Haena as "Hina"). Respell phonetically in the narration blockquote only, re-synthesise, then
-  time. Doing it after the timeline existed cost a full mechanical retime (~40 min). Probe-TTS the name list first next time.
-- **words.json must be younger than its wav.** transcribe ran on one native wav before atempo in a crashed chain; the tell is
-  words end > wav duration. Check before cueing anything.
-- **Frame reviewers misjudge edges and coastlines.** "Pin in the water" / "touches the right edge" were wrong twice; a PIL pixel check
-  on the snapshot (or the source map's land/sea mask) settles it in seconds. Use the mask to place pins in the first place.
-- **shot_comp.mjs staging copies** (`compositions/_shot_*.html`) get graded by graphics_qc; delete them right after snapshots.
-- **Two-worker draft render + Firefox = 0.8 GB free.** render_busy's floor is right; nothing else launches during a render.
-- **Overlap checker only sees overlays with a `p-` id and a timed wrapper**; bare popfig divs are invisible to it (0 overlays,
-  false PASS). Wrap every overlay in `<section class="clip" id="p-…" data-start data-duration data-track-index>`; chips and
-  source labels on track 4, popfigs and quote cards on track 5.
-
-## 2026-09-15 — Renders were on the Intel iGPU; pin headless Chrome to the GTX 1650
-- **Every render up to 15 Sep captured on the Intel UHD iGPU.** `--browser-gpu` only asks Chrome for
-  hardware D3D11; Windows hands an unpinned headless exe the integrated adapter. Measured on
-  ms-elnino-cpc-today full (7:47, 2 workers): 26 min, CPU 100 %, render RSS peak 5.7 GB (the iGPU's
-  frame buffers live in system RAM), GTX 1650 at 0 %. The owner could not multitask.
-- **Fix is a per-user registry pin, no package patch:** `HKCU\Software\Microsoft\DirectX\UserGpuPreferences`,
-  value = full exe path, data `GpuPreference=2;`. Chromium reads it; `--force_high_performance_gpu` adds
-  nothing on top (probed both). Trap: hyperframes launches its OWN Chrome from
-  `~/.cache/hyperframes/chrome/chrome-headless-shell/<ver>/…`, not the Playwright one, and every new
-  build is a new exe path. `render_busy.py --launch` now pins every chrome-headless-shell.exe under
-  both trees on every launch; `verify_render.sh` fails (exit 2) unless the log's
-  `browserGpuMode probe →` line names NVIDIA.
-- Still CPU by design in 0.7.109: ffmpeg frame extraction (~70 s for 48 clips) and audio; no hw-decode switch exists.
-- RAM floor stays 4 GB: the GPU run's capture RSS is ~4 GB vs ~5–6 GB on the iGPU (k2 logs in the 15 Sep session).
-
-## 16 Sep 26 — shorts demo v3: tracked pin on the wrong object, text outside the 9:16 safe zone (owner RCA order)
-Owner on sh-hawaii-lowell-1 v3: "the circle is off … an overcook", "texts mangled/overlapping/out of viewport",
-"you missed on both cases today". Both pins and their labels were removed for v4; the video never ships a pin.
-The RCA is training for the next pin.
-- **Pin 1 (lineman): the ring tracked foliage because the seed box was a guess.** The tracker (OpenCV MIL, then
-  5-frame smoothing, keyframes every 3rd frame baked into gsap) did exactly its job on the box it was given.
-  The box came from a subagent reading a gridded frame and *estimating* pixel coordinates (380,470,230,380); the
-  lineman was at about (782,718). No step compared the box to the picture before 30 s of keyframes were baked.
-  Rule: **a tracking seed is verified visually before tracking** — crop the ROI out of frame 0, and draw the
-  ring on frame 0 AND the last tracked frame of the source, then a subagent answers one yes/no question per
-  image: "is the ring on the <named object>?" Only a yes on both starts the bake. For people and vehicles,
-  seed from a detector (YOLO/HOG person box), not from a coordinate estimate.
-- **Pin 2 (truck): MIL lags on real motion.** On the moving vehicle the ring trailed the object by roughly a third
-  of its width. MIL is a template tracker; it is fine for a slow pan, not a moving subject. For anything that
-  moves, use per-frame detection or a stronger tracker (CSRT/KCF at least), and still run the two-image check.
-- **The labels went off-frame because `overlap_check.mjs` reads static layout.** The label was placed with a
-  gsap `x` tween that carried it past 1080 px at runtime; the static rect was inside. Captions and the close
-  card also sat in the Shorts UI zone (title, buttons, right rail), which no gate modelled.
-  Fix shipped: `scripts/shorts_lint.mjs` (see references/shorts/PLAN.md step 5) measures every visible text
-  element at runtime, 0.25 s steps, against the frame, the safe zone and each other. Proof: on the v3 index.html
-  it reports 18 findings (the off-frame label, 7 captions, the head, the close card); on v4 it passes.
-- **Layout that passed for 9:16:** head at y 250, captions at y 1220, close card at y 1190, quote card at y 560,
-  chips at y 960 sliding in from x −60 (was −500, which the lint flagged as off-frame mid-tween), all with
-  right 180 px so the right rail stays clear.
-- **Preflight trap:** the ffprobe spawn probe measured 0.94 s (gate 0.4 s) on the first launch right after a
-  Chromium-heavy lint run; the same shared binary spawns at 0.14 s warm. Re-measure once on the idle box
-  before touching anything.
-
-## 16 Sep 26 — hyperframes 0.8.41 full render on this box: no visible windows, clean
-Owner asked for the latest hyperframes on the shorts final instead of the 0.7.109 pin. Same flags as
-render.cmd, `npx hyperframes@0.8.41`, sh-hawaii-lowell-1 (29.4 s, 1080×1920, 5 clips, 3 workers): rendered in
-1m 18.7s, GPU probe NVIDIA, 0 black / 0 silent stretches, 4-frame subagent read identical to the 0.7.109 draft,
-master -14.01 LUFS. Owner watched it: "didnt start opening 200 CMD windows … its smooth", so the 0.8.x
-visible-terminal-tab problem that froze the pin is gone on this box at 0.8.41. Not a pin bump by itself: run
-`scripts/pin_ritual.py` against 0.8.41 (the demo A/B on a 48-clip comp is the test that matters, a 5-clip
-short is not) and bump on identical metrics.
-
-## 16 Sep 26 — pin bumped to 0.8.41 on owner order; the ritual's RMS drift is a flat mixer offset
-- `pin_ritual.py` against 0.8.41: duration 84.000/84.000 s, black map 2/2 identical, RMS −16.91 → −18.04 dB,
-  exit 3 (no bump, human decides). Evidence for the decision came from the shorts final, which exists on disk
-  at both versions: 0.7.109 draft −12.9 LUFS, 0.8.41 final −14.5 LUFS. Windowed volumedetect on the same cut:
-  narration windows −1.3 / −1.7 / −1.8 dB, the bed-only window −1.6 dB; narration-to-bed spacing 30.8 vs
-  31.1 dB. Every stem moved together, the balance did not: a flat output-gain change in the 0.8 mixer, and
-  `master_deliverables.py` measures and corrects the master to −14 LUFS regardless. Owner: "bump the pin".
-- Bumped with the ritual's own `bump_pins()` (config.yaml + render.cmd) and the baseline record rewritten
-  from the 0.8.41 demo render (`scripts/pin_baseline.json`: rms −18.04, peak −1.56); the next ritual run
-  compares against 0.8.41, not 0.7.109. The demo mp4 is cached at
-  `episodes/demo-joplin-90/renders/pin-baseline-0.8.41.mp4` for SSIM.
-- New in 0.8.41 and worth reading in every render log: `audio_volume_tween_overrides_gain` (a gsap `volume`
-  tween now REPLACES `data-volume`, it does not scale it; demo-joplin-90's bgm trips it) and
-  `audio_src_not_found` blocks the render instead of shipping a silent track.
-- Ritual gotcha: it prechecked only `media/`, but `audio/` is gitignored too; two launches were wasted in a
-  fresh worktree before the narration wavs were copied. The precheck now covers both.
-
-## 20 Sep 26 — El Reno v3 post-mortem: stock footage was audible and no gate saw it
-- Owner rejected v3 partly for "a lot of audio for the stock footages". Root cause: `<video>` elements
-  mounted with neither `muted` nor `data-volume`. hyperframes plays such a track at 1.0, but
-  `audio_levels.py` treated "no data-volume" as muted by convention and skipped them, so the levels gate
-  passed a mix with unlevelled clip audio under narration.
-- Fix (this PR): `audio_levels.py` now skips a video only when it carries `muted` (or data-volume 0) and
-  levels every other video at its data-volume, default 1.0; `sweep_episode.py` check 5e fails any `<video>`
-  that declares neither. Verified: ep6 trips on `kb-radarloop` (silence-muxed, harmless, but undeclared);
-  ms-krakatau-sirens passes both gates with the same 19 audible elements as before.
-- Rule: every `<video>` says what its audio is. `muted` for b-roll, `data-volume` for inserts and the CTA.
-## 2026-09-20 — hooks and CTAs carry fluff; the owner is cutting 30 to 40 s out of shipped videos by hand
-Owner, 20 Sep 26: "your hook, maybe the very first sentence, maybe the second or third, it's just fluff. It doesn't get
-to the point. At least give them the ROI." He trimmed Joplin and Tri-State on YouTube himself. Studio data: Tri-State
-21 % watched, Joplin 25 %, Carr Fire 5.8 % after day one; the losses sit in the first 10 to 15 s.
-Rules, every script from ep-1974 on:
-1. **Sentence one is the payoff the title promised.** Numbers first ("Seven F5 tornadoes in one afternoon. Three
-   hundred and thirty dead."), the specific image second, the question third. No scene-setting before the ROI.
-2. **The hook is 45 to 60 words, 20 to 25 s including the insert.** Anything the viewer does not need to decide
-   to stay is cut. Test: delete the first sentence; if the hook still works, the sentence was fluff.
-3. **No roadmap phrases anywhere** ("one more thing before", "here is what that day would become", "in the next
-   twenty minutes"). They read as delay. Fold the numbers into a sentence that already carries stakes.
-4. **The CTA hinge is one tease sentence, not a paragraph.** The segment before the CTA ends on the loop in ≤ 25
-   words; the segment after opens with the payoff in its first three words ("He wrote a six.").
-5. **Owner-cut SRT diff is the retention gate for the next script:** before writing a new hook, diff the shipped
-   SRT of the last video against what is live on YouTube and list what the owner removed; do not write those
-   shapes again. (20 Sep 26: the live durations of Joplin, Tri-State and Super Outbreak still match the shipped
-   SRTs to within seconds, so the trims may still be processing; re-check before the next script.)
-
-## 2026-09-20 — plain American, literal clock times, atempo 1.10 on docs, and an independent grade on every script
-Owner on the 1974 hook: "quarter to five" is confusing, say "4:45 PM"; "the day is only half over" is a riddle; "why did
-knowing not save them" is Oxford English; "talk in a way a third grader can make sense of, talk like a human, you are
-overstressing the documentary persona". Also: docs get atempo 1.10 like the minis (probe the hook first).
-Rules:
-1. Clock times are literal digits with AM/PM in the on-screen popfig and spoken as "four forty five PM". No "quarter
-   to", "half past", "the day is only half over".
-2. Register test per sentence: would a third grader follow it aloud? Short words, one idea, no inversion, no riddle
-   phrasing. The documentary voice is a person telling a story, not a narrator performing one.
-3. F5 vs EF5: 1974 and every tornado before 2007 is F-scale (F5); 2007 on is EF5. The owner read "F5" as a typo; the
-   script now carries a one-line note so nobody "fixes" it.
-4. **Every hook and every script (shorts, minis, docs) gets an independent grade before the owner sees it**: a
-   separate skeptic-reviewer agent that has not seen the writer's reasoning rates the hook 0 to 10 with a confidence
-   percentage, every chapter on the six script-os axes, draws the stakes curve, lists open-loop gaps, register
-   violations and fluff sentences, and ranks the fixes. The writer fixes, re-grades, and reports both grades to the
-   owner. A script ships to TTS only when the grader's hook score is at least 8 and no chapter axis is under 3.
-5. Tension system, not taste: the loop table carries plant and pay TIMES; at any timestamp at least one loop must be
-   open and unpaid; no 90-second window without a retention spike; stakes score per chapter never drops more than one
-   point and ends higher than it started. Checked by the grader, and by `scripts/script_scorecard.py` once it exists.
-
-## 2026-09-20 (later) — write sentences people say; one score; a hold replaces the blackout; fillers on probe
-Owner on v4 Tanner passage ("Same town. One mile to the west. One hour later. Ninety eight miles long."): "your average
-sentence is three to four words long, nobody speaks like this"; "in the dark" is filler; scores with a percentage
-beside them are confusing; a 3.5 s hold followed by a blackout is 5 to 7 s of nothing.
-1. **Fragments are banned.** The CLAUDE.md voice rule already says "flowing connective sentences, not chopped
-   fragments"; the writer over-corrected the third-grader rule into trailer-speak. Sentences run 10 to 22 words,
-   joined with and / but / because / so; one idea each, but a whole sentence. A fragment is allowed only as a spoken
-   quote from a real person.
-2. **Decoration words are cut** ("in the dark" when the clock already said 7:30 PM; "head on"; "by the way" unless it
-   is a deliberate filler). Delete test per phrase, not just per sentence.
-3. **One score per script, out of 10, from the independent grader, with one line on what would move it.** No
-   confidence percentage in the owner-facing report (it lives in the grader file only).
-4. **A hold replaces the blackout at that seam, never both.** Hold 3 to 4 s after a payoff over a moving picture
-   with a bed; the act blackout stays only where there is no hold.
-5. **Spoken fillers are an experiment, not a rule:** uh / um / you know / look / I mean / so / well / right? / by the
-   way / actually, plus spoken grammar (repeat the subject: "the man who ran the office, he knew"; contractions;
-   a trailing "right?"). One or two per 30 s at most. Probe both versions through pocket-TTS before deciding;
-   probes for ep-1974 live in `episodes/ep-1974-super-outbreak/audio/probe/`.
-
-## 21 Sep 26 — ep-1974 assembly: the static gates could not read cue-positioned comps, and four rules got a home
-
-Findings from the first hand-authored 39-comp timeline (17.6 min, hook anchored on the WHAS air-check):
-
-1. **Comps place tweens at `CUES.six`, `DUR - 0.6`, `CUES.dark + 1.5`; the gates only parsed numeric literals.**
-   `sweep_episode.py` check 7 reported 14 false "holds" and `beat_density.py` hard-exited on every batch built from
-   words.json cues. Fix: `scripts/comp_consts.py` `fold(src)` replaces `const NAME = num`, `const NAME = {k: v}`
-   members and `num op num` arithmetic with literals before the regexes run (dates like `2026-09` stay text via the
-   leading-zero guard). Both gates import it. Unknown identifiers stay as they were, so a real hole still reports.
-2. **A declared hold is an empty `<section class="clip hold">` on its own track** (DESIGN.md "hold-marker line").
-   `lint_timeline.py` sanctions narration gaps only inside a blackout, a hold or the CTA dips; every other gap over
-   0.8 s still fails. Holds and blackouts never stack at one seam (owner 20 Sep 26).
-3. **Overlay hosts on tracks 3 and 4 are mounted comps.** `sweep_episode.py` read them as unmounted because it only
-   looked at tracks 1 and 2; "mounted" is now any host on any track. Coverage still counts tracks 1 and 2 only, so
-   blackouts must sit on track 1.
-4. **The CTA gate slug regex is `(ep\d*-|ms-)`.** `ep-1974-…` (no digit after `ep`) silently SKIPPED the CTA gate;
-   a skipped gate reads as green in the summary line. Check the SKIPPED lines, not the exit code.
-5. **A cutaway still over a map comp is a "sandwich" to `overlap_check.mjs`** (index element covering comp text).
-   Escape per element with `data-overlap-ok="cutaway over the map"` only when the still is full-frame and meant to
-   cover the map; popfigs never sit over a map comp (state labels collide), the map's own rail carries the number.
-6. **`repeat:-1` on a comp's main timeline makes `tl.duration()` infinite (1e10).** Two batch-4 comps did it for
-   ambient drift. Measure every comp with a bare page + `window.__timelines[id].duration()` before mounting; the
-   staging pages a measurer writes into `compositions/_dur_*.html` count as unmounted comps in sweep until deleted.
-7. **Builders leave `_shot_*.html` staging pages in `compositions/`.** sweep and graphics_qc both scan them
-   (23 "unmounted" comps, phantom collisions). Delete every `_shot_*`, `_dur_*`, `_debug_*` page before the gate
-   run, and the one-shot scripts under `scripts/_*` that this branch added before the PR.
-
-## 21 Sep 26 — first long render on 0.8.41: streaming needs two env vars, and the harness reaps renders
-
-1. **0.8.41 streams captured frames into ffmpeg only for comps up to 240 s.** Anything longer takes the disk
-   capture path and asks for ~8.3 MB per frame of temp space: 131 GB for a 17.6-min draft at 15 fps on a C: with
-   22 GB free, so the render dies at "Starting frame capture" with `Disk capture may need ~131756 MB`. The shorts
-   final and the pin-ritual demo (29 s, 84 s) never met this. `render.cmd` now sets
-   `PRODUCER_STREAMING_ENCODE_MAX_DURATION_SECONDS=7200` and `HF_CAPTURE_PARALLEL_STREAM=true`; the second one
-   is required with `--workers` above 1 (`shouldStreamParallelCapture` in cli.js), without it the log still says
-   `streaming-encode gate enabled:false`. Read that gate line in every render log: `enabled:true` or the render
-   will not finish on this disk.
-2. **Harness background Bash is not a render launcher** (already in this file's index line, ignored under
-   deadline pressure). The harness kills background tasks when free RAM drops near 2 GB, and the kill takes the
-   whole cmd/npx/chrome tree: the 05:28 attempt died 35 min in with the log frozen at 25 % and nine orphan
-   chromes. `schtasks /create ... /tr "wscript.exe <abs>\scripts\run_hidden.vbs cmd.exe /c <abs>\scripts\<task>.cmd"`
-   plus `/run` (with `MSYS2_ARG_CONV_EXCL='*'` under Git Bash) is the only launcher; the `/tr` string has a
-   261-char cap, so the per-episode wrapper `.cmd` (workers, overrides) keeps it short. Delete the task after.
-3. **Draft timing on this box at 0.8.41, streaming, 2 workers:** 15 885 frames in about 13 min (frame 600 at
-   06:08, complete 06:21), 186 MB at crf 32 / 15 fps. Two workers, not three, when free RAM is under 5 GB.
-4. **A render preflight refusal for `ffprobe spawns in 0.40s` is a load reading, not a binary problem**, when
-   the env already names the shared build: three whisper transcribers and two ffmpeg cutters from sourcing
-   agents pushed a 0.17 s spawn to 0.40 s. Quiet the box (agents' jobs killed by their owners), re-measure.
-
-## 21 Sep 26 — owner review of the ep-1974 draft: "shippable after these small iterations"
-
-Owner watched the whole 17:39 draft ("overall really well put video", the motion graphics "a significant better look
-this time", 14:05 the combed-trees card "interesting bit"). Corrections, each persisted here:
-1. **Motion graphics go static after the story beat lands.** `beat_density.py` said 0/39 because a 100 px grid drift
-   over 78 s counts as a tween; to the eye 1.3 px/s is a freeze, and blackdetect read four dark cards as black for
-   6 to 11 s. Rule: every comp carries a VISIBLE ambient element for its whole window (a scan line at 6 px/s or more,
-   staggered dot blips at least every 1.5 s, a sweep rotating), finite repeats, never `repeat:-1`. Verify by pixel
-   diff of two frames 2 s apart at three points in the window, not by tween coverage.
-2. **Paul's presenter circle belongs on docs too** (bottom-right 240 px, FORMAT.md "Presenter circle"): from the end
-   of the hook to the CTA dip and from the CTA out-dip to the close card, hidden in the hook, the CTA and the close.
-   Every RHS rail, cite card and person card stays out of x >= 1600, y >= 680.
-3. **CTA at 85 to 90 % on this doc**, not 30 to 40 %: owner 21 Sep 26 "keep around 85-90 % timeline in a fitting
-   manner", fallback "reduce the end ask, then the video, one more sentence, close". ep-1974 sits at 88 % after the
-   16-dead-then/4-now payoff. `config.yaml channel.cta.window_by_slug` carries per-episode placements; the deep-lane
-   window stays until the owner moves it for the lane (one-orange rule). The 30-40 % rule dates from 30 Aug 26.
-4. **Glass cards over a dark map read better beige** (owner frames at 08:08 and 15:15): cite cards go to
-   rgba(232,222,200,0.90) with dark text; other glass panels over dark gradients are the builder's call, reported.
-5. **A person card without a real photo does not keep the photo slot** (owner: "don't leave the card with photo's
-   space in"); monograms are out, text-only layout for the nine people with no PD photo (a sourcer checks first).
-6. **Red popfigs**: owner is fine with the light use here ("its good. i mean it"); no retrofit, weigh them per episode.
-7. **The g-plane icon rode a different coordinate space than its trail** (owner: "a moving house fly on the top
-   left"): position markers must be verified by measuring the icon against the path head, never by eye.
-8. **The F6 card's strike missed the glyph and the F5 hung outside the card**: a strike goes through the glyph body,
-   every child stays inside the card box; screenshot the card at the last cue before shipping.
-
-## 2026-09-22 - ep-1974 draft 2 review: narrator opens the video, banned audio is gated by hash, holds need a reason
-
-- **No broadcast, radio or archive audio in the hook.** Owner: "these broadcast stuff at the hook is a nono. because of bad
-  audio quality. no point if the narrators hook being 10/10 if only 40% people wait till it starts at 10secs." The narrator's
-  first line is 0:00. DESIGN.md "Cold-open hook contract" is rewritten; the old "anchor line by 2.5 s" rule is gone. The date
-  popfig sits inside the first second and clears before the first designed graphic (here 0.15 to 1.65 s).
-- **A banned sound came back under its other filename.** `wind-loop.mp3` was marked banned in `assets/sfx/provenance.md` on
-  16 Aug 26; the builder mounted its source file `02_wind_ominous_steady.mp3` three times (4:00, 4:58, 10:06). A ban written
-  as prose on one filename is a suggestion. Fix: `assets/sfx/BANNED.md5` lists banned audio by content hash and
-  `lint_timeline.py` fails on a match, so a rename or a copy cannot dodge it. Proven: the old timeline fails with three
-  findings, the new one passes. A future ban is one line in that file.
-- **A `hold` whose only content is a bed reads as a mute stretch.** Owner at 5:03 to 5:08: "its mute, with only bgm. why?"
-  It was an authored 4 s hold on a lone still with the banned wind under it. A hold earns its place only with diegetic sound
-  that belongs to the picture (a siren over the siren, the tape over the tape). Otherwise close it to a 0.3 s breath.
-  Two more holds remain (3.0 s at 237.09 s and 3.5 s at 599.71 s in the new cut); both sit under a moving map and were not named.
-- **Why the plane graphic failed in draft 1 and passed in draft 2.** An SVG element carried a static `transform="translate()"`
-  attribute AND a GSAP x/y tween. GSAP takes over the transform and discards the attribute, so the icon flew from 0,0 while
-  its trail drew in the right place. Same family: `transformOrigin` in CSS px on a nested SVG line pushed it outside the
-  viewBox (use `svgOrigin` in user units). No gate checks that a mover follows its path, and a still frame looks plausible
-  unless you know where the icon should be. Rule for every "A follows B" animation: position the mover with GSAP only, and
-  assert in the DOM that the mover sits on the path head at three times before calling it done.
-- **The draft rendered before ten graphics were finished.** I found text behind the presenter circle by looking at the draft,
-  then fixed it. The builders never had the circle's box in their brief. The box (x 1632 to 1888, y 700 to 956) now goes in
-  every builder brief, and no render starts while a builder is still editing (CLAUDE.md "the render is the LAST step").
-
-## 2026-09-22 - ep-1974 shipped 17:30 against a 22:00 target: three guesses stacked
-
-- **Measured:** script 3,027 words; raw TTS 18.4 min (165 wpm native, not the 152 assumed); atempo 1.10 made it
-  16.7 min of voice (181 wpm delivered); non-voice time 48 s, not the 2.2 min constant. 22:00 became 17:40, then
-  17:30 after the owner's cuts. Owner: "you under delivered the minutes of last video."
-- **Why:** the budget line in edit_script.md multiplied a guessed pace by a guessed overhead, and the probes the
-  plan asked for were made but never fed back into the count. wordcount.py's own footer printed 20.3 min and the
-  script was locked anyway.
-- **Fix:** `scripts/word_budget.py` measures pace from probe wavs at the shipping tempo and takes the real
-  non-voice seconds; it FAILS outside target +/- 1 min. Nothing goes to full TTS while it fails. Checked against
-  ep-1974's own audio: it predicts 16:53 for the shipped script (actual 17:30; the two probes ran 4 % faster than
-  the episode average, so probe with two segments of different sentence length).
-- **Rule of thumb at this voice and tempo:** about 180 words per delivered minute; a 25:00 documentary needs
-  about 4,400 narration words.
