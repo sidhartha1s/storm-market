@@ -243,8 +243,11 @@ check("render-07 NEW script asserts duration/fps/resolution/audio against the co
       "comp_dur" in verify_src and "has_audio" in verify_src.replace("HAS_AUDIO", "has_audio"))
 check("render-07 NEW script fails on dead-air black spans (owner's 1.5s threshold)",
       "1.5" in verify_src and "LONGEST_BLACK" in verify_src)
-check("render-07 NEW script fails on any silence/freeze span found (not just prints)",
-      're.search' not in "" and '[ -s /tmp/_silence.txt ]' in verify_src and '[ -s /tmp/_freeze.txt ]' in verify_src)
+check("render-07 NEW script fails on a freeze span found (not just prints)",
+      '[ -s /tmp/_freeze.txt ]' in verify_src)
+check("render-07 NEW script gates silence but exempts declared hold/blackout/CTA windows",
+      "silence_start" in verify_src and 'class="[^"]*\\b(?:blackout|hold)\\b' in verify_src
+      and "dip_in" in verify_src)
 
 
 def run_verify(ep_dir, base):
