@@ -20,8 +20,16 @@ SCRIPTS = Path(__file__).resolve().parent
 bad = []
 
 
-def run(cmd, cwd=None):
-    r = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True, encoding="utf-8", errors="replace")
+sys.stdout.reconfigure(errors="replace")  # a gate printing a non-cp1252 glyph must not crash the suite
+
+
+def run(cmd, timeout, cwd=None):
+    """A hung tool is a failure, never a suite that waits forever: timeout returns exit code None."""
+    try:
+        r = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True, encoding="utf-8",
+                           errors="replace", timeout=timeout)
+    except subprocess.TimeoutExpired:
+        return None, f"(timed out after {timeout}s)"
     return r.returncode, r.stdout + r.stderr
 
 
