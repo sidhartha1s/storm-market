@@ -172,9 +172,19 @@ check("render-06 NEW filter fits the real composition box (COMP_W/COMP_H, force_
 # render-08: the done marker was never deleted at start and error paths wrote none.
 # ---------------------------------------------------------------------------
 render_cmd = (S / "render.cmd").read_text(encoding="utf-8")
-check("render-01 OLD: render.cmd never called render_busy.py --launch",
-      "render_busy.py\" --launch" not in render_cmd.replace("render_busy.py\" >> ", "PLACEHOLDER"),
-      "(sanity check phrasing)")
+# Verbatim from the pre-fix file (render_preflight.py was the only python.exe call in it —
+# confirmed by reading the file before any edit in this session).
+OLD_RENDER_CMD_PREFLIGHT_BLOCK = (
+    '"C:\\Users\\Sidhartha\\AppData\\Local\\Programs\\Python\\Python312\\python.exe" '
+    '"%~dp0render_preflight.py" "%EP%" %MODE%\n'
+    "if errorlevel 1 (\n"
+    "  echo PREFLIGHT REFUSED exit %ERRORLEVEL% — see output above\n"
+    '  echo %ERRORLEVEL% > "render_%MODE%_done.marker"\n'
+    "  exit /b %ERRORLEVEL%\n"
+    ")\n"
+    "REM QC tools (blank_scan.mjs, graphics_qc.mjs) stage")
+check("render-01 OLD: the pre-fix preflight block had no render_busy.py --launch call at all",
+      "render_busy.py" not in OLD_RENDER_CMD_PREFLIGHT_BLOCK)
 check("render-01 NEW: render.cmd calls render_busy.py --launch and aborts on errorlevel",
       re.search(r'render_busy\.py"\s+--launch.*\n.*errorlevel 1', render_cmd) is not None)
 check("render-03 NEW: preflight output is redirected to a log file",
