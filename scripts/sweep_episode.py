@@ -4,6 +4,7 @@ Each check prints PASS/FAIL and the offending items. No check depends on a rende
 """
 import hashlib
 import json
+import os
 import re
 import subprocess
 import sys
