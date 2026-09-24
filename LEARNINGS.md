@@ -595,12 +595,9 @@ The RCA is training for the next pin.
   crashed"). Fixed in `scripts/overlap_check.mjs`.
 - **Gate noise to expect on a finished episode:** `sweep_episode.py` FAILs on src-less `<section>`
   gradients (`?` rows: same-track overlap, adjacent duplicate, asset reuse, media exists) and on
-  stills >6s that the lint pacing report already lists — lint is the hard gate. `verify_render`
-  blackdetect (pix_th 0.10) flags every dark-card beat as "black" and freezedetect flags the
-  designed dark-card holds (ep6 final: 730.7/7.1s, 1120.6/8.0s, 1225.2/6.6s radio-widget tail,
-  1288.4/6.0s, 1494.4/11.4s) — read them against the timeline, they are not blank frames. Also:
-  ffmpeg progress uses `\r`, so `tail`/`grep` on verify output hides the `freeze_start` lines —
-  `tr '\r' '\n'` first, or run freezedetect with `-nostats`.
+  stills >6s that the lint pacing report already lists; lint is the hard gate. `verify_render`
+  exempts black, silence and freeze spans inside declared blackout/hold sections and the CTA dip;
+  a dark card that sits still outside them is a real defect (static MGs read as a freeze, entry above).
 - **Credits need provenance rows for EVERY still.** The seven owner-supplied Wikimedia stills
   (charity-web-c*, hsdrrs-web-c*) had no provenance row; licence/author were pulled from the
   Commons API and the files matched to the Commons thumbnails by a subagent before writing the
