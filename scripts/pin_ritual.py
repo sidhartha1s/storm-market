@@ -138,7 +138,7 @@ def render(version, out_mp4):
     # {"renderJobId":"...","enabled":true,...}` — no literal "enabled:true" substring.
     # Match the JSON form ("enabled":true) and tolerate an unquoted enabled:true too.
     log_txt = log.read_text(encoding="utf-8", errors="replace")
-    if not re.search(r'streaming-encode gate.*"?enabled"?\s*:\s*true', log_txt):
+    if not re.search(r'streaming-encode gate.*\benabled"?\s*:\s*true', log_txt):
         sys.exit(f"[ritual] {version}: no 'streaming-encode gate ... enabled:true' in {log.name} "
                   "— this render did not exercise the production streaming-capture path")
 
