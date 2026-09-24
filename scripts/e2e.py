@@ -22,7 +22,8 @@ SCRIPTS = Path(__file__).resolve().parent
 # run_gates' four Node gates exit 1 on an uncaught JS exception same as on a real gate FAIL.
 # These markers only ever appear in a Node crash dump (checked against every gate's own FAIL
 # print via grep) - never widen this list without re-checking the gate scripts' FAIL text.
-NODE_CRASH_MARKERS = ("node:internal", "\n    at ", "Error [ERR_", "TypeError:", "ReferenceError:")
+# No bare "TypeError:": graphics_qc prints a page's JS error as a real gate FAIL ("ERROR [js-error] TypeError: ...").
+NODE_CRASH_MARKERS = ("node:internal", "\n    at ", "Error [ERR_", "\nNode.js v")
 
 # gate names in run order, scraped from run_gates.py's own GATES list (single source of truth)
 GATE_NAMES = re.findall(r'^\s*\("([^"]+)",', (SCRIPTS / "run_gates.py").read_text(encoding="utf-8"), re.M)
