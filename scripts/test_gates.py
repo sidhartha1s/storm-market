@@ -55,6 +55,18 @@ check("fold: multiplies before it subtracts (DUR - 2 * 0.5 -> 9.0, not 4.0)",
       "9.0" in fold('const DUR = 10; tl.to(a,{}, DUR - 2 * 0.5);'))
 check("fold: still folds a known const's arithmetic (CUES.six + 1.5 -> 8.34)",
       "8.34" in fold('const CUES = { six: 6.84 }; tl.to(a,{}, CUES.six + 1.5);'))
+check("fold: left-to-right, not additions-before-subtractions (10 - 2 + 3 -> 11.0, not 5.0)",
+      "11.0" in fold('tl.to(a,{}, 10 - 2 + 3);'))
+check("fold: chained sub/add on a const (DUR - 1.2 + 0.3 -> 13.55, not 12.95)",
+      "13.55" in fold('const DUR = 14.45; tl.to(a,{}, DUR - 1.2 + 0.3);'))
+check("fold: no spaces (5-3+1 -> 3.0)",
+      "3.0" in fold('tl.to(a,{}, 5-3+1);'))
+check("fold: parens group before the outer multiply ((2 + 3) * 2 -> 10.0)",
+      "10.0" in fold('tl.to(a,{}, (2 + 3) * 2);'))
+check("fold: division then subtraction (8 / 2 - 1 -> 3.0)",
+      "3.0" in fold('tl.to(a,{}, 8 / 2 - 1);'))
+check("fold: a bare date-like sequence stays text (2026-09-21)",
+      fold('// updated 2026-09-21 owner note') == '// updated 2026-09-21 owner note')
 
 # ===================================================================================
 # 2 + 5. sweep_episode.py — exit code, freshness gate, check-7 coverage
