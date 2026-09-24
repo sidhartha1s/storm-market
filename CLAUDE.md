@@ -185,6 +185,6 @@ The gate list and its order live in `scripts/run_gates.py`. Minis also run `node
   into a temp dir, then `clip_report.py` resolves them exactly.
 
 ## Git
-All git and gh as `sidhartha1s`. Small PRs, code-reviewer, rebase-merge, docs sweep in the same PR. `python3`, never
+All git and gh as `sidhartha1s`. Small PRs: `/simplify`, tests + E2E, then `code-reviewer` on Opus; merge only after the owner's OK; rebase-merge, docs sweep in the same PR. `python3`, never
 `python`. Node 22 or newer. Before opening and before merging any PR that touches `scripts/`, run
 `python3 scripts/e2e.py episodes/<slug>` on a live episode: every self-check green and no tool crash.

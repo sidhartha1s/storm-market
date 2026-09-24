@@ -5,7 +5,7 @@ Open work on the tooling, gates and pipeline. Episode slots live in `ops/tracker
 
 Status: `todo` · `doing` · `review` (PR open, waiting on Opus review, e2e or the owner) · `done` (merged, main green) · `parked`.
 
-## Bug fixes from the Opus re-review of PRs #85-#94 (24 Sep 26)
+## Bug fixes from the Opus re-review of PRs #85-#91 (24 Sep 26)
 | # | task | PR | status |
 |---|---|---|---|
 | 1 | pin_ritual matches the JSON `"enabled":true` streaming-gate line, so the pin can bump again | #99 | done |
@@ -14,7 +14,7 @@ Status: `todo` · `doing` · `review` (PR open, waiting on Opus review, e2e or t
 | 4 | comp_consts.fold evaluates arithmetic with `ast` (`10 - 2 + 3` = 11) | #100 | done |
 | 5 | narration_picture_check warns loudly when nothing on screen is archival | #97 | done |
 | 6 | e2e counts Node crashes as crashes and names gates that never ran | #98 | done |
-| 7 | frame QC: frame 3 treats a mid-comp panel swap as the exit | - | parked: owner deciding on the layout sweep (task 10) |
+| 7 | frame QC: frame 3 treats a mid-comp panel swap as the exit | - | parked: layout sweep rejected (task 10); revisit with the font-fidelity fix (task 14) |
 | 8 | run_gates runs narration_picture_check; five shipped-episode render wrappers removed | #94 | done |
 
 ## Studies (owner asks 24 Sep 26)

@@ -18,7 +18,7 @@ Evidence labels used throughout:
 ## 0. The one caveat that governs everything below
 
 Our own retention evidence is one video deep. In the Studio export
-(`references/channel-audit-2026-09-19/studio/Table data.csv`), the 2011 Super Outbreak doc (28.2 min, 40.92 % average
+(`references/channel-audit-2026-09-19/studio/Table data.csv`, local Studio export, not committed), the 2011 Super Outbreak doc (28.2 min, 40.92 % average
 percentage viewed, 11:32 AVD, 6.48 % CTR on 11,845 impressions) holds 75.8 % of the channel's 281.9 watch hours
 [repo]. Joplin (17.1 min, 25.04 %) and Tri-State (34.9 min, 20.87 %) are the only other videos with more than a few
 hundred views. Every mini below 100 views is noise. The repo has no per-second retention curves, no key-moments
@@ -97,9 +97,9 @@ cite them as if they were.
 
 Each item: the rule or practice, the evidence, severity.
 
-1. **Docs run at atempo 1.10: about 181 wpm delivered** (config.yaml `tempo: 1.10`; LEARNINGS 2026-09-22 measured
-   ep-1974 at 165 wpm native, 181 delivered). The only doc that held its room (Super Outbreak, 40.92 %) ran 137 to
-   143 wpm (showrunner synthesis; teardown refutation) [repo]. Time-compressed speech is the one speech change that
+1. **Docs run at atempo 1.10: 176.0 wpm delivered on ep-1974** (config.yaml `tempo: 1.10`; measured from words.json
+   over the tempo'd wav). The only doc that held its room (Super Outbreak, 40.92 %) ran 150.9 wpm measured the same
+   way [repo]; the 137 to 143 figures in the teardowns are a probe planning number and words over total runtime. Time-compressed speech is the one speech change that
    hurts older listeners disproportionately [data, section 1]. EarthDesk's three winners cluster at 143 to 148 wpm
    (`three-channel-top12/06-synthesis.md`) [repo]. Severity: high. This is the single most evidence-backed change here.
 2. **No retention curves on disk.** Rules are set from AVD totals and owner impressions. Severity: high (process).
@@ -210,7 +210,7 @@ The owner asked for directness. These are the rules where the outside evidence o
 
 **5.1 "Docs get atempo 1.10 like the minis" (20 Sep 26). HARMFUL.**
 - Evidence: time-compressed speech hurts older listeners disproportionately; pauses restore recall [data, section 1].
-  The only retained doc ran at 137 to 143 wpm; ep-1974 at 1.10 delivered 181 wpm [repo]. EarthDesk's long-form winners:
+  The only retained doc ran at 150.9 wpm; ep-1974 at 1.10 delivered 176.0 wpm [repo, words.json over wav]. EarthDesk's long-form winners:
   143 to 148 wpm [repo]. The owner's own atempo note says above 1.13 "sounds rushed"; the audience is older than the
   owner's ear.
 - Softer alternative: docs at tempo 1.00 (native 158 to 165 wpm), and write shorter instead of speeding up. If runtime
@@ -286,7 +286,7 @@ KEEP = already in the repo and supported. CHANGE = in the repo, amended. NEW = n
 Every rule names its test.
 
 **Voice and pace**
-1. CHANGE. Docs narrate at tempo 1.00 (native, measured 158 to 165 wpm on this clone). News lane stays 1.10 until the
+1. CHANGE. Docs narrate at tempo 1.00 (native, measured 158 to 165 wpm on this clone; ep2 measured 150.9 wpm). News lane stays 1.10 until the
    test in section 8 reads out. Test: `word_budget.py` probe at the shipping tempo; config `tempo_by_prefix`.
 2. NEW. After any sentence carrying a death count, a date plus place, or a number that matters, insert a 0.4 to 0.6 s
    pause (a written `hold` of that length or a TTS break). Target 1 per 20 to 30 s of narration. Test: count gaps of
@@ -422,7 +422,7 @@ Every rule names its test.
 **Channel targets for this format** (vendor and blog benchmarks, not YouTube's; YouTube publishes none)
 - Docs 15 min and longer: 35 to 45 % APV is strong ([prepublish benchmarks](https://prepublish.ai/blog/youtube-retention-benchmarks-2026);
   [vidIQ](https://vidiq.com/blog/post/increase-audience-retention-youtube/)) [vendor]. Our one hit sits at 40.92 %.
-- Minis 8 to 12 min: 40 to 50 % APV is strong [vendor]. Our best minis sit at about 30 to 35 % on under 300 views.
+- Minis 8 to 12 min: 40 to 50 % APV is strong [judgment]. Our best minis sit at about 30 to 35 % on under 300 views.
 - Intro: 70 % or more at 0:30 [blog: "below 70 % in the first 30 s, nothing later matters",
   [socialrails](https://socialrails.com/blog/youtube-audience-retention-complete-guide)].
 
