@@ -91,11 +91,12 @@ fi
 
 echo
 echo "=== black (1.5s+), silence (2s+) and freeze (6s+) spans: FAIL only outside a declared ==="
-echo "=== hold/blackout section or the CTA dip window ==="
+echo "=== blackout section or CTA dip (silence: also holds and the CTA body) ==="
 # Owner's duration table (CLAUDE.md "Chapter blackout"): 1.5s+ of black is dead air, a bug. A
-# declared <section class="blackout|hold"> (bo-void, bo-close) is black, silent and still on
-# purpose, so spans inside one are exempt; the same windows exempt silence and freeze. A dark card
-# that sits still outside every window IS a defect (LEARNINGS: static MGs read as a freeze).
+# declared <section class="blackout"> (bo-void, bo-close) and the CTA dips are black, silent and
+# still on purpose, so black/freeze/silence inside them are exempt. A declared hold and the CTA body
+# may be quiet (silence exempt) but must still show a live picture: black or frozen there is a
+# defect (CLAUDE.md: a long hold keeps something alive; a CTA that fails to decode renders black).
 BLACK_RAW=$(ffmpeg -hide_banner -nostats -i "$MP4" -vf "blackdetect=d=1.5:pix_th=0.10" -an -f null - 2>&1)
 SILENCE_RAW=$(ffmpeg -hide_banner -nostats -i "$MP4" -af "silencedetect=n=-50dB:d=2" -f null - 2>&1)
 FREEZE_RAW=$(ffmpeg -hide_banner -nostats -i "$MP4" -vf "freezedetect=n=-58dB:d=6" -an -f null - 2>&1)
@@ -110,9 +111,12 @@ html = (Path(ep) / "index.html").read_text(encoding="utf-8", errors="replace")
 
 # Declared windows: the same structural markers lint_timeline.py sanctions a narration gap
 # against (declared hold, chapter blackout) plus the CTA insert padded by config.yaml dip_in/out.
-windows = [(float(a), float(a) + float(b)) for a, b in re.findall(
-    r'<section\b[^>]*class="[^"]*\b(?:blackout|hold)\b[^"]*"[^>]*data-start="([\d.]+)"'
-    r'[^>]*data-duration="([\d.]+)"', html)]
+def sections(cls):
+    return [(float(a), float(a) + float(b)) for a, b in re.findall(
+        r'<section\b[^>]*class="[^"]*\b' + cls + r'\b[^"]*"[^>]*data-start="([\d.]+)"'
+        r'[^>]*data-duration="([\d.]+)"', html)]
+picture_ok = sections("blackout")                 # black and freeze allowed only here
+quiet_ok = picture_ok + sections("hold")          # silence also allowed in holds and the CTA
 
 cta = re.search(r'<video\b[^>]*src="[^"]*cta/[^"]*"[^>]*>', html)
 if cta:
@@ -129,7 +133,8 @@ if cta:
             m_in, m_out = re.search(r'dip_in:\s*([\d.]+)', ctxt), re.search(r'dip_out:\s*([\d.]+)', ctxt)
             if m_in: dip_in = float(m_in.group(1))
             if m_out: dip_out = float(m_out.group(1))
-        windows.append((cs - dip_in, cs + cd + dip_out))
+        picture_ok += [(cs - dip_in, cs), (cs + cd, cs + cd + dip_out)]
+        quiet_ok.append((cs - dip_in, cs + cd + dip_out))
 
 TOL = 0.5  # detector edges can land a touch outside the declared window
 fail = False
@@ -142,10 +147,11 @@ for kind, raw in raws.items():
         print(f"FAIL: {len(starts)} {kind}_start vs {len(ends)} {kind}_end lines, could not pair every span")
         fail = True
         continue
+    windows = quiet_ok if kind == "silence" else picture_ok
     bad = [(ss, se) for ss, se in zip(starts, ends)
            if not any(ws - TOL <= ss and se <= we + TOL for ws, we in windows)]
     if bad:
-        print(f"FAIL: {len(bad)} {kind} span(s) outside any declared hold/blackout/CTA window:")
+        print(f"FAIL: {len(bad)} {kind} span(s) outside any declared window allowed for {kind}:")
         for ss, se in bad:
             print(f"    {ss:.2f}s - {se:.2f}s")
         fail = True
