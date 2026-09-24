@@ -85,15 +85,18 @@ assert code == 0 and '[WARN] era check had nothing to check: 1 on-screen media f
 assert 'archival assets tagged: 0' in out, out  # the one provenance row is modern, must not be counted
 
 OLD_MAIN_NPC = S / '_old_main_npc_tmp.py'
-OLD_MAIN_NPC.write_text(subprocess.run(['git', 'show', 'origin/main:scripts/narration_picture_check.py'],
-                                        cwd=S.parent, capture_output=True, text=True).stdout, encoding='utf-8')
-with tempfile.TemporaryDirectory() as d:
-    ep = Path(d)
-    _mk(ep, EMPTY_WARN_FILES)
-    r = subprocess.run([sys.executable, str(OLD_MAIN_NPC), str(ep)], capture_output=True, text=True)
-    assert r.returncode == 0 and '[WARN]' not in r.stdout, \
-        f'old code (origin/main) should have missed this — silent PASS, no warning: {r.stdout}'
-OLD_MAIN_NPC.unlink()
+# pinned pre-fix commit, never origin/main: after merge origin/main holds the fix and this would go red
+OLD_MAIN_NPC.write_text(subprocess.run(['git', 'show', 'f1f435d7:scripts/narration_picture_check.py'],
+                                        cwd=S.parent, capture_output=True, text=True, check=True).stdout, encoding='utf-8')
+try:
+    with tempfile.TemporaryDirectory() as d:
+        ep = Path(d)
+        _mk(ep, EMPTY_WARN_FILES)
+        r = subprocess.run([sys.executable, str(OLD_MAIN_NPC), str(ep)], capture_output=True, text=True)
+        assert r.returncode == 0 and '[WARN]' not in r.stdout, \
+            f'old code (f1f435d7) should have missed this — silent PASS, no warning: {r.stdout}'
+finally:
+    OLD_MAIN_NPC.unlink()
 print('narration_picture_check self-check PASS (empty-archival loud warn, archival-only count)')
 
 GSAP = (S / '..' / 'library' / 'gallery' / 'gsap.min.js').resolve()
