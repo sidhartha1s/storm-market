@@ -68,6 +68,22 @@ check("fold: division then subtraction (8 / 2 - 1 -> 3.0)",
 check("fold: a bare date-like sequence stays text (2026-09-21)",
       fold('// updated 2026-09-21 owner note') == '// updated 2026-09-21 owner note')
 
+# fix-fold-ast (24 Sep 26): call parens were folded before the identifier guard ran, and a span
+# bordering an unresolved identifier through an operator got evaluated alone, eating the operator
+# that tied it to the identifier. All six fail on PR head 3e99a621 (confirmed via git show).
+check("fold: nested paren arg to a call stays a call, inner math still folds (Math.floor((30.25) / 1) - 1)",
+      fold('Math.floor((30.25) / 1) - 1') == 'Math.floor(30.25) - 1')
+check("fold: call parens are not treated as grouping parens (Math.round(10.4) - 1)",
+      fold('Math.round(10.4) - 1') == 'Math.round(10.4) - 1')
+check("fold: single-arg call left untouched (f(2) + 1)",
+      fold('f(2) + 1') == 'f(2) + 1')
+check("fold: span bordering an identifier via '-' stays whole, not folded piecemeal (t0 - 0.5 - 0.2)",
+      fold('t0 - 0.5 - 0.2') == 't0 - 0.5 - 0.2')
+check("fold: operator tying a span to an identifier is not eaten (t0 - 2 + 3)",
+      fold('t0 - 2 + 3') == 't0 - 2 + 3')
+check("fold: span bordering an identifier via '*' stays whole (x * 2 + 3)",
+      fold('x * 2 + 3') == 'x * 2 + 3')
+
 # ===================================================================================
 # 2 + 5. sweep_episode.py — exit code, freshness gate, check-7 coverage
 # ===================================================================================
