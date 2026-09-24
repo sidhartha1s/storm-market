@@ -12,12 +12,26 @@
 Usage: python3 scripts/e2e.py [episodes/<slug> ...]
 Exit 0 = all green. Exit 1 = a self-check failed or a tool crashed (named in the output).
 """
+import re
 import subprocess
 import sys
 from pathlib import Path
 
 SCRIPTS = Path(__file__).resolve().parent
 bad = []
+
+# run_gates' four Node gates exit 1 on an uncaught JS exception same as on a real gate FAIL.
+# These markers only ever appear in a Node crash dump (checked against every gate's own FAIL
+# print via grep) - never widen this list without re-checking the gate scripts' FAIL text.
+NODE_CRASH_MARKERS = ("node:internal", "\n    at ", "Error [ERR_", "TypeError:", "ReferenceError:")
+
+# gate names in run order, scraped from run_gates.py's own GATES list (single source of truth)
+GATE_NAMES = re.findall(r'^\s*\("([^"]+)",', (SCRIPTS / "run_gates.py").read_text(encoding="utf-8"), re.M)
+
+
+def is_tool_crash(out):
+    """A crashed gate (Python traceback or uncaught Node exception), not a legitimate gate FAIL."""
+    return "Traceback (most recent call last)" in out or any(m in out for m in NODE_CRASH_MARKERS)
 
 
 sys.stdout.reconfigure(errors="replace")  # a gate printing a non-cp1252 glyph must not crash the suite
