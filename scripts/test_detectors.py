@@ -72,13 +72,16 @@ print('narration_picture_check self-check PASS (dashed ids, provenance-era archi
 # include rows actually classified archival (year < MODERN_FROM), never modern rows.
 EMPTY_WARN_FILES = {
     'index.html': '<div data-start="0" data-duration="2" data-track-index="1" src="media/act1/new.jpg"></div>\n'
-                   '<audio id="nx-a1-s1" data-start="0" data-duration="2"></audio>\n',
+                   '<div data-start="2" data-duration="2" data-track-index="1" src="media/act1/untracked.jpg"></div>\n'
+                   '<audio id="nx-a1-s1" data-start="0" data-duration="4"></audio>\n',
     'audio/a1-s1.words.json': json.dumps([{"start": 0.1, "text": "2025"}]),
+    # new.jpg has a provenance row but it is modern (must not count as archival); untracked.jpg
+    # has no provenance row at all AND lives outside ARCHIVAL_DIR_NAMES ("act1", not "archival").
     'media/act1/provenance.csv': 'file,source_url,license,credit,era,note\n'
                                   'new.jpg,https://example,Public domain,Example Archive,2025,modern photo\n',
 }
 code, out = npc(EMPTY_WARN_FILES)
-assert code == 0 and '[WARN] era check had nothing to check: 0 on-screen media file(s) had no provenance era' in out, out
+assert code == 0 and '[WARN] era check had nothing to check: 1 on-screen media file(s) had no provenance era' in out, out
 assert 'archival assets tagged: 0' in out, out  # the one provenance row is modern, must not be counted
 
 OLD_MAIN_NPC = S / '_old_main_npc_tmp.py'
