@@ -386,32 +386,60 @@ check("assets-comps-03 NEW: render_cmd_env() pulls HF_CAPTURE_PARALLEL_STREAM fr
 
 # render() must fail a render whose log lacks the streaming-encode gate line, even if the
 # mp4 itself was produced (silent fallback to disk capture must never pass as a clean A/B).
-with tempfile.TemporaryDirectory() as d:
-    fake_demo = Path(d)
-    (fake_demo / "index.html").write_text("<div></div>", encoding="utf-8")
-    pin_ritual.DEMO = fake_demo
-    log = fake_demo / "pin-ritual-9.9.9.log"
-    log.write_text("some other log output, no streaming gate line\n", encoding="utf-8")
-    out_mp4 = fake_demo / "out.mp4"
-    out_mp4.write_bytes(b"not a real mp4, existence is all render() checks post-subprocess")
+# The real HyperFrames log line is JSON (`streaming-encode gate {"renderJobId":"...",
+# "enabled":true,...}`), copied verbatim from a real render_full.log
+# (.worktrees/ep-1974-super-outbreak/episodes/ep-1974-super-outbreak/render_full.log:156) —
+# the old regex `streaming-encode gate.*enabled:true` never matches this JSON form, so the
+# ritual could never pass. Exercise all three cases through the same harness.
+def _run_render_against_log(log_body):
+    with tempfile.TemporaryDirectory() as d:
+        fake_demo = Path(d)
+        (fake_demo / "index.html").write_text("<div></div>", encoding="utf-8")
+        pin_ritual.DEMO = fake_demo
+        log = fake_demo / "pin-ritual-9.9.9.log"
+        log.write_text(log_body, encoding="utf-8")
+        out_mp4 = fake_demo / "out.mp4"
+        out_mp4.write_bytes(b"not a real mp4, existence is all render() checks post-subprocess")
 
-    class FakeCompleted:
-        returncode = 0
+        class FakeCompleted:
+            returncode = 0
 
-    orig_run = pin_ritual.subprocess.run
-    orig_which = pin_ritual.shutil.which
-    pin_ritual.shutil.which = lambda name: "npx" if name == "npx" else orig_which(name)
-    pin_ritual.subprocess.run = lambda *a, **k: FakeCompleted()
-    pin_ritual.FFPROBE = pin_ritual.FFMPEG = Path("ffmpeg")
-    try:
-        pin_ritual.render("9.9.9", out_mp4)
-        raised = False
-    except SystemExit as e:
-        raised = "streaming-encode gate" in str(e)
-    finally:
-        pin_ritual.subprocess.run = orig_run
-        pin_ritual.shutil.which = orig_which
-    check("render-09 NEW: render() exits when the log has no 'streaming-encode gate ... enabled:true'", raised)
+        orig_run = pin_ritual.subprocess.run
+        orig_which = pin_ritual.shutil.which
+        pin_ritual.shutil.which = lambda name: "npx" if name == "npx" else orig_which(name)
+        pin_ritual.subprocess.run = lambda *a, **k: FakeCompleted()
+        pin_ritual.FFPROBE = pin_ritual.FFMPEG = Path("ffmpeg")
+        try:
+            pin_ritual.render("9.9.9", out_mp4)
+            return False, None
+        except SystemExit as e:
+            return True, str(e)
+        finally:
+            pin_ritual.subprocess.run = orig_run
+            pin_ritual.shutil.which = orig_which
+
+
+raised, _ = _run_render_against_log("some other log output, no streaming gate line\n")
+check("render-09 NEW: render() exits when the log has no 'streaming-encode gate ... enabled:true'", raised)
+
+REAL_GATE_LINE_TRUE = (
+    '[INFO] streaming-encode gate {"renderJobId":"21a9bb7d-eeaf-4f12-976e-37c2a565e237",'
+    '"enabled":true,"configFlag":true,"outputFormat":"mp4","workerCount":2,'
+    '"durationSeconds":1050.9,"maxDurationSeconds":7200}\n'
+)
+raised, _ = _run_render_against_log(REAL_GATE_LINE_TRUE)
+check("render-10 NEW: render() PASSES on the real JSON gate line (enabled:true) from "
+      "render_full.log — proves the fixed regex matches HyperFrames' actual log format",
+      not raised)
+
+REAL_GATE_LINE_FALSE = (
+    '[INFO] streaming-encode gate {"renderJobId":"21a9bb7d-eeaf-4f12-976e-37c2a565e237",'
+    '"enabled":false,"configFlag":true,"outputFormat":"mp4","workerCount":2,'
+    '"durationSeconds":1050.9,"maxDurationSeconds":7200}\n'
+)
+raised, msg = _run_render_against_log(REAL_GATE_LINE_FALSE)
+check("render-10 NEW: render() still FAILS on a JSON gate line with enabled:false",
+      raised and "streaming-encode gate" in (msg or ""))
 
 # ---------------------------------------------------------------------------
 # assets-comps-02: the SSIM baseline mp4 lived under the gitignored, worktree-local
