@@ -321,6 +321,35 @@ if HAVE_FFMPEG:
         check("render-07 NEW: the SAME 3s silent span with no declared hold fails",
               r5.returncode != 0 and "FAIL:" in r5.stdout and "silence span" in r5.stdout,
               f"rc={r5.returncode}\n{r5.stdout[-800:]}")
+
+        # Black and freeze follow the same declared windows as silence: a designed blackout
+        # (bo-close, bo-void) passes, the same span with nothing declared fails.
+        def span_case(name, video_graph, dur, section, kind):
+            mp4x = ep / "renders" / f"{name}-final.mp4"
+            subprocess.run(["ffmpeg", "-y", "-v", "error", *video_graph,
+                            "-f", "lavfi", "-i", f"sine=frequency=440:duration={dur}",
+                            "-map", "[v]", "-map", f"{video_graph.count('-i')}:a",
+                            "-c:v", "libx264", "-pix_fmt", "yuv420p", "-c:a", "aac", str(mp4x)],
+                           capture_output=True)
+            root = (f'<div id="root" data-composition-id="x" data-start="0" data-width="320" '
+                    f'data-height="240" data-duration="{dur}.00" data-fps="25">')
+            (ep / "index.html").write_text(root + section + '</div>', encoding="utf-8")
+            ok = run_verify(ep, f"{name}-final")
+            (ep / "index.html").write_text(root + '</div>', encoding="utf-8")
+            bad = run_verify(ep, f"{name}-final")
+            check(f"render-07 NEW: a {kind} span inside a declared window passes",
+                  ok.returncode == 0, f"rc={ok.returncode}\n{ok.stdout[-800:]}")
+            check(f"render-07 NEW: the same {kind} span with nothing declared fails",
+                  bad.returncode != 0 and f"{kind} span" in bad.stdout, f"rc={bad.returncode}\n{bad.stdout[-800:]}")
+
+        span_case("black", ["-f", "lavfi", "-i", "testsrc=size=320x240:rate=25:duration=8",
+                            "-filter_complex", "[0:v]drawbox=c=black:t=fill:enable='between(t,2,5)'[v]"], 8,
+                  '<section class="clip blackout" id="bo-1" data-start="2" data-duration="3"></section>', "black")
+        span_case("frozen", ["-f", "lavfi", "-i", "testsrc=size=320x240:rate=25:duration=2",
+                             "-f", "lavfi", "-i", "color=c=gray:s=320x240:r=25:d=7",
+                             "-f", "lavfi", "-i", "testsrc=size=320x240:rate=25:duration=2",
+                             "-filter_complex", "[0:v][1:v][2:v]concat=n=3:v=1:a=0[v]"], 11,
+                  '<section class="clip hold" id="hold-2" data-start="2" data-duration="7"></section>', "freeze")
 else:
     print("SKIP render-07 synthetic-clip checks: ffmpeg not on PATH")
 
