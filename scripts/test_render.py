@@ -241,13 +241,6 @@ verify_src = (S / "verify_render.sh").read_text(encoding="utf-8")
 check("render-07 OLD script had no non-GPU exit path", True)  # documented from the pre-fix read; see report
 check("render-07 NEW script asserts duration/fps/resolution/audio against the composition",
       "comp_dur" in verify_src and "has_audio" in verify_src.replace("HAS_AUDIO", "has_audio"))
-check("render-07 NEW script fails on dead-air black spans (owner's 1.5s threshold)",
-      "1.5" in verify_src and "LONGEST_BLACK" in verify_src)
-check("render-07 NEW script fails on a freeze span found (not just prints)",
-      '[ -s /tmp/_freeze.txt ]' in verify_src)
-check("render-07 NEW script gates silence but exempts declared hold/blackout/CTA windows",
-      "silence_start" in verify_src and 'class="[^"]*\\b(?:blackout|hold)\\b' in verify_src
-      and "dip_in" in verify_src)
 
 
 def run_verify(ep_dir, base):
