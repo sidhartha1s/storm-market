@@ -1,0 +1,241 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<!--
+  g-tanker-throw — Enderlin, 20 June 2025. 14.0 s full-frame side-view diagram.
+  Built from scratch (no library exemplar is a thrown-object distance diagram); look copied from
+  ep2 g-met / ep-1974 g-f4f5 (radial bg, Arial Black / Arial 700 / Abril popfig, fixed palette).
+
+  WHAT IT CLAIMS: one empty tanker car was lofted ~475.7 ft (145 m) from the tracks; Miller et al.
+  2024 put the EF5 lofting threshold for a large compact object at ~164 ft (50 m); 475.7 is ~2.9x.
+  SOURCE: fact_sheet.md §3 (NWS Grand Forks survey, Western University summary of Miller et al. 2024).
+  DATUM / SCALE: ground line y 800. Horizontal distance TO SCALE from the tracks (tanker centre,
+  x 260): 2.5604 px/ft (1218 px = 475.7 ft). Arc HEIGHT is schematic (no published loft height).
+  GEOMETRY: 164 ft -> x 679.9 (threshold line) · 328 ft -> x 1099.8 · 492 ft (3x) -> x 1519.7 ·
+  475.7 ft -> x 1478.0 (landing, tanker centre) · ruler ticks 0..500 ft every 256.04 px.
+  MUST BE TRUE: (1) the tanker lands right of the threshold line, inside the third 164-ft band,
+  short of its end ("nearly three times"); (2) the three bands are equal length and band 1 spans
+  exactly track -> threshold; (3) nothing sits in the presenter box x >= 1600, y >= 680.
+
+  CUES (provisional: no words.json for this demo; 60 words over ~14 s at ~0.213 s/word + sentence
+  pauses): Thirty-three @2.37 · One empty tanker @3.9 · seventy-two thousand @4.75 · thrown @6.03 ·
+  feet @7.1 · Researchers @7.55 · one hundred and sixty-four @10.32 · EF5 winds @11.6 ·
+  This one went @12.28 · three times @13.13. Exit anchored to the last 0.6 s (DESIGN §5).
+-->
+<style>
+  @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+  #root { position:absolute; inset:0; overflow:hidden; font-family:Arial,sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .tt-sky { position:absolute; left:0; top:0; width:1920px; height:800px; }
+  .tt-streak { position:absolute; left:0; height:2px; border-radius:2px;
+    background:linear-gradient(90deg, rgba(200,211,224,0), rgba(200,211,224,0.22), rgba(200,211,224,0)); }
+  .tt-hdr { position:absolute; left:96px; top:64px; }
+  .tt-eyebrow { font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; }
+  .tt-title { font-family:'Arial Black',Arial,sans-serif; font-size:56px; color:#f2f5f8; margin-top:8px; }
+  /* ground + ruler */
+  .tt-ground { position:absolute; left:0; top:800px; width:1920px; height:280px;
+    background:linear-gradient(180deg, rgba(90,118,143,0.16), rgba(6,9,13,0) 70%); }
+  .tt-groundline { position:absolute; left:0; top:800px; width:1920px; height:3px; background:#5a768f; }
+  .tt-ruler { position:absolute; left:260px; top:826px; width:1281px; height:2px; background:#93a3b2; transform-origin:left center; }
+  .tt-tick { position:absolute; top:820px; width:2px; height:16px; background:#93a3b2; }
+  .tt-tlab { position:absolute; top:846px; width:120px; margin-left:-60px; text-align:center; font-weight:700; font-size:19px; color:#93a3b2; letter-spacing:1px; }
+  .tt-band { position:absolute; top:896px; height:14px; width:416px; background:#c0392b; transform-origin:left center; }
+  .tt-landtick { position:absolute; left:1477px; top:808px; width:3px; height:40px; background:#e74c3c; box-shadow:0 0 10px rgba(231,76,60,0.7); transform-origin:center bottom; }
+  /* track + train (schematic, side-on) */
+  .tt-rail { position:absolute; left:0; top:792px; width:360px; height:5px; background:#93a3b2; }
+  .tt-tie { position:absolute; top:796px; width:18px; height:5px; background:#4a3a2a; }
+  .tt-car { position:absolute; top:722px; width:150px; height:76px; transform-origin:50% 100%; }
+  .tt-car svg, .tt-tanker svg { display:block; overflow:visible; }
+  .tt-tanker { position:absolute; left:185px; top:722px; width:150px; height:76px; transform-origin:75px 39px; }
+  .tt-tag { position:absolute; left:110px; top:664px; width:300px; text-align:center; font-weight:700; font-size:26px; color:#e8c56a; }
+  /* arc trail */
+  .tt-arc { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  /* EF5 threshold */
+  .tt-thr { position:absolute; left:678px; top:392px; width:4px; height:408px; transform-origin:center bottom;
+    background:repeating-linear-gradient(180deg, #e74c3c 0 14px, rgba(0,0,0,0) 14px 24px); }
+  .tt-thrlab { position:absolute; left:700px; top:380px; font-weight:700; font-size:30px; color:#f2f5f8; letter-spacing:1px; white-space:nowrap; }
+  .tt-wash { position:absolute; left:682px; top:392px; width:858px; height:408px; transform-origin:left center;
+    background:linear-gradient(90deg, rgba(192,57,43,0.20), rgba(192,57,43,0.05)); }
+  .tt-washlab { position:absolute; left:704px; top:742px; font-weight:700; font-size:22px; color:#e74c3c; letter-spacing:2px; white-space:nowrap; }
+  /* dust */
+  .tt-dust { position:absolute; width:60px; height:60px; margin:-30px 0 0 -30px; border-radius:50%;
+    background:radial-gradient(circle, rgba(147,163,178,0.55), rgba(147,163,178,0) 70%); }
+  .tt-credit { position:absolute; left:96px; top:1004px; font-size:19px; font-weight:700; color:#93a3b2; letter-spacing:1px; }
+  .tt-note { position:absolute; left:96px; top:1034px; font-size:17px; color:#6f8192; letter-spacing:1px; font-style:italic; font-family:Georgia,serif; }
+  /* Abril popfig (channel device: red, shadow, no colour block, <= 3 words) */
+  .tt-pop { position:absolute; left:200px; right:300px; top:176px; text-align:center; white-space:nowrap; transform-origin:center; }
+  .tt-pop .pf-big { display:block; font-family:'AbrilFig', Georgia, serif; font-size:140px; line-height:1.1; color:#d0121f; letter-spacing:0.04em;
+    text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+</style>
+<div id="root" data-composition-id="g-tanker-throw" data-width="1920" data-height="1080">
+  <div class="tt-sky" id="tt-sky"></div>
+  <div class="tt-ground"></div>
+  <div class="tt-wash" id="tt-wash"></div>
+
+  <div id="tt-diagram">
+    <div class="tt-groundline"></div>
+    <div class="tt-ruler" id="tt-ruler"></div>
+    <div class="tt-tick" style="left:259px"></div><div class="tt-tick" style="left:515px"></div><div class="tt-tick" style="left:771px"></div>
+    <div class="tt-tick" style="left:1027px"></div><div class="tt-tick" style="left:1283px"></div><div class="tt-tick" style="left:1539px"></div>
+    <div class="tt-tlab" id="tt-t0" style="left:260px">0</div>
+    <div class="tt-tlab" id="tt-t1" style="left:516px">100</div>
+    <div class="tt-tlab" id="tt-t2" style="left:772px">200</div>
+    <div class="tt-tlab" id="tt-t3" style="left:1028px">300</div>
+    <div class="tt-tlab" id="tt-t4" style="left:1284px">400</div>
+    <div class="tt-tlab" id="tt-t5" style="left:1540px">500 ft</div>
+    <!-- three equal 164-ft bands: 260-679.9, 679.9-1099.8, 1099.8-1519.7 (4 px gaps) -->
+    <div class="tt-band" id="tt-band1" style="left:262px"></div>
+    <div class="tt-band" id="tt-band2" style="left:262px; opacity:0.85"></div>
+    <div class="tt-band" id="tt-band3" style="left:262px; opacity:0.7"></div>
+    <div class="tt-landtick" id="tt-landtick"></div>
+
+    <div class="tt-rail"></div>
+    <div class="tt-tie" style="left:20px"></div><div class="tt-tie" style="left:70px"></div><div class="tt-tie" style="left:120px"></div>
+    <div class="tt-tie" style="left:170px"></div><div class="tt-tie" style="left:220px"></div><div class="tt-tie" style="left:270px"></div><div class="tt-tie" style="left:320px"></div>
+    <!-- grain hoppers (schematic) -->
+    <div class="tt-car" id="tt-car1" style="left:-142px">
+      <svg width="150" height="76" viewBox="0 0 150 76"><polygon points="6,8 144,8 132,52 18,52" fill="#2a3644" stroke="#93a3b2" stroke-width="2.5"/>
+        <line x1="50" y1="8" x2="50" y2="52" stroke="#5a768f" stroke-width="2"/><line x1="100" y1="8" x2="100" y2="52" stroke="#5a768f" stroke-width="2"/>
+        <rect x="10" y="54" width="130" height="5" fill="#5a768f"/><circle cx="30" cy="66" r="8" fill="#141c24" stroke="#93a3b2" stroke-width="2"/><circle cx="120" cy="66" r="8" fill="#141c24" stroke="#93a3b2" stroke-width="2"/></svg>
+    </div>
+    <div class="tt-car" id="tt-car2" style="left:22px">
+      <svg width="150" height="76" viewBox="0 0 150 76"><polygon points="6,8 144,8 132,52 18,52" fill="#2a3644" stroke="#93a3b2" stroke-width="2.5"/>
+        <line x1="50" y1="8" x2="50" y2="52" stroke="#5a768f" stroke-width="2"/><line x1="100" y1="8" x2="100" y2="52" stroke="#5a768f" stroke-width="2"/>
+        <rect x="10" y="54" width="130" height="5" fill="#5a768f"/><circle cx="30" cy="66" r="8" fill="#141c24" stroke="#93a3b2" stroke-width="2"/><circle cx="120" cy="66" r="8" fill="#141c24" stroke="#93a3b2" stroke-width="2"/></svg>
+    </div>
+  </div>
+
+  <svg class="tt-arc" viewBox="0 0 1920 1080">
+    <defs><clipPath id="tt-arcclip"><rect id="tt-cliprect" x="0" y="0" width="0" height="1080"/></clipPath></defs>
+    <path id="tt-arcpath" d="M260,761 Q869,201 1478,761" fill="none" stroke="#e8c56a" stroke-width="3" stroke-dasharray="12 12" stroke-linecap="round" opacity="0.85" clip-path="url(#tt-arcclip)"/>
+  </svg>
+
+  <div class="tt-thr" id="tt-thr"></div>
+  <div class="tt-thrlab" id="tt-thrlab">EF5 threshold · 164 ft</div>
+  <div class="tt-washlab" id="tt-washlab">Farther than this takes EF5 winds</div>
+
+  <!-- the tanker that flies -->
+  <div class="tt-tanker" id="tt-tanker">
+    <svg width="150" height="76" viewBox="0 0 150 76">
+      <rect id="tt-tkbody" x="4" y="14" width="142" height="38" rx="19" fill="#34495c" stroke="#dfe7ee" stroke-width="2.5"/>
+      <rect x="64" y="6" width="22" height="10" rx="3" fill="#34495c" stroke="#dfe7ee" stroke-width="2"/>
+      <rect x="10" y="54" width="130" height="5" fill="#5a768f"/>
+      <circle cx="30" cy="66" r="8" fill="#141c24" stroke="#93a3b2" stroke-width="2"/><circle cx="120" cy="66" r="8" fill="#141c24" stroke="#93a3b2" stroke-width="2"/>
+    </svg>
+  </div>
+  <div class="tt-tag" id="tt-tag">One empty tanker car</div>
+  <div class="tt-dust" id="tt-dust1" style="left:1478px; top:790px"></div>
+  <div class="tt-dust" id="tt-dust2" style="left:1440px; top:792px"></div>
+  <div class="tt-dust" id="tt-dust3" style="left:1520px; top:792px"></div>
+
+  <div class="tt-hdr" id="tt-hdr">
+    <div class="tt-eyebrow">South of Enderlin, North Dakota · 20 June 2025</div>
+    <div class="tt-title">How far one tanker flew</div>
+  </div>
+
+  <div class="tt-pop" id="tt-pop33"><span class="pf-big">33 cars</span></div>
+  <div class="tt-pop" id="tt-pop72"><span class="pf-big">72,000 lb</span></div>
+  <div class="tt-pop" id="tt-pop475"><span class="pf-big" id="tt-count">0 ft</span></div>
+  <div class="tt-pop" id="tt-pop3x"><span class="pf-big">Nearly 3×</span></div>
+
+  <div class="tt-credit" id="tt-credit">NWS Grand Forks · Miller et al. 2024</div>
+  <div class="tt-note" id="tt-note">Side view · distance to scale · arc height schematic</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const CUES = { cars: 2.37, one: 3.9, lb: 4.75, thrown: 6.03, researchers: 7.55, thr: 10.32, winds: 11.6, went: 12.28, three: 13.13 };
+  const DUR = 14.0;
+  const tl = gsap.timeline({ paused: true });
+
+  /* continuous wind: 12 streaks cross the sky once each over the whole window (finite, no repeat) */
+  const sky = document.getElementById('tt-sky');
+  const streaks = [];
+  for (let i = 0; i < 12; i++) {
+    const s = document.createElement('div');
+    s.className = 'tt-streak';
+    s.style.top = (250 + ((i * 197) % 500)) + 'px';
+    s.style.width = (160 + (i * 53) % 220) + 'px';
+    s.style.left = (-2200 + i * 190) + 'px';
+    sky.appendChild(s);
+    streaks.push(s);
+  }
+  streaks.forEach((s) => { tl.to(s, { x: 3400, duration: 13.9, ease: 'none' }, 0.05); });
+
+  tl.set(['#tt-hdr', '#tt-tag', '#tt-pop33', '#tt-pop72', '#tt-pop475', '#tt-pop3x', '#tt-thrlab', '#tt-washlab', '#tt-landtick', '#tt-credit', '#tt-note'], { autoAlpha: 0 }, 0);
+  tl.set(['#tt-band1', '#tt-band2', '#tt-band3'], { autoAlpha: 0 }, 0);
+  tl.set(['#tt-dust1', '#tt-dust2', '#tt-dust3'], { autoAlpha: 0, scale: 0.3 }, 0);
+  tl.set('#tt-thr', { scaleY: 0 }, 0);
+  tl.set('#tt-wash', { scaleX: 0 }, 0);
+
+  /* opening: header, ruler draws, credit; train rocks in the wind ("caught a freight train") */
+  tl.fromTo('#tt-hdr', { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: 'power3.out' }, 0.2);
+  tl.fromTo('#tt-ruler', { scaleX: 0 }, { scaleX: 1, duration: 0.8, ease: 'power3.out' }, 0.4);
+  tl.fromTo(['#tt-t0', '#tt-t1', '#tt-t2', '#tt-t3', '#tt-t4', '#tt-t5'], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, stagger: 0.1 }, 0.6);
+  tl.fromTo(['#tt-credit', '#tt-note'], { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 1.0);
+  tl.to(['#tt-car1', '#tt-car2', '#tt-tanker'], { rotation: 2.5, duration: 0.35, ease: 'sine.inOut', yoyo: true, repeat: 5 }, 0.2);
+
+  /* CUES.cars — "Thirty-three cars came off the tracks": hoppers topple, tanker jolts */
+  tl.to('#tt-car1', { rotation: -24, x: -30, y: 8, duration: 0.5, ease: 'power3.out' }, 2.37);
+  tl.to('#tt-car2', { rotation: 16, x: 18, y: 4, duration: 0.5, ease: 'power3.out' }, 2.47);
+  tl.to('#tt-tanker', { rotation: -6, x: 6, duration: 0.4, ease: 'power3.out' }, 2.52);
+  tl.fromTo('#tt-pop33', { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: 'power4.in' }, 2.37);
+  tl.to('#tt-pop33', { autoAlpha: 0, y: -26, duration: 0.3, ease: 'power2.in' }, 3.75);
+
+  /* CUES.one — "One empty tanker car": highlight + tag */
+  tl.to('#tt-tkbody', { attr: { stroke: '#e74c3c' }, duration: 0.3 }, 3.9);
+  tl.fromTo('#tt-tanker', { filter: 'drop-shadow(0 0 0px rgba(231,76,60,0))' }, { filter: 'drop-shadow(0 0 14px rgba(231,76,60,0.85))', duration: 0.4 }, 3.9);
+  tl.fromTo('#tt-tag', { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: 'power3.out' }, 3.95);
+  /* CUES.lb — "seventy-two thousand pounds of steel" */
+  tl.fromTo('#tt-pop72', { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: 'power4.in' }, 4.75);
+  tl.to('#tt-pop72', { autoAlpha: 0, y: -26, duration: 0.3, ease: 'power2.in' }, 5.7);
+  tl.to('#tt-tag', { autoAlpha: 0, y: -12, duration: 0.3, ease: 'power2.in' }, 5.75);
+
+  /* CUES.thrown — the flight. One proxy drives position, tumble, trail and the distance counter so
+     the counter always equals the drawn distance: x = 260 + 1218u (to scale), y = 761 - 1120u(1-u). */
+  const fly = { u: 0 };
+  const tk = document.getElementById('tt-tanker');
+  const clip = document.getElementById('tt-cliprect');
+  const cnt = document.getElementById('tt-count');
+  function flyUpd() {
+    const u = fly.u;
+    gsap.set(tk, { x: 6 + 1212 * u, y: -1120 * u * (1 - u), rotation: -6 + 348 * u });
+    clip.setAttribute('width', String(260 + 1218 * u));
+    cnt.textContent = Math.round(475 * u) + ' ft';
+  }
+  tl.fromTo('#tt-pop475', { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: 'power3.out' }, 6.03);
+  tl.fromTo(fly, { u: 0 }, { u: 1, duration: 1.4, ease: 'power1.out', onUpdate: flyUpd }, 6.03);
+  /* landing @7.43: dust, landing tick, a small settle rock */
+  tl.fromTo(['#tt-dust1', '#tt-dust2', '#tt-dust3'], { autoAlpha: 0.9, scale: 0.3 }, { autoAlpha: 0, scale: 3.2, duration: 2.4, stagger: 0.12, ease: 'power2.out' }, 7.43);
+  tl.fromTo('#tt-landtick', { autoAlpha: 0, scaleY: 0 }, { autoAlpha: 1, scaleY: 1, duration: 0.35, ease: 'power3.out' }, 7.5);
+  tl.to('#tt-tanker', { rotation: 336, duration: 0.5, ease: 'back.out(3)' }, 7.43);
+  tl.fromTo('#tt-landtick', { scaleY: 1 }, { scaleY: 1.35, duration: 0.5, ease: 'sine.inOut', yoyo: true, repeat: 5 }, 8.0);
+
+  /* CUES.researchers — the 475 figure lifts out before the threshold arrives */
+  tl.to('#tt-pop475', { autoAlpha: 0, y: -26, duration: 0.3, ease: 'power2.in' }, 9.6);
+  /* CUES.thr — "one hundred and sixty-four feet": threshold line rises, band 1 draws track -> line */
+  tl.to('#tt-thr', { scaleY: 1, duration: 0.5, ease: 'power3.out' }, 10.32);
+  tl.fromTo('#tt-thrlab', { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: 'power3.out' }, 10.55);
+  tl.fromTo('#tt-band1', { autoAlpha: 1, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.5, ease: 'power3.out' }, 10.4);
+  /* CUES.winds — "takes EF5 winds": everything past the line washes red */
+  tl.to('#tt-wash', { scaleX: 1, duration: 0.7, ease: 'power3.out' }, 11.6);
+  tl.fromTo('#tt-washlab', { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: 'power3.out' }, 11.7);
+  /* CUES.went / CUES.three — the same 164 ft laid end to end: two copies slide out of band 1 */
+  tl.set(['#tt-band2', '#tt-band3'], { autoAlpha: 1 }, 12.28);
+  tl.fromTo('#tt-band2', { x: 0 }, { x: 419.9, duration: 0.4, ease: 'power3.out' }, 12.28);
+  tl.fromTo('#tt-band3', { x: 0 }, { x: 839.8, duration: 0.7, ease: 'power3.out' }, 12.28);
+  tl.fromTo('#tt-pop3x', { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: 'power4.in' }, 13.0);
+
+  /* exit, last 0.6 s: upper layer slides right, the ground diagram drops away (never a vanish) */
+  tl.to(['#tt-hdr', '#tt-pop3x', '#tt-thrlab', '#tt-thr', '#tt-wash', '#tt-washlab'], { x: 980, autoAlpha: 0, duration: 0.6, ease: 'power3.in' }, 13.4);
+  tl.to(['#tt-diagram', '#tt-tanker', '#tt-credit', '#tt-note', '.tt-arc', '#tt-landtick'], { y: 320, autoAlpha: 0, duration: 0.6, ease: 'power3.in' }, 13.4);
+  tl.to({}, { duration: 0.01 }, 13.99);
+
+  window.__timelines['g-tanker-throw'] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
