@@ -340,7 +340,7 @@ if HAVE_FFMPEG:
             check(f"render-07 NEW: a {kind} span inside a declared window passes",
                   ok.returncode == 0, f"rc={ok.returncode}\n{ok.stdout[-800:]}")
             check(f"render-07 NEW: the same {kind} span with nothing declared fails",
-                  bad.returncode != 0 and f"{kind} span" in bad.stdout, f"rc={bad.returncode}\n{bad.stdout[-800:]}")
+                  bad.returncode != 0 and f"FAIL: 1 {kind} span" in bad.stdout, f"rc={bad.returncode}\n{bad.stdout[-800:]}")
 
         span_case("black", ["-f", "lavfi", "-i", "testsrc=size=320x240:rate=25:duration=8",
                             "-filter_complex", "[0:v]drawbox=c=black:t=fill:enable='between(t,2,5)'[v]"], 8,
@@ -360,13 +360,13 @@ if HAVE_FFMPEG:
                                        'data-duration="7"></section></div>', encoding="utf-8")
         r6 = run_verify(ep, "frozen-final")
         check("render-07 NEW: a 7s freeze inside a declared hold still fails",
-              r6.returncode != 0 and "freeze span" in r6.stdout, f"rc={r6.returncode}\n{r6.stdout[-800:]}")
+              r6.returncode != 0 and "FAIL: 1 freeze span" in r6.stdout, f"rc={r6.returncode}\n{r6.stdout[-800:]}")
         (ep / "index.html").write_text(root11.replace('11.00', '8.00') + '<video id="ins-cta-paul" '
                                        'src="media/cta/x.mp4" data-start="2" data-duration="3"></video></div>',
                                        encoding="utf-8")
         r7 = run_verify(ep, "black-final")
         check("render-07 NEW: a black span over the CTA body still fails",
-              r7.returncode != 0 and "black span" in r7.stdout, f"rc={r7.returncode}\n{r7.stdout[-800:]}")
+              r7.returncode != 0 and "FAIL: 1 black span" in r7.stdout, f"rc={r7.returncode}\n{r7.stdout[-800:]}")
 else:
     print("SKIP render-07 synthetic-clip checks: ffmpeg not on PATH")
 
