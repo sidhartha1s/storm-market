@@ -399,11 +399,8 @@ check("render-10 NEW: render() PASSES on the real JSON gate line (enabled:true) 
       "render_full.log — proves the fixed regex matches HyperFrames' actual log format",
       not raised)
 
-REAL_GATE_LINE_FALSE = (
-    '[INFO] streaming-encode gate {"renderJobId":"21a9bb7d-eeaf-4f12-976e-37c2a565e237",'
-    '"enabled":false,"configFlag":true,"outputFormat":"mp4","workerCount":2,'
-    '"durationSeconds":1050.9,"maxDurationSeconds":7200}\n'
-)
+REAL_GATE_LINE_FALSE = REAL_GATE_LINE_TRUE.replace('"enabled":true', '"enabled":false')
+assert '"enabled":false' in REAL_GATE_LINE_FALSE
 raised, msg = _run_render_against_log(REAL_GATE_LINE_FALSE)
 check("render-10 NEW: render() still FAILS on a JSON gate line with enabled:false",
       raised and "streaming-encode gate" in (msg or ""))
