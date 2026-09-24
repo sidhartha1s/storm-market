@@ -111,7 +111,7 @@ def _find_arith_spans(src):
         while b >= 0 and src[b] in " \t":
             b -= 1
         if b >= 0:
-            if src[b] in "-*/":
+            if src[b] in "-*/%":
                 return True
             if src[b] == "+":
                 b2 = b - 1
