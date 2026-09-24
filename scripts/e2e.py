@@ -33,9 +33,6 @@ def is_tool_crash(out):
     return "Traceback (most recent call last)" in out or any(m in out for m in NODE_CRASH_MARKERS)
 
 
-sys.stdout.reconfigure(errors="replace")  # a gate printing a non-cp1252 glyph must not crash the suite
-
-
 def run(cmd, timeout, cwd=None):
     """A hung tool is a failure, never a suite that waits forever: timeout returns exit code None."""
     try:
@@ -46,47 +43,55 @@ def run(cmd, timeout, cwd=None):
     return r.returncode, r.stdout + r.stderr
 
 
-print("== self-checks ==")
-tests = sorted(SCRIPTS.glob("test_*.py"))
-if not tests:
-    bad.append("no scripts/test_*.py found")
-for t in tests:
-    code, out = run([sys.executable, str(t)], timeout=600)
-    print(f"{'PASS' if code == 0 else 'FAIL'} {t.name} (exit {code})")
-    if code != 0:
-        bad.append(t.name)
-        print(out[-1500:])
+def main():
+    sys.stdout.reconfigure(errors="replace")  # a gate printing a non-cp1252 glyph must not crash the suite
+    bad = []
 
-sys.path.insert(0, str(SCRIPTS))
-from tts_episode import parse_segments  # noqa: E402
+    print("== self-checks ==")
+    tests = sorted(SCRIPTS.glob("test_*.py"))
+    if not tests:
+        bad.append("no scripts/test_*.py found")
+    for t in tests:
+        code, out = run([sys.executable, str(t)], timeout=600)
+        print(f"{'PASS' if code == 0 else 'FAIL'} {t.name} (exit {code})")
+        if code != 0:
+            bad.append(t.name)
+            print(out[-1500:])
 
-for arg in sys.argv[1:]:
-    ep = Path(arg).resolve()
-    print(f"\n== {ep.name} ==")
-    script = ep / "edit_script.md"
-    if script.exists():
-        text = script.read_text(encoding="utf-8")
-        try:
-            segs = parse_segments(text)
-            print(f"parse_segments: {len(segs)} segments")
-            if not segs and "## SCRIPT" not in text:
-                bad.append(f"{ep.name}: script parses to 0 segments and has no '## SCRIPT' section")
-        except Exception as e:  # a SegmentParseError is a real script defect worth surfacing here
-            print(f"parse_segments raised {type(e).__name__}: {e}")
-            bad.append(f"{ep.name}: parse_segments {type(e).__name__}")
-    code, out = run([sys.executable, str(SCRIPTS / "run_gates.py"), str(ep)], timeout=1800)
-    verdict = next((l for l in out.splitlines() if l.startswith("RUN_GATES")), None)
-    print(verdict or "(no RUN_GATES verdict line)")
-    if is_tool_crash(out) or verdict is None or code not in (0, 1):
-        bad.append(f"{ep.name}: run_gates crashed or gave no verdict (exit {code})")
-        print(out[-2500:])
-    ran = set(re.findall(r'^=== (.+) ===$', out, re.M))
-    not_exercised = [g for g in GATE_NAMES if g not in ran]
-    if not_exercised:
-        print("not exercised: " + ", ".join(not_exercised))
+    sys.path.insert(0, str(SCRIPTS))
+    from tts_episode import parse_segments  # noqa: E402
 
-print()
-if bad:
-    print("E2E FAIL - " + "; ".join(bad))
-    sys.exit(1)
-print("E2E PASS")
+    for arg in sys.argv[1:]:
+        ep = Path(arg).resolve()
+        print(f"\n== {ep.name} ==")
+        script = ep / "edit_script.md"
+        if script.exists():
+            text = script.read_text(encoding="utf-8")
+            try:
+                segs = parse_segments(text)
+                print(f"parse_segments: {len(segs)} segments")
+                if not segs and "## SCRIPT" not in text:
+                    bad.append(f"{ep.name}: script parses to 0 segments and has no '## SCRIPT' section")
+            except Exception as e:  # a SegmentParseError is a real script defect worth surfacing here
+                print(f"parse_segments raised {type(e).__name__}: {e}")
+                bad.append(f"{ep.name}: parse_segments {type(e).__name__}")
+        code, out = run([sys.executable, str(SCRIPTS / "run_gates.py"), str(ep)], timeout=1800)
+        verdict = next((l for l in out.splitlines() if l.startswith("RUN_GATES")), None)
+        print(verdict or "(no RUN_GATES verdict line)")
+        if is_tool_crash(out) or verdict is None or code not in (0, 1):
+            bad.append(f"{ep.name}: run_gates crashed or gave no verdict (exit {code})")
+            print(out[-2500:])
+        ran = set(re.findall(r'^=== (.+) ===$', out, re.M))
+        not_exercised = [g for g in GATE_NAMES if g not in ran]
+        if not_exercised:
+            print("not exercised: " + ", ".join(not_exercised))
+
+    print()
+    if bad:
+        print("E2E FAIL - " + "; ".join(bad))
+        sys.exit(1)
+    print("E2E PASS")
+
+
+if __name__ == "__main__":
+    main()
