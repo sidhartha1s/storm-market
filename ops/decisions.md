@@ -6,6 +6,7 @@ line that names the one it replaces.
 
 | date | decision | by | why |
 |---|---|---|---|
+| 24 Sep 26 | Fresh hand-built MGs: Opus, not Sonnet (proposed) | trial, owner to confirm | one-brief trial: Opus faster (14.19 vs 22.29 min) and blind-judged 43/50 vs 26/50; Sonnet passed all 4 gates with a broken font path and stat spray |
 | 24 Sep 26 | Full 0.25 s layout sweep not built (0 of 30 extra flags real on ep-1974); font-fidelity staging proposed instead (task 14) | eval, owner to confirm | the gates measure text in system Arial while renders use Montserrat/Inter, which hid two shipped collisions |
 | 24 Sep 26 | Fixes 1-6 and the era gate merged (#94-#100) after green e2e and Opus review | owner go | bugs found by the Opus re-review of #85-#91 |
 | 24 Sep 26 | Every PR: branch, code, `/simplify`, tests + E2E, PR, `code-reviewer` on Opus, merge after owner OK | owner | Sonnet reviews approved 7 bugs that an Opus re-review caught |

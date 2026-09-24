@@ -286,7 +286,7 @@ KEEP = already in the repo and supported. CHANGE = in the repo, amended. NEW = n
 Every rule names its test.
 
 **Voice and pace**
-1. CHANGE. Docs narrate at tempo 1.00 (native, measured 158 to 165 wpm on this clone; ep2 measured 150.9 wpm). News lane stays 1.10 until the
+1. CHANGE. Docs narrate at tempo 1.00 (native pace; ep2, the retained doc, measured 150.9 wpm). News lane stays 1.10 until the
    test in section 8 reads out. Test: `word_budget.py` probe at the shipping tempo; config `tempo_by_prefix`.
 2. NEW. After any sentence carrying a death count, a date plus place, or a number that matters, insert a 0.4 to 0.6 s
    pause (a written `hold` of that length or a TTS break). Target 1 per 20 to 30 s of narration. Test: count gaps of
