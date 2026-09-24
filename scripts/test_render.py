@@ -392,22 +392,28 @@ check("assets-comps-03 NEW: render_cmd_env() pulls HF_CAPTURE_PARALLEL_STREAM fr
 # the old regex `streaming-encode gate.*enabled:true` never matches this JSON form, so the
 # ritual could never pass. Exercise all three cases through the same harness.
 def _run_render_against_log(log_body):
+    # render() opens its log path with "w" (truncating it) as part of the real subprocess
+    # call, so a log pre-written before calling render() would be wiped before the ritual
+    # ever reads it back. The fake subprocess.run must write log_body into the same
+    # stdout=lf file handle render() passes it, the way the real npx child would.
     with tempfile.TemporaryDirectory() as d:
         fake_demo = Path(d)
         (fake_demo / "index.html").write_text("<div></div>", encoding="utf-8")
         pin_ritual.DEMO = fake_demo
-        log = fake_demo / "pin-ritual-9.9.9.log"
-        log.write_text(log_body, encoding="utf-8")
         out_mp4 = fake_demo / "out.mp4"
         out_mp4.write_bytes(b"not a real mp4, existence is all render() checks post-subprocess")
 
         class FakeCompleted:
             returncode = 0
 
+        def fake_run(*a, **k):
+            k["stdout"].write(log_body)
+            return FakeCompleted()
+
         orig_run = pin_ritual.subprocess.run
         orig_which = pin_ritual.shutil.which
         pin_ritual.shutil.which = lambda name: "npx" if name == "npx" else orig_which(name)
-        pin_ritual.subprocess.run = lambda *a, **k: FakeCompleted()
+        pin_ritual.subprocess.run = fake_run
         pin_ritual.FFPROBE = pin_ritual.FFMPEG = Path("ffmpeg")
         try:
             pin_ritual.render("9.9.9", out_mp4)
