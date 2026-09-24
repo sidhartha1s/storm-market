@@ -200,11 +200,17 @@ def main():
         if only and sid not in only:
             continue
         txt = ep / "audio" / f"{sid}.txt"
+        txt_tmp = ep / "audio" / f"{sid}.txt.tmp"
         raw_wav = ep / "audio" / "_raw" / f"{sid}.wav"
         wav = ep / "audio" / f"{sid}.wav"
         words_json = ep / "audio" / f"{sid}.words.json"
+        # old_txt must be read BEFORE any write below, and <id>.txt itself must not be
+        # touched until synthesis succeeds (see the "stale" branch). A legacy manifest
+        # entry (no text_hash) is adopted by comparing old_txt to the new text; writing the
+        # new text here early would make that comparison lie after a crash mid-segment (tts
+        # clone failure, ffmpeg/ffprobe failure, Ctrl-C): the rerun would see old_txt == new
+        # text, adopt the entry, and silently keep the OLD wav for the NEW line.
         old_txt = txt.read_text(encoding="utf-8") if txt.exists() else None
-        txt.write_text(text, encoding="utf-8")
 
         h = sha1_text(text, tempo, voice_md5)
         h_text = hashlib.sha1(text.encode("utf-8")).hexdigest()
