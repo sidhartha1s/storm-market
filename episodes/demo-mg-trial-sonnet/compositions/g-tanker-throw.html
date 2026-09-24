@@ -71,16 +71,18 @@
     background: linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0));
     padding: 90px 70px 0 170px; box-sizing: border-box; }
   #tt-eyebrow { font-family: Arial, sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 6px; color: #93a3b2; }
-  #tt-headline { font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 52px; color: #f2f5f8; margin-top: 18px; }
-  #tt-sub { font-family: Georgia, serif; font-style: italic; font-size: 26px; color: #d8a13a; margin-top: 16px; }
-  #tt-stamp { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 104px; color: #d0121f;
-    letter-spacing: 0.02em; margin-top: 34px;
+  #tt-headline { font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 52px; color: #f2f5f8; margin-top: 12px; white-space: nowrap; }
+  #tt-sub { font-family: Georgia, serif; font-style: italic; font-size: 26px; color: #d8a13a; margin-top: 10px; }
+  #tt-stamp { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 86px; color: #d0121f;
+    letter-spacing: 0.02em; margin-top: 16px;
     text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
-  .tt-row { margin-top: 30px; }
+  .tt-row { margin-top: 18px; }
   .tt-row-val { font-family: Arial, sans-serif; font-weight: 700; font-size: 30px; color: #dfe7ee; }
   .tt-row-lab { font-family: Arial, sans-serif; font-weight: 700; font-size: 19px; letter-spacing: 4px; color: #93a3b2; margin-top: 2px; }
-  #tt-counter { font-family: 'Courier New', monospace; font-weight: 700; font-size: 84px; color: #e74c3c; margin-top: 46px; }
-  #tt-counter-label { font-family: Arial, sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 6px; color: #c8d3e0; margin-top: 12px; }
+  #tt-counter { font-family: 'Courier New', monospace; font-weight: 700; font-size: 84px; color: #e74c3c; margin-top: 20px; }
+  #tt-counter-label { font-family: Arial, sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 6px; color: #c8d3e0; margin-top: 6px; }
+  /* keep-clear: presenter circle box sits x>=1600,y>=680 (references/mini-storms/FORMAT.md);
+     panel rhythm above is tuned so #tt-counter-label's own bottom edge lands above y=680 (measured 662px, see trial_log fix-1) */
 </style>
 
 <div id="root" data-composition-id="g-tanker-throw" data-width="1920" data-height="1080">
