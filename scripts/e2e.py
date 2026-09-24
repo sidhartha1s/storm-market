@@ -78,9 +78,13 @@ for arg in sys.argv[1:]:
     code, out = run([sys.executable, str(SCRIPTS / "run_gates.py"), str(ep)], timeout=1800)
     verdict = next((l for l in out.splitlines() if l.startswith("RUN_GATES")), None)
     print(verdict or "(no RUN_GATES verdict line)")
-    if "Traceback (most recent call last)" in out or verdict is None or code not in (0, 1):
+    if is_tool_crash(out) or verdict is None or code not in (0, 1):
         bad.append(f"{ep.name}: run_gates crashed or gave no verdict (exit {code})")
         print(out[-2500:])
+    ran = set(re.findall(r'^=== (.+) ===$', out, re.M))
+    not_exercised = [g for g in GATE_NAMES if g not in ran]
+    if not_exercised:
+        print("not exercised: " + ", ".join(not_exercised))
 
 print()
 if bad:
