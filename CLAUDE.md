@@ -15,6 +15,7 @@ files disagree, fix it in the same PR and say which one won.
 | Niche proof, teardowns, slate | `references/script-teardown.md`, `references/teardowns/`, `references/roadmap-2026-09.md` |
 | Measured gotchas, newest first | `LEARNINGS.md`: read before every build, update the same session as any owner correction or measured surprise |
 | Pins, paths, CTA file and window | `config.yaml` |
+| Open tooling and pipeline work; dated decisions (read both at session start, update the same session) | `ops/tasks.md`, `ops/decisions.md` |
 
 ## Two lanes, two skills
 - `/storm-episode`: the documentary. 13 to 23 min is the default band, not a cap. Confirm length per episode.
