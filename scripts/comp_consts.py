@@ -120,7 +120,7 @@ def _find_arith_spans(src):
                 if b2 >= 0 and (is_ident_char(src[b2]) or src[b2] == ")"):
                     return True
         a = skip_ws(end)
-        if a < n and src[a] in "*/":
+        if a < n and src[a] in "*/%":
             return True
         return False
 
