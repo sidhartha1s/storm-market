@@ -83,6 +83,8 @@ check("fold: operator tying a span to an identifier is not eaten (t0 - 2 + 3)",
       fold('t0 - 2 + 3') == 't0 - 2 + 3')
 check("fold: span bordering an identifier via '*' stays whole (x * 2 + 3)",
       fold('x * 2 + 3') == 'x * 2 + 3')
+check("fold: '%' borders a span like '*' ('i % 2 * 0.5' and '7 % 3 + 1' stay whole)",
+      fold('delay: i % 2 * 0.5') == 'delay: i % 2 * 0.5' and fold('7 % 3 + 1') == '7 % 3 + 1')
 
 # ===================================================================================
 # 2 + 5. sweep_episode.py — exit code, freshness gate, check-7 coverage
