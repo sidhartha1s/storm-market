@@ -49,6 +49,9 @@ Node.js v22.14.0
 """
 
 check("real gate FAIL text is not flagged as a crash", not is_tool_crash(GATE_FAIL_OUTPUT))
+check("graphics_qc js-error FAIL (a composition's own JS error) is not a crash",
+      not is_tool_crash("=== graphics_qc.mjs ===\n  g-map  — 1 error, 0 warnings\n"
+                        "    ERROR [js-error] TypeError: Cannot read properties of null (reading 'x')\n"))
 check("uncaught Node exception IS flagged as a crash", is_tool_crash(NODE_CRASH_OUTPUT))
 check("a Python traceback is flagged as a crash",
       is_tool_crash("Traceback (most recent call last):\n  File x\nValueError: boom"))
