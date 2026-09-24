@@ -55,7 +55,6 @@ def _find_arith_spans(src):
         return j
 
     def parse_number(j):
-        start = j
         if j < n and src[j] == "-":
             j += 1
         if j >= n or not src[j].isdigit():
@@ -66,10 +65,12 @@ def _find_arith_spans(src):
             j += 1
             while j < n and src[j].isdigit():
                 j += 1
-        return start, j
+        return j
 
     def parse_term(j):
         j = skip_ws(j)
+        if j > 0 and is_ident_char(src[j - 1]):
+            return None                                          # mid-identifier: t0, x1 — leave alone
         if j < n and src[j] == "(":
             res = parse_expr(j + 1)
             if res is None:
@@ -78,12 +79,9 @@ def _find_arith_spans(src):
             if end < n and src[end] == ")":
                 return end + 1
             return None
-        if j > 0 and is_ident_char(src[j - 1]):
-            return None                                          # mid-identifier: t0, x1 — leave alone
-        numres = parse_number(j)
-        if numres is None:
+        e = parse_number(j)
+        if e is None:
             return None
-        _, e = numres
         if e < n and is_ident_char(src[e]):
             return None
         return e
