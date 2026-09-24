@@ -102,6 +102,28 @@ def _find_arith_spans(src):
                 break
         return end, has_op
 
+    def borders_identifier(start, end):
+        """A span glued to an identifier through an operator is part of a bigger unresolved
+        expression ("t0 - 0.5 - 0.2", "t0 - 2 + 3", "x * 2 + 3") — fold none of it, not just the
+        literal-looking tail, or the operator that ties it to the identifier gets silently eaten.
+        """
+        b = start - 1
+        while b >= 0 and src[b] in " \t":
+            b -= 1
+        if b >= 0:
+            if src[b] in "-*/":
+                return True
+            if src[b] == "+":
+                b2 = b - 1
+                while b2 >= 0 and src[b2] in " \t":
+                    b2 -= 1
+                if b2 >= 0 and (is_ident_char(src[b2]) or src[b2] == ")"):
+                    return True
+        a = skip_ws(end)
+        if a < n and src[a] in "*/":
+            return True
+        return False
+
     spans = []
     i = 0
     while i < n:
@@ -109,7 +131,8 @@ def _find_arith_spans(src):
         if c.isdigit() or c == "(" or (c == "-" and i + 1 < n and src[i + 1].isdigit()):
             res = parse_expr(i)
             if res is not None and res[1]:                       # has_op: a lone literal is already folded
-                spans.append((i, res[0]))
+                if not borders_identifier(i, res[0]):
+                    spans.append((i, res[0]))
                 i = res[0]
                 continue
         i += 1
