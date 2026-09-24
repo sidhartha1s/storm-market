@@ -4,10 +4,128 @@ Comps are authored with a `const CUES = { six: 6.84, ... }` block (word cues fro
 `const DUR = 14.45` window, and place tweens at `CUES.six`, `DUR - 0.6`, `CUES.dark + 1.5`. The gates
 (sweep check 7, beat_density) parse tween positions and durations with regexes that only see numeric
 literals, so every cue-positioned tween was invisible to them (ep-1974, 21 Sep 26: 14 false "holds",
-one hard beat_density exit). This folds `NAME.key`, bare `NAME` numeric consts, and `num op num`
-arithmetic into literals. Unknown identifiers are left alone: the gates then report them as before.
+one hard beat_density exit). This folds `NAME.key`, bare `NAME` numeric consts, and arithmetic on
+literals into literals. Unknown identifiers are left alone: the gates then report them as before.
+
+The arithmetic pass used to be regex passes that ran every '+' before any '-' (wrong: "10 - 2 + 3"
+folded to 5.0 instead of 11.0 — left-to-right, not "additions first"). It now finds maximal spans of
+number/paren/operator text and hands each to `ast.parse(mode='eval')`, which gets precedence and
+associativity right for free (fix-fold-ast, 24 Sep 26).
 """
+import ast
 import re
+
+
+def _eval_node(node):
+    """Whitelist walker: numeric constants, + - * /, unary +/-. Anything else raises."""
+    if isinstance(node, ast.Expression):
+        return _eval_node(node.body)
+    if isinstance(node, ast.Constant) and isinstance(node.value, (int, float)) and not isinstance(node.value, bool):
+        return float(node.value)
+    if isinstance(node, ast.BinOp) and isinstance(node.op, (ast.Add, ast.Sub, ast.Mult, ast.Div)):
+        left, right = _eval_node(node.left), _eval_node(node.right)
+        if isinstance(node.op, ast.Add):
+            return left + right
+        if isinstance(node.op, ast.Sub):
+            return left - right
+        if isinstance(node.op, ast.Mult):
+            return left * right
+        return left / right
+    if isinstance(node, ast.UnaryOp) and isinstance(node.op, (ast.USub, ast.UAdd)):
+        val = _eval_node(node.operand)
+        return -val if isinstance(node.op, ast.USub) else val
+    raise ValueError(f"unsupported node {node!r}")
+
+
+def _find_arith_spans(src):
+    """Maximal (start, end) spans of numeric-literal arithmetic: digits, '.', parens, + - * /.
+
+    A grammar-driven scan, not a flat regex, so a span can never start on a bare operator glued to a
+    non-numeric left operand — "t0 + 0.25" must stay untouched entirely, not lose its "+ 0.25" (same
+    identifier-digit-eating hazard the const substitution above already guards against).
+    """
+    n = len(src)
+
+    def is_ident_char(c):
+        return c.isalnum() or c in "_."
+
+    def skip_ws(j):
+        while j < n and src[j] in " \t":
+            j += 1
+        return j
+
+    def parse_number(j):
+        start = j
+        if j < n and src[j] == "-":
+            j += 1
+        if j >= n or not src[j].isdigit():
+            return None
+        while j < n and src[j].isdigit():
+            j += 1
+        if j < n and src[j] == "." and j + 1 < n and src[j + 1].isdigit():
+            j += 1
+            while j < n and src[j].isdigit():
+                j += 1
+        return start, j
+
+    def parse_term(j):
+        j = skip_ws(j)
+        if j < n and src[j] == "(":
+            res = parse_expr(j + 1)
+            if res is None:
+                return None
+            end = skip_ws(res[0])
+            if end < n and src[end] == ")":
+                return end + 1
+            return None
+        if j > 0 and is_ident_char(src[j - 1]):
+            return None                                          # mid-identifier: t0, x1 — leave alone
+        numres = parse_number(j)
+        if numres is None:
+            return None
+        _, e = numres
+        if e < n and is_ident_char(src[e]):
+            return None
+        return e
+
+    def parse_expr(j):
+        end = parse_term(j)
+        if end is None:
+            return None
+        has_op = False
+        while True:
+            k = skip_ws(end)
+            if k < n and src[k] in "+-*/":
+                nend = parse_term(skip_ws(k + 1))
+                if nend is None:
+                    break
+                end, has_op = nend, True
+            else:
+                break
+        return end, has_op
+
+    spans = []
+    i = 0
+    while i < n:
+        c = src[i]
+        if c.isdigit() or c == "(" or (c == "-" and i + 1 < n and src[i + 1].isdigit()):
+            res = parse_expr(i)
+            if res is not None and res[1]:                       # has_op: a lone literal is already folded
+                spans.append((i, res[0]))
+                i = res[0]
+                continue
+        i += 1
+    return spans
+
+
+def _is_date_like(text):
+    # dates like 2026-09 read as arithmetic (2026 - 9); a leading-zero multi-digit integer with no
+    # decimal point is a date/time fragment, not a literal meant to be computed — stay text.
+    for tok in re.findall(r'-?\d+(?:\.\d+)?', text):
+        mag = tok.lstrip("-")
+        if len(mag) > 1 and mag[0] == "0" and "." not in mag:
+            return True
+    return False
 
 
 def fold(src: str) -> str:
@@ -17,21 +135,19 @@ def fold(src: str) -> str:
             consts[f"{name}.{k}"] = float(v)
     for k in sorted(consts, key=len, reverse=True):          # longest first: CUES.six before CUES
         src = re.sub(r'(?<![\w.])' + re.escape(k) + r'(?![\w.(])', repr(consts[k]), src)
-    # num must stand alone: a word char right before/after it means it is part of an
-    # identifier (t0, x1), not a literal. Without the lookaround, "t0 + 0.25" matched the "0"
-    # inside "t0" as the left operand and folded to "t0.25" (qc-gates-10 RCA, 23 Sep 26) —
-    # silently eating the identifier's digit and handing the gates a wrong number instead of
-    # an honest "can't parse this".
-    num = r'(?<![\w.])(-?\d+(?:\.\d+)?)(?![\w.])'
-    ops = {"+": lambda a, b: a + b, "-": lambda a, b: a - b, "*": lambda a, b: a * b}
-    def calc(op):
-        def _calc(m):                                          # dates like 2026-09 stay text
-            a, b = m.group(1), m.group(2)
-            if (len(a) > 1 and a.lstrip("-").startswith("0") and "." not in a) or (len(b) > 1 and b.startswith("0") and "." not in b):
-                return m.group(0)
-            return repr(round(ops[op](float(a), float(b)), 4))
-        return _calc
-    for _ in range(3):                                        # a + b - c, chained
-        for op in ("*", "+", "-"):                            # multiply before add/subtract:
-            src = re.sub(num + r'\s*' + re.escape(op) + r'\s*' + num, calc(op), src)  # "DUR - 2*0.5" folded 4.0 instead of 9.0 with one combined pass
-    return src
+
+    out = []
+    pos = 0
+    for start, end in _find_arith_spans(src):
+        text = src[start:end]
+        out.append(src[pos:start])
+        if _is_date_like(text):
+            out.append(text)                                  # dates like 2026-09 stay text
+        else:
+            try:
+                out.append(repr(round(_eval_node(ast.parse(text, mode="eval")), 4)))
+            except Exception:
+                out.append(text)                                # unparseable: honest "can't parse this"
+        pos = end
+    out.append(src[pos:])
+    return "".join(out)
