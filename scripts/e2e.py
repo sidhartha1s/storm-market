@@ -18,7 +18,6 @@ import sys
 from pathlib import Path
 
 SCRIPTS = Path(__file__).resolve().parent
-bad = []
 
 # run_gates' four Node gates exit 1 on an uncaught JS exception same as on a real gate FAIL.
 # These markers only ever appear in a Node crash dump (checked against every gate's own FAIL
