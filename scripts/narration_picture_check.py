@@ -147,7 +147,9 @@ def ts(s):
     return f"{int(s) // 60}:{s % 60:05.2f}"
 
 
-print(f"segments checked: {len(segments)}/{len(total_nx)}   picture windows: {len(pictures)}   archival assets tagged: {len(ASSET_YEARS)}")
+archival_tagged = sum(1 for y in ASSET_YEARS.values() if y < MODERN_FROM)
+
+print(f"segments checked: {len(segments)}/{len(total_nx)}   picture windows: {len(pictures)}   archival assets tagged: {archival_tagged}")
 print()
 missing_ids = sorted(set(total_nx) - set(segments))
 if missing_ids:
@@ -160,7 +162,12 @@ if era_findings:
     for nx, t, d in era_findings:
         print(f"  {ts(t)}  {nx:10} {d}")
     sys.exit(1)
-if not ASSET_YEARS:
+on_screen_media = sorted({name for _, _, name in pictures if not name.startswith("composition:")})
+archival_on_screen = [n for n in on_screen_media if is_archival(n)]
+if not archival_on_screen and on_screen_media:
+    no_era = sum(1 for n in on_screen_media if Path(n.split("?")[0]).name not in ASSET_YEARS)
+    print(f"[WARN] era check had nothing to check: {no_era} on-screen media file(s) had no provenance era")
+elif not on_screen_media:
     print("NARRATION/PICTURE PASS - no archival assets tagged in this episode's provenance.csv files; nothing to compare against (a mini-storms/PD-stock episode, most likely)")
 else:
-    print(f"NARRATION/PICTURE PASS - no modern year spoken over {len(ASSET_YEARS)} tagged archival asset(s)")
+    print(f"NARRATION/PICTURE PASS - no modern year spoken over {archival_tagged} tagged archival asset(s)")
