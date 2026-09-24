@@ -142,11 +142,7 @@ def _find_arith_spans(src):
 def _is_date_like(text):
     # dates like 2026-09 read as arithmetic (2026 - 9); a leading-zero multi-digit integer with no
     # decimal point is a date/time fragment, not a literal meant to be computed — stay text.
-    for tok in re.findall(r'-?\d+(?:\.\d+)?', text):
-        mag = tok.lstrip("-")
-        if len(mag) > 1 and mag[0] == "0" and "." not in mag:
-            return True
-    return False
+    return re.search(r'(?<![\d.])0\d+(?![\d.])', text) is not None
 
 
 def fold(src: str) -> str:
