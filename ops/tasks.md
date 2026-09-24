@@ -23,7 +23,7 @@ Status: `todo` · `doing` · `review` (PR open, waiting on Opus review, e2e or t
 | 9 | Independent retention/AVD study vs the repo's script rules; flag weak owner rules; face-intro and Paul-retirement path | `references/retention-study-2026-09-24.md` | review: owner decides each rule change |
 | 10 | Layout sweep (text boxes every 0.25 s, pixel offsets): time to build, tradeoffs, eval on ep-1974 | eval done: full sweep not worth it (0 of 30 extra flags real on ep-1974); build the font-fidelity fix instead (task 14) | done |
 | 11 | ep-1974 time breakdown with turns per phase, script iterations, MG costs | `references/time-breakdown-ep-1974.md` | done |
-| 12 | MG build trial: one fresh hand-curated MG, 0 to prod quality, Opus 5.5 vs Sonnet (effort high); time, turns, quality; keep or retire Sonnet for MGs | report | todo (after e2e, RAM) |
+| 12 | MG build trial: one fresh hand-curated MG, 0 to prod quality, Opus 5.5 vs Sonnet (effort high); time, turns, quality; keep or retire Sonnet for MGs | report | done 24 Sep 26: Opus 14.19 min, 41 turns, judge 43/50 shippable; Sonnet 22.29 min, 55 turns, judge 26/50 not shippable. Reading rules was the biggest phase (38.4 % / 41.6 %) |
 | 14 | Gates stage comps in system Arial but renders swap to Montserrat/Inter/EB Garamond (hyperframes alias table): shared @font-face staging for overlap_check, graphics_qc, occlusion_check. Missed shipped collisions in ep-1974 g-plane and g-map-i. Est. 2-3 h | - | todo: owner go |
 | 13 | MG templates for repeated kinds (person card, citation, map with pins) | - | parked: after task 12 |
 
