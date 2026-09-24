@@ -173,7 +173,7 @@ The gate list and its order live in `scripts/run_gates.py`. Minis also run `node
 - Do not start a render while any builder is still editing. No live subagent, quiet `git status`, then launch.
 - One heavy job at a time; `scripts/render_busy.py` guards it. No gates, Playwright or subagent browsers beside a render.
 - Render only with `scripts\render.cmd <slug> <draft|full> [out-basename]`. Default 3 workers; full renders on this box
-  set `RENDER_WORKERS=2` in a per-episode wrapper (`scripts/<ep>_full_task.cmd`). `RENDER_CRF=20` gives a smaller single pass. Planning numbers: a 17 min draft took 36 min, a 28 min full took about 75 min at 2 workers.
+  set `RENDER_WORKERS=2` in a per-episode wrapper (`scripts/<ep>_full_task.cmd`, copied from `scripts/full_task_example.cmd`). `RENDER_CRF=20` gives a smaller single pass. Planning numbers: a 17 min draft took 36 min, a 28 min full took about 75 min at 2 workers.
 - Launch hidden through a scheduled task: `schtasks /create ... /tr "wscript.exe <abs>\scripts\run_hidden.vbs cmd.exe /c
   <abs>\scripts\<task>.cmd"` then `/run`. A harness background job is reaped at low RAM, and `Start-Process` dies with its tool call.
 - Read the log for `streaming-encode gate ... enabled:true`. Without it a long composition captures to disk and fills it.
