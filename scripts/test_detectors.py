@@ -56,7 +56,7 @@ assert code == 1 and 'not parsed' in out, out
 # media/act1/ — prove both defects on the ERA_FILES fixture.
 OLD_NPC = S / '_old_npc_tmp.py'
 OLD_NPC.write_text(subprocess.run(['git', 'show', 'ad3c9871:scripts/narration_picture_check.py'],
-                                   cwd=S.parent, capture_output=True, text=True).stdout, encoding='utf-8')
+                                   cwd=S.parent, capture_output=True, text=True, check=True).stdout, encoding='utf-8')
 with tempfile.TemporaryDirectory() as d:
     ep = Path(d)
     _mk(ep, ERA_FILES)
