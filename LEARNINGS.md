@@ -63,7 +63,7 @@ quoted section header.
 ## 2026-09-22 - ep-1974 shipped 17:30 against a 22:00 target: three guesses stacked
 
 - **Measured:** script 3,027 words; raw TTS 18.4 min (165 wpm native, not the 152 assumed); atempo 1.10 made it
-  16.7 min of voice (181 wpm delivered); non-voice time 48 s, not the 2.2 min constant. 22:00 became 17:40, then
+  16.7 min of voice (181 wpm is script words over voice minutes; words.json over the wav measures 176.0 wpm); non-voice time 48 s, not the 2.2 min constant. 22:00 became 17:40, then
   17:30 after the owner's cuts. Owner: "you under delivered the minutes of last video."
 - **Why:** the budget line in edit_script.md multiplied a guessed pace by a guessed overhead, and the probes the
   plan asked for were made but never fed back into the count. wordcount.py's own footer printed 20.3 min and the
