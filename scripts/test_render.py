@@ -345,11 +345,28 @@ if HAVE_FFMPEG:
         span_case("black", ["-f", "lavfi", "-i", "testsrc=size=320x240:rate=25:duration=8",
                             "-filter_complex", "[0:v]drawbox=c=black:t=fill:enable='between(t,2,5)'[v]"], 8,
                   '<section class="clip blackout" id="bo-1" data-start="2" data-duration="3"></section>', "black")
-        span_case("frozen", ["-f", "lavfi", "-i", "testsrc=size=320x240:rate=25:duration=2",
-                             "-f", "lavfi", "-i", "color=c=gray:s=320x240:r=25:d=7",
-                             "-f", "lavfi", "-i", "testsrc=size=320x240:rate=25:duration=2",
-                             "-filter_complex", "[0:v][1:v][2:v]concat=n=3:v=1:a=0[v]"], 11,
-                  '<section class="clip hold" id="hold-2" data-start="2" data-duration="7"></section>', "freeze")
+        frozen = ["-f", "lavfi", "-i", "testsrc=size=320x240:rate=25:duration=2",
+                  "-f", "lavfi", "-i", "color=c=gray:s=320x240:r=25:d=7",
+                  "-f", "lavfi", "-i", "testsrc=size=320x240:rate=25:duration=2",
+                  "-filter_complex", "[0:v][1:v][2:v]concat=n=3:v=1:a=0[v]"]
+        span_case("frozen", frozen, 11,
+                  '<section class="clip blackout" id="bo-2" data-start="2" data-duration="7"></section>', "freeze")
+
+        # A hold may be quiet but must keep a live picture, and the CTA body must never be black
+        # or frozen (a CTA that fails to decode renders black for 15 s): both still FAIL.
+        root11 = ('<div id="root" data-composition-id="x" data-start="0" data-width="320" '
+                  'data-height="240" data-duration="11.00" data-fps="25">')
+        (ep / "index.html").write_text(root11 + '<section class="clip hold" id="hold-3" data-start="2" '
+                                       'data-duration="7"></section></div>', encoding="utf-8")
+        r6 = run_verify(ep, "frozen-final")
+        check("render-07 NEW: a 7s freeze inside a declared hold still fails",
+              r6.returncode != 0 and "freeze span" in r6.stdout, f"rc={r6.returncode}\n{r6.stdout[-800:]}")
+        (ep / "index.html").write_text(root11.replace('11.00', '8.00') + '<video id="ins-cta-paul" '
+                                       'src="media/cta/x.mp4" data-start="2" data-duration="3"></video></div>',
+                                       encoding="utf-8")
+        r7 = run_verify(ep, "black-final")
+        check("render-07 NEW: a black span over the CTA body still fails",
+              r7.returncode != 0 and "black span" in r7.stdout, f"rc={r7.returncode}\n{r7.stdout[-800:]}")
 else:
     print("SKIP render-07 synthetic-clip checks: ffmpeg not on PATH")
 
