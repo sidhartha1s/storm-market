@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-tanker-throw — MG trial brief "The tanker car" (Enderlin, 20 Jun 2025).
+  Side-view diagram: rail line + derailed cars, the tanker's thrown arc, an EF5 threshold
+  tick and a distance scale bar so the ratio is felt, not read. Right rail carries the
+  panel facts. Source: NWS Grand Forks / Miller et al. 2024 (Monthly Weather Review).
+
+  CONFLICT FLAGGED (CLAUDE.md "surface conflicts, don't average"): DESIGN.md GRAPHICS
+  CONTRACT §3 types the panel "stamp" role as Arial Black on a #8e2020 background block.
+  ep6's own in-code comment (index.html line ~54) says that block was REPLACED
+  2026-08-16 by the red Abril-Fatface popfig treatment for dates/figures, and this
+  trial's brief explicitly orders "figures as red Abril popfigs". I followed the newer,
+  brief-ordered convention (Abril popfig, no background block) for the "72,000 LB" figure
+  and flag the older §3 block spec as stale for that one role.
+-->
+<template>
+<style>
+  #root {
+    position: absolute; inset: 0; overflow: hidden;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%);
+    font-family: Arial, sans-serif; color: #dfe7ee;
+  }
+  @font-face { font-family: 'AbrilFig'; src: url('../fonts/AbrilFatface-Regular.ttf'); }
+
+  /* ---------- diagram (left, side view) ---------- */
+  #tt-diagram { position: absolute; left: 0; top: 0; width: 1100px; height: 1080px; }
+  #tt-groundline { position: absolute; left: 0; top: 759px; width: 1040px; height: 2px; background: #2a3644; }
+  #tt-rail-mask { position: absolute; left: 0; top: 752px; width: 1040px; height: 16px; overflow: hidden; }
+  #tt-rail-strip { position: absolute; left: 0; top: 0; width: 2160px; height: 16px;
+    background: repeating-linear-gradient(90deg, #2a3644 0 40px, #17202a 40px 80px); }
+  #tt-origin-label { position: absolute; left: 20px; top: 774px; font-size: 18px; font-weight: 700;
+    letter-spacing: 3px; color: #93a3b2; }
+  #tt-cars { position: absolute; left: 0; top: 0; width: 260px; height: 780px; }
+  .tt-car { position: absolute; width: 46px; height: 22px; background: #101820; border: 2px solid #2a3644; border-radius: 3px; }
+  #tt-car1 { left: 22px; top: 734px; transform: rotate(-6deg); }
+  #tt-car2 { left: 52px; top: 742px; transform: rotate(4deg); }
+  #tt-car3 { left: 150px; top: 730px; transform: rotate(-3deg); }
+  #tt-car4 { left: 178px; top: 748px; transform: rotate(8deg); }
+  #tt-tanker { position: absolute; left: 0; top: 0; width: 54px; height: 28px; border-radius: 6px;
+    background: #101820; border: 2px solid #5a768f; box-sizing: border-box; }
+  #tt-dust { position: absolute; left: 966px; top: 730px; width: 60px; height: 60px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,197,106,0.55) 0%, rgba(142,32,32,0.35) 55%, rgba(0,0,0,0) 75%); }
+
+  #tt-scalebar-track { position: absolute; left: 140px; top: 745px; width: 856px; height: 10px;
+    background: #1a2331; border: 1px solid #3a4a5e; box-sizing: border-box; }
+  #tt-scalebar-fill { position: absolute; left: 140px; top: 745px; width: 856px; height: 10px;
+    background: linear-gradient(90deg, #5a768f, #7fb2e5 46%, #e74c3c 100%);
+    transform: scaleX(0); transform-origin: left center; }
+
+  #tt-thresh-tick { position: absolute; left: 435px; top: 560px; width: 3px; height: 200px;
+    background: repeating-linear-gradient(180deg, #7fb2e5 0 10px, transparent 10px 18px);
+    transform: scaleY(0); transform-origin: bottom center; }
+  #tt-thresh-label { position: absolute; left: 165px; top: 495px; width: 260px; text-align: right;
+    font-size: 22px; font-weight: 700; letter-spacing: 2px; color: #7fb2e5; line-height: 1.3; }
+
+  #tt-land-tick { position: absolute; left: 996px; top: 520px; width: 3px; height: 240px; background: #e74c3c;
+    transform: scaleY(0); transform-origin: bottom center; }
+  #tt-land-label { position: absolute; left: 726px; top: 455px; width: 260px; text-align: right;
+    font-size: 22px; font-weight: 700; letter-spacing: 2px; color: #e74c3c; line-height: 1.3; }
+
+  #tt-source { position: absolute; left: 40px; top: 1012px; font-size: 18px; color: #93a3b2;
+    letter-spacing: 1px; font-weight: 700; }
+
+  /* ---------- right panel (DESIGN.md GRAPHICS CONTRACT §2) ---------- */
+  #tt-panel { position: absolute; right: 0; top: 0; bottom: 0; width: 820px;
+    background: linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0));
+    padding: 90px 70px 0 170px; box-sizing: border-box; }
+  #tt-eyebrow { font-family: Arial, sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 6px; color: #93a3b2; }
+  #tt-headline { font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 52px; color: #f2f5f8; margin-top: 18px; }
+  #tt-sub { font-family: Georgia, serif; font-style: italic; font-size: 26px; color: #d8a13a; margin-top: 16px; }
+  #tt-stamp { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 104px; color: #d0121f;
+    letter-spacing: 0.02em; margin-top: 34px;
+    text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+  .tt-row { margin-top: 30px; }
+  .tt-row-val { font-family: Arial, sans-serif; font-weight: 700; font-size: 30px; color: #dfe7ee; }
+  .tt-row-lab { font-family: Arial, sans-serif; font-weight: 700; font-size: 19px; letter-spacing: 4px; color: #93a3b2; margin-top: 2px; }
+  #tt-counter { font-family: 'Courier New', monospace; font-weight: 700; font-size: 84px; color: #e74c3c; margin-top: 46px; }
+  #tt-counter-label { font-family: Arial, sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 6px; color: #c8d3e0; margin-top: 12px; }
+</style>
+
+<div id="root" data-composition-id="g-tanker-throw" data-width="1920" data-height="1080">
+  <div id="tt-diagram">
+    <div id="tt-groundline"></div>
+    <div id="tt-rail-mask"><div id="tt-rail-strip"></div></div>
+    <div id="tt-origin-label">RAIL LINE &middot; SOUTH OF ENDERLIN</div>
+    <div id="tt-cars">
+      <div class="tt-car" id="tt-car1"></div>
+      <div class="tt-car" id="tt-car2"></div>
+      <div class="tt-car" id="tt-car3"></div>
+      <div class="tt-car" id="tt-car4"></div>
+    </div>
+    <div id="tt-tanker"></div>
+    <div id="tt-dust"></div>
+    <div id="tt-scalebar-track"></div>
+    <div id="tt-scalebar-fill"></div>
+    <div id="tt-thresh-tick"></div>
+    <div id="tt-thresh-label">EF5 THRESHOLD<br>164 FT</div>
+    <div id="tt-land-tick"></div>
+    <div id="tt-land-label">TANKER LANDED<br>475.7 FT</div>
+    <div id="tt-source">SOURCE: NWS GRAND FORKS &middot; MILLER ET AL. 2024</div>
+  </div>
+
+  <div id="tt-panel">
+    <div id="tt-eyebrow">SOUTH OF ENDERLIN &middot; 20 JUN 2025</div>
+    <div id="tt-headline">Thrown Past The Line</div>
+    <div id="tt-sub">an empty tanker car became the evidence</div>
+    <div id="tt-stamp">72,000 LB</div>
+    <div class="tt-row" id="tt-row1">
+      <div class="tt-row-val">33</div>
+      <div class="tt-row-lab">FREIGHT CARS DERAILED</div>
+    </div>
+    <div class="tt-row" id="tt-row2">
+      <div class="tt-row-val">14</div>
+      <div class="tt-row-lab">WERE EMPTY TANKER CARS</div>
+    </div>
+    <div id="tt-counter">0.0X</div>
+    <div id="tt-counter-label">TIMES THE EF5 THRESHOLD DISTANCE</div>
+  </div>
+</div>
+
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+
+  /* hide everything that reveals on a cue */
+  tl.set(["#tt-groundline","#tt-rail-mask","#tt-origin-label","#tt-scalebar-track",
+          "#tt-car1","#tt-car2","#tt-car3","#tt-car4","#tt-tanker","#tt-dust",
+          "#tt-scalebar-fill","#tt-thresh-tick","#tt-thresh-label","#tt-land-tick","#tt-land-label",
+          "#tt-source","#tt-eyebrow","#tt-headline","#tt-sub","#tt-stamp",
+          "#tt-row1","#tt-row2","#tt-counter","#tt-counter-label"], { autoAlpha: 0 }, 0);
+  tl.set("#tt-panel", { x: 660 }, 0);
+  tl.set("#tt-tanker", { x: 100, y: 726, autoAlpha: 0 }, 0);
+  tl.set("#tt-dust", { scale: 0, autoAlpha: 0 }, 0);
+  tl.set(["#tt-scalebar-fill"], { scaleX: 0 }, 0);
+  tl.set(["#tt-thresh-tick","#tt-land-tick"], { scaleY: 0 }, 0);
+
+  /* continuous motion for the whole 14s window: track ties scroll (§5 / beat_density) */
+  tl.to("#tt-rail-strip", { x: -400, duration: 14.0, ease: "none" }, 0.0);
+
+  /* opening: stage base + panel */
+  tl.fromTo(["#tt-groundline","#tt-rail-mask","#tt-origin-label","#tt-scalebar-track"],
+    { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 0.2);
+  tl.to("#tt-panel", { x: 0, duration: 0.7, ease: "power3.out" }, 0.3);
+  tl.fromTo("#tt-eyebrow", { autoAlpha: 0, y: -16 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 0.5);
+  tl.fromTo("#tt-source", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.6);
+  tl.fromTo("#tt-headline", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 1.0);
+  tl.fromTo("#tt-sub", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 1.5);
+
+  /* derailed cars build in, scattered (33 cars off the tracks) */
+  tl.fromTo("#tt-car1", { autoAlpha: 0, scale: 0.7 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power3.out" }, 1.5);
+  tl.fromTo("#tt-car2", { autoAlpha: 0, scale: 0.7 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power3.out" }, 1.65);
+  tl.fromTo("#tt-car3", { autoAlpha: 0, scale: 0.7 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power3.out" }, 1.8);
+  tl.fromTo("#tt-car4", { autoAlpha: 0, scale: 0.7 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power3.out" }, 1.95);
+  tl.fromTo("#tt-tanker", { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power3.out" }, 1.9);
+  tl.fromTo("#tt-row1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 3.2);
+  tl.fromTo("#tt-row2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 3.8);
+
+  /* the tanker singled out, one empty car among the wreckage (kinetic punch, backgroundColor flag) */
+  tl.to("#tt-tanker", { scale: 1.18, duration: 0.2, ease: "power3.out" }, 2.5);
+  tl.to("#tt-tanker", { backgroundColor: "#8e2020", borderColor: "#e8c56a", duration: 0.3 }, 2.5);
+  tl.to("#tt-tanker", { scale: 1, duration: 0.2, ease: "power2.in" }, 2.7);
+
+  /* separates, then the throw: two-phase arc up then down, tumbling the whole way */
+  tl.to("#tt-tanker", { x: 140, duration: 0.4, ease: "power2.inOut" }, 4.4);
+  tl.to("#tt-tanker", { x: 548, y: 480, rotation: 260, duration: 0.7, ease: "power2.out" }, 5.0);
+  tl.to("#tt-tanker", { x: 996, y: 760, rotation: 560, duration: 0.8, ease: "power2.in" }, 5.7);
+
+  /* the figure lands mid-arc: 72,000 LB, red Abril popfig */
+  tl.fromTo("#tt-stamp", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 6.0);
+
+  /* impact: dust, landing tick + label */
+  tl.to("#tt-land-tick", { autoAlpha: 1, scaleY: 1, duration: 0.4, ease: "power3.out" }, 6.5);
+  tl.fromTo("#tt-land-label", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 6.6);
+  tl.fromTo("#tt-dust", { autoAlpha: 1, scale: 0 }, { scale: 1.6, duration: 0.5, ease: "power2.out" }, 6.6);
+  tl.to("#tt-dust", { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 6.9);
+
+  /* distance scale bar draws the full 475.7 ft; the threshold tick lights up as the fill passes it */
+  tl.to("#tt-scalebar-fill", { scaleX: 1, duration: 0.9, ease: "power2.inOut" }, 6.9);
+  tl.to("#tt-thresh-tick", { autoAlpha: 1, scaleY: 1, duration: 0.35, ease: "power3.out" }, 7.2);
+  tl.fromTo("#tt-thresh-label", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 7.55);
+
+  /* emphasis pulse on the threshold once it has registered */
+  tl.to("#tt-thresh-tick", { scaleX: 2.5, duration: 0.25, ease: "power2.out" }, 9.0);
+  tl.to("#tt-thresh-tick", { scaleX: 1, duration: 0.25, ease: "power2.in" }, 9.25);
+
+  /* the ratio counter: 475.7 / 164 = 2.9x, felt against the scale bar already on screen */
+  tl.fromTo("#tt-counter", { autoAlpha: 0, scale: 1.5 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 9.6);
+  tl.to({ v: 0 }, {
+    v: 2.9, duration: 1.0, ease: "power3.out",
+    onUpdate: function () { document.getElementById("tt-counter").textContent = this.targets()[0].v.toFixed(1) + "X"; },
+    onComplete: function () { document.getElementById("tt-counter").textContent = "2.9X"; }
+  }, 9.6);
+  tl.fromTo("#tt-counter-label", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 10.6);
+
+  /* panel exits on the cut, sliding right, never vanishing (DESIGN.md §5) */
+  tl.to("#tt-panel", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 13.3);
+
+  window.__timelines["g-tanker-throw"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
