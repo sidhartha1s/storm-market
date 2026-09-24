@@ -237,8 +237,14 @@ def main():
             adopted = False
             stale = prior.get("text_hash") != h or not wav.exists()
         if stale:
-            synth_native(txt, raw_wav, ext)
+            # tts_clone reads from a TEMP text file. <id>.txt (the file old_txt/adoption
+            # compares against) is only replaced with the new text after synth + tempo both
+            # succeed, so a crash anywhere in between leaves it holding the text of the wav
+            # that's actually on disk.
+            txt_tmp.write_text(text, encoding="utf-8")
+            synth_native(txt_tmp, raw_wav, ext)
             apply_tempo(raw_wav, wav, tempo)
+            txt_tmp.replace(txt)
             if words_json.exists():
                 words_json.unlink()
 
