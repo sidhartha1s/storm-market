@@ -6,6 +6,8 @@ line that names the one it replaces.
 
 | date | decision | by | why |
 |---|---|---|---|
+| 24 Sep 26 | Full 0.25 s layout sweep not built (0 of 30 extra flags real on ep-1974); font-fidelity staging proposed instead (task 14) | eval, owner to confirm | the gates measure text in system Arial while renders use Montserrat/Inter, which hid two shipped collisions |
+| 24 Sep 26 | Fixes 1-6 and the era gate merged (#94-#100) after green e2e and Opus review | owner go | bugs found by the Opus re-review of #85-#91 |
 | 24 Sep 26 | Every PR: branch, code, `/simplify`, tests + E2E, PR, `code-reviewer` on Opus, merge after owner OK | owner | Sonnet reviews approved 7 bugs that an Opus re-review caught |
 | 24 Sep 26 | Speed changes must not regress quality (owner scores current output ~90 %); each change lists its tradeoff and waits for the owner's merge go | owner | quality landed after many rounds |
 | 24 Sep 26 | Tag `v1-stable` is the rollback point before the simplify pass; small revertable PRs, no V2 repo | owner | rollback without maintaining two repos |
