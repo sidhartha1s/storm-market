@@ -254,6 +254,53 @@ with tempfile.TemporaryDirectory() as d:
     check("tts_episode: re-synthesized entry gets a real numeric tempo, not 'legacy'",
           legacy_diff_manifest["a1-s1"]["tempo"] == 1.10, legacy_diff_manifest["a1-s1"])
 
+    # 5e. a crash DURING synthesis (tts_clone/ffmpeg/ffprobe failure, Ctrl-C) for a legacy
+    #     manifest entry (no text_hash) must not corrupt the next run's adoption check. The
+    #     bug: writing the new text to <id>.txt BEFORE synth used to make a post-crash rerun
+    #     see old_txt == new text, adopt the entry, and silently keep the OLD wav for the NEW
+    #     line. Fixed: <id>.txt is only replaced after synth + tempo succeed.
+    ep_crash = make_episode(tmp, SCRIPT_ONE_SEG.replace(
+        "Hello world this is a test line.", "A totally new line for the crash test."),
+        voice_ref, name="ep_crash")
+    (ep_crash / "audio").mkdir()
+    (ep_crash / "audio" / "a1-s1.txt").write_text("Hello world this is a test line.",
+                                                    encoding="utf-8")
+    (ep_crash / "audio" / "a1-s1.wav").write_bytes(b"OLD-RAW-WAV")
+    (ep_crash / "audio" / "a1-s1.words.json").write_text(
+        json.dumps([{"text": "old", "start": 0.0, "end": 1.0}]), encoding="utf-8")
+    (ep_crash / "audio" / "manifest.json").write_text(json.dumps(
+        {"a1-s1": {"wav": "audio/a1-s1.wav", "duration": 5.0, "words": 7}}), encoding="utf-8")
+
+    def mock_synth_native_crash(txt_path, wav_path, ext):
+        # simulates tts_clone dying mid-segment, same as the real synth_native's sys.exit
+        sys.exit("[test_audio] simulated tts_clone crash")
+
+    install_mocks()
+    tts_episode.synth_native = mock_synth_native_crash
+    sys.argv = ["tts_episode.py", str(ep_crash)]
+    try:
+        tts_episode.main()
+        check("tts_episode: crash mid-synthesis exits non-zero", False, "main() returned")
+    except SystemExit:
+        check("tts_episode: crash mid-synthesis exits non-zero", True)
+    check("tts_episode: crash leaves <id>.txt holding the OLD text (not the new, unsynthesized one)",
+          (ep_crash / "audio" / "a1-s1.txt").read_text(encoding="utf-8") ==
+          "Hello world this is a test line.")
+    check("tts_episode: crash leaves the OLD wav untouched",
+          (ep_crash / "audio" / "a1-s1.wav").read_bytes() == b"OLD-RAW-WAV")
+
+    # Rerun with a working synth: the entry must now be recognized as changed and re-synthesized.
+    install_mocks()
+    sys.argv = ["tts_episode.py", str(ep_crash)]
+    tts_episode.main()
+    check("tts_episode: rerun after a synth crash DOES re-synthesize (root bug: would silently "
+          "adopt the old wav instead)", calls["synth"] == ["a1-s1"])
+    check("tts_episode: rerun after a synth crash produces new wav bytes, not the old wav",
+          (ep_crash / "audio" / "a1-s1.wav").read_bytes() != b"OLD-RAW-WAV")
+    crash_manifest = json.loads((ep_crash / "audio" / "manifest.json").read_text(encoding="utf-8"))
+    check("tts_episode: re-synthesized crash entry gets a real numeric tempo, not 'legacy'",
+          crash_manifest["a1-s1"]["tempo"] == 1.10, crash_manifest["a1-s1"])
+
     # 6. 0 parsed segments exits non-zero and leaves manifest.json untouched.
     before = (ep / "audio" / "manifest.json").read_text(encoding="utf-8")
     ep_empty = make_episode(tmp, "## SCRIPT\n**A1-S1 (10 w)** inline prose, no blockquotes.\n",
