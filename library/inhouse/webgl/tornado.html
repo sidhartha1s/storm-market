@@ -239,9 +239,9 @@ cloud({ order: 6, count: 260, r0: R0 * 1.5, r1: R0 * 4, ymax: 5, size: 1.6, soft
 cloud({ order: 7, count: 900 * C.debrisDensity, r0: R0 * 1.2, r1: R0 * 4.5, ymax: C.height * 0.4, size: 0.12, soft: 0, col: S.debris, alpha: 0.95 });
 
 // ---- camera: all moves are pure functions of t ----
+const LOOK = new THREE.Vector3(0, 13, 0);   // lookAt reads it, never mutates: one instance for every frame
 function placeCamera(t) {
   const k = Math.min(t / C.duration, 1);
-  const look = new THREE.Vector3(0, 13, 0);
   if (C.cameraMove === "slow-push") camera.position.set(0, 4 + k, 82 - 28 * k);
   else if (C.cameraMove === "orbit") { const a = -0.35 + 0.7 * k; camera.position.set(Math.sin(a) * 72, 4.5, Math.cos(a) * 72); }
   else camera.position.set(0, 4, 72);
