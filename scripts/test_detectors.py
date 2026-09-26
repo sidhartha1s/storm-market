@@ -203,12 +203,13 @@ assert code == 1 and 'dup-fact' in out, f'an identical repeated row must still d
 print('overlap_check self-check PASS (repeated place label vs. genuinely repeated row)')
 
 # ---------------------------------------------------------------- graphics_qc.mjs
-# qc-gates-07 (idle-budget HARD) + assets-comps-05 (host duration vs tl duration): a 3s timeline
-# mounted in a 6s host window — frozen tail undetected and idle-budget only a warning before.
+# qc-gates-07 (stillness HARD) + assets-comps-05 (host duration vs tl duration): a 3s timeline
+# mounted in a 7s host window — frozen tail undetected and idle only a warning before. Since
+# 26 Sep 26 stillness is one number: a 3 s frozen tail passes, a 4 s one fails as ERROR [idle].
 GQC_FILES = {
     'index.html':
         '<div id="host-y-short" data-composition-id="y-short" data-composition-src="compositions/y-short.html" '
-        'data-start="0" data-duration="6" data-track-index="2" data-width="1920" data-height="1080"></div>\n',
+        'data-start="0" data-duration="7" data-track-index="2" data-width="1920" data-height="1080"></div>\n',
     'compositions/y-short.html':
         '<!doctype html><html><head><meta charset="UTF-8"></head><body><template>\n'
         '<div id="root" style="position:absolute;inset:0;background:#000">\n'
@@ -220,14 +221,21 @@ GQC_FILES = {
 }
 ep = _stage_ep(GQC_FILES)
 r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
-assert r.returncode == 1 and 'ERROR [short-duration]' in r.stdout and 'ERROR [idle-budget]' in r.stdout, r.stdout + r.stderr
+assert r.returncode == 1 and 'ERROR [short-duration]' in r.stdout and 'ERROR [idle]' in r.stdout, r.stdout + r.stderr
 old_gqc = old_rev('graphics_qc.mjs', '_old_graphics_qc_tmp.mjs')
 r_old = subprocess.run(['node', str(old_gqc), str(ep)], capture_output=True, text=True)
 old_gqc.unlink()
 assert 'short-duration' not in r_old.stdout and 'ERROR [idle-budget]' not in r_old.stdout, \
     f'old code should have missed the frozen tail and only warned on idle-budget but got: {r_old.stdout}'
 shutil.rmtree(ep, ignore_errors=True)
-print('graphics_qc self-check PASS (short-duration vs host window, idle-budget promoted to hard)')
+# the 3 s tween ends at 3 s: a 3.9 s still tail passes, 4.0 s fails. Stillness counts from the END of
+# motion (as beat_density does), so 6.9 s passing proves a beat-start-to-cut measure is gone.
+for host_dur, want in (('6.9', False), ('7', True)):
+    ep = _stage_ep({**GQC_FILES, 'index.html': GQC_FILES['index.html'].replace('data-duration="7"', f'data-duration="{host_dur}"')})
+    r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
+    shutil.rmtree(ep, ignore_errors=True)
+    assert ('ERROR [idle]' in r.stdout) == want and 'warn  [idle]' not in r.stdout, (host_dur, r.stdout)
+print('graphics_qc self-check PASS (short-duration vs host window, stillness one number: 4 s hard)')
 
 # ---------------------------------------------------------------- settle frames for the vision pass
 # The old reader sampled every 3 s from the comp start, so frame 1 was always mid-reveal. The frames
