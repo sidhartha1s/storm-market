@@ -241,7 +241,7 @@ for (const f of files) {
   FRAMES[name] = settleFrames(probe.tweens, hostDur ?? probe.duration);
 
   /* --- motion vocabulary --- */
-  const kinetic = probe.tweens.filter(t => t.props.some(p => ['scale','scaleX','scaleY','x','y','rotation','width','strokeDashoffset','attr'].includes(p)));
+  const kinetic = probe.tweens.filter(t => t.props.some(p => ['scale','scaleX','scaleY','x','y','rotation','width','strokeDashoffset','attr','canvas-render'].includes(p)));
   const reveals = probe.tweens.filter(t => t.props.some(p => ['autoAlpha','opacity'].includes(p)));
   if (kinetic.length === 0) add(name, 'fade-only', `${reveals.length} fades, 0 kinetic tweens — mg-quickref Motion`);
   else if (reveals.length > 2 && kinetic.length < reveals.length / 2)
