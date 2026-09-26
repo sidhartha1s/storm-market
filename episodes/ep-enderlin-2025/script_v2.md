@@ -303,7 +303,7 @@ Enderlin began as a railroad town, and the story told about its name is that it 
 path crossed a rail line where freight cars stood on the tracks.
 `[verify: the cars were standing, not a moving train; and the strike order rail, river, Highway 46, Cass County farmsteads, from the NWS survey narrative]`
 When the survey team got there, thirty three cars were off the rails. Nineteen were grain cars, still loaded, and
-fourteen were empty tanker cars. A loaded grain car like those weighs close to three hundred thousand pounds.
+fourteen were empty tanker cars. A loaded grain car like those weighs nearly three hundred thousand pounds.
 `[verify: about 286,000 lb per loaded hopper (Western University summary, not the NWS PDF)]` The final survey puts the
 rail cars where the tornado was at its strongest. One of the tankers was lying almost five hundred feet from the track.
 In June, that was one strange detail on a long list, and it took months to turn it into a number.
