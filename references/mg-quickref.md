@@ -70,8 +70,8 @@ Shipped patterns to copy: `references/editing-patterns/` (episode folders are de
 
 ## Gate-readable authoring (what the gates actually parse)
 - [G beat_density.py] Counts only literal `tl.to/from/fromTo/set/add(` calls whose last argument is a number after `comp_consts.fold` (folds
-  `const NAME = n;`, `const NAME = {k: n}` members, `n op n`). Loop or unknown-identifier positions are skipped silently. `duration:` must be a
-  literal or an UPPER_CASE numeric const, else hard FAIL. `repeat:n` spans d + n(d + repeatDelay); `repeat:-1` spans the host. Host tag must
+  `const NAME = n;` with its semicolon, `const NAME = {k: n}` members, `n op n`). Loop or unknown-identifier positions are skipped silently.
+  `duration:` must fold to a number (a literal or such a const), else hard FAIL. `repeat:n` spans d + n(d + repeatDelay); `repeat:-1` spans the host. Host tag must
   read `data-composition-id=... data-start="x" data-duration="y"` (start then duration, adjacent) or the comp is not scanned. FAIL at a gap >= 4.0 s.
 - [G sweep check 7] Positions parse as `tl.x(..., <number>);` with no `;` inside the call. FAIL when the host outlasts the timeline by > 4 s
   ("holds") or cuts the last discrete beat by > 0.30 s (tweens > 4 s with `ease:"none"` are continuous, not beats). Check 9: stills > 6 s fail.
