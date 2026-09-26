@@ -160,6 +160,36 @@ assert r_old.returncode == 0 and 'dup-fact' not in r_old.stdout, \
 shutil.rmtree(ep, ignore_errors=True)
 print('overlap_check self-check PASS (suppressEvents seek, same-comp + overlay dup-fact)')
 
+# Shared staging (stage_comp.mjs): a comp whose timeline comes from a root-relative script
+# (`vendor/x.js`, the Three.js convention) must register in overlap_check and occlusion_check the
+# same way it does in graphics_qc. Before 26 Sep 26 both staged without <base href="../">, so
+# every WebGL comp failed "comp timeline not registered" (MG eval 2).
+REL_FILES = {
+    'index.html':
+        '<div id="host-g-rel" data-composition-id="g-rel" data-composition-src="compositions/g-rel.html" '
+        'data-start="0" data-duration="3" data-track-index="2" data-width="1920" data-height="1080"></div>\n',
+    'vendor/rel.js':
+        "window.__timelines = window.__timelines || {};\n"
+        "window.__timelines['g-rel'] = gsap.timeline({ paused: true }).to('#g-rel-lbl', { x: 100, duration: 3 }, 0);\n",
+    'compositions/g-rel.html':
+        '<!doctype html><html><head><meta charset="UTF-8"></head><body><template>\n'
+        '<div id="root" style="position:absolute;inset:0">\n'
+        '  <span id="g-rel-lbl" style="position:absolute;left:200px;top:200px;font-size:40px;color:#fff">Label</span>\n'
+        '</div>\n<script src="vendor/rel.js"></script>\n</template></body></html>\n',
+}
+ep = _stage_ep(REL_FILES)
+r = subprocess.run(['node', str(S / 'overlap_check.mjs'), str(ep)], capture_output=True, text=True)
+assert 'not registered' not in r.stdout, r.stdout + r.stderr
+old_ov = S / '_old_overlap_rel_tmp.mjs'
+old_ov.write_text(subprocess.run(['git', 'show', 'f3a6fece:scripts/overlap_check.mjs'], cwd=S.parent,
+                                 capture_output=True, text=True).stdout, encoding='utf-8')
+r_old = subprocess.run(['node', str(old_ov), str(ep)], capture_output=True, text=True)
+old_ov.unlink()
+assert 'comp timeline not registered when staged: g-rel' in r_old.stdout, \
+    f'old staging should have missed the root-relative script but got: {r_old.stdout}'
+shutil.rmtree(ep, ignore_errors=True)
+print('stage_comp self-check PASS (root-relative comp scripts register in overlap_check)')
+
 # PR #88 review: g-scale-hook's TOWNS[] lists "TANNER · AL" twice (Tanner was hit by two
 # separate F5s, distinct times) — a bare repeated place-name label is not a duplicate FACT.
 # Same town + different time must PASS; an identical row (same town AND same time) must FAIL,
