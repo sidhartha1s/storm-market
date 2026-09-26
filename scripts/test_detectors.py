@@ -296,6 +296,33 @@ assert 'ERROR [undesigned] flat background' in r_old.stdout, f'old code should f
 shutil.rmtree(ep, ignore_errors=True)
 print('graphics_qc self-check PASS (a full-frame canvas counts as a designed background)')
 
+# The Three.js template animates by redrawing its canvas from a timeline-level onUpdate; the only
+# GSAP child is a padding tween on {}. Old code: 'fade-only' (0 kinetic tweens) and a frozen
+# window; new code: the onUpdate renderer is one continuous kinetic span.
+DRIVEN_FILES = {
+    'index.html': CANVAS_FILES['index.html'],
+    'compositions/g-cv.html':
+        '<!doctype html><html><head><meta charset="UTF-8"></head><body><template>\n'
+        '<div id="root" style="position:absolute;inset:0;background:#000">\n'
+        '  <canvas id="g-cv-gl" width="1920" height="1080" style="position:absolute;left:0;top:0"></canvas>\n'
+        '</div>\n<script>\nwindow.__timelines = window.__timelines || {};\n'
+        'const tl = gsap.timeline({ paused: true });\n'
+        "const cx = document.getElementById('g-cv-gl').getContext('2d');\n"
+        "tl.eventCallback('onUpdate', () => { cx.fillStyle = '#123'; cx.fillRect(0, 0, 1920, 1080); "
+        "cx.fillStyle = '#fff'; cx.fillRect(200 + tl.time() * 300, 400, 80, 80); });\n"
+        "tl.to({}, { duration: 3 }, 0);\nwindow.__timelines['g-cv'] = tl;\n</script>\n</template></body></html>\n",
+}
+ep = _stage_ep(DRIVEN_FILES)
+r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
+assert 'fade-only' not in r.stdout and '[idle]' not in r.stdout, r.stdout + r.stderr
+old_gq.write_text(subprocess.run(['git', 'show', 'f3a6fece:scripts/graphics_qc.mjs'], cwd=S.parent,
+                                 capture_output=True, text=True).stdout, encoding='utf-8')
+r_old = subprocess.run(['node', str(old_gq), str(ep)], capture_output=True, text=True)
+old_gq.unlink()
+assert 'ERROR [fade-only]' in r_old.stdout, f'old code should call the canvas renderer fade-only: {r_old.stdout}'
+shutil.rmtree(ep, ignore_errors=True)
+print('graphics_qc self-check PASS (an onUpdate canvas renderer counts as continuous motion)')
+
 # ---------------------------------------------------------------- settle frames for the vision pass
 # The old reader sampled every 3 s from the comp start, so frame 1 was always mid-reveal. The frames
 # must come from the tween schedule: reveal ends 1.2 s (+0.1), exit slide starts 8.5 s (-0.25), and
