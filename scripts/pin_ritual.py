@@ -18,12 +18,18 @@ mechanical, so the pin never rots more than one production run:
      The caller (a session, in a worktree) commits and PRs the bump.
   4. Any metric drifts -> NO bump, print the drift table, exit 3. A human decides.
 
-render_preflight.py enforces the other half: a FULL render refuses to start while
-upstream is newer than the pin, and the fix it names is running this script.
+When it runs (owner 26 Sep 26): at episode kickoff, before the episode's first render
+(`--check-only`, then the full ritual if stale), so an episode never switches version
+mid-way. render_preflight.py only checks pin drift, never currency.
 
-Runtime: one 90s demo render ~10-13 min on this box; two when the baseline record
-is stale. Launch detached (schtasks one-shot / Start-Process) when driving it from
-a harness that reaps foreground calls — same rule as render.cmd.
+The demo is episodes/demo-pin: 24 s, fully committed (MG showcase + WebGL probe), no
+gitignored media, so it runs from any fresh worktree. It is silent, so the RMS gate
+compares None to None; the probe's frame barcode is checked by SSIM.
+
+Runtime: one 24 s demo render ~2-4 min on this box; two when the baseline record
+is stale. Launch detached (schtasks one-shot via run_hidden.vbs) when driving it from
+a harness that reaps foreground calls — same rule as render.cmd. RENDER_WORKERS (the
+render.cmd knob) overrides --workers on a RAM-tight box.
 
 Usage: python3 scripts/pin_ritual.py [--check-only]
 Exit codes: 0 pin current or bumped clean; 2 setup error; 3 metric drift (no bump);
