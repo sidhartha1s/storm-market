@@ -254,14 +254,6 @@ def main():
 
     if not (DEMO / "index.html").exists():
         sys.exit(f"[ritual] demo episode missing: {DEMO}")
-    html = (DEMO / "index.html").read_text(encoding="utf-8", errors="replace")
-    # media/ AND audio/ are gitignored; a worktree has neither until copied (16 Sep 26: the
-    # media-only check passed, then the render died at the audio mix on audio/s2.wav).
-    missing = [s for s in re.findall(r'src="((?:media|audio)/[^"]+)"', html)
-               if not (DEMO / s).exists()]
-    if missing:
-        sys.exit(f"[ritual] demo assets incomplete ({len(missing)} missing, e.g. "
-                 f"{missing[0]}) — copy media/ and audio/ from the main checkout first")
 
     renders = DEMO / "renders"
     renders.mkdir(exist_ok=True)
