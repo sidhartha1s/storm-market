@@ -55,6 +55,36 @@ check("fold: multiplies before it subtracts (DUR - 2 * 0.5 -> 9.0, not 4.0)",
       "9.0" in fold('const DUR = 10; tl.to(a,{}, DUR - 2 * 0.5);'))
 check("fold: still folds a known const's arithmetic (CUES.six + 1.5 -> 8.34)",
       "8.34" in fold('const CUES = { six: 6.84 }; tl.to(a,{}, CUES.six + 1.5);'))
+check("fold: left-to-right, not additions-before-subtractions (10 - 2 + 3 -> 11.0, not 5.0)",
+      "11.0" in fold('tl.to(a,{}, 10 - 2 + 3);'))
+check("fold: chained sub/add on a const (DUR - 1.2 + 0.3 -> 13.55, not 12.95)",
+      "13.55" in fold('const DUR = 14.45; tl.to(a,{}, DUR - 1.2 + 0.3);'))
+check("fold: no spaces (5-3+1 -> 3.0)",
+      "3.0" in fold('tl.to(a,{}, 5-3+1);'))
+check("fold: parens group before the outer multiply ((2 + 3) * 2 -> 10.0)",
+      "10.0" in fold('tl.to(a,{}, (2 + 3) * 2);'))
+check("fold: division then subtraction (8 / 2 - 1 -> 3.0)",
+      "3.0" in fold('tl.to(a,{}, 8 / 2 - 1);'))
+check("fold: a bare date-like sequence stays text (2026-09-21)",
+      fold('// updated 2026-09-21 owner note') == '// updated 2026-09-21 owner note')
+
+# fix-fold-ast (24 Sep 26): call parens were folded before the identifier guard ran, and a span
+# bordering an unresolved identifier through an operator got evaluated alone, eating the operator
+# that tied it to the identifier. All six fail on PR head 3e99a621 (confirmed via git show).
+check("fold: nested paren arg to a call stays a call, inner math still folds (Math.floor((30.25) / 1) - 1)",
+      fold('Math.floor((30.25) / 1) - 1') == 'Math.floor(30.25) - 1')
+check("fold: call parens are not treated as grouping parens (Math.round(10.4) - 1)",
+      fold('Math.round(10.4) - 1') == 'Math.round(10.4) - 1')
+check("fold: single-arg call left untouched (f(2) + 1)",
+      fold('f(2) + 1') == 'f(2) + 1')
+check("fold: span bordering an identifier via '-' stays whole, not folded piecemeal (t0 - 0.5 - 0.2)",
+      fold('t0 - 0.5 - 0.2') == 't0 - 0.5 - 0.2')
+check("fold: operator tying a span to an identifier is not eaten (t0 - 2 + 3)",
+      fold('t0 - 2 + 3') == 't0 - 2 + 3')
+check("fold: span bordering an identifier via '*' stays whole (x * 2 + 3)",
+      fold('x * 2 + 3') == 'x * 2 + 3')
+check("fold: '%' borders a span like '*' ('i % 2 * 0.5' and '7 % 3 + 1' stay whole)",
+      fold('delay: i % 2 * 0.5') == 'delay: i % 2 * 0.5' and fold('7 % 3 + 1') == '7 % 3 + 1')
 
 # ===================================================================================
 # 2 + 5. sweep_episode.py — exit code, freshness gate, check-7 coverage
@@ -158,6 +188,19 @@ with tempfile.TemporaryDirectory() as d:
     code, out = run("beat_density.py", ep_dead)
     check("beat_density: exits 1 on a composition with a >=4s motionless stretch (was always 0)",
           code == 1, f"(exit {code})\n{out[-400:]}")
+    idx = ep_dead / "index.html"
+    idx.write_text(idx.read_text(encoding="utf-8").replace(
+        'data-composition-id="g1" data-start="0" data-duration="6.0"',
+        'data-duration="6.0" data-composition-id="g1" data-track-index="3" data-start="0"'), encoding="utf-8")
+    code, out = run("beat_density.py", ep_dead)
+    check("beat_density: host attribute order does not matter (was a silent skip)",
+          code == 1 and "1/1" in out, f"(exit {code})\n{out[-400:]}")
+    idx.write_text(idx.read_text(encoding="utf-8").replace('data-duration="6.0" ', ''), encoding="utf-8")
+    (ep_dead / "compositions" / "orphan.html").write_text(dead_comp, encoding="utf-8")
+    code, out = run("beat_density.py", ep_dead)
+    check("beat_density: WARNs on a host without data-duration and on an unmounted comp",
+          "host 'g1' has no numeric data-duration" in out and "orphan.html is not mounted" in out,
+          f"(exit {code})\n{out[-400:]}")
 
 with tempfile.TemporaryDirectory() as d:
     live_comp = ('<template><div id="g"></div>'

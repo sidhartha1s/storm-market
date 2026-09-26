@@ -14,9 +14,15 @@ from comp_consts import fold
 
 ep = Path(sys.argv[1])
 idx = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
-hosts = {m.group(1): float(m.group(3))
-         for m in re.finditer(r'data-composition-id="([^"]+)"[^>]*'
-                              r'data-start="([\d.]+)"\s+data-duration="([\d.]+)"', idx)}
+# Parse attributes per tag so attribute order doesn't matter.
+hosts = {}
+for m in re.finditer(r'<[^>]*\bdata-composition-id="([^"]+)"[^>]*>', idx):
+    gid = m.group(1)
+    dur = re.search(r'\bdata-duration="([\d.]+)"', m.group(0))
+    if dur:
+        hosts[gid] = float(dur.group(1))
+    else:
+        print(f"[WARN] beat_density: host '{gid}' has no numeric data-duration, not checked")
 
 CALL = re.compile(r'tl\.(to|from|fromTo|set|add)\s*\(', re.S)
 
@@ -24,6 +30,7 @@ rows = []
 for f in sorted((ep / "compositions").glob("*.html")):
     gid = f.stem
     if gid not in hosts:
+        print(f"[WARN] beat_density: compositions/{f.name} is not mounted in index.html, not checked")
         continue
     src = fold(f.read_text(encoding="utf-8", errors="replace"))
     spans = []

@@ -134,8 +134,11 @@ def render(version, out_mp4):
     # --workers 2 (>1) only streams if the parallel-capture router picked it up (render.cmd's
     # own comment: otherwise "the gate logs enabled:false"). A silent fallback to disk capture
     # here means the ritual verified the WRONG capture path (assets-comps-03) — never a pass.
+    # HyperFrames writes this as a JSON blob, e.g. `streaming-encode gate
+    # {"renderJobId":"...","enabled":true,...}` — no literal "enabled:true" substring.
+    # Match the JSON form ("enabled":true) and tolerate an unquoted enabled:true too.
     log_txt = log.read_text(encoding="utf-8", errors="replace")
-    if not re.search(r"streaming-encode gate.*enabled:true", log_txt):
+    if not re.search(r'streaming-encode gate.*\benabled"?\s*:\s*true', log_txt):
         sys.exit(f"[ritual] {version}: no 'streaming-encode gate ... enabled:true' in {log.name} "
                   "— this render did not exercise the production streaming-capture path")
 

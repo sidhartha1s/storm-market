@@ -241,13 +241,6 @@ verify_src = (S / "verify_render.sh").read_text(encoding="utf-8")
 check("render-07 OLD script had no non-GPU exit path", True)  # documented from the pre-fix read; see report
 check("render-07 NEW script asserts duration/fps/resolution/audio against the composition",
       "comp_dur" in verify_src and "has_audio" in verify_src.replace("HAS_AUDIO", "has_audio"))
-check("render-07 NEW script fails on dead-air black spans (owner's 1.5s threshold)",
-      "1.5" in verify_src and "LONGEST_BLACK" in verify_src)
-check("render-07 NEW script fails on a freeze span found (not just prints)",
-      '[ -s /tmp/_freeze.txt ]' in verify_src)
-check("render-07 NEW script gates silence but exempts declared hold/blackout/CTA windows",
-      "silence_start" in verify_src and 'class="[^"]*\\b(?:blackout|hold)\\b' in verify_src
-      and "dip_in" in verify_src)
 
 
 def run_verify(ep_dir, base):
@@ -328,6 +321,52 @@ if HAVE_FFMPEG:
         check("render-07 NEW: the SAME 3s silent span with no declared hold fails",
               r5.returncode != 0 and "FAIL:" in r5.stdout and "silence span" in r5.stdout,
               f"rc={r5.returncode}\n{r5.stdout[-800:]}")
+
+        # Black and freeze follow the same declared windows as silence: a designed blackout
+        # (bo-close, bo-void) passes, the same span with nothing declared fails.
+        def span_case(name, video_graph, dur, section, kind):
+            mp4x = ep / "renders" / f"{name}-final.mp4"
+            subprocess.run(["ffmpeg", "-y", "-v", "error", *video_graph,
+                            "-f", "lavfi", "-i", f"sine=frequency=440:duration={dur}",
+                            "-map", "[v]", "-map", f"{video_graph.count('-i')}:a",
+                            "-c:v", "libx264", "-pix_fmt", "yuv420p", "-c:a", "aac", str(mp4x)],
+                           capture_output=True)
+            root = (f'<div id="root" data-composition-id="x" data-start="0" data-width="320" '
+                    f'data-height="240" data-duration="{dur}.00" data-fps="25">')
+            (ep / "index.html").write_text(root + section + '</div>', encoding="utf-8")
+            ok = run_verify(ep, f"{name}-final")
+            (ep / "index.html").write_text(root + '</div>', encoding="utf-8")
+            bad = run_verify(ep, f"{name}-final")
+            check(f"render-07 NEW: a {kind} span inside a declared window passes",
+                  ok.returncode == 0, f"rc={ok.returncode}\n{ok.stdout[-800:]}")
+            check(f"render-07 NEW: the same {kind} span with nothing declared fails",
+                  bad.returncode != 0 and f"FAIL: 1 {kind} span" in bad.stdout, f"rc={bad.returncode}\n{bad.stdout[-800:]}")
+
+        span_case("black", ["-f", "lavfi", "-i", "testsrc=size=320x240:rate=25:duration=8",
+                            "-filter_complex", "[0:v]drawbox=c=black:t=fill:enable='between(t,2,5)'[v]"], 8,
+                  '<section class="clip blackout" id="bo-1" data-start="2" data-duration="3"></section>', "black")
+        frozen = ["-f", "lavfi", "-i", "testsrc=size=320x240:rate=25:duration=2",
+                  "-f", "lavfi", "-i", "color=c=gray:s=320x240:r=25:d=7",
+                  "-f", "lavfi", "-i", "testsrc=size=320x240:rate=25:duration=2",
+                  "-filter_complex", "[0:v][1:v][2:v]concat=n=3:v=1:a=0[v]"]
+        span_case("frozen", frozen, 11,
+                  '<section class="clip blackout" id="bo-2" data-start="2" data-duration="7"></section>', "freeze")
+
+        # A hold may be quiet but must keep a live picture, and the CTA body must never be black
+        # or frozen (a CTA that fails to decode renders black for 15 s): both still FAIL.
+        root11 = ('<div id="root" data-composition-id="x" data-start="0" data-width="320" '
+                  'data-height="240" data-duration="11.00" data-fps="25">')
+        (ep / "index.html").write_text(root11 + '<section class="clip hold" id="hold-3" data-start="2" '
+                                       'data-duration="7"></section></div>', encoding="utf-8")
+        r6 = run_verify(ep, "frozen-final")
+        check("render-07 NEW: a 7s freeze inside a declared hold still fails",
+              r6.returncode != 0 and "FAIL: 1 freeze span" in r6.stdout, f"rc={r6.returncode}\n{r6.stdout[-800:]}")
+        (ep / "index.html").write_text(root11.replace('11.00', '8.00') + '<video id="ins-cta-paul" '
+                                       'src="media/cta/x.mp4" data-start="2" data-duration="3"></video></div>',
+                                       encoding="utf-8")
+        r7 = run_verify(ep, "black-final")
+        check("render-07 NEW: a black span over the CTA body still fails",
+              r7.returncode != 0 and "FAIL: 1 black span" in r7.stdout, f"rc={r7.returncode}\n{r7.stdout[-800:]}")
 else:
     print("SKIP render-07 synthetic-clip checks: ffmpeg not on PATH")
 
@@ -347,32 +386,63 @@ check("assets-comps-03 NEW: render_cmd_env() pulls HF_CAPTURE_PARALLEL_STREAM fr
 
 # render() must fail a render whose log lacks the streaming-encode gate line, even if the
 # mp4 itself was produced (silent fallback to disk capture must never pass as a clean A/B).
-with tempfile.TemporaryDirectory() as d:
-    fake_demo = Path(d)
-    (fake_demo / "index.html").write_text("<div></div>", encoding="utf-8")
-    pin_ritual.DEMO = fake_demo
-    log = fake_demo / "pin-ritual-9.9.9.log"
-    log.write_text("some other log output, no streaming gate line\n", encoding="utf-8")
-    out_mp4 = fake_demo / "out.mp4"
-    out_mp4.write_bytes(b"not a real mp4, existence is all render() checks post-subprocess")
+# The real HyperFrames log line is JSON (`streaming-encode gate {"renderJobId":"...",
+# "enabled":true,...}`), copied verbatim from a real render_full.log
+# (.worktrees/ep-1974-super-outbreak/episodes/ep-1974-super-outbreak/render_full.log:156) —
+# the old regex `streaming-encode gate.*enabled:true` never matches this JSON form, so the
+# ritual could never pass. Exercise all three cases through the same harness.
+def _run_render_against_log(log_body):
+    # render() opens its log path with "w" (truncating it) as part of the real subprocess
+    # call, so a log pre-written before calling render() would be wiped before the ritual
+    # ever reads it back. The fake subprocess.run must write log_body into the same
+    # stdout=lf file handle render() passes it, the way the real npx child would.
+    with tempfile.TemporaryDirectory() as d:
+        fake_demo = Path(d)
+        (fake_demo / "index.html").write_text("<div></div>", encoding="utf-8")
+        pin_ritual.DEMO = fake_demo
+        out_mp4 = fake_demo / "out.mp4"
+        out_mp4.write_bytes(b"not a real mp4, existence is all render() checks post-subprocess")
 
-    class FakeCompleted:
-        returncode = 0
+        class FakeCompleted:
+            returncode = 0
 
-    orig_run = pin_ritual.subprocess.run
-    orig_which = pin_ritual.shutil.which
-    pin_ritual.shutil.which = lambda name: "npx" if name == "npx" else orig_which(name)
-    pin_ritual.subprocess.run = lambda *a, **k: FakeCompleted()
-    pin_ritual.FFPROBE = pin_ritual.FFMPEG = Path("ffmpeg")
-    try:
-        pin_ritual.render("9.9.9", out_mp4)
-        raised = False
-    except SystemExit as e:
-        raised = "streaming-encode gate" in str(e)
-    finally:
-        pin_ritual.subprocess.run = orig_run
-        pin_ritual.shutil.which = orig_which
-    check("render-09 NEW: render() exits when the log has no 'streaming-encode gate ... enabled:true'", raised)
+        def fake_run(*a, **k):
+            k["stdout"].write(log_body)
+            return FakeCompleted()
+
+        orig_run = pin_ritual.subprocess.run
+        orig_which = pin_ritual.shutil.which
+        pin_ritual.shutil.which = lambda name: "npx" if name == "npx" else orig_which(name)
+        pin_ritual.subprocess.run = fake_run
+        pin_ritual.FFPROBE = pin_ritual.FFMPEG = Path("ffmpeg")
+        try:
+            pin_ritual.render("9.9.9", out_mp4)
+            return False, None
+        except SystemExit as e:
+            return True, str(e)
+        finally:
+            pin_ritual.subprocess.run = orig_run
+            pin_ritual.shutil.which = orig_which
+
+
+raised, _ = _run_render_against_log("some other log output, no streaming gate line\n")
+check("render-09 NEW: render() exits when the log has no 'streaming-encode gate ... enabled:true'", raised)
+
+REAL_GATE_LINE_TRUE = (
+    '[INFO] streaming-encode gate {"renderJobId":"21a9bb7d-eeaf-4f12-976e-37c2a565e237",'
+    '"enabled":true,"configFlag":true,"outputFormat":"mp4","workerCount":2,'
+    '"durationSeconds":1050.9,"maxDurationSeconds":7200}\n'
+)
+raised, _ = _run_render_against_log(REAL_GATE_LINE_TRUE)
+check("render-10 NEW: render() PASSES on the real JSON gate line (enabled:true) from "
+      "render_full.log — proves the fixed regex matches HyperFrames' actual log format",
+      not raised)
+
+REAL_GATE_LINE_FALSE = REAL_GATE_LINE_TRUE.replace('"enabled":true', '"enabled":false')
+assert '"enabled":false' in REAL_GATE_LINE_FALSE
+raised, msg = _run_render_against_log(REAL_GATE_LINE_FALSE)
+check("render-10 NEW: render() still FAILS on a JSON gate line with enabled:false",
+      raised and "streaming-encode gate" in (msg or ""))
 
 # ---------------------------------------------------------------------------
 # assets-comps-02: the SSIM baseline mp4 lived under the gitignored, worktree-local

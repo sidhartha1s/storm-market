@@ -56,7 +56,7 @@ assert code == 1 and 'not parsed' in out, out
 # media/act1/ — prove both defects on the ERA_FILES fixture.
 OLD_NPC = S / '_old_npc_tmp.py'
 OLD_NPC.write_text(subprocess.run(['git', 'show', 'ad3c9871:scripts/narration_picture_check.py'],
-                                   cwd=S.parent, capture_output=True, text=True).stdout, encoding='utf-8')
+                                   cwd=S.parent, capture_output=True, text=True, check=True).stdout, encoding='utf-8')
 with tempfile.TemporaryDirectory() as d:
     ep = Path(d)
     _mk(ep, ERA_FILES)
@@ -65,6 +65,39 @@ with tempfile.TemporaryDirectory() as d:
         f'old code should have missed this (dashed id + non-standard archival dir) but got: {r.stdout}'
 OLD_NPC.unlink()
 print('narration_picture_check self-check PASS (dashed ids, provenance-era archival, missed-segment gate)')
+
+# Opus review: on-screen media that never gets classified archival (no provenance era row, and
+# it lives in media/act1/ — not an ARCHIVAL_DIR_NAMES folder) must not silently PASS with nothing
+# checked. Loud [WARN], still exit 0 (owner chose warn, not fail), and the summary count must only
+# include rows actually classified archival (year < MODERN_FROM), never modern rows.
+EMPTY_WARN_FILES = {
+    'index.html': '<div data-start="0" data-duration="2" data-track-index="1" src="media/act1/new.jpg"></div>\n'
+                   '<div data-start="2" data-duration="2" data-track-index="1" src="media/act1/untracked.jpg"></div>\n'
+                   '<audio id="nx-a1-s1" data-start="0" data-duration="4"></audio>\n',
+    'audio/a1-s1.words.json': json.dumps([{"start": 0.1, "text": "2025"}]),
+    # new.jpg has a provenance row but it is modern (must not count as archival); untracked.jpg
+    # has no provenance row at all AND lives outside ARCHIVAL_DIR_NAMES ("act1", not "archival").
+    'media/act1/provenance.csv': 'file,source_url,license,credit,era,note\n'
+                                  'new.jpg,https://example,Public domain,Example Archive,2025,modern photo\n',
+}
+code, out = npc(EMPTY_WARN_FILES)
+assert code == 0 and '[WARN] era check had nothing to check: 1 on-screen media file(s) had no provenance era' in out, out
+assert 'archival assets tagged: 0' in out, out  # the one provenance row is modern, must not be counted
+
+OLD_MAIN_NPC = S / '_old_main_npc_tmp.py'
+# pinned pre-fix commit, never origin/main: after merge origin/main holds the fix and this would go red
+OLD_MAIN_NPC.write_text(subprocess.run(['git', 'show', 'f1f435d7:scripts/narration_picture_check.py'],
+                                        cwd=S.parent, capture_output=True, text=True, check=True).stdout, encoding='utf-8')
+try:
+    with tempfile.TemporaryDirectory() as d:
+        ep = Path(d)
+        _mk(ep, EMPTY_WARN_FILES)
+        r = subprocess.run([sys.executable, str(OLD_MAIN_NPC), str(ep)], capture_output=True, text=True)
+        assert r.returncode == 0 and '[WARN]' not in r.stdout, \
+            f'old code (f1f435d7) should have missed this — silent PASS, no warning: {r.stdout}'
+finally:
+    OLD_MAIN_NPC.unlink()
+print('narration_picture_check self-check PASS (empty-archival loud warn, archival-only count)')
 
 GSAP = (S / '..' / 'library' / 'gallery' / 'gsap.min.js').resolve()
 
