@@ -15,6 +15,6 @@ Stylised funnel + wall cloud + debris + dust skirt + storm sky, ~32k triangles, 
 
 **Presets** (worked copies in `episodes/demo-webgl-tornado/compositions/`)
 - Night approach: `{ scheme: "night", cameraMove: "orbit", duration: 6, path: { startX: -12, endX: -3 }, seed: 1974 }`
-- Dusk wedge-ish push: `{ scheme: "dusk", cameraMove: "slow-push", duration: 6, path: { startX: -2, endX: 8 }, seed: 2011, funnelWidth: 9 }`
+- Dusk push: `{ scheme: "dusk", cameraMove: "slow-push", duration: 6, path: { startX: -2, endX: 8 }, seed: 2011 }` (raise `funnelWidth` to ~9 for a wedge; untested)
 
 **Limits**: one funnel per copy; no lightning, rain or damage path; debris is points (pixel-sized chunks); frames checked with `hyperframes snapshot`, not yet rendered.
