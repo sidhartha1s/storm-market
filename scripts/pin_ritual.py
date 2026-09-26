@@ -13,7 +13,8 @@ mechanical, so the pin never rots more than one production run:
      against the recorded BASELINE (committed metrics in scripts/pin_baseline.json,
      plus the cached baseline mp4 on disk for SSIM when present; if the record is
      missing or belongs to an older pin, the baseline render runs too).
-  3. Metrics identical (duration, blackdetect map, RMS, SSIM) -> bump the pin in
+  3. Metrics identical (duration, blackdetect map, RMS, video-region luma, workers, SSIM
+     full-frame and video-region) -> bump the pin in
      config.yaml + every live scripts/*.cmd, refresh the baseline record, exit 0.
      The caller (a session, in a worktree) commits and PRs the bump.
   4. Any metric drifts -> NO bump, print the drift table, exit 3. A human decides.
