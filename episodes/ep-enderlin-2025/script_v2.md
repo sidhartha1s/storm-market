@@ -235,8 +235,10 @@ ninety miles an hour, and so did Mayfield. Rolling Fork got a hundred and sevent
 hundred, one mile an hour short of an EF five.
 `[verify: final ratings, Mayflower–Vilonia 190, Rochelle–Fairdale 200, Mayfield 190, Rolling Fork 170 mph]`
 
-That left meteorologists with a question they could not settle for years. Either the most violent tornadoes had
-become rarer, or the way they were rated had changed.
+That left meteorologists with a question they could not settle for years. Some said the ratings had grown too
+cautious, and others said the damage in those years had simply never reached EF five. Many said it was some of each.
+`[verify: the three-camp framing of the debate (theticker.org, secondary)]` Underneath it all sat one plain question.
+Either the most violent tornadoes had become rarer, or the way they were rated had changed.
 
 **Picture:** g-person Tony Lyza (text-only card, no photo slot) · "NOAA National Severe Storms Laboratory" · beige
 citation card: "Where Have the EF5s Gone?" Bulletin of the American Meteorological Society, 2025.
