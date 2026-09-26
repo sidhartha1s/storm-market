@@ -29,7 +29,7 @@ quote that was not actually said.
 | slaughter | hard | wiped out; destroyed | Only shows up as a lazy metaphor (crops, livestock); the plain verb says the same thing. |
 | carnage | hard | the destruction; the wreckage | Tabloid word, no factual content of its own. |
 | bloodbath | hard | the worst losses on record; a sharp, sudden decline | Metaphor only (markets, damage totals); reads as sensational, not informative. |
-| blood / bloody | hard | seriously injured; hurt badly | Literal injury detail we do not need to name the scene. |
+| blood / bloody / bloodied | hard | seriously injured; hurt badly | Literal injury detail we do not need to name the scene. |
 | gore / gruesome | hard | difficult to look at; the kind of scene rescuers do not forget | Descriptive intensifier, not a fact; also a "narrator adjective" the humanise rules already discourage. |
 | mutilated | hard | severely injured | Graphic beyond what the story needs. |
 | decapitated | hard | suffered a fatal head injury | Paraphrase to the plain fact of a fatal injury; the anatomical detail adds nothing. |
