@@ -54,7 +54,7 @@ for (const arg of process.argv.slice(3)) {
   const [id, win] = [arg.slice(0, arg.lastIndexOf('=')), +arg.slice(arg.lastIndexOf('=') + 1)];
   await page.goto('file:///' + stageComp(ep, join(ep, 'compositions', id + '.html'), HOST_CSS, 'beat-').replace(/\\/g, '/'), { waitUntil: 'load' });
   await page.waitForTimeout(120);
-  out[id] = await page.evaluate(PROBE(win));
+  out[id] = await page.evaluate(PROBE(win)).catch(e => ({ error: String(e).split('\n')[0].slice(0, 200) }));
 }
 await browser.close();
 console.log(JSON.stringify(out));
