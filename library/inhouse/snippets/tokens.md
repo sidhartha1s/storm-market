@@ -33,17 +33,115 @@ the reverse is not true, so TV is the binding constraint, not an afterthought fo
 | `.dust` | 92 |
 
 ## Palette
-Palette and surfaces (glass card, beige cite card, popfig red) live in `references/mg-quickref.md` "Palette and surfaces".
-`cards.css` chips use the glass-card surface (the `rgba(5,8,12,…)` dark chips were retired 26 Sep 26).
+The full palette to pick from; an episode uses 10 of these or fewer (unchanged rule, values now
+listed once, here).
 
-## Type stacks
-- **Emotive / italic:** Georgia, 'Times New Roman', serif — quotes (`.quotecard .q`), namecard
-  subs, polaroid captions.
-- **Data / names / headlines:** Arial, 'Arial Black', sans-serif — location labels (`.lt-loc`),
-  namecard names, popfig subs, popups.
-- **Counters / dispatch / radio:** 'Courier New', monospace — `.dispatchlab .d1`.
-- **Display headline (dates/figures):** 'AbrilFig' (`AbrilFatface-Regular.ttf`, `@font-face`),
-  falls back to Georgia, serif — `.popfig .pf-big`.
+| Name | Hex / value | Role |
+|---|---|---|
+| BG deep space | `#04070c` | `#root` flat background |
+| BG gradient center | `#0b1016` | canvas radial-gradient inner stop |
+| BG gradient edge | `#030507` | canvas radial-gradient outer stop (78 %) — never a flat `#000`/`#0a1017` fill |
+| Panel dark (RHS stat panel) | `#15202b` | panel gradient solid zone |
+| Panel dark 2 | `#0b1016` | secondary panel fill |
+| Panel dark 3 | `#04070a` | tertiary panel fill |
+| Headline white | `#f2f5f8` | headlines, lower-third location, namecard name |
+| Body light | `#dfe7ee` | body copy, row values |
+| Label grey | `#93a3b2` | eyebrow, label, section header, counter label, diagram label |
+| Source credit grey | `#c8d3e0` | source label chip, counter-label alt |
+| Popfig red | `#d0121f` | date/figure Abril reveal (`.popfig .pf-big`) |
+| Danger red 1 | `#c0392b` | death/danger accents |
+| Danger red 2 | `#e74c3c` | stat-panel counter |
+| Crimson | `#8e2020` | `.stamp` background, debris/blocks |
+| Amber 1 | `#d8a13a` | serif subs, quote attribution, `.stamp-amber` text, warm-air diagrams |
+| Amber 2 | `#e8c56a` | dispatch counter (`.d1`), namecard sub |
+| Amber time | `#f5d98b` | `.stamp .st-time` |
+| Amber cool time | `#c8b98a` | `.stamp-amber .st-time` |
+| Cold blue 1 | `#5a768f` | cold-air / cool-part diagrams |
+| Cold blue 2 | `#7fb2e5` | cold-air highlight |
+| Beige cite card | `rgba(232,222,200,.90)` | quoted-source card over dark maps, dark text on top |
+| Beige polaroid | `#f4f0e6` | `.polaroid` card stock |
+| Beige stamp text | `#f4f0e8` | `.stamp` text colour on crimson |
+| Caption dark | `#2a2622` | `.pol-cap` text |
+| Caption dark sub | `#6b6257` | `.pol-cap span` |
+
+Surfaces: glass card `rgba(10,16,24,.55)` + `backdrop-filter: blur(18px) saturate(1.15)` + 1px
+`rgba(255,255,255,.14)` border, radius 28 — the ONE treatment for text over footage, no bare text
+on moving footage, no dark chip (the old `rgba(5,8,12,…)` dark chips were retired 26 Sep 26;
+`cards.css` chips now all use this glass surface). Beige cite card above is the only exception,
+for quoted sources over dark maps.
+
+## Fonts
+| Family (CSS stack) | Source | Role |
+|---|---|---|
+| Georgia, 'Times New Roman', serif | system | quotes (`.quotecard .q`), namecard subs, polaroid captions |
+| Arial, 'Arial Black', sans-serif | system | location labels, headlines, namecard names, popfig subs, popups |
+| 'Courier New', monospace | system | dispatch/radio counters (`.dispatchlab .d1`) |
+| 'AbrilFig' (Abril Fatface), falls back Georgia, serif | `episodes/<slug>/fonts/AbrilFatface-Regular.ttf`, vendored per episode via `@font-face { src: url('fonts/AbrilFatface-Regular.ttf'); }`; canonical copy at `references/editing-patterns/fonts/AbrilFatface-Regular.ttf` | display headline for date/figure popfigs (`.popfig .pf-big`) |
+
+## Type tiers (px)
+Three tiers minimum in every designed card (unchanged gate rule: `graphics_qc` flags flat-type
+below 3 tiers with 4+ text nodes).
+
+| Tier | px range | Shipped floor | Example |
+|---|---|---|---|
+| Small | < 26 px | 19 px (`.srclab`) is the smallest shipped size — do not go smaller; a TV viewer at couch distance loses text under this | source label, stamp eyebrow (20 px), counter label (20 px) |
+| Mid | 26-51 px | — | serif sub (26-32 px), row value (30 px), quote (44 px) |
+| Big | >= 52 px | — | headline (52-66 px), lower-third location (52 px), stat-panel counter (84 px) |
+| Display | 150 px | fixed | Abril popfig date/figure |
+
+**TV-readability minimum: nothing under 19 px ships on a full-frame card, and headline-weight
+text stays at 52 px or above** — both are the values already shipping (ep-1974-super-outbreak:
+22, 36, 38, 58, 118, 120, 150 px), kept here as the floor so a builder never guesses smaller for a
+"cleaner" look. Large type and high contrast that read on a TV from the couch also read on a phone
+held at arm's length; the inverse fails on TV.
+
+## CSS custom properties
+Paste into an episode's `<style>` block (or a shared `:root` if the composition already has one):
+```css
+:root {
+  /* palette */
+  --bg-deep: #04070c;
+  --bg-grad-center: #0b1016;
+  --bg-grad-edge: #030507;
+  --panel-1: #15202b;
+  --panel-2: #0b1016;
+  --panel-3: #04070a;
+  --headline: #f2f5f8;
+  --body: #dfe7ee;
+  --label: #93a3b2;
+  --source-credit: #c8d3e0;
+  --popfig-red: #d0121f;
+  --danger-1: #c0392b;
+  --danger-2: #e74c3c;
+  --crimson: #8e2020;
+  --amber-1: #d8a13a;
+  --amber-2: #e8c56a;
+  --amber-time: #f5d98b;
+  --amber-cool-time: #c8b98a;
+  --cold-1: #5a768f;
+  --cold-2: #7fb2e5;
+  --beige-cite: rgba(232, 222, 200, 0.90);
+  --beige-polaroid: #f4f0e6;
+  --beige-stamp: #f4f0e8;
+  --caption-dark: #2a2622;
+  --caption-dark-sub: #6b6257;
+  --glass-bg: rgba(10, 16, 24, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.14);
+
+  /* fonts */
+  --font-serif: Georgia, 'Times New Roman', serif;
+  --font-sans: Arial, sans-serif;
+  --font-sans-black: 'Arial Black', Arial, sans-serif;
+  --font-mono: 'Courier New', monospace;
+  --font-display: 'AbrilFig', Georgia, serif; /* @font-face per episode: fonts/AbrilFatface-Regular.ttf */
+
+  /* type tiers (px) */
+  --type-small: 20px;   /* < 26px tier; never below 19px */
+  --type-mid: 30px;     /* 26-51px tier */
+  --type-big: 58px;     /* >= 52px tier */
+  --type-display: 150px;
+}
+```
 
 ## Grade tints (per-episode color story, applied via `#grade`)
 - Warm / fire: `rgba(255,150,90,0.24)` (ep5, wildfire) — spec calls out `rgba(255,200,140,.30)`
