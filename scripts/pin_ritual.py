@@ -85,6 +85,11 @@ FALLBACK_1W = "[FALLBACK] single-worker capture path, parallel-stream router unv
 # the window measured inside its 16-18 s mount, 0.1 s clear of each edge.
 VIDEO_BOX = (96, 300, 854, 480)
 VIDEO_WIN = (16.1, 17.9)
+# A 40x80 strip inside the box that the clip's sliding white square crosses at media
+# ~1.24-1.71 s (timeline ~16.24-16.71 s at data-media-start 1). Its per-frame luma pins the
+# seek: an ignored media offset moves the spike 1 s, a stale frame flattens it, a missing
+# video drops it to the probe background. The whole-box mean barely moves (measured 126.4-127.0).
+VIDEO_TRACER = (496, 500, 40, 80)
 
 
 def npm_latest(timeout=30):
