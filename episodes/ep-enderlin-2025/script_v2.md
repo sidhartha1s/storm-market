@@ -210,8 +210,8 @@ hundred and one miles an hour in that storm. It kept its five, because it had ho
 
 **Picture:** the timeline keeps drawing past Moore with no marks; a day counter runs to "4,414 Days".
 
-That made nine EF fives in six years. From nineteen fifty to twenty thirteen, America had averaged close to one F five
-or EF five a year, so nine in six years was a little above the usual pace.
+That made nine EF fives in six years. From nineteen fifty to twenty thirteen, America averaged nearly one F five or EF
+five a year. So nine in six years was a little above the usual pace.
 `[verify: about 59 F5/EF5 tornadoes in the US from 1950 to 2013]` After Moore, there were none. The count ran for four
 thousand four hundred and fourteen days, from Moore to the night of Enderlin. It was the longest stretch without an F
 five or an EF five since official counts began in nineteen fifty.
