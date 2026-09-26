@@ -50,7 +50,7 @@
     }
     list.push(fn);
   }
-  function renderNow(tl) { const t = tl.time(); for (const f of HUBS.get(tl) || []) f(t); }
+  function renderNow(tl) { tl.render(tl.time(), false, true); }
 
   /* Named CustomEases from the showcase: 'drag' (wind-carried flight), 'slam' (popfig hit). */
   const EASES = { drag: 'M0,0 C0.16,0.3 0.4,0.56 0.6,0.72 0.78,0.86 0.9,0.96 1,1', slam: 'M0,0 C0.5,0 0.7,0.4 0.82,0.7 0.9,0.9 0.96,1 1,1' };
