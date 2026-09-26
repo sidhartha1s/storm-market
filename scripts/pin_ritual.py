@@ -268,11 +268,12 @@ def main():
     record = None
     if BASELINE_JSON.exists():
         record = json.loads(BASELINE_JSON.read_text(encoding="utf-8"))
-        if record.get("version") != pin:
+        # a record measured on another demo (demo-joplin-90 before 26 Sep 26) is not a baseline
+        if record.get("version") != pin or record.get("demo") != DEMO.name:
             record = None
     if record is None or not base_mp4.exists():
         render(pin, base_mp4)
-        record = {"version": pin, **measure(base_mp4)}
+        record = {"version": pin, "demo": DEMO.name, **measure(base_mp4)}
         # persist NOW — a crash in the candidate render must not cost this ~13 min again
         BASELINE_JSON.write_text(json.dumps(record, indent=2), encoding="utf-8")
     base_has_mp4 = base_mp4.exists()
