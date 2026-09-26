@@ -209,7 +209,9 @@ def compare(base, cand, ssim_all):
             if abs(bs - cs) > BLACK_TOL or abs(be - ce) > BLACK_TOL:
                 drifts.append(f"black segment moved ({bs:.2f}-{be:.2f}) -> "
                               f"({cs:.2f}-{ce:.2f})")
-    if abs(base["rms_db"] - cand["rms_db"]) > RMS_TOL:
+    if (base["rms_db"] is None) != (cand["rms_db"] is None):
+        drifts.append(f"audio stream {base['rms_db']} -> {cand['rms_db']} (one side silent)")
+    elif base["rms_db"] is not None and abs(base["rms_db"] - cand["rms_db"]) > RMS_TOL:
         drifts.append(f"RMS {base['rms_db']:.3f} -> {cand['rms_db']:.3f} dB")
     if ssim_all is not None and ssim_all < SSIM_MIN:
         drifts.append(f"SSIM {ssim_all:.4f} < {SSIM_MIN}")
