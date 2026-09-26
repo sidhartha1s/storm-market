@@ -467,9 +467,7 @@ main_src = (S / "pin_ritual.py").read_text(encoding="utf-8")
 check("assets-comps-02 NEW: the record==pin shortcut also checks the mp4 is still on disk",
       "record is None or not base_mp4.exists()" in main_src)
 check("pin-final NEW: the stale path discards a committed record that fails baseline_problems (re-records)",
-      "or baseline_problems(record)):" in main_src
-      and pin_ritual.baseline_problems(json.loads(pin_ritual.BASELINE_JSON.read_text(encoding="utf-8"))) != []
-      or "video_luma" in json.loads(pin_ritual.BASELINE_JSON.read_text(encoding="utf-8")))
+      "or baseline_problems(record)):" in main_src)
 check("assets-comps-02 NEW: a PASS renames the candidate into the stable baseline slot",
       "cand_mp4.replace(new_base)" in main_src)
 
