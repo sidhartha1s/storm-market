@@ -35,8 +35,8 @@ def run_gate(ep_dir, wordlist_path):
     return r.returncode, r.stdout + r.stderr
 
 
-def make_episode(root, edit_script_body):
-    ep = root / "ep"
+def make_episode(root, name, edit_script_body):
+    ep = root / name
     ep.mkdir()
     (ep / "edit_script.md").write_text(edit_script_body, encoding="utf-8")
     return ep
@@ -48,9 +48,7 @@ with tempfile.TemporaryDirectory() as d:
     wordlist.write_text(WORDLIST, encoding="utf-8")
 
     # 1. a hard hit fails with alternatives printed
-    ep_hard = make_episode(root, "> The tornado killed twelve people that night.\n")
-    (ep_hard.parent / "ep").rename(root / "ep-hard")
-    ep_hard = root / "ep-hard"
+    ep_hard = make_episode(root, "ep-hard", "> The tornado killed twelve people that night.\n")
     rc, out = run_gate(ep_hard, wordlist)
     check("hard hit: exit 1", rc == 1, f"rc={rc}")
     check("hard hit: prints file:line", f"{ep_hard / 'edit_script.md'}:1:" in out, out)
