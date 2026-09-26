@@ -1,0 +1,119 @@
+# script-quickref.md — the one file a script writer opens (owner rules to 27 Sep 26)
+
+This file WINS for script writers: it summarizes and condenses the source files named per section. Do not open
+`script-os.md`, `script-framework.md`, `script-scaling.md`, `humanise-rules.md`, `learnings/script-process.md`,
+DESIGN.md or `packaging-rules.md` to write a script — read only this file plus the episode research. If a rule
+here and its source disagree, fix the source in the same PR and say which one won.
+
+## The hook (owner 27 Sep 26 — supersedes any looser hook rule below)
+- **One sentence, 3–5 s.** Promise first: the payoff the title/thumbnail already made.
+- **Never pause on a fact that contradicts the title/thumbnail.** Bad: "The weather service changed it to EF5,
+  four months after they called it EF3." — that sentence argues with its own thumbnail. State the promised fact,
+  save the contradiction for inside the video.
+- No fluff before it: sentence one IS the payoff (numbers first, then the specific image, then the question).
+  Delete-test: cut sentence one — if the hook still works, it was fluff. (`script-framework.md`, `learnings/script-process.md`)
+- No roadmap phrases ("one more thing before", "in the next twenty minutes") — they read as delay.
+- Cold open (DESIGN.md): frame one is mid-action, never black. Narrator's first line starts at 0:00 — no broadcast,
+  radio or archive audio in the hook (bad audio quality loses viewers before the hook finishes). Date/place popfig
+  inside the first second. Every cut lands ON an audio event, never mid-sentence.
+
+## Hook tail, intro, chapters (owner 27 Sep 26)
+- **Tail, 5–15 s:** context plus ONE open curiosity gap — not the answer, not a list of what's coming.
+- Then **INTRO** (~to 1:10 on a mini, longer on a doc): the full WHAT — stakes, roster, claim — delivered as
+  information. Everything after the intro is WHY/HOW, which is what the viewer stays for. (`script-framework.md`)
+- Then **CHAPTERS**: stakes order, not chronology. Every chapter changes what the viewer already understood; a
+  chapter that only adds a subject ("Chapter 5: 1883") gets cut or rewritten. (`script-os.md` non-negotiable 4)
+
+## Refill the cup — loop discipline (owner 27 Sep 26)
+- When a loop pays off, open the next loop in the same breath. Never let the viewer's cup run empty.
+- Tag every loop: `[loop L1 open]` when planted, `[loop L1 closes]` when paid. Every loop table row needs both.
+- Re-hook every 30–45 s: a real beat (broadcast/PD clip, audio insert, stat spike, or a fresh loop opening).
+- One episode loop (hook → final act), one loop per act (paid within 1–2 acts), one CTA hinge loop (`cta-hinge`,
+  tease inside the CTA window's last line, payoff = next segment's first sentence). Loops close honestly — a
+  dropped loop is the #1 tell of stretched runtime. (`script-scaling.md`)
+
+## Connect two points, don't merge them (owner 27 Sep 26)
+- Build curiosity by holding two things next to each other without collapsing them into one claim — e.g. El Reno
+  EF3 vs Enderlin EF5: state both, let the gap between them pull the viewer, never flatten into "they're the same."
+- No dread or hate framing. Fear only as a sourced fact, never a narrator adjective (terrible, cruel, mercifully).
+
+## The retention engine (every script) — `script-os.md`
+Every 20–60 s: question → information → payoff → new question, chained with but/because/which means, never a list.
+- One dominant question the whole script serves ("the viewer keeps watching to find out ___").
+- Consequence before mechanism ("426 died, and the wave wasn't an earthquake" beats "a landslide tsunami occurs when…").
+- Never spend curiosity early — one open question at a time.
+- Escalating revelations: interesting → surprising → disturbing → enormous → personal → present-day → unresolved.
+- 6–10 retention spikes per 15 min, each with a dedicated visual event (`[RS]` tag).
+- Answer the dominant question in the last 30–60 s, then the CTA spine once. Never answer → like → subscribe → bye.
+- Pick ONE architecture (Detective / Countdown / Explanation-with-a-twist), hybrids normal; chapter card = Purpose ·
+  Question · Reveal · Visual event · Exit hook, written before prose.
+
+## Cadence lattice (per-minute invariants, hold at any runtime) — `script-scaling.md`
+| Cadence | Rule |
+|---|---|
+| Rehook | real beat every 45–60 s |
+| Micro-loop | curiosity gap every 30–45 s, phrasing varied |
+| Info beat | every 6–10 s of narration |
+| Pacing wave | alternate fast/slow, never >90 s one tempo |
+| Act size | 3–6 min, self-similar (hook-in → escalate → payoff → hold/blackout) |
+| Language | 4th-grader readable: short words, one idea per sentence |
+| Spice | one clarifying footnote/analogy per beat that needs it, never filler |
+Scale runtime by ADDING acts, never stretching beats. Each new act needs new material (a vignette + a
+mechanism/analysis pair) and plants+pays a loop.
+
+## Voice (45–75 US viewer) — `script-os.md` Voice rules + CLAUDE.md Voice
+- Median sentence 12–18 words; 10–15% run 25–35 words as fact-chains (and/then/which); one ≤4-word kicker per 150
+  words. Write the long sentence — TTS splits it at commas, don't pre-shorten for that reason.
+- Sentence one of the SCRIPT (not just the hook) is a number or date.
+- "You" = promise/stake only, ≤3 per 1,000 words after minute one. "We" = Americans, 2–3× per script. Never "I".
+- One named researcher + institution per mechanism chapter; agencies named on screen; "nobody knows" in a source's mouth.
+- Flat declaratives for record/mechanism; the future in three sourced paths, never the narrator's guess.
+- A US state/region in the first 60 s; every foreign distance restated in feet/miles/°F/dollars + a US landmark.
+- Seams are time-stamps or place-stamps, never "to understand X you have to understand Y."
+- Keep technical terms, define in ≤12 words, reuse 3+ times. Every superlative gets a comparator and unit.
+- One object per segment; one named victim (age, job, sourced quote) per tragedy.
+- Close: fact + dated forward window, then the CTA spine once. No aphorism, no mirrored callback, no sign-off line.
+- TTS-safe: spell out ALL dates/times/numbers in narration (except years, dollars), no paired dashes, sentences
+  under 24 words as written (long fact-chains still fine, TTS splits them), respell homographs phonetically.
+
+## Humanise pass — zero AI tells (run rules 2–14 line by line before TTS) — `humanise-rules.md`
+- No painting the picture ("picture this", personified mountains/companies). No borrowed metaphors (icebergs,
+  dominoes, perfect storms). No announcing the move ("here's the thing", "let's dive in", "make no mistake").
+- No em dashes, no rhetorical questions, no hedging/filler intensifiers (arguably, kind of, very, really).
+- No banned sentence shapes: reveal-flip ("not X, it's Y"), question-then-answer fragment, anaphora run (3+
+  sentences same opener), thesis opener ("this is the story of…"), summary tag ("That's the mechanism.").
+- Specifics over abstractions: exact figures, never rounded, unless the number is a feat not the point (a rail
+  car's weight) — then say it roughly ("about seventy thousand pounds").
+- Strong verbs, active voice. Vary sentence length on purpose (short/medium/short, never 3 same length running).
+- No summaries, recaps, soft exits, no "in this video." No fabricated quotes/stats/events — missing source = cut it.
+- Rationed spoken devices (rules from ep-1974 probes): banned every script — "uh"/"um", self-corrections, doubled
+  negatives, trailer fragments. Rationed devices (openers, asides, check-ins like "right?") max 3 per 20-min script,
+  never twice in 3 minutes, never the same one in neighboring acts. New device = probe it in TTS first.
+
+## Flag words — never in narration (owner rules; no `references/flag-words.md` on main, so listed here)
+Ban and replace: kill/killed → "lost their lives" · dead/death → "did not survive" / "the toll" · bodies → cut or
+name what was found · murder/suicide → name the sourced cause · massacre/carnage → the sourced casualty figure.
+If `references/flag-words.md` exists when you read this, it wins — check for it first.
+
+## `[verify]` gate — zero open before TTS (owner order) — `script-scaling.md`
+- Every fact not confirmed in `research/` gets `[verify: ...]` inline the moment it's written.
+- Pre-TTS: (1) in-session eyeball of every number/name/date/distance/arithmetic against research; (2) verification
+  agents resolve every `[verify]` to CONFIRMED (marker removed) / CORRECTED (line rewritten) / UNVERIFIED (line CUT
+  — never softened to "reportedly"). TTS does not run with any `[verify]` marker still open.
+- Every audio-carrying insert is transcribed in full before cut selection; cut chosen at the transcript's peak.
+
+## CTA hinge (must-keep every episode from ep4 on) — DESIGN.md "CTA contract"
+- Window: CTA starts inside 85–95% of runtime, at a seam that doesn't interrupt a reveal.
+- Hinge is scripted: the segment BEFORE the CTA ends on a tease (`cta-hinge` loop, ≤25 words); the segment AFTER
+  opens with the payoff in its first sentence (first three words ideally, e.g. "He wrote a six.").
+- Shape: hook > story > CTA > close. Never skipped, shortened, or moved to the outro.
+
+## Title/thumbnail match (packaging, only the parts a writer needs) — `packaging-rules.md`
+- The hook and intro must say aloud what the title/thumbnail promised — a checkable fact, not an adjective.
+- Every claim in the title or thumbnail text must appear in the script with a source.
+- Dual-scope stats (episode total vs. one day) name their scope in the same sentence a viewer could misread it.
+
+## Before you hand back the script
+- Zero open `[loop Ln open]` without a matching `[loop Ln closes]`. Zero open `[verify]`. Zero flag words.
+- Read the hook aloud: is it one sentence, 3–5 s, does it promise without contradicting the thumbnail?
+- Humanise pass run and diffed. CTA hinge named. Word budget sized at the shipping tempo before TTS.
