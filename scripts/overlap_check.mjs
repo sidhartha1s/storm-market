@@ -13,6 +13,7 @@
 import { chromium, chromiumExecutable } from './playwright_env.mjs';
 import fs from 'fs';
 import path from 'path';
+import { hostCss, stageComp } from './stage_comp.mjs';
 
 const EXE = chromiumExecutable();
 const STEP = 0.5;
