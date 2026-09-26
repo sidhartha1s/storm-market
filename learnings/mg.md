@@ -6,7 +6,7 @@ Newest first. New entries go at the top, under this line. Superseded lines point
 - **The owner's ranking:**
   1. B, small brief only (~21 min build).
   2. C, quick-ref + move library + style frames (29.5 min).
-  3. A, full house docs (35 min). Owner: "when the camera moves up, it sucks".
+  3. A, full house docs (35 min). Owner: "when the camera moves up, it sucks" and "the house docs was really bad though. That would be like a junior level thing."
   More documentation made the output slower AND worse.
 - **The blind Opus judge and the gates both disagreed with the owner.** The judge ranked C 38 > A 34 > B 33 (/50). The gates passed B only 1/4. So the owner picks; a judge score is a note, never a gate (eval use only).
 - **The gates misread WebGL.** B failed:
