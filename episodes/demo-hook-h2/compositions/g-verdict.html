@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-verdict: fixed HUD over g-tornado-verdict (0 -> 7.22). The payoff first: EF3 stamped, struck,
+     EF5 stamped. Lightning flashes live here (the WebGL tornado has none). Cues from audio/h1-s1 and
+     h1-s2 words.json; s1 mounts at 0.25, s2 at 3.07 (absolute = local, host starts at 0). -->
+<template>
+<style>
+  .vd-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; }
+  .vd-flash { position:absolute; inset:0; mix-blend-mode:screen; pointer-events:none;
+    background: radial-gradient(ellipse at 24% 8%, rgba(210,226,255,0.95), rgba(127,178,229,0.35) 42%, rgba(20,30,60,0) 78%); }
+  .vd-flash2 { background: radial-gradient(ellipse at 78% 6%, rgba(210,226,255,0.9), rgba(127,178,229,0.3) 40%, rgba(20,30,60,0) 76%); }
+  .vd-glow { position:absolute; left:-200px; top:-260px; width:1100px; height:620px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(127,178,229,0.16), rgba(127,178,229,0) 70%); mix-blend-mode:screen; }
+  .vd-bolt { position:absolute; left:0; top:0; width:1920px; height:1080px; pointer-events:none; }
+  .vd-scrim { position:absolute; width:760px; height:520px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(4,7,10,0.72) 0%, rgba(4,7,10,0.45) 45%, rgba(4,7,10,0) 72%); }
+  .vd-group { position:absolute; top:300px; width:520px; text-align:center; }
+  .vd-eyebrow { font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; text-transform:none; }
+  .vd-stamp { display:inline-block; margin-top:16px; padding:6px 34px 0; border:6px solid; border-radius:14px;
+    font-family:'AbrilFig', Georgia, serif; font-size:190px; line-height:1.05; letter-spacing:4px; }
+  .vd-ef3 { color:#dfe7ee; border-color:rgba(223,231,238,0.85); text-shadow:0 6px 30px rgba(0,0,0,0.7); }
+  .vd-ef5 { color:#d0121f; border-color:#d0121f; text-shadow:0 0 38px rgba(208,18,31,0.55), 0 6px 26px rgba(0,0,0,0.8); }
+  .vd-sub { margin-top:18px; font-weight:700; font-size:30px; letter-spacing:1px; color:#dfe7ee; text-shadow:0 2px 12px rgba(0,0,0,0.9); }
+  .vd-strike { position:absolute; left:40px; right:40px; top:180px; height:12px; background:#d0121f; border-radius:6px;
+    box-shadow:0 0 18px rgba(208,18,31,0.6); }
+  .vd-arrow { position:absolute; left:0; top:0; width:1920px; height:1080px; pointer-events:none; }
+  .vd-when { position:absolute; left:860px; top:392px; width:200px; text-align:center; font-weight:700; font-size:22px;
+    letter-spacing:3px; color:#e8c56a; text-shadow:0 2px 10px rgba(0,0,0,0.95); }
+</style>
+<div class="vd-wrap" data-composition-id="g-verdict" data-width="1920" data-height="1080" data-duration="7.22">
+  <div class="vd-glow" id="vd-glowdrift"></div>
+  <div class="vd-flash" id="vd-flash-a"></div>
+  <div class="vd-flash vd-flash2" id="vd-flash-b"></div>
+  <svg class="vd-bolt" viewBox="0 0 1920 1080">
+    <path id="vd-bolt" d="M1540 0 L1506 96 L1552 120 L1488 238 L1530 256 L1452 400" fill="none" stroke="#e6efff" stroke-width="5" stroke-linejoin="bevel" style="filter:drop-shadow(0 0 14px #7fb2e5)"/>
+  </svg>
+  <div class="vd-scrim" id="vd-scrim3" style="left:580px; top:220px;"></div>
+  <div class="vd-scrim" id="vd-scrim5" style="left:1000px; top:220px;"></div>
+  <div class="vd-group" id="vd-g3" style="left:700px;">
+    <div class="vd-eyebrow" id="vd-nws">National Weather Service</div>
+    <div class="vd-stamp vd-ef3" id="vd-ef3">EF3</div>
+    <div class="vd-sub" id="vd-sub3">About 160 mph</div>
+    <div class="vd-strike" id="vd-strike"></div>
+  </div>
+  <svg class="vd-arrow" viewBox="0 0 1920 1080">
+    <path id="vd-arrowline" d="M800 480 L1100 480" fill="none" stroke="#e8c56a" stroke-width="5" stroke-linecap="round"/>
+    <path id="vd-arrowhead" d="M1082 462 L1108 480 L1082 498" fill="none" stroke="#e8c56a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div class="vd-when" id="vd-when">Oct 6, 2025</div>
+  <div class="vd-group" id="vd-g5" style="left:1120px;">
+    <div class="vd-eyebrow" id="vd-rerated">Re-Rated</div>
+    <div class="vd-stamp vd-ef5" id="vd-ef5">EF5</div>
+    <div class="vd-sub" id="vd-sub5">Over 210 mph</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#vd-";
+  const bolt = document.getElementById("vd-bolt");
+  const BL = Math.ceil(bolt.getTotalLength()) + 1;
+  const arrow = document.getElementById("vd-arrowline");
+  const AL = Math.ceil(arrow.getTotalLength()) + 1;
+  bolt.style.strokeDasharray = BL; arrow.style.strokeDasharray = AL;
+  tl.set([P+"flash-a", P+"flash-b", P+"bolt", P+"nws", P+"ef3", P+"sub3", P+"strike", P+"when", P+"arrowline", P+"arrowhead",
+          P+"rerated", P+"ef5", P+"sub5", P+"scrim3", P+"scrim5"], { autoAlpha: 0 }, 0);
+  tl.set(P+"strike", { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set(P+"arrowline", { strokeDashoffset: AL }, 0);
+  tl.set(P+"bolt", { strokeDashoffset: BL }, 0);
+  tl.set(P+"g3", { x: 0, y: 0, scale: 1 }, 0);
+  tl.set(P+"g5", { x: 0, y: 0 }, 0);
+
+  /* ambient: sky glow drifts across the whole window so nothing is ever still */
+  tl.fromTo(P+"glowdrift", { x: 0, y: 0 }, { x: 900, y: 60, duration: 7.22, ease: "none" }, 0);
+
+  /* cold open: a flash is the first frame */
+  tl.fromTo(P+"flash-a", { autoAlpha: 0.9 }, { autoAlpha: 0, duration: 0.35, ease: "power2.out" }, 0);
+  tl.to(P+"flash-a", { autoAlpha: 0.55, duration: 0.04 }, 0.42);
+  tl.to(P+"flash-a", { autoAlpha: 0, duration: 0.3 }, 0.46);
+
+  /* WEATHER SERVICE @0.57 */
+  tl.to(P+"scrim3", { autoAlpha: 1, duration: 0.5 }, 0.57);
+  tl.fromTo(P+"nws", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.57);
+  /* EF3 @1.59: stamp lands */
+  tl.fromTo(P+"ef3", { autoAlpha: 0, scale: 1.7, rotation: -9 }, { autoAlpha: 1, scale: 1, rotation: -3, duration: 0.22, ease: "power4.in" }, 1.45);
+  tl.fromTo(P+"g3", { y: 0 }, { y: 6, duration: 0.08, ease: "power1.out", yoyo: true, repeat: 1 }, 1.67);
+  tl.fromTo(P+"sub3", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.95);
+  tl.fromTo(P+"g3", { scale: 1 }, { scale: 1.03, duration: 1.2, ease: "sine.inOut" }, 1.9);
+
+  /* FOUR MONTHS LATER @3.07: EF3 struck, pushed aside */
+  tl.to(P+"strike", { autoAlpha: 1, scaleX: 1, duration: 0.35, ease: "power3.out" }, 3.07);
+  tl.to(P+"g3", { x: -420, scale: 0.78, duration: 0.7, ease: "power3.inOut" }, 3.2);
+  tl.to(P+"scrim3", { x: -420, duration: 0.7, ease: "power3.inOut" }, 3.2);
+  tl.to([P+"ef3", P+"sub3", P+"nws"], { opacity: 0.5, duration: 0.7 }, 3.2);
+  /* MONTHS @3.53: the date the rating changed */
+  tl.fromTo(P+"when", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.6);
+  /* CHANGED @4.73: arrow draws toward the new rating */
+  tl.to(P+"arrowline", { autoAlpha: 1, strokeDashoffset: 0, duration: 0.55, ease: "power2.inOut" }, 4.73);
+  tl.fromTo(P+"arrowhead", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.2, ease: "power2.out" }, 5.2);
+
+  /* EF5 @5.43: the verdict. Lightning bolt + flash ride the stamp hit */
+  tl.to(P+"scrim5", { autoAlpha: 1, duration: 0.3 }, 5.2);
+  tl.to(P+"bolt", { autoAlpha: 1, strokeDashoffset: 0, duration: 0.08, ease: "none" }, 5.36);
+  tl.fromTo(P+"flash-b", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.05 }, 5.4);
+  tl.to(P+"flash-b", { autoAlpha: 0, duration: 0.5, ease: "power2.out" }, 5.47);
+  tl.to(P+"bolt", { autoAlpha: 0, duration: 0.4 }, 5.62);
+  tl.fromTo(P+"ef5", { autoAlpha: 0, scale: 2.1, rotation: -12 }, { autoAlpha: 1, scale: 1, rotation: -4, duration: 0.2, ease: "power4.in" }, 5.26);
+  tl.fromTo(P+"g5", { y: 0 }, { y: 9, duration: 0.07, ease: "power1.out", yoyo: true, repeat: 1 }, 5.46);
+  tl.fromTo(P+"rerated", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 5.62);
+  tl.fromTo(P+"sub5", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.8);
+  tl.fromTo(P+"ef5", { scale: 1 }, { scale: 1.04, duration: 0.6, ease: "sine.inOut" }, 5.9);
+
+  /* exit: the whole verdict lifts and fades on the cut to the premise (host ends 7.22) */
+  tl.to([P+"g3", P+"g5", P+"when", P+"arrowline", P+"arrowhead"], { y: -40, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 6.62);
+  tl.to([P+"scrim3", P+"scrim5"], { autoAlpha: 0, duration: 0.55 }, 6.62);
+  window.__timelines["g-verdict"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
