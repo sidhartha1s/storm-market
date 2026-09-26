@@ -236,8 +236,9 @@
     }
   }
 
-  /* impactRing: a flat ground ellipse (SVG <ellipse>) that snaps on small and expands out to nothing.
-     opts: { rx: 260, ry: 22, duration: 0.9 }. Gate: set + to, exits autoAlpha:0. */
+  /* impactRing: a flat ground ellipse (SVG <ellipse>, world layer) that snaps on small and expands out to nothing.
+     opts: { rx: 260, ry: 22, duration: 0.9 } final radii; cx/cy come from the element (the landing point).
+     Gate: set at literal 0, then set + to at the impact; exits autoAlpha:0. */
   function impactRing(tl, ring, at, o) {
     o = Object.assign({ rx: 260, ry: 22, duration: 0.9 }, o);
     tl.set(ring, { autoAlpha: 0 }, 0);
