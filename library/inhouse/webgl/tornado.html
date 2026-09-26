@@ -108,8 +108,10 @@ const ground = new THREE.Mesh(new THREE.PlaneGeometry(1600, 1600), new THREE.Sha
       vec3 c = uGround * (0.7 + 0.5 * n + 0.15 * f);
       float d = length(vW.xz - uBase.xz);
       c = mix(c, uDust, smoothstep(uR * 2.2, 0.0, d) * 0.7);
-      float fog = 1.0 - exp(-length(vW - cameraPosition) * 0.006);
-      gl_FragColor = vec4(mix(c, uFog, fog), 1.0);
+      float dist = length(vW - cameraPosition);
+      c = mix(c, uFog, 1.0 - exp(-dist * 0.006));
+      c = mix(c, uFog + uGlow * 0.3, smoothstep(150.0, 700.0, dist));  // far field meets the sky's horizon band
+      gl_FragColor = vec4(c, 1.0);
     }`,
 }));
 ground.rotation.x = -Math.PI / 2;
