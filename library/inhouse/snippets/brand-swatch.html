@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <title>The Warning Hour — brand swatch</title>
 <style>
+  /* AbrilFig lives outside library/ (references/editing-patterns/fonts/), and no font file is
+     tracked inside library/ itself. This path resolves fine opened directly (file://) but NOT
+     under `python3 -m http.server` run from library/ (the doc says to serve the gallery from
+     there) — a server rooted at library/ cannot reach a path above its root, so AbrilFig silently
+     falls back to Georgia under that server. Open this file via file:// for the real font; a
+     server-rooted preview is chip/hex-accurate but not font-accurate for the display tier. */
   @font-face {
     font-family: 'AbrilFig';
     src: url('../../../references/editing-patterns/fonts/AbrilFatface-Regular.ttf');
