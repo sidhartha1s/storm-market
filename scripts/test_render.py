@@ -484,14 +484,17 @@ with tempfile.TemporaryDirectory() as d:
 check("pin-policy NEW: RENDER_PIN_STALE_OK is gone from preflight",
       "RENDER_PIN_STALE_OK" not in (S / "render_preflight.py").read_text(encoding="utf-8"))
 
-check("pin-policy NEW: the ritual demo is episodes/demo-pin", pin_ritual.DEMO.name == "demo-pin")
+# pin_ritual.DEMO was repointed at a temp dir by the render() harness above; read the source
+check("pin-policy NEW: the ritual demo is episodes/demo-pin",
+      'DEMO = REPO / "episodes" / "demo-pin"' in main_src)
+DEMO = S.parent / "episodes" / "demo-pin"
 demo_refs = []
-for f in [pin_ritual.DEMO / "index.html", *(pin_ritual.DEMO / "compositions").glob("*.html")]:
+for f in [DEMO / "index.html", *(DEMO / "compositions").glob("*.html")]:
     demo_refs += re.findall(r'(?:src="|url\(\')([^"\'#:]+\.(?:js|ttf|html|woff2?|png|jpg|mp4|wav|mp3))',
                             f.read_text(encoding="utf-8"))
-missing = [r for r in demo_refs if not (pin_ritual.DEMO / r).exists()]
+missing = [r for r in demo_refs if not (DEMO / r).exists()]
 check("pin-policy NEW: every file demo-pin references exists", demo_refs and not missing, missing)
-ignored = subprocess.run(["git", "-C", str(pin_ritual.REPO), "check-ignore", *demo_refs],
+ignored = subprocess.run(["git", "-C", str(DEMO), "check-ignore", *demo_refs],
                          capture_output=True, text=True).stdout.split()
 check("pin-policy NEW: nothing demo-pin references is gitignored (a fresh worktree can render it)",
       not ignored, ignored)

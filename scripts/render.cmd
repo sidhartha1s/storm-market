@@ -8,7 +8,6 @@ REM Writes episodes\<slug>\render_<mode>.log, render_<mode>_preflight.log (gate 
 REM hidden/schtasks launch still leaves a refusal reason on disk) and render_<mode>_done.marker
 REM (contains the exit code; deleted at the start of every run so a poller never reads a stale one).
 REM Version pin must match config.yaml hyperframes_version — pin_ritual.py bumps both together.
-REM Stale-pin full renders need RENDER_PIN_STALE_OK=1 (owner override, printed by preflight).
 setlocal
 set SLUG=%~1
 set MODE=%~2
@@ -65,7 +64,7 @@ set HF_CAPTURE_PARALLEL_STREAM=true
 set DO_NOT_TRACK=1
 set HYPERFRAMES_FFPROBE_PATH=C:\Users\Sidhartha\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Shared_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.2-full_build-shared\bin\ffprobe.exe
 set HYPERFRAMES_FFMPEG_PATH=C:\Users\Sidhartha\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Shared_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.2-full_build-shared\bin\ffmpeg.exe
-REM Preflight gate (busy box / media budget / pin drift / pin currency). CLAUDE.md has always
+REM Preflight gate (busy box / media budget / pin drift). CLAUDE.md has always
 REM said "the render script calls this file" — as of 2026-08-14 it actually does. Full python
 REM path: under schtasks/cmd, bare python3 resolves to the MS Store stub (exit 9009).
 REM MUST run AFTER the FF*_PATH lines above: media_budget.py measures the ffprobe the env names,
