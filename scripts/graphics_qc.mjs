@@ -197,7 +197,7 @@ const MEASURE = `((t) => {
 // applies to comp elements (17 Sep 26: host `.chip{bottom:300px}` stretched a comp chip into a 720 px
 // panel; every standalone gate passed). Staging must carry the host <style> blocks.
 const INDEX_HTML = readFileSync(join(ep, 'index.html'), 'utf8');
-const HOST_CSS = [...INDEX_HTML.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].map(x => x[1]).join('\n');
+const HOST_CSS = hostCss(INDEX_HTML);
 // per-composition host window: the duration the master timeline mounts it for (assets-comps-05)
 const HOSTS = {};
 for (const m of INDEX_HTML.matchAll(/<[a-z]+\b[^>]*\bdata-composition-src="compositions\/([^"]+)\.html"[^>]*>/g)) {
