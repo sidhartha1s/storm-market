@@ -209,11 +209,57 @@ with tempfile.TemporaryDirectory() as d:
           f"(exit {code})\n{out[-400:]}")
 
 with tempfile.TemporaryDirectory() as d:
-    live_comp = ('<template><div id="g"></div>'
-                '<script>tl.to("#g", {duration: 2, ease: "none"}, 0);</script></template>')
+    live_comp = bd_comp('tl.to("#g", {x: 300, duration: 2, ease: "none"}, 0);')
     ep_live = make_ep(Path(d) / "live", comp_html=live_comp)
     code, out = run("beat_density.py", ep_live)
-    check("beat_density: exits 0 on a composition with no dead stretch", code == 0, f"(exit {code})")
+    check("beat_density: exits 0 on a composition with no dead stretch", code == 0, f"(exit {code})\n{out[-400:]}")
+
+# Runtime beats (fix/beat-density-runtime): the regex path could not see an aliased duration, a tween
+# made inside a helper, or an onUpdate canvas renderer, and it counted a `tl.to({}, ...)` clock as
+# motion. Each fixture runs on the new gate and on the pre-fix gate, pinned to 11ba4c09 (never
+# origin/main: after the merge origin/main holds the fix and the old-code half would go red).
+OLD_BD = S / "_old_beat_density_tmp.py"   # beside comp_consts.py, which the old gate imports
+OLD_BD.write_text(subprocess.run(["git", "show", "11ba4c09:scripts/beat_density.py"], cwd=S.parent,
+                                 capture_output=True, text=True, check=True).stdout, encoding="utf-8")
+CANVAS = '<canvas id="cv" width="1920" height="1080" style="position:absolute;left:0;top:0"></canvas>'
+DRAW = ('const cx = document.getElementById("cv").getContext("2d");'
+        'tl.eventCallback("onUpdate", () => { cx.clearRect(0, 0, 1920, 1080); cx.fillRect(200 + tl.time() * 100, 400, 80, 80); });')
+try:
+    for label, js, dom, want_new, want_old in (
+        ("an aliased duration (C.duration, const C = CONFIG) resolves",
+         'const CONFIG = { duration: 10 }; const C = CONFIG; tl.to("#g", {x: 300, duration: C.duration, ease: "none"}, 0);',
+         None, 0, 1),
+        ("tweens made inside a helper function count",
+         'function slide(at) { tl.to("#g", {x: "+=60", duration: 3, ease: "none"}, at); }'
+         ' for (let i = 0; i < 4; i++) slide(i * 2.5);', None, 0, 1),
+        ("an onUpdate + full-frame canvas renderer counts as continuous",
+         DRAW + ' const LEN = { s: 10 }; const L = LEN; tl.to({}, {duration: L.s}, 0);', CANVAS, 0, 1),
+        ("a literal tl.to({}, {duration: N}, 0) clock alone is not motion (old code passed it)",
+         'tl.to({}, {duration: 10}, 0);', None, 1, 0),
+    ):
+        with tempfile.TemporaryDirectory() as d:
+            ep = make_ep(Path(d) / "bd", comp_html=bd_comp(js, dom) if dom else bd_comp(js), comp_window=10.0)
+            code, out = run("beat_density.py", ep)
+            old, old_out = run(OLD_BD.name, ep)
+            check(f"beat_density: {label}", code == want_new and old == want_old,
+                  f"(new exit {code}, want {want_new}; old exit {old}, want {want_old})\n{out[-500:]}\n{old_out[-300:]}")
+finally:
+    OLD_BD.unlink()
+
+# New-only: a plain-object proxy counts where an onUpdate hub turns it into page change (library/
+# inhouse/moves), and not at all without one. A 100 px canvas does not earn the renderer span.
+PROXY = 'const cam = { x: 0 }; tl.to(cam, {x: 300, duration: 10, ease: "none"}, 0);'
+HUB = ' const g = document.getElementById("g"); tl.eventCallback("onUpdate", () => { g.style.transform = "translateX(" + cam.x + "px)"; });'
+for label, js, dom, want in (
+    ("a proxy driven through an onUpdate hub counts", PROXY + HUB, None, 0),
+    ("a proxy nothing reads is not motion", PROXY, None, 1),
+    ("a 100 px canvas renderer is not continuous motion",
+     DRAW + ' tl.to({}, {duration: 10}, 0);', CANVAS.replace('width="1920" height="1080"', 'width="100" height="100"'), 1),
+):
+    with tempfile.TemporaryDirectory() as d:
+        ep = make_ep(Path(d) / "bd", comp_html=bd_comp(js, dom) if dom else bd_comp(js), comp_window=10.0)
+        code, out = run("beat_density.py", ep)
+        check(f"beat_density: {label}", code == want, f"(exit {code}, want {want})\n{out[-500:]}")
 
 # ===================================================================================
 # 4. audio_levels.py — data-hf-id id-collision bug, data-bed classification, 6dB FAIL,
