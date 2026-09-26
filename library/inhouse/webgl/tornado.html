@@ -86,7 +86,7 @@ const sky = new THREE.Mesh(new THREE.SphereGeometry(900, 48, 24), new THREE.Shad
     uniform float uTime, uSeed; uniform vec3 uTop, uHor, uGlow, uFog; varying vec3 vDir;
     void main() {
       float y = vDir.y;
-      vec3 c = mix(uHor, uTop, smoothstep(-0.02, 0.32, y));
+      vec3 c = mix(uHor, uTop, smoothstep(-0.02, 0.55, y));
       vec2 uv = vDir.xz / (max(y, 0.0) + 0.12);
       float cl = fbm(vec3(uv * 0.9 + vec2(uTime * 0.03, 0.0), uSeed));
       c *= 0.55 + 0.75 * cl * smoothstep(0.0, 0.08, y);
