@@ -11,6 +11,7 @@ files disagree, fix it in the same PR and say which one won.
 | Every motion-graphics rule: file contract, safe zones and the presenter circle, glass card, motion, exits, on-screen text, what each gate parses, verification | `references/mg-quickref.md` (goes into every MG builder's brief) |
 | Channel palette, fonts, type-tier px values, TV-readability floor, CSS custom properties | `library/inhouse/snippets/tokens.md` (swatch: `library/inhouse/snippets/brand-swatch.html`) |
 | Script method, hook wording, humanise pass, scaling | `references/script-os.md`, `script-framework.md`, `script-scaling.md`, `humanise-rules.md` |
+| Violence/death words that trip YouTube's transcript scan, with alternatives; gate `scripts/flag_words.py episodes/<slug>` | `references/flag-words.md` |
 | Titles and thumbnails | `references/packaging-rules.md` |
 | News-lane rulebook, templates, clip pools | `references/mini-storms/FORMAT.md`, `library/mini-storms/`, `library/mini-storms/<event>/` (pools are reused across angles) |
 | Shorts spec, slugs `sh-<parent>-<n>`, weekly scan | `references/shorts/PLAN.md`, `references/shorts/competitors-2026-09-15.md`, templates `library/shorts/` (not created yet), `scripts/shorts_scan.py`, gate `node scripts/shorts_lint.mjs episodes/<slug>` |
