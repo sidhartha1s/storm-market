@@ -38,39 +38,14 @@ def parse_pin(repo):
     return m.group(1) if m else None
 
 
-def npm_latest(timeout=30):
-    """Latest hyperframes on npm, or None (npm missing/unreachable/garbage output).
-
-    None means currency is UNKNOWN — each caller decides what that implies
-    (preflight proceeds, the ritual hard-fails)."""
-    npm = shutil.which("npm")
-    if not npm:
-        return None
-    try:
-        out = subprocess.run([npm, "view", "hyperframes", "version"],
-                             capture_output=True, text=True, timeout=timeout).stdout.strip()
-    except (subprocess.TimeoutExpired, OSError):
-        return None
-    return out if re.fullmatch(r"[\d.]+", out) else None
-
-
-def semver(v):
-    return tuple(int(x) for x in v.split("."))
-
-
 def version_check(repo, mode):
-    """Pin drift (offline) + pin currency (registry).
+    """Pin drift (offline): config.yaml and the npx pin in the render scripts disagreeing
+    means the render does not run the version anyone reviewed — hard fail.
 
-    Drift: config.yaml and the npx pin in the render scripts disagreeing means the render
-    does not run the version anyone reviewed — hard fail, checked offline.
-
-    Currency (owner 2026-08-14, supersedes the 2026-07-29 'planning question' ruling): a
-    FULL render refuses to start while npm has a newer hyperframes than the pin, and the
-    unblock is `python3 scripts/pin_ritual.py` — the scripted A/B ritual that verifies and
-    bumps in ~10-25 min. Upstream ships ~1.6 releases/day; the old non-blocking warning let
-    the pin rot 26 versions in 2 weeks. Drafts skip the registry lookup entirely (iteration
-    speed — the answer would not block anyway), and npm being unreachable NEVER blocks a
-    render — offline means currency unknown, not stale.
+    Currency is NOT checked here (owner 26 Sep 26, replaces the 2026-08-14 full-render
+    block): a newer npm release must never stop a render mid-episode. Episode kickoff runs
+    `python3 scripts/pin_ritual.py --check-only` and bumps before the first render instead,
+    so one episode renders on one version end to end.
     """
     pinned = parse_pin(repo)
     if pinned is None:
