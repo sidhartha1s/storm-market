@@ -29,8 +29,9 @@ ffmpeg-made video and tone), no gitignored media, so it runs from any fresh work
     their overall RMS must agree within RMS_TOL; a silent render is drift, never a pass.
   - Video capture: clips/probe.webm mounted at 16 s with data-media-start 1, so capture
     must seek into it (0.8.72/0.8.77/0.8.78 changed "capture waits for seeking video").
-    The clip burns its own timecode; measure() records the per-frame luma of VIDEO_BOX over
-    VIDEO_WIN and compare() diffs it, and SSIM is also taken on that region alone.
+    measure() records the per-frame luma of VIDEO_TRACER (a strip the clip's sliding square
+    crosses at a known media time) over VIDEO_WIN and compare() diffs it; with the baseline
+    mp4 on disk, SSIM is also taken on VIDEO_BOX over VIDEO_WIN alone.
   - The WebGL probe's frame barcode is checked by the full-frame SSIM.
 
 Workers: RENDER_FLAGS use --workers 2, the production full-render path, which routes
