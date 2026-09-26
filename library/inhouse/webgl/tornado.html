@@ -186,7 +186,7 @@ function disc(o) {
       void main() {
         float q = vA + vRho * 5.0;
         float s = fbm(vec3(cos(q) * 2.5, sin(q) * 2.5, vRho * 4.0 + uSeed));
-        vec3 c = uCol * (0.6 + 0.8 * s) + uGlow * 0.08 * smoothstep(0.5, 1.0, vRho);
+        vec3 c = uCol * (0.6 + 0.8 * s) + uGlow * 0.16 * smoothstep(0.45, 1.0, vRho) * s;
         c = mix(c, uFog, (1.0 - exp(-length(vW - cameraPosition) * 0.004)) * 0.6);
         float alpha = uAlpha * smoothstep(1.0, 0.55 + 0.3 * s, vRho);
         gl_FragColor = vec4(c, alpha);
