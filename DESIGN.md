@@ -155,6 +155,11 @@ Content ID cannot be scanned offline — the protocol is layered:
    Content ID before publish. Wait for Checks to pass (+ a few hours soak — matches can lag),
    swap any claimed segment while still private, THEN flip public. Never publish blind.
 
+## Look: palette and type
+One palette and type file for the whole channel (colours, fonts, px tiers, TV-readability floor,
+CSS custom properties): `library/inhouse/snippets/tokens.md`. Swatch preview:
+`library/inhouse/snippets/brand-swatch.html`.
+
 ## Look: grain layer
 
 Every clip renders under a unified film layer: animated grain (SVG turbulence or canvas noise,

@@ -197,5 +197,23 @@
   ],
   "source_episode": "demo-mg-showcase g-tanker-throw",
   "file": "moves/demo.html"
+ },
+ {
+  "name": "webgl-tornado",
+  "kind": "template",
+  "title": "WebGL Tornado (Three.js funnel, seek-driven)",
+  "description": "Stylised funnel, wall cloud, debris and storm sky in Three.js, driven only by the paused GSAP timeline. No text: put labels on a HUD comp above it. Mount steps and CONFIG fields in webgl/README.md.",
+  "tags": [
+   "webgl",
+   "three.js",
+   "tornado",
+   "background",
+   "3d"
+  ],
+  "params": [
+   "CONFIG block: scheme, seed, funnelWidth, height, rotationSpeed, path, debrisDensity, duration, cameraMove"
+  ],
+  "source_episode": "demo-webgl-tornado 2026-09-26",
+  "file": "webgl/tornado.html"
  }
 ]
