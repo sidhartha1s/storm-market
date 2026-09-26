@@ -88,18 +88,48 @@ dots) · `#2a3644` (18 uses — diagram stroke/fill across `g-campus`, `g-engine
 Three tiers minimum in every designed card (unchanged gate rule: `graphics_qc` flags flat-type
 below 3 tiers with 4+ text nodes).
 
-| Tier | px range | Shipped floor | Example |
-|---|---|---|---|
-| Small | < 26 px | 19 px (`.srclab`) is the smallest shipped size — do not go smaller; a TV viewer at couch distance loses text under this | source label, stamp eyebrow (20 px), counter label (20 px) |
-| Mid | 26-51 px | — | serif sub (26-32 px), row value (30 px), quote (44 px) |
-| Big | >= 52 px | — | headline (52-66 px), lower-third location (52 px), stat-panel counter (84 px) |
-| Display | 150 px | fixed | Abril popfig date/figure |
+Per-role spec (verbatim, moved from `references/mg-quickref.md` — the one home now):
+Eyebrow Arial 700 22 #93a3b2 tracking 6 · headline Arial Black 52 #f2f5f8 · serif sub Georgia
+italic 26 #d8a13a · row value Arial 700 30 #dfe7ee tracking 1 · row label Arial 700 19 #93a3b2
+tracking 4 · counter Courier New 700 84 #e74c3c · counter label Arial 700 20 #c8d3e0 tracking 6 ·
+section header Arial 700 26 #93a3b2 tracking 8 · diagram label Arial 700 22 #93a3b2 tracking 3
+(angle labels take their guide's colour) · popfig 'AbrilFig'
+(`references/editing-patterns/fonts/AbrilFatface-Regular.ttf`) 150 px. Proper case, never
+all-lowercase.
 
-**TV-readability minimum: nothing under 19 px ships on a full-frame card, and headline-weight
-text stays at 52 px or above** — both are the values already shipping (ep-1974-super-outbreak:
-22, 36, 38, 58, 118, 120, 150 px), kept here as the floor so a builder never guesses smaller for a
-"cleaner" look. Large type and high contrast that read on a TV from the couch also read on a phone
-held at arm's length; the inverse fails on TV.
+**Measured px frequency** (`grep -oE "font-size:\s*[0-9]+px"` across every `compositions/*.html` +
+`index.html` in `episodes/ep-1974-super-outbreak`, the most recently shipped deep-lane episode —
+count of occurrences, not unique files):
+
+| px | count | px | count | px | count |
+|---|---|---|---|---|---|
+| 16 | 1 (named exception, see below) | 30 | 13 | 76 | 2 |
+| 19 | 35 | 36 | 1 | 84 | 5 |
+| 21 | 1 | 38 | 1 | 118 | 1 |
+| 22 | 33 | 40 | 2 | 120 | 2 |
+| 24 | 1 | 52 | 30 | 150 | 2 |
+| 26 | 31 | 58 | 1 | 260 | 1 (decorative background numeral, `g-f6.html` — not a card text tier) |
+| 28 | 3 | 60 | 1 | | |
+
+Measured tiers from the above: small 16-24 px (19 px is the mode — `.srclab`, stamp eyebrow,
+row label), mid 26-51 px (26 px and 30 px are the modes — section header/serif sub, row value),
+big 52-84 px (52 px is the mode — headline, lower-third, stat-panel counter at 84 px), display
+118-150 px (Abril popfig and large reveal numerals). 260 px is a single decorative watermark
+glyph, not a designed-card text tier, and is excluded from the ladder.
+
+**Named exception — 16 px cite card:** `g-cite-paper.html:27` (`.g-cite-paper-attribution`) ships
+at 16 px, below the 19 px floor stated in an earlier draft of this file. It is the attribution line
+under a 52 px italic claim and a 28 px eyebrow inside a beige cite card (high local contrast, dark
+text on light beige, not white-on-dark), so it reads at couch distance despite the smaller size;
+it is not a licence to go below 19 px on the standard dark-background small tier. Treat 19 px as
+the floor for `.srclab`/label/eyebrow-style small text on a dark card, and 16 px as the one
+allowed exception for cite-card attribution lines specifically.
+
+**TV-readability minimum: nothing under 19 px ships on a dark-card small tier (16 px is the one
+named cite-card exception above), and headline-weight text stays at 52 px or above** — both are
+values already shipping (ep-1974-super-outbreak measured above), kept here as the floor so a
+builder never guesses smaller for a "cleaner" look. Large type and high contrast that read on a TV
+from the couch also read on a phone held at arm's length; the inverse fails on TV.
 
 ## CSS custom properties
 Paste into an episode's `<style>` block (or a shared `:root` if the composition already has one):
