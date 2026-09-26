@@ -19,9 +19,7 @@ the media budget (media_budget.py) and the version pin. "Remember to run npm vie
 is the same class of instruction as "remember to cap your assets" — which survived
 twelve failed renders precisely because nothing checked it.
 """
-import os
 import re
-import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -29,7 +27,7 @@ from pathlib import Path
 import render_busy  # the busy check below reuses this, not a second process/name list
 
 
-# --- version helpers (shared: pin_ritual.py imports these) ---------------------
+# --- version helpers (shared: pin_ritual.py imports parse_pin) -----------------
 
 def parse_pin(repo):
     """The pinned hyperframes version from config.yaml, or None if the key is missing."""
