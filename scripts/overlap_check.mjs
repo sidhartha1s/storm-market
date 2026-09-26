@@ -13,6 +13,7 @@
 import { chromium, chromiumExecutable } from './playwright_env.mjs';
 import fs from 'fs';
 import path from 'path';
+import { hostCss, stageComp } from './stage_comp.mjs';
 
 const EXE = chromiumExecutable();
 const STEP = 0.5;
@@ -54,7 +55,7 @@ const normFact = (s) => {
 const LEAF_FN = `(el) => el.children.length === 0 ||
   [...el.children].every(k => /^(EM|B|I|STRONG|SUP|SUB)$/.test(k.tagName))`;
 
-const browser = await chromium.launch({ headless: true, executablePath: EXE });
+const browser = await chromium.launch({ headless: true, executablePath: EXE, args: ['--allow-file-access-from-files'] });
 const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
 await page.goto('file:///' + indexPath.replace(/\\/g, '/'));
 await page.waitForTimeout(600);
@@ -144,23 +145,11 @@ for (let i = 0; i < cards.length; i++) for (let j = i + 1; j < cards.length; j++
 // Comps are <template>-wrapped — loading the raw file renders NOTHING (the v2.0 false-negative
 // that let the AUG 23 collision ship). Stage template content into a bare gsap page, same as
 // graphics_qc.standalone().
-const TMP = path.join(epDir, '.qc-tmp');
-if (!fs.existsSync(TMP)) fs.mkdirSync(TMP, { recursive: true });
 // Host-style injection: hyperframes mounts comps INSIDE index.html's DOM, so the page stylesheet
 // applies to comp elements (17 Sep 26: host `.chip{bottom:300px}` stretched a comp chip into a 720 px
-// panel; every standalone gate passed). Staging must carry the host <style> blocks.
-const HOST_CSS = [...html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].map(x => x[1]).join('\n');
-const stage = (file) => {
-  const raw = fs.readFileSync(file, 'utf8');
-  const t = raw.match(/<template>([\s\S]*?)<\/template>/);
-  const body = t ? t[1] : raw;
-  const out = path.join(TMP, 'ov-' + path.basename(file));
-  fs.writeFileSync(out, `<!doctype html><html><head><meta charset="utf-8">
-<style>${HOST_CSS}</style>
-<style>html,body{margin:0;width:1920px;height:1080px;background:#111;overflow:hidden}</style>
-<script src="../gsap.min.js"></script></head><body>${body}</body></html>`, 'utf8');
-  return out;
-};
+// panel; every standalone gate passed). stage_comp.mjs carries the host <style> blocks.
+const HOST_CSS = hostCss(html);
+const stage = (file) => stageComp(epDir, file, HOST_CSS, 'ov-');
 for (const h of hosts) {
   const compPath = path.join(epDir, h.compSrc);
   if (!fs.existsSync(compPath)) { findings.add(`missing comp file: ${h.compSrc}`); continue; }

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>Move library demo: the roof panel (illustrative numbers)</title>
+<!--
+  moves-demo, 10.0 s, 1920x1080. Built only from library/inhouse/moves/moves.js to prove the moves compose.
+  Subject: a roof panel torn off by a gust and thrown 114 ft, measured against a 40 ft house. Numbers are
+  illustrative, not an event fact. Copying into an episode: vendor gsap + the three plugins next to index.html,
+  point the font url at the episode's fonts/ folder, and inline moves.js (library convention, as helpers.js).
+  WORLD (#w-world): K = 11 px/ft, ground y 800, panel start x 470 (roof slope), landing x 470 + 114 * 11 = 1724.
+  STACK: sky, flash, rig (bg 0.4 / world 1 / fg 1.4 / rain), finish (vignette, grain), HUD, black.
+  Text lives only on the HUD, outside the rig; the flight arc stays below the counter and payoff bands.
+-->
+<script src="../../gallery/gsap.min.js"></script>
+<script src="vendor/DrawSVGPlugin.min.js"></script><script src="vendor/CustomEase.min.js"></script><script src="vendor/SplitText.min.js"></script>
+<script src="moves.js"></script>
+<style>
+  @font-face { font-family: 'AbrilFig'; src: url('../../../episodes/demo-pin/fonts/AbrilFatface-Regular.ttf'); }
+  body { margin: 0; background: #000; }
+  #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070b; font-family: Arial, sans-serif; }
+  .full { position: absolute; inset: 0; }
+  .lyr { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+  svg { overflow: visible; }
+  #sky { background: linear-gradient(180deg, #03050a 0%, #070c14 40%, #16233a 74%, #0a0f16 100%); }
+  #flash { background: radial-gradient(ellipse at 60% 25%, rgba(170,196,230,0.55), rgba(120,150,190,0.12) 60%, rgba(0,0,0,0) 85%); opacity: 0; }
+  #pn-pos { position: absolute; left: 0; top: 0; width: 120px; height: 16px; filter: url(#mb); }
+  #pn-rot { position: absolute; inset: 0; transform-origin: 60px 8px; }
+  #pn-sq { position: absolute; inset: 0; transform-origin: 60px 16px; }
+  .t-lab { font-weight: 700; fill: #8fa3b5; font-size: 19px; letter-spacing: 1px; }
+  /* HUD: screen space, outside the camera rig */
+  #hdr { position: absolute; left: 96px; top: 70px; perspective: 600px; }
+  .eyebrow { font-weight: 700; font-size: 21px; letter-spacing: 5px; color: #8fa3b5; text-transform: uppercase; text-shadow: 0 2px 10px #000; }
+  .title { font-family: 'Arial Black', Arial, sans-serif; font-size: 54px; color: #eef2f6; margin-top: 10px; text-shadow: 0 4px 20px rgba(0,0,0,0.9); }
+  .pop { position: absolute; left: 0; width: 1920px; text-align: center; white-space: nowrap; }
+  .pop .big { display: inline-block; font-family: 'AbrilFig', Georgia, serif; line-height: 1; color: #d8121f;
+    text-shadow: 0 0 22px rgba(0,0,0,0.95), 0 0 70px rgba(150,0,0,0.5), 0 6px 26px rgba(0,0,0,0.9); }
+  .pop .sub { display: block; margin-top: 12px; font-weight: 700; font-size: 24px; letter-spacing: 3px; color: #c9d4de; text-shadow: 0 2px 12px #000; }
+  #gust { top: 150px; } #gust .big { font-size: 136px; }
+  #cnt { top: 70px; } #cnt .big { font-size: 112px; font-variant-numeric: tabular-nums; }
+  #pay { position: absolute; left: 0; width: 1920px; top: 236px; text-align: center; white-space: nowrap; perspective: 600px;
+    font-family: 'Arial Black', Arial, sans-serif; font-size: 58px; color: #eef2f6; text-shadow: 0 4px 24px rgba(0,0,0,0.95); }
+  #pay .hot { font-family: 'AbrilFig', Georgia, serif; color: #d8121f; font-size: 72px; }
+  #credit { position: absolute; left: 96px; top: 1000px; font-size: 19px; font-weight: 700; color: #8fa3b5; letter-spacing: 1.5px; text-shadow: 0 2px 10px #000; }
+  #grain { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+  #black { background: #000; opacity: 0; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="moves-demo" data-start="0" data-width="1920" data-height="1080" data-duration="10" data-fps="30">
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <filter id="mb" x="-60%" y="-200%" width="220%" height="500%"><feGaussianBlur id="mb-b" stdDeviation="0 0"/></filter>
+      <clipPath id="arcclip"><rect id="arcclip-r" x="0" y="0" width="0" height="1080"/></clipPath>
+    </defs>
+  </svg>
+
+  <div id="sky" class="full"></div>
+  <div id="flash" class="full"></div>
+
+  <div id="rig" class="full">
+    <div class="lyr" id="w-bg">
+      <svg width="1920" height="1080" viewBox="0 0 1920 1080">
+        <path d="M-600,60 H2600 V160 C2000,200 1400,170 900,195 C600,210 300,185 -600,200 Z" fill="#06090e"/>
+        <path d="M-600,760 V736 C-420,700 -300,720 -180,712 C-60,690 60,716 200,706 C320,684 420,712 560,704 C700,680 820,714 980,702 C1120,684 1240,716 1400,704 C1560,682 1700,714 1860,700 C2040,686 2300,712 2600,704 V760 Z" fill="#0b1118"/>
+      </svg>
+    </div>
+
+    <div class="lyr" id="w-world">
+      <svg width="1920" height="1080" viewBox="0 0 1920 1080" style="position:absolute;left:0;top:0">
+        <rect x="-800" y="800" width="3600" height="700" fill="#0a0f15"/>
+        <line x1="-800" y1="800" x2="2800" y2="800" stroke="#4f6780" stroke-width="3"/>
+        <!-- the house: 40 ft wide (440 px) -->
+        <rect x="140" y="640" width="440" height="160" fill="#141d28" stroke="#8fa3b5" stroke-width="2.5"/>
+        <polygon points="116,642 360,520 604,642" fill="#1b2633" stroke="#8fa3b5" stroke-width="2.5"/>
+        <rect x="200" y="690" width="70" height="56" fill="#0d131a" stroke="#4f6780" stroke-width="2"/>
+        <rect x="450" y="690" width="70" height="56" fill="#0d131a" stroke="#4f6780" stroke-width="2"/>
+        <rect x="325" y="720" width="70" height="80" fill="#0d131a" stroke="#4f6780" stroke-width="2"/>
+        <!-- house-width bracket -->
+        <path id="bracket" d="M140,500 V480 H580 V500" stroke="#eef2f6" stroke-width="2.5" fill="none"/>
+        <text id="bracket-lab" x="360" y="466" text-anchor="middle" font-weight="700" font-size="21" fill="#eef2f6" letter-spacing="1.5">ONE HOUSE · 40 FT</text>
+        <!-- ruler, 0 to 120 ft from the roof -->
+        <path id="ruler" d="M470,832 H1790" stroke="#8fa3b5" stroke-width="2" fill="none"/>
+        <path id="ticks" d="M470,824 V842 M580,828 V836 M690,828 V836 M800,828 V836 M910,824 V842 M1020,828 V836 M1130,828 V836 M1240,828 V836 M1350,824 V842 M1460,828 V836 M1570,828 V836 M1680,828 V836 M1790,824 V842" stroke="#8fa3b5" stroke-width="2" fill="none"/>
+        <g id="tlabs">
+          <text class="t-lab" x="470" y="866" text-anchor="middle">Roof</text>
+          <text class="t-lab" x="910" y="866" text-anchor="middle">40</text>
+          <text class="t-lab" x="1350" y="866" text-anchor="middle">80</text>
+          <text class="t-lab" x="1790" y="866" text-anchor="middle">120 ft</text>
+        </g>
+        <g id="bands"></g>
+        <!-- flight trail: same parabola as the throw, revealed by the clip rect -->
+        <path id="trail-glow" fill="none" stroke="#e8b75a" stroke-width="9" opacity="0.14" clip-path="url(#arcclip)"/>
+        <path id="trail-dash" fill="none" stroke="#e8b75a" stroke-width="3" stroke-dasharray="10 12" stroke-linecap="round" opacity="0.9" clip-path="url(#arcclip)"/>
+        <ellipse id="ring" cx="1724" cy="800" rx="160" ry="16" fill="none" stroke="#e8d2a8" stroke-width="3" opacity="0"/>
+      </svg>
+      <div id="pn-ghosts"></div>
+      <div id="pn-pos"><div id="pn-rot"><div id="pn-sq">
+        <svg id="pn-art" width="120" height="16" viewBox="0 0 120 16">
+          <rect x="1" y="1" width="118" height="14" rx="2" fill="#6b7784" stroke="#dfe7ee" stroke-width="2"/>
+          <path d="M20,2 V14 M40,2 V14 M60,2 V14 M80,2 V14 M100,2 V14" stroke="#48525c" stroke-width="2"/>
+        </svg>
+      </div></div></div>
+      <div id="dust"></div>
+    </div>
+
+    <div class="lyr" id="w-fg">
+      <svg width="1920" height="1080" viewBox="0 0 1920 1080">
+        <path fill="#020305" d="M-900,1200 V1030 L-780,1004 L-640,1032 L-500,1008 L-360,1036 L-220,1002 L-80,1034 L60,1010 L200,1038 L340,1006 L480,1034 L620,1012 L760,1040 L900,1008 L1040,1036 L1180,1010 L1320,1040 L1460,1006 L1600,1034 L1740,1012 L1880,1038 L2020,1008 L2160,1034 L2300,1010 L2440,1036 L2600,1012 V1200 Z"/>
+      </svg>
+    </div>
+
+    <div class="lyr" id="w-rain"></div>
+  </div>
+
+  <div id="vig" class="full"></div>
+  <canvas id="grain" width="960" height="540"></canvas>
+
+  <div id="hud">
+    <div id="hdr"><div class="eyebrow">Move library demo · illustrative numbers</div><div class="title">The roof panel</div></div>
+    <div class="pop" id="gust"><span class="big">90 mph</span><span class="sub">GUST AT THE ROOFLINE</span></div>
+    <div class="pop" id="cnt"><span class="big" id="cnt-v">0 ft</span></div>
+    <div id="pay">Nearly <span class="hot">three</span> house widths</div>
+    <div id="credit">Built from moves.js · cameraRig, arcThrow, counter, bandCompare</div>
+  </div>
+
+  <div id="black" class="full"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  gsap.registerPlugin(DrawSVGPlugin, CustomEase, SplitText);
+  const M = window.MOVES, $ = (id) => document.getElementById(id);
+  const tl = gsap.timeline({ paused: true });
+  /* master clock: a literal whole-window beat for beat_density; honest only because rain, drift and grain move every frame */
+  tl.to({}, { duration: 10 }, 0);
+
+  /* camera, weather, finish */
+  const rig = M.cameraRig(tl, { shake: $('rig'), layers: [[$('w-bg'), 0.4], [$('w-world'), 1], [$('w-fg'), 1.4]] }, { fx: 430, fy: 610, z: 1.9 });
+  M.rain(tl, $('w-rain'), { seed: 911, n: 60 });
+  M.finishLayer(tl, { grain: $('grain'), vig: $('vig'), dof: [[$('w-bg'), 2.6], [$('w-fg'), 5]] }, { seed: 99 });
+
+  /* setup: header, credit, storm */
+  M.kineticText(tl, $('hdr'), 0.2, { exitAt: 2.6, stagger: 0.06, rig });
+  M.kineticText(tl, $('credit'), 0.6, { exitAt: 9.3, stagger: 0.04, rig });
+  M.camMove(tl, rig, 0, { fx: 450, fy: 600, z: 2.05, duration: 2.9, ease: 'sine.inOut' });
+  M.lightning(tl, $('flash'), 1.2, { flickers: 2 });
+  M.shake(tl, rig, 1.25, { amp: 6, hits: 4, duration: 0.35, seed: 3 });
+  M.slamFig(tl, $('gust'), 1.7, { hold: 0.75, rig });
+  M.cleanExit(tl, { hud: [$('hdr')] }, 2.6);
+
+  /* throw: panel leaves the roof slope (26.6 deg) and lands flat after 1.4 turns */
+  const A = { x0: 470, y0: 567, x1: 1724, y1: 792, apex: 220, duration: 1.6, r0: 26.6, spin: 515, ox: 60, oy: 8 };
+  $('trail-glow').setAttribute('d', M.arcPath(A));
+  $('trail-dash').setAttribute('d', M.arcPath(A));
+  const th = M.arcThrow(tl, { pos: $('pn-pos'), rot: $('pn-rot'), sq: $('pn-sq'), art: $('pn-art'), ghostWrap: $('pn-ghosts'), blur: $('mb-b'), trailClip: $('arcclip-r') }, 3.1, A);
+  tl.to(th.st, { r: 3, duration: 0.18, ease: 'sine.inOut', yoyo: true, repeat: 7 }, 0.4);
+  M.camMove(tl, rig, 3.0, { fx: 1010, fy: 560, z: 1.0, duration: 1.7 });
+  M.counter(tl, $('cnt'), 3.15, { driver: th.fly, to: 114, format: (v) => Math.floor(v) + ' ft', final: '114 ft', text: $('cnt-v'), punchAt: 4.7, rig });
+
+  /* landing at 4.7 */
+  M.shake(tl, rig, 4.7, { amp: 22, seed: 7 });
+  M.dustPuff(tl, $('dust'), 4.7, { x: 1724, y: 796, n: 26 });
+  M.debrisBurst(tl, $('dust'), 4.7, { x: 1724, y: 796, n: 12 });
+  M.impactRing(tl, $('ring'), 4.7);
+
+  /* measure: house bracket, ruler, three house-width bands */
+  M.camMove(tl, rig, 5.0, { fx: 1020, fy: 600, z: 1.02, duration: 4.2, ease: 'sine.inOut' });
+  M.measureDraw(tl, [$('bracket')], 5.1, { duration: 0.5, labels: $('bracket-lab'), labelDelay: 0.3 });
+  M.measureDraw(tl, [$('ruler'), $('ticks')], 5.5, { labels: $('tlabs') });
+  M.bandCompare(tl, $('bands'), 6.3, { x0: 470, y: 888, unit: 440, count: 3 });
+
+  /* payoff, then exit */
+  M.kineticText(tl, $('pay'), 7.2, { exitAt: 9.3, rig });
+  M.cleanExit(tl, { hud: [$('pay'), $('cnt'), $('credit')], rig, black: $('black') }, 9.3, { push: { fx: 1500, fy: 700, z: 1.5 } });
+
+  M.renderNow(tl);
+  window.__timelines['moves-demo'] = tl;
+})();
+</script>
+</body>
+</html>

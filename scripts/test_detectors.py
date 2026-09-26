@@ -110,9 +110,9 @@ def _stage_ep(files):
     return ep
 
 
-def old_rev(rel_path, tmp_name):
+def old_rev(rel_path, tmp_name, rev='ad3c9871'):
     out = S / tmp_name
-    out.write_text(subprocess.run(['git', 'show', f'ad3c9871:scripts/{rel_path}'],
+    out.write_text(subprocess.run(['git', 'show', f'{rev}:scripts/{rel_path}'],
                                    cwd=S.parent, capture_output=True, text=True).stdout, encoding='utf-8')
     return out
 
@@ -159,6 +159,34 @@ assert r_old.returncode == 0 and 'dup-fact' not in r_old.stdout, \
     f'old code should have missed both (suppressEvents seek + same-comp dup) but got: {r_old.stdout}'
 shutil.rmtree(ep, ignore_errors=True)
 print('overlap_check self-check PASS (suppressEvents seek, same-comp + overlay dup-fact)')
+
+# Shared staging (stage_comp.mjs): a comp whose timeline comes from a root-relative script
+# (`vendor/x.js`, the Three.js convention) must register in overlap_check and occlusion_check the
+# same way it does in graphics_qc. Before 26 Sep 26 both staged without <base href="../">, so
+# every WebGL comp failed "comp timeline not registered" (MG eval 2).
+REL_FILES = {
+    'index.html':
+        '<div id="host-g-rel" data-composition-id="g-rel" data-composition-src="compositions/g-rel.html" '
+        'data-start="0" data-duration="3" data-track-index="2" data-width="1920" data-height="1080"></div>\n',
+    'vendor/rel.js':
+        "window.__timelines = window.__timelines || {};\n"
+        "window.__timelines['g-rel'] = gsap.timeline({ paused: true }).to('#g-rel-lbl', { x: 100, duration: 3 }, 0);\n",
+    'compositions/g-rel.html':
+        '<!doctype html><html><head><meta charset="UTF-8"></head><body><template>\n'
+        '<div id="root" style="position:absolute;inset:0">\n'
+        '  <span id="g-rel-lbl" style="position:absolute;left:200px;top:200px;font-size:40px;color:#fff">Label</span>\n'
+        '</div>\n<script src="vendor/rel.js"></script>\n</template></body></html>\n',
+}
+ep = _stage_ep(REL_FILES)
+r = subprocess.run(['node', str(S / 'overlap_check.mjs'), str(ep)], capture_output=True, text=True)
+assert 'OVERLAP CHECK v2' in r.stdout and 'not registered' not in r.stdout, r.stdout + r.stderr
+old_ov = old_rev('overlap_check.mjs', '_old_overlap_rel_tmp.mjs', 'f3a6fece')
+r_old = subprocess.run(['node', str(old_ov), str(ep)], capture_output=True, text=True)
+old_ov.unlink()
+assert 'comp timeline not registered when staged: g-rel' in r_old.stdout, \
+    f'old staging should have missed the root-relative script but got: {r_old.stdout}'
+shutil.rmtree(ep, ignore_errors=True)
+print('stage_comp self-check PASS (root-relative comp scripts register in overlap_check)')
 
 # PR #88 review: g-scale-hook's TOWNS[] lists "TANNER · AL" twice (Tanner was hit by two
 # separate F5s, distinct times) — a bare repeated place-name label is not a duplicate FACT.
@@ -236,6 +264,77 @@ r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output
 shutil.rmtree(ep, ignore_errors=True)
 assert '[idle]' not in r.stdout, r.stdout
 print('graphics_qc self-check PASS (short-duration vs host window, stillness one number: 4 s hard)')
+
+# A full-frame canvas (Three.js/WebGL) is a rendered background the DOM cannot read. Before
+# 26 Sep 26 it counted as "flat background", which with 1 type tier and few DOM elements made every
+# WebGL comp 'undesigned' (MG eval 2). Old code: undesigned; new code: not.
+CANVAS_FILES = {
+    'index.html':
+        '<div id="host-g-cv" data-composition-id="g-cv" data-composition-src="compositions/g-cv.html" '
+        'data-start="0" data-duration="3" data-track-index="2" data-width="1920" data-height="1080"></div>\n',
+    'compositions/g-cv.html':
+        '<!doctype html><html><head><meta charset="UTF-8"></head><body><template>\n'
+        '<div id="root" style="position:absolute;inset:0;background:#000">\n'
+        '  <canvas id="g-cv-gl" width="1920" height="1080" style="position:absolute;left:0;top:0"></canvas>\n'
+        '  <span id="g-cv-lbl" style="position:absolute;left:300px;top:300px;font-size:40px;color:#fff">EF5</span>\n'
+        '</div>\n<script>\nwindow.__timelines = window.__timelines || {};\n'
+        'const tl = gsap.timeline({ paused: true });\n'
+        "tl.fromTo('#g-cv-lbl', { x: 0 }, { x: 300, duration: 3, ease: 'power3.out' }, 0);\n"
+        "window.__timelines['g-cv'] = tl;\n</script>\n</template></body></html>\n",
+}
+ep = _stage_ep(CANVAS_FILES)
+r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
+assert '[graphics_qc]' in r.stdout and 'undesigned' not in r.stdout, r.stdout + r.stderr
+old_gq = old_rev('graphics_qc.mjs', '_old_gqc_canvas_tmp.mjs', 'f3a6fece')
+r_old = subprocess.run(['node', str(old_gq), str(ep)], capture_output=True, text=True)
+old_gq.unlink()
+assert 'ERROR [undesigned] flat background' in r_old.stdout, f'old code should flag the canvas comp: {r_old.stdout}'
+shutil.rmtree(ep, ignore_errors=True)
+print('graphics_qc self-check PASS (a full-frame canvas counts as a designed background)')
+
+# The Three.js template animates by redrawing its canvas from a timeline-level onUpdate; the only
+# GSAP child is a padding tween on {}. Old code: 'fade-only' (0 kinetic tweens) and a frozen
+# window; new code: the onUpdate renderer is one continuous kinetic span.
+DRIVEN_FILES = {
+    'index.html': CANVAS_FILES['index.html'],
+    'compositions/g-cv.html':
+        '<!doctype html><html><head><meta charset="UTF-8"></head><body><template>\n'
+        '<div id="root" style="position:absolute;inset:0;background:#000">\n'
+        '  <canvas id="g-cv-gl" width="1920" height="1080" style="position:absolute;left:0;top:0"></canvas>\n'
+        '</div>\n<script>\nwindow.__timelines = window.__timelines || {};\n'
+        'const tl = gsap.timeline({ paused: true });\n'
+        "const cx = document.getElementById('g-cv-gl').getContext('2d');\n"
+        "tl.eventCallback('onUpdate', () => { cx.fillStyle = '#123'; cx.fillRect(0, 0, 1920, 1080); "
+        "cx.fillStyle = '#fff'; cx.fillRect(200 + tl.time() * 300, 400, 80, 80); });\n"
+        "tl.to({}, { duration: 3 }, 0);\nwindow.__timelines['g-cv'] = tl;\n</script>\n</template></body></html>\n",
+}
+ep = _stage_ep(DRIVEN_FILES)
+r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
+assert '[graphics_qc]' in r.stdout and 'fade-only' not in r.stdout and '[idle]' not in r.stdout, r.stdout + r.stderr
+old_gq = old_rev('graphics_qc.mjs', '_old_gqc_canvas_tmp.mjs', 'f3a6fece')
+r_old = subprocess.run(['node', str(old_gq), str(ep)], capture_output=True, text=True)
+old_gq.unlink()
+assert 'ERROR [fade-only]' in r_old.stdout, f'old code should call the canvas renderer fade-only: {r_old.stdout}'
+shutil.rmtree(ep, ignore_errors=True)
+print('graphics_qc self-check PASS (an onUpdate canvas renderer counts as continuous motion)')
+
+# Negatives: both relaxations need a canvas covering a quarter of the frame, and the kinetic span
+# also needs the timeline onUpdate. A 100 px canvas or a missing onUpdate keeps the old verdicts.
+small = lambda s: s.replace('width="1920" height="1080"', 'width="100" height="100"')
+cv = DRIVEN_FILES['compositions/g-cv.html']
+cut = cv.index("tl.eventCallback('onUpdate'")
+no_update = cv[:cut] + cv[cv.index('\n', cut) + 1:]
+for files, want, why in (
+    ({**CANVAS_FILES, 'compositions/g-cv.html': small(CANVAS_FILES['compositions/g-cv.html'])},
+     'ERROR [undesigned] flat background', 'a 100 px canvas is not a designed background'),
+    ({**DRIVEN_FILES, 'compositions/g-cv.html': small(cv)}, 'ERROR [fade-only]', 'a 100 px canvas excuses no stillness'),
+    ({**DRIVEN_FILES, 'compositions/g-cv.html': no_update}, 'ERROR [fade-only]', 'a canvas without onUpdate is still'),
+):
+    ep = _stage_ep(files)
+    r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
+    shutil.rmtree(ep, ignore_errors=True)
+    assert want in r.stdout, f'{why}: {r.stdout + r.stderr}'
+print('graphics_qc self-check PASS (canvas relaxations need a quarter-frame canvas; the span needs onUpdate)')
 
 # ---------------------------------------------------------------- settle frames for the vision pass
 # The old reader sampled every 3 s from the comp start, so frame 1 was always mid-reveal. The frames

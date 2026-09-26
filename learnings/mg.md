@@ -2,6 +2,21 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 2026-09-26 - MG eval 2 (El Reno "widest tornado", Three.js, Opus builders): the small brief won, house docs lost
+- **The owner's ranking:**
+  1. B, small brief only (~21 min build).
+  2. C, quick-ref + move library + style frames (29.5 min).
+  3. A, full house docs (35 min). Owner: "when the camera moves up, it sucks" and "the house docs was really bad though. That would be like a junior level thing."
+  More documentation made the output slower AND worse.
+- **The blind Opus judge and the gates both disagreed with the owner.** The judge ranked C 38 > A 34 > B 33 (/50). The gates passed B only 1/4. So the owner picks; a judge score is a note, never a gate (eval use only).
+- **The gates misread WebGL.** B failed:
+  - graphics_qc `undesigned`, because it reads a Three.js canvas as a flat background with too few type tiers;
+  - overlap_check, which stages comps without `<base href>`, so every Three.js comp fails "timeline not registered";
+  - beat_density.
+  None of these is a build defect. Fix them in the gates before the next WebGL build.
+- **Stillness is about drift, not new information** (owner). A hold that waits for the narrator's impact point is fine if the elements float slightly; see `references/mg-quickref.md` "Motion and exits".
+- **Builder slip:** all three El Reno builds put the MG host on `data-track-index="1"`, which sweep treats as the media track ("media files exist" and "still over 6 s" failures). MG hosts go on track 2 or higher.
+
 ## 2026-09-22 - ep-1974 draft 2 review: narrator opens the video, banned audio is gated by hash, holds need a reason
 - **Why the plane graphic failed in draft 1 and passed in draft 2.** An SVG element carried a static `transform="translate()"`
   attribute AND a GSAP x/y tween. GSAP takes over the transform and discards the attribute, so the icon flew from 0,0 while

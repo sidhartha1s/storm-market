@@ -180,6 +180,25 @@
   "file": "examples/joplin-stat-panel.html"
  },
  {
+  "name": "moves-demo",
+  "kind": "example",
+  "title": "Move library demo (roof panel throw)",
+  "description": "10 s worked example of moves.js: camera rig, arc throw, counter driven by the flight, shake, dust, measure-draw, clean exit. Copy moves.js inline; README lists every move.",
+  "tags": [
+   "example",
+   "moves",
+   "camera",
+   "arc-throw",
+   "counter",
+   "physics"
+  ],
+  "params": [
+   "see moves/README.md for each move's opts"
+  ],
+  "source_episode": "demo-mg-showcase g-tanker-throw",
+  "file": "moves/demo.html"
+ },
+ {
   "name": "webgl-tornado",
   "kind": "template",
   "title": "WebGL Tornado (Three.js funnel, seek-driven)",

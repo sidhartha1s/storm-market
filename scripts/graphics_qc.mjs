@@ -5,7 +5,8 @@
  * Exit 0 = pass. Exit 1 = defects found (printed, grouped by composition). */
 import { chromium, chromiumExecutable } from './playwright_env.mjs';
 import { readFileSync, readdirSync, writeFileSync, existsSync, mkdirSync } from 'fs';
-import { join, resolve, basename } from 'path';
+import { join, resolve } from 'path';
+import { hostCss, stageComp } from './stage_comp.mjs';
 
 const EXECUTABLE = chromiumExecutable();
 const ep = resolve(process.argv[2] || 'episodes/ep3-tristate');
@@ -67,6 +68,14 @@ const PROBE = `(() => {
   if (!tl) return { error: 'no timeline registered' };
   R.id = key;
   R.duration = tl.duration();
+  // a timeline-level onUpdate that redraws a canvas (the Three.js/WebGL pattern) moves every frame
+  // though no DOM tween does; count it as one continuous kinetic span (MG eval 3, 26 Sep 26).
+  // The canvas must cover a quarter of the frame, as for the designed-background rule: a grain
+  // tile beside a counter onUpdate must not excuse a frozen comp.
+  const bigCanvas = [...document.querySelectorAll('canvas')].some(c => {
+    const r = c.getBoundingClientRect(); return r.width * r.height >= 0.25 * 1920 * 1080; });
+  if (typeof tl.eventCallback('onUpdate') === 'function' && bigCanvas)
+    R.tweens.push({ start: 0, dur: R.duration, props: ['canvas-render'], ease: 'none', target: 'canvas', hide: false });
   for (const t of tl.getChildren(true, true, false)) {
     const st = t.startTime();
     /* totalDuration(), not duration(): a repeating tween (ambient loops) reports its ONE-cycle
@@ -184,6 +193,9 @@ const MEASURE = `((t) => {
     // a gradient OR a frosted-glass panel (backdrop-filter blur over footage) is a designed background —
     // the glass cards were flagged 'undesigned' for two episodes on this line alone (2026-09-11)
     if (/gradient/.test(cs.backgroundImage) || /blur/.test(cs.backdropFilter || cs.webkitBackdropFilter || '')) grad = true;
+    // a canvas covering a quarter of the frame or more (Three.js/WebGL) is a rendered background the DOM
+    // cannot read; without this every WebGL comp read as "flat background" (MG eval 2, 26 Sep 26)
+    if (el.tagName === 'CANVAS' && r4.width * r4.height >= 0.25 * 1920 * 1080) grad = true;
   }
   out.elements = painted; out.gradient = grad;
   out.textNodes = out.fonts.length;
@@ -197,31 +209,12 @@ const MEASURE = `((t) => {
 // applies to comp elements (17 Sep 26: host `.chip{bottom:300px}` stretched a comp chip into a 720 px
 // panel; every standalone gate passed). Staging must carry the host <style> blocks.
 const INDEX_HTML = readFileSync(join(ep, 'index.html'), 'utf8');
-const HOST_CSS = [...INDEX_HTML.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].map(x => x[1]).join('\n');
+const HOST_CSS = hostCss(INDEX_HTML);
 // per-composition host window: the duration the master timeline mounts it for (assets-comps-05)
 const HOSTS = {};
 for (const m of INDEX_HTML.matchAll(/<[a-z]+\b[^>]*\bdata-composition-src="compositions\/([^"]+)\.html"[^>]*>/g)) {
   const dur = parseFloat((/\bdata-duration="([\d.]+)"/.exec(m[0]) || [])[1]);
   if (!isNaN(dur)) HOSTS[m[1]] = Math.max(HOSTS[m[1]] || 0, dur);
-}
-function standalone(file) {
-  const raw = readFileSync(file, 'utf8');
-  const m = raw.match(/<template>([\s\S]*?)<\/template>/);
-  let body = m ? m[1] : raw;
-  // Comps use two asset-path conventions: `media/x` (authored assuming a mount at episode root,
-  // like hyperframes shows it) and `../media/x` (authored assuming the file sits one level down,
-  // like compositions/ does). .qc-tmp/ sits at that same one-level depth, so <base href="../">
-  // points every relative url at the episode root; the `../` prefix is then stripped the same
-  // way freeze_scan.mjs does it, so BOTH conventions land on episode-root urls instead of one
-  // of them 404ing depending on which convention the composer used (qc-gates-08).
-  body = body.replace(/(url\(\s*['"]?|\b(?:src|href)=["'])\.\.\//g, '$1');
-  const html = `<!doctype html><html><head><meta charset="utf-8"><base href="../">
-<style>${HOST_CSS}</style>
-<style>html,body{margin:0;width:1920px;height:1080px;background:#111;overflow:hidden}</style>
-<script src="gsap.min.js"></script></head><body>${body}</body></html>`;
-  const out = join(TMP, basename(file));
-  writeFileSync(out, html, 'utf8');
-  return out;
 }
 
 const browser = await chromium.launch({ executablePath: EXECUTABLE, args: ['--allow-file-access-from-files'] });
@@ -234,7 +227,7 @@ if (!files.length) { console.error('[graphics_qc] no compositions/ dir — graph
 
 for (const f of files) {
   const name = f.replace('.html', '');
-  const url = 'file:///' + standalone(join(compDir, f)).replace(/\\/g, '/');
+  const url = 'file:///' + stageComp(ep, join(compDir, f), HOST_CSS).replace(/\\/g, '/');
   await page.goto(url, { waitUntil: 'load' });
   await page.waitForTimeout(120);
   const probe = await page.evaluate(PROBE);
@@ -252,7 +245,7 @@ for (const f of files) {
   FRAMES[name] = settleFrames(probe.tweens, hostDur ?? probe.duration);
 
   /* --- motion vocabulary --- */
-  const kinetic = probe.tweens.filter(t => t.props.some(p => ['scale','scaleX','scaleY','x','y','rotation','width','strokeDashoffset','attr'].includes(p)));
+  const kinetic = probe.tweens.filter(t => t.props.some(p => ['scale','scaleX','scaleY','x','y','rotation','width','strokeDashoffset','attr','canvas-render'].includes(p)));
   const reveals = probe.tweens.filter(t => t.props.some(p => ['autoAlpha','opacity'].includes(p)));
   if (kinetic.length === 0) add(name, 'fade-only', `${reveals.length} fades, 0 kinetic tweens — mg-quickref Motion`);
   else if (reveals.length > 2 && kinetic.length < reveals.length / 2)

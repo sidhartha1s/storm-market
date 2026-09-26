@@ -4,6 +4,7 @@
 import { chromium, chromiumExecutable } from './playwright_env.mjs';
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { hostCss } from './stage_comp.mjs';
 
 const EXECUTABLE = chromiumExecutable();
 const ep = process.argv[2];
@@ -13,7 +14,7 @@ const tmp = join(ep, '_blank_tmp.html');
 // Host-style injection: hyperframes mounts comps INSIDE index.html's DOM, so the page stylesheet
 // applies to comp elements (17 Sep 26: host `.chip{bottom:300px}` stretched a comp chip into a 720 px
 // panel; every standalone gate passed). Staging must carry the host <style> blocks.
-const HOST_CSS = [...readFileSync(join(ep, 'index.html'), 'utf8').matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].map(x => x[1]).join('\n');
+const HOST_CSS = hostCss(readFileSync(join(ep, 'index.html'), 'utf8'));
 
 const browser = await chromium.launch({ executablePath: EXECUTABLE, args: ['--allow-file-access-from-files'] });
 const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
