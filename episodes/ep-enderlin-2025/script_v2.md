@@ -501,7 +501,14 @@ and most tornadoes never cross a train. El Reno had radar and open fields, and i
 In twenty twenty six, a tornado at Enid, Oklahoma, landed in the same argument over whether it reached EF five.
 `[verify: Enid 2026 EF5 debate and its status as of the script date]` The ratings matter past any one town, because
 they are the data scientists use to ask whether violent tornadoes are becoming rarer. That is the question Lyza's study
-put to the twelve years, and the Enderlin rating ended the gap without settling it.
+put to the twelve years, and the Enderlin rating ended the gap without settling it. If the way surveys rate storms
+shifted in two thousand seven, then the counts before and after that year cannot be compared straight across.
+
+**Picture:** the tanker arc from A4 replays small in a corner of the survey b-roll · the Miller citation card returns.
+
+What Enderlin did change is the toolkit. The weather service has now used a debris flight to rate a tornado, and
+Miller called it a tool for future assessments. The next time a survey finds something large thrown far from where it
+stood, there is a published way to turn that distance into a wind speed.
 
 **Picture:** PD NWS warning graphic (polygon over a county map) · then the survey b-roll, a team walking at dawn.
 
