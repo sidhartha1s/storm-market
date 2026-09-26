@@ -298,7 +298,9 @@ higher share of lives than daytime ones. `[verify: Ashley, Krmenec and Schwantes
 **Picture:** master map: the rail line pulses south of town · NWS PD photo of tipped grain cars (credit checked) ·
 popfig "33 Cars".
 
-South of Enderlin, the path crossed a rail line where freight cars stood on the tracks.
+Enderlin began as a railroad town, and the story told about its name is that it marked the end of the line.
+`[verify: Enderlin founded as a railroad division point; the "end of the line" name story]` South of Enderlin, the
+path crossed a rail line where freight cars stood on the tracks.
 `[verify: the cars were standing, not a moving train; and the strike order rail, river, Highway 46, Cass County farmsteads, from the NWS survey narrative]`
 When the survey team got there, thirty three cars were off the rails. Nineteen were grain cars, still loaded, and
 fourteen were empty tanker cars. A loaded grain car like those weighs close to three hundred thousand pounds.
