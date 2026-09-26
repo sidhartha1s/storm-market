@@ -6,7 +6,7 @@
 import { chromium, chromiumExecutable } from './playwright_env.mjs';
 import { readFileSync, readdirSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join, resolve } from 'path';
-import { hostCss, stageComp } from './stage_comp.mjs';
+import { CANVAS_RENDERER, hostCss, stageComp } from './stage_comp.mjs';
 
 const EXECUTABLE = chromiumExecutable();
 const ep = resolve(process.argv[2] || 'episodes/ep3-tristate');
