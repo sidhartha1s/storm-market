@@ -132,9 +132,11 @@ over open section roads · a stamp "EF5" lands with a date "June 2013", then fli
 
 That ceiling is where El Reno's number came from. `[loop L1 closes]` El Reno came down on May thirty first, twenty
 thirteen, eleven days after the last EF five. A mobile radar truck from the University of Oklahoma measured winds
-close to three hundred miles an hour inside it. For almost three months, the weather service listed it as an EF five,
-based on that radar. Then, that August, they took it back down to EF three. The rating goes by damage, and a radar
-reading is not damage. Across most of its path, El Reno crossed open fields with little on them that could prove more.
+of nearly three hundred miles an hour inside it. For almost three months, the weather service listed it as an EF
+five, based on that radar. Then, that August, they took it back down to EF three. The rating goes by damage, and a
+radar reading is not damage. The wind speeds on the scale are a specific thing, a three second gust about thirty
+three feet above the ground. Radar measures wind higher up and over a bigger volume of air, so the two numbers do not
+line up. `[verify: EF scale speeds are 3-second gusts at 10 m (33 ft); mobile radar samples above that height]` Across most of its path, El Reno crossed open fields with little on them that could prove more.
 `[verify: El Reno 2013, University of Oklahoma RaXPol winds about 295 to 302 mph; NWS Norman listed EF5 on 4 Jun 2013 and revised to EF3 on 30 Aug 2013; path mostly open country]`
 
 So El Reno went from EF five down to EF three, and twelve years later Enderlin went the other way. Enderlin had the
