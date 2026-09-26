@@ -128,19 +128,23 @@ with tempfile.TemporaryDirectory() as d:
     check("metadata.md: exit 1", rc == 1, f"rc={rc}")
     check("metadata.md: hit reported against metadata.md", f"{ep_meta / 'metadata.md'}:" in out, out)
 
-    # 8. a composition HTML carrying a hard word (mirrors ep-1974's "330 KILLED" popfig) fails
+    # 8. a composition HTML carrying a hard word (mirrors ep-1974's "330 KILLED" popfig) fails.
+    #    Line 4 (inside <script>) also says "killed" in a JS string — must NOT be what triggers
+    #    it; only line 6 (the visible span) may produce a hit.
     ep_comp = make_episode(
         root, "ep-comp", edit_script_body="### A1-S1 — narration\n> A calm evening.\n",
         composition_html=(
-            '<!DOCTYPE html><html><body><template><script>var x = "killed";</script>'
-            '<div class="popfig"><span class="pf-big">330 KILLED</span></div>'
-            '</template></body></html>'))
+            '<!DOCTYPE html>\n<html><body><template>\n<script>\nvar x = "killed";\n</script>\n'
+            '<div class="popfig"><span class="pf-big">330 KILLED</span></div>\n</template></body></html>'))
     rc, out = run_gate(ep_comp, wordlist)
+    comp_path = ep_comp / "compositions" / "g-test.html"
     check("composition HTML: exit 1", rc == 1, f"rc={rc}")
-    check("composition HTML: hit reported against compositions/g-test.html",
-          "compositions" in out and "g-test.html" in out, out)
-    check("composition HTML: <script> block content is NOT what triggered it",
-          out.count('"killed"') == 0, out)  # the JS string literal must be stripped, not matched
+    check("composition HTML: hit reported at line 6 (the visible span, not the script)",
+          f"{comp_path}:6:" in out, out)
+    check("composition HTML: no hit reported at line 4 (inside <script>)",
+          f"{comp_path}:4:" not in out, out)
+    check("composition HTML: exactly one HARD \"kill\" and one HARD \"killed\" (not double-counted)",
+          out.count('HARD "kill"') == 1 and out.count('HARD "killed"') == 1, out)
 
     # 9. [FALLBACK] path: inline-bold '## SCRIPT' prose (ep-1974 layout) has no blockquotes,
     #    so parse_segments returns 0 segments on non-empty text — must fall back, loudly, and
