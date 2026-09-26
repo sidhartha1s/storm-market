@@ -292,7 +292,8 @@ middle of it.
 
 At two minutes past eleven, it touched down along Fifty Eighth Street Southeast, in Ransom County. From there, it had
 nineteen minutes and twelve miles of farm country ahead of it. That works out to about thirty eight miles an hour
-across the ground.
+across the ground. It came down after dark, and a two thousand eight study found that tornadoes at night take a far
+higher share of lives than daytime ones. `[verify: Ashley, Krmenec and Schwantes 2008, nocturnal tornado vulnerability, wording of the finding]`
 
 **Picture:** master map: the rail line pulses south of town · NWS PD photo of tipped grain cars (credit checked) ·
 popfig "33 Cars".
