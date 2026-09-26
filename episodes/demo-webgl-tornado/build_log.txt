@@ -1,0 +1,14 @@
+read-start 2026-09-26T17:15:57+05:30
+build-start 2026-09-26T17:23:07+05:30
+build-done 2026-09-26T17:25:46+05:30
+look-1-start 2026-09-26T17:26:44+05:30
+look-1-done 2026-09-26T17:28:23+05:30 | night too dark, ground near-black with hard horizon seam, wall cloud lost against sky; dusk reads well
+fix-1-start 2026-09-26T17:28:23+05:30
+fix-1-done 2026-09-26T17:30:06+05:30
+look-2-start 2026-09-26T17:30:07+05:30
+look-2-done 2026-09-26T17:31:56+05:30 | night readable + wall cloud silhouette OK; 1 px dark seam at horizon (sky below-horizon colour != ground far field)
+fix-2-start 2026-09-26T17:31:57+05:30
+fix-2-done 2026-09-26T17:31:58+05:30
+look-3-start 2026-09-26T17:31:58+05:30
+look-3-done 2026-09-26T17:34:16+05:30 | seam gone; stopped at 2 fix rounds
+done 2026-09-26T17:34:17+05:30
