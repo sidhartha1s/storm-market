@@ -21,7 +21,7 @@ De-facto tokens as they actually settled across shipped episodes (ep2, ep5, ep6;
 
 ## Palette
 Palette and surfaces (glass card, beige cite card, popfig red) live in `references/mg-quickref.md` "Palette and surfaces".
-The `rgba(5,8,12,…)` backing chips still in `cards.css` are the pre-26 Sep 26 treatment; new work uses the glass card.
+`cards.css` chips use the glass-card surface (the `rgba(5,8,12,…)` dark chips were retired 26 Sep 26).
 
 ## Type stacks
 - **Emotive / italic:** Georgia, 'Times New Roman', serif — quotes (`.quotecard .q`), namecard
