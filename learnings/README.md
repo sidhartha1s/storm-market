@@ -41,6 +41,6 @@ The promoted one-line rules from the old `LEARNINGS.md` index, verbatim (one sta
 - The full audio-mixdown scan (volumedetect on 30s windows) is a mandatory pre-render gate, not optional. → §"Audio mixdown as a pre-render gate"
 - `scripts/audio_levels.py` is the gate for insert/narration/bed levels — run it before every mixdown build. → §"Audio levels + media budget hardening"
 - No visible windows, ever — every scheduled/background command runs through `scripts/run_hidden.vbs`. → §"No visible windows, ever"
-- The on-screen text rules (zone occupancy, one fact one instance, no decorative eyebrows, glass under text over footage) live in DESIGN.md — `overlap_check.mjs` v2 enforces them. → §"ep6 draft v2 review — text collisions were a CHECKER false negative"
+- The on-screen text rules (zone occupancy, one fact one instance, eyebrows only when they name the thing, glass under text over footage) live in references/mg-quickref.md — `overlap_check.mjs` v2 enforces them. → §"ep6 draft v2 review — text collisions were a CHECKER false negative"
 - hyperframes 0.8.6–0.8.10 opened visible console windows on this box; 0.8.41 does not and is the pin since 16 Sep 26 (its mixer is a flat ~1.5 dB quieter, corrected by the master step). → §"ep6 ship", §"16 Sep 26 — pin bumped to 0.8.41"
 - Search `library/catalog-index.json` / `npx hyperframes catalog --query` before hand-authoring any graphic — MG library-first. → §"ep6 ship"
