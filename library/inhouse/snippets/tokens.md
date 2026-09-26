@@ -50,9 +50,8 @@ The `rgba(5,8,12,…)` backing chips still in `cards.css` are the pre-26 Sep 26 
 
 ## Structural rules (don't violate)
 - GSAP timelines only — no CSS `@keyframes` (breaks fast-capture render).
-- Overlay exits end with `autoAlpha:0` (either an explicit `tl.to(..., {autoAlpha:0,...})` for
-  timed exits, or a hard unmount at the end of the card's track-3 window — "cards are
-  track-3 mounted; the hard unmount is the exit").
+- Overlay exits slide out and end at `autoAlpha:0` (`references/mg-quickref.md` "Motion and exits");
+  a hard unmount at the end of the card's track-3 window is not an exit.
 - Any positioned card class placed with `left/right/top/bottom` needs `inset: auto` to
   neutralize `.clip`'s `inset: 0` (see ep3's `.lt`, `.quotecard`, `.srclab` — ep2/ep5/ep6
   predate this fix and rely on more specific rules; carry `inset: auto` forward as the
