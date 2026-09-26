@@ -195,8 +195,8 @@ single American tornado had taken more since nineteen forty seven.
 2013 stamped "EF3".
 
 Two days after Joplin, an EF five hit El Reno and Piedmont, in Oklahoma, and six people lost their lives. That was a
-different storm from the El Reno tornado two years later, the widest one. So one Oklahoma town has an EF five and an
-EF three on the books, and the lower number belongs to the bigger storm.
+different storm from the El Reno tornado two years later, the widest one. So one Oklahoma town has both an EF five
+and an EF three, and the lower number belongs to the bigger storm.
 
 **Picture:** Moore 2013, FEMA PD footage of the Plaza Towers area · popfig "May 20, 2013" · then a small inset
 "Moore · May 3, 1999 · F5".
