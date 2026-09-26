@@ -20,17 +20,8 @@ De-facto tokens as they actually settled across shipped episodes (ep2, ep5, ep6;
 | `.dust` | 92 |
 
 ## Palette
-- Amber: `#d8a13a`
-- Light amber: `#e8c56a`
-- Alert red: `#e74c3c`
-- Stamp crimson: `#8e2020`
-- Rule/quote red: `#c0392b` (attribution accents use amber `#d8a13a` in practice — `#c0392b`
-  appears as the rule-red family member; check per-card before reuse)
-- Grey-blue label: `#93a3b2`
-- Off-white text: `#f2f5f8`
-- Panel darks: `#15202b`, `#0b1016`, `#04070a` (body/root background family)
-- Text-backing chip (every text-over-media element): `rgba(5,8,12,0.78)` (also seen at
-  `0.6`–`0.72` on lighter treatments — `0.78` is the settled `.lt` value, treat as the default)
+Palette and surfaces (glass card, beige cite card, popfig red) live in `references/mg-quickref.md` "Palette and surfaces".
+The `rgba(5,8,12,…)` backing chips still in `cards.css` are the pre-26 Sep 26 treatment; new work uses the glass card.
 
 ## Type stacks
 - **Emotive / italic:** Georgia, 'Times New Roman', serif — quotes (`.quotecard .q`), namecard
