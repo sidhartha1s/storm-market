@@ -68,6 +68,10 @@ const PROBE = `(() => {
   if (!tl) return { error: 'no timeline registered' };
   R.id = key;
   R.duration = tl.duration();
+  // a timeline-level onUpdate that redraws a canvas (the Three.js/WebGL pattern) moves every frame
+  // though no DOM tween does; count it as one continuous kinetic span (MG eval 3, 26 Sep 26)
+  if (typeof tl.eventCallback('onUpdate') === 'function' && document.querySelector('canvas'))
+    R.tweens.push({ start: 0, dur: R.duration, props: ['canvas-render'], ease: 'none', target: 'canvas', hide: false });
   for (const t of tl.getChildren(true, true, false)) {
     const st = t.startTime();
     /* totalDuration(), not duration(): a repeating tween (ambient loops) reports its ONE-cycle
