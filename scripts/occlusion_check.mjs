@@ -29,9 +29,10 @@ const browser = await chromium.launch({ executablePath: chromiumExecutable() });
 const stage = async (page, file) => {
   const raw = readFileSync(join(ep, 'compositions', file), 'utf-8');
   const m = raw.match(/<template>([\s\S]*?)<\/template>/);
-  const body = m ? m[1] : raw;
+  // <base href="../"> as in graphics_qc (qc-gates-08): relative urls (vendor/three.classic.js) resolve at the episode root.
+  const body = (m ? m[1] : raw).replace(/(url\(\s*['"]?|\b(?:src|href)=["'])\.\.\//g, '$1');
   const tmp = join(ep, 'compositions', '_occ_' + file);
-  writeFileSync(tmp, `<!doctype html><html><head><meta charset="UTF-8"><script src="../gsap.min.js"></script></head><body style="margin:0;background:#000">${body}</body></html>`);
+  writeFileSync(tmp, `<!doctype html><html><head><meta charset="UTF-8"><base href="../"><script src="gsap.min.js"></script></head><body style="margin:0;background:#000">${body}</body></html>`);
   await page.goto('file:///' + tmp.split('\\').join('/'), { waitUntil: 'load' });
   return tmp;
 };
