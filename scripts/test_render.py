@@ -425,6 +425,17 @@ def _run_render_against_log(log_body):
             pin_ritual.shutil.which = orig_which
 
 
+import contextlib, io
+_orig_workers = pin_ritual.WORKERS
+for _w, _want in ((1, True), (2, False)):
+    pin_ritual.WORKERS = _w
+    _buf = io.StringIO()
+    with contextlib.redirect_stdout(_buf):
+        _run_render_against_log("streaming-encode gate {\"enabled\":true}\n")
+    check(f"pin-review NEW: [FALLBACK] single-worker line printed iff workers < 2 (workers={_w})",
+          (pin_ritual.FALLBACK_1W in _buf.getvalue()) == _want, _buf.getvalue())
+pin_ritual.WORKERS = _orig_workers
+
 raised, _ = _run_render_against_log("some other log output, no streaming gate line\n")
 check("render-09 NEW: render() exits when the log has no 'streaming-encode gate ... enabled:true'", raised)
 
