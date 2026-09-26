@@ -36,9 +36,10 @@ had written down (A5 → CTA → A6, the cta-hinge) · L10 what no rating change
 ---
 
 ## H · Hook (0:00)
-**Picture:** mid-action open, a night wedge lit by lightning, moving (licensed or PD only; no chaser footage); popfig
-"June 20, 2025 · Enderlin, N.D." inside the first second; a red "EF5" slams in on the word "five", then a struck-through
-"EF3" settles under it on "three", the thumbnail's own plate. Narrator from 0:00, siren spine under.
+**Picture:** the owner-approved H2 motion graphic (27 Sep 26), not footage: WebGL night wedge (library tornado template)
+lit by lightning; popfig "June 20, 2025 · Enderlin, N.D." inside the first second; a red "EF5" stamp slams in on the
+word "five", then a struck-through "EF3" settles under it on "three", the thumbnail's own plate. Narrator from 0:00;
+drone bed and stamp hits, no siren.
 
 The weather service changed it to E F five, four months after they called it E F three. `[loop L0 open]`
 
@@ -63,7 +64,7 @@ For nineteen minutes it
 moved east across open farmland. At its widest it was more than a mile across, about eighteen football fields laid
 end to end.
 
-**Picture:** map pin on Highway 46 · text-only name cards "Michael and Katherine Dehn · 73", then "Marcario Lucio · 89".
+**Picture:** map pin on Highway 46 · text-only name cards "Michael and Katherine Pfaff-Dehn · 73", then "Marcario Lucio · 89".
 
 One mile east of town, on Highway forty six, it hit the home of Michael and Katherine Pfaff-Dehn.
 They were both seventy three, and neither of them
