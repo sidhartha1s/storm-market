@@ -143,8 +143,10 @@ with tempfile.TemporaryDirectory() as d:
           f"{comp_path}:6:" in out, out)
     check("composition HTML: no hit reported at line 4 (inside <script>)",
           f"{comp_path}:4:" not in out, out)
-    check("composition HTML: exactly one HARD \"kill\" and one HARD \"killed\" (not double-counted)",
-          out.count('HARD "kill"') == 1 and out.count('HARD "killed"') == 1, out)
+    check("composition HTML: reports the visible casing (KILLED), not a lowercased rewrite",
+          'HARD "KILLED"' in out, out)
+    check("composition HTML: exactly 2 hits at line 6 (kill-form + killed-form rows), none elsewhere",
+          out.count(f"{comp_path}:6:") == 2 and out.count(str(comp_path) + ":") == 2, out)
 
     # 9. [FALLBACK] path: inline-bold '## SCRIPT' prose (ep-1974 layout) has no blockquotes,
     #    so parse_segments returns 0 segments on non-empty text — must fall back, loudly, and
