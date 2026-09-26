@@ -12,7 +12,7 @@
 |---|---|---|
 | Rehook | a REAL beat every 45–60s: broadcast/PD clip, audio insert, stat spike, or a loop opening | audience 40–70+ came for the real thing |
 | Micro-loop | a curiosity gap every 30–45s of narration ("what crossed the river that night was not the fire anyone had been fighting") — phrasing varied, never formulaic | keeps the next 30s pre-sold |
-| Info beat | something NEW lands every 2–3s on graphics; every 6–10s in narration | info density IS the retention; fluff is seasoning (≤20–30%) |
+| Info beat | every 6–10s in narration; graphics reveal on the spoken word and drift while they wait (`references/mg-quickref.md` "Motion and exits") | info density IS the retention; fluff is seasoning (≤20–30%) |
 | Pacing wave | alternate fast (2–4s cuts) and slow (holds 3–10s); never >90s of one tempo | monotony reads as length |
 | Act size | 3–6 min. An act = a mini-episode: hook-in (≤15s) → escalate → payoff → hold/blackout | the self-similar unit that scaling adds |
 | Blackout | 2–3s black between acts (hard cut in/out) | the documentary breath |
