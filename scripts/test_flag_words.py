@@ -158,7 +158,7 @@ with tempfile.TemporaryDirectory() as d:
     rc, out = run_gate(ep_fallback, wordlist)
     check("fallback: prints a line starting [FALLBACK]",
           any(line.startswith("[FALLBACK]") for line in out.splitlines()), out)
-    check("fallback: still catches the hard word", rc == 1 and '"murder"' in out, out)
+    check("fallback: still catches the hard word", rc == 1 and '"murdered"' in out, out)
 
     # 10. SegmentParseError (two blockquote paragraphs under one heading) is a loud exit 2
     ep_ambiguous = make_episode(
