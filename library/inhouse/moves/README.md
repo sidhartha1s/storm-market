@@ -29,7 +29,7 @@ window.__timelines['my-comp'] = tl;
 ```
 
 ## Text vs motion rules the moves enforce
-- Text lives on the HUD, outside `rig.shake`; `counter`, `slamFig`, `kineticText` throw if handed text inside the rig.
+- Text lives on the HUD, outside `rig.shake`; `counter`, `slamFig`, `kineticText` throw when passed `rig` and the text sits inside it.
 - World labels (ruler, bracket) reveal only after the last shake ends; flashes sit behind the world; grain and vignette sit below the HUD.
 - Keep the flight arc under the counter and payoff bands: check the apex screen y at the camera zoom during flight, not only at rest.
 
