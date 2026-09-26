@@ -19,7 +19,7 @@ Read this, then `learnings/mg.md`. [G] = a gate fails it (gate named). A bespoke
 
 ## Type tiers
 - Three tiers in every designed card: big >= 52 px, mid 26-51, small < 26. [G graphics_qc flat-type: < 3 tiers with >= 4 text nodes]
-- Eyebrow Arial 700 22 #93a3b2 tracking 6 · headline Arial Black 52 #f2f5f8 · serif sub Georgia italic 26 #d8a13a · row value Arial 700 30 #dfe7ee · row label Arial 700 19 #93a3b2 tracking 4 · counter Courier New 700 84 #e74c3c · counter label Arial 700 20 #c8d3e0 tracking 6 · section header Arial 700 26 #93a3b2 tracking 8 · popfig 'AbrilFig' (`references/editing-patterns/fonts/AbrilFatface-Regular.ttf`) 150 px. Proper case, never all-lowercase.
+- Eyebrow Arial 700 22 #93a3b2 tracking 6 · headline Arial Black 52 #f2f5f8 · serif sub Georgia italic 26 #d8a13a · row value Arial 700 30 #dfe7ee tracking 1 · row label Arial 700 19 #93a3b2 tracking 4 · counter Courier New 700 84 #e74c3c · counter label Arial 700 20 #c8d3e0 tracking 6 · section header Arial 700 26 #93a3b2 tracking 8 · popfig 'AbrilFig' (`references/editing-patterns/fonts/AbrilFatface-Regular.ttf`) 150 px. Proper case, never all-lowercase.
 
 ## Palette and surfaces (10 colours or fewer per episode, fixed meaning)
 - Popfig red #d0121f · death/danger #c0392b, #e74c3c · crimson #8e2020 (debris, blocks) · amber #d8a13a, #e8c56a (serif subs, values, warm air) · cold #5a768f, #7fb2e5 (cold air, cool parts) · labels #93a3b2 · headlines #f2f5f8 · body #dfe7ee · panel darks #15202b, #0b1016, #04070a.
