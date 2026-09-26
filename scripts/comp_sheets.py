@@ -6,7 +6,7 @@ For each named composition, extracts the three frames graphics_qc chose from its
 (reveal done, mid-hold, pre-exit) at host data-start + comp-local time, so no frame lands mid-reveal.
 Writes episodes/<slug>/sheets/frame-qc/<comp>_<n>.jpg + index.html (each frame with its timestamp and
 the reason it was picked) and prints the list. The reader is one subagent, rubric in CLAUDE.md
-"Verifying graphics".
+references/mg-quickref.md "Verify".
 """
 import html as H, json, re, sys, subprocess, pathlib
 
@@ -93,6 +93,6 @@ for comp in want:
     'main{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}figure{margin:0;background:#fff;'
     'border:1px solid #d8e3ef;padding:8px}img{width:100%}figcaption{margin-top:6px}</style>'
     f'<h1>Frame QC · {H.escape(ep.name)}</h1><p>{H.escape(mp4.name)} · three settle frames per composition, '
-    'picked from its tween schedule (CLAUDE.md "Verifying graphics")</p><main>' + ''.join(cards) + '</main>',
+    'picked from its tween schedule (CLAUDE.md references/mg-quickref.md "Verify")</p><main>' + ''.join(cards) + '</main>',
     encoding='utf-8')
 print(f'wrote {out / "index.html"}')

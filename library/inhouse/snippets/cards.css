@@ -3,7 +3,7 @@
    COPY the rules you need into the episode's index.html <style> block —
    do not link this file from a composition. This is exemplar/reference CSS,
    consolidated from shipped episodes (ep2, ep5, ep6; ep1/ep3 for .dim/.archgrade/
-   .stockgrade). See tokens.md for the palette/type/geometry these values encode.
+   .stockgrade). See tokens.md for the type/geometry these values encode and references/mg-quickref.md for the palette and surfaces.
 
    Fidelity note: rules below are the ACTUAL shipped CSS. Where episodes shipped
    different variants of the same class, the newest/most-evolved variant is kept

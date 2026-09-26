@@ -7,7 +7,7 @@ description: Orchestration + freshness preflight for building a storm-market (Th
 
 This file is tracked in `storm-market/skills/storm-episode/` and junctioned into `~/.claude/skills/` (owner 2026-09-08); the preflight below still guards against a stale checkout: a repo checkout can be stale (wrong branch,
 behind origin/main, another session's uncommitted edits), and then its CLAUDE.md/DESIGN.md/
-LEARNINGS.md are outdated rules that LOOK authoritative, and new contracts merged on main
+learnings/ are outdated rules that LOOK authoritative, and new contracts merged on main
 are invisible from a stale checkout. The preflight is the fix. Everything else here is a pointer — the repo docs on FRESH main
 are the source of truth, and this skill never duplicates their content, so it cannot drift.
 
@@ -25,9 +25,10 @@ Repo: `C:\Users\Sidhartha\Automation Projects\storm-market`
    owner (worktrees make relative paths un-openable for him).
 3. **Read the rulebook FROM THE WORKTREE** (fresh main, in this order):
    - `CLAUDE.md` — pipeline steps, QC gates, render + deliverables recipes
-   - `DESIGN.md` — editing architecture, hook contract, chapter blackouts, GRAPHICS CONTRACT
-   - `LEARNINGS.md` — gotchas ledger; newest-first (new entries go at the top, under the
-     Promoted rules index), read at least every section newer than the last episode you know about
+   - `DESIGN.md` — editing architecture, hook contract, CTA contract, chapter blackouts
+   - `references/mg-quickref.md` — every motion-graphics rule; it goes into every MG builder's brief
+   - `learnings/` — gotchas by topic, newest first (`learnings/README.md` routes by job); read at least every
+     entry newer than the last episode you know about
    - `config.yaml` — pins and paths
 4. **Hyperframes pin — machine-enforced ritual:** `config.yaml` carries a PINNED `hyperframes_version`, managed
    ONLY by `scripts/pin_ritual.py` (A/B demo render vs committed baseline; bumps config +
@@ -36,7 +37,7 @@ Repo: `C:\Users\Sidhartha\Automation Projects\storm-market`
    (exit 6) — the unblock is the ritual, run at kickoff, never mid-render. Stale-pin full
    renders need the owner's explicit `RENDER_PIN_STALE_OK=1` override (logged by preflight).
    Read the changelog on multi-version bumps regardless. Repo CLAUDE.md "HARD RULE — the pin
-   stays current" + LEARNINGS "ep6 ship" / "16 Sep 26 — pin bumped to 0.8.41" (the 0.8.6–0.8.10
+   stays current" + learnings/render.md "ep6 ship" / "16 Sep 26 — pin bumped to 0.8.41" (the 0.8.6–0.8.10
    visible-terminal-tab block and how it cleared) are the source of truth.
 5. **Rule-change sweep:** `gh pr list --state merged --limit 5` — any PR merged since the
    last episode may have changed the rulebook; skim its description before planning.
@@ -59,7 +60,7 @@ Only after 1–6: plan the episode.
 | 4. TTS + timing | `python3 scripts/tts_episode.py episodes/<slug>`: per-segment TTS, lane tempo, words.json in one pass | CLAUDE.md step 2 + Voice, config.yaml external.* + channel.tempo |
 | 5. Sourcing | Agent-downloaded, 2–3 candidates/beat, provenance.csv row per file, per-cut frame verification, inserts owner-gated individually | DESIGN.md sourcing + Content ID protocol |
 | 6. Compose | **Bespoke diagrams: brief first on `references/mg-brief-template.md` (source figure, datum, px geometry, must-be-true list), scaffold-first build (boxes + real text + cue tweens → 4-frame read → style → motion), meaning reviewed before layout, one frame read by the orchestrator (owner 2026-09-12). Sonnets build from the brief in parallel; receipts only.** **Library-first (owner 2026-08-27):** search `library/catalog-index.json` + `npx hyperframes catalog --query "<intent>"` BEFORE hand-authoring; copy the closest in-house exemplar / official block and HAND-RETUNE per cut (scratch allowed with a one-line reason in edit_script.md). Then HAND-AUTHOR index.html + `compositions/g-*.html` (Edit/Write, per-cut judgment — NEVER a script that emits HTML) per GRAPHICS CONTRACT; 2–3 versions of each big-concept graphic; act-boundary blackouts hand-placed; **CTA mounted from `config.yaml channel.cta` (staged `media/cta/`, own audio, dips per config)**; JS/WAAPI only | DESIGN.md GRAPHICS CONTRACT + "CTA contract" + repo `library/` gallery (+ read ep2 compositions/*.html — never edit ep2) |
-| 7. Static QC | ALL green before any render: `python3 scripts/run_gates.py episodes/<slug>` (stops on the first failing gate); then the settle-frame pass in CLAUDE.md "Verifying graphics" (new/changed comps only, one subagent reader, two fix rounds max) | CLAUDE.md "render is the LAST step" + step 6c, LEARNINGS "ep6 draft v2 review" |
+| 7. Static QC | ALL green before any render: `python3 scripts/run_gates.py episodes/<slug>` (stops on the first failing gate); then the settle-frame pass in `references/mg-quickref.md` "Verify" (new/changed comps only, one subagent reader, two fix rounds max) | CLAUDE.md "render is the LAST step" + step 6c, LEARNINGS "ep6 draft v2 review" |
 | 8. Render | `scripts\render.cmd <slug> draft` first; owner reviews draft; full only after approval. EVERY scheduled/background command runs hidden via `scripts/run_hidden.vbs` (schtasks action = `wscript run_hidden.vbs cmd /c ...`) — a run that opens a visible window is killed (stop the TASK, kill its process TREE from the root pid — never kill by command-line substring) and reported | CLAUDE.md steps 5–6 + "No visible windows", LEARNINGS render entries |
 | 9. Deliverables | `master_deliverables.py` (−14 LUFS master + SRT, `--hevc`), metadata.md (**first URL = `channel.cta.first_link`, "📘 The book mentioned at" line, no chapter at the CTA**), private upload + Checks soak | CLAUDE.md step 7, DESIGN.md claims protocol + "CTA contract" |
 
@@ -69,7 +70,7 @@ Only after 1–6: plan the episode.
   provenance disguise. Repeats allowed only well-spaced (≥3–4 min, never obvious).
 - The ebook CTA is must-keep (owner 2026-08-30): every episode, in-timeline, inside the `config.yaml channel.cta`
   window (85-95 %, owner 23 Sep 26); `sweep_episode.py` fails without it. Never skipped, shortened, or moved to the outro.
-- LEARNINGS.md updated same session as any owner correction. Docs sweep in the same PR.
+- An owner correction lands in its single home the same session (`references/mg-quickref.md`, a gate, or the right `learnings/` file). Docs sweep in the same PR.
 - Every review cut = draft render; owner previews park the pipeline until chat approval.
 - Render monitoring: poll with `/loop` every 2–3 min, never a detached background watcher and
   never ScheduleWakeup (its turns are invisible to the owner). Never resume a render from another

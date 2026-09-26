@@ -63,7 +63,7 @@ Krakatau mini-docs got 55–60 impressions under the same keyword; the format mi
 - **Screen text uses numerals, the voice uses words.** Close card "81% restored. 3 names." while Paul says "eighty one percent".
 - **Composition layout zones (map them before the first comp, not after 20 videos):** top-left eyebrow (110,60) + big title
   below it; top-right big number (right 110, top 56); left glass cards x 110–1090; map/diagram plates x 700–1700; NO text in the
-  bottom 100 px (news bug) or in x ≥ 1600 / y ≥ 680 (presenter circle). graphics_qc fails `no-go-zone` and `lowercase-lead`.
+  bottom 100 px (news bug) or in the presenter-circle corner x ≥ 1600 / y ≥ 680 (references/mg-quickref.md). No gate checks either zone yet.
 - **Grouped reveals.** A stat and its caption are one element and appear together (the Kauai map showed captions before their
   numbers when only the numbers were hidden).
 - **Pronunciation gate before timing.** After TTS, read every proper noun back from words.json; respell in plain lowercase
@@ -146,7 +146,7 @@ Measured against a 14-minute cut that scored 5.5/10 on stakes-per-90-seconds bef
   data chip for the running stat ("50,000 feet", "6 airports"). Never a colour-block card.
 - **Text width caps (measured on the Krakatau #4 slices, 2026-09-11):** popfig big line ≤ 16 characters (150 px
   Abril, nowrap: "IT LISTENS FOR THE GROUND" at 25 chars ran off both frame edges), chip ≤ 52 characters (34 px
-  Arial Black from x=110 must clear the presenter circle at x=1632), bug headline ≤ 60 characters (34 px bold,
+  Arial Black from x=110 must stay left of the circle keep-out at x=1600), bug headline ≤ 60 characters (34 px bold,
   overflow hidden after the BREAKING tag + channel name). A sentence-length thought is a chip, never a popfig;
   the popfig is the number or the two-word verdict. The builder asserts all three before writing index.html.
 - **A popfig never sits inside a card window:** the card's row carries that beat (the "listens for the ground"

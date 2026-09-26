@@ -24,7 +24,7 @@ Fails loud (exit 1) if the verify pass misses tolerance.
 matches the box's Nvidia driver — the WinGet PATH ffmpeg (Gyan Essentials 8.1.1) works;
 the 8.1.2 shared build's NVENC needs driver 610+ and fails with API-version -40. If NVENC
 is unavailable this step fails loud (exit 2) rather than silently dropping to a 4-hour
-software x265 encode. See LEARNINGS.md "Render size + HEVC compression".
+software x265 encode. See learnings/render.md "Render size + HEVC compression".
 """
 import json
 import re

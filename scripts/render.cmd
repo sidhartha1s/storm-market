@@ -28,7 +28,7 @@ if not exist "%EP%\index.html" (
 REM CRF/FPS are tunable per render. Defaults reproduce the tested recipe (full crf16/30fps,
 REM draft crf32/15fps). For a smaller single-pass full render, author at 24fps and set
 REM RENDER_CRF=20 — visually lossless for this content, ~half the size, no transcode. See
-REM LEARNINGS.md "Render size + HEVC compression".
+REM learnings/render.md "Render size + HEVC compression".
 if "%MODE%"=="draft" (
   set QUAL=draft
   set _CRF=32
@@ -51,7 +51,7 @@ REM Shared ffmpeg build: security software on this box scans every process creat
 REM cost tracks binary size (96.6 MB static ffprobe = 1.337s per spawn, 224 KB shared =
 REM 0.100s). A render fires ~200 probes. These two paths MUST resolve — media_budget.py
 REM fails the render if they do not, because a bad path silently falls back to the slow
-REM ffprobe on PATH and the deadline failure comes straight back. See LEARNINGS.md.
+REM ffprobe on PATH and the deadline failure comes straight back. See learnings/render.md.
 REM hyperframes >=0.8 telemetry spawns DETACHED `node -e fetch(...)` children with no windowsHide
 REM = a visible console window per flush (owner 2026-08-23). Opt out unconditionally.
 set HYPERFRAMES_NO_TELEMETRY=1
