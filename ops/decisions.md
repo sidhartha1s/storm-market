@@ -6,6 +6,15 @@ line that names the one it replaces.
 
 | date | decision | by | why |
 |---|---|---|---|
+| 26 Sep 26 | Presenter circle (Paul) keeps its corner keep-out while shown; he is not shown in motion-graphics-only scenes | owner | "That's just a distraction at that point. at least for now." (`references/mg-quickref.md` "Frame and safe zones") |
+| 26 Sep 26 | Text over footage: the glass card is the one treatment; beige cite card only for quoted sources over dark maps; no dark chip | owner | one surface for text over footage (`references/mg-quickref.md` "Palette and surfaces") |
+| 26 Sep 26 | All text at least 5 % inside the frame: 96 px left/right, 54 px top/bottom; gate to follow (task 16) | owner | text-safe margin (`references/mg-quickref.md` "Frame and safe zones") |
+| 26 Sep 26 | One stillness number: 4 s with nothing moving fails; graphics_qc idle thresholds (3.0/2.5 s) move to 4.0 s (task 17) | owner | two numbers for one rule (beat_density 4 s, graphics_qc 3.0/2.5 s) |
+| 26 Sep 26 | Popfig red is #d0121f; an eyebrow only when it names the thing, never decoration or a pre-reveal number | owner | `references/mg-quickref.md` "Palette and surfaces", "Text doctrine" |
+| 26 Sep 26 | Exits: panels and cards slide out; a full-frame MG scene ends on a camera move, fade-through or cut, never a hard vanish of one element mid-frame | owner | `references/mg-quickref.md` "Motion and exits" |
+| 26 Sep 26 | Text doctrine: diagrams label (a line and the name, a figure reference, an equation); the narration explains; no paragraphs | owner | "they will just draw a line and mention the name of it" (`references/mg-quickref.md` "Text doctrine") |
+| 26 Sep 26 | Docs plan: `references/mg-quickref.md` is the single home of MG rules; `LEARNINGS.md` split into `learnings/` by job | owner | one fact, one home; builders read one short file |
+| 26 Sep 26 | Hyperframes pin: keep the lock, drop the currency block, bump at kickoff | owner | pin currency blocked renders; the lock alone keeps renders reproducible |
 | 24 Sep 26 | Fresh hand-built MGs: Opus, not Sonnet (proposed) | trial, owner to confirm | one-brief trial: Opus faster (14.19 vs 22.29 min) and blind-judged 43/50 vs 26/50; Sonnet passed all 4 gates with a broken font path and stat spray |
 | 24 Sep 26 | Full 0.25 s layout sweep not built (0 of 30 extra flags real on ep-1974); font-fidelity staging proposed instead (task 14) | eval, owner to confirm | the gates measure text in system Arial while renders use Montserrat/Inter, which hid two shipped collisions |
 | 24 Sep 26 | Fixes 1-6 and the era gate merged (#94-#100) after green e2e and Opus review | owner go | bugs found by the Opus re-review of #85-#91 |
