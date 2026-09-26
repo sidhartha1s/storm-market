@@ -191,6 +191,8 @@ const MEASURE = `((t) => {
     // a gradient OR a frosted-glass panel (backdrop-filter blur over footage) is a designed background —
     // the glass cards were flagged 'undesigned' for two episodes on this line alone (2026-09-11)
     if (/gradient/.test(cs.backgroundImage) || /blur/.test(cs.backdropFilter || cs.webkitBackdropFilter || '')) grad = true;
+    // a canvas covering a quarter of the frame (Three.js/WebGL) is a rendered background the DOM cannot read
+    if (el.tagName === 'CANVAS' && r4.width * r4.height >= 0.25 * 1920 * 1080) grad = true;
   }
   out.elements = painted; out.gradient = grad;
   out.textNodes = out.fonts.length;
