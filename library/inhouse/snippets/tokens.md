@@ -66,10 +66,15 @@ listed once, here).
 | Caption dark sub | `#6b6257` | `.pol-cap span` |
 
 Surfaces: glass card `rgba(10,16,24,.55)` + `backdrop-filter: blur(18px) saturate(1.15)` + 1px
-`rgba(255,255,255,.14)` border, radius 28 — the ONE treatment for text over footage, no bare text
-on moving footage, no dark chip (the old `rgba(5,8,12,…)` dark chips were retired 26 Sep 26;
-`cards.css` chips now all use this glass surface). Beige cite card above is the only exception,
-for quoted sources over dark maps.
+`rgba(255,255,255,.14)` border, radius 28 (`quotecard.glasscard` drops the box-shadow) — the ONE
+treatment for text over footage, no bare text on moving footage, no dark chip (the old
+`rgba(5,8,12,…)` dark chips were retired 26 Sep 26; `cards.css` chips now all use this glass
+surface). Beige cite card above is the only exception, for quoted sources over dark maps.
+
+Diagram-only (not part of the 10-or-fewer palette pick; SVG diagram fills/labels only, never a
+card or headline colour): `#4a5560` (98 uses — `g-plane` flight-path SVG label fill and scatter
+dots) · `#2a3644` (18 uses — diagram stroke/fill across `g-campus`, `g-engine`, `g-legacy`,
+`g-scale-*`).
 
 ## Fonts
 | Family (CSS stack) | Source | Role |
