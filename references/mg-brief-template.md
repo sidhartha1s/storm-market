@@ -81,11 +81,10 @@ row 2 + 16° guide + "110 M" 6.6 · ramp emphasis (stroke pulse) 9.8 · note 15.
   drift or a slow scale push), no gap > 3 s without a visible change; GSAP only, no CSS @keyframes.
 - Nothing overlaps text or shapes; nothing outside 1920×1080; every label next to the thing it names.
 
-## 7. TOOLS
-Screenshot: `node "C:\Users\SIDHAR~1\AppData\Local\Temp\claude\krak-sirens-build\shot_comp.mjs" "<comp path>" "C:\Users\SIDHAR~1\AppData\Local\Temp\claude\krak-sirens-build\eval\<tag><N>" 1 5.9 7.5 18`
-Read the PNGs and check §4 first, then overlaps/cut-offs. Increment N per loop. `python3`, never `python`.
-Gate, run from `C:\Users\Sidhartha\Automation Projects\storm-market\.worktrees\ep8-krakatau-seabed\episodes\ep8-krakatau-seabed`:
-`node "C:\Users\Sidhartha\Automation Projects\storm-market\.worktrees\ms-krakatau-sirens\scripts\graphics_qc.mjs" .`
+## 7. TOOLS (run from your episode worktree root; paths are repo-relative)
+Pre-render look: `node scripts/freeze_scan.mjs episodes/<slug> --comp <COMPID>` writes a contact sheet (a tile every 3 s) to
+`episodes/<slug>/sheets-pre/`. Read it and check §4 first, then overlaps/cut-offs. `python3`, never `python`.
+Gates: `node scripts/graphics_qc.mjs episodes/<slug>`, then `python3 scripts/run_gates.py episodes/<slug>` (rules: `references/mg-quickref.md`).
 
 ## 8. RECEIPT (final message, ≤15 lines)
 start/end times (`date +%H:%M:%S` first and last tool call) · loops · per loop: which §4 truths failed and the fix · gate line · final PNG folder.
