@@ -147,6 +147,10 @@ DUR_TOL = 0.05          # seconds
 BLACK_TOL = 0.10        # seconds, per boundary
 RMS_TOL = 0.20          # dB
 SSIM_MIN = 0.99
+# per-frame mean luma (0-255) of the video box; an unseeked, stale or missing frame moves it
+# by tens (burned timecode + sliding white box on testsrc2). Not yet measured across versions:
+# the first re-baseline pair sets the evidence for this number.
+VIDEO_LUMA_TOL = 2.0
 
 
 def run(cmd, **kw):
