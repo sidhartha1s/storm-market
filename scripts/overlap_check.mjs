@@ -153,12 +153,15 @@ const HOST_CSS = [...html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].map(x =>
 const stage = (file) => {
   const raw = fs.readFileSync(file, 'utf8');
   const t = raw.match(/<template>([\s\S]*?)<\/template>/);
-  const body = t ? t[1] : raw;
+  // same path normalisation as graphics_qc.standalone(): <base href="../"> points root-relative
+  // urls (vendor/three.classic.js, fonts/) at the episode root and `../x` is stripped to `x`.
+  // Without it a comp that loads a root-relative classic script 404'd here and never registered.
+  const body = (t ? t[1] : raw).replace(/(url\(\s*['"]?|\b(?:src|href)=["'])\.\.\//g, '$1');
   const out = path.join(TMP, 'ov-' + path.basename(file));
-  fs.writeFileSync(out, `<!doctype html><html><head><meta charset="utf-8">
+  fs.writeFileSync(out, `<!doctype html><html><head><meta charset="utf-8"><base href="../">
 <style>${HOST_CSS}</style>
 <style>html,body{margin:0;width:1920px;height:1080px;background:#111;overflow:hidden}</style>
-<script src="../gsap.min.js"></script></head><body>${body}</body></html>`, 'utf8');
+<script src="gsap.min.js"></script></head><body>${body}</body></html>`, 'utf8');
   return out;
 };
 for (const h of hosts) {
