@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Run every pre-render gate in the CLAUDE.md order, stop on first failure.
 
-CLAUDE.md "HARD RULE: the render is the LAST step" names nine gates that must all be green
+CLAUDE.md "HARD RULE: the render is the LAST step" names the gates that must all be green
 BEFORE any render starts. Each gate already fails loud on its own (sweep_episode.py,
 lint_timeline.py, beat_density.py, audio_levels.py, media_budget.py, blank_scan.mjs and the
 rest), but nothing chained them — a FAIL sitting in scrollback reads as success to anything
