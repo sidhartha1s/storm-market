@@ -26,7 +26,8 @@ mid-way. render_preflight.py only checks pin drift, never currency.
 The demo is episodes/demo-pin: 24 s, fully committed (MG showcase + WebGL probe + an
 ffmpeg-made video and tone), no gitignored media, so it runs from any fresh worktree.
   - Mixer: sfx/tone.ogg (440 Hz) at 3-7 s, gain 0.5. Both renders must carry audio and
-    their overall RMS must agree within RMS_TOL; a silent render is drift, never a pass.
+    their RMS over TONE_WIN (inside the tone's mount) must agree within RMS_TOL, so a tone
+    that moves in time is drift too; a silent render is drift, never a pass.
   - Video capture: clips/probe.webm mounted at 16 s with data-media-start 1, so capture
     must seek into it (0.8.72/0.8.77/0.8.78 changed "capture waits for seeking video").
     measure() records the per-frame luma of VIDEO_TRACER (a strip the clip's sliding square
@@ -45,9 +46,10 @@ Runtime: one 24 s demo render ~2-4 min on this box; two when the baseline record
 is stale. Launch detached (schtasks one-shot via run_hidden.vbs) when driving it from
 a harness that reaps foreground calls — same rule as render.cmd.
 
---baseline re-records the baseline at the CURRENT pin (render, measure, write
-pin_baseline.json + the BASELINE_DIR mp4) without consulting npm. Run it whenever
-demo-pin changes: the old record measures a different comp.
+--baseline re-records the baseline at the CURRENT pin (render, measure, validate, and only
+then write pin_baseline.json; the mp4 stays in BASELINE_DIR) without consulting npm. Run it
+whenever demo-pin changes: the old record measures a different comp. A record with no audio,
+no video trace, or a flat trace (span < VIDEO_LUMA_SPAN_MIN) is refused, exit 2, nothing written.
 
 Usage: python3 scripts/pin_ritual.py [--check-only | --baseline]
 Exit codes: 0 pin current or bumped clean; 2 setup error; 3 metric drift (no bump);
@@ -91,6 +93,12 @@ VIDEO_WIN = (16.1, 17.9)
 # seek: an ignored media offset moves the spike 1 s, a stale frame flattens it, a missing
 # video drops it to the probe background. The whole-box mean barely moves (measured 126.4-127.0).
 VIDEO_TRACER = (496, 500, 40, 80)
+# The same strip read straight from clips/probe.webm (crop 400,200 over media 1.1-2.9 s, no
+# render) spans 137.4-235.2 = 97.7 luma levels. A captured trace under this span is flat: the
+# clip was never drawn, never seeked, or froze. Absolute, so it fails a baseline on its own.
+VIDEO_LUMA_SPAN_MIN = 50
+# sfx/tone.ogg is mounted 3-7 s; RMS is read 0.1 s inside each edge
+TONE_WIN = (3.1, 6.9)
 
 
 def npm_latest(timeout=30):
@@ -208,12 +216,13 @@ def measure(mp4):
     dur = float(run([str(FFPROBE), "-v", "error", "-show_entries",
                      "format=duration", "-of", "csv=p=0", str(mp4)]).stdout.strip())
     r = run([str(FFMPEG), "-hide_banner", "-i", str(mp4),
-             "-vf", "blackdetect=d=0.5", "-af", "astats=metadata=1",
+             "-vf", "blackdetect=d=0.5",
+             "-af", f"atrim=start={TONE_WIN[0]}:end={TONE_WIN[1]},astats=metadata=1",
              "-f", "null", "-"], timeout=600)
     txt = r.stdout + r.stderr
     black = [(float(a), float(b)) for a, b in
              re.findall(r"black_start:([\d.]+) black_end:([\d.]+)", txt)]
-    # last Peak/RMS pair in astats output is the Overall section
+    # last Peak/RMS pair in astats output is the Overall section (of TONE_WIN only)
     peaks = re.findall(r"Peak level dB: (-?[\d.]+)", txt)
     rmss = re.findall(r"RMS level dB: (-?[\d.]+)", txt)
     has_audio = bool(run([str(FFPROBE), "-v", "error", "-select_streams", "a",
@@ -304,10 +313,27 @@ def bump_pins(new):
     print(f"[ritual] pinned config.yaml -> {new}")
 
 
+def baseline_problems(rec):
+    """Why `rec` can never serve as a baseline ([] = usable). compare() against itself catches
+    missing audio/trace; the span check is absolute, since a flat trace equals itself."""
+    bad = compare(rec, dict(rec), None)
+    luma = rec.get("video_luma") or []
+    if luma and max(luma) - min(luma) < VIDEO_LUMA_SPAN_MIN:
+        bad.append(f"video-probe trace spans {max(luma) - min(luma):.1f} < {VIDEO_LUMA_SPAN_MIN} "
+                   "luma levels (flat: the clip was not drawn, seeked or advanced)")
+    return bad
+
+
 def record_baseline(pin, base_mp4):
-    """Render the demo at `pin` into base_mp4, measure it, persist pin_baseline.json."""
+    """Render the demo at `pin` into base_mp4, measure, validate, THEN persist pin_baseline.json.
+    An unusable record exits 2 with pin_baseline.json untouched."""
     render(pin, base_mp4)
     record = {"version": pin, "demo": DEMO.name, **measure(base_mp4)}
+    bad = baseline_problems(record)
+    if bad:
+        print("[ritual] baseline is unusable, pin_baseline.json NOT written: " + "; ".join(bad),
+              file=sys.stderr)
+        sys.exit(2)
     BASELINE_JSON.write_text(json.dumps(record, indent=2), encoding="utf-8")
     return record
 
@@ -328,16 +354,15 @@ def main():
         sys.exit("[ritual] no hyperframes_version in config.yaml")
     if "--baseline" in sys.argv:
         setup()
+        old = json.loads(BASELINE_JSON.read_text(encoding="utf-8")) if BASELINE_JSON.exists() else {}
         base_mp4 = BASELINE_DIR / f"pin-baseline-{pin}.mp4"
-        rec = record_baseline(pin, base_mp4)
-        print(f"[ritual] baseline re-recorded at {pin} ({rec['workers']} workers): RMS "
-              f"{rec['rms_db']} dB, {len(rec['video_luma'])} video-probe frames, "
-              f"mp4 {base_mp4}. Commit scripts/pin_baseline.json.")
-        # a baseline that could never pass compare() is a setup error, not a record
-        bad = compare(rec, dict(rec), None)
-        if bad:
-            print("[ritual] baseline is unusable: " + "; ".join(bad), file=sys.stderr)
-            return 2
+        rec = record_baseline(pin, base_mp4)  # validated before it is written; exits 2 if unusable
+        luma = rec["video_luma"]
+        print(f"[ritual] baseline re-recorded: version {old.get('version')} -> {rec['version']}, "
+              f"demo {old.get('demo')} -> {rec['demo']}, workers {old.get('workers')} -> "
+              f"{rec['workers']}; tone RMS {rec['rms_db']} dB, {len(luma)} video-probe frames "
+              f"spanning {max(luma) - min(luma):.1f} luma levels, mp4 {base_mp4}")
+        print("[ritual] Commit scripts/pin_baseline.json.")
         return 0
     latest = npm_latest(timeout=60)
     if latest is None:
