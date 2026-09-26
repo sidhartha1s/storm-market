@@ -357,33 +357,36 @@ def main():
     record = None
     if BASELINE_JSON.exists():
         record = json.loads(BASELINE_JSON.read_text(encoding="utf-8"))
-        # a record measured on another demo (demo-joplin-90 before 26 Sep 26) is not a baseline
-        if record.get("version") != pin or record.get("demo") != DEMO.name:
+        # a record measured on another demo (demo-joplin-90 before 26 Sep 26) or before the
+        # video/audio probes existed (no video_luma / workers) is not a baseline
+        if (record.get("version") != pin or record.get("demo") != DEMO.name
+                or "video_luma" not in record or "workers" not in record):
             record = None
     if record is None or not base_mp4.exists():
-        render(pin, base_mp4)
-        record = {"version": pin, "demo": DEMO.name, **measure(base_mp4)}
-        # persist NOW — a crash in the candidate render must not cost this ~13 min again
-        BASELINE_JSON.write_text(json.dumps(record, indent=2), encoding="utf-8")
+        # persisted inside — a crash in the candidate render must not cost this again
+        record = record_baseline(pin, base_mp4)
     base_has_mp4 = base_mp4.exists()
 
     cand_mp4 = renders / f"pin-baseline-{latest}.mp4"
     render(latest, cand_mp4)
     cand = measure(cand_mp4)
     ssim_all = ssim(base_mp4, cand_mp4) if base_has_mp4 else None
+    ssim_video = ssim(base_mp4, cand_mp4, region=True) if base_has_mp4 else None
     if not base_has_mp4:
         print("[ritual] no baseline mp4 on disk — SSIM skipped (metrics-only compare)")
 
-    drifts = compare(record, cand, ssim_all)
-    if base_has_mp4 and ssim_all is None:
+    drifts = compare(record, cand, ssim_all, ssim_video)
+    if base_has_mp4 and (ssim_all is None or ssim_video is None):
         # an un-computable SSIM (e.g. resolution change broke the filter) is a failed
         # visual gate, never a silent pass
         drifts.append("SSIM could not be computed from ffmpeg output — visual identity "
                       "UNVERIFIED")
+    fmt = lambda v: "n/a" if v is None else f"{v:.4f}"
     print(f"[ritual] {pin} vs {latest}: duration {record['duration']:.3f}/"
           f"{cand['duration']:.3f}s, black {len(record['blackdetect'])}/"
-          f"{len(cand['blackdetect'])} segs, RMS {record['rms_db']}/{cand['rms_db']} dB, SSIM "
-          f"{'n/a' if ssim_all is None else f'{ssim_all:.4f}'}")
+          f"{len(cand['blackdetect'])} segs, RMS {record['rms_db']}/{cand['rms_db']} dB, "
+          f"workers {record['workers']}/{cand['workers']}, SSIM {fmt(ssim_all)}, "
+          f"video-region SSIM {fmt(ssim_video)}")
     if drifts:
         print(f"[ritual] METRIC DRIFT — NOT bumping {pin} -> {latest}:", file=sys.stderr)
         for d in drifts:
