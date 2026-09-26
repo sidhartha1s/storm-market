@@ -560,8 +560,9 @@ check("pin-review NEW: a worker-count mismatch is drift",
       pin_ritual.compare(good, {**good, "workers": 1}, 0.997) != [])
 check("pin-review NEW: a video-region SSIM under SSIM_MIN is drift",
       pin_ritual.compare(good, dict(good), 0.997, 0.95) != [])
-check("pin-review NEW: a baseline record without video_luma/workers is re-rendered",
-      '"video_luma" not in record or "workers" not in record' in main_src)
+check("pin-review NEW: a baseline record without video_luma/workers, or silent/flat, is re-rendered",
+      '"workers" not in record or baseline_problems(record)):' in main_src
+      and pin_ritual.baseline_problems({k: v for k, v in good.items() if k != "video_luma"}) != [])
 
 # (c) the baseline self-check is absolute: a flat trace equals itself, so compare() alone passes it
 check("pin-review2 NEW: a good baseline (trace spans >= VIDEO_LUMA_SPAN_MIN) has no problems",
