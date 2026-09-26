@@ -29,7 +29,7 @@ Repo: `C:\Users\Sidhartha\Automation Projects\storm-market`
    - `LEARNINGS.md` — gotchas ledger; newest-first (new entries go at the top, under the
      Promoted rules index), read at least every section newer than the last episode you know about
    - `config.yaml` — pins and paths
-4. **Pin current before the first render:** `python3 scripts/pin_ritual.py --check-only`; exit 3 (stale) ⇒ run `python3 scripts/pin_ritual.py` (hidden schtasks) and PR the bump now, never mid-episode (repo CLAUDE.md "HARD RULE: the pin stays current").
+4. **Pin current before the first render:** `python3 scripts/pin_ritual.py --check-only`; exit 3 (stale) ⇒ run `python3 scripts/pin_ritual.py` (hidden schtasks) and PR the bump now, never mid-episode; exit 4 (npm unreachable) ⇒ proceed on the current pin and note it in the kickoff summary (repo CLAUDE.md "HARD RULE: the pin stays current").
 5. **Rule-change sweep:** `gh pr list --state merged --limit 5` — any PR merged since the
    last episode may have changed the rulebook; skim its description before planning.
 6. **Generator tripwire:**
