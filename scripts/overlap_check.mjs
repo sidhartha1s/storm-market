@@ -55,7 +55,7 @@ const normFact = (s) => {
 const LEAF_FN = `(el) => el.children.length === 0 ||
   [...el.children].every(k => /^(EM|B|I|STRONG|SUP|SUB)$/.test(k.tagName))`;
 
-const browser = await chromium.launch({ headless: true, executablePath: EXE });
+const browser = await chromium.launch({ headless: true, executablePath: EXE, args: ['--allow-file-access-from-files'] });
 const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
 await page.goto('file:///' + indexPath.replace(/\\/g, '/'));
 await page.waitForTimeout(600);
