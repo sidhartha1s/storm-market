@@ -3,6 +3,19 @@
 De-facto tokens as they actually settled across shipped episodes (ep2, ep5, ep6; ep1/ep3 for
 `.dim`/`.archgrade`/`.stockgrade`). Not aspirational — these are the values in the CSS today.
 
+**This is the one home for the channel palette, fonts and type tiers** (owner ask 27 Sep 26: "keep
+one palette and type file"). Every other file (`DESIGN.md`, `references/mg-quickref.md`,
+`cards.css`) points here instead of restating hex codes, font stacks or px tiers. Swatch preview:
+`library/inhouse/snippets/brand-swatch.html`.
+
+## TV first
+About 40 % of this channel's viewers watch on TV, 35-38 % on mobile, the rest desktop/tablet
+(owner-supplied split, 27 Sep 26). Design for the TV viewer first: large type (52 px+ headline
+tier, viewed from a couch on a 42-65" screen) and high background/text contrast (`#f2f5f8` on
+`#04070c`-family darks, never mid-grey on mid-grey). What reads clearly on a TV at distance —
+big bold type, strong contrast, few colours per frame — also reads cleanly on a 6" phone up close;
+the reverse is not true, so TV is the binding constraint, not an afterthought for the minority.
+
 ## Canvas
 - Composition: 1920×1080, `#root { position: relative; overflow: hidden; background: #04070c; }`
 - Panel/text-block width convention: 820px-ish content column (`.quotecard` typically
