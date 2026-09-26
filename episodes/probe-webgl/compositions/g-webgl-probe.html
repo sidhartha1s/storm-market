@@ -28,9 +28,9 @@
     <div class="wp-bit" id="wp-bit8" style="left:1506px"></div>
   </div>
 </div>
-<script type="module">
-import * as THREE from "./vendor/three.module.min.js";
-
+<script>
+(function () {
+const THREE = window.THREE;
 const ID = "g-webgl-probe";
 const FPS = 30, DUR = 10, W = 1920, H = 1080;
 const BG_A = new THREE.Color(0x1a2433);   // storm slate, t < 5
