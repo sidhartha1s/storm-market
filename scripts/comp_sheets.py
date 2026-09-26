@@ -93,6 +93,6 @@ for comp in want:
     'main{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}figure{margin:0;background:#fff;'
     'border:1px solid #d8e3ef;padding:8px}img{width:100%}figcaption{margin-top:6px}</style>'
     f'<h1>Frame QC · {H.escape(ep.name)}</h1><p>{H.escape(mp4.name)} · three settle frames per composition, '
-    'picked from its tween schedule (CLAUDE.md references/mg-quickref.md "Verify")</p><main>' + ''.join(cards) + '</main>',
+    'picked from its tween schedule (references/mg-quickref.md "Verify")</p><main>' + ''.join(cards) + '</main>',
     encoding='utf-8')
 print(f'wrote {out / "index.html"}')
