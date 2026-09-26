@@ -56,6 +56,6 @@ The `rgba(5,8,12,…)` backing chips still in `cards.css` are the pre-26 Sep 26 
   neutralize `.clip`'s `inset: 0` (see ep3's `.lt`, `.quotecard`, `.srclab` — ep2/ep5/ep6
   predate this fix and rely on more specific rules; carry `inset: auto` forward as the
   current best practice).
-- Every text-over-media element sits on a dark backing chip `rgba(5,8,12,0.78)`.
+- Every text-over-media element sits on the glass card (`references/mg-quickref.md`), not a dark chip.
 - Namecard/dispatch lines use `display: table; margin: 0 auto` (or `N auto 0` for stacked
   lines) per line — never `text-align: center` alone, so the background chip hugs the text.
