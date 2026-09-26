@@ -27,6 +27,13 @@ Status: `todo` · `doing` · `review` (PR open, waiting on Opus review, e2e or t
 | 14 | Gates stage comps in system Arial but renders swap to Montserrat/Inter/EB Garamond (hyperframes alias table): shared @font-face staging for overlap_check, graphics_qc, occlusion_check. Missed shipped collisions in ep-1974 g-plane and g-map-i. Est. 2-3 h | - | todo: owner go |
 | 13 | MG templates for repeated kinds (person card, citation, map with pins) | - | parked: after task 12 |
 
+## Gates from the owner's MG rules (26 Sep 26; rules in `references/mg-quickref.md`)
+| # | task | PR | status |
+|---|---|---|---|
+| 15 | gate: presenter-circle keep-out (only when Paul is shown) | - | todo, owner-approved 26 Sep 26 |
+| 16 | gate: 5% text-safe margin (96/54 px) | - | todo, owner-approved 26 Sep 26 |
+| 17 | gate: one stillness number (graphics_qc idle 3.0/2.5 s -> 4.0 s) | - | todo, owner-approved 26 Sep 26 |
+
 ## Minor findings, not scheduled
 - #96: a crash after synthesis but before the manifest write labels the segment "legacy" (audio is correct).
 - #97: WARN text misleading when every on-screen file is tagged modern.
