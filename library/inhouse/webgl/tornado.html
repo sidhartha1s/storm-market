@@ -250,7 +250,7 @@ function render(t) {
   const k = Math.min(t / C.duration, 1);
   U.uTime.value = t;
   U.uBase.value.set(C.path.startX + (C.path.endX - C.path.startX) * k, 0, 0);
-  placeCamera(t);
+  placeCamera(k);
   renderer.render(scene, camera);
 }
 
