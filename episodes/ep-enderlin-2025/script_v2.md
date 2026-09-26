@@ -386,6 +386,13 @@ joined the re-survey as wind damage experts. The project was started in twenty s
 tornado that touches down in Canada. `[verify: NTP founded 2017, mission to detect every Canadian tornado]` Their team,
 which includes Greg Kopp of Western University, is credited with the forensic side of the work.
 
+**Picture:** a Canada map, a pin at Elie, Manitoba · popfig "June 22, 2007" · a stamp "F4" struck through by "F5",
+dated "September 2007".
+
+Canada knows about late upgrades. Its only F five came down at Elie, Manitoba, on June twenty second, two thousand
+seven. It was first rated F four, and that September it was raised to F five.
+`[verify: Elie, Manitoba, 22 Jun 2007, rated F4 then upgraded to F5 in Sep 2007; still Canada's only F5 or EF5]`
+
 **Picture:** g-mechanism, first half: a grain car side-on, a wind arrow on its broad side, a pivot marked at the far
 rail, the car rolling over it.
 
