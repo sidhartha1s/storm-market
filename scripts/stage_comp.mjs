@@ -25,9 +25,13 @@ export function stageComp(ep, file, css, prefix = '') {
   const dir = join(ep, '.qc-tmp');
   mkdirSync(dir, { recursive: true });
   const out = join(dir, prefix + basename(file));
+  // the host's own <script src> tags too (GSAP plugins): a moves comp calling DrawSVGPlugin died
+  // "no timeline registered" standalone although it renders fine inside index.html
+  const hostJs = [...readFileSync(join(ep, 'index.html'), 'utf8').matchAll(/<script\b[^>]*\bsrc="([^"]+)"/g)]
+    .map(x => x[1]).filter(s => s !== 'gsap.min.js').map(s => `<script src="${s}"></script>`).join('');
   writeFileSync(out, `<!doctype html><html><head><meta charset="utf-8"><base href="../">
 <style>${css}</style>
 <style>html,body{margin:0;width:1920px;height:1080px;background:#111;overflow:hidden}</style>
-<script src="gsap.min.js"></script></head><body>${body}</body></html>`, 'utf8');
+<script src="gsap.min.js"></script>${hostJs}</head><body>${body}</body></html>`, 'utf8');
   return out;
 }
