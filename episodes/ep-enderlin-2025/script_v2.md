@@ -292,8 +292,8 @@ middle of it.
 
 At two minutes past eleven, it touched down along Fifty Eighth Street Southeast, in Ransom County. From there, it had
 nineteen minutes and twelve miles of farm country ahead of it. That works out to about thirty eight miles an hour
-across the ground. It came down after dark. A two thousand eight study found that tornadoes at night are about two
-and a half times as likely to take lives as daytime ones. `[verify: Ashley, Krmenec and Schwantes 2008, night tornadoes about 2.5 times as likely to take lives]`
+across the ground. It came down after dark. A two thousand eight study found night tornadoes about two and a half
+times as likely to take lives as daytime ones. `[verify: Ashley, Krmenec and Schwantes 2008, night tornadoes about 2.5 times as likely to take lives]`
 
 **Picture:** master map: the rail line pulses south of town · NWS PD photo of tipped grain cars (credit checked) ·
 popfig "33 Cars".
@@ -463,7 +463,7 @@ The new number did not change the path, the twelve miles, or the three people th
 anyone knew at eleven o'clock that night either, because a rating always comes after the storm. It did put a number
 on what a building would have had to stand up to. FEMA builds its guidance for tornado safe rooms around winds of two
 hundred and fifty miles an hour. `[verify: FEMA P-361 tornado safe room design wind speed 250 mph]` If you have a safe
-room built to that standard, it is rated above what the survey gave Enderlin.
+room built to that standard, it is rated above what the survey gave Enderlin. `[loop L7 closes]`
 
 **Picture:** the four EF4 cards from A2 return, each with a small "?" pulsing beside the EF4.
 
@@ -501,14 +501,14 @@ and most tornadoes never cross a train. El Reno had radar and open fields, and i
 In twenty twenty six, a tornado at Enid, Oklahoma, landed in the same argument over whether it reached EF five.
 `[verify: Enid 2026 EF5 debate and its status as of the script date]` The ratings matter past any one town, because
 they are the data scientists use to ask whether violent tornadoes are becoming rarer. That is the question Lyza's study
-put to the twelve years, and the Enderlin rating ended the gap without settling it. If the way surveys rate storms
-shifted in two thousand seven, then the counts before and after that year cannot be compared straight across.
+put to the twelve years, and the Enderlin rating ended the gap without settling it. If surveys shifted in two
+thousand seven, the counts before and after that year cannot be compared straight across.
 
 **Picture:** the tanker arc from A4 replays small in a corner of the survey b-roll · the Miller citation card returns.
 
 What Enderlin did change is the toolkit. The weather service has now used a debris flight to rate a tornado, and
-Miller called it a tool for future assessments. The next time a survey finds something large thrown far from where it
-stood, there is a published way to turn that distance into a wind speed.
+Miller said that use matters for future tornado assessments. When a survey next finds something large thrown far
+from where it stood, a published method can turn that distance into wind.
 
 **Picture:** PD NWS warning graphic (polygon over a county map) · then the survey b-roll, a team walking at dawn.
 
