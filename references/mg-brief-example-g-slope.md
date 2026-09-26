@@ -1,5 +1,8 @@
 # MG brief worked example: g-slope (Krakatau #5, 2026-09-12)
 
+> Note (26 Sep 26): this example predates the 96/54 px text-safe margin. When copying, move the edge labels (SW, SEA LEVEL, CALDERA FLOOR, BLOCKS UP TO 70 M) to x >= 96.
+
+
 The filled-in brief behind `references/mg-brief-template.md`. The SOURCE figure paths under `AppData\Local\Temp` were scratch copies and are gone; re-fetch the figures from the cited papers.
 
 # BRIEF v2 — g-slope · "It was gentler." · 30 s cross-section MG (The Warning Hour, Krakatau #5, act 3 payoff)
