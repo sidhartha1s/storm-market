@@ -92,7 +92,7 @@ const sky = new THREE.Mesh(new THREE.SphereGeometry(900, 48, 24), new THREE.Shad
       c *= 0.55 + 0.75 * cl * smoothstep(0.0, 0.08, y);
       float band = exp(-abs(y - 0.012) * 40.0) * (0.35 + 0.65 * noise(vec3(vDir.x * 6.0, uSeed, 0.0)));
       c += uGlow * band * 0.55;
-      gl_FragColor = vec4(y < 0.0 ? uFog : c, 1.0);
+      gl_FragColor = vec4(y < 0.0 ? uFog + uGlow * 0.3 : c, 1.0);  // below horizon = ground far-field colour, no seam
     }`,
 }));
 scene.add(sky);
