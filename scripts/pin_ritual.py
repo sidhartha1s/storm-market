@@ -216,7 +216,7 @@ def measure(mp4):
     if has_audio and (not peaks or not rmss):
         sys.exit(f"[ritual] astats gave no levels for {mp4.name}")
     # a render with no audio stream measures None; compare() fails it (demo-pin has a tone)
-    return {"duration": dur, "blackdetect": black,
+    return {"workers": WORKERS, "duration": dur, "blackdetect": black,
             "rms_db": float(rmss[-1]) if has_audio else None,
             "peak_db": float(peaks[-1]) if has_audio else None,
             "video_luma": video_luma(mp4)}
