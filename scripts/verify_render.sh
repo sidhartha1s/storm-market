@@ -90,41 +90,33 @@ then
 fi
 
 echo
-echo "=== black spans (d>=0.4s, pix_th 0.10) ==="
-ffmpeg -hide_banner -i "$MP4" -vf "blackdetect=d=0.4:pix_th=0.10" -an -f null - 2>&1 \
-  | grep -a "black_start" | sed 's/.*black_start/black_start/' | tee /tmp/_black.txt
-echo "black spans: $(wc -l < /tmp/_black.txt)"
-# Owner's own duration table (CLAUDE.md "Chapter blackout"): 0.6-0.9s = chapter break,
-# 1.0-1.3s = dramatic punctuation (the CTA's dip_in/dip_out, config.yaml, land here), 1.5s+ =
-# dead air — a bug, not a style. Gate on that threshold, never on the raw span COUNT: chapter
-# blackouts are intentional and their count varies per episode, so "zero black" would fail
-# every real episode.
-LONGEST_BLACK=$(grep -oa 'black_duration:[0-9.]*' /tmp/_black.txt | cut -d: -f2 | sort -g | tail -1)
-if [ -n "$LONGEST_BLACK" ] && python3 -c "import sys; sys.exit(0 if float('$LONGEST_BLACK') >= 1.5 else 1)"; then
-  echo "FAIL: a ${LONGEST_BLACK}s black span is dead air (owner threshold: 1.5s+), not a chapter break"
-  FAIL=1
-fi
-
-echo
-echo "=== silent spans (audio dropout, -50dB for 2s+ — exempt inside a declared hold/blackout ==="
-echo "=== section or the CTA window: DESIGN.md 'hold 2-4s in silence or low ambience' / CTA dip) ==="
-SILENCE_RAW=$(ffmpeg -hide_banner -i "$MP4" -af "silencedetect=n=-50dB:d=2" -f null - 2>&1)
-echo "$SILENCE_RAW" | grep -a "silence_start\|silence_end"
-if ! python3 - "$EP" "$SILENCE_RAW" <<'PYEOF'
+echo "=== black (1.5s+), silence (2s+) and freeze (6s+) spans: FAIL only outside a declared ==="
+echo "=== blackout section or CTA dip (silence: also holds and the CTA body) ==="
+# Owner's duration table (CLAUDE.md "Chapter blackout"): 1.5s+ of black is dead air, a bug. A
+# declared <section class="blackout"> (bo-void, bo-close) and the CTA dips are black, silent and
+# still on purpose, so black/freeze/silence inside them are exempt. A declared hold and the CTA body
+# may be quiet (silence exempt) but must still show a live picture: black or frozen there is a
+# defect (CLAUDE.md: a long hold keeps something alive; a CTA that fails to decode renders black).
+BLACK_RAW=$(ffmpeg -hide_banner -nostats -i "$MP4" -vf "blackdetect=d=1.5:pix_th=0.10" -an -f null - 2>&1)
+SILENCE_RAW=$(ffmpeg -hide_banner -nostats -i "$MP4" -af "silencedetect=n=-50dB:d=2" -f null - 2>&1)
+FREEZE_RAW=$(ffmpeg -hide_banner -nostats -i "$MP4" -vf "freezedetect=n=-58dB:d=6" -an -f null - 2>&1)
+VID_DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$MP4")
+if ! python3 - "$EP" "$VID_DUR" "$BLACK_RAW" "$SILENCE_RAW" "$FREEZE_RAW" <<'PYEOF'
 import re, sys
 from pathlib import Path
 
-ep, raw = sys.argv[1], sys.argv[2].replace("\r\n", "\n")
+ep, vid_dur = sys.argv[1], float(sys.argv[2])
+raws = {k: v.replace("\r\n", "\n") for k, v in zip(("black", "silence", "freeze"), sys.argv[3:6])}
 html = (Path(ep) / "index.html").read_text(encoding="utf-8", errors="replace")
 
-# Sanctioned quiet windows — the SAME structural markers lint_timeline.py already sanctions a
-# narration gap against (DESIGN.md "Editing grammar": declared hold, chapter blackout) plus the
-# CTA window (data-start/data-duration on the CTA insert itself, padded by config.yaml's
-# dip_in/dip_out). A silence span outside every one of these is a dropped narration segment or
-# dead audio, never a style.
-windows = [(float(a), float(a) + float(b)) for a, b in re.findall(
-    r'<section\b[^>]*class="[^"]*\b(?:blackout|hold)\b[^"]*"[^>]*data-start="([\d.]+)"'
-    r'[^>]*data-duration="([\d.]+)"', html)]
+# Declared windows: the same structural markers lint_timeline.py sanctions a narration gap
+# against (declared hold, chapter blackout) plus the CTA insert padded by config.yaml dip_in/out.
+def sections(cls):
+    return [(float(a), float(a) + float(b)) for a, b in re.findall(
+        r'<section\b[^>]*class="[^"]*\b' + cls + r'\b[^"]*"[^>]*data-start="([\d.]+)"'
+        r'[^>]*data-duration="([\d.]+)"', html)]
+picture_ok = sections("blackout")                 # black and freeze allowed only here
+quiet_ok = picture_ok + sections("hold")          # silence also allowed in holds and the CTA
 
 cta = re.search(r'<video\b[^>]*src="[^"]*cta/[^"]*"[^>]*>', html)
 if cta:
@@ -141,34 +133,33 @@ if cta:
             m_in, m_out = re.search(r'dip_in:\s*([\d.]+)', ctxt), re.search(r'dip_out:\s*([\d.]+)', ctxt)
             if m_in: dip_in = float(m_in.group(1))
             if m_out: dip_out = float(m_out.group(1))
-        windows.append((cs - dip_in, cs + cd + dip_out))
+        picture_ok += [(cs - dip_in, cs), (cs + cd, cs + cd + dip_out)]
+        quiet_ok.append((cs - dip_in, cs + cd + dip_out))
 
-starts, ends = re.findall(r'silence_start:\s*([\d.]+)', raw), re.findall(r'silence_end:\s*([\d.]+)', raw)
-if len(starts) != len(ends):
-    print(f"FAIL: {len(starts)} silence_start vs {len(ends)} silence_end lines — could not pair every span")
-    sys.exit(1)
-
-TOL = 0.5  # silencedetect's own reported edges can land a touch inside the declared window
-bad = [(float(ss), float(se)) for ss, se in zip(starts, ends)
-       if not any(ws - TOL <= float(ss) and float(se) <= we + TOL for ws, we in windows)]
-if bad:
-    print(f"FAIL: {len(bad)} silence span(s) of 2s+ outside any declared hold/blackout/CTA window:")
-    for ss, se in bad:
-        print(f"    {ss:.2f}s - {se:.2f}s")
-    sys.exit(1)
-print(f"OK: {len(starts)} silence span(s), all inside a declared hold/blackout/CTA window"
-      if starts else "OK: no silence spans")
+TOL = 0.5  # detector edges can land a touch outside the declared window
+fail = False
+for kind, raw in raws.items():
+    starts = [float(x) for x in re.findall(kind + r'_start:\s*([\d.]+)', raw)]
+    ends = [float(x) for x in re.findall(kind + r'_end:\s*([\d.]+)', raw)]
+    if len(ends) == len(starts) - 1:
+        ends.append(vid_dur)  # still open at end of file (a closing blackout)
+    if len(starts) != len(ends):
+        print(f"FAIL: {len(starts)} {kind}_start vs {len(ends)} {kind}_end lines, could not pair every span")
+        fail = True
+        continue
+    windows = quiet_ok if kind == "silence" else picture_ok
+    bad = [(ss, se) for ss, se in zip(starts, ends)
+           if not any(ws - TOL <= ss and se <= we + TOL for ws, we in windows)]
+    if bad:
+        print(f"FAIL: {len(bad)} {kind} span(s) outside any declared window allowed for {kind}:")
+        for ss, se in bad:
+            print(f"    {ss:.2f}s - {se:.2f}s")
+        fail = True
+    else:
+        print(f"OK: {len(starts)} {kind} span(s), all inside a declared window" if starts else f"OK: no {kind} spans")
+sys.exit(1 if fail else 0)
 PYEOF
 then
-  FAIL=1
-fi
-
-echo
-echo "=== freeze detection (no visible change for 6s+) ==="
-ffmpeg -hide_banner -i "$MP4" -vf "freezedetect=n=-58dB:d=6" -an -f null - 2>&1 \
-  | grep -a "freeze_start" | tee /tmp/_freeze.txt | tail -20
-if [ -s /tmp/_freeze.txt ]; then
-  echo "FAIL: $(wc -l < /tmp/_freeze.txt) frozen span(s) of 6s+ — a frozen clip"
   FAIL=1
 fi
 

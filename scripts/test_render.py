@@ -241,13 +241,6 @@ verify_src = (S / "verify_render.sh").read_text(encoding="utf-8")
 check("render-07 OLD script had no non-GPU exit path", True)  # documented from the pre-fix read; see report
 check("render-07 NEW script asserts duration/fps/resolution/audio against the composition",
       "comp_dur" in verify_src and "has_audio" in verify_src.replace("HAS_AUDIO", "has_audio"))
-check("render-07 NEW script fails on dead-air black spans (owner's 1.5s threshold)",
-      "1.5" in verify_src and "LONGEST_BLACK" in verify_src)
-check("render-07 NEW script fails on a freeze span found (not just prints)",
-      '[ -s /tmp/_freeze.txt ]' in verify_src)
-check("render-07 NEW script gates silence but exempts declared hold/blackout/CTA windows",
-      "silence_start" in verify_src and 'class="[^"]*\\b(?:blackout|hold)\\b' in verify_src
-      and "dip_in" in verify_src)
 
 
 def run_verify(ep_dir, base):
@@ -328,6 +321,52 @@ if HAVE_FFMPEG:
         check("render-07 NEW: the SAME 3s silent span with no declared hold fails",
               r5.returncode != 0 and "FAIL:" in r5.stdout and "silence span" in r5.stdout,
               f"rc={r5.returncode}\n{r5.stdout[-800:]}")
+
+        # Black and freeze follow the same declared windows as silence: a designed blackout
+        # (bo-close, bo-void) passes, the same span with nothing declared fails.
+        def span_case(name, video_graph, dur, section, kind):
+            mp4x = ep / "renders" / f"{name}-final.mp4"
+            subprocess.run(["ffmpeg", "-y", "-v", "error", *video_graph,
+                            "-f", "lavfi", "-i", f"sine=frequency=440:duration={dur}",
+                            "-map", "[v]", "-map", f"{video_graph.count('-i')}:a",
+                            "-c:v", "libx264", "-pix_fmt", "yuv420p", "-c:a", "aac", str(mp4x)],
+                           capture_output=True)
+            root = (f'<div id="root" data-composition-id="x" data-start="0" data-width="320" '
+                    f'data-height="240" data-duration="{dur}.00" data-fps="25">')
+            (ep / "index.html").write_text(root + section + '</div>', encoding="utf-8")
+            ok = run_verify(ep, f"{name}-final")
+            (ep / "index.html").write_text(root + '</div>', encoding="utf-8")
+            bad = run_verify(ep, f"{name}-final")
+            check(f"render-07 NEW: a {kind} span inside a declared window passes",
+                  ok.returncode == 0, f"rc={ok.returncode}\n{ok.stdout[-800:]}")
+            check(f"render-07 NEW: the same {kind} span with nothing declared fails",
+                  bad.returncode != 0 and f"FAIL: 1 {kind} span" in bad.stdout, f"rc={bad.returncode}\n{bad.stdout[-800:]}")
+
+        span_case("black", ["-f", "lavfi", "-i", "testsrc=size=320x240:rate=25:duration=8",
+                            "-filter_complex", "[0:v]drawbox=c=black:t=fill:enable='between(t,2,5)'[v]"], 8,
+                  '<section class="clip blackout" id="bo-1" data-start="2" data-duration="3"></section>', "black")
+        frozen = ["-f", "lavfi", "-i", "testsrc=size=320x240:rate=25:duration=2",
+                  "-f", "lavfi", "-i", "color=c=gray:s=320x240:r=25:d=7",
+                  "-f", "lavfi", "-i", "testsrc=size=320x240:rate=25:duration=2",
+                  "-filter_complex", "[0:v][1:v][2:v]concat=n=3:v=1:a=0[v]"]
+        span_case("frozen", frozen, 11,
+                  '<section class="clip blackout" id="bo-2" data-start="2" data-duration="7"></section>', "freeze")
+
+        # A hold may be quiet but must keep a live picture, and the CTA body must never be black
+        # or frozen (a CTA that fails to decode renders black for 15 s): both still FAIL.
+        root11 = ('<div id="root" data-composition-id="x" data-start="0" data-width="320" '
+                  'data-height="240" data-duration="11.00" data-fps="25">')
+        (ep / "index.html").write_text(root11 + '<section class="clip hold" id="hold-3" data-start="2" '
+                                       'data-duration="7"></section></div>', encoding="utf-8")
+        r6 = run_verify(ep, "frozen-final")
+        check("render-07 NEW: a 7s freeze inside a declared hold still fails",
+              r6.returncode != 0 and "FAIL: 1 freeze span" in r6.stdout, f"rc={r6.returncode}\n{r6.stdout[-800:]}")
+        (ep / "index.html").write_text(root11.replace('11.00', '8.00') + '<video id="ins-cta-paul" '
+                                       'src="media/cta/x.mp4" data-start="2" data-duration="3"></video></div>',
+                                       encoding="utf-8")
+        r7 = run_verify(ep, "black-final")
+        check("render-07 NEW: a black span over the CTA body still fails",
+              r7.returncode != 0 and "FAIL: 1 black span" in r7.stdout, f"rc={r7.returncode}\n{r7.stdout[-800:]}")
 else:
     print("SKIP render-07 synthetic-clip checks: ffmpeg not on PATH")
 
@@ -347,32 +386,74 @@ check("assets-comps-03 NEW: render_cmd_env() pulls HF_CAPTURE_PARALLEL_STREAM fr
 
 # render() must fail a render whose log lacks the streaming-encode gate line, even if the
 # mp4 itself was produced (silent fallback to disk capture must never pass as a clean A/B).
-with tempfile.TemporaryDirectory() as d:
-    fake_demo = Path(d)
-    (fake_demo / "index.html").write_text("<div></div>", encoding="utf-8")
-    pin_ritual.DEMO = fake_demo
-    log = fake_demo / "pin-ritual-9.9.9.log"
-    log.write_text("some other log output, no streaming gate line\n", encoding="utf-8")
-    out_mp4 = fake_demo / "out.mp4"
-    out_mp4.write_bytes(b"not a real mp4, existence is all render() checks post-subprocess")
+# The real HyperFrames log line is JSON (`streaming-encode gate {"renderJobId":"...",
+# "enabled":true,...}`), copied verbatim from a real render_full.log
+# (.worktrees/ep-1974-super-outbreak/episodes/ep-1974-super-outbreak/render_full.log:156) —
+# the old regex `streaming-encode gate.*enabled:true` never matches this JSON form, so the
+# ritual could never pass. Exercise all three cases through the same harness.
+def _run_render_against_log(log_body):
+    # render() opens its log path with "w" (truncating it) as part of the real subprocess
+    # call, so a log pre-written before calling render() would be wiped before the ritual
+    # ever reads it back. The fake subprocess.run must write log_body into the same
+    # stdout=lf file handle render() passes it, the way the real npx child would.
+    with tempfile.TemporaryDirectory() as d:
+        fake_demo = Path(d)
+        (fake_demo / "index.html").write_text("<div></div>", encoding="utf-8")
+        pin_ritual.DEMO = fake_demo
+        out_mp4 = fake_demo / "out.mp4"
+        out_mp4.write_bytes(b"not a real mp4, existence is all render() checks post-subprocess")
 
-    class FakeCompleted:
-        returncode = 0
+        class FakeCompleted:
+            returncode = 0
 
-    orig_run = pin_ritual.subprocess.run
-    orig_which = pin_ritual.shutil.which
-    pin_ritual.shutil.which = lambda name: "npx" if name == "npx" else orig_which(name)
-    pin_ritual.subprocess.run = lambda *a, **k: FakeCompleted()
-    pin_ritual.FFPROBE = pin_ritual.FFMPEG = Path("ffmpeg")
-    try:
-        pin_ritual.render("9.9.9", out_mp4)
-        raised = False
-    except SystemExit as e:
-        raised = "streaming-encode gate" in str(e)
-    finally:
-        pin_ritual.subprocess.run = orig_run
-        pin_ritual.shutil.which = orig_which
-    check("render-09 NEW: render() exits when the log has no 'streaming-encode gate ... enabled:true'", raised)
+        def fake_run(*a, **k):
+            k["stdout"].write(log_body)
+            return FakeCompleted()
+
+        orig_run = pin_ritual.subprocess.run
+        orig_which = pin_ritual.shutil.which
+        pin_ritual.shutil.which = lambda name: "npx" if name == "npx" else orig_which(name)
+        pin_ritual.subprocess.run = fake_run
+        pin_ritual.FFPROBE = pin_ritual.FFMPEG = Path("ffmpeg")
+        try:
+            pin_ritual.render("9.9.9", out_mp4)
+            return False, None
+        except SystemExit as e:
+            return True, str(e)
+        finally:
+            pin_ritual.subprocess.run = orig_run
+            pin_ritual.shutil.which = orig_which
+
+
+import contextlib, io
+_orig_workers = pin_ritual.WORKERS
+for _w, _want in ((1, True), (2, False)):
+    pin_ritual.WORKERS = _w
+    _buf = io.StringIO()
+    with contextlib.redirect_stdout(_buf):
+        _run_render_against_log("streaming-encode gate {\"enabled\":true}\n")
+    check(f"pin-review NEW: [FALLBACK] single-worker line printed iff workers < 2 (workers={_w})",
+          (pin_ritual.FALLBACK_1W in _buf.getvalue()) == _want, _buf.getvalue())
+pin_ritual.WORKERS = _orig_workers
+
+raised, _ = _run_render_against_log("some other log output, no streaming gate line\n")
+check("render-09 NEW: render() exits when the log has no 'streaming-encode gate ... enabled:true'", raised)
+
+REAL_GATE_LINE_TRUE = (
+    '[INFO] streaming-encode gate {"renderJobId":"21a9bb7d-eeaf-4f12-976e-37c2a565e237",'
+    '"enabled":true,"configFlag":true,"outputFormat":"mp4","workerCount":2,'
+    '"durationSeconds":1050.9,"maxDurationSeconds":7200}\n'
+)
+raised, _ = _run_render_against_log(REAL_GATE_LINE_TRUE)
+check("render-10 NEW: render() PASSES on the real JSON gate line (enabled:true) from "
+      "render_full.log — proves the fixed regex matches HyperFrames' actual log format",
+      not raised)
+
+REAL_GATE_LINE_FALSE = REAL_GATE_LINE_TRUE.replace('"enabled":true', '"enabled":false')
+assert '"enabled":false' in REAL_GATE_LINE_FALSE
+raised, msg = _run_render_against_log(REAL_GATE_LINE_FALSE)
+check("render-10 NEW: render() still FAILS on a JSON gate line with enabled:false",
+      raised and "streaming-encode gate" in (msg or ""))
 
 # ---------------------------------------------------------------------------
 # assets-comps-02: the SSIM baseline mp4 lived under the gitignored, worktree-local
@@ -387,6 +468,159 @@ check("assets-comps-02 NEW: the record==pin shortcut also checks the mp4 is stil
       "record is None or not base_mp4.exists()" in main_src)
 check("assets-comps-02 NEW: a PASS renames the candidate into the stable baseline slot",
       "cand_mp4.replace(new_base)" in main_src)
+
+# ---------------------------------------------------------------------------
+# pin policy 26 Sep 26: preflight keeps the drift LOCK but never checks npm currency (a
+# newer release must not stop a render mid-episode); the ritual demo is the committed
+# episodes/demo-pin with its video and tone probes (demo-joplin-90's gitignored media no
+# longer exists anywhere).
+# ---------------------------------------------------------------------------
+with tempfile.TemporaryDirectory() as d:
+    repo = Path(d)
+    (repo / "scripts").mkdir()
+    (repo / "config.yaml").write_text('render:\n  hyperframes_version: "0.8.78"\n', encoding="utf-8")
+    (repo / "scripts" / "render.cmd").write_text("call npx hyperframes@0.8.78 render .\n", encoding="utf-8")
+    orig_pf_run = render_preflight.subprocess.run
+
+    def _no_network(*a, **k):
+        raise AssertionError(f"version_check spawned {a[0] if a else k}")
+    render_preflight.subprocess.run = _no_network
+    try:
+        check("pin-policy NEW: agreeing pins pass with no npm lookup (currency is kickoff's job)",
+              render_preflight.version_check(repo) == 0)
+        (repo / "scripts" / "draft.cmd").write_text("npx hyperframes@0.8.41 render .\n", encoding="utf-8")
+        check("pin-policy NEW: a .cmd pinned to another version is still PIN DRIFT (exit 5)",
+              render_preflight.version_check(repo) == 5)
+    finally:
+        render_preflight.subprocess.run = orig_pf_run
+check("pin-policy NEW: RENDER_PIN_STALE_OK is gone from preflight",
+      "RENDER_PIN_STALE_OK" not in (S / "render_preflight.py").read_text(encoding="utf-8"))
+
+# pin_ritual.DEMO was repointed at a temp dir by the render() harness above; read the source
+check("pin-policy NEW: the ritual demo is episodes/demo-pin",
+      'DEMO = REPO / "episodes" / "demo-pin"' in main_src)
+DEMO = S.parent / "episodes" / "demo-pin"
+demo_refs = []
+for f in [DEMO / "index.html", *(DEMO / "compositions").glob("*.html")]:
+    demo_refs += re.findall(r'(?:src="|url\(\')([^"\'#:]+\.(?:js|ttf|html|woff2?|png|jpg|mp4|webm|wav|mp3|ogg))',
+                            f.read_text(encoding="utf-8"))
+missing = [r for r in demo_refs if not (DEMO / r).exists()]
+check("pin-policy NEW: every file demo-pin references exists", demo_refs and not missing, missing)
+check("pin-review NEW: demo-pin mounts the video and audio probes",
+      {"clips/probe.webm", "sfx/tone.ogg"} <= set(demo_refs), demo_refs)
+# tracked, not merely "not ignored": check-ignore passes vacuously on an untracked file
+_tracked = subprocess.run(["git", "-C", str(DEMO), "ls-files", "-z", "."],
+                          capture_output=True, text=True).stdout.split("\0")
+untracked = [r for r in demo_refs if r not in _tracked]
+check("pin-policy NEW: every file demo-pin references is tracked (a fresh worktree can render it)",
+      not untracked, untracked)
+_bytes = sum((DEMO / f).stat().st_size for f in _tracked if f)
+check("pin-review NEW: tracked demo-pin stays under 2 MB", 0 < _bytes < 2 * 1024 * 1024, _bytes)
+
+# measure()'s silent branch: no astats lines and no audio stream -> levels None, no SystemExit
+_orig_prun = pin_ritual.run
+
+class _Out:
+    def __init__(self, out=""):
+        self.stdout, self.stderr = out, ""
+
+pin_ritual.run = lambda cmd, **k: _Out("24.0\n" if "format=duration" in cmd else "")
+pin_ritual.FFPROBE = pin_ritual.FFMPEG = Path("ffmpeg")
+_m = {}
+try:
+    _m = pin_ritual.measure(Path("silent.mp4"))
+    check("pin-review NEW: measure() on a silent render returns rms_db None without exiting",
+          _m["rms_db"] is None and _m["peak_db"] is None and _m["duration"] == 24.0, _m)
+except SystemExit as e:
+    check("pin-review NEW: measure() on a silent render returns rms_db None without exiting",
+          False, f"SystemExit {e}")
+finally:
+    pin_ritual.run = _orig_prun
+check("pin-review NEW: measure() stores the worker count", _m.get("workers") == pin_ritual.WORKERS)
+
+good = {"workers": 2, "duration": 24.0, "blackdetect": [], "rms_db": -30.0,
+        "video_luma": [159.3, 235.2, 159.3]}
+check("pin-review NEW: identical records with audio + video compare clean",
+      pin_ritual.compare(good, dict(good), 0.997, 0.997) == [])
+check("pin-review NEW: a silent render is drift (mixer unverified), even on both sides",
+      pin_ritual.compare({**good, "rms_db": None}, {**good, "rms_db": None}, 0.997) != [])
+check("pin-review NEW: audio appearing on one side only is drift",
+      pin_ritual.compare({**good, "rms_db": None}, good, 0.997) != [])
+check("pin-review NEW: an RMS shift past RMS_TOL is drift",
+      pin_ritual.compare(good, {**good, "rms_db": -30.0 - 2 * pin_ritual.RMS_TOL}, 0.997) != [])
+check("pin-review NEW: a moved video-probe tracer (seek changed) is drift",
+      pin_ritual.compare(good, {**good, "video_luma": [159.3, 159.3, 159.3]}, 0.997) != [])
+check("pin-review NEW: an unmeasured video probe is drift",
+      pin_ritual.compare({**good, "video_luma": []}, {**good, "video_luma": []}, 0.997) != [])
+check("pin-review NEW: a worker-count mismatch is drift",
+      pin_ritual.compare(good, {**good, "workers": 1}, 0.997) != [])
+check("pin-review NEW: a video-region SSIM under SSIM_MIN is drift",
+      pin_ritual.compare(good, dict(good), 0.997, 0.95) != [])
+check("pin-review NEW: a baseline record without video_luma/workers, or silent/flat, is re-rendered",
+      'or baseline_problems(record)):' in main_src
+      and all(pin_ritual.baseline_problems({k: v for k, v in good.items() if k != drop})
+              for drop in ("workers", "video_luma", "rms_db")))
+
+# (c) the baseline self-check is absolute: a flat trace equals itself, so compare() alone passes it
+check("pin-review2 NEW: a good baseline (trace spans >= VIDEO_LUMA_SPAN_MIN) has no problems",
+      pin_ritual.baseline_problems(good) == [], pin_ritual.baseline_problems(good))
+_flat = {**good, "video_luma": [159.3] * 54}
+check("pin-review2 NEW: a flat video trace fails the baseline self-check",
+      pin_ritual.compare(_flat, dict(_flat), None) == [] and pin_ritual.baseline_problems(_flat) != [])
+check("pin-review2 NEW: a trace spanning just under VIDEO_LUMA_SPAN_MIN fails",
+      pin_ritual.baseline_problems({**good, "video_luma": [100.0, 100.0 + pin_ritual.VIDEO_LUMA_SPAN_MIN - 0.1]}) != [])
+check("pin-review2 NEW: a silent baseline fails the self-check",
+      pin_ritual.baseline_problems({**good, "rms_db": None}) != [])
+# (d) audio is read over the tone's mount window, not the whole file
+check("pin-review2 NEW: astats reads only TONE_WIN (inside the 3-7 s tone mount)",
+      pin_ritual.TONE_WIN == (3.1, 6.9) and "atrim=start={TONE_WIN[0]}:end={TONE_WIN[1]},astats" in main_src)
+
+# (b) --baseline: measure, validate, THEN write; old vs new printed; no "Commit" before validation
+def _baseline_run(rec):
+    with tempfile.TemporaryDirectory() as d:
+        bj = Path(d) / "pin_baseline.json"
+        bj.write_text(json.dumps({"version": "0.8.41", "demo": "demo-joplin-90"}), encoding="utf-8")
+        base = Path(d) / "pin-baseline-0.8.78.mp4"
+        base.write_bytes(b"old")
+        saved = (pin_ritual.BASELINE_JSON, pin_ritual.BASELINE_DIR, pin_ritual.render, pin_ritual.measure,
+                 pin_ritual.setup, pin_ritual.parse_pin, sys.argv)
+        pin_ritual.BASELINE_JSON, pin_ritual.BASELINE_DIR = bj, Path(d)
+        pin_ritual.render = lambda v, mp4: mp4.write_bytes(b"new")
+        pin_ritual.measure = lambda mp4: dict(rec)
+        pin_ritual.setup = lambda: None
+        pin_ritual.parse_pin = lambda repo: "0.8.78"
+        sys.argv = ["pin_ritual.py", "--baseline"]
+        out, err = io.StringIO(), io.StringIO()
+        try:
+            with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+                try:
+                    code = pin_ritual.main()
+                except SystemExit as e:
+                    code = e.code
+        finally:
+            (pin_ritual.BASELINE_JSON, pin_ritual.BASELINE_DIR, pin_ritual.render, pin_ritual.measure,
+             pin_ritual.setup, pin_ritual.parse_pin, sys.argv) = saved
+        return (code, json.loads(bj.read_text(encoding="utf-8")), out.getvalue(), err.getvalue(),
+                base.read_bytes())
+
+_code, _written, _out, _err, _mp4 = _baseline_run(_flat)
+check("pin-review2 NEW: --baseline on a flat trace exits 2 and leaves pin_baseline.json untouched",
+      _code == 2 and _written.get("version") == "0.8.41", (_code, _written))
+check("pin-final NEW: --baseline on a flat trace leaves the baseline mp4 untouched",
+      _mp4 == b"old", _mp4)
+check("pin-review2 NEW: --baseline never prints Commit when validation fails",
+      "Commit" not in _out + _err, _out + _err)
+_code, _written, _out, _err, _mp4 = _baseline_run(good)
+check("pin-review2 NEW: --baseline on a good record exits 0 and writes it",
+      _code == 0 and _written.get("version") == "0.8.78" and _written.get("video_luma") == good["video_luma"],
+      (_code, _written))
+check("pin-final NEW: --baseline on a good record replaces the baseline mp4",
+      _mp4 == b"new", _mp4)
+check("pin-review2 NEW: --baseline prints old vs new version, demo and workers",
+      all(t in _out for t in ("version 0.8.41 -> 0.8.78", f"demo demo-joplin-90 -> {pin_ritual.DEMO.name}",
+                              "workers None -> 2")), _out)
+check("pin-review2 NEW: --baseline prints Commit only after the summary line",
+      "Commit" in _out and _out.index("Commit") > _out.index("re-recorded"), _out)
 
 print()
 if FAILS:

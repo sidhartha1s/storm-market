@@ -5,8 +5,9 @@
    For each pair of overlapping host windows it loads both comps, walks the shared window, and reports any
    OPAQUE box in the upper comp whose rect intersects a visible TEXT rect in the lower comp. */
 import { chromium, chromiumExecutable } from './playwright_env.mjs';
-import { readFileSync, writeFileSync, unlinkSync } from 'fs';
+import { readFileSync, unlinkSync } from 'fs';
 import { join, resolve } from 'path';
+import { hostCss, stageComp } from './stage_comp.mjs';
 
 const ep = resolve(process.argv[2] || '.');   // usage: node scripts/occlusion_check.mjs <episode dir>
 const idx = readFileSync(join(ep, 'index.html'), 'utf-8');
@@ -25,13 +26,10 @@ for (const a of hosts) for (const b of hosts) {
 }
 console.log(`${hosts.length} hosts, ${pairs.length} overlapping pair(s)`);
 
-const browser = await chromium.launch({ executablePath: chromiumExecutable() });
+const browser = await chromium.launch({ executablePath: chromiumExecutable(), args: ['--allow-file-access-from-files'] });
+const HOST_CSS = hostCss(idx);
 const stage = async (page, file) => {
-  const raw = readFileSync(join(ep, 'compositions', file), 'utf-8');
-  const m = raw.match(/<template>([\s\S]*?)<\/template>/);
-  const body = m ? m[1] : raw;
-  const tmp = join(ep, 'compositions', '_occ_' + file);
-  writeFileSync(tmp, `<!doctype html><html><head><meta charset="UTF-8"><script src="../gsap.min.js"></script></head><body style="margin:0;background:#000">${body}</body></html>`);
+  const tmp = stageComp(ep, join(ep, 'compositions', file), HOST_CSS, 'occ-');
   await page.goto('file:///' + tmp.split('\\').join('/'), { waitUntil: 'load' });
   return tmp;
 };

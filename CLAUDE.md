@@ -6,15 +6,22 @@ files disagree, fix it in the same PR and say which one won.
 
 | Need | Home |
 |---|---|
-| Kickoff preflight, phase map, library-first graphics flow | `skills/storm-episode/SKILL.md`, `skills/mini-storms/SKILL.md` (junctioned into `~/.claude/skills/`, so a skill edit is a repo commit) |
-| Editing architecture, hook contract, CTA contract, chapter blackout table, on-screen text rules, panel anatomy and exits, Content ID protocol, insert gate | `DESIGN.md` (read before any episode work) |
+| Kickoff preflight, phase map | `skills/storm-episode/SKILL.md`, `skills/mini-storms/SKILL.md` (junctioned into `~/.claude/skills/`, so a skill edit is a repo commit) |
+| Editing architecture, hook contract, CTA contract, chapter blackout table, cadence and sync rules, Content ID protocol, insert gate | `DESIGN.md` (read before any episode work) |
+| Every motion-graphics rule: file contract, safe zones and the presenter circle, glass card, motion, exits, on-screen text, what each gate parses, verification | `references/mg-quickref.md` (goes into every MG builder's brief) |
+| Channel palette, fonts, type-tier px values, TV-readability floor, CSS custom properties | `library/inhouse/snippets/tokens.md` (swatch: `library/inhouse/snippets/brand-swatch.html`) |
 | Script method, hook wording, humanise pass, scaling | `references/script-os.md`, `script-framework.md`, `script-scaling.md`, `humanise-rules.md` |
+| Violence/death words that trip YouTube's transcript scan, with alternatives; gate `scripts/flag_words.py episodes/<slug>` | `references/flag-words.md` |
 | Titles and thumbnails | `references/packaging-rules.md` |
 | News-lane rulebook, templates, clip pools | `references/mini-storms/FORMAT.md`, `library/mini-storms/`, `library/mini-storms/<event>/` (pools are reused across angles) |
-| Shorts spec, slugs `sh-<parent>-<n>`, weekly scan | `references/shorts/PLAN.md`, `references/shorts/competitors-2026-09-15.md`, templates `library/shorts/`, `scripts/shorts_scan.py`, gate `node scripts/shorts_lint.mjs episodes/<slug>` |
+| Shorts spec, slugs `sh-<parent>-<n>`, weekly scan | `references/shorts/PLAN.md`, `references/shorts/competitors-2026-09-15.md`, templates `library/shorts/` (not created yet), `scripts/shorts_scan.py`, gate `node scripts/shorts_lint.mjs episodes/<slug>` |
 | Niche proof, teardowns, slate | `references/script-teardown.md`, `references/teardowns/`, `references/roadmap-2026-09.md` |
-| Measured gotchas, newest first | `LEARNINGS.md`: read before every build, update the same session as any owner correction or measured surprise |
+| Measured gotchas, newest first | `learnings/` (`README.md` says which file serves which job): read yours before building |
 | Pins, paths, CTA file and window | `config.yaml` |
+| Open tooling and pipeline work; dated decisions (read both at session start, update the same session) | `ops/tasks.md`, `ops/decisions.md` |
+
+An owner correction or a measured surprise lands in its single home (`references/mg-quickref.md`, a gate, or the right
+`learnings/` file) the same session.
 
 ## Two lanes, two skills
 - `/storm-episode`: the documentary. 13 to 23 min is the default band, not a cap. Confirm length per episode.
@@ -35,20 +42,8 @@ files disagree, fix it in the same PR and say which one won.
 - His phrases are verbatim. Never paraphrase a line he wrote.
 - The defects he names are a sample of that KIND of defect. Find the rest of that kind. This is not licence to invent new kinds.
 
-## Graphics & editorial taste
-- **Motion graphics must have motion.** Every composition carries a continuous element across its whole window. A long
-  hold keeps something alive (lines, pulses, drift). `beat_density.py` target: zero compositions with a motionless stretch of 4 s or more.
-- **Show it.** Put the thing mid-frame or across the right side. A stat as text over b-roll is a miss.
-- **Any spatial claim gets a map.** Fit routes to real landmarks: `references/editing-patterns/ep3-map-route-fit.html`.
-- **No ambiguous labels.** Name the thing on screen ("WHAT THEY EXPECTED · ROPE FUNNEL").
-- **The picture must not contradict the voice.** No asset means an honest designed card, never fabricated footage.
-- **Match the shipped panel anatomy, and check it.** Reference compositions live in `references/editing-patterns/`.
-  Episode folders are deleted after publish, so copy a shipped pattern there the same session. Never edit a shipped episode.
-- **Duration is earned.** A video beat may run 12 to 15 s when it matches the narration. A still runs 3 to 6 s, always
-  with zoom or pan, then cuts. Prefer video everywhere. Floor from shipped cuts: ep2 had 187 windows, 10.0 s median,
-  2 picture gaps. Uncovered picture gaps in the dozens is a bug.
+## Editorial and sound taste
 - **Grading:** one subtle grade on all broadcast, news and private clips; stock and public domain exempt. Doubt about a grade or a claim risk: stop and ask.
-- **Audio-first open:** the episode opens with audio, mid-action. Never on black or a silent visual.
 - **Sound:** one bed across the episode plus swells at script peaks (about every 45 to 60 s) is the default. WHICH
   sounds is the editor's choice per episode; nothing is auto-wired into future episodes. Sources: `assets/sfx/`,
   `assets/sfx/owner-2026-08-13/`, DeAPI tracks (`assets/sfx/deapi/README.md`, keys in the repo `.env`), or ffmpeg-made.
@@ -59,11 +54,7 @@ files disagree, fix it in the same PR and say which one won.
   failure-thin. Source audio like clips: 911 calls, presser sound, survivor voice, sirens, ambience, per-act music with character.
 - **"Siren"** means the tornado or civil-defence siren (`soundreality-civil-defense-siren-128262.mp3`). **"Weewoo"** means an emergency-vehicle siren.
 - **The script never refers to its own structure.** No "in this video", no recap, no outro summary.
-- **Graphics text:** proper case, never all-lowercase. One idea per frame, no stat spray. A graphic holds until its
-  point lands, never starts before its trigger or after a blank gap. Three type tiers per designed card (small under
-  26 px, mid, big 52 px and up). Dates and figures are red Abril popfigs, 3 words or fewer, mid-screen.
-- **Chapter blackout is mandatory** between acts and hand-placed. Duration table in DESIGN.md "Chapter blackout".
-- **Panels slide out, never vanish.** Timing in DESIGN.md section 5.
+- **Chapter blackout is mandatory** between acts and hand-placed (DESIGN.md "Editing grammar").
 - **Sourcing bar:** find 3 to 4 times more candidates than needed. "Short of clips" means stop and source better.
   Split long sources with PySceneDetect (validate the install first). Spread cuts across the episode, never back to back.
 - **No visible windows, ever.** Every scheduled or background command runs through `scripts/run_hidden.vbs`. A run that
@@ -104,51 +95,33 @@ Script method and hook wording live in `references/script-os.md` and `script-fra
 - No AI-generated witnesses, no fabricated quotes. Real quotes come from NWS assessments or news archives, shown as attributed text.
 
 ## Pipeline
-Per episode in `episodes/<slug>/`. The skill's phase map points at these step numbers.
+Per episode in `episodes/<slug>/`. The skill's phase map points at these step numbers. Never edit a shipped episode.
 1. `edit_script.md`: typed segment list plus per-beat visual intent, written on `references/script-scaling.md`. Zero open
    `[verify]` markers before TTS. The CTA hinge is named (segment before, segment after, estimated time). Owner signs off.
 2. TTS: `python3 scripts/tts_episode.py episodes/<slug>` makes per-segment wavs at the lane tempo plus words.json (faster-whisper) in one pass.
 3. Sourcing: the agent downloads everything itself, 2 to 3 frame-checked candidates per key beat. The owner confirms only `insert` clips.
-4. Compose `index.html` by hand as a hyperframes composition, one sub-composition per act. JS or WAAPI animation only:
-   CSS @keyframes disables fast-capture. Assets in `media/`, CTA staged into `media/cta/`.
+4. Compose `index.html` by hand as a hyperframes composition, one sub-composition per act, graphics library-first and built to
+   `references/mg-quickref.md` (worked example: `library/inhouse/examples/joplin-stat-panel.html`). Assets in `media/`, CTA staged into `media/cta/`.
 5. Render: see "the render is the LAST step".
 6. QC, in order: (a) walk every graphic, card and clip as a viewer and fix what idles; (b) `lint_timeline.py` exit 0,
-   including the no-repeat rule (reuse needs `data-callback="reason"`, 2 uses max, last 90 s exempt); (c) the static
-   suite, all green; (d) verify changed compositions per "Verifying graphics"; (e) after the render only,
+   including the no-repeat rule (reuse needs `data-callback="reason"`, 3 uses max, last 90 s exempt); (c) the static
+   suite, all green; (d) verify changed compositions per `references/mg-quickref.md` "Verify"; (e) after the render only,
    `scripts/verify_render.sh <episode-dir> <basename>`. Never call a rule fixed from your shot map: re-run the gates on the final `index.html`.
 7. Deliverables: `python3 scripts/master_deliverables.py episodes/<slug> <basename> --hevc` makes the 1080p master at
    -14 LUFS, the EN SRT (needs the `nx-*` id on narration audio) and the HEVC archive (needs the PATH ffmpeg 8.1.1, not
    the 8.1.2 shared build). The 1080p `-master.mp4` IS the upload file, no upscale. `metadata.md` at publish: first URL
    is `channel.cta.first_link`, then the "book mentioned at mm:ss" line, no chapter marker at the CTA, category Education, type Overview.
 - Chunk a render only if a single render proves unstable.
-- Graphics are library-first: browse `library/` (`python3 -m http.server 8765` from `library/`, then `/gallery/`), copy the
-  closest match into the episode by hand and retune per beat. `npx hyperframes add <name>` lands in `library/official/`, never
-  in an episode. Worked example: `library/inhouse/examples/joplin-stat-panel.html`.
-
-## Verifying graphics: read the code, do not photograph it
-- Anything the code states is verified by reading the code: duration, tween presence and coverage, position, size,
-  colour, type tiers, text. The gates assert these in the DOM. HTML cannot have garbled text.
-- A frame confirms, it never discovers. Take frames only for what code cannot state: how a NEW or changed composition
-  looks as a whole, and real footage. One vision pass per composition, three settle frames picked from its tween
-  schedule (reveal done, mid-hold, pre-exit), never a fixed-interval sweep:
-  `node scripts/graphics_qc.mjs episodes/<slug>` then `python3 scripts/comp_sheets.py episodes/<slug> renders/<cut>.mp4 <comp>[,<comp>]`
-  (writes `sheets/frame-qc/index.html` with each frame's timestamp and why it was picked). One subagent reads them, never the main context.
-- The reader FAILS a frame only for: garbled or cut-off text, an element out of frame or hidden behind another, a
-  picture that contradicts the narration, or nothing moving where motion is due. It ignores position shifts under
-  8 px, timing under 0.2 s and taste calls; those are notes for the owner, not fixes.
-- At most two fix rounds per composition. After the second, ship and list what is left for the owner.
-- Never build a measuring rig for a property the code or an existing gate already answers.
-- A hole in a gate gets fixed in the gate, not worked around with a render.
 
 ## HARD RULE: worktree isolation
 Never build or edit in the main checkout; parallel sessions share it. First action of any session: `git worktree list`
 and `git status`. Before the first write: `git worktree add .worktrees/<task> -b <branch> origin/main`.
 
 ## HARD RULE: the pin stays current
-`config.yaml hyperframes_version` is changed only by `scripts/pin_ritual.py`, run from a worktree, bump committed by PR.
-`render_preflight.py` hard-fails on pin drift and hard-fails a FULL render on a stale pin; an unreachable npm never
-blocks. `RENDER_PIN_STALE_OK=1` is the owner's override, never yours. A newer version can be stricter, not just better:
-read the changelog on a multi-version bump.
+The owner runs the latest hyperframes (upstream ships fixes daily). Episode kickoff runs `python3 scripts/pin_ritual.py
+--check-only`; stale means run the ritual (A/B on `episodes/demo-pin`) and PR the bump before the first render, never mid-episode.
+The pin is locked: `config.yaml hyperframes_version` and every `npx hyperframes@X` in `scripts/*.cmd` agree, and only the
+ritual changes them. `render_preflight.py` fails on drift, never on currency. Read the changelog on every bump.
 
 ## HARD RULE: do not write code for what reasoning already does
 - A script earns its place only when the check is mechanical, repeated, and must never be forgotten: hard gates, batch
@@ -168,8 +141,7 @@ python3 scripts/run_gates.py episodes/<slug>   # the whole pre-render suite in o
 ```
 The gate list and its order live in `scripts/run_gates.py`. Minis also run `node scripts/freeze_scan.mjs episodes/<slug>` (mini-storms skill).
 - Before any render: listen to the full audio mixdown and watch the hook. A layer known to be below spec means stop and report.
-- Every rule a builder needs (safe zones, the presenter circle box, type tiers) goes in the builder's brief BEFORE the
-  build, so the draft is never the first place a collision shows up.
+- Every MG builder's brief carries `references/mg-quickref.md` BEFORE the build, so the draft is never the first place a collision shows up.
 - Do not start a render while any builder is still editing. No live subagent, quiet `git status`, then launch.
 - One heavy job at a time; `scripts/render_busy.py` guards it. No gates, Playwright or subagent browsers beside a render.
 - Render only with `scripts\render.cmd <slug> <draft|full> [out-basename]`. Default 3 workers; full renders on this box
@@ -184,6 +156,6 @@ The gate list and its order live in `scripts/run_gates.py`. Minis also run `node
   into a temp dir, then `clip_report.py` resolves them exactly.
 
 ## Git
-All git and gh as `sidhartha1s`. Small PRs, code-reviewer, rebase-merge, docs sweep in the same PR. `python3`, never
+All git and gh as `sidhartha1s`. Small PRs: `/simplify`, tests + E2E, then `code-reviewer` on Opus; merge only after the owner's OK; rebase-merge, docs sweep in the same PR. `python3`, never
 `python`. Node 22 or newer. Before opening and before merging any PR that touches `scripts/`, run
 `python3 scripts/e2e.py episodes/<slug>` on a live episode: every self-check green and no tool crash.

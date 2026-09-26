@@ -24,11 +24,9 @@ Teardowns + NexLev data: `references/mini-storms/teardowns/README.md`, `referenc
    Absolute paths in every message to the owner.
 3. Read FROM THE WORKTREE, in this order: `references/mini-storms/FORMAT.md` (this format's
    rules), then repo `CLAUDE.md` "Footage rules" + "Voice" + HARD RULEs, `config.yaml`. Skip
-   DESIGN.md's documentary editing architecture except: on-screen text rules, popfig, CTA contract,
-   Content ID protocol.
-4. Pin check: `npm view hyperframes version` against `config.yaml render.hyperframes_version`; newer on npm ⇒
-   `scripts/pin_ritual.py` at kickoff, never mid-render. (`render_preflight.py` needs a composed episode;
-   `render.cmd` runs it.)
+   DESIGN.md's documentary editing architecture except: CTA contract, Content ID protocol. Every MG rule
+   (on-screen text, popfig, glass card, the presenter circle): `references/mg-quickref.md`.
+4. Pin current before the first render: `python3 scripts/pin_ritual.py --check-only`; exit 3 (stale) ⇒ run `python3 scripts/pin_ritual.py` (hidden schtasks) and PR the bump now, never mid-video; exit 4 (npm unreachable) ⇒ proceed on the current pin and note it in the kickoff summary.
 5. Generator tripwire still applies: no script may WRITE episode HTML. The breaking template
    compositions in `library/mini-storms/` are copied and hand-retuned per cut.
 
@@ -42,7 +40,7 @@ Teardowns + NexLev data: `references/mini-storms/teardowns/README.md`, `referenc
 | 4. TTS + words | 10 min | `python3 scripts/tts_episode.py episodes/ms-<slug>`: TTS, lane tempo, words.json in one pass |
 | 5. Sourcing | 35 min | `media/` + `provenance.csv`; pool reused from `library/mini-storms/<topic>/` first |
 | 6. Compose | 40 min | `index.html` from the breaking template set; red popfigs on every number/place/date, every overlay start resolved from `audio/*.words.json` cues (never estimated seconds; build fails on an unmatched cue) |
-| 7. Static QC | 15 min | `python3 scripts/run_gates.py episodes/ms-<slug>` + `node scripts/freeze_scan.mjs episodes/ms-<slug>`, then the settle-frame pass in CLAUDE.md "Verifying graphics" (new/changed comps only, one subagent reader, two fix rounds max) |
+| 7. Static QC | 15 min | `python3 scripts/run_gates.py episodes/ms-<slug>` + `node scripts/freeze_scan.mjs episodes/ms-<slug>`, then the settle-frame pass in `references/mg-quickref.md` "Verify" (new/changed comps only, one subagent reader, two fix rounds max) |
 | 8. Render | 25 min | `scripts\render.cmd ms-<slug> draft` hidden via run_hidden.vbs → owner preview → `full` |
 | 9. Deliverables | 10 min | `master_deliverables.py --hevc`, metadata.md, thumbnail still candidates, private upload |
 
@@ -153,13 +151,13 @@ narration speech spans, hidden in the hook / CTA / close. Deliverables: `master_
 - **No edits under an episode while its render is alive** (a worker reloading mid-render captures a mixed state; JMA draft 2 thrown away 17 Sep 26). Composers wait for the lead's "render done".
 - **Never write `textContent` on an element that has children** (it deletes them at runtime; the sweeping rule span vanished after the first caption in 7 alert-levels comps while every gate passed, 17 Sep 26). Swap text on a dedicated text span.
 - **The freeze scan runs before the render, not after it.** `node scripts/freeze_scan.mjs episodes/<slug> [--comp a,b]` stages each comp with the host styles, steps its timeline every 0.5 s and runs the render check's own `freezedetect` on the screenshots (about 50 s per comp, against 13 to 24 min per draft). Composers iterate on it until PASS and read its `sheets-pre/` contact sheets; a render is confirmation, never the detector. It is the one browser gate allowed beside a live render (`render_busy.py --light`, needs 2 GB free, one scan at a time). `scripts/comp_lint.py` (inside sweep) fails text written on an element with children and text set in `onStart`/`onComplete`.
-- **Every draft gets the settle-frame pass in CLAUDE.md "Verifying graphics" (new/changed comps only, one subagent reader, two fix rounds max)** before the owner sees it; green gates alone never clear a draft.
+- **Every draft gets the settle-frame pass in `references/mg-quickref.md` "Verify" (new/changed comps only, one subagent reader, two fix rounds max)** before the owner sees it; green gates alone never clear a draft.
 
 ### 7–9. QC, render, ship
 Same scripts and hidden-window rules as storm-episode. Static gates → 3–5 slice renders (40 s windows at 10 fps
 around every new card, the CTA and the close; strip read by a subagent) → ONE draft → owner preview → full.
 **One heavy job at a time:** `scripts/render_busy.py` refuses gates and ffmpeg batches while a render is alive.
-Frames: the settle-frame pass in CLAUDE.md "Verifying graphics" (new/changed comps only, one subagent reader, two fix rounds max). `metadata.md`: first URL = `channel.cta.first_link`,
+Frames: the settle-frame pass in `references/mg-quickref.md` "Verify" (new/changed comps only, one subagent reader, two fix rounds max). `metadata.md`: first URL = `channel.cta.first_link`,
 courtesy credits block listing every non-PD source with @handles, chapters at each idea block.
 
 ## Standing owner rules for this format (2026-09-08)
@@ -178,7 +176,7 @@ courtesy credits block listing every non-PD source with @handles, chapters at ea
 - ≥8:00 runtime for mid-rolls, always.
 - Thumbnail text top-of-frame, owner authors the final thumbnail.
 - Reuse the clip pool across angles; reorder, never replay the same sequence.
-- LEARNINGS.md updated the same session as any owner correction, under a `## breaking` heading.
+- An owner correction lands in its single home the same session: `references/mg-quickref.md`, a gate, or the right `learnings/` file (newest first).
 
 ## Open items (ask in the ship summary, not before)
 - Instagram cookie login on this box has not been tested yet; first run verifies with one reel.

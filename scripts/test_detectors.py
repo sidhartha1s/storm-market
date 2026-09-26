@@ -56,7 +56,7 @@ assert code == 1 and 'not parsed' in out, out
 # media/act1/ — prove both defects on the ERA_FILES fixture.
 OLD_NPC = S / '_old_npc_tmp.py'
 OLD_NPC.write_text(subprocess.run(['git', 'show', 'ad3c9871:scripts/narration_picture_check.py'],
-                                   cwd=S.parent, capture_output=True, text=True).stdout, encoding='utf-8')
+                                   cwd=S.parent, capture_output=True, text=True, check=True).stdout, encoding='utf-8')
 with tempfile.TemporaryDirectory() as d:
     ep = Path(d)
     _mk(ep, ERA_FILES)
@@ -65,6 +65,39 @@ with tempfile.TemporaryDirectory() as d:
         f'old code should have missed this (dashed id + non-standard archival dir) but got: {r.stdout}'
 OLD_NPC.unlink()
 print('narration_picture_check self-check PASS (dashed ids, provenance-era archival, missed-segment gate)')
+
+# Opus review: on-screen media that never gets classified archival (no provenance era row, and
+# it lives in media/act1/ — not an ARCHIVAL_DIR_NAMES folder) must not silently PASS with nothing
+# checked. Loud [WARN], still exit 0 (owner chose warn, not fail), and the summary count must only
+# include rows actually classified archival (year < MODERN_FROM), never modern rows.
+EMPTY_WARN_FILES = {
+    'index.html': '<div data-start="0" data-duration="2" data-track-index="1" src="media/act1/new.jpg"></div>\n'
+                   '<div data-start="2" data-duration="2" data-track-index="1" src="media/act1/untracked.jpg"></div>\n'
+                   '<audio id="nx-a1-s1" data-start="0" data-duration="4"></audio>\n',
+    'audio/a1-s1.words.json': json.dumps([{"start": 0.1, "text": "2025"}]),
+    # new.jpg has a provenance row but it is modern (must not count as archival); untracked.jpg
+    # has no provenance row at all AND lives outside ARCHIVAL_DIR_NAMES ("act1", not "archival").
+    'media/act1/provenance.csv': 'file,source_url,license,credit,era,note\n'
+                                  'new.jpg,https://example,Public domain,Example Archive,2025,modern photo\n',
+}
+code, out = npc(EMPTY_WARN_FILES)
+assert code == 0 and '[WARN] era check had nothing to check: 1 on-screen media file(s) had no provenance era' in out, out
+assert 'archival assets tagged: 0' in out, out  # the one provenance row is modern, must not be counted
+
+OLD_MAIN_NPC = S / '_old_main_npc_tmp.py'
+# pinned pre-fix commit, never origin/main: after merge origin/main holds the fix and this would go red
+OLD_MAIN_NPC.write_text(subprocess.run(['git', 'show', 'f1f435d7:scripts/narration_picture_check.py'],
+                                        cwd=S.parent, capture_output=True, text=True, check=True).stdout, encoding='utf-8')
+try:
+    with tempfile.TemporaryDirectory() as d:
+        ep = Path(d)
+        _mk(ep, EMPTY_WARN_FILES)
+        r = subprocess.run([sys.executable, str(OLD_MAIN_NPC), str(ep)], capture_output=True, text=True)
+        assert r.returncode == 0 and '[WARN]' not in r.stdout, \
+            f'old code (f1f435d7) should have missed this — silent PASS, no warning: {r.stdout}'
+finally:
+    OLD_MAIN_NPC.unlink()
+print('narration_picture_check self-check PASS (empty-archival loud warn, archival-only count)')
 
 GSAP = (S / '..' / 'library' / 'gallery' / 'gsap.min.js').resolve()
 
@@ -77,9 +110,9 @@ def _stage_ep(files):
     return ep
 
 
-def old_rev(rel_path, tmp_name):
+def old_rev(rel_path, tmp_name, rev='ad3c9871'):
     out = S / tmp_name
-    out.write_text(subprocess.run(['git', 'show', f'ad3c9871:scripts/{rel_path}'],
+    out.write_text(subprocess.run(['git', 'show', f'{rev}:scripts/{rel_path}'],
                                    cwd=S.parent, capture_output=True, text=True).stdout, encoding='utf-8')
     return out
 
@@ -127,6 +160,34 @@ assert r_old.returncode == 0 and 'dup-fact' not in r_old.stdout, \
 shutil.rmtree(ep, ignore_errors=True)
 print('overlap_check self-check PASS (suppressEvents seek, same-comp + overlay dup-fact)')
 
+# Shared staging (stage_comp.mjs): a comp whose timeline comes from a root-relative script
+# (`vendor/x.js`, the Three.js convention) must register in overlap_check and occlusion_check the
+# same way it does in graphics_qc. Before 26 Sep 26 both staged without <base href="../">, so
+# every WebGL comp failed "comp timeline not registered" (MG eval 2).
+REL_FILES = {
+    'index.html':
+        '<div id="host-g-rel" data-composition-id="g-rel" data-composition-src="compositions/g-rel.html" '
+        'data-start="0" data-duration="3" data-track-index="2" data-width="1920" data-height="1080"></div>\n',
+    'vendor/rel.js':
+        "window.__timelines = window.__timelines || {};\n"
+        "window.__timelines['g-rel'] = gsap.timeline({ paused: true }).to('#g-rel-lbl', { x: 100, duration: 3 }, 0);\n",
+    'compositions/g-rel.html':
+        '<!doctype html><html><head><meta charset="UTF-8"></head><body><template>\n'
+        '<div id="root" style="position:absolute;inset:0">\n'
+        '  <span id="g-rel-lbl" style="position:absolute;left:200px;top:200px;font-size:40px;color:#fff">Label</span>\n'
+        '</div>\n<script src="vendor/rel.js"></script>\n</template></body></html>\n',
+}
+ep = _stage_ep(REL_FILES)
+r = subprocess.run(['node', str(S / 'overlap_check.mjs'), str(ep)], capture_output=True, text=True)
+assert 'OVERLAP CHECK v2' in r.stdout and 'not registered' not in r.stdout, r.stdout + r.stderr
+old_ov = old_rev('overlap_check.mjs', '_old_overlap_rel_tmp.mjs', 'f3a6fece')
+r_old = subprocess.run(['node', str(old_ov), str(ep)], capture_output=True, text=True)
+old_ov.unlink()
+assert 'comp timeline not registered when staged: g-rel' in r_old.stdout, \
+    f'old staging should have missed the root-relative script but got: {r_old.stdout}'
+shutil.rmtree(ep, ignore_errors=True)
+print('stage_comp self-check PASS (root-relative comp scripts register in overlap_check)')
+
 # PR #88 review: g-scale-hook's TOWNS[] lists "TANNER · AL" twice (Tanner was hit by two
 # separate F5s, distinct times) — a bare repeated place-name label is not a duplicate FACT.
 # Same town + different time must PASS; an identical row (same town AND same time) must FAIL,
@@ -170,12 +231,13 @@ assert code == 1 and 'dup-fact' in out, f'an identical repeated row must still d
 print('overlap_check self-check PASS (repeated place label vs. genuinely repeated row)')
 
 # ---------------------------------------------------------------- graphics_qc.mjs
-# qc-gates-07 (idle-budget HARD) + assets-comps-05 (host duration vs tl duration): a 3s timeline
-# mounted in a 6s host window — frozen tail undetected and idle-budget only a warning before.
+# qc-gates-07 (stillness HARD) + assets-comps-05 (host duration vs tl duration): a 3s timeline
+# mounted in a 7s host window — frozen tail undetected and idle only a warning before. Since
+# 26 Sep 26 stillness is one number: a 3 s frozen tail passes, a 4 s one fails as ERROR [idle].
 GQC_FILES = {
     'index.html':
         '<div id="host-y-short" data-composition-id="y-short" data-composition-src="compositions/y-short.html" '
-        'data-start="0" data-duration="6" data-track-index="2" data-width="1920" data-height="1080"></div>\n',
+        'data-start="0" data-duration="7" data-track-index="2" data-width="1920" data-height="1080"></div>\n',
     'compositions/y-short.html':
         '<!doctype html><html><head><meta charset="UTF-8"></head><body><template>\n'
         '<div id="root" style="position:absolute;inset:0;background:#000">\n'
@@ -187,14 +249,92 @@ GQC_FILES = {
 }
 ep = _stage_ep(GQC_FILES)
 r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
-assert r.returncode == 1 and 'ERROR [short-duration]' in r.stdout and 'ERROR [idle-budget]' in r.stdout, r.stdout + r.stderr
+assert r.returncode == 1 and 'ERROR [short-duration]' in r.stdout and 'ERROR [idle]' in r.stdout, r.stdout + r.stderr
 old_gqc = old_rev('graphics_qc.mjs', '_old_graphics_qc_tmp.mjs')
 r_old = subprocess.run(['node', str(old_gqc), str(ep)], capture_output=True, text=True)
 old_gqc.unlink()
 assert 'short-duration' not in r_old.stdout and 'ERROR [idle-budget]' not in r_old.stdout, \
     f'old code should have missed the frozen tail and only warned on idle-budget but got: {r_old.stdout}'
 shutil.rmtree(ep, ignore_errors=True)
-print('graphics_qc self-check PASS (short-duration vs host window, idle-budget promoted to hard)')
+# the 3 s tween ends at 3 s: the 7 s host above (4.0 s tail) fails; a 6.9 s host (3.9 s tail) passes.
+# Stillness counts from the END of motion (as beat_density does), so 6.9 s passing proves a
+# beat-start-to-cut measure is gone.
+ep = _stage_ep({**GQC_FILES, 'index.html': GQC_FILES['index.html'].replace('data-duration="7"', 'data-duration="6.9"')})
+r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
+shutil.rmtree(ep, ignore_errors=True)
+assert '[idle]' not in r.stdout, r.stdout
+print('graphics_qc self-check PASS (short-duration vs host window, stillness one number: 4 s hard)')
+
+# A full-frame canvas (Three.js/WebGL) is a rendered background the DOM cannot read. Before
+# 26 Sep 26 it counted as "flat background", which with 1 type tier and few DOM elements made every
+# WebGL comp 'undesigned' (MG eval 2). Old code: undesigned; new code: not.
+CANVAS_FILES = {
+    'index.html':
+        '<div id="host-g-cv" data-composition-id="g-cv" data-composition-src="compositions/g-cv.html" '
+        'data-start="0" data-duration="3" data-track-index="2" data-width="1920" data-height="1080"></div>\n',
+    'compositions/g-cv.html':
+        '<!doctype html><html><head><meta charset="UTF-8"></head><body><template>\n'
+        '<div id="root" style="position:absolute;inset:0;background:#000">\n'
+        '  <canvas id="g-cv-gl" width="1920" height="1080" style="position:absolute;left:0;top:0"></canvas>\n'
+        '  <span id="g-cv-lbl" style="position:absolute;left:300px;top:300px;font-size:40px;color:#fff">EF5</span>\n'
+        '</div>\n<script>\nwindow.__timelines = window.__timelines || {};\n'
+        'const tl = gsap.timeline({ paused: true });\n'
+        "tl.fromTo('#g-cv-lbl', { x: 0 }, { x: 300, duration: 3, ease: 'power3.out' }, 0);\n"
+        "window.__timelines['g-cv'] = tl;\n</script>\n</template></body></html>\n",
+}
+ep = _stage_ep(CANVAS_FILES)
+r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
+assert '[graphics_qc]' in r.stdout and 'undesigned' not in r.stdout, r.stdout + r.stderr
+old_gq = old_rev('graphics_qc.mjs', '_old_gqc_canvas_tmp.mjs', 'f3a6fece')
+r_old = subprocess.run(['node', str(old_gq), str(ep)], capture_output=True, text=True)
+old_gq.unlink()
+assert 'ERROR [undesigned] flat background' in r_old.stdout, f'old code should flag the canvas comp: {r_old.stdout}'
+shutil.rmtree(ep, ignore_errors=True)
+print('graphics_qc self-check PASS (a full-frame canvas counts as a designed background)')
+
+# The Three.js template animates by redrawing its canvas from a timeline-level onUpdate; the only
+# GSAP child is a padding tween on {}. Old code: 'fade-only' (0 kinetic tweens) and a frozen
+# window; new code: the onUpdate renderer is one continuous kinetic span.
+DRIVEN_FILES = {
+    'index.html': CANVAS_FILES['index.html'],
+    'compositions/g-cv.html':
+        '<!doctype html><html><head><meta charset="UTF-8"></head><body><template>\n'
+        '<div id="root" style="position:absolute;inset:0;background:#000">\n'
+        '  <canvas id="g-cv-gl" width="1920" height="1080" style="position:absolute;left:0;top:0"></canvas>\n'
+        '</div>\n<script>\nwindow.__timelines = window.__timelines || {};\n'
+        'const tl = gsap.timeline({ paused: true });\n'
+        "const cx = document.getElementById('g-cv-gl').getContext('2d');\n"
+        "tl.eventCallback('onUpdate', () => { cx.fillStyle = '#123'; cx.fillRect(0, 0, 1920, 1080); "
+        "cx.fillStyle = '#fff'; cx.fillRect(200 + tl.time() * 300, 400, 80, 80); });\n"
+        "tl.to({}, { duration: 3 }, 0);\nwindow.__timelines['g-cv'] = tl;\n</script>\n</template></body></html>\n",
+}
+ep = _stage_ep(DRIVEN_FILES)
+r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
+assert '[graphics_qc]' in r.stdout and 'fade-only' not in r.stdout and '[idle]' not in r.stdout, r.stdout + r.stderr
+old_gq = old_rev('graphics_qc.mjs', '_old_gqc_canvas_tmp.mjs', 'f3a6fece')
+r_old = subprocess.run(['node', str(old_gq), str(ep)], capture_output=True, text=True)
+old_gq.unlink()
+assert 'ERROR [fade-only]' in r_old.stdout, f'old code should call the canvas renderer fade-only: {r_old.stdout}'
+shutil.rmtree(ep, ignore_errors=True)
+print('graphics_qc self-check PASS (an onUpdate canvas renderer counts as continuous motion)')
+
+# Negatives: both relaxations need a canvas covering a quarter of the frame, and the kinetic span
+# also needs the timeline onUpdate. A 100 px canvas or a missing onUpdate keeps the old verdicts.
+small = lambda s: s.replace('width="1920" height="1080"', 'width="100" height="100"')
+cv = DRIVEN_FILES['compositions/g-cv.html']
+cut = cv.index("tl.eventCallback('onUpdate'")
+no_update = cv[:cut] + cv[cv.index('\n', cut) + 1:]
+for files, want, why in (
+    ({**CANVAS_FILES, 'compositions/g-cv.html': small(CANVAS_FILES['compositions/g-cv.html'])},
+     'ERROR [undesigned] flat background', 'a 100 px canvas is not a designed background'),
+    ({**DRIVEN_FILES, 'compositions/g-cv.html': small(cv)}, 'ERROR [fade-only]', 'a 100 px canvas excuses no stillness'),
+    ({**DRIVEN_FILES, 'compositions/g-cv.html': no_update}, 'ERROR [fade-only]', 'a canvas without onUpdate is still'),
+):
+    ep = _stage_ep(files)
+    r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
+    shutil.rmtree(ep, ignore_errors=True)
+    assert want in r.stdout, f'{why}: {r.stdout + r.stderr}'
+print('graphics_qc self-check PASS (canvas relaxations need a quarter-frame canvas; the span needs onUpdate)')
 
 # ---------------------------------------------------------------- settle frames for the vision pass
 # The old reader sampled every 3 s from the comp start, so frame 1 was always mid-reveal. The frames

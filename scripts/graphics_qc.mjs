@@ -5,31 +5,28 @@
  * Exit 0 = pass. Exit 1 = defects found (printed, grouped by composition). */
 import { chromium, chromiumExecutable } from './playwright_env.mjs';
 import { readFileSync, readdirSync, writeFileSync, existsSync, mkdirSync } from 'fs';
-import { join, resolve, basename } from 'path';
+import { join, resolve } from 'path';
+import { hostCss, stageComp } from './stage_comp.mjs';
 
 const EXECUTABLE = chromiumExecutable();
 const ep = resolve(process.argv[2] || 'episodes/ep3-tristate');
 const TMP = join(ep, '.qc-tmp');
 if (!existsSync(TMP)) mkdirSync(TMP, { recursive: true });
 
-const MAX_IDLE = 3.0;          // seconds of no visual change inside a graphic
-const MAX_IDLE_OPENING = 2.5;  // tighter for the first 10s of a graphic
+const MAX_IDLE = 4.0;          // a gap this long with nothing moving fails (same number as beat_density)
 const CROP_LOSS_FAIL = 0.35;   // fraction of source image cropped away by object-fit:cover
 const SAFE = { w: 1920, h: 1080, pad: 24 };
 
-/* Hard errors block the render. Idle gaps are reported and only fail when a graphic is
- * frozen for most of its window — ep2 (the gold standard) idles in places and still reads
- * as designed, so idling is a budget, not a tripwire; 'idle-budget' IS that tripwire (the
- * header's own claim above was false in code until this line: measured at idleFrac > 0.45
- * or a single gap > 8s, below). */
+/* Hard errors block the render. Stillness has one number and no warning tier (owner, 26 Sep 26):
+ * any gap of MAX_IDLE or more with nothing moving is an 'idle' error. */
 const HARD = new Set(['text-collision', 'out-of-frame', 'bad-crop', 'empty-container', 'fade-only',
-                      'flat-type', 'no-timeline', 'js-error', 'undesigned', 'idle-budget', 'short-duration',
+                      'flat-type', 'no-timeline', 'js-error', 'undesigned', 'idle', 'short-duration',
                       'broken-image']);
 const DURS = {};
 const FRAMES = {};
 const defects = [];
 
-/* The three moments the vision pass reads (CLAUDE.md "Verifying graphics"), chosen from the tween
+/* The three moments the vision pass reads (references/mg-quickref.md "Verify"), chosen from the tween
  * schedule so no frame lands mid-animation: the opening reveal has settled, a settled moment
  * halfway through the hold, and the last settled moment before the exit starts. Loops (>= 4 s) are
  * ambient motion, not reveals; "settled" means no shorter tween is running at that instant. */
@@ -71,6 +68,14 @@ const PROBE = `(() => {
   if (!tl) return { error: 'no timeline registered' };
   R.id = key;
   R.duration = tl.duration();
+  // a timeline-level onUpdate that redraws a canvas (the Three.js/WebGL pattern) moves every frame
+  // though no DOM tween does; count it as one continuous kinetic span (MG eval 3, 26 Sep 26).
+  // The canvas must cover a quarter of the frame, as for the designed-background rule: a grain
+  // tile beside a counter onUpdate must not excuse a frozen comp.
+  const bigCanvas = [...document.querySelectorAll('canvas')].some(c => {
+    const r = c.getBoundingClientRect(); return r.width * r.height >= 0.25 * 1920 * 1080; });
+  if (typeof tl.eventCallback('onUpdate') === 'function' && bigCanvas)
+    R.tweens.push({ start: 0, dur: R.duration, props: ['canvas-render'], ease: 'none', target: 'canvas', hide: false });
   for (const t of tl.getChildren(true, true, false)) {
     const st = t.startTime();
     /* totalDuration(), not duration(): a repeating tween (ambient loops) reports its ONE-cycle
@@ -188,6 +193,9 @@ const MEASURE = `((t) => {
     // a gradient OR a frosted-glass panel (backdrop-filter blur over footage) is a designed background —
     // the glass cards were flagged 'undesigned' for two episodes on this line alone (2026-09-11)
     if (/gradient/.test(cs.backgroundImage) || /blur/.test(cs.backdropFilter || cs.webkitBackdropFilter || '')) grad = true;
+    // a canvas covering a quarter of the frame or more (Three.js/WebGL) is a rendered background the DOM
+    // cannot read; without this every WebGL comp read as "flat background" (MG eval 2, 26 Sep 26)
+    if (el.tagName === 'CANVAS' && r4.width * r4.height >= 0.25 * 1920 * 1080) grad = true;
   }
   out.elements = painted; out.gradient = grad;
   out.textNodes = out.fonts.length;
@@ -201,31 +209,12 @@ const MEASURE = `((t) => {
 // applies to comp elements (17 Sep 26: host `.chip{bottom:300px}` stretched a comp chip into a 720 px
 // panel; every standalone gate passed). Staging must carry the host <style> blocks.
 const INDEX_HTML = readFileSync(join(ep, 'index.html'), 'utf8');
-const HOST_CSS = [...INDEX_HTML.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].map(x => x[1]).join('\n');
+const HOST_CSS = hostCss(INDEX_HTML);
 // per-composition host window: the duration the master timeline mounts it for (assets-comps-05)
 const HOSTS = {};
 for (const m of INDEX_HTML.matchAll(/<[a-z]+\b[^>]*\bdata-composition-src="compositions\/([^"]+)\.html"[^>]*>/g)) {
   const dur = parseFloat((/\bdata-duration="([\d.]+)"/.exec(m[0]) || [])[1]);
   if (!isNaN(dur)) HOSTS[m[1]] = Math.max(HOSTS[m[1]] || 0, dur);
-}
-function standalone(file) {
-  const raw = readFileSync(file, 'utf8');
-  const m = raw.match(/<template>([\s\S]*?)<\/template>/);
-  let body = m ? m[1] : raw;
-  // Comps use two asset-path conventions: `media/x` (authored assuming a mount at episode root,
-  // like hyperframes shows it) and `../media/x` (authored assuming the file sits one level down,
-  // like compositions/ does). .qc-tmp/ sits at that same one-level depth, so <base href="../">
-  // points every relative url at the episode root; the `../` prefix is then stripped the same
-  // way freeze_scan.mjs does it, so BOTH conventions land on episode-root urls instead of one
-  // of them 404ing depending on which convention the composer used (qc-gates-08).
-  body = body.replace(/(url\(\s*['"]?|\b(?:src|href)=["'])\.\.\//g, '$1');
-  const html = `<!doctype html><html><head><meta charset="utf-8"><base href="../">
-<style>${HOST_CSS}</style>
-<style>html,body{margin:0;width:1920px;height:1080px;background:#111;overflow:hidden}</style>
-<script src="gsap.min.js"></script></head><body>${body}</body></html>`;
-  const out = join(TMP, basename(file));
-  writeFileSync(out, html, 'utf8');
-  return out;
 }
 
 const browser = await chromium.launch({ executablePath: EXECUTABLE, args: ['--allow-file-access-from-files'] });
@@ -234,55 +223,54 @@ page.on('pageerror', e => add('RUNTIME', 'js-error', String(e).slice(0, 200)));
 
 const compDir = join(ep, 'compositions');
 const files = existsSync(compDir) ? readdirSync(compDir).filter(f => f.endsWith('.html')) : [];
-if (!files.length) { console.error('[graphics_qc] no compositions/ dir — graphics must be sub-comps (DESIGN.md §1)'); process.exit(1); }
+if (!files.length) { console.error('[graphics_qc] no compositions/ dir — graphics must be sub-comps (references/mg-quickref.md File contract)'); process.exit(1); }
 
 for (const f of files) {
   const name = f.replace('.html', '');
-  const url = 'file:///' + standalone(join(compDir, f)).replace(/\\/g, '/');
+  const url = 'file:///' + stageComp(ep, join(compDir, f), HOST_CSS).replace(/\\/g, '/');
   await page.goto(url, { waitUntil: 'load' });
   await page.waitForTimeout(120);
   const probe = await page.evaluate(PROBE);
   if (probe.error) { add(name, 'no-timeline', probe.error); continue; }
   DURS[name] = +probe.duration.toFixed(2);
 
-  /* --- host window: DESIGN.md §5 requires the comp to outlast the window it's mounted for,
+  /* --- host window: references/mg-quickref.md (File contract, Motion and exits) requires the comp to outlast the window it's mounted for,
      or the panel freezes/vanishes before the cut instead of sliding out on it. --- */
   const hostDur = HOSTS[name];
   if (hostDur != null && probe.duration < hostDur - 0.05)
-    add(name, 'short-duration', `timeline ${probe.duration.toFixed(2)}s ends before its host window ${hostDur.toFixed(2)}s — ${(hostDur - probe.duration).toFixed(2)}s frozen tail before the cut (DESIGN.md §5)`);
+    add(name, 'short-duration', `timeline ${probe.duration.toFixed(2)}s ends before its host window ${hostDur.toFixed(2)}s — ${(hostDur - probe.duration).toFixed(2)}s frozen tail before the cut (mg-quickref File contract)`);
   const windowEnd = Math.max(probe.duration, hostDur || 0);
   /* frames come from what is ON SCREEN: a comp cut by a shorter host (g-plane: 50 s timeline in a
      28.9 s host) must never be sampled after its host window ends, or the reader judges another graphic */
   FRAMES[name] = settleFrames(probe.tweens, hostDur ?? probe.duration);
 
   /* --- motion vocabulary --- */
-  const kinetic = probe.tweens.filter(t => t.props.some(p => ['scale','scaleX','scaleY','x','y','rotation','width','strokeDashoffset','attr'].includes(p)));
+  const kinetic = probe.tweens.filter(t => t.props.some(p => ['scale','scaleX','scaleY','x','y','rotation','width','strokeDashoffset','attr','canvas-render'].includes(p)));
   const reveals = probe.tweens.filter(t => t.props.some(p => ['autoAlpha','opacity'].includes(p)));
-  if (kinetic.length === 0) add(name, 'fade-only', `${reveals.length} fades, 0 kinetic tweens — DESIGN.md §5`);
+  if (kinetic.length === 0) add(name, 'fade-only', `${reveals.length} fades, 0 kinetic tweens — mg-quickref Motion`);
   else if (reveals.length > 2 && kinetic.length < reveals.length / 2)
     add(name, 'thin-motion', `${kinetic.length} kinetic vs ${reveals.length} fades (need ≥1 per 2)`);
   /* deferred: needs coverage from the measure pass (set below) */
   const punchy = probe.tweens.filter(t => /power[34]|back|elastic|expo/.test(t.ease)).length;
-  if (probe.tweens.length >= 6 && punchy === 0) add(name, 'limp-easing', 'no power3/power4 easing anywhere — §5');
+  if (probe.tweens.length >= 6 && punchy === 0) add(name, 'limp-easing', 'no power3/power4 easing anywhere — mg-quickref Motion');
 
-  /* --- beat cadence. A gap is only idle if NOTHING is moving through it: a continuous
-     tween spanning the gap (ep2's 26s rotation) keeps the frame alive. --- */
-  const spans = probe.tweens.filter(t => t.dur >= 4).map(t => [t.start, t.start + t.dur]);
-  const covered = (a, b) => spans.some(([s, e]) => s <= a + 0.25 && e >= b - 0.25);
+  /* --- stillness. A gap is idle only if NO tween is running through it, measured from the
+     end of the last motion to the next tween start (the same walk as beat_density.py). --- */
   const beats = probe.beats.filter(b => b <= windowEnd + 0.01);
-  let prev = 0, frozen = 0, worst = 0;
-  for (const b of [...beats, windowEnd]) {
-    const gap = b - prev;
-    const limit = prev < 10 ? MAX_IDLE_OPENING : MAX_IDLE;
-    if (gap > limit && !covered(prev, b)) {
-      frozen += gap; worst = Math.max(worst, gap);
-      add(name, 'idle', `${gap.toFixed(1)}s frozen at ${prev.toFixed(1)}s–${b.toFixed(1)}s (nothing in motion) — §6`);
-    }
-    prev = b;
+  const spans = probe.tweens.map(t => [t.start, t.start + t.dur]).sort((a, b) => a[0] - b[0]);
+  let still = 0, frozen = 0;
+  const idle = (a, b) => {
+    if (b - a < MAX_IDLE) return;
+    frozen += b - a;
+    add(name, 'idle', `${(b - a).toFixed(1)}s frozen at ${a.toFixed(1)}s–${b.toFixed(1)}s (nothing in motion) — mg-quickref Motion`);
+  };
+  for (const [s, e] of spans) {
+    if (s >= windowEnd) break;
+    idle(still, s);
+    still = Math.max(still, e);
   }
+  idle(still, windowEnd);
   const idleFrac = frozen / windowEnd;
-  if (idleFrac > 0.45 || worst > 8)
-    add(name, 'idle-budget', `${(idleFrac*100).toFixed(0)}% of its ${windowEnd.toFixed(0)}s window is frozen (worst single gap ${worst.toFixed(1)}s) — §6`);
 
   /* --- geometry + typography at every beat and each midpoint --- */
   const samples = [...new Set(beats.flatMap((b, i) => [b + 0.35, i < beats.length - 1 ? (b + beats[i+1]) / 2 : b + 0.9]))]
@@ -305,9 +293,9 @@ for (const f of files) {
     for (const b of m.broken) { if (!seenBroken.has(b)) { seenBroken.add(b); add(name, 'broken-image', `${b} failed to load (naturalWidth 0) — staged-path 404, not a crop/empty defect (${t.toFixed(1)}s)`); } }
   }
   if (tierMax < 3 && maxTextNodes >= 4)
-    add(name, 'flat-type', `only ${tierMax} type tier(s) across ${maxTextNodes} text elements — §3`);
+    add(name, 'flat-type', `only ${tierMax} type tier(s) across ${maxTextNodes} text elements — mg-quickref Type tiers`);
   if (maxCoverage >= 0.9 && probe.duration > 20 && !probe.tweens.some(t => t.dur >= 8))
-    add(name, 'no-continuous-motion', `full-frame ${probe.duration.toFixed(0)}s graphic (${(maxCoverage*100).toFixed(0)}% opaque), longest tween ${Math.max(...probe.tweens.map(t=>t.dur)).toFixed(1)}s — §5. Either animate something continuously or let a moving photo carry it (ep2 panels cover ~43%).`);
+    add(name, 'no-continuous-motion', `full-frame ${probe.duration.toFixed(0)}s graphic (${(maxCoverage*100).toFixed(0)}% opaque), longest tween ${Math.max(...probe.tweens.map(t=>t.dur)).toFixed(1)}s; see references/mg-quickref.md "Motion and exits". Either animate something continuously or let a moving photo carry it (ep2 panels cover ~43%).`);
   const avgElems = elemSamples.length ? elemSamples.reduce((a,b)=>a+b,0)/elemSamples.length : 0;
   const kineticRatio = probe.tweens.length ? kinetic.length / probe.tweens.length : 0;
   const flags = [];
@@ -317,7 +305,7 @@ for (const f of files) {
   if (avgElems < 12) flags.push(`${avgElems.toFixed(0)} elements on screen`);
   if (idleFrac > 0.6) flags.push(`${(idleFrac*100).toFixed(0)}% frozen`);
   if (flags.length >= 3)
-    add(name, 'undesigned', `${flags.join(' · ')} — reads as a wireframe, not a designed card (§2–§7)`);
+    add(name, 'undesigned', `${flags.join(' · ')} — reads as a wireframe, not a designed card (mg-quickref)`);
   if (process.env.QC_STATS) console.log(`  [stats] ${name}: dur ${probe.duration.toFixed(0)}s cover ${maxCoverage} elems ${avgElems.toFixed(0)} tiers ${tierMax} kinetic ${(kineticRatio*100).toFixed(0)}% idle ${(idleFrac*100).toFixed(0)}% grad ${gradAny}`);
 }
 

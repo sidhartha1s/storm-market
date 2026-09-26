@@ -13,19 +13,45 @@ mechanical, so the pin never rots more than one production run:
      against the recorded BASELINE (committed metrics in scripts/pin_baseline.json,
      plus the cached baseline mp4 on disk for SSIM when present; if the record is
      missing or belongs to an older pin, the baseline render runs too).
-  3. Metrics identical (duration, blackdetect map, RMS, SSIM) -> bump the pin in
+  3. Metrics identical (duration, blackdetect map, RMS, video-region luma, workers, SSIM
+     full-frame and video-region) -> bump the pin in
      config.yaml + every live scripts/*.cmd, refresh the baseline record, exit 0.
      The caller (a session, in a worktree) commits and PRs the bump.
   4. Any metric drifts -> NO bump, print the drift table, exit 3. A human decides.
 
-render_preflight.py enforces the other half: a FULL render refuses to start while
-upstream is newer than the pin, and the fix it names is running this script.
+When it runs (owner 26 Sep 26): at episode kickoff, before the episode's first render
+(`--check-only`, then the full ritual if stale), so an episode never switches version
+mid-way. render_preflight.py only checks pin drift, never currency.
 
-Runtime: one 90s demo render ~10-13 min on this box; two when the baseline record
-is stale. Launch detached (schtasks one-shot / Start-Process) when driving it from
+The demo is episodes/demo-pin: 24 s, fully committed (MG showcase + WebGL probe + an
+ffmpeg-made video and tone), no gitignored media, so it runs from any fresh worktree.
+  - Mixer: sfx/tone.ogg (440 Hz) at 3-7 s, gain 0.5. Both renders must carry audio and
+    their RMS over TONE_WIN (inside the tone's mount) must agree within RMS_TOL, so a tone
+    that moves in time is drift too; a silent render is drift, never a pass.
+  - Video capture: clips/probe.webm mounted at 16 s with data-media-start 1, so capture
+    must seek into it (0.8.72/0.8.77/0.8.78 changed "capture waits for seeking video").
+    measure() records the per-frame luma of VIDEO_TRACER (a strip the clip's sliding square
+    crosses at a known media time) over VIDEO_WIN and compare() diffs it; with the baseline
+    mp4 on disk, SSIM is also taken on VIDEO_BOX over VIDEO_WIN alone.
+  - The WebGL probe's frame barcode is checked by the full-frame SSIM.
+
+Workers: RENDER_FLAGS use --workers 2, the production full-render path, which routes
+capture through the parallel-stream router (HF_CAPTURE_PARALLEL_STREAM). RENDER_WORKERS
+(the render.cmd knob) still overrides it on a RAM-tight box, but below 2 the ritual takes
+the single-worker capture path and prints `[FALLBACK] single-worker capture path,
+parallel-stream router unverified` on every render. The worker count is stored in
+pin_baseline.json and a baseline/candidate mismatch is drift.
+
+Runtime: one 24 s demo render ~2-4 min on this box; two when the baseline record
+is stale. Launch detached (schtasks one-shot via run_hidden.vbs) when driving it from
 a harness that reaps foreground calls — same rule as render.cmd.
 
-Usage: python3 scripts/pin_ritual.py [--check-only]
+--baseline re-records the baseline at the CURRENT pin (render, measure, validate, and only
+then write pin_baseline.json; the mp4 stays in BASELINE_DIR) without consulting npm. Run it
+whenever demo-pin changes: the old record measures a different comp. A record with no audio,
+no video trace, or a flat trace (span < VIDEO_LUMA_SPAN_MIN) is refused, exit 2, nothing written.
+
+Usage: python3 scripts/pin_ritual.py [--check-only | --baseline]
 Exit codes: 0 pin current or bumped clean; 2 setup error; 3 metric drift (no bump);
             4 npm unreachable (currency unknowable — this tool exists to answer it).
 """
@@ -37,10 +63,10 @@ import subprocess
 import sys
 from pathlib import Path
 
-from render_preflight import npm_latest, parse_pin, semver
+from render_preflight import parse_pin
 
 REPO = Path(__file__).resolve().parent.parent
-DEMO = REPO / "episodes" / "demo-joplin-90"
+DEMO = REPO / "episodes" / "demo-pin"
 BASELINE_JSON = Path(__file__).resolve().parent / "pin_baseline.json"
 RENDER_CMD = Path(__file__).resolve().parent / "render.cmd"
 # The baseline mp4 lives OUTSIDE any worktree (assets-comps-02): episodes/*/renders/ is
@@ -52,8 +78,44 @@ BASELINE_DIR = Path(os.environ.get("LOCALAPPDATA", str(Path.home() / "AppData" /
 # recipe, not a lighter one. Bump both together. --workers 2 matches every production
 # full-render wrapper (scripts/*_full_task.cmd all set RENDER_WORKERS=2); render.cmd's own
 # bare default of 3 is the draft-tuned value, not what full renders actually use.
+WORKERS = int(os.environ.get("RENDER_WORKERS", "2"))
 RENDER_FLAGS = ["--gpu", "--browser-gpu", "--experimental-fast-capture=true",
-                "--quality", "standard", "--crf", "16", "--fps", "30", "--workers", "2"]
+                "--quality", "standard", "--crf", "16", "--fps", "30",
+                "--workers", str(WORKERS)]
+FALLBACK_1W = "[FALLBACK] single-worker capture path, parallel-stream router unverified"
+
+# The demo's video probe (episodes/demo-pin/index.html #probe-video): box x, y, w, h and
+# the window measured inside its 16-18 s mount, 0.1 s clear of each edge.
+VIDEO_BOX = (96, 300, 854, 480)
+VIDEO_WIN = (16.1, 17.9)
+# A 40x80 strip inside the box that the clip's sliding white square crosses at media
+# ~1.24-1.71 s (timeline ~16.24-16.71 s at data-media-start 1). Its per-frame luma pins the
+# seek: an ignored media offset moves the spike 1 s, a stale frame flattens it, a missing
+# video drops it to the probe background. The whole-box mean barely moves (measured 126.4-127.0).
+VIDEO_TRACER = (496, 500, 40, 80)
+# The same strip read straight from clips/probe.webm (crop 400,200 over media 1.1-2.9 s, no
+# render) spans 137.4-235.2 = 97.7 luma levels. A captured trace under this span is flat: the
+# clip was never drawn, never seeked, or froze. Absolute, so it fails a baseline on its own.
+VIDEO_LUMA_SPAN_MIN = 50
+# sfx/tone.ogg is mounted 3-7 s; RMS is read 0.1 s inside each edge
+TONE_WIN = (3.1, 6.9)
+
+
+def npm_latest(timeout=30):
+    """Latest hyperframes on npm, or None (npm missing/unreachable/garbage output)."""
+    npm = shutil.which("npm")
+    if not npm:
+        return None
+    try:
+        out = subprocess.run([npm, "view", "hyperframes", "version"],
+                             capture_output=True, text=True, timeout=timeout).stdout.strip()
+    except (subprocess.TimeoutExpired, OSError):
+        return None
+    return out if re.fullmatch(r"[\d.]+", out) else None
+
+
+def semver(v):
+    return tuple(int(x) for x in v.split("."))
 
 
 def render_cmd_env():
@@ -78,7 +140,7 @@ def render_cmd_env():
 def ff_paths():
     """ffmpeg/ffprobe from render.cmd's `set HYPERFRAMES_FF*_PATH=` lines — the render
     recipe is the single source of truth for which build measures (a wrong/stale build
-    silently disagrees on blackdetect/astats, see LEARNINGS on the shared-build spawn cost)."""
+    silently disagrees on blackdetect/astats, see learnings/render.md on the shared-build spawn cost)."""
     txt = RENDER_CMD.read_text(encoding="utf-8", errors="replace")
     paths = dict(re.findall(r"^set (HYPERFRAMES_FF(?:MPEG|PROBE)_PATH)=(.+)$", txt,
                             re.MULTILINE))
@@ -99,6 +161,10 @@ DUR_TOL = 0.05          # seconds
 BLACK_TOL = 0.10        # seconds, per boundary
 RMS_TOL = 0.20          # dB
 SSIM_MIN = 0.99
+# per-frame mean luma (0-255) of the video box; an unseeked, stale or missing frame moves it
+# by tens (burned timecode + sliding white box on testsrc2). Not yet measured across versions:
+# the first re-baseline pair sets the evidence for this number.
+VIDEO_LUMA_TOL = 2.0
 
 
 def run(cmd, **kw):
@@ -111,7 +177,10 @@ def render(version, out_mp4):
     if not npx:
         sys.exit("[ritual] npx not on PATH")
     log = DEMO / f"pin-ritual-{version}.log"
-    print(f"[ritual] rendering demo at {version} -> {out_mp4.name} (log {log.name})")
+    if WORKERS < 2:
+        print(FALLBACK_1W)
+    print(f"[ritual] rendering demo at {version} -> {out_mp4.name} (log {log.name}, "
+          f"{WORKERS} workers)")
     # hyperframes >=0.8 flushes PostHog telemetry via a DETACHED `node -e fetch(...)` child
     # without windowsHide -> one visible console window per flush on Windows (owner saw
     # "lots of CMDs, 4 at a time", 2026-08-23). Opt out; never a visible window.
@@ -134,8 +203,11 @@ def render(version, out_mp4):
     # --workers 2 (>1) only streams if the parallel-capture router picked it up (render.cmd's
     # own comment: otherwise "the gate logs enabled:false"). A silent fallback to disk capture
     # here means the ritual verified the WRONG capture path (assets-comps-03) — never a pass.
+    # HyperFrames writes this as a JSON blob, e.g. `streaming-encode gate
+    # {"renderJobId":"...","enabled":true,...}` — no literal "enabled:true" substring.
+    # Match the JSON form ("enabled":true) and tolerate an unquoted enabled:true too.
     log_txt = log.read_text(encoding="utf-8", errors="replace")
-    if not re.search(r"streaming-encode gate.*enabled:true", log_txt):
+    if not re.search(r'streaming-encode gate.*\benabled"?\s*:\s*true', log_txt):
         sys.exit(f"[ritual] {version}: no 'streaming-encode gate ... enabled:true' in {log.name} "
                   "— this render did not exercise the production streaming-capture path")
 
@@ -144,29 +216,58 @@ def measure(mp4):
     dur = float(run([str(FFPROBE), "-v", "error", "-show_entries",
                      "format=duration", "-of", "csv=p=0", str(mp4)]).stdout.strip())
     r = run([str(FFMPEG), "-hide_banner", "-i", str(mp4),
-             "-vf", "blackdetect=d=0.5", "-af", "astats=metadata=1",
+             "-vf", "blackdetect=d=0.5",
+             "-af", f"atrim=start={TONE_WIN[0]}:end={TONE_WIN[1]},astats=metadata=1",
              "-f", "null", "-"], timeout=600)
     txt = r.stdout + r.stderr
     black = [(float(a), float(b)) for a, b in
              re.findall(r"black_start:([\d.]+) black_end:([\d.]+)", txt)]
-    # last Peak/RMS pair in astats output is the Overall section
+    # last Peak/RMS pair in astats output is the Overall section (of TONE_WIN only)
     peaks = re.findall(r"Peak level dB: (-?[\d.]+)", txt)
     rmss = re.findall(r"RMS level dB: (-?[\d.]+)", txt)
-    if not peaks or not rmss:
+    has_audio = bool(run([str(FFPROBE), "-v", "error", "-select_streams", "a",
+                          "-show_entries", "stream=index", "-of", "csv=p=0",
+                          str(mp4)]).stdout.strip())
+    if has_audio and (not peaks or not rmss):
         sys.exit(f"[ritual] astats gave no levels for {mp4.name}")
-    return {"duration": dur, "blackdetect": black,
-            "rms_db": float(rmss[-1]), "peak_db": float(peaks[-1])}
+    # a render with no audio stream measures None; compare() fails it (demo-pin has a tone)
+    return {"workers": WORKERS, "duration": dur, "blackdetect": black,
+            "rms_db": float(rmss[-1]) if has_audio else None,
+            "peak_db": float(peaks[-1]) if has_audio else None,
+            "video_luma": video_luma(mp4)}
 
 
-def ssim(a, b):
+def _region(label, box=VIDEO_BOX):
+    """Filter chain cutting VIDEO_WIN x box out of input `label`."""
+    x, y, w, h = box
+    s, e = VIDEO_WIN
+    return f"[{label}:v]trim=start={s}:end={e},setpts=PTS-STARTPTS,crop={w}:{h}:{x}:{y}"
+
+
+def video_luma(mp4):
+    """Per-frame mean luma of VIDEO_TRACER over VIDEO_WIN, 2 dp."""
+    r = run([str(FFMPEG), "-hide_banner", "-i", str(mp4), "-filter_complex",
+             _region(0, VIDEO_TRACER) + ",signalstats,metadata=print:key=lavfi.signalstats.YAVG",
+             "-an", "-f", "null", "-"], timeout=600)
+    return [round(float(v), 2) for v in
+            re.findall(r"lavfi\.signalstats\.YAVG=([\d.]+)", r.stdout + r.stderr)]
+
+
+def ssim(a, b, region=False):
+    """SSIM All of a vs b: full frame, or the video probe's box/window when region=True."""
+    lavfi = (f"{_region(0)}[a];{_region(1)}[b];[a][b]ssim" if region else "ssim")
     r = run([str(FFMPEG), "-hide_banner", "-i", str(a), "-i", str(b),
-             "-lavfi", "ssim", "-f", "null", "-"], timeout=600)
+             "-lavfi", lavfi, "-f", "null", "-"], timeout=600)
     m = re.search(r"All:([\d.]+)", r.stdout + r.stderr)
     return float(m.group(1)) if m else None
 
 
-def compare(base, cand, ssim_all):
+def compare(base, cand, ssim_all, ssim_video=None):
+    # also baseline_problems()'s self-check: compare(rec, rec) must flag every unusable field
     drifts = []
+    if base.get("workers") != cand.get("workers"):
+        drifts.append(f"workers {base.get('workers')} -> {cand.get('workers')} "
+                      "(different capture path; re-run both at the same count)")
     if abs(base["duration"] - cand["duration"]) > DUR_TOL:
         drifts.append(f"duration {base['duration']:.3f}s -> {cand['duration']:.3f}s")
     if len(base["blackdetect"]) != len(cand["blackdetect"]):
@@ -177,10 +278,25 @@ def compare(base, cand, ssim_all):
             if abs(bs - cs) > BLACK_TOL or abs(be - ce) > BLACK_TOL:
                 drifts.append(f"black segment moved ({bs:.2f}-{be:.2f}) -> "
                               f"({cs:.2f}-{ce:.2f})")
-    if abs(base["rms_db"] - cand["rms_db"]) > RMS_TOL:
+    # demo-pin mounts a tone, so both sides must carry audio: silent == mixer unverified
+    if base["rms_db"] is None or cand["rms_db"] is None:
+        drifts.append(f"audio RMS {base['rms_db']} -> {cand['rms_db']} dB "
+                      "(a silent render: the mixer probe was not measured)")
+    elif abs(base["rms_db"] - cand["rms_db"]) > RMS_TOL:
         drifts.append(f"RMS {base['rms_db']:.3f} -> {cand['rms_db']:.3f} dB")
+    bl, cl = base.get("video_luma") or [], cand.get("video_luma") or []
+    if not bl or len(bl) != len(cl):
+        drifts.append(f"video-probe frames {len(bl)} -> {len(cl)} (region unmeasured or "
+                      "frame count moved)")
+    else:
+        worst = max(abs(b - c) for b, c in zip(bl, cl))
+        if worst > VIDEO_LUMA_TOL:
+            drifts.append(f"video-probe luma moved {worst:.2f} > {VIDEO_LUMA_TOL} "
+                          "(seek/capture of the <video> changed)")
     if ssim_all is not None and ssim_all < SSIM_MIN:
         drifts.append(f"SSIM {ssim_all:.4f} < {SSIM_MIN}")
+    if ssim_video is not None and ssim_video < SSIM_MIN:
+        drifts.append(f"video-region SSIM {ssim_video:.4f} < {SSIM_MIN}")
     return drifts
 
 
@@ -198,11 +314,62 @@ def bump_pins(new):
     print(f"[ritual] pinned config.yaml -> {new}")
 
 
+def baseline_problems(rec):
+    """Why `rec` can never serve as a baseline ([] = usable). compare() against itself catches
+    missing audio/trace; the span check is absolute, since a flat trace equals itself."""
+    missing = [f"missing {k}" for k in ("workers", "video_luma", "rms_db") if k not in rec]
+    if missing:
+        return missing  # compare() indexes these keys directly
+    bad = compare(rec, dict(rec), None)
+    luma = rec.get("video_luma") or []
+    if luma and max(luma) - min(luma) < VIDEO_LUMA_SPAN_MIN:
+        bad.append(f"video-probe trace spans {max(luma) - min(luma):.1f} < {VIDEO_LUMA_SPAN_MIN} "
+                   "luma levels (flat: the clip was not drawn, seeked or advanced)")
+    return bad
+
+
+def record_baseline(pin, base_mp4):
+    """Render the demo at `pin` into base_mp4, measure, validate, THEN persist pin_baseline.json.
+    An unusable record exits 2 with pin_baseline.json AND the baseline mp4 untouched."""
+    tmp_mp4 = base_mp4.with_name(base_mp4.stem + ".candidate.mp4")
+    render(pin, tmp_mp4)
+    record = {"version": pin, "demo": DEMO.name, **measure(tmp_mp4)}
+    bad = baseline_problems(record)
+    if bad:
+        print("[ritual] baseline is unusable, pin_baseline.json and baseline mp4 NOT replaced: "
+              + "; ".join(bad), file=sys.stderr)
+        sys.exit(2)
+    tmp_mp4.replace(base_mp4)
+    BASELINE_JSON.write_text(json.dumps(record, indent=2), encoding="utf-8")
+    return record
+
+
+def setup():
+    global FFPROBE, FFMPEG
+    FFPROBE, FFMPEG = ff_paths()
+    if not (DEMO / "index.html").exists():
+        sys.exit(f"[ritual] demo episode missing: {DEMO}")
+    (DEMO / "renders").mkdir(exist_ok=True)
+    BASELINE_DIR.mkdir(parents=True, exist_ok=True)
+
+
 def main():
     check_only = "--check-only" in sys.argv
     pin = parse_pin(REPO)
     if pin is None:
         sys.exit("[ritual] no hyperframes_version in config.yaml")
+    if "--baseline" in sys.argv:
+        setup()
+        old = json.loads(BASELINE_JSON.read_text(encoding="utf-8")) if BASELINE_JSON.exists() else {}
+        base_mp4 = BASELINE_DIR / f"pin-baseline-{pin}.mp4"
+        rec = record_baseline(pin, base_mp4)  # validated before it is written; exits 2 if unusable
+        luma = rec["video_luma"]
+        print(f"[ritual] baseline re-recorded: version {old.get('version')} -> {rec['version']}, "
+              f"demo {old.get('demo')} -> {rec['demo']}, workers {old.get('workers')} -> "
+              f"{rec['workers']}; tone RMS {rec['rms_db']} dB, {len(luma)} video-probe frames "
+              f"spanning {max(luma) - min(luma):.1f} luma levels, mp4 {base_mp4}")
+        print("[ritual] Commit scripts/pin_baseline.json.")
+        return 0
     latest = npm_latest(timeout=60)
     if latest is None:
         # preflight tolerates an unreachable npm; this tool's entire job is the answer
@@ -215,23 +382,8 @@ def main():
     if check_only:
         return 3
 
-    global FFPROBE, FFMPEG
-    FFPROBE, FFMPEG = ff_paths()
-
-    if not (DEMO / "index.html").exists():
-        sys.exit(f"[ritual] demo episode missing: {DEMO}")
-    html = (DEMO / "index.html").read_text(encoding="utf-8", errors="replace")
-    # media/ AND audio/ are gitignored; a worktree has neither until copied (16 Sep 26: the
-    # media-only check passed, then the render died at the audio mix on audio/s2.wav).
-    missing = [s for s in re.findall(r'src="((?:media|audio)/[^"]+)"', html)
-               if not (DEMO / s).exists()]
-    if missing:
-        sys.exit(f"[ritual] demo assets incomplete ({len(missing)} missing, e.g. "
-                 f"{missing[0]}) — copy media/ and audio/ from the main checkout first")
-
+    setup()
     renders = DEMO / "renders"
-    renders.mkdir(exist_ok=True)
-    BASELINE_DIR.mkdir(parents=True, exist_ok=True)
 
     # Baseline mp4 lives at the stable BASELINE_DIR (outside any worktree) so it survives
     # worktree teardown between runs. Reuse the committed metrics record only when it BOTH
@@ -242,33 +394,36 @@ def main():
     record = None
     if BASELINE_JSON.exists():
         record = json.loads(BASELINE_JSON.read_text(encoding="utf-8"))
-        if record.get("version") != pin:
+        # a record measured on another demo (demo-joplin-90 before 26 Sep 26), before the
+        # video/audio probes existed (no video_luma / workers), or silent/flat is not a baseline
+        if (record.get("version") != pin or record.get("demo") != DEMO.name
+                or baseline_problems(record)):
             record = None
     if record is None or not base_mp4.exists():
-        render(pin, base_mp4)
-        record = {"version": pin, **measure(base_mp4)}
-        # persist NOW — a crash in the candidate render must not cost this ~13 min again
-        BASELINE_JSON.write_text(json.dumps(record, indent=2), encoding="utf-8")
+        # persisted inside — a crash in the candidate render must not cost this again
+        record = record_baseline(pin, base_mp4)
     base_has_mp4 = base_mp4.exists()
 
     cand_mp4 = renders / f"pin-baseline-{latest}.mp4"
     render(latest, cand_mp4)
     cand = measure(cand_mp4)
     ssim_all = ssim(base_mp4, cand_mp4) if base_has_mp4 else None
+    ssim_video = ssim(base_mp4, cand_mp4, region=True) if base_has_mp4 else None
     if not base_has_mp4:
         print("[ritual] no baseline mp4 on disk — SSIM skipped (metrics-only compare)")
 
-    drifts = compare(record, cand, ssim_all)
-    if base_has_mp4 and ssim_all is None:
+    drifts = compare(record, cand, ssim_all, ssim_video)
+    if base_has_mp4 and (ssim_all is None or ssim_video is None):
         # an un-computable SSIM (e.g. resolution change broke the filter) is a failed
         # visual gate, never a silent pass
         drifts.append("SSIM could not be computed from ffmpeg output — visual identity "
                       "UNVERIFIED")
+    fmt = lambda v: "n/a" if v is None else f"{v:.4f}"
     print(f"[ritual] {pin} vs {latest}: duration {record['duration']:.3f}/"
           f"{cand['duration']:.3f}s, black {len(record['blackdetect'])}/"
-          f"{len(cand['blackdetect'])} segs, RMS {record['rms_db']:.3f}/"
-          f"{cand['rms_db']:.3f} dB, SSIM "
-          f"{'n/a' if ssim_all is None else f'{ssim_all:.4f}'}")
+          f"{len(cand['blackdetect'])} segs, RMS {record['rms_db']}/{cand['rms_db']} dB, "
+          f"workers {record['workers']}/{cand['workers']}, SSIM {fmt(ssim_all)}, "
+          f"video-region SSIM {fmt(ssim_video)}")
     if drifts:
         print(f"[ritual] METRIC DRIFT — NOT bumping {pin} -> {latest}:", file=sys.stderr)
         for d in drifts:
@@ -278,7 +433,7 @@ def main():
         return 3
 
     bump_pins(latest)
-    BASELINE_JSON.write_text(json.dumps({"version": latest, **cand}, indent=2),
+    BASELINE_JSON.write_text(json.dumps({"version": latest, "demo": DEMO.name, **cand}, indent=2),
                              encoding="utf-8")
     if base_has_mp4:
         base_mp4.unlink()
