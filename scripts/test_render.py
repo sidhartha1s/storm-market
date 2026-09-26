@@ -509,13 +509,11 @@ check("pin-policy NEW: every file demo-pin references exists", demo_refs and not
 check("pin-review NEW: demo-pin mounts the video and audio probes",
       {"clips/probe.webm", "sfx/tone.ogg"} <= set(demo_refs), demo_refs)
 # tracked, not merely "not ignored": check-ignore passes vacuously on an untracked file
-untracked = [r for r in demo_refs
-             if subprocess.run(["git", "-C", str(DEMO), "ls-files", "--error-unmatch", r],
-                               capture_output=True, text=True).returncode != 0]
-check("pin-policy NEW: every file demo-pin references is tracked (a fresh worktree can render it)",
-      not untracked, untracked)
 _tracked = subprocess.run(["git", "-C", str(DEMO), "ls-files", "-z", "."],
                           capture_output=True, text=True).stdout.split("\0")
+untracked = [r for r in demo_refs if r not in _tracked]
+check("pin-policy NEW: every file demo-pin references is tracked (a fresh worktree can render it)",
+      not untracked, untracked)
 _bytes = sum((DEMO / f).stat().st_size for f in _tracked if f)
 check("pin-review NEW: tracked demo-pin stays under 2 MB", 0 < _bytes < 2 * 1024 * 1024, _bytes)
 
