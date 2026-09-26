@@ -22,6 +22,7 @@ the reverse is not true, so TV is the binding constraint, not an afterthought fo
   `left/right: 140-260px` on a 1920 canvas ≈ 1400-1640px wide; narrower `.quotecard.glasscard`
   variant uses `left/right: 260px`).
 - Lower-third anchor: `left: 110px; bottom: 110px` (`.lt`, `.stamp` mirrors it at `top: 110px`).
+- Background `radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%)`, never a flat #000/#0a1017 fill behind a graphic.
 
 ## Z-index map
 | Layer | z-index |
