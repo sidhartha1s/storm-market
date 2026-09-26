@@ -8,20 +8,21 @@ Target 25:00. Pace 186.5 words per delivered minute, measured on ep-1974 probes 
 of THIS script. CTA window 21:15 to 23:45 (85 to 95 %).
 
 **Changes from v1, and why**
-1. The 25 s hook is now H (about 5 s, the payoff) plus HT, a hook tail (about 13 s) that opens the El Reno gap and
-   leaves it open. Owner rule, 27 Sep 26.
+1. The 25 s hook is now H, one sentence in the owner's words (27 Sep 26), E F five leading and no gap between the two
+   ratings so it never contradicts the title or thumbnail, plus HT, a hook tail (about 14 s) that names Enderlin and
+   opens the El Reno gap without closing it.
 2. El Reno 2013 is the curiosity engine. Planted in HT, paid in A1 (it went EF5 to EF3 in 2013, the mirror of
    Enderlin), and returned to in A2, A3 (width) and A6. Chapter order and chapter names are v1's.
 3. Carl Jones's quote moved from A1 to A4, where it is the reason the office reopened the case. In A1 it spent the
    reopening two acts early.
 4. Tony Lyza's proposed fix is held from A2 to A6 so it can carry the CTA hinge.
-5. "Four months later" is said as "that October" or "a hundred and eight days": 20 Jun to 6 Oct 2025 is 108 days
-   (python), and the EF3 went out within days of the storm.
+5. The hook keeps the owner's "four months" verbatim. Elsewhere the gap is "a hundred and eight days" or "until
+   October": 20 Jun to 6 Oct 2025 is 108 days (python), about three and a half months.
 6. Research was thin for 25 minutes. New material outside `research/` (El Reno's 2013 rating history, Moore 1999,
    the final winds of the four EF4s, Fargo 1957, the F and EF wind bands, FEMA safe rooms, the tornado standard)
    carries a `[verify]` leash each. If the fact desk cuts them, the honest runtime drops by about three minutes.
 
-**Reading notes.** Ratings are written as spoken ("EF three"), as in the ep-1974 TTS copies; on-screen text keeps
+**Reading notes.** Ratings are written as spoken, "E F three", matching the owner's hook line; on-screen text keeps
 "EF3". `[loop …]` and `[verify …]` markers are margin notes, stripped from the TTS copy. Homograph respellings for the
 TTS copy are listed after the table.
 
@@ -36,24 +37,24 @@ had written down (A5 → CTA → A6, the cta-hinge) · L10 what no rating change
 
 ## H · Hook (0:00)
 **Picture:** mid-action open, a night wedge lit by lightning, moving (licensed or PD only; no chaser footage); popfig
-"June 20, 2025 · Enderlin, N.D." inside the first second; a stamp "EF3" lands, then is struck through as a red "EF5"
-slams over it on the word "five". Narrator from 0:00, siren spine under.
+"June 20, 2025 · Enderlin, N.D." inside the first second; a red "EF5" slams in on the word "five", then a struck-through
+"EF3" settles under it on "three", the thumbnail's own plate. Narrator from 0:00, siren spine under.
 
-The Enderlin tornado was rated an EF three. That October, it became an EF five. `[loop L0 open]`
+The weather service changed it to E F five, four months after they called it E F three. `[loop L0 open]`
 
 ## HT · Hook tail (0:05)
 **Picture:** g-drought-timeline flash: "Moore 2013" mark, a bar runs "12 Years", "Enderlin 2025" lands. Hard cut to
 El Reno 2013 on a PD radar still or a map with its 2.6 mile width drawn over section roads; a stamp "EF3" lands and
 stays, unstruck. Split frame holds both stamps: "Enderlin · EF5" and "El Reno · EF3".
 
-It was the first EF five in America in twelve years. In twenty thirteen, the widest tornado ever measured came down
-near El Reno, Oklahoma. Radar caught winds far past the EF five line, and it is still an EF three.
+The Enderlin tornado was the first E F five in America in twelve years. In twenty thirteen, the widest tornado ever measured came down
+near El Reno, Oklahoma. Radar caught winds far past the E F five line, and it is still an E F three.
 `[verify: El Reno 31 May 2013, widest on record at 2.6 mi, mobile radar winds far above EF5, final rating EF3 (fact sheet §4 flags it unverified)]`
 `[loop L1 open]`
 
 *(1.5 s void)*
 
-## I · The night (0:22)
+## I · The night (0:23)
 **Picture:** master map, the track draws east from a point south of town · popfig "11:02 PM" · g-clock starts.
 
 The Enderlin tornado came down a little after eleven on a Friday night, June twentieth, twenty twenty five.
@@ -75,14 +76,14 @@ nineteen seventy eight.
 twenty two small tracks land one by one.
 
 Within days, surveyors from the weather office in Grand Forks walked the path and gave it a number. They called it
-an EF three, with winds of about a hundred and sixty miles an hour. That is a violent tornado but not a rare one, and
+an E F three, with winds of about a hundred and sixty miles an hour. That is a violent tornado but not a rare one, and
 North Dakota had twenty two tornadoes that same night.
 
 **Picture:** split card returns: "El Reno 2013 · EF3" left, "Enderlin 2025 · EF3" right, a day counter under the
 right stamp starts to run.
 
-So for a hundred and eight days, Enderlin sat on the books with the same number as El Reno. El Reno had radar numbers
-far past the EF five line, and Enderlin had something stranger lying on its path. Then the office that wrote EF three
+So until October, Enderlin sat on the books with the same number as El Reno. El Reno had radar numbers
+far past the E F five line, and Enderlin had something stranger lying on its path. Then the office that wrote E F three
 put out a statement saying the number had been wrong. `[loop L2 open]` Its first number came from the same method
 every American tornado is rated by, and that method has a limit built into it.
 
@@ -102,8 +103,8 @@ the wind left behind.
 Fujita's name.
 
 The scale in use today is the Enhanced Fujita scale. It was built on the one Ted Fujita, a University of
-Chicago scientist, drew up in nineteen seventy one. `[verify: Fujita scale introduced 1971 by T. Theodore Fujita of the University of Chicago]` An EF three covers winds from a hundred and thirty six
-to a hundred and sixty five miles an hour. An EF five starts above two hundred.
+Chicago scientist, drew up in nineteen seventy one. `[verify: Fujita scale introduced 1971 by T. Theodore Fujita of the University of Chicago]` An E F three covers winds from a hundred and thirty six
+to a hundred and sixty five miles an hour. An E F five starts above two hundred.
 `[verify: EF scale bands, EF3 136 to 165 mph, EF5 over 200 mph]`
 
 A survey team walks the path, sometimes for days, and looks at every broken thing. They match it against a list of
@@ -124,24 +125,24 @@ That word, prove, is the whole problem, because every kind of damage has a ceili
 its bark and snapped, the scale has nothing higher to give it, whatever the wind was.
 `[verify: hardwood tree damage indicator, top step and its expected wind, roughly 140 to 170 mph]` A farmhouse can go
 higher, but only if it was built to hold. When a house is swept off its foundation, surveyors check how it was tied
-down. Bolted to the concrete, a clean slab can mean EF five. Held on by a few nails, the same empty slab only proves
-a strong EF three or a low EF four. `[verify: EF scale degree-of-damage adjustment for poor anchoring]` Surveyors
+down. Bolted to the concrete, a clean slab can mean E F five. Held on by a few nails, the same empty slab only proves
+a strong E F three or a low E F four. `[verify: EF scale degree-of-damage adjustment for poor anchoring]` Surveyors
 photograph the bolts, the nails and the straps, because the difference can be two full ratings.
 
 **Picture:** El Reno 2013: PD radar still, then a mobile radar truck (PD or licensed still only) · the 2.6 mile outline
 over open section roads · a stamp "EF5" lands with a date "June 2013", then flips to "EF3", "August 2013".
 
 That ceiling is where El Reno's number came from. `[loop L1 closes]` El Reno came down on May thirty first, twenty
-thirteen, eleven days after the last EF five. A mobile radar truck from the University of Oklahoma measured winds
+thirteen, eleven days after the last E F five. A mobile radar truck from the University of Oklahoma measured winds
 of nearly three hundred miles an hour inside it. For almost three months, the weather service listed it as an EF
-five, based on that radar. Then, that August, they took it back down to EF three. The rating goes by damage, and a
+five, based on that radar. Then, that August, they took it back down to E F three. The rating goes by damage, and a
 radar reading is not damage. The wind speeds on the scale are a specific thing, a three second gust about thirty
 three feet above the ground. Radar measures wind higher up and over a bigger volume of air, so the two numbers do not
 line up. `[verify: EF scale speeds are 3-second gusts at 10 m (33 ft); mobile radar samples above that height]` Across most of its path, El Reno crossed open fields with little on them that could prove more.
 `[verify: El Reno 2013, University of Oklahoma RaXPol winds about 295 to 302 mph; NWS Norman listed EF5 on 4 Jun 2013 and revised to EF3 on 30 Aug 2013; path mostly open country]`
 
-So El Reno went from EF five down to EF three, and twelve years later Enderlin went the other way. Enderlin had the
-same kind of path, and for a hundred and eight days it had the same answer. `[loop L2 continues]`
+So El Reno went from E F five down to E F three, and twelve years later Enderlin went the other way. Enderlin had the
+same kind of path, and until October it had the same answer. `[loop L2 continues]`
 
 **Picture:** master map v2: farmsteads spaced far apart, shelter belts, the Maple River, power towers; Sentinel-2
 ground scar if the tile and licence clear.
@@ -152,7 +153,7 @@ It stripped the trees along the Maple River down to bare wood, and the survey co
 swept farmhouses clean, and the survey had to ask how they had been fastened down.
 
 So the surveyors wrote down what the damage could prove. In June, it could prove about a hundred and sixty miles an
-hour, near the top of EF three. That was an honest number, and it was also a ceiling rather than a measurement.
+hour, near the top of E F three. That was an honest number, and it was also a ceiling rather than a measurement.
 `[loop L2 closes]`
 
 **Picture:** NWS PD photo of derailed freight cars (check the credit line photo by photo) · the rail line on the
@@ -164,12 +165,12 @@ train could not raise the number.
 
 **Picture:** g-drought-timeline teaser: the Moore 2013 mark, then a long empty bar, still drawing.
 
-That same ceiling, the one that held Enderlin at EF three, has a much bigger charge against it. A federal study says
-it is the likely reason America went twelve years without a single EF five. `[loop L4 open]`
+That same ceiling, the one that held Enderlin at E F three, has a much bigger charge against it. A federal study says
+it is the likely reason America went twelve years without a single E F five. `[loop L4 open]`
 
 *(blackout 0.8 s)*
 
-## A2 · Twelve years (6:08)
+## A2 · Twelve years (6:06)
 **Picture:** g-then-now: the old F scale and the new EF scale as two bars, the F5 band "261 to 318 MPH" sliding down
 to the EF5 band "Over 200 MPH" · popfig "Feb 2007".
 
@@ -182,12 +183,12 @@ A house swept off a good foundation now meant winds above two hundred.
 **Picture:** g-drought-timeline from the start · marks land one by one with PD stills: Greensburg (FEMA), Parkersburg,
 the four of April 27, 2011, Joplin (FEMA).
 
-On May fourth, two thousand seven, three months after the switch, the new scale had its first EF five. That was
+On May fourth, two thousand seven, three months after the switch, the new scale had its first E F five. That was
 Greensburg, Kansas, where the tornado destroyed about ninety five percent of the town and eleven people lost their
 lives. A year later, on May twenty fifth, two thousand eight, Parkersburg, Iowa, got the second, and the toll there
 was nine.
 
-Then came April twenty seventh, twenty eleven, when four EF fives touched down in Mississippi and Alabama on one day.
+Then came April twenty seventh, twenty eleven, when four E F fives touched down in Mississippi and Alabama on one day.
 No single day since the new scale began has matched that. More than two hundred tornadoes formed across the South
 that day. `[verify: about 216 tornadoes on 27 Apr 2011]` The one at Hackleburg and Phil Campbell, in Alabama, took
 seventy two lives. On May twenty second, less than a month later, the Joplin tornado took a hundred and fifty eight
@@ -196,14 +197,14 @@ lives in Missouri. No single American tornado had taken more since nineteen fort
 **Picture:** the El Reno and Piedmont 2011 mark lands, then a thin line reaches forward to a second El Reno mark in
 2013 stamped "EF3".
 
-Two days after Joplin, an EF five hit El Reno and Piedmont, in Oklahoma, and six people lost their lives. That was a
-different storm from the El Reno tornado two years later, the widest one. So one Oklahoma town has both an EF five
-and an EF three, and the lower number belongs to the bigger storm.
+Two days after Joplin, an E F five hit El Reno and Piedmont, in Oklahoma, and six people lost their lives. That was a
+different storm from the El Reno tornado two years later, the widest one. So one Oklahoma town has an E F five and
+an E F three, and the lower number belongs to the bigger storm.
 
 **Picture:** Moore 2013, FEMA PD footage of the Plaza Towers area · popfig "May 20, 2013" · then a small inset
 "Moore · May 3, 1999 · F5".
 
-Then, on Monday, May twentieth, twenty thirteen, an EF five crossed Moore, Oklahoma. Twenty four people lost their
+Then, on Monday, May twentieth, twenty thirteen, an E F five crossed Moore, Oklahoma. Twenty four people lost their
 lives, and seven of them were children at Plaza Towers Elementary School. Moore had neighborhoods of modern homes in
 the path, and surveyors found some of them swept off their slabs. `[verify: Moore 2013 EF5 rating based on well-built homes swept from foundations]`
 The same city had been hit by an F five on May third, nineteen ninety nine. A mobile radar measured about three
@@ -212,14 +213,14 @@ hundred and one miles an hour in that storm. It kept its five, because it had ho
 
 **Picture:** the timeline keeps drawing past Moore with no marks; a day counter runs to "4,414 Days".
 
-That made nine EF fives in six years. From nineteen fifty to twenty thirteen, America averaged nearly one F five or EF
+That made nine E F fives in six years. From nineteen fifty to twenty thirteen, America averaged nearly one F five or EF
 five a year. So nine in six years was a little above the usual pace.
 `[verify: about 59 F5/EF5 tornadoes in the US from 1950 to 2013]` After Moore, there were none. The count ran for four
 thousand four hundred and fourteen days, from Moore to the night of Enderlin. It was the longest stretch without an F
-five or an EF five since official counts began in nineteen fifty.
+five or an E F five since official counts began in nineteen fifty.
 
 The first storm that could have broken the gap was El Reno, eleven days after Moore, and its five was taken back. For
-twelve years, the worst tornadoes we saw on the news were all rated EF four or lower.
+twelve years, the worst tornadoes we saw on the news were all rated E F four or lower.
 
 **Picture:** four EF4 cards slide in, each with a PD NWS or FEMA damage still: "Mayflower–Vilonia 2014 · 190 MPH",
 "Rochelle–Fairdale 2015 · 200 MPH", "Mayfield 2021 · 190 MPH", "Rolling Fork 2023 · 170 MPH"; the EF5 line sits just
@@ -232,13 +233,13 @@ argued over Mayfield, Kentucky, in twenty twenty one, and over Rolling Fork, Mis
 Mayfield storm stayed on the ground for about a hundred and sixty five miles across western Kentucky, on a December
 night. `[verify: Western Kentucky tornado, 10 Dec 2021, path about 165.6 mi]`
 
-All four were rated EF four, and their final numbers sat near the line. Mayflower and Vilonia got a hundred and
+All four were rated E F four, and their final numbers sat near the line. Mayflower and Vilonia got a hundred and
 ninety miles an hour, and so did Mayfield. Rolling Fork got a hundred and seventy. Rochelle and Fairdale got two
-hundred, one mile an hour short of an EF five.
+hundred, one mile an hour short of an E F five.
 `[verify: final ratings, Mayflower–Vilonia 190, Rochelle–Fairdale 200, Mayfield 190, Rolling Fork 170 mph]`
 
 That left meteorologists with a question they could not settle for years. Some said the ratings had grown too
-cautious, and others said the damage in those years had simply never reached EF five. Many said it was some of each.
+cautious, and others said the damage in those years had simply never reached E F five. Many said it was some of each.
 `[verify: the three-camp framing of the debate (theticker.org, secondary)]` Underneath it all sat one plain question.
 Either the most violent tornadoes had become rarer, or the way they were rated had changed.
 
@@ -246,7 +247,7 @@ Either the most violent tornadoes had become rarer, or the way they were rated h
 citation card: "Where Have the EF5s Gone?" Bulletin of the American Meteorological Society, 2025.
 
 Tony Lyza, a research meteorologist at NOAA's National Severe Storms Laboratory, set out to answer it. The American
-Meteorological Society published his study in twenty twenty five. It was called "Where Have the EF Fives Gone?" He
+Meteorological Society published his study in twenty twenty five. It was called "Where Have the E F Fives Gone?" He
 looked at the gap with statistics, and he concluded that a real drop in tornado strength was highly unlikely. The
 likelier cause, he found, was how surveys and ratings had shifted after the switch to the new scale.
 `[loop L4 closes]`
@@ -259,7 +260,7 @@ Enderlin had gone past it was lying somewhere on a twelve mile path through Rans
 
 *(blackout 0.8 s)*
 
-## A3 · Nineteen minutes (10:20)
+## A3 · Nineteen minutes (10:23)
 **Picture:** SPC watch map (PD) · popfig "3:45 PM" · GOES satellite loop (NOAA PD) of storms building over eastern
 Montana.
 
@@ -300,7 +301,7 @@ times as likely to take lives as daytime ones. `[verify: Ashley, Krmenec and Sch
 **Picture:** g-radar: the self-made Level II re-plot, velocity panel with the couplet ringed, then the correlation
 coefficient panel with the debris signature ringed; timestamps from the data, not from the script.
 
-In the dark, radar gave the clearest view anyone had of it. On the Grand Forks radar, winds rushing toward the dish
+At that hour, radar gave the clearest view anyone had of it. On the Grand Forks radar, winds rushing toward the dish
 and away from it sat side by side. That is the mark of a tight rotation. Then the radar picked up a debris
 signature, a patch of lofted debris the radar can tell apart from rain.
 `[verify: from the Level II replot (KMVX), velocity couplet and tornado debris signature over the Enderlin track, with times]`
@@ -351,12 +352,12 @@ south of town.
 **Picture:** NWS survey b-roll (PD) · the EF3 stamp from I, holding · g-person Carl Jones (text-only card) slides in.
 
 The survey logged no injuries on the whole path. The Grand Forks office is run by Melinda Beerends, its
-meteorologist in charge, and within days it had its EF three. The rating could have stayed there for good. Carl
+meteorologist in charge, and within days it had its E F three. The rating could have stayed there for good. Carl
 Jones, a meteorologist in that office, explained later why it did not. `[loop L5 closes]` `[loop L6 open]`
 
 *(blackout 0.8 s)*
 
-## A4 · The second look (14:37)
+## A4 · The second look (14:39)
 **Picture:** beige quote card, words land in narration order: "This particular set of damage that we saw kind of
 stood out as unique. We wanted to investigate further." · Carl Jones, NWS Grand Forks, MPR News, Oct 8, 2025.
 
@@ -398,7 +399,7 @@ seven. It was first rated F four, and that September it was raised to F five.
 **Picture:** g-mechanism, first half: a grain car side-on, a wind arrow on its broad side, a pivot marked at the far
 rail, the car rolling over it.
 
-They started with the grain cars. To tip a car over, the wind has to push on its broad side hard enough to lift it
+Part of the estimate came from the grain cars. To tip a car over, the wind has to push on its broad side hard enough to lift it
 over the far rail. A loaded grain car is so heavy that tipping one takes a strong wind before anything flies at all.
 That set a floor under the estimate, and the tanker set a much higher one.
 
@@ -416,7 +417,7 @@ sideways, an arc to a landing mark; a ruler on the ground marked "50 m · about 
 Wind pushes on a car, the car's weight pulls it down, and the car only leaves the ground when the push wins. The
 farther a heavy, compact object travels through the air, the stronger that push had to be. The paper drew a line at
 fifty meters, which is about a hundred and sixty feet, or half a football field. A large, compact object carried
-farther than that generally means winds at the EF five level. The rule counts objects that flew through the air,
+farther than that generally means winds at the E F five level. The rule counts objects that flew through the air,
 not ones that rolled or slid along the ground. `[verify: the Miller et al. threshold applies to lofted objects, not rolled or slid ones]`
 
 **Picture:** master map rail segment · the tanker's arc draws to "almost 500 ft", the 160 ft line flashes about a
@@ -425,7 +426,7 @@ third of the way along · popfig "About 3×".
 The Enderlin tanker weighed about seventy thousand pounds, empty, which is about as heavy as a dozen full size pickup
 trucks. It had gone almost five hundred feet, more than one and a half football fields, and nearly three times the
 line. `[loop L3 closes]` So the scale finally had something to measure besides houses and trees, and it pointed well
-past EF three. `[loop L0 closes: a thrown tanker, a paper about thrown objects, and the engineers who used it]`
+past E F three. `[loop L0 closes: a thrown tanker, a paper about thrown objects, and the engineers who used it]`
 `[loop L7 open]`
 
 **Picture:** split card returns: "El Reno · Radar" left, "Enderlin · Tanker Car" right.
@@ -441,13 +442,13 @@ ready. It was the number the whole country had gone twelve years without.
 
 *(blackout 0.8 s)*
 
-## A5 · October 6 (18:16)
+## A5 · October 6 (18:18)
 **Picture:** beige citation card, NWS Grand Forks statement, Oct 6, 2025 (PD) · popfig "Oct 6, 2025" · the EF3 stamp
 struck through, red EF5 lands.
 
 On Monday, October sixth, twenty twenty five, the Grand Forks office put out its revised rating. The Enderlin tornado
-was now an EF five, with peak winds estimated at more than two hundred and ten miles an hour. The rating rested on the
-train rather than on a house, which is rare for an EF five.
+was now an E F five, with peak winds estimated at more than two hundred and ten miles an hour. The rating rested on the
+train rather than on a house, which is rare for an E F five.
 
 **Picture:** g-then-now: a wind ladder with three rungs landing on the voice: "8:15 PM Forecast · 120 to 150",
 "June Survey · 160", "October · 210+".
@@ -459,12 +460,12 @@ Nothing about the storm changed between June and October, but the survey found a
 **Picture:** g-drought-timeline closes: the counter stops at 4,414, the Enderlin mark lands, the long bar turns from
 grey to red · then a US map with every EF-era EF5 dot; Enderlin sits far north of the rest.
 
-It was America's first EF five since Moore, and the twelve year gap was over. Within days, the upgrade was on Valley
-News Live, Minnesota Public Radio and Fox Weather. It went onto the official list of American EF fives, the same
+It was America's first E F five since Moore, and the twelve year gap was over. Within days, the upgrade was on Valley
+News Live, Minnesota Public Radio and Fox Weather. It went onto the official list of American E F fives, the same
 list the twelve years had been counted from. A change like this also goes into Storm Data, the federal database of
 every tornado, which the National Centers for Environmental Information keeps. Every future study of American EF
 fives will count Enderlin, because it is now in that database.
-`[verify: rating revisions are entered in NCEI Storm Data]` Moore's EF five had been put at about two hundred and ten miles an hour.
+`[verify: rating revisions are entered in NCEI Storm Data]` Moore's E F five had been put at about two hundred and ten miles an hour.
 `[verify: Moore 2013 peak wind estimate about 210 mph]` Enderlin's estimate is more than that. It also sits farther north than any other EF
 five since the new scale began.
 
@@ -483,29 +484,28 @@ the reason was the same rule, that the rating goes by what the damage can prove.
 (PD, FEMA P-361) · popfig "250 MPH".
 
 The new number did not change the path, the twelve miles, or the three people the storm took. It did not change what
-anyone knew at eleven o'clock that night either, because a rating always comes after the storm. For most of us, a rating is a number in a news
-story. For the surveyors, it is weeks of work on foot, and sometimes months. It did put a number
-on what a building would have had to stand up to. FEMA builds its guidance for tornado safe rooms around winds of two
+anyone knew at eleven o'clock that night either, because a rating always comes after the storm. But it did put a figure
+on what a building there would have had to stand up to. FEMA builds its guidance for tornado safe rooms around winds of two
 hundred and fifty miles an hour. `[verify: FEMA P-361 tornado safe room design wind speed 250 mph]` If you have a safe
 room built to that standard, it is rated above what the survey gave Enderlin. `[loop L7 closes]`
 
 **Picture:** the four EF4 cards from A2 return, each with a small "?" pulsing beside the EF4.
 
-Enderlin sat at EF three for a hundred and eight days before it moved up two full steps. That put the same question
-back on every high end EF four since Moore, including Mayfield and Rolling Fork. `[loop L8 open]` Months earlier, a
+It took a hundred and eight days from the storm for Enderlin to move up two full steps. That put the same question
+back on every high end E F four since Moore, including Mayfield and Rolling Fork. `[loop L8 open]` Months earlier, a
 scientist at a federal lab had already written down a change he thought the scale needed. `[loop L9 open · cta-hinge]`
 
-## CTA · Storm-Ready Home (20:53)
+## CTA · Storm-Ready Home (20:48)
 **Picture:** 1.0 s dip in · `config.yaml channel.cta` file (Paul, 15.1 s, its own VO) · 1.0 s dip out · hard cut
 to real footage for the payoff. No narration under it.
 
-## A6 · The open case (21:13)
+## A6 · The open case (21:07)
 **Picture:** real footage first (PD NWS survey b-roll), then g-then-now: a bar with the EF4 and EF5 bands and the line
 between them sliding down a notch; g-person Tony Lyza returns.
 
-Tony Lyza's change was to lower the line between EF four and EF five, slightly. `[loop L9 closes]` His study argued
+Tony Lyza's change was to lower the line between E F four and E F five, slightly. `[loop L9 closes]` His study argued
 that a small move would line up the new scale with the old Fujita scale used before two thousand seven. A lower line
-would pull the top of the EF four range into EF five. That is where the arguments over Mayfield and Rolling Fork have
+would pull the top of the E F four range into E F five. That is where the arguments over Mayfield and Rolling Fork have
 always sat. `[loop L8 closes]` Enderlin was rated on the scale as it stands, with the line where it has been
 since two thousand seven.
 
@@ -519,11 +519,11 @@ Civil Engineers and the American Meteorological Society.
 **Picture:** g-mechanism returns small: the tanker arc, then the same arc over an empty field with nothing to throw.
 
 The Enderlin method has a limit of its own. It needs a large, heavy object in the path, thrown far enough to measure,
-and most tornadoes never cross a train. El Reno had radar and open fields, and it still has its EF three.
+and most tornadoes never cross a train. El Reno had radar and open fields, and it still has its E F three.
 
 **Picture:** a map of Oklahoma with an Enid pin · text card "Enid, Oklahoma · 2026".
 
-In twenty twenty six, a tornado at Enid, Oklahoma, landed in the same argument over whether it reached EF five.
+In twenty twenty six, a tornado at Enid, Oklahoma, landed in the same argument over whether it reached E F five.
 `[verify: Enid 2026 EF5 debate and its status as of the script date]` The ratings matter past any one town, because
 they are the data scientists use to ask whether violent tornadoes are becoming rarer. That is the question Lyza's study
 put to the twelve years, and the Enderlin rating ended the gap without settling it. If surveys shifted in two
@@ -538,7 +538,8 @@ from where it stood, a published method can turn that distance into wind.
 **Picture:** PD NWS warning graphic (polygon over a county map) · then the survey b-roll, a team walking at dawn.
 
 For anyone in tornado country, the number that matters on the night is the warning, and it comes before any survey.
-The rating is written weeks or months later, by people walking the path. On the Enderlin path, one part of what they
+For most of us, a rating is a number in a news story days later. For the surveyors, it is weeks of work on foot, and
+at Enderlin it took months. On the Enderlin path, one part of what they
 found was never going to change with any rating. `[loop L10 open]`
 
 *(hold 3 s, the master map at dawn, bed only under a moving picture)*
@@ -547,10 +548,42 @@ found was never going to change with any rating. `[loop L10 open]`
 **Picture:** the master map, the track fading to a single line · text-only names card, each name landing on the voice
 · slow push on a PD survey photo of the path (credit checked) · g-outro.
 
-For a hundred and eight days, the storm that came through Enderlin was an EF three. Since October sixth, it has been
-an EF five. Three people lost their lives on its path, and the Cass County Sheriff's Office released their names on
+The storm that came through Enderlin on June twentieth was rated an E F three. A hundred and eight days later, it
+became an E F five. Three people lost their lives on its path, and the Cass County Sheriff's Office released their names on
 Sunday, June twenty second. `[loop L10 closes]` Michael and Katherine Dehn, both seventy three, were in their home on
 Highway forty six, one mile east of town. Marcario Lucio was eighty nine, and his wife, Roberta, survived the storm
 that took him.
 
 *(outro tail 4 s, g-outro, bed out)*
+
+---
+
+## Word table
+
+Pace 186.5 wpm (measured, ep-1974 probes at atempo 1.10). Seconds = words / 186.5 × 60; CTA is the 15.1 s file plus
+two 1.0 s dips. Runtime adds the void, blackouts, hold, outro tail and 2.5 s seam gaps (49.5 s in all): **23:45
+estimated**, 1:15 under the 25:00 target. "E F" counts as one word. With `word_budget.py`'s default 60 s overhead it reads 23.9 min (24.2 if it counts
+"E F" as two words), inside the ±1 min gate by 5 to 15 s; every `[verify]` line the fact desk cuts pulls it under. CTA starts at 20:48, 87.6 %.
+
+| Section | Words | Est. seconds | Open loops carried (open at section end) |
+|---|---|---|---|
+| H · Hook | 16 | 5.1 | L0 |
+| HT · Hook tail | 43 | 13.8 | L0, L1 |
+| I · The night | 270 | 86.9 | L0, L1, L2 |
+| A1 · How a tornado gets its number | 777 | 250.0 | L0, L3, L4 |
+| A2 · Twelve years | 787 | 253.2 | L0, L3, L5 |
+| A3 · Nineteen minutes | 787 | 253.2 | L0, L3, L6 |
+| A4 · The second look | 670 | 215.5 | L7 |
+| A5 · October 6 | 465 | 149.6 | L8, L9 (cta-hinge) |
+| CTA · Storm-Ready Home | 0 | 17.1 | L8, L9 |
+| A6 · The open case | 378 | 121.6 | L10 |
+| Z · Close | 82 | 26.4 | none |
+| **Total** | **4,275** | **1,392.4** | |
+
+## TTS copy notes (not narration)
+- Homographs, respell in the TTS copy only: "wind" / "winds" (noun, "wihnd", 31 uses), "lives" (noun, "lyvz", 9 uses),
+  "Valley News Live" ("lyve"). Listen to each once after TTS.
+- Names: Enderlin "EN-der-lin", Dehn "den", Marcario "mar-KAR-ee-oh", Lucio "LOO-see-oh", Lyza "LYE-zuh" (confirm),
+  Fujita "foo-JEE-tah", Beerends "BEER-ends", Vilonia "vy-LOH-nee-uh", Elie "EE-lee", Mesonet "MEZZ-oh-net",
+  derecho "deh-RAY-cho", Moore stays one syllable.
+- "E F" is two letters; the spacing is deliberate.
