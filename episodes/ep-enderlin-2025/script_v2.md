@@ -458,7 +458,9 @@ grey to red · then a US map with every EF-era EF5 dot; Enderlin sits far north 
 
 It was America's first EF five since Moore, and the twelve year gap was over. Within days, the upgrade was on Valley
 News Live, Minnesota Public Radio and Fox Weather. It went onto the official list of American EF fives, the same
-list the twelve years had been counted from. Moore's EF five had been put at about two hundred and ten miles an hour.
+list the twelve years had been counted from. A change like this also goes into Storm Data, the federal database of
+every tornado, which the National Centers for Environmental Information keeps.
+`[verify: rating revisions are entered in NCEI Storm Data]` Moore's EF five had been put at about two hundred and ten miles an hour.
 `[verify: Moore 2013 peak wind estimate about 210 mph]` Enderlin's estimate is more than that. It also sits farther north than any other EF
 five since the new scale began.
 
