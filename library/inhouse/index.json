@@ -1,182 +1,200 @@
 [
- {
-  "name": "stat-panel",
-  "kind": "exemplar",
-  "title": "Official Record Stat Panel",
-  "description": "RHS 820px translucent 'official record' panel that slides over track-1 footage and lists disaster facts, ending on a counted death toll. The most-reused sub-comp in the show (28 uses).",
-  "tags": [
-   "stat-panel",
-   "rhs-panel",
-   "counter",
-   "death-toll",
-   "slide-in"
-  ],
-  "params": [
-   "tname",
-   "tsub",
-   "stamp label",
-   "fact row labels/values",
-   "death toll target",
-   "gone line"
-  ],
-  "source_episode": "ep5-california-2018",
-  "file": "stat-panel.html"
- },
- {
-  "name": "title-card",
-  "kind": "exemplar",
-  "title": "Episode Title Card",
-  "description": "Stacked centered title reveal: cold-open hook line, punch line, full episode title (Arial Black 128), and a Georgia-italic amber date/brand subline.",
-  "tags": [
-   "title-card",
-   "cold-open",
-   "brand"
-  ],
-  "params": [
-   "l1 hook line",
-   "l2 punch line",
-   "main title (2 lines)",
-   "sub date + channel"
-  ],
-  "source_episode": "ep2-2011-super-outbreak",
-  "file": "title-card.html"
- },
- {
-  "name": "outro-brand",
-  "kind": "exemplar",
-  "title": "Warning Hour Brand Outro",
-  "description": "Closing 'THE WARNING HOUR' wordmark card with episode-number line and CTA tag, fading to black.",
-  "tags": [
-   "outro",
-   "brand",
-   "cta"
-  ],
-  "params": [
-   "episode number/title line",
-   "CTA tag line"
-  ],
-  "source_episode": "ep2-2011-super-outbreak",
-  "file": "outro-brand.html"
- },
- {
-  "name": "numbers-rollup",
-  "kind": "exemplar",
-  "title": "Stacked Numbers Roll-up",
-  "description": "Header plus up to four rows of counted big Courier New figures with caption labels, closing on a source citation.",
-  "tags": [
-   "numbers",
-   "counter",
-   "stats",
-   "citation"
-  ],
-  "params": [
-   "hdr eyebrow",
-   "row labels",
-   "row counter targets/formats",
-   "cite line"
-  ],
-  "source_episode": "ep2-2011-super-outbreak",
-  "file": "numbers-rollup.html"
- },
- {
-  "name": "bulletin-typewriter",
-  "kind": "exemplar",
-  "title": "NWS Bulletin Typewriter",
-  "description": "Green-on-black CRT typewriter reconstruction of a verbatim government bulletin, typed phrase-by-phrase in sync with narration, blinking cursor, verbatim-source label.",
-  "tags": [
-   "typewriter",
-   "bulletin",
-   "document",
-   "crt",
-   "verbatim"
-  ],
-  "params": [
-   "flash banner text",
-   "HDR header block",
-   "SEGS phrase array (text/at/dur)",
-   "src attribution"
-  ],
-  "source_episode": "ep6-katrina-2005",
-  "file": "bulletin-typewriter.html"
- },
- {
-  "name": "ranked-bars",
-  "kind": "exemplar",
-  "title": "Ranked Row Comparison",
-  "description": "Masthead plus up to 3 fill-animated ranked rails with counted numeric readouts, a scale axis with ticks, and a record badge + closing kicker on the winning row.",
-  "tags": [
-   "ranked-bars",
-   "comparison",
-   "counter",
-   "axis",
-   "record-badge"
-  ],
-  "params": [
-   "masthead text",
-   "per-row name/subline/bar-width/color/counter-target/unit",
-   "axis tick labels",
-   "badge/kicker/foot/src text"
-  ],
-  "source_episode": "ep3-tristate",
-  "file": "ranked-bars.html"
- },
- {
-  "name": "ef-ladder",
-  "kind": "exemplar",
-  "title": "EF-Scale Rung Ladder",
-  "description": "Two-column explainer: damage-indicator tile grid building one at a time, plus a rating ladder of wind-speed rungs, closing on a verdict stamp and reasoning line. Note: ep4 has a richer damage-indicator/scale treatment (g-scale.html, g-fujita.html, g-metmap.html) not extracted here.",
-  "tags": [
-   "explainer",
-   "ef-scale",
-   "ladder",
-   "damage-indicators"
-  ],
-  "params": [
-   "hdr/sub",
-   "names[] tile labels",
-   "dislab caption",
-   "ladder rung bands",
-   "verdict stamp/vsub",
-   "close line"
-  ],
-  "source_episode": "ep2-2011-super-outbreak",
-  "file": "ef-ladder.html"
- },
- {
-  "name": "stat-timeline",
-  "kind": "exemplar",
-  "title": "Chronology Rail Strip",
-  "description": "Horizontal chronology strip: title, a two-endpoint-year growing progress rail stalling on a percent readout, then sequential narration-order text beats. Closest available analog in the repo for a year-axis chronology strip; no true stepped-label multi-year timeline comp exists to extract from.",
-  "tags": [
-   "timeline",
-   "chronology",
-   "progress-rail",
-   "percent"
-  ],
-  "params": [
-   "title",
-   "y0/y1 endpoint labels",
-   "fill percent target",
-   "note/note2/sink text beats"
-  ],
-  "source_episode": "ep6-katrina-2005",
-  "file": "stat-timeline.html"
- },
- {
-  "name": "joplin-stat-panel",
-  "kind": "example",
-  "title": "Joplin Stat Panel (worked example)",
-  "description": "The stat-panel exemplar taken through the full pick-and-tweak flow for a real brief (Joplin 2011 casualty hit): search index, copy, hand-retune copy/counter, timings untouched. Reference for how library items become episode graphics.",
-  "tags": [
-   "example",
-   "stat-panel",
-   "worked-example",
-   "pick-and-tweak"
-  ],
-  "params": [
-   "derived from stat-panel.html \u2014 see that exemplar for the editable slots"
-  ],
-  "source_episode": "dry-run 2026-08-27",
-  "file": "examples/joplin-stat-panel.html"
- }
+  {
+    "name": "stat-panel",
+    "kind": "exemplar",
+    "title": "Official Record Stat Panel",
+    "description": "RHS 820px translucent 'official record' panel that slides over track-1 footage and lists disaster facts, ending on a counted death toll. The most-reused sub-comp in the show (28 uses).",
+    "tags": [
+      "stat-panel",
+      "rhs-panel",
+      "counter",
+      "death-toll",
+      "slide-in"
+    ],
+    "params": [
+      "tname",
+      "tsub",
+      "stamp label",
+      "fact row labels/values",
+      "death toll target",
+      "gone line"
+    ],
+    "source_episode": "ep5-california-2018",
+    "file": "stat-panel.html"
+  },
+  {
+    "name": "title-card",
+    "kind": "exemplar",
+    "title": "Episode Title Card",
+    "description": "Stacked centered title reveal: cold-open hook line, punch line, full episode title (Arial Black 128), and a Georgia-italic amber date/brand subline.",
+    "tags": [
+      "title-card",
+      "cold-open",
+      "brand"
+    ],
+    "params": [
+      "l1 hook line",
+      "l2 punch line",
+      "main title (2 lines)",
+      "sub date + channel"
+    ],
+    "source_episode": "ep2-2011-super-outbreak",
+    "file": "title-card.html"
+  },
+  {
+    "name": "outro-brand",
+    "kind": "exemplar",
+    "title": "Warning Hour Brand Outro",
+    "description": "Closing 'THE WARNING HOUR' wordmark card with episode-number line and CTA tag, fading to black.",
+    "tags": [
+      "outro",
+      "brand",
+      "cta"
+    ],
+    "params": [
+      "episode number/title line",
+      "CTA tag line"
+    ],
+    "source_episode": "ep2-2011-super-outbreak",
+    "file": "outro-brand.html"
+  },
+  {
+    "name": "numbers-rollup",
+    "kind": "exemplar",
+    "title": "Stacked Numbers Roll-up",
+    "description": "Header plus up to four rows of counted big Courier New figures with caption labels, closing on a source citation.",
+    "tags": [
+      "numbers",
+      "counter",
+      "stats",
+      "citation"
+    ],
+    "params": [
+      "hdr eyebrow",
+      "row labels",
+      "row counter targets/formats",
+      "cite line"
+    ],
+    "source_episode": "ep2-2011-super-outbreak",
+    "file": "numbers-rollup.html"
+  },
+  {
+    "name": "bulletin-typewriter",
+    "kind": "exemplar",
+    "title": "NWS Bulletin Typewriter",
+    "description": "Green-on-black CRT typewriter reconstruction of a verbatim government bulletin, typed phrase-by-phrase in sync with narration, blinking cursor, verbatim-source label.",
+    "tags": [
+      "typewriter",
+      "bulletin",
+      "document",
+      "crt",
+      "verbatim"
+    ],
+    "params": [
+      "flash banner text",
+      "HDR header block",
+      "SEGS phrase array (text/at/dur)",
+      "src attribution"
+    ],
+    "source_episode": "ep6-katrina-2005",
+    "file": "bulletin-typewriter.html"
+  },
+  {
+    "name": "ranked-bars",
+    "kind": "exemplar",
+    "title": "Ranked Row Comparison",
+    "description": "Masthead plus up to 3 fill-animated ranked rails with counted numeric readouts, a scale axis with ticks, and a record badge + closing kicker on the winning row.",
+    "tags": [
+      "ranked-bars",
+      "comparison",
+      "counter",
+      "axis",
+      "record-badge"
+    ],
+    "params": [
+      "masthead text",
+      "per-row name/subline/bar-width/color/counter-target/unit",
+      "axis tick labels",
+      "badge/kicker/foot/src text"
+    ],
+    "source_episode": "ep3-tristate",
+    "file": "ranked-bars.html"
+  },
+  {
+    "name": "ef-ladder",
+    "kind": "exemplar",
+    "title": "EF-Scale Rung Ladder",
+    "description": "Two-column explainer: damage-indicator tile grid building one at a time, plus a rating ladder of wind-speed rungs, closing on a verdict stamp and reasoning line. Note: ep4 has a richer damage-indicator/scale treatment (g-scale.html, g-fujita.html, g-metmap.html) not extracted here.",
+    "tags": [
+      "explainer",
+      "ef-scale",
+      "ladder",
+      "damage-indicators"
+    ],
+    "params": [
+      "hdr/sub",
+      "names[] tile labels",
+      "dislab caption",
+      "ladder rung bands",
+      "verdict stamp/vsub",
+      "close line"
+    ],
+    "source_episode": "ep2-2011-super-outbreak",
+    "file": "ef-ladder.html"
+  },
+  {
+    "name": "stat-timeline",
+    "kind": "exemplar",
+    "title": "Chronology Rail Strip",
+    "description": "Horizontal chronology strip: title, a two-endpoint-year growing progress rail stalling on a percent readout, then sequential narration-order text beats. Closest available analog in the repo for a year-axis chronology strip; no true stepped-label multi-year timeline comp exists to extract from.",
+    "tags": [
+      "timeline",
+      "chronology",
+      "progress-rail",
+      "percent"
+    ],
+    "params": [
+      "title",
+      "y0/y1 endpoint labels",
+      "fill percent target",
+      "note/note2/sink text beats"
+    ],
+    "source_episode": "ep6-katrina-2005",
+    "file": "stat-timeline.html"
+  },
+  {
+    "name": "joplin-stat-panel",
+    "kind": "example",
+    "title": "Joplin Stat Panel (worked example)",
+    "description": "The stat-panel exemplar taken through the full pick-and-tweak flow for a real brief (Joplin 2011 casualty hit): search index, copy, hand-retune copy/counter, timings untouched. Reference for how library items become episode graphics.",
+    "tags": [
+      "example",
+      "stat-panel",
+      "worked-example",
+      "pick-and-tweak"
+    ],
+    "params": [
+      "derived from stat-panel.html — see that exemplar for the editable slots"
+    ],
+    "source_episode": "dry-run 2026-08-27",
+    "file": "examples/joplin-stat-panel.html"
+  },
+  {
+    "name": "webgl-tornado",
+    "kind": "template",
+    "title": "WebGL Tornado (Three.js funnel, seek-driven)",
+    "description": "Stylised funnel, wall cloud, debris and storm sky in Three.js, driven only by the paused GSAP timeline. No text: put labels on a HUD comp above it. Mount steps and CONFIG fields in webgl/README.md.",
+    "tags": [
+      "webgl",
+      "three.js",
+      "tornado",
+      "background",
+      "3d"
+    ],
+    "params": [
+      "CONFIG block: scheme, seed, funnelWidth, height, rotationSpeed, path, debrisDensity, duration, cameraMove"
+    ],
+    "source_episode": "demo-webgl-tornado 2026-09-26",
+    "file": "webgl/tornado.html"
+  }
 ]
