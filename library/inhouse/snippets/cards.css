@@ -3,7 +3,7 @@
    COPY the rules you need into the episode's index.html <style> block —
    do not link this file from a composition. This is exemplar/reference CSS,
    consolidated from shipped episodes (ep2, ep5, ep6; ep1/ep3 for .dim/.archgrade/
-   .stockgrade). See tokens.md for the palette/type/geometry these values encode.
+   .stockgrade). See tokens.md for the type/geometry these values encode and references/mg-quickref.md for the palette and surfaces.
 
    Fidelity note: rules below are the ACTUAL shipped CSS. Where episodes shipped
    different variants of the same class, the newest/most-evolved variant is kept
@@ -42,8 +42,8 @@ video { width: 100%; height: 100%; object-fit: cover; }
 
 /* ---- lower-third location/time card (ep6, most evolved lineage; ep3 adds `inset:auto`) ---- */
 .lt { position: absolute; inset: auto; left: 110px; bottom: 110px; z-index: 5; font-family: Arial, sans-serif; }
-.lt .lt-loc { display: table; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 52px; color: #f2f5f8; background: rgba(5,8,12,0.78); padding: 4px 16px; text-shadow: 0 3px 24px rgba(0,0,0,0.85); }
-.lt .lt-time { display: table; font-weight: 700; font-size: 27px; color: #f5d98b; background: rgba(5,8,12,0.78); padding: 6px 14px; margin-top: 10px; letter-spacing: 1px; }
+.lt .lt-loc { display: table; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 52px; color: #f2f5f8; padding: 4px 16px; text-shadow: 0 3px 24px rgba(0,0,0,0.85); }
+.lt .lt-time { display: table; font-weight: 700; font-size: 27px; color: #f5d98b; padding: 6px 14px; margin-top: 10px; letter-spacing: 1px; }
 
 /* ---- generic glass popup chip (ep6) ---- */
 .popup { position: absolute; font-family: Arial, sans-serif; font-weight: 700;
@@ -56,15 +56,15 @@ video { width: 100%; height: 100%; object-fit: cover; }
    the same way: swap background to rgba(26,20,8,0.88), border to rgba(216,161,58,0.5),
    color to #d8a13a. */
 
-/* ---- source label chip (ep6) ---- */
-.srclab { position: absolute; inset: auto; right: 40px; bottom: 34px; z-index: 7; font-family: Arial, sans-serif; font-size: 19px; color: rgba(200,211,224,0.75); background: rgba(5,8,12,0.55); padding: 5px 12px; letter-spacing: 0.5px; }
+/* ---- source label chip (ep6; moved inside the 5 % text-safe margin, owner 26 Sep 26) ---- */
+.srclab { position: absolute; inset: auto; right: 96px; bottom: 54px; z-index: 7; font-family: Arial, sans-serif; font-size: 19px; color: rgba(200,211,224,0.75); padding: 5px 12px; letter-spacing: 0.5px; }
 /* .recchip: NOT FOUND in any shipped episode (searched ep1-6 + demo-joplin-90 index.html for
    "recchip") — no such class has shipped. Omitted; do not fabricate one. */
 
 /* ---- pull-quote card (ep2 lineage, carried into ep6) ---- */
 .quotecard { position: absolute; inset: auto; left: 160px; right: 160px; bottom: 150px; z-index: 6; text-align: center; }
-.quotecard .q { display: table; margin: 0 auto; font-family: Georgia, serif; font-style: italic; font-size: 44px; color: #f2f5f8; background: rgba(5,8,12,0.72); padding: 16px 40px; line-height: 1.35; text-shadow: 0 2px 18px rgba(0,0,0,0.9); }
-.quotecard .attr { display: table; margin: 12px auto 0; font-family: Arial, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 3px; color: #d8a13a; background: rgba(5,8,12,0.72); padding: 8px 24px; }
+.quotecard .q { display: table; margin: 0 auto; font-family: Georgia, serif; font-style: italic; font-size: 44px; color: #f2f5f8; padding: 16px 40px; line-height: 1.35; text-shadow: 0 2px 18px rgba(0,0,0,0.9); }
+.quotecard .attr { display: table; margin: 12px auto 0; font-family: Arial, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 3px; color: #d8a13a; padding: 8px 24px; }
 
 /* ---- glass card — the ONE treatment for any text over footage (ep6; owner 12:03: no bare
    text on moving footage, no mid-beat background swaps) ---- */
@@ -73,15 +73,24 @@ video { width: 100%; height: 100%; object-fit: cover; }
   box-shadow: 0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
 .quotecard.glasscard { left: 260px; right: 260px; box-shadow: none; } /* owner 24:15: glass + text alone, no halo */
 
+/* ---- glass chip: the .glasscard surface on small text chips (owner 26 Sep 26: no dark chip; these
+   chips carried rgba(5,8,12,.55-.78) before). Radius 14 as the shipped .popup chip. Inside a
+   .quotecard.glasscard the card is the glass, so its lines carry no chip of their own. ---- */
+.lt .lt-loc, .lt .lt-time, .srclab, .quotecard .q, .quotecard .attr, .namecard .nc-name, .namecard .nc-sub,
+.dispatchlab .d1, .dispatchlab .d2 {
+  background: rgba(10,16,24,0.55); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  border: 1px solid rgba(255,255,255,0.14); border-radius: 14px; }
+.quotecard.glasscard .q, .quotecard.glasscard .attr { background: none; border: 0; backdrop-filter: none; -webkit-backdrop-filter: none; }
+
 /* ---- namecard: full-width centered name/subtitle (ep6) ---- */
 .namecard { position: absolute; left: 0; right: 0; bottom: 150px; text-align: center; z-index: 5; }
-.namecard .nc-name { display: table; margin: 0 auto; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 64px; color: #f2f5f8; letter-spacing: 1px; background: rgba(5,8,12,0.62); padding: 10px 42px; text-shadow: 0 3px 26px rgba(0,0,0,0.9); }
-.namecard .nc-sub { display: table; margin: 10px auto 0; font-family: Georgia, serif; font-style: italic; font-size: 32px; color: #e8c56a; background: rgba(5,8,12,0.62); padding: 8px 30px; }
+.namecard .nc-name { display: table; margin: 0 auto; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 64px; color: #f2f5f8; letter-spacing: 1px; padding: 10px 42px; text-shadow: 0 3px 26px rgba(0,0,0,0.9); }
+.namecard .nc-sub { display: table; margin: 10px auto 0; font-family: Georgia, serif; font-style: italic; font-size: 32px; color: #e8c56a; padding: 8px 30px; }
 
 /* ---- dispatch/radio-style two-line card (ep6) ---- */
 .dispatchlab { position: absolute; left: 0; right: 0; top: 470px; text-align: center; z-index: 6; }
-.dispatchlab .d1 { display: table; margin: 0 auto; font-family: 'Courier New', monospace; font-weight: 700; font-size: 40px; color: #e8c56a; letter-spacing: 4px; background: rgba(5,8,12,0.6); padding: 10px 30px; }
-.dispatchlab .d2 { display: table; margin: 14px auto 0; font-family: Arial, sans-serif; font-size: 22px; letter-spacing: 3px; color: #93a3b2; background: rgba(5,8,12,0.6); padding: 6px 18px; }
+.dispatchlab .d1 { display: table; margin: 0 auto; font-family: 'Courier New', monospace; font-weight: 700; font-size: 40px; color: #e8c56a; letter-spacing: 4px; padding: 10px 30px; }
+.dispatchlab .d2 { display: table; margin: 14px auto 0; font-family: Arial, sans-serif; font-size: 22px; letter-spacing: 3px; color: #93a3b2; padding: 6px 18px; }
 
 /* ---- Abril figure popup — date/figure reveal (ep6; owner 2026-08-16: replaces red stamp
    blocks; red eerie, shadow, no bg block). @font-face path is relative to the episode that

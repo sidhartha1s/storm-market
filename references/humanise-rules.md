@@ -59,7 +59,7 @@ section: the writer writes with it open, the independent grader sweeps the finis
 device with its timestamp, and anything that breaks the cadence is fixed in that one pass.
 - **Banned, every script:** "uh" and "um" (they read as retching in this voice); self-corrections ("about an hour,
   maybe a little less"); doubled negatives for rhythm ("not before, not since"); any device used in two sentences
-  in a row; trailer fragments (see LEARNINGS 2026-09-20).
+  in a row; trailer fragments (see learnings/script-process.md 2026-09-20).
 - **Always on, invisible:** contractions where a person would use them; sentences of 10 to 22 words joined with
   and / but / because / so; ordinary intensifiers ("really", "just", "actually") used the way people use them.
 - **Rationed devices (each at most three times in a 20-minute script, never twice inside three minutes, never the

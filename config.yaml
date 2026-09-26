@@ -12,7 +12,7 @@ render:
   hyperframes_version: "0.8.78"  # pinned; managed by scripts/pin_ritual.py — do not hand-edit
   # Currency is checked at episode kickoff (owner 26 Sep 26), never by render_preflight:
   # `python3 scripts/pin_ritual.py` A/B-renders episodes/demo-pin against scripts/pin_baseline.json
-  # and bumps this pin (plus every live scripts/*.cmd) only on identical metrics. History in LEARNINGS.md.
+  # and bumps this pin (plus every live scripts/*.cmd) only on identical metrics. History in learnings/render.md.
   # The 30s ffprobe deadline (Date.now() + 3e4, since 0.7.81) is why media_budget.py exists.
   fps: 30
   quality: standard               # "high" silently picks libx265 CPU on this box (JP measured)

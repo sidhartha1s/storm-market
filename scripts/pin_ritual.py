@@ -140,7 +140,7 @@ def render_cmd_env():
 def ff_paths():
     """ffmpeg/ffprobe from render.cmd's `set HYPERFRAMES_FF*_PATH=` lines — the render
     recipe is the single source of truth for which build measures (a wrong/stale build
-    silently disagrees on blackdetect/astats, see LEARNINGS on the shared-build spawn cost)."""
+    silently disagrees on blackdetect/astats, see learnings/render.md on the shared-build spawn cost)."""
     txt = RENDER_CMD.read_text(encoding="utf-8", errors="replace")
     paths = dict(re.findall(r"^set (HYPERFRAMES_FF(?:MPEG|PROBE)_PATH)=(.+)$", txt,
                             re.MULTILINE))
