@@ -63,7 +63,7 @@ video { width: 100%; height: 100%; object-fit: cover; }
 
 /* ---- pull-quote card (ep2 lineage, carried into ep6) ---- */
 .quotecard { position: absolute; inset: auto; left: 160px; right: 160px; bottom: 150px; z-index: 6; text-align: center; }
-.quotecard .q { display: table; margin: 0 auto; font-family: Georgia, serif; font-style: italic; font-size: 44px; color: #f2f5f8; background: rgba(5,8,12,0.72); padding: 16px 40px; line-height: 1.35; text-shadow: 0 2px 18px rgba(0,0,0,0.9); }
+.quotecard .q { display: table; margin: 0 auto; font-family: Georgia, serif; font-style: italic; font-size: 44px; color: #f2f5f8; padding: 16px 40px; line-height: 1.35; text-shadow: 0 2px 18px rgba(0,0,0,0.9); }
 .quotecard .attr { display: table; margin: 12px auto 0; font-family: Arial, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 3px; color: #d8a13a; background: rgba(5,8,12,0.72); padding: 8px 24px; }
 
 /* ---- glass card — the ONE treatment for any text over footage (ep6; owner 12:03: no bare
