@@ -9,6 +9,7 @@ if not exist "scripts\pin_ritual.py" (
   echo 2 > pin_ritual_done.marker
   exit /b 2
 )
+REM Arguments pass through (e.g. `pin_ritual_task.cmd --baseline`).
 set PYTHONUNBUFFERED=1
 "C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" scripts\pin_ritual.py %* > pin_ritual.log 2>&1
 echo %errorlevel% > pin_ritual_done.marker
