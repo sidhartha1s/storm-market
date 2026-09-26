@@ -412,7 +412,7 @@ past EF three. `[loop L0 closes: a thrown tanker, a paper about thrown objects, 
 
 **Picture:** split card returns: "El Reno · Radar" left, "Enderlin · Tanker Car" right.
 
-El Reno had its radar, and Enderlin had a tanker car in a field, and only the tanker could be turned into a rating.
+El Reno had its radar, and Enderlin had a tanker car in a field, and only the tanker became a rating.
 
 **Picture:** quote card, one line only.
 
