@@ -35,7 +35,7 @@ quote that was not actually said.
 | decapitated | hard | suffered a fatal head injury | Paraphrase to the plain fact of a fatal injury; the anatomical detail adds nothing. |
 | crushed to death | hard | was pinned and did not survive; did not survive being trapped under debris | Names the mechanism without the algorithm-risk verb. |
 | burned alive | hard | did not escape the flames; was overtaken by the fire before help arrived | Same fact, no "alive" pairing with a violent verb. |
-| bomb / explode / explosion (as simile for storm force) | hard | hit with sudden, overwhelming force; tore through in an instant; leveled the block in seconds | Almost always a lazy simile in this niche, not a literal event; the literal force is easy to describe directly. |
+| bomb / explode / explosion | hard | hit with sudden, overwhelming force; tore through in an instant; leveled the block in seconds | Almost always a lazy simile for storm force in this niche, not a literal event; the literal force is easy to describe directly. |
 | war zone | hard | looked unrecognizable; resembled a demolition site | Cliché comparison, also banned by humanise-rules' "no borrowed metaphors". |
 | shooting | hard | filming; recording | Rare in this niche outside "storm chasers were filming" — say "filming", not "shooting", and the ambiguity never comes up. |
 | gun | hard | (no legitimate use in this niche) | No weather-documentary sentence needs this word; if it appears, rewrite the sentence. |
