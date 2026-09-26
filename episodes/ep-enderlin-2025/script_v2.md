@@ -481,8 +481,8 @@ between them sliding down a notch; g-person Tony Lyza returns.
 
 Tony Lyza's change was to lower the line between EF four and EF five, slightly. `[loop L9 closes]` His study argued
 that a small move would line up the new scale with the old Fujita scale used before two thousand seven. A lower line
-would pull the top of the EF four range into EF five, and that is where the arguments over Mayfield and Rolling Fork
-have always sat. `[loop L8 closes]` Enderlin was rated on the scale as it stands, with the line where it has been
+would pull the top of the EF four range into EF five. That is where the arguments over Mayfield and Rolling Fork have
+always sat. `[loop L8 closes]` Enderlin was rated on the scale as it stands, with the line where it has been
 since two thousand seven.
 
 **Picture:** text card "Wind Speed Estimation in Tornadoes · ASCE / AMS standard" over survey b-roll.
