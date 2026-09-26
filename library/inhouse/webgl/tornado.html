@@ -163,7 +163,6 @@ vortex({ order: 4, h: C.height, r0: R0 * 1.25, r1: C.funnelWidth * 1.1, pow: 2.0
 vortex({ order: 5, h: C.height * 0.16, r0: R0 * 3.4, r1: R0 * 1.4, pow: 0.7, amp: 0.3, alpha: 0.55, fadeLo: 0.05, fadeHi: 0.35, col: S.dust, shade: S.shade });
 
 // ---- wall cloud (lowered, rotating disc) + wider cloud base, one shader ----
-const discGeo = new THREE.CircleGeometry(1, 96, 0, TAU);
 const ringGeo = new THREE.RingGeometry(0.001, 1, 96, 14);
 function disc(o) {
   const m = new THREE.ShaderMaterial({
