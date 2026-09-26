@@ -435,9 +435,8 @@ El Reno had its radar, and Enderlin had a tanker car in a field, and only the ta
 **Picture:** quote card, one line only.
 
 Miller said the case "exemplifies the importance of integrating engineering analysis and scientific research into
-operational meteorology." He also called the method, and this is a direct quote, "a powerful new tool for rating
-storms that produce extreme yet unconventional damage." Okay,
-so a train is about as unconventional as damage gets. By early October, the Grand Forks office had its new number
+operational meteorology." He also called it, in his words, "a powerful new tool for rating storms that produce
+extreme yet unconventional damage." Okay, so a train is about as unconventional as damage gets. By early October, the Grand Forks office had its new number
 ready. It was the number the whole country had gone twelve years without.
 
 *(blackout 0.8 s)*
