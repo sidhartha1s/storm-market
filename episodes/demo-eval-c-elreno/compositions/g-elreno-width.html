@@ -1,0 +1,359 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #er-stage { position:absolute; inset:0; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #er-rig, #er-world, #er-hud, #er-vig, #er-black { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #er-canvas { position:absolute; left:0; top:0; width:1920px; height:1080px; display:block; }
+  #er-bracket { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  #er-bracket path { fill:none; stroke:#f2f5f8; stroke-width:3; stroke-linecap:round; }
+  #er-bracket path.er-ext { stroke:#dfe7ee; stroke-width:2; stroke-dasharray:2 8; }
+  #er-grain { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #er-black { background:#000; }
+  .er-eyebrow { font-family:Arial,sans-serif; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; }
+  .er-serif { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  .er-cnt { font-family:'Courier New',monospace; font-weight:700; font-size:84px; color:#e74c3c; line-height:1; text-shadow:0 2px 18px rgba(0,0,0,0.85); }
+  .er-cntlab { font-family:Arial,sans-serif; font-weight:700; font-size:20px; letter-spacing:6px; color:#c8d3e0; text-shadow:0 1px 8px rgba(0,0,0,0.9); }
+  #er-eyebrow { position:absolute; left:96px; top:70px; white-space:nowrap; text-shadow:0 1px 8px rgba(0,0,0,0.9); }
+  #er-date { position:absolute; left:96px; top:106px; white-space:nowrap; text-shadow:0 1px 8px rgba(0,0,0,0.9); }
+  #er-head { position:absolute; left:96px; top:150px; white-space:nowrap; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px; color:#f2f5f8; perspective:600px; text-shadow:0 2px 16px rgba(0,0,0,0.8); }
+  #er-wblock { position:absolute; left:0; top:0; width:600px; text-align:center; }
+  #er-wlab { margin-bottom:10px; }
+  #er-fields { position:absolute; left:0; top:0; width:700px; text-align:center; text-shadow:0 1px 8px rgba(0,0,0,0.95); }
+  #er-vblock { position:absolute; left:96px; top:752px; }
+  #er-vlab { margin-bottom:12px; }
+  #er-credit { position:absolute; left:96px; top:1002px; font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; text-shadow:0 1px 8px rgba(0,0,0,0.9); }
+  #er-panel { position:absolute; right:0; top:0; bottom:0; width:820px; background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); padding:90px 96px 0 170px; box-sizing:border-box; }
+  #er-peb { margin-top:150px; margin-bottom:34px; }
+  .er-row { position:relative; height:64px; margin-bottom:14px; }
+  .er-rlab { position:absolute; left:0; top:12px; font-family:Arial,sans-serif; font-weight:700; font-size:30px; color:#5f6f7e; }
+  .er-bar { position:absolute; left:120px; top:22px; height:20px; background:#2a3947; }
+  .er-bar.er-open { background:transparent; border:2px dashed #3d4f60; box-sizing:border-box; }
+  #er-r3 { height:96px; }
+  #er-r3 .er-rlab { top:4px; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:64px; color:#e8c56a; }
+  #er-r3 .er-bar { left:170px; top:34px; height:28px; background:#d8a13a; }
+  #er-psub { margin-top:26px; white-space:nowrap; }
+</style>
+<div id="root" data-composition-id="g-elreno-width" data-width="1920" data-height="1080" data-duration="18">
+  <div id="er-stage">
+    <div id="er-rig">
+      <div id="er-world">
+        <canvas id="er-canvas" width="1920" height="1080"></canvas>
+        <svg id="er-bracket" viewBox="0 0 1920 1080">
+          <path id="er-dim" d="M0,0"></path>
+          <path id="er-extl" class="er-ext" d="M0,0"></path>
+          <path id="er-extr" class="er-ext" d="M0,0"></path>
+          <path id="er-tick1" d="M0,0"></path>
+          <path id="er-tick2" d="M0,0"></path>
+        </svg>
+      </div>
+    </div>
+    <canvas id="er-grain" width="480" height="270"></canvas>
+    <div id="er-vig"></div>
+    <div id="er-hud">
+      <div id="er-eyebrow" class="er-eyebrow">EL RENO, OKLAHOMA</div>
+      <div id="er-date" class="er-serif">31 May 2013 &middot; 6:03 pm</div>
+      <div id="er-head">Widest tornado ever measured</div>
+      <div id="er-wblock"><div id="er-wlab" class="er-cntlab">MAXIMUM WIDTH</div><div id="er-wnum" class="er-cnt">0.0 mi</div></div>
+      <div id="er-fields" class="er-serif">about 46 football fields, end to end</div>
+      <div id="er-vblock"><div id="er-vlab" class="er-cntlab">RaXPol RADAR &middot; WINDS NEAR THE GROUND</div><div id="er-vnum" class="er-cnt">0 mph</div></div>
+      <div id="er-credit">NWS Norman &middot; RaXPol (OU)</div>
+      <div id="er-panel">
+        <div id="er-peb" class="er-eyebrow">DAMAGE SURVEY RATING</div>
+        <div class="er-row" id="er-r5"><div class="er-rlab">EF5</div><div class="er-bar er-open" style="width:460px"></div></div>
+        <div class="er-row" id="er-r4"><div class="er-rlab">EF4</div><div class="er-bar er-open" style="width:390px"></div></div>
+        <div class="er-row" id="er-r3"><div class="er-rlab">EF3</div><div class="er-bar" id="er-b3" style="width:270px"></div></div>
+        <div class="er-row" id="er-r2"><div class="er-rlab">EF2</div><div class="er-bar" style="width:250px"></div></div>
+        <div class="er-row" id="er-r1"><div class="er-rlab">EF1</div><div class="er-bar" style="width:180px"></div></div>
+        <div class="er-row" id="er-r0"><div class="er-rlab">EF0</div><div class="er-bar" style="width:110px"></div></div>
+        <div id="er-psub" class="er-serif">No damage found to rate it higher</div>
+      </div>
+    </div>
+    <div id="er-black"></div>
+  </div>
+</div>
+<script src="vendor/three.classic.js"></script>
+<script src="vendor/CustomEase.min.js"></script>
+<script src="vendor/DrawSVGPlugin.min.js"></script>
+<script src="vendor/SplitText.min.js"></script>
+<script src="vendor/moves.js"></script>
+<script>
+(function () {
+gsap.registerPlugin(DrawSVGPlugin, CustomEase, SplitText);
+const THREE = window.THREE, M = window.MOVES;
+const ID = "g-elreno-width", W = 1920, H = 1080, DUR = 18.0;
+const $ = (id) => document.getElementById(id);
+const rand = M.rng(20130531);
+
+/* ---------------- world: 1 unit = 1 mile, tornado centred on the origin ---------------- */
+const renderer = new THREE.WebGLRenderer({ canvas: $("er-canvas"), antialias: true, preserveDrawingBuffer: true, alpha: false });
+renderer.setPixelRatio(1);
+renderer.setSize(W, H, false);
+const FOG = new THREE.Color(0x2b333b);
+const scene = new THREE.Scene();
+scene.background = FOG;
+const camera = new THREE.PerspectiveCamera(40, W / H, 0.001, 80);
+
+const NOISE = `
+  float h21(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
+  float vnoise(vec2 p){ vec2 i = floor(p), f = fract(p); f = f*f*(3.0-2.0*f);
+    return mix(mix(h21(i), h21(i+vec2(1,0)), f.x), mix(h21(i+vec2(0,1)), h21(i+vec2(1,1)), f.x), f.y); }
+  float fbm(vec2 p){ float v = 0.0, a = 0.5; for (int i = 0; i < 5; i++){ v += a*vnoise(p); p *= 2.03; a *= 0.5; } return v; }`;
+
+// ground: Oklahoma section grid (roads every mile), quarter-section fields, storm shadow, 46-field strip, radar PPI
+const U = { t: { value: 0 }, xray: { value: 0 }, fields: { value: 0 }, sweep: { value: 0 }, fog: { value: FOG } };
+const RADAR = new THREE.Vector2(-0.9, 2.3);
+const groundMat = new THREE.ShaderMaterial({
+  uniforms: Object.assign({ radar: { value: RADAR } }, U),
+  vertexShader: `varying vec2 vXZ; varying float vD;
+    void main(){ vec4 wp = modelMatrix * vec4(position,1.0); vXZ = wp.xz; vec4 mv = viewMatrix * wp; vD = -mv.z; gl_Position = projectionMatrix * mv; }`,
+  fragmentShader: NOISE + `
+    uniform float t, xray, fields, sweep; uniform vec3 fog; uniform vec2 radar;
+    varying vec2 vXZ; varying float vD;
+    void main(){
+      vec2 p = vXZ;
+      vec2 q = floor(p * 2.0);
+      float r = h21(q);
+      vec3 col = r < 0.45 ? vec3(0.40,0.34,0.19) : (r < 0.8 ? vec3(0.16,0.24,0.12) : vec3(0.23,0.18,0.13));
+      col *= 0.78 + 0.3*h21(q + 7.0);
+      col *= 0.85 + 0.3*fbm(p*3.0);
+      vec2 g = abs(fract(p + 0.5) - 0.5);
+      float w = 0.004 + vD*0.0011;
+      float road = 1.0 - smoothstep(w, w*1.8, min(g.x, g.y));
+      col = mix(col, vec3(0.66,0.60,0.50), road*0.9);
+      float d = length(p);
+      col *= mix(0.42, 1.0, smoothstep(1.5, 12.0, d));
+      // 46 football fields (300 ft each) end to end along z = 1.6, x = -1.3 .. 1.3
+      float L = 2.6/46.0;
+      if (abs(p.y - 1.6) < 0.035 && p.x > -1.3 && p.x < -1.3 + fields*L) {
+        float k = (p.x + 1.3)/L, f = fract(k);
+        vec3 fc = mod(floor(k), 2.0) < 1.0 ? vec3(0.22,0.62,0.30) : vec3(0.15,0.50,0.23);
+        col = mix(fc, vec3(0.95), 1.0 - smoothstep(0.0, 0.07, min(f, 1.0 - f)));
+      }
+      // radar: velocity couplet in the circulation, lit by a sweeping beam from the truck
+      vec2 rp = p - radar; float rr = length(rp);
+      float ang = atan(rp.y, rp.x);
+      float sw = mod(sweep - ang, 6.28318);
+      float reach = smoothstep(5.5, 0.1, rr);
+      float beam = exp(-sw*2.5) * reach;
+      vec2 tang = vec2(-p.y, p.x) / max(d, 1e-3);
+      float radial = dot(tang, rp / max(rr, 1e-3));
+      float ring = smoothstep(1.75, 1.05, d) * smoothstep(0.05, 0.8, d);
+      vec3 vel = radial > 0.0 ? vec3(0.95,0.22,0.16) : vec3(0.18,0.85,0.38);
+      col *= 1.0 - 0.45*xray;
+      col += xray * vel * abs(radial) * ring * (0.35 + 0.9*beam);
+      col += xray * vec3(0.5,0.72,0.95) * exp(-sw*60.0) * reach * 0.55;
+      col += xray * vec3(0.5,0.72,0.95) * (1.0 - smoothstep(0.0, 0.025, rr)) * 1.5;
+      gl_FragColor = vec4(mix(col, fog, smoothstep(6.0, 34.0, vD)), 1.0);
+    }`,
+});
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(120, 120), groundMat);
+ground.rotation.x = -Math.PI / 2;
+scene.add(ground);
+
+// storm base: a huge dark disc overhead, swirling around the tornado, fading into the horizon light
+const cloudMat = new THREE.ShaderMaterial({
+  uniforms: U, transparent: true, depthWrite: false, side: THREE.DoubleSide,
+  vertexShader: `varying vec2 vXZ; void main(){ vec4 wp = modelMatrix * vec4(position,1.0); vXZ = wp.xz; gl_Position = projectionMatrix * viewMatrix * wp; }`,
+  fragmentShader: NOISE + `
+    uniform float t; uniform vec3 fog; varying vec2 vXZ;
+    void main(){
+      float d = length(vXZ);
+      float a = atan(vXZ.y, vXZ.x) + t*0.5/(0.6 + d*0.35);
+      vec2 sp = vec2(cos(a), sin(a)) * d;
+      float n = fbm(sp*0.9 + 3.0);
+      vec3 col = mix(vec3(0.07,0.08,0.10), vec3(0.24,0.26,0.29), n);
+      col = mix(col, fog*0.9, smoothstep(4.0, 22.0, d));
+      float alpha = 1.0 - smoothstep(16.0, 26.0, d);
+      gl_FragColor = vec4(col, alpha);
+    }`,
+});
+const cloud = new THREE.Mesh(new THREE.CircleGeometry(26, 96), cloudMat);
+cloud.rotation.x = Math.PI / 2;
+cloud.position.y = 1.25;
+scene.add(cloud);
+
+// the wedge: 2.6 mi across at the ground, flaring into the cloud base
+const shellMat = new THREE.ShaderMaterial({
+  uniforms: U, transparent: true, depthWrite: false,
+  vertexShader: `uniform float t; varying vec2 vUv; varying vec3 vN; varying vec3 vV;
+    void main(){ vUv = uv; vec3 p = position; float a = uv.x*6.28318;
+      p.xz *= 1.0 + 0.035*sin(uv.y*9.0 + t*1.3 + a*3.0) + 0.02*sin(a*7.0 - t*2.0);
+      vec4 wp = modelMatrix * vec4(p,1.0); vN = normalize(mat3(modelMatrix) * normal); vV = cameraPosition - wp.xyz;
+      gl_Position = projectionMatrix * viewMatrix * wp; }`,
+  fragmentShader: NOISE + `
+    uniform float t, xray; varying vec2 vUv; varying vec3 vN; varying vec3 vV;
+    void main(){
+      float n = fbm(vec2(vUv.x*10.0 + t*0.30 - vUv.y*2.0, vUv.y*5.0));
+      float st = 0.5 + 0.5*sin(vUv.x*6.28318*16.0 + t*2.4 - vUv.y*7.0 + n*4.0);
+      vec3 col = mix(vec3(0.17,0.18,0.20), vec3(0.44,0.45,0.47), n*0.75 + st*0.25);
+      col = mix(vec3(0.33,0.27,0.20), col, smoothstep(0.0, 0.3, vUv.y));
+      float fres = pow(1.0 - abs(dot(normalize(vN), normalize(vV))), 2.0);
+      col += vec3(0.30,0.32,0.36)*fres*0.5;
+      float alpha = (0.97 - fres*0.6) * mix(1.0, 0.14, xray);
+      col = mix(col, vec3(0.30,0.48,0.66)*(0.5 + 0.6*st), xray*0.75);
+      gl_FragColor = vec4(col, alpha);
+    }`,
+});
+const shell = new THREE.Mesh(new THREE.CylinderGeometry(1.8, 1.3, 1.3, 128, 24, true), shellMat);
+shell.position.y = 0.65;
+shell.renderOrder = 2;
+scene.add(shell);
+
+// debris ring at the base: seeded, positions are a pure function of t
+const ND = 3200, dA = new Float32Array(ND * 4);
+for (let i = 0; i < ND; i++) { dA[i*4] = 1.15 + rand()*0.55; dA[i*4+1] = Math.pow(rand(), 2.2)*0.32; dA[i*4+2] = rand()*6.28318; dA[i*4+3] = 0.5 + rand()*0.7; }
+const dGeo = new THREE.BufferGeometry();
+dGeo.setAttribute("position", new THREE.BufferAttribute(new Float32Array(ND * 3), 3));
+dGeo.setAttribute("seed", new THREE.BufferAttribute(dA, 4));
+const debris = new THREE.Points(dGeo, new THREE.ShaderMaterial({
+  uniforms: U, transparent: true, depthWrite: false,
+  vertexShader: `uniform float t; attribute vec4 seed; varying float vA;
+    void main(){ float a = seed.z + t*seed.w/seed.x; vec3 p = vec3(cos(a)*seed.x, seed.y + 0.015*sin(t*3.0 + seed.z*5.0), sin(a)*seed.x);
+      vec4 mv = viewMatrix * modelMatrix * vec4(p,1.0); gl_PointSize = clamp(9.0 / -mv.z, 1.0, 5.0); vA = 0.55 - seed.y;
+      gl_Position = projectionMatrix * mv; }`,
+  fragmentShader: `uniform float xray; varying float vA;
+    void main(){ vec2 c = gl_PointCoord - 0.5; if (dot(c,c) > 0.25) discard; gl_FragColor = vec4(vec3(0.42,0.36,0.29), vA*(1.0 - 0.7*xray)); }`,
+}));
+debris.frustumCulled = false;
+debris.renderOrder = 3;
+scene.add(debris);
+
+// sub-vortices: small intense whirls orbiting inside the big circulation, seen when the shell goes to x-ray
+const subs = [];
+for (let i = 0; i < 5; i++) {
+  const m = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.035, 1.25, 24, 1, true), new THREE.MeshBasicMaterial({
+    color: i === 0 ? 0xe74c3c : 0x7fb2e5, transparent: true, opacity: 0, depthWrite: false, side: THREE.DoubleSide }));
+  m.position.y = 0.625; m.renderOrder = 1; scene.add(m); subs.push(m);
+}
+const ringMat = new THREE.MeshBasicMaterial({ color: 0xe74c3c, transparent: true, opacity: 0, depthWrite: false, side: THREE.DoubleSide });
+const subRing = new THREE.Mesh(new THREE.RingGeometry(0.11, 0.14, 48), ringMat);
+subRing.rotation.x = -Math.PI / 2; subRing.position.y = 0.004; scene.add(subRing);
+
+// ground-level scale: a farmstead and a line of power poles running toward the storm
+const dark = new THREE.MeshBasicMaterial({ color: 0x14181c });
+const house = new THREE.Mesh(new THREE.BoxGeometry(0.012, 0.006, 0.008), dark); house.position.set(0.16, 0.003, 3.86); scene.add(house);
+const roof = new THREE.Mesh(new THREE.ConeGeometry(0.009, 0.004, 4), dark); roof.position.set(0.16, 0.008, 3.86); roof.rotation.y = Math.PI / 4; scene.add(roof);
+const barn = new THREE.Mesh(new THREE.BoxGeometry(0.016, 0.009, 0.01), dark); barn.position.set(0.10, 0.0045, 3.80); scene.add(barn);
+for (let i = 0; i < 40; i++) {
+  const z = 4.26 - i * 0.045;
+  const pole = new THREE.Mesh(new THREE.BoxGeometry(0.0007, 0.008, 0.0007), dark); pole.position.set(0.40, 0.004, z); scene.add(pole);
+  const bar = new THREE.Mesh(new THREE.BoxGeometry(0.004, 0.0005, 0.0005), dark); bar.position.set(0.40, 0.0075, z); scene.add(bar);
+}
+for (let i = 0; i < 14; i++) {
+  const tr = new THREE.Mesh(new THREE.ConeGeometry(0.004, 0.012, 8), dark);
+  tr.position.set(0.05 + rand() * 0.2, 0.006, 3.74 + rand() * 0.2); scene.add(tr);
+}
+
+/* ---------------- camera proxy: ground level, crane to the aerial hold, radar view ---------------- */
+const K0 = { px: 0.44, py: 0.004, pz: 4.32, tx: 0.0, ty: 0.42, tz: 0.0 };
+const K1 = { px: 0.0, py: 3.1, pz: 6.3, tx: 0.0, ty: 0.25, tz: 0.5 };
+const cam = Object.assign({}, K0);
+function applyCam() { camera.position.set(cam.px, cam.py, cam.pz); camera.lookAt(cam.tx, cam.ty, cam.tz); camera.updateMatrixWorld(); }
+
+// bracket: project the hold pose once (the camera is still from 4.5 to 10.2 s)
+Object.assign(cam, K1); applyCam();
+const Z = 1.03, OX = 960 - 960 * Z, OY = 540 - 540 * Z;       // rig zoom (canvas px -> screen px)
+function proj(x, y, z) { const v = new THREE.Vector3(x, y, z).project(camera); return [(v.x + 1) / 2 * W, (1 - v.y) / 2 * H]; }
+const f = (a) => a[0].toFixed(1) + "," + a[1].toFixed(1);
+const DZ = 1.75, dl = proj(-1.3, 0, DZ), dr = proj(1.3, 0, DZ), el = proj(-1.3, 0, 0), er = proj(1.3, 0, 0);
+$("er-dim").setAttribute("d", "M" + f(dl) + " L" + f(dr));
+$("er-extl").setAttribute("d", "M" + f(el) + " L" + f(dl));
+$("er-extr").setAttribute("d", "M" + f(er) + " L" + f(dr));
+const t1 = proj(-0.3, 0, DZ), t2 = proj(0.7, 0, DZ);
+$("er-tick1").setAttribute("d", "M" + t1[0].toFixed(1) + "," + (t1[1] - 9).toFixed(1) + " L" + t1[0].toFixed(1) + "," + (t1[1] + 9).toFixed(1));
+$("er-tick2").setAttribute("d", "M" + t2[0].toFixed(1) + "," + (t2[1] - 9).toFixed(1) + " L" + t2[0].toFixed(1) + "," + (t2[1] + 9).toFixed(1));
+const mid = [((dl[0] + dr[0]) / 2) * Z + OX, ((dl[1] + dr[1]) / 2) * Z + OY];
+$("er-wblock").style.left = (mid[0] - 300).toFixed(0) + "px";
+$("er-wblock").style.top = (mid[1] + 26).toFixed(0) + "px";
+$("er-fields").style.left = (mid[0] - 350).toFixed(0) + "px";
+$("er-fields").style.top = (mid[1] + 160).toFixed(0) + "px";
+Object.assign(cam, K0); applyCam();
+
+/* ---------------- timeline ---------------- */
+window.__timelines = window.__timelines || {};
+const tl = gsap.timeline({ paused: true });
+tl.to({}, { duration: DUR }, 0);   // literal clock: the shader field (debris, striations, cloud swirl) moves for the whole window
+const P = { xray: 0, fields: 0, ring: 0 };
+const rig = M.cameraRig(tl, { shake: $("er-rig"), layers: [[$("er-world"), 1]] }, { z: Z, drift: 0.6, roll: 0.05 });
+
+// 0 - 2.4: ground level, creeping toward the storm
+tl.to(cam, { px: 0.40, py: 0.005, pz: 4.18, duration: 2.4, ease: "none" }, 0);
+// EL RENO @2.2
+tl.set(["#er-eyebrow", "#er-date", "#er-credit"], { autoAlpha: 0 }, 0);
+tl.fromTo("#er-eyebrow", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 2.2);
+tl.fromTo("#er-date", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 2.35);
+tl.fromTo("#er-credit", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 2.5);
+// 2.4 - 4.5: crane up and back to the aerial hold (the width appears as the roads fall into place)
+tl.to(cam, { px: K1.px, py: K1.py, pz: K1.pz, tx: K1.tx, ty: K1.ty, tz: K1.tz, duration: 2.1, ease: "power2.inOut" }, 2.4);
+// TWO POINT SIX MILES WIDE @4.6
+M.measureDraw(tl, [$("er-extl"), $("er-extr"), $("er-dim"), $("er-tick1"), $("er-tick2")], 4.6, { duration: 0.7, stagger: 0.08 });
+tl.set("#er-bracket", { autoAlpha: 1 }, 4.6);
+const wd = { u: 0 };
+tl.to(wd, { u: 1, duration: 1.7, ease: "power3.out" }, 4.6);
+M.counter(tl, $("er-wblock"), 4.6, { driver: wd, to: 2.6, format: (v) => v.toFixed(1) + " mi", final: "2.6 mi", text: $("er-wnum"), punchAt: 6.3, rig });
+// NO TORNADO EVER MEASURED HAS BEEN WIDER @6.9
+M.kineticText(tl, $("er-head"), 6.9, { exitAt: 10.0, stagger: 0.1 });
+tl.to(P, { fields: 46, duration: 1.3, ease: "power1.inOut" }, 7.1);
+tl.set("#er-fields", { autoAlpha: 0 }, 0);
+tl.fromTo("#er-fields", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.2);
+// 10.0: retire the width layer, push in to the radar view
+M.cleanExit(tl, { hud: [$("er-head"), $("er-wblock"), $("er-fields")] }, 10.0);
+tl.to("#er-bracket", { autoAlpha: 0, y: -20, duration: 0.4, ease: "power2.in" }, 10.0);
+tl.to(cam, { px: 1.55, py: 0.62, pz: 3.55, tx: 0.55, ty: 0.42, tz: 0.0, duration: 1.1, ease: "power2.inOut" }, 10.2);
+tl.to(P, { xray: 1, duration: 0.9, ease: "power2.inOut" }, 10.4);
+tl.to(P, { ring: 1, duration: 0.4, ease: "power2.out" }, 11.0);
+// TWO HUNDRED NINETY-FIVE MILES AN HOUR @11.0
+const vd = { u: 0 };
+tl.to(vd, { u: 1, duration: 1.8, ease: "power4.out" }, 11.0);
+M.counter(tl, $("er-vblock"), 11.0, { driver: vd, to: 295, format: (v) => Math.floor(v) + " mph", final: "295+ mph", text: $("er-vnum"), punchAt: 12.8, rig });
+M.shake(tl, rig, 12.8, { amp: 6, duration: 0.5 });
+// 11.3 - 17.0: slow orbit keeps the scene alive through the rating beat
+tl.to(cam, { px: 1.9, py: 0.55, pz: 3.2, tx: 0.62, ty: 0.44, duration: 5.7, ease: "sine.inOut" }, 11.3);
+// ONLY RATE IT EF3 @15.4
+tl.fromTo("#er-panel", { x: 660 }, { x: 0, duration: 0.7, ease: "power3.out" }, 15.4);
+tl.set("#er-panel", { autoAlpha: 0 }, 0);
+tl.set("#er-panel", { autoAlpha: 1 }, 15.4);
+tl.set(["#er-peb", "#er-r5", "#er-r4", "#er-r3", "#er-r2", "#er-r1", "#er-r0", "#er-psub"], { autoAlpha: 0 }, 0);
+tl.fromTo("#er-peb", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 15.6);
+tl.fromTo("#er-r0", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 15.7);
+tl.fromTo("#er-r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 15.78);
+tl.fromTo("#er-r2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 15.86);
+tl.fromTo("#er-r3", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 15.94);
+tl.fromTo("#er-r4", { autoAlpha: 0, y: 24 }, { autoAlpha: 0.55, y: 0, duration: 0.35, ease: "power3.out" }, 16.02);
+tl.fromTo("#er-r5", { autoAlpha: 0, y: 24 }, { autoAlpha: 0.55, y: 0, duration: 0.35, ease: "power3.out" }, 16.1);
+tl.set("#er-b3", { scaleX: 0, transformOrigin: "left center" }, 0);
+tl.to("#er-b3", { scaleX: 1, duration: 0.5, ease: "power3.out" }, 16.0);
+tl.fromTo("#er-psub", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 16.35);
+// 17.1: exit on a push and a fade
+tl.to("#er-panel", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.1);
+M.cleanExit(tl, { hud: [$("er-eyebrow"), $("er-date"), $("er-vblock"), $("er-credit")], rig, black: $("er-black") }, 17.1, { push: { fx: 900, fy: 540, z: 1.14 } });
+
+M.finishLayer(tl, { grain: $("er-grain"), vig: $("er-vig") }, { seed: 531, opacity: 0.1, vignette: 0.55 });
+
+function render(t) {
+  applyCam();
+  U.t.value = t; U.xray.value = P.xray; U.fields.value = P.fields; U.sweep.value = t * 2.2;
+  for (let i = 0; i < subs.length; i++) {
+    const a = i * 1.2566 + t * 0.8, r = 0.78 + 0.12 * Math.sin(i * 2.1);
+    subs[i].position.x = Math.cos(a) * r; subs[i].position.z = Math.sin(a) * r;
+    subs[i].rotation.y = t * 6.0;
+    subs[i].material.opacity = P.xray * (i === 0 ? 0.95 : 0.55);
+  }
+  subRing.position.x = subs[0].position.x; subRing.position.z = subs[0].position.z;
+  const pulse = 1 + 0.25 * ((t * 1.6) % 1);
+  subRing.scale.set(pulse, pulse, pulse);
+  ringMat.opacity = P.ring * (1.1 - ((t * 1.6) % 1)) * 0.9;
+  renderer.render(scene, camera);
+}
+M.onFrame(tl, render);
+window.__timelines[ID] = tl;
+render(0);
+M.renderNow(tl);
+})();
+</script>
+</template>
+</body>
+</html>
