@@ -29,15 +29,7 @@ Repo: `C:\Users\Sidhartha\Automation Projects\storm-market`
    - `LEARNINGS.md` — gotchas ledger; newest-first (new entries go at the top, under the
      Promoted rules index), read at least every section newer than the last episode you know about
    - `config.yaml` — pins and paths
-4. **Hyperframes pin — machine-enforced ritual:** `config.yaml` carries a PINNED `hyperframes_version`, managed
-   ONLY by `scripts/pin_ritual.py` (A/B demo render vs committed baseline; bumps config +
-   scripts + baseline on identical metrics, exit 3 on drift). `render_preflight.py` hard-fails
-   on pin drift between config and any live `.cmd` (exit 5) and on a STALE pin for FULL renders
-   (exit 6) — the unblock is the ritual, run at kickoff, never mid-render. Stale-pin full
-   renders need the owner's explicit `RENDER_PIN_STALE_OK=1` override (logged by preflight).
-   Read the changelog on multi-version bumps regardless. Repo CLAUDE.md "HARD RULE — the pin
-   stays current" + LEARNINGS "ep6 ship" / "16 Sep 26 — pin bumped to 0.8.41" (the 0.8.6–0.8.10
-   visible-terminal-tab block and how it cleared) are the source of truth.
+4. **Pin current before the first render:** `python3 scripts/pin_ritual.py --check-only`; exit 3 (stale) ⇒ run `python3 scripts/pin_ritual.py` (hidden schtasks) and PR the bump now, never mid-episode (repo CLAUDE.md "HARD RULE: the pin stays current").
 5. **Rule-change sweep:** `gh pr list --state merged --limit 5` — any PR merged since the
    last episode may have changed the rulebook; skim its description before planning.
 6. **Generator tripwire:**
