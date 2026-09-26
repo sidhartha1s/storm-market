@@ -282,8 +282,9 @@ was the forecast for the night, and the number the Enderlin tornado ended up wit
 **Picture:** g-radar, a self-made Level II velocity re-plot (NEXRAD open data); two supercells labelled as they cross
 the state · popfig "22 Tornadoes".
 
-That night, two supercells, the rotating kind of thunderstorm, made twenty two tornadoes in North Dakota. Two storms
-making that many is rare, and the Enderlin tornado was one of the twenty two. It was part of a larger outbreak that
+That night, two supercells, the rotating kind of thunderstorm, made twenty two tornadoes in North Dakota. Most
+supercells never make a tornado at all. `[verify: most supercells do not produce tornadoes]` Two storms making that
+many is rare, and the Enderlin tornado was one of the twenty two. It was part of a larger outbreak that
 ran from June nineteenth to June twenty second. A derecho, a long line of damaging straight winds, came through in the
 middle of it.
 
