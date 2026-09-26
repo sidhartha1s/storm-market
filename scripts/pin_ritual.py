@@ -75,9 +75,16 @@ BASELINE_DIR = Path(os.environ.get("LOCALAPPDATA", str(Path.home() / "AppData" /
 # recipe, not a lighter one. Bump both together. --workers 2 matches every production
 # full-render wrapper (scripts/*_full_task.cmd all set RENDER_WORKERS=2); render.cmd's own
 # bare default of 3 is the draft-tuned value, not what full renders actually use.
+WORKERS = int(os.environ.get("RENDER_WORKERS", "2"))
 RENDER_FLAGS = ["--gpu", "--browser-gpu", "--experimental-fast-capture=true",
                 "--quality", "standard", "--crf", "16", "--fps", "30",
-                "--workers", os.environ.get("RENDER_WORKERS", "2")]
+                "--workers", str(WORKERS)]
+FALLBACK_1W = "[FALLBACK] single-worker capture path, parallel-stream router unverified"
+
+# The demo's video probe (episodes/demo-pin/index.html #probe-video): box x, y, w, h and
+# the window measured inside its 16-18 s mount, 0.1 s clear of each edge.
+VIDEO_BOX = (96, 300, 854, 480)
+VIDEO_WIN = (16.1, 17.9)
 
 
 def npm_latest(timeout=30):
