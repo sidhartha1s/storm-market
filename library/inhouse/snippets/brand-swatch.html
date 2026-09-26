@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Warning Hour — brand swatch</title>
+<style>
+  @font-face {
+    font-family: 'AbrilFig';
+    src: url('../../../references/editing-patterns/fonts/AbrilFatface-Regular.ttf');
+  }
+
+  :root {
+    --page-bg: #f4f7fb;
+    --chrome-blue: #2f6fed;
+    --chrome-blue-dark: #1a4bb8;
+    --chrome-text: #16233d;
+    --chrome-sub: #5b6b85;
+    --card-border: #d7e2f4;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--chrome-text);
+    font-family: Arial, sans-serif;
+    padding: 48px 56px 96px;
+  }
+  h1 {
+    font-size: 30px;
+    margin: 0 0 6px;
+    color: var(--chrome-blue-dark);
+  }
+  .sub {
+    color: var(--chrome-sub);
+    font-size: 15px;
+    margin: 0 0 8px;
+    max-width: 900px;
+    line-height: 1.5;
+  }
+  .source {
+    color: var(--chrome-sub);
+    font-size: 13px;
+    margin: 0 0 40px;
+  }
+  .source code { background: #e8f0fe; padding: 2px 6px; border-radius: 4px; }
+
+  h2 {
+    font-size: 20px;
+    color: var(--chrome-blue-dark);
+    border-bottom: 2px solid var(--chrome-blue);
+    padding-bottom: 8px;
+    margin: 48px 0 20px;
+  }
+
+  .palette-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .chip {
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(47, 111, 237, 0.08);
+  }
+  .chip .swatch {
+    height: 64px;
+  }
+  .chip .meta {
+    padding: 10px 12px;
+  }
+  .chip .name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--chrome-text);
+  }
+  .chip .hex {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: var(--chrome-blue-dark);
+  }
+  .chip .role {
+    font-size: 12px;
+    color: var(--chrome-sub);
+    margin-top: 2px;
+  }
+
+  .type-table {
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #0b1016;
+  }
+  .type-row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .type-row:last-child { border-bottom: none; }
+  .type-label {
+    background: #0e1520;
+    color: #93a3b2;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    padding: 18px 16px;
+    line-height: 1.4;
+  }
+  .type-label b { display: block; color: #f2f5f8; font-size: 14px; margin-bottom: 4px; }
+  .type-sample {
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    color: #f2f5f8;
+  }
+
+  .font-block {
+    background: #0b1016;
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .font-block .font-name {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: #93a3b2;
+    margin-bottom: 12px;
+  }
+  .font-block .font-name b { color: #f2f5f8; }
+  .font-tier {
+    color: #f2f5f8;
+    margin: 10px 0;
+  }
+  .tier-tag {
+    display: inline-block;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    color: var(--chrome-blue-dark);
+    background: #e8f0fe;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+</style>
+</head>
+<body>
+
+<h1>The Warning Hour — brand swatch</h1>
+<p class="sub">Palette, fonts and type tiers as they ship today. Canonical source (edit there, not
+here): <code>library/inhouse/snippets/tokens.md</code>. TV first: about 40% of viewers watch on
+TV, 35-38% mobile, rest desktop/tablet — big type and high contrast read on both.</p>
+<p class="source">Sample text throughout: <code>EF5 &middot; 210 mph &middot; Enderlin, North Dakota</code></p>
+
+<h2>Palette</h2>
+<div class="palette-grid" id="palette"></div>
+
+<h2>Fonts at each type tier</h2>
+<div id="fonts"></div>
+
+<script>
+const SAMPLE = "EF5 · 210 mph · Enderlin, North Dakota";
+
+const palette = [
+  ["BG deep space", "#04070c", "#root flat background"],
+  ["BG gradient center", "#0b1016", "canvas radial-gradient inner stop"],
+  ["BG gradient edge", "#030507", "canvas radial-gradient outer stop"],
+  ["Panel dark 1", "#15202b", "RHS stat panel gradient"],
+  ["Panel dark 2", "#0b1016", "secondary panel fill"],
+  ["Panel dark 3", "#04070a", "tertiary panel fill"],
+  ["Headline white", "#f2f5f8", "headlines, lower-third, namecard name"],
+  ["Body light", "#dfe7ee", "body copy, row values"],
+  ["Label grey", "#93a3b2", "eyebrow, label, counter label"],
+  ["Source credit grey", "#c8d3e0", "source label chip"],
+  ["Popfig red", "#d0121f", "date/figure Abril reveal"],
+  ["Danger red 1", "#c0392b", "death/danger accents"],
+  ["Danger red 2", "#e74c3c", "stat-panel counter"],
+  ["Crimson", "#8e2020", ".stamp background, debris"],
+  ["Amber 1", "#d8a13a", "serif subs, quote attribution"],
+  ["Amber 2", "#e8c56a", "dispatch counter, namecard sub"],
+  ["Amber time", "#f5d98b", ".stamp .st-time"],
+  ["Amber cool time", "#c8b98a", ".stamp-amber .st-time"],
+  ["Cold blue 1", "#5a768f", "cold-air diagrams"],
+  ["Cold blue 2", "#7fb2e5", "cold-air highlight"],
+  ["Beige cite card", "rgba(232,222,200,.90)", "quoted source over dark maps"],
+  ["Beige polaroid", "#f4f0e6", ".polaroid card stock"],
+  ["Beige stamp text", "#f4f0e8", ".stamp text on crimson"],
+  ["Caption dark", "#2a2622", ".pol-cap text"],
+  ["Caption dark sub", "#6b6257", ".pol-cap span"]
+];
+
+const paletteEl = document.getElementById("palette");
+for (const [name, hex, role] of palette) {
+  const chip = document.createElement("div");
+  chip.className = "chip";
+  const textColor = (hex.startsWith("#f") || hex.startsWith("rgba(232")) ? "#16233d" : "#f2f5f8";
+  chip.innerHTML =
+    '<div class="swatch" style="background:' + hex + ';"></div>' +
+    '<div class="meta">' +
+      '<div class="name">' + name + '</div>' +
+      '<div class="hex">' + hex + '</div>' +
+      '<div class="role">' + role + '</div>' +
+    '</div>';
+  paletteEl.appendChild(chip);
+}
+
+const fonts = [
+  {
+    label: "Georgia / Times New Roman (serif)",
+    role: "quotes, namecard subs, polaroid captions",
+    family: "Georgia, 'Times New Roman', serif",
+    tiers: [["small 22px", "22px"], ["mid 30px", "30px"], ["big 58px", "58px"]]
+  },
+  {
+    label: "Arial / Arial Black (sans)",
+    role: "labels, headlines, location tags",
+    family: "Arial, sans-serif",
+    tiers: [["small 20px", "20px"], ["mid 30px", "30px"], ["big 58px bold", "58px", "900"]]
+  },
+  {
+    label: "Courier New (monospace)",
+    role: "dispatch/radio counters",
+    family: "'Courier New', monospace",
+    tiers: [["small 20px", "20px"], ["mid 40px", "40px"], ["big 84px", "84px"]]
+  },
+  {
+    label: "AbrilFig (Abril Fatface)",
+    role: "date/figure popfig display",
+    family: "'AbrilFig', Georgia, serif",
+    tiers: [["display 150px", "150px"]]
+  }
+];
+
+const fontsEl = document.getElementById("fonts");
+for (const f of fonts) {
+  const block = document.createElement("div");
+  block.className = "font-block";
+  let tiersHtml = "";
+  for (const [tag, size, weight] of f.tiers) {
+    tiersHtml += '<div class="font-tier" style="font-family:' + f.family + ';font-size:' + size +
+      (weight ? ';font-weight:' + weight : '') + ';">' +
+      '<span class="tier-tag">' + tag + '</span>' + SAMPLE + '</div>';
+  }
+  block.innerHTML = '<div class="font-name"><b>' + f.label + '</b> &mdash; ' + f.role + '</div>' + tiersHtml;
+  fontsEl.appendChild(block);
+}
+</script>
+
+</body>
+</html>
