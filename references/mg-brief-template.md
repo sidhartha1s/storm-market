@@ -19,11 +19,7 @@ When no reference image exists: derive geometry from numbers through a stated sc
 - One file, `<template>` wrapping `<style>` + `<div id="root" data-composition-id="COMPID" data-width="1920" data-height="1080">` + `<script>`
   building a PAUSED gsap timeline registered as `window.__timelines["COMPID"] = tl;` (create `window.__timelines` if missing). gsap is provided
   by the host; do not include it. All element ids prefixed with your suffix. Root transparent.
-- Type: eyebrow Arial 700 22px letter-spacing 6px #93a3b2 · headline Arial Black 52px #f2f5f8 · sub Georgia italic 26px #d8a13a · row value
-  Arial Black 84px · row label Arial 700 19px letter-spacing 4px #93a3b2 · row sub Arial 700 30px #dfe7ee · note 26px #dfe7ee · diagram labels
-  Arial 700 22px letter-spacing 3px #93a3b2 (angle labels take their guide's colour). Never all-lowercase. Three size tiers must appear.
-- Motion: panel `fromTo x:660→0, 0.7 s power3.out`; reveals `fromTo autoAlpha 0,y:24 → 1,0`; one CONTINUOUS element for 30 s (sea-surface
-  drift or a slow scale push), no motionless stretch of 4 s; GSAP only, no CSS @keyframes.
+- Type and motion: `references/mg-quickref.md` "Type tiers" and "Motion and exits" (the one home; do not restate them here).
 - Nothing overlaps text or shapes; all text at least 96 px from the left/right edges and 54 px from top/bottom; every label next to the
   thing it names. Every other rule: `references/mg-quickref.md`.
 
