@@ -67,6 +67,13 @@ const PROBE = `(() => {
   if (!tl) return { error: 'no timeline registered' };
   R.id = key;
   R.duration = tl.duration();
+  // ported from the webgl-gates branch (unmerged): a timeline-level onUpdate that redraws a canvas
+  // covering a quarter of the frame (Three.js/WebGL) moves every frame though no DOM tween does;
+  // count it as one continuous kinetic span.
+  const bigCanvas = [...document.querySelectorAll('canvas')].some(c => {
+    const r = c.getBoundingClientRect(); return r.width * r.height >= 0.25 * 1920 * 1080; });
+  if (typeof tl.eventCallback('onUpdate') === 'function' && bigCanvas)
+    R.tweens.push({ start: 0, dur: R.duration, props: ['canvas-render'], ease: 'none', target: 'canvas', hide: false });
   for (const t of tl.getChildren(true, true, false)) {
     const st = t.startTime();
     /* totalDuration(), not duration(): a repeating tween (ambient loops) reports its ONE-cycle
