@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Inside Enderlin 2025: 12 Years, No EF5. Then This. (hook, arm H1) — The Warning Hour</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070a; }
+    video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    #v-clouds { filter: brightness(0.42) saturate(0.35) contrast(1.1); }
+    /* lightning: sky-side flash only, screen-blended so HUD text above it never washes out */
+    #fx-flash { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen;
+      background: radial-gradient(ellipse at 38% 0%, rgba(200,222,255,0.95) 0%, rgba(127,178,229,0.45) 35%, rgba(127,178,229,0) 72%); }
+    /* ---- Abril figure popup (channel device, as ep-1974) ---- */
+    @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+    .popfig { position: absolute; left: 200px; right: 300px; top: 36%; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; isolation: isolate; }
+    .popfig .pf-big { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 150px; color: #d0121f; letter-spacing: 0.04em;
+      text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+    .popfig .pf-sub { display: block; margin-top: 12px; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 38px; color: #f2f5f8;
+      letter-spacing: 0.3em; -webkit-text-stroke: 1px rgba(0,0,0,0.85); paint-order: stroke fill;
+      text-shadow: 0 0 18px rgba(0,0,0,1), 0 0 40px rgba(0,0,0,0.9), 0 3px 10px #000; }
+    .popfig::before { content: ''; position: absolute; left: 14%; right: 14%; top: -90px; bottom: -70px; z-index: -1;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.32) 40%, rgba(0,0,0,0) 72%); }
+  </style>
+</head>
+<body>
+<!-- H1 (hook contract as of 25 Sep 26): mid-action night wedge at frame one, narrator at 0:00, date/place popfig inside
+     the first second, siren spine the whole way (fade in, ducked under the voice, swell into "EF5", dies in the void),
+     every cut on an audio event (segment starts 5.99 / 14.55 / 21.75, narration end 25.70), 1.5 s void to close.
+     Stock: only storm-clouds.mp4 (daylight texture, no tornado) as a darkened plate under the rating graphic; never under "night". -->
+<div id="root" data-composition-id="demo-hook-h1" data-start="0" data-width="1920" data-height="1080" data-duration="27.2" data-fps="30">
+
+  <!-- ============ NARRATION (track 1; audio/manifest.json durations, 0.30-0.47 s breaths) ============ -->
+  <audio id="nx-h1-s1" src="audio/h1-s1.wav" data-start="0" data-duration="5.691" data-volume="1"></audio>
+  <audio id="nx-h1-s2" src="audio/h1-s2.wav" data-start="5.99" data-duration="8.235" data-volume="1"></audio>
+  <audio id="nx-h1-s3" src="audio/h1-s3.wav" data-start="14.55" data-duration="2.855" data-volume="1"></audio>
+  <audio id="nx-h1-s4" src="audio/h1-s4.wav" data-start="17.85" data-duration="3.435" data-volume="1"></audio>
+  <audio id="nx-h1-s5" src="audio/h1-s5.wav" data-start="21.75" data-duration="3.946" data-volume="1"></audio>
+
+  <!-- ============ SOUND: siren spine (envelope baked by ffmpeg: 0.35 under voice, 1.0 at 20.05 "EF5", 0.28 under S5, 0 by 27.2;
+       x0.4 mount = 0.14 under the voice, 0.4 peak), rumble bed 0.13, thunder ambience 0.18, hits ~0.4 ============ -->
+  <audio id="sx-siren" src="media/sfx/siren-spine.mp3" data-bed="" data-start="0" data-duration="27.2" data-volume="0.4"></audio>
+  <audio id="sx-rumble" src="media/sfx/rumble-bed.mp3" data-bed="" data-start="0" data-duration="27.2" data-volume="0.13"></audio>
+  <audio id="sx-thunder" src="media/sfx/thunder-amb.mp3" data-bed="" data-start="0" data-duration="25.7" data-volume="0.18"></audio>
+  <audio id="sx-boom-ef3" src="media/sfx/sfx-boom.wav" data-start="16.11" data-duration="3.0" data-volume="0.28"></audio>
+  <audio id="sx-swell-ef5" src="media/sfx/sfx-swell.wav" data-start="15.8" data-duration="5.0" data-volume="0.35"></audio>
+  <audio id="sx-boom-ef5" src="media/sfx/sfx-boom.wav" data-start="20.05" data-duration="3.0" data-volume="0.4"></audio>
+  <audio id="sx-boom-wrong" src="media/sfx/sfx-boom.wav" data-start="24.71" data-duration="2.49" data-volume="0.3"></audio>
+
+  <!-- ============ PICTURE ============ -->
+  <!-- beat 1 (0-5.99, S1): the night wedge, orbiting, already on the ground -->
+  <div id="host-tornado-a" data-composition-id="g-tornado-a" data-composition-src="compositions/g-tornado-a.html" data-start="0" data-duration="5.99" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- beat 2 (5.99-14.55, S2): cut on "Then,": the wedge crossing the farmland, left to right -->
+  <div id="host-tornado-b" data-composition-id="g-tornado-b" data-composition-src="compositions/g-tornado-b.html" data-start="5.99" data-duration="8.56" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- beats 3-4 (14.55-21.75, S3+S4): cut on "The Weather Service": the rating reversal over a darkened cloud plate -->
+  <video id="v-clouds" src="media/stock/storm-clouds.mp4" data-start="14.55" data-duration="7.2" data-track-index="1" muted></video>
+  <div id="host-verdict" data-composition-id="g-verdict" data-composition-src="compositions/g-verdict.html" data-start="14.55" data-duration="7.2" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- beat 5 (21.75-25.70, S5): cut on "What changed": back to the storm, pushing in, the question left open -->
+  <div id="host-tornado-c" data-composition-id="g-tornado-c" data-composition-src="compositions/g-tornado-c.html" data-start="21.75" data-duration="3.95" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- the void: 1.5 s black, siren dying under it -->
+  <section class="clip blackout" id="bo-void" data-start="25.7" data-duration="1.5" data-track-index="1"></section>
+
+  <!-- lightning (flashes only on the storm shots, each on a word) -->
+  <section class="clip" id="fx-lightning" data-start="0" data-duration="25.7" data-track-index="3"><div id="fx-flash"></div></section>
+
+  <!-- ============ HUD + POPFIGS ============ -->
+  <div id="host-ladder-hud" data-composition-id="g-ladder-hud" data-composition-src="compositions/g-ladder-hud.html" data-start="1.54" data-duration="4.45" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-hud-b" data-composition-id="g-hud-b" data-composition-src="compositions/g-hud-b.html" data-start="5.99" data-duration="8.56" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <section class="clip" id="p-pf-date" data-start="0.15" data-duration="1.35" data-track-index="5"><div class="popfig" id="pf-date"><span class="pf-big">JUNE 20, 2025</span><span class="pf-sub">ENDERLIN · NORTH DAKOTA</span></div></section>
+  <section class="clip" id="p-pf-dead" data-start="13.07" data-duration="1.4" data-track-index="5"><div class="popfig" id="pf-dead"><span class="pf-big">3 KILLED</span></div></section>
+</div>
+
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  function pop(sel, at, hold) {
+    tl.fromTo(sel, { scale: 1.6, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.3, ease: "power4.in" }, at);
+    tl.to(sel, { scale: 1.04, duration: hold - 0.6, ease: "sine.inOut" }, at + 0.3);
+    tl.to(sel, { autoAlpha: 0, y: -26, duration: 0.28, ease: "power2.in" }, at + hold - 0.28);
+  }
+  pop("#pf-date", 0.15, 1.35);
+  pop("#pf-dead", 13.07, 1.4);  // "killed" 13.07
+
+  // lightning on words: frame one, "EF5" 3.12, "night" 7.45, "and" 12.97, "changed" 22.15, "wrong" 24.71
+  tl.set("#fx-flash", { opacity: 0 }, 0);
+  function flash(at, peak) {
+    tl.to("#fx-flash", { opacity: peak, duration: 0.04, ease: "none" }, at);
+    tl.to("#fx-flash", { opacity: peak * 0.2, duration: 0.07, ease: "none" }, at + 0.04);
+    tl.to("#fx-flash", { opacity: peak * 0.8, duration: 0.04, ease: "none" }, at + 0.11);
+    tl.to("#fx-flash", { opacity: 0, duration: 0.42, ease: "power2.out" }, at + 0.15);
+  }
+  [[0.02, 0.8], [3.12, 0.5], [7.45, 0.7], [12.97, 0.55], [22.15, 0.6], [24.71, 0.85]].forEach(([t, p]) => flash(t, p));
+
+  // cloud plate under the rating graphic: slow push so it never sits still
+  tl.fromTo("#v-clouds", { scale: 1.0 }, { scale: 1.08, duration: 7.2, ease: "none" }, 14.55);
+
+  window.__timelines["demo-hook-h1"] = tl;
+})();
+</script>
+</body>
+</html>
