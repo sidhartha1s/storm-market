@@ -179,10 +179,15 @@ def measure(mp4):
     # last Peak/RMS pair in astats output is the Overall section
     peaks = re.findall(r"Peak level dB: (-?[\d.]+)", txt)
     rmss = re.findall(r"RMS level dB: (-?[\d.]+)", txt)
-    if not peaks or not rmss:
+    has_audio = bool(run([str(FFPROBE), "-v", "error", "-select_streams", "a",
+                          "-show_entries", "stream=index", "-of", "csv=p=0",
+                          str(mp4)]).stdout.strip())
+    if has_audio and (not peaks or not rmss):
         sys.exit(f"[ritual] astats gave no levels for {mp4.name}")
+    # demo-pin is silent: levels are None, and compare() fails if only one side has audio
     return {"duration": dur, "blackdetect": black,
-            "rms_db": float(rmss[-1]), "peak_db": float(peaks[-1])}
+            "rms_db": float(rmss[-1]) if has_audio else None,
+            "peak_db": float(peaks[-1]) if has_audio else None}
 
 
 def ssim(a, b):
