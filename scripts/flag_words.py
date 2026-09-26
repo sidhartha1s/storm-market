@@ -84,8 +84,9 @@ def strip_html(html_text):
 def scan_text_lines(path, lines, terms, hits):
     for lineno, line in enumerate(lines, start=1):
         for pattern, severity, alternatives, form in terms:
-            if pattern.search(line):
-                hits.append((path, str(lineno), severity, form, alternatives))
+            m = pattern.search(line)
+            if m:
+                hits.append((path, str(lineno), severity, m.group(0), alternatives))
 
 
 def scan_narration(script_md, terms, hits):
