@@ -4,7 +4,7 @@ Seeded, seek-safe GSAP building blocks lifted from the showcase MG `g-tanker-thr
 | Move | What it does |
 |---|---|
 | `cameraRig` / `camMove` / `shake` | world camera proxy over depth layers (bg 0.4, world 1, fg 1.4) with handheld drift; push-in/pull-back; seeded decaying shake |
-| `arcThrow` (+ `arcPath`) | body on a true parabola: anticipation squash, tumble, landing squash + spring, speed-driven blur, ghosts, clipped trail |
+| `arcThrow` (+ `arcPath`) | body on a true parabola: anticipation squash, tumble, landing squash + spring, speed-driven blur, ghosts, clipped trail; left to right only |
 | `counter` | HUD number driven by a proxy (e.g. `arcThrow().fly.u`), exact final text, landing punch |
 | `slamFig` | red popfig slam in, hold, slide out |
 | `dustPuff` / `debrisBurst` / `impactRing` | seeded landing dust, ballistic chips, expanding ground ring |
@@ -22,13 +22,13 @@ const rig = M.cameraRig(tl, { shake: $('rig'), layers: [[$('w-bg'), 0.4], [$('w-
 const A = { x0: 470, y0: 567, x1: 1724, y1: 792, apex: 220, duration: 1.6, ox: 60, oy: 8 };
 const th = M.arcThrow(tl, { pos: $('b-pos'), rot: $('b-rot'), sq: $('b-sq') }, 3.1, A);
 M.camMove(tl, rig, 3.0, { fx: 1010, fy: 560, z: 1 });
-M.counter(tl, $('cnt'), 3.15, { driver: th.fly, to: 114, format: (v) => Math.floor(v) + ' ft', punchAt: th.land, rig });
+M.counter(tl, $('cnt'), 3.15, { driver: th.fly, to: 114, format: (v) => Math.floor(v) + ' ft', text: $('cnt-v'), punchAt: th.land, rig });
 M.shake(tl, rig, th.land, { amp: 22 });
 M.renderNow(tl);
 window.__timelines['my-comp'] = tl;
 ```
 
-## Text vs motion rules the moves enforce
+## Text vs motion rules (the first is enforced in code, the rest are yours)
 - Text lives on the HUD, outside `rig.shake`; `counter`, `slamFig`, `kineticText` throw when passed `rig` and the text sits inside it.
 - World labels (ruler, bracket) reveal only after the last shake ends; flashes sit behind the world; grain and vignette sit below the HUD.
 - Keep the flight arc under the counter and payoff bands: check the apex screen y at the camera zoom during flight, not only at rest.

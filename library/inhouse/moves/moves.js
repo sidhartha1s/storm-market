@@ -122,6 +122,7 @@
   function arcThrow(tl, els, at, o) {
     o = Object.assign({ apex: 420, duration: 1.65, ease: 'drag', r0: 0, spin: 352, settle: 10, tilt: -12,
       ox: 75, oy: 39, ghosts: 3, gap: 0.028, blur: 0.005, blurMax: 9 }, o);
+    if (o.x1 < o.x0) throw new Error('arcThrow: left-to-right only (the trail clip grows from x=0)');
     const D = o.duration, ez = ease(o.ease), E = G().parseEase(ez);
     const fly = { u: 0 }, st = { r: 0, lift: 0, set: 0 };
     const pose = (u) => ({ x: o.x0 + (o.x1 - o.x0) * u, y: o.y0 + (o.y1 - o.y0) * u - 4 * o.apex * u * (1 - u) });
@@ -181,6 +182,7 @@
   function counter(tl, el, at, o) {
     o = Object.assign({ key: 'u', to: 100, format: (v) => String(Math.floor(v)), text: el, punchAt: null, rig: null }, o);
     assertHud(o.rig, el, 'counter');
+    if (o.text.children.length) throw new Error('counter: text target has child elements; pass text: <leaf span>');
     const final = o.final == null ? o.format(o.to) : o.final;
     tl.set(el, { autoAlpha: 0 }, 0);
     tl.fromTo(el, { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: 'power3.out' }, at);
