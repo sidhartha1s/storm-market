@@ -1,0 +1,413 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-elreno-width: "The widest tornado" (El Reno, Oklahoma, 31 May 2013). 18 s, Three.js scene.
+  Built from scratch (no library exemplar is a 3D scale scene); text devices copied from
+  references/editing-patterns/ep6-glasscard-popfig-bfmg.html (popfig) and ep2-stat-panel-anatomy (RHS panel).
+  SOURCE: NWS Norman event page (weather.gov/oun/events-20130531). SCALE: 1 world unit = 100 m.
+  MUST BE TRUE: tornado footprint diameter = 2.6 mi = 4,184 m = 41.8 units; ground grid = 1 mile
+  (16.09 units) so the footprint spans 2.6 grid squares; the ruler is 46 alternating 300 ft
+  football-field stripes end to end across that same diameter; sub-vortices sit INSIDE the
+  circulation; the EF3 stamp lands only on "only rate it EF3".
+  Cues (brief estimates, no words.json): El Reno @2.2; 2.6 miles @4.6-6.4; never wider @6.9-9.2;
+  295 mph @11.0-13.0; EF3 @15.4-16.8.
+  Presenter circle box x1632-1888 y700-956 stays empty: nothing below y 680 right of x 1600.
+-->
+<template>
+<style>
+  @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+  #er-stage { position:absolute; inset:0; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #er-canvas { position:absolute; left:0; top:0; width:1920px; height:1080px; display:block; }
+  #er-vig { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%); pointer-events:none; }
+  #er-title { position:absolute; left:96px; top:72px; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px; color:#f2f5f8; text-shadow:0 2px 18px rgba(0,0,0,0.9); }
+  #er-date { position:absolute; left:98px; top:142px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; text-shadow:0 2px 12px rgba(0,0,0,0.9); }
+  .er-pop { position:absolute; left:0; right:0; top:180px; text-align:center; white-space:nowrap; transform-origin:center; }
+  .er-pop .pf-big { display:block; font-family:'AbrilFig',Georgia,serif; font-size:150px; line-height:1.05; color:#d0121f; letter-spacing:0.04em;
+    text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+  .er-sub { position:absolute; left:0; right:0; top:360px; text-align:center; white-space:nowrap; font-family:Arial,sans-serif; font-weight:700;
+    font-size:32px; color:#e8e3d8; letter-spacing:0.16em; text-shadow:0 0 14px rgba(0,0,0,0.95), 0 3px 10px #000; }
+  #er-legend { position:absolute; left:0; right:0; top:968px; text-align:center; font-family:Arial,sans-serif; font-weight:700; font-size:20px;
+    letter-spacing:4px; color:#c8d3e0; text-shadow:0 2px 10px #000; }
+  #er-legend b { display:inline-block; width:22px; height:22px; margin-right:14px; vertical-align:-4px; border:2px solid rgba(200,211,224,0.8); box-sizing:border-box; }
+  #er-radar { position:absolute; left:0; top:0; font-family:Arial,sans-serif; font-weight:700; font-size:20px; letter-spacing:3px; color:#7fb2e5;
+    text-shadow:0 2px 10px #000; white-space:nowrap; }
+  #er-credit { position:absolute; left:96px; top:1010px; font-family:Arial,sans-serif; font-weight:700; font-size:18px; letter-spacing:3px; color:#93a3b2; }
+  #er-panel { position:absolute; right:0; top:0; bottom:0; width:820px; box-sizing:border-box; padding:150px 70px 0 250px;
+    background:linear-gradient(270deg, rgba(6,9,13,0.94) 62%, rgba(6,9,13,0)); }
+  .er-row { margin-bottom:34px; }
+  .er-rl { font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:4px; color:#93a3b2; }
+  .er-rv { margin-top:8px; font-family:Arial,sans-serif; font-weight:700; font-size:30px; letter-spacing:1px; color:#dfe7ee; }
+  #er-stamp { display:inline-block; margin-top:12px; padding:2px 28px; background:#8e2020; font-family:'Arial Black',Arial,sans-serif; font-weight:900;
+    font-size:96px; line-height:1.1; letter-spacing:2px; color:#fff; transform-origin:left center; }
+  #er-ssub { margin-top:18px; width:500px; font-family:Georgia,serif; font-style:italic; font-size:26px; line-height:1.3; color:#d8a13a; }
+</style>
+<div id="root" data-composition-id="g-elreno-width" data-width="1920" data-height="1080" data-duration="18">
+  <div id="er-stage">
+    <canvas id="er-canvas" width="1920" height="1080"></canvas>
+    <div id="er-vig"></div>
+    <div id="er-title">El Reno, Oklahoma</div>
+    <div id="er-date">31 May 2013 · formed about 6:03 pm CDT</div>
+    <div class="er-pop" id="er-pop1"><span class="pf-big">2.6 miles</span></div>
+    <div class="er-sub" id="er-fields">About 46 football fields, end to end</div>
+    <div class="er-sub" id="er-record">No tornado ever measured has been wider</div>
+    <div id="er-legend"><b></b>Grid squares are 1 mile across</div>
+    <div class="er-pop" id="er-pop2"><span class="pf-big">295 mph</span></div>
+    <div class="er-sub" id="er-wsub">At least, in small sub-vortices near the ground</div>
+    <div id="er-radar">RaXPol mobile radar</div>
+    <div id="er-panel">
+      <div class="er-row" id="er-r1"><div class="er-rl">WIDTH</div><div class="er-rv">2.6 mi · widest on record</div></div>
+      <div class="er-row" id="er-r2"><div class="er-rl">RADAR WIND</div><div class="er-rv">At least 295 mph</div></div>
+      <div class="er-rl" id="er-slab">DAMAGE SURVEY RATING</div>
+      <div id="er-stamp">EF3</div>
+      <div id="er-ssub">No damage indicator supported a higher rating</div>
+    </div>
+    <div id="er-credit">NWS Norman · RaXPol (OU)</div>
+  </div>
+</div>
+<!-- three r170 rewrapped as a classic IIFE (window.THREE): sub-composition scripts run as classic scripts. -->
+<script src="vendor/three.classic.js"></script>
+<script>
+(function () {
+const THREE = window.THREE;
+const ID = "g-elreno-width";
+const DUR = 18, W = 1920, H = 1080;
+const MILE = 16.09;            // 1 mile in world units (1 unit = 100 m)
+const R = 20.92;               // 2.6 mi / 2 = 2,092 m
+const TH = 16;                 // funnel height to where it dissolves into the storm base
+
+function mulberry32(a) {
+  return function () {
+    a |= 0; a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+const rand = mulberry32(20130531);
+
+const canvas = document.getElementById("er-canvas");
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true, alpha: false });
+renderer.setPixelRatio(1);
+renderer.setSize(W, H, false);
+renderer.setClearColor(0x2b333c, 1);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(58, W / H, 0.02, 2000);
+const FOG = new THREE.Color(0x39424c);
+
+const NOISE = `
+  float hash3(vec3 p){ p = fract(p*0.3183099 + 0.1); p *= 17.0; return fract(p.x*p.y*p.z*(p.x+p.y+p.z)); }
+  float vnoise(vec3 x){ vec3 i = floor(x); vec3 f = fract(x); f = f*f*(3.0-2.0*f);
+    return mix(mix(mix(hash3(i),hash3(i+vec3(1,0,0)),f.x), mix(hash3(i+vec3(0,1,0)),hash3(i+vec3(1,1,0)),f.x), f.y),
+               mix(mix(hash3(i+vec3(0,0,1)),hash3(i+vec3(1,0,1)),f.x), mix(hash3(i+vec3(0,1,1)),hash3(i+vec3(1,1,1)),f.x), f.y), f.z); }
+  float fbm(vec3 p){ float v = 0.0, a = 0.5; for (int i = 0; i < 5; i++) { v += a*vnoise(p); p = p*2.03 + vec3(1.7,9.2,3.1); a *= 0.5; } return v; }
+`;
+
+/* ---- sky: storm-dark overhead, pale grey-green band on the horizon ---- */
+const sky = new THREE.Mesh(new THREE.SphereGeometry(1500, 48, 24), new THREE.ShaderMaterial({
+  side: THREE.BackSide, depthWrite: false,
+  vertexShader: `varying vec3 vW; void main(){ vec4 w = modelMatrix*vec4(position,1.0); vW = w.xyz; gl_Position = projectionMatrix*viewMatrix*w; }`,
+  fragmentShader: NOISE + `
+    varying vec3 vW;
+    void main(){
+      vec3 d = normalize(vW - cameraPosition);
+      float h = d.y;
+      vec3 hor = vec3(0.26,0.30,0.31), band = vec3(0.44,0.46,0.42), zen = vec3(0.045,0.055,0.07);
+      vec3 col = mix(hor, zen, smoothstep(0.0, 0.32, h));
+      col = mix(col, band, exp(-abs(h - 0.012)*60.0)*0.6);
+      float c = fbm(vec3(d.x*3.0, d.z*3.0, h*2.0));
+      col *= 0.8 + 0.35*c*smoothstep(0.02, 0.2, h);
+      gl_FragColor = vec4(col, 1.0);
+    }`,
+}));
+sky.renderOrder = -1;
+scene.add(sky);
+
+/* ---- ground: quarter-section fields, 1-mile road grid, footprint ring ---- */
+const U = {
+  uTime: { value: 0 }, uFog: { value: FOG }, uRing: { value: 0 }, uGrid: { value: 0.55 },
+  uShell: { value: 1 }, uSub: { value: 0 }, uRuler: { value: 0 }, uBeam: { value: 0 }, uPx: { value: 1000 },
+};
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(1200, 1200), new THREE.ShaderMaterial({
+  uniforms: U,
+  vertexShader: `varying vec2 vXZ; varying float vD;
+    void main(){ vec4 w = modelMatrix*vec4(position,1.0); vXZ = w.xz; vec4 mv = viewMatrix*w; vD = -mv.z; gl_Position = projectionMatrix*mv; }`,
+  fragmentShader: NOISE + `
+    uniform vec3 uFog; uniform float uRing, uGrid, uTime;
+    varying vec2 vXZ; varying float vD;
+    float hash2(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7)))*43758.5453); }
+    void main(){
+      vec2 q = vXZ / ${MILE.toFixed(2)};
+      vec2 cell = floor(q*2.0);
+      float h = hash2(cell);
+      vec3 col = mix(vec3(0.115,0.135,0.095), vec3(0.19,0.175,0.12), h);
+      col = mix(col, vec3(0.09,0.12,0.085), step(0.72, hash2(cell + 7.0)));
+      col *= 0.85 + 0.3*vnoise(vec3(vXZ*0.35, 0.0));
+      /* section-line roads every mile: 20 m wide, antialiased, faded where they alias */
+      vec2 g = abs(fract(q + 0.5) - 0.5) * ${MILE.toFixed(2)};
+      float d = min(g.x, g.y);
+      float fw = fwidth(d);
+      float road = (1.0 - smoothstep(0.1 - fw, 0.1 + fw, d)) * clamp(0.35/fw, 0.0, 1.0);
+      col = mix(col, vec3(0.62,0.60,0.54), road*uGrid);
+      /* the tornado's ground shadow and dust */
+      float r = length(vXZ);
+      col *= mix(0.55, 1.0, smoothstep(${(R*0.7).toFixed(2)}, ${(R*1.5).toFixed(2)}, r));
+      /* footprint ring at the measured 2.6 mile diameter */
+      float rd = abs(r - ${R.toFixed(2)});
+      float rfw = fwidth(r);
+      float ring = 1.0 - smoothstep(0.16, 0.16 + 1.5*rfw, rd);
+      col = mix(col, vec3(0.85,0.63,0.23), ring*uRing);
+      col += vec3(0.85,0.63,0.23) * exp(-rd*0.9) * 0.18 * uRing;
+      float fog = smoothstep(150.0, 520.0, vD);
+      gl_FragColor = vec4(mix(col, uFog, fog), 1.0);
+    }`,
+  extensions: { derivatives: true },
+}));
+ground.rotation.x = -Math.PI / 2;
+scene.add(ground);
+
+/* ---- ruler: 46 football fields (300 ft = 0.914 units each) end to end across the diameter ---- */
+const RZ = R + 2.2;
+const ruler = new THREE.Mesh(new THREE.PlaneGeometry(2 * R, 1.3), new THREE.ShaderMaterial({
+  uniforms: U, transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -4,
+  vertexShader: `varying vec2 vUv; varying float vD; void main(){ vUv = uv; vec4 mv = modelViewMatrix*vec4(position,1.0); vD = -mv.z; gl_Position = projectionMatrix*mv; }`,
+  fragmentShader: `
+    uniform float uRuler; varying vec2 vUv; varying float vD;
+    void main(){
+      float grow = step(abs(vUv.x - 0.5)*2.0, uRuler);
+      if (grow < 0.5) discard;
+      float k = floor(vUv.x * 46.0);
+      vec3 col = mod(k, 2.0) < 0.5 ? vec3(0.85,0.63,0.23) : vec3(0.95,0.93,0.86);
+      float edge = smoothstep(0.0, 0.08, vUv.y) * smoothstep(1.0, 0.92, vUv.y);
+      gl_FragColor = vec4(col, 0.92*edge);
+    }`,
+}));
+ruler.rotation.x = -Math.PI / 2;
+ruler.position.set(0, 0.06, RZ);
+ruler.renderOrder = 1;
+scene.add(ruler);
+/* end posts rising from the ruler ends to the funnel's edges */
+const postMat = new THREE.ShaderMaterial({
+  uniforms: U, transparent: true, depthWrite: false,
+  vertexShader: `varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.0); }`,
+  fragmentShader: `uniform float uRuler; varying vec2 vUv;
+    void main(){ gl_FragColor = vec4(0.95,0.93,0.86, (1.0 - vUv.y) * 0.85 * smoothstep(0.95, 1.0, uRuler)); }`,
+});
+const posts = [-R, R].map((x) => {
+  const p = new THREE.Mesh(new THREE.PlaneGeometry(0.28, 9), postMat);
+  p.position.set(x, 4.5, RZ);
+  p.renderOrder = 1;
+  scene.add(p);
+  return p;
+});
+
+/* ---- the funnel: a rain-wrapped wedge wider than it is tall, rotating ---- */
+const funnelGeo = new THREE.CylinderGeometry(R * 1.32, R, TH, 200, 48, true);
+funnelGeo.translate(0, TH / 2, 0);
+function funnelMat(side) {
+  return new THREE.ShaderMaterial({
+    uniforms: U, transparent: true, depthWrite: false, side,
+    vertexShader: `varying vec3 vP; varying vec3 vWN; varying vec3 vWP; varying float vD;
+      void main(){ vP = position; vec4 w = modelMatrix*vec4(position,1.0); vWP = w.xyz; vWN = normalize(mat3(modelMatrix)*normal);
+        vec4 mv = viewMatrix*w; vD = -mv.z; gl_Position = projectionMatrix*mv; }`,
+    fragmentShader: NOISE + `
+      uniform float uTime, uShell; uniform vec3 uFog;
+      varying vec3 vP; varying vec3 vWN; varying vec3 vWP; varying float vD;
+      void main(){
+        float y = vP.y / ${TH.toFixed(1)};
+        float a = atan(vP.z, vP.x) + uTime*0.62 + y*1.1;
+        float n = fbm(vec3(cos(a)*2.4, sin(a)*2.4, y*3.2 - uTime*0.22));
+        float fine = fbm(vec3(cos(a)*8.0, sin(a)*8.0, y*1.4 + uTime*0.05));
+        vec3 col = mix(vec3(0.09,0.105,0.12), vec3(0.40,0.43,0.45), n);
+        col += vec3(0.10) * smoothstep(0.55, 0.78, fine);
+        col = mix(vec3(0.27,0.21,0.15), col, smoothstep(0.02, 0.2, y));
+        vec3 V = normalize(cameraPosition - vWP);
+        float facing = abs(dot(normalize(vWN), V));
+        float alpha = mix(0.98, 0.66, facing) * (0.72 + 0.4*n);
+        alpha *= 1.0 - smoothstep(0.55, 1.0, y);
+        alpha *= uShell;
+        float fog = smoothstep(150.0, 520.0, vD);
+        gl_FragColor = vec4(mix(col, uFog, fog), clamp(alpha, 0.0, 1.0));
+      }`,
+  });
+}
+const funnelBack = new THREE.Mesh(funnelGeo, funnelMat(THREE.BackSide));
+const funnelFront = new THREE.Mesh(funnelGeo, funnelMat(THREE.FrontSide));
+funnelBack.renderOrder = 3; funnelFront.renderOrder = 4;
+scene.add(funnelBack, funnelFront);
+
+/* ---- debris ring at the base: seeded points, positions derived from time in the shader ---- */
+const DEB = 2600;
+const seeds = new Float32Array(DEB * 4);
+for (let i = 0; i < DEB * 4; i++) seeds[i] = rand();
+const debGeo = new THREE.BufferGeometry();
+debGeo.setAttribute("position", new THREE.BufferAttribute(new Float32Array(DEB * 3), 3));
+debGeo.setAttribute("aSeed", new THREE.BufferAttribute(seeds, 4));
+const debris = new THREE.Points(debGeo, new THREE.ShaderMaterial({
+  uniforms: U, transparent: true, depthWrite: false,
+  vertexShader: `attribute vec4 aSeed; uniform float uTime, uPx; varying float vA;
+    void main(){
+      float r = ${R.toFixed(2)} * (0.72 + 0.5*aSeed.x);
+      float a = aSeed.y*6.2832 + uTime*(0.5 + 0.5*aSeed.w)*(${R.toFixed(1)}/r);
+      float y = aSeed.z*aSeed.z*4.5 + 0.15;
+      vec4 mv = modelViewMatrix*vec4(cos(a)*r, y, sin(a)*r, 1.0);
+      gl_PointSize = clamp((0.16 + 0.22*aSeed.w) * uPx / -mv.z, 1.0, 9.0);
+      vA = 0.75 * (1.0 - aSeed.z*0.6);
+      gl_Position = projectionMatrix*mv;
+    }`,
+  fragmentShader: `varying float vA; void main(){ vec2 c = gl_PointCoord - 0.5; if (dot(c,c) > 0.25) discard; gl_FragColor = vec4(0.30,0.25,0.20, vA); }`,
+}));
+debris.renderOrder = 5;
+scene.add(debris);
+
+/* ---- sub-vortices: small intense vortices orbiting INSIDE the larger circulation ---- */
+const SUBS = [];
+const subGeo = new THREE.CylinderGeometry(0.45, 1.1, TH * 0.8, 24, 12, true);
+subGeo.translate(0, TH * 0.4, 0);
+const subMat = new THREE.ShaderMaterial({
+  uniforms: U, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide,
+  vertexShader: `varying vec3 vP; varying vec3 vWN; varying vec3 vWP;
+    void main(){ vP = position; vec4 w = modelMatrix*vec4(position,1.0); vWP = w.xyz; vWN = normalize(mat3(modelMatrix)*normal); gl_Position = projectionMatrix*viewMatrix*w; }`,
+  fragmentShader: NOISE + `
+    uniform float uTime, uSub; varying vec3 vP; varying vec3 vWN; varying vec3 vWP;
+    void main(){
+      float y = vP.y / ${(TH * 0.8).toFixed(2)};
+      float a = atan(vP.z, vP.x);
+      float s = fbm(vec3(cos(a + uTime*5.0 + y*6.0)*2.0, sin(a + uTime*5.0 + y*6.0)*2.0, y*4.0 - uTime*1.5));
+      vec3 V = normalize(cameraPosition - vWP);
+      float core = pow(abs(dot(normalize(vWN), V)), 1.5);
+      float i = (0.35 + 0.9*s) * core * (1.0 - smoothstep(0.35, 1.0, y)) * uSub;
+      gl_FragColor = vec4(vec3(0.91,0.30,0.24) * i, 1.0);
+    }`,
+});
+for (let i = 0; i < 5; i++) {
+  const m = new THREE.Mesh(subGeo, subMat);
+  m.renderOrder = 6;
+  scene.add(m);
+  SUBS.push({ m, r: R * (0.42 + 0.36 * rand()), a: rand() * Math.PI * 2, w: 0.55 + 0.25 * rand() });
+}
+
+/* ---- RaXPol: truck marker outside the funnel, beam to the lead sub-vortex near the ground ---- */
+const TRUCK = new THREE.Vector3(30, 0.3, 40);
+const truck = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.5, 0.45), new THREE.MeshBasicMaterial({ color: 0x7fb2e5, transparent: true }));
+truck.position.copy(TRUCK);
+truck.renderOrder = 7;
+scene.add(truck);
+const beamGeo = new THREE.CylinderGeometry(0.9, 0.06, 1, 20, 1, true);
+beamGeo.translate(0, 0.5, 0);
+const beam = new THREE.Mesh(beamGeo, new THREE.ShaderMaterial({
+  uniforms: U, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide,
+  vertexShader: `varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.0); }`,
+  fragmentShader: `uniform float uBeam, uTime; varying vec2 vUv;
+    void main(){ float pulse = 0.55 + 0.45*sin(vUv.y*40.0 + uTime*14.0);
+      gl_FragColor = vec4(vec3(0.50,0.70,0.90) * 0.55 * pulse * uBeam * (0.4 + 0.6*vUv.y), 1.0); }`,
+}));
+beam.renderOrder = 7;
+scene.add(beam);
+const UP = new THREE.Vector3(0, 1, 0), tmpV = new THREE.Vector3(), tip = new THREE.Vector3();
+
+/* ---- state the GSAP timeline tweens; render() reads it ---- */
+const cam = { x: 0, y: 0.06, z: 36, tx: 0, ty: 5.5, tz: 0, fov: 58 };
+const S = { clock: 0, ring: 0, grid: 0.55, shell: 1, sub: 0, ruler: 0, beam: 0 };
+const radarLabel = document.getElementById("er-radar");
+
+function render() {
+  const t = S.clock;
+  U.uTime.value = t; U.uRing.value = S.ring; U.uGrid.value = S.grid; U.uShell.value = S.shell;
+  U.uSub.value = S.sub; U.uRuler.value = S.ruler; U.uBeam.value = S.beam;
+  camera.fov = cam.fov; camera.updateProjectionMatrix();
+  camera.position.set(cam.x, cam.y, cam.z);
+  camera.lookAt(cam.tx, cam.ty, cam.tz);
+  camera.updateMatrixWorld();
+  U.uPx.value = H / (2 * Math.tan((cam.fov * Math.PI) / 360));
+  for (const s of SUBS) {
+    const a = s.a + t * s.w;
+    s.m.position.set(Math.cos(a) * s.r, 0, Math.sin(a) * s.r);
+    s.m.rotation.y = -a;
+    s.m.rotation.z = 0.12 * Math.sin(a * 2.0);
+  }
+  tip.copy(SUBS[0].m.position).setY(0.6);
+  tmpV.subVectors(tip, TRUCK);
+  const len = tmpV.length();
+  beam.position.copy(TRUCK);
+  beam.scale.set(1, len, 1);
+  beam.quaternion.setFromUnitVectors(UP, tmpV.normalize());
+  truck.material.opacity = Math.min(1, S.beam * 1.5);
+  /* anchor the radar label beside the truck on screen */
+  tmpV.copy(TRUCK).project(camera);
+  radarLabel.style.left = Math.round((tmpV.x + 1) / 2 * W + 24) + "px";
+  radarLabel.style.top = Math.round((1 - tmpV.y) / 2 * H - 12) + "px";
+  renderer.render(scene, camera);
+}
+
+window.__timelines = window.__timelines || {};
+const tl = gsap.timeline({ paused: true });
+
+/* continuous: the circulation turns for the whole window (drives every shader and orbit) */
+tl.to(S, { clock: 18, duration: 18, ease: "none" }, 0);
+
+/* camera. 0-4.3 ground level, the wall fills the frame edge to edge; slow creep sideways */
+tl.to(cam, { x: -2.2, z: 33.5, ty: 6.2, duration: 4.3, ease: "sine.inOut" }, 0);
+/* 4.3-7.2 crane up and back: the whole 2.6 mile width over the mile grid, ruler in front */
+tl.to(cam, { x: 0, y: 26, z: 80, tx: 0, ty: 2.5, tz: 0, fov: 42, duration: 2.9, ease: "power2.inOut" }, 4.3);
+/* 7.2-10.2 rise to the map view: footprint ring spans 2.6 grid squares */
+tl.to(cam, { y: 92, z: 46, ty: 0, tz: 3, fov: 40, duration: 3.0, ease: "power2.inOut" }, 7.2);
+/* 10.2-12.2 drop in over the circulation; the wall thins to show the sub-vortices */
+tl.to(cam, { x: 24, y: 17, z: 58, tx: 3, ty: 2.5, tz: 0, fov: 46, duration: 2.0, ease: "power3.inOut" }, 10.2);
+tl.to(cam, { x: 12, z: 62, duration: 1.8, ease: "sine.inOut" }, 12.2);
+/* 14.0-18 truck right so the funnel sits left of the panel; slow push to the end */
+tl.to(cam, { x: 4, y: 21, z: 70, tx: 15, ty: 3, tz: 0, fov: 44, duration: 1.6, ease: "power2.inOut" }, 14.0);
+tl.to(cam, { x: 6, y: 18, z: 63, duration: 2.4, ease: "none" }, 15.6);
+
+/* El Reno @2.2 */
+tl.fromTo("#er-title", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 2.2);
+tl.fromTo("#er-date", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.6);
+tl.fromTo("#er-credit", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power2.out" }, 2.6);
+
+/* two point six miles wide @4.6-6.4: ruler grows out from the centre, figure punches in */
+tl.to(S, { ruler: 1, duration: 1.8, ease: "power2.inOut" }, 4.6);
+tl.fromTo("#er-pop1", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.in" }, 4.6);
+tl.fromTo("#er-fields", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.4);
+tl.to("#er-fields", { autoAlpha: 0, y: -14, duration: 0.15, ease: "power2.in" }, 6.75);
+
+/* No tornado ever measured has been wider @6.9-9.2: footprint ring on the mile grid */
+tl.fromTo("#er-record", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.95);
+tl.to(S, { ring: 1, grid: 1, duration: 1.2, ease: "power2.out" }, 6.9);
+tl.fromTo("#er-legend", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 7.6);
+tl.to(["#er-pop1", "#er-record"], { autoAlpha: 0, y: -26, duration: 0.3, ease: "power2.in" }, 9.7);
+tl.to("#er-legend", { autoAlpha: 0, y: 16, duration: 0.3, ease: "power2.in" }, 10.1);
+tl.to(S, { ring: 0.35, grid: 0.55, duration: 1.0, ease: "power2.inOut" }, 10.2);
+
+/* two hundred ninety-five miles an hour @11.0-13.0: shell thins, sub-vortices ignite, radar beam */
+tl.to(S, { shell: 0.38, duration: 0.9, ease: "power2.inOut" }, 10.3);
+tl.to(S, { sub: 1, duration: 0.7, ease: "power3.out" }, 10.6);
+tl.to(S, { beam: 1, duration: 0.5, ease: "power2.out" }, 11.0);
+tl.fromTo("#er-radar", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 11.2);
+tl.fromTo("#er-pop2", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.in" }, 11.0);
+tl.fromTo("#er-wsub", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.6);
+tl.to(["#er-pop2", "#er-wsub"], { autoAlpha: 0, y: -26, duration: 0.3, ease: "power2.in" }, 13.6);
+tl.to("#er-radar", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 13.8);
+tl.to(S, { beam: 0, sub: 0.55, shell: 0.6, duration: 0.8, ease: "power2.inOut" }, 13.8);
+
+/* Yet the damage survey could only rate it EF3 @15.4-16.8: panel in, rows, stamp slams on the word */
+tl.fromTo("#er-panel", { x: 660, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 14.0);
+tl.fromTo("#er-r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 14.3);
+tl.fromTo("#er-r2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 14.8);
+tl.fromTo("#er-slab", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 15.1);
+tl.fromTo("#er-stamp", { scale: 2.6, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.35, ease: "power4.in" }, 15.4);
+tl.fromTo("#er-ssub", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 16.0);
+
+/* exit on the cut: panel slides out right, title and credit lift away */
+tl.to("#er-panel", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.4);
+tl.to(["#er-title", "#er-date", "#er-credit"], { autoAlpha: 0, x: -60, duration: 0.6, ease: "power3.in" }, 17.4);
+
+tl.eventCallback("onUpdate", render);
+window.__timelines[ID] = tl;
+render();
+})();
+</script>
+</template>
+</body>
+</html>
