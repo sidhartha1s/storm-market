@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<!-- H1 beats 3-4, the spine (abs 14.55-21.75, S3 "The Weather Service called it EF3." + S4 "Four months later, they changed it to EF5.").
+     Same EF ladder as beat 1, now full frame: Enderlin lands on EF3, a dashed climb draws through "four months later",
+     and the marker stamps onto the empty EF5 rung on "EF5" (siren swell + boom land there). Track-1 storm-cloud texture shows through. -->
+<style>
+  #vd-root { position:absolute; inset:0; font-family:Arial,sans-serif; overflow:hidden;
+    background:radial-gradient(ellipse at 45% 50%, rgba(11,16,22,0.62) 0%, rgba(4,7,10,0.9) 80%); }
+  #vd-eb { position:absolute; left:96px; top:76px; font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; }
+  #vd-lad { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .vd-rung { position:absolute; left:520px; width:480px; height:90px; box-sizing:border-box; background:#15202b; border:1px solid #2a3644; }
+  .vd-fill { position:absolute; inset:0; transform-origin:left center; }
+  .vd-lab { position:absolute; left:26px; top:0; line-height:90px; font-family:'Arial Black',Arial,sans-serif; font-size:40px; color:#dfe7ee; }
+  .amb { background:#d8a13a; }
+  .red { background:#d0121f; }
+  #vd-r5 { border:3px dashed #d0121f; background:rgba(208,18,31,0.08); }
+  #vd-climb { position:absolute; left:1040px; top:250px; width:4px; height:192px; transform-origin:center bottom;
+    background:repeating-linear-gradient(0deg, #e8c56a 0 14px, rgba(232,197,106,0) 14px 24px); }
+  .vd-lead { position:absolute; height:2px; width:88px; left:1004px; background:#c8d3e0; transform-origin:left center; }
+  .vd-card { position:absolute; left:1110px; width:700px; }
+  .vd-card .e { font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; }
+  .vd-card .v { font-size:30px; font-weight:700; letter-spacing:1px; color:#dfe7ee; margin-top:6px; }
+  .vd-card .b { font-family:'Arial Black',Arial,sans-serif; font-size:64px; color:#f2f5f8; margin-top:2px; }
+  #vd-strike { position:absolute; left:0; top:52px; width:250px; height:3px; background:#e74c3c; transform-origin:left center; }
+  #vd-flash { position:absolute; inset:0; background:#f2f5f8; }
+</style>
+<div id="vd-root" data-composition-id="g-verdict" data-width="1920" data-height="1080">
+  <div id="vd-eb">ENDERLIN, NORTH DAKOTA &middot; THE RATING</div>
+  <div id="vd-lad">
+    <div class="vd-rung" id="vd-r5" style="top:180px"><div class="vd-fill red" id="vd-f5"></div><div class="vd-lab">EF5</div></div>
+    <div class="vd-rung" id="vd-r4" style="top:288px"><div class="vd-fill red" id="vd-f4"></div><div class="vd-lab">EF4</div></div>
+    <div class="vd-rung" id="vd-r3" style="top:396px"><div class="vd-fill amb" id="vd-f3"></div><div class="vd-lab">EF3</div></div>
+    <div class="vd-rung" id="vd-r2" style="top:504px"><div class="vd-fill amb" id="vd-f2"></div><div class="vd-lab">EF2</div></div>
+    <div class="vd-rung" id="vd-r1" style="top:612px"><div class="vd-fill amb" id="vd-f1"></div><div class="vd-lab">EF1</div></div>
+    <div class="vd-rung" id="vd-r0" style="top:720px"><div class="vd-fill amb" id="vd-f0"></div><div class="vd-lab">EF0</div></div>
+    <div id="vd-climb"></div>
+    <div class="vd-lead" id="vd-lead3" style="top:440px"></div>
+    <div class="vd-lead" id="vd-lead5" style="top:224px"></div>
+    <div class="vd-card" id="vd-card3" style="top:396px">
+      <div class="e">FIRST RATING &middot; JUNE 2025</div>
+      <div class="v" id="vd-v3">About 160 mph</div>
+      <div id="vd-strike"></div>
+    </div>
+    <div class="vd-card" id="vd-card5" style="top:150px">
+      <div class="e">RE-RATED &middot; OCT 6, 2025</div>
+      <div class="b">Over 210 mph</div>
+    </div>
+  </div>
+  <div id="vd-flash"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-verdict", DUR = 7.2;
+  /* CUES: host at abs 14.55 = h1-s3 start. S3 local = word.start; S4 mounted at abs 17.85 -> local = 3.30 + word.start */
+  const C = { ef3: 1.56, four: 3.30, later: 3.86, changed: 4.80, ef5: 5.50 };
+  const amb = ["#vd-f0", "#vd-f1", "#vd-f2", "#vd-f3"];
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#vd-card3", "#vd-card5", "#vd-eb"], { autoAlpha: 0 }, 0);
+  tl.set([...amb, "#vd-f4", "#vd-f5"], { scaleX: 0 }, 0);
+  tl.set(["#vd-lead3", "#vd-lead5", "#vd-strike"], { scaleX: 0 }, 0);
+  tl.set("#vd-climb", { scaleY: 0 }, 0);
+  tl.set("#vd-flash", { autoAlpha: 0 }, 0);
+  // entrance on the cut ("The Weather Service...")
+  tl.fromTo("#vd-eb", { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.35 }, 0.1);
+  tl.fromTo(".vd-rung", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out", stagger: { each: 0.06, from: "end" } }, 0);
+  // the ladder fills to EF3 as the rating is spoken
+  amb.forEach((f, i) => tl.to(f, { scaleX: 1, duration: 0.22, ease: "power2.out" }, C.ef3 - 0.66 + i * 0.16));
+  tl.to("#vd-lead3", { scaleX: 1, duration: 0.25, ease: "power2.out" }, C.ef3 + 0.05);
+  tl.fromTo("#vd-card3", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power2.out" }, C.ef3 + 0.2);
+  tl.fromTo("#vd-f3", { opacity: 1 }, { opacity: 0.7, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 2 }, C.ef3 + 0.4); // EF3 breathes while the line lands
+  // "Four months later": the climb draws up from EF3 toward the empty rung, slow, anticipating
+  tl.to("#vd-climb", { scaleY: 1, duration: C.ef5 - C.later - 0.1, ease: "power1.in" }, C.later);
+  tl.to("#vd-card3", { autoAlpha: 0.4, duration: 0.4 }, C.changed);
+  tl.to("#vd-strike", { scaleX: 1, duration: 0.3, ease: "power2.out" }, C.changed + 0.1);
+  // "EF5": stamp
+  tl.to(["#vd-f4", "#vd-f5"], { scaleX: 1, duration: 0.14, ease: "power4.in" }, C.ef5 - 0.12);
+  tl.fromTo("#vd-r5", { scale: 1.12 }, { scale: 1, duration: 0.3, ease: "power4.out" }, C.ef5);
+  tl.fromTo("#vd-flash", { autoAlpha: 0.35 }, { autoAlpha: 0, duration: 0.35, ease: "power2.out" }, C.ef5);
+  tl.to("#vd-lead5", { scaleX: 1, duration: 0.2, ease: "power2.out" }, C.ef5 + 0.05);
+  tl.fromTo("#vd-card5", { autoAlpha: 0, scale: 1.3, transformOrigin: "left center" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in" }, C.ef5 - 0.1);
+  tl.fromTo("#vd-f5", { opacity: 1 }, { opacity: 0.72, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 3 }, C.ef5 + 0.4); // lit rung pulses to the cut
+  // continuous: the whole ladder drifts so no stretch sits still
+  tl.fromTo("#vd-lad", { y: 8, scale: 0.985 }, { y: -8, scale: 1.0, duration: DUR, ease: "sine.inOut" }, 0);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
