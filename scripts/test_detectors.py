@@ -284,7 +284,7 @@ CANVAS_FILES = {
 }
 ep = _stage_ep(CANVAS_FILES)
 r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
-assert 'undesigned' not in r.stdout, r.stdout + r.stderr
+assert '[graphics_qc]' in r.stdout and 'undesigned' not in r.stdout, r.stdout + r.stderr
 old_gq = old_rev('graphics_qc.mjs', '_old_gqc_canvas_tmp.mjs', 'f3a6fece')
 r_old = subprocess.run(['node', str(old_gq), str(ep)], capture_output=True, text=True)
 old_gq.unlink()
