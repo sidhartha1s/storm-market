@@ -48,6 +48,19 @@ quoted section header.
 - hyperframes 0.8.6–0.8.10 opened visible console windows on this box; 0.8.41 does not and is the pin since 16 Sep 26 (its mixer is a flat ~1.5 dB quieter, corrected by the master step). → §"ep6 ship", §"16 Sep 26 — pin bumped to 0.8.41"
 - Search `library/catalog-index.json` / `npx hyperframes catalog --query` before hand-authoring any graphic — MG library-first. → §"ep6 ship"
 
+## 26 Sep 26 - pin 0.8.41 -> 0.8.78; currency moves to episode kickoff; ritual demo is demo-pin
+- Owner: "I always prefer the latest version because they will be adding fixes on the go". The pin LOCK stays
+  (preflight drift exit 5); the full-render currency block and `RENDER_PIN_STALE_OK` are gone. Kickoff runs
+  `pin_ritual.py --check-only` and bumps before the first render, so an episode never changes version mid-way.
+- demo-joplin-90 could not run the ritual: 11 of its 17 media/audio files existed nowhere after publish cleanup.
+  `episodes/demo-pin` (tanker MG 0-14 s + WebGL probe 14-24 s) is fully committed. It has NO audio and NO
+  `<video>`, so mixer-gain changes (the 0.8.41 RMS offset below) and video-seek capture changes are not covered.
+- A/B at draft crf18 fps30 1 worker: 720/720 frames, 24.000 s both, SSIM mean 0.9973 min 0.9930 (worst in the
+  WebGL half; max pixel delta 35/255, none over 40). Same-version probe run-to-run was 0.9905, so this is noise.
+  WebGL barcode 24/24 on both. Ritual (standard crf16, 1 worker): SSIM 0.9948, PASS, bumped. Renders ~1.5 min each.
+- 0.8.78 logs the streaming gate as `"enabled":true,"reason":"single_worker",...`; the ritual regex still matches.
+  0.8.51 made the streaming duration cap off by default, so render.cmd's 7200 s cap is now redundant (harmless).
+
 ## 2026-09-23 - CTA moves late by default; hooks carry zero fluff; the owner edits scripts in a review loop
 - CTA: the owner judged the 30-40 % placement was not converting and only annoyed viewers. The documentary default is
   now 85-95 % (`config.yaml channel.cta.window`), placed where it does not interrupt a reveal. He may move it again.
