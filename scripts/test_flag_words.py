@@ -123,7 +123,7 @@ with tempfile.TemporaryDirectory() as d:
 
     # 7. metadata.md (title/description) is scanned
     ep_meta = make_episode(root, "ep-meta", edit_script_body="### A1-S1 — narration\n> A calm evening.\n",
-                            metadata_body="# Killer Storm: The Night Nobody Slept\n")
+                            metadata_body="# Killed by the Storm: The Night Nobody Slept\n")
     rc, out = run_gate(ep_meta, wordlist)
     check("metadata.md: exit 1", rc == 1, f"rc={rc}")
     check("metadata.md: hit reported against metadata.md", f"{ep_meta / 'metadata.md'}:" in out, out)
