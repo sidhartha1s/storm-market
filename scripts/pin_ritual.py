@@ -345,15 +345,8 @@ def main():
     if check_only:
         return 3
 
-    global FFPROBE, FFMPEG
-    FFPROBE, FFMPEG = ff_paths()
-
-    if not (DEMO / "index.html").exists():
-        sys.exit(f"[ritual] demo episode missing: {DEMO}")
-
+    setup()
     renders = DEMO / "renders"
-    renders.mkdir(exist_ok=True)
-    BASELINE_DIR.mkdir(parents=True, exist_ok=True)
 
     # Baseline mp4 lives at the stable BASELINE_DIR (outside any worktree) so it survives
     # worktree teardown between runs. Reuse the committed metrics record only when it BOTH
