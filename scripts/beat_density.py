@@ -31,6 +31,7 @@ rows = []
 for f in sorted((ep / "compositions").glob("*.html")):
     gid = f.stem
     if gid not in hosts:
+        print(f"[WARN] beat_density: compositions/{f.name} is not mounted in index.html, not checked")
         continue
     src = fold(f.read_text(encoding="utf-8", errors="replace"))
     spans = []
