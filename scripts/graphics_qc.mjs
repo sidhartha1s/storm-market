@@ -12,18 +12,14 @@ const ep = resolve(process.argv[2] || 'episodes/ep3-tristate');
 const TMP = join(ep, '.qc-tmp');
 if (!existsSync(TMP)) mkdirSync(TMP, { recursive: true });
 
-const MAX_IDLE = 3.0;          // seconds of no visual change inside a graphic
-const MAX_IDLE_OPENING = 2.5;  // tighter for the first 10s of a graphic
+const MAX_IDLE = 4.0;          // a gap this long with nothing moving fails (same number as beat_density)
 const CROP_LOSS_FAIL = 0.35;   // fraction of source image cropped away by object-fit:cover
 const SAFE = { w: 1920, h: 1080, pad: 24 };
 
-/* Hard errors block the render. Idle gaps are reported and only fail when a graphic is
- * frozen for most of its window — ep2 (the gold standard) idles in places and still reads
- * as designed, so idling is a budget, not a tripwire; 'idle-budget' IS that tripwire (the
- * header's own claim above was false in code until this line: measured at idleFrac > 0.45
- * or a single gap > 8s, below). */
+/* Hard errors block the render. Stillness has one number and no warning tier (owner, 26 Sep 26):
+ * any gap of MAX_IDLE or more with nothing moving is an 'idle' error. */
 const HARD = new Set(['text-collision', 'out-of-frame', 'bad-crop', 'empty-container', 'fade-only',
-                      'flat-type', 'no-timeline', 'js-error', 'undesigned', 'idle-budget', 'short-duration',
+                      'flat-type', 'no-timeline', 'js-error', 'undesigned', 'idle', 'short-duration',
                       'broken-image']);
 const DURS = {};
 const FRAMES = {};
@@ -265,24 +261,23 @@ for (const f of files) {
   const punchy = probe.tweens.filter(t => /power[34]|back|elastic|expo/.test(t.ease)).length;
   if (probe.tweens.length >= 6 && punchy === 0) add(name, 'limp-easing', 'no power3/power4 easing anywhere — mg-quickref Motion');
 
-  /* --- beat cadence. A gap is only idle if NOTHING is moving through it: a continuous
-     tween spanning the gap (ep2's 26s rotation) keeps the frame alive. --- */
-  const spans = probe.tweens.filter(t => t.dur >= 4).map(t => [t.start, t.start + t.dur]);
-  const covered = (a, b) => spans.some(([s, e]) => s <= a + 0.25 && e >= b - 0.25);
+  /* --- stillness. A gap is idle only if NO tween is running through it, measured from the
+     end of the last motion to the next tween start (the same walk as beat_density.py). --- */
   const beats = probe.beats.filter(b => b <= windowEnd + 0.01);
-  let prev = 0, frozen = 0, worst = 0;
-  for (const b of [...beats, windowEnd]) {
-    const gap = b - prev;
-    const limit = prev < 10 ? MAX_IDLE_OPENING : MAX_IDLE;
-    if (gap > limit && !covered(prev, b)) {
-      frozen += gap; worst = Math.max(worst, gap);
-      add(name, 'idle', `${gap.toFixed(1)}s frozen at ${prev.toFixed(1)}s–${b.toFixed(1)}s (nothing in motion) — mg-quickref Motion`);
-    }
-    prev = b;
+  const spans = probe.tweens.map(t => [t.start, t.start + t.dur]).sort((a, b) => a[0] - b[0]);
+  let still = 0, frozen = 0;
+  const idle = (a, b) => {
+    if (b - a < MAX_IDLE) return;
+    frozen += b - a;
+    add(name, 'idle', `${(b - a).toFixed(1)}s frozen at ${a.toFixed(1)}s–${b.toFixed(1)}s (nothing in motion) — mg-quickref Motion`);
+  };
+  for (const [s, e] of spans) {
+    if (s >= windowEnd) break;
+    idle(still, s);
+    still = Math.max(still, e);
   }
+  idle(still, windowEnd);
   const idleFrac = frozen / windowEnd;
-  if (idleFrac > 0.45 || worst > 8)
-    add(name, 'idle-budget', `${(idleFrac*100).toFixed(0)}% of its ${windowEnd.toFixed(0)}s window is frozen (worst single gap ${worst.toFixed(1)}s); see references/mg-quickref.md "Motion and exits"`);
 
   /* --- geometry + typography at every beat and each midpoint --- */
   const samples = [...new Set(beats.flatMap((b, i) => [b + 0.35, i < beats.length - 1 ? (b + beats[i+1]) / 2 : b + 0.9]))]
