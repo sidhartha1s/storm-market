@@ -45,6 +45,8 @@
 17. **"This sounds AI" = full check of rules 2–14, return only the clean script.**
 
 ## House additions (Warning Hour, 2026-09-13)
+- Violence/death words that trip YouTube's transcript scan are a separate list, not duplicated here:
+  `references/flag-words.md` (gate `scripts/flag_words.py`).
 - Rule 7 kills two of our reflexes: the reveal-flip ("The warning was not late. It was built for the wrong kind of
   event.") and the mirrored callback ending ("The physics did not change. The slope did."). Both sat in the #5 draft.
   Rewrite each as one plain statement or a concrete detail.
