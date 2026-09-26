@@ -63,7 +63,7 @@ def load_terms(wordlist_path):
                 f"unknown severity {cells[1]!r} (want 'hard' or 'soft') on row: {line}")
         for form in [f.strip() for f in term_cell.split("/") if f.strip()]:
             body = re.sub(r"\s+", r"\\s+", re.escape(form))
-            pattern = re.compile(r"\b" + body + SUFFIX + r"\b", re.IGNORECASE)
+            pattern = re.compile(body + SUFFIX, re.IGNORECASE)  # MUTATION: \b removed
             terms.append((pattern, severity, alternatives, form))
     if not terms:
         raise WordlistError(f"0 usable terms parsed from {wordlist_path} — refusing a no-op gate")
