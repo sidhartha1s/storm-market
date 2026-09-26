@@ -8,7 +8,8 @@ files disagree, fix it in the same PR and say which one won.
 |---|---|
 | Kickoff preflight, phase map | `skills/storm-episode/SKILL.md`, `skills/mini-storms/SKILL.md` (junctioned into `~/.claude/skills/`, so a skill edit is a repo commit) |
 | Editing architecture, hook contract, CTA contract, chapter blackout table, cadence and sync rules, Content ID protocol, insert gate | `DESIGN.md` (read before any episode work) |
-| Every motion-graphics rule: file contract, safe zones and the presenter circle, type, palette, glass card, motion, exits, on-screen text, what each gate parses, verification | `references/mg-quickref.md` (goes into every MG builder's brief) |
+| Every motion-graphics rule: file contract, safe zones and the presenter circle, glass card, motion, exits, on-screen text, what each gate parses, verification | `references/mg-quickref.md` (goes into every MG builder's brief) |
+| Channel palette, fonts, type-tier px values, TV-readability floor, CSS custom properties | `library/inhouse/snippets/tokens.md` (swatch: `library/inhouse/snippets/brand-swatch.html`) |
 | Script method, hook wording, humanise pass, scaling | `references/script-os.md`, `script-framework.md`, `script-scaling.md`, `humanise-rules.md` |
 | Titles and thumbnails | `references/packaging-rules.md` |
 | News-lane rulebook, templates, clip pools | `references/mini-storms/FORMAT.md`, `library/mini-storms/`, `library/mini-storms/<event>/` (pools are reused across angles) |
