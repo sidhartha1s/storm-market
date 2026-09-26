@@ -326,14 +326,16 @@ def baseline_problems(rec):
 
 def record_baseline(pin, base_mp4):
     """Render the demo at `pin` into base_mp4, measure, validate, THEN persist pin_baseline.json.
-    An unusable record exits 2 with pin_baseline.json untouched."""
-    render(pin, base_mp4)
-    record = {"version": pin, "demo": DEMO.name, **measure(base_mp4)}
+    An unusable record exits 2 with pin_baseline.json AND the baseline mp4 untouched."""
+    tmp_mp4 = base_mp4.with_name(base_mp4.stem + ".candidate.mp4")
+    render(pin, tmp_mp4)
+    record = {"version": pin, "demo": DEMO.name, **measure(tmp_mp4)}
     bad = baseline_problems(record)
     if bad:
-        print("[ritual] baseline is unusable, pin_baseline.json NOT written: " + "; ".join(bad),
-              file=sys.stderr)
+        print("[ritual] baseline is unusable, pin_baseline.json and baseline mp4 NOT replaced: "
+              + "; ".join(bad), file=sys.stderr)
         sys.exit(2)
+    tmp_mp4.replace(base_mp4)
     BASELINE_JSON.write_text(json.dumps(record, indent=2), encoding="utf-8")
     return record
 
