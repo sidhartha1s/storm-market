@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Pin-ritual demo: MG showcase + WebGL probe (self-contained, no gitignored media)</title>
+  <!-- scripts/pin_ritual.py renders this at the pin and the candidate version and diffs them.
+       0-14 s: g-tanker-throw (SVG/GSAP MG, vendored plugins, Abril font).
+       14-24 s: g-webgl-probe (three.js, seeded; frame barcode = probe-local frame, i.e. global - 420). -->
+  <script src="gsap.min.js"></script>
+  <script src="DrawSVGPlugin.min.js"></script><script src="CustomEase.min.js"></script><script src="SplitText.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070c; }
+    @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="demo-pin" data-start="0" data-width="1920" data-height="1080" data-duration="24" data-fps="30">
+  <div id="host-tanker-throw" data-composition-id="g-tanker-throw" data-composition-src="compositions/g-tanker-throw.html" data-start="0" data-duration="14" data-track-index="1" data-width="1920" data-height="1080"></div>
+  <div id="host-webgl-probe" data-composition-id="g-webgl-probe" data-composition-src="compositions/g-webgl-probe.html" data-start="14" data-duration="10" data-track-index="1" data-width="1920" data-height="1080"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+window.__timelines["demo-pin"] = gsap.timeline({ paused: true }).to({}, { duration: 24 }, 0);
+</script>
+</body>
+</html>
