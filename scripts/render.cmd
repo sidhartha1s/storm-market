@@ -27,7 +27,7 @@ if not exist "%EP%\index.html" (
 REM CRF/FPS are tunable per render. Defaults reproduce the tested recipe (full crf16/30fps,
 REM draft crf32/15fps). For a smaller single-pass full render, author at 24fps and set
 REM RENDER_CRF=20 — visually lossless for this content, ~half the size, no transcode. See
-REM LEARNINGS.md "Render size + HEVC compression".
+REM learnings/render.md "Render size + HEVC compression".
 if "%MODE%"=="draft" (
   set QUAL=draft
   set _CRF=32
@@ -50,13 +50,14 @@ REM Shared ffmpeg build: security software on this box scans every process creat
 REM cost tracks binary size (96.6 MB static ffprobe = 1.337s per spawn, 224 KB shared =
 REM 0.100s). A render fires ~200 probes. These two paths MUST resolve — media_budget.py
 REM fails the render if they do not, because a bad path silently falls back to the slow
-REM ffprobe on PATH and the deadline failure comes straight back. See LEARNINGS.md.
+REM ffprobe on PATH and the deadline failure comes straight back. See learnings/render.md.
 REM hyperframes >=0.8 telemetry spawns DETACHED `node -e fetch(...)` children with no windowsHide
 REM = a visible console window per flush (owner 2026-08-23). Opt out unconditionally.
 set HYPERFRAMES_NO_TELEMETRY=1
-REM 0.8.41 streams captured frames straight into ffmpeg only for comps <= 240 s; longer comps fall back to
-REM disk capture (~8 MB per frame: 131 GB for a 17.6-min draft, C: had 22 GB; ep-1974 21 Sep 26). Raise the cap
-REM so every episode streams. Streaming is the path the 0.8.41 shorts final and the pin-ritual demo used.
+REM 0.8.41 streamed captured frames straight into ffmpeg only for comps <= 240 s; longer comps fell back to
+REM disk capture (~8 MB per frame: 131 GB for a 17.6-min draft, C: had 22 GB; ep-1974 21 Sep 26), so this line
+REM raised the cap. 0.8.51 turned that cap off by default; the line stays as a harmless belt for any version
+REM that brings a cap back (pin_ritual.render_cmd_env() still reads it).
 set PRODUCER_STREAMING_ENCODE_MAX_DURATION_SECONDS=7200
 REM With --workers > 1 streaming also needs the parallel-capture router (cli.js shouldStreamParallelCapture),
 REM else the gate logs enabled:false and the render dies at 'Disk capture may need ~131 GB'.

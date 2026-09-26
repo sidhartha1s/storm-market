@@ -45,7 +45,7 @@ Poll:  GET /api/v2/jobs/{request_id}   — NOT /requests/{id} (that 404s)
 ## Gotchas
 - Generated tracks pad **~3s of silence at the tail** — trim or fade before mounting.
 - For windows longer than 300s, self-crossfade the track (acrossfade d=4) — see ep5's
-  `score-act6-ext.mp3` build in LEARNINGS.md.
+  `score-act6-ext.mp3` build in learnings/audio-tts.md.
 - Measure `volumedetect` per track before choosing `data-volume`; outputs vary wildly
   (−11.5 to −32.8 dB mean across these four).
 - Discover models at runtime: `GET /api/v2/models?filter[inference_types]=txt2music`.

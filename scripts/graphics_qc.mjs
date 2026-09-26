@@ -12,24 +12,20 @@ const ep = resolve(process.argv[2] || 'episodes/ep3-tristate');
 const TMP = join(ep, '.qc-tmp');
 if (!existsSync(TMP)) mkdirSync(TMP, { recursive: true });
 
-const MAX_IDLE = 3.0;          // seconds of no visual change inside a graphic
-const MAX_IDLE_OPENING = 2.5;  // tighter for the first 10s of a graphic
+const MAX_IDLE = 4.0;          // a gap this long with nothing moving fails (same number as beat_density)
 const CROP_LOSS_FAIL = 0.35;   // fraction of source image cropped away by object-fit:cover
 const SAFE = { w: 1920, h: 1080, pad: 24 };
 
-/* Hard errors block the render. Idle gaps are reported and only fail when a graphic is
- * frozen for most of its window — ep2 (the gold standard) idles in places and still reads
- * as designed, so idling is a budget, not a tripwire; 'idle-budget' IS that tripwire (the
- * header's own claim above was false in code until this line: measured at idleFrac > 0.45
- * or a single gap > 8s, below). */
+/* Hard errors block the render. Stillness has one number and no warning tier (owner, 26 Sep 26):
+ * any gap of MAX_IDLE or more with nothing moving is an 'idle' error. */
 const HARD = new Set(['text-collision', 'out-of-frame', 'bad-crop', 'empty-container', 'fade-only',
-                      'flat-type', 'no-timeline', 'js-error', 'undesigned', 'idle-budget', 'short-duration',
+                      'flat-type', 'no-timeline', 'js-error', 'undesigned', 'idle', 'short-duration',
                       'broken-image']);
 const DURS = {};
 const FRAMES = {};
 const defects = [];
 
-/* The three moments the vision pass reads (CLAUDE.md "Verifying graphics"), chosen from the tween
+/* The three moments the vision pass reads (references/mg-quickref.md "Verify"), chosen from the tween
  * schedule so no frame lands mid-animation: the opening reveal has settled, a settled moment
  * halfway through the hold, and the last settled moment before the exit starts. Loops (>= 4 s) are
  * ambient motion, not reveals; "settled" means no shorter tween is running at that instant. */
@@ -234,7 +230,7 @@ page.on('pageerror', e => add('RUNTIME', 'js-error', String(e).slice(0, 200)));
 
 const compDir = join(ep, 'compositions');
 const files = existsSync(compDir) ? readdirSync(compDir).filter(f => f.endsWith('.html')) : [];
-if (!files.length) { console.error('[graphics_qc] no compositions/ dir — graphics must be sub-comps (DESIGN.md §1)'); process.exit(1); }
+if (!files.length) { console.error('[graphics_qc] no compositions/ dir — graphics must be sub-comps (references/mg-quickref.md File contract)'); process.exit(1); }
 
 for (const f of files) {
   const name = f.replace('.html', '');
@@ -245,11 +241,11 @@ for (const f of files) {
   if (probe.error) { add(name, 'no-timeline', probe.error); continue; }
   DURS[name] = +probe.duration.toFixed(2);
 
-  /* --- host window: DESIGN.md §5 requires the comp to outlast the window it's mounted for,
+  /* --- host window: references/mg-quickref.md (File contract, Motion and exits) requires the comp to outlast the window it's mounted for,
      or the panel freezes/vanishes before the cut instead of sliding out on it. --- */
   const hostDur = HOSTS[name];
   if (hostDur != null && probe.duration < hostDur - 0.05)
-    add(name, 'short-duration', `timeline ${probe.duration.toFixed(2)}s ends before its host window ${hostDur.toFixed(2)}s — ${(hostDur - probe.duration).toFixed(2)}s frozen tail before the cut (DESIGN.md §5)`);
+    add(name, 'short-duration', `timeline ${probe.duration.toFixed(2)}s ends before its host window ${hostDur.toFixed(2)}s — ${(hostDur - probe.duration).toFixed(2)}s frozen tail before the cut (mg-quickref File contract)`);
   const windowEnd = Math.max(probe.duration, hostDur || 0);
   /* frames come from what is ON SCREEN: a comp cut by a shorter host (g-plane: 50 s timeline in a
      28.9 s host) must never be sampled after its host window ends, or the reader judges another graphic */
@@ -258,31 +254,30 @@ for (const f of files) {
   /* --- motion vocabulary --- */
   const kinetic = probe.tweens.filter(t => t.props.some(p => ['scale','scaleX','scaleY','x','y','rotation','width','strokeDashoffset','attr'].includes(p)));
   const reveals = probe.tweens.filter(t => t.props.some(p => ['autoAlpha','opacity'].includes(p)));
-  if (kinetic.length === 0) add(name, 'fade-only', `${reveals.length} fades, 0 kinetic tweens — DESIGN.md §5`);
+  if (kinetic.length === 0) add(name, 'fade-only', `${reveals.length} fades, 0 kinetic tweens — mg-quickref Motion`);
   else if (reveals.length > 2 && kinetic.length < reveals.length / 2)
     add(name, 'thin-motion', `${kinetic.length} kinetic vs ${reveals.length} fades (need ≥1 per 2)`);
   /* deferred: needs coverage from the measure pass (set below) */
   const punchy = probe.tweens.filter(t => /power[34]|back|elastic|expo/.test(t.ease)).length;
-  if (probe.tweens.length >= 6 && punchy === 0) add(name, 'limp-easing', 'no power3/power4 easing anywhere — §5');
+  if (probe.tweens.length >= 6 && punchy === 0) add(name, 'limp-easing', 'no power3/power4 easing anywhere — mg-quickref Motion');
 
-  /* --- beat cadence. A gap is only idle if NOTHING is moving through it: a continuous
-     tween spanning the gap (ep2's 26s rotation) keeps the frame alive. --- */
-  const spans = probe.tweens.filter(t => t.dur >= 4).map(t => [t.start, t.start + t.dur]);
-  const covered = (a, b) => spans.some(([s, e]) => s <= a + 0.25 && e >= b - 0.25);
+  /* --- stillness. A gap is idle only if NO tween is running through it, measured from the
+     end of the last motion to the next tween start (the same walk as beat_density.py). --- */
   const beats = probe.beats.filter(b => b <= windowEnd + 0.01);
-  let prev = 0, frozen = 0, worst = 0;
-  for (const b of [...beats, windowEnd]) {
-    const gap = b - prev;
-    const limit = prev < 10 ? MAX_IDLE_OPENING : MAX_IDLE;
-    if (gap > limit && !covered(prev, b)) {
-      frozen += gap; worst = Math.max(worst, gap);
-      add(name, 'idle', `${gap.toFixed(1)}s frozen at ${prev.toFixed(1)}s–${b.toFixed(1)}s (nothing in motion) — §6`);
-    }
-    prev = b;
+  const spans = probe.tweens.map(t => [t.start, t.start + t.dur]).sort((a, b) => a[0] - b[0]);
+  let still = 0, frozen = 0;
+  const idle = (a, b) => {
+    if (b - a < MAX_IDLE) return;
+    frozen += b - a;
+    add(name, 'idle', `${(b - a).toFixed(1)}s frozen at ${a.toFixed(1)}s–${b.toFixed(1)}s (nothing in motion) — mg-quickref Motion`);
+  };
+  for (const [s, e] of spans) {
+    if (s >= windowEnd) break;
+    idle(still, s);
+    still = Math.max(still, e);
   }
+  idle(still, windowEnd);
   const idleFrac = frozen / windowEnd;
-  if (idleFrac > 0.45 || worst > 8)
-    add(name, 'idle-budget', `${(idleFrac*100).toFixed(0)}% of its ${windowEnd.toFixed(0)}s window is frozen (worst single gap ${worst.toFixed(1)}s) — §6`);
 
   /* --- geometry + typography at every beat and each midpoint --- */
   const samples = [...new Set(beats.flatMap((b, i) => [b + 0.35, i < beats.length - 1 ? (b + beats[i+1]) / 2 : b + 0.9]))]
@@ -305,9 +300,9 @@ for (const f of files) {
     for (const b of m.broken) { if (!seenBroken.has(b)) { seenBroken.add(b); add(name, 'broken-image', `${b} failed to load (naturalWidth 0) — staged-path 404, not a crop/empty defect (${t.toFixed(1)}s)`); } }
   }
   if (tierMax < 3 && maxTextNodes >= 4)
-    add(name, 'flat-type', `only ${tierMax} type tier(s) across ${maxTextNodes} text elements — §3`);
+    add(name, 'flat-type', `only ${tierMax} type tier(s) across ${maxTextNodes} text elements — mg-quickref Type tiers`);
   if (maxCoverage >= 0.9 && probe.duration > 20 && !probe.tweens.some(t => t.dur >= 8))
-    add(name, 'no-continuous-motion', `full-frame ${probe.duration.toFixed(0)}s graphic (${(maxCoverage*100).toFixed(0)}% opaque), longest tween ${Math.max(...probe.tweens.map(t=>t.dur)).toFixed(1)}s — §5. Either animate something continuously or let a moving photo carry it (ep2 panels cover ~43%).`);
+    add(name, 'no-continuous-motion', `full-frame ${probe.duration.toFixed(0)}s graphic (${(maxCoverage*100).toFixed(0)}% opaque), longest tween ${Math.max(...probe.tweens.map(t=>t.dur)).toFixed(1)}s; see references/mg-quickref.md "Motion and exits". Either animate something continuously or let a moving photo carry it (ep2 panels cover ~43%).`);
   const avgElems = elemSamples.length ? elemSamples.reduce((a,b)=>a+b,0)/elemSamples.length : 0;
   const kineticRatio = probe.tweens.length ? kinetic.length / probe.tweens.length : 0;
   const flags = [];
@@ -317,7 +312,7 @@ for (const f of files) {
   if (avgElems < 12) flags.push(`${avgElems.toFixed(0)} elements on screen`);
   if (idleFrac > 0.6) flags.push(`${(idleFrac*100).toFixed(0)}% frozen`);
   if (flags.length >= 3)
-    add(name, 'undesigned', `${flags.join(' · ')} — reads as a wireframe, not a designed card (§2–§7)`);
+    add(name, 'undesigned', `${flags.join(' · ')} — reads as a wireframe, not a designed card (mg-quickref)`);
   if (process.env.QC_STATS) console.log(`  [stats] ${name}: dur ${probe.duration.toFixed(0)}s cover ${maxCoverage} elems ${avgElems.toFixed(0)} tiers ${tierMax} kinetic ${(kineticRatio*100).toFixed(0)}% idle ${(idleFrac*100).toFixed(0)}% grad ${gradAny}`);
 }
 
