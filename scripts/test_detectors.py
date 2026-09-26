@@ -179,7 +179,7 @@ REL_FILES = {
 }
 ep = _stage_ep(REL_FILES)
 r = subprocess.run(['node', str(S / 'overlap_check.mjs'), str(ep)], capture_output=True, text=True)
-assert 'not registered' not in r.stdout, r.stdout + r.stderr
+assert 'OVERLAP CHECK v2' in r.stdout and 'not registered' not in r.stdout, r.stdout + r.stderr
 old_ov = old_rev('overlap_check.mjs', '_old_overlap_rel_tmp.mjs', 'f3a6fece')
 r_old = subprocess.run(['node', str(old_ov), str(ep)], capture_output=True, text=True)
 old_ov.unlink()
