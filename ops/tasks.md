@@ -32,7 +32,7 @@ Status: `todo` · `doing` · `review` (PR open, waiting on Opus review, e2e or t
 |---|---|---|---|
 | 15 | gate: presenter-circle keep-out (only when Paul is shown) | - | todo, owner-approved 26 Sep 26 |
 | 16 | gate: 5% text-safe margin (96/54 px) | - | todo, owner-approved 26 Sep 26 |
-| 17 | gate: one stillness number (graphics_qc idle 3.0/2.5 s -> 4.0 s, idle hard, idle-budget removed) | - | done 26 Sep 26, PR fix/stillness-one-number |
+| 17 | gate: one stillness number (graphics_qc idle 3.0/2.5 s -> 4.0 s, idle hard, idle-budget removed) | - | done 26 Sep 26, PR fix/stillness-4s |
 | 18 | library sweep: dark chips and colour-block stamps left in bulletin-typewriter.html, ranked-bars.html, ef-ladder.html, cards.css .stamp, snippets/usage-examples.html | - | todo |
 
 ## Minor findings, not scheduled
