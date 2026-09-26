@@ -172,11 +172,13 @@ file (see the @font-face comment in this file's &lt;style&gt;) and falls back to
 <script>
 const SAMPLE = "EF5 · 210 mph · Enderlin, North Dakota";
 
+// Hand copy of tokens.md's "## Palette" table (library/inhouse/snippets/tokens.md).
+// Not generated from that file — change both together, or this swatch drifts from the spec.
 const palette = [
   ["BG deep space", "#04070c", "#root flat background"],
   ["BG gradient center", "#0b1016", "canvas radial-gradient inner stop"],
   ["BG gradient edge", "#030507", "canvas radial-gradient outer stop"],
-  ["Panel dark 1", "#15202b", "RHS stat panel gradient"],
+  ["Panel dark (RHS stat panel)", "#15202b", "RHS stat panel gradient"],
   ["Panel dark 2", "#0b1016", "secondary panel fill"],
   ["Panel dark 3", "#04070a", "tertiary panel fill"],
   ["Headline white", "#f2f5f8", "headlines, lower-third, namecard name"],
@@ -197,14 +199,15 @@ const palette = [
   ["Beige polaroid", "#f4f0e6", ".polaroid card stock"],
   ["Beige stamp text", "#f4f0e8", ".stamp text on crimson"],
   ["Caption dark", "#2a2622", ".pol-cap text"],
-  ["Caption dark sub", "#6b6257", ".pol-cap span"]
+  ["Caption dark sub", "#6b6257", ".pol-cap span"],
+  ["Diagram grey 1 (diagram-only)", "#4a5560", "98 uses — g-plane SVG label + scatter dots"],
+  ["Diagram grey 2 (diagram-only)", "#2a3644", "18 uses — diagram stroke/fill"]
 ];
 
 const paletteEl = document.getElementById("palette");
 for (const [name, hex, role] of palette) {
   const chip = document.createElement("div");
   chip.className = "chip";
-  const textColor = (hex.startsWith("#f") || hex.startsWith("rgba(232")) ? "#16233d" : "#f2f5f8";
   chip.innerHTML =
     '<div class="swatch" style="background:' + hex + ';"></div>' +
     '<div class="meta">' +
