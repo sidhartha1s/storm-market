@@ -59,7 +59,25 @@ BASELINE_DIR = Path(os.environ.get("LOCALAPPDATA", str(Path.home() / "AppData" /
 # full-render wrapper (scripts/*_full_task.cmd all set RENDER_WORKERS=2); render.cmd's own
 # bare default of 3 is the draft-tuned value, not what full renders actually use.
 RENDER_FLAGS = ["--gpu", "--browser-gpu", "--experimental-fast-capture=true",
-                "--quality", "standard", "--crf", "16", "--fps", "30", "--workers", "2"]
+                "--quality", "standard", "--crf", "16", "--fps", "30",
+                "--workers", os.environ.get("RENDER_WORKERS", "2")]
+
+
+def npm_latest(timeout=30):
+    """Latest hyperframes on npm, or None (npm missing/unreachable/garbage output)."""
+    npm = shutil.which("npm")
+    if not npm:
+        return None
+    try:
+        out = subprocess.run([npm, "view", "hyperframes", "version"],
+                             capture_output=True, text=True, timeout=timeout).stdout.strip()
+    except (subprocess.TimeoutExpired, OSError):
+        return None
+    return out if re.fullmatch(r"[\d.]+", out) else None
+
+
+def semver(v):
+    return tuple(int(x) for x in v.split("."))
 
 
 def render_cmd_env():
