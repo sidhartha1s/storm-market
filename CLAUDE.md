@@ -12,7 +12,7 @@ files disagree, fix it in the same PR and say which one won.
 | Script method, hook wording, humanise pass, scaling | `references/script-os.md`, `script-framework.md`, `script-scaling.md`, `humanise-rules.md` |
 | Titles and thumbnails | `references/packaging-rules.md` |
 | News-lane rulebook, templates, clip pools | `references/mini-storms/FORMAT.md`, `library/mini-storms/`, `library/mini-storms/<event>/` (pools are reused across angles) |
-| Shorts spec, slugs `sh-<parent>-<n>`, weekly scan | `references/shorts/PLAN.md`, `references/shorts/competitors-2026-09-15.md`, templates `library/shorts/`, `scripts/shorts_scan.py`, gate `node scripts/shorts_lint.mjs episodes/<slug>` |
+| Shorts spec, slugs `sh-<parent>-<n>`, weekly scan | `references/shorts/PLAN.md`, `references/shorts/competitors-2026-09-15.md`, templates `library/shorts/` (not created yet), `scripts/shorts_scan.py`, gate `node scripts/shorts_lint.mjs episodes/<slug>` |
 | Niche proof, teardowns, slate | `references/script-teardown.md`, `references/teardowns/`, `references/roadmap-2026-09.md` |
 | Measured gotchas, newest first | `learnings/` (`README.md` says which file serves which job): read yours before building |
 | Pins, paths, CTA file and window | `config.yaml` |
