@@ -23,16 +23,32 @@ When it runs (owner 26 Sep 26): at episode kickoff, before the episode's first r
 (`--check-only`, then the full ritual if stale), so an episode never switches version
 mid-way. render_preflight.py only checks pin drift, never currency.
 
-The demo is episodes/demo-pin: 24 s, fully committed (MG showcase + WebGL probe), no
-gitignored media, so it runs from any fresh worktree. It is silent, so the RMS gate
-compares None to None; the probe's frame barcode is checked by SSIM.
+The demo is episodes/demo-pin: 24 s, fully committed (MG showcase + WebGL probe + an
+ffmpeg-made video and tone), no gitignored media, so it runs from any fresh worktree.
+  - Mixer: sfx/tone.ogg (440 Hz) at 3-7 s, gain 0.5. Both renders must carry audio and
+    their overall RMS must agree within RMS_TOL; a silent render is drift, never a pass.
+  - Video capture: clips/probe.webm mounted at 16 s with data-media-start 1, so capture
+    must seek into it (0.8.72/0.8.77/0.8.78 changed "capture waits for seeking video").
+    The clip burns its own timecode; measure() records the per-frame luma of VIDEO_BOX over
+    VIDEO_WIN and compare() diffs it, and SSIM is also taken on that region alone.
+  - The WebGL probe's frame barcode is checked by the full-frame SSIM.
+
+Workers: RENDER_FLAGS use --workers 2, the production full-render path, which routes
+capture through the parallel-stream router (HF_CAPTURE_PARALLEL_STREAM). RENDER_WORKERS
+(the render.cmd knob) still overrides it on a RAM-tight box, but below 2 the ritual takes
+the single-worker capture path and prints `[FALLBACK] single-worker capture path,
+parallel-stream router unverified` on every render. The worker count is stored in
+pin_baseline.json and a baseline/candidate mismatch is drift.
 
 Runtime: one 24 s demo render ~2-4 min on this box; two when the baseline record
 is stale. Launch detached (schtasks one-shot via run_hidden.vbs) when driving it from
-a harness that reaps foreground calls — same rule as render.cmd. RENDER_WORKERS (the
-render.cmd knob) overrides --workers on a RAM-tight box.
+a harness that reaps foreground calls — same rule as render.cmd.
 
-Usage: python3 scripts/pin_ritual.py [--check-only]
+--baseline re-records the baseline at the CURRENT pin (render, measure, write
+pin_baseline.json + the BASELINE_DIR mp4) without consulting npm. Run it whenever
+demo-pin changes: the old record measures a different comp.
+
+Usage: python3 scripts/pin_ritual.py [--check-only | --baseline]
 Exit codes: 0 pin current or bumped clean; 2 setup error; 3 metric drift (no bump);
             4 npm unreachable (currency unknowable — this tool exists to answer it).
 """
