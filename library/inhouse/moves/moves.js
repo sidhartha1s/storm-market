@@ -37,7 +37,8 @@
   /* onFrame: the single per-frame hub. Installs tl's onUpdate once; every move that writes per
      frame registers here, in call order (camera first, then bodies, then finish). Throws if the
      timeline already has a foreign onUpdate, so two per-frame writers can never fight.
-     renderNow(tl) paints frame tl.time() once at build end, as the showcase does. */
+     renderNow(tl) force-renders frame tl.time() once at build end. Without the force, a fresh paused
+     timeline asked for time(0) does nothing, so every tl.set(..., 0) initial state is missing on frame 0. */
   const HUBS = new WeakMap();
   function onFrame(tl, fn) {
     let list = HUBS.get(tl);
