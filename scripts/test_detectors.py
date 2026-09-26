@@ -228,13 +228,13 @@ old_gqc.unlink()
 assert 'short-duration' not in r_old.stdout and 'ERROR [idle-budget]' not in r_old.stdout, \
     f'old code should have missed the frozen tail and only warned on idle-budget but got: {r_old.stdout}'
 shutil.rmtree(ep, ignore_errors=True)
-# the 3 s tween ends at 3 s: a 3.9 s still tail passes, 4.0 s fails. Stillness counts from the END of
-# motion (as beat_density does), so 6.9 s passing proves a beat-start-to-cut measure is gone.
-for host_dur, want in (('6.9', False), ('7', True)):
-    ep = _stage_ep({**GQC_FILES, 'index.html': GQC_FILES['index.html'].replace('data-duration="7"', f'data-duration="{host_dur}"')})
-    r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
-    shutil.rmtree(ep, ignore_errors=True)
-    assert ('ERROR [idle]' in r.stdout) == want and 'warn  [idle]' not in r.stdout, (host_dur, r.stdout)
+# the 3 s tween ends at 3 s: the 7 s host above (4.0 s tail) fails; a 6.9 s host (3.9 s tail) passes.
+# Stillness counts from the END of motion (as beat_density does), so 6.9 s passing proves a
+# beat-start-to-cut measure is gone.
+ep = _stage_ep({**GQC_FILES, 'index.html': GQC_FILES['index.html'].replace('data-duration="7"', 'data-duration="6.9"')})
+r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
+shutil.rmtree(ep, ignore_errors=True)
+assert '[idle]' not in r.stdout, r.stdout
 print('graphics_qc self-check PASS (short-duration vs host window, stillness one number: 4 s hard)')
 
 # ---------------------------------------------------------------- settle frames for the vision pass
