@@ -8,6 +8,13 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { join, basename } from 'path';
 
+// In-page expression (needs `tl` in scope), shared by graphics_qc and beat_probe: a timeline-level
+// onUpdate plus a canvas covering a quarter of the frame is a renderer redrawn every frame (the
+// Three.js/WebGL pattern), one continuous span. The quarter keeps a grain tile beside a counter
+// onUpdate from excusing a frozen comp. It does not check that the callback draws.
+export const CANVAS_RENDERER = `(typeof tl.eventCallback('onUpdate') === 'function' && [...document.querySelectorAll('canvas')]
+  .some(c => { const r = c.getBoundingClientRect(); return r.width * r.height >= 0.25 * 1920 * 1080; }))`;
+
 export const hostCss = (indexHtml) =>
   [...indexHtml.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].map(x => x[1]).join('\n');
 
