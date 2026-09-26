@@ -1,16 +1,17 @@
-"""Report animation beat density per composition.
+"""Report animation beat density per composition, read from the built timeline.
 
-A "beat" is any GSAP call scheduled at an explicit timeline position. The
-metric that matters is the largest interval between consecutive beats: that is
-how long the frame can sit visually unchanged. Continuous tweens (a spine that
-grows for 20s, a marker that crawls a map) are counted as covering their whole
-span, not just their start, so a graphic with one long moving element does not
-read as dead.
+The metric that matters is the largest interval with nothing moving: how long the frame can sit
+visually unchanged. scripts/beat_probe.mjs loads each mounted composition in headless Chromium and
+returns its motion spans (what counts as motion, and why a `tl.to({}, {duration: N}, 0)` clock does
+not, is in its header). Continuous motion covers its whole span, not just its start, so a graphic
+with one long moving element does not read as dead. FAIL at a gap of 4.0 s or more, including
+before the first span and after the last one up to the host window.
 """
+import json
 import re
+import subprocess
 import sys
 from pathlib import Path
-from comp_consts import fold
 
 ep = Path(sys.argv[1])
 idx = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
@@ -24,59 +25,33 @@ for m in re.finditer(r'<[^>]*\bdata-composition-id="([^"]+)"[^>]*>', idx):
     else:
         print(f"[WARN] beat_density: host '{gid}' has no numeric data-duration, not checked")
 
-CALL = re.compile(r'tl\.(to|from|fromTo|set|add)\s*\(', re.S)
+comps = []
+for f in sorted((ep / "compositions").glob("*.html")):
+    if f.stem in hosts:
+        comps.append(f.stem)
+    else:
+        print(f"[WARN] beat_density: compositions/{f.name} is not mounted in index.html, not checked")
+
+probe = {}
+if comps:
+    # stderr passes through, so a crashed probe shows its Node trace to run_gates and e2e
+    r = subprocess.run(["node", str(Path(__file__).with_name("beat_probe.mjs")), str(ep.resolve()),
+                        *[f"{g}={hosts[g]}" for g in comps]], stdout=subprocess.PIPE, text=True, encoding="utf-8")
+    lines = r.stdout.strip().splitlines()
+    if r.returncode != 0 or not lines:
+        sys.exit(f"[beat_density] FAIL: beat_probe.mjs exited {r.returncode}\n{r.stdout[-800:]}")
+    probe = json.loads(lines[-1])  # earlier lines are render_busy's preflight print
 
 rows = []
-for f in sorted((ep / "compositions").glob("*.html")):
-    gid = f.stem
-    if gid not in hosts:
-        print(f"[WARN] beat_density: compositions/{f.name} is not mounted in index.html, not checked")
+for gid in comps:
+    win, res = hosts[gid], probe[gid]
+    if "error" in res:
+        rows.append((gid, win, 0, win, f"ERROR {res['error']}"))
         continue
-    src = fold(f.read_text(encoding="utf-8", errors="replace"))
-    spans = []
-    for m in CALL.finditer(src):
-        # walk to the matching close paren, then read the trailing position arg
-        depth, i = 0, m.end() - 1
-        while i < len(src):
-            if src[i] == "(":
-                depth += 1
-            elif src[i] == ")":
-                depth -= 1
-                if depth == 0:
-                    break
-            i += 1
-        body = src[m.end():i]
-        tail = body.rsplit(",", 1)[-1].strip()
-        pos = re.fullmatch(r'([\d.]+)', tail)
-        if not pos:
-            continue
-        at = float(pos.group(1))
-        # duration may be a numeric literal or a const defined in the comp (duration: HOST_WINDOW);
-        # an unknown identifier is a hard error, never a silent 0 (alert-levels 17 Sep 26: 8/9 comps
-        # read DEAD because every long tween used a variable).
-        consts = {k: float(v) for k, v in re.findall(r'const\s+([A-Z_][A-Z0-9_]*)\s*=\s*([\d.]+)', src)}
-        dur = []
-        for tok in re.findall(r'duration:\s*([A-Za-z_][\w]*|[\d.]+)', body):
-            if re.fullmatch(r'[\d.]+', tok): dur.append(float(tok))
-            elif tok in consts: dur.append(consts[tok])
-            else: sys.exit(f"[beat_density] FAIL {gid}: duration '{tok}' is not a literal or a numeric const in the comp")
-        d = max(dur) if dur else 0.0
-        # a repeating tween keeps moving for repeat+1 cycles (yoyo reverses but does not
-        # change the total). Counting only the first cycle reported blinking markers and
-        # pulsing dots as dead frames.
-        rep = re.search(r'repeat:\s*(-?\d+)', body)
-        if rep:
-            n = int(rep.group(1))
-            rd = re.search(r'repeatDelay:\s*([\d.]+)', body)
-            cycle = d + (float(rd.group(1)) if rd else 0.0)
-            d = hosts[gid] if n < 0 else d + n * cycle
-        spans.append((at, at + d))
-
-    win = hosts[gid]
+    spans = sorted(res["spans"])
     if not spans:
         rows.append((gid, win, 0, win, "NO BEATS"))
         continue
-    spans.sort()
     cur, gap, when = 0.0, 0.0, 0.0
     for a, b in spans:
         if a - cur > gap:
