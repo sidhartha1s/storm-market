@@ -501,19 +501,63 @@ check("pin-policy NEW: the ritual demo is episodes/demo-pin",
 DEMO = S.parent / "episodes" / "demo-pin"
 demo_refs = []
 for f in [DEMO / "index.html", *(DEMO / "compositions").glob("*.html")]:
-    demo_refs += re.findall(r'(?:src="|url\(\')([^"\'#:]+\.(?:js|ttf|html|woff2?|png|jpg|mp4|wav|mp3))',
+    demo_refs += re.findall(r'(?:src="|url\(\')([^"\'#:]+\.(?:js|ttf|html|woff2?|png|jpg|mp4|webm|wav|mp3|ogg))',
                             f.read_text(encoding="utf-8"))
 missing = [r for r in demo_refs if not (DEMO / r).exists()]
 check("pin-policy NEW: every file demo-pin references exists", demo_refs and not missing, missing)
-ignored = subprocess.run(["git", "-C", str(DEMO), "check-ignore", *demo_refs],
-                         capture_output=True, text=True).stdout.split()
-check("pin-policy NEW: nothing demo-pin references is gitignored (a fresh worktree can render it)",
-      not ignored, ignored)
-silent = {"duration": 24.0, "blackdetect": [], "rms_db": None}
-check("pin-policy NEW: a silent demo compares clean against a silent baseline",
-      pin_ritual.compare(silent, dict(silent), 0.997) == [])
-check("pin-policy NEW: audio appearing on one side only is drift",
-      pin_ritual.compare(silent, {**silent, "rms_db": -18.0}, 0.997) != [])
+check("pin-review NEW: demo-pin mounts the video and audio probes",
+      {"clips/probe.webm", "sfx/tone.ogg"} <= set(demo_refs), demo_refs)
+# tracked, not merely "not ignored": check-ignore passes vacuously on an untracked file
+untracked = [r for r in demo_refs
+             if subprocess.run(["git", "-C", str(DEMO), "ls-files", "--error-unmatch", r],
+                               capture_output=True, text=True).returncode != 0]
+check("pin-policy NEW: every file demo-pin references is tracked (a fresh worktree can render it)",
+      not untracked, untracked)
+_tracked = subprocess.run(["git", "-C", str(DEMO), "ls-files", "-z", "."],
+                          capture_output=True, text=True).stdout.split("\0")
+_bytes = sum((DEMO / f).stat().st_size for f in _tracked if f)
+check("pin-review NEW: tracked demo-pin stays under 2 MB", 0 < _bytes < 2 * 1024 * 1024, _bytes)
+
+# measure()'s silent branch: no astats lines and no audio stream -> levels None, no SystemExit
+_orig_prun = pin_ritual.run
+
+class _Out:
+    def __init__(self, out=""):
+        self.stdout, self.stderr = out, ""
+
+pin_ritual.run = lambda cmd, **k: _Out("24.0\n" if "format=duration" in cmd else "")
+pin_ritual.FFPROBE = pin_ritual.FFMPEG = Path("ffmpeg")
+try:
+    _m = pin_ritual.measure(Path("silent.mp4"))
+    check("pin-review NEW: measure() on a silent render returns rms_db None without exiting",
+          _m["rms_db"] is None and _m["peak_db"] is None and _m["duration"] == 24.0, _m)
+except SystemExit as e:
+    check("pin-review NEW: measure() on a silent render returns rms_db None without exiting",
+          False, f"SystemExit {e}")
+finally:
+    pin_ritual.run = _orig_prun
+check("pin-review NEW: measure() stores the worker count", _m.get("workers") == pin_ritual.WORKERS)
+
+good = {"workers": 2, "duration": 24.0, "blackdetect": [], "rms_db": -30.0,
+        "video_luma": [159.3, 235.2, 159.3]}
+check("pin-review NEW: identical records with audio + video compare clean",
+      pin_ritual.compare(good, dict(good), 0.997, 0.997) == [])
+check("pin-review NEW: a silent render is drift (mixer unverified), even on both sides",
+      pin_ritual.compare({**good, "rms_db": None}, {**good, "rms_db": None}, 0.997) != [])
+check("pin-review NEW: audio appearing on one side only is drift",
+      pin_ritual.compare({**good, "rms_db": None}, good, 0.997) != [])
+check("pin-review NEW: an RMS shift past RMS_TOL is drift",
+      pin_ritual.compare(good, {**good, "rms_db": -30.0 - 2 * pin_ritual.RMS_TOL}, 0.997) != [])
+check("pin-review NEW: a moved video-probe tracer (seek changed) is drift",
+      pin_ritual.compare(good, {**good, "video_luma": [159.3, 159.3, 159.3]}, 0.997) != [])
+check("pin-review NEW: an unmeasured video probe is drift",
+      pin_ritual.compare({**good, "video_luma": []}, {**good, "video_luma": []}, 0.997) != [])
+check("pin-review NEW: a worker-count mismatch is drift",
+      pin_ritual.compare(good, {**good, "workers": 1}, 0.997) != [])
+check("pin-review NEW: a video-region SSIM under SSIM_MIN is drift",
+      pin_ritual.compare(good, dict(good), 0.997, 0.95) != [])
+check("pin-review NEW: a baseline record without video_luma/workers is re-rendered",
+      '"video_luma" not in record or "workers" not in record' in main_src)
 
 print()
 if FAILS:
