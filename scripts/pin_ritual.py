@@ -298,11 +298,41 @@ def bump_pins(new):
     print(f"[ritual] pinned config.yaml -> {new}")
 
 
+def record_baseline(pin, base_mp4):
+    """Render the demo at `pin` into base_mp4, measure it, persist pin_baseline.json."""
+    render(pin, base_mp4)
+    record = {"version": pin, "demo": DEMO.name, **measure(base_mp4)}
+    BASELINE_JSON.write_text(json.dumps(record, indent=2), encoding="utf-8")
+    return record
+
+
+def setup():
+    global FFPROBE, FFMPEG
+    FFPROBE, FFMPEG = ff_paths()
+    if not (DEMO / "index.html").exists():
+        sys.exit(f"[ritual] demo episode missing: {DEMO}")
+    (DEMO / "renders").mkdir(exist_ok=True)
+    BASELINE_DIR.mkdir(parents=True, exist_ok=True)
+
+
 def main():
     check_only = "--check-only" in sys.argv
     pin = parse_pin(REPO)
     if pin is None:
         sys.exit("[ritual] no hyperframes_version in config.yaml")
+    if "--baseline" in sys.argv:
+        setup()
+        base_mp4 = BASELINE_DIR / f"pin-baseline-{pin}.mp4"
+        rec = record_baseline(pin, base_mp4)
+        print(f"[ritual] baseline re-recorded at {pin} ({rec['workers']} workers): RMS "
+              f"{rec['rms_db']} dB, {len(rec['video_luma'])} video-probe frames, "
+              f"mp4 {base_mp4}. Commit scripts/pin_baseline.json.")
+        # a baseline that could never pass compare() is a setup error, not a record
+        bad = compare(rec, dict(rec), None)
+        if bad:
+            print("[ritual] baseline is unusable: " + "; ".join(bad), file=sys.stderr)
+            return 2
+        return 0
     latest = npm_latest(timeout=60)
     if latest is None:
         # preflight tolerates an unreachable npm; this tool's entire job is the answer
