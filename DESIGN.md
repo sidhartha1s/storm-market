@@ -78,8 +78,11 @@ shipped; these are the standing requirements for every episode's cold open:
   sized to clear before the first designed graphic arrives.
 - **Every cut lands ON an audio event** (a line ends, a roar starts, a siren swells) — never
   cut mid-sentence, never let commentary "just start" and get cut off.
-- **A sonic spine runs the whole hook** (ep2: siren — fade in from black, duck under the
-  narrator, swell at impact, die into the void). No silent clips, no dead air.
+- **The hook's sound is reasoned per episode, never a template** (owner 26 Sep 26). Pick it from
+  the story and write the reason in `edit_script.md`: a siren only when the story is a warning; otherwise
+  wind, a 911 line tone, silence into an impact, or a music sting. ep2's siren spine (fade in from black,
+  duck under the narrator, swell at impact, die into the void) is one worked example, not the default.
+  No silent clips and no dead air unless the silence is the chosen effect.
 - **Inserts end on their complete emotional statement** — trim orphan tails ruthlessly
   ("we knew something was coming." — stop. Nothing after).
 - **End the hook with a 1.5s VOID (black + fading spine) before the intro** — the
