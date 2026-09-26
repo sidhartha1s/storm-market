@@ -293,8 +293,7 @@ def main():
                       "UNVERIFIED")
     print(f"[ritual] {pin} vs {latest}: duration {record['duration']:.3f}/"
           f"{cand['duration']:.3f}s, black {len(record['blackdetect'])}/"
-          f"{len(cand['blackdetect'])} segs, RMS {record['rms_db']:.3f}/"
-          f"{cand['rms_db']:.3f} dB, SSIM "
+          f"{len(cand['blackdetect'])} segs, RMS {record['rms_db']}/{cand['rms_db']} dB, SSIM "
           f"{'n/a' if ssim_all is None else f'{ssim_all:.4f}'}")
     if drifts:
         print(f"[ritual] METRIC DRIFT — NOT bumping {pin} -> {latest}:", file=sys.stderr)
