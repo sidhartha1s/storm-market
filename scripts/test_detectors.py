@@ -318,6 +318,24 @@ assert 'ERROR [fade-only]' in r_old.stdout, f'old code should call the canvas re
 shutil.rmtree(ep, ignore_errors=True)
 print('graphics_qc self-check PASS (an onUpdate canvas renderer counts as continuous motion)')
 
+# Negatives: both relaxations need a canvas covering a quarter of the frame, and the kinetic span
+# also needs the timeline onUpdate. A 100 px canvas or a missing onUpdate keeps the old verdicts.
+small = lambda s: s.replace('width="1920" height="1080"', 'width="100" height="100"')
+cv = DRIVEN_FILES['compositions/g-cv.html']
+cut = cv.index("tl.eventCallback('onUpdate'")
+no_update = cv[:cut] + cv[cv.index('\n', cut) + 1:]
+for files, want, why in (
+    ({**CANVAS_FILES, 'compositions/g-cv.html': small(CANVAS_FILES['compositions/g-cv.html'])},
+     'ERROR [undesigned] flat background', 'a 100 px canvas is not a designed background'),
+    ({**DRIVEN_FILES, 'compositions/g-cv.html': small(cv)}, 'ERROR [fade-only]', 'a 100 px canvas excuses no stillness'),
+    ({**DRIVEN_FILES, 'compositions/g-cv.html': no_update}, 'ERROR [fade-only]', 'a canvas without onUpdate is still'),
+):
+    ep = _stage_ep(files)
+    r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
+    shutil.rmtree(ep, ignore_errors=True)
+    assert want in r.stdout, f'{why}: {r.stdout + r.stderr}'
+print('graphics_qc self-check PASS (canvas relaxations need a quarter-frame canvas; the span needs onUpdate)')
+
 # ---------------------------------------------------------------- settle frames for the vision pass
 # The old reader sampled every 3 s from the comp start, so frame 1 was always mid-reveal. The frames
 # must come from the tween schedule: reveal ends 1.2 s (+0.1), exit slide starts 8.5 s (-0.25), and
