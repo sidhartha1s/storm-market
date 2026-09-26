@@ -201,7 +201,8 @@ mid-video beats with its own soft close (one comment + subscribe line after the 
   slop to the audience. Owner's phrases are verbatim — never paraphrase a line he wrote.
 ## Presenter circle — Paul PiP, phase 2 (owner 2026-09-09: standard on every mini-storm from Texas onward)
 - 240 px circle, bottom-right (left 1640, top 708 on 1080p), 4 px red ring, above the news-bug strip. Present from the
-  intro to the end of the last narration line; HIDDEN in the hook, in Paul's full-frame CTA window (the CTA has its
+  intro to the end of the last narration line, except in motion-graphics-only scenes, where he is not shown (owner
+  26 Sep 26; `references/mg-quickref.md` "Frame and safe zones"); HIDDEN in the hook, in Paul's full-frame CTA window (the CTA has its
   own higher-quality face and lip-sync) and under the close card.
 - Source = the CTA master, no generation: 410 px square crop centred on his face (he sits 205 px from the frame edge, so
   the crop starts at x=0 and the left margin is his own background blurred and extended), face ≈ 70 % of the circle.
