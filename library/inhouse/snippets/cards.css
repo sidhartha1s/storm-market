@@ -56,8 +56,8 @@ video { width: 100%; height: 100%; object-fit: cover; }
    the same way: swap background to rgba(26,20,8,0.88), border to rgba(216,161,58,0.5),
    color to #d8a13a. */
 
-/* ---- source label chip (ep6) ---- */
-.srclab { position: absolute; inset: auto; right: 40px; bottom: 34px; z-index: 7; font-family: Arial, sans-serif; font-size: 19px; color: rgba(200,211,224,0.75); background: rgba(5,8,12,0.55); padding: 5px 12px; letter-spacing: 0.5px; }
+/* ---- source label chip (ep6; moved inside the 5 % text-safe margin, owner 26 Sep 26) ---- */
+.srclab { position: absolute; inset: auto; right: 96px; bottom: 54px; z-index: 7; font-family: Arial, sans-serif; font-size: 19px; color: rgba(200,211,224,0.75); padding: 5px 12px; letter-spacing: 0.5px; }
 /* .recchip: NOT FOUND in any shipped episode (searched ep1-6 + demo-joplin-90 index.html for
    "recchip") — no such class has shipped. Omitted; do not fabricate one. */
 
