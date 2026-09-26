@@ -68,13 +68,9 @@ const PROBE = `(() => {
   if (!tl) return { error: 'no timeline registered' };
   R.id = key;
   R.duration = tl.duration();
-  // a timeline-level onUpdate that redraws a canvas (the Three.js/WebGL pattern) moves every frame
-  // though no DOM tween does; count it as one continuous kinetic span (MG eval 3, 26 Sep 26).
-  // The canvas must cover a quarter of the frame, as for the designed-background rule: a grain
-  // tile beside a counter onUpdate must not excuse a frozen comp.
-  const bigCanvas = [...document.querySelectorAll('canvas')].some(c => {
-    const r = c.getBoundingClientRect(); return r.width * r.height >= 0.25 * 1920 * 1080; });
-  if (typeof tl.eventCallback('onUpdate') === 'function' && bigCanvas)
+  // a canvas redrawn from the timeline onUpdate moves every frame though no DOM tween does:
+  // one continuous kinetic span (MG eval 3, 26 Sep 26; rule in stage_comp.mjs)
+  if (${CANVAS_RENDERER})
     R.tweens.push({ start: 0, dur: R.duration, props: ['canvas-render'], ease: 'none', target: 'canvas', hide: false });
   for (const t of tl.getChildren(true, true, false)) {
     const st = t.startTime();
