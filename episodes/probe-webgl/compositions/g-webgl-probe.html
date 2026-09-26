@@ -28,6 +28,9 @@
     <div class="wp-bit" id="wp-bit8" style="left:1506px"></div>
   </div>
 </div>
+<!-- three r170 ESM rewrapped as a classic IIFE (window.THREE): hyperframes 0.8.41 runs
+     sub-composition scripts as classic scripts, so `import` there throws. -->
+<script src="../vendor/three.classic.js"></script>
 <script>
 (function () {
 const THREE = window.THREE;
