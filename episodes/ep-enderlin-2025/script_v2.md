@@ -398,7 +398,8 @@ sideways, an arc to a landing mark; a ruler on the ground marked "50 m · about 
 Wind pushes on a car, the car's weight pulls it down, and the car only leaves the ground when the push wins. The
 farther a heavy, compact object travels through the air, the stronger that push had to be. The paper drew a line at
 fifty meters, which is about a hundred and sixty feet, or half a football field. A large, compact object carried
-farther than that generally means winds at the EF five level.
+farther than that generally means winds at the EF five level. The rule counts objects that flew through the air,
+not ones that rolled or slid along the ground. `[verify: the Miller et al. threshold applies to lofted objects, not rolled or slid ones]`
 
 **Picture:** master map rail segment · the tanker's arc draws to "almost 500 ft", the 160 ft line flashes about a
 third of the way along · popfig "About 3×".
