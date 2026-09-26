@@ -296,7 +296,7 @@ hand-authored from this base, reusing its research + assets.
    clip, mid-sentence commentary fragments, an orphan audio tail after the emotional line, no
    sonic build. What fixed it (the anchor-line part is superseded 22 Sep 26: narrator at 0:00, no archive audio in the hook): an intelligible ANCHOR line (Spann's live "tornado emergency")
    starting by ~2.5s; every cut lands ON an audio event; a siren spine that builds start→duck→
-   swell→die; the insert trimmed to end on its complete emotional statement ("we knew something
+   swell→die (superseded 26 Sep 26: the hook's sound is reasoned per episode, see DESIGN.md); the insert trimmed to end on its complete emotional statement ("we knew something
    was coming" — nothing after); date/place card in the first second; a dead-silent VOID
    before the narrator enters (2-3s then; **1.5s since the 2026-08-16 blackout table**). Full contract in DESIGN.md — apply from ep3 scene one, don't
    rediscover it.
