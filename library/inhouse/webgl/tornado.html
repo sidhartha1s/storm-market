@@ -8,7 +8,8 @@
   #tw-stage canvas { position:absolute; left:0; top:0; width:1920px; height:1080px; display:block; }
 </style>
 <!-- Stylised WebGL tornado. Copy per use; rename "g-tornado" everywhere in this file to the host's
-     data-composition-id (two spots: this root and CONFIG.id). Edit CONFIG only. No text: labels
+     data-composition-id (two spots: this root and CONFIG.id). Edit CONFIG only, except that the root
+     data-duration below must equal CONFIG.duration. No text: labels
      go on a fixed HUD comp above this one. -->
 <div id="root" data-composition-id="g-tornado" data-width="1920" data-height="1080" data-duration="12">
   <div id="tw-stage"><canvas width="1920" height="1080"></canvas></div>

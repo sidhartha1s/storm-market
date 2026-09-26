@@ -2,9 +2,9 @@
 Stylised funnel + wall cloud + debris + dust skirt + storm sky, ~32k triangles, seeded, driven only by the paused GSAP timeline. No text: labels go on a fixed HUD comp above it.
 
 **Mount in an episode**
-1. Copy `tornado.html` to `episodes/<slug>/compositions/tornado-<name>.html` and `vendor/three.classic.js` to `episodes/<slug>/vendor/` (paths are root-relative; `gsap.min.js` must load in index.html).
-2. Rename the id in the copy: `sed -i 's/g-tornado/g-tornado-<name>/g' tornado-<name>.html` (root `data-composition-id` + `CONFIG.id`).
-3. Host tag: `<div id="host-tornado-<name>" data-composition-id="g-tornado-<name>" data-composition-src="compositions/tornado-<name>.html" data-start="6" data-duration="6" data-track-index="1" data-width="1920" data-height="1080"></div>`. Keep `data-duration` = root `data-duration` = `CONFIG.duration`.
+1. Copy `tornado.html` to `episodes/<slug>/compositions/g-tornado-<name>.html` (file stem = comp id, or sweep fails it as unmounted) and `vendor/three.classic.js` to `episodes/<slug>/vendor/` (paths are root-relative; `gsap.min.js` must load in index.html).
+2. Rename the id in the copy: `sed -i 's/g-tornado/g-tornado-<name>/g' g-tornado-<name>.html` (root `data-composition-id` + `CONFIG.id`).
+3. Host tag: `<div id="host-tornado-<name>" data-composition-id="g-tornado-<name>" data-composition-src="compositions/g-tornado-<name>.html" data-start="6" data-duration="6" data-track-index="1" data-width="1920" data-height="1080"></div>`. Keep `data-duration` = root `data-duration` = `CONFIG.duration`.
 4. One copy per look; two mounts of the same copy would share element ids and a timeline key.
 
 **CONFIG fields** (top of the script, the only block to edit)
