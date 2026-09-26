@@ -41,8 +41,10 @@
   <audio id="nx-h1-s4" src="audio/h1-s4.wav" data-start="17.85" data-duration="3.435" data-volume="1"></audio>
   <audio id="nx-h1-s5" src="audio/h1-s5.wav" data-start="21.75" data-duration="3.946" data-volume="1"></audio>
 
-  <!-- ============ SOUND: siren spine (envelope baked by ffmpeg: 0.35 under voice, 1.0 at 20.05 "EF5", 0.28 under S5, 0 by 27.2;
-       x0.4 mount = 0.14 under the voice, 0.4 peak), rumble bed 0.13, thunder ambience 0.18, hits ~0.4 ============ -->
+  <!-- ============ SOUND: siren spine = civil-defense siren, envelope baked by ffmpeg: fade in 0-0.8, 0.35 under the voice,
+       rises into "EF5" (0.7 at 20.05, still under the word), full swell 1.0 in the breath 20.8-21.45 after the line, ducks to 0.28
+       under S5, dies to 0 across the void (25.7-27.2). x0.4 mount: -27.7 dB mean under the voice (voice -16.6), -18.7 dB at the swell.
+       Beds gain-compensated in the file (rumble +12 dB, thunder +10 dB), mounted 0.13 / 0.18; hits ~0.4 ============ -->
   <audio id="sx-siren" src="media/sfx/siren-spine.mp3" data-bed="" data-start="0" data-duration="27.2" data-volume="0.4"></audio>
   <audio id="sx-rumble" src="media/sfx/rumble-bed.mp3" data-bed="" data-start="0" data-duration="27.2" data-volume="0.13"></audio>
   <audio id="sx-thunder" src="media/sfx/thunder-amb.mp3" data-bed="" data-start="0" data-duration="25.7" data-volume="0.18"></audio>
