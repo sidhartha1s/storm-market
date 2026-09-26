@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>El Reno width demo (eval arm C)</title>
+  <script src="vendor/gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="demo-eval-c-elreno" data-start="0" data-width="1920" data-height="1080" data-duration="18" data-fps="30">
+  <div id="host-elreno-width" data-composition-id="g-elreno-width" data-composition-src="compositions/g-elreno-width.html" data-start="0" data-duration="18" data-track-index="1" data-width="1920" data-height="1080"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+window.__timelines["demo-eval-c-elreno"] = gsap.timeline({ paused: true }).to({}, { duration: 18 }, 0);
+</script>
+</body>
+</html>
