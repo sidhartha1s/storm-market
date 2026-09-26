@@ -215,7 +215,7 @@ if (!files.length) { console.error('[graphics_qc] no compositions/ dir — graph
 
 for (const f of files) {
   const name = f.replace('.html', '');
-  const url = 'file:///' + standalone(join(compDir, f)).replace(/\\/g, '/');
+  const url = 'file:///' + stageComp(ep, join(compDir, f), HOST_CSS).replace(/\\/g, '/');
   await page.goto(url, { waitUntil: 'load' });
   await page.waitForTimeout(120);
   const probe = await page.evaluate(PROBE);
