@@ -390,10 +390,10 @@ def main():
     record = None
     if BASELINE_JSON.exists():
         record = json.loads(BASELINE_JSON.read_text(encoding="utf-8"))
-        # a record measured on another demo (demo-joplin-90 before 26 Sep 26) or before the
-        # video/audio probes existed (no video_luma / workers) is not a baseline
+        # a record measured on another demo (demo-joplin-90 before 26 Sep 26), before the
+        # video/audio probes existed (no video_luma / workers), or silent/flat is not a baseline
         if (record.get("version") != pin or record.get("demo") != DEMO.name
-                or "video_luma" not in record or "workers" not in record):
+                or "workers" not in record or baseline_problems(record)):
             record = None
     if record is None or not base_mp4.exists():
         # persisted inside — a crash in the candidate render must not cost this again
