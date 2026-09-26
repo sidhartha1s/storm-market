@@ -108,7 +108,9 @@ to a hundred and sixty five miles an hour. An EF five starts above two hundred.
 A survey team walks the path, sometimes for days, and looks at every broken thing. They match it against a list of
 twenty eight kinds of damage the scale recognizes. `[verify: 28 damage indicators, EF scale 2007]` The list runs from
 a barn to a school to a hardwood tree. Each kind has steps, from a few shingles gone to nothing left, and each step
-carries a wind speed. The tornado gets the highest number the damage can prove.
+carries a wind speed. The tornado gets the highest number the damage can prove. Engineers at Texas Tech University
+led the work of writing that list, and the weather service adopted it in two thousand seven.
+`[verify: EF scale damage indicators developed by the Texas Tech Wind Science and Engineering Research Center]`
 
 Today the teams carry tablets, and every photo they take is pinned to a spot on a map. They add aerial pictures,
 satellite images and radar, but the number itself still comes from the damage.
