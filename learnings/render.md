@@ -2,6 +2,27 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 26 Sep 26: pin 0.8.41 to 0.8.78; currency moves to episode kickoff; the ritual demo is demo-pin
+
+1. **Owner: "I always prefer the latest version because they will be adding fixes on the go".** The pin LOCK stays
+   (preflight drift exit 5); the full-render currency block and its owner override are gone. Kickoff runs
+   `pin_ritual.py --check-only` and bumps before the first render, so an episode never changes version mid-way.
+2. **demo-joplin-90 could not run the ritual:** 11 of its 17 media/audio files existed nowhere after publish cleanup.
+   `episodes/demo-pin` (24 s, every file tracked, under 2 MB) replaces it: tanker MG 0-14 s, WebGL probe 14-24 s, plus
+   two ffmpeg-made probes. `clips/probe.webm` (854x480, 30 fps, burned timecode and a sliding white square) mounts at
+   16-18 s with `data-media-start 1`, so capture must seek into it. `sfx/tone.ogg` (440 Hz, 4 s) mounts at 3-7 s, gain 0.5.
+3. **What `compare()` checks, baseline vs candidate:** worker count equal; duration within 0.05 s; blackdetect segments
+   within 0.10 s; tone RMS read over 3.1-6.9 s only (so a moved tone drifts), within 0.20 dB, and a silent render on
+   either side is drift; the per-frame luma of a 40x80 tracer strip the square crosses (16.1-17.9 s) within 2.0 levels
+   per frame, same frame count; full-frame and video-region SSIM at least 0.99 when the baseline mp4 is on disk.
+   `--baseline` measures, validates, and only then writes `pin_baseline.json`: it also refuses a trace spanning under
+   50 luma levels, because a flat trace equals itself. Read straight from probe.webm the tracer spans 97.7 levels.
+4. **The 0.8.78 A/B predates the probes** (draft crf18, 1 worker): 720/720 frames, 24.000 s both, SSIM mean 0.9973,
+   min 0.9930 in the WebGL half vs 0.9905 same-version noise; ritual SSIM 0.9948, PASS. The committed
+   `pin_baseline.json` has no `video_luma` or `workers`, so the next ritual run re-records the baseline first.
+5. **0.8.78 logs the gate as `"enabled":true,"reason":"single_worker",...`**; the ritual regex still matches. 0.8.51 made
+   the streaming duration cap off by default, so render.cmd's 7200 s cap (entry below) is now redundant, harmless.
+
 ## 21 Sep 26 — first long render on 0.8.41: streaming needs two env vars, and the harness reaps renders
 
 1. **0.8.41 streams captured frames into ffmpeg only for comps up to 240 s.** Anything longer takes the disk
@@ -139,7 +160,7 @@ short is not) and bump on identical metrics.
   (`HYPERFRAMES_NO_TELEMETRY=1` / `DO_NOT_TRACK=1`) was a red herring — one detached `node -e
   fetch` per run, not the tab source; the env stays set (harmless) but is not the fix.
   **Decision (owner):** ep6 full render on 0.7.109 with the explicit, logged override
-  `RENDER_PIN_STALE_OK=1` (render_preflight.py prints `[OVERRIDE]`); pin stayed 0.7.109 (superseded 16 Sep 26: 0.8.41) until an
+  `RENDER_PIN_STALE_OK=1` (render_preflight.py prints `[OVERRIDE]`; override removed 26 Sep 26); pin stayed 0.7.109 (superseded 16 Sep 26: 0.8.41) until an
   upstream version spawns ffmpeg hidden. The 0.8.10 demo render itself PASSED (4m08s, mp4 on
   disk) — the blocker is the windows, not the output. Kill rule: stop the TASK and kill its
   process TREE from the task's root pid; `*hyperframes*`/`*pin_ritual*` command-line matches also
@@ -367,7 +388,8 @@ the render itself; reach for the GPU-HEVC pass only when you want the extra shri
   thing (npm view, candidate render of demo-joplin-90, metric diff vs committed
   `pin_baseline.json`, auto-bump on identical metrics, exit 3 + no bump on drift), and
   `render_preflight.py` — now actually invoked by `render.cmd` — hard-blocks FULL renders on a
-  stale pin (exit 6) while drafts only warn. npm unreachable never blocks. Baseline mp4 is an
+  stale pin (exit 6) while drafts only warn (superseded 26 Sep 26: preflight checks drift only, currency
+  moves to episode kickoff, demo is episodes/demo-pin). npm unreachable never blocks. Baseline mp4 is an
   on-disk cache (`episodes/demo-joplin-90/renders/pin-baseline-<ver>.mp4`); when absent, the
   ritual re-renders the baseline too (metrics-only compare if that ever fails to keep SSIM).
   **Gotcha that cost 40 min:** `npx hyperframes@<uncached-version>` prompts "Ok to proceed?"

@@ -116,10 +116,10 @@ Never build or edit in the main checkout; parallel sessions share it. First acti
 and `git status`. Before the first write: `git worktree add .worktrees/<task> -b <branch> origin/main`.
 
 ## HARD RULE: the pin stays current
-`config.yaml hyperframes_version` is changed only by `scripts/pin_ritual.py`, run from a worktree, bump committed by PR.
-`render_preflight.py` hard-fails on pin drift and hard-fails a FULL render on a stale pin; an unreachable npm never
-blocks. `RENDER_PIN_STALE_OK=1` is the owner's override, never yours. A newer version can be stricter, not just better:
-read the changelog on a multi-version bump.
+The owner runs the latest hyperframes (upstream ships fixes daily). Episode kickoff runs `python3 scripts/pin_ritual.py
+--check-only`; stale means run the ritual (A/B on `episodes/demo-pin`) and PR the bump before the first render, never mid-episode.
+The pin is locked: `config.yaml hyperframes_version` and every `npx hyperframes@X` in `scripts/*.cmd` agree, and only the
+ritual changes them. `render_preflight.py` fails on drift, never on currency. Read the changelog on every bump.
 
 ## HARD RULE: do not write code for what reasoning already does
 - A script earns its place only when the check is mechanical, repeated, and must never be forgotten: hard gates, batch

@@ -42,5 +42,5 @@ The promoted one-line rules from the old `LEARNINGS.md` index, verbatim (one sta
 - `scripts/audio_levels.py` is the gate for insert/narration/bed levels — run it before every mixdown build. → §"Audio levels + media budget hardening"
 - No visible windows, ever — every scheduled/background command runs through `scripts/run_hidden.vbs`. → §"No visible windows, ever"
 - The on-screen text rules (zone occupancy, one fact one instance, eyebrows only when they name the thing, glass under text over footage) live in references/mg-quickref.md — `overlap_check.mjs` v2 enforces them. → §"ep6 draft v2 review — text collisions were a CHECKER false negative"
-- hyperframes 0.8.6–0.8.10 opened visible console windows on this box; 0.8.41 does not and is the pin since 16 Sep 26 (its mixer is a flat ~1.5 dB quieter, corrected by the master step). → §"ep6 ship", §"16 Sep 26 — pin bumped to 0.8.41"
+- hyperframes 0.8.6–0.8.10 opened visible console windows on this box; 0.8.41 does not (its mixer is a flat ~1.5 dB quieter, corrected by the master step). The pin is 0.8.78 since 26 Sep 26, checked at episode kickoff, never by preflight. → §"ep6 ship", §"16 Sep 26 — pin bumped to 0.8.41", §"26 Sep 26: pin 0.8.41 to 0.8.78"
 - Search `library/catalog-index.json` / `npx hyperframes catalog --query` before hand-authoring any graphic — MG library-first. → §"ep6 ship"

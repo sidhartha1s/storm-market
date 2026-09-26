@@ -9,11 +9,10 @@ external:
   # md5 2d8ea8f14763932f3f76da67d7fd1612 — verify before every produce run (JP voice-ref gotcha)
 
 render:
-  hyperframes_version: "0.8.41"  # pinned; managed by scripts/pin_ritual.py — do not hand-edit
-  # Staleness is machine-enforced (owner 2026-08-14): render_preflight.py hard-blocks FULL
-  # renders when npm has a newer version; the unblock is `python3 scripts/pin_ritual.py`,
-  # which A/B-renders demo-joplin-90 against scripts/pin_baseline.json and bumps this pin
-  # (plus every live scripts/*.cmd) only on identical metrics. Pin history in learnings/render.md.
+  hyperframes_version: "0.8.78"  # pinned; managed by scripts/pin_ritual.py — do not hand-edit
+  # Currency is checked at episode kickoff (owner 26 Sep 26), never by render_preflight:
+  # `python3 scripts/pin_ritual.py` A/B-renders episodes/demo-pin against scripts/pin_baseline.json
+  # and bumps this pin (plus every live scripts/*.cmd) only on identical metrics. History in learnings/render.md.
   # The 30s ffprobe deadline (Date.now() + 3e4, since 0.7.81) is why media_budget.py exists.
   fps: 30
   quality: standard               # "high" silently picks libx265 CPU on this box (JP measured)

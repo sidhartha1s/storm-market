@@ -19,9 +19,7 @@ the media budget (media_budget.py) and the version pin. "Remember to run npm vie
 is the same class of instruction as "remember to cap your assets" — which survived
 twelve failed renders precisely because nothing checked it.
 """
-import os
 import re
-import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -29,7 +27,7 @@ from pathlib import Path
 import render_busy  # the busy check below reuses this, not a second process/name list
 
 
-# --- version helpers (shared: pin_ritual.py imports these) ---------------------
+# --- version helpers (shared: pin_ritual.py imports parse_pin) -----------------
 
 def parse_pin(repo):
     """The pinned hyperframes version from config.yaml, or None if the key is missing."""
@@ -38,39 +36,14 @@ def parse_pin(repo):
     return m.group(1) if m else None
 
 
-def npm_latest(timeout=30):
-    """Latest hyperframes on npm, or None (npm missing/unreachable/garbage output).
+def version_check(repo):
+    """Pin drift (offline): config.yaml and the npx pin in the render scripts disagreeing
+    means the render does not run the version anyone reviewed — hard fail.
 
-    None means currency is UNKNOWN — each caller decides what that implies
-    (preflight proceeds, the ritual hard-fails)."""
-    npm = shutil.which("npm")
-    if not npm:
-        return None
-    try:
-        out = subprocess.run([npm, "view", "hyperframes", "version"],
-                             capture_output=True, text=True, timeout=timeout).stdout.strip()
-    except (subprocess.TimeoutExpired, OSError):
-        return None
-    return out if re.fullmatch(r"[\d.]+", out) else None
-
-
-def semver(v):
-    return tuple(int(x) for x in v.split("."))
-
-
-def version_check(repo, mode):
-    """Pin drift (offline) + pin currency (registry).
-
-    Drift: config.yaml and the npx pin in the render scripts disagreeing means the render
-    does not run the version anyone reviewed — hard fail, checked offline.
-
-    Currency (owner 2026-08-14, supersedes the 2026-07-29 'planning question' ruling): a
-    FULL render refuses to start while npm has a newer hyperframes than the pin, and the
-    unblock is `python3 scripts/pin_ritual.py` — the scripted A/B ritual that verifies and
-    bumps in ~10-25 min. Upstream ships ~1.6 releases/day; the old non-blocking warning let
-    the pin rot 26 versions in 2 weeks. Drafts skip the registry lookup entirely (iteration
-    speed — the answer would not block anyway), and npm being unreachable NEVER blocks a
-    render — offline means currency unknown, not stale.
+    Currency is NOT checked here (owner 26 Sep 26, replaces the 2026-08-14 full-render
+    block): a newer npm release must never stop a render mid-episode. Episode kickoff runs
+    `python3 scripts/pin_ritual.py --check-only` and bumps before the first render instead,
+    so one episode renders on one version end to end.
     """
     pinned = parse_pin(repo)
     if pinned is None:
@@ -90,29 +63,7 @@ def version_check(repo, mode):
             print(f"    {name} runs hyperframes@{used}", file=sys.stderr)
         return 5
 
-    if mode != "full":
-        print(f"[version] pin {pinned}; render scripts agree (currency checked on full "
-              "renders and by pin_ritual.py, not on drafts)")
-        return 0
-    latest = npm_latest()
-    if latest is None:
-        print(f"[version] pin {pinned}; scripts agree. Currency UNKNOWN (npm unreachable) "
-              "— proceeding, an offline box must not kill a render.")
-        return 0
-    if semver(latest) > semver(pinned):
-        # Owner per-render override (ep6, 2026-08-23, when 0.8.6–0.8.10 opened a visible
-        # Windows Terminal tab per ffprobe/ffmpeg spawn and the ritual could not bump).
-        # Kept for the next such block. Never silent — it names itself in the render log.
-        if os.environ.get("RENDER_PIN_STALE_OK") == "1":
-            print(f"[version] [OVERRIDE] PIN STALE (npm latest {latest}, pin {pinned}) — "
-                  "rendering anyway: RENDER_PIN_STALE_OK=1 set by the owner for this run.")
-            return 0
-        print(f"[version] PIN STALE — npm latest is {latest}, pin is {pinned}. A full "
-              f"render must run a verified-current pin.\n[version] Unblock: python3 "
-              f"scripts/pin_ritual.py  (A/B-verifies and bumps, ~10-25 min)",
-              file=sys.stderr)
-        return 6
-    print(f"[version] pin {pinned}; render scripts agree; current (npm latest {latest})")
+    print(f"[version] pin {pinned}; render scripts agree")
     return 0
 
 
@@ -156,9 +107,7 @@ def main():
     # directly: the render script calls this file and stops on a non-zero exit.
     here = Path(__file__).resolve().parent
     episode = Path(sys.argv[1]) if len(sys.argv) > 1 else Path.cwd()
-    mode = sys.argv[2] if len(sys.argv) > 2 else "full"
-
-    rc = version_check(here.parent, mode)
+    rc = version_check(here.parent)
     if rc:
         print("[preflight] REFUSING TO RENDER — version pin is not trustworthy (see above).",
               file=sys.stderr)

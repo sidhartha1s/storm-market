@@ -425,6 +425,17 @@ def _run_render_against_log(log_body):
             pin_ritual.shutil.which = orig_which
 
 
+import contextlib, io
+_orig_workers = pin_ritual.WORKERS
+for _w, _want in ((1, True), (2, False)):
+    pin_ritual.WORKERS = _w
+    _buf = io.StringIO()
+    with contextlib.redirect_stdout(_buf):
+        _run_render_against_log("streaming-encode gate {\"enabled\":true}\n")
+    check(f"pin-review NEW: [FALLBACK] single-worker line printed iff workers < 2 (workers={_w})",
+          (pin_ritual.FALLBACK_1W in _buf.getvalue()) == _want, _buf.getvalue())
+pin_ritual.WORKERS = _orig_workers
+
 raised, _ = _run_render_against_log("some other log output, no streaming gate line\n")
 check("render-09 NEW: render() exits when the log has no 'streaming-encode gate ... enabled:true'", raised)
 
@@ -457,6 +468,159 @@ check("assets-comps-02 NEW: the record==pin shortcut also checks the mp4 is stil
       "record is None or not base_mp4.exists()" in main_src)
 check("assets-comps-02 NEW: a PASS renames the candidate into the stable baseline slot",
       "cand_mp4.replace(new_base)" in main_src)
+
+# ---------------------------------------------------------------------------
+# pin policy 26 Sep 26: preflight keeps the drift LOCK but never checks npm currency (a
+# newer release must not stop a render mid-episode); the ritual demo is the committed
+# episodes/demo-pin with its video and tone probes (demo-joplin-90's gitignored media no
+# longer exists anywhere).
+# ---------------------------------------------------------------------------
+with tempfile.TemporaryDirectory() as d:
+    repo = Path(d)
+    (repo / "scripts").mkdir()
+    (repo / "config.yaml").write_text('render:\n  hyperframes_version: "0.8.78"\n', encoding="utf-8")
+    (repo / "scripts" / "render.cmd").write_text("call npx hyperframes@0.8.78 render .\n", encoding="utf-8")
+    orig_pf_run = render_preflight.subprocess.run
+
+    def _no_network(*a, **k):
+        raise AssertionError(f"version_check spawned {a[0] if a else k}")
+    render_preflight.subprocess.run = _no_network
+    try:
+        check("pin-policy NEW: agreeing pins pass with no npm lookup (currency is kickoff's job)",
+              render_preflight.version_check(repo) == 0)
+        (repo / "scripts" / "draft.cmd").write_text("npx hyperframes@0.8.41 render .\n", encoding="utf-8")
+        check("pin-policy NEW: a .cmd pinned to another version is still PIN DRIFT (exit 5)",
+              render_preflight.version_check(repo) == 5)
+    finally:
+        render_preflight.subprocess.run = orig_pf_run
+check("pin-policy NEW: RENDER_PIN_STALE_OK is gone from preflight",
+      "RENDER_PIN_STALE_OK" not in (S / "render_preflight.py").read_text(encoding="utf-8"))
+
+# pin_ritual.DEMO was repointed at a temp dir by the render() harness above; read the source
+check("pin-policy NEW: the ritual demo is episodes/demo-pin",
+      'DEMO = REPO / "episodes" / "demo-pin"' in main_src)
+DEMO = S.parent / "episodes" / "demo-pin"
+demo_refs = []
+for f in [DEMO / "index.html", *(DEMO / "compositions").glob("*.html")]:
+    demo_refs += re.findall(r'(?:src="|url\(\')([^"\'#:]+\.(?:js|ttf|html|woff2?|png|jpg|mp4|webm|wav|mp3|ogg))',
+                            f.read_text(encoding="utf-8"))
+missing = [r for r in demo_refs if not (DEMO / r).exists()]
+check("pin-policy NEW: every file demo-pin references exists", demo_refs and not missing, missing)
+check("pin-review NEW: demo-pin mounts the video and audio probes",
+      {"clips/probe.webm", "sfx/tone.ogg"} <= set(demo_refs), demo_refs)
+# tracked, not merely "not ignored": check-ignore passes vacuously on an untracked file
+_tracked = subprocess.run(["git", "-C", str(DEMO), "ls-files", "-z", "."],
+                          capture_output=True, text=True).stdout.split("\0")
+untracked = [r for r in demo_refs if r not in _tracked]
+check("pin-policy NEW: every file demo-pin references is tracked (a fresh worktree can render it)",
+      not untracked, untracked)
+_bytes = sum((DEMO / f).stat().st_size for f in _tracked if f)
+check("pin-review NEW: tracked demo-pin stays under 2 MB", 0 < _bytes < 2 * 1024 * 1024, _bytes)
+
+# measure()'s silent branch: no astats lines and no audio stream -> levels None, no SystemExit
+_orig_prun = pin_ritual.run
+
+class _Out:
+    def __init__(self, out=""):
+        self.stdout, self.stderr = out, ""
+
+pin_ritual.run = lambda cmd, **k: _Out("24.0\n" if "format=duration" in cmd else "")
+pin_ritual.FFPROBE = pin_ritual.FFMPEG = Path("ffmpeg")
+_m = {}
+try:
+    _m = pin_ritual.measure(Path("silent.mp4"))
+    check("pin-review NEW: measure() on a silent render returns rms_db None without exiting",
+          _m["rms_db"] is None and _m["peak_db"] is None and _m["duration"] == 24.0, _m)
+except SystemExit as e:
+    check("pin-review NEW: measure() on a silent render returns rms_db None without exiting",
+          False, f"SystemExit {e}")
+finally:
+    pin_ritual.run = _orig_prun
+check("pin-review NEW: measure() stores the worker count", _m.get("workers") == pin_ritual.WORKERS)
+
+good = {"workers": 2, "duration": 24.0, "blackdetect": [], "rms_db": -30.0,
+        "video_luma": [159.3, 235.2, 159.3]}
+check("pin-review NEW: identical records with audio + video compare clean",
+      pin_ritual.compare(good, dict(good), 0.997, 0.997) == [])
+check("pin-review NEW: a silent render is drift (mixer unverified), even on both sides",
+      pin_ritual.compare({**good, "rms_db": None}, {**good, "rms_db": None}, 0.997) != [])
+check("pin-review NEW: audio appearing on one side only is drift",
+      pin_ritual.compare({**good, "rms_db": None}, good, 0.997) != [])
+check("pin-review NEW: an RMS shift past RMS_TOL is drift",
+      pin_ritual.compare(good, {**good, "rms_db": -30.0 - 2 * pin_ritual.RMS_TOL}, 0.997) != [])
+check("pin-review NEW: a moved video-probe tracer (seek changed) is drift",
+      pin_ritual.compare(good, {**good, "video_luma": [159.3, 159.3, 159.3]}, 0.997) != [])
+check("pin-review NEW: an unmeasured video probe is drift",
+      pin_ritual.compare({**good, "video_luma": []}, {**good, "video_luma": []}, 0.997) != [])
+check("pin-review NEW: a worker-count mismatch is drift",
+      pin_ritual.compare(good, {**good, "workers": 1}, 0.997) != [])
+check("pin-review NEW: a video-region SSIM under SSIM_MIN is drift",
+      pin_ritual.compare(good, dict(good), 0.997, 0.95) != [])
+check("pin-review NEW: a baseline record without video_luma/workers, or silent/flat, is re-rendered",
+      'or baseline_problems(record)):' in main_src
+      and all(pin_ritual.baseline_problems({k: v for k, v in good.items() if k != drop})
+              for drop in ("workers", "video_luma", "rms_db")))
+
+# (c) the baseline self-check is absolute: a flat trace equals itself, so compare() alone passes it
+check("pin-review2 NEW: a good baseline (trace spans >= VIDEO_LUMA_SPAN_MIN) has no problems",
+      pin_ritual.baseline_problems(good) == [], pin_ritual.baseline_problems(good))
+_flat = {**good, "video_luma": [159.3] * 54}
+check("pin-review2 NEW: a flat video trace fails the baseline self-check",
+      pin_ritual.compare(_flat, dict(_flat), None) == [] and pin_ritual.baseline_problems(_flat) != [])
+check("pin-review2 NEW: a trace spanning just under VIDEO_LUMA_SPAN_MIN fails",
+      pin_ritual.baseline_problems({**good, "video_luma": [100.0, 100.0 + pin_ritual.VIDEO_LUMA_SPAN_MIN - 0.1]}) != [])
+check("pin-review2 NEW: a silent baseline fails the self-check",
+      pin_ritual.baseline_problems({**good, "rms_db": None}) != [])
+# (d) audio is read over the tone's mount window, not the whole file
+check("pin-review2 NEW: astats reads only TONE_WIN (inside the 3-7 s tone mount)",
+      pin_ritual.TONE_WIN == (3.1, 6.9) and "atrim=start={TONE_WIN[0]}:end={TONE_WIN[1]},astats" in main_src)
+
+# (b) --baseline: measure, validate, THEN write; old vs new printed; no "Commit" before validation
+def _baseline_run(rec):
+    with tempfile.TemporaryDirectory() as d:
+        bj = Path(d) / "pin_baseline.json"
+        bj.write_text(json.dumps({"version": "0.8.41", "demo": "demo-joplin-90"}), encoding="utf-8")
+        base = Path(d) / "pin-baseline-0.8.78.mp4"
+        base.write_bytes(b"old")
+        saved = (pin_ritual.BASELINE_JSON, pin_ritual.BASELINE_DIR, pin_ritual.render, pin_ritual.measure,
+                 pin_ritual.setup, pin_ritual.parse_pin, sys.argv)
+        pin_ritual.BASELINE_JSON, pin_ritual.BASELINE_DIR = bj, Path(d)
+        pin_ritual.render = lambda v, mp4: mp4.write_bytes(b"new")
+        pin_ritual.measure = lambda mp4: dict(rec)
+        pin_ritual.setup = lambda: None
+        pin_ritual.parse_pin = lambda repo: "0.8.78"
+        sys.argv = ["pin_ritual.py", "--baseline"]
+        out, err = io.StringIO(), io.StringIO()
+        try:
+            with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+                try:
+                    code = pin_ritual.main()
+                except SystemExit as e:
+                    code = e.code
+        finally:
+            (pin_ritual.BASELINE_JSON, pin_ritual.BASELINE_DIR, pin_ritual.render, pin_ritual.measure,
+             pin_ritual.setup, pin_ritual.parse_pin, sys.argv) = saved
+        return (code, json.loads(bj.read_text(encoding="utf-8")), out.getvalue(), err.getvalue(),
+                base.read_bytes())
+
+_code, _written, _out, _err, _mp4 = _baseline_run(_flat)
+check("pin-review2 NEW: --baseline on a flat trace exits 2 and leaves pin_baseline.json untouched",
+      _code == 2 and _written.get("version") == "0.8.41", (_code, _written))
+check("pin-final NEW: --baseline on a flat trace leaves the baseline mp4 untouched",
+      _mp4 == b"old", _mp4)
+check("pin-review2 NEW: --baseline never prints Commit when validation fails",
+      "Commit" not in _out + _err, _out + _err)
+_code, _written, _out, _err, _mp4 = _baseline_run(good)
+check("pin-review2 NEW: --baseline on a good record exits 0 and writes it",
+      _code == 0 and _written.get("version") == "0.8.78" and _written.get("video_luma") == good["video_luma"],
+      (_code, _written))
+check("pin-final NEW: --baseline on a good record replaces the baseline mp4",
+      _mp4 == b"new", _mp4)
+check("pin-review2 NEW: --baseline prints old vs new version, demo and workers",
+      all(t in _out for t in ("version 0.8.41 -> 0.8.78", f"demo demo-joplin-90 -> {pin_ritual.DEMO.name}",
+                              "workers None -> 2")), _out)
+check("pin-review2 NEW: --baseline prints Commit only after the summary line",
+      "Commit" in _out and _out.index("Commit") > _out.index("re-recorded"), _out)
 
 print()
 if FAILS:
