@@ -263,6 +263,7 @@ def ssim(a, b, region=False):
 
 
 def compare(base, cand, ssim_all, ssim_video=None):
+    # also baseline_problems()'s self-check: compare(rec, rec) must flag every unusable field
     drifts = []
     if base.get("workers") != cand.get("workers"):
         drifts.append(f"workers {base.get('workers')} -> {cand.get('workers')} "
@@ -316,6 +317,9 @@ def bump_pins(new):
 def baseline_problems(rec):
     """Why `rec` can never serve as a baseline ([] = usable). compare() against itself catches
     missing audio/trace; the span check is absolute, since a flat trace equals itself."""
+    missing = [f"missing {k}" for k in ("workers", "video_luma", "rms_db") if k not in rec]
+    if missing:
+        return missing  # compare() indexes these keys directly
     bad = compare(rec, dict(rec), None)
     luma = rec.get("video_luma") or []
     if luma and max(luma) - min(luma) < VIDEO_LUMA_SPAN_MIN:
@@ -393,7 +397,7 @@ def main():
         # a record measured on another demo (demo-joplin-90 before 26 Sep 26), before the
         # video/audio probes existed (no video_luma / workers), or silent/flat is not a baseline
         if (record.get("version") != pin or record.get("demo") != DEMO.name
-                or "workers" not in record or baseline_problems(record)):
+                or baseline_problems(record)):
             record = None
     if record is None or not base_mp4.exists():
         # persisted inside — a crash in the candidate render must not cost this again
