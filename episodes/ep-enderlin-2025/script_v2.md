@@ -270,7 +270,7 @@ Valley" · then a cross-section MG: a storm riding on a cool layer, then its inf
 
 It said the storms in eastern North Dakota were becoming surface based as they moved toward the Red River Valley. It
 said that raised the tornado threat. Storms at night on the Plains often ride on top of a cooler layer of air near
-the ground, and that layer tends to keep their spin from reaching the surface. A surface based storm pulls its air
+the ground. That layer tends to keep their spin from reaching the surface. A surface based storm pulls its air
 from the ground itself, and that is the air tornadoes form in.
 `[verify: elevated vs surface-based storms, mechanism wording]`
 
