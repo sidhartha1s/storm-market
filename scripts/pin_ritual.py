@@ -43,10 +43,10 @@ import subprocess
 import sys
 from pathlib import Path
 
-from render_preflight import npm_latest, parse_pin, semver
+from render_preflight import parse_pin
 
 REPO = Path(__file__).resolve().parent.parent
-DEMO = REPO / "episodes" / "demo-joplin-90"
+DEMO = REPO / "episodes" / "demo-pin"
 BASELINE_JSON = Path(__file__).resolve().parent / "pin_baseline.json"
 RENDER_CMD = Path(__file__).resolve().parent / "render.cmd"
 # The baseline mp4 lives OUTSIDE any worktree (assets-comps-02): episodes/*/renders/ is
