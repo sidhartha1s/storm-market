@@ -14,12 +14,11 @@ from comp_consts import fold
 
 ep = Path(sys.argv[1])
 idx = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
-# Read each host tag's attributes independently: the old single regex needed
-# id -> data-start -> data-duration in that order and silently skipped any other order.
+# Parse attributes per tag so attribute order doesn't matter.
 hosts = {}
-for tag in re.findall(r'<[^>]*\bdata-composition-id="[^"]+"[^>]*>', idx):
-    gid = re.search(r'\bdata-composition-id="([^"]+)"', tag).group(1)
-    dur = re.search(r'\bdata-duration="([\d.]+)"', tag)
+for m in re.finditer(r'<[^>]*\bdata-composition-id="([^"]+)"[^>]*>', idx):
+    gid = m.group(1)
+    dur = re.search(r'\bdata-duration="([\d.]+)"', m.group(0))
     if dur:
         hosts[gid] = float(dur.group(1))
     else:
