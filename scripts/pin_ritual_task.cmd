@@ -10,5 +10,5 @@ if not exist "scripts\pin_ritual.py" (
   exit /b 2
 )
 set PYTHONUNBUFFERED=1
-"C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" scripts\pin_ritual.py > pin_ritual.log 2>&1
+"C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" scripts\pin_ritual.py %* > pin_ritual.log 2>&1
 echo %errorlevel% > pin_ritual_done.marker
