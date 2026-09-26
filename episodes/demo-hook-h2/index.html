@@ -1,0 +1,53 @@
+<!doctype html>
+<!-- SOUND (H2, reasoned): this is a verdict reversal, not a warning, so there is no siren (a siren says "take cover now"; this story is a ruling revisited months later).
+     A low industrial drone (0.13) carries the whole hook as unresolved judgment; distant thunder (0.18) exists only while we are in the Enderlin night and cuts out with it, leaving the scale reveal clinical.
+     Hits are stamps: a soft boom on EF3, the full boom on EF5 and on Enderlin landing on the empty rung (0.3/0.4); one swell rises into "wrong too" and the drone dies into the 1.5 s void. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Inside Enderlin 2025: hook, arm H2</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+    body { margin: 0; background: #000; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="demo-hook-h2" data-start="0" data-width="1920" data-height="1080" data-duration="28.65" data-fps="30">
+
+  <!-- narration (track 1), per-segment words.json drives every cue -->
+  <audio id="nx-h1-s1" src="audio/h1-s1.wav" data-start="0.25" data-duration="2.418" data-track-index="1" data-volume="1"></audio>
+  <audio id="nx-h1-s2" src="audio/h1-s2.wav" data-start="3.07" data-duration="3.654" data-track-index="1" data-volume="1"></audio>
+  <audio id="nx-h1-s3" src="audio/h1-s3.wav" data-start="7.22" data-duration="7.726" data-track-index="1" data-volume="1"></audio>
+  <audio id="nx-h1-s4" src="audio/h1-s4.wav" data-start="15.65" data-duration="6.635" data-track-index="1" data-volume="1"></audio>
+  <audio id="nx-h1-s5" src="audio/h1-s5.wav" data-start="22.785" data-duration="4.091" data-track-index="1" data-volume="1"></audio>
+
+  <!-- sound: drone bed (fade in/out baked), night thunder, stamp hits, swell into the question -->
+  <audio id="sx-drone" src="media/sfx/drone-hook.mp3" data-bed="" data-start="0" data-duration="28.65" data-volume="0.13"></audio>
+  <audio id="sx-thunder" src="media/sfx/thunder-night.mp3" data-bed="" data-start="0" data-duration="15.65" data-volume="0.18"></audio>
+  <audio id="sx-stamp-ef3" src="media/sfx/stamp-boom.wav" data-start="1.55" data-duration="3" data-volume="0.3"></audio>
+  <audio id="sx-stamp-ef5" src="media/sfx/stamp-boom.wav" data-start="5.40" data-duration="3" data-volume="0.4" data-callback="second stamp: the reversal lands"></audio>
+  <audio id="sx-land" src="media/sfx/stamp-boom.wav" data-start="22.38" data-duration="3" data-volume="0.4" data-callback="third stamp: Enderlin lands on the empty EF5 rung"></audio>
+  <audio id="sx-swell" src="media/sfx/swell.wav" data-start="21.88" data-duration="5.0" data-volume="0.3"></audio>
+
+  <!-- 0 - 7.22 THE VERDICT: night wedge + EF3 stamped, struck, EF5 stamped -->
+  <div id="host-tornado-verdict" data-composition-id="g-tornado-verdict" data-start="0" data-duration="7.22" data-composition-src="compositions/g-tornado-verdict.html" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-verdict" data-composition-id="g-verdict" data-start="0" data-duration="7.22" data-composition-src="compositions/g-verdict.html" data-track-index="4" data-width="1920" data-height="1080"></div>
+
+  <!-- 7.22 - 15.65 THE PREMISE: the night, the farms, Enderlin, three dead (cut on s3's first word) -->
+  <div id="host-tornado-premise" data-composition-id="g-tornado-premise" data-start="7.22" data-duration="8.43" data-composition-src="compositions/g-tornado-premise.html" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-premise" data-composition-id="g-premise" data-start="7.22" data-duration="8.43" data-composition-src="compositions/g-premise.html" data-track-index="4" data-width="1920" data-height="1080"></div>
+
+  <!-- 15.65 - 27.15 THE SCALE + THE QUESTION: Three.js EF ladder across 2013-2025 (cut on s4's first word) -->
+  <div id="host-scale" data-composition-id="g-scale" data-start="15.65" data-duration="11.5" data-composition-src="compositions/g-scale.html" data-track-index="3" data-width="1920" data-height="1080"></div>
+
+  <!-- 27.15 - 28.65 VOID: black, drone fading out (baked) -->
+</div>
+<script>
+  window.__timelines = window.__timelines || {};
+  window.__timelines["demo-hook-h2"] = gsap.timeline({ paused: true });
+</script>
+</body>
+</html>
