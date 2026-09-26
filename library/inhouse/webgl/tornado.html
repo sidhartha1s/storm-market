@@ -245,7 +245,7 @@ function placeCamera(t) {
   if (C.cameraMove === "slow-push") camera.position.set(0, 4 + k, 82 - 28 * k);
   else if (C.cameraMove === "orbit") { const a = -0.35 + 0.7 * k; camera.position.set(Math.sin(a) * 72, 4.5, Math.cos(a) * 72); }
   else camera.position.set(0, 4, 72);
-  camera.lookAt(look);
+  camera.lookAt(LOOK);
 }
 
 function render(t) {
