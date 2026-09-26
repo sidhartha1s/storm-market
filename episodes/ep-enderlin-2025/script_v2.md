@@ -49,7 +49,6 @@ stays, unstruck. Split frame holds both stamps: "Enderlin · EF5" and "El Reno �
 
 The Enderlin tornado was the first E F five in America in twelve years. In twenty thirteen, the widest tornado ever measured came down
 near El Reno, Oklahoma. Radar caught winds far past the E F five line, and it is still an E F three.
-`[verify: El Reno 31 May 2013, widest on record at 2.6 mi, mobile radar winds far above EF5, final rating EF3 (fact sheet §4 flags it unverified)]`
 `[loop L1 open]`
 
 *(1.5 s void)*
@@ -58,16 +57,16 @@ near El Reno, Oklahoma. Radar caught winds far past the E F five line, and it is
 **Picture:** master map, the track draws east from a point south of town · popfig "11:02 PM" · g-clock starts.
 
 The Enderlin tornado came down a little after eleven on a Friday night, June twentieth, twenty twenty five.
-`[verify: touchdown and lift times, NWS PDF 11:02 to 11:21 PM vs Wikipedia 11:04 to 11:20 PM]` It touched the ground
+It touched the ground
 about four miles south of Enderlin, a small town in southeast North Dakota, about forty miles southwest of Fargo.
-`[verify: Enderlin about 40 mi southwest of Fargo]` For nineteen minutes it
+For nineteen minutes it
 moved east across open farmland. At its widest it was more than a mile across, about eighteen football fields laid
 end to end.
 
 **Picture:** map pin on Highway 46 · text-only name cards "Michael and Katherine Dehn · 73", then "Marcario Lucio · 89".
 
-One mile east of town, on Highway forty six, it hit the home of Michael and Katherine Dehn.
-`[verify: name, "Katherine Dehn" vs "Katherine Pfaff-Dehn"]` They were both seventy three, and neither of them
+One mile east of town, on Highway forty six, it hit the home of Michael and Katherine Pfaff-Dehn.
+They were both seventy three, and neither of them
 survived. On another stretch of the path, it hit the farm of Marcario Lucio, who was eighty nine. His wife, Roberta,
 made it through the night, and the storm took Marcario's life. No North Dakota tornado had taken that many lives since
 nineteen seventy eight.
@@ -103,30 +102,27 @@ the wind left behind.
 Fujita's name.
 
 The scale in use today is the Enhanced Fujita scale. It was built on the one Ted Fujita, a University of
-Chicago scientist, drew up in nineteen seventy one. `[verify: Fujita scale introduced 1971 by T. Theodore Fujita of the University of Chicago]` An E F three covers winds from a hundred and thirty six
+Chicago scientist, drew up in nineteen seventy one. An E F three covers winds from a hundred and thirty six
 to a hundred and sixty five miles an hour. An E F five starts above two hundred.
-`[verify: EF scale bands, EF3 136 to 165 mph, EF5 over 200 mph]`
 
 A survey team walks the path, sometimes for days, and looks at every broken thing. They match it against a list of
-twenty eight kinds of damage the scale recognizes. `[verify: 28 damage indicators, EF scale 2007]` The list runs from
+twenty eight kinds of damage the scale recognizes. The list runs from
 a barn to a school to a hardwood tree. Each kind has steps, from a few shingles gone to nothing left, and each step
 carries a wind speed. The tornado gets the highest number the damage can prove. Engineers at Texas Tech University
 led the work of writing that list, and the weather service adopted it in two thousand seven.
-`[verify: EF scale damage indicators developed by the Texas Tech Wind Science and Engineering Research Center]`
 
 Today the teams carry tablets, and every photo they take is pinned to a spot on a map. They add aerial pictures,
 satellite images and radar, but the number itself still comes from the damage.
-`[verify: NWS Damage Assessment Toolkit, GPS-tagged survey photos; aerial and satellite imagery used in surveys]`
 
 **Picture:** g-ef-scale zooms into one indicator, a tree; its steps climb and hit a lid drawn across the top. Then a
 house indicator: two slabs side by side, one with anchor bolts drawn, one with nails.
 
 That word, prove, is the whole problem, because every kind of damage has a ceiling. Once a tree has been stripped of
 its bark and snapped, the scale has nothing higher to give it, whatever the wind was.
-`[verify: hardwood tree damage indicator, top step and its expected wind, roughly 140 to 170 mph]` A farmhouse can go
+A farmhouse can go
 higher, but only if it was built to hold. When a house is swept off its foundation, surveyors check how it was tied
 down. Bolted to the concrete, a clean slab can mean E F five. Held on by a few nails, the same empty slab only proves
-a strong E F three or a low E F four. `[verify: EF scale degree-of-damage adjustment for poor anchoring]` Surveyors
+a strong E F three or a low E F four. Surveyors
 photograph the bolts, the nails and the straps, because the difference can be two full ratings.
 
 **Picture:** El Reno 2013: PD radar still, then a mobile radar truck (PD or licensed still only) · the 2.6 mile outline
@@ -138,8 +134,7 @@ of nearly three hundred miles an hour inside it. For almost three months, the we
 five, based on that radar. Then, that August, they took it back down to E F three. The rating goes by damage, and a
 radar reading is not damage. The wind speeds on the scale are a specific thing, a three second gust about thirty
 three feet above the ground. Radar measures wind higher up and over a bigger volume of air, so the two numbers do not
-line up. `[verify: EF scale speeds are 3-second gusts at 10 m (33 ft); mobile radar samples above that height]` Across most of its path, El Reno crossed open fields with little on them that could prove more.
-`[verify: El Reno 2013, University of Oklahoma RaXPol winds about 295 to 302 mph; NWS Norman listed EF5 on 4 Jun 2013 and revised to EF3 on 30 Aug 2013; path mostly open country]`
+line up. Across most of its path, El Reno crossed open fields with little on them that could prove more.
 
 So El Reno went from E F five down to E F three, and twelve years later Enderlin went the other way. Enderlin had the
 same kind of path, and until October it had the same answer. `[loop L2 continues]`
@@ -177,7 +172,6 @@ to the EF5 band "Over 200 MPH" · popfig "Feb 2007".
 The Enhanced Fujita scale replaced the old Fujita scale in February, two thousand seven. The old scale had put F five
 winds between two hundred and sixty one and three hundred and eighteen miles an hour. Engineers decided those numbers
 were too high for the damage they described, so the new scale lowered them.
-`[verify: F5 band 261 to 318 mph; EF scale lowered the wind estimates because F-scale speeds overstated the damage]`
 A house swept off a good foundation now meant winds above two hundred.
 
 **Picture:** g-drought-timeline from the start · marks land one by one with PD stills: Greensburg (FEMA), Parkersburg,
@@ -189,8 +183,8 @@ lives. A year later, on May twenty fifth, two thousand eight, Parkersburg, Iowa,
 was nine.
 
 Then came April twenty seventh, twenty eleven, when four E F fives touched down in Mississippi and Alabama on one day.
-No single day since the new scale began has matched that. More than two hundred tornadoes formed across the South
-that day. `[verify: about 216 tornadoes on 27 Apr 2011]` The one at Hackleburg and Phil Campbell, in Alabama, took
+No single day since the new scale began has matched that. About two hundred and sixteen tornadoes formed across the South
+that day. The one at Hackleburg and Phil Campbell, in Alabama, took
 seventy two lives. On May twenty second, less than a month later, the Joplin tornado took a hundred and fifty eight
 lives in Missouri. No single American tornado had taken more since nineteen forty seven.
 
@@ -206,16 +200,15 @@ an E F three, and the lower number belongs to the bigger storm.
 
 Then, on Monday, May twentieth, twenty thirteen, an E F five crossed Moore, Oklahoma. Twenty four people lost their
 lives, and seven of them were children at Plaza Towers Elementary School. Moore had neighborhoods of modern homes in
-the path, and surveyors found some of them swept off their slabs. `[verify: Moore 2013 EF5 rating based on well-built homes swept from foundations]`
+the path, and surveyors found some of them swept off their slabs.
 The same city had been hit by an F five on May third, nineteen ninety nine. A mobile radar measured about three
 hundred and one miles an hour in that storm. It kept its five, because it had houses to prove it.
-`[verify: Bridge Creek–Moore 3 May 1999, F5, DOW radar about 301 mph]`
 
 **Picture:** the timeline keeps drawing past Moore with no marks; a day counter runs to "4,414 Days".
 
 That made nine E F fives in six years. From nineteen fifty to twenty thirteen, America averaged nearly one F five or EF
 five a year. So nine in six years was a little above the usual pace.
-`[verify: about 59 F5/EF5 tornadoes in the US from 1950 to 2013]` After Moore, there were none. The count ran for four
+After Moore, there were none. The count ran for four
 thousand four hundred and fourteen days, from Moore to the night of Enderlin. It was the longest stretch without an F
 five or an E F five since official counts began in nineteen fifty.
 
@@ -223,24 +216,23 @@ The first storm that could have broken the gap was El Reno, eleven days after Mo
 twelve years, the worst tornadoes we saw on the news were all rated E F four or lower.
 
 **Picture:** four EF4 cards slide in, each with a PD NWS or FEMA damage still: "Mayflower–Vilonia 2014 · 190 MPH",
-"Rochelle–Fairdale 2015 · 200 MPH", "Mayfield 2021 · 190 MPH", "Rolling Fork 2023 · 170 MPH"; the EF5 line sits just
+"Rochelle–Fairdale 2015 · 200 MPH", "Mayfield 2021 · 190 MPH", "Rolling Fork 2023 · 195 MPH"; the EF5 line sits just
 above the tallest bar.
 
 Strong tornadoes kept coming in those years, and some of them started long arguments. Meteorologists argued over
 Mayflower and Vilonia in Arkansas in twenty fourteen, and over Rochelle and Fairdale in Illinois a year later. They
 argued over Mayfield, Kentucky, in twenty twenty one, and over Rolling Fork, Mississippi, in twenty twenty three.
-`[verify: each of these four is named in the EF5-drought debate as a probable EF5; name one source per storm]` The
-Mayfield storm stayed on the ground for about a hundred and sixty five miles across western Kentucky, on a December
-night. `[verify: Western Kentucky tornado, 10 Dec 2021, path about 165.6 mi]`
+The
+Mayfield storm stayed on the ground for about a hundred and sixty five miles, from Tennessee across western Kentucky, on a December
+night.
 
 All four were rated E F four, and their final numbers sat near the line. Mayflower and Vilonia got a hundred and
-ninety miles an hour, and so did Mayfield. Rolling Fork got a hundred and seventy. Rochelle and Fairdale got two
+ninety miles an hour, and so did Mayfield. Rolling Fork got a hundred and ninety five. Rochelle and Fairdale got two
 hundred, one mile an hour short of an E F five.
-`[verify: final ratings, Mayflower–Vilonia 190, Rochelle–Fairdale 200, Mayfield 190, Rolling Fork 170 mph]`
 
 That left meteorologists with a question they could not settle for years. Some said the ratings had grown too
 cautious, and others said the damage in those years had simply never reached E F five. Many said it was some of each.
-`[verify: the three-camp framing of the debate (theticker.org, secondary)]` Underneath it all sat one plain question.
+Underneath it all sat one plain question.
 Either the most violent tornadoes had become rarer, or the way they were rated had changed.
 
 **Picture:** g-person Tony Lyza (text-only card, no photo slot) · "NOAA National Severe Storms Laboratory" · beige
@@ -275,7 +267,6 @@ It said the storms in eastern North Dakota were becoming surface based as they m
 said that raised the tornado threat. Storms at night on the Plains often ride on top of a cooler layer of air near
 the ground. That layer tends to keep their spin from reaching the surface. A surface based storm pulls its air
 from the ground itself, and that is the air tornadoes form in.
-`[verify: elevated vs surface-based storms, mechanism wording]`
 
 **Picture:** popfig "120 to 150 MPH" over the discussion card.
 
@@ -286,7 +277,7 @@ was the forecast for the night, and the number the Enderlin tornado ended up wit
 the state · popfig "22 Tornadoes".
 
 That night, two supercells, the rotating kind of thunderstorm, made twenty two tornadoes in North Dakota. Most
-supercells never make a tornado at all. `[verify: most supercells do not produce tornadoes]` Two storms making that
+supercells never make a tornado at all. Two storms making that
 many is rare, and the Enderlin tornado was one of the twenty two. It was part of a larger outbreak that
 ran from June nineteenth to June twenty second. A derecho, a long line of damaging straight winds, came through in the
 middle of it.
@@ -296,7 +287,7 @@ middle of it.
 At two minutes past eleven, it touched down along Fifty Eighth Street Southeast, in Ransom County. From there, it had
 nineteen minutes and twelve miles of farm country ahead of it. That works out to about thirty eight miles an hour
 across the ground. It came down after dark. A two thousand eight study found night tornadoes about two and a half
-times as likely to take lives as daytime ones. `[verify: Ashley, Krmenec and Schwantes 2008, night tornadoes about 2.5 times as likely to take lives]`
+times as likely to take lives as daytime ones.
 
 **Picture:** g-radar: the self-made Level II re-plot, velocity panel with the couplet ringed, then the correlation
 coefficient panel with the debris signature ringed; timestamps from the data, not from the script.
@@ -304,19 +295,17 @@ coefficient panel with the debris signature ringed; timestamps from the data, no
 At that hour, radar gave the clearest view anyone had of it. On the Grand Forks radar, winds rushing toward the dish
 and away from it sat side by side. That is the mark of a tight rotation. Then the radar picked up a debris
 signature, a patch of lofted debris the radar can tell apart from rain.
-`[verify: from the Level II replot (KMVX), velocity couplet and tornado debris signature over the Enderlin track, with times]`
 The radar could see what the storm was lifting, but not how hard the wind blew at the ground.
 
 **Picture:** master map: the rail line pulses south of town · NWS PD photo of tipped grain cars (credit checked) ·
 popfig "33 Cars".
 
 Enderlin began as a railroad town, and the story told about its name is that it marked the end of the line.
-`[verify: Enderlin founded as a railroad division point; the "end of the line" name story]` South of Enderlin, the
+South of Enderlin, the
 path crossed a rail line where freight cars stood on the tracks.
-`[verify: the cars were standing, not a moving train; and the strike order rail, river, Highway 46, Cass County farmsteads, from the NWS survey narrative]`
 When the survey team got there, thirty three cars were off the rails. Nineteen were grain cars, still loaded, and
 fourteen were empty tanker cars. A loaded grain car like those weighs nearly three hundred thousand pounds.
-`[verify: about 286,000 lb per loaded hopper (Western University summary, not the NWS PDF)]` The final survey puts the
+The final survey puts the
 rail cars where the tornado was at its strongest. One of the tankers was lying almost five hundred feet from the track.
 In June, that was one strange detail on a long list, and it took months to turn it into a number.
 `[loop L3 continues]`
@@ -363,7 +352,7 @@ stood out as unique. We wanted to investigate further." · Carl Jones, NWS Grand
 
 He said, and this is a direct quote, "This particular set of damage that we saw kind of stood out as unique." Then he
 added, "We wanted to investigate further." The damage he meant was on the rail line.
-`[verify: the Jones quote refers to the train damage (MPR News, 8 Oct 2025)]` `[loop L6 closes]` And nothing in the
+`[loop L6 closes]` And nothing in the
 scale's list of twenty eight could turn a freight car into a wind speed. `[loop L0 continues]`
 
 **Picture:** g-ef-scale returns: the house indicator with its steps and wind speeds, then an empty row labelled
@@ -378,7 +367,7 @@ became a question of how much wind it takes to throw a tank car.
 attributed text card "Drone Video · Aaron Rigsby".
 
 Part of the second look came from the air. A storm chaser named Aaron Rigsby had flown a drone over the damage, and
-his video ran about thirteen minutes. `[verify: Rigsby's drone video, about 13 min, was reviewed by NWS in the re-survey]`
+his video ran about thirteen minutes.
 The office went through that footage as part of the review. An aerial view shows a whole debris field at once, which
 a team on foot cannot see.
 
@@ -386,7 +375,7 @@ a team on foot cannot see.
 
 The office also brought in help from Canada. Engineers from the Northern Tornadoes Project, at Western University,
 joined the re-survey as wind damage experts. The project was started in twenty seventeen to find and survey every
-tornado that touches down in Canada. `[verify: NTP founded 2017, mission to detect every Canadian tornado]` Their team,
+tornado that touches down in Canada. Their team,
 which includes Greg Kopp of Western University, is credited with the forensic side of the work.
 
 **Picture:** a Canada map, a pin at Elie, Manitoba · popfig "June 22, 2007" · a stamp "F4" struck through by "F5",
@@ -394,7 +383,6 @@ dated "September 2007".
 
 Canada knows about late upgrades. Its only F five came down at Elie, Manitoba, on June twenty second, two thousand
 seven. It was first rated F four, and that September it was raised to F five.
-`[verify: Elie, Manitoba, 22 Jun 2007, rated F4 then upgraded to F5 in Sep 2007; still Canada's only F5 or EF5]`
 
 **Picture:** g-mechanism, first half: a grain car side-on, a wind arrow on its broad side, a pivot marked at the far
 rail, the car rolling over it.
@@ -409,7 +397,7 @@ Using Debris Trajectories of Large…" · g-person Connell Miller (text-only).
 The biggest piece came from a paper published in twenty twenty four, the year before Enderlin. Its first author was
 Connell Miller, a former wind researcher with the Northern Tornadoes Project. He now directs the Northern Mesonet
 Project. The paper came out in Monthly Weather Review. It showed how to estimate a tornado's wind from how far it
-carried large objects. `[verify: full title of Miller et al. 2024, MWR 152(8), DOI MWR-D-23-0251.1]`
+carried large objects.
 
 **Picture:** g-mechanism, second half: a tanker silhouette, a weight arrow pointing down, a wind arrow pushing
 sideways, an arc to a landing mark; a ruler on the ground marked "50 m · about 160 ft".
@@ -418,7 +406,7 @@ Wind pushes on a car, the car's weight pulls it down, and the car only leaves th
 farther a heavy, compact object travels through the air, the stronger that push had to be. The paper drew a line at
 fifty meters, which is about a hundred and sixty feet, or half a football field. A large, compact object carried
 farther than that generally means winds at the E F five level. The rule counts objects that flew through the air,
-not ones that rolled or slid along the ground. `[verify: the Miller et al. threshold applies to lofted objects, not rolled or slid ones]`
+not ones that rolled or slid along the ground.
 
 **Picture:** master map rail segment · the tanker's arc draws to "almost 500 ft", the 160 ft line flashes about a
 third of the way along · popfig "About 3×".
@@ -465,15 +453,14 @@ News Live, Minnesota Public Radio and Fox Weather. It went onto the official lis
 list the twelve years had been counted from. A change like this also goes into Storm Data, the federal database of
 every tornado, which the National Centers for Environmental Information keeps. Every future study of American EF
 fives will count Enderlin, because it is now in that database.
-`[verify: rating revisions are entered in NCEI Storm Data]` Moore's E F five had been put at about two hundred and ten miles an hour.
-`[verify: Moore 2013 peak wind estimate about 210 mph]` Enderlin's estimate is more than that. It also sits farther north than any other EF
+Moore's E F five had been put at about two hundred and ten miles an hour.
+Enderlin's estimate is more than that. It also sits farther north than any other EF
 five since the new scale began.
 
 **Picture:** a North Dakota map, a Fargo pin · popfig "June 20, 1957".
 
 North Dakota had seen the top of the scale before. At Fargo, on June twentieth, nineteen fifty seven, an F five came
-down, sixty eight years to the day before Enderlin. That storm took ten lives in Fargo.
-`[verify: Fargo tornado 20 Jun 1957 rated F5, ten lives lost]`
+down, sixty eight years to the day before Enderlin. That storm took at least ten lives in Fargo.
 
 **Picture:** the El Reno split card, both stamps flipping in opposite directions with their dates.
 
@@ -486,7 +473,7 @@ the reason was the same rule, that the rating goes by what the damage can prove.
 The new number did not change the path, the twelve miles, or the three people the storm took. It did not change what
 anyone knew at eleven o'clock that night either, because a rating always comes after the storm. But it did put a figure
 on what a building there would have had to stand up to. FEMA builds its guidance for tornado safe rooms around winds of two
-hundred and fifty miles an hour. `[verify: FEMA P-361 tornado safe room design wind speed 250 mph]` If you have a safe
+hundred and fifty miles an hour. If you have a safe
 room built to that standard, it is rated above what the survey gave Enderlin. `[loop L7 closes]`
 
 **Picture:** the four EF4 cards from A2 return, each with a small "?" pulsing beside the EF4.
@@ -514,7 +501,6 @@ since two thousand seven.
 Engineers and meteorologists are also writing a new standard for estimating tornado winds. It adds more kinds of
 damage and more ways to measure, including radar and thrown objects. The work runs under the American Society of
 Civil Engineers and the American Meteorological Society.
-`[verify: ASCE/SEI/AMS standard on wind speed estimation in tornadoes, its methods and status as of Sep 2026]`
 
 **Picture:** g-mechanism returns small: the tanker arc, then the same arc over an empty field with nothing to throw.
 
@@ -524,7 +510,7 @@ and most tornadoes never cross a train. El Reno had radar and open fields, and i
 **Picture:** a map of Oklahoma with an Enid pin · text card "Enid, Oklahoma · 2026".
 
 In twenty twenty six, a tornado at Enid, Oklahoma, landed in the same argument over whether it reached E F five.
-`[verify: Enid 2026 EF5 debate and its status as of the script date]` The ratings matter past any one town, because
+The ratings matter past any one town, because
 they are the data scientists use to ask whether violent tornadoes are becoming rarer. That is the question Lyza's study
 put to the twelve years, and the Enderlin rating ended the gap without settling it. If surveys shifted in two
 thousand seven, the counts before and after that year cannot be compared straight across.
