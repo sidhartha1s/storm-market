@@ -215,21 +215,43 @@ def measure(mp4):
                           str(mp4)]).stdout.strip())
     if has_audio and (not peaks or not rmss):
         sys.exit(f"[ritual] astats gave no levels for {mp4.name}")
-    # demo-pin is silent: levels are None, and compare() fails if only one side has audio
+    # a render with no audio stream measures None; compare() fails it (demo-pin has a tone)
     return {"duration": dur, "blackdetect": black,
             "rms_db": float(rmss[-1]) if has_audio else None,
-            "peak_db": float(peaks[-1]) if has_audio else None}
+            "peak_db": float(peaks[-1]) if has_audio else None,
+            "video_luma": video_luma(mp4)}
 
 
-def ssim(a, b):
+def _region(label):
+    """Filter chain cutting VIDEO_WIN x VIDEO_BOX out of input `label`."""
+    x, y, w, h = VIDEO_BOX
+    s, e = VIDEO_WIN
+    return f"[{label}:v]trim=start={s}:end={e},setpts=PTS-STARTPTS,crop={w}:{h}:{x}:{y}"
+
+
+def video_luma(mp4):
+    """Per-frame mean luma of the video probe's box over VIDEO_WIN, 2 dp."""
+    r = run([str(FFMPEG), "-hide_banner", "-i", str(mp4), "-filter_complex",
+             _region(0) + ",signalstats,metadata=print:key=lavfi.signalstats.YAVG",
+             "-an", "-f", "null", "-"], timeout=600)
+    return [round(float(v), 2) for v in
+            re.findall(r"lavfi\.signalstats\.YAVG=([\d.]+)", r.stdout + r.stderr)]
+
+
+def ssim(a, b, region=False):
+    """SSIM All of a vs b: full frame, or the video probe's box/window when region=True."""
+    lavfi = (f"{_region(0)}[a];{_region(1)}[b];[a][b]ssim" if region else "ssim")
     r = run([str(FFMPEG), "-hide_banner", "-i", str(a), "-i", str(b),
-             "-lavfi", "ssim", "-f", "null", "-"], timeout=600)
+             "-lavfi", lavfi, "-f", "null", "-"], timeout=600)
     m = re.search(r"All:([\d.]+)", r.stdout + r.stderr)
     return float(m.group(1)) if m else None
 
 
-def compare(base, cand, ssim_all):
+def compare(base, cand, ssim_all, ssim_video=None):
     drifts = []
+    if base.get("workers") != cand.get("workers"):
+        drifts.append(f"workers {base.get('workers')} -> {cand.get('workers')} "
+                      "(different capture path; re-run both at the same count)")
     if abs(base["duration"] - cand["duration"]) > DUR_TOL:
         drifts.append(f"duration {base['duration']:.3f}s -> {cand['duration']:.3f}s")
     if len(base["blackdetect"]) != len(cand["blackdetect"]):
