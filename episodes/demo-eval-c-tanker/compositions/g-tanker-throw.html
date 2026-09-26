@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  @font-face { font-family:'AbrilFig'; src:url('fonts/AbrilFatface-Regular.ttf'); }
+  #tt-root { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; }
+  #tt-root .full { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #tt-flash { background:radial-gradient(ellipse at 38% 18%, rgba(170,200,230,0.34), rgba(90,118,143,0.10) 45%, rgba(0,0,0,0) 75%); opacity:0; }
+  #tt-body-pos { position:absolute; left:0; top:0; width:150px; height:60px; filter:url(#tt-blurf); }
+  #tt-body-rot { position:absolute; left:0; top:0; width:150px; height:60px; transform-origin:75px 30px; }
+  #tt-body-sq { position:absolute; left:0; top:0; width:150px; height:60px; }
+  #tt-ghosts, #tt-dust, #tt-debris { position:absolute; left:0; top:0; width:0; height:0; }
+  #tt-grain { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #tt-hud .eyebrow { position:absolute; left:96px; top:84px; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  #tt-pf { position:absolute; left:0; top:220px; width:1920px; text-align:center; white-space:nowrap; }
+  #tt-pf .pf-big { display:block; font-family:'AbrilFig',Georgia,serif; font-size:150px; line-height:1.05; color:#d0121f; letter-spacing:0.04em;
+    text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+  #tt-pf .pf-sub { display:block; margin-top:8px; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:38px; color:#f2f5f8; letter-spacing:0.3em;
+    text-shadow:0 0 18px rgba(0,0,0,1), 0 3px 10px #000; }
+  #tt-cnt-box { position:absolute; left:1190px; top:96px; width:640px; }
+  #tt-cnt-lab { font-weight:700; font-size:20px; letter-spacing:6px; color:#c8d3e0; white-space:nowrap; }
+  #tt-cnt { font-family:'Courier New',monospace; font-weight:700; font-size:84px; line-height:1.1; color:#e74c3c; margin-top:6px; white-space:nowrap; transform-origin:0% 60%; }
+  #tt-cnt-sub { position:absolute; left:1190px; top:250px; font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; white-space:nowrap; }
+  #tt-th-lab { position:absolute; left:556px; top:300px; width:400px; text-align:center; font-weight:700; font-size:26px; letter-spacing:4px; color:#f2f5f8; white-space:nowrap;
+    text-shadow:0 2px 10px #000; }
+  #tt-credit { position:absolute; left:96px; top:992px; font-weight:700; font-size:18px; letter-spacing:2px; color:#93a3b2; white-space:nowrap; }
+  #tt-black { background:#000; opacity:0; }
+</style>
+<div id="tt-root" data-composition-id="g-tanker-throw" data-width="1920" data-height="1080">
+  <div id="tt-flash" class="full"></div>
+  <div id="tt-rig" class="full">
+    <!-- far layer: storm base + wedge (depth 0.4) -->
+    <div id="tt-w-bg" class="full">
+      <svg width="1920" height="1080" viewBox="0 0 1920 1080" style="position:absolute;left:0;top:0;overflow:visible">
+        <defs>
+          <linearGradient id="tt-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#15202b"/><stop offset="1" stop-color="#0b1016"/></linearGradient>
+          <linearGradient id="tt-wedge" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#15202b" stop-opacity="0.95"/><stop offset="1" stop-color="#0b1016" stop-opacity="0.9"/></linearGradient>
+        </defs>
+        <path d="M-600,0 H2600 V230 C2200,300 1900,210 1500,260 C1100,310 900,220 500,270 C200,310 -200,250 -600,280 Z" fill="url(#tt-sky)"/>
+        <path d="M430,250 C470,420 440,560 330,760 L1010,760 C900,560 860,420 900,250 Z" fill="url(#tt-wedge)" opacity="0.9"/>
+        <line x1="-600" y1="760" x2="2600" y2="760" stroke="#5a768f" stroke-opacity="0.25" stroke-width="2"/>
+      </svg>
+    </div>
+    <!-- world layer (depth 1) -->
+    <div id="tt-w-world" class="full">
+      <svg id="tt-wsvg" width="1920" height="1080" viewBox="0 0 1920 1080" style="position:absolute;left:0;top:0;overflow:visible">
+        <defs>
+          <linearGradient id="tt-gnd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#15202b"/><stop offset="1" stop-color="#04070a"/></linearGradient>
+          <linearGradient id="tt-steel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fb2e5"/><stop offset="1" stop-color="#5a768f"/></linearGradient>
+          <clipPath id="tt-trailclip"><rect id="tt-trailrect" x="0" y="0" width="0" height="1080"/></clipPath>
+          <filter id="tt-blurf" x="-30%" y="-60%" width="160%" height="220%"><feGaussianBlur id="tt-blur" stdDeviation="0 0"/></filter>
+        </defs>
+        <rect x="-600" y="770" width="3200" height="500" fill="url(#tt-gnd)"/>
+        <rect x="-600" y="786" width="3200" height="10" fill="#15202b"/>
+        <g id="tt-ties"></g>
+        <line x1="-600" y1="785" x2="2600" y2="785" stroke="#93a3b2" stroke-width="3" stroke-opacity="0.8"/>
+        <!-- scale baseline on the landing plane: 0 ft at x 330, 2.6 px per ft -->
+        <line id="tt-base" x1="330" y1="866" x2="1640" y2="866" stroke="#93a3b2" stroke-opacity="0.45" stroke-width="2" stroke-dasharray="1311" stroke-dashoffset="1311"/>
+        <g id="tt-ticks"></g>
+        <path id="tt-trail" d="" fill="none" stroke="#dfe7ee" stroke-opacity="0.55" stroke-width="3" stroke-dasharray="4 12" clip-path="url(#tt-trailclip)"/>
+        <!-- EF5 threshold: 164 ft = x 756 -->
+        <line id="tt-th" x1="756" y1="878" x2="756" y2="878" stroke="#e74c3c" stroke-width="4" stroke-dasharray="14 9"/>
+        <g id="tt-bands"></g>
+        <ellipse id="tt-ring" cx="1567" cy="846" rx="20" ry="3" fill="none" stroke="#dfe7ee" stroke-width="3" opacity="0"/>
+        <!-- the rest of the train -->
+        <g id="tt-car-h1"><polygon points="0,0 150,0 138,42 12,42" fill="#15202b" stroke="#5a768f" stroke-width="2"/><polygon points="30,42 66,42 56,52 40,52" fill="#15202b" stroke="#5a768f" stroke-width="2"/><polygon points="84,42 120,42 110,52 94,52" fill="#15202b" stroke="#5a768f" stroke-width="2"/><circle cx="22" cy="55" r="7" fill="#5a768f"/><circle cx="128" cy="55" r="7" fill="#5a768f"/></g>
+        <g id="tt-car-t2"><rect x="0" y="8" width="150" height="38" rx="19" fill="#15202b" stroke="#5a768f" stroke-width="2"/><rect x="66" y="0" width="18" height="10" fill="#5a768f"/><circle cx="22" cy="55" r="7" fill="#5a768f"/><circle cx="128" cy="55" r="7" fill="#5a768f"/></g>
+        <g id="tt-car-h2"><polygon points="0,0 150,0 138,42 12,42" fill="#15202b" stroke="#5a768f" stroke-width="2"/><polygon points="30,42 66,42 56,52 40,52" fill="#15202b" stroke="#5a768f" stroke-width="2"/><polygon points="84,42 120,42 110,52 94,52" fill="#15202b" stroke="#5a768f" stroke-width="2"/><circle cx="22" cy="55" r="7" fill="#5a768f"/><circle cx="128" cy="55" r="7" fill="#5a768f"/></g>
+      </svg>
+      <div id="tt-ghosts"></div>
+      <div id="tt-body-pos"><div id="tt-body-rot"><div id="tt-body-sq">
+        <svg id="tt-art" width="150" height="62" viewBox="0 0 150 62" style="position:absolute;left:0;top:0;overflow:visible">
+          <rect x="0" y="8" width="150" height="38" rx="19" fill="url(#tt-steel)" stroke="#dfe7ee" stroke-opacity="0.6" stroke-width="2"/>
+          <line x1="16" y1="18" x2="134" y2="18" stroke="#dfe7ee" stroke-opacity="0.55" stroke-width="3"/>
+          <rect x="66" y="0" width="18" height="10" fill="#7fb2e5"/>
+          <rect x="10" y="46" width="130" height="5" fill="#5a768f"/>
+          <circle cx="22" cy="55" r="7" fill="#5a768f"/><circle cx="128" cy="55" r="7" fill="#5a768f"/>
+        </svg>
+      </div></div></div>
+      <div id="tt-dust"></div>
+      <div id="tt-debris"></div>
+    </div>
+    <div id="tt-rain" class="full"></div>
+  </div>
+  <canvas id="tt-grain" width="480" height="270"></canvas>
+  <div id="tt-vig" class="full"></div>
+  <div id="tt-hud" class="full">
+    <div id="tt-eyebrow" class="eyebrow">FREIGHT TRAIN · SOUTH OF ENDERLIN</div>
+    <div id="tt-pf"><span class="pf-big">33 Cars</span><span class="pf-sub">DERAILED</span></div>
+    <div id="tt-cnt-box"><div id="tt-cnt-lab">EMPTY TANKER · 72,000 LB</div><div id="tt-cnt">0 ft</div></div>
+    <div id="tt-cnt-sub">About 145 metres</div>
+    <div id="tt-th-lab">EF5 THRESHOLD · 164 FT</div>
+    <div id="tt-credit">NWS Grand Forks · Miller et al. 2024</div>
+  </div>
+  <div id="tt-black" class="full"></div>
+</div>
+<script>
+/*@@MOVES@@*/
+</script>
+<script>
+(function () {
+  window.__timelines = window.__timelines || {};
+  const M = window.MOVES, $ = (id) => document.getElementById(id);
+  const NS = 'http://www.w3.org/2000/svg';
+  const X0 = 330, PXFT = 2.6;                       /* 0 ft at the tanker's start; 475.7 ft -> x 1567; 164 ft -> x 756 */
+  /* generated world detail: ties and 50 ft ticks */
+  for (let x = -590; x < 2600; x += 24) { const r = document.createElementNS(NS, 'rect'); r.setAttribute('x', x); r.setAttribute('y', 788); r.setAttribute('width', 10); r.setAttribute('height', 6); r.setAttribute('fill', '#5a768f'); r.setAttribute('fill-opacity', '0.5'); $('tt-ties').appendChild(r); }
+  const ticks = [];
+  for (let f = 0; f <= 500; f += 50) { const l = document.createElementNS(NS, 'line'); const x = X0 + f * PXFT; l.setAttribute('x1', x); l.setAttribute('x2', x); l.setAttribute('y1', 866); l.setAttribute('y2', f % 100 ? 874 : 880); l.setAttribute('stroke', '#93a3b2'); l.setAttribute('stroke-opacity', '0.5'); l.setAttribute('stroke-width', 2); $('tt-ticks').appendChild(l); ticks.push(l); }
+  const A = { x0: X0, y0: 755, x1: 1567, y1: 815, apex: 400, duration: 1.6, ox: 75, oy: 30 };
+  $('tt-trail').setAttribute('d', M.arcPath({ x0: A.x0, y0: A.y0, x1: A.x1, y1: A.y1, apex: A.apex }));
+  const cars = { h1: [175, 0], t2: [15, 0], h2: [-145, 0] };   /* left edge x on the rail */
+  for (const k in cars) $('tt-car-' + k).setAttribute('transform', 'translate(' + cars[k][0] + ',723)');
+
+  /* STYLE-FRAME POSE (static) */
+  const P = window.__POSE;
+  const cam = (fx, fy, z) => { for (const [id, p] of [['tt-w-bg', 0.4], ['tt-w-world', 1]]) { const el = $(id); el.style.transformOrigin = '0 0'; const zz = 1 + (z - 1) * p, ffx = 960 + (fx - 960) * p, ffy = 540 + (fy - 540) * p; el.style.transform = 'translate(' + (960 - ffx * zz) + 'px,' + (540 - ffy * zz) + 'px) scale(' + zz + ')'; } };
+  const show = (ids) => ['tt-eyebrow', 'tt-pf', 'tt-cnt-box', 'tt-cnt-sub', 'tt-th-lab', 'tt-credit'].forEach((id) => { $(id).style.opacity = ids.includes(id) ? 1 : 0; });
+  const body = (x, y, r) => { $('tt-body-pos').style.transform = 'translate(' + (x - 75) + 'px,' + (y - 30) + 'px)'; $('tt-body-rot').style.transform = 'rotate(' + r + 'deg)'; };
+  if (P === 3) {
+    cam(330, 690, 1.55); show(['tt-eyebrow', 'tt-pf']); body(X0, A.y0 - 8, -10);
+    $('tt-car-h1').setAttribute('transform', 'translate(185,740) rotate(-18 75 60)');
+    $('tt-car-t2').setAttribute('transform', 'translate(20,745) rotate(14 75 60)');
+    $('tt-car-h2').setAttribute('transform', 'translate(-150,735) rotate(-9 75 60)');
+  } else if (P === 8) {
+    cam(960, 540, 1); show(['tt-cnt-box', 'tt-cnt-sub']); body(A.x1, A.y1, 368); $('tt-cnt').textContent = '475 ft';
+    $('tt-trailrect').setAttribute('width', 1920); $('tt-base').setAttribute('stroke-dashoffset', 0);
+  } else if (P === 12.5) {
+    cam(960, 540, 1); show(['tt-cnt-box', 'tt-cnt-sub', 'tt-th-lab', 'tt-credit']); body(A.x1, A.y1, 368); $('tt-cnt').textContent = '475 ft';
+    $('tt-trailrect').setAttribute('width', 1920); $('tt-base').setAttribute('stroke-dashoffset', 0); $('tt-th').setAttribute('y2', 350);
+    const tl0 = gsap.timeline({ paused: true }); M.bandCompare(tl0, $('tt-bands'), 0, { x0: X0, y: 890, unit: 164 * PXFT, count: 3, size: 34, labelY: 940 }); tl0.progress(1);
+  }
+  if (P !== undefined) { $('tt-cnt-box').style.opacity = $('tt-cnt-box').style.opacity; ['tt-car-h1', 'tt-car-t2', 'tt-car-h2'].forEach((id) => { if (P !== 3) { const k = id.slice(7); $(id).setAttribute('transform', 'translate(' + (cars[k][0] + 10) + ',742) rotate(' + ({ h1: -20, t2: 16, h2: -10 })[k] + ' 75 60)'); } }); return; }
+})();
+</script>
+</template>
+</body>
+</html>
