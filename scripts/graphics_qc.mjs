@@ -204,25 +204,6 @@ for (const m of INDEX_HTML.matchAll(/<[a-z]+\b[^>]*\bdata-composition-src="compo
   const dur = parseFloat((/\bdata-duration="([\d.]+)"/.exec(m[0]) || [])[1]);
   if (!isNaN(dur)) HOSTS[m[1]] = Math.max(HOSTS[m[1]] || 0, dur);
 }
-function standalone(file) {
-  const raw = readFileSync(file, 'utf8');
-  const m = raw.match(/<template>([\s\S]*?)<\/template>/);
-  let body = m ? m[1] : raw;
-  // Comps use two asset-path conventions: `media/x` (authored assuming a mount at episode root,
-  // like hyperframes shows it) and `../media/x` (authored assuming the file sits one level down,
-  // like compositions/ does). .qc-tmp/ sits at that same one-level depth, so <base href="../">
-  // points every relative url at the episode root; the `../` prefix is then stripped the same
-  // way freeze_scan.mjs does it, so BOTH conventions land on episode-root urls instead of one
-  // of them 404ing depending on which convention the composer used (qc-gates-08).
-  body = body.replace(/(url\(\s*['"]?|\b(?:src|href)=["'])\.\.\//g, '$1');
-  const html = `<!doctype html><html><head><meta charset="utf-8"><base href="../">
-<style>${HOST_CSS}</style>
-<style>html,body{margin:0;width:1920px;height:1080px;background:#111;overflow:hidden}</style>
-<script src="gsap.min.js"></script></head><body>${body}</body></html>`;
-  const out = join(TMP, basename(file));
-  writeFileSync(out, html, 'utf8');
-  return out;
-}
 
 const browser = await chromium.launch({ executablePath: EXECUTABLE, args: ['--allow-file-access-from-files'] });
 const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
