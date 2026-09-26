@@ -580,10 +580,12 @@ def _baseline_run(rec):
     with tempfile.TemporaryDirectory() as d:
         bj = Path(d) / "pin_baseline.json"
         bj.write_text(json.dumps({"version": "0.8.41", "demo": "demo-joplin-90"}), encoding="utf-8")
-        saved = (pin_ritual.BASELINE_JSON, pin_ritual.render, pin_ritual.measure,
+        base = Path(d) / "pin-baseline-0.8.78.mp4"
+        base.write_bytes(b"old")
+        saved = (pin_ritual.BASELINE_JSON, pin_ritual.BASELINE_DIR, pin_ritual.render, pin_ritual.measure,
                  pin_ritual.setup, pin_ritual.parse_pin, sys.argv)
-        pin_ritual.BASELINE_JSON = bj
-        pin_ritual.render = lambda v, mp4: None
+        pin_ritual.BASELINE_JSON, pin_ritual.BASELINE_DIR = bj, Path(d)
+        pin_ritual.render = lambda v, mp4: mp4.write_bytes(b"new")
         pin_ritual.measure = lambda mp4: dict(rec)
         pin_ritual.setup = lambda: None
         pin_ritual.parse_pin = lambda repo: "0.8.78"
@@ -596,19 +598,24 @@ def _baseline_run(rec):
                 except SystemExit as e:
                     code = e.code
         finally:
-            (pin_ritual.BASELINE_JSON, pin_ritual.render, pin_ritual.measure,
+            (pin_ritual.BASELINE_JSON, pin_ritual.BASELINE_DIR, pin_ritual.render, pin_ritual.measure,
              pin_ritual.setup, pin_ritual.parse_pin, sys.argv) = saved
-        return code, json.loads(bj.read_text(encoding="utf-8")), out.getvalue(), err.getvalue()
+        return (code, json.loads(bj.read_text(encoding="utf-8")), out.getvalue(), err.getvalue(),
+                base.read_bytes())
 
-_code, _written, _out, _err = _baseline_run(_flat)
+_code, _written, _out, _err, _mp4 = _baseline_run(_flat)
 check("pin-review2 NEW: --baseline on a flat trace exits 2 and leaves pin_baseline.json untouched",
       _code == 2 and _written.get("version") == "0.8.41", (_code, _written))
+check("pin-final NEW: --baseline on a flat trace leaves the baseline mp4 untouched",
+      _mp4 == b"old", _mp4)
 check("pin-review2 NEW: --baseline never prints Commit when validation fails",
       "Commit" not in _out + _err, _out + _err)
-_code, _written, _out, _err = _baseline_run(good)
+_code, _written, _out, _err, _mp4 = _baseline_run(good)
 check("pin-review2 NEW: --baseline on a good record exits 0 and writes it",
       _code == 0 and _written.get("version") == "0.8.78" and _written.get("video_luma") == good["video_luma"],
       (_code, _written))
+check("pin-final NEW: --baseline on a good record replaces the baseline mp4",
+      _mp4 == b"new", _mp4)
 check("pin-review2 NEW: --baseline prints old vs new version, demo and workers",
       all(t in _out for t in ("version 0.8.41 -> 0.8.78", f"demo demo-joplin-90 -> {pin_ritual.DEMO.name}",
                               "workers None -> 2")), _out)
