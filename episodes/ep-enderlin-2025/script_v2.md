@@ -53,7 +53,7 @@ near El Reno, Oklahoma. Radar caught winds far past the EF five line, and it is 
 
 *(1.5 s void)*
 
-## I · The night (0:20)
+## I · The night (0:22)
 **Picture:** master map, the track draws east from a point south of town · popfig "11:02 PM" · g-clock starts.
 
 The Enderlin tornado came down a little after eleven on a Friday night, June twentieth, twenty twenty five.
@@ -87,7 +87,7 @@ every American tornado is rated by, and that method has a limit built into it.
 
 *(blackout 0.7 s)*
 
-## A1 · How a tornado gets its number (1:55)
+## A1 · How a tornado gets its number (1:52)
 **Picture:** NWS survey team b-roll (PD), tape measures, a snapped tree · a NEXRAD dome (PD) with its beam drawn
 rising over a curved ground line.
 
@@ -168,7 +168,7 @@ it is the likely reason America went twelve years without a single EF five. `[lo
 
 *(blackout 0.8 s)*
 
-## A2 · Twelve years (6:32)
+## A2 · Twelve years (6:05)
 **Picture:** g-then-now: the old F scale and the new EF scale as two bars, the F5 band "261 to 318 MPH" sliding down
 to the EF5 band "Over 200 MPH" · popfig "Feb 2007".
 
@@ -257,7 +257,7 @@ Enderlin had gone past it was lying somewhere on a twelve mile path through Rans
 
 *(blackout 0.8 s)*
 
-## A3 · Nineteen minutes (11:55)
+## A3 · Nineteen minutes (10:17)
 **Picture:** SPC watch map (PD) · popfig "3:45 PM" · GOES satellite loop (NOAA PD) of storms building over eastern
 Montana.
 
@@ -294,6 +294,15 @@ At two minutes past eleven, it touched down along Fifty Eighth Street Southeast,
 nineteen minutes and twelve miles of farm country ahead of it. That works out to about thirty eight miles an hour
 across the ground. It came down after dark. A two thousand eight study found night tornadoes about two and a half
 times as likely to take lives as daytime ones. `[verify: Ashley, Krmenec and Schwantes 2008, night tornadoes about 2.5 times as likely to take lives]`
+
+**Picture:** g-radar: the self-made Level II re-plot, velocity panel with the couplet ringed, then the correlation
+coefficient panel with the debris signature ringed; timestamps from the data, not from the script.
+
+In the dark, radar gave the clearest view anyone had of it. On the Grand Forks radar, winds rushing toward the dish
+and away from it sat right beside each other, the mark of a tight rotation. Then the radar picked up a debris
+signature, a patch of lofted debris the radar can tell apart from rain.
+`[verify: from the Level II replot (KMVX), velocity couplet and tornado debris signature over the Enderlin track, with times]`
+The radar could see what the storm was lifting, but not how hard the wind blew at the ground.
 
 **Picture:** master map: the rail line pulses south of town · NWS PD photo of tipped grain cars (credit checked) ·
 popfig "33 Cars".
@@ -345,7 +354,7 @@ Jones, a meteorologist in that office, explained later why it did not. `[loop L5
 
 *(blackout 0.8 s)*
 
-## A4 · The second look (16:37)
+## A4 · The second look (14:09)
 **Picture:** beige quote card, words land in narration order: "This particular set of damage that we saw kind of
 stood out as unique. We wanted to investigate further." · Carl Jones, NWS Grand Forks, MPR News, Oct 8, 2025.
 
@@ -422,7 +431,7 @@ ready. It was the number the whole country had gone twelve years without.
 
 *(blackout 0.8 s)*
 
-## A5 · October 6 (20:51)
+## A5 · October 6 (17:29)
 **Picture:** beige citation card, NWS Grand Forks statement, Oct 6, 2025 (PD) · popfig "Oct 6, 2025" · the EF3 stamp
 struck through, red EF5 lands.
 
@@ -471,11 +480,11 @@ Enderlin sat at EF three for a hundred and eight days before it moved up two ful
 back on every high end EF four since Moore, including Mayfield and Rolling Fork. `[loop L8 open]` Months earlier, a
 scientist at a federal lab had already written down a change he thought the scale needed. `[loop L9 open · cta-hinge]`
 
-## CTA · Storm-Ready Home (22:39)
+## CTA · Storm-Ready Home (19:43)
 **Picture:** 1.0 s dip in · `config.yaml channel.cta` file (Paul, 15.1 s, its own VO) · 1.0 s dip out · hard cut
 to real footage for the payoff. No narration under it.
 
-## A6 · The open case (22:57)
+## A6 · The open case (20:02)
 **Picture:** real footage first (PD NWS survey b-roll), then g-then-now: a bar with the EF4 and EF5 bands and the line
 between them sliding down a notch; g-person Tony Lyza returns.
 
@@ -518,7 +527,7 @@ found was never going to change with any rating. `[loop L10 open]`
 
 *(hold 3 s, the master map at dawn, bed only under a moving picture)*
 
-## Z · Close (24:25)
+## Z · Close (21:59)
 **Picture:** the master map, the track fading to a single line · text-only names card, each name landing on the voice
 · slow push on a PD survey photo of the path (credit checked) · g-outro.
 
