@@ -19,6 +19,12 @@
 <div id="root" data-composition-id="demo-pin" data-start="0" data-width="1920" data-height="1080" data-duration="24" data-fps="30">
   <div id="host-tanker-throw" data-composition-id="g-tanker-throw" data-composition-src="compositions/g-tanker-throw.html" data-start="0" data-duration="14" data-track-index="1" data-width="1920" data-height="1080"></div>
   <div id="host-webgl-probe" data-composition-id="g-webgl-probe" data-composition-src="compositions/g-webgl-probe.html" data-start="14" data-duration="10" data-track-index="1" data-width="1920" data-height="1080"></div>
+  <!-- Video-capture probe (pin_ritual VIDEO_BOX/VIDEO_WIN): mounted mid-comp with a media offset so capture must
+       seek into it; the clip burns its own timecode, so a stale or unseeked frame changes the region's pixels. -->
+  <video id="probe-video" src="clips/probe.webm" data-start="16" data-duration="2" data-media-start="1" data-track-index="2" muted
+         style="position:absolute; left:96px; top:300px; width:854px; height:480px; z-index:2;"></video>
+  <!-- Mixer probe: 440 Hz, peak -11.9 dBFS in the file, mounted at 0.5 gain so pin_ritual's RMS gate has a signal. -->
+  <audio id="probe-tone" src="sfx/tone.ogg" data-start="3" data-duration="4" data-volume="0.5"></audio>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
