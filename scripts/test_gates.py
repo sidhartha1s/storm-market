@@ -188,6 +188,14 @@ with tempfile.TemporaryDirectory() as d:
     code, out = run("beat_density.py", ep_dead)
     check("beat_density: exits 1 on a composition with a >=4s motionless stretch (was always 0)",
           code == 1, f"(exit {code})\n{out[-400:]}")
+    # Same dead comp, host attributes in a different order: must still be checked, not skipped.
+    idx = ep_dead / "index.html"
+    idx.write_text(idx.read_text(encoding="utf-8").replace(
+        'data-composition-id="g1" data-start="0" data-duration="6.0"',
+        'data-duration="6.0" data-composition-id="g1" data-track-index="3" data-start="0"'), encoding="utf-8")
+    code, out = run("beat_density.py", ep_dead)
+    check("beat_density: host attribute order does not matter (was a silent skip)",
+          code == 1 and "0/1" not in out, f"(exit {code})\n{out[-400:]}")
 
 with tempfile.TemporaryDirectory() as d:
     live_comp = ('<template><div id="g"></div>'
