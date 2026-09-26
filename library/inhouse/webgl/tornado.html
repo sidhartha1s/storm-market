@@ -102,7 +102,7 @@ const ground = new THREE.Mesh(new THREE.PlaneGeometry(1600, 1600), new THREE.Sha
   uniforms: { ...U, uGround: { value: col(S.ground) }, uDust: { value: col(S.dust) }, uR: { value: C.funnelWidth } },
   vertexShader: `varying vec3 vW; void main() { vec4 w = modelMatrix * vec4(position, 1.0); vW = w.xyz; gl_Position = projectionMatrix * viewMatrix * w; }`,
   fragmentShader: NOISE + `
-    uniform float uTime, uSeed, uR; uniform vec3 uGround, uDust, uFog, uBase; varying vec3 vW;
+    uniform float uTime, uSeed, uR; uniform vec3 uGround, uDust, uFog, uGlow, uBase; varying vec3 vW;
     void main() {
       float n = fbm(vec3(vW.xz * 0.04, uSeed)), f = noise(vec3(vW.xz * 0.35, uSeed + 3.0));
       vec3 c = uGround * (0.7 + 0.5 * n + 0.15 * f);
