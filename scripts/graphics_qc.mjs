@@ -282,7 +282,7 @@ for (const f of files) {
   }
   const idleFrac = frozen / windowEnd;
   if (idleFrac > 0.45 || worst > 8)
-    add(name, 'idle-budget', `${(idleFrac*100).toFixed(0)}% of its ${windowEnd.toFixed(0)}s window is frozen (worst single gap ${worst.toFixed(1)}s) — §6`);
+    add(name, 'idle-budget', `${(idleFrac*100).toFixed(0)}% of its ${windowEnd.toFixed(0)}s window is frozen (worst single gap ${worst.toFixed(1)}s); see references/mg-quickref.md "Motion and exits"`);
 
   /* --- geometry + typography at every beat and each midpoint --- */
   const samples = [...new Set(beats.flatMap((b, i) => [b + 0.35, i < beats.length - 1 ? (b + beats[i+1]) / 2 : b + 0.9]))]
