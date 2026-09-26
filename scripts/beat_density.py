@@ -14,9 +14,16 @@ from comp_consts import fold
 
 ep = Path(sys.argv[1])
 idx = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
-hosts = {m.group(1): float(m.group(3))
-         for m in re.finditer(r'data-composition-id="([^"]+)"[^>]*'
-                              r'data-start="([\d.]+)"\s+data-duration="([\d.]+)"', idx)}
+# Read each host tag's attributes independently: the old single regex needed
+# id -> data-start -> data-duration in that order and silently skipped any other order.
+hosts = {}
+for tag in re.findall(r'<[^>]*\bdata-composition-id="[^"]+"[^>]*>', idx):
+    gid = re.search(r'\bdata-composition-id="([^"]+)"', tag).group(1)
+    dur = re.search(r'\bdata-duration="([\d.]+)"', tag)
+    if dur:
+        hosts[gid] = float(dur.group(1))
+    else:
+        print(f"[WARN] beat_density: host '{gid}' has no numeric data-duration, not checked")
 
 CALL = re.compile(r'tl\.(to|from|fromTo|set|add)\s*\(', re.S)
 
