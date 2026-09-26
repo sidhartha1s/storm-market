@@ -78,8 +78,9 @@ row 2 + 16° guide + "110 M" 6.6 · ramp emphasis (stroke pulse) 9.8 · note 15.
   Arial Black 84px · row label Arial 700 19px letter-spacing 4px #93a3b2 · row sub Arial 700 30px #dfe7ee · note 26px #dfe7ee · diagram labels
   Arial 700 22px letter-spacing 3px #93a3b2 (angle labels take their guide's colour). Never all-lowercase. Three size tiers must appear.
 - Motion: panel `fromTo x:660→0, 0.7 s power3.out`; reveals `fromTo autoAlpha 0,y:24 → 1,0`; one CONTINUOUS element for 30 s (sea-surface
-  drift or a slow scale push), no gap > 3 s without a visible change; GSAP only, no CSS @keyframes.
-- Nothing overlaps text or shapes; nothing outside 1920×1080; every label next to the thing it names.
+  drift or a slow scale push), no motionless stretch of 4 s; GSAP only, no CSS @keyframes.
+- Nothing overlaps text or shapes; all text at least 96 px from the left/right edges and 54 px from top/bottom; every label next to the
+  thing it names. Every other rule: `references/mg-quickref.md`.
 
 ## 7. TOOLS (run from your episode worktree root; paths are repo-relative)
 Pre-render look: `node scripts/freeze_scan.mjs episodes/<slug> --comp <COMPID>` writes a contact sheet (a tile every 3 s) to
