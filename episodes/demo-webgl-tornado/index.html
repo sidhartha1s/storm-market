@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>WebGL tornado template demo: night-blue orbit, then dusk-amber slow push</title>
+  <!-- Both comps are copies of library/inhouse/webgl/tornado.html with only CONFIG + id changed. -->
+  <script src="vendor/gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="demo-webgl-tornado" data-start="0" data-width="1920" data-height="1080" data-duration="12" data-fps="30">
+  <div id="host-tornado-night" data-composition-id="g-tornado-night" data-composition-src="compositions/tornado-night.html" data-start="0" data-duration="6" data-track-index="1" data-width="1920" data-height="1080"></div>
+  <div id="host-tornado-dusk" data-composition-id="g-tornado-dusk" data-composition-src="compositions/tornado-dusk.html" data-start="6" data-duration="6" data-track-index="1" data-width="1920" data-height="1080"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+window.__timelines["demo-webgl-tornado"] = gsap.timeline({ paused: true }).to({}, { duration: 12 }, 0);
+</script>
+</body>
+</html>
