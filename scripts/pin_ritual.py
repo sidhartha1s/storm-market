@@ -227,17 +227,17 @@ def measure(mp4):
             "video_luma": video_luma(mp4)}
 
 
-def _region(label):
-    """Filter chain cutting VIDEO_WIN x VIDEO_BOX out of input `label`."""
-    x, y, w, h = VIDEO_BOX
+def _region(label, box=VIDEO_BOX):
+    """Filter chain cutting VIDEO_WIN x box out of input `label`."""
+    x, y, w, h = box
     s, e = VIDEO_WIN
     return f"[{label}:v]trim=start={s}:end={e},setpts=PTS-STARTPTS,crop={w}:{h}:{x}:{y}"
 
 
 def video_luma(mp4):
-    """Per-frame mean luma of the video probe's box over VIDEO_WIN, 2 dp."""
+    """Per-frame mean luma of VIDEO_TRACER over VIDEO_WIN, 2 dp."""
     r = run([str(FFMPEG), "-hide_banner", "-i", str(mp4), "-filter_complex",
-             _region(0) + ",signalstats,metadata=print:key=lavfi.signalstats.YAVG",
+             _region(0, VIDEO_TRACER) + ",signalstats,metadata=print:key=lavfi.signalstats.YAVG",
              "-an", "-f", "null", "-"], timeout=600)
     return [round(float(v), 2) for v in
             re.findall(r"lavfi\.signalstats\.YAVG=([\d.]+)", r.stdout + r.stderr)]
