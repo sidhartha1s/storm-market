@@ -1,0 +1,101 @@
+# MG quick-ref: the one home of every motion-graphics rule (owner decisions to 26 Sep 26)
+Read this, then `learnings/mg.md`. [G] = a gate fails it (gate named). Bespoke diagram: brief on `references/mg-brief-template.md` first.
+Shipped patterns to copy: `references/editing-patterns/` (episode folders are deleted after publish). Library-first: search
+`library/catalog-index.json` or `npx hyperframes catalog --query "<intent>"`, browse `/gallery/` (`python3 -m http.server 8765` from
+`library/`), copy the closest block into the episode and hand-retune it per beat; `npx hyperframes add` lands in `library/official/`.
+
+## File contract
+- One graphic = `compositions/g-<name>.html`: `<template>` + own `<style>` + root `data-composition-id` + a PAUSED gsap timeline at
+  `window.__timelines["g-<name>"]` (`window.__timelines = window.__timelines || {}` first). File stem = composition id. [G graphics_qc no-timeline]
+- Mount: `<div id="host-x" data-composition-id="g-x" data-composition-src="compositions/g-x.html" data-start data-duration data-track-index
+  data-width="1920" data-height="1080">`. Never build graphic DOM from `innerHTML` strings in index.html. Every authored comp mounted,
+  every mount has a file [G sweep check 6]. Unique element ids [G sweep 5b]. Comp timeline >= host window [G graphics_qc short-duration, 0.05 s].
+- Comps render inside index.html's DOM: never reuse a class index.html uses [G css_collision via sweep]; bake inherited colour/font into the comp.
+- Assets `media/x` (project-root relative). gsap is vendored per episode (no CDN); MotionPathPlugin is NOT bundled (per-leg `attr` tweens).
+- GSAP/WAAPI only, never CSS @keyframes (kills fast-capture). Every `set`/`to` carries an explicit position. Never `repeat:-1` on a main
+  timeline (duration becomes 1e10); ambient loops use finite repeats. Tween transforms, never `width`/`height`/`letterSpacing`.
+- No initial CSS transform on anything GSAP transforms (set it with `tl.set` at 0); no static SVG `transform=` on a GSAP mover; nested SVG
+  pivots use `svgOrigin`. Dash lengths are computed (`ceil(len)+1`), never typed.
+- Text is pre-authored per element and toggled with autoAlpha. Never write text on a node with children, never in onStart/onComplete/
+  onRepeat/`tl.call` (seek-based gates never fire them); onUpdate count-ups on a leaf span are fine. [G comp_lint R1/R2 via sweep]
+- Delete `_shot_*`, `_dur_*`, `_debug_*` staging pages from `compositions/` before the gates (they read as unmounted comps).
+
+## Frame and safe zones (1920 x 1080)
+- Text-safe margin: all text at least 5 % inside the frame: 96 px left/right, 54 px top/bottom (owner 26 Sep 26; gate pending).
+- Presenter circle (Paul): 240 px circle at left 1640, top 708, plus a 4 px ring. While Paul is on screen nothing enters the corner
+  x >= 1600, y >= 680. Paul appears with text and glass-card layouts; in a motion-graphics-only scene (the train being thrown) he is not
+  shown: "that's just a distraction at that point. at least for now." Hidden in the hook, the CTA window and under the close card. Not gated.
+- Zones: title top-left, centre popup, lower-third, RHS panel, source credit (a corner). One text element per zone per window, counting where
+  animated elements travel mid-tween. Intentional layering carries `data-overlap-ok="reason"`. Minis add FORMAT.md "Composition layout zones".
+- RHS stat panel (ep2 anatomy): `right:0; top:0; bottom:0; width:820px; background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%,
+  rgba(6,9,13,0)); padding:90px 96px 0 170px; box-sizing:border-box`, text inside the solid zone. Order: eyebrow, place, serif sub, rows,
+  counter, counter label. Show the thing mid-frame or across the right side; a stat as text over b-roll is a miss.
+
+## Type tiers
+- Three tiers visible in every designed card: big >= 52 px, mid 26-51 px, small < 26 px. [G graphics_qc flat-type: < 3 tiers with >= 4 text nodes]
+- Roles: eyebrow Arial 700 22 px #93a3b2 tracking 6 · headline Arial Black 52 #f2f5f8 · serif sub Georgia italic 26 #d8a13a · row value
+  Arial 700 30 #dfe7ee · row label Arial 700 19 #93a3b2 tracking 4 · counter Courier New 700 84 #e74c3c · counter label Arial 700 20 #c8d3e0
+  tracking 6 · section header Arial 700 26 #93a3b2 tracking 8 · popfig 'AbrilFig' (fonts/) 150 px. Proper case, never all-lowercase.
+
+## Palette and surfaces (10 colours or fewer per episode, fixed meaning)
+- Popfig red #d0121f · death/danger #c0392b / #e74c3c · crimson #8e2020 (debris, blocks) · amber #d8a13a / #e8c56a (serif subs, values, warm
+  air) · cold #5a768f / #7fb2e5 (cold air, cool parts) · labels #93a3b2 · headlines #f2f5f8 · body #dfe7ee.
+- Background `radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%)`; never a flat #000/#0a1017 fill behind a graphic.
+- Text over footage: `.glasscard` rgba(10,16,24,.55) + backdrop blur 18px + 1px white@.14 border, radius 28 (`quotecard.glasscard` drops the
+  box-shadow) is the ONE treatment. Beige cite card rgba(232,222,200,.90) with dark text only for quoted sources over dark maps. No dark chip.
+- Dates and figures: red Abril popfig (text-shadow, 3 words or fewer, big line 16 characters or fewer, mid-screen); never a colour-block card.
+  A popfig never sits over a card or a map comp; the card row or map rail carries the number. Dark `c-*dark` fillers: bridges of 5 s or less.
+
+## Motion and exits
+- Something visibly moves for the whole window: a scan line at 6 px/s or more, dot blips at most 1.5 s apart, a rotating sweep (a 1.3 px/s
+  drift reads as a freeze). Stillness fails at a 4 s motionless stretch [G beat_density]; that is the only number.
+- Vocabulary: panel in `fromTo(x:660 -> 0, 0.7, power3.out)`; rows `fromTo(autoAlpha 0, y:24 -> 0, 0.4)` ~0.6 s apart; bars `scaleX 0 -> 1`,
+  `transformOrigin:"left center"`, 0.5 s; counters `to({v})` power4/power3.out writing textContent on a leaf, opening on the first tick's value,
+  fast then slow into the final figure, secondary stat after. Punchy eases (power3/4). Fade-only fails [G graphics_qc fade-only].
+- Exits: panels and cards slide out (`to x:980, autoAlpha:0, 0.6, power3.in`, overshooting the slide, anchored to the comp's last ~0.6 s).
+  A full-frame MG scene may end on a camera move, fade-through or cut; never a hard vanish of a single element mid-frame. ~1 s land time after
+  the last beat; never cut on motion. Duration = max(declared, last cue + tail), never estimated.
+- A mover that follows a path is positioned by GSAP only; assert it sits on the path head at three times before calling it done.
+
+## Text doctrine (owner, 26 Sep 26)
+- Like a medical or physics diagram: "they will just draw a line and mention the name of it", a figure reference, or an equation. No
+  paragraphs, no stacked eyebrows. Narration carries the explanation ("the report writing").
+- No text rides a camera shake or parallax move: text lives on a fixed HUD layer and enters when the motion settles. One reading target at a time.
+- Every MG is cued to the narration beats (`audio/<seg>.words.json`), not estimated; leave the spoken time in a comment (`/* FUEL @4.74 */`).
+  Reveals land in the voice's order and wording ("SOME HAD NO MONEY"). Whisper writes digits: cue phrases must too.
+- Eyebrow only when it names the thing ("EF5 THRESHOLD"), never decoration; never pre-reveal a number. Name things unambiguously
+  ("WHAT THEY EXPECTED · ROPE FUNNEL"). One fact, one instance per frame [G overlap_check dup-fact]. One idea per frame, no stat spray.
+- A diagram is a claim: build the mechanism, animate it, let the label name it; any spatial claim gets a map. Numerals on screen, words in voice.
+- Person card without a real photo drops the photo slot (text only, no monogram). A strike goes through the glyph; every child stays in its card.
+
+## Gate-readable authoring (what the gates actually parse)
+- [G beat_density.py] Counts only literal `tl.to/from/fromTo/set/add(` calls whose last argument is a number after `comp_consts.fold` (folds
+  `const NAME = n;`, `const NAME = {k: n}` members, `n op n`). Loop or unknown-identifier positions are skipped silently. `duration:` must be a
+  literal or an UPPER_CASE numeric const, else hard FAIL. `repeat:n` spans d + n(d + repeatDelay); `repeat:-1` spans the host. Host tag must
+  read `data-composition-id=... data-start="x" data-duration="y"` (start then duration, adjacent) or the comp is not scanned. FAIL at a gap >= 4.0 s.
+- [G sweep check 7] Positions parse as `tl.x(..., <number>);` with no `;` inside the call. FAIL when the host outlasts the timeline by > 4 s
+  ("holds") or cuts the last discrete beat by > 0.30 s (tweens > 4 s with `ease:"none"` are continuous, not beats). Check 9: stills > 6 s fail.
+- [G graphics_qc.mjs] Kinetic props: scale, scaleX, scaleY, x, y, rotation, width, strokeDashoffset, attr; 0 kinetic = fade-only (hard). Hide/
+  exit = opacity or autoAlpha 0, |x| or |y| >= 1000, a 100-999 % string, or |xPercent|/|yPercent| >= 100. Hard: text-collision (glyph boxes
+  overlap > 45 % vertically and > 35 % horizontally), out-of-frame (glyph > 24 px outside the frame), bad-crop (cover image > 200 px wide losing
+  > 35 %), empty-container, broken-image, short-duration, js-error, idle-budget (frozen > 45 % of the window or one gap > 8 s), undesigned (3+ of:
+  no gradient or backdrop blur, < 3 tiers, < 25 % kinetic, < 12 elements, > 60 % frozen). Warnings: idle > 3.0 s (2.5 s in the first 10 s) not
+  spanned by a >= 4 s tween, thin-motion, limp-easing, no-continuous-motion. Samples sit in [0.4 s, duration - 1.0 s]: a comp under ~1.4 s is
+  never measured. Staging injects index.html's `<style>`.
+- [G overlap_check.mjs] Leaf = a div/span (text/tspan in comps) with no children or only em/b/i/strong/sup/sub. Steps 0.5 s from 0.4 s; FAIL when
+  two visible leaves (opacity >= 0.15) intersect > 25 % of the smaller box: comp-internal, overlay-on-comp, sandwich (track-3 card zone over comp
+  text), card-vs-card. Overlays = every timed index element not a comp, not track 3, id not `bo-/nx-/sx-/clip-/v-`. Off-frame: an overlay leaf
+  left < 0, right > 1920 or scrollWidth > clientWidth + 2, measured with transforms reset (a runtime x tween off-frame is not caught).
+- [G blank_scan.mjs] 0.25 s steps; ink = visible text/img/video/canvas/svg leaf area (ids or classes with "drift" excluded); FAIL below 0.4 % of
+  the frame (8,294.4 px sq) for >= 0.75 s.
+- [G occlusion_check.mjs] Hosts must be `<div id="host-..." ... data-composition-src="compositions/...">`. An upper-track box with background alpha
+  >= 0.5 and > 300 x 120 px covering > 8 % of a lower comp's text leaf fails (two-letter caps labels exempt). No host CSS injected.
+- Order: `python3 scripts/run_gates.py episodes/<slug>`; minis add `node scripts/freeze_scan.mjs` (holds >= 6 s).
+
+## Verify: read the code, do not photograph it
+- Code states duration, tweens, position, size, colour, tiers and text; the gates assert them in the DOM. A frame confirms, never discovers.
+- Frames only for how a NEW or changed comp looks as a whole: `node scripts/graphics_qc.mjs episodes/<slug>` then `python3
+  scripts/comp_sheets.py episodes/<slug> renders/<cut>.mp4 <comp>[,<comp>]` (three settle frames: reveal done, mid-hold, pre-exit). One subagent
+  reads them. It FAILS only garbled or cut-off text, an element out of frame or hidden, a picture contradicting the narration, or nothing moving
+  where motion is due; shifts < 8 px, timing < 0.2 s and taste are owner notes. The orchestrator spot-checks one frame of every vision verdict.
+- Two fix rounds per comp, then ship and list the rest. Never build a measuring rig a gate already answers; a hole in a gate is fixed in the gate.
