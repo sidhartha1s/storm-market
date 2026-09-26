@@ -26,7 +26,7 @@ Teardowns + NexLev data: `references/mini-storms/teardowns/README.md`, `referenc
    rules), then repo `CLAUDE.md` "Footage rules" + "Voice" + HARD RULEs, `config.yaml`. Skip
    DESIGN.md's documentary editing architecture except: on-screen text rules, popfig, CTA contract,
    Content ID protocol.
-4. Pin current before the first render: `python3 scripts/pin_ritual.py --check-only`; exit 3 (stale) ⇒ run `python3 scripts/pin_ritual.py` (hidden schtasks) and PR the bump now, never mid-video.
+4. Pin current before the first render: `python3 scripts/pin_ritual.py --check-only`; exit 3 (stale) ⇒ run `python3 scripts/pin_ritual.py` (hidden schtasks) and PR the bump now, never mid-video; exit 4 (npm unreachable) ⇒ proceed on the current pin and note it in the kickoff summary.
 5. Generator tripwire still applies: no script may WRITE episode HTML. The breaking template
    compositions in `library/mini-storms/` are copied and hand-retuned per cut.
 
