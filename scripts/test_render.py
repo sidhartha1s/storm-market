@@ -471,8 +471,9 @@ check("assets-comps-02 NEW: a PASS renames the candidate into the stable baselin
 
 # ---------------------------------------------------------------------------
 # pin policy 26 Sep 26: preflight keeps the drift LOCK but never checks npm currency (a
-# newer release must not stop a render mid-episode); the ritual demo is the committed,
-# silent episodes/demo-pin (demo-joplin-90's gitignored media no longer exists anywhere).
+# newer release must not stop a render mid-episode); the ritual demo is the committed
+# episodes/demo-pin with its video and tone probes (demo-joplin-90's gitignored media no
+# longer exists anywhere).
 # ---------------------------------------------------------------------------
 with tempfile.TemporaryDirectory() as d:
     repo = Path(d)
@@ -527,6 +528,7 @@ class _Out:
 
 pin_ritual.run = lambda cmd, **k: _Out("24.0\n" if "format=duration" in cmd else "")
 pin_ritual.FFPROBE = pin_ritual.FFMPEG = Path("ffmpeg")
+_m = {}
 try:
     _m = pin_ritual.measure(Path("silent.mp4"))
     check("pin-review NEW: measure() on a silent render returns rms_db None without exiting",
@@ -558,6 +560,60 @@ check("pin-review NEW: a video-region SSIM under SSIM_MIN is drift",
       pin_ritual.compare(good, dict(good), 0.997, 0.95) != [])
 check("pin-review NEW: a baseline record without video_luma/workers is re-rendered",
       '"video_luma" not in record or "workers" not in record' in main_src)
+
+# (c) the baseline self-check is absolute: a flat trace equals itself, so compare() alone passes it
+check("pin-review2 NEW: a good baseline (trace spans >= VIDEO_LUMA_SPAN_MIN) has no problems",
+      pin_ritual.baseline_problems(good) == [], pin_ritual.baseline_problems(good))
+_flat = {**good, "video_luma": [159.3] * 54}
+check("pin-review2 NEW: a flat video trace fails the baseline self-check",
+      pin_ritual.compare(_flat, dict(_flat), None) == [] and pin_ritual.baseline_problems(_flat) != [])
+check("pin-review2 NEW: a trace spanning just under VIDEO_LUMA_SPAN_MIN fails",
+      pin_ritual.baseline_problems({**good, "video_luma": [100.0, 100.0 + pin_ritual.VIDEO_LUMA_SPAN_MIN - 0.1]}) != [])
+check("pin-review2 NEW: a silent baseline fails the self-check",
+      pin_ritual.baseline_problems({**good, "rms_db": None}) != [])
+# (d) audio is read over the tone's mount window, not the whole file
+check("pin-review2 NEW: astats reads only TONE_WIN (inside the 3-7 s tone mount)",
+      pin_ritual.TONE_WIN == (3.1, 6.9) and "atrim=start={TONE_WIN[0]}:end={TONE_WIN[1]},astats" in main_src)
+
+# (b) --baseline: measure, validate, THEN write; old vs new printed; no "Commit" before validation
+def _baseline_run(rec):
+    with tempfile.TemporaryDirectory() as d:
+        bj = Path(d) / "pin_baseline.json"
+        bj.write_text(json.dumps({"version": "0.8.41", "demo": "demo-joplin-90"}), encoding="utf-8")
+        saved = (pin_ritual.BASELINE_JSON, pin_ritual.render, pin_ritual.measure,
+                 pin_ritual.setup, pin_ritual.parse_pin, sys.argv)
+        pin_ritual.BASELINE_JSON = bj
+        pin_ritual.render = lambda v, mp4: None
+        pin_ritual.measure = lambda mp4: dict(rec)
+        pin_ritual.setup = lambda: None
+        pin_ritual.parse_pin = lambda repo: "0.8.78"
+        sys.argv = ["pin_ritual.py", "--baseline"]
+        out, err = io.StringIO(), io.StringIO()
+        try:
+            with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+                try:
+                    code = pin_ritual.main()
+                except SystemExit as e:
+                    code = e.code
+        finally:
+            (pin_ritual.BASELINE_JSON, pin_ritual.render, pin_ritual.measure,
+             pin_ritual.setup, pin_ritual.parse_pin, sys.argv) = saved
+        return code, json.loads(bj.read_text(encoding="utf-8")), out.getvalue(), err.getvalue()
+
+_code, _written, _out, _err = _baseline_run(_flat)
+check("pin-review2 NEW: --baseline on a flat trace exits 2 and leaves pin_baseline.json untouched",
+      _code == 2 and _written.get("version") == "0.8.41", (_code, _written))
+check("pin-review2 NEW: --baseline never prints Commit when validation fails",
+      "Commit" not in _out + _err, _out + _err)
+_code, _written, _out, _err = _baseline_run(good)
+check("pin-review2 NEW: --baseline on a good record exits 0 and writes it",
+      _code == 0 and _written.get("version") == "0.8.78" and _written.get("video_luma") == good["video_luma"],
+      (_code, _written))
+check("pin-review2 NEW: --baseline prints old vs new version, demo and workers",
+      all(t in _out for t in ("version 0.8.41 -> 0.8.78", f"demo demo-joplin-90 -> {pin_ritual.DEMO.name}",
+                              "workers None -> 2")), _out)
+check("pin-review2 NEW: --baseline prints Commit only after the summary line",
+      "Commit" in _out and _out.index("Commit") > _out.index("re-recorded"), _out)
 
 print()
 if FAILS:
