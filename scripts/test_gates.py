@@ -188,7 +188,6 @@ with tempfile.TemporaryDirectory() as d:
     code, out = run("beat_density.py", ep_dead)
     check("beat_density: exits 1 on a composition with a >=4s motionless stretch (was always 0)",
           code == 1, f"(exit {code})\n{out[-400:]}")
-    # Same dead comp, host attributes in a different order: must still be checked, not skipped.
     idx = ep_dead / "index.html"
     idx.write_text(idx.read_text(encoding="utf-8").replace(
         'data-composition-id="g1" data-start="0" data-duration="6.0"',
@@ -196,7 +195,6 @@ with tempfile.TemporaryDirectory() as d:
     code, out = run("beat_density.py", ep_dead)
     check("beat_density: host attribute order does not matter (was a silent skip)",
           code == 1 and "1/1" in out, f"(exit {code})\n{out[-400:]}")
-    # A host with no numeric data-duration and an unmounted comp file are reported, not silently skipped.
     idx.write_text(idx.read_text(encoding="utf-8").replace('data-duration="6.0" ', ''), encoding="utf-8")
     (ep_dead / "compositions" / "orphan.html").write_text(dead_comp, encoding="utf-8")
     code, out = run("beat_density.py", ep_dead)
