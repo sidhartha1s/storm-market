@@ -99,8 +99,9 @@ def scan_narration(script_md, terms, hits):
     if segs:
         for sid, seg_text in segs:
             for pattern, severity, alternatives, form in terms:
-                if pattern.search(seg_text):
-                    hits.append((script_md, sid, severity, form, alternatives))
+                m = pattern.search(seg_text)
+                if m:
+                    hits.append((script_md, sid, severity, m.group(0), alternatives))
         return
     # Genuine unsupported-but-real format (ep-1974's inline-bold '## SCRIPT' prose, no
     # blockquotes) — never silently skip a non-empty script, but never pretend it's the
