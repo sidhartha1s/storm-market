@@ -8,7 +8,7 @@ Read this, then `learnings/mg.md`. [G] = a gate fails it (gate named). A bespoke
 - Assets `media/x` (project-root relative). gsap is vendored per episode, no CDN; MotionPathPlugin is not bundled (use per-leg `attr` tweens).
 - GSAP/WAAPI only, never CSS @keyframes (kills fast-capture). Every `set`/`to` has an explicit position. Never `repeat:-1` on a main timeline (duration 1e10); ambient loops use finite repeats. Tween transforms, never `width`/`height`/`letterSpacing`.
 - No initial CSS transform on anything GSAP transforms (`tl.set` at 0); no static SVG `transform=` on a GSAP mover; nested SVG pivots use `svgOrigin`; dash lengths are `ceil(len)+1`, never typed. A path follower moves by GSAP only; assert it sits on the path head at three times.
-- Text is pre-authored per element and toggled with autoAlpha: never written on a node with children, never in onStart/onComplete/onRepeat/ `tl.call` (seek-based gates never fire them); onUpdate count-ups on a leaf span are fine. [G comp_lint R1/R2 via sweep]
+- Text is pre-authored per element and toggled with autoAlpha: never written on a node with children, never in onStart/onComplete/onRepeat/`tl.call` (seek-based gates never fire them); onUpdate count-ups on a leaf span are fine. [G comp_lint R1/R2 via sweep]
 - Delete `_shot_*`, `_dur_*`, `_debug_*` staging pages from `compositions/` before the gates.
 
 ## Frame and safe zones (1920 x 1080)
