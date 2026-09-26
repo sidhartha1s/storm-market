@@ -36,7 +36,7 @@ def parse_pin(repo):
     return m.group(1) if m else None
 
 
-def version_check(repo, mode):
+def version_check(repo):
     """Pin drift (offline): config.yaml and the npx pin in the render scripts disagreeing
     means the render does not run the version anyone reviewed — hard fail.
 
@@ -107,9 +107,7 @@ def main():
     # directly: the render script calls this file and stops on a non-zero exit.
     here = Path(__file__).resolve().parent
     episode = Path(sys.argv[1]) if len(sys.argv) > 1 else Path.cwd()
-    mode = sys.argv[2] if len(sys.argv) > 2 else "full"
-
-    rc = version_check(here.parent, mode)
+    rc = version_check(here.parent)
     if rc:
         print("[preflight] REFUSING TO RENDER — version pin is not trustworthy (see above).",
               file=sys.stderr)
