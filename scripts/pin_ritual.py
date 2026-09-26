@@ -262,12 +262,25 @@ def compare(base, cand, ssim_all, ssim_video=None):
             if abs(bs - cs) > BLACK_TOL or abs(be - ce) > BLACK_TOL:
                 drifts.append(f"black segment moved ({bs:.2f}-{be:.2f}) -> "
                               f"({cs:.2f}-{ce:.2f})")
-    if (base["rms_db"] is None) != (cand["rms_db"] is None):
-        drifts.append(f"audio stream {base['rms_db']} -> {cand['rms_db']} (one side silent)")
-    elif base["rms_db"] is not None and abs(base["rms_db"] - cand["rms_db"]) > RMS_TOL:
+    # demo-pin mounts a tone, so both sides must carry audio: silent == mixer unverified
+    if base["rms_db"] is None or cand["rms_db"] is None:
+        drifts.append(f"audio RMS {base['rms_db']} -> {cand['rms_db']} dB "
+                      "(a silent render: the mixer probe was not measured)")
+    elif abs(base["rms_db"] - cand["rms_db"]) > RMS_TOL:
         drifts.append(f"RMS {base['rms_db']:.3f} -> {cand['rms_db']:.3f} dB")
+    bl, cl = base.get("video_luma") or [], cand.get("video_luma") or []
+    if not bl or len(bl) != len(cl):
+        drifts.append(f"video-probe frames {len(bl)} -> {len(cl)} (region unmeasured or "
+                      "frame count moved)")
+    else:
+        worst = max(abs(b - c) for b, c in zip(bl, cl))
+        if worst > VIDEO_LUMA_TOL:
+            drifts.append(f"video-probe luma moved {worst:.2f} > {VIDEO_LUMA_TOL} "
+                          "(seek/capture of the <video> changed)")
     if ssim_all is not None and ssim_all < SSIM_MIN:
         drifts.append(f"SSIM {ssim_all:.4f} < {SSIM_MIN}")
+    if ssim_video is not None and ssim_video < SSIM_MIN:
+        drifts.append(f"video-region SSIM {ssim_video:.4f} < {SSIM_MIN}")
     return drifts
 
 
