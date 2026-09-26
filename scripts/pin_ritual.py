@@ -304,7 +304,7 @@ def main():
         return 3
 
     bump_pins(latest)
-    BASELINE_JSON.write_text(json.dumps({"version": latest, **cand}, indent=2),
+    BASELINE_JSON.write_text(json.dumps({"version": latest, "demo": DEMO.name, **cand}, indent=2),
                              encoding="utf-8")
     if base_has_mp4:
         base_mp4.unlink()
