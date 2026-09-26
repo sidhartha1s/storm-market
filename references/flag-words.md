@@ -35,12 +35,13 @@ quote that was not actually said.
 | decapitated | hard | suffered a fatal head injury | Paraphrase to the plain fact of a fatal injury; the anatomical detail adds nothing. |
 | crushed to death | hard | was pinned and did not survive; did not survive being trapped under debris | Names the mechanism without the algorithm-risk verb. |
 | burned alive | hard | did not escape the flames; was overtaken by the fire before help arrived | Same fact, no "alive" pairing with a violent verb. |
-| bomb / explode / explosion | hard | hit with sudden, overwhelming force; tore through in an instant; leveled the block in seconds | Almost always a lazy simile for storm force in this niche, not a literal event; the literal force is easy to describe directly. |
+| bomb / explode | hard | hit with sudden, overwhelming force; tore through in an instant; leveled the block in seconds | Almost always a lazy simile for storm force in this niche, not a literal event; the literal force is easy to describe directly. |
+| explosion | soft | (as above, when it IS a simile) hit with sudden force; tore through in an instant | Literal event word OK; never as a simile. A volcanic explosion (ms-krakatau) or a sourced quote naming one is a real, citable event, not a metaphor for storm force. |
 | war zone | hard | looked unrecognizable; resembled a demolition site | Cliché comparison, also banned by humanise-rules' "no borrowed metaphors". |
 | shooting | hard | filming; recording | Rare in this niche outside "storm chasers were filming" — say "filming", not "shooting", and the ambiguity never comes up. |
 | gun | hard | (no legitimate use in this niche) | No weather-documentary sentence needs this word; if it appears, rewrite the sentence. |
 | horror / horrific | hard | photographs show [specific detail]; witnesses described [specific, sourced detail] | Narrator adjective already banned by CLAUDE.md ("fear only as a sourced fact"); doubles as an algorithm risk. |
-| terror / terrifying | hard | survivors described [specific detail] | Same as above — replace the adjective with the sourced specific it is standing in for. |
+| terror / terrifying / terrorized | hard | survivors described [specific detail] | Same as above — replace the adjective with the sourced specific it is standing in for. "Terrorized" is not a plain suffix of "terror" (-ize infix), so it is its own listed form, not left to the suffix rule. |
 | nightmare | hard | the worst hour of their lives; [specific, literal detail] | Cliché metaphor, already covered by humanise-rules' banned-metaphor list. |
 | apocalypse / apocalyptic | hard | the scale of the destruction; the extent of the damage | Hyperbole with no factual content. |
 | doom / doomed | hard | the outlook worsened; the odds turned against them | Sensational framing; the underlying fact is usually a plain probability or forecast statement. |
