@@ -458,6 +458,49 @@ check("assets-comps-02 NEW: the record==pin shortcut also checks the mp4 is stil
 check("assets-comps-02 NEW: a PASS renames the candidate into the stable baseline slot",
       "cand_mp4.replace(new_base)" in main_src)
 
+# ---------------------------------------------------------------------------
+# pin policy 26 Sep 26: preflight keeps the drift LOCK but never checks npm currency (a
+# newer release must not stop a render mid-episode); the ritual demo is the committed,
+# silent episodes/demo-pin (demo-joplin-90's gitignored media no longer exists anywhere).
+# ---------------------------------------------------------------------------
+with tempfile.TemporaryDirectory() as d:
+    repo = Path(d)
+    (repo / "scripts").mkdir()
+    (repo / "config.yaml").write_text('render:\n  hyperframes_version: "0.8.78"\n', encoding="utf-8")
+    (repo / "scripts" / "render.cmd").write_text("call npx hyperframes@0.8.78 render .\n", encoding="utf-8")
+    orig_pf_run = render_preflight.subprocess.run
+
+    def _no_network(*a, **k):
+        raise AssertionError(f"version_check spawned {a[0] if a else k}")
+    render_preflight.subprocess.run = _no_network
+    try:
+        check("pin-policy NEW: agreeing pins pass with no npm lookup (currency is kickoff's job)",
+              render_preflight.version_check(repo) == 0)
+        (repo / "scripts" / "draft.cmd").write_text("npx hyperframes@0.8.41 render .\n", encoding="utf-8")
+        check("pin-policy NEW: a .cmd pinned to another version is still PIN DRIFT (exit 5)",
+              render_preflight.version_check(repo) == 5)
+    finally:
+        render_preflight.subprocess.run = orig_pf_run
+check("pin-policy NEW: RENDER_PIN_STALE_OK is gone from preflight",
+      "RENDER_PIN_STALE_OK" not in (S / "render_preflight.py").read_text(encoding="utf-8"))
+
+check("pin-policy NEW: the ritual demo is episodes/demo-pin", pin_ritual.DEMO.name == "demo-pin")
+demo_refs = []
+for f in [pin_ritual.DEMO / "index.html", *(pin_ritual.DEMO / "compositions").glob("*.html")]:
+    demo_refs += re.findall(r'(?:src="|url\(\')([^"\'#:]+\.(?:js|ttf|html|woff2?|png|jpg|mp4|wav|mp3))',
+                            f.read_text(encoding="utf-8"))
+missing = [r for r in demo_refs if not (pin_ritual.DEMO / r).exists()]
+check("pin-policy NEW: every file demo-pin references exists", demo_refs and not missing, missing)
+ignored = subprocess.run(["git", "-C", str(pin_ritual.REPO), "check-ignore", *demo_refs],
+                         capture_output=True, text=True).stdout.split()
+check("pin-policy NEW: nothing demo-pin references is gitignored (a fresh worktree can render it)",
+      not ignored, ignored)
+silent = {"duration": 24.0, "blackdetect": [], "rms_db": None}
+check("pin-policy NEW: a silent demo compares clean against a silent baseline",
+      pin_ritual.compare(silent, dict(silent), 0.997) == [])
+check("pin-policy NEW: audio appearing on one side only is drift",
+      pin_ritual.compare(silent, {**silent, "rms_db": -18.0}, 0.997) != [])
+
 print()
 if FAILS:
     print(f"{len(FAILS)} FAILED: {FAILS}")
