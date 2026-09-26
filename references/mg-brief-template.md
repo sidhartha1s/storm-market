@@ -63,7 +63,7 @@ the 24° guide direction (Δx ≈ −520, Δy ≈ +330), rotation −18°, then 
 7. SW/NE, SEA LEVEL, CALDERA FLOOR −279 M, 500 M bar, and the exaggeration caption are all present and legible.
 
 ## 5. PANEL TEXT (exact) and CUES
-Right panel (740 px, full height, gradient `linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0))`, padding 96px 70px 0 120px):
+Right panel (740 px, full height, gradient `linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0))`, padding 96px 96px 0 120px):
 eyebrow "THE SLOPE IT FELL FROM" · headline "It was gentler." · italic sub "the fall took the steep face and left a ramp" ·
 row 1 big "24°" (blue) label "UNDER WATER, BEFORE" sub "steep, overloaded" · row 2 big "16°" (red) label "UNDER WATER, AFTER"
 sub "lower, wider ramp" · note "The island growing back today is growing on different ground than the one that fell."
