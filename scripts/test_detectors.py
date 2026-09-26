@@ -267,6 +267,35 @@ shutil.rmtree(ep, ignore_errors=True)
 assert '[idle]' not in r.stdout, r.stdout
 print('graphics_qc self-check PASS (short-duration vs host window, stillness one number: 4 s hard)')
 
+# A full-frame canvas (Three.js/WebGL) is a rendered background the DOM cannot read. Before
+# 26 Sep 26 it counted as "flat background", which with 1 type tier and few DOM elements made every
+# WebGL comp 'undesigned' (MG eval 2). Old code: undesigned; new code: not.
+CANVAS_FILES = {
+    'index.html':
+        '<div id="host-g-cv" data-composition-id="g-cv" data-composition-src="compositions/g-cv.html" '
+        'data-start="0" data-duration="3" data-track-index="2" data-width="1920" data-height="1080"></div>\n',
+    'compositions/g-cv.html':
+        '<!doctype html><html><head><meta charset="UTF-8"></head><body><template>\n'
+        '<div id="root" style="position:absolute;inset:0;background:#000">\n'
+        '  <canvas id="g-cv-gl" width="1920" height="1080" style="position:absolute;left:0;top:0"></canvas>\n'
+        '  <span id="g-cv-lbl" style="position:absolute;left:300px;top:300px;font-size:40px;color:#fff">EF5</span>\n'
+        '</div>\n<script>\nwindow.__timelines = window.__timelines || {};\n'
+        'const tl = gsap.timeline({ paused: true });\n'
+        "tl.fromTo('#g-cv-lbl', { x: 0 }, { x: 300, duration: 3, ease: 'power3.out' }, 0);\n"
+        "window.__timelines['g-cv'] = tl;\n</script>\n</template></body></html>\n",
+}
+ep = _stage_ep(CANVAS_FILES)
+r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
+assert 'undesigned' not in r.stdout, r.stdout + r.stderr
+old_gq = S / '_old_gqc_canvas_tmp.mjs'
+old_gq.write_text(subprocess.run(['git', 'show', 'f3a6fece:scripts/graphics_qc.mjs'], cwd=S.parent,
+                                 capture_output=True, text=True).stdout, encoding='utf-8')
+r_old = subprocess.run(['node', str(old_gq), str(ep)], capture_output=True, text=True)
+old_gq.unlink()
+assert 'ERROR [undesigned] flat background' in r_old.stdout, f'old code should flag the canvas comp: {r_old.stdout}'
+shutil.rmtree(ep, ignore_errors=True)
+print('graphics_qc self-check PASS (a full-frame canvas counts as a designed background)')
+
 # ---------------------------------------------------------------- settle frames for the vision pass
 # The old reader sampled every 3 s from the comp start, so frame 1 was always mid-reveal. The frames
 # must come from the tween schedule: reveal ends 1.2 s (+0.1), exit slide starts 8.5 s (-0.25), and
