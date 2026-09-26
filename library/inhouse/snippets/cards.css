@@ -81,7 +81,7 @@ video { width: 100%; height: 100%; object-fit: cover; }
 /* ---- dispatch/radio-style two-line card (ep6) ---- */
 .dispatchlab { position: absolute; left: 0; right: 0; top: 470px; text-align: center; z-index: 6; }
 .dispatchlab .d1 { display: table; margin: 0 auto; font-family: 'Courier New', monospace; font-weight: 700; font-size: 40px; color: #e8c56a; letter-spacing: 4px; padding: 10px 30px; }
-.dispatchlab .d2 { display: table; margin: 14px auto 0; font-family: Arial, sans-serif; font-size: 22px; letter-spacing: 3px; color: #93a3b2; background: rgba(5,8,12,0.6); padding: 6px 18px; }
+.dispatchlab .d2 { display: table; margin: 14px auto 0; font-family: Arial, sans-serif; font-size: 22px; letter-spacing: 3px; color: #93a3b2; padding: 6px 18px; }
 
 /* ---- Abril figure popup — date/figure reveal (ep6; owner 2026-08-16: replaces red stamp
    blocks; red eerie, shadow, no bg block). @font-face path is relative to the episode that
