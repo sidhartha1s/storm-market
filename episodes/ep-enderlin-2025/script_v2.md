@@ -66,7 +66,7 @@ end to end.
 
 **Picture:** map pin on Highway 46 · text-only name cards "Michael and Katherine Pfaff-Dehn · 73", then "Marcario Lucio · 89".
 
-One mile east of town, on Highway forty six, it hit the home of Michael and Katherine Pfaff-Dehn.
+One mile east of town, on Highway forty six, it hit the home of a couple named Michael and Katherine.
 They were both seventy three, and neither of them
 survived. On another stretch of the path, it hit the farm of Marcario Lucio, who was eighty nine. His wife, Roberta,
 made it through the night, and the storm took Marcario's life. No North Dakota tornado had taken that many lives since
