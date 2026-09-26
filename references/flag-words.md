@@ -15,6 +15,11 @@ fails the build. `soft` = the word is not banned outright (it is often the plain
 factual choice, or genuinely hard to avoid in a disaster documentary), but the alternative
 reads better in TTS narration and should be the default; the gate warns, does not fail.
 
+**Inflections.** The gate matches every listed term plus its plain English suffixes
+(s/es/d/ed/ing) automatically — "kill" also catches "kills" and "killing" without a separate
+row. A word whose inflection isn't plain concatenation (bloody -> bloodied, terror -> terrorized)
+is listed as its own extra form in that row instead of being left to the suffix rule.
+
 **Quotes.** A real quote from an NWS Service Assessment, a NIST report, a news archive or a
 survivor that contains a flagged word gets paraphrased ("the report called it the deadliest
 tornado on record" instead of quoting the flagged word verbatim) — never fabricate a cleaner
