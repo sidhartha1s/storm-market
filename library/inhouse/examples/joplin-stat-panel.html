@@ -88,6 +88,7 @@ window.__timelines = window.__timelines || {};
   tl.to(cnt, {v:158, duration:1.4, ease:"power3.out", onUpdate:function() { /* target: Joplin 2011 death toll */
       const el = document.getElementById("joplinstat-deaths"); if (el) el.textContent = Math.round(cnt.v);
   } }, 8.6);
+  tl.to(P+"deaths", {scale:1.04, transformOrigin:"left center", duration:1.2, ease:"sine.inOut", yoyo:true, repeat:4}, 10.0); // pulses end before the slide-out
   tl.fromTo(P+"gone", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.5}, 12.5);
   tl.to(P+"panel", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 16.2); /* host window ~17s — exit rides the cut */
   window.__timelines["joplinstat"] = tl;
