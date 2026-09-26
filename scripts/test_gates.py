@@ -181,9 +181,15 @@ with tempfile.TemporaryDirectory() as d:
 # ===================================================================================
 # 3. beat_density.py — exit code on a DEAD (>=4s motionless) composition
 # ===================================================================================
+def bd_comp(js, dom='<div id="g" style="position:absolute;left:100px;top:100px;width:200px;height:80px;background:#c33"></div>'):
+    """A real composition: beat_density reads the built timeline, so the fixture must register one."""
+    return ('<template><div id="root" style="position:absolute;inset:0">' + dom + '</div><script>'
+            'window.__timelines = window.__timelines || {}; const tl = gsap.timeline({ paused: true });'
+            + js + ' window.__timelines["g1"] = tl;</script></template>')
+
+
 with tempfile.TemporaryDirectory() as d:
-    dead_comp = ('<template><div id="g"></div>'
-                '<script>tl.to("#g", {duration: 0.1}, 0.1);</script></template>')
+    dead_comp = bd_comp('tl.to("#g", {x: 10, duration: 0.1}, 0.1);')
     ep_dead = make_ep(Path(d) / "dead", comp_html=dead_comp, comp_window=6.0)
     code, out = run("beat_density.py", ep_dead)
     check("beat_density: exits 1 on a composition with a >=4s motionless stretch (was always 0)",
