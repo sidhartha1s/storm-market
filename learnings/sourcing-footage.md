@@ -2,6 +2,16 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 2026-09-17 · Dujuan shorts: a zoompan on a small still steps instead of gliding (ported from the closed shorts PR)
+- A slow `zoompan` on a 1920x1080 still gave 76 unique frames out of 240: zoompan rounds its crop window to whole
+  source pixels, so the zoom advances only every 2 to 3 frames and reads as jerky. Fix, measured 237/240 unique
+  frames: fetch the still at the output aspect and at least 2x the output size, upscale with lanczos, and ease the
+  zoom with a cosine, never linearly:
+  `scale=4320:7680:flags=lanczos,zoompan=z='1+0.35*(1-cos(PI*on/(N-1)))/2':d=N:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s=1080x1920:fps=30`
+  (9:16 shown; use 3840x2160 into s=1920x1080 for landscape). Never crop-and-upscale a landscape zoom into 9:16.
+- Satellite stills: fetch every candidate layer small, pick by eye, then fetch the winner large. SNPP VIIRS carried a
+  swath seam; NOAA-20 VIIRS was clean for the same box.
+
 ## 2026-09-11 · Krakatau #4 mistake ledger: which gate should have caught what
 - Not catchable by code: what a clip shows. provenance.csv now carries a `shot` column (what is visible, including
   burned-in chyrons) for every broadcast cutter, written from one labelled contact grid read by a subagent; the
