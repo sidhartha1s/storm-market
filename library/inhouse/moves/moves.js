@@ -8,8 +8,7 @@
    Per-frame work goes through onFrame(): one onUpdate per timeline, fired after every child tween
    has rendered, so any seek order gives the same frame. Drive the timeline with tl.time() or
    tl.progress(); tl.seek() suppresses onUpdate by default.
-   GATE: beat_density.py counts only literal tl.<call>(..., <number>) in the composition source.
-   Positions inside moves are at-relative, so the gate cannot see them (README "Gates").
+   GATE: beat_density.py reads the built timeline; onFrame work counts where it changes the page (README "Gates").
    ============================================================================ */
 (function (root) {
   'use strict';

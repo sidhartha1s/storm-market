@@ -133,7 +133,7 @@ window.__timelines = window.__timelines || {};
   gsap.registerPlugin(DrawSVGPlugin, CustomEase, SplitText);
   const M = window.MOVES, $ = (id) => document.getElementById(id);
   const tl = gsap.timeline({ paused: true });
-  /* master clock: a literal whole-window beat for beat_density; honest only because rain, drift and grain move every frame */
+  /* timeline length only: a {} clock is not motion for the gates; rain, drift and grain are */
   tl.to({}, { duration: 10 }, 0);
 
   /* camera, weather, finish */

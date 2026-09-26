@@ -17,7 +17,7 @@ Seeded, seek-safe GSAP building blocks lifted from the showcase MG `g-tanker-thr
 
 ```js
 const tl = gsap.timeline({ paused: true });
-tl.to({}, { duration: 10 }, 0);                       // literal clock; see Gates
+tl.to({}, { duration: 10 }, 0);                       // timeline length only; see Gates
 const rig = M.cameraRig(tl, { shake: $('rig'), layers: [[$('w-bg'), 0.4], [$('w-world'), 1]] }, { z: 1.8 });
 const A = { x0: 470, y0: 567, x1: 1724, y1: 792, apex: 220, duration: 1.6, ox: 60, oy: 8 };
 const th = M.arcThrow(tl, { pos: $('b-pos'), rot: $('b-rot'), sq: $('b-sq') }, 3.1, A);
@@ -34,5 +34,5 @@ window.__timelines['my-comp'] = tl;
 - Keep the flight arc under the counter and payoff bands: check the apex screen y at the camera zoom during flight, not only at rest.
 
 ## Gates
-- `beat_density.py` counts only literal `tl.<call>(..., <number>)` in the composition source; beats inside moves are invisible to it. A literal whole-window clock passes the gate, so mount it only when a continuous move (drift, rain, grain) really runs. Root fix: count beats from the built timeline, not a regex.
+- `beat_density.py` reads the built timeline, so tweens inside moves count, and the `onFrame` hub counts wherever it changes the page (drift, rain, grain, counters). A `{}` clock only sets the timeline length and is never motion, so a comp whose moves stop for 4 s fails.
 - Drive with `tl.time()` / `tl.progress()`; `tl.seek()` suppresses onUpdate by default.

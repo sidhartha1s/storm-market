@@ -2,7 +2,7 @@
 
 Comps are authored with a `const CUES = { six: 6.84, ... }` block (word cues from words.json) and a
 `const DUR = 14.45` window, and place tweens at `CUES.six`, `DUR - 0.6`, `CUES.dark + 1.5`. The gates
-(sweep check 7, beat_density) parse tween positions and durations with regexes that only see numeric
+(sweep check 7; beat_density until it moved to the built timeline) parse tween positions and durations with regexes that only see numeric
 literals, so every cue-positioned tween was invisible to them (ep-1974, 21 Sep 26: 14 false "holds",
 one hard beat_density exit). This folds `NAME.key`, bare `NAME` numeric consts, and arithmetic on
 literals into literals. Unknown identifiers are left alone: the gates then report them as before.
