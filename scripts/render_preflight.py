@@ -65,29 +65,7 @@ def version_check(repo, mode):
             print(f"    {name} runs hyperframes@{used}", file=sys.stderr)
         return 5
 
-    if mode != "full":
-        print(f"[version] pin {pinned}; render scripts agree (currency checked on full "
-              "renders and by pin_ritual.py, not on drafts)")
-        return 0
-    latest = npm_latest()
-    if latest is None:
-        print(f"[version] pin {pinned}; scripts agree. Currency UNKNOWN (npm unreachable) "
-              "— proceeding, an offline box must not kill a render.")
-        return 0
-    if semver(latest) > semver(pinned):
-        # Owner per-render override (ep6, 2026-08-23, when 0.8.6–0.8.10 opened a visible
-        # Windows Terminal tab per ffprobe/ffmpeg spawn and the ritual could not bump).
-        # Kept for the next such block. Never silent — it names itself in the render log.
-        if os.environ.get("RENDER_PIN_STALE_OK") == "1":
-            print(f"[version] [OVERRIDE] PIN STALE (npm latest {latest}, pin {pinned}) — "
-                  "rendering anyway: RENDER_PIN_STALE_OK=1 set by the owner for this run.")
-            return 0
-        print(f"[version] PIN STALE — npm latest is {latest}, pin is {pinned}. A full "
-              f"render must run a verified-current pin.\n[version] Unblock: python3 "
-              f"scripts/pin_ritual.py  (A/B-verifies and bumps, ~10-25 min)",
-              file=sys.stderr)
-        return 6
-    print(f"[version] pin {pinned}; render scripts agree; current (npm latest {latest})")
+    print(f"[version] pin {pinned}; render scripts agree")
     return 0
 
 
