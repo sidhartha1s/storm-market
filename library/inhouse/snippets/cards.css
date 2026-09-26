@@ -42,8 +42,8 @@ video { width: 100%; height: 100%; object-fit: cover; }
 
 /* ---- lower-third location/time card (ep6, most evolved lineage; ep3 adds `inset:auto`) ---- */
 .lt { position: absolute; inset: auto; left: 110px; bottom: 110px; z-index: 5; font-family: Arial, sans-serif; }
-.lt .lt-loc { display: table; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 52px; color: #f2f5f8; background: rgba(5,8,12,0.78); padding: 4px 16px; text-shadow: 0 3px 24px rgba(0,0,0,0.85); }
-.lt .lt-time { display: table; font-weight: 700; font-size: 27px; color: #f5d98b; background: rgba(5,8,12,0.78); padding: 6px 14px; margin-top: 10px; letter-spacing: 1px; }
+.lt .lt-loc { display: table; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 52px; color: #f2f5f8; padding: 4px 16px; text-shadow: 0 3px 24px rgba(0,0,0,0.85); }
+.lt .lt-time { display: table; font-weight: 700; font-size: 27px; color: #f5d98b; padding: 6px 14px; margin-top: 10px; letter-spacing: 1px; }
 
 /* ---- generic glass popup chip (ep6) ---- */
 .popup { position: absolute; font-family: Arial, sans-serif; font-weight: 700;
