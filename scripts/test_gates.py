@@ -195,7 +195,14 @@ with tempfile.TemporaryDirectory() as d:
         'data-duration="6.0" data-composition-id="g1" data-track-index="3" data-start="0"'), encoding="utf-8")
     code, out = run("beat_density.py", ep_dead)
     check("beat_density: host attribute order does not matter (was a silent skip)",
-          code == 1 and "0/1" not in out, f"(exit {code})\n{out[-400:]}")
+          code == 1 and "1/1" in out, f"(exit {code})\n{out[-400:]}")
+    # A host with no numeric data-duration and an unmounted comp file are reported, not silently skipped.
+    idx.write_text(idx.read_text(encoding="utf-8").replace('data-duration="6.0" ', ''), encoding="utf-8")
+    (ep_dead / "compositions" / "orphan.html").write_text(dead_comp, encoding="utf-8")
+    code, out = run("beat_density.py", ep_dead)
+    check("beat_density: WARNs on a host without data-duration and on an unmounted comp",
+          "host 'g1' has no numeric data-duration" in out and "orphan.html is not mounted" in out,
+          f"(exit {code})\n{out[-400:]}")
 
 with tempfile.TemporaryDirectory() as d:
     live_comp = ('<template><div id="g"></div>'
