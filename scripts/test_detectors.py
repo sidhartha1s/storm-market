@@ -110,9 +110,9 @@ def _stage_ep(files):
     return ep
 
 
-def old_rev(rel_path, tmp_name):
+def old_rev(rel_path, tmp_name, rev='ad3c9871'):
     out = S / tmp_name
-    out.write_text(subprocess.run(['git', 'show', f'ad3c9871:scripts/{rel_path}'],
+    out.write_text(subprocess.run(['git', 'show', f'{rev}:scripts/{rel_path}'],
                                    cwd=S.parent, capture_output=True, text=True).stdout, encoding='utf-8')
     return out
 
@@ -180,9 +180,7 @@ REL_FILES = {
 ep = _stage_ep(REL_FILES)
 r = subprocess.run(['node', str(S / 'overlap_check.mjs'), str(ep)], capture_output=True, text=True)
 assert 'not registered' not in r.stdout, r.stdout + r.stderr
-old_ov = S / '_old_overlap_rel_tmp.mjs'
-old_ov.write_text(subprocess.run(['git', 'show', 'f3a6fece:scripts/overlap_check.mjs'], cwd=S.parent,
-                                 capture_output=True, text=True).stdout, encoding='utf-8')
+old_ov = old_rev('overlap_check.mjs', '_old_overlap_rel_tmp.mjs', 'f3a6fece')
 r_old = subprocess.run(['node', str(old_ov), str(ep)], capture_output=True, text=True)
 old_ov.unlink()
 assert 'comp timeline not registered when staged: g-rel' in r_old.stdout, \
@@ -287,9 +285,7 @@ CANVAS_FILES = {
 ep = _stage_ep(CANVAS_FILES)
 r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
 assert 'undesigned' not in r.stdout, r.stdout + r.stderr
-old_gq = S / '_old_gqc_canvas_tmp.mjs'
-old_gq.write_text(subprocess.run(['git', 'show', 'f3a6fece:scripts/graphics_qc.mjs'], cwd=S.parent,
-                                 capture_output=True, text=True).stdout, encoding='utf-8')
+old_gq = old_rev('graphics_qc.mjs', '_old_gqc_canvas_tmp.mjs', 'f3a6fece')
 r_old = subprocess.run(['node', str(old_gq), str(ep)], capture_output=True, text=True)
 old_gq.unlink()
 assert 'ERROR [undesigned] flat background' in r_old.stdout, f'old code should flag the canvas comp: {r_old.stdout}'
@@ -315,8 +311,7 @@ DRIVEN_FILES = {
 ep = _stage_ep(DRIVEN_FILES)
 r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
 assert 'fade-only' not in r.stdout and '[idle]' not in r.stdout, r.stdout + r.stderr
-old_gq.write_text(subprocess.run(['git', 'show', 'f3a6fece:scripts/graphics_qc.mjs'], cwd=S.parent,
-                                 capture_output=True, text=True).stdout, encoding='utf-8')
+old_gq = old_rev('graphics_qc.mjs', '_old_gqc_canvas_tmp.mjs', 'f3a6fece')
 r_old = subprocess.run(['node', str(old_gq), str(ep)], capture_output=True, text=True)
 old_gq.unlink()
 assert 'ERROR [fade-only]' in r_old.stdout, f'old code should call the canvas renderer fade-only: {r_old.stdout}'
