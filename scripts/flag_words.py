@@ -127,7 +127,7 @@ def scan_episode(ep_dir, terms):
     if index_html.is_file():
         html_files.append(index_html)
     html_files.extend(sorted((ep_dir / "compositions").glob("*.html")))
-    for html_file in []:  # MUTATION: html scan disabled
+    for html_file in html_files:
         lines = strip_html(html_file.read_text(encoding="utf-8", errors="replace"))
         scan_text_lines(html_file, lines, terms, hits)
 
