@@ -9,7 +9,7 @@ external:
   # md5 2d8ea8f14763932f3f76da67d7fd1612 — verify before every produce run (JP voice-ref gotcha)
 
 render:
-  hyperframes_version: "0.8.41"  # pinned; managed by scripts/pin_ritual.py — do not hand-edit
+  hyperframes_version: "0.8.78"  # pinned; managed by scripts/pin_ritual.py — do not hand-edit
   # Currency is checked at episode kickoff (owner 26 Sep 26), never by render_preflight:
   # `python3 scripts/pin_ritual.py` A/B-renders episodes/demo-pin against scripts/pin_baseline.json
   # and bumps this pin (plus every live scripts/*.cmd) only on identical metrics. History in LEARNINGS.md.
