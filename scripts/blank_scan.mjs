@@ -4,6 +4,7 @@
 import { chromium, chromiumExecutable } from './playwright_env.mjs';
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { hostCss } from './stage_comp.mjs';
 
 const EXECUTABLE = chromiumExecutable();
 const ep = process.argv[2];
