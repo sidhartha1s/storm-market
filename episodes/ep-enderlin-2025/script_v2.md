@@ -186,7 +186,8 @@ destroyed about ninety five percent of the town and eleven people lost their liv
 got the second, and the toll there was nine.
 
 Then came April twenty seventh, twenty eleven, when four EF fives touched down in Mississippi and Alabama on one day.
-No single day since the new scale began has matched it. The one at Hackleburg and Phil Campbell, in Alabama, took
+More than two hundred tornadoes touched down across the South in that one day.
+`[verify: about 216 tornadoes on 27 Apr 2011]` No single day since the new scale began has matched it. The one at Hackleburg and Phil Campbell, in Alabama, took
 seventy two lives. Less than a month later, the Joplin tornado took a hundred and fifty eight lives in Missouri. No
 single American tornado had taken more since nineteen forty seven.
 
