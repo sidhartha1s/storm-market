@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=1920, height=1080">
   <title>WebGL determinism probe</title>
   <script src="vendor/gsap.min.js"></script>
-  <!-- three r170 ESM rewrapped as a classic IIFE (window.THREE): hyperframes 0.8.41 runs
-       sub-composition scripts as classic scripts, so `import` there throws. -->
-  <script src="vendor/three.classic.js"></script>
   <style>
     body { margin: 0; background: #000; }
     #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #000; }
