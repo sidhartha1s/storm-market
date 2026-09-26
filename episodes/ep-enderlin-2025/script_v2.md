@@ -202,9 +202,11 @@ and an EF three, and the lower number belongs to the bigger storm.
 "Moore · May 3, 1999 · F5".
 
 Then, on Monday, May twentieth, twenty thirteen, an EF five crossed Moore, Oklahoma. Twenty four people lost their
-lives, and seven of them were children at Plaza Towers Elementary School. The same city had been hit by an F five on
-May third, nineteen ninety nine. A mobile radar measured about three hundred and one miles an hour in that storm, and
-it kept its five, because it had houses to prove it. `[verify: Bridge Creek–Moore 3 May 1999, F5, DOW radar about 301 mph]`
+lives, and seven of them were children at Plaza Towers Elementary School. Moore had neighborhoods of modern homes in
+the path, and surveyors found some of them swept off their slabs. `[verify: Moore 2013 EF5 rating based on well-built homes swept from foundations]`
+The same city had been hit by an F five on May third, nineteen ninety nine. A mobile radar measured about three
+hundred and one miles an hour in that storm. It kept its five, because it had houses to prove it.
+`[verify: Bridge Creek–Moore 3 May 1999, F5, DOW radar about 301 mph]`
 
 **Picture:** the timeline keeps drawing past Moore with no marks; a day counter runs to "4,414 Days".
 
