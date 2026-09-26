@@ -22,7 +22,7 @@ post-transform bboxes of all visible leaf text (cards AND comp-internal, mid-twe
 >25% overlap of the smaller box or the same fact string twice on screen = FAIL. Run it before
 every render; `data-overlap-ok="reason"` marks intentional layering.
 
-Rules the patterns encode (see DESIGN.md for the full editorial doctrine):
+Rules the patterns encode (the full MG rules: `references/mg-quickref.md`; editorial doctrine: DESIGN.md):
 - Panels slide out, never vanish; exits get ~1s of land time after the last beat — never cut ON motion.
 - One reveal at a time; minimal text (facts/numbers, no prose paragraphs, no eyebrow kickers).
 - Stills 3-6s MAX and always in motion (kenburns); video is the default medium.

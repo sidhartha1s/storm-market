@@ -20,17 +20,8 @@ De-facto tokens as they actually settled across shipped episodes (ep2, ep5, ep6;
 | `.dust` | 92 |
 
 ## Palette
-- Amber: `#d8a13a`
-- Light amber: `#e8c56a`
-- Alert red: `#e74c3c`
-- Stamp crimson: `#8e2020`
-- Rule/quote red: `#c0392b` (attribution accents use amber `#d8a13a` in practice — `#c0392b`
-  appears as the rule-red family member; check per-card before reuse)
-- Grey-blue label: `#93a3b2`
-- Off-white text: `#f2f5f8`
-- Panel darks: `#15202b`, `#0b1016`, `#04070a` (body/root background family)
-- Text-backing chip (every text-over-media element): `rgba(5,8,12,0.78)` (also seen at
-  `0.6`–`0.72` on lighter treatments — `0.78` is the settled `.lt` value, treat as the default)
+Palette and surfaces (glass card, beige cite card, popfig red) live in `references/mg-quickref.md` "Palette and surfaces".
+`cards.css` chips use the glass-card surface (the `rgba(5,8,12,…)` dark chips were retired 26 Sep 26).
 
 ## Type stacks
 - **Emotive / italic:** Georgia, 'Times New Roman', serif — quotes (`.quotecard .q`), namecard
@@ -59,13 +50,12 @@ De-facto tokens as they actually settled across shipped episodes (ep2, ep5, ep6;
 
 ## Structural rules (don't violate)
 - GSAP timelines only — no CSS `@keyframes` (breaks fast-capture render).
-- Overlay exits end with `autoAlpha:0` (either an explicit `tl.to(..., {autoAlpha:0,...})` for
-  timed exits, or a hard unmount at the end of the card's track-3 window — "cards are
-  track-3 mounted; the hard unmount is the exit").
+- Overlay exits slide out and end at `autoAlpha:0` (`references/mg-quickref.md` "Motion and exits");
+  a hard unmount at the end of the card's track-3 window is not an exit.
 - Any positioned card class placed with `left/right/top/bottom` needs `inset: auto` to
   neutralize `.clip`'s `inset: 0` (see ep3's `.lt`, `.quotecard`, `.srclab` — ep2/ep5/ep6
   predate this fix and rely on more specific rules; carry `inset: auto` forward as the
   current best practice).
-- Every text-over-media element sits on a dark backing chip `rgba(5,8,12,0.78)`.
+- Every text-over-media element sits on the glass card (`references/mg-quickref.md`), not a dark chip.
 - Namecard/dispatch lines use `display: table; margin: 0 auto` (or `N auto 0` for stacked
   lines) per line — never `text-align: center` alone, so the background chip hugs the text.

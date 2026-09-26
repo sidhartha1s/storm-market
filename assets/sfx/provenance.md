@@ -2,7 +2,7 @@
 
 Reusable ambience/SFX beds. Optional per episode — the editor decides use, never mandated
 (owner 2026-07-26). Gain rule: volumedetect source, compensate to mix target, verify layer
-post-render (LEARNINGS item 7 — these sources run ~15dB quieter than the ACE music beds).
+post-render (learnings/audio-tts.md 2026-07-23 item 7 — these sources run ~15dB quieter than the ACE music beds).
 
 | File | Source | License | Notes |
 |------|--------|---------|-------|

@@ -25,14 +25,15 @@
   This file is fidelity-extracted from g-stat-camp.html with copy genericized.
 
   PARAMS TO EDIT (marked <!-- EDIT-ME --> inline):
-    - eyebrow-less tname/tsub headline text, stamp label, each fact row label+value, death toll
+    - eyebrow-less tname/tsub headline text, record row (was the red .stamp block, retired
+      26 Sep 26: a figure rides a card row, never a colour block), each fact row label+value, death toll
       target number, "gone" closing line.
     - id prefix "joplinstat-" — re-prefix per composition instance when copying.
 
   TIMING KNOBS (do not casually change — these are load-bearing):
     - panel entrance: fromTo x:660 -> x:0, duration 0.7, power3.out, at t=0.
-    - stamp: scale 2.2 -> 1 pop at t=0.9, then a slow scale 1.04 breathing pulse (sine.inOut,
-      yoyo, repeat 11) starting 1.3 so the card is never motionless.
+    - record row enters at t=0.9; once the counter lands (t=10.0) it breathes at scale 1.04
+      (sine.inOut, yoyo, repeat 4, ends 16.0) so the card is never motionless.
     - fact rows stagger in every ~2s (1.5 / 3.6 / 5.6) — keep an info beat every 2-3s.
     - death counter starts at t=8.6, animates power3.out over ~1.4s to the target figure —
       never hardcode the counted digits, always animate from 0.
@@ -49,11 +50,9 @@
   .panel { position:absolute; right:0; top:0; bottom:0; width:820px; box-sizing:border-box;
     background: linear-gradient(270deg, rgba(10,15,21,0.6) 70%, rgba(10,15,21,0));
     backdrop-filter: blur(16px) saturate(1.15); -webkit-backdrop-filter: blur(16px) saturate(1.15);
-    border-left: 1px solid rgba(255,255,255,0.1); padding: 100px 70px 0 100px; }
+    border-left: 1px solid rgba(255,255,255,0.1); padding: 100px 96px 0 100px; }
   .tname { font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; line-height:1.05; margin-top:14px; }
   .tsub { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:10px; }
-  .stamp { display:inline-block; margin-top:30px; font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#fff;
-    background:#8e2020; padding:8px 26px; letter-spacing:3px; }
   .row { font-size:30px; color:#dfe7ee; font-weight:700; letter-spacing:1px; margin-top:20px; }
   .row .lab { display:block; font-size:19px; color:#93a3b2; letter-spacing:4px; font-weight:700; }
   #joplinstat-deaths { font-family:'Courier New',monospace; font-size:84px; color:#e74c3c; font-weight:700; margin-top:24px; }
@@ -64,7 +63,7 @@
   <div class="panel" id="joplinstat-panel">
     <div class="tname">The Joplin Tornado</div>
     <div class="tsub">Joplin, Missouri &middot; May 22, 2011</div>
-    <div><span class="stamp" id="joplinstat-stamp">Deadliest Since 1947</span></div>
+    <div class="row" id="joplinstat-r0"><span class="lab">Deadliest Since</span>1947</div>
     <div class="row" id="joplinstat-r1"><span class="lab">Rating</span>EF5</div>
     <div class="row" id="joplinstat-r2"><span class="lab">Warning Ignored</span>22 Minutes</div>
     <div class="row" id="joplinstat-r3"><span class="lab">Width</span>One Mile Wide</div>
@@ -78,10 +77,9 @@ window.__timelines = window.__timelines || {};
 (function() {
   const tl = gsap.timeline({ paused: true });
   const P = "#joplinstat-";
-  tl.set([P+"deaths",P+"dlab",P+"r1",P+"r2",P+"r3",P+"gone",P+"stamp"], {autoAlpha:0}, 0);
+  tl.set([P+"deaths",P+"dlab",P+"r0",P+"r1",P+"r2",P+"r3",P+"gone"], {autoAlpha:0}, 0);
   tl.fromTo(P+"panel", {x:660}, {x:0, duration:0.7, ease:"power3.out"}, 0.0);
-  tl.fromTo(P+"stamp", {scale:2.2, autoAlpha:0}, {scale:1, autoAlpha:1, duration:0.35, ease:"power4.in"}, 0.9);
-  tl.to(P+"stamp", {scale:1.04, duration:1.2, ease:"sine.inOut", yoyo:true, repeat:11}, 1.3); // pulses end before the slide-out
+  tl.fromTo(P+"r0", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 0.9);
   tl.fromTo(P+"r1", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 1.5);
   tl.fromTo(P+"r2", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 3.6);
   tl.fromTo(P+"r3", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 5.6);
@@ -90,6 +88,7 @@ window.__timelines = window.__timelines || {};
   tl.to(cnt, {v:158, duration:1.4, ease:"power3.out", onUpdate:function() { /* target: Joplin 2011 death toll */
       const el = document.getElementById("joplinstat-deaths"); if (el) el.textContent = Math.round(cnt.v);
   } }, 8.6);
+  tl.to(P+"deaths", {scale:1.04, transformOrigin:"left center", duration:1.2, ease:"sine.inOut", yoyo:true, repeat:4}, 10.0); // pulses end before the slide-out
   tl.fromTo(P+"gone", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.5}, 12.5);
   tl.to(P+"panel", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 16.2); /* host window ~17s — exit rides the cut */
   window.__timelines["joplinstat"] = tl;

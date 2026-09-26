@@ -23,7 +23,7 @@
   day before their slot with a fresh fact re-pull. JMA raised Tokachidake to Level 3 and Typhoon 25 formed near Truk (18 Sep sheet):
   both are stronger proper-noun stories than a generic "what JMA is watching".
 
-## Process lessons from day 1 (both slots), to fold into FORMAT.md / LEARNINGS.md
+## Process lessons from day 1 (both slots), to fold into FORMAT.md / learnings/
 1. Whisper transcript is the pronunciation gate: run TTS, read the words.json for every proper noun, respell phonetically in the
    blockquote only, re-synthesise. Cost today: ~40 min and a full retime. Do it BEFORE the timeline is written next time
    (probe-TTS the name list first).

@@ -1,5 +1,8 @@
 # Retention (AVD) study: The Warning Hour, 24 Sep 2026
 
+> Doc homes changed 26 Sep 26: the DESIGN.md graphics sections quoted below (type scale, "max 3 s of no change") now live in
+> `references/mg-quickref.md` (the 3 s wording is gone; stillness fails at 4 s), and LEARNINGS.md is split into `learnings/`.
+
 Independent study. Phase 1 (outside research) was done before reading the repo's script rules. Phase 2 read CLAUDE.md,
 DESIGN.md, references/script-os.md, script-framework.md, script-scaling.md, humanise-rules.md, packaging-rules.md,
 mini-storms/FORMAT.md, channel-audit-2026-09-19/ (Studio export + thumbs), the teardown syntheses, ops/ROADMAP.md,

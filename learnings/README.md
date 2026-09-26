@@ -1,0 +1,46 @@
+# learnings/: measured gotchas and owner corrections, newest first in every file
+- Building or fixing a motion graphic: `references/mg-quickref.md` (the rules), then `mg.md` (why they exist, gate behaviour).
+- Rendering, hyperframes versions, launchers, RAM/disk, encode, verify_render: `render.md`.
+- TTS, pace, whisper, levels, beds, mixdown: `audio-tts.md`. Clip picks, provenance, licensing, geometry, repeats: `sourcing-footage.md`.
+- Hooks, CTA, script loop, owner gates, agent and session process: `script-process.md`. An owner correction lands in its single home the same session.
+
+## Cross-cutting rules (read always)
+The promoted one-line rules from the old `LEARNINGS.md` index, verbatim (one stale row dropped: the 1440p HEVC upload file, superseded 9 Sep 26). Each `§"..."` names a journal section header; search `learnings/` for it.
+- The ebook CTA is a must-keep contract, positioned by the `config.yaml channel.cta` window: late, 85-95 % since 23 Sep 26. → §"the ebook CTA is a channel asset + a must-keep contract"
+- mp4 surgery on a finished render uses h264_nvenc first, never libx264 — the quality gap doesn't survive YouTube's transcode at consumer-master bitrates. → §"1440p upload tier + NVENC-first for mp4 surgery"
+- Convert GIFs before mounting (single-frame → PNG, animated → mp4); every mounted video needs an audio stream — mux silence into mute clips. → §"ep6 render-failure ledger"
+- Audio slots longer than their file are silently truncated (WARN, not FAIL) — read the WARNs of a failed render; clip windows must never exceed the real clip length. → §"ep6 render-failure ledger"
+- Batch every owner approval ask into ONE message, as early as possible — scattered mid-run checkpoints don't reliably land. → §"ep6 owner rules + broadcast-geometry gotchas"
+- The hook must contain zero muted/mediocre elements — every beat is mid-action; the narrator opens at 0:00 with no broadcast audio (DESIGN.md cold-open hook contract, owner 22 Sep 26). → §"ep6 owner rules + broadcast-geometry gotchas"
+- Video-range black is Y=16, not 0 — threshold pillarbox/blanking detectors at ≤17, or use cropdetect. → §"ep6 owner rules + broadcast-geometry gotchas"
+- Broadcast compilation reels have per-segment geometry — run cropdetect per cut window, never one blanket crop per reel. → §"ep6 owner rules + broadcast-geometry gotchas"
+- Budget scripts on the previous episode's manifest wpm, then verify against the new manifest after the first full TTS run — probe-TTS only catches gross errors. → §"ep6 TTS + sourcing"
+- Scene picking from long reels goes through contact sheets first — never per-frame agent probing. → §"ep6 TTS + sourcing"
+- Scripts are written on the retention lattice (`references/script-scaling.md`) — read it before writing any script. → §"ep5 kickoff: the retention lattice + script fact-QC layer"
+- Script fact-QC closes every `[verify]` marker before TTS runs; a conditional fact that fails verification gets cut, never softened. → §"ep5 kickoff: the retention lattice + script fact-QC layer"
+- Every audio-carrying insert is transcribed in full before cut selection; the cut lands on the transcript's action/emotion peak. → §"ep5 kickoff: the retention lattice + script fact-QC layer"
+- The hook has no black start — frame one is already mid-action; the narrator opens at 0:00 (DESIGN.md cold-open hook contract, owner 22 Sep 26). → §"ep5 kickoff: the retention lattice + script fact-QC layer"
+- The generator tripwire: any script that authors episode HTML (chooses cuts, holds, graphics, timings) is forbidden — delete it on sight. → §"CHECKPOINT: revert to the ep2 method"
+- The full hook contract lives in DESIGN.md — apply it from episode scene one, don't rediscover it. → §"ep2 hook rebuild + ship"
+- `--workers` must be pinned on every full render, never left on "auto". → §"ep2 hook rebuild + ship"
+- Shipping while another session holds `.git/index.lock`: work from a `git worktree add`, never touch the main checkout. → §"ep2 hook rebuild + ship"
+- Insert/AV cuts land on sentence boundaries via transcript, always — never mid-sentence. → §"ep2 v1 owner review"
+- Verify each CUT, not just the source video — extract a frame from the cut itself and check chyrons/landmarks against the claimed event. → §"ep2 v1 owner review"
+- The draft-proxy render (`--quality draft --crf 32 --fps 15 --workers 3`) is the mandatory review path; full-quality renders only after the owner approves the draft. → §"draft-proxy render validated"
+- Cadence is reasoned per clip, never defaulted — any hold over ~8s needs a written reason; no visual repeats within an episode outside a flagged callback. → §"owner review of ep1 v1"
+- The sync rule: the frame on screen must never contradict the narration (named entity / time-of-day / timestamp ⇒ a matching or neutral visual). → §"owner review of ep1 v1"
+- Never claim an editorial rule "fixed" from memory — re-run the lint/checks on the actual final file before claiming it. → §"RCA: "repeats fixed" claim was FALSE"
+- Exhaust every static gate, then render once — a render is the last step, never a diagnostic tool. → §"ep3 v3 — stop rendering to find things a script can find"
+- Run blackdetect on every render — the picture track can be empty while every static gate (lint, graphics_qc, hyperframes check) still passes. → §"ep3 v3 — the defects no code gate was looking for"
+- `grep -o ' id="[^"]*"' index.html | sort | uniq -d` must print nothing before every render — duplicate element ids render black with no gate catching it. → §"Duplicate element ids render BLACK"
+- `optimize_clips.py` must preserve audio and mux silence for mute clips; ffprobe every insert clip for an audio stream before rendering. → §"optimize_clips.py strips audio and ignores bitrate"
+- Long renders launch via schtasks (or `run_hidden.vbs`), never harness background Bash — the reaped child tree dies silently mid-capture. → §"Harness background tasks get reaped"
+- Stills run 3–6s max, always with motion; video beats may run up to 12–15s when the clip genuinely matches the narration. → §"Owner pivot 2026-08-12"
+- The doctor rule: a known-below-spec deliverable means STOP before the render, state exactly what's broken, and wait — never render on a known defect. → §"The doctor rule"
+- Count SOURCES, not cuts, when sourcing — assertion assets (broadcast pulls, official audio, survivor clips) beat another angle of the same b-roll. → §"Sourcing doctrine for future episodes"
+- The full audio-mixdown scan (volumedetect on 30s windows) is a mandatory pre-render gate, not optional. → §"Audio mixdown as a pre-render gate"
+- `scripts/audio_levels.py` is the gate for insert/narration/bed levels — run it before every mixdown build. → §"Audio levels + media budget hardening"
+- No visible windows, ever — every scheduled/background command runs through `scripts/run_hidden.vbs`. → §"No visible windows, ever"
+- The on-screen text rules (zone occupancy, one fact one instance, eyebrows only when they name the thing, glass under text over footage) live in references/mg-quickref.md — `overlap_check.mjs` v2 enforces them. → §"ep6 draft v2 review — text collisions were a CHECKER false negative"
+- hyperframes 0.8.6–0.8.10 opened visible console windows on this box; 0.8.41 does not and is the pin since 16 Sep 26 (its mixer is a flat ~1.5 dB quieter, corrected by the master step). → §"ep6 ship", §"16 Sep 26 — pin bumped to 0.8.41"
+- Search `library/catalog-index.json` / `npx hyperframes catalog --query` before hand-authoring any graphic — MG library-first. → §"ep6 ship"

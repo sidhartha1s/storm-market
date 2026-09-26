@@ -17,7 +17,7 @@ of the same product, not decoration.
 - **Match-cut text popups on named entities:** when the narration names the thing, the text of
   that thing lands ON the word ("Hurricane Harvey" → popup HURRICANE HARVEY; "Houston" → HOUSTON
   in the danger red; "the United States government" → that phrase as text). Reveal on the spoken
-  word, narration order, narration wording (DESIGN.md on-screen text rules).
+  word, narration order, narration wording (references/mg-quickref.md Text doctrine).
 
 ## 2. Hook doctrine (the "BMW rule" + ROI-first)
 The clicker just read the title and thumbnail. Second zero must CONTINUE that exact frame — a
