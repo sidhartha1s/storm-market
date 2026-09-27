@@ -370,7 +370,8 @@ r_old = subprocess.run(['node', str(old_gq), str(ep)], capture_output=True, text
 old_gq.unlink()
 shutil.rmtree(ep, ignore_errors=True)
 old_got = by_comp(r_old.stdout)
-assert 'flat background' in old_got.get('g-n1', '') and '[idle]' not in old_got.get('g-n4', ''), \n    f'old code should run and count the {{}} clock as motion: {r_old.stdout + r_old.stderr}'
+assert 'flat background' in old_got.get('g-n1', '') and '[idle]' not in old_got.get('g-n4', ''), \
+    f'old code should run and count the {{}} clock as motion: {r_old.stdout + r_old.stderr}'
 print('graphics_qc self-check PASS (canvas relaxations need a quarter-frame canvas; the span needs onUpdate; a {} clock is not motion)')
 
 # ---------------------------------------------------------------- settle frames for the vision pass
