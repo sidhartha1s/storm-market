@@ -69,8 +69,8 @@ Total ≈ 3 h 05. If any step overruns 2×, ship what exists and list what was c
   the hook, pay it off in the last third.
 
 ### 3. Script (`edit_script.md`)
-- **Brief the writer with `references/script-quickref.md` + the episode research pasted inline; the writer opens
-  no other rule file.** The bullets below are that file's mini-storms-specific additions only.
+- **Brief the writer with `references/script-quickref.md` + `references/flag-words.md` + the episode research
+  pasted inline; the writer opens no other rule file.** The bullets below are that file's mini-storms-specific additions only.
 - 8–12 min, sized with `scripts/word_budget.py` at the shipping tempo (repo CLAUDE.md "Voice"; the lane
   tempo lives in `config.yaml channel.tempo`). TTS-safe text rules from the same section. Mid-roll needs ≥8:00; author for 8:30+.
 - Structure (owner 2026-09-08): **HOOK is 3–10 s**, one present-tense sentence that pays off the
