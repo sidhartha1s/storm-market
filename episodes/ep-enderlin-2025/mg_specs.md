@@ -151,7 +151,7 @@ rolling or sliding; the Enderlin tanker ~500 ft, nearly 3x the line.
 | g-mechanism-a6 | 1391.264, 15.591 | a6-s4: Enderlin method 1392.00-1392.40, limit 1393.10, large heavy object 1395.20-1396.00, thrown far enough 1397.50-1398.12, most tornadoes never cross a train 1399.54-1401.08, El Reno 1402.10, radar and open fields 1402.72-1403.68, still has its EF3 1404.80-1405.54 | the tanker arc small 1392.0 · "Needs a Heavy Object, Thrown Far" 1395.20 · the same arc over an empty field with nothing to throw 1399.54 · "El Reno · Radar · Open Fields" 1402.10 with a small "EF3" stamp 1405.54 · exit 1406.3 |
 | g-mechanism-a6b | 1436.58, 17.7 | a6-s7: toolkit 1438.64, weather service 1439.86-1440.02, debris flight 1441.46-1441.76, rate a tornado 1442.32-1442.60, Miller 1443.72, future tornado assessments 1445.22-1445.94, something large 1448.40-1448.76, thrown far 1449.12-1449.48, published method 1451.36-1451.64, distance into wind 1452.66-1453.26 | "Toolkit" row of survey tools; a new tool slot fills with the tanker arc icon "Debris Flight" 1441.46 · beige cite returns "Miller et al., Monthly Weather Review, 2024" 1443.72 · a generic object's arc -> distance -> wind speed dial 1448.40-1453.26 · exit 1453.7 |
 
-## 8 · g-split (B3) · status: to build (6 files incl. the El Reno panel)
+## 8 · g-split (B3) · status: built (6 files incl. the El Reno panel)
 El Reno vs Enderlin, left vs right, each with a rating stamp in the hook's stamp style (copy `.vd-stamp` / `.vd-ef3` /
 `.vd-ef5` / `.vd-strike` from `compositions/g-verdict.html`; red EF5 = #d0121f, light EF3). Start from: `compositions/g-verdict.html`
 (stamps and strike), ep-1974 `g-thennow-16-4.html`. Continuous: stamp breath, background drift, day counter.
