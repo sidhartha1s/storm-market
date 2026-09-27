@@ -42,7 +42,12 @@ Reasons for the moves: `shot_map.md` "Deviations". **Status: built (retimed).**
 
 ---
 
-## 1 · g-master-map (B1) · status: to build
+## 1 · g-master-map (B1) · status: built (27 Sep 26)
+Built on one real basemap (`research/b1-maps/`: OSM rail, Maple River, ND 46/32, 58th/52nd St SE, CR 38, power lines; NWS
+Grand Forks survey track digitised and georeferenced on the PIS start/end lat-lon, 12.07 mi vs 12.10 official).
+Deviations the builder found: the NWS track runs SSW to NNE and curls west at the lift (start 46.5728 -97.6031, end 46.687
+-97.5803), not "west to east"; it crosses ND 46 about 3 mi east of Enderlin's centre, while the voice says "one mile east"
+(i1-s3, z1-s2); the Dehn pin sits where the surveyed swath crosses ND 46 and carries no distance label.
 The Enderlin track at true scale over Ransom and Cass counties, SE North Dakota: Enderlin town, the rail line south of town,
 the Maple River, Highway 46, County Road 38, 58th Street SE (touchdown, Ransom County), the lift point 5 mi SW of Alice.
 Track runs west to east, about 12 mi, max width 1.05 mi. Build one basemap and copy it into each window. A right rail
