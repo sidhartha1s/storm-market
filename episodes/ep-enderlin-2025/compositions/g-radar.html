@@ -2,28 +2,148 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-radar"
-     (host 730.80 -> 750.834, 20.034 s, track 2). The MG builder replaces this whole file. -->
+<!-- g-radar (B1): the night of June 20 on radar, state view. Host 730.80 -> 750.834 (20.034 s, track 2).
+     Frames: self-made NEXRAD Level II mosaics (KBIS, KMVX, KMBX, KABR, 0.5 deg reflectivity, max of the four), each radar's sweep
+     within 5 min of the stamped UTC time (research/b1-maps/nexrad_plots.py -> media/nexrad/nd-refl-20250621-*.png).
+     Track marks: NOAA NCEI Storm Events 2025 (29 North Dakota tornado segments on 20 June local, begin -> end points).
+     Counter 22 = the narrated count (fact_sheet.md). Supercell positions follow the Storm Events tracks at 03:00 and 04:05 UTC. -->
 <template>
 <style>
-  .ph-radar { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .ph-radar-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-radar-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
-  .ph-radar-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  #g-radar-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 40% 50%, #0b1016 0%, #030507 78%); }
+  .rs-box { position:absolute; left:90px; top:170px; width:1180px; height:763px; overflow:hidden; border-radius:18px; }
+  .rs-frame { position:absolute; left:0; top:0; width:1180px; height:763px; }
+  .rs-svg { position:absolute; left:0; top:0; width:1180px; height:763px; }
+  .rs-lab { font-family:Arial, sans-serif; font-weight:700; font-size:30px; fill:#f2f5f8; paint-order:stroke; stroke:#04070c; stroke-width:6px; stroke-linejoin:round; }
+  .rs-stamp { position:absolute; left:96px; top:950px; font-size:22px; font-weight:700; letter-spacing:3px; color:#c8d3e0; white-space:nowrap; }
+  .rs-rail { position:absolute; right:0; top:0; bottom:0; width:720px; pointer-events:none;
+    background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); }
+  .rs-eb { position:absolute; left:1340px; top:300px; font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
+  .rs-cnt { position:absolute; left:1340px; top:340px; font-family:'Courier New', monospace; font-weight:700; font-size:84px; line-height:1; color:#e74c3c; }
+  .rs-clab { position:absolute; left:1340px; top:436px; font-size:20px; font-weight:700; letter-spacing:6px; color:#c8d3e0; text-transform:uppercase; white-space:nowrap; }
+  .rs-row { position:absolute; left:1340px; top:540px; width:484px; }
+  .rs-val { font-size:30px; font-weight:700; letter-spacing:1px; color:#dfe7ee; white-space:nowrap; }
+  .rs-rlab { margin-top:6px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
+  .rs-scan { position:absolute; left:90px; top:170px; width:1180px; height:2px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
 </style>
-<div class="ph-radar" data-composition-id="g-radar" data-width="1920" data-height="1080" data-duration="20.034">
-  <div class="ph-radar-card" id="ph-radar-card">
-    <div class="ph-radar-t" id="ph-radar-t">g-radar</div>
-    <div class="ph-radar-s" id="ph-radar-s">Placeholder · To Build</div>
+<div id="g-radar-root" data-composition-id="g-radar" data-width="1920" data-height="1080" data-duration="20.034">
+  <div class="rs-box" id="g-radar-box">
+    <div id="g-radar-world" style="position:absolute; left:0; top:0; width:1180px; height:763px;">
+      <svg class="rs-svg" viewBox="0 0 1300 841"><!--NDMAP:g-radar--><!--/NDMAP--></svg>
+      <img class="rs-frame" id="g-radar-f0" src="media/nexrad/nd-refl-20250621-0200utc.png" alt="">
+      <img class="rs-frame" id="g-radar-f1" src="media/nexrad/nd-refl-20250621-0300utc.png" alt="">
+      <img class="rs-frame" id="g-radar-f2" src="media/nexrad/nd-refl-20250621-0405utc.png" alt="">
+      <img class="rs-frame" id="g-radar-f3" src="media/nexrad/nd-refl-20250621-0500utc.png" alt="">
+      <img class="rs-frame" id="g-radar-f4" src="media/nexrad/nd-refl-20250621-0600utc.png" alt="">
+      <svg class="rs-svg" viewBox="0 0 1300 841">
+        <path d="M0,48 L1300,48" fill="none" stroke="#5a768f" stroke-width="2" stroke-dasharray="10 7"/>
+        <g id="g-radar-marks" stroke="#f2f5f8" stroke-width="5" stroke-linecap="round"></g>
+        <circle id="g-radar-endring" cx="1095" cy="615" r="14" fill="none" stroke="#e74c3c" stroke-width="4"/>
+        <text id="g-radar-t-end" class="rs-lab" x="1060" y="690" text-anchor="end">Enderlin</text>
+        <g id="g-radar-sc1"><path d="M0,0 L-40,-40" stroke="#f2f5f8" stroke-width="3"/><text class="rs-lab" x="-48" y="-48" text-anchor="end">Supercell 1</text></g>
+        <g id="g-radar-sc2"><path d="M0,0 L-40,40" stroke="#f2f5f8" stroke-width="3"/><text class="rs-lab" x="-48" y="70" text-anchor="end">Supercell 2</text></g>
+        <g id="g-radar-der"><text class="rs-lab" x="700" y="190" fill="#e8c56a">Derecho</text><path d="M830,200 L960,290 M936,292 L960,290 L952,268" fill="none" stroke="#e8c56a" stroke-width="4"/></g>
+      </svg>
+    </div>
   </div>
+  <div class="rs-scan" id="g-radar-scan"></div>
+  <div class="rs-stamp" id="g-radar-s0">NEXRAD Mosaic · 02:00 UTC · 9:00 PM CDT</div>
+  <div class="rs-stamp" id="g-radar-s1">NEXRAD Mosaic · 03:00 UTC · 10:00 PM CDT</div>
+  <div class="rs-stamp" id="g-radar-s2">NEXRAD Mosaic · 04:05 UTC · 11:05 PM CDT</div>
+  <div class="rs-stamp" id="g-radar-s3">NEXRAD Mosaic · 05:00 UTC · 12:00 AM CDT</div>
+  <div class="rs-stamp" id="g-radar-s4">NEXRAD Mosaic · 06:00 UTC · 1:00 AM CDT</div>
+  <div class="rs-rail" id="g-radar-railbg"></div>
+  <div class="rs-eb" id="g-radar-eb">North Dakota · June 20</div>
+  <div class="rs-cnt" id="g-radar-cnt"><span id="g-radar-cntv">0</span></div>
+  <div class="rs-clab" id="g-radar-clab">Tornadoes</div>
+  <div class="rs-row" id="g-radar-r1"><div class="rs-val">Outbreak · June 19-22, 2025</div><div class="rs-rlab">Tornadoes and a Derecho</div></div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
+  const ID = "g-radar", P = "#g-radar-";
+  /* cues: audio/a3-s5.words.json + a3-s6.words.json, episode s minus host start 730.80 */
+  const CUES = {
+    two: 4.14,       /* Two storms @734.94 */
+    enderlin: 6.54,  /* Enderlin tornado @737.34 */
+    of22: 8.24,      /* one of the 22 @739.04 */
+    june: 11.46,     /* June 19th @742.26 */
+    derecho: 14.29   /* derecho @745.09 */
+  };
+  const DUR = 20.034;
+  /* NCEI Storm Events, ND tornado segments 20 June 2025 (CST), chronological; image px x0,y0,x1,y1,isEnderlin */
+  const MARKS = [[929.7,553.0,933.6,552.6,0],[456.6,548.7,458.3,548.8,0],[483.5,541.0,501.9,534.8,0],[949.2,547.0,952.3,545.5,0],[949.2,547.0,947.8,531.5,0],[932.3,623.3,932.8,623.9,0],[979.9,557.3,983.1,559.8,0],[947.8,531.5,943.5,532.5,0],[547.6,468.7,548.7,468.4,0],[769.0,542.9,788.6,551.4,0],[1005.9,642.8,1007.5,642.8,0],[788.6,551.4,808.0,541.5,0],[1018.8,639.2,1027.3,626.7,0],[1032.7,631.0,1031.6,629.4,0],[1007.2,554.7,1025.0,562.9,0],[1144.0,492.4,1173.1,482.5,0],[1144.0,482.9,1163.5,477.9,0],[1166.3,507.3,1205.8,494.4,0],[874.1,412.7,890.4,400.9,0],[1088.2,631.3,1099.5,617.7,1],[1099.5,617.7,1091.8,598.9,1],[1100.9,607.9,1115.6,617.6,0],[1115.6,617.6,1120.6,619.6,0],[1106.6,622.7,1108.9,624.5,0],[1157.9,602.3,1174.9,612.7,0],[1160.4,602.6,1162.4,603.8,0],[1165.3,602.5,1170.9,604.8,0],[1177.7,609.1,1179.7,610.6,0],[1047.4,533.7,1064.3,531.6,0]];
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-radar-card", { x: 0 }, { x: 40, duration: 20.034, ease: "none" }, 0);
-  window.__timelines["g-radar"] = tl;
+  tl.set([P + "f1", P + "f2", P + "f3", P + "f4", P + "s1", P + "s2", P + "s3", P + "s4"], { autoAlpha: 0 }, 0);
+  tl.set([P + "endring", P + "t-end", P + "sc1", P + "sc2", P + "der", P + "eb", P + "cnt", P + "clab", P + "r1"], { autoAlpha: 0 }, 0);
+  tl.set(P + "sc1", { x: 1016, y: 547 }, 0);
+  tl.set(P + "sc2", { x: 1016, y: 641 }, 0);
+
+  /* whole window: slow push on the state, scan line */
+  tl.fromTo(P + "world", { scale: 1, transformOrigin: "80% 70%" }, { scale: 1.07, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "scan", { y: 0 }, { y: 760, duration: 5, ease: "none", repeat: 3, yoyo: true }, 0);
+
+  /* radar frames through the night (crossfades) */
+  tl.to(P + "f1", { autoAlpha: 1, duration: 0.8, ease: "none" }, 2.2);
+  tl.to(P + "s0", { autoAlpha: 0, duration: 0.3 }, 2.2);
+  tl.to(P + "s1", { autoAlpha: 1, duration: 0.3 }, 2.5);
+  tl.to(P + "f2", { autoAlpha: 1, duration: 0.8, ease: "none" }, 5.3);
+  tl.to(P + "s1", { autoAlpha: 0, duration: 0.3 }, 5.3);
+  tl.to(P + "s2", { autoAlpha: 1, duration: 0.3 }, 5.6);
+  tl.to(P + "f3", { autoAlpha: 1, duration: 0.8, ease: "none" }, 13.3);
+  tl.to(P + "s2", { autoAlpha: 0, duration: 0.3 }, 13.3);
+  tl.to(P + "s3", { autoAlpha: 1, duration: 0.3 }, 13.6);
+  tl.to(P + "f4", { autoAlpha: 1, duration: 0.8, ease: "none" }, 17.0);
+  tl.to(P + "s3", { autoAlpha: 0, duration: 0.3 }, 17.0);
+  tl.to(P + "s4", { autoAlpha: 1, duration: 0.3 }, 17.3);
+
+  /* two supercells, labelled on the 03:00 frame, followed to 04:05 */
+  tl.fromTo(P + "sc1", { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, CUES.two);
+  tl.fromTo(P + "sc2", { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, CUES.two + 0.2);
+  tl.to(P + "sc1", { x: 1227, y: 486, duration: 0.9, ease: "power2.inOut" }, 5.3);
+  tl.to(P + "sc2", { x: 1095, y: 617, duration: 0.9, ease: "power2.inOut" }, 5.3);
+  tl.to([P + "sc1", P + "sc2"], { autoAlpha: 0, duration: 0.4 }, 12.9);
+
+  /* rail: the count */
+  tl.fromTo(P + "eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.3);
+  tl.fromTo(P + "cnt", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.two);
+  tl.fromTo(P + "clab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.two + 0.3);
+  const N = { v: 0 }, nv = document.querySelector(P + "cntv");
+  tl.fromTo(N, { v: 1 }, { v: 22, duration: 4.1, ease: "power2.out", onUpdate: () => { if (nv) nv.textContent = Math.round(N.v); } }, CUES.two);
+  tl.fromTo(P + "cnt", { scale: 1 }, { scale: 1.12, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "0% 50%" }, CUES.of22);
+
+  /* Enderlin, one of them */
+  tl.fromTo(P + "endring", { autoAlpha: 1, attr: { r: 14 } }, { autoAlpha: 0, attr: { r: 60 }, duration: 1.0, ease: "power2.out", repeat: 4, repeatDelay: 0.15 }, CUES.enderlin);
+  tl.fromTo(P + "t-end", { autoAlpha: 0, x: 10 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.enderlin);
+  tl.to(P + "t-end", { autoAlpha: 0, duration: 0.4 }, 12.9);
+
+  /* the outbreak window */
+  tl.fromTo(P + "r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.june);
+
+  /* the derecho line sweeps through */
+  tl.fromTo(P + "der", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, CUES.derecho);
+  tl.to(P + "der", { x: 110, duration: 3.6, ease: "none" }, 15.0);
+  tl.to(P + "der", { x: 170, duration: 1.4, ease: "none" }, 18.6);
+  tl.to([P + "eb", P + "cnt", P + "clab", P + "r1"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+
+  /* track marks tick in, chronological; Enderlin's two county segments land on "Enderlin" */
+  const g = document.querySelector(P + "marks");
+  if (g) {
+    let k = 0;
+    MARKS.forEach((m, i) => {
+      const ln = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      ln.setAttribute("id", ID + "-mk" + i);
+      ln.setAttribute("x1", m[0]); ln.setAttribute("y1", m[1]); ln.setAttribute("x2", m[2] + 0.01); ln.setAttribute("y2", m[3]);
+      if (m[4]) { ln.setAttribute("stroke", "#e74c3c"); ln.setAttribute("stroke-width", "8"); }
+      g.appendChild(ln);
+      const at = m[4] ? CUES.enderlin : (i < 19 ? CUES.two + i * 0.12 : 6.8 + (i - 21) * 0.17);
+      tl.set(ln, { autoAlpha: 0 }, 0);
+      tl.fromTo(ln, { autoAlpha: 0, attr: { "stroke-width": 16 } }, { autoAlpha: 1, attr: { "stroke-width": m[4] ? 8 : 5 }, duration: 0.3, ease: "power2.out" }, at);
+      k++;
+    });
+  }
+  window.__timelines[ID] = tl;
 })();
 </script>
 </template>
