@@ -29,9 +29,8 @@ PR and say which one won.
 - When a loop pays off, open the next loop in the same breath. Never let the viewer's cup run empty.
 - Tag every loop: `[loop L1 open]` when planted, `[loop L1 closes]` when paid. Every loop table row needs both.
 - Re-hook every 30–45 s: a real beat (broadcast/PD clip, audio insert, stat spike, or a fresh loop opening).
-- One episode loop (hook → final act), one loop per act (paid within 1–2 acts), one CTA hinge loop (`cta-hinge`,
-  tease inside the CTA window's last line, payoff = next segment's first sentence). Loops close honestly — a
-  dropped loop is the #1 tell of stretched runtime. (`script-scaling.md`)
+- One episode loop (hook → final act), one loop per act (paid within 1–2 acts), one `cta-hinge` loop (see CTA
+  hinge). Loops close honestly — a dropped loop is the #1 tell of stretched runtime. (`script-scaling.md`)
 
 ## Connect two points, don't merge them (owner 27 Sep 26)
 - Build curiosity by holding two things next to each other without collapsing them into one claim — e.g. El Reno
