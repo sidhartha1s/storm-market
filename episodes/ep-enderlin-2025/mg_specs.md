@@ -185,7 +185,7 @@ Quotes verbatim (fact_check.md / MPR News 8 Oct 2025 / Western University news O
 |---|---|---|---|
 | g-outro | 1508.677, 4.0 | none (after z1-s2 "took him." 1507.99-1508.15; bed fades out in the file) | "The Warning Hour" wordmark match-cuts in from the names card's last line 1508.7, the card does not sit: slow scale + light sweep, fade to black by 1512.6. Start from `library/inhouse/outro-brand.html`. No narration, no recap text, no CTA text (the CTA ran at 1329.9). |
 
-## 11 · Stamp reuse from the hook: g-stamp-a5 (B3) · status: to build
+## 11 · Stamp reuse from the hook: g-stamp-a5 (B3) · status: built
 The October verdict, told the way the hook told it. Copy `compositions/g-verdict.html`'s stamp styles, strike, arrow and bolt;
 over a dark storm background (not WebGL; a drifting radial gradient + faint rain streaks from moves `rain`), plus a beige
 citation card for the NWS statement. Host starts 0.2 s before the voice (blackout ends 1170.13).
