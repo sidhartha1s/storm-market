@@ -330,25 +330,13 @@ HOST = CANVAS_FILES['index.html']
 # The {} clock is not motion for the idle check either (stage_comp.mjs motionSpans, the rule
 # beat_density uses): a 1 s slide plus a 7 s clock in a 7 s host idles 6 s. Old code (fbebe442,
 # pre-fix main) counted the clock as a running tween and saw no idle.
-CLOCK = ('<!doctype html><html><head><meta charset="UTF-8"></head><body><template>
-'
-         '<div id="root" style="position:absolute;inset:0;background:#000">
-'
-         '  <span id="g-cv-lbl" style="position:absolute;left:300px;top:300px;font-size:40px;color:#fff">EF5</span>
-'
-         '</div>
-<script>
-window.__timelines = window.__timelines || {};
-'
-         'const tl = gsap.timeline({ paused: true });
-'
-         "tl.fromTo('#g-cv-lbl', { x: 0 }, { x: 300, duration: 1, ease: 'power3.out' }, 0);
-"
-         "tl.to({}, { duration: 7 }, 0);
-window.__timelines['g-cv'] = tl;
-</script>
-</template></body></html>
-")
+CLOCK = ('<!doctype html><html><head><meta charset="UTF-8"></head><body><template>\n'
+         '<div id="root" style="position:absolute;inset:0;background:#000">\n'
+         '  <span id="g-cv-lbl" style="position:absolute;left:300px;top:300px;font-size:40px;color:#fff">EF5</span>\n'
+         '</div>\n<script>\nwindow.__timelines = window.__timelines || {};\n'
+         'const tl = gsap.timeline({ paused: true });\n'
+         "tl.fromTo('#g-cv-lbl', { x: 0 }, { x: 300, duration: 1, ease: 'power3.out' }, 0);\n"
+         "tl.to({}, { duration: 7 }, 0);\nwindow.__timelines['g-cv'] = tl;\n</script>\n</template></body></html>\n")
 NEG = {  # comp -> (source, expected ERROR, why)
     'g-n1': (small(CANVAS_FILES['compositions/g-cv.html']), 'ERROR [undesigned] flat background', 'a 100 px canvas is not a designed background'),
     'g-n2': (small(cv), 'ERROR [fade-only]', 'a 100 px canvas excuses no stillness'),
