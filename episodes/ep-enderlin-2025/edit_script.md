@@ -60,22 +60,22 @@ Segment after: **A6-S1** ("Tony Lyza's change was to lower the line between E F 
 ## I1 · The night (0:23)
 
 ### I1-S1 — narration
-**Picture:** master map, the track draws east from a point south of town · popfig "11:02 PM" · g-clock starts.
-> The Enderlin tornado came down a little after eleven on a Friday night, June twentieth, twenty twenty five. It touched the ground about four miles south of Enderlin, a small town in southeast North Dakota, about forty miles southwest of Fargo. For nineteen minutes it moved east across open farmland.
+**Picture:** master map, the track draws northeast then north from a point south of town · popfig "11:02 PM" · g-clock starts.
+> The Enderlin tornado came down a little after eleven on a Friday night, June twentieth, twenty twenty five. It touched the ground about four miles south of Enderlin, a small town in southeast North Dakota, about forty miles southwest of Fargo. For nineteen minutes it curved north across open farmland.
 
 ### I1-S2 — narration
 > At its widest it was more than a mile across, about eighteen football fields laid end to end.
 
 ### I1-S3 — narration
 **Picture:** map pin on Highway 46 · text-only name cards "Michael and Katherine Pfaff-Dehn · 73", then "Marcario Lucio · 89".
-> One mile east of town, on Highway forty six, it hit the home of a couple named Michael and Katherine. They were both seventy three, and neither of them survived. On another stretch of the path, it hit the farm of Marcario Lucio, who was eighty nine.
+> Three miles east of town, on Highway forty six, it hit the home of a couple named Michael and Katherine. They were both seventy three, and neither of them survived. On another stretch of the path, it hit the farm of Marcario Lucio, who was eighty nine.
 
 ### I1-S4 — narration
 > His wife, Roberta, made it through the night, and the storm took Marcario's life. No North Dakota tornado had taken that many lyvz since nineteen seventy eight.
 
 ### I1-S5 — narration
-**Picture:** NWS survey b-roll (PD), a team walking a debris field · popfig "EF3" · then a North Dakota map where twenty two small tracks land one by one.
-> Within days, surveyors from the weather office in Grand Forks walked the path and gave it a number. They called it an E F three, with wihnds of about a hundred and sixty miles an hour. That is a violent tornado but not a rare one, and North Dakota had twenty two tornadoes that same night.
+**Picture:** NWS survey b-roll (PD), a team walking a debris field · popfig "EF3" · then a North Dakota map where twenty four small tracks land one by one.
+> Within days, surveyors from the weather office in Grand Forks walked the path and gave it a number. They called it an E F three, with wihnds of about a hundred and sixty miles an hour. That is a violent tornado but not a rare one, and North Dakota had twenty four tornadoes that same night.
 
 ### I1-S6 — narration
 **Picture:** split card returns: "El Reno 2013 · EF3" left, "Enderlin 2025 · EF3" right, a day counter under the right stamp starts to run.
@@ -244,8 +244,8 @@ Segment after: **A6-S1** ("Tony Lyza's change was to lower the line between E F 
 > The same bulletin put the strongest tornado wihnds at a hundred and twenty to a hundred and fifty miles an hour. That was the forecast for the night, and the number the Enderlin tornado ended up with sits far above it.
 
 ### A3-S5 — narration
-**Picture:** g-radar, a self-made Level II velocity re-plot (NEXRAD open data); two supercells labelled as they cross the state · popfig "22 Tornadoes".
-> That night, two supercells, the rotating kind of thunderstorm, made twenty two tornadoes in North Dakota. Most supercells never make a tornado at all. Two storms making that many is rare, and the Enderlin tornado was one of the twenty two. It was part of a larger outbreak that ran from June nineteenth to June twenty second.
+**Picture:** g-radar, a self-made Level II velocity re-plot (NEXRAD open data); two supercells labelled as they cross the state · popfig "24 Tornadoes".
+> That night, North Dakota had twenty four tornadoes, many from two supercells, the rotating kind of thunderstorm. Most supercells never make a tornado at all. A night with that many is rare, and the Enderlin tornado was one of the twenty four. It was part of a larger outbreak that ran from June nineteenth to June twenty second.
 
 ### A3-S6 — narration
 > A derecho, a long line of damaging straight wihnds, came through in the middle of it.
@@ -280,7 +280,7 @@ Segment after: **A6-S1** ("Tony Lyza's change was to lower the line between E F 
 
 ### A3-S15 — narration
 **Picture:** Highway 46 on the map · a PD or credit-cleared photo of a downed transmission tower · pins for the homes near town.
-> East of Enderlin, it crossed Highway forty six. It knocked down four electrical transmission towers there, and about ten homes near town were damaged. This was the stretch where Michael and Katherine Dehn had their home.
+> East of Enderlin, it crossed Highway forty six. It knocked down four electrical transmission towers there, and about ten homes near town were damaged. This was the stretch where Michael and Katherine had their home.
 
 ### A3-S16 — narration
 **Picture:** the track enters Cass County; NWS PD photo of a swept foundation (credit checked) · text on the voice: "Swept Clean".
@@ -461,7 +461,7 @@ Segment after: **A6-S1** ("Tony Lyza's change was to lower the line between E F 
 > The storm that came through Enderlin on June twentieth was rated an E F three. A hundred and eight days later, it became an E F five. Three people lost their lyvz on its path, and the Cass County Sheriff's Office released their names on Sunday, June twenty second.
 
 ### Z1-S2 — narration
-> Michael and Katherine Dehn, both seventy three, were in their home on Highway forty six, one mile east of town. Marcario Lucio was eighty nine, and his wife, Roberta, survived the storm that took him.
+> Michael and Katherine, both seventy three, were in their home on Highway forty six, three miles east of town. Marcario Lucio was eighty nine, and his wife, Roberta, survived the storm that took him.
 
 *(outro tail 4 s, g-outro, bed out)*
 
