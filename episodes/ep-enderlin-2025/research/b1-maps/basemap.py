@@ -9,7 +9,7 @@ Sources (all in this folder):
   regional.json   US state outlines (Census-derived, PublicaMundi us-states.json) + Canada border for the a4 pull north.
 
 World units: X = (lon - LON0) * KX, Y = -(lat - LAT0) * KY, KY = 5600 px per degree latitude (1 mi = 81.1 px).
-`python3 basemap.py` writes basemap.json ({svg, regional_svg, pts}); inject.py pastes the SVG into each comp.
+`python3 basemap.py` writes basemap.json ({svg, regional_svg, pts}); a one-shot transform (never committed, CLAUDE.md tripwire) pasted the SVG into each comp.
 """
 import json, math, os
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -37,6 +37,15 @@ def rdp(pts, eps):
     if dmax > eps:
         return rdp(pts[:idx + 1], eps)[:-1] + rdp(pts[idx:], eps)
     return [pts[0], pts[-1]]
+
+
+def smooth(pts, k):
+    h = k // 2; n = len(pts); out = []
+    for i in range(n):
+        w = pts[max(0, i - h):min(n, i + h + 1)]
+        out.append((sum(p[0] for p in w) / len(w), sum(p[1] for p in w) / len(w)))
+    out[0], out[-1] = pts[0], pts[-1]
+    return out
 
 
 BOX = (-1250, -1150, 1250, 950)  # world clip box
@@ -94,8 +103,8 @@ def build():
     county = "M%.1f,%.1f L%.1f,%.1f M%.1f,%.1f L%.1f,%.1f" % (*P(46.630, -97.86), *P(46.630, -97.29),
                                                             *P(46.630, -97.706), *P(46.80, -97.706))
     # track
-    c = [P(a, b) for a, b in trk["center"]]
-    left = [P(a, b) for a, b in trk["left"]]; right = [P(a, b) for a, b in trk["right"]]
+    c = smooth([P(a, b) for a, b in trk["center"]], 9)
+    left = smooth([P(a, b) for a, b in trk["left"]], 13); right = smooth([P(a, b) for a, b in trk["right"]], 13)
     swath = "M" + " L".join("%.1f,%.1f" % p for p in rdp(left, 0.6) + rdp(right, 0.6)[::-1]) + " Z"
     cl = rdp(c, 0.5)
     center = "M" + " L".join("%.1f,%.1f" % p for p in cl)
@@ -128,6 +137,22 @@ def build():
                     if best is None or d < best[0]:
                         best = (d, p, i / (len(c) - 1))
     pts["x_rail"], frail = best[1], best[2]
+    # exact rail x centreline intersection (segment-segment), replaces the nearest-vertex guess
+    def seg_x(p1, p2, p3, p4):
+        d = (p2[0] - p1[0]) * (p4[1] - p3[1]) - (p2[1] - p1[1]) * (p4[0] - p3[0])
+        if abs(d) < 1e-9:
+            return None
+        t = ((p3[0] - p1[0]) * (p4[1] - p3[1]) - (p3[1] - p1[1]) * (p4[0] - p3[0])) / d
+        u = ((p3[0] - p1[0]) * (p2[1] - p1[1]) - (p3[1] - p1[1]) * (p2[0] - p1[0])) / d
+        return (p1[0] + t * (p2[0] - p1[0]), p1[1] + t * (p2[1] - p1[1]), t) if 0 <= t <= 1 and 0 <= u <= 1 else None
+    for w in osm["ways"]:
+        if w["tags"].get("railway"):
+            rp = [P(a, b) for a, b in w["pts"]]
+            for j in range(len(rp) - 1):
+                for i in range(len(c) - 1):
+                    h = seg_x(c[i], c[i + 1], rp[j], rp[j + 1])
+                    if h:
+                        pts["x_rail"], frail = (h[0], h[1]), (i + h[2]) / (len(c) - 1)
     # Maple River crossings
     rv = [P(a, b) for w in osm["ways"] if w["tags"].get("waterway") for a, b in w["pts"]]
     rbest = min(((math.hypot(p[0] - q[0], p[1] - q[1]), p, i) for i, p in enumerate(c) for q in rv[::2]), key=lambda z: z[0])
@@ -142,7 +167,8 @@ def build():
 <g id="{{P}}-l-hwy"><path d="{d_of(L['hwy'], 1.5)}" fill="none" stroke="#93a3b2" stroke-opacity="0.75" stroke-width="3.5" vector-effect="non-scaling-stroke"/></g>
 <g id="{{P}}-l-rail"><path d="{d_of(L['rail'], 1.2)}" fill="none" stroke="#c8d3e0" stroke-opacity="0.8" stroke-width="2.5" vector-effect="non-scaling-stroke"/><path d="{d_of(L['rail'], 1.2)}" fill="none" stroke="#c8d3e0" stroke-opacity="0.8" stroke-width="9" stroke-dasharray="1.5 10" vector-effect="non-scaling-stroke"/></g>
 <g id="{{P}}-l-town"><circle cx="{pts['enderlin'][0]}" cy="{pts['enderlin'][1]}" r="30" fill="#2a3644" stroke="#93a3b2" stroke-width="2" vector-effect="non-scaling-stroke"/><circle cx="{pts['sheldon'][0]}" cy="{pts['sheldon'][1]}" r="14" fill="#2a3644" stroke="#4a5560" stroke-width="2" vector-effect="non-scaling-stroke"/><circle cx="{pts['alice'][0]}" cy="{pts['alice'][1]}" r="14" fill="#2a3644" stroke="#4a5560" stroke-width="2" vector-effect="non-scaling-stroke"/></g>
-<g id="{{P}}-l-swathg"><path id="{{P}}-swath" d="{swath}" fill="#c0392b" fill-opacity="0.38" stroke="#e74c3c" stroke-opacity="0.7" stroke-width="1.5" vector-effect="non-scaling-stroke"/></g>
+<mask id="{{P}}-swm" maskUnits="userSpaceOnUse" x="-3000" y="-3000" width="6000" height="6000"><path id="{{P}}-swmp" d="{center}" fill="none" stroke="#fff" stroke-width="190" stroke-linecap="round" stroke-dasharray="{math.ceil(clen) + 1}" stroke-dashoffset="{math.ceil(clen) + 1}"/></mask>
+<g id="{{P}}-l-swathg" mask="url(#{{P}}-swm)"><path id="{{P}}-swath" d="{swath}" fill="#c0392b" fill-opacity="0.38" stroke="#e74c3c" stroke-opacity="0.7" stroke-width="1.5" vector-effect="non-scaling-stroke"/></g>
 <g id="{{P}}-l-trackg"><path id="{{P}}-track" d="{center}" fill="none" stroke="#f2f5f8" stroke-width="3" stroke-linecap="round" stroke-dasharray="{math.ceil(clen) + 1}" stroke-dashoffset="{math.ceil(clen) + 1}"/></g>'''
     return svg, pts, frac, math.ceil(clen) + 1
 

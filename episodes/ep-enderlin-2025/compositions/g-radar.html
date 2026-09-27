@@ -6,7 +6,7 @@
      Frames: self-made NEXRAD Level II mosaics (KBIS, KMVX, KMBX, KABR, 0.5 deg reflectivity, max of the four), each radar's sweep
      within 5 min of the stamped UTC time (research/b1-maps/nexrad_plots.py -> media/nexrad/nd-refl-20250621-*.png).
      Track marks: NOAA NCEI Storm Events 2025 (29 North Dakota tornado segments on 20 June local, begin -> end points).
-     Counter 22 = the narrated count (fact_sheet.md). Supercell positions follow the Storm Events tracks at 03:00 and 04:05 UTC. -->
+     Counter 24 = the narrated count = NCEI's 24 ND tornadoes that night (fact_check.md). Supercell positions follow the Storm Events tracks at 03:00 and 04:05 UTC. -->
 <template>
 <style>
   #g-radar-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
@@ -68,10 +68,11 @@ window.__timelines = window.__timelines || {};
   const ID = "g-radar", P = "#g-radar-";
   /* cues: audio/a3-s5.words.json + a3-s6.words.json, episode s minus host start 730.80 */
   const CUES = {
-    two: 4.14,       /* Two storms @734.94 */
-    enderlin: 6.54,  /* Enderlin tornado @737.34 */
-    of22: 8.24,      /* one of the 22 @739.04 */
-    june: 11.46,     /* June 19th @742.26 */
+    cells: 2.542,    /* Most supercells never @733.342; labels wait for the 03:00 frame (in 2.2-3.0) */
+    night: 4.664,    /* A night with that many @735.464 */
+    enderlin: 6.765, /* Enderlin tornado @737.565 */
+    of24: 8.356,     /* one of the 24 @739.156 */
+    june: 11.499,    /* June 19th @742.299 */
     derecho: 14.29   /* derecho @745.09 */
   };
   const DUR = 20.034;
@@ -102,8 +103,8 @@ window.__timelines = window.__timelines || {};
   tl.to(P + "s4", { autoAlpha: 1, duration: 0.3 }, 17.3);
 
   /* two supercells, labelled on the 03:00 frame, followed to 04:05 */
-  tl.fromTo(P + "sc1", { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, CUES.two);
-  tl.fromTo(P + "sc2", { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, CUES.two + 0.2);
+  tl.fromTo(P + "sc1", { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, CUES.cells);
+  tl.fromTo(P + "sc2", { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, CUES.cells + 0.2);
   tl.to(P + "sc1", { x: 1227, y: 486, duration: 0.9, ease: "power2.inOut" }, 5.3);
   tl.to(P + "sc2", { x: 1095, y: 617, duration: 0.9, ease: "power2.inOut" }, 5.3);
   /* supercell 2 is the Enderlin storm: its label hands over to "Enderlin" */
@@ -112,11 +113,11 @@ window.__timelines = window.__timelines || {};
 
   /* rail: the count */
   tl.fromTo(P + "eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.3);
-  tl.fromTo(P + "cnt", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.two);
-  tl.fromTo(P + "clab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.two + 0.3);
+  tl.fromTo(P + "cnt", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.night);
+  tl.fromTo(P + "clab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.night + 0.3);
   const N = { v: 0 }, nv = document.querySelector(P + "cntv");
-  tl.fromTo(N, { v: 1 }, { v: 22, duration: 4.1, ease: "power2.out", onUpdate: () => { if (nv) nv.textContent = Math.round(N.v); } }, CUES.two);
-  tl.fromTo(P + "cnt", { scale: 1 }, { scale: 1.12, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "0% 50%" }, CUES.of22);
+  tl.fromTo(N, { v: 1 }, { v: 24, duration: CUES.of24 - CUES.night, ease: "power2.out", onUpdate: () => { if (nv) nv.textContent = Math.round(N.v); } }, CUES.night);
+  tl.fromTo(P + "cnt", { scale: 1 }, { scale: 1.12, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "0% 50%" }, CUES.of24);
 
   /* Enderlin, one of them */
   tl.fromTo(P + "endring", { autoAlpha: 1, attr: { r: 14 } }, { autoAlpha: 0, attr: { r: 60 }, duration: 1.0, ease: "power2.out", repeat: 4, repeatDelay: 0.15 }, CUES.enderlin);
@@ -141,7 +142,7 @@ window.__timelines = window.__timelines || {};
       ln.setAttribute("x1", m[0]); ln.setAttribute("y1", m[1]); ln.setAttribute("x2", m[2] + 0.01); ln.setAttribute("y2", m[3]);
       if (m[4]) { ln.setAttribute("stroke", "#e74c3c"); ln.setAttribute("stroke-width", "8"); }
       g.appendChild(ln);
-      const at = m[4] ? CUES.enderlin : (i < 19 ? CUES.two + i * 0.12 : 6.8 + (i - 21) * 0.17);
+      const at = m[4] ? CUES.enderlin : (i < 19 ? CUES.night + i * 0.12 : CUES.enderlin + 0.25 + (i - 21) * 0.17);
       tl.set(ln, { autoAlpha: 0 }, 0);
       tl.fromTo(ln, { autoAlpha: 0, attr: { "stroke-width": 16 } }, { autoAlpha: 1, attr: { "stroke-width": m[4] ? 8 : 5 }, duration: 0.3, ease: "power2.out" }, at);
     });

@@ -36,12 +36,12 @@ with Ken Burns (four alternating moves, 3-6 s), `cutaway` = track 3 still/clip o
 | seg | start-end | picture |
 |---|---|---|
 | >> MARK 0:00-0:50 | | no real clip: hook is MG by owner design; El Reno PD stills (NASA, NWS) |
-| i1-s1 | 23.10-41.88 | `g-master-map` (to build) 23.104-73.503: track draws east from 4 mi south of town on "touched the ground" 29.88; `[T4] g-clock` (to build) 23.104-29.88 shows 11:02 PM on "a little after eleven" 25.60 · cutaway `enderlin-2025/enderlin-town-street-1.jpg` 32.90-37.60 ("a small town in southeast North Dakota ... Fargo"; 2009 establishing photo, no date spoken) |
+| i1-s1 | 23.10-41.88 | `g-master-map` (to build) 23.104-73.503: track curves north from 4 mi south of town on "touched the ground" 30.00 (to its end on "farmland" 41.09); `[T4] g-clock` (to build) 23.104-29.88 shows 11:02 PM on "a little after eleven" 25.59 · cutaway `enderlin-2025/enderlin-town-street-1.jpg` 32.90-37.60 ("a small town in southeast North Dakota ... Fargo"; 2009 establishing photo, no date spoken) |
 | i1-s2 | 42.19-47.73 | `g-master-map`: 1.05 mi width bar across the track, "18 football fields" in the rail |
 | >> MARK 0:50-1:40 | | REAL: GOES-19 loop of that night's supercells 84.60 |
-| i1-s3 | 48.03-63.39 | `g-master-map`: pin on Highway 46 one mile east of town (50.19); text-only name cards in the rail: "Michael and Katherine Pfaff-Dehn · 73" (52.67), "Marcario Lucio · 89" (60.65). INSERT? KVRR / Valley News Live aftermath at the Highway 46 home (owner approval; the map plays now) |
+| i1-s3 | 48.03-63.39 | `g-master-map`: pin "Highway 46 · 3 mi East of Town" (50.24); text-only name cards in the rail: "Michael and Katherine Pfaff-Dehn · 73" (52.95), "Marcario Lucio · 89" (60.71). INSERT? KVRR / Valley News Live aftermath at the Highway 46 home (owner approval; the map plays now) |
 | i1-s4 | 63.69-73.20 | `g-master-map`: "Roberta survived" line under Lucio card (64.49); "Deadliest ND tornado since 1978" on "since 1978" 71.71. Swell ends 72.80 |
-| i1-s5 | 73.50-91.63 | still `enderlin-2025/maple-river-root-ball-displacement.jpg` 73.503-78.90 (NWS Grand Forks survey photo) · still `enderlin-2025/maple-river-debarked-trunk-pale.jpg` 78.90-84.60 + pf "EF3 · ABOUT 160 MPH" 80.10-83.90 · REAL clip `goes-satellite/goes19-dakota-tornadoes-june20-2025.mp4` 84.60-91.93 + pf "22 Tornadoes · NORTH DAKOTA · ONE NIGHT" 89.30-91.80 |
+| i1-s5 | 73.50-91.63 | still `enderlin-2025/maple-river-root-ball-displacement.jpg` 73.503-78.90 (NWS Grand Forks survey photo) · still `enderlin-2025/maple-river-debarked-trunk-pale.jpg` 78.90-84.60 + pf "EF3 · ABOUT 160 MPH" 80.10-83.90 · REAL clip `goes-satellite/goes19-dakota-tornadoes-june20-2025.mp4` 84.60-91.93 + pf "24 Tornadoes · NORTH DAKOTA · ONE NIGHT" 89.22-91.72 |
 | i1-s6 | 91.93-108.82 | `g-split-i1` (to build) 91.93-108.821: "El Reno 2013 · EF3" / "Enderlin 2025 · EF3", day counter runs under Enderlin, "number had been wrong" 108.15. Swell ends 108.40 |
 | >> MARK 1:40-2:30 | | no real clip (split card, USACE assessment stills, A1 opening stills, radar diagram) |
 | i1-s7 | 109.12-115.97 | stills `mayfield-2021/mayfield-2021-usace-assess-damage-1.jpg` 108.821-112.40, `-2.jpg` 112.40-115.975 (engineers assessing damage: "the same method every American tornado is rated by") |
@@ -114,7 +114,7 @@ with Ken Burns (four alternating moves, 3-6 s), `cutaway` = track 3 still/clip o
 | a3-s3 | 704.69-710.60 | `g-discussion`: inflow reaches the ground ("surface based storm pulls its air from the ground") |
 | a3-s4 | 710.90-724.26 | `g-discussion`: "120 to 150 MPH" on the card (714.84-716.32); "far above it" 723.44. Swell ends 723.80 |
 | >> MARK 11:40-12:30 | | REAL: GOES-19 loop callback 724.563 |
-| a3-s5 | 724.56-744.47 | REAL clip `goes-satellite/goes19-dakota-tornadoes-june20-2025.mp4` 724.563-730.80 (callback, media from 2.0 s: "That night, two supercells") · `g-radar` (to build) 730.80-750.834: two supercells labelled across ND, "22 Tornadoes" (729.30 is spoken on the clip; the radar rail repeats it at 739.04 "one of the 22"), "June 19-22" (742.26) |
+| a3-s5 | 724.56-744.47 | REAL clip `goes-satellite/goes19-dakota-tornadoes-june20-2025.mp4` 724.563-730.80 (callback, media from 2.0 s: "That night, North Dakota had twenty four tornadoes, many from two supercells") · `g-radar` 730.80-750.834: two supercells labelled across ND (733.34), the rail counts to "24 Tornadoes" from "a night with that many" 735.46 to "one of the 24" 739.16, "June 19-22" (742.30) |
 | a3-s6 | 744.77-750.53 | `g-radar`: the derecho line sweeps through |
 | a3-s7 | 750.83-767.32 | `g-master-map-a3` (to build) 750.834-774.269: zoom to touchdown on 58th Street SE, Ransom County (753.83); `[T4] g-clock-a3` 750.834-767.62 at 11:02 (751.27) and running; "19 min · 12 mi · about 38 mph" (758.23-763.43) |
 | >> MARK 12:30-13:20 | | no real clip (radar re-plot) |
@@ -127,7 +127,7 @@ with Ken Burns (four alternating moves, 3-6 s), `cutaway` = track 3 still/clip o
 | a3-s13 | 833.58-839.92 | map: the tanker mark blinks, "months to turn it into a number" |
 | a3-s14 | 840.22-858.46 | cutaways `enderlin-2025/maple-river-view-damaged-trees.jpg` 840.40-845.90 (callback) · `enderlin-2025/maple-river-debarked-trunk-pale.jpg` 845.90-851.60 (callback, on "sandpapering" 849.66) · map: Maple River crossing. Swell ends 857.80 |
 | >> MARK 14:10-15:00 | | no real clip (map). INSERT? KVRR Highway 46 towers / swept farmsteads (owner approval) |
-| a3-s15 | 858.76-872.16 | map: Highway 46 crossing (860.54), 4 towers down (863.06), about 10 homes near town, the Dehn home pin (869.96) |
+| a3-s15 | 858.76-872.16 | map: Highway 46 crossing (860.54), 4 towers down (863.06), about 10 homes near town, the Pfaff-Dehn home pin (870.00) |
 | a3-s16 | 872.46-890.22 | map: into Cass County (873.10), County Road 38 farmsteads, text "Swept Clean" on 884.56, "only if bolted down" (889.12). Swell ends 889.60 |
 | a3-s17 | 890.52-895.49 | map: farm pins light one at a time |
 | a3-s18 | 895.78-913.18 | `[T4] g-clock-a3b` 895.785-901.20 stops at 11:21 (896.23); map: lift point 5 mi SW of Alice (900.23), "12 mi · 1.05 mi wide" (902.54-906.34), El Reno's 2.6 mi outline ghosts in at the same scale (907.56-912.44) |
@@ -204,7 +204,7 @@ with Ken Burns (four alternating moves, 3-6 s), `cutaway` = track 3 still/clip o
 |---|---|---|
 | z1-s1 | 1479.00-1495.23 | `g-master-map-z1` (to build) 1478.997-1508.677: the track fades to a single line, "EF3 · June 20" (1483.10) then "EF5 · 108 days later" (1486.92) |
 | >> MARK 25:00-25:13 | | no real clip (close) |
-| z1-s2 | 1495.53-1508.68 | `g-master-map-z1`: text-only names card, each name on the voice: "Michael and Katherine Pfaff-Dehn · 73" (1495.53-1497.45), "Marcario Lucio · 89" (1502.85-1503.95), "Roberta survived" (1506.01) |
+| z1-s2 | 1495.53-1508.68 | `g-master-map-z1`: text-only names card, each name on the voice: "Michael and Katherine Pfaff-Dehn · 73" (1495.53-1497.27), "Marcario Lucio · 89" (1502.59-1503.67), "Roberta survived" (1505.73) |
 | outro tail | 1508.677-1512.677 | `g-outro` (to build) 4.0 s: channel title match-cut, bed fades out in the file |
 
 ## Real-footage coverage (50 s slots)
