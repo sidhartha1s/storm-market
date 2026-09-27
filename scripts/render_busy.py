@@ -22,6 +22,7 @@ queueing behind a 15-minute draft (owner 17 Sep 26). The full browser gates stay
 Exit 0 = clear. Exit 3 = a render is running, or (with --launch) RAM is under the floor.
 RENDER_BUSY_OK=1 overrides, for the case where the render itself is the thing being tested.
 """
+import ctypes
 import glob
 import os
 import subprocess
@@ -60,8 +61,18 @@ def pin_chrome_to_dedicated_gpu():
         print("[gpu-pin] WARNING no chrome-headless-shell.exe found to pin")
 
 
+class _MemStatus(ctypes.Structure):
+    _fields_ = [("dwLength", ctypes.c_ulong), ("dwMemoryLoad", ctypes.c_ulong)] + [(n, ctypes.c_ulonglong) for n in (
+        "ullTotalPhys", "ullAvailPhys", "ullTotalPageFile", "ullAvailPageFile", "ullTotalVirtual", "ullAvailVirtual",
+        "ullAvailExtendedVirtual")]
+
+
 def free_gb():
-    return float(ps("(Get-CimInstance Win32_OperatingSystem).FreePhysicalMemory") or 0) / 1048576
+    # GlobalMemoryStatusEx, not a second PowerShell CIM query: same figure (3.97 vs 4.01 GB read back
+    # to back, 27 Sep 26) without ~2.9 s of PowerShell + WMI start-up on every Chromium gate launch
+    m = _MemStatus(dwLength=ctypes.sizeof(_MemStatus))
+    ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(m))
+    return m.ullAvailPhys / 2**30
 
 
 if __name__ == "__main__":

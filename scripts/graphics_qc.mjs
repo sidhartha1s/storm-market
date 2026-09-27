@@ -6,7 +6,7 @@
 import { chromium, chromiumExecutable } from './playwright_env.mjs';
 import { readFileSync, readdirSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join, resolve } from 'path';
-import { CANVAS_RENDERER, hostCss, stageComp } from './stage_comp.mjs';
+import { CANVAS_RENDERER, hostCss, motionSpans, stageComp } from './stage_comp.mjs';
 
 const EXECUTABLE = chromiumExecutable();
 const ep = resolve(process.argv[2] || 'episodes/ep3-tristate');
@@ -250,10 +250,14 @@ for (const f of files) {
   const punchy = probe.tweens.filter(t => /power[34]|back|elastic|expo/.test(t.ease)).length;
   if (probe.tweens.length >= 6 && punchy === 0) add(name, 'limp-easing', 'no power3/power4 easing anywhere — mg-quickref Motion');
 
-  /* --- stillness. A gap is idle only if NO tween is running through it, measured from the
-     end of the last motion to the next tween start (the same walk as beat_density.py). --- */
+  /* --- stillness: the same spans as beat_density (stage_comp.mjs motionSpans; a {} clock is not
+     motion), walked from the end of motion to the next start, over what is ON SCREEN (the host
+     window, or the timeline when unmounted). --- */
   const beats = probe.beats.filter(b => b <= windowEnd + 0.01);
-  const spans = probe.tweens.map(t => [t.start, t.start + t.dur]).sort((a, b) => a[0] - b[0]);
+  const idleEnd = hostDur ?? probe.duration;
+  // ponytail: rule 3 samples at most 600 s; an unmounted repeat:-1 comp is covered by rule 1 anyway
+  const spans = (await page.evaluate(`(() => { const tl = window.__timelines[${JSON.stringify(probe.id)}]; return ${motionSpans(Math.min(idleEnd, 600))}; })()`))
+    .sort((a, b) => a[0] - b[0]);
   let still = 0, frozen = 0;
   const idle = (a, b) => {
     if (b - a < MAX_IDLE) return;
@@ -261,12 +265,12 @@ for (const f of files) {
     add(name, 'idle', `${(b - a).toFixed(1)}s frozen at ${a.toFixed(1)}s–${b.toFixed(1)}s (nothing in motion) — mg-quickref Motion`);
   };
   for (const [s, e] of spans) {
-    if (s >= windowEnd) break;
+    if (s >= idleEnd) break;
     idle(still, s);
     still = Math.max(still, e);
   }
-  idle(still, windowEnd);
-  const idleFrac = frozen / windowEnd;
+  idle(still, idleEnd);
+  const idleFrac = frozen / idleEnd;
 
   /* --- geometry + typography at every beat and each midpoint --- */
   const samples = [...new Set(beats.flatMap((b, i) => [b + 0.35, i < beats.length - 1 ? (b + beats[i+1]) / 2 : b + 0.9]))]
