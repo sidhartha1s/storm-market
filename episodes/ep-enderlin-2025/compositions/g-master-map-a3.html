@@ -2,28 +2,115 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-master-map-a3"
-     (host 750.834 -> 774.269, 23.435 s, track 2). The MG builder replaces this whole file. -->
+<!-- g-master-map-a3 (B1): touchdown on 58th Street Southeast, 19 min / 12 mi / about 38 mph, after dark. Host 750.834 -> 774.269
+     (23.435 s, track 2); g-clock-a3 sits top-right until 767.62, so rail text stays below y 260 until then.
+     Basemap: research/b1-maps. 38 mph = 12.1 mi / 19 min (spoken). Study: Ashley, Krmenec and Schwantes 2008 (fact_check.md). -->
 <template>
 <style>
-  .ph-master-map-a3 { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .ph-master-map-a3-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-master-map-a3-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
-  .ph-master-map-a3-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  #g-master-map-a3-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 38% 50%, #0b1016 0%, #030507 78%); }
+  .mm3-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .mm3-lab { font-family:Arial, sans-serif; font-weight:700; fill:#dfe7ee; paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .mm3-night { position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse at 30% 55%, rgba(8,14,30,0.10) 0%, rgba(2,4,12,0.62) 70%); }
+  .mm3-scan { position:absolute; left:0; top:0; width:1180px; height:2px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
+  .mm3-rail { position:absolute; right:0; top:0; bottom:0; width:820px; pointer-events:none;
+    background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); }
+  .mm3-row { position:absolute; left:1270px; width:554px; }
+  .mm3-val { font-size:30px; font-weight:700; letter-spacing:1px; color:#dfe7ee; white-space:nowrap; }
+  .mm3-rlab { margin-top:6px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
+  .mm3-card { position:absolute; left:1250px; top:320px; width:574px; box-sizing:border-box; padding:34px 40px 36px; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); }
+  .mm3-ceb { font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; text-transform:uppercase; }
+  .mm3-big { margin-top:14px; font-family:'Arial Black', Arial, sans-serif; font-size:64px; line-height:1; color:#f2f5f8; }
+  .mm3-mid { margin-top:12px; font-size:30px; font-weight:700; color:#dfe7ee; line-height:1.2; }
+  .mm3-src { margin-top:22px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:22px; color:#d8a13a; }
 </style>
-<div class="ph-master-map-a3" data-composition-id="g-master-map-a3" data-width="1920" data-height="1080" data-duration="23.435">
-  <div class="ph-master-map-a3-card" id="ph-master-map-a3-card">
-    <div class="ph-master-map-a3-t" id="ph-master-map-a3-t">g-master-map-a3</div>
-    <div class="ph-master-map-a3-s" id="ph-master-map-a3-s">Placeholder · To Build</div>
+<div id="g-master-map-a3-root" data-composition-id="g-master-map-a3" data-width="1920" data-height="1080" data-duration="23.435">
+  <svg class="mm3-svg" viewBox="0 0 1920 1080">
+    <g id="g-master-map-a3-cam"><g id="g-master-map-a3-drift">
+      <!--BASEMAP:g-master-map-a3--><!--/BASEMAP-->
+      <circle id="g-master-map-a3-tdring" cx="-101.5" cy="316.9" r="4" fill="none" stroke="#e74c3c" stroke-width="3" vector-effect="non-scaling-stroke"/>
+      <circle id="g-master-map-a3-tddot" cx="-101.5" cy="316.9" r="5" fill="#e74c3c"/>
+      <text id="g-master-map-a3-t-58" class="mm3-lab" x="-70" y="311" font-size="10.5">58th St SE</text>
+      <text id="g-master-map-a3-t-ransom" class="mm3-lab" x="-150" y="346" font-size="13.5" fill="#7fb2e5">Ransom County</text>
+    </g></g>
+  </svg>
+  <div class="mm3-night" id="g-master-map-a3-night"></div>
+  <div class="mm3-scan" id="g-master-map-a3-scan"></div>
+  <div class="mm3-rail" id="g-master-map-a3-railbg"></div>
+  <div class="mm3-row" id="g-master-map-a3-r1" style="top:330px"><div class="mm3-val">19 Min</div><div class="mm3-rlab">On the Ground</div></div>
+  <div class="mm3-row" id="g-master-map-a3-r2" style="top:430px"><div class="mm3-val">12 Mi</div><div class="mm3-rlab">Path Length</div></div>
+  <div class="mm3-row" id="g-master-map-a3-r3" style="top:530px"><div class="mm3-val">About 38 mph</div><div class="mm3-rlab">Across the Ground</div></div>
+  <div class="mm3-card" id="g-master-map-a3-card">
+    <div class="mm3-ceb" id="g-master-map-a3-ceb">Night Tornadoes</div>
+    <div class="mm3-big" id="g-master-map-a3-cbig">About 2.5x</div>
+    <div class="mm3-mid" id="g-master-map-a3-cmid">As Likely to Take Lives</div>
+    <div class="mm3-src" id="g-master-map-a3-csrc">Ashley, Krmenec and Schwantes, 2008</div>
   </div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
+  const ID = "g-master-map-a3", P = "#g-master-map-a3-";
+  /* cues: audio/a3-s7.words.json + a3-s8.words.json, episode s minus host start 750.834 */
+  const CUES = {
+    touched: 2.116,  /* touched down @752.95 */
+    st58: 2.996,     /* 58th Street @753.83 */
+    ransom: 4.916,   /* Ransom County @755.75 */
+    nineteen: 7.396, /* 19 minutes @758.23 */
+    twelve: 8.456,   /* 12 miles @759.29 */
+    mph38: 12.076,   /* 38 miles an hour @762.91 */
+    dark: 15.456,    /* after dark @766.29 */
+    y2008: 17.106,   /* 2008 @767.94 */
+    night: 18.506,   /* night tornadoes @769.34 */
+    twohalf: 19.606, /* two and a half times @770.44 */
+    lives: 21.466    /* lives @772.30 */
+  };
+  const DUR = 23.435;
+  const TLEN = 974;
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-master-map-a3-card", { x: 0 }, { x: 40, duration: 23.435, ease: "none" }, 0);
-  window.__timelines["g-master-map-a3"] = tl;
+  const cam = (wx, wy, s, fx = 560) => ({ attr: { transform: "translate(" + (fx - wx * s).toFixed(2) + "," + (540 - wy * s).toFixed(2) + ") scale(" + s + ")" } });
+
+  tl.set(P + "cam", cam(0, -60, 0.5), 0);
+  tl.set([P + "tddot", P + "tdring", P + "t-58", P + "t-ransom", P + "night"], { autoAlpha: 0 }, 0);
+  tl.set([P + "r1", P + "r2", P + "r3", P + "card", P + "ceb", P + "cbig", P + "cmid", P + "csrc"], { autoAlpha: 0 }, 0);
+
+  /* ambient */
+  tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: 11.8, ease: "none", repeat: 1, yoyo: true }, 0);
+  tl.fromTo(P + "drift", { x: 0, y: 0 }, { x: -12, y: 8, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "l-grid", { opacity: 0.6 }, { opacity: 1, duration: 2, ease: "sine.inOut", repeat: 10, yoyo: true }, 0);
+
+  /* county view -> zoom to the touchdown on 58th Street Southeast */
+  tl.to(P + "cam", Object.assign(cam(-101.5, 316.9, 2.1), { duration: 2.9, ease: "power2.inOut" }), 0.1);
+  tl.fromTo(P + "tddot", { autoAlpha: 0, scale: 0, svgOrigin: "-101.5 316.9" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.5)" }, CUES.touched);
+  tl.fromTo(P + "tdring", { autoAlpha: 0.9, attr: { r: 4 } }, { autoAlpha: 0, attr: { r: 30 }, duration: 1.1, ease: "power2.out", repeat: 3, repeatDelay: 0.3 }, CUES.touched);
+  tl.fromTo(P + "t-58", { autoAlpha: 0, x: -6 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.st58);
+  tl.fromTo(P + "t-ransom", { autoAlpha: 0, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.ransom);
+  tl.to(P + "cam", Object.assign(cam(-101.5, 316.9, 2.25), { duration: 4.0, ease: "none" }), 3.0);
+  tl.to([P + "t-58", P + "t-ransom"], { autoAlpha: 0, duration: 0.3 }, 7.0);
+
+  /* 19 minutes, 12 miles: pull back while the path draws */
+  tl.to(P + "cam", Object.assign(cam(40, -30, 0.95), { duration: 2.2, ease: "power2.inOut" }), 7.1);
+  tl.fromTo([P + "track", P + "swmp"], { strokeDashoffset: TLEN }, { strokeDashoffset: 0, duration: 8.0, ease: "none" }, CUES.nineteen);
+  tl.fromTo(P + "r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.nineteen);
+  tl.fromTo(P + "r2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.twelve);
+  tl.fromTo(P + "r3", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.mph38);
+  tl.to(P + "cam", Object.assign(cam(40, -30, 1.02), { duration: 13.9, ease: "none" }), 9.3);
+
+  /* after dark */
+  tl.fromTo(P + "night", { autoAlpha: 0 }, { autoAlpha: 1, duration: 1.4, ease: "power2.inOut" }, CUES.dark);
+  tl.fromTo(P + "swath", { attr: { "fill-opacity": 0.38 } }, { attr: { "fill-opacity": 0.66 }, duration: 1.1, ease: "sine.inOut", repeat: 6, yoyo: true }, CUES.dark);
+
+  /* the 2008 study */
+  tl.to([P + "r1", P + "r2", P + "r3"], { autoAlpha: 0, y: -20, duration: 0.45, stagger: 0.08, ease: "power2.in" }, 16.6);
+  tl.fromTo(P + "card", { autoAlpha: 0, x: 120 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, CUES.y2008);
+  tl.fromTo(P + "csrc", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.y2008 + 0.2);
+  tl.fromTo(P + "ceb", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.night);
+  tl.fromTo(P + "cbig", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.twohalf);
+  tl.fromTo(P + "cmid", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.twohalf + 0.7);
+  tl.to(P + "card", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  window.__timelines[ID] = tl;
 })();
 </script>
 </template>
