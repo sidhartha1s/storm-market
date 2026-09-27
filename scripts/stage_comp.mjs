@@ -79,7 +79,8 @@ export function stageComp(ep, file, css, prefix = '') {
   // the host's own <script src> tags too (GSAP plugins): a moves comp calling DrawSVGPlugin died
   // "no timeline registered" standalone although it renders fine inside index.html
   const hostJs = [...readFileSync(join(ep, 'index.html'), 'utf8').matchAll(/<script\b[^>]*\bsrc="([^"]+)"/g)]
-    .map(x => x[1]).filter(s => s !== 'gsap.min.js').map(s => `<script src="${s}"></script>`).join('');
+    .map(x => x[1]).filter(s => !/^gsap(\.min)?\.js$/.test(basename(s.split(/[?#]/)[0])))  // local or CDN gsap: staged below
+    .map(s => `<script src="${s}"></script>`).join('');
   writeFileSync(out, `<!doctype html><html><head><meta charset="utf-8"><base href="../">
 <style>${css}</style>
 <style>html,body{margin:0;width:1920px;height:1080px;background:#111;overflow:hidden}</style>
