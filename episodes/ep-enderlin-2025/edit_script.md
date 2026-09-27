@@ -32,7 +32,9 @@ Segment after: **A6-S1** ("Tony Lyza's change was to lower the line between E F 
   paragraph; a paragraph split into several segments carries the picture note on the first one only (same shot
   continues into the rest).
 - Homographs respelled in the TTS copy only (CLAUDE.md Voice; script_v2.md "TTS copy notes"), wording/meaning kept:
-  "wind"/"winds" (noun, every use) -> "wihnd"/"wihnds"; "lives" (noun) -> "lyvz"; "Valley News Live" -> "Valley News
+  "wind"/"winds" (noun, every use) -> "wihnd"/"wihnds"; "lives" (noun) stays "lives" (27 Sep 26: the old "lyvz" respelling
+  voiced /lɪvz/; measured F1 403 Hz over 35 ms vs plain "lives" F1 614-769 Hz over 185 ms = /laɪvz/; probe table in
+  %TEMP%\lives-probe\table.md); "Valley News Live" -> "Valley News
   Lyve". None of "read/lead/tear/bass/close/present/record" occur as narration in this script (checked).
 - Zero open verify-tag markers: script_v2.md carried three (bracket-tag) mentions are all in its front-matter/word-table notes
   about the *previous* draft process, not inline in the narration body -- confirmed by scan, none carried into this
