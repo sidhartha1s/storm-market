@@ -1,17 +1,16 @@
-# script-quickref.md — the one file a script writer opens (owner rules to 27 Sep 26)
+# script-quickref.md — the script writer's brief (owner rules to 27 Sep 26)
 
-This file WINS for script writers: it summarizes and condenses the source files named per section. Do not open
-`script-os.md`, `script-framework.md`, `script-scaling.md`, `humanise-rules.md`, `learnings/script-process.md`,
-DESIGN.md or `packaging-rules.md` to write a script — read only this file plus the episode research. If a rule
-here and its source disagree, fix the source in the same PR and say which one won.
+A script writer reads this file, `references/flag-words.md` and the episode research, nothing else. It condenses
+the source file named in each section header; if a rule here and its source disagree, fix the source in the same
+PR and say which one won.
 
 ## The hook (owner 27 Sep 26 — supersedes any looser hook rule below)
 - **One sentence, 3–5 s.** Promise first: the payoff the title/thumbnail already made.
-- **Never pause on a fact that contradicts the title/thumbnail.** Bad: "The weather service changed it to EF5,
-  four months after they called it EF3." — that sentence argues with its own thumbnail. State the promised fact,
-  save the contradiction for inside the video.
+- **Never pause on a fact that contradicts the title/thumbnail.** Bad: "The weather service called it EF3." then a
+  pause. Good (owner-approved): "The weather service changed it to EF5, four months after they called it EF3." The
+  promised fact leads; the contradiction rides inside the same sentence.
 - No fluff before it: sentence one IS the payoff (numbers first, then the specific image, then the question).
-  Delete-test: cut sentence one — if the hook still works, it was fluff. (`script-framework.md`, `learnings/script-process.md`)
+  Delete-test: cut sentence one — if the hook still works, it was fluff.
 - No roadmap phrases ("one more thing before", "in the next twenty minutes") — they read as delay.
 - Cold open (DESIGN.md): frame one is mid-action, never black. Narrator's first line starts at 0:00 — no broadcast,
   radio or archive audio in the hook (bad audio quality loses viewers before the hook finishes). Date/place popfig
