@@ -95,42 +95,42 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"title", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.05);
   tl.fromTo(P+"when", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.25);
 
-  /* THE WEATHER SERVICE @0.06: the old rating is already on the board */
-  tl.to(P+"scrim3", { autoAlpha: 1, duration: 0.4 }, 0.2);
-  tl.fromTo(P+"ef3", { autoAlpha: 0, scale: 1.12, rotation: 0 }, { autoAlpha: 1, scale: 1, rotation: -3, duration: 0.35, ease: "power3.out" }, 0.3);
+  /* THE WEATHER SERVICE @0.29 (voice onset): the old rating is already on the board */
+  tl.to(P+"scrim3", { autoAlpha: 1, duration: 0.4 }, 0.35);
+  tl.fromTo(P+"ef3", { autoAlpha: 0, scale: 1.12, rotation: 0 }, { autoAlpha: 1, scale: 1, rotation: -3, duration: 0.35, ease: "power3.out" }, 0.45);
 
-  /* CHANGED @0.83: the strike goes through EF3 */
-  tl.to(P+"strike", { autoAlpha: 1, scaleX: 1, duration: 0.28, ease: "power3.out" }, 0.83);
-  tl.to(P+"ef3", { opacity: 0.6, duration: 0.4 }, 1.0);
+  /* CHANGED @0.94: the strike goes through EF3 */
+  tl.to(P+"strike", { autoAlpha: 1, scaleX: 1, duration: 0.28, ease: "power3.out" }, 0.97);
+  tl.to(P+"ef3", { opacity: 0.6, duration: 0.4 }, 1.15);
 
-  /* E F FIVE @1.46: the verdict slams, bolt + flash ride the stamp hit */
-  tl.to(P+"scrim5", { autoAlpha: 1, duration: 0.3 }, 1.16);
-  tl.fromTo(P+"ef5", { autoAlpha: 0, scale: 1.45, rotation: -10 }, { autoAlpha: 1, scale: 1, rotation: -4, duration: 0.2, ease: "power4.in" }, 1.26);
-  tl.to(P+"bolt", { autoAlpha: 1, strokeDashoffset: 0, duration: 0.08, ease: "none" }, 1.38);
-  tl.fromTo(P+"flash-b", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.05 }, 1.44);
-  tl.to(P+"flash-b", { autoAlpha: 0, duration: 0.5, ease: "power2.out" }, 1.5);
-  tl.fromTo(P+"g5", { y: 0 }, { y: 9, duration: 0.07, ease: "power1.out", yoyo: true, repeat: 1 }, 1.46);
-  tl.to(P+"bolt", { autoAlpha: 0, duration: 0.4 }, 1.66);
-  /* FIVE @1.93: the red stamp breathes */
-  tl.fromTo(P+"ef5", { scale: 1 }, { scale: 1.05, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 1 }, 1.93);
-  /* the breath after "five" (2.37 - 2.76): what EF5 means */
-  tl.fromTo(P+"sub5", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.3);
+  /* E F FIVE @1.68 (whisper; envelope ~1.72): the verdict slams, bolt + flash ride the stamp hit */
+  tl.to(P+"scrim5", { autoAlpha: 1, duration: 0.3 }, 1.42);
+  tl.fromTo(P+"ef5", { autoAlpha: 0, scale: 1.45, rotation: -10 }, { autoAlpha: 1, scale: 1, rotation: -4, duration: 0.2, ease: "power4.in" }, 1.52);
+  tl.to(P+"bolt", { autoAlpha: 1, strokeDashoffset: 0, duration: 0.08, ease: "none" }, 1.64);
+  tl.fromTo(P+"flash-b", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.05 }, 1.70);
+  tl.to(P+"flash-b", { autoAlpha: 0, duration: 0.5, ease: "power2.out" }, 1.76);
+  tl.fromTo(P+"g5", { y: 0 }, { y: 9, duration: 0.07, ease: "power1.out", yoyo: true, repeat: 1 }, 1.72);
+  tl.to(P+"bolt", { autoAlpha: 0, duration: 0.4 }, 1.92);
+  /* FIVE @2.20: the red stamp breathes */
+  tl.fromTo(P+"ef5", { scale: 1 }, { scale: 1.05, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 1 }, 2.20);
+  /* the breath after "five" (silence 2.65 - 3.03): what EF5 means */
+  tl.fromTo(P+"sub5", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.62);
 
-  /* FOUR @2.76 MONTHS @2.92: the arrow draws from the old rating to the new */
-  tl.to(P+"arrowline", { autoAlpha: 1, strokeDashoffset: 0, duration: 0.5, ease: "power2.inOut" }, 2.76);
-  tl.fromTo(P+"arrowhead", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.2, ease: "power2.out" }, 3.2);
-  tl.fromTo(P+"gap", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.92);
-  tl.fromTo(P+"g5", { scale: 1 }, { scale: 1.03, duration: 1.6, ease: "sine.inOut" }, 3.3);
+  /* FOUR @3.06 MONTHS @3.28: the arrow draws from the old rating to the new */
+  tl.to(P+"arrowline", { autoAlpha: 1, strokeDashoffset: 0, duration: 0.5, ease: "power2.inOut" }, 3.06);
+  tl.fromTo(P+"arrowhead", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.2, ease: "power2.out" }, 3.50);
+  tl.fromTo(P+"gap", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.28);
+  tl.fromTo(P+"g5", { scale: 1 }, { scale: 1.03, duration: 1.6, ease: "sine.inOut" }, 3.60);
 
-  /* CALLED IT @3.70, E F THREE @4.20: the struck stamp thumps once more */
-  tl.to(P+"ef3", { opacity: 1, duration: 0.3 }, 3.9);
-  tl.fromTo(P+"g3", { scale: 1 }, { scale: 1.08, duration: 0.12, ease: "power2.out", yoyo: true, repeat: 1 }, 4.2);
-  tl.fromTo(P+"sub3", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.35);
+  /* CALLED IT @4.04, E F THREE @4.42: the struck stamp thumps once more */
+  tl.to(P+"ef3", { opacity: 1, duration: 0.3 }, 4.10);
+  tl.fromTo(P+"g3", { scale: 1 }, { scale: 1.08, duration: 0.12, ease: "power2.out", yoyo: true, repeat: 1 }, 4.46);
+  tl.fromTo(P+"sub3", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.62);
 
-  /* exit: the verdict lifts on the cut to the June night (voice ends 5.06, host ends 5.60) */
-  tl.to([P+"g3", P+"g5", P+"gap", P+"arrowline", P+"arrowhead"], { y: -40, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 5.05);
-  tl.to(P+"card", { x: -700, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 5.05);
-  tl.to([P+"scrim3", P+"scrim5"], { autoAlpha: 0, duration: 0.5 }, 5.05);
+  /* exit: the verdict lifts on the cut to the night scene (voice ends 5.53, host ends 5.841) */
+  tl.to([P+"g3", P+"g5", P+"gap", P+"arrowline", P+"arrowhead"], { y: -40, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 5.30);
+  tl.to(P+"card", { x: -700, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 5.30);
+  tl.to([P+"scrim3", P+"scrim5"], { autoAlpha: 0, duration: 0.5 }, 5.30);
   window.__timelines["g-verdict"] = tl;
 })();
 </script>
