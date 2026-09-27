@@ -42,11 +42,11 @@ if comps:
         sys.exit(f"[beat_density] FAIL: beat_probe.mjs exited {r.returncode}\n{r.stdout[-800:]}")
     probe = json.loads(lines[-1])  # earlier lines are render_busy's preflight print
 
-rows = []
+rows, errors = [], []
 for gid in comps:
     win, res = hosts[gid], probe[gid]
-    if "error" in res:
-        rows.append((gid, win, 0, win, f"ERROR {res['error']}"))
+    if "error" in res:  # unmeasured is a FAIL at any window: as a gap-equals-window row a <4 s comp passed
+        errors.append((gid, win, res["error"]))
         continue
     spans = sorted(res["spans"])
     if not spans:
