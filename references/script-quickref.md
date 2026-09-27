@@ -112,7 +112,5 @@ on any hard word in narration, on-screen text or metadata.
 - Every claim in the title or thumbnail text must appear in the script with a source.
 - Dual-scope stats (episode total vs. one day) name their scope in the same sentence a viewer could misread it.
 
-## Before you hand back the script
-- Zero open `[loop Ln open]` without a matching `[loop Ln closes]`. Zero open `[verify]`. Zero flag words.
-- Read the hook aloud: is it one sentence, 3–5 s, does it promise without contradicting the thumbnail?
-- Humanise pass run and diffed. CTA hinge named. Word budget sized at the shipping tempo before TTS.
+## Hand-back check
+`flag_words.py` exit 0, and `word_budget.py` PASS at the shipping tempo (CLAUDE.md "Voice").
