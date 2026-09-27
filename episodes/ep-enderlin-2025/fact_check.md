@@ -12,6 +12,15 @@ removed from script_v2.md. Corrections applied in the script:
 | Fargo 1957 toll | ten lives | at least ten lives (NOAA says 10, most outlets 13) | nwafiles.nwas.org/file/nwafiles/digest/papers/2011/Vol35No1/Pg27-Schultz-etal.pdf |
 | "Three camps" debate framing | single student-paper source | already worded as "some said / others said / many said"; no named taxonomy | theticker.org (secondary only) |
 
+Map-builder flags, re-checked 27 Sep 26 (i1-s1, i1-s3, i1-s5, a3-s5, z1-s2 re-recorded; a3-s15 and z1-s2 also drop the
+spoken surname per the owner rule, name cards keep "Pfaff-Dehn"):
+
+| Claim | Verdict | Now | Source |
+|---|---|---|---|
+| i1-s1 "For nineteen minutes it moved east" | CORRECTED | "it curved north". Start 3 S Enderlin (46.5728 -97.6031), end 5 SSW Alice (46.687 -97.5803): net bearing about 8 deg, ENE at touchdown bending NE, N, then NW | weather.gov/media/fgf/Enderlin.pdf; research/b1-maps/track.json; en.wikipedia.org/wiki/2025_Enderlin_tornado (DAT narrative) |
+| i1-s3, z1-s2 "one mile east of town, on Highway forty six" | CORRECTED | "three miles east of town". The Forum wrote "about a mile east"; the NWS survey puts the deaths at the ND 46 farmsteads (PIS: "farmstead #2 on Hwy 46"), and the DAT EF4 residence points sit at 46.6317 -97.5356 and 46.6312 -97.5322, 3.1 and 3.3 mi east of Enderlin's centre; the track crosses ND 46 3.4 mi east | services.dat.noaa.gov/arcgis/rest/services/nws_damageassessmenttoolkit/DamageViewer/FeatureServer/0; weather.gov/media/fgf/Enderlin.pdf; inforum.com/news/north-dakota/3-who-died-in-enderlin-tornado-named (superseded) |
+| i1-s5, a3-s5 "twenty two tornadoes" that night / "two supercells made twenty two" | CORRECTED | "twenty four"; a3-s5 now "North Dakota had twenty four tornadoes, many from two supercells". 22 traces only to a student paper (rmusentrymedia.com); it is not the NWS Grand Forks count (16 incl. one shared with Bismarck). NWS DAT lists 24 ND tracks 8:34-11:50 PM CDT 20 June (FGF 15, BIS 8, shared 1), matching NCEI's 24. Two supercells producing multiple tornadoes: The Forum | services.dat.noaa.gov/.../DamageViewer/FeatureServer/1; ncei.noaa.gov/stormevents; inforum.com/news/north-dakota/3-who-died-in-enderlin-tornado-named |
+
 Citation card for the Miller paper (narration unchanged): Miller et al., Monthly Weather Review, 2024, "Estimating Wind
 Speeds in Tornadoes Using Debris Trajectories of Large Compact Objects," DOI 10.1175/MWR-D-23-0251.1.
 
