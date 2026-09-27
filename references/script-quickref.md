@@ -90,10 +90,9 @@ mechanism/analysis pair) and plants+pays a loop.
   negatives, trailer fragments. Rationed devices (openers, asides, check-ins like "right?") max 3 per 20-min script,
   never twice in 3 minutes, never the same one in neighboring acts. New device = probe it in TTS first.
 
-## Flag words — never in narration (owner rules; no `references/flag-words.md` on main, so listed here)
-Ban and replace: kill/killed → "lost their lives" · dead/death → "did not survive" / "the toll" · bodies → cut or
-name what was found · murder/suicide → name the sourced cause · massacre/carnage → the sourced casualty figure.
-If `references/flag-words.md` exists when you read this, it wins — check for it first.
+## Flag words — `references/flag-words.md`
+Write with its alternatives from the first draft. `python3 scripts/flag_words.py episodes/<slug>` fails the script
+on any hard word in narration, on-screen text or metadata.
 
 ## `[verify]` gate — zero open before TTS (owner order) — `script-scaling.md`
 - Every fact not confirmed in `research/` gets `[verify: ...]` inline the moment it's written.
