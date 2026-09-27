@@ -2,27 +2,104 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-person-asce"
-     (host 1373.628 -> 1391.264, 17.636 s, track 2). The MG builder replaces this whole file. -->
+<!-- g-person-asce (B3): host 1373.628 -> 1391.264 (17.636 s, track 2), audio a6-s3 starts 1373.928 (local = word + 0.30).
+     The new wind-estimation standard, still in development (fact_check.md: ASCE/AMS standard, ams.confex.com 29SLS):
+     a document being written, its title, four rows on the voice, then the two societies.
+     Cues: engineers and meteorologists 0.30, writing 2.40, new standard 2.84/3.02, more kinds of damage 6.00,
+     more ways to measure 7.54, radar 9.32, thrown objects 10.34, American Society of Civil Engineers 12.82,
+     American Meteorological Society 15.30. Exit 17.07 (spec 1390.7). -->
 <template>
 <style>
-  .ph-person-asce { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .ph-person-asce-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-person-asce-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
-  .ph-person-asce-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .pa-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .pa-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .pa-glow { position:absolute; left:-200px; top:100px; width:1300px; height:900px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(127,178,229,0.12), rgba(127,178,229,0) 70%); }
+  .pa-doc { position:absolute; left:360px; top:70px; width:1200px; height:910px; box-sizing:border-box; padding:50px 72px; border-radius:28px; overflow:hidden;
+    background: rgba(10,16,24,0.62); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 30px 90px rgba(0,0,0,0.5); }
+  .pa-beam { position:absolute; top:0; bottom:0; left:0; width:220px; background:linear-gradient(90deg, transparent, rgba(127,178,229,0.10), transparent); }
+  .pa-sk { position:absolute; left:72px; height:14px; border-radius:7px; background:rgba(147,163,178,0.28); }
+  .pa-pen { position:absolute; left:0; top:0; width:14px; height:14px; border-radius:50%; background:#e8c56a; box-shadow:0 0 12px 3px rgba(232,197,106,0.55); }
+  .pa-title { font-family:'Arial Black', Arial, sans-serif; font-size:56px; line-height:66px; color:#f2f5f8; }
+  .pa-tag { display:inline-block; margin-top:18px; padding:8px 18px; border-radius:10px; border:2px solid rgba(232,197,106,0.7);
+    font-weight:700; font-size:24px; letter-spacing:2px; color:#e8c56a; white-space:nowrap; }
+  .pa-tag span { display:inline-block; }
+  .pa-hr { margin-top:30px; height:2px; background:rgba(255,255,255,0.16); }
+  .pa-row { position:relative; margin-top:22px; height:56px; padding-left:70px; font-weight:700; font-size:38px; line-height:56px; color:#dfe7ee; white-space:nowrap; }
+  .pa-sub { position:relative; margin-top:10px; height:48px; padding-left:130px; font-family: Georgia, serif; font-style:italic; font-size:36px; line-height:48px; color:#d8a13a; white-space:nowrap; }
+  .pa-ic { position:absolute; left:0; top:6px; width:44px; height:44px; }
+  .pa-dot { position:absolute; left:84px; top:16px; width:16px; height:16px; border-radius:50%; background:#d8a13a; }
+  .pa-foot { position:absolute; left:72px; right:72px; bottom:46px; height:110px; }
+  .pa-org { position:absolute; top:0; }
+  .pa-orgn { font-family:'Arial Black', Arial, sans-serif; font-size:52px; line-height:60px; color:#f2f5f8; }
+  .pa-orgf { font-weight:700; font-size:20px; letter-spacing:2px; color:#93a3b2; margin-top:6px; white-space:nowrap; }
 </style>
-<div class="ph-person-asce" data-composition-id="g-person-asce" data-width="1920" data-height="1080" data-duration="17.636">
-  <div class="ph-person-asce-card" id="ph-person-asce-card">
-    <div class="ph-person-asce-t" id="ph-person-asce-t">g-person-asce</div>
-    <div class="ph-person-asce-s" id="ph-person-asce-s">Placeholder · To Build</div>
+<div class="pa-wrap" data-composition-id="g-person-asce" data-width="1920" data-height="1080" data-duration="17.636">
+  <div class="pa-grid" id="pa-grid"></div>
+  <div class="pa-glow" id="pa-glow"></div>
+  <div class="pa-doc" id="pa-doc">
+    <div class="pa-beam" id="pa-beam"></div>
+    <div class="pa-sk" id="pa-sk1" style="top:64px; width:820px;"></div>
+    <div class="pa-sk" id="pa-sk2" style="top:104px; width:960px;"></div>
+    <div class="pa-sk" id="pa-sk3" style="top:144px; width:700px;"></div>
+    <div class="pa-pen" id="pa-pen"></div>
+    <div class="pa-title" id="pa-title">Wind Speed Estimation in Tornadoes</div>
+    <div class="pa-tag" id="pa-tag"><span id="pa-tag1">New Standard</span> <span id="pa-tag2">&middot; In Development</span></div>
+    <div class="pa-hr" id="pa-hr"></div>
+    <div class="pa-row" id="pa-row1"><svg class="pa-ic" viewBox="0 0 44 44"><circle cx="22" cy="22" r="19" fill="none" stroke="#7fb2e5" stroke-width="3"/><path d="M12 23 L19 30 L32 15" fill="none" stroke="#7fb2e5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>More Damage Indicators</div>
+    <div class="pa-row" id="pa-row2"><svg class="pa-ic" viewBox="0 0 44 44"><circle cx="22" cy="22" r="19" fill="none" stroke="#7fb2e5" stroke-width="3"/><path d="M12 23 L19 30 L32 15" fill="none" stroke="#7fb2e5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>More Ways to Measure</div>
+    <div class="pa-sub" id="pa-sub1"><div class="pa-dot"></div>Radar</div>
+    <div class="pa-sub" id="pa-sub2"><div class="pa-dot"></div>Thrown Objects</div>
+    <div class="pa-foot" id="pa-foot">
+      <div class="pa-org" id="pa-org1" style="left:0;"><div class="pa-orgn">ASCE</div><div class="pa-orgf">American Society of Civil Engineers</div></div>
+      <div class="pa-org" id="pa-org2" style="left:560px;"><div class="pa-orgn">AMS</div><div class="pa-orgf">American Meteorological Society</div></div>
+    </div>
   </div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-person-asce-card", { x: 0 }, { x: 40, duration: 17.636, ease: "none" }, 0);
+  const DUR = 17.636;
+  tl.set(["#pa-title", "#pa-tag", "#pa-tag1", "#pa-tag2", "#pa-row1", "#pa-row2", "#pa-sub1", "#pa-sub2", "#pa-org1", "#pa-org2", "#pa-pen"], { autoAlpha: 0 }, 0);
+  tl.set(["#pa-sk1", "#pa-sk2", "#pa-sk3", "#pa-hr"], { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* ambient, whole window */
+  tl.fromTo("#pa-grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#pa-glow", { x: 0, y: 0 }, { x: 900, y: -80, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#pa-beam", { x: -220 }, { x: 1200, duration: 2.6, ease: "none", repeat: 5 }, 0.2);
+
+  /* ENGINEERS AND METEOROLOGISTS @0.30 ... WRITING @2.40: the document is being written */
+  tl.fromTo("#pa-doc", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0);
+  tl.set("#pa-pen", { autoAlpha: 1 }, 0.3);
+  tl.to("#pa-sk1", { scaleX: 1, duration: 0.8, ease: "none" }, 0.3);
+  tl.fromTo("#pa-pen", { x: 72, y: 64 }, { x: 892, y: 64, duration: 0.8, ease: "none" }, 0.3);
+  tl.to("#pa-sk2", { scaleX: 1, duration: 0.9, ease: "none" }, 1.1);
+  tl.fromTo("#pa-pen", { x: 72, y: 104 }, { x: 1032, y: 104, duration: 0.9, ease: "none", immediateRender: false }, 1.1);
+  tl.to("#pa-sk3", { scaleX: 1, duration: 0.7, ease: "none" }, 2.0);
+  tl.fromTo("#pa-pen", { x: 72, y: 144 }, { x: 772, y: 144, duration: 0.7, ease: "none", immediateRender: false }, 2.0);
+  /* NEW STANDARD @2.84: the title replaces the draft lines */
+  tl.to(["#pa-sk1", "#pa-sk2", "#pa-sk3", "#pa-pen"], { autoAlpha: 0, duration: 0.2 }, 2.7);
+  tl.fromTo("#pa-title", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 2.84);
+  tl.fromTo("#pa-tag", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 3.02);
+  tl.fromTo("#pa-tag1", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 3.02);
+  tl.fromTo("#pa-tag2", { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 3.5);
+  tl.to("#pa-hr", { scaleX: 1, duration: 0.8, ease: "power2.out" }, 3.6);
+  /* MORE KINDS OF DAMAGE @6.00, MORE WAYS TO MEASURE @7.54, RADAR @9.32, THROWN OBJECTS @10.34 */
+  tl.fromTo("#pa-row1", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 6.0);
+  tl.fromTo("#pa-row2", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 7.54);
+  tl.fromTo("#pa-sub1", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 9.32);
+  tl.fromTo("#pa-sub2", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 10.34);
+  tl.fromTo("#pa-doc", { y: 0 }, { y: -8, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, 10.8);
+  /* AMERICAN SOCIETY OF CIVIL ENGINEERS @12.82, AMERICAN METEOROLOGICAL SOCIETY @15.30 */
+  tl.fromTo("#pa-org1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 12.82);
+  tl.fromTo("#pa-org2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 15.3);
+
+  /* exit (spec 1390.7 -> 17.07) */
+  tl.to("#pa-doc", { y: -40, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 17.07);
   window.__timelines["g-person-asce"] = tl;
 })();
 </script>
