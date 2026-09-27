@@ -2,28 +2,178 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-discussion"
-     (host 685.62 -> 724.563, 38.943 s, track 2). The MG builder replaces this whole file. -->
+<!-- g-discussion (B1): the 8:15 PM SPC mesoscale discussion, the cool-layer cross-section, and the forecast band vs Enderlin.
+     Host 685.62 -> 724.563 (38.943 s, track 2). Facts: fact_sheet.md (MD 8:15 PM CDT: storms becoming surface based toward the
+     Red River Valley, tornado threat raised, peak tornado winds 120-150 mph); Enderlin EF5 > 210 mph (NWS PIS).
+     Cross-section is a schematic, not to scale. -->
 <template>
 <style>
-  .ph-discussion { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .ph-discussion-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-discussion-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
-  .ph-discussion-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  #g-discussion-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 45% 45%, #0b1016 0%, #030507 78%); }
+  .md-card { position:absolute; left:96px; top:190px; width:980px; box-sizing:border-box; padding:40px 48px 44px; border-radius:28px;
+    background:rgba(232,222,200,0.90); color:#2a2622; }
+  .md-eb { font-size:22px; font-weight:700; letter-spacing:6px; color:#6b6257; text-transform:uppercase; }
+  .md-date { margin-top:12px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:34px; color:#2a2622; }
+  .md-rule { margin-top:22px; height:3px; background:#6b6257; opacity:0.5; transform-origin:left center; }
+  .md-key { margin-top:22px; font-family:'Arial Black', Arial, sans-serif; font-size:52px; line-height:1.1; color:#2a2622; white-space:nowrap; }
+  .md-key.hot { color:#8e2020; }
+  .md-map { position:absolute; left:1150px; top:330px; width:674px; height:436px; overflow:visible; }
+  .md-mlab { font-family:Arial, sans-serif; font-weight:700; font-size:40px; letter-spacing:8px; fill:#93a3b2; text-transform:uppercase; }
+  .md-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .md-hl { position:absolute; left:96px; top:84px; font-family:'Arial Black', Arial, sans-serif; font-size:52px; color:#f2f5f8; white-space:nowrap; }
+  .md-lab { font-family:Arial, sans-serif; font-weight:700; font-size:30px; fill:#dfe7ee; }
+  .md-small { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+  .md-scan { position:absolute; left:0; top:0; width:1920px; height:2px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.22), rgba(127,178,229,0)); }
 </style>
-<div class="ph-discussion" data-composition-id="g-discussion" data-width="1920" data-height="1080" data-duration="38.943">
-  <div class="ph-discussion-card" id="ph-discussion-card">
-    <div class="ph-discussion-t" id="ph-discussion-t">g-discussion</div>
-    <div class="ph-discussion-s" id="ph-discussion-s">Placeholder · To Build</div>
+<div id="g-discussion-root" data-composition-id="g-discussion" data-width="1920" data-height="1080" data-duration="38.943">
+  <div class="md-scan" id="g-discussion-scan"></div>
+  <!-- phase 1: the bulletin -->
+  <div class="md-card" id="g-discussion-card">
+    <div class="md-eb" id="g-discussion-eb">SPC Mesoscale Discussion</div>
+    <div class="md-date" id="g-discussion-date">8:15 PM · June 20, 2025</div>
+    <div class="md-rule" id="g-discussion-rule"></div>
+    <div class="md-key" id="g-discussion-k1">Surface Based</div>
+    <div class="md-key" id="g-discussion-k2">Red River Valley</div>
+    <div class="md-key hot" id="g-discussion-k3">Tornado Threat Increasing</div>
   </div>
+  <svg class="md-map" id="g-discussion-map" viewBox="0 0 1300 841">
+    <g id="g-discussion-mapw">
+      <!--NDMAP:g-discussion--><!--/NDMAP-->
+      <path id="g-discussion-mdarea" d="M1040,48 L1265,48 L1262,769 L1040,769 Z" fill="#d8a13a" fill-opacity="0.18" stroke="#e8c56a" stroke-width="5" stroke-dasharray="16 10"/>
+      <text id="g-discussion-t-nd" class="md-mlab" x="560" y="440" text-anchor="middle">North Dakota</text>
+    </g>
+  </svg>
+  <!-- phase 2: cross-section -->
+  <svg class="md-svg" id="g-discussion-xs" viewBox="0 0 1920 1080">
+    <defs>
+      <linearGradient id="g-discussion-cool" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fb2e5" stop-opacity="0.12"/><stop offset="1" stop-color="#5a768f" stop-opacity="0.55"/></linearGradient>
+      <linearGradient id="g-discussion-cld" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a3644"/><stop offset="1" stop-color="#15202b"/></linearGradient>
+    </defs>
+    <path d="M0,900 L1920,900 L1920,1080 L0,1080 Z" fill="#0b1016"/>
+    <path d="M0,900 L1920,900" stroke="#5a768f" stroke-width="3"/>
+    <text class="md-small" x="96" y="950">Ground</text>
+    <rect id="g-discussion-layer" x="0" y="752" width="1920" height="148" fill="url(#g-discussion-cool)"/>
+    <path id="g-discussion-layertop" d="M0,752 L1920,752" stroke="#7fb2e5" stroke-width="2" stroke-dasharray="12 8"/>
+    <text id="g-discussion-t-cool" class="md-lab" x="96" y="836" fill="#7fb2e5">Cool Layer</text>
+    <g id="g-discussion-cloud">
+      <path d="M700,720 C660,640 720,560 800,560 C780,440 900,340 1020,380 C1060,280 1220,270 1260,360 C1340,330 1400,420 1370,500 C1440,540 1430,660 1360,700 C1320,730 1260,730 1220,720 Z" fill="url(#g-discussion-cld)" stroke="#5a768f" stroke-width="2"/>
+      <path d="M760,300 L1420,286 L1380,330 L800,344 Z" fill="#15202b" stroke="#4a5560" stroke-width="2"/>
+    </g>
+    <g id="g-discussion-spin">
+      <path d="M1010,690 A46,20 0 1 1 1010,691" fill="none" stroke="#e8c56a" stroke-width="5"/>
+      <path d="M1052,684 L1066,694 L1050,702" fill="none" stroke="#e8c56a" stroke-width="5" stroke-linejoin="round"/>
+    </g>
+    <path id="g-discussion-funnel" d="M975,722 L1045,722 C1030,790 1020,840 1016,900 L1004,900 C1000,840 990,790 975,722 Z" fill="#e8c56a" fill-opacity="0.55"/>
+    <g id="g-discussion-block" stroke="#e74c3c" stroke-width="6" stroke-linecap="round">
+      <path d="M980,740 L1040,764 M1040,740 L980,764"/>
+    </g>
+    <text id="g-discussion-t-block" class="md-lab" x="1090" y="780" fill="#e74c3c">Spin Blocked</text>
+    <g id="g-discussion-inflow" fill="none" stroke="#d8a13a" stroke-width="5" stroke-linecap="round">
+      <path id="g-discussion-in0" d="M200,880 C500,880 760,860 900,740"/>
+      <path id="g-discussion-in1" d="M1800,880 C1500,880 1260,860 1120,740"/>
+    </g>
+    <text id="g-discussion-t-in" class="md-lab" x="220" y="850" fill="#d8a13a">Air From the Ground</text>
+  </svg>
+  <div class="md-hl" id="g-discussion-hl1">Night Storms Ride a Cool Layer</div>
+  <div class="md-hl" id="g-discussion-hl2">Surface-Based Storm</div>
+  <!-- phase 3: the forecast band vs Enderlin -->
+  <div class="md-card" id="g-discussion-card2" style="top:300px; width:900px">
+    <div class="md-eb" id="g-discussion-eb2">Same Bulletin</div>
+    <div class="md-date" id="g-discussion-st">Strongest Tornadoes</div>
+    <div class="md-key" id="g-discussion-band">120 to 150 mph</div>
+  </div>
+  <svg class="md-svg" id="g-discussion-scale" viewBox="0 0 1920 1080">
+    <!-- y = 950 - mph * 3.2 -->
+    <path d="M1300,950 L1300,150" stroke="#4a5560" stroke-width="3"/>
+    <g class="md-small" text-anchor="end">
+      <text x="1284" y="958">0</text><text x="1284" y="638">100</text><text x="1284" y="318">200</text>
+    </g>
+    <path d="M1290,950 L1310,950 M1290,630 L1310,630 M1290,310 L1310,310" stroke="#4a5560" stroke-width="3"/>
+    <rect id="g-discussion-bandbar" x="1320" y="470" width="120" height="96" fill="#d8a13a" fill-opacity="0.7"/>
+    <text id="g-discussion-t-fc" class="md-lab" x="1460" y="528" fill="#d8a13a">Forecast</text>
+    <path id="g-discussion-gap" d="M1380,462 L1380,300" stroke="#e74c3c" stroke-width="3" stroke-dasharray="8 8"/>
+    <path id="g-discussion-mark" d="M1320,278 L1440,278" stroke="#e74c3c" stroke-width="8" stroke-linecap="round"/>
+    <text id="g-discussion-t-end" class="md-lab" x="1460" y="288" fill="#e74c3c">Enderlin · 210+ mph</text>
+  </svg>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
+  const ID = "g-discussion", P = "#g-discussion-";
+  /* cues: audio/a3-s1..s4.words.json, episode s minus host start 685.62 */
+  const CUES = {
+    surface: 4.66,   /* surface based @690.28 */
+    red: 6.96,       /* Red River Valley @692.58 */
+    raised: 9.10,    /* raised the tornado threat @694.72 */
+    night: 11.02,    /* Storms at night @696.64 */
+    cooler: 13.50,   /* cooler layer @699.12 */
+    keep: 16.80,     /* keep their spin @702.42 */
+    sb: 19.67,       /* surface-based storm @705.29 */
+    pulls: 20.63,    /* pulls its air from the ground @706.25 */
+    form: 23.31,     /* air tornadoes form in @708.93 */
+    same: 25.96,     /* same bulletin @711.58 */
+    strongest: 27.38,/* strongest @713.00 */
+    v120: 29.22,     /* 120 @714.84 */
+    forecast: 33.54, /* forecast @719.16 */
+    far: 37.46       /* far above it @723.08 */
+  };
+  const DUR = 38.943;
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-discussion-card", { x: 0 }, { x: 40, duration: 38.943, ease: "none" }, 0);
-  window.__timelines["g-discussion"] = tl;
+  tl.set([P + "k1", P + "k2", P + "k3", P + "mdarea", P + "xs", P + "hl1", P + "hl2", P + "card2", P + "eb2", P + "st", P + "band", P + "scale"], { autoAlpha: 0 }, 0);
+  tl.set([P + "t-block", P + "block", P + "inflow", P + "t-in", P + "funnel", P + "bandbar", P + "t-fc", P + "gap", P + "mark", P + "t-end"], { autoAlpha: 0 }, 0);
+
+  /* whole window */
+  tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: 9.8, ease: "none", repeat: 3, yoyo: true }, 0);
+
+  /* ---- phase 1: the bulletin, key words in the voice's order ---- */
+  tl.fromTo(P + "card", { autoAlpha: 0, x: -120 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.18);
+  tl.fromTo(P + "rule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.6);
+  tl.fromTo(P + "card", { y: 0 }, { y: -12, duration: 2.8, ease: "sine.inOut", repeat: 3, yoyo: true }, 0.8);
+  tl.fromTo(P + "map", { autoAlpha: 0, x: 80 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.5);
+  tl.fromTo(P + "mapw", { scale: 1, svgOrigin: "650 420" }, { scale: 1.06, duration: 11.5, ease: "none" }, 0.5);
+  tl.fromTo(P + "k1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.surface);
+  tl.fromTo(P + "k2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.red);
+  tl.fromTo(P + "mdarea", { autoAlpha: 0, scaleX: 0.3, svgOrigin: "1262 400" }, { autoAlpha: 1, scaleX: 1, duration: 0.6, ease: "power3.out" }, CUES.red);
+  tl.fromTo(P + "k3", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.raised);
+  tl.fromTo(P + "mdarea", { attr: { "fill-opacity": 0.18 } }, { attr: { "fill-opacity": 0.4 }, duration: 0.5, ease: "sine.inOut", repeat: 3, yoyo: true }, CUES.raised);
+  tl.to(P + "card", { x: -1100, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 10.6);
+  tl.to(P + "map", { x: 900, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 10.6);
+
+  /* ---- phase 2: the cool layer, then a surface-based storm ---- */
+  tl.fromTo(P + "xs", { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 11.0);
+  tl.fromTo(P + "hl1", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.night);
+  tl.fromTo(P + "cloud", { x: -40 }, { x: 40, duration: 14.4, ease: "none" }, 11.0);
+  tl.fromTo(P + "spin", { rotation: 0, svgOrigin: "1010 690" }, { rotation: -1440, duration: 14.4, ease: "none" }, 11.0);
+  tl.fromTo(P + "layer", { attr: { "fill-opacity": 0.6 } }, { attr: { "fill-opacity": 1 }, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, CUES.cooler);
+  tl.fromTo(P + "t-cool", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.cooler);
+  tl.fromTo(P + "spin", { y: 0 }, { y: 44, duration: 0.5, ease: "power2.in", yoyo: true, repeat: 3 }, CUES.keep);
+  tl.fromTo(P + "block", { autoAlpha: 0, scale: 0, svgOrigin: "1010 752" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(3)" }, CUES.keep + 0.45);
+  tl.fromTo(P + "t-block", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.keep + 0.5);
+  tl.to([P + "hl1", P + "t-block", P + "block", P + "t-cool"], { autoAlpha: 0, duration: 0.4 }, CUES.sb - 0.4);
+  tl.fromTo(P + "hl2", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.sb);
+  tl.to(P + "layer", { scaleY: 0, svgOrigin: "960 900", duration: 1.2, ease: "power2.inOut" }, CUES.sb);
+  tl.to(P + "layertop", { y: 148, autoAlpha: 0, duration: 1.2, ease: "power2.inOut" }, CUES.sb);
+  tl.set(P + "inflow", { autoAlpha: 1 }, CUES.pulls);
+  tl.fromTo([P + "in0", P + "in1"], { strokeDasharray: "20 14", strokeDashoffset: 0 }, { strokeDashoffset: -340, duration: 4.6, ease: "none" }, CUES.pulls);
+  tl.fromTo(P + "t-in", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.pulls + 0.3);
+  tl.fromTo(P + "funnel", { autoAlpha: 0, scaleY: 0, svgOrigin: "1010 722" }, { autoAlpha: 1, scaleY: 1, duration: 0.8, ease: "power2.out" }, CUES.form);
+  tl.to([P + "xs", P + "hl2"], { y: -60, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 25.2);
+
+  /* ---- phase 3: same bulletin, the forecast band, Enderlin far above ---- */
+  tl.fromTo(P + "card2", { autoAlpha: 0, x: -120 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 25.8);
+  tl.fromTo(P + "eb2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, CUES.same);
+  tl.fromTo(P + "st", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.strongest);
+  tl.fromTo(P + "band", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.v120);
+  tl.fromTo(P + "scale", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 27.0);
+  tl.fromTo(P + "bandbar", { autoAlpha: 0, scaleY: 0, svgOrigin: "1380 566" }, { autoAlpha: 1, scaleY: 1, duration: 0.6, ease: "power3.out" }, CUES.v120);
+  tl.fromTo(P + "t-fc", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.forecast);
+  tl.fromTo(P + "bandbar", { attr: { "fill-opacity": 0.7 } }, { attr: { "fill-opacity": 0.95 }, duration: 0.9, ease: "sine.inOut", repeat: 9, yoyo: true }, 30.0);
+  tl.fromTo(P + "card2", { y: 0 }, { y: -10, duration: 2.6, ease: "sine.inOut", repeat: 3, yoyo: true }, 26.5);
+  tl.fromTo(P + "gap", { autoAlpha: 0, scaleY: 0, svgOrigin: "1380 462" }, { autoAlpha: 1, scaleY: 1, duration: 0.6, ease: "power2.out" }, CUES.far);
+  tl.fromTo(P + "mark", { autoAlpha: 0, scaleX: 0, svgOrigin: "1380 278" }, { autoAlpha: 1, scaleX: 1, duration: 0.4, ease: "back.out(2)" }, CUES.far + 0.3);
+  tl.fromTo(P + "t-end", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.far + 0.4);
+  window.__timelines[ID] = tl;
 })();
 </script>
 </template>
