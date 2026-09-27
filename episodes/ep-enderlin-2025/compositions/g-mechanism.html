@@ -2,27 +2,170 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-mechanism"
-     (host 1038.499 -> 1058.408, 19.909 s, track 2). The MG builder replaces this whole file. -->
+<!-- g-mechanism (B3): host 1038.499 -> 1058.408 (19.909 s, track 2); a4-s8 mounts at 0, a4-s9 at 15.446.
+     The physics of the floor: a loaded covered hopper, end-on on its two rails; wind on the broad side lifts it over the
+     far rail (pivot), it rolls onto the lower field beside the embankment. Then a wind-speed gauge: the grain car sets a
+     floor, the tanker a much higher line. Fact: loaded hopper about 286,000 lb (fact_check.md). The car is illustrative,
+     not to scale with the gauge (the gauge has no numbers on purpose).
+     Cues: estimate 0.72, grain cars 1.72, tip a car over 3.16, wind 4.78, push 5.44, broadside 5.98, lift it over 7.30,
+     far rail 7.96, rolls 8.0-9.0, loaded 9.32, tipping 11.54, flies 13.90, floor 16.25, tanker 17.91, much higher 18.61.
+     Exit 19.30 (spec 1057.8). -->
 <template>
 <style>
-  .ph-mechanism { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .ph-mechanism-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-mechanism-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
-  .ph-mechanism-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .mc-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .mc-glow { position:absolute; left:-200px; top:60px; width:1300px; height:900px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(127,178,229,0.12), rgba(127,178,229,0) 70%); }
+  .mc-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .mc-head { position:absolute; left:96px; top:90px; font-family:'Arial Black', Arial, sans-serif; font-size:52px; line-height:62px; color:#f2f5f8; white-space:nowrap; }
+  .mc-lab { position:absolute; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
+  .mc-load { position:absolute; left:760px; width:520px; top:292px; text-align:center; font-weight:700; font-size:38px; line-height:46px; color:#f2f5f8; white-space:nowrap; }
+  .mc-gl { position:absolute; font-family: Georgia, serif; font-style:italic; font-size:34px; line-height:40px; color:#d8a13a; white-space:nowrap; }
 </style>
-<div class="ph-mechanism" data-composition-id="g-mechanism" data-width="1920" data-height="1080" data-duration="19.909">
-  <div class="ph-mechanism-card" id="ph-mechanism-card">
-    <div class="ph-mechanism-t" id="ph-mechanism-t">g-mechanism</div>
-    <div class="ph-mechanism-s" id="ph-mechanism-s">Placeholder · To Build</div>
-  </div>
+<div class="mc-wrap" data-composition-id="g-mechanism" data-width="1920" data-height="1080" data-duration="19.909">
+  <div class="mc-glow" id="mc-glow"></div>
+  <svg class="mc-svg" viewBox="0 0 1920 1080">
+    <!-- wind streaks (ambient) -->
+    <g id="mc-streaks" stroke="rgba(127,178,229,0.35)" stroke-width="3" stroke-linecap="round">
+      <path id="mc-s1" d="M0 300 h120"/><path id="mc-s2" d="M0 420 h90"/><path id="mc-s3" d="M0 540 h140"/>
+      <path id="mc-s4" d="M0 640 h100"/><path id="mc-s5" d="M0 360 h70"/><path id="mc-s6" d="M0 720 h110"/>
+    </g>
+    <!-- embankment: track bed at y 800, field at y 860 -->
+    <path id="mc-field" d="M96 860 H1240" stroke="#4a5560" stroke-width="3"/>
+    <path id="mc-bank" d="M340 860 L420 800 L780 800 L860 860 Z" fill="#2a3644" stroke="#4a5560" stroke-width="2"/>
+    <rect id="mc-railn" x="525" y="786" width="20" height="14" fill="#c8d3e0"/>
+    <rect id="mc-railf" x="655" y="786" width="20" height="14" fill="#c8d3e0"/>
+    <!-- the loaded covered hopper, end view; pivot = the far rail (675, 790) -->
+    <g id="mc-car">
+      <rect x="527" y="716" width="16" height="72" rx="3" fill="#0b1016" stroke="#93a3b2" stroke-width="3"/>
+      <rect x="657" y="716" width="16" height="72" rx="3" fill="#0b1016" stroke="#93a3b2" stroke-width="3"/>
+      <rect x="505" y="700" width="190" height="18" fill="#2a3644" stroke="#93a3b2" stroke-width="2"/>
+      <path d="M470 690 L456 640 L456 330 Q456 290 500 286 L700 286 Q744 290 744 330 L744 640 L730 690 Z" fill="#5a768f" stroke="#7fb2e5" stroke-width="3"/>
+      <path d="M470 400 H730 M470 520 H730" stroke="rgba(223,231,238,0.25)" stroke-width="3"/>
+      <rect x="570" y="272" width="60" height="16" rx="3" fill="#7fb2e5"/>
+    </g>
+    <!-- tip hint -->
+    <path id="mc-tip" d="M500 250 Q620 150 744 236" fill="none" stroke="#e8c56a" stroke-width="4" stroke-dasharray="12 10"/>
+    <path id="mc-tiph" d="M722 222 L746 238 L724 256" fill="none" stroke="#e8c56a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- wind on the broad side -->
+    <g id="mc-wind">
+      <rect x="150" y="468" width="250" height="28" rx="6" fill="#7fb2e5"/>
+      <path d="M396 440 L446 482 L396 524 Z" fill="#7fb2e5"/>
+    </g>
+    <circle id="mc-pivot" cx="675" cy="790" r="12" fill="#e8c56a"/>
+    <circle id="mc-pring" cx="675" cy="790" r="12" fill="none" stroke="#e8c56a" stroke-width="3"/>
+    <circle id="mc-d1" cx="900" cy="856" r="26" fill="rgba(200,211,224,0.35)"/>
+    <circle id="mc-d2" cx="1040" cy="858" r="34" fill="rgba(200,211,224,0.30)"/>
+    <circle id="mc-d3" cx="1170" cy="856" r="24" fill="rgba(200,211,224,0.30)"/>
+    <!-- weight -->
+    <g id="mc-wt">
+      <rect x="1005" y="370" width="26" height="120" rx="6" fill="#e74c3c"/>
+      <path d="M984 486 L1018 540 L1052 486 Z" fill="#e74c3c"/>
+    </g>
+    <!-- wind-speed gauge: floor from the grain car, a much higher line from the tanker -->
+    <g id="mc-gauge">
+      <rect x="1430" y="240" width="40" height="660" rx="20" fill="#0b1016" stroke="#93a3b2" stroke-width="3"/>
+      <rect id="mc-fill" x="1434" y="244" width="32" height="652" rx="16" fill="#d8a13a"/>
+    </g>
+    <path id="mc-lfloor" d="M1330 700 H1570" stroke="#e8c56a" stroke-width="5" stroke-linecap="round"/>
+    <path id="mc-ltank" d="M1330 360 H1570" stroke="#e74c3c" stroke-width="5" stroke-linecap="round"/>
+    <g id="mc-ihop">
+      <path d="M1328 688 L1324 676 L1324 632 Q1324 624 1334 624 L1382 624 Q1392 624 1392 632 L1392 676 L1388 688 Z" fill="#5a768f" stroke="#7fb2e5" stroke-width="2"/>
+    </g>
+    <g id="mc-itank">
+      <rect x="1250" y="316" width="150" height="34" rx="17" fill="#5a768f" stroke="#7fb2e5" stroke-width="2"/>
+      <circle cx="1270" cy="354" r="5" fill="#93a3b2"/><circle cx="1380" cy="354" r="5" fill="#93a3b2"/>
+    </g>
+  </svg>
+  <div class="mc-lab" id="mc-lcar" style="left:506px; top:236px;">Grain Car</div>
+  <div class="mc-lab" id="mc-lwind" style="left:170px; top:420px;">Wind</div>
+  <div class="mc-lab" id="mc-lrail" style="left:620px; top:880px;">Far Rail</div>
+  <div class="mc-load" id="mc-load">Loaded &middot; About 286,000 lb</div>
+  <div class="mc-head" id="mc-head">Tipping Takes a Strong Wind</div>
+  <div class="mc-lab" id="mc-lgauge" style="left:1380px; top:196px;">Wind Speed</div>
+  <div class="mc-gl" id="mc-gfloor" style="left:1596px; top:680px;">Floor</div>
+  <div class="mc-gl" id="mc-gtank" style="left:1596px; top:340px; color:#e74c3c;">Tanker</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-mechanism-card", { x: 0 }, { x: 40, duration: 19.909, ease: "none" }, 0);
+  const DUR = 19.909;
+  const dash = (id) => { const p = document.getElementById(id); const L = Math.ceil(p.getTotalLength()) + 1; p.style.strokeDasharray = L; return L; };
+  const FL = dash("mc-field"), LF = dash("mc-lfloor"), LT = dash("mc-ltank");
+  tl.set(["#mc-bank", "#mc-railn", "#mc-railf", "#mc-car", "#mc-tip", "#mc-tiph", "#mc-wind", "#mc-pivot", "#mc-pring", "#mc-d1", "#mc-d2", "#mc-d3",
+          "#mc-wt", "#mc-gauge", "#mc-ihop", "#mc-itank", "#mc-lcar", "#mc-lwind", "#mc-lrail", "#mc-load", "#mc-head",
+          "#mc-lgauge", "#mc-gfloor", "#mc-gtank"], { autoAlpha: 0 }, 0);
+  tl.set("#mc-field", { strokeDashoffset: FL }, 0);
+  tl.set("#mc-lfloor", { strokeDashoffset: LF, autoAlpha: 1 }, 0);
+  tl.set("#mc-ltank", { strokeDashoffset: LT, autoAlpha: 1 }, 0);
+  tl.set("#mc-wind", { scaleX: 0, svgOrigin: "150 482" }, 0);
+  tl.set("#mc-fill", { scaleY: 0, svgOrigin: "1450 896" }, 0);
+  tl.set("#mc-car", { rotation: 0, x: 0, y: 0, svgOrigin: "675 790" }, 0);
+
+  /* ambient, whole window: glow drift, wind streaks blowing left to right */
+  tl.fromTo("#mc-glow", { x: 0, y: 0 }, { x: 800, y: -60, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#mc-s1", { x: -140 }, { x: 1300, duration: 1.6, ease: "none", repeat: 11 }, 0);
+  tl.fromTo("#mc-s2", { x: -140 }, { x: 1300, duration: 1.3, ease: "none", repeat: 14 }, 0.4);
+  tl.fromTo("#mc-s3", { x: -140 }, { x: 1300, duration: 1.8, ease: "none", repeat: 9 }, 0.2);
+  tl.fromTo("#mc-s4", { x: -140 }, { x: 1300, duration: 1.4, ease: "none", repeat: 12 }, 0.9);
+  tl.fromTo("#mc-s5", { x: -140 }, { x: 1300, duration: 2.0, ease: "none", repeat: 8 }, 0.6);
+  tl.fromTo("#mc-s6", { x: -140 }, { x: 1300, duration: 1.5, ease: "none", repeat: 11 }, 1.1);
+
+  /* ESTIMATE @0.72: the track bed draws */
+  tl.to("#mc-field", { strokeDashoffset: 0, duration: 0.8, ease: "power2.out" }, 0.1);
+  tl.fromTo("#mc-bank", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.5);
+  tl.fromTo(["#mc-railn", "#mc-railf"], { autoAlpha: 0, y: -20 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", stagger: 0.1 }, 0.9);
+  /* GRAIN CARS @1.72: the loaded hopper sets down on the rails */
+  tl.fromTo("#mc-car", { autoAlpha: 0, y: -80 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.in" }, 1.4);
+  tl.fromTo("#mc-lcar", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 1.9);
+  /* TIP A CAR OVER @3.16 */
+  tl.to("#mc-lcar", { autoAlpha: 0, duration: 0.3 }, 3.0);
+  tl.fromTo("#mc-tip", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 3.16);
+  tl.fromTo("#mc-tiph", { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 3.4);
+  tl.to(["#mc-tip", "#mc-tiph"], { autoAlpha: 0, duration: 0.4 }, 4.5);
+  /* WIND @4.78 grows on the broad side; PUSH @5.44; BROADSIDE @5.98 */
+  tl.to("#mc-wind", { autoAlpha: 1, scaleX: 1, duration: 0.6, ease: "power3.out" }, 4.78);
+  tl.fromTo("#mc-lwind", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 4.9);
+  tl.to("#mc-wind", { scaleX: 1.12, scaleY: 1.2, svgOrigin: "150 482", duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 5.44);
+  tl.to("#mc-wind", { scaleX: 1.12, scaleY: 1.2, svgOrigin: "150 482", duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 5.98);
+  /* LIFT IT OVER @7.30: the near wheel lifts, the car tips onto the far rail; FAR RAIL @7.96 */
+  tl.to("#mc-wind", { scaleX: 1.2, scaleY: 1.3, svgOrigin: "150 482", duration: 0.6, ease: "power2.out" }, 7.2);
+  tl.to("#mc-car", { rotation: 24, svgOrigin: "675 790", duration: 0.7, ease: "power2.out" }, 7.3);
+  tl.fromTo("#mc-pivot", { autoAlpha: 0, scale: 0, svgOrigin: "675 790" }, { autoAlpha: 1, scale: 1, duration: 0.25, ease: "back.out(3)" }, 7.96);
+  tl.fromTo("#mc-pring", { autoAlpha: 1, scale: 1, svgOrigin: "675 790" }, { autoAlpha: 0, scale: 3.4, duration: 0.7, ease: "power2.out" }, 7.96);
+  tl.fromTo("#mc-lrail", { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 7.96);
+  /* the car rolls over the pivot onto the lower field (8.0 -> 9.0) */
+  tl.to("#mc-car", { rotation: 90, x: 30, svgOrigin: "675 790", duration: 0.85, ease: "power2.in" }, 8.05);
+  tl.to("#mc-wind", { autoAlpha: 0, scaleX: 1.6, svgOrigin: "150 482", duration: 0.5, ease: "power2.in" }, 8.3);
+  tl.to(["#mc-lwind", "#mc-pivot"], { autoAlpha: 0, duration: 0.4 }, 8.4);
+  tl.fromTo("#mc-car", { y: 0 }, { y: -8, duration: 0.08, ease: "power1.out", yoyo: true, repeat: 1 }, 8.9);
+  tl.fromTo(["#mc-d1", "#mc-d2", "#mc-d3"], { autoAlpha: 0.9, scale: 0.3, transformOrigin: "50% 50%" }, { autoAlpha: 0, scale: 2.2, duration: 1.1, ease: "power2.out", stagger: 0.08 }, 8.9);
+  /* LOADED @9.32: about 286,000 lb */
+  tl.fromTo("#mc-wt", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.32);
+  tl.fromTo("#mc-load", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.32);
+  tl.fromTo("#mc-wt", { y: 0 }, { y: 10, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 9 }, 9.8);
+  /* TIPPING @11.54 TAKES A STRONG WIND */
+  tl.fromTo("#mc-head", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 11.54);
+  tl.to("#mc-lrail", { autoAlpha: 0, duration: 0.3 }, 11.4);
+
+  /* FLOOR @16.25: the gauge, and a floor line from the grain car */
+  tl.to(["#mc-car", "#mc-bank", "#mc-railn", "#mc-railf", "#mc-wt", "#mc-load", "#mc-head"], { opacity: 0.35, duration: 0.5 }, 15.9);
+  tl.fromTo("#mc-gauge", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 15.7);
+  tl.fromTo("#mc-lgauge", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 15.9);
+  tl.to("#mc-fill", { scaleY: 0.3, svgOrigin: "1450 896", duration: 0.5, ease: "power3.out" }, 16.25);
+  tl.to("#mc-lfloor", { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 16.25);
+  tl.fromTo("#mc-ihop", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 16.3);
+  tl.fromTo("#mc-gfloor", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 16.4);
+  /* TANKER @17.91 ... MUCH HIGHER @18.61 */
+  tl.fromTo("#mc-itank", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 17.91);
+  tl.to("#mc-fill", { scaleY: 0.82, svgOrigin: "1450 896", duration: 0.6, ease: "power3.out" }, 18.3);
+  tl.to("#mc-ltank", { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 18.61);
+  tl.fromTo("#mc-gtank", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 18.65);
+
+  /* exit (spec 1057.8 -> 19.30) */
+  tl.to(["#mc-car", "#mc-bank", "#mc-railn", "#mc-railf", "#mc-field", "#mc-wt", "#mc-load", "#mc-head", "#mc-gauge", "#mc-lfloor", "#mc-ltank",
+         "#mc-ihop", "#mc-itank", "#mc-lgauge", "#mc-gfloor", "#mc-gtank", "#mc-streaks"], { y: -40, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 19.3);
   window.__timelines["g-mechanism"] = tl;
 })();
 </script>
