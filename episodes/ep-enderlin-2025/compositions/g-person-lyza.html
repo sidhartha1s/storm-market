@@ -2,27 +2,112 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-person-lyza"
-     (host 626.293 -> 655.476, 29.183 s, track 2). The MG builder replaces this whole file. -->
+<!-- g-person-lyza (B3): host 626.293 -> 655.476 (29.183 s, track 2); a2-s18 mounts at 0, a2-s19 at 22.828.
+     Text-only person card (no sourced photo, so no photo slot), a beige citation card for the study, then its two findings.
+     Source: research/fact_sheet.md 68-69 (Lyza, BAMS 2025, "Where Have the EF5s Gone?"; real drop highly unlikely,
+     likelier cause = survey/rating practice after the 2007 switch to the EF scale).
+     Cues: Tony Lyza 0.00, research meteorologist 1.38, NOAA's NSSL 2.72, American Meteorological Society 7.32, 2025 10.24,
+     Where have the EF5s gone 13.12, real drop 19.58, highly unlikely 21.22, likelier cause 23.27, shifted 26.69. Exit 28.61. -->
 <template>
 <style>
-  .ph-person-lyza { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .ph-person-lyza-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-person-lyza-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
-  .ph-person-lyza-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .pl-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .pl-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .pl-glow { position:absolute; left:-300px; top:-100px; width:1300px; height:900px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(127,178,229,0.12), rgba(127,178,229,0) 70%); }
+  .pl-glass { background: rgba(10,16,24,0.55); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; box-sizing:border-box; box-shadow:0 30px 90px rgba(0,0,0,0.5); }
+  .pl-person { position:absolute; left:96px; top:84px; padding:28px 48px 34px; overflow:hidden; }
+  .pl-name { font-family:'Arial Black', Arial, sans-serif; font-size:60px; line-height:70px; color:#f2f5f8; white-space:nowrap; }
+  .pl-role { font-family: Georgia, serif; font-style:italic; font-size:30px; line-height:38px; color:#d8a13a; margin-top:6px; white-space:nowrap; }
+  .pl-org { font-weight:700; font-size:22px; letter-spacing:2px; color:#93a3b2; margin-top:12px; white-space:nowrap; }
+  .pl-under { position:absolute; left:48px; right:48px; bottom:16px; height:2px; background:#e8c56a; }
+  .pl-beam { position:absolute; top:0; bottom:0; left:0; width:160px; background:linear-gradient(90deg, transparent, rgba(232,197,106,0.12), transparent); }
+  .pl-cite { position:absolute; left:640px; top:330px; width:1184px; padding:36px 60px 34px; box-sizing:border-box; border-radius:28px; overflow:hidden;
+    background: rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  .pl-cbeam { position:absolute; top:0; bottom:0; left:0; width:240px; background:linear-gradient(90deg, transparent, rgba(138,90,16,0.16), transparent); }
+  .pl-ceb { font-weight:700; font-size:22px; letter-spacing:2px; color:#5a4a2e; white-space:nowrap; }
+  .pl-ctitle { font-family: Georgia, serif; font-style:italic; font-size:60px; line-height:74px; color:#1c1a17; margin-top:18px; white-space:nowrap; }
+  .pl-cattr { font-weight:700; font-size:19px; letter-spacing:2px; color:#5a4a2e; margin-top:16px; white-space:nowrap; }
+  .pl-find { position:absolute; left:96px; right:96px; top:700px; padding:30px 48px; }
+  .pl-row { position:relative; height:64px; padding-left:76px; font-weight:700; font-size:38px; line-height:64px; color:#dfe7ee; white-space:nowrap; }
+  .pl-row + .pl-row { margin-top:22px; }
+  .pl-mk { position:absolute; left:0; top:8px; width:48px; height:48px; }
 </style>
-<div class="ph-person-lyza" data-composition-id="g-person-lyza" data-width="1920" data-height="1080" data-duration="29.183">
-  <div class="ph-person-lyza-card" id="ph-person-lyza-card">
-    <div class="ph-person-lyza-t" id="ph-person-lyza-t">g-person-lyza</div>
-    <div class="ph-person-lyza-s" id="ph-person-lyza-s">Placeholder · To Build</div>
+<div class="pl-wrap" data-composition-id="g-person-lyza" data-width="1920" data-height="1080" data-duration="29.183">
+  <div class="pl-grid" id="pl-grid"></div>
+  <div class="pl-glow" id="pl-glow"></div>
+  <div class="pl-person pl-glass" id="pl-person">
+    <div class="pl-beam" id="pl-beam"></div>
+    <div class="pl-name" id="pl-name">Tony Lyza</div>
+    <div class="pl-role" id="pl-role">Research Meteorologist</div>
+    <div class="pl-org" id="pl-org">NOAA National Severe Storms Laboratory</div>
+    <div class="pl-under" id="pl-under"></div>
+  </div>
+  <div class="pl-cite" id="pl-cite">
+    <div class="pl-cbeam" id="pl-cbeam"></div>
+    <div class="pl-ceb" id="pl-ceb">Bulletin of the American Meteorological Society</div>
+    <div class="pl-ctitle" id="pl-ctitle">&ldquo;Where Have the EF5s Gone?&rdquo;</div>
+    <div class="pl-cattr" id="pl-cattr">Lyza, 2025</div>
+  </div>
+  <div class="pl-find pl-glass" id="pl-find">
+    <div class="pl-row" id="pl-row1">
+      <svg class="pl-mk" id="pl-mk1" viewBox="0 0 48 48"><circle cx="24" cy="24" r="21" fill="none" stroke="#e74c3c" stroke-width="3"/><path d="M15 15 L33 33 M33 15 L15 33" stroke="#e74c3c" stroke-width="4" stroke-linecap="round"/></svg>
+      <span id="pl-r1a">Real Drop in Strength:</span> <span id="pl-r1b" style="color:#e74c3c;">Highly Unlikely</span>
+    </div>
+    <div class="pl-row" id="pl-row2">
+      <svg class="pl-mk" id="pl-mk2" viewBox="0 0 48 48"><circle cx="24" cy="24" r="21" fill="none" stroke="#e8c56a" stroke-width="3"/><path d="M13 25 L21 33 L35 16" fill="none" stroke="#e8c56a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span id="pl-r2a" style="color:#e8c56a;">Likelier:</span> <span id="pl-r2b">How Surveys and Ratings Shifted After 2007</span>
+    </div>
   </div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-person-lyza-card", { x: 0 }, { x: 40, duration: 29.183, ease: "none" }, 0);
+  const DUR = 29.183;
+  tl.set(["#pl-person", "#pl-name", "#pl-role", "#pl-org", "#pl-cite", "#pl-ceb", "#pl-ctitle", "#pl-cattr", "#pl-find",
+          "#pl-row1", "#pl-r1b", "#pl-row2", "#pl-r2b"], { autoAlpha: 0 }, 0);
+  tl.set("#pl-under", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* ambient, whole window: grid + glow drift; light beams cross the cards; the cite card floats */
+  tl.fromTo("#pl-grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#pl-glow", { x: 0, y: 0 }, { x: 1000, y: 160, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#pl-beam", { x: -160 }, { x: 760, duration: 2.4, ease: "none", repeat: 11 }, 0);
+  tl.fromTo("#pl-cbeam", { x: -240 }, { x: 1184, duration: 2.8, ease: "none", repeat: 7 }, 7.3);
+
+  /* TONY LYZA @0.00, RESEARCH METEOROLOGIST @1.38, NOAA'S NSSL @2.72 */
+  tl.fromTo("#pl-person", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0);
+  tl.fromTo("#pl-name", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.1);
+  tl.fromTo("#pl-role", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.38);
+  tl.fromTo("#pl-org", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.72);
+  tl.to("#pl-under", { scaleX: 1, duration: 4.0, ease: "power1.inOut" }, 2.9);
+
+  /* AMERICAN METEOROLOGICAL SOCIETY @7.32: the citation card (journal), 2025 @10.24, title @13.12 */
+  tl.to("#pl-person", { opacity: 0.55, duration: 0.5 }, 7.2);
+  tl.fromTo("#pl-cite", { autoAlpha: 0, x: 120 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 7.2);
+  tl.fromTo("#pl-ceb", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.32);
+  tl.fromTo("#pl-cattr", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 10.24);
+  tl.fromTo("#pl-ctitle", { autoAlpha: 0, y: 24, scale: 0.96 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 13.12);
+  tl.fromTo("#pl-cite", { y: 0 }, { y: -8, duration: 1.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, 13.7);
+
+  /* REAL DROP @19.58 ... HIGHLY UNLIKELY @21.22 */
+  tl.to("#pl-cite", { opacity: 0.6, duration: 0.5 }, 19.3);
+  tl.fromTo("#pl-find", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 19.3);
+  tl.fromTo("#pl-row1", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 19.58);
+  tl.fromTo("#pl-mk1", { scale: 0, rotation: -90, transformOrigin: "50% 50%" }, { scale: 1, rotation: 0, duration: 0.4, ease: "back.out(2)" }, 19.7);
+  tl.fromTo("#pl-r1b", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power4.out" }, 21.22);
+  /* LIKELIER CAUSE @23.27 ... SHIFTED @26.69 */
+  tl.to("#pl-row1", { opacity: 0.55, duration: 0.4 }, 23.1);
+  tl.fromTo("#pl-row2", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 23.27);
+  tl.fromTo("#pl-mk2", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.4, ease: "back.out(2)" }, 23.4);
+  tl.fromTo("#pl-r2b", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 25.41);
+  tl.fromTo("#pl-find", { y: 0 }, { y: -6, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 1 }, 26.69);
+
+  /* exit (spec 654.9 -> 28.61): cards slide out right */
+  tl.to(["#pl-person", "#pl-cite", "#pl-find"], { x: 1100, autoAlpha: 0, duration: 0.55, ease: "power3.in", stagger: 0.03 }, 28.5);
   window.__timelines["g-person-lyza"] = tl;
 })();
 </script>
