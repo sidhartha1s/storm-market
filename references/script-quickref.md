@@ -19,9 +19,11 @@ PR and say which one won.
 ## Hook tail, intro, chapters (owner 27 Sep 26)
 - **Tail, 5–15 s:** context plus ONE open curiosity gap — not the answer, not a list of what's coming.
 - Then **INTRO** (~to 1:10 on a mini, longer on a doc): the full WHAT — stakes, roster, claim — delivered as
-  information. Everything after the intro is WHY/HOW, which is what the viewer stays for. (`script-framework.md`)
+  information. Everything after the intro is WHY/HOW, which is what the viewer stays for.
 - Then **CHAPTERS**: stakes order, not chronology. Every chapter changes what the viewer already understood; a
-  chapter that only adds a subject ("Chapter 5: 1883") gets cut or rewritten. (`script-os.md` non-negotiable 4)
+  chapter that only adds a subject ("Chapter 5: 1883") gets cut or rewritten.
+- Channel post-mortem (27 Sep 26): toll and twist inside 20 s; no black hold, title card or disclaimer before 1:00;
+  the line after the hook stays in the hook's scene; a hook claim holds for at least 60 s.
 
 ## Refill the cup — loop discipline (owner 27 Sep 26)
 - When a loop pays off, open the next loop in the same breath. Never let the viewer's cup run empty.
