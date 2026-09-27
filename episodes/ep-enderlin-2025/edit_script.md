@@ -463,5 +463,9 @@ Segment after: **A6-S1** ("Tony Lyza's change was to lower the line between E F 
 ### Z1-S2 — narration
 > Michael and Katherine, both seventy three, were in their home on Highway forty six, three miles east of town. Marcario Lucio was eighty nine, and his wife, Roberta, survived the storm that took him.
 
+### Z1-S3 — narration
+**Picture:** the channel title card (DESIGN.md "Signature closing footnote": it IS the outro).
+> Tornadoes don't ask permission. But they do send warnings, even in the dark. Learn what yours sounds like, so when it comes, you already know what to do. This was The Warning Hour.
+
 *(outro tail 4 s, g-outro, bed out)*
 
