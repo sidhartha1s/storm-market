@@ -2,27 +2,216 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-elreno"
-     (host 249.806 -> 293.80, 43.994 s, track 2). The MG builder replaces this whole file. -->
+<!-- g-elreno (B3): the El Reno panel. Host 249.806 -> 293.80 (43.994 s, track 2); a1-s10 mounts at 0, a1-s11 at 16.464,
+     a1-s12 at 31.399 (local = episode - 249.806). Facts (fact_check.md): 31 May 2013, 2.6 mi wide, RaXPol (OU mobile
+     radar) about 296 mph ("nearly 300"), EF5 on 4 Jun, lowered to EF3 30 Aug 2013; Moore EF5 was 20 May 2013 (11 days);
+     EF scale wind = 3 s gust at 33 ft. Scene A (map, stamp) 0 -> 30.5; scene B (what each number measures) 31.4 -> exit.
+     Cues: ceiling 0.46, El Reno came down 3.38, May 31 4.50, 11 days 7.18, mobile radar truck 10.28, nearly 300 13.50,
+     EF5 19.88/20.10, August 23.42, EF3 25.46/25.88, radar reading 28.94, wind speeds on the scale 31.80, 3 second 34.74,
+     33 feet 35.80, Radar measures 38.06, higher up 38.92, bigger volume 40.26, do not line up 42.56. Exit 43.39. -->
 <template>
 <style>
-  .ph-elreno { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .ph-elreno-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-elreno-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
-  .ph-elreno-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .er-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .er-glow { position:absolute; left:-200px; top:100px; width:1200px; height:800px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(127,178,229,0.11), rgba(127,178,229,0) 70%); }
+  .er-scene { position:absolute; inset:0; }
+  .er-title { position:absolute; left:96px; top:66px; font-family:'Arial Black', Arial, sans-serif; font-size:56px; line-height:66px; color:#f2f5f8; white-space:nowrap; }
+  .er-date { position:absolute; left:96px; top:138px; font-family: Georgia, serif; font-style:italic; font-size:32px; color:#d8a13a; white-space:nowrap; }
+  .er-tag { position:absolute; left:96px; top:198px; padding:8px 18px; border-radius:10px; border:1px solid rgba(232,197,106,0.55);
+    font-weight:700; font-size:24px; letter-spacing:2px; color:#e8c56a; white-space:nowrap; }
+  .er-map { position:absolute; left:96px; top:300px; width:1084px; height:690px; border-radius:22px; overflow:hidden;
+    background: linear-gradient(160deg, rgba(21,32,43,0.85), rgba(11,16,22,0.9)); border:1px solid rgba(255,255,255,0.12); }
+  .er-map svg { position:absolute; left:0; top:0; width:1084px; height:690px; }
+  .er-sweep { position:absolute; left:0; top:0; width:90px; height:690px;
+    background: linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.16), rgba(127,178,229,0)); }
+  .er-wlab { position:absolute; left:340px; top:402px; font-weight:700; font-size:22px; letter-spacing:3px; color:#f2f5f8; white-space:nowrap;
+    text-shadow:0 2px 8px rgba(0,0,0,0.9); }
+  .er-slot { position:absolute; left:1250px; width:480px; top:300px; text-align:center; }
+  .er-stamp { display:inline-block; padding:6px 34px 0; border:6px solid; border-radius:14px;
+    font-family:'AbrilFig', Georgia, serif; line-height:1; letter-spacing:4px; font-size:150px; }
+  .er-ef5 { color:#d0121f; border-color:#d0121f; text-shadow:0 0 38px rgba(208,18,31,0.55), 0 6px 26px rgba(0,0,0,0.8); }
+  .er-ef3 { color:#dfe7ee; border-color:rgba(223,231,238,0.85); text-shadow:0 6px 30px rgba(0,0,0,0.7); }
+  .er-when { margin-top:18px; font-weight:700; font-size:22px; letter-spacing:6px; color:#c8d3e0; }
+  .er-rlab { position:absolute; left:1250px; top:600px; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  .er-rval { position:absolute; left:1250px; top:634px; font-family:'Arial Black', Arial, sans-serif; font-size:52px; line-height:62px; color:#f2f5f8; white-space:nowrap; }
+  .er-neq { position:absolute; left:1250px; top:770px; font-family:'Arial Black', Arial, sans-serif; font-size:44px; line-height:56px; color:#f2f5f8; white-space:nowrap; }
+  .er-red { color:#e74c3c; }
+  .er-bsvg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .er-btl { position:absolute; top:106px; font-family:'Arial Black', Arial, sans-serif; font-size:52px; line-height:62px; color:#f2f5f8; white-space:nowrap; }
+  .er-bdef { position:absolute; top:180px; font-family: Georgia, serif; font-style:italic; font-size:34px; line-height:42px; color:#d8a13a; white-space:nowrap; }
+  .er-ft { position:absolute; left:572px; top:752px; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
+  .er-head { position:absolute; left:0; right:0; top:560px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-size:60px; line-height:70px; color:#e8c56a; }
 </style>
-<div class="ph-elreno" data-composition-id="g-elreno" data-width="1920" data-height="1080" data-duration="43.994">
-  <div class="ph-elreno-card" id="ph-elreno-card">
-    <div class="ph-elreno-t" id="ph-elreno-t">g-elreno</div>
-    <div class="ph-elreno-s" id="ph-elreno-s">Placeholder · To Build</div>
+<div class="er-wrap" data-composition-id="g-elreno" data-width="1920" data-height="1080" data-duration="43.994">
+  <div class="er-glow" id="er-glow"></div>
+
+  <!-- ===== scene A: the El Reno panel ===== -->
+  <div class="er-scene" id="er-sceneA">
+    <div class="er-title" id="er-title">El Reno, Oklahoma</div>
+    <div class="er-date" id="er-date">May 31, 2013</div>
+    <div class="er-tag" id="er-tag">11 Days After Moore</div>
+    <div class="er-map" id="er-map">
+      <svg viewBox="0 0 1084 690">
+        <g id="er-grid">
+          <path class="er-gv" d="M42 0 V690" stroke="#2a3644" stroke-width="2"/><path class="er-gv" d="M142 0 V690" stroke="#2a3644" stroke-width="2"/>
+          <path class="er-gv" d="M242 0 V690" stroke="#2a3644" stroke-width="2"/><path class="er-gv" d="M342 0 V690" stroke="#2a3644" stroke-width="2"/>
+          <path class="er-gv" d="M442 0 V690" stroke="#2a3644" stroke-width="2"/><path class="er-gv" d="M542 0 V690" stroke="#2a3644" stroke-width="2"/>
+          <path class="er-gv" d="M642 0 V690" stroke="#2a3644" stroke-width="2"/><path class="er-gv" d="M742 0 V690" stroke="#2a3644" stroke-width="2"/>
+          <path class="er-gv" d="M842 0 V690" stroke="#2a3644" stroke-width="2"/><path class="er-gv" d="M942 0 V690" stroke="#2a3644" stroke-width="2"/>
+          <path class="er-gv" d="M1042 0 V690" stroke="#2a3644" stroke-width="2"/>
+          <path class="er-gh" d="M0 45 H1084" stroke="#2a3644" stroke-width="2"/><path class="er-gh" d="M0 145 H1084" stroke="#2a3644" stroke-width="2"/>
+          <path class="er-gh" d="M0 245 H1084" stroke="#2a3644" stroke-width="2"/><path class="er-gh" d="M0 345 H1084" stroke="#2a3644" stroke-width="2"/>
+          <path class="er-gh" d="M0 445 H1084" stroke="#2a3644" stroke-width="2"/><path class="er-gh" d="M0 545 H1084" stroke="#2a3644" stroke-width="2"/>
+          <path class="er-gh" d="M0 645 H1084" stroke="#2a3644" stroke-width="2"/>
+        </g>
+        <!-- the swath: 2.6 mi at 100 px per mile (section roads are 1 mi apart), flat where the bracket measures it -->
+        <path id="er-swo" d="M150 420 L560 420 C760 420 860 360 960 280" fill="none" stroke="rgba(208,18,31,0.70)" stroke-width="266" stroke-linecap="round"/>
+        <path id="er-swi" d="M150 420 L560 420 C760 420 860 360 960 280" fill="none" stroke="rgba(52,14,18,0.92)" stroke-width="258" stroke-linecap="round"/>
+        <g id="er-brk">
+          <path d="M420 291 V549" stroke="#f2f5f8" stroke-width="3"/>
+          <path d="M404 291 H436 M404 549 H436" stroke="#f2f5f8" stroke-width="3"/>
+        </g>
+        <polygon id="er-beam" points="622,616 610,330 790,360" fill="rgba(127,178,229,0.22)" stroke="rgba(127,178,229,0.6)" stroke-width="2"/>
+        <g id="er-truck">
+          <rect x="580" y="628" width="92" height="30" rx="5" fill="#5a768f" stroke="#7fb2e5" stroke-width="2"/>
+          <rect x="648" y="614" width="30" height="20" rx="3" fill="#5a768f" stroke="#7fb2e5" stroke-width="2"/>
+          <path d="M600 626 A24 24 0 0 1 640 604 Z" fill="#dfe7ee"/>
+          <circle cx="598" cy="662" r="8" fill="#0b1016" stroke="#93a3b2" stroke-width="2"/>
+          <circle cx="656" cy="662" r="8" fill="#0b1016" stroke="#93a3b2" stroke-width="2"/>
+        </g>
+      </svg>
+      <div class="er-sweep" id="er-sweep"></div>
+      <div class="er-wlab" id="er-wlab">2.6 mi Wide</div>
+    </div>
+    <div class="er-slot" id="er-s5"><div class="er-stamp er-ef5" id="er-ef5">EF5</div><div class="er-when" id="er-w5">June 2013</div></div>
+    <div class="er-slot" id="er-s3"><div class="er-stamp er-ef3" id="er-ef3">EF3</div><div class="er-when" id="er-w3">August 2013</div></div>
+    <div class="er-rlab" id="er-rlab">OU Mobile Radar</div>
+    <div class="er-rval" id="er-rval">Nearly 300 mph</div>
+    <div class="er-neq" id="er-neq">Radar Reading<br><span class="er-red" id="er-neq2">&ne; Damage</span></div>
+  </div>
+
+  <!-- ===== scene B: what each number measures ===== -->
+  <div class="er-scene" id="er-sceneB">
+    <svg class="er-bsvg" viewBox="0 0 1920 1080">
+      <path id="er-ground" d="M96 900 H1824" stroke="#93a3b2" stroke-width="3"/>
+      <path id="er-mast" d="M480 900 V640" stroke="#c8d3e0" stroke-width="6" stroke-linecap="round"/>
+      <g id="er-cups">
+        <path d="M480 630 L530 630 M480 630 L455 587 M480 630 L455 673" stroke="#dfe7ee" stroke-width="4"/>
+        <path d="M530 618 A12 12 0 0 1 530 642 Z" fill="#e8c56a"/>
+        <path d="M444 590 A12 12 0 0 1 464 578 Z" fill="#e8c56a"/>
+        <path d="M444 670 A12 12 0 0 0 466 682 Z" fill="#e8c56a"/>
+        <circle cx="480" cy="630" r="8" fill="#dfe7ee"/>
+      </g>
+      <g id="er-hbrk">
+        <path d="M560 900 V630" stroke="#93a3b2" stroke-width="3" stroke-dasharray="8 8"/>
+        <path d="M548 900 H572 M548 630 H572" stroke="#93a3b2" stroke-width="3"/>
+      </g>
+      <polygon id="er-bbeam" points="1640,884 1000,390 1360,452" fill="rgba(127,178,229,0.16)" stroke="rgba(127,178,229,0.5)" stroke-width="2"/>
+      <ellipse id="er-vol" cx="1200" cy="360" rx="220" ry="120" fill="rgba(127,178,229,0.18)" stroke="#7fb2e5" stroke-width="3" stroke-dasharray="14 10"/>
+      <circle id="er-pulse1" cx="0" cy="0" r="9" fill="#7fb2e5"/>
+      <circle id="er-pulse2" cx="0" cy="0" r="9" fill="#7fb2e5"/>
+      <g id="er-dish">
+        <path d="M1650 900 L1650 866" stroke="#c8d3e0" stroke-width="6"/>
+        <path d="M1612 860 A44 44 0 0 0 1690 836 Z" fill="#5a768f" stroke="#7fb2e5" stroke-width="3"/>
+      </g>
+    </svg>
+    <div class="er-btl" id="er-btl-l" style="left:96px;">EF Scale</div>
+    <div class="er-bdef" id="er-bdef-l" style="left:96px;">3-Second Gust at 33 ft</div>
+    <div class="er-btl" id="er-btl-r" style="right:96px; text-align:right;">Radar</div>
+    <div class="er-bdef" id="er-bdef-r" style="right:96px; text-align:right;">Higher Up &middot; Bigger Volume of Air</div>
+    <div class="er-ft" id="er-ft">33 ft</div>
+    <div class="er-head" id="er-head">Do Not Line Up</div>
   </div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-elreno-card", { x: 0 }, { x: 40, duration: 43.994, ease: "none" }, 0);
+  const DUR = 43.994;
+  const dash = (id) => { const p = document.getElementById(id); const L = Math.ceil(p.getTotalLength()) + 1; p.style.strokeDasharray = L; return L; };
+  const SW = dash("er-swo"); dash("er-swi");
+  const GL = dash("er-ground");
+
+  tl.set(["#er-title", "#er-date", "#er-tag", "#er-map", "#er-brk", "#er-wlab", "#er-beam", "#er-truck", "#er-s5", "#er-s3",
+          "#er-rlab", "#er-rval", "#er-neq", "#er-sceneB", "#er-mast", "#er-cups", "#er-hbrk", "#er-bbeam", "#er-vol",
+          "#er-pulse1", "#er-pulse2", "#er-dish", "#er-btl-l", "#er-bdef-l", "#er-btl-r", "#er-bdef-r", "#er-ft", "#er-head"], { autoAlpha: 0 }, 0);
+  tl.set(["#er-swo", "#er-swi"], { strokeDashoffset: SW }, 0);
+  tl.set("#er-ground", { strokeDashoffset: GL }, 0);
+  tl.set(".er-gv", { scaleY: 0, transformOrigin: "50% 0%" }, 0);
+  tl.set(".er-gh", { scaleX: 0, transformOrigin: "0% 50%" }, 0);
+  tl.set("#er-beam", { scaleY: 0, svgOrigin: "622 616" }, 0);
+  tl.set("#er-bbeam", { scale: 0, svgOrigin: "1640 884" }, 0);
+  tl.set("#er-vol", { scale: 0, svgOrigin: "1200 360" }, 0);
+  tl.set("#er-mast", { scaleY: 0, svgOrigin: "480 900" }, 0);
+  tl.set("#er-s3", { scaleY: 0, transformOrigin: "50% 40%" }, 0);
+
+  /* ambient, whole window: glow drift; the map's scan bar; later the anemometer and radar pulses */
+  tl.fromTo("#er-glow", { x: 0, y: 0 }, { x: 900, y: -80, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#er-sweep", { x: -90 }, { x: 1084, duration: 3.8, ease: "none", repeat: 7 }, 0.2);
+
+  /* CEILING @0.46: the section-road grid draws in (1 mi apart) */
+  tl.fromTo("#er-map", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.1);
+  tl.to(".er-gv", { scaleY: 1, duration: 0.6, ease: "power2.out", stagger: 0.07 }, 0.4);
+  tl.to(".er-gh", { scaleX: 1, duration: 0.6, ease: "power2.out", stagger: 0.07 }, 0.6);
+  /* EL RENO CAME DOWN @3.38: the swath draws */
+  tl.to(["#er-swo", "#er-swi"], { strokeDashoffset: 0, duration: 1.5, ease: "power2.inOut" }, 3.38);
+  /* MAY 31, 2013 @4.50 */
+  tl.fromTo("#er-title", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 4.5);
+  tl.fromTo("#er-date", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.66);
+  /* 11 DAYS AFTER THE LAST EF5 @7.18 */
+  tl.fromTo("#er-tag", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 7.18);
+  /* the width, between beats (8.96 -> 10.04) */
+  tl.fromTo("#er-brk", { autoAlpha: 0, scaleY: 0, svgOrigin: "420 420" }, { autoAlpha: 1, scaleY: 1, duration: 0.45, ease: "power3.out" }, 9.0);
+  tl.fromTo("#er-wlab", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 9.3);
+  /* MOBILE RADAR TRUCK @10.28 -> NEARLY 300 @13.50 */
+  tl.fromTo("#er-truck", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 10.28);
+  tl.fromTo("#er-rlab", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 10.4);
+  tl.to("#er-beam", { autoAlpha: 1, scaleY: 1, duration: 0.5, ease: "power3.out" }, 10.9);
+  tl.fromTo("#er-beam", { opacity: 1 }, { opacity: 0.45, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 13 }, 11.5);
+  tl.fromTo("#er-rval", { autoAlpha: 0, y: 30, scale: 1.1 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.35, ease: "power4.out" }, 13.5);
+  /* EF5 @19.88 (spoken "E F -5" 19.88/20.10): the June rating slams */
+  tl.fromTo("#er-s5", { autoAlpha: 0, scale: 1.45, rotation: -9 }, { autoAlpha: 1, scale: 1, rotation: -3, duration: 0.2, ease: "power4.in" }, 19.75);
+  tl.fromTo("#er-s5", { y: 0 }, { y: 8, duration: 0.07, ease: "power1.out", yoyo: true, repeat: 1 }, 19.95);
+  tl.fromTo("#er-ef5", { scale: 1 }, { scale: 1.04, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, 20.6);
+  /* EF3 @25.46: the stamp flips to the August rating */
+  tl.to("#er-s5", { scaleY: 0, duration: 0.14, ease: "power2.in" }, 25.3);
+  tl.set("#er-s5", { autoAlpha: 0 }, 25.44);
+  tl.to("#er-s3", { autoAlpha: 1, scaleY: 1, duration: 0.2, ease: "back.out(2)" }, 25.46);
+  tl.fromTo("#er-s3", { rotation: 0 }, { rotation: -3, duration: 0.3, ease: "power2.out" }, 25.66);
+  tl.fromTo("#er-ef3", { scale: 1 }, { scale: 1.035, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, 26.2);
+  /* RADAR READING @28.94 ... NOT DAMAGE @30.10 */
+  tl.fromTo("#er-neq", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 28.94);
+  tl.fromTo("#er-neq2", { scale: 1 }, { scale: 1.08, duration: 0.15, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "0% 50%" }, 30.1);
+
+  /* scene change after "damage" (30.28): the panel slides off, the measuring diagram comes up */
+  tl.to("#er-sceneA", { x: -160, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 30.55);
+  tl.set("#er-sceneB", { autoAlpha: 1 }, 31.2);
+  tl.to("#er-ground", { autoAlpha: 1, strokeDashoffset: 0, duration: 0.7, ease: "power2.inOut" }, 31.25);
+  /* WIND SPEEDS ON THE SCALE @31.80 */
+  tl.fromTo("#er-btl-l", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 31.8);
+  tl.to("#er-mast", { autoAlpha: 1, scaleY: 1, duration: 0.5, ease: "power3.out" }, 32.4);
+  tl.fromTo("#er-cups", { autoAlpha: 0, scale: 0.4, svgOrigin: "480 630" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 32.8);
+  tl.fromTo("#er-cups", { rotation: 0 }, { rotation: 3960, svgOrigin: "480 630", duration: 11.0, ease: "none" }, 32.95);
+  /* 3 SECOND GUST @34.74, 33 FEET @35.80 */
+  tl.fromTo("#er-bdef-l", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 34.74);
+  tl.fromTo("#er-hbrk", { autoAlpha: 0, scaleY: 0, svgOrigin: "560 900" }, { autoAlpha: 1, scaleY: 1, duration: 0.5, ease: "power3.out" }, 35.6);
+  tl.fromTo("#er-ft", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 35.8);
+  /* RADAR MEASURES @38.06, HIGHER UP @38.92, BIGGER VOLUME @40.26 */
+  tl.fromTo("#er-btl-r", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 38.06);
+  tl.fromTo("#er-dish", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 38.1);
+  tl.to("#er-bbeam", { autoAlpha: 1, scale: 1, duration: 0.8, ease: "power2.out" }, 38.5);
+  tl.fromTo("#er-bdef-r", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 38.92);
+  tl.to("#er-vol", { autoAlpha: 1, scale: 1, duration: 0.6, ease: "back.out(1.6)" }, 40.26);
+  tl.fromTo("#er-vol", { rotation: 0 }, { rotation: 8, svgOrigin: "1200 360", duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 40.9);
+  tl.set(["#er-pulse1", "#er-pulse2"], { autoAlpha: 1 }, 38.9);
+  tl.fromTo("#er-pulse1", { x: 1640, y: 880 }, { x: 1200, y: 360, duration: 1.2, ease: "none", repeat: 3 }, 38.9);
+  tl.fromTo("#er-pulse2", { x: 1640, y: 880 }, { x: 1200, y: 360, duration: 1.2, ease: "none", repeat: 2 }, 39.5);
+  /* DO NOT LINE UP @42.56 */
+  tl.fromTo("#er-head", { autoAlpha: 0, y: 30, scale: 1.08 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.35, ease: "power4.out" }, 42.56);
+
+  /* exit (spec 293.2 -> 43.39): slide up and out */
+  tl.to("#er-sceneB", { y: -40, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 43.39);
   window.__timelines["g-elreno"] = tl;
 })();
 </script>
