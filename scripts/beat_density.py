@@ -66,6 +66,10 @@ print(f"{'composition':22} {'window':>7} {'beats':>6} {'max still':>10}  where")
 for gid, win, n, gap, when in rows:
     flag = "  <-- DEAD" if gap >= 4.0 else ""
     print(f"{gid:22} {win:6.1f}s {n:6} {gap:9.2f}s  {when}{flag}")
+for gid, win, err in errors:
+    print(f"{gid:22} {win:6.1f}s {'-':>6} {'-':>10}  <-- ERROR {err}")
 worst = [r for r in rows if r[3] >= 4.0]
-print(f"\ncompositions with a >=4s motionless stretch: {len(worst)}/{len(rows)}")
-sys.exit(1 if worst else 0)
+print(f"\ncompositions with a >=4s motionless stretch: {len(worst)}/{len(comps)}")
+if errors:
+    print(f"compositions the probe could not measure (ERROR): {len(errors)}/{len(comps)}")
+sys.exit(1 if worst or errors else 0)
