@@ -46,6 +46,8 @@ contradiction, escalation, reveal, time shift, location shift, consequence, pres
 materially changes every 60–90 s (new evidence, place, number, person, mechanism, period, implication).
 
 ## Gates before TTS
+- **Flag words** (`references/flag-words.md`): no hard-banned violence/death word anywhere in narration or on-screen
+  text; gate `scripts/flag_words.py episodes/<slug>` (runs in `run_gates.py`).
 - **Humanise pass** (`humanise-rules.md`, rules 2–14 line by line; diff kept in the episode folder). Owner's read (2026-09-13):
   distribution scans transcripts; strong packaging with an AI-scanning script gets few impressions.
 - **Retention scorecard**, per minute, 1–5 on: new information · curiosity · stakes · visual change · payoff · exit
