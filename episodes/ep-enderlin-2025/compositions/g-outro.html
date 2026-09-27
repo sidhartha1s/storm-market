@@ -2,27 +2,57 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-outro"
-     (host 1508.677 -> 1512.677, 4.0 s, track 2). The MG builder replaces this whole file. -->
+<!-- g-outro (B3): host 1508.677 -> 1512.677 (4.0 s, track 2), after z1-s2 "took him." (ends 1508.15). No narration.
+     From library/inhouse/outro-brand.html: the wordmark only (no episode line, no recap, no CTA text; the CTA ran at 1329.9).
+     It match-cuts in on the names card's last line, never sits still (slow push + one light sweep + a drawing rule) and
+     fades to black by 3.92 (spec 1512.6). -->
 <template>
 <style>
-  .ph-outro { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .ph-outro-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-outro-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
-  .ph-outro-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .ou-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .ou-glow { position:absolute; left:360px; top:240px; width:1200px; height:600px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(216,161,58,0.12), rgba(216,161,58,0) 70%); }
+  .ou-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.04) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .ou-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .ou-mark { position:absolute; left:0; right:0; top:462px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-weight:900;
+    font-size:120px; line-height:140px; letter-spacing:6px; color:#f2f5f8; white-space:nowrap; }
+  .ou-mark span { display:inline-block; }
+  .ou-amber { color:#d8a13a; }
+  .ou-sweepbox { position:absolute; left:260px; top:452px; width:1400px; height:160px; overflow:hidden; mix-blend-mode:screen; }
+  .ou-sweep { position:absolute; left:0; top:-40px; width:220px; height:240px;
+    background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,244,220,0.30), rgba(255,255,255,0)); }
+  .ou-rule { position:absolute; left:660px; width:600px; top:630px; height:4px; border-radius:2px; background:#d8a13a; }
 </style>
-<div class="ph-outro" data-composition-id="g-outro" data-width="1920" data-height="1080" data-duration="4.0">
-  <div class="ph-outro-card" id="ph-outro-card">
-    <div class="ph-outro-t" id="ph-outro-t">g-outro</div>
-    <div class="ph-outro-s" id="ph-outro-s">Placeholder · To Build</div>
+<div class="ou-wrap" data-composition-id="g-outro" data-width="1920" data-height="1080" data-duration="4.0">
+  <div class="ou-grid" id="ou-grid"></div>
+  <div class="ou-glow" id="ou-glow"></div>
+  <div class="ou-stage" id="ou-stage">
+    <div class="ou-mark" id="ou-mark"><span id="ou-w1">The</span> <span class="ou-amber" id="ou-w2">Warning</span> <span id="ou-w3">Hour</span></div>
+    <div class="ou-sweepbox" id="ou-sweepbox"><div class="ou-sweep" id="ou-sweep"></div></div>
+    <div class="ou-rule" id="ou-rule"></div>
   </div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-outro-card", { x: 0 }, { x: 40, duration: 4.0, ease: "none" }, 0);
+  const DUR = 4.0;
+  tl.set("#ou-rule", { scaleX: 0, transformOrigin: "50% 50%" }, 0);
+
+  /* ambient: slow push on the whole stage, glow drift */
+  tl.fromTo("#ou-stage", { scale: 1 }, { scale: 1.06, transformOrigin: "50% 50%", duration: 3.9, ease: "none" }, 0);
+  tl.fromTo("#ou-glow", { x: -120 }, { x: 120, duration: 3.9, ease: "none" }, 0);
+  tl.fromTo("#ou-grid", { x: 0 }, { x: 60, duration: 3.9, ease: "none" }, 0);
+  /* match cut: the wordmark is there on the first frame and settles */
+  tl.fromTo(["#ou-w1", "#ou-w2", "#ou-w3"], { y: 10 }, { y: 0, duration: 0.4, ease: "power3.out", stagger: 0.05 }, 0);
+  tl.to("#ou-rule", { scaleX: 1, duration: 0.9, ease: "power3.out" }, 0.3);
+  /* one light sweep across the wordmark */
+  tl.fromTo("#ou-sweep", { x: -240 }, { x: 1420, duration: 1.6, ease: "power1.inOut" }, 0.5);
+  /* fade to black by 3.92 (spec 1512.6) */
+  tl.to("#ou-stage", { autoAlpha: 0, duration: 1.0, ease: "power1.in" }, 2.92);
+  tl.to(["#ou-glow", "#ou-grid"], { autoAlpha: 0, duration: 1.0, ease: "power1.in" }, 2.92);
   window.__timelines["g-outro"] = tl;
 })();
 </script>
