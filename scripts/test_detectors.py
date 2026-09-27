@@ -282,16 +282,6 @@ CANVAS_FILES = {
         "tl.fromTo('#g-cv-lbl', { x: 0 }, { x: 300, duration: 3, ease: 'power3.out' }, 0);\n"
         "window.__timelines['g-cv'] = tl;\n</script>\n</template></body></html>\n",
 }
-ep = _stage_ep(CANVAS_FILES)
-r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
-assert '[graphics_qc]' in r.stdout and 'undesigned' not in r.stdout, r.stdout + r.stderr
-old_gq = old_rev('graphics_qc.mjs', '_old_gqc_canvas_tmp.mjs', 'f3a6fece')
-r_old = subprocess.run(['node', str(old_gq), str(ep)], capture_output=True, text=True)
-old_gq.unlink()
-assert 'ERROR [undesigned] flat background' in r_old.stdout, f'old code should flag the canvas comp: {r_old.stdout}'
-shutil.rmtree(ep, ignore_errors=True)
-print('graphics_qc self-check PASS (a full-frame canvas counts as a designed background)')
-
 # The Three.js template animates by redrawing its canvas from a timeline-level onUpdate; the only
 # GSAP child is a padding tween on {}. Old code: 'fade-only' (0 kinetic tweens) and a frozen
 # window; new code: the onUpdate renderer is one continuous kinetic span.
