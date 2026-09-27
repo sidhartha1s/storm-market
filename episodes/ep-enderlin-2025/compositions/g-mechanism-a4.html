@@ -2,27 +2,284 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-mechanism-a4"
-     (host 1081.334 -> 1134.095, 52.761 s, track 2). The MG builder replaces this whole file. -->
+<!-- g-mechanism-a4 (B3): host 1081.334 -> 1134.095 (52.761 s, track 2); a4-s12 at 0, a4-s13 at 18.863, a4-s14 at 30.781,
+     a4-s15 at 45.971 (local = episode - 1081.334). Miller et al. 2024 (MWR): a large compact object carried more than
+     50 m (about 160 ft) generally means EF5-level wind; flight only, not rolling or sliding. The Enderlin tanker, about
+     72,000 lb empty, went about 475.7 ft / 145 m (fact_check.md, mg_specs.md): nearly 3x the line.
+     World scale for the throw: launch x 220, landing x 1720 (1500 px = 476 ft, 3.151 px/ft), so the 160 ft line sits at x 724.
+     Movers follow their curves by construction: x linear, y in two quadratic halves (power1.out up, power1.in down) = the same
+     quadratic Bezier the trail draws; the trail reveals through a clip rect whose right edge rides the mover's x.
+     Cues: wind pushes 0.00, weight 1.70, push wins 5.22, farther 6.74, stronger push 10.32, 50 meters 13.36/13.74,
+     160 feet 15.42, farther than that 21.22, EF5 level 23.38, flew 26.64, rolled or slid 28.56, tanker 31.56,
+     70,000 pounds 32.48, empty 34.40, dozen pickups 36.48, almost 500 feet 39.50, nearly three times 43.78,
+     measure 47.91, well past 50.73. Exit 52.17 (spec 1133.5). -->
 <template>
 <style>
-  .ph-mechanism-a4 { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .ph-mechanism-a4-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-mechanism-a4-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
-  .ph-mechanism-a4-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .m4-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .m4-glow { position:absolute; left:-200px; top:100px; width:1300px; height:900px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(127,178,229,0.12), rgba(127,178,229,0) 70%); }
+  .m4-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .m4-lab { position:absolute; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
+  .m4-head { position:absolute; left:96px; top:90px; font-family:'Arial Black', Arial, sans-serif; font-size:56px; line-height:66px; color:#f2f5f8; white-space:nowrap; }
+  .m4-head span { display:inline-block; }
+  .m4-sub { position:absolute; left:96px; top:168px; font-family: Georgia, serif; font-style:italic; font-size:40px; line-height:48px; color:#d8a13a; white-space:nowrap; }
+  .m4-big { position:absolute; left:250px; top:894px; font-family:'Arial Black', Arial, sans-serif; font-size:60px; line-height:70px; color:#f2f5f8; white-space:nowrap; }
+  .m4-mid { position:absolute; font-family: Georgia, serif; font-style:italic; font-size:34px; line-height:42px; color:#d8a13a; white-space:nowrap; }
+  .m4-dist { position:absolute; right:96px; top:900px; font-family:'Arial Black', Arial, sans-serif; font-size:44px; line-height:54px; color:#e8c56a; white-space:nowrap; }
+  .m4-blab { position:absolute; top:986px; width:120px; text-align:center; font-weight:700; font-size:20px; letter-spacing:2px; color:#f2f5f8; }
+  .m4-ef { position:absolute; width:100px; text-align:center; font-weight:700; font-size:24px; letter-spacing:2px; color:#93a3b2; }
 </style>
-<div class="ph-mechanism-a4" data-composition-id="g-mechanism-a4" data-width="1920" data-height="1080" data-duration="52.761">
-  <div class="ph-mechanism-a4-card" id="ph-mechanism-a4-card">
-    <div class="ph-mechanism-a4-t" id="ph-mechanism-a4-t">g-mechanism-a4</div>
-    <div class="ph-mechanism-a4-s" id="ph-mechanism-a4-s">Placeholder · To Build</div>
-  </div>
+<div class="m4-wrap" data-composition-id="g-mechanism-a4" data-width="1920" data-height="1080" data-duration="52.761">
+  <div class="m4-glow" id="m4-glow"></div>
+  <svg class="m4-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <symbol id="m4-pk" viewBox="0 0 96 44">
+        <path d="M4 32 L4 20 L42 20 L54 6 L78 6 L90 20 L92 32 Z" fill="#5a768f" stroke="#7fb2e5" stroke-width="2"/>
+        <circle cx="22" cy="34" r="8" fill="#0b1016" stroke="#93a3b2" stroke-width="2"/>
+        <circle cx="74" cy="34" r="8" fill="#0b1016" stroke="#93a3b2" stroke-width="2"/>
+      </symbol>
+      <linearGradient id="m4-zoneg" x1="0" x2="1" y1="0" y2="0">
+        <stop offset="0" stop-color="rgba(208,18,31,0.34)"/><stop offset="1" stop-color="rgba(208,18,31,0.04)"/>
+      </linearGradient>
+      <clipPath id="m4-clipf"><rect id="m4-clipfr" x="220" y="0" width="0" height="1080"/></clipPath>
+      <clipPath id="m4-clipt"><rect id="m4-cliptr" x="220" y="0" width="0" height="1080"/></clipPath>
+    </defs>
+    <g id="m4-world">
+      <g id="m4-streaks" stroke="rgba(127,178,229,0.30)" stroke-width="3" stroke-linecap="round">
+        <path id="m4-s1" d="M0 330 h120"/><path id="m4-s2" d="M0 460 h90"/><path id="m4-s3" d="M0 600 h140"/>
+        <path id="m4-s4" d="M0 700 h100"/><path id="m4-s5" d="M0 780 h80"/>
+      </g>
+      <rect id="m4-zone" x="724" y="520" width="1100" height="340" fill="url(#m4-zoneg)"/>
+      <path id="m4-ground" d="M96 860 H1824" stroke="#93a3b2" stroke-width="3"/>
+      <path id="m4-ruler" d="M220 884 H724 M220 874 V894 M346 878 V890 M472 878 V890 M598 878 V890 M724 874 V894" fill="none" stroke="#f2f5f8" stroke-width="4"/>
+      <path id="m4-line" d="M724 860 V520" stroke="#e8c56a" stroke-width="5" stroke-dasharray="14 10"/>
+      <g id="m4-bands">
+        <rect id="m4-b1" x="220" y="986" width="504" height="26" fill="rgba(90,118,143,0.75)"/>
+        <rect id="m4-b2" x="724" y="986" width="504" height="26" fill="rgba(127,178,229,0.55)"/>
+        <rect id="m4-b3" x="1228" y="986" width="504" height="26" fill="rgba(90,118,143,0.75)"/>
+      </g>
+      <!-- illustrative arcs (scene 1) -->
+      <path id="m4-arc1" d="M560 860 Q720 440 880 860" fill="none" stroke="rgba(232,197,106,0.7)" stroke-width="4"/>
+      <path id="m4-arc2" d="M560 860 Q930 300 1300 860" fill="none" stroke="rgba(232,197,106,0.9)" stroke-width="4"/>
+      <circle id="m4-mk1" cx="880" cy="860" r="10" fill="#e8c56a"/>
+      <circle id="m4-mk2" cx="1300" cy="860" r="12" fill="#e8c56a"/>
+      <!-- flight demo (scene 2) -->
+      <path id="m4-trf" d="M220 860 Q700 180 1180 860" fill="none" stroke="#7fb2e5" stroke-width="4" clip-path="url(#m4-clipf)"/>
+      <rect id="m4-blk" x="-14" y="-28" width="28" height="28" rx="4" fill="#dfe7ee"/>
+      <path id="m4-chk" d="M1160 790 L1180 812 L1216 770" fill="none" stroke="#7fb2e5" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect id="m4-ghost" x="-14" y="-28" width="28" height="28" rx="4" fill="none" stroke="rgba(223,231,238,0.6)" stroke-width="3" stroke-dasharray="6 5"/>
+      <path id="m4-x" d="M956 800 L1044 872 M1044 800 L956 872" stroke="#e74c3c" stroke-width="8" stroke-linecap="round"/>
+      <!-- the tanker's throw (scene 4) -->
+      <path id="m4-trt" d="M220 860 Q970 140 1720 860" fill="none" stroke="#e8c56a" stroke-width="5" clip-path="url(#m4-clipt)"/>
+      <circle id="m4-ring" cx="1720" cy="860" r="30" fill="none" stroke="#e8c56a" stroke-width="4"/>
+      <circle id="m4-dust1" cx="1660" cy="852" r="26" fill="rgba(200,211,224,0.35)"/>
+      <circle id="m4-dust2" cx="1780" cy="852" r="22" fill="rgba(200,211,224,0.30)"/>
+      <!-- the tanker, origin = bottom centre -->
+      <g id="m4-tank">
+        <rect x="-100" y="-72" width="200" height="52" rx="26" fill="#5a768f" stroke="#7fb2e5" stroke-width="3"/>
+        <rect x="-12" y="-84" width="24" height="14" rx="3" fill="#7fb2e5"/>
+        <rect x="-104" y="-24" width="208" height="8" fill="#2a3644" stroke="#93a3b2" stroke-width="2"/>
+        <circle cx="-80" cy="-8" r="8" fill="#0b1016" stroke="#93a3b2" stroke-width="2"/><circle cx="-60" cy="-8" r="8" fill="#0b1016" stroke="#93a3b2" stroke-width="2"/>
+        <circle cx="60" cy="-8" r="8" fill="#0b1016" stroke="#93a3b2" stroke-width="2"/><circle cx="80" cy="-8" r="8" fill="#0b1016" stroke="#93a3b2" stroke-width="2"/>
+      </g>
+      <!-- forces (scene 1) -->
+      <g id="m4-wind">
+        <rect x="150" y="802" width="262" height="24" rx="6" fill="#7fb2e5"/>
+        <path d="M408 780 L452 814 L408 848 Z" fill="#7fb2e5"/>
+      </g>
+      <g id="m4-wt">
+        <rect x="548" y="640" width="24" height="100" rx="6" fill="#e74c3c"/>
+        <path d="M530 734 L560 776 L590 734 Z" fill="#e74c3c"/>
+      </g>
+      <g id="m4-pks">
+        <use id="m4-p1" href="#m4-pk" x="96" y="190" width="96" height="44"/><use id="m4-p2" href="#m4-pk" x="208" y="190" width="96" height="44"/>
+        <use id="m4-p3" href="#m4-pk" x="320" y="190" width="96" height="44"/><use id="m4-p4" href="#m4-pk" x="432" y="190" width="96" height="44"/>
+        <use id="m4-p5" href="#m4-pk" x="544" y="190" width="96" height="44"/><use id="m4-p6" href="#m4-pk" x="656" y="190" width="96" height="44"/>
+        <use id="m4-p7" href="#m4-pk" x="768" y="190" width="96" height="44"/><use id="m4-p8" href="#m4-pk" x="880" y="190" width="96" height="44"/>
+        <use id="m4-p9" href="#m4-pk" x="992" y="190" width="96" height="44"/><use id="m4-p10" href="#m4-pk" x="1104" y="190" width="96" height="44"/>
+        <use id="m4-p11" href="#m4-pk" x="1216" y="190" width="96" height="44"/><use id="m4-p12" href="#m4-pk" x="1328" y="190" width="96" height="44"/>
+      </g>
+    </g>
+    <!-- scene 5: the EF gauge -->
+    <g id="m4-gauge">
+      <path d="M520 760 A440 440 0 0 1 1400 760 Z" fill="rgba(11,16,22,0.88)" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+      <path d="M560.1 753.0 A400 400 0 0 1 610.2 566.1" fill="none" stroke="#2a3644" stroke-width="44"/>
+      <path d="M617.1 554.0 A400 400 0 0 1 754.0 417.1" fill="none" stroke="#4a5560" stroke-width="44"/>
+      <path d="M766.1 410.2 A400 400 0 0 1 953.0 360.1" fill="none" stroke="#5a768f" stroke-width="44"/>
+      <path id="m4-seg3" d="M967.0 360.1 A400 400 0 0 1 1153.9 410.2" fill="none" stroke="#7fb2e5" stroke-width="44"/>
+      <path d="M1166.0 417.1 A400 400 0 0 1 1302.9 554.0" fill="none" stroke="#c0392b" stroke-width="44"/>
+      <path id="m4-seg5" d="M1309.8 566.1 A400 400 0 0 1 1359.9 753.0" fill="none" stroke="#d0121f" stroke-width="44"/>
+      <path id="m4-needle" d="M960 772 L960 420" stroke="#f2f5f8" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="960" cy="760" r="18" fill="#f2f5f8"/>
+    </g>
+  </svg>
+  <div class="m4-lab" id="m4-lwind" style="left:150px; top:752px;">Wind Push</div>
+  <div class="m4-lab" id="m4-lwind2" style="left:150px; top:752px; color:#7fb2e5;">Stronger Push</div>
+  <div class="m4-lab" id="m4-lwt" style="left:600px; top:652px;">Weight</div>
+  <div class="m4-big" id="m4-50">50 m</div>
+  <div class="m4-mid" id="m4-160" style="left:444px; top:910px;">About 160 ft</div>
+  <div class="m4-head" id="m4-h1">Farther = EF5 Level</div>
+  <div class="m4-sub" id="m4-h1s">Flight Only</div>
+  <div class="m4-head" id="m4-h2"><span id="m4-h2a">About 72,000 lb</span> <span id="m4-h2b" style="color:#d8a13a;">&middot; Empty</span></div>
+  <div class="m4-lab" id="m4-lpk" style="left:96px; top:248px;">About 12 Full-Size Pickups</div>
+  <div class="m4-dist" id="m4-dist">About 476 ft &middot; 145 m</div>
+  <div class="m4-blab" id="m4-bl1" style="left:412px;">1x</div>
+  <div class="m4-blab" id="m4-bl2" style="left:916px;">2x</div>
+  <div class="m4-blab" id="m4-bl3" style="left:1420px;">3x</div>
+  <div class="m4-head" id="m4-h3">About 3x</div>
+  <div class="m4-ef" id="m4-ef0" style="left:464px; top:626px;">EF0</div>
+  <div class="m4-ef" id="m4-ef1" style="left:583px; top:419px;">EF1</div>
+  <div class="m4-ef" id="m4-ef2" style="left:790px; top:300px;">EF2</div>
+  <div class="m4-ef" id="m4-ef3" style="left:1030px; top:300px;">EF3</div>
+  <div class="m4-ef" id="m4-ef4" style="left:1237px; top:419px;">EF4</div>
+  <div class="m4-ef" id="m4-ef5" style="left:1356px; top:626px;">EF5</div>
+  <div class="m4-lab" id="m4-lgauge" style="left:880px; top:796px; width:160px; text-align:center;">Wind Speed</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-mechanism-a4-card", { x: 0 }, { x: 40, duration: 52.761, ease: "none" }, 0);
+  const DUR = 52.761;
+  const dash = (id) => { const p = document.getElementById(id); const L = Math.ceil(p.getTotalLength()) + 1; p.style.strokeDasharray = L; return L; };
+  const RL = dash("m4-ruler"), A1 = dash("m4-arc1"), A2 = dash("m4-arc2"), CK = dash("m4-chk"), XL = dash("m4-x");
+  tl.set(["#m4-zone", "#m4-ruler", "#m4-line", "#m4-bands", "#m4-mk1", "#m4-mk2", "#m4-blk", "#m4-chk", "#m4-ghost", "#m4-x", "#m4-ring",
+          "#m4-dust1", "#m4-dust2", "#m4-wind", "#m4-wt", "#m4-pks", "#m4-gauge", "#m4-lwind", "#m4-lwind2", "#m4-lwt", "#m4-50", "#m4-160",
+          "#m4-h1", "#m4-h1s", "#m4-h2", "#m4-h2a", "#m4-h2b", "#m4-lpk", "#m4-dist", "#m4-bl1", "#m4-bl2", "#m4-bl3", "#m4-h3",
+          "#m4-ef0", "#m4-ef1", "#m4-ef2", "#m4-ef3", "#m4-ef4", "#m4-ef5", "#m4-lgauge"], { autoAlpha: 0 }, 0);
+  tl.set("#m4-ruler", { strokeDashoffset: RL }, 0);
+  tl.set("#m4-arc1", { strokeDashoffset: A1 }, 0);
+  tl.set("#m4-arc2", { strokeDashoffset: A2 }, 0);
+  tl.set("#m4-chk", { strokeDashoffset: CK }, 0);
+  tl.set("#m4-x", { strokeDashoffset: XL }, 0);
+  tl.set("#m4-wind", { scaleX: 0, svgOrigin: "150 814" }, 0);
+  tl.set("#m4-line", { scaleY: 0, svgOrigin: "724 860" }, 0);
+  tl.set("#m4-zone", { scaleX: 0, svgOrigin: "724 690" }, 0);
+  tl.set(["#m4-b1", "#m4-b2", "#m4-b3"], { scaleX: 0 }, 0);
+  tl.set("#m4-tank", { x: 560, y: 860, rotation: 0 }, 0);
+  tl.set("#m4-needle", { rotation: -80, svgOrigin: "960 760" }, 0);
+  tl.set(["#m4-p1", "#m4-p2", "#m4-p3", "#m4-p4", "#m4-p5", "#m4-p6", "#m4-p7", "#m4-p8", "#m4-p9", "#m4-p10", "#m4-p11", "#m4-p12"], { autoAlpha: 0, y: 16 }, 0);
+
+  /* ambient, whole window: glow drift + wind streaks */
+  tl.fromTo("#m4-glow", { x: 0, y: 0 }, { x: 900, y: -120, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#m4-s1", { x: -140 }, { x: 1960, duration: 2.2, ease: "none", repeat: 22 }, 0);
+  tl.fromTo("#m4-s2", { x: -140 }, { x: 1960, duration: 1.8, ease: "none", repeat: 27 }, 0.5);
+  tl.fromTo("#m4-s3", { x: -140 }, { x: 1960, duration: 2.5, ease: "none", repeat: 19 }, 0.2);
+  tl.fromTo("#m4-s4", { x: -140 }, { x: 1960, duration: 2.0, ease: "none", repeat: 24 }, 0.9);
+  tl.fromTo("#m4-s5", { x: -140 }, { x: 1960, duration: 2.3, ease: "none", repeat: 21 }, 0.6);
+
+  /* ===== scene 1: the forces ===== */
+  /* WIND PUSHES @0.00 */
+  tl.fromTo("#m4-tank", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 0);
+  tl.to("#m4-wind", { autoAlpha: 1, scaleX: 0.6, duration: 0.6, ease: "power3.out" }, 0.05);
+  tl.fromTo("#m4-lwind", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 0.36);
+  /* WEIGHT @1.70 PULLS IT DOWN @2.18 */
+  tl.fromTo("#m4-wt", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 1.7);
+  tl.fromTo("#m4-lwt", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 1.8);
+  tl.fromTo("#m4-wt", { scaleY: 1 }, { scaleY: 1.12, svgOrigin: "560 640", duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 2.4);
+  /* the push grows (leaves the ground @4.10) ... PUSH WINS @5.22: the arrow outgrows the weight, the tanker lifts */
+  tl.to("#m4-wind", { scaleX: 0.85, svgOrigin: "150 814", duration: 1.0, ease: "power1.inOut" }, 3.8);
+  tl.to("#m4-wind", { scaleX: 1, scaleY: 1.25, svgOrigin: "150 814", duration: 0.35, ease: "power3.out" }, 5.22);
+  tl.to("#m4-tank", { y: 820, duration: 0.5, ease: "power3.out" }, 5.22);
+  tl.to(["#m4-wt", "#m4-lwt"], { y: -40, duration: 0.5, ease: "power3.out" }, 5.22);
+  tl.fromTo("#m4-tank", { y: 820 }, { y: 812, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 7 }, 5.8);
+  /* FARTHER @6.74 ... HEAVY COMPACT OBJECT @7.34: a flight lands at a mark */
+  tl.to("#m4-arc1", { strokeDashoffset: 0, duration: 0.9, ease: "power1.inOut" }, 6.74);
+  tl.fromTo("#m4-mk1", { autoAlpha: 0, scale: 0, svgOrigin: "880 860" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, 7.6);
+  /* STRONGER THAT PUSH @10.32: a stronger push, a farther mark */
+  tl.to("#m4-lwind", { autoAlpha: 0, duration: 0.2 }, 10.1);
+  tl.fromTo("#m4-lwind2", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 10.32);
+  tl.to("#m4-wind", { scaleY: 1.7, svgOrigin: "150 814", duration: 0.4, ease: "power3.out" }, 10.32);
+  tl.to("#m4-arc2", { strokeDashoffset: 0, duration: 0.9, ease: "power1.inOut" }, 10.32);
+  tl.fromTo("#m4-mk2", { autoAlpha: 0, scale: 0, svgOrigin: "1300 860" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, 11.2);
+  /* hand-off: clear the forces, the tanker settles at the launch point */
+  tl.to(["#m4-wind", "#m4-wt", "#m4-lwind2", "#m4-lwt", "#m4-arc1", "#m4-arc2", "#m4-mk1", "#m4-mk2"], { autoAlpha: 0, duration: 0.4 }, 12.0);
+  tl.to("#m4-tank", { x: 220, y: 860, duration: 0.8, ease: "power3.inOut" }, 12.2);
+
+  /* ===== scene 2: the 50 m line ===== */
+  /* LINE AT 50 METERS @13.36, 50 @13.74, 160 FEET @15.42 */
+  tl.set("#m4-ruler", { autoAlpha: 1 }, 13.36);
+  tl.to("#m4-ruler", { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }, 13.36);
+  tl.to("#m4-line", { autoAlpha: 1, scaleY: 1, duration: 0.5, ease: "power3.out" }, 13.6);
+  tl.fromTo("#m4-50", { autoAlpha: 0, y: 20, scale: 1.1 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.35, ease: "power4.out" }, 13.74);
+  tl.fromTo("#m4-160", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 15.42);
+  tl.fromTo("#m4-line", { opacity: 1 }, { opacity: 0.55, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 3 }, 17.16);
+  /* FARTHER THAN THAT @21.22, EF5 LEVEL @23.38 */
+  tl.to("#m4-zone", { autoAlpha: 1, scaleX: 1, duration: 0.8, ease: "power2.out" }, 21.22);
+  tl.fromTo("#m4-h1", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 23.38);
+  /* FLEW THROUGH THE AIR @26.64: a compact object flies past the line */
+  tl.set(["#m4-blk"], { autoAlpha: 1, x: 220, y: 860 }, 26.64);
+  tl.to("#m4-clipfr", { attr: { width: 960 }, duration: 0.9, ease: "none" }, 26.64);
+  tl.to("#m4-blk", { x: 1180, duration: 0.9, ease: "none" }, 26.64);
+  tl.to("#m4-blk", { y: 520, duration: 0.45, ease: "power1.out" }, 26.64);
+  tl.to("#m4-blk", { y: 860, duration: 0.45, ease: "power1.in" }, 27.09);
+  tl.set("#m4-chk", { autoAlpha: 1 }, 27.6);
+  tl.to("#m4-chk", { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 27.6);
+  /* ROLLED OR SLID @28.56: the ghost rolls along the ground and is crossed out; FLIGHT ONLY */
+  tl.set("#m4-ghost", { autoAlpha: 1, x: 220, y: 860 }, 28.4);
+  tl.to("#m4-ghost", { x: 1000, rotation: 540, transformOrigin: "50% 50%", duration: 0.75, ease: "power2.out" }, 28.56);
+  tl.set("#m4-x", { autoAlpha: 1 }, 29.16);
+  tl.to("#m4-x", { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 29.16);
+  tl.fromTo("#m4-h1s", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 29.16);
+
+  /* ===== scene 3: the tanker ===== */
+  tl.to(["#m4-h1", "#m4-h1s", "#m4-blk", "#m4-trf", "#m4-chk", "#m4-ghost", "#m4-x"], { autoAlpha: 0, duration: 0.4 }, 30.4);
+  tl.to("#m4-zone", { opacity: 0.5, duration: 0.5 }, 30.4);
+  /* TANKER @31.56, 70,000 POUNDS @32.48, EMPTY @34.40 */
+  tl.fromTo("#m4-tank", { scale: 1 }, { scale: 1.1, transformOrigin: "50% 100%", duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 31.56);
+  tl.set("#m4-h2", { autoAlpha: 1 }, 32.4);
+  tl.fromTo("#m4-h2a", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power4.out" }, 32.48);
+  tl.fromTo("#m4-h2b", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 34.4);
+  /* A DOZEN FULL-SIZE PICKUP TRUCKS @36.48 */
+  tl.set("#m4-pks", { autoAlpha: 1 }, 36.4);
+  tl.to(["#m4-p1", "#m4-p2", "#m4-p3", "#m4-p4", "#m4-p5", "#m4-p6", "#m4-p7", "#m4-p8", "#m4-p9", "#m4-p10", "#m4-p11", "#m4-p12"],
+        { autoAlpha: 1, y: 0, duration: 0.3, ease: "back.out(2)", stagger: 0.06 }, 36.48);
+  tl.fromTo("#m4-lpk", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 37.3);
+
+  /* ===== scene 4: the throw ===== */
+  tl.to(["#m4-h2", "#m4-pks", "#m4-lpk"], { autoAlpha: 0, duration: 0.4 }, 38.9);
+  /* ALMOST 500 FEET @39.50: x linear 220 -> 1720, y up/down halves, trail clip follows x */
+  tl.to("#m4-tank", { x: 1720, duration: 1.1, ease: "none" }, 39.5);
+  tl.to("#m4-tank", { y: 500, duration: 0.55, ease: "power1.out" }, 39.5);
+  tl.to("#m4-tank", { y: 860, duration: 0.55, ease: "power1.in" }, 40.05);
+  tl.to("#m4-tank", { rotation: 360, transformOrigin: "50% 50%", duration: 1.1, ease: "none" }, 39.5);
+  tl.to("#m4-cliptr", { attr: { width: 1500 }, duration: 1.1, ease: "none" }, 39.5);
+  /* the 160 ft line flashes as the tanker passes it (x 724 at 39.87) */
+  tl.fromTo("#m4-line", { opacity: 1, scaleX: 1 }, { opacity: 1, scaleX: 2.2, svgOrigin: "724 690", duration: 0.12, ease: "power2.out", yoyo: true, repeat: 3 }, 39.87);
+  /* landing @40.60 */
+  tl.fromTo("#m4-ring", { autoAlpha: 1, scale: 0.3, svgOrigin: "1720 860" }, { autoAlpha: 0, scale: 4, duration: 0.9, ease: "power2.out" }, 40.6);
+  tl.fromTo(["#m4-dust1", "#m4-dust2"], { autoAlpha: 0.9, scale: 0.3, transformOrigin: "50% 50%" }, { autoAlpha: 0, scale: 2.4, duration: 1.1, ease: "power2.out", stagger: 0.06 }, 40.6);
+  tl.fromTo("#m4-tank", { scaleY: 1 }, { scaleY: 0.86, transformOrigin: "50% 100%", duration: 0.09, ease: "power2.out", yoyo: true, repeat: 1 }, 40.6);
+  tl.fromTo("#m4-dist", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power4.out" }, 40.62);
+  /* NEARLY THREE TIMES THE LINE @43.78: three 160 ft bands end to end */
+  tl.set("#m4-bands", { autoAlpha: 1 }, 43.6);
+  tl.to("#m4-b1", { scaleX: 1, svgOrigin: "220 999", duration: 0.35, ease: "power3.out" }, 43.78);
+  tl.to("#m4-b2", { scaleX: 1, svgOrigin: "724 999", duration: 0.35, ease: "power3.out" }, 44.04);
+  tl.to("#m4-b3", { scaleX: 1, svgOrigin: "1228 999", duration: 0.35, ease: "power3.out" }, 44.3);
+  tl.fromTo("#m4-bl1", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, 43.95);
+  tl.fromTo("#m4-bl2", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, 44.21);
+  tl.fromTo("#m4-bl3", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, 44.47);
+  tl.fromTo("#m4-h3", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 43.78);
+
+  /* ===== scene 5: the needle ===== */
+  /* SO THE SCALE FINALLY HAD SOMETHING TO MEASURE @45.97 */
+  tl.to(["#m4-world", "#m4-50", "#m4-160", "#m4-dist", "#m4-bl1", "#m4-bl2", "#m4-bl3"], { opacity: 0.18, duration: 0.6 }, 45.97);
+  tl.to("#m4-h3", { autoAlpha: 0, duration: 0.4 }, 45.97);
+  tl.fromTo("#m4-gauge", { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 46.2);
+  tl.fromTo(["#m4-ef0", "#m4-ef1", "#m4-ef2", "#m4-ef3", "#m4-ef4", "#m4-ef5"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", stagger: 0.08 }, 46.5);
+  tl.fromTo("#m4-lgauge", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 46.8);
+  /* MEASURE @47.91 ... HOUSES AND TREES @48.57: the needle rises to EF3 */
+  tl.to("#m4-needle", { rotation: 14, svgOrigin: "960 760", duration: 1.2, ease: "power2.out" }, 47.91);
+  tl.to("#m4-ef3", { color: "#f2f5f8", scale: 1.2, duration: 0.3, ease: "power2.out" }, 49.2);
+  tl.fromTo("#m4-needle", { rotation: 14 }, { rotation: 18, svgOrigin: "960 760", duration: 0.35, ease: "sine.inOut", yoyo: true, repeat: 1 }, 49.5);
+  /* WELL PAST @50.73 THE F3: the needle swings into the EF5 band */
+  tl.to("#m4-needle", { rotation: 74, svgOrigin: "960 760", duration: 0.6, ease: "back.out(1.6)" }, 50.73);
+  tl.to("#m4-ef3", { scale: 1, color: "#93a3b2", duration: 0.3 }, 50.8);
+  tl.to("#m4-ef5", { color: "#e74c3c", scale: 1.3, duration: 0.3, ease: "back.out(2)" }, 51.1);
+
+  /* exit (spec 1133.5 -> 52.17) */
+  tl.to(["#m4-gauge", "#m4-ef0", "#m4-ef1", "#m4-ef2", "#m4-ef3", "#m4-ef4", "#m4-ef5", "#m4-lgauge", "#m4-world", "#m4-50", "#m4-160", "#m4-dist",
+         "#m4-bl1", "#m4-bl2", "#m4-bl3"], { y: -40, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 52.17);
   window.__timelines["g-mechanism-a4"] = tl;
 })();
 </script>
