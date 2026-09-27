@@ -2,28 +2,248 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-master-map-a3b"
-     (host 799.522 -> 919.985, 120.463 s, track 2). The MG builder replaces this whole file. -->
+<!-- g-master-map-a3b (B1): the path, place by place: rail line, Maple River, Highway 46, Cass County farmsteads, the lift
+     point, then El Reno's 2.6 mi width at the same scale. Host 799.522 -> 919.985 (120.463 s, track 2); stills cover
+     0.08-6.08 and 40.88-52.08 local; g-clock-a3b sits top-right 96.26-101.68 local.
+     Basemap: research/b1-maps. Rail crossing = exact OSM rail x NWS centreline intersection. Tanker throw 475.7 ft (145 m,
+     Western University) drawn to scale at the crossing; its direction is not published, so the arc only shows distance.
+     El Reno 2013: 2.6 mi max width (fact_check.md), drawn as a band of that width, labelled as a same-scale comparison. -->
 <template>
 <style>
-  .ph-master-map-a3b { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .ph-master-map-a3b-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-master-map-a3b-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
-  .ph-master-map-a3b-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  #g-master-map-a3b-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 38% 50%, #0b1016 0%, #030507 78%); }
+  .mm3b-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .mm3b-lab { font-family:Arial, sans-serif; font-weight:700; fill:#dfe7ee; paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .mm3b-scan { position:absolute; left:0; top:0; width:1180px; height:2px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
+  .mm3b-rail { position:absolute; right:0; top:0; bottom:0; width:820px; pointer-events:none;
+    background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); }
+  .mm3b-eb { position:absolute; left:1270px; top:300px; font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
+  .mm3b-cnt { position:absolute; left:1270px; top:340px; font-family:'Courier New', monospace; font-weight:700; font-size:84px; line-height:1; color:#e74c3c; }
+  .mm3b-clab { position:absolute; left:1270px; top:436px; font-size:20px; font-weight:700; letter-spacing:6px; color:#c8d3e0; text-transform:uppercase; white-space:nowrap; }
+  .mm3b-row { position:absolute; left:1270px; width:554px; }
+  .mm3b-val { font-size:30px; font-weight:700; letter-spacing:1px; color:#dfe7ee; white-space:nowrap; }
+  .mm3b-rlab { margin-top:6px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
+  .mm3b-hl { position:absolute; left:1270px; width:554px; font-family:'Arial Black', Arial, sans-serif; font-size:52px; line-height:1.1; color:#f2f5f8; white-space:nowrap; }
+  .mm3b-sub { position:absolute; left:1270px; width:554px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:30px; line-height:1.25; color:#d8a13a; }
 </style>
-<div class="ph-master-map-a3b" data-composition-id="g-master-map-a3b" data-width="1920" data-height="1080" data-duration="120.463">
-  <div class="ph-master-map-a3b-card" id="ph-master-map-a3b-card">
-    <div class="ph-master-map-a3b-t" id="ph-master-map-a3b-t">g-master-map-a3b</div>
-    <div class="ph-master-map-a3b-s" id="ph-master-map-a3b-s">Placeholder · To Build</div>
-  </div>
+<div id="g-master-map-a3b-root" data-composition-id="g-master-map-a3b" data-width="1920" data-height="1080" data-duration="120.463">
+  <svg class="mm3b-svg" viewBox="0 0 1920 1080">
+    <g id="g-master-map-a3b-cam"><g id="g-master-map-a3b-drift">
+      <!--BASEMAP:g-master-map-a3b--><!--/BASEMAP-->
+      <path id="g-master-map-a3b-cr38" d="M88.4,-2 L88.4,-690" fill="none" stroke="#e8c56a" stroke-width="3" stroke-dasharray="689" stroke-dashoffset="689" vector-effect="non-scaling-stroke"/>
+      <path id="g-master-map-a3b-elreno" d="M-357,494.5 L957,494.5 A105.5,105.5 0 0 1 957,705.5 L-357,705.5 A105.5,105.5 0 0 1 -357,494.5 Z" fill="#7fb2e5" fill-opacity="0.10" stroke="#7fb2e5" stroke-width="2.5" stroke-dasharray="12 8" vector-effect="non-scaling-stroke"/>
+      <path id="g-master-map-a3b-ewbar" d="M300,494.5 L300,705.5 M288,494.5 L312,494.5 M288,705.5 L312,705.5" fill="none" stroke="#f2f5f8" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
+      <path id="g-master-map-a3b-nwbar" d="M155.1,125.9 L84.5,97.4 M151.4,134.9 L158.8,116.9 M80.8,106.4 L88.2,88.4" fill="none" stroke="#f2f5f8" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
+      <circle id="g-master-map-a3b-railring" cx="62.9" cy="217.2" r="8" fill="none" stroke="#f5d98b" stroke-width="3" vector-effect="non-scaling-stroke"/>
+      <g id="g-master-map-a3b-tank">
+        <rect id="g-master-map-a3b-tanker" x="61.4" y="216.6" width="3.0" height="1.2" rx="0.6" fill="#f5d98b"/>
+        <path id="g-master-map-a3b-arc" d="M62.9,217.2 Q64.2,212.2 68.0,212.6" fill="none" stroke="#f5d98b" stroke-width="2.5" stroke-dasharray="4 5" vector-effect="non-scaling-stroke"/>
+        <circle id="g-master-map-a3b-land" cx="68.0" cy="212.6" r="0.55" fill="#f5d98b"/>
+        <text id="g-master-map-a3b-t-476" class="mm3b-lab" x="68.9" y="211.6" font-size="3.3">About 476 ft</text>
+      </g>
+      <g id="g-master-map-a3b-towers" fill="none" stroke="#dfe7ee" stroke-width="2" stroke-linejoin="round" vector-effect="non-scaling-stroke">
+        <path id="g-master-map-a3b-tw0" d="M146,-33 L150,-49 L154,-33 M147,-38 L153,-38 M145,-46 L155,-46"/>
+        <path id="g-master-map-a3b-tw1" d="M159,-33 L163,-49 L167,-33 M160,-38 L166,-38 M158,-46 L168,-46"/>
+        <path id="g-master-map-a3b-tw2" d="M172,-33 L176,-49 L180,-33 M173,-38 L179,-38 M171,-46 L181,-46"/>
+        <path id="g-master-map-a3b-tw3" d="M185,-33 L189,-49 L193,-33 M186,-38 L192,-38 M184,-46 L194,-46"/>
+      </g>
+      <circle id="g-master-map-a3b-homering" cx="180" cy="2.5" r="6" fill="none" stroke="#e8c56a" stroke-width="3" vector-effect="non-scaling-stroke"/>
+      <circle id="g-master-map-a3b-home" cx="180" cy="2.5" r="5" fill="#e8c56a"/>
+      <g id="g-master-map-a3b-farms" fill="#e8c56a">
+        <circle id="g-master-map-a3b-f0" cx="175" cy="-158" r="6"/><circle id="g-master-map-a3b-f1" cx="153" cy="-250" r="6"/>
+        <circle id="g-master-map-a3b-f2" cx="88.4" cy="-372" r="6"/><circle id="g-master-map-a3b-f3" cx="104" cy="-352" r="6"/>
+      </g>
+      <circle id="g-master-map-a3b-liftring" cx="-17.5" cy="-319.3" r="6" fill="none" stroke="#e74c3c" stroke-width="3" vector-effect="non-scaling-stroke"/>
+      <circle id="g-master-map-a3b-lift" cx="-17.5" cy="-319.3" r="7" fill="#e74c3c"/>
+      <path id="g-master-map-a3b-alicel" d="M-17.5,-319.3 L73.3,-738.8" fill="none" stroke="#93a3b2" stroke-width="2" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"/>
+      <text id="g-master-map-a3b-t-rail" class="mm3b-lab" x="74" y="236" font-size="10">Rail Line</text>
+      <text id="g-master-map-a3b-t-river" class="mm3b-lab" x="166" y="58" font-size="11" fill="#7fb2e5">Maple River</text>
+      <text id="g-master-map-a3b-t-hwy" class="mm3b-lab" x="196" y="-4" font-size="11">Highway 46</text>
+      <text id="g-master-map-a3b-t-home" class="mm3b-lab" x="196" y="16" font-size="10" fill="#e8c56a">Pfaff-Dehn Home</text>
+      <text id="g-master-map-a3b-t-cass" class="mm3b-lab" x="-120" y="-14" font-size="16" fill="#7fb2e5">Cass County</text>
+      <text id="g-master-map-a3b-t-cr38" class="mm3b-lab" x="-6" y="-470" font-size="16" fill="#e8c56a">County Rd 38</text>
+      <text id="g-master-map-a3b-t-alice" class="mm3b-lab" x="92" y="-744" font-size="26">Alice</text>
+      <text id="g-master-map-a3b-t-lift" class="mm3b-lab" x="-40" y="-300" text-anchor="end" font-size="26">5 mi SW of Alice</text>
+      <text id="g-master-map-a3b-t-elreno" class="mm3b-lab" x="-330" y="480" font-size="40" fill="#7fb2e5">El Reno, 2013 · Same Scale</text>
+      <text id="g-master-map-a3b-t-e26" class="mm3b-lab" x="325" y="612" font-size="40">2.6 Mi</text>
+      <text id="g-master-map-a3b-t-n105" class="mm3b-lab" x="170" y="132" font-size="40">1.05 Mi</text>
+    </g></g>
+  </svg>
+  <div class="mm3b-scan" id="g-master-map-a3b-scan"></div>
+  <div class="mm3b-rail" id="g-master-map-a3b-railbg"></div>
+  <div class="mm3b-eb" id="g-master-map-a3b-eb1">Rail Line · South of Enderlin</div>
+  <div class="mm3b-cnt" id="g-master-map-a3b-cnt"><span id="g-master-map-a3b-cntv">1</span></div>
+  <div class="mm3b-clab" id="g-master-map-a3b-clab">Cars Off the Rails</div>
+  <div class="mm3b-row" id="g-master-map-a3b-r1" style="top:500px"><div class="mm3b-val">19 Grain Cars</div><div class="mm3b-rlab">Loaded</div></div>
+  <div class="mm3b-row" id="g-master-map-a3b-r2" style="top:590px"><div class="mm3b-val">14 Tankers</div><div class="mm3b-rlab">Empty</div></div>
+  <div class="mm3b-row" id="g-master-map-a3b-r3" style="top:680px"><div class="mm3b-val">About 286,000 lb Each</div><div class="mm3b-rlab">Loaded Grain Car</div></div>
+  <div class="mm3b-eb" id="g-master-map-a3b-eb2">Highway 46 · East of Enderlin</div>
+  <div class="mm3b-row" id="g-master-map-a3b-r4" style="top:350px"><div class="mm3b-val">4 Towers Down</div><div class="mm3b-rlab">Transmission Line</div></div>
+  <div class="mm3b-row" id="g-master-map-a3b-r5" style="top:450px"><div class="mm3b-val">About 10 Homes Damaged</div><div class="mm3b-rlab">Near Town</div></div>
+  <div class="mm3b-hl" id="g-master-map-a3b-hl1" style="top:340px">Swept Clean</div>
+  <div class="mm3b-sub" id="g-master-map-a3b-s1" style="top:420px">EF5 Only If Bolted Down</div>
+  <div class="mm3b-row" id="g-master-map-a3b-r6" style="top:330px"><div class="mm3b-val">12 Mi</div><div class="mm3b-rlab">Path Length</div></div>
+  <div class="mm3b-row" id="g-master-map-a3b-r7" style="top:430px"><div class="mm3b-val">1.05 Mi Wide</div><div class="mm3b-rlab">At Its Widest</div></div>
+  <div class="mm3b-hl" id="g-master-map-a3b-hl2" style="top:540px">More Than</div>
+  <div class="mm3b-hl" id="g-master-map-a3b-hl3" style="top:598px">2x as Wide</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
+  const ID = "g-master-map-a3b", P = "#g-master-map-a3b-";
+  /* cues: audio/a3-s11..s19.words.json, episode s minus host start 799.522 */
+  const CUES = {
+    south: 6.12,      /* South of Enderlin @805.64 */
+    rail: 8.20,       /* rail line @807.72 */
+    cars33: 13.30,    /* 33 cars @812.82 */
+    grain19: 15.59,   /* 19 @815.11 */
+    tank14: 18.79,    /* 14 @818.31 */
+    nearly: 23.19,    /* nearly 300,000 pounds @822.71 */
+    strongest: 29.15, /* strongest @828.67 */
+    almost: 31.57,    /* almost 500 feet @831.09 */
+    maple: 43.10,     /* Maple River @842.62 (still covers 40.88-52.08) */
+    east: 59.24,      /* east of Enderlin @858.76 */
+    hwy: 61.02,       /* Highway 46 @860.54 */
+    four: 63.54,      /* four @863.06 */
+    towers: 64.94,    /* towers @864.46 */
+    homes10: 66.48,   /* 10 homes @866.00 */
+    michael: 70.44,   /* Michael and Katherine @869.96 */
+    cass: 73.58,      /* Cass County @873.10 */
+    farmsteads: 75.52,/* farmsteads @875.04 */
+    cr38: 76.44,      /* County Road 38 @875.96 */
+    farmhouses: 80.04,/* farmhouses @879.56 */
+    wiped: 81.12,     /* wiped off @880.64 */
+    swept: 85.04,     /* swept clean @884.56 */
+    bolted: 89.60,    /* bolted down @889.12 */
+    onefarm: 94.30,   /* one farm at a time @893.82 */
+    alice: 99.28,     /* 5 miles southwest of Alice @898.80 */
+    twelve: 103.02,   /* 12 miles @902.54 */
+    w105: 105.54,     /* 1.05 miles @905.06 */
+    elreno: 108.04,   /* El Reno @907.56 */
+    w26: 110.14,      /* 2.6 miles @909.66 */
+    twice: 112.44,    /* twice as wide @911.96 */
+    narrower: 114.50, /* narrower @914.02 */
+    railagain: 118.41 /* rail line @917.93 */
+  };
+  const DUR = 120.463;
+  const EXIT = 119.878; /* spec exit 919.4 */
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-master-map-a3b-card", { x: 0 }, { x: 40, duration: 120.463, ease: "none" }, 0);
-  window.__timelines["g-master-map-a3b"] = tl;
+  const cam = (wx, wy, s, fx = 560) => ({ attr: { transform: "translate(" + (fx - wx * s).toFixed(2) + "," + (540 - wy * s).toFixed(2) + ") scale(" + s + ")" } });
+
+  tl.set(P + "cam", cam(40, -20, 1.0), 0);
+  tl.set([P + "track", P + "swmp"], { strokeDashoffset: 0 }, 0);
+  tl.set([P + "elreno", P + "ewbar", P + "nwbar", P + "railring", P + "tank", P + "towers", P + "homering", P + "home", P + "farms", P + "liftring", P + "lift", P + "alicel"], { autoAlpha: 0 }, 0);
+  tl.set([P + "t-rail", P + "t-river", P + "t-hwy", P + "t-home", P + "t-cass", P + "t-cr38", P + "t-alice", P + "t-lift", P + "t-elreno", P + "t-e26", P + "t-n105"], { autoAlpha: 0 }, 0);
+  tl.set([P + "eb1", P + "cnt", P + "clab", P + "r1", P + "r2", P + "r3", P + "eb2", P + "r4", P + "r5", P + "hl1", P + "s1", P + "r6", P + "r7", P + "hl2", P + "hl3"], { autoAlpha: 0 }, 0);
+
+  /* ambient, whole window */
+  tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: 12.1, ease: "none", repeat: 9, yoyo: true }, 0);
+  tl.fromTo(P + "drift", { x: 0, y: 0 }, { x: -18, y: 12, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "swath", { attr: { "fill-opacity": 0.36 } }, { attr: { "fill-opacity": 0.58 }, duration: 1.5, ease: "sine.inOut", repeat: 79, yoyo: true }, 0);
+
+  /* ---- A: the rail line south of Enderlin ---- */
+  tl.to(P + "cam", Object.assign(cam(62.9, 217.2, 2.2), { duration: 2.0, ease: "power2.inOut" }), 5.8);
+  tl.to(P + "cam", Object.assign(cam(62.9, 217.2, 2.45), { duration: 21.2, ease: "none" }), 7.8);
+  tl.fromTo(P + "l-rail", { opacity: 1 }, { opacity: 0.35, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 7 }, CUES.rail);
+  tl.fromTo(P + "railring", { autoAlpha: 0.95, attr: { r: 8 } }, { autoAlpha: 0, attr: { r: 44 }, duration: 1.2, ease: "power2.out", repeat: 16, repeatDelay: 0.2 }, CUES.rail);
+  tl.fromTo(P + "t-rail", { autoAlpha: 0, x: -4 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.rail);
+  tl.fromTo(P + "eb1", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.rail);
+  tl.fromTo(P + "cnt", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.cars33);
+  const N = { v: 1 }, nv = document.querySelector(P + "cntv");
+  tl.fromTo(N, { v: 1 }, { v: 33, duration: 1.3, ease: "power3.out", onUpdate: () => { if (nv) nv.textContent = Math.round(N.v); } }, CUES.cars33);
+  tl.fromTo(P + "clab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.cars33 + 0.7);
+  tl.fromTo(P + "r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.grain19);
+  tl.fromTo(P + "r2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.tank14);
+  tl.fromTo(P + "r3", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.nearly);
+
+  /* strongest: dive to the crossing, the tanker's throw drawn to scale */
+  tl.to(P + "t-rail", { autoAlpha: 0, duration: 0.3 }, 28.9);
+  tl.to(P + "cam", Object.assign(cam(64.5, 215.5, 9.0), { duration: 2.2, ease: "power2.inOut" }), CUES.strongest);
+  tl.set(P + "tank", { autoAlpha: 1 }, 31.2);
+  tl.fromTo(P + "tanker", { attr: { x: 61.4, y: 216.6 } }, { attr: { x: 66.5, y: 212.0 }, duration: 0.9, ease: "power2.out" }, CUES.almost);
+  tl.fromTo(P + "arc", { strokeDashoffset: 60 }, { strokeDashoffset: 0, duration: 0.9, ease: "power2.out" }, CUES.almost);
+  tl.fromTo(P + "land", { scale: 0, svgOrigin: "68 212.6" }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, CUES.almost + 0.8);
+  tl.fromTo(P + "t-476", { autoAlpha: 0, x: -1 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.almost + 0.3);
+  tl.to(P + "cam", Object.assign(cam(64.5, 215.5, 9.6), { duration: 2.4, ease: "none" }), 31.4);
+  tl.to([P + "eb1", P + "cnt", P + "clab", P + "r1", P + "r2", P + "r3"], { autoAlpha: 0, y: -20, duration: 0.5, stagger: 0.06, ease: "power2.in" }, 33.6);
+  tl.to(P + "tank", { autoAlpha: 0, duration: 0.4 }, 34.0);
+  tl.to(P + "cam", Object.assign(cam(100, 100, 1.6), { duration: 3.4, ease: "power2.inOut" }), 34.2);
+
+  /* ---- C: the Maple River ---- */
+  tl.to(P + "cam", Object.assign(cam(151.2, 35.3, 2.0), { duration: 3.0, ease: "power2.inOut" }), 38.0);
+  tl.to(P + "cam", Object.assign(cam(151.2, 35.3, 2.25), { duration: 17.4, ease: "none" }), 41.0);
+  tl.fromTo(P + "l-river", { opacity: 0.55 }, { opacity: 1, duration: 0.9, ease: "sine.inOut", repeat: 17, yoyo: true }, CUES.maple - 0.2);
+  tl.fromTo(P + "t-river", { autoAlpha: 0, x: -4 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.maple);
+  tl.to(P + "t-river", { autoAlpha: 0, duration: 0.4 }, 58.3);
+
+  /* ---- D: Highway 46 ---- */
+  tl.to(P + "cam", Object.assign(cam(176, 0, 2.1), { duration: 2.0, ease: "power2.inOut" }), 58.6);
+  tl.to(P + "cam", Object.assign(cam(176, 0, 2.3), { duration: 12.4, ease: "none" }), 60.6);
+  tl.fromTo(P + "eb2", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.east);
+  tl.fromTo(P + "l-hwy", { opacity: 0.5 }, { opacity: 1, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, CUES.hwy);
+  tl.fromTo(P + "t-hwy", { autoAlpha: 0, x: -4 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.hwy);
+  tl.fromTo(P + "towers", { autoAlpha: 0, y: 4 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.four);
+  tl.fromTo(P + "r4", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.four);
+  tl.fromTo(P + "tw0", { rotation: 0, svgOrigin: "150 -33" }, { rotation: 80, duration: 0.5, ease: "power2.in" }, CUES.towers);
+  tl.fromTo(P + "tw1", { rotation: 0, svgOrigin: "163 -33" }, { rotation: 80, duration: 0.5, ease: "power2.in" }, 65.14);
+  tl.fromTo(P + "tw2", { rotation: 0, svgOrigin: "176 -33" }, { rotation: 80, duration: 0.5, ease: "power2.in" }, 65.34);
+  tl.fromTo(P + "tw3", { rotation: 0, svgOrigin: "189 -33" }, { rotation: 80, duration: 0.5, ease: "power2.in" }, 65.54);
+  tl.fromTo(P + "r5", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.homes10);
+  tl.fromTo(P + "home", { autoAlpha: 0, scale: 0, svgOrigin: "180 2.5" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.5)" }, CUES.michael);
+  tl.fromTo(P + "homering", { autoAlpha: 0.9, attr: { r: 6 } }, { autoAlpha: 0, attr: { r: 26 }, duration: 1.1, ease: "power2.out", repeat: 1, repeatDelay: 0.2 }, CUES.michael);
+  tl.fromTo(P + "t-home", { autoAlpha: 0, x: -4 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.michael + 0.2);
+  tl.to([P + "eb2", P + "r4", P + "r5"], { autoAlpha: 0, y: -20, duration: 0.45, stagger: 0.06, ease: "power2.in" }, 72.3);
+  tl.to([P + "t-hwy", P + "t-home", P + "towers"], { autoAlpha: 0, duration: 0.4 }, 72.4);
+
+  /* ---- E: Cass County farmsteads ---- */
+  tl.to(P + "cam", Object.assign(cam(120, -200, 1.45), { duration: 2.0, ease: "power2.inOut" }), 72.6);
+  tl.to(P + "cam", Object.assign(cam(120, -210, 1.58), { duration: 21.2, ease: "none" }), 74.6);
+  tl.fromTo(P + "l-county", { opacity: 0.5 }, { opacity: 1, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, CUES.cass);
+  tl.fromTo(P + "t-cass", { autoAlpha: 0, y: -6 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.cass);
+  tl.fromTo(P + "farms", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, CUES.farmsteads);
+  tl.fromTo(P + "cr38", { strokeDashoffset: 689 }, { strokeDashoffset: 0, duration: 1.0, ease: "power2.out" }, CUES.cr38);
+  tl.fromTo(P + "t-cr38", { autoAlpha: 0, x: -6 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.cr38 + 0.3);
+  tl.fromTo(P + "farms", { scale: 1, transformOrigin: "50% 50%" }, { scale: 1.12, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, CUES.farmhouses);
+  tl.fromTo([P + "f0", P + "f1", P + "f2", P + "f3"], { attr: { r: 6 } }, { attr: { r: 11 }, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1, stagger: 0.1 }, CUES.wiped);
+  tl.fromTo(P + "hl1", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.swept);
+  tl.fromTo(P + "s1", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUES.bolted);
+  tl.set([P + "f0", P + "f1", P + "f2", P + "f3"], { attr: { fill: "#4a5560" } }, 93.9);
+  tl.to(P + "f0", { attr: { fill: "#f5d98b", r: 9 }, duration: 0.3, ease: "power2.out" }, CUES.onefarm);
+  tl.to(P + "f1", { attr: { fill: "#f5d98b", r: 9 }, duration: 0.3, ease: "power2.out" }, 94.58);
+  tl.to(P + "f3", { attr: { fill: "#f5d98b", r: 9 }, duration: 0.3, ease: "power2.out" }, 94.98);
+  tl.to(P + "f2", { attr: { fill: "#f5d98b", r: 9 }, duration: 0.3, ease: "power2.out" }, 95.34);
+  tl.to([P + "hl1", P + "s1"], { autoAlpha: 0, y: -20, duration: 0.45, stagger: 0.06, ease: "power2.in" }, 95.7);
+  tl.to([P + "t-cass", P + "t-cr38", P + "cr38", P + "farms"], { autoAlpha: 0, duration: 0.5 }, 96.0);
+
+  /* ---- F: the lift point, then El Reno at the same scale ---- */
+  tl.to(P + "cam", Object.assign(cam(30, -530, 0.9), { duration: 2.6, ease: "power2.inOut" }), 96.0);
+  tl.to(P + "cam", Object.assign(cam(30, -520, 0.96), { duration: 8.2, ease: "none" }), 98.6);
+  tl.fromTo(P + "lift", { autoAlpha: 0, scale: 0, svgOrigin: "-17.5 -319.3" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.5)" }, 98.74 /* lifted @898.26 */);
+  tl.fromTo(P + "liftring", { autoAlpha: 0.9, attr: { r: 6 } }, { autoAlpha: 0, attr: { r: 40 }, duration: 1.1, ease: "power2.out", repeat: 4, repeatDelay: 0.2 }, 98.74);
+  tl.fromTo(P + "alicel", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, CUES.alice);
+  tl.fromTo(P + "t-alice", { autoAlpha: 0, y: -6 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.alice + 0.9);
+  tl.fromTo(P + "t-lift", { autoAlpha: 0, x: 8 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.alice);
+  tl.fromTo(P + "r6", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.twelve);
+  tl.fromTo(P + "r7", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.w105);
+  tl.to([P + "t-alice", P + "t-lift", P + "alicel"], { autoAlpha: 0, duration: 0.4 }, 106.4);
+  tl.to(P + "cam", Object.assign(cam(140, 60, 0.55), { duration: 1.8, ease: "power2.inOut" }), 106.6);
+  tl.fromTo(P + "nwbar", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 107.4);
+  tl.fromTo(P + "t-n105", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 107.4);
+  tl.fromTo(P + "elreno", { autoAlpha: 0, scaleX: 0.2, svgOrigin: "300 600" }, { autoAlpha: 1, scaleX: 1, duration: 1.0, ease: "power3.out" }, CUES.elreno);
+  tl.fromTo(P + "t-elreno", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.elreno + 0.2);
+  tl.fromTo(P + "ewbar", { autoAlpha: 0, scaleY: 0, svgOrigin: "300 600" }, { autoAlpha: 1, scaleY: 1, duration: 0.5, ease: "power3.out" }, CUES.w26);
+  tl.fromTo(P + "t-e26", { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.w26 + 0.1);
+  tl.fromTo(P + "hl2", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 111.62 /* more than @911.14 */);
+  tl.fromTo(P + "hl3", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.twice);
+  tl.to(P + "cam", Object.assign(cam(130, 60, 0.6), { duration: 11.8, ease: "none" }), 108.4);
+
+  /* ---- G: the narrower tornado, the rail line again ---- */
+  tl.to(P + "elreno", { attr: { "fill-opacity": 0.03 }, duration: 0.8, ease: "power2.out" }, CUES.narrower);
+  tl.fromTo(P + "l-rail", { opacity: 1 }, { opacity: 0.3, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 3 }, CUES.railagain);
+  tl.fromTo(P + "railring", { autoAlpha: 0.95, attr: { r: 8 } }, { autoAlpha: 0, attr: { r: 60 }, duration: 1.0, ease: "power2.out", repeat: 1 }, CUES.railagain);
+  tl.to([P + "r6", P + "r7", P + "hl2", P + "hl3"], { x: 980, autoAlpha: 0, duration: 0.58, ease: "power3.in" }, EXIT);
+  window.__timelines[ID] = tl;
 })();
 </script>
 </template>
