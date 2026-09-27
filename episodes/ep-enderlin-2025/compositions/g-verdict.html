@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-verdict: fixed HUD over g-tornado-verdict (0 -> 5.841). Owner-approved hook cut (demo-hook-h2, eval3-h2,
+     27 Sep 26), copied verbatim and RETIMED to ep-enderlin-2025 audio/h1-s1 (same line, 5.691 s wav, voice onset 0.29 s
+     by silencedetect, lead silence NOT trimmed). EF3 is the "before", "changed" strikes it and a red EF5 slams on the
+     spoken "E F five" (1.72). Then "four months" draws the arrow, and "called it E F three" thumps the struck EF3.
+     Cues: h1-s1 mounts at 0, so local = word time (words.json: changed 0.94, EF5 1.68, four 3.10 [silence ends 3.03],
+     months 3.28, called 4.04, EF3 4.42, voice ends 5.53). Every cue moved by the same word delta vs the demo. -->
+<template>
+<style>
+  .vd-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; }
+  .vd-flash { position:absolute; inset:0; mix-blend-mode:screen; pointer-events:none;
+    background: radial-gradient(ellipse at 24% 8%, rgba(210,226,255,0.95), rgba(127,178,229,0.35) 42%, rgba(20,30,60,0) 78%); }
+  .vd-flash2 { background: radial-gradient(ellipse at 78% 6%, rgba(210,226,255,0.9), rgba(127,178,229,0.3) 40%, rgba(20,30,60,0) 76%); }
+  .vd-glow { position:absolute; left:-200px; top:-260px; width:1100px; height:620px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(127,178,229,0.16), rgba(127,178,229,0) 70%); mix-blend-mode:screen; }
+  .vd-bolt { position:absolute; left:0; top:0; width:1920px; height:1080px; pointer-events:none; }
+  .vd-scrim { position:absolute; width:760px; height:560px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(4,7,10,0.72) 0%, rgba(4,7,10,0.45) 45%, rgba(4,7,10,0) 72%); }
+  .vd-card { position:absolute; left:96px; top:64px; padding:22px 36px 24px 32px; border-radius:28px;
+    background: rgba(10,16,24,0.55); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 20px 60px rgba(0,0,0,0.45); }
+  .vd-title { font-family:'Arial Black', Arial, sans-serif; font-size:52px; line-height:60px; color:#f2f5f8; white-space:nowrap; }
+  .vd-when { font-family: Georgia, serif; font-style:italic; font-size:26px; line-height:34px; color:#d8a13a; margin-top:6px; white-space:nowrap; }
+  .vd-group { position:absolute; text-align:center; }
+  .vd-stamp { display:inline-block; padding:6px 34px 0; border:6px solid; border-radius:14px;
+    font-family:'AbrilFig', Georgia, serif; line-height:1; letter-spacing:4px; }
+  .vd-ef3 { font-size:140px; color:#dfe7ee; border-color:rgba(223,231,238,0.85); text-shadow:0 6px 30px rgba(0,0,0,0.7); }
+  .vd-ef5 { font-size:200px; color:#d0121f; border-color:#d0121f; text-shadow:0 0 38px rgba(208,18,31,0.55), 0 6px 26px rgba(0,0,0,0.8); }
+  .vd-sub { margin-top:66px; font-weight:700; font-size:30px; line-height:36px; letter-spacing:1px; color:#dfe7ee; text-shadow:0 2px 12px rgba(0,0,0,0.9); }
+  .vd-strike { position:absolute; left:40px; right:40px; top:70px; height:14px; background:#d0121f; border-radius:7px;
+    box-shadow:0 0 18px rgba(208,18,31,0.6); }
+  .vd-arrow { position:absolute; left:0; top:0; width:1920px; height:1080px; pointer-events:none; }
+  .vd-gap { position:absolute; left:770px; top:370px; width:250px; text-align:center; font-weight:700; font-size:22px; line-height:26px;
+    letter-spacing:3px; color:#e8c56a; text-shadow:0 2px 10px rgba(0,0,0,0.95); }
+</style>
+<div class="vd-wrap" data-composition-id="g-verdict" data-width="1920" data-height="1080" data-duration="5.60">
+  <div class="vd-glow" id="vd-glowdrift"></div>
+  <div class="vd-flash" id="vd-flash-a"></div>
+  <div class="vd-flash vd-flash2" id="vd-flash-b"></div>
+  <svg class="vd-bolt" viewBox="0 0 1920 1080">
+    <path id="vd-bolt" d="M1540 0 L1506 96 L1552 120 L1488 238 L1530 256 L1452 400" fill="none" stroke="#e6efff" stroke-width="5" stroke-linejoin="bevel" style="filter:drop-shadow(0 0 14px #7fb2e5)"/>
+  </svg>
+  <div class="vd-scrim" id="vd-scrim3" style="left:200px; top:200px;"></div>
+  <div class="vd-scrim" id="vd-scrim5" style="left:900px; top:180px;"></div>
+  <div class="vd-card" id="vd-card">
+    <div class="vd-title" id="vd-title">Enderlin Tornado</div>
+    <div class="vd-when" id="vd-when">North Dakota &middot; June 20, 2025</div>
+  </div>
+  <!-- EF3, the "before": stamp box 0..158 tall, strike through its middle -->
+  <div class="vd-group" id="vd-g3" style="left:330px; top:390px; width:440px;">
+    <div class="vd-stamp vd-ef3" id="vd-ef3">EF3</div>
+    <div class="vd-sub" id="vd-sub3">About 160 mph</div>
+    <div class="vd-strike" id="vd-strike"></div>
+  </div>
+  <svg class="vd-arrow" viewBox="0 0 1920 1080">
+    <path id="vd-arrowline" d="M790 470 L990 470" fill="none" stroke="#e8c56a" stroke-width="5" stroke-linecap="round"/>
+    <path id="vd-arrowhead" d="M972 452 L998 470 L972 488" fill="none" stroke="#e8c56a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div class="vd-gap" id="vd-gap">4 Months Later</div>
+  <div class="vd-group" id="vd-g5" style="left:1010px; top:360px; width:560px;">
+    <div class="vd-stamp vd-ef5" id="vd-ef5">EF5</div>
+    <div class="vd-sub" id="vd-sub5">Over 210 mph</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#vd-";
+  const bolt = document.getElementById("vd-bolt");
+  const BL = Math.ceil(bolt.getTotalLength()) + 1;
+  const arrow = document.getElementById("vd-arrowline");
+  const AL = Math.ceil(arrow.getTotalLength()) + 1;
+  bolt.style.strokeDasharray = BL; arrow.style.strokeDasharray = AL;
+  tl.set([P+"flash-a", P+"flash-b", P+"bolt", P+"card", P+"title", P+"when", P+"ef3", P+"sub3", P+"strike", P+"gap",
+          P+"arrowline", P+"arrowhead", P+"ef5", P+"sub5", P+"scrim3", P+"scrim5"], { autoAlpha: 0 }, 0);
+  tl.set(P+"strike", { scaleX: 0, rotation: -5, transformOrigin: "left center" }, 0);
+  tl.set(P+"arrowline", { strokeDashoffset: AL }, 0);
+  tl.set(P+"bolt", { strokeDashoffset: BL }, 0);
+  tl.set(P+"g3", { x: 0, y: 0, scale: 1 }, 0);
+  tl.set(P+"g5", { x: 0, y: 0 }, 0);
+  tl.set(P+"card", { x: 0 }, 0);
+
+  /* ambient: sky glow drifts across the whole window so nothing is ever still */
+  tl.fromTo(P+"glowdrift", { x: 0, y: 0 }, { x: 900, y: 60, duration: 5.6, ease: "none" }, 0);
+
+  /* cold open: a flash is the first frame, the wedge is named at once */
+  tl.fromTo(P+"flash-a", { autoAlpha: 0.9 }, { autoAlpha: 0, duration: 0.35, ease: "power2.out" }, 0);
+  tl.to(P+"flash-a", { autoAlpha: 0.55, duration: 0.04 }, 0.42);
+  tl.to(P+"flash-a", { autoAlpha: 0, duration: 0.3 }, 0.46);
+  tl.fromTo(P+"card", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
+  tl.fromTo(P+"title", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.05);
+  tl.fromTo(P+"when", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.25);
+
+  /* THE WEATHER SERVICE @0.06: the old rating is already on the board */
+  tl.to(P+"scrim3", { autoAlpha: 1, duration: 0.4 }, 0.2);
+  tl.fromTo(P+"ef3", { autoAlpha: 0, scale: 1.12, rotation: 0 }, { autoAlpha: 1, scale: 1, rotation: -3, duration: 0.35, ease: "power3.out" }, 0.3);
+
+  /* CHANGED @0.83: the strike goes through EF3 */
+  tl.to(P+"strike", { autoAlpha: 1, scaleX: 1, duration: 0.28, ease: "power3.out" }, 0.83);
+  tl.to(P+"ef3", { opacity: 0.6, duration: 0.4 }, 1.0);
+
+  /* E F FIVE @1.46: the verdict slams, bolt + flash ride the stamp hit */
+  tl.to(P+"scrim5", { autoAlpha: 1, duration: 0.3 }, 1.16);
+  tl.fromTo(P+"ef5", { autoAlpha: 0, scale: 1.45, rotation: -10 }, { autoAlpha: 1, scale: 1, rotation: -4, duration: 0.2, ease: "power4.in" }, 1.26);
+  tl.to(P+"bolt", { autoAlpha: 1, strokeDashoffset: 0, duration: 0.08, ease: "none" }, 1.38);
+  tl.fromTo(P+"flash-b", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.05 }, 1.44);
+  tl.to(P+"flash-b", { autoAlpha: 0, duration: 0.5, ease: "power2.out" }, 1.5);
+  tl.fromTo(P+"g5", { y: 0 }, { y: 9, duration: 0.07, ease: "power1.out", yoyo: true, repeat: 1 }, 1.46);
+  tl.to(P+"bolt", { autoAlpha: 0, duration: 0.4 }, 1.66);
+  /* FIVE @1.93: the red stamp breathes */
+  tl.fromTo(P+"ef5", { scale: 1 }, { scale: 1.05, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 1 }, 1.93);
+  /* the breath after "five" (2.37 - 2.76): what EF5 means */
+  tl.fromTo(P+"sub5", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.3);
+
+  /* FOUR @2.76 MONTHS @2.92: the arrow draws from the old rating to the new */
+  tl.to(P+"arrowline", { autoAlpha: 1, strokeDashoffset: 0, duration: 0.5, ease: "power2.inOut" }, 2.76);
+  tl.fromTo(P+"arrowhead", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.2, ease: "power2.out" }, 3.2);
+  tl.fromTo(P+"gap", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.92);
+  tl.fromTo(P+"g5", { scale: 1 }, { scale: 1.03, duration: 1.6, ease: "sine.inOut" }, 3.3);
+
+  /* CALLED IT @3.70, E F THREE @4.20: the struck stamp thumps once more */
+  tl.to(P+"ef3", { opacity: 1, duration: 0.3 }, 3.9);
+  tl.fromTo(P+"g3", { scale: 1 }, { scale: 1.08, duration: 0.12, ease: "power2.out", yoyo: true, repeat: 1 }, 4.2);
+  tl.fromTo(P+"sub3", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.35);
+
+  /* exit: the verdict lifts on the cut to the June night (voice ends 5.06, host ends 5.60) */
+  tl.to([P+"g3", P+"g5", P+"gap", P+"arrowline", P+"arrowhead"], { y: -40, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 5.05);
+  tl.to(P+"card", { x: -700, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 5.05);
+  tl.to([P+"scrim3", P+"scrim5"], { autoAlpha: 0, duration: 0.5 }, 5.05);
+  window.__timelines["g-verdict"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
