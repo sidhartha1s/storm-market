@@ -79,7 +79,11 @@ Start from: `library/inhouse/moves/` counter + a simple SVG dial. Continuous: se
 | g-clock-a3 | 750.834, 16.786 | a3-s7: 2 minutes past 11 751.27-751.99, 19 minutes 758.23 | "11:02 PM" on 751.27; the readout runs forward at 1 min per ~0.8 s from 758.23 toward "11:21" (stops at 11:21 no later than 767.0; say it is compressed: small label "19 Minutes"); slide out 767.0 |
 | g-clock-a3b | 895.785, 5.415 | a3-s18: 21 minutes past 11 896.23-897.32, lifted 898.26 | enters showing "11:21 PM" 896.23 with a stop tick; sub "Lifted" 898.26; slide out 900.6 |
 
-## 3 · g-radar (B1) · status: to build
+## 3 · g-radar (B1) · status: built (27 Sep 26)
+Radar: self-made Level II re-plots (`research/b1-maps/nexrad_plots.py`, bucket `unidata-nexrad-level2`; the old
+`noaa-nexrad-level2` listing now returns AccessDenied) into `media/nexrad/` (gitignored: copy to main with the media).
+g-radar-a3 = KMVX 04:08 UTC velocity + CC; g-radar = 5 mosaics 02:00-06:00 UTC (KBIS, KMVX, KMBX, KABR) with NCEI Storm
+Events tracks. Open fact: NCEI lists 24 distinct ND tornadoes that night (29 county segments); the voice and counter say 22.
 Weather-data family: the radar beam diagram, the SPC watch and mesoscale discussion, two self-made NEXRAD Level II re-plots,
 and a warning polygon. Radar data: NOAA NEXRAD Level II on AWS open data (`s3://noaa-nexrad-level2/2025/06/21/`, UTC, KMVX
 Grand Forks and KBIS/KABR for the state view); timestamps shown from the data in UTC with a local-time label, never from the
