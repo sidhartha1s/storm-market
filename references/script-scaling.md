@@ -34,7 +34,7 @@ Every episode keeps a LOOP TABLE in its edit_script:
 
 ## The scaling recipe (x → 2x → 3x…)
 
-1. **Never lengthen an act past 6 min.** More runtime = more acts. Runtime arithmetic = narration + hook void + blackouts + the 15.1s CTA + its two 1.0s dips.
+1. **Never lengthen an act past 6 min.** More runtime = more acts. Runtime arithmetic = narration + blackouts + the 15.1s CTA + its two 1.0s dips.
 2. Each added act needs its own **new material**: a vignette + a mechanism/analysis pair (info first, spice second). No new material → don't add the act → the honest runtime is shorter.
 3. Re-run the loop table: every new act plants one, pays one.
 4. Cadences unchanged. A 500x script is just more 3–6 min mini-episodes on the same lattice,

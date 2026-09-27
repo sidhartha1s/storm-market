@@ -72,7 +72,7 @@ to the point. At least give them the ROI." He trimmed Joplin and Tri-State on Yo
 Rules, every script from ep-1974 on:
 1. **Sentence one is the payoff the title promised.** Numbers first ("Seven F5 tornadoes in one afternoon. Three
    hundred and thirty dead."), the specific image second, the question third. No scene-setting before the ROI.
-2. **The hook is 45 to 60 words, 20 to 25 s including the insert.** Anything the viewer does not need to decide
+2. **(Superseded 27 Sep 26: hook is 3–5 s, then a 5–15 s tail.) The hook is 45 to 60 words, 20 to 25 s including the insert.** Anything the viewer does not need to decide
    to stay is cut. Test: delete the first sentence; if the hook still works, the sentence was fluff.
 3. **No roadmap phrases anywhere** ("one more thing before", "here is what that day would become", "in the next
    twenty minutes"). They read as delay. Fold the numbers into a sentence that already carries stakes.

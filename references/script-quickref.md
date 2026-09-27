@@ -28,7 +28,6 @@ PR and say which one won.
 ## Refill the cup — loop discipline (owner 27 Sep 26)
 - When a loop pays off, open the next loop in the same breath. Never let the viewer's cup run empty.
 - Tag every loop: `[loop L1 open]` when planted, `[loop L1 closes]` when paid. Every loop table row needs both.
-- Open a micro-loop every 30–45 s; land a real beat (broadcast/PD clip, audio insert, stat spike) every 45–60 s.
 - One episode loop (hook → final act), one loop per act (paid within 1–2 acts), one `cta-hinge` loop (see CTA
   hinge). Loops close honestly — a dropped loop is the #1 tell of stretched runtime. (`script-scaling.md`)
 
