@@ -52,7 +52,7 @@ The Enderlin tornado was the first E F five in America in twelve years. In twent
 near El Reno, Oklahoma. Radar caught winds far past the E F five line, and it is still an E F three.
 `[loop L1 open]`
 
-*(1.5 s void)*
+*(no void: cut straight into The night. Channel post-mortem 27 Sep 26: black holds before 1:00 cost 20-35 points of retention)*
 
 ## I · The night (0:23)
 **Picture:** master map, the track draws east from a point south of town · popfig "11:02 PM" · g-clock starts.
