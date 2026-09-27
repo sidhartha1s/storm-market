@@ -2,28 +2,65 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-watch"
-     (host 668.258 -> 676.64, 8.382 s, track 2). The MG builder replaces this whole file. -->
+<!-- g-watch (B1): the 3:45 PM severe thunderstorm watch for southwest and south-central North Dakota. Host 668.258 -> 676.64
+     (8.382 s, track 2). Map: Census counties (plotly geojson-counties-fips) projected to the state-view frame shared with
+     g-radar (lat 45.7-49.2, lon -104.3 to -96.3). The box outlines the SW + south-central county block named in the voice;
+     the watch's exact county list is not claimed. -->
 <template>
 <style>
-  .ph-watch { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .ph-watch-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-watch-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
-  .ph-watch-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  #g-watch-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 40% 50%, #0b1016 0%, #030507 78%); }
+  .wt-map { position:absolute; left:90px; top:170px; width:1180px; height:763px; overflow:visible; }
+  .wt-sw { }
+  .wt-rail { position:absolute; right:0; top:0; bottom:0; width:820px; pointer-events:none;
+    background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); }
+  .wt-eb { position:absolute; left:1330px; top:300px; font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
+  .wt-time { position:absolute; left:1330px; top:340px; font-family:'Courier New', monospace; font-weight:700; font-size:84px; line-height:1; color:#f2f5f8; white-space:nowrap; }
+  .wt-lab { position:absolute; left:1330px; top:460px; width:494px; font-family:'Arial Black', Arial, sans-serif; font-size:40px; line-height:1.15; color:#e8c56a; }
+  .wt-sub { position:absolute; left:1330px; top:580px; width:494px; font-size:22px; font-weight:700; letter-spacing:3px; color:#c8d3e0; text-transform:uppercase; }
+  .wt-nd { font-family:Arial, sans-serif; font-weight:700; font-size:26px; letter-spacing:6px; fill:#93a3b2; }
 </style>
-<div class="ph-watch" data-composition-id="g-watch" data-width="1920" data-height="1080" data-duration="8.382">
-  <div class="ph-watch-card" id="ph-watch-card">
-    <div class="ph-watch-t" id="ph-watch-t">g-watch</div>
-    <div class="ph-watch-s" id="ph-watch-s">Placeholder · To Build</div>
-  </div>
+<div id="g-watch-root" data-composition-id="g-watch" data-width="1920" data-height="1080" data-duration="8.382">
+  <svg class="wt-map" id="g-watch-map" viewBox="0 0 1300 841">
+    <g id="g-watch-world">
+      <!--NDMAP:g-watch--><!--/NDMAP-->
+      <path id="g-watch-box" d="M40,450 L840,430 L825,790 L25,800 Z" fill="#e8c56a" fill-opacity="0" stroke="#e8c56a" stroke-width="4" stroke-linejoin="round"/>
+      <text id="g-watch-t-nd" class="wt-nd" x="700" y="300" text-anchor="middle">NORTH DAKOTA</text>
+    </g>
+  </svg>
+  <div class="wt-rail" id="g-watch-railbg"></div>
+  <div class="wt-eb" id="g-watch-eb">June 20, 2025</div>
+  <div class="wt-time" id="g-watch-time">3:45 PM</div>
+  <div class="wt-lab" id="g-watch-lab">Severe Thunderstorm Watch</div>
+  <div class="wt-sub" id="g-watch-sub">Southwest and South Central</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
+  const ID = "g-watch", P = "#g-watch-";
+  /* cues: audio/a3-s1.words.json, episode s minus host start 668.258 */
+  const CUES = { t345: 0.682 /* 3 @668.94 */, thunder: 4.302 /* thunderstorm @672.56 */, watch: 4.962 /* watch @673.22 */, sw: 5.522 /* Southwest @673.78 */, out: 7.642 /* spec slide out @675.9 */ };
+  const DUR = 8.382;
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-watch-card", { x: 0 }, { x: 40, duration: 8.382, ease: "none" }, 0);
-  window.__timelines["g-watch"] = tl;
+  const box = document.querySelector(P + "box");
+  const L = box ? Math.ceil(box.getTotalLength()) + 1 : 2400;
+  if (box) box.setAttribute("stroke-dasharray", L);
+  tl.set([P + "eb", P + "time", P + "lab", P + "sub"], { autoAlpha: 0 }, 0);
+  tl.set(P + "box", { strokeDashoffset: L }, 0);
+
+  /* whole window: slow push on the state */
+  tl.fromTo(P + "world", { scale: 1, svgOrigin: "560 560" }, { scale: 1.06, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "nd", { attr: { "stroke-width": 2.5 } }, { attr: { "stroke-width": 4 }, duration: 1.0, ease: "sine.inOut", repeat: 7, yoyo: true }, 0);
+
+  tl.fromTo(P + "eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.2);
+  tl.fromTo(P + "time", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.t345);
+  tl.fromTo(P + "box", { strokeDashoffset: L }, { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" }, CUES.thunder);
+  tl.to(P + "box", { attr: { "fill-opacity": 0.16 }, duration: 0.5, ease: "power2.out" }, CUES.watch);
+  tl.fromTo(P + "lab", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.watch);
+  tl.fromTo(P + "sub", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.sw);
+  tl.fromTo("." + ID + "-sw", { attr: { fill: "#0e161e" } }, { attr: { fill: "#3a3320" }, duration: 0.5, stagger: 0.03, ease: "power2.out" }, CUES.sw);
+  tl.to([P + "eb", P + "time", P + "lab", P + "sub"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, CUES.out);
+  window.__timelines[ID] = tl;
 })();
 </script>
 </template>
