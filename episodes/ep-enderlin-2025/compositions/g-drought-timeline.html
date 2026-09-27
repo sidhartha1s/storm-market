@@ -24,21 +24,20 @@
   .dtl-blk, .dtl-er { position:absolute; width:56px; height:40px; border-radius:5px; background:#c0392b; box-shadow:0 0 16px rgba(192,57,43,.45); }
   .dtl-erb { background:none; border:3px dashed #93a3b2; box-shadow:none; box-sizing:border-box; }
   .dtl-mk { position:absolute; left:0; top:0; width:0; height:0; border-left:12px solid transparent; border-right:12px solid transparent; border-top:20px solid #f2f5f8; }
-  .dtl-card { position:absolute; left:110px; top:150px; width:860px; padding:26px 40px 30px; box-sizing:border-box; border-radius:28px;
+  .dtl-card { position:absolute; left:110px; top:150px; width:auto; padding:26px 40px 30px; box-sizing:border-box; border-radius:28px;
     background:rgba(10,16,24,.55); border:1px solid rgba(255,255,255,.14); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); }
   .dtl-pl { font-family:'Arial Black', Arial, sans-serif; font-size:52px; line-height:1.15; color:#f2f5f8; white-space:nowrap; }
   .dtl-dt { font-family:'AbrilFig', Georgia, serif; font-size:60px; line-height:1.2; color:#d0121f; white-space:nowrap; }
   .dtl-to { font-weight:700; font-size:32px; line-height:1.4; color:#dfe7ee; letter-spacing:1px; white-space:nowrap; }
   .dtl-chip { position:absolute; font-weight:700; font-size:26px; color:#dfe7ee; white-space:nowrap; }
   .dtl-stamp { position:absolute; left:760px; top:686px; padding:2px 14px; font-family:'Arial Black', Arial, sans-serif; font-size:28px; color:#f4f0e8; background:#8e2020; border-radius:4px; }
-  .dtl-line { position:absolute; left:590px; top:571px; width:130px; height:0; border-top:2px dashed #93a3b2; }
   .dtl-bar { position:absolute; left:750px; top:780px; width:928px; height:32px; border-radius:0 16px 16px 0; box-sizing:border-box;
     background:linear-gradient(90deg, rgba(90,118,143,.2), rgba(90,118,143,.55)); border:2px dashed rgba(147,163,178,.55); }
   .dtl-edge { position:absolute; left:0; top:770px; width:12px; height:52px; border-radius:6px; background:#f2f5f8; box-shadow:0 0 24px 8px rgba(232,197,106,.7); }
   .dtl-cnt { position:absolute; left:860px; top:470px; width:700px; display:flex; justify-content:center; align-items:baseline; gap:24px; white-space:nowrap; }
   .dtl-cn { font-family:'AbrilFig', Georgia, serif; font-size:130px; line-height:1; color:#d0121f; text-shadow:0 6px 26px rgba(0,0,0,.8); }
   .dtl-cu { font-family:'Arial Black', Arial, sans-serif; font-size:56px; color:#f2f5f8; }
-  .dtl-gap { position:absolute; left:860px; top:652px; width:700px; text-align:center; font-weight:700; font-size:36px; color:#e8c56a; white-space:nowrap; }
+  .dtl-gap { position:absolute; left:1010px; top:640px; font-weight:700; font-size:36px; color:#e8c56a; white-space:nowrap; }
   .dtl-ef4 { position:absolute; left:1060px; top:734px; width:420px; text-align:center; font-weight:700; font-size:30px; color:#7fb2e5; white-space:nowrap; }
 </style>
 <div class="dtl-root" data-composition-id="g-drought-timeline" data-width="1920" data-height="1080" data-duration="153.067">
@@ -64,11 +63,11 @@
   <div class="dtl-blk" id="dtl-bJ" style="left:532px; top:592px"></div>
   <div class="dtl-blk" id="dtl-bE" style="left:532px; top:546px"></div>
   <div class="dtl-blk" id="dtl-bM" style="left:692px; top:776px"></div>
-  <div class="dtl-line" id="dtl-line"></div>
+  <svg id="dtl-line" width="1920" height="1080" viewBox="0 0 1920 1080" style="position:absolute; left:0; top:0"><path id="dtl-lp" d="M588 566 L700 728" stroke="#93a3b2" stroke-width="3" fill="none"/></svg>
   <div class="dtl-er" id="dtl-erA" style="left:692px; top:730px"></div>
   <div class="dtl-er dtl-erb" id="dtl-erB" style="left:692px; top:730px"></div>
   <div class="dtl-stamp" id="dtl-stamp">EF3</div>
-  <div class="dtl-chip" id="dtl-er13" style="left:830px; top:690px">El Reno &middot; 2013</div>
+  <div class="dtl-chip" id="dtl-er13" style="left:870px; top:700px">El Reno &middot; 2013</div>
   <div class="dtl-mk" id="dtl-mk"></div>
 
   <div class="dtl-bar" id="dtl-bar"></div>
@@ -85,7 +84,7 @@
   <div class="dtl-card" id="dtl-cJ"><div class="dtl-pl">Joplin</div><div class="dtl-dt">May 22, 2011</div><div class="dtl-to" id="dtl-tJ">158 Lives Lost</div></div>
   <div class="dtl-card" id="dtl-cE"><div class="dtl-pl">El Reno-Piedmont</div><div class="dtl-dt">May 24, 2011</div><div class="dtl-to" id="dtl-tE">6 Lives Lost</div></div>
   <div class="dtl-card" id="dtl-cM"><div class="dtl-pl">Moore</div><div class="dtl-dt">May 20, 2013</div><div class="dtl-to" id="dtl-tM">24 Lives Lost</div></div>
-  <div class="dtl-card" id="dtl-cI"><div class="dtl-pl">Moore &middot; F5</div><div class="dtl-dt">May 3, 1999</div><div class="dtl-to" id="dtl-tI">About 301 mph</div>
+  <div class="dtl-card" id="dtl-cI" style="width:720px"><div class="dtl-pl">Moore &middot; F5</div><div class="dtl-dt">May 3, 1999</div><div class="dtl-to" id="dtl-tI">About 301 mph</div>
     <svg id="dtl-hI" width="120" height="100" viewBox="0 0 120 100" style="position:absolute; right:40px; bottom:30px">
       <path d="M10 95 L10 45 L60 10 L110 45 L110 95 Z" fill="rgba(90,118,143,.3)" stroke="#dfe7ee" stroke-width="5"/></svg></div>
   <div class="dtl-card" id="dtl-cN"><div class="dtl-pl" id="dtl-nN">9 EF5s in 6 Years</div><div class="dtl-to" id="dtl-tN">About 1 a Year, 1950&ndash;2013</div></div>
@@ -107,12 +106,12 @@ window.__timelines = window.__timelines || {};
   const days = { v: 1 };
 
   tl.set(CARDS.concat(BLK, YRS, [P+"eye", P+"avg", P+"erA", P+"erB", P+"stamp", P+"er13", P+"line", P+"mk", P+"edge", P+"end", P+"cnt", P+"gap", P+"ef4",
-         P+"tG", P+"tP", P+"tA", P+"tH", P+"tJ", P+"tE", P+"tM", P+"tI", P+"hI", P+"tN", ".dtl-tick"]), { autoAlpha: 0 }, 0);
+         P+"tG", P+"tP", P+"aN", P+"tA", P+"tH", P+"tJ", P+"tE", P+"tM", P+"tI", P+"hI", P+"tN", ".dtl-tick"]), { autoAlpha: 0 }, 0);
   tl.set([P+"axis", P+"bar", P+"avg"], { scaleX: 0, transformOrigin: "left center" }, 0);
 
   /* continuous: sweep every 9 s over the whole window; the blocks breathe; the pointer bobs */
   tl.fromTo(P+"sweep", { x: -300 }, { x: 2200, duration: 9, ease: "none", repeat: 16 }, 0);
-  tl.to(BLK, { scale: 1.07, duration: 1.3, ease: "sine.inOut", yoyo: true, repeat: 111, stagger: 0.1 }, 1.0);
+  tl.to(BLK, { scale: 1.07, duration: 1.3, ease: "sine.inOut", yoyo: true, repeat: 113 }, 1.0);
   tl.fromTo(P+"mk", { yPercent: 0 }, { yPercent: -40, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 169 }, 1.0);
 
   /* the axis builds @403.6 */
@@ -135,6 +134,7 @@ window.__timelines = window.__timelines || {};
   /* APRIL 27 2011 @427.35-428.75 · FOUR EF5s @430.05 · 216 @438.83 */
   tl.to(P+"cP", { autoAlpha: 0, y: -30, duration: 0.3, ease: "power3.in" }, 428.3 - H);
   tl.fromTo(P+"cA", { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 428.75 - H);
+  tl.fromTo(P+"aN", { autoAlpha: 0, scale: 1.4 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out", transformOrigin: "left center" }, 430.05 - H);
   tl.fromTo([P+"bA0", P+"bA1", P+"bA2", P+"bA3"], { autoAlpha: 0, y: -260 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power4.in", stagger: 0.14 }, 430.05 - H);
   tl.to(P+"mk", { x: 548, y: 604, duration: 0.6, ease: "power3.inOut" }, 430.4 - H);
   tl.fromTo(P+"tA", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 438.83 - H);
@@ -156,7 +156,8 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"mk", { y: 512, duration: 0.5, ease: "power3.inOut" }, 462.8 - H);
   tl.fromTo(P+"tE", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 464.74 - H);
   /* TWO YEARS LATER @469.52: a thin line reaches forward to 2013 · EF5 @474.34 · EF3 @475.72 */
-  tl.fromTo(P+"line", { autoAlpha: 1, scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.9, ease: "power2.inOut" }, 469.52 - H);
+  tl.set(P+"line", { autoAlpha: 1 }, 469.52 - H);
+  tl.fromTo(P+"lp", { strokeDasharray: 198, strokeDashoffset: 198 }, { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" }, 469.52 - H);
   tl.fromTo(P+"er13", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 471.02 - H);
   tl.to(P+"mk", { x: 708, y: 696, duration: 0.6, ease: "power3.inOut" }, 471.1 - H);
   tl.fromTo(P+"erA", { autoAlpha: 0, y: -200 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power4.in" }, 473.9 - H);

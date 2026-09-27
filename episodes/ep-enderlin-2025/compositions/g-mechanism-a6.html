@@ -53,6 +53,7 @@
     </g>
   </svg>
   <div class="m6-eb" id="m6-eb">The Enderlin Method</div>
+  <div class="m6-eb" id="m6-eb2">Oklahoma &middot; 2013</div>
   <div class="m6-head" id="m6-head">Needs a Heavy Object, Thrown Far</div>
   <div class="m6-row" id="m6-row"><span id="m6-r1">El Reno</span> <span class="m6-dim" id="m6-r2">&middot; Radar</span> <span class="m6-dim" id="m6-r3">&middot; Open Fields</span></div>
   <div class="m6-g" id="m6-g"><div class="m6-stamp" id="m6-ef3">EF3</div></div>
@@ -64,7 +65,7 @@ window.__timelines = window.__timelines || {};
   const DUR = 15.591;
   const dash = (id) => { const p = document.getElementById(id); const L = Math.ceil(p.getTotalLength()) + 1; p.style.strokeDasharray = L; return L; };
   const GL = dash("m6-ground"), BK = dash("m6-brk");
-  tl.set(["#m6-grass", "#m6-ghost", "#m6-brk", "#m6-empty", "#m6-land", "#m6-tank", "#m6-radar", "#m6-eb", "#m6-head", "#m6-row", "#m6-r1", "#m6-r2", "#m6-r3", "#m6-g"], { autoAlpha: 0 }, 0);
+  tl.set(["#m6-grass", "#m6-ghost", "#m6-brk", "#m6-empty", "#m6-land", "#m6-tank", "#m6-radar", "#m6-eb", "#m6-eb2", "#m6-head", "#m6-row", "#m6-r1", "#m6-r2", "#m6-r3", "#m6-g"], { autoAlpha: 0 }, 0);
   tl.set("#m6-ground", { strokeDashoffset: GL }, 0);
   tl.set("#m6-brk", { strokeDashoffset: BK }, 0);
   tl.set("#m6-tank", { x: 420, y: 732 }, 0);
@@ -97,6 +98,7 @@ window.__timelines = window.__timelines || {};
   /* EL RENO @10.84, RADAR @11.46, OPEN FIELDS @12.20 */
   tl.to(["#m6-eb", "#m6-head"], { autoAlpha: 0, y: -20, duration: 0.3, ease: "power2.in" }, 10.5);
   tl.set("#m6-row", { autoAlpha: 1 }, 10.8);
+  tl.fromTo("#m6-eb2", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 10.84);
   tl.fromTo("#m6-r1", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 10.84);
   tl.fromTo("#m6-r2", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 11.46);
   tl.fromTo("#m6-radar", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.46);
@@ -108,7 +110,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#m6-g", { autoAlpha: 0, scale: 1.45, rotation: -10 }, { autoAlpha: 1, scale: 1, rotation: -4, duration: 0.2, ease: "power4.in" }, 14.08);
 
   /* exit (spec 1406.3 -> 15.04) */
-  tl.to(["#m6-row", "#m6-g", "#m6-ground", "#m6-grass", "#m6-ghost", "#m6-empty", "#m6-radar"], { y: -40, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 15.04);
+  tl.to(["#m6-eb2", "#m6-row", "#m6-g", "#m6-ground", "#m6-grass", "#m6-ghost", "#m6-empty", "#m6-radar"], { y: -40, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 15.04);
   window.__timelines["g-mechanism-a6"] = tl;
 })();
 </script>

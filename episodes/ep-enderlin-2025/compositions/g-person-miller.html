@@ -10,59 +10,59 @@
      estimate a tornado's wind 18.80, carried large objects 21.14. Exit 22.29 (spec 1080.7). -->
 <template>
 <style>
-  .pm-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+  .cmil-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
     background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .pm-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+  .cmil-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
     background-image: linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
     background-size: 120px 120px; }
-  .pm-glow { position:absolute; left:900px; top:300px; width:1200px; height:800px; border-radius:50%;
+  .cmil-glow { position:absolute; left:900px; top:300px; width:1200px; height:800px; border-radius:50%;
     background: radial-gradient(ellipse, rgba(127,178,229,0.12), rgba(127,178,229,0) 70%); }
-  .pm-arcs { position:absolute; left:0; top:0; width:1920px; height:1080px; }
-  .pm-cite { position:absolute; left:96px; top:84px; width:1728px; padding:32px 56px 30px; box-sizing:border-box; border-radius:28px; overflow:hidden;
+  .cmil-arcs { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .cmil-cite { position:absolute; left:96px; top:84px; width:1728px; padding:32px 56px 30px; box-sizing:border-box; border-radius:28px; overflow:hidden;
     background: rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
-  .pm-cbeam { position:absolute; top:0; bottom:0; left:0; width:260px; background:linear-gradient(90deg, transparent, rgba(138,90,16,0.15), transparent); }
-  .pm-ceb { font-weight:700; font-size:22px; letter-spacing:2px; color:#5a4a2e; white-space:nowrap; }
-  .pm-ceb span { display:inline-block; }
-  .pm-ctitle { font-family: Georgia, serif; font-style:italic; font-size:44px; line-height:56px; color:#1c1a17; margin-top:12px; }
-  .pm-cmeta { margin-top:14px; white-space:nowrap; height:34px; }
-  .pm-cmeta span { display:inline-block; }
-  .pm-jour { font-weight:700; font-size:28px; line-height:34px; color:#5a4a2e; }
-  .pm-doi { font-weight:700; font-size:19px; letter-spacing:1px; color:#6b6257; margin-left:18px; }
-  .pm-card { position:absolute; left:96px; top:470px; padding:26px 52px 34px; overflow:hidden;
+  .cmil-cbeam { position:absolute; top:0; bottom:0; left:0; width:260px; background:linear-gradient(90deg, transparent, rgba(138,90,16,0.15), transparent); }
+  .cmil-ceb { font-weight:700; font-size:22px; letter-spacing:2px; color:#5a4a2e; white-space:nowrap; }
+  .cmil-ceb span { display:inline-block; }
+  .cmil-ctitle { font-family: Georgia, serif; font-style:italic; font-size:44px; line-height:56px; color:#1c1a17; margin-top:12px; }
+  .cmil-cmeta { margin-top:14px; white-space:nowrap; height:34px; }
+  .cmil-cmeta span { display:inline-block; }
+  .cmil-jour { font-weight:700; font-size:28px; line-height:34px; color:#5a4a2e; }
+  .cmil-doi { font-weight:700; font-size:19px; letter-spacing:1px; color:#6b6257; margin-left:18px; }
+  .cmil-card { position:absolute; left:96px; top:470px; padding:26px 52px 34px; overflow:hidden;
     background: rgba(10,16,24,0.55); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); border-radius:28px; box-shadow:0 30px 90px rgba(0,0,0,0.5); }
-  .pm-eb { font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
-  .pm-name { font-family:'Arial Black', Arial, sans-serif; font-size:60px; line-height:72px; color:#f2f5f8; white-space:nowrap; margin-top:6px; }
-  .pm-role { font-family: Georgia, serif; font-style:italic; font-size:30px; line-height:38px; color:#d8a13a; margin-top:6px; white-space:nowrap; }
-  .pm-beam { position:absolute; top:0; bottom:0; left:0; width:160px; background:linear-gradient(90deg, transparent, rgba(232,197,106,0.13), transparent); }
-  .pm-under { position:absolute; left:52px; right:52px; bottom:16px; height:2px; background:#e8c56a; }
-  .pm-line { position:absolute; left:96px; top:790px; font-family:'Arial Black', Arial, sans-serif; font-size:52px; line-height:62px; color:#f2f5f8; white-space:nowrap; }
-  .pm-line span { display:inline-block; }
+  .cmil-eb { font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  .cmil-name { font-family:'Arial Black', Arial, sans-serif; font-size:60px; line-height:72px; color:#f2f5f8; white-space:nowrap; margin-top:6px; }
+  .cmil-role { font-family: Georgia, serif; font-style:italic; font-size:30px; line-height:38px; color:#d8a13a; margin-top:6px; white-space:nowrap; }
+  .cmil-beam { position:absolute; top:0; bottom:0; left:0; width:160px; background:linear-gradient(90deg, transparent, rgba(232,197,106,0.13), transparent); }
+  .cmil-under { position:absolute; left:52px; right:52px; bottom:16px; height:2px; background:#e8c56a; }
+  .cmil-line { position:absolute; left:96px; top:790px; font-family:'Arial Black', Arial, sans-serif; font-size:52px; line-height:62px; color:#f2f5f8; white-space:nowrap; }
+  .cmil-line span { display:inline-block; }
 </style>
-<div class="pm-wrap" data-composition-id="g-person-miller" data-width="1920" data-height="1080" data-duration="22.926">
-  <div class="pm-grid" id="pm-grid"></div>
-  <div class="pm-glow" id="pm-glow"></div>
-  <svg class="pm-arcs" viewBox="0 0 1920 1080">
-    <path id="pm-a1" d="M980 720 Q1180 470 1380 720" fill="none" stroke="rgba(232,197,106,0.45)" stroke-width="3" stroke-dasharray="10 10"/>
-    <path id="pm-a2" d="M1060 720 Q1360 400 1660 720" fill="none" stroke="rgba(127,178,229,0.45)" stroke-width="3" stroke-dasharray="10 10"/>
-    <path id="pm-a3" d="M1120 720 Q1470 520 1800 720" fill="none" stroke="rgba(232,197,106,0.35)" stroke-width="3" stroke-dasharray="10 10"/>
-    <path id="pm-gr" d="M940 722 H1824" stroke="#4a5560" stroke-width="3"/>
-    <rect id="pm-b1" x="-12" y="-12" width="24" height="24" rx="3" fill="#5a768f" stroke="#7fb2e5" stroke-width="2"/>
+<div class="cmil-wrap" data-composition-id="g-person-miller" data-width="1920" data-height="1080" data-duration="22.926">
+  <div class="cmil-grid" id="cmil-grid"></div>
+  <div class="cmil-glow" id="cmil-glow"></div>
+  <svg class="cmil-arcs" viewBox="0 0 1920 1080">
+    <path id="cmil-a1" d="M980 720 Q1180 470 1380 720" fill="none" stroke="rgba(232,197,106,0.45)" stroke-width="3" stroke-dasharray="10 10"/>
+    <path id="cmil-a2" d="M1060 720 Q1360 400 1660 720" fill="none" stroke="rgba(127,178,229,0.45)" stroke-width="3" stroke-dasharray="10 10"/>
+    <path id="cmil-a3" d="M1120 720 Q1470 520 1800 720" fill="none" stroke="rgba(232,197,106,0.35)" stroke-width="3" stroke-dasharray="10 10"/>
+    <path id="cmil-gr" d="M940 722 H1824" stroke="#4a5560" stroke-width="3"/>
+    <rect id="cmil-b1" x="-12" y="-12" width="24" height="24" rx="3" fill="#5a768f" stroke="#7fb2e5" stroke-width="2"/>
   </svg>
-  <div class="pm-cite" id="pm-cite">
-    <div class="pm-cbeam" id="pm-cbeam"></div>
-    <div class="pm-ceb" id="pm-ceb"><span id="pm-auth">Miller et al.</span> <span id="pm-year">&middot; 2024</span></div>
-    <div class="pm-ctitle" id="pm-ctitle">&ldquo;Estimating Wind Speeds in Tornadoes Using Debris Trajectories of Large Compact Objects&rdquo;</div>
-    <div class="pm-cmeta" id="pm-cmeta"><span class="pm-jour" id="pm-jour">Monthly Weather Review</span><span class="pm-doi" id="pm-doi">DOI 10.1175/MWR-D-23-0251.1</span></div>
+  <div class="cmil-cite" id="cmil-cite">
+    <div class="cmil-cbeam" id="cmil-cbeam"></div>
+    <div class="cmil-ceb" id="cmil-ceb"><span id="cmil-auth">Miller et al.</span> <span id="cmil-year">&middot; 2024</span></div>
+    <div class="cmil-ctitle" id="cmil-ctitle">&ldquo;Estimating Wind Speeds in Tornadoes Using Debris Trajectories of Large Compact Objects&rdquo;</div>
+    <div class="cmil-cmeta" id="cmil-cmeta"><span class="cmil-jour" id="cmil-jour">Monthly Weather Review</span><span class="cmil-doi" id="cmil-doi">DOI 10.1175/MWR-D-23-0251.1</span></div>
   </div>
-  <div class="pm-card" id="pm-card">
-    <div class="pm-beam" id="pm-beam"></div>
-    <div class="pm-eb" id="pm-eb">First Author</div>
-    <div class="pm-name" id="pm-name">Connell Miller</div>
-    <div class="pm-role" id="pm-role">Now Directs the Northern Mesonet Project</div>
-    <div class="pm-under" id="pm-under"></div>
+  <div class="cmil-card" id="cmil-card">
+    <div class="cmil-beam" id="cmil-beam"></div>
+    <div class="cmil-eb" id="cmil-eb">First Author</div>
+    <div class="cmil-name" id="cmil-name">Connell Miller</div>
+    <div class="cmil-role" id="cmil-role">Now Directs the Northern Mesonet Project</div>
+    <div class="cmil-under" id="cmil-under"></div>
   </div>
-  <div class="pm-line" id="pm-line"><span id="pm-l1">Wind From</span> <span id="pm-l2">How Far It Carried</span> <span id="pm-l3" style="color:#e8c56a;">Large Objects</span></div>
+  <div class="cmil-line" id="cmil-line"><span id="cmil-l1">Wind From</span> <span id="cmil-l2">How Far It Carried</span> <span id="cmil-l3" style="color:#e8c56a;">Large Objects</span></div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
@@ -70,51 +70,51 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const DUR = 22.926;
   const dash = (id) => { const p = document.getElementById(id); const L = Math.ceil(p.getTotalLength()) + 1; return L; };
-  const A1 = dash("pm-a1"), A2 = dash("pm-a2"), A3 = dash("pm-a3");
-  tl.set(["#pm-cite", "#pm-auth", "#pm-year", "#pm-ctitle", "#pm-jour", "#pm-doi", "#pm-card", "#pm-eb", "#pm-name", "#pm-role",
-          "#pm-l1", "#pm-l2", "#pm-l3", "#pm-b1"], { autoAlpha: 0 }, 0);
-  tl.set("#pm-under", { scaleX: 0, transformOrigin: "left center" }, 0);
+  const A1 = dash("cmil-a1"), A2 = dash("cmil-a2"), A3 = dash("cmil-a3");
+  tl.set(["#cmil-cite", "#cmil-auth", "#cmil-year", "#cmil-ctitle", "#cmil-jour", "#cmil-doi", "#cmil-card", "#cmil-eb", "#cmil-name", "#cmil-role",
+          "#cmil-l1", "#cmil-l2", "#cmil-l3", "#cmil-b1"], { autoAlpha: 0 }, 0);
+  tl.set("#cmil-under", { scaleX: 0, transformOrigin: "left center" }, 0);
 
   /* ambient, whole window: grid + glow drift, beams across the cards, faint debris arcs drawing on the right */
-  tl.fromTo("#pm-grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
-  tl.fromTo("#pm-glow", { x: 0, y: 0 }, { x: -700, y: -100, duration: DUR, ease: "none" }, 0);
-  tl.fromTo("#pm-cbeam", { x: -260 }, { x: 1728, duration: 3.2, ease: "none", repeat: 6 }, 0.2);
-  tl.fromTo("#pm-beam", { x: -160 }, { x: 900, duration: 2.4, ease: "none", repeat: 5 }, 7.4);
-  tl.fromTo("#pm-a1", { strokeDashoffset: A1 }, { strokeDashoffset: 0, duration: 2.6, ease: "none", repeat: 7 }, 0);
-  tl.fromTo("#pm-a2", { strokeDashoffset: A2 }, { strokeDashoffset: 0, duration: 3.4, ease: "none", repeat: 5 }, 0.6);
-  tl.fromTo("#pm-a3", { strokeDashoffset: A3 }, { strokeDashoffset: 0, duration: 3.0, ease: "none", repeat: 6 }, 1.2);
+  tl.fromTo("#cmil-grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#cmil-glow", { x: 0, y: 0 }, { x: -700, y: -100, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#cmil-cbeam", { x: -260 }, { x: 1728, duration: 3.2, ease: "none", repeat: 6 }, 0.2);
+  tl.fromTo("#cmil-beam", { x: -160 }, { x: 900, duration: 2.4, ease: "none", repeat: 5 }, 7.4);
+  tl.fromTo("#cmil-a1", { strokeDashoffset: A1 }, { strokeDashoffset: 0, duration: 2.6, ease: "none", repeat: 7 }, 0);
+  tl.fromTo("#cmil-a2", { strokeDashoffset: A2 }, { strokeDashoffset: 0, duration: 3.4, ease: "none", repeat: 5 }, 0.6);
+  tl.fromTo("#cmil-a3", { strokeDashoffset: A3 }, { strokeDashoffset: 0, duration: 3.0, ease: "none", repeat: 6 }, 1.2);
   /* a small compact object rides the middle arc (per-leg: x linear, y parabolic halves = the same quadratic curve) */
-  tl.set("#pm-b1", { autoAlpha: 1 }, 0.1);
-  tl.fromTo("#pm-b1", { x: 1060 }, { x: 1660, duration: 2.4, ease: "none", repeat: 8 }, 0.1);
-  tl.fromTo("#pm-b1", { y: 720 }, { y: 560, duration: 1.2, ease: "power1.out", yoyo: true, repeat: 17 }, 0.1);
-  tl.fromTo("#pm-b1", { rotation: 0 }, { rotation: 1440, transformOrigin: "50% 50%", duration: 21.6, ease: "none" }, 0.1);
+  tl.set("#cmil-b1", { autoAlpha: 1 }, 0.1);
+  tl.fromTo("#cmil-b1", { x: 1060 }, { x: 1660, duration: 2.4, ease: "none", repeat: 8 }, 0.1);
+  tl.fromTo("#cmil-b1", { y: 720 }, { y: 560, duration: 1.2, ease: "power1.out", yoyo: true, repeat: 17 }, 0.1);
+  tl.fromTo("#cmil-b1", { rotation: 0 }, { rotation: 1440, transformOrigin: "50% 50%", duration: 21.6, ease: "none" }, 0.1);
 
   /* PAPER @1.68, 2024 @2.82 */
-  tl.fromTo("#pm-cite", { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.05);
-  tl.fromTo("#pm-ctitle", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.68);
-  tl.fromTo("#pm-auth", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 1.9);
-  tl.fromTo("#pm-year", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power4.out" }, 2.82);
+  tl.fromTo("#cmil-cite", { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.05);
+  tl.fromTo("#cmil-ctitle", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.68);
+  tl.fromTo("#cmil-auth", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 1.9);
+  tl.fromTo("#cmil-year", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power4.out" }, 2.82);
 
   /* FIRST AUTHOR @6.58, CONNELL MILLER @7.48, NOW DIRECTS @12.56 */
-  tl.fromTo("#pm-card", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 6.4);
-  tl.fromTo("#pm-eb", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 6.58);
-  tl.fromTo("#pm-name", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.48);
-  tl.fromTo("#pm-role", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 12.56);
-  tl.to("#pm-under", { scaleX: 1, duration: 3.0, ease: "power1.inOut" }, 8.0);
-  tl.fromTo("#pm-card", { y: 0 }, { y: -8, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 13.2);
+  tl.fromTo("#cmil-card", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 6.4);
+  tl.fromTo("#cmil-eb", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 6.58);
+  tl.fromTo("#cmil-name", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.48);
+  tl.fromTo("#cmil-role", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 12.56);
+  tl.to("#cmil-under", { scaleX: 1, duration: 3.0, ease: "power1.inOut" }, 8.0);
+  tl.fromTo("#cmil-card", { y: 0 }, { y: -8, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 13.2);
 
   /* MONTHLY WEATHER REVIEW @16.14 */
-  tl.fromTo("#pm-jour", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 16.14);
-  tl.fromTo("#pm-doi", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 16.5);
+  tl.fromTo("#cmil-jour", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 16.14);
+  tl.fromTo("#cmil-doi", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 16.5);
 
   /* ESTIMATE A TORNADO'S WIND @18.80 ... HOW FAR @20.48 ... LARGE OBJECTS @21.42 */
-  tl.to(["#pm-card", "#pm-cite"], { opacity: 0.55, duration: 0.5 }, 18.5);
-  tl.fromTo("#pm-l1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 18.8);
-  tl.fromTo("#pm-l2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 20.48);
-  tl.fromTo("#pm-l3", { autoAlpha: 0, y: 24, scale: 1.1 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.35, ease: "power4.out" }, 21.42);
+  tl.to(["#cmil-card", "#cmil-cite"], { opacity: 0.55, duration: 0.5 }, 18.5);
+  tl.fromTo("#cmil-l1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 18.8);
+  tl.fromTo("#cmil-l2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 20.48);
+  tl.fromTo("#cmil-l3", { autoAlpha: 0, y: 24, scale: 1.1 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.35, ease: "power4.out" }, 21.42);
 
   /* exit (spec 1080.7 -> 22.29) */
-  tl.to(["#pm-cite", "#pm-card", "#pm-line", "#pm-a1", "#pm-a2", "#pm-a3", "#pm-gr", "#pm-b1"], { y: -40, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 22.29);
+  tl.to(["#cmil-cite", "#cmil-card", "#cmil-line", "#cmil-a1", "#cmil-a2", "#cmil-a3", "#cmil-gr", "#cmil-b1"], { y: "-=40", autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 22.29);
   window.__timelines["g-person-miller"] = tl;
 })();
 </script>

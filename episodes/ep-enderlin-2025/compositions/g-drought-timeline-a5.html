@@ -21,7 +21,7 @@
   .dta5-cap { position:absolute; left:60px; top:118px; font-weight:700; font-size:22px; letter-spacing:5px; color:#93a3b2; white-space:nowrap; }
   .dta5-rows { position:absolute; left:56px; top:170px; width:1088px; height:180px; overflow:hidden; }
   .dta5-ghost { position:absolute; left:0; width:1088px; height:22px; border-radius:6px; background:rgba(147,163,178,.12); }
-  .dta5-row { position:absolute; left:56px; width:1088px; height:64px; line-height:64px; box-sizing:border-box; padding-left:24px; border-radius:10px; font-weight:700; white-space:nowrap; }
+  .dta5-row { position:absolute; left:416px; width:1088px; height:64px; line-height:64px; box-sizing:border-box; padding-left:24px; border-radius:10px; font-weight:700; white-space:nowrap; }
   .dta5-map { position:absolute; left:300px; top:200px; width:1320px; height:800px; }
   .dta5-dot { position:absolute; width:18px; height:18px; margin:-9px 0 0 -9px; border-radius:50%; background:#c0392b; box-shadow:0 0 12px rgba(192,57,43,.7); }
   .dta5-chip { position:absolute; padding:8px 20px; border-radius:14px; font-weight:700; font-size:30px; color:#f2f5f8; white-space:nowrap;
@@ -52,7 +52,7 @@
   <div class="dta5-dot" id="dta5-d7" style="left:925.7px; top:691.0px"></div>
   <div class="dta5-dot" id="dta5-dM" style="left:937.0px; top:697.0px"></div>
   <div class="dta5-dot" id="dta5-dE" style="left:940.1px; top:349.9px; width:26px; height:26px; margin:-13px 0 0 -13px; background:#e74c3c"></div>
-  <div class="dta5-chip" id="dta5-cM" style="left:540px; top:728px">Moore &middot; <span id="dta5-cM2">About 210 mph</span></div>
+  <div class="dta5-chip" id="dta5-cM" style="left:540px; top:728px">Moore &middot; About 210 mph</div>
   <div class="dta5-chip" id="dta5-cE" style="left:980px; top:318px">Enderlin &middot; More Than 210 mph</div>
   <div class="dta5-leg" id="dta5-leg">Dots: Every EF5 Since Feb 2007</div>
   <div class="dta5-h" id="dta5-h">Northernmost EF5 Since 2007</div>
@@ -68,7 +68,7 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const P = "#dta5-";
   const DOTS = [P+"d0", P+"d1", P+"d2", P+"d3", P+"d4", P+"d5", P+"d6", P+"d7", P+"dM"];
-  tl.set([P+"card", P+"rM", P+"rE", P+"map", P+"lat", P+"dE", P+"cM", P+"cM2", P+"cE", P+"leg", P+"h"].concat(DOTS), { autoAlpha: 0 }, 0);
+  tl.set([P+"card", P+"rM", P+"rE", P+"map", P+"lat", P+"dE", P+"cM", P+"cE", P+"leg", P+"h"].concat(DOTS), { autoAlpha: 0 }, 0);
   tl.set(P+"rE", { clipPath: "inset(0% 100% 0% 0%)" }, 0);
 
   /* continuous: sweep every 9.1 s; the database rows scroll up while the card is on screen */
@@ -91,7 +91,7 @@ window.__timelines = window.__timelines || {};
   tl.to(DOTS, { scale: 1.4, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 13 }, 1244.8 - H);
   /* MOORE'S EF5 @1244.74 · ABOUT 210 @1246.53 */
   tl.fromTo(P+"cM", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1244.74 - H);
-  tl.fromTo(P+"cM2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 1246.53 - H);
+  tl.to(P+"cM", { scale: 1.08, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 1246.53 - H);
   /* MORE THAN THAT @1250.32: Enderlin lands */
   tl.fromTo(P+"dE", { autoAlpha: 0, y: -200 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power4.in" }, 1249.9 - H);
   tl.fromTo(P+"cE", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1250.32 - H);

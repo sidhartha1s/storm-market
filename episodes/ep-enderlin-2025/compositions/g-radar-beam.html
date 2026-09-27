@@ -22,17 +22,16 @@
     </defs>
     <g id="g-radar-beam-scene">
       <!-- earth: circle centre (260, 4300), r 3700 -> ground y 600 under the dome, 892 at x 1700 -->
-      <path id="g-radar-beam-earth" d="M-200,629 A3700,3700 0 0 1 260,600 A3700,3700 0 0 1 2100,1060 L2100,1200 L-200,1200 Z" fill="#0b1016" stroke="#5a768f" stroke-width="3"/>
+      <path id="g-radar-beam-earth" d="M-200,629 A3700,3700 0 0 1 260,600 A3700,3700 0 0 1 2100,1090 L2100,1200 L-200,1200 Z" fill="#0b1016" stroke="#5a768f" stroke-width="3"/>
       <path id="g-radar-beam-flat" d="M260,600 L1900,600" fill="none" stroke="#93a3b2" stroke-width="2" stroke-dasharray="10 10" stroke-opacity="0.6"/>
-      <text id="g-radar-beam-t-flat" class="rb-small" x="1500" y="586">Flat Line</text>
       <!-- storm -->
       <g id="g-radar-beam-storm">
         <path d="M1420,640 C1400,560 1460,520 1500,500 C1480,430 1540,360 1620,380 C1640,300 1760,280 1800,350 C1860,300 1900,380 1880,440 C1920,470 1920,560 1880,600 C1860,640 1800,650 1760,640 Z" fill="url(#g-radar-beam-cloud)" stroke="#5a768f" stroke-width="2"/>
         <path d="M1480,300 L1900,290 L1860,330 L1520,340 Z" fill="#15202b" stroke="#4a5560" stroke-width="2"/>
       </g>
-      <path id="g-radar-beam-funnel" d="M1600,640 L1680,640 C1662,700 1652,760 1648,840 L1640,840 C1632,760 1620,700 1600,640 Z" fill="#93a3b2" fill-opacity="0.85"/>
+      <g id="g-radar-beam-funnelsw"><path id="g-radar-beam-funnel" d="M1600,640 L1680,640 C1662,700 1652,780 1648,868 L1640,868 C1632,780 1620,700 1600,640 Z" fill="#93a3b2" fill-opacity="0.85"/></g>
       <!-- ground-wind zone the beam never reaches -->
-      <rect id="g-radar-beam-zone" x="1540" y="620" width="220" height="245" fill="url(#g-radar-beam-hatch)" stroke="#e74c3c" stroke-width="2" stroke-dasharray="8 6"/>
+      <path id="g-radar-beam-zone" d="M1540,532 L1760,528 L1760,917 L1540,828 Z" fill="url(#g-radar-beam-hatch)" stroke="#e74c3c" stroke-width="2" stroke-dasharray="8 6"/>
       <text id="g-radar-beam-t-not" class="rb-mid" x="1360" y="780" text-anchor="end" fill="#e74c3c">Not Seen</text>
       <path id="g-radar-beam-notarrow" d="M1372,770 L1530,770 M1510,758 L1530,770 L1510,782" fill="none" stroke="#e74c3c" stroke-width="3"/>
       <!-- beam -->
@@ -40,12 +39,12 @@
       <path id="g-radar-beam-axis" d="M270,552 L1900,451" fill="none" stroke="#7fb2e5" stroke-width="2" stroke-opacity="0.9"/>
       <g id="g-radar-beam-pulses" fill="#f2f5f8"></g>
       <!-- height gap at the storm: ground 875 at x 1640, beam bottom ~ 525 -->
-      <path id="g-radar-beam-gap" d="M1500,527 L1500,845 M1486,527 L1514,527 M1486,845 L1514,845" fill="none" stroke="#e8c56a" stroke-width="3"/>
+      <path id="g-radar-beam-gap" d="M1500,528 L1500,814 M1486,528 L1514,528 M1486,814 L1514,814" fill="none" stroke="#e8c56a" stroke-width="3"/>
       <text id="g-radar-beam-t-beam" class="rb-mid" x="620" y="470">Beam Height Rises With Distance</text>
       <!-- debris left behind -->
       <g id="g-radar-beam-debris" fill="#d8a13a">
-        <rect x="1590" y="862" width="10" height="6" transform-origin="1595 865"/><rect x="1618" y="868" width="8" height="5"/>
-        <rect x="1660" y="864" width="12" height="6"/><rect x="1690" y="870" width="9" height="5"/><rect x="1566" y="872" width="7" height="5"/>
+        <rect x="1590" y="839" width="10" height="6"/><rect x="1618" y="851" width="8" height="5"/>
+        <rect x="1660" y="869" width="12" height="6"/><rect x="1690" y="881" width="9" height="5"/><rect x="1566" y="832" width="7" height="5"/>
       </g>
       <!-- the radar -->
       <g id="g-radar-beam-radar">
@@ -75,12 +74,12 @@ window.__timelines = window.__timelines || {};
   };
   const DUR = 15.199;
   const tl = gsap.timeline({ paused: true });
-  tl.set([P + "storm", P + "funnel", P + "zone", P + "t-not", P + "notarrow", P + "gap", P + "t-beam", P + "hl", P + "debris", P + "flat", P + "t-flat"], { autoAlpha: 0 }, 0);
+  tl.set([P + "storm", P + "funnel", P + "zone", P + "t-not", P + "notarrow", P + "gap", P + "t-beam", P + "hl", P + "debris", P + "flat"], { autoAlpha: 0 }, 0);
 
   /* whole window: slow push on the scene, storm drifts, funnel sways */
   tl.fromTo(P + "scene", { scale: 1, svgOrigin: "960 600" }, { scale: 1.05, duration: DUR, ease: "none" }, 0);
   tl.fromTo(P + "storm", { x: 30 }, { x: -20, duration: DUR, ease: "none" }, 0);
-  tl.fromTo(P + "funnel", { skewX: -3, svgOrigin: "1640 640" }, { skewX: 3, duration: 1.4, ease: "sine.inOut", repeat: 10, yoyo: true }, 0);
+  tl.fromTo(P + "funnelsw", { skewX: -3, svgOrigin: "1640 640" }, { skewX: 3, duration: 1.4, ease: "sine.inOut", repeat: 10, yoyo: true }, 0);
 
   /* the radar and its beam */
   tl.fromTo(P + "radar", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.3);
@@ -90,14 +89,13 @@ window.__timelines = window.__timelines || {};
 
   /* the earth curves away: a flat reference line, then the gap under the beam */
   tl.fromTo(P + "flat", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, CUES.earth);
-  tl.fromTo(P + "t-flat", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, CUES.earth + 0.2);
   tl.fromTo(P + "earth", { attr: { "stroke-width": 3 } }, { attr: { "stroke-width": 6 }, duration: 0.5, ease: "power2.out", yoyo: true, repeat: 1 }, CUES.earth + 0.16);
 
   /* the storm: the beam passes over its base */
   tl.fromTo(P + "storm", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6, ease: "power2.out" }, CUES.radar);
   tl.fromTo(P + "funnel", { autoAlpha: 0, scaleY: 0, svgOrigin: "1640 640" }, { autoAlpha: 1, scaleY: 1, duration: 0.6, ease: "power3.out" }, CUES.radar + 0.3);
-  tl.to([P + "flat", P + "t-flat"], { autoAlpha: 0, duration: 0.4 }, CUES.radar);
-  tl.fromTo(P + "gap", { autoAlpha: 0, scaleY: 0, svgOrigin: "1500 686" }, { autoAlpha: 1, scaleY: 1, duration: 0.5, ease: "power3.out" }, CUES.not);
+  tl.to(P + "flat", { autoAlpha: 0, duration: 0.4 }, CUES.radar);
+  tl.fromTo(P + "gap", { autoAlpha: 0, scaleY: 0, svgOrigin: "1500 671" }, { autoAlpha: 1, scaleY: 1, duration: 0.5, ease: "power3.out" }, CUES.not);
   tl.fromTo(P + "zone", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, CUES.not);
   tl.fromTo([P + "t-not", P + "notarrow"], { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.level);
   tl.to(P + "t-beam", { autoAlpha: 0, duration: 0.4 }, CUES.rating - 0.4);

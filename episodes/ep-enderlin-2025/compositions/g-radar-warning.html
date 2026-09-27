@@ -27,10 +27,10 @@
         <path d="M870,153 L864,400 L874,680 L868,945"/><path d="M1064,151 L1070,410 L1062,690 L1068,946"/>
         <path d="M98,356 L400,350 L700,360 L1000,352 L1263,356"/><path d="M97,552 L380,558 L720,548 L1010,556 L1264,550"/><path d="M96,748 L420,742 L690,752 L990,744 L1265,750"/>
       </g>
-      <g id="g-radar-warning-storm">
+      <g id="g-radar-warning-storm"><g id="g-radar-warning-cellg">
         <ellipse cx="0" cy="0" rx="190" ry="130" fill="url(#g-radar-warning-cell)" opacity="0.9"/>
         <path d="M60,70 C110,90 120,140 80,160 C50,170 30,150 40,130" fill="none" stroke="#dc3240" stroke-width="16" stroke-linecap="round" opacity="0.9"/>
-      </g>
+      </g></g>
       <path id="g-radar-warning-poly" d="M540,700 L760,430 L1080,520 L860,790 Z" fill="#e74c3c" fill-opacity="0" stroke="#e74c3c" stroke-width="6" stroke-linejoin="round"/>
       <g id="g-radar-warning-arrow"><path d="M1320,500 C1230,520 1170,560 1110,610 M1128,588 L1108,612 L1138,614" fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round"/></g>
     </g>
@@ -56,7 +56,7 @@ window.__timelines = window.__timelines || {};
   /* whole window: the storm moves northeast, slow push */
   tl.fromTo(P + "storm", { x: 360, y: 760 }, { x: 760, y: 520, duration: DUR, ease: "none" }, 0);
   tl.fromTo(P + "world", { scale: 1, svgOrigin: "700 560" }, { scale: 1.05, duration: DUR, ease: "none" }, 0);
-  tl.fromTo(P + "storm", { scale: 0.92, svgOrigin: "0 0" }, { scale: 1.06, duration: 0.8, ease: "sine.inOut", repeat: 7, yoyo: true }, 0);
+  tl.fromTo(P + "cellg", { scale: 0.92, svgOrigin: "0 0" }, { scale: 1.06, duration: 0.8, ease: "sine.inOut", repeat: 7, yoyo: true }, 0);
 
   tl.fromTo(P + "eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.matters);
   tl.fromTo(P + "poly", { strokeDashoffset: L }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.inOut" }, CUES.warning);

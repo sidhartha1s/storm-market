@@ -2,27 +2,58 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-clock-a3"
-     (host 750.834 -> 767.62, 16.786 s, track 4). The MG builder replaces this whole file. -->
+<!-- g-clock-a3 (B1): clock card over g-master-map-a3. Host 750.834 -> 767.62 (16.786 s, track 4). Facts: 11:02 -> 11:21 PM CDT, 19 min (NWS Grand Forks PIS). The run-forward is sped up and says so. -->
 <template>
 <style>
-  .ph-clock-a3 { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; }
-  .ph-clock-a3-card { position:absolute; left:1300px; top:96px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-clock-a3-t { font-family:'Arial Black', Arial, sans-serif; font-size:40px; color:#f2f5f8; white-space:nowrap; }
-  .ph-clock-a3-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  #g-clock-a3-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+  .ck3-card { position:absolute; left:1300px; top:60px; width:524px; height:200px; box-sizing:border-box;
+    border-radius:28px; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); font-family:Arial, sans-serif; }
+  .ck3-dial { position:absolute; left:22px; top:22px; width:156px; height:156px; }
+  .ck3-eb { position:absolute; left:200px; top:30px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
+  .ck3-read { position:absolute; left:198px; top:60px; font-family:'Courier New', monospace; font-weight:700; font-size:60px; line-height:1; color:#f2f5f8; white-space:nowrap; }
+  .ck3-sub { position:absolute; left:200px; top:134px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:26px; color:#d8a13a; white-space:nowrap; }
 </style>
-<div class="ph-clock-a3" data-composition-id="g-clock-a3" data-width="1920" data-height="1080" data-duration="16.786">
-  <div class="ph-clock-a3-card" id="ph-clock-a3-card">
-    <div class="ph-clock-a3-t" id="ph-clock-a3-t">g-clock-a3</div>
-    <div class="ph-clock-a3-s" id="ph-clock-a3-s">Placeholder · To Build</div>
+<div id="g-clock-a3-root" data-composition-id="g-clock-a3" data-width="1920" data-height="1080" data-duration="16.786">
+  <div class="ck3-card" id="g-clock-a3-card">
+    <svg class="ck3-dial" viewBox="0 0 156 156">
+      <circle cx="78" cy="78" r="72" fill="rgba(4,7,12,0.6)" stroke="#93a3b2" stroke-width="2"/>
+      <g stroke="#5a768f" stroke-width="3" stroke-linecap="round">
+        <line x1="78" y1="12" x2="78" y2="22"/><line x1="144" y1="78" x2="134" y2="78"/><line x1="78" y1="144" x2="78" y2="134"/><line x1="12" y1="78" x2="22" y2="78"/>
+      </g>
+      <line id="g-clock-a3-hh" x1="78" y1="78" x2="78" y2="40" stroke="#f2f5f8" stroke-width="6" stroke-linecap="round"/>
+      <line id="g-clock-a3-mh" x1="78" y1="78" x2="78" y2="22" stroke="#f2f5f8" stroke-width="4" stroke-linecap="round"/>
+      <line id="g-clock-a3-sh" x1="78" y1="90" x2="78" y2="16" stroke="#e74c3c" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="78" cy="78" r="5" fill="#e74c3c"/>
+    </svg>
+    <div class="ck3-eb" id="g-clock-a3-eb">Local Time</div>
+    <div class="ck3-read" id="g-clock-a3-read">11:<span id="g-clock-a3-mm">02</span> PM</div>
+    <div class="ck3-eb" id="g-clock-a3-note" style="top:176px; left:200px; font-size:19px">19 Minutes · Sped Up</div>
+    <div class="ck3-sub" id="g-clock-a3-sub">Friday, June 20, 2025</div>
   </div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
+  const P = "#g-clock-a3-";
+  /* cues: audio/a3-s7.words.json, episode s minus host start 750.834 */
+  const CUES = { two: 0.436 /* 2 minutes past 11 @751.27 */, nineteen: 7.396 /* 19 minutes @758.23 */, stop: 16.0, out: 16.166 /* spec slide out @767.0 */ };
+  const DUR = 16.786;
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-clock-a3-card", { x: 0 }, { x: 40, duration: 16.786, ease: "none" }, 0);
+  tl.set([P + "read", P + "note"], { autoAlpha: 0 }, 0);
+  tl.set([P + "hh"], { rotation: 331, svgOrigin: "78 78" }, 0);
+  tl.set([P + "mh"], { rotation: 12, svgOrigin: "78 78" }, 0);
+  tl.fromTo(P + "sh", { rotation: 0, svgOrigin: "78 78" }, { rotation: 6 * DUR, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "card", { autoAlpha: 0, x: 120 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.0);
+  tl.fromTo(P + "read", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.two);
+  /* 19 minutes run forward from "19 minutes": 11:02 -> 11:21 in 8.6 s (sped up, labelled) */
+  tl.fromTo(P + "note", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.nineteen);
+  tl.to(P + "mh", { rotation: 126, duration: 8.6, ease: "none" }, CUES.nineteen);
+  tl.to(P + "hh", { rotation: 340.5, duration: 8.6, ease: "none" }, CUES.nineteen);
+  const MIN = { v: 2 }, mm = document.querySelector(P + "mm");
+  tl.to(MIN, { v: 21, duration: 8.6, ease: "none", onUpdate: () => { if (mm) mm.textContent = String(Math.floor(MIN.v)).padStart(2, "0"); } }, CUES.nineteen);
+  tl.fromTo(P + "read", { scale: 1 }, { scale: 1.06, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, CUES.stop - 0.6);
+  tl.to(P + "card", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, CUES.out);
   window.__timelines["g-clock-a3"] = tl;
 })();
 </script>

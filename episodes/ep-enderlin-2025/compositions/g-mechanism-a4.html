@@ -71,17 +71,17 @@
       <rect id="m4-ghost" x="-14" y="-28" width="28" height="28" rx="4" fill="none" stroke="rgba(223,231,238,0.6)" stroke-width="3" stroke-dasharray="6 5"/>
       <path id="m4-x" d="M956 800 L1044 872 M1044 800 L956 872" stroke="#e74c3c" stroke-width="8" stroke-linecap="round"/>
       <!-- the tanker's throw (scene 4) -->
-      <path id="m4-trt" d="M220 860 Q970 140 1720 860" fill="none" stroke="#e8c56a" stroke-width="5" clip-path="url(#m4-clipt)"/>
+      <path id="m4-trt" d="M220 814 Q970 94 1720 814" fill="none" stroke="#e8c56a" stroke-width="5" clip-path="url(#m4-clipt)"/>
       <circle id="m4-ring" cx="1720" cy="860" r="30" fill="none" stroke="#e8c56a" stroke-width="4"/>
       <circle id="m4-dust1" cx="1660" cy="852" r="26" fill="rgba(200,211,224,0.35)"/>
       <circle id="m4-dust2" cx="1780" cy="852" r="22" fill="rgba(200,211,224,0.30)"/>
-      <!-- the tanker, origin = bottom centre -->
+      <!-- the tanker, origin = its centre (resting on the ground at y 814 = 860 - 46) -->
       <g id="m4-tank">
-        <rect x="-100" y="-72" width="200" height="52" rx="26" fill="#5a768f" stroke="#7fb2e5" stroke-width="3"/>
-        <rect x="-12" y="-84" width="24" height="14" rx="3" fill="#7fb2e5"/>
-        <rect x="-104" y="-24" width="208" height="8" fill="#2a3644" stroke="#93a3b2" stroke-width="2"/>
-        <circle cx="-80" cy="-8" r="8" fill="#0b1016" stroke="#93a3b2" stroke-width="2"/><circle cx="-60" cy="-8" r="8" fill="#0b1016" stroke="#93a3b2" stroke-width="2"/>
-        <circle cx="60" cy="-8" r="8" fill="#0b1016" stroke="#93a3b2" stroke-width="2"/><circle cx="80" cy="-8" r="8" fill="#0b1016" stroke="#93a3b2" stroke-width="2"/>
+        <rect x="-100" y="-26" width="200" height="52" rx="26" fill="#5a768f" stroke="#7fb2e5" stroke-width="3"/>
+        <rect x="-12" y="-38" width="24" height="14" rx="3" fill="#7fb2e5"/>
+        <rect x="-104" y="22" width="208" height="8" fill="#2a3644" stroke="#93a3b2" stroke-width="2"/>
+        <circle cx="-80" cy="38" r="8" fill="#0b1016" stroke="#93a3b2" stroke-width="2"/><circle cx="-60" cy="38" r="8" fill="#0b1016" stroke="#93a3b2" stroke-width="2"/>
+        <circle cx="60" cy="38" r="8" fill="#0b1016" stroke="#93a3b2" stroke-width="2"/><circle cx="80" cy="38" r="8" fill="#0b1016" stroke="#93a3b2" stroke-width="2"/>
       </g>
       <!-- forces (scene 1) -->
       <g id="m4-wind">
@@ -156,7 +156,7 @@ window.__timelines = window.__timelines || {};
   tl.set("#m4-line", { scaleY: 0, svgOrigin: "724 860" }, 0);
   tl.set("#m4-zone", { scaleX: 0, svgOrigin: "724 690" }, 0);
   tl.set(["#m4-b1", "#m4-b2", "#m4-b3"], { scaleX: 0 }, 0);
-  tl.set("#m4-tank", { x: 560, y: 860, rotation: 0 }, 0);
+  tl.set("#m4-tank", { x: 560, y: 814, rotation: 0 }, 0);
   tl.set("#m4-needle", { rotation: -80, svgOrigin: "960 760" }, 0);
   tl.set(["#m4-p1", "#m4-p2", "#m4-p3", "#m4-p4", "#m4-p5", "#m4-p6", "#m4-p7", "#m4-p8", "#m4-p9", "#m4-p10", "#m4-p11", "#m4-p12"], { autoAlpha: 0, y: 16 }, 0);
 
@@ -180,9 +180,9 @@ window.__timelines = window.__timelines || {};
   /* the push grows (leaves the ground @4.10) ... PUSH WINS @5.22: the arrow outgrows the weight, the tanker lifts */
   tl.to("#m4-wind", { scaleX: 0.85, svgOrigin: "150 814", duration: 1.0, ease: "power1.inOut" }, 3.8);
   tl.to("#m4-wind", { scaleX: 1, scaleY: 1.25, svgOrigin: "150 814", duration: 0.35, ease: "power3.out" }, 5.22);
-  tl.to("#m4-tank", { y: 820, duration: 0.5, ease: "power3.out" }, 5.22);
+  tl.to("#m4-tank", { y: 774, duration: 0.5, ease: "power3.out" }, 5.22);
   tl.to(["#m4-wt", "#m4-lwt"], { y: -40, duration: 0.5, ease: "power3.out" }, 5.22);
-  tl.fromTo("#m4-tank", { y: 820 }, { y: 812, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 7 }, 5.8);
+  tl.fromTo("#m4-tank", { y: 774 }, { y: 766, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 7 }, 5.8);
   /* FARTHER @6.74 ... HEAVY COMPACT OBJECT @7.34: a flight lands at a mark */
   tl.to("#m4-arc1", { strokeDashoffset: 0, duration: 0.9, ease: "power1.inOut" }, 6.74);
   tl.fromTo("#m4-mk1", { autoAlpha: 0, scale: 0, svgOrigin: "880 860" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, 7.6);
@@ -194,7 +194,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#m4-mk2", { autoAlpha: 0, scale: 0, svgOrigin: "1300 860" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, 11.2);
   /* hand-off: clear the forces, the tanker settles at the launch point */
   tl.to(["#m4-wind", "#m4-wt", "#m4-lwind2", "#m4-lwt", "#m4-arc1", "#m4-arc2", "#m4-mk1", "#m4-mk2"], { autoAlpha: 0, duration: 0.4 }, 12.0);
-  tl.to("#m4-tank", { x: 220, y: 860, duration: 0.8, ease: "power3.inOut" }, 12.2);
+  tl.to("#m4-tank", { x: 220, y: 814, duration: 0.8, ease: "power3.inOut" }, 12.2);
 
   /* ===== scene 2: the 50 m line ===== */
   /* LINE AT 50 METERS @13.36, 50 @13.74, 160 FEET @15.42 */
@@ -240,8 +240,8 @@ window.__timelines = window.__timelines || {};
   tl.to(["#m4-h2", "#m4-pks", "#m4-lpk"], { autoAlpha: 0, duration: 0.4 }, 38.9);
   /* ALMOST 500 FEET @39.50: x linear 220 -> 1720, y up/down halves, trail clip follows x */
   tl.to("#m4-tank", { x: 1720, duration: 1.1, ease: "none" }, 39.5);
-  tl.to("#m4-tank", { y: 500, duration: 0.55, ease: "power1.out" }, 39.5);
-  tl.to("#m4-tank", { y: 860, duration: 0.55, ease: "power1.in" }, 40.05);
+  tl.to("#m4-tank", { y: 454, duration: 0.55, ease: "power1.out" }, 39.5);
+  tl.to("#m4-tank", { y: 814, duration: 0.55, ease: "power1.in" }, 40.05);
   tl.to("#m4-tank", { rotation: 360, transformOrigin: "50% 50%", duration: 1.1, ease: "none" }, 39.5);
   tl.to("#m4-cliptr", { attr: { width: 1500 }, duration: 1.1, ease: "none" }, 39.5);
   /* the 160 ft line flashes as the tanker passes it (x 724 at 39.87) */

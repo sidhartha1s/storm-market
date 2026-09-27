@@ -19,8 +19,8 @@
   .tna5-grid { position:absolute; left:403px; width:1237px; height:1px; background:rgba(147,163,178,.14); }
   .tna5-bar { position:absolute; width:280px; overflow:hidden; border-radius:6px 6px 0 0; }
   .tna5-sh { position:absolute; left:-140px; top:0; width:120px; height:100%; background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.22), rgba(255,255,255,0)); }
-  .tna5-cl { position:absolute; top:918px; width:400px; margin-left:-200px; text-align:center; font-family:'AbrilFig', Georgia, serif; font-size:48px; line-height:1.1; color:#d0121f; white-space:nowrap; }
-  .tna5-cs { position:absolute; top:978px; width:400px; margin-left:-200px; text-align:center; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .tna5-cl { position:absolute; top:918px; width:400px; margin-left:-200px; text-align:center; font-family:'AbrilFig', Georgia, serif; font-size:56px; line-height:1.05; color:#d0121f; white-space:nowrap; }
+  .tna5-cs { position:absolute; top:984px; width:400px; margin-left:-200px; text-align:center; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
   .tna5-v { position:absolute; width:400px; margin-left:-200px; text-align:center; font-weight:700; font-size:38px; color:#f2f5f8; white-space:nowrap; }
   .tna5-same { position:absolute; left:1020px; top:178px; width:400px; text-align:center; font-weight:700; font-size:36px; color:#e8c56a; white-space:nowrap; }
   .tna5-h { position:absolute; left:110px; top:78px; font-family:'Arial Black', Arial, sans-serif; font-size:56px; color:#f2f5f8; white-space:nowrap; }
@@ -64,7 +64,7 @@ window.__timelines = window.__timelines || {};
   tl.set(P+"bp", { strokeDasharray: 722, strokeDashoffset: 722 }, 0);
 
   /* continuous: sweep every 8.5 s; sheen crosses the bars; tick labels drift */
-  tl.fromTo(P+"sweep", { x: -300 }, { x: 2200, duration: 8.5, ease: "none", repeat: 2 }, 0);
+  tl.fromTo(P+"sweep", { x: -300 }, { x: 2200, duration: 7.1, ease: "none", repeat: 2 }, 0);
   tl.fromTo([P+"s1", P+"s2", P+"s3"], { x: 0 }, { x: 560, duration: 2.2, ease: "none", repeat: 8, repeatDelay: 0.2 }, 0.3);
   tl.to([P+"t150", P+"t200", P+"tmph"], { x: -10, duration: 2.1, ease: "sine.inOut", yoyo: true, repeat: 9 }, 0.4);
 
