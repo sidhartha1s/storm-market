@@ -32,7 +32,7 @@ Segment after: **A6-S1** ("Tony Lyza's change was to lower the line between E F 
   paragraph; a paragraph split into several segments carries the picture note on the first one only (same shot
   continues into the rest).
 - Homographs respelled in the TTS copy only (CLAUDE.md Voice; script_v2.md "TTS copy notes"), wording/meaning kept:
-  "wind"/"winds" (noun, every use) -> "wihnd"/"wihnds"; "lives" (noun) stays "lives" (27 Sep 26: the old "lyvz" respelling
+  "wind"/"winds" (noun, every use) -> "wihnd"/"wihnds"; "lives" (noun) stays "lives" (27 Sep 26: the old "l-y-v-z" respelling
   voiced /lɪvz/; measured F1 403 Hz over 35 ms vs plain "lives" F1 614-769 Hz over 185 ms = /laɪvz/; probe table in
   %TEMP%\lives-probe\table.md); "Valley News Live" -> "Valley News
   Lyve". None of "read/lead/tear/bass/close/present/record" occur as narration in this script (checked).
@@ -73,7 +73,7 @@ Segment after: **A6-S1** ("Tony Lyza's change was to lower the line between E F 
 > Three miles east of town, on Highway forty six, it hit the home of a couple named Michael and Katherine. They were both seventy three, and neither of them survived. On another stretch of the path, it hit the farm of Marcario Lucio, who was eighty nine.
 
 ### I1-S4 — narration
-> His wife, Roberta, made it through the night, and the storm took Marcario's life. No North Dakota tornado had taken that many lyvz since nineteen seventy eight.
+> His wife, Roberta, made it through the night, and the storm took Marcario's life. No North Dakota tornado had taken that many lives since nineteen seventy eight.
 
 ### I1-S5 — narration
 **Picture:** NWS survey b-roll (PD), a team walking a debris field · popfig "EF3" · then a North Dakota map where twenty four small tracks land one by one.
@@ -166,24 +166,24 @@ Segment after: **A6-S1** ("Tony Lyza's change was to lower the line between E F 
 
 ### A2-S3 — narration
 **Picture:** g-drought-timeline from the start · marks land one by one with PD stills: Greensburg (FEMA), Parkersburg, the four of April 27, 2011, Joplin (FEMA).
-> On May fourth, two thousand seven, three months after the switch, the new scale had its first E F five. That was Greensburg, Kansas, where the tornado destroyed about ninety five percent of the town and eleven people lost their lyvz.
+> On May fourth, two thousand seven, three months after the switch, the new scale had its first E F five. That was Greensburg, Kansas, where the tornado destroyed about ninety five percent of the town and eleven people lost their lives.
 
 ### A2-S4 — narration
 > A year later, on May twenty fifth, two thousand eight, Parkersburg, Iowa, got the second, and the toll there was nine.
 
 ### A2-S5 — narration
-> Then came April twenty seventh, twenty eleven, when four E F fives touched down in Mississippi and Alabama on one day. No single day since the new scale began has matched that. About two hundred and sixteen tornadoes formed across the South that day. The one at Hackleburg and Phil Campbell, in Alabama, took seventy two lyvz.
+> Then came April twenty seventh, twenty eleven, when four E F fives touched down in Mississippi and Alabama on one day. No single day since the new scale began has matched that. About two hundred and sixteen tornadoes formed across the South that day. The one at Hackleburg and Phil Campbell, in Alabama, took seventy two lives.
 
 ### A2-S6 — narration
-> On May twenty second, less than a month later, the Joplin tornado took a hundred and fifty eight lyvz in Missouri. No single American tornado had taken more since nineteen forty seven.
+> On May twenty second, less than a month later, the Joplin tornado took a hundred and fifty eight lives in Missouri. No single American tornado had taken more since nineteen forty seven.
 
 ### A2-S7 — narration
 **Picture:** the El Reno and Piedmont 2011 mark lands, then a thin line reaches forward to a second El Reno mark in 2013 stamped "EF3".
-> Two days after Joplin, an E F five hit El Reno and Piedmont, in Oklahoma, and six people lost their lyvz. That was a different storm from the El Reno tornado two years later, the widest one. So one Oklahoma town has an E F five and an E F three, and the lower number belongs to the bigger storm.
+> Two days after Joplin, an E F five hit El Reno and Piedmont, in Oklahoma, and six people lost their lives. That was a different storm from the El Reno tornado two years later, the widest one. So one Oklahoma town has an E F five and an E F three, and the lower number belongs to the bigger storm.
 
 ### A2-S8 — narration
 **Picture:** Moore 2013, FEMA PD footage of the Plaza Towers area · popfig "May 20, 2013" · then a small inset "Moore · May 3, 1999 · F5".
-> Then, on Monday, May twentieth, twenty thirteen, an E F five crossed Moore, Oklahoma. Twenty four people lost their lyvz, and seven of them were children at Plaza Towers Elementary School. Moore had neighborhoods of modern homes in the path, and surveyors found some of them swept off their slabs.
+> Then, on Monday, May twentieth, twenty thirteen, an E F five crossed Moore, Oklahoma. Twenty four people lost their lives, and seven of them were children at Plaza Towers Elementary School. Moore had neighborhoods of modern homes in the path, and surveyors found some of them swept off their slabs.
 
 ### A2-S9 — narration
 > The same city had been hit by an F five on May third, nineteen ninety nine. A mobile radar measured about three hundred and one miles an hour in that storm. It kept its five, because it had houses to prove it.
@@ -257,7 +257,7 @@ Segment after: **A6-S1** ("Tony Lyza's change was to lower the line between E F 
 > At two minutes past eleven, it touched down along Fifty Eighth Street Southeast, in Ransom County. From there, it had nineteen minutes and twelve miles of farm country ahead of it. That works out to about thirty eight miles an hour across the ground. It came down after dark.
 
 ### A3-S8 — narration
-> A two thousand eight study found night tornadoes about two and a half times as likely to take lyvz as daytime ones.
+> A two thousand eight study found night tornadoes about two and a half times as likely to take lives as daytime ones.
 
 ### A3-S9 — narration
 **Picture:** g-radar: the self-made Level II re-plot, velocity panel with the couplet ringed, then the correlation coefficient panel with the debris signature ringed; timestamps from the data, not from the script.
@@ -397,7 +397,7 @@ Segment after: **A6-S1** ("Tony Lyza's change was to lower the line between E F 
 
 ### A5-S6 — narration
 **Picture:** a North Dakota map, a Fargo pin · popfig "June 20, 1957".
-> North Dakota had seen the top of the scale before. At Fargo, on June twentieth, nineteen fifty seven, an F five came down, sixty eight years to the day before Enderlin. That storm took at least ten lyvz in Fargo.
+> North Dakota had seen the top of the scale before. At Fargo, on June twentieth, nineteen fifty seven, an F five came down, sixty eight years to the day before Enderlin. That storm took at least ten lives in Fargo.
 
 ### A5-S7 — narration
 **Picture:** the El Reno split card, both stamps flipping in opposite directions with their dates.
@@ -460,7 +460,7 @@ Segment after: **A6-S1** ("Tony Lyza's change was to lower the line between E F 
 
 ### Z1-S1 — narration
 **Picture:** the master map, the track fading to a single line · text-only names card, each name landing on the voice · slow push on a PD survey photo of the path (credit checked) · g-outro.
-> The storm that came through Enderlin on June twentieth was rated an E F three. A hundred and eight days later, it became an E F five. Three people lost their lyvz on its path, and the Cass County Sheriff's Office released their names on Sunday, June twenty second.
+> The storm that came through Enderlin on June twentieth was rated an E F three. A hundred and eight days later, it became an E F five. Three people lost their lives on its path, and the Cass County Sheriff's Office released their names on Sunday, June twenty second.
 
 ### Z1-S2 — narration
 > Michael and Katherine, both seventy three, were in their home on Highway forty six, three miles east of town. Marcario Lucio was eighty nine, and his wife, Roberta, survived the storm that took him.
