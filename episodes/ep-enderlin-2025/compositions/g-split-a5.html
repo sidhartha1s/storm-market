@@ -2,27 +2,122 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-split-a5"
-     (host 1270.924 -> 1283.933, 13.009 s, track 2). The MG builder replaces this whole file. -->
+<!-- g-split-a5 (B3): host 1270.924 -> 1283.933 (13.009 s, track 2), audio a5-s7 mounts at 0 (local = word time).
+     The two ratings flip in opposite directions with their dates: El Reno EF5 -> EF3 (August 2013), Enderlin EF3 -> EF5
+     (October 2025); one rule joins them. Cues: El Reno 0.00, lost its five 0.58-1.10, August 2013 1.70, Enderlin 3.96,
+     gained one 4.30-4.58, October 2025 5.06, both 7.40, same rule 9.20, the rating goes by 10.46. Exit 12.376. -->
 <template>
 <style>
-  .ph-split-a5 { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .ph-split-a5-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-split-a5-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
-  .ph-split-a5-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .sp4-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .sp4-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.06) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .sp4-glow { position:absolute; width:1000px; height:700px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(127,178,229,0.12), rgba(127,178,229,0) 70%); }
+  .sp4-div { position:absolute; left:959px; top:40px; width:2px; height:540px;
+    background: linear-gradient(180deg, rgba(147,163,178,0), rgba(147,163,178,0.45) 30%, rgba(147,163,178,0.45) 70%, rgba(147,163,178,0)); }
+  .sp4-side { position:absolute; top:0; width:960px; height:1080px; }
+  .sp4-eb { position:absolute; left:0; right:0; top:80px; text-align:center; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; }
+  .sp4-name { position:absolute; left:0; right:0; top:110px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-size:60px; line-height:72px; color:#f2f5f8; }
+  .sp4-g { position:absolute; left:290px; width:380px; top:220px; text-align:center; }
+  .sp4-stamp { display:inline-block; padding:6px 30px 0; border:6px solid; border-radius:14px;
+    font-family:'AbrilFig', Georgia, serif; line-height:1; letter-spacing:4px; font-size:140px; }
+  .sp4-ef5 { color:#d0121f; border-color:#d0121f; text-shadow:0 0 34px rgba(208,18,31,0.55), 0 6px 26px rgba(0,0,0,0.8); }
+  .sp4-ef3 { color:#dfe7ee; border-color:rgba(223,231,238,0.85); text-shadow:0 6px 30px rgba(0,0,0,0.7); }
+  .sp4-date { position:absolute; left:0; right:0; top:430px; text-align:center; font-family: Georgia, serif; font-style:italic; font-size:34px; color:#d8a13a; }
+  .sp4-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .sp4-rule { position:absolute; left:96px; right:96px; top:700px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-size:52px; line-height:64px; color:#f2f5f8; }
+  .sp4-uline { position:absolute; left:360px; width:1200px; top:790px; height:4px; border-radius:2px; background:#e8c56a; }
 </style>
-<div class="ph-split-a5" data-composition-id="g-split-a5" data-width="1920" data-height="1080" data-duration="13.009">
-  <div class="ph-split-a5-card" id="ph-split-a5-card">
-    <div class="ph-split-a5-t" id="ph-split-a5-t">g-split-a5</div>
-    <div class="ph-split-a5-s" id="ph-split-a5-s">Placeholder · To Build</div>
+<div class="sp4-wrap" data-composition-id="g-split-a5" data-width="1920" data-height="1080" data-duration="13.009">
+  <div class="sp4-grid" id="sp4-grid"></div>
+  <div class="sp4-glow" id="sp4-glowl" style="left:-160px; top:120px;"></div>
+  <div class="sp4-glow" id="sp4-glowr" style="left:1060px; top:160px;"></div>
+  <div class="sp4-div" id="sp4-div"></div>
+  <div class="sp4-side" id="sp4-left" style="left:0;">
+    <div class="sp4-eb" id="sp4-l-eb">Oklahoma</div>
+    <div class="sp4-name" id="sp4-l-name">El Reno</div>
+    <div class="sp4-g" id="sp4-l5"><div class="sp4-stamp sp4-ef5" id="sp4-l-ef5">EF5</div></div>
+    <div class="sp4-g" id="sp4-l3"><div class="sp4-stamp sp4-ef3" id="sp4-l-ef3">EF3</div></div>
+    <div class="sp4-date" id="sp4-l-date">August 2013</div>
   </div>
+  <div class="sp4-side" id="sp4-right" style="left:960px;">
+    <div class="sp4-eb" id="sp4-r-eb">North Dakota</div>
+    <div class="sp4-name" id="sp4-r-name">Enderlin</div>
+    <div class="sp4-g" id="sp4-r3"><div class="sp4-stamp sp4-ef3" id="sp4-r-ef3">EF3</div></div>
+    <div class="sp4-g" id="sp4-r5"><div class="sp4-stamp sp4-ef5" id="sp4-r-ef5">EF5</div></div>
+    <div class="sp4-date" id="sp4-r-date">October 2025</div>
+  </div>
+  <svg class="sp4-svg" viewBox="0 0 1920 1080">
+    <path id="sp4-ldn" d="M760 250 V380" stroke="#e8c56a" stroke-width="6" stroke-linecap="round"/>
+    <path id="sp4-ldnh" d="M742 362 L760 384 L778 362" fill="none" stroke="#e8c56a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="sp4-rup" d="M1720 384 V254" stroke="#e8c56a" stroke-width="6" stroke-linecap="round"/>
+    <path id="sp4-ruph" d="M1702 272 L1720 250 L1738 272" fill="none" stroke="#e8c56a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="sp4-brk" d="M480 500 V600 H1440 V500" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linejoin="round"/>
+    <path id="sp4-stem" d="M960 600 V670" stroke="#93a3b2" stroke-width="4"/>
+    <circle id="sp4-node" cx="960" cy="600" r="10" fill="#e8c56a"/>
+  </svg>
+  <div class="sp4-rule" id="sp4-rule">The Rating Goes by What the Damage Can Prove</div>
+  <div class="sp4-uline" id="sp4-uline"></div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-split-a5-card", { x: 0 }, { x: 40, duration: 13.009, ease: "none" }, 0);
+  const DUR = 13.009;
+  const dash = (id) => { const p = document.getElementById(id); const L = Math.ceil(p.getTotalLength()) + 1; p.style.strokeDasharray = L; return L; };
+  const LD = dash("sp4-ldn"), RU = dash("sp4-rup"), BK = dash("sp4-brk"), ST = dash("sp4-stem");
+  tl.set(["#sp4-l3", "#sp4-r5", "#sp4-l-date", "#sp4-r-date", "#sp4-ldnh", "#sp4-ruph", "#sp4-node", "#sp4-rule", "#sp4-uline"], { autoAlpha: 0 }, 0);
+  tl.set(["#sp4-l3", "#sp4-r5"], { scaleY: 0, transformOrigin: "50% 40%" }, 0);
+  tl.set("#sp4-ldn", { strokeDashoffset: LD }, 0);
+  tl.set("#sp4-rup", { strokeDashoffset: RU }, 0);
+  tl.set("#sp4-brk", { strokeDashoffset: BK }, 0);
+  tl.set("#sp4-stem", { strokeDashoffset: ST }, 0);
+  tl.set("#sp4-uline", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* ambient, whole window */
+  tl.fromTo("#sp4-grid", { x: 0 }, { x: 200, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#sp4-glowl", { x: 0, y: 0 }, { x: 240, y: 60, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#sp4-glowr", { x: 0, y: 0 }, { x: -240, y: -40, duration: DUR, ease: "none" }, 0);
+
+  /* both old ratings on the board at the cut */
+  tl.fromTo("#sp4-left", { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0);
+  tl.fromTo("#sp4-right", { autoAlpha: 0, x: 50 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.05);
+  tl.fromTo("#sp4-div", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power3.out" }, 0);
+  tl.fromTo(["#sp4-l5", "#sp4-r3"], { rotation: 0 }, { rotation: -3, duration: 0.4, ease: "power2.out" }, 0.1);
+
+  /* LOST ITS FIVE @0.58-1.10: El Reno flips down; AUGUST 2013 @1.70 */
+  tl.to("#sp4-ldn", { strokeDashoffset: 0, duration: 0.4, ease: "power2.inOut" }, 0.58);
+  tl.fromTo("#sp4-ldnh", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.2, ease: "power2.out" }, 0.9);
+  tl.to("#sp4-l5", { scaleY: 0, duration: 0.14, ease: "power2.in" }, 0.96);
+  tl.set("#sp4-l5", { autoAlpha: 0 }, 1.1);
+  tl.to("#sp4-l3", { autoAlpha: 1, scaleY: 1, rotation: -3, duration: 0.22, ease: "back.out(2)" }, 1.1);
+  tl.fromTo("#sp4-l-date", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.7);
+
+  /* GAINED ONE @4.30-4.58: Enderlin flips up; OCTOBER 2025 @5.06 */
+  tl.to("#sp4-rup", { strokeDashoffset: 0, duration: 0.4, ease: "power2.inOut" }, 4.3);
+  tl.fromTo("#sp4-ruph", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.2, ease: "power2.out" }, 4.6);
+  tl.to("#sp4-r3", { scaleY: 0, duration: 0.14, ease: "power2.in" }, 4.44);
+  tl.set("#sp4-r3", { autoAlpha: 0 }, 4.58);
+  tl.to("#sp4-r5", { autoAlpha: 1, scaleY: 1, rotation: -3, duration: 0.22, ease: "back.out(2)" }, 4.58);
+  tl.fromTo("#sp4-r-date", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.06);
+  /* the new ratings breathe through the hold */
+  tl.fromTo(["#sp4-l-ef3", "#sp4-r-ef5"], { scale: 1 }, { scale: 1.04, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 3 }, 5.6);
+
+  /* BOTH @7.40 ... SAME RULE @9.20: one bracket joins them */
+  tl.to("#sp4-brk", { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" }, 7.4);
+  tl.fromTo("#sp4-node", { autoAlpha: 0, scale: 0, svgOrigin: "960 600" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, 9.2);
+  tl.to("#sp4-stem", { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 9.35);
+  tl.fromTo("#sp4-node", { scale: 1 }, { scale: 1.5, svgOrigin: "960 600", duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 3 }, 9.6);
+  /* THE RATING GOES BY WHAT THE DAMAGE CAN PROVE @10.46 */
+  tl.fromTo("#sp4-rule", { autoAlpha: 0, y: 26 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 10.46);
+  tl.to("#sp4-uline", { autoAlpha: 1, scaleX: 1, duration: 1.4, ease: "power2.inOut" }, 10.7);
+
+  /* exit (spec 1283.3 -> 12.376) */
+  tl.to(["#sp4-left", "#sp4-right", "#sp4-rule", "#sp4-uline", "#sp4-brk", "#sp4-stem", "#sp4-node", "#sp4-ldn", "#sp4-ldnh", "#sp4-rup", "#sp4-ruph"],
+        { y: -40, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 12.376);
+  tl.to("#sp4-div", { autoAlpha: 0, duration: 0.5 }, 12.4);
   window.__timelines["g-split-a5"] = tl;
 })();
 </script>
