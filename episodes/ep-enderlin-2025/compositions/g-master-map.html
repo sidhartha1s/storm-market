@@ -2,28 +2,187 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-master-map"
-     (host 23.104 -> 73.503, 50.399 s, track 2). The MG builder replaces this whole file. -->
+<!-- g-master-map (B1): the Enderlin track on a real basemap. Host 23.104 -> 73.503 (50.399 s, track 2).
+     Basemap: research/b1-maps (OSM + NWS Grand Forks survey track, georeferenced; inject.py pastes it). -->
 <template>
 <style>
-  .ph-master-map { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .ph-master-map-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-master-map-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
-  .ph-master-map-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  #g-master-map-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 38% 50%, #0b1016 0%, #030507 78%); }
+  .mm0-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .mm0-lab { font-family:Arial, sans-serif; font-weight:700; fill:#dfe7ee; paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .mm0-dim { fill:#93a3b2; }
+  .mm0-scan { position:absolute; left:0; top:0; width:1180px; height:2px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
+  .mm0-rail { position:absolute; right:0; top:0; bottom:0; width:820px; box-sizing:border-box; pointer-events:none;
+    background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); }
+  .mm0-eb { position:absolute; left:1270px; top:300px; font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  .mm0-row { position:absolute; left:1270px; width:554px; }
+  .mm0-val { font-size:30px; font-weight:700; letter-spacing:1px; color:#dfe7ee; white-space:nowrap; }
+  .mm0-rlab { margin-top:6px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .mm0-card { position:absolute; left:1250px; top:330px; width:574px; box-sizing:border-box; padding:34px 40px 38px;
+    border-radius:28px; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  .mm0-ceb { font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; }
+  .mm0-name { margin-top:14px; font-family:'Arial Black', Arial, sans-serif; font-size:40px; line-height:1.12; color:#f2f5f8; }
+  .mm0-age { margin-top:18px; font-family:'Arial Black', Arial, sans-serif; font-size:56px; line-height:1; color:#f2f5f8; }
+  .mm0-sub { margin-top:16px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  .mm0-hl { position:absolute; left:1270px; width:554px; font-family:'Arial Black', Arial, sans-serif; font-size:52px; line-height:1.1; color:#f2f5f8; }
 </style>
-<div class="ph-master-map" data-composition-id="g-master-map" data-width="1920" data-height="1080" data-duration="50.399">
-  <div class="ph-master-map-card" id="ph-master-map-card">
-    <div class="ph-master-map-t" id="ph-master-map-t">g-master-map</div>
-    <div class="ph-master-map-s" id="ph-master-map-s">Placeholder · To Build</div>
+<div id="g-master-map-root" data-composition-id="g-master-map" data-width="1920" data-height="1080" data-duration="50.399">
+  <svg class="mm0-svg" viewBox="0 0 1920 1080">
+    <g id="g-master-map-cam"><g id="g-master-map-drift">
+      <!--BASEMAP:g-master-map--><!--/BASEMAP-->
+      <g id="g-master-map-blips"></g>
+      <circle id="g-master-map-tdring" cx="-101.5" cy="316.9" r="10" fill="none" stroke="#e74c3c" stroke-width="3" vector-effect="non-scaling-stroke"/>
+      <circle id="g-master-map-tddot" cx="-101.5" cy="316.9" r="9" fill="#e74c3c"/>
+      <text id="g-master-map-t-enderlin" class="mm0-lab" x="-101.9" y="100" text-anchor="middle" font-size="28">Enderlin</text>
+      <g id="g-master-map-fargo">
+        <path id="g-master-map-fargoline" d="M-65.5,22.4 L407.6,-193.3" fill="none" stroke="#e8c56a" stroke-width="2.5" stroke-dasharray="524" stroke-dashoffset="524" vector-effect="non-scaling-stroke"/>
+        <path id="g-master-map-fargohead" d="M407.6,-193.3 L386.5,-173.6 M407.6,-193.3 L380.0,-196.9" fill="none" stroke="#e8c56a" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
+        <text id="g-master-map-t-fargo" class="mm0-lab" x="420" y="-196" font-size="28" fill="#e8c56a">Fargo · 40 mi</text>
+      </g>
+      <g id="g-master-map-wbar">
+        <path d="M155.1,125.9 L84.5,97.4 M151.4,134.9 L158.8,116.9 M80.8,106.4 L88.2,88.4" fill="none" stroke="#f2f5f8" stroke-width="3" vector-effect="non-scaling-stroke"/>
+      </g>
+      <text id="g-master-map-t-w1" class="mm0-lab" x="172" y="132" font-size="21">1.05 Mi</text>
+      <text id="g-master-map-t-w2" class="mm0-lab mm0-dim" x="172" y="150" font-size="13.5">18 Football Fields</text>
+      <circle id="g-master-map-pinring" cx="174.0" cy="2.5" r="8" fill="none" stroke="#e8c56a" stroke-width="3" vector-effect="non-scaling-stroke"/>
+      <circle id="g-master-map-pin" cx="174.0" cy="2.5" r="6" fill="#e8c56a"/>
+      <text id="g-master-map-t-hwy" class="mm0-lab" x="188" y="-8" font-size="20">Highway 46</text>
+    </g></g>
+  </svg>
+  <div class="mm0-scan" id="g-master-map-scan"></div>
+  <div class="mm0-rail" id="g-master-map-railbg"></div>
+  <div class="mm0-eb" id="g-master-map-eb">ENDERLIN TORNADO</div>
+  <div class="mm0-row" id="g-master-map-r1" style="top:350px"><div class="mm0-val">19 Min</div><div class="mm0-rlab">ON THE GROUND</div></div>
+  <div class="mm0-card" id="g-master-map-c1">
+    <div class="mm0-ceb">HIGHWAY 46</div>
+    <div class="mm0-name">Michael and Katherine Pfaff-Dehn</div>
+    <div class="mm0-age" id="g-master-map-c1age">Both 73</div>
   </div>
+  <div class="mm0-card" id="g-master-map-c2">
+    <div class="mm0-ceb">ON THE PATH</div>
+    <div class="mm0-name">Marcario Lucio</div>
+    <div class="mm0-age" id="g-master-map-c2age">89</div>
+    <div class="mm0-sub" id="g-master-map-c2sub">Roberta survived</div>
+  </div>
+  <div class="mm0-hl" id="g-master-map-h1" style="top:380px">Most ND Lives Lost</div>
+  <div class="mm0-hl" id="g-master-map-h2" style="top:440px">Since 1978</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
+  const ID = "g-master-map", P = "#g-master-map-";
+  /* cues: audio/i1-s1..s4.words.json, episode s minus host start 23.104 */
+  const CUES = {
+    touched: 6.916,   /* touched @30.02 */
+    enderlin: 9.016,  /* Enderlin @32.12 */
+    fargo: 14.216,    /* Fargo @37.32 */
+    nineteen: 15.236, /* 19 @38.34 */
+    farmland: 17.896, /* farmland @41.00 */
+    widest: 19.626,   /* widest @42.73 */
+    mile: 20.736,     /* mile @43.84 */
+    fields: 22.006,   /* 18 football fields @45.11 */
+    onemile: 24.926,  /* One mile east @48.03 */
+    hwy: 27.086,      /* 46 @50.19 */
+    michael: 29.566,  /* Michael @52.67 */
+    age73: 31.626,    /* 73 @54.73 */
+    marcario: 37.546, /* Marcario @60.65 */
+    age89: 39.266,    /* 89 @62.37 */
+    roberta: 41.386,  /* Roberta @64.49 */
+    nond: 46.006,     /* No North Dakota @69.11 */
+    y1978: 48.606     /* 1978 @71.71 */
+  };
+  const DUR = 50.399;
+  const EXIT = 49.796; /* spec exit 72.9 */
+  const TLEN = 974;    /* basemap.json track_len (ceil + 1) */
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-master-map-card", { x: 0 }, { x: 40, duration: 50.399, ease: "none" }, 0);
-  window.__timelines["g-master-map"] = tl;
+  const cam = (wx, wy, s) => ({ x: 560 - wx * s, y: 540 - wy * s, scale: s, svgOrigin: "0 0" });
+
+  /* ---- initial state ---- */
+  tl.set(P + "cam", cam(40, 0, 0.80), 0);
+  tl.set([P + "t-enderlin", P + "fargo", P + "wbar", P + "t-w1", P + "t-w2", P + "pin", P + "pinring", P + "t-hwy", P + "tddot", P + "tdring"], { autoAlpha: 0 }, 0);
+  tl.set([P + "eb", P + "r1", P + "c1", P + "c2", P + "c1age", P + "c2age", P + "c2sub", P + "h1", P + "h2"], { autoAlpha: 0 }, 0);
+
+  /* ---- ambient, whole window ---- */
+  tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: 10, ease: "none", repeat: 4, yoyo: true }, 0);
+  tl.fromTo(P + "drift", { x: 0, y: 0 }, { x: -14, y: 10, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "l-river", { opacity: 0.55 }, { opacity: 1, duration: 2.5, ease: "sine.inOut", repeat: 19, yoyo: true }, 0);
+
+  /* ---- basemap draws in, camera slow push ---- */
+  tl.fromTo(P + "l-grid", { opacity: 0 }, { opacity: 1, duration: 1.2, ease: "power2.out" }, 0.1);
+  tl.fromTo([P + "l-roads", P + "l-hwy", P + "l-power", P + "l-county"], { opacity: 0 }, { opacity: 1, duration: 1.0, stagger: 0.25, ease: "power2.out" }, 0.3);
+  tl.fromTo([P + "l-rail", P + "l-town"], { opacity: 0 }, { opacity: 1, duration: 0.8, stagger: 0.3, ease: "power2.out" }, 0.9);
+  tl.to(P + "cam", Object.assign(cam(40, 0, 0.86), { duration: 18.9, ease: "none" }), 0);
+
+  /* ---- touchdown, track draws north to the lift point ---- */
+  tl.fromTo(P + "tddot", { autoAlpha: 0, scale: 0, svgOrigin: "-101.5 316.9" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.5)" }, CUES.touched);
+  tl.fromTo(P + "tdring", { autoAlpha: 0.9, attr: { r: 10 } }, { autoAlpha: 0, attr: { r: 48 }, duration: 1.1, ease: "power2.out", repeat: 3, repeatDelay: 0.4 }, CUES.touched);
+  tl.fromTo(P + "track", { strokeDashoffset: TLEN }, { strokeDashoffset: 0, duration: 10.98, ease: "none" }, CUES.touched);
+  tl.fromTo(P + "swmp", { strokeDashoffset: TLEN }, { strokeDashoffset: 0, duration: 10.98, ease: "none" }, CUES.touched);
+  tl.fromTo(P + "eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 7.0);
+  tl.fromTo(P + "t-enderlin", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.enderlin);
+
+  /* ---- Fargo leader (off-map, to the northeast) ---- */
+  tl.set(P + "fargo", { autoAlpha: 1 }, CUES.fargo);
+  tl.fromTo(P + "fargoline", { strokeDashoffset: 524 }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }, CUES.fargo);
+  tl.fromTo(P + "fargohead", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 }, CUES.fargo + 0.6);
+  tl.fromTo(P + "t-fargo", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.fargo + 0.35);
+  tl.to(P + "fargo", { autoAlpha: 0, duration: 0.4 }, 18.8);
+
+  /* ---- rail: 19 minutes ---- */
+  tl.fromTo(P + "r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.nineteen);
+
+  /* ---- widest: push in on the widest cross-section ---- */
+  tl.to(P + "cam", Object.assign(cam(120, 112, 1.5), { duration: 1.6, ease: "power2.inOut" }), 18.9);
+  tl.fromTo(P + "swath", { attr: { "fill-opacity": 0.38 } }, { attr: { "fill-opacity": 0.62 }, duration: 1.4, ease: "sine.inOut", repeat: 21, yoyo: true }, CUES.farmland);
+  tl.fromTo(P + "wbar", { autoAlpha: 0, scaleX: 0, svgOrigin: "119.8 111.7" }, { autoAlpha: 1, scaleX: 1, duration: 0.5, ease: "power3.out" }, CUES.mile);
+  tl.fromTo(P + "t-w1", { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.mile + 0.1);
+  tl.fromTo(P + "t-w2", { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.fields);
+  tl.to([P + "wbar", P + "t-w1", P + "t-w2"], { autoAlpha: 0, duration: 0.4 }, 24.5);
+
+  /* ---- Highway 46 ---- */
+  tl.to(P + "cam", Object.assign(cam(174, 2.5, 1.5), { duration: 1.8, ease: "power2.inOut" }), CUES.onemile);
+  tl.to(P + "l-hwy", { opacity: 1, duration: 0.3 }, CUES.onemile);
+  tl.fromTo(P + "pin", { autoAlpha: 0, scale: 0, svgOrigin: "174 2.5" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.5)" }, CUES.hwy);
+  tl.fromTo(P + "pinring", { autoAlpha: 0.9, attr: { r: 8 } }, { autoAlpha: 0, attr: { r: 34 }, duration: 1.2, ease: "power2.out", repeat: 14, repeatDelay: 0.2 }, CUES.hwy);
+  tl.fromTo(P + "t-hwy", { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.hwy + 0.1);
+  tl.to(P + "r1", { autoAlpha: 0, y: -16, duration: 0.4, ease: "power2.in" }, 28.6);
+  tl.to(P + "cam", Object.assign(cam(150, 30, 1.38), { duration: 16.0, ease: "none" }), 29.0);
+
+  /* ---- name cards ---- */
+  tl.fromTo(P + "c1", { autoAlpha: 0, x: 120 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, CUES.michael);
+  tl.fromTo(P + "c1age", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.age73);
+  tl.to(P + "c1", { autoAlpha: 0, x: 700, duration: 0.55, ease: "power3.in" }, 36.85);
+  tl.fromTo(P + "c2", { autoAlpha: 0, x: 120 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, CUES.marcario);
+  tl.fromTo(P + "c2age", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.age89);
+  tl.fromTo(P + "c2sub", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.roberta);
+  tl.to(P + "c2", { autoAlpha: 0, x: 700, duration: 0.55, ease: "power3.in" }, 45.3);
+  tl.to([P + "pin", P + "pinring", P + "t-hwy"], { autoAlpha: 0, duration: 0.5 }, 45.3);
+
+  /* ---- 1978 ---- */
+  tl.to(P + "cam", Object.assign(cam(40, 0, 0.9), { duration: 3.2, ease: "power2.inOut" }), 45.3);
+  tl.fromTo(P + "h1", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.nond);
+  tl.fromTo(P + "h2", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.y1978);
+
+  /* ---- exit: rail slides out, map keeps its slow push ---- */
+  tl.to([P + "eb", P + "h1", P + "h2"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, EXIT);
+  tl.to(P + "cam", Object.assign(cam(40, 0, 0.93), { duration: 1.3, ease: "none" }), 48.6);
+
+  /* rail blips: lights along the finished track, one every ~1.2 s */
+  const trk = document.querySelector(P + "track"), bl = document.querySelector(P + "blips");
+  if (trk && bl) {
+    const L = trk.getTotalLength();
+    for (let i = 0; i < 6; i++) {
+      const pt = trk.getPointAtLength(L * (0.08 + i * 0.17));
+      const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      c.setAttribute("id", ID + "-blip" + i); c.setAttribute("cx", pt.x.toFixed(1)); c.setAttribute("cy", pt.y.toFixed(1));
+      c.setAttribute("r", "4"); c.setAttribute("fill", "#f5d98b"); bl.appendChild(c);
+      tl.set(c, { autoAlpha: 0 }, 0);
+      tl.fromTo(c, { autoAlpha: 0.95, attr: { r: 4 } }, { autoAlpha: 0, attr: { r: 18 }, duration: 1.0, ease: "power2.out", repeat: 3, repeatDelay: 6.2 }, 18.2 + i * 1.2);
+    }
+  }
+  window.__timelines[ID] = tl;
 })();
 </script>
 </template>
