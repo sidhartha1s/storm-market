@@ -37,7 +37,7 @@ Segment after: **A6-S1** ("Tony Lyza's change was to lower the line between E F 
 - Zero open verify-tag markers: script_v2.md carried three (bracket-tag) mentions are all in its front-matter/word-table notes
   about the *previous* draft process, not inline in the narration body -- confirmed by scan, none carried into this
   file.
-- Segment count: 106. Hook segment (H1-S1) is exactly the owner's locked line.
+- Segment count: 107 (Z1-S3 signature closing footnote added 27 Sep 26 after the owner's draft review). Hook segment (H1-S1) is exactly the owner's locked line.
 
 ---
 
