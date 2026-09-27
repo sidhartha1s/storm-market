@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-premise: fixed HUD over g-tornado-premise (host 5.841 -> 11.50). The night, the place, three lives lost.
+     Owner-approved hook cut (demo-hook-h2), copied verbatim, RETIMED for ep-enderlin-2025. The demo's line (h1-s3,
+     "three people lost their lives") does not exist in this episode's locked script; this HUD now rides the line after
+     the hook, t1-s1 sentence one ("The Enderlin tornado was the first E F five in America in twelve years."), because
+     the channel post-mortem (27 Sep 26) needs the toll on screen inside 20 s and the line after the hook to stay in the
+     hook's night scene. The count lands at 8.98 s episode time.
+     Cues from audio/t1-s1.words.json; t1-s1 mounts at 5.841, so local = word time (voice onset 0.29, Enderlin 0.40,
+     tornado 0.78, first 1.68, EF5 1.96, America 3.14, 12 4.04, years 4.36, voice pause 5.06, "In 2013" 5.66). -->
+<template>
+<style>
+  .pm-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; }
+  .pm-flash { position:absolute; inset:0; mix-blend-mode:screen; pointer-events:none;
+    background: radial-gradient(ellipse at 62% 4%, rgba(210,226,255,0.8), rgba(127,178,229,0.28) 42%, rgba(20,30,60,0) 78%); }
+  .pm-glow { position:absolute; left:1100px; top:-280px; width:1000px; height:560px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(127,178,229,0.14), rgba(127,178,229,0) 70%); mix-blend-mode:screen; }
+  .pm-card { position:absolute; left:96px; bottom:84px; padding:30px 44px 30px 40px; border-radius:28px;
+    background: rgba(10,16,24,0.55); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 20px 60px rgba(0,0,0,0.45); }
+  .pm-date { font-family: Georgia, serif; font-style:italic; font-size:30px; color:#d8a13a; }
+  .pm-place { font-family:'Arial Black', Arial, sans-serif; font-size:60px; color:#f2f5f8; line-height:1.1; margin-top:8px; white-space:nowrap; }
+  .pm-lost { margin-top:14px; white-space:nowrap; }
+  .pm-count { display:inline-block; font-family:'Courier New', monospace; font-weight:700; font-size:84px; color:#e74c3c; line-height:1; vertical-align:middle; }
+  .pm-lostlab { display:inline-block; margin-left:18px; font-weight:700; font-size:20px; letter-spacing:6px; color:#c8d3e0; vertical-align:middle; }
+  .pm-lead { position:absolute; left:0; top:0; width:1920px; height:1080px; pointer-events:none; }
+  .pm-lab { position:absolute; left:1330px; top:352px; width:490px; text-shadow:0 2px 12px rgba(0,0,0,0.95); }
+  .pm-lab-a { font-weight:700; font-size:30px; letter-spacing:1px; color:#f2f5f8; }
+  .pm-lab-b { font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2; margin-top:8px; }
+  .pm-scrim { position:absolute; left:1220px; top:250px; width:700px; height:340px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(4,7,10,0.6), rgba(4,7,10,0) 70%); }
+</style>
+<div class="pm-wrap" data-composition-id="g-premise" data-width="1920" data-height="1080" data-duration="9.01">
+  <div class="pm-glow" id="pm-glowdrift"></div>
+  <div class="pm-flash" id="pm-flash"></div>
+  <div class="pm-scrim" id="pm-scrim"></div>
+  <svg class="pm-lead" viewBox="0 0 1920 1080">
+    <path id="pm-leader" d="M1050 640 L1300 470 L1760 470" fill="none" stroke="#93a3b2" stroke-width="3"/>
+    <circle id="pm-tip" cx="1050" cy="640" r="9" fill="#e8c56a"/>
+  </svg>
+  <div class="pm-lab" id="pm-lab">
+    <div class="pm-lab-a" id="pm-lab-a">Wedge Tornado</div>
+    <div class="pm-lab-b" id="pm-lab-b">Up to 1.05 mi Wide</div>
+    <div class="pm-lab-b" id="pm-lab-c">12.1 mi Path, Farmland</div>
+  </div>
+  <div class="pm-card" id="pm-card">
+    <div class="pm-date" id="pm-date">Friday, June 20, 2025 &middot; 11:02 PM</div>
+    <div class="pm-place"><span id="pm-town">Enderlin,</span> <span id="pm-state">North Dakota</span></div>
+    <div class="pm-lost"><span class="pm-count" id="pm-count">1</span><span class="pm-lostlab" id="pm-lostlab">Lives Lost</span></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#pm-";
+  const lead = document.getElementById("pm-leader");
+  const LL = Math.ceil(lead.getTotalLength()) + 1;
+  lead.style.strokeDasharray = LL;
+  tl.set([P+"flash", P+"card", P+"date", P+"town", P+"state", P+"count", P+"lostlab", P+"lab-a", P+"lab-b", P+"lab-c", P+"tip", P+"leader", P+"scrim"], { autoAlpha: 0 }, 0);
+  tl.set(P+"leader", { strokeDashoffset: LL }, 0);
+  tl.set(P+"card", { x: 0, y: 0 }, 0);
+  tl.set(P+"lab", { x: 0 }, 0);
+
+  /* ambient: sky glow drift + slow card float for the whole window */
+  tl.fromTo(P+"glowdrift", { x: 0, y: 0 }, { x: -700, y: 50, duration: 9.01, ease: "none" }, 0);
+
+  /* JUNE @0.52 NIGHT @0.80: date line in a glass card */
+  tl.fromTo(P+"card", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.52);
+  tl.fromTo(P+"date", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.52);
+  tl.fromTo(P+"card", { y: 0 }, { y: -10, duration: 7.4, ease: "sine.inOut" }, 1.0);
+
+  /* TORNADO @2.86: lightning lights the wedge, leader draws to it */
+  tl.fromTo(P+"flash", { autoAlpha: 0 }, { autoAlpha: 0.85, duration: 0.05 }, 2.74);
+  tl.to(P+"flash", { autoAlpha: 0, duration: 0.45, ease: "power2.out" }, 2.8);
+  tl.to(P+"flash", { autoAlpha: 0.4, duration: 0.04 }, 3.32);
+  tl.to(P+"flash", { autoAlpha: 0, duration: 0.3 }, 3.36);
+  tl.to(P+"scrim", { autoAlpha: 1, duration: 0.4 }, 2.86);
+  tl.fromTo(P+"tip", { autoAlpha: 0, scale: 0, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 2.86);
+  tl.to(P+"leader", { autoAlpha: 1, strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 2.92);
+  tl.fromTo(P+"lab-a", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.17);
+  tl.fromTo(P+"lab-b", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.42);
+  tl.fromTo(P+"tip", { scale: 1 }, { scale: 1.5, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 5, transformOrigin: "50% 50%" }, 3.42);
+  /* FARMS @3.76 */
+  tl.fromTo(P+"lab-c", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.76);
+
+  /* ENDERLIN @4.48, NORTH DAKOTA @5.38 */
+  tl.fromTo(P+"town", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 4.48);
+  tl.fromTo(P+"state", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 5.38);
+  tl.fromTo(P+"flash", { autoAlpha: 0 }, { autoAlpha: 0.3, duration: 0.05 }, 5.7);
+  tl.to(P+"flash", { autoAlpha: 0, duration: 0.4 }, 5.75);
+
+  /* THREE @6.40 PEOPLE @6.70 LOST @7.02: the count, then what it means */
+  tl.fromTo(P+"count", { autoAlpha: 0, scale: 1.4, transformOrigin: "left center" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.out" }, 6.26);
+  const cnt = { v: 1 };
+  tl.to(cnt, { v: 3, duration: 0.5, ease: "power3.out", onUpdate: function () { /* target: three lives lost, Enderlin 2025 */
+    const el = document.getElementById("pm-count"); if (el) el.textContent = Math.round(cnt.v);
+  } }, 6.4);
+  tl.fromTo(P+"lostlab", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 7.02);
+
+  /* exits: card slides out left, label slides out right; the host ends 9.01 on the cut to the scale */
+  tl.to(P+"card", { x: -1100, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 8.41);
+  tl.to(P+"lab", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 8.41);
+  tl.to([P+"leader", P+"tip", P+"scrim"], { autoAlpha: 0, duration: 0.4 }, 8.41);
+  window.__timelines["g-premise"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
