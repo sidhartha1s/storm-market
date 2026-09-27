@@ -2,28 +2,144 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-master-map-a4"
-     (host 983.958 -> 1038.499, 54.541 s, track 2). The MG builder replaces this whole file. -->
+<!-- g-master-map-a4 (B1): the second look, from the air and from Canada. Host 983.958 -> 1038.499 (54.541 s, track 2).
+     A clip covers 12.54-17.44 local; stills cover 43.84-54.44 local. Basemap: research/b1-maps; regional layer = US state
+     outlines + the 49th parallel; Elie, Manitoba 49.91 N 97.75 W. Drone video is named as text only (no footage). -->
 <template>
 <style>
-  .ph-master-map-a4 { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .ph-master-map-a4-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-master-map-a4-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
-  .ph-master-map-a4-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  #g-master-map-a4-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 38% 50%, #0b1016 0%, #030507 78%); }
+  .mm4-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .mm4-lab { font-family:Arial, sans-serif; font-weight:700; fill:#dfe7ee; paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .mm4-scan { position:absolute; left:0; top:0; width:1180px; height:2px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
+  .mm4-rail { position:absolute; right:0; top:0; bottom:0; width:820px; pointer-events:none;
+    background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); }
+  .mm4-card { position:absolute; left:1250px; top:300px; width:574px; box-sizing:border-box; padding:34px 40px 38px; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); }
+  .mm4-ceb { font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; text-transform:uppercase; }
+  .mm4-name { margin-top:14px; font-family:'Arial Black', Arial, sans-serif; font-size:40px; line-height:1.12; color:#f2f5f8; }
+  .mm4-big { margin-top:16px; font-family:'Arial Black', Arial, sans-serif; font-size:56px; line-height:1; color:#f2f5f8; white-space:nowrap; }
+  .mm4-sub { margin-top:14px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  .mm4-row { margin-top:20px; font-size:30px; font-weight:700; color:#dfe7ee; }
+  .mm4-rlab { margin-top:4px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; text-transform:uppercase; }
 </style>
-<div class="ph-master-map-a4" data-composition-id="g-master-map-a4" data-width="1920" data-height="1080" data-duration="54.541">
-  <div class="ph-master-map-a4-card" id="ph-master-map-a4-card">
-    <div class="ph-master-map-a4-t" id="ph-master-map-a4-t">g-master-map-a4</div>
-    <div class="ph-master-map-a4-s" id="ph-master-map-a4-s">Placeholder · To Build</div>
+<div id="g-master-map-a4-root" data-composition-id="g-master-map-a4" data-width="1920" data-height="1080" data-duration="54.541">
+  <svg class="mm4-svg" viewBox="0 0 1920 1080">
+    <g id="g-master-map-a4-cam"><g id="g-master-map-a4-drift">
+      <g id="g-master-map-a4-regional"><!--REGIONAL--><!--/REGIONAL-->
+        <text class="mm4-lab" x="-5600" y="-13700" font-size="560" fill="#7fb2e5">Canada</text>
+        <text class="mm4-lab" x="-5600" y="-12500" font-size="560" fill="#93a3b2">United States</text>
+        <circle cx="1680.5" cy="-18284" r="160" fill="#93a3b2"/><text class="mm4-lab" x="1950" y="-18120" font-size="520" fill="#93a3b2">Winnipeg</text>
+        <circle cx="3019.5" cy="-1384.5" r="160" fill="#93a3b2"/><text class="mm4-lab" x="3290" y="-1230" font-size="520" fill="#93a3b2">Fargo</text>
+        <circle id="g-master-map-a4-endot" cx="0" cy="0" r="200" fill="#e74c3c"/><text id="g-master-map-a4-t-end2" class="mm4-lab" x="-320" y="160" text-anchor="end" font-size="560">Enderlin</text>
+        <circle id="g-master-map-a4-elring" cx="-673" cy="-18368" r="200" fill="none" stroke="#e8c56a" stroke-width="4" vector-effect="non-scaling-stroke"/>
+        <circle id="g-master-map-a4-elie" cx="-673" cy="-18368" r="220" fill="#e8c56a"/>
+        <text id="g-master-map-a4-t-elie" class="mm4-lab" x="-1000" y="-18200" text-anchor="end" font-size="600" fill="#e8c56a">Elie, Manitoba</text>
+      </g>
+      <g id="g-master-map-a4-local">
+        <!--BASEMAP:g-master-map-a4--><!--/BASEMAP-->
+        <g id="g-master-map-a4-pts" fill="#f5d98b"></g>
+        <text id="g-master-map-a4-t-end" class="mm4-lab" x="-101.9" y="96" text-anchor="middle" font-size="22">Enderlin</text>
+      </g>
+    </g></g>
+  </svg>
+  <div class="mm4-scan" id="g-master-map-a4-scan"></div>
+  <div class="mm4-rail" id="g-master-map-a4-railbg"></div>
+  <div class="mm4-card" id="g-master-map-a4-c1">
+    <div class="mm4-ceb" id="g-master-map-a4-c1eb">From the Air · Drone Video</div>
+    <div class="mm4-name" id="g-master-map-a4-c1n">Aaron Rigsby</div>
+    <div class="mm4-big" id="g-master-map-a4-c1d">About 13 Min</div>
+  </div>
+  <div class="mm4-card" id="g-master-map-a4-c2">
+    <div class="mm4-ceb" id="g-master-map-a4-c2eb">Re-Survey Partners</div>
+    <div class="mm4-name" id="g-master-map-a4-c2n">Northern Tornadoes Project</div>
+    <div class="mm4-sub" id="g-master-map-a4-c2s">Western University, Canada</div>
+    <div class="mm4-big" id="g-master-map-a4-c2y">Founded 2017</div>
+    <div class="mm4-row" id="g-master-map-a4-c2k">Greg Kopp<div class="mm4-rlab">Forensic Engineering</div></div>
   </div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
+  const ID = "g-master-map-a4", P = "#g-master-map-a4-";
+  /* cues: audio/a4-s4..s7.words.json, episode s minus host start 983.958 */
+  const CUES = {
+    second: 0.742,   /* second look @984.70 */
+    air: 1.982,      /* air @985.94 */
+    rigsby: 3.982,   /* Aaron Rigsby @987.94 */
+    min13: 7.822,    /* 13 minutes @991.78 */
+    field: 13.682,   /* whole debris field @997.64 (clip covers 12.54-17.44) */
+    canada: 19.712,  /* Canada @1003.67 */
+    ntp: 21.472,     /* Northern Tornadoes Project @1005.43 */
+    western: 23.312, /* Western University @1007.27 */
+    y2017: 29.512,   /* 2017 @1013.47 */
+    kopp: 36.292,    /* Greg Kopp @1020.25 */
+    forensic: 39.392,/* forensic @1023.35 */
+    late: 42.222,    /* late upgrades @1026.18 */
+    elie: 45.502     /* Elie, Manitoba @1029.46 (stills cover 43.84-54.44) */
+  };
+  const DUR = 54.541;
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-master-map-a4-card", { x: 0 }, { x: 40, duration: 54.541, ease: "none" }, 0);
-  window.__timelines["g-master-map-a4"] = tl;
+  const cam = (wx, wy, s, fx = 560) => ({ attr: { transform: "translate(" + (fx - wx * s).toFixed(2) + "," + (540 - wy * s).toFixed(2) + ") scale(" + s + ")" } });
+
+  tl.set(P + "cam", cam(40, -20, 1.0), 0);
+  tl.set([P + "track", P + "swmp"], { strokeDashoffset: 0 }, 0);
+  tl.set([P + "regional", P + "elie", P + "elring", P + "t-elie"], { autoAlpha: 0 }, 0);
+  tl.set([P + "c1", P + "c1eb", P + "c1n", P + "c1d", P + "c2", P + "c2eb", P + "c2n", P + "c2s", P + "c2y", P + "c2k"], { autoAlpha: 0 }, 0);
+
+  /* ambient */
+  tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: 10.95, ease: "none", repeat: 4, yoyo: true }, 0);
+  tl.fromTo(P + "drift", { x: 0, y: 0 }, { x: -12, y: 10, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "swath", { attr: { "fill-opacity": 0.36 } }, { attr: { "fill-opacity": 0.58 }, duration: 1.4, ease: "sine.inOut", repeat: 13, yoyo: true }, 0);
+
+  /* the second look: survey points across the path; the drone video named as text */
+  tl.to(P + "cam", Object.assign(cam(60, -30, 1.12), { duration: 19.2, ease: "none" }), 0.2);
+  tl.fromTo(P + "c1", { autoAlpha: 0, x: 120 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, CUES.air);
+  tl.fromTo(P + "c1eb", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, CUES.air + 0.2);
+  tl.fromTo(P + "c1n", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.rigsby);
+  tl.fromTo(P + "c1d", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.min13);
+  tl.to(P + "c1", { x: 700, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 17.6);
+
+  /* pull north over the border */
+  tl.to(P + "t-end", { autoAlpha: 0, duration: 0.3 }, 19.3);
+  tl.to(P + "cam", Object.assign(cam(-300, -9200, 0.042), { duration: 3.0, ease: "expo.inOut" }), CUES.canada);
+  tl.to(P + "local", { autoAlpha: 0, duration: 1.2, ease: "power2.in" }, 20.4);
+  tl.fromTo(P + "regional", { autoAlpha: 0 }, { autoAlpha: 1, duration: 1.4, ease: "power2.out" }, 20.2);
+  tl.to(P + "cam", Object.assign(cam(-300, -9800, 0.044), { duration: 31.8, ease: "none" }), 22.72);
+  tl.fromTo(P + "endot", { attr: { r: 200 } }, { attr: { r: 320 }, duration: 0.9, ease: "sine.inOut", repeat: 23, yoyo: true }, 22.8);
+
+  /* the Northern Tornadoes Project */
+  tl.fromTo(P + "c2", { autoAlpha: 0, x: 120 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, CUES.ntp - 0.2);
+  tl.fromTo(P + "c2eb", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, CUES.ntp);
+  tl.fromTo(P + "c2n", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.ntp);
+  tl.fromTo(P + "c2s", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.western);
+  tl.fromTo(P + "c2y", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.y2017);
+  tl.fromTo(P + "c2k", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.kopp);
+  tl.fromTo(P + "c2", { y: 0 }, { y: -10, duration: 2.4, ease: "sine.inOut", repeat: 3, yoyo: true }, 30.5);
+  tl.to(P + "c2", { x: 700, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 41.6);
+
+  /* Elie, Manitoba: Canada's only F5 */
+  tl.fromTo(P + "elie", { autoAlpha: 0, scale: 0, svgOrigin: "-673 -18368" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.5)" }, CUES.elie);
+  tl.fromTo(P + "elring", { autoAlpha: 0.95, attr: { r: 220 } }, { autoAlpha: 0, attr: { r: 1100 }, duration: 1.2, ease: "power2.out", repeat: 6, repeatDelay: 0.1 }, CUES.elie);
+  tl.fromTo(P + "t-elie", { autoAlpha: 0, x: 200 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.elie + 0.1);
+
+  /* survey points pop across the path on "second look" */
+  const trk = document.querySelector(P + "track"), g = document.querySelector(P + "pts");
+  if (trk && g) {
+    const L = trk.getTotalLength();
+    for (let i = 0; i < 14; i++) {
+      const a = trk.getPointAtLength(L * (0.04 + i * 0.07)), b = trk.getPointAtLength(Math.min(L, L * (0.04 + i * 0.07) + 2));
+      const nx = -(b.y - a.y), ny = b.x - a.x, n = Math.hypot(nx, ny) || 1, off = (i % 2 ? 1 : -1) * 14;
+      const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      c.setAttribute("id", ID + "-sp" + i); c.setAttribute("cx", (a.x + nx / n * off).toFixed(1)); c.setAttribute("cy", (a.y + ny / n * off).toFixed(1)); c.setAttribute("r", "5");
+      g.appendChild(c);
+      tl.set(c, { autoAlpha: 0 }, 0);
+      tl.fromTo(c, { autoAlpha: 0, attr: { r: 0 } }, { autoAlpha: 1, attr: { r: 5 }, duration: 0.3, ease: "back.out(3)" }, CUES.second + i * 0.09);
+      tl.fromTo(c, { attr: { r: 5 } }, { attr: { r: 8 }, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, CUES.field + i * 0.1);
+    }
+  }
+  window.__timelines[ID] = tl;
 })();
 </script>
 </template>
