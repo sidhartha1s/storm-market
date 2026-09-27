@@ -65,45 +65,46 @@ window.__timelines = window.__timelines || {};
   tl.set(P+"lab", { x: 0 }, 0);
 
   /* ambient: sky glow drift + slow card float for the whole window */
-  tl.fromTo(P+"glowdrift", { x: 0, y: 0 }, { x: -700, y: 50, duration: 9.01, ease: "none" }, 0);
+  tl.fromTo(P+"glowdrift", { x: 0, y: 0 }, { x: -700, y: 50, duration: 5.659, ease: "none" }, 0);
 
-  /* JUNE @0.52 NIGHT @0.80: date line in a glass card */
-  tl.fromTo(P+"card", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.52);
-  tl.fromTo(P+"date", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.52);
-  tl.fromTo(P+"card", { y: 0 }, { y: -10, duration: 7.4, ease: "sine.inOut" }, 1.0);
+  /* cut-in @0.05: the night is dated at once (the scene label; the voice is already on "The Enderlin tornado") */
+  tl.fromTo(P+"card", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.05);
+  tl.fromTo(P+"date", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.05);
+  tl.fromTo(P+"card", { y: 0 }, { y: -10, duration: 4.45, ease: "sine.inOut" }, 0.55);
 
-  /* TORNADO @2.86: lightning lights the wedge, leader draws to it */
-  tl.fromTo(P+"flash", { autoAlpha: 0 }, { autoAlpha: 0.85, duration: 0.05 }, 2.74);
-  tl.to(P+"flash", { autoAlpha: 0, duration: 0.45, ease: "power2.out" }, 2.8);
-  tl.to(P+"flash", { autoAlpha: 0.4, duration: 0.04 }, 3.32);
-  tl.to(P+"flash", { autoAlpha: 0, duration: 0.3 }, 3.36);
-  tl.to(P+"scrim", { autoAlpha: 1, duration: 0.4 }, 2.86);
-  tl.fromTo(P+"tip", { autoAlpha: 0, scale: 0, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 2.86);
-  tl.to(P+"leader", { autoAlpha: 1, strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 2.92);
-  tl.fromTo(P+"lab-a", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.17);
-  tl.fromTo(P+"lab-b", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.42);
-  tl.fromTo(P+"tip", { scale: 1 }, { scale: 1.5, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 5, transformOrigin: "50% 50%" }, 3.42);
-  /* FARMS @3.76 */
-  tl.fromTo(P+"lab-c", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.76);
+  /* ENDERLIN @0.40, then the state */
+  tl.fromTo(P+"town", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.40);
+  tl.fromTo(P+"state", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.70);
 
-  /* ENDERLIN @4.48, NORTH DAKOTA @5.38 */
-  tl.fromTo(P+"town", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 4.48);
-  tl.fromTo(P+"state", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 5.38);
-  tl.fromTo(P+"flash", { autoAlpha: 0 }, { autoAlpha: 0.3, duration: 0.05 }, 5.7);
-  tl.to(P+"flash", { autoAlpha: 0, duration: 0.4 }, 5.75);
+  /* TORNADO @0.78: lightning lights the wedge, leader draws to it */
+  tl.fromTo(P+"flash", { autoAlpha: 0 }, { autoAlpha: 0.85, duration: 0.05 }, 0.70);
+  tl.to(P+"flash", { autoAlpha: 0, duration: 0.45, ease: "power2.out" }, 0.76);
+  tl.to(P+"scrim", { autoAlpha: 1, duration: 0.4 }, 0.80);
+  tl.fromTo(P+"tip", { autoAlpha: 0, scale: 0, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 0.80);
+  tl.to(P+"leader", { autoAlpha: 1, strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 0.86);
+  tl.fromTo(P+"lab-a", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.10);
+  tl.fromTo(P+"lab-b", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.38);
+  tl.fromTo(P+"tip", { scale: 1 }, { scale: 1.5, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 3, transformOrigin: "50% 50%" }, 1.38);
+  tl.fromTo(P+"lab-c", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.66);
+  /* FIRST EF5 @1.96: a second flash rides the rating */
+  tl.to(P+"flash", { autoAlpha: 0.4, duration: 0.04 }, 1.94);
+  tl.to(P+"flash", { autoAlpha: 0, duration: 0.3 }, 1.98);
 
-  /* THREE @6.40 PEOPLE @6.70 LOST @7.02: the count, then what it means */
-  tl.fromTo(P+"count", { autoAlpha: 0, scale: 1.4, transformOrigin: "left center" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.out" }, 6.26);
+  /* AMERICA @3.14: the toll lands on screen (channel post-mortem: toll inside 20 s) */
+  tl.fromTo(P+"count", { autoAlpha: 0, scale: 1.4, transformOrigin: "left center" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.out" }, 3.00);
   const cnt = { v: 1 };
   tl.to(cnt, { v: 3, duration: 0.5, ease: "power3.out", onUpdate: function () { /* target: three lives lost, Enderlin 2025 */
     const el = document.getElementById("pm-count"); if (el) el.textContent = Math.round(cnt.v);
-  } }, 6.4);
-  tl.fromTo(P+"lostlab", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 7.02);
+  } }, 3.14);
+  tl.fromTo(P+"lostlab", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 3.60);
+  /* 12 YEARS @4.04: a last faint flash while the count holds */
+  tl.fromTo(P+"flash", { autoAlpha: 0 }, { autoAlpha: 0.3, duration: 0.05 }, 4.30);
+  tl.to(P+"flash", { autoAlpha: 0, duration: 0.4 }, 4.35);
 
-  /* exits: card slides out left, label slides out right; the host ends 9.01 on the cut to the scale */
-  tl.to(P+"card", { x: -1100, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 8.41);
-  tl.to(P+"lab", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 8.41);
-  tl.to([P+"leader", P+"tip", P+"scrim"], { autoAlpha: 0, duration: 0.4 }, 8.41);
+  /* exits: card slides out left, label slides out right; the host ends 5.659 on the cut to El Reno ("In 2013" 5.66) */
+  tl.to(P+"card", { x: -1100, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 5.05);
+  tl.to(P+"lab", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 5.05);
+  tl.to([P+"leader", P+"tip", P+"scrim"], { autoAlpha: 0, duration: 0.4 }, 5.05);
   window.__timelines["g-premise"] = tl;
 })();
 </script>
