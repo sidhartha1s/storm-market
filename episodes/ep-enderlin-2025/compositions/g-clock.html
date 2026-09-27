@@ -2,27 +2,53 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-clock"
-     (host 23.104 -> 29.88, 6.776 s, track 4). The MG builder replaces this whole file. -->
+<!-- g-clock (B1): top-right clock card over g-master-map. Host 23.104 -> 29.88 (6.776 s, track 4). Fact: touchdown 11:02 PM CDT (NWS Grand Forks PIS). -->
 <template>
 <style>
-  .ph-clock { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; }
-  .ph-clock-card { position:absolute; left:1300px; top:96px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-clock-t { font-family:'Arial Black', Arial, sans-serif; font-size:40px; color:#f2f5f8; white-space:nowrap; }
-  .ph-clock-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  #g-clock-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+  .ck0-card { position:absolute; left:1300px; top:60px; width:524px; height:200px; box-sizing:border-box;
+    border-radius:28px; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); font-family:Arial, sans-serif; }
+  .ck0-dial { position:absolute; left:22px; top:22px; width:156px; height:156px; }
+  .ck0-eb { position:absolute; left:200px; top:30px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
+  .ck0-read { position:absolute; left:198px; top:60px; font-family:'Courier New', monospace; font-weight:700; font-size:60px; line-height:1; color:#f2f5f8; white-space:nowrap; }
+  .ck0-sub { position:absolute; left:200px; top:134px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:26px; color:#d8a13a; white-space:nowrap; }
 </style>
-<div class="ph-clock" data-composition-id="g-clock" data-width="1920" data-height="1080" data-duration="6.776">
-  <div class="ph-clock-card" id="ph-clock-card">
-    <div class="ph-clock-t" id="ph-clock-t">g-clock</div>
-    <div class="ph-clock-s" id="ph-clock-s">Placeholder · To Build</div>
+<div id="g-clock-root" data-composition-id="g-clock" data-width="1920" data-height="1080" data-duration="6.776">
+  <div class="ck0-card" id="g-clock-card">
+    <svg class="ck0-dial" viewBox="0 0 156 156">
+      <circle cx="78" cy="78" r="72" fill="rgba(4,7,12,0.6)" stroke="#93a3b2" stroke-width="2"/>
+      <g stroke="#5a768f" stroke-width="3" stroke-linecap="round">
+        <line x1="78" y1="12" x2="78" y2="22"/><line x1="144" y1="78" x2="134" y2="78"/><line x1="78" y1="144" x2="78" y2="134"/><line x1="12" y1="78" x2="22" y2="78"/>
+      </g>
+      <line id="g-clock-hh" x1="78" y1="78" x2="78" y2="40" stroke="#f2f5f8" stroke-width="6" stroke-linecap="round"/>
+      <line id="g-clock-mh" x1="78" y1="78" x2="78" y2="22" stroke="#f2f5f8" stroke-width="4" stroke-linecap="round"/>
+      <line id="g-clock-sh" x1="78" y1="90" x2="78" y2="16" stroke="#e74c3c" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="78" cy="78" r="5" fill="#e74c3c"/>
+    </svg>
+    <div class="ck0-eb" id="g-clock-eb">Local Time</div>
+    <div class="ck0-read" id="g-clock-read">11:02 PM</div>
+    <div class="ck0-sub" id="g-clock-sub">Friday, June 20, 2025</div>
   </div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
+  const P = "#g-clock-";
+  /* cues: audio/i1-s1.words.json, episode s minus host start 23.104 */
+  const CUES = { inn: 0.096 /* spec card in @23.2 */, eleven: 2.496 /* 11 @25.60 */, friday: 3.116 /* Friday @26.22 */, out: 6.176 /* spec slide out @29.28 */ };
+  const DUR = 6.776;
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-clock-card", { x: 0 }, { x: 40, duration: 6.776, ease: "none" }, 0);
+  tl.set([P + "read", P + "sub"], { autoAlpha: 0 }, 0);
+  /* second hand sweeps the whole window (6 deg per second, a real clock) */
+  tl.fromTo(P + "sh", { rotation: 0, svgOrigin: "78 78" }, { rotation: 6 * DUR, duration: DUR, ease: "none" }, 0);
+  /* hands wind to 11:02 on "eleven" */
+  tl.fromTo(P + "hh", { rotation: 315, svgOrigin: "78 78" }, { rotation: 331, duration: 2.4, ease: "power3.out" }, 0.096);
+  tl.fromTo(P + "mh", { rotation: -180, svgOrigin: "78 78" }, { rotation: 12, duration: 2.4, ease: "power3.out" }, 0.096);
+  tl.fromTo(P + "card", { autoAlpha: 0, x: 120 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, CUES.inn);
+  tl.fromTo(P + "read", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.eleven);
+  tl.fromTo(P + "sub", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.friday);
+  tl.to(P + "card", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, CUES.out);
   window.__timelines["g-clock"] = tl;
 })();
 </script>
