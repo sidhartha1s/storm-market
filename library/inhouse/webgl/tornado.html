@@ -257,7 +257,9 @@ function render(t) {
 
 window.__timelines = window.__timelines || {};
 const tl = gsap.timeline({ paused: true });
-tl.to({}, { duration: C.duration }, 0);   // timeline length only; the onUpdate canvas renderer is the motion
+// CONFIG, not the C alias: sweep_episode.py check 7 ("holds") reads timeline length through comp_consts.fold(),
+// which resolves only CONFIG.key. Timeline length only; the onUpdate canvas renderer is the motion.
+tl.to({}, { duration: CONFIG.duration }, 0);
 tl.eventCallback("onUpdate", () => render(tl.time()));
 window.__timelines[C.id] = tl;
 render(0);
