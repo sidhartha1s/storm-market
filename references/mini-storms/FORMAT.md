@@ -77,7 +77,7 @@ Krakatau mini-docs got 55–60 impressions under the same keyword; the format mi
 Formats A and B below remain available for evergreen and explainer topics.
 
 ## Structure (owner rule 2026-09-08)
-HOOK **3–10 s** (one present-tense sentence paying off the title, spoken + red popfig) → INTRO to
+HOOK **3–5 s** (one present-tense sentence paying off the title, spoken + red popfig) → INTRO to
 ~1:10 (stakes numbers, open loops, promise) → CHAPTERS → PAYOFF → WARM CLOSE → subscribe.
 Size every section in words before TTS with `scripts/word_budget.py` at the shipping tempo (CLAUDE.md Voice). Table goes in packaging.md.
 
@@ -113,7 +113,7 @@ Measured against a 14-minute cut that scored 5.5/10 on stakes-per-90-seconds bef
     lists are places to leave.
 
 ## Hook + intro (0–1:10)
-1. The hook sentence says the title's headline number or claim (3–10 s), spoken and popped.
+1. The hook sentence says the title's headline number or claim (3–5 s), spoken and popped.
 2. Intro withholds the real angle one beat: surface story → "but that's not the real threat" → thesis + open loop.
 3. Best carry-over pattern (3r5HgsfWtRQ, 129× subs): the title's odd claim IS the hook's literal
    thesis, resolved with a real precedent (date + death toll) inside the intro.
