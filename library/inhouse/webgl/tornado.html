@@ -257,7 +257,7 @@ function render(t) {
 
 window.__timelines = window.__timelines || {};
 const tl = gsap.timeline({ paused: true });
-tl.to({}, { duration: CONFIG.duration }, 0);   // CONFIG, not the C alias: beat_density folds only CONFIG.key
+tl.to({}, { duration: C.duration }, 0);   // timeline length only; the onUpdate canvas renderer is the motion
 tl.eventCallback("onUpdate", () => render(tl.time()));
 window.__timelines[C.id] = tl;
 render(0);
