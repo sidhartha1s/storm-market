@@ -5,7 +5,8 @@ visually unchanged. scripts/beat_probe.mjs loads each mounted composition in hea
 returns its motion spans (what counts as motion, and why a `tl.to({}, {duration: N}, 0)` clock does
 not, is in its header). Continuous motion covers its whole span, not just its start, so a graphic
 with one long moving element does not read as dead. FAIL at a gap of 4.0 s or more, including
-before the first span and after the last one up to the host window.
+before the first span and after the last one up to the host window, and on any composition the
+probe cannot measure (ERROR).
 """
 import json
 import re
