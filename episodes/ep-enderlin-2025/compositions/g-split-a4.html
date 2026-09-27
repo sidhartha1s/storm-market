@@ -2,27 +2,111 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-split-a4"
-     (host 1134.095 -> 1140.595, 6.5 s, track 2). The MG builder replaces this whole file. -->
+<!-- g-split-a4 (B3): host 1134.095 -> 1140.595 (6.5 s, track 2), audio a4-s16 mounts at 0 (local = word time).
+     El Reno had its radar; Enderlin had a tanker car in a field; only the tanker became a rating. Left stays unstamped.
+     Cues: El Reno 0.00, radar 1.04, Enderlin 2.12, tanker car 2.78, only the tanker 4.44, became a rating 5.10.
+     Exit 5.905 (spec 1140.0). -->
 <template>
 <style>
-  .ph-split-a4 { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .ph-split-a4-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-split-a4-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
-  .ph-split-a4-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .sp3-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .sp3-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.06) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .sp3-glow { position:absolute; width:1000px; height:700px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(127,178,229,0.12), rgba(127,178,229,0) 70%); }
+  .sp3-div { position:absolute; left:959px; top:0; width:2px; height:1080px;
+    background: linear-gradient(180deg, rgba(147,163,178,0), rgba(147,163,178,0.45) 30%, rgba(147,163,178,0.45) 70%, rgba(147,163,178,0)); }
+  .sp3-side { position:absolute; top:0; width:960px; height:1080px; }
+  .sp3-eb { position:absolute; left:0; right:0; top:96px; text-align:center; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; }
+  .sp3-name { position:absolute; left:0; right:0; top:128px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-size:60px; line-height:72px; color:#f2f5f8; }
+  .sp3-sub { position:absolute; left:0; right:0; top:206px; text-align:center; font-family: Georgia, serif; font-style:italic; font-size:36px; color:#d8a13a; }
+  .sp3-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .sp3-g { position:absolute; left:1270px; width:340px; top:700px; text-align:center; }
+  .sp3-stamp { display:inline-block; padding:6px 30px 0; border:6px solid; border-radius:14px;
+    font-family:'AbrilFig', Georgia, serif; line-height:1; letter-spacing:4px; font-size:130px;
+    color:#d0121f; border-color:#d0121f; text-shadow:0 0 34px rgba(208,18,31,0.55), 0 6px 26px rgba(0,0,0,0.8); }
+  .sp3-flash { position:absolute; left:960px; top:0; width:960px; height:1080px; mix-blend-mode:screen; pointer-events:none;
+    background: radial-gradient(ellipse at 50% 70%, rgba(210,226,255,0.5), rgba(127,178,229,0.16) 45%, rgba(20,30,60,0) 78%); }
 </style>
-<div class="ph-split-a4" data-composition-id="g-split-a4" data-width="1920" data-height="1080" data-duration="6.5">
-  <div class="ph-split-a4-card" id="ph-split-a4-card">
-    <div class="ph-split-a4-t" id="ph-split-a4-t">g-split-a4</div>
-    <div class="ph-split-a4-s" id="ph-split-a4-s">Placeholder · To Build</div>
+<div class="sp3-wrap" data-composition-id="g-split-a4" data-width="1920" data-height="1080" data-duration="6.5">
+  <div class="sp3-grid" id="sp3-grid"></div>
+  <div class="sp3-glow" id="sp3-glowl" style="left:-160px; top:220px;"></div>
+  <div class="sp3-glow" id="sp3-glowr" style="left:1060px; top:260px;"></div>
+  <div class="sp3-flash" id="sp3-flash"></div>
+  <div class="sp3-div" id="sp3-div"></div>
+  <svg class="sp3-svg" viewBox="0 0 1920 1080">
+    <g id="sp3-lart">
+      <path d="M200 640 H760" stroke="#4a5560" stroke-width="3"/>
+      <path d="M420 640 L450 520 L480 640 M432 592 H468" fill="none" stroke="#93a3b2" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M396 512 A64 64 0 0 0 500 452 Z" fill="#5a768f" stroke="#7fb2e5" stroke-width="3"/>
+      <path id="sp3-rarc1" d="M512 420 A40 40 0 0 1 540 470" fill="none" stroke="#7fb2e5" stroke-width="5" stroke-linecap="round"/>
+      <path id="sp3-rarc2" d="M528 384 A80 80 0 0 1 580 476" fill="none" stroke="#7fb2e5" stroke-width="5" stroke-linecap="round"/>
+      <path id="sp3-rarc3" d="M544 348 A120 120 0 0 1 620 482" fill="none" stroke="#7fb2e5" stroke-width="5" stroke-linecap="round"/>
+    </g>
+    <g id="sp3-rart">
+      <path d="M1100 640 H1780" stroke="#4a5560" stroke-width="3"/>
+      <path id="sp3-grass" d="M1120 640 l8 -16 l8 16 M1180 640 l6 -12 l6 12 M1240 640 l8 -18 l8 18 M1620 640 l8 -16 l8 16 M1680 640 l6 -12 l6 12 M1740 640 l8 -18 l8 18" fill="none" stroke="#5a768f" stroke-width="3"/>
+      <g id="sp3-tank">
+        <rect x="1290" y="530" width="300" height="80" rx="40" fill="#5a768f" stroke="#7fb2e5" stroke-width="3"/>
+        <rect x="1428" y="516" width="24" height="16" rx="3" fill="#7fb2e5"/>
+        <rect x="1280" y="604" width="320" height="10" fill="#2a3644" stroke="#93a3b2" stroke-width="2"/>
+        <circle cx="1318" cy="626" r="12" fill="#0b1016" stroke="#93a3b2" stroke-width="3"/>
+        <circle cx="1352" cy="626" r="12" fill="#0b1016" stroke="#93a3b2" stroke-width="3"/>
+        <circle cx="1528" cy="626" r="12" fill="#0b1016" stroke="#93a3b2" stroke-width="3"/>
+        <circle cx="1562" cy="626" r="12" fill="#0b1016" stroke="#93a3b2" stroke-width="3"/>
+      </g>
+    </g>
+  </svg>
+  <div class="sp3-side" id="sp3-left" style="left:0;">
+    <div class="sp3-eb" id="sp3-l-eb">2013</div>
+    <div class="sp3-name" id="sp3-l-name">El Reno</div>
+    <div class="sp3-sub" id="sp3-l-sub">Radar</div>
   </div>
+  <div class="sp3-side" id="sp3-right" style="left:960px;">
+    <div class="sp3-eb" id="sp3-r-eb">2025</div>
+    <div class="sp3-name" id="sp3-r-name">Enderlin</div>
+    <div class="sp3-sub" id="sp3-r-sub">Tanker Car</div>
+  </div>
+  <div class="sp3-g" id="sp3-g"><div class="sp3-stamp" id="sp3-ef5">EF5</div></div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-split-a4-card", { x: 0 }, { x: 40, duration: 6.5, ease: "none" }, 0);
+  const DUR = 6.5;
+  tl.set(["#sp3-l-eb", "#sp3-l-name", "#sp3-l-sub", "#sp3-r-eb", "#sp3-r-name", "#sp3-r-sub", "#sp3-lart", "#sp3-rart", "#sp3-g", "#sp3-flash"], { autoAlpha: 0 }, 0);
+
+  /* ambient, whole window */
+  tl.fromTo("#sp3-grid", { x: 0 }, { x: 140, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#sp3-glowl", { x: 0, y: 0 }, { x: 200, y: -40, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#sp3-glowr", { x: 0, y: 0 }, { x: -200, y: 40, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#sp3-div", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power3.out" }, 0);
+
+  /* EL RENO @0.00, RADAR @1.04 */
+  tl.fromTo(["#sp3-l-eb", "#sp3-l-name"], { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out", stagger: 0.06 }, 0.05);
+  tl.fromTo("#sp3-lart", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.9);
+  tl.fromTo("#sp3-l-sub", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 1.04);
+  tl.fromTo("#sp3-rarc1", { opacity: 1 }, { opacity: 0.15, duration: 0.45, ease: "power1.in", repeat: 9 }, 1.2);
+  tl.fromTo("#sp3-rarc2", { opacity: 1 }, { opacity: 0.15, duration: 0.45, ease: "power1.in", repeat: 9 }, 1.35);
+  tl.fromTo("#sp3-rarc3", { opacity: 1 }, { opacity: 0.15, duration: 0.45, ease: "power1.in", repeat: 9 }, 1.5);
+
+  /* ENDERLIN @2.12, TANKER CAR @2.78 */
+  tl.fromTo(["#sp3-r-eb", "#sp3-r-name"], { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out", stagger: 0.06 }, 2.12);
+  tl.fromTo("#sp3-rart", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 2.6);
+  tl.fromTo("#sp3-r-sub", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 2.78);
+  tl.fromTo("#sp3-tank", { y: 0 }, { y: -6, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 5 }, 3.1);
+
+  /* ONLY THE TANKER @4.44: El Reno's side steps back */
+  tl.to(["#sp3-left", "#sp3-lart"], { opacity: 0.4, duration: 0.4, ease: "power2.out" }, 4.44);
+  /* BECAME A RATING @5.10: only the right side gets a stamp */
+  tl.fromTo("#sp3-g", { autoAlpha: 0, scale: 1.45, rotation: -10 }, { autoAlpha: 1, scale: 1, rotation: -3, duration: 0.2, ease: "power4.in" }, 4.9);
+  tl.fromTo("#sp3-flash", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.05 }, 5.1);
+  tl.to("#sp3-flash", { autoAlpha: 0, duration: 0.45, ease: "power2.out" }, 5.16);
+
+  /* exit (spec 1140.0 -> 5.905) */
+  tl.to(["#sp3-left", "#sp3-right", "#sp3-lart", "#sp3-rart", "#sp3-g"], { y: -40, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 5.905);
+  tl.to("#sp3-div", { autoAlpha: 0, duration: 0.5 }, 5.95);
   window.__timelines["g-split-a4"] = tl;
 })();
 </script>
