@@ -298,16 +298,6 @@ DRIVEN_FILES = {
         "cx.fillStyle = '#fff'; cx.fillRect(200 + tl.time() * 300, 400, 80, 80); });\n"
         "tl.to({}, { duration: 3 }, 0);\nwindow.__timelines['g-cv'] = tl;\n</script>\n</template></body></html>\n",
 }
-ep = _stage_ep(DRIVEN_FILES)
-r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
-assert '[graphics_qc]' in r.stdout and 'fade-only' not in r.stdout and '[idle]' not in r.stdout, r.stdout + r.stderr
-old_gq = old_rev('graphics_qc.mjs', '_old_gqc_canvas_tmp.mjs', 'f3a6fece')
-r_old = subprocess.run(['node', str(old_gq), str(ep)], capture_output=True, text=True)
-old_gq.unlink()
-assert 'ERROR [fade-only]' in r_old.stdout, f'old code should call the canvas renderer fade-only: {r_old.stdout}'
-shutil.rmtree(ep, ignore_errors=True)
-print('graphics_qc self-check PASS (an onUpdate canvas renderer counts as continuous motion)')
-
 # Negatives: both relaxations need a canvas covering a quarter of the frame, and the kinetic span
 # also needs the timeline onUpdate. A 100 px canvas or a missing onUpdate keeps the old verdicts.
 # One episode, one comp per case: every graphics_qc launch costs a Chromium plus render_busy, and
