@@ -16,7 +16,7 @@
 - Upgrade to EF5: announced by NWS Grand Forks 6 October 2025 (public information statement issued 9:30 AM CDT that day per secondary reporting) [unverified time-of-day — not independently confirmed from the primary PDF text]. https://www.weather.gov/fgf/2025_06_20_Summary ; https://www.valleynewslive.com/2025/10/06/enderlin-tornado-upgraded-ef-5-after-extensive-review/
 - Significance: first EF5-rated tornado in the US since Moore, Oklahoma (20 May 2013) — a gap of roughly 12 years (widely reported as "4,414 days," precise figure not independently recomputed here) [unverified]. https://en.wikipedia.org/wiki/EF5_drought
 - Deadliest ND tornado since the 1978 Elgin, ND F4. https://northdakotamonitor.com/briefs/enderlin-tornado-that-claimed-3-lives-is-north-dakotas-deadliest-since-1978/
-- Broader outbreak: part of the tornado outbreak and derecho of 19–22 June 2025; 22 tornadoes touched down in North Dakota the night of 20 June, spawned by two supercells (a rare configuration). https://www.rmusentrymedia.com/news/first-ef5-tornado-in-12-years-happens-in-north-dakota/ ; https://en.wikipedia.org/wiki/Tornado_outbreak_and_derecho_of_June_19%E2%80%9322,_2025
+- Broader outbreak: part of the tornado outbreak and derecho of 19–22 June 2025; 24 tornadoes touched down in North Dakota the night of 20 June (NWS DAT tracks, matching NCEI; the 22 figure traces only to a student paper), many from two supercells (a rare configuration). https://www.rmusentrymedia.com/news/first-ef5-tornado-in-12-years-happens-in-north-dakota/ ; https://en.wikipedia.org/wiki/Tornado_outbreak_and_derecho_of_June_19%E2%80%9322,_2025
 
 ## 2. Timeline
 
@@ -73,7 +73,7 @@ Note: the 31 May 2013 El Reno, Oklahoma tornado (the widest ever recorded, 2.6 m
 
 ## 5. Named people on record
 
-- Michael Dehn, 73 — killed at his home approximately one mile east of Enderlin on Highway 46. https://www.inforum.com/news/north-dakota/3-who-died-in-enderlin-tornado-named
+- Michael Dehn, 73 — killed at his home about three miles east of Enderlin on Highway 46 (NWS DAT residence points 3.1 and 3.3 mi east; The Forum's "about a mile" is superseded, see fact_check.md). https://www.inforum.com/news/north-dakota/3-who-died-in-enderlin-tornado-named
 - Katherine (Pfaff-)Dehn, 73 — killed at the same residence as Michael Dehn; name rendered as "Katherine Pfaff-Dehn" in one outlet and "Katherine Dehn" in another [unverified which is the exact legal/preferred name]. https://www.rmusentrymedia.com/news/first-ef5-tornado-in-12-years-happens-in-north-dakota/ ; https://www.inforum.com/news/north-dakota/3-who-died-in-enderlin-tornado-named
 - Marcario Lucio, 89 — killed at a separate location; his wife, Roberta Lucio, survived. https://www.inforum.com/news/north-dakota/3-who-died-in-enderlin-tornado-named
 - Names released by the Cass County Sheriff's Office, 22 June 2025. https://www.valleynewslive.com/2025/06/22/cass-county-sheriffs-office-identifies-victims-deadly-enderlin-tornado/
@@ -102,7 +102,7 @@ Note: the 31 May 2013 El Reno, Oklahoma tornado (the widest ever recorded, 2.6 m
 2. The reveal that the original rating was EF3, and it took a re-survey four months later to become EF5 — a "the story changed" hook.
 3. The 12-year gap framing: showing the last EF5 (Moore, 2013) side by side with Enderlin, and what happened in between (all the near-misses).
 4. The engineering pivot — a scientific paper about throwing train cars becoming the deciding evidence, not a flattened house.
-5. Two supercells producing 22 tornadoes in one state on one night — scale-of-outbreak visual (radar loop).
+5. 24 tornadoes in one state on one night, many from two supercells — scale-of-outbreak visual (radar loop).
 6. The human cost against the record-setting frame: three named victims, two of them a couple, one an 89-year-old whose spouse survived.
 7. The "EF5 drought" controversy itself — meteorologists disagreeing for over a decade about whether ratings were too conservative, resolved (or not) by this one storm.
 8. The debarked, "sandpapered" trees along the Maple River as a visceral, lesser-known EF5 indicator distinct from house damage.

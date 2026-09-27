@@ -66,18 +66,18 @@ end to end.
 
 **Picture:** map pin on Highway 46 · text-only name cards "Michael and Katherine Pfaff-Dehn · 73", then "Marcario Lucio · 89".
 
-One mile east of town, on Highway forty six, it hit the home of a couple named Michael and Katherine.
+Three miles east of town, on Highway forty six, it hit the home of a couple named Michael and Katherine.
 They were both seventy three, and neither of them
 survived. On another stretch of the path, it hit the farm of Marcario Lucio, who was eighty nine. His wife, Roberta,
 made it through the night, and the storm took Marcario's life. No North Dakota tornado had taken that many lives since
 nineteen seventy eight.
 
 **Picture:** NWS survey b-roll (PD), a team walking a debris field · popfig "EF3" · then a North Dakota map where
-twenty two small tracks land one by one.
+twenty four small tracks land one by one.
 
 Within days, surveyors from the weather office in Grand Forks walked the path and gave it a number. They called it
 an E F three, with winds of about a hundred and sixty miles an hour. That is a violent tornado but not a rare one, and
-North Dakota had twenty two tornadoes that same night.
+North Dakota had twenty four tornadoes that same night.
 
 **Picture:** split card returns: "El Reno 2013 · EF3" left, "Enderlin 2025 · EF3" right, a day counter under the
 right stamp starts to run.
@@ -275,11 +275,11 @@ The same bulletin put the strongest tornado winds at a hundred and twenty to a h
 was the forecast for the night, and the number the Enderlin tornado ended up with sits far above it.
 
 **Picture:** g-radar, a self-made Level II velocity re-plot (NEXRAD open data); two supercells labelled as they cross
-the state · popfig "22 Tornadoes".
+the state · popfig "24 Tornadoes".
 
-That night, two supercells, the rotating kind of thunderstorm, made twenty two tornadoes in North Dakota. Most
-supercells never make a tornado at all. Two storms making that
-many is rare, and the Enderlin tornado was one of the twenty two. It was part of a larger outbreak that
+That night, North Dakota had twenty four tornadoes, many from two supercells, the rotating kind of thunderstorm. Most
+supercells never make a tornado at all. A night with that
+many is rare, and the Enderlin tornado was one of the twenty four. It was part of a larger outbreak that
 ran from June nineteenth to June twenty second. A derecho, a long line of damaging straight winds, came through in the
 middle of it.
 
@@ -538,7 +538,7 @@ found was never going to change with any rating. `[loop L10 open]`
 The storm that came through Enderlin on June twentieth was rated an E F three. A hundred and eight days later, it
 became an E F five. Three people lost their lives on its path, and the Cass County Sheriff's Office released their names on
 Sunday, June twenty second. `[loop L10 closes]` Michael and Katherine Dehn, both seventy three, were in their home on
-Highway forty six, one mile east of town. Marcario Lucio was eighty nine, and his wife, Roberta, survived the storm
+Highway forty six, three miles east of town. Marcario Lucio was eighty nine, and his wife, Roberta, survived the storm
 that took him.
 
 *(outro tail 4 s, g-outro, bed out)*
