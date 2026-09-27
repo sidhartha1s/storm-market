@@ -250,11 +250,25 @@ finally:
 # inhouse/moves), and not at all without one. A 100 px canvas does not earn the renderer span.
 PROXY = 'const cam = { x: 0 }; tl.to(cam, {x: 300, duration: 10, ease: "none"}, 0);'
 HUB = ' const g = document.getElementById("g"); tl.eventCallback("onUpdate", () => { g.style.transform = "translateX(" + cam.x + "px)"; });'
+# The schedule fixtures tween backgroundColor on purpose: the picture diff (rule 3) reads box,
+# transform, opacity and text, not colour, so only the tween schedule (rule 1) can pass them. Drop
+# the parent offset or use duration() for totalDuration() and the 7 s tail goes DEAD.
+SUB = ('const sub = gsap.timeline(); sub.to("#g", {backgroundColor: "#33c", duration: 3, ease: "none"}, 0);'
+       ' tl.add(sub, 3.5);')
+REPEAT = 'tl.to("#g", {backgroundColor: "#33c", duration: 2, repeat: 3, yoyo: true, ease: "none"}, 1);'
+HIDDEN = '<div id="g" style="display:none;position:absolute;left:100px;top:100px;width:200px;height:80px"></div>'
+DATASET = ('const root = document.getElementById("root");'
+           ' tl.eventCallback("onUpdate", () => { root.dataset.t = tl.time().toFixed(2); }); tl.to({}, {duration: 10}, 0);')
 for label, js, dom, want in (
     ("a proxy driven through an onUpdate hub counts", PROXY + HUB, None, 0),
     ("a proxy nothing reads is not motion", PROXY, None, 1),
     ("a 100 px canvas renderer is not continuous motion",
      DRAW + ' tl.to({}, {duration: 10}, 0);', CANVAS.replace('width="1920" height="1080"', 'width="100" height="100"'), 1),
+    ("a nested timeline's tl.add offset shifts its tweens' spans", SUB, None, 0),
+    ("repeat:3 spans the tween's totalDuration, not one cycle", REPEAT, None, 0),
+    ("a long tween on a display:none element is not motion", 'tl.to("#g", {x: 300, duration: 10, ease: "none"}, 0);',
+     HIDDEN, 1),
+    ("an onUpdate writing root.dataset.t (nothing visible) is not motion", DATASET, None, 1),
 ):
     with tempfile.TemporaryDirectory() as d:
         ep = make_ep(Path(d) / "bd", comp_html=bd_comp(js, dom) if dom else bd_comp(js), comp_window=10.0)
