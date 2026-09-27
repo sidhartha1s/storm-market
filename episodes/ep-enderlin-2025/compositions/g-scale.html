@@ -1,0 +1,213 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-scale: Three.js scale reveal. Owner-approved hook comp (demo-hook-h2), copied verbatim and RETIMED for
+     ep-enderlin-2025: its demo line (h1-s4, "twelve years ... no EF5") is not in this episode's hook, so it now plays
+     the payoff it was built for, a5-s3 (host 1211.51 -> 1229.645): "It was America's first E F five since Moore,
+     and the twelve year gap was over ... the same list the twelve years had been counted from."
+     The EF ladder laid across time: rungs EF0-EF4 stay busy from 2013 to 2025, the EF5 rung is an empty tube from
+     Moore (2013) onward, then Enderlin drops onto it (2025) on "over". The camera then pushes onto the empty stretch.
+     Cues: audio/a5-s3 mounts at 1211.51, local = word time (first 1.18, EF5 1.42, Moore 2.58, 12 3.62, -year 3.88,
+     over 4.54, Valley News Live 7.56-8.12, It went 11.66, EF5s 13.58, the 12 years 16.00, counted 16.94, wav end 17.835).
+     Text is a fixed HUD, projected once per camera pose; the only camera move (11.55-13.05) happens with
+     every label hidden. Deterministic: every 3D state is a pure function of the timeline time. -->
+<template>
+<style>
+  .sc-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .sc-wrap canvas { position:absolute; left:0; top:0; width:1920px; height:1080px; display:block; }
+  .sc-hud { position:absolute; inset:0; pointer-events:none; }
+  .sc-ef { position:absolute; width:120px; margin-top:-14px; text-align:right; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2; }
+  .sc-ef5 { font-size:34px; margin-top:-20px; color:#e74c3c; letter-spacing:2px; }
+  .sc-year { position:absolute; width:160px; margin-left:-80px; text-align:center; font-weight:700; font-size:30px; letter-spacing:1px; color:#dfe7ee; }
+  .sc-span { position:absolute; width:420px; margin-left:-210px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-size:56px; color:#f2f5f8; text-shadow:0 4px 20px rgba(0,0,0,0.8); }
+  .sc-tag { position:absolute; width:300px; margin-left:-150px; text-align:center; text-shadow:0 2px 12px rgba(0,0,0,0.95); }
+  .sc-tag-a { font-weight:700; font-size:26px; letter-spacing:1px; color:#e8c56a; }
+  .sc-tag-b { font-weight:700; font-size:20px; letter-spacing:3px; color:#93a3b2; margin-top:6px; }
+  .sc-thr { position:absolute; width:260px; font-weight:700; font-size:22px; letter-spacing:3px; color:#c8d3e0; margin-top:-13px; }
+  .sc-q { position:absolute; left:760px; top:64px; width:400px; text-align:center; font-family:'AbrilFig', Georgia, serif; font-size:170px; line-height:1; color:#e8c56a; text-shadow:0 0 40px rgba(232,197,106,0.35), 0 6px 26px rgba(0,0,0,0.8); }
+  .sc-range { position:absolute; left:660px; top:292px; width:600px; text-align:center; font-weight:700; font-size:30px; letter-spacing:4px; color:#dfe7ee; text-shadow:0 2px 12px rgba(0,0,0,0.95); }
+  .sc-fade { position:absolute; inset:0; background:#000; pointer-events:none; }
+</style>
+<div class="sc-wrap" data-composition-id="g-scale" data-width="1920" data-height="1080" data-duration="11.5">
+  <canvas id="sc-canvas" width="1920" height="1080"></canvas>
+  <div class="sc-hud" id="sc-hud">
+    <div class="sc-ef" id="sc-ef0">EF0</div>
+    <div class="sc-ef" id="sc-ef1">EF1</div>
+    <div class="sc-ef" id="sc-ef2">EF2</div>
+    <div class="sc-ef" id="sc-ef3">EF3</div>
+    <div class="sc-ef" id="sc-ef4">EF4</div>
+    <div class="sc-ef sc-ef5" id="sc-ef5">EF5</div>
+    <div class="sc-year" id="sc-y13">2013</div>
+    <div class="sc-year" id="sc-y25">2025</div>
+    <div class="sc-span" id="sc-span">12 Years</div>
+    <div class="sc-tag" id="sc-moore"><div class="sc-tag-a" id="sc-moore-a">Moore, OK</div><div class="sc-tag-b" id="sc-moore-b">Last EF5 &middot; May 2013</div></div>
+    <div class="sc-thr" id="sc-thr">Over 210 mph</div>
+    <div class="sc-tag" id="sc-end"><div class="sc-tag-a" id="sc-end-a">Enderlin, N.D.</div><div class="sc-tag-b" id="sc-end-b">Re-Rated Oct 2025</div></div>
+    <div class="sc-range" id="sc-range">2013 &ndash; 2025</div>
+    <div class="sc-q" id="sc-q">?</div>
+  </div>
+  <div class="sc-fade" id="sc-fade"></div>
+</div>
+<script src="vendor/three.classic.js"></script>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+const DUR = 11.5;
+const THREE = window.THREE, W = 1920, H = 1080;
+function mulberry32(a) { return function () { a |= 0; a = (a + 0x6d2b79f5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a);
+  t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+const rand = mulberry32(2013);
+const clamp = (v) => Math.max(0, Math.min(1, v));
+const ease = (v) => { v = clamp(v); return v * v * (3 - 2 * v); };
+const outCubic = (v) => { v = clamp(v); return 1 - Math.pow(1 - v, 3); };
+
+const canvas = document.getElementById("sc-canvas");
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1); renderer.setSize(W, H, false); renderer.setClearColor(0x000000, 0);
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(38, W / H, 0.1, 500);
+const POSE_A = { p: new THREE.Vector3(-5, 5, 44), l: new THREE.Vector3(0.5, 6.4, 0) };
+// POSE_B keeps the whole ladder in frame (rails 272..1617 px, 307..1000 px; EF5 rung ~360..406 px): the old
+// (1.5,13.2,24) push cropped the EF0/EF1 bars off the bottom edge. The question text sits above the rung.
+const POSE_B = { p: new THREE.Vector3(1.5, 13.5, 32), l: new THREE.Vector3(0.5, 8.75, 0) };
+const X0 = -12, X1 = 12, GAP = 2.4, RUNG_Y = (i) => i * GAP;
+const COLS = [0x3d5366, 0x4a6680, 0x5a768f, 0x6b93bb, 0x7fb2e5];
+
+// rails (the ladder sides) and a faint year grid on the back plane
+const railMat = new THREE.MeshBasicMaterial({ color: 0x2a3a4c });
+const rails = [X0 - 1.2, X1 + 1.2].map((x) => { const m = new THREE.Mesh(new THREE.BoxGeometry(0.35, 1, 0.35), railMat);
+  m.position.set(x, 0, 0); scene.add(m); return m; });
+const grid = [];
+for (let yr = 0; yr <= 12; yr++) {
+  const g = new THREE.Mesh(new THREE.PlaneGeometry(0.04, 13.2), new THREE.MeshBasicMaterial({ color: 0x1c2835, transparent: true, opacity: 0 }));
+  g.position.set(X0 + yr * 2, 6, -1.2); scene.add(g); grid.push(g);
+}
+// lower rungs EF0-EF4: solid, lit
+const rungs = COLS.map((c, i) => { const m = new THREE.Mesh(new THREE.BoxGeometry(X1 - X0, 0.55, 0.9), new THREE.MeshBasicMaterial({ color: c }));
+  m.position.set(0, RUNG_Y(i), 0); scene.add(m); return m; });
+// traffic on the lower rungs: bright chips sliding along, seeded (activity, not a count)
+const chips = [];
+for (let i = 0; i < 5; i++) for (let k = 0; k < 4; k++) {
+  const m = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.62, 0.95), new THREE.MeshBasicMaterial({ color: 0xdfe7ee, transparent: true, opacity: 0 }));
+  scene.add(m); chips.push({ m, i, ph: rand(), sp: 0.05 + rand() * 0.06 });
+}
+// EF5 rung: an empty glass tube (faint fill + red edges)
+const tubeGeo = new THREE.BoxGeometry(X1 - X0, 0.9, 1.1);
+const tubeFill = new THREE.Mesh(tubeGeo, new THREE.MeshBasicMaterial({ color: 0xd0121f, transparent: true, opacity: 0.05, depthWrite: false }));
+const tubeEdge = new THREE.LineSegments(new THREE.EdgesGeometry(tubeGeo), new THREE.LineBasicMaterial({ color: 0xe74c3c, transparent: true, opacity: 0.9 }));
+tubeFill.position.set(0, RUNG_Y(5), 0); tubeEdge.position.copy(tubeFill.position); scene.add(tubeFill); scene.add(tubeEdge);
+// Moore 2013: the last solid EF5 block at the left end
+const moore = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.9, 1.1), new THREE.MeshBasicMaterial({ color: 0x8e2020 }));
+moore.position.set(X0 + 0.55, RUNG_Y(5), 0); scene.add(moore);
+// scanning light that sweeps the empty tube
+const scan = new THREE.Mesh(new THREE.SphereGeometry(0.34, 20, 12), new THREE.MeshBasicMaterial({ color: 0xffe2c0, transparent: true, opacity: 0 }));
+scene.add(scan);
+const scanHalo = new THREE.Mesh(new THREE.CircleGeometry(1.4, 32), new THREE.MeshBasicMaterial({ color: 0xe74c3c, transparent: true, opacity: 0, depthWrite: false }));
+scene.add(scanHalo);
+// Enderlin 2025: the block that lands on the empty rung
+const ender = new THREE.Mesh(new THREE.BoxGeometry(1.2, 1.0, 1.2), new THREE.MeshBasicMaterial({ color: 0xd0121f }));
+scene.add(ender);
+const shock = new THREE.Mesh(new THREE.RingGeometry(0.8, 1.0, 48), new THREE.MeshBasicMaterial({ color: 0xe8c56a, transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false }));
+scene.add(shock);
+// s5 ghosts: amber outlines flickering along the empty stretch ("may be wrong too")
+const ghosts = [];
+for (let k = 0; k < 6; k++) {
+  const g = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(1.0, 0.8, 1.0)), new THREE.LineBasicMaterial({ color: 0xe8c56a, transparent: true, opacity: 0 }));
+  g.position.set(-9 + k * 3.6 + (rand() - 0.5) * 1.2, RUNG_Y(5), 0); scene.add(g); ghosts.push({ g, t0: 1.9 + k * 0.2, ph: rand() * 6.28 });
+}
+
+function pose(t) {
+  const k = ease((t - 7.35) / 1.5);
+  camera.position.lerpVectors(POSE_A.p, POSE_B.p, k);
+  const look = new THREE.Vector3().lerpVectors(POSE_A.l, POSE_B.l, k);
+  camera.lookAt(look);
+  camera.updateMatrixWorld();
+}
+function render(t) {
+  // build: rails rise, rungs extend from 2013 toward 2025
+  rails.forEach((r) => { const s = 0.01 + 14.5 * outCubic(t / 0.6); r.scale.y = s; r.position.y = s / 2 - 1; });
+  grid.forEach((g, j) => { g.material.opacity = 0.9 * clamp((t - 0.3 - j * 0.03) / 0.4); });
+  rungs.forEach((r, i) => { const s = Math.max(0.001, outCubic((t - 0.1 - i * 0.08) / 0.55)); r.scale.x = s; r.position.x = X0 + (X1 - X0) * s / 2; });
+  const tubeIn = outCubic((t - 0.5) / 0.55);
+  tubeEdge.scale.x = tubeFill.scale.x = Math.max(0.001, tubeIn); tubeEdge.position.x = tubeFill.position.x = X0 + (X1 - X0) * tubeIn / 2;
+  moore.scale.setScalar(Math.max(0.001, outCubic((t - 0.9) / 0.3)));
+  chips.forEach((c) => { const on = clamp((t - 0.7 - c.i * 0.08) / 0.4); const u = (c.ph + t * c.sp * 2.2) % 1;
+    c.m.position.set(X0 + 0.5 + u * (X1 - X0 - 1), RUNG_Y(c.i), 0.02); c.m.material.opacity = on * 0.55 * Math.sin(Math.PI * u); });
+  // the empty EF5 tube: a scan light crosses 2013 -> 2025 (TWELVE YEARS 0.38 .. THAT NIGHT 1.54, lands ~2.3)
+  const su = clamp((t - 0.45) / 1.85), sOn = (t > 0.45 && t < 2.55) ? 1 - clamp((t - 2.3) / 0.25) : 0;
+  scan.position.set(X0 + 1.2 + su * (X1 - X0 - 2.4), RUNG_Y(5), 0); scan.material.opacity = sOn;
+  scanHalo.position.set(scan.position.x, RUNG_Y(5), -0.6); scanHalo.material.opacity = 0.35 * sOn;
+  // NO AMERICAN TORNADO ... EF5 (2.38 .. 3.98): the empty tube throbs; landing (6.75) floods it for a beat
+  const thr = t > 2.38 && t < 4.6 ? 0.5 + 0.5 * Math.sin((t - 2.38) * 7.5) : 0;
+  const hit = t > 6.75 ? Math.exp(-(t - 6.75) * 3.2) : 0;
+  tubeEdge.material.opacity = 0.55 + 0.45 * thr + 0.1 * Math.sin(t * 2.2);
+  tubeFill.material.opacity = 0.05 + 0.1 * thr + 0.55 * hit;
+  // ENDERLIN drops onto the 2025 end (6.35 -> 6.75, after SCALE ends at 6.635)
+  const d = clamp((t - 6.35) / 0.4), dy = t < 6.35 ? 40 : 11 * (1 - d * d);
+  ender.position.set(X1 - 0.6, RUNG_Y(5) + dy, 0); ender.rotation.y = 0.4 * (1 - d) + 0.03 * Math.sin(t * 1.3);
+  const sk = clamp((t - 6.75) / 0.7);
+  shock.position.set(X1 - 0.6, RUNG_Y(5), 0.6); shock.scale.setScalar(0.5 + 4.5 * outCubic(sk)); shock.material.opacity = t > 6.75 ? 0.9 * (1 - sk) : 0;
+  // s5 LAST 12 YEARS (local 8.975..): ghosts flicker in along the empty stretch
+  ghosts.forEach((g) => { const on = clamp((t - 7.135 - g.t0) / 0.3); g.g.material.opacity = on * (0.55 + 0.35 * Math.sin(t * 9 + g.ph));
+    g.g.rotation.y = 0.2 * Math.sin(t * 0.8 + g.ph); });
+  pose(t);
+  renderer.render(scene, camera);
+}
+
+// project the fixed HUD for each pose (labels only show while their pose is settled)
+function place(id, v, pose, dx, dy) {
+  camera.position.copy(pose.p); camera.lookAt(pose.l); camera.updateMatrixWorld();
+  const p = v.clone().project(camera);
+  const el = document.getElementById(id);
+  el.style.left = ((p.x + 1) / 2 * W + (dx || 0)).toFixed(1) + "px";
+  el.style.top = ((1 - p.y) / 2 * H + (dy || 0)).toFixed(1) + "px";
+}
+for (let i = 0; i < 6; i++) place("sc-ef" + i, new THREE.Vector3(X0 - 1.8, RUNG_Y(i), 0), POSE_A, -120, 0);
+place("sc-y13", new THREE.Vector3(X0, -1.6, 0), POSE_A, 0, -4);
+place("sc-y25", new THREE.Vector3(X1, -1.6, 0), POSE_A, 0, -4);
+place("sc-span", new THREE.Vector3(0, RUNG_Y(5) + 1.3, 0), POSE_A, 0, -66);
+place("sc-moore", new THREE.Vector3(X0 + 0.55, RUNG_Y(5) + 1.3, 0), POSE_A, 20, -80);
+place("sc-thr", new THREE.Vector3(X1 + 1.9, RUNG_Y(5), 0), POSE_A, 0, 0);
+place("sc-end", new THREE.Vector3(X1 - 0.6, RUNG_Y(5) + 1.3, 0), POSE_A, -40, -80);
+
+const tl = gsap.timeline({ paused: true });
+const P = "#sc-";
+const LABELS = [P+"ef0", P+"ef1", P+"ef2", P+"ef3", P+"ef4", P+"ef5", P+"y13", P+"y25", P+"span", P+"moore", P+"thr", P+"end"];
+tl.set(LABELS.concat([P+"range", P+"q"]), { autoAlpha: 0 }, 0);
+tl.set(P+"fade", { autoAlpha: 0 }, 0);
+tl.to({}, { duration: DUR, ease: "none", onUpdate: () => render(tl.time()) }, 0);  // WebGL clock: continuous for the whole window
+
+/* build: EF ladder labels climb with the rungs */
+tl.fromTo([P+"ef0", P+"ef1", P+"ef2", P+"ef3", P+"ef4"], { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.35, stagger: 0.08, ease: "power3.out" }, 0.2);
+tl.fromTo(P+"ef5", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 0.6);
+/* TWELVE @0.38 YEARS @0.68: the span and its ends */
+tl.fromTo([P+"y13", P+"y25"], { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, stagger: 0.25, ease: "power3.out" }, 0.38);
+tl.fromTo(P+"span", { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 0.68);
+/* BEFORE @0.92: where the gap starts */
+tl.fromTo(P+"moore", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.0);
+/* EF5 @3.98: the rung label pops */
+tl.fromTo(P+"ef5", { scale: 1 }, { scale: 1.3, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "right center" }, 3.98);
+tl.fromTo(P+"span", { y: 0 }, { y: -6, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 1.2);
+/* TOP @5.44 OF THE SCALE @5.96: the threshold */
+tl.fromTo(P+"thr", { autoAlpha: 0, x: -18 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 5.44);
+/* landing 6.75 (in the breath between s4 and s5): Enderlin takes the rung */
+tl.to([P+"span", P+"moore", P+"thr"], { opacity: 0.35, duration: 0.3 }, 6.55);
+tl.fromTo(P+"end", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.85);
+/* WHAT CHANGED @7.135: every label clears before the camera moves (7.35 - 8.85) */
+tl.to(LABELS, { autoAlpha: 0, y: -12, duration: 0.3, ease: "power2.in" }, 7.1);
+/* LAST @8.975 TWELVE @9.215: the stretch in question */
+tl.fromTo(P+"range", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.215);
+/* WRONG @10.315 */
+tl.fromTo(P+"q", { autoAlpha: 0, scale: 1.3 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.out" }, 10.3);
+tl.fromTo(P+"q", { rotation: 0 }, { rotation: -4, duration: 0.5, ease: "sine.inOut" }, 10.6);
+/* out: into the void (voice ends 11.226) */
+tl.to(P+"fade", { autoAlpha: 1, duration: 0.5, ease: "power2.in" }, 11.0);
+window.__timelines["g-scale"] = tl;
+render(0);
+})();
+</script>
+</template>
+</body>
+</html>
