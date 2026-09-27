@@ -2,27 +2,122 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-quote-jones"
-     (host 939.022 -> 957.031, 18.009 s, track 2). The MG builder replaces this whole file. -->
+<!-- g-quote-jones (B3): host 939.022 -> 957.031 (18.009 s, track 2), audio a4-s1 starts 939.222 (local = word + 0.20).
+     Verbatim quote, MPR News 8 Oct 2025 (research/fact_sheet.md 39, fact_check.md): "This particular set of damage that we
+     saw kind of stood out as unique. We wanted to investigate further." Words land in the voice's order.
+     Then the card steps aside: the EF scale's 28 damage indicators hold no freight car.
+     Cues: direct quote 1.92, this 3.24 ... unique 6.20, we 8.20 ... further 9.34, rail line 12.04, 28 14.76,
+     freight car 15.80. Exit 17.378. -->
 <template>
 <style>
-  .ph-quote-jones { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .ph-quote-jones-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-quote-jones-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
-  .ph-quote-jones-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .qj-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .qj-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .qj-glow { position:absolute; left:-200px; top:0; width:1300px; height:900px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(232,197,106,0.08), rgba(232,197,106,0) 70%); }
+  .qj-card { position:absolute; left:160px; top:200px; width:1600px; padding:60px 90px 44px 150px; box-sizing:border-box; border-radius:28px; overflow:hidden;
+    background: rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  .qj-cbeam { position:absolute; top:0; bottom:0; left:0; width:260px; background:linear-gradient(90deg, transparent, rgba(138,90,16,0.14), transparent); }
+  .qj-mark { position:absolute; left:40px; top:18px; font-family:'AbrilFig', Georgia, serif; font-size:170px; line-height:170px; color:#8a5a10; }
+  .qj-q { font-family: Georgia, serif; font-style:italic; font-size:48px; line-height:64px; color:#1c1a17; }
+  .qj-q + .qj-q { margin-top:18px; }
+  .qj-q span { display:inline-block; }
+  .qj-attr { margin-top:26px; font-weight:700; font-size:19px; letter-spacing:2px; color:#5a4a2e; white-space:nowrap; }
+  .qj-tiles { position:absolute; left:1250px; top:250px; width:492px; height:212px; }
+  .qj-tile { position:absolute; width:60px; height:44px; border-radius:8px; background:rgba(90,118,143,0.55); border:1px solid rgba(127,178,229,0.6); box-sizing:border-box; }
+  .qj-big { position:absolute; left:1250px; top:484px; font-family:'Arial Black', Arial, sans-serif; font-size:56px; line-height:66px; color:#f2f5f8; white-space:nowrap; }
+  .qj-car { position:absolute; left:1250px; top:600px; width:492px; height:160px; }
+  .qj-no { position:absolute; left:1250px; top:790px; font-weight:700; font-size:36px; line-height:44px; color:#e74c3c; white-space:nowrap; }
 </style>
-<div class="ph-quote-jones" data-composition-id="g-quote-jones" data-width="1920" data-height="1080" data-duration="18.009">
-  <div class="ph-quote-jones-card" id="ph-quote-jones-card">
-    <div class="ph-quote-jones-t" id="ph-quote-jones-t">g-quote-jones</div>
-    <div class="ph-quote-jones-s" id="ph-quote-jones-s">Placeholder · To Build</div>
+<div class="qj-wrap" data-composition-id="g-quote-jones" data-width="1920" data-height="1080" data-duration="18.009">
+  <div class="qj-grid" id="qj-grid"></div>
+  <div class="qj-glow" id="qj-glow"></div>
+  <div class="qj-card" id="qj-card">
+    <div class="qj-cbeam" id="qj-cbeam"></div>
+    <div class="qj-mark" id="qj-mark">&ldquo;</div>
+    <div class="qj-q" id="qj-q1"><span id="qj-w1">This</span> <span id="qj-w2">particular</span> <span id="qj-w3">set</span> <span id="qj-w4">of</span> <span id="qj-w5">damage</span> <span id="qj-w6">that</span> <span id="qj-w7">we</span> <span id="qj-w8">saw</span> <span id="qj-w9">kind</span> <span id="qj-w10">of</span> <span id="qj-w11">stood</span> <span id="qj-w12">out</span> <span id="qj-w13">as</span> <span id="qj-w14">unique.</span></div>
+    <div class="qj-q" id="qj-q2"><span id="qj-w15">We</span> <span id="qj-w16">wanted</span> <span id="qj-w17">to</span> <span id="qj-w18">investigate</span> <span id="qj-w19">further.&rdquo;</span></div>
+    <div class="qj-attr" id="qj-attr">Carl Jones, NWS Grand Forks &middot; MPR News, Oct 8, 2025</div>
   </div>
+  <div class="qj-tiles" id="qj-tiles">
+    <div class="qj-tile" style="left:0px;top:0px"></div><div class="qj-tile" style="left:72px;top:0px"></div><div class="qj-tile" style="left:144px;top:0px"></div><div class="qj-tile" style="left:216px;top:0px"></div><div class="qj-tile" style="left:288px;top:0px"></div><div class="qj-tile" style="left:360px;top:0px"></div><div class="qj-tile" style="left:432px;top:0px"></div>
+    <div class="qj-tile" style="left:0px;top:56px"></div><div class="qj-tile" style="left:72px;top:56px"></div><div class="qj-tile" style="left:144px;top:56px"></div><div class="qj-tile" style="left:216px;top:56px"></div><div class="qj-tile" style="left:288px;top:56px"></div><div class="qj-tile" style="left:360px;top:56px"></div><div class="qj-tile" style="left:432px;top:56px"></div>
+    <div class="qj-tile" style="left:0px;top:112px"></div><div class="qj-tile" style="left:72px;top:112px"></div><div class="qj-tile" style="left:144px;top:112px"></div><div class="qj-tile" style="left:216px;top:112px"></div><div class="qj-tile" style="left:288px;top:112px"></div><div class="qj-tile" style="left:360px;top:112px"></div><div class="qj-tile" style="left:432px;top:112px"></div>
+    <div class="qj-tile" style="left:0px;top:168px"></div><div class="qj-tile" style="left:72px;top:168px"></div><div class="qj-tile" style="left:144px;top:168px"></div><div class="qj-tile" style="left:216px;top:168px"></div><div class="qj-tile" style="left:288px;top:168px"></div><div class="qj-tile" style="left:360px;top:168px"></div><div class="qj-tile" style="left:432px;top:168px"></div>
+  </div>
+  <div class="qj-big" id="qj-big">28 Indicators</div>
+  <svg class="qj-car" id="qj-car" viewBox="0 0 492 160">
+    <path d="M0 150 H492" stroke="#4a5560" stroke-width="3"/>
+    <rect x="70" y="28" width="340" height="92" rx="6" fill="#5a768f" stroke="#7fb2e5" stroke-width="3"/>
+    <path d="M110 40 V108 M150 40 V108 M190 40 V108 M290 40 V108 M330 40 V108 M370 40 V108" stroke="rgba(223,231,238,0.35)" stroke-width="3"/>
+    <rect x="215" y="46" width="50" height="62" rx="3" fill="none" stroke="#dfe7ee" stroke-width="3"/>
+    <rect x="60" y="118" width="360" height="10" fill="#2a3644" stroke="#93a3b2" stroke-width="2"/>
+    <circle cx="100" cy="138" r="11" fill="#0b1016" stroke="#93a3b2" stroke-width="3"/><circle cx="132" cy="138" r="11" fill="#0b1016" stroke="#93a3b2" stroke-width="3"/>
+    <circle cx="348" cy="138" r="11" fill="#0b1016" stroke="#93a3b2" stroke-width="3"/><circle cx="380" cy="138" r="11" fill="#0b1016" stroke="#93a3b2" stroke-width="3"/>
+    <path id="qj-x" d="M40 10 L452 150" stroke="#e74c3c" stroke-width="10" stroke-linecap="round"/>
+  </svg>
+  <div class="qj-no" id="qj-no">No Freight Car</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-quote-jones-card", { x: 0 }, { x: 40, duration: 18.009, ease: "none" }, 0);
+  const DUR = 18.009;
+  const xl = document.getElementById("qj-x"); const XL = Math.ceil(xl.getTotalLength()) + 1; xl.style.strokeDasharray = XL;
+  tl.set(["#qj-card", "#qj-mark", "#qj-attr", "#qj-tiles", "#qj-big", "#qj-car", "#qj-no",
+          "#qj-w1", "#qj-w2", "#qj-w3", "#qj-w4", "#qj-w5", "#qj-w6", "#qj-w7", "#qj-w8", "#qj-w9", "#qj-w10",
+          "#qj-w11", "#qj-w12", "#qj-w13", "#qj-w14", "#qj-w15", "#qj-w16", "#qj-w17", "#qj-w18", "#qj-w19"], { autoAlpha: 0 }, 0);
+  tl.set(".qj-tile", { autoAlpha: 0, scale: 0.4 }, 0);
+  tl.set("#qj-x", { strokeDashoffset: XL }, 0);
+
+  /* ambient, whole window */
+  tl.fromTo("#qj-grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#qj-glow", { x: 0, y: 0 }, { x: 900, y: 120, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#qj-cbeam", { x: -260 }, { x: 1600, duration: 3.0, ease: "none", repeat: 5 }, 0);
+
+  /* HE SAID @0.44 ... DIRECT QUOTE @1.92: the card and its quote mark */
+  tl.fromTo("#qj-card", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.9);
+  tl.fromTo("#qj-mark", { autoAlpha: 0, scale: 1.6, y: -20 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, 1.92);
+
+  /* the quote, word by word on the voice */
+  tl.fromTo("#qj-w1", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, 3.24);
+  tl.fromTo("#qj-w2", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, 3.48);
+  tl.fromTo("#qj-w3", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, 3.86);
+  tl.fromTo("#qj-w4", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, 4.3);
+  tl.fromTo("#qj-w5", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, 4.44);
+  tl.fromTo("#qj-w6", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, 4.74);
+  tl.fromTo("#qj-w7", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, 4.96);
+  tl.fromTo("#qj-w8", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, 5.1);
+  tl.fromTo("#qj-w9", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, 5.34);
+  tl.fromTo("#qj-w10", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, 5.54);
+  tl.fromTo("#qj-w11", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, 5.7);
+  tl.fromTo("#qj-w12", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, 5.84);
+  tl.fromTo("#qj-w13", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, 6.06);
+  tl.fromTo("#qj-w14", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, 6.2);
+  tl.fromTo("#qj-w15", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, 8.2);
+  tl.fromTo("#qj-w16", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, 8.42);
+  tl.fromTo("#qj-w17", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, 8.66);
+  tl.fromTo("#qj-w18", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, 8.88);
+  tl.fromTo("#qj-w19", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, 9.34);
+  /* attribution after the last word */
+  tl.fromTo("#qj-attr", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 9.58);
+  tl.fromTo("#qj-card", { y: 0 }, { y: -8, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1 }, 9.6);
+
+  /* THE DAMAGE HE MEANT ... RAIL LINE @12.04: the card steps aside, a freight car rolls in */
+  tl.to("#qj-card", { scale: 0.6, x: -64, y: 150, transformOrigin: "0% 0%", duration: 0.7, ease: "power3.inOut" }, 11.5);
+  tl.fromTo("#qj-car", { autoAlpha: 0, x: 200 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 12.04);
+  /* 28 @14.76: the scale's 28 damage indicators */
+  tl.to(".qj-tile", { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.025 }, 14.1);
+  tl.fromTo("#qj-big", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power4.out" }, 14.76);
+  /* FREIGHT CAR @15.80: none of the 28 is a freight car */
+  tl.to("#qj-x", { strokeDashoffset: 0, duration: 0.3, ease: "power3.out" }, 15.8);
+  tl.fromTo("#qj-no", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 15.9);
+  tl.to("#qj-car", { opacity: 0.7, duration: 0.3 }, 16.1);
+
+  /* exit (spec 956.4 -> 17.378) */
+  tl.to(["#qj-card", "#qj-tiles", "#qj-big", "#qj-car", "#qj-no"], { y: -40, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 17.378);
   window.__timelines["g-quote-jones"] = tl;
 })();
 </script>
