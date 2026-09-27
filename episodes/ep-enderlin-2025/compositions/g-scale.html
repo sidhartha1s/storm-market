@@ -119,7 +119,7 @@ for (let k = 0; k < 6; k++) {
 }
 
 function pose(t) {
-  const k = ease((t - 7.35) / 1.5);
+  const k = ease((t - 11.55) / 1.5);
   camera.position.lerpVectors(POSE_A.p, POSE_B.p, k);
   const look = new THREE.Vector3().lerpVectors(POSE_A.l, POSE_B.l, k);
   camera.lookAt(look);
