@@ -63,45 +63,48 @@ window.__timelines = window.__timelines || {};
   /* one-shot DOM build: faint placeholder rows for the database scroll (no text) */
   const sc = document.getElementById("dta5-scroll");
   for (let i = 0; i < 24; i++) { const r = document.createElement("div"); r.className = "dta5-ghost"; r.id = "dta5-g" + i; r.style.top = (i * 36) + "px"; r.style.width = (620 + (i * 137) % 460) + "px"; sc.appendChild(r); }
-  const H = 1229.645;
+  const H = 1230.881;
   const D = 27.143;
   const tl = gsap.timeline({ paused: true });
   const P = "#dta5-";
   const DOTS = [P+"d0", P+"d1", P+"d2", P+"d3", P+"d4", P+"d5", P+"d6", P+"d7", P+"dM"];
-  tl.set([P+"card", P+"rM", P+"rE", P+"map", P+"lat", P+"dE", P+"cM", P+"cE", P+"leg", P+"h"].concat(DOTS), { autoAlpha: 0 }, 0);
+  tl.set([P+"hd", P+"cap", P+"rM", P+"rE", P+"map", P+"lat", P+"dE", P+"cM", P+"cE", P+"leg", P+"h"].concat(DOTS), { autoAlpha: 0 }, 0);
   tl.set(P+"rE", { clipPath: "inset(0% 100% 0% 0%)" }, 0);
 
   /* continuous: sweep every 9.1 s; the database rows scroll up while the card is on screen */
   tl.fromTo(P+"sweep", { x: -300 }, { x: 2200, duration: 9.1, ease: "none", repeat: 2 }, 0);
-  tl.fromTo(P+"scroll", { y: 0 }, { y: -680, duration: 14.0, ease: "none" }, 0.2);
+  tl.fromTo(P+"scroll", { y: 0 }, { y: -680, duration: 14.0, ease: "none" }, 0);
 
-  /* STORM DATA @1231.72 (card) · FEDERAL DATABASE @1232.92 · EVERY TORNADO @1233.92 */
-  tl.fromTo(P+"card", { autoAlpha: 0, y: 80 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 1231.72 - H);
-  tl.fromTo(P+"cap", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1232.92 - H);
-  /* EVERY FUTURE STUDY @1238.48: the Moore row sits in the list · COUNT ENDERLIN @1240.96: the new row writes in */
-  tl.fromTo(P+"rM", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1238.48 - H);
-  tl.set(P+"rE", { autoAlpha: 1 }, 1240.96 - H);
-  tl.to(P+"rE", { clipPath: "inset(0% 0% 0% 0%)", duration: 1.3, ease: "none" }, 1240.96 - H);
-  tl.fromTo(P+"rE", { x: 0 }, { x: 6, duration: 0.1, ease: "power2.out", yoyo: true, repeat: 3 }, 1242.3 - H);
-  /* DATABASE @1243.59 -> the map of every EF5 since Feb 2007 @1244.0 */
-  tl.to([P+"card", P+"rM", P+"rE"], { y: -80, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 1243.3 - H);
-  tl.fromTo(P+"map", { autoAlpha: 0, scale: 1.08 }, { autoAlpha: 1, scale: 1, duration: 0.7, ease: "power3.out" }, 1243.7 - H);
-  tl.fromTo(DOTS, { autoAlpha: 0, scale: 3 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.05 }, 1244.0 - H);
-  tl.fromTo(P+"leg", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1244.2 - H);
-  tl.to(DOTS, { scale: 1.4, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 13 }, 1244.8 - H);
-  /* MOORE'S EF5 @1244.74 · ABOUT 210 @1246.53 */
-  tl.fromTo(P+"cM", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1244.74 - H);
-  tl.to(P+"cM", { scale: 1.08, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 1246.53 - H);
-  /* MORE THAN THAT @1250.32: Enderlin lands */
-  tl.fromTo(P+"dE", { autoAlpha: 0, y: -200 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power4.in" }, 1249.9 - H);
-  tl.fromTo(P+"cE", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1250.32 - H);
-  /* FARTHER NORTH @1252.40: the latitude line, Enderlin pulses · ANY OTHER EF5 @1253.54 */
-  tl.fromTo(P+"lat", { autoAlpha: 1, scaleX: 0 }, { scaleX: 1, duration: 0.8, ease: "power2.out", transformOrigin: "left center" }, 1252.40 - H);
-  tl.to(P+"dE", { scale: 1.6, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 3 }, 1252.40 - H);
-  tl.to(P+"cM", { opacity: 0.4, duration: 0.4 }, 1252.6 - H);
-  tl.fromTo(P+"h", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1253.54 - H);
+  /* picture from the first frame (draft sat ~2 s empty before the card, owner 27 Sep 26): the glass card and its
+     scrolling database rows are on screen at 0 and settle; the headline still lands on the voice */
+  tl.fromTo(P+"card", { y: 80 }, { y: 0, duration: 0.9, ease: "power3.out" }, 0);
+  /* STORM DATA @1232.956 (headline) · FEDERAL DATABASE @1234.156 · EVERY TORNADO @1235.156 */
+  tl.fromTo(P+"hd", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1232.956 - H);
+  tl.fromTo(P+"cap", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1234.156 - H);
+  /* EVERY FUTURE STUDY @1239.716: the Moore row sits in the list · COUNT ENDERLIN @1242.196: the new row writes in */
+  tl.fromTo(P+"rM", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1239.716 - H);
+  tl.set(P+"rE", { autoAlpha: 1 }, 1242.196 - H);
+  tl.to(P+"rE", { clipPath: "inset(0% 0% 0% 0%)", duration: 1.3, ease: "none" }, 1242.196 - H);
+  tl.fromTo(P+"rE", { x: 0 }, { x: 6, duration: 0.1, ease: "power2.out", yoyo: true, repeat: 3 }, 1243.536 - H);
+  /* DATABASE @1244.826 -> the map of every EF5 since Feb 2007 @1245.236 */
+  tl.to([P+"card", P+"rM", P+"rE"], { y: -80, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 1244.536 - H);
+  tl.fromTo(P+"map", { autoAlpha: 0, scale: 1.08 }, { autoAlpha: 1, scale: 1, duration: 0.7, ease: "power3.out" }, 1244.936 - H);
+  tl.fromTo(DOTS, { autoAlpha: 0, scale: 3 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.05 }, 1245.236 - H);
+  tl.fromTo(P+"leg", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1245.436 - H);
+  tl.to(DOTS, { scale: 1.4, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 13 }, 1246.036 - H);
+  /* MOORE'S EF5 @1245.976 · ABOUT 210 @1247.766 */
+  tl.fromTo(P+"cM", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1245.976 - H);
+  tl.to(P+"cM", { scale: 1.08, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 1247.766 - H);
+  /* MORE THAN THAT @1251.556: Enderlin lands */
+  tl.fromTo(P+"dE", { autoAlpha: 0, y: -200 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power4.in" }, 1251.136 - H);
+  tl.fromTo(P+"cE", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1251.556 - H);
+  /* FARTHER NORTH @1253.636: the latitude line, Enderlin pulses · ANY OTHER EF5 @1254.776 */
+  tl.fromTo(P+"lat", { autoAlpha: 1, scaleX: 0 }, { scaleX: 1, duration: 0.8, ease: "power2.out", transformOrigin: "left center" }, 1253.636 - H);
+  tl.to(P+"dE", { scale: 1.6, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 3 }, 1253.636 - H);
+  tl.to(P+"cM", { opacity: 0.4, duration: 0.4 }, 1253.836 - H);
+  tl.fromTo(P+"h", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1254.776 - H);
   /* exit 1256.2 */
-  tl.to([P+"map", P+"lat", P+"dE", P+"cM", P+"cE", P+"leg", P+"h"].concat(DOTS), { x: 980, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 1256.2 - H);
+  tl.to([P+"map", P+"lat", P+"dE", P+"cM", P+"cE", P+"leg", P+"h"].concat(DOTS), { x: 980, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 1257.436 - H);
   tl.to({}, { duration: 0.01 }, D - 0.01);
   window.__timelines["g-drought-timeline-a5"] = tl;
 })();

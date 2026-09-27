@@ -41,7 +41,7 @@
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
-  const H = 1352.00;
+  const H = 1353.236;
   const D = 11.755;
   const tl = gsap.timeline({ paused: true });
   const P = "#tna6-";
@@ -54,25 +54,25 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"sweep", { x: -300 }, { x: 2200, duration: 11.8, ease: "none" }, 0);
   tl.fromTo([P+"s5", P+"s4"], { y: 420 }, { y: -40, duration: 1.9, ease: "none", repeat: 5, repeatDelay: 0.1 }, 0.2);
 
-  /* HIS STUDY @1352.08: lower-third and the two bands */
-  tl.fromTo(P+"lt", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1352.08 - H);
-  tl.to([P+"b5", P+"b4"], { scaleY: 1, duration: 0.6, ease: "power3.out" }, 1352.1 - H);
-  tl.fromTo([P+"l5", P+"l4"], { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out", stagger: 0.1 }, 1352.4 - H);
-  tl.fromTo(P+"line", { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.45, ease: "power4.out" }, 1352.7 - H);
-  /* SMALL MOVE @1353.24 · LINE UP @1354.10: the line nudges */
-  tl.to(P+"line", { y: 12, duration: 0.25, ease: "power2.inOut", yoyo: true, repeat: 3 }, 1353.24 - H);
-  /* OLD FUJITA SCALE @1355.44: guide ticks a notch lower */
-  tl.fromTo([P+"k0", P+"k1"], { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.4, ease: "power3.out" }, 1355.44 - H);
-  tl.fromTo(P+"glab", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1355.6 - H);
-  tl.to([P+"k0", P+"k1"], { x: 6, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 5 }, 1356.2 - H);
-  /* LOWER LINE @1359.13: the line slides down onto the guide */
-  tl.to(P+"lt", { x: -700, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 1358.4 - H);
-  tl.to(P+"line", { y: 60, duration: 0.6, ease: "power3.inOut" }, 1359.13 - H);
-  /* TOP OF THE EF4 RANGE @1360.26 -> INTO EF5 @1361.94: the top of EF4 recolours */
-  tl.fromTo(P+"top4", { autoAlpha: 0, scaleY: 0, transformOrigin: "center top" }, { autoAlpha: 1, scaleY: 1, duration: 1.2, ease: "power2.out" }, 1360.26 - H);
-  tl.to(P+"top4", { opacity: 0.75, duration: 0.3, ease: "power2.inOut", yoyo: true, repeat: 1 }, 1361.94 - H);
+  /* HIS STUDY @1353.316: lower-third and the two bands */
+  tl.fromTo(P+"lt", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1353.316 - H);
+  tl.to([P+"b5", P+"b4"], { scaleY: 1, duration: 0.6, ease: "power3.out" }, 1353.336 - H);
+  tl.fromTo([P+"l5", P+"l4"], { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out", stagger: 0.1 }, 1353.636 - H);
+  tl.fromTo(P+"line", { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.45, ease: "power4.out" }, 1353.936 - H);
+  /* SMALL MOVE @1354.476 · LINE UP @1355.336: the line nudges */
+  tl.to(P+"line", { y: 12, duration: 0.25, ease: "power2.inOut", yoyo: true, repeat: 3 }, 1354.476 - H);
+  /* OLD FUJITA SCALE @1356.676: guide ticks a notch lower */
+  tl.fromTo([P+"k0", P+"k1"], { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.4, ease: "power3.out" }, 1356.676 - H);
+  tl.fromTo(P+"glab", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1356.836 - H);
+  tl.to([P+"k0", P+"k1"], { x: 6, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 5 }, 1357.436 - H);
+  /* LOWER LINE @1360.366: the line slides down onto the guide */
+  tl.to(P+"lt", { x: -700, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 1359.636 - H);
+  tl.to(P+"line", { y: 60, duration: 0.6, ease: "power3.inOut" }, 1360.366 - H);
+  /* TOP OF THE EF4 RANGE @1361.496 -> INTO EF5 @1363.176: the top of EF4 recolours */
+  tl.fromTo(P+"top4", { autoAlpha: 0, scaleY: 0, transformOrigin: "center top" }, { autoAlpha: 1, scaleY: 1, duration: 1.2, ease: "power2.out" }, 1361.496 - H);
+  tl.to(P+"top4", { opacity: 0.75, duration: 0.3, ease: "power2.inOut", yoyo: true, repeat: 1 }, 1363.176 - H);
   /* exit 1363.2 */
-  tl.to([P+"b5", P+"b4", P+"top4", P+"l5", P+"l4", P+"line", P+"k0", P+"k1", P+"glab"], { x: 980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 1363.2 - H);
+  tl.to([P+"b5", P+"b4", P+"top4", P+"l5", P+"l4", P+"line", P+"k0", P+"k1", P+"glab"], { x: 980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 1364.436 - H);
   tl.to({}, { duration: 0.01 }, D - 0.01);
   window.__timelines["g-then-now-a6"] = tl;
 })();

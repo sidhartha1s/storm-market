@@ -67,7 +67,7 @@
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
-  const H = 556.485;
+  const H = 557.139;
   const D = 48.409;
   const tl = gsap.timeline({ paused: true });
   const P = "#ef4c-";
@@ -80,44 +80,44 @@ window.__timelines = window.__timelines || {};
   /* continuous: sweep every 8.1 s; cards float before the cutaway; the EF5 line shimmers after it */
   tl.fromTo(P+"sweep", { x: -300 }, { x: 2200, duration: 8.1, ease: "none", repeat: 5 }, 0);
 
-  /* STRONG TORNADOES @556.49 · ARGUMENTS @560.59 */
-  tl.fromTo(P+"h", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 556.49 - H);
-  tl.fromTo(P+"sub", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 560.59 - H);
-  /* MAYFLOWER AND VILONIA @563.31 · ROCHELLE AND FAIRDALE @567.40 · MAYFIELD @571.25 · ROLLING FORK @574.62 */
-  tl.fromTo(P+"c0", { autoAlpha: 0, x: 200 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 563.31 - H);
-  tl.fromTo(P+"c1", { autoAlpha: 0, x: 200 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 567.40 - H);
-  tl.fromTo(P+"c2", { autoAlpha: 0, x: 200 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 571.25 - H);
-  tl.fromTo(P+"c3", { autoAlpha: 0, x: 200 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 574.62 - H);
-  tl.to(CARDS, { y: -10, duration: 2.0, ease: "sine.inOut", yoyo: true, repeat: 5 }, 564.0 - H);
+  /* STRONG TORNADOES @557.144 · ARGUMENTS @561.244 */
+  tl.fromTo(P+"h", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 557.144 - H);
+  tl.fromTo(P+"sub", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 561.244 - H);
+  /* MAYFLOWER AND VILONIA @563.964 · ROCHELLE AND FAIRDALE @568.054 · MAYFIELD @571.904 · ROLLING FORK @575.274 */
+  tl.fromTo(P+"c0", { autoAlpha: 0, x: 200 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 563.964 - H);
+  tl.fromTo(P+"c1", { autoAlpha: 0, x: 200 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 568.054 - H);
+  tl.fromTo(P+"c2", { autoAlpha: 0, x: 200 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 571.904 - H);
+  tl.fromTo(P+"c3", { autoAlpha: 0, x: 200 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 575.274 - H);
+  tl.to(CARDS, { y: -10, duration: 2.0, ease: "sine.inOut", yoyo: true, repeat: 5 }, 564.654 - H);
 
   /* under the cutaway (578.11-586.42): header clears, cards shrink up to make room for the bar field */
-  tl.to([P+"h", P+"sub"], { autoAlpha: 0, duration: 0.3 }, 579.0 - H);
-  tl.to(CARDS, { y: -120, scale: 0.8, transformOrigin: "center top", duration: 0.8, ease: "power2.inOut" }, 580.0 - H);
+  tl.to([P+"h", P+"sub"], { autoAlpha: 0, duration: 0.3 }, 579.654 - H);
+  tl.to(CARDS, { y: -120, scale: 0.8, transformOrigin: "center top", duration: 0.8, ease: "power2.inOut" }, 580.654 - H);
 
-  /* ALL FOUR @587.20 · EF4 @588.20: the EF4 band and an empty track under each card */
-  tl.fromTo([P+"band", P+"base"], { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.6, ease: "power3.out", transformOrigin: "left center" }, 587.20 - H);
-  tl.fromTo(P+"ef4", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 588.20 - H);
-  tl.fromTo(TRK, { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.1 }, 588.3 - H);
-  /* NEAR THE LINE @590.80: the EF5 line */
-  tl.fromTo(P+"line", { autoAlpha: 1, scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "power4.out", transformOrigin: "left center" }, 590.80 - H);
-  tl.fromTo(P+"ef5", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 590.9 - H);
-  tl.to(P+"line", { scaleY: 1.8, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 7 }, 591.6 - H);
-  /* 190 @593.28 (Mayflower) · MAYFIELD @595.84 · 195 @597.80 (Rolling Fork) · 200 @600.96 (Rochelle) */
-  tl.to(P+"b0", { scaleY: 1, duration: 0.8, ease: "power3.out" }, 592.5 - H);
-  tl.fromTo(P+"v0", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 593.28 - H);
-  tl.to(P+"b2", { scaleY: 1, duration: 0.8, ease: "power3.out" }, 595.1 - H);
-  tl.fromTo(P+"v2", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 595.84 - H);
-  tl.to(P+"b3", { scaleY: 1, duration: 0.8, ease: "power3.out" }, 597.0 - H);
-  tl.fromTo(P+"v3", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 597.80 - H);
-  tl.to(P+"b1", { scaleY: 1, duration: 1.2, ease: "power4.out" }, 599.8 - H);
-  tl.fromTo(P+"v1", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 600.96 - H);
-  /* ONE MILE AN HOUR SHORT @602.04 · EF5 @603.44 */
-  tl.fromTo(P+"short", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 602.04 - H);
-  tl.to(P+"b1", { y: -4, duration: 0.15, ease: "power2.out", yoyo: true, repeat: 3 }, 602.2 - H);
-  tl.to(P+"ef5", { scale: 1.25, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "left center" }, 603.44 - H);
+  /* ALL FOUR @587.854 · EF4 @588.854: the EF4 band and an empty track under each card */
+  tl.fromTo([P+"band", P+"base"], { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.6, ease: "power3.out", transformOrigin: "left center" }, 587.854 - H);
+  tl.fromTo(P+"ef4", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 588.854 - H);
+  tl.fromTo(TRK, { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.1 }, 588.954 - H);
+  /* NEAR THE LINE @591.454: the EF5 line */
+  tl.fromTo(P+"line", { autoAlpha: 1, scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "power4.out", transformOrigin: "left center" }, 591.454 - H);
+  tl.fromTo(P+"ef5", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 591.554 - H);
+  tl.to(P+"line", { scaleY: 1.8, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 7 }, 592.254 - H);
+  /* 190 @593.934 (Mayflower) · MAYFIELD @596.494 · 195 @598.454 (Rolling Fork) · 200 @601.614 (Rochelle) */
+  tl.to(P+"b0", { scaleY: 1, duration: 0.8, ease: "power3.out" }, 593.154 - H);
+  tl.fromTo(P+"v0", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 593.934 - H);
+  tl.to(P+"b2", { scaleY: 1, duration: 0.8, ease: "power3.out" }, 595.754 - H);
+  tl.fromTo(P+"v2", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 596.494 - H);
+  tl.to(P+"b3", { scaleY: 1, duration: 0.8, ease: "power3.out" }, 597.654 - H);
+  tl.fromTo(P+"v3", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 598.454 - H);
+  tl.to(P+"b1", { scaleY: 1, duration: 1.2, ease: "power4.out" }, 600.454 - H);
+  tl.fromTo(P+"v1", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 601.614 - H);
+  /* ONE MILE AN HOUR SHORT @602.694 · EF5 @604.094 */
+  tl.fromTo(P+"short", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 602.694 - H);
+  tl.to(P+"b1", { y: -4, duration: 0.15, ease: "power2.out", yoyo: true, repeat: 3 }, 602.854 - H);
+  tl.to(P+"ef5", { scale: 1.25, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "left center" }, 604.094 - H);
   /* exit 604.3 */
   tl.to(CARDS.concat(TRK, BARS, [P+"band", P+"base", P+"line", P+"ef5", P+"ef4", P+"short", P+"v0", P+"v1", P+"v2", P+"v3"]),
-        { x: 980, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 604.3 - H);
+        { x: 980, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 604.954 - H);
   tl.to({}, { duration: 0.01 }, D - 0.01);
   window.__timelines["g-ef4-cards"] = tl;
 })();

@@ -104,37 +104,37 @@ window.__timelines = window.__timelines || {};
   const ID = "g-master-map-a3b", P = "#g-master-map-a3b-";
   /* cues: audio/a3-s11..s19.words.json, episode s minus host start 799.522 */
   const CUES = {
-    south: 6.12,      /* South of Enderlin @805.64 */
-    rail: 8.20,       /* rail line @807.72 */
-    cars33: 13.30,    /* 33 cars @812.82 */
-    grain19: 15.59,   /* 19 @815.11 */
-    tank14: 18.79,    /* 14 @818.31 */
-    nearly: 23.19,    /* nearly 300,000 pounds @822.71 */
-    strongest: 29.15, /* strongest @828.67 */
-    almost: 31.57,    /* almost 500 feet @831.09 */
-    maple: 43.10,     /* Maple River @842.62 (still covers 40.88-52.08) */
-    east: 59.24,      /* east of Enderlin @858.76 */
-    hwy: 61.02,       /* Highway 46 @860.54 */
-    four: 63.54,      /* four @863.06 */
-    towers: 64.94,    /* towers @864.46 */
-    homes10: 66.48,   /* 10 homes @866.00 */
-    michael: 70.476,  /* Michael and Katherine @869.998 */
-    cass: 73.58,      /* Cass County @873.10 */
-    farmsteads: 75.52,/* farmsteads @875.04 */
-    cr38: 76.44,      /* County Road 38 @875.96 */
-    farmhouses: 80.04,/* farmhouses @879.56 */
-    wiped: 81.12,     /* wiped off @880.64 */
-    swept: 85.04,     /* swept clean @884.56 */
-    bolted: 89.60,    /* bolted down @889.12 */
-    onefarm: 94.30,   /* one farm at a time @893.82 */
-    alice: 99.28,     /* 5 miles southwest of Alice @898.80 */
-    twelve: 103.02,   /* 12 miles @902.54 */
-    w105: 105.54,     /* 1.05 miles @905.06 */
-    elreno: 108.04,   /* El Reno @907.56 */
-    w26: 110.14,      /* 2.6 miles @909.66 */
-    twice: 112.44,    /* twice as wide @911.96 */
-    narrower: 114.50, /* narrower @914.02 */
-    railagain: 118.41 /* rail line @917.93 */
+    south: 6.120,      /* South of Enderlin @806.876 */
+    rail: 8.200,       /* rail line @808.956 */
+    cars33: 13.300,    /* 33 cars @814.056 */
+    grain19: 15.590,   /* 19 @816.346 */
+    tank14: 18.790,    /* 14 @819.546 */
+    nearly: 23.190,    /* nearly 300,000 pounds @823.946 */
+    strongest: 29.150, /* strongest @829.906 */
+    almost: 31.570,    /* almost 500 feet @832.326 */
+    maple: 43.100,     /* Maple River @843.856 (still covers 40.88-52.08) */
+    east: 59.240,      /* east of Enderlin @859.996 */
+    hwy: 61.020,       /* Highway 46 @861.776 */
+    four: 63.540,      /* four @864.296 */
+    towers: 64.940,    /* towers @865.696 */
+    homes10: 66.480,   /* 10 homes @867.236 */
+    michael: 70.476,  /* Michael and Katherine @871.234 */
+    cass: 73.580,      /* Cass County @874.336 */
+    farmsteads: 75.520,/* farmsteads @876.276 */
+    cr38: 76.440,      /* County Road 38 @877.196 */
+    farmhouses: 80.040,/* farmhouses @880.796 */
+    wiped: 81.120,     /* wiped off @881.876 */
+    swept: 85.040,     /* swept clean @885.796 */
+    bolted: 89.600,    /* bolted down @890.356 */
+    onefarm: 94.300,   /* one farm at a time @895.056 */
+    alice: 99.280,     /* 5 miles southwest of Alice @900.036 */
+    twelve: 103.020,   /* 12 miles @903.776 */
+    w105: 105.540,     /* 1.05 miles @906.296 */
+    elreno: 108.040,   /* El Reno @908.796 */
+    w26: 110.140,      /* 2.6 miles @910.896 */
+    twice: 112.440,    /* twice as wide @913.196 */
+    narrower: 114.500, /* narrower @915.256 */
+    railagain: 118.410 /* rail line @919.166 */
   };
   const DUR = 120.463;
   const EXIT = 119.878; /* spec exit 919.4 */
@@ -229,7 +229,7 @@ window.__timelines = window.__timelines || {};
   /* ---- F: the lift point, then El Reno at the same scale ---- */
   tl.to(P + "cam", Object.assign(cam(30, -530, 0.9), { duration: 2.6, ease: "power2.inOut" }), 96.0);
   tl.to(P + "cam", Object.assign(cam(30, -520, 0.96), { duration: 8.2, ease: "none" }), 98.6);
-  tl.fromTo(P + "lift", { autoAlpha: 0, scale: 0, svgOrigin: "-17.5 -319.3" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.5)" }, 98.74 /* lifted @898.26 */);
+  tl.fromTo(P + "lift", { autoAlpha: 0, scale: 0, svgOrigin: "-17.5 -319.3" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.5)" }, 98.74 /* lifted @899.496 */);
   tl.fromTo(P + "liftring", { autoAlpha: 0.9, attr: { r: 6 } }, { autoAlpha: 0, attr: { r: 40 }, duration: 1.1, ease: "power2.out", repeat: 4, repeatDelay: 0.2 }, 98.74);
   tl.fromTo(P + "alicel", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, CUES.alice);
   tl.fromTo(P + "t-alice", { autoAlpha: 0, y: -6 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.alice + 0.9);
@@ -244,7 +244,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "t-elreno", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.elreno + 0.2);
   tl.fromTo(P + "ewbar", { autoAlpha: 0, scaleY: 0, svgOrigin: "300 600" }, { autoAlpha: 1, scaleY: 1, duration: 0.5, ease: "power3.out" }, CUES.w26);
   tl.fromTo(P + "t-e26", { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.w26 + 0.1);
-  tl.fromTo(P + "hl2", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 112.10 /* more than @911.62 */);
+  tl.fromTo(P + "hl2", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 112.10 /* more than @912.856 */);
   tl.fromTo(P + "hl3", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.twice);
   tl.to(P + "cam", Object.assign(cam(130, 60, 0.6), { duration: 11.8, ease: "none" }), 108.4);
 

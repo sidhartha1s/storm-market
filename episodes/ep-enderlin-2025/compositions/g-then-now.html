@@ -62,17 +62,20 @@ window.__timelines = window.__timelines || {};
   const D = 24.255;
   const tl = gsap.timeline({ paused: true });
   const P = "#tn-";
-  tl.set([P+"scale", P+"colL", P+"colR", P+"hdL", P+"hdR", P+"feb", P+"ef5", P+"band", P+"blE", P+"mph", P+"high", P+"over", P+"house"], { autoAlpha: 0 }, 0);
+  tl.set([P+"hdL", P+"hdR", P+"feb", P+"ef5", P+"band", P+"blE", P+"mph", P+"high", P+"over", P+"house"], { autoAlpha: 0 }, 0);
 
   /* continuous: sweep every 8.1 s; sheen climbs both columns; tick labels drift */
   tl.fromTo(P+"sweep", { x: -300 }, { x: 2200, duration: 8.1, ease: "none", repeat: 2 }, 0);
   tl.fromTo([P+"shL", P+"shR"], { y: 680 }, { y: -120, duration: 3.6, ease: "none", repeat: 6 }, 0);
   tl.to([P+"t200", P+"t250", P+"t300", P+"tmph"], { x: -10, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 9 }, 0.5);
 
+  /* picture from the first frame (draft had 0.9 s of black after bo-2, owner 27 Sep 26): the axis and both empty
+     columns are on screen at 0 and settle; the headers still land on the voice */
+  tl.fromTo(P+"scale", { x: -30 }, { x: 0, duration: 0.9, ease: "power3.out" }, 0);
+  tl.fromTo([P+"colL", P+"colR"], { y: 40 }, { y: 0, duration: 0.9, ease: "power3.out" }, 0);
   /* ENHANCED FUJITA SCALE @379.78 (right column) · OLD FUJITA SCALE @382.00 (left column) */
-  tl.fromTo(P+"scale", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 379.5 - H);
-  tl.fromTo([P+"colR", P+"hdR"], { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" }, 379.78 - H);
-  tl.fromTo([P+"colL", P+"hdL"], { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" }, 382.00 - H);
+  tl.fromTo(P+"hdR", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" }, 379.78 - H);
+  tl.fromTo(P+"hdL", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" }, 382.00 - H);
   /* FEBRUARY 2007 @383.22 */
   tl.fromTo(P+"feb", { autoAlpha: 0, scale: 1.8 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 383.22 - H);
   /* F5 WINDS @387.10 · 261 @388.48 -> 318 @390.28: the band grows from 261 up to 318 */

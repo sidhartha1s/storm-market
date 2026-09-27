@@ -67,7 +67,7 @@
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
-  const H = 1311.516;
+  const H = 1312.752;
   const tl = gsap.timeline({ paused: true });
   const P = "#ef4a5-";
   const CARDS = [P+"c0", P+"c1", P+"c2", P+"c3"];
@@ -82,35 +82,35 @@ window.__timelines = window.__timelines || {};
   /* continuous: sweep every 8.8 s */
   tl.fromTo(P+"sweep", { x: -300 }, { x: 2200, duration: 8.8, ease: "none", repeat: 1 }, 0);
 
-  /* the ladder builds, 108 DAYS @1312.04 */
+  /* the ladder builds, 108 DAYS @1313.276 */
   tl.to([P+"r5", P+"r4", P+"r3"], { scaleX: 1, duration: 0.5, ease: "power3.out", stagger: 0.1 }, 0.1);
   tl.fromTo([P+"l5", P+"l4", P+"l3"], { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out", stagger: 0.1 }, 0.2);
-  tl.fromTo(P+"cnt", { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power3.out", transformOrigin: "left center" }, 1312.04 - H);
-  tl.to(days, { v: 108, duration: 1.3, ease: "power3.out", onUpdate: () => { cn.textContent = Math.round(days.v); } }, 1312.04 - H);
-  /* ENDERLIN @1313.92 on EF3 · TWO FULL STEPS @1315.18: it jumps to EF5 */
-  tl.fromTo([P+"dot", P+"en"], { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1313.92 - H);
-  tl.set(P+"arc", { autoAlpha: 1 }, 1315.0 - H);
-  tl.to(P+"ap", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 1315.0 - H);
-  tl.to(P+"dot", { y: 300, duration: 0.55, ease: "back.out(1.4)" }, 1315.18 - H);
-  tl.to(P+"en", { y: -320, duration: 0.55, ease: "back.out(1.4)" }, 1315.18 - H);
-  tl.fromTo(P+"steps", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1315.18 - H);
-  tl.to(P+"r5", { scaleY: 1.3, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 1315.7 - H);
+  tl.fromTo(P+"cnt", { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power3.out", transformOrigin: "left center" }, 1313.276 - H);
+  tl.to(days, { v: 108, duration: 1.3, ease: "power3.out", onUpdate: () => { cn.textContent = Math.round(days.v); } }, 1313.276 - H);
+  /* ENDERLIN @1315.156 on EF3 · TWO FULL STEPS @1316.416: it jumps to EF5 */
+  tl.fromTo([P+"dot", P+"en"], { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1315.156 - H);
+  tl.set(P+"arc", { autoAlpha: 1 }, 1316.236 - H);
+  tl.to(P+"ap", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 1316.236 - H);
+  tl.to(P+"dot", { y: 300, duration: 0.55, ease: "back.out(1.4)" }, 1316.416 - H);
+  tl.to(P+"en", { y: -320, duration: 0.55, ease: "back.out(1.4)" }, 1316.416 - H);
+  tl.fromTo(P+"steps", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1316.416 - H);
+  tl.to(P+"r5", { scaleY: 1.3, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 1316.936 - H);
 
-  /* SAME QUESTION @1317.30: part 1 clears, the four EF4 cards return small */
-  tl.to(P+"p1", { y: -60, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 1316.8 - H);
-  tl.fromTo(CARDS, { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out", stagger: 0.1 }, 1317.30 - H);
-  /* HIGH-END EF4 @1318.68 · SINCE MOORE @1319.92 */
-  tl.fromTo(P+"ef4", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1318.68 - H);
-  tl.fromTo(QS, { autoAlpha: 0, scale: 0.4 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2)", stagger: 0.08 }, 1318.8 - H);
-  tl.to(QS, { scale: 1.18, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 17 }, 1319.4 - H);
-  tl.fromTo(P+"h", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1319.92 - H);
-  /* MAYFIELD @1321.40 · ROLLING FORK @1322.18: those two brighten */
-  tl.to([P+"c0", P+"c1", P+"q0", P+"q1"], { opacity: 0.45, duration: 0.4 }, 1321.40 - H);
-  tl.to([P+"c2", P+"q2"], { y: -16, duration: 0.35, ease: "power3.out" }, 1321.40 - H);
-  tl.to([P+"c3", P+"q3"], { y: -16, duration: 0.35, ease: "power3.out" }, 1322.18 - H);
-  /* FEDERAL LAB @1325.40: a sealed note slides in (the change stays sealed) */
-  tl.fromTo(P+"note", { autoAlpha: 0, y: 220 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 1325.40 - H);
-  tl.to(P+"note", { y: -10, rotation: -1, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 1326.1 - H);
+  /* SAME QUESTION @1318.536: part 1 clears, the four EF4 cards return small */
+  tl.to(P+"p1", { y: -60, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 1318.036 - H);
+  tl.fromTo(CARDS, { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out", stagger: 0.1 }, 1318.536 - H);
+  /* HIGH-END EF4 @1319.916 · SINCE MOORE @1321.156 */
+  tl.fromTo(P+"ef4", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1319.916 - H);
+  tl.fromTo(QS, { autoAlpha: 0, scale: 0.4 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2)", stagger: 0.08 }, 1320.036 - H);
+  tl.to(QS, { scale: 1.18, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 17 }, 1320.636 - H);
+  tl.fromTo(P+"h", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1321.156 - H);
+  /* MAYFIELD @1322.636 · ROLLING FORK @1323.416: those two brighten */
+  tl.to([P+"c0", P+"c1", P+"q0", P+"q1"], { opacity: 0.45, duration: 0.4 }, 1322.636 - H);
+  tl.to([P+"c2", P+"q2"], { y: -16, duration: 0.35, ease: "power3.out" }, 1322.636 - H);
+  tl.to([P+"c3", P+"q3"], { y: -16, duration: 0.35, ease: "power3.out" }, 1323.416 - H);
+  /* FEDERAL LAB @1326.636: a sealed note slides in (the change stays sealed) */
+  tl.fromTo(P+"note", { autoAlpha: 0, y: 220 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 1326.636 - H);
+  tl.to(P+"note", { y: -10, rotation: -1, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 1327.336 - H);
   /* hard end at 1328.916 (CTA dip): no exit tween */
   tl.to({}, { duration: 0.01 }, 17.39);
   window.__timelines["g-ef4-cards-a5"] = tl;

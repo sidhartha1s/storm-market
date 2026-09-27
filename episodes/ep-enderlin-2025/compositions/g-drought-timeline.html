@@ -40,7 +40,7 @@
   .dtl-gap { position:absolute; left:1010px; top:640px; font-weight:700; font-size:36px; color:#e8c56a; white-space:nowrap; }
   .dtl-ef4 { position:absolute; left:1060px; top:734px; width:420px; text-align:center; font-weight:700; font-size:30px; color:#7fb2e5; white-space:nowrap; }
 </style>
-<div class="dtl-root" data-composition-id="g-drought-timeline" data-width="1920" data-height="1080" data-duration="153.067">
+<div class="dtl-root" data-composition-id="g-drought-timeline" data-width="1920" data-height="1080" data-duration="153.721">
   <div class="dtl-sweep" id="dtl-sweep"></div>
   <div class="dtl-eye" id="dtl-eye">EF5 Tornadoes Since the New Scale</div>
   <div class="dtl-avg" id="dtl-avg"></div>
@@ -96,7 +96,7 @@ window.__timelines = window.__timelines || {};
   const tk = document.getElementById("dtl-ticks");
   for (let i = 0; i <= 18; i++) { const d = document.createElement("div"); d.className = "dtl-tick"; d.id = "dtl-tk" + i; d.style.left = (199 + i * 80) + "px"; tk.appendChild(d); }
   const H = 403.418;
-  const D = 153.067;
+  const D = 153.721;
   const tl = gsap.timeline({ paused: true });
   const P = "#dtl-";
   const CARDS = ["cG", "cP", "cA", "cH", "cJ", "cE", "cM", "cI", "cN"].map((c) => P + c);
@@ -114,96 +114,96 @@ window.__timelines = window.__timelines || {};
   tl.to(BLK, { scale: 1.07, duration: 1.3, ease: "sine.inOut", yoyo: true, repeat: 113 }, 1.0);
   tl.fromTo(P+"mk", { yPercent: 0 }, { yPercent: -40, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 169 }, 1.0);
 
-  /* the axis builds @403.6 */
-  tl.fromTo(P+"eye", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 403.5 - H);
-  tl.to(P+"axis", { scaleX: 1, duration: 0.8, ease: "power3.out" }, 403.6 - H);
-  tl.fromTo(".dtl-tick", { autoAlpha: 0, scaleY: 0 }, { autoAlpha: 1, scaleY: 1, duration: 0.2, ease: "power3.out", stagger: 0.03 }, 403.7 - H);
-  tl.fromTo(YRS, { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out", stagger: 0.08 }, 403.9 - H);
+  /* the axis builds @403.596 */
+  tl.fromTo(P+"eye", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 403.498 - H);
+  tl.to(P+"axis", { scaleX: 1, duration: 0.8, ease: "power3.out" }, 403.596 - H);
+  tl.fromTo(".dtl-tick", { autoAlpha: 0, scaleY: 0 }, { autoAlpha: 1, scaleY: 1, duration: 0.2, ease: "power3.out", stagger: 0.03 }, 403.693 - H);
+  tl.fromTo(YRS, { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out", stagger: 0.08 }, 403.889 - H);
 
-  /* MAY 4TH 2007 @403.84-404.82 · FIRST EF5 @409.00 · GREENSBURG @411.26 (cutaway) · 11 PEOPLE @416.48 */
-  tl.fromTo(P+"cG", { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 404.02 - H);
-  tl.fromTo(P+"bG", { autoAlpha: 0, y: -260 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power4.in" }, 409.00 - H);
-  tl.fromTo(P+"mk", { autoAlpha: 0, x: 228, y: 742 }, { autoAlpha: 1, duration: 0.3 }, 409.5 - H);
-  tl.fromTo(P+"tG", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 416.48 - H);
+  /* MAY 4TH 2007 @403.83-404.82 · FIRST EF5 @408.866 · GREENSBURG @411.169 (cutaway) · 11 PEOPLE @416.247 */
+  tl.fromTo(P+"cG", { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 404.006 - H);
+  tl.fromTo(P+"bG", { autoAlpha: 0, y: -260 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power4.in" }, 408.866 - H);
+  tl.fromTo(P+"mk", { autoAlpha: 0, x: 228, y: 742 }, { autoAlpha: 1, duration: 0.3 }, 409.375 - H);
+  tl.fromTo(P+"tG", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 416.247 - H);
   /* MAY 25TH 2008 @419.96-421.26 · PARKERSBURG · NINE @425.68 */
   tl.to(P+"cG", { autoAlpha: 0, y: -30, duration: 0.3, ease: "power3.in" }, 420.9 - H);
   tl.fromTo(P+"cP", { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 421.26 - H);
   tl.fromTo(P+"bP", { autoAlpha: 0, y: -260 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power4.in" }, 421.3 - H);
   tl.to(P+"mk", { x: 308, y: 742, duration: 0.5, ease: "power3.inOut" }, 421.5 - H);
   tl.fromTo(P+"tP", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 425.68 - H);
-  /* APRIL 27 2011 @427.35-428.75 · FOUR EF5s @430.05 · 216 @438.83 */
-  tl.to(P+"cP", { autoAlpha: 0, y: -30, duration: 0.3, ease: "power3.in" }, 428.3 - H);
-  tl.fromTo(P+"cA", { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 428.75 - H);
-  tl.fromTo(P+"aN", { autoAlpha: 0, scale: 1.4 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out", transformOrigin: "left center" }, 430.05 - H);
-  tl.fromTo([P+"bA0", P+"bA1", P+"bA2", P+"bA3"], { autoAlpha: 0, y: -260 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power4.in", stagger: 0.14 }, 430.05 - H);
-  tl.to(P+"mk", { x: 548, y: 604, duration: 0.6, ease: "power3.inOut" }, 430.4 - H);
-  tl.fromTo(P+"tA", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 438.83 - H);
-  /* HACKLEBURG @443.39 (cutaway), 72 @446.03 */
-  tl.to(P+"cA", { autoAlpha: 0, y: -30, duration: 0.3, ease: "power3.in" }, 443.0 - H);
-  tl.fromTo(P+"cH", { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 443.39 - H);
-  tl.fromTo(P+"tH", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 446.03 - H);
-  tl.to(P+"bA0", { x: 12, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 3 }, 447.8 - H);
-  /* MAY 22ND @448.27 · JOPLIN @451.47 · 158 @452.49 (clip) */
-  tl.to(P+"cH", { autoAlpha: 0, y: -30, duration: 0.3, ease: "power3.in" }, 447.9 - H);
-  tl.fromTo(P+"cJ", { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 448.27 - H);
-  tl.fromTo(P+"bJ", { autoAlpha: 0, y: -260 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power4.in" }, 448.6 - H);
-  tl.to(P+"mk", { y: 558, duration: 0.5, ease: "power3.inOut" }, 449.0 - H);
-  tl.fromTo(P+"tJ", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 452.49 - H);
-  /* EL RENO IN PIEDMONT @462.06 (cutaway) · SIX @464.74 */
-  tl.to(P+"cJ", { autoAlpha: 0, y: -30, duration: 0.3, ease: "power3.in" }, 461.6 - H);
-  tl.fromTo(P+"cE", { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 462.06 - H);
-  tl.fromTo(P+"bE", { autoAlpha: 0, y: -260 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power4.in" }, 462.3 - H);
-  tl.to(P+"mk", { y: 512, duration: 0.5, ease: "power3.inOut" }, 462.8 - H);
-  tl.fromTo(P+"tE", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 464.74 - H);
-  /* TWO YEARS LATER @469.52: a thin line reaches forward to 2013 · EF5 @474.34 · EF3 @475.72 */
-  tl.set(P+"line", { autoAlpha: 1 }, 469.52 - H);
-  tl.fromTo(P+"lp", { strokeDasharray: 198, strokeDashoffset: 198 }, { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" }, 469.52 - H);
-  tl.fromTo(P+"er13", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 471.02 - H);
-  tl.to(P+"mk", { x: 708, y: 696, duration: 0.6, ease: "power3.inOut" }, 471.1 - H);
-  tl.fromTo(P+"erA", { autoAlpha: 0, y: -200 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power4.in" }, 473.9 - H);
-  tl.fromTo(P+"stamp", { autoAlpha: 0, scale: 2.2, rotation: -16 }, { autoAlpha: 1, scale: 1, rotation: -6, duration: 0.3, ease: "power4.in" }, 475.72 - H);
-  tl.to(P+"erA", { opacity: 0.4, duration: 0.5 }, 476.1 - H);
+  /* APRIL 27 2011 @427.345-428.75 · FOUR EF5s @430.028 · 216 @438.746 */
+  tl.to(P+"cP", { autoAlpha: 0, y: -30, duration: 0.3, ease: "power3.in" }, 428.288 - H);
+  tl.fromTo(P+"cA", { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 428.735 - H);
+  tl.fromTo(P+"aN", { autoAlpha: 0, scale: 1.4 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out", transformOrigin: "left center" }, 430.028 - H);
+  tl.fromTo([P+"bA0", P+"bA1", P+"bA2", P+"bA3"], { autoAlpha: 0, y: -260 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power4.in", stagger: 0.14 }, 430.028 - H);
+  tl.to(P+"mk", { x: 548, y: 604, duration: 0.6, ease: "power3.inOut" }, 430.374 - H);
+  tl.fromTo(P+"tA", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 438.746 - H);
+  /* HACKLEBURG @443.234 (cutaway), 72 @445.916 */
+  tl.to(P+"cA", { autoAlpha: 0, y: -30, duration: 0.3, ease: "power3.in" }, 442.846 - H);
+  tl.fromTo(P+"cH", { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 443.234 - H);
+  tl.fromTo(P+"tH", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 445.916 - H);
+  tl.to(P+"bA0", { x: 12, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 3 }, 447.801 - H);
+  /* MAY 22ND @448.31 · JOPLIN @451.65 · 158 @452.81 (clip) */
+  tl.to(P+"cH", { autoAlpha: 0, y: -30, duration: 0.3, ease: "power3.in" }, 447.909 - H);
+  tl.fromTo(P+"cJ", { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 448.31 - H);
+  tl.fromTo(P+"bJ", { autoAlpha: 0, y: -260 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power4.in" }, 448.63 - H);
+  tl.to(P+"mk", { y: 558, duration: 0.5, ease: "power3.inOut" }, 449.062 - H);
+  tl.fromTo(P+"tJ", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 452.81 - H);
+  /* EL RENO IN PIEDMONT @462.721 (cutaway) · SIX @465.507 */
+  tl.to(P+"cJ", { autoAlpha: 0, y: -30, duration: 0.3, ease: "power3.in" }, 462.258 - H);
+  tl.fromTo(P+"cE", { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 462.721 - H);
+  tl.fromTo(P+"bE", { autoAlpha: 0, y: -260 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power4.in" }, 463.019 - H);
+  tl.to(P+"mk", { y: 512, duration: 0.5, ease: "power3.inOut" }, 463.565 - H);
+  tl.fromTo(P+"tE", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 465.507 - H);
+  /* TWO YEARS LATER @470.323: a thin line reaches forward to 2013 · EF5 @475.077 · EF3 @476.432 */
+  tl.set(P+"line", { autoAlpha: 1 }, 470.323 - H);
+  tl.fromTo(P+"lp", { strokeDasharray: 198, strokeDashoffset: 198 }, { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" }, 470.323 - H);
+  tl.fromTo(P+"er13", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 471.835 - H);
+  tl.to(P+"mk", { x: 708, y: 696, duration: 0.6, ease: "power3.inOut" }, 471.909 - H);
+  tl.fromTo(P+"erA", { autoAlpha: 0, y: -200 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power4.in" }, 474.644 - H);
+  tl.fromTo(P+"stamp", { autoAlpha: 0, scale: 2.2, rotation: -16 }, { autoAlpha: 1, scale: 1, rotation: -6, duration: 0.3, ease: "power4.in" }, 476.432 - H);
+  tl.to(P+"erA", { opacity: 0.4, duration: 0.5 }, 476.644 - H);
   /* MAY 20TH 2013 popfig on the cutaway (481.49) · MOORE card read in the 491.9-493.3 gap and after 498.8 */
-  tl.to([P+"cE", P+"line"], { autoAlpha: 0, duration: 0.3 }, 481.0 - H);
-  tl.fromTo(P+"cM", { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 485.29 - H);
-  tl.fromTo(P+"tM", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 487.25 - H);
-  tl.fromTo(P+"bM", { autoAlpha: 0, y: -260 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power4.in" }, 491.9 - H);
-  tl.to(P+"mk", { y: 650, duration: 0.5, ease: "power3.inOut" }, 492.2 - H);
-  /* MAY 3RD 1999 @501.70 · 301 @506.02 · HOUSES TO PROVE IT @511.22 */
-  tl.to(P+"cM", { autoAlpha: 0, y: -30, duration: 0.3, ease: "power3.in" }, 501.3 - H);
-  tl.fromTo(P+"cI", { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 501.70 - H);
-  tl.fromTo(P+"tI", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 506.02 - H);
-  tl.fromTo(P+"hI", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.8)" }, 511.22 - H);
-  /* 9 EF5s @513.58 · 6 YEARS @515.12 · NEARLY 1 A YEAR @520.26 */
-  tl.to(P+"cI", { autoAlpha: 0, y: -30, duration: 0.3, ease: "power3.in" }, 513.2 - H);
-  tl.to([P+"er13", P+"mk"], { autoAlpha: 0, duration: 0.3 }, 513.2 - H);
-  tl.fromTo(P+"cN", { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 513.58 - H);
-  tl.to(BLK, { y: -14, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1, stagger: 0.08 }, 513.7 - H);
-  tl.fromTo(P+"tN", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 520.26 - H);
-  tl.to(P+"avg", { autoAlpha: 1, scaleX: 1, duration: 1.2, ease: "power2.out" }, 520.3 - H);
-  /* AFTER MOORE THERE WERE NONE @527.52: the bar draws from Moore; 4,414 DAYS @531.07-532.41 */
-  tl.to([P+"cN", P+"avg"], { autoAlpha: 0, y: -20, duration: 0.3, ease: "power3.in" }, 527.2 - H);
-  tl.set(P+"edge", { autoAlpha: 1, x: 744 }, 527.52 - H);
-  tl.to(P+"bar", { scaleX: 1, duration: 4.89, ease: "power3.out" }, 527.52 - H);
-  tl.to(P+"edge", { x: 1672, duration: 4.89, ease: "power3.out" }, 527.52 - H);
-  tl.fromTo(P+"cnt", { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 527.6 - H);
-  tl.to(days, { v: 4414, duration: 4.8, ease: "power3.out", onUpdate: () => { cn.textContent = Math.round(days.v).toLocaleString("en-US"); } }, 527.6 - H);
-  tl.to(P+"cn", { scale: 1.12, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1 }, 532.41 - H);
-  /* ENDERLIN @535.47 · LONGEST STRETCH @536.99 */
-  tl.fromTo(P+"end", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 535.47 - H);
-  tl.fromTo(P+"gap", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 536.99 - H);
-  tl.to(P+"edge", { scaleY: 1.3, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 11 }, 533.0 - H);
-  /* EL RENO @545.37 · FIVE TAKEN BACK @548.99: its block flips down to a hollow EF3 */
-  tl.fromTo(P+"er13", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 545.37 - H);
-  tl.to(P+"erA", { opacity: 1, scaleY: 1.2, duration: 0.3, ease: "power2.out" }, 546.67 - H);
-  tl.to(P+"erA", { scaleY: 0, duration: 0.25, ease: "power2.in", transformOrigin: "center bottom" }, 548.99 - H);
-  tl.fromTo(P+"erB", { autoAlpha: 1, scaleY: 0, transformOrigin: "center bottom" }, { scaleY: 1, duration: 0.3, ease: "back.out(2)" }, 549.24 - H);
-  /* 12 YEARS @550.87 · EF4 OR LOWER @554.67 */
-  tl.to(P+"bar", { opacity: 0.6, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 1 }, 550.87 - H);
-  tl.fromTo(P+"ef4", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 554.67 - H);
+  tl.to([P+"cE", P+"line"], { autoAlpha: 0, duration: 0.3 }, 481.62 - H);
+  tl.fromTo(P+"cM", { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 485.838 - H);
+  tl.fromTo(P+"tM", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 487.749 - H);
+  tl.fromTo(P+"bM", { autoAlpha: 0, y: -260 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power4.in" }, 492.719 - H);
+  tl.to(P+"mk", { y: 650, duration: 0.5, ease: "power3.inOut" }, 493.009 - H);
+  /* MAY 3RD 1999 @502.354 · 301 @506.674 · HOUSES TO PROVE IT @511.874 */
+  tl.to(P+"cM", { autoAlpha: 0, y: -30, duration: 0.3, ease: "power3.in" }, 501.954 - H);
+  tl.fromTo(P+"cI", { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 502.354 - H);
+  tl.fromTo(P+"tI", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 506.674 - H);
+  tl.fromTo(P+"hI", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.8)" }, 511.874 - H);
+  /* 9 EF5s @514.234 · 6 YEARS @515.774 · NEARLY 1 A YEAR @520.914 */
+  tl.to(P+"cI", { autoAlpha: 0, y: -30, duration: 0.3, ease: "power3.in" }, 513.854 - H);
+  tl.to([P+"er13", P+"mk"], { autoAlpha: 0, duration: 0.3 }, 513.854 - H);
+  tl.fromTo(P+"cN", { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 514.234 - H);
+  tl.to(BLK, { y: -14, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1, stagger: 0.08 }, 514.354 - H);
+  tl.fromTo(P+"tN", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 520.914 - H);
+  tl.to(P+"avg", { autoAlpha: 1, scaleX: 1, duration: 1.2, ease: "power2.out" }, 520.954 - H);
+  /* AFTER MOORE THERE WERE NONE @528.174: the bar draws from Moore; 4,414 DAYS @531.724-532.41 */
+  tl.to([P+"cN", P+"avg"], { autoAlpha: 0, y: -20, duration: 0.3, ease: "power3.in" }, 527.854 - H);
+  tl.set(P+"edge", { autoAlpha: 1, x: 744 }, 528.174 - H);
+  tl.to(P+"bar", { scaleX: 1, duration: 4.89, ease: "power3.out" }, 528.174 - H);
+  tl.to(P+"edge", { x: 1672, duration: 4.89, ease: "power3.out" }, 528.174 - H);
+  tl.fromTo(P+"cnt", { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 528.254 - H);
+  tl.to(days, { v: 4414, duration: 4.8, ease: "power3.out", onUpdate: () => { cn.textContent = Math.round(days.v).toLocaleString("en-US"); } }, 528.254 - H);
+  tl.to(P+"cn", { scale: 1.12, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1 }, 533.064 - H);
+  /* ENDERLIN @536.124 · LONGEST STRETCH @537.644 */
+  tl.fromTo(P+"end", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 536.124 - H);
+  tl.fromTo(P+"gap", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 537.644 - H);
+  tl.to(P+"edge", { scaleY: 1.3, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 11 }, 533.654 - H);
+  /* EL RENO @546.024 · FIVE TAKEN BACK @549.644: its block flips down to a hollow EF3 */
+  tl.fromTo(P+"er13", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 546.024 - H);
+  tl.to(P+"erA", { opacity: 1, scaleY: 1.2, duration: 0.3, ease: "power2.out" }, 547.324 - H);
+  tl.to(P+"erA", { scaleY: 0, duration: 0.25, ease: "power2.in", transformOrigin: "center bottom" }, 549.644 - H);
+  tl.fromTo(P+"erB", { autoAlpha: 1, scaleY: 0, transformOrigin: "center bottom" }, { scaleY: 1, duration: 0.3, ease: "back.out(2)" }, 549.894 - H);
+  /* 12 YEARS @551.524 · EF4 OR LOWER @555.324 */
+  tl.to(P+"bar", { opacity: 0.6, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 1 }, 551.524 - H);
+  tl.fromTo(P+"ef4", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 555.324 - H);
   /* exit 555.9 */
   tl.to([P+"eye", P+"axis", P+"ticks", P+"bar", P+"edge", P+"end", P+"cnt", P+"gap", P+"ef4", P+"erB", P+"stamp", P+"er13"].concat(BLK, YRS),
-        { x: 980, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 555.9 - H);
+        { x: 980, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 556.554 - H);
   tl.to({}, { duration: 0.01 }, D - 0.01);
   window.__timelines["g-drought-timeline"] = tl;
 })();

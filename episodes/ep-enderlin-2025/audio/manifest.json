@@ -38,7 +38,7 @@
   "wav": "audio/i1-s4.wav",
   "duration": 9.509,
   "words": 27,
-  "text_hash": "2cd1c8f2f2717341eb2d91591cff393f092d467d",
+  "text_hash": "7c11e9d2573a151050920a806c57dbc122623bd2",
   "tempo": 1.1
  },
  "i1-s5": {
@@ -206,7 +206,7 @@
   "wav": "audio/a2-s3.wav",
   "duration": 14.745,
   "words": 41,
-  "text_hash": "fd1f3f26037186aaf3ed6c4592fab7822fd98cb2",
+  "text_hash": "12a8e36e9f6ab9ecc3af9d2b07928351e49c0821",
   "tempo": 1.1
  },
  "a2-s4": {
@@ -220,28 +220,28 @@
   "wav": "audio/a2-s5.wav",
   "duration": 20.854,
   "words": 57,
-  "text_hash": "98e3a0d6b457895101d7f6b50528180ef212db02",
+  "text_hash": "c0b8e6fe8b44e8995619871e2c6445d8ee138629",
   "tempo": 1.1
  },
  "a2-s6": {
   "wav": "audio/a2-s6.wav",
-  "duration": 11.036,
+  "duration": 11.69,
   "words": 32,
-  "text_hash": "9794fd5cb1c2a073744e10a0cdfa768aba98214a",
+  "text_hash": "4b7d16db83866081fdc37f35b7df0c700b33312e",
   "tempo": 1.1
  },
  "a2-s7": {
   "wav": "audio/a2-s7.wav",
   "duration": 19.946,
   "words": 60,
-  "text_hash": "8e6c8e72bb76ea4e71ee19fed3a55a53bbc14fe8",
+  "text_hash": "6df4538f562ebaf1a62a8c6ada0f271cae1404e7",
   "tempo": 1.1
  },
  "a2-s8": {
   "wav": "audio/a2-s8.wav",
   "duration": 19.509,
   "words": 50,
-  "text_hash": "9cefa0704ce3eebd4102bc5904897b248311db64",
+  "text_hash": "351d7cceedd5dba180a6893037eeec1e97c38a72",
   "tempo": 1.1
  },
  "a2-s9": {
@@ -379,9 +379,9 @@
  },
  "a3-s8": {
   "wav": "audio/a3-s8.wav",
-  "duration": 6.345,
+  "duration": 6.927,
   "words": 22,
-  "text_hash": "5cb1ccea0c67abb614ec17640db6409a6c66f33f",
+  "text_hash": "4bf32e756d6cbecb399e3979f0b0ce3d51171971",
   "tempo": 1.1
  },
  "a3-s9": {
@@ -633,7 +633,7 @@
   "wav": "audio/a5-s6.wav",
   "duration": 13.836,
   "words": 40,
-  "text_hash": "95319f38c45ab0523b1c0a0e94434ef7cfa61ca0",
+  "text_hash": "14e12b5bbdbacff7287896e66129f683c1f85a16",
   "tempo": 1.1
  },
  "a5-s7": {
@@ -729,9 +729,9 @@
  },
  "z1-s1": {
   "wav": "audio/z1-s1.wav",
-  "duration": 16.235,
+  "duration": 17.255,
   "words": 49,
-  "text_hash": "fddb2c86256425018bb94534d6f5107abae95936",
+  "text_hash": "7cd9ce058eaa82a25805c2077ea806c0989b25ac",
   "tempo": 1.1
  },
  "z1-s2": {
@@ -739,6 +739,13 @@
   "duration": 13.145,
   "words": 34,
   "text_hash": "06a9cbcc6c52426953778e423c9792392e34313f",
+  "tempo": 1.1
+ },
+ "z1-s3": {
+  "wav": "audio/z1-s3.wav",
+  "duration": 12.564,
+  "words": 33,
+  "text_hash": "0b693044c626be202e930eb4ac8f47409075fa03",
   "tempo": 1.1
  }
 }

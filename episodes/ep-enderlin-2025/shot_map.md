@@ -1,5 +1,7 @@
 # ep-enderlin-2025 · shot map (assembly v1, 27 Sep 26)
 
+> **Retime 27 Sep 26 (re-recorded narration, owner review of draft v1):** a2-s6 11.036 -> 11.690 s (+0.654 from 458.824), a3-s8 6.345 -> 6.927 s (+0.582 from 774.623 new), z1-s1 16.235 -> 17.255 s (+1.020 from 1496.468 new); cues inside the re-recorded segments (i1-s4, a2-s3/5/6/7/8, a3-s8, a5-s6, z1-s1) follow their new words.json. bo-4 replaced by the hold-2 marker (no black); new closing line z1-s3 1511.233-1523.797 over g-outro (1510.933, 16.864 s). New runtime 1527.797 s, CTA 1331.152 s (87.1 %). Times in the tables below are pre-retime unless marked; index.html is the source of truth.
+
 Runtime **1512.677 s (25:12.68)**. Narration 1454.39 s (106 wavs) + seams 0.30 s (0.15 s after the hook line) + 5 chapter
 blackouts (0.7 / 0.8 s, each followed by a 0.2 s picture beat before the voice) + CTA 1.0 + 15.139 + 1.0 s + one 3.0 s hold
 + 4.0 s outro tail. Every time below is episode seconds, read from `audio/manifest.json` durations and `audio/*.words.json`.
@@ -134,17 +136,17 @@ with Ken Burns (four alternating moves, 3-6 s), `cutaway` = track 3 still/clip o
 | >> MARK 15:00-15:50 | | no real clip (map, survey stills, Jones card, Jones quote) |
 | a3-s19 | 913.49-919.68 | map: the rail line south of town lights again |
 | a3-s20 | 919.99-938.22 | still `enderlin-2025/maple-river-root-ball-displacement.jpg` 919.985-925.40 (callback) · still `nexrad/nexrad-dome-langley-nws.jpg` 925.40-931.00 ("the Grand Forks office") · `g-person-jones` (to build) 931.00-938.222: text-only card "Carl Jones · NWS Grand Forks" (933.50). Swell ends 937.80 |
-| blackout | 938.222-939.022 | bo-4, 0.8 s |
+| hold (no black) | 938.222-939.222 | bo-4 removed 27 Sep 26 (owner: "no need for blackness at 15:38 before the quote. keep it connected."); hold-2 marker, g-quote-jones fills the seam |
 
 ## A4 · The second look (939.02-1170.13)
 | seg | start-end | picture |
 |---|---|---|
-| a4-s1 | 939.22-956.73 | `g-quote-jones` (to build) 939.022-957.031: beige quote card, words land in order (942.26-948.36), "Carl Jones, NWS Grand Forks · MPR News, Oct 8, 2025" |
+| a4-s1 | 939.22-956.73 | `g-quote-jones` (to build) 938.222-957.031: beige quote card, words land in order (942.26-948.36), "Carl Jones, NWS Grand Forks · MPR News, Oct 8, 2025" |
 | a4-s2 | 957.03-974.79 | `g-ef-scale-a4` (to build) 957.031-983.958: house indicator steps, then an empty row "Freight Car" (964.17) |
 | a4-s3 | 975.10-983.66 | `g-ef-scale-a4`: "How much wind to throw a tank car?" (980.98-982.98). Swell ends 983.10 |
 | >> MARK 15:50-16:40 | | REAL: Rolling Fork FEMA drone aerial callback 996.50 |
 | a4-s4 | 983.96-1001.39 | `g-master-map-a4` (to build) 983.958-1038.499: survey points appear, attributed text card "Drone Video · Aaron Rigsby" (987.94; no footage, chaser video has no licence) · REAL cutaway clip `rolling-fork-2023/rolling-fork-2023-aerial-damage.mp4` 996.50-1001.40 (media from 6.0 s: "an aerial view shows a whole debris field at once"; a government drone, not Rigsby's) |
-| a4-s5 | 1001.69-1017.93 | map pulls north across the border, text card "Northern Tornadoes Project · Western University, Canada" (1005.43), "since 2017" |
+| a4-s5 | 1001.69-1017.93 | map pulls north and out to a US + Canada map (states, provinces, border; Enderlin/Fargo/Winnipeg at true lon/lat; London, Ontario pin on "Western University"), text card "Northern Tornadoes Project · Western University, Canada" (1005.43), "since 2017" |
 | a4-s6 | 1018.23-1024.86 | map card adds "Greg Kopp, Western University · forensic engineering" |
 | >> MARK 16:40-17:30 | | REAL (tail of the Rolling Fork cutaway to 1001.40); then map, Elie stills, grain-car mechanism |
 | a4-s7 | 1025.16-1038.20 | map: Canada pin at Elie, Manitoba · cutaways `elie-manitoba-2007/elie-2007-track-map.png` 1027.80-1033.00 + pf "June 22, 2007 · ELIE, MANITOBA" 1031.10-1032.95 · `elie-manitoba-2007/elie-2007-nexrad-radar-cxwl-1.png` 1033.00-1038.40 + pf "F5 · RAISED · SEPTEMBER 2007" 1036.60-1038.35. Swell ends 1037.40 |

@@ -54,7 +54,7 @@
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
-  const H = 1422.772;
+  const H = 1424.008;
   const D = 13.808;
   const tl = gsap.timeline({ paused: true });
   const P = "#dta6-";
@@ -64,31 +64,31 @@ window.__timelines = window.__timelines || {};
 
   /* continuous: one sweep across the whole window */
   tl.fromTo(P+"sweep", { x: -300 }, { x: 2200, duration: 13.9, ease: "none" }, 0);
-  /* QUESTION @1423.59 · LYZA'S STUDY @1423.95: the axis and the drought bar return */
+  /* QUESTION @1424.826 · LYZA'S STUDY @1425.186: the axis and the drought bar return */
   tl.to([P+"aL", P+"aR"], { scaleX: 1, duration: 0.6, ease: "power3.out", stagger: 0.15 }, 0.2);
   tl.fromTo([P+"y50", P+"y25"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out", stagger: 0.1 }, 0.5);
-  tl.fromTo(P+"moore", { autoAlpha: 0, scaleY: 0 }, { autoAlpha: 1, scaleY: 1, duration: 0.35, ease: "back.out(2)", transformOrigin: "center bottom" }, 1423.59 - H);
-  tl.to(P+"bar", { scaleX: 1, duration: 1.2, ease: "power3.out" }, 1423.95 - H);
-  /* 12 YEARS @1425.17 */
-  tl.fromTo(P+"yrs", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 1425.17 - H);
-  /* ENDED THE GAP @1427.09: Enderlin's mark closes the bar · WITHOUT SETTLING IT @1427.83 */
-  tl.fromTo(P+"mk", { autoAlpha: 0, y: -220 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power4.in" }, 1426.69 - H);
-  tl.to(P+"bar", { x: -4, duration: 0.08, ease: "power1.inOut", yoyo: true, repeat: 3 }, 1427.09 - H);
-  tl.fromTo(P+"h", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1427.83 - H);
-  tl.to(P+"mk", { scaleY: 1.2, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 9, transformOrigin: "center bottom" }, 1427.6 - H);
-  /* SURVEYS SHIFTED @1429.59 · 2007 @1430.63 */
-  tl.to(P+"yrs", { autoAlpha: 0, y: -20, duration: 0.3, ease: "power3.in" }, 1429.3 - H);
-  tl.fromTo(P+"split", { autoAlpha: 1, scaleY: 0 }, { scaleY: 1, duration: 0.6, ease: "power3.out", transformOrigin: "center bottom" }, 1429.59 - H);
-  tl.fromTo(P+"2007", { autoAlpha: 0, scale: 1.7 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 1430.63 - H);
-  /* BEFORE AND AFTER @1432.59: the axis splits */
-  tl.to(P+"L", { x: -60, duration: 0.6, ease: "power3.inOut" }, 1432.59 - H);
-  tl.to(P+"R", { x: 60, duration: 0.6, ease: "power3.inOut" }, 1432.59 - H);
-  tl.fromTo([P+"before", P+"after"], { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.15 }, 1432.7 - H);
-  /* CANNOT BE COMPARED STRAIGHT ACROSS @1434.09: a broken equals sign */
-  tl.fromTo(P+"neq", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 1434.09 - H);
-  tl.to(P+"strike", { strokeDashoffset: 0, duration: 0.35, ease: "power3.out" }, 1434.5 - H);
+  tl.fromTo(P+"moore", { autoAlpha: 0, scaleY: 0 }, { autoAlpha: 1, scaleY: 1, duration: 0.35, ease: "back.out(2)", transformOrigin: "center bottom" }, 1424.826 - H);
+  tl.to(P+"bar", { scaleX: 1, duration: 1.2, ease: "power3.out" }, 1425.186 - H);
+  /* 12 YEARS @1426.406 */
+  tl.fromTo(P+"yrs", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 1426.406 - H);
+  /* ENDED THE GAP @1428.326: Enderlin's mark closes the bar · WITHOUT SETTLING IT @1429.066 */
+  tl.fromTo(P+"mk", { autoAlpha: 0, y: -220 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power4.in" }, 1427.926 - H);
+  tl.to(P+"bar", { x: -4, duration: 0.08, ease: "power1.inOut", yoyo: true, repeat: 3 }, 1428.326 - H);
+  tl.fromTo(P+"h", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1429.066 - H);
+  tl.to(P+"mk", { scaleY: 1.2, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 9, transformOrigin: "center bottom" }, 1428.836 - H);
+  /* SURVEYS SHIFTED @1430.826 · 2007 @1431.866 */
+  tl.to(P+"yrs", { autoAlpha: 0, y: -20, duration: 0.3, ease: "power3.in" }, 1430.536 - H);
+  tl.fromTo(P+"split", { autoAlpha: 1, scaleY: 0 }, { scaleY: 1, duration: 0.6, ease: "power3.out", transformOrigin: "center bottom" }, 1430.826 - H);
+  tl.fromTo(P+"2007", { autoAlpha: 0, scale: 1.7 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 1431.866 - H);
+  /* BEFORE AND AFTER @1433.826: the axis splits */
+  tl.to(P+"L", { x: -60, duration: 0.6, ease: "power3.inOut" }, 1433.826 - H);
+  tl.to(P+"R", { x: 60, duration: 0.6, ease: "power3.inOut" }, 1433.826 - H);
+  tl.fromTo([P+"before", P+"after"], { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.15 }, 1433.936 - H);
+  /* CANNOT BE COMPARED STRAIGHT ACROSS @1435.326: a broken equals sign */
+  tl.fromTo(P+"neq", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 1435.326 - H);
+  tl.to(P+"strike", { strokeDashoffset: 0, duration: 0.35, ease: "power3.out" }, 1435.736 - H);
   /* exit 1436.0 */
-  tl.to([P+"L", P+"R", P+"split", P+"2007", P+"neq", P+"h"], { x: 980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 1436.0 - H);
+  tl.to([P+"L", P+"R", P+"split", P+"2007", P+"neq", P+"h"], { x: 980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 1437.236 - H);
   tl.to({}, { duration: 0.01 }, D - 0.01);
   window.__timelines["g-drought-timeline-a6"] = tl;
 })();

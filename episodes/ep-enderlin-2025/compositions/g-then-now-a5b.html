@@ -41,7 +41,7 @@
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
-  const H = 1300.252;
+  const H = 1301.488;
   const D = 11.264;
   const tl = gsap.timeline({ paused: true });
   const P = "#tnb-";
@@ -55,22 +55,22 @@ window.__timelines = window.__timelines || {};
 
   tl.to(P+"base", { scaleY: 1, duration: 0.5, ease: "power3.out" }, 0.05);
   tl.fromTo(P+"small", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.3);
-  /* FEMA @1300.25 · GUIDANCE @1301.21 · SAFE ROOMS @1302.13 */
-  tl.fromTo(P+"l1", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1300.4 - H);
-  tl.fromTo(P+"icon", { autoAlpha: 0, scale: 0.5 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 1302.13 - H);
-  tl.to(P+"icon", { y: -10, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 6 }, 1302.6 - H);
-  /* 250 @1303.73 */
-  tl.to(P+"b1", { scaleX: 1, duration: 0.8, ease: "power3.out" }, 1302.95 - H);
-  tl.fromTo(P+"v1", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out", transformOrigin: "left center" }, 1303.73 - H);
-  /* STANDARD @1307.75 · RATED ABOVE @1308.85: Enderlin's bar, the safe room sits above it @1309.13 */
-  tl.to(P+"b1", { scaleY: 1.12, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 1307.75 - H);
-  tl.fromTo(P+"l2", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1308.3 - H);
-  tl.to(P+"b2", { scaleX: 1, duration: 0.55, ease: "power3.out" }, 1308.3 - H);
-  tl.fromTo(P+"v2", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 1308.85 - H);
-  tl.fromTo(P+"drop", { autoAlpha: 1, scaleY: 0, transformOrigin: "center top" }, { scaleY: 1, duration: 0.4, ease: "power3.out" }, 1309.13 - H);
-  tl.fromTo(P+"gap", { autoAlpha: 0, scaleX: 0, transformOrigin: "left center" }, { autoAlpha: 1, scaleX: 1, duration: 0.4, ease: "power3.out" }, 1309.35 - H);
+  /* FEMA @1301.486 · GUIDANCE @1302.446 · SAFE ROOMS @1303.366 */
+  tl.fromTo(P+"l1", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1301.636 - H);
+  tl.fromTo(P+"icon", { autoAlpha: 0, scale: 0.5 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 1303.366 - H);
+  tl.to(P+"icon", { y: -10, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 6 }, 1303.836 - H);
+  /* 250 @1304.966 */
+  tl.to(P+"b1", { scaleX: 1, duration: 0.8, ease: "power3.out" }, 1304.186 - H);
+  tl.fromTo(P+"v1", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out", transformOrigin: "left center" }, 1304.966 - H);
+  /* STANDARD @1308.986 · RATED ABOVE @1310.086: Enderlin's bar, the safe room sits above it @1310.366 */
+  tl.to(P+"b1", { scaleY: 1.12, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 1308.986 - H);
+  tl.fromTo(P+"l2", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1309.536 - H);
+  tl.to(P+"b2", { scaleX: 1, duration: 0.55, ease: "power3.out" }, 1309.536 - H);
+  tl.fromTo(P+"v2", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 1310.086 - H);
+  tl.fromTo(P+"drop", { autoAlpha: 1, scaleY: 0, transformOrigin: "center top" }, { scaleY: 1, duration: 0.4, ease: "power3.out" }, 1310.366 - H);
+  tl.fromTo(P+"gap", { autoAlpha: 0, scaleX: 0, transformOrigin: "left center" }, { autoAlpha: 1, scaleX: 1, duration: 0.4, ease: "power3.out" }, 1310.586 - H);
   /* exit 1311.0 */
-  tl.to([P+"base", P+"icon", P+"l1", P+"b1", P+"v1", P+"l2", P+"b2", P+"gap", P+"drop", P+"small"], { x: 980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 1311.0 - H);
+  tl.to([P+"base", P+"icon", P+"l1", P+"b1", P+"v1", P+"l2", P+"b2", P+"gap", P+"drop", P+"small"], { x: 980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 1312.236 - H);
   tl.to({}, { duration: 0.01 }, D - 0.01);
   window.__timelines["g-then-now-a5b"] = tl;
 })();
