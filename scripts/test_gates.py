@@ -275,6 +275,15 @@ for label, js, dom, want in (
         code, out = run("beat_density.py", ep)
         check(f"beat_density: {label}", code == want, f"(exit {code}, want {want})\n{out[-500:]}")
 
+# A probe ERROR fails at any window: it used to print as a gap equal to the window, so a 3 s comp
+# the probe could not measure passed.
+with tempfile.TemporaryDirectory() as d:
+    ep = make_ep(Path(d) / "bd", comp_html='<template><div id="root"></div><script>/* registers no timeline */</script></template>',
+                 comp_window=3.0)
+    code, out = run("beat_density.py", ep)
+    check("beat_density: a probe ERROR on a <4 s window fails, labelled ERROR",
+          code == 1 and "ERROR no timeline registered" in out and "DEAD" not in out, f"(exit {code})\n{out[-500:]}")
+
 # ===================================================================================
 # 4. audio_levels.py — data-hf-id id-collision bug, data-bed classification, 6dB FAIL,
 #    unclassified-audio FAIL
