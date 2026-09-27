@@ -2,27 +2,199 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-ef-scale-a1"
-     (host 210.09 -> 249.806, 39.716 s, track 2). The MG builder replaces this whole file. -->
+<!-- g-ef-scale-a1 (B2): every damage indicator has a ceiling. Host 210.09 -> 249.806 (39.716 s, track 2).
+     Cues: episode seconds from audio/a1-s7..a1-s9 words.json (mg_specs.md block 4); local = cue - H.
+     Part 1: EF bands as floors; the Hardwood Tree steps hit a lid (EF3 level), the Farmhouse climbs past it.
+     Part 2: two empty slabs, anchor bolts -> EF5, nails -> Strong EF3 / Low EF4, the hardware the surveyors photograph,
+     "2 Full Ratings" between the outcomes. Exit 249.2. Continuous: light sweep, band shimmer, slab float. -->
 <template>
 <style>
-  .ph-ef-scale-a1 { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .ph-ef-scale-a1-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-ef-scale-a1-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
-  .ph-ef-scale-a1-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .efa1-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .efa1-sweep { position:absolute; left:0; top:0; width:260px; height:1080px;
+    background:linear-gradient(100deg, transparent, rgba(127,178,229,.08), transparent); }
+  .efa1-h { position:absolute; left:110px; top:70px; font-family:'Arial Black', Arial, sans-serif; font-size:72px; color:#f2f5f8; white-space:nowrap; }
+  .efa1-ul { position:absolute; left:112px; top:162px; width:250px; height:6px; background:#d0121f; }
+  .efa1-band { position:absolute; left:200px; width:1580px; height:2px; background:rgba(147,163,178,.28); }
+  .efa1-bl { position:absolute; left:110px; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
+  .efa1-st { position:absolute; width:90px; border-radius:6px 6px 0 0; box-sizing:border-box; border:2px solid #3d5366;
+    background:linear-gradient(180deg, #2a3644, #15202b); }
+  .efa1-fh { border-color:#5a768f; background:linear-gradient(180deg, #5a768f, #15202b); }
+  .efa1-chip { position:absolute; padding:8px 18px; border-radius:12px; font-weight:700; font-size:28px; color:#f2f5f8; white-space:nowrap;
+    background:rgba(10,16,24,.55); border:1px solid rgba(255,255,255,.14); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); }
+  .efa1-lab { position:absolute; font-weight:700; font-size:30px; white-space:nowrap; }
+  .efa1-lid { position:absolute; left:320px; top:526px; width:520px; height:8px; background:#d0121f; box-shadow:0 0 18px rgba(208,18,31,.6); }
+  .efa1-lidx { position:absolute; left:1120px; top:529px; width:660px; height:0; border-top:2px dashed rgba(208,18,31,.55); }
+  .efa1-slab { position:absolute; top:640px; width:520px; height:50px; border-radius:4px; background:linear-gradient(180deg, #93a3b2, #4a5560); }
+  .efa1-bolt { position:absolute; top:612px; width:12px; height:30px; border-radius:3px 3px 0 0; background:#e8c56a; }
+  .efa1-nail { position:absolute; top:624px; width:4px; height:18px; background:#c8d3e0; }
+  .efa1-big { position:absolute; font-family:'AbrilFig', Georgia, serif; font-size:140px; line-height:1; color:#d0121f; text-shadow:0 6px 26px rgba(0,0,0,.8); white-space:nowrap; }
+  .efa1-rt { position:absolute; left:1110px; font-family:'Arial Black', Arial, sans-serif; font-size:56px; color:#e8c56a; white-space:nowrap; }
+  .efa1-card { position:absolute; top:800px; width:220px; height:180px; box-sizing:border-box; border-radius:24px;
+    background:rgba(10,16,24,.55); border:1px solid rgba(255,255,255,.14); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); }
+  .efa1-cl { position:absolute; left:0; top:124px; width:220px; text-align:center; font-weight:700; font-size:26px; color:#dfe7ee; }
+  .efa1-span { position:absolute; left:660px; top:262px; width:600px; text-align:center; font-weight:700; font-size:40px; color:#f2f5f8; white-space:nowrap; }
+  .efa1-span b { font-family:'AbrilFig', Georgia, serif; font-weight:400; font-size:56px; color:#d0121f; }
 </style>
-<div class="ph-ef-scale-a1" data-composition-id="g-ef-scale-a1" data-width="1920" data-height="1080" data-duration="39.716">
-  <div class="ph-ef-scale-a1-card" id="ph-ef-scale-a1-card">
-    <div class="ph-ef-scale-a1-t" id="ph-ef-scale-a1-t">g-ef-scale-a1</div>
-    <div class="ph-ef-scale-a1-s" id="ph-ef-scale-a1-s">Placeholder · To Build</div>
+<div class="efa1-root" data-composition-id="g-ef-scale-a1" data-width="1920" data-height="1080" data-duration="39.716">
+  <div class="efa1-sweep" id="efa1-sweep"></div>
+
+  <!-- part 1: the ceiling -->
+  <div id="efa1-p1">
+    <div class="efa1-band" id="efa1-b0" style="top:840px"></div>
+    <div class="efa1-band" id="efa1-b1" style="top:740px"></div>
+    <div class="efa1-band" id="efa1-b2" style="top:640px"></div>
+    <div class="efa1-band" id="efa1-b3" style="top:540px"></div>
+    <div class="efa1-band" id="efa1-b4" style="top:440px"></div>
+    <div class="efa1-band" id="efa1-b5" style="top:340px; background:rgba(231,76,60,.45)"></div>
+    <div class="efa1-bl" id="efa1-l0" style="top:826px">EF0</div>
+    <div class="efa1-bl" id="efa1-l1" style="top:726px">EF1</div>
+    <div class="efa1-bl" id="efa1-l2" style="top:626px">EF2</div>
+    <div class="efa1-bl" id="efa1-l3" style="top:526px">EF3</div>
+    <div class="efa1-bl" id="efa1-l4" style="top:426px">EF4</div>
+    <div class="efa1-bl" id="efa1-l5" style="top:326px; color:#e74c3c">EF5</div>
+    <div class="efa1-st" id="efa1-t0" style="left:330px; top:860px; height:40px"></div>
+    <div class="efa1-st" id="efa1-t1" style="left:430px; top:780px; height:120px"></div>
+    <div class="efa1-st" id="efa1-t2" style="left:530px; top:700px; height:200px"></div>
+    <div class="efa1-st" id="efa1-t3" style="left:630px; top:620px; height:280px"></div>
+    <div class="efa1-st" id="efa1-t4" style="left:730px; top:540px; height:360px"></div>
+    <div class="efa1-st" id="efa1-ghost" style="left:730px; top:470px; height:60px; border-style:dashed; background:none"></div>
+    <div class="efa1-lid" id="efa1-lid"></div>
+    <div class="efa1-lidx" id="efa1-lidx"></div>
+    <div class="efa1-st efa1-fh" id="efa1-f0" style="left:1150px; top:860px; height:40px"></div>
+    <div class="efa1-st efa1-fh" id="efa1-f1" style="left:1250px; top:760px; height:140px"></div>
+    <div class="efa1-st efa1-fh" id="efa1-f2" style="left:1350px; top:660px; height:240px"></div>
+    <div class="efa1-st efa1-fh" id="efa1-f3" style="left:1450px; top:560px; height:340px"></div>
+    <div class="efa1-st efa1-fh" id="efa1-f4" style="left:1550px; top:460px; height:440px"></div>
+    <div class="efa1-st efa1-fh" id="efa1-f5" style="left:1650px; top:350px; height:550px; border-color:#e74c3c"></div>
+    <div class="efa1-chip" id="efa1-tree" style="left:330px; top:918px">Hardwood Tree</div>
+    <div class="efa1-chip" id="efa1-farm" style="left:1150px; top:918px">Farmhouse</div>
+    <div class="efa1-lab" id="efa1-deb" style="left:560px; top:476px; color:#f2f5f8">Debarked, Snapped</div>
+    <div class="efa1-lab" id="efa1-nohi" style="left:852px; top:510px; color:#e74c3c">No Higher Rating</div>
+    <div class="efa1-lab" id="efa1-hold" style="left:1500px; top:292px; color:#e8c56a">Built to Hold</div>
+    <div class="efa1-h" id="efa1-prove">Prove</div>
+    <div class="efa1-ul" id="efa1-ul"></div>
+  </div>
+
+  <!-- part 2: the same empty slab -->
+  <div id="efa1-p2">
+    <svg id="efa1-hL" width="360" height="240" viewBox="0 0 360 240" style="position:absolute; left:380px; top:400px">
+      <path d="M20 240 L20 110 L180 20 L340 110 L340 240" fill="rgba(90,118,143,.25)" stroke="#dfe7ee" stroke-width="6"/>
+      <rect x="150" y="150" width="60" height="90" fill="none" stroke="#dfe7ee" stroke-width="5"/></svg>
+    <svg id="efa1-hR" width="360" height="240" viewBox="0 0 360 240" style="position:absolute; left:1180px; top:400px">
+      <path d="M20 240 L20 110 L180 20 L340 110 L340 240" fill="rgba(90,118,143,.25)" stroke="#dfe7ee" stroke-width="6"/>
+      <rect x="150" y="150" width="60" height="90" fill="none" stroke="#dfe7ee" stroke-width="5"/></svg>
+    <div id="efa1-slabs">
+      <div class="efa1-slab" id="efa1-sL" style="left:300px"></div>
+      <div class="efa1-slab" id="efa1-sR" style="left:1100px"></div>
+      <div class="efa1-bolt" id="efa1-o0" style="left:340px"></div>
+      <div class="efa1-bolt" id="efa1-o1" style="left:430px"></div>
+      <div class="efa1-bolt" id="efa1-o2" style="left:520px"></div>
+      <div class="efa1-bolt" id="efa1-o3" style="left:610px"></div>
+      <div class="efa1-bolt" id="efa1-o4" style="left:700px"></div>
+      <div class="efa1-bolt" id="efa1-o5" style="left:790px"></div>
+      <div class="efa1-nail" id="efa1-n0" style="left:1180px"></div>
+      <div class="efa1-nail" id="efa1-n1" style="left:1340px"></div>
+      <div class="efa1-nail" id="efa1-n2" style="left:1500px"></div>
+      <div class="efa1-lab" id="efa1-bolts" style="left:300px; top:706px; color:#e8c56a">Anchor Bolts</div>
+      <div class="efa1-lab" id="efa1-nails" style="left:1100px; top:706px; color:#c8d3e0">Nails</div>
+    </div>
+    <div class="efa1-big" id="efa1-ef5" style="left:450px; top:430px">EF5</div>
+    <div class="efa1-rt" id="efa1-r3" style="top:430px">Strong EF3</div>
+    <div class="efa1-rt" id="efa1-r4" style="top:510px; color:#7fb2e5">Low EF4</div>
+    <svg id="efa1-arrow" width="1920" height="1080" viewBox="0 0 1920 1080" style="position:absolute; left:0; top:0">
+      <path id="efa1-arr" d="M620 410 L620 340 L1300 340 L1300 410" fill="none" stroke="#f2f5f8" stroke-width="4"/></svg>
+    <div class="efa1-span" id="efa1-two"><b>2</b> Full Ratings</div>
+    <div class="efa1-card" id="efa1-c0" style="left:590px">
+      <svg width="220" height="120" viewBox="0 0 220 120"><rect x="98" y="16" width="24" height="84" rx="4" fill="#e8c56a"/><rect x="80" y="16" width="60" height="16" rx="4" fill="#e8c56a"/></svg>
+      <div class="efa1-cl">Bolts</div></div>
+    <div class="efa1-card" id="efa1-c1" style="left:850px">
+      <svg width="220" height="120" viewBox="0 0 220 120"><rect x="106" y="22" width="8" height="80" fill="#c8d3e0"/><rect x="92" y="16" width="36" height="8" rx="3" fill="#c8d3e0"/></svg>
+      <div class="efa1-cl">Nails</div></div>
+    <div class="efa1-card" id="efa1-c2" style="left:1110px">
+      <svg width="220" height="120" viewBox="0 0 220 120"><path d="M60 100 L60 30 L160 30 L160 100" fill="none" stroke="#7fb2e5" stroke-width="14"/><circle cx="110" cy="30" r="6" fill="#0b1016"/></svg>
+      <div class="efa1-cl">Straps</div></div>
   </div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
+  const H = 210.09;
+  const D = 39.716;
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-ef-scale-a1-card", { x: 0 }, { x: 40, duration: 39.716, ease: "none" }, 0);
+  const P = "#efa1-";
+  const BANDS = [P+"b0", P+"b1", P+"b2", P+"b3", P+"b4", P+"b5"];
+  const BL = [P+"l0", P+"l1", P+"l2", P+"l3", P+"l4", P+"l5"];
+  const TREE = [P+"t0", P+"t1", P+"t2", P+"t3", P+"t4"];
+  const FARM = [P+"f0", P+"f1", P+"f2", P+"f3", P+"f4", P+"f5"];
+  const BOLTS = [P+"o0", P+"o1", P+"o2", P+"o3", P+"o4", P+"o5"];
+  const NAILS = [P+"n0", P+"n1", P+"n2"];
+
+  tl.set([P+"prove", P+"ul", P+"tree", P+"farm", P+"deb", P+"nohi", P+"hold", P+"lid", P+"lidx", P+"ghost",
+          P+"p2", P+"ef5", P+"r3", P+"r4", P+"two", P+"arrow", P+"c0", P+"c1", P+"c2", P+"bolts", P+"nails"].concat(BL), { autoAlpha: 0 }, 0);
+  tl.set(BANDS, { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set(TREE.concat(FARM, BOLTS, NAILS), { scaleY: 0, transformOrigin: "center bottom" }, 0);
+  tl.set(P+"arr", { strokeDasharray: 822, strokeDashoffset: 822 }, 0);
+
+  /* continuous: sweep every 8 s; the EF5 band shimmers */
+  tl.fromTo(P+"sweep", { x: -300 }, { x: 2200, duration: 8, ease: "none", repeat: 4 }, 0);
+  tl.to(P+"b5", { scaleY: 3, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 11 }, 1.2);
+
+  /* the bands draw in, labels follow */
+  tl.to(BANDS, { scaleX: 1, duration: 0.7, ease: "power3.out", stagger: 0.08 }, 0.1);
+  tl.fromTo(BL, { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out", stagger: 0.08 }, 0.3);
+  /* PROVE @211.09 */
+  tl.fromTo(P+"prove", { autoAlpha: 0, scale: 1.5 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.out", transformOrigin: "left center" }, 211.09 - H);
+  tl.fromTo(P+"ul", { autoAlpha: 1, scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out", transformOrigin: "left center" }, 211.81 - H);
+  /* the Hardwood Tree indicator zooms in, its steps climb */
+  tl.fromTo(P+"tree", { autoAlpha: 0, x: 420, y: -300, scale: 1.8 }, { autoAlpha: 1, x: 0, y: 0, scale: 1, duration: 0.9, ease: "power3.inOut" }, 212.4 - H);
+  tl.to(TREE, { scaleY: 1, duration: 0.35, ease: "power3.out", stagger: 0.3 }, 213.3 - H);
+  /* CEILING @214.89: the lid is drawn across the top */
+  tl.fromTo(P+"lid", { autoAlpha: 1, scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power4.out", transformOrigin: "left center" }, 214.89 - H);
+  tl.fromTo(P+"lidx", { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.8, ease: "power2.out", transformOrigin: "left center" }, 215.3 - H);
+  /* BARK @217.37 */
+  tl.fromTo(P+"deb", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 217.37 - H);
+  /* NOTHING HIGHER @219.27: a next step pushes up and is stopped by the lid */
+  tl.fromTo(P+"ghost", { autoAlpha: 0, y: 70 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 218.9 - H);
+  tl.to(P+"ghost", { y: 70, autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 219.3 - H);
+  tl.to(P+"lid", { y: -10, duration: 0.12, ease: "power2.out", yoyo: true, repeat: 3 }, 219.27 - H);
+  tl.fromTo(P+"nohi", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 219.27 - H);
+  tl.to(P+"lid", { scaleY: 1.6, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 3 }, 220.0 - H);
+  /* FARMHOUSE @222.57, climbs past the lid on HIGHER @223.41 */
+  tl.fromTo(P+"farm", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 222.57 - H);
+  tl.to(FARM, { scaleY: 1, duration: 0.3, ease: "power3.out", stagger: 0.2 }, 222.8 - H);
+  /* BUILT TO HOLD @225.11 */
+  tl.fromTo(P+"hold", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 225.11 - H);
+  tl.to(P+"f5", { scaleX: 1.12, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 225.11 - H);
+  /* part 1 exits before a1-s8 */
+  tl.to(P+"p1", { x: -1100, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 226.0 - H);
+
+  /* part 2: two houses on two slabs; SWEPT OFF ITS FOUNDATION @227.52 */
+  tl.fromTo(P+"p2", { autoAlpha: 0, y: 120 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 226.55 - H);
+  tl.to([P+"hL", P+"hR"], { x: 700, y: -700, rotation: 28, autoAlpha: 0, duration: 1.1, ease: "power2.in", stagger: 0.12 }, 227.52 - H);
+  tl.to(P+"slabs", { y: -10, duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 7 }, 229.0 - H);
+  /* BOLTED @231.76 */
+  tl.to(BOLTS, { scaleY: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.08 }, 231.76 - H);
+  tl.fromTo(P+"bolts", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 231.76 - H);
+  /* EF5 @234.42 */
+  tl.fromTo(P+"ef5", { autoAlpha: 0, scale: 1.8 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 234.42 - H);
+  /* FEW NAILS @236.74 */
+  tl.to(NAILS, { scaleY: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.1 }, 236.74 - H);
+  tl.fromTo(P+"nails", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 236.74 - H);
+  /* STRONG EF3 @239.82 · LOW EF4 @241.78 */
+  tl.fromTo(P+"r3", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 239.82 - H);
+  tl.fromTo(P+"r4", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 241.78 - H);
+  /* BOLTS @244.94 · NAILS @245.56 · STRAPS @246.10 */
+  tl.fromTo(P+"c0", { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.6)" }, 244.94 - H);
+  tl.fromTo(P+"c1", { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.6)" }, 245.56 - H);
+  tl.fromTo(P+"c2", { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.6)" }, 246.10 - H);
+  /* TWO FULL RATINGS @248.18 */
+  tl.set(P+"arrow", { autoAlpha: 1 }, 248.0 - H);
+  tl.to(P+"arr", { strokeDashoffset: 0, duration: 0.5, ease: "power3.out" }, 248.0 - H);
+  tl.fromTo(P+"two", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 248.18 - H);
+  /* exit 249.2 */
+  tl.to(P+"p2", { x: 980, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 249.2 - H);
+  tl.to({}, { duration: 0.01 }, D - 0.01);
   window.__timelines["g-ef-scale-a1"] = tl;
 })();
 </script>
