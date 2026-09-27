@@ -11,8 +11,9 @@ Newest first. New entries go at the top, under this line. Superseded lines point
   All 9 enderlin segments re-recorded with plain "lives" measured /aɪ/ (F1 peak 739-882 Hz, 225-305 ms).
 - **Rule:** the noun "lives" after their/took/take needs no respelling. A respelling ending in a bare "y"+consonant
   cluster ("lyvz") reads as short /ɪ/. Decide a respelling by probing candidates and measuring F1/duration
-  (/aɪ/ opens to F1 about 650-850 Hz for 150-250 ms, /ɪ/ stays under about 500 Hz), not by guessing. Pocket-TTS is
-  deterministic: a re-run of the same text gives the same take, so a line cannot be re-rolled for a shorter read.
+  (/aɪ/ opens to F1 about 650-850 Hz for 150-250 ms, /ɪ/ stays under about 500 Hz), not by guessing. Pocket-TTS looks
+  deterministic (z1-s1 re-record: silence timings identical to the microsecond up to the changed word), so a line
+  probably cannot be re-rolled for a shorter read; 3 of 9 re-records ran 5.9-9.2 % long and need index.html retiming.
 
 ## 2026-09-22 - ep-1974 shipped 17:30 against a 22:00 target: three guesses stacked
 
