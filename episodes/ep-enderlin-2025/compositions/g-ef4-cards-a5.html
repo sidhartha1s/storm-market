@@ -2,27 +2,117 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-ef4-cards-a5"
-     (host 1311.516 -> 1328.916, 17.4 s, track 2). The MG builder replaces this whole file. -->
+<!-- g-ef4-cards-a5 (B2): 108 days, two full steps, and the same question for every high-end EF4 since Moore.
+     Host 1311.516 -> 1328.916 (17.4 s, track 2). Hard end into the CTA dip: no exit tween past 1328.4.
+     Cues: episode seconds from audio/a5-s10 words.json (mg_specs.md block 5); local = cue - H.
+     Part 1: "108 Days" counter + Enderlin jumping EF3 -> EF5 on a three-rung ladder, "2 Full Steps".
+     Part 2: the four EF4 cards return small, one shared "EF4" label, a pulsing "?" under each; Mayfield and Rolling Fork
+     brighten; a sealed note "NOAA NSSL · 2025" slides in (tease only). Continuous: light sweep, "?" pulses, note float. -->
 <template>
 <style>
-  .ph-ef4-cards-a5 { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .ph-ef4-cards-a5-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-ef4-cards-a5-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
-  .ph-ef4-cards-a5-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .ef4a5-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .ef4a5-sweep { position:absolute; left:0; top:0; width:260px; height:1080px;
+    background:linear-gradient(100deg, transparent, rgba(127,178,229,.08), transparent); }
+  .ef4a5-cnt { position:absolute; left:160px; top:330px; display:flex; align-items:baseline; gap:26px; white-space:nowrap; }
+  .ef4a5-cn { font-family:'AbrilFig', Georgia, serif; font-size:170px; line-height:1; color:#d0121f; text-shadow:0 6px 26px rgba(0,0,0,.8); }
+  .ef4a5-cu { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; }
+  .ef4a5-steps { position:absolute; left:170px; top:560px; font-weight:700; font-size:44px; color:#e8c56a; white-space:nowrap; }
+  .ef4a5-rung { position:absolute; left:1200px; width:420px; height:56px; border-radius:6px; }
+  .ef4a5-rl { position:absolute; left:1080px; width:100px; text-align:right; font-weight:700; font-size:30px; color:#dfe7ee; }
+  .ef4a5-dot { position:absolute; left:1382px; top:0; width:56px; height:56px; border-radius:50%; background:#f2f5f8; box-shadow:0 0 24px 6px rgba(232,197,106,.7); }
+  .ef4a5-en { position:absolute; left:1650px; font-weight:700; font-size:26px; color:#f2f5f8; white-space:nowrap; }
+  .ef4a5-h { position:absolute; left:110px; top:78px; font-family:'Arial Black', Arial, sans-serif; font-size:52px; color:#f2f5f8; white-space:nowrap; }
+  .ef4a5-card { position:absolute; top:230px; width:300px; height:240px; box-sizing:border-box; border-radius:22px; overflow:hidden;
+    background:rgba(10,16,24,.55); border:1px solid rgba(255,255,255,.14); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); }
+  .ef4a5-card img { position:absolute; left:0; top:0; width:300px; height:180px; object-fit:cover; }
+  .ef4a5-nm { position:absolute; left:18px; top:192px; font-weight:700; font-size:24px; color:#f2f5f8; white-space:nowrap; }
+  .ef4a5-ef4 { position:absolute; left:110px; top:520px; font-family:'Arial Black', Arial, sans-serif; font-size:52px; color:#d8a13a; }
+  .ef4a5-q { position:absolute; top:500px; width:300px; text-align:center; font-family:'AbrilFig', Georgia, serif; font-size:96px; line-height:1; color:#e8c56a; }
+  .ef4a5-note { position:absolute; left:640px; top:720px; width:640px; height:170px; box-sizing:border-box; border-radius:24px;
+    background:rgba(10,16,24,.55); border:1px solid rgba(255,255,255,.14); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); }
+  .ef4a5-nt { position:absolute; left:170px; top:52px; font-family:'Arial Black', Arial, sans-serif; font-size:40px; color:#f2f5f8; white-space:nowrap; }
+  .ef4a5-seal { position:absolute; left:48px; top:40px; width:90px; height:90px; border-radius:50%; background:radial-gradient(circle at 40% 35%, #c0392b, #8e2020); }
 </style>
-<div class="ph-ef4-cards-a5" data-composition-id="g-ef4-cards-a5" data-width="1920" data-height="1080" data-duration="17.4">
-  <div class="ph-ef4-cards-a5-card" id="ph-ef4-cards-a5-card">
-    <div class="ph-ef4-cards-a5-t" id="ph-ef4-cards-a5-t">g-ef4-cards-a5</div>
-    <div class="ph-ef4-cards-a5-s" id="ph-ef4-cards-a5-s">Placeholder · To Build</div>
+<div class="ef4a5-root" data-composition-id="g-ef4-cards-a5" data-width="1920" data-height="1080" data-duration="17.4">
+  <div class="ef4a5-sweep" id="ef4a5-sweep"></div>
+  <div id="ef4a5-p1">
+    <div class="ef4a5-cnt" id="ef4a5-cnt"><span class="ef4a5-cn" id="ef4a5-cn">1</span><span class="ef4a5-cu">Days</span></div>
+    <div class="ef4a5-steps" id="ef4a5-steps">2 Full Steps</div>
+    <div class="ef4a5-rung" id="ef4a5-r5" style="top:300px; background:#c0392b"></div>
+    <div class="ef4a5-rung" id="ef4a5-r4" style="top:460px; background:#d8a13a"></div>
+    <div class="ef4a5-rung" id="ef4a5-r3" style="top:620px; background:#7fb2e5"></div>
+    <div class="ef4a5-rl" id="ef4a5-l5" style="top:308px; color:#e74c3c">EF5</div>
+    <div class="ef4a5-rl" id="ef4a5-l4" style="top:468px">EF4</div>
+    <div class="ef4a5-rl" id="ef4a5-l3" style="top:628px">EF3</div>
+    <svg id="ef4a5-arc" width="1920" height="1080" viewBox="0 0 1920 1080" style="position:absolute; left:0; top:0">
+      <path id="ef4a5-ap" d="M1450 640 C 1560 560, 1560 400, 1450 330" fill="none" stroke="#e8c56a" stroke-width="4"/></svg>
+    <div class="ef4a5-dot" id="ef4a5-dot"></div>
+    <div class="ef4a5-en" id="ef4a5-en" style="top:634px">Enderlin</div>
+  </div>
+  <div id="ef4a5-p2">
+    <div class="ef4a5-h" id="ef4a5-h">High-End EF4s Since Moore</div>
+    <div class="ef4a5-card" id="ef4a5-c0" style="left:330px"><img src="media/mayflower-vilonia-2014/mayflower-2014-fema-splintered-tree-debris.jpg" alt=""><div class="ef4a5-nm">Mayflower-Vilonia</div></div>
+    <div class="ef4a5-card" id="ef4a5-c1" style="left:670px"><img src="media/rochelle-fairdale-2015/rochelle-fairdale-2015-nws-walkway-damage.jpg" alt=""><div class="ef4a5-nm">Rochelle-Fairdale</div></div>
+    <div class="ef4a5-card" id="ef4a5-c2" style="left:1010px"><img src="media/mayfield-2021/mayfield-2021-statefarm-aerial.jpg" alt=""><div class="ef4a5-nm">Mayfield</div></div>
+    <div class="ef4a5-card" id="ef4a5-c3" style="left:1350px"><img src="media/rolling-fork-2023/rolling-fork-2023-usda-damage-1.jpg" alt=""><div class="ef4a5-nm">Rolling Fork</div></div>
+    <div class="ef4a5-ef4" id="ef4a5-ef4">EF4</div>
+    <div class="ef4a5-q" id="ef4a5-q0" style="left:330px">?</div>
+    <div class="ef4a5-q" id="ef4a5-q1" style="left:670px">?</div>
+    <div class="ef4a5-q" id="ef4a5-q2" style="left:1010px">?</div>
+    <div class="ef4a5-q" id="ef4a5-q3" style="left:1350px">?</div>
+    <div class="ef4a5-note" id="ef4a5-note"><div class="ef4a5-seal"></div><div class="ef4a5-nt">NOAA NSSL &middot; 2025</div></div>
   </div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
+  const H = 1311.516;
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-ef4-cards-a5-card", { x: 0 }, { x: 40, duration: 17.4, ease: "none" }, 0);
+  const P = "#ef4a5-";
+  const CARDS = [P+"c0", P+"c1", P+"c2", P+"c3"];
+  const QS = [P+"q0", P+"q1", P+"q2", P+"q3"];
+  const cn = document.getElementById("ef4a5-cn");
+  const days = { v: 1 };
+  tl.set([P+"cnt", P+"steps", P+"dot", P+"en", P+"arc", P+"h", P+"ef4", P+"note"].concat(CARDS, QS), { autoAlpha: 0 }, 0);
+  tl.set([P+"r3", P+"r4", P+"r5"], { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set(P+"ap", { strokeDasharray: 360, strokeDashoffset: 360 }, 0);
+  tl.set(P+"dot", { y: 620 }, 0);
+
+  /* continuous: sweep every 8.8 s */
+  tl.fromTo(P+"sweep", { x: -300 }, { x: 2200, duration: 8.8, ease: "none", repeat: 1 }, 0);
+
+  /* the ladder builds, 108 DAYS @1312.04 */
+  tl.to([P+"r5", P+"r4", P+"r3"], { scaleX: 1, duration: 0.5, ease: "power3.out", stagger: 0.1 }, 0.1);
+  tl.fromTo([P+"l5", P+"l4", P+"l3"], { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out", stagger: 0.1 }, 0.2);
+  tl.fromTo(P+"cnt", { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power3.out", transformOrigin: "left center" }, 1312.04 - H);
+  tl.to(days, { v: 108, duration: 1.3, ease: "power3.out", onUpdate: () => { cn.textContent = Math.round(days.v); } }, 1312.04 - H);
+  /* ENDERLIN @1313.92 on EF3 · TWO FULL STEPS @1315.18: it jumps to EF5 */
+  tl.fromTo([P+"dot", P+"en"], { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1313.92 - H);
+  tl.set(P+"arc", { autoAlpha: 1 }, 1315.0 - H);
+  tl.to(P+"ap", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 1315.0 - H);
+  tl.to(P+"dot", { y: 300, duration: 0.55, ease: "back.out(1.4)" }, 1315.18 - H);
+  tl.to(P+"en", { y: -320, duration: 0.55, ease: "back.out(1.4)" }, 1315.18 - H);
+  tl.fromTo(P+"steps", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1315.18 - H);
+  tl.to(P+"r5", { scaleY: 1.3, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 1315.7 - H);
+
+  /* SAME QUESTION @1317.30: part 1 clears, the four EF4 cards return small */
+  tl.to(P+"p1", { y: -60, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 1316.8 - H);
+  tl.fromTo(CARDS, { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out", stagger: 0.1 }, 1317.30 - H);
+  /* HIGH-END EF4 @1318.68 · SINCE MOORE @1319.92 */
+  tl.fromTo(P+"ef4", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1318.68 - H);
+  tl.fromTo(QS, { autoAlpha: 0, scale: 0.4 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2)", stagger: 0.08 }, 1318.8 - H);
+  tl.to(QS, { scale: 1.18, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 17 }, 1319.4 - H);
+  tl.fromTo(P+"h", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1319.92 - H);
+  /* MAYFIELD @1321.40 · ROLLING FORK @1322.18: those two brighten */
+  tl.to([P+"c0", P+"c1", P+"q0", P+"q1"], { opacity: 0.45, duration: 0.4 }, 1321.40 - H);
+  tl.to([P+"c2", P+"q2"], { y: -16, duration: 0.35, ease: "power3.out" }, 1321.40 - H);
+  tl.to([P+"c3", P+"q3"], { y: -16, duration: 0.35, ease: "power3.out" }, 1322.18 - H);
+  /* FEDERAL LAB @1325.40: a sealed note slides in (the change stays sealed) */
+  tl.fromTo(P+"note", { autoAlpha: 0, y: 220 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 1325.40 - H);
+  tl.to(P+"note", { y: -10, rotation: -1, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 1326.1 - H);
+  /* hard end at 1328.916 (CTA dip): no exit tween */
+  tl.to({}, { duration: 0.01 }, 17.39);
   window.__timelines["g-ef4-cards-a5"] = tl;
 })();
 </script>
