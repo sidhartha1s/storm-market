@@ -19,7 +19,7 @@
   .pj-g { position:absolute; left:1060px; width:520px; top:250px; text-align:center; }
   .pj-stamp { display:inline-block; padding:6px 38px 0; border:6px solid rgba(223,231,238,0.85); border-radius:14px;
     font-family:'AbrilFig', Georgia, serif; line-height:1; letter-spacing:4px; font-size:180px; color:#dfe7ee; text-shadow:0 6px 30px rgba(0,0,0,0.7); }
-  .pj-when { margin-top:22px; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; }
+  .pj-when { margin-top:60px; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; }
   .pj-card { position:absolute; left:96px; top:640px; padding:30px 52px 36px; overflow:hidden;
     background: rgba(10,16,24,0.55); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); border-radius:28px; box-shadow:0 30px 90px rgba(0,0,0,0.5); }
@@ -66,8 +66,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#pj-org", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.52);
   tl.to("#pj-under", { scaleX: 1, duration: 2.0, ease: "power1.inOut" }, 4.0);
 
-  /* WHY IT DID NOT @6.11: the stamp tilts, the rating is about to move */
-  tl.to("#pj-g", { rotation: -14, x: 30, autoAlpha: 0.8, duration: 0.35, ease: "back.out(2.5)" }, 6.11);
+  /* WHY IT DID NOT @6.11: the stamp tilts (to -14 with the group's -3), the rating is about to move; its date stays level */
+  tl.to("#pj-ef3", { rotation: -11, x: 30, duration: 0.35, ease: "back.out(2.5)" }, 6.11);
+  tl.to("#pj-g", { autoAlpha: 0.8, duration: 0.35 }, 6.11);
 
   /* gone by 7.1, before the blackout at 7.222 */
   tl.to("#pj-card", { x: -700, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 6.55);

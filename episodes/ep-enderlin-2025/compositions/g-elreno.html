@@ -25,23 +25,23 @@
   .er-map svg { position:absolute; left:0; top:0; width:1084px; height:690px; }
   .er-sweep { position:absolute; left:0; top:0; width:90px; height:690px;
     background: linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.16), rgba(127,178,229,0)); }
-  .er-wlab { position:absolute; left:340px; top:402px; font-weight:700; font-size:22px; letter-spacing:3px; color:#f2f5f8; white-space:nowrap;
+  .er-wlab { position:absolute; left:190px; top:404px; font-weight:700; font-size:22px; letter-spacing:3px; color:#f2f5f8; white-space:nowrap;
     text-shadow:0 2px 8px rgba(0,0,0,0.9); }
   .er-slot { position:absolute; left:1250px; width:480px; top:300px; text-align:center; }
   .er-stamp { display:inline-block; padding:6px 34px 0; border:6px solid; border-radius:14px;
     font-family:'AbrilFig', Georgia, serif; line-height:1; letter-spacing:4px; font-size:150px; }
   .er-ef5 { color:#d0121f; border-color:#d0121f; text-shadow:0 0 38px rgba(208,18,31,0.55), 0 6px 26px rgba(0,0,0,0.8); }
   .er-ef3 { color:#dfe7ee; border-color:rgba(223,231,238,0.85); text-shadow:0 6px 30px rgba(0,0,0,0.7); }
-  .er-when { margin-top:18px; font-weight:700; font-size:22px; letter-spacing:6px; color:#c8d3e0; }
+  .er-when { margin-top:60px; font-weight:700; font-size:22px; letter-spacing:6px; color:#c8d3e0; }
   .er-rlab { position:absolute; left:1250px; top:600px; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
   .er-rval { position:absolute; left:1250px; top:634px; font-family:'Arial Black', Arial, sans-serif; font-size:52px; line-height:62px; color:#f2f5f8; white-space:nowrap; }
   .er-neq { position:absolute; left:1250px; top:770px; font-family:'Arial Black', Arial, sans-serif; font-size:44px; line-height:56px; color:#f2f5f8; white-space:nowrap; }
-  .er-red { color:#e74c3c; }
+  .er-red { display:inline-block; color:#e74c3c; }
   .er-bsvg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
   .er-btl { position:absolute; top:106px; font-family:'Arial Black', Arial, sans-serif; font-size:52px; line-height:62px; color:#f2f5f8; white-space:nowrap; }
   .er-bdef { position:absolute; top:180px; font-family: Georgia, serif; font-style:italic; font-size:34px; line-height:42px; color:#d8a13a; white-space:nowrap; }
   .er-ft { position:absolute; left:572px; top:752px; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
-  .er-head { position:absolute; left:0; right:0; top:560px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-size:60px; line-height:70px; color:#e8c56a; }
+  .er-head { position:absolute; left:0; right:160px; top:560px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-size:60px; line-height:70px; color:#e8c56a; }
 </style>
 <div class="er-wrap" data-composition-id="g-elreno" data-width="1920" data-height="1080" data-duration="43.994">
   <div class="er-glow" id="er-glow"></div>
@@ -173,6 +173,7 @@ window.__timelines = window.__timelines || {};
   /* EF5 @19.88 (spoken "E F -5" 19.88/20.10): the June rating slams */
   tl.fromTo("#er-s5", { autoAlpha: 0, scale: 1.45, rotation: -9 }, { autoAlpha: 1, scale: 1, rotation: -3, duration: 0.2, ease: "power4.in" }, 19.75);
   tl.fromTo("#er-s5", { y: 0 }, { y: 8, duration: 0.07, ease: "power1.out", yoyo: true, repeat: 1 }, 19.95);
+  tl.fromTo("#er-w5", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.25, ease: "power2.out" }, 20.09); /* the date enters once the slam settles */
   tl.fromTo("#er-ef5", { scale: 1 }, { scale: 1.04, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, 20.6);
   /* EF3 @25.46: the stamp flips to the August rating */
   tl.to("#er-s5", { scaleY: 0, duration: 0.14, ease: "power2.in" }, 25.3);
