@@ -110,6 +110,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "lg3", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.rain);
 
   /* the beam over the ground returns: it cannot measure the ground wind */
+  tl.to([P + "t-rot", P + "t-deb", P + "lg1", P + "lg2", P + "lg3"], { autoAlpha: 0, duration: 0.35 }, CUES.nothow - 0.4);
   tl.fromTo(P + "inset", { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, CUES.nothow);
   tl.fromTo(P + "ibeam", { scaleX: 0, svgOrigin: "80 230" }, { scaleX: 1, duration: 0.8, ease: "power2.out" }, CUES.nothow + 0.2);
   window.__timelines[ID] = tl;
