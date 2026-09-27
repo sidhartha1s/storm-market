@@ -2,27 +2,123 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-ef4-cards"
-     (host 556.485 -> 604.894, 48.409 s, track 2). The MG builder replaces this whole file. -->
+<!-- g-ef4-cards (B2): four EF4s that sat near the line. Host 556.485 -> 604.894 (48.409 s, track 2); clip cutaway
+     v-a2-mayfield 578.11-586.42 covers the relayout (cards shrink up, bar field below).
+     Cues: episode seconds from audio/a2-s13, a2-s15 words.json (mg_specs.md block 5); local = cue - H.
+     Bar field = the EF4 band: baseline 166 mph at y 860, EF5 line (201 mph) at y 560, y = 860 - (mph - 166) * 300 / 35
+     (190 -> 654.3, 195 -> 611.4, 200 -> 568.6). One shared "EF4" label (one fact, one instance). Exit 604.3.
+     Continuous: light sweep, card float, line shimmer. Mayfield still: State Farm, CC BY 2.0 (credited on the card). -->
 <template>
 <style>
-  .ph-ef4-cards { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .ph-ef4-cards-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-ef4-cards-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
-  .ph-ef4-cards-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .ef4c-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .ef4c-sweep { position:absolute; left:0; top:0; width:260px; height:1080px;
+    background:linear-gradient(100deg, transparent, rgba(127,178,229,.08), transparent); }
+  .ef4c-h { position:absolute; left:110px; top:78px; font-family:'Arial Black', Arial, sans-serif; font-size:58px; color:#f2f5f8; white-space:nowrap; }
+  .ef4c-sub { position:absolute; left:112px; top:160px; font-family:Georgia, serif; font-style:italic; font-size:30px; color:#d8a13a; white-space:nowrap; }
+  .ef4c-card { position:absolute; top:300px; width:360px; height:336px; box-sizing:border-box; border-radius:24px; overflow:hidden;
+    background:rgba(10,16,24,.55); border:1px solid rgba(255,255,255,.14); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); }
+  .ef4c-card img { position:absolute; left:0; top:0; width:360px; height:220px; object-fit:cover; }
+  .ef4c-nm { position:absolute; left:20px; top:232px; font-weight:700; font-size:28px; color:#f2f5f8; white-space:nowrap; }
+  .ef4c-yr { position:absolute; left:20px; top:268px; font-family:'AbrilFig', Georgia, serif; font-size:44px; line-height:1.1; color:#d0121f; white-space:nowrap; }
+  .ef4c-cr { position:absolute; right:18px; top:292px; font-weight:700; font-size:19px; letter-spacing:1px; color:#93a3b2; white-space:nowrap; }
+  .ef4c-band { position:absolute; left:250px; top:560px; width:1540px; height:300px; background:linear-gradient(0deg, rgba(90,118,143,.08), rgba(216,161,58,.12)); }
+  .ef4c-base { position:absolute; left:250px; top:860px; width:1540px; height:3px; background:#5a768f; }
+  .ef4c-line { position:absolute; left:250px; top:558px; width:1540px; height:4px; background:#e74c3c; box-shadow:0 0 16px rgba(231,76,60,.6); }
+  .ef4c-trk { position:absolute; top:560px; width:200px; height:300px; box-sizing:border-box; border:2px dashed rgba(147,163,178,.35); border-bottom:none; }
+  .ef4c-bar { position:absolute; width:200px; border-radius:6px 6px 0 0; background:linear-gradient(180deg, #d8a13a, #8e5a1a); }
+  .ef4c-v { position:absolute; width:200px; text-align:center; font-weight:700; font-size:28px; color:#04070c; white-space:nowrap; }
+  .ef4c-big { position:absolute; left:110px; font-family:'Arial Black', Arial, sans-serif; white-space:nowrap; }
+  .ef4c-short { position:absolute; left:643px; top:494px; width:360px; text-align:center; font-weight:700; font-size:30px; color:#f2f5f8; white-space:nowrap; }
 </style>
-<div class="ph-ef4-cards" data-composition-id="g-ef4-cards" data-width="1920" data-height="1080" data-duration="48.409">
-  <div class="ph-ef4-cards-card" id="ph-ef4-cards-card">
-    <div class="ph-ef4-cards-t" id="ph-ef4-cards-t">g-ef4-cards</div>
-    <div class="ph-ef4-cards-s" id="ph-ef4-cards-s">Placeholder · To Build</div>
-  </div>
+<div class="ef4c-root" data-composition-id="g-ef4-cards" data-width="1920" data-height="1080" data-duration="48.409">
+  <div class="ef4c-sweep" id="ef4c-sweep"></div>
+  <div class="ef4c-h" id="ef4c-h">Strong Tornadoes</div>
+  <div class="ef4c-sub" id="ef4c-sub">Long Arguments</div>
+
+  <div class="ef4c-band" id="ef4c-band"></div>
+  <div class="ef4c-base" id="ef4c-base"></div>
+  <div class="ef4c-trk" id="ef4c-k0" style="left:330px"></div>
+  <div class="ef4c-trk" id="ef4c-k1" style="left:723px"></div>
+  <div class="ef4c-trk" id="ef4c-k2" style="left:1116px"></div>
+  <div class="ef4c-trk" id="ef4c-k3" style="left:1509px"></div>
+  <div class="ef4c-bar" id="ef4c-b0" style="left:330px; top:654px; height:206px"></div>
+  <div class="ef4c-bar" id="ef4c-b1" style="left:723px; top:569px; height:291px"></div>
+  <div class="ef4c-bar" id="ef4c-b2" style="left:1116px; top:654px; height:206px"></div>
+  <div class="ef4c-bar" id="ef4c-b3" style="left:1509px; top:611px; height:249px"></div>
+  <div class="ef4c-v" id="ef4c-v0" style="left:330px; top:668px">190 mph</div>
+  <div class="ef4c-v" id="ef4c-v1" style="left:723px; top:583px">200 mph</div>
+  <div class="ef4c-v" id="ef4c-v2" style="left:1116px; top:668px; font-size:24px">Also 190 mph</div>
+  <div class="ef4c-v" id="ef4c-v3" style="left:1509px; top:625px">195 mph</div>
+  <div class="ef4c-line" id="ef4c-line"></div>
+  <div class="ef4c-big" id="ef4c-ef5" style="top:532px; font-size:40px; color:#e74c3c">EF5</div>
+  <div class="ef4c-big" id="ef4c-ef4" style="top:680px; font-size:52px; color:#d8a13a">EF4</div>
+  <div class="ef4c-short" id="ef4c-short">1 mph Short of EF5</div>
+
+  <div class="ef4c-card" id="ef4c-c0" style="left:250px"><img src="media/mayflower-vilonia-2014/mayflower-2014-fema-splintered-tree-debris.jpg" alt="">
+    <div class="ef4c-nm">Mayflower-Vilonia</div><div class="ef4c-yr">2014</div></div>
+  <div class="ef4c-card" id="ef4c-c1" style="left:643px"><img src="media/rochelle-fairdale-2015/rochelle-fairdale-2015-nws-walkway-damage.jpg" alt="">
+    <div class="ef4c-nm">Rochelle-Fairdale</div><div class="ef4c-yr">2015</div></div>
+  <div class="ef4c-card" id="ef4c-c2" style="left:1036px"><img src="media/mayfield-2021/mayfield-2021-statefarm-aerial.jpg" alt="">
+    <div class="ef4c-nm">Mayfield</div><div class="ef4c-yr">2021</div><div class="ef4c-cr">State Farm &middot; CC BY 2.0</div></div>
+  <div class="ef4c-card" id="ef4c-c3" style="left:1429px"><img src="media/rolling-fork-2023/rolling-fork-2023-usda-damage-1.jpg" alt="">
+    <div class="ef4c-nm">Rolling Fork</div><div class="ef4c-yr">2023</div></div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
+  const H = 556.485;
+  const D = 48.409;
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-ef4-cards-card", { x: 0 }, { x: 40, duration: 48.409, ease: "none" }, 0);
+  const P = "#ef4c-";
+  const CARDS = [P+"c0", P+"c1", P+"c2", P+"c3"];
+  const TRK = [P+"k0", P+"k1", P+"k2", P+"k3"];
+  const BARS = [P+"b0", P+"b1", P+"b2", P+"b3"];
+  tl.set([P+"h", P+"sub", P+"band", P+"base", P+"line", P+"ef5", P+"ef4", P+"short", P+"v0", P+"v1", P+"v2", P+"v3"].concat(CARDS, TRK), { autoAlpha: 0 }, 0);
+  tl.set(BARS, { scaleY: 0, transformOrigin: "center bottom" }, 0);
+
+  /* continuous: sweep every 8.1 s; cards float before the cutaway; the EF5 line shimmers after it */
+  tl.fromTo(P+"sweep", { x: -300 }, { x: 2200, duration: 8.1, ease: "none", repeat: 5 }, 0);
+
+  /* STRONG TORNADOES @556.49 · ARGUMENTS @560.59 */
+  tl.fromTo(P+"h", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 556.49 - H);
+  tl.fromTo(P+"sub", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 560.59 - H);
+  /* MAYFLOWER AND VILONIA @563.31 · ROCHELLE AND FAIRDALE @567.40 · MAYFIELD @571.25 · ROLLING FORK @574.62 */
+  tl.fromTo(P+"c0", { autoAlpha: 0, x: 200 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 563.31 - H);
+  tl.fromTo(P+"c1", { autoAlpha: 0, x: 200 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 567.40 - H);
+  tl.fromTo(P+"c2", { autoAlpha: 0, x: 200 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 571.25 - H);
+  tl.fromTo(P+"c3", { autoAlpha: 0, x: 200 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 574.62 - H);
+  tl.to(CARDS, { y: -10, duration: 2.0, ease: "sine.inOut", yoyo: true, repeat: 5 }, 564.0 - H);
+
+  /* under the cutaway (578.11-586.42): header clears, cards shrink up to make room for the bar field */
+  tl.to([P+"h", P+"sub"], { autoAlpha: 0, duration: 0.3 }, 579.0 - H);
+  tl.to(CARDS, { y: -120, scale: 0.8, transformOrigin: "center top", duration: 0.8, ease: "power2.inOut" }, 580.0 - H);
+
+  /* ALL FOUR @587.20 · EF4 @588.20: the EF4 band and an empty track under each card */
+  tl.fromTo([P+"band", P+"base"], { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.6, ease: "power3.out", transformOrigin: "left center" }, 587.20 - H);
+  tl.fromTo(P+"ef4", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 588.20 - H);
+  tl.fromTo(TRK, { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.1 }, 588.3 - H);
+  /* NEAR THE LINE @590.80: the EF5 line */
+  tl.fromTo(P+"line", { autoAlpha: 1, scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "power4.out", transformOrigin: "left center" }, 590.80 - H);
+  tl.fromTo(P+"ef5", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 590.9 - H);
+  tl.to(P+"line", { scaleY: 1.8, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 7 }, 591.6 - H);
+  /* 190 @593.28 (Mayflower) · MAYFIELD @595.84 · 195 @597.80 (Rolling Fork) · 200 @600.96 (Rochelle) */
+  tl.to(P+"b0", { scaleY: 1, duration: 0.8, ease: "power3.out" }, 592.5 - H);
+  tl.fromTo(P+"v0", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 593.28 - H);
+  tl.to(P+"b2", { scaleY: 1, duration: 0.8, ease: "power3.out" }, 595.1 - H);
+  tl.fromTo(P+"v2", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 595.84 - H);
+  tl.to(P+"b3", { scaleY: 1, duration: 0.8, ease: "power3.out" }, 597.0 - H);
+  tl.fromTo(P+"v3", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 597.80 - H);
+  tl.to(P+"b1", { scaleY: 1, duration: 1.2, ease: "power4.out" }, 599.8 - H);
+  tl.fromTo(P+"v1", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 600.96 - H);
+  /* ONE MILE AN HOUR SHORT @602.04 · EF5 @603.44 */
+  tl.fromTo(P+"short", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 602.04 - H);
+  tl.to(P+"b1", { y: -4, duration: 0.15, ease: "power2.out", yoyo: true, repeat: 3 }, 602.2 - H);
+  tl.to(P+"ef5", { scale: 1.25, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "left center" }, 603.44 - H);
+  /* exit 604.3 */
+  tl.to(CARDS.concat(TRK, BARS, [P+"band", P+"base", P+"line", P+"ef5", P+"ef4", P+"short", P+"v0", P+"v1", P+"v2", P+"v3"]),
+        { x: 980, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 604.3 - H);
+  tl.to({}, { duration: 0.01 }, D - 0.01);
   window.__timelines["g-ef4-cards"] = tl;
 })();
 </script>
