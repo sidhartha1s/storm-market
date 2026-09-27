@@ -28,7 +28,7 @@ PR and say which one won.
 ## Refill the cup — loop discipline (owner 27 Sep 26)
 - When a loop pays off, open the next loop in the same breath. Never let the viewer's cup run empty.
 - Tag every loop: `[loop L1 open]` when planted, `[loop L1 closes]` when paid. Every loop table row needs both.
-- Re-hook every 30–45 s: a real beat (broadcast/PD clip, audio insert, stat spike, or a fresh loop opening).
+- Open a micro-loop every 30–45 s; land a real beat (broadcast/PD clip, audio insert, stat spike) every 45–60 s.
 - One episode loop (hook → final act), one loop per act (paid within 1–2 acts), one `cta-hinge` loop (see CTA
   hinge). Loops close honestly — a dropped loop is the #1 tell of stretched runtime. (`script-scaling.md`)
 
@@ -39,12 +39,20 @@ PR and say which one won.
 
 ## The retention engine (every script) — `script-os.md`
 Every 20–60 s: question → information → payoff → new question, chained with but/because/which means, never a list.
+- Every beat in `edit_script.md` is an AV unit: what is said, what moves on screen, what the sound does, one row,
+  one judgment. MGs get dedicated slots for information. (`script-framework.md` §1)
 - One dominant question the whole script serves ("the viewer keeps watching to find out ___").
 - Consequence before mechanism ("426 died, and the wave wasn't an earthquake" beats "a landslide tsunami occurs when…").
 - Never spend curiosity early — one open question at a time.
 - Escalating revelations: interesting → surprising → disturbing → enormous → personal → present-day → unresolved.
 - 6–10 retention spikes per 15 min, each with a dedicated visual event (`[RS]` tag).
 - Answer the dominant question in the last 30–60 s, then the CTA spine once. Never answer → like → subscribe → bye.
+- Live-hazard videos carry a 60–90 s sourced debunk block at 60–75 % ("The problem with that story is…", then the
+  measurement).
+- Pre-TTS checks: per-minute scorecard 1–5 on new info · curiosity · stakes · visual change · payoff · exit hook,
+  no two low minutes in a row; per-sentence cut filter (A story-critical, B curiosity, C context, D decoration: cut
+  D, compress C); visual audit (every `[RS]` has a `[VE]`; tags `[VE] [RS] [Q] [PAY] [HOOK] [HUMAN]`); AVD pass at
+  0:30, 1:30 … ("why would a viewer here stay another 60 s?" weak answer = rewrite).
 - Pick ONE architecture (Detective / Countdown / Explanation-with-a-twist), hybrids normal; chapter card = Purpose ·
   Question · Reveal · Visual event · Exit hook, written before prose.
 
@@ -64,7 +72,7 @@ mechanism/analysis pair) and plants+pays a loop.
 ## Voice (45–75 US viewer) — `script-os.md` Voice rules + CLAUDE.md Voice
 - Median sentence 12–18 words; 10–15% run 25–35 words as fact-chains (and/then/which); one ≤4-word kicker per 150
   words. Write the long sentence — TTS splits it at commas, don't pre-shorten for that reason.
-- Sentence one of the SCRIPT (not just the hook) is a number or date.
+- Sentence one of the SCRIPT is a number or date, unless the 27 Sep 26 hook rule above needs another opener (the hook rule wins).
 - "You" = promise/stake only, ≤3 per 1,000 words after minute one. "We" = Americans, 2–3× per script. Never "I".
 - One named researcher + institution per mechanism chapter; agencies named on screen; "nobody knows" in a source's mouth.
 - Flat declaratives for record/mechanism; the future in three sourced paths, never the narrator's guess.
@@ -74,11 +82,21 @@ mechanism/analysis pair) and plants+pays a loop.
 - One object per segment; one named victim (age, job, sourced quote) per tragedy.
 - Close: fact + dated forward window. No aphorism, no mirrored callback, no sign-off line.
 - TTS-safe: spell out ALL dates/times/numbers in narration (except years, dollars), no paired dashes, sentences
-  under 24 words as written (long fact-chains still fine, TTS splits them), respell homographs phonetically.
+  under 24 words per TTS chunk (write the long fact-chain; the TTS layer splits it at commas), respell homographs phonetically.
 
 ## Humanise pass — zero AI tells (run rules 2–14 line by line before TTS) — `humanise-rules.md`
 - No painting the picture ("picture this", personified mountains/companies). No borrowed metaphors (icebergs,
   dominoes, perfect storms). No announcing the move ("here's the thing", "let's dive in", "make no mistake").
+- Banned words: delve, furthermore, moreover, additionally, comprehensive, crucial/critical/essential as filler,
+  robust, unprecedented, leverage, foster, seamless, elevate, navigate (figurative), game-changer, paradigm, tapestry,
+  landscape (figurative), realm, testament, underscore (verb), pivotal, groundbreaking, transformative, multifaceted,
+  intricate, nuanced, myriad, plethora, embark, journey (figurative), unlock, harness, empower, resonate, vibrant,
+  bustling, nestled, meticulous, utilize, facilitate, implement (when "do" works).
+- Banned phrases: a testament to, the landscape of, in today's world, in the ever-evolving, on the other hand, without
+  further ado, it's worth noting, it's important to understand, in conclusion, to summarize, as we've discussed, at the
+  end of the day, when it comes to, plays a crucial role, stands as a, serves as a, is a reminder that, the quiet
+  [anything], what sounds like, what amounts to, in what can only be described as, some say, many experts believe,
+  it's been reported (name the source or cut the claim).
 - No em dashes, no rhetorical questions, no hedging/filler intensifiers (arguably, kind of, very, really).
 - No banned sentence shapes: reveal-flip ("not X, it's Y"), question-then-answer fragment, anaphora run (3+
   sentences same opener), thesis opener ("this is the story of…"), summary tag ("That's the mechanism.").
@@ -107,7 +125,7 @@ on any hard word in narration, on-screen text or metadata.
   opens with the payoff in its first sentence (first three words ideally, e.g. "He wrote a six.").
 - Shape: hook > story > CTA > close. Never skipped, shortened, or moved to the outro.
 
-## Title/thumbnail match (packaging, only the parts a writer needs) — `packaging-rules.md`
+## Title/thumbnail match — owner 27 Sep 26; dual-scope rule from `script-scaling.md`
 - The hook and intro must say aloud what the title/thumbnail promised — a checkable fact, not an adjective.
 - Every claim in the title or thumbnail text must appear in the script with a source.
 - Dual-scope stats (episode total vs. one day) name their scope in the same sentence a viewer could misread it.

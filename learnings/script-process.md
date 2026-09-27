@@ -102,7 +102,7 @@ Rules, every script from ep-1974 on:
 
 ## 2026-09-08 — breaking lane v1 (br-elnino-california, /mini-storms first run)
 
-- **Structure vocabulary (owner correction):** HOOK is 3–10 s, one sentence paying off the title.
+- **Structure vocabulary (owner correction):** HOOK is 3–5 s (owner 27 Sep 26, was 3–10 s), one sentence paying off the title.
   Then INTRO to ~1:10 (stakes, open loops, promise). Then chapters. A 45 s "hook" was rejected.
   Size every section in words at the delivered wpm before TTS (packaging.md table).
 

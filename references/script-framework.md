@@ -30,8 +30,8 @@ Any first beat outside the title's frame reads as "not the video I clicked" → 
   a-b-c-d in the hook/intro; the video explains why each matters.
 - **No fluff or vocabulary risk** ("alibi" flagged) — short factual hammer lines; facts carry
   the rage-bait, not adjectives.
-- **Hook may flow into the intro with no blackout** when the design says so (ep7); the 1.5s void
-  remains the default punctuation (DESIGN.md hook contract) unless the episode's design overrides.
+- **Hook flows into the intro with no void or blackout** (DESIGN.md hook contract, channel post-mortem 27 Sep 26:
+  nothing black before 1:00).
 - Narrator-from-zero MAY be the hook (ep7 deviation, owner-ordered) — the broadcast-anchor-by-
   2.5s contract stays the default for episodes that don't explicitly override it.
 

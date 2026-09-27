@@ -34,7 +34,7 @@ Teardowns + NexLev data: `references/mini-storms/teardowns/README.md`, `referenc
 
 | Step | Budget | Output |
 |---|---|---|
-| 1. Topic + packaging | 25 min | `packaging.md`: 3 titles, thumbnail text (top-of-frame, ≤4 words, BREAKING-style kicker), the 3–10 s hook sentence, intro outline, chapter list with the per-section word/time table |
+| 1. Topic + packaging | 25 min | `packaging.md`: 3 titles, thumbnail text (top-of-frame, ≤4 words, BREAKING-style kicker), the 3–5 s hook sentence, intro outline, chapter list with the per-section word/time table |
 | 2. OWNER GATE | — | Owner picks title/hook in chat. The ONLY gate. Never infer approval. |
 | 3. Script | 25 min | `edit_script.md` (storm-episode segment format so `tts_episode.py` works unchanged), then the humanise pass (3b) |
 | 4. TTS + words | 10 min | `python3 scripts/tts_episode.py episodes/ms-<slug>`: TTS, lane tempo, words.json in one pass |
@@ -58,7 +58,7 @@ Total ≈ 3 h 05. If any step overruns 2×, ship what exists and list what was c
 - **One event, many angles, one asset pool.** Krakatoa ⇒ "what just happened", "who is at risk",
   "the 1883 precedent", "state X should watch this". Each angle = a new script + TTS over the
   SAME clip pool, re-ordered and re-trimmed. Never the same clip in the same order twice.
-- **Title → hook carry (owner rule):** the hook (3–10 s, one sentence) pays off the title;
+- **Title → hook carry (owner rule):** the hook (3–5 s, one sentence) pays off the title;
   the thumbnail phrase is said aloud inside the intro. Slightly dramatic, never false: every
   claim in title/hook must be in the script with a source.
 - **Thumbnail:** owner makes it. You deliver 3 AI still candidates (nanobanana;
@@ -73,7 +73,7 @@ Total ≈ 3 h 05. If any step overruns 2×, ship what exists and list what was c
   pasted inline; the writer opens no other rule file.** The bullets below are that file's mini-storms-specific additions only.
 - 8–12 min, sized with `scripts/word_budget.py` at the shipping tempo (repo CLAUDE.md "Voice"; the lane
   tempo lives in `config.yaml channel.tempo`). TTS-safe text rules from the same section. Mid-roll needs ≥8:00; author for 8:30+.
-- Structure (owner 2026-09-08): **HOOK is 3–10 s**, one present-tense sentence that pays off the
+- Structure (owner 2026-09-08): **HOOK is 3–5 s** (owner 27 Sep 26), one present-tense sentence that pays off the
   title (spoken + red popfig) → **INTRO to ~1:10** (base the point: stakes numbers, open loops,
   promise of the payoff/checklist) → **CHAPTERS** (8–12 × 45–75 s, one red-stat pop minimum each,
   a "but/and/however" connective into the next, each opening on a 1–2 s caps card on black) →
