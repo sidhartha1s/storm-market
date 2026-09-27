@@ -320,21 +320,71 @@ print('graphics_qc self-check PASS (an onUpdate canvas renderer counts as contin
 
 # Negatives: both relaxations need a canvas covering a quarter of the frame, and the kinetic span
 # also needs the timeline onUpdate. A 100 px canvas or a missing onUpdate keeps the old verdicts.
+# One episode, one comp per case: every graphics_qc launch costs a Chromium plus render_busy, and
+# a run per case pushed this file past e2e's 600 s cap (27 Sep 26).
 small = lambda s: s.replace('width="1920" height="1080"', 'width="100" height="100"')
 cv = DRIVEN_FILES['compositions/g-cv.html']
 cut = cv.index("tl.eventCallback('onUpdate'")
 no_update = cv[:cut] + cv[cv.index('\n', cut) + 1:]
-for files, want, why in (
-    ({**CANVAS_FILES, 'compositions/g-cv.html': small(CANVAS_FILES['compositions/g-cv.html'])},
-     'ERROR [undesigned] flat background', 'a 100 px canvas is not a designed background'),
-    ({**DRIVEN_FILES, 'compositions/g-cv.html': small(cv)}, 'ERROR [fade-only]', 'a 100 px canvas excuses no stillness'),
-    ({**DRIVEN_FILES, 'compositions/g-cv.html': no_update}, 'ERROR [fade-only]', 'a canvas without onUpdate is still'),
-):
-    ep = _stage_ep(files)
-    r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
-    shutil.rmtree(ep, ignore_errors=True)
-    assert want in r.stdout, f'{why}: {r.stdout + r.stderr}'
-print('graphics_qc self-check PASS (canvas relaxations need a quarter-frame canvas; the span needs onUpdate)')
+HOST = CANVAS_FILES['index.html']
+# The {} clock is not motion for the idle check either (stage_comp.mjs motionSpans, the rule
+# beat_density uses): a 1 s slide plus a 7 s clock in a 7 s host idles 6 s. Old code (fbebe442,
+# pre-fix main) counted the clock as a running tween and saw no idle.
+CLOCK = ('<!doctype html><html><head><meta charset="UTF-8"></head><body><template>
+'
+         '<div id="root" style="position:absolute;inset:0;background:#000">
+'
+         '  <span id="g-cv-lbl" style="position:absolute;left:300px;top:300px;font-size:40px;color:#fff">EF5</span>
+'
+         '</div>
+<script>
+window.__timelines = window.__timelines || {};
+'
+         'const tl = gsap.timeline({ paused: true });
+'
+         "tl.fromTo('#g-cv-lbl', { x: 0 }, { x: 300, duration: 1, ease: 'power3.out' }, 0);
+"
+         "tl.to({}, { duration: 7 }, 0);
+window.__timelines['g-cv'] = tl;
+</script>
+</template></body></html>
+")
+NEG = {  # comp -> (source, expected ERROR, why)
+    'g-n1': (small(CANVAS_FILES['compositions/g-cv.html']), 'ERROR [undesigned] flat background', 'a 100 px canvas is not a designed background'),
+    'g-n2': (small(cv), 'ERROR [fade-only]', 'a 100 px canvas excuses no stillness'),
+    'g-n3': (no_update, 'ERROR [fade-only]', 'a canvas without onUpdate is still'),
+    'g-n4': (CLOCK, 'ERROR [idle] 6.0s frozen at 1.0s', 'a {} clock is not motion'),
+}
+files = {'index.html': ''.join(HOST.replace('g-cv', c).replace('data-duration="3"', 'data-duration="7"' if c == 'g-n4' else 'data-duration="3"')
+                               for c in NEG)}
+files.update({f'compositions/{c}.html': src.replace('g-cv', c) for c, (src, _, _) in NEG.items()})
+
+
+def by_comp(out):
+    """graphics_qc stdout split into one block per composition header line."""
+    blocks, cur = {}, None
+    for line in out.splitlines():
+        head = line.strip().split(' ')[0]
+        if line.startswith('  ') and not line.startswith('    ') and head in NEG:
+            cur = head
+        elif cur:
+            blocks[cur] = blocks.get(cur, '') + line + '
+'
+    return blocks
+
+
+ep = _stage_ep(files)
+r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
+got = by_comp(r.stdout)
+for c, (_, want, why) in NEG.items():
+    assert want in got.get(c, ''), f'{why}: {r.stdout + r.stderr}'
+old_gq = old_rev('graphics_qc.mjs', '_old_gqc_clock_tmp.mjs', 'fbebe442')
+r_old = subprocess.run(['node', str(old_gq), str(ep)], capture_output=True, text=True)
+old_gq.unlink()
+shutil.rmtree(ep, ignore_errors=True)
+old_got = by_comp(r_old.stdout)
+assert 'flat background' in old_got.get('g-n1', '') and '[idle]' not in old_got.get('g-n4', ''), \n    f'old code should run and count the {{}} clock as motion: {r_old.stdout + r_old.stderr}'
+print('graphics_qc self-check PASS (canvas relaxations need a quarter-frame canvas; the span needs onUpdate; a {} clock is not motion)')
 
 # ---------------------------------------------------------------- settle frames for the vision pass
 # The old reader sampled every 3 s from the comp start, so frame 1 was always mid-reveal. The frames
