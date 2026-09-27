@@ -166,7 +166,7 @@ Facts: El Reno 31 May 2013, 2.6 mi wide (widest measured), RaXPol (OU mobile rad
 | g-split-a4 | 1134.095, 6.5 | a4-s16: El Reno 1134.10, radar 1135.13, Enderlin 1136.21, tanker car 1136.88-1137.10, field 1137.65, only the tanker 1138.54-1138.91, became a rating 1139.19-1139.67 | left "El Reno · Radar" 1134.10, right "Enderlin · Tanker Car" 1136.21 · only the right side gets a stamp "EF5" 1139.19; the left stays unstamped · exit 1140.0 |
 | g-split-a5 | 1270.924, 13.009 | a5-s7: El Reno 1270.92, lost its five 1271.50-1272.02, August 2013 1272.62-1272.90, Enderlin 1274.88, gained one 1275.22-1275.50, October 2025 1275.98-1276.36, same rule 1280.12-1280.34, rating goes by what the damage can prove 1281.38-1282.94 | both stamps flip in opposite directions with their dates: left "EF5 -> EF3 · August 2013" 1271.50-1272.62; right "EF3 -> EF5 · October 2025" 1275.22-1275.98 · rule line "The Rating Goes by What the Damage Can Prove" 1281.38 · exit 1283.3 |
 
-## 9 · g-person (B3) · status: to build (6 files: people, quotes, citations)
+## 9 · g-person (B3) · status: built (6 files: people, quotes, citations)
 Text-only person cards (no photo slot: none of these people has a sourced PD photo), beige citation cards and one-line quote
 cards. Start from: ep-1974 `g-person-*.html`, `g-cite-paper.html` (the 16 px attribution is the one allowed exception),
 `references/editing-patterns/ep6-glasscard-popfig-bfmg.html`. Continuous: card float, underline scan, dim background drift.
