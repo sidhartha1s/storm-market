@@ -2,27 +2,113 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-mechanism-a6"
-     (host 1391.264 -> 1406.855, 15.591 s, track 2). The MG builder replaces this whole file. -->
+<!-- g-mechanism-a6 (B3): host 1391.264 -> 1406.855 (15.591 s, track 2), audio a6-s4 mounts at 0 (local = word time).
+     The method's own limit: it needs a large, heavy object thrown far. The same arc over an empty field has nothing to
+     measure; El Reno had radar and open fields and keeps its EF3. The tanker rides its arc: x linear, y in two quadratic
+     halves = the drawn quadratic curve; the trail reveals through a clip rect that follows x.
+     Cues: Enderlin Method 0.74, limit 1.84, large heavy object 3.94, thrown far enough 6.24, most tornadoes never cross a
+     train 8.28, El Reno 10.84, radar 11.46, open fields 12.20, EF3 14.28. Exit 15.04 (spec 1406.3). -->
 <template>
 <style>
-  .ph-mechanism-a6 { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .ph-mechanism-a6-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-mechanism-a6-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
-  .ph-mechanism-a6-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .m6-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .m6-glow { position:absolute; left:-200px; top:100px; width:1300px; height:900px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(127,178,229,0.12), rgba(127,178,229,0) 70%); }
+  .m6-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .m6-eb { position:absolute; left:96px; top:70px; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  .m6-head { position:absolute; left:96px; top:104px; font-family:'Arial Black', Arial, sans-serif; font-size:52px; line-height:62px; color:#f2f5f8; white-space:nowrap; }
+  .m6-row { position:absolute; left:96px; top:104px; font-family:'Arial Black', Arial, sans-serif; font-size:52px; line-height:62px; color:#f2f5f8; white-space:nowrap; }
+  .m6-row span { display:inline-block; }
+  .m6-dim { color:#d8a13a; font-family: Georgia, serif; font-style:italic; font-weight:400; font-size:40px; }
+  .m6-g { position:absolute; left:1300px; top:84px; }
+  .m6-stamp { display:inline-block; padding:4px 22px 0; border:5px solid rgba(223,231,238,0.85); border-radius:12px;
+    font-family:'AbrilFig', Georgia, serif; line-height:1; letter-spacing:3px; font-size:84px; color:#dfe7ee; text-shadow:0 6px 24px rgba(0,0,0,0.7); }
+  .m6-lab { position:absolute; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
 </style>
-<div class="ph-mechanism-a6" data-composition-id="g-mechanism-a6" data-width="1920" data-height="1080" data-duration="15.591">
-  <div class="ph-mechanism-a6-card" id="ph-mechanism-a6-card">
-    <div class="ph-mechanism-a6-t" id="ph-mechanism-a6-t">g-mechanism-a6</div>
-    <div class="ph-mechanism-a6-s" id="ph-mechanism-a6-s">Placeholder · To Build</div>
-  </div>
+<div class="m6-wrap" data-composition-id="g-mechanism-a6" data-width="1920" data-height="1080" data-duration="15.591">
+  <div class="m6-glow" id="m6-glow"></div>
+  <svg class="m6-svg" viewBox="0 0 1920 1080">
+    <defs><clipPath id="m6-clip"><rect id="m6-clipr" x="420" y="0" width="0" height="1080"/></clipPath></defs>
+    <path id="m6-ground" d="M300 760 H1620" stroke="#93a3b2" stroke-width="3"/>
+    <path id="m6-grass" d="M340 760 l8 -18 l8 18 M470 760 l6 -12 l6 12 M600 760 l8 -18 l8 18 M740 760 l6 -12 l6 12 M880 760 l8 -18 l8 18
+      M1020 760 l6 -12 l6 12 M1160 760 l8 -18 l8 18 M1290 760 l6 -12 l6 12 M1420 760 l8 -18 l8 18 M1560 760 l6 -12 l6 12" fill="none" stroke="#5a768f" stroke-width="3"/>
+    <path id="m6-trail" d="M420 732 Q860 172 1300 732" fill="none" stroke="#e8c56a" stroke-width="5" clip-path="url(#m6-clip)"/>
+    <path id="m6-ghost" d="M420 732 Q860 172 1300 732" fill="none" stroke="rgba(223,231,238,0.45)" stroke-width="4" stroke-dasharray="12 12"/>
+    <path id="m6-brk" d="M420 800 H1300 M420 788 V812 M1300 788 V812" fill="none" stroke="#e8c56a" stroke-width="4"/>
+    <circle id="m6-empty" cx="420" cy="740" r="26" fill="none" stroke="rgba(223,231,238,0.6)" stroke-width="3" stroke-dasharray="8 7"/>
+    <circle id="m6-land" cx="1300" cy="760" r="20" fill="none" stroke="#e8c56a" stroke-width="4"/>
+    <g id="m6-tank">
+      <rect x="-60" y="-16" width="120" height="32" rx="16" fill="#5a768f" stroke="#7fb2e5" stroke-width="3"/>
+      <rect x="-8" y="-24" width="16" height="9" rx="2" fill="#7fb2e5"/>
+      <rect x="-62" y="14" width="124" height="5" fill="#2a3644" stroke="#93a3b2" stroke-width="1.5"/>
+      <circle cx="-46" cy="23" r="5" fill="#0b1016" stroke="#93a3b2" stroke-width="2"/><circle cx="-34" cy="23" r="5" fill="#0b1016" stroke="#93a3b2" stroke-width="2"/>
+      <circle cx="34" cy="23" r="5" fill="#0b1016" stroke="#93a3b2" stroke-width="2"/><circle cx="46" cy="23" r="5" fill="#0b1016" stroke="#93a3b2" stroke-width="2"/>
+    </g>
+    <g id="m6-radar">
+      <path d="M1520 760 L1540 700 L1560 760 M1528 736 H1552" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M1580 700 A44 44 0 0 1 1506 668 Z" fill="#5a768f" stroke="#7fb2e5" stroke-width="3"/>
+      <path id="m6-ra1" d="M1492 640 A40 40 0 0 0 1480 690" fill="none" stroke="#7fb2e5" stroke-width="4" stroke-linecap="round"/>
+      <path id="m6-ra2" d="M1470 608 A80 80 0 0 0 1446 700" fill="none" stroke="#7fb2e5" stroke-width="4" stroke-linecap="round"/>
+      <path id="m6-ra3" d="M1448 576 A120 120 0 0 0 1412 712" fill="none" stroke="#7fb2e5" stroke-width="4" stroke-linecap="round"/>
+    </g>
+  </svg>
+  <div class="m6-eb" id="m6-eb">The Enderlin Method</div>
+  <div class="m6-head" id="m6-head">Needs a Heavy Object, Thrown Far</div>
+  <div class="m6-row" id="m6-row"><span id="m6-r1">El Reno</span> <span class="m6-dim" id="m6-r2">&middot; Radar</span> <span class="m6-dim" id="m6-r3">&middot; Open Fields</span></div>
+  <div class="m6-g" id="m6-g"><div class="m6-stamp" id="m6-ef3">EF3</div></div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-mechanism-a6-card", { x: 0 }, { x: 40, duration: 15.591, ease: "none" }, 0);
+  const DUR = 15.591;
+  const dash = (id) => { const p = document.getElementById(id); const L = Math.ceil(p.getTotalLength()) + 1; p.style.strokeDasharray = L; return L; };
+  const GL = dash("m6-ground"), BK = dash("m6-brk");
+  tl.set(["#m6-grass", "#m6-ghost", "#m6-brk", "#m6-empty", "#m6-land", "#m6-tank", "#m6-radar", "#m6-eb", "#m6-head", "#m6-row", "#m6-r1", "#m6-r2", "#m6-r3", "#m6-g"], { autoAlpha: 0 }, 0);
+  tl.set("#m6-ground", { strokeDashoffset: GL }, 0);
+  tl.set("#m6-brk", { strokeDashoffset: BK }, 0);
+  tl.set("#m6-tank", { x: 420, y: 732 }, 0);
+
+  /* ambient, whole window */
+  tl.fromTo("#m6-glow", { x: 0, y: 0 }, { x: 800, y: -80, duration: DUR, ease: "none" }, 0);
+
+  /* ground first, then THE ENDERLIN METHOD @0.74: the tanker's arc, small */
+  tl.to("#m6-ground", { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }, 0);
+  tl.fromTo("#m6-tank", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, transformOrigin: "50% 50%", duration: 0.3, ease: "back.out(2)" }, 0.3);
+  tl.fromTo("#m6-eb", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 0.74);
+  tl.to("#m6-tank", { x: 1300, duration: 1.1, ease: "none" }, 0.9);
+  tl.to("#m6-tank", { y: 452, duration: 0.55, ease: "power1.out" }, 0.9);
+  tl.to("#m6-tank", { y: 732, duration: 0.55, ease: "power1.in" }, 1.45);
+  tl.to("#m6-tank", { rotation: 360, transformOrigin: "50% 50%", duration: 1.1, ease: "none" }, 0.9);
+  tl.to("#m6-clipr", { attr: { width: 880 }, duration: 1.1, ease: "none" }, 0.9);
+  tl.fromTo("#m6-land", { autoAlpha: 1, scale: 0.4, svgOrigin: "1300 760" }, { autoAlpha: 0, scale: 3, duration: 0.8, ease: "power2.out" }, 2.0);
+  /* A LARGE, HEAVY OBJECT @3.94 ... THROWN FAR ENOUGH @6.24 */
+  tl.fromTo("#m6-head", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 3.94);
+  tl.fromTo("#m6-tank", { scale: 1 }, { scale: 1.15, transformOrigin: "50% 50%", duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 4.58);
+  tl.set("#m6-brk", { autoAlpha: 1 }, 6.24);
+  tl.to("#m6-brk", { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, 6.24);
+  /* MOST TORNADOES NEVER CROSS A TRAIN @8.28: the same arc over an empty field, nothing to throw */
+  tl.to(["#m6-tank", "#m6-trail", "#m6-brk"], { autoAlpha: 0, duration: 0.4 }, 8.28);
+  tl.fromTo("#m6-ghost", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 8.4);
+  tl.fromTo("#m6-grass", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 8.4);
+  tl.set("#m6-empty", { autoAlpha: 1 }, 8.6);
+  tl.fromTo("#m6-empty", { scale: 0.9 }, { scale: 1.25, svgOrigin: "420 740", duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 5 }, 8.6);
+  tl.fromTo("#m6-ghost", { strokeDashoffset: 0 }, { strokeDashoffset: -240, duration: 6.4, ease: "none" }, 8.6);
+  /* EL RENO @10.84, RADAR @11.46, OPEN FIELDS @12.20 */
+  tl.to(["#m6-eb", "#m6-head"], { autoAlpha: 0, y: -20, duration: 0.3, ease: "power2.in" }, 10.5);
+  tl.set("#m6-row", { autoAlpha: 1 }, 10.8);
+  tl.fromTo("#m6-r1", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 10.84);
+  tl.fromTo("#m6-r2", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 11.46);
+  tl.fromTo("#m6-radar", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.46);
+  tl.fromTo("#m6-ra1", { opacity: 1 }, { opacity: 0.15, duration: 0.45, ease: "power1.in", repeat: 7 }, 11.9);
+  tl.fromTo("#m6-ra2", { opacity: 1 }, { opacity: 0.15, duration: 0.45, ease: "power1.in", repeat: 7 }, 12.05);
+  tl.fromTo("#m6-ra3", { opacity: 1 }, { opacity: 0.15, duration: 0.45, ease: "power1.in", repeat: 7 }, 12.2);
+  tl.fromTo("#m6-r3", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 12.2);
+  /* STILL HAS ITS EF3 @14.28 */
+  tl.fromTo("#m6-g", { autoAlpha: 0, scale: 1.45, rotation: -10 }, { autoAlpha: 1, scale: 1, rotation: -4, duration: 0.2, ease: "power4.in" }, 14.08);
+
+  /* exit (spec 1406.3 -> 15.04) */
+  tl.to(["#m6-row", "#m6-g", "#m6-ground", "#m6-grass", "#m6-ghost", "#m6-empty", "#m6-radar"], { y: -40, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 15.04);
   window.__timelines["g-mechanism-a6"] = tl;
 })();
 </script>
