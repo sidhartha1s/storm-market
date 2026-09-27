@@ -4,10 +4,14 @@
 <body>
 <!-- g-split-i1 (B3): host 91.93 -> 108.821 (16.891 s, track 2), audio i1-s6 (mounts at 0, so local = word time).
      Two EF3s side by side, never merged: El Reno 2013 (radar near 300 mph) and Enderlin 2025 (something stranger on
-     its path). A day counter under Enderlin runs from June 20 toward the statement (108 days, fact_check.md).
+     its path). One shared EF scale on the divider: rungs EF5 (y 330) and EF3 (y 560), each label drawn ONCE (one fact,
+     one instance, same precedent as g-ef4-cards). Each storm is its own pointer on its own side: El Reno cold blue
+     (left), Enderlin amber (right); both land on the one EF3 rung. Enderlin's EF5 rung gets a dashed "?" pointer
+     (not landed until October). A day counter under Enderlin runs from June 20 toward the statement (108 days).
      Cues (audio/i1-s6.words.json): October 0.64, Enderlin 1.84, same number 3.36, El Reno 4.16, radar 6.10,
-     numbers 6.42, Enderlin 9.52, something stranger 10.08, office 12.94, EF3 13.64, statement 14.82, number 15.68,
-     wrong 16.22. The strike starts on "number" and the EF5 is NOT landed here. Exit 16.27 (spec 108.2). -->
+     numbers 6.42, EF5 line 7.76, Enderlin 9.52, something stranger 10.08, office 12.94, EF3 13.64, statement 14.82,
+     number 15.68, wrong 16.22. The strike goes through Enderlin's pointer on "number"; the EF5 is NOT landed here.
+     Exit 16.27 (spec 108.2). -->
 <template>
 <style>
   .sp1-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
@@ -22,25 +26,27 @@
   .sp1-divdot { position:absolute; left:953px; top:0; width:14px; height:14px; border-radius:50%; background:#e8c56a;
     box-shadow: 0 0 14px 4px rgba(232,197,106,0.55); }
   .sp1-side { position:absolute; top:0; width:960px; height:1080px; }
+  .sp1-key { position:absolute; left:450px; top:100px; width:60px; height:6px; border-radius:3px; }
   .sp1-eyebrow { position:absolute; left:0; right:0; top:120px; text-align:center; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; }
   .sp1-name { position:absolute; left:0; right:0; top:152px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-size:64px; line-height:76px; color:#f2f5f8; }
   .sp1-year { position:absolute; left:0; right:0; top:236px; text-align:center; font-family: Georgia, serif; font-style:italic; font-size:32px; color:#d8a13a; }
-  .sp1-g { position:absolute; left:290px; width:380px; top:320px; text-align:center; }
-  .sp1-stamp { display:inline-block; padding:6px 34px 0; border:6px solid; border-radius:14px;
-    font-family:'AbrilFig', Georgia, serif; line-height:1; letter-spacing:4px; }
-  .sp1-ef3 { font-size:150px; color:#dfe7ee; border-color:rgba(223,231,238,0.85); text-shadow:0 6px 30px rgba(0,0,0,0.7); }
-  .sp1-strike { position:absolute; left:14px; right:14px; top:78px; height:14px; background:#d0121f; border-radius:7px;
-    box-shadow:0 0 18px rgba(208,18,31,0.6); }
+  .sp1-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .sp1-plate { position:absolute; left:860px; width:200px; height:104px; box-sizing:border-box; border:5px solid; border-radius:14px;
+    background:#0b1016; text-align:center; font-family:'AbrilFig', Georgia, serif; font-size:84px; line-height:100px; letter-spacing:3px; }
+  .sp1-p5 { top:278px; color:#d0121f; border-color:#d0121f; text-shadow:0 0 26px rgba(208,18,31,0.5); }
+  .sp1-p3 { top:508px; color:#dfe7ee; border-color:rgba(223,231,238,0.85); }
+  .sp1-ghq { position:absolute; left:1150px; top:292px; width:70px; text-align:center; font-family:'AbrilFig', Georgia, serif; font-size:64px; line-height:76px;
+    color:#e8c56a; text-shadow:0 0 20px rgba(232,197,106,0.45); }
   .sp1-radar { position:absolute; left:150px; top:596px; width:110px; height:110px; }
   .sp1-rlab { position:absolute; left:280px; top:600px; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
   .sp1-rval { position:absolute; left:280px; top:634px; font-family:'Arial Black', Arial, sans-serif; font-size:52px; line-height:62px; color:#f2f5f8; white-space:nowrap; }
-  .sp1-cnt { position:absolute; left:0; right:0; top:556px; text-align:center; }
+  .sp1-cnt { position:absolute; left:200px; right:0; top:556px; text-align:center; }
   .sp1-cntv { font-family:'Courier New', monospace; font-weight:700; font-size:84px; line-height:92px; color:#e74c3c; }
   .sp1-cntl { font-weight:700; font-size:20px; letter-spacing:6px; color:#c8d3e0; margin-top:4px; }
-  .sp1-path { position:absolute; left:130px; width:700px; top:872px; height:36px; border-radius:18px;
+  .sp1-path { position:absolute; left:230px; width:600px; top:872px; height:36px; border-radius:18px;
     background: linear-gradient(90deg, rgba(90,118,143,0.10), rgba(90,118,143,0.55) 20%, rgba(90,118,143,0.55) 80%, rgba(90,118,143,0.10)); }
   .sp1-pathc { position:absolute; left:10px; right:10px; top:16px; height:0; border-top:3px dashed rgba(223,231,238,0.55); }
-  .sp1-q { position:absolute; left:430px; width:100px; top:730px; text-align:center; font-family:'AbrilFig', Georgia, serif; font-size:120px; line-height:120px;
+  .sp1-q { position:absolute; left:480px; width:100px; top:730px; text-align:center; font-family:'AbrilFig', Georgia, serif; font-size:120px; line-height:120px;
     color:#e8c56a; text-shadow:0 0 30px rgba(232,197,106,0.45); }
   .sp1-doc { position:absolute; left:700px; top:330px; width:96px; height:124px; border-radius:8px; background:#f4f0e6;
     box-shadow:0 12px 36px rgba(0,0,0,0.6); }
@@ -54,11 +60,27 @@
   <div class="sp1-div" id="sp1-div"></div>
   <div class="sp1-divdot" id="sp1-divdot"></div>
 
+  <!-- the one shared EF scale: track, EF4 tick (unlabelled), rung lines, pointers, strike -->
+  <svg class="sp1-svg" id="sp1-scale" viewBox="0 0 1920 1080">
+    <defs><linearGradient id="sp1-trkg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d0121f"/><stop offset="1" stop-color="#5a768f"/></linearGradient></defs>
+    <rect id="sp1-trk" x="953" y="280" width="14" height="330" rx="7" fill="url(#sp1-trkg)"/>
+    <path id="sp1-t4" d="M925 445 H995" stroke="#93a3b2" stroke-width="4" stroke-linecap="round"/>
+    <path id="sp1-r5" d="M760 330 H1160" stroke="rgba(208,18,31,0.6)" stroke-width="3"/>
+    <path id="sp1-r3" d="M760 560 H1160" stroke="rgba(223,231,238,0.5)" stroke-width="3"/>
+    <polygon id="sp1-mL" points="770,528 848,560 770,592" fill="#7fb2e5"/>
+    <polygon id="sp1-mR" points="1150,528 1072,560 1150,592" fill="#e8c56a"/>
+    <polygon id="sp1-gh" points="1150,298 1072,330 1150,362" fill="none" stroke="#e8c56a" stroke-width="4" stroke-dasharray="10 8"/>
+    <path id="sp1-strike" d="M1052 604 L1172 516" stroke="#d0121f" stroke-width="12" stroke-linecap="round"/>
+  </svg>
+  <div class="sp1-plate sp1-p5" id="sp1-p5">EF5</div>
+  <div class="sp1-plate sp1-p3" id="sp1-p3">EF3</div>
+  <div class="sp1-ghq" id="sp1-ghq">?</div>
+
   <div class="sp1-side" id="sp1-left" style="left:0;">
+    <div class="sp1-key" id="sp1-l-key" style="background:#7fb2e5;"></div>
     <div class="sp1-eyebrow" id="sp1-l-eb">Oklahoma</div>
     <div class="sp1-name" id="sp1-l-name">El Reno</div>
     <div class="sp1-year" id="sp1-l-year">2013</div>
-    <div class="sp1-g" id="sp1-l-g"><div class="sp1-stamp sp1-ef3" id="sp1-l-ef3">EF3</div></div>
     <svg class="sp1-radar" id="sp1-radar" viewBox="0 0 110 110">
       <path d="M18 92 L40 70" stroke="#93a3b2" stroke-width="5" stroke-linecap="round"/>
       <path d="M12 58 A34 34 0 0 0 52 98 Z" fill="#5a768f" stroke="#7fb2e5" stroke-width="3"/>
@@ -71,13 +93,10 @@
   </div>
 
   <div class="sp1-side" id="sp1-right" style="left:960px;">
+    <div class="sp1-key" id="sp1-r-key" style="background:#e8c56a;"></div>
     <div class="sp1-eyebrow" id="sp1-r-eb">North Dakota</div>
     <div class="sp1-name" id="sp1-r-name">Enderlin</div>
     <div class="sp1-year" id="sp1-r-year">2025</div>
-    <div class="sp1-g" id="sp1-r-g">
-      <div class="sp1-stamp sp1-ef3" id="sp1-r-ef3">EF3</div>
-      <div class="sp1-strike" id="sp1-strike"></div>
-    </div>
     <div class="sp1-cnt" id="sp1-cnt">
       <div class="sp1-cntv"><span id="sp1-cntv">0</span></div>
       <div class="sp1-cntl" id="sp1-cntl">Days Since June 20</div>
@@ -99,9 +118,15 @@ window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
   const DUR = 16.891;
-  tl.set(["#sp1-l-eb", "#sp1-l-name", "#sp1-l-year", "#sp1-l-ef3", "#sp1-r-eb", "#sp1-r-name", "#sp1-r-year", "#sp1-r-ef3",
-          "#sp1-strike", "#sp1-cnt", "#sp1-radar", "#sp1-rlab", "#sp1-rval", "#sp1-path", "#sp1-q", "#sp1-doc", "#sp1-doclab"], { autoAlpha: 0 }, 0);
-  tl.set("#sp1-strike", { scaleX: 0, rotation: -5, transformOrigin: "left center" }, 0);
+  const dash = (id) => { const p = document.getElementById(id); const L = Math.ceil(p.getTotalLength()) + 1; p.style.strokeDasharray = L; return L; };
+  const R5 = dash("sp1-r5"), R3 = dash("sp1-r3"), SK = dash("sp1-strike");
+  tl.set(["#sp1-l-key", "#sp1-l-eb", "#sp1-l-name", "#sp1-l-year", "#sp1-r-key", "#sp1-r-eb", "#sp1-r-name", "#sp1-r-year",
+          "#sp1-p5", "#sp1-p3", "#sp1-mL", "#sp1-mR", "#sp1-gh", "#sp1-ghq", "#sp1-t4",
+          "#sp1-cnt", "#sp1-radar", "#sp1-rlab", "#sp1-rval", "#sp1-path", "#sp1-q", "#sp1-doc", "#sp1-doclab"], { autoAlpha: 0 }, 0);
+  tl.set("#sp1-r5", { strokeDashoffset: R5 }, 0);
+  tl.set("#sp1-r3", { strokeDashoffset: R3 }, 0);
+  tl.set("#sp1-strike", { strokeDashoffset: SK }, 0);
+  tl.set("#sp1-trk", { scaleY: 0, svgOrigin: "960 610" }, 0);
   tl.set("#sp1-path", { scaleX: 0, transformOrigin: "left center" }, 0);
   tl.set(["#sp1-arc1", "#sp1-arc2", "#sp1-arc3"], { autoAlpha: 0 }, 0);
 
@@ -111,6 +136,11 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#sp1-glowr", { x: 0, y: 0 }, { x: -260, y: 80, duration: DUR, ease: "none" }, 0);
   tl.fromTo("#sp1-divdot", { y: 40 }, { y: 1020, duration: 5.6, ease: "none", repeat: 2 }, 0);
   tl.fromTo("#sp1-div", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power3.out" }, 0);
+  /* the shared scale grows up the divider, rungs draw out (labels wait for their words) */
+  tl.to("#sp1-trk", { scaleY: 1, duration: 0.6, ease: "power3.out" }, 0.1);
+  tl.to("#sp1-t4", { autoAlpha: 1, duration: 0.3 }, 0.4);
+  tl.to("#sp1-r3", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 0.3);
+  tl.to("#sp1-r5", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 0.45);
 
   /* OCTOBER @0.64: the day counter under Enderlin starts running (June 20 -> Oct 6 = 108 days) */
   tl.fromTo("#sp1-cnt", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.64);
@@ -118,14 +148,18 @@ window.__timelines = window.__timelines || {};
   const cv = document.getElementById("sp1-cntv");
   tl.to(cnt, { v: 108, duration: 15.3, ease: "power2.out", onUpdate: () => { cv.textContent = String(Math.round(cnt.v)); } }, 0.7);
 
-  /* ENDERLIN @1.84: right panel, its June EF3 */
-  tl.fromTo(["#sp1-r-eb", "#sp1-r-name", "#sp1-r-year"], { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out", stagger: 0.06 }, 1.84);
-  tl.fromTo("#sp1-r-ef3", { autoAlpha: 0, scale: 1.4, rotation: -9 }, { autoAlpha: 1, scale: 1, rotation: -3, duration: 0.22, ease: "power4.in" }, 2.1);
-  /* EL RENO @4.16: left panel, the same number */
-  tl.fromTo(["#sp1-l-eb", "#sp1-l-name", "#sp1-l-year"], { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out", stagger: 0.06 }, 4.16);
-  tl.fromTo("#sp1-l-ef3", { autoAlpha: 0, scale: 1.4, rotation: -9 }, { autoAlpha: 1, scale: 1, rotation: -3, duration: 0.22, ease: "power4.in" }, 4.3);
-  /* both EF3s pulse together: same number */
-  tl.fromTo(["#sp1-l-g", "#sp1-r-g"], { scale: 1 }, { scale: 1.06, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 4.9);
+  /* ENDERLIN @1.84: right panel; its amber pointer lands on the EF3 rung, the one EF3 label slams on */
+  tl.fromTo(["#sp1-r-key", "#sp1-r-eb", "#sp1-r-name", "#sp1-r-year"], { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out", stagger: 0.06 }, 1.84);
+  tl.fromTo("#sp1-mR", { autoAlpha: 0, x: 90 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power4.out" }, 2.0);
+  tl.fromTo("#sp1-p3", { autoAlpha: 0, scale: 1.4, rotation: -9 }, { autoAlpha: 1, scale: 1, rotation: -3, duration: 0.22, ease: "power4.in" }, 2.1);
+  /* SAME NUMBER @3.36 */
+  tl.fromTo("#sp1-p3", { scale: 1 }, { scale: 1.06, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 3.36);
+  /* EL RENO @4.16: left panel; its blue pointer lands on the same EF3 rung */
+  tl.fromTo(["#sp1-l-key", "#sp1-l-eb", "#sp1-l-name", "#sp1-l-year"], { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out", stagger: 0.06 }, 4.16);
+  tl.fromTo("#sp1-mL", { autoAlpha: 0, x: -90 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power4.out" }, 4.3);
+  /* both pointers nudge into the one rung together: same number */
+  tl.fromTo("#sp1-mL", { x: 0 }, { x: 10, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 4.9);
+  tl.fromTo("#sp1-mR", { x: 0 }, { x: -10, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 4.9);
 
   /* RADAR @6.10, NUMBERS @6.42: El Reno's radar reading */
   tl.fromTo("#sp1-radar", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 6.1);
@@ -134,23 +168,27 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#sp1-arc1", { autoAlpha: 1 }, { autoAlpha: 0.15, duration: 0.5, ease: "power1.in", repeat: 9 }, 6.3);
   tl.fromTo("#sp1-arc2", { autoAlpha: 1 }, { autoAlpha: 0.15, duration: 0.5, ease: "power1.in", repeat: 9 }, 6.45);
   tl.fromTo("#sp1-arc3", { autoAlpha: 1 }, { autoAlpha: 0.15, duration: 0.5, ease: "power1.in", repeat: 9 }, 6.6);
+  /* EF5 LINE @7.76: the one EF5 label on the top rung */
+  tl.fromTo("#sp1-p5", { autoAlpha: 0, scale: 1.4, rotation: -9 }, { autoAlpha: 1, scale: 1, rotation: -3, duration: 0.22, ease: "power4.in" }, 7.76);
 
   /* ENDERLIN @9.52: its path draws; SOMETHING STRANGER @10.08: a question mark over it */
   tl.to("#sp1-path", { autoAlpha: 1, scaleX: 1, duration: 0.55, ease: "power3.out" }, 9.52);
   tl.fromTo("#sp1-q", { autoAlpha: 0, scale: 1.6, y: -20 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.3, ease: "back.out(2)" }, 10.08);
   tl.fromTo("#sp1-q", { y: 0 }, { y: -12, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 4 }, 10.4);
 
-  /* EF3 @13.64: the office that wrote it; the stamp shakes */
-  tl.fromTo("#sp1-r-g", { rotation: 0 }, { rotation: 4, duration: 0.07, ease: "power1.inOut", yoyo: true, repeat: 5 }, 13.64);
+  /* EF3 @13.64: the office that wrote it; Enderlin's pointer shakes on the rung */
+  tl.fromTo("#sp1-mR", { rotation: 0 }, { rotation: 6, svgOrigin: "1111 560", duration: 0.07, ease: "power1.inOut", yoyo: true, repeat: 5 }, 13.64);
   /* STATEMENT @14.82 */
   tl.fromTo("#sp1-doc", { autoAlpha: 0, y: 30, rotation: 6 }, { autoAlpha: 1, y: 0, rotation: 0, duration: 0.4, ease: "power3.out" }, 14.82);
   tl.fromTo("#sp1-doclab", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 14.95);
-  /* NUMBER @15.68 ... WRONG @16.22: the strike goes through Enderlin's EF3 (the EF5 lands later, in October) */
-  tl.to("#sp1-strike", { autoAlpha: 1, scaleX: 1, duration: 0.35, ease: "power3.out" }, 15.68);
-  tl.to("#sp1-r-ef3", { opacity: 0.6, duration: 0.3 }, 15.9);
+  /* NUMBER @15.68 ... WRONG @16.22: the strike goes through Enderlin's pointer (not the shared EF3 label);
+     a dashed "?" pointer opens on Enderlin's side of the EF5 rung (the EF5 lands later, in October) */
+  tl.to("#sp1-strike", { strokeDashoffset: 0, duration: 0.3, ease: "power3.out" }, 15.68);
+  tl.to("#sp1-mR", { opacity: 0.55, duration: 0.3 }, 15.9);
+  tl.fromTo(["#sp1-gh", "#sp1-ghq"], { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 15.8);
 
   /* exit: slide up and out in the last 0.6 s */
-  tl.to(["#sp1-left", "#sp1-right"], { y: -40, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 16.27);
+  tl.to(["#sp1-left", "#sp1-right", "#sp1-scale", "#sp1-p5", "#sp1-p3", "#sp1-ghq"], { y: -40, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 16.27);
   tl.to("#sp1-div", { autoAlpha: 0, duration: 0.5 }, 16.3);
   window.__timelines["g-split-i1"] = tl;
 })();
