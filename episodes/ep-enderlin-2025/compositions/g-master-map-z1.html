@@ -2,28 +2,107 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-master-map-z1"
-     (host 1478.997 -> 1508.677, 29.68 s, track 2). The MG builder replaces this whole file. -->
+<!-- g-master-map-z1 (B1): the close. EF3 on June 20, EF5 108 days later, and the three names. Host 1478.997 -> 1508.677
+     (29.68 s, track 2); fades through into g-outro. Names: Cass County Sheriff release (fact_check.md: Pfaff-Dehn). -->
 <template>
 <style>
-  .ph-master-map-z1 { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .ph-master-map-z1-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-master-map-z1-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
-  .ph-master-map-z1-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  #g-master-map-z1-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 38% 50%, #0b1016 0%, #030507 78%); }
+  .mmz-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .mmz-lab { font-family:Arial, sans-serif; font-weight:700; fill:#dfe7ee; paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .mmz-dawn { position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(0deg, rgba(216,161,58,0.22) 0%, rgba(216,161,58,0.06) 38%, rgba(4,7,12,0) 70%); }
+  .mmz-rail { position:absolute; right:0; top:0; bottom:0; width:820px; pointer-events:none;
+    background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); }
+  .mmz-ef3 { position:absolute; left:1270px; top:150px; font-size:30px; font-weight:700; color:#93a3b2; white-space:nowrap; }
+  .mmz-ef5 { position:absolute; left:1270px; top:196px; font-family:'Arial Black', Arial, sans-serif; font-size:52px; line-height:1.1; color:#f2f5f8; white-space:nowrap; }
+  .mmz-card { position:absolute; left:1250px; top:360px; width:574px; box-sizing:border-box; padding:34px 36px 36px; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); }
+  .mmz-name { position:relative; font-family:'Arial Black', Arial, sans-serif; font-size:32px; line-height:1.2; color:#f2f5f8; white-space:nowrap; margin-top:14px; }
+  .mmz-age { color:#e8c56a; }
+  .mmz-sub { margin-top:24px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  .mmz-ceb { font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; text-transform:uppercase; }
 </style>
-<div class="ph-master-map-z1" data-composition-id="g-master-map-z1" data-width="1920" data-height="1080" data-duration="29.68">
-  <div class="ph-master-map-z1-card" id="ph-master-map-z1-card">
-    <div class="ph-master-map-z1-t" id="ph-master-map-z1-t">g-master-map-z1</div>
-    <div class="ph-master-map-z1-s" id="ph-master-map-z1-s">Placeholder · To Build</div>
+<div id="g-master-map-z1-root" data-composition-id="g-master-map-z1" data-width="1920" data-height="1080" data-duration="29.68">
+  <svg class="mmz-svg" viewBox="0 0 1920 1080">
+    <g id="g-master-map-z1-cam"><g id="g-master-map-z1-drift">
+      <!--BASEMAP:g-master-map-z1--><!--/BASEMAP-->
+      <text id="g-master-map-z1-t-end" class="mmz-lab" x="-101.9" y="96" text-anchor="middle" font-size="24">Enderlin</text>
+    </g></g>
+  </svg>
+  <div class="mmz-dawn" id="g-master-map-z1-dawn"></div>
+  <div class="mmz-rail" id="g-master-map-z1-railbg"></div>
+  <div class="mmz-ef3" id="g-master-map-z1-ef3">EF3 · June 20</div>
+  <div class="mmz-ef5" id="g-master-map-z1-ef5">EF5 · 108 Days Later</div>
+  <div class="mmz-card" id="g-master-map-z1-card">
+    <div class="mmz-ceb" id="g-master-map-z1-ceb">Lives Lost on the Path</div>
+    <div class="mmz-name" id="g-master-map-z1-n1">Michael Pfaff-Dehn</div>
+    <div class="mmz-name" id="g-master-map-z1-n2">Katherine Pfaff-Dehn</div>
+    <div class="mmz-name" id="g-master-map-z1-n3">Marcario Lucio</div>
+    <div class="mmz-sub" id="g-master-map-z1-sub">Roberta Lucio survived the storm</div>
   </div>
+  <div class="mmz-name mmz-age" id="g-master-map-z1-a1" style="position:absolute; left:1690px; top:0px; margin:0">73</div>
+  <div class="mmz-name mmz-age" id="g-master-map-z1-a2" style="position:absolute; left:1690px; top:0px; margin:0">73</div>
+  <div class="mmz-name mmz-age" id="g-master-map-z1-a3" style="position:absolute; left:1690px; top:0px; margin:0">89</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
+  const ID = "g-master-map-z1", P = "#g-master-map-z1-";
+  /* cues: audio/z1-s1.words.json + z1-s2.words.json, episode s minus host start 1478.997 */
+  const CUES = {
+    storm: 0.503,     /* storm @1479.50 */
+    enderlin: 1.583,  /* Enderlin @1480.58 */
+    ef3: 4.103,       /* EF3 @1483.10 */
+    days108: 5.703,   /* a hundred and eight days @1484.70 */
+    ef5: 7.923,       /* EF5 @1486.92 */
+    three: 9.403,     /* three people @1488.40 */
+    michael: 16.533,  /* Michael @1495.53 */
+    katherine: 17.313,/* Katherine @1496.31 */
+    age73: 18.453,    /* 73 @1497.45 */
+    marcario: 23.853, /* Marcario @1502.85 */
+    age89: 24.953,    /* 89 @1503.95 */
+    roberta: 27.013,  /* Roberta @1506.01 */
+    fade: 28.9        /* fade-through by 1508.6 */
+  };
+  const DUR = 29.68;
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-master-map-z1-card", { x: 0 }, { x: 40, duration: 29.68, ease: "none" }, 0);
-  window.__timelines["g-master-map-z1"] = tl;
+  const cam = (wx, wy, s, fx = 560) => ({ attr: { transform: "translate(" + (fx - wx * s).toFixed(2) + "," + (540 - wy * s).toFixed(2) + ") scale(" + s + ")" } });
+
+  /* the age numerals sit at the end of their name lines */
+  const place = (age, name) => { const a = document.querySelector(P + age), n = document.querySelector(P + name), r = document.querySelector(P + "root");
+    if (a && n && r) { const nb = n.getBoundingClientRect(), rb = r.getBoundingClientRect(); a.style.left = (nb.left - rb.left + n.scrollWidth + 18) + "px"; a.style.top = (nb.top - rb.top) + "px"; } };
+  place("a1", "n1"); place("a2", "n2"); place("a3", "n3");
+
+  tl.set(P + "cam", cam(40, -20, 0.95), 0);
+  tl.set([P + "track", P + "swmp"], { strokeDashoffset: 0 }, 0);
+  tl.set([P + "t-end", P + "ef3", P + "ef5", P + "card", P + "ceb", P + "n1", P + "n2", P + "n3", P + "sub", P + "a1", P + "a2", P + "a3"], { autoAlpha: 0 }, 0);
+
+  /* whole window: dawn comes up, slow push, the path settles to a single line */
+  tl.fromTo(P + "dawn", { autoAlpha: 0 }, { autoAlpha: 1, duration: 12, ease: "power1.inOut" }, 0);
+  tl.to(P + "cam", Object.assign(cam(40, -20, 1.08), { duration: DUR, ease: "none" }), 0);
+  tl.to(P + "l-swathg", { opacity: 0, duration: 2.4, ease: "power2.inOut" }, CUES.storm);
+  tl.fromTo(P + "track", { attr: { "stroke-width": 3 } }, { attr: { "stroke-width": 4.5 }, duration: 1.8, ease: "sine.inOut", repeat: 13, yoyo: true }, CUES.storm);
+  tl.fromTo(P + "t-end", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.enderlin);
+
+  /* EF3 -> EF5 */
+  tl.fromTo(P + "ef3", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.ef3);
+  tl.fromTo(P + "ef5", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.ef5);
+  tl.to(P + "ef3", { autoAlpha: 0.45, duration: 0.4 }, CUES.ef5);
+
+  /* the names, one line per name on the voice */
+  tl.fromTo(P + "card", { autoAlpha: 0, x: 120 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, CUES.michael - 0.4);
+  tl.fromTo(P + "ceb", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, CUES.michael - 0.2);
+  tl.fromTo(P + "n1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.michael);
+  tl.fromTo(P + "n2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.katherine);
+  tl.fromTo([P + "a1", P + "a2"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.age73);
+  tl.fromTo(P + "n3", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.marcario);
+  tl.fromTo(P + "a3", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.age89);
+  tl.fromTo(P + "sub", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUES.roberta);
+
+  /* fade-through into g-outro */
+  tl.to(P + "root", { autoAlpha: 0, duration: 0.7, ease: "power1.in" }, CUES.fade);
+  window.__timelines[ID] = tl;
 })();
 </script>
 </template>
