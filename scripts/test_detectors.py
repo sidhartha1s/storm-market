@@ -356,8 +356,7 @@ def by_comp(out):
         if line.startswith('  ') and not line.startswith('    ') and head in NEG:
             cur = head
         elif cur:
-            blocks[cur] = blocks.get(cur, '') + line + '
-'
+            blocks[cur] = blocks.get(cur, '') + line + '\n'
     return blocks
 
 
