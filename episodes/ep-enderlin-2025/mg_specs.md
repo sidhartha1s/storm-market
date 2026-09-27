@@ -99,7 +99,7 @@ arm or scan line, rain field drift.
 | g-radar-a3 | 774.269, 25.253 | a3-s9: radar gave the clearest view 775.85-776.81, Grand Forks radar 778.97-779.59, rushing toward the dish 780.69-781.51, away 782.37, side by side 783.21-783.73, tight rotation 785.95-786.13, debris signature 788.73-789.03, lofted debris 790.51-790.95, apart from rain 792.29-792.87 · a3-s10: see what the storm was lifting 795.00-795.98, not how hard 796.98-797.38, at the ground 798.29-798.51 | KMVX velocity panel, greens and reds; "Toward" / "Away" legends 780.69-782.37; couplet ringed 783.21, label "Tight Rotation" 785.95 · second panel, correlation coefficient: debris signature ringed 788.73, label "Debris Signature" · a small beam-over-ground inset returns for 796.98 ("Wind at Ground Level Not Measured") · data timestamp shown in UTC with its local-time label |
 | g-radar-warning | 1454.28, 6.72 | a6-s8: tornado country 1455.20-1455.50, the number that matters on the night 1456.60-1457.62, warning 1458.08, before any survey 1459.28-1459.94 | county map; a red warning polygon draws on "warning" 1458.08, label "Tornado Warning"; small arrow "Before Any Survey" 1459.28 · generic county geometry, no real place or time claimed |
 
-## 4 · g-ef-scale (B2) · status: to build
+## 4 · g-ef-scale (B2) · status: built (27 Sep 26; no step wind numbers on screen, steps link to the EF rungs instead)
 The Enhanced Fujita scale as a building: six rungs with wind bands, damage indicators (DIs) with degree-of-damage steps, and
 the ceiling each DI has. Start from: `library/inhouse/ef-ladder.html`, `episodes/ep-1974-super-outbreak/compositions/g-f4f5.html`.
 Continuous: rung glow scan, card float. Facts: EF scale adopted by NWS 2007 (Feb), built on Fujita 1971; Texas Tech led it;
