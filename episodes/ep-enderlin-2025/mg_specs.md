@@ -136,7 +136,7 @@ align EF with the old F scale.
 | g-then-now-a5b | 1300.252, 11.264 | a5-s9: FEMA 1300.25, guidance 1301.21, safe rooms 1302.13-1302.47, 250 1303.73, standard 1307.75, rated above 1308.85-1309.13, gave Enderlin 1310.25-1310.55 | two bars: "FEMA Safe Room (P-361) · 250 mph" 1303.73 over "Enderlin · 210+ mph" 1308.85; the safe-room bar sits above 1309.13 · exit 1311.0 |
 | g-then-now-a6 | 1352.00, 11.755 (real clip plays 1346.055-1352.00) | a6-s1: His study 1352.08-1352.22, small move 1353.24-1353.52, line up 1354.10-1354.32, old Fujita scale 1355.44-1356.10, before 2007 1356.89-1357.30, lower line 1359.13-1359.34, top of the EF4 range 1360.26-1361.54, into EF5 1361.94-1362.26 | lower-third "Tony Lyza · NOAA NSSL" 1352.08 · EF4/EF5 bands with the line between them; "Old F Scale" guide ticks 1355.44 · the line slides down a notch 1359.13 · the top of EF4 recolours into EF5 1360.26 · exit 1363.2 (real clip follows) |
 
-## 7 · g-mechanism (B3) · status: to build
+## 7 · g-mechanism (B3) · status: built
 The physics of the rating: a grain car tipping over its far rail, then a tanker thrown through the air, the 50 m line, the
 ~500 ft landing. Start from: `library/inhouse/moves/` (`arcThrow`, `measureDraw`, `bandCompare`, `counter`, `impactRing`,
 `dustPuff`, `cameraRig`) and `library/inhouse/moves/demo.html` (roof-panel throw); `episodes/ep-1974-super-outbreak/compositions/g-plane.html`
