@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-person-lyza"
+     (host 626.293 -> 655.476, 29.183 s, track 2). The MG builder replaces this whole file. -->
+<template>
+<style>
+  .ph-person-lyza { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .ph-person-lyza-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
+    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
+  .ph-person-lyza-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
+  .ph-person-lyza-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+</style>
+<div class="ph-person-lyza" data-composition-id="g-person-lyza" data-width="1920" data-height="1080" data-duration="29.183">
+  <div class="ph-person-lyza-card" id="ph-person-lyza-card">
+    <div class="ph-person-lyza-t" id="ph-person-lyza-t">g-person-lyza</div>
+    <div class="ph-person-lyza-s" id="ph-person-lyza-s">Placeholder · To Build</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  tl.fromTo("#ph-person-lyza-card", { x: 0 }, { x: 40, duration: 29.183, ease: "none" }, 0);
+  window.__timelines["g-person-lyza"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

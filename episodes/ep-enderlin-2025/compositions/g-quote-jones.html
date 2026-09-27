@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-quote-jones"
+     (host 939.022 -> 957.031, 18.009 s, track 2). The MG builder replaces this whole file. -->
+<template>
+<style>
+  .ph-quote-jones { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .ph-quote-jones-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
+    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
+  .ph-quote-jones-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
+  .ph-quote-jones-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+</style>
+<div class="ph-quote-jones" data-composition-id="g-quote-jones" data-width="1920" data-height="1080" data-duration="18.009">
+  <div class="ph-quote-jones-card" id="ph-quote-jones-card">
+    <div class="ph-quote-jones-t" id="ph-quote-jones-t">g-quote-jones</div>
+    <div class="ph-quote-jones-s" id="ph-quote-jones-s">Placeholder · To Build</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  tl.fromTo("#ph-quote-jones-card", { x: 0 }, { x: 40, duration: 18.009, ease: "none" }, 0);
+  window.__timelines["g-quote-jones"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-clock"
+     (host 23.104 -> 29.88, 6.776 s, track 4). The MG builder replaces this whole file. -->
+<template>
+<style>
+  .ph-clock { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; }
+  .ph-clock-card { position:absolute; left:1300px; top:96px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
+    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
+  .ph-clock-t { font-family:'Arial Black', Arial, sans-serif; font-size:40px; color:#f2f5f8; white-space:nowrap; }
+  .ph-clock-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+</style>
+<div class="ph-clock" data-composition-id="g-clock" data-width="1920" data-height="1080" data-duration="6.776">
+  <div class="ph-clock-card" id="ph-clock-card">
+    <div class="ph-clock-t" id="ph-clock-t">g-clock</div>
+    <div class="ph-clock-s" id="ph-clock-s">Placeholder · To Build</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  tl.fromTo("#ph-clock-card", { x: 0 }, { x: 40, duration: 6.776, ease: "none" }, 0);
+  window.__timelines["g-clock"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
