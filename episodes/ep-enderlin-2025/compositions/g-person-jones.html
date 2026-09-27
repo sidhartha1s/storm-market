@@ -2,27 +2,76 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-person-jones"
-     (host 931.00 -> 938.222, 7.222 s, track 2). The MG builder replaces this whole file. -->
+<!-- g-person-jones (B3): host 931.00 -> 938.222 (7.222 s, track 2), audio a3-s20 (starts 919.985; local = word - 11.015).
+     The June EF3 holds faintly; text-only person card for Carl Jones (no sourced photo, no photo slot); the stamp tilts
+     on "why it did not". Blackout bo-4 follows at 938.222, so everything is gone by 7.1 (spec: no exit past 938.1).
+     Cues: rating could have stayed 0.25, for good 1.38, Carl Jones 2.50, meteorologist in that office 3.66,
+     explained later 5.45, why it did not 6.11. Source: research/fact_sheet.md 39 (Carl Jones, meteorologist, NWS Grand Forks). -->
 <template>
 <style>
-  .ph-person-jones { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .ph-person-jones-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-person-jones-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
-  .ph-person-jones-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .pj-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .pj-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .pj-glow { position:absolute; left:700px; top:100px; width:1100px; height:760px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(127,178,229,0.12), rgba(127,178,229,0) 70%); }
+  .pj-g { position:absolute; left:1060px; width:520px; top:250px; text-align:center; }
+  .pj-stamp { display:inline-block; padding:6px 38px 0; border:6px solid rgba(223,231,238,0.85); border-radius:14px;
+    font-family:'AbrilFig', Georgia, serif; line-height:1; letter-spacing:4px; font-size:180px; color:#dfe7ee; text-shadow:0 6px 30px rgba(0,0,0,0.7); }
+  .pj-when { margin-top:22px; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; }
+  .pj-card { position:absolute; left:96px; top:640px; padding:30px 52px 36px; overflow:hidden;
+    background: rgba(10,16,24,0.55); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; box-shadow:0 30px 90px rgba(0,0,0,0.5); }
+  .pj-name { font-family:'Arial Black', Arial, sans-serif; font-size:60px; line-height:70px; color:#f2f5f8; white-space:nowrap; }
+  .pj-role { font-family: Georgia, serif; font-style:italic; font-size:32px; line-height:40px; color:#d8a13a; margin-top:6px; white-space:nowrap; }
+  .pj-org { font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; margin-top:12px; white-space:nowrap; }
+  .pj-beam { position:absolute; top:0; bottom:0; left:0; width:160px; background:linear-gradient(90deg, transparent, rgba(232,197,106,0.13), transparent); }
+  .pj-under { position:absolute; left:52px; right:52px; bottom:16px; height:2px; background:#e8c56a; }
 </style>
-<div class="ph-person-jones" data-composition-id="g-person-jones" data-width="1920" data-height="1080" data-duration="7.222">
-  <div class="ph-person-jones-card" id="ph-person-jones-card">
-    <div class="ph-person-jones-t" id="ph-person-jones-t">g-person-jones</div>
-    <div class="ph-person-jones-s" id="ph-person-jones-s">Placeholder · To Build</div>
+<div class="pj-wrap" data-composition-id="g-person-jones" data-width="1920" data-height="1080" data-duration="7.222">
+  <div class="pj-grid" id="pj-grid"></div>
+  <div class="pj-glow" id="pj-glow"></div>
+  <div class="pj-g" id="pj-g"><div class="pj-stamp" id="pj-ef3">EF3</div><div class="pj-when" id="pj-when">June 2025</div></div>
+  <div class="pj-card" id="pj-card">
+    <div class="pj-beam" id="pj-beam"></div>
+    <div class="pj-name" id="pj-name">Carl Jones</div>
+    <div class="pj-role" id="pj-role">Meteorologist</div>
+    <div class="pj-org" id="pj-org">NWS Grand Forks</div>
+    <div class="pj-under" id="pj-under"></div>
   </div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-person-jones-card", { x: 0 }, { x: 40, duration: 7.222, ease: "none" }, 0);
+  const DUR = 7.222;
+  tl.set(["#pj-card", "#pj-name", "#pj-role", "#pj-org"], { autoAlpha: 0 }, 0);
+  tl.set("#pj-under", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* ambient, whole window */
+  tl.fromTo("#pj-grid", { x: 0 }, { x: 120, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#pj-glow", { x: 0, y: 0 }, { x: -320, y: 60, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#pj-beam", { x: -160 }, { x: 640, duration: 2.0, ease: "none", repeat: 2 }, 0.6);
+
+  /* THE RATING COULD HAVE STAYED @0.25 ... FOR GOOD @1.38: the June EF3 holds, faint */
+  tl.fromTo("#pj-g", { autoAlpha: 0, scale: 1.08, rotation: 0 }, { autoAlpha: 0.55, scale: 1, rotation: -3, duration: 0.6, ease: "power3.out" }, 0);
+  tl.fromTo("#pj-g", { y: 0 }, { y: -10, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0.6);
+  tl.to("#pj-g", { scale: 0.96, duration: 0.5, ease: "power2.out" }, 1.38);
+
+  /* CARL JONES @2.50, METEOROLOGIST IN THAT OFFICE @3.66 */
+  tl.fromTo("#pj-card", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 2.4);
+  tl.fromTo("#pj-name", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.5);
+  tl.fromTo("#pj-role", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.66);
+  tl.fromTo("#pj-org", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.52);
+  tl.to("#pj-under", { scaleX: 1, duration: 2.0, ease: "power1.inOut" }, 4.0);
+
+  /* WHY IT DID NOT @6.11: the stamp tilts, the rating is about to move */
+  tl.to("#pj-g", { rotation: -14, x: 30, autoAlpha: 0.8, duration: 0.35, ease: "back.out(2.5)" }, 6.11);
+
+  /* gone by 7.1, before the blackout at 7.222 */
+  tl.to("#pj-card", { x: -700, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 6.55);
+  tl.to("#pj-g", { y: -40, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 6.55);
   window.__timelines["g-person-jones"] = tl;
 })();
 </script>
