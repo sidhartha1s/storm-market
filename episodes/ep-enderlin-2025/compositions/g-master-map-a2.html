@@ -2,28 +2,58 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-master-map-a2"
-     (host 655.476 -> 667.458, 11.982 s, track 2). The MG builder replaces this whole file. -->
+<!-- g-master-map-a2 (B1): the whole 12-mile path through Ransom and Cass counties. Host 655.476 -> 667.458 (11.982 s, track 2);
+     a blackout follows. Basemap: research/b1-maps (OSM + NWS Grand Forks survey track); county line 46.630 N (Census counties). -->
 <template>
 <style>
-  .ph-master-map-a2 { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .ph-master-map-a2-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-master-map-a2-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
-  .ph-master-map-a2-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  #g-master-map-a2-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 50%, #0b1016 0%, #030507 78%); }
+  .mm2-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .mm2-lab { font-family:Arial, sans-serif; font-weight:700; fill:#dfe7ee; paint-order:stroke; stroke:#04070c; stroke-width:6px; stroke-linejoin:round; }
+  .mm2-big { font-family:'Arial Black', Arial, sans-serif; fill:#f2f5f8; paint-order:stroke; stroke:#04070c; stroke-width:7px; stroke-linejoin:round; }
+  .mm2-scan { position:absolute; left:0; top:0; width:1920px; height:2px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.28), rgba(127,178,229,0)); }
 </style>
-<div class="ph-master-map-a2" data-composition-id="g-master-map-a2" data-width="1920" data-height="1080" data-duration="11.982">
-  <div class="ph-master-map-a2-card" id="ph-master-map-a2-card">
-    <div class="ph-master-map-a2-t" id="ph-master-map-a2-t">g-master-map-a2</div>
-    <div class="ph-master-map-a2-s" id="ph-master-map-a2-s">Placeholder · To Build</div>
-  </div>
+<div id="g-master-map-a2-root" data-composition-id="g-master-map-a2" data-width="1920" data-height="1080" data-duration="11.982">
+  <svg class="mm2-svg" viewBox="0 0 1920 1080">
+    <g id="g-master-map-a2-cam"><g id="g-master-map-a2-drift">
+      <!--BASEMAP:g-master-map-a2--><!--/BASEMAP-->
+      <path id="g-master-map-a2-glow" d="M-101.5,316.9 L-9.2,265 L63.1,217.6 L121.7,108.4 L152.7,31.8 L176.1,-0.9 L173.1,-82.9 L169.2,-218 L138.4,-306.6 L103.6,-351 L64.8,-380.5 L20.1,-375.6 L-3.6,-351 L-17.5,-319.3" fill="none" stroke="#e74c3c" stroke-opacity="0.35" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+      <text id="g-master-map-a2-t-enderlin" class="mm2-lab" x="-101.9" y="92" text-anchor="middle" font-size="22">Enderlin</text>
+      <text id="g-master-map-a2-t-12" class="mm2-big" x="222" y="-110" font-size="56">12 mi</text>
+      <text id="g-master-map-a2-t-ransom" class="mm2-lab" x="-470" y="52" font-size="30" fill="#7fb2e5">Ransom County</text>
+      <text id="g-master-map-a2-t-cass" class="mm2-lab" x="-470" y="-22" font-size="30" fill="#7fb2e5">Cass County</text>
+    </g></g>
+  </svg>
+  <div class="mm2-scan" id="g-master-map-a2-scan"></div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
+  const ID = "g-master-map-a2", P = "#g-master-map-a2-";
+  /* cues: audio/a2-s20.words.json, episode s minus host start 655.476 */
+  const CUES = { enderlin: 3.484 /* Enderlin survey @658.96 */, twelve: 9.104 /* 12-mile @664.58 */, ransom: 10.324 /* Ransom @665.80 */, cass: 10.944 /* Cass @666.42 */ };
+  const DUR = 11.982;
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-master-map-a2-card", { x: 0 }, { x: 40, duration: 11.982, ease: "none" }, 0);
-  window.__timelines["g-master-map-a2"] = tl;
+  const cam = (wx, wy, s, fx = 960) => ({ attr: { transform: "translate(" + (fx - wx * s).toFixed(2) + "," + (540 - wy * s).toFixed(2) + ") scale(" + s + ")" } });
+
+  tl.set(P + "cam", cam(0, -30, 1.02), 0);
+  tl.set([P + "track", P + "swmp"], { strokeDashoffset: 0 }, 0);
+  tl.set([P + "t-enderlin", P + "t-12", P + "t-ransom", P + "t-cass"], { autoAlpha: 0 }, 0);
+
+  /* whole window: slow push, the track glows, a scan line crosses */
+  tl.to(P + "cam", Object.assign(cam(20, -30, 1.14), { duration: DUR, ease: "none" }), 0);
+  tl.fromTo(P + "glow", { attr: { "stroke-opacity": 0.15 } }, { attr: { "stroke-opacity": 0.55 }, duration: 1.2, ease: "sine.inOut", repeat: 9, yoyo: true }, 0);
+  tl.fromTo(P + "swath", { attr: { "fill-opacity": 0.4 } }, { attr: { "fill-opacity": 0.62 }, duration: 1.2, ease: "sine.inOut", repeat: 9, yoyo: true }, 0);
+  tl.fromTo(P + "scan", { y: 60 }, { y: 1020, duration: 6, ease: "none", repeat: 1, yoyo: true }, 0);
+  tl.fromTo(P + "track", { attr: { "stroke-width": 3 } }, { attr: { "stroke-width": 5 }, duration: 0.6, ease: "power2.out", yoyo: true, repeat: 1 }, CUES.twelve);
+
+  tl.fromTo(P + "t-enderlin", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.enderlin);
+  tl.fromTo(P + "t-12", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.twelve);
+  tl.fromTo(P + "l-county", { opacity: 0.5 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, CUES.ransom - 0.2);
+  tl.fromTo(P + "t-ransom", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.ransom);
+  tl.fromTo(P + "t-cass", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.cass);
+  window.__timelines[ID] = tl;
 })();
 </script>
 </template>
