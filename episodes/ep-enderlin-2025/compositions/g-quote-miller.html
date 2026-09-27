@@ -2,27 +2,83 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- PLACEHOLDER, to build: minimal valid composition so the gates can run. Spec: mg_specs.md, window "g-quote-miller"
-     (host 1140.595 -> 1157.00, 16.405 s, track 2). The MG builder replaces this whole file. -->
+<!-- g-quote-miller (B3): host 1140.595 -> 1157.00 (16.405 s, track 2), audio a4-s17 mounts at 0 (local = word time).
+     Two verbatim Connell Miller quotes, Western University News, Oct 2025 (research/fact_sheet.md 43), one at a time,
+     phrase by phrase in the voice's order. The second is a partial sentence, so it opens with an ellipsis.
+     Cues: Miller said 0.00, exemplifies 1.06, importance 2.44, integrating 3.12, scientific research 5.28,
+     operational meteorology 6.92, he also called it 9.00, a powerful new tool 10.86, for rating storms 12.08,
+     produce extreme 13.34, yet unconventional damage 14.24. Exit 15.805 (spec 1156.4; stock clip follows). -->
 <template>
 <style>
-  .ph-quote-miller { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .ph-quote-miller-card { position:absolute; left:160px; top:430px; padding:26px 40px; border-radius:28px; background: rgba(10,16,24,0.55);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14); }
-  .ph-quote-miller-t { font-family:'Arial Black', Arial, sans-serif; font-size:64px; color:#f2f5f8; white-space:nowrap; }
-  .ph-quote-miller-s { margin-top:10px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .qm-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .qm-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .qm-glow { position:absolute; left:-200px; top:80px; width:1300px; height:900px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(232,197,106,0.08), rgba(232,197,106,0) 70%); }
+  .qm-card { position:absolute; left:160px; top:230px; width:1600px; height:520px; box-sizing:border-box; border-radius:28px; overflow:hidden;
+    background: rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  .qm-cbeam { position:absolute; top:0; bottom:0; left:0; width:260px; background:linear-gradient(90deg, transparent, rgba(138,90,16,0.14), transparent); }
+  .qm-mark { position:absolute; left:40px; top:24px; font-family:'AbrilFig', Georgia, serif; font-size:170px; line-height:170px; color:#8a5a10; }
+  .qm-q { position:absolute; left:150px; right:90px; top:64px; font-family: Georgia, serif; font-style:italic; font-size:50px; line-height:68px; color:#1c1a17; }
+  .qm-q span { display:inline-block; }
+  .qm-attr { position:absolute; left:150px; bottom:44px; font-weight:700; font-size:22px; letter-spacing:2px; color:#5a4a2e; white-space:nowrap; }
+  .qm-attr span { display:inline-block; }
+  .qm-rule { position:absolute; left:150px; bottom:90px; width:240px; height:3px; background:#8a5a10; }
 </style>
-<div class="ph-quote-miller" data-composition-id="g-quote-miller" data-width="1920" data-height="1080" data-duration="16.405">
-  <div class="ph-quote-miller-card" id="ph-quote-miller-card">
-    <div class="ph-quote-miller-t" id="ph-quote-miller-t">g-quote-miller</div>
-    <div class="ph-quote-miller-s" id="ph-quote-miller-s">Placeholder · To Build</div>
+<div class="qm-wrap" data-composition-id="g-quote-miller" data-width="1920" data-height="1080" data-duration="16.405">
+  <div class="qm-grid" id="qm-grid"></div>
+  <div class="qm-glow" id="qm-glow"></div>
+  <div class="qm-card" id="qm-card">
+    <div class="qm-cbeam" id="qm-cbeam"></div>
+    <div class="qm-mark" id="qm-mark">&ldquo;</div>
+    <div class="qm-q" id="qm-q1"><span id="qm-a1">This case exemplifies</span> <span id="qm-a2">the importance</span> <span id="qm-a3">of integrating engineering analysis</span> <span id="qm-a4">and scientific research</span> <span id="qm-a5">into operational meteorology.&rdquo;</span></div>
+    <div class="qm-q" id="qm-q2"><span id="qm-b1">&hellip;a powerful new tool</span> <span id="qm-b2">for rating storms</span> <span id="qm-b3">that produce extreme</span> <span id="qm-b4">yet unconventional damage.&rdquo;</span></div>
+    <div class="qm-rule" id="qm-rule"></div>
+    <div class="qm-attr" id="qm-attr"><span id="qm-who">Connell Miller</span> <span id="qm-src">&middot; Western University News, Oct 2025</span></div>
   </div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#ph-quote-miller-card", { x: 0 }, { x: 40, duration: 16.405, ease: "none" }, 0);
+  const DUR = 16.405;
+  tl.set(["#qm-mark", "#qm-q2", "#qm-who", "#qm-src", "#qm-a1", "#qm-a2", "#qm-a3", "#qm-a4", "#qm-a5", "#qm-b1", "#qm-b2", "#qm-b3", "#qm-b4"], { autoAlpha: 0 }, 0);
+  tl.set("#qm-rule", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* ambient, whole window */
+  tl.fromTo("#qm-grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#qm-glow", { x: 0, y: 0 }, { x: 900, y: 100, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#qm-cbeam", { x: -260 }, { x: 1600, duration: 3.0, ease: "none", repeat: 4 }, 0.3);
+
+  /* MILLER SAID @0.00: card, mark and attribution (spec 1141.0) */
+  tl.fromTo("#qm-card", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0);
+  tl.fromTo("#qm-mark", { autoAlpha: 0, scale: 1.6, y: -20 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, 0.3);
+  tl.fromTo("#qm-who", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 0.4);
+  tl.fromTo("#qm-src", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 0.6);
+  tl.to("#qm-rule", { scaleX: 1, duration: 0.8, ease: "power2.out" }, 0.5);
+
+  /* quote one, phrase by phrase */
+  tl.fromTo("#qm-a1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 1.06);
+  tl.fromTo("#qm-a2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 2.44);
+  tl.fromTo("#qm-a3", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 3.12);
+  tl.fromTo("#qm-a4", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 5.28);
+  tl.fromTo("#qm-a5", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 6.92);
+  tl.fromTo("#qm-card", { y: 0 }, { y: -8, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 1 }, 7.4);
+
+  /* HE ALSO CALLED IT @9.00: quote one lifts out */
+  tl.to("#qm-q1", { autoAlpha: 0, y: -30, duration: 0.4, ease: "power2.in" }, 9.0);
+  tl.set("#qm-q2", { autoAlpha: 1 }, 10.5);
+  tl.fromTo("#qm-who", { scale: 1 }, { scale: 1.08, transformOrigin: "0% 50%", duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 10.9);
+  /* quote two: A POWERFUL NEW TOOL @10.86, FOR RATING STORMS @12.08, PRODUCE EXTREME @13.34, YET UNCONVENTIONAL DAMAGE @14.24 */
+  tl.fromTo("#qm-b1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 10.86);
+  tl.fromTo("#qm-b2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 12.08);
+  tl.fromTo("#qm-b3", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 13.34);
+  tl.fromTo("#qm-b4", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 14.24);
+
+  /* exit (spec 1156.4 -> 15.805) */
+  tl.to("#qm-card", { x: 1100, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 15.805);
   window.__timelines["g-quote-miller"] = tl;
 })();
 </script>
