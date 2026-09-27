@@ -72,7 +72,7 @@ mechanism/analysis pair) and plants+pays a loop.
 - Seams are time-stamps or place-stamps, never "to understand X you have to understand Y."
 - Keep technical terms, define in ≤12 words, reuse 3+ times. Every superlative gets a comparator and unit.
 - One object per segment; one named victim (age, job, sourced quote) per tragedy.
-- Close: fact + dated forward window, then the CTA spine once. No aphorism, no mirrored callback, no sign-off line.
+- Close: fact + dated forward window. No aphorism, no mirrored callback, no sign-off line.
 - TTS-safe: spell out ALL dates/times/numbers in narration (except years, dollars), no paired dashes, sentences
   under 24 words as written (long fact-chains still fine, TTS splits them), respell homographs phonetically.
 
