@@ -87,7 +87,7 @@ window.__timelines = window.__timelines || {};
   tl.set("#pm-b1", { autoAlpha: 1 }, 0.1);
   tl.fromTo("#pm-b1", { x: 1060 }, { x: 1660, duration: 2.4, ease: "none", repeat: 8 }, 0.1);
   tl.fromTo("#pm-b1", { y: 720 }, { y: 560, duration: 1.2, ease: "power1.out", yoyo: true, repeat: 17 }, 0.1);
-  tl.fromTo("#pm-b1", { rotation: 0 }, { rotation: 1440, duration: 21.6, ease: "none" }, 0.1);
+  tl.fromTo("#pm-b1", { rotation: 0 }, { rotation: 1440, transformOrigin: "50% 50%", duration: 21.6, ease: "none" }, 0.1);
 
   /* PAPER @1.68, 2024 @2.82 */
   tl.fromTo("#pm-cite", { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.05);
