@@ -31,9 +31,10 @@ function npmGlobalRoot() {
 
 export function playwrightCoreUrl() {
   if (process.env.PLAYWRIGHT_CORE) return pathToFileURL(process.env.PLAYWRIGHT_CORE).href;
+  const root = npmGlobalRoot();  // once: each `npm root -g` spawn costs ~1.1 s per gate launch
   const candidates = [
-    join(npmGlobalRoot(), '@playwright', 'cli', 'node_modules', 'playwright-core', 'index.mjs'),
-    join(npmGlobalRoot(), 'playwright-core', 'index.mjs'),
+    join(root, '@playwright', 'cli', 'node_modules', 'playwright-core', 'index.mjs'),
+    join(root, 'playwright-core', 'index.mjs'),
   ];
   const hit = candidates.find(existsSync);
   if (!hit) throw new Error(`playwright-core not found; tried:\n  ${candidates.join('\n  ')}`);
