@@ -34,5 +34,5 @@ window.__timelines['my-comp'] = tl;
 - Keep the flight arc under the counter and payoff bands: check the apex screen y at the camera zoom during flight, not only at rest.
 
 ## Gates
-- `beat_density.py` reads the built timeline, so tweens inside moves count, and the `onFrame` hub counts wherever it changes the page (drift, rain, grain, counters). A `{}` clock only sets the timeline length and is never motion, so a comp whose moves stop for 4 s fails.
+- `beat_density.py` reads the built timeline, so tweens inside moves count, and the `onFrame` hub counts wherever it changes a seen element's box, transform, opacity or text (drift, rain, counters) or paints a canvas covering a quarter of the frame (grain). A `{}` clock only sets the timeline length and is never motion, so a comp whose moves stop for 4 s fails.
 - Drive with `tl.time()` / `tl.progress()`; `tl.seek()` suppresses onUpdate by default.
