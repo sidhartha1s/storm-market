@@ -73,7 +73,7 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"pinlab2", { autoAlpha: 1, duration: 0.3 }, 0.6);
 
   /* 3.1: after a three day pause for the rain — the withdrawal mark pulses, still ahead */
-  tl.to([P+"withtick", P+"withlab"], { scale: 1.06, duration: 0.4, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "1704px 760px" }, 3.1);
+  tl.to([P+"withtick", P+"withlab"], { scale: 1.06, duration: 0.4, ease: "power2.out", yoyo: true, repeat: 1, svgOrigin: "1704 760" }, 3.1);
 
   /* 8.2: the climbing season on peaks like Himlung runs through October */
   tl.to(P+"tband", { scaleX: 1, autoAlpha: 1, duration: 0.8, ease: "power2.out" }, 8.2);
