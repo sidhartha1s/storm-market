@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-person-bhote (A3, "Base camp", 6:09): text-only person card, no photo slot, no monogram, over the base-camp
+     diagram fade / WION avalanche clip. Source: episodes/ep-nepal-floods-2026/mg_specs/g-person-bhote.md. Base:
+     episodes/ep-enderlin-2025/compositions/g-person-jones.html (fidelity pattern, retuned: no rating stamp, since
+     Bhote's card carries no prior-rating context like Jones's EF3).
+     Cues @175wpm from beat start ("Then snow and rock came down..."): card in 2.2 CUE "Pasang Bhote" @est 4.80,
+     role 3.3 CUE "climbing guide from the far east of Nepal" @est 5.83, org 4.0. Exit 6.9. Duration 7.5s declared. -->
+<template>
+<style>
+  .pb-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8; }
+  .pb-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size: 120px 120px; pointer-events:none; }
+  .pb-card { position:absolute; left:96px; top:640px; width:620px; padding:30px 52px 36px; box-sizing:border-box; overflow:hidden;
+    background: rgba(10,16,24,0.55); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; box-shadow:0 30px 90px rgba(0,0,0,0.5); }
+  .pb-name { font-family:'Arial Black', Arial, sans-serif; font-size:60px; line-height:70px; color:#f2f5f8; white-space:nowrap; }
+  .pb-role { font-family: Georgia, serif; font-style:italic; font-size:32px; line-height:40px; color:#d8a13a; margin-top:6px; white-space:nowrap; }
+  .pb-org { font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; margin-top:12px; white-space:nowrap; }
+  .pb-beam { position:absolute; top:0; bottom:0; left:0; width:160px; background:linear-gradient(90deg, transparent, rgba(127,178,229,0.13), transparent); }
+  .pb-under { position:absolute; left:52px; right:52px; bottom:16px; height:2px; background:#7fb2e5; }
+</style>
+<div class="pb-wrap" data-composition-id="g-person-bhote" data-width="1920" data-height="1080" data-duration="7.5">
+  <div class="pb-grid" id="pb-grid"></div>
+  <div class="pb-card" id="pb-card">
+    <div class="pb-beam" id="pb-beam"></div>
+    <div class="pb-name" id="pb-name">Pasang Bhote</div>
+    <div class="pb-role" id="pb-role">Climbing guide</div>
+    <div class="pb-org" id="pb-org">Eastern Nepal</div>
+    <div class="pb-under" id="pb-under"></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 7.5;
+  tl.set(["#pb-card", "#pb-name", "#pb-role", "#pb-org"], { autoAlpha: 0 }, 0);
+  tl.set("#pb-under", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* ambient, whole window */
+  tl.fromTo("#pb-grid", { x: 0 }, { x: 120, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#pb-beam", { x: -160 }, { x: 640, duration: 2.0, ease: "none", repeat: 2 }, 0.6);
+
+  /* PASANG BHOTE @4.80 */
+  tl.fromTo("#pb-card", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 2.2);
+  tl.fromTo("#pb-name", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.3);
+  /* CLIMBING GUIDE FROM THE FAR EAST OF NEPAL @5.83 */
+  tl.fromTo("#pb-role", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.3);
+  tl.fromTo("#pb-org", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.0);
+  tl.to("#pb-under", { scaleX: 1, duration: 1.6, ease: "power1.inOut" }, 3.7);
+
+  /* exit */
+  tl.to("#pb-card", { x: -700, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, DUR - 0.6);
+  window.__timelines["g-person-bhote"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
