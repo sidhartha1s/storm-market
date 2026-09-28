@@ -81,13 +81,17 @@ window.__timelines = window.__timelines || {};
   /* 12.57 (0.15s before "crews" @12.72): crews are already on those mountains */
   tl.fromTo(P+"bandlab", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 12.57);
 
-  /* DROPPED: the "tents had been up for days" tie-back pulse — that clause is not spoken inside this host
-     window (words stop at "already" @13.28 vs D=13.590); nothing to anchor it to, so it is cut rather than
-     left dangling past the words the sheet gives us. */
+  /* RESTORED (coordinator update): this host actually runs 18.09s, not 13.590 — it absorbs the 4.5s clip
+     (a6-s4) that used to follow it, so words after comp-local 13.59 belong to that other segment, not to this
+     comp's own dialogue. The comp was built for an 18s window, so the tail beat below reverts to its original
+     built timing (nudged +0.09s for the real 18.09 total) instead of being dropped. */
 
-  /* exit 13.0, finishes by D-0.1 = 13.490 */
+  /* 14.5: tie-back pulse (loop L7 open), riding the a6-s4 tail under this comp's hold */
+  tl.to(P+"pin", { y: -6, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 14.5);
+
+  /* exit 17.35, finishes by D-0.1 = 17.99 */
   tl.to([P+"axis", P+"wetband", P+"ticks", P+"withtick", P+"withlab", P+"pin", P+"pinlab2", P+"tband", P+"bandlab"],
-        { x: 660, autoAlpha: 0, duration: 0.45, ease: "power3.in" }, 13.0);
+        { x: 660, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.35);
   window.__timelines[ID] = tl;
 })();
 </script>
