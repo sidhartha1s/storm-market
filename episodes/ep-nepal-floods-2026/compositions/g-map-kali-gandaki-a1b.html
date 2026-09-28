@@ -65,17 +65,19 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-map-kali-gandaki-a1b", P = "#g-map-kali-gandaki-a1b-";
-  /* estimated at 175 wpm; hydro paragraph from 0.0, route paragraph from local 17.5 */
+  /* retimed 29 Sep 26: index.html now mounts this comp at data-start 208.982, data-duration 11.0 — only
+     the ROUTE paragraph ("The same valley carries...") per the brief's own note ("mount this comp from
+     local 17.5s instead, the route part stands alone"). The hydro paragraph ("Downstream, the river
+     feeds a dam...") is NOT spoken in this window: the dam pin, "144 MW", "Kali Gandaki A dam", "Shut
+     down" and their ring/dim beats are DROPPED (DOM kept, never revealed — see tl.set below). Dhaulagiri
+     and Annapurna I peak pop-ins are also DROPPED: not spoken here and no time left after the trekker.
+     Cues from retime-sheet.md word times (host 208.982+11.000). */
   const CUES = {
-    dam: 1.4,       /* CUE "a dam and power plant" @est 1.4 */
-    shut: 15.1,     /* CUE "plant shut down" @est 15.1 */
-    valley: 17.5,   /* CUE "The same valley" @est 17.5 */
-    mustang: 19.9,  /* CUE "north to Mustang" @est 19.9 */
-    temple: 21.6,   /* CUE "a temple" @est 21.6 */
-    trails: 28.1,   /* CUE "Annapurna trails" @est 28.1 */
-    ending: 36.7    /* CUE "supposed to be ending" @est 36.7 */
+    mustang: 2.45, /* CUE "Mustang," @2.60 (sheet) */
+    temple: 3.91,  /* CUE "temple" @4.06 (sheet) */
+    trails: 10.53  /* CUE "trails" @10.68 (sheet) */
   };
-  const DUR = 39.3;
+  const DUR = 11.0;
   const tl = gsap.timeline({ paused: true });
   const RLEN = Math.ceil(document.querySelector(P + "route").getTotalLength()) + 1;
   const cam = (z) => ({ attr: { transform: "translate(" + (620 - 620 * z).toFixed(2) + "," + (540 - 540 * z).toFixed(2) + ") scale(" + z + ")" } });
