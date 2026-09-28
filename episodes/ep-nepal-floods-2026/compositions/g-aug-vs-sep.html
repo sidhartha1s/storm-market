@@ -106,22 +106,22 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.aug26 + 0.3);
   tl.fromTo(P + "t-lt", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.valley);
 
-  /* ---- a flood down the river below ---- */
+  /* ---- a flood down the river below (Trishuli pulse extended to carry the long hold to the exit) ---- */
   tl.to(P + "tri", { strokeDashoffset: 0, duration: 1.4, ease: "power2.in" }, CUES.river);
-  tl.fromTo(P + "tri", { attr: { "stroke-opacity": 1 } }, { attr: { "stroke-opacity": 0.5 }, duration: 0.9, ease: "sine.inOut", repeat: 11, yoyo: true }, CUES.river + 1.4);
+  tl.fromTo(P + "tri", { attr: { "stroke-opacity": 1 } }, { attr: { "stroke-opacity": 0.5 }, duration: 0.9, ease: "sine.inOut", repeat: 23, yoyo: true }, CUES.river + 1.4);
 
   /* ---- the count, as of Sept 21 ---- */
   tl.fromTo(P + "asof", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.sept21);
   tl.fromTo(P + "c1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.n1451);
   const o1 = { v: 0 };
-  tl.to(o1, { v: 1451, duration: 2.2, ease: "power3.out", onUpdate: function () { document.getElementById("g-aug-vs-sep-c1v").textContent = fmt(o1.v); } }, CUES.n1451);
+  tl.to(o1, { v: 1451, duration: 1.0, ease: "power3.out", onUpdate: function () { document.getElementById("g-aug-vs-sep-c1v").textContent = fmt(o1.v); } }, CUES.n1451);
   tl.fromTo(P + "c1l", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.lives);
   tl.fromTo(P + "c2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.n5745);
   const o2 = { v: 0 };
-  tl.to(o2, { v: 5745, duration: 2.6, ease: "power3.out", onUpdate: function () { document.getElementById("g-aug-vs-sep-c2v").textContent = fmt(o2.v); } }, CUES.n5745);
+  tl.to(o2, { v: 5745, duration: 2.9, ease: "power3.out", onUpdate: function () { document.getElementById("g-aug-vs-sep-c2v").textContent = fmt(o2.v); } }, CUES.n5745);
   tl.fromTo(P + "c2l", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.missing);
 
-  /* ---- exit: the rail slides out, the map drifts into the radar teaser ---- */
+  /* ---- exit: the rail slides out; the map holds its push through the InSAR recap narration ---- */
   tl.to([P + "eb", P + "asof", P + "c1", P + "c1l", P + "c2", P + "c2l"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, EXIT);
 
   window.__timelines[ID] = tl;
