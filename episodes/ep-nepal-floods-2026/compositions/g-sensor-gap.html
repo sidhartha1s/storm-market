@@ -67,7 +67,7 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"popwrap", { autoAlpha: 0, y: -20, duration: 0.4, ease: "power2.in" }, 8.6);
 
   /* 9.0: river and rain gauges, which report when water rises — gauge track pulses */
-  tl.to(P+"gaugetrack", { strokeWidth: 3, duration: 0.5, ease: "power2.out", yoyo: true, repeat: 1 }, 9.0);
+  tl.to(P+"gaugetrack", { attr: { "stroke-width": 4 }, duration: 0.5, ease: "power2.out", yoyo: true, repeat: 1 }, 9.0);
 
   /* 15.5: a slope that fails in three seconds — the fail mark pops */
   tl.to(P+"flatread", { autoAlpha: 1, duration: 0.3 }, 15.2);
