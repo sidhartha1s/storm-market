@@ -52,6 +52,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"title-1", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.25);
   tl.fromTo(P+"cnt", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.4);
   tl.fromTo(P+"sub", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.55);
+  tl.to(P+"card", { y: -6, duration: 1.5, ease: "sine.inOut", yoyo: true, repeat: 8 }, 0.5);  // card floats 0.5-14.0 so the read-hold never sits still
 
   /* 4.37 (0.15s before "measure" @4.52): measure ground motion ... to a fraction of an inch — ramp pulses once */
   tl.to(P+"ramp", { scaleX: 1.02, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 4.37);
