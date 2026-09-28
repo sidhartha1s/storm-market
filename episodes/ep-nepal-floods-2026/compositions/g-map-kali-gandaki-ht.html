@@ -48,13 +48,12 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-map-kali-gandaki-ht", P = "#g-map-kali-gandaki-ht-";
-  /* estimated at 175 wpm from the start of the HT paragraph (HOST starts at CUE "The storm behind it" @est 0.0) */
+  /* retimed 29 Sep 26 from retime-sheet.md word times (host 8.713+6.600) */
   const CUES = {
-    himlung: 3.1, /* CUE "Himlung Himal" @est 3.1 */
-    tibet: 5.8,   /* CUE "Tibet" @est 5.8 */
-    camp: 10.3    /* CUE "base camp" @est 10.3 (cut to the WION clip) */
+    himlung: 2.65, /* CUE "Hymlung" @2.80 (sheet) */
+    tibet: 5.13    /* CUE "Tibet." @5.28 (sheet) */
   };
-  const DUR = 10.3;
+  const DUR = 6.6;
   const tl = gsap.timeline({ paused: true });
   const kg = document.querySelector(P + "kg"), kgg = document.querySelector(P + "kgglow");
   const KLEN = Math.ceil(kg.getTotalLength()) + 1;
