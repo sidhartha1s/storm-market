@@ -194,11 +194,9 @@ mid-video beats with its own soft close (one comment + subscribe line after the 
 - **Upload routine (owner):** pin the where-are-you-watching comment, post the next-topic vote five minutes later,
   answer the first ten comments within the hour, open the next video by naming the winner.
 
-- **Homographs are a TTS trap (owner 2026-09-09, "AI-slop radar"):** pocket-TTS read "I read all the comments" as
-  "I red" (past tense). Before TTS, scan every interaction line for read / lead / live / wind / tear / bass /
-  close / present / record and respell the narration copy phonetically ("reed") while the script keeps the
-  owner's exact wording. Listen to every interaction beat once after TTS; a wrong-tense homograph reads as AI
-  slop to the audience. Owner's phrases are verbatim — never paraphrase a line he wrote.
+- **Homographs are a TTS trap:** list, senses and the probe-before-respelling rule live in
+  `references/homographs.md`, gated by `scripts/homograph_scan.py`. Owner's phrases are verbatim — never
+  paraphrase a line he wrote.
 ## Presenter circle — Paul PiP, phase 2 (owner 2026-09-09: standard on every mini-storm from Texas onward)
 - 240 px circle, bottom-right (left 1640, top 708 on 1080p), 4 px red ring, above the news-bug strip. Present from the
   intro to the end of the last narration line, except in motion-graphics-only scenes, where he is not shown (owner
