@@ -36,7 +36,8 @@ abs x=1660, INSIDE the presenter keep-out (x>=1600); local x=330 keeps the label
 3. "9X" tag never overlaps either bar or its labels (overlap_check text-collision threshold).
 4. US units (inches) are the primary label; no metric shown (mg-quickref "US units first... metric only as a
    small secondary if at all", this card omits metric entirely, which is allowed).
-5. No text inside the presenter keep-out (x>=1600 y>=680), panel content is x<=720, clear.
+5. No text inside the presenter keep-out (x>=1600 y>=680): every element's right edge checked against abs
+   x=1600 (python), storm-bar label box is the tightest at abs x=1590.
 
 ## 5. PANEL TEXT (exact) and CUES (175 wpm from beat start; beat = "Just across the border...")
 "NORTHERN INDIA" · "Nine times the rain." · "0.3 IN" / "NORMAL" · "2.6 IN" / "SEPT 26-28" · "9X".
