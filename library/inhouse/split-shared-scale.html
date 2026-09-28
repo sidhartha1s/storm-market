@@ -1,0 +1,220 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  EXEMPLAR: split-shared-scale.html
+  WHAT IT IS: two storms side by side, never merged into one card, both judged against ONE shared rating scale drawn
+  once on the centre divider (rungs + pointers) — the "same number, different storm" comparison mechanic. Each side
+  can carry its own extra evidence (a radar readout on the left, a day counter + document reveal on the right); drop
+  whichever side-extras don't fit your beat. One fact drawn once on a shared scale, never duplicated per side (mg-quickref
+  "one fact, one instance per frame").
+
+  SOURCE: episodes/ep-enderlin-2025/compositions/g-split-i1.html (fidelity-extracted, copy genericized).
+
+  PARAMS TO EDIT (marked <!-- EDIT-ME --> inline):
+    - splitscale-l-eb/l-name/l-year and splitscale-r-eb/r-name/r-year: place/name/year for each side.
+    - splitscale-p5/p3 plate text: the two rating labels on the shared scale (only add/remove rungs if you also move
+      the SVG y-positions in the .splitscale-r5/.splitscale-r3 paths and the plates' `top` — they must line up).
+    - splitscale-rlab/rval: left-side radar (or other instrument) readout — drop the whole svg#splitscale-radar +
+      rlab + rval block if the left side has no such evidence.
+    - splitscale-cntl + the counter's target value (108) in the script: right-side day counter label + target.
+    - splitscale-doclab: the document-reveal label; the 5 splitscale-docl bars are a schematic "official statement",
+      not real text — keep them abstract or replace with real short text, never fabricate a document's wording.
+    - splitscale-ghq "?" and splitscale-gh dashed plate: an "unresolved / pending" pointer — drop this whole group if
+      both sides already have their final rating landed.
+
+  TIMING KNOBS (do not casually change — these are load-bearing):
+    - shared scale draws up the divider first (0.1-0.5s), rungs stroke-draw in, BEFORE either side's pointer lands —
+      the scale must exist before anything points at it.
+    - each side's identity block staggers in (stagger:0.06) then its pointer slides onto its rung — right side first,
+      then left, so "the same number" reads as a comparison, not two simultaneous reveals.
+    - the day counter (if kept) runs the whole beat length (~15s here) with power2.out, never a hard-cut final value.
+    - EXIT: both sides + the scale slide up (y:-40) and fade together, duration 0.55, power3.in, divider fades slightly after.
+
+  COPY into episodes/<slug>/compositions/ and hand-retune — never script-generate.
+-->
+<template>
+<style>
+  .splitscale-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .splitscale-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.06) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .splitscale-glow { position:absolute; width:1000px; height:700px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(127,178,229,0.12), rgba(127,178,229,0) 70%); }
+  .splitscale-div { position:absolute; left:959px; top:0; width:2px; height:1080px;
+    background: linear-gradient(180deg, rgba(147,163,178,0), rgba(147,163,178,0.45) 30%, rgba(147,163,178,0.45) 70%, rgba(147,163,178,0)); }
+  .splitscale-divdot { position:absolute; left:953px; top:0; width:14px; height:14px; border-radius:50%; background:#e8c56a;
+    box-shadow: 0 0 14px 4px rgba(232,197,106,0.55); }
+  .splitscale-side { position:absolute; top:0; width:960px; height:1080px; }
+  .splitscale-key { position:absolute; left:450px; top:100px; width:60px; height:6px; border-radius:3px; }
+  .splitscale-eyebrow { position:absolute; left:0; right:0; top:120px; text-align:center; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; }
+  .splitscale-name { position:absolute; left:0; right:0; top:152px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-size:64px; line-height:76px; color:#f2f5f8; }
+  .splitscale-year { position:absolute; left:0; right:0; top:236px; text-align:center; font-family: Georgia, serif; font-style:italic; font-size:32px; color:#d8a13a; }
+  .splitscale-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .splitscale-plate { position:absolute; left:860px; width:200px; height:104px; box-sizing:border-box; border:5px solid; border-radius:14px;
+    background:#0b1016; text-align:center; font-family:'AbrilFig', Georgia, serif; font-size:84px; line-height:100px; letter-spacing:3px; }
+  .splitscale-p5 { top:278px; color:#d0121f; border-color:#d0121f; text-shadow:0 0 26px rgba(208,18,31,0.5); }
+  .splitscale-p3 { top:508px; color:#dfe7ee; border-color:rgba(223,231,238,0.85); }
+  .splitscale-ghq { position:absolute; left:1150px; top:292px; width:70px; text-align:center; font-family:'AbrilFig', Georgia, serif; font-size:64px; line-height:76px;
+    color:#e8c56a; text-shadow:0 0 20px rgba(232,197,106,0.45); }
+  .splitscale-radar { position:absolute; left:150px; top:596px; width:110px; height:110px; }
+  .splitscale-rlab { position:absolute; left:280px; top:600px; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  .splitscale-rval { position:absolute; left:280px; top:634px; font-family:'Arial Black', Arial, sans-serif; font-size:52px; line-height:62px; color:#f2f5f8; white-space:nowrap; }
+  .splitscale-cnt { position:absolute; left:0; right:0; top:556px; text-align:center; }
+  .splitscale-cntv { font-family:'Courier New', monospace; font-weight:700; font-size:84px; line-height:92px; color:#e74c3c; }
+  .splitscale-cntl { font-weight:700; font-size:20px; letter-spacing:6px; color:#c8d3e0; margin-top:4px; }
+  .splitscale-path { position:absolute; left:130px; width:700px; top:872px; height:36px; border-radius:18px;
+    background: linear-gradient(90deg, rgba(90,118,143,0.10), rgba(90,118,143,0.55) 20%, rgba(90,118,143,0.55) 80%, rgba(90,118,143,0.10)); }
+  .splitscale-pathc { position:absolute; left:10px; right:10px; top:16px; height:0; border-top:3px dashed rgba(223,231,238,0.55); }
+  .splitscale-q { position:absolute; left:430px; width:100px; top:730px; text-align:center; font-family:'AbrilFig', Georgia, serif; font-size:120px; line-height:120px;
+    color:#e8c56a; text-shadow:0 0 30px rgba(232,197,106,0.45); }
+  .splitscale-doc { position:absolute; left:700px; top:330px; width:96px; height:124px; border-radius:8px; background:#f4f0e6;
+    box-shadow:0 12px 36px rgba(0,0,0,0.6); }
+  .splitscale-docl { position:absolute; left:14px; right:14px; height:6px; border-radius:3px; background:#6b6257; }
+  .splitscale-doclab { position:absolute; left:640px; width:216px; top:470px; text-align:center; font-weight:700; font-size:20px; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+</style>
+<div class="splitscale-wrap" data-composition-id="splitscale" data-width="1920" data-height="1080" data-duration="16.891">
+  <div class="splitscale-grid" id="splitscale-grid"></div>
+  <div class="splitscale-glow" id="splitscale-glowl" style="left:-160px; top:200px;"></div>
+  <div class="splitscale-glow" id="splitscale-glowr" style="left:1060px; top:120px;"></div>
+  <div class="splitscale-div" id="splitscale-div"></div>
+  <div class="splitscale-divdot" id="splitscale-divdot"></div>
+
+  <!-- the one shared EF scale: track, EF4 tick (unlabelled), rung lines, pointers, strike -->
+  <svg class="splitscale-svg" id="splitscale-scale" viewBox="0 0 1920 1080">
+    <defs><linearGradient id="splitscale-trkg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d0121f"/><stop offset="1" stop-color="#5a768f"/></linearGradient></defs>
+    <rect id="splitscale-trk" x="953" y="280" width="14" height="330" rx="7" fill="url(#splitscale-trkg)"/>
+    <path id="splitscale-t4" d="M925 445 H995" stroke="#93a3b2" stroke-width="4" stroke-linecap="round"/>
+    <path id="splitscale-r5" d="M760 330 H1160" stroke="rgba(208,18,31,0.6)" stroke-width="3"/>
+    <path id="splitscale-r3" d="M760 560 H1160" stroke="rgba(223,231,238,0.5)" stroke-width="3"/>
+    <polygon id="splitscale-mL" points="770,528 848,560 770,592" fill="#7fb2e5"/>
+    <polygon id="splitscale-mR" points="1150,528 1072,560 1150,592" fill="#e8c56a"/>
+    <polygon id="splitscale-gh" points="1150,298 1072,330 1150,362" fill="none" stroke="#e8c56a" stroke-width="4" stroke-dasharray="10 8"/>
+    <path id="splitscale-strike" d="M1052 604 L1172 516" stroke="#d0121f" stroke-width="12" stroke-linecap="round"/>
+  </svg>
+  <div class="splitscale-plate splitscale-p5" id="splitscale-p5">EF5</div>
+  <div class="splitscale-plate splitscale-p3" id="splitscale-p3">EF3</div>
+  <div class="splitscale-ghq" id="splitscale-ghq">?</div>
+
+  <div class="splitscale-side" id="splitscale-left" style="left:0;">
+    <div class="splitscale-key" id="splitscale-l-key" style="background:#7fb2e5;"></div>
+    <div class="splitscale-eyebrow" id="splitscale-l-eb">Oklahoma</div>
+    <div class="splitscale-name" id="splitscale-l-name">El Reno</div>
+    <div class="splitscale-year" id="splitscale-l-year">2013</div>
+    <svg class="splitscale-radar" id="splitscale-radar" viewBox="0 0 110 110">
+      <path d="M18 92 L40 70" stroke="#93a3b2" stroke-width="5" stroke-linecap="round"/>
+      <path d="M12 58 A34 34 0 0 0 52 98 Z" fill="#5a768f" stroke="#7fb2e5" stroke-width="3"/>
+      <path id="splitscale-arc1" d="M52 48 A22 22 0 0 1 62 70" fill="none" stroke="#7fb2e5" stroke-width="4" stroke-linecap="round"/>
+      <path id="splitscale-arc2" d="M60 34 A40 40 0 0 1 78 74" fill="none" stroke="#7fb2e5" stroke-width="4" stroke-linecap="round"/>
+      <path id="splitscale-arc3" d="M68 20 A58 58 0 0 1 94 78" fill="none" stroke="#7fb2e5" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <div class="splitscale-rlab" id="splitscale-rlab">Radar</div>
+    <div class="splitscale-rval" id="splitscale-rval">Nearly 300 mph</div>
+  </div>
+
+  <div class="splitscale-side" id="splitscale-right" style="left:960px;">
+    <div class="splitscale-key" id="splitscale-r-key" style="background:#e8c56a;"></div>
+    <div class="splitscale-eyebrow" id="splitscale-r-eb">North Dakota</div>
+    <div class="splitscale-name" id="splitscale-r-name">Enderlin</div>
+    <div class="splitscale-year" id="splitscale-r-year">2025</div>
+    <div class="splitscale-cnt" id="splitscale-cnt">
+      <div class="splitscale-cntv"><span id="splitscale-cntv">0</span></div>
+      <div class="splitscale-cntl" id="splitscale-cntl">Days Since June 20</div>
+    </div>
+    <div class="splitscale-path" id="splitscale-path"><div class="splitscale-pathc" id="splitscale-pathc"></div></div>
+    <div class="splitscale-q" id="splitscale-q">?</div>
+    <div class="splitscale-doc" id="splitscale-doc">
+      <div class="splitscale-docl" id="splitscale-docl1" style="top:18px; right:34px; background:#8e2020;"></div>
+      <div class="splitscale-docl" id="splitscale-docl2" style="top:40px;"></div>
+      <div class="splitscale-docl" id="splitscale-docl3" style="top:58px;"></div>
+      <div class="splitscale-docl" id="splitscale-docl4" style="top:76px; right:30px;"></div>
+      <div class="splitscale-docl" id="splitscale-docl5" style="top:94px;"></div>
+    </div>
+    <div class="splitscale-doclab" id="splitscale-doclab">NWS Statement</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 16.891;
+  const dash = (id) => { const p = document.getElementById(id); const L = Math.ceil(p.getTotalLength()) + 1; p.style.strokeDasharray = L; return L; };
+  const R5 = dash("splitscale-r5"), R3 = dash("splitscale-r3"), SK = dash("splitscale-strike");
+  tl.set(["#splitscale-l-key", "#splitscale-l-eb", "#splitscale-l-name", "#splitscale-l-year", "#splitscale-r-key", "#splitscale-r-eb", "#splitscale-r-name", "#splitscale-r-year",
+          "#splitscale-p5", "#splitscale-p3", "#splitscale-mL", "#splitscale-mR", "#splitscale-gh", "#splitscale-ghq", "#splitscale-t4",
+          "#splitscale-cnt", "#splitscale-radar", "#splitscale-rlab", "#splitscale-rval", "#splitscale-path", "#splitscale-q", "#splitscale-doc", "#splitscale-doclab"], { autoAlpha: 0 }, 0);
+  tl.set("#splitscale-r5", { strokeDashoffset: R5 }, 0);
+  tl.set("#splitscale-r3", { strokeDashoffset: R3 }, 0);
+  tl.set("#splitscale-strike", { strokeDashoffset: SK }, 0);
+  tl.set("#splitscale-trk", { scaleY: 0, svgOrigin: "960 610" }, 0);
+  tl.set("#splitscale-path", { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set(["#splitscale-arc1", "#splitscale-arc2", "#splitscale-arc3"], { autoAlpha: 0 }, 0);
+
+  /* ambient, whole window */
+  tl.fromTo("#splitscale-grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#splitscale-glowl", { x: 0, y: 0 }, { x: 260, y: -60, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#splitscale-glowr", { x: 0, y: 0 }, { x: -260, y: 80, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#splitscale-divdot", { y: 40 }, { y: 1020, duration: 5.6, ease: "none", repeat: 2 }, 0);
+  tl.fromTo("#splitscale-div", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power3.out" }, 0);
+  /* the shared scale grows up the divider, rungs draw out (labels wait for their words) */
+  tl.to("#splitscale-trk", { scaleY: 1, duration: 0.6, ease: "power3.out" }, 0.1);
+  tl.to("#splitscale-t4", { autoAlpha: 1, duration: 0.3 }, 0.4);
+  tl.to("#splitscale-r3", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 0.3);
+  tl.to("#splitscale-r5", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 0.45);
+
+  /* OCTOBER @0.64: the day counter under Enderlin starts running (June 20 -> Oct 6 = 108 days) */
+  tl.fromTo("#splitscale-cnt", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.64);
+  const cnt = { v: 0 };
+  const cv = document.getElementById("splitscale-cntv");
+  tl.to(cnt, { v: 108, duration: 15.3, ease: "power2.out", onUpdate: () => { cv.textContent = String(Math.round(cnt.v)); } }, 0.7);
+
+  /* ENDERLIN @1.84: right panel; its amber pointer lands on the EF3 rung, the one EF3 label slams on */
+  tl.fromTo(["#splitscale-r-key", "#splitscale-r-eb", "#splitscale-r-name", "#splitscale-r-year"], { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out", stagger: 0.06 }, 1.84);
+  tl.fromTo("#splitscale-mR", { autoAlpha: 0, x: 90 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power4.out" }, 2.0);
+  tl.fromTo("#splitscale-p3", { autoAlpha: 0, scale: 1.4, rotation: -9 }, { autoAlpha: 1, scale: 1, rotation: -3, duration: 0.22, ease: "power4.in" }, 2.1);
+  /* SAME NUMBER @3.36 */
+  tl.fromTo("#splitscale-p3", { scale: 1 }, { scale: 1.06, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 3.36);
+  /* EL RENO @4.16: left panel; its blue pointer lands on the same EF3 rung */
+  tl.fromTo(["#splitscale-l-key", "#splitscale-l-eb", "#splitscale-l-name", "#splitscale-l-year"], { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out", stagger: 0.06 }, 4.16);
+  tl.fromTo("#splitscale-mL", { autoAlpha: 0, x: -90 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power4.out" }, 4.3);
+  /* both pointers nudge into the one rung together: same number */
+  tl.fromTo("#splitscale-mL", { x: 0 }, { x: 10, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 4.9);
+  tl.fromTo("#splitscale-mR", { x: 0 }, { x: -10, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 4.9);
+
+  /* RADAR @6.10, NUMBERS @6.42: El Reno's radar reading */
+  tl.fromTo("#splitscale-radar", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 6.1);
+  tl.fromTo("#splitscale-rlab", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 6.1);
+  tl.fromTo("#splitscale-rval", { autoAlpha: 0, y: 26 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power4.out" }, 6.42);
+  tl.fromTo("#splitscale-arc1", { autoAlpha: 1 }, { autoAlpha: 0.15, duration: 0.5, ease: "power1.in", repeat: 9 }, 6.3);
+  tl.fromTo("#splitscale-arc2", { autoAlpha: 1 }, { autoAlpha: 0.15, duration: 0.5, ease: "power1.in", repeat: 9 }, 6.45);
+  tl.fromTo("#splitscale-arc3", { autoAlpha: 1 }, { autoAlpha: 0.15, duration: 0.5, ease: "power1.in", repeat: 9 }, 6.6);
+  /* EF5 LINE @7.76: the one EF5 label on the top rung */
+  tl.fromTo("#splitscale-p5", { autoAlpha: 0, scale: 1.4, rotation: -9 }, { autoAlpha: 1, scale: 1, rotation: -3, duration: 0.22, ease: "power4.in" }, 7.76);
+
+  /* ENDERLIN @9.52: its path draws; SOMETHING STRANGER @10.08: a question mark over it */
+  tl.to("#splitscale-path", { autoAlpha: 1, scaleX: 1, duration: 0.55, ease: "power3.out" }, 9.52);
+  tl.fromTo("#splitscale-q", { autoAlpha: 0, scale: 1.6, y: -20 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.3, ease: "back.out(2)" }, 10.08);
+  tl.fromTo("#splitscale-q", { y: 0 }, { y: -12, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 4 }, 10.4);
+
+  /* EF3 @13.64: the office that wrote it; Enderlin's pointer shakes on the rung */
+  tl.fromTo("#splitscale-mR", { rotation: 0 }, { rotation: 6, svgOrigin: "1111 560", duration: 0.07, ease: "power1.inOut", yoyo: true, repeat: 5 }, 13.64);
+  /* STATEMENT @14.82 */
+  tl.fromTo("#splitscale-doc", { autoAlpha: 0, y: 30, rotation: 6 }, { autoAlpha: 1, y: 0, rotation: 0, duration: 0.4, ease: "power3.out" }, 14.82);
+  tl.fromTo("#splitscale-doclab", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 14.95);
+  /* NUMBER @15.68 ... WRONG @16.22: the strike goes through Enderlin's pointer (not the shared EF3 label);
+     a dashed "?" pointer opens on Enderlin's side of the EF5 rung (the EF5 lands later, in October) */
+  tl.to("#splitscale-strike", { strokeDashoffset: 0, duration: 0.3, ease: "power3.out" }, 15.68);
+  tl.to("#splitscale-mR", { opacity: 0.55, duration: 0.3 }, 15.9);
+  tl.fromTo(["#splitscale-gh", "#splitscale-ghq"], { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 15.8);
+
+  /* exit: slide up and out in the last 0.6 s */
+  tl.to(["#splitscale-left", "#splitscale-right", "#splitscale-scale", "#splitscale-p5", "#splitscale-p3", "#splitscale-ghq"], { y: -40, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 16.27);
+  tl.to("#splitscale-div", { autoAlpha: 0, duration: 0.5 }, 16.3);
+  window.__timelines["splitscale"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
