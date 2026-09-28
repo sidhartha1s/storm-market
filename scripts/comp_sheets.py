@@ -63,7 +63,7 @@ def visible_time(t, start, dur, track, forward):
 
 
 out = ep / 'sheets' / 'frame-qc'; out.mkdir(parents=True, exist_ok=True)
-cards, missing = [], [c for c in want if c not in times or c not in hosts]
+cards, frame_paths, missing = [], [], [c for c in want if c not in times or c not in hosts]
 if missing:
     sys.exit(f'no frame times or no host mount for: {", ".join(missing)}')
 for comp in want:
