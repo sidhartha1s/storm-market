@@ -129,7 +129,7 @@ Visual: g-monsoon-calendar: a June to October bar, "onset" mark in mid June, "no
 
 Visual: g-bay-of-bengal-track: a low pressure symbol forms over the Bay of Bengal, tracks north over India, a rain shield spreads across the Nepal border · News18 Bihar river-in-spate shot, muted.
 
-> This storm began as a low pressure system over the Bay of Bengal, south of India, and moved north. Indian channels called it Cyclone Arnab, but it never became an official cyclone. By the time it reached the mountains it had lost its winds. It still carried the moisture of the ocean it came from.
+> This storm began as a low pressure system over the Bay of Bengal, east of India, and moved north. Indian channels called it Cyclone Arnab, but it never became an official cyclone. By the time it reached the mountains it had lost its winds. It still carried the moisture of the ocean it came from.
 
 
 ### A2-S3 — narration
@@ -261,7 +261,7 @@ Visual: g-toll-counter full: three counters side by side, each with outlet and d
 
 ### A4-S3 — narration
 
-> The outlet NewsBytes reached twenty four, and the Indian channel CNBC TV18 added both countries together to reach about seventy. The counts cover different places and different hours, and the missing move into the toll as searches go on.
+> The outlet NewsBytes reached twenty four, and the Indian channel CNBC TV eighteen added both countries together to reach about seventy. The counts cover different places and different hours, and the missing move into the toll as searches go on.
 
 
 ### A4-S4 — narration

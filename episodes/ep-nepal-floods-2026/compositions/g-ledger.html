@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- g-ledger (A4-S1, 18.683 s): three columns, Established / Disputed / Unknown. Only the Established claims land
+<!-- g-ledger (A4-S1, 18.883 s, host opens 0.2 s before the voice): three columns, Established / Disputed / Unknown. Only the Established claims land
      here, each on its word (retimed to words.json 29 Sep 26). The toll dispute plays in g-toll-counter-a4; the board
      returns with Disputed + Unknown in g-ledger-a4b (A4-S6). Sourcing: factcheck-C#1..#6, factcheck-A#13, -B#22, -D#3. -->
 <template>
@@ -21,7 +21,7 @@
     text-shadow:0 4px 20px rgba(0,0,0,0.7); }
   .gl-dissub { margin-top:10px; font-size:20px; font-weight:700; letter-spacing:3px; color:#93a3b2; text-transform:uppercase; }
 </style>
-<div id="gl-root" data-composition-id="g-ledger" data-width="1920" data-height="1080" data-duration="18.683">
+<div id="gl-root" data-composition-id="g-ledger" data-width="1920" data-height="1080" data-duration="18.883">
   <div class="gl-sweep" id="gl-sweep"></div>
 
   <div class="gl-hdr" id="gl-hdr-est" style="left:96px; color:#3fa15a">Established</div>
@@ -48,7 +48,7 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-ledger", P = "#gl-";
-  const DUR = 18.683;
+  const DUR = 18.883;
   const tl = gsap.timeline({ paused: true });
   tl.set([P+"hdr-est", P+"hdr-dis", P+"hdr-unk", P+"line-est", P+"line-dis", P+"line-unk"], { autoAlpha: 0 }, 0);
   tl.set([P+"line-est", P+"line-dis", P+"line-unk"], { scaleX: 0, transformOrigin: "left center" }, 0);
@@ -56,18 +56,18 @@ window.__timelines = window.__timelines || {};
   /* corner light sweeps across the whole window */
   tl.fromTo(P+"sweep", { x: -320 }, { x: 2200, duration: 8.5, ease: "none", repeat: 1 }, 0);
   /* 0.0 "Three things about this week are settled": headers land on the first word */
-  tl.fromTo([P+"hdr-est", P+"hdr-dis", P+"hdr-unk"], { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.1 }, 0.05);
-  tl.to([P+"line-est", P+"line-dis", P+"line-unk"], { scaleX: 1, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0.35);
-  tl.to([P+"hdr-est", P+"hdr-dis", P+"hdr-unk"], { opacity: 0.7, duration: 1.8, ease: "sine.inOut", yoyo: true, repeat: 8 }, 1.5);
+  tl.fromTo([P+"hdr-est", P+"hdr-dis", P+"hdr-unk"], { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.1 }, 0.25);
+  tl.to([P+"line-est", P+"line-dis", P+"line-unk"], { scaleX: 1, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0.55);
+  tl.to([P+"hdr-est", P+"hdr-dis", P+"hdr-unk"], { opacity: 0.7, duration: 1.8, ease: "sine.inOut", yoyo: true, repeat: 8 }, 1.7);
   /* 2.72 "The wall fell into the Kaligandaki" */
-  tl.to(P+"est1", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 2.57);
+  tl.to(P+"est1", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 2.77);
   /* 10.02 "filmed near the village of Lete" */
-  tl.to(P+"est2", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 9.87);
+  tl.to(P+"est2", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 10.07);
   /* 13.48 "the avalanche hit the Himlung camp" */
-  tl.to(P+"est3", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 13.33);
+  tl.to(P+"est3", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 13.53);
   /* exit: the toll counters take the frame next */
   tl.to([P+"hdr-est", P+"hdr-dis", P+"hdr-unk", P+"line-est", P+"line-dis", P+"line-unk", P+"est1", P+"est2", P+"est3"],
-        { x: "+=660", autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.95);
+        { x: "+=660", autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 18.15);
   window.__timelines[ID] = tl;
 })();
 </script>

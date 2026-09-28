@@ -123,7 +123,7 @@ of the year holding more water than at any other time.
 **Picture:** g-bay-of-bengal-track: a low pressure symbol forms over the Bay of Bengal, tracks north over India, a rain
 shield spreads across the Nepal border · News18 Bihar river-in-spate shot, muted.
 
-This storm began as a low pressure system over the Bay of Bengal, south of India, and moved north. Indian channels
+This storm began as a low pressure system over the Bay of Bengal, east of India, and moved north. Indian channels
 called it Cyclone Arnab, but it never became an official cyclone. By the time it reached the mountains it had lost its winds. It still carried the moisture of the ocean it came from.
 
 **Picture:** g-rain-bars: a small "northern India" label, two bars rising, "normal · 0.3 in" and "Sept 26–28 · 2.6 in",
@@ -218,8 +218,7 @@ Sept 27 · 12 / 7 missing", "ANI · 21 / 5 missing / 5 injured", "NewsBytes · 2
 anchor or map shot, muted, on "about seventy". [RS]
 
 The toll is the first thing the reports disagree on. On the twenty seventh, Nepal's disaster agency counted twelve lives lost and seven missing. Across the border in India, fifty six more were lost. That weekend, the Indian news agency
-ANI put Nepal at twenty one, with five missing. The outlet NewsBytes reached twenty four, and the Indian channel CNBC
-TV18 added both countries together to reach about seventy. The counts cover different places and different hours,
+ANI put Nepal at twenty one, with five missing. The outlet NewsBytes reached twenty four, and the Indian channel CNBC TV eighteen added both countries together to reach about seventy. The counts cover different places and different hours,
 and the missing move into the toll as searches go on. `[loop L5 closes]`
 
 **Picture:** a phone-frame mock of a social post, text blurred except "glacier collapse", a red "?" stamp · then the
