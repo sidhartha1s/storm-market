@@ -102,9 +102,14 @@ def main():
         af = f"volume={gain}dB"
         print(f"      input {in_i} LUFS / TP {in_tp} dBTP -> gain {gain:+.2f} dB")
 
-    print(f"[2/4] writing {master.name} (video copy, aac 256k) ...")
+    print(f"[2/4] writing {master.name} (video copy, aac 256k, BT.709 tv-range tags) ...")
     r = subprocess.run(
+        # -c:v copy does not re-encode pixels, but ffmpeg still writes these as the output
+        # container's color metadata (verified: mp4 'colr' box) so players and YouTube's
+        # transcode read the master as BT.709 TV range instead of "unspecified".
         ["ffmpeg", "-hide_banner", "-y", "-i", str(src), "-c:v", "copy",
+         "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709",
+         "-color_range", "tv",
          "-af", af, "-c:a", "aac", "-b:a", "256k", str(master)],
         capture_output=True, text=True)
     if r.returncode != 0:
