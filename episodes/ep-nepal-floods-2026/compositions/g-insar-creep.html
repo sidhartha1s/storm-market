@@ -71,40 +71,40 @@ window.__timelines = window.__timelines || {};
   /* whole window: slow push on the radar box */
   tl.fromTo(P+"box", { scale: 1, transformOrigin: "50% 40%" }, { scale: 1.05, duration: DUR, ease: "none" }, 0);
 
-  /* 0.3: In August, someone did measure the Langtang slope */
-  tl.fromTo(P+"ridge", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 0.3);
-  tl.fromTo(P+"ridgelab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.6);
-  tl.fromTo(P+"eb", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.3);
-  tl.fromTo(P+"cntlab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.6);
+  /* 0.2: "In August, someone did measure the Langtang slope before it fell." */
+  tl.fromTo(P+"ridge", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 0.2);
+  tl.fromTo(P+"ridgelab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.5);
+  tl.fromTo(P+"eb", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.2);
+  tl.fromTo(P+"cntlab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.5);
 
-  /* 4.1: ICIMOD is a mountain research center in Kathmandu */
-  tl.fromTo(P+"card", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 4.1);
+  /* "Isamod is a mountain research center in Kathmandu." Isamod(ICIMOD) @4.56 */
+  tl.fromTo(P+"card", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 4.41);
 
-  /* 10.5-12.7: the slope slid up to twelve inches in three to four weeks */
+  /* "showed the slope slid up to 12 inches in three to four weeks." slid @10.12 */
   const IN = { v: 0 }, CM = { v: 0 };
   const inv = document.querySelector(P+"cntv"), cmv = document.querySelector(P+"cntvcm");
-  tl.to(P+"cnt", { autoAlpha: 1, duration: 0.3 }, 10.5);
-  tl.to(P+"cntsub", { autoAlpha: 1, duration: 0.3 }, 10.5);
-  tl.to(P+"ramp-fill", { autoAlpha: 1, duration: 0.3 }, 10.5);
-  tl.to(IN, { v: 12, duration: 2.2, ease: "power2.out", onUpdate: () => { if (inv) inv.textContent = Math.round(IN.v); } }, 10.5);
-  tl.to(CM, { v: 30, duration: 2.2, ease: "power2.out", onUpdate: () => { if (cmv) cmv.textContent = Math.round(CM.v); } }, 10.5);
-  tl.to(P+"bracket", { scaleX: 1, duration: 1.0, ease: "power2.out" }, 10.6);
-  tl.fromTo(P+"bracketlab", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.6);
-  tl.to(P+"cnt", { scale: 1.06, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "left center" }, 12.7);
+  tl.to(P+"cnt", { autoAlpha: 1, duration: 0.3 }, 9.97);
+  tl.to(P+"cntsub", { autoAlpha: 1, duration: 0.3 }, 9.97);
+  tl.to(P+"ramp-fill", { autoAlpha: 1, duration: 0.3 }, 9.97);
+  tl.to(IN, { v: 12, duration: 2.2, ease: "power2.out", onUpdate: () => { if (inv) inv.textContent = Math.round(IN.v); } }, 9.97);
+  tl.to(CM, { v: 30, duration: 2.2, ease: "power2.out", onUpdate: () => { if (cmv) cmv.textContent = Math.round(CM.v); } }, 9.97);
+  tl.to(P+"bracket", { scaleX: 1, duration: 1.0, ease: "power2.out" }, 10.07);
+  tl.fromTo(P+"bracketlab", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.07);
+  tl.to(P+"cnt", { scale: 1.06, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "left center" }, 12.17);
 
-  /* 15.0: no agency had published radar from before September twenty seventh — crossfade to empty */
-  tl.to([P+"ramp-fill", P+"bracket", P+"bracketlab", P+"ridgelab", P+"card"], { autoAlpha: 0, duration: 0.5 }, 15.0);
-  tl.to(P+"ridge", { fill: "#0e161e", duration: 0.5 }, 15.0);
-  tl.fromTo(P+"emptyridgelab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 15.3);
-  tl.fromTo([P+"qmark", P+"qtext"], { autoAlpha: 0, scale: 1.8 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 15.4);
-  tl.fromTo(P+"empty", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 15.7);
+  /* "no agency had published radar from before September 27." no @15.92 — crossfade to empty */
+  tl.to([P+"ramp-fill", P+"bracket", P+"bracketlab", P+"ridgelab", P+"card"], { autoAlpha: 0, duration: 0.5 }, 15.77);
+  tl.to(P+"ridge", { fill: "#0e161e", duration: 0.5 }, 15.77);
+  tl.fromTo(P+"emptyridgelab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 16.07);
+  tl.fromTo([P+"qmark", P+"qtext"], { autoAlpha: 0, scale: 1.8 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 16.17);
+  tl.fromTo(P+"empty", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 16.47);
 
-  /* 21.0: hold, the stamp breathes once */
-  tl.to([P+"qmark", P+"qtext"], { scale: 1.05, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 21.0);
+  /* "By the 29th, the reports couldn't even agree..." reports @21.84: hold, the stamp breathes once */
+  tl.to([P+"qmark", P+"qtext"], { scale: 1.05, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 21.69);
 
-  /* exit 25.4 */
-  tl.to([P+"eb", P+"cnt", P+"cntsub", P+"cntlab", P+"empty"], { x: 660, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 25.4);
-  tl.to([P+"emptyridgelab", P+"qmark", P+"qtext", P+"ridge"], { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 25.4);
+  /* exit 24.45, finishes 25.05 (D-0.1 = 25.143); holds through "the storm had taken." @24.50 */
+  tl.to([P+"eb", P+"cnt", P+"cntsub", P+"cntlab", P+"empty"], { x: 660, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 24.45);
+  tl.to([P+"emptyridgelab", P+"qmark", P+"qtext", P+"ridge"], { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 24.45);
   window.__timelines[ID] = tl;
 })();
 </script>
