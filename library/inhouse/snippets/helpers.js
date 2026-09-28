@@ -85,11 +85,12 @@ function wirePillarboxBlurfill() {
 }
 
 /* ---- log-space camera zoom: a plain linear scale tween on a push/pull-out over ~1.5x reads
-   as decelerating even at ease:"none" — scale is exponential, not additive, so a 1->4x move
-   is already at scale 2 by 50% of the TIME but that's only 33% of the way through the visual
-   "zoom" (log(2)/log(4)); the eye reads a fast start, a long slow crawl. Interpolate in LOG
-   space instead so perceived zoom speed is constant. Use for any camera push/pull-out over
-   ~1.5x; a smaller move is fine as a plain fromTo (mg-quickref "Motion and exits"). ---- */
+   as uneven speed (a push-in slows down, a pull-out speeds up) even at ease:"none" -- scale is
+   exponential, not additive, so a 1->4x move is only at scale 2.5 by 50% of the TIME, which is
+   already 66% of the way through the visual "zoom" (log(2.5)/log(4) = 0.661); it doesn't reach
+   the log midpoint, scale 2, until 33% of the time. Interpolate in LOG space instead so
+   perceived zoom speed is constant. See references/mg-quickref.md "Motion and exits" for the
+   ~1.5x threshold rule. ---- */
 function logLerpScale(fromScale, toScale, t) {
   return Math.exp(Math.log(fromScale) + (Math.log(toScale) - Math.log(fromScale)) * t);
 }
