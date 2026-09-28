@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-search-card (A3, "Base camp", 6:09): lower-left glass card over WION rescue footage. Source:
+     episodes/ep-nepal-floods-2026/mg_specs/g-search-card.md. factcheck-D #3: 16 total, 4 found by Sept 28, 12
+     missing, 15+ ft of snow. Snow/human scale: 14.667 px/ft, snow bar 220px (15 ft), human silhouette 88px (6 ft),
+     ratio 2.5 (python-checked).
+     Cues @175wpm from beat start ("A helicopter reached the camp..."): snow/human diagram 0.5, snow bar grows
+     1.0-3.0 landing on CUE "snow about fifteen feet deep" @est 7.20, row "16" 7.6 CUE "Sixteen workers had been at
+     the camp" @est 8.91, row "4" 13.2 CUE "found four" @est 13.71, row "12" 14.3 CUE "twelve were still missing"
+     @est 14.74. Exit 16.9. Duration 17.5s declared. -->
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family: Arial, sans-serif; color:#f2f5f8; }
+  .sc-card { position:absolute; left:96px; bottom:110px; width:760px; height:520px; box-sizing:border-box;
+    padding:50px 60px; overflow:hidden;
+    background: rgba(10,16,24,0.55); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; box-shadow:0 30px 90px rgba(0,0,0,0.5); }
+  .sc-row { position:absolute; left:60px; }
+  .sc-r1 { top:40px; } .sc-r2 { top:120px; } .sc-r3 { top:200px; }
+  .sc-num { display:inline-block; font-family:'Courier New',monospace; font-weight:700; font-size:60px; margin-right:20px; vertical-align:middle; }
+  .sc-lab { display:inline-block; font-weight:700; font-size:19px; letter-spacing:3px; color:#93a3b2; vertical-align:middle; }
+  .sc-diagram { position:absolute; left:540px; top:100px; width:180px; height:280px; }
+  .sc-base { position:absolute; left:0; top:260px; width:180px; height:2px; background:#2a3644; }
+  .sc-bar { position:absolute; bottom:20px; width:30px; box-sizing:border-box; transform-origin:bottom center; }
+  .sc-human { left:0; height:88px; background:linear-gradient(180deg, rgba(220,220,220,0.4), rgba(220,220,220,0.08)); }
+  .sc-snow { left:80px; height:220px; background:linear-gradient(180deg, rgba(223,231,238,0.55), rgba(223,231,238,0.1)); }
+  .sc-dlab { position:absolute; width:130px; text-align:center; font-weight:700; font-size:19px; color:#93a3b2; }
+  .sc-humanlab { left:-50px; top:170px; }
+  .sc-snowlab { left:30px; top:0px; }
+</style>
+<div id="root" data-composition-id="g-search-card" data-width="1920" data-height="1080" data-duration="17.5">
+  <div class="sc-card" id="sc-card">
+    <div class="sc-row sc-r1" id="sc-r1"><span class="sc-num" id="sc-v1" style="color:#dfe7ee">0</span><span class="sc-lab">AT BASE CAMP</span></div>
+    <div class="sc-row sc-r2" id="sc-r2"><span class="sc-num" id="sc-v2" style="color:#7fb2e5">0</span><span class="sc-lab">FOUND &middot; SEPT 28</span></div>
+    <div class="sc-row sc-r3" id="sc-r3"><span class="sc-num" id="sc-v3" style="color:#e74c3c">0</span><span class="sc-lab">MISSING</span></div>
+    <div class="sc-diagram" id="sc-diagram">
+      <div class="sc-base" id="sc-base"></div>
+      <div class="sc-bar sc-human" id="sc-human"></div>
+      <div class="sc-bar sc-snow" id="sc-snow"></div>
+      <div class="sc-dlab sc-humanlab" id="sc-humanlab">6 FT</div>
+      <div class="sc-dlab sc-snowlab" id="sc-snowlab">~15 FT SNOW</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 17.5;
+  tl.set(["#sc-r1", "#sc-r2", "#sc-r3", "#sc-humanlab", "#sc-snowlab"], { autoAlpha: 0 }, 0);
+  tl.set(["#sc-human", "#sc-snow"], { scaleY: 0 }, 0);
+  tl.set("#sc-base", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* ambient: card entrance + a slow beam sweep */
+  tl.fromTo("#sc-card", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0.0);
+
+  /* SNOW ABOUT FIFTEEN FEET DEEP @7.20: diagram reveals first, snow bar grows ahead of the human bar */
+  tl.to("#sc-base", { scaleX: 1, duration: 0.4, ease: "power3.out" }, 0.5);
+  tl.to("#sc-human", { scaleY: 1, duration: 0.5, ease: "power3.out" }, 0.8);
+  tl.fromTo("#sc-humanlab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 1.2);
+  tl.to("#sc-snow", { scaleY: 1, duration: 1.6, ease: "power3.out" }, 1.0);
+  tl.fromTo("#sc-snowlab", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.6);
+
+  /* SIXTEEN WORKERS HAD BEEN AT THE CAMP @8.91 */
+  tl.fromTo("#sc-r1", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.6);
+  const c1 = { v: 0 };
+  tl.to(c1, { v: 16, duration: 1.1, ease: "power3.out", onUpdate: function () {
+    const e = document.getElementById("sc-v1"); if (e) e.textContent = Math.round(c1.v);
+  } }, 7.6);
+
+  /* FOUND FOUR @13.71 */
+  tl.fromTo("#sc-r2", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 13.2);
+  const c2 = { v: 0 };
+  tl.to(c2, { v: 4, duration: 0.7, ease: "power3.out", onUpdate: function () {
+    const e = document.getElementById("sc-v2"); if (e) e.textContent = Math.round(c2.v);
+  } }, 13.2);
+
+  /* TWELVE WERE STILL MISSING @14.74 */
+  tl.fromTo("#sc-r3", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 14.3);
+  const c3 = { v: 0 };
+  tl.to(c3, { v: 12, duration: 0.9, ease: "power3.out", onUpdate: function () {
+    const e = document.getElementById("sc-v3"); if (e) e.textContent = Math.round(c3.v);
+  } }, 14.3);
+  tl.to("#sc-v3", { scale: 1.06, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 15.3);
+
+  /* exit */
+  tl.to("#sc-card", { x: -700, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  window.__timelines["g-search-card"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
