@@ -59,8 +59,8 @@ if HAVE_FFMPEG:
         clip = Path(d) / "flash.mp4"
         fps = 10
         # 2s gray clip at fps=10 (20 frames) with a single white flash frame at frame 10 (t=1.0s),
-        # built via ffmpeg's own select filter so the injected frame is exactly one frame wide.
-        # a flat gray clip with one white frame at n=10 (t=1.0s), via a per-frame luma expr
+        # built via a per-frame luma expr (geq) keyed on the frame index N, so the injected
+        # frame is exactly one frame wide.
         r = subprocess.run(
             ["ffmpeg", "-y", "-v", "error",
              "-f", "lavfi", "-i", f"color=c=gray:s=64x64:r={fps}:d=2",
