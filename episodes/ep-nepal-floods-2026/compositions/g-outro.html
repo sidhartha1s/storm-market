@@ -41,20 +41,27 @@
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
-  /* card starts as the Z narration's "This was The Warning Hour." ends; no VO under this card (bed out). */
+  /* RE-ANCHORED (coordinator update): host now starts 4.3s earlier and runs 12.273s, over the tail end of
+     z1-s2 plus the 4s bed-out tail. Sheet words (+4.3s shift applied): 4.48 peaks, 4.76 work, 5.12 under,
+     5.44 fresh, 5.78 snow., 6.66 This, 6.86 was, 7.10 the, 7.28 warning, 7.52 hour. — that line ("...peaks
+     work under fresh snow. This was the warning hour.") is z1-s2's closing line, not this card's; the
+     wordmark's first reveal is held past comp-local 4.3 and past those words, matching cut in only once
+     "hour." finishes (~7.9), consistent with the brief's "no VO under this card, bed out." Ambient drift
+     (stage/glow/grid) stays continuous from t=0 so the pre-reveal window is never a static hold. */
   const tl = gsap.timeline({ paused: true });
-  const DUR = 4.5;
+  const DUR = 12.273;
   tl.set("#ou-rule", { scaleX: 0, transformOrigin: "50% 50%" }, 0);
+  tl.set(["#ou-w1", "#ou-w2", "#ou-w3"], { autoAlpha: 0, y: 10 }, 0);
 
   /* ambient, whole window: slow push on the stage, glow and grid drift, never a static hold */
   tl.fromTo("#ou-stage", { scale: 1 }, { scale: 1.05, transformOrigin: "50% 50%", duration: DUR, ease: "none" }, 0);
   tl.fromTo("#ou-glow", { x: -80 }, { x: 80, duration: DUR, ease: "none" }, 0);
   tl.fromTo("#ou-grid", { x: 0 }, { x: 70, duration: DUR, ease: "none" }, 0);
 
-  /* match cut: the wordmark is there on the first frame and settles */
-  tl.fromTo(["#ou-w1", "#ou-w2", "#ou-w3"], { y: 10 }, { y: 0, duration: 0.4, ease: "power3.out", stagger: 0.05 }, 0);
-  tl.to("#ou-rule", { scaleX: 1, duration: 0.9, ease: "power3.out" }, 0.3);
-  tl.fromTo("#ou-sweep", { x: -240 }, { x: 1420, duration: 1.6, ease: "power1.inOut" }, 0.5);
+  /* 7.9 (after "hour." @7.52 finishes): match-cut wordmark settle, first reveal well past the 4.3s floor */
+  tl.to(["#ou-w1", "#ou-w2", "#ou-w3"], { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.05 }, 7.9);
+  tl.to("#ou-rule", { scaleX: 1, duration: 0.9, ease: "power3.out" }, 8.2);
+  tl.fromTo("#ou-sweep", { x: -240 }, { x: 1420, duration: 1.6, ease: "power1.inOut" }, 8.4);
 
   /* fade to black by the end, the 4 s bed-out tail */
   tl.to("#ou-stage", { autoAlpha: 0, duration: 0.92, ease: "power1.in" }, DUR - 0.92);
