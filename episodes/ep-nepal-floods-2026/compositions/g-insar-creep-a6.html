@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-insar-creep-a6 (A6 return, small): callback lower-third card, the already-known Langtang figure (12 in /
+     30 cm) then crossfades to the still-empty Kali Gandaki state (mg_specs/g-insar-creep-a6.md). Lower-third
+     anchor per tokens.md (left 110, bottom 110). Facts: factcheck-B#20, #22 (same as g-insar-creep). -->
+<template>
+<style>
+  #gia6-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; }
+  .gia6-card { position:absolute; left:110px; bottom:110px; width:620px; height:380px; border-radius:20px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 20px 60px rgba(0,0,0,0.45); box-sizing:border-box; inset:auto; }
+  .gia6-eb { position:absolute; left:138px; bottom:464px; font-weight:700; font-size:20px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; inset:auto; }
+  .gia6-title { position:absolute; left:138px; bottom:380px; font-family:'Arial Black', Arial, sans-serif; font-size:30px; color:#f2f5f8; white-space:nowrap; inset:auto; }
+  .gia6-cnt { position:absolute; left:138px; bottom:270px; font-family:'Courier New', monospace; font-weight:700; font-size:70px; color:#e74c3c; white-space:nowrap; inset:auto; }
+  .gia6-sub { position:absolute; left:138px; bottom:230px; font-family:'Courier New', monospace; font-size:26px; color:#93a3b2; white-space:nowrap; inset:auto; }
+  .gia6-bar { position:absolute; left:138px; bottom:200px; width:560px; height:14px; border-radius:7px; overflow:hidden; background:#0e161e; inset:auto; }
+  .gia6-ramp { position:absolute; left:0; top:0; width:560px; height:14px; background:linear-gradient(90deg, #3fa15a, #d8a13a 55%, #c0392b); }
+  .gia6-q { position:absolute; left:660px; bottom:230px; font-family:'AbrilFig', Georgia, serif; font-size:52px; color:#d0121f; inset:auto; }
+</style>
+<div id="gia6-root" data-composition-id="g-insar-creep-a6" data-width="1920" data-height="1080" data-duration="15">
+  <div class="gia6-card" id="gia6-card">
+    <div class="gia6-eb" id="gia6-eb">Satellite Radar &middot; Langtang</div>
+    <div class="gia6-title" id="gia6-title">Langtang &middot; Aug 2026</div>
+    <div class="gia6-cnt" id="gia6-cnt">12 in</div>
+    <div class="gia6-sub" id="gia6-sub">30 cm</div>
+    <div class="gia6-bar"><div class="gia6-ramp" id="gia6-ramp"></div></div>
+    <div class="gia6-q" id="gia6-q" style="opacity:0">?</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-insar-creep-a6", P = "#gia6-";
+  const DUR = 15;
+  const tl = gsap.timeline({ paused: true });
+  tl.set(P+"card", { autoAlpha: 0, y: 20 }, 0);
+  tl.set([P+"eb", P+"title", P+"cnt", P+"sub", P+"q"], { autoAlpha: 0 }, 0);
+  tl.set(P+"ramp", { scaleX: 1, transformOrigin: "left center" }, 0);
+
+  /* 0.3: The tool that did see Langtang moving was satellite radar */
+  tl.to(P+"card", { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.3);
+  tl.fromTo(P+"eb", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.4);
+  tl.fromTo(P+"title", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.55);
+  tl.fromTo(P+"cnt", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.7);
+  tl.fromTo(P+"sub", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.85);
+
+  /* 4.8: measure ground motion from orbit to a fraction of an inch — ramp pulses once, already resolved */
+  tl.to(P+"ramp", { scaleX: 1.02, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 4.8);
+
+  /* 8.0: it only works when someone processes the images in time — crossfade to the empty state */
+  tl.to([P+"cnt", P+"sub"], { autoAlpha: 0, duration: 0.4 }, 8.0);
+  tl.to(P+"title", { text: {} }, 8.0); /* placeholder position marker for the label swap below */
+  tl.call(() => { document.getElementById("gia6-title").textContent = "Kali Gandaki · Sept"; }, null, 8.0);
+  tl.to(P+"ramp", { scaleX: 0, duration: 0.5, ease: "power2.in" }, 8.0);
+  tl.fromTo(P+"q", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 8.3);
+
+  /* 12.0: hold on the empty state */
+  tl.to(P+"q", { scale: 1.06, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 12.0);
+
+  /* exit 14.3 */
+  tl.to(P+"card", { y: 40, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 14.3);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
