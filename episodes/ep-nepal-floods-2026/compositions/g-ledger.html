@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-ledger (A4 spine, full act, 102 s): three columns, Established / Disputed / Unknown; each claim slides into
+     its column on the voice and stays for the rest of the act (mg_specs/g-ledger.md). Claim text and sourcing:
+     Established = factcheck-C#1,#2,#3. Disputed = factcheck-C#4,#5,#6 (12/21/24, reports disagree). Unknown = "how
+     long the river was blocked" scoped to DURATION only (factcheck-A#13; factcheck-C#12 confirms the blockage
+     itself happened, so this entry is intentionally narrower than "was it blocked"), "12 crew still missing"
+     (factcheck-D#3), "any reading of either slope before it moved" (factcheck-B#22). Cues estimated 175 wpm from
+     the A4 paragraph start (mg-quickref timing rule). -->
+<template>
+<style>
+  #gl-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 40%, #0b1016 0%, #030507 78%); }
+  .gl-sweep { position:absolute; left:0; top:0; width:320px; height:1080px;
+    background:linear-gradient(100deg, transparent, rgba(127,178,229,0.06), transparent); }
+  .gl-hdr { position:absolute; top:140px; font-weight:700; font-size:26px; letter-spacing:8px; text-transform:uppercase; white-space:nowrap; }
+  .gl-hdrline { position:absolute; top:178px; height:4px; border-radius:2px; }
+  .gl-chip { position:absolute; padding:18px 26px 20px; border-radius:16px; box-sizing:border-box;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); font-size:24px; font-weight:700; line-height:32px; color:#dfe7ee; }
+  .gl-dischip { padding:22px 30px 26px; text-align:center; }
+  .gl-disnum { font-family:'AbrilFig', Georgia, serif; font-size:60px; color:#d0121f; line-height:1;
+    text-shadow:0 4px 20px rgba(0,0,0,0.7); }
+  .gl-dissub { margin-top:10px; font-size:20px; font-weight:700; letter-spacing:3px; color:#93a3b2; text-transform:uppercase; }
+</style>
+<div id="gl-root" data-composition-id="g-ledger" data-width="1920" data-height="1080" data-duration="102">
+  <div class="gl-sweep" id="gl-sweep"></div>
+
+  <div class="gl-hdr" id="gl-hdr-est" style="left:96px; color:#3fa15a">Established</div>
+  <div class="gl-hdrline" id="gl-line-est" style="left:96px; width:508px; background:#3fa15a"></div>
+  <div class="gl-hdr" id="gl-hdr-dis" style="left:700px; color:#d8a13a">Disputed</div>
+  <div class="gl-hdrline" id="gl-line-dis" style="left:700px; width:500px; background:#d8a13a"></div>
+  <div class="gl-hdr" id="gl-hdr-unk" style="left:1320px; color:#5a768f">Unknown</div>
+  <div class="gl-hdrline" id="gl-line-unk" style="left:1320px; width:504px; background:#5a768f"></div>
+
+  <div class="gl-chip" id="gl-est1" style="left:96px; top:220px; width:508px;">Wall Fell &middot; Sept 27, After Rain</div>
+  <div class="gl-chip" id="gl-est2" style="left:96px; top:350px; width:508px;">Video From That Day &middot; Lete, Mustang</div>
+  <div class="gl-chip" id="gl-est3" style="left:96px; top:480px; width:508px;">Avalanche Hit The Camp</div>
+
+  <div class="gl-chip gl-dischip" id="gl-dis" style="left:700px; top:220px; width:500px;">
+    <div class="gl-disnum" id="gl-disnum">12 &middot; 21 &middot; 24</div>
+    <div class="gl-dissub" id="gl-dissub">The Toll: Reports Disagree</div>
+  </div>
+
+  <div class="gl-chip" id="gl-unk1" style="left:1320px; top:220px; width:504px;">How Long The River Was Blocked</div>
+  <div class="gl-chip" id="gl-unk2" style="left:1320px; top:350px; width:504px;">12 Crew Still Missing</div>
+  <div class="gl-chip" id="gl-unk3" style="left:1320px; top:480px; width:504px;">Any Reading Of Either Slope Before It Moved</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-ledger", P = "#gl-";
+  const DUR = 102;
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P+"hdr-est", P+"hdr-dis", P+"hdr-unk", P+"line-est", P+"line-dis", P+"line-unk"], { autoAlpha: 0 }, 0);
+  tl.set([P+"line-est", P+"line-dis", P+"line-unk"], { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set([P+"est1", P+"est2", P+"est3", P+"dis", P+"unk1", P+"unk2", P+"unk3"], { autoAlpha: 0, x: -40 }, 0);
+
+  /* whole window: the corner light sweeps continuously, 12 passes across 102 s */
+  tl.fromTo(P+"sweep", { x: -320 }, { x: 2200, duration: 8.5, ease: "none", repeat: 12 }, 0);
+
+  /* 0.3: Three things about this week are settled — all three headers land together */
+  tl.fromTo([P+"hdr-est", P+"hdr-dis", P+"hdr-unk"], { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.1 }, 0.3);
+  tl.to([P+"line-est", P+"line-dis", P+"line-unk"], { scaleX: 1, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0.6);
+  /* headers breathe gently for the whole 102 s so the board is never still between claims */
+  tl.to([P+"hdr-est", P+"hdr-dis", P+"hdr-unk"], { opacity: 0.7, duration: 1.8, ease: "sine.inOut", yoyo: true, repeat: 27 }, 1.5);
+
+  /* 7.2: The wall fell into the Kali Gandaki on September twenty seventh, after days of rain */
+  tl.to(P+"est1", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 7.2);
+  /* 12.3: filmed near the village of Lete in Mustang district */
+  tl.to(P+"est2", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 12.3);
+  /* 18.5: the avalanche hit the Himlung camp */
+  tl.to(P+"est3", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 18.5);
+
+  /* 22.0: the reports disagree on — the disputed chip slams in */
+  tl.fromTo(P+"dis", { autoAlpha: 0, x: 0, scale: 1.15 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.in" }, 22.0);
+  tl.fromTo(P+"disnum", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 22.3);
+  tl.to(P+"disnum", { scale: 1.06, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "center" }, 22.7);
+  tl.fromTo(P+"dissub", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 23.0);
+
+  /* 80.9: Some of it is still open — the Unknown header pulses awake */
+  tl.to(P+"hdr-unk", { scale: 1.05, duration: 0.35, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "left center" }, 80.9);
+
+  /* 87.5: how long the debris held the river back */
+  tl.to(P+"unk1", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 87.5);
+  /* 93.3: twelve of the crew still missing */
+  tl.to(P+"unk2", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 93.3);
+  /* 98.4: no agency has published a radar or sensor reading from either slope before it moved */
+  tl.to(P+"unk3", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 98.4);
+
+  /* exit 101.4 — chapter blackout follows */
+  tl.to([P+"hdr-est", P+"hdr-dis", P+"hdr-unk", P+"line-est", P+"line-dis", P+"line-unk",
+         P+"est1", P+"est2", P+"est3", P+"dis", P+"unk1", P+"unk2", P+"unk3"],
+        { x: "+=660", autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 101.4);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

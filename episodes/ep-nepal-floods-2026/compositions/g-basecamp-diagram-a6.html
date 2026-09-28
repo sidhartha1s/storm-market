@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-basecamp-diagram-a6 (A6 tail hold, 3 s): same camp diagram at dawn, quiet, script stage direction
+     "(hold 3 s, base camp diagram at dawn, bed only under a moving picture)". Reuses g-basecamp-diagram geometry
+     (mg_specs/g-basecamp-diagram-a6.md); everything is already revealed at t=0, only drift moves. No panel text. -->
+<template>
+<style>
+  #gbda6-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 40% 35%, #2a2118 0%, #0b0806 78%); }
+  .gbda6-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gbda6-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#c8a877; }
+</style>
+<div id="gbda6-root" data-composition-id="g-basecamp-diagram-a6" data-width="1920" data-height="1080" data-duration="3">
+  <svg class="gbda6-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <linearGradient id="gbda6-rockgrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6b5a45"/><stop offset="1" stop-color="#2a3644"/></linearGradient>
+      <linearGradient id="gbda6-avagrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0dcc0" stop-opacity="0"/><stop offset="1" stop-color="#f0dcc0" stop-opacity="0.5"/></linearGradient>
+      <radialGradient id="gbda6-rimgrad" cx="0.5" cy="0" r="0.7"><stop offset="0" stop-color="#e8c56a" stop-opacity="0.35"/><stop offset="1" stop-color="#e8c56a" stop-opacity="0"/></radialGradient>
+    </defs>
+    <g id="gbda6-scene">
+      <path id="gbda6-massif" d="M700,150 L1170,830 L230,830 Z" fill="url(#gbda6-rockgrad)" stroke="#8a7048" stroke-width="2"/>
+      <path id="gbda6-rim" d="M700,150 L1170,830 L950,830 Z" fill="url(#gbda6-rimgrad)"/>
+      <path id="gbda6-snowcap" d="M700,150 L790,330 L610,330 Z" fill="#f4e9d8" opacity="0.92"/>
+      <path id="gbda6-avalanche" d="M700,230 L760,230 L650,780 L380,780 Z" fill="url(#gbda6-avagrad)"/>
+      <path id="gbda6-tent1" d="M360,822 L380,790 L400,822 Z" fill="#d8a13a"/>
+      <path id="gbda6-tent2" d="M420,822 L440,790 L460,822 Z" fill="#d8a13a"/>
+      <path id="gbda6-tent3" d="M480,822 L500,790 L520,822 Z" fill="#d8a13a"/>
+      <path id="gbda6-tent4" d="M540,822 L560,790 L580,822 Z" fill="#d8a13a"/>
+      <path id="gbda6-tent5" d="M600,822 L620,790 L640,822 Z" fill="#d8a13a"/>
+      <path id="gbda6-rope" d="M500,790 L830,430" fill="none" stroke="#f4e9d8" stroke-width="3" stroke-dasharray="8 6" opacity="0.85"/>
+      <circle id="gbda6-c1ring" cx="830" cy="430" r="14" fill="none" stroke="#f4e9d8" stroke-width="4"/>
+      <text class="gbda6-lab" id="gbda6-c1lab" x="850" y="420">CAMP 1</text>
+    </g>
+  </svg>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-basecamp-diagram-a6", P = "#gbda6-";
+  const DUR = 3;
+  const tl = gsap.timeline({ paused: true });
+  /* everything already revealed at t=0: this is a hold, not a build */
+  tl.set([P+"massif", P+"rim", P+"snowcap", P+"avalanche", P+"tent1", P+"tent2", P+"tent3", P+"tent4", P+"tent5",
+          P+"rope", P+"c1ring", P+"c1lab"], { autoAlpha: 1 }, 0);
+  /* whole 3 s: a slow dawn drift, the only motion in the hold */
+  tl.fromTo(P+"scene", { scale: 1, x: 0, svgOrigin: "700 500" }, { scale: 1.015, x: -6, duration: DUR, ease: "none" }, 0);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
