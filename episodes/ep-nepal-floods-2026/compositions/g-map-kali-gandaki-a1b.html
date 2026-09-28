@@ -91,41 +91,32 @@ window.__timelines = window.__timelines || {};
     P + "t-jom", P + "t-must", P + "temple", P + "t-temple", P + "t-trail", P + "pk-dh", P + "pk-an", P + "t-dh", P + "t-an", P + "note"], { autoAlpha: 0 }, 0);
 
   /* ---- ambient, whole window ---- */
-  tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: 9.8, ease: "none", repeat: 3, yoyo: true }, 0);
+  tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: 5.5, ease: "none", repeat: 1, yoyo: true }, 0);
   tl.to(P + "cam", Object.assign(cam(1.04), { duration: DUR, ease: "none" }), 0);
   tl.fromTo(P + "nepal", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0);
-  tl.fromTo(P + "kgglow", { attr: { "stroke-opacity": 0.2 } }, { attr: { "stroke-opacity": 0.5 }, duration: 1.5, ease: "sine.inOut", repeat: 25, yoyo: true }, 0);
+  tl.fromTo(P + "kgglow", { attr: { "stroke-opacity": 0.2 } }, { attr: { "stroke-opacity": 0.5 }, duration: 1.5, ease: "sine.inOut", repeat: 6, yoyo: true }, 0);
   tl.fromTo(P + "src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 0.3);
 
-  /* ---- the dam downstream ---- */
-  tl.fromTo(P + "pin", { autoAlpha: 0, y: -50 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "bounce.out" }, CUES.dam);
-  tl.fromTo(P + "ring", { autoAlpha: 0.9, attr: { r: 9 } }, { autoAlpha: 0, attr: { r: 40 }, duration: 1.1, ease: "power2.out", repeat: 10, repeatDelay: 0.2 }, CUES.dam + 0.4);
-  tl.fromTo(P + "t-mw", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.dam + 0.2);
-  tl.fromTo(P + "t-dam", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.dam + 0.5);
+  /* ---- the dam pin / 144 MW / shut down: DROPPED, not spoken in this window (DOM stays hidden) ---- */
 
-  /* ---- the plant shut down ---- */
-  tl.to(P + "pin", { attr: { fill: "#4a5560" }, duration: 0.4, ease: "power2.out" }, CUES.shut);
-  tl.fromTo(P + "t-shut", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.shut + 0.1);
-
-  /* ---- the same valley: the dam steps back, the road north draws ---- */
-  tl.to([P + "t-mw", P + "t-dam", P + "t-shut", P + "pin"], { autoAlpha: 0.35, duration: 0.5, ease: "power2.out" }, CUES.valley);
-  tl.to(P + "route", { strokeDashoffset: 0, duration: 1.6, ease: "power2.inOut" }, CUES.mustang);
-  tl.fromTo([P + "pok", P + "beni", P + "jom"], { autoAlpha: 0, scale: 0.4, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.35, stagger: 0.4, ease: "back.out(2)" }, CUES.mustang);
-  tl.fromTo([P + "t-pok", P + "t-beni", P + "t-jom"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, stagger: 0.4, ease: "power3.out" }, CUES.mustang + 0.1);
-  tl.fromTo(P + "note", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.mustang + 0.3);
-  tl.fromTo(P + "t-must", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUES.mustang + 0.7);
-  tl.fromTo(P + "route", { attr: { "stroke-opacity": 1 } }, { attr: { "stroke-opacity": 0.55 }, duration: 1.2, ease: "sine.inOut", repeat: 13, yoyo: true }, CUES.mustang + 1.8);
+  /* ---- the same valley: the road north draws immediately ---- */
+  tl.to(P + "route", { strokeDashoffset: 0, duration: 2.45, ease: "power2.inOut" }, 0.05);
+  tl.fromTo([P + "pok", P + "beni", P + "jom"], { autoAlpha: 0, scale: 0.4, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.35, stagger: 0.5, ease: "back.out(2)" }, 0.3);
+  tl.fromTo([P + "t-pok", P + "t-beni", P + "t-jom"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, stagger: 0.5, ease: "power3.out" }, 0.5);
+  tl.fromTo(P + "note", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 2.6);
+  tl.fromTo(P + "t-must", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUES.mustang);
+  tl.fromTo(P + "route", { attr: { "stroke-opacity": 1 } }, { attr: { "stroke-opacity": 0.55 }, duration: 0.6, ease: "sine.inOut", repeat: 13, yoyo: true }, 2.5);
 
   /* ---- a temple both faiths visit ---- */
   tl.fromTo(P + "temple", { autoAlpha: 0, scale: 0, svgOrigin: "718.1 263.6" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.5)" }, CUES.temple);
   tl.fromTo(P + "t-temple", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.temple + 0.15);
 
-  /* ---- the Annapurna trails: a trekker walks the Jomsom-Muktinath leg (on the route line at every frame) ---- */
-  tl.fromTo([P + "pk-dh", P + "pk-an"], { autoAlpha: 0, scale: 0.3, transformOrigin: "50% 100%" }, { autoAlpha: 1, scale: 1, duration: 0.4, stagger: 0.15, ease: "back.out(2)" }, CUES.trails);
-  tl.fromTo([P + "t-dh", P + "t-an"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, stagger: 0.15, ease: "power3.out" }, CUES.trails + 0.2);
-  tl.to(P + "trek", { autoAlpha: 1, duration: 0.3 }, CUES.trails);
-  tl.fromTo(P + "trek", { x: T0.x, y: T0.y }, { x: T1.x, y: T1.y, duration: 5.2, ease: "none", repeat: 1, repeatDelay: 0.3 }, CUES.trails);
-  tl.fromTo(P + "t-trail", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.trails + 0.25);
+  /* ---- the Annapurna trails: a trekker walks the Jomsom-Muktinath leg (on the route line at every frame).
+     Dhaulagiri/Annapurna I peak pop-ins DROPPED (not spoken, no room); the walk is compressed from the
+     original 5.2 s + 0.3 s repeatDelay + 5.2 s return leg to one short one-way pass. ---- */
+  tl.to(P + "trek", { autoAlpha: 1, duration: 0.2 }, 10.0);
+  tl.fromTo(P + "trek", { x: T0.x, y: T0.y }, { x: T1.x, y: T1.y, duration: 0.6, ease: "none" }, 10.0);
+  tl.fromTo(P + "t-trail", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, CUES.trails);
 
   window.__timelines[ID] = tl;
 })();
