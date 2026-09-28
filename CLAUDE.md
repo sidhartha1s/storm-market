@@ -79,8 +79,10 @@ Script method and hook wording live in `references/script-os.md` and `script-fra
   pace and the real non-voice seconds. It fails outside target +/- 1 min; a script is not locked while it fails.
 - Tempo per lane lives in `config.yaml channel.tempo`; `tts_episode.py` applies it. Order: TTS, tempo, re-transcribe, THEN time graphics. `sweep_episode.py` fails a words.json or `data-duration` that runs past its wav.
 - TTS-safe text: spell out ALL dates, times and numbers, no paired dashes, sentences under 24 words, flowing connective sentences.
-- Homographs (read, lead, live, wind, tear, bass, close, present, record): respell the TTS copy phonetically ("reed"),
-  keep the script's wording, and listen to every such line once after TTS.
+- Homographs: `references/homographs.md` lists channel-relevant heteronyms with both senses and a hint;
+  `scripts/homograph_scan.py` (in `run_gates.py`) reports every occurrence in the TTS copy with its sentence so it
+  gets probed before the render. Never guess a respelling — probe it with the TTS and measure (F1 onset, vowel
+  length) or listen, then pick; keep the script's exact wording either way.
 
 ## Footage rules (claim-proof stack, never violate)
 - Spine: US government public domain (NOAA, NWS, NHC, FEMA, USGS, Coast Guard), Pexels and Pixabay, self-made radar and
