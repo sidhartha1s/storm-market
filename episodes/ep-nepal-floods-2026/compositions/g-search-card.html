@@ -53,9 +53,10 @@ window.__timelines = window.__timelines || {};
   tl.set(["#sc-human", "#sc-snow"], { scaleY: 0 }, 0);
   tl.set("#sc-base", { scaleX: 0, transformOrigin: "left center" }, 0);
 
-  /* ambient: card entrance + a slow breathing float for the whole window (host outlasts the built beats) */
+  /* ambient: card entrance + a slow breathing float for the whole window (host outlasts the built beats);
+     13 cycles of 1.5s (1.5*14=21.0) ran past D=19.735 -- 12 cycles (1.5*13=19.5) lands inside it */
   tl.fromTo("#sc-card", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0.0);
-  tl.fromTo("#sc-card", { y: 0 }, { y: -6, duration: 1.5, ease: "sine.inOut", yoyo: true, repeat: 13 }, 0.0);
+  tl.fromTo("#sc-card", { y: 0 }, { y: -6, duration: 1.5, ease: "sine.inOut", yoyo: true, repeat: 12 }, 0.0);
 
   /* diagram scale reference builds early (unspoken, static): base/human/6FT label */
   tl.to("#sc-base", { scaleX: 1, duration: 0.4, ease: "power3.out" }, 0.5);
