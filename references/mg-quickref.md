@@ -30,6 +30,9 @@ Read this, then `learnings/mg.md`. [G] = a gate fails it (gate named). A bespoke
 - Something visibly moves for the whole window: a scan line at 6 px/s or more, dot blips at most 1.5 s apart, a rotating sweep (1.3 px/s drift reads as a freeze). Stillness: a gap of 4 s or more with nothing moving fails ([G] beat_density and graphics_qc idle); that is the only number, no warning tier.
 - A graphic is a sequence, not a poster: reveal each element on its spoken word, build text line by line, then the finished graphic exits.
 - New information lands on the narrator's words, not on a clock. A hold that waits for the next impact point is correct as long as something drifts: a slight up/down float on the elements is enough (owner 26 Sep 26; the tanker hold after landing, with only rain moving, is not a defect).
+- A camera push/pull-out over ~1.5x uses `logZoom` (`library/inhouse/snippets/helpers.js`), not a
+  plain linear `fromTo` on scale — linear scale reads as decelerating on a big move since scale is
+  exponential, not additive. A smaller move is fine linear.
 - Panel in `fromTo(x:660 -> 0, 0.7, power3.out)`; rows `fromTo(autoAlpha 0, y:24 -> 0, 0.4)` ~0.6 s apart; bars `scaleX 0 -> 1`, `transformOrigin:"left center"`, 0.5 s; counters `to({v})` power4/power3.out writing a leaf, opening on the first tick's value, fast then slow into the final figure, secondary stat after. Punchy eases; at least one kinetic tween per two fades; fade-only fails [G graphics_qc].
 - Exits: panels and cards slide out (`to x:980, autoAlpha:0, 0.6, power3.in`, overshooting the slide, anchored to the comp's last ~0.6 s; check a frame at host end minus 0.5 s). A full-frame MG scene may end on a camera move, fade-through or cut, never a hard vanish of a single element mid-frame. ~1 s land time after the last beat, never cut on motion. Duration = max(declared, last cue + tail), never estimated.
 
