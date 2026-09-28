@@ -13,12 +13,17 @@
    rules (hard)" telling the editor to run it. Risers keep the existing end-of-line rule
    untouched.
 2. **`scripts/pop_scan.py`**, wired into `scripts/verify_render.sh`** — frame-diff spike detector:
-   downscales to 180x180 gray at the render's own fps (CPU-light), flags a frame whose diff to
-   BOTH neighbours is >3x the neighbours' diff to each other and above an absolute floor. **This
-   is the one REPORT-only check in `verify_render.sh`** — every other check in that script hard-
-   FAILs (exit 4) on a defect; pop-scan deliberately does not, because a real intentional quick
-   cut/flash-edit can trip the same "differs sharply from both neighbours" signature, so a human
-   call is required (documented in the script's own header and inline in `verify_render.sh`).
+   downscales to 180x180 gray at the render's own fps (CPU-light on the diff math; ffmpeg still
+   decodes full-resolution frames before scaling — the docstring's earlier "no full-resolution
+   decode" claim was wrong and is fixed), flags a frame whose diff to BOTH neighbours is >3x the
+   neighbours' diff to each other and above an absolute floor. **This is the one REPORT-only
+   check in `verify_render.sh`** — every other check in that script hard-FAILs (exit 4) on a
+   defect; pop-scan deliberately does not, because a real intentional quick cut/flash-edit can
+   trip the same "differs sharply from both neighbours" signature, so a human call is required
+   (documented in the script's own header, no more dangling "see PR" pointer). `verify_render.sh`
+   also no longer re-parses fps out of `index.html` a second time (reuses `$COMP_FPS`, already
+   parsed off `#root`), and guards the ffmpeg exit status so a failed decode reports "not run, not
+   clean" instead of the misleading "no spike frames found".
 3. **`scripts/master_deliverables.py`** — added `-colorspace bt709 -color_primaries bt709
    -color_trc bt709 -color_range tv` to the master's ffmpeg command. The master step is `-c:v
    copy` (no re-encode), so no `format=yuv420p` filter applies — verified ffmpeg still writes
