@@ -7,8 +7,11 @@
      mount the video under this comp with data-callback="frame-by-frame payoff"). Stills are PLACEHOLDER
      1920x1080 grey jpgs (media/collapse-f0..f3.jpg, ffmpeg-generated this session) pending the real clip
      grabs. Brief: mg_specs/g-collapse-3s.md.
-     Cues (local, @175wpm from "The video that spread that weekend"): f0+"0.0 S" 0.0, f1+"1.0 S" 6.17,
-     f2+"2.0 S" 12.34, f3+"3.0 S" 16.80, "REPLAY - FULL SPEED" 21.5, comp clears 23.5. Duration 26.5s. -->
+     RETIMED to real word timing (host 115.597+23.400, 3.1s shorter than the declared 26.5s): f0 mounts 0.0,
+     f1 crossfade lands ON "second" of "in the first second" (11.38), f2 crossfade lands ON "second," (16.36),
+     f3 crossfade lands ON "third," (20.68), REPLAY chip lands on "river," (22.46, end of "the debris reaches
+     the river"), comp clears by D-0.1=23.3 for the reused hook clip to play under it (index.html's job).
+     Duration 23.4s (host D). -->
 <template>
 <style>
   .c3f-wrap { position:absolute; inset:0; overflow:hidden; background:#04070c; }
@@ -24,7 +27,7 @@
     display:flex; align-items:center; justify-content:center;
     font-weight:700; font-size:22px; letter-spacing:3px; color:#e8c56a; }
 </style>
-<div class="c3f-wrap" data-composition-id="g-collapse-3s" data-width="1920" data-height="1080" data-duration="26.5">
+<div class="c3f-wrap" data-composition-id="g-collapse-3s" data-width="1920" data-height="1080" data-duration="23.4">
   <img class="c3f-still" id="c3f-f0" src="media/collapse-f0.jpg">
   <img class="c3f-still" id="c3f-f1" src="media/collapse-f1.jpg">
   <img class="c3f-still" id="c3f-f2" src="media/collapse-f2.jpg">
@@ -39,7 +42,7 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const D = 26.5;
+  const D = 23.4;
   const STILLS = ["#c3f-f0", "#c3f-f1", "#c3f-f2", "#c3f-f3"];
   function kb(sel, at, dur, fromScale, toScale, fromX, toX, fromY, toY) {
     tl.fromTo(sel, { scale: fromScale, x: fromX, y: fromY },
@@ -54,34 +57,34 @@ window.__timelines = window.__timelines || {};
 
   /* f0 @0.0, "0.0 S", slow Ken Burns so the still never reads frozen */
   tl.to("#c3f-chip0", { autoAlpha: 1, duration: 0.3 }, 0.1);
-  kb("#c3f-f0", 0.0, 6.4, 1.0, 1.04, 0, -6, 0, -4);
+  kb("#c3f-f0", 0.0, 11.23, 1.0, 1.04, 0, -6, 0, -4);
 
-  /* IN THE FIRST SECOND @6.17: f1 crossfades, chip swaps to "1.0 S" (pre-authored element, autoAlpha toggle) */
-  tl.to("#c3f-f0", { autoAlpha: 0, duration: 0.4 }, 6.17);
-  tl.to("#c3f-f1", { autoAlpha: 1, duration: 0.4 }, 6.17);
-  tl.to("#c3f-chip0", { autoAlpha: 0, duration: 0.2 }, 6.17);
-  tl.to("#c3f-chip1", { autoAlpha: 1, duration: 0.2 }, 6.17);
-  kb("#c3f-f1", 6.17, 6.17, 1.0, 1.035, 0, 5, 0, -5);
+  /* "in the first second" (11.04-11.38): f1 crossfades landing ON "second" (11.38) */
+  tl.to("#c3f-f0", { autoAlpha: 0, duration: 0.4 }, 11.23);
+  tl.to("#c3f-f1", { autoAlpha: 1, duration: 0.4 }, 11.23);
+  tl.to("#c3f-chip0", { autoAlpha: 0, duration: 0.2 }, 11.23);
+  tl.to("#c3f-chip1", { autoAlpha: 1, duration: 0.2 }, 11.23);
+  kb("#c3f-f1", 11.23, 4.98, 1.0, 1.035, 0, 5, 0, -5);
 
-  /* BY THE SECOND @12.34: f2 crossfades, chip swaps to "2.0 S" */
-  tl.to("#c3f-f1", { autoAlpha: 0, duration: 0.4 }, 12.34);
-  tl.to("#c3f-f2", { autoAlpha: 1, duration: 0.4 }, 12.34);
-  tl.to("#c3f-chip1", { autoAlpha: 0, duration: 0.2 }, 12.34);
-  tl.to("#c3f-chip2", { autoAlpha: 1, duration: 0.2 }, 12.34);
-  kb("#c3f-f2", 12.34, 4.46, 1.0, 1.03, 0, -5, 0, 4);
+  /* "By the second," (15.88-16.36): f2 crossfades landing ON "second," (16.36) */
+  tl.to("#c3f-f1", { autoAlpha: 0, duration: 0.4 }, 16.21);
+  tl.to("#c3f-f2", { autoAlpha: 1, duration: 0.4 }, 16.21);
+  tl.to("#c3f-chip1", { autoAlpha: 0, duration: 0.2 }, 16.21);
+  tl.to("#c3f-chip2", { autoAlpha: 1, duration: 0.2 }, 16.21);
+  kb("#c3f-f2", 16.21, 4.32, 1.0, 1.03, 0, -5, 0, 4);
 
-  /* BY THE THIRD @16.80: f3 crossfades, chip swaps to "3.0 S" */
-  tl.to("#c3f-f2", { autoAlpha: 0, duration: 0.4 }, 16.80);
-  tl.to("#c3f-f3", { autoAlpha: 1, duration: 0.4 }, 16.80);
-  tl.to("#c3f-chip2", { autoAlpha: 0, duration: 0.2 }, 16.80);
-  tl.to("#c3f-chip3", { autoAlpha: 1, duration: 0.2 }, 16.80);
-  kb("#c3f-f3", 16.80, 4.7, 1.0, 1.04, 0, 6, 0, -3);
+  /* "By the third," (20.38-20.68): f3 crossfades landing ON "third," (20.68) */
+  tl.to("#c3f-f2", { autoAlpha: 0, duration: 0.4 }, 20.53);
+  tl.to("#c3f-f3", { autoAlpha: 1, duration: 0.4 }, 20.53);
+  tl.to("#c3f-chip2", { autoAlpha: 0, duration: 0.2 }, 20.53);
+  tl.to("#c3f-chip3", { autoAlpha: 1, duration: 0.2 }, 20.53);
+  kb("#c3f-f3", 20.53, 2.37, 1.0, 1.04, 0, 6, 0, -3);
 
-  /* REPLAY - FULL SPEED chip lands @21.5, holds ~2s */
-  tl.fromTo("#c3f-replay", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 21.5);
+  /* REPLAY - FULL SPEED chip lands on "river," (22.46, end of "the debris reaches the river") */
+  tl.fromTo("#c3f-replay", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 22.31);
 
-  /* comp clears @23.5 so index.html's reused hook clip plays through under it (frame-by-frame payoff) */
-  tl.to(["#c3f-f3", "#c3f-chip3", "#c3f-replay"], { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 23.5);
+  /* comp clears by D-0.1=23.3 so index.html's reused hook clip plays through under it (frame-by-frame payoff) */
+  tl.to(["#c3f-f3", "#c3f-chip3", "#c3f-replay"], { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 22.9);
   tl.to({}, { duration: 0.01 }, D - 0.01);
   window.__timelines["g-collapse-3s"] = tl;
 })();

@@ -4,8 +4,11 @@
 <body>
 <!-- g-pore-pressure-a1 (A1 teaser): slope cross-section, a thin blue water line creeping upward inside it,
      a glass card citing USGS. SCHEMATIC, NOT TO SCALE (no real slope numbers). Brief: mg_specs/g-pore-pressure-a1.md
-     Cues (local, @175wpm from "Landslides like this build for days..."): hillside 0.3, water begins 3.43,
-     card 7.20, shudder 15.77, exit 21.0. Duration 23.5s. -->
+     RETIMED to real word timing (host 144.304+23.653, close to the declared 23.5s): card now lands EARLIER than
+     water (real speech says "U.S. Geological Survey" at 4.12-6.12, before "Rain soaks in slowly" at 10.58) --
+     card lands on "Survey" (6.12), water line begins on "Rain" (10.43) and finishes exactly as "gives way" is
+     spoken (16.80), shudder lands right there too (16.85), matching "all at once." Exit unchanged (21.0/21.2,
+     comfortably inside D-0.1=23.553). Duration 23.653s (host D). -->
 <template>
 <style>
   .pa1-wrap { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
@@ -19,7 +22,7 @@
   .pa1-head { font-family:'Arial Black', Arial, sans-serif; font-size:38px; color:#f2f5f8; margin-top:14px; line-height:1.15; }
   .pa1-sub { font-family:Georgia, serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:10px; }
 </style>
-<div class="pa1-wrap" data-composition-id="g-pore-pressure-a1" data-width="1920" data-height="1080" data-duration="23.5">
+<div class="pa1-wrap" data-composition-id="g-pore-pressure-a1" data-width="1920" data-height="1080" data-duration="23.653">
   <svg class="pa1-svg" viewBox="0 0 1920 1080">
     <defs>
       <clipPath id="pa1-hillclip"><polygon points="280,300 1000,880 96,880 96,300"/></clipPath>
@@ -43,7 +46,7 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const D = 23.5;
+  const D = 23.653;
   tl.set(["#pa1-hill"], { autoAlpha: 0, y: 20 }, 0);
   tl.set(["#pa1-schem", "#pa1-card"], { autoAlpha: 0 }, 0);
   tl.set("#pa1-card", { x: 60 }, 0);
@@ -56,15 +59,16 @@ window.__timelines = window.__timelines || {};
   tl.to("#pa1-hill", { autoAlpha: 1, y: 0, duration: 0.9, ease: "power3.out" }, 0.3);
   tl.fromTo("#pa1-schem", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 1.2);
 
-  /* RAIN SOAKS IN SLOWLY @3.43: water line begins its slow creep upward */
-  tl.fromTo(["#pa1-water", "#pa1-waterglow"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 3.43);
-  tl.to(["#pa1-water", "#pa1-waterglow"], { attr: { y: 556 }, duration: 18.0, ease: "power1.inOut" }, 3.43);
+  /* card reveals on "Survey" (6.12, end of "the U.S. Geological Survey") -- spoken BEFORE "Rain soaks in" */
+  tl.to("#pa1-card", { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 5.42);
 
-  /* card reveals @7.20 (water pressure inside the slope climbs) */
-  tl.to("#pa1-card", { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 7.20);
+  /* "Rain soaks in slowly" (10.58-11.28): water line begins its creep, finishing exactly on "way" (16.80,
+     "the last of the friction...gives way") so the line's arrival IS the failure moment */
+  tl.fromTo(["#pa1-water", "#pa1-waterglow"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 10.43);
+  tl.to(["#pa1-water", "#pa1-waterglow"], { attr: { y: 556 }, duration: 6.37, ease: "power1.inOut" }, 10.43);
 
-  /* THE THREE SECONDS ON CAMERA @15.77: a small shudder on the hillside as failure nears */
-  tl.to("#pa1-hill", { x: -6, duration: 0.09, ease: "power1.inOut", yoyo: true, repeat: 5 }, 15.77);
+  /* "gives way all at once." (16.62-17.46): shudder lands right as the line finishes */
+  tl.to("#pa1-hill", { x: -6, duration: 0.09, ease: "power1.inOut", yoyo: true, repeat: 5 }, 16.85);
 
   /* exit @21.0 */
   tl.to("#pa1-card", { x: 660, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 21.0);

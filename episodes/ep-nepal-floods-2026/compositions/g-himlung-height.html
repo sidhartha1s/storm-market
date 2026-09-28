@@ -6,9 +6,12 @@
      (bars are the diagram; only labels are small chips). Source:
      episodes/ep-nepal-floods-2026/mg_specs/g-himlung-height.md. Scale: 0.023953 px/ft, baseline y=940. Himlung bar
      560px (23,379 ft), Denali bar 487px (20,310 ft), ratio 1.15:1 (python-checked), gap 3,069 ft.
-     Cues @175wpm from beat start ("Up north, the same weather..."): baseline 0.2, Himlung bar 2.0 CUE "twenty three
-     thousand four hundred feet" @est 6.86, Denali bar 7.2 CUE "three thousand feet higher than Denali" @est 9.60,
-     gap bracket 10.0. Exit 12.4. Duration 13.0s declared. -->
+     RETIMED to real word timing (host 96.261+19.336, nearly 6.3s longer than the declared 13.0s): Himlung bar
+     grows from the name "Himlung" (4.30) and lands on "feet." (8.06); gap tag lands on "higher" (10.56, the
+     spoken "3,000...higher" delta); Denali bar lands on the name "Denali," (11.06). The long extra hold after
+     (CNN casualty line, 14.24-18.36) carries no new beat -- ambient stage drift covers it per mg-quickref "a
+     hold that waits for the next impact point is correct as long as something drifts". Exit 18.636-19.236
+     (D-0.1). Duration 19.336s (host D). -->
 <template>
 <style>
   #root { position:absolute; inset:0; font-family:Arial, sans-serif; color:#f2f5f8; pointer-events:none; }
@@ -27,7 +30,7 @@
   .hh-bracket { position:absolute; left:400px; top:380px; width:20px; height:73px; border:3px solid #93a3b2; border-left:none; }
   .hh-gaplab { position:absolute; left:640px; top:395px; width:200px; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2; line-height:1.25; }
 </style>
-<div id="root" data-composition-id="g-himlung-height" data-width="1920" data-height="1080" data-duration="13.0">
+<div id="root" data-composition-id="g-himlung-height" data-width="1920" data-height="1080" data-duration="19.336">
   <div class="hh-stage" id="hh-stage">
     <div class="hh-base" id="hh-base"></div>
     <div class="hh-baselab" id="hh-baselab">SEA LEVEL</div>
@@ -45,35 +48,39 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const DUR = 13.0;
+  const DUR = 19.336;
   tl.set(["#hh-baselab", "#hh-himlungname", "#hh-himlungfig", "#hh-denaliname", "#hh-denalifig", "#hh-bracket", "#hh-gaplab"], { autoAlpha: 0 }, 0);
   tl.set(["#hh-himlung", "#hh-denali"], { scaleY: 0 }, 0);
   tl.set("#hh-base", { scaleX: 0, transformOrigin: "left center" }, 0);
   tl.set("#hh-bracket", { scaleY: 0, transformOrigin: "top center" }, 0);
 
-  /* ambient: gentle stage drift for the whole window */
+  /* ambient: gentle stage drift for the whole (now much longer) window */
   tl.fromTo("#hh-stage", { y: 0 }, { y: -8, duration: DUR, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
 
   tl.to("#hh-base", { scaleX: 1, duration: 0.5, ease: "power3.out" }, 0.2);
   tl.fromTo("#hh-baselab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 0.5);
 
-  /* TWENTY THREE THOUSAND FOUR HUNDRED FEET @6.86: Himlung bar grows, labels land on the cue */
-  tl.to("#hh-himlung", { scaleY: 1, duration: 1.1, ease: "power3.out" }, 2.0);
-  tl.fromTo("#hh-himlungname", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.5);
-  tl.fromTo("#hh-himlungfig", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 6.8);
+  /* Himlung bar grows from the name "Himlung" (4.30), figures land ON "feet." (8.06) */
+  tl.to("#hh-himlung", { scaleY: 1, duration: 3.91, ease: "power3.out" }, 4.15);
+  tl.fromTo("#hh-himlungname", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.15);
+  tl.fromTo("#hh-himlungfig", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 7.71);
 
-  /* THREE THOUSAND FEET HIGHER THAN DENALI @9.60: Denali bar grows, labels land on the cue */
-  tl.to("#hh-denali", { scaleY: 1, duration: 0.95, ease: "power3.out" }, 7.2);
-  tl.fromTo("#hh-denaliname", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.2);
-  tl.fromTo("#hh-denalifig", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 9.5);
+  /* gap tag lands on "higher" (10.56, "roughly 3,000...higher") */
+  tl.to("#hh-bracket", { scaleY: 1, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 9.59);
+  tl.fromTo("#hh-gaplab", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 10.41);
+  tl.to("#hh-gaplab", { x: 6, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 1 }, 10.9);
 
-  /* gap bracket + tag land last, tying the two tops together */
-  tl.to("#hh-bracket", { scaleY: 1, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 10.0);
-  tl.fromTo("#hh-gaplab", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 10.3);
-  tl.to("#hh-gaplab", { x: 6, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 1 }, 10.8);
+  /* Denali bar grows and lands ON the name "Denali," (11.06) -- payoff after the gap is stated */
+  tl.to("#hh-denali", { scaleY: 1, duration: 1.56, ease: "power3.out" }, 9.5);
+  tl.fromTo("#hh-denaliname", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 10.7);
+  tl.fromTo("#hh-denalifig", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 11.0);
 
-  /* exit */
-  tl.to("#hh-stage", { x: -60, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  /* long hold through "tallest mountain in North America" and the CNN casualty line: ambient drift covers it,
+     no new beat is due (mg-quickref: a hold before the next impact point is correct as long as something drifts) */
+
+  /* exit, finishing by D-0.1 = 19.236 */
+  tl.to("#hh-stage", { x: -60, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 18.636);
+  tl.to({}, { duration: 0.01 }, DUR - 0.01);
   window.__timelines["g-himlung-height"] = tl;
 })();
 </script>
