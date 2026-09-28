@@ -74,10 +74,11 @@ if HAVE_FFMPEG:
              "-vf", f"fps={fps},scale=180:180,format=gray", "-f", "rawvideo", "-"],
             capture_output=True)
         scan = subprocess.run([sys.executable, str(S / "pop_scan.py"), "--fps", str(fps)],
-                               input=pipe.stdout, capture_output=True, text=True)
+                               input=pipe.stdout, capture_output=True)
+        scan_out = scan.stdout.decode()
         check("pop_scan-06 the real ffmpeg pipe finds the injected flash near frame 10 (t=1.0s)",
-              "frame 10" in scan.stdout or "frame 9" in scan.stdout or "frame 11" in scan.stdout,
-              scan.stdout)
+              "frame 10" in scan_out or "frame 9" in scan_out or "frame 11" in scan_out,
+              scan_out)
 
     # --- verify_render.sh integration: pop scan runs and never turns a clean render into a FAIL ---
     with tempfile.TemporaryDirectory() as d2:
