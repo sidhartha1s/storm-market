@@ -215,5 +215,134 @@
   ],
   "source_episode": "demo-webgl-tornado 2026-09-26",
   "file": "webgl/tornado.html"
+ },
+ {
+  "name": "master-map-us-canada",
+  "kind": "exemplar",
+  "title": "US+Canada Regional Map, Camera Pull-Out",
+  "description": "Real, geographically-accurate regional basemap (Natural Earth 50m admin-1 states/provinces + the US-Canada land boundary, public domain) with a local damage-path overlay, a camera that pulls from ground-level local view out to the full regional map, lon/lat-projected place pins and an RHS credit-card rail. The channel's reference build for 'use a real US+Canada map' (owner 27 Sep 2026). Highest reuse value of this drop: every future episode needs a location map.",
+  "tags": [
+   "map",
+   "geography",
+   "basemap",
+   "camera-pullout",
+   "location",
+   "natural-earth"
+  ],
+  "params": [
+   "rlabs country/city labels (lon/lat-projected x,y via the header's formula, never eyeballed)",
+   "lon group second city + elie special pin (droppable)",
+   "c1/c2 RHS credit cards",
+   "CUES object timestamps",
+   "local-layer swath/track path geometry"
+  ],
+  "source_episode": "ep-enderlin-2025",
+  "file": "master-map-us-canada.html"
+ },
+ {
+  "name": "split-shared-scale",
+  "kind": "exemplar",
+  "title": "Two-Storm Split Card, One Shared Rating Scale",
+  "description": "Two events side by side, never merged into one card, both judged against a single rating scale drawn once on the centre divider so the same fact is never duplicated per side. Each side can carry its own evidence (an instrument readout, a day counter, a document reveal); drop whichever side-extras don't fit the beat.",
+  "tags": [
+   "split-card",
+   "comparison",
+   "shared-scale",
+   "ef-scale",
+   "counter"
+  ],
+  "params": [
+   "l-eb/l-name/l-year and r-eb/r-name/r-year",
+   "p5/p3 shared-scale rung labels (and their SVG y-positions if rungs change)",
+   "rlab/rval instrument readout (droppable)",
+   "cntl label + counter target (droppable)",
+   "doclab + document-reveal group (droppable)",
+   "ghq \"?\" unresolved-rating marker (droppable)"
+  ],
+  "source_episode": "ep-enderlin-2025",
+  "file": "split-shared-scale.html"
+ },
+ {
+  "name": "quote-card",
+  "kind": "exemplar",
+  "title": "Verbatim Attributed Quote Card",
+  "description": "Full-frame beige cite card over dark ground: a verbatim, attributed quote revealed phrase by phrase on the voice, with an optional second quote that swaps in after the first lifts out. The channel's beige cite-card treatment for quoting a real source (CLAUDE.md: never fabricate a quote, always attribute).",
+  "tags": [
+   "quote",
+   "cite-card",
+   "attribution",
+   "glass-card"
+  ],
+  "params": [
+   "q1/q2 quote text (phrase spans, one per reveal beat)",
+   "who/src attribution",
+   "q2 + its script block droppable for a single-quote card"
+  ],
+  "source_episode": "ep-enderlin-2025",
+  "file": "quote-card.html"
+ },
+ {
+  "name": "event-timeline",
+  "kind": "exemplar",
+  "title": "Multi-Year Event Chronology Strip",
+  "description": "A true stepped-label multi-year chronology: a year axis with per-event blocks stacked by year, a rotating card slot naming the current event as an axis pointer travels, then a trailing gap-since-the-last-one bar with a running day counter. The richer alternative flagged as missing from stat-timeline.html's own description; use this for a real event-by-event chronology, stat-timeline.html for a simple two-endpoint percent rail.",
+  "tags": [
+   "timeline",
+   "chronology",
+   "multi-year",
+   "counter",
+   "card-carousel"
+  ],
+  "params": [
+   "y07..y25 tick labels + axis year span (recompute the column-x formula in the script if the span changes)",
+   "b* stacked event blocks (left/top per event)",
+   "c*/t*/pl/dt event cards (one per event, in order)",
+   "erA/erB/stamp/er13 revised-entry group (droppable)",
+   "bar/edge/end/cnt/gap/ef4 trailing gap-bar + counter target + closing labels",
+   "eye header line"
+  ],
+  "source_episode": "ep-enderlin-2025",
+  "file": "event-timeline.html"
+ },
+ {
+  "name": "then-now-scale",
+  "kind": "exemplar",
+  "title": "Rating-Scale Then/Now Comparison",
+  "description": "Two-column old-scale-vs-new-scale comparison on a shared wind-speed axis: a rating band grows on the old column then slides across and down onto the new column's lower threshold, closing on a swept-away house sketch. Reusable for any 'a standard changed, here's what moved and why' beat, not only the Fujita-to-EF-scale story it was built for.",
+  "tags": [
+   "then-now",
+   "comparison",
+   "scale",
+   "axis"
+  ],
+  "params": [
+   "hdL/hdR column headers",
+   "feb case-study date",
+   "blF/blE band before/after labels",
+   "mph/high/over callout text",
+   "wind axis ticks + mph-to-y formula in the script"
+  ],
+  "source_episode": "ep-enderlin-2025",
+  "file": "then-now-scale.html"
+ },
+ {
+  "name": "radar-beam",
+  "kind": "exemplar",
+  "title": "Radar Beam vs Curved Earth Diagram",
+  "description": "Full-frame SVG physics diagram: a radar station, its beam and a curved-earth ground line, showing why the beam rises above ground level with distance and misses the near-surface wind at a distant storm. Schematic, not to scale. The standard 'the rating comes from damage, not radar' explainer beat for any severe-weather episode.",
+  "tags": [
+   "radar",
+   "diagram",
+   "explainer",
+   "schematic",
+   "meteorology"
+  ],
+  "params": [
+   "hl headline",
+   "in-diagram labels (Not Seen / Beam Height Rises With Distance / Radar)",
+   "CUES object timestamps"
+  ],
+  "source_episode": "ep-enderlin-2025",
+  "file": "radar-beam.html"
  }
 ]
