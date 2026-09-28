@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-gorge-vs-grand-canyon (I inset, map beat): right-third depth-profile bars over g-map-kali-gandaki full (a
+     map sits left; this comp is transparent and occupies x>=1280 only). Source:
+     episodes/ep-nepal-floods-2026/mg_specs/g-gorge-vs-grand-canyon.md. Scale: 33.921 px per 1,000 ft, baseline
+     y=900. Kali Gandaki bar 620px (~18,278 ft, summit-to-river), Grand Canyon bar 203px (~6,000 ft, rim-to-river),
+     ratio 3.05:1 (python-checked). Both conventions named on screen per factcheck-A "other issues" #4 (not a true
+     apples-to-apples depth).
+     Cues @175wpm from beat start ("The Kali Gandaki runs south..."): baseline 0.2, Kali bar 2.0 CUE "eighteen
+     thousand feet" @est 7.54, Canyon bar 8.0 CUE "three times the depth" @est 10.29, ratio tag 10.8 CUE
+     "Grand Canyon" @est 12.34. Exit 13.9. Duration 14.5s declared. -->
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif; color:#f2f5f8; pointer-events:none; }
+  .gc-stage { position:absolute; left:1280px; top:0; width:640px; height:1080px; }
+  .gc-base { position:absolute; left:20px; top:900px; width:600px; height:2px; background:#2a3644; }
+  .gc-bar { position:absolute; bottom:180px; width:140px; box-sizing:border-box; border-top:3px solid; transform-origin:bottom center; }
+  .gc-kali { left:80px; height:620px; background:linear-gradient(180deg, rgba(127,178,229,0.55), rgba(127,178,229,0.08)); border-color:#7fb2e5; }
+  .gc-canyon { left:300px; height:203px; background:linear-gradient(180deg, rgba(232,197,106,0.55), rgba(232,197,106,0.08)); border-color:#e8c56a; }
+  .gc-toplab { position:absolute; width:220px; text-align:center; font-family:'Arial Black',Arial,sans-serif; font-size:30px; margin-left:-40px; }
+  .gc-kalilab { left:150px; top:250px; color:#7fb2e5; }
+  .gc-canyonlab { left:370px; top:667px; color:#e8c56a; }
+  .gc-sub { position:absolute; width:220px; top:916px; text-align:center; font-weight:700; font-size:19px;
+    letter-spacing:2px; color:#93a3b2; line-height:1.3; }
+  .gc-subkali { left:40px; } .gc-subcanyon { left:260px; }
+  .gc-ratio { position:absolute; left:120px; top:480px; width:200px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
+    font-size:44px; color:#d0121f; text-shadow:0 0 20px rgba(208,18,31,0.5); }
+</style>
+<div id="root" data-composition-id="g-gorge-vs-grand-canyon" data-width="1920" data-height="1080" data-duration="14.5">
+  <div class="gc-stage" id="gc-stage">
+    <div class="gc-base" id="gc-base"></div>
+    <div class="gc-bar gc-kali" id="gc-kali"></div>
+    <div class="gc-bar gc-canyon" id="gc-canyon"></div>
+    <div class="gc-toplab gc-kalilab" id="gc-kalilab">~18,000 FT</div>
+    <div class="gc-toplab gc-canyonlab" id="gc-canyonlab">~6,000 FT</div>
+    <div class="gc-sub gc-subkali" id="gc-subkali">KALI GANDAKI<br>RIVER TO SUMMIT</div>
+    <div class="gc-sub gc-subcanyon" id="gc-subcanyon">GRAND CANYON<br>RIM TO RIVER</div>
+    <div class="gc-ratio" id="gc-ratio">3X DEEPER</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 14.5;
+  tl.set(["#gc-kalilab", "#gc-canyonlab", "#gc-subkali", "#gc-subcanyon", "#gc-ratio"], { autoAlpha: 0 }, 0);
+  tl.set(["#gc-kali", "#gc-canyon"], { scaleY: 0 }, 0);
+  tl.set("#gc-base", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* ambient: stage drifts very slightly for the whole window so it never idles */
+  tl.fromTo("#gc-stage", { y: 0 }, { y: -6, duration: DUR, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+
+  tl.to("#gc-base", { scaleX: 1, duration: 0.5, ease: "power3.out" }, 0.2);
+
+  /* EIGHTEEN THOUSAND FEET @7.54: Kali Gandaki bar grows, label lands on the cue */
+  tl.to("#gc-kali", { scaleY: 1, duration: 1.1, ease: "power3.out" }, 2.0);
+  tl.fromTo("#gc-kalilab", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.9);
+  tl.fromTo("#gc-subkali", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 3.1);
+
+  /* THREE TIMES THE DEPTH @10.29: Grand Canyon bar grows, label lands on the cue */
+  tl.to("#gc-canyon", { scaleY: 1, duration: 0.6, ease: "power3.out" }, 8.0);
+  tl.fromTo("#gc-canyonlab", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.9);
+  tl.fromTo("#gc-subcanyon", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 8.6);
+
+  /* GRAND CANYON @12.34: ratio tag slams in */
+  tl.fromTo("#gc-ratio", { autoAlpha: 0, scale: 1.5 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 10.8);
+  tl.to("#gc-ratio", { scale: 1.06, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 2 }, 11.4);
+
+  /* exit */
+  tl.to("#gc-stage", { x: 60, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  window.__timelines["g-gorge-vs-grand-canyon"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
