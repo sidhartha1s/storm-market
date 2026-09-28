@@ -99,7 +99,10 @@ Script method and hook wording live in `references/script-os.md` and `script-fra
 ## Pipeline
 Per episode in `episodes/<slug>/`. The skill's phase map points at these step numbers. Never edit a shipped episode.
 1. `edit_script.md`: typed segment list plus per-beat visual intent, written on `references/script-scaling.md`. Zero open
-   `[verify]` markers before TTS. The CTA hinge is named (segment before, segment after, estimated time). Owner signs off.
+   `[verify]` markers per LOCKED section before that section goes to TTS (hook+intro locks and moves first; SKILL.md
+   phase map, `references/script-scaling.md` "Script fact-QC layer") — never the whole script waiting on the last act.
+   The CTA hinge is named (segment before, segment after, estimated time). Owner signs off on story/register in
+   parallel with the fact-check fan-out, not serially after it.
 2. TTS: `python3 scripts/tts_episode.py episodes/<slug>` makes per-segment wavs at the lane tempo plus words.json (faster-whisper) in one pass.
 3. Sourcing: the agent downloads everything itself, 2 to 3 frame-checked candidates per key beat. The owner confirms only `insert` clips.
 4. Compose `index.html` by hand as a hyperframes composition, one sub-composition per act, graphics library-first and built to
