@@ -42,6 +42,11 @@ selection; cut at the transcript's action/emotion peak).
 - Narration is TTS'd **per segment** (separate wavs). Tempo is per lane (`config.yaml channel.tempo`,
   applied by `scripts/tts_episode.py`); the editor slows a key reveal with `(tempo 1.0)` on its heading (CLAUDE.md "Voice"). Owner ear-check before ship covers it.
 - Ambience/music beds: PD/licensed only, ducked under narration, audible in holds.
+- One-shot SFX hits (a stamp/boom/impact, not a riser or a bed): before hand-setting `data-start`,
+  run `python3 scripts/sfx_peak.py episodes/<slug>` — it reports each hit's true peak offset
+  inside its source file and the corrected `data-start` (cue - peak) so the transient lands on
+  the cut, not the file's raw sample zero. Risers keep the existing rule (a riser ends where the
+  line ends); beds are unaffected.
 
 ## Placement — LLM judgment, native hyperframes timing, no engine
 
