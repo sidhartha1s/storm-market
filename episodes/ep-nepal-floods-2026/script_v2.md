@@ -34,8 +34,7 @@ watching these slopes (I to A6) · L5 which toll is right (I to A4) · L6 the on
 "Sept 27, 2026 · Kali Gandaki River, Nepal" inside the first second · g-collapse-3s as a thin timer over the clip,
 "0.0 s" to "3.0 s". [VE] [HOOK]
 
-In three seconds, a Nepal mountainside fell into a river, while almost six thousand people were still missing from
-a flood in August. `[loop L0 open]`
+In three seconds, a Nepal mountainside fell into a river. Almost six thousand people were still missing from a flood there in August. `[loop L0 open]`
 
 ## HT · Hook tail (0:08)
 **Picture:** hold the collapse clip under sentence one (post-mortem rule: the line after the hook stays in the hook's
@@ -57,8 +56,7 @@ missing. Later press counts ran as high as twenty four. `[loop L5 open]`
 missing · as of Sept 21"; a second pin drops on the Kali Gandaki, "Sept 27" · g-insar-creep teaser: a radar strip
 over Langtang, a counter starting to climb, freezing before it finishes. [RS]
 
-Nepal hadn't finished counting its August disaster when this began. On August twenty sixth, rock and ice broke off a
-peak above the Langtang valley and sent a flood down the river below. By September twenty first, Nepal counted one
+Nepal hadn't finished counting its August disaster when this began. On August twenty sixth, rock and ice broke off a peak above the Langtang valley. It sent a flood down the river below. By September twenty first, Nepal counted one
 thousand four hundred and fifty one lives lost from that flood. Another five thousand seven hundred and forty five
 people were still missing. In August, satellite radar had caught the Langtang slope moving for weeks before it fell.
 For the Kali Gandaki wall, no agency has published anything like that. `[loop L4 open]`
@@ -69,14 +67,12 @@ bridge-out or road-cut shot from the Khoj Samachar clip, muted. [RS]
 
 The Kali Gandaki runs south out of the high Himalaya through one of the deepest gorges on Earth. The river sits
 about eighteen thousand feet below the summit beside it, three times the depth of the Grand Canyon in Arizona. After
-days of rain, a huge section of one of those valley walls gave way. Bridges went down along the valley, and in the
-province around the river, one hundred and seventy nine houses were destroyed by that night.
+days of rain, a huge section of one of those valley walls gave way. Bridges went down along the valley. In the province around the river, one hundred and seventy nine houses were wrecked by that night.
 
 **Picture:** WION avalanche clip (a second cut, the peak) · g-himlung-height: two bars, "Himlung Himal · 23,379 ft"
 and "Denali · 20,310 ft", the gap labelled "about 3,000 ft". [VE]
 
-Up north, the same weather sent snow and rock down onto that camp on Himlung Himal. The peak rises about twenty three
-thousand four hundred feet, roughly three thousand feet higher than Denali, the tallest mountain in North America.
+Up north, the same weather sent snow and rock down onto that camp on Himlung Himal. The peak rises about twenty three thousand four hundred feet. That's roughly three thousand feet higher than Denali, the tallest mountain in North America.
 CNN reported at least four people lost their lives there, and others were still missing.
 
 ## A1 · Three seconds (1:52)
@@ -93,8 +89,7 @@ across the channel.
 "U.S. Geological Survey · Landslide Hazards Program".
 
 Landslides like this build for days and finish in seconds. The U.S. Geological Survey describes the same pattern for
-American hillsides. Rain soaks in slowly, the water pressure inside the slope climbs, and the last of the friction
-holding it gives way all at once. The three seconds on camera were the end of a failure that had been building since
+American hillsides. Rain soaks in slowly, and the water pressure inside the slope climbs. Then the last of the friction holding it gives way all at once. The three seconds on camera were the end of a failure that had been building since
 the rain began.
 
 **Picture:** g-map-kali-gandaki zoom: the gorge narrows, an arrow shows debris entering the channel, then two arrows,
@@ -134,8 +129,7 @@ of the year holding more water than at any other time.
 shield spreads across the Nepal border · News18 Bihar river-in-spate shot, muted.
 
 This storm began as a low pressure system over the Bay of Bengal, south of India, and moved north. Indian channels
-called it Cyclone Arnab, but it never became an official cyclone. By the time it reached the mountains it had lost its
-winds, and it still carried the moisture of the ocean it came from.
+called it Cyclone Arnab, but it never became an official cyclone. By the time it reached the mountains it had lost its winds. It still carried the moisture of the ocean it came from.
 
 **Picture:** g-rain-bars: a small "northern India" label, two bars rising, "normal · 0.3 in" and "Sept 26–28 · 2.6 in",
 a multiplier tag landing on "nine times". [RS]
@@ -163,16 +157,14 @@ cemented into solid rock, so water moves through it fast, and it gives way fast.
 (credit checked) · text on the voice: "43 lives lost". [RS] [VE]
 
 We've watched the same kind of ground fail at home. In March twenty fourteen, near Oso, Washington, a hillside of old
-glacial sediment collapsed after weeks of heavy rain. Forty three people lost their lives. Loose glacial material on
-a steep slope, full of water, is what the Oso hillside and the Kali Gandaki wall have in common.
+glacial sediment collapsed after weeks of heavy rain. Forty three people lost their lives. The Oso hillside and the Kali Gandaki wall share the same recipe, loose glacial material on a steep slope, full of water.
 
 **Picture:** g-sep-2024 card: "Late Sept 2024 · Kathmandu Valley" with a count landing "more than 200 lives lost",
 then a calendar showing both Septembers with the last days circled.
 
 Nepal has seen this late September calendar before. Two years ago, in the last days of September, late rain flooded
 the Kathmandu Valley. It set off landslides that took more than two hundred lives, on almost the same dates as this
-storm. Higher up, the same kind of storm falls as snow, and on Himlung Himal that snow sat above a camp full of
-workers. `[loop L1 continues]`
+storm. Higher up, the same kind of storm falls as snow. On Himlung Himal, that snow sat above a camp full of workers. `[loop L1 continues]`
 
 *(chapter blackout)*
 
@@ -199,8 +191,7 @@ before the climbers did.
 fragments turn to water, the mass spreads into a fast tongue that runs far past a plain rockfall line. [RS]
 
 Langtang's collapse in August was heavier, a rock and ice avalanche. That's rock and glacier ice falling together,
-fast enough to flow. As it falls, friction melts some of the ice, and the water turns the mass into a slurry that runs
-much farther than dry rock. The Langtang slab was about two thousand feet wide, and it fell almost four thousand feet.
+fast enough to flow. As it falls, friction melts some of the ice. The water turns the mass into a slurry that runs much farther than dry rock. The Langtang slab was about two thousand feet wide, and it fell almost four thousand feet.
 That's about three Empire State Buildings stacked up.
 
 At Himlung, reports so far describe snow and rock. Whether glacier ice was part of it, and how far it ran below the
@@ -210,8 +201,7 @@ camp, hadn't been published by the twenty ninth. `[loop L3 open]`
 its climb to "30 cm · about 12 in" across a "3 to 4 weeks" bracket · text card "ICIMOD · Kathmandu" · then the strip
 returns empty over a Kali Gandaki outline with a "?" stamp. [RS] [VE]
 
-In August, someone did measure the Langtang slope before it fell. ICIMOD, a mountain research center in Kathmandu,
-said satellite radar showed the slope slid up to twelve inches in three to four weeks. For the Kali Gandaki wall and
+In August, someone did measure the Langtang slope before it fell. ICIMOD is a mountain research center in Kathmandu. It said satellite radar showed the slope slid up to twelve inches in three to four weeks. For the Kali Gandaki wall and
 the Himlung face, no agency had published radar from before September twenty seventh. `[loop L4 continues]` By the
 twenty ninth, the reports couldn't even agree on how many people the storm had taken. `[loop L5 continues]`
 
@@ -229,8 +219,7 @@ Himlung camp while the crew prepared it, and people lost their lives there.
 Sept 27 · 12 / 7 missing", "ANI · 21 / 5 missing / 5 injured", "NewsBytes · 24 / 14 missing" · cut to the CNBC TV18
 anchor or map shot, muted, on "about seventy". [RS]
 
-The toll is the first thing the reports disagree on. On the twenty seventh, Nepal's disaster agency counted twelve
-lives lost and seven missing, with fifty six more across the border in India. That weekend, the Indian news agency
+The toll is the first thing the reports disagree on. On the twenty seventh, Nepal's disaster agency counted twelve lives lost and seven missing. Across the border in India, fifty six more were lost. That weekend, the Indian news agency
 ANI put Nepal at twenty one, with five missing. The outlet NewsBytes reached twenty four, and the Indian channel CNBC
 TV18 added both countries together to reach about seventy. The counts cover different places and different hours,
 and the missing move into the toll as searches go on. `[loop L5 closes]`
@@ -239,8 +228,7 @@ and the missing move into the toll as searches go on. `[loop L5 closes]`
 g-rock-ice-mechanism slab beside a plain rain landslide cross-section, side by side. [RS]
 
 The story online moved faster than the count. Posts sharing the video called it another glacier collapse, a repeat
-of Langtang. Every account of the Kali Gandaki collapse describes days of rain and a soaked valley wall, and none
-mentions glacier ice on that slope. Langtang began about seventeen thousand feet up, where rock and glacier ice broke
+of Langtang. Every account of the Kali Gandaki collapse describes days of rain and a soaked valley wall. None mentions glacier ice on that slope. Langtang began about seventeen thousand feet up, where rock and glacier ice broke
 away together. The Kali Gandaki collapse matches the rain landslide Nepal sees every monsoon, only larger, and caught
 on camera. The Himlung avalanche, coming off a high face with snow and rock, is the event closer to Langtang's type.
 `[loop L3 closes]`
@@ -291,15 +279,12 @@ could warn anyone below.
 **Picture:** g-insar-creep returns small: the Langtang counter at "30 cm", then an empty strip labelled "Kali Gandaki ·
 Sept".
 
-The tool that did see Langtang moving was satellite radar, which can measure ground motion from orbit to a fraction
-of an inch. It only works when someone processes the images in time, and has a way to warn the valley when a slope
-speeds up. `[loop L4 closes]` `[loop L0 closes]`
+The tool that did see Langtang moving was satellite radar. It can measure ground motion from orbit to a fraction of an inch. It only works when someone processes the images in time. Then someone has to warn the valley when a slope speeds up. `[loop L4 closes]` `[loop L0 closes]`
 
 **Picture:** g-monsoon-calendar returns: the red pin moves from "Sept 27" to "today", the "normal withdrawal" mark still
 ahead · a trekking-season bar opening across October.
 
-Trekking permits for the Annapurna trails reopened after a three day pause for the rain, on the same roads through the
-Kali Gandaki valley. The climbing season on peaks like Himlung runs through October, and crews are already on those
+Trekking permits for the Annapurna trails reopened after a three day pause for the rain. Those trails share the roads through the Kali Gandaki valley. The climbing season on peaks like Himlung runs through October, and crews are already on those
 mountains. At Himlung, the tents had been up for days. `[loop L7 open]`
 
 *(hold 3 s, base camp diagram at dawn, bed only under a moving picture)*
@@ -309,10 +294,8 @@ mountains. At Himlung, the tents had been up for days. `[loop L7 open]`
 WION avalanche clip (a still shot of the peak) · g-outro. [HUMAN]
 
 The climbers from the United Arab Emirates were due in Kathmandu on Thursday, October first. Their expedition didn't
-go ahead. The guides and cooks who went up first were the ones on the mountain, and at least four of them didn't come
-home. `[loop L7 closes]` Pasang Bhote was one of the first two found. Nepal's monsoon usually starts leaving in early
-October, and in each of the last four years it left late. Until it does, trekkers on the Kali Gandaki road walk under
-soaked slopes, and crews on the high peaks work under fresh snow. This was The Warning Hour.
+go ahead. The guides and cooks who went up first were the ones on the mountain. At least four of them didn't come home. `[loop L7 closes]` Pasang Bhote was one of the first two found. Nepal's monsoon usually starts leaving in early
+October, and in each of the last four years it left late. Until it does, trekkers on the Kali Gandaki road walk under soaked slopes. Crews on the high peaks work under fresh snow. This was The Warning Hour.
 
 *(outro tail 4 s, g-outro, bed out)*
 
