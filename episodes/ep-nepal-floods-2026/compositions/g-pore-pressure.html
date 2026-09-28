@@ -66,7 +66,7 @@ window.__timelines = window.__timelines || {};
   tl.set(["#pp-a1", "#pp-a2", "#pp-a3", "#pp-a4", "#pp-lpore"], { autoAlpha: 0 }, 0);
   tl.set("#pp-water", { svgOrigin: "558 940", scaleY: 0 }, 0);
   tl.set(["#pp-friction"], { svgOrigin: "1265 900", scaleY: 1 }, 0);
-  tl.set(GX, { y: 0 }, 0);
+  tl.set(GX, { y: 0, autoAlpha: 0 }, 0);
 
   /* ambient: the whole box breathes very slightly so nothing sits dead */
   tl.to(GX, { y: -3, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 11 }, 2.0);
