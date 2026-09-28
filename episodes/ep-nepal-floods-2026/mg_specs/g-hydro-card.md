@@ -37,8 +37,9 @@ map; a vertical power meter (dial or bar) at top, a house-icon grid below, both 
    visual payoff the counter confirms.
 4. Counter reads "120,000" (rounded), labelled "roughly", never the unrounded 120,137, never the earlier
    incorrect "100,000".
-5. No text inside the presenter keep-out (x>=1600 y>=680), panel is x>=1100, but all text sits x<=720 (well
-   inside the panel's left column), clear of x>=1600.
+5. No text inside the presenter keep-out (x>=1600 y>=680): panel is x 1100-1920, but every element's right edge
+   is checked and kept at or left of abs x=1590 (10px margin), the house grid is the tightest fit, confirmed by
+   python computation, not eyeballed.
 
 ## 5. PANEL TEXT (exact) and CUES (175 wpm from beat start; beat = "Downstream, the river feeds...")
 "144 MW" · "KALIGANDAKI A · LARGEST IN NEPAL, 2002" · "OUTPUT" / "0 MW" · house grid (120 icons, no text per icon)
