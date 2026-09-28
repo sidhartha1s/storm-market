@@ -16,7 +16,7 @@
      (D-0.1). Duration 13.361s (host D). -->
 <template>
 <style>
-  #root { position:absolute; inset:0; font-family:Arial, sans-serif; color:#f2f5f8; pointer-events:none; }
+  #gc-root { position:absolute; inset:0; font-family:Arial, sans-serif; color:#f2f5f8; pointer-events:none; }
   .gc-stage { position:absolute; left:1280px; top:0; width:640px; height:1080px; }
   .gc-base { position:absolute; left:20px; top:620px; width:600px; height:2px; background:#2a3644; }
   .gc-bar { position:absolute; bottom:460px; width:140px; box-sizing:border-box; border-top:3px solid; transform-origin:bottom center; }
@@ -31,7 +31,7 @@
   .gc-ratio { position:absolute; left:270px; top:250px; width:200px; text-align:center; font-family:'Arial Black',Arial,sans-serif;
     font-size:44px; color:#d0121f; text-shadow:0 0 20px rgba(208,18,31,0.5); }
 </style>
-<div id="root" data-composition-id="g-gorge-vs-grand-canyon" data-width="1920" data-height="1080" data-duration="13.361">
+<div id="gc-root" data-composition-id="g-gorge-vs-grand-canyon" data-width="1920" data-height="1080" data-duration="13.361">
   <div class="gc-stage" id="gc-stage">
     <div class="gc-base" id="gc-base"></div>
     <div class="gc-bar gc-kali" id="gc-kali"></div>
@@ -52,8 +52,9 @@ window.__timelines = window.__timelines || {};
   tl.set(["#gc-kali", "#gc-canyon"], { scaleY: 0 }, 0);
   tl.set("#gc-base", { scaleX: 0, transformOrigin: "left center" }, 0);
 
-  /* ambient: stage drifts very slightly for the whole window so it never idles */
-  tl.fromTo("#gc-stage", { y: 0 }, { y: -6, duration: DUR, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+  /* ambient: stage drifts very slightly for the whole window so it never idles (yoyo+repeat:1 doubles
+     duration, so the half-cycle is DUR/2 to land the full down-up cycle by DUR, not 2*DUR) */
+  tl.fromTo("#gc-stage", { y: 0 }, { y: -6, duration: DUR / 2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
 
   tl.to("#gc-base", { scaleX: 1, duration: 0.5, ease: "power3.out" }, 0.2);
 
