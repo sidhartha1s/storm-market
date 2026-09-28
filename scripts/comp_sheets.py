@@ -103,8 +103,15 @@ print(f'wrote {out / "index.html"}')
 # Phone-width QC: same frames, downscaled and tiled into one sheet, for a readability eyeball check.
 # 480px = half the 960px thumbnail already on disk (no re-decode of the render) and close to a real
 # phone's ~390-430 CSS-px playback width, so text that's too small there is too small here too.
-PHONE_W, PHONE_H = 480, 270
-if frame_paths:
+PHONE_W = 480
+if not frame_paths:
+    (out / 'phone-sheet.jpg').unlink(missing_ok=True)  # a previous run's sheet must not pass for this one
+else:
+    # tile height follows the render's aspect, so a 9:16 Short is not squashed into a 16:9 tile
+    fw, fh = map(int, subprocess.run(['ffprobe', '-v', 'error', '-select_streams', 'v:0', '-show_entries',
+                                      'stream=width,height', '-of', 'csv=p=0', str(frame_paths[0])],
+                                     capture_output=True, text=True, check=True).stdout.strip().split(','))
+    PHONE_H = round(PHONE_W * fh / fw / 2) * 2
     cols = min(4, len(frame_paths))
     rows = -(-len(frame_paths) // cols)
     canvas = out / 'phone-sheet.jpg'
