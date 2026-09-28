@@ -71,10 +71,10 @@ Newest first. New entries go at the top, under this line. Superseded lines point
 - **Pharaoh voice ran 158 wpm native on short news sentences** (1,426 words → 9.0 min). No atempo needed
   in this lane; the 129 wpm figure is a documentary-sentence number. Measure, then decide.
 - **Homographs are a TTS trap (owner 2026-09-09, "AI-slop radar"):** pocket-TTS read "I read all the comments" as
-  "I red" (past tense). Before TTS, scan every interaction line for read / lead / live / wind / tear / bass /
-  close / present / record and respell the narration copy phonetically ("reed") while the script keeps the
-  owner's exact wording. Listen to every interaction beat once after TTS; a wrong-tense homograph reads as AI
-  slop to the audience. Owner's phrases are verbatim — never paraphrase a line he wrote.
+  "I red" (past tense). (Superseded 2026-09-28: "scan and always respell" was itself incomplete — a respelling
+  picked without measuring can be as wrong as the plain word, see the 2026-09-28 entry above. Current home:
+  `references/homographs.md` + `scripts/homograph_scan.py`.) Owner's phrases are verbatim — never paraphrase a
+  line he wrote.
 - **The TTS driver skips a segment whose wav exists** (`tts_episode.py --only` reuses the old file silently): delete
   the wav AND its words.json before any re-synthesis, or the "fix" never happens (Krakatau v2 c2/c7, 2026-09-10).
 - **CTA first syllable clipped + post-CTA black too long (owner 2026-09-10):** CTA start was off the 30 fps grid and
