@@ -352,6 +352,24 @@ with tempfile.TemporaryDirectory() as d:
     check("tts_episode: a clean segment (no [verify]) is not blocked by the guard",
           calls["synth"] == [])  # unchanged text from run #2 above, so no re-synth either way
 
+    # 7d. section lock, the actual point of the guard: a LOCKED section (--only, clean) still
+    #     reaches TTS while a LATER, unselected section still carries an open [verify] marker
+    #     — the whole script never waits on the slowest act's fan-out.
+    SCRIPT_TWO_SEG_ONE_OPEN = """# edit_script.md
+
+### H1-S1 -- narration
+> The tornado hit at eleven PM sharp.
+
+### A3-S5 -- narration
+> The death toll reached [verify: exact count] by morning.
+"""
+    ep_section = make_episode(tmp, SCRIPT_TWO_SEG_ONE_OPEN, voice_ref, name="ep_section")
+    install_mocks()
+    sys.argv = ["tts_episode.py", str(ep_section), "--only", "h1-s1"]
+    tts_episode.main()
+    check("tts_episode: a locked section reaches TTS while a later act's [verify] is still open",
+          calls["synth"] == ["h1-s1"], calls["synth"])
+
 # ---------------------------------------------------------------------------
 # 8. transcribe_episode.words_are_stale: a words.json NEWER (by mtime) than its wav is still
 #    stale when its last word ends past the wav's real duration (ep3-tristate case; mtime
