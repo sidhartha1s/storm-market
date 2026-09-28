@@ -147,11 +147,11 @@ window.__timelines = window.__timelines || {};
   M.camMove(tl, rig, 0, { fx: 450, fy: 600, z: 2.05, duration: 2.9, ease: 'sine.inOut' });
   M.lightning(tl, $('flash'), 1.2, { flickers: 2 });
   M.shake(tl, rig, 1.25, { amp: 6, hits: 4, duration: 0.35, seed: 3 });
-  M.slamFig(tl, $('gust'), 1.7, { hold: 0.9, rig });
+  M.slamFig(tl, $('gust'), 1.7, { hold: 0.75, rig });
   M.cleanExit(tl, { hud: [$('hdr')] }, 2.6);
 
   /* throw: panel leaves the roof slope (26.6 deg) and lands flat after 1.4 turns */
-  const A = { x0: 470, y0: 567, x1: 1724, y1: 792, apex: 260, duration: 1.6, r0: 26.6, spin: 515, ox: 60, oy: 8 };
+  const A = { x0: 470, y0: 567, x1: 1724, y1: 792, apex: 220, duration: 1.6, r0: 26.6, spin: 515, ox: 60, oy: 8 };
   $('trail-glow').setAttribute('d', M.arcPath(A));
   $('trail-dash').setAttribute('d', M.arcPath(A));
   const th = M.arcThrow(tl, { pos: $('pn-pos'), rot: $('pn-rot'), sq: $('pn-sq'), art: $('pn-art'), ghostWrap: $('pn-ghosts'), blur: $('mb-b'), trailClip: $('arcclip-r') }, 3.1, A);
