@@ -52,8 +52,9 @@ window.__timelines = window.__timelines || {};
   tl.set(["#gc-kali", "#gc-canyon"], { scaleY: 0 }, 0);
   tl.set("#gc-base", { scaleX: 0, transformOrigin: "left center" }, 0);
 
-  /* ambient: stage drifts very slightly for the whole window so it never idles */
-  tl.fromTo("#gc-stage", { y: 0 }, { y: -6, duration: DUR, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+  /* ambient: stage drifts very slightly for the whole window so it never idles (yoyo+repeat:1 doubles
+     duration, so the half-cycle is DUR/2 to land the full down-up cycle by DUR, not 2*DUR) */
+  tl.fromTo("#gc-stage", { y: 0 }, { y: -6, duration: DUR / 2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
 
   tl.to("#gc-base", { scaleX: 1, duration: 0.5, ease: "power3.out" }, 0.2);
 
