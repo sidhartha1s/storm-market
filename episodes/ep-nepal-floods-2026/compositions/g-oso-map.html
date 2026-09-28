@@ -75,21 +75,21 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-oso-map", P = "#g-oso-map-";
-  /* estimated at 175 wpm from the paragraph start "We've watched" (HOST start) */
+  /* retimed 29 Sep 26 from retime-sheet.md word times (host 322.600+22.246) */
   const CUES = {
-    march: 3.4,   /* CUE "In March twenty fourteen" @est 3.4 */
-    oso: 5.1,     /* CUE "Oso, Washington" @est 5.1 */
-    sed: 7.2,     /* CUE "glacial sediment" @est 7.2 */
-    coll: 7.9,    /* CUE "collapsed" @est 7.9 */
-    rain: 8.6,    /* CUE "weeks of heavy rain" @est 8.6 */
-    n43: 9.9,     /* CUE "Forty three" @est 9.9 */
-    recipe: 15.4, /* CUE "same recipe" @est 15.4 */
-    loose: 16.1,  /* CUE "loose glacial" @est 16.1 */
-    steep: 17.8,  /* CUE "steep slope" @est 17.8 */
-    water: 18.5   /* CUE "full of water" @est 18.5 */
+    march: 3.83,   /* CUE "2014," @3.98 (sheet) */
+    oso: 5.43,     /* CUE "Oso," @5.58 (sheet) */
+    sed: 8.39,     /* CUE "sediment" @8.54 (sheet) */
+    coll: 8.81,    /* CUE "collapsed" @8.96 (sheet) */
+    rain: 9.71,    /* CUE "weeks" @9.86 (sheet) */
+    n43: 11.53,    /* CUE "43" @11.68 (sheet) */
+    recipe: 17.21, /* CUE "recipe," @17.36 (sheet) */
+    loose: 18.39,  /* CUE "loose" @18.54 (sheet) */
+    steep: 19.95,  /* CUE "steep" @20.10 (sheet) */
+    water: 21.17   /* CUE "water." @21.32 (sheet) */
   };
-  const DUR = 20.7;
-  const EXIT = 20.1;
+  const DUR = 22.246;
+  const EXIT = 21.55;
   const tl = gsap.timeline({ paused: true });
 
   /* ---- initial state ---- */
