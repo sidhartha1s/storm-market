@@ -76,37 +76,37 @@ window.__timelines = window.__timelines || {};
   tl.fromTo([P+"massif", P+"snowcap"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 0.3);
   tl.fromTo(P+"eb", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.3);
 
-  /* 8.9: a practice run before peaks like Everest */
-  tl.fromTo(P+"sub", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.9);
+  /* 0.41: "...a first big Himalayan climb," @0.56 */
+  tl.fromTo(P+"sub", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.41);
 
-  /* 14.4: guides carry up the tents and fix the ropes */
+  /* 10.43: "Guides carry up the tents and fix the ropes," Guides @10.58/tents */
   tl.fromTo([P+"tent1", P+"tent2", P+"tent3", P+"tent4", P+"tent5"], { autoAlpha: 0, y: 10 },
-    { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out", stagger: 0.08 }, 14.4);
-  tl.fromTo(P+"camplab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 14.6);
-  tl.fromTo(P+"rope", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6, ease: "power2.out" }, 14.9);
-  tl.fromTo(P+"ropelab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 15.3);
+    { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out", stagger: 0.08 }, 10.43);
+  tl.fromTo(P+"camplab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 10.63);
+  tl.fromTo(P+"rope", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6, ease: "power2.out" }, 10.93);
+  tl.fromTo(P+"ropelab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 11.33);
 
-  /* 21.6: sixteen workers were at base camp */
-  tl.fromTo(P+"c1ring", { autoAlpha: 0, scale: 1.6, svgOrigin: "830 430" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power3.out" }, 21.6);
-  tl.fromTo(P+"c1lab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 21.8);
-  tl.fromTo(P+"r1", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 21.6);
+  /* 16.95: "16 workers were at base camp," 16 @17.10 */
+  tl.fromTo(P+"c1ring", { autoAlpha: 0, scale: 1.6, svgOrigin: "830 430" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power3.out" }, 16.95);
+  tl.fromTo(P+"c1lab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 17.15);
+  tl.fromTo(P+"r1", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 16.95);
 
-  /* 24.7: two climbing guides and fourteen kitchen and support staff */
-  tl.fromTo(P+"r2", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 24.7);
-  tl.fromTo(P+"r3", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 25.3);
+  /* 19.13: "two climbing guides and 14 kitchen and support staff," two @19.28, 14 @20.38 */
+  tl.fromTo(P+"r2", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 19.13);
+  tl.fromTo(P+"r3", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 20.23);
 
-  /* 32.5: due in Kathmandu on October first */
-  tl.fromTo(P+"note", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 32.5);
-  tl.fromTo(P+"cap", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 33.0);
+  /* 26.78: "...due in Kathmandu on October 1st" due @26.93 */
+  tl.fromTo(P+"note", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 26.78);
+  tl.fromTo(P+"cap", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 27.28);
 
-  /* 37.0: then snow and rock came down onto the camp */
-  tl.to(P+"avalanche", { scaleY: 1, duration: 1.4, ease: "power2.in" }, 37.0);
-  tl.fromTo(P+"note", { scale: 1 }, { scale: 1.04, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 38.2);
+  /* 30.98: "Then snow and rock came down onto the camp." ends on "camp" @32.38 */
+  tl.to(P+"avalanche", { scaleY: 1, duration: 1.4, ease: "power2.in" }, 30.98);
+  tl.fromTo(P+"note", { scale: 1 }, { scale: 1.04, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 32.5);
 
-  /* exit 39.4 */
-  tl.to([P+"eb", P+"sub", P+"r1", P+"r2", P+"r3", P+"note", P+"rail"], { x: 660, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 39.4);
+  /* exit 43.6, finishes 44.2 (D-0.1 = 44.297); narration continues to person/search comps after */
+  tl.to([P+"eb", P+"sub", P+"r1", P+"r2", P+"r3", P+"note", P+"rail"], { x: 660, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 43.6);
   tl.to([P+"c1ring", P+"c1lab", P+"ropelab", P+"camplab", P+"tent1", P+"tent2", P+"tent3", P+"tent4", P+"tent5", P+"rope"],
-        { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 39.4);
+        { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 43.6);
   window.__timelines[ID] = tl;
 })();
 </script>
