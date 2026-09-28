@@ -23,7 +23,8 @@ Labels: "Nepal" (1150, 760) · "Kali Gandaki River" end-anchored (726, 560) · "
 
 ## 4. Must be true
 1. The river is drawn from the south end northward and stops north of Jomsom, below the dashed border.
-2. Himlung pin sits on the dashed Nepal-China border line (within 10 px), east of the river.
+2. Himlung pin sits at the dashed Nepal-China border line (within 20 px = 2.5 mi; factcheck-B gives 1.5 km, Natural Earth 10m border
+   accuracy is about 1 km), east of the river.
 3. "Tibet" sits north of the dashed border, "Nepal" south of it.
 4. Nothing in the presenter corner (x >= 1600 and y >= 680) except basemap fill.
 
