@@ -60,15 +60,7 @@ if HAVE_FFMPEG:
         fps = 10
         # 2s gray clip at fps=10 (20 frames) with a single white flash frame at frame 10 (t=1.0s),
         # built via ffmpeg's own select filter so the injected frame is exactly one frame wide.
-        r = subprocess.run(
-            ["ffmpeg", "-y", "-v", "error",
-             "-f", "lavfi", "-i", f"color=c=gray:s=64x64:r={fps}:d=2",
-             "-vf", f"select='if(eq(n\\,10)\\,1\\,0)',lut='if(eq(n\\,10)\\,255\\,val)'"
-                    if False else f"eq=brightness=0",  # placeholder, replaced below
-             "-c:v", "libx264", "-pix_fmt", "yuv420p", str(clip)],
-            capture_output=True, text=True)
-        # the conditional filter above is awkward in one lavfi chain; build the flash frame
-        # directly instead: a gray clip, then overlay a single white frame at n=10 via `geq`.
+        # a flat gray clip with one white frame at n=10 (t=1.0s), via a per-frame luma expr
         r = subprocess.run(
             ["ffmpeg", "-y", "-v", "error",
              "-f", "lavfi", "-i", f"color=c=gray:s=64x64:r={fps}:d=2",
