@@ -61,3 +61,13 @@ Cues (s, local @175wpm):
 - ESB stack builds in (3 buildings staggered) + labels @21.26 (`/* CUE "three Empire State Buildings stacked up" @est 21.26 */`)
 - exit @24.3 (slide out power3.in)
 Declared duration 26.0 s (narration ~24.00 s + ~2.0 s tail for the number/ESB beat to land).
+
+## QC fix log (self-audit, headless screenshot at t=22s + computed-style debug pass)
+1. ESB buildings were `fill="#15202b"` (panel-dark token) against the page's own near-black radial-gradient
+   background — computed styles confirmed opacity:1 and correct bounding boxes, but the buildings were
+   effectively invisible (dark-on-dark). Fix: `fill="#2a3644"` (diagram grey 2) `stroke="#c8d3e0"` 3px —
+   both tokens.md colours, now legible against the dark canvas.
+2. "ABOUT 2,000 FT WIDE" (tick + label, originally y120-170) collided with the headline "Rock, Ice and a
+   Fast Slurry" (y70-132) both vertically and horizontally. Fix: moved the tick to y=350 and the label to
+   y=296 — below the slab's original ledge position, which is empty by the time this cue fires (15.77s,
+   well after the slab has fallen at 7.54-8.94s).
