@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-sensor-gap-a5 (A5 teaser, cta-hinge): river gauge glowing green, slope icon dim/grey beside it. Sets up the
+     A6 payoff (g-sensor-gap); no numbers here, icons only (mg_specs/g-sensor-gap-a5.md). Both icons sit left of
+     x=1600 to clear the presenter corner. -->
+<template>
+<style>
+  #gsga5-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; }
+  .gsga5-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gsga5-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; }
+</style>
+<div id="gsga5-root" data-composition-id="g-sensor-gap-a5" data-width="1920" data-height="1080" data-duration="7">
+  <svg class="gsga5-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <filter id="gsga5-glow" x="-60%" y="-60%" width="220%" height="220%">
+        <feGaussianBlur stdDeviation="14" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+    <g id="gsga5-gauge">
+      <circle id="gsga5-gaugeglow" cx="760" cy="460" r="100" fill="rgba(63,161,90,0.18)" filter="url(#gsga5-glow)"/>
+      <circle id="gsga5-gaugering" cx="760" cy="460" r="100" fill="rgba(63,161,90,0.12)" stroke="#3fa15a" stroke-width="4"/>
+      <path id="gsga5-wave" d="M690,460 Q715,420 740,460 T790,460 T830,460" fill="none" stroke="#3fa15a" stroke-width="5" stroke-linecap="round"/>
+      <text class="gsga5-lab" id="gsga5-gaugelab" x="760" y="600" text-anchor="middle" fill="#dfe7ee">RIVER GAUGES</text>
+    </g>
+    <g id="gsga5-slope">
+      <path id="gsga5-slopetri" d="M1160,380 L1240,540 L1080,540 Z" fill="#2a3644" stroke="#4a5560" stroke-width="2"/>
+      <text class="gsga5-lab" id="gsga5-slopelab" x="1160" y="600" text-anchor="middle" fill="#93a3b2">SLOPE SENSORS</text>
+    </g>
+  </svg>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-sensor-gap-a5", P = "#gsga5-";
+  const DUR = 7;
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P+"gauge", P+"slope"], { autoAlpha: 0 }, 0);
+  tl.set(P+"gauge", { scale: 0.85, svgOrigin: "760 460" }, 0);
+  tl.set(P+"slope", { autoAlpha: 0, svgOrigin: "1160 460" }, 0);
+  tl.set(P+"slopetri", { opacity: 0.55 }, 0);
+
+  /* 0.3: Across both months, Nepal's warning system measured one thing well */
+  tl.to(P+"gauge", { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power3.out" }, 0.3);
+  /* continuous pulse for the whole window: the gauge glow breathes */
+  tl.to(P+"gaugeglow", { opacity: 0.4, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 4 }, 0.4);
+  tl.to(P+"wave", { x: 10, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0.4);
+
+  /* 3.4: and it was the thing that moved last */
+  tl.fromTo(P+"slope", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 3.4);
+
+  /* exit 6.4 */
+  tl.to([P+"gauge", P+"slope"], { scale: 0.85, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 6.4);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
