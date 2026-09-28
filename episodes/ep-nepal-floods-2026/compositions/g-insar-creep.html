@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-insar-creep (A3 full payoff): Sentinel-style radar strip over Langtang finishes its climb to "about 12 in"
+     (30 cm, US units first per channel rule) across a "3 to 4 weeks" bracket, ICIMOD/Kathmandu text card, then the
+     strip returns EMPTY over a Kali Gandaki outline with a "?" stamp (mg_specs/g-insar-creep.md). Facts:
+     factcheck-B#20 (30 cm / 12 in, 3-4 weeks, ICIMOD), factcheck-B#22 (no radar published for Kali Gandaki/Himlung
+     as of Sept 29 — full search sweep). SCHEMATIC slope outline, no published cross-section geometry exists. -->
+<template>
+<style>
+  #gic-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 40% 45%, #0b1016 0%, #030507 78%); }
+  .gic-box { position:absolute; left:90px; top:170px; width:1180px; height:700px; overflow:hidden; border-radius:18px; background:#0e161e; }
+  .gic-svg { position:absolute; left:0; top:0; width:1180px; height:700px; }
+  .gic-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+  .gic-card { position:absolute; left:140px; top:190px; width:360px; padding:16px 24px 20px; border-radius:16px;
+    background:rgba(10,16,24,0.6); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,0.14); box-sizing:border-box; }
+  .gic-icimod { font-family:'Arial Black', Arial, sans-serif; font-size:30px; color:#f2f5f8; white-space:nowrap; }
+  .gic-kath { margin-top:4px; font-size:19px; font-weight:700; color:#93a3b2; letter-spacing:3px; text-transform:uppercase; }
+  .gic-rail { position:absolute; right:0; top:0; bottom:0; width:740px; pointer-events:none;
+    background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); }
+  .gic-eb { position:absolute; left:1300px; top:230px; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
+  .gic-cnt { position:absolute; left:1300px; top:280px; font-family:'Courier New', monospace; font-weight:700; font-size:84px; color:#e74c3c; white-space:nowrap; }
+  .gic-cntsub { position:absolute; left:1300px; top:380px; font-family:'Courier New', monospace; font-weight:400; font-size:30px; color:#93a3b2; white-space:nowrap; }
+  .gic-cntlab { position:absolute; left:1300px; top:430px; font-size:20px; font-weight:700; letter-spacing:6px; color:#c8d3e0; text-transform:uppercase; white-space:nowrap; }
+  .gic-empty { position:absolute; left:1300px; top:540px; width:520px; font-size:24px; font-weight:700; line-height:32px; color:#f2f5f8; }
+</style>
+<div id="gic-root" data-composition-id="g-insar-creep" data-width="1920" data-height="1080" data-duration="26">
+  <div class="gic-box" id="gic-box">
+    <svg class="gic-svg" viewBox="0 0 1180 700">
+      <defs>
+        <linearGradient id="gic-ramp" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#3fa15a"/><stop offset="0.55" stop-color="#d8a13a"/><stop offset="1" stop-color="#c0392b"/>
+        </linearGradient>
+      </defs>
+      <path id="gic-ridge" d="M600,60 L1080,520 L100,520 Z" fill="#15202b" stroke="#4a5560" stroke-width="2"/>
+      <path id="gic-ramp-fill" d="M250,300 L950,300 L950,420 L250,420 Z" fill="url(#gic-ramp)" opacity="0"/>
+      <line id="gic-bracket" x1="150" y1="560" x2="950" y2="560" stroke="#93a3b2" stroke-width="3"/>
+      <line x1="150" y1="548" x2="150" y2="572" stroke="#93a3b2" stroke-width="3"/>
+      <line x1="950" y1="548" x2="950" y2="572" stroke="#93a3b2" stroke-width="3"/>
+      <text class="gic-lab" id="gic-bracketlab" x="550" y="605" text-anchor="middle">3 TO 4 WEEKS</text>
+      <text class="gic-lab" id="gic-ridgelab" x="600" y="660" text-anchor="middle" font-size="26">Langtang</text>
+      <text class="gic-lab" id="gic-emptyridgelab" x="600" y="660" text-anchor="middle" font-size="26" fill="#f2f5f8">Kali Gandaki &middot; Sept 27</text>
+      <circle id="gic-qmark" cx="600" cy="330" r="64" fill="none" stroke="#d0121f" stroke-width="5"/>
+      <text id="gic-qtext" x="600" y="352" text-anchor="middle" font-family="'AbrilFig', Georgia, serif" font-size="72" fill="#d0121f">?</text>
+    </svg>
+    <div class="gic-card" id="gic-card">
+      <div class="gic-icimod" id="gic-icimod">ICIMOD</div>
+      <div class="gic-kath" id="gic-kath">Kathmandu</div>
+    </div>
+  </div>
+  <div class="gic-rail" id="gic-rail"></div>
+  <div class="gic-eb" id="gic-eb">Satellite Radar</div>
+  <div class="gic-cnt" id="gic-cnt">About <span id="gic-cntv">0</span> in</div>
+  <div class="gic-cntsub" id="gic-cntsub"><span id="gic-cntvcm">0</span> cm</div>
+  <div class="gic-cntlab" id="gic-cntlab">Langtang &middot; Aug 2026</div>
+  <div class="gic-empty" id="gic-empty" style="opacity:0">No Radar Published &middot; Kali Gandaki, Himlung</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-insar-creep", P = "#gic-";
+  const DUR = 26;
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P+"ridge", P+"card", P+"eb", P+"cnt", P+"cntsub", P+"cntlab", P+"bracket", P+"bracketlab", P+"ridgelab"], { autoAlpha: 0 }, 0);
+  tl.set([P+"emptyridgelab", P+"qmark", P+"qtext", P+"empty"], { autoAlpha: 0 }, 0);
+  tl.set(P+"ramp-fill", { autoAlpha: 0 }, 0);
+  tl.set(P+"bracket", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* whole window: slow push on the radar box */
+  tl.fromTo(P+"box", { scale: 1, transformOrigin: "50% 40%" }, { scale: 1.05, duration: DUR, ease: "none" }, 0);
+
+  /* 0.3: In August, someone did measure the Langtang slope */
+  tl.fromTo(P+"ridge", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 0.3);
+  tl.fromTo(P+"ridgelab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.6);
+  tl.fromTo(P+"eb", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.3);
+  tl.fromTo(P+"cntlab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.6);
+
+  /* 4.1: ICIMOD is a mountain research center in Kathmandu */
+  tl.fromTo(P+"card", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 4.1);
+
+  /* 10.5-12.7: the slope slid up to twelve inches in three to four weeks */
+  const IN = { v: 0 }, CM = { v: 0 };
+  const inv = document.querySelector(P+"cntv"), cmv = document.querySelector(P+"cntvcm");
+  tl.to(P+"cnt", { autoAlpha: 1, duration: 0.3 }, 10.5);
+  tl.to(P+"cntsub", { autoAlpha: 1, duration: 0.3 }, 10.5);
+  tl.to(P+"ramp-fill", { autoAlpha: 1, duration: 0.3 }, 10.5);
+  tl.to(IN, { v: 12, duration: 2.2, ease: "power2.out", onUpdate: () => { if (inv) inv.textContent = Math.round(IN.v); } }, 10.5);
+  tl.to(CM, { v: 30, duration: 2.2, ease: "power2.out", onUpdate: () => { if (cmv) cmv.textContent = Math.round(CM.v); } }, 10.5);
+  tl.to(P+"bracket", { scaleX: 1, duration: 1.0, ease: "power2.out" }, 10.6);
+  tl.fromTo(P+"bracketlab", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.6);
+  tl.to(P+"cnt", { scale: 1.06, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "left center" }, 12.7);
+
+  /* 15.0: no agency had published radar from before September twenty seventh — crossfade to empty */
+  tl.to([P+"ramp-fill", P+"bracket", P+"bracketlab", P+"ridgelab", P+"card"], { autoAlpha: 0, duration: 0.5 }, 15.0);
+  tl.to(P+"ridge", { fill: "#0e161e", duration: 0.5 }, 15.0);
+  tl.fromTo(P+"emptyridgelab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 15.3);
+  tl.fromTo([P+"qmark", P+"qtext"], { autoAlpha: 0, scale: 1.8 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 15.4);
+  tl.fromTo(P+"empty", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 15.7);
+
+  /* 21.0: hold, the stamp breathes once */
+  tl.to([P+"qmark", P+"qtext"], { scale: 1.05, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 21.0);
+
+  /* exit 25.4 */
+  tl.to([P+"eb", P+"cnt", P+"cntsub", P+"cntlab", P+"empty"], { x: 660, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 25.4);
+  tl.to([P+"emptyridgelab", P+"qmark", P+"qtext", P+"ridge"], { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 25.4);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
