@@ -326,6 +326,32 @@ with tempfile.TemporaryDirectory() as d:
     except SystemExit as e:
         check("tts_episode: unknown --only id exits non-zero", e.code not in (0, None), e.code)
 
+    # 7b. a section can't reach TTS with an open [verify] marker still on it (the mechanical
+    #     backstop for script-scaling.md's "a section locks, then goes to TTS" rule): whether
+    #     the whole script or an --only slice is selected, any segment whose text still has
+    #     "[verify" is a hard fail, and nothing gets synthesized.
+    ep_verify = make_episode(tmp, SCRIPT_ONE_SEG.replace(
+        "Hello world this is a test line.",
+        "The tornado killed [verify: exact toll] people that night."),
+        voice_ref, name="ep_verify")
+    install_mocks()
+    sys.argv = ["tts_episode.py", str(ep_verify)]
+    try:
+        tts_episode.main()
+        check("tts_episode: open [verify] marker exits non-zero", False, "main() returned")
+    except SystemExit as e:
+        check("tts_episode: open [verify] marker exits non-zero", e.code not in (0, None), e.code)
+    check("tts_episode: open [verify] marker never reaches synth",
+          calls["synth"] == [], calls["synth"])
+
+    # 7c. a CLEAN segment with no open marker still passes (sanity check the guard isn't
+    #     flagging every segment).
+    install_mocks()
+    sys.argv = ["tts_episode.py", str(ep)]
+    tts_episode.main()
+    check("tts_episode: a clean segment (no [verify]) is not blocked by the guard",
+          calls["synth"] == [])  # unchanged text from run #2 above, so no re-synth either way
+
 # ---------------------------------------------------------------------------
 # 8. transcribe_episode.words_are_stale: a words.json NEWER (by mtime) than its wav is still
 #    stale when its last word ends past the wav's real duration (ep3-tristate case; mtime
