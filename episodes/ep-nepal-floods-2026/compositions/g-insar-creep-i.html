@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-insar-creep-i (I section teaser): radar strip over Langtang, counter climbs then freezes before finishing
+     (mg_specs/g-insar-creep-i.md). Compact card only, shares the frame with the other builder's g-aug-vs-sep
+     teaser; kept inside x 700-1300 / y 560-940 to clear the presenter corner and leave the rest of the frame free.
+     The final figure (12 in / 30 cm) is g-insar-creep's payoff, not shown here. -->
+<template>
+<style>
+  #gci-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; }
+  .gci-card { position:absolute; left:700px; top:560px; width:600px; height:380px; border-radius:20px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 20px 60px rgba(0,0,0,0.45); box-sizing:border-box; }
+  .gci-eb { position:absolute; left:724px; top:588px; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  .gci-swathwrap { position:absolute; left:724px; top:648px; width:552px; height:130px; overflow:hidden; border-radius:8px; background:#0e161e; }
+  .gci-swath { position:absolute; left:0; top:0; width:552px; height:130px;
+    background:linear-gradient(90deg, #3fa15a 0%, #d8a13a 55%, #c0392b 100%); }
+  .gci-cnt { position:absolute; left:724px; top:806px; font-family:'Courier New', monospace; font-weight:700; font-size:64px; color:#e74c3c; }
+  .gci-lab { position:absolute; left:724px; top:882px; font-size:19px; font-weight:700; letter-spacing:3px; color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
+</style>
+<div id="gci-root" data-composition-id="g-insar-creep-i" data-width="1920" data-height="1080" data-duration="9">
+  <div class="gci-card" id="gci-card">
+    <div class="gci-eb" id="gci-eb">Satellite Radar</div>
+    <div class="gci-swathwrap"><div class="gci-swath" id="gci-swath"></div></div>
+    <div class="gci-cnt" id="gci-cnt"><span id="gci-cntv">0</span> cm</div>
+    <div class="gci-lab" id="gci-lab">Langtang Slope &middot; cm / week</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-insar-creep-i", P = "#gci-";
+  const DUR = 9;
+  const tl = gsap.timeline({ paused: true });
+  tl.set(P+"card", { autoAlpha: 0, scale: 1.12 }, 0);
+  tl.set([P+"eb", P+"lab"], { autoAlpha: 0 }, 0);
+  tl.set(P+"swath", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* 0.0: card pops in with the whole window; a faint idle pulse keeps it alive before the reveal */
+  tl.fromTo(P+"card", { scale: 1.12 }, { scale: 1, duration: 0.4, ease: "power3.out" }, 0.3);
+  tl.to(P+"card", { autoAlpha: 1, duration: 0.3 }, 0.3);
+  tl.fromTo(P+"eb", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.4);
+  tl.fromTo(P+"lab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.6);
+  tl.to(P+"card", { y: -6, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 2 }, 0.5);
+
+  /* @22.0 in the I paragraph, local start ~0.9 for this compact teaser window: radar begins climbing */
+  const N = { v: 0 }, nv = document.querySelector(P+"cntv");
+  tl.to(P+"swath", { scaleX: 0.4, duration: 3.6, ease: "power2.out" }, 1.0);
+  tl.to(N, { v: 18, duration: 3.6, ease: "power2.out", onUpdate: () => { if (nv) nv.textContent = Math.round(N.v); } }, 1.0);
+
+  /* freeze: a hard stop mid-count, a small pulse on the frozen digits, then hold */
+  tl.to(P+"cnt", { scale: 1.06, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 4.7);
+  tl.to(P+"card", { y: -6, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 5.0);
+
+  /* exit 8.4 */
+  tl.to(P+"card", { x: 700, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 8.4);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
