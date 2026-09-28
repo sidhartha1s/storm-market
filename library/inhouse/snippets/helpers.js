@@ -83,3 +83,22 @@ function wirePillarboxBlurfill() {
     w.insertBefore(bg, im);
   });
 }
+
+/* ---- log-space camera zoom: a plain linear scale tween on a push/pull-out over ~1.5x reads
+   as decelerating even at ease:"none" — scale is exponential, not additive, so a 1->4x move
+   is already at scale 2 by 50% of the TIME but that's only 33% of the way through the visual
+   "zoom" (log(2)/log(4)); the eye reads a fast start, a long slow crawl. Interpolate in LOG
+   space instead so perceived zoom speed is constant. Use for any camera push/pull-out over
+   ~1.5x; a smaller move is fine as a plain fromTo (mg-quickref "Motion and exits"). ---- */
+function logLerpScale(fromScale, toScale, t) {
+  return Math.exp(Math.log(fromScale) + (Math.log(toScale) - Math.log(fromScale)) * t);
+}
+function logZoom(sel, at, dur, fromScale, toScale, ease) {
+  const o = { t: 0 };
+  tl.fromTo(o, { t: 0 }, {
+    t: 1, duration: dur, ease: ease || "none",
+    onUpdate: function () { gsap.set(sel, { scale: logLerpScale(fromScale, toScale, o.t) }); }
+  }, at);
+}
+// example: logZoom("#cam-push", 120.4, 3.2, 1, 4, "power1.inOut");
+if (typeof module !== "undefined") module.exports = { logLerpScale }; // node self-check only; harmless in a <script> tag
