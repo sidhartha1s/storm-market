@@ -4,22 +4,24 @@
 <body>
 <!-- g-insar-creep-i (I section teaser): radar strip over Langtang, counter climbs then freezes before finishing
      (mg_specs/g-insar-creep-i.md). Compact card only, shares the frame with the other builder's g-aug-vs-sep
-     teaser; kept inside x 700-1300 / y 560-940 to clear the presenter corner and leave the rest of the frame free.
+     teaser; kept inside x 530-1130 / y 600-980 to clear the presenter corner, the RHS rail text and the map's
+     "Aug 26" pin label and source credit line (occlusion_check, moved 29 Sep 26 -- pure translation of the
+     original x700-1300/y560-940 block, -170/+40, so all internal spacing/collision-safety is unchanged).
      The final figure (12 in / 30 cm) is g-insar-creep's payoff, not shown here. -->
 <template>
 <style>
   #gci-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; }
-  .gci-card { position:absolute; left:700px; top:560px; width:600px; height:380px; border-radius:20px;
+  .gci-card { position:absolute; left:530px; top:600px; width:600px; height:380px; border-radius:20px;
     background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); box-shadow:0 20px 60px rgba(0,0,0,0.45); box-sizing:border-box; }
   /* RETIMED to real word timing (host 54.600+10.842): card pop 0.7 (word "In" 0.85), eyebrow 1.8 ("satellite" 1.95),
      label 3.0 ("Langtang" 3.21), climb 3.78-8.0 (word "moving" 3.93 -> freeze at "no" 8.15), exit 10.2-10.7 (D-0.1). */
-  .gci-eb { position:absolute; left:724px; top:588px; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
-  .gci-swathwrap { position:absolute; left:724px; top:648px; width:552px; height:130px; overflow:hidden; border-radius:8px; background:#0e161e; }
+  .gci-eb { position:absolute; left:554px; top:628px; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  .gci-swathwrap { position:absolute; left:554px; top:688px; width:552px; height:130px; overflow:hidden; border-radius:8px; background:#0e161e; }
   .gci-swath { position:absolute; left:0; top:0; width:552px; height:130px;
     background:linear-gradient(90deg, #3fa15a 0%, #d8a13a 55%, #c0392b 100%); }
-  .gci-cnt { position:absolute; left:724px; top:806px; font-family:'Courier New', monospace; font-weight:700; font-size:64px; color:#e74c3c; }
-  .gci-lab { position:absolute; left:724px; top:882px; font-size:19px; font-weight:700; letter-spacing:3px; color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
+  .gci-cnt { position:absolute; left:554px; top:846px; font-family:'Courier New', monospace; font-weight:700; font-size:64px; color:#e74c3c; }
+  .gci-lab { position:absolute; left:554px; top:922px; font-size:19px; font-weight:700; letter-spacing:3px; color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
 </style>
 <div id="gci-root" data-composition-id="g-insar-creep-i" data-width="1920" data-height="1080" data-duration="10.842">
   <div class="gci-card" id="gci-card">
