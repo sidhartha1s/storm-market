@@ -35,6 +35,13 @@ Status: `todo` · `doing` · `review` (PR open, waiting on Opus review, e2e or t
 | 17 | gate: one stillness number (graphics_qc idle 3.0/2.5 s -> 4.0 s, idle hard, idle-budget removed) | - | done 26 Sep 26, PR fix/stillness-4s |
 | 18 | library sweep: dark chips and colour-block stamps left in bulletin-typewriter.html, ranked-bars.html, ef-ladder.html, cards.css .stamp, snippets/usage-examples.html | - | todo |
 
+## Parked until the new laptop (owner 28 Sep 26; source review: howseen-ai/claude-motion-design)
+Current box: 16 GB RAM, GTX 1650 4 GB; full renders already hit the commit-memory limit. Revisit when the new laptop arrives.
+| # | task | why parked | status |
+|---|---|---|---|
+| 19 | Motion blur on fast MG moves: 6 to 8 subframes per frame blended with ffmpeg `tmix`, MG scenes only, one graphic as the first test | about 8x the capture work per blurred frame | parked |
+| 20 | 60 fps masters, only if motion blur alone is not enough | 2x frames for a small gain in narrated docs | parked |
+
 ## Minor findings, not scheduled
 - #96: a crash after synthesis but before the manifest write labels the segment "legacy" (audio is correct).
 - #97: WARN text misleading when every on-screen file is tagged modern.
