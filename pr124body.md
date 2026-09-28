@@ -2,10 +2,16 @@
 1. **`scripts/sfx_peak.py`** — reporting tool only (SFX timing is hand-authored in `index.html`;
    no script may author episode HTML per CLAUDE.md's tripwire). `find_peak_time()` decodes a
    sound file mono via ffmpeg and takes `argmax(|signal|)`; `eligible_hits()` reads `index.html`
-   for one-shot hits (excludes `nx-`/`ins-`, riser ids, and any `data-bed` element). Prints each
-   hit's peak offset and the corrected `data-start` (`cue - peak`) so the transient lands on the
-   cut. One line added to `DESIGN.md` "Audio rules (hard)" telling the editor to run it. Risers
-   keep the existing end-of-line rule untouched; beds are unaffected.
+   for `<audio>` elements whose id starts with `sx-` (excludes `nx-`/`ins-` and riser ids). Real
+   episodes carry `data-bed` on every SFX element, hit or bed alike (see `audio_levels.py:19-20`
+   and `ep-enderlin-2025`'s markup), so it cannot distinguish a one-shot hit — filtering on it
+   found 0 hits on real episodes; dropped. `<video>` is no longer matched (b-roll mp4s outnumbered
+   real hits 806:7 on real episodes). Prints each hit's `data-start`/`data-media-start` and where
+   its peak currently lands in the timeline — a stable report, not a `cue - peak` "corrected"
+   value: the old formula re-derived its suggestion from the CURRENT `data-start`, so applying it
+   and re-running shifted the suggestion again every time. One line added to `DESIGN.md` "Audio
+   rules (hard)" telling the editor to run it. Risers keep the existing end-of-line rule
+   untouched.
 2. **`scripts/pop_scan.py`**, wired into `scripts/verify_render.sh`** — frame-diff spike detector:
    downscales to 180x180 gray at the render's own fps (CPU-light), flags a frame whose diff to
    BOTH neighbours is >3x the neighbours' diff to each other and above an absolute floor. **This
