@@ -20,7 +20,7 @@
     background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
   .kgi-src { position:absolute; left:96px; bottom:54px; font-size:19px; font-weight:700; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
 </style>
-<div id="g-map-kali-gandaki-root" data-composition-id="g-map-kali-gandaki" data-width="1920" data-height="1080" data-duration="19.9">
+<div id="g-map-kali-gandaki-root" data-composition-id="g-map-kali-gandaki" data-width="1920" data-height="1080" data-duration="17.919">
   <svg class="kgi-svg" viewBox="0 0 1920 1080">
     <g id="g-map-kali-gandaki-cam">
       <g transform="translate(920,700) scale(8)">
@@ -52,16 +52,16 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-map-kali-gandaki", P = "#g-map-kali-gandaki-";
-  /* estimated at 175 wpm from the paragraph start (HOST start) */
+  /* retimed 29 Sep 26 from retime-sheet.md word times (host 65.442+17.919); "Bridges went down" is
+     not spoken inside this shorter window, so the exit no longer waits for it (rule 2: never past D). */
   const CUES = {
-    south: 1.0,    /* CUE "runs south" @est 1.0 */
-    himalaya: 2.7, /* CUE "high Himalaya" @est 2.7 */
-    gorge: 4.8,    /* CUE "deepest gorges" @est 4.8 */
-    summit: 9.3,   /* CUE "summit beside it" @est 9.3 */
-    walls: 17.5,   /* CUE "valley walls gave way" @est 17.5 */
-    bridges: 18.9  /* CUE "Bridges went down" @est 18.9 (cut to the bridge-out clip) */
+    south: 1.54,    /* CUE "south" @1.54 (sheet) */
+    himalaya: 2.43, /* CUE "Himalaya" @2.58 (sheet) */
+    gorge: 4.09,    /* CUE "gorges" @4.24 (sheet) */
+    summit: 8.19,   /* CUE "summit" @8.34 (sheet) */
+    walls: 16.25    /* CUE "walls" @16.40 (sheet) */
   };
-  const DUR = 19.9;
+  const DUR = 17.919;
   const tl = gsap.timeline({ paused: true });
   const kg = document.querySelector(P + "kg"), kgg = document.querySelector(P + "kgglow");
   const KLEN = Math.ceil(kg.getTotalLength()) + 1;
@@ -74,7 +74,7 @@ window.__timelines = window.__timelines || {};
     P + "pk-dh", P + "pk-an", P + "pinch-l", P + "pinch-r"], { autoAlpha: 0 }, 0);
 
   /* ---- ambient, whole window ---- */
-  tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: 9.95, ease: "none", repeat: 1, yoyo: true }, 0);
+  tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: 8.96, ease: "none", repeat: 1, yoyo: true }, 0);
   tl.to(P + "cam", Object.assign(cam(1.04), { duration: DUR, ease: "none" }), 0);
   tl.fromTo(P + "nepal", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 0);
   tl.fromTo(P + "src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 0.3);
@@ -82,7 +82,7 @@ window.__timelines = window.__timelines || {};
 
   /* ---- the river runs south ---- */
   tl.to([kg, kgg], { strokeDashoffset: 0, duration: 2.4, ease: "power1.inOut" }, CUES.south);
-  tl.fromTo(kgg, { attr: { "stroke-opacity": 0.22 } }, { attr: { "stroke-opacity": 0.5 }, duration: 1.3, ease: "sine.inOut", repeat: 11, yoyo: true }, 3.4);
+  tl.fromTo(kgg, { attr: { "stroke-opacity": 0.22 } }, { attr: { "stroke-opacity": 0.5 }, duration: 1.3, ease: "sine.inOut", repeat: 9, yoyo: true }, 3.94);
 
   /* ---- high Himalaya: the two 8,000 m peaks either side ---- */
   tl.fromTo(P + "pk-dh", { autoAlpha: 0, scale: 0, svgOrigin: "431.5 434" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.5)" }, CUES.himalaya);
@@ -104,11 +104,11 @@ window.__timelines = window.__timelines || {};
   /* ---- a wall gave way: one reading target, the Himalaya label steps aside ---- */
   tl.to(P + "t-him", { autoAlpha: 0, y: -10, duration: 0.3, ease: "power2.in" }, CUES.walls - 0.35);
   tl.fromTo(P + "pin", { autoAlpha: 0, y: -50 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "bounce.out" }, CUES.walls);
-  tl.fromTo(P + "ring", { autoAlpha: 0.9, attr: { r: 9 } }, { autoAlpha: 0, attr: { r: 40 }, duration: 1.0, ease: "power2.out", repeat: 1 }, CUES.walls + 0.4);
+  tl.fromTo(P + "ring", { autoAlpha: 0.9, attr: { r: 9 } }, { autoAlpha: 0, attr: { r: 40 }, duration: 1.0, ease: "power2.out" }, CUES.walls + 0.4);
   tl.fromTo(P + "t-col", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.walls + 0.15);
 
   /* ---- exit: title slides out left, the map keeps its push into the cut ---- */
-  tl.to(P + "title", { x: -900, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  tl.to(P + "title", { x: -900, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.7);
 
   window.__timelines[ID] = tl;
 })();

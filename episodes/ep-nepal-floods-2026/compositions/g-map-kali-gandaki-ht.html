@@ -21,7 +21,7 @@
     background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
   .kgh-src { position:absolute; left:96px; bottom:54px; font-size:19px; font-weight:700; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
 </style>
-<div id="g-map-kali-gandaki-ht-root" data-composition-id="g-map-kali-gandaki-ht" data-width="1920" data-height="1080" data-duration="10.3">
+<div id="g-map-kali-gandaki-ht-root" data-composition-id="g-map-kali-gandaki-ht" data-width="1920" data-height="1080" data-duration="6.6">
   <svg class="kgh-svg" viewBox="0 0 1920 1080">
     <g id="g-map-kali-gandaki-ht-cam">
       <g transform="translate(1200,700) scale(8)">
@@ -48,13 +48,12 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-map-kali-gandaki-ht", P = "#g-map-kali-gandaki-ht-";
-  /* estimated at 175 wpm from the start of the HT paragraph (HOST starts at CUE "The storm behind it" @est 0.0) */
+  /* retimed 29 Sep 26 from retime-sheet.md word times (host 8.713+6.600) */
   const CUES = {
-    himlung: 3.1, /* CUE "Himlung Himal" @est 3.1 */
-    tibet: 5.8,   /* CUE "Tibet" @est 5.8 */
-    camp: 10.3    /* CUE "base camp" @est 10.3 (cut to the WION clip) */
+    himlung: 2.65, /* CUE "Hymlung" @2.80 (sheet) */
+    tibet: 5.13    /* CUE "Tibet." @5.28 (sheet) */
   };
-  const DUR = 10.3;
+  const DUR = 6.6;
   const tl = gsap.timeline({ paused: true });
   const kg = document.querySelector(P + "kg"), kgg = document.querySelector(P + "kgglow");
   const KLEN = Math.ceil(kg.getTotalLength()) + 1;
@@ -67,7 +66,7 @@ window.__timelines = window.__timelines || {};
   tl.set([P + "t-nepal", P + "t-tibet", P + "t-river", P + "t-himlung", P + "pin", P + "ring"], { autoAlpha: 0 }, 0);
 
   /* ---- ambient, whole window ---- */
-  tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: 5.15, ease: "none", repeat: 1, yoyo: true }, 0);
+  tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: 3.3, ease: "none", repeat: 1, yoyo: true }, 0);
   tl.to(P + "cam", Object.assign(cam(1.05), { duration: DUR, ease: "none" }), 0);
   tl.fromTo(P + "nepal", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0);
   tl.fromTo(P + "src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 0.3);

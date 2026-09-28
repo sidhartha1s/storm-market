@@ -23,7 +23,7 @@
   .avs-clab { position:absolute; left:1274px; font-size:20px; font-weight:700; letter-spacing:6px; color:#c8d3e0; white-space:nowrap; text-transform:uppercase; }
   .avs-src { position:absolute; left:96px; bottom:54px; font-size:19px; font-weight:700; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
 </style>
-<div id="g-aug-vs-sep-root" data-composition-id="g-aug-vs-sep" data-width="1920" data-height="1080" data-duration="22.5">
+<div id="g-aug-vs-sep-root" data-composition-id="g-aug-vs-sep" data-width="1920" data-height="1080" data-duration="33.182">
   <svg class="avs-svg" viewBox="0 0 1920 1080">
     <g id="g-aug-vs-sep-cam">
       <g transform="translate(642,612) scale(6)">
@@ -58,20 +58,24 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-aug-vs-sep", P = "#g-aug-vs-sep-";
-  /* estimated at 175 wpm from the paragraph start (HOST start) */
+  /* retimed 29 Sep 26 from retime-sheet.md word times (host 32.260+33.182). This host is much LONGER than
+     the built 22.5 s: the narration continues past "still missing." into a recap of the Langtang InSAR/no-
+     radar point (taken up visually by the separate g-insar-creep-i comp elsewhere). No new beats are added
+     here — the ambient loops (scan, river-line pulse, Trishuli pulse) are extended so the extra ~10 s hold
+     after "missing." never idles more than 4 s, per mg-quickref. */
   const CUES = {
-    began: 2.4,    /* CUE "when this began" @est 2.4 */
-    aug26: 3.8,    /* CUE "August twenty sixth" @est 3.8 */
-    valley: 7.9,   /* CUE "Langtang valley" @est 7.9 */
-    river: 9.6,    /* CUE "flood down the river" @est 9.6 */
-    sept21: 11.3,  /* CUE "By September twenty first" @est 11.3 */
-    n1451: 13.4,   /* CUE "one thousand four hundred" @est 13.4 */
-    lives: 15.8,   /* CUE "lives lost" @est 15.8 */
-    n5745: 17.5,   /* CUE "Another five thousand" @est 17.5 */
-    missing: 20.9  /* CUE "still missing" @est 20.9 */
+    began: 2.71,   /* CUE "began." @2.86 (sheet) */
+    aug26: 4.15,   /* CUE "26th," @4.30 (sheet) */
+    valley: 7.77,  /* CUE "Valley." @7.92 (sheet) */
+    river: 9.41,   /* CUE "flood" @9.56 (sheet) */
+    sept21: 11.79, /* CUE "21st," @11.94 (sheet) */
+    n1451: 13.87,  /* CUE "1" @14.02 (sheet) */
+    lives: 14.97,  /* CUE "lives" @15.12 (sheet) */
+    n5745: 18.02,  /* CUE "Another" @18.17 (sheet) */
+    missing: 22.04 /* CUE "missing." @22.19 (sheet) */
   };
-  const DUR = 22.5;
-  const EXIT = 21.9;
+  const DUR = 33.182;
+  const EXIT = 32.482;
   const tl = gsap.timeline({ paused: true });
   const TRI = Math.ceil(document.querySelector(P + "tri").getTotalLength()) + 1;
   const cam = (z) => ({ attr: { transform: "translate(" + (660 - 660 * z).toFixed(2) + "," + (540 - 540 * z).toFixed(2) + ") scale(" + z + ")" } });
@@ -84,10 +88,10 @@ window.__timelines = window.__timelines || {};
     P + "eb", P + "asof", P + "c1", P + "c1l", P + "c2", P + "c2l"], { autoAlpha: 0 }, 0);
 
   /* ---- ambient, whole window ---- */
-  tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: 7.5, ease: "none", repeat: 2, yoyo: true }, 0);
+  tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: 8.2955, ease: "none", repeat: 3, yoyo: true }, 0);
   tl.to(P + "cam", Object.assign(cam(1.03), { duration: DUR, ease: "none" }), 0);
   tl.fromTo(P + "nepal", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 0);
-  tl.fromTo(P + "kg", { attr: { "stroke-opacity": 0.55 } }, { attr: { "stroke-opacity": 1 }, duration: 1.4, ease: "sine.inOut", repeat: 15, yoyo: true }, 0);
+  tl.fromTo(P + "kg", { attr: { "stroke-opacity": 0.55 } }, { attr: { "stroke-opacity": 1 }, duration: 1.4, ease: "sine.inOut", repeat: 22, yoyo: true }, 0);
   tl.fromTo(P + "src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 0.3);
 
   /* ---- "when this began": the September pin ---- */
@@ -102,22 +106,22 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.aug26 + 0.3);
   tl.fromTo(P + "t-lt", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.valley);
 
-  /* ---- a flood down the river below ---- */
+  /* ---- a flood down the river below (Trishuli pulse extended to carry the long hold to the exit) ---- */
   tl.to(P + "tri", { strokeDashoffset: 0, duration: 1.4, ease: "power2.in" }, CUES.river);
-  tl.fromTo(P + "tri", { attr: { "stroke-opacity": 1 } }, { attr: { "stroke-opacity": 0.5 }, duration: 0.9, ease: "sine.inOut", repeat: 11, yoyo: true }, CUES.river + 1.4);
+  tl.fromTo(P + "tri", { attr: { "stroke-opacity": 1 } }, { attr: { "stroke-opacity": 0.5 }, duration: 0.9, ease: "sine.inOut", repeat: 23, yoyo: true }, CUES.river + 1.4);
 
   /* ---- the count, as of Sept 21 ---- */
   tl.fromTo(P + "asof", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.sept21);
   tl.fromTo(P + "c1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.n1451);
   const o1 = { v: 0 };
-  tl.to(o1, { v: 1451, duration: 2.2, ease: "power3.out", onUpdate: function () { document.getElementById("g-aug-vs-sep-c1v").textContent = fmt(o1.v); } }, CUES.n1451);
+  tl.to(o1, { v: 1451, duration: 1.0, ease: "power3.out", onUpdate: function () { document.getElementById("g-aug-vs-sep-c1v").textContent = fmt(o1.v); } }, CUES.n1451);
   tl.fromTo(P + "c1l", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.lives);
   tl.fromTo(P + "c2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.n5745);
   const o2 = { v: 0 };
-  tl.to(o2, { v: 5745, duration: 2.6, ease: "power3.out", onUpdate: function () { document.getElementById("g-aug-vs-sep-c2v").textContent = fmt(o2.v); } }, CUES.n5745);
+  tl.to(o2, { v: 5745, duration: 2.9, ease: "power3.out", onUpdate: function () { document.getElementById("g-aug-vs-sep-c2v").textContent = fmt(o2.v); } }, CUES.n5745);
   tl.fromTo(P + "c2l", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.missing);
 
-  /* ---- exit: the rail slides out, the map drifts into the radar teaser ---- */
+  /* ---- exit: the rail slides out; the map holds its push through the InSAR recap narration ---- */
   tl.to([P + "eb", P + "asof", P + "c1", P + "c1l", P + "c2", P + "c2l"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, EXIT);
 
   window.__timelines[ID] = tl;
