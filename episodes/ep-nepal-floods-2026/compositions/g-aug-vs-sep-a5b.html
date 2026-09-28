@@ -61,17 +61,17 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-aug-vs-sep-a5b", P = "#g-aug-vs-sep-a5b-";
-  /* estimated at 175 wpm from the paragraph start "The September rain" (HOST start) */
+  /* retimed 29 Sep 26 from retime-sheet.md word times (host 625.344+21.009) */
   const CUES = {
-    below: 2.1,   /* CUE "valleys below Langtang" @est 2.1 */
-    sep26: 5.8,   /* CUE "On September twenty sixth" @est 5.8 */
-    houses: 7.2,  /* CUE "houses along a river" @est 7.2 */
-    alert: 12.7,  /* CUE "stay alert" @est 12.7 */
-    storm: 15.8,  /* CUE "So one storm" @est 15.8 */
-    three: 17.1   /* CUE "three valleys" @est 17.1 */
+    below: 2.07,   /* CUE "below" @2.22 (sheet) */
+    sep26: 6.65,   /* CUE "26th," @6.80 (sheet) */
+    houses: 8.01,  /* CUE "houses" @8.16 (sheet) */
+    alert: 13.57,  /* CUE "alert," @13.72 (sheet) */
+    storm: 17.05,  /* CUE "storm" @17.20 (sheet) */
+    three: 18.13   /* CUE "valleys," @18.28 (sheet) */
   };
-  const DUR = 20.7;
-  const EXIT = 20.1;
+  const DUR = 21.009;
+  const EXIT = 20.309;
   const tl = gsap.timeline({ paused: true });
   const TRI = Math.ceil(document.querySelector(P + "trilit").getTotalLength()) + 1;
   const TADI = Math.ceil(document.querySelector(P + "tadilit").getTotalLength()) + 1;
