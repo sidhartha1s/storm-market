@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-sensor-gap (A6 full payoff [PAY], loop L6 close): two-track timeline, the slope fails, the river gauge sees
+     it late. "49 of 77 districts on flash flood alert" lands as the popfig stat (mg_specs/g-sensor-gap.md).
+     Facts: factcheck-D#1 (49/77 districts, Al Jazeera 27 Sep 2026), factcheck-C#19 (Langtang gauges swept away
+     before warning), factcheck-C#17 (system built for river floods, not moving slopes). -->
+<template>
+<style>
+  #gsg-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .gsg-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gsg-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+  .gsg-tick { font-family:Arial, sans-serif; font-weight:700; font-size:19px; fill:#dfe7ee; }
+  .gsg-popwrap { position:absolute; left:660px; top:760px; width:600px; text-align:center; }
+  .gsg-pop { font-family:'AbrilFig', Georgia, serif; font-size:130px; line-height:1; color:#d0121f;
+    text-shadow:0 6px 26px rgba(0,0,0,0.8); white-space:nowrap; }
+  .gsg-popsub { margin-top:14px; font-size:22px; font-weight:700; letter-spacing:3px; color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
+</style>
+<div id="gsg-root" data-composition-id="g-sensor-gap" data-width="1920" data-height="1080" data-duration="27">
+  <svg class="gsg-svg" viewBox="0 0 1920 1080">
+    <line id="gsg-slopetrack" x1="200" y1="420" x2="1720" y2="420" stroke="#5a768f" stroke-width="2" stroke-dasharray="10 7"/>
+    <line id="gsg-gaugetrack" x1="200" y1="620" x2="1720" y2="620" stroke="#5a768f" stroke-width="2" stroke-dasharray="10 7"/>
+    <text class="gsg-lab" id="gsg-slopelab" x="140" y="426" text-anchor="end">SLOPE</text>
+    <text class="gsg-lab" id="gsg-gaugelab" x="140" y="626" text-anchor="end">RIVER GAUGE</text>
+    <line id="gsg-flatread" x1="200" y1="620" x2="1000" y2="620" stroke="#4a5560" stroke-width="4" stroke-dasharray="6 6"/>
+    <path id="gsg-rise" d="M1000,620 Q1150,620 1300,540" fill="none" stroke="#3fa15a" stroke-width="5"/>
+    <circle id="gsg-failring" cx="600" cy="420" r="14" fill="none" stroke="#c0392b" stroke-width="4"/>
+    <circle id="gsg-faildot" cx="600" cy="420" r="8" fill="#c0392b"/>
+    <text class="gsg-tick" id="gsg-faillab" x="600" y="470" text-anchor="middle">SLOPE FAILS</text>
+    <circle id="gsg-seedot" cx="1300" cy="540" r="10" fill="#3fa15a"/>
+    <text class="gsg-tick" id="gsg-seelab" x="1300" y="590" text-anchor="middle">GAUGE SEES IT</text>
+  </svg>
+  <div class="gsg-popwrap" id="gsg-popwrap">
+    <div class="gsg-pop" id="gsg-pop">49 / 77</div>
+    <div class="gsg-popsub" id="gsg-popsub">Districts On Flash Flood Alert</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-sensor-gap", P = "#gsg-";
+  const DUR = 27;
+  const tl = gsap.timeline({ paused: true });
+
+  const rise = document.getElementById("gsg-rise");
+  const RL = Math.ceil(rise.getTotalLength()) + 1;
+  rise.style.strokeDasharray = RL;
+
+  tl.set([P+"slopetrack", P+"gaugetrack", P+"slopelab", P+"gaugelab"], { autoAlpha: 0 }, 0);
+  tl.set([P+"failring", P+"faildot", P+"faillab", P+"seedot", P+"seelab", P+"flatread"], { autoAlpha: 0 }, 0);
+  tl.set(P+"rise", { autoAlpha: 0, strokeDashoffset: RL }, 0);
+  tl.set([P+"slopetrack", P+"gaugetrack"], { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set(P+"popwrap", { autoAlpha: 0, scale: 1.3 }, 0);
+
+  /* whole window: a faint continuous pulse on both tracks so nothing is ever still */
+  tl.to([P+"slopetrack", P+"gaugetrack"], { opacity: 0.55, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 18 }, 1.0);
+
+  /* 0.3: It measured rivers — the tracks draw in */
+  tl.to([P+"slopetrack", P+"gaugetrack"], { scaleX: 1, autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 0.3);
+  tl.fromTo([P+"slopelab", P+"gaugelab"], { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out", stagger: 0.1 }, 0.6);
+
+  /* 3.5: forty nine of its seventy seven districts on flash flood alert — the stat lands, holds to 6.5 */
+  tl.fromTo(P+"popwrap", { autoAlpha: 0, scale: 1.3 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 3.5);
+  tl.to(P+"pop", { scale: 1.04, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1, transformOrigin: "center" }, 5.4);
+  tl.to(P+"popwrap", { autoAlpha: 0, y: -20, duration: 0.4, ease: "power2.in" }, 8.6);
+
+  /* 9.0: river and rain gauges, which report when water rises — gauge track pulses */
+  tl.to(P+"gaugetrack", { strokeWidth: 3, duration: 0.5, ease: "power2.out", yoyo: true, repeat: 1 }, 9.0);
+
+  /* 15.5: a slope that fails in three seconds — the fail mark pops */
+  tl.to(P+"flatread", { autoAlpha: 1, duration: 0.3 }, 15.2);
+  tl.fromTo([P+"failring", P+"faildot"], { autoAlpha: 0, scale: 1.6, svgOrigin: "600 420" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 15.5);
+  tl.fromTo(P+"faillab", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 15.7);
+  tl.fromTo(P+"failring", { attr: { r: 14 } }, { attr: { r: 46 }, autoAlpha: 0, duration: 1.0, ease: "power2.out", repeat: 3, repeatDelay: 0.2 }, 15.8);
+
+  /* 18.5: gives a river gauge nothing to read until the mud is already in the water */
+  tl.to(P+"flatread", { opacity: 0.4, duration: 0.4, ease: "power2.out", yoyo: true, repeat: 3 }, 18.5);
+
+  /* 23.5: the gauges nearest Langtang were swept away — the gauge line finally rises, late */
+  tl.to(P+"rise", { autoAlpha: 1, strokeDashoffset: 0, duration: 1.1, ease: "power2.inOut" }, 23.5);
+  tl.fromTo(P+"seedot", { autoAlpha: 0, scale: 1.6, svgOrigin: "1300 540" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power3.out" }, 24.4);
+  tl.fromTo(P+"seelab", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 24.6);
+
+  /* exit 26.4 */
+  tl.to([P+"slopetrack", P+"gaugetrack", P+"slopelab", P+"gaugelab", P+"failring", P+"faildot", P+"faillab",
+         P+"seedot", P+"seelab", P+"flatread", P+"rise"], { x: 660, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 26.4);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
