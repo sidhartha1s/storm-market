@@ -112,11 +112,15 @@ mechanism/analysis pair) and plants+pays a loop.
 Write with its alternatives from the first draft. `python3 scripts/flag_words.py episodes/<slug>` fails the script
 on any hard word in narration, on-screen text or metadata.
 
-## `[verify]` gate — zero open before TTS (owner order) — `script-scaling.md`
-- Every fact not confirmed in `research/` gets `[verify: ...]` inline the moment it's written.
-- Pre-TTS: (1) in-session eyeball of every number/name/date/distance/arithmetic against research; (2) verification
-  agents resolve every `[verify]` to CONFIRMED (marker removed) / CORRECTED (line rewritten) / UNVERIFIED (line CUT
-  — never softened to "reportedly"). TTS does not run with any `[verify]` marker still open.
+## `[verify]` gate — writer tags, never resolves (owner order 27 Sep 26) — `script-scaling.md`
+- Every fact not already in the pasted research gets `[verify: ...]` inline the moment it's written.
+  That is the writer's ENTIRE job on this gate — no in-session eyeball, no resolving markers, no
+  opening the six rule docs to double-check a fact. A parallel fact-check fan-out (several
+  subagents, one slice each, run by the orchestrator, not the writer) resolves every marker to
+  CONFIRMED (marker removed) / CORRECTED (line rewritten) / UNVERIFIED (line CUT — never softened
+  to "reportedly") while the owner reads the draft.
+- Section lock: hand off hook+intro as soon as it's written; that section goes to TTS the moment
+  its own `[verify]` slice clears, without waiting for later acts' fan-out.
 - Every audio-carrying insert is transcribed in full before cut selection; cut chosen at the transcript's peak.
 
 ## CTA hinge (must-keep every episode from ep4 on) — DESIGN.md "CTA contract"
