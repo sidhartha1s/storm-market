@@ -34,7 +34,7 @@
   .t4-footer { position:absolute; left:96px; right:96px; top:980px; text-align:center; font-family:Georgia,serif;
     font-style:italic; font-size:28px; color:#d8a13a; }
 </style>
-<div id="root" data-composition-id="g-toll-counter-a4" data-width="1920" data-height="1080" data-duration="25.0">
+<div id="root" data-composition-id="g-toll-counter-a4" data-width="1920" data-height="1080" data-duration="35.689">
   <div class="t4-grid" id="t4-grid"></div>
   <div class="t4-eb" id="t4-eb">THE SAME STORM, THREE COUNTS</div>
   <div class="t4-hl" id="t4-hl">The toll depends on who's counting.</div>
@@ -66,7 +66,7 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const DUR = 25.0;
+  const DUR = 35.689;
   const HIDE = ["#t4-eb", "#t4-hl", "#t4-card1", "#t4-card2", "#t4-card3", "#t4-footer"];
   tl.set(HIDE, { autoAlpha: 0 }, 0);
 
@@ -80,31 +80,29 @@ window.__timelines = window.__timelines || {};
   /* ambient: grid drift for the whole window */
   tl.to("#t4-grid", { x: 200, duration: DUR, ease: "none" }, 0);
 
-  /* masthead */
-  tl.fromTo("#t4-eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.2);
-  tl.fromTo("#t4-hl", { autoAlpha: 0, y: -20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.5);
+  /* masthead: "The toll is the first thing the reports disagree on." toll @0.50 */
+  tl.fromTo("#t4-eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.35);
+  tl.fromTo("#t4-hl", { autoAlpha: 0, y: -20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.65);
 
-  /* CARD 1, NEPAL DISASTER AGENCY COUNTED TWELVE @4.80 */
-  tl.fromTo("#t4-card1", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 2.4);
-  counter("t4-v1a", 12, 4.8, 1.2);
-  /* SEVEN MISSING @7.54 */
-  counter("t4-v1b", 7, 7.3, 0.9);
+  /* CARD 1: "On the 27th, Nepal's disaster agency counted 12 lives lost and 7 missing." On @3.86 */
+  tl.fromTo("#t4-card1", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 3.71);
+  counter("t4-v1a", 12, 7.19, 1.2); /* "12" @7.34 */
+  counter("t4-v1b", 7, 9.07, 0.9); /* "7 missing." @9.22 */
 
-  /* CARD 2, ANI PUT NEPAL AT TWENTY ONE @13.71 */
-  tl.fromTo("#t4-card2", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 11.0);
-  counter("t4-v2a", 21, 13.5, 1.2);
-  /* FIVE MISSING @16.11 */
-  counter("t4-v2b", 5, 15.8, 0.8);
+  /* CARD 2: "That weekend, the Indian news agency ANI put Nepal at 21, with 5 missing." That @14.70 */
+  tl.fromTo("#t4-card2", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 14.55);
+  counter("t4-v2a", 21, 18.03, 1.2); /* "21," @18.18 */
+  counter("t4-v2b", 5, 19.23, 0.8); /* "5 missing." @19.38 */
 
-  /* CARD 3, NEWSBYTES REACHED TWENTY FOUR @17.49 */
-  tl.fromTo("#t4-card3", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 15.0);
-  counter("t4-v3a", 24, 17.3, 1.3);
-  counter("t4-v3b", 14, 19.3, 1.0);
+  /* CARD 3: "The outlet news bites reached 24" The @20.79 */
+  tl.fromTo("#t4-card3", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 20.64);
+  counter("t4-v3a", 24, 22.26, 1.3); /* "24" @22.41 */
+  counter("t4-v3b", 14, 24.26, 1.0); /* not separately narrated; paired stat follows card 3's headline number */
 
-  /* footer, the caveat, ABOUT SEVENTY @22.97 belongs to the anchor cutaway, not repeated here */
-  tl.fromTo("#t4-footer", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 22.0);
-  /* breathing so the cards never idle while the footer settles */
-  tl.to(["#t4-v1a", "#t4-v2a", "#t4-v3a"], { scale: 1.04, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 1, stagger: 0.1 }, 20.5);
+  /* breathing so the cards never idle; footer settles BEFORE the CNBC cutaway (comp-local 27.644-32.444, no
+     key reveal in that window per orchestrator note) so nothing new triggers while that clip covers the frame */
+  tl.to(["#t4-v1a", "#t4-v2a", "#t4-v3a"], { scale: 1.04, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 1, stagger: 0.1 }, 25.0);
+  tl.fromTo("#t4-footer", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 26.5);
 
   /* exit: all three cards up and out, staggered */
   tl.to(["#t4-card1", "#t4-card2", "#t4-card3"], { y: -30, autoAlpha: 0, duration: 0.5, ease: "power3.in", stagger: 0.08 }, DUR - 1.0);
