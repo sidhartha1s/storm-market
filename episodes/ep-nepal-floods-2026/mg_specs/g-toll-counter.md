@@ -1,4 +1,4 @@
-# BRIEF — g-toll-counter · section I, "What fell" (0:22) · RHS stat panel over Lallantop river/rescue b-roll
+# BRIEF, g-toll-counter · section I, "What fell" (0:22) · RHS stat panel over Lallantop river/rescue b-roll
 
 ## 0. What this graphic claims
 Nepal's disaster agency counted twelve dead and seven missing on Sept 27; later press counts climbed to twenty
@@ -8,7 +8,7 @@ four by Sept 28. Two facts: the official same-day count, and that the press coun
 factcheck-A #4 (NewsBytes 24 dead/14 missing, Sept 28, nationwide) and script I: "Nepal's disaster agency counted
 twelve people who didn't survive the storm, with seven more missing. Later press counts ran as high as twenty
 four." Row 1 = the agency count (12/7); row 2 = the moved press count (24). Do not imply both are the same
-scope — script already carries that caveat in A4's fuller ledger; this card is the teaser, two lines only.
+scope, script already carries that caveat in A4's fuller ledger; this card is the teaser, two lines only.
 
 ## 2. DATUM, SCALE, ORIENTATION
 RHS panel, right:0 top:0 bottom:0 width:820px (mg-quickref RHS stat panel spec), gradient
@@ -18,7 +18,7 @@ two counter rows stacked vertically, eyebrow-first order per quickref: eyebrow, 
 ## 3. GEOMETRY (px)
 - Panel: right 0, width 820, padding-top 90, left padding 170.
 - Row 1 (agency count): top 360. Counter "12" Courier 84px #e74c3c, label below "LIVES LOST" 20px #c8d3e0; second
-  inline counter "7" same tier, label "MISSING" — both inside one row, counters at x 170 and x 460.
+  inline counter "7" same tier, label "MISSING", both inside one row, counters at x 170 and x 460.
 - Source line under row 1 at top 470: "NEPAL DISASTER AGENCY · SEPT 27" 19px #93a3b2.
 - Row 2 (press count): top 620, single counter "24" 84px #e74c3c landing after row 1 settles, label "PRESS COUNTS
   UP TO" 20px #c8d3e0 above the number, source line "SEPT 28" 19px #93a3b2 below.
@@ -26,7 +26,7 @@ two counter rows stacked vertically, eyebrow-first order per quickref: eyebrow, 
 
 ## 4. MUST BE TRUE IN THE PICTURE
 1. Row 1 shows 12 and 7 as two distinct counters, never merged into one number.
-2. Row 1's source line reads "Nepal disaster agency" and "Sept 27" — never NewsBytes.
+2. Row 1's source line reads "Nepal disaster agency" and "Sept 27", never NewsBytes.
 3. Row 2's counter animates 0 -> 24 and is captioned "press counts up to" (moved number, not a second official
    count) with "Sept 28".
 4. Row 2 lands strictly after row 1 has settled (no simultaneous reveal of both counts).

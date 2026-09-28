@@ -100,7 +100,7 @@ window.__timelines = window.__timelines || {};
   } }, 2.5);
   tl.to("#s24-cnum", { scale: 1.05, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 9.94);
 
-  /* crossfade to stage 2 (calendar) — stage 1 leaves before stage 2 arrives, never both on screen */
+  /* crossfade to stage 2 (calendar), stage 1 leaves before stage 2 arrives, never both on screen */
   tl.to("#s24-stage1", { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 10.3);
   tl.to("#s24-stage2", { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 10.3);
   tl.fromTo(["#s24-grid2024", "#s24-grid2026"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.15 }, 10.6);
