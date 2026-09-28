@@ -7,6 +7,8 @@ For each named composition, extracts the three frames graphics_qc chose from its
 Writes episodes/<slug>/sheets/frame-qc/<comp>_<n>.jpg + index.html (each frame with its timestamp and
 the reason it was picked) and prints the list. The reader is one subagent, rubric in CLAUDE.md
 references/mg-quickref.md "Verify".
+Also writes phone-sheet.jpg: the same frames downscaled to a phone display width and tiled into one
+sheet, so a reviewer can eyeball whether on-screen text is still readable at phone size.
 """
 import html as H, json, re, sys, subprocess, pathlib
 
