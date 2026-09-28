@@ -34,24 +34,24 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-sensor-gap-a5", P = "#gsga5-";
-  const DUR = 7;
+  const DUR = 6.635;
   const tl = gsap.timeline({ paused: true });
   tl.set([P+"gauge", P+"slope"], { autoAlpha: 0 }, 0);
   tl.set(P+"gauge", { scale: 0.85, svgOrigin: "760 460" }, 0);
   tl.set(P+"slope", { autoAlpha: 0, svgOrigin: "1160 460" }, 0);
   tl.set(P+"slopetri", { opacity: 0.55 }, 0);
 
-  /* 0.3: Across both months, Nepal's warning system measured one thing well */
-  tl.to(P+"gauge", { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power3.out" }, 0.3);
+  /* 0.00: Across (sentence start; word sits at t=0 so the pop lands right on it) */
+  tl.to(P+"gauge", { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power3.out" }, 0);
   /* continuous pulse for the whole window: the gauge glow breathes */
   tl.to(P+"gaugeglow", { opacity: 0.4, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 4 }, 0.4);
   tl.to(P+"wave", { x: 10, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0.4);
 
-  /* 3.4: and it was the thing that moved last */
-  tl.fromTo(P+"slope", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 3.4);
+  /* 4.31: and (0.15s before "and" @4.46, start of "and it was the thing that moved last") */
+  tl.fromTo(P+"slope", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 4.31);
 
-  /* exit 6.4 */
-  tl.to([P+"gauge", P+"slope"], { scale: 0.85, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 6.4);
+  /* exit 6.035, finishes by D-0.1 = 6.535 */
+  tl.to([P+"gauge", P+"slope"], { scale: 0.85, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 6.035);
   window.__timelines[ID] = tl;
 })();
 </script>
