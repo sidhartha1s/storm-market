@@ -262,14 +262,13 @@ segment). [VE]
 On one map, the two disasters sit thirty two days and about a hundred and twenty miles apart. Himlung sits between
 them, about seventy five miles from Langtang.
 
-**Picture:** the Langtang pin pulses; two district outlines below it light up red, "hit again · Sept 26–27" · a
-river-in-spate shot from the News18 Bihar clip (second segment) or a social clip if the frame check finds one.
+**Picture:** the Langtang pin pulses; the river below it lights up · the AFP photo caption as attributed text:
+"Sludge-ridden houses along the Tadi River, Nuwakot district · Sept 26, 2026 · AFP via Al Jazeera" (text card only,
+no AFP image unless licensed) · a News18 Bihar river-in-spate shot (second segment).
 
-The September rain also reached the valleys below Langtang, the same two districts the August flood had already torn
-through. `[verify: Al Jazeera 27 Sep, Rasuwa and Nuwakot hit again]` Before it arrived, Nepal's weather office warned
-that slopes loosened in August faced higher risk. `[verify: nepalnews explainer; DHM / NDRRMA pre-warning of Rasuwa, Nuwakot]`
-Floods and landslides hit both districts again anyway. One storm tested three valleys at once, one month apart from
-the last.
+The September rain also reached the valleys below Langtang, where the August flood had already torn through. On
+September twenty sixth, houses along a river there sat in mud again. Nepal's disaster agency told those districts to
+stay alert, but said they weren't considered high risk. So one storm tested three valleys, a month after the last.
 
 **Picture:** g-sensor-gap teaser: a river gauge icon glowing green, a slope icon beside it greyed out.
 
