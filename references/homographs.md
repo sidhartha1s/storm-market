@@ -20,7 +20,8 @@ owner's exact wording (CLAUDE.md Voice).
 
 | Word(s) | Sense A | Sense B | Hint |
 |---|---|---|---|
-| live / lives / lived | adj./adv. "a live broadcast" /laɪv/ | verb "the survivors live here" /lɪv/ | Verb sense is the risk; probe every "lives"/"lived" occurrence, never assume the noun reading. |
+| live | adj./adv. "a live broadcast" /laɪv/ | verb, present tense "I live here" /lɪv/ | Broadcast/adjective sense is common in disaster coverage narration; verb (reside) sense is the one to check. |
+| lives | noun, plural of "life": "lost their lives" /laɪvz/ | verb, 3rd person singular of "live": "he lives here" /lɪvz/ | The exact trap measured on this channel 2026-09-28: pocket-TTS said "lives" in "lost their lives" as /lɪvz/ (wrong); plain "lives" on its own measured correct (F1 769 Hz, 215 ms vowel = /aɪ/). Never respell blind, probe and measure first. |
 | wind / winds / wound | noun "the wind picked up" /wɪnd/ | verb "wind down", past "wound up" /waʊnd/ | Weather noun is almost always /wɪnd/; only the idiom needs the long-i verb form. |
 | lead / led | verb "lead the recovery" /liːd/ | metal "lead paint" /lɛd/ | Metal sense is rare here (flood debris, old paint); default is /liːd/. |
 | tear / tears | verb "tear apart" /tɛr/ | noun "tears" (crying) /tɪr/ | Storm damage is /tɛr/; survivor emotion is /tɪr/. |
