@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  EXEMPLAR: then-now-scale.html
+  WHAT IT IS: two-column "old scale vs new scale" comparison — a shared wind-speed axis, a rating band that grows on
+  the old column then slides across and down onto the new column's lower threshold, plus a swept-away house sketch.
+  Reusable whenever an episode explains a standard or rating that changed (a "here's what moved and why" beat), not
+  only the Fujita-to-EF-scale story.
+
+  SOURCE: episodes/ep-enderlin-2025/compositions/g-then-now.html (fidelity-extracted, copy genericized).
+
+  PARAMS TO EDIT (marked <!-- EDIT-ME --> inline):
+    - thennow-hdL/hdR: the two column headers (old scale name / new scale name).
+    - thennow-feb: the case-study date that opens the beat.
+    - thennow-blF/blE: the band's before/after rating labels.
+    - thennow-mph: the before-band's speed range label.
+    - thennow-high / thennow-over: the "too high for the damage" and "the new lower threshold" callouts.
+    - The wind axis (200/250/300/mph ticks) and the mph->y formula in the script: re-derive for your own scale's
+      numbers — the axis is drawn from real values, never invented (mg-brief-template DATUM discipline).
+
+  TIMING KNOBS (do not casually change — these are load-bearing):
+    - continuous: light sweep every 8.1s, column sheen climbs every 3.6s, tick labels drift every 2.4s — all run the
+      whole 24.255s window so the comp is never motionless during the hold.
+    - both empty columns are ON SCREEN from t=0 and settle (0.9s power3.out): the picture must never open blank.
+    - band grows old-side first (scaleY 0->1, ~1.8s), THEN slides across+down to the new column (power3.inOut, 1.1s) —
+      keep this two-stage move; it's what sells "the same event, re-rated."
+    - house sketch: swept off (x/y/rotation to off-frame, power2.in) right after the band lands on the new threshold.
+    - EXIT: whole scale group slides to x:980, autoAlpha:0, duration 0.55, power3.in, timed to the cut.
+
+  COPY into episodes/<slug>/compositions/ and hand-retune — never script-generate.
+-->
+<template>
+<style>
+  .thennow-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .thennow-sweep { position:absolute; left:0; top:0; width:260px; height:1080px;
+    background:linear-gradient(100deg, transparent, rgba(127,178,229,.08), transparent); }
+  .thennow-axis { position:absolute; left:320px; top:220px; width:3px; height:680px; background:#5a768f; }
+  .thennow-tk { position:absolute; left:200px; width:100px; text-align:right; font-weight:700; font-size:22px; letter-spacing:2px; color:#93a3b2; }
+  .thennow-tl { position:absolute; left:312px; width:20px; height:2px; background:#5a768f; }
+  .thennow-col { position:absolute; top:220px; width:260px; height:680px; box-sizing:border-box; border:2px solid #2a3644; border-radius:10px;
+    background:linear-gradient(0deg, rgba(21,32,43,.9), rgba(21,32,43,.3)); overflow:hidden; }
+  .thennow-sheen { position:absolute; left:0; top:0; width:256px; height:120px; background:linear-gradient(0deg, rgba(242,245,248,0), rgba(242,245,248,.14), rgba(242,245,248,0)); }
+  .thennow-hd { position:absolute; top:148px; width:600px; margin-left:-300px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-size:40px; color:#f2f5f8; white-space:nowrap; }
+  .thennow-band { position:absolute; left:470px; top:329px; width:260px; height:194px; border-radius:8px;
+    background:linear-gradient(180deg, #c0392b, #d8a13a); box-shadow:0 0 30px rgba(192,57,43,.45); }
+  .thennow-bl { position:absolute; left:0; top:70px; width:260px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-size:44px; color:#f4f0e8; }
+  .thennow-ef5 { position:absolute; left:1170px; top:222px; width:260px; height:508px; border-radius:8px 8px 8px 8px;
+    background:linear-gradient(0deg, #c0392b, rgba(192,57,43,.05)); }
+  .thennow-lab { position:absolute; font-weight:700; white-space:nowrap; }
+  .thennow-feb { position:absolute; left:730px; top:392px; width:440px; text-align:center; font-family:'AbrilFig', Georgia, serif; font-size:90px; line-height:1.1;
+    color:#d0121f; text-shadow:0 6px 26px rgba(0,0,0,.8); white-space:nowrap; }
+</style>
+<div class="thennow-root" data-composition-id="thennow" data-width="1920" data-height="1080" data-duration="24.255">
+  <div class="thennow-sweep" id="thennow-sweep"></div>
+  <div id="thennow-scale">
+    <div class="thennow-axis" id="thennow-axis"></div>
+    <div class="thennow-tl" style="top:729px"></div><div class="thennow-tl" style="top:559px"></div><div class="thennow-tl" style="top:389px"></div>
+    <div class="thennow-tk" id="thennow-t200" style="top:716px">200</div>
+    <div class="thennow-tk" id="thennow-t250" style="top:546px">250</div>
+    <div class="thennow-tk" id="thennow-t300" style="top:376px">300</div>
+    <div class="thennow-tk" id="thennow-tmph" style="top:228px">mph</div>
+  </div>
+  <div class="thennow-col" id="thennow-colL" style="left:470px"><div class="thennow-sheen" id="thennow-shL"></div></div>
+  <div class="thennow-col" id="thennow-colR" style="left:1170px"><div class="thennow-sheen" id="thennow-shR"></div></div>
+  <div class="thennow-hd" id="thennow-hdL" style="left:600px">Fujita Scale</div>
+  <div class="thennow-hd" id="thennow-hdR" style="left:1300px">Enhanced Fujita Scale</div>
+  <div class="thennow-feb" id="thennow-feb">Feb 2007</div>
+  <div class="thennow-ef5" id="thennow-ef5"></div>
+  <div class="thennow-band" id="thennow-band"><div class="thennow-bl" id="thennow-blF">F5</div><div class="thennow-bl" id="thennow-blE">EF5</div></div>
+  <div class="thennow-lab" id="thennow-mph" style="left:752px; top:396px; font-size:36px; color:#f2f5f8">261 to 318 mph</div>
+  <div class="thennow-lab" id="thennow-high" style="left:752px; top:452px; font-size:32px; color:#e74c3c">Too High for the Damage</div>
+  <div class="thennow-lab" id="thennow-over" style="left:760px; top:708px; width:390px; text-align:right; font-size:36px; color:#f2f5f8">EF5 &middot; Over 200 mph</div>
+  <svg id="thennow-house" width="300" height="260" viewBox="0 0 300 260" style="position:absolute; left:1480px; top:520px">
+    <rect x="10" y="220" width="280" height="30" rx="4" fill="#93a3b2"/>
+    <g id="thennow-hbody"><path d="M40 220 L40 120 L150 50 L260 120 L260 220" fill="rgba(90,118,143,.25)" stroke="#dfe7ee" stroke-width="6"/>
+      <rect x="125" y="150" width="50" height="70" fill="none" stroke="#dfe7ee" stroke-width="5"/></g>
+  </svg>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const H = 379.163;
+  const D = 24.255;
+  const tl = gsap.timeline({ paused: true });
+  const P = "#thennow-";
+  tl.set([P+"hdL", P+"hdR", P+"feb", P+"ef5", P+"band", P+"blE", P+"mph", P+"high", P+"over", P+"house"], { autoAlpha: 0 }, 0);
+
+  /* continuous: sweep every 8.1 s; sheen climbs both columns; tick labels drift */
+  tl.fromTo(P+"sweep", { x: -300 }, { x: 2200, duration: 8.1, ease: "none", repeat: 2 }, 0);
+  tl.fromTo([P+"shL", P+"shR"], { y: 680 }, { y: -120, duration: 3.6, ease: "none", repeat: 6 }, 0);
+  tl.to([P+"t200", P+"t250", P+"t300", P+"tmph"], { x: -10, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 9 }, 0.5);
+
+  /* picture from the first frame (draft had 0.9 s of black after bo-2, owner 27 Sep 26): the axis and both empty
+     columns are on screen at 0 and settle; the headers still land on the voice */
+  tl.fromTo(P+"scale", { x: -30 }, { x: 0, duration: 0.9, ease: "power3.out" }, 0);
+  tl.fromTo([P+"colL", P+"colR"], { y: 40 }, { y: 0, duration: 0.9, ease: "power3.out" }, 0);
+  /* ENHANCED FUJITA SCALE @379.78 (right column) · OLD FUJITA SCALE @382.00 (left column) */
+  tl.fromTo(P+"hdR", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" }, 379.78 - H);
+  tl.fromTo(P+"hdL", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" }, 382.00 - H);
+  /* FEBRUARY 2007 @383.22 */
+  tl.fromTo(P+"feb", { autoAlpha: 0, scale: 1.8 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 383.22 - H);
+  /* F5 WINDS @387.10 · 261 @388.48 -> 318 @390.28: the band grows from 261 up to 318 */
+  tl.to(P+"feb", { autoAlpha: 0, y: -30, duration: 0.4, ease: "power3.in" }, 387.0 - H);
+  tl.fromTo(P+"band", { autoAlpha: 1, scaleY: 0, transformOrigin: "center bottom" }, { scaleY: 0.1, duration: 0.3, ease: "power3.out" }, 387.10 - H);
+  tl.fromTo(P+"mph", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 388.48 - H);
+  tl.to(P+"band", { scaleY: 1, duration: 1.8, ease: "power2.out" }, 388.48 - H);
+  /* TOO HIGH @394.54 */
+  tl.fromTo(P+"high", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 394.54 - H);
+  tl.to(P+"band", { x: 8, duration: 0.08, ease: "power1.inOut", yoyo: true, repeat: 5 }, 394.6 - H);
+  /* LOWERED THEM @397.64: the band slides across and down to 200 mph */
+  tl.to([P+"mph", P+"high"], { autoAlpha: 0, duration: 0.3 }, 397.3 - H);
+  tl.to(P+"band", { x: 700, y: 207.4, duration: 1.1, ease: "power3.inOut" }, 397.64 - H);
+  tl.to(P+"blF", { autoAlpha: 0, duration: 0.3 }, 398.3 - H);
+  tl.fromTo(P+"blE", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 398.5 - H);
+  tl.fromTo(P+"ef5", { autoAlpha: 0, scaleY: 0, transformOrigin: "center bottom" }, { autoAlpha: 1, scaleY: 1, duration: 0.7, ease: "power3.out" }, 398.7 - H);
+  /* HOUSE SWEPT OFF @399.34 -> 399.90 */
+  tl.fromTo(P+"house", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 399.34 - H);
+  tl.to(P+"hbody", { x: 120, y: -160, rotation: 18, autoAlpha: 0, duration: 1.0, ease: "power2.in" }, 399.90 - H);
+  /* ABOVE 200 @401.82 */
+  tl.fromTo(P+"over", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 401.82 - H);
+  /* exit 402.8 */
+  tl.to([P+"scale", P+"colL", P+"colR", P+"hdL", P+"hdR", P+"ef5", P+"band", P+"over", P+"house"], { x: 980, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 402.8 - H);
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines["thennow"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
