@@ -59,29 +59,30 @@ window.__timelines = window.__timelines || {};
   tl.set("#rvr-ice", { autoAlpha: 0.85 }, 0);
 
   /* ambient: ice cap shimmer (left), water still creeping later (right) both keep the frame alive */
-  tl.to("#rvr-ice", { autoAlpha: 0.5, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 16 }, 2.0);
+  tl.to("#rvr-ice", { autoAlpha: 0.5, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 16 }, 1.1);
 
-  /* both mini cross-sections fade in together @0.4, divider draws */
-  tl.fromTo("#rvr-div", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.4);
-  tl.to(["#rvr-left", "#rvr-right"], { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 0.4);
+  /* both mini cross-sections fade in together @0.3 (open: "Every account of the Kaligandaki collapse..."), divider draws */
+  tl.fromTo("#rvr-div", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.3);
+  tl.to(["#rvr-left", "#rvr-right"], { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 0.3);
 
-  /* LEFT: LANGTANG BEGAN ABOUT SEVENTEEN THOUSAND FEET UP (local 0.0), settles then labels @2.0 */
-  tl.fromTo(["#rvr-alttick", "#rvr-altarrow"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 1.0);
-  tl.fromTo("#rvr-llab", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.0);
+  /* script now opens on the RIGHT/Kali Gandaki side: "...describes days of rain and a soaked valley wall." rain @3.36 */
+  tl.to(["#rvr-water", "#rvr-waterglow"], { autoAlpha: 1, duration: 0.4 }, 3.21);
+  tl.to(["#rvr-water", "#rvr-waterglow"], { attr: { y: 620 }, duration: 14.0, ease: "none" }, 3.21);
+  tl.fromTo("#rvr-rlab", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.72);
+  tl.fromTo("#rvr-schem", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 5.12);
 
-  /* RIGHT: THE KALI GANDAKI COLLAPSE MATCHES THE RAIN LANDSLIDE @5.49 (local): water line begins creep */
-  tl.to(["#rvr-water", "#rvr-waterglow"], { autoAlpha: 1, duration: 0.4 }, 5.49);
-  tl.to(["#rvr-water", "#rvr-waterglow"], { attr: { y: 620 }, duration: 14.0, ease: "none" }, 5.49);
-  tl.fromTo("#rvr-rlab", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.0);
-  tl.fromTo("#rvr-schem", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 7.4);
+  /* LEFT: "Langtang began about 17,000 feet up, where rock and glacier ice broke away together." Langtang @8.64 */
+  tl.fromTo(["#rvr-alttick", "#rvr-altarrow"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 8.49);
+  tl.fromTo("#rvr-llab", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.49);
 
-  /* CLOSER TO LANGTANG'S TYPE @13.03: both sides hold together, a short emphasis pulse */
-  tl.to(["#rvr-left", "#rvr-right"], { scale: 1.02, transformOrigin: "center", duration: 0.4, ease: "power2.out", yoyo: true, repeat: 1 }, 13.03);
+  /* "The Kali Gandaki collapse matches the rain landslide..." matches @16.47: both sides hold together, emphasis pulse */
+  tl.to(["#rvr-left", "#rvr-right"], { scale: 1.02, transformOrigin: "center", duration: 0.4, ease: "power2.out", yoyo: true, repeat: 1 }, 16.32);
 
-  /* exit @24.5 */
-  tl.to("#rvr-left", { x: -40, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 24.5);
-  tl.to("#rvr-right", { x: 40, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 24.5);
-  tl.to(["#rvr-div", "#rvr-llab", "#rvr-rlab", "#rvr-schem"], { autoAlpha: 0, duration: 0.5 }, 24.6);
+  /* exit 28.7/28.8, finishes 29.3 (D-0.1 = 29.444); holds through the Himlung Avalanche mention (not drawn here, not
+     this diagram's claim) to "closer to Langtang's type." @28.09-28.65 */
+  tl.to("#rvr-left", { x: -40, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 28.7);
+  tl.to("#rvr-right", { x: 40, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 28.7);
+  tl.to(["#rvr-div", "#rvr-llab", "#rvr-rlab", "#rvr-schem"], { autoAlpha: 0, duration: 0.5 }, 28.8);
   tl.to({}, { duration: 0.01 }, D - 0.01);
   window.__timelines["g-rock-ice-vs-rain"] = tl;
 })();
