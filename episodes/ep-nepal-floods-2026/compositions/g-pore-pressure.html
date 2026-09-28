@@ -84,36 +84,40 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(["#pp-lfric", "#pp-lwt"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 2.6);
   tl.fromTo("#pp-schem", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 2.8);
 
-  /* RAIN FILLS THE TINY GAPS @5.49: water rises inside the box in two stages (linear, so the
-     push-arrow rows below are guaranteed already covered before they fire; see mg_specs). */
-  tl.to("#pp-water", { scaleY: 0.55, duration: 4.51, ease: "none" }, 5.49);
-  tl.to("#pp-water", { scaleY: 0.82, duration: 4.69, ease: "power2.out" }, 11.31);
+  /* real word "Rain" @5.46: water rises inside the box in two stages (linear, so the
+     push-arrow rows below are guaranteed already covered before they fire; see mg_specs). Stage 2 is a plain
+     continuation (no single word carries it) so it starts right where stage 1 ends. */
+  tl.to("#pp-water", { scaleY: 0.55, duration: 4.51, ease: "none" }, 5.31);
+  tl.to("#pp-water", { scaleY: 0.82, duration: 4.69, ease: "power2.out" }, 9.82);
 
-  /* PUSHES THEM APART @8.0/9.4: arrows fire once the water has already reached their row, grains nudge outward */
+  /* real words "pushes" @9.12 / "apart" @9.76 / "inside." @10.48: arrows fire once the water has already
+     reached their row (row y=820 covered by 6.76s, row y=680 covered by 8.44s, both well before these times),
+     grains nudge outward */
   ["#pp-a1", "#pp-a2"].forEach(function (sel) {
-    tl.fromTo(sel, { autoAlpha: 0, scale: 0.5, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 8.0);
-    tl.to(sel, { autoAlpha: 0, duration: 0.3 }, 9.1);
+    tl.fromTo(sel, { autoAlpha: 0, scale: 0.5, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 8.97);
+    tl.to(sel, { autoAlpha: 0, duration: 0.3 }, 10.07);
   });
   ["#pp-a3", "#pp-a4"].forEach(function (sel) {
-    tl.fromTo(sel, { autoAlpha: 0, scale: 0.5, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 9.4);
-    tl.to(sel, { autoAlpha: 0, duration: 0.3 }, 10.5);
+    tl.fromTo(sel, { autoAlpha: 0, scale: 0.5, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 10.37);
+    tl.to(sel, { autoAlpha: 0, duration: 0.3 }, 11.47);
   });
-  tl.to(GX, { x: "+=4", duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, 8.2);
+  tl.to(GX, { x: "+=4", duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, 9.17);
 
-  /* GEOLOGISTS CALL THAT PORE PRESSURE @11.31 */
-  tl.fromTo("#pp-lpore", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 11.31);
+  /* re-anchored: "PORE PRESSURE" was estimated @11.31 (the phrase START) but the word "pressure." is not said
+     until @12.94 -- lands on "pore" @12.64 / "pressure." @12.94 instead, per MUST-BE-TRUE #4 */
+  tl.fromTo("#pp-lpore", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 12.49);
 
-  /* FRICTION HOLDING THE SLOPE DROPS @13.03: friction bar shrinks, anchored at the ground */
-  tl.to("#pp-friction", { scaleY: 0.35, duration: 3.0, ease: "power2.inOut" }, 13.03);
+  /* re-anchored: "the friction holding the slope drops" was estimated @13.03, really said @15.78-16.94 */
+  tl.to("#pp-friction", { scaleY: 0.35, duration: 3.0, ease: "power2.inOut" }, 15.67);
 
-  /* A SOAKED SLOPE DOESN'T NEED THE BIGGEST STORM @18.86: weight pulses, the grain box shears/slips */
-  tl.to("#pp-lwt", { scale: 1.15, transformOrigin: "left center", duration: 0.25, ease: "power2.out", yoyo: true, repeat: 3 }, 18.86);
-  tl.to("#pp-grains", { x: -40, skewX: 8, duration: 0.7, ease: "power2.in" }, 18.86);
-  tl.to("#pp-water", { x: -40, skewX: 8, duration: 0.7, ease: "power2.in" }, 18.86);
+  /* re-anchored: "A soaked slope doesn't need the biggest storm" was estimated @18.86, really said @19.41 */
+  tl.to("#pp-lwt", { scale: 1.15, transformOrigin: "left center", duration: 0.25, ease: "power2.out", yoyo: true, repeat: 3 }, 19.26);
+  tl.to("#pp-grains", { x: -40, skewX: 8, duration: 0.7, ease: "power2.in" }, 19.26);
+  tl.to("#pp-water", { x: -40, skewX: 8, duration: 0.7, ease: "power2.in" }, 19.26);
 
-  /* exit @27.0 */
+  /* exit, finishes by D - 0.1 (last real word "it." @27.41) */
   tl.to(["#pp-box", "#pp-grains", "#pp-water", "#pp-friction", "#pp-weight", "#pp-lfric", "#pp-lwt", "#pp-lpore", "#pp-head", "#pp-schem"],
-    { y: "-=40", autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 27.0);
+    { y: "-=40", autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 27.55);
   tl.to({}, { duration: 0.01 }, D - 0.01);
   window.__timelines["g-pore-pressure"] = tl;
 })();
