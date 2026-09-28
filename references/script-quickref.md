@@ -119,8 +119,10 @@ on any hard word in narration, on-screen text or metadata.
   subagents, one slice each, run by the orchestrator, not the writer) resolves every marker to
   CONFIRMED (marker removed) / CORRECTED (line rewritten) / UNVERIFIED (line CUT — never softened
   to "reportedly") while the owner reads the draft.
-- Section lock: hand off hook+intro as soon as it's written; that section goes to TTS the moment
-  its own `[verify]` slice clears, without waiting for later acts' fan-out.
+- Hand off hook+intro as soon as it's written. Section lock (the 3-condition definition — markers
+  resolved, owner's explicit approval, hook also needs the grader's pass) lives in
+  `script-scaling.md` "Section lock — the ONE definition"; that section goes to TTS the moment
+  IT locks, without waiting for later acts.
 - Every audio-carrying insert is transcribed in full before cut selection; cut chosen at the transcript's peak.
 
 ## CTA hinge (must-keep every episode from ep4 on) — DESIGN.md "CTA contract"
