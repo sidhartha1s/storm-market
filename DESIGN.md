@@ -26,9 +26,10 @@ design review) before any paid generation:
 **Read `references/script-scaling.md` before writing any script** — the retention lattice:
 per-minute invariant cadences, 3–6 min self-similar acts, loop-table plant/pay, text-only act
 briefs (no JSON/code), 4th-grader language, spice = clarifying footnote not filler. It also
-carries the **pre-TTS fact-QC layer** (eyeball pass + verification verdicts; zero open
-`[verify]` markers before TTS) and the **insert-transcription rule** (transcribe every insert
-in full BEFORE cut selection; cut at the transcript's action/emotion peak).
+carries the **fact-QC layer** (revised 27 Sep 26: writer tags `[verify]` only, a parallel
+fact-check fan-out resolves it, "Section lock — the ONE definition" gates TTS — read it there,
+not here) and the **insert-transcription rule** (transcribe every insert in full BEFORE cut
+selection; cut at the transcript's action/emotion peak).
 
 ## Audio rules (hard)
 
