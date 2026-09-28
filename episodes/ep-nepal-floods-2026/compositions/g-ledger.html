@@ -2,13 +2,9 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- g-ledger (A4 spine, full act, 102 s): three columns, Established / Disputed / Unknown; each claim slides into
-     its column on the voice and stays for the rest of the act (mg_specs/g-ledger.md). Claim text and sourcing:
-     Established = factcheck-C#1,#2,#3. Disputed = factcheck-C#4,#5,#6 (12/21/24, reports disagree). Unknown = "how
-     long the river was blocked" scoped to DURATION only (factcheck-A#13; factcheck-C#12 confirms the blockage
-     itself happened, so this entry is intentionally narrower than "was it blocked"), "12 crew still missing"
-     (factcheck-D#3), "any reading of either slope before it moved" (factcheck-B#22). Cues estimated 175 wpm from
-     the A4 paragraph start (mg-quickref timing rule). -->
+<!-- g-ledger (A4-S1, 18.683 s): three columns, Established / Disputed / Unknown. Only the Established claims land
+     here, each on its word (retimed to words.json 29 Sep 26). The toll dispute plays in g-toll-counter-a4; the board
+     returns with Disputed + Unknown in g-ledger-a4b (A4-S6). Sourcing: factcheck-C#1..#6, factcheck-A#13, -B#22, -D#3. -->
 <template>
 <style>
   #gl-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
@@ -25,7 +21,7 @@
     text-shadow:0 4px 20px rgba(0,0,0,0.7); }
   .gl-dissub { margin-top:10px; font-size:20px; font-weight:700; letter-spacing:3px; color:#93a3b2; text-transform:uppercase; }
 </style>
-<div id="gl-root" data-composition-id="g-ledger" data-width="1920" data-height="1080" data-duration="102">
+<div id="gl-root" data-composition-id="g-ledger" data-width="1920" data-height="1080" data-duration="18.683">
   <div class="gl-sweep" id="gl-sweep"></div>
 
   <div class="gl-hdr" id="gl-hdr-est" style="left:96px; color:#3fa15a">Established</div>
@@ -52,48 +48,26 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-ledger", P = "#gl-";
-  const DUR = 102;
+  const DUR = 18.683;
   const tl = gsap.timeline({ paused: true });
   tl.set([P+"hdr-est", P+"hdr-dis", P+"hdr-unk", P+"line-est", P+"line-dis", P+"line-unk"], { autoAlpha: 0 }, 0);
   tl.set([P+"line-est", P+"line-dis", P+"line-unk"], { scaleX: 0, transformOrigin: "left center" }, 0);
   tl.set([P+"est1", P+"est2", P+"est3", P+"dis", P+"unk1", P+"unk2", P+"unk3"], { autoAlpha: 0, x: -40 }, 0);
-
-  /* whole window: the corner light sweeps continuously, 12 passes across 102 s */
-  tl.fromTo(P+"sweep", { x: -320 }, { x: 2200, duration: 8.5, ease: "none", repeat: 12 }, 0);
-
-  /* 0.3: Three things about this week are settled — all three headers land together */
-  tl.fromTo([P+"hdr-est", P+"hdr-dis", P+"hdr-unk"], { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.1 }, 0.3);
-  tl.to([P+"line-est", P+"line-dis", P+"line-unk"], { scaleX: 1, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0.6);
-  /* headers breathe gently for the whole 102 s so the board is never still between claims */
-  tl.to([P+"hdr-est", P+"hdr-dis", P+"hdr-unk"], { opacity: 0.7, duration: 1.8, ease: "sine.inOut", yoyo: true, repeat: 27 }, 1.5);
-
-  /* 7.2: The wall fell into the Kali Gandaki on September twenty seventh, after days of rain */
-  tl.to(P+"est1", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 7.2);
-  /* 12.3: filmed near the village of Lete in Mustang district */
-  tl.to(P+"est2", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 12.3);
-  /* 18.5: the avalanche hit the Himlung camp */
-  tl.to(P+"est3", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 18.5);
-
-  /* 22.0: the reports disagree on — the disputed chip slams in */
-  tl.fromTo(P+"dis", { autoAlpha: 0, x: 0, scale: 1.15 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.in" }, 22.0);
-  tl.fromTo(P+"disnum", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 22.3);
-  tl.to(P+"disnum", { scale: 1.06, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "center" }, 22.7);
-  tl.fromTo(P+"dissub", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 23.0);
-
-  /* 80.9: Some of it is still open — the Unknown header pulses awake */
-  tl.to(P+"hdr-unk", { scale: 1.05, duration: 0.35, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "left center" }, 80.9);
-
-  /* 87.5: how long the debris held the river back */
-  tl.to(P+"unk1", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 87.5);
-  /* 93.3: twelve of the crew still missing */
-  tl.to(P+"unk2", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 93.3);
-  /* 98.4: no agency has published a radar or sensor reading from either slope before it moved */
-  tl.to(P+"unk3", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 98.4);
-
-  /* exit 101.4 — chapter blackout follows */
-  tl.to([P+"hdr-est", P+"hdr-dis", P+"hdr-unk", P+"line-est", P+"line-dis", P+"line-unk",
-         P+"est1", P+"est2", P+"est3", P+"dis", P+"unk1", P+"unk2", P+"unk3"],
-        { x: "+=660", autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 101.4);
+  /* corner light sweeps across the whole window */
+  tl.fromTo(P+"sweep", { x: -320 }, { x: 2200, duration: 8.5, ease: "none", repeat: 1 }, 0);
+  /* 0.0 "Three things about this week are settled": headers land on the first word */
+  tl.fromTo([P+"hdr-est", P+"hdr-dis", P+"hdr-unk"], { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.1 }, 0.05);
+  tl.to([P+"line-est", P+"line-dis", P+"line-unk"], { scaleX: 1, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0.35);
+  tl.to([P+"hdr-est", P+"hdr-dis", P+"hdr-unk"], { opacity: 0.7, duration: 1.8, ease: "sine.inOut", yoyo: true, repeat: 8 }, 1.5);
+  /* 2.72 "The wall fell into the Kaligandaki" */
+  tl.to(P+"est1", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 2.57);
+  /* 10.02 "filmed near the village of Lete" */
+  tl.to(P+"est2", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 9.87);
+  /* 13.48 "the avalanche hit the Himlung camp" */
+  tl.to(P+"est3", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 13.33);
+  /* exit: the toll counters take the frame next */
+  tl.to([P+"hdr-est", P+"hdr-dis", P+"hdr-unk", P+"line-est", P+"line-dis", P+"line-unk", P+"est1", P+"est2", P+"est3"],
+        { x: "+=660", autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.95);
   window.__timelines[ID] = tl;
 })();
 </script>
