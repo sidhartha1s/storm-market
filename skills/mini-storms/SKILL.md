@@ -92,11 +92,9 @@ Total ≈ 3 h 05. If any step overruns 2×, ship what exists and list what was c
 - **CTAs and interaction beats (FORMAT.md ledger, owner 2026-09-09):** hard cap 3 per video incl. the fixed END CTA,
   excl. Paul's; where-are-you-watching once (fresh wording); one mid-video question or think-it-yourself beat invented
   per episode; optional name-drop; breadcrumbs uncounted. Placed by judgment, never back to back.
-- **Homographs are a TTS trap (owner 2026-09-09, "AI-slop radar"):** pocket-TTS read "I read all the comments" as
-  "I red" (past tense). Before TTS, scan every interaction line for read / lead / live / wind / tear / bass /
-  close / present / record and respell the narration copy phonetically ("reed") while the script keeps the
-  owner's exact wording. Listen to every interaction beat once after TTS; a wrong-tense homograph reads as AI
-  slop to the audience. Owner's phrases are verbatim — never paraphrase a line he wrote.
+- **Homographs are a TTS trap:** list, senses and the probe-before-respelling rule live in
+  `references/homographs.md`, gated by `scripts/homograph_scan.py`. Owner's phrases are verbatim — never
+  paraphrase a line he wrote.
 - Every fact carries an inline `[src: …]` before TTS; zero open `[verify]` markers. Primary
   sources (USGS, NOAA, NHC, BNPB/BMKG, NWS, ReliefWeb) beat competitor videos.
 - Segment IDs `A1-S1…` with `> ` blockquote narration, exactly the storm-episode format.
