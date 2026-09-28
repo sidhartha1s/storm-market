@@ -91,6 +91,7 @@ window.__timelines = window.__timelines || {};
 
   /* exit 19.0, finishes 19.6 (D-0.1 = 19.635); holds through "rescuers said survival was very unlikely." */
   tl.to("#sc-card", { x: -700, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 19.0);
+  tl.to({}, { duration: 0.01 }, DUR - 0.01);  // hold the timeline to the host window (graphics_qc short-duration)
   window.__timelines["g-search-card"] = tl;
 })();
 </script>

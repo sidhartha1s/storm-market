@@ -68,6 +68,7 @@ window.__timelines = window.__timelines || {};
   /* exit: the toll counters take the frame next */
   tl.to([P+"hdr-est", P+"hdr-dis", P+"hdr-unk", P+"line-est", P+"line-dis", P+"line-unk", P+"est1", P+"est2", P+"est3"],
         { x: "+=660", autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 18.15);
+  tl.to({}, { duration: 0.01 }, DUR - 0.01);  // hold the timeline to the host window (graphics_qc short-duration)
   window.__timelines[ID] = tl;
 })();
 </script>

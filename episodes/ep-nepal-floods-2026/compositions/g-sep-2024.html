@@ -121,6 +121,7 @@ window.__timelines = window.__timelines || {};
 
   /* exit, finishes by D - 0.1 (last real word "snow." @18.40) */
   tl.to("#s24-panel", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 18.55);
+  tl.to({}, { duration: 0.01 }, DUR - 0.01);  // hold the timeline to the host window (graphics_qc short-duration)
   window.__timelines["g-sep-2024"] = tl;
 })();
 </script>
