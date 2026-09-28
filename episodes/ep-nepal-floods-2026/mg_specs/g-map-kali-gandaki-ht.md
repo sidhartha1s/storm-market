@@ -28,7 +28,10 @@ Labels: "Nepal" (1150, 760) · "Kali Gandaki River" end-anchored (726, 560) · "
 3. "Tibet" sits north of the dashed border, "Nepal" south of it.
 4. Nothing in the presenter corner (x >= 1600 and y >= 680) except basemap fill.
 
-## 5. Text and cues (host starts at CUE "The same storm" @est 4.1 s into the HT paragraph; local seconds below)
-Map in 0.0-0.5 · river draws north 0.2-2.6 · "Kali Gandaki River" 1.2 · "Nepal" 0.6 ·
-CUE "Himlung Himal" @est 3.4 pin + ring + label · CUE "Tibet" @est 5.5 border brightens + "Tibet" ·
-cut at CUE "base camp" @est 10.0 (WION avalanche clip). Duration 10.0 s. Ends on the camera push (cut).
+## 5. Text and cues
+HT line after the 29 Sep hook edit: "The storm behind it was also dropping snow on Himlung Himal, a peak near the border with Tibet."
+Host starts at the paragraph start, CUE "The storm behind it" @est 0.0. Estimates at 175 wpm.
+Map in 0.0-0.5 · river draws north 0.2-2.6 · "Nepal" 0.6 · "Kali Gandaki River" 1.2 ·
+CUE "Himlung Himal" @est 3.1 pin + ring + label · CUE "Tibet" @est 5.8 border brightens and marches + "Tibet" ·
+cut at CUE "base camp" @est 10.3 (WION avalanche clip). Duration 10.3 s. Ends on the camera push (cut).
+Type tiers: 52 "Himlung Himal" · 40 "Nepal", "Tibet" · 24 river label, 19 credit.
