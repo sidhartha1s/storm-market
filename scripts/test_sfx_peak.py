@@ -56,14 +56,18 @@ HTML = (
     '<audio id="nx-h1-s1" src="audio/h1-s1.wav" data-start="0.0" data-duration="5.691" data-volume="1"></audio>\n'
     # a <video> element with an sx- id must never match — blocker #2 (video b-roll dwarfed real hits)
     '<video id="sx-broll-fake" src="media/broll/fake.mp4" data-start="20" data-duration="8"></video>\n'
+    # episodes/ep-enderlin-2025/index.html (real trimmed-into-file element, media_start != 0)
+    '<audio id="sx-drone" src="media/sfx/drone-hook.mp3" data-bed="" data-start="0" data-media-start="1.04" data-duration="27.61" data-volume="0.13"></audio>\n'
 )
 rows = list(eligible_hits(HTML))
 check("sfx_peak-03 eligible_hits finds the real stamp hits despite data-bed on every sx- element",
-      [r[0] for r in rows] == ["sx-stamp-ef5", "sx-stamp-ef3", "sx-mus-bed-1"], rows)
+      [r[0] for r in rows] == ["sx-stamp-ef5", "sx-stamp-ef3", "sx-mus-bed-1", "sx-drone"], rows)
 check("sfx_peak-03b eligible_hits excludes riser/nx- ids and never matches <video>",
       not any(r[0] in ("sx-riser-hook", "nx-h1-s1", "sx-broll-fake") for r in rows), rows)
 check("sfx_peak-04 eligible_hits reports the cue (data-start) and media_start unchanged",
       rows[0] == ("sx-stamp-ef5", "media/sfx/stamp-boom.wav", 1.70, 0.0), rows)
+check("sfx_peak-05 eligible_hits parses data-media-start for a trimmed-into-file element",
+      rows[3] == ("sx-drone", "media/sfx/drone-hook.mp3", 0.0, 1.04), rows)
 
 print()
 if FAILS:
