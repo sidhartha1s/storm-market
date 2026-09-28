@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-mechanism-a6b (B3): host 1436.58 -> 1454.28 (17.7 s, track 2), audio a6-s7 mounts at 0 (local = word time).
+     What Enderlin changed: the survey toolkit gains a slot, "Debris Flight"; the citation returns (Miller et al., Monthly
+     Weather Review, 2024, fact_check.md); then the method as a flow: an object thrown far -> the distance -> a wind speed.
+     The thrown block rides its arc (x linear, y in two quadratic halves = the drawn curve; trail clipped to x).
+     Cues: toolkit 2.06, weather service 3.28, debris flight 4.88, Miller 7.14, future tornado assessments 8.64,
+     something large 11.82, thrown far 12.54, where it stood 13.80, published method 14.78, distance 16.08, into wind 16.42.
+     Exit 17.12 (spec 1453.7). -->
+<template>
+<style>
+  .m6b-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .m6b-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .m6b-glow { position:absolute; left:-200px; top:100px; width:1300px; height:900px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(127,178,229,0.12), rgba(127,178,229,0) 70%); }
+  .m6b-head { position:absolute; left:96px; top:84px; font-family:'Arial Black', Arial, sans-serif; font-size:56px; line-height:66px; color:#f2f5f8; white-space:nowrap; }
+  .m6b-tile { position:absolute; top:180px; width:380px; height:200px; box-sizing:border-box; border-radius:22px;
+    background: rgba(10,16,24,0.55); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  .m6b-open { background: rgba(232,197,106,0.05); border:3px dashed rgba(232,197,106,0.6); backdrop-filter:none; -webkit-backdrop-filter:none; }
+  .m6b-fill { position:absolute; inset:0; border-radius:20px; background: rgba(232,197,106,0.16); border:2px solid #e8c56a; box-sizing:border-box; }
+  .m6b-ic { position:absolute; left:120px; top:22px; width:140px; height:100px; }
+  .m6b-tl { position:absolute; left:0; right:0; top:136px; text-align:center; font-weight:700; font-size:28px; line-height:34px; color:#dfe7ee; white-space:nowrap; }
+  .m6b-new { position:absolute; right:16px; top:12px; padding:4px 10px; border-radius:8px; background:#d8a13a; font-weight:700; font-size:20px; letter-spacing:2px; color:#0b1016; }
+  .m6b-cite { position:absolute; left:96px; top:430px; padding:20px 40px 22px; border-radius:22px; overflow:hidden;
+    background: rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 24px 70px rgba(0,0,0,0.5); }
+  .m6b-ctext { font-family: Georgia, serif; font-style:italic; font-size:36px; line-height:44px; color:#1c1a17; white-space:nowrap; }
+  .m6b-cbeam { position:absolute; top:0; bottom:0; left:0; width:180px; background:linear-gradient(90deg, transparent, rgba(138,90,16,0.16), transparent); }
+  .m6b-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .m6b-lab { position:absolute; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
+  .m6b-ws { position:absolute; left:1100px; width:400px; top:664px; text-align:center; font-family: Georgia, serif; font-style:italic; font-size:36px; line-height:44px; color:#d8a13a; }
+</style>
+<div class="m6b-wrap" data-composition-id="g-mechanism-a6b" data-width="1920" data-height="1080" data-duration="17.7">
+  <div class="m6b-grid" id="m6b-grid"></div>
+  <div class="m6b-glow" id="m6b-glow"></div>
+  <div class="m6b-head" id="m6b-head">Toolkit</div>
+  <div class="m6b-tile" id="m6b-t1" style="left:96px;">
+    <svg class="m6b-ic" viewBox="0 0 140 100"><path d="M30 90 V50 L70 20 L110 50 V90 Z" fill="none" stroke="#7fb2e5" stroke-width="5" stroke-linejoin="round"/><path d="M60 90 V64 H80 V90" fill="none" stroke="#7fb2e5" stroke-width="5"/></svg>
+    <div class="m6b-tl" id="m6b-t1l">Damage Survey</div>
+  </div>
+  <div class="m6b-tile" id="m6b-t2" style="left:516px;">
+    <svg class="m6b-ic" viewBox="0 0 140 100"><path d="M40 94 L56 60 L72 94 M46 80 H66" fill="none" stroke="#93a3b2" stroke-width="5" stroke-linejoin="round"/><path d="M34 58 A38 38 0 0 0 96 30 Z" fill="#5a768f" stroke="#7fb2e5" stroke-width="3"/><path id="m6b-ra" d="M96 14 A40 40 0 0 1 124 52" fill="none" stroke="#7fb2e5" stroke-width="5" stroke-linecap="round"/></svg>
+    <div class="m6b-tl" id="m6b-t2l">Radar</div>
+  </div>
+  <div class="m6b-tile" id="m6b-t3" style="left:936px;">
+    <svg class="m6b-ic" viewBox="0 0 140 100"><rect x="50" y="42" width="40" height="18" rx="6" fill="#5a768f" stroke="#7fb2e5" stroke-width="3"/><path d="M50 50 H20 M90 50 H120" stroke="#93a3b2" stroke-width="4"/><path id="m6b-pr1" d="M8 44 H32" stroke="#dfe7ee" stroke-width="4"/><path id="m6b-pr2" d="M108 44 H132" stroke="#dfe7ee" stroke-width="4"/><path d="M60 64 L48 92 H92 L80 64" fill="rgba(127,178,229,0.25)"/></svg>
+    <div class="m6b-tl" id="m6b-t3l">Aerial Views</div>
+  </div>
+  <div class="m6b-tile m6b-open" id="m6b-t4" style="left:1356px;">
+    <div class="m6b-fill" id="m6b-t4f"></div>
+    <svg class="m6b-ic" id="m6b-t4i" viewBox="0 0 140 100"><path d="M14 88 Q70 -6 126 88" fill="none" stroke="#e8c56a" stroke-width="5" stroke-dasharray="10 8"/><rect x="4" y="76" width="24" height="14" rx="4" fill="#5a768f" stroke="#7fb2e5" stroke-width="2"/><path d="M4 94 H136" stroke="#93a3b2" stroke-width="3"/></svg>
+    <div class="m6b-tl" id="m6b-t4l" style="color:#e8c56a;">Debris Flight</div>
+    <div class="m6b-new" id="m6b-new">New</div>
+  </div>
+  <div class="m6b-cite" id="m6b-cite"><div class="m6b-cbeam" id="m6b-cbeam"></div><div class="m6b-ctext" id="m6b-ctext">Miller et al., Monthly Weather Review, 2024</div></div>
+  <svg class="m6b-svg" viewBox="0 0 1920 1080">
+    <defs><clipPath id="m6b-clip"><rect id="m6b-clipr" x="200" y="0" width="0" height="1080"/></clipPath></defs>
+    <path id="m6b-ground" d="M150 900 H900" stroke="#93a3b2" stroke-width="3"/>
+    <path id="m6b-arc" d="M200 886 Q500 366 800 886" fill="none" stroke="#e8c56a" stroke-width="5" clip-path="url(#m6b-clip)"/>
+    <g id="m6b-obj"><rect x="-18" y="-14" width="36" height="28" rx="5" fill="#5a768f" stroke="#7fb2e5" stroke-width="3"/></g>
+    <path id="m6b-brk" d="M200 940 H800 M200 928 V952 M800 928 V952" fill="none" stroke="#f2f5f8" stroke-width="4"/>
+    <g id="m6b-arrow"><path d="M880 820 H1030" stroke="#e8c56a" stroke-width="6" stroke-linecap="round"/><path d="M1010 800 L1040 820 L1010 840" fill="none" stroke="#e8c56a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <g id="m6b-dial">
+      <path d="M1110 920 A190 190 0 0 1 1490 920 Z" fill="rgba(11,16,22,0.9)" stroke="rgba(255,255,255,0.14)" stroke-width="2"/>
+      <path d="M1140 920 A160 160 0 0 1 1220 781.4" fill="none" stroke="#5a768f" stroke-width="26"/>
+      <path d="M1220 781.4 A160 160 0 0 1 1380 781.4" fill="none" stroke="#7fb2e5" stroke-width="26"/>
+      <path d="M1380 781.4 A160 160 0 0 1 1460 920" fill="none" stroke="#d0121f" stroke-width="26"/>
+      <path id="m6b-needle" d="M1300 926 L1300 790" stroke="#f2f5f8" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="1300" cy="920" r="13" fill="#f2f5f8"/>
+    </g>
+  </svg>
+  <div class="m6b-lab" id="m6b-dist" style="left:444px; top:956px;">Distance</div>
+  <div class="m6b-ws" id="m6b-ws">Wind Speed</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 17.7;
+  const dash = (id) => { const p = document.getElementById(id); const L = Math.ceil(p.getTotalLength()) + 1; p.style.strokeDasharray = L; return L; };
+  const GL = dash("m6b-ground"), BK = dash("m6b-brk");
+  tl.set(["#m6b-head", "#m6b-t1", "#m6b-t2", "#m6b-t3", "#m6b-t4", "#m6b-t4f", "#m6b-t4i", "#m6b-t4l", "#m6b-new", "#m6b-cite",
+          "#m6b-obj", "#m6b-brk", "#m6b-arrow", "#m6b-dial", "#m6b-dist", "#m6b-ws"], { autoAlpha: 0 }, 0);
+  tl.set("#m6b-ground", { strokeDashoffset: GL }, 0);
+  tl.set("#m6b-brk", { strokeDashoffset: BK }, 0);
+  tl.set("#m6b-needle", { rotation: -80, svgOrigin: "1300 920" }, 0);
+  tl.set("#m6b-obj", { x: 200, y: 886 }, 0);
+
+  /* ambient, whole window */
+  tl.fromTo("#m6b-grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#m6b-glow", { x: 0, y: 0 }, { x: 900, y: -80, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#m6b-cbeam", { x: -180 }, { x: 900, duration: 2.2, ease: "none", repeat: 4 }, 7.1);
+
+  /* WHAT ENDERLIN DID CHANGE @1.06 ... TOOLKIT @2.06: the survey tools */
+  tl.fromTo(["#m6b-t1", "#m6b-t2", "#m6b-t3"], { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out", stagger: 0.12 }, 0.2);
+  tl.fromTo("#m6b-t4", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.56);
+  tl.fromTo("#m6b-head", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 2.06);
+  tl.fromTo("#m6b-ra", { opacity: 1 }, { opacity: 0.15, duration: 0.5, ease: "power1.in", repeat: 9 }, 0.8);
+  tl.fromTo("#m6b-pr1", { scaleX: 1 }, { scaleX: -1, transformOrigin: "50% 50%", duration: 0.12, ease: "none", repeat: 39 }, 0.8);
+  tl.fromTo("#m6b-pr2", { scaleX: 1 }, { scaleX: -1, transformOrigin: "50% 50%", duration: 0.12, ease: "none", repeat: 39 }, 0.86);
+  /* DEBRIS FLIGHT @4.88: the empty slot fills */
+  tl.fromTo("#m6b-t4f", { autoAlpha: 0, scale: 0.85 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 4.88);
+  tl.fromTo("#m6b-t4i", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 4.95);
+  tl.fromTo("#m6b-t4l", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 5.05);
+  tl.fromTo("#m6b-new", { autoAlpha: 0, scale: 1.6, rotation: -8 }, { autoAlpha: 1, scale: 1, rotation: 0, duration: 0.3, ease: "power4.out" }, 5.4);
+  tl.to(["#m6b-t1", "#m6b-t2", "#m6b-t3"], { opacity: 0.55, duration: 0.4 }, 5.2);
+  tl.fromTo("#m6b-t4", { y: 0 }, { y: -10, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 3 }, 5.6);
+  /* MILLER @7.14: the citation returns */
+  tl.fromTo("#m6b-cite", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 7.14);
+
+  /* SOMETHING LARGE @11.82, THROWN FAR @12.54, WHERE IT STOOD @13.80 */
+  tl.to(["#m6b-head", "#m6b-t1", "#m6b-t2", "#m6b-t3", "#m6b-t4", "#m6b-cite"], { opacity: 0.4, duration: 0.5 }, 11.5);
+  tl.to("#m6b-ground", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 11.6);
+  tl.fromTo("#m6b-obj", { autoAlpha: 0, scale: 0.4 }, { autoAlpha: 1, scale: 1, transformOrigin: "50% 50%", duration: 0.3, ease: "back.out(2)" }, 11.82);
+  tl.to("#m6b-obj", { x: 800, duration: 0.9, ease: "none" }, 12.54);
+  tl.to("#m6b-obj", { y: 626, duration: 0.45, ease: "power1.out" }, 12.54);
+  tl.to("#m6b-obj", { y: 886, duration: 0.45, ease: "power1.in" }, 12.99);
+  tl.to("#m6b-obj", { rotation: 300, transformOrigin: "50% 50%", duration: 0.9, ease: "none" }, 12.54);
+  tl.to("#m6b-clipr", { attr: { width: 600 }, duration: 0.9, ease: "none" }, 12.54);
+  tl.set("#m6b-brk", { autoAlpha: 1 }, 13.5);
+  tl.to("#m6b-brk", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 13.5);
+  tl.fromTo("#m6b-dist", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 13.8);
+  /* PUBLISHED METHOD @14.78: distance -> wind */
+  tl.fromTo("#m6b-arrow", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 14.78);
+  tl.fromTo("#m6b-dial", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 15.06);
+  /* DISTANCE @16.08 INTO WIND @16.42: the needle reads it */
+  tl.to("#m6b-needle", { rotation: 58, svgOrigin: "1300 920", duration: 0.6, ease: "back.out(1.6)" }, 16.08);
+  tl.fromTo("#m6b-ws", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 16.42);
+
+  /* exit (spec 1453.7 -> 17.12) */
+  tl.to(["#m6b-head", "#m6b-t1", "#m6b-t2", "#m6b-t3", "#m6b-t4", "#m6b-cite", "#m6b-ground", "#m6b-arc", "#m6b-obj", "#m6b-brk", "#m6b-arrow",
+         "#m6b-dial", "#m6b-dist", "#m6b-ws"], { y: "-=40", autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 17.12);
+  window.__timelines["g-mechanism-a6b"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

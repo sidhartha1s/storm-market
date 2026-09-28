@@ -1,0 +1,280 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-ef-scale (B2): the Enhanced Fujita scale as a building. Host 146.129 -> 210.09 (63.961 s, track 2);
+     clip cutaway v-a1-search 166.12-172.36 covers the relayout (ladder moves right, DI grid takes the left).
+     Cues: episode seconds from audio/a1-s3..a1-s6 words.json (spec mg_specs.md block 4); local = cue - H.
+     Phases: A ladder EF0-EF5 + bands · B 28 damage indicators · C degrees of damage mapped to the rungs ·
+     D survey tablet with pins and layers, "Rating = Damage", exit 209.5.
+     Continuous: light sweep across the frame (repeat), rung glow scanning up the ladder, tablet float. -->
+<template>
+<style>
+  .efs-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .efs-grid { position:absolute; left:-80px; top:-80px; width:2080px; height:1240px;
+    background-image:linear-gradient(rgba(147,163,178,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,.06) 1px, transparent 1px);
+    background-size:80px 80px; }
+  .efs-sweep { position:absolute; left:0; top:0; width:260px; height:1080px;
+    background:linear-gradient(100deg, transparent, rgba(127,178,229,.08), transparent); }
+  .efs-h { position:absolute; left:110px; top:78px; font-family:'Arial Black', Arial, sans-serif; font-size:58px; color:#f2f5f8; white-space:nowrap; }
+  .efs-h b { font-family:'AbrilFig', Georgia, serif; font-weight:400; color:#d0121f; font-size:66px; }
+  .efs-sub { position:absolute; left:112px; top:160px; font-family:Georgia, serif; font-style:italic; font-size:30px; color:#d8a13a; white-space:nowrap; }
+  .efs-sub b { font-family:'AbrilFig', Georgia, serif; font-style:normal; font-weight:400; font-size:46px; color:#d0121f; }
+  .efs-lad { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .efs-rail { position:absolute; top:400px; width:6px; height:560px; background:#2a3644; }
+  .efs-rl { position:absolute; left:190px; width:120px; height:70px; line-height:70px; text-align:right; font-weight:700; font-size:30px; letter-spacing:1px; color:#dfe7ee; }
+  .efs-rb { position:absolute; left:330px; width:480px; height:70px; border-radius:6px; }
+  .efs-glow { position:absolute; left:330px; top:0; width:480px; height:70px; border-radius:6px;
+    background:linear-gradient(90deg, rgba(242,245,248,0), rgba(242,245,248,.28), rgba(242,245,248,0)); }
+  .efs-co { position:absolute; left:870px; height:70px; line-height:70px; font-weight:700; font-size:36px; letter-spacing:1px; white-space:nowrap; }
+  .efs-gust { position:absolute; left:330px; top:972px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .efs-di { position:absolute; width:118px; height:92px; box-sizing:border-box; border-radius:10px; background:#101820; border:2px solid #2a3644;
+    display:flex; align-items:center; justify-content:center; text-align:center; font-weight:700; font-size:21px; line-height:1.15; color:#f2f5f8; }
+  .efs-step { position:absolute; width:120px; border-radius:6px 6px 0 0; background:linear-gradient(180deg, #2a3644, #15202b); border:2px solid #3d5366; box-sizing:border-box; }
+  .efs-dot { position:absolute; width:22px; height:22px; border-radius:50%; }
+  .efs-lab { position:absolute; font-weight:700; font-size:28px; color:#f2f5f8; white-space:nowrap; }
+  .efs-small { position:absolute; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .efs-prove { position:absolute; left:110px; top:236px; font-weight:700; font-size:38px; color:#e8c56a; white-space:nowrap; }
+  .efs-fig { position:absolute; font-family:'AbrilFig', Georgia, serif; font-size:60px; color:#d0121f; text-shadow:0 4px 18px rgba(0,0,0,.8); white-space:nowrap; }
+  .efs-tab { position:absolute; left:330px; top:236px; width:1000px; height:620px; box-sizing:border-box; border-radius:38px; background:#0b1016;
+    border:14px solid #2a3644; box-shadow:0 30px 80px rgba(0,0,0,.6); overflow:hidden; }
+  .efs-tog { position:absolute; left:1400px; top:400px; width:420px; height:300px; }
+  .efs-tr { position:absolute; left:0; width:420px; height:70px; }
+  .efs-sw { position:absolute; left:0; top:16px; width:70px; height:38px; border-radius:19px; background:#15202b; border:2px solid #3d5366; box-sizing:border-box; }
+  .efs-kn { position:absolute; left:4px; top:4px; width:26px; height:26px; border-radius:50%; background:#93a3b2; }
+  .efs-tl { position:absolute; left:92px; top:0; line-height:70px; font-weight:700; font-size:32px; color:#dfe7ee; white-space:nowrap; }
+</style>
+<div class="efs-root" data-composition-id="g-ef-scale" data-width="1920" data-height="1080" data-duration="63.961">
+  <div class="efs-grid" id="efs-grid"></div>
+  <div class="efs-sweep" id="efs-sweep"></div>
+
+  <!-- phase A: the scale -->
+  <div class="efs-h" id="efs-t1">Enhanced Fujita Scale</div>
+  <div class="efs-sub" id="efs-sub">Built on Fujita, <b>1971</b></div>
+  <div class="efs-lad" id="efs-lad">
+    <div class="efs-rail" id="efs-railL" style="left:320px"></div>
+    <div class="efs-rail" id="efs-railR" style="left:814px"></div>
+    <div class="efs-rb" id="efs-rb0" style="top:880px; background:#3d5366"></div>
+    <div class="efs-rb" id="efs-rb1" style="top:788px; background:#4a6680"></div>
+    <div class="efs-rb" id="efs-rb2" style="top:696px; background:#5a768f"></div>
+    <div class="efs-rb" id="efs-rb3" style="top:604px; background:#7fb2e5"></div>
+    <div class="efs-rb" id="efs-rb4" style="top:512px; background:#d8a13a"></div>
+    <div class="efs-rb" id="efs-rb5" style="top:420px; background:#c0392b"></div>
+    <div class="efs-glow" id="efs-glow"></div>
+    <div class="efs-rl" id="efs-rl0" style="top:880px">EF0</div>
+    <div class="efs-rl" id="efs-rl1" style="top:788px">EF1</div>
+    <div class="efs-rl" id="efs-rl2" style="top:696px">EF2</div>
+    <div class="efs-rl" id="efs-rl3" style="top:604px">EF3</div>
+    <div class="efs-rl" id="efs-rl4" style="top:512px">EF4</div>
+    <div class="efs-rl" id="efs-rl5" style="top:420px; color:#e74c3c">EF5</div>
+  </div>
+  <div class="efs-co" id="efs-c3" style="top:604px; color:#dfe7ee">EF3 &middot; 136&ndash;165 mph</div>
+  <div class="efs-co" id="efs-c5" style="top:420px; color:#e74c3c">EF5 &middot; Over 200 mph</div>
+  <div class="efs-gust" id="efs-gust">Wind = 3-Second Gust at 33 ft</div>
+
+  <!-- phase B: the damage indicators -->
+  <div class="efs-h" id="efs-t2"><b>28</b> Damage Indicators</div>
+  <div id="efs-dis"></div>
+
+  <!-- phase C: degrees of damage on one indicator -->
+  <div class="efs-h" id="efs-t3">Degrees of Damage</div>
+  <svg id="efs-links" width="1920" height="1080" viewBox="0 0 1920 1080" style="position:absolute;left:0;top:0">
+    <path id="efs-k0" d="M270 830 L1120 915" stroke="#3d5366" stroke-width="3" fill="none"/>
+    <path id="efs-k1" d="M400 750 L1120 823" stroke="#4a6680" stroke-width="3" fill="none"/>
+    <path id="efs-k2" d="M530 670 L1120 731" stroke="#5a768f" stroke-width="3" fill="none"/>
+    <path id="efs-k3" d="M660 590 L1120 639" stroke="#7fb2e5" stroke-width="3" fill="none"/>
+    <path id="efs-k4" d="M790 510 L1120 547" stroke="#d8a13a" stroke-width="3" fill="none"/>
+    <path id="efs-k5" d="M920 430 L1120 455" stroke="#c0392b" stroke-width="4" fill="none"/>
+  </svg>
+  <div class="efs-step" id="efs-s0" style="left:150px; top:820px; height:80px"></div>
+  <div class="efs-step" id="efs-s1" style="left:280px; top:740px; height:160px"></div>
+  <div class="efs-step" id="efs-s2" style="left:410px; top:660px; height:240px"></div>
+  <div class="efs-step" id="efs-s3" style="left:540px; top:580px; height:320px"></div>
+  <div class="efs-step" id="efs-s4" style="left:670px; top:500px; height:400px"></div>
+  <div class="efs-step" id="efs-s5" style="left:800px; top:420px; height:480px"></div>
+  <div class="efs-dot" id="efs-d0" style="left:249px; top:819px; background:#3d5366"></div>
+  <div class="efs-dot" id="efs-d1" style="left:379px; top:739px; background:#4a6680"></div>
+  <div class="efs-dot" id="efs-d2" style="left:509px; top:659px; background:#5a768f"></div>
+  <div class="efs-dot" id="efs-d3" style="left:639px; top:579px; background:#7fb2e5"></div>
+  <div class="efs-dot" id="efs-d4" style="left:769px; top:499px; background:#d8a13a"></div>
+  <div class="efs-dot" id="efs-d5" style="left:899px; top:419px; background:#c0392b"></div>
+  <div class="efs-lab" id="efs-few" style="left:150px; top:912px">A Few Shingles</div>
+  <div class="efs-small" id="efs-dilab" style="left:152px; top:962px">Damage Indicator &middot; Home</div>
+  <div class="efs-lab" id="efs-none" style="left:800px; top:372px">Nothing Left</div>
+  <div class="efs-prove" id="efs-prove">Highest Number the Damage Can Prove</div>
+  <div class="efs-small" id="efs-cred" style="left:1070px; top:984px">Texas Tech University &middot; NWS</div>
+  <div class="efs-fig" id="efs-2007" style="left:1560px; top:950px">2007</div>
+
+  <!-- phase D: the survey tablet -->
+  <div class="efs-tab" id="efs-tab">
+    <svg width="972" height="592" viewBox="0 0 972 592" style="position:absolute;left:0;top:0">
+      <rect x="0" y="0" width="972" height="592" fill="#15202b"/>
+      <path id="efs-rd1" d="M0 150 L972 190" stroke="#3d5366" stroke-width="5" fill="none"/>
+      <path id="efs-rd2" d="M0 420 L972 380" stroke="#3d5366" stroke-width="5" fill="none"/>
+      <path id="efs-rd3" d="M240 0 L300 592" stroke="#3d5366" stroke-width="5" fill="none"/>
+      <path id="efs-rd4" d="M690 0 L650 592" stroke="#3d5366" stroke-width="5" fill="none"/>
+      <path id="efs-swath" d="M40 560 L930 60" stroke="#d8a13a" stroke-opacity=".22" stroke-width="90" fill="none" stroke-linecap="round"/>
+      <rect id="efs-aer" x="0" y="0" width="972" height="592" fill="#5a768f" opacity="0"/>
+      <ellipse id="efs-sat" cx="620" cy="200" rx="330" ry="170" fill="#dfe7ee" opacity="0"/>
+      <g id="efs-rad" opacity="0">
+        <ellipse cx="560" cy="250" rx="210" ry="120" fill="#2e8b57" opacity=".55"/>
+        <ellipse cx="600" cy="240" rx="120" ry="70" fill="#d8a13a" opacity=".7"/>
+        <ellipse cx="630" cy="232" rx="50" ry="32" fill="#c0392b" opacity=".85"/>
+      </g>
+      <g id="efs-p0"><line x1="140" y1="490" x2="140" y2="512" stroke="#f2f5f8" stroke-width="3"/><circle cx="140" cy="482" r="12" fill="#e74c3c"/></g>
+      <g id="efs-p1"><line x1="250" y1="430" x2="250" y2="452" stroke="#f2f5f8" stroke-width="3"/><circle cx="250" cy="422" r="12" fill="#e74c3c"/></g>
+      <g id="efs-p2"><line x1="370" y1="360" x2="370" y2="382" stroke="#f2f5f8" stroke-width="3"/><circle cx="370" cy="352" r="12" fill="#e74c3c"/></g>
+      <g id="efs-p3"><line x1="480" y1="300" x2="480" y2="322" stroke="#f2f5f8" stroke-width="3"/><circle cx="480" cy="292" r="12" fill="#e74c3c"/></g>
+      <g id="efs-p4"><line x1="590" y1="236" x2="590" y2="258" stroke="#f2f5f8" stroke-width="3"/><circle cx="590" cy="228" r="12" fill="#e74c3c"/></g>
+      <g id="efs-p5"><line x1="700" y1="176" x2="700" y2="198" stroke="#f2f5f8" stroke-width="3"/><circle cx="700" cy="168" r="12" fill="#e74c3c"/></g>
+      <g id="efs-p6"><line x1="810" y1="114" x2="810" y2="136" stroke="#f2f5f8" stroke-width="3"/><circle cx="810" cy="106" r="12" fill="#e74c3c"/></g>
+      <g id="efs-photo"><rect x="330" y="200" width="200" height="150" rx="6" fill="#f4f0e6"/><rect x="342" y="212" width="176" height="104" fill="#2a3644"/>
+        <path d="M372 300 L372 262 L420 232 L468 262 L468 300 Z" fill="none" stroke="#93a3b2" stroke-width="5"/></g>
+      <rect id="efs-flash" x="0" y="0" width="972" height="592" fill="#ffffff" opacity="0"/>
+    </svg>
+  </div>
+  <div class="efs-tog" id="efs-tog">
+    <div class="efs-tr" id="efs-tr0" style="top:0"><div class="efs-sw"><div class="efs-kn" id="efs-kn0"></div></div><div class="efs-tl">Aerial</div></div>
+    <div class="efs-tr" id="efs-tr1" style="top:100px"><div class="efs-sw"><div class="efs-kn" id="efs-kn1"></div></div><div class="efs-tl">Satellite</div></div>
+    <div class="efs-tr" id="efs-tr2" style="top:200px"><div class="efs-sw"><div class="efs-kn" id="efs-kn2"></div></div><div class="efs-tl">Radar</div></div>
+  </div>
+  <div class="efs-small" id="efs-toglab" style="left:1400px; top:340px">Survey Layers</div>
+  <div class="efs-h" id="efs-t4">Rating = Damage</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  /* one-shot DOM build of the 28 indicator tiles (7 x 4); three carry the names the voice says */
+  const names = { 0: "Barn", 9: "School", 19: "Hardwood Tree" };
+  const box = document.getElementById("efs-dis");
+  for (let i = 0; i < 28; i++) {
+    const d = document.createElement("div");
+    d.className = "efs-di"; d.id = "efs-di" + i;
+    d.style.left = (110 + (i % 7) * 130) + "px"; d.style.top = (300 + Math.floor(i / 7) * 104) + "px";
+    if (names[i]) d.textContent = names[i];
+    box.appendChild(d);
+  }
+  const H = 146.129;
+  const D = 63.961;
+  const tl = gsap.timeline({ paused: true });
+  const P = "#efs-";
+  const RB = [P+"rb0", P+"rb1", P+"rb2", P+"rb3", P+"rb4", P+"rb5"];
+  const RL = [P+"rl0", P+"rl1", P+"rl2", P+"rl3", P+"rl4", P+"rl5"];
+  const STEPS = [P+"s0", P+"s1", P+"s2", P+"s3", P+"s4", P+"s5"];
+  const DOTS = [P+"d0", P+"d1", P+"d2", P+"d3", P+"d4", P+"d5"];
+  const LINKS = [P+"k0", P+"k1", P+"k2", P+"k3", P+"k4", P+"k5"];
+  const PINS = [P+"p0", P+"p1", P+"p2", P+"p3", P+"p4", P+"p5", P+"p6"];
+
+  tl.set([P+"t1", P+"sub", P+"c3", P+"c5", P+"gust", P+"t2", P+"t3", P+"few", P+"dilab", P+"none", P+"prove", P+"cred", P+"2007",
+          P+"tab", P+"tog", P+"toglab", P+"t4", P+"glow", ".efs-di"].concat(RL, DOTS), { autoAlpha: 0 }, 0);
+  tl.set(RB, { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set([P+"railL", P+"railR"], { scaleY: 0, transformOrigin: "center bottom" }, 0);
+  tl.set(STEPS, { scaleY: 0, transformOrigin: "center bottom" }, 0);
+  tl.set(LINKS, { strokeDasharray: 1100, strokeDashoffset: 1100 }, 0);
+  tl.set([P+"rd1", P+"rd2", P+"rd3", P+"rd4"], { strokeDasharray: 1000, strokeDashoffset: 1000 }, 0);
+  tl.set(PINS, { autoAlpha: 0, y: -40 }, 0);
+  tl.set(P+"photo", { autoAlpha: 0, scale: 0.6, svgOrigin: "430 275" }, 0);
+
+  /* continuous: sweep crosses every 8 s for the whole window; grid drifts */
+  tl.fromTo(P+"sweep", { x: -300 }, { x: 2200, duration: 8, ease: "none", repeat: 7 }, 0);
+  tl.fromTo(P+"grid", { x: 0, y: 0 }, { x: 80, y: 40, duration: D, ease: "none" }, 0);
+
+  /* SCALE @146.55: the ladder's rails rise */
+  tl.to([P+"railL", P+"railR"], { scaleY: 1, duration: 0.9, ease: "power3.out" }, 146.55 - H);
+  /* ENHANCED FUJITA SCALE @148.41 */
+  tl.fromTo(P+"t1", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 148.41 - H);
+  /* TED FUJITA @151.55: the scale's lineage, rails pulse */
+  tl.to([P+"railL", P+"railR"], { scaleX: 1.8, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 151.55 - H);
+  /* 1971 @155.85 */
+  tl.fromTo(P+"sub", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 155.85 - H);
+  /* rungs stack 157.0 -> 163.6; EF3 @157.79, EF5 @163.57 */
+  tl.to(RB.slice(0, 3), { scaleX: 1, duration: 0.45, ease: "power3.out", stagger: 0.22 }, 157.0 - H);
+  tl.fromTo(RL.slice(0, 3), { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out", stagger: 0.22 }, 157.0 - H);
+  tl.to(P+"rb3", { scaleX: 1, duration: 0.5, ease: "power3.out" }, 157.79 - H);
+  tl.fromTo(P+"rl3", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 157.79 - H);
+  /* 136 @159.39 */
+  tl.fromTo(P+"c3", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 159.39 - H);
+  tl.to(P+"rb3", { scaleY: 1.18, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 159.39 - H);
+  tl.fromTo(P+"gust", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 160.77 - H);
+  tl.to(P+"rb4", { scaleX: 1, duration: 0.5, ease: "power3.out" }, 161.9 - H);
+  tl.fromTo(P+"rl4", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 161.9 - H);
+  /* EF5 @163.57 */
+  tl.to(P+"c3", { autoAlpha: 0.35, duration: 0.3 }, 163.4 - H);
+  tl.to(P+"rb5", { scaleX: 1, duration: 0.5, ease: "power4.out" }, 163.57 - H);
+  tl.fromTo(P+"rl5", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 163.57 - H);
+  /* ABOVE 200 @164.55 */
+  tl.fromTo(P+"c5", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 164.55 - H);
+  /* rung glow scans up the ladder, 164.9 -> 198.3 */
+  tl.set(P+"glow", { autoAlpha: 1 }, 164.9 - H);
+  tl.fromTo(P+"glow", { y: 880 }, { y: 420, duration: 3.2, ease: "none", repeat: 9, repeatDelay: 0.2 }, 164.9 - H);
+
+  /* under the cutaway (166.12-172.36): phase A text clears, the ladder moves right */
+  tl.to([P+"t1", P+"sub", P+"c3", P+"c5", P+"gust"], { autoAlpha: 0, duration: 0.3 }, 167.0 - H);
+  tl.to(P+"lad", { x: 880, duration: 0.8, ease: "power2.inOut" }, 168.0 - H);
+
+  /* 28 KINDS OF DAMAGE @173.80 */
+  tl.fromTo(P+"t2", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 173.80 - H);
+  tl.fromTo(".efs-di", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.25, ease: "back.out(1.7)", stagger: 0.07 }, 173.9 - H);
+  /* BARN @178.00 · SCHOOL @178.62 · HARDWOOD TREE @179.34 */
+  tl.to(P+"di0", { scale: 1.12, borderColor: "#d8a13a", duration: 0.3, ease: "power3.out" }, 178.00 - H);
+  tl.to(P+"di9", { scale: 1.12, borderColor: "#d8a13a", duration: 0.3, ease: "power3.out" }, 178.62 - H);
+  tl.to(P+"di19", { scale: 1.12, borderColor: "#d8a13a", duration: 0.3, ease: "power3.out" }, 179.34 - H);
+
+  /* STEPS @181.68: the grid clears, one indicator becomes a staircase */
+  tl.to(P+"t2", { autoAlpha: 0, y: -30, duration: 0.4, ease: "power3.in" }, 180.8 - H);
+  tl.to(".efs-di", { autoAlpha: 0, scale: 0.7, duration: 0.3, ease: "power3.in", stagger: 0.015 }, 180.8 - H);
+  tl.fromTo(P+"t3", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 181.5 - H);
+  tl.to(STEPS, { scaleY: 1, duration: 0.4, ease: "power3.out", stagger: 0.12 }, 181.68 - H);
+  tl.fromTo(P+"dilab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 182.2 - H);
+  /* A FEW SHINGLES @182.84 · NOTHING LEFT @184.02 */
+  tl.fromTo(P+"few", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 182.84 - H);
+  tl.fromTo(P+"none", { autoAlpha: 0, y: -16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 184.02 - H);
+  /* WIND SPEED @186.26: each step is tagged to its rung */
+  tl.fromTo(DOTS, { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.12 }, 186.26 - H);
+  tl.to(LINKS, { strokeDashoffset: 0, duration: 0.6, ease: "power2.out", stagger: 0.12 }, 186.3 - H);
+  /* HIGHEST NUMBER @188.44 */
+  tl.fromTo(P+"prove", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 188.44 - H);
+  tl.to([P+"s5", P+"rb5"], { scaleX: 1.06, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 3 }, 188.6 - H);
+  /* TEXAS TECH @191.26 · 2007 @196.50 */
+  tl.fromTo(P+"cred", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 191.26 - H);
+  tl.fromTo(P+"2007", { autoAlpha: 0, scale: 1.8 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 196.50 - H);
+
+  /* phase C exits (198.3), the survey tablet arrives: TABLETS @199.61 */
+  tl.to([P+"t3", P+"prove", P+"few", P+"dilab", P+"none", P+"links", P+"cred", P+"2007"].concat(STEPS, DOTS), { x: -1100, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 198.3 - H);
+  tl.to(P+"lad", { x: 1980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 198.3 - H);
+  tl.fromTo(P+"tab", { autoAlpha: 0, y: 260 }, { autoAlpha: 1, y: 0, duration: 0.7, ease: "power3.out" }, 199.61 - H);
+  tl.to(P+"tab", { rotation: -1.2, y: -8, duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, 200.4 - H);
+  /* PHOTO @200.94: flash + photo; PINNED @201.83: the photo drops onto the path as pins */
+  tl.to(P+"flash", { opacity: 0.8, duration: 0.06 }, 200.94 - H);
+  tl.to(P+"flash", { opacity: 0, duration: 0.4, ease: "power2.out" }, 201.0 - H);
+  tl.to(P+"photo", { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(1.6)" }, 200.94 - H);
+  tl.to(P+"photo", { autoAlpha: 0, scale: 0.2, x: 50, y: 40, duration: 0.4, ease: "power3.in" }, 201.6 - H);
+  tl.to(PINS, { autoAlpha: 1, y: 0, duration: 0.35, ease: "back.out(2)", stagger: 0.14 }, 201.83 - H);
+  /* MAP @202.84: the streets draw under the pins */
+  tl.to([P+"rd1", P+"rd2", P+"rd3", P+"rd4"], { strokeDashoffset: 0, duration: 0.8, ease: "power2.out", stagger: 0.1 }, 202.84 - H);
+  /* AERIAL @204.11 · SATELLITE @205.43 · RADAR @206.28 */
+  tl.fromTo(P+"toglab", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 203.6 - H);
+  tl.set(P+"tog", { autoAlpha: 1 }, 203.6 - H);
+  tl.fromTo(P+"tr0", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 204.11 - H);
+  tl.to(P+"kn0", { x: 32, backgroundColor: "#7fb2e5", duration: 0.25, ease: "power3.out" }, 204.3 - H);
+  tl.to(P+"aer", { opacity: 0.25, duration: 0.4 }, 204.3 - H);
+  tl.fromTo(P+"tr1", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 205.43 - H);
+  tl.to(P+"kn1", { x: 32, backgroundColor: "#7fb2e5", duration: 0.25, ease: "power3.out" }, 205.6 - H);
+  tl.to(P+"sat", { opacity: 0.16, duration: 0.4 }, 205.6 - H);
+  tl.fromTo(P+"tr2", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 206.28 - H);
+  tl.to(P+"kn2", { x: 32, backgroundColor: "#7fb2e5", duration: 0.25, ease: "power3.out" }, 206.45 - H);
+  tl.to(P+"rad", { opacity: 1, duration: 0.4 }, 206.45 - H);
+  /* STILL COMES FROM THE DAMAGE @207.97: layers dim, the pins carry the rating */
+  tl.to([P+"aer", P+"sat", P+"rad"], { opacity: 0.05, duration: 0.5 }, 207.97 - H);
+  tl.to(PINS, { scale: 1.35, transformOrigin: "50% 100%", duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1, stagger: 0.05 }, 207.97 - H);
+  tl.fromTo(P+"t4", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 207.97 - H);
+  /* exit 209.5 */
+  tl.to([P+"tab", P+"tog", P+"toglab", P+"t4"], { x: 980, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 209.5 - H);
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines["g-ef-scale"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

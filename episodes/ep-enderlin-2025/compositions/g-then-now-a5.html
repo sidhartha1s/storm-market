@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-then-now-a5 (B2): forecast vs June survey vs October revision. Host 1190.284 -> 1211.51 (21.226 s, track 2).
+     Cues: episode seconds from audio/a5-s2 words.json (mg_specs.md block 6); local = cue - H.
+     Wind axis y = 900 - (mph - 100) * 5 (120 -> 800, 150 -> 650, 160 -> 600, 210 -> 350). Three columns land on the voice:
+     8:15 PM forecast band 120-150, June survey about 160, October 210+ (open-ended). "Same Storm" bracket over June and
+     October, "Proved More". Exit 1210.9. Continuous: light sweep, sheen on the bars, tick labels drift. -->
+<template>
+<style>
+  .tna5-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .tna5-sweep { position:absolute; left:0; top:0; width:260px; height:1080px;
+    background:linear-gradient(100deg, transparent, rgba(127,178,229,.08), transparent); }
+  .tna5-axis { position:absolute; left:400px; top:250px; width:3px; height:650px; background:#5a768f; }
+  .tna5-base { position:absolute; left:400px; top:900px; width:1240px; height:3px; background:#5a768f; }
+  .tna5-tk { position:absolute; left:280px; width:100px; text-align:right; font-weight:700; font-size:22px; letter-spacing:2px; color:#93a3b2; }
+  .tna5-grid { position:absolute; left:403px; width:1237px; height:1px; background:rgba(147,163,178,.14); }
+  .tna5-bar { position:absolute; width:280px; overflow:hidden; border-radius:6px 6px 0 0; }
+  .tna5-sh { position:absolute; left:-140px; top:0; width:120px; height:100%; background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.22), rgba(255,255,255,0)); }
+  .tna5-cl { position:absolute; top:918px; width:400px; margin-left:-200px; text-align:center; font-family:'AbrilFig', Georgia, serif; font-size:56px; line-height:1.05; color:#d0121f; white-space:nowrap; }
+  .tna5-cs { position:absolute; top:984px; width:400px; margin-left:-200px; text-align:center; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .tna5-v { position:absolute; width:400px; margin-left:-200px; text-align:center; font-weight:700; font-size:38px; color:#f2f5f8; white-space:nowrap; }
+  .tna5-same { position:absolute; left:1020px; top:178px; width:400px; text-align:center; font-weight:700; font-size:36px; color:#e8c56a; white-space:nowrap; }
+  .tna5-h { position:absolute; left:110px; top:78px; font-family:'Arial Black', Arial, sans-serif; font-size:56px; color:#f2f5f8; white-space:nowrap; }
+</style>
+<div class="tna5-root" data-composition-id="g-then-now-a5" data-width="1920" data-height="1080" data-duration="21.226">
+  <div class="tna5-sweep" id="tna5-sweep"></div>
+  <div id="tna5-scale">
+    <div class="tna5-grid" style="top:650px"></div><div class="tna5-grid" style="top:400px"></div>
+    <div class="tna5-axis" id="tna5-axis"></div>
+    <div class="tna5-base" id="tna5-base"></div>
+    <div class="tna5-tk" id="tna5-t150" style="top:637px">150</div>
+    <div class="tna5-tk" id="tna5-t200" style="top:387px">200</div>
+    <div class="tna5-tk" id="tna5-tmph" style="top:258px">mph</div>
+  </div>
+  <div class="tna5-bar" id="tna5-b1" style="left:480px; top:650px; height:150px; border-radius:6px; background:repeating-linear-gradient(135deg, rgba(127,178,229,.55) 0 14px, rgba(127,178,229,.25) 14px 28px)"><div class="tna5-sh" id="tna5-s1"></div></div>
+  <div class="tna5-bar" id="tna5-b2" style="left:880px; top:600px; height:300px; background:linear-gradient(180deg, #d8a13a, #6b4a14)"><div class="tna5-sh" id="tna5-s2"></div></div>
+  <div class="tna5-bar" id="tna5-b3" style="left:1280px; top:350px; height:550px; background:linear-gradient(180deg, #c0392b, #5a1a14)"><div class="tna5-sh" id="tna5-s3"></div></div>
+  <svg id="tna5-up" width="80" height="90" viewBox="0 0 80 90" style="position:absolute; left:1380px; top:262px"><path d="M40 0 L78 50 L54 50 L54 90 L26 90 L26 50 L2 50 Z" fill="#e74c3c"/></svg>
+  <div class="tna5-v" id="tna5-v1" style="left:620px; top:596px">120 to 150 mph</div>
+  <div class="tna5-v" id="tna5-v2" style="left:1020px; top:546px">About 160 mph</div>
+  <div class="tna5-v" id="tna5-v3" style="left:1590px; top:360px; margin-left:0; width:auto; text-align:left">210+ mph</div>
+  <div class="tna5-cl" id="tna5-c1" style="left:620px">8:15 PM</div>
+  <div class="tna5-cs" id="tna5-d1" style="left:620px">Forecast</div>
+  <div class="tna5-cl" id="tna5-c2" style="left:1020px">June</div>
+  <div class="tna5-cs" id="tna5-d2" style="left:1020px">Survey</div>
+  <div class="tna5-cl" id="tna5-c3" style="left:1420px">October</div>
+  <svg id="tna5-br" width="1920" height="1080" viewBox="0 0 1920 1080" style="position:absolute; left:0; top:0">
+    <path id="tna5-bp" d="M880 250 L880 230 L1560 230 L1560 250" fill="none" stroke="#e8c56a" stroke-width="4"/></svg>
+  <div class="tna5-same" id="tna5-same">Same Storm</div>
+  <div class="tna5-h" id="tna5-h">Proved More</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const H = 1191.52;
+  const D = 21.226;
+  const tl = gsap.timeline({ paused: true });
+  const P = "#tna5-";
+  tl.set([P+"scale", P+"up", P+"v1", P+"v2", P+"v3", P+"c1", P+"d1", P+"c2", P+"d2", P+"c3", P+"br", P+"same", P+"h"], { autoAlpha: 0 }, 0);
+  tl.set([P+"b1", P+"b2", P+"b3"], { scaleY: 0, transformOrigin: "center bottom" }, 0);
+  tl.set(P+"bp", { strokeDasharray: 722, strokeDashoffset: 722 }, 0);
+
+  /* continuous: sweep every 8.5 s; sheen crosses the bars; tick labels drift */
+  tl.fromTo(P+"sweep", { x: -300 }, { x: 2200, duration: 7.1, ease: "none", repeat: 2 }, 0);
+  tl.fromTo([P+"s1", P+"s2", P+"s3"], { x: 0 }, { x: 560, duration: 2.2, ease: "none", repeat: 8, repeatDelay: 0.2 }, 0.3);
+  tl.to([P+"t150", P+"t200", P+"tmph"], { x: -10, duration: 2.1, ease: "sine.inOut", yoyo: true, repeat: 9 }, 0.4);
+
+  tl.fromTo(P+"scale", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.1);
+  /* 8:15 @1191.836 · FORECASTERS EXPECTED @1193.796 · 120 TO 150 @1196.396 */
+  tl.fromTo(P+"c1", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 1191.836 - H);
+  tl.fromTo(P+"d1", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 1193.796 - H);
+  tl.to(P+"b1", { scaleY: 1, duration: 0.6, ease: "power3.out" }, 1196.396 - H);
+  tl.fromTo(P+"v1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1196.396 - H);
+  /* JUNE @1199.656 · ABOUT 160 @1201.216 */
+  tl.fromTo([P+"c2", P+"d2"], { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 1199.656 - H);
+  tl.to(P+"b2", { scaleY: 1, duration: 0.6, ease: "power3.out" }, 1201.216 - H);
+  tl.fromTo(P+"v2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1201.216 - H);
+  /* OCTOBER @1203.156 · MORE THAN 210 @1204.516 */
+  tl.fromTo(P+"c3", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 1203.156 - H);
+  tl.to(P+"b3", { scaleY: 1, duration: 0.7, ease: "power4.out" }, 1204.516 - H);
+  tl.fromTo(P+"v3", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1204.516 - H);
+  tl.fromTo(P+"up", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, 1204.836 - H);
+  tl.to(P+"up", { y: -12, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 9 }, 1205.336 - H);
+  /* NOTHING CHANGED @1206.596: the same-storm bracket · JUNE AND OCTOBER @1208.496 */
+  tl.set(P+"br", { autoAlpha: 1 }, 1206.596 - H);
+  tl.to(P+"bp", { strokeDashoffset: 0, duration: 0.6, ease: "power3.out" }, 1206.596 - H);
+  tl.fromTo(P+"same", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1206.836 - H);
+  tl.to([P+"b2", P+"b3"], { scaleX: 1.05, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1, stagger: 0.2 }, 1208.496 - H);
+  /* PROVE MORE @1211.536 */
+  tl.fromTo(P+"h", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1211.536 - H);
+  /* exit 1210.9 */
+  tl.to([P+"scale", P+"b1", P+"b2", P+"b3", P+"up", P+"v1", P+"v2", P+"v3", P+"c1", P+"d1", P+"c2", P+"d2", P+"c3", P+"br", P+"same", P+"h"],
+        { x: 980, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 1212.136 - H);
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines["g-then-now-a5"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-drought-timeline-a6 (B2): the gap ended, the question did not. Host 1422.772 -> 1436.58 (13.808 s, track 2).
+     Cues: episode seconds from audio/a6-s6 words.json (mg_specs.md block 5); local = cue - H.
+     Axis 1950-2026 on x 160-1760 (x = 160 + (year - 1950) * 1600 / 76: 2007 -> 1360, Moore 2013.38 -> 1494,
+     Enderlin 2025.47 -> 1749). The drought bar returns whole and Enderlin closes it; the axis splits at 2007 into
+     Before / After with a broken equals sign between them. Exit 1436.0. Continuous: light sweep, edge glow, halves drift. -->
+<template>
+<style>
+  .dta6-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .dta6-sweep { position:absolute; left:0; top:0; width:260px; height:1080px;
+    background:linear-gradient(100deg, transparent, rgba(127,178,229,.08), transparent); }
+  .dta6-half { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .dta6-axis { position:absolute; top:760px; height:3px; background:#5a768f; }
+  .dta6-yr { position:absolute; top:780px; width:120px; margin-left:-60px; text-align:center; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2; }
+  .dta6-bar { position:absolute; left:1494px; top:704px; width:255px; height:40px; box-sizing:border-box; border-radius:4px;
+    background:linear-gradient(90deg, rgba(90,118,143,.25), rgba(90,118,143,.6)); border:2px dashed rgba(147,163,178,.6); }
+  .dta6-mk { position:absolute; left:1735px; top:694px; width:28px; height:60px; border-radius:4px; background:#e74c3c; box-shadow:0 0 22px rgba(231,76,60,.7); }
+  .dta6-moore { position:absolute; left:1488px; top:694px; width:12px; height:60px; border-radius:4px; background:#c0392b; }
+  .dta6-yrs { position:absolute; left:1400px; top:600px; width:440px; text-align:center; font-family:'AbrilFig', Georgia, serif; font-size:72px; line-height:1; color:#d0121f; white-space:nowrap; }
+  .dta6-h { position:absolute; left:110px; top:78px; font-family:'Arial Black', Arial, sans-serif; font-size:56px; color:#f2f5f8; white-space:nowrap; }
+  .dta6-split { position:absolute; left:1359px; top:560px; width:3px; height:230px; background:#e8c56a; }
+  .dta6-2007 { position:absolute; left:1240px; top:470px; width:240px; text-align:center; font-family:'AbrilFig', Georgia, serif; font-size:72px; line-height:1; color:#d0121f; white-space:nowrap; }
+  .dta6-side { position:absolute; top:836px; width:400px; margin-left:-200px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-size:48px; color:#f2f5f8; white-space:nowrap; }
+</style>
+<div class="dta6-root" data-composition-id="g-drought-timeline-a6" data-width="1920" data-height="1080" data-duration="13.808">
+  <div class="dta6-sweep" id="dta6-sweep"></div>
+  <div class="dta6-half" id="dta6-L">
+    <div class="dta6-axis" id="dta6-aL" style="left:160px; width:1200px"></div>
+    <div class="dta6-yr" id="dta6-y50" style="left:160px">1950</div>
+    <div class="dta6-side" id="dta6-before" style="left:760px">Before</div>
+  </div>
+  <div class="dta6-half" id="dta6-R">
+    <div class="dta6-axis" id="dta6-aR" style="left:1360px; width:400px"></div>
+    <div class="dta6-yr" id="dta6-y25" style="left:1749px">2025</div>
+    <div class="dta6-bar" id="dta6-bar"></div>
+    <div class="dta6-moore" id="dta6-moore"></div>
+    <div class="dta6-mk" id="dta6-mk"></div>
+    <div class="dta6-yrs" id="dta6-yrs">12 Years</div>
+    <div class="dta6-side" id="dta6-after" style="left:1560px">After</div>
+  </div>
+  <div class="dta6-split" id="dta6-split"></div>
+  <div class="dta6-2007" id="dta6-2007">2007</div>
+  <svg id="dta6-neq" width="140" height="120" viewBox="0 0 140 120" style="position:absolute; left:1290px; top:820px">
+    <rect x="15" y="34" width="110" height="12" rx="4" fill="#f2f5f8"/>
+    <rect x="15" y="74" width="110" height="12" rx="4" fill="#f2f5f8"/>
+    <path id="dta6-strike" d="M100 10 L40 110" stroke="#e74c3c" stroke-width="12" stroke-linecap="round" fill="none"/>
+  </svg>
+  <div class="dta6-h" id="dta6-h">Gap Ended &middot; Question Open</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const H = 1424.008;
+  const D = 13.808;
+  const tl = gsap.timeline({ paused: true });
+  const P = "#dta6-";
+  tl.set([P+"y50", P+"y25", P+"mk", P+"moore", P+"yrs", P+"h", P+"split", P+"2007", P+"before", P+"after", P+"neq"], { autoAlpha: 0 }, 0);
+  tl.set([P+"aL", P+"aR", P+"bar"], { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set(P+"strike", { strokeDasharray: 118, strokeDashoffset: 118 }, 0);
+
+  /* continuous: one sweep across the whole window */
+  tl.fromTo(P+"sweep", { x: -300 }, { x: 2200, duration: 13.9, ease: "none" }, 0);
+  /* QUESTION @1424.826 · LYZA'S STUDY @1425.186: the axis and the drought bar return */
+  tl.to([P+"aL", P+"aR"], { scaleX: 1, duration: 0.6, ease: "power3.out", stagger: 0.15 }, 0.2);
+  tl.fromTo([P+"y50", P+"y25"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out", stagger: 0.1 }, 0.5);
+  tl.fromTo(P+"moore", { autoAlpha: 0, scaleY: 0 }, { autoAlpha: 1, scaleY: 1, duration: 0.35, ease: "back.out(2)", transformOrigin: "center bottom" }, 1424.826 - H);
+  tl.to(P+"bar", { scaleX: 1, duration: 1.2, ease: "power3.out" }, 1425.186 - H);
+  /* 12 YEARS @1426.406 */
+  tl.fromTo(P+"yrs", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 1426.406 - H);
+  /* ENDED THE GAP @1428.326: Enderlin's mark closes the bar · WITHOUT SETTLING IT @1429.066 */
+  tl.fromTo(P+"mk", { autoAlpha: 0, y: -220 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power4.in" }, 1427.926 - H);
+  tl.to(P+"bar", { x: -4, duration: 0.08, ease: "power1.inOut", yoyo: true, repeat: 3 }, 1428.326 - H);
+  tl.fromTo(P+"h", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1429.066 - H);
+  tl.to(P+"mk", { scaleY: 1.2, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 9, transformOrigin: "center bottom" }, 1428.836 - H);
+  /* SURVEYS SHIFTED @1430.826 · 2007 @1431.866 */
+  tl.to(P+"yrs", { autoAlpha: 0, y: -20, duration: 0.3, ease: "power3.in" }, 1430.536 - H);
+  tl.fromTo(P+"split", { autoAlpha: 1, scaleY: 0 }, { scaleY: 1, duration: 0.6, ease: "power3.out", transformOrigin: "center bottom" }, 1430.826 - H);
+  tl.fromTo(P+"2007", { autoAlpha: 0, scale: 1.7 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 1431.866 - H);
+  /* BEFORE AND AFTER @1433.826: the axis splits */
+  tl.to(P+"L", { x: -60, duration: 0.6, ease: "power3.inOut" }, 1433.826 - H);
+  tl.to(P+"R", { x: 60, duration: 0.6, ease: "power3.inOut" }, 1433.826 - H);
+  tl.fromTo([P+"before", P+"after"], { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.15 }, 1433.936 - H);
+  /* CANNOT BE COMPARED STRAIGHT ACROSS @1435.326: a broken equals sign */
+  tl.fromTo(P+"neq", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 1435.326 - H);
+  tl.to(P+"strike", { strokeDashoffset: 0, duration: 0.35, ease: "power3.out" }, 1435.736 - H);
+  /* exit 1436.0 */
+  tl.to([P+"L", P+"R", P+"split", P+"2007", P+"neq", P+"h"], { x: 980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 1437.236 - H);
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines["g-drought-timeline-a6"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

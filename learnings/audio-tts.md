@@ -2,6 +2,19 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 2026-09-27 - ep-enderlin: the "lyvz" respelling voiced "livs"; plain "lives" is correct
+
+- **Owner:** "lives" (lost their lives) came out /lɪvz/, must be /laɪvz/. The TTS copy had respelled it "lyvz".
+- **Measured** (pocket-TTS + atempo 1.10, "Three people lost their ___ that night.", Praat F1 of the vowel after /l/):
+  "lyvz" F1 peak 506 Hz / 60 ms, "lighvz" 509 / 55, "laivz" 512 / 80 = /ɪ/. Plain "lives" 769 Hz / 215 ms,
+  "lyves" 693 / 195, "lighves" 735 / 235 = /aɪ/. "lie-vz" is /aɪ/ but adds a syllable (whisper: "liveys").
+  All 9 enderlin segments re-recorded with plain "lives" measured /aɪ/ (F1 peak 739-882 Hz, 225-305 ms).
+- **Rule:** the noun "lives" after their/took/take needs no respelling. A respelling ending in a bare "y"+consonant
+  cluster ("lyvz") reads as short /ɪ/. Decide a respelling by probing candidates and measuring F1/duration
+  (/aɪ/ opens to F1 about 650-850 Hz for 150-250 ms, /ɪ/ stays under about 500 Hz), not by guessing. Pocket-TTS looks
+  deterministic (z1-s1 re-record: silence timings identical to the microsecond up to the changed word), so a line
+  probably cannot be re-rolled for a shorter read; 3 of 9 re-records ran 5.9-9.2 % long and need index.html retiming.
+
 ## 2026-09-22 - ep-1974 shipped 17:30 against a 22:00 target: three guesses stacked
 
 - **Measured:** script 3,027 words; raw TTS 18.4 min (165 wpm native, not the 152 assumed); atempo 1.10 made it

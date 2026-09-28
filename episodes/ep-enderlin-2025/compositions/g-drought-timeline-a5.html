@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-drought-timeline-a5 (B2): Enderlin enters Storm Data; every EF5 since Feb 2007 on a CONUS map.
+     Host 1229.645 -> 1256.788 (27.143 s, track 2). Cues: episode seconds from audio/a5-s4, a5-s5 words.json
+     (mg_specs.md block 5); local = cue - H.
+     Basemap vendor/b2-conus-states.svg: us-atlas states-10m, Albers (29.5/45.5, lon0 -96, lat0 37.5), fitted to the box
+     x 300-1620, y 200-1000; dots projected the same way (Greensburg, Parkersburg, the four of 27 Apr 2011 at Hackleburg,
+     Smithville, Philadelphia and Rainsville, Joplin, El Reno-Piedmont, Moore; Enderlin). El Reno 2013 is not an EF5.
+     Continuous: light sweep, database rows scrolling, dot pulses. Exit 1256.2. -->
+<template>
+<style>
+  .dta5-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .dta5-sweep { position:absolute; left:0; top:0; width:260px; height:1080px;
+    background:linear-gradient(100deg, transparent, rgba(127,178,229,.08), transparent); }
+  .dta5-card { position:absolute; left:360px; top:250px; width:1200px; height:520px; box-sizing:border-box; border-radius:28px; overflow:hidden;
+    background:rgba(10,16,24,.55); border:1px solid rgba(255,255,255,.14); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); }
+  .dta5-hd { position:absolute; left:56px; top:40px; font-family:'Arial Black', Arial, sans-serif; font-size:52px; color:#f2f5f8; white-space:nowrap; }
+  .dta5-cap { position:absolute; left:60px; top:118px; font-weight:700; font-size:22px; letter-spacing:5px; color:#93a3b2; white-space:nowrap; }
+  .dta5-rows { position:absolute; left:56px; top:170px; width:1088px; height:180px; overflow:hidden; }
+  .dta5-ghost { position:absolute; left:0; width:1088px; height:22px; border-radius:6px; background:rgba(147,163,178,.12); }
+  .dta5-row { position:absolute; left:416px; width:1088px; height:64px; line-height:64px; box-sizing:border-box; padding-left:24px; border-radius:10px; font-weight:700; white-space:nowrap; }
+  .dta5-map { position:absolute; left:300px; top:200px; width:1320px; height:800px; }
+  .dta5-dot { position:absolute; width:18px; height:18px; margin:-9px 0 0 -9px; border-radius:50%; background:#c0392b; box-shadow:0 0 12px rgba(192,57,43,.7); }
+  .dta5-chip { position:absolute; padding:8px 20px; border-radius:14px; font-weight:700; font-size:30px; color:#f2f5f8; white-space:nowrap;
+    background:rgba(10,16,24,.55); border:1px solid rgba(255,255,255,.14); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); }
+  .dta5-lat { position:absolute; left:300px; top:349px; width:1320px; height:0; border-top:2px dashed rgba(232,197,106,.7); }
+  .dta5-h { position:absolute; left:110px; top:78px; font-family:'Arial Black', Arial, sans-serif; font-size:52px; color:#f2f5f8; white-space:nowrap; }
+  .dta5-leg { position:absolute; left:110px; top:980px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+</style>
+<div class="dta5-root" data-composition-id="g-drought-timeline-a5" data-width="1920" data-height="1080" data-duration="27.143">
+  <div class="dta5-sweep" id="dta5-sweep"></div>
+  <div class="dta5-card" id="dta5-card">
+    <div class="dta5-hd" id="dta5-hd">Storm Data &middot; NCEI</div>
+    <div class="dta5-cap" id="dta5-cap">Federal Tornado Database</div>
+    <div class="dta5-rows"><div id="dta5-scroll"></div></div>
+  </div>
+  <div class="dta5-row" id="dta5-rM" style="top:620px; color:#93a3b2; background:rgba(21,32,43,.6)">Moore, OK &middot; EF5 &middot; May 20, 2013</div>
+  <div class="dta5-row" id="dta5-rE" style="top:694px; color:#f2f5f8; background:rgba(192,57,43,.35)">Enderlin, ND &middot; EF5 &middot; June 20, 2025</div>
+
+  <img class="dta5-map" id="dta5-map" src="vendor/b2-conus-states.svg" alt="">
+  <div class="dta5-lat" id="dta5-lat"></div>
+  <div class="dta5-dot" id="dta5-d0" style="left:894.9px; top:626.2px"></div>
+  <div class="dta5-dot" id="dta5-d1" style="left:1045.9px; top:472.7px"></div>
+  <div class="dta5-dot" id="dta5-d2" style="left:1178.4px; top:721.2px"></div>
+  <div class="dta5-dot" id="dta5-d3" style="left:1164.9px; top:728.8px"></div>
+  <div class="dta5-dot" id="dta5-d4" style="left:1149.8px; top:770.1px"></div>
+  <div class="dta5-dot" id="dta5-d5" style="left:1227.1px; top:710.0px"></div>
+  <div class="dta5-dot" id="dta5-d6" style="left:1009.8px; top:643.4px"></div>
+  <div class="dta5-dot" id="dta5-d7" style="left:925.7px; top:691.0px"></div>
+  <div class="dta5-dot" id="dta5-dM" style="left:937.0px; top:697.0px"></div>
+  <div class="dta5-dot" id="dta5-dE" style="left:940.1px; top:349.9px; width:26px; height:26px; margin:-13px 0 0 -13px; background:#e74c3c"></div>
+  <div class="dta5-chip" id="dta5-cM" style="left:540px; top:728px">Moore &middot; About 210 mph</div>
+  <div class="dta5-chip" id="dta5-cE" style="left:980px; top:318px">Enderlin &middot; More Than 210 mph</div>
+  <div class="dta5-leg" id="dta5-leg">Dots: Every EF5 Since Feb 2007</div>
+  <div class="dta5-h" id="dta5-h">Northernmost EF5 Since 2007</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  /* one-shot DOM build: faint placeholder rows for the database scroll (no text) */
+  const sc = document.getElementById("dta5-scroll");
+  for (let i = 0; i < 24; i++) { const r = document.createElement("div"); r.className = "dta5-ghost"; r.id = "dta5-g" + i; r.style.top = (i * 36) + "px"; r.style.width = (620 + (i * 137) % 460) + "px"; sc.appendChild(r); }
+  const H = 1230.881;
+  const D = 27.143;
+  const tl = gsap.timeline({ paused: true });
+  const P = "#dta5-";
+  const DOTS = [P+"d0", P+"d1", P+"d2", P+"d3", P+"d4", P+"d5", P+"d6", P+"d7", P+"dM"];
+  tl.set([P+"hd", P+"cap", P+"rM", P+"rE", P+"map", P+"lat", P+"dE", P+"cM", P+"cE", P+"leg", P+"h"].concat(DOTS), { autoAlpha: 0 }, 0);
+  tl.set(P+"rE", { clipPath: "inset(0% 100% 0% 0%)" }, 0);
+
+  /* continuous: sweep every 9.1 s; the database rows scroll up while the card is on screen */
+  tl.fromTo(P+"sweep", { x: -300 }, { x: 2200, duration: 9.1, ease: "none", repeat: 2 }, 0);
+  tl.fromTo(P+"scroll", { y: 0 }, { y: -680, duration: 14.0, ease: "none" }, 0);
+
+  /* picture from the first frame (draft sat ~2 s empty before the card, owner 27 Sep 26): the glass card and its
+     scrolling database rows are on screen at 0 and settle; the headline still lands on the voice */
+  tl.fromTo(P+"card", { y: 80 }, { y: 0, duration: 0.9, ease: "power3.out" }, 0);
+  /* STORM DATA @1232.956 (headline) · FEDERAL DATABASE @1234.156 · EVERY TORNADO @1235.156 */
+  tl.fromTo(P+"hd", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1232.956 - H);
+  tl.fromTo(P+"cap", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1234.156 - H);
+  /* EVERY FUTURE STUDY @1239.716: the Moore row sits in the list · COUNT ENDERLIN @1242.196: the new row writes in */
+  tl.fromTo(P+"rM", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1239.716 - H);
+  tl.set(P+"rE", { autoAlpha: 1 }, 1242.196 - H);
+  tl.to(P+"rE", { clipPath: "inset(0% 0% 0% 0%)", duration: 1.3, ease: "none" }, 1242.196 - H);
+  tl.fromTo(P+"rE", { x: 0 }, { x: 6, duration: 0.1, ease: "power2.out", yoyo: true, repeat: 3 }, 1243.536 - H);
+  /* DATABASE @1244.826 -> the map of every EF5 since Feb 2007 @1245.236 */
+  tl.to([P+"card", P+"rM", P+"rE"], { y: -80, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 1244.536 - H);
+  tl.fromTo(P+"map", { autoAlpha: 0, scale: 1.08 }, { autoAlpha: 1, scale: 1, duration: 0.7, ease: "power3.out" }, 1244.936 - H);
+  tl.fromTo(DOTS, { autoAlpha: 0, scale: 3 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.05 }, 1245.236 - H);
+  tl.fromTo(P+"leg", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1245.436 - H);
+  tl.to(DOTS, { scale: 1.4, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 13 }, 1246.036 - H);
+  /* MOORE'S EF5 @1245.976 · ABOUT 210 @1247.766 */
+  tl.fromTo(P+"cM", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1245.976 - H);
+  tl.to(P+"cM", { scale: 1.08, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 1247.766 - H);
+  /* MORE THAN THAT @1251.556: Enderlin lands */
+  tl.fromTo(P+"dE", { autoAlpha: 0, y: -200 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power4.in" }, 1251.136 - H);
+  tl.fromTo(P+"cE", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1251.556 - H);
+  /* FARTHER NORTH @1253.636: the latitude line, Enderlin pulses · ANY OTHER EF5 @1254.776 */
+  tl.fromTo(P+"lat", { autoAlpha: 1, scaleX: 0 }, { scaleX: 1, duration: 0.8, ease: "power2.out", transformOrigin: "left center" }, 1253.636 - H);
+  tl.to(P+"dE", { scale: 1.6, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 3 }, 1253.636 - H);
+  tl.to(P+"cM", { opacity: 0.4, duration: 0.4 }, 1253.836 - H);
+  tl.fromTo(P+"h", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1254.776 - H);
+  /* exit 1256.2 */
+  tl.to([P+"map", P+"lat", P+"dE", P+"cM", P+"cE", P+"leg", P+"h"].concat(DOTS), { x: 980, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 1257.436 - H);
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines["g-drought-timeline-a5"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -8,6 +8,12 @@ refutation, showrunner synthesis). Read with `yt-packaging` before any title or 
   Cutoffs (hypothesis, verify in Studio): TV grid ~40–60, phone home 45–55, desktop 55–70.
 - A checkable fact beats an adjective: "Four EF5 Tornadoes in One Day" passed both seniors; superlative adjectives,
   ALL CAPS and "you won't believe" shapes did not.
+- **Flesch reading ease 100 or more** (owner 23 Sep 26): one-syllable words, one clause per sentence, numbers as
+  digits. `python3 scripts/title_fre.py "<title>" ...` prints the score; 85 to 99 is a rewrite, under 85 is out.
+  "The 12-Year EF5 Drought Was a Lie" scores 114; "The Day America Had 7 F5 Tornadoes - 1974 Super Outbreak" scores 53.
+- **Negative beats neutral beats positive** (1of10 media, 23 Sep 26: 11 % of titles are negative and they draw 22 % more
+  median views). When brainstorming, list the anger, controversy, humour and joy shapes first; a true negative claim
+  ("lie", "broken", "wrong", "nobody") beats a neutral description, as long as the film pays it.
 - Live minis keep present tense and the place ("Texas, This Winter…" got the best mini CTR at 8 %).
 
 ## Thumbnail: three schools, one rule

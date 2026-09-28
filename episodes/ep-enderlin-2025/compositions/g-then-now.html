@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-then-now (B2): Fujita vs Enhanced Fujita, the F5 band lowered. Host 379.163 -> 403.418 (24.255 s, track 2).
+     Cues: episode seconds from audio/a2-s1, a2-s2 words.json (mg_specs.md block 6); local = cue - H.
+     One wind axis, mph y = 900 - (mph - 150) * 3.4 (200 -> 730, 261 -> 522.6, 318 -> 328.8). Left column Fujita, right
+     column Enhanced Fujita; the F5 band 261-318 slides down and across onto the EF5 band (over 200). Exit 402.8.
+     Continuous: light sweep, sheen climbing both columns, tick labels drift. -->
+<template>
+<style>
+  .tn-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .tn-sweep { position:absolute; left:0; top:0; width:260px; height:1080px;
+    background:linear-gradient(100deg, transparent, rgba(127,178,229,.08), transparent); }
+  .tn-axis { position:absolute; left:320px; top:220px; width:3px; height:680px; background:#5a768f; }
+  .tn-tk { position:absolute; left:200px; width:100px; text-align:right; font-weight:700; font-size:22px; letter-spacing:2px; color:#93a3b2; }
+  .tn-tl { position:absolute; left:312px; width:20px; height:2px; background:#5a768f; }
+  .tn-col { position:absolute; top:220px; width:260px; height:680px; box-sizing:border-box; border:2px solid #2a3644; border-radius:10px;
+    background:linear-gradient(0deg, rgba(21,32,43,.9), rgba(21,32,43,.3)); overflow:hidden; }
+  .tn-sheen { position:absolute; left:0; top:0; width:256px; height:120px; background:linear-gradient(0deg, rgba(242,245,248,0), rgba(242,245,248,.14), rgba(242,245,248,0)); }
+  .tn-hd { position:absolute; top:148px; width:600px; margin-left:-300px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-size:40px; color:#f2f5f8; white-space:nowrap; }
+  .tn-band { position:absolute; left:470px; top:329px; width:260px; height:194px; border-radius:8px;
+    background:linear-gradient(180deg, #c0392b, #d8a13a); box-shadow:0 0 30px rgba(192,57,43,.45); }
+  .tn-bl { position:absolute; left:0; top:70px; width:260px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-size:44px; color:#f4f0e8; }
+  .tn-ef5 { position:absolute; left:1170px; top:222px; width:260px; height:508px; border-radius:8px 8px 8px 8px;
+    background:linear-gradient(0deg, #c0392b, rgba(192,57,43,.05)); }
+  .tn-lab { position:absolute; font-weight:700; white-space:nowrap; }
+  .tn-feb { position:absolute; left:730px; top:392px; width:440px; text-align:center; font-family:'AbrilFig', Georgia, serif; font-size:90px; line-height:1.1;
+    color:#d0121f; text-shadow:0 6px 26px rgba(0,0,0,.8); white-space:nowrap; }
+</style>
+<div class="tn-root" data-composition-id="g-then-now" data-width="1920" data-height="1080" data-duration="24.255">
+  <div class="tn-sweep" id="tn-sweep"></div>
+  <div id="tn-scale">
+    <div class="tn-axis" id="tn-axis"></div>
+    <div class="tn-tl" style="top:729px"></div><div class="tn-tl" style="top:559px"></div><div class="tn-tl" style="top:389px"></div>
+    <div class="tn-tk" id="tn-t200" style="top:716px">200</div>
+    <div class="tn-tk" id="tn-t250" style="top:546px">250</div>
+    <div class="tn-tk" id="tn-t300" style="top:376px">300</div>
+    <div class="tn-tk" id="tn-tmph" style="top:228px">mph</div>
+  </div>
+  <div class="tn-col" id="tn-colL" style="left:470px"><div class="tn-sheen" id="tn-shL"></div></div>
+  <div class="tn-col" id="tn-colR" style="left:1170px"><div class="tn-sheen" id="tn-shR"></div></div>
+  <div class="tn-hd" id="tn-hdL" style="left:600px">Fujita Scale</div>
+  <div class="tn-hd" id="tn-hdR" style="left:1300px">Enhanced Fujita Scale</div>
+  <div class="tn-feb" id="tn-feb">Feb 2007</div>
+  <div class="tn-ef5" id="tn-ef5"></div>
+  <div class="tn-band" id="tn-band"><div class="tn-bl" id="tn-blF">F5</div><div class="tn-bl" id="tn-blE">EF5</div></div>
+  <div class="tn-lab" id="tn-mph" style="left:752px; top:396px; font-size:36px; color:#f2f5f8">261 to 318 mph</div>
+  <div class="tn-lab" id="tn-high" style="left:752px; top:452px; font-size:32px; color:#e74c3c">Too High for the Damage</div>
+  <div class="tn-lab" id="tn-over" style="left:760px; top:708px; width:390px; text-align:right; font-size:36px; color:#f2f5f8">EF5 &middot; Over 200 mph</div>
+  <svg id="tn-house" width="300" height="260" viewBox="0 0 300 260" style="position:absolute; left:1480px; top:520px">
+    <rect x="10" y="220" width="280" height="30" rx="4" fill="#93a3b2"/>
+    <g id="tn-hbody"><path d="M40 220 L40 120 L150 50 L260 120 L260 220" fill="rgba(90,118,143,.25)" stroke="#dfe7ee" stroke-width="6"/>
+      <rect x="125" y="150" width="50" height="70" fill="none" stroke="#dfe7ee" stroke-width="5"/></g>
+  </svg>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const H = 379.163;
+  const D = 24.255;
+  const tl = gsap.timeline({ paused: true });
+  const P = "#tn-";
+  tl.set([P+"hdL", P+"hdR", P+"feb", P+"ef5", P+"band", P+"blE", P+"mph", P+"high", P+"over", P+"house"], { autoAlpha: 0 }, 0);
+
+  /* continuous: sweep every 8.1 s; sheen climbs both columns; tick labels drift */
+  tl.fromTo(P+"sweep", { x: -300 }, { x: 2200, duration: 8.1, ease: "none", repeat: 2 }, 0);
+  tl.fromTo([P+"shL", P+"shR"], { y: 680 }, { y: -120, duration: 3.6, ease: "none", repeat: 6 }, 0);
+  tl.to([P+"t200", P+"t250", P+"t300", P+"tmph"], { x: -10, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 9 }, 0.5);
+
+  /* picture from the first frame (draft had 0.9 s of black after bo-2, owner 27 Sep 26): the axis and both empty
+     columns are on screen at 0 and settle; the headers still land on the voice */
+  tl.fromTo(P+"scale", { x: -30 }, { x: 0, duration: 0.9, ease: "power3.out" }, 0);
+  tl.fromTo([P+"colL", P+"colR"], { y: 40 }, { y: 0, duration: 0.9, ease: "power3.out" }, 0);
+  /* ENHANCED FUJITA SCALE @379.78 (right column) · OLD FUJITA SCALE @382.00 (left column) */
+  tl.fromTo(P+"hdR", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" }, 379.78 - H);
+  tl.fromTo(P+"hdL", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" }, 382.00 - H);
+  /* FEBRUARY 2007 @383.22 */
+  tl.fromTo(P+"feb", { autoAlpha: 0, scale: 1.8 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 383.22 - H);
+  /* F5 WINDS @387.10 · 261 @388.48 -> 318 @390.28: the band grows from 261 up to 318 */
+  tl.to(P+"feb", { autoAlpha: 0, y: -30, duration: 0.4, ease: "power3.in" }, 387.0 - H);
+  tl.fromTo(P+"band", { autoAlpha: 1, scaleY: 0, transformOrigin: "center bottom" }, { scaleY: 0.1, duration: 0.3, ease: "power3.out" }, 387.10 - H);
+  tl.fromTo(P+"mph", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 388.48 - H);
+  tl.to(P+"band", { scaleY: 1, duration: 1.8, ease: "power2.out" }, 388.48 - H);
+  /* TOO HIGH @394.54 */
+  tl.fromTo(P+"high", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 394.54 - H);
+  tl.to(P+"band", { x: 8, duration: 0.08, ease: "power1.inOut", yoyo: true, repeat: 5 }, 394.6 - H);
+  /* LOWERED THEM @397.64: the band slides across and down to 200 mph */
+  tl.to([P+"mph", P+"high"], { autoAlpha: 0, duration: 0.3 }, 397.3 - H);
+  tl.to(P+"band", { x: 700, y: 207.4, duration: 1.1, ease: "power3.inOut" }, 397.64 - H);
+  tl.to(P+"blF", { autoAlpha: 0, duration: 0.3 }, 398.3 - H);
+  tl.fromTo(P+"blE", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 398.5 - H);
+  tl.fromTo(P+"ef5", { autoAlpha: 0, scaleY: 0, transformOrigin: "center bottom" }, { autoAlpha: 1, scaleY: 1, duration: 0.7, ease: "power3.out" }, 398.7 - H);
+  /* HOUSE SWEPT OFF @399.34 -> 399.90 */
+  tl.fromTo(P+"house", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 399.34 - H);
+  tl.to(P+"hbody", { x: 120, y: -160, rotation: 18, autoAlpha: 0, duration: 1.0, ease: "power2.in" }, 399.90 - H);
+  /* ABOVE 200 @401.82 */
+  tl.fromTo(P+"over", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 401.82 - H);
+  /* exit 402.8 */
+  tl.to([P+"scale", P+"colL", P+"colR", P+"hdL", P+"hdR", P+"ef5", P+"band", P+"over", P+"house"], { x: 980, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 402.8 - H);
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines["g-then-now"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

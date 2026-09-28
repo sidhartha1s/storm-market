@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-split-a1 (B3): host 299.487 -> 311.113 (11.626 s, track 2), audio a1-s13 mounts at 0 (local = word time).
+     El Reno went EF5 -> EF3 (Aug 2013); twelve years later Enderlin, rated EF3, points the other way with an open
+     question. One shared EF scale on the divider: rungs EF5 (y 340) and EF3 (y 600), each label drawn ONCE (one fact,
+     one instance, same precedent as g-ef4-cards). Each storm is its own pointer on its own side, never merged:
+     El Reno cold blue (left) slides EF5 -> EF3 and leaves a dashed ghost at EF5; Enderlin amber (right) sits on the
+     same EF3 rung with an arrow up to a dashed "?" pointer at EF5 (open until October).
+     Cues: El Reno 0.56, EF5 1.38, down 2.02, EF3 2.50, 12 years 3.86, Enderlin 5.06, other way 5.64-5.80,
+     same kind of path 7.38, until October 8.92, same answer 10.34. Exit 11.01. -->
+<template>
+<style>
+  .sp2-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .sp2-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.06) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .sp2-glow { position:absolute; width:1000px; height:700px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(127,178,229,0.12), rgba(127,178,229,0) 70%); }
+  .sp2-div { position:absolute; left:959px; top:0; width:2px; height:1080px;
+    background: linear-gradient(180deg, rgba(147,163,178,0), rgba(147,163,178,0.45) 30%, rgba(147,163,178,0.45) 70%, rgba(147,163,178,0)); }
+  .sp2-side { position:absolute; top:0; width:960px; height:1080px; }
+  .sp2-key { position:absolute; left:450px; top:60px; width:60px; height:6px; border-radius:3px; }
+  .sp2-eb { position:absolute; left:0; right:0; top:80px; text-align:center; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; }
+  .sp2-name { position:absolute; left:0; right:0; top:110px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-size:60px; line-height:72px; color:#f2f5f8; }
+  .sp2-year { position:absolute; left:0; right:0; top:186px; text-align:center; font-family: Georgia, serif; font-style:italic; font-size:30px; color:#d8a13a; }
+  .sp2-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .sp2-plate { position:absolute; left:860px; width:200px; height:104px; box-sizing:border-box; border:5px solid; border-radius:14px;
+    background:#0b1016; text-align:center; font-family:'AbrilFig', Georgia, serif; font-size:84px; line-height:100px; letter-spacing:3px; }
+  .sp2-p5 { top:288px; color:#d0121f; border-color:#d0121f; text-shadow:0 0 26px rgba(208,18,31,0.5); }
+  .sp2-p3 { top:548px; color:#dfe7ee; border-color:rgba(223,231,238,0.85); }
+  .sp2-ghq { position:absolute; left:1150px; top:302px; width:70px; text-align:center; font-family:'AbrilFig', Georgia, serif; font-size:64px; line-height:76px;
+    color:#e8c56a; text-shadow:0 0 20px rgba(232,197,106,0.45); }
+  .sp2-gap { position:absolute; left:810px; width:300px; top:676px; padding:12px 0; text-align:center; border-radius:18px;
+    background: rgba(10,16,24,0.72); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:30px; letter-spacing:1px; color:#e8c56a; }
+  .sp2-path { position:absolute; width:620px; top:760px; height:34px; border-radius:17px;
+    background: linear-gradient(90deg, rgba(90,118,143,0.10), rgba(90,118,143,0.55) 20%, rgba(90,118,143,0.55) 80%, rgba(90,118,143,0.10)); }
+  .sp2-pathc { position:absolute; left:10px; right:10px; top:15px; height:0; border-top:3px dashed rgba(223,231,238,0.5); }
+  .sp2-line { position:absolute; left:0; right:0; top:860px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-size:52px; line-height:62px; color:#f2f5f8; }
+</style>
+<div class="sp2-wrap" data-composition-id="g-split-a1" data-width="1920" data-height="1080" data-duration="11.626">
+  <div class="sp2-grid" id="sp2-grid"></div>
+  <div class="sp2-glow" id="sp2-glowl" style="left:-160px; top:200px;"></div>
+  <div class="sp2-glow" id="sp2-glowr" style="left:1060px; top:100px;"></div>
+  <div class="sp2-div" id="sp2-div"></div>
+  <div class="sp2-side" id="sp2-left" style="left:0;">
+    <div class="sp2-key" id="sp2-l-key" style="background:#7fb2e5;"></div>
+    <div class="sp2-eb" id="sp2-l-eb">Oklahoma</div>
+    <div class="sp2-name" id="sp2-l-name">El Reno</div>
+    <div class="sp2-year" id="sp2-l-year">2013</div>
+    <div class="sp2-path" id="sp2-lpath" style="left:170px;"><div class="sp2-pathc"></div></div>
+  </div>
+  <div class="sp2-side" id="sp2-right" style="left:960px;">
+    <div class="sp2-key" id="sp2-r-key" style="background:#e8c56a;"></div>
+    <div class="sp2-eb" id="sp2-r-eb">North Dakota</div>
+    <div class="sp2-name" id="sp2-r-name">Enderlin</div>
+    <div class="sp2-year" id="sp2-r-year">2025</div>
+    <div class="sp2-path" id="sp2-rpath" style="left:170px;"><div class="sp2-pathc"></div></div>
+  </div>
+  <!-- the one shared EF scale: track, EF4 tick (unlabelled), rung lines, arrows, pointers -->
+  <svg class="sp2-svg" id="sp2-scale" viewBox="0 0 1920 1080">
+    <defs><linearGradient id="sp2-trkg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d0121f"/><stop offset="1" stop-color="#5a768f"/></linearGradient></defs>
+    <rect id="sp2-trk" x="953" y="290" width="14" height="360" rx="7" fill="url(#sp2-trkg)"/>
+    <path id="sp2-t4" d="M925 470 H995" stroke="#93a3b2" stroke-width="4" stroke-linecap="round"/>
+    <path id="sp2-r5" d="M760 340 H1160" stroke="rgba(208,18,31,0.6)" stroke-width="3"/>
+    <path id="sp2-r3" d="M760 600 H1160" stroke="rgba(223,231,238,0.5)" stroke-width="3"/>
+    <path id="sp2-adn" d="M730 370 V584" stroke="#7fb2e5" stroke-width="6" stroke-linecap="round"/>
+    <path id="sp2-adnh" d="M712 566 L730 588 L748 566" fill="none" stroke="#7fb2e5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="sp2-aup" d="M1250 570 V356" stroke="#e8c56a" stroke-width="6" stroke-linecap="round"/>
+    <path id="sp2-auph" d="M1232 374 L1250 352 L1268 374" fill="none" stroke="#e8c56a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon id="sp2-ghL" points="770,308 848,340 770,372" fill="none" stroke="#7fb2e5" stroke-width="4" stroke-dasharray="10 8"/>
+    <polygon id="sp2-gh" points="1150,308 1072,340 1150,372" fill="none" stroke="#e8c56a" stroke-width="4" stroke-dasharray="10 8"/>
+    <polygon id="sp2-mL" points="770,308 848,340 770,372" fill="#7fb2e5"/>
+    <polygon id="sp2-mR" points="1150,568 1072,600 1150,632" fill="#e8c56a"/>
+  </svg>
+  <div class="sp2-plate sp2-p5" id="sp2-p5">EF5</div>
+  <div class="sp2-plate sp2-p3" id="sp2-p3">EF3</div>
+  <div class="sp2-ghq" id="sp2-ghq">?</div>
+  <div class="sp2-gap" id="sp2-gap">12 Years Later</div>
+  <div class="sp2-line" id="sp2-line1">Same Kind of Path</div>
+  <div class="sp2-line" id="sp2-line2">Same Answer Until October</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 11.626;
+  const dash = (id) => { const p = document.getElementById(id); const L = Math.ceil(p.getTotalLength()) + 1; p.style.strokeDasharray = L; return L; };
+  const AD = dash("sp2-adn"), AU = dash("sp2-aup"), R5 = dash("sp2-r5"), R3 = dash("sp2-r3");
+  tl.set(["#sp2-l-key", "#sp2-l-eb", "#sp2-l-name", "#sp2-l-year", "#sp2-r-key", "#sp2-r-eb", "#sp2-r-name", "#sp2-r-year",
+          "#sp2-p5", "#sp2-p3", "#sp2-mL", "#sp2-mR", "#sp2-ghL", "#sp2-gh", "#sp2-ghq", "#sp2-t4",
+          "#sp2-adnh", "#sp2-auph", "#sp2-gap", "#sp2-line1", "#sp2-line2", "#sp2-lpath", "#sp2-rpath"], { autoAlpha: 0 }, 0);
+  tl.set("#sp2-adn", { strokeDashoffset: AD }, 0);
+  tl.set("#sp2-aup", { strokeDashoffset: AU }, 0);
+  tl.set("#sp2-r5", { strokeDashoffset: R5 }, 0);
+  tl.set("#sp2-r3", { strokeDashoffset: R3 }, 0);
+  tl.set("#sp2-trk", { scaleY: 0, svgOrigin: "960 650" }, 0);
+  tl.set(["#sp2-lpath", "#sp2-rpath"], { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* ambient, whole window */
+  tl.fromTo("#sp2-grid", { x: 0 }, { x: 180, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#sp2-glowl", { x: 0, y: 0 }, { x: 240, y: -50, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#sp2-glowr", { x: 0, y: 0 }, { x: -240, y: 70, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#sp2-div", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power3.out" }, 0);
+  /* the shared scale grows up the divider, rungs draw out (labels wait for their words) */
+  tl.to("#sp2-trk", { scaleY: 1, duration: 0.6, ease: "power3.out" }, 0.1);
+  tl.to("#sp2-t4", { autoAlpha: 1, duration: 0.3 }, 0.4);
+  tl.to("#sp2-r5", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 0.3);
+  tl.to("#sp2-r3", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 0.45);
+
+  /* EL RENO @0.56, EF5 @1.38: its blue pointer lands on the EF5 rung, the one EF5 label slams on */
+  tl.fromTo(["#sp2-l-key", "#sp2-l-eb", "#sp2-l-name", "#sp2-l-year"], { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out", stagger: 0.06 }, 0.56);
+  tl.fromTo("#sp2-mL", { autoAlpha: 0, x: -90 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power4.out" }, 1.1);
+  tl.fromTo("#sp2-p5", { autoAlpha: 0, scale: 1.4, rotation: -9 }, { autoAlpha: 1, scale: 1, rotation: -3, duration: 0.2, ease: "power4.in" }, 1.2);
+  /* DOWN @2.02, EF3 @2.50: the arrow draws down, the pointer slides to the EF3 rung, a dashed ghost stays at EF5 */
+  tl.to("#sp2-adn", { strokeDashoffset: 0, duration: 0.4, ease: "power2.inOut" }, 2.02);
+  tl.fromTo("#sp2-adnh", { autoAlpha: 0, y: -16 }, { autoAlpha: 1, y: 0, duration: 0.2, ease: "power2.out" }, 2.3);
+  tl.set("#sp2-ghL", { autoAlpha: 0.5 }, 2.02);
+  tl.to("#sp2-mL", { y: 260, duration: 0.45, ease: "power3.inOut" }, 2.05);
+  tl.fromTo("#sp2-p3", { autoAlpha: 0, scale: 1.4, rotation: -9 }, { autoAlpha: 1, scale: 1, rotation: -3, duration: 0.2, ease: "power4.in" }, 2.3);
+
+  /* 12 YEARS LATER @3.86 */
+  tl.fromTo("#sp2-gap", { autoAlpha: 0, scale: 0.85 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 3.86);
+
+  /* ENDERLIN @5.06: its amber pointer lands on the same EF3 rung; THE OTHER WAY @5.64: arrow up to a dashed "?" at EF5 */
+  tl.fromTo(["#sp2-r-key", "#sp2-r-eb", "#sp2-r-name", "#sp2-r-year"], { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out", stagger: 0.06 }, 5.06);
+  tl.fromTo("#sp2-mR", { autoAlpha: 0, x: 90 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power4.out" }, 5.1);
+  tl.to("#sp2-aup", { strokeDashoffset: 0, duration: 0.4, ease: "power2.inOut" }, 5.64);
+  tl.fromTo("#sp2-auph", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.2, ease: "power2.out" }, 5.9);
+  tl.fromTo(["#sp2-gh", "#sp2-ghq"], { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "back.out(2)" }, 5.8);
+  tl.fromTo("#sp2-ghq", { y: 0 }, { y: -10, duration: 0.55, ease: "sine.inOut", yoyo: true, repeat: 7 }, 6.2);
+
+  /* SAME KIND OF PATH @7.38: both paths draw together */
+  tl.to(["#sp2-lpath", "#sp2-rpath"], { autoAlpha: 1, scaleX: 1, duration: 0.6, ease: "power3.out" }, 7.38);
+  tl.fromTo("#sp2-line1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.38);
+  tl.to("#sp2-line1", { autoAlpha: 0, y: -20, duration: 0.3, ease: "power2.in" }, 8.55);
+  /* UNTIL OCTOBER @8.92 ... SAME ANSWER @10.34: both pointers nudge into the one EF3 rung together */
+  tl.fromTo("#sp2-line2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.92);
+  tl.fromTo("#sp2-mL", { x: 0 }, { x: 12, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 10.34);
+  tl.fromTo("#sp2-mR", { x: 0 }, { x: -12, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 10.34);
+  tl.fromTo("#sp2-p3", { scale: 1 }, { scale: 1.08, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 10.34);
+
+  /* exit (spec 310.5 -> 11.01) */
+  tl.to(["#sp2-left", "#sp2-right", "#sp2-gap", "#sp2-line2", "#sp2-scale", "#sp2-p5", "#sp2-p3", "#sp2-ghq"], { y: -40, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 11.01);
+  tl.to("#sp2-div", { autoAlpha: 0, duration: 0.5 }, 11.05);
+  window.__timelines["g-split-a1"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

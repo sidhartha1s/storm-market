@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-stamp-a5 (B3): host 1170.13 -> 1190.284 (20.154 s, track 2), audio a5-s1 starts 1170.33 (local = word + 0.20).
+     The October verdict told the way the hook told it: stamp styles, strike, arrow and bolt copied from
+     compositions/g-verdict.html (.vd-stamp/.vd-ef3/.vd-ef5/.vd-strike/.vd-bolt), over a dark storm background (drifting
+     radial light + faint rain), with a beige citation card for the NWS statement. sx-stamp-a5 fires at 9.14.
+     Facts (fact_check.md): revised to EF5 on 6 Oct 2025, peak winds over 210 mph, rating rests on the train.
+     Cues: Monday 0.64, October 6 1.36, 2025 2.56, Grand Forks office 4.06, revised rating 5.62, Enderlin tornado 7.38,
+     EF5 9.14, more than 210 12.06/12.40, rested on the train 15.18/15.88, rare for an EF5 18.04. Exit 19.47. -->
+<template>
+<style>
+  .sa-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .sa-sky { position:absolute; left:-300px; top:-300px; width:1500px; height:1000px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(90,118,143,0.30), rgba(90,118,143,0) 70%); }
+  .sa-sky2 { background: radial-gradient(ellipse, rgba(127,178,229,0.16), rgba(127,178,229,0) 70%); }
+  .sa-rain { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .sa-flash { position:absolute; inset:0; mix-blend-mode:screen; pointer-events:none;
+    background: radial-gradient(ellipse at 78% 6%, rgba(210,226,255,0.9), rgba(127,178,229,0.3) 40%, rgba(20,30,60,0) 76%); }
+  .sa-bolt { position:absolute; left:0; top:0; width:1920px; height:1080px; pointer-events:none; }
+  .sa-scrim { position:absolute; width:760px; height:560px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(4,7,10,0.72) 0%, rgba(4,7,10,0.45) 45%, rgba(4,7,10,0) 72%); }
+  .sa-cite { position:absolute; left:96px; top:64px; padding:24px 40px 26px; border-radius:24px; overflow:hidden;
+    background: rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 24px 70px rgba(0,0,0,0.55); }
+  .sa-ceb { font-weight:700; font-size:22px; letter-spacing:4px; color:#5a4a2e; white-space:nowrap; }
+  .sa-ctitle { font-family: Georgia, serif; font-style:italic; font-size:40px; line-height:50px; color:#1c1a17; margin-top:6px; white-space:nowrap; }
+  .sa-cdate { font-weight:700; font-size:28px; line-height:34px; color:#8a5a10; margin-top:8px; white-space:nowrap; }
+  .sa-cdate span { display:inline-block; }
+  .sa-cbeam { position:absolute; top:0; bottom:0; left:0; width:180px; background:linear-gradient(90deg, transparent, rgba(138,90,16,0.16), transparent); }
+  .sa-group { position:absolute; text-align:center; }
+  .sa-stamp { display:inline-block; padding:6px 34px 0; border:6px solid; border-radius:14px;
+    font-family:'AbrilFig', Georgia, serif; line-height:1; letter-spacing:4px; }
+  .sa-ef3 { font-size:140px; color:#dfe7ee; border-color:rgba(223,231,238,0.85); text-shadow:0 6px 30px rgba(0,0,0,0.7); }
+  .sa-ef5 { font-size:200px; color:#d0121f; border-color:#d0121f; text-shadow:0 0 38px rgba(208,18,31,0.55), 0 6px 26px rgba(0,0,0,0.8); }
+  .sa-sub { margin-top:40px; font-weight:700; font-size:30px; line-height:36px; letter-spacing:1px; color:#dfe7ee; text-shadow:0 2px 12px rgba(0,0,0,0.9); }
+  .sa-strike { position:absolute; left:40px; right:40px; top:70px; height:14px; background:#d0121f; border-radius:7px;
+    box-shadow:0 0 18px rgba(208,18,31,0.6); }
+  .sa-arrow { position:absolute; left:0; top:0; width:1920px; height:1080px; pointer-events:none; }
+  .sa-band { position:absolute; left:820px; top:846px; font-family:'Arial Black', Arial, sans-serif; font-size:52px; line-height:62px; color:#f2f5f8; white-space:nowrap; }
+  .sa-band2 { font-family: Georgia, serif; font-style:italic; font-weight:400; font-size:52px; color:#e8c56a; }
+  .sa-car { position:absolute; left:590px; top:836px; width:200px; height:84px; }
+</style>
+<div class="sa-wrap" data-composition-id="g-stamp-a5" data-width="1920" data-height="1080" data-duration="20.154">
+  <div class="sa-sky" id="sa-sky1"></div>
+  <div class="sa-sky sa-sky2" id="sa-sky2" style="left:900px; top:200px;"></div>
+  <svg class="sa-rain" viewBox="0 0 1920 1080">
+    <g id="sa-rainA" stroke="rgba(200,211,224,0.16)" stroke-width="2" stroke-linecap="round">
+      <path d="M120 0 l-40 110"/><path d="M380 60 l-40 110"/><path d="M640 -20 l-40 110"/><path d="M900 40 l-40 110"/>
+      <path d="M1160 -40 l-40 110"/><path d="M1420 20 l-40 110"/><path d="M1680 -10 l-40 110"/><path d="M1900 50 l-40 110"/>
+      <path d="M250 300 l-40 110"/><path d="M510 380 l-40 110"/><path d="M770 280 l-40 110"/><path d="M1030 360 l-40 110"/>
+      <path d="M1290 300 l-40 110"/><path d="M1550 390 l-40 110"/><path d="M1810 320 l-40 110"/>
+      <path d="M160 620 l-40 110"/><path d="M420 700 l-40 110"/><path d="M680 640 l-40 110"/><path d="M940 720 l-40 110"/>
+      <path d="M1200 650 l-40 110"/><path d="M1460 730 l-40 110"/><path d="M1720 660 l-40 110"/>
+    </g>
+  </svg>
+  <div class="sa-flash" id="sa-flash"></div>
+  <svg class="sa-bolt" viewBox="0 0 1920 1080">
+    <path id="sa-bolt" d="M1540 0 L1506 96 L1552 120 L1488 238 L1530 256 L1452 400" fill="none" stroke="#e6efff" stroke-width="5" stroke-linejoin="bevel" style="filter:drop-shadow(0 0 14px #7fb2e5)"/>
+  </svg>
+  <div class="sa-scrim" id="sa-scrim3" style="left:200px; top:230px;"></div>
+  <div class="sa-scrim" id="sa-scrim5" style="left:900px; top:200px;"></div>
+  <div class="sa-cite" id="sa-cite">
+    <div class="sa-cbeam" id="sa-cbeam"></div>
+    <div class="sa-ceb" id="sa-ceb">NWS Grand Forks</div>
+    <div class="sa-ctitle" id="sa-ctitle">Public Information Statement</div>
+    <div class="sa-cdate"><span id="sa-cd1">Oct 6,</span> <span id="sa-cd2">2025</span></div>
+  </div>
+  <div class="sa-group" id="sa-g3" style="left:330px; top:400px; width:440px;">
+    <div class="sa-stamp sa-ef3" id="sa-ef3">EF3</div>
+    <div class="sa-sub" id="sa-sub3">June 2025</div>
+    <div class="sa-strike" id="sa-strike"></div>
+  </div>
+  <svg class="sa-arrow" viewBox="0 0 1920 1080">
+    <path id="sa-arrowline" d="M790 480 L990 480" fill="none" stroke="#e8c56a" stroke-width="5" stroke-linecap="round"/>
+    <path id="sa-arrowhead" d="M972 462 L998 480 L972 498" fill="none" stroke="#e8c56a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div class="sa-group" id="sa-g5" style="left:1010px; top:370px; width:560px;">
+    <div class="sa-stamp sa-ef5" id="sa-ef5">EF5</div>
+    <div class="sa-sub" id="sa-sub5">More Than 210 mph</div>
+  </div>
+  <svg class="sa-car" id="sa-car" viewBox="0 0 200 84">
+    <rect x="12" y="6" width="176" height="54" rx="5" fill="#5a768f" stroke="#7fb2e5" stroke-width="3"/>
+    <path d="M40 14 V52 M64 14 V52 M136 14 V52 M160 14 V52" stroke="rgba(223,231,238,0.35)" stroke-width="3"/>
+    <rect x="86" y="16" width="28" height="36" rx="2" fill="none" stroke="#dfe7ee" stroke-width="3"/>
+    <rect x="6" y="58" width="188" height="7" fill="#2a3644" stroke="#93a3b2" stroke-width="2"/>
+    <circle cx="34" cy="72" r="8" fill="#0b1016" stroke="#93a3b2" stroke-width="2"/><circle cx="56" cy="72" r="8" fill="#0b1016" stroke="#93a3b2" stroke-width="2"/>
+    <circle cx="144" cy="72" r="8" fill="#0b1016" stroke="#93a3b2" stroke-width="2"/><circle cx="166" cy="72" r="8" fill="#0b1016" stroke="#93a3b2" stroke-width="2"/>
+    <path d="M0 82 H200" stroke="#93a3b2" stroke-width="3"/>
+  </svg>
+  <div class="sa-band" id="sa-band1">Rated on the Train</div>
+  <div class="sa-band sa-band2" id="sa-band2">Rare for an EF5</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 20.154;
+  const P = "#sa-";
+  const bolt = document.getElementById("sa-bolt"); const BL = Math.ceil(bolt.getTotalLength()) + 1; bolt.style.strokeDasharray = BL;
+  const arrow = document.getElementById("sa-arrowline"); const AL = Math.ceil(arrow.getTotalLength()) + 1; arrow.style.strokeDasharray = AL;
+  tl.set([P+"flash", P+"bolt", P+"cite", P+"ceb", P+"ctitle", P+"cd1", P+"cd2", P+"g3", P+"sub3", P+"strike", P+"arrowline", P+"arrowhead",
+          P+"g5", P+"ef5", P+"sub5", P+"scrim3", P+"scrim5", P+"car", P+"band1", P+"band2"], { autoAlpha: 0 }, 0);
+  tl.set(P+"strike", { scaleX: 0, rotation: -5, transformOrigin: "left center" }, 0);
+  tl.set(P+"arrowline", { strokeDashoffset: AL }, 0);
+  tl.set(P+"bolt", { strokeDashoffset: BL }, 0);
+
+  /* ambient, whole window: storm light drifts, rain falls */
+  tl.fromTo(P+"sky1", { x: 0, y: 0 }, { x: 700, y: 120, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P+"sky2", { x: 0, y: 0 }, { x: -600, y: -80, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P+"rainA", { x: 0, y: -330 }, { x: -120, y: 0, duration: 1.0, ease: "none", repeat: 19 }, 0);
+  tl.fromTo(P+"cbeam", { x: -180 }, { x: 700, duration: 2.2, ease: "none", repeat: 7 }, 0.7);
+
+  /* MONDAY @0.64, OCTOBER 6 @1.36, 2025 @2.56: the NWS statement */
+  tl.fromTo(P+"cite", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.5);
+  tl.fromTo(P+"ceb", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.64);
+  tl.fromTo(P+"ctitle", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.9);
+  tl.fromTo(P+"cd1", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power4.out" }, 1.36);
+  tl.fromTo(P+"cd2", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power4.out" }, 2.56);
+
+  /* GRAND FORKS OFFICE @4.06: the June EF3 is on the board */
+  tl.to(P+"scrim3", { autoAlpha: 1, duration: 0.4 }, 3.9);
+  tl.fromTo(P+"g3", { autoAlpha: 0, scale: 1.12, rotation: 0 }, { autoAlpha: 1, scale: 1, rotation: -3, duration: 0.35, ease: "power3.out" }, 4.06);
+  tl.fromTo(P+"sub3", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 4.3);
+  /* REVISED RATING @5.62: the strike goes through EF3 */
+  tl.to(P+"strike", { autoAlpha: 1, scaleX: 1, duration: 0.28, ease: "power3.out" }, 5.62);
+  tl.to(P+"g3", { opacity: 0.6, duration: 0.4 }, 5.85);
+  /* THE ENDERLIN TORNADO @7.38: the arrow draws toward the new rating */
+  tl.to(P+"arrowline", { autoAlpha: 1, strokeDashoffset: 0, duration: 0.5, ease: "power2.inOut" }, 7.38);
+  tl.fromTo(P+"arrowhead", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.2, ease: "power2.out" }, 7.82);
+
+  /* EF5 @9.14: the verdict slams, bolt + flash ride the hit (sx-stamp-a5 at 9.14) */
+  tl.to(P+"scrim5", { autoAlpha: 1, duration: 0.3 }, 8.7);
+  tl.set(P+"g5", { autoAlpha: 1 }, 8.9);
+  tl.fromTo(P+"ef5", { autoAlpha: 0, scale: 1.45, rotation: -10 }, { autoAlpha: 1, scale: 1, rotation: -4, duration: 0.2, ease: "power4.in" }, 8.94);
+  tl.to(P+"bolt", { autoAlpha: 1, strokeDashoffset: 0, duration: 0.08, ease: "none" }, 9.06);
+  tl.fromTo(P+"flash", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.05 }, 9.14);
+  tl.to(P+"flash", { autoAlpha: 0, duration: 0.5, ease: "power2.out" }, 9.2);
+  tl.fromTo(P+"g5", { y: 0 }, { y: 9, duration: 0.07, ease: "power1.out", yoyo: true, repeat: 1 }, 9.14);
+  tl.to(P+"bolt", { autoAlpha: 0, duration: 0.4 }, 9.34);
+  tl.fromTo(P+"ef5", { scale: 1 }, { scale: 1.05, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 1 }, 9.7);
+  /* MORE THAN 210 @12.06 */
+  tl.fromTo(P+"sub5", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 12.06);
+  tl.fromTo(P+"g5", { scale: 1 }, { scale: 1.03, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 12.6);
+
+  /* RESTED ON THE TRAIN @15.18 */
+  tl.fromTo(P+"car", { autoAlpha: 0, x: -120 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 15.18);
+  tl.fromTo(P+"band1", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 15.4);
+  tl.fromTo(P+"car", { y: 0 }, { y: -5, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, 15.9);
+  /* RARE FOR AN EF5 @18.04 */
+  tl.to(P+"band1", { autoAlpha: 0, y: -20, duration: 0.3, ease: "power2.in" }, 17.7);
+  tl.fromTo(P+"band2", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 18.04);
+  tl.fromTo(P+"ef5", { scale: 1 }, { scale: 1.06, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 18.62);
+
+  /* exit (spec 1189.6 -> 19.47) */
+  tl.to([P+"g3", P+"g5", P+"arrowline", P+"arrowhead", P+"car", P+"band2"], { y: -40, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 19.47);
+  tl.to(P+"cite", { x: -700, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 19.47);
+  tl.to([P+"scrim3", P+"scrim5"], { autoAlpha: 0, duration: 0.5 }, 19.5);
+  window.__timelines["g-stamp-a5"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

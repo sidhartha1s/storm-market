@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<!-- ep-enderlin-2025 · The Warning Hour · assembly v1 (27 Sep 26). Shot-by-shot reasoning: shot_map.md. MG briefs: mg_specs.md.
+     SOUND (reasoned): a verdict story, not a warning, so no siren anywhere. The hook keeps the owner-approved H2 sound
+     (low industrial drone 0.13 + distant thunder 0.13 only while we are in the Enderlin night, stamp hits on EF5 / EF3).
+     From the first map (22.8 s) one dark-ambient bed (DeAPI score-act1-darkambient, self-crossfaded to 1474 s, 3 s fade in,
+     4 s fade out) runs to the end at 0.13, out under the CTA. Swells (swell.wav 0.4) end ON the line that closes each peak,
+     about every 45-60 s; stamp hits (0.2-0.28) land on the rating stamps. The one hold (A6 -> Z1) carries prairie crickets
+     over the moving prairie shot, the only diegetic ambience in the cut.
+     Channel post-mortem 27 Sep 26 applied: twist at 1.7 s (red EF5), toll on screen at 9.0 s (g-premise count), no black,
+     title card or disclaimer before 1:00 (first chapter blackout 1:55.98), the line after the hook stays in the night scene. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Enderlin 2025: the EF3 that became an EF5 — The Warning Hour</title>
+  <script src="gsap.min.js"></script>
+  <script src="grain.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070c; }
+    video, .still-wrap { position: absolute; inset: 0; }
+    video { width: 100%; height: 100%; object-fit: cover; }
+    .still-wrap { overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    .hold { position: absolute; inset: 0; pointer-events: none; } /* declared hold: no voice, picture keeps moving (DESIGN.md) */
+    /* ---- Abril figure popup (channel device: red, text-shadow, <=3 words, mid-screen, never over a map comp) ---- */
+    @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+    .popfig { position: absolute; left: 200px; right: 300px; top: 36%; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; isolation: isolate; }
+    .popfig .pf-big { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 150px; color: #d0121f; letter-spacing: 0.04em;
+      text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+    .popfig .pf-sub { display: block; margin-top: 12px; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 38px; color: #f4f0e8;
+      letter-spacing: 0.3em; -webkit-text-stroke: 1px rgba(0,0,0,0.85); paint-order: stroke fill;
+      text-shadow: 0 0 18px rgba(0,0,0,1), 0 0 40px rgba(0,0,0,0.9), 0 3px 10px #000; }
+    .popfig::before { content: ''; position: absolute; left: 14%; right: 14%; top: -90px; bottom: -70px; z-index: -1;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.32) 40%, rgba(0,0,0,0) 72%); }
+    .popfig.wide .pf-big { font-size: 120px; }
+    /* ---- film layer ---- */
+    #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90; background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
+    #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.10; mix-blend-mode: overlay; }
+    .dust { position: absolute; z-index: 92; pointer-events: none; border-radius: 50%; background: rgba(255,255,255,0.32); filter: blur(1.2px); }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="ep-enderlin-2025" data-start="0" data-width="1920" data-height="1080" data-duration="1527.797" data-fps="30">
+
+  <!-- ============ NARRATION (106 segments; starts = cumulative wav durations + 0.30 s seams, 0.15 s after the hook line,
+       blackout + 0.2 s at act seams, CTA dips 1.0 s, hold 3.0 s; see shot_map.md) ============ -->
+  <audio id="nx-h1-s1" src="audio/h1-s1.wav" data-start="0.0" data-duration="5.691" data-volume="1"></audio>
+  <audio id="nx-t1-s1" src="audio/t1-s1.wav" data-start="5.841" data-duration="16.963" data-volume="1"></audio>
+  <audio id="nx-i1-s1" src="audio/i1-s1.wav" data-start="23.104" data-duration="18.781" data-volume="1"></audio>
+  <audio id="nx-i1-s2" src="audio/i1-s2.wav" data-start="42.185" data-duration="5.546" data-volume="1"></audio>
+  <audio id="nx-i1-s3" src="audio/i1-s3.wav" data-start="48.031" data-duration="15.363" data-volume="1"></audio>
+  <audio id="nx-i1-s4" src="audio/i1-s4.wav" data-start="63.694" data-duration="9.509" data-volume="1"></audio>
+  <audio id="nx-i1-s5" src="audio/i1-s5.wav" data-start="73.503" data-duration="18.127" data-volume="1"></audio>
+  <audio id="nx-i1-s6" src="audio/i1-s6.wav" data-start="91.93" data-duration="16.891" data-volume="1"></audio>
+  <audio id="nx-i1-s7" src="audio/i1-s7.wav" data-start="109.121" data-duration="6.854" data-volume="1"></audio>
+  <audio id="nx-a1-s1" src="audio/a1-s1.wav" data-start="116.875" data-duration="14.055" data-volume="1"></audio>
+  <audio id="nx-a1-s2" src="audio/a1-s2.wav" data-start="131.23" data-duration="14.599" data-volume="1"></audio>
+  <audio id="nx-a1-s3" src="audio/a1-s3.wav" data-start="146.129" data-duration="19.69" data-volume="1"></audio>
+  <audio id="nx-a1-s4" src="audio/a1-s4.wav" data-start="166.119" data-duration="14.345" data-volume="1"></audio>
+  <audio id="nx-a1-s5" src="audio/a1-s5.wav" data-start="180.764" data-duration="17.181" data-volume="1"></audio>
+  <audio id="nx-a1-s6" src="audio/a1-s6.wav" data-start="198.245" data-duration="11.545" data-volume="1"></audio>
+  <audio id="nx-a1-s7" src="audio/a1-s7.wav" data-start="210.09" data-duration="16.09" data-volume="1"></audio>
+  <audio id="nx-a1-s8" src="audio/a1-s8.wav" data-start="226.48" data-duration="16.818" data-volume="1"></audio>
+  <audio id="nx-a1-s9" src="audio/a1-s9.wav" data-start="243.598" data-duration="5.908" data-volume="1"></audio>
+  <audio id="nx-a1-s10" src="audio/a1-s10.wav" data-start="249.806" data-duration="16.164" data-volume="1"></audio>
+  <audio id="nx-a1-s11" src="audio/a1-s11.wav" data-start="266.27" data-duration="14.635" data-volume="1"></audio>
+  <audio id="nx-a1-s12" src="audio/a1-s12.wav" data-start="281.205" data-duration="17.982" data-volume="1"></audio>
+  <audio id="nx-a1-s13" src="audio/a1-s13.wav" data-start="299.487" data-duration="11.326" data-volume="1"></audio>
+  <audio id="nx-a1-s14" src="audio/a1-s14.wav" data-start="311.113" data-duration="14.271" data-volume="1"></audio>
+  <audio id="nx-a1-s15" src="audio/a1-s15.wav" data-start="325.684" data-duration="11.254" data-volume="1"></audio>
+  <audio id="nx-a1-s16" src="audio/a1-s16.wav" data-start="337.238" data-duration="13.763" data-volume="1"></audio>
+  <audio id="nx-a1-s17" src="audio/a1-s17.wav" data-start="351.301" data-duration="14.709" data-volume="1"></audio>
+  <audio id="nx-a1-s18" src="audio/a1-s18.wav" data-start="366.31" data-duration="12.053" data-volume="1"></audio>
+  <audio id="nx-a2-s1" src="audio/a2-s1.wav" data-start="379.363" data-duration="19.219" data-volume="1"></audio>
+  <audio id="nx-a2-s2" src="audio/a2-s2.wav" data-start="398.882" data-duration="4.236" data-volume="1"></audio>
+  <audio id="nx-a2-s3" src="audio/a2-s3.wav" data-start="403.418" data-duration="14.745" data-volume="1"></audio>
+  <audio id="nx-a2-s4" src="audio/a2-s4.wav" data-start="418.463" data-duration="7.871" data-volume="1"></audio>
+  <audio id="nx-a2-s5" src="audio/a2-s5.wav" data-start="426.634" data-duration="20.854" data-volume="1"></audio>
+  <audio id="nx-a2-s6" src="audio/a2-s6.wav" data-start="447.788" data-duration="11.69" data-volume="1"></audio>
+  <audio id="nx-a2-s7" src="audio/a2-s7.wav" data-start="459.778" data-duration="19.946" data-volume="1"></audio>
+  <audio id="nx-a2-s8" src="audio/a2-s8.wav" data-start="480.024" data-duration="19.509" data-volume="1"></audio>
+  <audio id="nx-a2-s9" src="audio/a2-s9.wav" data-start="499.833" data-duration="13.399" data-volume="1"></audio>
+  <audio id="nx-a2-s10" src="audio/a2-s10.wav" data-start="513.532" data-duration="16.708" data-volume="1"></audio>
+  <audio id="nx-a2-s11" src="audio/a2-s11.wav" data-start="530.54" data-duration="12.781" data-volume="1"></audio>
+  <audio id="nx-a2-s12" src="audio/a2-s12.wav" data-start="543.621" data-duration="13.218" data-volume="1"></audio>
+  <audio id="nx-a2-s13" src="audio/a2-s13.wav" data-start="557.139" data-duration="21.327" data-volume="1"></audio>
+  <audio id="nx-a2-s14" src="audio/a2-s14.wav" data-start="578.766" data-duration="8.309" data-volume="1"></audio>
+  <audio id="nx-a2-s15" src="audio/a2-s15.wav" data-start="587.375" data-duration="17.873" data-volume="1"></audio>
+  <audio id="nx-a2-s16" src="audio/a2-s16.wav" data-start="605.548" data-duration="15.764" data-volume="1"></audio>
+  <audio id="nx-a2-s17" src="audio/a2-s17.wav" data-start="621.612" data-duration="5.035" data-volume="1"></audio>
+  <audio id="nx-a2-s18" src="audio/a2-s18.wav" data-start="626.947" data-duration="22.528" data-volume="1"></audio>
+  <audio id="nx-a2-s19" src="audio/a2-s19.wav" data-start="649.775" data-duration="6.055" data-volume="1"></audio>
+  <audio id="nx-a2-s20" src="audio/a2-s20.wav" data-start="656.13" data-duration="11.982" data-volume="1"></audio>
+  <audio id="nx-a3-s1" src="audio/a3-s1.wav" data-start="669.112" data-duration="18.781" data-volume="1"></audio>
+  <audio id="nx-a3-s2" src="audio/a3-s2.wav" data-start="688.193" data-duration="16.853" data-volume="1"></audio>
+  <audio id="nx-a3-s3" src="audio/a3-s3.wav" data-start="705.346" data-duration="5.908" data-volume="1"></audio>
+  <audio id="nx-a3-s4" src="audio/a3-s4.wav" data-start="711.554" data-duration="13.363" data-volume="1"></audio>
+  <audio id="nx-a3-s5" src="audio/a3-s5.wav" data-start="725.217" data-duration="19.908" data-volume="1"></audio>
+  <audio id="nx-a3-s6" src="audio/a3-s6.wav" data-start="745.425" data-duration="5.763" data-volume="1"></audio>
+  <audio id="nx-a3-s7" src="audio/a3-s7.wav" data-start="751.488" data-duration="16.49" data-volume="1"></audio>
+  <audio id="nx-a3-s8" src="audio/a3-s8.wav" data-start="768.278" data-duration="6.927" data-volume="1"></audio>
+  <audio id="nx-a3-s9" src="audio/a3-s9.wav" data-start="775.505" data-duration="19.326" data-volume="1"></audio>
+  <audio id="nx-a3-s10" src="audio/a3-s10.wav" data-start="795.131" data-duration="5.327" data-volume="1"></audio>
+  <audio id="nx-a3-s11" src="audio/a3-s11.wav" data-start="800.758" data-duration="15.291" data-volume="1"></audio>
+  <audio id="nx-a3-s12" src="audio/a3-s12.wav" data-start="816.349" data-duration="18.163" data-volume="1"></audio>
+  <audio id="nx-a3-s13" src="audio/a3-s13.wav" data-start="834.812" data-duration="6.345" data-volume="1"></audio>
+  <audio id="nx-a3-s14" src="audio/a3-s14.wav" data-start="841.457" data-duration="18.237" data-volume="1"></audio>
+  <audio id="nx-a3-s15" src="audio/a3-s15.wav" data-start="859.994" data-duration="13.399" data-volume="1"></audio>
+  <audio id="nx-a3-s16" src="audio/a3-s16.wav" data-start="873.693" data-duration="17.764" data-volume="1"></audio>
+  <audio id="nx-a3-s17" src="audio/a3-s17.wav" data-start="891.757" data-duration="4.964" data-volume="1"></audio>
+  <audio id="nx-a3-s18" src="audio/a3-s18.wav" data-start="897.021" data-duration="17.4" data-volume="1"></audio>
+  <audio id="nx-a3-s19" src="audio/a3-s19.wav" data-start="914.721" data-duration="6.2" data-volume="1"></audio>
+  <audio id="nx-a3-s20" src="audio/a3-s20.wav" data-start="921.221" data-duration="18.237" data-volume="1"></audio>
+  <audio id="nx-a4-s1" src="audio/a4-s1.wav" data-start="940.458" data-duration="17.509" data-volume="1"></audio>
+  <audio id="nx-a4-s2" src="audio/a4-s2.wav" data-start="958.267" data-duration="17.764" data-volume="1"></audio>
+  <audio id="nx-a4-s3" src="audio/a4-s3.wav" data-start="976.331" data-duration="8.563" data-volume="1"></audio>
+  <audio id="nx-a4-s4" src="audio/a4-s4.wav" data-start="985.194" data-duration="17.436" data-volume="1"></audio>
+  <audio id="nx-a4-s5" src="audio/a4-s5.wav" data-start="1002.93" data-duration="16.235" data-volume="1"></audio>
+  <audio id="nx-a4-s6" src="audio/a4-s6.wav" data-start="1019.465" data-duration="6.635" data-volume="1"></audio>
+  <audio id="nx-a4-s7" src="audio/a4-s7.wav" data-start="1026.4" data-duration="13.035" data-volume="1"></audio>
+  <audio id="nx-a4-s8" src="audio/a4-s8.wav" data-start="1039.735" data-duration="15.146" data-volume="1"></audio>
+  <audio id="nx-a4-s9" src="audio/a4-s9.wav" data-start="1055.181" data-duration="4.163" data-volume="1"></audio>
+  <audio id="nx-a4-s10" src="audio/a4-s10.wav" data-start="1059.644" data-duration="17.436" data-volume="1"></audio>
+  <audio id="nx-a4-s11" src="audio/a4-s11.wav" data-start="1077.38" data-duration="4.89" data-volume="1"></audio>
+  <audio id="nx-a4-s12" src="audio/a4-s12.wav" data-start="1082.57" data-duration="18.563" data-volume="1"></audio>
+  <audio id="nx-a4-s13" src="audio/a4-s13.wav" data-start="1101.433" data-duration="11.618" data-volume="1"></audio>
+  <audio id="nx-a4-s14" src="audio/a4-s14.wav" data-start="1113.351" data-duration="14.89" data-volume="1"></audio>
+  <audio id="nx-a4-s15" src="audio/a4-s15.wav" data-start="1128.541" data-duration="6.49" data-volume="1"></audio>
+  <audio id="nx-a4-s16" src="audio/a4-s16.wav" data-start="1135.331" data-duration="6.2" data-volume="1"></audio>
+  <audio id="nx-a4-s17" src="audio/a4-s17.wav" data-start="1141.831" data-duration="24.853" data-volume="1"></audio>
+  <audio id="nx-a4-s18" src="audio/a4-s18.wav" data-start="1166.984" data-duration="3.582" data-volume="1"></audio>
+  <audio id="nx-a5-s1" src="audio/a5-s1.wav" data-start="1171.566" data-duration="19.654" data-volume="1"></audio>
+  <audio id="nx-a5-s2" src="audio/a5-s2.wav" data-start="1191.52" data-duration="20.926" data-volume="1"></audio>
+  <audio id="nx-a5-s3" src="audio/a5-s3.wav" data-start="1212.746" data-duration="17.835" data-volume="1"></audio>
+  <audio id="nx-a5-s4" src="audio/a5-s4.wav" data-start="1230.881" data-duration="19.071" data-volume="1"></audio>
+  <audio id="nx-a5-s5" src="audio/a5-s5.wav" data-start="1250.252" data-duration="7.472" data-volume="1"></audio>
+  <audio id="nx-a5-s6" src="audio/a5-s6.wav" data-start="1258.024" data-duration="13.836" data-volume="1"></audio>
+  <audio id="nx-a5-s7" src="audio/a5-s7.wav" data-start="1272.16" data-duration="12.709" data-volume="1"></audio>
+  <audio id="nx-a5-s8" src="audio/a5-s8.wav" data-start="1285.169" data-duration="16.019" data-volume="1"></audio>
+  <audio id="nx-a5-s9" src="audio/a5-s9.wav" data-start="1301.488" data-duration="10.964" data-volume="1"></audio>
+  <audio id="nx-a5-s10" src="audio/a5-s10.wav" data-start="1312.752" data-duration="17.4" data-volume="1"></audio>
+  <audio id="nx-a6-s1" src="audio/a6-s1.wav" data-start="1347.291" data-duration="17.4" data-volume="1"></audio>
+  <audio id="nx-a6-s2" src="audio/a6-s2.wav" data-start="1364.991" data-duration="9.873" data-volume="1"></audio>
+  <audio id="nx-a6-s3" src="audio/a6-s3.wav" data-start="1375.164" data-duration="17.036" data-volume="1"></audio>
+  <audio id="nx-a6-s4" src="audio/a6-s4.wav" data-start="1392.5" data-duration="15.291" data-volume="1"></audio>
+  <audio id="nx-a6-s5" src="audio/a6-s5.wav" data-start="1408.091" data-duration="15.617" data-volume="1"></audio>
+  <audio id="nx-a6-s6" src="audio/a6-s6.wav" data-start="1424.008" data-duration="13.508" data-volume="1"></audio>
+  <audio id="nx-a6-s7" src="audio/a6-s7.wav" data-start="1437.816" data-duration="17.4" data-volume="1"></audio>
+  <audio id="nx-a6-s8" src="audio/a6-s8.wav" data-start="1455.516" data-duration="16.235" data-volume="1"></audio>
+  <audio id="nx-a6-s9" src="audio/a6-s9.wav" data-start="1472.051" data-duration="5.182" data-volume="1"></audio>
+  <audio id="nx-z1-s1" src="audio/z1-s1.wav" data-start="1480.233" data-duration="17.255" data-volume="1"></audio>
+  <audio id="nx-z1-s2" src="audio/z1-s2.wav" data-start="1497.788" data-duration="13.145" data-volume="1"></audio>
+  <audio id="nx-z1-s3" src="audio/z1-s3.wav" data-start="1511.233" data-duration="12.564" data-volume="1"></audio>
+
+  <!-- ============ CTA (config channel.cta v5 · 1329.916 s = 87.9 % of 1512.677 s · after a5-s10's tease "a change he thought
+       the scale needed", before a6-s1's payoff "Tony Lyza's change was..."; hard cut into real footage after the out-dip) ============ -->
+  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v5-sep6.mp4" data-start="1331.152" data-duration="15.139" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
+
+  <!-- ============ SOUND (narration above every bed: score 0.13, ambience <= 0.20) ============ -->
+  <!-- hook: owner-approved H2 sound, drone and thunder beds start 1.04 s into their files (fades baked at their ends) -->
+  <audio id="sx-drone" src="media/sfx/drone-hook.mp3" data-bed="" data-start="0" data-media-start="1.04" data-duration="27.61" data-volume="0.13"></audio>
+  <audio id="sx-thunder" src="media/sfx/thunder-night.mp3" data-bed="" data-start="0" data-media-start="1.04" data-duration="11.50" data-volume="0.13"></audio>
+  <audio id="sx-stamp-ef5" src="media/sfx/stamp-boom.wav" data-bed="" data-start="1.70" data-duration="3" data-volume="0.28"></audio>
+  <audio id="sx-stamp-ef3" src="media/sfx/stamp-boom.wav" data-bed="" data-start="4.44" data-duration="3" data-volume="0.2" data-callback="second stamp: the struck EF3 thumps on its name"></audio>
+  <audio id="sx-swell-hook" src="media/sfx/swell.wav" data-bed="" data-start="17.40" data-duration="5.0" data-volume="0.2"></audio>
+  <audio id="sx-stamp-elreno" src="media/sfx/stamp-boom.wav" data-bed="" data-start="21.62" data-duration="3" data-volume="0.2" data-callback="El Reno's EF3 stamp lands on the spoken EF3"></audio>
+  <!-- the one bed: in under the first map, out for the CTA, back on the payoff, 4 s fade baked at the file end -->
+  <audio id="sx-mus-bed-1" src="media/beds/bed-darkambient-long.mp3" data-bed="" data-start="22.8" data-duration="1307.352" data-volume="0.13"></audio>
+  <audio id="sx-mus-bed-2" src="media/beds/bed-darkambient-long.mp3" data-bed="" data-start="1346.291" data-media-start="1292.494" data-duration="181.506" data-volume="0.13" data-callback="the bed resumes after the CTA about 15 s back in the file so its baked 4 s fade lands on the new end (z1-s3 added 27 Sep 26)"></audio>
+  <!-- swells: each one ends on the line that closes a peak (riser lands with the narration) -->
+  <audio id="sx-swell-01" src="media/sfx/swell.wav" data-bed="" data-start="67.804" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-02" src="media/sfx/swell.wav" data-bed="" data-start="103.40" data-duration="5.0" data-volume="0.4"></audio>
+  <audio id="sx-swell-03" src="media/sfx/swell.wav" data-bed="" data-start="160.40" data-duration="5.0" data-volume="0.4"></audio>
+  <audio id="sx-swell-04" src="media/sfx/swell.wav" data-bed="" data-start="204.40" data-duration="5.0" data-volume="0.4"></audio>
+  <audio id="sx-swell-05" src="media/sfx/swell.wav" data-bed="" data-start="244.20" data-duration="5.0" data-volume="0.4"></audio>
+  <audio id="sx-swell-06" src="media/sfx/swell.wav" data-bed="" data-start="270.90" data-duration="5.0" data-volume="0.4"></audio>
+  <audio id="sx-swell-07" src="media/sfx/swell.wav" data-bed="" data-start="305.30" data-duration="5.0" data-volume="0.4"></audio>
+  <audio id="sx-swell-08" src="media/sfx/swell.wav" data-bed="" data-start="360.60" data-duration="5.0" data-volume="0.4"></audio>
+  <audio id="sx-swell-09" src="media/sfx/swell.wav" data-bed="" data-start="441.743" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-10" src="media/sfx/swell.wav" data-bed="" data-start="474.262" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-11" src="media/sfx/swell.wav" data-bed="" data-start="524.854" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-12" src="media/sfx/swell.wav" data-bed="" data-start="599.454" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-13" src="media/sfx/swell.wav" data-bed="" data-start="643.654" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-14" src="media/sfx/swell.wav" data-bed="" data-start="662.654" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-15" src="media/sfx/swell.wav" data-bed="" data-start="719.454" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-16" src="media/sfx/swell.wav" data-bed="" data-start="769.4" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-17" src="media/sfx/swell.wav" data-bed="" data-start="810.436" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-18" src="media/sfx/swell.wav" data-bed="" data-start="854.036" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-19" src="media/sfx/swell.wav" data-bed="" data-start="885.836" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-20" src="media/sfx/swell.wav" data-bed="" data-start="934.036" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-21" src="media/sfx/swell.wav" data-bed="" data-start="979.336" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-22" src="media/sfx/swell.wav" data-bed="" data-start="1033.636" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-23" src="media/sfx/swell.wav" data-bed="" data-start="1076.636" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-24" src="media/sfx/swell.wav" data-bed="" data-start="1122.736" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-25" src="media/sfx/swell.wav" data-bed="" data-start="1165.036" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-stamp-a5" src="media/sfx/stamp-boom.wav" data-bed="" data-start="1180.506" data-duration="3" data-volume="0.28" data-callback="the October EF5 stamp slams on the spoken EF5 (hook stamp reuse)"></audio>
+  <audio id="sx-land" src="media/sfx/stamp-boom.wav" data-bed="" data-start="1217.286" data-duration="3" data-volume="0.22" data-callback="Enderlin lands on the empty EF5 rung on 'the gap was over' (g-scale, hook stamp)"></audio>
+  <audio id="sx-swell-26" src="media/sfx/swell.wav" data-bed="" data-start="1266.257" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-27" src="media/sfx/swell.wav" data-bed="" data-start="1324.636" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-28" src="media/sfx/swell.wav" data-bed="" data-start="1401.836" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-29" src="media/sfx/swell.wav" data-bed="" data-start="1449.536" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-30" src="media/sfx/swell.wav" data-bed="" data-start="1471.636" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-crickets-hold" src="media/sfx/05_town_evening_crickets.mp3" data-bed="" data-start="1477.233" data-duration="3" data-volume="0.2"></audio>
+
+  <!-- ============ STRUCTURE: chapter blackouts (after 1:00 only), CTA dips (track 1), the one declared hold (track 8) ============ -->
+  <section class="clip blackout" id="bo-1" data-start="115.975" data-duration="0.7" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-2" data-start="378.363" data-duration="0.8" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-3" data-start="668.112" data-duration="0.8" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-5" data-start="1170.566" data-duration="0.8" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-cta-in" data-start="1330.152" data-duration="1" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-cta-out" data-start="1346.291" data-duration="1" data-track-index="1"></section>
+  <!-- hold-2 938.222-939.222: A3 -> A4 seam, no black (owner 27 Sep 26: "no need for blackness at 15:38 before the quote. keep it connected.");
+       bo-4 removed, g-quote-jones starts here and its card settles before the voice -->
+  <section class="clip hold" id="hold-2" data-start="939.458" data-duration="1" data-track-index="8"></section>
+  <!-- hold-1 1475.997-1478.997: "never going to change with any rating." · the prairie keeps moving, crickets, no voice -->
+  <section class="clip hold" id="hold-1" data-start="1477.233" data-duration="3" data-track-index="8"></section>
+
+  <!-- ============ H · HOOK (0-23.10) · owner-approved H2 cut, retimed; no void (post-mortem 27 Sep 26) ============ -->
+  <div id="host-tornado-verdict" data-composition-id="g-tornado-verdict" data-composition-src="compositions/g-tornado-verdict.html" data-start="0" data-duration="5.841" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-verdict" data-composition-id="g-verdict" data-composition-src="compositions/g-verdict.html" data-start="0" data-duration="5.841" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-tornado-premise" data-composition-id="g-tornado-premise" data-composition-src="compositions/g-tornado-premise.html" data-start="5.841" data-duration="5.659" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-premise" data-composition-id="g-premise" data-composition-src="compositions/g-premise.html" data-start="5.841" data-duration="5.659" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="c-h-1" data-start="11.50" data-duration="5.35" data-track-index="1"><img id="kb-h-1" src="media/el-reno-2013/el-reno-2013-nasa-modis-ground-scar.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-h-2" data-start="16.85" data-duration="3.5" data-track-index="1"><img id="kb-h-2" src="media/el-reno-2013/el-reno-2013-radar-timeline-map.jpg" alt=""></section>
+  <div id="host-split" data-composition-id="g-split" data-composition-src="compositions/g-split.html" data-start="20.35" data-duration="2.754" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <section class="clip" id="p-pf-2013" data-start="11.70" data-duration="2.6" data-track-index="5"><div class="popfig" id="pf-2013"><span class="pf-big">2013</span><span class="pf-sub">EL RENO, OKLAHOMA</span></div></section>
+
+  <!-- ============ I · THE NIGHT (23.10-115.98) ============ -->
+  <div id="host-master-map" data-composition-id="g-master-map" data-composition-src="compositions/g-master-map.html" data-start="23.104" data-duration="50.399" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-clock" data-composition-id="g-clock" data-composition-src="compositions/g-clock.html" data-start="23.104" data-duration="6.776" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="c-i-0" data-start="32.90" data-duration="4.7" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-i-0" src="media/enderlin-2025/enderlin-town-street-1.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-i-1" data-start="73.503" data-duration="5.397" data-track-index="1"><img id="kb-i-1" src="media/enderlin-2025/maple-river-root-ball-displacement.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-i-2" data-start="78.90" data-duration="5.70" data-track-index="1"><img id="kb-i-2" src="media/enderlin-2025/maple-river-debarked-trunk-pale.jpg" alt=""></section>
+  <video id="v-i-goes19" src="media/goes-satellite/goes19-dakota-tornadoes-june20-2025.mp4" data-start="84.60" data-duration="7.33" data-track-index="1" muted></video>
+  <div id="host-split-i1" data-composition-id="g-split-i1" data-composition-src="compositions/g-split-i1.html" data-start="91.93" data-duration="16.891" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="c-i-3" data-start="108.821" data-duration="3.579" data-track-index="1"><img id="kb-i-3" src="media/mayfield-2021/mayfield-2021-usace-assess-damage-1.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-i-4" data-start="112.40" data-duration="3.575" data-track-index="1"><img id="kb-i-4" src="media/mayfield-2021/mayfield-2021-usace-assess-damage-2.jpg" alt=""></section>
+  <section class="clip" id="p-pf-ef3" data-start="80.10" data-duration="3.8" data-track-index="5"><div class="popfig" id="pf-ef3"><span class="pf-big">EF3</span><span class="pf-sub">ABOUT 160 MPH</span></div></section>
+  <section class="clip" id="p-pf-24" data-start="89.22" data-duration="2.5" data-track-index="5"><div class="popfig wide" id="pf-24"><span class="pf-big">24 Tornadoes</span><span class="pf-sub">NORTH DAKOTA · ONE NIGHT</span></div></section>
+
+  <!-- ============ A1 · HOW A TORNADO GETS ITS NUMBER (116.68-379.16) ============ -->
+  <section class="clip still-wrap" id="c-a1-0" data-start="116.675" data-duration="4.425" data-track-index="1"><img id="kb-a1-0" src="media/mayflower-vilonia-2014/vilonia-2014-nws-aerial-damage.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a1-1" data-start="121.10" data-duration="4.96" data-track-index="1"><img id="kb-a1-1" src="media/rolling-fork-2023/rolling-fork-2023-usda-damage-2.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a1-2" data-start="126.06" data-duration="4.87" data-track-index="1"><img id="kb-a1-2" src="media/nexrad/nexrad-dome-ktlh.jpg" alt=""></section>
+  <div id="host-radar-beam" data-composition-id="g-radar-beam" data-composition-src="compositions/g-radar-beam.html" data-start="130.93" data-duration="15.199" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-ef-scale" data-composition-id="g-ef-scale" data-composition-src="compositions/g-ef-scale.html" data-start="146.129" data-duration="63.961" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <video id="v-a1-search" src="media/mayfield-2021/mayfield-2021-search-rescue-woods.mp4" data-start="166.12" data-duration="6.24" data-track-index="3" data-overlap-ok="cutaway over the scale" muted></video>
+  <div id="host-ef-scale-a1" data-composition-id="g-ef-scale-a1" data-composition-src="compositions/g-ef-scale-a1.html" data-start="210.09" data-duration="39.716" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-elreno" data-composition-id="g-elreno" data-composition-src="compositions/g-elreno.html" data-start="249.806" data-duration="43.994" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="c-a1-3" data-start="293.80" data-duration="5.687" data-track-index="1"><img id="kb-a1-3" src="media/el-reno-2013/el-reno-2013-ef3-survey-damage.jpg" alt=""></section>
+  <div id="host-split-a1" data-composition-id="g-split-a1" data-composition-src="compositions/g-split-a1.html" data-start="299.487" data-duration="11.626" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-master-map-a1" data-composition-id="g-master-map-a1" data-composition-src="compositions/g-master-map-a1.html" data-start="311.113" data-duration="55.197" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="c-a1-4" data-start="320.60" data-duration="4.80" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a1-4" src="media/enderlin-2025/enderlin-2025-sentinel2-tornado-scar.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a1-5" data-start="325.68" data-duration="5.32" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a1-5" src="media/enderlin-2025/maple-river-view-damaged-trees.jpg" alt=""></section>
+  <div id="host-drought-timeline-a1" data-composition-id="g-drought-timeline-a1" data-composition-src="compositions/g-drought-timeline-a1.html" data-start="366.31" data-duration="12.053" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- ============ A2 · TWELVE YEARS (379.16-668.26) ============ -->
+  <div id="host-then-now" data-composition-id="g-then-now" data-composition-src="compositions/g-then-now.html" data-start="379.163" data-duration="24.255" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-drought-timeline" data-composition-id="g-drought-timeline" data-composition-src="compositions/g-drought-timeline.html" data-start="403.418" data-duration="153.721" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="c-a2-0" data-start="411.104" data-duration="5.07" data-track-index="3" data-overlap-ok="cutaway over the timeline"><img id="kb-a2-0" src="media/greensburg-2007/greensburg-2007-fema-aerial-destroyed-town.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a2-1" data-start="422.40" data-duration="4.2" data-track-index="3" data-overlap-ok="cutaway over the timeline"><img id="kb-a2-1" src="media/parkersburg-2008/parkersburg-2008-nws-damage-1.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a2-2" data-start="442.754" data-duration="4.946" data-track-index="3" data-overlap-ok="cutaway over the timeline"><img id="kb-a2-2" src="media/apr27-2011-outbreak/hackleburg-2011-aerial-damage.jpg" alt=""></section>
+  <video id="v-a2-joplin" src="media/joplin-2011/joplin-2011-ng-aerial-damage.mp4" data-start="451.579" data-duration="7.4" data-track-index="3" data-overlap-ok="cutaway over the timeline" muted></video>
+  <section class="clip still-wrap" id="c-a2-3" data-start="461.698" data-duration="5.034" data-track-index="3" data-overlap-ok="cutaway over the timeline"><img id="kb-a2-3" src="media/el-reno-piedmont-2011/el-reno-piedmont-2011-destroyed-house.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a2-4" data-start="480.94" data-duration="5.714" data-track-index="3" data-overlap-ok="cutaway over the timeline"><img id="kb-a2-4" src="media/moore-2013/moore-2013-plaza-towers-aerial-dpla.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a2-5" data-start="486.654" data-duration="6.065" data-track-index="3" data-overlap-ok="cutaway over the timeline"><img id="kb-a2-5" src="media/moore-2013/moore-2013-plaza-towers-rescue-worker.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a2-6" data-start="494.007" data-duration="5.449" data-track-index="3" data-overlap-ok="cutaway over the timeline"><img id="kb-a2-6" src="media/moore-2013/moore-2013-neighborhood-damage-dod.jpg" alt=""></section>
+  <section class="clip" id="p-pf-moore" data-start="482.073" data-duration="2.563" data-track-index="5" data-overlap-ok="sits over a cutaway still; the timeline is covered"><div class="popfig wide" id="pf-moore"><span class="pf-big">May 20, 2013</span><span class="pf-sub">MOORE, OKLAHOMA</span></div></section>
+  <div id="host-ef4-cards" data-composition-id="g-ef4-cards" data-composition-src="compositions/g-ef4-cards.html" data-start="557.139" data-duration="48.409" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <video id="v-a2-mayfield" src="media/mayfield-2021/mayfield-2021-aerial-devastation.mp4" data-start="578.764" data-duration="8.31" data-track-index="3" data-overlap-ok="cutaway over the cards" muted></video>
+  <section class="clip still-wrap" id="c-a2-7" data-start="605.548" data-duration="5.006" data-track-index="1"><img id="kb-a2-7" src="media/rochelle-fairdale-2015/rochelle-fairdale-2015-security-cam-still.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a2-8" data-start="610.554" data-duration="5.5" data-track-index="1"><img id="kb-a2-8" src="media/rolling-fork-2023/rolling-fork-2023-usda-damage-3.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a2-9" data-start="616.054" data-duration="5.558" data-track-index="1"><img id="kb-a2-9" src="media/mayflower-vilonia-2014/vilonia-2014-fema-church-debris.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a2-10" data-start="621.612" data-duration="5.335" data-track-index="1"><img id="kb-a2-10" src="media/greensburg-2007/greensburg-2007-fema-destroyed-home.jpg" alt=""></section>
+  <div id="host-person-lyza" data-composition-id="g-person-lyza" data-composition-src="compositions/g-person-lyza.html" data-start="626.947" data-duration="29.183" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-master-map-a2" data-composition-id="g-master-map-a2" data-composition-src="compositions/g-master-map-a2.html" data-start="656.13" data-duration="11.982" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- ============ A3 · NINETEEN MINUTES (668.26-939.02) ============ -->
+  <div id="host-watch" data-composition-id="g-watch" data-composition-src="compositions/g-watch.html" data-start="668.912" data-duration="8.382" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <video id="v-a3-goes" src="media/goes-satellite/goes-severe-storms-dryline-westtexas.mp4" data-start="677.294" data-duration="8.98" data-track-index="1" muted></video>
+  <div id="host-discussion" data-composition-id="g-discussion" data-composition-src="compositions/g-discussion.html" data-start="686.274" data-duration="38.943" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <video id="v-a3-goes19" src="media/goes-satellite/goes19-dakota-tornadoes-june20-2025.mp4" data-start="725.217" data-duration="6.237" data-media-start="2" data-track-index="1" data-callback="the real Dakota supercells of that night under 'twenty four tornadoes, many from two supercells'" muted></video>
+  <div id="host-radar" data-composition-id="g-radar" data-composition-src="compositions/g-radar.html" data-start="731.454" data-duration="20.034" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-master-map-a3" data-composition-id="g-master-map-a3" data-composition-src="compositions/g-master-map-a3.html" data-start="751.488" data-duration="24.017" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-clock-a3" data-composition-id="g-clock-a3" data-composition-src="compositions/g-clock-a3.html" data-start="751.488" data-duration="16.786" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-radar-a3" data-composition-id="g-radar-a3" data-composition-src="compositions/g-radar-a3.html" data-start="775.505" data-duration="25.253" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-master-map-a3b" data-composition-id="g-master-map-a3b" data-composition-src="compositions/g-master-map-a3b.html" data-start="800.758" data-duration="120.463" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="c-a3-0" data-start="800.836" data-duration="6" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a3-0" src="media/enderlin-2025/enderlin-town-street-2.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a3-1" data-start="841.636" data-duration="5.5" data-track-index="3" data-overlap-ok="cutaway over the map" data-callback="the Maple River woods again, now named: the sandpapering beat"><img id="kb-a3-1" src="media/enderlin-2025/maple-river-view-damaged-trees.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a3-2" data-start="847.136" data-duration="5.7" data-track-index="3" data-overlap-ok="cutaway over the map" data-callback="the debarked trunk returns on the word sandpapering"><img id="kb-a3-2" src="media/enderlin-2025/maple-river-debarked-trunk-pale.jpg" alt=""></section>
+  <div id="host-clock-a3b" data-composition-id="g-clock-a3b" data-composition-src="compositions/g-clock-a3b.html" data-start="897.021" data-duration="5.415" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="c-a3-3" data-start="921.221" data-duration="5.415" data-track-index="1" data-callback="the survey photo returns as the June survey closes"><img id="kb-a3-3" src="media/enderlin-2025/maple-river-root-ball-displacement.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a3-4" data-start="926.636" data-duration="5.6" data-track-index="1"><img id="kb-a3-4" src="media/nexrad/nexrad-dome-langley-nws.jpg" alt=""></section>
+  <div id="host-person-jones" data-composition-id="g-person-jones" data-composition-src="compositions/g-person-jones.html" data-start="932.236" data-duration="7.222" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- ============ A4 · THE SECOND LOOK (938.22-1170.13) ============ -->
+  <div id="host-quote-jones" data-composition-id="g-quote-jones" data-composition-src="compositions/g-quote-jones.html" data-start="939.458" data-duration="18.809" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-ef-scale-a4" data-composition-id="g-ef-scale-a4" data-composition-src="compositions/g-ef-scale-a4.html" data-start="958.267" data-duration="26.927" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-master-map-a4" data-composition-id="g-master-map-a4" data-composition-src="compositions/g-master-map-a4.html" data-start="985.194" data-duration="54.541" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <video id="v-a4-rf" src="media/rolling-fork-2023/rolling-fork-2023-aerial-damage.mp4" data-start="997.736" data-duration="4.9" data-media-start="6" data-track-index="3" data-overlap-ok="cutaway over the map" data-callback="a government drone view of a debris field under 'an aerial view shows a whole debris field at once' (not the Rigsby video, which has no licence)" muted></video>
+  <section class="clip still-wrap" id="c-a4-0" data-start="1029.036" data-duration="5.2" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a4-0" src="media/elie-manitoba-2007/elie-2007-track-map.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-1" data-start="1034.236" data-duration="5.4" data-track-index="3" data-overlap-ok="cutaway over the map"><img id="kb-a4-1" src="media/elie-manitoba-2007/elie-2007-nexrad-radar-cxwl-1.png" alt=""></section>
+  <section class="clip" id="p-pf-elie" data-start="1032.336" data-duration="1.85" data-track-index="5" data-overlap-ok="sits over a cutaway still; the map is covered"><div class="popfig wide" id="pf-elie"><span class="pf-big">June 22, 2007</span><span class="pf-sub">ELIE, MANITOBA</span></div></section>
+  <section class="clip" id="p-pf-f5" data-start="1037.836" data-duration="1.75" data-track-index="5" data-overlap-ok="sits over a cutaway still; the map is covered"><div class="popfig" id="pf-f5"><span class="pf-big">F5</span><span class="pf-sub">RAISED · SEPTEMBER 2007</span></div></section>
+  <div id="host-mechanism" data-composition-id="g-mechanism" data-composition-src="compositions/g-mechanism.html" data-start="1039.735" data-duration="19.909" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-person-miller" data-composition-id="g-person-miller" data-composition-src="compositions/g-person-miller.html" data-start="1059.644" data-duration="22.926" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-mechanism-a4" data-composition-id="g-mechanism-a4" data-composition-src="compositions/g-mechanism-a4.html" data-start="1082.57" data-duration="52.761" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-split-a4" data-composition-id="g-split-a4" data-composition-src="compositions/g-split-a4.html" data-start="1135.331" data-duration="6.5" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-quote-miller" data-composition-id="g-quote-miller" data-composition-src="compositions/g-quote-miller.html" data-start="1141.831" data-duration="16.405" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <video id="v-a4-elevator" src="media/mood-broll/mood-grain-elevator-prairie.mp4" data-start="1158.236" data-duration="6.33" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-a4-2" data-start="1164.566" data-duration="6" data-track-index="1" data-callback="the ground scar returns as the new number is ready"><img id="kb-a4-2" src="media/enderlin-2025/enderlin-2025-sentinel2-tornado-scar.png" alt=""></section>
+
+  <!-- ============ A5 · OCTOBER 6 (1170.13-1328.92) ============ -->
+  <div id="host-stamp-a5" data-composition-id="g-stamp-a5" data-composition-src="compositions/g-stamp-a5.html" data-start="1171.366" data-duration="20.154" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-then-now-a5" data-composition-id="g-then-now-a5" data-composition-src="compositions/g-then-now-a5.html" data-start="1191.52" data-duration="21.226" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-scale" data-composition-id="g-scale" data-composition-src="compositions/g-scale.html" data-start="1212.746" data-duration="18.135" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-drought-timeline-a5" data-composition-id="g-drought-timeline-a5" data-composition-src="compositions/g-drought-timeline-a5.html" data-start="1230.881" data-duration="27.143" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="c-a5-0" data-start="1258.024" data-duration="3.096" data-track-index="1"><img id="kb-a5-0" src="media/fargo-1957/fargo-1957-tornado-archive-photo.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-1" data-start="1261.12" data-duration="5.339" data-track-index="1"><img id="kb-a5-1" src="media/fargo-1957/fargo-1957-funnel-ndsu-archive.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-2" data-start="1266.459" data-duration="5.701" data-track-index="1"><img id="kb-a5-2" src="media/fargo-1957/fargo-1957-fujita-path-map.png" alt=""></section>
+  <section class="clip" id="p-pf-fargo" data-start="1262.247" data-duration="2.759" data-track-index="5"><div class="popfig wide" id="pf-fargo"><span class="pf-big">June 20, 1957</span><span class="pf-sub">FARGO, NORTH DAKOTA</span></div></section>
+  <div id="host-split-a5" data-composition-id="g-split-a5" data-composition-src="compositions/g-split-a5.html" data-start="1272.16" data-duration="13.009" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="c-a5-3" data-start="1285.169" data-duration="5.667" data-track-index="1" data-callback="the town again: the number did not change what it lost"><img id="kb-a5-3" src="media/enderlin-2025/enderlin-town-street-1.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-4" data-start="1290.836" data-duration="5.8" data-track-index="1"><img id="kb-a5-4" src="media/greensburg-2007/greensburg-2007-fema-administrator-survey.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-5" data-start="1296.636" data-duration="4.852" data-track-index="1"><img id="kb-a5-5" src="media/joplin-2011/joplin-2011-fema-home-remains-one-year.jpg" alt=""></section>
+  <div id="host-then-now-a5b" data-composition-id="g-then-now-a5b" data-composition-src="compositions/g-then-now-a5b.html" data-start="1301.488" data-duration="11.264" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-ef4-cards-a5" data-composition-id="g-ef4-cards-a5" data-composition-src="compositions/g-ef4-cards-a5.html" data-start="1312.752" data-duration="17.4" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- ============ A6 · THE OPEN CASE (1346.06-1479.00) · opens on real footage after the CTA out-dip ============ -->
+  <video id="v-a6-search" src="media/mayfield-2021/mayfield-2021-search-rescue-woods.mp4" data-start="1347.291" data-duration="5.945" data-media-start="8" data-track-index="1" data-callback="teams on foot again, later in the same source, for the payoff" muted></video>
+  <div id="host-then-now-a6" data-composition-id="g-then-now-a6" data-composition-src="compositions/g-then-now-a6.html" data-start="1353.236" data-duration="11.755" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <video id="v-a6-rollingfork" src="media/rolling-fork-2023/rolling-fork-2023-aerial-damage.mp4" data-start="1364.991" data-duration="9.873" data-track-index="1" data-callback="Rolling Fork itself, named in the line, from the start of the same drone source" muted></video>
+  <div id="host-person-asce" data-composition-id="g-person-asce" data-composition-src="compositions/g-person-asce.html" data-start="1374.864" data-duration="17.636" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-mechanism-a6" data-composition-id="g-mechanism-a6" data-composition-src="compositions/g-mechanism-a6.html" data-start="1392.5" data-duration="15.591" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="c-a6-0" data-start="1408.091" data-duration="5.545" data-track-index="1"><img id="kb-a6-0" src="media/enid-2026/enid-2026-nws-home-destruction.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a6-1" data-start="1413.636" data-duration="5" data-track-index="1"><img id="kb-a6-1" src="media/enid-2026/enid-2026-radar-kvnx.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a6-2" data-start="1418.636" data-duration="5.372" data-track-index="1"><img id="kb-a6-2" src="media/enid-2026/enid-2026-nws-neighborhood-damage.jpg" alt=""></section>
+  <section class="clip" id="p-pf-enid" data-start="1408.336" data-duration="2.6" data-track-index="5"><div class="popfig" id="pf-enid"><span class="pf-big">Enid, 2026</span><span class="pf-sub">OKLAHOMA</span></div></section>
+  <div id="host-drought-timeline-a6" data-composition-id="g-drought-timeline-a6" data-composition-src="compositions/g-drought-timeline-a6.html" data-start="1424.008" data-duration="13.808" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-mechanism-a6b" data-composition-id="g-mechanism-a6b" data-composition-src="compositions/g-mechanism-a6b.html" data-start="1437.816" data-duration="17.7" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-radar-warning" data-composition-id="g-radar-warning" data-composition-src="compositions/g-radar-warning.html" data-start="1455.516" data-duration="6.72" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <video id="v-a6-joplin" src="media/joplin-2011/joplin-2011-ng-aerial-damage.mp4" data-start="1462.236" data-duration="4.26" data-media-start="12" data-track-index="1" data-callback="a later stretch of the Joplin aerial under 'a number in a news story days later'" muted></video>
+  <section class="clip still-wrap" id="c-a6-3" data-start="1466.496" data-duration="5.555" data-track-index="1" data-callback="the survey photo closes the surveyors' line: weeks of work on foot"><img id="kb-a6-3" src="media/enderlin-2025/maple-river-root-ball-displacement.jpg" alt=""></section>
+  <video id="v-a6-prairie" src="media/mood-broll/mood-prairie-wheat-field-dusk.mp4" data-start="1472.051" data-duration="8.182" data-track-index="1" muted></video>
+
+  <!-- ============ Z · CLOSE (1479.00-1512.68) ============ -->
+  <div id="host-master-map-z1" data-composition-id="g-master-map-z1" data-composition-src="compositions/g-master-map-z1.html" data-start="1480.233" data-duration="30.7" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-outro" data-composition-id="g-outro" data-composition-src="compositions/g-outro.html" data-start="1510.933" data-duration="16.864" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <div id="vignette"></div>
+  <canvas id="grain" width="480" height="270"></canvas>
+</div>
+
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 1512.677;
+  function kb(sel, at, dur, s0, s1, x0, x1, y0, y1) {
+    tl.fromTo(sel, { scale: s0, x: x0, y: y0, transformOrigin: "center" }, { scale: s1, x: x1, y: y1, duration: dur, ease: "none" }, at);
+  }
+  function pop(sel, at, hold) {
+    tl.fromTo(sel, { scale: 2.2, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.35, ease: "power4.in" }, at);
+    tl.to(sel, { autoAlpha: 0, y: -26, duration: 0.28, ease: "power2.in" }, at + hold - 0.28);
+  }
+  // Ken Burns, four alternating moves; stills 3-6 s with motion, never a frozen frame
+  const KB = [[1.0, 1.08, 0, -14, 0, -8], [1.08, 1.0, 12, 0, 6, 0], [1.0, 1.07, 0, 12, 0, -6], [1.06, 1.0, -10, 0, 6, 0]];
+  const stills = [
+    ["#kb-h-1", 11.50, 5.35], ["#kb-h-2", 16.85, 3.5],
+    ["#kb-i-0", 32.90, 4.7], ["#kb-i-1", 73.503, 5.397], ["#kb-i-2", 78.90, 5.70], ["#kb-i-3", 108.821, 3.579], ["#kb-i-4", 112.40, 3.575],
+    ["#kb-a1-0", 116.675, 4.425], ["#kb-a1-1", 121.10, 4.96], ["#kb-a1-2", 126.06, 4.87], ["#kb-a1-3", 293.80, 5.687],
+    ["#kb-a1-4", 320.60, 4.80], ["#kb-a1-5", 325.68, 5.32],
+    ["#kb-a2-0", 411.20, 5.2], ["#kb-a2-1", 422.40, 4.2], ["#kb-a2-2", 442.90, 4.8], ["#kb-a2-3", 461.00, 4.9], ["#kb-a2-4", 480.30, 5.8],
+    ["#kb-a2-5", 486.10, 5.8], ["#kb-a2-6", 493.30, 5.5], ["#kb-a2-7", 604.894, 5.006], ["#kb-a2-8", 609.90, 5.50], ["#kb-a2-9", 615.40, 5.558],
+    ["#kb-a2-10", 620.958, 5.335],
+    ["#kb-a3-0", 799.60, 6.0], ["#kb-a3-1", 840.40, 5.5], ["#kb-a3-2", 845.90, 5.7], ["#kb-a3-3", 919.985, 5.415], ["#kb-a3-4", 925.40, 5.60],
+    ["#kb-a4-0", 1027.80, 5.2], ["#kb-a4-1", 1033.00, 5.4], ["#kb-a4-2", 1163.33, 6.0],
+    ["#kb-a5-0", 1256.788, 3.102], ["#kb-a5-1", 1259.89, 5.51], ["#kb-a5-2", 1265.40, 5.524], ["#kb-a5-3", 1283.933, 5.667],
+    ["#kb-a5-4", 1289.60, 5.80], ["#kb-a5-5", 1295.40, 4.852],
+    ["#kb-a6-0", 1406.855, 5.545], ["#kb-a6-1", 1412.40, 5.0], ["#kb-a6-2", 1417.40, 5.372], ["#kb-a6-3", 1465.26, 5.555]
+  ];
+  stills.forEach(([sel, at, dur], i) => { const m = KB[i % 4]; kb(sel, at, dur, m[0], m[1], m[2], m[3], m[4], m[5]); });
+
+  /* ---- popfigs: the figure lands as the voice says it (never over a map comp; the comp rails carry those) ---- */
+  pop("#pf-2013", 11.70, 2.6);     // "In 2013" 11.62
+  pop("#pf-ef3", 80.10, 3.8);      // "an EF3" 80.22 ... "about a hundred and sixty miles an hour" 82.60-84.30
+  pop("#pf-24", 89.22, 2.5);       // "24 tornadoes" 89.28
+  pop("#pf-moore", 481.45, 2.6);   // "May 20th, 2013" 481.49
+  pop("#pf-elie", 1031.10, 1.85);  // "June 22, 2007" 1031.18
+  pop("#pf-f5", 1036.60, 1.75);    // "raised to F5" 1036.72
+  pop("#pf-fargo", 1261.10, 2.8);  // "June 20th, 1957" 1261.13
+  pop("#pf-enid", 1407.10, 2.6);   // "In 2026, a tornado at Enid" 1407.15 / 1409.34
+
+  filmLayer(tl, DUR);
+  window.__timelines["ep-enderlin-2025"] = tl;
+})();
+</script>
+</body>
+</html>

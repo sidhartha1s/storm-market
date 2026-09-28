@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-radar-a3 (B1): the Grand Forks radar (KMVX) on the Enderlin tornado. Host 774.269 -> 799.522 (25.253 s, track 2).
+     Panels: self-made re-plots of NOAA NEXRAD Level II KMVX20250621_040803_V06 (research/b1-maps/nexrad_plots.py):
+     0.5 deg base velocity (sweep start 04:08:21 UTC, locally dealiased) and correlation coefficient (04:08:03 UTC).
+     Window 20 x 15 km centred 46.603 N 97.563 W, where the velocity couplet and the low-CC debris signature sit. -->
+<template>
+<style>
+  #g-radar-a3-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 50%, #0b1016 0%, #030507 78%); }
+  .ra3-eb { position:absolute; left:96px; top:74px; font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
+  .ra3-hl { position:absolute; left:96px; top:108px; font-family:'Arial Black', Arial, sans-serif; font-size:52px; color:#f2f5f8; white-space:nowrap; }
+  .ra3-panel { position:absolute; top:230px; width:840px; height:630px; border-radius:18px; overflow:hidden; background:#04070c;
+    border:1px solid rgba(255,255,255,0.14); }
+  .ra3-img { position:absolute; left:0; top:0; width:840px; height:630px; }
+  .ra3-svg { position:absolute; left:0; top:0; width:840px; height:630px; }
+  .ra3-plab { position:absolute; left:22px; top:18px; font-size:22px; font-weight:700; letter-spacing:4px; color:#dfe7ee; text-transform:uppercase; white-space:nowrap;
+    padding:8px 14px; border-radius:12px; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); }
+  .ra3-mlab { font-family:Arial, sans-serif; font-weight:700; font-size:40px; fill:#f2f5f8; paint-order:stroke; stroke:#04070c; stroke-width:7px; stroke-linejoin:round; }
+  .ra3-town { font-family:Arial, sans-serif; font-weight:700; font-size:22px; fill:#dfe7ee; paint-order:stroke; stroke:#04070c; stroke-width:5px; }
+  .ra3-leg { position:absolute; bottom:18px; font-size:22px; font-weight:700; color:#f2f5f8; white-space:nowrap; padding:8px 14px 8px 44px; border-radius:12px;
+    background:rgba(10,16,24,0.62); }
+  .ra3-chip { position:absolute; left:12px; top:10px; width:22px; height:22px; border-radius:5px; }
+  .ra3-stamp { position:absolute; left:96px; top:886px; font-size:22px; font-weight:700; letter-spacing:3px; color:#c8d3e0; white-space:nowrap; }
+  .ra3-inset { position:absolute; left:560px; top:640px; width:800px; height:300px; box-sizing:border-box; border-radius:28px;
+    background:rgba(10,16,24,0.72); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); }
+  .ra3-ilab { position:absolute; left:40px; top:28px; font-size:30px; font-weight:700; color:#e74c3c; white-space:nowrap; }
+</style>
+<div id="g-radar-a3-root" data-composition-id="g-radar-a3" data-width="1920" data-height="1080" data-duration="25.253">
+  <div class="ra3-eb" id="g-radar-a3-eb">KMVX · NEXRAD</div>
+  <div class="ra3-hl" id="g-radar-a3-hl">Grand Forks Radar</div>
+  <div class="ra3-panel" id="g-radar-a3-p1" style="left:96px">
+    <div class="ra3-img" id="g-radar-a3-vel"><img class="ra3-img" src="media/nexrad/kmvx-20250621-0408utc-vel.png" alt=""></div>
+    <svg class="ra3-svg" viewBox="0 0 840 630">
+      <circle cx="296.2" cy="221.5" r="9" fill="#dfe7ee"/><text class="ra3-town" x="282" y="206" text-anchor="end">Enderlin</text>
+      <circle id="g-radar-a3-ring1" cx="420" cy="315" r="62" fill="none" stroke="#f2f5f8" stroke-width="5"/>
+      <text id="g-radar-a3-t-rot" class="ra3-mlab" x="500" y="410">Tight Rotation</text>
+      <path id="g-radar-a3-sweep1" d="M420,-1000 L300,700 L540,700 Z" fill="#f2f5f8" fill-opacity="0.07"/>
+    </svg>
+    <div class="ra3-plab" id="g-radar-a3-pl1">Velocity</div>
+    <div class="ra3-leg" id="g-radar-a3-lg1" style="left:22px"><div class="ra3-chip" style="background:#14be50"></div>Toward the Radar</div>
+    <div class="ra3-leg" id="g-radar-a3-lg2" style="left:340px"><div class="ra3-chip" style="background:#d7232d"></div>Away</div>
+  </div>
+  <div class="ra3-panel" id="g-radar-a3-p2" style="left:984px">
+    <div class="ra3-img" id="g-radar-a3-cc"><img class="ra3-img" src="media/nexrad/kmvx-20250621-0408utc-cc.png" alt=""></div>
+    <svg class="ra3-svg" viewBox="0 0 840 630">
+      <circle cx="296.2" cy="221.5" r="9" fill="#dfe7ee"/><text class="ra3-town" x="282" y="206" text-anchor="end">Enderlin</text>
+      <circle id="g-radar-a3-ring2" cx="420" cy="318" r="66" fill="none" stroke="#f5d98b" stroke-width="5"/>
+      <text id="g-radar-a3-t-deb" class="ra3-mlab" x="500" y="418" fill="#f5d98b">Debris Signature</text>
+      <path id="g-radar-a3-sweep2" d="M420,-1000 L300,700 L540,700 Z" fill="#f2f5f8" fill-opacity="0.07"/>
+    </svg>
+    <div class="ra3-plab" id="g-radar-a3-pl2">Correlation Coefficient</div>
+    <div class="ra3-leg" id="g-radar-a3-lg3" style="left:22px"><div class="ra3-chip" style="background:#f5d98b"></div>Not Rain: Lofted Debris</div>
+  </div>
+  <div class="ra3-stamp" id="g-radar-a3-stamp">0.5° Scan · 04:08 UTC · 11:08 PM CDT · June 20, 2025</div>
+  <div class="ra3-inset" id="g-radar-a3-inset">
+    <div class="ra3-ilab" id="g-radar-a3-ilab">Wind at Ground Level Not Measured</div>
+    <svg style="position:absolute; left:0; top:0; width:800px; height:300px" viewBox="0 0 800 300">
+      <path d="M40,250 Q400,210 760,290" fill="none" stroke="#5a768f" stroke-width="4"/>
+      <circle cx="70" cy="236" r="14" fill="#dfe7ee"/>
+      <path id="g-radar-a3-ibeam" d="M80,230 L760,120 L760,180 Z" fill="#7fb2e5" fill-opacity="0.35"/>
+      <path d="M640,196 L640,262" stroke="#e74c3c" stroke-width="4" stroke-dasharray="8 6"/>
+      <path d="M622,262 L658,262" stroke="#e74c3c" stroke-width="4"/>
+    </svg>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-radar-a3", P = "#g-radar-a3-";
+  /* cues: audio/a3-s9.words.json + a3-s10.words.json, episode s minus host start 774.269 */
+  const CUES = {
+    radar: 1.580,     /* radar gave the clearest view @777.086 */
+    gf: 4.700,        /* Grand Forks radar @780.206 */
+    toward: 6.420,    /* rushing toward the dish @781.926 */
+    away: 8.100,      /* away @783.606 */
+    side: 8.940,      /* side by side @784.446 */
+    tight: 11.680,    /* tight rotation @787.186 */
+    debris: 14.460,   /* debris signature @789.966 */
+    rain: 18.020,     /* apart from rain @793.526 */
+    nothow: 22.710    /* not how hard @798.216 */
+  };
+  const DUR = 25.253;
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + "eb", P + "hl", P + "p2", P + "lg1", P + "lg2", P + "lg3", P + "ring1", P + "ring2", P + "t-rot", P + "t-deb", P + "inset", P + "stamp"], { autoAlpha: 0 }, 0);
+
+  /* whole window: the radar sweep crosses the panels (one pass each ~4.2 s), images drift */
+  tl.fromTo([P + "sweep1", P + "sweep2"], { rotation: -26, svgOrigin: "420 -1000" }, { rotation: 26, duration: 4.2, ease: "none", repeat: 5 }, 0);
+  tl.fromTo(P + "vel", { scale: 1.0, transformOrigin: "50% 50%" }, { scale: 1.08, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "cc", { scale: 1.0, transformOrigin: "50% 50%" }, { scale: 1.06, duration: 10.8, ease: "none" }, 14.45);
+
+  /* velocity panel */
+  tl.fromTo(P + "p1", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.15);
+  tl.fromTo(P + "stamp", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 0.6);
+  tl.fromTo(P + "eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.radar);
+  tl.fromTo(P + "hl", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.gf);
+  tl.fromTo(P + "lg1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.toward);
+  tl.fromTo(P + "lg2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.away);
+  tl.fromTo(P + "ring1", { autoAlpha: 0, scale: 1.8, svgOrigin: "420 315" }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power3.out" }, CUES.side);
+  tl.fromTo(P + "ring1", { attr: { "stroke-width": 5 } }, { attr: { "stroke-width": 9 }, duration: 0.6, ease: "sine.inOut", repeat: 11, yoyo: true }, 9.5);
+  tl.fromTo(P + "t-rot", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.tight);
+
+  /* correlation coefficient panel */
+  tl.fromTo(P + "p2", { autoAlpha: 0, x: 120 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, CUES.debris - 0.3);
+  tl.fromTo(P + "ring2", { autoAlpha: 0, scale: 1.8, svgOrigin: "420 318" }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power3.out" }, CUES.debris);
+  tl.fromTo(P + "t-deb", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.debris + 0.3);
+  tl.fromTo(P + "ring2", { attr: { "stroke-width": 5 } }, { attr: { "stroke-width": 9 }, duration: 0.6, ease: "sine.inOut", repeat: 9, yoyo: true }, 15.2);
+  tl.fromTo(P + "lg3", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.rain);
+
+  /* the beam over the ground returns: it cannot measure the ground wind */
+  tl.to([P + "t-rot", P + "t-deb", P + "lg1", P + "lg2", P + "lg3"], { autoAlpha: 0, duration: 0.35 }, CUES.nothow - 0.4);
+  tl.fromTo(P + "inset", { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, CUES.nothow);
+  tl.fromTo(P + "ibeam", { scaleX: 0, svgOrigin: "80 230" }, { scaleX: 1, duration: 0.8, ease: "power2.out" }, CUES.nothow + 0.2);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
