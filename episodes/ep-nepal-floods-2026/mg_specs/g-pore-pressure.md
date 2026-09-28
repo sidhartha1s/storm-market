@@ -53,3 +53,12 @@ Cues (s, local @175wpm):
 - weight bar label pulses, grain box shears/slips @18.86 (`/* CUE "A soaked slope doesn't need the biggest storm" @est 18.86 */`)
 - exit @27.0 (both halves slide out, power3.in)
 Declared duration 29.5 s (narration ~28.11 s + ~1.4 s tail).
+
+## QC fix log (self-audit, headless screenshot at t=12s)
+1. `#pp-grains` (the parent `<g>`) was set `autoAlpha:0` at t=0 and never released — every grain circle
+   was individually revealed but invisible inside a hidden parent. Fix: removed the parent from the
+   initial hide list; each grain circle now carries its own `autoAlpha:0` set at t=0 instead.
+2. `#pp-water` was authored `x=96 y=940 width=924 height=680` — a rect starting AT the box's bottom edge
+   and extending 680px further DOWN (off-frame, y940-1620), so the "rising water" scaleY tween (anchored
+   at the bottom via svgOrigin) had nothing visible to grow. Fix: rect now `y=260` (box top) `height=680`,
+   so it fills the box exactly and scaleY from the bottom-anchored svgOrigin reveals it correctly.
