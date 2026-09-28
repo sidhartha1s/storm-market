@@ -146,7 +146,7 @@
   "name": "stat-timeline",
   "kind": "exemplar",
   "title": "Chronology Rail Strip",
-  "description": "Horizontal chronology strip: title, a two-endpoint-year growing progress rail stalling on a percent readout, then sequential narration-order text beats. Closest available analog in the repo for a year-axis chronology strip; no true stepped-label multi-year timeline comp exists to extract from.",
+  "description": "Horizontal chronology strip: title, a two-endpoint-year growing progress rail stalling on a percent readout, then sequential narration-order text beats. Use this for a simple two-endpoint percent-fill rail; for a real multi-year event-by-event chronology with stacked per-year blocks and a card carousel, use event-timeline.html instead (added ep-enderlin-2025).",
   "tags": [
    "timeline",
    "chronology",
