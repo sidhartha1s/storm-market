@@ -149,7 +149,7 @@ platform APIs) is a week-2 decision once the per-platform numbers exist. Not bui
 
 | seat | who | owns |
 |---|---|---|
-| shorts-writer | Sonnet | from a parent `edit_script.md`, writes the S1 + S2 scripts inside the word budget, humanise pass, homograph respell; S3 from a doc chapter with the person's name and date verified against the doc's sources |
+| shorts-writer | Sonnet | from a parent `edit_script.md`, writes the S1 + S2 scripts inside the word budget, humanise pass, probe homographs before respelling (`references/homographs.md`); S3 from a doc chapter with the person's name and date verified against the doc's sources |
 | shorts-radar | Sonnet, weekly | `python3 scripts/shorts_scan.py` + the model channels' new uploads (Global Buzz Tv, Past Vault, 4Facts, DiddyKnowThat, RB Today Weather); reports hit-rate deltas and new formats, never adopts one |
 | director | Fable | template build, assembly, gates, renders, uploads, per-format kill calls |
 

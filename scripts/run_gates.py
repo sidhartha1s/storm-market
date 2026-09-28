@@ -31,6 +31,7 @@ GATES = [
     ("lint_timeline.py",    [sys.executable, str(scripts / "lint_timeline.py"), str(ep)], None),
     ("narration_picture_check.py", [sys.executable, str(scripts / "narration_picture_check.py"), str(ep)], None),
     ("flag_words.py",       [sys.executable, str(scripts / "flag_words.py"), str(ep)], None),
+    ("homograph_scan.py",   [sys.executable, str(scripts / "homograph_scan.py"), str(ep)], None),
     ("beat_density.py",     [sys.executable, str(scripts / "beat_density.py"), str(ep)], None),
     ("media_budget.py",     [sys.executable, str(scripts / "media_budget.py"), str(ep)], None),
     ("audio_levels.py",     [sys.executable, str(scripts / "audio_levels.py"), str(ep)], None),

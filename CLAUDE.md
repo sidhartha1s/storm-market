@@ -13,6 +13,7 @@ files disagree, fix it in the same PR and say which one won.
 | Script method, hook wording, humanise pass, scaling | `references/script-os.md`, `script-framework.md`, `script-scaling.md`, `humanise-rules.md` |
 | The one condensed brief a script writer opens (wins for writers) | `references/script-quickref.md` |
 | Violence/death words that trip YouTube's transcript scan, with alternatives; gate `scripts/flag_words.py episodes/<slug>` | `references/flag-words.md` |
+| Heteronyms (word, both senses, a hint) that pocket-TTS can mispronounce by guessing the wrong sense; gate `scripts/homograph_scan.py episodes/<slug>` (WARN-only, reports for a probe, never fails) | `references/homographs.md` |
 | Titles and thumbnails | `references/packaging-rules.md` |
 | News-lane rulebook, templates, clip pools | `references/mini-storms/FORMAT.md`, `library/mini-storms/`, `library/mini-storms/<event>/` (pools are reused across angles) |
 | Shorts spec, slugs `sh-<parent>-<n>`, weekly scan | `references/shorts/PLAN.md`, `references/shorts/competitors-2026-09-15.md`, templates `library/shorts/` (not created yet), `scripts/shorts_scan.py`, gate `node scripts/shorts_lint.mjs episodes/<slug>` |
@@ -78,8 +79,8 @@ Script method and hook wording live in `references/script-os.md` and `script-fra
   pace and the real non-voice seconds. It fails outside target +/- 1 min; a script is not locked while it fails.
 - Tempo per lane lives in `config.yaml channel.tempo`; `tts_episode.py` applies it. Order: TTS, tempo, re-transcribe, THEN time graphics. `sweep_episode.py` fails a words.json or `data-duration` that runs past its wav.
 - TTS-safe text: spell out ALL dates, times and numbers, no paired dashes, sentences under 24 words, flowing connective sentences.
-- Homographs (read, lead, live, wind, tear, bass, close, present, record): respell the TTS copy phonetically ("reed"),
-  keep the script's wording, and listen to every such line once after TTS.
+- Homographs: list, senses and the probe-before-respelling rule live in `references/homographs.md`, gated by
+  `scripts/homograph_scan.py` (in `run_gates.py`).
 
 ## Footage rules (claim-proof stack, never violate)
 - Spine: US government public domain (NOAA, NWS, NHC, FEMA, USGS, Coast Guard), Pexels and Pixabay, self-made radar and

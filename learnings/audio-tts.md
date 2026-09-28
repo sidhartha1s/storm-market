@@ -2,7 +2,7 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
-## 2026-09-27 - ep-enderlin: the "lyvz" respelling voiced "livs"; plain "lives" is correct
+## 2026-09-27 - ep-enderlin: the "lyvz" respelling voiced "livs"; plain "lives" is correct; gate shipped 2026-09-28
 
 - **Owner:** "lives" (lost their lives) came out /lɪvz/, must be /laɪvz/. The TTS copy had respelled it "lyvz".
 - **Measured** (pocket-TTS + atempo 1.10, "Three people lost their ___ that night.", Praat F1 of the vowel after /l/):
@@ -14,6 +14,16 @@ Newest first. New entries go at the top, under this line. Superseded lines point
   (/aɪ/ opens to F1 about 650-850 Hz for 150-250 ms, /ɪ/ stays under about 500 Hz), not by guessing. Pocket-TTS looks
   deterministic (z1-s1 re-record: silence timings identical to the microsecond up to the changed word), so a line
   probably cannot be re-rolled for a shorter read; 3 of 9 re-records ran 5.9-9.2 % long and need index.html retiming.
+- **Gate (2026-09-28):** `references/homographs.md` is the single home for the word list (both senses + a hint,
+  scoped to the ones actually known to go wrong in TTS narration on this channel); `scripts/homograph_scan.py`
+  reads it, scans an episode's narration through the same `tts_episode.parse_segments` every other narration tool
+  uses, and prints one line per flagged word (occurrence count + its first sentence) so the builder probes it
+  before the render. WARN, never FAIL, matching how `flag_words.py` treats a soft hit — whether an occurrence
+  actually needs a respell depends on the sense used in that sentence, which a script cannot judge, so hard-failing
+  every hit would block a render on lines that are already correct. Wired into `run_gates.py` right after
+  `flag_words.py`. The rule above is what the gate exists to enforce for every future homograph, not just "lives":
+  a blind respelling caused this defect, the plain word was right, and a respelling is picked by measurement, never
+  by guess.
 
 ## 2026-09-22 - ep-1974 shipped 17:30 against a 22:00 target: three guesses stacked
 
@@ -67,10 +77,10 @@ Newest first. New entries go at the top, under this line. Superseded lines point
 - **Pharaoh voice ran 158 wpm native on short news sentences** (1,426 words → 9.0 min). No atempo needed
   in this lane; the 129 wpm figure is a documentary-sentence number. Measure, then decide.
 - **Homographs are a TTS trap (owner 2026-09-09, "AI-slop radar"):** pocket-TTS read "I read all the comments" as
-  "I red" (past tense). Before TTS, scan every interaction line for read / lead / live / wind / tear / bass /
-  close / present / record and respell the narration copy phonetically ("reed") while the script keeps the
-  owner's exact wording. Listen to every interaction beat once after TTS; a wrong-tense homograph reads as AI
-  slop to the audience. Owner's phrases are verbatim — never paraphrase a line he wrote.
+  "I red" (past tense). (Superseded 2026-09-28: "scan and always respell" was itself incomplete — a respelling
+  picked without measuring can be as wrong as the plain word, see the 2026-09-28 entry above. Current home:
+  `references/homographs.md` + `scripts/homograph_scan.py`.) Owner's phrases are verbatim — never paraphrase a
+  line he wrote.
 - **The TTS driver skips a segment whose wav exists** (`tts_episode.py --only` reuses the old file silently): delete
   the wav AND its words.json before any re-synthesis, or the "fix" never happens (Krakatau v2 c2/c7, 2026-09-10).
 - **CTA first syllable clipped + post-CTA black too long (owner 2026-09-10):** CTA start was off the 30 fps grid and
