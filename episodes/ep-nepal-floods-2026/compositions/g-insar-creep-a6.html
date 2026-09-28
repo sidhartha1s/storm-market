@@ -51,9 +51,8 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"ramp", { scaleX: 1.02, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 4.8);
 
   /* 8.0: it only works when someone processes the images in time — crossfade to the empty state */
-  tl.to([P+"cnt", P+"sub"], { autoAlpha: 0, duration: 0.4 }, 8.0);
-  tl.to(P+"title", { text: {} }, 8.0); /* placeholder position marker for the label swap below */
-  tl.call(() => { document.getElementById("gia6-title").textContent = "Kali Gandaki · Sept"; }, null, 8.0);
+  tl.to([P+"cnt", P+"sub", P+"title-1"], { autoAlpha: 0, duration: 0.4 }, 8.0);
+  tl.to(P+"title-2", { autoAlpha: 1, duration: 0.4 }, 8.3);
   tl.to(P+"ramp", { scaleX: 0, duration: 0.5, ease: "power2.in" }, 8.0);
   tl.fromTo(P+"q", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 8.3);
 
