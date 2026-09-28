@@ -48,45 +48,48 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const DUR = 17.5;
+  const DUR = 19.735;
   tl.set(["#sc-r1", "#sc-r2", "#sc-r3", "#sc-humanlab", "#sc-snowlab"], { autoAlpha: 0 }, 0);
   tl.set(["#sc-human", "#sc-snow"], { scaleY: 0 }, 0);
   tl.set("#sc-base", { scaleX: 0, transformOrigin: "left center" }, 0);
 
-  /* ambient: card entrance + a slow beam sweep */
+  /* ambient: card entrance + a slow breathing float for the whole window (host outlasts the built beats) */
   tl.fromTo("#sc-card", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0.0);
+  tl.fromTo("#sc-card", { y: 0 }, { y: -6, duration: 1.5, ease: "sine.inOut", yoyo: true, repeat: 13 }, 0.0);
 
-  /* SNOW ABOUT FIFTEEN FEET DEEP @7.20: diagram reveals first, snow bar grows ahead of the human bar */
+  /* diagram scale reference builds early (unspoken, static): base/human/6FT label */
   tl.to("#sc-base", { scaleX: 1, duration: 0.4, ease: "power3.out" }, 0.5);
   tl.to("#sc-human", { scaleY: 1, duration: 0.5, ease: "power3.out" }, 0.8);
   tl.fromTo("#sc-humanlab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 1.2);
-  tl.to("#sc-snow", { scaleY: 1, duration: 1.6, ease: "power3.out" }, 1.0);
-  tl.fromTo("#sc-snowlab", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.6);
 
-  /* SIXTEEN WORKERS HAD BEEN AT THE CAMP @8.91 */
-  tl.fromTo("#sc-r1", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.6);
+  /* "dug through snow about 15 feet deep." grows to land on "deep." @8.18 */
+  tl.to("#sc-snow", { scaleY: 1, duration: 1.6, ease: "power3.out" }, 6.58);
+  tl.fromTo("#sc-snowlab", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.3);
+
+  /* "16 workers had been at the camp." 16 @9.16 */
+  tl.fromTo("#sc-r1", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.01);
   const c1 = { v: 0 };
   tl.to(c1, { v: 16, duration: 1.1, ease: "power3.out", onUpdate: function () {
     const e = document.getElementById("sc-v1"); if (e) e.textContent = Math.round(c1.v);
-  } }, 7.6);
+  } }, 9.01);
 
-  /* FOUND FOUR @13.71 */
-  tl.fromTo("#sc-r2", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 13.2);
+  /* "the searchers had found 4," 4 @13.66 */
+  tl.fromTo("#sc-r2", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 13.51);
   const c2 = { v: 0 };
   tl.to(c2, { v: 4, duration: 0.7, ease: "power3.out", onUpdate: function () {
     const e = document.getElementById("sc-v2"); if (e) e.textContent = Math.round(c2.v);
-  } }, 13.2);
+  } }, 13.51);
 
-  /* TWELVE WERE STILL MISSING @14.74 */
-  tl.fromTo("#sc-r3", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 14.3);
+  /* "and 12 were still missing." 12 @14.68 */
+  tl.fromTo("#sc-r3", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 14.53);
   const c3 = { v: 0 };
   tl.to(c3, { v: 12, duration: 0.9, ease: "power3.out", onUpdate: function () {
     const e = document.getElementById("sc-v3"); if (e) e.textContent = Math.round(c3.v);
-  } }, 14.3);
-  tl.to("#sc-v3", { scale: 1.06, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 15.3);
+  } }, 14.53);
+  tl.to("#sc-v3", { scale: 1.06, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 15.53);
 
-  /* exit */
-  tl.to("#sc-card", { x: -700, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  /* exit 19.0, finishes 19.6 (D-0.1 = 19.635); holds through "rescuers said survival was very unlikely." */
+  tl.to("#sc-card", { x: -700, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 19.0);
   window.__timelines["g-search-card"] = tl;
 })();
 </script>
