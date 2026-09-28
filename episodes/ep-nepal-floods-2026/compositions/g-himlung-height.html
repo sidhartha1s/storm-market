@@ -54,8 +54,9 @@ window.__timelines = window.__timelines || {};
   tl.set("#hh-base", { scaleX: 0, transformOrigin: "left center" }, 0);
   tl.set("#hh-bracket", { scaleY: 0, transformOrigin: "top center" }, 0);
 
-  /* ambient: gentle stage drift for the whole (now much longer) window */
-  tl.fromTo("#hh-stage", { y: 0 }, { y: -8, duration: DUR, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+  /* ambient: gentle stage drift for the whole (now much longer) window (yoyo+repeat:1 doubles duration,
+     so the half-cycle is DUR/2 to land the full down-up cycle by DUR, not 2*DUR) */
+  tl.fromTo("#hh-stage", { y: 0 }, { y: -8, duration: DUR / 2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
 
   tl.to("#hh-base", { scaleX: 1, duration: 0.5, ease: "power3.out" }, 0.2);
   tl.fromTo("#hh-baselab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 0.5);
