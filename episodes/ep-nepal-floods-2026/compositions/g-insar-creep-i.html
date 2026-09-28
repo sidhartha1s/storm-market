@@ -33,30 +33,33 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-insar-creep-i", P = "#gci-";
-  const DUR = 9;
+  const DUR = 10.842;
   const tl = gsap.timeline({ paused: true });
   tl.set(P+"card", { autoAlpha: 0, scale: 1.12 }, 0);
   tl.set([P+"eb", P+"lab"], { autoAlpha: 0 }, 0);
   tl.set(P+"swath", { scaleX: 0, transformOrigin: "left center" }, 0);
 
-  /* 0.0: card pops in with the whole window; a faint idle pulse keeps it alive before the reveal */
-  tl.fromTo(P+"card", { scale: 1.12 }, { scale: 1, duration: 0.4, ease: "power3.out" }, 0.3);
-  tl.to(P+"card", { autoAlpha: 1, duration: 0.3 }, 0.3);
-  tl.fromTo(P+"eb", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.4);
-  tl.fromTo(P+"lab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.6);
-  tl.to(P+"card", { y: -6, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 2 }, 0.5);
+  /* card pops in ~0.15 before "In" (0.85); a faint idle pulse keeps it alive before the reveal */
+  tl.fromTo(P+"card", { scale: 1.12 }, { scale: 1, duration: 0.4, ease: "power3.out" }, 0.7);
+  tl.to(P+"card", { autoAlpha: 1, duration: 0.3 }, 0.7);
+  /* eyebrow lands on "satellite" (1.95) */
+  tl.fromTo(P+"eb", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1.8);
+  /* label lands on "Langtang" (3.21) */
+  tl.fromTo(P+"lab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 3.0);
+  tl.to(P+"card", { y: -6, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0.5);
 
-  /* @22.0 in the I paragraph, local start ~0.9 for this compact teaser window: radar begins climbing */
+  /* radar climbs from "moving" (3.93) and hard-freezes as "no agency" begins (8.15) */
   const N = { v: 0 }, nv = document.querySelector(P+"cntv");
-  tl.to(P+"swath", { scaleX: 0.4, duration: 3.6, ease: "power2.out" }, 1.0);
-  tl.to(N, { v: 18, duration: 3.6, ease: "power2.out", onUpdate: () => { if (nv) nv.textContent = Math.round(N.v); } }, 1.0);
+  tl.to(P+"swath", { scaleX: 0.4, duration: 4.22, ease: "power2.out" }, 3.78);
+  tl.to(N, { v: 18, duration: 4.22, ease: "power2.out", onUpdate: () => { if (nv) nv.textContent = Math.round(N.v); } }, 3.78);
 
-  /* freeze: a hard stop mid-count, a small pulse on the frozen digits, then hold */
-  tl.to(P+"cnt", { scale: 1.06, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 4.7);
-  tl.to(P+"card", { y: -6, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 5.0);
+  /* freeze: a hard stop mid-count right on "no" (8.15), a small pulse on the frozen digits, then hold */
+  tl.to(P+"cnt", { scale: 1.06, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 8.0);
+  tl.to(P+"card", { y: -6, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, 8.5);
 
-  /* exit 8.4 */
-  tl.to(P+"card", { x: 700, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 8.4);
+  /* exit, finishing by D-0.1 = 10.742 */
+  tl.to(P+"card", { x: 700, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 10.2);
+  tl.to({}, { duration: 0.01 }, DUR - 0.01);
   window.__timelines[ID] = tl;
 })();
 </script>
