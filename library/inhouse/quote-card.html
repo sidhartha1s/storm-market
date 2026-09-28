@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  EXEMPLAR: quote-card.html
+  WHAT IT IS: full-frame beige "cite card" over dark ground — a verbatim, attributed quote revealed phrase by phrase
+  on the voice, with an optional second quote that swaps in after the first lifts out. mg-quickref's beige cite-card
+  treatment for quoting a source over dark ground; never fabricate a quote, always attribute (CLAUDE.md Footage rules).
+
+  SOURCE: episodes/ep-enderlin-2025/compositions/g-quote-miller.html (fidelity-extracted, copy genericized).
+
+  PARAMS TO EDIT (marked <!-- EDIT-ME --> inline):
+    - quotecard-q1/q2: the verbatim quote text, split into phrase spans (one span per reveal beat — keep the
+      phrase-by-phrase structure even if you change the wording/phrase count).
+    - quotecard-who/src: attribution name + source line.
+    - id prefix "quotecard-" — re-prefix per composition instance when copying into an episode.
+    - Drop the second quote (q2) entirely, plus its script block, for a single-quote card.
+
+  TIMING KNOBS (do not casually change — these are load-bearing):
+    - card entrance: fromTo y:40->0, autoAlpha 0->1, duration 0.55, power3.out, at t=0.
+    - quote mark pop: scale 1.6->1 at t=0.3, back.out(2).
+    - phrase reveals: fromTo autoAlpha 0,y:14 -> 1,0, duration 0.3, ~1.4-1.6s apart — keep a reveal beat every
+      1.5-2s so the card never idles (mg-quickref Motion, 4s stillness cap).
+    - quote-two swap (if kept): quote one exits (autoAlpha 0, y:-30) before quote two sets autoAlpha 1.
+    - EXIT: card tweens to x:1100 (not a smaller offset — must clear the 1600px card fully off a 1920px frame),
+      autoAlpha:0, duration 0.55, power3.in, timed to land on the cut to the next beat.
+
+  COPY into episodes/<slug>/compositions/ and hand-retune — never script-generate.
+-->
+<template>
+<style>
+  .quotecard-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .quotecard-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .quotecard-glow { position:absolute; left:-200px; top:80px; width:1300px; height:900px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(232,197,106,0.08), rgba(232,197,106,0) 70%); }
+  .quotecard-card { position:absolute; left:160px; top:230px; width:1600px; height:520px; box-sizing:border-box; border-radius:28px; overflow:hidden;
+    background: rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  .quotecard-cbeam { position:absolute; top:0; bottom:0; left:0; width:260px; background:linear-gradient(90deg, transparent, rgba(138,90,16,0.14), transparent); }
+  .quotecard-mark { position:absolute; left:40px; top:24px; font-family:'AbrilFig', Georgia, serif; font-size:170px; line-height:170px; color:#8a5a10; }
+  .quotecard-q { position:absolute; left:150px; right:90px; top:64px; font-family: Georgia, serif; font-style:italic; font-size:50px; line-height:68px; color:#1c1a17; }
+  .quotecard-q span { display:inline-block; }
+  .quotecard-attr { position:absolute; left:150px; bottom:44px; font-weight:700; font-size:22px; letter-spacing:2px; color:#5a4a2e; white-space:nowrap; }
+  .quotecard-attr span { display:inline-block; }
+  .quotecard-rule { position:absolute; left:150px; bottom:90px; width:240px; height:3px; background:#8a5a10; }
+</style>
+<div class="quotecard-wrap" data-composition-id="quotecard" data-width="1920" data-height="1080" data-duration="16.405">
+  <div class="quotecard-grid" id="quotecard-grid"></div>
+  <div class="quotecard-glow" id="quotecard-glow"></div>
+  <div class="quotecard-card" id="quotecard-card">
+    <div class="quotecard-cbeam" id="quotecard-cbeam"></div>
+    <div class="quotecard-mark" id="quotecard-mark">&ldquo;</div>
+    <div class="quotecard-q" id="quotecard-q1"><span id="quotecard-a1">This case exemplifies</span> <span id="quotecard-a2">the importance</span> <span id="quotecard-a3">of integrating engineering analysis</span> <span id="quotecard-a4">and scientific research</span> <span id="quotecard-a5">into operational meteorology.&rdquo;</span></div>
+    <div class="quotecard-q" id="quotecard-q2"><span id="quotecard-b1">&hellip;a powerful new tool</span> <span id="quotecard-b2">for rating storms</span> <span id="quotecard-b3">that produce extreme</span> <span id="quotecard-b4">yet unconventional damage.&rdquo;</span></div>
+    <div class="quotecard-rule" id="quotecard-rule"></div>
+    <div class="quotecard-attr" id="quotecard-attr"><span id="quotecard-who">Connell Miller</span> <span id="quotecard-src">&middot; Western University News, Oct 2025</span></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 16.405;
+  tl.set(["#quotecard-mark", "#quotecard-q2", "#quotecard-who", "#quotecard-src", "#quotecard-a1", "#quotecard-a2", "#quotecard-a3", "#quotecard-a4", "#quotecard-a5", "#quotecard-b1", "#quotecard-b2", "#quotecard-b3", "#quotecard-b4"], { autoAlpha: 0 }, 0);
+  tl.set("#quotecard-rule", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* ambient, whole window */
+  tl.fromTo("#quotecard-grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#quotecard-glow", { x: 0, y: 0 }, { x: 900, y: 100, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#quotecard-cbeam", { x: -260 }, { x: 1600, duration: 3.0, ease: "none", repeat: 4 }, 0.3);
+
+  /* MILLER SAID @0.00: card, mark and attribution (spec 1141.0) */
+  tl.fromTo("#quotecard-card", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0);
+  tl.fromTo("#quotecard-mark", { autoAlpha: 0, scale: 1.6, y: -20 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, 0.3);
+  tl.fromTo("#quotecard-who", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 0.4);
+  tl.fromTo("#quotecard-src", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 0.6);
+  tl.to("#quotecard-rule", { scaleX: 1, duration: 0.8, ease: "power2.out" }, 0.5);
+
+  /* quote one, phrase by phrase */
+  tl.fromTo("#quotecard-a1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 1.06);
+  tl.fromTo("#quotecard-a2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 2.44);
+  tl.fromTo("#quotecard-a3", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 3.12);
+  tl.fromTo("#quotecard-a4", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 5.28);
+  tl.fromTo("#quotecard-a5", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 6.92);
+  tl.fromTo("#quotecard-card", { y: 0 }, { y: -8, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 1 }, 7.4);
+
+  /* HE ALSO CALLED IT @9.00: quote one lifts out */
+  tl.to("#quotecard-q1", { autoAlpha: 0, y: -30, duration: 0.4, ease: "power2.in" }, 9.0);
+  tl.set("#quotecard-q2", { autoAlpha: 1 }, 10.5);
+  tl.fromTo("#quotecard-who", { scale: 1 }, { scale: 1.08, transformOrigin: "0% 50%", duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 10.9);
+  /* quote two: A POWERFUL NEW TOOL @10.86, FOR RATING STORMS @12.08, PRODUCE EXTREME @13.34, YET UNCONVENTIONAL DAMAGE @14.24 */
+  tl.fromTo("#quotecard-b1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 10.86);
+  tl.fromTo("#quotecard-b2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 12.08);
+  tl.fromTo("#quotecard-b3", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 13.34);
+  tl.fromTo("#quotecard-b4", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 14.24);
+
+  /* exit (spec 1156.4 -> 15.805) */
+  tl.to("#quotecard-card", { x: 1100, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 15.805);
+  window.__timelines["quotecard"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
