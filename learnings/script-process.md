@@ -60,7 +60,9 @@ Rules:
    separate skeptic-reviewer agent that has not seen the writer's reasoning rates the hook 0 to 10 with a confidence
    percentage, every chapter on the six script-os axes, draws the stakes curve, lists open-loop gaps, register
    violations and fluff sentences, and ranks the fixes. The writer fixes, re-grades, and reports both grades to the
-   owner. A script ships to TTS only when the grader's hook score is at least 8 and no chapter axis is under 3.
+   owner. Revised 27 Sep 26 (`references/script-scaling.md` "Section lock — the ONE definition"): the grade applies
+   PER SECTION, before that section locks, not once on the whole finished script — the hook section needs a grader
+   hook score of at least 8, and no chapter axis on a locking section may be under 3.
 5. Tension system, not taste: the loop table carries plant and pay TIMES; at any timestamp at least one loop must be
    open and unpaid; no 90-second window without a retention spike; stakes score per chapter never drops more than one
    point and ends higher than it started. Checked by the grader, and by `scripts/script_scorecard.py` once it exists.
