@@ -67,7 +67,7 @@ bridge-out or road-cut shot from the Khoj Samachar clip, muted. [RS]
 
 The Kali Gandaki runs south out of the high Himalaya through one of the deepest gorges on Earth. The river sits
 about eighteen thousand feet below the summit beside it, three times the depth of the Grand Canyon in Arizona. After
-days of rain, a huge section of one of those valley walls gave way. Bridges went down along the valley. In the province around the river, one hundred and seventy nine houses were wrecked by that night.
+days of rain, a huge section of one of those valley walls gave way. Bridges went down along the valley. In the province around the river, one hundred and seventy nine houses were wrecked by that night. Landslides also blocked the main highway west from Kathmandu at seven points.
 
 **Picture:** WION avalanche clip (a second cut, the peak) · g-himlung-height: two bars, "Himlung Himal · 23,379 ft"
 and "Denali · 20,310 ft", the gap labelled "about 3,000 ft". [VE]
@@ -184,8 +184,11 @@ from the United Arab Emirates, due in Kathmandu on October first.
 [HUMAN]
 
 Then snow and rock came down onto the camp. One of the crew was Pasang Bhote, a climbing guide from the far east of
-Nepal. `[loop L1 closes]` The crew had gone up to make the mountain ready for other people, and the storm arrived
-before the climbers did.
+Nepal. `[loop L1 closes]` The crew had gone up to make the mountain ready for other people, and the storm arrived before the climbers did.
+
+**Picture:** g-search-card: glass card over the WION rescue shot, rows landing on the voice: "16 at base camp", "4 found · Sept 28", "12 missing", a snow-depth bar "about 15 ft" beside a 6 ft human silhouette. [RS]
+
+A helicopter reached the camp that evening. The next day, a ground team led by the climber Mingma G dug through snow about fifteen feet deep. Sixteen workers had been at the camp. By the twenty eighth, the searchers had found four, and twelve were still missing. Rescuers said survival was very unlikely.
 
 **Picture:** g-rock-ice-mechanism: a hanging slab of rock and ice on a steep face, a crack line, the slab falls, ice
 fragments turn to water, the mass spreads into a fast tongue that runs far past a plain rockfall line. [RS]
@@ -237,7 +240,7 @@ on camera. The Himlung avalanche, coming off a high face with snow and rock, is 
 column fills.
 
 Some of it is still open. No report has said how long the debris held the river back, or how much water piled up
-behind it. The search at Himlung was still going on the twenty ninth, with more of the crew missing. And no agency has
+behind it. The search at Himlung was still going on the twenty ninth, with twelve of the crew still missing. And no agency has
 published a radar or sensor reading from either slope before it moved. `[loop L4 continues]`
 
 *(chapter blackout)*
@@ -271,7 +274,7 @@ real footage for the payoff. No narration under it.
 **Picture:** News18 Bihar river gauge or swollen river shot · g-sensor-gap full: a river gauge line rises only after a
 slope icon has already fallen in; a timeline marks "slope fails" then "gauge sees it". [PAY]
 
-It measured rivers. `[loop L6 closes]` Nepal's flood warnings come from river and rain gauges, which report when
+It measured rivers. `[loop L6 closes]` Before this storm, Nepal's disaster agency put forty nine of its seventy seven districts on flash flood alert. Nepal's flood warnings come from river and rain gauges, which report when
 water rises and send alerts to the villages downstream. A slope that fails in three seconds gives a river gauge nothing
 to read until the mud is already in the water. In August, the gauges nearest Langtang were swept away before they
 could warn anyone below.
@@ -294,7 +297,7 @@ mountains. At Himlung, the tents had been up for days. `[loop L7 open]`
 WION avalanche clip (a still shot of the peak) · g-outro. [HUMAN]
 
 The climbers from the United Arab Emirates were due in Kathmandu on Thursday, October first. Their expedition didn't
-go ahead. The guides and cooks who went up first were the ones on the mountain. At least four of them didn't come home. `[loop L7 closes]` Pasang Bhote was one of the first two found. Nepal's monsoon usually starts leaving in early
+go ahead. The guides and cooks who went up first were the ones on the mountain. Four were found, and twelve were still missing on the twenty ninth. `[loop L7 closes]` Pasang Bhote was among the first two they reached. Nepal's monsoon usually starts leaving in early
 October, and in each of the last four years it left late. Until it does, trekkers on the Kali Gandaki road walk under soaked slopes. Crews on the high peaks work under fresh snow. This was The Warning Hour.
 
 *(outro tail 4 s, g-outro, bed out)*
