@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!-- Scratch test fixture, NOT a real episode: validates scripts/comp_sheets.py's phone-sheet output
+     against a real tracked composition (episodes/ep-enderlin-2025/compositions/g-outro.html), mounted
+     standalone at data-start=0 so a short render covers its whole window. Delete after use. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>phone-sheet test fixture</title>
+  <script src="gsap.min.js"></script>
+  <script src="grain.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070c; }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="_test-phone-sheet" data-start="0" data-width="1920" data-height="1080" data-duration="16.864" data-fps="30">
+  <div id="host-outro" data-composition-id="g-outro" data-composition-src="compositions/g-outro.html" data-start="0" data-duration="16.864" data-track-index="2" data-width="1920" data-height="1080"></div>
+</div>
+</body>
+</html>
