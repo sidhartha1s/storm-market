@@ -89,14 +89,39 @@ script anywhere. Fixed:
    draft to the OWNER GATE the moment it's written; the fact-check fan-out starts on that same
    draft in the same window. Owner reviews story/register, the fan-out checks facts — different
    reviewers, same wall-clock window, not two serial waits.
-4. **Section lock, not whole-script lock.** A section (hook+intro first, then each act) locks
-   when its `[verify]` markers are all resolved AND the owner hasn't asked for a change to it.
-   A locked section goes to TTS/compose immediately — it does not wait for later acts' fan-out
-   to finish. A locked section never reopens for a later section's fact-check; a cross-section
-   contradiction found late is a new `[verify]` on the LATER section.
+
+### Section lock — the ONE definition (every other doc links here, never restates it)
+
+A section (hook+intro first, then each act) **locks** only when ALL of:
+- (a) its `[verify]` markers are all resolved (CONFIRMED / CORRECTED / cut, none open);
+- (b) the owner has **explicitly** approved that section in chat — silence is never approval
+  (SKILL.md "never infer"); a section with no owner reply yet is NOT locked, no matter how
+  clean its fan-out came back;
+- (c) for the hook section only, the separate skeptic-reviewer's grade also passed (bar itself
+  lives in `learnings/script-process.md` "independent grade on every script", not here).
+
+A locked section goes to TTS/compose immediately — it does not wait for later acts' fan-out to
+finish. A locked section never reopens for a later section's fact-check; a cross-section
+contradiction found late is a new `[verify]` on the LATER section.
+
+### Whole-draft checks vs per-section checks
+
+The writer still produces the WHOLE first draft in one pass — section locking starts only
+after that, it never fragments the writing itself:
+- **Once, on the complete first draft, before any section locks:** `word_budget.py` sizing and
+  the per-minute retention scorecard / AVD pass (`script-os.md` "Gates before TTS"). These need
+  the whole runtime to mean anything; running them per-section would just re-run them N times
+  for the same verdict.
+- **Per section, before THAT section locks:** the humanise pass (`humanise-rules.md`) and the
+  chapter-axis grade (`learnings/script-process.md` "independent grade on every script") — both
+  read one section's prose and gate only that section's lock.
+- If a later edit (a fan-out correction, an owner note) pushes the whole-draft word budget back
+  over target, only the still-UNLOCKED acts are trimmed — a locked section is not reopened to
+  claw back runtime.
+
 Standing sub-rules: dual-scope stats name their scope in the same sentence; quotes carry their
-attribution; a section does not go to TTS until IT (not the whole script) has zero open
-`[verify]` markers.
+attribution; a section does not go to TTS until it is LOCKED (all three conditions above), not
+merely until its `[verify]` markers are resolved.
 
 ## Insert-transcription rule (owner order 2026-08-05)
 
