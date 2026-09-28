@@ -88,6 +88,7 @@ for comp in want:
             print(f'{dst}  {comp} @ {mmss} (comp {f["t"]:.2f}s): {f["why"]}')
             cards.append(f'<figure><img src="{dst.name}"><figcaption><b>{H.escape(comp)} #{n}</b> · video {mmss} · '
                          f'comp {f["t"]:.2f}s<br>{H.escape(f["why"])}</figcaption></figure>')
+            frame_paths.append(dst)
 
 (out / 'index.html').write_text(
     '<!doctype html><meta charset="utf-8"><title>frame QC</title><style>'
