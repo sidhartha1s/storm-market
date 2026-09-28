@@ -57,19 +57,19 @@ window.__timelines = window.__timelines || {};
   tl.to("#sm-phone", { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.3);
   tl.fromTo(["#sm-avatar", "#sm-notch", "#sm-thumb"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35 }, 0.6);
 
-  /* blurred lines stagger in @1.2, row 5 (the row that will unblur) also starts as a blurred bar */
-  tl.fromTo(LINES.concat(["#sm-b5"]), { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out", stagger: 0.12 }, 1.2);
+  /* "Posts sharing the video called it another..." Posts @3.48: blurred lines stagger in, row 5 also starts blurred */
+  tl.fromTo(LINES.concat(["#sm-b5"]), { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out", stagger: 0.12 }, 3.33);
 
-  /* CALLED IT ANOTHER GLACIER COLLAPSE @2.74: row 5 unblurs into the one crisp phrase */
-  tl.to("#sm-b5", { autoAlpha: 0, duration: 0.3 }, 2.74);
-  tl.fromTo("#sm-crisp", { autoAlpha: 0, scale: 1.06, transformOrigin: "left center" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 2.74);
+  /* "another glacier collapse," glacier @4.96: row 5 unblurs into the one crisp phrase */
+  tl.to("#sm-b5", { autoAlpha: 0, duration: 0.3 }, 4.81);
+  tl.fromTo("#sm-crisp", { autoAlpha: 0, scale: 1.06, transformOrigin: "left center" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 4.81);
 
-  /* A REPEAT OF LANGTANG @5.5: red "?" stamp slams in */
-  tl.to("#sm-stamp", { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.in" }, 5.5);
-  tl.to("#sm-stamp", { rotation: -8, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 3 }, 5.9);
+  /* "a repeat of Langtang." slam ends on "repeat" @6.30: red "?" stamp slams in */
+  tl.to("#sm-stamp", { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.in" }, 5.95);
+  tl.to("#sm-stamp", { rotation: -8, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 3 }, 6.35);
 
-  /* exit @7.6: frame + stamp slide out together */
-  tl.to(["#sm-phone", "#sm-stamp"], { x: 60, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 7.6);
+  /* exit 7.35, finishes 7.85 (D-0.1 = 7.9); holds through "Langtang." @6.84, before "Every" @7.90 cuts to g-rock-ice-vs-rain */
+  tl.to(["#sm-phone", "#sm-stamp"], { x: 60, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 7.35);
   tl.to({}, { duration: 0.01 }, D - 0.01);
   window.__timelines["g-social-mock"] = tl;
 })();
