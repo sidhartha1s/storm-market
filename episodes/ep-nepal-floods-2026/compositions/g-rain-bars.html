@@ -46,33 +46,34 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const DUR = 14.5;
+  const DUR = 11.409;
   tl.set(["#rb-eb", "#rb-hl", "#rb-normallab", "#rb-stormlab", "#rb-subnormal", "#rb-substorm", "#rb-mult"], { autoAlpha: 0 }, 0);
   tl.set(["#rb-normal", "#rb-storm"], { scaleY: 0 }, 0);
   tl.set("#rb-base", { scaleX: 0, transformOrigin: "left center" }, 0);
 
   /* ambient: panel entrance */
   tl.fromTo("#rb-panel", { x: 660 }, { x: 0, duration: 0.7, ease: "power3.out" }, 0.0);
-  tl.fromTo("#rb-eb", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.3);
-  tl.fromTo("#rb-hl", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.55);
-  tl.to("#rb-base", { scaleX: 1, duration: 0.5, ease: "power3.out" }, 1.2);
+  tl.fromTo("#rb-eb", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.29);
+  tl.fromTo("#rb-hl", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 1.54);
+  tl.to("#rb-base", { scaleX: 1, duration: 0.5, ease: "power3.out" }, 2.19);
 
-  /* TWO AND A HALF INCHES OF RAIN @3.77: storm bar lands first (the spoken figure), even though it sits right */
-  tl.to("#rb-storm", { scaleY: 1, duration: 0.9, ease: "power3.out" }, 2.0);
-  tl.fromTo("#rb-stormlab", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.5);
-  tl.fromTo("#rb-substorm", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35 }, 2.6);
+  /* real words "two" @3.84 / "and" @4.10 / "half" @4.28 / "inches" @4.50: storm bar lands first (the spoken
+     figure), even though it sits right */
+  tl.to("#rb-storm", { scaleY: 1, duration: 0.9, ease: "power3.out" }, 3.69);
+  tl.fromTo("#rb-stormlab", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.19);
+  tl.fromTo("#rb-substorm", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35 }, 4.29);
 
-  /* UNDER A THIRD OF AN INCH @8.91: normal bar lands, the small reference */
-  tl.to("#rb-normal", { scaleY: 1, duration: 0.4, ease: "power3.out" }, 7.5);
-  tl.fromTo("#rb-normallab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 8.5);
-  tl.fromTo("#rb-subnormal", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 7.8);
+  /* real words "under" @7.46 / "third" @7.82 / "inch," @8.24: normal bar lands, the small reference */
+  tl.to("#rb-normal", { scaleY: 1, duration: 0.4, ease: "power3.out" }, 7.31);
+  tl.fromTo("#rb-normallab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 8.31);
+  tl.fromTo("#rb-subnormal", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 7.61);
 
-  /* NINE TIMES AS MUCH @12.69: the multiplier slams in */
-  tl.fromTo("#rb-mult", { autoAlpha: 0, scale: 1.5 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 11.0);
-  tl.to("#rb-mult", { scale: 1.06, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 2 }, 11.6);
+  /* real words "nine" @9.74 / "times" @9.94: the multiplier slams in */
+  tl.fromTo("#rb-mult", { autoAlpha: 0, scale: 1.5 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 9.59);
+  tl.to("#rb-mult", { scale: 1.06, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 2 }, 9.89);
 
-  /* exit */
-  tl.to("#rb-panel", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  /* exit, finishes by D - 0.1 */
+  tl.to("#rb-panel", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.7);
   window.__timelines["g-rain-bars"] = tl;
 })();
 </script>
