@@ -118,7 +118,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.low);
   tl.fromTo(P + "r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.low + 0.2);
   tl.fromTo(P + "t-bay", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.bay);
-  tl.fromTo([P + "t-india", P + "t-bang"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.45, stagger: 0.2, ease: "power3.out" }, CUES.south);
+  tl.fromTo([P + "t-india", P + "t-bang"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.45, stagger: 0.2, ease: "power3.out" }, CUES.east);
 
   /* ---- moved north: constant speed along the schematic track, the line draws behind it ---- */
   const legs = PTS.slice(1).map((p, i) => Math.hypot(p[0] - PTS[i][0], p[1] - PTS[i][1]));
