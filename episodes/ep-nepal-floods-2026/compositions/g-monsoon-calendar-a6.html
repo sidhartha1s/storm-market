@@ -65,7 +65,7 @@ window.__timelines = window.__timelines || {};
   tl.set(P+"tband", { scaleX: 0, transformOrigin: "left center" }, 0);
 
   /* whole window: the wet band keeps its slow breathe (covers the gaps between discrete beats below) */
-  tl.to(P+"wetband", { opacity: 0.14, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 6 }, 0.5);
+  tl.to(P+"wetband", { opacity: 0.14, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0.5);
 
   /* 0.00: Trekking (sentence start) — the pin slides toward today */
   tl.to(P+"pin", { x: 24, duration: 0.8, ease: "power2.inOut" }, 0);
