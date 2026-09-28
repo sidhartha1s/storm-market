@@ -1,5 +1,5 @@
 """Flesch Reading Ease for YouTube titles. Same formula as textstat, syllables by a vowel-group count with the
-usual silent-e rule. Print score, words, syllables per word. Usage: python3 fre.py "title" "title" ..."""
+usual silent-e rule. Print score, words, syllables per word. Usage: python3 scripts/title_fre.py "title" "title" ..."""
 import re, sys
 def syl(w):
     w = w.lower(); w = re.sub(r"[^a-z]", "", w)
