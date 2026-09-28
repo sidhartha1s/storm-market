@@ -20,7 +20,7 @@ peak with one yellow tent. No faces, no toll number.
   want "This was The Warning Hour." v2 keeps it after the dated close.
 - "Sherpa": v1 said "Sherpas" (CNN's word). The four named workers are Bhote, Gurung and Rai; no source calls them
   ethnically Sherpa, so v2 says "guides and cooks". One word back if you want it.
-- A1's three frame beats wait on the shot log (one outlet says "six seconds"). Title and hook ride on it.
+- A1 beats rewritten to the shot log (`C:\Users\Sidhartha\.claude\scratch\nepal-sep27\shotlog.md`): first movement to debris at the river about 3 s (WION loop 2, 17.0 to 20.0 s), dust settled by about 6 s. The "six seconds" outlet counted the settle. Hook source: the WION / NDTV-4 copy (green slope before the slide); the X copies (@NirmalPrasai5, NDTV on X) are the later, already-scarred continuation.
 
 **Loop chain** L0 why a hill fell a month after August, and could anyone see it (H to A6) · L1 the Himlung camp
 (HT to A3) · L2 why late September (A1 to A2) · L3 is it the same event as Langtang (A3 to A4) · L4 was anyone
@@ -79,11 +79,7 @@ CNN reported at least four people lost their lives there, and others were still 
 **Picture:** g-collapse-3s full: four stills pulled from the viral clip at the shot log's timecodes, each stamped on
 the voice, then the clip replays once at full speed (reuse, `data-callback="frame-by-frame payoff"`). [RS] [VE]
 
-The video that spread that weekend was filmed from across the river, near a village in Mustang district.
-`[verify: frame-check; rewrite the next three beats to what the clip shows, second by second, and confirm three vs six seconds]`
-In the first second, a strip of green hillside above the water starts to slide as one piece. By the second, the face
-beneath it breaks into brown dust and rock. By the third, the whole section is in the river, and muddy water surges
-across the channel.
+The video that spread that weekend was filmed on a phone from across the gorge, near a village in Mustang district. Pale scars were already cut down the slope before the camera caught it moving. In the first second, a stretch of hillside below the tree line starts to slide. By the second, a cloud of brown dust rises off its base. By the third, the debris reaches the river, and a brown haze hangs over the water. The dust took about three more seconds to settle.
 
 **Picture:** g-pore-pressure teaser: a slope cross-section, a thin blue line creeping upward inside it, a text card
 "U.S. Geological Survey · Landslide Hazards Program".
