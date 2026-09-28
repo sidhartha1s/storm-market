@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-monsoon-calendar-a6 (A6 return): the pin moves from Sept 27 to today (Sept 29), the normal-withdrawal mark
+     stays ahead, a trekking/climbing-season band opens across October (mg_specs/g-monsoon-calendar-a6.md). Reuses
+     g-monsoon-calendar's axis (June=240 .. Oct=1680, 360 px/month). Facts: factcheck-C#22 (Annapurna permits
+     reopened after a 3-day rain pause), factcheck-C#23 (Himlung-type climbing season runs through October, crews
+     already deployed), factcheck-C#21 (normal withdrawal ~Oct 2, missed all of the last 4 years). -->
+<template>
+<style>
+  #gmca6-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .gmca6-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gmca6-mo { font-family:Arial, sans-serif; font-weight:700; font-size:22px; fill:#93a3b2; letter-spacing:3px; }
+  .gmca6-tag { font-family:Arial, sans-serif; font-weight:700; font-size:19px; letter-spacing:3px; }
+  .gmca6-pinlab { font-family:'Arial Black', Arial, sans-serif; font-size:26px; fill:#f2f5f8; }
+  .gmca6-band { font-family:Arial, sans-serif; font-weight:700; font-size:22px; fill:#d8a13a; letter-spacing:3px; }
+</style>
+<div id="gmca6-root" data-composition-id="g-monsoon-calendar-a6" data-width="1920" data-height="1080" data-duration="18">
+  <svg class="gmca6-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <linearGradient id="gmca6-bandfade" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#d8a13a" stop-opacity="0.32"/><stop offset="1" stop-color="#d8a13a" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <rect id="gmca6-wetband" x="420" y="770" width="1284" height="20" fill="rgba(90,118,143,0.18)"/>
+    <line id="gmca6-axis" x1="240" y1="780" x2="1680" y2="780" stroke="#5a768f" stroke-width="3"/>
+    <g id="gmca6-ticks">
+      <line x1="240" y1="770" x2="240" y2="790" stroke="#3d5366" stroke-width="2"/>
+      <line x1="600" y1="770" x2="600" y2="790" stroke="#3d5366" stroke-width="2"/>
+      <line x1="960" y1="770" x2="960" y2="790" stroke="#3d5366" stroke-width="2"/>
+      <line x1="1320" y1="770" x2="1320" y2="790" stroke="#3d5366" stroke-width="2"/>
+      <line x1="1680" y1="770" x2="1680" y2="790" stroke="#3d5366" stroke-width="2"/>
+    </g>
+    <text class="gmca6-mo" x="240" y="820" text-anchor="middle">JUNE</text>
+    <text class="gmca6-mo" x="600" y="820" text-anchor="middle">JULY</text>
+    <text class="gmca6-mo" x="960" y="820" text-anchor="middle">AUG</text>
+    <text class="gmca6-mo" x="1320" y="820" text-anchor="middle">SEPT</text>
+    <text class="gmca6-mo" x="1680" y="820" text-anchor="middle">OCT</text>
+
+    <line id="gmca6-withtick" x1="1704" y1="740" x2="1704" y2="780" stroke="#d8a13a" stroke-width="4"/>
+    <text class="gmca6-tag" id="gmca6-withlab" x="1704" y="720" text-anchor="end" fill="#d8a13a">NORMAL WITHDRAWAL</text>
+
+    <rect id="gmca6-tband" x="1680" y="790" width="170" height="18" fill="url(#gmca6-bandfade)"/>
+    <text class="gmca6-band" id="gmca6-bandlab" x="1680" y="845">CLIMBING &amp; TREKKING SEASON OPEN</text>
+
+    <g id="gmca6-pin">
+      <path d="M1644,600 C1644,600 1614,650 1644,690 C1674,650 1644,600 1644,600 Z" fill="#d0121f"/>
+      <circle cx="1644" cy="628" r="8" fill="#f2f5f8"/>
+    </g>
+    <text class="gmca6-pinlab" id="gmca6-pinlab1" x="1644" y="570" text-anchor="middle">SEPT 27</text>
+    <text class="gmca6-pinlab" id="gmca6-pinlab2" x="1668" y="570" text-anchor="middle" opacity="0">TODAY &middot; SEPT 29</text>
+  </svg>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-monsoon-calendar-a6", P = "#gmca6-";
+  const DUR = 18;
+  const tl = gsap.timeline({ paused: true });
+  /* start-state: reuses g-monsoon-calendar's fully-revealed axis (continuity cut) */
+  tl.set([P+"axis", P+"wetband", P+"ticks", P+"withtick", P+"withlab", P+"pin", P+"pinlab1"], { autoAlpha: 1 }, 0);
+  tl.set([P+"tband", P+"bandlab", P+"pinlab2"], { autoAlpha: 0 }, 0);
+  tl.set(P+"tband", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* whole window: the wet band keeps its slow breathe */
+  tl.to(P+"wetband", { opacity: 0.14, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 6 }, 0.5);
+
+  /* 0.3: Trekking permits for the Annapurna trails reopened — the pin slides toward today */
+  tl.to(P+"pin", { x: 24, duration: 0.8, ease: "power2.inOut" }, 0.3);
+  tl.to(P+"pinlab1", { autoAlpha: 0, duration: 0.3 }, 0.3);
+  tl.to(P+"pinlab2", { autoAlpha: 1, duration: 0.3 }, 0.6);
+
+  /* 3.1: after a three day pause for the rain — the withdrawal mark pulses, still ahead */
+  tl.to([P+"withtick", P+"withlab"], { scale: 1.06, duration: 0.4, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "1704px 760px" }, 3.1);
+
+  /* 8.2: the climbing season on peaks like Himlung runs through October */
+  tl.to(P+"tband", { scaleX: 1, autoAlpha: 1, duration: 0.8, ease: "power2.out" }, 8.2);
+
+  /* 11.0: crews are already on those mountains */
+  tl.fromTo(P+"bandlab", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.0);
+
+  /* 14.5: the tents had been up for days — a small tie-back pulse (loop L7 open) */
+  tl.to(P+"pin", { y: -6, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 14.5);
+
+  /* exit 17.4 */
+  tl.to([P+"axis", P+"wetband", P+"ticks", P+"withtick", P+"withlab", P+"pin", P+"pinlab2", P+"tband", P+"bandlab"],
+        { x: 660, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.4);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
