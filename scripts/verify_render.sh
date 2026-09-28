@@ -166,20 +166,18 @@ fi
 echo
 echo "=== pop scan (single-frame diff spikes, downscaled 180x180 gray, sampled at the render's own ==="
 echo "=== fps — CPU-light) — REPORT only: every other check above FAILs, this one deliberately does ==="
-echo "=== not, because an intentional quick cut/flash-edit can trip the same signature (see PR) ==="
-POP_FPS=$(python3 - "$EP/index.html" <<'PYEOF'
-import re, sys
-h = open(sys.argv[1], encoding="utf-8", errors="replace").read()
-m = re.search(r'<div[^>]*\bid="root"[^>]*data-fps="([\d.]+)"', h)
-print(m.group(1) if m else "")
-PYEOF
-)
-POP_FPS="${POP_FPS:-$COMP_FPS}"
+echo "=== not, because an intentional quick cut/flash-edit can trip the same signature (see ==="
+echo "=== scripts/pop_scan.py module docstring for why) ==="
+POP_FPS="$COMP_FPS"  # already parsed off #root above; no need to re-read index.html
 if [ -z "$POP_FPS" ] || [ "$POP_FPS" = "0" ]; then
   echo "SKIP: no composition fps available to sample at"
 else
   ffmpeg -hide_banner -v error -i "$MP4" -vf "fps=$POP_FPS,scale=180:180,format=gray" -f rawvideo - \
     | python3 "$(dirname "$0")/pop_scan.py" --fps "$POP_FPS"
+  POP_FFMPEG_RC=${PIPESTATUS[0]}
+  if [ "$POP_FFMPEG_RC" != 0 ]; then
+    echo "SKIP: ffmpeg failed to decode frames for pop scan (exit $POP_FFMPEG_RC) — not run, not clean"
+  fi
 fi
 
 echo
