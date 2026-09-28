@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """Frame-diff spike detector: reads raw 180x180 8-bit grayscale frames from stdin (as produced
-by ffmpeg's `scale=180:180,format=gray`, sampled at the render's own fps so it stays CPU-light —
-no full-resolution decode) and flags a frame that differs sharply from BOTH its neighbours while
-those neighbours look alike each other: a single-frame pop, flash or capture glitch.
+by ffmpeg's `scale=180:180,format=gray`, sampled at the render's own fps). ffmpeg still decodes
+every full-resolution frame before scaling it down; the CPU saving here is entirely downstream of
+that decode, from doing the diff math on 180x180 arrays instead of the source resolution. Flags a
+frame that differs sharply from BOTH its neighbours while those neighbours look alike each other:
+a single-frame pop, flash or capture glitch.
 
 REPORTS ONLY, never fails: verify_render.sh's other checks (gpu/composition/black/silence/
 freeze) all hard-FAIL on a defect. This one does not, on purpose — a quick intentional cut or
 flash-edit can trip the same "differs sharply from both neighbours" signature as a real glitch,
-so a human call is required; see the PR body for why this is the one report-only check in the
-script.
+so a human call is required; this is the one report-only check in the script.
 
 Flag rule for candidate frame i (neighbours i-1, i+1):
   d_prev = mean(|frame[i-1] - frame[i]|)      (0-255 gray-level units)
