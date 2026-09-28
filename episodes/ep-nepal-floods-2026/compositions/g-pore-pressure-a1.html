@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-pore-pressure-a1 (A1 teaser): slope cross-section, a thin blue water line creeping upward inside it,
+     a glass card citing USGS. SCHEMATIC, NOT TO SCALE (no real slope numbers). Brief: mg_specs/g-pore-pressure-a1.md
+     Cues (local, @175wpm from "Landslides like this build for days..."): hillside 0.3, water begins 3.43,
+     card 7.20, shudder 15.77, exit 21.0. Duration 23.5s. -->
+<template>
+<style>
+  .pa1-wrap { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .pa1-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .pa1-schem { position:absolute; left:110px; top:940px; font-weight:700; font-size:20px; letter-spacing:2px; color:#93a3b2; }
+  .pa1-card { position:absolute; left:1220px; top:410px; width:604px; height:200px; box-sizing:border-box;
+    border-radius:28px; background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); padding:36px 44px; }
+  .pa1-eyebrow { font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; }
+  .pa1-head { font-family:'Arial Black', Arial, sans-serif; font-size:38px; color:#f2f5f8; margin-top:14px; line-height:1.15; }
+  .pa1-sub { font-family:Georgia, serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:10px; }
+</style>
+<div class="pa1-wrap" data-composition-id="g-pore-pressure-a1" data-width="1920" data-height="1080" data-duration="23.5">
+  <svg class="pa1-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <clipPath id="pa1-hillclip"><polygon points="280,300 1000,880 96,880 96,300"/></clipPath>
+    </defs>
+    <rect x="0" y="0" width="1920" height="300" fill="#0b1016"/>
+    <rect x="0" y="0" width="1920" height="300" fill="url(#pa1-sky)"/>
+    <linearGradient id="pa1-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1016"/><stop offset="1" stop-color="#030507"/></linearGradient>
+    <linearGradient id="pa1-soil" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b4a3f"/><stop offset="1" stop-color="#2a221d"/></linearGradient>
+    <polygon id="pa1-hill" points="280,300 1000,880 96,880 96,300" fill="url(#pa1-soil)" stroke="#4a5560" stroke-width="3"/>
+    <rect id="pa1-water" x="0" y="816" width="1920" height="4" fill="#7fb2e5" clip-path="url(#pa1-hillclip)"/>
+    <rect id="pa1-waterglow" x="0" y="812" width="1920" height="12" fill="#7fb2e5" opacity="0.25" clip-path="url(#pa1-hillclip)"/>
+  </svg>
+  <div class="pa1-schem" id="pa1-schem">SCHEMATIC, NOT TO SCALE</div>
+  <div class="pa1-card" id="pa1-card">
+    <div class="pa1-eyebrow">SOURCE</div>
+    <div class="pa1-head">U.S. Geological Survey</div>
+    <div class="pa1-sub">Landslide Hazards Program</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const D = 23.5;
+  tl.set(["#pa1-hill"], { autoAlpha: 0, y: 20 }, 0);
+  tl.set(["#pa1-schem", "#pa1-card"], { autoAlpha: 0 }, 0);
+  tl.set("#pa1-card", { x: 60 }, 0);
+  tl.set(["#pa1-water", "#pa1-waterglow"], { attr: { y: 816 } }, 0);
+
+  /* ambient: sky gradient never fully static -> a slow parallax drift on the hillside */
+  tl.fromTo("#pa1-hill", { x: 0 }, { x: -10, duration: D, ease: "none" }, 0);
+
+  /* hillside draws in @0.3 */
+  tl.to("#pa1-hill", { autoAlpha: 1, y: 0, duration: 0.9, ease: "power3.out" }, 0.3);
+  tl.fromTo("#pa1-schem", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 1.2);
+
+  /* RAIN SOAKS IN SLOWLY @3.43: water line begins its slow creep upward */
+  tl.fromTo(["#pa1-water", "#pa1-waterglow"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 3.43);
+  tl.to(["#pa1-water", "#pa1-waterglow"], { attr: { y: 556 }, duration: 18.0, ease: "power1.inOut" }, 3.43);
+
+  /* card reveals @7.20 (water pressure inside the slope climbs) */
+  tl.to("#pa1-card", { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 7.20);
+
+  /* THE THREE SECONDS ON CAMERA @15.77: a small shudder on the hillside as failure nears */
+  tl.to("#pa1-hill", { x: -6, duration: 0.09, ease: "power1.inOut", yoyo: true, repeat: 5 }, 15.77);
+
+  /* exit @21.0 */
+  tl.to("#pa1-card", { x: 660, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 21.0);
+  tl.to(["#pa1-hill", "#pa1-schem", "#pa1-water", "#pa1-waterglow"], { y: -30, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 21.2);
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines["g-pore-pressure-a1"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
