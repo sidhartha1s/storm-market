@@ -15,7 +15,7 @@ https://paulraymond.online
 
 Book mentioned at 10:53
 
-On September 27, 2026, a hillside above Nepal's Kali Gandaki River came down in about three seconds, filmed by people on the trail across the valley. The same storm was dropping snow on Himlung Himal, where a crew of guides and cooks was building a base camp. It came a month after August's Langtang flood. This is what the slopes, the rain and the warning system each did that week, and what is still unknown.
+On September 27, 2026, a hillside above Nepal's Kali Gandaki River came down in about three seconds, filmed by bystanders near Lete in Mustang. The same storm was dropping snow on Himlung Himal, where a crew of guides and cooks was building a base camp. It came a month after August's Langtang flood. This is what the slopes, the rain and the warning system each did that week, and what is still unknown.
 
 Sources and courtesy credits: Nepal's National Disaster Risk Reduction and Management Authority, India Meteorological Department, U.S. Geological Survey, CNN, AFP, Al Jazeera, ANI, OpenStreetMap contributors. Footage: WION; Republic World; CNBC-TV18; 7NEWS Australia; The Lallantop (AFP footage); News18 Bihar Jharkhand. Collapse video originally filmed by bystanders near Lete, Mustang. Trek video: @Krishan10_ on X.
 
