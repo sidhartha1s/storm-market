@@ -99,3 +99,27 @@ for comp in want:
     'picked from its tween schedule (references/mg-quickref.md "Verify")</p><main>' + ''.join(cards) + '</main>',
     encoding='utf-8')
 print(f'wrote {out / "index.html"}')
+
+# Phone-width QC: same frames, downscaled and tiled into one sheet, for a readability eyeball check.
+# 480px = half the 960px thumbnail already on disk (no re-decode of the render) and close to a real
+# phone's ~390-430 CSS-px playback width, so text that's too small there is too small here too.
+PHONE_W, PHONE_H = 480, 270
+if frame_paths:
+    cols = min(4, len(frame_paths))
+    rows = -(-len(frame_paths) // cols)
+    canvas = out / 'phone-sheet.jpg'
+    cmd = ['ffmpeg', '-y', '-v', 'error', '-f', 'lavfi', '-i',
+           f'color=c=0x1c1c1c:s={cols * PHONE_W}x{rows * PHONE_H}:d=1']
+    for p in frame_paths:
+        cmd += ['-i', str(p)]
+    scales = ';'.join(f'[{i + 1}:v]scale={PHONE_W}:{PHONE_H}[v{i}]' for i in range(len(frame_paths)))
+    stage = '0:v'
+    overlays = []
+    for i in range(len(frame_paths)):
+        x, y = (i % cols) * PHONE_W, (i // cols) * PHONE_H
+        label = f'[t{i}]' if i < len(frame_paths) - 1 else '[out]'
+        overlays.append(f'[{stage}][v{i}]overlay={x}:{y}{label}')
+        stage = f't{i}'
+    cmd += ['-filter_complex', scales + ';' + ';'.join(overlays), '-map', '[out]', '-frames:v', '1', str(canvas)]
+    subprocess.run(cmd, check=True)
+    print(f'wrote {canvas}  ({len(frame_paths)} frames @ {PHONE_W}px wide, {cols}x{rows} tiles)')
