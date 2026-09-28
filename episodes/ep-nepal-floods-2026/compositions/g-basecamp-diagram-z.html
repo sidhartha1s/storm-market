@@ -46,17 +46,26 @@ window.__timelines = window.__timelines || {};
   /* whole window: the drift continues */
   tl.fromTo(P+"scene", { scale: 1.015, x: -6, svgOrigin: "700 500" }, { scale: 1.045, x: -18, duration: DUR, ease: "none" }, 0);
 
-  /* 1.2: "the ones on the mountain" — the rope and Camp 1 marker let go first */
-  tl.to([P+"rope", P+"c1ring"], { autoAlpha: 0, duration: 0.6 }, 1.2);
+  /* RE-ANCHORED: the script line this brief was written against ("the ones on the mountain" / "Pasang Bhote was
+     among the first two" / "under fresh snow") is not spoken in this host window any more — the real words here
+     are "The climbers from the United Arab Emirates were due in Kathmandu on Thursday, October 1. Their
+     expedition didn't go ahead. The guides..." (that Pasang Bhote line now lands in g-person-bhote-z instead).
+     This comp carries no on-screen text (brief: "silent visual, narration carries the words"), so the state
+     changes are re-anchored to the nearest words that carry the same idea — the clients who never arrived
+     letting go of the summit-route marker, then the guides who stayed being the one camp left lit. */
 
-  /* 3.0: "Pasang Bhote was among the first two" — four tents fade, one stays and glows */
-  tl.to([P+"tent2", P+"tent3", P+"tent4", P+"tent5"], { autoAlpha: 0, duration: 0.7, ease: "power2.out", stagger: 0.1 }, 3.0);
-  tl.to(P+"glow", { autoAlpha: 1, scale: 1, duration: 1.2, ease: "power2.out" }, 3.2);
-  tl.fromTo(P+"tent1", { scale: 1, svgOrigin: "380 806" }, { scale: 1.12, duration: 0.35, ease: "power2.out" }, 3.4);
+  /* 2.35 (0.15s before "due" @2.50): were due in Kathmandu — the rope and Camp 1 marker let go first */
+  tl.to([P+"rope", P+"c1ring"], { autoAlpha: 0, duration: 0.6 }, 2.35);
 
-  /* 6.5: "under fresh snow" — the slide dims into the background, the remaining camp stays the read */
-  tl.to(P+"avalanche", { opacity: 0.15, duration: 0.8, ease: "power2.out" }, 6.5);
-  tl.to(P+"glow", { scale: 1.15, duration: 1.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 6.5);
+  /* 5.45 (0.15s before "Their" @5.60): Their expedition didn't go ahead — four tents fade, one stays and glows */
+  tl.to([P+"tent2", P+"tent3", P+"tent4", P+"tent5"], { autoAlpha: 0, duration: 0.7, ease: "power2.out", stagger: 0.1 }, 5.45);
+  tl.to(P+"glow", { autoAlpha: 1, scale: 1, duration: 1.2, ease: "power2.out" }, 5.65);
+  tl.fromTo(P+"tent1", { scale: 1, svgOrigin: "380 806" }, { scale: 1.12, duration: 0.35, ease: "power2.out" }, 5.85);
+
+  /* 7.3 (nearest word "guides" @7.90 is cut off by D=8.0; pulled in so nothing tweens past D) — avalanche
+     dims into the background, the remaining camp stays the read into the hard cut to g-outro */
+  tl.to(P+"avalanche", { opacity: 0.15, duration: 0.5, ease: "power2.out" }, 7.3);
+  tl.to(P+"glow", { scale: 1.15, duration: 0.35, ease: "sine.inOut" }, 7.3);
   window.__timelines[ID] = tl;
 })();
 </script>

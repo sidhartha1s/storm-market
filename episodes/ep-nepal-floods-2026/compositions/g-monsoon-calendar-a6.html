@@ -17,7 +17,7 @@
   .gmca6-pinlab { font-family:'Arial Black', Arial, sans-serif; font-size:26px; fill:#f2f5f8; }
   .gmca6-band { font-family:Arial, sans-serif; font-weight:700; font-size:22px; fill:#d8a13a; letter-spacing:3px; }
 </style>
-<div id="gmca6-root" data-composition-id="g-monsoon-calendar-a6" data-width="1920" data-height="1080" data-duration="18">
+<div id="gmca6-root" data-composition-id="g-monsoon-calendar-a6" data-width="1920" data-height="1080" data-duration="18.09">
   <svg class="gmca6-svg" viewBox="0 0 1920 1080">
     <defs>
       <linearGradient id="gmca6-bandfade" x1="0" y1="0" x2="1" y2="0">
@@ -57,36 +57,41 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-monsoon-calendar-a6", P = "#gmca6-";
-  const DUR = 18;
+  const DUR = 18.09;
   const tl = gsap.timeline({ paused: true });
   /* start-state: reuses g-monsoon-calendar's fully-revealed axis (continuity cut) */
   tl.set([P+"axis", P+"wetband", P+"ticks", P+"withtick", P+"withlab", P+"pin", P+"pinlab1"], { autoAlpha: 1 }, 0);
   tl.set([P+"tband", P+"bandlab", P+"pinlab2"], { autoAlpha: 0 }, 0);
   tl.set(P+"tband", { scaleX: 0, transformOrigin: "left center" }, 0);
 
-  /* whole window: the wet band keeps its slow breathe */
-  tl.to(P+"wetband", { opacity: 0.14, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 6 }, 0.5);
+  /* whole window: the wet band keeps its slow breathe (covers the gaps between discrete beats below) */
+  tl.to(P+"wetband", { opacity: 0.14, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0.5);
 
-  /* 0.3: Trekking permits for the Annapurna trails reopened — the pin slides toward today */
-  tl.to(P+"pin", { x: 24, duration: 0.8, ease: "power2.inOut" }, 0.3);
-  tl.to(P+"pinlab1", { autoAlpha: 0, duration: 0.3 }, 0.3);
-  tl.to(P+"pinlab2", { autoAlpha: 1, duration: 0.3 }, 0.6);
+  /* 0.00: Trekking (sentence start) — the pin slides toward today */
+  tl.to(P+"pin", { x: 24, duration: 0.8, ease: "power2.inOut" }, 0);
+  tl.to(P+"pinlab1", { autoAlpha: 0, duration: 0.3 }, 0);
+  tl.to(P+"pinlab2", { autoAlpha: 1, duration: 0.3 }, 0.3);
 
-  /* 3.1: after a three day pause for the rain — the withdrawal mark pulses, still ahead */
-  tl.to([P+"withtick", P+"withlab"], { scale: 1.06, duration: 0.4, ease: "power2.out", yoyo: true, repeat: 1, svgOrigin: "1704 760" }, 3.1);
+  /* 2.41 (0.15s before "after" @2.56): after a three day pause for the rain — withdrawal mark pulses, still ahead */
+  tl.to([P+"withtick", P+"withlab"], { scale: 1.06, duration: 0.4, ease: "power2.out", yoyo: true, repeat: 1, svgOrigin: "1704 760" }, 2.41);
 
-  /* 8.2: the climbing season on peaks like Himlung runs through October */
-  tl.to(P+"tband", { scaleX: 1, autoAlpha: 1, duration: 0.8, ease: "power2.out" }, 8.2);
+  /* 8.93 (0.15s before "The" @9.08): the climbing season on peaks like Himlung runs through October */
+  tl.to(P+"tband", { scaleX: 1, autoAlpha: 1, duration: 0.8, ease: "power2.out" }, 8.93);
 
-  /* 11.0: crews are already on those mountains */
-  tl.fromTo(P+"bandlab", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.0);
+  /* 12.57 (0.15s before "crews" @12.72): crews are already on those mountains */
+  tl.fromTo(P+"bandlab", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 12.57);
 
-  /* 14.5: the tents had been up for days — a small tie-back pulse (loop L7 open) */
+  /* RESTORED (coordinator update): this host actually runs 18.09s, not 13.590 — it absorbs the 4.5s clip
+     (a6-s4) that used to follow it, so words after comp-local 13.59 belong to that other segment, not to this
+     comp's own dialogue. The comp was built for an 18s window, so the tail beat below reverts to its original
+     built timing (nudged +0.09s for the real 18.09 total) instead of being dropped. */
+
+  /* 14.5: tie-back pulse (loop L7 open), riding the a6-s4 tail under this comp's hold */
   tl.to(P+"pin", { y: -6, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 14.5);
 
-  /* exit 17.4 */
+  /* exit 17.35, finishes by D-0.1 = 17.99 */
   tl.to([P+"axis", P+"wetband", P+"ticks", P+"withtick", P+"withlab", P+"pin", P+"pinlab2", P+"tband", P+"bandlab"],
-        { x: 660, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.4);
+        { x: 660, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.35);
   window.__timelines[ID] = tl;
 })();
 </script>
