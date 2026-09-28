@@ -52,16 +52,16 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-map-kali-gandaki", P = "#g-map-kali-gandaki-";
-  /* estimated at 175 wpm from the paragraph start (HOST start) */
+  /* retimed 29 Sep 26 from retime-sheet.md word times (host 65.442+17.919); "Bridges went down" is
+     not spoken inside this shorter window, so the exit no longer waits for it (rule 2: never past D). */
   const CUES = {
-    south: 1.0,    /* CUE "runs south" @est 1.0 */
-    himalaya: 2.7, /* CUE "high Himalaya" @est 2.7 */
-    gorge: 4.8,    /* CUE "deepest gorges" @est 4.8 */
-    summit: 9.3,   /* CUE "summit beside it" @est 9.3 */
-    walls: 17.5,   /* CUE "valley walls gave way" @est 17.5 */
-    bridges: 18.9  /* CUE "Bridges went down" @est 18.9 (cut to the bridge-out clip) */
+    south: 1.54,    /* CUE "south" @1.54 (sheet) */
+    himalaya: 2.43, /* CUE "Himalaya" @2.58 (sheet) */
+    gorge: 4.09,    /* CUE "gorges" @4.24 (sheet) */
+    summit: 8.19,   /* CUE "summit" @8.34 (sheet) */
+    walls: 16.25    /* CUE "walls" @16.40 (sheet) */
   };
-  const DUR = 19.9;
+  const DUR = 17.919;
   const tl = gsap.timeline({ paused: true });
   const kg = document.querySelector(P + "kg"), kgg = document.querySelector(P + "kgglow");
   const KLEN = Math.ceil(kg.getTotalLength()) + 1;
