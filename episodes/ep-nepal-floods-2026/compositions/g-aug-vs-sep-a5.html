@@ -72,15 +72,17 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-aug-vs-sep-a5", P = "#g-aug-vs-sep-a5-";
-  /* estimated at 175 wpm from the paragraph start "On one map" (HOST start) */
+  /* retimed 29 Sep 26 from retime-sheet.md word times (host 614.462+10.882). The sheet's word times already
+     account for this host opening 0.2 s before its own voice (word "On" starts at 0.20), matching the
+     existing 0.2 s initial-reveal offset below unchanged. */
   const CUES = {
-    days: 2.4,    /* CUE "thirty two days" @est 2.4 */
-    mi120: 4.1,   /* CUE "a hundred and twenty miles" @est 4.1 */
-    himlung: 6.2, /* CUE "Himlung sits between" @est 6.2 */
-    mi75: 7.9     /* CUE "seventy five miles" @est 7.9 */
+    days: 3.17,    /* CUE "days" @3.32 (sheet) */
+    mi120: 4.35,   /* CUE "120" @4.50 (sheet) */
+    himlung: 6.51, /* CUE "Hymlung" @6.66 (sheet) */
+    mi75: 8.17     /* CUE "75" @8.32 (sheet) */
   };
-  const DUR = 10.8;
-  const EXIT = 10.2;
+  const DUR = 10.882;
+  const EXIT = 10.18;
   const tl = gsap.timeline({ paused: true });
   const LT = Math.ceil(document.querySelector(P + "lt").getTotalLength()) + 1;
   const LH = Math.ceil(document.querySelector(P + "lh").getTotalLength()) + 1;
