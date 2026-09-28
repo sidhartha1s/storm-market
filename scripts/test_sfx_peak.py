@@ -41,19 +41,29 @@ if HAVE_FFMPEG:
 else:
     print("SKIP sfx_peak-01/02: ffmpeg not on PATH")
 
+# Every line below is copied VERBATIM from a real episode's index.html (source noted per line) —
+# the fixture that hid the original data-bed bug used markup with data-bed stripped off, which no
+# real episode ever has (audio_levels.py:19-20: every sx- element carries data-bed).
 HTML = (
-    '<audio id="sx-stamp-ef5" src="media/sfx/stamp.wav" data-start="1.70" data-duration="3"></audio>\n'
-    '<audio id="sx-riser-a1" src="media/sfx/riser.mp3" data-start="10" data-duration="4"></audio>\n'
-    '<audio id="sx-mus-a" src="media/beds/bed.mp3" data-bed="" data-start="0" data-duration="100"></audio>\n'
-    '<audio id="nx-001" src="media/audio/001.wav" data-start="0" data-duration="5"></audio>\n'
-    '<video id="ins-dispatch" src="media/inserts/x.mp4" data-start="20" data-duration="8"></video>\n'
-    '<audio id="sx-stamp-ef3" src="media/sfx/stamp.wav" data-start="4.44" data-duration="3"></audio>\n'
+    # episodes/ep-enderlin-2025/index.html:166-167 (real one-shot stamp hits, both carry data-bed)
+    '<audio id="sx-stamp-ef5" src="media/sfx/stamp-boom.wav" data-bed="" data-start="1.70" data-duration="3" data-volume="0.28"></audio>\n'
+    '<audio id="sx-stamp-ef3" src="media/sfx/stamp-boom.wav" data-bed="" data-start="4.44" data-duration="3" data-volume="0.2" data-callback="second stamp: the struck EF3 thumps on its name"></audio>\n'
+    # episodes/sh-hawaii-lowell-1/index.html:78 (real riser, must stay excluded)
+    '<audio id="sx-riser-hook" src="media/sfx/riser-1s2.wav" data-bed="" data-start="2.78" data-duration="1.2" data-volume="0.40"></audio>\n'
+    # episodes/ep-enderlin-2025/index.html (real continuous bed, also carries data-bed)
+    '<audio id="sx-mus-bed-1" src="media/beds/bed-darkambient-long.mp3" data-bed="" data-start="22.8" data-duration="1307.352" data-volume="0.13"></audio>\n'
+    # episodes/ep-enderlin-2025/index.html (real narration line, excluded by nx- prefix)
+    '<audio id="nx-h1-s1" src="audio/h1-s1.wav" data-start="0.0" data-duration="5.691" data-volume="1"></audio>\n'
+    # a <video> element with an sx- id must never match — blocker #2 (video b-roll dwarfed real hits)
+    '<video id="sx-broll-fake" src="media/broll/fake.mp4" data-start="20" data-duration="8"></video>\n'
 )
 rows = list(eligible_hits(HTML))
-check("sfx_peak-03 eligible_hits keeps only one-shot hits (excludes riser/bed/nx-/ins-)",
-      [r[0] for r in rows] == ["sx-stamp-ef5", "sx-stamp-ef3"], rows)
-check("sfx_peak-04 eligible_hits reports the cue (data-start) unchanged",
-      rows[0] == ("sx-stamp-ef5", "media/sfx/stamp.wav", 1.70), rows)
+check("sfx_peak-03 eligible_hits finds the real stamp hits despite data-bed on every sx- element",
+      [r[0] for r in rows] == ["sx-stamp-ef5", "sx-stamp-ef3", "sx-mus-bed-1"], rows)
+check("sfx_peak-03b eligible_hits excludes riser/nx- ids and never matches <video>",
+      not any(r[0] in ("sx-riser-hook", "nx-h1-s1", "sx-broll-fake") for r in rows), rows)
+check("sfx_peak-04 eligible_hits reports the cue (data-start) and media_start unchanged",
+      rows[0] == ("sx-stamp-ef5", "media/sfx/stamp-boom.wav", 1.70, 0.0), rows)
 
 print()
 if FAILS:
