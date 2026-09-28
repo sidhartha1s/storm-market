@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-ef-scale-a4 (B2): the scale has no row for a freight car. Host 957.031 -> 983.958 (26.927 s, track 2).
+     Cues: episode seconds from audio/a4-s2, a4-s3 words.json (mg_specs.md block 4); local = cue - H.
+     Rows of damage indicators: Barn and Home with their degree-of-damage steps, then an empty Freight Car row
+     ("No Entry"), a Re-Survey stamp, a tape measuring the empty row, the tank car arrives, the question. Exit 983.4.
+     Continuous: light sweep, marching dashes on the empty frame, row float. -->
+<template>
+<style>
+  .efa4-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .efa4-sweep { position:absolute; left:0; top:0; width:260px; height:1080px;
+    background:linear-gradient(100deg, transparent, rgba(127,178,229,.08), transparent); }
+  .efa4-rl { position:absolute; left:110px; width:290px; font-family:'Arial Black', Arial, sans-serif; font-size:34px; color:#f2f5f8; white-space:nowrap; }
+  .efa4-base { position:absolute; left:420px; width:780px; height:2px; background:rgba(147,163,178,.35); }
+  .efa4-bar { position:absolute; width:96px; border-radius:6px 6px 0 0; }
+  .efa4-lab { position:absolute; font-weight:700; font-size:28px; color:#e8c56a; white-space:nowrap; }
+  .efa4-small { position:absolute; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .efa4-none { position:absolute; left:760px; top:752px; font-family:'Arial Black', Arial, sans-serif; font-size:44px; color:#e74c3c; white-space:nowrap; }
+  .efa4-stamp { position:absolute; left:1330px; top:300px; padding:10px 34px; font-family:'Arial Black', Arial, sans-serif; font-size:64px;
+    color:#f4f0e8; background:#8e2020; border-radius:8px; white-space:nowrap; }
+  .efa4-when { position:absolute; left:1350px; top:430px; font-family:Georgia, serif; font-style:italic; font-size:40px; color:#f5d98b; white-space:nowrap; }
+  .efa4-q { position:absolute; left:110px; top:78px; font-family:'Arial Black', Arial, sans-serif; font-size:56px; color:#f2f5f8; white-space:nowrap; }
+</style>
+<div class="efa4-root" data-composition-id="g-ef-scale-a4" data-width="1920" data-height="1080" data-duration="26.927">
+  <div class="efa4-sweep" id="efa4-sweep"></div>
+  <div id="efa4-rows">
+    <div id="efa4-rowA">
+      <div class="efa4-rl" id="efa4-barn" style="top:330px">Barn</div>
+      <div class="efa4-base" style="top:400px"></div>
+      <div class="efa4-bar" id="efa4-a0" style="left:430px; top:370px; height:30px; background:#3d5366"></div>
+      <div class="efa4-bar" id="efa4-a1" style="left:560px; top:350px; height:50px; background:#4a6680"></div>
+      <div class="efa4-bar" id="efa4-a2" style="left:690px; top:330px; height:70px; background:#5a768f"></div>
+      <div class="efa4-bar" id="efa4-a3" style="left:820px; top:310px; height:90px; background:#7fb2e5"></div>
+    </div>
+    <div id="efa4-rowB">
+      <div class="efa4-rl" id="efa4-home" style="top:540px">Home</div>
+      <div class="efa4-base" style="top:610px"></div>
+      <div class="efa4-bar" id="efa4-h0" style="left:430px; top:580px; height:30px; background:#3d5366"></div>
+      <div class="efa4-bar" id="efa4-h1" style="left:560px; top:560px; height:50px; background:#4a6680"></div>
+      <div class="efa4-bar" id="efa4-h2" style="left:690px; top:535px; height:75px; background:#5a768f"></div>
+      <div class="efa4-bar" id="efa4-h3" style="left:820px; top:510px; height:100px; background:#7fb2e5"></div>
+      <div class="efa4-bar" id="efa4-h4" style="left:950px; top:485px; height:125px; background:#d8a13a"></div>
+      <div class="efa4-bar" id="efa4-h5" style="left:1080px; top:455px; height:155px; background:#c0392b"></div>
+      <div class="efa4-lab" id="efa4-roof" style="left:640px; top:622px">Roof Lifted</div>
+      <div class="efa4-lab" id="efa4-walls" style="left:900px; top:622px">Walls Down</div>
+    </div>
+    <div class="efa4-small" id="efa4-steps" style="left:430px; top:222px">Degrees of Damage &rarr;</div>
+  </div>
+  <div id="efa4-rowC">
+    <div class="efa4-rl" id="efa4-freight" style="top:750px">Freight Car</div>
+    <svg width="1920" height="1080" viewBox="0 0 1920 1080" style="position:absolute; left:0; top:0">
+      <rect id="efa4-frame" x="420" y="700" width="780" height="160" rx="10" fill="rgba(208,18,31,.05)" stroke="#e74c3c" stroke-width="3" stroke-dasharray="18 12"/>
+      <g id="efa4-tape">
+        <rect x="440" y="842" width="740" height="12" fill="#e8c56a"/>
+        <path d="M480 842 v8 M540 842 v8 M600 842 v8 M660 842 v8 M720 842 v8 M780 842 v8 M840 842 v8 M900 842 v8 M960 842 v8 M1020 842 v8 M1080 842 v8 M1140 842 v8" stroke="#0b1016" stroke-width="3"/>
+      </g>
+      <g id="efa4-tank">
+        <rect x="450" y="742" width="250" height="70" rx="35" fill="#5a768f"/>
+        <rect x="560" y="728" width="30" height="16" fill="#5a768f"/>
+        <rect x="440" y="808" width="270" height="10" fill="#2a3644"/>
+        <circle cx="490" cy="828" r="12" fill="#93a3b2"/><circle cx="530" cy="828" r="12" fill="#93a3b2"/>
+        <circle cx="620" cy="828" r="12" fill="#93a3b2"/><circle cx="660" cy="828" r="12" fill="#93a3b2"/>
+      </g>
+    </svg>
+    <div class="efa4-none" id="efa4-none">No Entry</div>
+  </div>
+  <div class="efa4-stamp" id="efa4-stamp">Re-Survey</div>
+  <div class="efa4-when" id="efa4-when">Months Later</div>
+  <div class="efa4-q" id="efa4-q">How Much Wind to Throw a Tank Car?</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const H = 958.267;
+  const D = 26.927;
+  const tl = gsap.timeline({ paused: true });
+  const P = "#efa4-";
+  const BARN = [P+"a0", P+"a1", P+"a2", P+"a3"];
+  const HOME = [P+"h0", P+"h1", P+"h2", P+"h3", P+"h4", P+"h5"];
+
+  tl.set([P+"rowA", P+"rowB", P+"rowC", P+"roof", P+"walls", P+"steps", P+"none", P+"stamp", P+"when", P+"q", P+"tank", P+"tape"], { autoAlpha: 0 }, 0);
+  tl.set(BARN.concat(HOME), { scaleY: 0, transformOrigin: "center bottom" }, 0);
+
+  /* continuous: sweep every 9 s; marching dashes on the empty frame from its entry */
+  tl.fromTo(P+"sweep", { x: -300 }, { x: 2200, duration: 9, ease: "none", repeat: 2 }, 0);
+  tl.fromTo(P+"frame", { strokeDashoffset: 0 }, { strokeDashoffset: -600, duration: 19.5, ease: "none" }, 7.1);
+
+  /* BARN @958.806 */
+  tl.fromTo(P+"rowA", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 958.636 - H);
+  tl.to(BARN, { scaleY: 1, duration: 0.3, ease: "power3.out", stagger: 0.1 }, 958.806 - H);
+  tl.fromTo(P+"steps", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 959.036 - H);
+  /* HOUSE @959.486: the home indicator returns with its steps */
+  tl.fromTo(P+"rowB", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 959.486 - H);
+  tl.to(HOME, { scaleY: 1, duration: 0.3, ease: "power3.out", stagger: 0.1 }, 959.636 - H);
+  /* LIFT THE ROOF @962.566 · PUSH OVER THE WALLS @963.546 */
+  tl.fromTo(P+"roof", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 962.566 - H);
+  tl.to(P+"h2", { scaleX: 1.15, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 962.566 - H);
+  tl.fromTo(P+"walls", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 963.546 - H);
+  tl.to(P+"h4", { scaleX: 1.15, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 963.546 - H);
+  /* FREIGHT CAR @965.406: a new row with no steps · NO SUCH ENTRY @966.206 */
+  tl.fromTo(P+"rowC", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 965.406 - H);
+  tl.fromTo(P+"none", { autoAlpha: 0, scale: 1.4 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 966.206 - H);
+  /* SOMEWHERE ELSE @969.126: the known rows fade back */
+  tl.to([P+"rowA", P+"rowB", P+"steps"], { opacity: 0.4, duration: 0.5 }, 969.126 - H);
+  tl.to(P+"rows", { y: -8, duration: 2.2, ease: "sine.inOut", yoyo: true, repeat: 5 }, 969.236 - H);
+  /* RE-SURVEY @970.946 · MONTHS LATER @973.766 */
+  tl.fromTo(P+"stamp", { autoAlpha: 0, scale: 2.2, rotation: -14 }, { autoAlpha: 1, scale: 1, rotation: -6, duration: 0.3, ease: "power4.in" }, 970.946 - H);
+  tl.fromTo(P+"when", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 973.766 - H);
+  /* MEASURING AGAIN @974.986: a tape runs along the empty row */
+  tl.fromTo(P+"tape", { autoAlpha: 1, scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 1.2, ease: "power2.out" }, 974.986 - H);
+  /* HOUSES @979.126 -> RAIL CARS @979.836: a tank car rolls into the empty row */
+  tl.to(P+"stamp", { opacity: 0.45, duration: 0.4 }, 979.126 - H);
+  tl.fromTo(P+"tank", { autoAlpha: 0, x: -500 }, { autoAlpha: 1, x: 0, duration: 0.9, ease: "power3.out" }, 979.836 - H);
+  /* HOW MUCH WIND @982.216 */
+  tl.fromTo(P+"q", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 982.216 - H);
+  tl.to(P+"tank", { y: -12, rotation: -2, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 983.656 - H);
+  /* exit 983.4 */
+  tl.to([P+"rows", P+"rowC", P+"stamp", P+"when", P+"q"], { x: 980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 984.636 - H);
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines["g-ef-scale-a4"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

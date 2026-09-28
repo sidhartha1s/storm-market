@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-outro (B3): host 1510.933 -> 1527.797 (16.864 s, track 2), after z1-s2. Carries z1-s3, the signature closing line
+     (DESIGN.md "Signature closing footnote", added 27 Sep 26): "Tornadoes don't ask permission. But they do send warnings,
+     even in the dark. Learn what yours sounds like, so when it comes, you already know what to do. This was The Warning
+     Hour." at 0.3-12.864, then a 4 s tail. From library/inhouse/outro-brand.html: the wordmark only (no recap, no CTA text).
+     It match-cuts in on the names card's last line, never sits still (slow push, glow drift, a breathing rule, two light
+     sweeps, the second on the spoken name) and fades to black by DUR - 0.08. -->
+<template>
+<style>
+  .ou-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .ou-glow { position:absolute; left:360px; top:240px; width:1200px; height:600px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(216,161,58,0.12), rgba(216,161,58,0) 70%); }
+  .ou-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.04) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .ou-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .ou-mark { position:absolute; left:0; right:0; top:462px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-weight:900;
+    font-size:120px; line-height:140px; letter-spacing:6px; color:#f2f5f8; white-space:nowrap; }
+  .ou-mark span { display:inline-block; }
+  .ou-amber { color:#d8a13a; }
+  .ou-sweepbox { position:absolute; left:260px; top:452px; width:1400px; height:160px; overflow:hidden; mix-blend-mode:screen; }
+  .ou-sweep { position:absolute; left:0; top:-40px; width:220px; height:240px;
+    background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,244,220,0.30), rgba(255,255,255,0)); }
+  .ou-rule { position:absolute; left:660px; width:600px; top:630px; height:4px; border-radius:2px; background:#d8a13a; }
+</style>
+<div class="ou-wrap" data-composition-id="g-outro" data-width="1920" data-height="1080" data-duration="16.864">
+  <div class="ou-grid" id="ou-grid"></div>
+  <div class="ou-glow" id="ou-glow"></div>
+  <div class="ou-stage" id="ou-stage">
+    <div class="ou-mark" id="ou-mark"><span id="ou-w1">The</span> <span class="ou-amber" id="ou-w2">Warning</span> <span id="ou-w3">Hour</span></div>
+    <div class="ou-sweepbox" id="ou-sweepbox"><div class="ou-sweep" id="ou-sweep"></div></div>
+    <div class="ou-rule" id="ou-rule"></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  /* host = z1-s2 end; z1-s3 (the signature closing line, DESIGN.md "Signature closing footnote") plays at 0.3 over the
+     title card, then the 4 s tail. Cues = 0.3 + audio/z1-s3.words.json. */
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 16.864;
+  tl.set("#ou-rule", { scaleX: 0, transformOrigin: "50% 50%" }, 0);
+
+  /* ambient, whole window: slow push on the stage, glow and grid drift */
+  tl.fromTo("#ou-stage", { scale: 1 }, { scale: 1.08, transformOrigin: "50% 50%", duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#ou-glow", { x: -160 }, { x: 160, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#ou-grid", { x: 0 }, { x: 150, duration: DUR, ease: "none" }, 0);
+  /* match cut: the wordmark is there on the first frame and settles */
+  tl.fromTo(["#ou-w1", "#ou-w2", "#ou-w3"], { y: 10 }, { y: 0, duration: 0.4, ease: "power3.out", stagger: 0.05 }, 0);
+  tl.to("#ou-rule", { scaleX: 1, duration: 0.9, ease: "power3.out" }, 0.3);
+  tl.fromTo("#ou-sweep", { x: -240 }, { x: 1420, duration: 1.6, ease: "power1.inOut" }, 0.5);
+  /* WARNINGS @3.78 · DARK @4.88: the amber word and the glow breathe */
+  tl.fromTo("#ou-w2", { scale: 1 }, { scale: 1.06, duration: 0.35, ease: "power2.out", yoyo: true, repeat: 1 }, 3.78);
+  tl.fromTo("#ou-glow", { opacity: 1 }, { opacity: 0.55, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 4.88);
+  /* LEARN @5.9 · YOU ALREADY KNOW @8.86: the rule stretches under the wordmark */
+  tl.to("#ou-rule", { scaleX: 1.35, duration: 1.6, ease: "power2.inOut" }, 5.9);
+  tl.to("#ou-rule", { scaleX: 1, duration: 1.2, ease: "power2.inOut" }, 8.86);
+  /* THE WARNING HOUR @11.6-12.2: a second light sweep lands on the spoken name */
+  tl.fromTo("#ou-sweep", { x: -240 }, { x: 1420, duration: 1.4, ease: "power1.inOut" }, 11.6);
+  tl.fromTo(["#ou-w1", "#ou-w2", "#ou-w3"], { y: 0 }, { y: -8, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1, stagger: 0.12 }, 11.6);
+  /* fade to black by DUR - 0.08, after the 4 s tail holds on the card */
+  tl.to("#ou-stage", { autoAlpha: 0, duration: 1.0, ease: "power1.in" }, DUR - 1.08);
+  tl.to(["#ou-glow", "#ou-grid"], { autoAlpha: 0, duration: 1.0, ease: "power1.in" }, DUR - 1.08);
+  window.__timelines["g-outro"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

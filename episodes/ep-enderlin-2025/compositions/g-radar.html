@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-radar (B1): the night of June 20 on radar, state view. Host 730.80 -> 750.834 (20.034 s, track 2).
+     Frames: self-made NEXRAD Level II mosaics (KBIS, KMVX, KMBX, KABR, 0.5 deg reflectivity, max of the four), each radar's sweep
+     within 5 min of the stamped UTC time (research/b1-maps/nexrad_plots.py -> media/nexrad/nd-refl-20250621-*.png).
+     Track marks: NOAA NCEI Storm Events 2025 (29 North Dakota tornado segments on 20 June local, begin -> end points).
+     Counter 24 = the narrated count = NCEI's 24 ND tornadoes that night (fact_check.md). Supercell positions follow the Storm Events tracks at 03:00 and 04:05 UTC. -->
+<template>
+<style>
+  #g-radar-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 40% 50%, #0b1016 0%, #030507 78%); }
+  .rs-box { position:absolute; left:90px; top:170px; width:1180px; height:763px; overflow:hidden; border-radius:18px; }
+  .rs-frame { position:absolute; left:0; top:0; width:1180px; height:763px; }
+  .rs-svg { position:absolute; left:0; top:0; width:1180px; height:763px; }
+  .rs-lab { font-family:Arial, sans-serif; font-weight:700; font-size:30px; fill:#f2f5f8; paint-order:stroke; stroke:#04070c; stroke-width:6px; stroke-linejoin:round; }
+  .rs-stamp { position:absolute; left:96px; top:950px; font-size:22px; font-weight:700; letter-spacing:3px; color:#c8d3e0; white-space:nowrap; }
+  .rs-rail { position:absolute; right:0; top:0; bottom:0; width:720px; pointer-events:none;
+    background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); }
+  .rs-eb { position:absolute; left:1340px; top:300px; font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
+  .rs-cnt { position:absolute; left:1340px; top:340px; font-family:'Courier New', monospace; font-weight:700; font-size:84px; line-height:1; color:#e74c3c; }
+  .rs-clab { position:absolute; left:1340px; top:436px; font-size:20px; font-weight:700; letter-spacing:6px; color:#c8d3e0; text-transform:uppercase; white-space:nowrap; }
+  .rs-row { position:absolute; left:1340px; top:540px; width:484px; }
+  .rs-val { font-size:30px; font-weight:700; letter-spacing:1px; color:#dfe7ee; white-space:nowrap; }
+  .rs-rlab { margin-top:6px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
+  .rs-scan { position:absolute; left:90px; top:170px; width:1180px; height:2px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
+</style>
+<div id="g-radar-root" data-composition-id="g-radar" data-width="1920" data-height="1080" data-duration="20.034">
+  <div class="rs-box" id="g-radar-box">
+    <div id="g-radar-world" style="position:absolute; left:0; top:0; width:1180px; height:763px;">
+      <svg class="rs-svg" viewBox="0 0 1300 841"><!--NDMAP:g-radar--><g id="g-radar-states" fill="none" stroke="#2a3644" stroke-width="2"><path d="M2101.5,1369.4 L2126.3,1369.4 L2128.1,1404.7 L2152.2,1428.5 L2132.5,1457.6 L2137.8,1511.4 L2150.4,1549.6 L2208.2,1577.2 L2219.7,1607.5 L2255.3,1651.0 L2259.7,1676.0 L2296.3,1699.5 L2300.7,1729.8 L2294.5,1776.0 L2273.2,1791.8 L2267.9,1828.6 L2217.1,1858.9 L2153.9,1870.6 L2143.2,1912.9 L2169.9,1947.0 L2167.3,1989.1 L2145.8,2012.9 L2141.4,2049.6 L2096.1,2076.1 L2093.3,2119.3 L2075.6,2111.6 L2042.6,2062.9 L2025.7,2064.1 L1794.3,2070.8 L1570.9,2073.4 L1386.8,2069.3 L1368.1,2037.9 L1376.9,1975.9 L1360.9,1922.0 L1361.7,1861.5 L1333.3,1840.3 L1328.9,1807.4 L1338.7,1778.6 L1327.9,1736.5 L1305.7,1720.7 L1276.3,1612.8 L1246.0,1560.2 L1260.4,1524.6 L1265.7,1477.3 L1278.1,1460.2 L1257.6,1436.4 L1262.9,1394.4 L1254.2,1374.7 L1275.5,1369.4 L2101.5,1369.4Z"/><path d="M1996.3,599.5 L1984.0,588.9 L1951.0,608.6 L1951.0,750.7 L1941.2,765.3 L1894.9,785.0 L1857.5,836.2 L1854.8,870.6 L1873.5,873.2 L1893.9,903.5 L1875.2,940.2 L1878.8,981.1 L1867.3,1069.3 L1910.0,1112.8 L1943.8,1116.6 L1960.7,1143.0 L2010.6,1169.2 L2018.6,1200.9 L2064.9,1241.6 L2090.7,1250.9 L2121.9,1303.6 L2117.4,1341.8 L2126.3,1369.4 L2101.5,1369.4 L1275.5,1369.4 L1275.5,937.6 L1238.1,910.0 L1209.7,863.8 L1254.2,812.6 L1257.6,785.0 L1251.4,688.9 L1231.9,663.9 L1218.4,611.3 L1221.2,546.9 L1215.0,536.3 L1209.7,382.3 L1177.6,300.6 L1165.1,254.7 L1159.8,157.1 L1170.5,124.2 L1149.0,48.1 L1486.4,48.1 L1486.4,-44.2 L1518.4,-41.6 L1539.8,-23.1 L1561.1,101.9 L1578.0,116.5 L1631.5,120.4 L1637.7,132.2 L1699.9,137.4 L1707.1,163.9 L1760.5,157.1 L1760.5,146.8 L1802.3,133.6 L1838.9,138.9 L1880.6,158.6 L1892.3,183.6 L1916.2,180.9 L1938.5,234.8 L1949.2,212.4 L1990.1,202.1 L1997.3,224.4 L2045.4,240.0 L2045.4,261.2 L2069.3,278.3 L2118.4,269.1 L2147.6,245.3 L2187.7,230.9 L2201.9,266.5 L2229.5,258.5 L2262.5,266.5 L2300.7,261.2 L2344.4,291.5 L2386.1,286.2 L2382.6,299.4 L2328.3,329.7 L2252.7,353.2 L2203.7,378.2 L2133.5,440.2 L2103.2,478.4 L2056.9,521.7 L1984.0,579.6 L1996.3,599.5Z"/><path d="M40.9,48.1 L41.9,321.7 L40.9,782.4 L41.9,1009.9 L39.3,1009.9 L-262.4,1008.7 L-776.9,1008.7 L-1097.4,1008.7 L-1096.4,1135.1 L-1125.8,1110.1 L-1151.6,1067.8 L-1189.0,1118.0 L-1221.8,1127.2 L-1230.0,1114.0 L-1268.2,1124.5 L-1290.4,1112.8 L-1327.8,1133.7 L-1378.5,1132.5 L-1395.4,1154.8 L-1414.1,1141.6 L-1435.5,1064.0 L-1469.3,1061.3 L-1488.0,1041.6 L-1487.0,995.5 L-1506.7,978.4 L-1533.4,929.7 L-1549.4,883.8 L-1544.9,863.8 L-1574.3,840.3 L-1590.4,866.5 L-1630.4,899.4 L-1665.1,874.4 L-1657.2,848.2 L-1668.7,823.2 L-1639.3,796.8 L-1656.2,760.0 L-1651.8,703.3 L-1628.6,613.9 L-1675.9,615.1 L-1677.6,599.5 L-1720.2,574.5 L-1727.4,548.1 L-1788.0,483.7 L-1791.6,466.4 L-1824.4,456.1 L-1855.6,427.0 L-1856.4,361.1 L-1909.1,294.1 L-1909.1,48.1 L-1170.3,49.3 L-837.4,48.1 L40.9,48.1Z"/><path d="M40.9,782.4 L1257.6,785.0 L1254.2,812.6 L1209.7,863.8 L1238.1,910.0 L1275.5,937.6 L1275.5,1369.4 L1254.2,1374.7 L1262.9,1394.4 L1257.6,1436.4 L1278.1,1460.2 L1265.7,1477.3 L1260.4,1524.6 L1246.0,1560.2 L1276.3,1612.8 L1247.0,1606.1 L1236.3,1571.9 L1150.8,1527.3 L1074.3,1527.3 L1051.2,1522.0 L1031.5,1545.8 L947.9,1502.3 L942.7,1490.3 L434.4,1490.3 L158.4,1489.1 L40.1,1489.1 L39.3,1009.9 L41.9,1009.9 L40.9,782.4Z"/><path d="M2256.3,632.4 L2286.5,646.8 L2304.2,687.7 L2471.6,736.2 L2541.0,771.8 L2562.5,763.9 L2631.8,787.7 L2650.5,817.9 L2684.3,846.8 L2682.5,889.1 L2667.4,921.7 L2705.6,927.0 L2690.5,961.4 L2715.5,986.4 L2709.2,1015.2 L2678.2,1020.5 L2651.4,1075.8 L2641.6,1114.0 L2660.3,1120.5 L2685.2,1095.5 L2712.0,1048.1 L2745.8,1029.9 L2772.4,969.3 L2806.2,956.1 L2803.6,987.6 L2780.4,1016.6 L2735.0,1116.6 L2722.5,1171.9 L2723.5,1211.3 L2706.6,1224.5 L2691.5,1278.6 L2696.9,1324.5 L2682.5,1354.7 L2663.0,1429.9 L2667.4,1489.1 L2686.9,1541.7 L2680.8,1611.4 L2520.5,1611.4 L2219.7,1607.5 L2208.2,1577.2 L2150.4,1549.6 L2137.8,1511.4 L2132.5,1457.6 L2152.2,1428.5 L2128.1,1404.7 L2126.3,1369.4 L2117.4,1341.8 L2121.9,1303.6 L2090.7,1250.9 L2064.9,1241.6 L2018.6,1200.9 L2010.6,1169.2 L1960.7,1143.0 L1943.8,1116.6 L1910.0,1112.8 L1867.3,1069.3 L1878.8,981.1 L1875.2,940.2 L1893.9,903.5 L1873.5,873.2 L1854.8,870.6 L1857.5,836.2 L1894.9,785.0 L1941.2,765.3 L1951.0,750.7 L1951.0,608.6 L1984.0,588.9 L1996.3,599.5 L2032.9,602.2 L2145.8,561.3 L2187.7,539.0 L2201.9,556.0 L2179.8,587.5 L2233.1,628.3 L2256.3,632.4Z"/></g>
+<path id="g-radar-border49" d="M0,48.1 L1300,48.1" fill="none" stroke="#5a768f" stroke-width="2" stroke-dasharray="10 7"/>
+<g id="g-radar-counties" fill="#0e161e" stroke="#2a3644" stroke-width="1.2"><path id="g-radar-c-billings" d="M112.3,617.6 L112.3,617.6Z" class="g-radar-sw"/><path id="g-radar-c-cavalier" d="M861.3,48.1 L861.3,48.1Z"/><path id="g-radar-c-foster" d="M818.1,387.4 L818.1,387.4Z"/><path id="g-radar-c-grandforks" d="M1039.4,241.5 L1039.4,241.5Z"/><path id="g-radar-c-lamoure" d="M1018.1,701.0 L1018.1,701.0Z"/><path id="g-radar-c-mountrail" d="M311.1,346.5 L311.1,346.5Z"/><path id="g-radar-c-ransom" d="M1022.7,701.0 L1022.7,701.0Z"/><path id="g-radar-c-rolette" d="M775.8,48.2 L775.8,48.2Z"/><path id="g-radar-c-steele" d="M1071.5,471.0 L1071.5,471.0Z"/><path id="g-radar-c-wells" d="M818.1,387.4 L818.1,387.4Z"/><path id="g-radar-c-benson" d="M828.7,199.3 L828.7,199.3Z"/><path id="g-radar-c-bottineau" d="M526.6,157.3 L526.6,157.3Z"/><path id="g-radar-c-cass" d="M1213.4,471.5 L1213.4,471.5Z"/><path id="g-radar-c-eddy" d="M818.1,387.4 L818.1,387.4Z"/><path id="g-radar-c-emmons" d="M718.2,782.9 L718.2,782.9Z" class="g-radar-sw"/><path id="g-radar-c-grant" d="M532.1,700.6 L532.1,700.6Z" class="g-radar-sw"/><path id="g-radar-c-griggs" d="M942.5,387.5 L942.5,387.5Z"/><path id="g-radar-c-kidder" d="M712.5,616.8 L712.5,616.8Z" class="g-radar-sw"/><path id="g-radar-c-logan" d="M788.2,617.1 L788.2,617.1Z" class="g-radar-sw"/><path id="g-radar-c-mckenzie" d="M195.1,449.6 L195.1,449.6Z"/><path id="g-radar-c-morton" d="M532.1,700.6 L532.1,700.6Z" class="g-radar-sw"/><path id="g-radar-c-nelson" d="M938.4,325.3 L938.4,325.3Z"/><path id="g-radar-c-oliver" d="M546.7,532.8 L546.7,532.8Z" class="g-radar-sw"/><path id="g-radar-c-pembina" d="M1031.8,47.9 L1031.8,47.9Z"/><path id="g-radar-c-ramsey" d="M866.1,157.6 L866.1,157.6Z"/><path id="g-radar-c-renville" d="M370.3,48.3 L370.3,48.3Z"/><path id="g-radar-c-sargent" d="M1149.2,784.5 L1149.2,784.5Z"/><path id="g-radar-c-stark" d="M358.0,533.2 L358.0,533.2Z" class="g-radar-sw"/><path id="g-radar-c-stutsman" d="M947.8,470.9 L947.8,470.9Z"/><path id="g-radar-c-traill" d="M1210.1,407.6 L1210.1,407.6Z"/><path id="g-radar-c-ward" d="M370.2,94.4 L370.2,94.4Z"/><path id="g-radar-c-barnes" d="M1018.2,617.4 L1018.2,617.4Z"/><path id="g-radar-c-burke" d="M221.2,48.3 L221.2,48.3Z"/><path id="g-radar-c-dunn" d="M195.1,449.6 L195.1,449.6Z"/><path id="g-radar-c-hettinger" d="M222.9,617.5 L222.9,617.5Z" class="g-radar-sw"/><path id="g-radar-c-mclean" d="M541.9,491.0 L541.9,491.0Z"/><path id="g-radar-c-pierce" d="M781.2,199.2 L781.2,199.2Z"/><path id="g-radar-c-slope" d="M41.4,638.9 L41.4,638.9Z" class="g-radar-sw"/><path id="g-radar-c-towner" d="M861.3,48.1 L861.3,48.1Z"/><path id="g-radar-c-burleigh" d="M546.7,532.8 L546.7,532.8Z" class="g-radar-sw"/><path id="g-radar-c-dickey" d="M1022.4,784.3 L1022.4,784.3Z"/><path id="g-radar-c-divide" d="M229.8,136.2 L229.8,136.2Z"/><path id="g-radar-c-goldenvalley" d="M41.4,638.9 L41.4,638.9Z" class="g-radar-sw"/><path id="g-radar-c-mchenry" d="M540.9,324.7 L540.9,324.7Z"/><path id="g-radar-c-mcintosh" d="M744.6,783.1 L744.6,783.1Z" class="g-radar-sw"/><path id="g-radar-c-mercer" d="M412.0,533.1 L412.0,533.1Z" class="g-radar-sw"/><path id="g-radar-c-richland" d="M1228.7,638.3 L1228.7,638.3Z"/><path id="g-radar-c-sioux" d="M615.6,782.5 L615.6,782.5Z" class="g-radar-sw"/><path id="g-radar-c-walsh" d="M972.1,157.7 L972.1,157.7Z"/><path id="g-radar-c-williams" d="M41.1,194.8 L41.1,194.8Z"/><path id="g-radar-c-adams" d="M374.0,782.2 L374.0,782.2Z" class="g-radar-sw"/><path id="g-radar-c-bowman" d="M212.0,782.1 L212.0,782.1Z" class="g-radar-sw"/><path id="g-radar-c-sheridan" d="M589.3,449.9 L589.3,449.9Z"/></g>
+<path id="g-radar-nd" d="M1149.0,48.1 L1170.5,124.2 L1159.8,157.1 L1165.1,254.7 L1177.6,300.6 L1209.7,382.3 L1215.0,536.3 L1221.2,546.9 L1218.4,611.3 L1231.9,663.9 L1251.4,688.9 L1257.6,785.0 L40.9,782.4 L41.9,321.7 L40.9,48.1 L1149.0,48.1Z" fill="none" stroke="#93a3b2" stroke-width="2.5"/><!--/NDMAP--></svg>
+      <div class="rs-frame" id="g-radar-f0"><img class="rs-frame" src="media/nexrad/nd-refl-20250621-0200utc.png" alt=""></div>
+      <div class="rs-frame" id="g-radar-f1"><img class="rs-frame" src="media/nexrad/nd-refl-20250621-0300utc.png" alt=""></div>
+      <div class="rs-frame" id="g-radar-f2"><img class="rs-frame" src="media/nexrad/nd-refl-20250621-0405utc.png" alt=""></div>
+      <div class="rs-frame" id="g-radar-f3"><img class="rs-frame" src="media/nexrad/nd-refl-20250621-0500utc.png" alt=""></div>
+      <div class="rs-frame" id="g-radar-f4"><img class="rs-frame" src="media/nexrad/nd-refl-20250621-0600utc.png" alt=""></div>
+      <svg class="rs-svg" viewBox="0 0 1300 841">
+        <path d="M0,48 L1300,48" fill="none" stroke="#5a768f" stroke-width="2" stroke-dasharray="10 7"/>
+        <g id="g-radar-marks" stroke="#f2f5f8" stroke-width="5" stroke-linecap="round"></g>
+        <circle id="g-radar-endring" cx="1095" cy="615" r="14" fill="none" stroke="#e74c3c" stroke-width="4"/>
+        <text id="g-radar-t-end" class="rs-lab" x="1060" y="690" text-anchor="end">Enderlin</text>
+        <g id="g-radar-sc1"><path d="M0,0 L-40,-40" stroke="#f2f5f8" stroke-width="3"/><text class="rs-lab" x="-48" y="-48" text-anchor="end">Supercell 1</text></g>
+        <g id="g-radar-sc2"><path d="M0,0 L-40,40" stroke="#f2f5f8" stroke-width="3"/><text class="rs-lab" x="-48" y="70" text-anchor="end">Supercell 2</text></g>
+        <g id="g-radar-der"><text class="rs-lab" x="700" y="190" fill="#e8c56a">Derecho</text><path d="M830,200 L960,290 M936,292 L960,290 L952,268" fill="none" stroke="#e8c56a" stroke-width="4"/></g>
+      </svg>
+    </div>
+  </div>
+  <div class="rs-scan" id="g-radar-scan"></div>
+  <div class="rs-stamp" id="g-radar-s0">NEXRAD Mosaic · 02:00 UTC · 9:00 PM CDT</div>
+  <div class="rs-stamp" id="g-radar-s1">NEXRAD Mosaic · 03:00 UTC · 10:00 PM CDT</div>
+  <div class="rs-stamp" id="g-radar-s2">NEXRAD Mosaic · 04:05 UTC · 11:05 PM CDT</div>
+  <div class="rs-stamp" id="g-radar-s3">NEXRAD Mosaic · 05:00 UTC · 12:00 AM CDT</div>
+  <div class="rs-stamp" id="g-radar-s4">NEXRAD Mosaic · 06:00 UTC · 1:00 AM CDT</div>
+  <div class="rs-rail" id="g-radar-railbg"></div>
+  <div class="rs-eb" id="g-radar-eb">North Dakota · June 20</div>
+  <div class="rs-cnt" id="g-radar-cnt"><span id="g-radar-cntv">0</span></div>
+  <div class="rs-clab" id="g-radar-clab">Tornadoes</div>
+  <div class="rs-row" id="g-radar-r1"><div class="rs-val">Outbreak · June 19-22, 2025</div><div class="rs-rlab">Tornadoes and a Derecho</div></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-radar", P = "#g-radar-";
+  /* cues: audio/a3-s5.words.json + a3-s6.words.json, episode s minus host start 730.80 */
+  const CUES = {
+    cells: 2.542,    /* Most supercells never @733.996; labels wait for the 03:00 frame (in 2.2-3.0) */
+    night: 4.664,    /* A night with that many @736.118 */
+    enderlin: 6.765, /* Enderlin tornado @738.219 */
+    of24: 8.356,     /* one of the 24 @739.81 */
+    june: 11.499,    /* June 19th @742.953 */
+    derecho: 14.290   /* derecho @745.744 */
+  };
+  const DUR = 20.034;
+  /* NCEI Storm Events, ND tornado segments 20 June 2025 (CST), chronological; image px x0,y0,x1,y1,isEnderlin */
+  const MARKS = [[929.7,553.0,933.6,552.6,0],[456.6,548.7,458.3,548.8,0],[483.5,541.0,501.9,534.8,0],[949.2,547.0,952.3,545.5,0],[949.2,547.0,947.8,531.5,0],[932.3,623.3,932.8,623.9,0],[979.9,557.3,983.1,559.8,0],[947.8,531.5,943.5,532.5,0],[547.6,468.7,548.7,468.4,0],[769.0,542.9,788.6,551.4,0],[1005.9,642.8,1007.5,642.8,0],[788.6,551.4,808.0,541.5,0],[1018.8,639.2,1027.3,626.7,0],[1032.7,631.0,1031.6,629.4,0],[1007.2,554.7,1025.0,562.9,0],[1144.0,492.4,1173.1,482.5,0],[1144.0,482.9,1163.5,477.9,0],[1166.3,507.3,1205.8,494.4,0],[874.1,412.7,890.4,400.9,0],[1088.2,631.3,1099.5,617.7,1],[1099.5,617.7,1091.8,598.9,1],[1100.9,607.9,1115.6,617.6,0],[1115.6,617.6,1120.6,619.6,0],[1106.6,622.7,1108.9,624.5,0],[1157.9,602.3,1174.9,612.7,0],[1160.4,602.6,1162.4,603.8,0],[1165.3,602.5,1170.9,604.8,0],[1177.7,609.1,1179.7,610.6,0],[1047.4,533.7,1064.3,531.6,0]];
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + "f1", P + "f2", P + "f3", P + "f4", P + "s1", P + "s2", P + "s3", P + "s4"], { autoAlpha: 0 }, 0);
+  tl.set([P + "endring", P + "t-end", P + "sc1", P + "sc2", P + "der", P + "eb", P + "cnt", P + "clab", P + "r1"], { autoAlpha: 0 }, 0);
+  tl.set(P + "sc1", { x: 1016, y: 547 }, 0);
+  tl.set(P + "sc2", { x: 1016, y: 641 }, 0);
+
+  /* whole window: slow push on the state, scan line */
+  tl.fromTo(P + "world", { scale: 1, transformOrigin: "80% 70%" }, { scale: 1.07, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "scan", { y: 0 }, { y: 760, duration: 5, ease: "none", repeat: 3, yoyo: true }, 0);
+
+  /* radar frames through the night (crossfades) */
+  tl.to(P + "f1", { autoAlpha: 1, duration: 0.8, ease: "none" }, 2.2);
+  tl.to(P + "s0", { autoAlpha: 0, duration: 0.3 }, 2.2);
+  tl.to(P + "s1", { autoAlpha: 1, duration: 0.3 }, 2.5);
+  tl.to(P + "f2", { autoAlpha: 1, duration: 0.8, ease: "none" }, 5.3);
+  tl.to(P + "s1", { autoAlpha: 0, duration: 0.3 }, 5.3);
+  tl.to(P + "s2", { autoAlpha: 1, duration: 0.3 }, 5.6);
+  tl.to(P + "f3", { autoAlpha: 1, duration: 0.8, ease: "none" }, 13.3);
+  tl.to(P + "s2", { autoAlpha: 0, duration: 0.3 }, 13.3);
+  tl.to(P + "s3", { autoAlpha: 1, duration: 0.3 }, 13.6);
+  tl.to(P + "f4", { autoAlpha: 1, duration: 0.8, ease: "none" }, 17.0);
+  tl.to(P + "s3", { autoAlpha: 0, duration: 0.3 }, 17.0);
+  tl.to(P + "s4", { autoAlpha: 1, duration: 0.3 }, 17.3);
+
+  /* two supercells, labelled on the 03:00 frame, followed to 04:05 */
+  tl.fromTo(P + "sc1", { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, CUES.cells);
+  tl.fromTo(P + "sc2", { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, CUES.cells + 0.2);
+  tl.to(P + "sc1", { x: 1227, y: 486, duration: 0.9, ease: "power2.inOut" }, 5.3);
+  tl.to(P + "sc2", { x: 1095, y: 617, duration: 0.9, ease: "power2.inOut" }, 5.3);
+  /* supercell 2 is the Enderlin storm: its label hands over to "Enderlin" */
+  tl.to(P + "sc2", { autoAlpha: 0, duration: 0.3 }, CUES.enderlin - 0.3);
+  tl.to(P + "sc1", { autoAlpha: 0, duration: 0.4 }, 12.9);
+
+  /* rail: the count */
+  tl.fromTo(P + "eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.3);
+  tl.fromTo(P + "cnt", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.night);
+  tl.fromTo(P + "clab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.night + 0.3);
+  const N = { v: 0 }, nv = document.querySelector(P + "cntv");
+  tl.fromTo(N, { v: 1 }, { v: 24, duration: CUES.of24 - CUES.night, ease: "power2.out", onUpdate: () => { if (nv) nv.textContent = Math.round(N.v); } }, CUES.night);
+  tl.fromTo(P + "cnt", { scale: 1 }, { scale: 1.12, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "0% 50%" }, CUES.of24);
+
+  /* Enderlin, one of them */
+  tl.fromTo(P + "endring", { autoAlpha: 1, attr: { r: 14 } }, { autoAlpha: 0, attr: { r: 60 }, duration: 1.0, ease: "power2.out", repeat: 4, repeatDelay: 0.15 }, CUES.enderlin);
+  tl.fromTo(P + "t-end", { autoAlpha: 0, x: 10 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.enderlin);
+  tl.to(P + "t-end", { autoAlpha: 0, duration: 0.4 }, 12.9);
+
+  /* the outbreak window */
+  tl.fromTo(P + "r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.june);
+
+  /* the derecho line sweeps through */
+  tl.fromTo(P + "der", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, CUES.derecho);
+  tl.to(P + "der", { x: 110, duration: 3.6, ease: "none" }, 15.0);
+  tl.to(P + "der", { x: 170, duration: 1.4, ease: "none" }, 18.6);
+  tl.to([P + "eb", P + "cnt", P + "clab", P + "r1"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+
+  /* track marks tick in, chronological; Enderlin's two county segments land on "Enderlin" */
+  const g = document.querySelector(P + "marks");
+  if (g) {
+    MARKS.forEach((m, i) => {
+      const ln = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      ln.setAttribute("id", ID + "-mk" + i);
+      ln.setAttribute("x1", m[0]); ln.setAttribute("y1", m[1]); ln.setAttribute("x2", m[2] + 0.01); ln.setAttribute("y2", m[3]);
+      if (m[4]) { ln.setAttribute("stroke", "#e74c3c"); ln.setAttribute("stroke-width", "8"); }
+      g.appendChild(ln);
+      const at = m[4] ? CUES.enderlin : (i < 19 ? CUES.night + i * 0.12 : CUES.enderlin + 0.25 + (i - 21) * 0.17);
+      tl.set(ln, { autoAlpha: 0 }, 0);
+      tl.fromTo(ln, { autoAlpha: 0, attr: { "stroke-width": 16 } }, { autoAlpha: 1, attr: { "stroke-width": m[4] ? 8 : 5 }, duration: 0.3, ease: "power2.out" }, at);
+    });
+  }
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

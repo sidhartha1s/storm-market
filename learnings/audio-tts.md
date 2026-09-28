@@ -2,22 +2,28 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
-## 2026-09-28 - homograph gate: a respelling is picked by measurement, never by guess
+## 2026-09-27 - ep-enderlin: the "lyvz" respelling voiced "livs"; plain "lives" is correct; gate shipped 2026-09-28
 
-- pocket-TTS said "lives" (as in "lost their lives") as /lɪvz/ this week; an earlier respelling "lyvz" also
-  produced /ɪ/. Plain "lives" on its own measured F1 769 Hz / 215 ms vowel = /aɪ/, the correct sound. The lesson:
-  never guess a respelling; probe it with the TTS and measure (F1 onset, vowel length) or listen, then pick.
-- Fix: `references/homographs.md` lists channel-relevant heteronyms (live/lives, wind/winds/wound, lead, tear/tears,
-  close, minute, record, desert, row, bow, read, object, present, content, produce, refuse, invalid, moderate,
-  estimate, separate, project, polish, bass, dove, sow, use, house, excuse, survey, increase, decrease) with both
-  senses and a one-line hint each. `scripts/homograph_scan.py` reads it, scans an episode's narration through the
-  same `tts_episode.parse_segments` every other narration tool uses, and reports every occurrence with its sentence
-  so the builder probes it before the render.
-- Severity: WARN, never FAIL, matching how `flag_words.py` treats a soft hit. Whether a reported occurrence
-  actually needs a respell depends on the sense used in that sentence, which a script cannot judge; hard-failing
-  every occurrence would block a render on lines that are already correct and make the gate impossible to keep
-  green. Wired into `run_gates.py` right after `flag_words.py`.
-- The rule stands for every future homograph, not just "lives": respelling is picked by measurement, never by guess.
+- **Owner:** "lives" (lost their lives) came out /lɪvz/, must be /laɪvz/. The TTS copy had respelled it "lyvz".
+- **Measured** (pocket-TTS + atempo 1.10, "Three people lost their ___ that night.", Praat F1 of the vowel after /l/):
+  "lyvz" F1 peak 506 Hz / 60 ms, "lighvz" 509 / 55, "laivz" 512 / 80 = /ɪ/. Plain "lives" 769 Hz / 215 ms,
+  "lyves" 693 / 195, "lighves" 735 / 235 = /aɪ/. "lie-vz" is /aɪ/ but adds a syllable (whisper: "liveys").
+  All 9 enderlin segments re-recorded with plain "lives" measured /aɪ/ (F1 peak 739-882 Hz, 225-305 ms).
+- **Rule:** the noun "lives" after their/took/take needs no respelling. A respelling ending in a bare "y"+consonant
+  cluster ("lyvz") reads as short /ɪ/. Decide a respelling by probing candidates and measuring F1/duration
+  (/aɪ/ opens to F1 about 650-850 Hz for 150-250 ms, /ɪ/ stays under about 500 Hz), not by guessing. Pocket-TTS looks
+  deterministic (z1-s1 re-record: silence timings identical to the microsecond up to the changed word), so a line
+  probably cannot be re-rolled for a shorter read; 3 of 9 re-records ran 5.9-9.2 % long and need index.html retiming.
+- **Gate (2026-09-28):** `references/homographs.md` is the single home for the word list (both senses + a hint,
+  scoped to the ones actually known to go wrong in TTS narration on this channel); `scripts/homograph_scan.py`
+  reads it, scans an episode's narration through the same `tts_episode.parse_segments` every other narration tool
+  uses, and prints one line per flagged word (occurrence count + its first sentence) so the builder probes it
+  before the render. WARN, never FAIL, matching how `flag_words.py` treats a soft hit — whether an occurrence
+  actually needs a respell depends on the sense used in that sentence, which a script cannot judge, so hard-failing
+  every hit would block a render on lines that are already correct. Wired into `run_gates.py` right after
+  `flag_words.py`. The rule above is what the gate exists to enforce for every future homograph, not just "lives":
+  a blind respelling caused this defect, the plain word was right, and a respelling is picked by measurement, never
+  by guess.
 
 ## 2026-09-22 - ep-1974 shipped 17:30 against a 22:00 target: three guesses stacked
 

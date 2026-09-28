@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-drought-timeline-a1 (B2): teaser for the EF5 drought. Host 366.31 -> 378.363 (12.053 s, track 2); the chapter
+     blackout follows at 378.363, so the comp ends on the still-drawing bar (no exit).
+     Cues: episode seconds from audio/a1-s18 words.json (mg_specs.md block 5); local = cue - H.
+     The ceiling (red lid from g-ef-scale-a1) sits over a 2013-2025 axis; Moore 2013 is the last mark; an empty bar
+     draws forward from Moore from 371.0; "12 Years" 375.51, "No EF5" 376.87.
+     Continuous: light sweep, lid pulse, the bar's glowing leading edge. Year x = 260 + (year - 2013) * 110. -->
+<template>
+<style>
+  .dta1-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .dta1-sweep { position:absolute; left:0; top:0; width:260px; height:1080px;
+    background:linear-gradient(100deg, transparent, rgba(127,178,229,.08), transparent); }
+  .dta1-lid { position:absolute; left:200px; top:420px; width:1520px; height:10px; background:#d0121f; box-shadow:0 0 22px rgba(208,18,31,.6); }
+  .dta1-axis { position:absolute; left:220px; top:760px; width:1480px; height:3px; background:#5a768f; }
+  .dta1-tick { position:absolute; top:748px; width:3px; height:26px; background:#5a768f; }
+  .dta1-yr { position:absolute; top:786px; width:120px; margin-left:-60px; text-align:center; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2; }
+  .dta1-mark { position:absolute; left:296px; top:600px; width:12px; height:160px; background:#e74c3c; border-radius:6px 6px 0 0; }
+  .dta1-mlab { position:absolute; left:150px; top:540px; font-weight:700; font-size:32px; color:#f2f5f8; white-space:nowrap; }
+  .dta1-bar { position:absolute; left:308px; top:690px; width:1300px; height:40px; border-radius:0 20px 20px 0;
+    background:linear-gradient(90deg, rgba(90,118,143,.15), rgba(90,118,143,.45)); border:2px dashed rgba(147,163,178,.5); box-sizing:border-box; }
+  .dta1-edge { position:absolute; left:0; top:676px; width:14px; height:68px; border-radius:7px; background:#f2f5f8; box-shadow:0 0 26px 8px rgba(232,197,106,.7); }
+  .dta1-big { position:absolute; left:660px; top:470px; width:600px; text-align:center; font-family:'AbrilFig', Georgia, serif; font-size:130px; line-height:1;
+    color:#d0121f; text-shadow:0 6px 26px rgba(0,0,0,.8); white-space:nowrap; }
+  .dta1-no { position:absolute; left:660px; top:860px; width:600px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-size:60px; color:#f2f5f8; white-space:nowrap; }
+</style>
+<div class="dta1-root" data-composition-id="g-drought-timeline-a1" data-width="1920" data-height="1080" data-duration="12.053">
+  <div class="dta1-sweep" id="dta1-sweep"></div>
+  <div class="dta1-lid" id="dta1-lid"></div>
+  <div class="dta1-axis" id="dta1-axis"></div>
+  <div id="dta1-ticks"></div>
+  <div class="dta1-yr" id="dta1-y15" style="left:480px">2015</div>
+  <div class="dta1-yr" id="dta1-y20" style="left:1030px">2020</div>
+  <div class="dta1-yr" id="dta1-y25" style="left:1580px">2025</div>
+  <div class="dta1-mark" id="dta1-mark"></div>
+  <div class="dta1-mlab" id="dta1-mlab">Moore 2013</div>
+  <div class="dta1-bar" id="dta1-bar"></div>
+  <div class="dta1-edge" id="dta1-edge"></div>
+  <div class="dta1-big" id="dta1-big">12 Years</div>
+  <div class="dta1-no" id="dta1-no">No EF5</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  /* one-shot DOM build: a tick per year 2013..2025 */
+  const tk = document.getElementById("dta1-ticks");
+  for (let y = 0; y <= 12; y++) { const d = document.createElement("div"); d.className = "dta1-tick"; d.id = "dta1-tk" + y; d.style.left = (259 + y * 110) + "px"; tk.appendChild(d); }
+  const H = 366.31;
+  const tl = gsap.timeline({ paused: true });
+  const P = "#dta1-";
+  tl.set([P+"mlab", P+"big", P+"no", P+"edge", P+"y15", P+"y20", P+"y25", ".dta1-tick"], { autoAlpha: 0 }, 0);
+  tl.set([P+"lid", P+"axis", P+"bar"], { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set(P+"mark", { scaleY: 0, transformOrigin: "center bottom" }, 0);
+
+  /* continuous: sweep across the whole window */
+  tl.fromTo(P+"sweep", { x: -300 }, { x: 2200, duration: 12.1, ease: "none" }, 0);
+  /* the axis and its years */
+  tl.to(P+"axis", { scaleX: 1, duration: 0.7, ease: "power3.out" }, 0.1);
+  tl.fromTo(".dta1-tick", { autoAlpha: 0, scaleY: 0 }, { autoAlpha: 1, scaleY: 1, duration: 0.2, ease: "power3.out", stagger: 0.04 }, 0.3);
+  tl.fromTo([P+"y15", P+"y20", P+"y25"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out", stagger: 0.12 }, 0.6);
+  /* SAME CEILING @366.73 */
+  tl.to(P+"lid", { scaleX: 1, duration: 0.6, ease: "power4.out" }, 366.73 - H);
+  tl.to(P+"lid", { scaleY: 1.8, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 7 }, 367.4 - H);
+  /* Moore 2013, the last mark @367.0 */
+  tl.to(P+"mark", { scaleY: 1, duration: 0.4, ease: "back.out(1.8)" }, 367.0 - H);
+  tl.fromTo(P+"mlab", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 367.1 - H);
+  /* the empty bar starts drawing @371.0 and is still drawing when the blackout cuts in */
+  tl.set(P+"edge", { autoAlpha: 1, x: 302 }, 371.0 - H);
+  tl.to(P+"bar", { scaleX: 0.9, duration: 7.4, ease: "none" }, 371.0 - H);
+  tl.to(P+"edge", { x: 1472, duration: 7.4, ease: "none" }, 371.0 - H);
+  /* 12 YEARS @375.51 · WITHOUT A SINGLE EF5 @376.87 */
+  tl.fromTo(P+"big", { autoAlpha: 0, scale: 1.8 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 375.51 - H);
+  tl.fromTo(P+"no", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 376.87 - H);
+  window.__timelines["g-drought-timeline-a1"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

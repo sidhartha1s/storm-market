@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-radar-warning (B1): the warning comes first. Host 1454.28 -> 1461.00 (6.72 s, track 2).
+     Generic county geometry and a drawn storm: no real place or time is claimed. -->
+<template>
+<style>
+  #g-radar-warning-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 40% 50%, #0b1016 0%, #030507 78%); }
+  .rw-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .rw-eb { position:absolute; left:1340px; top:330px; font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
+  .rw-hl { position:absolute; left:1340px; top:372px; font-family:'Arial Black', Arial, sans-serif; font-size:52px; line-height:1.1; color:#e74c3c; white-space:nowrap; }
+  .rw-mid { position:absolute; left:1340px; top:470px; font-size:30px; font-weight:700; color:#dfe7ee; white-space:nowrap; }
+</style>
+<div id="g-radar-warning-root" data-composition-id="g-radar-warning" data-width="1920" data-height="1080" data-duration="6.72">
+  <svg class="rw-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <radialGradient id="g-radar-warning-cell" cx="0.5" cy="0.5" r="0.5">
+        <stop offset="0" stop-color="#dc3240"/><stop offset="0.35" stop-color="#e18c28"/><stop offset="0.65" stop-color="#46af50"/><stop offset="1" stop-color="#1e783c" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <g id="g-radar-warning-world">
+      <g fill="none" stroke="#2a3644" stroke-width="2.5">
+        <path d="M100,160 L1260,150 L1266,946 L96,940 Z" fill="#0b1016" stroke="#4a5560"/>
+        <path d="M290,158 L296,420 L288,690 L294,942"/><path d="M482,156 L476,380 L486,650 L480,943"/><path d="M676,154 L682,430 L674,700 L680,944"/>
+        <path d="M870,153 L864,400 L874,680 L868,945"/><path d="M1064,151 L1070,410 L1062,690 L1068,946"/>
+        <path d="M98,356 L400,350 L700,360 L1000,352 L1263,356"/><path d="M97,552 L380,558 L720,548 L1010,556 L1264,550"/><path d="M96,748 L420,742 L690,752 L990,744 L1265,750"/>
+      </g>
+      <g id="g-radar-warning-storm"><g id="g-radar-warning-cellg">
+        <ellipse cx="0" cy="0" rx="190" ry="130" fill="url(#g-radar-warning-cell)" opacity="0.9"/>
+        <path d="M60,70 C110,90 120,140 80,160 C50,170 30,150 40,130" fill="none" stroke="#dc3240" stroke-width="16" stroke-linecap="round" opacity="0.9"/>
+      </g></g>
+      <path id="g-radar-warning-poly" d="M540,700 L760,430 L1080,520 L860,790 Z" fill="#e74c3c" fill-opacity="0" stroke="#e74c3c" stroke-width="6" stroke-linejoin="round"/>
+      <g id="g-radar-warning-arrow"><path d="M1320,500 C1230,520 1170,560 1110,610 M1128,588 L1108,612 L1138,614" fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round"/></g>
+    </g>
+  </svg>
+  <div class="rw-eb" id="g-radar-warning-eb">The Number That Matters</div>
+  <div class="rw-hl" id="g-radar-warning-hl">Tornado Warning</div>
+  <div class="rw-mid" id="g-radar-warning-mid">Before Any Survey</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-radar-warning", P = "#g-radar-warning-";
+  /* cues: audio/a6-s8.words.json, episode s minus host start 1454.28 */
+  const CUES = { country: 0.920 /* tornado country @1456.436 */, matters: 2.320 /* the number that matters @1457.836 */, warning: 3.800 /* warning @1459.316 */, before: 5.000 /* before any survey @1460.516 */ };
+  const DUR = 6.72;
+  const tl = gsap.timeline({ paused: true });
+  const poly = document.querySelector(P + "poly");
+  const L = poly ? Math.ceil(poly.getTotalLength()) + 1 : 1600;
+  if (poly) poly.setAttribute("stroke-dasharray", L);
+  tl.set(P + "poly", { strokeDashoffset: L }, 0);
+  tl.set([P + "eb", P + "hl", P + "mid", P + "arrow"], { autoAlpha: 0 }, 0);
+
+  /* whole window: the storm moves northeast, slow push */
+  tl.fromTo(P + "storm", { x: 360, y: 760 }, { x: 760, y: 520, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "world", { scale: 1, svgOrigin: "700 560" }, { scale: 1.05, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "cellg", { scale: 0.92, svgOrigin: "0 0" }, { scale: 1.06, duration: 0.8, ease: "sine.inOut", repeat: 7, yoyo: true }, 0);
+
+  tl.fromTo(P + "eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.matters);
+  tl.fromTo(P + "poly", { strokeDashoffset: L }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.inOut" }, CUES.warning);
+  tl.to(P + "poly", { attr: { "fill-opacity": 0.2 }, duration: 0.4, ease: "power2.out" }, CUES.warning + 0.6);
+  tl.fromTo(P + "hl", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.warning);
+  tl.fromTo(P + "arrow", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.before);
+  tl.fromTo(P + "mid", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.before);
+  tl.to([P + "eb", P + "hl", P + "mid"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
