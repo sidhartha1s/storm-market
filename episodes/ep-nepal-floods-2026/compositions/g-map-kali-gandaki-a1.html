@@ -76,19 +76,19 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-map-kali-gandaki-a1", P = "#g-map-kali-gandaki-a1-";
-  /* estimated at 175 wpm from the paragraph start "A gorge this narrow" (HOST start) */
+  /* retimed 29 Sep 26 from retime-sheet.md word times (host 167.957+15.808). The host window ends at
+     "...surge of mud." — "By the 28th" / "cut through again" are not spoken in this window, so the
+     Sept 28 row, the breach and the lake draw-back are DROPPED (never revealed; row DOM kept, unused). */
   const CUES = {
-    river: 4.5,   /* CUE "whole river" @est 4.5 */
-    debris: 5.1,  /* CUE "Debris that lands" @est 5.1 */
-    dam: 8.9,     /* CUE "natural dam" @est 8.9 */
-    lake: 11.0,   /* CUE "lake behind it" @est 11.0 */
-    gives: 12.0,  /* CUE "When that dam" @est 12.0 */
-    surge: 16.1,  /* CUE "surge of mud" @est 16.1 */
-    sept28: 17.1, /* CUE "By the twenty eighth" @est 17.1 */
-    cut: 23.7     /* CUE "cut through again" @est 23.7 */
+    river: 4.03,   /* CUE "river." @4.18 (sheet) */
+    debris: 5.05,  /* CUE "Debris" @5.20 (sheet) */
+    dam: 7.73,     /* CUE "dam" @7.88 (sheet) */
+    lake: 9.29,    /* CUE "lake" @9.44 (sheet) */
+    gives: 11.23,  /* CUE "gives" @11.38 (sheet) */
+    surge: 14.39   /* CUE "surge" @14.54 (sheet) */
   };
-  const DUR = 25.7;
-  const EXIT = 25.1;
+  const DUR = 15.808;
+  const EXIT = 15.108;
   const tl = gsap.timeline({ paused: true });
   const lenOf = (id) => Math.ceil(document.querySelector(P + id).getTotalLength()) + 1;
   const LAKE = lenOf("lake"), DEB = lenOf("debline"), UP = lenOf("upline"), DN = lenOf("dnline");
