@@ -145,16 +145,11 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "t-dn", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.surge + 0.3);
   tl.fromTo(P + "dn", { y: 0 }, { y: 10, duration: 0.8, ease: "sine.inOut", repeat: 7, yoyo: true }, CUES.surge + 0.9);
 
-  /* ---- Sept 28 ---- */
-  tl.fromTo(P + "r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.sept28);
-
-  /* ---- the water cut through: breach, the lake draws back ---- */
-  tl.to(P + "dam", { scaleY: 0.35, autoAlpha: 0.45, svgOrigin: "538 550", duration: 0.6, ease: "power3.in" }, CUES.cut);
-  tl.to(P + "lake", { strokeDashoffset: -LAKE * 0.7, duration: 1.4, ease: "power2.inOut" }, CUES.cut + 0.2);
-  tl.fromTo(P + "r2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.cut + 0.2);
+  /* ---- Sept 28 row and the breach/draw-back: DROPPED — "By the 28th" and "cut through again" are not
+     spoken inside this shorter host window; r1/r2 stay hidden (set autoAlpha 0 above), DOM kept. ---- */
 
   /* ---- exit: rail text slides out; map holds its drift ---- */
-  tl.to([P + "eb", P + "r1", P + "r2"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, EXIT);
+  tl.to(P + "eb", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, EXIT);
 
   window.__timelines[ID] = tl;
 })();
