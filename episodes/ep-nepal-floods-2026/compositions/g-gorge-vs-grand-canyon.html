@@ -47,7 +47,7 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const DUR = 14.5;
+  const DUR = 13.361;
   tl.set(["#gc-kalilab", "#gc-canyonlab", "#gc-subkali", "#gc-subcanyon", "#gc-ratio"], { autoAlpha: 0 }, 0);
   tl.set(["#gc-kali", "#gc-canyon"], { scaleY: 0 }, 0);
   tl.set("#gc-base", { scaleX: 0, transformOrigin: "left center" }, 0);
@@ -57,22 +57,23 @@ window.__timelines = window.__timelines || {};
 
   tl.to("#gc-base", { scaleX: 1, duration: 0.5, ease: "power3.out" }, 0.2);
 
-  /* EIGHTEEN THOUSAND FEET @7.54: Kali Gandaki bar grows, label lands on the cue */
+  /* "eighteen thousand feet" (2.16-3.10): Kali Gandaki bar grows and lands ON "feet" (3.10) */
   tl.to("#gc-kali", { scaleY: 1, duration: 1.1, ease: "power3.out" }, 2.0);
-  tl.fromTo("#gc-kalilab", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.9);
-  tl.fromTo("#gc-subkali", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 3.1);
+  tl.fromTo("#gc-kalilab", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.7);
+  tl.fromTo("#gc-subkali", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 2.3);
 
-  /* THREE TIMES THE DEPTH @10.29: Grand Canyon bar grows, label lands on the cue */
-  tl.to("#gc-canyon", { scaleY: 1, duration: 0.6, ease: "power3.out" }, 8.0);
-  tl.fromTo("#gc-canyonlab", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.9);
-  tl.fromTo("#gc-subcanyon", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 8.6);
+  /* "three times the depth" (5.10-5.88): ratio tag slams in on "three" (5.10) */
+  tl.fromTo("#gc-ratio", { autoAlpha: 0, scale: 1.5 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 4.95);
+  tl.to("#gc-ratio", { scale: 1.06, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 2 }, 5.5);
 
-  /* GRAND CANYON @12.34: ratio tag slams in */
-  tl.fromTo("#gc-ratio", { autoAlpha: 0, scale: 1.5 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 10.8);
-  tl.to("#gc-ratio", { scale: 1.06, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 2 }, 11.4);
+  /* "of the Grand Canyon" (6.28-6.60): Canyon bar grows and lands ON "Canyon" (6.60) -- 6,000ft is never spoken */
+  tl.to("#gc-canyon", { scaleY: 1, duration: 0.6, ease: "power3.out" }, 6.0);
+  tl.fromTo("#gc-canyonlab", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.2);
+  tl.fromTo("#gc-subcanyon", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 5.8);
 
-  /* exit */
-  tl.to("#gc-stage", { x: 60, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  /* exit, finishing by D-0.1 = 13.261 (after "gave way." ends ~12.60) */
+  tl.to("#gc-stage", { x: 60, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 12.661);
+  tl.to({}, { duration: 0.01 }, DUR - 0.01);
   window.__timelines["g-gorge-vs-grand-canyon"] = tl;
 })();
 </script>
