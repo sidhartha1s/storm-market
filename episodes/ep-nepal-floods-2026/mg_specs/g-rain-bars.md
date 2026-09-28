@@ -37,10 +37,11 @@ x 400 (storm), each 100px wide, baseline y 780.
 
 ## 5. PANEL TEXT (exact) and CUES (175 wpm from beat start; beat = "Just across the border...")
 "NORTHERN INDIA" · "Nine times the rain." · "0.3 IN" / "NORMAL" · "2.6 IN" / "SEPT 26-28" · "9X".
-Cues (s): panel in 0.0 · eyebrow+headline 0.3 · baseline 1.2 · normal bar grows 2.2 /* CUE "two and a half inches
-of rain" @est 3.77 — normal bar lands first as the reference, storm bar lands on its own cue */ · storm bar grows
-3.6, labels land /* CUE "under a third of an inch" @est 8.91 */ · "9X" tag 9.3 /* CUE "nine times as much"
-@est 12.69 */ · hold to 13.5 · exit 13.9-14.5. Duration 14.5s declared.
+Cues (s): panel in 0.0 · eyebrow+headline 0.3 · baseline 1.2 · storm bar grows 2.0, labels land
+/* CUE "two and a half inches of rain" @est 3.77 — the storm figure is spoken first, so the storm bar reveals
+first even though it sits visually right of the normal bar */ · normal bar grows 7.5, labels land
+/* CUE "under a third of an inch" @est 8.91 */ · "9X" tag 11.0 /* CUE "nine times as much" @est 12.69 */ · hold to
+13.5 · exit 13.9-14.5. Duration 14.5s declared.
 
 ## 6. CONTRACT
 Standard contract. `data-composition-id="g-rain-bars"`, timeline at `window.__timelines["g-rain-bars"]`.
