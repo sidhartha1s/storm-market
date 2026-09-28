@@ -6,9 +6,14 @@
      episodes/ep-nepal-floods-2026/mg_specs/g-sep-2024.md. Two-stage card: stage 1 a toll counter ("200+"), stage 2
      a two-month calendar strip (Sept 2024 vs Sept 2026, last days circled), crossfading at the same panel anchor
      so only one fact is on screen at a time.
-     Cues @175wpm from beat start ("Nepal has seen this late September..."): stage 1 in 0.4, counter climbs 2.5-9.94
-     timed to land on CUE "more than two hundred lives" @est 9.94, crossfade to stage 2 at 10.3, grids draw
-     10.6-11.7 landing near CUE "almost the same dates" @est 12.00. Exit 13.4. Duration 14.0s declared. -->
+     Retimed to real words, retime-sheet g-sep-2024 host 344.846 plus 19.409: eyebrow lands on real "late" @1.26 /
+     "September" @1.46 (was est 0.4); place "Kathmandu Valley" NOW has a real spoken anchor at "Kathmandu" @7.62 /
+     "Valley." @8.20 (was chained right after the eyebrow at est 0.75, a guess -- the real line only names
+     Kathmandu Valley much later); counter climb re-anchored to land exactly on real "lives" @11.72 (was est 9.94,
+     kept the same 7.44s climb duration, so it starts earlier, at 4.28, and its continuous onUpdate motion bridges
+     the otherwise-idle gap while the place name is still settling); crossfade to stage 2 on real "on almost the
+     same dates" @13.00-13.98 (was est 10.3); ring-pop lands on real "same" @13.76 / "dates" @13.98 (was est 12.00).
+     Duration 19.409s declared (= host D). -->
 <template>
 <style>
   #root { position:absolute; inset:0; font-family: Arial, sans-serif; color:#f2f5f8; }
@@ -26,7 +31,7 @@
   .s24-calring { position:absolute; width:28px; height:28px; border-radius:50%; border:3px solid #d0121f; margin:-1px; }
   .s24-callab { position:absolute; top:190px; font-weight:700; font-size:19px; letter-spacing:2px; color:#93a3b2; }
 </style>
-<div id="root" data-composition-id="g-sep-2024" data-width="1920" data-height="1080" data-duration="14.0">
+<div id="root" data-composition-id="g-sep-2024" data-width="1920" data-height="1080" data-duration="19.409">
   <div class="s24-panel" id="s24-panel">
     <div class="s24-stage" id="s24-stage1">
       <div class="s24-eb" id="s24-eb1">LATE SEPT 2024</div>
@@ -79,7 +84,7 @@ window.__timelines = window.__timelines || {};
   const rings2026 = buildGrid("s24-grid2026", 5, 3); // circled day = the storm date, schematic position
 
   const tl = gsap.timeline({ paused: true });
-  const DUR = 14.0;
+  const DUR = 19.409;
   tl.set(["#s24-eb1", "#s24-place", "#s24-clab"], { autoAlpha: 0 }, 0);
   tl.set("#s24-stage2", { autoAlpha: 0 }, 0);
   tl.set([...rings2024, ...rings2026], { autoAlpha: 0, scale: 1.6 }, 0);
@@ -89,28 +94,31 @@ window.__timelines = window.__timelines || {};
   /* ambient: panel entrance */
   tl.fromTo("#s24-panel", { x: 660 }, { x: 0, duration: 0.7, ease: "power3.out" }, 0.0);
 
-  /* stage 1: toll card */
-  tl.fromTo("#s24-eb1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.4);
-  tl.fromTo("#s24-place", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.75);
-  tl.set("#s24-clab", { autoAlpha: 1 }, 1.2);
+  /* stage 1: toll card. Eyebrow lands on real "late" @1.26 / "September" @1.46 */
+  tl.fromTo("#s24-eb1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.11);
+  /* place lands on real "Kathmandu" @7.62 / "Valley." @8.20 -- much later than the old @est guess, since the
+     narration only names Kathmandu Valley after the "two years ago" clause */
+  tl.fromTo("#s24-place", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.47);
+  tl.set("#s24-clab", { autoAlpha: 1 }, 2.98);
   const cnt = { v: 0 };
-  /* MORE THAN TWO HUNDRED LIVES @9.94: counter climbs slowly, timed to land exactly on the cue */
+  /* real words "took" @10.80 / "more" @10.96 / "than" @11.20 / "200" @11.42 / "lives" @11.72: counter climbs
+     slowly (same 7.44s duration as authored), timed to land exactly on "lives" */
   tl.to(cnt, { v: 200, duration: 7.44, ease: "power2.out", onUpdate: function () {
     const e = document.getElementById("s24-cnum"); if (e) e.textContent = Math.round(cnt.v) + "+";
-  } }, 2.5);
-  tl.to("#s24-cnum", { scale: 1.05, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 9.94);
+  } }, 4.28);
+  tl.to("#s24-cnum", { scale: 1.05, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 11.72);
 
-  /* crossfade to stage 2 (calendar), stage 1 leaves before stage 2 arrives, never both on screen */
-  tl.to("#s24-stage1", { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 10.3);
-  tl.to("#s24-stage2", { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 10.3);
-  tl.fromTo(["#s24-grid2024", "#s24-grid2026"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.15 }, 10.6);
-  /* ALMOST THE SAME DATES @12.00: both circled days pop in together */
-  tl.to([...rings2024, ...rings2026], { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 11.5);
-  tl.fromTo(["#s24-lab2024", "#s24-lab2026"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35 }, 11.7);
-  tl.to([...rings2024, ...rings2026], { scale: 1.15, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 12.0);
+  /* crossfade to stage 2 (calendar) on real "on" @13.00, stage 1 leaves before stage 2 arrives, never both on screen */
+  tl.to("#s24-stage1", { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 12.85);
+  tl.to("#s24-stage2", { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 12.85);
+  tl.fromTo(["#s24-grid2024", "#s24-grid2026"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.15 }, 13.15);
+  /* real words "same" @13.76 / "dates" @13.98: both circled days pop in together */
+  tl.to([...rings2024, ...rings2026], { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 13.61);
+  tl.fromTo(["#s24-lab2024", "#s24-lab2026"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35 }, 13.81);
+  tl.to([...rings2024, ...rings2026], { scale: 1.15, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 14.11);
 
-  /* exit */
-  tl.to("#s24-panel", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  /* exit, finishes by D - 0.1 (last real word "snow." @18.40) */
+  tl.to("#s24-panel", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 18.55);
   window.__timelines["g-sep-2024"] = tl;
 })();
 </script>

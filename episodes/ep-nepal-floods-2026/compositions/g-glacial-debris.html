@@ -5,8 +5,13 @@
 <!-- g-glacial-debris (A2): cutaway of the Kali Gandaki valley wall, grey bedrock with a loose tan glacial
      debris layer draped along its face, water seeping through the tan layer fast (clipped to the tan band
      only). SCHEMATIC, NOT TO SCALE. Brief: mg_specs/g-glacial-debris.md.
-     Cues (local, @175wpm): headline+bedrock 0.4, tan layer 3.0, labels 4.0/5.5, seep dots 12.34, exit 18.0.
-     Duration 20s. -->
+     Retimed to real words, retime-sheet g-glacial-debris host 304.829 plus 17.771. Tan layer re-anchored to real
+     "covered" @4.44 (was est 3.0); GLACIAL DEBRIS label to real "glacial" @5.18 (was est 5.5, already close).
+     SEEP DOTS DELIBERATELY NOT anchored to their real words "water moves through it fast" @14.20-15.20: a
+     news-clip cutaway sits on track 3 over comp-local 11.771-17.771 (index.html 316.6-322.6, orchestrator note),
+     so no key reveal may land in that window. The dot reveal is moved early to 9.0 (fully established and
+     looping before the cutaway starts at 11.771); the established fast-loop motion then continues under the
+     cutaway, which is not a new reveal. Duration 17.771s declared (= host D). -->
 <template>
 <style>
   .gd-wrap { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
@@ -16,7 +21,7 @@
   .gd-lab { position:absolute; font-weight:700; font-size:22px; letter-spacing:3px; white-space:nowrap; }
   .gd-schem { position:absolute; left:96px; top:1000px; font-weight:700; font-size:20px; letter-spacing:2px; color:#93a3b2; }
 </style>
-<div class="gd-wrap" data-composition-id="g-glacial-debris" data-width="1920" data-height="1080" data-duration="20.0">
+<div class="gd-wrap" data-composition-id="g-glacial-debris" data-width="1920" data-height="1080" data-duration="17.771">
   <svg class="gd-svg" viewBox="0 0 1920 1080">
     <defs>
       <linearGradient id="gd-rock" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a3644"/><stop offset="1" stop-color="#15202b"/></linearGradient>
@@ -43,7 +48,7 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const D = 20.0;
+  const D = 17.771;
   const SEEPS = ["#gd-s1", "#gd-s2", "#gd-s3", "#gd-s4"];
 
   tl.set(["#gd-bedrock", "#gd-band", "#gd-head", "#gd-lbed", "#gd-ldeb", "#gd-schem", "#gd-leadbed", "#gd-leaddeb"], { autoAlpha: 0 }, 0);
@@ -57,23 +62,28 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#gd-head", { autoAlpha: 0, y: -20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.4);
   tl.to("#gd-bedrock", { autoAlpha: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.6);
 
-  /* COVERED IN OLD GLACIAL DEBRIS: tan layer drapes on @3.0 */
-  tl.fromTo("#gd-band", { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 3.0);
+  /* real words "covered" @4.44 / "glacial" @5.18 / "debris." @5.60: tan layer drapes on */
+  tl.fromTo("#gd-band", { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 4.29);
 
-  /* labels: BEDROCK @4.0, GLACIAL DEBRIS @5.5 */
-  tl.fromTo(["#gd-lbed", "#gd-leadbed"], { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 4.0);
-  tl.fromTo(["#gd-ldeb", "#gd-leaddeb"], { autoAlpha: 0, x: 14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 5.5);
-  tl.fromTo("#gd-schem", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 5.9);
+  /* labels: BEDROCK sequenced after the tan drape (no single spoken word names it); GLACIAL DEBRIS lands on the
+     real words "glacial" @5.18 / "debris." @5.60 */
+  tl.fromTo(["#gd-lbed", "#gd-leadbed"], { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 4.5);
+  tl.fromTo(["#gd-ldeb", "#gd-leaddeb"], { autoAlpha: 0, x: 14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 5.03);
+  tl.fromTo("#gd-schem", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 5.6);
 
-  /* WATER MOVES THROUGH IT FAST @12.34: seep dots race down the tan band, looping, each pass < 1.2s */
+  /* DELIBERATELY re-anchored away from the real words "water moves through it fast" @14.20-15.20: that span sits
+     inside the news-clip cutaway window (comp-local 11.771-17.771) where no key reveal is allowed. Moved to 9.0
+     so the dots are fully revealed and already fast-looping before the cutaway starts at 11.771; the loop then
+     continues (established motion, not a new reveal) through and past the cutaway. Each pass stays < 1.2s. */
   SEEPS.forEach(function (sel, i) {
-    tl.to(sel, { autoAlpha: 1, duration: 0.2 }, 12.34 + i * 0.25);
-    tl.fromTo(sel, { attr: { cx: 865, cy: 237 } }, { attr: { cx: 265, cy: 937 }, duration: 1.05, ease: "none", repeat: 4, repeatDelay: 0.1 }, 12.34 + i * 0.25);
+    tl.to(sel, { autoAlpha: 1, duration: 0.2 }, 9.0 + i * 0.25);
+    tl.fromTo(sel, { attr: { cx: 865, cy: 237 } }, { attr: { cx: 265, cy: 937 }, duration: 1.05, ease: "none", repeat: 4, repeatDelay: 0.1 }, 9.0 + i * 0.25);
   });
 
-  /* exit @18.0 */
+  /* exit, finishes by D - 0.1 (last real word "fast." @16.64, inside the cutaway; the exit itself is not a
+     reveal so it is unaffected by the cutaway restriction) */
   tl.to(["#gd-bedrock", "#gd-band", "#gd-head", "#gd-lbed", "#gd-ldeb", "#gd-schem", "#gd-leadbed", "#gd-leaddeb"].concat(SEEPS),
-    { y: "-=30", autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 18.0);
+    { y: "-=30", autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.05);
   tl.to({}, { duration: 0.01 }, D - 0.01);
   window.__timelines["g-glacial-debris"] = tl;
 })();
