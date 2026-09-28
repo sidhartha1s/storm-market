@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-rock-ice-mechanism (A3): a hanging rock+ice slab breaks off a steep face, falls fast, ice
+     friction-melts to water, the slurry runs past a plain "dry rockfall" line. Right: 3 Empire State
+     Buildings stacked at the SAME vertical scale as the drop (0.17782 px/ft; drop 3,937 ft = 700 px),
+     so the stack's real height (4,362 ft) visibly clears the drop-top guide line. Brief: mg_specs/g-rock-ice-mechanism.md.
+     Cues (local, @175wpm): headline+face 0.4, slab+crack 3.77, fall+melt 7.54-8.94, tongue 10.63,
+     number labels 15.77, ESB stack 21.26, exit 24.3. Duration 26s. -->
+<template>
+<style>
+  .rim-wrap { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .rim-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .rim-head { position:absolute; left:96px; top:70px; font-family:'Arial Black', Arial, sans-serif; font-size:52px; color:#f2f5f8; white-space:nowrap; }
+  .rim-lab { position:absolute; font-weight:700; font-size:22px; letter-spacing:3px; white-space:nowrap; }
+  .rim-num { position:absolute; font-family:'AbrilFig', Georgia, serif; font-size:44px; color:#d0121f; text-shadow:0 4px 18px rgba(0,0,0,.7); white-space:nowrap; }
+  .rim-note { position:absolute; font-weight:700; font-size:19px; color:#93a3b2; white-space:nowrap; }
+</style>
+<div class="rim-wrap" data-composition-id="g-rock-ice-mechanism" data-width="1920" data-height="1080" data-duration="26.0">
+  <svg class="rim-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <linearGradient id="rim-face" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a5560"/><stop offset="1" stop-color="#2a221d"/></linearGradient>
+      <linearGradient id="rim-tongue" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6b4f2c"/><stop offset="1" stop-color="#4a3a22"/></linearGradient>
+    </defs>
+    <!-- the drop-top / 3,937 ft datum: y=280 everywhere in this comp -->
+    <polygon id="rim-facepoly" points="300,280 700,280 900,980 96,980" fill="url(#rim-face)" stroke="#4a5560" stroke-width="3"/>
+
+    <!-- hanging slab at the ledge (bottom edge = crack, y=280) -->
+    <g id="rim-slab">
+      <polygon id="rim-slabrock" points="330,190 685,190 685,280 330,280" fill="#5a768f" stroke="#7fb2e5" stroke-width="2"/>
+      <rect id="rim-icecap" x="330" y="190" width="355" height="25" fill="#cfe6f5"/>
+    </g>
+    <path id="rim-crack" d="M330,280 L410,278 L480,282 L560,277 L630,281 L685,280" fill="none" stroke="#d0121f" stroke-width="4" stroke-dasharray="10 8"/>
+
+    <!-- ice fragments -> water droplets during the fall -->
+    <g id="rim-ice" fill="#cfe6f5">
+      <circle id="rim-i1" cx="380" cy="235" r="8"/><circle id="rim-i2" cx="440" cy="235" r="7"/>
+      <circle id="rim-i3" cx="500" cy="235" r="9"/><circle id="rim-i4" cx="560" cy="235" r="7"/>
+      <circle id="rim-i5" cx="620" cy="235" r="8"/><circle id="rim-i6" cx="450" cy="250" r="6"/>
+      <circle id="rim-i7" cx="540" cy="250" r="6"/><circle id="rim-i8" cx="490" cy="220" r="7"/>
+    </g>
+    <g id="rim-drops" fill="#7fb2e5">
+      <circle id="rim-d1" cx="380" cy="235" r="0"/><circle id="rim-d2" cx="440" cy="235" r="0"/>
+      <circle id="rim-d3" cx="500" cy="235" r="0"/><circle id="rim-d4" cx="560" cy="235" r="0"/>
+      <circle id="rim-d5" cx="620" cy="235" r="0"/><circle id="rim-d6" cx="450" cy="250" r="0"/>
+      <circle id="rim-d7" cx="540" cy="250" r="0"/><circle id="rim-d8" cx="490" cy="220" r="0"/>
+    </g>
+
+    <!-- "dry rockfall" reference: short, stops at x=640 -->
+    <line id="rim-dry" x1="500" y1="980" x2="640" y2="980" stroke="#93a3b2" stroke-width="4" stroke-dasharray="8 8"/>
+
+    <!-- the tongue: spreads well past x=640 -->
+    <path id="rim-tonguepath" d="M500,980 C650,946 800,952 900,980 C800,1012 650,1012 500,980 Z" fill="url(#rim-tongue)"/>
+    <path id="rim-slurry" d="M500,980 C650,946 800,952 900,980 C800,1012 650,1012 500,980 Z" fill="#7fb2e5" opacity="0.35"/>
+
+    <!-- number tick lines: the width tick sits BELOW the slab's original ledge (y280), clear of the
+         headline; by the time it reveals (15.77s) the slab has already fallen away, so this space is empty -->
+    <line id="rim-widthtick" x1="330" y1="350" x2="685" y2="350" stroke="#d0121f" stroke-width="3"/>
+    <line id="rim-droptick" x1="950" y1="280" x2="950" y2="980" stroke="#d0121f" stroke-width="3"/>
+
+    <!-- ESB stack, right, SAME scale (0.17782 px/ft) as the drop; datum y=280 shared with the left side -->
+    <line id="rim-guide" x1="1280" y1="280" x2="1560" y2="280" stroke="#e8c56a" stroke-width="3" stroke-dasharray="10 8"/>
+    <g id="rim-esb">
+      <rect id="rim-b3" x="1370" y="721.5" width="180" height="258.5" fill="#2a3644" stroke="#c8d3e0" stroke-width="3"/>
+      <rect id="rim-b2" x="1370" y="463" width="180" height="258.5" fill="#2a3644" stroke="#c8d3e0" stroke-width="3"/>
+      <rect id="rim-b1" x="1370" y="204.5" width="180" height="258.5" fill="#2a3644" stroke="#c8d3e0" stroke-width="3"/>
+      <polygon id="rim-spire" points="1460,204.5 1440,224.5 1480,224.5" fill="#c8d3e0"/>
+      <line id="rim-b3div" x1="1370" y1="721.5" x2="1550" y2="721.5" stroke="#4a5560" stroke-width="1"/>
+      <line id="rim-b2div" x1="1370" y1="463" x2="1550" y2="463" stroke="#4a5560" stroke-width="1"/>
+    </g>
+  </svg>
+  <div class="rim-head" id="rim-head">Rock, Ice and a Fast Slurry</div>
+  <div class="rim-num" id="rim-width" style="left:330px; top:296px;">ABOUT 2,000 FT WIDE</div>
+  <div class="rim-num" id="rim-drop" style="left:960px; top:560px;">FELL ALMOST 4,000 FT</div>
+  <div class="rim-lab" id="rim-drylab" style="left:520px; top:996px; color:#93a3b2;">DRY ROCKFALL</div>
+  <div class="rim-lab" id="rim-esblab" style="left:1280px; top:150px; color:#e8c56a;">3 X EMPIRE STATE BUILDING · 1,454 FT EACH</div>
+  <div class="rim-note" id="rim-note" style="left:1280px; top:1000px;">SAME SCALE AS THE DROP AT LEFT</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const D = 26.0;
+  const ICE = ["#rim-i1", "#rim-i2", "#rim-i3", "#rim-i4", "#rim-i5", "#rim-i6", "#rim-i7", "#rim-i8"];
+  const DROPS = ["#rim-d1", "#rim-d2", "#rim-d3", "#rim-d4", "#rim-d5", "#rim-d6", "#rim-d7", "#rim-d8"];
+
+  tl.set(["#rim-facepoly", "#rim-slab", "#rim-crack", "#rim-head"], { autoAlpha: 0 }, 0);
+  tl.set(["#rim-dry", "#rim-drylab", "#rim-tonguepath", "#rim-slurry"], { autoAlpha: 0 }, 0);
+  tl.set(["#rim-width", "#rim-drop", "#rim-widthtick", "#rim-droptick"], { autoAlpha: 0 }, 0);
+  tl.set(["#rim-guide", "#rim-esb", "#rim-esblab", "#rim-note"], { autoAlpha: 0 }, 0);
+  tl.set(ICE, { autoAlpha: 0 }, 0);
+  tl.set(DROPS, { attr: { r: 0 } }, 0);
+  tl.set("#rim-slab", { x: 0, y: 0, rotation: 0, svgOrigin: "507 235" }, 0);
+  tl.set(["#rim-tonguepath", "#rim-slurry"], { scaleX: 0, svgOrigin: "500 980" }, 0);
+  tl.set("#rim-esb", { y: 60 }, 0);
+
+  /* ambient: rock face never sits fully still */
+  tl.to("#rim-facepoly", { x: -5, duration: D, ease: "none" }, 0);
+
+  /* HEADLINE + FACE @0.4 */
+  tl.fromTo("#rim-head", { autoAlpha: 0, y: -20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.4);
+  tl.to("#rim-facepoly", { autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 0.5);
+
+  /* ROCK AND ICE AVALANCHE @3.77: slab + crack reveal */
+  tl.fromTo("#rim-slab", { autoAlpha: 0, y: -20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 3.77);
+  tl.fromTo("#rim-crack", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 4.2);
+  tl.to("#rim-crack", { x: 2, duration: 0.08, ease: "power1.inOut", yoyo: true, repeat: 5 }, 6.8);
+
+  /* FRICTION MELTS SOME OF THE ICE @7.54: the slab falls, ice fragments morph to water droplets by landing (~8.94) */
+  tl.to("#rim-slab", { y: 700, rotation: -12, duration: 1.4, ease: "power2.in" }, 7.54);
+  tl.to(ICE, { autoAlpha: 1, duration: 0.2 }, 7.54);
+  tl.to(ICE, { y: "+=700", duration: 1.4, ease: "power2.in" }, 7.54);
+  tl.to(ICE, { autoAlpha: 0, duration: 0.3 }, 8.6);
+  tl.to(DROPS, { attr: { r: 7 }, duration: 0.3, ease: "power2.out" }, 8.7);
+  tl.to(DROPS, { attr: { cy: "+=680" }, duration: 0.05 }, 8.65);
+
+  /* RUNS MUCH FARTHER THAN DRY ROCK @10.63: dry-rockfall line, then the tongue spreads past it */
+  tl.fromTo("#rim-dry", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 10.63);
+  tl.fromTo("#rim-drylab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 10.8);
+  tl.to(["#rim-tonguepath", "#rim-slurry"], { autoAlpha: 1, scaleX: 1, duration: 0.9, ease: "power3.out" }, 11.0);
+  tl.to(["#rim-tonguepath", "#rim-slurry"], { scaleX: 1.05, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 8 }, 11.9);
+
+  /* ABOUT TWO THOUSAND FEET WIDE ... FELL ALMOST FOUR THOUSAND FEET @15.77 */
+  tl.fromTo(["#rim-widthtick", "#rim-width"], { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 15.77);
+  tl.fromTo(["#rim-droptick", "#rim-drop"], { autoAlpha: 0, x: 10 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 16.6);
+
+  /* THREE EMPIRE STATE BUILDINGS STACKED UP @21.26 */
+  tl.fromTo("#rim-guide", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 21.26);
+  tl.fromTo("#rim-b3", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 21.4);
+  tl.fromTo("#rim-b2", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 21.75);
+  tl.fromTo(["#rim-b1", "#rim-spire"], { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 22.1);
+  tl.to("#rim-esb", { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 21.3);
+  tl.fromTo(["#rim-b3div", "#rim-b2div"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 22.4);
+  tl.fromTo("#rim-esblab", { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 22.6);
+  tl.fromTo("#rim-note", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 23.0);
+
+  /* exit @24.3 */
+  tl.to(["#rim-facepoly", "#rim-slab", "#rim-crack", "#rim-tonguepath", "#rim-slurry", "#rim-dry", "#rim-drylab",
+         "#rim-widthtick", "#rim-droptick", "#rim-width", "#rim-drop", "#rim-head"],
+    { y: "-=30", autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 24.3);
+  tl.to(["#rim-guide", "#rim-esb", "#rim-esblab", "#rim-note"], { x: "+=40", autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 24.3);
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines["g-rock-ice-mechanism"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

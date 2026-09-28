@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-collapse-3s-h (Hook, H 0:00): a thin timer bar over the viral clip, "0.0 S" counting to "3.0 S",
+     landing on "3 SECONDS". Stays in the TOP zone only, never over the falling slope's centre or the
+     presenter corner. Brief: mg_specs/g-collapse-3s-h.md. factcheck-A row 1 CONFIRMED ~3s collapse; the
+     exact seconds retime to the shot log per the orchestrator's note (PressAdda's "six seconds" framing
+     flagged, not adopted here).
+     Cues: chip in 0.15, fill+count 0.3-3.3, "3 SECONDS" lands 3.35, exit 4.0. Duration 4.2s. -->
+<template>
+<style>
+  .c3h-wrap { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; pointer-events:none; }
+  .c3h-chip { position:absolute; left:86px; top:86px; width:748px; height:74px; box-sizing:border-box;
+    border-radius:18px; background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14); }
+  .c3h-track { position:absolute; left:110px; top:118px; width:690px; height:20px; border-radius:10px; background:rgba(147,163,178,.28); }
+  .c3h-fill { position:absolute; left:110px; top:118px; width:690px; height:20px; border-radius:10px; background:#d0121f;
+    transform-origin:left center; }
+  .c3h-read { position:absolute; left:110px; top:86px; font-family:'Courier New', monospace; font-weight:700; font-size:26px; color:#f2f5f8; }
+  .c3h-land { position:absolute; left:110px; top:168px; font-family:'AbrilFig', Georgia, serif; font-size:52px; color:#d0121f;
+    text-shadow:0 4px 18px rgba(0,0,0,.7); }
+</style>
+<div class="c3h-wrap" data-composition-id="g-collapse-3s-h" data-width="1920" data-height="1080" data-duration="4.2">
+  <div class="c3h-chip" id="c3h-chip"></div>
+  <div class="c3h-track" id="c3h-track"></div>
+  <div class="c3h-fill" id="c3h-fill"></div>
+  <div class="c3h-read" id="c3h-read">0.0 S</div>
+  <div class="c3h-land" id="c3h-land">3 SECONDS</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const D = 4.2;
+  const state = { t: 0 };
+
+  tl.set(["#c3h-chip", "#c3h-track", "#c3h-fill", "#c3h-read"], { autoAlpha: 0 }, 0);
+  tl.set("#c3h-land", { autoAlpha: 0, scale: 1.4 }, 0);
+  tl.set("#c3h-fill", { scaleX: 0 }, 0);
+
+  /* chip + track fade in @0.15 */
+  tl.to(["#c3h-chip", "#c3h-track", "#c3h-fill", "#c3h-read"], { autoAlpha: 1, duration: 0.25 }, 0.15);
+
+  /* fill grows 0->3.0s, readout counts with it, monotonic and matched every frame @0.3-3.3 */
+  tl.to("#c3h-fill", { scaleX: 1, duration: 3.0, ease: "none" }, 0.3);
+  tl.to(state, {
+    t: 3.0, duration: 3.0, ease: "none",
+    onUpdate: function () {
+      const el = document.getElementById("c3h-read");
+      if (el) el.textContent = state.t.toFixed(1) + " S";
+    }
+  }, 0.3);
+
+  /* "3 SECONDS" lands only after the readout hits 3.0 S */
+  tl.fromTo("#c3h-land", { autoAlpha: 0, scale: 1.4 }, { autoAlpha: 1, scale: 1, duration: 0.25, ease: "power4.out" }, 3.35);
+  tl.to("#c3h-land", { scale: 1.06, duration: 0.15, ease: "power2.out", yoyo: true, repeat: 1 }, 3.6);
+
+  /* exit: chip slides up @4.0 */
+  tl.to(["#c3h-chip", "#c3h-track", "#c3h-fill", "#c3h-read", "#c3h-land"], { y: -24, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 4.0);
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines["g-collapse-3s-h"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
