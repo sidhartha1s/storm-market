@@ -77,21 +77,24 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-bay-of-bengal-track", P = "#g-bay-of-bengal-track-";
-  /* estimated at 175 wpm from the paragraph start "This storm began" (HOST start) */
+  /* retimed 29 Sep 26 from retime-sheet.md word times (host 246.392+18.682). Narration fix: the A2-S2 line
+     now says the Bay is "east of India" (was "south of India"); the CUES key below is renamed to match,
+     but the graphic never rendered "south of India" as on-screen text (only the "India"/"Bangladesh" map
+     labels), so there was nothing to correct on screen — the cue just now lands on "India" itself. */
   const CUES = {
-    low: 1.7,     /* CUE "low pressure" @est 1.7 */
-    bay: 3.4,     /* CUE "Bay of Bengal" @est 3.4 */
-    south: 4.5,   /* CUE "south of India" @est 4.5 */
-    north: 5.8,   /* CUE "moved north" @est 5.8 */
-    arnab: 7.9,   /* CUE "Cyclone Arnab" @est 7.9 */
-    never: 9.3,   /* CUE "never became" @est 9.3 */
-    mtns: 12.3,   /* CUE "reached the mountains" @est 12.3 */
-    winds: 14.1,  /* CUE "lost its winds" @est 14.1 */
-    moist: 16.5   /* CUE "moisture" @est 16.5 */
+    low: 1.59,    /* CUE "low" @1.74 (sheet) */
+    bay: 3.23,    /* CUE "Bengal" @3.38 (sheet) */
+    east: 4.45,   /* CUE "India" @4.60 (sheet) */
+    north: 5.57,  /* CUE "north" @5.72 (sheet) */
+    arnab: 8.19,  /* CUE "Arnab," @8.34 (sheet) */
+    never: 9.35,  /* CUE "never" @9.50 (sheet) */
+    mtns: 12.77,  /* CUE "mountains" @12.92 (sheet) */
+    winds: 14.31, /* CUE "winds." @14.46 (sheet) */
+    moist: 16.43  /* CUE "moisture" @16.58 (sheet) */
   };
-  const DUR = 20.1;
-  const EXIT = 19.5;
-  const MOVE_END = 12.8;
+  const DUR = 18.682;
+  const EXIT = 17.98;
+  const MOVE_END = 12.77;
   /* schematic track points, screen px (same as the track path d) */
   const PTS = [[790.9, 689.2], [668.2, 602.2], [581.8, 549.0], [590.9, 399.0], [622.7, 268.4]];
   const tl = gsap.timeline({ paused: true });
