@@ -191,6 +191,15 @@ def main():
         missing = only - seg_ids
         if missing:
             sys.exit(f"[tts_episode] FAIL — --only id(s) not in edit_script.md: {sorted(missing)}")
+    # A section locks (script-scaling.md "Script fact-QC layer") only once every [verify]
+    # marker on it is resolved. TTS is the mechanical backstop for that rule: never voice a
+    # segment that still carries one, whether it's in the --only set or the whole script.
+    selected = [(sid, text) for sid, text in segs if not only or sid in only]
+    unresolved = sorted(sid for sid, text in selected if "[verify" in text)
+    if unresolved:
+        sys.exit(f"[tts_episode] FAIL — {len(unresolved)} segment(s) still carry an open "
+                 f"[verify] marker, not TTS-safe: {unresolved} (script-scaling.md 'Script "
+                 f"fact-QC layer' — resolve or cut the claim before this section locks)")
     print(f"[tts_episode] {len(segs)} narration segments found")
 
     mpath = ep / "audio" / "manifest.json"
