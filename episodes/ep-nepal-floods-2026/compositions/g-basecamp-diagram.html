@@ -103,9 +103,14 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"avalanche", { scaleY: 1, duration: 1.4, ease: "power2.in" }, 30.98);
   tl.fromTo(P+"note", { scale: 1 }, { scale: 1.04, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 32.5);
 
+  /* occlusion_check: g-person-bhote overlays this comp for its whole host window, comp-local 33.037-44.397, and
+     its card sits over BASE CAMP / FIXED ROPE. Both readings already landed (10.63/11.33) long before this; clear
+     them early so nothing is left for the overlay to cover. Nothing to restore after -- the comp ends at 44.397. */
+  tl.to([P+"camplab", P+"ropelab"], { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 32.6);
+
   /* exit 43.6, finishes 44.2 (D-0.1 = 44.297); narration continues to person/search comps after */
   tl.to([P+"eb", P+"sub", P+"r1", P+"r2", P+"r3", P+"note", P+"rail"], { x: 660, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 43.6);
-  tl.to([P+"c1ring", P+"c1lab", P+"ropelab", P+"camplab", P+"tent1", P+"tent2", P+"tent3", P+"tent4", P+"tent5", P+"rope"],
+  tl.to([P+"c1ring", P+"c1lab", P+"tent1", P+"tent2", P+"tent3", P+"tent4", P+"tent5", P+"rope"],
         { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 43.6);
   window.__timelines[ID] = tl;
 })();
