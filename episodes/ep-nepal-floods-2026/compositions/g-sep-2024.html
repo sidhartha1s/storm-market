@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-sep-2024 (A2, Oso/USGS beat, late): RHS panel over Lallantop slope/debris footage, muted. Source:
+     episodes/ep-nepal-floods-2026/mg_specs/g-sep-2024.md. Two-stage card: stage 1 a toll counter ("200+"), stage 2
+     a two-month calendar strip (Sept 2024 vs Sept 2026, last days circled), crossfading at the same panel anchor
+     so only one fact is on screen at a time.
+     Cues @175wpm from beat start ("Nepal has seen this late September..."): stage 1 in 0.4, counter climbs 2.5-9.94
+     timed to land on CUE "more than two hundred lives" @est 9.94, crossfade to stage 2 at 10.3, grids draw
+     10.6-11.7 landing near CUE "almost the same dates" @est 12.00. Exit 13.4. Duration 14.0s declared. -->
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family: Arial, sans-serif; color:#f2f5f8; }
+  .s24-panel { position:absolute; right:0; top:0; bottom:0; width:820px; box-sizing:border-box;
+    background: linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); padding: 90px 96px 0 170px; }
+  .s24-stage { position:absolute; left:170px; top:260px; width:580px; }
+  .s24-eb { font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; }
+  .s24-place { font-family:Georgia,serif; font-style:italic; font-size:26px; color:#d8a13a; margin-top:10px; }
+  .s24-cnum { font-family:'Courier New',monospace; font-weight:700; font-size:84px; color:#e74c3c; margin-top:20px; }
+  .s24-clab { font-weight:700; font-size:20px; letter-spacing:5px; color:#c8d3e0; margin-top:8px; }
+  .s24-cal { position:absolute; top:0; width:300px; }
+  .s24-cal2024 { left:0; } .s24-cal2026 { left:320px; }
+  .s24-calhead { font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2; margin-bottom:16px; }
+  .s24-caldot { position:absolute; width:26px; height:26px; border-radius:50%; background:#1b2836; }
+  .s24-calring { position:absolute; width:28px; height:28px; border-radius:50%; border:3px solid #d0121f; margin:-1px; }
+  .s24-callab { position:absolute; top:190px; font-weight:700; font-size:19px; letter-spacing:2px; color:#93a3b2; }
+</style>
+<div id="root" data-composition-id="g-sep-2024" data-width="1920" data-height="1080" data-duration="14.0">
+  <div class="s24-panel" id="s24-panel">
+    <div class="s24-stage" id="s24-stage1">
+      <div class="s24-eb" id="s24-eb1">LATE SEPT 2024</div>
+      <div class="s24-place" id="s24-place">Kathmandu Valley</div>
+      <div class="s24-cnum" id="s24-cnum">0</div>
+      <div class="s24-clab" id="s24-clab">LIVES LOST</div>
+    </div>
+    <div class="s24-stage" id="s24-stage2">
+      <div class="s24-cal s24-cal2024" id="s24-cal2024">
+        <div class="s24-calhead">SEPT 2024</div>
+        <div id="s24-grid2024" style="position:relative; height:170px;"></div>
+        <div class="s24-callab" id="s24-lab2024" style="left:80px;">24</div>
+      </div>
+      <div class="s24-cal s24-cal2026" id="s24-cal2026">
+        <div class="s24-calhead">SEPT 2026</div>
+        <div id="s24-grid2026" style="position:relative; height:170px;"></div>
+        <div class="s24-callab" id="s24-lab2026" style="left:80px;">27</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  /* build both 7x5 calendar dot grids once, before the timeline (DOM setup, not animated here) */
+  function buildGrid(containerId, ringCol, ringRow) {
+    const wrap = document.getElementById(containerId);
+    const CELL = 34;
+    const rings = [];
+    for (let r = 0; r < 5; r++) {
+      for (let c = 0; c < 7; c++) {
+        const dot = document.createElement("div");
+        dot.className = "s24-caldot";
+        dot.style.left = (c * CELL) + "px";
+        dot.style.top = (r * CELL) + "px";
+        wrap.appendChild(dot);
+        if (r === ringRow && c === ringCol) {
+          const ring = document.createElement("div");
+          ring.className = "s24-calring";
+          ring.style.left = (c * CELL) + "px";
+          ring.style.top = (r * CELL) + "px";
+          wrap.appendChild(ring);
+          rings.push(ring);
+        }
+      }
+    }
+    return rings;
+  }
+  const rings2024 = buildGrid("s24-grid2024", 1, 4); // last row, near the end
+  const rings2026 = buildGrid("s24-grid2026", 5, 3); // circled day = the storm date, schematic position
+
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 14.0;
+  tl.set(["#s24-eb1", "#s24-place", "#s24-clab"], { autoAlpha: 0 }, 0);
+  tl.set("#s24-stage2", { autoAlpha: 0 }, 0);
+  tl.set([...rings2024, ...rings2026], { autoAlpha: 0, scale: 1.6 }, 0);
+  tl.set(["#s24-lab2024", "#s24-lab2026"], { autoAlpha: 0 }, 0);
+  tl.set(["#s24-grid2024", "#s24-grid2026"], { autoAlpha: 0 }, 0);
+
+  /* ambient: panel entrance */
+  tl.fromTo("#s24-panel", { x: 660 }, { x: 0, duration: 0.7, ease: "power3.out" }, 0.0);
+
+  /* stage 1: toll card */
+  tl.fromTo("#s24-eb1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.4);
+  tl.fromTo("#s24-place", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.75);
+  tl.set("#s24-clab", { autoAlpha: 1 }, 1.2);
+  const cnt = { v: 0 };
+  /* MORE THAN TWO HUNDRED LIVES @9.94: counter climbs slowly, timed to land exactly on the cue */
+  tl.to(cnt, { v: 200, duration: 7.44, ease: "power2.out", onUpdate: function () {
+    const e = document.getElementById("s24-cnum"); if (e) e.textContent = Math.round(cnt.v) + "+";
+  } }, 2.5);
+  tl.to("#s24-cnum", { scale: 1.05, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 9.94);
+
+  /* crossfade to stage 2 (calendar), stage 1 leaves before stage 2 arrives, never both on screen */
+  tl.to("#s24-stage1", { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 10.3);
+  tl.to("#s24-stage2", { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 10.3);
+  tl.fromTo(["#s24-grid2024", "#s24-grid2026"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.15 }, 10.6);
+  /* ALMOST THE SAME DATES @12.00: both circled days pop in together */
+  tl.to([...rings2024, ...rings2026], { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 11.5);
+  tl.fromTo(["#s24-lab2024", "#s24-lab2026"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35 }, 11.7);
+  tl.to([...rings2024, ...rings2026], { scale: 1.15, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 12.0);
+
+  /* exit */
+  tl.to("#s24-panel", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  window.__timelines["g-sep-2024"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

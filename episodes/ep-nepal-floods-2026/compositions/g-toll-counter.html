@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-toll-counter (I, "What fell", 0:22): RHS stat panel over Lallantop river/rescue b-roll, muted.
+     Source: episodes/ep-nepal-floods-2026/mg_specs/g-toll-counter.md. Library base: library/inhouse/stat-panel.html,
+     retuned to two counter rows (agency count, then the moved press count) instead of a fact-row + toll idiom.
+     Cues @175wpm from beat start ("On the day it fell..."): headline 0.3, row1+counters 2.6 CUE "twelve people" @est 3.09,
+     row2+counter 5.4 CUE "seven more missing" @est 5.83, row2 counter climbs 8.9 CUE "twenty four" @est 9.26 finishes 10.3,
+     exit 11.9. Duration 12.5s declared. -->
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family: Arial, sans-serif; color:#f2f5f8; }
+  .tc-panel { position:absolute; right:0; top:0; bottom:0; width:820px; box-sizing:border-box;
+    background: linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); padding: 90px 96px 0 170px; }
+  .tc-hl { font-family:'Arial Black',Arial,sans-serif; font-size:52px; color:#f2f5f8; line-height:1.05; }
+  .tc-row { position:absolute; left:170px; }
+  .tc-r1 { top:360px; } .tc-r2 { top:620px; }
+  .tc-cnum { display:inline-block; font-family:'Courier New',monospace; font-weight:700; font-size:84px; color:#e74c3c; }
+  .tc-clab { font-weight:700; font-size:20px; letter-spacing:6px; color:#c8d3e0; }
+  .tc-cwrap { display:inline-block; margin-right:60px; text-align:left; }
+  .tc-src { font-weight:700; font-size:19px; letter-spacing:4px; color:#93a3b2; margin-top:14px; }
+  .tc-r2lab { font-weight:700; font-size:20px; letter-spacing:5px; color:#c8d3e0; margin-bottom:6px; }
+  .tc-beam { position:absolute; top:0; bottom:0; left:170px; width:200px; background:linear-gradient(90deg, rgba(232,197,106,0.10), transparent); pointer-events:none; }
+</style>
+<div id="root" data-composition-id="g-toll-counter" data-width="1920" data-height="1080" data-duration="12.5">
+  <div class="tc-panel" id="tc-panel">
+    <div class="tc-beam" id="tc-beam"></div>
+    <div class="tc-hl" id="tc-hl">What the day counted.</div>
+    <div class="tc-row tc-r1" id="tc-r1">
+      <span class="tc-cwrap"><span class="tc-cnum" id="tc-v1">0</span><div class="tc-clab">LIVES LOST</div></span>
+      <span class="tc-cwrap"><span class="tc-cnum" id="tc-v2">0</span><div class="tc-clab">MISSING</div></span>
+      <div class="tc-src" id="tc-src1">NEPAL DISASTER AGENCY &middot; SEPT 27</div>
+    </div>
+    <div class="tc-row tc-r2" id="tc-r2">
+      <div class="tc-r2lab" id="tc-r2lab">PRESS COUNTS UP TO</div>
+      <span class="tc-cnum" id="tc-v3">0</span>
+      <div class="tc-src" id="tc-src2">SEPT 28</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 12.5;
+  tl.set(["#tc-hl", "#tc-r1", "#tc-r2"], { autoAlpha: 0 }, 0);
+
+  /* ambient: panel entrance + a slow beam sweep for the whole window */
+  tl.fromTo("#tc-panel", { x: 660 }, { x: 0, duration: 0.7, ease: "power3.out" }, 0.0);
+  tl.fromTo("#tc-beam", { x: -200 }, { x: 700, duration: 2.4, ease: "none", repeat: 4 }, 0.7);
+
+  tl.fromTo("#tc-hl", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.3);
+
+  /* TWELVE PEOPLE @3.09: row 1 reveals, both counters roll together */
+  tl.fromTo("#tc-r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.6);
+  const c1 = { v: 0 }, c2 = { v: 0 };
+  tl.to(c1, { v: 12, duration: 1.4, ease: "power3.out", onUpdate: function () {
+    const e = document.getElementById("tc-v1"); if (e) e.textContent = Math.round(c1.v);
+  } }, 2.6);
+  /* SEVEN MORE MISSING @5.83 */
+  tl.to(c2, { v: 7, duration: 1.0, ease: "power3.out", onUpdate: function () {
+    const e = document.getElementById("tc-v2"); if (e) e.textContent = Math.round(c2.v);
+  } }, 5.4);
+
+  /* row 2 reveals; TWENTY FOUR @9.26 */
+  tl.fromTo("#tc-r2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.4);
+  const c3 = { v: 0 };
+  tl.to(c3, { v: 24, duration: 2.0, ease: "power3.out", onUpdate: function () {
+    const e = document.getElementById("tc-v3"); if (e) e.textContent = Math.round(c3.v);
+  } }, 8.9);
+
+  /* hold: counters breathe gently so nothing idles */
+  tl.to("#tc-v3", { scale: 1.05, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 1 }, 10.4);
+
+  /* exit */
+  tl.to("#tc-panel", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  window.__timelines["g-toll-counter"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

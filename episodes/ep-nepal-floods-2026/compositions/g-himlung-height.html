@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-himlung-height (I, WION avalanche clip / peak shot): left-of-frame HUD bars over footage, no glass backing
+     (bars are the diagram; only labels are small chips). Source:
+     episodes/ep-nepal-floods-2026/mg_specs/g-himlung-height.md. Scale: 0.023953 px/ft, baseline y=940. Himlung bar
+     560px (23,379 ft), Denali bar 487px (20,310 ft), ratio 1.15:1 (python-checked), gap 3,069 ft.
+     Cues @175wpm from beat start ("Up north, the same weather..."): baseline 0.2, Himlung bar 2.0 CUE "twenty three
+     thousand four hundred feet" @est 6.86, Denali bar 7.2 CUE "three thousand feet higher than Denali" @est 9.60,
+     gap bracket 10.0. Exit 12.4. Duration 13.0s declared. -->
+<template>
+<style>
+  #root { position:absolute; inset:0; font-family:Arial, sans-serif; color:#f2f5f8; pointer-events:none; }
+  .hh-stage { position:absolute; left:0; top:0; width:900px; height:1080px; }
+  .hh-base { position:absolute; left:140px; top:940px; width:640px; height:2px; background:#2a3644; }
+  .hh-baselab { position:absolute; left:140px; top:950px; font-weight:700; font-size:19px; letter-spacing:4px; color:#93a3b2; }
+  .hh-bar { position:absolute; bottom:140px; width:160px; box-sizing:border-box; border-top:3px solid; transform-origin:bottom center; }
+  .hh-himlung { left:200px; height:560px; background:linear-gradient(180deg, rgba(127,178,229,0.5), rgba(127,178,229,0.06)); border-color:#7fb2e5; }
+  .hh-denali { left:460px; height:487px; background:linear-gradient(180deg, rgba(232,197,106,0.5), rgba(232,197,106,0.06)); border-color:#e8c56a; }
+  .hh-name { position:absolute; width:220px; font-family:'Arial Black',Arial,sans-serif; font-size:30px; }
+  .hh-himlungname { left:180px; top:330px; color:#7fb2e5; }
+  .hh-denaliname { left:440px; top:403px; color:#e8c56a; }
+  .hh-fig { position:absolute; width:220px; font-family:'Courier New',monospace; font-size:26px; color:#dfe7ee; }
+  .hh-himlungfig { left:180px; top:360px; }
+  .hh-denalifig { left:440px; top:433px; }
+  .hh-bracket { position:absolute; left:400px; top:380px; width:20px; height:73px; border:3px solid #93a3b2; border-left:none; }
+  .hh-gaplab { position:absolute; left:640px; top:395px; width:200px; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2; line-height:1.25; }
+</style>
+<div id="root" data-composition-id="g-himlung-height" data-width="1920" data-height="1080" data-duration="13.0">
+  <div class="hh-stage" id="hh-stage">
+    <div class="hh-base" id="hh-base"></div>
+    <div class="hh-baselab" id="hh-baselab">SEA LEVEL</div>
+    <div class="hh-bar hh-himlung" id="hh-himlung"></div>
+    <div class="hh-bar hh-denali" id="hh-denali"></div>
+    <div class="hh-name hh-himlungname" id="hh-himlungname">HIMLUNG HIMAL</div>
+    <div class="hh-fig hh-himlungfig" id="hh-himlungfig">23,379 FT</div>
+    <div class="hh-name hh-denaliname" id="hh-denaliname">DENALI</div>
+    <div class="hh-fig hh-denalifig" id="hh-denalifig">20,310 FT</div>
+    <div class="hh-bracket" id="hh-bracket"></div>
+    <div class="hh-gaplab" id="hh-gaplab">~3,000 FT TALLER</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 13.0;
+  tl.set(["#hh-baselab", "#hh-himlungname", "#hh-himlungfig", "#hh-denaliname", "#hh-denalifig", "#hh-bracket", "#hh-gaplab"], { autoAlpha: 0 }, 0);
+  tl.set(["#hh-himlung", "#hh-denali"], { scaleY: 0 }, 0);
+  tl.set("#hh-base", { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set("#hh-bracket", { scaleY: 0, transformOrigin: "top center" }, 0);
+
+  /* ambient: gentle stage drift for the whole window */
+  tl.fromTo("#hh-stage", { y: 0 }, { y: -8, duration: DUR, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+
+  tl.to("#hh-base", { scaleX: 1, duration: 0.5, ease: "power3.out" }, 0.2);
+  tl.fromTo("#hh-baselab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 0.5);
+
+  /* TWENTY THREE THOUSAND FOUR HUNDRED FEET @6.86: Himlung bar grows, labels land on the cue */
+  tl.to("#hh-himlung", { scaleY: 1, duration: 1.1, ease: "power3.out" }, 2.0);
+  tl.fromTo("#hh-himlungname", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.5);
+  tl.fromTo("#hh-himlungfig", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 6.8);
+
+  /* THREE THOUSAND FEET HIGHER THAN DENALI @9.60: Denali bar grows, labels land on the cue */
+  tl.to("#hh-denali", { scaleY: 1, duration: 0.95, ease: "power3.out" }, 7.2);
+  tl.fromTo("#hh-denaliname", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.2);
+  tl.fromTo("#hh-denalifig", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 9.5);
+
+  /* gap bracket + tag land last, tying the two tops together */
+  tl.to("#hh-bracket", { scaleY: 1, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 10.0);
+  tl.fromTo("#hh-gaplab", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 10.3);
+  tl.to("#hh-gaplab", { x: 6, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 1 }, 10.8);
+
+  /* exit */
+  tl.to("#hh-stage", { x: -60, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  window.__timelines["g-himlung-height"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

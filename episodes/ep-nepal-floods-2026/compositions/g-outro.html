@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-outro (Z, close, outro tail): copied from episodes/ep-enderlin-2025/compositions/g-outro.html (itself built
+     on library/inhouse/outro-brand.html's brand lockup) per task instruction: retune ids to g-outro, keep the
+     channel signature. Source: episodes/ep-nepal-floods-2026/mg_specs/g-outro.md.
+     RETUNED DURATION vs Enderlin: Nepal's script speaks "This was The Warning Hour." inside the Z narration BEFORE
+     this card starts (script: "*(outro tail 4 s, g-outro, bed out)*"), so this card carries no VO, only the 4s
+     bed-out tail plus a 0.5s settle. Enderlin's 16.864s (12.864s of spoken signature line + 4s tail) is compressed
+     to 4.5s: no narration cues, ambient motion the whole window, fade to black by the end. Layout, ids and
+     animation shape kept identical to the shipped Enderlin file wherever the shorter duration allows. -->
+<template>
+<style>
+  .ou-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .ou-glow { position:absolute; left:360px; top:240px; width:1200px; height:600px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(216,161,58,0.12), rgba(216,161,58,0) 70%); }
+  .ou-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.04) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .ou-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .ou-mark { position:absolute; left:0; right:0; top:462px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-weight:900;
+    font-size:120px; line-height:140px; letter-spacing:6px; color:#f2f5f8; white-space:nowrap; }
+  .ou-mark span { display:inline-block; }
+  .ou-amber { color:#d8a13a; }
+  .ou-sweepbox { position:absolute; left:260px; top:452px; width:1400px; height:160px; overflow:hidden; mix-blend-mode:screen; }
+  .ou-sweep { position:absolute; left:0; top:-40px; width:220px; height:240px;
+    background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,244,220,0.30), rgba(255,255,255,0)); }
+  .ou-rule { position:absolute; left:660px; width:600px; top:630px; height:4px; border-radius:2px; background:#d8a13a; }
+</style>
+<div class="ou-wrap" data-composition-id="g-outro" data-width="1920" data-height="1080" data-duration="4.5">
+  <div class="ou-grid" id="ou-grid"></div>
+  <div class="ou-glow" id="ou-glow"></div>
+  <div class="ou-stage" id="ou-stage">
+    <div class="ou-mark" id="ou-mark"><span id="ou-w1">The</span> <span class="ou-amber" id="ou-w2">Warning</span> <span id="ou-w3">Hour</span></div>
+    <div class="ou-sweepbox" id="ou-sweepbox"><div class="ou-sweep" id="ou-sweep"></div></div>
+    <div class="ou-rule" id="ou-rule"></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  /* card starts as the Z narration's "This was The Warning Hour." ends; no VO under this card (bed out). */
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 4.5;
+  tl.set("#ou-rule", { scaleX: 0, transformOrigin: "50% 50%" }, 0);
+
+  /* ambient, whole window: slow push on the stage, glow and grid drift, never a static hold */
+  tl.fromTo("#ou-stage", { scale: 1 }, { scale: 1.05, transformOrigin: "50% 50%", duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#ou-glow", { x: -80 }, { x: 80, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#ou-grid", { x: 0 }, { x: 70, duration: DUR, ease: "none" }, 0);
+
+  /* match cut: the wordmark is there on the first frame and settles */
+  tl.fromTo(["#ou-w1", "#ou-w2", "#ou-w3"], { y: 10 }, { y: 0, duration: 0.4, ease: "power3.out", stagger: 0.05 }, 0);
+  tl.to("#ou-rule", { scaleX: 1, duration: 0.9, ease: "power3.out" }, 0.3);
+  tl.fromTo("#ou-sweep", { x: -240 }, { x: 1420, duration: 1.6, ease: "power1.inOut" }, 0.5);
+
+  /* fade to black by the end, the 4 s bed-out tail */
+  tl.to("#ou-stage", { autoAlpha: 0, duration: 0.92, ease: "power1.in" }, DUR - 0.92);
+  tl.to(["#ou-glow", "#ou-grid"], { autoAlpha: 0, duration: 0.92, ease: "power1.in" }, DUR - 0.92);
+  window.__timelines["g-outro"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
