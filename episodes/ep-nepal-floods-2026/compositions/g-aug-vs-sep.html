@@ -58,20 +58,24 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-aug-vs-sep", P = "#g-aug-vs-sep-";
-  /* estimated at 175 wpm from the paragraph start (HOST start) */
+  /* retimed 29 Sep 26 from retime-sheet.md word times (host 32.260+33.182). This host is much LONGER than
+     the built 22.5 s: the narration continues past "still missing." into a recap of the Langtang InSAR/no-
+     radar point (taken up visually by the separate g-insar-creep-i comp elsewhere). No new beats are added
+     here — the ambient loops (scan, river-line pulse, Trishuli pulse) are extended so the extra ~10 s hold
+     after "missing." never idles more than 4 s, per mg-quickref. */
   const CUES = {
-    began: 2.4,    /* CUE "when this began" @est 2.4 */
-    aug26: 3.8,    /* CUE "August twenty sixth" @est 3.8 */
-    valley: 7.9,   /* CUE "Langtang valley" @est 7.9 */
-    river: 9.6,    /* CUE "flood down the river" @est 9.6 */
-    sept21: 11.3,  /* CUE "By September twenty first" @est 11.3 */
-    n1451: 13.4,   /* CUE "one thousand four hundred" @est 13.4 */
-    lives: 15.8,   /* CUE "lives lost" @est 15.8 */
-    n5745: 17.5,   /* CUE "Another five thousand" @est 17.5 */
-    missing: 20.9  /* CUE "still missing" @est 20.9 */
+    began: 2.71,   /* CUE "began." @2.86 (sheet) */
+    aug26: 4.15,   /* CUE "26th," @4.30 (sheet) */
+    valley: 7.77,  /* CUE "Valley." @7.92 (sheet) */
+    river: 9.41,   /* CUE "flood" @9.56 (sheet) */
+    sept21: 11.79, /* CUE "21st," @11.94 (sheet) */
+    n1451: 13.87,  /* CUE "1" @14.02 (sheet) */
+    lives: 14.97,  /* CUE "lives" @15.12 (sheet) */
+    n5745: 18.02,  /* CUE "Another" @18.17 (sheet) */
+    missing: 22.04 /* CUE "missing." @22.19 (sheet) */
   };
-  const DUR = 22.5;
-  const EXIT = 21.9;
+  const DUR = 33.182;
+  const EXIT = 32.482;
   const tl = gsap.timeline({ paused: true });
   const TRI = Math.ceil(document.querySelector(P + "tri").getTotalLength()) + 1;
   const cam = (z) => ({ attr: { transform: "translate(" + (660 - 660 * z).toFixed(2) + "," + (540 - 540 * z).toFixed(2) + ") scale(" + z + ")" } });
