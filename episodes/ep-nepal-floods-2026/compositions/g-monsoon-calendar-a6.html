@@ -57,36 +57,37 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-monsoon-calendar-a6", P = "#gmca6-";
-  const DUR = 18;
+  const DUR = 13.590;
   const tl = gsap.timeline({ paused: true });
   /* start-state: reuses g-monsoon-calendar's fully-revealed axis (continuity cut) */
   tl.set([P+"axis", P+"wetband", P+"ticks", P+"withtick", P+"withlab", P+"pin", P+"pinlab1"], { autoAlpha: 1 }, 0);
   tl.set([P+"tband", P+"bandlab", P+"pinlab2"], { autoAlpha: 0 }, 0);
   tl.set(P+"tband", { scaleX: 0, transformOrigin: "left center" }, 0);
 
-  /* whole window: the wet band keeps its slow breathe */
+  /* whole window: the wet band keeps its slow breathe (covers the gaps between discrete beats below) */
   tl.to(P+"wetband", { opacity: 0.14, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 6 }, 0.5);
 
-  /* 0.3: Trekking permits for the Annapurna trails reopened — the pin slides toward today */
-  tl.to(P+"pin", { x: 24, duration: 0.8, ease: "power2.inOut" }, 0.3);
-  tl.to(P+"pinlab1", { autoAlpha: 0, duration: 0.3 }, 0.3);
-  tl.to(P+"pinlab2", { autoAlpha: 1, duration: 0.3 }, 0.6);
+  /* 0.00: Trekking (sentence start) — the pin slides toward today */
+  tl.to(P+"pin", { x: 24, duration: 0.8, ease: "power2.inOut" }, 0);
+  tl.to(P+"pinlab1", { autoAlpha: 0, duration: 0.3 }, 0);
+  tl.to(P+"pinlab2", { autoAlpha: 1, duration: 0.3 }, 0.3);
 
-  /* 3.1: after a three day pause for the rain — the withdrawal mark pulses, still ahead */
-  tl.to([P+"withtick", P+"withlab"], { scale: 1.06, duration: 0.4, ease: "power2.out", yoyo: true, repeat: 1, svgOrigin: "1704 760" }, 3.1);
+  /* 2.41 (0.15s before "after" @2.56): after a three day pause for the rain — withdrawal mark pulses, still ahead */
+  tl.to([P+"withtick", P+"withlab"], { scale: 1.06, duration: 0.4, ease: "power2.out", yoyo: true, repeat: 1, svgOrigin: "1704 760" }, 2.41);
 
-  /* 8.2: the climbing season on peaks like Himlung runs through October */
-  tl.to(P+"tband", { scaleX: 1, autoAlpha: 1, duration: 0.8, ease: "power2.out" }, 8.2);
+  /* 8.93 (0.15s before "The" @9.08): the climbing season on peaks like Himlung runs through October */
+  tl.to(P+"tband", { scaleX: 1, autoAlpha: 1, duration: 0.8, ease: "power2.out" }, 8.93);
 
-  /* 11.0: crews are already on those mountains */
-  tl.fromTo(P+"bandlab", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.0);
+  /* 12.57 (0.15s before "crews" @12.72): crews are already on those mountains */
+  tl.fromTo(P+"bandlab", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 12.57);
 
-  /* 14.5: the tents had been up for days — a small tie-back pulse (loop L7 open) */
-  tl.to(P+"pin", { y: -6, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 14.5);
+  /* DROPPED: the "tents had been up for days" tie-back pulse — that clause is not spoken inside this host
+     window (words stop at "already" @13.28 vs D=13.590); nothing to anchor it to, so it is cut rather than
+     left dangling past the words the sheet gives us. */
 
-  /* exit 17.4 */
+  /* exit 12.97, finishes by D-0.1 = 13.490 */
   tl.to([P+"axis", P+"wetband", P+"ticks", P+"withtick", P+"withlab", P+"pin", P+"pinlab2", P+"tband", P+"bandlab"],
-        { x: 660, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.4);
+        { x: 660, autoAlpha: 0, duration: 0.45, ease: "power3.in" }, 12.97);
   window.__timelines[ID] = tl;
 })();
 </script>
