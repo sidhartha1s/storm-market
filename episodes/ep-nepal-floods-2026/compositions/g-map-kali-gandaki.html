@@ -104,11 +104,11 @@ window.__timelines = window.__timelines || {};
   /* ---- a wall gave way: one reading target, the Himalaya label steps aside ---- */
   tl.to(P + "t-him", { autoAlpha: 0, y: -10, duration: 0.3, ease: "power2.in" }, CUES.walls - 0.35);
   tl.fromTo(P + "pin", { autoAlpha: 0, y: -50 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "bounce.out" }, CUES.walls);
-  tl.fromTo(P + "ring", { autoAlpha: 0.9, attr: { r: 9 } }, { autoAlpha: 0, attr: { r: 40 }, duration: 1.0, ease: "power2.out", repeat: 1 }, CUES.walls + 0.4);
+  tl.fromTo(P + "ring", { autoAlpha: 0.9, attr: { r: 9 } }, { autoAlpha: 0, attr: { r: 40 }, duration: 1.0, ease: "power2.out" }, CUES.walls + 0.4);
   tl.fromTo(P + "t-col", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.walls + 0.15);
 
   /* ---- exit: title slides out left, the map keeps its push into the cut ---- */
-  tl.to(P + "title", { x: -900, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  tl.to(P + "title", { x: -900, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.7);
 
   window.__timelines[ID] = tl;
 })();
