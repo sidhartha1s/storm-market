@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-aug-vs-sep (I beat teaser): Kali Gandaki pin "Sept 27", Langtang pin "Aug 26", the river below Langtang, and the rail counters
+     "1,451 lives lost", "5,745 missing", "As of Sept 21". Brief: mg_specs/g-aug-vs-sep.md.
+     Library source: episodes/ep-enderlin-2025/compositions/g-master-map.html + helpers.js counterRollUp. 6 px per mile.
+     HOST starts at "Nepal hadn't finished counting" @est 0.0 (175 wpm). -->
+<template>
+<style>
+  #g-aug-vs-sep-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 35% 50%, #0b1016 0%, #030507 78%); }
+  .avs-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .avs-lab { font-family:Arial, sans-serif; font-weight:700; fill:#dfe7ee; paint-order:stroke; stroke:#04070c; stroke-width:6px; stroke-linejoin:round; }
+  .avs-tag { font-family:'Arial Black', Arial, sans-serif; paint-order:stroke; stroke:#04070c; stroke-width:7px; stroke-linejoin:round; }
+  .avs-scan { position:absolute; left:0; top:0; width:1920px; height:2px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
+  .avs-rail { position:absolute; right:0; top:0; bottom:0; width:820px; box-sizing:border-box; pointer-events:none;
+    background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); }
+  .avs-eb { position:absolute; left:1270px; top:300px; font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; white-space:nowrap; text-transform:uppercase; }
+  .avs-asof { position:absolute; left:1270px; top:342px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:26px; color:#d8a13a; white-space:nowrap; }
+  .avs-cnt { position:absolute; left:1270px; font-family:'Courier New', monospace; font-weight:700; font-size:84px; line-height:1; white-space:nowrap; }
+  .avs-clab { position:absolute; left:1274px; font-size:20px; font-weight:700; letter-spacing:6px; color:#c8d3e0; white-space:nowrap; text-transform:uppercase; }
+  .avs-src { position:absolute; left:96px; bottom:54px; font-size:19px; font-weight:700; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+</style>
+<div id="g-aug-vs-sep-root" data-composition-id="g-aug-vs-sep" data-width="1920" data-height="1080" data-duration="22.5">
+  <svg class="avs-svg" viewBox="0 0 1920 1080">
+    <g id="g-aug-vs-sep-cam">
+      <g transform="translate(642,612) scale(6)">
+        <path id="g-aug-vs-sep-nepal" fill="#15202b" stroke="#5a768f" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke" d="M222.9,99.6 L221.9,92.4 L220.0,89.2 L218.6,85.7 L216.1,81.7 L215.3,80.9 L213.3,79.8 L212.2,77.3 L211.2,76.3 L210.8,75.3 L211.8,72.7 L212.1,67.8 L214.5,62.3 L214.9,60.6 L213.7,57.7 L213.6,56.8 L214.3,54.4 L215.3,52.6 L214.4,51.5 L214.1,48.7 L215.7,45.2 L219.5,38.7 L220.9,32.9 L222.4,29.4 L222.1,26.6 L222.8,25.3 L222.7,24.5 L222.2,24.1 L218.5,23.1 L215.9,21.7 L214.5,21.2 L211.4,22.1 L208.7,21.1 L204.0,20.8 L202.8,20.2 L202.1,20.3 L199.3,24.9 L197.9,26.2 L196.1,27.1 L194.5,27.2 L192.1,26.3 L190.6,26.0 L187.8,27.3 L186.8,27.3 L186.3,26.9 L185.5,25.4 L184.3,25.1 L175.5,27.3 L174.4,27.4 L174.4,26.3 L175.4,24.2 L174.1,23.8 L172.4,24.4 L171.0,25.7 L169.6,26.5 L166.1,25.6 L163.0,25.9 L161.4,25.9 L159.0,24.6 L155.7,20.1 L153.8,18.1 L152.3,17.2 L151.3,17.1 L148.3,17.7 L146.8,17.6 L145.4,17.0 L144.5,15.8 L143.9,14.2 L142.2,12.8 L138.0,13.0 L136.1,12.3 L135.7,11.4 L135.9,9.3 L135.6,8.5 L133.7,7.0 L132.5,6.5 L131.4,6.4 L129.3,8.1 L128.4,8.3 L127.4,7.8 L125.8,6.5 L124.8,6.6 L124.2,7.4 L123.9,10.6 L122.5,13.0 L122.6,15.8 L122.2,17.1 L121.4,18.1 L117.8,20.0 L117.0,20.0 L115.8,19.6 L113.2,17.5 L111.7,18.1 L111.1,18.0 L108.1,14.9 L105.7,14.5 L103.5,13.6 L103.1,12.8 L102.7,10.8 L101.8,9.5 L101.6,8.9 L102.5,6.3 L102.5,4.6 L101.9,3.2 L100.6,3.0 L95.3,8.5 L95.4,9.2 L96.3,10.8 L96.0,13.7 L97.1,14.8 L97.0,16.7 L98.0,18.2 L98.0,18.9 L95.8,21.1 L94.9,21.5 L92.8,21.4 L90.0,21.8 L88.9,21.3 L88.2,19.6 L88.5,15.5 L87.8,14.2 L85.6,12.3 L85.0,11.3 L84.5,9.7 L84.4,7.6 L83.4,6.2 L82.9,3.9 L81.9,2.8 L78.0,0.8 L75.0,-1.5 L72.9,-4.8 L72.8,-7.8 L72.5,-9.3 L71.7,-9.2 L71.4,-7.4 L69.2,-6.1 L67.6,-3.5 L66.8,-3.5 L64.7,-5.2 L62.0,-5.7 L59.3,-5.5 L56.6,-6.7 L55.6,-6.7 L54.8,-6.1 L53.4,-4.6 L52.4,-4.1 L51.4,-4.2 L50.2,-5.3 L49.4,-5.7 L46.2,-4.6 L44.0,-5.0 L42.9,-5.4 L40.9,-7.2 L38.5,-6.4 L37.0,-6.4 L35.7,-7.2 L35.3,-8.2 L35.6,-12.5 L35.1,-16.3 L35.5,-17.0 L37.0,-17.9 L37.4,-18.8 L37.5,-20.5 L37.9,-21.0 L38.9,-21.5 L39.7,-22.4 L40.6,-26.5 L40.2,-27.3 L37.2,-28.2 L34.9,-29.8 L33.7,-30.3 L32.3,-30.0 L31.9,-29.6 L30.5,-27.3 L27.7,-25.9 L26.5,-23.8 L26.0,-23.4 L25.4,-23.2 L23.1,-23.7 L19.0,-23.6 L17.1,-24.8 L15.5,-26.6 L14.4,-27.2 L11.6,-27.4 L10.8,-27.9 L11.1,-31.1 L10.4,-31.7 L8.1,-32.4 L7.1,-34.1 L6.5,-34.4 L3.1,-35.0 L-0.1,-36.5 L-1.5,-36.4 L-3.0,-36.9 L-3.8,-38.2 L-4.7,-41.4 L-6.5,-43.1 L-7.5,-44.8 L-8.9,-45.7 L-13.0,-46.6 L-16.1,-48.4 L-17.8,-51.2 L-16.3,-57.1 L-17.0,-58.0 L-18.3,-58.4 L-19.7,-59.2 L-20.3,-62.1 L-22.0,-63.9 L-22.4,-65.2 L-21.0,-67.4 L-20.6,-68.6 L-20.9,-69.6 L-23.6,-69.7 L-24.0,-70.5 L-24.4,-72.3 L-24.9,-73.0 L-26.0,-73.0 L-28.2,-72.4 L-29.6,-73.9 L-30.3,-74.1 L-31.9,-73.5 L-32.0,-74.4 L-32.9,-75.2 L-33.7,-75.4 L-35.6,-75.3 L-37.5,-74.8 L-38.4,-73.5 L-43.0,-71.5 L-47.4,-71.4 L-48.9,-70.9 L-50.1,-69.7 L-51.3,-66.4 L-52.3,-66.0 L-55.7,-66.5 L-57.0,-67.5 L-59.3,-68.0 L-59.7,-68.5 L-60.6,-73.3 L-61.2,-74.4 L-64.6,-76.4 L-65.1,-78.3 L-67.3,-79.9 L-67.6,-82.5 L-69.5,-84.0 L-69.6,-87.1 L-71.2,-88.8 L-75.1,-88.0 L-76.1,-89.5 L-76.0,-90.3 L-75.2,-91.7 L-75.3,-92.7 L-75.8,-93.6 L-77.2,-95.1 L-79.2,-96.0 L-79.8,-97.6 L-80.6,-98.2 L-82.0,-98.5 L-85.5,-97.8 L-86.3,-95.3 L-87.2,-95.3 L-87.9,-95.8 L-89.2,-98.1 L-92.6,-101.2 L-95.3,-101.2 L-96.7,-102.6 L-97.3,-102.8 L-98.5,-102.3 L-99.8,-101.3 L-101.1,-100.9 L-102.4,-103.0 L-104.5,-104.0 L-106.3,-106.4 L-109.9,-109.2 L-110.5,-110.4 L-110.1,-112.5 L-110.8,-112.9 L-111.4,-113.0 L-113.3,-112.6 L-114.4,-113.3 L-119.0,-119.1 L-120.1,-119.7 L-124.2,-121.2 L-126.7,-123.6 L-145.4,-123.6 L-145.4,23.3 L-142.8,24.3 L-135.5,30.4 L-130.8,32.7 L-127.5,36.1 L-125.2,36.9 L-120.0,36.3 L-112.3,34.3 L-110.6,34.9 L-109.6,36.7 L-108.8,39.3 L-108.3,44.5 L-107.6,47.1 L-106.2,48.7 L-98.7,49.2 L-97.2,49.7 L-94.4,51.3 L-90.5,52.3 L-83.1,52.2 L-80.9,53.1 L-77.8,55.7 L-77.1,56.6 L-76.0,58.9 L-75.4,59.5 L-74.0,60.0 L-72.6,60.0 L-71.5,59.3 L-70.4,58.2 L-69.1,56.3 L-68.6,54.6 L-69.5,53.3 L-69.5,51.6 L-69.2,51.0 L-67.6,50.4 L-61.9,50.5 L-55.3,51.4 L-50.8,53.0 L-42.4,57.6 L-39.6,58.7 L-39.2,59.1 L-38.8,58.4 L-37.8,57.9 L-37.8,57.4 L-38.2,56.0 L-39.9,54.0 L-40.5,52.9 L-39.3,52.4 L-36.5,52.2 L-35.1,51.8 L-31.9,52.5 L-29.9,52.5 L-28.6,51.6 L-25.6,47.7 L-24.3,47.2 L-23.3,47.4 L-23.0,48.7 L-21.8,49.7 L-20.3,50.3 L-19.7,50.9 L-19.1,52.6 L-18.5,52.8 L-16.7,52.5 L-15.9,53.1 L-14.1,56.1 L-12.8,56.9 L4.7,60.2 L6.5,61.5 L8.0,63.8 L9.0,66.3 L9.6,68.9 L9.7,71.5 L9.4,74.2 L7.4,78.9 L7.7,80.4 L8.5,81.0 L15.8,83.0 L16.5,83.0 L18.4,82.0 L19.3,82.2 L19.9,83.3 L21.4,84.1 L24.4,85.2 L25.8,86.0 L26.7,87.3 L27.5,90.0 L31.5,91.6 L31.5,93.6 L33.1,93.7 L36.5,92.3 L37.9,92.2 L40.2,93.2 L40.5,97.7 L42.3,99.6 L51.9,99.6 L53.8,97.5 L56.0,97.9 L57.1,97.6 L62.0,94.9 L66.8,93.0 L72.2,95.9 L73.0,97.0 L73.5,99.6 Z"/>
+        <path id="g-aug-vs-sep-border" fill="none" stroke="#7fb2e5" stroke-opacity="0.45" stroke-width="2.5" stroke-dasharray="10 6" vector-effect="non-scaling-stroke" d="M-126.7,-123.6 L-124.2,-121.2 L-120.1,-119.7 L-119.0,-119.1 L-114.4,-113.3 L-113.3,-112.6 L-111.4,-113.0 L-110.8,-112.9 L-110.1,-112.5 L-110.5,-110.4 L-109.9,-109.2 L-106.3,-106.4 L-104.5,-104.0 L-102.4,-103.0 L-101.1,-100.9 L-99.8,-101.3 L-98.5,-102.3 L-97.3,-102.8 L-96.7,-102.6 L-95.3,-101.2 L-92.6,-101.2 L-89.2,-98.1 L-87.9,-95.8 L-87.2,-95.3 L-86.3,-95.3 L-85.5,-97.8 L-85.1,-98.0 L-83.5,-98.3 L-81.3,-98.5 L-79.8,-97.6 L-79.2,-96.0 L-77.2,-95.1 L-75.8,-93.6 L-75.3,-92.7 L-75.2,-91.7 L-76.0,-90.3 L-76.1,-89.5 L-75.1,-88.0 L-71.2,-88.8 L-69.6,-87.1 L-69.5,-84.0 L-67.6,-82.5 L-67.3,-79.9 L-65.1,-78.3 L-64.6,-76.4 L-61.2,-74.4 L-60.6,-73.3 L-59.7,-68.5 L-59.3,-68.0 L-57.0,-67.5 L-55.7,-66.5 L-52.3,-66.0 L-51.3,-66.4 L-50.1,-69.7 L-48.9,-70.9 L-47.4,-71.4 L-43.0,-71.5 L-38.4,-73.5 L-37.5,-74.8 L-35.6,-75.3 L-33.7,-75.4 L-32.9,-75.2 L-32.0,-74.4 L-31.9,-73.5 L-30.3,-74.1 L-29.6,-73.9 L-28.2,-72.4 L-26.0,-73.0 L-24.9,-73.0 L-24.4,-72.3 L-24.0,-70.5 L-23.6,-69.7 L-20.9,-69.6 L-20.6,-68.6 L-21.0,-67.4 L-22.4,-65.2 L-22.0,-63.9 L-20.3,-62.1 L-19.7,-59.2 L-18.3,-58.4 L-17.0,-58.0 L-16.3,-57.1 L-17.8,-51.2 L-16.1,-48.4 L-13.0,-46.6 L-8.9,-45.7 L-7.5,-44.8 L-6.5,-43.1 L-4.7,-41.4 L-3.8,-38.2 L-3.0,-36.9 L-1.5,-36.4 L-0.1,-36.5 L3.1,-35.0 L6.5,-34.4 L7.1,-34.1 L8.1,-32.4 L10.4,-31.7 L11.1,-31.1 L10.8,-27.9 L11.6,-27.4 L14.4,-27.2 L15.5,-26.6 L17.1,-24.8 L19.0,-23.6 L23.1,-23.7 L25.4,-23.2 L26.0,-23.4 L26.5,-23.8 L27.7,-25.9 L30.5,-27.3 L31.9,-29.6 L32.3,-30.0 L33.7,-30.3 L34.9,-29.8 L37.2,-28.2 L40.2,-27.3 L40.6,-26.5 L39.7,-22.4 L38.9,-21.5 L37.9,-21.0 L37.5,-20.5 L37.4,-18.8 L37.0,-17.9 L35.5,-17.0 L35.1,-16.3 L35.6,-12.5 L35.3,-8.2 L35.7,-7.2 L37.0,-6.4 L38.5,-6.4 L40.9,-7.2 L42.9,-5.4 L44.0,-5.0 L46.2,-4.6 L49.4,-5.7 L50.2,-5.3 L51.4,-4.2 L52.4,-4.1 L53.4,-4.6 L54.8,-6.1 L55.6,-6.7 L56.6,-6.7 L59.3,-5.5 L62.0,-5.7 L64.7,-5.2 L66.8,-3.5 L67.6,-3.5 L69.2,-6.1 L71.4,-7.4 L71.7,-9.2 L72.5,-9.3 L72.8,-7.8 L72.9,-4.8 L75.0,-1.5 L78.0,0.8 L81.9,2.8 L82.9,3.9 L83.4,6.2 L84.4,7.6 L84.5,9.7 L85.0,11.3 L85.6,12.3 L87.8,14.2 L88.5,15.5 L88.2,19.6 L88.9,21.3 L90.0,21.8 L92.8,21.4 L94.9,21.5 L95.8,21.1 L98.0,18.9 L98.0,18.2 L97.0,16.7 L97.1,14.8 L96.0,13.7 L96.3,10.8 L95.4,9.2 L95.3,8.5 L100.6,3.0 L101.9,3.2 L102.5,4.6 L102.5,6.3 L101.6,8.9 L101.8,9.5 L102.7,10.8 L103.1,12.8 L103.5,13.6 L105.7,14.5 L108.1,14.9 L111.1,18.0 L111.7,18.1 L113.2,17.5 L115.8,19.6 L117.0,20.0 L117.8,20.0 L121.4,18.1 L122.2,17.1 L122.6,15.8 L122.5,13.0 L123.9,10.6 L124.2,7.4 L124.8,6.6 L125.8,6.5 L127.4,7.8 L128.4,8.3 L129.3,8.1 L131.4,6.4 L132.5,6.5 L133.7,7.0 L135.6,8.5 L135.9,9.3 L135.7,11.4 L136.1,12.3 L138.0,13.0 L142.2,12.8 L143.9,14.2 L144.5,15.8 L145.4,17.0 L146.8,17.6 L148.3,17.7 L151.3,17.1 L152.3,17.2 L153.8,18.1 L155.7,20.1 L159.0,24.6 L161.4,25.9 L163.0,25.9 L166.1,25.6 L169.6,26.5 L171.0,25.7 L172.4,24.4 L174.1,23.8 L175.4,24.2 L174.4,26.3 L174.4,27.4 L175.5,27.3 L184.3,25.1 L185.5,25.4 L186.3,26.9 L186.8,27.3 L187.8,27.3 L190.6,26.0 L192.1,26.3 L194.5,27.2 L196.1,27.1 L197.9,26.2 L199.3,24.9 L202.1,20.3 L202.8,20.2 L204.0,20.8 L208.7,21.1 L211.4,22.1 L214.5,21.2 L215.9,21.7 L218.5,23.1 L219.9,23.4 L221.7,23.9"/>
+        <path id="g-aug-vs-sep-kg" fill="none" stroke="#7fb2e5" stroke-width="0.55" stroke-linecap="round" stroke-linejoin="round" d="M-30.4,-66.0 L-31.8,-62.4 L-32.6,-61.4 L-33.3,-61.3 L-33.4,-60.7 L-34.3,-59.9 L-33.9,-58.5 L-34.5,-58.0 L-34.7,-57.3 L-35.7,-57.1 L-36.0,-56.7 L-36.1,-55.8 L-36.7,-54.9 L-36.7,-54.4 L-38.1,-54.0 L-38.7,-54.0 L-39.2,-53.2 L-40.5,-53.1 L-40.6,-52.2 L-40.8,-52.2 L-40.5,-51.5 L-40.9,-51.0 L-40.6,-50.8 L-40.8,-50.3 L-41.7,-49.5 L-41.7,-48.8 L-42.7,-48.0 L-42.6,-47.4 L-43.1,-46.8 L-42.8,-46.2 L-43.4,-45.0 L-43.3,-44.6 L-43.7,-44.0 L-44.0,-42.9 L-44.5,-42.5 L-44.8,-41.5 L-45.5,-40.7 L-46.8,-40.4 L-47.7,-39.8 L-48.0,-39.3 L-48.7,-39.0 L-48.9,-38.2 L-49.9,-37.3 L-50.0,-36.4 L-51.3,-35.5 L-51.6,-35.1 L-53.1,-34.4 L-53.9,-33.2 L-55.1,-32.4 L-55.0,-30.9 L-53.8,-30.2 L-53.5,-29.6 L-52.4,-29.1 L-51.8,-28.4 L-51.7,-27.8 L-52.0,-27.4 L-51.8,-26.5 L-52.5,-24.7 L-52.0,-24.3 L-51.5,-23.3 L-51.5,-22.7 L-51.0,-22.3 L-51.2,-21.5 L-51.1,-21.2 L-51.8,-19.7 L-52.6,-18.9 L-53.0,-17.9 L-54.0,-16.5 L-54.7,-15.9 L-54.7,-13.8 L-55.7,-12.5 L-56.5,-12.1 L-56.6,-10.2 L-53.3,-3.4 L-52.1,-2.1 L-50.3,-1.1 L-52.3,1.5 L-53.6,5.1 L-58.0,10.0 L-57.6,11.5 L-56.2,11.7 L-55.3,13.6 L-56.2,15.1 L-58.1,16.1 L-60.3,16.5 L-63.2,16.0 L-64.1,16.5 L-64.5,17.4 L-62.0,19.3 L-61.4,18.6 L-60.7,18.5 L-56.2,18.9 L-52.5,20.1 L-51.0,19.4 L-44.6,19.5 L-43.6,20.1 L-41.9,21.9 L-41.0,22.4 L-38.3,21.6 L-35.0,22.2 L-33.6,21.9 L-30.9,20.3 L-29.4,20.2 L-28.1,20.7 L-24.8,23.3 L-22.2,23.9 L-16.7,24.0 L-14.1,24.5 L-13.0,25.1 L-12.7,25.8 L-12.5,27.8 L-12.1,28.4 L-11.3,28.9 L-10.9,30.4 L-9.9,30.6 L-9.2,30.3 L-7.7,28.9 L-6.6,28.8 L-6.0,29.4 L-4.7,31.8"/>
+        <!-- Bhote Koshi + Trishuli (OSM), border at Rasuwagadi south to Devighat -->
+        <path id="g-aug-vs-sep-tri" fill="none" stroke="#7fb2e5" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round" d="M53.3,-5.4 L53.2,-4.6 L52.6,-4.0 L52.6,-3.4 L52.1,-2.9 L52.3,-1.7 L51.2,1.3 L51.2,2.4 L49.1,4.1 L48.5,5.1 L46.2,7.2 L44.5,7.6 L43.1,8.7 L42.9,9.1 L43.1,10.0 L42.2,11.1 L42.2,11.5 L41.7,12.2 L41.7,14.0 L41.3,14.7 L41.6,15.8 L40.2,16.9 L40.3,17.5 L39.8,18.5 L39.5,18.5 L39.6,19.2 L38.6,19.7 L39.0,20.5 L38.7,20.7 L38.7,21.5 L38.1,22.0 L38.0,22.5 L37.2,23.0 L37.1,23.4 L36.8,23.6 L36.1,23.5"/>
+      </g>
+      <!-- screen px at cam 1.00 -->
+      <circle id="g-aug-vs-sep-kgring" cx="320.6" cy="434.2" r="9" fill="none" stroke="#e74c3c" stroke-width="3"/>
+      <circle id="g-aug-vs-sep-kgpin" cx="320.6" cy="434.2" r="9" fill="#e74c3c" stroke="#04070c" stroke-width="2"/>
+      <text id="g-aug-vs-sep-t-sep" class="avs-tag" x="340" y="426" font-size="30" fill="#e74c3c">Sept 27</text>
+      <text id="g-aug-vs-sep-t-kg" class="avs-lab" x="340" y="458" font-size="22">Kali Gandaki</text>
+      <circle id="g-aug-vs-sep-ltring" cx="1012.4" cy="588.2" r="9" fill="none" stroke="#e8c56a" stroke-width="3"/>
+      <circle id="g-aug-vs-sep-ltpin" cx="1012.4" cy="588.2" r="9" fill="#e8c56a" stroke="#04070c" stroke-width="2"/>
+      <text id="g-aug-vs-sep-t-lt" class="avs-lab" x="1012" y="516" text-anchor="middle" font-size="22">Langtang valley</text>
+      <text id="g-aug-vs-sep-t-aug" class="avs-tag" x="1012" y="552" text-anchor="middle" font-size="30" fill="#e8c56a">Aug 26</text>
+    </g>
+  </svg>
+  <div class="avs-scan" id="g-aug-vs-sep-scan"></div>
+  <div class="avs-rail" id="g-aug-vs-sep-railbg"></div>
+  <div class="avs-eb" id="g-aug-vs-sep-eb">Langtang Flood</div>
+  <div class="avs-asof" id="g-aug-vs-sep-asof">As of Sept 21</div>
+  <div class="avs-cnt" id="g-aug-vs-sep-c1" style="top:388px; color:#e74c3c;"><span id="g-aug-vs-sep-c1v">0</span></div>
+  <div class="avs-clab" id="g-aug-vs-sep-c1l" style="top:480px">Lives lost</div>
+  <div class="avs-cnt" id="g-aug-vs-sep-c2" style="top:538px; color:#dfe7ee;"><span id="g-aug-vs-sep-c2v">0</span></div>
+  <div class="avs-clab" id="g-aug-vs-sep-c2l" style="top:630px">Missing</div>
+  <div class="avs-src" id="g-aug-vs-sep-src">Map data: OpenStreetMap contributors, Natural Earth</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-aug-vs-sep", P = "#g-aug-vs-sep-";
+  /* estimated at 175 wpm from the paragraph start (HOST start) */
+  const CUES = {
+    began: 2.4,    /* CUE "when this began" @est 2.4 */
+    aug26: 3.8,    /* CUE "August twenty sixth" @est 3.8 */
+    valley: 7.9,   /* CUE "Langtang valley" @est 7.9 */
+    river: 9.6,    /* CUE "flood down the river" @est 9.6 */
+    sept21: 11.3,  /* CUE "By September twenty first" @est 11.3 */
+    n1451: 13.4,   /* CUE "one thousand four hundred" @est 13.4 */
+    lives: 15.8,   /* CUE "lives lost" @est 15.8 */
+    n5745: 17.5,   /* CUE "Another five thousand" @est 17.5 */
+    missing: 20.9  /* CUE "still missing" @est 20.9 */
+  };
+  const DUR = 22.5;
+  const EXIT = 21.9;
+  const tl = gsap.timeline({ paused: true });
+  const TRI = Math.ceil(document.querySelector(P + "tri").getTotalLength()) + 1;
+  const cam = (z) => ({ attr: { transform: "translate(" + (660 - 660 * z).toFixed(2) + "," + (540 - 540 * z).toFixed(2) + ") scale(" + z + ")" } });
+  const fmt = (v) => Math.round(v).toLocaleString("en-US");
+
+  /* ---- initial state ---- */
+  tl.set(P + "cam", cam(1), 0);
+  tl.set(P + "tri", { strokeDasharray: TRI, strokeDashoffset: TRI }, 0);
+  tl.set([P + "kgpin", P + "kgring", P + "t-sep", P + "t-kg", P + "ltpin", P + "ltring", P + "t-lt", P + "t-aug",
+    P + "eb", P + "asof", P + "c1", P + "c1l", P + "c2", P + "c2l"], { autoAlpha: 0 }, 0);
+
+  /* ---- ambient, whole window ---- */
+  tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: 7.5, ease: "none", repeat: 2, yoyo: true }, 0);
+  tl.to(P + "cam", Object.assign(cam(1.03), { duration: DUR, ease: "none" }), 0);
+  tl.fromTo(P + "nepal", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 0);
+  tl.fromTo(P + "kg", { attr: { "stroke-opacity": 0.55 } }, { attr: { "stroke-opacity": 1 }, duration: 1.4, ease: "sine.inOut", repeat: 15, yoyo: true }, 0);
+  tl.fromTo(P + "src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 0.3);
+
+  /* ---- "when this began": the September pin ---- */
+  tl.fromTo(P + "kgpin", { autoAlpha: 0, y: -50 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "bounce.out" }, CUES.began);
+  tl.fromTo(P + "kgring", { autoAlpha: 0.9, attr: { r: 9 } }, { autoAlpha: 0, attr: { r: 38 }, duration: 1.1, ease: "power2.out", repeat: 13, repeatDelay: 0.25 }, CUES.began + 0.4);
+  tl.fromTo([P + "t-sep", P + "t-kg"], { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.45, stagger: 0.15, ease: "power3.out" }, CUES.began + 0.15);
+
+  /* ---- August 26: the Langtang pin ---- */
+  tl.fromTo(P + "ltpin", { autoAlpha: 0, y: -50 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "bounce.out" }, CUES.aug26);
+  tl.fromTo(P + "ltring", { autoAlpha: 0.9, attr: { r: 9 } }, { autoAlpha: 0, attr: { r: 38 }, duration: 1.1, ease: "power2.out", repeat: 12, repeatDelay: 0.25 }, CUES.aug26 + 0.4);
+  tl.fromTo(P + "t-aug", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.aug26 + 0.15);
+  tl.fromTo(P + "eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.aug26 + 0.3);
+  tl.fromTo(P + "t-lt", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.valley);
+
+  /* ---- a flood down the river below ---- */
+  tl.to(P + "tri", { strokeDashoffset: 0, duration: 1.4, ease: "power2.in" }, CUES.river);
+  tl.fromTo(P + "tri", { attr: { "stroke-opacity": 1 } }, { attr: { "stroke-opacity": 0.5 }, duration: 0.9, ease: "sine.inOut", repeat: 11, yoyo: true }, CUES.river + 1.4);
+
+  /* ---- the count, as of Sept 21 ---- */
+  tl.fromTo(P + "asof", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.sept21);
+  tl.fromTo(P + "c1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.n1451);
+  const o1 = { v: 0 };
+  tl.to(o1, { v: 1451, duration: 2.2, ease: "power3.out", onUpdate: function () { document.getElementById("g-aug-vs-sep-c1v").textContent = fmt(o1.v); } }, CUES.n1451);
+  tl.fromTo(P + "c1l", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.lives);
+  tl.fromTo(P + "c2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.n5745);
+  const o2 = { v: 0 };
+  tl.to(o2, { v: 5745, duration: 2.6, ease: "power3.out", onUpdate: function () { document.getElementById("g-aug-vs-sep-c2v").textContent = fmt(o2.v); } }, CUES.n5745);
+  tl.fromTo(P + "c2l", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.missing);
+
+  /* ---- exit: the rail slides out, the map drifts into the radar teaser ---- */
+  tl.to([P + "eb", P + "asof", P + "c1", P + "c1l", P + "c2", P + "c2l"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, EXIT);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
