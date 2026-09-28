@@ -80,14 +80,19 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(["#pp-lfric", "#pp-lwt"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 2.6);
   tl.fromTo("#pp-schem", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 2.8);
 
-  /* RAIN FILLS THE TINY GAPS @5.49: water rises inside the box */
-  tl.to("#pp-water", { scaleY: 0.62, duration: 5.0, ease: "power1.inOut" }, 5.49);
+  /* RAIN FILLS THE TINY GAPS @5.49: water rises inside the box in two stages (linear, so the
+     push-arrow rows below are guaranteed already covered before they fire; see mg_specs). */
+  tl.to("#pp-water", { scaleY: 0.55, duration: 4.51, ease: "none" }, 5.49);
+  tl.to("#pp-water", { scaleY: 0.82, duration: 4.69, ease: "power2.out" }, 11.31);
 
-  /* PUSHES THEM APART @8.0-10.8: arrows fire in sequence, grains nudge outward */
-  ["#pp-a1", "#pp-a2", "#pp-a3", "#pp-a4", "#pp-a5", "#pp-a6"].forEach(function (sel, i) {
-    const at = 8.0 + i * 0.47;
-    tl.fromTo(sel, { autoAlpha: 0, scale: 0.5, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, at);
-    tl.to(sel, { autoAlpha: 0, duration: 0.3 }, at + 1.1);
+  /* PUSHES THEM APART @8.0/9.4: arrows fire once the water has already reached their row, grains nudge outward */
+  ["#pp-a1", "#pp-a2"].forEach(function (sel) {
+    tl.fromTo(sel, { autoAlpha: 0, scale: 0.5, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 8.0);
+    tl.to(sel, { autoAlpha: 0, duration: 0.3 }, 9.1);
+  });
+  ["#pp-a3", "#pp-a4"].forEach(function (sel) {
+    tl.fromTo(sel, { autoAlpha: 0, scale: 0.5, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 9.4);
+    tl.to(sel, { autoAlpha: 0, duration: 0.3 }, 10.5);
   });
   tl.to(GX, { x: "+=4", duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, 8.2);
 
