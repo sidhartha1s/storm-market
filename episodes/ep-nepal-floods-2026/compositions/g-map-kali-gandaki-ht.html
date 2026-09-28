@@ -66,7 +66,7 @@ window.__timelines = window.__timelines || {};
   tl.set([P + "t-nepal", P + "t-tibet", P + "t-river", P + "t-himlung", P + "pin", P + "ring"], { autoAlpha: 0 }, 0);
 
   /* ---- ambient, whole window ---- */
-  tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: 5.15, ease: "none", repeat: 1, yoyo: true }, 0);
+  tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: 3.3, ease: "none", repeat: 1, yoyo: true }, 0);
   tl.to(P + "cam", Object.assign(cam(1.05), { duration: DUR, ease: "none" }), 0);
   tl.fromTo(P + "nepal", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0);
   tl.fromTo(P + "src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 0.3);
