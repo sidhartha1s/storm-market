@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-basecamp-diagram (A3 open): Himlung massif side-on, SCHEMATIC NOT TO SCALE (mg_specs/g-basecamp-diagram.md).
+     No published cross-section exists for this camp; geometry is illustrative. Confirmed numbers only: 16 at base
+     camp = 2 guides + 14 kitchen/support (factcheck-B#14, factcheck-D#3), UAE group due Kathmandu Oct 1
+     (factcheck-A#2, factcheck-B#15). Cues estimated 175 wpm from the A3 paragraph start (mg-quickref timing rule). -->
+<template>
+<style>
+  #gbd-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 40% 40%, #1a2230 0%, #060a10 78%); }
+  .gbd-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gbd-rail { position:absolute; right:0; top:0; bottom:0; width:740px; pointer-events:none;
+    background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); }
+  .gbd-eyebrow { position:absolute; left:1250px; top:120px; font-weight:700; font-size:22px; letter-spacing:6px;
+    color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
+  .gbd-sub { position:absolute; left:1250px; top:168px; font-family:Georgia, serif; font-style:italic; font-size:26px;
+    color:#d8a13a; white-space:nowrap; }
+  .gbd-row { position:absolute; left:1250px; width:560px; }
+  .gbd-rv { font-size:30px; font-weight:700; color:#dfe7ee; letter-spacing:1px; white-space:nowrap; }
+  .gbd-rl { margin-top:4px; font-size:19px; font-weight:700; color:#93a3b2; letter-spacing:4px; text-transform:uppercase; white-space:nowrap; }
+  .gbd-note { position:absolute; left:1250px; top:460px; width:560px; font-size:24px; font-weight:700; line-height:32px; color:#f2f5f8; }
+  .gbd-caption { position:absolute; left:96px; top:992px; font-size:19px; font-weight:700; letter-spacing:3px;
+    color:#93a3b2; text-transform:uppercase; }
+  .gbd-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+</style>
+<div id="gbd-root" data-composition-id="g-basecamp-diagram" data-width="1920" data-height="1080" data-duration="40">
+  <svg class="gbd-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <linearGradient id="gbd-rockgrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a5560"/><stop offset="1" stop-color="#2a3644"/></linearGradient>
+      <linearGradient id="gbd-avagrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dfe7ee" stop-opacity="0"/><stop offset="1" stop-color="#dfe7ee" stop-opacity="0.55"/></linearGradient>
+    </defs>
+    <g id="gbd-scene">
+      <path id="gbd-massif" d="M700,150 L1170,830 L230,830 Z" fill="url(#gbd-rockgrad)" stroke="#5a768f" stroke-width="2"/>
+      <path id="gbd-snowcap" d="M700,150 L790,330 L610,330 Z" fill="#dfe7ee" opacity="0.9"/>
+      <line id="gbd-baseline" x1="150" y1="830" x2="1180" y2="830" stroke="#93a3b2" stroke-width="2" opacity="0.5"/>
+      <path id="gbd-avalanche" points="700,230 760,230 650,780 380,780" d="M700,230 L760,230 L650,780 L380,780 Z" fill="url(#gbd-avagrad)"/>
+      <g id="gbd-tents">
+        <path id="gbd-tent1" d="M360,822 L380,790 L400,822 Z" fill="#d8a13a"/>
+        <path id="gbd-tent2" d="M420,822 L440,790 L460,822 Z" fill="#d8a13a"/>
+        <path id="gbd-tent3" d="M480,822 L500,790 L520,822 Z" fill="#d8a13a"/>
+        <path id="gbd-tent4" d="M540,822 L560,790 L580,822 Z" fill="#d8a13a"/>
+        <path id="gbd-tent5" d="M600,822 L620,790 L640,822 Z" fill="#d8a13a"/>
+      </g>
+      <text class="gbd-lab" id="gbd-camplab" x="500" y="862" text-anchor="middle">BASE CAMP</text>
+      <path id="gbd-rope" d="M500,790 L830,430" fill="none" stroke="#f2f5f8" stroke-width="3" stroke-dasharray="8 6"/>
+      <text class="gbd-lab" id="gbd-ropelab" x="600" y="600" text-anchor="middle" transform="rotate(-46 600 600)">FIXED ROPE</text>
+      <circle id="gbd-c1ring" cx="830" cy="430" r="14" fill="none" stroke="#f2f5f8" stroke-width="4"/>
+      <text class="gbd-lab" id="gbd-c1lab" x="850" y="420">CAMP 1</text>
+    </g>
+  </svg>
+  <div class="gbd-rail"></div>
+  <div class="gbd-eyebrow" id="gbd-eb">Himlung Himal &middot; Nepal's Far North</div>
+  <div class="gbd-sub" id="gbd-sub">a first big Himalayan climb</div>
+  <div class="gbd-row" id="gbd-r1" style="top:230px"><div class="gbd-rv">16</div><div class="gbd-rl">At Base Camp</div></div>
+  <div class="gbd-row" id="gbd-r2" style="top:300px"><div class="gbd-rv">2</div><div class="gbd-rl">Climbing Guides</div></div>
+  <div class="gbd-row" id="gbd-r3" style="top:370px"><div class="gbd-rv">14</div><div class="gbd-rl">Kitchen &amp; Support</div></div>
+  <div class="gbd-note" id="gbd-note">UAE Climbing School &middot; Due Oct 1</div>
+  <div class="gbd-caption" id="gbd-cap">Schematic, Not To Scale</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-basecamp-diagram", P = "#gbd-";
+  const DUR = 40;
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P+"eb", P+"sub", P+"r1", P+"r2", P+"r3", P+"note", P+"cap", P+"camplab", P+"ropelab", P+"c1ring", P+"c1lab",
+          P+"tent1", P+"tent2", P+"tent3", P+"tent4", P+"tent5", P+"rope", P+"massif", P+"snowcap"], { autoAlpha: 0 }, 0);
+  tl.set(P+"avalanche", { scaleY: 0, svgOrigin: "700 230" }, 0);
+
+  /* whole window: slow push on the massif, nothing ever fully still */
+  tl.fromTo(P+"scene", { scale: 1, svgOrigin: "700 500" }, { scale: 1.03, duration: DUR, ease: "none" }, 0);
+
+  /* 0.3: the massif is named */
+  tl.fromTo([P+"massif", P+"snowcap"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 0.3);
+  tl.fromTo(P+"eb", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.3);
+
+  /* 8.9: a practice run before peaks like Everest */
+  tl.fromTo(P+"sub", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.9);
+
+  /* 14.4: guides carry up the tents and fix the ropes */
+  tl.fromTo([P+"tent1", P+"tent2", P+"tent3", P+"tent4", P+"tent5"], { autoAlpha: 0, y: 10 },
+    { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out", stagger: 0.08 }, 14.4);
+  tl.fromTo(P+"camplab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 14.6);
+  tl.fromTo(P+"rope", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6, ease: "power2.out" }, 14.9);
+  tl.fromTo(P+"ropelab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 15.3);
+
+  /* 21.6: sixteen workers were at base camp */
+  tl.fromTo(P+"c1ring", { autoAlpha: 0, scale: 1.6, svgOrigin: "830 430" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power3.out" }, 21.6);
+  tl.fromTo(P+"c1lab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 21.8);
+  tl.fromTo(P+"r1", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 21.6);
+
+  /* 24.7: two climbing guides and fourteen kitchen and support staff */
+  tl.fromTo(P+"r2", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 24.7);
+  tl.fromTo(P+"r3", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 25.3);
+
+  /* 32.5: due in Kathmandu on October first */
+  tl.fromTo(P+"note", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 32.5);
+  tl.fromTo(P+"cap", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 33.0);
+
+  /* 37.0: then snow and rock came down onto the camp */
+  tl.to(P+"avalanche", { scaleY: 1, duration: 1.4, ease: "power2.in" }, 37.0);
+  tl.fromTo(P+"note", { scale: 1 }, { scale: 1.04, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 38.2);
+
+  /* exit 39.4 */
+  tl.to([P+"eb", P+"sub", P+"r1", P+"r2", P+"r3", P+"note", P+"rail"], { x: 660, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 39.4);
+  tl.to([P+"c1ring", P+"c1lab", P+"ropelab", P+"camplab", P+"tent1", P+"tent2", P+"tent3", P+"tent4", P+"tent5", P+"rope"],
+        { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 39.4);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
