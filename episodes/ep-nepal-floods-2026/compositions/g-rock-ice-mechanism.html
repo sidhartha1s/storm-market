@@ -103,44 +103,45 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#rim-head", { autoAlpha: 0, y: -20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.4);
   tl.to("#rim-facepoly", { autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 0.5);
 
-  /* ROCK AND ICE AVALANCHE @3.77: slab + crack reveal */
-  tl.fromTo("#rim-slab", { autoAlpha: 0, y: -20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 3.77);
-  tl.fromTo("#rim-crack", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 4.2);
-  tl.to("#rim-crack", { x: 2, duration: 0.08, ease: "power1.inOut", yoyo: true, repeat: 5 }, 6.8);
+  /* "a rock and ice avalanche." rock @3.04: slab + crack reveal */
+  tl.fromTo("#rim-slab", { autoAlpha: 0, y: -20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.89);
+  tl.fromTo("#rim-crack", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 3.32);
+  tl.to("#rim-crack", { x: 2, duration: 0.08, ease: "power1.inOut", yoyo: true, repeat: 5 }, 5.92);
 
-  /* FRICTION MELTS SOME OF THE ICE @7.54: the slab falls, ice fragments morph to water droplets by landing (~8.94) */
-  tl.to("#rim-slab", { y: 700, rotation: -12, duration: 1.4, ease: "power2.in" }, 7.54);
-  tl.to(ICE, { autoAlpha: 1, duration: 0.2 }, 7.54);
-  tl.to(ICE, { y: "+=700", duration: 1.4, ease: "power2.in" }, 7.54);
-  tl.to(ICE, { autoAlpha: 0, duration: 0.3 }, 8.6);
-  tl.to(DROPS, { attr: { r: 7 }, duration: 0.3, ease: "power2.out" }, 8.7);
-  tl.to(DROPS, { attr: { cy: "+=680" }, duration: 0.05 }, 8.65);
+  /* "As it falls," falls @10.06: slab falls; "friction melts some of the ice" @11.02-12.14, ice fragments morph to water droplets by landing */
+  tl.to("#rim-slab", { y: 700, rotation: -12, duration: 1.4, ease: "power2.in" }, 9.77);
+  tl.to(ICE, { autoAlpha: 1, duration: 0.2 }, 9.77);
+  tl.to(ICE, { y: "+=700", duration: 1.4, ease: "power2.in" }, 9.77);
+  tl.to(ICE, { autoAlpha: 0, duration: 0.3 }, 10.83);
+  tl.to(DROPS, { attr: { r: 7 }, duration: 0.3, ease: "power2.out" }, 10.93);
+  tl.to(DROPS, { attr: { cy: "+=680" }, duration: 0.05 }, 10.88);
 
-  /* RUNS MUCH FARTHER THAN DRY ROCK @10.63: dry-rockfall line, then the tongue spreads past it */
-  tl.fromTo("#rim-dry", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 10.63);
-  tl.fromTo("#rim-drylab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 10.8);
-  tl.to(["#rim-tonguepath", "#rim-slurry"], { autoAlpha: 1, scaleX: 1, duration: 0.9, ease: "power3.out" }, 11.0);
-  tl.to(["#rim-tonguepath", "#rim-slurry"], { scaleX: 1.05, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 8 }, 11.9);
+  /* "runs much farther than dry rock." runs @15.20: dry-rockfall line, then the tongue spreads past it */
+  tl.fromTo("#rim-dry", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 15.05);
+  tl.fromTo("#rim-drylab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 15.22);
+  tl.to(["#rim-tonguepath", "#rim-slurry"], { autoAlpha: 1, scaleX: 1, duration: 0.9, ease: "power3.out" }, 15.42);
+  tl.to(["#rim-tonguepath", "#rim-slurry"], { scaleX: 1.05, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 8 }, 16.32);
 
-  /* ABOUT TWO THOUSAND FEET WIDE ... FELL ALMOST FOUR THOUSAND FEET @15.77 */
-  tl.fromTo(["#rim-widthtick", "#rim-width"], { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 15.77);
-  tl.fromTo(["#rim-droptick", "#rim-drop"], { autoAlpha: 0, x: 10 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 16.6);
+  /* "about 2,000 feet wide," about @19.00 */
+  tl.fromTo(["#rim-widthtick", "#rim-width"], { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 18.85);
+  /* "and it fell almost 4,000 feet." fell @21.20 */
+  tl.fromTo(["#rim-droptick", "#rim-drop"], { autoAlpha: 0, x: 10 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 21.05);
 
-  /* THREE EMPIRE STATE BUILDINGS STACKED UP @21.26 */
-  tl.fromTo("#rim-guide", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 21.26);
-  tl.fromTo("#rim-b3", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 21.4);
-  tl.fromTo("#rim-b2", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 21.75);
-  tl.fromTo(["#rim-b1", "#rim-spire"], { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 22.1);
-  tl.to("#rim-esb", { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 21.3);
-  tl.fromTo(["#rim-b3div", "#rim-b2div"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 22.4);
-  tl.fromTo("#rim-esblab", { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 22.6);
-  tl.fromTo("#rim-note", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 23.0);
+  /* "That's about three Empire State buildings stacked up." three @24.14 */
+  tl.fromTo("#rim-guide", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 23.99);
+  tl.fromTo("#rim-b3", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 24.13);
+  tl.fromTo("#rim-b2", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 24.48);
+  tl.fromTo(["#rim-b1", "#rim-spire"], { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 24.83);
+  tl.to("#rim-esb", { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 24.03);
+  tl.fromTo(["#rim-b3div", "#rim-b2div"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 25.13);
+  tl.fromTo("#rim-esblab", { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 25.33);
+  tl.fromTo("#rim-note", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 25.73);
 
-  /* exit @24.3 */
+  /* exit 26.2, finishes 26.8 (D-0.1 = 26.934); holds through "buildings stacked up." @26.08 */
   tl.to(["#rim-facepoly", "#rim-slab", "#rim-crack", "#rim-tonguepath", "#rim-slurry", "#rim-dry", "#rim-drylab",
          "#rim-widthtick", "#rim-droptick", "#rim-width", "#rim-drop", "#rim-head"],
-    { y: "-=30", autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 24.3);
-  tl.to(["#rim-guide", "#rim-esb", "#rim-esblab", "#rim-note"], { x: "+=40", autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 24.3);
+    { y: "-=30", autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 26.2);
+  tl.to(["#rim-guide", "#rim-esb", "#rim-esblab", "#rim-note"], { x: "+=40", autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 26.2);
   tl.to({}, { duration: 0.01 }, D - 0.01);
   window.__timelines["g-rock-ice-mechanism"] = tl;
 })();
