@@ -1,6 +1,86 @@
 # ep-nepal-floods-2026 · script v1 (29 Sep 26)
 
-FRONT-MATTER-PLACEHOLDER
+**Episode.** The late-September 2026 Nepal disaster (27 Sep Kali Gandaki collapse + Himlung Himal base camp
+avalanche), told against August's Langtang collapse. Target 13 to 14 min. Enderlin format. First draft; nothing locked.
+
+**Working titles** (all ≤ 52 chars, "Nepal" + "2026" in the first 10 chars; lengths by python)
+1. Nepal 2026: The Mountain That Fell in 3 Seconds (47)
+2. Nepal 2026: One Month Later, It Fell Again (42)
+3. Nepal 2026: The Rain That Came Back After Langtang (50)
+
+**Thumbnail concept.** One frame from `wion-mountain-crashes-kaligandaki.mp4` at the moment the green slope breaks
+into brown dust over the river (graded, credited), cropped tight on the falling face. Big white "3 SECONDS" top-left,
+a red timer ring "0:03" beside it, small "NEPAL 2026" under it. Bottom-right, a small inset of a snowy peak with one
+yellow tent, the base camp thread. No faces, no toll number (the hook pays the "3 seconds" in its first sentence).
+
+**Word count.** 2,289 narration words (python, `[verify]`/loop/tag markers and Picture lines stripped). Per section:
+H 19 · HT 34 · I 294 · A1 332 · A2 444 · A3 383 · A4 384 · A5 153 · CTA 0 · A6 168 · Z 78.
+**Estimated runtime.** 13:23 at the owner's measured 171 narration words per runtime minute (Enderlin). Not yet
+checked by `word_budget.py` (needs probe wavs). Every `[verify]` line the fact desk cuts pulls it under; the two
+`{NAME}` lines add about 20 words if a name is published.
+
+**CTA hinge.** A5 "Thirty two days" ends on the tease (21 words): "Across both months, Nepal's warning system measured
+one thing well, and it was the thing that moved last." → CTA (15.1 s file + two 1.0 s dips) → A6 "After the rain"
+opens with the payoff: "It measured rivers." CTA start estimated 11:57, 89.3 % of runtime (python, words before CTA
+2,043 / 2,289).
+
+**Open for the orchestrator / owner**
+- Named human thread: no verifiable name exists in my inputs (`notes.md` was not on disk). The A3 and Z name lines are
+  `{NAME}` slots with a CUT instruction if the fact desk finds no published name.
+- A1's frame-by-frame beats are written blind; frame-check the clip and rewrite them to what it shows.
+- `wion-hillside-collapse-mustang.mp4` is still a `.part` download; no `provenance.csv` exists yet for any clip.
+- Close rule conflict: `script-quickref.md` says "no sign-off line"; the brief asked for the Enderlin signature
+  "This was The Warning Hour." The brief won; flag for the owner.
+- Clip filenames `lallantop-...-24-dead` and `republicworld-5-horrifying-visuals` contain flag words; they are internal
+  file names only and must never appear as on-screen text or credits (credit "The Lallantop", "Republic World").
+- Gates: my regex scan of narration found 0 flag-word hits, 0 em dashes, 0 question marks, 0 banned words. The repo's
+  `flag_words.py` / `homograph_scan.py` read `edit_script.md`, which does not exist yet, so their PASS is vacuous.
+- Homographs used (scan list): "lives" ×6 (noun), "close" ×3 (check sense: "close to" = /kloʊs/), "winds" ×1 (noun),
+  "read" ×1 ("nothing to read", present). Probe before any respelling.
+- Facts competitors lack: Kali Gandaki gorge vs Grand Canyon; Oso, Washington 2014 as the same glacial-sediment
+  mechanism; the 27 to 28 Sep 2024 Kathmandu floods on the same dates; the displaced-per-family arithmetic that
+  exposes mismatched counts; the gauge-vs-slope warning gap as the hinge.
+
+**Motion graphics wanted (18)**
+g-collapse-3s (3-second frame breakdown) · g-map-kali-gandaki (valley + five districts, master map) ·
+g-gorge-vs-grand-canyon · g-hydro-card (Kali Gandaki A, 144 MW, US homes) · g-himlung-height (vs Denali) ·
+g-toll-counter (three outlets side by side) · g-aug-vs-sep (map, distances in miles) · g-insar-creep (Langtang 30 cm
+radar creep) · g-pore-pressure (slope saturation) · g-monsoon-calendar · g-bay-of-bengal-track · g-rain-bars ·
+g-sep-2024 (precedent card) · g-basecamp-diagram · g-rock-ice-mechanism · g-ledger (Established / Disputed / Unknown
+board) · g-sensor-gap (river gauge vs slope) · g-outro. Plus non-MG cards: Oso map + USGS PD photo, glacial-debris
+valley cutaway, social-post mock, text-only name card, USGS / ICIMOD source cards.
+
+**Clips.** 9 files, 18 placements (about one every 45 s); re-used files use different segments, one exact re-use
+(the viral shot in A1) carries `data-callback`.
+
+**Verify tags (67).** Resolved by the fact desk, never by the writer; "(sentence before)" = the claim in that sentence.
+H: 27 Sep date; "3 seconds" per LatestLY / Asianet · HT: CNN 27 Sep, UAE expedition due 1 Oct ·
+I: gorge depth 5,571 m vs Grand Canyon 6,000 ft · NewsBytes 24/14 and scope · 1,500 / 747 / 143 source and scope ·
+bridges, plant offline · 144 MW ≈ 108,000 to 115,200 US homes · Himlung 7,126 m vs Denali · CNN at least 4 ·
+1,451 / 5,745 as of 21 Sep, official source ·
+A1: frame-check viral clip, vantage · USGS landslide basics · landslide-dam mechanism · any blockage / lake report ·
+plant at Mirmi, Syangja · commissioned 2002, largest until 2021 · shutdown reason (NEA) · Jomsom / Muktinath road
+(sentence before) · trekking season dates ·
+A2: DHM monsoon onset / withdrawal · Al Jazeera "Bay of Bengal depression" · name "Arnab" vs IMD; Yahoo · storm lost
+its winds (sentence before) · 66.5 vs 7.6 mm, station, day · pore pressure (USGS) · valley glacial-debris geology ·
+Oso: 43 lives, glacial sediment, rain · Oso comparison holds · Sep 2024 floods dates, about 244 ·
+A3: Himlung location / border distance · "first big peak" (sentence before) · crews arrive early · CNN 27 Sep ·
+named worker or CUT · rock-ice mechanism (ICIMOD / AGU) · 600 m / 1,200 m · Himlung ice / runout unpublished
+(sentence before) · ICIMOD 30 cm in 3 to 4 weeks · sensors built for river floods · no pre-event radar published ·
+A4: collapse after rain (sentence before) · viral clip provenance · Himlung established (sentence before) ·
+Al Jazeera 12 / 56 · SANA 21 / 5 / 5 · NewsBytes + CNBC TV18 about 70 · census household 4.37 · collapse location,
+WION "Mustang" · no glacier on failed slope · Langtang about 5,600 m · "rain landslide" type (sentence before) ·
+Himlung closer to Langtang's type (sentence before) · lake / blockage unknown (sentence before) · 7NEWS Australians ·
+A5: about 120 mi Langtang to Kali Gandaki (190 km, approximate coordinates) · about 75 mi to Himlung (124 km) ·
+seasonal thaw · "wrong kind of disaster" framing ·
+A6: DHM warning network · Langtang gauges swept away · InSAR precision · monsoon withdrawal, soil drying ·
+trekking season now (sentence before) · climbing season, crews on peaks (sentence before) ·
+Z: arrival date / cancellation · count and roles · name or CUT · DHM forecast.
+
+**Reading notes.** `[loop …]`, `[verify …]` and `[RS] [VE] [Q] [PAY] [HOOK] [HUMAN]` are margin marks, stripped from
+the TTS copy. Numbers, dates and years are spelled out in narration; Picture lines keep digits.
+
+**Loop chain** in full after Z.
 
 ---
 
@@ -71,7 +151,7 @@ Scientists had watched the Langtang slope moving on satellite radar in the weeks
 September collapse raises a harder question, about what anyone could see on the Kali Gandaki before it moved.
 `[loop L4 open]`
 
-## A1 · Three seconds (1:48)
+## A1 · Three seconds (2:02)
 **Picture:** g-collapse-3s full: four stills pulled from the viral clip at 0.0, 1.0, 2.0 and 3.0 s, each stamped on
 the voice, then `wion-mountain-crashes-kaligandaki.mp4` replays once at full speed (reuse,
 `data-callback="frame-by-frame payoff"`). [RS] [VE]
@@ -118,7 +198,7 @@ is supposed to be ending. `[loop L2 open]`
 
 *(chapter blackout)*
 
-## A2 · The wrong end of the season (4:05)
+## A2 · The wrong end of the season (3:58)
 **Picture:** g-monsoon-calendar: a June to October bar, "onset" mark in mid June, "normal withdrawal" mark in early
 October, a red pin landing on "Sept 27" near the end. [VE]
 
@@ -180,7 +260,7 @@ full of people. `[loop L1 continues]`
 
 *(chapter blackout)*
 
-## A3 · Base camp (6:40)
+## A3 · Base camp (6:34)
 **Picture:** g-basecamp-diagram: Himlung massif side-on, base camp tents at the foot, a fixed-rope line climbing to
 "Camp 1", an avalanche path drawn down across the tents · `wion-climbers-guides-missing-avalanche.mp4` (third cut,
 rescue or helicopter shot). [VE]
@@ -234,7 +314,7 @@ places, meanwhile, were running in different directions, depending on who was co
 
 *(chapter blackout)*
 
-## A4 · Established, disputed, unknown (8:40)
+## A4 · Established, disputed, unknown (8:49)
 **Picture:** g-ledger: a board with three columns, "Established", "Disputed", "Unknown"; each claim slides into its
 column on the voice and stays for the rest of the act. [VE]
 
@@ -289,7 +369,7 @@ slope before it moved. `[loop L4 continues]`
 
 *(chapter blackout)*
 
-## A5 · Thirty two days (10:40)
+## A5 · Thirty two days (11:03)
 **Picture:** g-aug-vs-sep map full: Langtang pin "Aug 26", Kali Gandaki pin "Sept 27", Himlung pin; distance lines
 labelled in miles ("about 120 mi", "about 75 mi"); each pin's toll box with its date · `republicworld-5-horrifying-visuals.mp4`
 (second segment, aerial). [VE]
@@ -311,11 +391,11 @@ that network again, in three valleys at once.
 Across both months, Nepal's warning system measured one thing well, and it was the thing that moved last.
 `[loop L6 open · cta-hinge]` `[loop L0 continues]`
 
-## CTA · Storm-Ready Home (11:50)
+## CTA · Storm-Ready Home (11:57)
 **Picture:** 1.0 s dip in · `config.yaml channel.cta` file (Paul, 15.1 s, its own VO) · 1.0 s dip out · hard cut
 to real footage for the payoff. No narration under it.
 
-## A6 · After the rain (12:07)
+## A6 · After the rain (12:14)
 **Picture:** `news18bihar-cyclone-arnab-bagmati.mp4` (second segment, a river gauge or swollen river shot) ·
 g-sensor-gap full: a river gauge line rises only after a slope icon has already fallen in; a timeline marks "slope
 fails" then "gauge sees it". [PAY]
@@ -342,7 +422,7 @@ crews are already on those mountains. `[verify]` At Himlung, the tents had been 
 
 *(hold 3 s, base camp diagram at dawn, bed only under a moving picture)*
 
-## Z · Close (13:05)
+## Z · Close (13:13)
 **Picture:** g-basecamp-diagram fades to the single camp · text-only name card returns, landing on the voice ·
 slow push on `wion-climbers-guides-missing-avalanche.mp4` (a fourth, still shot of the peak) · g-outro. [HUMAN]
 
