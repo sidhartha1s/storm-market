@@ -71,17 +71,32 @@ When one sitting can't hold the whole script (fatigue is how structure gets miss
 4. All of it is text briefs and judgment — no code, no schema, nothing that can break midrun.
    A missing brief line degrades to "writer uses judgment," never to a crash.
 
-## Script fact-QC layer (owner order 2026-08-05 — runs BEFORE TTS, zero cost)
+## Script fact-QC layer (owner order 2026-08-05, revised 27 Sep 26 — fan-out, not writer self-check)
 
-Two passes, both pre-TTS, both free:
-1. **In-session eyeball:** re-walk every number, name, date, distance, and death count in the
-   draft against the research reports. Arithmetic too (day gaps, per-count divisions). Fix on
-   the spot; anything unsourced gets `[verify]` or gets cut.
-2. **Verification agents' verdicts applied:** every `[verify]`-gated line resolves to
-   CONFIRMED (marker removed) / CORRECTED (line rewritten) / UNVERIFIED (line CUT — the
-   conditional-fact rule: drop entirely, never soften into "reportedly").
+Enderlin script v2 (27 Sep 26): 39.7 min, 85 tool calls, 44 open `[verify]` markers — mostly the
+writer reading rule docs one file at a time, then self-verifying serially before handing the
+script anywhere. Fixed:
+
+1. **The writer only tags, never resolves.** The moment a fact isn't already in the pasted
+   research, it gets `[verify: claim]` inline and the writer moves on — no in-session eyeball,
+   no arithmetic re-walk. That work moves to step 2.
+2. **Fact-check is a parallel fan-out, run by someone other than the writer.** Split the open
+   `[verify]` markers into slices (by act, or by claim count) and spawn one fact-check subagent
+   per slice, in parallel, each carrying only its slice + the `research/` corpus. Every marker
+   resolves to CONFIRMED (marker removed) / CORRECTED (line rewritten) / UNVERIFIED (line CUT —
+   the conditional-fact rule: drop entirely, never soften into "reportedly").
+3. **The fan-out runs while the owner reads, not before.** The writer hands off the hook+intro
+   draft to the OWNER GATE the moment it's written; the fact-check fan-out starts on that same
+   draft in the same window. Owner reviews story/register, the fan-out checks facts — different
+   reviewers, same wall-clock window, not two serial waits.
+4. **Section lock, not whole-script lock.** A section (hook+intro first, then each act) locks
+   when its `[verify]` markers are all resolved AND the owner hasn't asked for a change to it.
+   A locked section goes to TTS/compose immediately — it does not wait for later acts' fan-out
+   to finish. A locked section never reopens for a later section's fact-check; a cross-section
+   contradiction found late is a new `[verify]` on the LATER section.
 Standing sub-rules: dual-scope stats name their scope in the same sentence; quotes carry their
-attribution; TTS does not run until the script has zero open `[verify]` markers.
+attribution; a section does not go to TTS until IT (not the whole script) has zero open
+`[verify]` markers.
 
 ## Insert-transcription rule (owner order 2026-08-05)
 
