@@ -35,17 +35,23 @@ No springs added (owner rejected springs in the source review this PR implements
 
 ## Evidence
 - `python3 scripts/test_sfx_peak.py`, `test_pop_scan.py`, `test_master_deliverables.py` — all
-  PASS (peak-location against a sample-exact synthetic impulse; isolated-spike/smooth-motion/
-  hard-cut/floor cases for the pop detector; a real ffmpeg-injected single-frame flash found at
-  its known timestamp; `verify_render.sh` still exits 0 on a clean synthetic render; ffprobe on a
-  synthetic 3s master shows `color_space=bt709` and `color_range=tv`).
+  PASS (peak-location against a sample-exact synthetic impulse; `eligible_hits()` against markup
+  copied VERBATIM from real episodes — `ep-enderlin-2025`'s real `sx-stamp-ef5`/`sx-stamp-ef3`
+  with `data-bed` present, a real riser, a real bed, a real `nx-` line, a real `sx-` `data-media-start`
+  element, and a `<video>` with an `sx-` id; isolated-spike/smooth-motion/hard-cut/floor cases for
+  the pop detector; a real ffmpeg-injected single-frame flash found at its known timestamp;
+  `verify_render.sh` still exits 0 on a clean synthetic render; ffprobe on a synthetic 3s master
+  shows `color_space=bt709` and `color_range=tv`).
+- `sfx_peak.py` against 3 real episodes (read-only, main checkout): `ep-enderlin-2025` 41 hits,
+  `ep6-katrina-2005` 52 hits, `sh-hawaii-lowell-1` 7 hits (9 real `sx-` ids minus 2 risers,
+  matches exactly). Before this fix it found 0 on every real episode.
 - `python3 scripts/e2e.py episodes/ep-enderlin-2025`: all 11 `scripts/test_*.py` PASS, overall
-  **E2E PASS**. `ep-enderlin-2025` itself reports `RUN_GATES FAIL - sweep_episode.py` on a
-  missing CTA media file (`media/cta/paul-storm-ready-v5-sep6.mp4`) — confirmed pre-existing and
-  unrelated to this PR: it reproduces identically on an untouched `origin/main` worktree (the
-  gitignored local media simply isn't staged in a fresh worktree checkout), and `e2e.py`'s own
-  design treats a legitimate gate FAIL (verdict present, no crash) as passing its suite, which is
-  why the run reports overall PASS.
+  **E2E PASS**. `ep-enderlin-2025` itself reports `RUN_GATES FAIL - sweep_episode.py` on 33
+  missing media files including the CTA (`media/cta/paul-storm-ready-v5-sep6.mp4`) — confirmed
+  pre-existing and unrelated to this PR: it reproduces identically on an untouched `origin/main`
+  worktree (the gitignored local media simply isn't staged in a fresh worktree checkout), and
+  `e2e.py`'s own design treats a legitimate gate FAIL (verdict present, no crash) as passing its
+  suite, which is why the run reports overall PASS.
 - Confirmed free RAM (3.7-3.9 GB) and no other live render/e2e before running; a second session's
   live `hyperframes` render was detected mid-session (different worktree) and waited out before
   the final clean e2e run above.
