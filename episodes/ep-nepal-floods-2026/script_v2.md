@@ -3,10 +3,10 @@
 **Episode.** The late-September 2026 Nepal disaster (27 Sep Kali Gandaki collapse + Himlung Himal base camp
 avalanche), told against August's Langtang flood. Target 13 to 14 min. Enderlin format. v2 = v1 rewritten by the
 orchestrator on three fact desks (`research/factcheck-A.md`, `-B.md`, `-C.md`) and the independent grade
-(`C:\Users\Sidhartha\.claude\scratch\nepal-sep27\grade-script-v1.md`, REVISE 6/10). Nothing locked; owner gate open.
+(`C:\Users\Sidhartha\.claude\scratch\nepal-sep27\grade-script-v1.md`, REVISE 6/10). Owner approved v2 in chat 29 Sep 26; hook re-graded (fixes applied); locked.
 
 **Titles** (FRE by `scripts/title_fre.py`; packaging-rules floor is 100)
-1. Nepal 2026: A Hill Fell in 3 Seconds. Then the Snow (101.3, 51 ch) · pays the hook and the Himlung thread
+1. Nepal 2026: A Hill Fell in 3 Seconds. Then the Snow (101.3, 51 ch) · OWNER PICK 29 Sep 26
 2. Nepal 2026: The Hill Fell. It Took 3 Seconds (98.9, 44 ch)
 3. Nepal 2026: The Mountain That Fell in 3 Seconds (84.9, 47 ch) · v1 pick, strongest noun, fails the floor
 
@@ -34,15 +34,14 @@ watching these slopes (I to A6) · L5 which toll is right (I to A4) · L6 the on
 "Sept 27, 2026 · Kali Gandaki River, Nepal" inside the first second · g-collapse-3s as a thin timer over the clip,
 "0.0 s" to "3.0 s". [VE] [HOOK]
 
-In three seconds, a Nepal mountainside fell into a river. Almost six thousand people were still missing from a flood there in August. `[loop L0 open]`
+In three seconds, a Nepal hillside fell into a river. Nepal still had almost six thousand people missing from a different flood in August. `[loop L0 open]`
 
 ## HT · Hook tail (0:08)
 **Picture:** hold the collapse clip under sentence one (post-mortem rule: the line after the hook stays in the hook's
 scene) · g-map-kali-gandaki flash on "Tibet", a pin lands on "Himlung Himal" · cut on "base camp" to the WION
 avalanche clip (tents or high camp shot, muted).
 
-It happened on Sunday, September twenty seventh, on the Kali Gandaki River. The same storm was dropping snow on a
-peak called Himlung Himal, near the border with Tibet. A crew of mountain guides and cooks was up there, building a
+The storm behind it was also dropping snow on Himlung Himal, a peak near the border with Tibet. A crew of mountain guides and cooks was up there, building a
 base camp for climbers due in four days. `[loop L1 open]`
 
 ## I · What fell (0:22)
