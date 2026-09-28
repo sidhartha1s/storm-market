@@ -48,7 +48,7 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-monsoon-calendar", P = "#gmc-";
-  const DUR = 17.191;
+  const DUR = 17.391;
   const tl = gsap.timeline({ paused: true });
   tl.set([P+"onsettick", P+"onsetlab", P+"withtick", P+"withlab", P+"pin", P+"pindot", P+"pinlab", P+"wetband"], { autoAlpha: 0 }, 0);
   tl.set([P+"axis", P+"wetband"], { scaleX: 0, transformOrigin: "left center" }, 0);
@@ -56,30 +56,31 @@ window.__timelines = window.__timelines || {};
   tl.set(P+"pin", { y: -60, svgOrigin: "1644 690" }, 0);
 
   /* whole window: the wet band breathes slowly */
-  tl.to(P+"wetband", { opacity: 0.12, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 6 }, 3.0);
+  tl.to(P+"wetband", { opacity: 0.12, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 6 }, 3.2);
 
-  /* real word "Nepal" @0.00: Nepal gets most of its rain from the summer monsoon */
-  tl.to(P+"axis", { scaleX: 1, autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 0.0);
-  tl.to(P+"wetband", { scaleX: 1, autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 0.2);
-  tl.fromTo(P+"ticks", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.6);
+  /* real word "Nepal" @0.20 (host now starts 0.2s earlier at blackout end, voice still @comp-local 0.2): Nepal
+     gets most of its rain from the summer monsoon */
+  tl.to(P+"axis", { scaleX: 1, autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 0.2);
+  tl.to(P+"wetband", { scaleX: 1, autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 0.4);
+  tl.fromTo(P+"ticks", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.8);
 
-  /* real words "mid" @4.18 / "-June," @4.36: which usually arrives in mid June */
-  tl.fromTo([P+"onsettick", P+"onsetlab"], { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.21);
+  /* real words "mid" @4.38 / "-June," @4.56: which usually arrives in mid June */
+  tl.fromTo([P+"onsettick", P+"onsetlab"], { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.41);
 
-  /* real words "early" @6.08 / "October." @6.36: and starts leaving in early October */
-  tl.fromTo([P+"withtick", P+"withlab"], { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.21);
+  /* real words "early" @6.28 / "October." @6.56: and starts leaving in early October */
+  tl.fromTo([P+"withtick", P+"withlab"], { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.41);
 
-  /* real word "hillsides" @9.06: the hillsides have been soaking for more than three months */
-  tl.to(P+"wetband", { opacity: 0.4, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 8.91);
+  /* real word "hillsides" @9.26: the hillsides have been soaking for more than three months */
+  tl.to(P+"wetband", { opacity: 0.4, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 9.11);
 
-  /* real word "holding" @14.00: holding more water than at any other time — the pin drops */
-  tl.to(P+"pin", { autoAlpha: 1, y: 0, duration: 0.5, ease: "bounce.out" }, 13.85);
-  tl.to(P+"pindot", { autoAlpha: 1, duration: 0.3 }, 14.15);
-  tl.fromTo(P+"pinlab", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 14.25);
+  /* real word "holding" @14.20: holding more water than at any other time — the pin drops */
+  tl.to(P+"pin", { autoAlpha: 1, y: 0, duration: 0.5, ease: "bounce.out" }, 14.05);
+  tl.to(P+"pindot", { autoAlpha: 1, duration: 0.3 }, 14.35);
+  tl.fromTo(P+"pinlab", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 14.45);
 
   /* exit, finishes by D - 0.1 */
   tl.to([P+"axis", P+"wetband", P+"ticks", P+"onsettick", P+"onsetlab", P+"withtick", P+"withlab", P+"pin", P+"pindot", P+"pinlab"],
-        { x: 660, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 16.45);
+        { x: 660, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 16.65);
   window.__timelines[ID] = tl;
 })();
 </script>
