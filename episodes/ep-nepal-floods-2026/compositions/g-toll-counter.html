@@ -43,38 +43,39 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const DUR = 12.5;
+  const DUR = 10.901;
   tl.set(["#tc-hl", "#tc-r1", "#tc-r2"], { autoAlpha: 0 }, 0);
 
-  /* ambient: panel entrance + a slow beam sweep for the whole window */
+  /* ambient: panel entrance + a slow beam sweep sized to the shorter real window */
   tl.fromTo("#tc-panel", { x: 660 }, { x: 0, duration: 0.7, ease: "power3.out" }, 0.0);
-  tl.fromTo("#tc-beam", { x: -200 }, { x: 700, duration: 2.4, ease: "none", repeat: 4 }, 0.7);
+  tl.fromTo("#tc-beam", { x: -200 }, { x: 700, duration: 2.4, ease: "none", repeat: 3 }, 0.7);
 
   tl.fromTo("#tc-hl", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.3);
 
-  /* TWELVE PEOPLE @3.09: row 1 reveals, both counters roll together */
-  tl.fromTo("#tc-r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.6);
+  /* row 1 reveals on "counted" (3.32); counter "12" lands ON the spoken word "12" @3.68 */
+  tl.fromTo("#tc-r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.17);
   const c1 = { v: 0 }, c2 = { v: 0 };
-  tl.to(c1, { v: 12, duration: 1.4, ease: "power3.out", onUpdate: function () {
+  tl.to(c1, { v: 12, duration: 0.51, ease: "power3.out", onUpdate: function () {
     const e = document.getElementById("tc-v1"); if (e) e.textContent = Math.round(c1.v);
-  } }, 2.6);
-  /* SEVEN MORE MISSING @5.83 */
-  tl.to(c2, { v: 7, duration: 1.0, ease: "power3.out", onUpdate: function () {
+  } }, 3.17);
+  /* counter "7" lands ON the spoken word "seven" @6.32 */
+  tl.to(c2, { v: 7, duration: 0.6, ease: "power3.out", onUpdate: function () {
     const e = document.getElementById("tc-v2"); if (e) e.textContent = Math.round(c2.v);
-  } }, 5.4);
+  } }, 5.72);
 
-  /* row 2 reveals; TWENTY FOUR @9.26 */
-  tl.fromTo("#tc-r2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.4);
+  /* row 2 reveals on "Later" (8.02); counter "24" lands ON the spoken word "24." @9.70 */
+  tl.fromTo("#tc-r2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.87);
   const c3 = { v: 0 };
-  tl.to(c3, { v: 24, duration: 2.0, ease: "power3.out", onUpdate: function () {
+  tl.to(c3, { v: 24, duration: 1.2, ease: "power3.out", onUpdate: function () {
     const e = document.getElementById("tc-v3"); if (e) e.textContent = Math.round(c3.v);
-  } }, 8.9);
+  } }, 8.5);
 
-  /* hold: counters breathe gently so nothing idles */
-  tl.to("#tc-v3", { scale: 1.05, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 1 }, 10.4);
+  /* hold: counter breathes gently so nothing idles between the landed count and the exit */
+  tl.to("#tc-v3", { scale: 1.05, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 9.75);
 
-  /* exit */
-  tl.to("#tc-panel", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  /* exit, finishing by D-0.1 = 10.801 */
+  tl.to("#tc-panel", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 10.2);
+  tl.to({}, { duration: 0.01 }, DUR - 0.01);
   window.__timelines["g-toll-counter"] = tl;
 })();
 </script>
