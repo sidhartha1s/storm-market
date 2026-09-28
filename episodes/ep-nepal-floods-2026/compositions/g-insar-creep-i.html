@@ -46,7 +46,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"eb", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1.8);
   /* label lands on "Langtang" (3.21) */
   tl.fromTo(P+"lab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 3.0);
-  tl.to(P+"card", { y: -6, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0.5);
+  tl.to(P+"card", { y: -6, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 4 }, 0.5);  // float runs to 8.5 so the card never sits still under the climb
 
   /* radar climbs from "moving" (3.93) and hard-freezes as "no agency" begins (8.15) */
   const N = { v: 0 }, nv = document.querySelector(P+"cntv");
