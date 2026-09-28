@@ -81,7 +81,8 @@ mechanism/analysis pair) and plants+pays a loop.
 - One object per segment; one named victim (age, job, sourced quote) per tragedy.
 - Close: fact + dated forward window. No aphorism, no mirrored callback, no sign-off line.
 - TTS-safe: spell out ALL dates/times/numbers in narration (except years, dollars), no paired dashes, sentences
-  under 24 words per TTS chunk (write the long fact-chain; the TTS layer splits it at commas), respell homographs phonetically.
+  under 24 words per TTS chunk (write the long fact-chain; the TTS layer splits it at commas), probe homographs
+  before respelling (`references/homographs.md`).
 
 ## Humanise pass — zero AI tells (run rules 2–14 line by line before TTS) — `humanise-rules.md`
 - No painting the picture ("picture this", personified mountains/companies). No borrowed metaphors (icebergs,
