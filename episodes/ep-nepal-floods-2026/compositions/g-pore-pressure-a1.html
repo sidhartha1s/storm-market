@@ -59,15 +59,16 @@ window.__timelines = window.__timelines || {};
   tl.to("#pa1-hill", { autoAlpha: 1, y: 0, duration: 0.9, ease: "power3.out" }, 0.3);
   tl.fromTo("#pa1-schem", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 1.2);
 
-  /* RAIN SOAKS IN SLOWLY @3.43: water line begins its slow creep upward */
-  tl.fromTo(["#pa1-water", "#pa1-waterglow"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 3.43);
-  tl.to(["#pa1-water", "#pa1-waterglow"], { attr: { y: 556 }, duration: 18.0, ease: "power1.inOut" }, 3.43);
+  /* card reveals on "Survey" (6.12, end of "the U.S. Geological Survey") -- spoken BEFORE "Rain soaks in" */
+  tl.to("#pa1-card", { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 5.42);
 
-  /* card reveals @7.20 (water pressure inside the slope climbs) */
-  tl.to("#pa1-card", { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 7.20);
+  /* "Rain soaks in slowly" (10.58-11.28): water line begins its creep, finishing exactly on "way" (16.80,
+     "the last of the friction...gives way") so the line's arrival IS the failure moment */
+  tl.fromTo(["#pa1-water", "#pa1-waterglow"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 10.43);
+  tl.to(["#pa1-water", "#pa1-waterglow"], { attr: { y: 556 }, duration: 6.37, ease: "power1.inOut" }, 10.43);
 
-  /* THE THREE SECONDS ON CAMERA @15.77: a small shudder on the hillside as failure nears */
-  tl.to("#pa1-hill", { x: -6, duration: 0.09, ease: "power1.inOut", yoyo: true, repeat: 5 }, 15.77);
+  /* "gives way all at once." (16.62-17.46): shudder lands right as the line finishes */
+  tl.to("#pa1-hill", { x: -6, duration: 0.09, ease: "power1.inOut", yoyo: true, repeat: 5 }, 16.85);
 
   /* exit @21.0 */
   tl.to("#pa1-card", { x: 660, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 21.0);
