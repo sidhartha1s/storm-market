@@ -53,7 +53,9 @@
 - Retention devices survive as facts, not as announcements: a chapter ends on a question the next chapter answers
   (script-os rule 3) is allowed only when the question is a real open fact ("Then where did the rock go?"), never a
   rhetorical one to the viewer.
-- The humanise pass is a gate before TTS, run on the whole script, with a line-by-line diff kept in the episode folder.
+- The humanise pass is a gate before a section locks (revised 27 Sep 26, `references/script-scaling.md` "Section
+  lock — the ONE definition"): run on that section's prose as it's written, not held for the whole finished script,
+  with a line-by-line diff kept in the episode folder.
 
 ## Spoken voice palette (owner 2026-09-20, from the ep-1974 TTS probes)
 The narration is a person telling a story, and pocket-TTS voices every device below. No code enforces this
