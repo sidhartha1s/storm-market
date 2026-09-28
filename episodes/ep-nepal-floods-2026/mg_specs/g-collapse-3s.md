@@ -5,10 +5,13 @@ The viral clip breaks into four one-second beats (0/1/2/3 s), each stamped as th
 then the clip replays once at full speed as the payoff. Stills are PLACEHOLDERS (media not sourced yet).
 
 ## 1. SOURCE
-factcheck-A row 1 (3-second collapse, CONFIRMED) + script A1 paragraph. Stills do not exist yet: referenced
-as `media/collapse-f0.jpg` ... `media/collapse-f3.jpg`, 1920x1080 grey placeholders generated with
-`ffmpeg -f lavfi -i color=c=0x556070:s=1920x1080 -frames:v 1 <path>` (done this session; real frames land
-when the clip is sourced/frame-checked). PLACEHOLDER — swap for real grabs before ship.
+factcheck-A row 1 (3-second collapse, CONFIRMED) + script A1 paragraph. UPDATE (orchestrator, this session):
+stills are now REAL — `media/collapse-f0..f3.jpg`, 1920x1080, pulled at 17.0/18.0/19.0/20.0 s of the source
+WION clip and composited (a centred content strip over a blurred cover-fit copy of the same frame). The
+on-screen stamps stay 0.0/1.0/2.0/3.0 s (exact, relative to the collapse's own start, per the orchestrator).
+Checked (ffprobe): all four are 1920x1080. Content fills most of the frame width with modest blur margins
+on the sides (not a narrow phone-style strip), so the lower-third-left time chip (x96-340) and the top-left
+replay chip (x96-500) both sit clear of the centred content in every frame — no reposition needed.
 
 ## 2. DATUM, SCALE, ORIENTATION
 - Full-frame comp, 1920x1080. Each still fills the frame (cover-fit), stamped with a lower-third time chip.
