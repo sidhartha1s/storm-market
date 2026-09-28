@@ -46,37 +46,42 @@ window.__timelines = window.__timelines || {};
       { scale: toScale, x: toX, y: toY, duration: dur, ease: "none" }, at);
   }
 
+  const CHIPS = ["#c3f-chip0", "#c3f-chip1", "#c3f-chip2", "#c3f-chip3"];
   tl.set(STILLS, { autoAlpha: 0, transformOrigin: "center" }, 0);
   tl.set("#c3f-f0", { autoAlpha: 1 }, 0);
-  tl.set(["#c3f-chip", "#c3f-replay"], { autoAlpha: 0 }, 0);
+  tl.set(CHIPS, { autoAlpha: 0 }, 0);
+  tl.set("#c3f-replay", { autoAlpha: 0 }, 0);
 
   /* f0 @0.0, "0.0 S", slow Ken Burns so the still never reads frozen */
-  tl.to("#c3f-chip", { autoAlpha: 1, duration: 0.3 }, 0.1);
+  tl.to("#c3f-chip0", { autoAlpha: 1, duration: 0.3 }, 0.1);
   kb("#c3f-f0", 0.0, 6.4, 1.0, 1.04, 0, -6, 0, -4);
 
-  /* IN THE FIRST SECOND @6.17: f1 crossfades, "1.0 S" */
+  /* IN THE FIRST SECOND @6.17: f1 crossfades, chip swaps to "1.0 S" (pre-authored element, autoAlpha toggle) */
   tl.to("#c3f-f0", { autoAlpha: 0, duration: 0.4 }, 6.17);
   tl.to("#c3f-f1", { autoAlpha: 1, duration: 0.4 }, 6.17);
-  tl.call(function () { document.getElementById("c3f-chip").textContent = "1.0 S"; }, null, 6.17);
+  tl.to("#c3f-chip0", { autoAlpha: 0, duration: 0.2 }, 6.17);
+  tl.to("#c3f-chip1", { autoAlpha: 1, duration: 0.2 }, 6.17);
   kb("#c3f-f1", 6.17, 6.17, 1.0, 1.035, 0, 5, 0, -5);
 
-  /* BY THE SECOND @12.34: f2 crossfades, "2.0 S" */
+  /* BY THE SECOND @12.34: f2 crossfades, chip swaps to "2.0 S" */
   tl.to("#c3f-f1", { autoAlpha: 0, duration: 0.4 }, 12.34);
   tl.to("#c3f-f2", { autoAlpha: 1, duration: 0.4 }, 12.34);
-  tl.call(function () { document.getElementById("c3f-chip").textContent = "2.0 S"; }, null, 12.34);
+  tl.to("#c3f-chip1", { autoAlpha: 0, duration: 0.2 }, 12.34);
+  tl.to("#c3f-chip2", { autoAlpha: 1, duration: 0.2 }, 12.34);
   kb("#c3f-f2", 12.34, 4.46, 1.0, 1.03, 0, -5, 0, 4);
 
-  /* BY THE THIRD @16.80: f3 crossfades, "3.0 S" */
+  /* BY THE THIRD @16.80: f3 crossfades, chip swaps to "3.0 S" */
   tl.to("#c3f-f2", { autoAlpha: 0, duration: 0.4 }, 16.80);
   tl.to("#c3f-f3", { autoAlpha: 1, duration: 0.4 }, 16.80);
-  tl.call(function () { document.getElementById("c3f-chip").textContent = "3.0 S"; }, null, 16.80);
+  tl.to("#c3f-chip2", { autoAlpha: 0, duration: 0.2 }, 16.80);
+  tl.to("#c3f-chip3", { autoAlpha: 1, duration: 0.2 }, 16.80);
   kb("#c3f-f3", 16.80, 4.7, 1.0, 1.04, 0, 6, 0, -3);
 
   /* REPLAY - FULL SPEED chip lands @21.5, holds ~2s */
   tl.fromTo("#c3f-replay", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 21.5);
 
   /* comp clears @23.5 so index.html's reused hook clip plays through under it (frame-by-frame payoff) */
-  tl.to(["#c3f-f3", "#c3f-chip", "#c3f-replay"], { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 23.5);
+  tl.to(["#c3f-f3", "#c3f-chip3", "#c3f-replay"], { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 23.5);
   tl.to({}, { duration: 0.01 }, D - 0.01);
   window.__timelines["g-collapse-3s"] = tl;
 })();
