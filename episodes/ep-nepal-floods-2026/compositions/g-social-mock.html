@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-social-mock (A4, mounts before g-rock-ice-vs-rain in the same picture line): a generic phone-frame
+     social post mock, every line blurred except "glacier collapse", a red "?" stamp. No real handle, no
+     real username, no real avatar photo. Brief: mg_specs/g-social-mock.md.
+     Cues: frame in 0.3, lines stagger 1.2, "glacier collapse" unblurs 2.74, "?" stamp 5.5, exit 7.6.
+     Duration 9.0s. -->
+<template>
+<style>
+  .sm-wrap { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .sm-phone { position:absolute; left:760px; top:140px; width:400px; height:800px; border-radius:28px;
+    background:#15202b; border:2px solid #93a3b2; box-sizing:border-box; }
+  .sm-notch { position:absolute; left:860px; top:150px; width:200px; height:8px; border-radius:4px; background:#0b1016; }
+  .sm-avatar { position:absolute; left:784px; top:190px; width:56px; height:56px; border-radius:50%; background:#2a3644; }
+  .sm-blur { position:absolute; height:14px; border-radius:6px; background:rgba(74,85,96,.55); filter:blur(2.5px); }
+  .sm-crisp { position:absolute; left:856px; top:270px; font-weight:700; font-size:26px; color:#f2f5f8; white-space:nowrap; }
+  .sm-thumb { position:absolute; left:784px; top:430px; width:352px; height:200px; border-radius:8px; background:#0b1016; }
+  .sm-stamp { position:absolute; left:970px; top:690px; width:140px; height:140px; border-radius:50%; background:#8e2020;
+    box-shadow:0 8px 30px rgba(0,0,0,.6); display:flex; align-items:center; justify-content:center;
+    font-family:'AbrilFig', Georgia, serif; font-size:84px; color:#f4f0e8; }
+</style>
+<div class="sm-wrap" data-composition-id="g-social-mock" data-width="1920" data-height="1080" data-duration="9.0">
+  <div class="sm-phone" id="sm-phone">
+    <div class="sm-notch" id="sm-notch"></div>
+    <div class="sm-avatar" id="sm-avatar"></div>
+    <div class="sm-blur" id="sm-b1" style="left:856px; top:196px; width:180px; height:16px;"></div>
+    <div class="sm-blur" id="sm-b2" style="left:856px; top:220px; width:120px; height:12px;"></div>
+    <div class="sm-blur" id="sm-b3" style="left:784px; top:272px; width:300px;"></div>
+    <div class="sm-blur" id="sm-b4" style="left:784px; top:298px; width:280px;"></div>
+    <div class="sm-blur" id="sm-b5" style="left:784px; top:270px; width:260px;"></div>
+    <div class="sm-crisp" id="sm-crisp" style="left:784px; top:268px;">glacier collapse</div>
+    <div class="sm-blur" id="sm-b6" style="left:784px; top:350px; width:300px;"></div>
+    <div class="sm-thumb" id="sm-thumb"></div>
+  </div>
+  <div class="sm-stamp" id="sm-stamp">?</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const D = 9.0;
+  const LINES = ["#sm-b1", "#sm-b2", "#sm-b4", "#sm-b6"];
+
+  tl.set(["#sm-phone", "#sm-stamp"], { autoAlpha: 0 }, 0);
+  tl.set("#sm-phone", { y: 40 }, 0);
+  tl.set(["#sm-avatar", "#sm-notch", "#sm-thumb"].concat(LINES), { autoAlpha: 0 }, 0);
+  tl.set(["#sm-b5", "#sm-crisp"], { autoAlpha: 0 }, 0);
+  tl.set("#sm-stamp", { scale: 2.2, rotation: -12, transformOrigin: "50% 50%" }, 0);
+
+  /* ambient: the post content drifts very slightly (scroll feel) */
+  tl.fromTo("#sm-phone", { y: 0 }, { y: -6, duration: D, ease: "none" }, 0.9);
+
+  /* phone frame slides up @0.3 */
+  tl.to("#sm-phone", { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.3);
+  tl.fromTo(["#sm-avatar", "#sm-notch", "#sm-thumb"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35 }, 0.6);
+
+  /* blurred lines stagger in @1.2, row 5 (the row that will unblur) also starts as a blurred bar */
+  tl.fromTo(LINES.concat(["#sm-b5"]), { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out", stagger: 0.12 }, 1.2);
+
+  /* CALLED IT ANOTHER GLACIER COLLAPSE @2.74: row 5 unblurs into the one crisp phrase */
+  tl.to("#sm-b5", { autoAlpha: 0, duration: 0.3 }, 2.74);
+  tl.fromTo("#sm-crisp", { autoAlpha: 0, scale: 1.06, transformOrigin: "left center" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 2.74);
+
+  /* A REPEAT OF LANGTANG @5.5: red "?" stamp slams in */
+  tl.to("#sm-stamp", { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.in" }, 5.5);
+  tl.to("#sm-stamp", { rotation: -8, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 3 }, 5.9);
+
+  /* exit @7.6: frame + stamp slide out together */
+  tl.to(["#sm-phone", "#sm-stamp"], { x: 60, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 7.6);
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines["g-social-mock"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
