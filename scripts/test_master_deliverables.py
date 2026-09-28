@@ -31,6 +31,14 @@ else:
     with tempfile.TemporaryDirectory() as d:
         ep = Path(d)
         (ep / "renders").mkdir()
+        (ep / "audio").mkdir()
+        # build_srt.py (step [4/4], untouched by this PR) needs one real nx-* narration cue to
+        # not hard-exit; minimal fixture, not exercising build_srt's own logic.
+        (ep / "index.html").write_text(
+            '<audio id="nx-001" src="audio/001.wav" data-start="0"></audio>', encoding="utf-8")
+        (ep / "audio" / "001.words.json").write_text(
+            json.dumps([{"word": "test", "start": 0.0, "end": 0.5}]), encoding="utf-8")
+        (ep / "audio" / "001.txt").write_text("test", encoding="utf-8")
         src = ep / "renders" / "test-final.mp4"
         r = subprocess.run(
             ["ffmpeg", "-y", "-v", "error",
