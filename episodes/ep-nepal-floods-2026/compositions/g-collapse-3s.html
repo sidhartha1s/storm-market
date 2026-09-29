@@ -117,7 +117,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#c3f-replay", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 22.31);
 
   /* comp clears by D-0.1=23.3 so index.html's reused hook clip plays through under it (frame-by-frame payoff) */
-  tl.to(["#c3f-f3", "#c3f-chip3", "#c3f-replay"], { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 22.9);
+  tl.to(["#c3f-f3", "#c3f-chip3", "#c3f-replay", "#c3f-eb", ...TICKS], { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 22.9);
   tl.to({}, { duration: 0.01 }, D - 0.01);
   window.__timelines["g-collapse-3s"] = tl;
 })();
