@@ -101,7 +101,8 @@ window.__timelines = window.__timelines || {};
 
   const tl = gsap.timeline({ paused: true });
   const DUR = 19.409;
-  tl.set(["#s24-head", "#s24-valley", "#s24-flood", "#s24-vring", "#s24-ktmlab", "#s24-snow", "#s24-snowlab", "#s24-panel", "#s24-cgrp", "#s24-cal"], { autoAlpha: 0 }, 0);
+  tl.set(["#s24-head", "#s24-valley", "#s24-flood", "#s24-vring", "#s24-ktmlab", "#s24-snow", "#s24-snowlab", "#s24-panel", "#s24-cgrp",
+    "#s24-eb", "#s24-y24", "#s24-st24", "#s24-y26", "#s24-st26"], { autoAlpha: 0 }, 0);
   tl.set(gsap.utils.toArray("#s24-ticks path"), { autoAlpha: 0 }, 0);
   tl.set(rings, { autoAlpha: 0 }, 0);
   tl.set("#s24-flood", { scale: 0, svgOrigin: "780 616" }, 0);
