@@ -74,12 +74,14 @@ window.__timelines = window.__timelines || {};
   /* COUNT @2.40: the official count chip */
   tl.fromTo("#sm-chip", { autoAlpha: 0, y: -20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.4);
 
-  /* POSTS @3.48: card 5 grows into the hero post (from its own box: scale 520/1100, offset to card 5), the rest dim and drift */
+  /* POSTS @3.48: card 5 grows into the hero post (from card 5's box: scale 520/1100, offset 700-410 = 290, 500-240 = 260), the rest dim and drift */
   tl.set("#sm-c5", { autoAlpha: 0 }, 3.48);
-  tl.fromTo("#sm-hero", { autoAlpha: 1, scale: 0.4727, x: 290 - 550 * 0.5273 + 0, y: 260 - 300 * 0.5273, transformOrigin: "0% 0%" },
-    { autoAlpha: 1, scale: 1, x: 0, y: 0, duration: 0.6, ease: "power3.inOut" }, 3.48);
+  tl.fromTo("#sm-hero", { autoAlpha: 1, scale: 0.4727, x: 290, y: 260, rotation: -1, transformOrigin: "0% 0%" },
+    { autoAlpha: 1, scale: 1, x: 0, y: 0, rotation: 0, duration: 0.6, ease: "power3.inOut" }, 3.48);
   tl.to(REST, { opacity: 0.25, duration: 0.5 }, 3.48);
-  tl.to(REST.concat(["#sm-chip"]), { x: "-=80", duration: 4.0, ease: "none" }, 3.48);
+  tl.to(REST, { x: "-=80", duration: 4.0, ease: "none" }, 3.48);
+  /* round 2: the chip drifts INWARD (it sat at the 96 px margin and the -80 drift took it to x 16) */
+  tl.to("#sm-chip", { x: "+=40", duration: 4.0, ease: "none" }, 3.48);
   tl.fromTo("#sm-play", { scale: 1 }, { scale: 1.15, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 5 }, 4.1);
 
   /* GLACIER @4.96: the first body line unblurs into the claim */
