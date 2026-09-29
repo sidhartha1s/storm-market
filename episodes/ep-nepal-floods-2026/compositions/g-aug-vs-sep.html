@@ -55,11 +55,12 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-aug-vs-sep", P = "#g-aug-vs-sep-";
-  /* retimed 29 Sep 26 from retime-sheet.md word times (host 32.260+33.182). This host is much LONGER than
-     the built 22.5 s: the narration continues past "still missing." into a recap of the Langtang InSAR/no-
-     radar point (taken up visually by the separate g-insar-creep-i comp elsewhere). No new beats are added
-     here — the ambient loops (scan, river-line pulse, Trishuli pulse) are extended so the extra ~10 s hold
-     after "missing." never idles more than 4 s, per mg-quickref. */
+  /* retimed 29 Sep 26 from retime-sheet.md word times (host 32.260+33.182 on the sheet).
+     REDO 29 Sep 26: this comp now ENDS at local 22.9 (abs 74.46, after "missing." @22.19). index.html must
+     mount host-aug-vs-sep with data-duration="22.9" (was 33.182); the InSAR recap that followed is now the
+     full-frame g-insar-creep-i split on track 2 from abs 74.46, so the two reading targets never share a
+     frame. The scene ends on that cut (full-frame MG). Loops are sized to finish inside 22.9. The
+     full-width .scan line was deleted (it read as a tracking glitch through the pins and the rail). */
   const CUES = {
     began: 2.71,   /* CUE "began." @2.86 (sheet) */
     aug26: 4.15,   /* CUE "26th," @4.30 (sheet) */
