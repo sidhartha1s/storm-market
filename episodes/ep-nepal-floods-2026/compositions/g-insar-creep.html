@@ -137,7 +137,9 @@ window.__timelines = window.__timelines || {};
 
   /* SATELLITE @8.52: the satellite crosses the top (x 200 -> 1100, 1.5 s), its beam sweeping the slope */
   tl.to(P+"sat", { autoAlpha: 1, duration: 0.25 }, 8.52);
-  tl.to(P+"sat", { x: 1100, duration: 1.5, ease: "power1.inOut" }, 8.52);
+  /* round 2: the satellite stops at x 900 (panels to x 1054, beam to x 1010), clear of the rail counter at x 1250+;
+     it collided with "12 IN" when it ran to x 1140 */
+  tl.to(P+"sat", { x: 900, duration: 1.5, ease: "power1.inOut" }, 8.52);
   tl.fromTo(P+"beam", { rotation: -14, svgOrigin: "0 30" }, { rotation: 14, svgOrigin: "0 30", duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 5 }, 8.52);
   tl.to(P+"sat", { x: 1140, duration: 2.8, ease: "none" }, 10.02);
 
