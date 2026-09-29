@@ -1,4 +1,4 @@
-# MG quick-ref: the one home of every motion-graphics rule (owner decisions to 26 Sep 26)
+# MG quick-ref: the one home of every motion-graphics rule (owner decisions to 29 Sep 26)
 Read this, then `learnings/mg.md`. [G] = a gate fails it (gate named). A bespoke diagram is a claim: brief it on `references/mg-brief-template.md` first; review order meaning, layout, motion, code gate. Library-first: search `library/catalog-index.json` or `npx hyperframes catalog --query "<intent>"`, browse `/gallery/` (`python3 -m http.server 8765` from `library/`), copy the closest block into the episode and hand-retune it per beat (`npx hyperframes add` lands in `library/official/`, never in an episode). Shipped patterns live in `references/editing-patterns/`; copy one there the session it ships.
 
 ## File contract
