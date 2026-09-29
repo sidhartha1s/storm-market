@@ -122,6 +122,10 @@ window.__timelines = window.__timelines || {};
   /* "August" @0.39: the left eyebrow; the right one sits dim until its place is named */
   tl.fromTo(P + "ebl", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.35);
   tl.fromTo(P + "ebr", { autoAlpha: 0 }, { autoAlpha: 0.4, duration: 0.4 }, 0.5);
+  /* fix5: the right plot is never a blank box; a scan band sweeps it (0.6-7.5) and finds nothing, then leaves as the flat line draws */
+  tl.fromTo(P + "scan", { autoAlpha: 0, x: 0 }, { autoAlpha: 1, duration: 0.3 }, 0.3);
+  tl.fromTo(P + "scan", { x: 0 }, { x: 724, duration: 2.3, ease: "none", repeat: 2, immediateRender: false }, 0.6);
+  tl.to(P + "scan", { autoAlpha: 0, duration: 0.2 }, 7.45);
 
   /* ---- "satellite" 1.39 -> "weeks" 3.93: the satellite crosses the top of the left panel (x 150 -> 900), its beam
      sweeping the plot; the displacement line is revealed under the beam (clip edge x 150 + 760 f tracks the satellite
