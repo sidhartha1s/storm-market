@@ -81,18 +81,25 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const TRI = Math.ceil(document.querySelector(P + "tri").getTotalLength()) + 1;
   const cam = (z) => ({ attr: { transform: "translate(" + (660 - 660 * z).toFixed(2) + "," + (540 - 540 * z).toFixed(2) + ") scale(" + z + ")" } });
+  /* full-frame shot: the midpoint of the two pins (cam-1 666.5,511.2) placed at screen (960,560) */
+  const camFull = (z) => ({ attr: { transform: "translate(" + (960 - 666.5 * z).toFixed(2) + "," + (560 - 511.2 * z).toFixed(2) + ") scale(" + z + ")" } });
   const fmt = (v) => Math.round(v).toLocaleString("en-US");
 
   /* ---- initial state ---- */
-  /* 29 Sep 26: camera 1.2 about (660,540) so Nepal fills x 0-1180, left of the rail (was 1.0 -> 1.03) */
-  tl.set(P + "cam", cam(1.2), 0);
+  /* Round 2 (29 Sep 26): the map is FULL FRAME until the count begins (both pins spread across x 420-1500 at
+     scale 1.55, Tibet named top-right), so no empty rail sits on the right for 11.8 s. On "September 21st" the
+     camera reframes to 1.2 about (660,540) (Nepal x 0-1180) as the rail slides in with its eyebrow. */
+  tl.set(P + "cam", camFull(1.55), 0);
   tl.set(P + "tri", { strokeDasharray: TRI, strokeDashoffset: TRI }, 0);
   tl.set([P + "kgpin", P + "kgring", P + "t-sep", P + "t-kg", P + "ltpin", P + "ltring", P + "t-lt", P + "t-aug",
-    P + "eb", P + "asof", P + "c1", P + "c1l", P + "c2", P + "c2l"], { autoAlpha: 0 }, 0);
+    P + "railbg", P + "eb", P + "asof", P + "c1", P + "c1l", P + "c2", P + "c2l", P + "t-tibet", P + "t-nepal"], { autoAlpha: 0 }, 0);
 
-  /* ---- ambient, whole window ---- */
-  tl.to(P + "cam", Object.assign(cam(1.23), { duration: DUR, ease: "none" }), 0);
+  /* ---- ambient, whole window: slow push, reframe on the count, slow push ---- */
+  tl.to(P + "cam", Object.assign(camFull(1.6), { duration: 11.2, ease: "none" }), 0);
+  tl.to(P + "cam", Object.assign(cam(1.2), { duration: 1.0, ease: "power2.inOut" }), 11.2);
+  tl.to(P + "cam", Object.assign(cam(1.23), { duration: DUR - 12.2, ease: "none" }), 12.2);
   tl.fromTo(P + "nepal", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 0);
+  tl.fromTo([P + "t-nepal", P + "t-tibet"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.25, ease: "power3.out" }, 0.4);
   tl.fromTo(P + "kg", { attr: { "stroke-opacity": 0.55 } }, { attr: { "stroke-opacity": 1 }, duration: 1.4, ease: "sine.inOut", repeat: 15, yoyo: true }, 0); /* ends 22.4 */
   tl.fromTo(P + "src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 0.3);
 
