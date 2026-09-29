@@ -11,19 +11,19 @@
   .gia6-card { position:absolute; left:110px; bottom:110px; width:620px; height:520px; border-radius:20px;
     background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); box-shadow:0 20px 60px rgba(0,0,0,0.45); box-sizing:border-box; }
-  /* relaid 29 Sep 26 (overlap_check): root cause was a trailing "inset:auto" on every rule below, clobbering the
-     left/top/bottom already set in the same declaration (last write wins) and collapsing every leaf onto its
-     in-flow stacked position -- that is what was actually colliding, not the intended coordinates. Dropped
-     "inset:auto" everywhere below and gave each row its own top-anchored band with >=24px clear gap; "?" moved
-     off the title row onto the cnt row, offset right, since title-1/title-2 and cnt/sub/title-1 cross-fade at
-     different beats and must never share a box. */
-  .gia6-eb { position:absolute; left:138px; top:500px; font-weight:700; font-size:20px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
-  .gia6-title { position:absolute; left:138px; top:565px; font-family:'Arial Black', Arial, sans-serif; font-size:30px; color:#f2f5f8; white-space:nowrap; }
-  .gia6-cnt { position:absolute; left:138px; top:650px; font-family:'Courier New', monospace; font-weight:700; font-size:70px; color:#e74c3c; white-space:nowrap; }
-  .gia6-sub { position:absolute; left:138px; top:800px; font-family:'Courier New', monospace; font-size:26px; color:#93a3b2; white-space:nowrap; }
-  .gia6-bar { position:absolute; left:138px; top:864px; width:560px; height:14px; border-radius:7px; overflow:hidden; background:#0e161e; }
+  /* re-relaid 29 Sep 26 (graphics_qc out-of-frame): the 29 Sep "inset:auto" fix left the row tops (500-864)
+     unrescaled against the card's actual height (520px), so cnt/sub/"?" landed 200-730px below the card's
+     own bottom edge -- absolute y 1100/1250/1099, all past the 1080 frame. Rebanded every row inside the
+     620x520 card (28px side margin, >=24px clear gap each), keeping "?" offset right of cnt on the same row
+     per the original crossfade-safety intent (title-1/title-2 and cnt/sub/title-1 cross-fade at different
+     beats and must never share a box). */
+  .gia6-eb { position:absolute; left:28px; top:36px; font-weight:700; font-size:20px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .gia6-title { position:absolute; left:28px; top:80px; font-family:'Arial Black', Arial, sans-serif; font-size:30px; color:#f2f5f8; white-space:nowrap; }
+  .gia6-cnt { position:absolute; left:28px; top:150px; font-family:'Courier New', monospace; font-weight:700; font-size:70px; color:#e74c3c; white-space:nowrap; }
+  .gia6-sub { position:absolute; left:28px; top:270px; font-family:'Courier New', monospace; font-size:26px; color:#93a3b2; white-space:nowrap; }
+  .gia6-bar { position:absolute; left:28px; top:330px; width:560px; height:14px; border-radius:7px; overflow:hidden; background:#0e161e; }
   .gia6-ramp { position:absolute; left:0; top:0; width:560px; height:14px; background:linear-gradient(90deg, #3fa15a, #d8a13a 55%, #c0392b); }
-  .gia6-q { position:absolute; left:630px; top:650px; font-family:'AbrilFig', Georgia, serif; font-size:52px; color:#d0121f; }
+  .gia6-q { position:absolute; left:420px; top:150px; font-family:'AbrilFig', Georgia, serif; font-size:52px; color:#d0121f; }
 </style>
 <div id="gia6-root" data-composition-id="g-insar-creep-a6" data-width="1920" data-height="1080" data-duration="15.627">
   <div class="gia6-card" id="gia6-card">
