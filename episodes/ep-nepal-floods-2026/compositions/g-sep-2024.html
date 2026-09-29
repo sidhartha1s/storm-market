@@ -19,7 +19,6 @@
     background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
   .s24-all { position:absolute; inset:0; }
   .s24-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
-  .s24-scan { position:absolute; left:96px; top:150px; width:6px; height:750px; background:linear-gradient(180deg, rgba(127,178,229,0), rgba(127,178,229,0.45), rgba(127,178,229,0)); }
   .s24-head { position:absolute; left:96px; top:70px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:64px; line-height:72px; color:#f2f5f8; white-space:nowrap; }
   .s24-maplab { font-family: Arial, sans-serif; font-weight:700; fill:#f2f5f8; stroke:#04070c; stroke-width:8px; paint-order:stroke fill; stroke-linejoin:round; }
   .s24-panel { position:absolute; right:0; top:0; bottom:0; width:820px; background: linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); }
@@ -143,7 +142,7 @@ window.__timelines = window.__timelines || {};
   tl.to(["#s24-ktmlab", "#s24-ticks"], { autoAlpha: 0.35, duration: 0.6 }, 15.68);
   tl.set("#s24-snow", { autoAlpha: 1 }, 16.2);
   gsap.utils.toArray("#s24-snow circle").forEach(function (c, i) {
-    tl.fromTo(c, { y: -60, autoAlpha: 0 }, { y: 40, autoAlpha: 1, duration: 1.1 + (i % 3) * 0.2, ease: "none", repeat: 1 }, 16.2 + (i % 5) * 0.16);
+    tl.fromTo(c, { y: -60, autoAlpha: 0 }, { y: 40, autoAlpha: 1, duration: 0.9 + (i % 3) * 0.15, ease: "none", repeat: 1 }  /* ends by 19.24 */, 16.2 + (i % 5) * 0.16);
   });
   tl.fromTo("#s24-snowlab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 18.4);
 
