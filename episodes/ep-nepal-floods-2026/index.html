@@ -31,8 +31,9 @@
     video.graded { filter: saturate(0.88) contrast(1.06) brightness(0.94); }
     /* caption crops: scale from the top so burned-in lower-third captions and bottom logos leave the frame */
     video.crop-wion { transform: scale(1.4); transform-origin: 50% 0%; }      /* WION: caption band starts ~y790 */
-    video.crop-rep  { transform: scale(1.45); transform-origin: 50% 15%; }    /* Republic: yellow lower captions + ticker (1.35 left a ticker fragment, draft v1) */
-    video.crop-wmus { transform: scale(1.54); transform-origin: 0% 28%; }     /* WION Mustang b-roll is a baked split-screen: footage x0-1250 left, BREAKING card right, ticker y950+; fill the frame from the left panel (draft v1) */
+    video.crop-rep  { transform: scale(1.6); transform-origin: 50% 10%; }     /* Republic: lower captions, ticker and late headline strip (1.45 still showed a fragment, draft v2) */
+    video.crop-llt  { transform: scale(1.3); transform-origin: 50% 50%; }     /* Lallantop/AFP: channel bug top-right, "Courtesy: AFP" bottom-left (draft v2) */
+    video.crop-7n   { transform: scale(1.4); transform-origin: 50% 40%; }     /* 7NEWS: pillarboxed phone shots + bug bottom-right (draft v2) */
     video.crop-cnbc { transform: scale(1.3); transform-origin: 50% 90%; }     /* CNBC TV18: logo top-right + "Location" tag top-left, so crop from the top (draft v1) */
     video.crop-low  { transform: scale(1.2); transform-origin: 50% 15%; }     /* News18 / Lallantop lower tickers */
     /* ---- Abril figure popup (channel device: red, text-shadow, <=3 words, mid-screen, never over a map comp) ---- */
@@ -160,14 +161,14 @@
   <video id="v-t1-camp" class="graded crop-wion" src="media/clips/wion-climbers-guides-missing-avalanche-cut.mp4" data-start="15.313" data-duration="6.046" data-media-start="9.935" data-track-index="1" muted></video>
 
   <!-- ============ I · WHAT FELL (21.36-115.30) ============ -->
-  <video id="v-i-rescue" class="graded crop-low" src="media/clips/lallantop-flood-landslide-24-dead-cut.mp4" data-start="21.359" data-duration="10.901" data-media-start="7.2" data-track-index="1" muted></video>
+  <video id="v-i-rescue" class="graded crop-llt" src="media/clips/lallantop-flood-landslide-24-dead-cut.mp4" data-start="21.359" data-duration="10.901" data-media-start="16.1" data-track-index="1" muted></video>
   <div id="host-toll-counter" data-composition-id="g-toll-counter" data-composition-src="compositions/g-toll-counter.html" data-start="21.359" data-duration="10.901" data-track-index="4" data-width="1920" data-height="1080"></div>
   <div id="host-aug-vs-sep" data-composition-id="g-aug-vs-sep" data-composition-src="compositions/g-aug-vs-sep.html" data-start="32.26" data-duration="33.182" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-insar-creep-i" data-composition-id="g-insar-creep-i" data-composition-src="compositions/g-insar-creep-i.html" data-start="54.6" data-duration="10.842" data-track-index="4" data-width="1920" data-height="1080"></div>
   <div id="host-map-kali-gandaki" data-composition-id="g-map-kali-gandaki" data-composition-src="compositions/g-map-kali-gandaki.html" data-start="65.442" data-duration="17.919" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-gorge-vs-grand-canyon" data-composition-id="g-gorge-vs-grand-canyon" data-composition-src="compositions/g-gorge-vs-grand-canyon.html" data-start="70.0" data-duration="13.361" data-track-index="4" data-width="1920" data-height="1080"></div>
   <video id="v-i-bridge" class="graded crop-cnbc" src="media/clips/cnbctv18-70-lives-india-nepal-cut.mp4" data-start="83.361" data-duration="3.2" data-media-start="6" data-track-index="1" muted></video>
-  <video id="v-i-house" class="graded crop-rep" src="media/clips/republicworld-5-horrifying-visuals-cut.mp4" data-start="86.561" data-duration="5.0" data-media-start="20.033" data-track-index="1" muted></video>
+  <video id="v-i-house" class="graded crop-rep" src="media/clips/republicworld-5-horrifying-visuals-cut.mp4" data-start="86.561" data-duration="5.0" data-media-start="19.966" data-track-index="1" muted></video>
   <video id="v-i-highway" class="graded crop-low" src="media/clips/news18bihar-cyclone-arnab-bagmati-cut.mp4" data-start="91.561" data-duration="4.7" data-media-start="17.006" data-track-index="1" muted></video>
   <video id="v-i-peak" class="graded crop-wion" src="media/clips/wion-climbers-guides-missing-avalanche-cut.mp4" data-start="96.261" data-duration="19.336" data-media-start="16.235" data-track-index="1" data-callback="the camp b-roll returns when Himlung itself is introduced" muted></video>
   <div id="host-himlung-height" data-composition-id="g-himlung-height" data-composition-src="compositions/g-himlung-height.html" data-start="96.261" data-duration="19.336" data-track-index="4" data-width="1920" data-height="1080"></div>
@@ -177,11 +178,11 @@
   <video id="v-a1-replay" class="graded crop-wion" src="media/clips/wion-mountain-crashes-kaligandaki-cut.mp4" data-start="138.997" data-duration="5.307" data-media-start="0.7" data-track-index="1" data-callback="frame-by-frame payoff: the hook's collapse replays once at full speed" muted></video>
   <div id="host-pore-pressure-a1" data-composition-id="g-pore-pressure-a1" data-composition-src="compositions/g-pore-pressure-a1.html" data-start="144.304" data-duration="23.653" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-map-kali-gandaki-a1" data-composition-id="g-map-kali-gandaki-a1" data-composition-src="compositions/g-map-kali-gandaki-a1.html" data-start="167.957" data-duration="15.808" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <video id="v-a1-footbridge" class="graded crop-wmus" src="media/clips/wion-hillside-collapse-mustang-cut.mp4" data-start="183.765" data-duration="7.372" data-media-start="9.2" data-track-index="1" muted></video>
+  <video id="v-a1-debris" class="graded crop-llt" src="media/clips/lallantop-flood-landslide-24-dead-cut.mp4" data-start="183.765" data-duration="7.372" data-media-start="0.4" data-track-index="1" data-callback="AFP's debris field and broken bridge on the blocked river, a different shot from the intro's flooded road" muted></video>
   <video id="v-a1-rapids" class="graded crop-rep" src="media/clips/republicworld-5-horrifying-visuals-cut.mp4" data-start="191.137" data-duration="17.845" data-media-start="0.4" data-track-index="1" data-callback="Republic's river-in-spate shot under the hydro card, a different shot from the intro's house" muted></video>
   <div id="host-hydro-card" data-composition-id="g-hydro-card" data-composition-src="compositions/g-hydro-card.html" data-start="191.137" data-duration="17.845" data-track-index="4" data-width="1920" data-height="1080"></div>
   <div id="host-map-kali-gandaki-a1b" data-composition-id="g-map-kali-gandaki-a1b" data-composition-src="compositions/g-map-kali-gandaki-a1b.html" data-start="208.982" data-duration="11.0" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <video id="v-a1-trek" class="graded" src="media/clips/x-Krishan10_-kaligandaki-collapse-original-cut.mp4" data-start="219.982" data-duration="8.219" data-media-start="0.4" data-track-index="1" muted></video>
+  <video id="v-a1-trek" class="graded" src="media/clips/x-Krishan10_-kaligandaki-collapse-original-cut.mp4" data-start="219.982" data-duration="8.219" data-media-start="9.2" data-track-index="1" muted></video>
   <section class="clip" id="cr-a1-trek" data-start="219.982" data-duration="8.219" data-track-index="6"><div class="credit" id="cr-a1-trek-t">Video: @Krishan10_ on X</div></section>
 
   <!-- ============ A2 · THE WRONG END OF THE SEASON (229.20-368.56) ============ -->
@@ -191,7 +192,7 @@
   <div id="host-rain-bars" data-composition-id="g-rain-bars" data-composition-src="compositions/g-rain-bars.html" data-start="265.074" data-duration="11.409" data-track-index="4" data-width="1920" data-height="1080"></div>
   <div id="host-pore-pressure" data-composition-id="g-pore-pressure" data-composition-src="compositions/g-pore-pressure.html" data-start="276.483" data-duration="28.346" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-glacial-debris" data-composition-id="g-glacial-debris" data-composition-src="compositions/g-glacial-debris.html" data-start="304.829" data-duration="17.771" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <video id="v-a2-house" class="graded crop-low" src="media/clips/lallantop-flood-landslide-24-dead-cut.mp4" data-start="316.6" data-duration="6.0" data-media-start="0.4" data-track-index="3" data-overlap-ok="cutaway over the cutaway diagram: loose ground giving way fast" data-callback="AFP's building teetering into the river, a different shot from the intro's flooded road" muted></video>
+  <video id="v-a2-house" class="graded crop-llt" src="media/clips/lallantop-flood-landslide-24-dead-cut.mp4" data-start="316.6" data-duration="6.0" data-media-start="7.9" data-track-index="3" data-overlap-ok="cutaway over the cutaway diagram: loose ground giving way fast" data-callback="AFP's building teetering into the river, a different shot from the intro's flooded road" muted></video>
   <div id="host-oso-map" data-composition-id="g-oso-map" data-composition-src="compositions/g-oso-map.html" data-start="322.6" data-duration="22.246" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-sep-2024" data-composition-id="g-sep-2024" data-composition-src="compositions/g-sep-2024.html" data-start="344.846" data-duration="19.409" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-basecamp-diagram-a2" data-composition-id="g-basecamp-diagram-a2" data-composition-src="compositions/g-basecamp-diagram-a2.html" data-start="364.255" data-duration="4.308" data-track-index="2" data-width="1920" data-height="1080"></div>
@@ -200,17 +201,16 @@
   <div id="host-map-himlung-a3" data-composition-id="g-map-himlung-a3" data-composition-src="compositions/g-map-himlung-a3.html" data-start="369.363" data-duration="6.2" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-basecamp-diagram" data-composition-id="g-basecamp-diagram" data-composition-src="compositions/g-basecamp-diagram.html" data-start="375.563" data-duration="44.397" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-person-bhote" data-composition-id="g-person-bhote" data-composition-src="compositions/g-person-bhote.html" data-start="408.6" data-duration="11.36" data-track-index="4" data-width="1920" data-height="1080"></div>
-  <video id="v-a3-heli" class="graded crop-low" src="media/clips/7news-australians-missing-landslide-cut.mp4" data-start="419.96" data-duration="11.0" data-media-start="0.4" data-track-index="1" muted></video>
+  <video id="v-a3-heli" class="graded crop-7n" src="media/clips/7news-australians-missing-landslide-cut.mp4" data-start="419.96" data-duration="11.0" data-media-start="0.4" data-track-index="1" muted></video>
   <video id="v-a3-search" class="graded crop-wion" src="media/clips/wion-climbers-guides-missing-avalanche-cut.mp4" data-start="430.96" data-duration="8.735" data-media-start="0.4" data-track-index="1" data-callback="WION's valley b-roll under the search numbers; the camp shots it follows are the same package" muted></video>
   <div id="host-search-card" data-composition-id="g-search-card" data-composition-src="compositions/g-search-card.html" data-start="419.96" data-duration="19.735" data-track-index="4" data-width="1920" data-height="1080"></div>
   <div id="host-rock-ice-mechanism" data-composition-id="g-rock-ice-mechanism" data-composition-src="compositions/g-rock-ice-mechanism.html" data-start="439.695" data-duration="27.034" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <video id="v-a3-ridge" class="graded" src="media/clips/x-Krishan10_-kaligandaki-collapse-original-cut.mp4" data-start="466.729" data-duration="10.901" data-media-start="9.419" data-track-index="1" data-callback="second segment of the credited trek video: the misty ridge" muted></video>
+  <video id="v-a3-ridge" class="graded" src="media/clips/x-Krishan10_-kaligandaki-collapse-original-cut.mp4" data-start="466.729" data-duration="10.901" data-media-start="18.219" data-track-index="1" data-callback="second segment of the credited trek video: the misty ridge" muted></video>
   <section class="clip" id="cr-a3-ridge" data-start="466.729" data-duration="10.901" data-track-index="6"><div class="credit" id="cr-a3-ridge-t">Video: @Krishan10_ on X</div></section>
   <div id="host-insar-creep" data-composition-id="g-insar-creep" data-composition-src="compositions/g-insar-creep.html" data-start="477.63" data-duration="25.243" data-track-index="2" data-width="1920" data-height="1080"></div>
 
   <!-- ============ A4 · SETTLED, DISPUTED, OPEN (503.87-613.66) ============ -->
   <div id="host-ledger" data-composition-id="g-ledger" data-composition-src="compositions/g-ledger.html" data-start="503.673" data-duration="18.883" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <video id="v-a4-mustang" class="graded crop-wmus" src="media/clips/wion-hillside-collapse-mustang-cut.mp4" data-start="512.2" data-duration="4.5" data-media-start="0.6" data-track-index="3" data-overlap-ok="cutaway over the board on 'Mustang'" data-callback="the Mustang dust cloud on the word 'Mustang', after A1's footbridge shot" muted></video>
   <div id="host-toll-counter-a4" data-composition-id="g-toll-counter-a4" data-composition-src="compositions/g-toll-counter-a4.html" data-start="522.556" data-duration="35.689" data-track-index="2" data-width="1920" data-height="1080"></div>
   <video id="v-a4-cnbc" class="graded crop-cnbc" src="media/clips/cnbctv18-70-lives-india-nepal-cut.mp4" data-start="550.2" data-duration="4.8" data-media-start="0.4" data-track-index="3" data-overlap-ok="cutaway over the counters on 'about seventy'" data-callback="CNBC-TV18's own rooftop aerial on its 'about seventy' figure" muted></video>
   <div id="host-social-mock" data-composition-id="g-social-mock" data-composition-src="compositions/g-social-mock.html" data-start="558.245" data-duration="8.0" data-track-index="2" data-width="1920" data-height="1080"></div>
@@ -225,16 +225,17 @@
   <!-- ============ A6 · AFTER THE RAIN (670.43-732.45): hard cut to a real river for the payoff ============ -->
   <video id="v-a6-river" class="graded crop-low" src="media/clips/news18bihar-cyclone-arnab-bagmati-cut.mp4" data-start="670.127" data-duration="2.973" data-media-start="13.233" data-track-index="1" data-callback="the rivers the system measured, on the payoff" muted></video>
   <div id="host-sensor-gap" data-composition-id="g-sensor-gap" data-composition-src="compositions/g-sensor-gap.html" data-start="673.1" data-duration="25.335" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <video id="v-a6-aerial" class="graded crop-rep" src="media/clips/republicworld-5-horrifying-visuals-cut.mp4" data-start="698.435" data-duration="15.627" data-media-start="25.833" data-track-index="1" data-callback="Republic's aerial of the slopes under the creep diagram, a different shot of the package" muted></video>
+  <video id="v-a6-aerial" class="graded crop-rep" src="media/clips/republicworld-5-horrifying-visuals-cut.mp4" data-start="698.435" data-duration="15.627" data-media-start="25.766" data-track-index="1" data-callback="Republic's aerial of the slopes under the creep diagram, a different shot of the package" muted></video>
   <div id="host-insar-creep-a6" data-composition-id="g-insar-creep-a6" data-composition-src="compositions/g-insar-creep-a6.html" data-start="698.435" data-duration="15.627" data-track-index="4" data-width="1920" data-height="1080"></div>
   <div id="host-monsoon-calendar-a6" data-composition-id="g-monsoon-calendar-a6" data-composition-src="compositions/g-monsoon-calendar-a6.html" data-start="714.062" data-duration="18.09" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-basecamp-diagram-a6" data-composition-id="g-basecamp-diagram-a6" data-composition-src="compositions/g-basecamp-diagram-a6.html" data-start="732.152" data-duration="3.0" data-track-index="2" data-width="1920" data-height="1080"></div>
 
   <!-- ============ Z · CLOSE (735.45-774.22) ============ -->
   <div id="host-basecamp-diagram-z" data-composition-id="g-basecamp-diagram-z" data-composition-src="compositions/g-basecamp-diagram-z.html" data-start="735.152" data-duration="8.0" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <video id="v-z-workers" class="graded crop-low" src="media/clips/7news-australians-missing-landslide-cut.mp4" data-start="743.152" data-duration="10.499" data-media-start="13.433" data-track-index="1" data-callback="rescue crews close up for the close, after the helicopter in A3" muted></video>
+  <video id="v-z-workers" class="graded crop-7n" src="media/clips/7news-australians-missing-landslide-cut.mp4" data-start="743.152" data-duration="10.499" data-media-start="13.233" data-track-index="1" data-callback="rescue crews close up for the close, after the helicopter in A3" muted></video>
   <div id="host-person-bhote-z" data-composition-id="g-person-bhote-z" data-composition-src="compositions/g-person-bhote-z.html" data-start="750" data-duration="3.651" data-track-index="4" data-width="1920" data-height="1080"></div>
-  <video id="v-z-slopes" class="graded crop-wmus" src="media/clips/wion-hillside-collapse-mustang-cut.mp4" data-start="753.651" data-duration="8.0" data-media-start="0.4" data-track-index="1" data-callback="the Mustang dust cloud once more under the closing line about the slopes" muted></video>
+  <video id="v-z-trek" class="graded" src="media/clips/x-Krishan10_-kaligandaki-collapse-original-cut.mp4" data-start="753.651" data-duration="8.0" data-media-start="0.4" data-track-index="1" data-callback="the credited trek video returns for the trekkers under soaked slopes" muted></video>
+  <section class="clip" id="cr-z-trek" data-start="753.651" data-duration="8.0" data-track-index="6"><div class="credit" id="cr-z-trek-t">Video: @Krishan10_ on X</div></section>
   <div id="host-outro" data-composition-id="g-outro" data-composition-src="compositions/g-outro.html" data-start="761.651" data-duration="12.273" data-track-index="2" data-width="1920" data-height="1080"></div>
 
   <div id="vignette"></div>
@@ -260,7 +261,7 @@ window.__timelines = window.__timelines || {};
   pop("#pf-date", 0.4, 2.8);   // date card for the hook (the voice no longer says the date: grader fix 29 Sep 26)
 
   /* ---- credit labels ease in and out, never hard-cut ---- */
-  [["#cr-a1-trek-t", 219.982, 8.219], ["#cr-a3-ridge-t", 466.729, 10.901]].forEach(([sel, at, d]) => {
+  [["#cr-a1-trek-t", 219.982, 8.219], ["#cr-a3-ridge-t", 466.729, 10.901], ["#cr-z-trek-t", 753.651, 8.0]].forEach(([sel, at, d]) => {
     tl.fromTo(sel, { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, at + 0.3);
     tl.to(sel, { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, at + d - 0.5);
   });
