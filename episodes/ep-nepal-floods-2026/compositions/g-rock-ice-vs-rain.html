@@ -238,6 +238,7 @@ window.__timelines = window.__timelines || {};
 
   /* ---- exit: fade-through of the whole full-frame scene, done by D - 0.05 ---- */
   tl.to([P + "svg", P + "hl", P + "ebl", P + "rlab", P + "card", P + "same", P + "schem"], { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, D - 0.6);
+  tl.to({}, { duration: 0.01 }, D - 0.01);  // hold the timeline to the host window (graphics_qc short-duration)
   window.__timelines[ID] = tl;
 })();
 </script>
