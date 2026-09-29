@@ -2,24 +2,20 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- g-map-kali-gandaki-a1 (A1 "gorge narrows"): zoom on the gorge at Lete, debris enters the channel, a natural dam, "Blocked" upstream,
-     "Surge risk" downstream, then the Sept 28 breach. Brief: mg_specs/g-map-kali-gandaki-a1.md.
-     Library source: episodes/ep-enderlin-2025/compositions/g-master-map.html. 32 px per mile; river = OSM "Kali Gandaki" ways (ODbL).
-     Debris, dam, lake and arrows are SCHEMATIC (no published size or extent). HOST starts at "A gorge this narrow" @est 0.0 (175 wpm). -->
+<!-- g-map-kali-gandaki-a1 (A1 "gorge narrows"): full-frame gorge map centred on the dam. Valley walls reveal on "gorge this
+     narrow", debris enters the channel, a natural dam forms, a lake backs up behind it, the dam splits and a surge of mud runs
+     downstream. Brief: mg_specs/g-map-kali-gandaki-a1.md. Library source: episodes/ep-enderlin-2025/compositions/g-master-map.html.
+     32 px per mile at cam 1; river = OSM "Kali Gandaki" ways (ODbL). Debris, dam, lake, wall bands and surge are SCHEMATIC.
+     Redo 29 Sep 26 (Opus): camera recentred so the dam (538,550) sits at (960,540), scale 1.15 pushing to 1.2; the empty RHS rail,
+     eyebrow, dead r1/r2 rows, scan line and Blocked/Surge-risk arrows are gone. Wall, lake, surge and trail strokes are runtime
+     clones of the river path (same d, one copy in the markup). Labels live on a fixed HUD layer (no camera ride). -->
 <template>
 <style>
   #g-map-kali-gandaki-a1-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
-    background:radial-gradient(ellipse at 32% 50%, #0b1016 0%, #030507 78%); }
+    background:radial-gradient(ellipse at 50% 50%, #0b1016 0%, #030507 78%); }
   .kga1-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
   .kga1-lab { font-family:Arial, sans-serif; font-weight:700; fill:#dfe7ee; paint-order:stroke; stroke:#04070c; stroke-width:6px; stroke-linejoin:round; }
-  .kga1-big { font-family:'Arial Black', Arial, sans-serif; paint-order:stroke; stroke:#04070c; stroke-width:8px; stroke-linejoin:round; }
-  .kga1-rail { position:absolute; right:0; top:0; bottom:0; width:820px; box-sizing:border-box; pointer-events:none;
-    background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); }
-  .kga1-eb { position:absolute; left:1270px; top:300px; font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; white-space:nowrap; text-transform:uppercase; }
-  .kga1-row { position:absolute; left:1270px; width:554px; }
-  .kga1-date { font-family:'Arial Black', Arial, sans-serif; font-size:56px; line-height:1.05; color:#f2f5f8; white-space:nowrap; }
-  .kga1-val { font-size:30px; font-weight:700; letter-spacing:1px; color:#dfe7ee; white-space:nowrap; }
-  .kga1-rlab { margin-top:8px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; white-space:nowrap; text-transform:uppercase; }
+  .kga1-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; paint-order:stroke; stroke:#04070c; stroke-width:8px; stroke-linejoin:round; }
   .kga1-note { position:absolute; left:96px; top:966px; font-size:19px; font-weight:700; letter-spacing:2px; color:#93a3b2; white-space:nowrap; }
   .kga1-src { position:absolute; left:96px; bottom:54px; font-size:19px; font-weight:700; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
 </style>
