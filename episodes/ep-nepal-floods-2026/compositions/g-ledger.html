@@ -25,6 +25,7 @@
   .gl-stamp { position:absolute; left:356px; top:118px; height:44px; padding:0 16px; box-sizing:border-box; display:flex; align-items:center;
     border:2px solid #d8a13a; border-radius:8px; font-weight:700; font-size:26px; letter-spacing:4px; color:#d8a13a; white-space:nowrap; }
   .gl-check { position:absolute; left:1590px; top:40px; width:120px; height:120px; }
+  .gl-content { position:absolute; left:0; top:0; width:1560px; height:200px; }
   .gl-sweep { position:absolute; left:0; top:0; width:360px; height:1080px; pointer-events:none;
     background:linear-gradient(100deg, transparent, rgba(127,178,229,0.07), transparent); }
 </style>
@@ -33,6 +34,7 @@
 
   <!-- row 1: the wall fell -->
   <div class="gl-row" id="gl-row1" style="top:230px;">
+    <div class="gl-content" id="gl-c1">
     <div class="gl-vis">
       <svg viewBox="0 0 300 170">
         <polygon points="0,0 118,0 134,170 0,170" fill="#2a3644"/>
@@ -44,19 +46,23 @@
     </div>
     <div class="gl-fact" id="gl-f1">Wall fell &middot; Sept 27</div>
     <div class="gl-sub" id="gl-s1">AFTER DAYS OF RAIN</div>
+    </div>
     <svg class="gl-check" viewBox="0 0 120 120"><circle cx="60" cy="60" r="46" fill="none" stroke="#d8a13a" stroke-width="4" stroke-opacity="0.45"/><path id="gl-ck1" d="M36,62 L54,80 L86,42" fill="none" stroke="#d8a13a" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
 
   <!-- row 2: the video is from that day -->
   <div class="gl-row" id="gl-row2" style="top:470px;">
+    <div class="gl-content" id="gl-c2">
     <div class="gl-vis"><img class="gl-img" id="gl-img2" src="media/collapse-f1.jpg"></div>
     <div class="gl-fact" id="gl-f2">Video from that day</div>
     <div class="gl-stamp" id="gl-stamp">LETE &middot; MUSTANG</div>
+    </div>
     <svg class="gl-check" viewBox="0 0 120 120"><circle cx="60" cy="60" r="46" fill="none" stroke="#d8a13a" stroke-width="4" stroke-opacity="0.45"/><path id="gl-ck2" d="M36,62 L54,80 L86,42" fill="none" stroke="#d8a13a" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
 
   <!-- row 3: the avalanche hit the Himlung camp -->
   <div class="gl-row" id="gl-row3" style="top:710px;">
+    <div class="gl-content" id="gl-c3">
     <div class="gl-vis">
       <svg viewBox="0 0 300 170">
         <polygon points="0,20 300,150 300,170 0,170" fill="#4a5560"/>
@@ -67,6 +73,7 @@
       </svg>
     </div>
     <div class="gl-fact" id="gl-f3">Avalanche hit the Himlung camp</div>
+    </div>
     <svg class="gl-check" viewBox="0 0 120 120"><circle cx="60" cy="60" r="46" fill="none" stroke="#d8a13a" stroke-width="4" stroke-opacity="0.45"/><path id="gl-ck3" d="M36,62 L54,80 L86,42" fill="none" stroke="#d8a13a" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
 
