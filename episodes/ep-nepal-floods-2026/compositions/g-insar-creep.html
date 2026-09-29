@@ -41,9 +41,10 @@
   .gic-bar { position:absolute; left:0; top:536px; width:574px; height:12px; border-radius:6px; background:#15202b; border:1px solid rgba(255,255,255,0.14); box-sizing:border-box; }
   .gic-barfill { position:absolute; left:0; top:0; width:100%; height:100%; border-radius:6px; background:linear-gradient(90deg,#7fb2e5,#d8a13a,#e74c3c); }
   .gic-ph { position:absolute; left:-3px; top:526px; width:6px; height:32px; border-radius:3px; background:#f2f5f8; }
-  .gic-head { position:absolute; left:1250px; top:370px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:40px; line-height:48px; color:#f2f5f8; white-space:nowrap; }
-  .gic-before { position:absolute; left:1250px; top:430px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:30px; line-height:38px; color:#d8a13a; white-space:nowrap; }
-  .gic-toll { position:absolute; left:1250px; top:560px; font-weight:700; font-size:30px; line-height:36px; color:#dfe7ee; white-space:nowrap; }
+  /* fix5: the late state is full-frame; the claim is centred above the two scaled-up NO DATA panels (y 330-760) */
+  .gic-head { position:absolute; left:96px; width:1728px; top:140px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:64px; line-height:72px; color:#f2f5f8; white-space:nowrap; }
+  .gic-before { position:absolute; left:96px; width:1728px; top:222px; text-align:center; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:36px; line-height:44px; color:#d8a13a; white-space:nowrap; }
+  .gic-toll { position:absolute; left:96px; width:1728px; top:822px; text-align:center; font-weight:700; font-size:34px; line-height:40px; color:#dfe7ee; white-space:nowrap; }
 </style>
 <div id="gic-root" data-composition-id="g-insar-creep" data-width="1920" data-height="1080" data-duration="25.243">
   <div class="gic-grid" id="gic-grid"></div>
