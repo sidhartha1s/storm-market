@@ -58,43 +58,42 @@ window.__timelines = window.__timelines || {};
      so the pin lands close to comp start rather than 0.15 s before it — no room to lead a word that early. */
   const CUES = {
     himlung: 0.3, /* pin/label on "Hymlung Hyml[ung]" @0.20-1.04 (sheet) */
-    tibet: 4.05   /* CUE "Tibet." @4.20 (sheet) */
+    nepal: 1.66,  /* "Nepal's" @1.66 (sheet) */
+    tibet: 4.20   /* "Tibet." @4.20 (sheet) */
   };
   const DUR = 6.2;
   const tl = gsap.timeline({ paused: true });
-  const kg = document.querySelector(P + "kg"), kgg = document.querySelector(P + "kgglow");
-  const KLEN = Math.ceil(kg.getTotalLength()) + 1;
+  const VLEN = Math.ceil(document.querySelector(P + "view").getTotalLength()) + 1;
   /* camera: zoom about the Himlung pin; a string attr tween, as g-master-map does */
   const cam = (z) => ({ attr: { transform: "translate(" + (1162.1 - 1162.1 * z).toFixed(2) + "," + (383.9 - 383.9 * z).toFixed(2) + ") scale(" + z + ")" } });
 
   /* ---- initial state ---- */
   tl.set(P + "cam", cam(1), 0);
-  tl.set([kg, kgg], { strokeDasharray: KLEN, strokeDashoffset: KLEN }, 0);
-  tl.set([P + "t-nepal", P + "t-tibet", P + "t-river", P + "t-himlung", P + "pin", P + "ring"], { autoAlpha: 0 }, 0);
+  tl.set(P + "view", { strokeDasharray: VLEN + " " + VLEN, strokeDashoffset: VLEN }, 0);
+  tl.set([P + "t-nepal", P + "t-tibet", P + "t-himlung", P + "pin", P + "ring", P + "lead", P + "inset"], { autoAlpha: 0 }, 0);
+  tl.set(P + "lead", { scaleY: 0, transformOrigin: "50% 0%" }, 0);
 
   /* ---- ambient, whole window ---- */
-  tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: 3.1, ease: "none", repeat: 1, yoyo: true }, 0);
   tl.to(P + "cam", Object.assign(cam(1.05), { duration: DUR, ease: "none" }), 0);
   tl.fromTo(P + "nepal", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0);
   tl.fromTo(P + "src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 0.3);
 
-  /* ---- river draws north (static establishing context; not spoken, so no word-anchor) ---- */
-  tl.to([kg, kgg], { strokeDashoffset: 0, duration: 2.4, ease: "power2.inOut" }, 0.2);
-  tl.fromTo(kgg, { attr: { "stroke-opacity": 0.22 } }, { attr: { "stroke-opacity": 0.5 }, duration: 1.2, ease: "sine.inOut", repeat: 5, yoyo: true }, 2.6);
-  tl.fromTo(P + "t-river", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 1.2);
-
-  /* ---- Himlung Himal pin lands (first word of the line) ---- */
+  /* ---- Himlung Himal pin lands (first word of the line); the ring pulses for the whole window ---- */
   tl.fromTo(P + "pin", { autoAlpha: 0, y: -60 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "bounce.out" }, CUES.himlung);
-  tl.fromTo(P + "ring", { autoAlpha: 0.9, attr: { r: 10 } }, { autoAlpha: 0, attr: { r: 46 }, duration: 1.1, ease: "power2.out", repeat: 3, repeatDelay: 0.2 }, CUES.himlung + 0.4);
-  tl.fromTo(P + "t-himlung", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.himlung + 0.15);
+  tl.fromTo(P + "ring", { autoAlpha: 0.9, attr: { r: 10 } }, { autoAlpha: 0, attr: { r: 46 }, duration: 1.0, ease: "power2.out", repeat: 4, repeatDelay: 0.1 }, CUES.himlung + 0.4);
+  tl.to(P + "lead", { autoAlpha: 1, scaleY: 1, duration: 0.35, ease: "power2.out" }, CUES.himlung + 0.1);
+  tl.fromTo(P + "t-himlung", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUES.himlung + 0.25);
 
-  /* ---- "Nepal's far north": the Nepal label lands on "Nepal's" ---- */
+  /* ---- "Nepal's far north": the Nepal label and the inset; the red view box draws on "Nepal's" ---- */
   tl.fromTo(P + "t-nepal", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 1.51);
+  tl.fromTo(P + "inset", { autoAlpha: 0, y: -12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.nepal - 0.45);
+  tl.to(P + "view", { strokeDashoffset: 0, duration: 0.6, ease: "power2.inOut" }, CUES.nepal - 0.1);
 
-  /* ---- Tibet: the border lights and marches ---- */
-  tl.to(P + "border", { attr: { "stroke-opacity": 1 }, duration: 0.4, ease: "power2.out" }, CUES.tibet);
-  tl.fromTo(P + "border", { strokeDashoffset: 0 }, { strokeDashoffset: -64, duration: DUR - CUES.tibet, ease: "none" }, CUES.tibet);
-  tl.fromTo(P + "t-tibet", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.tibet + 0.1);
+  /* ---- Tibet: the border pulses and marches, the label lands on "Tibet" ---- */
+  tl.to(P + "border", { attr: { "stroke-opacity": 1 }, duration: 0.35, ease: "sine.inOut", repeat: 3, yoyo: true }, CUES.tibet - 0.15);
+  tl.set(P + "border", { attr: { "stroke-opacity": 1 } }, CUES.tibet + 1.25);
+  tl.fromTo(P + "border", { strokeDashoffset: 0 }, { strokeDashoffset: -64, duration: DUR - CUES.tibet + 0.15, ease: "none" }, CUES.tibet - 0.15);
+  tl.fromTo(P + "t-tibet", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.tibet - 0.15);
 
   window.__timelines[ID] = tl;
 })();
