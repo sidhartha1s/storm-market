@@ -114,7 +114,7 @@ window.__timelines = window.__timelines || {};
   /* ---- "satellite radar" 1.39-1.95: the satellite crosses the top of the left panel, three radar waves ---- */
   tl.to(P + "sat", { autoAlpha: 1, duration: 0.25 }, 1.25);
   tl.to(P + "sat", { x: 860, duration: 3.6, ease: "none" }, 1.25);          /* y stays 330, clear of the plot top 400 */
-  tl.fromTo(WAVES, { autoAlpha: 1, scale: 0.4 }, { autoAlpha: 0, scale: 1.7, duration: 0.9, ease: "power1.out", stagger: 0.28, repeat: 3 }, 1.39);
+  tl.fromTo(WAVES, { autoAlpha: 1, scale: 0.4 }, { autoAlpha: 0, scale: 1.7, duration: 0.9, ease: "power1.out", stagger: 0.28, repeat: 3, immediateRender: false }, 1.39);
   tl.to(P + "sat", { autoAlpha: 0, duration: 0.3 }, 4.7);
 
   /* ---- "moving for weeks" 3.37-3.93 -> "fell" 4.67: the displacement line draws, rising left to right ---- */
