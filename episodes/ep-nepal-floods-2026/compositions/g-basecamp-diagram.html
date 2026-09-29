@@ -2,10 +2,19 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- g-basecamp-diagram (A3 open): Himlung massif side-on, SCHEMATIC NOT TO SCALE (mg_specs/g-basecamp-diagram.md).
-     No published cross-section exists for this camp; geometry is illustrative. Confirmed numbers only: 16 at base
-     camp = 2 guides + 14 kitchen/support (factcheck-B#14, factcheck-D#3), UAE group due Kathmandu Oct 1
-     (factcheck-A#2, factcheck-B#15). Cues estimated 175 wpm from the A3 paragraph start (mg-quickref timing rule). -->
+<!-- g-basecamp-diagram (A3 open, 44.397 s): Himlung massif side-on, SCHEMATIC NOT TO SCALE (mg_specs/g-basecamp-diagram.md).
+     Confirmed numbers only: 16 at base camp = 2 climbing guides + 14 kitchen/support (factcheck-B#14, factcheck-D#3); UAE
+     women's climbing school due in Kathmandu Oct 1 (factcheck-A#2, factcheck-B#15).
+     REDO 29 Sep 26: the massif stays; every beat is rebuilt on the words (retime-sheet.md host 375.563+44.397):
+       1.30-2.60 the climbing route draws base -> Camp 1 -> summit ("Himalayan climb");
+       7.34-9.90 six crew walk up the valley floor to the base-camp site ("people who arrive before the clients");
+       9.92 tents pop ("Guides carry up the tents"); 11.08-11.46 the fixed rope draws to Camp 1 ("fix the ropes");
+       12.42 the kitchen tent + smoke ("cooks build the camp"); 17.10 "16" counter + a ring on the BASE CAMP tents;
+       19.28 two icons turn amber, 20.38 fourteen light; 24.69 / 28.89 the UAE school lines;
+       30.44-32.04 an opaque avalanche grows down the face and overruns the camp ("snow ... onto the camp" 32.38),
+       tents buried at 32.3, dust burst + 0.4 s scene shake at 32.38; rail stats slide out at 32.9 for the person card;
+       snow flurry from 30.0 to the end.
+     Rail: x 1180-1920 (text x 1250-1824, max width 574). -->
 <template>
 <style>
   #gbd-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
@@ -15,48 +24,93 @@
     background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); }
   .gbd-eyebrow { position:absolute; left:1250px; top:120px; font-weight:700; font-size:22px; letter-spacing:6px;
     color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
-  .gbd-sub { position:absolute; left:1250px; top:168px; font-family:Georgia, serif; font-style:italic; font-size:26px;
+  .gbd-sub { position:absolute; left:1250px; top:160px; font-family:Georgia, serif; font-style:italic; font-size:26px;
     color:#d8a13a; white-space:nowrap; }
-  .gbd-row { position:absolute; left:1250px; width:560px; }
-  .gbd-rv { font-size:30px; font-weight:700; color:#dfe7ee; letter-spacing:1px; white-space:nowrap; }
-  .gbd-rl { margin-top:4px; font-size:19px; font-weight:700; color:#93a3b2; letter-spacing:4px; text-transform:uppercase; white-space:nowrap; }
-  .gbd-note { position:absolute; left:1250px; top:460px; width:560px; font-size:52px; font-weight:700; line-height:60px; color:#f2f5f8; }
+  .gbd-cnt { position:absolute; left:1250px; top:222px; font-family:'Courier New', monospace; font-weight:700; font-size:120px;
+    line-height:120px; color:#e8c56a; }
+  .gbd-cntlab { position:absolute; left:1420px; top:296px; font-weight:700; font-size:26px; letter-spacing:6px; color:#c8d3e0; white-space:nowrap; }
+  .gbd-grid { position:absolute; left:1250px; top:380px; width:266px; height:266px; }
+  .gbd-glab { position:absolute; left:1250px; font-weight:700; font-size:26px; letter-spacing:2px; white-space:nowrap; }
+  .gbd-uae { position:absolute; left:1250px; top:770px; width:574px; }
+  .gbd-uae1 { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:40px; line-height:48px; color:#f2f5f8; max-width:574px; }
+  .gbd-uae2 { margin-top:12px; font-size:30px; font-weight:700; line-height:36px; color:#e8c56a; white-space:nowrap; }
   .gbd-caption { position:absolute; left:96px; top:992px; font-size:19px; font-weight:700; letter-spacing:3px;
-    color:#93a3b2; text-transform:uppercase; }
+    color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
   .gbd-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+  .gbd-labbig { font-family:Arial, sans-serif; font-weight:700; font-size:30px; letter-spacing:3px; fill:#dfe7ee; }
 </style>
 <div id="gbd-root" data-composition-id="g-basecamp-diagram" data-width="1920" data-height="1080" data-duration="44.397">
   <svg class="gbd-svg" viewBox="0 0 1920 1080">
     <defs>
       <linearGradient id="gbd-rockgrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a5560"/><stop offset="1" stop-color="#2a3644"/></linearGradient>
-      <linearGradient id="gbd-avagrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dfe7ee" stop-opacity="0"/><stop offset="1" stop-color="#dfe7ee" stop-opacity="0.55"/></linearGradient>
+      <linearGradient id="gbd-avagrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dfe7ee"/><stop offset="1" stop-color="#93a3b2"/></linearGradient>
     </defs>
     <g id="gbd-scene">
+      <ellipse id="gbd-cloud1" cx="300" cy="250" rx="170" ry="26" fill="rgba(223,231,238,0.07)"/>
+      <ellipse id="gbd-cloud2" cx="960" cy="200" rx="200" ry="30" fill="rgba(223,231,238,0.06)"/>
       <path id="gbd-massif" d="M700,150 L1170,830 L230,830 Z" fill="url(#gbd-rockgrad)" stroke="#5a768f" stroke-width="2"/>
       <path id="gbd-snowcap" d="M700,150 L790,330 L610,330 Z" fill="#dfe7ee" opacity="0.9"/>
-      <line id="gbd-baseline" x1="150" y1="830" x2="1180" y2="830" stroke="#93a3b2" stroke-width="2" opacity="0.5"/>
-      <path id="gbd-avalanche" d="M700,230 L760,230 L650,780 L380,780 Z" fill="url(#gbd-avagrad)"/>
-      <g id="gbd-tents">
-        <path id="gbd-tent1" d="M360,822 L380,790 L400,822 Z" fill="#d8a13a"/>
-        <path id="gbd-tent2" d="M420,822 L440,790 L460,822 Z" fill="#d8a13a"/>
-        <path id="gbd-tent3" d="M480,822 L500,790 L520,822 Z" fill="#d8a13a"/>
-        <path id="gbd-tent4" d="M540,822 L560,790 L580,822 Z" fill="#d8a13a"/>
-        <path id="gbd-tent5" d="M600,822 L620,790 L640,822 Z" fill="#d8a13a"/>
-      </g>
-      <text class="gbd-lab" id="gbd-camplab" x="500" y="862" text-anchor="middle">BASE CAMP</text>
-      <path id="gbd-rope" d="M500,790 L830,430" fill="none" stroke="#f2f5f8" stroke-width="3" stroke-dasharray="8 6"/>
-      <text class="gbd-lab" id="gbd-ropelab" x="600" y="600" text-anchor="middle" transform="rotate(-46 600 600)">FIXED ROPE</text>
+      <rect id="gbd-floor" x="0" y="830" width="1180" height="50" fill="#15202b"/>
+      <line id="gbd-baseline" x1="0" y1="830" x2="1180" y2="830" stroke="#93a3b2" stroke-width="2" opacity="0.5"/>
+
+      <!-- the climb: base camp -> Camp 1 -> summit, dotted; the summit flag -->
+      <path id="gbd-route" d="M470,800 L830,430 L700,150" fill="none" stroke="rgba(200,211,224,0.55)" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 10"/>
+      <g id="gbd-flag"><path d="M700,150 L700,112" stroke="#dfe7ee" stroke-width="3"/><path d="M700,112 L726,120 L700,128 Z" fill="#e74c3c"/></g>
+
+      <!-- fixed rope + Camp 1 at its head -->
+      <path id="gbd-rope" d="M470,800 L830,430" fill="none" stroke="#f2f5f8" stroke-width="3" stroke-linecap="round"/>
       <circle id="gbd-c1ring" cx="830" cy="430" r="14" fill="none" stroke="#f2f5f8" stroke-width="4"/>
-      <text class="gbd-lab" id="gbd-c1lab" x="850" y="420">CAMP 1</text>
+      <text class="gbd-lab" id="gbd-c1lab" x="852" y="422" style="fill:#dfe7ee">CAMP 1</text>
+
+      <!-- the avalanche: opaque, grows down from the snowcap; streaks ride inside it -->
+      <g id="gbd-ava">
+        <path d="M690,170 L712,172 L728,236 L706,320 L668,420 L640,520 L650,620 L690,720 L716,800 L712,866 L292,866 L300,800 L350,720 L430,610 L520,490 L600,360 L650,260 Z" fill="url(#gbd-avagrad)"/>
+        <path d="M688,240 L640,380 L560,520 L470,660 L400,780" stroke="#93a3b2" stroke-width="3" fill="none" opacity="0.6"/>
+        <path d="M704,300 L672,440 L640,600 L660,760" stroke="#93a3b2" stroke-width="3" fill="none" opacity="0.5"/>
+      </g>
+
+      <!-- base camp: 5 tents (base y 828) + the larger kitchen tent -->
+      <path id="gbd-tent1" d="M330,828 L350,796 L370,828 Z" fill="#d8a13a"/>
+      <path id="gbd-tent2" d="M385,828 L405,796 L425,828 Z" fill="#d8a13a"/>
+      <path id="gbd-tent3" d="M440,828 L460,796 L480,828 Z" fill="#d8a13a"/>
+      <path id="gbd-tent4" d="M495,828 L515,796 L535,828 Z" fill="#d8a13a"/>
+      <path id="gbd-tent5" d="M550,828 L570,796 L590,828 Z" fill="#d8a13a"/>
+      <path id="gbd-kitchen" d="M605,828 L618,796 L642,780 L666,796 L679,828 Z" fill="#e8c56a" stroke="#d8a13a" stroke-width="2"/>
+      <circle id="gbd-smoke1" cx="642" cy="770" r="9" fill="rgba(200,211,224,0.5)"/>
+      <circle id="gbd-smoke2" cx="642" cy="770" r="12" fill="rgba(200,211,224,0.4)"/>
+      <circle id="gbd-smoke3" cx="642" cy="770" r="10" fill="rgba(200,211,224,0.45)"/>
+
+      <!-- six crew, feet at (0,0), placed by GSAP only; the inner group bobs while walking -->
+      <g id="gbd-m1"><g id="gbd-m1b"><circle cx="0" cy="-34" r="6" fill="#dfe7ee"/><path d="M0,-28 L0,-12 M0,-12 L-6,0 M0,-12 L6,0" stroke="#dfe7ee" stroke-width="3" stroke-linecap="round" fill="none"/><rect x="-10" y="-28" width="7" height="13" rx="2" fill="#d8a13a"/></g></g>
+      <g id="gbd-m2"><g id="gbd-m2b"><circle cx="0" cy="-34" r="6" fill="#dfe7ee"/><path d="M0,-28 L0,-12 M0,-12 L-6,0 M0,-12 L6,0" stroke="#dfe7ee" stroke-width="3" stroke-linecap="round" fill="none"/><rect x="-10" y="-28" width="7" height="13" rx="2" fill="#d8a13a"/></g></g>
+      <g id="gbd-m3"><g id="gbd-m3b"><circle cx="0" cy="-34" r="6" fill="#dfe7ee"/><path d="M0,-28 L0,-12 M0,-12 L-6,0 M0,-12 L6,0" stroke="#dfe7ee" stroke-width="3" stroke-linecap="round" fill="none"/><rect x="-10" y="-28" width="7" height="13" rx="2" fill="#d8a13a"/></g></g>
+      <g id="gbd-m4"><g id="gbd-m4b"><circle cx="0" cy="-34" r="6" fill="#dfe7ee"/><path d="M0,-28 L0,-12 M0,-12 L-6,0 M0,-12 L6,0" stroke="#dfe7ee" stroke-width="3" stroke-linecap="round" fill="none"/><rect x="-10" y="-28" width="7" height="13" rx="2" fill="#d8a13a"/></g></g>
+      <g id="gbd-m5"><g id="gbd-m5b"><circle cx="0" cy="-34" r="6" fill="#dfe7ee"/><path d="M0,-28 L0,-12 M0,-12 L-6,0 M0,-12 L6,0" stroke="#dfe7ee" stroke-width="3" stroke-linecap="round" fill="none"/><rect x="-10" y="-28" width="7" height="13" rx="2" fill="#d8a13a"/></g></g>
+      <g id="gbd-m6"><g id="gbd-m6b"><circle cx="0" cy="-34" r="6" fill="#dfe7ee"/><path d="M0,-28 L0,-12 M0,-12 L-6,0 M0,-12 L6,0" stroke="#dfe7ee" stroke-width="3" stroke-linecap="round" fill="none"/><rect x="-10" y="-28" width="7" height="13" rx="2" fill="#d8a13a"/></g></g>
+
+      <ellipse id="gbd-ring" cx="505" cy="824" rx="222" ry="58" fill="none" stroke="#e8c56a" stroke-width="3" stroke-dasharray="10 7"/>
+      <text class="gbd-labbig" id="gbd-camplab" x="500" y="918" text-anchor="middle">BASE CAMP</text>
+
+      <g id="gbd-dust">
+        <circle cx="400" cy="830" r="34" fill="rgba(223,231,238,0.55)"/><circle cx="470" cy="812" r="44" fill="rgba(223,231,238,0.5)"/>
+        <circle cx="545" cy="826" r="40" fill="rgba(223,231,238,0.5)"/><circle cx="620" cy="812" r="38" fill="rgba(223,231,238,0.45)"/>
+        <circle cx="350" cy="806" r="28" fill="rgba(223,231,238,0.45)"/><circle cx="680" cy="830" r="30" fill="rgba(223,231,238,0.4)"/>
+      </g>
+      <g id="gbd-flurry"></g>
     </g>
   </svg>
   <div class="gbd-rail" id="gbd-rail"></div>
-  <div class="gbd-eyebrow" id="gbd-eb">Himlung Himal &middot; Nepal's Far North</div>
-  <div class="gbd-sub" id="gbd-sub">a first big Himalayan climb</div>
-  <div class="gbd-row" id="gbd-r1" style="top:230px"><div class="gbd-rv">16</div><div class="gbd-rl">At Base Camp</div></div>
-  <div class="gbd-row" id="gbd-r2" style="top:300px"><div class="gbd-rv">2</div><div class="gbd-rl">Climbing Guides</div></div>
-  <div class="gbd-row" id="gbd-r3" style="top:370px"><div class="gbd-rv">14</div><div class="gbd-rl">Kitchen &amp; Support</div></div>
-  <div class="gbd-note" id="gbd-note">UAE Climbing School &middot; Due Oct 1</div>
+  <div class="gbd-eyebrow" id="gbd-eb">Himlung Himal &middot; Far North</div>
+  <div class="gbd-sub" id="gbd-sub">A first big Himalayan climb</div>
+  <div class="gbd-cnt" id="gbd-cnt"><span id="gbd-cntv">1</span></div>
+  <div class="gbd-cntlab" id="gbd-cntlab">AT BASE CAMP</div>
+  <svg class="gbd-grid" id="gbd-grid" viewBox="0 0 266 266"></svg>
+  <div class="gbd-glab" id="gbd-g2lab" style="top:664px; color:#e8c56a;">2 &middot; CLIMBING GUIDES</div>
+  <div class="gbd-glab" id="gbd-g14lab" style="top:706px; color:#dfe7ee;">14 &middot; KITCHEN &amp; SUPPORT</div>
+  <div class="gbd-uae" id="gbd-uae">
+    <div class="gbd-uae1" id="gbd-uae1">UAE Women's Climbing School</div>
+    <div class="gbd-uae2" id="gbd-uae2">Due in Kathmandu &middot; Oct 1</div>
+  </div>
   <div class="gbd-caption" id="gbd-cap">Schematic, Not To Scale</div>
 </div>
 <script>
@@ -65,53 +119,123 @@ window.__timelines = window.__timelines || {};
   const ID = "g-basecamp-diagram", P = "#gbd-";
   const DUR = 44.397;
   const tl = gsap.timeline({ paused: true });
-  tl.set([P+"eb", P+"sub", P+"r1", P+"r2", P+"r3", P+"note", P+"cap", P+"camplab", P+"ropelab", P+"c1ring", P+"c1lab",
-          P+"tent1", P+"tent2", P+"tent3", P+"tent4", P+"tent5", P+"rope", P+"massif", P+"snowcap"], { autoAlpha: 0 }, 0);
-  tl.set(P+"avalanche", { scaleY: 0, svgOrigin: "700 230" }, 0);
+  const NS = "http://www.w3.org/2000/svg";
 
-  /* whole window: slow push on the massif, nothing ever fully still */
-  tl.fromTo(P+"scene", { scale: 1, svgOrigin: "700 500" }, { scale: 1.03, duration: DUR, ease: "none" }, 0);
+  /* ---- the 4 x 4 worker icons in the rail (56 px cells, gap 14); icons 0-1 are the two guides ---- */
+  const grid = document.getElementById("gbd-grid"), ICONS = [];
+  for (let i = 0; i < 16; i++) {
+    const cx = (i % 4) * 70 + 28, cy = Math.floor(i / 4) * 70;
+    const g = document.createElementNS(NS, "g");
+    const h = document.createElementNS(NS, "circle");
+    h.setAttribute("cx", cx); h.setAttribute("cy", cy + 17); h.setAttribute("r", 10);
+    const b = document.createElementNS(NS, "path");
+    b.setAttribute("d", "M" + (cx - 17) + "," + (cy + 54) + " Q" + (cx - 17) + "," + (cy + 31) + " " + cx + "," + (cy + 31) + " Q" + (cx + 17) + "," + (cy + 31) + " " + (cx + 17) + "," + (cy + 54) + " Z");
+    g.appendChild(h); g.appendChild(b); g.setAttribute("fill", "#2a3644"); g.setAttribute("stroke", "#5a768f"); g.setAttribute("stroke-width", "2");
+    grid.appendChild(g); ICONS.push(g);
+  }
+  const GUIDES = ICONS.slice(0, 2), STAFF = ICONS.slice(2);
 
-  /* 0.3: the massif is named */
-  tl.fromTo([P+"massif", P+"snowcap"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 0.3);
-  tl.fromTo(P+"eb", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.3);
+  /* ---- snow flurry particles (deterministic), live from 30.0 ---- */
+  const fl = document.getElementById("gbd-flurry"), FLAKES = [];
+  let s = 7;
+  const rnd = () => { s = (s * 9301 + 49297) % 233280; return s / 233280; };
+  for (let i = 0; i < 34; i++) {
+    const c = document.createElementNS(NS, "circle");
+    c.setAttribute("cx", Math.round(120 + rnd() * 1040)); c.setAttribute("cy", Math.round(40 + rnd() * 520));
+    c.setAttribute("r", (2 + rnd() * 2).toFixed(1)); c.setAttribute("fill", "#dfe7ee");
+    fl.appendChild(c); FLAKES.push(c);
+  }
 
-  /* 0.41: "...a first big Himalayan climb," @0.56 */
-  tl.fromTo(P+"sub", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.41);
+  const MEN = [1, 2, 3, 4, 5, 6].map(i => P + "m" + i), BOBS = MEN.map(m => m + "b");
+  const TENTS = [P + "tent1", P + "tent2", P + "tent3", P + "tent4", P + "tent5"];
+  const SMOKE = [P + "smoke1", P + "smoke2", P + "smoke3"];
+  const RAILTXT = [P + "eb", P + "sub", P + "cnt", P + "cntlab", P + "grid", P + "g2lab", P + "g14lab", P + "uae"];
+  const rope = document.getElementById("gbd-rope"), RL = Math.ceil(rope.getTotalLength()) + 1;
+  rope.style.strokeDasharray = RL;
+  const route = document.getElementById("gbd-route");
 
-  /* 10.43: "Guides carry up the tents and fix the ropes," Guides @10.58/tents */
-  tl.fromTo([P+"tent1", P+"tent2", P+"tent3", P+"tent4", P+"tent5"], { autoAlpha: 0, y: 10 },
-    { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out", stagger: 0.08 }, 10.43);
-  tl.fromTo(P+"camplab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 10.63);
-  tl.fromTo(P+"rope", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6, ease: "power2.out" }, 10.93);
-  tl.fromTo(P+"ropelab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 11.33);
+  /* ---- initial state ---- */
+  tl.set([P + "massif", P + "snowcap", P + "floor", P + "baseline", P + "route", P + "flag", P + "c1ring", P + "c1lab", P + "kitchen",
+          P + "ring", P + "camplab", P + "dust", P + "cap", P + "g2lab", P + "g14lab", P + "uae1", P + "uae2", P + "cnt", P + "cntlab",
+          P + "eb", P + "sub"].concat(TENTS, SMOKE, MEN, ICONS), { autoAlpha: 0 }, 0);
+  tl.set(P + "rope", { strokeDashoffset: RL }, 0);
+  tl.set(P + "ava", { scaleY: 0, svgOrigin: "700 172" }, 0);
+  tl.set(FLAKES, { autoAlpha: 0 }, 0);
+  tl.set(MEN, { x: (i) => 96 + i * 34, y: 858 }, 0);
+  tl.set(P + "route", { strokeDashoffset: 0 }, 0);
 
-  /* 16.95: "16 workers were at base camp," 16 @17.10 */
-  tl.fromTo(P+"c1ring", { autoAlpha: 0, scale: 1.6, svgOrigin: "830 430" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power3.out" }, 16.95);
-  tl.fromTo(P+"c1lab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 17.15);
-  tl.fromTo(P+"r1", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 16.95);
+  /* ---- whole window: a slow push on the scene and two drifting cloud bands ---- */
+  tl.fromTo(P + "scene", { scale: 1, svgOrigin: "600 540" }, { scale: 1.04, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "cloud1", { x: 0 }, { x: 140, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "cloud2", { x: 0 }, { x: -120, duration: DUR, ease: "none" }, 0);
 
-  /* 19.13: "two climbing guides and 14 kitchen and support staff," two @19.28, 14 @20.38 */
-  tl.fromTo(P+"r2", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 19.13);
-  tl.fromTo(P+"r3", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 20.23);
+  /* ---- 0.0: the massif; eyebrow; "as a first big Himalayan climb" 0.42-1.80 ---- */
+  tl.fromTo([P + "massif", P + "snowcap", P + "floor", P + "baseline"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 0.0);
+  tl.fromTo(P + "eb", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.3);
+  tl.fromTo(P + "sub", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.7);
+  tl.fromTo(P + "cap", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 1.0);
+  /* "climb" @1.80: the route up the mountain draws, the summit flag plants ("practice run" 2.78) */
+  tl.to(P + "route", { autoAlpha: 1, duration: 0.2 }, 1.3);
+  tl.fromTo(P + "route", { attr: { "stroke-dasharray": "2 10", "stroke-opacity": 0.2 } }, { attr: { "stroke-opacity": 1 }, duration: 1.3, ease: "power2.out" }, 1.3);
+  tl.fromTo(P + "flag", { autoAlpha: 0, scaleY: 0, svgOrigin: "700 150" }, { autoAlpha: 1, scaleY: 1, duration: 0.4, ease: "back.out(2)" }, 2.6);
+  tl.fromTo(P + "route", { strokeDashoffset: 0 }, { strokeDashoffset: -120, duration: 8.4, ease: "none" }, 2.6);  /* the route marches up, to 11.0 */
 
-  /* 26.78: "...due in Kathmandu on October 1st" due @26.93 */
-  tl.fromTo(P+"note", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 26.78);
-  tl.fromTo(P+"cap", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 27.28);
+  /* ---- "the people who arrive before the clients" 7.34-8.62: six crew walk up the valley floor ---- */
+  tl.to(MEN, { autoAlpha: 1, duration: 0.3, stagger: 0.06 }, 7.3);
+  tl.to(MEN, { x: (i) => 372 + i * 52, duration: 2.6, ease: "none" }, 7.3);
+  tl.fromTo(BOBS, { y: 0 }, { y: -4, duration: 0.2, ease: "sine.inOut", yoyo: true, repeat: 12, stagger: 0.05 }, 7.3);
 
-  /* 30.98: "Then snow and rock came down onto the camp." ends on "camp" @32.38 */
-  tl.to(P+"avalanche", { scaleY: 1, duration: 1.4, ease: "power2.in" }, 30.98);
-  tl.fromTo(P+"note", { scale: 1 }, { scale: 1.04, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 32.5);
+  /* ---- "Guides carry up the tents" 9.92-10.58: tents pop on arrival ---- */
+  tl.fromTo(TENTS, { autoAlpha: 0, scale: 0.2, svgOrigin: (i) => (350 + i * 55) + " 828" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2.2)", stagger: 0.1 }, 9.95);
+  tl.fromTo(P + "camplab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 10.45);
 
-  /* occlusion_check: g-person-bhote overlays this comp for its whole host window, comp-local 33.037-44.397, and
-     its card sits over BASE CAMP / FIXED ROPE. Both readings already landed (10.63/11.33) long before this; clear
-     them early so nothing is left for the overlay to cover. Nothing to restore after -- the comp ends at 44.397. */
-  tl.to([P+"camplab", P+"ropelab"], { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 32.6);
+  /* ---- "fix the ropes" 11.08-11.46: the rope draws to Camp 1; the ring lands at the rope head ---- */
+  tl.to(P + "rope", { strokeDashoffset: 0, duration: 0.42, ease: "power1.inOut" }, 11.04);
+  tl.to(P + "route", { autoAlpha: 0.5, duration: 0.4 }, 11.1);
+  tl.fromTo(P + "c1ring", { autoAlpha: 0, scale: 1.8, svgOrigin: "830 430" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power3.out" }, 11.46);
+  tl.fromTo(P + "c1lab", { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 11.6);
 
-  /* exit 43.6, finishes 44.2 (D-0.1 = 44.297); narration continues to person/search comps after */
-  tl.to([P+"eb", P+"sub", P+"r1", P+"r2", P+"r3", P+"note", P+"rail"], { x: 660, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 43.6);
-  tl.to([P+"c1ring", P+"c1lab", P+"tent1", P+"tent2", P+"tent3", P+"tent4", P+"tent5", P+"rope"],
-        { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 43.6);
+  /* ---- "cooks build the camp" 12.42-13.38: the kitchen tent, then smoke drifting up (finite loop, to ~30) ---- */
+  tl.fromTo(P + "kitchen", { autoAlpha: 0, scale: 0.2, svgOrigin: "642 828" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 12.42);
+  tl.fromTo(SMOKE, { autoAlpha: 0.8, x: 0, y: 0, scale: 0.6 }, { autoAlpha: 0, x: 26, y: -90, scale: 1.8, duration: 2.1, ease: "power1.out", stagger: 0.7, repeat: 7 }, 12.9);
+
+  /* ---- "16" @17.10: the counter (first tick 1), a ring on the BASE CAMP tents, the 16 icons appear dim ---- */
+  tl.to(P + "cnt", { autoAlpha: 1, duration: 0.15 }, 17.05);
+  const N = { v: 1 }, nv = document.getElementById("gbd-cntv");
+  tl.to(N, { v: 16, duration: 0.9, ease: "power3.out", onUpdate: () => { if (nv) nv.textContent = Math.round(N.v); } }, 17.1);
+  tl.fromTo(P + "cntlab", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 17.3);
+  tl.fromTo(P + "ring", { autoAlpha: 0, scale: 1.3, svgOrigin: "505 824" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 17.1);
+  tl.to(P + "ring", { scale: 1.05, svgOrigin: "505 824", duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 5 }, 17.6);
+  tl.to(P + "ring", { autoAlpha: 0, duration: 0.5 }, 21.9);
+  tl.fromTo(ICONS, { autoAlpha: 0, scale: 0.5, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.25, ease: "back.out(2)", stagger: 0.03 }, 17.4);
+  /* "two climbing guides" @19.28 */
+  tl.to(GUIDES, { fill: "#e8c56a", stroke: "#d8a13a", duration: 0.3, stagger: 0.1 }, 19.28);
+  tl.fromTo(P + "g2lab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 19.35);
+  /* "14" @20.38 */
+  tl.to(STAFF, { fill: "#dfe7ee", stroke: "#93a3b2", duration: 0.25, stagger: 0.03 }, 20.38);
+  tl.fromTo(P + "g14lab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 20.45);
+
+  /* ---- "women's climbing school" @24.69 ... "October 1st" @28.89 ---- */
+  tl.to([P + "grid", P + "g2lab", P + "g14lab"], { opacity: 0.45, duration: 0.5 }, 24.5);
+  tl.fromTo(P + "uae1", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 24.69);
+  tl.fromTo(P + "uae2", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 28.85);
+
+  /* ---- "Then snow" 30.04-30.44 ... "camp" 32.38: flurry, then the avalanche overruns the camp ---- */
+  FLAKES.forEach((f, i) => {
+    const d = 2.2 + (i % 5) * 0.35, start = 30.0 + (i % 7) * 0.22;
+    const reps = Math.floor((DUR - 0.1 - start) / d) - 1;
+    tl.fromTo(f, { autoAlpha: 0.85, x: 0, y: -80 }, { x: -70, y: 460, duration: d, ease: "none", repeat: reps }, start);
+  });
+  tl.to(P + "ava", { scaleY: 1, duration: 1.6, ease: "power2.in" }, 30.44);
+  tl.to(SMOKE, { autoAlpha: 0, duration: 0.3 }, 31.9);
+  tl.to(TENTS.concat(P + "kitchen", MEN), { y: "+=10", autoAlpha: 0.25, duration: 0.3, ease: "power2.in" }, 32.3);
+  tl.fromTo(P + "dust", { autoAlpha: 1, scale: 0, svgOrigin: "505 824" }, { autoAlpha: 0, scale: 1.4, duration: 0.9, ease: "power2.out" }, 32.38);
+  tl.fromTo(P + "scene", { x: 0 }, { x: 8, duration: 0.05, ease: "none", yoyo: true, repeat: 7 }, 32.38);  /* 0.4 s shake, scene group only */
+  tl.set(P + "scene", { x: 0 }, 32.8);
+
+  /* ---- 32.9: rail stats slide out so the person card can take the rail ---- */
+  tl.to(RAILTXT, { x: 660, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 32.9);
+  tl.to({}, { duration: 0.01 }, DUR - 0.01);
   window.__timelines[ID] = tl;
 })();
 </script>
