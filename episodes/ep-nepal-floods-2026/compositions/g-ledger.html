@@ -138,7 +138,7 @@ window.__timelines = window.__timelines || {};
   tl.to(P + "ck3", { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, CUES.lives - 0.1);
 
   /* exit: rows slide out left, staggered, over the last 0.6 s */
-  tl.to([P + "hl"].concat(ROWS), { x: -300, autoAlpha: 0, duration: 0.45, ease: "power3.in", stagger: 0.04 }, DUR - 0.62);
+  tl.to([P + "eb", P + "hl"].concat(ROWS), { x: -300, autoAlpha: 0, duration: 0.45, ease: "power3.in", stagger: 0.04 }, DUR - 0.62);
   tl.to({}, { duration: 0.01 }, DUR - 0.01);
   window.__timelines[ID] = tl;
 })();
