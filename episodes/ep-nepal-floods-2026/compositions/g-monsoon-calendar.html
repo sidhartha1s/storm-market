@@ -55,9 +55,15 @@ window.__timelines = window.__timelines || {};
   tl.set([P+"axis", P+"wetband"], { scaleX: 0, transformOrigin: "left center" }, 0);
   tl.set(P+"ticks", { autoAlpha: 0 }, 0);
   tl.set(P+"pin", { y: -60, svgOrigin: "1644 690" }, 0);
+  tl.set(P+"sweep", { autoAlpha: 0, x: 0 }, 0);
 
   /* whole window: the wet band breathes slowly */
   tl.to(P+"wetband", { opacity: 0.12, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 6 }, 3.2);
+
+  /* ambient: a highlight sweeps the axis end-to-end, continuously, so the 6.5-14.5s hold (between the
+     withdrawal-tag reveal and the pin drop) is never pixel-static */
+  tl.to(P+"sweep", { autoAlpha: 0.55, duration: 0.3 }, 1.0);
+  tl.to(P+"sweep", { x: 1394, duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 5 }, 1.0);
 
   /* real word "Nepal" @0.20 (host now starts 0.2s earlier at blackout end, voice still @comp-local 0.2): Nepal
      gets most of its rain from the summer monsoon */
