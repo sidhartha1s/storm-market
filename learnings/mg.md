@@ -2,6 +2,15 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 2026-09-29 - ep-nepal-floods-2026: 'Arial Black' needs an explicit font-weight:900 because the render host substitutes it
+- **What happened:** every headline-tier rule written as `font-family:'Arial Black', Arial, sans-serif` with no weight
+  rendered in the master as a thin regular-weight sans ("The toll depends on who's counting.", "32 Days Apart", "SEPT 27",
+  "Pasang Bhote" and more), so the 52 px tier lost its weight and the hierarchy collapsed on TV. g-outro and index.html
+  `.popfig .pf-sub` already carried `font-weight:900` and rendered heavy.
+- **Fix:** `font-weight:900` added to every CSS rule and SVG text style whose font-family starts with 'Arial Black'
+  (37 comps now reference it, 0 without a weight, checked by a read-only regex pass over `compositions/*.html`).
+- **Rule home:** `library/inhouse/snippets/tokens.md` "Fonts".
+
 ## 2026-09-29 - ep-nepal-floods-2026: Sonnet built, fixed and checked its own graphics; about 40 % below Enderlin
 - **What happened:** 15 of the 16 subagents that wrote graphics ran on Sonnet 5. The same model fixed and checked them,
   and nobody read a settled frame before the render. Four graphics shipped mostly empty. `g-sep-2024` was built to sit
