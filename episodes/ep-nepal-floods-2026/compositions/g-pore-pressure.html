@@ -187,7 +187,7 @@ window.__timelines = window.__timelines || {};
   tl.to("#pp-water", { opacity: 1, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 13.0);
 
   /* "climbs" @14.42 "high enough": friction starts to sag ... */
-  tl.to("#pp-friction", { scaleY: 0.82, duration: 2.0, ease: "power1.inOut" }, 14.42);
+  tl.to("#pp-friction", { y: 93.6, duration: 2.0, ease: "power1.inOut" }, 14.42);   /* level 0.82: top 433.6 */
   tl.to("#pp-lfric", { y: 93.6, duration: 2.0, ease: "power1.inOut" }, 14.42);
   /* ... "drops" @16.94 "below the weight": the friction top falls under the weight top (860-234 = 626 > 560) */
   tl.to("#pp-friction", { scaleY: 0.45, duration: 0.45, ease: "power3.in" }, 16.94);
