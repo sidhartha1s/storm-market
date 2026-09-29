@@ -79,29 +79,60 @@ window.__timelines = window.__timelines || {};
      "...surge of mud." — "By the 28th" / "cut through again" are not spoken in this window, so the
      Sept 28 row, the breach and the lake draw-back are DROPPED (never revealed; row DOM kept, unused). */
   const CUES = {
-    river: 4.03,   /* CUE "river." @4.18 (sheet) */
-    debris: 5.05,  /* CUE "Debris" @5.20 (sheet) */
-    dam: 7.73,     /* CUE "dam" @7.88 (sheet) */
-    lake: 9.29,    /* CUE "lake" @9.44 (sheet) */
-    gives: 11.23,  /* CUE "gives" @11.38 (sheet) */
-    surge: 14.39   /* CUE "surge" @14.54 (sheet) */
+    gorge: 0.42,     /* "gorge this narrow" @0.42-1.36 */
+    river: 4.03,     /* CUE "river." @4.18 (sheet) */
+    debris: 5.05,    /* CUE "Debris" @5.20 (sheet) */
+    dam: 7.73,       /* CUE "dam" @7.88 (sheet) */
+    lake: 9.29,      /* CUE "lake" @9.44 (sheet); the lake fills 9.44-9.94 */
+    gives: 11.38,    /* CUE "gives way" @11.38 (sheet) */
+    stored: 12.47,   /* CUE "stored water" @12.62 (sheet) */
+    downstream: 13.39, /* CUE "downstream" @13.54 (sheet) */
+    mud: 14.92       /* CUE "mud." @14.92 (sheet) */
   };
   const DUR = 15.808;
-  const EXIT = 15.108;
   const tl = gsap.timeline({ paused: true });
   const lenOf = (id) => Math.ceil(document.querySelector(P + id).getTotalLength()) + 1;
-  const LAKE = lenOf("lake"), DEB = lenOf("debline"), UP = lenOf("upline"), DN = lenOf("dnline");
-  const cam = (z) => ({ attr: { transform: "translate(" + (538 - 538 * z).toFixed(2) + "," + (550 - 550 * z).toFixed(2) + ") scale(" + z + ")" } });
+  const DEB = lenOf("debline");
+  /* camera: the dam (538,550 cam-1 px) is pinned to (960,540) at every zoom */
+  const cam = (z) => ({ attr: { transform: "translate(" + (960 - 538 * z).toFixed(2) + "," + (540 - 550 * z).toFixed(2) + ") scale(" + z + ")" } });
+
+  /* runtime clones of the river path (same d) for the valley walls, lake, mud trail and surge pulse */
+  const kg = document.querySelector(P + "kg"), glow = document.querySelector(P + "kgglow"), mapG = kg.parentNode;
+  const TOTAL = kg.getTotalLength(), T = Math.ceil(TOTAL) + 1;
+  let LDAM = 0, best = 1e9; /* path length at the dam: nearest point to (-53.5625,-29.6875) map units */
+  for (let l = 0; l <= TOTAL; l += 0.05) {
+    const p = kg.getPointAtLength(l), d = (p.x + 53.5625) * (p.x + 53.5625) + (p.y + 29.6875) * (p.y + 29.6875);
+    if (d < best) { best = d; LDAM = l; }
+  }
+  const clone = (name, attrs, before) => {
+    const c = kg.cloneNode(false);
+    c.setAttribute("id", ID + "-" + name);
+    Object.keys(attrs).forEach((k) => c.setAttribute(k, attrs[k]));
+    if (before) mapG.insertBefore(c, before); else mapG.appendChild(c);
+    return c;
+  };
+  /* 1 map unit = 32 cam-1 px: slope shade +-260 px, wall bands 70-110 px either side, channel floor 140 px wide */
+  const VALLEY = [
+    clone("slopes", { stroke: "#15202b", "stroke-width": "16.25", "stroke-opacity": "0.75" }, glow),
+    clone("walls", { stroke: "#2a3644", "stroke-width": "6.875" }, glow),
+    clone("hatch", { stroke: "url(#g-map-kali-gandaki-a1-hatch)", "stroke-width": "6.875" }, glow),
+    clone("floor", { stroke: "#0b1016", "stroke-width": "4.375" }, glow)
+  ];
+  /* lake: the 220 px (6.9 units) of channel upstream of the dam, revealed by a clip circle growing from the dam */
+  const lake = clone("lake", { stroke: "#7fb2e5", "stroke-opacity": "0.6", "stroke-width": "3.6", "stroke-linecap": "butt",
+    "stroke-dasharray": "0 " + (LDAM - 6.9).toFixed(3) + " 6.9 " + T, "clip-path": "url(#g-map-kali-gandaki-a1-lakeclip)" }, glow);
+  const trail = clone("trail", { stroke: "#8a6a50", "stroke-width": "0.75", "stroke-linecap": "butt",
+    "stroke-dasharray": "0 " + LDAM.toFixed(3) + " 0 " + T });
+  const surge = clone("surge", { stroke: "#c0392b", "stroke-width": "1.0", "stroke-dasharray": "3 " + T });
 
   /* ---- initial state ---- */
-  tl.set(P + "cam", cam(0.82), 0);
-  tl.set(P + "lake", { strokeDasharray: LAKE, strokeDashoffset: -LAKE }, 0);
+  tl.set(P + "cam", cam(1.1), 0);
+  tl.set(VALLEY, { strokeDasharray: T, strokeDashoffset: T }, 0);
   tl.set(P + "debline", { strokeDasharray: DEB, strokeDashoffset: DEB }, 0);
-  tl.set(P + "upline", { strokeDasharray: UP, strokeDashoffset: UP }, 0);
-  tl.set(P + "dnline", { strokeDasharray: DN, strokeDashoffset: DN }, 0);
-  tl.set([P + "debhead", P + "uphead", P + "dnhead", P + "dam", P + "t-deb", P + "t-up", P + "t-dn",
-    P + "pk-dh", P + "pk-an", P + "lete", P + "jom", P + "t-dh", P + "t-an", P + "t-lete", P + "t-jom", P + "bar", P + "t-bar",
-    P + "eb", P + "r1", P + "r2", P + "note"], { autoAlpha: 0 }, 0);
+  tl.set(surge, { autoAlpha: 0, strokeDashoffset: -LDAM }, 0);
+  tl.set([P + "debhead", P + "damL", P + "damR", P + "t-deb", P + "t-dam", P + "damlead", P + "t-lake", P + "lakelead",
+    P + "t-surge", P + "surgelead", P + "pk-dh", P + "pk-an", P + "lete", P + "jom", P + "t-dh", P + "t-an", P + "t-lete", P + "t-jom",
+    P + "bar", P + "t-bar", P + "note", P + "src"], { autoAlpha: 0 }, 0);
   tl.set([P + "kg", P + "kgglow", P + "flow"], { autoAlpha: 0 }, 0);
 
   /* ---- base map fades in immediately, so comp-local 0 never reads empty ---- */
