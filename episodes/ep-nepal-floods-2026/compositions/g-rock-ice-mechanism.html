@@ -106,7 +106,9 @@ window.__timelines = window.__timelines || {};
   /* "a rock and ice avalanche." rock @3.04: slab + crack reveal */
   tl.fromTo("#rim-slab", { autoAlpha: 0, y: -20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.89);
   tl.fromTo("#rim-crack", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 3.32);
-  tl.to("#rim-crack", { x: 2, duration: 0.08, ease: "power1.inOut", yoyo: true, repeat: 5 }, 5.92);
+
+  /* pre-collapse tremor: fills the 3.3-9.7 hold before the fall with visible motion, builds tension too */
+  tl.to(["#rim-slab", "#rim-crack"], { x: 8, duration: 0.32, ease: "sine.inOut", yoyo: true, repeat: 19 }, 3.3);
 
   /* "As it falls," falls @10.06: slab falls; "friction melts some of the ice" @11.02-12.14, ice fragments morph to water droplets by landing */
   tl.to("#rim-slab", { y: 700, rotation: -12, duration: 1.4, ease: "power2.in" }, 9.77);
