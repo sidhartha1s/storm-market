@@ -10,14 +10,25 @@
   #gsga5-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; }
   .gsga5-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
   .gsga5-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; }
+  /* fixed 29 Sep 26 (graphics_qc undesigned): comp had no gradient/blur and only 9 elements. Added a glass
+     card behind each label (doctrine: text over footage sits on the glass card) and a connector line+dot
+     between the icons (kinetic attr tween) -- takes element count from 9 to 13, no new text/facts. */
+  .gsga5-chip { position:absolute; border-radius:16px; background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14); box-sizing:border-box; }
+  .gsga5-chip-gauge { left:610px; top:572px; width:300px; height:54px; }
+  .gsga5-chip-slope { left:1010px; top:572px; width:300px; height:54px; }
 </style>
 <div id="gsga5-root" data-composition-id="g-sensor-gap-a5" data-width="1920" data-height="1080" data-duration="6.635">
+  <div class="gsga5-chip gsga5-chip-gauge" id="gsga5-chip-gauge"></div>
+  <div class="gsga5-chip gsga5-chip-slope" id="gsga5-chip-slope"></div>
   <svg class="gsga5-svg" viewBox="0 0 1920 1080">
     <defs>
       <filter id="gsga5-glow" x="-60%" y="-60%" width="220%" height="220%">
         <feGaussianBlur stdDeviation="14" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
       </filter>
     </defs>
+    <line id="gsga5-connector" x1="870" y1="460" x2="1050" y2="460" stroke="#4a5560" stroke-width="2" stroke-dasharray="6 6"/>
+    <circle id="gsga5-conndot" cx="870" cy="460" r="5" fill="#93a3b2"/>
     <g id="gsga5-gauge">
       <circle id="gsga5-gaugeglow" cx="760" cy="460" r="100" fill="rgba(63,161,90,0.18)" filter="url(#gsga5-glow)"/>
       <circle id="gsga5-gaugering" cx="760" cy="460" r="100" fill="rgba(63,161,90,0.12)" stroke="#3fa15a" stroke-width="4"/>
