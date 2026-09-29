@@ -105,15 +105,19 @@ window.__timelines = window.__timelines || {};
   const peaks = [];
   if (relief && border && nepal) {
     const L = border.getTotalLength();
-    for (let i = 0; i < 26; i++) {
-      const s = L * (0.03 + 0.94 * i / 25);
+    /* round 3: two rows (5 and 12 geo units in from the border, the inner row offset half a step) so the
+       Himalaya reads as a band, not a dotted line; 52 slots */
+    for (let i = 0; i < 52; i++) {
+      const row = i % 2, k = (i - row) / 2, off = row ? 12 : 5;
+      const s = L * (0.03 + 0.94 * Math.min(1, (k + row * 0.5) / 25));
       const a = border.getPointAtLength(s), b = border.getPointAtLength(Math.min(L, s + 1));
       let nx = -(b.y - a.y), ny = b.x - a.x;
       const n = Math.hypot(nx, ny) || 1; nx /= n; ny /= n;
-      let px = a.x + nx * 5, py = a.y + ny * 5;
-      if (!nepal.isPointInFill(new DOMPoint(px, py))) { px = a.x - nx * 5; py = a.y - ny * 5; }
+      let px = a.x + nx * off, py = a.y + ny * off;
+      if (!nepal.isPointInFill(new DOMPoint(px, py))) { px = a.x - nx * off; py = a.y - ny * off; }
+      if (!nepal.isPointInFill(new DOMPoint(px, py))) continue;
       if (Math.hypot(px + 4.74, py + 39.5) < 9) continue;
-      const w = 2.6 + (i % 3) * 0.6, h = 4.2 + (i % 4) * 0.7;
+      const w = 2.6 + (k % 3) * 0.6 - row * 0.3, h = 4.2 + (k % 4) * 0.7 - row * 0.5;
       const g = document.createElementNS(SVGNS, "g");
       g.setAttribute("id", "g-map-kali-gandaki-ht-pk" + i);
       const body = document.createElementNS(SVGNS, "path");
