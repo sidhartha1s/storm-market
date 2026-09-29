@@ -69,8 +69,13 @@ window.__timelines = window.__timelines || {};
   tl.to("#sc-snow", { scaleY: 1, duration: 1.6, ease: "power3.out" }, 6.58);
   tl.fromTo("#sc-snowlab", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.3);
 
+  /* row skeletons land early (card never sits mostly empty while the diagram builds on the right);
+     numbers still count up and land on their spoken words below */
+  tl.fromTo("#sc-r1", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.6);
+  tl.fromTo("#sc-r2", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.2);
+  tl.fromTo("#sc-r3", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.8);
+
   /* "16 workers had been at the camp." 16 @9.16 */
-  tl.fromTo("#sc-r1", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.01);
   const c1 = { v: 0 };
   tl.to(c1, { v: 16, duration: 1.1, ease: "power3.out", onUpdate: function () {
     const e = document.getElementById("sc-v1"); if (e) e.textContent = Math.round(c1.v);
