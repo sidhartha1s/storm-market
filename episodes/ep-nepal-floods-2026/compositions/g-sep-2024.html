@@ -151,7 +151,9 @@ window.__timelines = window.__timelines || {};
   /* round 3: origin x 1148 = Nepal's east edge, so the push grows the map leftward and the border stays at x <= 1148,
      clear of the counter label at x 1184 (origin 1000 carried the border to x 1185, y 801-998, onto "LIVES LOST") */
   tl.to("#s24-map", { scale: 1.25, y: 120, svgOrigin: "1148 246", duration: 2.5, ease: "power2.inOut" }, 15.68);
-  tl.to(["#s24-ktmlab", "#s24-ticks"], { autoAlpha: 0.35, duration: 0.6 }, 15.68);
+  tl.to("#s24-ticks", { autoAlpha: 0.35, duration: 0.6 }, 15.68);
+  /* the label is gone by 16.03 (map at scale ~1.01, cap tops ~812 vs border ~782): scaled 1.25 it would land at y ~1102, off frame */
+  tl.to("#s24-ktmlab", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 15.68);
   tl.set("#s24-snow", { autoAlpha: 1 }, 16.2);
   gsap.utils.toArray("#s24-snow circle").forEach(function (c, i) {
     tl.fromTo(c, { y: -60, autoAlpha: 0 }, { y: 40, autoAlpha: 1, duration: 0.9 + (i % 3) * 0.15, ease: "none", repeat: 1 }  /* ends by 19.24 */, 16.2 + (i % 5) * 0.16);
