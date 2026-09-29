@@ -156,6 +156,7 @@ window.__timelines = window.__timelines || {};
 
   /* ---- exit: rail text slides out; map holds ---- */
   tl.to([P + "eb", P + "r1", P + "r2", P + "r3"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, EXIT);
+  tl.to({}, { duration: 0.01 }, DUR - 0.01);  // hold the timeline to the host window (graphics_qc short-duration)
 
   window.__timelines[ID] = tl;
 })();
