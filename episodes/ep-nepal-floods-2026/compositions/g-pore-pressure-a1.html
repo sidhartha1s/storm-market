@@ -208,7 +208,7 @@ window.__timelines = window.__timelines || {};
   tl.set(P + "debris", { autoAlpha: 1 }, CUES.gives + 0.55);
   DEB.forEach((r, i) => {
     tl.fromTo(r, { x: 0, y: 0, rotation: 0 },
-      { x: 150 + (i * 23) % 190, y: 60 + (i * 11) % 36, rotation: (i % 2 ? 1 : -1) * 90, svgOrigin: "1500 880",
+      { x: 140 + (i * 23) % 160, y: 55 + (i * 11) % 30, rotation: (i % 2 ? 1 : -1) * 90, transformOrigin: "50% 50%",
         duration: 0.7, ease: "power2.in" }, CUES.gives + 0.55 + i * 0.03);
   });
   tl.to(P + "river", { attr: { fill: "#6b5040" }, duration: 0.6, ease: "power2.out" }, CUES.gives + 0.9);
