@@ -143,8 +143,8 @@ window.__timelines = window.__timelines || {};
     tl.to(c, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2.5)" }, at);
   });
 
-  /* ---- "moving for weeks" 3.37-3.93 -> "fell" 4.67: the displacement line draws, rising left to right ---- */
-  tl.to(P + "line", { strokeDashoffset: 0, duration: 1.3, ease: "power1.in" }, 3.37);
+  /* ---- "moving" 3.37: the drawn line pulses once as the word lands; "fell" 4.67: the X ---- */
+  tl.fromTo(P + "line", { attr: { "stroke-width": 5 } }, { attr: { "stroke-width": 8 }, duration: 0.28, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 3.37);
   tl.to(P + "x", { autoAlpha: 1, scale: 1, duration: 0.25, ease: "power4.out" }, 4.67);
   tl.fromTo(P + "fell", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 4.72);
   tl.fromTo(P + "xring", { autoAlpha: 0.9, attr: { r: 16 } }, { autoAlpha: 0, attr: { r: 52 }, duration: 1.0, ease: "power2.out", repeat: 2, repeatDelay: 0.2, immediateRender: false }, 4.8);
