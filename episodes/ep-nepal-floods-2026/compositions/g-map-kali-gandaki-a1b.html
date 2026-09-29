@@ -107,12 +107,15 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "temple", { autoAlpha: 0, scale: 0, svgOrigin: "718.1 263.6" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.5)" }, CUES.temple);
   tl.fromTo(P + "t-temple", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.temple + 0.15);
 
-  /* ---- the Annapurna trails: a trekker walks the Jomsom-Muktinath leg (on the route line at every frame).
-     Dhaulagiri/Annapurna I peak pop-ins DROPPED (not spoken, no room); the walk is compressed from the
-     original 5.2 s + 0.3 s repeatDelay + 5.2 s return leg to one short one-way pass. ---- */
-  tl.to(P + "trek", { autoAlpha: 1, duration: 0.2 }, 10.0);
-  tl.fromTo(P + "trek", { x: T0.x, y: T0.y }, { x: T1.x, y: T1.y, duration: 0.6, ease: "none" }, 10.0);
-  tl.fromTo(P + "t-trail", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, CUES.trails);
+  /* ---- "Late September" @7.06: the autumn trekking season opens; a trekker walks Jomsom -> Muktinath ---- */
+  tl.fromTo(P + "season", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.late);
+  tl.to(P + "trek", { autoAlpha: 1, duration: 0.2 }, 7.1);
+  tl.fromTo(P + "trek", { x: T0.x, y: T0.y }, { x: T1.x, y: T1.y, duration: 2.9, ease: "none" }, 7.1);
+  tl.fromTo(P + "trekb", { y: 0 }, { y: -2.5, duration: 0.24, ease: "sine.inOut", yoyo: true, repeat: 11 }, 7.1);  /* step bob, to 10.0 */
+
+  /* ---- "Annapurna" @10.18: the trails label lands and holds to the cut ---- */
+  tl.fromTo(P + "t-trail", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, CUES.annapurna);
+  tl.to(P + "season", { scale: 1.03, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1, transformOrigin: "left center" }, 10.2);
 
   window.__timelines[ID] = tl;
 })();
