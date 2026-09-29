@@ -40,6 +40,7 @@
     <defs>
       <linearGradient id="gia6-rock" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a3644"/><stop offset="1" stop-color="#15202b"/></linearGradient>
       <clipPath id="gia6-slopeclip"><polygon points="200,900 200,560 360,420 520,390 700,470 900,640 1100,860 1100,900"/></clipPath>
+      <clipPath id="gia6-warnclip"><rect id="gia6-warnrect" x="1000" y="250" width="480" height="0"/></clipPath>
       <clipPath id="gia6-wipe"><rect id="gia6-wiperect" x="200" y="300" width="0" height="640"/></clipPath>
     </defs>
     <!-- the slope, left-centre -->
@@ -70,7 +71,7 @@
       <path id="gia6-a3" d="M1400 250 Q1420 300 1466 316"/>
     </g>
     <!-- the warning arrow that stops short -->
-    <path id="gia6-warn" d="M1440 262 L1062 830" stroke="#e8c56a" stroke-width="5" stroke-dasharray="16 12" fill="none"/>
+    <path id="gia6-warn" d="M1440 262 L1062 830" stroke="#e8c56a" stroke-width="5" stroke-dasharray="16 12" fill="none" clip-path="url(#gia6-warnclip)"/>
     <!-- radar tile stack and the processing clock -->
     <g id="gia6-tiles"></g>
     <g id="gia6-clock">
@@ -130,12 +131,10 @@ window.__timelines = window.__timelines || {};
       '<ellipse cx="' + (x + 80) + '" cy="' + (y + 55) + '" rx="16" ry="10" fill="#e74c3c"/>';
     tg.appendChild(g); tiles.push(g);
   }
-  const warn = document.getElementById("gia6-warn"); const WL = Math.ceil(warn.getTotalLength()) + 1;
 
   const tl = gsap.timeline({ paused: true });
   tl.set([P+"eb1", P+"eb2", P+"cnt", P+"sub", P+"lab", P+"inset", P+"q", P+"mag", P+"village", P+"beam", P+"a1", P+"a2", P+"a3", P+"clock", P+"sat", P+"slope", P+"base"], { autoAlpha: 0 }, 0);
   tl.set(tiles, { autoAlpha: 0 }, 0);
-  tl.set(P+"warn", { strokeDasharray: "16 12", autoAlpha: 0 }, 0);
 
   /* ambient, whole window: grid drift, the satellite on a slow orbit (12 px/s left), the beam dash flowing */
   tl.fromTo(P+"grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
@@ -165,8 +164,7 @@ window.__timelines = window.__timelines || {};
   /* FRACTION OF AN INCH @6.70: magnifier on the slope, the inset with a ruler ticking in mm */
   tl.fromTo(P+"mag", { autoAlpha: 0, scale: 0.6, svgOrigin: "800 560" }, { autoAlpha: 1, scale: 1, svgOrigin: "800 560", duration: 0.4, ease: "back.out(2)" }, 6.6);
   tl.fromTo(P+"inset", { autoAlpha: 0, scale: 0.8, transformOrigin: "0% 0%" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 6.7);
-  tl.fromTo([P+"mark", P+"markl"], { x: 0 }, { x: 10, duration: 0.25, ease: "power2.out", repeat: 5, repeatDelay: 0.05, yoyo: false }, 7.0);
-  tl.fromTo([P+"mark", P+"markl"], { x: 10 }, { x: 60, duration: 0.8, ease: "steps(5)" }, 7.3);
+  tl.fromTo([P+"mark", P+"markl"], { x: 0 }, { x: 60, duration: 1.2, ease: "steps(6)" }, 7.0);  /* ticks 1 mm at a time */
 
   /* IT ONLY WORKS ... PROCESSES THE IMAGES IN TIME @8.34-10.98: inset out, counter dims, six tiles pile up, the clock sweeps */
   tl.to([P+"inset", P+"mag"], { autoAlpha: 0, duration: 0.3 }, 8.2);
@@ -181,8 +179,9 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"eb1", { autoAlpha: 0, y: -12, duration: 0.25 }, 12.08);
   tl.fromTo(P+"eb2", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 12.3);
   /* WARN @13.04: a dashed arrow from the satellite toward the valley, stopping short; VALLEY @13.48: the village */
-  tl.set(P+"warn", { autoAlpha: 1, strokeDasharray: WL + " " + WL, strokeDashoffset: WL }, 12.9);
-  tl.to(P+"warn", { strokeDashoffset: WL * 0.42, duration: 0.8, ease: "power2.out" }, 13.04);
+  /* the dashed line is revealed top-down by its clip rect and stops at 58 % of the way (y 580 of 262-830) */
+  tl.to(P+"warnrect", { attr: { height: 330 }, duration: 0.8, ease: "power2.out" }, 13.04);
+  tl.fromTo(P+"warn", { strokeDashoffset: 0 }, { strokeDashoffset: -140, duration: 2.6, ease: "none" }, 13.04);
   tl.fromTo(P+"village", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 13.48);
   /* SLOPE SPEEDS UP @14.14-14.66: nobody is told: the red ? slams in */
   tl.fromTo(P+"q", { autoAlpha: 0, scale: 2.2, rotation: -12 }, { autoAlpha: 1, scale: 1, rotation: -6, duration: 0.35, ease: "power4.in" }, 14.14);

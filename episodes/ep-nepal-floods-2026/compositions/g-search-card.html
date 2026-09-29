@@ -78,7 +78,7 @@
     <g id="sc-dig2" fill="#dfe7ee"><circle cx="780" cy="436" r="14"/><path d="M767 452 H793 L796 510 L789 552 H781 L780 516 L779 552 H771 L764 510 Z"/>
       <path id="sc-sh2" d="M768 470 L724 520 M732 512 L714 530" stroke="#e8c56a" stroke-width="6" stroke-linecap="round" fill="none"/></g>
     <g id="sc-dig3" fill="#dfe7ee"><circle cx="860" cy="436" r="14"/><path d="M847 452 H873 L876 510 L869 552 H861 L860 516 L859 552 H851 L844 510 Z"/>
-      <path id="sc-sh3" d="M848 470 L800 516 M808 508 L790 526" stroke="#e8c56a" stroke-width="6" stroke-linecap="round" fill="none"/></g>
+      <path id="sc-sh3" d="M872 470 L916 518 M908 510 L926 528" stroke="#e8c56a" stroke-width="6" stroke-linecap="round" fill="none"/></g>
     <!-- helicopter glyph, drawn round its own centre; positioned by GSAP only -->
     <g id="sc-heli">
       <g id="sc-helibody">
@@ -165,7 +165,7 @@ window.__timelines = window.__timelines || {};
   tl.set("#sc-heli", { autoAlpha: 1 }, 0.36);
   tl.to("#sc-heli", { x: 900, duration: 1.5, ease: "power2.out" }, 0.36);
   tl.fromTo("#sc-helibody", { rotation: -8, svgOrigin: "0 0" }, { rotation: 0, svgOrigin: "0 0", duration: 1.5, ease: "power2.out" }, 0.36);
-  tl.fromTo("#sc-rotor", { scaleX: 1, svgOrigin: "0 -54" }, { scaleX: 0.15, svgOrigin: "0 -54", duration: 0.07, ease: "none", yoyo: true, repeat: 43 }, 0.36);
+  tl.fromTo("#sc-rotor", { scaleX: 1, svgOrigin: "0 -54" }, { scaleX: 0.15, svgOrigin: "0 -54", duration: 0.07, ease: "none", yoyo: true, repeat: 59 }, 0.36);
   tl.to("#sc-heli", { y: 234, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 3 }, 1.86);
   tl.to("#sc-heli", { x: -300, y: 120, duration: 1.1, ease: "power2.in" }, 3.4);
   tl.set("#sc-heli", { autoAlpha: 0 }, 4.5);
@@ -174,7 +174,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(["#sc-dig1", "#sc-dig2", "#sc-dig3"], { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out", stagger: 0.14 }, 4.32);
   tl.fromTo("#sc-sh1", { rotation: 0, svgOrigin: "592 470" }, { rotation: 18, svgOrigin: "592 470", duration: 0.32, ease: "sine.inOut", yoyo: true, repeat: 29 }, 6.3);
   tl.fromTo("#sc-sh2", { rotation: 0, svgOrigin: "768 470" }, { rotation: -18, svgOrigin: "768 470", duration: 0.36, ease: "sine.inOut", yoyo: true, repeat: 25 }, 6.44);
-  tl.fromTo("#sc-sh3", { rotation: 0, svgOrigin: "848 470" }, { rotation: -16, svgOrigin: "848 470", duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 29 }, 6.6);
+  tl.fromTo("#sc-sh3", { rotation: 0, svgOrigin: "872 470" }, { rotation: 16, svgOrigin: "872 470", duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 29 }, 6.6);
   tl.to("#sc-trench", { scaleY: 1, svgOrigin: "680 552", duration: 1.74, ease: "power1.inOut" }, 6.44);
   /* ABOUT 15 FEET @7.54-7.96: the dimension line grows the full snow height, the label and the 6 ft reference */
   tl.set("#sc-dimline", { autoAlpha: 1 }, 7.54);

@@ -35,7 +35,6 @@
   .hh-denname { left:420px; color:#e8c56a; }
   .hh-tallest { position:absolute; left:370px; top:952px; width:400px; text-align:center; font-weight:700; font-size:22px;
     letter-spacing:1px; color:#93a3b2; white-space:nowrap; }
-  .hh-sea { position:absolute; right:240px; top:874px; font-weight:700; font-size:19px; letter-spacing:4px; color:#93a3b2; }
   .hh-toll { position:absolute; left:96px; top:600px; }
   .hh-tnum { display:block; font-family:'Courier New',monospace; font-weight:700; font-size:84px; line-height:1; color:#e74c3c; }
   .hh-tlab { display:block; margin-top:8px; font-weight:700; font-size:20px; letter-spacing:6px; color:#c8d3e0; }
@@ -64,7 +63,6 @@
       <div class="hh-himfig" id="hh-himfig"><span id="hh-himnum">1,000</span><span id="hh-himft"> FT</span></div>
       <div class="hh-denfig" id="hh-denfig">20,310 FT</div>
       <div class="hh-delta" id="hh-delta">+3,000 FT</div>
-      <div class="hh-sea" id="hh-sea">SEA LEVEL</div>
       <div class="hh-name hh-himname" id="hh-himname">HIMLUNG HIMAL</div>
       <div class="hh-name hh-denname" id="hh-denname">DENALI</div>
       <div class="hh-tallest" id="hh-tallest">TALLEST IN NORTH AMERICA</div>
@@ -78,7 +76,7 @@ window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
   const DUR = 19.336;
-  tl.set(["#hh-eb", "#hh-himfig", "#hh-denfig", "#hh-delta", "#hh-sea", "#hh-himname", "#hh-denname", "#hh-tallest",
+  tl.set(["#hh-eb", "#hh-himfig", "#hh-denfig", "#hh-delta", "#hh-himname", "#hh-denname", "#hh-tallest",
           "#hh-ref", "#hh-brk", "#hh-lead", "#hh-toll", "#hh-miss", "#hh-datum"], { autoAlpha: 0 }, 0);
   tl.set("#hh-panel", { x: -1000 }, 0);
   tl.set("#hh-him", { scaleY: 0, svgOrigin: "250 900" }, 0);
@@ -94,7 +92,6 @@ window.__timelines = window.__timelines || {};
   tl.to("#hh-panel", { x: 0, duration: 0.7, ease: "power3.out" }, 3.70);
   tl.fromTo("#hh-eb", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 4.00);
   tl.to("#hh-datum", { autoAlpha: 1, scaleX: 1, duration: 0.6, ease: "power3.out" }, 4.10);
-  tl.fromTo("#hh-sea", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 4.50);
   /* "Himlung" @4.30: its name under the datum */
   tl.fromTo("#hh-himname", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.30);
 
@@ -124,7 +121,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#hh-tallest", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 12.30);
 
   /* "CNN" @14.24: names clear, the chart shrinks into the top half, the toll lands underneath */
-  tl.to(["#hh-eb", "#hh-sea", "#hh-himname", "#hh-denname", "#hh-tallest"], { autoAlpha: 0, duration: 0.3, ease: "power1.in" }, 14.24);
+  tl.to(["#hh-eb", "#hh-himname", "#hh-denname", "#hh-tallest"], { autoAlpha: 0, duration: 0.3, ease: "power1.in" }, 14.24);
   tl.to("#hh-grp", { scale: 0.55, y: -80, duration: 0.65, ease: "power2.inOut" }, 14.30);
   tl.fromTo("#hh-toll", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 14.95);
   const ct = { v: 1 };
