@@ -129,6 +129,8 @@ window.__timelines = window.__timelines || {};
   tl.set(AR, { autoAlpha: 0 }, 0);
   tl.set(P+"barfill", { scaleX: 0, transformOrigin: "left center" }, 0);
   tl.set(P+"sat", { x: 200, y: 330 }, 0);
+  tl.set(P+"pa", { svgOrigin: "96 620" }, 0);
+  tl.set(P+"pb", { svgOrigin: "660 620" }, 0);
 
   /* ambient, whole window: grid drift */
   tl.fromTo(P+"grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
