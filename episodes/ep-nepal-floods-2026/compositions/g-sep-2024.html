@@ -50,7 +50,10 @@
         <path d="M780 540 V520"/><path d="M826 552 L838 536"/><path d="M852 588 L870 580"/><path d="M856 628 L876 634"/><path d="M834 668 L846 684"/>
         <path d="M780 692 V712"/><path d="M726 668 L714 684"/><path d="M704 628 L684 634"/><path d="M708 588 L690 580"/><path d="M734 552 L722 536"/>
       </g>
-      <text id="s24-ktmlab" class="s24-maplab" x="560" y="758" font-size="40">Kathmandu Valley</text>
+      <!-- round 4: label moved below the southern border (baseline 758 -> 835). At 758 the border (screen y 732-774 across
+           x 740-916) ran through the glyphs; at 835 the cap tops sit at ~802, clear of the border's lowest point under the label
+           (~772 at x 907), and the label fades out on the map push (it would cross the border / leave frame at scale 1.25) -->
+      <text id="s24-ktmlab" class="s24-maplab" x="560" y="835" font-size="40">Kathmandu Valley</text>
       <!-- snow over the northern border band -->
       <g id="s24-snow" fill="#f2f5f8">
         <circle cx="240" cy="300" r="5"/><circle cx="290" cy="276" r="4"/><circle cx="330" cy="300" r="6"/><circle cx="370" cy="318" r="4"/>
