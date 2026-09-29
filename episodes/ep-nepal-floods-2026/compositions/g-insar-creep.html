@@ -182,14 +182,16 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"sca", { x: 0 }, { x: 370, duration: 1.8, ease: "none", repeat: 5 }, 13.5);
   tl.fromTo(P+"scb", { x: 0 }, { x: 370, duration: 1.8, ease: "none", repeat: 4 }, 14.7);
 
-  /* 15.77: every Langtang element leaves, counter included; the two panels rise to the centre */
+  /* 15.77: every Langtang element leaves, counter and rail included; fix5: the two NO DATA panels grow into a
+     full-width pair (scale 1.534: pa x 96-900, pb x 1026-1824, both y 330-760) so the late state fills the frame */
   tl.to([P+"lgrp", P+"chip"], { x: -900, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 15.77);
-  tl.to(P+"lang", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 15.77);
-  tl.to([P+"pa", P+"pb"], { y: -300, duration: 0.8, ease: "power3.inOut" }, 16.2);
+  tl.to([P+"lang", P+"rail"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 15.77);
+  tl.to(P+"pa", { x: 0, y: -290, scale: 1.534, svgOrigin: "96 620", duration: 0.8, ease: "power3.inOut" }, 15.9);
+  tl.to(P+"pb", { x: 366, y: -290, scale: 1.534, svgOrigin: "660 620", duration: 0.8, ease: "power3.inOut" }, 15.9);
   /* NO ... PUBLISHED @16.80: the claim, then "before Sept 27" on SEPTEMBER 27 @18.06 */
-  tl.fromTo(P+"head", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power4.out" }, 16.6);
+  tl.fromTo(P+"head", { autoAlpha: 0, y: -20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power4.out" }, 16.6);
   tl.fromTo(P+"before", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 18.06);
-  tl.to([P+"pa", P+"pb"], { y: -306, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 3 }, 17.1);
+  tl.to([P+"pa", P+"pb"], { y: -296, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 3 }, 17.1);
 
   /* COULDN'T EVEN AGREE @22.18-23.04: the toll line, with a slow flicker, handing into g-ledger */
   tl.fromTo(P+"toll", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 22.18);
