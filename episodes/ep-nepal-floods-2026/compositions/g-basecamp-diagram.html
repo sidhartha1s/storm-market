@@ -199,7 +199,7 @@ window.__timelines = window.__timelines || {};
 
   /* ---- "cooks build the camp" 12.42-13.38: the kitchen tent, then smoke drifting up (finite loop, to ~30) ---- */
   tl.fromTo(P + "kitchen", { autoAlpha: 0, scale: 0.2, svgOrigin: "642 828" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 12.42);
-  tl.fromTo(SMOKE, { autoAlpha: 0.8, x: 0, y: 0, scale: 0.6 }, { autoAlpha: 0, x: 26, y: -90, scale: 1.8, duration: 2.1, ease: "power1.out", stagger: 0.7, repeat: 7 }, 12.9);
+  tl.fromTo(SMOKE, { autoAlpha: 0.8, x: 0, y: 0, scale: 0.6 }, { autoAlpha: 0, x: 26, y: -90, scale: 1.8, duration: 2.1, ease: "power1.out", stagger: 0.7, repeat: 7, immediateRender: false }, 12.9);
 
   /* ---- "16" @17.10: the counter (first tick 1), a ring on the BASE CAMP tents, the 16 icons appear dim ---- */
   tl.to(P + "cnt", { autoAlpha: 1, duration: 0.15 }, 17.05);
