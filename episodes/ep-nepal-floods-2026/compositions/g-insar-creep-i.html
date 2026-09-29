@@ -116,11 +116,30 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "ebl", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.35);
   tl.fromTo(P + "ebr", { autoAlpha: 0 }, { autoAlpha: 0.4, duration: 0.4 }, 0.5);
 
-  /* ---- "satellite radar" 1.39-1.95: the satellite crosses the top of the left panel, three radar waves ---- */
-  tl.to(P + "sat", { autoAlpha: 1, duration: 0.25 }, 1.25);
-  tl.to(P + "sat", { x: 860, duration: 3.6, ease: "none" }, 1.25);          /* y stays 330, clear of the plot top 400 */
-  tl.fromTo(WAVES, { autoAlpha: 1, scale: 0.4 }, { autoAlpha: 0, scale: 1.7, duration: 0.9, ease: "power1.out", stagger: 0.28, repeat: 3, immediateRender: false }, 1.39);
-  tl.to(P + "sat", { autoAlpha: 0, duration: 0.3 }, 4.7);
+  /* ---- "satellite radar" 1.39-1.95: the satellite crosses the top of the left panel (x 150 -> 900, 1.25-3.35),
+     its beam sweeping the plot; a radar return pops on the line at each week tick as the beam passes it
+     (round 2: the left plot is no longer empty until the line draws at 3.37) ---- */
+  const SX0 = 150, SX1 = 900, ST0 = 1.25, ST1 = 3.35;
+  tl.to(P + "sat", { autoAlpha: 1, duration: 0.25 }, ST0);
+  tl.to(P + "sat", { x: SX1, duration: ST1 - ST0, ease: "none" }, ST0);        /* y stays 330, clear of the plot top 400 */
+  tl.fromTo(WAVES, { autoAlpha: 1, scale: 0.4 }, { autoAlpha: 0, scale: 1.7, duration: 0.7, ease: "power1.out", stagger: 0.22, repeat: 1, immediateRender: false }, 1.39);
+  tl.to(P + "sat", { autoAlpha: 0, duration: 0.3 }, ST1);
+  const dotsG = document.getElementById("gci-dots");
+  const yAt = function (x) {           /* point on the displacement line nearest to screen x */
+    let lo = 0, hi = line.getTotalLength();
+    for (let k = 0; k < 30; k++) { const mid = (lo + hi) / 2; if (line.getPointAtLength(mid).x < x) lo = mid; else hi = mid; }
+    return line.getPointAtLength(lo).y;
+  };
+  [170, 300, 450, 600, 750].forEach(function (x, i) {
+    const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    const y = yAt(x);
+    c.setAttribute("id", "gci-dot" + i); c.setAttribute("cx", x); c.setAttribute("cy", y.toFixed(1)); c.setAttribute("r", "9");
+    c.setAttribute("fill", "#e8c56a"); c.setAttribute("stroke", "#04070c"); c.setAttribute("stroke-width", "2");
+    dotsG.appendChild(c);
+    const at = ST0 + (ST1 - ST0) * (x - SX0) / (SX1 - SX0);
+    tl.set(c, { autoAlpha: 0, scale: 0, svgOrigin: x + " " + y.toFixed(1) }, 0);
+    tl.to(c, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2.5)" }, at);
+  });
 
   /* ---- "moving for weeks" 3.37-3.93 -> "fell" 4.67: the displacement line draws, rising left to right ---- */
   tl.to(P + "line", { strokeDashoffset: 0, duration: 1.3, ease: "power1.in" }, 3.37);
