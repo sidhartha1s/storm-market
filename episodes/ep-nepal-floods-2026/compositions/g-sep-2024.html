@@ -104,8 +104,8 @@ window.__timelines = window.__timelines || {};
   tl.set(rings, { autoAlpha: 0 }, 0);
   tl.set("#s24-flood", { scale: 0, svgOrigin: "780 616" }, 0);
 
-  /* ambient: a scan line crosses the map (1054 px over the window, about 55 px/s) */
-  tl.fromTo("#s24-scan", { x: 0 }, { x: 1050, duration: DUR - 0.6, ease: "none" }, 0);
+  /* round 2: the scan line is deleted (it read as a render glitch). Continuous motion is the border pulse
+     (1.0-8.2), the valley ring pulse (8.4-14.0), the rings (14.3-16.7) and the map push + snow (15.68-19.2). */
   /* the map draws in on "Nepal" 0.0 */
   tl.fromTo("#s24-nepal", { autoAlpha: 0, scale: 0.96, svgOrigin: "-123 -578" }, { autoAlpha: 1, scale: 1, svgOrigin: "-123 -578", duration: 0.8, ease: "power3.out" }, 0.1);
   tl.fromTo("#s24-nepal", { attr: { "stroke-opacity": 0.45 } }, { attr: { "stroke-opacity": 0.9 }, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 5 }, 1.0);
