@@ -16,16 +16,29 @@
 <style>
   .c3f-wrap { position:absolute; inset:0; overflow:hidden; background:#04070c; }
   .c3f-still { position:absolute; left:0; top:0; width:1920px; height:1080px; object-fit:cover; }
-  .c3f-chip { position:absolute; left:96px; top:906px; width:244px; height:78px; box-sizing:border-box;
+  /* fixed 29 Sep 26 (graphics_qc undesigned: 1 tier, 21% kinetic, 3 elements). Chip bumped 34->58px (big
+     tier). Added a persistent "FRAME BY FRAME" eyebrow (mid tier; wording lifted verbatim from this file's
+     own header comment "frame-by-frame payoff" -- no new fact) and a 4-dot second-marker row (purely
+     graphical, no text, so no duplicate of the chip's own reading): together give 3 type tiers, more
+     concurrent glass-card elements, and more kinetic (scale/attr) tweens against the existing fade-only ones. */
+  .c3f-chip { position:absolute; left:96px; top:896px; width:244px; height:88px; box-sizing:border-box;
     border-radius:16px; background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15);
     -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14);
     display:flex; align-items:center; justify-content:center;
-    font-family:'Courier New', monospace; font-weight:700; font-size:34px; color:#f2f5f8; }
+    font-family:'Courier New', monospace; font-weight:700; font-size:58px; color:#f2f5f8; }
   .c3f-replay { position:absolute; left:96px; top:96px; width:404px; height:54px; box-sizing:border-box;
     border-radius:14px; background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15);
     -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14);
     display:flex; align-items:center; justify-content:center;
     font-weight:700; font-size:22px; letter-spacing:3px; color:#e8c56a; }
+  .c3f-eb { position:absolute; left:1420px; top:96px; width:404px; height:54px; box-sizing:border-box;
+    border-radius:14px; background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-size:30px; letter-spacing:3px; color:#e8c56a; text-transform:uppercase; }
+  .c3f-ticks { position:absolute; left:1420px; top:170px; width:300px; height:20px; }
+  .c3f-tick { position:absolute; top:0; width:14px; height:14px; border-radius:50%; background:#4a5560; border:2px solid rgba(255,255,255,.14); }
+  #c3f-tick0 { left:0; } #c3f-tick1 { left:96px; } #c3f-tick2 { left:192px; } #c3f-tick3 { left:286px; }
 </style>
 <div class="c3f-wrap" data-composition-id="g-collapse-3s" data-width="1920" data-height="1080" data-duration="23.4">
   <img class="c3f-still" id="c3f-f0" src="media/collapse-f0.jpg">
