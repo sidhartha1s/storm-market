@@ -88,7 +88,7 @@ window.__timelines = window.__timelines || {};
     P + "eb", P + "asof", P + "c1", P + "c1l", P + "c2", P + "c2l"], { autoAlpha: 0 }, 0);
 
   /* ---- ambient, whole window ---- */
-  tl.to(P + "cam", Object.assign(cam(1.03), { duration: DUR, ease: "none" }), 0);
+  tl.to(P + "cam", Object.assign(cam(1.23), { duration: DUR, ease: "none" }), 0);
   tl.fromTo(P + "nepal", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 0);
   tl.fromTo(P + "kg", { attr: { "stroke-opacity": 0.55 } }, { attr: { "stroke-opacity": 1 }, duration: 1.4, ease: "sine.inOut", repeat: 15, yoyo: true }, 0); /* ends 22.4 */
   tl.fromTo(P + "src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 0.3);
