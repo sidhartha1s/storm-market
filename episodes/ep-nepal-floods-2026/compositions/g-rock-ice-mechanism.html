@@ -99,7 +99,13 @@
 
     <!-- ================= SCENE 2: front view, 0.2 px per ft ================= -->
     <g id="rim-s2">
-      <line id="rim-ground2" x1="380" y1="960" x2="1560" y2="960" stroke="#5a768f" stroke-width="3"/>
+      <!-- round 2: the mountain face the slab came off, front view, dim, filling the frame from the scene cut (it was
+           mostly empty until the buildings at 24 s); the slab sits at its top, the drop runs down its face -->
+      <g id="rim-massif">
+        <polygon points="200,960 330,640 420,380 480,170 580,120 700,100 880,130 980,250 1080,360 1200,320 1330,450 1470,400 1610,530 1750,490 1860,580 1860,960" fill="#15202b" stroke="#4a5560" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M430,520 L600,440 L760,520 M300,820 L520,700 L700,800 M1010,560 L1150,480 L1300,580 M1360,720 L1520,640 L1700,740" stroke="#2a3644" stroke-width="2" fill="none"/>
+      </g>
+      <line id="rim-ground2" x1="200" y1="960" x2="1824" y2="960" stroke="#5a768f" stroke-width="3"/>
       <!-- slab outline 400 px = 2,000 ft -->
       <g id="rim-slab2">
         <rect x="480" y="173" width="400" height="90" fill="rgba(90,118,143,0.45)" stroke="#c8d3e0" stroke-width="3"/>
