@@ -164,7 +164,7 @@ window.__timelines = window.__timelines || {};
   /* ---- "no agency has published" @13.12: a flat trace draws left to right; "reading" @15.42 NO DATA ---- */
   tl.to(P+"unk3", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 13.0);
   tl.to(P+"tracehead", { autoAlpha: 1, duration: 0.2 }, 13.3);
-  tl.to(P+"flat", { attr: { "stroke-dasharray": FL + " 0" }, duration: 2.0, ease: "none" }, 13.3);
+  tl.to(P+"flat", { scaleX: 1, duration: 2.0, ease: "none" }, 13.3);  /* dashed line grows with the head: head x = 456 * scaleX at every frame */
   tl.to(P+"tracehead", { x: 456, duration: 2.0, ease: "none" }, 13.3);
   tl.to(P+"tracehead", { autoAlpha: 0, duration: 0.2 }, 15.3);
   tl.to(P+"stamp", { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.out" }, 15.42);
