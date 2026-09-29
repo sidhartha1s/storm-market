@@ -82,7 +82,6 @@ window.__timelines = window.__timelines || {};
   } }, 9.01);
 
   /* "the searchers had found 4," 4 @13.66 */
-  tl.fromTo("#sc-r2", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 13.51);
   const c2 = { v: 0 };
   tl.to(c2, { v: 4, duration: 0.7, ease: "power3.out", onUpdate: function () {
     const e = document.getElementById("sc-v2"); if (e) e.textContent = Math.round(c2.v);
