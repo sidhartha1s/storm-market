@@ -6,10 +6,12 @@
      episodes/ep-nepal-floods-2026/mg_specs/g-search-card.md. factcheck-D #3: 16 total, 4 found by Sept 28, 12
      missing, 15+ ft of snow. Snow/human scale: 14.667 px/ft, snow bar 220px (15 ft), human silhouette 88px (6 ft),
      ratio 2.5 (python-checked).
-     Cues @175wpm from beat start ("A helicopter reached the camp..."): snow/human diagram 0.5, snow bar grows
-     1.0-3.0 landing on CUE "snow about fifteen feet deep" @est 7.20, row "16" 7.6 CUE "Sixteen workers had been at
-     the camp" @est 8.91, row "4" 13.2 CUE "found four" @est 13.71, row "12" 14.3 CUE "twelve were still missing"
-     @est 14.74. Exit 16.9. Duration 17.5s declared. -->
+     OWNER FIX 29 Sep 26: the right-side diagram used to build alone for ~0-8s leaving the left ~45% of the card
+     empty until the row numbers landed at 9-14.5s. Fix: the three row labels now reveal as a skeleton
+     (placeholder "-") right after card entrance (1.6/2.2/2.8s), so the card is never mostly empty; each number
+     still counts up ON its spoken word, unchanged. RETIMED to real word timing (host 419.960+19.735): snow bar
+     grows 6.58-8.18 landing on "deep." (8.18); row skeletons at 1.6/2.2/2.8; counters: 16 lands ~9.16 (starts
+     9.01), 4 lands ~13.66 (starts 13.51), 12 lands ~14.68 (starts 14.53). Exit 19.0, finishes 19.6 (D-0.1). -->
 <template>
 <style>
   #sc-root { position:absolute; inset:0; font-family: Arial, sans-serif; color:#f2f5f8; }
@@ -32,9 +34,9 @@
 </style>
 <div id="sc-root" data-composition-id="g-search-card" data-width="1920" data-height="1080" data-duration="19.735">
   <div class="sc-card" id="sc-card">
-    <div class="sc-row sc-r1" id="sc-r1"><span class="sc-num" id="sc-v1" style="color:#dfe7ee">0</span><span class="sc-lab">AT BASE CAMP</span></div>
-    <div class="sc-row sc-r2" id="sc-r2"><span class="sc-num" id="sc-v2" style="color:#7fb2e5">0</span><span class="sc-lab">FOUND &middot; SEPT 28</span></div>
-    <div class="sc-row sc-r3" id="sc-r3"><span class="sc-num" id="sc-v3" style="color:#e74c3c">0</span><span class="sc-lab">MISSING</span></div>
+    <div class="sc-row sc-r1" id="sc-r1"><span class="sc-num" id="sc-v1" style="color:#dfe7ee">&ndash;</span><span class="sc-lab">AT BASE CAMP</span></div>
+    <div class="sc-row sc-r2" id="sc-r2"><span class="sc-num" id="sc-v2" style="color:#7fb2e5">&ndash;</span><span class="sc-lab">FOUND &middot; SEPT 28</span></div>
+    <div class="sc-row sc-r3" id="sc-r3"><span class="sc-num" id="sc-v3" style="color:#e74c3c">&ndash;</span><span class="sc-lab">MISSING</span></div>
     <div class="sc-diagram" id="sc-diagram">
       <div class="sc-base" id="sc-base"></div>
       <div class="sc-bar sc-human" id="sc-human"></div>
@@ -67,22 +69,25 @@ window.__timelines = window.__timelines || {};
   tl.to("#sc-snow", { scaleY: 1, duration: 1.6, ease: "power3.out" }, 6.58);
   tl.fromTo("#sc-snowlab", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.3);
 
+  /* row skeletons land early (card never sits mostly empty while the diagram builds on the right);
+     numbers still count up and land on their spoken words below */
+  tl.fromTo("#sc-r1", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.6);
+  tl.fromTo("#sc-r2", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.2);
+  tl.fromTo("#sc-r3", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.8);
+
   /* "16 workers had been at the camp." 16 @9.16 */
-  tl.fromTo("#sc-r1", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.01);
   const c1 = { v: 0 };
   tl.to(c1, { v: 16, duration: 1.1, ease: "power3.out", onUpdate: function () {
     const e = document.getElementById("sc-v1"); if (e) e.textContent = Math.round(c1.v);
   } }, 9.01);
 
   /* "the searchers had found 4," 4 @13.66 */
-  tl.fromTo("#sc-r2", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 13.51);
   const c2 = { v: 0 };
   tl.to(c2, { v: 4, duration: 0.7, ease: "power3.out", onUpdate: function () {
     const e = document.getElementById("sc-v2"); if (e) e.textContent = Math.round(c2.v);
   } }, 13.51);
 
   /* "and 12 were still missing." 12 @14.68 */
-  tl.fromTo("#sc-r3", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 14.53);
   const c3 = { v: 0 };
   tl.to(c3, { v: 12, duration: 0.9, ease: "power3.out", onUpdate: function () {
     const e = document.getElementById("sc-v3"); if (e) e.textContent = Math.round(c3.v);
