@@ -174,9 +174,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "eb", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.3);
   tl.fromTo(P + "sub", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.7);
   tl.fromTo(P + "cap", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 1.0);
-  /* "climb" @1.80: the route up the mountain draws, the summit flag plants ("practice run" 2.78) */
+  /* "climb" @1.80: the dotted route up the mountain brightens in, the summit flag plants ("practice run" 2.78) */
   tl.to(P + "route", { autoAlpha: 1, duration: 0.2 }, 1.3);
-  tl.fromTo(P + "route", { attr: { "stroke-dasharray": "2 10", "stroke-opacity": 0.2 } }, { attr: { "stroke-opacity": 1 }, duration: 1.3, ease: "power2.out" }, 1.3);
+  tl.fromTo(P + "route", { attr: { "stroke-opacity": 0.2 } }, { attr: { "stroke-opacity": 1 }, duration: 1.3, ease: "power2.out" }, 1.3);
   tl.fromTo(P + "flag", { autoAlpha: 0, scaleY: 0, svgOrigin: "700 150" }, { autoAlpha: 1, scaleY: 1, duration: 0.4, ease: "back.out(2)" }, 2.6);
   tl.fromTo(P + "route", { strokeDashoffset: 0 }, { strokeDashoffset: -120, duration: 8.4, ease: "none" }, 2.6);  /* the route marches up, to 11.0 */
 
