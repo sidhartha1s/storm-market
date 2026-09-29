@@ -244,8 +244,9 @@ window.__timelines = window.__timelines || {};
   tl.to(P + "nothing", { autoAlpha: 0, duration: 0.3 }, 19.0);
 
   /* ================= LANGTANG, August ================= */
-  /* 19.9: the Kali Gandaki case clears; "In August" @20.00 */
-  tl.to([P + "mud", P + "tspike", P + "failtag", P + "timer", P + "scar"], { autoAlpha: 0, duration: 0.4 }, 19.9);
+  /* 19.55-19.85: the timer and its tag leave before the Langtang tag takes their zone; "In August" @20.00 */
+  tl.to([P + "failtag", P + "timer"], { autoAlpha: 0, y: -12, duration: 0.3, ease: "power2.in" }, 19.55);
+  tl.to([P + "mud", P + "tspike", P + "scar"], { autoAlpha: 0, duration: 0.4 }, 19.9);
   tl.to(P + "water", { scaleY: 1, duration: 0.6, ease: "power2.inOut" }, 19.9);
   tl.to(P + "readbox", { stroke: "rgba(255,255,255,0.18)", duration: 0.4 }, 19.9);
   tl.set(STAT.late, { autoAlpha: 0 }, 20.1);
