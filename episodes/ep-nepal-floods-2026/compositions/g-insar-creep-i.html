@@ -91,8 +91,6 @@ window.__timelines = window.__timelines || {};
   const DUR = 10.282;
   const tl = gsap.timeline({ paused: true });
   const line = document.getElementById("gci-line");
-  const LL = Math.ceil(line.getTotalLength()) + 1;
-  line.style.strokeDasharray = LL;
   const WAVES = [P + "w1", P + "w2", P + "w3"];
 
   /* ---- initial state ---- */
