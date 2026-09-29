@@ -15,9 +15,13 @@
     background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); }
   .bob-eb { position:absolute; left:1270px; top:300px; font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; white-space:nowrap; text-transform:uppercase; }
   .bob-row { position:absolute; left:1270px; width:554px; }
-  .bob-date { font-family:'Arial Black', Arial, sans-serif; font-size:56px; line-height:1.05; color:#f2f5f8; white-space:nowrap; }
+  /* 29 Sep 26: font-weight 900 on the Arial Black headline (it rendered regular); .bob-rlab wraps inside the
+     554 px rail column (the r2 sub-label ran to x ~1885, past the 1824 text-safe edge); the "Lost its winds" row is
+     40 px (.bob-val-lg) so the rail reads in three tiers (56 / 40 / 30 over 19) and fills down to y ~690. */
+  .bob-date { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:1.05; color:#f2f5f8; white-space:nowrap; }
   .bob-val { position:relative; display:inline-block; font-size:30px; font-weight:700; letter-spacing:1px; color:#dfe7ee; white-space:nowrap; }
-  .bob-rlab { margin-top:8px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; white-space:nowrap; text-transform:uppercase; }
+  .bob-val-lg { font-size:40px; line-height:46px; color:#f2f5f8; }
+  .bob-rlab { margin-top:8px; max-width:554px; font-size:19px; font-weight:700; line-height:24px; letter-spacing:4px; color:#93a3b2; text-transform:uppercase; }
   .bob-strike { position:absolute; left:-4px; right:-4px; top:50%; height:4px; margin-top:-2px; background:#e74c3c; }
   .bob-note { position:absolute; left:96px; top:966px; font-size:19px; font-weight:700; letter-spacing:2px; color:#93a3b2; white-space:nowrap; }
   .bob-src { position:absolute; left:96px; bottom:54px; font-size:19px; font-weight:700; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
