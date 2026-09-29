@@ -5,7 +5,13 @@
 <!-- g-map-kali-gandaki-a1b (A1 hydro + route): dam pin "144 MW" downstream, then a route line north to Mustang and Muktinath and a trekker
      on the Annapurna trail. Brief: mg_specs/g-map-kali-gandaki-a1b.md. Library source: episodes/ep-enderlin-2025/compositions/g-master-map.html.
      10 px per mile; projection as the other Nepal maps. Route line approximate (through the named towns, not road geometry).
-     HOST starts at "Downstream" @est 0.0; the route paragraph "The same valley" starts at local 17.5 (175 wpm). -->
+     REDO 29 Sep 26: the route sat in x 450-1000 with the right half empty. Camera: route centre (640,470) -> screen
+     (960,520) at scale 1.35 (pushing to 1.39), so screen = (960 - 640 s + s x, 520 - 470 s + s y); at s 1.35 Pokhara
+     lands at (1162,809), Beni (815,677), Jomsom (950,273), Muktinath (1065,241). Place labels inside the camera are
+     font-size 19.3 so they render at 26 px. MUSTANG is a fixed HUD label (56 px Arial 900) at screen (1203,122), clear
+     of the river (river at x 1030-1090 for y 80-125). "Late September" 7.06: AUTUMN TREKKING SEASON (40 px, #e8c56a)
+     at screen (1150,300) and a trekker walks the Jomsom-Muktinath leg 7.1-10.0; "Annapurna" 10.18: the trails label,
+     held to the cut. The scan line and the never-revealed dam / peak DOM are deleted. -->
 <template>
 <style>
   #g-map-kali-gandaki-a1b-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
