@@ -186,7 +186,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(BOBS, { y: 0 }, { y: -4, duration: 0.2, ease: "sine.inOut", yoyo: true, repeat: 12, stagger: 0.05 }, 7.3);
 
   /* ---- "Guides carry up the tents" 9.92-10.58: tents pop on arrival ---- */
-  tl.fromTo(TENTS, { autoAlpha: 0, scale: 0.2, svgOrigin: (i) => (350 + i * 55) + " 828" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2.2)", stagger: 0.1 }, 9.95);
+  TENTS.forEach((t, i) => {   /* each tent pops from its own base centre (350 + 55 i, 828) */
+    tl.fromTo(t, { autoAlpha: 0, scale: 0.2, svgOrigin: (350 + i * 55) + " 828" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2.2)" }, 9.95 + i * 0.1);
+  });
   tl.fromTo(P + "camplab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 10.45);
 
   /* ---- "fix the ropes" 11.08-11.46: the rope draws to Camp 1; the ring lands at the rope head ---- */
