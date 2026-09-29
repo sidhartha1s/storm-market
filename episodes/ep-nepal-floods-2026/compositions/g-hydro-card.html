@@ -2,56 +2,67 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- g-hydro-card (A1, "Three seconds", 1:52): RHS panel over Republic World flooded-road/debris footage, muted.
-     Source: episodes/ep-nepal-floods-2026/mg_specs/g-hydro-card.md. Library base: library/inhouse/stat-panel.html
-     RHS idiom, retuned to a power-meter-drain + house-icon-grid payoff. factcheck-A #16: shutdown was precautionary
-     (river running high), NOT silt/blade damage, no silt imagery here, plain meter drain only.
-     Retimed to real words in retime-sheet g-hydro-card host 191.137 plus 17.845. Duration 17.845s declared. -->
-
+<!-- g-hydro-card (A1): RHS stat panel over the Kali Gandaki in spate (v-a1-rapids 210.437-224.287, then v-a1-river to 228.282).
+     host 210.437 + 17.845, track 4. Rebuilt 29 Sep 26 (redo list): stat-panel order (library/inhouse/stat-panel.html),
+     no popfig over the card, the meter labelled from its first frame, a legended house grid, the shutdown as a stamp.
+     Facts: factcheck-A #7 (144 MW; 144 x 8,760 h x 1,000 / 10,500 kWh = about 120,000 US homes, shown "roughly"),
+     factcheck-A #16 (shutdown was precautionary with the river high: a plain meter drain, no silt imagery).
+     Cues (retime-sheet g-hydro-card, comp-local): power 2.66, largest 4.12, 2002 5.90, makes 7.88, 120 9.40,
+     homes 11.36, shut 15.50, down 15.76, exit 17.19.
+     Layout (panel-local px, panel left edge = frame x 1100): content column x 170-724 (frame 1270-1824).
+     No presenter circle in this episode (index.html has none), so the grid may run to frame x 1710. -->
 <template>
 <style>
   #hydro-card-root { position:absolute; inset:0; font-family: Arial, sans-serif; color:#f2f5f8; }
   .hc-panel { position:absolute; right:0; top:0; bottom:0; width:820px; box-sizing:border-box;
-    background: linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); padding: 90px 96px 0 170px; }
-  .hc-mw { font-family:'AbrilFig', Georgia, serif; font-size:100px; color:#d0121f; text-shadow:0 0 24px rgba(208,18,31,0.5); }
-  .hc-sub { position:absolute; left:170px; top:250px; font-weight:700; font-size:19px; letter-spacing:3px; color:#93a3b2; }
-  .hc-meterlab { position:absolute; left:230px; top:400px; font-weight:700; font-size:28px; letter-spacing:4px; color:#93a3b2; }
-  .hc-meterval { position:absolute; left:230px; top:448px; font-family:'Courier New',monospace; font-size:26px; color:#e74c3c; }
-  .hc-meterbar { position:absolute; left:170px; top:320px; width:40px; height:200px; background:#0f1922; border:2px solid #1b2836; box-sizing:border-box; }
-  .hc-meterfill { position:absolute; left:0; bottom:0; width:100%; height:100%; background:linear-gradient(180deg,#7fb2e5,#33556f); transform-origin:bottom center; }
-  .hc-grid { position:absolute; left:170px; top:580px; width:320px; height:302px; }
-  .hc-icon { position:absolute; width:20px; height:17px; }
-  .hc-cnum { position:absolute; left:170px; top:902px; font-family:'Courier New',monospace; font-weight:700; font-size:84px; color:#e74c3c; }
-  .hc-clab { position:absolute; left:170px; top:996px; font-weight:700; font-size:20px; letter-spacing:5px; color:#c8d3e0; }
+    background: linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); }
+  .hc-eb { position:absolute; left:170px; top:90px; font-weight:700; font-size:22px; line-height:28px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  .hc-head { position:absolute; left:170px; top:130px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; white-space:nowrap; }
+  .hc-sub { position:absolute; left:170px; top:198px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:26px; line-height:32px; color:#d8a13a; white-space:nowrap; }
+  .hc-rlab { position:absolute; left:170px; top:258px; font-weight:700; font-size:19px; line-height:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .hc-rval { position:absolute; left:170px; top:284px; font-weight:700; font-size:30px; line-height:36px; letter-spacing:1px; color:#dfe7ee; white-space:nowrap; }
+  .hc-meter { position:absolute; left:170px; top:332px; width:554px; height:14px; border-radius:7px; overflow:hidden;
+    background:#15202b; border:1px solid rgba(255,255,255,0.14); box-sizing:border-box; }
+  .hc-mfill { position:absolute; left:0; top:0; width:100%; height:100%; background:linear-gradient(90deg,#5a768f,#7fb2e5); }
+  .hc-mglint { position:absolute; left:0; top:0; width:90px; height:100%; background:linear-gradient(90deg, rgba(242,245,248,0), rgba(242,245,248,0.55), rgba(242,245,248,0)); }
+  .hc-grid { position:absolute; left:170px; top:378px; width:440px; height:408px; }
+  .hc-icon { position:absolute; width:28px; height:24px; }
+  .hc-leg { position:absolute; left:170px; top:792px; font-weight:700; font-size:19px; line-height:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .hc-leg svg { vertical-align:-3px; margin-right:8px; }
+  .hc-cnum { position:absolute; left:170px; top:828px; font-family:'Courier New', monospace; font-weight:700; font-size:84px; line-height:84px; color:#e74c3c; white-space:nowrap; transform-origin:left center; }
+  .hc-clab { position:absolute; left:170px; top:932px; font-weight:700; font-size:20px; line-height:24px; letter-spacing:6px; color:#c8d3e0; white-space:nowrap; }
+  .hc-stamp { position:absolute; left:208px; top:548px; padding:6px 26px 4px; border:5px solid #e74c3c; border-radius:6px;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:62px; letter-spacing:3px; color:#e74c3c; white-space:nowrap;
+    background:rgba(6,9,13,0.72); }
 </style>
 <div id="hydro-card-root" data-composition-id="g-hydro-card" data-width="1920" data-height="1080" data-duration="17.845">
   <div class="hc-panel" id="hc-panel">
-    <div class="hc-mw" id="hc-mw">144 MW</div>
-    <div class="hc-sub" id="hc-sub">KALIGANDAKI A &middot; LARGEST IN NEPAL, 2002</div>
-    <div class="hc-meterbar" id="hc-meterbar"><div class="hc-meterfill" id="hc-meterfill"></div></div>
-    <div class="hc-meterlab" id="hc-meterlab">OUTPUT</div>
-    <div class="hc-meterval" id="hc-meterval">0 MW</div>
+    <div class="hc-eb" id="hc-eb">KALI GANDAKI A &middot; HYDROPOWER</div>
+    <div class="hc-head" id="hc-head">Largest in Nepal</div>
+    <div class="hc-sub" id="hc-sub">Opened 2002</div>
+    <div class="hc-rlab" id="hc-rlab">OUTPUT</div>
+    <div class="hc-rval" id="hc-rval"><span id="hc-rnum">144</span> MW</div>
+    <div class="hc-meter" id="hc-meter"><div class="hc-mfill" id="hc-mfill"></div><div class="hc-mglint" id="hc-mglint"></div></div>
     <div class="hc-grid" id="hc-grid"></div>
-    <div class="hc-cnum" id="hc-cnum">0</div>
+    <div class="hc-leg" id="hc-leg"><svg viewBox="0 0 26 22" width="22" height="19"><path d="M13 0 L26 10 L22 10 L22 22 L4 22 L4 10 L0 10 Z" fill="#7fb2e5"/></svg>1 = 1,000 HOMES</div>
+    <div class="hc-cnum" id="hc-cnum">1,000</div>
     <div class="hc-clab" id="hc-clab">AMERICAN HOMES, ROUGHLY</div>
+    <div class="hc-stamp" id="hc-stamp">SHUT DOWN</div>
   </div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
-  /* build the 12x10 house-icon grid once, before the timeline (DOM setup, not animated here) */
+  /* 10 columns x 12 rows = 120 house icons at 28 px in a 44 x 34 cell (each = 1,000 homes, SCHEMATIC) */
   const grid = document.getElementById("hc-grid");
-  /* 10x12 = 120 icons, each = 1,000 homes (SCHEMATIC). cellx/celly sized so the grid's right edge stays 10px
-     clear of the presenter keep-out (x>=1600) per mg-quickref, computed: panel_left 1100 + left 170 + grid_w 320 = 1590. */
-  const COLS = 10, ROWS = 12, CELLX = 33.33, CELLY = 25.91;
   const icons = [];
-  for (let r = 0; r < ROWS; r++) {
-    for (let c = 0; c < COLS; c++) {
+  for (let r = 0; r < 12; r++) {
+    for (let c = 0; c < 10; c++) {
       const el = document.createElement("div");
       el.className = "hc-icon";
-      el.style.left = (c * CELLX) + "px";
-      el.style.top = (r * CELLY) + "px";
-      el.innerHTML = '<svg viewBox="0 0 26 22" width="20" height="17"><path d="M13 0 L26 10 L22 10 L22 22 L4 22 L4 10 L0 10 Z" fill="#7fb2e5"/></svg>';
+      el.style.left = (c * 44 + 8) + "px";
+      el.style.top = (r * 34 + 5) + "px";
+      el.innerHTML = '<svg viewBox="0 0 26 22" width="28" height="24"><path d="M13 0 L26 10 L22 10 L22 22 L4 22 L4 10 L0 10 Z" fill="#7fb2e5"/></svg>';
       grid.appendChild(el);
       icons.push(el);
     }
@@ -59,40 +70,46 @@ window.__timelines = window.__timelines || {};
 
   const tl = gsap.timeline({ paused: true });
   const DUR = 17.845;
-  tl.set(["#hc-mw", "#hc-sub", "#hc-meterlab", "#hc-meterval", "#hc-cnum", "#hc-clab"], { autoAlpha: 0 }, 0);
+  tl.set(["#hc-eb", "#hc-head", "#hc-sub", "#hc-rlab", "#hc-rval", "#hc-meter", "#hc-leg", "#hc-cnum", "#hc-clab", "#hc-stamp"], { autoAlpha: 0 }, 0);
   tl.set(icons, { autoAlpha: 0 }, 0);
-  tl.set("#hc-meterfill", { scaleY: 1 }, 0);
+  tl.set("#hc-mfill", { scaleX: 0, transformOrigin: "left center" }, 0);
 
-  /* ambient: panel entrance */
-  tl.fromTo("#hc-panel", { x: 660 }, { x: 0, duration: 0.7, ease: "power3.out" }, 0.0);
+  /* panel in */
+  tl.fromTo("#hc-panel", { x: 660 }, { x: 0, duration: 0.7, ease: "power3.out" }, 0);
+  /* eyebrow names the plant @0.4 */
+  tl.fromTo("#hc-eb", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.4);
+  /* POWER @2.66: the output row and its meter arrive together, labelled from the first frame */
+  tl.fromTo(["#hc-rlab", "#hc-rval", "#hc-meter"], { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.06 }, 2.66);
+  tl.to("#hc-mfill", { scaleX: 1, duration: 0.5, ease: "power3.out" }, 2.8);
+  /* ambient: a glint runs along the live meter until the shutdown */
+  tl.fromTo("#hc-mglint", { x: -90 }, { x: 560, duration: 1.4, ease: "none", repeat: 8 }, 3.3);
+  /* LARGEST @4.12, 2002 @5.90 */
+  tl.fromTo("#hc-head", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 4.12);
+  tl.fromTo("#hc-sub", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.9);
+  /* MAKES @7.88: the legend, then the grid fills row by row (120 x 0.028 s = 3.36 s, done 11.24) */
+  tl.fromTo("#hc-leg", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 7.88);
+  tl.fromTo(icons, { autoAlpha: 0, scale: 0.4, transformOrigin: "50% 100%" }, { autoAlpha: 1, scale: 1, duration: 0.18, ease: "back.out(2)", stagger: 0.028 }, 7.88);
+  /* 120 @9.40: the counter opens on its first tick (1,000) with its label, lands on HOMES @11.36 */
+  tl.fromTo(["#hc-cnum", "#hc-clab"], { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 9.4);
+  const cnt = { v: 1000 };
+  tl.to(cnt, { v: 120000, duration: 1.96, ease: "power3.out", onUpdate: function () {
+    const e = document.getElementById("hc-cnum"); if (e) e.textContent = (Math.round(cnt.v / 1000) * 1000).toLocaleString("en-US");
+  } }, 9.4);
+  tl.to("#hc-cnum", { scale: 1.04, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 3 }, 11.5);
+  tl.to(icons, { y: -3, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 3, stagger: { each: 0.01, from: "random" } }, 11.6);
+  /* SHUT @15.50: the meter drains to 0 MW (15.50-16.20), the homes go dark; DOWN @15.76: the stamp lands */
+  tl.to("#hc-mfill", { scaleX: 0, duration: 0.7, ease: "power2.in" }, 15.5);
+  const mw = { v: 144 };
+  tl.to(mw, { v: 0, duration: 0.7, ease: "power2.in", onUpdate: function () {
+    const e = document.getElementById("hc-rnum"); if (e) e.textContent = Math.round(mw.v);
+  } }, 15.5);
+  tl.to("#hc-rval", { color: "#e74c3c", duration: 0.3 }, 15.9);
+  tl.to(icons, { autoAlpha: 0.2, duration: 0.5, ease: "power2.out", stagger: { each: 0.003, from: "end" } }, 15.5);
+  tl.fromTo("#hc-stamp", { autoAlpha: 0, scale: 2.2, rotation: -10 }, { autoAlpha: 1, scale: 1, rotation: -4, duration: 0.35, ease: "power4.in" }, 15.76);
+  tl.to("#hc-stamp", { scale: 1.04, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 16.2);
 
-  /* 144 MW: not spoken in this host window (factcheck-A #16: the figure is said in the PRIOR beat), re-anchored
-     to "power plant" @2.66/2.94 -- the plant's naming inside this window, same as the original design intent */
-  tl.fromTo("#hc-mw", { autoAlpha: 0, scale: 1.3 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.in" }, 2.51);
-  /* sub: real words "largest" @4.12 / "Nepal" @4.70 / "2002." @5.90 -- exact phrase match */
-  tl.fromTo("#hc-sub", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.97);
-
-  /* house grid fills row by row as the counter climbs, landing on "homes." @11.36 (real words "makes" @7.88
-     through "American homes." @11.06-11.36) */
-  tl.to(icons, { autoAlpha: 1, duration: 0.02, stagger: { each: 0.029, from: "start" } }, 7.88);
-  const cnt = { v: 0 };
-  tl.set("#hc-cnum", { autoAlpha: 1 }, 8.5);
-  tl.to(cnt, { v: 120000, duration: 2.1, ease: "power3.out", onUpdate: function () {
-    const e = document.getElementById("hc-cnum"); if (e) e.textContent = Math.round(cnt.v).toLocaleString("en-US");
-  } }, 9.26);
-  tl.fromTo("#hc-clab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 10.91);
-  tl.to("#hc-cnum", { scale: 1.05, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 1 }, 11.4);
-
-  /* meter drains to 0 MW (precautionary shutdown, not silt damage): re-anchored to the ACTUAL shutdown line
-     "the plant shut down" (real words "shut" @15.50 / "down" @15.76) -- this beat sits far later than the
-     original @est guess since the narration only names the shutdown after the mud/power-amount lines */
-  tl.fromTo("#hc-meterlab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 13.49);
-  tl.to("#hc-meterfill", { scaleY: 0, duration: 1.2, ease: "power2.in" }, 15.35);
-  tl.fromTo("#hc-meterval", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 16.55);
-
-  /* exit, finishes by D - 0.1 */
-  tl.to("#hc-panel", { x: 980, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 17.19);
-  tl.to({}, { duration: 0.01 }, DUR - 0.01);  // hold the timeline to the host window (graphics_qc short-duration)
+  /* exit, anchored to the host end (17.845 - 0.6 = 17.245; slide starts 17.19) */
+  tl.to("#hc-panel", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.19);
   window.__timelines["g-hydro-card"] = tl;
 })();
 </script>
