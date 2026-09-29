@@ -119,10 +119,11 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "c2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.n5745);
   const o2 = { v: 0 };
   tl.to(o2, { v: 5745, duration: 2.9, ease: "power3.out", onUpdate: function () { document.getElementById("g-aug-vs-sep-c2v").textContent = fmt(o2.v); } }, CUES.n5745);
-  tl.fromTo(P + "c2l", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.missing);
+  /* the MISSING label is authored, not spoken: the whole row lands on "Another" so 5,745 never reads as more lives lost */
+  tl.fromTo(P + "c2l", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.n5745);
 
-  /* ---- no element exit: the whole full-frame scene cuts to g-insar-creep-i at 22.9 (the camera push is
-     still moving at the cut; last beat "Missing" lands 22.44) ---- */
+  /* ---- exit: the rail slides out 22.3-22.9 (x 980); the full-frame map cuts to g-insar-creep-i at 22.9 ---- */
+  tl.to([P + "railbg", P + "eb", P + "asof", P + "c1", P + "c1l", P + "c2", P + "c2l"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
 
   window.__timelines[ID] = tl;
 })();
