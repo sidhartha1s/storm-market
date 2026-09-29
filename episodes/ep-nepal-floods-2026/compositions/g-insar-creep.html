@@ -37,6 +37,7 @@
   .gic-wklab { position:absolute; left:0; top:486px; font-size:26px; line-height:30px; font-weight:700; letter-spacing:4px; color:#dfe7ee; white-space:nowrap; }
   .gic-bar { position:absolute; left:0; top:536px; width:574px; height:12px; border-radius:6px; background:#15202b; border:1px solid rgba(255,255,255,0.14); box-sizing:border-box; }
   .gic-barfill { position:absolute; left:0; top:0; width:100%; height:100%; border-radius:6px; background:linear-gradient(90deg,#7fb2e5,#d8a13a,#e74c3c); }
+  .gic-ph { position:absolute; left:-3px; top:526px; width:6px; height:32px; border-radius:3px; background:#f2f5f8; }
   .gic-head { position:absolute; left:1250px; top:370px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:40px; line-height:48px; color:#f2f5f8; white-space:nowrap; }
   .gic-before { position:absolute; left:1250px; top:430px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:30px; line-height:38px; color:#d8a13a; white-space:nowrap; }
   .gic-toll { position:absolute; left:1250px; top:560px; font-weight:700; font-size:30px; line-height:36px; color:#dfe7ee; white-space:nowrap; }
@@ -49,8 +50,6 @@
       <linearGradient id="gic-rock" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a3644"/><stop offset="1" stop-color="#15202b"/></linearGradient>
       <linearGradient id="gic-disp" x1="0" y1="1" x2="0.6" y2="0"><stop offset="0" stop-color="#7fb2e5"/><stop offset="0.5" stop-color="#d8a13a"/><stop offset="1" stop-color="#e74c3c"/></linearGradient>
       <clipPath id="gic-slopeclip"><polygon points="96,880 96,760 260,650 420,560 560,500 760,440 900,520 1040,660 1180,780 1180,880"/></clipPath>
-      <clipPath id="gic-fa"><rect x="130" y="700" width="456" height="170"/></clipPath>
-      <clipPath id="gic-fb"><rect x="694" y="700" width="452" height="170"/></clipPath>
     </defs>
     <!-- LANGTANG: the slope relief, its displacement block and down-slope arrows (one group, so it can shrink away) -->
     <g id="gic-lgrp">
@@ -83,7 +82,8 @@
       <text class="gic-ptitle" x="130" y="668">KALI GANDAKI WALL</text>
       <path d="M130 870 L230 790 L330 730 L420 690 L500 760 L586 840" stroke="#93a3b2" stroke-width="3" fill="none"/>
       <rect id="gic-fra" x="170" y="714" width="376" height="148" fill="none" stroke="#7fb2e5" stroke-width="3" stroke-dasharray="14 10"/>
-      <rect id="gic-sca" x="170" y="714" width="6" height="148" fill="rgba(127,178,229,0.55)" clip-path="url(#gic-fa)"/>
+      <!-- round 2: the scan bar runs only in the band under NO DATA (y 812-860), never across the words -->
+      <rect id="gic-sca" x="170" y="812" width="6" height="48" fill="rgba(127,178,229,0.55)"/>
       <text class="gic-nodata" x="274" y="800">NO DATA</text>
     </g>
     <g id="gic-pb">
@@ -91,7 +91,7 @@
       <text class="gic-ptitle" x="694" y="668">HIMLUNG FACE</text>
       <path d="M694 870 L790 760 L880 700 L940 720 L1030 790 L1146 860" stroke="#dfe7ee" stroke-width="3" fill="none"/>
       <rect id="gic-frb" x="734" y="714" width="376" height="148" fill="none" stroke="#7fb2e5" stroke-width="3" stroke-dasharray="14 10"/>
-      <rect id="gic-scb" x="734" y="714" width="6" height="148" fill="rgba(127,178,229,0.55)" clip-path="url(#gic-fb)"/>
+      <rect id="gic-scb" x="734" y="714" width="6" height="148" fill="rgba(127,178,229,0.55)"/>
       <text class="gic-nodata" x="838" y="800">NO DATA</text>
     </g>
   </svg>
@@ -105,6 +105,7 @@
     <div class="gic-cntlab" id="gic-cntlab">ABOUT &#183; 30 CM</div>
     <div class="gic-wklab" id="gic-wklab">3 TO 4 WEEKS</div>
     <div class="gic-bar" id="gic-bar"><div class="gic-barfill" id="gic-barfill"></div></div>
+    <div class="gic-ph" id="gic-ph"></div>
   </div>
   <div class="gic-head" id="gic-head">NO RADAR PUBLISHED</div>
   <div class="gic-before" id="gic-before">before Sept 27</div>
@@ -118,7 +119,7 @@ window.__timelines = window.__timelines || {};
   const DUR = 25.243;
   const AR = [P+"ar1", P+"ar2", P+"ar3", P+"ar4", P+"ar5", P+"ar6"];
   const tl = gsap.timeline({ paused: true });
-  tl.set([P+"slope", P+"slopelab", P+"block", P+"sat", P+"chip", P+"rail", P+"cnt", P+"cntlab", P+"wklab", P+"bar", P+"pa", P+"pb", P+"head", P+"before", P+"toll"], { autoAlpha: 0 }, 0);
+  tl.set([P+"slope", P+"slopelab", P+"block", P+"sat", P+"chip", P+"rail", P+"cnt", P+"cntlab", P+"wklab", P+"bar", P+"ph", P+"pa", P+"pb", P+"head", P+"before", P+"toll"], { autoAlpha: 0 }, 0);
   tl.set(AR, { autoAlpha: 0 }, 0);
   tl.set(P+"barfill", { scaleX: 0, transformOrigin: "left center" }, 0);
   tl.set(P+"sat", { x: 200, y: 330 }, 0);
@@ -142,7 +143,8 @@ window.__timelines = window.__timelines || {};
 
   /* SLID @10.12: the upper block colours with displacement, six arrows grow down-slope */
   tl.fromTo(P+"block", { autoAlpha: 0 }, { autoAlpha: 0.85, duration: 0.5, ease: "power2.out" }, 10.12);
-  tl.fromTo(AR, { autoAlpha: 0, scale: 0, svgOrigin: "0 0" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.07 }, 10.2);
+  const TAIL = ["760 488", "830 530", "900 580", "720 540", "790 600", "860 650"];   /* each arrow grows from its tail */
+  AR.forEach(function (a, i) { tl.fromTo(a, { autoAlpha: 0, scale: 0, svgOrigin: TAIL[i] }, { autoAlpha: 1, scale: 1, svgOrigin: TAIL[i], duration: 0.3, ease: "back.out(2)" }, 10.2 + i * 0.07); });
   AR.forEach(function (a, i) { tl.to(a, { x: 10, y: 8, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 3 }, 10.8 + i * 0.05); });
 
   /* 12 @10.70 -> INCHES @11.20: the rail opens with the counter (opens at 1) and its label */
@@ -153,8 +155,9 @@ window.__timelines = window.__timelines || {};
     const e = document.getElementById("gic-cntv"); if (e) e.textContent = Math.round(c.v);
   } }, 10.7);
   /* THREE TO FOUR WEEKS @11.46-11.98: the timeline bar fills under a moving playhead */
-  tl.fromTo([P+"wklab", P+"bar"], { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 11.3);
+  tl.fromTo([P+"wklab", P+"bar", P+"ph"], { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 11.3);
   tl.to(P+"barfill", { scaleX: 1, duration: 0.6, ease: "power1.inOut" }, 11.46);
+  tl.fromTo(P+"ph", { x: 0 }, { x: 574, duration: 0.6, ease: "power1.inOut" }, 11.46);
   tl.to(P+"cnt", { scale: 1.05, transformOrigin: "left center", duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 12.1);
 
   /* FOR THE @12.86: the Langtang scene steps back up-right to make room; KALI-GANDAKI WALL @13.38, HIMLUNG FACE @14.60 */
