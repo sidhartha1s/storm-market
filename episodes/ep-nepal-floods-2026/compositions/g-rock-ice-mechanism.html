@@ -162,6 +162,9 @@ window.__timelines = window.__timelines || {};
   /* build: mountain and floor rise in, headline "Langtang's collapse in August" */
   tl.to(["#rim-mtn", "#rim-ground", "#rim-floor"], { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.05);
   tl.to("#rim-strata", { autoAlpha: 1, duration: 0.6 }, 0.4);
+  /* the far valley wall rises in behind the plain and drifts slowly left for the whole scene */
+  tl.fromTo("#rim-far", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.15);
+  tl.fromTo("#rim-far", { x: 0 }, { x: -36, duration: 17.2, ease: "none" }, 0.15);
   tl.fromTo("#rim-head", { autoAlpha: 0, y: -20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.25);
 
   /* "collapse" @0.84: the crack along the slab's base flashes red */
