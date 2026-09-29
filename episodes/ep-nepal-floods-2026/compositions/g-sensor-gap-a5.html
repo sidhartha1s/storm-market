@@ -2,74 +2,127 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- g-sensor-gap-a5 (A5 teaser, cta-hinge): river gauge glowing green, slope icon dim/grey beside it. Sets up the
-     A6 payoff (g-sensor-gap); no numbers here, icons only (mg_specs/g-sensor-gap-a5.md). Both icons sit left of
-     x=1600 to clear the presenter corner. -->
+<!-- g-sensor-gap-a5 (A5 teaser before the CTA): full-frame valley cross-section. A staff gauge stands in the river; it is
+     measured well (water rises, the readout ticks, a ring pulses), then numbered markers show the order things move:
+     1 SLOPE, 2 DEBRIS, 3 RIVER, and the river flashes LAST. Sets up the A6 payoff (g-sensor-gap).
+     Redo 29 Sep 26 (Opus): replaces the black frame with one 200 px circle. SCHEMATIC: the gauge scale and readout are the
+     diagram's own (0-5 m staff, 60 px per m, bed y 868), not a reported river level. Palette: no green (not in tokens);
+     the "measured well" ring uses cold blue 2.
+     Cues: retime-sheet g-sensor-gap-a5 (host 646.353+6.635, local seconds). Duration 6.635 s. -->
 <template>
 <style>
-  #gsga5-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; }
+  #gsga5-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
   .gsga5-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
-  .gsga5-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; }
-  /* fixed 29 Sep 26 (graphics_qc undesigned): comp had no gradient/blur and only 9 elements. Added a glass
-     card behind each label (doctrine: text over footage sits on the glass card) and a connector line+dot
-     between the icons (kinetic attr tween) -- takes element count from 9 to 13, no new text/facts. */
-  .gsga5-chip { position:absolute; border-radius:16px; background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15);
-    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14); box-sizing:border-box; }
-  .gsga5-chip-gauge { left:610px; top:572px; width:300px; height:54px; }
-  .gsga5-chip-slope { left:1010px; top:572px; width:300px; height:54px; }
+  .gsga5-glass { position:absolute; box-sizing:border-box; border-radius:16px; background:rgba(10,16,24,.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14); white-space:nowrap; }
+  .gsga5-mo { top:70px; height:64px; padding:0 22px; display:flex; align-items:center; font-family:'Arial Black', Arial, sans-serif;
+    font-weight:900; font-size:40px; letter-spacing:3px; color:#f2f5f8; }
+  .gsga5-read { left:1560px; top:520px; width:264px; height:140px; padding:16px 22px; }
+  .gsga5-readl { font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; }
+  .gsga5-readv { margin-top:6px; font-family:'Courier New', monospace; font-weight:700; font-size:64px; line-height:1; color:#7fb2e5; }
+  .gsga5-tick { font-family:Arial, sans-serif; font-weight:700; font-size:22px; fill:#93a3b2; }
+  .gsga5-mk { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:30px; letter-spacing:2px; fill:#f2f5f8;
+    paint-order:stroke; stroke:#04070c; stroke-width:6px; stroke-linejoin:round; }
+  .gsga5-num { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:30px; fill:#04070c; }
+  .gsga5-last { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; fill:#e74c3c;
+    paint-order:stroke; stroke:#04070c; stroke-width:8px; stroke-linejoin:round; }
 </style>
 <div id="gsga5-root" data-composition-id="g-sensor-gap-a5" data-width="1920" data-height="1080" data-duration="6.635">
-  <div class="gsga5-chip gsga5-chip-gauge" id="gsga5-chip-gauge"></div>
-  <div class="gsga5-chip gsga5-chip-slope" id="gsga5-chip-slope"></div>
-  <svg class="gsga5-svg" viewBox="0 0 1920 1080">
+  <svg class="gsga5-svg" id="gsga5-svg" viewBox="0 0 1920 1080">
     <defs>
-      <filter id="gsga5-glow" x="-60%" y="-60%" width="220%" height="220%">
-        <feGaussianBlur stdDeviation="14" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-      </filter>
+      <linearGradient id="gsga5-soil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a3a2e"/><stop offset="1" stop-color="#2a3644"/></linearGradient>
     </defs>
-    <line id="gsga5-connector" x1="870" y1="460" x2="1050" y2="460" stroke="#4a5560" stroke-width="2" stroke-dasharray="6 6"/>
-    <circle id="gsga5-conndot" cx="870" cy="460" r="5" fill="#93a3b2"/>
-    <g id="gsga5-gauge">
-      <circle id="gsga5-gaugeglow" cx="760" cy="460" r="100" fill="rgba(63,161,90,0.18)" filter="url(#gsga5-glow)"/>
-      <circle id="gsga5-gaugering" cx="760" cy="460" r="100" fill="rgba(63,161,90,0.12)" stroke="#3fa15a" stroke-width="4"/>
-      <path id="gsga5-wave" d="M690,460 Q715,420 740,460 T790,460 T830,460" fill="none" stroke="#3fa15a" stroke-width="5" stroke-linecap="round"/>
-      <text class="gsga5-lab" id="gsga5-gaugelab" x="760" y="600" text-anchor="middle" fill="#dfe7ee">RIVER GAUGES</text>
+    <!-- valley cross-section: crest (160,220) down to a river channel at y 820 -->
+    <path id="gsga5-ground" d="M0,220 L160,220 C420,300 700,520 1000,700 C1150,780 1300,810 1380,820 L1400,870 L1680,870 L1700,820 L1824,780 L1920,770 L1920,1080 L0,1080 Z" fill="url(#gsga5-soil)" stroke="#6b5a48" stroke-width="2"/>
+    <path id="gsga5-water" d="M1382,826 L1400,868 L1680,868 L1698,826 Z" fill="#5a768f"/>
+    <path id="gsga5-surf" d="M1382,826 Q1417,818 1452,826 T1522,826 T1592,826 T1662,826 L1698,826" fill="none" stroke="#7fb2e5" stroke-width="4"/>
+    <!-- staff gauge at x 1500: 0 m at the bed (y 868), 5 m at y 568 -->
+    <path id="gsga5-post" d="M1500,868 L1500,556" fill="none" stroke="#dfe7ee" stroke-width="12" stroke-linecap="round"/>
+    <g id="gsga5-ticks" stroke="#dfe7ee" stroke-width="3">
+      <line x1="1508" y1="868" x2="1528" y2="868"/><line x1="1508" y1="808" x2="1528" y2="808"/><line x1="1508" y1="748" x2="1528" y2="748"/>
+      <line x1="1508" y1="688" x2="1528" y2="688"/><line x1="1508" y1="628" x2="1528" y2="628"/><line x1="1508" y1="568" x2="1528" y2="568"/>
     </g>
-    <g id="gsga5-slope">
-      <path id="gsga5-slopetri" d="M1160,380 L1240,540 L1080,540 Z" fill="#2a3644" stroke="#4a5560" stroke-width="2"/>
-      <text class="gsga5-lab" id="gsga5-slopelab" x="1160" y="600" text-anchor="middle" fill="#93a3b2">SLOPE SENSORS</text>
+    <g id="gsga5-ticklab">
+      <text class="gsga5-tick" x="1480" y="816" text-anchor="end">1</text><text class="gsga5-tick" x="1480" y="756" text-anchor="end">2</text>
+      <text class="gsga5-tick" x="1480" y="696" text-anchor="end">3</text><text class="gsga5-tick" x="1480" y="636" text-anchor="end">4</text>
+      <text class="gsga5-tick" x="1480" y="576" text-anchor="end">5 M</text>
     </g>
+    <circle id="gsga5-ring" cx="1500" cy="700" r="70" fill="none" stroke="#7fb2e5" stroke-width="5"/>
+
+    <!-- order of movement: debris blob runs crest -> mid-slope -> river -->
+    <circle id="gsga5-blob" cx="230" cy="236" r="16" fill="#8e2020" stroke="#c0392b" stroke-width="3"/>
+    <g id="gsga5-m1"><circle cx="230" cy="160" r="26" fill="#e8c56a"/><text class="gsga5-num" x="230" y="171" text-anchor="middle">1</text><text class="gsga5-mk" x="270" y="171">SLOPE</text></g>
+    <g id="gsga5-m2"><circle cx="720" cy="440" r="26" fill="#e8c56a"/><text class="gsga5-num" x="720" y="451" text-anchor="middle">2</text><text class="gsga5-mk" x="760" y="451">DEBRIS</text></g>
+    <g id="gsga5-m3"><circle id="gsga5-m3c" cx="1380" cy="720" r="26" fill="#e8c56a"/><text class="gsga5-num" x="1380" y="731" text-anchor="middle">3</text><text class="gsga5-mk" x="1340" y="731" text-anchor="end">RIVER</text></g>
+    <text id="gsga5-last" class="gsga5-last" x="1340" y="664" text-anchor="end">LAST</text>
   </svg>
+  <div class="gsga5-glass gsga5-mo" id="gsga5-aug" style="left:96px;">AUG</div>
+  <div class="gsga5-glass gsga5-mo" id="gsga5-sept" style="left:236px;">SEPT</div>
+  <div class="gsga5-glass gsga5-read" id="gsga5-read">
+    <div class="gsga5-readl">RIVER LEVEL</div>
+    <div class="gsga5-readv"><span id="gsga5-readv">0.70</span> M</div>
+  </div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-sensor-gap-a5", P = "#gsga5-";
   const DUR = 6.635;
+  const CUES = {
+    months: 0.00,    /* "Across both months" @0.00-0.86 */
+    nepals: 1.38,    /* "Nepal's warning system" @1.38-2.38 */
+    measured: 2.78,  /* "measured" @2.78 */
+    well: 3.68,      /* "well," @3.68 */
+    and: 4.46,       /* "and it was the thing that moved last" @4.46-5.76 */
+    moved: 5.46
+  };
   const tl = gsap.timeline({ paused: true });
-  tl.set([P+"gauge", P+"slope"], { autoAlpha: 0 }, 0);
-  tl.set(P+"gauge", { scale: 0.85, svgOrigin: "760 460" }, 0);
-  tl.set(P+"slope", { autoAlpha: 0, svgOrigin: "1160 460" }, 0);
-  tl.set(P+"slopetri", { opacity: 0.55 }, 0);
-  tl.set([P+"chip-gauge", P+"chip-slope", P+"connector", P+"conndot"], { autoAlpha: 0 }, 0);
+  const POST = Math.ceil(document.querySelector(P + "post").getTotalLength()) + 1;
+  const val = { v: 0.70 };
 
-  /* 0.00: Across (sentence start; word sits at t=0 so the pop lands right on it) */
-  tl.to(P+"gauge", { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power3.out" }, 0);
-  tl.to(P+"chip-gauge", { autoAlpha: 1, duration: 0.4 }, 0);
-  /* continuous pulse for the whole window: the gauge glow breathes */
-  tl.to(P+"gaugeglow", { opacity: 0.4, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 4 }, 0.4);
-  tl.to(P+"wave", { x: 10, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0.4);
+  /* ---- initial state ---- */
+  tl.set([P + "aug", P + "sept", P + "ticks", P + "ticklab", P + "read", P + "ring", P + "blob", P + "m1", P + "m2", P + "m3", P + "last"], { autoAlpha: 0 }, 0);
+  tl.set(P + "post", { strokeDasharray: POST, strokeDashoffset: POST }, 0);
+  tl.set(P + "ring", { scale: 0.6, svgOrigin: "1500 700" }, 0);
+  tl.set([P + "m1", P + "m2", P + "m3"], { scale: 0.3, transformOrigin: "50% 50%" }, 0);
 
-  /* 4.31: and (0.15s before "and" @4.46, start of "and it was the thing that moved last") */
-  tl.fromTo(P+"slope", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 4.31);
-  tl.to(P+"chip-slope", { autoAlpha: 1, duration: 0.4 }, 4.31);
-  tl.fromTo(P+"connector", { autoAlpha: 0 }, { autoAlpha: 0.5, duration: 0.5 }, 4.31);
-  tl.to(P+"conndot", { autoAlpha: 0.8, attr: { cx: 1050 }, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 1 }, 4.4);
+  /* ---- "Across both months": the section rises in, AUG then SEPT ---- */
+  tl.fromTo([P + "ground", P + "water", P + "surf"], { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0);
+  tl.fromTo(P + "aug", { autoAlpha: 0, y: -16 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, CUES.months + 0.05);
+  tl.fromTo(P + "sept", { autoAlpha: 0, y: -16 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.54);
 
-  /* exit 6.035, finishes by D-0.1 = 6.535 */
-  tl.to([P+"gauge", P+"slope"], { scale: 0.85, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 6.035);
-  tl.to([P+"chip-gauge", P+"chip-slope", P+"connector", P+"conndot"], { autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 6.035);
-  tl.to({}, { duration: 0.01 }, DUR - 0.01);  // hold the timeline to the host window (graphics_qc short-duration)
+  /* ---- "warning system": the staff gauge draws up out of the river ---- */
+  tl.to(P + "post", { strokeDashoffset: 0, duration: 0.8, ease: "power2.out" }, CUES.nepals);
+  tl.fromTo([P + "ticks", P + "ticklab"], { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.nepals + 0.6);
+
+  /* ---- "measured": the river rises and ripples, the readout ticks 0.70 -> 1.00 m ---- */
+  tl.fromTo(P + "read", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.measured - 0.15);
+  tl.to([P + "water", P + "surf"], { y: -18, duration: 1.6, ease: "power2.out" }, CUES.measured);
+  tl.to(val, { v: 1.00, duration: 1.6, ease: "power2.out", onUpdate: function () {
+    const e = document.getElementById("gsga5-readv"); if (e) e.textContent = val.v.toFixed(2);
+  } }, CUES.measured);
+  tl.fromTo(P + "surf", { attr: { d: "M1382,826 Q1417,818 1452,826 T1522,826 T1592,826 T1662,826 L1698,826" } },
+    { attr: { d: "M1382,826 Q1417,834 1452,826 T1522,826 T1592,826 T1662,826 L1698,826" }, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 7 }, CUES.measured);
+
+  /* ---- "well": a ring pulses on the gauge ---- */
+  tl.fromTo(P + "ring", { autoAlpha: 1, scale: 0.6 }, { autoAlpha: 0, scale: 1.4, svgOrigin: "1500 700", duration: 0.8, ease: "power2.out", repeat: 1 }, CUES.well - 0.1);
+
+  /* ---- "the thing that moved last": 1 SLOPE, 2 DEBRIS, 3 RIVER, 0.4 s apart, a debris blob runs down with them ---- */
+  tl.to(P + "m1", { autoAlpha: 1, scale: 1, transformOrigin: "50% 50%", duration: 0.3, ease: "back.out(2.2)" }, CUES.and);
+  tl.to(P + "m2", { autoAlpha: 1, scale: 1, transformOrigin: "50% 50%", duration: 0.3, ease: "back.out(2.2)" }, CUES.and + 0.4);
+  tl.to(P + "m3", { autoAlpha: 1, scale: 1, transformOrigin: "50% 50%", duration: 0.3, ease: "back.out(2.2)" }, CUES.and + 0.8);
+  tl.set(P + "blob", { autoAlpha: 1 }, CUES.and);
+  tl.to(P + "blob", { attr: { cx: 720, cy: 520 }, duration: 0.4, ease: "power1.in" }, CUES.and);
+  tl.to(P + "blob", { attr: { cx: 1390, cy: 816 }, duration: 0.4, ease: "power1.in" }, CUES.and + 0.4);
+  /* "moved": the river flashes red, LAST */
+  tl.to(P + "m3c", { attr: { fill: "#e74c3c" }, duration: 0.12, ease: "none", yoyo: true, repeat: 3 }, CUES.moved - 0.1);
+  tl.to(P + "surf", { attr: { stroke: "#e74c3c" }, duration: 0.2, ease: "power2.out" }, CUES.moved - 0.1);
+  tl.fromTo(P + "last", { autoAlpha: 0, scale: 1.4, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.out" }, CUES.moved - 0.1);
+
+  /* ---- exit 6.03: fade-through of the whole full-frame scene (CTA follows) ---- */
+  tl.to([P + "svg", P + "aug", P + "sept", P + "read"], { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 6.03);
+  tl.to({}, { duration: 0.01 }, DUR - 0.01);
   window.__timelines[ID] = tl;
 })();
 </script>
