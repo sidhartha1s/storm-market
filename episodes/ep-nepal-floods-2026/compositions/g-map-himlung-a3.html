@@ -32,14 +32,23 @@
       </g>
       <text id="g-map-himlung-a3-t-nepal" class="hla3-reg" x="1150" y="760" text-anchor="middle" font-size="40">Nepal</text>
       <text id="g-map-himlung-a3-t-tibet" class="hla3-reg" x="1330" y="240" text-anchor="middle" font-size="40">Tibet</text>
-      <text id="g-map-himlung-a3-t-river" class="hla3-lab" x="726" y="560" text-anchor="end" font-size="24" style="fill:#7fb2e5">Kali Gandaki River</text>
+      <!-- label sits inside Nepal below the border (border runs y 460-516 between x 1288 and 1520), leader drops from the pin -->
+      <line id="g-map-himlung-a3-lead" x1="1162.1" y1="398" x2="1162.1" y2="536" stroke="#e8c56a" stroke-width="3"/>
       <circle id="g-map-himlung-a3-ring" cx="1162.1" cy="383.9" r="10" fill="none" stroke="#e8c56a" stroke-width="3"/>
       <circle id="g-map-himlung-a3-pin" cx="1162.1" cy="383.9" r="10" fill="#e8c56a" stroke="#04070c" stroke-width="2"/>
-      <text id="g-map-himlung-a3-t-himlung" class="hla3-big" x="1186" y="462" font-size="52">Himlung Himal</text>
+      <text id="g-map-himlung-a3-t-himlung" class="hla3-big" x="1000" y="580" font-size="52">Himlung Himal</text>
+    </g>
+    <!-- inset: all of Nepal (Natural Earth outline from g-bay-of-bengal-track, 1 unit = 1 mile there); the red box is this
+         map's view (screen 0-1920 x 0-1080 = miles -150..90 x -87.5..47.5 here, mapped to bay units x*1.0635-99.1, y-564.7) -->
+    <g id="g-map-himlung-a3-inset">
+      <rect x="1480" y="96" width="320" height="140" rx="6" fill="#0a1018" fill-opacity="0.85" stroke="#5a768f" stroke-width="1.5"/>
+      <g transform="translate(1640,166) scale(0.444) translate(123,578.5)">
+        <path fill="#1b2835" stroke="#7fb2e5" stroke-opacity="0.8" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke" d="M137,-544 L121,-545 L105,-540 L74,-542 L66,-548 L49,-554 L45,-559 L36,-559 L34,-550 L27,-548 L14,-554 L9,-561 L5,-559 L4,-548 L-0,-547 L-3,-548 L-10,-562 L-21,-572 L-57,-575 L-59,-578 L-55,-594 L-60,-595 L-78,-591 L-115,-616 L-123,-637 L-134,-641 L-157,-635 L-185,-664 L-194,-665 L-204,-669 L-228,-687 L-245,-695 L-249,-699 L-257,-714 L-269,-716 L-283,-718 L-298,-714 L-308,-697 L-313,-694 L-317,-693 L-324,-702 L-331,-703 L-350,-688 L-363,-672 L-369,-661 L-373,-651 L-374,-635 L-381,-629 L-386,-613 L-385,-610 L-362,-595 L-358,-595 L-356,-599 L-351,-598 L-314,-576 L-304,-565 L-269,-544 L-261,-547 L-230,-530 L-216,-530 L-212,-520 L-176,-509 L-166,-516 L-141,-510 L-137,-514 L-124,-518 L-90,-504 L-85,-486 L-64,-475 L-57,-474 L-52,-468 L-46,-466 L-28,-473 L-23,-472 L-19,-469 L-17,-459 L-13,-456 L0,-459 L24,-454 L46,-445 L66,-453 L71,-444 L84,-439 L92,-444 L106,-442 L120,-445 L130,-441 L133,-444 L140,-465 L140,-470 L129,-493 L131,-512 L140,-539 Z"/>
+        <rect id="g-map-himlung-a3-view" x="-258.6" y="-652.2" width="255.2" height="135" fill="none" stroke="#e74c3c" stroke-width="3" vector-effect="non-scaling-stroke"/>
+      </g>
     </g>
   </svg>
-  <div class="hla3-scan" id="g-map-himlung-a3-scan"></div>
-  <div class="hla3-src" id="g-map-himlung-a3-src">Map data: OpenStreetMap contributors, Natural Earth</div>
+  <div class="hla3-src" id="g-map-himlung-a3-src">Map data: Natural Earth</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
