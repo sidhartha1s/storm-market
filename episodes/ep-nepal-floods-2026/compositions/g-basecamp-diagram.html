@@ -226,7 +226,7 @@ window.__timelines = window.__timelines || {};
   FLAKES.forEach((f, i) => {
     const d = 2.2 + (i % 5) * 0.35, start = 30.0 + (i % 7) * 0.22;
     const reps = Math.floor((DUR - 0.1 - start) / d) - 1;
-    tl.fromTo(f, { autoAlpha: 0.85, x: 0, y: -80 }, { x: -70, y: 460, duration: d, ease: "none", repeat: reps }, start);
+    tl.fromTo(f, { autoAlpha: 0.85, x: 0, y: -80 }, { x: -70, y: 460, duration: d, ease: "none", repeat: reps, immediateRender: false }, start);
   });
   tl.to(P + "ava", { scaleY: 1, duration: 1.6, ease: "power2.in" }, 30.44);
   tl.to(SMOKE, { autoAlpha: 0, duration: 0.3 }, 31.9);
