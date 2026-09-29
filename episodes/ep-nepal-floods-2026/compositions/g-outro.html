@@ -2,14 +2,12 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- g-outro (Z, close, outro tail): copied from episodes/ep-enderlin-2025/compositions/g-outro.html (itself built
-     on library/inhouse/outro-brand.html's brand lockup) per task instruction: retune ids to g-outro, keep the
-     channel signature. Source: episodes/ep-nepal-floods-2026/mg_specs/g-outro.md.
-     RETUNED DURATION vs Enderlin: Nepal's script speaks "This was The Warning Hour." inside the Z narration BEFORE
-     this card starts (script: "*(outro tail 4 s, g-outro, bed out)*"), so this card carries no VO, only the 4s
-     bed-out tail plus a 0.5s settle. Enderlin's 16.864s (12.864s of spoken signature line + 4s tail) is compressed
-     to 4.5s: no narration cues, ambient motion the whole window, fade to black by the end. Layout, ids and
-     animation shape kept identical to the shipped Enderlin file wherever the shorter duration allows. -->
+<!-- g-outro (Z, close): channel wordmark, track 2, host 787.251 + 5.973 (retimed 29 Sep 26, redo list). Base: the shipped
+     Enderlin g-outro / library/inhouse/outro-brand.html lockup. The frame used to sit near-black and empty for 7.9 s under
+     "trekkers on the Kaligandaki Road walk under soaked slopes, crews on the high peaks work under fresh snow"; index.html now
+     carries that line on footage (v-z-trek extended to 784.691, v-z-snow 784.691-787.251) and this card starts on
+     "This was", so the wordmark lands on the voice. Cues (retime-sheet g-outro minus 6.30): This 0.36, was 0.56, the 0.80,
+     warning 0.98, hour 1.22. Rule 1.5, sweep 1.7, fade to black over the last 0.92 s (bed-out tail). -->
 <template>
 <style>
   .ou-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
@@ -22,14 +20,13 @@
   .ou-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; }
   .ou-mark { position:absolute; left:0; right:0; top:462px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-weight:900;
     font-size:120px; line-height:140px; letter-spacing:6px; color:#f2f5f8; white-space:nowrap; }
+  /* round 2: word gaps are explicit margins (the whitespace node before "Hour" rendered ~10 px: "The WarningHour") */
   .ou-mark span { display:inline-block; }
+  #ou-w2, #ou-w3 { margin-left:0.33em; }
   .ou-amber { color:#d8a13a; }
-  .ou-sweepbox { position:absolute; left:260px; top:452px; width:1400px; height:160px; overflow:hidden; mix-blend-mode:screen; }
-  .ou-sweep { position:absolute; left:0; top:-40px; width:220px; height:240px;
-    background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,244,220,0.30), rgba(255,255,255,0)); }
   .ou-rule { position:absolute; left:660px; width:600px; top:630px; height:4px; border-radius:2px; background:#d8a13a; }
 </style>
-<div class="ou-wrap" data-composition-id="g-outro" data-width="1920" data-height="1080" data-duration="12.273">
+<div class="ou-wrap" data-composition-id="g-outro" data-width="1920" data-height="1080" data-duration="5.973">
   <div class="ou-grid" id="ou-grid"></div>
   <div class="ou-glow" id="ou-glow"></div>
   <div class="ou-stage" id="ou-stage">
@@ -41,15 +38,8 @@
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
-  /* RE-ANCHORED (coordinator update): host now starts 4.3s earlier and runs 12.273s, over the tail end of
-     z1-s2 plus the 4s bed-out tail. Sheet words (+4.3s shift applied): 4.48 peaks, 4.76 work, 5.12 under,
-     5.44 fresh, 5.78 snow., 6.66 This, 6.86 was, 7.10 the, 7.28 warning, 7.52 hour. — that line ("...peaks
-     work under fresh snow. This was the warning hour.") is z1-s2's closing line, not this card's; the
-     wordmark's first reveal is held past comp-local 4.3 and past those words, matching cut in only once
-     "hour." finishes (~7.9), consistent with the brief's "no VO under this card, bed out." Ambient drift
-     (stage/glow/grid) stays continuous from t=0 so the pre-reveal window is never a static hold. */
   const tl = gsap.timeline({ paused: true });
-  const DUR = 12.273;
+  const DUR = 5.973;
   tl.set("#ou-rule", { scaleX: 0, transformOrigin: "50% 50%" }, 0);
   tl.set(["#ou-w1", "#ou-w2", "#ou-w3"], { autoAlpha: 0, y: 10 }, 0);
 
@@ -58,10 +48,13 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#ou-glow", { x: -80 }, { x: 80, duration: DUR, ease: "none" }, 0);
   tl.fromTo("#ou-grid", { x: 0 }, { x: 70, duration: DUR, ease: "none" }, 0);
 
-  /* 7.9 (after "hour." @7.52 finishes): match-cut wordmark settle, first reveal well past the 4.3s floor */
-  tl.to(["#ou-w1", "#ou-w2", "#ou-w3"], { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.05 }, 7.9);
-  tl.to("#ou-rule", { scaleX: 1, duration: 0.9, ease: "power3.out" }, 8.2);
-  tl.fromTo("#ou-sweep", { x: -240 }, { x: 1420, duration: 1.6, ease: "power1.inOut" }, 8.4);
+  /* THE @0.80, WARNING @0.98, HOUR @1.22: each word lands on the voice */
+  tl.fromTo(["#ou-glow", "#ou-grid"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 0);
+  tl.to("#ou-w1", { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.8);
+  tl.to("#ou-w2", { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.98);
+  tl.to("#ou-w3", { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 1.22);
+  tl.to("#ou-rule", { scaleX: 1, duration: 0.9, ease: "power3.out" }, 1.5);
+  tl.fromTo("#ou-sweep", { x: -240 }, { x: 1420, duration: 1.6, ease: "power1.inOut" }, 1.7);
 
   /* fade to black by the end, the 4 s bed-out tail */
   tl.to("#ou-stage", { autoAlpha: 0, duration: 0.92, ease: "power1.in" }, DUR - 0.92);
