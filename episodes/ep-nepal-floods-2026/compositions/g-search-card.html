@@ -88,7 +88,6 @@ window.__timelines = window.__timelines || {};
   } }, 13.51);
 
   /* "and 12 were still missing." 12 @14.68 */
-  tl.fromTo("#sc-r3", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 14.53);
   const c3 = { v: 0 };
   tl.to(c3, { v: 12, duration: 0.9, ease: "power3.out", onUpdate: function () {
     const e = document.getElementById("sc-v3"); if (e) e.textContent = Math.round(c3.v);
