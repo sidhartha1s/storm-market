@@ -109,8 +109,8 @@ window.__timelines = window.__timelines || {};
   /* a slow sweep light crosses the rows the whole window */
   tl.fromTo(P + "sweep", { x: -360 }, { x: 2280, duration: 9.2, ease: "none", repeat: 1 }, 0);
 
-  /* "Three things": three empty slots (panel + check ring) set up the count before anything is filled in */
-  tl.fromTo(ROWS, { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out", stagger: 0.12 }, 0.2);
+  /* "Three things about this week": the eyebrow names the count on the first word */
+  tl.fromTo(P + "eb", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.2);
 
   /* "are settled": the headline */
   tl.fromTo(P + "hl", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUES.settled - 0.15);
