@@ -25,7 +25,7 @@
     background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
     background-size:120px 120px; }
   .gci-panel { position:absolute; top:230px; width:820px; height:620px; box-sizing:border-box; border-radius:24px;
-    background:#15202b; border:1px solid rgba(255,255,255,0.14); }
+    background:rgba(11,16,22,0.82); border:1px solid rgba(255,255,255,0.12); }
   .gci-eb { position:absolute; top:262px; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
   .gci-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
   .gci-ax { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:4px; fill:#93a3b2; }
@@ -42,9 +42,6 @@
   <svg class="gci-svg" viewBox="0 0 1920 1080">
     <!-- the ONE shared y axis, drawn once on the centre divider, with shared gridlines across both plots -->
     <g id="gci-axis">
-      <!-- fix5: both plot wells are in frame from the start (verify_render blackdetect: the old near-black panels read as black) -->
-      <rect x="150" y="380" width="750" height="380" rx="6" fill="#2a3644" fill-opacity="0.6"/>
-      <rect x="1020" y="380" width="750" height="380" rx="6" fill="#2a3644" fill-opacity="0.6"/>
       <path id="gci-yax" d="M960,772 L960,388" stroke="#c8d3e0" stroke-width="3" fill="none"/>
       <path d="M950,400 L960,382 L970,400 Z" fill="#c8d3e0"/>
       <path d="M952,490 L968,490 M952,580 L968,580 M952,670 L968,670" stroke="#c8d3e0" stroke-width="3"/>
@@ -69,8 +66,7 @@
     <circle id="gci-xring" cx="900" cy="472" r="16" fill="none" stroke="#e74c3c" stroke-width="3"/>
     <text class="gci-fell" id="gci-fell" x="868" y="444" text-anchor="end">FELL &#183; AUG 26</text>
 
-    <!-- right: nothing published; a scan band searches the empty plot until the flat dashed line and the stamp land -->
-    <rect id="gci-scan" x="1020" y="380" width="26" height="380" fill="#7fb2e5" fill-opacity="0.35"/>
+    <!-- right: nothing published; a flat dashed line and the stamp -->
     <path id="gci-flat" d="M1040,740 L1760,740" stroke="#93a3b2" stroke-width="4" stroke-dasharray="14 10" fill="none"/>
     <text class="gci-stamp" id="gci-stamp" x="1414" y="600" text-anchor="middle">NO PUBLISHED DATA</text>
 
@@ -122,10 +118,6 @@ window.__timelines = window.__timelines || {};
   /* "August" @0.39: the left eyebrow; the right one sits dim until its place is named */
   tl.fromTo(P + "ebl", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.35);
   tl.fromTo(P + "ebr", { autoAlpha: 0 }, { autoAlpha: 0.4, duration: 0.4 }, 0.5);
-  /* fix5: the right plot is never a blank box; a scan band sweeps it (0.6-7.5) and finds nothing, then leaves as the flat line draws */
-  tl.fromTo(P + "scan", { autoAlpha: 0, x: 0 }, { autoAlpha: 1, duration: 0.3 }, 0.3);
-  tl.fromTo(P + "scan", { x: 0 }, { x: 724, duration: 2.3, ease: "none", repeat: 2, immediateRender: false }, 0.6);
-  tl.to(P + "scan", { autoAlpha: 0, duration: 0.2 }, 7.45);
 
   /* ---- "satellite" 1.39 -> "weeks" 3.93: the satellite crosses the top of the left panel (x 150 -> 900), its beam
      sweeping the plot; the displacement line is revealed under the beam (clip edge x 150 + 760 f tracks the satellite
