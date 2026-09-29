@@ -70,9 +70,10 @@ window.__timelines = window.__timelines || {};
   /* "gives way all at once." (16.62-17.46): shudder lands right as the line finishes */
   tl.to("#pa1-hill", { x: -6, duration: 0.09, ease: "power1.inOut", yoyo: true, repeat: 5 }, 16.85);
 
-  /* exit @21.0 */
-  tl.to("#pa1-card", { x: 660, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 21.0);
-  tl.to(["#pa1-hill", "#pa1-schem", "#pa1-water", "#pa1-waterglow"], { y: -30, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 21.2);
+  /* exit moved to D-0.7 -> D-0.1 (owner 29 Sep 26: the old 21.0/21.2 exit left ~2s near-empty before the
+     next comp; hold the card through instead) */
+  tl.to("#pa1-card", { x: 660, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, D - 0.7);
+  tl.to(["#pa1-hill", "#pa1-schem", "#pa1-water", "#pa1-waterglow"], { y: -30, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, D - 0.7);
   tl.to({}, { duration: 0.01 }, D - 0.01);
   window.__timelines["g-pore-pressure-a1"] = tl;
 })();
