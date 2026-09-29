@@ -2,10 +2,14 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- g-himlung-height (I, WION avalanche clip / peak shot): left-of-frame HUD bars over footage, no glass backing
-     (bars are the diagram; only labels are small chips). Source:
+<!-- g-himlung-height (I, WION avalanche clip / peak shot): left-of-frame HUD bars over footage.
+     OWNER FIX 29 Sep 26: bars/labels were invisible against the bright sky/snow/peaks and the baseline read as
+     floating -- whole diagram now sits on a glass card (tokens.md glass-card values, left safe zone) with the
+     "SEA LEVEL" baseline anchored near the card's bottom, and bar fills are opaque strong colour (was translucent
+     gradient). Source:
      episodes/ep-nepal-floods-2026/mg_specs/g-himlung-height.md. Scale: 0.023953 px/ft, baseline y=940. Himlung bar
-     560px (23,379 ft), Denali bar 487px (20,310 ft), ratio 1.15:1 (python-checked), gap 3,069 ft.
+     560px (23,379 ft), Denali bar 487px (20,310 ft), ratio 1.15:1 (python-checked), gap 3,069 ft. Bar heights
+     unchanged -> px/ft ratio unchanged.
      RETIMED to real word timing (host 96.261+19.336, nearly 6.3s longer than the declared 13.0s): Himlung bar
      grows from the name "Himlung" (4.30) and lands on "feet." (8.06); gap tag lands on "higher" (10.56, the
      spoken "3,000...higher" delta); Denali bar lands on the name "Denali," (11.06). The long extra hold after
