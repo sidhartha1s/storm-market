@@ -34,8 +34,10 @@
       <text class="rim-head" id="rim-head" x="96" y="112">Langtang, August</text>
       <!-- round 2: the far side of the valley, a dim ridge behind the runout plain, so the right half is a valley
            and not an empty sky for 15 s (schematic backdrop; drifts slowly, carries no text) -->
-      <g id="rim-far">
-        <polygon points="880,900 1010,640 1110,560 1210,610 1330,470 1440,520 1560,400 1660,470 1760,380 1860,450 1860,900" fill="#15202b" stroke="#4a5560" stroke-width="2" stroke-linejoin="round"/>
+      <!-- round 3: clipped at x 1824 (the floor's end, 96 px margin); the ridge runs to 1900 so the 36 px drift never exposes its edge -->
+      <clipPath id="rim-farclip"><rect x="0" y="0" width="1824" height="900"/></clipPath>
+      <g clip-path="url(#rim-farclip)"><g id="rim-far">
+        <polygon points="880,900 1010,640 1110,560 1210,610 1330,470 1440,520 1560,400 1660,470 1760,380 1860,450 1900,478 1900,900" fill="#15202b" stroke="#4a5560" stroke-width="2" stroke-linejoin="round"/>
         <polygon points="1316,488 1330,470 1346,486 1338,492" fill="#dfe7ee" opacity="0.55"/>
         <polygon points="1542,420 1560,400 1580,418 1566,426" fill="#dfe7ee" opacity="0.55"/>
         <polygon points="1742,400 1760,380 1780,398 1766,406" fill="#dfe7ee" opacity="0.55"/>
