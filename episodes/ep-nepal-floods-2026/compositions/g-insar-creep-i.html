@@ -151,7 +151,7 @@ window.__timelines = window.__timelines || {};
   tl.to(P + "ebr", { autoAlpha: 1, duration: 0.35 }, 5.87);
   tl.fromTo(P + "ebr", { scale: 1, transformOrigin: "left center" }, { scale: 1.06, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 5.87);
   tl.to(P + "pr", { borderColor: "rgba(232,197,106,0.45)", duration: 0.5, ease: "power2.out" }, 6.11);
-  tl.to(P + "line", { opacity: 0.55, duration: 0.6 }, 6.67);
+  tl.to([P + "line", P + "dots"], { opacity: 0.55, duration: 0.6 }, 6.67);
 
   /* ---- "no agency" 7.59: the right plot stays empty, a dashed flat line draws, the stamp lands on "agency" ---- */
   tl.to(P + "flat", { scaleX: 1, duration: 0.7, ease: "power2.out" }, 7.59);
