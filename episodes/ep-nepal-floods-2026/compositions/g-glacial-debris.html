@@ -2,89 +2,169 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- g-glacial-debris (A2): cutaway of the Kali Gandaki valley wall, grey bedrock with a loose tan glacial
-     debris layer draped along its face, water seeping through the tan layer fast (clipped to the tan band
-     only). SCHEMATIC, NOT TO SCALE. Brief: mg_specs/g-glacial-debris.md.
-     Retimed to real words, retime-sheet g-glacial-debris host 304.829 plus 17.771. Tan layer re-anchored to real
-     "covered" @4.44 (was est 3.0); GLACIAL DEBRIS label to real "glacial" @5.18 (was est 5.5, already close).
-     SEEP DOTS DELIBERATELY NOT anchored to their real words "water moves through it fast" @14.20-15.20: a
-     news-clip cutaway sits on track 3 over comp-local 11.771-17.771 (index.html 316.6-322.6, orchestrator note),
-     so no key reveal may land in that window. The dot reveal is moved early to 9.0 (fully established and
-     looping before the cutaway starts at 11.771); the established fast-loop motion then continues under the
-     cutaway, which is not a new reveal. Duration 17.771s declared (= host D). -->
+<!-- g-glacial-debris (A2): full-frame V-gorge cross-section, track 2, host 324.129 + 17.771 (nx-a2-s6). Rebuilt 29 Sep 26
+     (redo list): the diagram now spans the frame and carries its own payoff; the v-a2-house cutaway that covered 11.77-17.77
+     was removed from index.html. Fact: factcheck-B row 8 (moraine / outwash gravel draped on the Kali Gandaki walls).
+     SCHEMATIC, NOT TO SCALE.
+     GEOMETRY: left face a straight bedrock line (96,200) -> (900,930), slope 0.908; the debris mantle is 60 px thick on it,
+     outward normal offset N = (40,-44), split into four chunks along the face (t = 0, .25, .5, .75, 1 from (110,213) to
+     (890,922)). Right wall mirrored about x 960 in lower contrast. River at the V floor, x 900-1020, y 930-975.
+     Cues (retime-sheet g-glacial-debris): Kaligandaki's 0.52, walls 1.38, covered 4.44, glacial 5.18, debris 5.60,
+     ancient 8.28, glaciers 8.62, dragged 9.02, downhill 9.44, melted 10.72, never 12.22, cemented 12.22-12.72, solid 12.88,
+     rock 13.24, water 14.20, fast 15.20, gives 16.22, way 16.40, fast 16.64. Exit: fade-through 17.171-17.771. -->
 <template>
 <style>
   .gd-wrap { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
     background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .gd-glow { position:absolute; left:500px; top:300px; width:1000px; height:700px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(127,178,229,0.12), rgba(127,178,229,0) 70%); }
+  .gd-all { position:absolute; inset:0; }
   .gd-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
-  .gd-head { position:absolute; left:96px; top:70px; font-family:'Arial Black', Arial, sans-serif; font-size:52px; color:#f2f5f8; white-space:nowrap; }
-  .gd-lab { position:absolute; font-weight:700; font-size:30px; letter-spacing:3px; white-space:nowrap; }
-  .gd-schem { position:absolute; left:96px; top:1000px; font-weight:700; font-size:20px; letter-spacing:2px; color:#93a3b2; }
+  .gd-head { position:absolute; left:96px; top:62px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; white-space:nowrap; }
+  .gd-lab { position:absolute; font-weight:700; font-size:30px; line-height:36px; letter-spacing:3px; white-space:nowrap; }
+  .gd-schem { position:absolute; left:96px; top:1000px; font-weight:700; font-size:20px; line-height:24px; letter-spacing:2px; color:#93a3b2; white-space:nowrap; }
 </style>
 <div class="gd-wrap" data-composition-id="g-glacial-debris" data-width="1920" data-height="1080" data-duration="17.771">
+  <div class="gd-glow" id="gd-glow"></div>
+  <div class="gd-all" id="gd-all">
   <svg class="gd-svg" viewBox="0 0 1920 1080">
     <defs>
       <linearGradient id="gd-rock" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a3644"/><stop offset="1" stop-color="#15202b"/></linearGradient>
-      <linearGradient id="gd-tan" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8a6a3f"/><stop offset="1" stop-color="#6b4f2c"/></linearGradient>
-      <clipPath id="gd-bandclip"><polygon points="900,250 300,950 230,925 830,225"/></clipPath>
+      <linearGradient id="gd-rockr" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c2631"/><stop offset="1" stop-color="#0f1720"/></linearGradient>
+      <linearGradient id="gd-tan" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9a7646"/><stop offset="1" stop-color="#6b4f2c"/></linearGradient>
+      <linearGradient id="gd-water" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fb2e5"/><stop offset="1" stop-color="#3d5f80"/></linearGradient>
+      <pattern id="gd-hatch" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="22" stroke="rgba(147,163,178,0.28)" stroke-width="3"/>
+      </pattern>
+      <clipPath id="gd-wallclip"><rect id="gd-wallrect" x="0" y="0" width="1920" height="0"/></clipPath>
+      <clipPath id="gd-mantleclip"><polygon points="110,213 890,922 930,878 150,169"/></clipPath>
+      <clipPath id="gd-gorgeclip"><polygon points="150,169 930,878 1020,930 1824,200 1824,90 150,90"/></clipPath>
     </defs>
-    <polygon id="gd-bedrock" points="300,950 900,250 1100,950" fill="url(#gd-rock)" stroke="#4a5560" stroke-width="3"/>
-    <polygon id="gd-band" points="900,250 300,950 230,925 830,225" fill="url(#gd-tan)" stroke="#a8825a" stroke-width="2"/>
-    <g id="gd-seeps" fill="#7fb2e5" clip-path="url(#gd-bandclip)">
-      <circle id="gd-s1" cx="865" cy="237" r="6"/>
-      <circle id="gd-s2" cx="865" cy="237" r="6"/>
-      <circle id="gd-s3" cx="865" cy="237" r="6"/>
-      <circle id="gd-s4" cx="865" cy="237" r="6"/>
+    <!-- walls (revealed top to bottom on WALLS) -->
+    <g id="gd-walls" clip-path="url(#gd-wallclip)">
+      <polygon id="gd-rockl" points="0,190 96,200 900,930 900,1080 0,1080" fill="url(#gd-rock)" stroke="#4a5560" stroke-width="3"/>
+      <polygon id="gd-rockr" points="1920,190 1824,200 1020,930 1020,1080 1920,1080" fill="url(#gd-rockr)" stroke="#2a3644" stroke-width="3"/>
+      <polygon points="900,975 1020,975 1020,1080 900,1080" fill="#15202b"/>
+      <path d="M60 420 L300 560 M40 640 L480 820 M120 900 L560 1000 M1860 420 L1620 560 M1880 640 L1440 820" stroke="rgba(147,163,178,0.12)" stroke-width="3" fill="none"/>
     </g>
-    <line id="gd-leadbed" x1="280" y1="860" x2="400" y2="850" stroke="#93a3b2" stroke-width="2"/>
-    <line id="gd-leaddeb" x1="1175" y1="275" x2="860" y2="250" stroke="#a8825a" stroke-width="2"/>
+    <polygon id="gd-hatchl" points="0,190 96,200 900,930 900,1080 0,1080" fill="url(#gd-hatch)"/>
+    <!-- river at the V floor with a flowing highlight -->
+    <g id="gd-river">
+      <polygon points="900,930 1020,930 1020,975 900,975" fill="url(#gd-water)"/>
+      <rect id="gd-rhl" x="900" y="938" width="40" height="6" rx="3" fill="rgba(242,245,248,0.7)"/>
+      <rect id="gd-rhl2" x="900" y="956" width="28" height="5" rx="2.5" fill="rgba(242,245,248,0.5)"/>
+    </g>
+    <!-- the glacial debris mantle: four chunks along the left face, each with its pebbles -->
+    <g id="gd-c1"><polygon points="110,213 305,390 345,346 150,169" fill="url(#gd-tan)" stroke="#b89565" stroke-width="2"/><g id="gd-p1" fill="#c9a877" stroke="#6b4f2c" stroke-width="2"></g></g>
+    <g id="gd-c2"><polygon points="305,390 500,568 540,524 345,346" fill="url(#gd-tan)" stroke="#b89565" stroke-width="2"/><g id="gd-p2" fill="#c9a877" stroke="#6b4f2c" stroke-width="2"></g></g>
+    <g id="gd-c3"><polygon points="500,568 695,745 735,701 540,524" fill="url(#gd-tan)" stroke="#b89565" stroke-width="2"/><g id="gd-p3" fill="#c9a877" stroke="#6b4f2c" stroke-width="2"></g></g>
+    <g id="gd-c4"><polygon points="695,745 890,922 930,878 735,701" fill="url(#gd-tan)" stroke="#b89565" stroke-width="2"/><g id="gd-p4" fill="#c9a877" stroke="#6b4f2c" stroke-width="2"></g></g>
+    <!-- water streaks racing down through the mantle only -->
+    <g id="gd-streaks" clip-path="url(#gd-mantleclip)" stroke="#7fb2e5" stroke-width="10" stroke-linecap="round">
+      <line class="gd-st" x1="80" y1="170" x2="139" y2="224"/><line class="gd-st" x1="104" y1="156" x2="163" y2="210"/>
+      <line class="gd-st" x1="92" y1="150" x2="151" y2="204"/><line class="gd-st" x1="116" y1="170" x2="175" y2="224"/>
+      <line class="gd-st" x1="86" y1="164" x2="145" y2="218"/><line class="gd-st" x1="110" y1="150" x2="169" y2="204"/>
+      <line class="gd-st" x1="98" y1="172" x2="157" y2="226"/><line class="gd-st" x1="122" y1="158" x2="181" y2="212"/>
+    </g>
+    <!-- the ancient glacier, clipped to the gorge -->
+    <g clip-path="url(#gd-gorgeclip)">
+      <g id="gd-glacier">
+        <polygon points="380,420 1580,420 1020,925 900,925 930,878" fill="rgba(207,230,245,0.5)" stroke="#eef3f8" stroke-width="3"/>
+        <path d="M520 470 H1440 M640 560 H1330 M760 660 H1220" stroke="rgba(242,245,248,0.45)" stroke-width="3" stroke-dasharray="18 14" fill="none"/>
+      </g>
+    </g>
+    <!-- dust puff where the mantle hits the river -->
+    <g id="gd-dust" fill="rgba(200,180,150,0.45)">
+      <circle id="gd-d1" cx="900" cy="900" r="40"/><circle id="gd-d2" cx="980" cy="880" r="54"/><circle id="gd-d3" cx="1050" cy="905" r="36"/>
+    </g>
+    <path id="gd-lead" d="M560 290 L556 540" stroke="#d8a13a" stroke-width="3" fill="none"/>
+    <circle id="gd-leaddot" cx="556" cy="546" r="7" fill="#d8a13a"/>
   </svg>
-  <div class="gd-head" id="gd-head">Old Ice Left This Wall Loose</div>
-  <div class="gd-lab" id="gd-lbed" style="left:150px; top:840px; color:#93a3b2;">BEDROCK</div>
-  <div class="gd-lab" id="gd-ldeb" style="left:1180px; top:246px; color:#d8a13a;">GLACIAL DEBRIS</div>
+  <div class="gd-head" id="gd-head">Kali Gandaki Gorge</div>
+  <div class="gd-lab" id="gd-ldeb" style="left:420px; top:246px; color:#d8a13a;">GLACIAL DEBRIS</div>
+  <div class="gd-lab" id="gd-lbed" style="left:450px; top:780px; color:#93a3b2;">SOLID BEDROCK</div>
+  <div class="gd-lab" id="gd-lgla" style="left:900px; top:470px; color:#eef3f8;">ANCIENT GLACIER</div>
   <div class="gd-schem" id="gd-schem">SCHEMATIC, NOT TO SCALE</div>
+  </div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
+  /* 20 pebbles on the mantle's mid-line M(t) = (130 + 780t, 191 + 709t), t 0.06-0.96, jittered along the normal;
+     each goes into the chunk it lies on so it slumps with it */
+  const pebs = [];
+  for (let i = 0; i < 20; i++) {
+    const t = 0.06 + i * 0.0474;
+    const j = ((i * 7) % 5 - 2) * 4;               // -8..8 px along the outward normal
+    const cx = 130 + 780 * t + j * 0.67, cy = 191 + 709 * t - j * 0.74;
+    const chunk = Math.min(4, Math.floor(t / 0.25) + 1);
+    const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    c.setAttribute("cx", cx.toFixed(1)); c.setAttribute("cy", cy.toFixed(1)); c.setAttribute("r", String(7 + (i % 3) * 2));
+    document.getElementById("gd-p" + chunk).appendChild(c);
+    pebs.push(c);
+  }
+
   const tl = gsap.timeline({ paused: true });
   const D = 17.771;
-  const SEEPS = ["#gd-s1", "#gd-s2", "#gd-s3", "#gd-s4"];
+  const CH = ["#gd-c1", "#gd-c2", "#gd-c3", "#gd-c4"];
+  const ST = gsap.utils.toArray("#gd-streaks .gd-st");
+  const lead = document.getElementById("gd-lead"); const LL = Math.ceil(lead.getTotalLength()) + 1;
+  tl.set(["#gd-head", "#gd-ldeb", "#gd-lbed", "#gd-lgla", "#gd-schem", "#gd-river", "#gd-glacier", "#gd-hatchl", "#gd-leaddot", "#gd-dust"], { autoAlpha: 0 }, 0);
+  tl.set(CH, { autoAlpha: 0 }, 0);
+  tl.set(pebs, { autoAlpha: 0 }, 0);
+  tl.set(ST, { autoAlpha: 0 }, 0);
+  tl.set("#gd-lead", { strokeDasharray: LL, strokeDashoffset: LL }, 0);
+  tl.set("#gd-glacier", { scaleY: 0, svgOrigin: "960 925" }, 0);
 
-  tl.set(["#gd-bedrock", "#gd-band", "#gd-head", "#gd-lbed", "#gd-ldeb", "#gd-schem", "#gd-leadbed", "#gd-leaddeb"], { autoAlpha: 0 }, 0);
-  tl.set(SEEPS, { autoAlpha: 0, attr: { cx: 865, cy: 237 } }, 0);
-  tl.set(["#gd-bedrock", "#gd-band"], { y: 20 }, 0);
+  /* ambient, whole window: glow drift, river highlights flowing */
+  tl.fromTo("#gd-glow", { x: 0, y: 0 }, { x: -140, y: -30, duration: D, ease: "none" }, 0);
+  tl.fromTo("#gd-rhl", { x: 0 }, { x: 80, duration: 0.9, ease: "none", repeat: 17 }, 1.4);
+  tl.fromTo("#gd-rhl2", { x: 90 }, { x: 0, duration: 1.2, ease: "none", repeat: 12 }, 1.5);
 
-  /* ambient: the whole wall drifts very slightly so nothing reads static */
-  tl.to(["#gd-bedrock", "#gd-band"], { x: -6, duration: D, ease: "none" }, 0);
+  /* KALIGANDAKI'S @0.52: the name; WALLS @1.38: both walls reveal top to bottom (0.8 s), the river fills */
+  tl.fromTo("#gd-head", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.52);
+  tl.to("#gd-wallrect", { attr: { height: 1080 }, duration: 0.8, ease: "power2.inOut" }, 1.38);
+  tl.fromTo("#gd-river", { autoAlpha: 0, scaleX: 0, svgOrigin: "960 952" }, { autoAlpha: 1, scaleX: 1, svgOrigin: "960 952", duration: 0.5, ease: "power3.out" }, 1.9);
+  tl.fromTo("#gd-schem", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 2.4);
 
-  /* headline + bedrock draw in @0.4 */
-  tl.fromTo("#gd-head", { autoAlpha: 0, y: -20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.4);
-  tl.to("#gd-bedrock", { autoAlpha: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.6);
+  /* GLACIAL @5.18 / DEBRIS @5.60: the mantle drapes down the left face chunk by chunk, the label in the open air */
+  tl.fromTo(CH, { autoAlpha: 0, x: 40, y: -44 }, { autoAlpha: 1, x: 0, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.18 }, 5.18);
+  tl.fromTo("#gd-ldeb", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 5.6);
+  tl.to("#gd-lead", { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 5.7);
+  tl.fromTo("#gd-leaddot", { autoAlpha: 0, scale: 0, svgOrigin: "556 546" }, { autoAlpha: 1, scale: 1, svgOrigin: "556 546", duration: 0.25, ease: "back.out(3)" }, 6.05);
 
-  /* real words "covered" @4.44 / "glacial" @5.18 / "debris." @5.60: tan layer drapes on */
-  tl.fromTo("#gd-band", { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 4.29);
+  /* ANCIENT GLACIERS @8.28-8.62: a translucent glacier fills the gorge to y 420; DRAGGED DOWNHILL @9.02-9.44: it slides
+     down-valley (x +300, y +80); MELTED @10.72: it fades and drops its 20 pebbles onto the face */
+  tl.to("#gd-glacier", { autoAlpha: 1, scaleY: 1, svgOrigin: "960 925", duration: 0.6, ease: "power3.out" }, 8.28);
+  tl.fromTo("#gd-lgla", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 8.62);
+  tl.to("#gd-lgla", { autoAlpha: 0, duration: 0.25 }, 8.95);
+  tl.to("#gd-glacier", { x: 300, y: 80, duration: 1.2, ease: "power2.inOut" }, 9.02);
+  tl.to("#gd-glacier", { autoAlpha: 0, duration: 0.8, ease: "power1.in" }, 10.72);
+  tl.fromTo(pebs, { autoAlpha: 0, x: 70, y: -110 }, { autoAlpha: 1, x: 0, y: 0, duration: 0.5, ease: "power2.in", stagger: 0.035 }, 10.72);
 
-  /* labels: BEDROCK sequenced after the tan drape (no single spoken word names it); GLACIAL DEBRIS lands on the
-     real words "glacial" @5.18 / "debris." @5.60 */
-  tl.fromTo(["#gd-lbed", "#gd-leadbed"], { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 4.5);
-  tl.fromTo(["#gd-ldeb", "#gd-leaddeb"], { autoAlpha: 0, x: 14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 5.03);
-  tl.fromTo("#gd-schem", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 5.6);
+  /* NEVER CEMENTED @12.22-12.72: the pebbles jiggle loose; INTO SOLID ROCK @12.88-13.24: the bedrock hatches, its label */
+  tl.to(pebs, { x: 3, y: -3, duration: 0.09, ease: "sine.inOut", yoyo: true, repeat: 11, stagger: { each: 0.02, from: "random" } }, 12.22);
+  tl.to("#gd-hatchl", { autoAlpha: 1, duration: 0.5, ease: "power1.out" }, 12.88);
+  tl.fromTo("#gd-lbed", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 13.24);
 
-  /* DELIBERATELY re-anchored away from the real words "water moves through it fast" @14.20-15.20: that span sits
-     inside the news-clip cutaway window (comp-local 11.771-17.771) where no key reveal is allowed. Moved to 9.0
-     so the dots are fully revealed and already fast-looping before the cutaway starts at 11.771; the loop then
-     continues (established motion, not a new reveal) through and past the cutaway. Each pass stays < 1.2s. */
-  SEEPS.forEach(function (sel, i) {
-    tl.to(sel, { autoAlpha: 1, duration: 0.2 }, 9.0 + i * 0.25);
-    tl.fromTo(sel, { attr: { cx: 865, cy: 237 } }, { attr: { cx: 265, cy: 937 }, duration: 1.05, ease: "none", repeat: 4, repeatDelay: 0.1 }, 9.0 + i * 0.25);
+  /* WATER MOVES THROUGH IT FAST @14.20-15.20: eight blue streaks race down the mantle only (0.55 s per pass) */
+  ST.forEach(function (s, i) {
+    tl.set(s, { autoAlpha: 1 }, 14.2 + i * 0.07);
+    tl.fromTo(s, { x: 0, y: 0 }, { x: 790, y: 718, duration: 0.55, ease: "power1.in", repeat: 2 }, 14.2 + i * 0.07);
+    tl.set(s, { autoAlpha: 0 }, 14.2 + i * 0.07 + 1.65);
   });
 
-  /* exit, finishes by D - 0.1 (last real word "fast." @16.64, inside the cutaway; the exit itself is not a
-     reveal so it is unaffected by the cutaway restriction) */
-  tl.to(["#gd-bedrock", "#gd-band", "#gd-head", "#gd-lbed", "#gd-ldeb", "#gd-schem", "#gd-leadbed", "#gd-leaddeb"].concat(SEEPS),
-    { y: "-=30", autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.05);
-  tl.to({}, { duration: 0.01 }, D - 0.01);
+  /* GIVES WAY FAST @16.06-16.64: the mantle slumps down-face into the river, bottom chunk first, dust puffs */
+  tl.to("#gd-c4", { x: 70, y: 64, rotation: 6, svgOrigin: "812 812", duration: 0.45, ease: "power2.in" }, 16.06);
+  tl.to("#gd-c3", { x: 150, y: 136, rotation: 8, svgOrigin: "617 634", duration: 0.55, ease: "power2.in" }, 16.14);
+  tl.to("#gd-c2", { x: 210, y: 190, rotation: 5, svgOrigin: "422 457", duration: 0.6, ease: "power2.in" }, 16.22);
+  tl.to("#gd-c1", { x: 250, y: 226, rotation: 4, svgOrigin: "227 280", duration: 0.62, ease: "power2.in" }, 16.3);
+  tl.to(["#gd-ldeb", "#gd-lead", "#gd-leaddot"], { autoAlpha: 0, duration: 0.3 }, 16.1);
+  tl.fromTo(["#gd-d1", "#gd-d2", "#gd-d3"], { autoAlpha: 0.9, scale: 0.3, transformOrigin: "50% 50%" }, { autoAlpha: 0, scale: 2.4, duration: 1.0, ease: "power2.out", stagger: 0.08 }, 16.45);
+  tl.set("#gd-dust", { autoAlpha: 1 }, 16.44);
+
+  /* exit: fade-through over the last 0.6 s */
+  tl.to("#gd-all", { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, D - 0.6);
   window.__timelines["g-glacial-debris"] = tl;
 })();
 </script>
