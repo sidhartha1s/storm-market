@@ -275,7 +275,7 @@ window.__timelines = window.__timelines || {};
   pop("#pf-date", 19.7, 2.8);   // date card for the hook (the voice no longer says the date: grader fix 29 Sep 26)
 
   /* ---- credit labels ease in and out, never hard-cut ---- */
-  [["#cr-co-t", 0, 19.3], ["#cr-h-t", 19.3, 8.713], ["#cr-a1-trek-t", 239.282, 8.219], ["#cr-a3-ridge-t", 486.029, 10.901], ["#cr-z-trek-t", 772.951, 8.0]].forEach(([sel, at, d]) => {
+  [["#cr-co-t", 0, 19.3], ["#cr-h-t", 19.3, 8.713], ["#cr-a1-trek-t", 239.282, 8.219], ["#cr-a3-ridge-t", 486.029, 10.901], ["#cr-z-trek-t", 772.951, 11.74]].forEach(([sel, at, d]) => {
     tl.fromTo(sel, { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, at + 0.3);
     tl.to(sel, { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, at + d - 0.5);
   });
