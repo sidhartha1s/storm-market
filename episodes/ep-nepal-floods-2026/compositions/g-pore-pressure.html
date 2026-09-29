@@ -190,7 +190,7 @@ window.__timelines = window.__timelines || {};
   tl.to("#pp-friction", { y: 93.6, duration: 2.0, ease: "power1.inOut" }, 14.42);   /* level 0.82: top 433.6 */
   tl.to("#pp-lfric", { y: 93.6, duration: 2.0, ease: "power1.inOut" }, 14.42);
   /* ... "drops" @16.94 "below the weight": the friction top falls under the weight top (860-234 = 626 > 560) */
-  tl.to("#pp-friction", { scaleY: 0.45, duration: 0.45, ease: "power3.in" }, 16.94);
+  tl.to("#pp-friction", { y: 286, duration: 0.45, ease: "power3.in" }, 16.94);     /* level 0.45: top 626, under the weight top 560 */
   tl.to("#pp-lfric", { y: 286, duration: 0.45, ease: "power3.in" }, 16.94);
   tl.to(TSEL, { opacity: 0.08, duration: 0.45 }, 16.94);
   /* "weight" @17.72 "pulling it" */
