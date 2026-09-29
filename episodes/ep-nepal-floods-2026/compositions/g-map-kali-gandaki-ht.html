@@ -74,8 +74,6 @@ window.__timelines = window.__timelines || {};
   };
   const DUR = 6.6;
   const tl = gsap.timeline({ paused: true });
-  const kg = document.querySelector(P + "kg"), kgg = document.querySelector(P + "kgglow");
-  const KLEN = Math.ceil(kg.getTotalLength()) + 1;
   const cam = (z) => ({ attr: { transform: "translate(" + (1000 - 1162.1 * z).toFixed(2) + "," + (420 - 383.9 * z).toFixed(2) + ") scale(" + z + ")" } });
 
   /* 24 flakes, r 2.3-3.8 cam units (3-5 px on screen), fixed spread inside the clip circle */
