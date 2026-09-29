@@ -70,10 +70,23 @@ window.__timelines = window.__timelines || {};
   }
 
   const CHIPS = ["#c3f-chip0", "#c3f-chip1", "#c3f-chip2", "#c3f-chip3"];
+  const TICKS = ["#c3f-tick0", "#c3f-tick1", "#c3f-tick2", "#c3f-tick3"];
   tl.set(STILLS, { autoAlpha: 0, transformOrigin: "center" }, 0);
   tl.set("#c3f-f0", { autoAlpha: 1 }, 0);
   tl.set(CHIPS, { autoAlpha: 0 }, 0);
   tl.set("#c3f-replay", { autoAlpha: 0 }, 0);
+  tl.set("#c3f-eb", { autoAlpha: 0, x: -16 }, 0);
+  tl.set(TICKS, { scale: 0.6, transformOrigin: "center" }, 0);
+
+  /* persistent "Frame By Frame" eyebrow (mid tier, wording from this file's own header comment), whole window */
+  tl.fromTo("#c3f-eb", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.3);
+  tl.to("#c3f-eb", { scale: 1.03, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 15 }, 0.7);
+
+  /* second-marker ticks (graphical only, no text/number) pop as each still lands */
+  tl.to("#c3f-tick0", { scale: 1, backgroundColor: "#e74c3c", duration: 0.3, ease: "back.out(2)" }, 0.3);
+  tl.to("#c3f-tick1", { scale: 1, backgroundColor: "#e74c3c", duration: 0.3, ease: "back.out(2)" }, 11.23);
+  tl.to("#c3f-tick2", { scale: 1, backgroundColor: "#e74c3c", duration: 0.3, ease: "back.out(2)" }, 16.21);
+  tl.to("#c3f-tick3", { scale: 1, backgroundColor: "#e74c3c", duration: 0.3, ease: "back.out(2)" }, 20.53);
 
   /* f0 @0.0, "0.0 S", slow Ken Burns so the still never reads frozen */
   tl.to("#c3f-chip0", { autoAlpha: 1, duration: 0.3 }, 0.1);
