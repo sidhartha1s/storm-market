@@ -139,10 +139,9 @@ window.__timelines = window.__timelines || {};
   } }, 11.2);
   tl.to("#s24-cnum", { scale: 1.05, transformOrigin: "left center", duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 11.8);
 
-  /* SAME DATES @13.76-13.98: the counter slides out, the two strips slide in, the rings land ON their days */
-  tl.to("#s24-cgrp", { x: 980, autoAlpha: 0, duration: 0.45, ease: "power3.in" }, 13.3);
-  tl.fromTo("#s24-cal", { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 13.5);
-  tl.fromTo(rings, { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in", stagger: 0.04 }, 13.72);
+  /* SAME DATES @13.76-13.98: the counter dims, the 2024 rings land ON their days (27, 28) under 2026's (26, 27) */
+  tl.to("#s24-cgrp", { opacity: 0.35, duration: 0.4, ease: "power2.out" }, 13.5);
+  tl.fromTo(r24, { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in", stagger: 0.06 }, 13.72);
   tl.to(rings, { scale: 1.12, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 3 }, 14.3);
 
   /* HIGHER UP @15.68: the map pushes north; FALLS @17.80 ... SNOW @18.40 over the northern border band */
