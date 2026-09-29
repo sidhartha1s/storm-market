@@ -44,7 +44,9 @@
         <line x1="96" y1="600" x2="1824" y2="600" stroke="#5a768f" stroke-width="2"/>
         <text class="gmc-schem" id="gmc-schem" x="116" y="584">SCHEMATIC</text>
         <g id="gmc-stampg">
-          <rect x="470" y="380" width="300" height="72" rx="6" fill="rgba(4,7,12,0.55)" stroke="#e74c3c" stroke-width="4"/>
+          <!-- round 2: near-opaque plate (the stamp sat on the light saturation fill at low contrast) and wide enough
+               for the word: "SATURATED" at 40 px / tracking 4 is ~350 px, plate x 400-840 -->
+          <rect x="400" y="380" width="440" height="72" rx="6" fill="rgba(4,7,12,0.9)" stroke="#e74c3c" stroke-width="4"/>
           <text class="gmc-stamp" id="gmc-stamp" x="620" y="431" text-anchor="middle">SATURATED</text>
         </g>
       </g>
