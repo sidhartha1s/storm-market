@@ -19,12 +19,15 @@
 <template>
 <style>
   #hh-root { position:absolute; inset:0; font-family:Arial, sans-serif; color:#f2f5f8; pointer-events:none; }
+  .hh-card { position:absolute; left:96px; top:296px; width:780px; height:706px; box-sizing:border-box;
+    background: rgba(10,16,24,0.55); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; box-shadow:0 30px 90px rgba(0,0,0,0.5); }
   .hh-stage { position:absolute; left:0; top:0; width:900px; height:1080px; }
   .hh-base { position:absolute; left:140px; top:940px; width:640px; height:2px; background:#2a3644; }
   .hh-baselab { position:absolute; left:140px; top:950px; font-weight:700; font-size:19px; letter-spacing:4px; color:#93a3b2; }
   .hh-bar { position:absolute; bottom:140px; width:160px; box-sizing:border-box; border-top:3px solid; transform-origin:bottom center; }
-  .hh-himlung { left:200px; height:560px; background:linear-gradient(180deg, rgba(127,178,229,0.5), rgba(127,178,229,0.06)); border-color:#7fb2e5; }
-  .hh-denali { left:460px; height:487px; background:linear-gradient(180deg, rgba(232,197,106,0.5), rgba(232,197,106,0.06)); border-color:#e8c56a; }
+  .hh-himlung { left:200px; height:560px; background:linear-gradient(180deg, #7fb2e5, #5a768f); border-color:#7fb2e5; }
+  .hh-denali { left:460px; height:487px; background:linear-gradient(180deg, #e8c56a, #d8a13a); border-color:#e8c56a; }
   .hh-name { position:absolute; width:220px; font-family:'Arial Black',Arial,sans-serif; font-size:30px; white-space:nowrap; }
   .hh-himlungname { left:180px; top:330px; color:#7fb2e5; }
   .hh-denaliname { left:440px; top:403px; color:#e8c56a; }
