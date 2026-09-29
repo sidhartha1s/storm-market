@@ -16,8 +16,12 @@
   .gl-hl { position:absolute; left:96px; top:104px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:64px;
     line-height:1.1; color:#f2f5f8; white-space:nowrap; }
   .gl-row { position:absolute; left:96px; width:1728px; height:200px; box-sizing:border-box; overflow:hidden;
-    background:#0b1016; border:1px solid rgba(255,255,255,.14); border-radius:18px; }
-  .gl-vis { position:absolute; left:16px; top:15px; width:300px; height:170px; border-radius:10px; overflow:hidden; background:#04070a; }
+    background:#15202b; border:1px solid rgba(255,255,255,.14); border-radius:18px; }
+  .gl-vis { position:absolute; left:16px; top:15px; width:300px; height:170px; border-radius:10px; overflow:hidden; background:#2a3644; }
+  /* fix5: pending state; each row is in frame from 0.25 s with its number and skeleton bars until its fact is spoken */
+  .gl-num { position:absolute; left:0; top:0; width:300px; height:170px; display:flex; align-items:center; justify-content:center;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:96px; color:#93a3b2; opacity:0.45; }
+  .gl-skel { position:absolute; left:356px; top:50px; width:900px; height:110px; }
   .gl-vis svg { position:absolute; left:0; top:0; width:300px; height:170px; }
   .gl-img { position:absolute; left:0; top:0; width:300px; height:170px; object-fit:cover; }
   .gl-fact { position:absolute; left:356px; top:44px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px;
