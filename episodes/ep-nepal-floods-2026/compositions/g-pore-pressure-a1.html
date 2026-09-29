@@ -93,7 +93,9 @@
     <text id="pa1-t-press" class="pa1-lab" x="1560" y="292" text-anchor="middle" style="fill:#7fb2e5">WATER PRESSURE</text>
 
     <!-- bottom rail: days of rain vs the 3 s on camera -->
-    <rect x="0" y="930" width="1450" height="150" fill="url(#pa1-railfade)"/>
+    <!-- round 2: full-width ground band, its right end dissolved by a horizontal mask (no hard edge at x 1450),
+         fully gone by x 1613 so the river (x 1590-1818) and the slid block stay at full contrast -->
+    <rect x="0" y="930" width="1920" height="150" fill="url(#pa1-railfade)" mask="url(#pa1-railmask)"/>
     <rect id="pa1-railrain" x="96" y="972" width="1232" height="16" fill="#7fb2e5"/>
     <rect id="pa1-rail3s" x="1336" y="966" width="44" height="28" fill="#e74c3c"/>
     <path id="pa1-railstart" d="M96,954 L96,996" fill="none" stroke="#f2f5f8" stroke-width="4"/>
