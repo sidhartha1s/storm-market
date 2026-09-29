@@ -64,39 +64,36 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-map-kali-gandaki-a1b", P = "#g-map-kali-gandaki-a1b-";
-  /* retimed 29 Sep 26: index.html now mounts this comp at data-start 208.982, data-duration 11.0 — only
-     the ROUTE paragraph ("The same valley carries...") per the brief's own note ("mount this comp from
-     local 17.5s instead, the route part stands alone"). The hydro paragraph ("Downstream, the river
-     feeds a dam...") is NOT spoken in this window: the dam pin, "144 MW", "Kali Gandaki A dam", "Shut
-     down" and their ring/dim beats are DROPPED (DOM kept, never revealed — see tl.set below). Dhaulagiri
-     and Annapurna I peak pop-ins are also DROPPED: not spoken here and no time left after the trekker.
-     Cues from retime-sheet.md word times (host 208.982+11.000). */
+  /* index.html mounts this comp at 228.282 for 11.0 s: the ROUTE paragraph only ("The same valley carries...").
+     Cues from retime-sheet.md word times (host 208.982+11.000 on the sheet). */
   const CUES = {
     mustang: 2.45, /* CUE "Mustang," @2.60 (sheet) */
     temple: 3.91,  /* CUE "temple" @4.06 (sheet) */
-    trails: 10.53  /* CUE "trails" @10.68 (sheet) */
+    late: 7.06,    /* CUE "Late September" @7.06-7.24 */
+    annapurna: 10.18 /* CUE "Annapurna" @10.18, "trails" @10.68 */
   };
   const DUR = 11.0;
   const tl = gsap.timeline({ paused: true });
   const RLEN = Math.ceil(document.querySelector(P + "route").getTotalLength()) + 1;
-  const cam = (z) => ({ attr: { transform: "translate(" + (620 - 620 * z).toFixed(2) + "," + (540 - 540 * z).toFixed(2) + ") scale(" + z + ")" } });
-  const T0 = { x: 629.4, y: 279.6 }, T1 = { x: 718.1, y: 263.6 }; /* trekker leg = last route segment */
+  /* the route centre (640,470) sits at screen (960,520) for every s; push 1.35 -> 1.39 */
+  const cam = (s) => ({ attr: { transform: "translate(" + (960 - 640 * s).toFixed(2) + "," + (520 - 470 * s).toFixed(2) + ") scale(" + s + ")" } });
+  /* trekker leg = the route's last segment (629.4,279.6) -> (718.1,263.6); it stops at t 0.8636 = (706.0,265.8),
+     short of the temple icon. Linear x and y with the same ease => on the segment at 7.1 (T0), 8.55 (midpoint
+     667.7,272.7) and 10.0 (T1). */
+  const T0 = { x: 629.4, y: 279.6 }, T1 = { x: 706.0, y: 265.8 };
 
   /* ---- initial state ---- */
-  tl.set(P + "cam", cam(1), 0);
+  tl.set(P + "cam", cam(1.35), 0);
   tl.set(P + "route", { strokeDasharray: RLEN, strokeDashoffset: RLEN }, 0);
   tl.set(P + "trek", { x: T0.x, y: T0.y, autoAlpha: 0 }, 0);
-  tl.set([P + "pin", P + "ring", P + "t-mw", P + "t-dam", P + "t-shut", P + "pok", P + "beni", P + "jom", P + "t-pok", P + "t-beni",
-    P + "t-jom", P + "t-must", P + "temple", P + "t-temple", P + "t-trail", P + "pk-dh", P + "pk-an", P + "t-dh", P + "t-an", P + "note"], { autoAlpha: 0 }, 0);
+  tl.set([P + "pok", P + "beni", P + "jom", P + "t-pok", P + "t-beni", P + "t-jom", P + "t-must", P + "temple", P + "t-temple",
+    P + "t-trail", P + "season", P + "note"], { autoAlpha: 0 }, 0);
 
-  /* ---- ambient, whole window ---- */
-  tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: 5.5, ease: "none", repeat: 1, yoyo: true }, 0);
-  tl.to(P + "cam", Object.assign(cam(1.04), { duration: DUR, ease: "none" }), 0);
+  /* ---- ambient, whole window: camera push + river glow (the full-width scan line is gone) ---- */
+  tl.to(P + "cam", Object.assign(cam(1.39), { duration: DUR, ease: "none" }), 0);
   tl.fromTo(P + "nepal", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0);
   tl.fromTo(P + "kgglow", { attr: { "stroke-opacity": 0.2 } }, { attr: { "stroke-opacity": 0.5 }, duration: 1.5, ease: "sine.inOut", repeat: 6, yoyo: true }, 0);
   tl.fromTo(P + "src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 0.3);
-
-  /* ---- the dam pin / 144 MW / shut down: DROPPED, not spoken in this window (DOM stays hidden) ---- */
 
   /* ---- the same valley: the road north draws immediately ---- */
   tl.to(P + "route", { strokeDashoffset: 0, duration: 2.45, ease: "power2.inOut" }, 0.05);
