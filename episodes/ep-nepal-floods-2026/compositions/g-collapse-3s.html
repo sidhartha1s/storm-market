@@ -177,8 +177,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "riverhead", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.12 }, CUES.reaches + 0.38);
   tl.fromTo(P + "t-river", { autoAlpha: 0, x: 16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.river - 0.2);
 
-  /* ---- REPLAY chip: v-a1-replay (same WION footage, full speed) starts at this host's end; held 1.5 s ---- */
-  tl.fromTo(P + "replay", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 21.85);
+  /* ---- REPLAY chip: v-a1-replay (same WION footage, full speed) starts at this host's end; held 1.5 s+ (21.6 -> 23.1) ---- */
+  tl.fromTo(P + "replay", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 21.6);
 
   /* ---- clear by D - 0.05 so the replay clip plays unobstructed ---- */
   tl.to([P + "f3", P + "chip3", P + "replay", P + "eb", P + "riverarrow", P + "t-river", P + "src"].concat(TICKS),
