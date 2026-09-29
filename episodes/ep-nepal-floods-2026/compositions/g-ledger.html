@@ -2,73 +2,132 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- g-ledger (A4-S1, 18.883 s, host opens 0.2 s before the voice): three columns, Established / Disputed / Unknown. Only the Established claims land
-     here, each on its word (retimed to words.json 29 Sep 26). The toll dispute plays in g-toll-counter-a4; the board
-     returns with Disputed + Unknown in g-ledger-a4b (A4-S6). Sourcing: factcheck-C#1..#6, factcheck-A#13, -B#22, -D#3. -->
+<!-- g-ledger (A4-S1, 18.883 s, host opens 0.2 s before the voice): "Three things about this week are settled." Only the settled
+     facts, one full-width row each, landing on its word, each with a small visual and an amber check. The Disputed and Unknown
+     columns belong to g-ledger-a4b (A4-S6) and are not shown here. Sourcing: factcheck-C#1..#6, factcheck-A#13, -B#22, -D#3.
+     Redo 29 Sep 26 (Opus): replaces the three-column board whose Disputed/Unknown headers stood empty for the whole window.
+     Rows x 96-1824, 200 px tall at y 230 / 470 / 710; visual 300x170 at the row's left; fact text Arial Black 900 52 px.
+     Cues: retime-sheet g-ledger (host 503.673+18.883, local seconds). -->
 <template>
 <style>
   #gl-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
     background:radial-gradient(ellipse at 50% 40%, #0b1016 0%, #030507 78%); }
-  .gl-sweep { position:absolute; left:0; top:0; width:320px; height:1080px;
-    background:linear-gradient(100deg, transparent, rgba(127,178,229,0.06), transparent); }
-  .gl-hdr { position:absolute; top:140px; font-weight:700; font-size:26px; letter-spacing:8px; text-transform:uppercase; white-space:nowrap; }
-  .gl-hdrline { position:absolute; top:178px; height:4px; border-radius:2px; }
-  .gl-chip { position:absolute; padding:18px 26px 20px; border-radius:16px; box-sizing:border-box;
-    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
-    border:1px solid rgba(255,255,255,0.14); font-size:24px; font-weight:700; line-height:32px; color:#dfe7ee; }
-  .gl-dischip { padding:22px 30px 26px; text-align:center; }
-  .gl-disnum { font-family:'AbrilFig', Georgia, serif; font-size:60px; color:#d0121f; line-height:1;
-    text-shadow:0 4px 20px rgba(0,0,0,0.7); }
-  .gl-dissub { margin-top:10px; font-size:20px; font-weight:700; letter-spacing:3px; color:#93a3b2; text-transform:uppercase; }
+  .gl-hl { position:absolute; left:96px; top:70px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:64px;
+    line-height:1.1; color:#f2f5f8; white-space:nowrap; }
+  .gl-row { position:absolute; left:96px; width:1728px; height:200px; box-sizing:border-box; overflow:hidden;
+    background:#0b1016; border:1px solid rgba(255,255,255,.14); border-radius:18px; }
+  .gl-vis { position:absolute; left:16px; top:15px; width:300px; height:170px; border-radius:10px; overflow:hidden; background:#04070a; }
+  .gl-vis svg { position:absolute; left:0; top:0; width:300px; height:170px; }
+  .gl-img { position:absolute; left:0; top:0; width:300px; height:170px; object-fit:cover; }
+  .gl-fact { position:absolute; left:356px; top:44px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px;
+    line-height:1.1; color:#f2f5f8; white-space:nowrap; }
+  .gl-sub { position:absolute; left:360px; top:124px; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
+  .gl-stamp { position:absolute; left:356px; top:118px; height:44px; padding:0 16px; box-sizing:border-box; display:flex; align-items:center;
+    border:2px solid #d8a13a; border-radius:8px; font-weight:700; font-size:26px; letter-spacing:4px; color:#d8a13a; white-space:nowrap; }
+  .gl-check { position:absolute; left:1590px; top:40px; width:120px; height:120px; }
+  .gl-sweep { position:absolute; left:0; top:0; width:360px; height:1080px; pointer-events:none;
+    background:linear-gradient(100deg, transparent, rgba(127,178,229,0.07), transparent); }
 </style>
 <div id="gl-root" data-composition-id="g-ledger" data-width="1920" data-height="1080" data-duration="18.883">
-  <div class="gl-sweep" id="gl-sweep"></div>
+  <div class="gl-hl" id="gl-hl">What Is Settled</div>
 
-  <div class="gl-hdr" id="gl-hdr-est" style="left:96px; color:#3fa15a; font-size:52px; font-family:'Arial Black', Arial, sans-serif; letter-spacing:2px;">Established</div>
-  <div class="gl-hdrline" id="gl-line-est" style="left:96px; top:210px; width:508px; background:#3fa15a"></div>
-  <div class="gl-hdr" id="gl-hdr-dis" style="left:700px; color:#d8a13a">Disputed</div>
-  <div class="gl-hdrline" id="gl-line-dis" style="left:700px; width:500px; background:#d8a13a"></div>
-  <div class="gl-hdr" id="gl-hdr-unk" style="left:1320px; color:#5a768f">Unknown</div>
-  <div class="gl-hdrline" id="gl-line-unk" style="left:1320px; width:504px; background:#5a768f"></div>
-
-  <div class="gl-chip" id="gl-est1" style="left:96px; top:220px; width:508px;">Wall Fell &middot; Sept 27, After Rain</div>
-  <div class="gl-chip" id="gl-est2" style="left:96px; top:350px; width:508px;">Video From That Day &middot; Lete, Mustang</div>
-  <div class="gl-chip" id="gl-est3" style="left:96px; top:480px; width:508px;">Avalanche Hit The Camp</div>
-
-  <div class="gl-chip gl-dischip" id="gl-dis" style="left:700px; top:220px; width:500px;">
-    <div class="gl-disnum" id="gl-disnum">12 &middot; 21 &middot; 24</div>
-    <div class="gl-dissub" id="gl-dissub">The Toll: Reports Disagree</div>
+  <!-- row 1: the wall fell -->
+  <div class="gl-row" id="gl-row1" style="top:230px;">
+    <div class="gl-vis">
+      <svg viewBox="0 0 300 170">
+        <polygon points="0,0 118,0 134,170 0,170" fill="#2a3644"/>
+        <polygon points="186,0 300,0 300,170 168,170" fill="#2a3644"/>
+        <path d="M152,0 C140,60 166,110 150,170" fill="none" stroke="#7fb2e5" stroke-width="7"/>
+        <path id="gl-scar" d="M284,14 L246,52 L214,96 L178,128" fill="none" stroke="#c0392b" stroke-width="12" stroke-linecap="round"/>
+        <ellipse id="gl-pile" cx="156" cy="132" rx="26" ry="12" fill="#8e2020"/>
+      </svg>
+    </div>
+    <div class="gl-fact" id="gl-f1">Wall fell &middot; Sept 27</div>
+    <div class="gl-sub" id="gl-s1">AFTER DAYS OF RAIN</div>
+    <svg class="gl-check" viewBox="0 0 120 120"><circle cx="60" cy="60" r="46" fill="none" stroke="#d8a13a" stroke-width="4" stroke-opacity="0.45"/><path id="gl-ck1" d="M36,62 L54,80 L86,42" fill="none" stroke="#d8a13a" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
 
-  <div class="gl-chip" id="gl-unk1" style="left:1320px; top:220px; width:504px;">How Long The River Was Blocked</div>
-  <div class="gl-chip" id="gl-unk2" style="left:1320px; top:350px; width:504px;">12 Crew Still Missing</div>
-  <div class="gl-chip" id="gl-unk3" style="left:1320px; top:480px; width:504px;">Any Reading Of Either Slope Before It Moved</div>
+  <!-- row 2: the video is from that day -->
+  <div class="gl-row" id="gl-row2" style="top:470px;">
+    <div class="gl-vis"><img class="gl-img" id="gl-img2" src="media/collapse-f1.jpg"></div>
+    <div class="gl-fact" id="gl-f2">Video from that day</div>
+    <div class="gl-stamp" id="gl-stamp">LETE &middot; MUSTANG</div>
+    <svg class="gl-check" viewBox="0 0 120 120"><circle cx="60" cy="60" r="46" fill="none" stroke="#d8a13a" stroke-width="4" stroke-opacity="0.45"/><path id="gl-ck2" d="M36,62 L54,80 L86,42" fill="none" stroke="#d8a13a" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+
+  <!-- row 3: the avalanche hit the Himlung camp -->
+  <div class="gl-row" id="gl-row3" style="top:710px;">
+    <div class="gl-vis">
+      <svg viewBox="0 0 300 170">
+        <polygon points="0,20 300,150 300,170 0,170" fill="#4a5560"/>
+        <polygon id="gl-snow" points="0,20 0,72 150,128 96,78" fill="#dfe7ee"/>
+        <g fill="#d8a13a" stroke="#04070c" stroke-width="2">
+          <path d="M168,150 L184,126 L200,150 Z"/><path d="M206,154 L222,130 L238,154 Z"/><path d="M244,158 L260,134 L276,158 Z"/>
+        </g>
+      </svg>
+    </div>
+    <div class="gl-fact" id="gl-f3">Avalanche hit the Himlung camp</div>
+    <svg class="gl-check" viewBox="0 0 120 120"><circle cx="60" cy="60" r="46" fill="none" stroke="#d8a13a" stroke-width="4" stroke-opacity="0.45"/><path id="gl-ck3" d="M36,62 L54,80 L86,42" fill="none" stroke="#d8a13a" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+
+  <div class="gl-sweep" id="gl-sweep"></div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-ledger", P = "#gl-";
   const DUR = 18.883;
+  const CUES = {
+    settled: 1.92,    /* "settled." @1.92 */
+    wall: 3.06,       /* "wall" @3.06 */
+    rain: 7.22,       /* "rain." @7.22 */
+    video: 8.38,      /* "video" @8.38 */
+    litin: 11.46,     /* "Litin" (Lete) @11.46 */
+    district: 12.28,  /* "district," @12.28 */
+    avalanche: 13.68, /* "avalanche" @13.68 */
+    lives: 17.68      /* "lives" @17.68 */
+  };
   const tl = gsap.timeline({ paused: true });
-  tl.set([P+"hdr-est", P+"hdr-dis", P+"hdr-unk", P+"line-est", P+"line-dis", P+"line-unk"], { autoAlpha: 0 }, 0);
-  tl.set([P+"line-est", P+"line-dis", P+"line-unk"], { scaleX: 0, transformOrigin: "left center" }, 0);
-  tl.set([P+"est1", P+"est2", P+"est3", P+"dis", P+"unk1", P+"unk2", P+"unk3"], { autoAlpha: 0, x: -40 }, 0);
-  /* corner light sweeps across the whole window */
-  tl.fromTo(P+"sweep", { x: -320 }, { x: 2200, duration: 8.5, ease: "none", repeat: 1 }, 0);
-  /* 0.0 "Three things about this week are settled": headers land on the first word */
-  tl.fromTo([P+"hdr-est", P+"hdr-dis", P+"hdr-unk"], { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.1 }, 0.25);
-  tl.to([P+"line-est", P+"line-dis", P+"line-unk"], { scaleX: 1, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0.55);
-  tl.to([P+"hdr-est", P+"hdr-dis", P+"hdr-unk"], { opacity: 0.7, duration: 1.8, ease: "sine.inOut", yoyo: true, repeat: 8 }, 1.7);
-  /* 2.72 "The wall fell into the Kaligandaki" */
-  tl.to(P+"est1", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 2.77);
-  /* 10.02 "filmed near the village of Lete" */
-  tl.to(P+"est2", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 10.07);
-  /* 13.48 "the avalanche hit the Himlung camp" */
-  tl.to(P+"est3", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 13.53);
-  /* exit: the toll counters take the frame next */
-  tl.to([P+"hdr-est", P+"hdr-dis", P+"hdr-unk", P+"line-est", P+"line-dis", P+"line-unk", P+"est1", P+"est2", P+"est3"],
-        { x: "+=660", autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 18.15);
-  tl.to({}, { duration: 0.01 }, DUR - 0.01);  // hold the timeline to the host window (graphics_qc short-duration)
+  const CK = [P + "ck1", P + "ck2", P + "ck3"];
+  const CKL = Math.ceil(document.querySelector(P + "ck1").getTotalLength()) + 1;
+  const SCAR = Math.ceil(document.querySelector(P + "scar").getTotalLength()) + 1;
+  const ROWS = [P + "row1", P + "row2", P + "row3"];
+
+  /* ---- initial state ---- */
+  tl.set(ROWS.concat([P + "hl", P + "s1", P + "stamp", P + "pile"]), { autoAlpha: 0 }, 0);
+  tl.set(CK, { strokeDasharray: CKL, strokeDashoffset: CKL }, 0);
+  tl.set(P + "scar", { strokeDasharray: SCAR, strokeDashoffset: SCAR }, 0);
+  tl.set(P + "snow", { x: -120, y: -50 }, 0);
+
+  /* a slow sweep light crosses the rows the whole window */
+  tl.fromTo(P + "sweep", { x: -360 }, { x: 2280, duration: 9.2, ease: "none", repeat: 1 }, 0);
+
+  /* "are settled": the headline */
+  tl.fromTo(P + "hl", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUES.settled - 0.15);
+
+  /* row 1 "The wall fell into the Kaligandaki on September 27th": the scar draws in, the pile lands in the river */
+  tl.fromTo(P + "row1", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.wall - 0.15);
+  tl.to(P + "scar", { strokeDashoffset: 0, duration: 0.8, ease: "power2.in" }, CUES.wall + 0.3);
+  tl.fromTo(P + "pile", { autoAlpha: 0, scale: 0, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, CUES.wall + 1.05);
+  /* "after days of rain": the check draws */
+  tl.to(P + "ck1", { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, CUES.rain - 0.1);
+  tl.fromTo(P + "s1", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.rain - 0.1);
+
+  /* row 2 "The video is from that day, filmed near the village of Lete, Mustang district" */
+  tl.fromTo(P + "row2", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.video - 0.15);
+  tl.fromTo(P + "img2", { scale: 1.0, transformOrigin: "50% 50%" }, { scale: 1.06, duration: DUR - CUES.video, ease: "none" }, CUES.video - 0.15);
+  tl.fromTo(P + "stamp", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.litin - 0.15);
+  tl.to(P + "ck2", { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, CUES.district - 0.1);
+
+  /* row 3 "the avalanche hit the Himlung camp ... and people lost their lives there" */
+  tl.fromTo(P + "row3", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.avalanche - 0.15);
+  tl.to(P + "snow", { x: 0, y: 0, duration: 1.2, ease: "power2.in" }, CUES.avalanche + 0.1);
+  tl.to(P + "snow", { x: 4, y: 2, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 3 }, CUES.avalanche + 1.3);
+  tl.to(P + "ck3", { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, CUES.lives - 0.1);
+
+  /* exit: rows slide out left, staggered, over the last 0.6 s */
+  tl.to([P + "hl"].concat(ROWS), { x: -300, autoAlpha: 0, duration: 0.45, ease: "power3.in", stagger: 0.04 }, DUR - 0.62);
+  tl.to({}, { duration: 0.01 }, DUR - 0.01);
   window.__timelines[ID] = tl;
 })();
 </script>
