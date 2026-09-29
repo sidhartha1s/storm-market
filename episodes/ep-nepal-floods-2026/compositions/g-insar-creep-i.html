@@ -159,7 +159,7 @@ window.__timelines = window.__timelines || {};
   tl.to(P + "stamp", { scale: 1.03, duration: 0.35, ease: "sine.inOut", yoyo: true, repeat: 3 }, 8.2);   /* breathes to 9.6 */
 
   /* ---- exit 9.64 (abs 84.1): both sides and the axis slide up together and fade; cut to the map at 10.282 ---- */
-  tl.to([P + "pl", P + "pr", P + "ebl", P + "ebr", P + "axis", P + "ylab", P + "xl", P + "xr", P + "tag", P + "line", P + "x", P + "fell", P + "flat", P + "stamp"],
+  tl.to([P + "pl", P + "pr", P + "ebl", P + "ebr", P + "axis", P + "ylab", P + "xl", P + "xr", P + "tag", P + "line", P + "dots", P + "x", P + "fell", P + "flat", P + "stamp"],
         { y: -40, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 9.64);
   tl.to({}, { duration: 0.01 }, DUR - 0.01);
   window.__timelines[ID] = tl;
