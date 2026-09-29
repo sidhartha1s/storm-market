@@ -86,8 +86,9 @@ window.__timelines = window.__timelines || {};
      comp's own dialogue. The comp was built for an 18s window, so the tail beat below reverts to its original
      built timing (nudged +0.09s for the real 18.09 total) instead of being dropped. */
 
-  /* 14.5: tie-back pulse (loop L7 open), riding the a6-s4 tail under this comp's hold */
-  tl.to(P+"pin", { y: -6, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 14.5);
+  /* ambient: the pin floats gently for the whole 2.0-17.2 hold (covers the near-static 3.7-17.5 span, rides
+     straight through the 14.5 tie-back beat, and settles back to baseline before the exit) */
+  tl.to(P+"pin", { y: -7, duration: 0.76, ease: "sine.inOut", yoyo: true, repeat: 19 }, 2.0);
 
   /* exit 17.35, finishes by D-0.1 = 17.99 */
   tl.to([P+"axis", P+"wetband", P+"ticks", P+"withtick", P+"withlab", P+"pin", P+"pinlab2", P+"tband", P+"bandlab"],
