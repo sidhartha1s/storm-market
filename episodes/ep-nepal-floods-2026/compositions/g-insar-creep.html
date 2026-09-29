@@ -160,8 +160,7 @@ window.__timelines = window.__timelines || {};
   AR.forEach(function (a, i) { tl.fromTo(a, { autoAlpha: 0, scale: 0, svgOrigin: TAIL[i] }, { autoAlpha: 1, scale: 1, svgOrigin: TAIL[i], duration: 0.3, ease: "back.out(2)" }, 10.2 + i * 0.07); });
   AR.forEach(function (a, i) { tl.to(a, { x: 10, y: 8, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 3 }, 10.8 + i * 0.05); });
 
-  /* 12 @10.70 -> INCHES @11.20: the rail opens with the counter (opens at 1) and its label */
-  tl.fromTo(P+"rail", { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 10.3);
+  /* 12 @10.70 -> INCHES @11.20: the counter (opens at 1) and its label land under MEASURED in the open rail */
   tl.fromTo([P+"cnt", P+"cntlab"], { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 10.7);
   const c = { v: 1 };
   tl.to(c, { v: 12, duration: 0.5, ease: "power4.out", onUpdate: function () {
