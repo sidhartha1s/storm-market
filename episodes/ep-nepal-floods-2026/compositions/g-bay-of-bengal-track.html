@@ -116,7 +116,7 @@ window.__timelines = window.__timelines || {};
   /* ---- low pressure forms over the Bay ---- */
   tl.fromTo(P + "sym", { autoAlpha: 0, scale: 0.3, svgOrigin: "790.9 689.2" }, { autoAlpha: 1, scale: 1, duration: 0.6, ease: "back.out(2)" }, CUES.low);
   tl.fromTo(P + "arms", { rotation: 0, svgOrigin: "790.9 689.2" }, { rotation: -900, duration: CUES.winds - CUES.low, ease: "none" }, CUES.low);
-  tl.fromTo(P + "ring", { autoAlpha: 0.9, attr: { r: 34 } }, { autoAlpha: 0, attr: { r: 84 }, duration: 1.2, ease: "power2.out", repeat: 7, repeatDelay: 0.3 }, CUES.low + 0.3);
+  tl.fromTo(P + "ring", { autoAlpha: 0.9, attr: { r: 34 } }, { autoAlpha: 0, attr: { r: 84 }, duration: 1.2, ease: "power2.out", repeat: 7, repeatDelay: 0.3, immediateRender: false }, CUES.low + 0.3);
   tl.fromTo(P + "eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.low);
   tl.fromTo(P + "r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.low + 0.2);
   tl.fromTo(P + "t-bay", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.bay);
