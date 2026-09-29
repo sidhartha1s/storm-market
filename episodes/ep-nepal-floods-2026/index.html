@@ -36,6 +36,9 @@
     video.crop-7n   { transform: scale(1.4); transform-origin: 50% 40%; }     /* 7NEWS: pillarboxed phone shots + bug bottom-right (draft v2) */
     video.crop-cnbc { transform: scale(1.3); transform-origin: 50% 90%; }     /* CNBC TV18: logo top-right + "Location" tag top-left, so crop from the top (draft v1) */
     video.crop-low  { transform: scale(1.2); transform-origin: 50% 15%; }     /* News18 / Lallantop lower tickers */
+    /* portrait social clips: full-height, uncropped, over a blurred copy of themselves (cold open + hook, owner 29 Sep 26) */
+    video.reel      { object-fit: contain; }
+    video.reel-bg   { filter: blur(40px) brightness(0.45) saturate(0.8); transform: scale(1.2); }
     /* ---- Abril figure popup (channel device: red, text-shadow, <=3 words, mid-screen, never over a map comp) ---- */
     @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
     .popfig { position: absolute; left: 200px; right: 300px; top: 36%; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; isolation: isolate; }
