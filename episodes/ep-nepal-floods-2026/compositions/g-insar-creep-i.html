@@ -54,7 +54,9 @@
     <text class="gci-ax" id="gci-tag" x="960" y="912" text-anchor="middle">SCHEMATIC</text>
 
     <!-- left: the displacement the radar caught, rising for weeks -->
-    <path id="gci-line" d="M170,740 C420,738 640,722 760,642 S872,522 900,472" stroke="#e8c56a" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <!-- round 3: the line is revealed by a clip edge that rides with the satellite, so the plot fills from "satellite" -->
+    <defs><clipPath id="gci-lclip"><rect id="gci-lrect" x="150" y="380" width="760" height="400"/></clipPath></defs>
+    <path id="gci-line" clip-path="url(#gci-lclip)" d="M170,740 C420,738 640,722 760,642 S872,522 900,472" stroke="#e8c56a" stroke-width="5" stroke-linecap="round" fill="none"/>
     <g id="gci-x">
       <path d="M886,458 L914,486 M914,458 L886,486" stroke="#e74c3c" stroke-width="7" stroke-linecap="round"/>
     </g>
