@@ -2,6 +2,15 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 2026-09-29 - ep-nepal-floods-2026: one snapshot at 60 % of each window missed four near-empty openings
+- **What happened:** the pre-render check snapshotted each changed comp once, at 60 % of its window, and all looked full.
+  The final-v2 render then failed `verify_render.sh` with four black spans (74.47-76.17, 78.43-82.27, 513.30-525.97,
+  541.80-545.63 s): g-insar-creep-i, g-insar-creep, g-ledger and g-toll-counter-a4 sat on a title or two small cards
+  over navy while waiting for cue-timed reveals. An 80 min render was spent to find it.
+- **Rule:** settle frames are sampled at reveal-start (window start + ~1 s) as well as mid-hold and pre-exit; a
+  structure is in frame from the window start and cues animate the data, not the arrival of the whole layout
+  (`references/mg-quickref.md` "Frame coverage"). Proposed: a pre-render blackdetect over snapshot frames (task to file).
+
 ## 2026-09-29 - ep-nepal-floods-2026: 'Arial Black' needs an explicit font-weight:900 because the render host substitutes it
 - **What happened:** every headline-tier rule written as `font-family:'Arial Black', Arial, sans-serif` with no weight
   rendered in the master as a thin regular-weight sans ("The toll depends on who's counting.", "32 Days Apart", "SEPT 27",
