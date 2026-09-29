@@ -16,14 +16,19 @@
   .gsg-popwrap { position:absolute; left:660px; top:760px; width:600px; text-align:center; }
   .gsg-pop { font-family:'AbrilFig', Georgia, serif; font-size:130px; line-height:1; color:#d0121f;
     text-shadow:0 6px 26px rgba(0,0,0,0.8); white-space:nowrap; }
-  .gsg-popsub { margin-top:14px; font-size:22px; font-weight:700; letter-spacing:3px; color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
+  /* fixed 29 Sep 26 (graphics_qc): x moved 140->220 so 11-char "RIVER GAUGE" (text-anchor end) stops running
+     its left edge to x~-47 past the frame -- "SLOPE" (5 chars, same x) was short enough to stay in-frame,
+     this label wasn't. popsub margin-top 14->64 clears the text-collision with the 130px popfig above it
+     (line-height:1 on a 130px Abril display face paints taller than its nominal box); size bumped 22->28
+     (mid tier) so gsg-lab(22)/gsg-tick(19) small + popsub(28) mid + gsg-pop(130) big gives 3 type tiers. */
+  .gsg-popsub { margin-top:64px; font-size:28px; font-weight:700; letter-spacing:3px; color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
 </style>
 <div id="gsg-root" data-composition-id="g-sensor-gap" data-width="1920" data-height="1080" data-duration="25.335">
   <svg class="gsg-svg" viewBox="0 0 1920 1080">
     <line id="gsg-slopetrack" x1="200" y1="420" x2="1720" y2="420" stroke="#5a768f" stroke-width="2" stroke-dasharray="10 7"/>
     <line id="gsg-gaugetrack" x1="200" y1="620" x2="1720" y2="620" stroke="#5a768f" stroke-width="2" stroke-dasharray="10 7"/>
     <text class="gsg-lab" id="gsg-slopelab" x="140" y="426" text-anchor="end">SLOPE</text>
-    <text class="gsg-lab" id="gsg-gaugelab" x="140" y="626" text-anchor="end">RIVER GAUGE</text>
+    <text class="gsg-lab" id="gsg-gaugelab" x="220" y="626" text-anchor="end">RIVER GAUGE</text>
     <line id="gsg-flatread" x1="200" y1="620" x2="1000" y2="620" stroke="#4a5560" stroke-width="4" stroke-dasharray="6 6"/>
     <path id="gsg-rise" d="M1000,620 Q1150,620 1300,540" fill="none" stroke="#3fa15a" stroke-width="5"/>
     <circle id="gsg-failring" cx="600" cy="420" r="14" fill="none" stroke="#c0392b" stroke-width="4"/>

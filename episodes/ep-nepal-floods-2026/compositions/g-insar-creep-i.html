@@ -16,12 +16,19 @@
     border:1px solid rgba(255,255,255,0.14); box-shadow:0 20px 60px rgba(0,0,0,0.45); box-sizing:border-box; }
   /* RETIMED to real word timing (host 54.600+10.842): card pop 0.7 (word "In" 0.85), eyebrow 1.8 ("satellite" 1.95),
      label 3.0 ("Langtang" 3.21), climb 3.78-8.0 (word "moving" 3.93 -> freeze at "no" 8.15), exit 10.2-10.7 (D-0.1). */
-  .gci-eb { position:absolute; left:554px; top:628px; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
-  .gci-swathwrap { position:absolute; left:554px; top:688px; width:552px; height:130px; overflow:hidden; border-radius:8px; background:#0e161e; }
+  /* fixed 29 Sep 26 (graphics_qc out-of-frame): .gci-card is position:absolute, so it IS the containing
+     block for these children -- left/top below are CARD-LOCAL (0,0 = card's own top-left), not frame
+     coordinates. The prior values (554/628 etc.) were authored as frame-absolute numbers and got added
+     on top of the card's own 530,600 offset, pushing every row ~550-1000px past the card and the 1080
+     frame bottom. Re-laid card-local per mg_specs/g-insar-creep-i.md "GEOMETRY", with wider gaps than the
+     brief's raw numbers so cnt/lab clear each other (was also the text-collision root cause). Label bumped
+     19->28px (mid tier) to fix flat-type: eb(22,small)/lab(28,mid)/cnt(64,big) now gives 3 tiers. */
+  .gci-eb { position:absolute; left:24px; top:24px; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  .gci-swathwrap { position:absolute; left:24px; top:64px; width:552px; height:130px; overflow:hidden; border-radius:8px; background:#0e161e; }
   .gci-swath { position:absolute; left:0; top:0; width:552px; height:130px;
     background:linear-gradient(90deg, #3fa15a 0%, #d8a13a 55%, #c0392b 100%); }
-  .gci-cnt { position:absolute; left:554px; top:846px; font-family:'Courier New', monospace; font-weight:700; font-size:64px; color:#e74c3c; }
-  .gci-lab { position:absolute; left:554px; top:922px; font-size:19px; font-weight:700; letter-spacing:3px; color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
+  .gci-cnt { position:absolute; left:24px; top:210px; font-family:'Courier New', monospace; font-weight:700; font-size:64px; color:#e74c3c; }
+  .gci-lab { position:absolute; left:24px; top:326px; font-size:28px; font-weight:700; letter-spacing:3px; color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
 </style>
 <div id="gci-root" data-composition-id="g-insar-creep-i" data-width="1920" data-height="1080" data-duration="10.842">
   <div class="gci-card" id="gci-card">

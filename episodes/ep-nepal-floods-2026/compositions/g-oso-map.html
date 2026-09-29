@@ -21,7 +21,10 @@
     text-shadow:0 2px 14px rgba(0,0,0,.85); }
   .oso-big { font-family:'Arial Black', Arial, sans-serif; font-size:96px; line-height:1; color:#f2f5f8; white-space:nowrap; }
   .oso-val { font-size:30px; font-weight:700; letter-spacing:1px; color:#dfe7ee; white-space:nowrap; }
-  .oso-rlab { margin-top:8px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; white-space:nowrap; text-transform:uppercase; }
+  /* fixed 29 Sep 26 (graphics_qc text-collision "39"/"43" x caption): 8px margin was inside the actual
+     paint box of the 96px Arial Black counter (line-height:1 on a display size still overshoots its
+     nominal box), colliding through the whole 0->43 climb, not just the final value. */
+  .oso-rlab { margin-top:44px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; white-space:nowrap; text-transform:uppercase; }
   .oso-note { position:absolute; left:1270px; font-size:19px; font-weight:700; letter-spacing:2px; color:#93a3b2; white-space:nowrap; }
   .oso-src { position:absolute; left:96px; bottom:54px; font-size:19px; font-weight:700; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
 </style>
