@@ -210,16 +210,21 @@ window.__timelines = window.__timelines || {};
 
   /* ---- "gives way all at once": the block slides into the river ---- */
   tl.to(ARROWS.concat([P + "t-fric", P + "fricleader"]), { autoAlpha: 0, duration: 0.2 }, CUES.gives - 0.22);
-  tl.to(P + "block", { x: 260, y: 150, rotation: 6, svgOrigin: "1030 590", duration: 0.8, ease: "power3.in" }, CUES.gives);
+  /* round 2: a rotational slump that stops IN the channel. About (1030,590), rotation 4 + (150,70) puts the toe
+     (1500,880) at ~(1628,982), inside the river (x 1590-1818) and short of the far bank, and the crest corner
+     (560,300) at ~(731,338), leaving the scarp exposed. (Was x 260 / y 150 / rot 6: toe ~(1727,1078), through the
+     far bank and off frame.) */
+  tl.to(P + "block", { x: 150, y: 70, rotation: 4, svgOrigin: "1030 590", duration: 0.8, ease: "power3.in" }, CUES.gives);
   tl.set(P + "debris", { autoAlpha: 1 }, CUES.gives + 0.55);
   DEB.forEach((r, i) => {
+    /* debris starts at x 1470-1540 and lands at most at x ~1810, inside the channel */
     tl.fromTo(r, { x: 0, y: 0, rotation: 0 },
-      { x: 140 + (i * 23) % 160, y: 55 + (i * 11) % 30, rotation: (i % 2 ? 1 : -1) * 90, transformOrigin: "50% 50%",
+      { x: 120 + (i * 23) % 150, y: 55 + (i * 11) % 30, rotation: (i % 2 ? 1 : -1) * 90, transformOrigin: "50% 50%",
         duration: 0.7, ease: "power2.in" }, CUES.gives + 0.55 + i * 0.03);
   });
   tl.to(P + "river", { attr: { fill: "#6b5040" }, duration: 0.6, ease: "power2.out" }, CUES.gives + 0.9);
   tl.to(P + "riversurf", { attr: { stroke: "#8a6a50" }, duration: 0.6, ease: "power2.out" }, CUES.gives + 0.9);
-  tl.to(P + "block", { y: 146, duration: 0.12, ease: "power1.out", yoyo: true, repeat: 1 }, CUES.gives + 0.8);
+  tl.to(P + "block", { y: 66, duration: 0.12, ease: "power1.out", yoyo: true, repeat: 1 }, CUES.gives + 0.8);
 
   /* ---- "three seconds on camera": days of rain against a 3 s tick ---- */
   tl.fromTo(P + "railrain", { autoAlpha: 1, scaleX: 0, transformOrigin: "left center" }, { autoAlpha: 1, scaleX: 1, duration: 0.55, ease: "power3.out" }, CUES.three - 0.15);
