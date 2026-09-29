@@ -206,7 +206,8 @@ window.__timelines = window.__timelines || {};
   tl.to([P + "slab", P + "slabdebris"], { autoAlpha: 0.45, duration: 0.6 }, CUES.together + 1.0);
 
   /* ---- RIGHT "The Kali Gandaki collapse": the wall slumps into the river, the river turns brown ---- */
-  tl.to(P + "block", { x: 150, y: 90, rotation: 10, svgOrigin: "1400 600", duration: 1.0, ease: "power2.in" }, CUES.collapse - 0.15);
+  /* rotational slump: the head drops and tilts back (-6 deg), the toe shoves out into the channel (toe lands ~1788,938) */
+  tl.to(P + "block", { x: 160, y: 80, rotation: -6, svgOrigin: "1400 600", duration: 1.0, ease: "power2.in" }, CUES.collapse - 0.15);
   tl.to(P + "scar", { attr: { "stroke-opacity": 0.8 }, duration: 0.3 }, CUES.collapse + 0.5);
   tl.to(P + "river", { attr: { fill: "#6b5040" }, duration: 0.6, ease: "power2.out" }, CUES.collapse + 0.7);
   tl.set(P + "splash", { autoAlpha: 1 }, CUES.collapse + 0.7);
