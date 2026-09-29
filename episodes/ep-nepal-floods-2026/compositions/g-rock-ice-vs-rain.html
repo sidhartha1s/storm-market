@@ -208,13 +208,22 @@ window.__timelines = window.__timelines || {};
   tl.to([P + "slab", P + "slabdebris"], { autoAlpha: 0.45, duration: 0.6 }, CUES.together + 1.0);
 
   /* ---- RIGHT "The Kali Gandaki collapse": the wall slumps into the river, the river turns brown ---- */
-  /* rotational slump: the head drops and tilts back (-6 deg), the toe shoves out into the channel (toe lands ~1788,938) */
-  tl.to(P + "block", { x: 160, y: 80, rotation: -6, svgOrigin: "1400 600", duration: 1.0, ease: "power2.in" }, CUES.collapse - 0.15);
+  /* rotational slump: the head drops and tilts back (-6 deg), the toe shoves out into the channel. Round 3: (110,64)
+     lands the toe at ~(1738,922), inside the water (surface 900, bed 934) with the nose's lower edge at ~(1718,905);
+     crest ~(1278,372). (Round 2 was (160,80): toe ~(1788,938), through the bed.) */
+  tl.to(P + "block", { x: 110, y: 64, rotation: -6, svgOrigin: "1400 600", duration: 1.0, ease: "power2.in" }, CUES.collapse - 0.15);
   tl.to(P + "scar", { attr: { "stroke-opacity": 0.8 }, duration: 0.3 }, CUES.collapse + 0.5);
   tl.to(P + "river", { attr: { fill: "#6b5040" }, duration: 0.6, ease: "power2.out" }, CUES.collapse + 0.7);
   tl.set(P + "splash", { autoAlpha: 1 }, CUES.collapse + 0.7);
-  SP.forEach((r, i) => tl.fromTo(r, { x: 0, y: 0 },
-    { x: 60 + (i * 29) % 140, y: 90 + (i * 7) % 30, duration: 0.6, ease: "power2.in" }, CUES.collapse + 0.7 + i * 0.04));
+  /* each piece lands with its centre at x 1650-1788, y 908-925 (half-extent <= 8 x 5 px): inside the water, above the
+     bed (y 934) and inside the banks, never in the black under the channel */
+  SP.forEach((r, i) => {
+    const cx = +r.getAttribute("x") + r.getAttribute("width") / 2, cy = +r.getAttribute("y") + r.getAttribute("height") / 2;
+    tl.fromTo(r, { x: 0, y: 0 },
+      { x: 1650 + (i * 23) % 140 - cx, y: 908 + (i * 5) % 18 - cy, duration: 0.6, ease: "power2.in" }, CUES.collapse + 0.7 + i * 0.04);
+  });
+  /* the last piece lands at collapse + 1.58; the pieces then dissolve into the brown water */
+  tl.to(P + "splash", { autoAlpha: 0, duration: 0.4, ease: "power1.in" }, CUES.collapse + 1.7);
   /* "the rain landslide Nepal sees every monsoon" */
   tl.fromTo(P + "rlab", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.rainslide - 0.15);
   tl.to(P + "ebr", { autoAlpha: 0, duration: 0.3 }, CUES.rainslide - 0.2);
