@@ -61,6 +61,10 @@ window.__timelines = window.__timelines || {};
   tl.set(["#hh-himlung", "#hh-denali"], { scaleY: 0 }, 0);
   tl.set("#hh-base", { scaleX: 0, transformOrigin: "left center" }, 0);
   tl.set("#hh-bracket", { scaleY: 0, transformOrigin: "top center" }, 0);
+  tl.set("#hh-card", { autoAlpha: 0 }, 0);
+
+  /* glass card anchors the whole diagram in the left safe zone before anything else reveals */
+  tl.fromTo("#hh-card", { x: -40, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0);
 
   /* ambient: gentle stage drift for the whole (now much longer) window (yoyo+repeat:1 doubles duration,
      so the half-cycle is DUR/2 to land the full down-up cycle by DUR, not 2*DUR) */
