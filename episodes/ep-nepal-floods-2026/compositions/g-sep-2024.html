@@ -113,8 +113,15 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#s24-nepal", { autoAlpha: 0, scale: 0.96, svgOrigin: "-123 -578" }, { autoAlpha: 1, scale: 1, svgOrigin: "-123 -578", duration: 0.8, ease: "power3.out" }, 0.1);
   tl.fromTo("#s24-nepal", { attr: { "stroke-opacity": 0.45 } }, { attr: { "stroke-opacity": 0.9 }, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 5 }, 1.0);
 
-  /* TWO YEARS AGO @3.50: the headline */
+  /* "late September calendar" @1.26-1.92: the rail opens on this storm's ten days, its dates (26, 27) ringed */
+  tl.fromTo("#s24-panel", { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 1.1);
+  tl.fromTo("#s24-eb", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.4);
+  tl.fromTo(["#s24-y26", "#s24-st26"], { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out", stagger: 0.08 }, 1.5);
+  tl.fromTo(r26, { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in", stagger: 0.06 }, 1.92);
+
+  /* TWO YEARS AGO @3.50: the headline, and the 2024 row joins the calendar (no rings until "same dates") */
   tl.fromTo("#s24-head", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 3.5);
+  tl.fromTo(["#s24-y24", "#s24-st24"], { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out", stagger: 0.08 }, 3.6);
   /* FLOODED @7.06 / KATHMANDU @7.62: the valley ring pops, the flood fills it, the label */
   tl.fromTo("#s24-valley", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 6.9);
   tl.fromTo("#s24-vring", { autoAlpha: 0, scale: 0.3, svgOrigin: "780 616" }, { autoAlpha: 1, scale: 1, svgOrigin: "780 616", duration: 0.45, ease: "back.out(2.5)" }, 7.06);
