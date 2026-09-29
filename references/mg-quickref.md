@@ -12,6 +12,7 @@ Read this, then `learnings/mg.md`. [G] = a gate fails it (gate named). A bespoke
 - Delete `_shot_*`, `_dur_*`, `_debug_*` staging pages from `compositions/` before the gates.
 
 ## Frame and safe zones (1920 x 1080)
+- Frame coverage: a graphic whose content covers little of the frame sits over footage or is designed full-frame; nothing leaves most of the 1920 x 1080 frame empty or black for more than ~3 s. A panel designed to overlay footage (RHS panel, glass card, lower-third) requires footage mounted beneath it in index.html, a lower-track clip spanning the whole host window. No gate sees either ("Verify").
 - Text-safe margin: all text at least 5 % inside the frame, 96 px left/right and 54 px top/bottom (owner 26 Sep 26; a gate comes later).
 - Presenter circle (Paul): 240 px circle at left 1640, top 708, plus a 4 px ring. While Paul is on screen nothing enters the corner x >= 1600, y >= 680. He appears with text and glass-card layouts; in a motion-graphics-only scene (the train being thrown) he is not shown: "That's just a distraction at that point. at least for now." Also hidden in the hook, the CTA window and under the close card. Not gated.
 - Zones: title top-left, centre popup, lower-third, RHS panel, source credit (a corner). One text element per zone per window, counting where animated elements travel mid-tween; intentional layering carries `data-overlap-ok="reason"`. Minis add FORMAT.md "Composition layout zones".
