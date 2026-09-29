@@ -110,7 +110,8 @@ window.__timelines = window.__timelines || {};
   /* ---- "valley walls" 11.54 -> "gave way" 12.16-12.38: a slab on the gorge wall slumps into the V ---- */
   tl.to("#gc-slab", { autoAlpha: 1, duration: 0.3 }, 11.4);
   tl.to("#gc-slab", { stroke: "#e8c56a", duration: 0.3 }, 11.6);
-  tl.to("#gc-slab", { x: 62, y: 232, rotation: 24, svgOrigin: "1297 330", duration: 0.55, ease: "power2.in" }, 12.0);
+  /* slab centre (1297,330) -> (1387,580): the V's left wall is at x 1371 at y 580, so it ends in the gorge, above the river */
+  tl.to("#gc-slab", { x: 90, y: 250, rotation: 24, svgOrigin: "1297 330", duration: 0.55, ease: "power2.in" }, 12.0);
 
   /* ---- exit with the panel slide, ends 13.26 (D - 0.1) ---- */
   tl.to("#gc-panel", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 12.66);
