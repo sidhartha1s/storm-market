@@ -116,13 +116,15 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "ebl", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.35);
   tl.fromTo(P + "ebr", { autoAlpha: 0 }, { autoAlpha: 0.4, duration: 0.4 }, 0.5);
 
-  /* ---- "satellite radar" 1.39-1.95: the satellite crosses the top of the left panel (x 150 -> 900, 1.25-3.35),
-     its beam sweeping the plot; a radar return pops on the line at each week tick as the beam passes it
-     (round 2: the left plot is no longer empty until the line draws at 3.37) ---- */
-  const SX0 = 150, SX1 = 900, ST0 = 1.25, ST1 = 3.35;
+  /* ---- "satellite" 1.39 -> "weeks" 3.93: the satellite crosses the top of the left panel (x 150 -> 900), its beam
+     sweeping the plot; the displacement line is revealed under the beam (clip edge x 150 + 760 f tracks the satellite
+     x 150 + 750 f) and a radar return pops on the line at each week tick as the beam passes it.
+     Round 3: the line used to wait for "moving" 3.37 (plot empty 0-3.4); it now fills from the word "satellite". ---- */
+  const SX0 = 150, SX1 = 900, ST0 = 1.39, ST1 = 3.93;
   tl.to(P + "sat", { autoAlpha: 1, duration: 0.25 }, ST0);
   tl.to(P + "sat", { x: SX1, duration: ST1 - ST0, ease: "none" }, ST0);        /* y stays 330, clear of the plot top 400 */
-  tl.fromTo(WAVES, { autoAlpha: 1, scale: 0.4 }, { autoAlpha: 0, scale: 1.7, duration: 0.7, ease: "power1.out", stagger: 0.22, repeat: 1, immediateRender: false }, 1.39);
+  tl.to(P + "lrect", { scaleX: 1, svgOrigin: "150 380", duration: ST1 - ST0, ease: "none" }, ST0);
+  tl.fromTo(WAVES, { autoAlpha: 1, scale: 0.4 }, { autoAlpha: 0, scale: 1.7, duration: 0.7, ease: "power1.out", stagger: 0.22, repeat: 2, immediateRender: false }, ST0);
   tl.to(P + "sat", { autoAlpha: 0, duration: 0.3 }, ST1);
   const dotsG = document.getElementById("gci-dots");
   const yAt = function (x) {           /* point on the displacement line nearest to screen x */
