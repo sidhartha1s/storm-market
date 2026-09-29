@@ -226,7 +226,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "t-began", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.began - 0.1);
 
   /* ---- exit: fade-through of the whole scene (full-frame MG), done by D - 0.05 ---- */
-  tl.to(P + "root", { autoAlpha: 0, duration: 0.55, ease: "power2.in" }, D - 0.6);
+  tl.to([P + "svg", P + "schem", P + "src"], { autoAlpha: 0, duration: 0.55, ease: "power2.in" }, D - 0.6);
   window.__timelines[ID] = tl;
 })();
 </script>
