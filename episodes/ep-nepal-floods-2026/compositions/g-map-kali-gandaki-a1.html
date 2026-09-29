@@ -105,8 +105,8 @@ window.__timelines = window.__timelines || {};
   /* ---- base map fades in immediately, so comp-local 0 never reads empty ---- */
   tl.to([P + "kg", P + "kgglow", P + "flow"], { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 0);
 
-  /* ---- ambient, whole window ---- */
-  tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: 5.269, ease: "none", repeat: 2, yoyo: true }, 0);
+  /* ---- ambient, whole window (29 Sep 26: the full-width .scan line was deleted; it read as a tracking
+     glitch through the labels. The flow dashes, river-glow pulse and camera push carry the motion) ---- */
   tl.fromTo(P + "flow", { strokeDashoffset: 0 }, { strokeDashoffset: -16, duration: DUR, ease: "none" }, 0);
   tl.fromTo(P + "kgglow", { attr: { "stroke-opacity": 0.2 } }, { attr: { "stroke-opacity": 0.45 }, duration: 1.4, ease: "sine.inOut", repeat: 10, yoyo: true }, 0);
   tl.fromTo(P + "src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 0.3);
