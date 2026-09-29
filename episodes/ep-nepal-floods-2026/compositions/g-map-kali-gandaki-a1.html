@@ -103,6 +103,10 @@ window.__timelines = window.__timelines || {};
   tl.set([P + "debhead", P + "uphead", P + "dnhead", P + "dam", P + "t-deb", P + "t-up", P + "t-dn",
     P + "pk-dh", P + "pk-an", P + "lete", P + "jom", P + "t-dh", P + "t-an", P + "t-lete", P + "t-jom", P + "bar", P + "t-bar",
     P + "eb", P + "r1", P + "r2", P + "note"], { autoAlpha: 0 }, 0);
+  tl.set([P + "kg", P + "kgglow", P + "flow"], { autoAlpha: 0 }, 0);
+
+  /* ---- base map fades in immediately, so comp-local 0 never reads empty ---- */
+  tl.to([P + "kg", P + "kgglow", P + "flow"], { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 0);
 
   /* ---- ambient, whole window ---- */
   tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: 5.269, ease: "none", repeat: 2, yoyo: true }, 0);
