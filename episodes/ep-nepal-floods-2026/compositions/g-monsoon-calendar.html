@@ -2,47 +2,86 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- g-monsoon-calendar (A2 open): June-October bar, onset mid-June, normal withdrawal early October, a red pin
-     lands on Sept 27 near the tail of the season (mg_specs/g-monsoon-calendar.md). Facts: factcheck-B#2 (normal
-     onset ~June 13, normal withdrawal ~Oct 2, DHM-derived). Axis: 360 px/month, June=240 .. Oct=1680.
-     Retimed to real words, retime-sheet g-monsoon-calendar host now 229.001 plus 17.391 (0.2s earlier start at the
-     blackout end, voice still starts at comp-local 0.2, so every sheet word time +0.2). Duration 17.391s declared. -->
+<!-- g-monsoon-calendar (A2 open): full-frame. A schematic hillside soaks from below while the monsoon calendar sweeps
+     from the normal onset (~June 13) to the storm (Sept 27); the normal withdrawal (~Oct 2) sits just past the pin.
+     Facts: factcheck-B #2 (normal onset ~June 13, normal withdrawal ~Oct 2, DHM-derived). No rainfall numbers.
+     Spec: mg_specs/g-monsoon-calendar.md (axis 360 px/month: June 1 = 240, July 600, Aug 960, Sept 1320, Oct 1680).
+     June 13 = 396, Sept 27 = 1644, Oct 2 = 1704 (brief section 4: onset in June half, pin left of withdrawal, withdrawal >= 1680).
+     Redo 29 Sep 26 (Opus): the top two thirds were empty for 17.4 s and the pin landed 6 s late. Now:
+     hillside cross-section y 170-600 across x 96-1824 (SCHEMATIC), blue saturation rising through it with the
+     month playhead 4.40-8.10, rain from "summer monsoon" 2.10, pin on "late September" 7.88, bracket + "3+ MONTHS OF
+     RAIN" on "three months" 11.10, hill pulse + SATURATED stamp on "holding more water" 14.20-14.80, camera push exit.
+     Layout: hill 170-600 · headline 640-724 · pin label 655-705 (right) · bracket 750-770 · calendar band 776-824
+     (months inside) · marker labels 840-880. Cues are real word times (retime sheet, host 229.001+17.391). -->
 <template>
 <style>
   #gmc-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
     background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
   .gmc-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
-  .gmc-mo { font-family:Arial, sans-serif; font-weight:700; font-size:22px; fill:#93a3b2; letter-spacing:3px; }
-  .gmc-tag { font-family:Arial, sans-serif; font-weight:700; font-size:28px; letter-spacing:3px; }
-  .gmc-pinlab { font-family:'Arial Black', Arial, sans-serif; font-size:52px; fill:#f2f5f8; }
+  .gmc-mo { font-family:Arial, sans-serif; font-weight:700; font-size:30px; fill:#93a3b2; letter-spacing:3px; }
+  .gmc-tag { font-family:Arial, sans-serif; font-weight:700; font-size:36px; letter-spacing:3px; }
+  .gmc-pinlab { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; fill:#f2f5f8; }
+  .gmc-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:84px; fill:#f2f5f8; }
+  .gmc-schem { font-family:Arial, sans-serif; font-weight:700; font-size:19px; letter-spacing:4px; fill:#93a3b2; }
+  .gmc-stamp { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:40px; letter-spacing:6px; fill:#e74c3c; }
 </style>
 <div id="gmc-root" data-composition-id="g-monsoon-calendar" data-width="1920" data-height="1080" data-duration="17.391">
-  <svg class="gmc-svg" viewBox="0 0 1920 1080">
-    <rect id="gmc-wetband" x="420" y="770" width="1284" height="20" fill="rgba(90,118,143,0.18)"/>
-    <line id="gmc-axis" x1="240" y1="780" x2="1680" y2="780" stroke="#5a768f" stroke-width="3"/>
-    <rect id="gmc-sweep" x="240" y="768" width="46" height="24" rx="6" fill="#bcd6ef" opacity="0.55"/>
-    <g id="gmc-ticks">
-      <line x1="240" y1="770" x2="240" y2="790" stroke="#3d5366" stroke-width="2"/>
-      <line x1="600" y1="770" x2="600" y2="790" stroke="#3d5366" stroke-width="2"/>
-      <line x1="960" y1="770" x2="960" y2="790" stroke="#3d5366" stroke-width="2"/>
-      <line x1="1320" y1="770" x2="1320" y2="790" stroke="#3d5366" stroke-width="2"/>
-      <line x1="1680" y1="770" x2="1680" y2="790" stroke="#3d5366" stroke-width="2"/>
+  <svg class="gmc-svg" id="gmc-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <clipPath id="gmc-hillclip">
+        <polygon points="96,600 96,235 360,172 700,258 1100,398 1500,520 1824,580 1824,600"/>
+      </clipPath>
+    </defs>
+    <g id="gmc-cam">
+      <!-- hillside cross-section (schematic) -->
+      <g id="gmc-hill">
+        <polygon id="gmc-soil" points="96,600 96,235 360,172 700,258 1100,398 1500,520 1824,580 1824,600" fill="#2a3644"/>
+        <g clip-path="url(#gmc-hillclip)">
+          <rect id="gmc-sat" x="96" y="600" width="1728" height="620" fill="#7fb2e5" opacity="0.55"/>
+          <line id="gmc-wl" x1="96" y1="600" x2="1824" y2="600" stroke="#bcd6ef" stroke-width="3" opacity="0.9"/>
+        </g>
+        <polyline id="gmc-surface" points="96,235 360,172 700,258 1100,398 1500,520 1824,580" fill="none" stroke="#5a768f" stroke-width="4" stroke-linejoin="round"/>
+        <line x1="96" y1="600" x2="1824" y2="600" stroke="#5a768f" stroke-width="2"/>
+        <text class="gmc-schem" id="gmc-schem" x="116" y="584">SCHEMATIC</text>
+        <g id="gmc-stampg">
+          <rect x="470" y="380" width="300" height="72" rx="6" fill="rgba(4,7,12,0.55)" stroke="#e74c3c" stroke-width="4"/>
+          <text class="gmc-stamp" id="gmc-stamp" x="620" y="431" text-anchor="middle">SATURATED</text>
+        </g>
+      </g>
+      <!-- rain streaks, built below in JS (no text) -->
+      <g id="gmc-rain" stroke="#9cc3ea" stroke-width="3" stroke-linecap="round" opacity="0.5"></g>
+
+      <!-- headline for "three months" -->
+      <text class="gmc-big" id="gmc-big" x="960" y="718" text-anchor="middle">3+ MONTHS OF RAIN</text>
+      <!-- amber bracket June 13 -> Sept 27 above the axis -->
+      <path id="gmc-brk" d="M396,770 V750 H1644 V770" fill="none" stroke="#d8a13a" stroke-width="5" stroke-linejoin="round"/>
+
+      <!-- calendar band -->
+      <rect id="gmc-band" x="240" y="776" width="1560" height="48" rx="6" fill="#15202b" stroke="#5a768f" stroke-width="2"/>
+      <rect id="gmc-season" x="396" y="776" width="1308" height="48" fill="rgba(127,178,229,0.10)" stroke="rgba(127,178,229,0.45)" stroke-width="2" stroke-dasharray="6 6"/>
+      <rect id="gmc-wet" x="396" y="778" width="1248" height="44" fill="#7fb2e5" opacity="0.38"/>
+      <g id="gmc-ticks" stroke="#5a768f" stroke-width="2">
+        <line x1="600" y1="776" x2="600" y2="824"/><line x1="960" y1="776" x2="960" y2="824"/>
+        <line x1="1320" y1="776" x2="1320" y2="824"/><line x1="1680" y1="776" x2="1680" y2="824"/>
+      </g>
+      <text class="gmc-mo" id="gmc-m1" x="420" y="811" text-anchor="middle">JUNE</text>
+      <text class="gmc-mo" id="gmc-m2" x="780" y="811" text-anchor="middle">JULY</text>
+      <text class="gmc-mo" id="gmc-m3" x="1140" y="811" text-anchor="middle">AUG</text>
+      <text class="gmc-mo" id="gmc-m4" x="1500" y="811" text-anchor="middle">SEPT</text>
+      <text class="gmc-mo" id="gmc-m5" x="1740" y="811" text-anchor="middle">OCT</text>
+      <line id="gmc-play" x1="396" y1="768" x2="396" y2="832" stroke="#f2f5f8" stroke-width="4"/>
+
+      <!-- markers under the band -->
+      <line id="gmc-onsettick" x1="396" y1="776" x2="396" y2="842" stroke="#7fb2e5" stroke-width="4"/>
+      <text class="gmc-tag" id="gmc-onsetlab" x="396" y="878" text-anchor="middle" fill="#7fb2e5">ONSET</text>
+      <path id="gmc-withtick" d="M1704,776 V858 H1696" fill="none" stroke="#d8a13a" stroke-width="4"/>
+      <text class="gmc-tag" id="gmc-withlab" x="1690" y="878" text-anchor="end" fill="#d8a13a">NORMAL WITHDRAWAL</text>
+
+      <!-- Sept 27 pin (tip on the band top) -->
+      <path id="gmc-pin" d="M1644,776 C1626,748 1618,736 1618,724 A26,26 0 1 1 1670,724 C1670,736 1662,748 1644,776 Z" fill="#d0121f"/>
+      <circle id="gmc-pindot" cx="1644" cy="723" r="9" fill="#f2f5f8"/>
+      <text class="gmc-pinlab" id="gmc-pinlab" x="1644" y="690" text-anchor="middle">SEPT 27</text>
     </g>
-    <text class="gmc-mo" x="240" y="820" text-anchor="middle">JUNE</text>
-    <text class="gmc-mo" x="600" y="820" text-anchor="middle">JULY</text>
-    <text class="gmc-mo" x="960" y="820" text-anchor="middle">AUG</text>
-    <text class="gmc-mo" x="1320" y="820" text-anchor="middle">SEPT</text>
-    <text class="gmc-mo" x="1680" y="820" text-anchor="middle">OCT</text>
-
-    <line id="gmc-onsettick" x1="420" y1="740" x2="420" y2="780" stroke="#7fb2e5" stroke-width="4"/>
-    <text class="gmc-tag" id="gmc-onsetlab" x="420" y="720" text-anchor="middle" fill="#7fb2e5">ONSET</text>
-
-    <line id="gmc-withtick" x1="1704" y1="740" x2="1704" y2="780" stroke="#d8a13a" stroke-width="4"/>
-    <text class="gmc-tag" id="gmc-withlab" x="1704" y="720" text-anchor="end" fill="#d8a13a">NORMAL WITHDRAWAL</text>
-
-    <path id="gmc-pin" d="M1644,600 C1644,600 1614,650 1644,690 C1674,650 1644,600 1644,600 Z" fill="#d0121f"/>
-    <circle id="gmc-pindot" cx="1644" cy="628" r="8" fill="#f2f5f8"/>
-    <text class="gmc-pinlab" id="gmc-pinlab" x="1644" y="570" text-anchor="middle">SEPT 27</text>
   </svg>
 </div>
 <script>
@@ -51,43 +90,84 @@ window.__timelines = window.__timelines || {};
   const ID = "g-monsoon-calendar", P = "#gmc-";
   const DUR = 17.391;
   const tl = gsap.timeline({ paused: true });
-  tl.set([P+"onsettick", P+"onsetlab", P+"withtick", P+"withlab", P+"pin", P+"pindot", P+"pinlab", P+"wetband"], { autoAlpha: 0 }, 0);
-  tl.set([P+"axis", P+"wetband"], { scaleX: 0, transformOrigin: "left center" }, 0);
-  tl.set(P+"ticks", { autoAlpha: 0 }, 0);
-  tl.set(P+"pin", { y: -60, svgOrigin: "1644 690" }, 0);
-  tl.set(P+"sweep", { autoAlpha: 0, x: 0 }, 0);
 
-  /* whole window: the wet band breathes slowly */
-  tl.to(P+"wetband", { opacity: 0.12, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 6 }, 3.2);
+  /* rain: 40 streaks over x 96-1824, y 40-600; fixed hand-picked spread, finite repeats only */
+  const rain = document.getElementById("gmc-rain");
+  const streaks = [];
+  if (rain) {
+    for (let i = 0; i < 40; i++) {
+      const x = 110 + i * 43 + ((i * 29) % 23);
+      const y = 40 + ((i * 37) % 150);
+      const ln = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      ln.setAttribute("id", "gmc-r" + i);
+      ln.setAttribute("x1", x); ln.setAttribute("y1", y);
+      ln.setAttribute("x2", x - 8); ln.setAttribute("y2", y + 34);
+      rain.appendChild(ln);
+      streaks.push(ln);
+    }
+  }
 
-  /* ambient: a highlight sweeps the axis end-to-end, continuously, so the 6.5-14.5s hold (between the
-     withdrawal-tag reveal and the pin drop) is never pixel-static */
-  tl.to(P+"sweep", { autoAlpha: 0.55, duration: 0.3 }, 1.0);
-  tl.to(P+"sweep", { x: 1394, duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 5 }, 1.0);
+  const HIDE = [P+"hill", P+"rain", P+"big", P+"brk", P+"band", P+"season", P+"wet", P+"ticks", P+"m1", P+"m2", P+"m3",
+    P+"m4", P+"m5", P+"play", P+"onsettick", P+"onsetlab", P+"withtick", P+"withlab", P+"pin", P+"pindot", P+"pinlab", P+"stampg"];
+  tl.set(HIDE, { autoAlpha: 0 }, 0);
+  tl.set(P+"band", { scaleX: 0, svgOrigin: "240 800" }, 0);
+  tl.set(P+"wet", { scaleX: 0, svgOrigin: "396 800" }, 0);
+  tl.set(P+"brk", { scaleX: 0, svgOrigin: "1020 760" }, 0);
+  tl.set(P+"pin", { y: -70 }, 0);
+  tl.set(P+"hill", { y: 40, scale: 1, svgOrigin: "960 600" }, 0);
+  tl.set(P+"stampg", { scale: 1.5, svgOrigin: "620 416" }, 0);
+  tl.set(P+"cam", { scale: 1, svgOrigin: "960 540" }, 0);
 
-  /* real word "Nepal" @0.20 (host now starts 0.2s earlier at blackout end, voice still @comp-local 0.2): Nepal
-     gets most of its rain from the summer monsoon */
-  tl.to(P+"axis", { scaleX: 1, autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 0.2);
-  tl.to(P+"wetband", { scaleX: 1, autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 0.4);
-  tl.fromTo(P+"ticks", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.8);
+  /* "Nepal" @0.20 gets most of its rain: calendar band draws, months settle, hillside rises into frame */
+  tl.to(P+"band", { autoAlpha: 1, scaleX: 1, duration: 0.8, ease: "power3.out" }, 0.20);
+  tl.to([P+"ticks", P+"m1", P+"m2", P+"m3", P+"m4", P+"m5"], { autoAlpha: 1, duration: 0.3, stagger: 0.08 }, 0.60);
+  tl.to(P+"hill", { autoAlpha: 1, y: 0, duration: 0.9, ease: "power3.out" }, 0.50);
 
-  /* real words "mid" @4.38 / "-June," @4.56: which usually arrives in mid June */
-  tl.fromTo([P+"onsettick", P+"onsetlab"], { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.41);
+  /* "summer monsoon" @2.10-2.32: rain starts and keeps falling to the exit */
+  tl.to(P+"rain", { autoAlpha: 1, duration: 0.4 }, 2.10);
+  streaks.forEach(function (ln, i) {
+    const d = 0.75 + (i % 5) * 0.07;
+    const at = 2.10 + ((i * 0.13) % 0.8);
+    const reps = Math.floor((16.6 - at) / d) - 1;
+    tl.fromTo(ln, { y: 0 }, { y: 400, duration: d, ease: "none", repeat: reps }, at);
+  });
 
-  /* real words "early" @6.28 / "October." @6.56: and starts leaving in early October */
-  tl.fromTo([P+"withtick", P+"withlab"], { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.41);
+  /* "mid" @4.38 "-June": ONSET marker; the normal season outline appears; playhead starts from June 13 */
+  tl.fromTo([P+"onsettick", P+"onsetlab"], { autoAlpha: 0, y: -12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.38);
+  tl.to(P+"season", { autoAlpha: 1, duration: 0.5 }, 4.45);
+  tl.to([P+"play", P+"wet"], { autoAlpha: 1, duration: 0.2 }, 4.40);
+  /* month sweep June 13 (x 396) -> Sept 27 (x 1644), hill fills from below in step (linear 4.40-8.10) */
+  tl.to(P+"play", { x: 1248, duration: 3.70, ease: "none" }, 4.40);
+  tl.to(P+"wet", { scaleX: 1, duration: 3.70, ease: "none" }, 4.40);
+  tl.to(P+"sat", { attr: { y: 240 }, duration: 3.70, ease: "none" }, 4.40);
+  tl.to(P+"wl", { attr: { y1: 240, y2: 240 }, duration: 3.70, ease: "none" }, 4.40);
 
-  /* real word "hillsides" @9.26: the hillsides have been soaking for more than three months */
-  tl.to(P+"wetband", { opacity: 0.4, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 9.11);
+  /* "early" @6.28 "October." @6.56: NORMAL WITHDRAWAL marker, just past the Oct tick */
+  tl.fromTo([P+"withtick", P+"withlab"], { autoAlpha: 0, y: -12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.40);
 
-  /* real word "holding" @14.20: holding more water than at any other time — the pin drops */
-  tl.to(P+"pin", { autoAlpha: 1, y: 0, duration: 0.5, ease: "bounce.out" }, 14.05);
-  tl.to(P+"pindot", { autoAlpha: 1, duration: 0.3 }, 14.35);
-  tl.fromTo(P+"pinlab", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 14.45);
+  /* "late" @7.88 "September," @8.08: the red pin drops on Sept 27 as the playhead arrives */
+  tl.to(P+"pin", { autoAlpha: 1, y: 0, duration: 0.45, ease: "bounce.out" }, 7.70);
+  tl.to(P+"pindot", { autoAlpha: 1, duration: 0.2 }, 8.00);
+  tl.fromTo(P+"pinlab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 7.88);
+  tl.to(P+"play", { autoAlpha: 0, duration: 0.3 }, 8.20);
 
-  /* exit, finishes by D - 0.1 */
-  tl.to([P+"axis", P+"wetband", P+"ticks", P+"onsettick", P+"onsetlab", P+"withtick", P+"withlab", P+"pin", P+"pindot", P+"pinlab", P+"sweep"],
-        { x: 660, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 16.65);
+  /* "hillsides" @9.26 "soaking" @10.12: the water line shimmers inside the soaked hill */
+  tl.to(P+"sat", { opacity: 0.72, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 9.26);
+  tl.to(P+"wl", { attr: { y1: 228, y2: 252 }, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 3 }, 9.30);
+
+  /* "three" @11.10 "months." @11.32: bracket spans June 13 -> Sept 27, headline lands */
+  tl.to(P+"brk", { autoAlpha: 1, scaleX: 1, duration: 0.45, ease: "power3.out" }, 11.00);
+  tl.fromTo(P+"big", { autoAlpha: 0, scale: 1.15, svgOrigin: "960 690" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(1.6)", svgOrigin: "960 690" }, 11.10);
+
+  /* "holding" @14.20 "more water" @14.48-14.80: the soaked hill pulses, SATURATED stamp lands */
+  tl.to(P+"hill", { scale: 1.02, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 3 }, 14.20);
+  tl.to(P+"stampg", { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 14.50);
+  tl.to(P+"pin", { scale: 1.12, svgOrigin: "1644 776", duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 15.40);
+
+  /* exit: camera push + fade 16.70 -> 17.29 */
+  tl.to(P+"cam", { scale: 1.08, duration: 0.59, ease: "power2.in" }, 16.70);
+  tl.to(P+"svg", { autoAlpha: 0, duration: 0.59, ease: "power2.in" }, 16.70);
+  tl.to({}, { duration: 0.01 }, DUR - 0.01);
   window.__timelines[ID] = tl;
 })();
 </script>
