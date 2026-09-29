@@ -65,6 +65,7 @@ window.__timelines = window.__timelines || {};
   const CUES = {
     began: 2.71,   /* CUE "began." @2.86 (sheet) */
     aug26: 4.15,   /* CUE "26th," @4.30 (sheet) */
+    lang: 7.31,    /* CUE "Langtang" @7.46 (sheet) */
     valley: 7.77,  /* CUE "Valley." @7.92 (sheet) */
     river: 9.41,   /* CUE "flood" @9.56 (sheet) */
     sept21: 11.79, /* CUE "21st," @11.94 (sheet) */
@@ -80,7 +81,8 @@ window.__timelines = window.__timelines || {};
   const fmt = (v) => Math.round(v).toLocaleString("en-US");
 
   /* ---- initial state ---- */
-  tl.set(P + "cam", cam(1), 0);
+  /* 29 Sep 26: camera 1.2 about (660,540) so Nepal fills x 0-1180, left of the rail (was 1.0 -> 1.03) */
+  tl.set(P + "cam", cam(1.2), 0);
   tl.set(P + "tri", { strokeDasharray: TRI, strokeDashoffset: TRI }, 0);
   tl.set([P + "kgpin", P + "kgring", P + "t-sep", P + "t-kg", P + "ltpin", P + "ltring", P + "t-lt", P + "t-aug",
     P + "eb", P + "asof", P + "c1", P + "c1l", P + "c2", P + "c2l"], { autoAlpha: 0 }, 0);
