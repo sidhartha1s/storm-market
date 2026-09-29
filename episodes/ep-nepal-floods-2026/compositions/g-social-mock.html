@@ -2,75 +2,98 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- g-social-mock (A4, mounts before g-rock-ice-vs-rain in the same picture line): a generic phone-frame
-     social post mock, every line blurred except "glacier collapse", a red "?" stamp. No real handle, no
-     real username, no real avatar photo. Brief: mg_specs/g-social-mock.md.
-     Cues: frame in 0.3, lines stagger 1.2, "glacier collapse" unblurs 2.74, "?" stamp 5.5, exit 7.6.
-     Duration 9.0s. -->
+<!-- g-social-mock (A4): FULL-FRAME, track 2, host 577.545 + 8.0 (nx-a4-s4). Rebuilt 29 Sep 26 (redo list): the old phone
+     rendered empty because every child used frame coordinates inside a positioned phone (all of it landed at x 1544-1896).
+     No phone now: six blurred glass post cards cascade in, one becomes the hero post and its line unblurs. Every child uses
+     card-relative coordinates. Blurred-handle rule kept: no real names, handles or avatars (mg_specs/g-social-mock.md).
+     The "12" is the NDRRMA count already on screen in the toll cards (factcheck-C: 12 confirmed dead, 27 Sept).
+     Cues (retime-sheet g-social-mock): story 0.38, online 0.74, count 2.40, Posts 3.48, glacier 4.96, collapse 5.32,
+     repeat 6.30, Langtang 6.84. Exit 7.35-8.0. -->
 <template>
 <style>
   .sm-wrap { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
     background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .sm-phone { position:absolute; left:760px; top:140px; width:400px; height:800px; border-radius:28px;
-    background:#15202b; border:2px solid #93a3b2; box-sizing:border-box; }
-  .sm-notch { position:absolute; left:860px; top:150px; width:200px; height:8px; border-radius:4px; background:#0b1016; }
-  .sm-avatar { position:absolute; left:784px; top:190px; width:56px; height:56px; border-radius:50%; background:#2a3644; }
-  .sm-blur { position:absolute; height:14px; border-radius:6px; background:rgba(74,85,96,.55); filter:blur(2.5px); }
-  .sm-crisp { position:absolute; left:856px; top:270px; font-weight:700; font-size:26px; color:#f2f5f8; white-space:nowrap; }
-  .sm-thumb { position:absolute; left:784px; top:430px; width:352px; height:200px; border-radius:8px; background:#0b1016; }
-  .sm-stamp { position:absolute; left:970px; top:690px; width:140px; height:140px; border-radius:50%; background:#8e2020;
-    box-shadow:0 8px 30px rgba(0,0,0,.6); display:flex; align-items:center; justify-content:center;
-    font-family:'AbrilFig', Georgia, serif; font-size:84px; color:#f4f0e8; }
+  .sm-glass { position:absolute; box-sizing:border-box; overflow:hidden; border-radius:28px;
+    background: rgba(10,16,24,0.55); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 30px 90px rgba(0,0,0,0.5); }
+  .sm-card { width:520px; height:300px; }
+  .sm-av { position:absolute; left:28px; top:28px; width:56px; height:56px; border-radius:50%; background:#5a768f; filter:blur(3px); }
+  .sm-bar { position:absolute; border-radius:8px; background:rgba(147,163,178,0.55); filter:blur(4px); }
+  .sm-thumb { position:absolute; border-radius:14px; background:linear-gradient(135deg, #2a3644, #15202b); filter:blur(3px); }
+  .sm-chip { position:absolute; left:96px; top:96px; padding:14px 26px 12px; }
+  .sm-eb { font-weight:700; font-size:22px; line-height:26px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  .sm-num { margin-top:4px; font-family:'Courier New', monospace; font-weight:700; font-size:52px; line-height:56px; color:#e74c3c; white-space:nowrap; }
+  .sm-hero { left:410px; top:240px; width:1100px; height:600px; }
+  .sm-hav { position:absolute; left:40px; top:40px; width:88px; height:88px; border-radius:50%; background:#5a768f; filter:blur(4px); }
+  .sm-line1 { position:absolute; left:40px; top:166px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:64px; line-height:76px; color:#f2f5f8; white-space:nowrap; }
+  .sm-line2 { position:absolute; left:40px; top:262px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:40px; line-height:50px; color:#d8a13a; white-space:nowrap; }
+  .sm-play { position:absolute; left:500px; top:450px; width:0; height:0; border-left:56px solid rgba(242,245,248,0.55); border-top:34px solid transparent; border-bottom:34px solid transparent; }
+  .sm-q { position:absolute; left:1440px; top:150px; font-family:'AbrilFig', Georgia, serif; font-size:180px; line-height:190px; color:#d0121f;
+    text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
 </style>
 <div class="sm-wrap" data-composition-id="g-social-mock" data-width="1920" data-height="1080" data-duration="8.0">
-  <div class="sm-phone" id="sm-phone">
-    <div class="sm-notch" id="sm-notch"></div>
-    <div class="sm-avatar" id="sm-avatar"></div>
-    <div class="sm-blur" id="sm-b1" style="left:856px; top:196px; width:180px; height:16px;"></div>
-    <div class="sm-blur" id="sm-b2" style="left:856px; top:220px; width:120px; height:12px;"></div>
-    <div class="sm-blur" id="sm-b3" style="left:784px; top:270px; width:300px;"></div>
-    <div class="sm-blur" id="sm-b4" style="left:784px; top:296px; width:280px;"></div>
-    <div class="sm-blur" id="sm-b5" style="left:784px; top:322px; width:260px;"></div>
-    <div class="sm-crisp" id="sm-crisp" style="left:784px; top:320px;">glacier collapse</div>
-    <div class="sm-blur" id="sm-b6" style="left:784px; top:348px; width:300px;"></div>
-    <div class="sm-thumb" id="sm-thumb"></div>
+  <div class="sm-glass sm-card" id="sm-c1" style="left:300px; top:240px;"><div class="sm-av"></div><div class="sm-bar" style="left:104px; top:40px; width:220px; height:18px;"></div><div class="sm-bar" style="left:28px; top:112px; width:440px; height:16px;"></div><div class="sm-bar" style="left:28px; top:146px; width:380px; height:16px;"></div><div class="sm-thumb" style="left:28px; top:186px; width:464px; height:86px;"></div></div>
+  <div class="sm-glass sm-card" id="sm-c2" style="left:760px; top:190px;"><div class="sm-av"></div><div class="sm-bar" style="left:104px; top:40px; width:180px; height:18px;"></div><div class="sm-bar" style="left:28px; top:112px; width:460px; height:16px;"></div><div class="sm-bar" style="left:28px; top:146px; width:300px; height:16px;"></div><div class="sm-thumb" style="left:28px; top:186px; width:464px; height:86px;"></div></div>
+  <div class="sm-glass sm-card" id="sm-c3" style="left:1160px; top:250px;"><div class="sm-av"></div><div class="sm-bar" style="left:104px; top:40px; width:240px; height:18px;"></div><div class="sm-bar" style="left:28px; top:112px; width:420px; height:16px;"></div><div class="sm-bar" style="left:28px; top:146px; width:440px; height:16px;"></div><div class="sm-thumb" style="left:28px; top:186px; width:464px; height:86px;"></div></div>
+  <div class="sm-glass sm-card" id="sm-c4" style="left:240px; top:520px;"><div class="sm-av"></div><div class="sm-bar" style="left:104px; top:40px; width:200px; height:18px;"></div><div class="sm-bar" style="left:28px; top:112px; width:450px; height:16px;"></div><div class="sm-bar" style="left:28px; top:146px; width:340px; height:16px;"></div><div class="sm-thumb" style="left:28px; top:186px; width:464px; height:86px;"></div></div>
+  <div class="sm-glass sm-card" id="sm-c5" style="left:700px; top:500px;"><div class="sm-av"></div><div class="sm-bar" style="left:104px; top:40px; width:260px; height:18px;"></div><div class="sm-bar" style="left:28px; top:112px; width:430px; height:16px;"></div><div class="sm-bar" style="left:28px; top:146px; width:400px; height:16px;"></div><div class="sm-thumb" style="left:28px; top:186px; width:464px; height:86px;"></div></div>
+  <div class="sm-glass sm-card" id="sm-c6" style="left:1160px; top:520px;"><div class="sm-av"></div><div class="sm-bar" style="left:104px; top:40px; width:210px; height:18px;"></div><div class="sm-bar" style="left:28px; top:112px; width:400px; height:16px;"></div><div class="sm-bar" style="left:28px; top:146px; width:460px; height:16px;"></div><div class="sm-thumb" style="left:28px; top:186px; width:464px; height:86px;"></div></div>
+  <div class="sm-glass sm-chip" id="sm-chip">
+    <div class="sm-eb" id="sm-eb">OFFICIAL COUNT</div>
+    <div class="sm-num" id="sm-num">12</div>
   </div>
-  <div class="sm-stamp" id="sm-stamp">?</div>
+  <div class="sm-glass sm-hero" id="sm-hero">
+    <div class="sm-hav"></div>
+    <div class="sm-bar" style="left:156px; top:48px; width:320px; height:28px;"></div>
+    <div class="sm-bar" style="left:156px; top:92px; width:200px; height:28px;"></div>
+    <div class="sm-bar" id="sm-b1" style="left:40px; top:192px; width:960px; height:24px;"></div>
+    <div class="sm-bar" id="sm-b2" style="left:40px; top:274px; width:880px; height:24px;"></div>
+    <div class="sm-bar" style="left:40px; top:346px; width:620px; height:24px;"></div>
+    <div class="sm-thumb" style="left:40px; top:396px; width:1020px; height:170px;"></div>
+    <div class="sm-play" id="sm-play"></div>
+    <div class="sm-line1" id="sm-line1">&ldquo;Another Glacier Collapse&rdquo;</div>
+    <div class="sm-line2" id="sm-line2">A Repeat Of Langtang</div>
+  </div>
+  <div class="sm-q" id="sm-q">?</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const D = 8.0;
-  const LINES = ["#sm-b1", "#sm-b2", "#sm-b4", "#sm-b6"];
+  const DUR = 8.0;
+  const CARDS = ["#sm-c1", "#sm-c2", "#sm-c3", "#sm-c4", "#sm-c5", "#sm-c6"];
+  const REST = ["#sm-c1", "#sm-c2", "#sm-c3", "#sm-c4", "#sm-c6"];
+  tl.set(CARDS.concat(["#sm-chip", "#sm-hero", "#sm-line1", "#sm-line2", "#sm-q"]), { autoAlpha: 0 }, 0);
 
-  tl.set(["#sm-phone", "#sm-stamp"], { autoAlpha: 0 }, 0);
-  tl.set("#sm-phone", { y: 40 }, 0);
-  tl.set(["#sm-avatar", "#sm-notch", "#sm-thumb"].concat(LINES), { autoAlpha: 0 }, 0);
-  tl.set(["#sm-b5", "#sm-crisp"], { autoAlpha: 0 }, 0);
-  tl.set("#sm-stamp", { scale: 2.2, rotation: -12, transformOrigin: "50% 50%" }, 0);
+  /* STORY ONLINE @0.38: six posts fly in from the right in a loose cascade (0.15 s stagger), each a slight tilt */
+  CARDS.forEach(function (c, i) {
+    tl.fromTo(c, { autoAlpha: 0, x: 900, rotation: 0 }, { autoAlpha: 1, x: 0, rotation: [-3, 2, -2, 3, -1, 2][i], duration: 0.6, ease: "power3.out" }, 0.38 + i * 0.15);
+  });
+  /* the feed keeps scrolling gently until the hero moment */
+  tl.to(CARDS, { y: -18, duration: 2.3, ease: "sine.inOut" }, 1.2);
+  /* COUNT @2.40: the official count chip */
+  tl.fromTo("#sm-chip", { autoAlpha: 0, y: -20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.4);
 
-  /* ambient: the post content drifts very slightly (scroll feel) */
-  tl.fromTo("#sm-phone", { y: 0 }, { y: -6, duration: D, ease: "none" }, 0.9);
+  /* POSTS @3.48: card 5 grows into the hero post (from its own box: scale 520/1100, offset to card 5), the rest dim and drift */
+  tl.set("#sm-c5", { autoAlpha: 0 }, 3.48);
+  tl.fromTo("#sm-hero", { autoAlpha: 1, scale: 0.4727, x: 290 - 550 * 0.5273 + 0, y: 260 - 300 * 0.5273, transformOrigin: "0% 0%" },
+    { autoAlpha: 1, scale: 1, x: 0, y: 0, duration: 0.6, ease: "power3.inOut" }, 3.48);
+  tl.to(REST, { opacity: 0.25, duration: 0.5 }, 3.48);
+  tl.to(REST.concat(["#sm-chip"]), { x: "-=80", duration: 4.0, ease: "none" }, 3.48);
+  tl.fromTo("#sm-play", { scale: 1 }, { scale: 1.15, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 5 }, 4.1);
 
-  /* phone frame slides up @0.3 */
-  tl.to("#sm-phone", { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.3);
-  tl.fromTo(["#sm-avatar", "#sm-notch", "#sm-thumb"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35 }, 0.6);
+  /* GLACIER @4.96: the first body line unblurs into the claim */
+  tl.to("#sm-b1", { autoAlpha: 0, duration: 0.3 }, 4.96);
+  tl.fromTo("#sm-line1", { autoAlpha: 0, filter: "blur(14px)" }, { autoAlpha: 1, filter: "blur(0px)", duration: 0.45, ease: "power2.out" }, 4.96);
+  /* REPEAT @6.30: the second line */
+  tl.to("#sm-b2", { autoAlpha: 0, duration: 0.25 }, 6.3);
+  tl.fromTo("#sm-line2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 6.3);
+  /* LANGTANG @6.84: the red ? slams onto the hero's top-right corner */
+  tl.fromTo("#sm-q", { autoAlpha: 0, scale: 2.2, rotation: -12 }, { autoAlpha: 1, scale: 1, rotation: -6, duration: 0.3, ease: "power4.in" }, 6.84);
 
-  /* "Posts sharing the video called it another..." Posts @3.48: blurred lines stagger in, row 5 also starts blurred */
-  tl.fromTo(LINES.concat(["#sm-b5"]), { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out", stagger: 0.12 }, 3.33);
-
-  /* "another glacier collapse," glacier @4.96: row 5 unblurs into the one crisp phrase */
-  tl.to("#sm-b5", { autoAlpha: 0, duration: 0.3 }, 4.81);
-  tl.fromTo("#sm-crisp", { autoAlpha: 0, scale: 1.06, transformOrigin: "left center" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 4.81);
-
-  /* "a repeat of Langtang." slam ends on "repeat" @6.30: red "?" stamp slams in */
-  tl.to("#sm-stamp", { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.in" }, 5.95);
-  tl.to("#sm-stamp", { rotation: -8, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 3 }, 6.35);
-
-  /* exit 7.35, finishes 7.85 (D-0.1 = 7.9); holds through "Langtang." @6.84, before "Every" @7.90 cuts to g-rock-ice-vs-rain */
-  tl.to(["#sm-phone", "#sm-stamp"], { x: 60, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 7.35);
-  tl.to({}, { duration: 0.01 }, D - 0.01);
+  /* exit 7.35: the hero and the ? slide right, the rest fade */
+  tl.to(["#sm-hero", "#sm-q"], { x: "+=980", autoAlpha: 0, duration: DUR - 7.35, ease: "power3.in" }, 7.35);
+  tl.to(REST.concat(["#sm-chip"]), { autoAlpha: 0, duration: DUR - 7.35, ease: "power2.in" }, 7.35);
   window.__timelines["g-social-mock"] = tl;
 })();
 </script>
