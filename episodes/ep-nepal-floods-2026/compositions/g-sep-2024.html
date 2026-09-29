@@ -131,8 +131,7 @@ window.__timelines = window.__timelines || {};
   /* LANDSLIDES @9.80: ten red slide ticks around the rim */
   tl.fromTo(gsap.utils.toArray("#s24-ticks path"), { autoAlpha: 0, scale: 0.2, svgOrigin: "780 616" }, { autoAlpha: 1, scale: 1, svgOrigin: "780 616", duration: 0.3, ease: "power3.out", stagger: 0.08 }, 9.8);
 
-  /* 200 ... LIVES @11.42-11.72: the rail opens, the counter appears at 11.2 on its first tick (150) and lands 200+ on LIVES */
-  tl.fromTo("#s24-panel", { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 10.6);
+  /* 200 ... LIVES @11.42-11.72: the counter appears under the calendar at 11.2 on its first tick (150), lands 200+ on LIVES */
   tl.fromTo("#s24-cgrp", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 11.2);
   const cnt = { v: 150 };
   tl.to(cnt, { v: 200, duration: 0.52, ease: "power4.out", onUpdate: function () {
