@@ -219,6 +219,8 @@ window.__timelines = window.__timelines || {};
 
   /* ================= SCENE 2 ================= */
   tl.to("#rim-s2", { autoAlpha: 1, duration: 0.45, ease: "power1.out" }, 17.30);
+  /* the face the slab came off rises with the cut, so the scene is never an empty frame before the buildings */
+  tl.fromTo("#rim-massif", { y: 60 }, { y: 0, duration: 0.8, ease: "power3.out" }, 17.30);
   tl.to("#rim-s2", { scale: 1.03, duration: 26.43 - 17.3, ease: "none" }, 17.30); /* slow camera drift to the exit */
   /* "Langtang" @17.94 "slab" @18.42 */
   tl.fromTo("#rim-slab2", { autoAlpha: 0, y: -20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 17.60);
