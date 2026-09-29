@@ -66,7 +66,12 @@
     <text class="gci-stamp" id="gci-stamp" x="1414" y="600" text-anchor="middle">NO PUBLISHED DATA</text>
 
     <!-- satellite, drawn about (0,0) and moved by GSAP only; its radar waves ride with it -->
+    <!-- radar returns: one dot per week tick on the displacement line, placed in JS, popped as the beam passes -->
+    <g id="gci-dots"></g>
     <g id="gci-sat">
+      <!-- radar beam down to the plot baseline (sat rides at y 330, baseline y 760) -->
+      <path id="gci-cone" d="M0,18 L-46,428 L46,428 Z" fill="#7fb2e5" fill-opacity="0.09"/>
+      <path id="gci-beam" d="M0,18 L0,428" stroke="#7fb2e5" stroke-opacity="0.5" stroke-width="2" stroke-dasharray="6 6" fill="none"/>
       <rect x="-13" y="-9" width="26" height="18" rx="3" fill="#c8d3e0"/>
       <rect x="-47" y="-6" width="30" height="12" fill="#5a768f" stroke="#7fb2e5" stroke-width="1.5"/>
       <rect x="17" y="-6" width="30" height="12" fill="#5a768f" stroke="#7fb2e5" stroke-width="1.5"/>
