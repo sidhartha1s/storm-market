@@ -70,8 +70,10 @@ window.__timelines = window.__timelines || {};
   tl.set([P + "title", P + "t-dh", P + "t-an", P + "t-gorge", P + "t-him", P + "t-col", P + "pin", P + "ring",
     P + "pk-dh", P + "pk-an", P + "pinch-l", P + "pinch-r"], { autoAlpha: 0 }, 0);
 
-  /* ---- ambient, whole window ---- */
-  tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: 8.96, ease: "none", repeat: 1, yoyo: true }, 0);
+  /* ---- ambient, whole window (29 Sep 26: the full-width .scan line was deleted; it read as a tracking
+     glitch through the labels and the gorge panel. The camera push and river-glow pulse carry the motion.
+     From local 4.558 (abs 89.3) g-gorge-vs-grand-canyon lays its RHS panel over x >= 1100; every map
+     label here sits at x <= 900, so the panel's solid zone only covers bare basemap) ---- */
   tl.to(P + "cam", Object.assign(cam(1.04), { duration: DUR, ease: "none" }), 0);
   tl.fromTo(P + "nepal", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 0);
   tl.fromTo(P + "src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 0.3);
