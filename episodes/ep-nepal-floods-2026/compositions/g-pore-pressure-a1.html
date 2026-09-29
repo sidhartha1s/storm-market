@@ -154,7 +154,7 @@ window.__timelines = window.__timelines || {};
   tl.set([P + "hl1", P + "hl2", P + "src", P + "schem", P + "rain", P + "ticks", P + "gauge", P + "t-press",
     P + "t-slip", P + "slipleader", P + "t-fric", P + "fricleader", P + "t-rain", P + "t-3s", P + "t-began", P + "railstart", P + "debris"], { autoAlpha: 0 }, 0);
   tl.set(ARROWS, { autoAlpha: 0, scaleY: 0 }, 0);
-  tl.set(TICKS, { scale: 0, autoAlpha: 1 }, 0);
+  tl.set(TICKS, { scale: 0, autoAlpha: 1, transformOrigin: "50% 50%" }, 0);
   tl.set([P + "railrain", P + "rail3s"], { scaleX: 0, autoAlpha: 0 }, 0);
   tl.set(P + "needle", { rotation: 0, svgOrigin: "1560 240" }, 0);
   tl.set(DEB, { x: 0, y: 0 }, 0);
