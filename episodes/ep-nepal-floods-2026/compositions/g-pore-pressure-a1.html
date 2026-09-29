@@ -218,7 +218,7 @@ window.__timelines = window.__timelines || {};
   tl.to(P + "block", { x: 155, y: 24, rotation: 1, svgOrigin: "1030 590", duration: 0.8, ease: "power3.in" }, CUES.gives);
   tl.set(P + "debris", { autoAlpha: 1 }, CUES.gives + 0.55);
   DEB.forEach((r, i) => {
-    /* each piece lands with its centre at x 1662-1757, y 930-945: with the +-90 turn its half-extent is <= 8.5 px, so
+    /* each piece lands with its centre at x 1662-1752, y 930-945: with the +-90 turn its half-extent is <= 8.5 px, so
        it stays inside the water (surface 920, flat bed 958 across x 1650-1770), never below the bed */
     const cx = +r.getAttribute("x") + r.getAttribute("width") / 2, cy = +r.getAttribute("y") + r.getAttribute("height") / 2;
     tl.fromTo(r, { x: 0, y: 0, rotation: 0 },
