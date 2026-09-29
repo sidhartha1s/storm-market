@@ -109,9 +109,9 @@ window.__timelines = window.__timelines || {};
 
   /* ---- ambient, whole window (29 Sep 26: the full-width .scan line was deleted, same defect as the Kali
      Gandaki maps; the spinning arms, ring pulses, track draw, Nepal border pulse and rain carry the motion,
-     longest gap 14.91-16.43) ---- */
+     and the Nepal border pulse now runs to 18.0 so something drifts through the 14.9-16.4 hold) ---- */
   tl.fromTo(P + "src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 0.3);
-  tl.fromTo(P + "nepal", { attr: { "stroke-opacity": 0.35 } }, { attr: { "stroke-opacity": 0.75 }, duration: 1.2, ease: "sine.inOut", repeat: 4, yoyo: true }, 0);
+  tl.fromTo(P + "nepal", { attr: { "stroke-opacity": 0.35 } }, { attr: { "stroke-opacity": 0.75 }, duration: 1.2, ease: "sine.inOut", repeat: 14, yoyo: true }, 0);
 
   /* ---- low pressure forms over the Bay ---- */
   tl.fromTo(P + "sym", { autoAlpha: 0, scale: 0.3, svgOrigin: "790.9 689.2" }, { autoAlpha: 1, scale: 1, duration: 0.6, ease: "back.out(2)" }, CUES.low);
