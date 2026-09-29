@@ -49,7 +49,11 @@
       </g>
       <!-- friction vs weight -->
       <g id="pp-bars">
-        <rect id="pp-friction" x="1260" y="340" width="90" height="520" fill="#d8a13a"/>
+        <!-- round 2: no scale about an origin (it rendered the bar at y 0-340, off the top). The bar only TRANSLATES
+             down (y = 520 * (1 - level)) inside a clip that ends at the baseline 860, so its foot never leaves the
+             baseline and its top is always 860 - 520 * level. -->
+        <clipPath id="pp-fricclip"><rect x="1250" y="300" width="110" height="560"/></clipPath>
+        <g clip-path="url(#pp-fricclip)"><rect id="pp-friction" x="1260" y="340" width="90" height="520" fill="#d8a13a"/></g>
         <rect id="pp-weight" x="1420" y="560" width="90" height="300" fill="#e74c3c"/>
         <line x1="1220" y1="860" x2="1560" y2="860" stroke="#93a3b2" stroke-width="3"/>
       </g>
@@ -160,9 +164,9 @@ window.__timelines = window.__timelines || {};
   /* "friction" @1.90 "between the grains" -> "rock" @3.82: contact ticks pulse, the friction bar stands up */
   tl.to(TSEL, { scale: 1.6, transformOrigin: "50% 50%", duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 3, stagger: 0.004 }, 1.90);
   tl.to("#pp-bars", { autoAlpha: 1, duration: 0.3 }, 1.90);
-  tl.from("#pp-friction", { scaleY: 0, duration: 0.6, ease: "power3.out" }, 1.90);
+  tl.fromTo("#pp-friction", { scaleY: 0 }, { scaleY: 1, duration: 0.6, ease: "power3.out" }, 1.90);
   tl.fromTo("#pp-lfric", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 2.20);
-  tl.from("#pp-weight", { scaleY: 0, svgOrigin: "1465 860", duration: 0.6, ease: "power3.out" }, 2.60);
+  tl.fromTo("#pp-weight", { scaleY: 0, svgOrigin: "1465 860" }, { scaleY: 1, svgOrigin: "1465 860", duration: 0.6, ease: "power3.out" }, 2.60);
   tl.fromTo("#pp-lwt", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 2.90);
   tl.to(TSEL, { opacity: 0.55, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 1 }, 3.40);
 
@@ -171,9 +175,8 @@ window.__timelines = window.__timelines || {};
 
   /* "pushes" @9.12: arrows fire between grains; "apart" @9.76: grains spread, contacts break */
   tl.to(ASEL, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.05 }, 9.12);
-  G.forEach(function (g) {
-    tl.to(g.id, { x: (g.x - 410) * 0.035, y: (g.y + 116) * 0.06, duration: 0.6, ease: "power2.out" }, 9.76);
-  });
+  /* grains shrink in place so every contact opens and the pores widen (they stay inside the block outline) */
+  tl.to(GSEL, { scale: 0.86, transformOrigin: "50% 50%", duration: 0.6, ease: "power2.out" }, 9.76);
   tl.to(TSEL, { opacity: 0.3, duration: 0.6, ease: "power2.out" }, 9.76);
   tl.to(ASEL, { scale: 1.2, duration: 0.35, ease: "sine.inOut", yoyo: true, repeat: 3 }, 10.2);
   tl.to(ASEL, { autoAlpha: 0, duration: 0.4 }, 11.9);
