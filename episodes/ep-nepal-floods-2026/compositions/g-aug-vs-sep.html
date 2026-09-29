@@ -100,7 +100,7 @@ window.__timelines = window.__timelines || {};
 
   /* ---- August 26: the Langtang pin ---- */
   tl.fromTo(P + "ltpin", { autoAlpha: 0, y: -50 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "bounce.out" }, CUES.aug26);
-  tl.fromTo(P + "ltring", { autoAlpha: 0.9, attr: { r: 9 } }, { autoAlpha: 0, attr: { r: 38 }, duration: 1.1, ease: "power2.out", repeat: 12, repeatDelay: 0.25 }, CUES.aug26 + 0.4);
+  tl.fromTo(P + "ltring", { autoAlpha: 0.9, attr: { r: 9 } }, { autoAlpha: 0, attr: { r: 38 }, duration: 1.1, ease: "power2.out", repeat: 12, repeatDelay: 0.25, immediateRender: false }, CUES.aug26 + 0.4);
   tl.fromTo(P + "t-aug", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.aug26 + 0.15);
   /* the LANGTANG FLOOD eyebrow waits for the spoken name (was 3 s early at 4.45) */
   tl.fromTo(P + "eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.lang);
