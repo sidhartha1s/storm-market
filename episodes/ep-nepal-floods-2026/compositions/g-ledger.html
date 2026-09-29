@@ -99,10 +99,9 @@ window.__timelines = window.__timelines || {};
   const CKL = Math.ceil(document.querySelector(P + "ck1").getTotalLength()) + 1;
   const SCAR = Math.ceil(document.querySelector(P + "scar").getTotalLength()) + 1;
   const ROWS = [P + "row1", P + "row2", P + "row3"];
-  const CONTENT = [P + "c1", P + "c2", P + "c3"];
 
   /* ---- initial state ---- */
-  tl.set(ROWS.concat(CONTENT, [P + "hl", P + "s1", P + "stamp", P + "pile"]), { autoAlpha: 0 }, 0);
+  tl.set(ROWS.concat([P + "eb", P + "hl", P + "s1", P + "stamp", P + "pile"]), { autoAlpha: 0 }, 0);
   tl.set(CK, { strokeDasharray: CKL, strokeDashoffset: CKL }, 0);
   tl.set(P + "scar", { strokeDasharray: SCAR, strokeDashoffset: SCAR }, 0);
   tl.set(P + "snow", { x: -120, y: -50 }, 0);
