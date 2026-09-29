@@ -231,7 +231,7 @@ window.__timelines = window.__timelines || {};
   tl.to(P + "ava", { scaleY: 1, duration: 1.6, ease: "power2.in" }, 30.44);
   tl.to(SMOKE, { autoAlpha: 0, duration: 0.3 }, 31.9);
   tl.to(TENTS.concat(P + "kitchen", MEN), { y: "+=10", autoAlpha: 0.25, duration: 0.3, ease: "power2.in" }, 32.3);
-  tl.fromTo(P + "dust", { autoAlpha: 1, scale: 0, svgOrigin: "505 824" }, { autoAlpha: 0, scale: 1.4, duration: 0.9, ease: "power2.out" }, 32.38);
+  tl.fromTo(P + "dust", { autoAlpha: 1, scale: 0, svgOrigin: "505 824" }, { autoAlpha: 0, scale: 1.4, duration: 0.9, ease: "power2.out", immediateRender: false }, 32.38);
   tl.fromTo(P + "scene", { x: 0 }, { x: 8, duration: 0.05, ease: "none", yoyo: true, repeat: 7 }, 32.38);  /* 0.4 s shake, scene group only */
   tl.set(P + "scene", { x: 0 }, 32.8);
 
