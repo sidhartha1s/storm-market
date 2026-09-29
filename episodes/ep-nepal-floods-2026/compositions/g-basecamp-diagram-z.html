@@ -2,36 +2,83 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- g-basecamp-diagram-z (Z close): "g-basecamp-diagram fades to the single camp" (script Z picture line). Starts
-     from g-basecamp-diagram-a6's dawn end-state and thins to one glowing tent under the returning name card
-     (name card itself is an index.html overlay, not authored here). mg_specs/g-basecamp-diagram-z.md. -->
+<!-- g-basecamp-diagram-z (Z close, 8.0 s): Himlung and its base camp, with the UAE expedition's arrival board.
+     Line: "The climbers from the United Arab Emirates were due in Kathmandu on Thursday, October 1. Their expedition
+     didn't go ahead. The guides..." Facts: UAE group due Kathmandu Oct 1 (factcheck-A#2, factcheck-B#15); Himlung
+     7,126 m (factcheck-A#8, mg_specs/g-himlung-height.md). SCHEMATIC, NOT TO SCALE. mg_specs/g-basecamp-diagram-z.md.
+     REDO 29 Sep 26: the triangle is replaced by a multi-peak ridge across x 0-1920 (summit ~(760,150)), a textured
+     avalanche tongue from the summit to base camp, 5 lit tents (48 px) at the base; the right third carries a glass card
+     (left 1180, top 220, 640 x 420) with an arrival-board row whose status flips DUE -> CANCELLED on "didn't go ahead".
+     Tents stay lit (the crew was on the mountain); a soft glow lands on them for "The guides" @7.90.
+     Cues from retime-sheet.md (host 735.152+8.000 on the sheet): "climbers" 0.38, "Emirates" 1.84, "due" 2.50,
+     "Kathmandu" 2.86, "October" 4.40, "didn't" 6.30 -> "ahead" 6.90, "The guides" 7.90. The scene ends on the cut. -->
 <template>
 <style>
   #gbdz-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
-    background:radial-gradient(ellipse at 40% 35%, #2a2118 0%, #0b0806 78%); }
+    background:radial-gradient(ellipse at 40% 40%, #1a2230 0%, #060a10 78%); }
   .gbdz-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gbdz-peak { font-family:Arial, sans-serif; font-weight:700; font-size:26px; letter-spacing:3px; fill:#dfe7ee;
+    paint-order:stroke; stroke:#060a10; stroke-width:6px; stroke-linejoin:round; }
+  .gbdz-card { position:absolute; left:1180px; top:220px; width:640px; height:420px; box-sizing:border-box; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 30px 90px rgba(0,0,0,0.45); }
+  .gbdz-eb { position:absolute; left:48px; top:40px; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  .gbdz-rule { position:absolute; left:48px; top:84px; width:544px; height:2px; background:rgba(147,163,178,0.35); }
+  .gbdz-city { position:absolute; left:48px; top:108px; font-weight:700; font-size:30px; letter-spacing:4px; color:#dfe7ee; white-space:nowrap; }
+  .gbdz-date { position:absolute; left:48px; top:154px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px;
+    line-height:60px; color:#f2f5f8; white-space:nowrap; }
+  .gbdz-cell { position:absolute; left:48px; top:270px; width:544px; height:96px; }
+  .gbdz-face { position:absolute; left:0; top:0; width:544px; height:96px; box-sizing:border-box; border-radius:14px; border:4px solid;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px; line-height:88px; letter-spacing:4px; text-align:center;
+    background:rgba(4,7,12,0.6); white-space:nowrap; }
+  .gbdz-due { color:#d8a13a; border-color:#d8a13a; }
+  .gbdz-cxl { color:#c0392b; border-color:#c0392b; }
 </style>
 <div id="gbdz-root" data-composition-id="g-basecamp-diagram-z" data-width="1920" data-height="1080" data-duration="8">
   <svg class="gbdz-svg" viewBox="0 0 1920 1080">
     <defs>
-      <linearGradient id="gbdz-rockgrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6b5a45"/><stop offset="1" stop-color="#2a3644"/></linearGradient>
-      <linearGradient id="gbdz-avagrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0dcc0" stop-opacity="0"/><stop offset="1" stop-color="#f0dcc0" stop-opacity="0.5"/></linearGradient>
-      <radialGradient id="gbdz-glowgrad" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#e8c56a" stop-opacity="0.55"/><stop offset="1" stop-color="#e8c56a" stop-opacity="0"/></radialGradient>
+      <linearGradient id="gbdz-rock" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a5560"/><stop offset="1" stop-color="#15202b"/></linearGradient>
+      <linearGradient id="gbdz-far" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a3644"/><stop offset="1" stop-color="#0b1016"/></linearGradient>
+      <linearGradient id="gbdz-ava" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2f5f8" stop-opacity="0.95"/><stop offset="1" stop-color="#93a3b2" stop-opacity="0.9"/></linearGradient>
+      <pattern id="gbdz-hatch" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+        <line x1="0" y1="0" x2="0" y2="14" stroke="#93a3b2" stroke-width="2" stroke-opacity="0.55"/>
+      </pattern>
+      <radialGradient id="gbdz-glowg" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#e8c56a" stop-opacity="0.55"/><stop offset="1" stop-color="#e8c56a" stop-opacity="0"/></radialGradient>
     </defs>
     <g id="gbdz-scene">
-      <path id="gbdz-massif" d="M700,150 L1170,830 L230,830 Z" fill="url(#gbdz-rockgrad)" stroke="#8a7048" stroke-width="2"/>
-      <path id="gbdz-snowcap" d="M700,150 L790,330 L610,330 Z" fill="#f4e9d8" opacity="0.92"/>
-      <path id="gbdz-avalanche" d="M700,230 L760,230 L650,780 L380,780 Z" fill="url(#gbdz-avagrad)"/>
-      <path id="gbdz-rope" d="M500,790 L830,430" fill="none" stroke="#f4e9d8" stroke-width="3" stroke-dasharray="8 6" opacity="0.85"/>
-      <circle id="gbdz-c1ring" cx="830" cy="430" r="14" fill="none" stroke="#f4e9d8" stroke-width="4"/>
-      <circle id="gbdz-glow" cx="380" cy="806" r="70" fill="url(#gbdz-glowgrad)"/>
-      <path id="gbdz-tent1" d="M360,822 L380,790 L400,822 Z" fill="#e8c56a"/>
-      <path id="gbdz-tent2" d="M420,822 L440,790 L460,822 Z" fill="#d8a13a"/>
-      <path id="gbdz-tent3" d="M480,822 L500,790 L520,822 Z" fill="#d8a13a"/>
-      <path id="gbdz-tent4" d="M540,822 L560,790 L580,822 Z" fill="#d8a13a"/>
-      <path id="gbdz-tent5" d="M600,822 L620,790 L640,822 Z" fill="#d8a13a"/>
+      <!-- far ridge for depth, then the Himlung ridge across the whole frame -->
+      <path d="M0,560 L130,470 L240,520 L360,400 L470,450 L580,330 L660,380 L900,300 L1040,360 L1150,300 L1300,380 L1450,330 L1600,420 L1760,370 L1920,430 L1920,1080 L0,1080 Z" fill="url(#gbdz-far)"/>
+      <path id="gbdz-ridge" d="M0,720 L90,610 L170,640 L260,520 L350,560 L450,400 L540,430 L640,260 L700,200 L760,150 L820,210 L880,250 L950,330 L1010,300 L1090,380 L1180,360 L1290,450 L1400,420 L1520,520 L1640,490 L1760,580 L1920,540 L1920,1080 L0,1080 Z"
+            fill="url(#gbdz-rock)" stroke="#5a768f" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M700,200 L760,150 L820,210 L792,232 L762,214 L732,238 Z" fill="#dfe7ee" opacity="0.92"/>
+      <path d="M450,400 L540,430 L512,446 L474,430 Z M1010,300 L1090,380 L1052,372 L1030,346 Z" fill="#dfe7ee" opacity="0.6"/>
+      <!-- base-camp shelf -->
+      <path d="M470,872 L960,872 L990,900 L440,900 Z" fill="#2a3644"/>
+      <!-- avalanche tongue: summit to base camp, textured -->
+      <path id="gbdz-tongue" d="M748,176 L776,178 L800,260 L790,360 L812,470 L846,590 L880,720 L872,862 L560,862 L590,760 L640,640 L690,520 L716,400 L730,280 Z" fill="url(#gbdz-ava)"/>
+      <path id="gbdz-tex" d="M748,176 L776,178 L800,260 L790,360 L812,470 L846,590 L880,720 L872,862 L560,862 L590,760 L640,640 L690,520 L716,400 L730,280 Z" fill="url(#gbdz-hatch)"/>
+      <path d="M760,210 L744,330 L720,470 L680,620 L630,780 M790,300 L800,440 L830,590 L850,760" stroke="#93a3b2" stroke-width="3" fill="none" opacity="0.6"/>
+      <!-- the tents stay lit -->
+      <ellipse id="gbdz-glow" cx="700" cy="852" rx="220" ry="70" fill="url(#gbdz-glowg)"/>
+      <path d="M560,872 L584,834 L608,872 Z" fill="#d8a13a"/><rect id="gbdz-w1" x="578" y="852" width="12" height="14" fill="#f5d98b"/>
+      <path d="M618,872 L642,834 L666,872 Z" fill="#d8a13a"/><rect id="gbdz-w2" x="636" y="852" width="12" height="14" fill="#f5d98b"/>
+      <path d="M676,872 L700,834 L724,872 Z" fill="#d8a13a"/><rect id="gbdz-w3" x="694" y="852" width="12" height="14" fill="#f5d98b"/>
+      <path d="M734,872 L758,834 L782,872 Z" fill="#d8a13a"/><rect id="gbdz-w4" x="752" y="852" width="12" height="14" fill="#f5d98b"/>
+      <path d="M792,872 L816,834 L840,872 Z" fill="#d8a13a"/><rect id="gbdz-w5" x="810" y="852" width="12" height="14" fill="#f5d98b"/>
+      <path id="gbdz-lead" d="M760,128 L760,142" stroke="#dfe7ee" stroke-width="2"/>
+      <text class="gbdz-peak" id="gbdz-peaklab" x="760" y="118" text-anchor="middle">HIMLUNG &#183; 7,126 M</text>
     </g>
   </svg>
+  <div class="gbdz-card" id="gbdz-card">
+    <div class="gbdz-eb" id="gbdz-eb">UAE EXPEDITION</div>
+    <div class="gbdz-rule" id="gbdz-rule"></div>
+    <div class="gbdz-city" id="gbdz-city">KATHMANDU</div>
+    <div class="gbdz-date" id="gbdz-date">THU &middot; OCT 1</div>
+    <div class="gbdz-cell" id="gbdz-cell">
+      <div class="gbdz-face gbdz-due" id="gbdz-due">DUE</div>
+      <div class="gbdz-face gbdz-cxl" id="gbdz-cxl">CANCELLED</div>
+    </div>
+  </div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
@@ -39,33 +86,45 @@ window.__timelines = window.__timelines || {};
   const ID = "g-basecamp-diagram-z", P = "#gbdz-";
   const DUR = 8;
   const tl = gsap.timeline({ paused: true });
-  /* continuous from the a6 hold: everything visible at t=0 except the glow (only around the survivor tent) */
-  tl.set([P+"massif", P+"snowcap", P+"avalanche", P+"rope", P+"c1ring", P+"tent1", P+"tent2", P+"tent3", P+"tent4", P+"tent5"], { autoAlpha: 1 }, 0);
-  tl.set(P+"glow", { autoAlpha: 0, scale: 0.6, svgOrigin: "380 806" }, 0);
+  const WINS = [P + "w1", P + "w2", P + "w3", P + "w4", P + "w5"];
 
-  /* whole window: the drift continues */
-  tl.fromTo(P+"scene", { scale: 1.015, x: -6, svgOrigin: "700 500" }, { scale: 1.045, x: -18, duration: DUR, ease: "none" }, 0);
+  /* ---- initial state ---- */
+  tl.set(P + "card", { autoAlpha: 0, x: 660 }, 0);
+  tl.set([P + "eb", P + "rule", P + "city", P + "date", P + "cell", P + "cxl", P + "peaklab", P + "lead"], { autoAlpha: 0 }, 0);
+  tl.set(P + "rule", { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set(P + "due", { rotationX: 0, transformPerspective: 600, transformOrigin: "50% 50%" }, 0);
+  tl.set(P + "cxl", { rotationX: -90, transformPerspective: 600, transformOrigin: "50% 50%" }, 0);
+  tl.set(P + "glow", { opacity: 0.35, scale: 1, svgOrigin: "700 852" }, 0);
 
-  /* RE-ANCHORED: the script line this brief was written against ("the ones on the mountain" / "Pasang Bhote was
-     among the first two" / "under fresh snow") is not spoken in this host window any more — the real words here
-     are "The climbers from the United Arab Emirates were due in Kathmandu on Thursday, October 1. Their
-     expedition didn't go ahead. The guides..." (that Pasang Bhote line now lands in g-person-bhote-z instead).
-     This comp carries no on-screen text (brief: "silent visual, narration carries the words"), so the state
-     changes are re-anchored to the nearest words that carry the same idea — the clients who never arrived
-     letting go of the summit-route marker, then the guides who stayed being the one camp left lit. */
+  /* ---- whole window: slow camera drift; tent windows flicker (lit) ---- */
+  tl.fromTo(P + "scene", { scale: 1, x: 0, svgOrigin: "760 600" }, { scale: 1.035, x: -12, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(WINS, { opacity: 1 }, { opacity: 0.7, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 12, stagger: 0.15 }, 0);
+  tl.fromTo(P + "tex", { x: 0 }, { x: 10, duration: DUR, ease: "none" }, 0);
 
-  /* 2.35 (0.15s before "due" @2.50): were due in Kathmandu — the rope and Camp 1 marker let go first */
-  tl.to([P+"rope", P+"c1ring"], { autoAlpha: 0, duration: 0.6 }, 2.35);
+  /* ---- 0.3: the peak is named ---- */
+  tl.fromTo([P + "peaklab", P + "lead"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.3);
 
-  /* 5.45 (0.15s before "Their" @5.60): Their expedition didn't go ahead — four tents fade, one stays and glows */
-  tl.to([P+"tent2", P+"tent3", P+"tent4", P+"tent5"], { autoAlpha: 0, duration: 0.7, ease: "power2.out", stagger: 0.1 }, 5.45);
-  tl.to(P+"glow", { autoAlpha: 1, scale: 1, duration: 1.2, ease: "power2.out" }, 5.65);
-  tl.fromTo(P+"tent1", { scale: 1, svgOrigin: "380 806" }, { scale: 1.12, duration: 0.35, ease: "power2.out" }, 5.85);
+  /* ---- "climbers" @0.38: the arrival card slides in; "Emirates" @1.84 eyebrow ---- */
+  tl.to(P + "card", { x: 0, autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 0.4);
+  tl.fromTo(P + "eb", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 1.74);
+  tl.to(P + "rule", { autoAlpha: 1, scaleX: 1, duration: 0.5, ease: "power3.out" }, 1.9);
 
-  /* 7.3 (nearest word "guides" @7.90 is cut off by D=8.0; pulled in so nothing tweens past D) — avalanche
-     dims into the background, the remaining camp stays the read into the hard cut to g-outro */
-  tl.to(P+"avalanche", { opacity: 0.15, duration: 0.5, ease: "power2.out" }, 7.3);
-  tl.to(P+"glow", { scale: 1.15, duration: 0.35, ease: "sine.inOut" }, 7.3);
+  /* ---- "due" @2.50: the status cell reads DUE; "Kathmandu" @2.86 ---- */
+  tl.fromTo(P + "cell", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 2.4);
+  tl.fromTo(P + "city", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 2.76);
+
+  /* ---- "October" @4.40: THU · OCT 1 ---- */
+  tl.fromTo(P + "date", { autoAlpha: 0, scale: 1.25, transformOrigin: "left center" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.out" }, 4.3);
+
+  /* ---- "didn't go ahead" 6.30-6.90: the status flips DUE -> CANCELLED (rotationX, 0.4 s) ---- */
+  tl.to(P + "due", { rotationX: 90, duration: 0.2, ease: "power2.in" }, 6.3);
+  tl.set(P + "due", { autoAlpha: 0 }, 6.5);
+  tl.set(P + "cxl", { autoAlpha: 1 }, 6.5);
+  tl.to(P + "cxl", { rotationX: 0, duration: 0.2, ease: "power2.out" }, 6.5);
+  tl.fromTo(P + "cell", { scale: 1 }, { scale: 1.04, duration: 0.15, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "left center" }, 6.72);
+
+  /* ---- "The guides" @7.90: a soft glow lands on the lit tents to set up the next line ---- */
+  tl.to(P + "glow", { opacity: 1, scale: 1.25, duration: 0.45, ease: "power2.out" }, 7.45);
   window.__timelines[ID] = tl;
 })();
 </script>
