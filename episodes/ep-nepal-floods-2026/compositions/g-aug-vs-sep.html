@@ -102,9 +102,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.aug26 + 0.3);
   tl.fromTo(P + "t-lt", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.valley);
 
-  /* ---- a flood down the river below (Trishuli pulse extended to carry the long hold to the exit) ---- */
+  /* ---- a flood down the river below (Trishuli pulse runs to the cut) ---- */
   tl.to(P + "tri", { strokeDashoffset: 0, duration: 1.4, ease: "power2.in" }, CUES.river);
-  tl.fromTo(P + "tri", { attr: { "stroke-opacity": 1 } }, { attr: { "stroke-opacity": 0.5 }, duration: 0.9, ease: "sine.inOut", repeat: 23, yoyo: true }, CUES.river + 1.4);
+  tl.fromTo(P + "tri", { attr: { "stroke-opacity": 1 } }, { attr: { "stroke-opacity": 0.5 }, duration: 0.9, ease: "sine.inOut", repeat: 12, yoyo: true }, CUES.river + 1.4); /* ends 22.51 */
 
   /* ---- the count, as of Sept 21 ---- */
   tl.fromTo(P + "asof", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.sept21);
