@@ -121,7 +121,7 @@ window.__timelines = window.__timelines || {};
   tl.to(P + "line", { strokeDashoffset: 0, duration: 1.3, ease: "power1.in" }, 3.37);
   tl.to(P + "x", { autoAlpha: 1, scale: 1, duration: 0.25, ease: "power4.out" }, 4.67);
   tl.fromTo(P + "fell", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 4.72);
-  tl.fromTo(P + "xring", { autoAlpha: 0.9, attr: { r: 16 } }, { autoAlpha: 0, attr: { r: 52 }, duration: 1.0, ease: "power2.out", repeat: 2, repeatDelay: 0.2 }, 4.8);
+  tl.fromTo(P + "xring", { autoAlpha: 0.9, attr: { r: 16 } }, { autoAlpha: 0, attr: { r: 52 }, duration: 1.0, ease: "power2.out", repeat: 2, repeatDelay: 0.2, immediateRender: false }, 4.8);
 
   /* ---- "Kali Gandaki Wall" 5.87-6.67: the right side lights up ---- */
   tl.to(P + "ebr", { autoAlpha: 1, duration: 0.35 }, 5.87);
