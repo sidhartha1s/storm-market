@@ -136,6 +136,12 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"slope", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.3);
   tl.fromTo(P+"slopelab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 2.28);
   tl.fromTo(P+"lgrp", { scale: 1 }, { scale: 1.03, svgOrigin: "640 880", duration: 12.4, ease: "none" }, 0.4);
+  /* round 3: the rail slides in on AUGUST @0.44 (was 10.3, leaving x 1190-1920 empty for 10 s); MEASURED @1.80
+     "measure", "before it fell" @3.08 "before". The pair sits at y 150-242 in the rail, above the counter slot
+     (y 300+), and leaves with #gic-lang at 15.77, before NO RADAR PUBLISHED (16.6) takes the same column. */
+  tl.fromTo(P+"rail", { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.44);
+  tl.fromTo(P+"mhead", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power4.out" }, 1.80);
+  tl.fromTo(P+"mbef", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.08);
   /* ISAMOD @4.56: the ICIMOD chip in the open air top-left */
   tl.fromTo(P+"chip", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 4.56);
   tl.to(P+"chip", { y: -6, duration: 1.3, ease: "sine.inOut", yoyo: true, repeat: 2 }, 5.1);
