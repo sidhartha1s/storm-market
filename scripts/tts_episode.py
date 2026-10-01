@@ -252,17 +252,16 @@ def main():
             stale = prior.get("text_hash") != h or not wav.exists()
         todo.append((sid, text, txt, txt_tmp, raw_wav, wav, words_json, h, h_text,
                      is_legacy, adopted, stale))
-
-    # tts_clone reads from TEMP text files. <id>.txt (the file old_txt/adoption compares
-    # against) is only replaced with the new text after synth + tempo both succeed, so a crash
-    # anywhere in between leaves it holding the text of the wav that's actually on disk.
-    stale_pairs = []
-    for sid, text, _, txt_tmp, raw_wav, *_, stale in todo:
         if stale:
+            # tts_clone reads from a TEMP text file. <id>.txt (the file old_txt/adoption
+            # compares against) is only replaced with the new text after synth + tempo both
+            # succeed, so a crash anywhere in between leaves it holding the text of the wav
+            # that's actually on disk.
             txt_tmp.write_text(text, encoding="utf-8")
             stale_pairs.append((txt_tmp, raw_wav))
+
     if stale_pairs:
-        synth_native(stale_pairs, ep / "audio" / "_raw" / "batch.tsv", ext)
+        synth_native(stale_pairs, ext)
 
     for sid, text, txt, txt_tmp, raw_wav, wav, words_json, h, h_text, is_legacy, adopted, stale in todo:
         if stale:
